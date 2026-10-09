@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -13,29 +15,14 @@ export interface ApplyWebAnalyticsPathCleaningSuggestionRequest {
   project_id: string;
   id: string;
 }
-const ApplyWebAnalyticsPathCleaningSuggestionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ApplyWebAnalyticsPathCleaningSuggestionRequest>;
-
 export interface ApplyPathCleaningSuggestionResponse {
   /** Number of rules merged into the team's path_cleaning_filters. */
   applied: number;
 }
-const ApplyPathCleaningSuggestionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ApplyPathCleaningSuggestionResponse>;
-
 export interface GenerateWebAnalyticsPathCleaningSuggestionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GenerateWebAnalyticsPathCleaningSuggestionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GenerateWebAnalyticsPathCleaningSuggestionRequest>;
-
 export interface SuggestedRule {
   /** re2 pattern matching the dynamic path segment. */
   regex: string;
@@ -46,15 +33,8 @@ export interface SuggestedRule {
   /** How many of the sampled paths this rule rewrites -- evidence the rule was validated on real traffic. */
   match_count: number;
 }
-const SuggestedRule = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SuggestedRule>;
-
 /** Validated path-cleaning rules proposed for this team, most specific first. */
 export type PathCleaningSuggestionIssueRulesList = Array<SuggestedRule>;
-const PathCleaningSuggestionIssueRulesList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<PathCleaningSuggestionIssueRulesList>;
-
 /** A path-cleaning suggestion, stored as a `path_cleaning_suggestions` health issue. */
 export interface PathCleaningSuggestionIssue {
   /** Health-issue id; pass it to the apply endpoint or the health-issues API. */
@@ -70,32 +50,17 @@ export interface PathCleaningSuggestionIssue {
   /** Distinct pathnames seen in the sampling window. */
   distinct_path_count: number;
 }
-const PathCleaningSuggestionIssue = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PathCleaningSuggestionIssue>;
-
 export interface GeneratePathCleaningSuggestionResponse {
   /** generated, skipped_low_cardinality, skipped_no_paths, skipped_configured, or error. */
   status: string;
   /** The stored suggestion when status is generated, else null. */
   suggestion?: PathCleaningSuggestionIssue | null;
 }
-const GeneratePathCleaningSuggestionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GeneratePathCleaningSuggestionResponse>;
-
 export interface PreviewWebAnalyticsPathCleaningSuggestionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
-const PreviewWebAnalyticsPathCleaningSuggestionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PreviewWebAnalyticsPathCleaningSuggestionRequest>;
-
 export interface PathCleaningPreviewExample {
   /** A real sampled path before the suggested rules are applied. */
   before: string;
@@ -104,18 +69,8 @@ export interface PathCleaningPreviewExample {
   /** Pageviews this path received in the sampling window. */
   views: number;
 }
-const PathCleaningPreviewExample = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<PathCleaningPreviewExample>;
-
 /** Up to 20 before/after pairs for sampled paths the suggested rules would rewrite. */
 export type PreviewPathCleaningSuggestionResponseExamplesList = Array<PathCleaningPreviewExample>;
-const PreviewPathCleaningSuggestionResponseExamplesList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PreviewPathCleaningSuggestionResponseExamplesList>;
-
 export interface PreviewPathCleaningSuggestionResponse {
   /** Up to 20 before/after pairs for sampled paths the suggested rules would rewrite. */
   examples: PreviewPathCleaningSuggestionResponseExamplesList;
@@ -124,11 +79,6 @@ export interface PreviewPathCleaningSuggestionResponse {
   /** How many top paths were sampled for this preview. */
   sampled_path_count: number;
 }
-const PreviewPathCleaningSuggestionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PreviewPathCleaningSuggestionResponse>;
-
 export type ApplyWebAnalyticsPathCleaningSuggestionError = PosthogOpError;
 /** Apply a path-cleaning suggestion Merges the suggestion's rules into the team's path_cleaning_filters (never overwrites existing rules) and resolves the underlying health issue. Requires project admin, matching the team API's gate on path_cleaning_filters. */
 export const applyWebAnalyticsPathCleaningSuggestion: API.OperationMethod<
@@ -137,8 +87,8 @@ export const applyWebAnalyticsPathCleaningSuggestion: API.OperationMethod<
   ApplyWebAnalyticsPathCleaningSuggestionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplyWebAnalyticsPathCleaningSuggestionRequest,
-  output: ApplyPathCleaningSuggestionResponse,
+  input: __S(0) as any as S.Schema<ApplyWebAnalyticsPathCleaningSuggestionRequest>,
+  output: __S(1) as any as S.Schema<ApplyPathCleaningSuggestionResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -152,8 +102,8 @@ export const generateWebAnalyticsPathCleaningSuggestion: API.OperationMethod<
   GenerateWebAnalyticsPathCleaningSuggestionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateWebAnalyticsPathCleaningSuggestionRequest,
-  output: GeneratePathCleaningSuggestionResponse,
+  input: __S(2) as any as S.Schema<GenerateWebAnalyticsPathCleaningSuggestionRequest>,
+  output: __S(6) as any as S.Schema<GeneratePathCleaningSuggestionResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -167,8 +117,8 @@ export const previewWebAnalyticsPathCleaningSuggestion: API.OperationMethod<
   PreviewWebAnalyticsPathCleaningSuggestionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PreviewWebAnalyticsPathCleaningSuggestionRequest,
-  output: PreviewPathCleaningSuggestionResponse,
+  input: __S(7) as any as S.Schema<PreviewWebAnalyticsPathCleaningSuggestionRequest>,
+  output: __S(10) as any as S.Schema<PreviewPathCleaningSuggestionResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -224,13 +174,13 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "SuggestedRule" });
     case 4:
-      return S.Array(SuggestedRule);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           created_at: S.String,
-          rules: PathCleaningSuggestionIssueRulesList,
+          rules: __S(4),
           model: S.String,
           sampled_path_count: S.Number,
           distinct_path_count: S.Number,
@@ -242,7 +192,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           status: S.String,
-          suggestion: S.optional(S.NullOr(PathCleaningSuggestionIssue)),
+          suggestion: S.optional(S.NullOr(__S(5))),
         }),
       ).annotate({
         identifier: "GeneratePathCleaningSuggestionResponse",
@@ -277,16 +227,29 @@ function __c1(j: number): any {
         identifier: "PathCleaningPreviewExample",
       });
     case 1:
-      return S.Array(PathCleaningPreviewExample);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          examples: PreviewPathCleaningSuggestionResponseExamplesList,
+          examples: __S(9),
           changed_path_count: S.Number,
           sampled_path_count: S.Number,
         }),
       ).annotate({
         identifier: "PreviewPathCleaningSuggestionResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

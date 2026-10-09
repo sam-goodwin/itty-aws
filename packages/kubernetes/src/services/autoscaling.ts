@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { KubernetesOpError, KubernetesOpContext };
 
@@ -45,25 +47,12 @@ export class UnprocessableEntity
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap>;
-
 /** Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order. Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList>;
-
 /** Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap>;
-
 /** ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to. */
 export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** APIVersion defines the version of this resource that this field set applies to. The format is "group/version" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted. */
@@ -81,19 +70,9 @@ export interface IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry {
   /** Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over. */
   time?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-
 /** ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like "ci-cd". The set of fields is always in the version that the workflow used when modifying the object. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList =
   Array<IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList>;
-
 /** OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field. */
 export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** API version of the referent. */
@@ -109,19 +88,9 @@ export interface IoK8sApimachineryPkgApisMetaV1OwnerReference {
   /** UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid: string;
 }
-const IoK8sApimachineryPkgApisMetaV1OwnerReference = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-
 /** List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller. */
 export type IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList =
   Array<IoK8sApimachineryPkgApisMetaV1OwnerReference>;
-const IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList>;
-
 /** ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create. */
 export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations */
@@ -155,11 +124,6 @@ export interface IoK8sApimachineryPkgApisMetaV1ObjectMeta {
   /** UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ObjectMeta = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ObjectMeta>;
-
 /** CrossVersionObjectReference contains enough information to let you identify the referred resource. */
 export interface IoK8sApiAutoscalingV1CrossVersionObjectReference {
   /** apiVersion is the API version of the referent */
@@ -169,11 +133,6 @@ export interface IoK8sApiAutoscalingV1CrossVersionObjectReference {
   /** name is the name of the referent; More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names */
   name: string;
 }
-const IoK8sApiAutoscalingV1CrossVersionObjectReference = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<IoK8sApiAutoscalingV1CrossVersionObjectReference>;
-
 /** specification of a horizontal pod autoscaler. */
 export interface IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec {
   /** maxReplicas is the upper limit for the number of pods that can be set by the autoscaler; cannot be smaller than MinReplicas. */
@@ -185,11 +144,6 @@ export interface IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec {
   /** targetCPUUtilizationPercentage is the target average CPU utilization (represented as a percentage of requested CPU) over all the pods; if not specified the default autoscaling policy will be used. */
   targetCPUUtilizationPercentage?: number;
 }
-const IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec>;
-
 /** current status of a horizontal pod autoscaler */
 export interface IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus {
   /** currentCPUUtilizationPercentage is the current average CPU utilization over all pods, represented as a percentage of requested CPU, e.g. 70 means that an average pod is using now 70% of its requested CPU. */
@@ -203,11 +157,6 @@ export interface IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus {
   /** observedGeneration is the most recent generation observed by this autoscaler. */
   observedGeneration?: number;
 }
-const IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus>;
-
 export interface CreateAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -230,11 +179,6 @@ export interface CreateAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** status is the current information about the autoscaler. */
   status?: IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus;
 }
-const CreateAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>;
-
 /** configuration of a horizontal pod autoscaler. */
 export interface IoK8sApiAutoscalingV1HorizontalPodAutoscaler {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -248,11 +192,6 @@ export interface IoK8sApiAutoscalingV1HorizontalPodAutoscaler {
   /** status is the current information about the autoscaler. */
   status?: IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus;
 }
-const IoK8sApiAutoscalingV1HorizontalPodAutoscaler = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>;
-
 /** HPAScalingPolicy is a single policy which must hold true for a specified past interval. */
 export interface IoK8sApiAutoscalingV2HPAScalingPolicy {
   /** periodSeconds specifies the window of time for which the policy should hold true. PeriodSeconds must be greater than zero and less than or equal to 1800 (30 min). */
@@ -262,19 +201,9 @@ export interface IoK8sApiAutoscalingV2HPAScalingPolicy {
   /** value contains the amount of change which is permitted by the policy. It must be greater than zero */
   value: number;
 }
-const IoK8sApiAutoscalingV2HPAScalingPolicy = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<IoK8sApiAutoscalingV2HPAScalingPolicy>;
-
 /** policies is a list of potential scaling polices which can be used during scaling. If not set, use the default values: - For scale up: allow doubling the number of pods, or an absolute change of 4 pods in a 15s window. - For scale down: allow all pods to be removed in a 15s window. */
 export type IoK8sApiAutoscalingV2HPAScalingRulesPoliciesList =
   Array<IoK8sApiAutoscalingV2HPAScalingPolicy>;
-const IoK8sApiAutoscalingV2HPAScalingRulesPoliciesList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<IoK8sApiAutoscalingV2HPAScalingRulesPoliciesList>;
-
 /** HPAScalingRules configures the scaling behavior for one direction via scaling Policy Rules and a configurable metric tolerance. Scaling Policy Rules are applied after calculating DesiredReplicas from metrics for the HPA. They can limit the scaling velocity by specifying scaling policies. They can prevent flapping by specifying the stabilization window, so that the number of replicas is not set instantly, instead, the safest value from the stabilization window is chosen. The tolerance is applied to the metric values and prevents scaling too eagerly for small metric variations. */
 export interface IoK8sApiAutoscalingV2HPAScalingRules {
   /** policies is a list of potential scaling polices which can be used during scaling. If not set, use the default values: - For scale up: allow doubling the number of pods, or an absolute change of 4 pods in a 15s window. - For scale down: allow all pods to be removed in a 15s window. */
@@ -286,11 +215,6 @@ export interface IoK8sApiAutoscalingV2HPAScalingRules {
   /** tolerance is the tolerance on the ratio between the current and desired metric value under which no updates are made to the desired number of replicas (e.g. 0.01 for 1%). Must be greater than or equal to zero. If not set, the default cluster-wide tolerance is applied (by default 10%). For example, if autoscaling is configured with a memory consumption target of 100Mi, and scale-down and scale-up tolerances of 5% and 1% respectively, scaling will be triggered when the actual consumption falls below 95Mi or exceeds 101Mi. */
   tolerance?: string;
 }
-const IoK8sApiAutoscalingV2HPAScalingRules = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<IoK8sApiAutoscalingV2HPAScalingRules>;
-
 /** HorizontalPodAutoscalerBehavior configures the scaling behavior of the target in both Up and Down directions (scaleUp and scaleDown fields respectively). */
 export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerBehavior {
   /** scaleDown is scaling policy for scaling Down. If not set, the default value is to allow to scale down to minReplicas pods, with a 300 second stabilization window (i.e., the highest recommendation for the last 300sec is used). */
@@ -298,11 +222,6 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerBehavior {
   /** scaleUp is scaling policy for scaling Up. If not set, the default value is the higher of: * increase no more than 4 pods per 60 seconds * double the number of pods per 60 seconds No stabilization is used. */
   scaleUp?: IoK8sApiAutoscalingV2HPAScalingRules;
 }
-const IoK8sApiAutoscalingV2HorizontalPodAutoscalerBehavior = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerBehavior>;
-
 /** MetricTarget defines the target value, average value, or average utilization of a specific metric */
 export interface IoK8sApiAutoscalingV2MetricTarget {
   /** averageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. Currently only valid for Resource metric source type */
@@ -314,11 +233,6 @@ export interface IoK8sApiAutoscalingV2MetricTarget {
   /** value is the target value of the metric (as a quantity). */
   value?: string;
 }
-const IoK8sApiAutoscalingV2MetricTarget = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<IoK8sApiAutoscalingV2MetricTarget>;
-
 /** ContainerResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory). The values will be averaged together before being compared to the target. Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source. Only one "target" type should be set. */
 export interface IoK8sApiAutoscalingV2ContainerResourceMetricSource {
   /** container is the name of the container in the pods of the scaling target */
@@ -328,18 +242,8 @@ export interface IoK8sApiAutoscalingV2ContainerResourceMetricSource {
   /** target specifies the target value for the given metric */
   target: IoK8sApiAutoscalingV2MetricTarget;
 }
-const IoK8sApiAutoscalingV2ContainerResourceMetricSource = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<IoK8sApiAutoscalingV2ContainerResourceMetricSource>;
-
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList>;
-
 /** A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
   /** key is the label key that the selector applies to. */
@@ -349,26 +253,13 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement {
   /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
   values?: IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList;
 }
-const IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
-
 /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList =
   Array<IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement>;
-const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList>;
-
 /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
 export type IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap = {
   [key: string]: string | undefined;
 };
-const IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap>;
-
 /** A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects. */
 export interface IoK8sApimachineryPkgApisMetaV1LabelSelector {
   /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
@@ -376,11 +267,6 @@ export interface IoK8sApimachineryPkgApisMetaV1LabelSelector {
   /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
   matchLabels?: IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap;
 }
-const IoK8sApimachineryPkgApisMetaV1LabelSelector = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1LabelSelector>;
-
 /** MetricIdentifier defines the name and optionally selector for a metric */
 export interface IoK8sApiAutoscalingV2MetricIdentifier {
   /** name is the name of the given metric */
@@ -388,11 +274,6 @@ export interface IoK8sApiAutoscalingV2MetricIdentifier {
   /** selector is the string-encoded form of a standard kubernetes label selector for the given metric When set, it is passed as an additional parameter to the metrics server for more specific metrics scoping. When unset, just the metricName will be used to gather metrics. */
   selector?: IoK8sApimachineryPkgApisMetaV1LabelSelector;
 }
-const IoK8sApiAutoscalingV2MetricIdentifier = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<IoK8sApiAutoscalingV2MetricIdentifier>;
-
 /** ExternalMetricSource indicates how to scale on a metric not associated with any Kubernetes object (for example length of queue in cloud messaging service, or QPS from loadbalancer running outside of cluster). */
 export interface IoK8sApiAutoscalingV2ExternalMetricSource {
   /** metric identifies the target metric by name and selector */
@@ -400,11 +281,6 @@ export interface IoK8sApiAutoscalingV2ExternalMetricSource {
   /** target specifies the target value for the given metric */
   target: IoK8sApiAutoscalingV2MetricTarget;
 }
-const IoK8sApiAutoscalingV2ExternalMetricSource = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<IoK8sApiAutoscalingV2ExternalMetricSource>;
-
 /** CrossVersionObjectReference contains enough information to let you identify the referred resource. */
 export type IoK8sApiAutoscalingV2CrossVersionObjectReference =
   IoK8sApiAutoscalingV1CrossVersionObjectReference;
@@ -417,11 +293,6 @@ export interface IoK8sApiAutoscalingV2ObjectMetricSource {
   /** target specifies the target value for the given metric */
   target: IoK8sApiAutoscalingV2MetricTarget;
 }
-const IoK8sApiAutoscalingV2ObjectMetricSource = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<IoK8sApiAutoscalingV2ObjectMetricSource>;
-
 /** PodsMetricSource indicates how to scale on a metric describing each pod in the current scale target (for example, transactions-processed-per-second). The values will be averaged together before being compared to the target value. */
 export type IoK8sApiAutoscalingV2PodsMetricSource = IoK8sApiAutoscalingV2ExternalMetricSource;
 /** ResourceMetricSource indicates how to scale on a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory). The values will be averaged together before being compared to the target. Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source. Only one "target" type should be set. */
@@ -431,11 +302,6 @@ export interface IoK8sApiAutoscalingV2ResourceMetricSource {
   /** target specifies the target value for the given metric */
   target: IoK8sApiAutoscalingV2MetricTarget;
 }
-const IoK8sApiAutoscalingV2ResourceMetricSource = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<IoK8sApiAutoscalingV2ResourceMetricSource>;
-
 /** MetricSpec specifies how to scale based on a single metric (only `type` and one other matching field should be set at once). */
 export interface IoK8sApiAutoscalingV2MetricSpec {
   /** containerResource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod of the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source. */
@@ -451,19 +317,9 @@ export interface IoK8sApiAutoscalingV2MetricSpec {
   /** type is the type of metric source. It should be one of "ContainerResource", "External", "Object", "Pods" or "Resource", each mapping to a matching field in the object. */
   type: string;
 }
-const IoK8sApiAutoscalingV2MetricSpec = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<IoK8sApiAutoscalingV2MetricSpec>;
-
 /** metrics contains the specifications for which to use to calculate the desired replica count (the maximum replica count across all metrics will be used). The desired replica count is calculated multiplying the ratio between the target value and the current value by the current number of pods. Ergo, metrics used must decrease as the pod count is increased, and vice-versa. See the individual metric source types for more information about how each type of metric must respond. If not set, the default metric will be set to 80% average CPU utilization. */
 export type IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpecMetricsList =
   Array<IoK8sApiAutoscalingV2MetricSpec>;
-const IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpecMetricsList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpecMetricsList>;
-
 /** HorizontalPodAutoscalerSpec describes the desired functionality of the HorizontalPodAutoscaler. */
 export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec {
   /** behavior configures the scaling behavior of the target in both Up and Down directions (scaleUp and scaleDown fields respectively). If not set, the default HPAScalingRules for scale up and scale down are used. */
@@ -477,11 +333,6 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec {
   /** scaleTargetRef points to the target resource to scale, and is used to the pods for which metrics should be collected, as well as to actually change the replica count. */
   scaleTargetRef: IoK8sApiAutoscalingV1CrossVersionObjectReference;
 }
-const IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec>;
-
 /** HorizontalPodAutoscalerCondition describes the state of a HorizontalPodAutoscaler at a certain point. */
 export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition {
   /** lastTransitionTime is the last time the condition transitioned from one status to another */
@@ -497,19 +348,9 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition {
   /** type describes the current condition */
   type: string;
 }
-const IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition>;
-
 /** conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met. */
 export type IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusConditionsList =
   Array<IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition>;
-const IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusConditionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusConditionsList>;
-
 /** MetricValueStatus holds the current value for a metric */
 export interface IoK8sApiAutoscalingV2MetricValueStatus {
   /** averageUtilization is the current value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods. */
@@ -519,11 +360,6 @@ export interface IoK8sApiAutoscalingV2MetricValueStatus {
   /** value is the current value of the metric (as a quantity). */
   value?: string;
 }
-const IoK8sApiAutoscalingV2MetricValueStatus = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<IoK8sApiAutoscalingV2MetricValueStatus>;
-
 /** ContainerResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as specified in requests and limits, describing a single container in each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source. */
 export interface IoK8sApiAutoscalingV2ContainerResourceMetricStatus {
   /** container is the name of the container in the pods of the scaling target */
@@ -533,11 +369,6 @@ export interface IoK8sApiAutoscalingV2ContainerResourceMetricStatus {
   /** name is the name of the resource in question. */
   name: string;
 }
-const IoK8sApiAutoscalingV2ContainerResourceMetricStatus = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<IoK8sApiAutoscalingV2ContainerResourceMetricStatus>;
-
 /** ExternalMetricStatus indicates the current value of a global metric not associated with any Kubernetes object. */
 export interface IoK8sApiAutoscalingV2ExternalMetricStatus {
   /** current contains the current value for the given metric */
@@ -545,11 +376,6 @@ export interface IoK8sApiAutoscalingV2ExternalMetricStatus {
   /** metric identifies the target metric by name and selector */
   metric: IoK8sApiAutoscalingV2MetricIdentifier;
 }
-const IoK8sApiAutoscalingV2ExternalMetricStatus = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<IoK8sApiAutoscalingV2ExternalMetricStatus>;
-
 /** ObjectMetricStatus indicates the current value of a metric describing a kubernetes object (for example, hits-per-second on an Ingress object). */
 export interface IoK8sApiAutoscalingV2ObjectMetricStatus {
   /** current contains the current value for the given metric */
@@ -559,11 +385,6 @@ export interface IoK8sApiAutoscalingV2ObjectMetricStatus {
   /** metric identifies the target metric by name and selector */
   metric: IoK8sApiAutoscalingV2MetricIdentifier;
 }
-const IoK8sApiAutoscalingV2ObjectMetricStatus = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<IoK8sApiAutoscalingV2ObjectMetricStatus>;
-
 /** PodsMetricStatus indicates the current value of a metric describing each pod in the current scale target (for example, transactions-processed-per-second). */
 export type IoK8sApiAutoscalingV2PodsMetricStatus = IoK8sApiAutoscalingV2ExternalMetricStatus;
 /** ResourceMetricStatus indicates the current value of a resource metric known to Kubernetes, as specified in requests and limits, describing each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source. */
@@ -573,11 +394,6 @@ export interface IoK8sApiAutoscalingV2ResourceMetricStatus {
   /** name is the name of the resource in question. */
   name: string;
 }
-const IoK8sApiAutoscalingV2ResourceMetricStatus = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<IoK8sApiAutoscalingV2ResourceMetricStatus>;
-
 /** MetricStatus describes the last-read state of a single metric. */
 export interface IoK8sApiAutoscalingV2MetricStatus {
   /** containerResource refers to a resource metric (such as those specified in requests and limits) known to Kubernetes describing a single container in each pod in the current scale target (e.g. CPU or memory). Such metrics are built in to Kubernetes, and have special scaling options on top of those available to normal per-pod metrics using the "pods" source. */
@@ -593,19 +409,9 @@ export interface IoK8sApiAutoscalingV2MetricStatus {
   /** type is the type of metric source. It will be one of "ContainerResource", "External", "Object", "Pods" or "Resource", each corresponds to a matching field in the object. */
   type: string;
 }
-const IoK8sApiAutoscalingV2MetricStatus = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<IoK8sApiAutoscalingV2MetricStatus>;
-
 /** currentMetrics is the last read state of the metrics used by this autoscaler. */
 export type IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusCurrentMetricsList =
   Array<IoK8sApiAutoscalingV2MetricStatus>;
-const IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusCurrentMetricsList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusCurrentMetricsList>;
-
 /** HorizontalPodAutoscalerStatus describes the current status of a horizontal pod autoscaler. */
 export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus {
   /** conditions is the set of conditions required for this autoscaler to scale its target, and indicates whether or not those conditions are met. */
@@ -621,11 +427,6 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus {
   /** observedGeneration is the most recent generation observed by this autoscaler. */
   observedGeneration?: number;
 }
-const IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus>;
-
 export interface CreateAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -648,11 +449,6 @@ export interface CreateAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** status is the current information about the autoscaler. */
   status?: IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus;
 }
-const CreateAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>;
-
 /** HorizontalPodAutoscaler is the configuration for a horizontal pod autoscaler, which automatically manages the replica count of any resource implementing the scale subresource based on the metrics specified. */
 export interface IoK8sApiAutoscalingV2HorizontalPodAutoscaler {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -666,11 +462,6 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscaler {
   /** status is the current information about the autoscaler. */
   status?: IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus;
 }
-const IoK8sApiAutoscalingV2HorizontalPodAutoscaler = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>;
-
 /** Preconditions must be fulfilled before an operation (update, delete, etc.) is carried out. */
 export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target ResourceVersion */
@@ -678,11 +469,6 @@ export interface IoK8sApimachineryPkgApisMetaV1Preconditions {
   /** Specifies the target UID. */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1Preconditions = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Preconditions>;
-
 export interface DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -723,11 +509,6 @@ export interface DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerR
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerRequest>;
-
 /** StatusCause provides more information about an api.Status failure, including cases when multiple errors are encountered. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** The field of the resource that has caused this error, as named by its JSON serialization. May include dot and postfix notation for nested attributes. Arrays are zero-indexed. Fields may appear more than once in an array of causes due to fields having multiple errors. Optional. Examples: "name" - the field "name" on the current resource "items[0].name" - the field "name" on the first array entry in "items" */
@@ -737,19 +518,9 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusCause {
   /** A machine-readable description of the cause of the error. If this value is empty there is no information available. */
   reason?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1StatusCause = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-
 /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
 export type IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList =
   Array<IoK8sApimachineryPkgApisMetaV1StatusCause>;
-const IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList>;
-
 /** StatusDetails is a set of additional properties that MAY be set by the server to provide additional information about a response. The Reason field of a Status object defines what attributes will be set. Clients must ignore fields that do not match the defined type of each attribute, and should assume that any attribute may be empty, invalid, or under defined. */
 export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** The Causes array includes more details associated with the StatusReason failure. Not all StatusReasons may provide detailed causes. */
@@ -765,21 +536,11 @@ export interface IoK8sApimachineryPkgApisMetaV1StatusDetails {
   /** UID of the resource. (when there is a single resource which can be described). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids */
   uid?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1StatusDetails = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1StatusDetails>;
-
 /** ShardInfo describes the shard selector that was applied to produce a list response. Its presence on a list response indicates the list is a filtered subset. */
 export interface IoK8sApimachineryPkgApisMetaV1ShardInfo {
   /** selector is the shard selector string from the request, echoed back so clients can verify which shard they received and merge responses from multiple shards. */
   selector: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ShardInfo = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ShardInfo>;
-
 /** ListMeta describes metadata that synthetic resources must have, including lists and various status objects. A resource may have only one of {ObjectMeta, ListMeta}. */
 export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** continue may be set if the user set a limit on the number of items returned, and indicates that the server has more data available. The value is opaque and may be used to issue another request to the endpoint that served this list to retrieve the next set of available objects. Continuing a consistent list may not be possible if the server configuration has changed or more than a few minutes have passed. The resourceVersion field returned when using this continue value will be identical to the value in the first response, unless you have received this token from an error message. */
@@ -793,11 +554,6 @@ export interface IoK8sApimachineryPkgApisMetaV1ListMeta {
   /** shardInfo is set when the list is a filtered subset of the full collection, as selected by a shard selector on the request. It echoes back the selector so clients can verify which shard they received and merge sharded responses. Clients should not cache sharded list responses as a full representation of the collection. This is an alpha field and requires enabling the ShardedListAndWatch feature gate. */
   shardInfo?: IoK8sApimachineryPkgApisMetaV1ShardInfo;
 }
-const IoK8sApimachineryPkgApisMetaV1ListMeta = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ListMeta>;
-
 /** Status is a return value for calls that don't return other objects. */
 export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -817,11 +573,6 @@ export interface IoK8sApimachineryPkgApisMetaV1Status {
   /** Status of the operation. One of: "Success" or "Failure". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status */
   status?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1Status = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>;
-
 export interface DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -846,11 +597,6 @@ export interface DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>;
-
 export interface DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -891,11 +637,6 @@ export interface DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerR
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerRequest>;
-
 export interface DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -920,17 +661,7 @@ export interface DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned. */
   preconditions?: IoK8sApimachineryPkgApisMetaV1Preconditions;
 }
-const DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>;
-
 export interface GetAutoscalingAPIGroupRequest {}
-const GetAutoscalingAPIGroupRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetAutoscalingAPIGroupRequest>;
-
 /** GroupVersion contains the "group/version" and "version" string of a version. It is made a struct to keep extensibility. */
 export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** groupVersion specifies the API group and version in the form "group/version" */
@@ -938,11 +669,6 @@ export interface IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery {
   /** version specifies the version in the form of "version". This is to save the clients the trouble of splitting the GroupVersion. */
   version: string;
 }
-const IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-
 /** ServerAddressByClientCIDR helps the client to determine the server address that they should use, depending on the clientCIDR that they match. */
 export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** The CIDR with which clients can match their IP to figure out the server address that they should use. */
@@ -950,27 +676,12 @@ export interface IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR {
   /** Address of this server, suitable for a client that matches the above CIDR. This can be a hostname, hostname:port, IP or IP:port. */
   serverAddress: string;
 }
-const IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-
 /** a map of client CIDR to server address that is serving this group. This is to help clients reach servers in the most network-efficient way possible. Clients can use the appropriate server address as per the CIDR that they match. In case of multiple matches, clients should use the longest matching CIDR. The server returns only those CIDRs that it thinks that the client can match. For example: the master will return an internal IP CIDR only, if the client reaches the server using an internal IP. Server looks at X-Forwarded-For header or X-Real-Ip header or request.RemoteAddr (in that order) to get the client IP. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList =
   Array<IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR>;
-const IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList>;
-
 /** versions are the versions supported in this group. */
 export type IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList =
   Array<IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery>;
-const IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList>;
-
 /** APIGroup contains the name, the supported versions, and the preferred version of a group. */
 export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -986,32 +697,13 @@ export interface IoK8sApimachineryPkgApisMetaV1APIGroup {
   /** versions are the versions supported in this group. */
   versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList;
 }
-const IoK8sApimachineryPkgApisMetaV1APIGroup = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>;
-
 export interface GetAutoscalingV1APIResourcesRequest {}
-const GetAutoscalingV1APIResourcesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetAutoscalingV1APIResourcesRequest>;
-
 /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList>;
-
 /** shortNames is a list of suggested short names of the resource. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList>;
-
 /** verbs is a list of supported kube verbs (this includes get, list, watch, create, update, patch, delete, deletecollection, and proxy) */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList = Array<string>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList =
-  IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList>;
-
 /** APIResource specifies the name of a resource and whether it is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** categories is a list of the grouped resources this resource belongs to (e.g. 'all') */
@@ -1035,19 +727,9 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResource {
   /** version is the preferred version of the resource. Empty implies the version of the containing resource list For subresources, this may have a different value, for example: v1 (while inside a v1beta1 version of the core resource's group)". */
   version?: string;
 }
-const IoK8sApimachineryPkgApisMetaV1APIResource = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResource>;
-
 /** resources contains the name of the resources and if they are namespaced. */
 export type IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList =
   Array<IoK8sApimachineryPkgApisMetaV1APIResource>;
-const IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList>;
-
 /** APIResourceList is a list of APIResource, it is used to expose the name of the resources supported in a specific group and version, and if the resource is namespaced. */
 export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1059,17 +741,7 @@ export interface IoK8sApimachineryPkgApisMetaV1APIResourceList {
   /** resources contains the name of the resources and if they are namespaced. */
   resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList;
 }
-const IoK8sApimachineryPkgApisMetaV1APIResourceList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>;
-
 export interface GetAutoscalingV2APIResourcesRequest {}
-const GetAutoscalingV2APIResourcesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GetAutoscalingV2APIResourcesRequest>;
-
 export interface ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -1096,19 +768,9 @@ export interface ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest>;
-
 /** items is the list of horizontal pod autoscaler objects. */
 export type IoK8sApiAutoscalingV1HorizontalPodAutoscalerListItemsList =
   Array<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>;
-const IoK8sApiAutoscalingV1HorizontalPodAutoscalerListItemsList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscalerListItemsList>;
-
 /** list of horizontal pod autoscaler objects. */
 export interface IoK8sApiAutoscalingV1HorizontalPodAutoscalerList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1120,11 +782,6 @@ export interface IoK8sApiAutoscalingV1HorizontalPodAutoscalerList {
   /** Standard list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiAutoscalingV1HorizontalPodAutoscalerList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscalerList>;
-
 export interface ListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1153,11 +810,6 @@ export interface ListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>;
-
 export interface ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -1184,19 +836,9 @@ export interface ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest>;
-
 /** items is the list of horizontal pod autoscaler objects. */
 export type IoK8sApiAutoscalingV2HorizontalPodAutoscalerListItemsList =
   Array<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>;
-const IoK8sApiAutoscalingV2HorizontalPodAutoscalerListItemsList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerListItemsList>;
-
 /** HorizontalPodAutoscalerList is a list of horizontal pod autoscaler objects. */
 export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerList {
   /** APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources */
@@ -1208,11 +850,6 @@ export interface IoK8sApiAutoscalingV2HorizontalPodAutoscalerList {
   /** metadata is the standard list metadata. */
   metadata?: IoK8sApimachineryPkgApisMetaV1ListMeta;
 }
-const IoK8sApiAutoscalingV2HorizontalPodAutoscalerList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerList>;
-
 export interface ListAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1241,11 +878,6 @@ export interface ListAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const ListAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>;
-
 export interface PatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1262,11 +894,6 @@ export interface PatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<PatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>;
-
 export interface PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1283,11 +910,6 @@ export interface PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusReques
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest>;
-
 export interface PatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1304,11 +926,6 @@ export interface PatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<PatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>;
-
 export interface PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1325,11 +942,6 @@ export interface PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusReques
   /** Force is going to "force" Apply requests. It means user will re-acquire conflicting fields owned by other people. Force flag must be unset for non-apply patch requests. */
   force?: boolean;
 }
-const PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest>;
-
 export interface ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1338,11 +950,6 @@ export interface ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>;
-
 export interface ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1351,11 +958,6 @@ export interface ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest>;
-
 export interface ReadAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1364,11 +966,6 @@ export interface ReadAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ReadAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>;
-
 export interface ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1377,11 +974,6 @@ export interface ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest
   /** If 'true', then the output is pretty printed. Defaults to 'false' unless the user-agent indicates a browser or command-line HTTP tool (curl and wget). */
   pretty?: string;
 }
-const ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest>;
-
 export interface ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1406,11 +998,6 @@ export interface ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** status is the current information about the autoscaler. */
   status?: IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus;
 }
-const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>;
-
 export interface ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1435,11 +1022,6 @@ export interface ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequ
   /** status is the current information about the autoscaler. */
   status?: IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus;
 }
-const ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest>;
-
 export interface ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1464,11 +1046,6 @@ export interface ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** status is the current information about the autoscaler. */
   status?: IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus;
 }
-const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>;
-
 export interface ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1493,11 +1070,6 @@ export interface ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequ
   /** status is the current information about the autoscaler. */
   status?: IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus;
 }
-const ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest>;
-
 export interface WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -1524,22 +1096,12 @@ export interface WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRe
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest>;
-
 /** Event represents a single event to a watched resource. */
 export interface IoK8sApimachineryPkgApisMetaV1WatchEvent {
   /** Object is: * If Type is Added or Modified: the new state of the object. * If Type is Deleted: the state of the object immediately before deletion. * If Type is Error: *Status is recommended; other types may make sense depending on context. */
   object: unknown;
   type: string;
 }
-const IoK8sApimachineryPkgApisMetaV1WatchEvent = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>;
-
 export interface WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1570,11 +1132,6 @@ export interface WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>;
-
 export interface WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1603,11 +1160,6 @@ export interface WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest 
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest>;
-
 export interface WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesRequest {
   /** allowWatchBookmarks requests watch events with type "BOOKMARK". Servers that do not implement bookmarks may ignore this flag and bookmarks are sent at the server's discretion. Clients should not assume bookmarks are returned at any specific interval, nor may they assume the server will send any BOOKMARK event during a session. If this is not a watch, this field is ignored. */
   allowWatchBookmarks?: boolean;
@@ -1634,11 +1186,6 @@ export interface WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesRe
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesRequest>;
-
 export interface WatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1669,11 +1216,6 @@ export interface WatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest {
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<WatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>;
-
 export interface WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListRequest {
   /** object name and auth scope, such as for teams and projects */
   namespace: string;
@@ -1702,11 +1244,6 @@ export interface WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListRequest 
   /** Watch for changes to the described resources and return them as a stream of add, update, and remove notifications. Specify resourceVersion. */
   watch?: boolean;
 }
-const WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListRequest>;
-
 export type CreateAutoscalingV1NamespacedHorizontalPodAutoscalerError =
   | Conflict
   | UnprocessableEntity
@@ -1718,8 +1255,8 @@ export const createAutoscalingV1NamespacedHorizontalPodAutoscaler: API.Operation
   CreateAutoscalingV1NamespacedHorizontalPodAutoscalerError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAutoscalingV1NamespacedHorizontalPodAutoscalerRequest,
-  output: IoK8sApiAutoscalingV1HorizontalPodAutoscaler,
+  input: __S(10) as any as S.Schema<CreateAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>,
+  output: __S(11) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1736,8 +1273,8 @@ export const createAutoscalingV2NamespacedHorizontalPodAutoscaler: API.Operation
   CreateAutoscalingV2NamespacedHorizontalPodAutoscalerError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAutoscalingV2NamespacedHorizontalPodAutoscalerRequest,
-  output: IoK8sApiAutoscalingV2HorizontalPodAutoscaler,
+  input: __S(39) as any as S.Schema<CreateAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>,
+  output: __S(40) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
   errors: [Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1751,8 +1288,10 @@ export const deleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscaler: API
   DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(
+    42,
+  ) as any as S.Schema<DeleteAutoscalingV1CollectionNamespacedHorizontalPodAutoscalerRequest>,
+  output: __S(48) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1769,8 +1308,8 @@ export const deleteAutoscalingV1NamespacedHorizontalPodAutoscaler: API.Operation
   DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(49) as any as S.Schema<DeleteAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>,
+  output: __S(48) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1784,8 +1323,10 @@ export const deleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscaler: API
   DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(
+    50,
+  ) as any as S.Schema<DeleteAutoscalingV2CollectionNamespacedHorizontalPodAutoscalerRequest>,
+  output: __S(48) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1802,8 +1343,8 @@ export const deleteAutoscalingV2NamespacedHorizontalPodAutoscaler: API.Operation
   DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerRequest,
-  output: IoK8sApimachineryPkgApisMetaV1Status,
+  input: __S(51) as any as S.Schema<DeleteAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>,
+  output: __S(48) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1Status>,
   errors: [NotFound, Conflict, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1817,8 +1358,8 @@ export const getAutoscalingAPIGroup: API.OperationMethod<
   GetAutoscalingAPIGroupError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutoscalingAPIGroupRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIGroup,
+  input: __S(52) as any as S.Schema<GetAutoscalingAPIGroupRequest>,
+  output: __S(57) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIGroup>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1832,8 +1373,8 @@ export const getAutoscalingV1APIResources: API.OperationMethod<
   GetAutoscalingV1APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutoscalingV1APIResourcesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIResourceList,
+  input: __S(58) as any as S.Schema<GetAutoscalingV1APIResourcesRequest>,
+  output: __S(61) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1847,8 +1388,8 @@ export const getAutoscalingV2APIResources: API.OperationMethod<
   GetAutoscalingV2APIResourcesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutoscalingV2APIResourcesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1APIResourceList,
+  input: __S(62) as any as S.Schema<GetAutoscalingV2APIResourcesRequest>,
+  output: __S(61) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1APIResourceList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1862,8 +1403,10 @@ export const listAutoscalingV1HorizontalPodAutoscalerForAllNamespaces: API.Opera
   ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest,
-  output: IoK8sApiAutoscalingV1HorizontalPodAutoscalerList,
+  input: __S(
+    63,
+  ) as any as S.Schema<ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesRequest>,
+  output: __S(65) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscalerList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1877,8 +1420,8 @@ export const listAutoscalingV1NamespacedHorizontalPodAutoscaler: API.OperationMe
   ListAutoscalingV1NamespacedHorizontalPodAutoscalerError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest,
-  output: IoK8sApiAutoscalingV1HorizontalPodAutoscalerList,
+  input: __S(66) as any as S.Schema<ListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>,
+  output: __S(65) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscalerList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1892,8 +1435,10 @@ export const listAutoscalingV2HorizontalPodAutoscalerForAllNamespaces: API.Opera
   ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest,
-  output: IoK8sApiAutoscalingV2HorizontalPodAutoscalerList,
+  input: __S(
+    67,
+  ) as any as S.Schema<ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest>,
+  output: __S(69) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1907,8 +1452,8 @@ export const listAutoscalingV2NamespacedHorizontalPodAutoscaler: API.OperationMe
   ListAutoscalingV2NamespacedHorizontalPodAutoscalerError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAutoscalingV2NamespacedHorizontalPodAutoscalerRequest,
-  output: IoK8sApiAutoscalingV2HorizontalPodAutoscalerList,
+  input: __S(70) as any as S.Schema<ListAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>,
+  output: __S(69) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscalerList>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1926,8 +1471,8 @@ export const patchAutoscalingV1NamespacedHorizontalPodAutoscaler: API.OperationM
   PatchAutoscalingV1NamespacedHorizontalPodAutoscalerError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest,
-  output: IoK8sApiAutoscalingV1HorizontalPodAutoscaler,
+  input: __S(71) as any as S.Schema<PatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>,
+  output: __S(11) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1945,8 +1490,10 @@ export const patchAutoscalingV1NamespacedHorizontalPodAutoscalerStatus: API.Oper
   PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest,
-  output: IoK8sApiAutoscalingV1HorizontalPodAutoscaler,
+  input: __S(
+    72,
+  ) as any as S.Schema<PatchAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest>,
+  output: __S(11) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1964,8 +1511,8 @@ export const patchAutoscalingV2NamespacedHorizontalPodAutoscaler: API.OperationM
   PatchAutoscalingV2NamespacedHorizontalPodAutoscalerError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest,
-  output: IoK8sApiAutoscalingV2HorizontalPodAutoscaler,
+  input: __S(73) as any as S.Schema<PatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>,
+  output: __S(40) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1983,8 +1530,10 @@ export const patchAutoscalingV2NamespacedHorizontalPodAutoscalerStatus: API.Oper
   PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest,
-  output: IoK8sApiAutoscalingV2HorizontalPodAutoscaler,
+  input: __S(
+    74,
+  ) as any as S.Schema<PatchAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest>,
+  output: __S(40) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -1998,8 +1547,8 @@ export const readAutoscalingV1NamespacedHorizontalPodAutoscaler: API.OperationMe
   ReadAutoscalingV1NamespacedHorizontalPodAutoscalerError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest,
-  output: IoK8sApiAutoscalingV1HorizontalPodAutoscaler,
+  input: __S(75) as any as S.Schema<ReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>,
+  output: __S(11) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2015,8 +1564,10 @@ export const readAutoscalingV1NamespacedHorizontalPodAutoscalerStatus: API.Opera
   ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest,
-  output: IoK8sApiAutoscalingV1HorizontalPodAutoscaler,
+  input: __S(
+    76,
+  ) as any as S.Schema<ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest>,
+  output: __S(11) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2030,8 +1581,8 @@ export const readAutoscalingV2NamespacedHorizontalPodAutoscaler: API.OperationMe
   ReadAutoscalingV2NamespacedHorizontalPodAutoscalerError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadAutoscalingV2NamespacedHorizontalPodAutoscalerRequest,
-  output: IoK8sApiAutoscalingV2HorizontalPodAutoscaler,
+  input: __S(77) as any as S.Schema<ReadAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>,
+  output: __S(40) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2047,8 +1598,10 @@ export const readAutoscalingV2NamespacedHorizontalPodAutoscalerStatus: API.Opera
   ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest,
-  output: IoK8sApiAutoscalingV2HorizontalPodAutoscaler,
+  input: __S(
+    78,
+  ) as any as S.Schema<ReadAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest>,
+  output: __S(40) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
   errors: [NotFound, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2066,8 +1619,8 @@ export const replaceAutoscalingV1NamespacedHorizontalPodAutoscaler: API.Operatio
   ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerRequest,
-  output: IoK8sApiAutoscalingV1HorizontalPodAutoscaler,
+  input: __S(79) as any as S.Schema<ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>,
+  output: __S(11) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2085,8 +1638,10 @@ export const replaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatus: API.Op
   ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest,
-  output: IoK8sApiAutoscalingV1HorizontalPodAutoscaler,
+  input: __S(
+    80,
+  ) as any as S.Schema<ReplaceAutoscalingV1NamespacedHorizontalPodAutoscalerStatusRequest>,
+  output: __S(11) as any as S.Schema<IoK8sApiAutoscalingV1HorizontalPodAutoscaler>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2104,8 +1659,8 @@ export const replaceAutoscalingV2NamespacedHorizontalPodAutoscaler: API.Operatio
   ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerRequest,
-  output: IoK8sApiAutoscalingV2HorizontalPodAutoscaler,
+  input: __S(81) as any as S.Schema<ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>,
+  output: __S(40) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2123,8 +1678,10 @@ export const replaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatus: API.Op
   ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest,
-  output: IoK8sApiAutoscalingV2HorizontalPodAutoscaler,
+  input: __S(
+    82,
+  ) as any as S.Schema<ReplaceAutoscalingV2NamespacedHorizontalPodAutoscalerStatusRequest>,
+  output: __S(40) as any as S.Schema<IoK8sApiAutoscalingV2HorizontalPodAutoscaler>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2138,8 +1695,10 @@ export const watchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces: API.
   WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(
+    83,
+  ) as any as S.Schema<WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesRequest>,
+  output: __S(84) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2153,8 +1712,8 @@ export const watchAutoscalingV1NamespacedHorizontalPodAutoscaler: API.OperationM
   WatchAutoscalingV1NamespacedHorizontalPodAutoscalerError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(85) as any as S.Schema<WatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest>,
+  output: __S(84) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2168,8 +1727,8 @@ export const watchAutoscalingV1NamespacedHorizontalPodAutoscalerList: API.Operat
   WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(86) as any as S.Schema<WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRequest>,
+  output: __S(84) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2183,8 +1742,10 @@ export const watchAutoscalingV2HorizontalPodAutoscalerListForAllNamespaces: API.
   WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(
+    87,
+  ) as any as S.Schema<WatchAutoscalingV2HorizontalPodAutoscalerListForAllNamespacesRequest>,
+  output: __S(84) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2198,8 +1759,8 @@ export const watchAutoscalingV2NamespacedHorizontalPodAutoscaler: API.OperationM
   WatchAutoscalingV2NamespacedHorizontalPodAutoscalerError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(88) as any as S.Schema<WatchAutoscalingV2NamespacedHorizontalPodAutoscalerRequest>,
+  output: __S(84) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2213,8 +1774,8 @@ export const watchAutoscalingV2NamespacedHorizontalPodAutoscalerList: API.Operat
   WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListError,
   KubernetesOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListRequest,
-  output: IoK8sApimachineryPkgApisMetaV1WatchEvent,
+  input: __S(89) as any as S.Schema<WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListRequest>,
+  output: __S(84) as any as S.Schema<IoK8sApimachineryPkgApisMetaV1WatchEvent>,
   errors: [UnknownKubernetesError],
   protocol: KubernetesProtocol,
   retry: Retry.Retry,
@@ -2242,7 +1803,7 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry",
       });
     case 3:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2257,22 +1818,22 @@ function __c0(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1OwnerReference",
       });
     case 5:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1OwnerReference);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaAnnotationsMap),
+          annotations: S.optional(__S(0)),
           creationTimestamp: S.optional(S.String),
           deletionGracePeriodSeconds: S.optional(S.Number),
           deletionTimestamp: S.optional(S.String),
-          finalizers: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaFinalizersList),
+          finalizers: S.optional(__S(1)),
           generateName: S.optional(S.String),
           generation: S.optional(S.Number),
-          labels: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaLabelsMap),
-          managedFields: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaManagedFieldsList),
+          labels: S.optional(__S(0)),
+          managedFields: S.optional(__S(3)),
           name: S.optional(S.String),
           namespace: S.optional(S.String),
-          ownerReferences: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMetaOwnerReferencesList),
+          ownerReferences: S.optional(__S(5)),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
           uid: S.optional(S.String),
@@ -2299,7 +1860,7 @@ function __c1(j: number): any {
         S.Struct({
           maxReplicas: S.Number,
           minReplicas: S.optional(S.Number),
-          scaleTargetRef: IoK8sApiAutoscalingV1CrossVersionObjectReference,
+          scaleTargetRef: __S(7),
           targetCPUUtilizationPercentage: S.optional(S.Number),
         }),
       ).annotate({
@@ -2327,9 +1888,9 @@ function __c1(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec,
-          status: S.optional(IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(8),
+          status: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2345,9 +1906,9 @@ function __c1(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec,
-          status: S.optional(IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(8),
+          status: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV1HorizontalPodAutoscaler",
@@ -2363,11 +1924,11 @@ function __c1(j: number): any {
         identifier: "IoK8sApiAutoscalingV2HPAScalingPolicy",
       });
     case 5:
-      return S.Array(IoK8sApiAutoscalingV2HPAScalingPolicy);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          policies: S.optional(IoK8sApiAutoscalingV2HPAScalingRulesPoliciesList),
+          policies: S.optional(__S(13)),
           selectPolicy: S.optional(S.String),
           stabilizationWindowSeconds: S.optional(S.Number),
           tolerance: S.optional(S.String),
@@ -2378,8 +1939,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          scaleDown: S.optional(IoK8sApiAutoscalingV2HPAScalingRules),
-          scaleUp: S.optional(IoK8sApiAutoscalingV2HPAScalingRules),
+          scaleDown: S.optional(__S(14)),
+          scaleUp: S.optional(__S(14)),
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV2HorizontalPodAutoscalerBehavior",
@@ -2404,7 +1965,7 @@ function __c2(j: number): any {
         S.Struct({
           container: S.String,
           name: S.String,
-          target: IoK8sApiAutoscalingV2MetricTarget,
+          target: __S(16),
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV2ContainerResourceMetricSource",
@@ -2416,20 +1977,18 @@ function __c2(j: number): any {
         S.Struct({
           key: S.String,
           operator: S.String,
-          values: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirementValuesList),
+          values: S.optional(__S(18)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement",
       });
     case 4:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1LabelSelectorRequirement);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          matchExpressions: S.optional(
-            IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchExpressionsList,
-          ),
-          matchLabels: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelectorMatchLabelsMap),
+          matchExpressions: S.optional(__S(20)),
+          matchLabels: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1LabelSelector",
@@ -2438,7 +1997,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          selector: S.optional(IoK8sApimachineryPkgApisMetaV1LabelSelector),
+          selector: S.optional(__S(21)),
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV2MetricIdentifier",
@@ -2446,8 +2005,8 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metric: IoK8sApiAutoscalingV2MetricIdentifier,
-          target: IoK8sApiAutoscalingV2MetricTarget,
+          metric: __S(22),
+          target: __S(16),
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV2ExternalMetricSource",
@@ -2459,9 +2018,9 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          describedObject: IoK8sApiAutoscalingV1CrossVersionObjectReference,
-          metric: IoK8sApiAutoscalingV2MetricIdentifier,
-          target: IoK8sApiAutoscalingV2MetricTarget,
+          describedObject: __S(7),
+          metric: __S(22),
+          target: __S(16),
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV2ObjectMetricSource",
@@ -2470,7 +2029,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          target: IoK8sApiAutoscalingV2MetricTarget,
+          target: __S(16),
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV2ResourceMetricSource",
@@ -2478,26 +2037,26 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          containerResource: S.optional(IoK8sApiAutoscalingV2ContainerResourceMetricSource),
-          external: S.optional(IoK8sApiAutoscalingV2ExternalMetricSource),
-          object: S.optional(IoK8sApiAutoscalingV2ObjectMetricSource),
-          pods: S.optional(IoK8sApiAutoscalingV2ExternalMetricSource),
-          resource: S.optional(IoK8sApiAutoscalingV2ResourceMetricSource),
+          containerResource: S.optional(__S(17)),
+          external: S.optional(__S(23)),
+          object: S.optional(__S(24)),
+          pods: S.optional(__S(23)),
+          resource: S.optional(__S(25)),
           type: S.String,
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV2MetricSpec",
       });
     case 3:
-      return S.Array(IoK8sApiAutoscalingV2MetricSpec);
+      return S.Array(__S(26));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          behavior: S.optional(IoK8sApiAutoscalingV2HorizontalPodAutoscalerBehavior),
+          behavior: S.optional(__S(15)),
           maxReplicas: S.Number,
-          metrics: S.optional(IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpecMetricsList),
+          metrics: S.optional(__S(27)),
           minReplicas: S.optional(S.Number),
-          scaleTargetRef: IoK8sApiAutoscalingV1CrossVersionObjectReference,
+          scaleTargetRef: __S(7),
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec",
@@ -2516,7 +2075,7 @@ function __c3(j: number): any {
         identifier: "IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition",
       });
     case 6:
-      return S.Array(IoK8sApiAutoscalingV2HorizontalPodAutoscalerCondition);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2535,7 +2094,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           container: S.String,
-          current: IoK8sApiAutoscalingV2MetricValueStatus,
+          current: __S(31),
           name: S.String,
         }),
       ).annotate({
@@ -2544,8 +2103,8 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          current: IoK8sApiAutoscalingV2MetricValueStatus,
-          metric: IoK8sApiAutoscalingV2MetricIdentifier,
+          current: __S(31),
+          metric: __S(22),
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV2ExternalMetricStatus",
@@ -2553,9 +2112,9 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          current: IoK8sApiAutoscalingV2MetricValueStatus,
-          describedObject: IoK8sApiAutoscalingV1CrossVersionObjectReference,
-          metric: IoK8sApiAutoscalingV2MetricIdentifier,
+          current: __S(31),
+          describedObject: __S(7),
+          metric: __S(22),
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV2ObjectMetricStatus",
@@ -2563,7 +2122,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          current: IoK8sApiAutoscalingV2MetricValueStatus,
+          current: __S(31),
           name: S.String,
         }),
       ).annotate({
@@ -2572,25 +2131,23 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          containerResource: S.optional(IoK8sApiAutoscalingV2ContainerResourceMetricStatus),
-          external: S.optional(IoK8sApiAutoscalingV2ExternalMetricStatus),
-          object: S.optional(IoK8sApiAutoscalingV2ObjectMetricStatus),
-          pods: S.optional(IoK8sApiAutoscalingV2ExternalMetricStatus),
-          resource: S.optional(IoK8sApiAutoscalingV2ResourceMetricStatus),
+          containerResource: S.optional(__S(32)),
+          external: S.optional(__S(33)),
+          object: S.optional(__S(34)),
+          pods: S.optional(__S(33)),
+          resource: S.optional(__S(35)),
           type: S.String,
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV2MetricStatus",
       });
     case 5:
-      return S.Array(IoK8sApiAutoscalingV2MetricStatus);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusConditionsList),
-          currentMetrics: S.optional(
-            IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatusCurrentMetricsList,
-          ),
+          conditions: S.optional(__S(30)),
+          currentMetrics: S.optional(__S(37)),
           currentReplicas: S.optional(S.Number),
           desiredReplicas: S.Number,
           lastScaleTime: S.optional(S.String),
@@ -2609,9 +2166,9 @@ function __c4(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec,
-          status: S.optional(IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(28),
+          status: S.optional(__S(38)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2631,9 +2188,9 @@ function __c5(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec,
-          status: S.optional(IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(28),
+          status: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV2HorizontalPodAutoscaler",
@@ -2668,7 +2225,7 @@ function __c5(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(41)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2690,11 +2247,11 @@ function __c5(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1StatusCause",
       });
     case 4:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1StatusCause);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          causes: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetailsCausesList),
+          causes: S.optional(__S(44)),
           group: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.optional(S.String),
@@ -2719,7 +2276,7 @@ function __c5(j: number): any {
           remainingItemCount: S.optional(S.Number),
           resourceVersion: S.optional(S.String),
           selfLink: S.optional(S.String),
-          shardInfo: S.optional(IoK8sApimachineryPkgApisMetaV1ShardInfo),
+          shardInfo: S.optional(__S(46)),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1ListMeta",
@@ -2733,10 +2290,10 @@ function __c6(j: number): any {
         S.Struct({
           apiVersion: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(IoK8sApimachineryPkgApisMetaV1StatusDetails),
+          details: S.optional(__S(45)),
           kind: S.optional(S.String),
           message: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(47)),
           reason: S.optional(S.String),
           status: S.optional(S.String),
         }),
@@ -2756,7 +2313,7 @@ function __c6(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(41)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2788,7 +2345,7 @@ function __c6(j: number): any {
           timeoutSeconds: S.optional(S.Number.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(41)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2812,7 +2369,7 @@ function __c6(j: number): any {
           propagationPolicy: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          preconditions: S.optional(IoK8sApimachineryPkgApisMetaV1Preconditions),
+          preconditions: S.optional(__S(41)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -2848,24 +2405,22 @@ function __c6(j: number): any {
         identifier: "IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR",
       });
     case 7:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR);
+      return S.Array(__S(54));
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery);
+      return S.Array(__S(53));
     case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
           name: S.String,
-          preferredVersion: S.optional(IoK8sApimachineryPkgApisMetaV1GroupVersionForDiscovery),
-          serverAddressByClientCIDRs: S.optional(
-            IoK8sApimachineryPkgApisMetaV1APIGroupServerAddressByClientCIDRsList,
-          ),
-          versions: IoK8sApimachineryPkgApisMetaV1APIGroupVersionsList,
+          preferredVersion: S.optional(__S(53)),
+          serverAddressByClientCIDRs: S.optional(__S(55)),
+          versions: __S(56),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIGroup",
@@ -2879,29 +2434,29 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceCategoriesList),
+          categories: S.optional(__S(1)),
           group: S.optional(S.String),
           kind: S.String,
           name: S.String,
           namespaced: S.Boolean,
-          shortNames: S.optional(IoK8sApimachineryPkgApisMetaV1APIResourceShortNamesList),
+          shortNames: S.optional(__S(1)),
           singularName: S.String,
           storageVersionHash: S.optional(S.String),
-          verbs: IoK8sApimachineryPkgApisMetaV1APIResourceVerbsList,
+          verbs: __S(1),
           version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResource",
       });
     case 4:
-      return S.Array(IoK8sApimachineryPkgApisMetaV1APIResource);
+      return S.Array(__S(59));
     case 5:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
           groupVersion: S.String,
           kind: S.optional(S.String),
-          resources: IoK8sApimachineryPkgApisMetaV1APIResourceListResourcesList,
+          resources: __S(60),
         }),
       ).annotate({
         identifier: "IoK8sApimachineryPkgApisMetaV1APIResourceList",
@@ -2942,14 +2497,14 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IoK8sApiAutoscalingV1HorizontalPodAutoscaler);
+      return S.Array(__S(11));
     case 1:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiAutoscalingV1HorizontalPodAutoscalerListItemsList,
+          items: __S(64),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(47)),
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV1HorizontalPodAutoscalerList",
@@ -3006,14 +2561,14 @@ function __c8(j: number): any {
         identifier: "ListAutoscalingV2HorizontalPodAutoscalerForAllNamespacesRequest",
       });
     case 4:
-      return S.Array(IoK8sApiAutoscalingV2HorizontalPodAutoscaler);
+      return S.Array(__S(40));
     case 5:
       return S.suspend(() =>
         S.Struct({
           apiVersion: S.optional(S.String),
-          items: IoK8sApiAutoscalingV2HorizontalPodAutoscalerListItemsList,
+          items: __S(68),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ListMeta),
+          metadata: S.optional(__S(47)),
         }),
       ).annotate({
         identifier: "IoK8sApiAutoscalingV2HorizontalPodAutoscalerList",
@@ -3203,9 +2758,9 @@ function __c9(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec,
-          status: S.optional(IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(8),
+          status: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3231,9 +2786,9 @@ function __c10(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiAutoscalingV1HorizontalPodAutoscalerSpec,
-          status: S.optional(IoK8sApiAutoscalingV1HorizontalPodAutoscalerStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(8),
+          status: S.optional(__S(9)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3255,9 +2810,9 @@ function __c10(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec,
-          status: S.optional(IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(28),
+          status: S.optional(__S(38)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3279,9 +2834,9 @@ function __c10(j: number): any {
           fieldValidation: S.optional(S.String.pipe(T.Query())),
           apiVersion: S.optional(S.String),
           kind: S.optional(S.String),
-          metadata: S.optional(IoK8sApimachineryPkgApisMetaV1ObjectMeta),
-          spec: IoK8sApiAutoscalingV2HorizontalPodAutoscalerSpec,
-          status: S.optional(IoK8sApiAutoscalingV2HorizontalPodAutoscalerStatus),
+          metadata: S.optional(__S(6)),
+          spec: __S(28),
+          status: S.optional(__S(38)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3461,5 +3016,38 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "WatchAutoscalingV2NamespacedHorizontalPodAutoscalerListRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
   }
 }

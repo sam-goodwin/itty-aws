@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Textract", serviceShapeName: "Textract" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "textract" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2018-06-27");
@@ -187,17 +189,12 @@ export interface S3Object {
   Name?: string;
   Version?: string;
 }
-const S3Object = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<S3Object>;
 export interface Document {
   Bytes?: Uint8Array;
   S3Object?: S3Object;
 }
-const Document = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Document>;
 export type FeatureType = "TABLES" | "FORMS" | "QUERIES" | "SIGNATURES" | "LAYOUT" | (string & {});
-const FeatureType = S.String;
-
 export type FeatureTypes = FeatureType[];
-const FeatureTypes = /*@__PURE__*/ __L.at(__c0, 2);
 export type HumanLoopName = string;
 export type FlowDefinitionArn = string;
 export type ContentClassifier =
@@ -205,53 +202,39 @@ export type ContentClassifier =
   | "FreeOfAdultContent"
   | (string & {});
 export type ContentClassifiers = ContentClassifier[];
-const ContentClassifiers = FeatureTypes as any as S.Schema<ContentClassifiers>;
 export interface HumanLoopDataAttributes {
   ContentClassifiers?: ContentClassifier[];
 }
-const HumanLoopDataAttributes = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<HumanLoopDataAttributes>;
 export interface HumanLoopConfig {
   HumanLoopName: string;
   FlowDefinitionArn: string;
   DataAttributes?: HumanLoopDataAttributes;
 }
-const HumanLoopConfig = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<HumanLoopConfig>;
 export type QueryInput = string;
 export type QueryPage = string;
 export type QueryPages = string[];
-const QueryPages = /*@__PURE__*/ __L.at(__c0, 5);
 export interface Query {
   Text: string;
   Alias?: string;
   Pages?: string[];
 }
-const Query = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Query>;
 export type Queries = Query[];
-const Queries = /*@__PURE__*/ __L.at(__c0, 7);
 export interface QueriesConfig {
   Queries: Query[];
 }
-const QueriesConfig = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<QueriesConfig>;
 export type AdapterId = string;
 export type AdapterPage = string;
 export type AdapterPages = string[];
-const AdapterPages = QueryPages as any as S.Schema<AdapterPages>;
 export type AdapterVersion = string;
 export interface Adapter {
   AdapterId: string;
   Pages?: string[];
   Version: string;
 }
-const Adapter = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Adapter>;
 export type Adapters = Adapter[];
-const Adapters = /*@__PURE__*/ __L.at(__c1, 2);
 export interface AdaptersConfig {
   Adapters: Adapter[];
 }
-const AdaptersConfig = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<AdaptersConfig>;
 export interface AnalyzeDocumentRequest {
   Document: Document;
   FeatureTypes: FeatureType[];
@@ -259,15 +242,10 @@ export interface AnalyzeDocumentRequest {
   QueriesConfig?: QueriesConfig;
   AdaptersConfig?: AdaptersConfig;
 }
-const AnalyzeDocumentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AnalyzeDocumentRequest>;
 export type UInteger = number;
 export interface DocumentMetadata {
   Pages?: number;
 }
-const DocumentMetadata = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DocumentMetadata>;
 export type BlockType =
   | "KEY_VALUE_SET"
   | "PAGE"
@@ -294,33 +272,25 @@ export type BlockType =
   | "LAYOUT_TABLE"
   | "LAYOUT_KEY_VALUE"
   | (string & {});
-const BlockType = S.String;
-
 export type Percent = number;
 export type TextType = "HANDWRITING" | "PRINTED" | (string & {});
-const TextType = S.String;
-
 export interface BoundingBox {
   Width?: number;
   Height?: number;
   Left?: number;
   Top?: number;
 }
-const BoundingBox = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<BoundingBox>;
 export interface Point {
   X?: number;
   Y?: number;
 }
-const Point = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Point>;
 export type Polygon = Point[];
-const Polygon = /*@__PURE__*/ __L.at(__c2, 0);
 export type Angle = number;
 export interface Geometry {
   BoundingBox?: BoundingBox;
   Polygon?: Point[];
   RotationAngle?: number;
 }
-const Geometry = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Geometry>;
 export type NonEmptyString = string;
 export type RelationshipType =
   | "VALUE"
@@ -333,17 +303,12 @@ export type RelationshipType =
   | "TABLE_TITLE"
   | "TABLE_FOOTER"
   | (string & {});
-const RelationshipType = S.String;
-
 export type IdList = string[];
-const IdList = QueryPages as any as S.Schema<IdList>;
 export interface Relationship {
   Type?: RelationshipType;
   Ids?: string[];
 }
-const Relationship = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Relationship>;
 export type RelationshipList = Relationship[];
-const RelationshipList = /*@__PURE__*/ __L.at(__c2, 3);
 export type EntityType =
   | "KEY"
   | "VALUE"
@@ -356,10 +321,7 @@ export type EntityType =
   | "SEMI_STRUCTURED_TABLE"
   | (string & {});
 export type EntityTypes = EntityType[];
-const EntityTypes = FeatureTypes as any as S.Schema<EntityTypes>;
 export type SelectionStatus = "SELECTED" | "NOT_SELECTED" | (string & {});
-const SelectionStatus = S.String;
-
 export interface Block {
   BlockType?: BlockType;
   Confidence?: number;
@@ -377,65 +339,44 @@ export interface Block {
   Page?: number;
   Query?: Query;
 }
-const Block = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Block>;
 export type BlockList = Block[];
-const BlockList = /*@__PURE__*/ __L.at(__c2, 5);
 export type HumanLoopArn = string;
 export type HumanLoopActivationReason = string;
 export type HumanLoopActivationReasons = string[];
-const HumanLoopActivationReasons = QueryPages as any as S.Schema<HumanLoopActivationReasons>;
 export type SynthesizedJsonHumanLoopActivationConditionsEvaluationResults = string;
 export interface HumanLoopActivationOutput {
   HumanLoopArn?: string;
   HumanLoopActivationReasons?: string[];
   HumanLoopActivationConditionsEvaluationResults?: string;
 }
-const HumanLoopActivationOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<HumanLoopActivationOutput>;
 export interface AnalyzeDocumentResponse {
   DocumentMetadata?: DocumentMetadata;
   Blocks?: Block[];
   HumanLoopActivationOutput?: HumanLoopActivationOutput;
   AnalyzeDocumentModelVersion?: string;
 }
-const AnalyzeDocumentResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<AnalyzeDocumentResponse>;
 export interface AnalyzeExpenseRequest {
   Document: Document;
 }
-const AnalyzeExpenseRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<AnalyzeExpenseRequest>;
 export interface ExpenseType {
   Text?: string;
   Confidence?: number;
 }
-const ExpenseType = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ExpenseType>;
 export interface ExpenseDetection {
   Text?: string;
   Geometry?: Geometry;
   Confidence?: number;
 }
-const ExpenseDetection = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ExpenseDetection>;
 export interface ExpenseCurrency {
   Code?: string;
   Confidence?: number;
 }
-const ExpenseCurrency = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ExpenseCurrency>;
 export type StringList = string[];
-const StringList = QueryPages as any as S.Schema<StringList>;
 export interface ExpenseGroupProperty {
   Types?: string[];
   Id?: string;
 }
-const ExpenseGroupProperty = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ExpenseGroupProperty>;
 export type ExpenseGroupPropertyList = ExpenseGroupProperty[];
-const ExpenseGroupPropertyList = /*@__PURE__*/ __L.at(__c3, 5);
 export interface ExpenseField {
   Type?: ExpenseType;
   LabelDetection?: ExpenseDetection;
@@ -444,93 +385,64 @@ export interface ExpenseField {
   Currency?: ExpenseCurrency;
   GroupProperties?: ExpenseGroupProperty[];
 }
-const ExpenseField = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ExpenseField>;
 export type ExpenseFieldList = ExpenseField[];
-const ExpenseFieldList = /*@__PURE__*/ __L.at(__c3, 7);
 export interface LineItemFields {
   LineItemExpenseFields?: ExpenseField[];
 }
-const LineItemFields = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<LineItemFields>;
 export type LineItemList = LineItemFields[];
-const LineItemList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface LineItemGroup {
   LineItemGroupIndex?: number;
   LineItems?: LineItemFields[];
 }
-const LineItemGroup = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<LineItemGroup>;
 export type LineItemGroupList = LineItemGroup[];
-const LineItemGroupList = /*@__PURE__*/ __L.at(__c4, 3);
 export interface ExpenseDocument {
   ExpenseIndex?: number;
   SummaryFields?: ExpenseField[];
   LineItemGroups?: LineItemGroup[];
   Blocks?: Block[];
 }
-const ExpenseDocument = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ExpenseDocument>;
 export type ExpenseDocumentList = ExpenseDocument[];
-const ExpenseDocumentList = /*@__PURE__*/ __L.at(__c4, 5);
 export interface AnalyzeExpenseResponse {
   DocumentMetadata?: DocumentMetadata;
   ExpenseDocuments?: ExpenseDocument[];
 }
-const AnalyzeExpenseResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<AnalyzeExpenseResponse>;
 export type DocumentPages = Document[];
-const DocumentPages = /*@__PURE__*/ __L.at(__c4, 7);
 export interface AnalyzeIDRequest {
   DocumentPages: Document[];
 }
-const AnalyzeIDRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<AnalyzeIDRequest>;
 export type ValueType = "DATE" | (string & {});
-const ValueType = S.String;
-
 export interface NormalizedValue {
   Value?: string;
   ValueType?: ValueType;
 }
-const NormalizedValue = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<NormalizedValue>;
 export interface AnalyzeIDDetections {
   Text: string;
   NormalizedValue?: NormalizedValue;
   Confidence?: number;
 }
-const AnalyzeIDDetections = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<AnalyzeIDDetections>;
 export interface IdentityDocumentField {
   Type?: AnalyzeIDDetections;
   ValueDetection?: AnalyzeIDDetections;
 }
-const IdentityDocumentField = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<IdentityDocumentField>;
 export type IdentityDocumentFieldList = IdentityDocumentField[];
-const IdentityDocumentFieldList = /*@__PURE__*/ __L.at(__c5, 4);
 export interface IdentityDocument {
   DocumentIndex?: number;
   IdentityDocumentFields?: IdentityDocumentField[];
   Blocks?: Block[];
 }
-const IdentityDocument = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<IdentityDocument>;
 export type IdentityDocumentList = IdentityDocument[];
-const IdentityDocumentList = /*@__PURE__*/ __L.at(__c5, 6);
 export interface AnalyzeIDResponse {
   IdentityDocuments?: IdentityDocument[];
   DocumentMetadata?: DocumentMetadata;
   AnalyzeIDModelVersion?: string;
 }
-const AnalyzeIDResponse = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<AnalyzeIDResponse>;
 export type AdapterName = string;
 export type ClientRequestToken = string;
 export type AdapterDescription = string;
 export type AutoUpdate = "ENABLED" | "DISABLED" | (string & {});
-const AutoUpdate = S.String;
-
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c6, 0);
 export interface CreateAdapterRequest {
   AdapterName: string;
   ClientRequestToken?: string;
@@ -539,27 +451,17 @@ export interface CreateAdapterRequest {
   AutoUpdate?: AutoUpdate;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateAdapterRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<CreateAdapterRequest>;
 export interface CreateAdapterResponse {
   AdapterId?: string;
 }
-const CreateAdapterResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateAdapterResponse>;
 export interface AdapterVersionDatasetConfig {
   ManifestS3Object?: S3Object;
 }
-const AdapterVersionDatasetConfig = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<AdapterVersionDatasetConfig>;
 export type KMSKeyId = string;
 export interface OutputConfig {
   S3Bucket: string;
   S3Prefix?: string;
 }
-const OutputConfig = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<OutputConfig>;
 export interface CreateAdapterVersionRequest {
   AdapterId: string;
   ClientRequestToken?: string;
@@ -568,58 +470,30 @@ export interface CreateAdapterVersionRequest {
   OutputConfig: OutputConfig;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateAdapterVersionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CreateAdapterVersionRequest>;
 export interface CreateAdapterVersionResponse {
   AdapterId?: string;
   AdapterVersion?: string;
 }
-const CreateAdapterVersionResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CreateAdapterVersionResponse>;
 export interface DeleteAdapterRequest {
   AdapterId: string;
 }
-const DeleteAdapterRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<DeleteAdapterRequest>;
 export interface DeleteAdapterResponse {}
-const DeleteAdapterResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<DeleteAdapterResponse>;
 export interface DeleteAdapterVersionRequest {
   AdapterId: string;
   AdapterVersion: string;
 }
-const DeleteAdapterVersionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<DeleteAdapterVersionRequest>;
 export interface DeleteAdapterVersionResponse {}
-const DeleteAdapterVersionResponse =
-  DeleteAdapterResponse as any as S.Schema<DeleteAdapterVersionResponse>;
 export interface DetectDocumentTextRequest {
   Document: Document;
 }
-const DetectDocumentTextRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DetectDocumentTextRequest>;
 export interface DetectDocumentTextResponse {
   DocumentMetadata?: DocumentMetadata;
   Blocks?: Block[];
   DetectDocumentTextModelVersion?: string;
 }
-const DetectDocumentTextResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DetectDocumentTextResponse>;
 export interface GetAdapterRequest {
   AdapterId: string;
 }
-const GetAdapterRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<GetAdapterRequest>;
 export interface GetAdapterResponse {
   AdapterId?: string;
   AdapterName?: string;
@@ -629,15 +503,10 @@ export interface GetAdapterResponse {
   AutoUpdate?: AutoUpdate;
   Tags?: { [key: string]: string | undefined };
 }
-const GetAdapterResponse = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GetAdapterResponse>;
 export interface GetAdapterVersionRequest {
   AdapterId: string;
   AdapterVersion: string;
 }
-const GetAdapterVersionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GetAdapterVersionRequest>;
 export type AdapterVersionStatus =
   | "ACTIVE"
   | "AT_RISK"
@@ -645,26 +514,18 @@ export type AdapterVersionStatus =
   | "CREATION_ERROR"
   | "CREATION_IN_PROGRESS"
   | (string & {});
-const AdapterVersionStatus = S.String;
-
 export type AdapterVersionStatusMessage = string;
 export interface EvaluationMetric {
   F1Score?: number;
   Precision?: number;
   Recall?: number;
 }
-const EvaluationMetric = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<EvaluationMetric>;
 export interface AdapterVersionEvaluationMetric {
   Baseline?: EvaluationMetric;
   AdapterVersion?: EvaluationMetric;
   FeatureType?: FeatureType;
 }
-const AdapterVersionEvaluationMetric = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<AdapterVersionEvaluationMetric>;
 export type AdapterVersionEvaluationMetrics = AdapterVersionEvaluationMetric[];
-const AdapterVersionEvaluationMetrics = /*@__PURE__*/ __L.at(__c8, 1);
 export interface GetAdapterVersionResponse {
   AdapterId?: string;
   AdapterVersion?: string;
@@ -678,10 +539,6 @@ export interface GetAdapterVersionResponse {
   EvaluationMetrics?: AdapterVersionEvaluationMetric[];
   Tags?: { [key: string]: string | undefined };
 }
-const GetAdapterVersionResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<GetAdapterVersionResponse>;
 export type JobId = string;
 export type MaxResults = number;
 export type PaginationToken = string;
@@ -690,23 +547,14 @@ export interface GetDocumentAnalysisRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetDocumentAnalysisRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GetDocumentAnalysisRequest>;
 export type JobStatus = "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | "PARTIAL_SUCCESS" | (string & {});
-const JobStatus = S.String;
-
 export type ErrorCode = string;
 export type Pages = number[];
-const Pages = /*@__PURE__*/ __L.at(__c8, 4);
 export interface Warning {
   ErrorCode?: string;
   Pages?: number[];
 }
-const Warning = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<Warning>;
 export type Warnings = Warning[];
-const Warnings = /*@__PURE__*/ __L.at(__c8, 6);
 export type StatusMessage = string;
 export interface GetDocumentAnalysisResponse {
   DocumentMetadata?: DocumentMetadata;
@@ -717,19 +565,11 @@ export interface GetDocumentAnalysisResponse {
   StatusMessage?: string;
   AnalyzeDocumentModelVersion?: string;
 }
-const GetDocumentAnalysisResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetDocumentAnalysisResponse>;
 export interface GetDocumentTextDetectionRequest {
   JobId: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const GetDocumentTextDetectionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GetDocumentTextDetectionRequest>;
 export interface GetDocumentTextDetectionResponse {
   DocumentMetadata?: DocumentMetadata;
   JobStatus?: JobStatus;
@@ -739,19 +579,11 @@ export interface GetDocumentTextDetectionResponse {
   StatusMessage?: string;
   DetectDocumentTextModelVersion?: string;
 }
-const GetDocumentTextDetectionResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GetDocumentTextDetectionResponse>;
 export interface GetExpenseAnalysisRequest {
   JobId: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const GetExpenseAnalysisRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetExpenseAnalysisRequest>;
 export interface GetExpenseAnalysisResponse {
   DocumentMetadata?: DocumentMetadata;
   JobStatus?: JobStatus;
@@ -761,76 +593,54 @@ export interface GetExpenseAnalysisResponse {
   StatusMessage?: string;
   AnalyzeExpenseModelVersion?: string;
 }
-const GetExpenseAnalysisResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GetExpenseAnalysisResponse>;
 export interface GetLendingAnalysisRequest {
   JobId: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const GetLendingAnalysisRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<GetLendingAnalysisRequest>;
 export interface Prediction {
   Value?: string;
   Confidence?: number;
 }
-const Prediction = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<Prediction>;
 export type PredictionList = Prediction[];
-const PredictionList = /*@__PURE__*/ __L.at(__c9, 6);
 export interface PageClassification {
   PageType: Prediction[];
   PageNumber: Prediction[];
 }
-const PageClassification = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<PageClassification>;
 export interface LendingDetection {
   Text?: string;
   SelectionStatus?: SelectionStatus;
   Geometry?: Geometry;
   Confidence?: number;
 }
-const LendingDetection = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<LendingDetection>;
 export type LendingDetectionList = LendingDetection[];
-const LendingDetectionList = /*@__PURE__*/ __L.at(__c10, 1);
 export interface LendingField {
   Type?: string;
   KeyDetection?: LendingDetection;
   ValueDetections?: LendingDetection[];
 }
-const LendingField = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<LendingField>;
 export type LendingFieldList = LendingField[];
-const LendingFieldList = /*@__PURE__*/ __L.at(__c10, 3);
 export interface SignatureDetection {
   Confidence?: number;
   Geometry?: Geometry;
 }
-const SignatureDetection = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<SignatureDetection>;
 export type SignatureDetectionList = SignatureDetection[];
-const SignatureDetectionList = /*@__PURE__*/ __L.at(__c10, 5);
 export interface LendingDocument {
   LendingFields?: LendingField[];
   SignatureDetections?: SignatureDetection[];
 }
-const LendingDocument = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<LendingDocument>;
 export interface Extraction {
   LendingDocument?: LendingDocument;
   ExpenseDocument?: ExpenseDocument;
   IdentityDocument?: IdentityDocument;
 }
-const Extraction = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<Extraction>;
 export type ExtractionList = Extraction[];
-const ExtractionList = /*@__PURE__*/ __L.at(__c11, 0);
 export interface LendingResult {
   Page?: number;
   PageClassification?: PageClassification;
   Extractions?: Extraction[];
 }
-const LendingResult = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<LendingResult>;
 export type LendingResultList = LendingResult[];
-const LendingResultList = /*@__PURE__*/ __L.at(__c11, 2);
 export interface GetLendingAnalysisResponse {
   DocumentMetadata?: DocumentMetadata;
   JobStatus?: JobStatus;
@@ -840,53 +650,35 @@ export interface GetLendingAnalysisResponse {
   StatusMessage?: string;
   AnalyzeLendingModelVersion?: string;
 }
-const GetLendingAnalysisResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<GetLendingAnalysisResponse>;
 export interface GetLendingAnalysisSummaryRequest {
   JobId: string;
 }
-const GetLendingAnalysisSummaryRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GetLendingAnalysisSummaryRequest>;
 export type PageList = number[];
-const PageList = Pages as any as S.Schema<PageList>;
 export interface SplitDocument {
   Index?: number;
   Pages?: number[];
 }
-const SplitDocument = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<SplitDocument>;
 export type SplitDocumentList = SplitDocument[];
-const SplitDocumentList = /*@__PURE__*/ __L.at(__c11, 6);
 export interface DetectedSignature {
   Page?: number;
 }
-const DetectedSignature = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<DetectedSignature>;
 export type DetectedSignatureList = DetectedSignature[];
-const DetectedSignatureList = /*@__PURE__*/ __L.at(__c12, 0);
 export interface UndetectedSignature {
   Page?: number;
 }
 export type UndetectedSignatureList = UndetectedSignature[];
-const UndetectedSignatureList = DetectedSignatureList as any as S.Schema<UndetectedSignatureList>;
 export interface DocumentGroup {
   Type?: string;
   SplitDocuments?: SplitDocument[];
   DetectedSignatures?: DetectedSignature[];
   UndetectedSignatures?: UndetectedSignature[];
 }
-const DocumentGroup = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<DocumentGroup>;
 export type DocumentGroupList = DocumentGroup[];
-const DocumentGroupList = /*@__PURE__*/ __L.at(__c12, 2);
 export type UndetectedDocumentTypeList = string[];
-const UndetectedDocumentTypeList = QueryPages as any as S.Schema<UndetectedDocumentTypeList>;
 export interface LendingSummary {
   DocumentGroups?: DocumentGroup[];
   UndetectedDocumentTypes?: string[];
 }
-const LendingSummary = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<LendingSummary>;
 export interface GetLendingAnalysisSummaryResponse {
   DocumentMetadata?: DocumentMetadata;
   JobStatus?: JobStatus;
@@ -895,34 +687,23 @@ export interface GetLendingAnalysisSummaryResponse {
   StatusMessage?: string;
   AnalyzeLendingModelVersion?: string;
 }
-const GetLendingAnalysisSummaryResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GetLendingAnalysisSummaryResponse>;
 export interface ListAdaptersRequest {
   AfterCreationTime?: Date;
   BeforeCreationTime?: Date;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListAdaptersRequest = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<ListAdaptersRequest>;
 export interface AdapterOverview {
   AdapterId?: string;
   AdapterName?: string;
   CreationTime?: Date;
   FeatureTypes?: FeatureType[];
 }
-const AdapterOverview = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<AdapterOverview>;
 export type AdapterList = AdapterOverview[];
-const AdapterList = /*@__PURE__*/ __L.at(__c12, 7);
 export interface ListAdaptersResponse {
   Adapters?: AdapterOverview[];
   NextToken?: string;
 }
-const ListAdaptersResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListAdaptersResponse>;
 export interface ListAdapterVersionsRequest {
   AdapterId?: string;
   AfterCreationTime?: Date;
@@ -930,10 +711,6 @@ export interface ListAdapterVersionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListAdapterVersionsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ListAdapterVersionsRequest>;
 export interface AdapterVersionOverview {
   AdapterId?: string;
   AdapterVersion?: string;
@@ -942,39 +719,21 @@ export interface AdapterVersionOverview {
   Status?: AdapterVersionStatus;
   StatusMessage?: string;
 }
-const AdapterVersionOverview = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<AdapterVersionOverview>;
 export type AdapterVersionList = AdapterVersionOverview[];
-const AdapterVersionList = /*@__PURE__*/ __L.at(__c13, 3);
 export interface ListAdapterVersionsResponse {
   AdapterVersions?: AdapterVersionOverview[];
   NextToken?: string;
 }
-const ListAdapterVersionsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ListAdapterVersionsResponse>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface DocumentLocation {
   S3Object?: S3Object;
 }
-const DocumentLocation = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<DocumentLocation>;
 export type JobTag = string;
 export type SNSTopicArn = string;
 export type RoleArn = string;
@@ -982,7 +741,6 @@ export interface NotificationChannel {
   SNSTopicArn: string;
   RoleArn: string;
 }
-const NotificationChannel = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<NotificationChannel>;
 export interface StartDocumentAnalysisRequest {
   DocumentLocation: DocumentLocation;
   FeatureTypes: FeatureType[];
@@ -994,17 +752,9 @@ export interface StartDocumentAnalysisRequest {
   QueriesConfig?: QueriesConfig;
   AdaptersConfig?: AdaptersConfig;
 }
-const StartDocumentAnalysisRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<StartDocumentAnalysisRequest>;
 export interface StartDocumentAnalysisResponse {
   JobId?: string;
 }
-const StartDocumentAnalysisResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<StartDocumentAnalysisResponse>;
 export interface StartDocumentTextDetectionRequest {
   DocumentLocation: DocumentLocation;
   ClientRequestToken?: string;
@@ -1013,15 +763,9 @@ export interface StartDocumentTextDetectionRequest {
   OutputConfig?: OutputConfig;
   KMSKeyId?: string;
 }
-const StartDocumentTextDetectionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<StartDocumentTextDetectionRequest>;
 export interface StartDocumentTextDetectionResponse {
   JobId?: string;
 }
-const StartDocumentTextDetectionResponse =
-  StartDocumentAnalysisResponse as any as S.Schema<StartDocumentTextDetectionResponse>;
 export interface StartExpenseAnalysisRequest {
   DocumentLocation: DocumentLocation;
   ClientRequestToken?: string;
@@ -1030,15 +774,9 @@ export interface StartExpenseAnalysisRequest {
   OutputConfig?: OutputConfig;
   KMSKeyId?: string;
 }
-const StartExpenseAnalysisRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<StartExpenseAnalysisRequest>;
 export interface StartExpenseAnalysisResponse {
   JobId?: string;
 }
-const StartExpenseAnalysisResponse =
-  StartDocumentAnalysisResponse as any as S.Schema<StartExpenseAnalysisResponse>;
 export interface StartLendingAnalysisRequest {
   DocumentLocation: DocumentLocation;
   ClientRequestToken?: string;
@@ -1047,44 +785,26 @@ export interface StartLendingAnalysisRequest {
   OutputConfig?: OutputConfig;
   KMSKeyId?: string;
 }
-const StartLendingAnalysisRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<StartLendingAnalysisRequest>;
 export interface StartLendingAnalysisResponse {
   JobId?: string;
 }
-const StartLendingAnalysisResponse =
-  StartDocumentAnalysisResponse as any as S.Schema<StartLendingAnalysisResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteAdapterResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = QueryPages as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = DeleteAdapterResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateAdapterRequest {
   AdapterId: string;
   Description?: string;
   AdapterName?: string;
   AutoUpdate?: AutoUpdate;
 }
-const UpdateAdapterRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<UpdateAdapterRequest>;
 export interface UpdateAdapterResponse {
   AdapterId?: string;
   AdapterName?: string;
@@ -1093,10 +813,6 @@ export interface UpdateAdapterResponse {
   FeatureTypes?: FeatureType[];
   AutoUpdate?: AutoUpdate;
 }
-const UpdateAdapterResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<UpdateAdapterResponse>;
 export type AnalyzeDocumentError =
   | AccessDeniedException
   | BadDocumentException
@@ -1161,8 +877,8 @@ export const analyzeDocument: API.OperationMethod<
   AnalyzeDocumentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AnalyzeDocumentRequest,
-  output: AnalyzeDocumentResponse,
+  input: __S(12) as any as S.Schema<AnalyzeDocumentRequest>,
+  output: __S(23) as any as S.Schema<AnalyzeDocumentResponse>,
   errors: [
     AccessDeniedException,
     BadDocumentException,
@@ -1211,8 +927,8 @@ export const analyzeExpense: API.OperationMethod<
   AnalyzeExpenseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AnalyzeExpenseRequest,
-  output: AnalyzeExpenseResponse,
+  input: __S(24) as any as S.Schema<AnalyzeExpenseRequest>,
+  output: __S(38) as any as S.Schema<AnalyzeExpenseResponse>,
   errors: [
     AccessDeniedException,
     BadDocumentException,
@@ -1252,8 +968,8 @@ export const analyzeID: API.OperationMethod<
   AnalyzeIDError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AnalyzeIDRequest,
-  output: AnalyzeIDResponse,
+  input: __S(40) as any as S.Schema<AnalyzeIDRequest>,
+  output: __S(47) as any as S.Schema<AnalyzeIDResponse>,
   errors: [
     AccessDeniedException,
     BadDocumentException,
@@ -1295,8 +1011,8 @@ export const createAdapter: API.OperationMethod<
   CreateAdapterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAdapterRequest,
-  output: CreateAdapterResponse,
+  input: __S(49) as any as S.Schema<CreateAdapterRequest>,
+  output: __S(50) as any as S.Schema<CreateAdapterResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1341,8 +1057,8 @@ export const createAdapterVersion: API.OperationMethod<
   CreateAdapterVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAdapterVersionRequest,
-  output: CreateAdapterVersionResponse,
+  input: __S(53) as any as S.Schema<CreateAdapterVersionRequest>,
+  output: __S(54) as any as S.Schema<CreateAdapterVersionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1382,8 +1098,8 @@ export const deleteAdapter: API.OperationMethod<
   DeleteAdapterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAdapterRequest,
-  output: DeleteAdapterResponse,
+  input: __S(55) as any as S.Schema<DeleteAdapterRequest>,
+  output: __S(56) as any as S.Schema<DeleteAdapterResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1419,8 +1135,8 @@ export const deleteAdapterVersion: API.OperationMethod<
   DeleteAdapterVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAdapterVersionRequest,
-  output: DeleteAdapterVersionResponse,
+  input: __S(57) as any as S.Schema<DeleteAdapterVersionRequest>,
+  output: __S(56) as any as S.Schema<DeleteAdapterVersionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1468,8 +1184,8 @@ export const detectDocumentText: API.OperationMethod<
   DetectDocumentTextError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DetectDocumentTextRequest,
-  output: DetectDocumentTextResponse,
+  input: __S(58) as any as S.Schema<DetectDocumentTextRequest>,
+  output: __S(59) as any as S.Schema<DetectDocumentTextResponse>,
   errors: [
     AccessDeniedException,
     BadDocumentException,
@@ -1505,8 +1221,8 @@ export const getAdapter: API.OperationMethod<
   GetAdapterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAdapterRequest,
-  output: GetAdapterResponse,
+  input: __S(60) as any as S.Schema<GetAdapterRequest>,
+  output: __S(61) as any as S.Schema<GetAdapterResponse>,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -1541,8 +1257,8 @@ export const getAdapterVersion: API.OperationMethod<
   GetAdapterVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAdapterVersionRequest,
-  output: GetAdapterVersionResponse,
+  input: __S(62) as any as S.Schema<GetAdapterVersionRequest>,
+  output: __S(66) as any as S.Schema<GetAdapterVersionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -1632,8 +1348,8 @@ export const getDocumentAnalysis: API.OperationMethod<
   GetDocumentAnalysisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDocumentAnalysisRequest,
-  output: GetDocumentAnalysisResponse,
+  input: __S(67) as any as S.Schema<GetDocumentAnalysisRequest>,
+  output: __S(71) as any as S.Schema<GetDocumentAnalysisResponse>,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -1695,8 +1411,8 @@ export const getDocumentTextDetection: API.OperationMethod<
   GetDocumentTextDetectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDocumentTextDetectionRequest,
-  output: GetDocumentTextDetectionResponse,
+  input: __S(72) as any as S.Schema<GetDocumentTextDetectionRequest>,
+  output: __S(73) as any as S.Schema<GetDocumentTextDetectionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -1750,8 +1466,8 @@ export const getExpenseAnalysis: API.OperationMethod<
   GetExpenseAnalysisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExpenseAnalysisRequest,
-  output: GetExpenseAnalysisResponse,
+  input: __S(74) as any as S.Schema<GetExpenseAnalysisRequest>,
+  output: __S(75) as any as S.Schema<GetExpenseAnalysisResponse>,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -1798,8 +1514,8 @@ export const getLendingAnalysis: API.OperationMethod<
   GetLendingAnalysisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLendingAnalysisRequest,
-  output: GetLendingAnalysisResponse,
+  input: __S(76) as any as S.Schema<GetLendingAnalysisRequest>,
+  output: __S(91) as any as S.Schema<GetLendingAnalysisResponse>,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -1847,8 +1563,8 @@ export const getLendingAnalysisSummary: API.OperationMethod<
   GetLendingAnalysisSummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLendingAnalysisSummaryRequest,
-  output: GetLendingAnalysisSummaryResponse,
+  input: __S(92) as any as S.Schema<GetLendingAnalysisSummaryRequest>,
+  output: __S(100) as any as S.Schema<GetLendingAnalysisSummaryResponse>,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -1882,8 +1598,8 @@ export const listAdapters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AdapterOverview
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAdaptersRequest,
-  output: ListAdaptersResponse,
+  input: __S(101) as any as S.Schema<ListAdaptersRequest>,
+  output: __S(104) as any as S.Schema<ListAdaptersResponse>,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -1922,8 +1638,8 @@ export const listAdapterVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AdapterVersionOverview
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAdapterVersionsRequest,
-  output: ListAdapterVersionsResponse,
+  input: __S(105) as any as S.Schema<ListAdapterVersionsRequest>,
+  output: __S(108) as any as S.Schema<ListAdapterVersionsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -1962,8 +1678,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(109) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(110) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -2017,8 +1733,8 @@ export const startDocumentAnalysis: API.OperationMethod<
   StartDocumentAnalysisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartDocumentAnalysisRequest,
-  output: StartDocumentAnalysisResponse,
+  input: __S(113) as any as S.Schema<StartDocumentAnalysisRequest>,
+  output: __S(114) as any as S.Schema<StartDocumentAnalysisResponse>,
   errors: [
     AccessDeniedException,
     BadDocumentException,
@@ -2077,8 +1793,8 @@ export const startDocumentTextDetection: API.OperationMethod<
   StartDocumentTextDetectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartDocumentTextDetectionRequest,
-  output: StartDocumentTextDetectionResponse,
+  input: __S(115) as any as S.Schema<StartDocumentTextDetectionRequest>,
+  output: __S(114) as any as S.Schema<StartDocumentTextDetectionResponse>,
   errors: [
     AccessDeniedException,
     BadDocumentException,
@@ -2136,8 +1852,8 @@ export const startExpenseAnalysis: API.OperationMethod<
   StartExpenseAnalysisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartExpenseAnalysisRequest,
-  output: StartExpenseAnalysisResponse,
+  input: __S(116) as any as S.Schema<StartExpenseAnalysisRequest>,
+  output: __S(114) as any as S.Schema<StartExpenseAnalysisResponse>,
   errors: [
     AccessDeniedException,
     BadDocumentException,
@@ -2206,8 +1922,8 @@ export const startLendingAnalysis: API.OperationMethod<
   StartLendingAnalysisError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartLendingAnalysisRequest,
-  output: StartLendingAnalysisResponse,
+  input: __S(117) as any as S.Schema<StartLendingAnalysisRequest>,
+  output: __S(114) as any as S.Schema<StartLendingAnalysisResponse>,
   errors: [
     AccessDeniedException,
     BadDocumentException,
@@ -2246,8 +1962,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(118) as any as S.Schema<TagResourceRequest>,
+  output: __S(56) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -2281,8 +1997,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(119) as any as S.Schema<UntagResourceRequest>,
+  output: __S(56) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerError,
@@ -2317,8 +2033,8 @@ export const updateAdapter: API.OperationMethod<
   UpdateAdapterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAdapterRequest,
-  output: UpdateAdapterResponse,
+  input: __S(120) as any as S.Schema<UpdateAdapterRequest>,
+  output: __S(121) as any as S.Schema<UpdateAdapterResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2347,56 +2063,56 @@ function __c0(j: number): any {
       ).annotate({ identifier: "S3Object" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Bytes: S.optional(T.Blob), S3Object: S.optional(S3Object) }),
+        S.Struct({ Bytes: S.optional(T.Blob), S3Object: S.optional(__S(0)) }),
       ).annotate({ identifier: "Document" });
     case 2:
-      return S.Array(FeatureType);
+      return S.Array(S.String);
     case 3:
-      return S.suspend(() =>
-        S.Struct({ ContentClassifiers: S.optional(ContentClassifiers) }),
-      ).annotate({ identifier: "HumanLoopDataAttributes" });
+      return S.suspend(() => S.Struct({ ContentClassifiers: S.optional(__S(2)) })).annotate({
+        identifier: "HumanLoopDataAttributes",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
           HumanLoopName: S.String,
           FlowDefinitionArn: S.String,
-          DataAttributes: S.optional(HumanLoopDataAttributes),
+          DataAttributes: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "HumanLoopConfig" });
     case 5:
       return S.Array(S.String);
     case 6:
       return S.suspend(() =>
-        S.Struct({ Text: S.String, Alias: S.optional(S.String), Pages: S.optional(QueryPages) }),
+        S.Struct({ Text: S.String, Alias: S.optional(S.String), Pages: S.optional(__S(5)) }),
       ).annotate({ identifier: "Query" });
     case 7:
-      return S.Array(Query);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Queries: Queries })).annotate({
+      return S.suspend(() => S.Struct({ Queries: __S(7) })).annotate({
         identifier: "QueriesConfig",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ AdapterId: S.String, Pages: S.optional(AdapterPages), Version: S.String }),
+        S.Struct({ AdapterId: S.String, Pages: S.optional(__S(5)), Version: S.String }),
       ).annotate({ identifier: "Adapter" });
     case 2:
-      return S.Array(Adapter);
+      return S.Array(__S(9));
     case 3:
-      return S.suspend(() => S.Struct({ Adapters: Adapters })).annotate({
+      return S.suspend(() => S.Struct({ Adapters: __S(10) })).annotate({
         identifier: "AdaptersConfig",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Document: Document,
-          FeatureTypes: FeatureTypes,
-          HumanLoopConfig: S.optional(HumanLoopConfig),
-          QueriesConfig: S.optional(QueriesConfig),
-          AdaptersConfig: S.optional(AdaptersConfig),
+          Document: __S(1),
+          FeatureTypes: __S(2),
+          HumanLoopConfig: S.optional(__S(4)),
+          QueriesConfig: S.optional(__S(8)),
+          AdaptersConfig: S.optional(__S(11)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "AnalyzeDocumentRequest" });
     case 5:
@@ -2421,48 +2137,48 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Point);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          BoundingBox: S.optional(BoundingBox),
-          Polygon: S.optional(Polygon),
+          BoundingBox: S.optional(__S(14)),
+          Polygon: S.optional(__S(16)),
           RotationAngle: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Geometry" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Type: S.optional(RelationshipType), Ids: S.optional(IdList) }),
+        S.Struct({ Type: S.optional(S.String), Ids: S.optional(__S(5)) }),
       ).annotate({ identifier: "Relationship" });
     case 3:
-      return S.Array(Relationship);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          BlockType: S.optional(BlockType),
+          BlockType: S.optional(S.String),
           Confidence: S.optional(S.Number),
           Text: S.optional(S.String),
-          TextType: S.optional(TextType),
+          TextType: S.optional(S.String),
           RowIndex: S.optional(S.Number),
           ColumnIndex: S.optional(S.Number),
           RowSpan: S.optional(S.Number),
           ColumnSpan: S.optional(S.Number),
-          Geometry: S.optional(Geometry),
+          Geometry: S.optional(__S(17)),
           Id: S.optional(S.String),
-          Relationships: S.optional(RelationshipList),
-          EntityTypes: S.optional(EntityTypes),
-          SelectionStatus: S.optional(SelectionStatus),
+          Relationships: S.optional(__S(19)),
+          EntityTypes: S.optional(__S(2)),
+          SelectionStatus: S.optional(S.String),
           Page: S.optional(S.Number),
-          Query: S.optional(Query),
+          Query: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "Block" });
     case 5:
-      return S.Array(Block);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
           HumanLoopArn: S.optional(S.String),
-          HumanLoopActivationReasons: S.optional(HumanLoopActivationReasons),
+          HumanLoopActivationReasons: S.optional(__S(5)),
           HumanLoopActivationConditionsEvaluationResults: S.optional(S.String),
         }),
       ).annotate({
@@ -2471,9 +2187,9 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          DocumentMetadata: S.optional(DocumentMetadata),
-          Blocks: S.optional(BlockList),
-          HumanLoopActivationOutput: S.optional(HumanLoopActivationOutput),
+          DocumentMetadata: S.optional(__S(13)),
+          Blocks: S.optional(__S(21)),
+          HumanLoopActivationOutput: S.optional(__S(22)),
           AnalyzeDocumentModelVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "AnalyzeDocumentResponse" });
@@ -2483,7 +2199,7 @@ function __c3(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Document: Document }).pipe(
+        S.Struct({ Document: __S(1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "AnalyzeExpenseRequest" });
@@ -2495,7 +2211,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Text: S.optional(S.String),
-          Geometry: S.optional(Geometry),
+          Geometry: S.optional(__S(17)),
           Confidence: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ExpenseDetection" });
@@ -2505,105 +2221,105 @@ function __c3(j: number): any {
       ).annotate({ identifier: "ExpenseCurrency" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Types: S.optional(StringList), Id: S.optional(S.String) }),
+        S.Struct({ Types: S.optional(__S(5)), Id: S.optional(S.String) }),
       ).annotate({ identifier: "ExpenseGroupProperty" });
     case 5:
-      return S.Array(ExpenseGroupProperty);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(ExpenseType),
-          LabelDetection: S.optional(ExpenseDetection),
-          ValueDetection: S.optional(ExpenseDetection),
+          Type: S.optional(__S(25)),
+          LabelDetection: S.optional(__S(26)),
+          ValueDetection: S.optional(__S(26)),
           PageNumber: S.optional(S.Number),
-          Currency: S.optional(ExpenseCurrency),
-          GroupProperties: S.optional(ExpenseGroupPropertyList),
+          Currency: S.optional(__S(27)),
+          GroupProperties: S.optional(__S(29)),
         }),
       ).annotate({ identifier: "ExpenseField" });
     case 7:
-      return S.Array(ExpenseField);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ LineItemExpenseFields: S.optional(ExpenseFieldList) }),
-      ).annotate({ identifier: "LineItemFields" });
+      return S.suspend(() => S.Struct({ LineItemExpenseFields: S.optional(__S(31)) })).annotate({
+        identifier: "LineItemFields",
+      });
     case 1:
-      return S.Array(LineItemFields);
+      return S.Array(__S(32));
     case 2:
       return S.suspend(() =>
-        S.Struct({ LineItemGroupIndex: S.optional(S.Number), LineItems: S.optional(LineItemList) }),
+        S.Struct({ LineItemGroupIndex: S.optional(S.Number), LineItems: S.optional(__S(33)) }),
       ).annotate({ identifier: "LineItemGroup" });
     case 3:
-      return S.Array(LineItemGroup);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
           ExpenseIndex: S.optional(S.Number),
-          SummaryFields: S.optional(ExpenseFieldList),
-          LineItemGroups: S.optional(LineItemGroupList),
-          Blocks: S.optional(BlockList),
+          SummaryFields: S.optional(__S(31)),
+          LineItemGroups: S.optional(__S(35)),
+          Blocks: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "ExpenseDocument" });
     case 5:
-      return S.Array(ExpenseDocument);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          DocumentMetadata: S.optional(DocumentMetadata),
-          ExpenseDocuments: S.optional(ExpenseDocumentList),
+          DocumentMetadata: S.optional(__S(13)),
+          ExpenseDocuments: S.optional(__S(37)),
         }),
       ).annotate({ identifier: "AnalyzeExpenseResponse" });
     case 7:
-      return S.Array(Document);
+      return S.Array(__S(1));
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ DocumentPages: DocumentPages }).pipe(
+        S.Struct({ DocumentPages: __S(39) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "AnalyzeIDRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Value: S.optional(S.String), ValueType: S.optional(ValueType) }),
+        S.Struct({ Value: S.optional(S.String), ValueType: S.optional(S.String) }),
       ).annotate({ identifier: "NormalizedValue" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           Text: S.String,
-          NormalizedValue: S.optional(NormalizedValue),
+          NormalizedValue: S.optional(__S(41)),
           Confidence: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AnalyzeIDDetections" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(AnalyzeIDDetections),
-          ValueDetection: S.optional(AnalyzeIDDetections),
+          Type: S.optional(__S(42)),
+          ValueDetection: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "IdentityDocumentField" });
     case 4:
-      return S.Array(IdentityDocumentField);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
         S.Struct({
           DocumentIndex: S.optional(S.Number),
-          IdentityDocumentFields: S.optional(IdentityDocumentFieldList),
-          Blocks: S.optional(BlockList),
+          IdentityDocumentFields: S.optional(__S(44)),
+          Blocks: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "IdentityDocument" });
     case 6:
-      return S.Array(IdentityDocument);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          IdentityDocuments: S.optional(IdentityDocumentList),
-          DocumentMetadata: S.optional(DocumentMetadata),
+          IdentityDocuments: S.optional(__S(46)),
+          DocumentMetadata: S.optional(__S(13)),
           AnalyzeIDModelVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "AnalyzeIDResponse" });
@@ -2619,9 +2335,9 @@ function __c6(j: number): any {
           AdapterName: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           Description: S.optional(S.String),
-          FeatureTypes: FeatureTypes,
-          AutoUpdate: S.optional(AutoUpdate),
-          Tags: S.optional(TagMap),
+          FeatureTypes: __S(2),
+          AutoUpdate: S.optional(S.String),
+          Tags: S.optional(__S(48)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateAdapterRequest" });
     case 2:
@@ -2629,7 +2345,7 @@ function __c6(j: number): any {
         identifier: "CreateAdapterResponse",
       });
     case 3:
-      return S.suspend(() => S.Struct({ ManifestS3Object: S.optional(S3Object) })).annotate({
+      return S.suspend(() => S.Struct({ ManifestS3Object: S.optional(__S(0)) })).annotate({
         identifier: "AdapterVersionDatasetConfig",
       });
     case 4:
@@ -2641,10 +2357,10 @@ function __c6(j: number): any {
         S.Struct({
           AdapterId: S.String,
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          DatasetConfig: AdapterVersionDatasetConfig,
+          DatasetConfig: __S(51),
           KMSKeyId: S.optional(S.String),
-          OutputConfig: OutputConfig,
-          Tags: S.optional(TagMap),
+          OutputConfig: __S(52),
+          Tags: S.optional(__S(48)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateAdapterVersionRequest",
@@ -2679,7 +2395,7 @@ function __c7(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Document: Document }).pipe(
+        S.Struct({ Document: __S(1) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2688,8 +2404,8 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DocumentMetadata: S.optional(DocumentMetadata),
-          Blocks: S.optional(BlockList),
+          DocumentMetadata: S.optional(__S(13)),
+          Blocks: S.optional(__S(21)),
           DetectDocumentTextModelVersion: S.optional(S.String),
         }),
       ).annotate({
@@ -2708,9 +2424,9 @@ function __c7(j: number): any {
           AdapterName: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Description: S.optional(S.String),
-          FeatureTypes: S.optional(FeatureTypes),
-          AutoUpdate: S.optional(AutoUpdate),
-          Tags: S.optional(TagMap),
+          FeatureTypes: S.optional(__S(2)),
+          AutoUpdate: S.optional(S.String),
+          Tags: S.optional(__S(48)),
         }),
       ).annotate({ identifier: "GetAdapterResponse" });
     case 6:
@@ -2734,29 +2450,29 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Baseline: S.optional(EvaluationMetric),
-          AdapterVersion: S.optional(EvaluationMetric),
-          FeatureType: S.optional(FeatureType),
+          Baseline: S.optional(__S(63)),
+          AdapterVersion: S.optional(__S(63)),
+          FeatureType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AdapterVersionEvaluationMetric",
       });
     case 1:
-      return S.Array(AdapterVersionEvaluationMetric);
+      return S.Array(__S(64));
     case 2:
       return S.suspend(() =>
         S.Struct({
           AdapterId: S.optional(S.String),
           AdapterVersion: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FeatureTypes: S.optional(FeatureTypes),
-          Status: S.optional(AdapterVersionStatus),
+          FeatureTypes: S.optional(__S(2)),
+          Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
-          DatasetConfig: S.optional(AdapterVersionDatasetConfig),
+          DatasetConfig: S.optional(__S(51)),
           KMSKeyId: S.optional(S.String),
-          OutputConfig: S.optional(OutputConfig),
-          EvaluationMetrics: S.optional(AdapterVersionEvaluationMetrics),
-          Tags: S.optional(TagMap),
+          OutputConfig: S.optional(__S(52)),
+          EvaluationMetrics: S.optional(__S(65)),
+          Tags: S.optional(__S(48)),
         }),
       ).annotate({
         identifier: "GetAdapterVersionResponse",
@@ -2775,18 +2491,18 @@ function __c8(j: number): any {
       return S.Array(S.Number);
     case 5:
       return S.suspend(() =>
-        S.Struct({ ErrorCode: S.optional(S.String), Pages: S.optional(Pages) }),
+        S.Struct({ ErrorCode: S.optional(S.String), Pages: S.optional(__S(68)) }),
       ).annotate({ identifier: "Warning" });
     case 6:
-      return S.Array(Warning);
+      return S.Array(__S(69));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          DocumentMetadata: S.optional(DocumentMetadata),
-          JobStatus: S.optional(JobStatus),
+          DocumentMetadata: S.optional(__S(13)),
+          JobStatus: S.optional(S.String),
           NextToken: S.optional(S.String),
-          Blocks: S.optional(BlockList),
-          Warnings: S.optional(Warnings),
+          Blocks: S.optional(__S(21)),
+          Warnings: S.optional(__S(70)),
           StatusMessage: S.optional(S.String),
           AnalyzeDocumentModelVersion: S.optional(S.String),
         }),
@@ -2810,11 +2526,11 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DocumentMetadata: S.optional(DocumentMetadata),
-          JobStatus: S.optional(JobStatus),
+          DocumentMetadata: S.optional(__S(13)),
+          JobStatus: S.optional(S.String),
           NextToken: S.optional(S.String),
-          Blocks: S.optional(BlockList),
-          Warnings: S.optional(Warnings),
+          Blocks: S.optional(__S(21)),
+          Warnings: S.optional(__S(70)),
           StatusMessage: S.optional(S.String),
           DetectDocumentTextModelVersion: S.optional(S.String),
         }),
@@ -2834,11 +2550,11 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DocumentMetadata: S.optional(DocumentMetadata),
-          JobStatus: S.optional(JobStatus),
+          DocumentMetadata: S.optional(__S(13)),
+          JobStatus: S.optional(S.String),
           NextToken: S.optional(S.String),
-          ExpenseDocuments: S.optional(ExpenseDocumentList),
-          Warnings: S.optional(Warnings),
+          ExpenseDocuments: S.optional(__S(37)),
+          Warnings: S.optional(__S(70)),
           StatusMessage: S.optional(S.String),
           AnalyzeExpenseModelVersion: S.optional(S.String),
         }),
@@ -2860,11 +2576,11 @@ function __c9(j: number): any {
         S.Struct({ Value: S.optional(S.String), Confidence: S.optional(S.Number) }),
       ).annotate({ identifier: "Prediction" });
     case 6:
-      return S.Array(Prediction);
+      return S.Array(__S(77));
     case 7:
-      return S.suspend(() =>
-        S.Struct({ PageType: PredictionList, PageNumber: PredictionList }),
-      ).annotate({ identifier: "PageClassification" });
+      return S.suspend(() => S.Struct({ PageType: __S(78), PageNumber: __S(78) })).annotate({
+        identifier: "PageClassification",
+      });
   }
 }
 function __c10(j: number): any {
@@ -2873,42 +2589,42 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Text: S.optional(S.String),
-          SelectionStatus: S.optional(SelectionStatus),
-          Geometry: S.optional(Geometry),
+          SelectionStatus: S.optional(S.String),
+          Geometry: S.optional(__S(17)),
           Confidence: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LendingDetection" });
     case 1:
-      return S.Array(LendingDetection);
+      return S.Array(__S(80));
     case 2:
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
-          KeyDetection: S.optional(LendingDetection),
-          ValueDetections: S.optional(LendingDetectionList),
+          KeyDetection: S.optional(__S(80)),
+          ValueDetections: S.optional(__S(81)),
         }),
       ).annotate({ identifier: "LendingField" });
     case 3:
-      return S.Array(LendingField);
+      return S.Array(__S(82));
     case 4:
       return S.suspend(() =>
-        S.Struct({ Confidence: S.optional(S.Number), Geometry: S.optional(Geometry) }),
+        S.Struct({ Confidence: S.optional(S.Number), Geometry: S.optional(__S(17)) }),
       ).annotate({ identifier: "SignatureDetection" });
     case 5:
-      return S.Array(SignatureDetection);
+      return S.Array(__S(84));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          LendingFields: S.optional(LendingFieldList),
-          SignatureDetections: S.optional(SignatureDetectionList),
+          LendingFields: S.optional(__S(83)),
+          SignatureDetections: S.optional(__S(85)),
         }),
       ).annotate({ identifier: "LendingDocument" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          LendingDocument: S.optional(LendingDocument),
-          ExpenseDocument: S.optional(ExpenseDocument),
-          IdentityDocument: S.optional(IdentityDocument),
+          LendingDocument: S.optional(__S(86)),
+          ExpenseDocument: S.optional(__S(36)),
+          IdentityDocument: S.optional(__S(45)),
         }),
       ).annotate({ identifier: "Extraction" });
   }
@@ -2916,25 +2632,25 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Extraction);
+      return S.Array(__S(87));
     case 1:
       return S.suspend(() =>
         S.Struct({
           Page: S.optional(S.Number),
-          PageClassification: S.optional(PageClassification),
-          Extractions: S.optional(ExtractionList),
+          PageClassification: S.optional(__S(79)),
+          Extractions: S.optional(__S(88)),
         }),
       ).annotate({ identifier: "LendingResult" });
     case 2:
-      return S.Array(LendingResult);
+      return S.Array(__S(89));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DocumentMetadata: S.optional(DocumentMetadata),
-          JobStatus: S.optional(JobStatus),
+          DocumentMetadata: S.optional(__S(13)),
+          JobStatus: S.optional(S.String),
           NextToken: S.optional(S.String),
-          Results: S.optional(LendingResultList),
-          Warnings: S.optional(Warnings),
+          Results: S.optional(__S(90)),
+          Warnings: S.optional(__S(70)),
           StatusMessage: S.optional(S.String),
           AnalyzeLendingModelVersion: S.optional(S.String),
         }),
@@ -2951,10 +2667,10 @@ function __c11(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Index: S.optional(S.Number), Pages: S.optional(PageList) }),
+        S.Struct({ Index: S.optional(S.Number), Pages: S.optional(__S(68)) }),
       ).annotate({ identifier: "SplitDocument" });
     case 6:
-      return S.Array(SplitDocument);
+      return S.Array(__S(93));
     case 7:
       return S.suspend(() => S.Struct({ Page: S.optional(S.Number) })).annotate({
         identifier: "DetectedSignature",
@@ -2964,32 +2680,32 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DetectedSignature);
+      return S.Array(__S(95));
     case 1:
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
-          SplitDocuments: S.optional(SplitDocumentList),
-          DetectedSignatures: S.optional(DetectedSignatureList),
-          UndetectedSignatures: S.optional(UndetectedSignatureList),
+          SplitDocuments: S.optional(__S(94)),
+          DetectedSignatures: S.optional(__S(96)),
+          UndetectedSignatures: S.optional(__S(96)),
         }),
       ).annotate({ identifier: "DocumentGroup" });
     case 2:
-      return S.Array(DocumentGroup);
+      return S.Array(__S(97));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DocumentGroups: S.optional(DocumentGroupList),
-          UndetectedDocumentTypes: S.optional(UndetectedDocumentTypeList),
+          DocumentGroups: S.optional(__S(98)),
+          UndetectedDocumentTypes: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "LendingSummary" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          DocumentMetadata: S.optional(DocumentMetadata),
-          JobStatus: S.optional(JobStatus),
-          Summary: S.optional(LendingSummary),
-          Warnings: S.optional(Warnings),
+          DocumentMetadata: S.optional(__S(13)),
+          JobStatus: S.optional(S.String),
+          Summary: S.optional(__S(99)),
+          Warnings: S.optional(__S(70)),
           StatusMessage: S.optional(S.String),
           AnalyzeLendingModelVersion: S.optional(S.String),
         }),
@@ -3011,18 +2727,18 @@ function __c12(j: number): any {
           AdapterId: S.optional(S.String),
           AdapterName: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FeatureTypes: S.optional(FeatureTypes),
+          FeatureTypes: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "AdapterOverview" });
     case 7:
-      return S.Array(AdapterOverview);
+      return S.Array(__S(102));
   }
 }
 function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Adapters: S.optional(AdapterList), NextToken: S.optional(S.String) }),
+        S.Struct({ Adapters: S.optional(__S(103)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAdaptersResponse" });
     case 1:
       return S.suspend(() =>
@@ -3042,17 +2758,17 @@ function __c13(j: number): any {
           AdapterId: S.optional(S.String),
           AdapterVersion: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FeatureTypes: S.optional(FeatureTypes),
-          Status: S.optional(AdapterVersionStatus),
+          FeatureTypes: S.optional(__S(2)),
+          Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdapterVersionOverview" });
     case 3:
-      return S.Array(AdapterVersionOverview);
+      return S.Array(__S(106));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          AdapterVersions: S.optional(AdapterVersionList),
+          AdapterVersions: S.optional(__S(107)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3067,11 +2783,11 @@ function __c13(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagMap) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(48)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 7:
-      return S.suspend(() => S.Struct({ S3Object: S.optional(S3Object) })).annotate({
+      return S.suspend(() => S.Struct({ S3Object: S.optional(__S(0)) })).annotate({
         identifier: "DocumentLocation",
       });
   }
@@ -3085,15 +2801,15 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DocumentLocation: DocumentLocation,
-          FeatureTypes: FeatureTypes,
+          DocumentLocation: __S(111),
+          FeatureTypes: __S(2),
           ClientRequestToken: S.optional(S.String),
           JobTag: S.optional(S.String),
-          NotificationChannel: S.optional(NotificationChannel),
-          OutputConfig: S.optional(OutputConfig),
+          NotificationChannel: S.optional(__S(112)),
+          OutputConfig: S.optional(__S(52)),
           KMSKeyId: S.optional(S.String),
-          QueriesConfig: S.optional(QueriesConfig),
-          AdaptersConfig: S.optional(AdaptersConfig),
+          QueriesConfig: S.optional(__S(8)),
+          AdaptersConfig: S.optional(__S(11)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "StartDocumentAnalysisRequest",
@@ -3105,11 +2821,11 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DocumentLocation: DocumentLocation,
+          DocumentLocation: __S(111),
           ClientRequestToken: S.optional(S.String),
           JobTag: S.optional(S.String),
-          NotificationChannel: S.optional(NotificationChannel),
-          OutputConfig: S.optional(OutputConfig),
+          NotificationChannel: S.optional(__S(112)),
+          OutputConfig: S.optional(__S(52)),
           KMSKeyId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -3118,11 +2834,11 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          DocumentLocation: DocumentLocation,
+          DocumentLocation: __S(111),
           ClientRequestToken: S.optional(S.String),
           JobTag: S.optional(S.String),
-          NotificationChannel: S.optional(NotificationChannel),
-          OutputConfig: S.optional(OutputConfig),
+          NotificationChannel: S.optional(__S(112)),
+          OutputConfig: S.optional(__S(52)),
           KMSKeyId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -3131,11 +2847,11 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          DocumentLocation: DocumentLocation,
+          DocumentLocation: __S(111),
           ClientRequestToken: S.optional(S.String),
           JobTag: S.optional(S.String),
-          NotificationChannel: S.optional(NotificationChannel),
-          OutputConfig: S.optional(OutputConfig),
+          NotificationChannel: S.optional(__S(112)),
+          OutputConfig: S.optional(__S(52)),
           KMSKeyId: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -3143,13 +2859,13 @@ function __c14(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, Tags: TagMap }).pipe(
+        S.Struct({ ResourceARN: S.String, Tags: __S(48) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String, TagKeys: TagKeyList }).pipe(
+        S.Struct({ ResourceARN: S.String, TagKeys: __S(5) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -3163,7 +2879,7 @@ function __c15(j: number): any {
           AdapterId: S.String,
           Description: S.optional(S.String),
           AdapterName: S.optional(S.String),
-          AutoUpdate: S.optional(AutoUpdate),
+          AutoUpdate: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateAdapterRequest" });
     case 1:
@@ -3173,9 +2889,50 @@ function __c15(j: number): any {
           AdapterName: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Description: S.optional(S.String),
-          FeatureTypes: S.optional(FeatureTypes),
-          AutoUpdate: S.optional(AutoUpdate),
+          FeatureTypes: S.optional(__S(2)),
+          AutoUpdate: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateAdapterResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
   }
 }

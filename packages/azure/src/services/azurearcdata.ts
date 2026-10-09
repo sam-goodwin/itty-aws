@@ -7,16 +7,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** List of database names. */
 export type AddSqlServerAvailabilityGroupDatabasesRequestValuesList = Array<string>;
-const AddSqlServerAvailabilityGroupDatabasesRequestValuesList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddSqlServerAvailabilityGroupDatabasesRequestValuesList>;
-
 export interface AddSqlServerAvailabilityGroupDatabasesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -29,19 +26,10 @@ export interface AddSqlServerAvailabilityGroupDatabasesRequest {
   /** List of database names. */
   values?: AddSqlServerAvailabilityGroupDatabasesRequestValuesList;
 }
-const AddSqlServerAvailabilityGroupDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddSqlServerAvailabilityGroupDatabasesRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -57,50 +45,26 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
 export type AddSqlServerAvailabilityGroupDatabasesResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const AddSqlServerAvailabilityGroupDatabasesResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AddSqlServerAvailabilityGroupDatabasesResponseTagsMap>;
-
 export type AvailabilityGroupInfoReplicationPartnerType =
   | "SQLServer"
   | "AzureSQLVM"
   | "AzureSQLManagedInstance"
   | "Unknown";
-const AvailabilityGroupInfoReplicationPartnerType = S.String;
-
 export interface SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesItem {
   /** IPV4 address */
   ipAddress?: string;
   /** IPV4 netmask */
   mask?: string;
 }
-const SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesItem>;
-
 /** Address and netmask information for an IPv4 AG listener. */
 export type SqlAvailabilityGroupIpV4AddressesAndMasksProperties =
   Array<SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesItem>;
-const SqlAvailabilityGroupIpV4AddressesAndMasksProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<SqlAvailabilityGroupIpV4AddressesAndMasksProperties>;
-
 /** IP V6 Addresses for the listener */
 export type SqlAvailabilityGroupStaticIPListenerPropertiesIpV6AddressesList = Array<string>;
-const SqlAvailabilityGroupStaticIPListenerPropertiesIpV6AddressesList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<SqlAvailabilityGroupStaticIPListenerPropertiesIpV6AddressesList>;
-
 /** The properties of a static IP Arc Sql availability group listener */
 export interface SqlAvailabilityGroupStaticIPListenerProperties {
   /** the DNS name for the listener. */
@@ -112,11 +76,6 @@ export interface SqlAvailabilityGroupStaticIPListenerProperties {
   /** Network port for the listener. Default is 1433. */
   port?: number;
 }
-const SqlAvailabilityGroupStaticIPListenerProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<SqlAvailabilityGroupStaticIPListenerProperties>;
-
 /** The specifications of the availability group state */
 export interface AvailabilityGroupInfo {
   /** User-defined failure condition level under which an automatic failover must be triggered. */
@@ -153,11 +112,6 @@ export interface AvailabilityGroupInfo {
   /** The listener for the sql server availability group */
   listener?: SqlAvailabilityGroupStaticIPListenerProperties;
 }
-const AvailabilityGroupInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AvailabilityGroupInfo>;
-
 /** The endpoint connection authentication type(s). */
 export type AvailabilityGroupConfigureEndpointAuthenticationMode =
   | "Windows_NTLM"
@@ -170,30 +124,18 @@ export type AvailabilityGroupConfigureEndpointAuthenticationMode =
   | "Certificate_Windows_NTLM"
   | "Certificate_Windows_Kerberos"
   | "Certificate_Windows_Negotiate";
-const AvailabilityGroupConfigureEndpointAuthenticationMode = S.String;
-
 /** Property that determines whether a given availability replica can run in synchronous-commit mode */
 export type AvailabilityGroupConfigureAvailabilityMode =
   | "SYNCHRONOUS_COMMIT"
   | "ASYNCHRONOUS_COMMIT";
-const AvailabilityGroupConfigureAvailabilityMode = S.String;
-
 /** Property to set the failover mode of the availability group replica */
 export type AvailabilityGroupConfigureFailoverMode = "AUTOMATIC" | "MANUAL" | "EXTERNAL" | "NONE";
-const AvailabilityGroupConfigureFailoverMode = S.String;
-
 /** Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections) */
 export type AvailabilityGroupConfigurePrimaryAllowConnections = "ALL" | "READ_WRITE";
-const AvailabilityGroupConfigurePrimaryAllowConnections = S.String;
-
 /** Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections. */
 export type AvailabilityGroupConfigureSecondaryAllowConnections = "NO" | "ALL" | "READ_ONLY";
-const AvailabilityGroupConfigureSecondaryAllowConnections = S.String;
-
 /** Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica. */
 export type AvailabilityGroupConfigureSeedingMode = "AUTOMATIC" | "MANUAL";
-const AvailabilityGroupConfigureSeedingMode = S.String;
-
 /** The specifications of the availability group replica configuration */
 export interface AvailabilityGroupConfigure {
   /** Name of the mirroring endpoint URL */
@@ -239,11 +181,6 @@ export interface AvailabilityGroupConfigure {
   /** Describes seeding mode. */
   seedingModeDescription?: string;
 }
-const AvailabilityGroupConfigure = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AvailabilityGroupConfigure>;
-
 /** The specifications of the availability group state */
 export interface AvailabilityGroupState {
   /** Current Always On availability groups role of the availability group replica. */
@@ -261,11 +198,6 @@ export interface AvailabilityGroupState {
   /** Date and time timestamp indicating when the last connect error occurred. */
   lastConnectErrorTimestamp?: string;
 }
-const AvailabilityGroupState = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AvailabilityGroupState>;
-
 /** The properties of Arc Sql availability group replica resource */
 export interface SqlAvailabilityGroupReplicaResourceProperties {
   /** ID GUID of the availability group. */
@@ -279,19 +211,9 @@ export interface SqlAvailabilityGroupReplicaResourceProperties {
   /** null */
   state?: AvailabilityGroupState;
 }
-const SqlAvailabilityGroupReplicaResourceProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<SqlAvailabilityGroupReplicaResourceProperties>;
-
 /** Array of Availability Group Replicas. */
 export type SqlServerAvailabilityGroupResourcePropertiesReplicasValueList =
   Array<SqlAvailabilityGroupReplicaResourceProperties>;
-const SqlServerAvailabilityGroupResourcePropertiesReplicasValueList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesReplicasValueList>;
-
 /** A list of Availability Group Replicas. */
 export interface SqlServerAvailabilityGroupResourcePropertiesReplicas {
   /** Array of Availability Group Replicas. */
@@ -299,11 +221,6 @@ export interface SqlServerAvailabilityGroupResourcePropertiesReplicas {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const SqlServerAvailabilityGroupResourcePropertiesReplicas = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesReplicas>;
-
 /** The properties of Arc Sql availability group database replica resource */
 export interface SqlAvailabilityGroupDatabaseReplicaResourceProperties {
   /** the database name. */
@@ -327,19 +244,9 @@ export interface SqlAvailabilityGroupDatabaseReplicaResourceProperties {
   /** Description of the database suspended state reason. */
   suspendReasonDescription?: string;
 }
-const SqlAvailabilityGroupDatabaseReplicaResourceProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<SqlAvailabilityGroupDatabaseReplicaResourceProperties>;
-
 /** Array of Availability Group Database Replicas. */
 export type SqlServerAvailabilityGroupResourcePropertiesDatabasesValueList =
   Array<SqlAvailabilityGroupDatabaseReplicaResourceProperties>;
-const SqlServerAvailabilityGroupResourcePropertiesDatabasesValueList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesDatabasesValueList>;
-
 /** A list of Availability Group Database Replicas. */
 export interface SqlServerAvailabilityGroupResourcePropertiesDatabases {
   /** Array of Availability Group Database Replicas. */
@@ -347,11 +254,6 @@ export interface SqlServerAvailabilityGroupResourcePropertiesDatabases {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const SqlServerAvailabilityGroupResourcePropertiesDatabases = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesDatabases>;
-
 /** The properties of Arc Sql Server availability group resource */
 export interface SqlServerAvailabilityGroupResourceProperties {
   /** ID GUID of the availability group. */
@@ -373,11 +275,6 @@ export interface SqlServerAvailabilityGroupResourceProperties {
   /** The provisioning state of the Arc-enabled SQL Server availability group resource. */
   provisioningState?: string;
 }
-const SqlServerAvailabilityGroupResourceProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<SqlServerAvailabilityGroupResourceProperties>;
-
 export interface AddSqlServerAvailabilityGroupDatabasesResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -394,11 +291,6 @@ export interface AddSqlServerAvailabilityGroupDatabasesResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-const AddSqlServerAvailabilityGroupDatabasesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AddSqlServerAvailabilityGroupDatabasesResponse>;
-
 /** Username and password for basic login authentication. */
 export interface ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation {
   /** Login username. */
@@ -406,35 +298,17 @@ export interface ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLogi
   /** Login password. */
   password?: string | Redacted.Redacted<string>;
 }
-const ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation =
-  /*@__PURE__*/ __L.at(
-    __c2,
-    3,
-  ) as any as S.Schema<ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation>;
-
 /** The service account provisioning mode for this Active Directory connector. */
 export type ActiveDirectoryConnectorDomainDetailsServiceAccountProvisioning =
   | "automatic"
   | "manual";
-const ActiveDirectoryConnectorDomainDetailsServiceAccountProvisioning = S.String;
-
 /** Information about a domain controller in the AD domain. */
 export interface ActiveDirectoryDomainController {
   /** Fully-qualified domain name of a domain controller in the AD domain. */
   hostname: string;
 }
-const ActiveDirectoryDomainController = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ActiveDirectoryDomainController>;
-
 /** Information about the secondary domain controllers in the AD domain. */
 export type ActiveDirectorySecondaryDomainControllers = Array<ActiveDirectoryDomainController>;
-const ActiveDirectorySecondaryDomainControllers = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ActiveDirectorySecondaryDomainControllers>;
-
 /** Details about the Active Directory domain controllers associated with this AD connector instance */
 export interface ActiveDirectoryDomainControllers {
   /** Information about the Primary Domain Controller (PDC) in the AD domain. */
@@ -442,11 +316,6 @@ export interface ActiveDirectoryDomainControllers {
   /** null */
   secondaryDomainControllers?: ActiveDirectorySecondaryDomainControllers;
 }
-const ActiveDirectoryDomainControllers = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ActiveDirectoryDomainControllers>;
-
 /** Active Directory domain details */
 export interface ActiveDirectoryConnectorDomainDetails {
   /** Name (uppercase) of the Active Directory domain that this AD connector will be associated with. */
@@ -462,16 +331,8 @@ export interface ActiveDirectoryConnectorDomainDetails {
   /** null */
   domainControllers?: ActiveDirectoryDomainControllers;
 }
-const ActiveDirectoryConnectorDomainDetails = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ActiveDirectoryConnectorDomainDetails>;
-
 /** List of Active Directory DNS server IP addresses. */
 export type ActiveDirectoryConnectorDNSDetailsNameserverIPAddressesList = Array<string>;
-const ActiveDirectoryConnectorDNSDetailsNameserverIPAddressesList =
-  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<ActiveDirectoryConnectorDNSDetailsNameserverIPAddressesList>;
-
 /** DNS server details */
 export interface ActiveDirectoryConnectorDNSDetails {
   /** DNS domain name for which DNS lookups should be forwarded to the Active Directory DNS servers. */
@@ -483,11 +344,6 @@ export interface ActiveDirectoryConnectorDNSDetails {
   /** Flag indicating whether to prefer Kubernetes DNS server response over AD DNS server response for IP address lookups. */
   preferK8sDnsForPtrLookups?: boolean;
 }
-const ActiveDirectoryConnectorDNSDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ActiveDirectoryConnectorDNSDetails>;
-
 /** The specifications of the AD Kubernetes resource. */
 export interface ActiveDirectoryConnectorSpec {
   /** null */
@@ -495,11 +351,6 @@ export interface ActiveDirectoryConnectorSpec {
   /** null */
   dns: ActiveDirectoryConnectorDNSDetails;
 }
-const ActiveDirectoryConnectorSpec = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ActiveDirectoryConnectorSpec>;
-
 /** The status of the Kubernetes custom resource. */
 export interface ActiveDirectoryConnectorStatus {
   /** The time that the custom resource was last updated. */
@@ -509,11 +360,6 @@ export interface ActiveDirectoryConnectorStatus {
   /** The state of the AD connector custom resource. */
   state?: string;
 }
-const ActiveDirectoryConnectorStatus = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ActiveDirectoryConnectorStatus>;
-
 /** The properties of an Active Directory connector resource */
 export interface ActiveDirectoryConnectorPropertiesInput {
   /** Username and password for basic login authentication. */
@@ -523,11 +369,6 @@ export interface ActiveDirectoryConnectorPropertiesInput {
   /** null */
   status?: ActiveDirectoryConnectorStatus;
 }
-const ActiveDirectoryConnectorPropertiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ActiveDirectoryConnectorPropertiesInput>;
-
 export interface CreateActiveDirectoryConnectorRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -540,11 +381,6 @@ export interface CreateActiveDirectoryConnectorRequest {
   /** null */
   properties: ActiveDirectoryConnectorPropertiesInput;
 }
-const CreateActiveDirectoryConnectorRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateActiveDirectoryConnectorRequest>;
-
 /** Username and password for basic login authentication. */
 export type ActiveDirectoryConnectorPropertiesDomainServiceAccountLoginInformation =
   ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
@@ -559,11 +395,6 @@ export interface ActiveDirectoryConnectorProperties {
   /** null */
   status?: ActiveDirectoryConnectorStatus;
 }
-const ActiveDirectoryConnectorProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ActiveDirectoryConnectorProperties>;
-
 export interface CreateActiveDirectoryConnectorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -576,23 +407,14 @@ export interface CreateActiveDirectoryConnectorResponse {
   /** null */
   properties: ActiveDirectoryConnectorProperties;
 }
-const CreateActiveDirectoryConnectorResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateActiveDirectoryConnectorResponse>;
-
 /** The partner sync mode of the SQL managed instance. */
 export type FailoverGroupSpecPartnerSyncMode = "async" | "sync";
-const FailoverGroupSpecPartnerSyncMode = S.String;
-
 /** The role of the SQL managed instance in this failover group. */
 export type FailoverGroupSpecRole =
   | "primary"
   | "secondary"
   | "force-primary-allow-data-loss"
   | "force-secondary";
-const FailoverGroupSpecRole = S.String;
-
 /** The specifications of the failover group resource. */
 export interface FailoverGroupSpec {
   /** The shared name of the failover group for this SQL managed instance. Both SQL managed instance and its partner have to use the same shared name. */
@@ -610,8 +432,6 @@ export interface FailoverGroupSpec {
   /** The role of the SQL managed instance in this failover group. */
   role: FailoverGroupSpecRole | (string & {});
 }
-const FailoverGroupSpec = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<FailoverGroupSpec>;
-
 /** The properties of a failover group resource. */
 export interface FailoverGroupPropertiesInput {
   /** The resource ID of the partner SQL managed instance. */
@@ -621,11 +441,6 @@ export interface FailoverGroupPropertiesInput {
   /** The status of the failover group custom resource. */
   status?: unknown;
 }
-const FailoverGroupPropertiesInput = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<FailoverGroupPropertiesInput>;
-
 export interface CreateFailoverGroupRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -638,19 +453,12 @@ export interface CreateFailoverGroupRequest {
   /** null */
   properties: FailoverGroupPropertiesInput;
 }
-const CreateFailoverGroupRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateFailoverGroupRequest>;
-
 /** The provisioning state of the failover group resource. */
 export type FailoverGroupPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled"
   | "Accepted";
-const FailoverGroupPropertiesProvisioningState = S.String;
-
 /** The properties of a failover group resource. */
 export interface FailoverGroupProperties {
   /** The provisioning state of the failover group resource. */
@@ -662,11 +470,6 @@ export interface FailoverGroupProperties {
   /** The status of the failover group custom resource. */
   status?: unknown;
 }
-const FailoverGroupProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<FailoverGroupProperties>;
-
 export interface CreateFailoverGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -679,20 +482,10 @@ export interface CreateFailoverGroupResponse {
   /** null */
   properties: FailoverGroupProperties;
 }
-const CreateFailoverGroupResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateFailoverGroupResponse>;
-
 /** Resource tags. */
 export type CreatePostgresInstanceRequestTagsMap = { [key: string]: string | undefined };
-const CreatePostgresInstanceRequestTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreatePostgresInstanceRequestTagsMap>;
-
 /** The type of extendedLocation. */
 export type ExtendedLocationType = "CustomLocation";
-const ExtendedLocationType = S.String;
-
 /** The complex type of the extended location. */
 export interface CreatePostgresInstanceRequestExtendedLocation {
   /** The name of the extended location. */
@@ -700,11 +493,6 @@ export interface CreatePostgresInstanceRequestExtendedLocation {
   /** The type of the extended location. */
   type?: ExtendedLocationType | (string & {});
 }
-const CreatePostgresInstanceRequestExtendedLocation = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreatePostgresInstanceRequestExtendedLocation>;
-
 /** Username and password for basic login authentication. */
 export type PostgresInstancePropertiesInputBasicLoginInformation =
   ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
@@ -721,15 +509,8 @@ export interface PostgresInstancePropertiesInput {
   /** Last uploaded date from Kubernetes cluster. Defaults to current date time */
   lastUploadedDate?: string;
 }
-const PostgresInstancePropertiesInput = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<PostgresInstancePropertiesInput>;
-
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier. */
 export type PostgresInstanceSkuTier = "Hyperscale";
-const PostgresInstanceSkuTier = S.String;
-
 /** The resource model definition representing SKU for Azure Database for PostgresSQL - Azure Arc */
 export interface PostgresInstanceSku {
   /** The name of the SKU. It is typically a letter+number code */
@@ -745,8 +526,6 @@ export interface PostgresInstanceSku {
   /** This field is required to be implemented by the Resource Provider if the service has more than one tier. */
   tier?: PostgresInstanceSkuTier | (string & {});
 }
-const PostgresInstanceSku = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<PostgresInstanceSku>;
-
 export interface CreatePostgresInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -765,16 +544,8 @@ export interface CreatePostgresInstanceRequest {
   /** Resource sku. */
   sku?: PostgresInstanceSku;
 }
-const CreatePostgresInstanceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreatePostgresInstanceRequest>;
-
 /** Resource tags. */
 export type CreatePostgresInstanceResponseTagsMap = { [key: string]: string | undefined };
-const CreatePostgresInstanceResponseTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreatePostgresInstanceResponseTagsMap>;
-
 /** The complex type of the extended location. */
 export interface CreatePostgresInstanceResponseExtendedLocation {
   /** The name of the extended location. */
@@ -782,9 +553,6 @@ export interface CreatePostgresInstanceResponseExtendedLocation {
   /** The type of the extended location. */
   type?: ExtendedLocationType;
 }
-const CreatePostgresInstanceResponseExtendedLocation =
-  CreatePostgresInstanceRequestExtendedLocation as any as S.Schema<CreatePostgresInstanceResponseExtendedLocation>;
-
 /** Username and password for basic login authentication. */
 export type PostgresInstancePropertiesBasicLoginInformation =
   ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
@@ -803,11 +571,6 @@ export interface PostgresInstanceProperties {
   /** The provisioning state of the Azure Arc-enabled PostgreSQL instance. */
   provisioningState?: string;
 }
-const PostgresInstanceProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<PostgresInstanceProperties>;
-
 export interface CreatePostgresInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -828,26 +591,12 @@ export interface CreatePostgresInstanceResponse {
   /** Resource sku. */
   sku?: PostgresInstanceSku;
 }
-const CreatePostgresInstanceResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreatePostgresInstanceResponse>;
-
 /** Resource tags. */
 export type CreateSqlManagedInstanceRequestTagsMap = { [key: string]: string | undefined };
-const CreateSqlManagedInstanceRequestTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlManagedInstanceRequestTagsMap>;
-
 /** Requests for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'. */
 export type K8sResourceRequirementsRequestsMap = { [key: string]: string | undefined };
-const K8sResourceRequirementsRequestsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<K8sResourceRequirementsRequestsMap>;
-
 /** Limits for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'. */
 export type K8sResourceRequirementsLimitsMap = { [key: string]: string | undefined };
-const K8sResourceRequirementsLimitsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<K8sResourceRequirementsLimitsMap>;
-
 /** The kubernetes resource limits and requests used to restrict or reserve resource usage. */
 export interface K8sResourceRequirements {
   /** Requests for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'. */
@@ -855,39 +604,22 @@ export interface K8sResourceRequirements {
   /** Limits for a kubernetes resource type (e.g 'cpu', 'memory'). The 'cpu' request must be less than or equal to 'cpu' limit. Default 'cpu' is 2, minimum is 1. Default 'memory' is '4Gi', minimum is '2Gi. If sku.tier is GeneralPurpose, maximum 'cpu' is 24 and maximum 'memory' is '128Gi'. */
   limits?: K8sResourceRequirementsLimitsMap;
 }
-const K8sResourceRequirements = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<K8sResourceRequirements>;
-
 /** The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service */
 export interface K8sSchedulingOptions {
   resources?: K8sResourceRequirements;
 }
-const K8sSchedulingOptions = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<K8sSchedulingOptions>;
-
 /** The kubernetes scheduling information. */
 export interface K8sScheduling {
   default?: K8sSchedulingOptions;
 }
-const K8sScheduling = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<K8sScheduling>;
-
 export interface K8sActiveDirectoryConnector {
   /** Name of the connector */
   name?: string;
   /** Name space of the connector */
   namespace?: string;
 }
-const K8sActiveDirectoryConnector = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<K8sActiveDirectoryConnector>;
-
 /** An array of encryption types */
 export type K8sActiveDirectoryEncryptionTypesList = Array<string>;
-const K8sActiveDirectoryEncryptionTypesList =
-  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<K8sActiveDirectoryEncryptionTypesList>;
-
 /** The kubernetes active directory information. */
 export interface K8sActiveDirectory {
   connector?: K8sActiveDirectoryConnector;
@@ -898,8 +630,6 @@ export interface K8sActiveDirectory {
   /** An array of encryption types */
   encryptionTypes?: K8sActiveDirectoryEncryptionTypesList;
 }
-const K8sActiveDirectory = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<K8sActiveDirectory>;
-
 /** Transparent data encryption information. */
 export interface K8stransparentDataEncryption {
   /** Transparent data encryption mode. Can be Service Managed, Customer managed or disabled */
@@ -907,11 +637,6 @@ export interface K8stransparentDataEncryption {
   /** Protector secret for customer managed Transparent data encryption mode */
   protectorSecret?: string;
 }
-const K8stransparentDataEncryption = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<K8stransparentDataEncryption>;
-
 /** The kubernetes security information. */
 export interface K8sSecurity {
   /** Admin login secret key */
@@ -921,8 +646,6 @@ export interface K8sSecurity {
   activeDirectory?: K8sActiveDirectory;
   transparentDataEncryption?: K8stransparentDataEncryption;
 }
-const K8sSecurity = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<K8sSecurity>;
-
 /** The kubernetes network settings information. */
 export interface K8sNetworkSettings {
   /** If 1, then SQL Server forces all connections to be encrypted. By default, this option is 0 */
@@ -932,14 +655,10 @@ export interface K8sNetworkSettings {
   /** A comma-separated list of which TLS protocols are allowed by SQL Server */
   tlsprotocols?: string;
 }
-const K8sNetworkSettings = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<K8sNetworkSettings>;
-
 /** The kubernetes settings information. */
 export interface K8sSettings {
   network?: K8sNetworkSettings;
 }
-const K8sSettings = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<K8sSettings>;
-
 /** The kubernetes spec information. */
 export interface SqlManagedInstanceK8sSpec {
   scheduling?: K8sScheduling;
@@ -948,20 +667,10 @@ export interface SqlManagedInstanceK8sSpec {
   security?: K8sSecurity;
   settings?: K8sSettings;
 }
-const SqlManagedInstanceK8sSpec = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<SqlManagedInstanceK8sSpec>;
-
 /** The raw kubernetes information. */
 export interface SqlManagedInstanceK8sRaw {
   spec?: SqlManagedInstanceK8sSpec;
 }
-const SqlManagedInstanceK8sRaw = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<SqlManagedInstanceK8sRaw>;
-
 /** Username and password for basic login authentication. */
 export type SqlManagedInstancePropertiesInputBasicLoginInformation =
   ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
@@ -970,25 +679,16 @@ export interface KeytabInformation {
   /** A base64-encoded keytab. */
   keytab?: string;
 }
-const KeytabInformation = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<KeytabInformation>;
-
 /** Active Directory information that related to the resource. */
 export interface ActiveDirectoryInformation {
   /** Keytab information that is used for the Sql Managed Instance when Active Directory authentication is used. */
   keytabInformation?: KeytabInformation;
 }
-const ActiveDirectoryInformation = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ActiveDirectoryInformation>;
-
 /** The license type to apply for this managed instance. */
 export type SqlManagedInstancePropertiesInputLicenseType =
   | "BasePrice"
   | "LicenseIncluded"
   | "DisasterRecovery";
-const SqlManagedInstancePropertiesInputLicenseType = S.String;
-
 /** Properties of sqlManagedInstance. */
 export interface SqlManagedInstancePropertiesInput {
   /** null */
@@ -1014,22 +714,13 @@ export interface SqlManagedInstancePropertiesInput {
   /** If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to. */
   extensionId?: string;
 }
-const SqlManagedInstancePropertiesInput = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<SqlManagedInstancePropertiesInput>;
-
 /** The complex type of the extended location. */
 export type CreateSqlManagedInstanceRequestExtendedLocation =
   CreatePostgresInstanceRequestExtendedLocation;
 /** The name of the SKU. */
 export type SqlManagedInstanceSkuName = "vCore";
-const SqlManagedInstanceSkuName = S.String;
-
 /** The pricing tier for the instance. */
 export type SqlManagedInstanceSkuTier = "GeneralPurpose" | "BusinessCritical";
-const SqlManagedInstanceSkuTier = S.String;
-
 /** The resource model definition representing SKU for Azure Managed Instance - Azure Arc */
 export interface SqlManagedInstanceSku {
   /** The name of the SKU. */
@@ -1045,11 +736,6 @@ export interface SqlManagedInstanceSku {
   /** The SKU capacity */
   capacity?: number;
 }
-const SqlManagedInstanceSku = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<SqlManagedInstanceSku>;
-
 export interface CreateSqlManagedInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -1068,16 +754,8 @@ export interface CreateSqlManagedInstanceRequest {
   /** Resource sku. */
   sku?: SqlManagedInstanceSku;
 }
-const CreateSqlManagedInstanceRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateSqlManagedInstanceRequest>;
-
 /** Resource tags. */
 export type CreateSqlManagedInstanceResponseTagsMap = { [key: string]: string | undefined };
-const CreateSqlManagedInstanceResponseTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlManagedInstanceResponseTagsMap>;
-
 /** Username and password for basic login authentication. */
 export type SqlManagedInstancePropertiesBasicLoginInformation =
   ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
@@ -1086,8 +764,6 @@ export type SqlManagedInstancePropertiesLicenseType =
   | "BasePrice"
   | "LicenseIncluded"
   | "DisasterRecovery";
-const SqlManagedInstancePropertiesLicenseType = S.String;
-
 /** Properties of sqlManagedInstance. */
 export interface SqlManagedInstanceProperties {
   /** null */
@@ -1115,11 +791,6 @@ export interface SqlManagedInstanceProperties {
   /** If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to. */
   extensionId?: string;
 }
-const SqlManagedInstanceProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<SqlManagedInstanceProperties>;
-
 /** The complex type of the extended location. */
 export type CreateSqlManagedInstanceResponseExtendedLocation =
   CreatePostgresInstanceResponseExtendedLocation;
@@ -1143,16 +814,8 @@ export interface CreateSqlManagedInstanceResponse {
   /** Resource sku. */
   sku?: SqlManagedInstanceSku;
 }
-const CreateSqlManagedInstanceResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateSqlManagedInstanceResponse>;
-
 /** Resource tags. */
 export type CreateSqlServerAvailabilityGroupRequestTagsMap = { [key: string]: string | undefined };
-const CreateSqlServerAvailabilityGroupRequestTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerAvailabilityGroupRequestTagsMap>;
-
 /** The specifications of the availability group state */
 export interface AvailabilityGroupInfoInput {
   /** User-defined failure condition level under which an automatic failover must be triggered. */
@@ -1174,11 +837,6 @@ export interface AvailabilityGroupInfoInput {
   /** The listener for the sql server availability group */
   listener?: SqlAvailabilityGroupStaticIPListenerProperties;
 }
-const AvailabilityGroupInfoInput = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<AvailabilityGroupInfoInput>;
-
 /** The endpoint connection authentication type(s). */
 export type AvailabilityGroupConfigureInputEndpointAuthenticationMode =
   | "Windows_NTLM"
@@ -1191,34 +849,22 @@ export type AvailabilityGroupConfigureInputEndpointAuthenticationMode =
   | "Certificate_Windows_NTLM"
   | "Certificate_Windows_Kerberos"
   | "Certificate_Windows_Negotiate";
-const AvailabilityGroupConfigureInputEndpointAuthenticationMode = S.String;
-
 /** Property that determines whether a given availability replica can run in synchronous-commit mode */
 export type AvailabilityGroupConfigureInputAvailabilityMode =
   | "SYNCHRONOUS_COMMIT"
   | "ASYNCHRONOUS_COMMIT";
-const AvailabilityGroupConfigureInputAvailabilityMode = S.String;
-
 /** Property to set the failover mode of the availability group replica */
 export type AvailabilityGroupConfigureInputFailoverMode =
   | "AUTOMATIC"
   | "MANUAL"
   | "EXTERNAL"
   | "NONE";
-const AvailabilityGroupConfigureInputFailoverMode = S.String;
-
 /** Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections) */
 export type AvailabilityGroupConfigureInputPrimaryAllowConnections = "ALL" | "READ_WRITE";
-const AvailabilityGroupConfigureInputPrimaryAllowConnections = S.String;
-
 /** Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections. */
 export type AvailabilityGroupConfigureInputSecondaryAllowConnections = "NO" | "ALL" | "READ_ONLY";
-const AvailabilityGroupConfigureInputSecondaryAllowConnections = S.String;
-
 /** Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica. */
 export type AvailabilityGroupConfigureInputSeedingMode = "AUTOMATIC" | "MANUAL";
-const AvailabilityGroupConfigureInputSeedingMode = S.String;
-
 /** The specifications of the availability group replica configuration */
 export interface AvailabilityGroupConfigureInput {
   /** Name of the mirroring endpoint URL */
@@ -1254,18 +900,8 @@ export interface AvailabilityGroupConfigureInput {
   /** Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica. */
   seedingMode?: AvailabilityGroupConfigureInputSeedingMode | (string & {});
 }
-const AvailabilityGroupConfigureInput = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<AvailabilityGroupConfigureInput>;
-
 /** The specifications of the availability group state */
 export interface AvailabilityGroupStateInput {}
-const AvailabilityGroupStateInput = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<AvailabilityGroupStateInput>;
-
 /** The properties of Arc Sql availability group replica resource */
 export interface SqlAvailabilityGroupReplicaResourcePropertiesInput {
   /** The replica name. */
@@ -1277,57 +913,27 @@ export interface SqlAvailabilityGroupReplicaResourcePropertiesInput {
   /** null */
   state?: AvailabilityGroupStateInput;
 }
-const SqlAvailabilityGroupReplicaResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<SqlAvailabilityGroupReplicaResourcePropertiesInput>;
-
 /** Array of Availability Group Replicas. */
 export type SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList =
   Array<SqlAvailabilityGroupReplicaResourcePropertiesInput>;
-const SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList>;
-
 /** A list of Availability Group Replicas. */
 export interface SqlServerAvailabilityGroupResourcePropertiesInputReplicas {
   /** Array of Availability Group Replicas. */
   value?: SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList;
 }
-const SqlServerAvailabilityGroupResourcePropertiesInputReplicas = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInputReplicas>;
-
 /** The properties of Arc Sql availability group database replica resource */
 export interface SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput {
   /** the database name. */
   databaseName?: string;
 }
-const SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput>;
-
 /** Array of Availability Group Database Replicas. */
 export type SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList =
   Array<SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput>;
-const SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList>;
-
 /** A list of Availability Group Database Replicas. */
 export interface SqlServerAvailabilityGroupResourcePropertiesInputDatabases {
   /** Array of Availability Group Database Replicas. */
   value?: SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList;
 }
-const SqlServerAvailabilityGroupResourcePropertiesInputDatabases = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInputDatabases>;
-
 /** The properties of Arc Sql Server availability group resource */
 export interface SqlServerAvailabilityGroupResourcePropertiesInput {
   /** Availability Group Info */
@@ -1337,11 +943,6 @@ export interface SqlServerAvailabilityGroupResourcePropertiesInput {
   /** A list of Availability Group Database Replicas. */
   databases?: SqlServerAvailabilityGroupResourcePropertiesInputDatabases;
 }
-const SqlServerAvailabilityGroupResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<SqlServerAvailabilityGroupResourcePropertiesInput>;
-
 export interface CreateSqlServerAvailabilityGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1358,11 +959,6 @@ export interface CreateSqlServerAvailabilityGroupRequest {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourcePropertiesInput;
 }
-const CreateSqlServerAvailabilityGroupRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateSqlServerAvailabilityGroupRequest>;
-
 /** Resource tags. */
 export type CreateSqlServerAvailabilityGroupResponseTagsMap = { [key: string]: string | undefined };
 export interface CreateSqlServerAvailabilityGroupResponse {
@@ -1381,9 +977,6 @@ export interface CreateSqlServerAvailabilityGroupResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-const CreateSqlServerAvailabilityGroupResponse =
-  AddSqlServerAvailabilityGroupDatabasesResponse as any as S.Schema<CreateSqlServerAvailabilityGroupResponse>;
-
 /** The endpoint connection authentication type(s). */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationEndpointAuthenticationMode =
   | "Windows_NTLM"
@@ -1396,45 +989,30 @@ export type AvailabilityGroupCreateUpdateReplicaConfigurationEndpointAuthenticat
   | "Certificate_Windows_NTLM"
   | "Certificate_Windows_Kerberos"
   | "Certificate_Windows_Negotiate";
-const AvailabilityGroupCreateUpdateReplicaConfigurationEndpointAuthenticationMode = S.String;
-
 /** Property that determines whether a given availability replica can run in synchronous-commit mode */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationAvailabilityMode =
   | "SYNCHRONOUS_COMMIT"
   | "ASYNCHRONOUS_COMMIT";
-const AvailabilityGroupCreateUpdateReplicaConfigurationAvailabilityMode = S.String;
-
 /** Property to set the failover mode of the availability group replica */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationFailoverMode =
   | "AUTOMATIC"
   | "MANUAL"
   | "EXTERNAL"
   | "NONE";
-const AvailabilityGroupCreateUpdateReplicaConfigurationFailoverMode = S.String;
-
 /** Specifies how the secondary replica will be initially seeded. AUTOMATIC enables direct seeding. This method will seed the secondary replica over the network. This method does not require you to backup and restore a copy of the primary database on the replica. MANUAL specifies manual seeding (default). This method requires you to create a backup of the database on the primary replica and manually restore that backup on the secondary replica. */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationSeedingMode = "AUTOMATIC" | "MANUAL";
-const AvailabilityGroupCreateUpdateReplicaConfigurationSeedingMode = S.String;
-
 /** Whether the secondary replica should allow all connections, no connections, or only ReadOnly connections. */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationSecondaryRoleAllowConnections =
   | "NO"
   | "ALL"
   | "READ_ONLY";
-const AvailabilityGroupCreateUpdateReplicaConfigurationSecondaryRoleAllowConnections = S.String;
-
 /** Whether the primary replica should allow all connections or only READ_WRITE connections (disallowing ReadOnly connections) */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleAllowConnections =
   | "ALL"
   | "READ_WRITE";
-const AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleAllowConnections = S.String;
-
 /** List of read only routing URLs. */
 export type AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList =
   Array<string>;
-const AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList =
-  SqlAvailabilityGroupStaticIPListenerPropertiesIpV6AddressesList as any as S.Schema<AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList>;
-
 /** The specifications of the availability group replica configuration */
 export interface AvailabilityGroupCreateUpdateReplicaConfiguration {
   /** the server instance hosting the replica. */
@@ -1476,32 +1054,17 @@ export interface AvailabilityGroupCreateUpdateReplicaConfiguration {
   /** The time-out period of availability group session replica, in seconds. */
   sessionTimeout?: number;
 }
-const AvailabilityGroupCreateUpdateReplicaConfiguration = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<AvailabilityGroupCreateUpdateReplicaConfiguration>;
-
 /** List of availability group replicas. */
 export type CreateSqlServerAvailabilityGroupAvailabilityGroupRequestReplicasList =
   Array<AvailabilityGroupCreateUpdateReplicaConfiguration>;
-const CreateSqlServerAvailabilityGroupAvailabilityGroupRequestReplicasList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<CreateSqlServerAvailabilityGroupAvailabilityGroupRequestReplicasList>;
-
 /** List of databases to include in the availability group. */
 export type CreateSqlServerAvailabilityGroupAvailabilityGroupRequestDatabasesList = Array<string>;
-const CreateSqlServerAvailabilityGroupAvailabilityGroupRequestDatabasesList =
-  SqlAvailabilityGroupStaticIPListenerPropertiesIpV6AddressesList as any as S.Schema<CreateSqlServerAvailabilityGroupAvailabilityGroupRequestDatabasesList>;
-
 /** Preferred replica for running automated backups. */
 export type CreateSqlServerAvailabilityGroupAvailabilityGroupRequestAutomatedBackupPreference =
   | "PRIMARY"
   | "SECONDARY_ONLY"
   | "SECONDARY"
   | "NONE";
-const CreateSqlServerAvailabilityGroupAvailabilityGroupRequestAutomatedBackupPreference = S.String;
-
 /** User-defined failure condition level under which an automatic failover must be triggered. */
 export type CreateSqlServerAvailabilityGroupAvailabilityGroupRequestFailureConditionLevel =
   | 1
@@ -1509,20 +1072,12 @@ export type CreateSqlServerAvailabilityGroupAvailabilityGroupRequestFailureCondi
   | 3
   | 4
   | 5;
-const CreateSqlServerAvailabilityGroupAvailabilityGroupRequestFailureConditionLevel = S.Number;
-
 /** Specifies whether the availability group supports failover for database health conditions. */
 export type CreateSqlServerAvailabilityGroupAvailabilityGroupRequestDbFailover = "ON" | "OFF";
-const CreateSqlServerAvailabilityGroupAvailabilityGroupRequestDbFailover = S.String;
-
 /** Specifies whether DTC support has been enabled for this availability group. */
 export type CreateSqlServerAvailabilityGroupAvailabilityGroupRequestDtcSupport = "PER_DB" | "NONE";
-const CreateSqlServerAvailabilityGroupAvailabilityGroupRequestDtcSupport = S.String;
-
 /** Set to WSFC when availability group is on a failover cluster instance on a Windows Server failover cluster. Set to NONE when availability group not using WSFC for cluster coordination. */
 export type CreateSqlServerAvailabilityGroupAvailabilityGroupRequestClusterType = "WSFC" | "NONE";
-const CreateSqlServerAvailabilityGroupAvailabilityGroupRequestClusterType = S.String;
-
 export interface CreateSqlServerAvailabilityGroupAvailabilityGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1557,20 +1112,10 @@ export interface CreateSqlServerAvailabilityGroupAvailabilityGroupRequest {
   /** The listener for the sql server availability group */
   listener?: SqlAvailabilityGroupStaticIPListenerProperties;
 }
-const CreateSqlServerAvailabilityGroupAvailabilityGroupRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CreateSqlServerAvailabilityGroupAvailabilityGroupRequest>;
-
 /** Resource tags. */
 export type CreateSqlServerAvailabilityGroupAvailabilityGroupResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const CreateSqlServerAvailabilityGroupAvailabilityGroupResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<CreateSqlServerAvailabilityGroupAvailabilityGroupResponseTagsMap>;
-
 export interface CreateSqlServerAvailabilityGroupAvailabilityGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1587,43 +1132,25 @@ export interface CreateSqlServerAvailabilityGroupAvailabilityGroupResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-const CreateSqlServerAvailabilityGroupAvailabilityGroupResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CreateSqlServerAvailabilityGroupAvailabilityGroupResponse>;
-
 /** The availability mode of the availability group. */
 export type DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationAvailabilityMode =
   | "SYNCHRONOUS_COMMIT"
   | "ASYNCHRONOUS_COMMIT";
-const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationAvailabilityMode =
-  S.String;
-
 /** The failover mode of the availability group. */
 export type DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationFailoverMode =
   | "AUTOMATIC"
   | "MANUAL"
   | "EXTERNAL"
   | "NONE";
-const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationFailoverMode = S.String;
-
 /** The seeding mode of the availability group. */
 export type DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSeedingMode =
   | "AUTOMATIC"
   | "MANUAL";
-const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSeedingMode = S.String;
-
 /** The availability group certificate configuration. */
 export interface DistributedAvailabilityGroupCreateUpdateAvailabilityGroupCertificateConfiguration {
   /** Name of the certificate. */
   certificateName?: string;
 }
-const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupCertificateConfiguration =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    4,
-  ) as any as S.Schema<DistributedAvailabilityGroupCreateUpdateAvailabilityGroupCertificateConfiguration>;
-
 /** The availability group configuration specification for a distributed availability group. */
 export interface DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration {
   /** The azure resource identifier for the availability group. */
@@ -1645,11 +1172,6 @@ export interface DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfig
   /** The certificate configuration for the availability group. */
   certificateConfiguration?: DistributedAvailabilityGroupCreateUpdateAvailabilityGroupCertificateConfiguration;
 }
-const DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration>;
-
 export interface CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1664,18 +1186,10 @@ export interface CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupReq
   /** The initial secondary availability group for the distributed availability group. */
   secondaryAvailabilityGroup?: DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration;
 }
-const CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupRequest>;
-
 /** Resource tags. */
 export type CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponseTagsMap =
-  CreateSqlServerAvailabilityGroupAvailabilityGroupResponseTagsMap as any as S.Schema<CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponseTagsMap>;
-
 export interface CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1692,48 +1206,25 @@ export interface CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupRes
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-const CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse>;
-
 /** List of availability group replicas. */
 export type AvailabilityGroupCreateUpdateConfigurationReplicasList =
   Array<AvailabilityGroupCreateUpdateReplicaConfiguration>;
-const AvailabilityGroupCreateUpdateConfigurationReplicasList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<AvailabilityGroupCreateUpdateConfigurationReplicasList>;
-
 /** List of databases to include in the availability group. */
 export type AvailabilityGroupCreateUpdateConfigurationDatabasesList = Array<string>;
-const AvailabilityGroupCreateUpdateConfigurationDatabasesList =
-  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<AvailabilityGroupCreateUpdateConfigurationDatabasesList>;
-
 /** Preferred replica for running automated backups. */
 export type AvailabilityGroupCreateUpdateConfigurationAutomatedBackupPreference =
   | "PRIMARY"
   | "SECONDARY_ONLY"
   | "SECONDARY"
   | "NONE";
-const AvailabilityGroupCreateUpdateConfigurationAutomatedBackupPreference = S.String;
-
 /** User-defined failure condition level under which an automatic failover must be triggered. */
 export type AvailabilityGroupCreateUpdateConfigurationFailureConditionLevel = 1 | 2 | 3 | 4 | 5;
-const AvailabilityGroupCreateUpdateConfigurationFailureConditionLevel = S.Number;
-
 /** Specifies whether the availability group supports failover for database health conditions. */
 export type AvailabilityGroupCreateUpdateConfigurationDbFailover = "ON" | "OFF";
-const AvailabilityGroupCreateUpdateConfigurationDbFailover = S.String;
-
 /** Specifies whether DTC support has been enabled for this availability group. */
 export type AvailabilityGroupCreateUpdateConfigurationDtcSupport = "PER_DB" | "NONE";
-const AvailabilityGroupCreateUpdateConfigurationDtcSupport = S.String;
-
 /** Set to WSFC when availability group is on a failover cluster instance on a Windows Server failover cluster. Set to NONE when availability group not using WSFC for cluster coordination. */
 export type AvailabilityGroupCreateUpdateConfigurationClusterType = "WSFC" | "NONE";
-const AvailabilityGroupCreateUpdateConfigurationClusterType = S.String;
-
 /** Options used in creating an availability group */
 export interface AvailabilityGroupCreateUpdateConfiguration {
   /** Name of the availability group. */
@@ -1763,11 +1254,6 @@ export interface AvailabilityGroupCreateUpdateConfiguration {
   /** The listener for the sql server availability group */
   listener?: SqlAvailabilityGroupStaticIPListenerProperties;
 }
-const AvailabilityGroupCreateUpdateConfiguration = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<AvailabilityGroupCreateUpdateConfiguration>;
-
 /** Options used in creating a distributed availability group. */
 export interface DistributedAvailabilityGroupCreateUpdateConfiguration {
   /** Name of the availability group. */
@@ -1777,21 +1263,11 @@ export interface DistributedAvailabilityGroupCreateUpdateConfiguration {
   /** The initial secondary availability group for the distributed availability group. */
   secondaryAvailabilityGroup?: DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration;
 }
-const DistributedAvailabilityGroupCreateUpdateConfiguration = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DistributedAvailabilityGroupCreateUpdateConfiguration>;
-
 /** The MI Link specific configuration. */
 export interface MiLinkCreateUpdateConfiguration {
   /** The name of the availability group to be created on the Managed Instance. */
   instanceAvailabilityGroupName?: string;
 }
-const MiLinkCreateUpdateConfiguration = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<MiLinkCreateUpdateConfiguration>;
-
 export interface CreateSqlServerAvailabilityGroupManagedInstanceLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1806,11 +1282,6 @@ export interface CreateSqlServerAvailabilityGroupManagedInstanceLinkRequest {
   /** The MI Link specific distributed availability group configuration. */
   miLinkConfiguration?: MiLinkCreateUpdateConfiguration;
 }
-const CreateSqlServerAvailabilityGroupManagedInstanceLinkRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<CreateSqlServerAvailabilityGroupManagedInstanceLinkRequest>;
-
 /** Resource tags. */
 export type CreateSqlServerAvailabilityGroupManagedInstanceLinkResponseTagsMap = {
   [key: string]: string | undefined;
@@ -1831,14 +1302,8 @@ export interface CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-const CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse =
-  CreateSqlServerAvailabilityGroupAvailabilityGroupResponse as any as S.Schema<CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse>;
-
 /** Resource tags. */
 export type CreateSqlServerDatabaseRequestTagsMap = { [key: string]: string | undefined };
-const CreateSqlServerDatabaseRequestTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerDatabaseRequestTagsMap>;
-
 /** State of the database. */
 export type SqlServerDatabaseResourcePropertiesInputState =
   | "Online"
@@ -1850,15 +1315,11 @@ export type SqlServerDatabaseResourcePropertiesInputState =
   | "Offline"
   | "Copying"
   | "OfflineSecondary";
-const SqlServerDatabaseResourcePropertiesInputState = S.String;
-
 /** Status of the database. */
 export type SqlServerDatabaseResourcePropertiesInputRecoveryMode =
   | "Full"
   | "Bulk-logged"
   | "Simple";
-const SqlServerDatabaseResourcePropertiesInputRecoveryMode = S.String;
-
 /** List of features that are enabled for the database */
 export interface SqlServerDatabaseResourcePropertiesInputDatabaseOptions {
   isAutoCloseOn?: boolean;
@@ -1874,26 +1335,14 @@ export interface SqlServerDatabaseResourcePropertiesInputDatabaseOptions {
   /** How many Hekaton files the DB has on disk, if it uses in-memory OLTP objects. */
   numberOfHekatonFiles?: number;
 }
-const SqlServerDatabaseResourcePropertiesInputDatabaseOptions = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<SqlServerDatabaseResourcePropertiesInputDatabaseOptions>;
-
 export interface SqlServerDatabaseResourcePropertiesInputBackupInformation {
   /** Date time of last full backup. */
   lastFullBackup?: string;
   /** Date time of last log backup. */
   lastLogBackup?: string;
 }
-const SqlServerDatabaseResourcePropertiesInputBackupInformation = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<SqlServerDatabaseResourcePropertiesInputBackupInformation>;
-
 /** The differential backup interval in hours. */
 export type BackupPolicyDifferentialBackupHours = 12 | 24;
-const BackupPolicyDifferentialBackupHours = S.Number;
-
 /** The backup profile for the SQL server. */
 export interface BackupPolicy {
   /** The retention period for all the databases in this managed instance. */
@@ -1905,12 +1354,8 @@ export interface BackupPolicy {
   /** The value indicating minutes between transaction log backups. */
   transactionLogBackupMinutes?: number;
 }
-const BackupPolicy = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<BackupPolicy>;
-
 /** Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified. */
 export type SqlServerDatabaseResourcePropertiesInputCreateMode = "Default" | "PointInTimeRestore";
-const SqlServerDatabaseResourcePropertiesInputCreateMode = S.String;
-
 /** The migration assessment related configuration. */
 export type DataBaseMigrationAssessmentInput = AvailabilityGroupStateInput;
 /** Migration related configuration. */
@@ -1918,11 +1363,6 @@ export interface DataBaseMigrationInput {
   /** Migration assessments related configuration. */
   assessment?: AvailabilityGroupStateInput;
 }
-const DataBaseMigrationInput = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<DataBaseMigrationInput>;
-
 /** The properties of Arc Sql Server database resource */
 export interface SqlServerDatabaseResourcePropertiesInput {
   /** Collation of the database. */
@@ -1958,11 +1398,6 @@ export interface SqlServerDatabaseResourcePropertiesInput {
   restorePointInTime?: string;
   migration?: DataBaseMigrationInput;
 }
-const SqlServerDatabaseResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<SqlServerDatabaseResourcePropertiesInput>;
-
 export interface CreateSqlServerDatabaseRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -1979,16 +1414,8 @@ export interface CreateSqlServerDatabaseRequest {
   /** Properties of Arc Sql Server database */
   properties: SqlServerDatabaseResourcePropertiesInput;
 }
-const CreateSqlServerDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<CreateSqlServerDatabaseRequest>;
-
 /** Resource tags. */
 export type CreateSqlServerDatabaseResponseTagsMap = { [key: string]: string | undefined };
-const CreateSqlServerDatabaseResponseTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerDatabaseResponseTagsMap>;
-
 /** State of the database. */
 export type SqlServerDatabaseResourcePropertiesState =
   | "Online"
@@ -2000,12 +1427,8 @@ export type SqlServerDatabaseResourcePropertiesState =
   | "Offline"
   | "Copying"
   | "OfflineSecondary";
-const SqlServerDatabaseResourcePropertiesState = S.String;
-
 /** Status of the database. */
 export type SqlServerDatabaseResourcePropertiesRecoveryMode = "Full" | "Bulk-logged" | "Simple";
-const SqlServerDatabaseResourcePropertiesRecoveryMode = S.String;
-
 /** List of features that are enabled for the database */
 export type SqlServerDatabaseResourcePropertiesDatabaseOptions =
   SqlServerDatabaseResourcePropertiesInputDatabaseOptions;
@@ -2013,31 +1436,20 @@ export type SqlServerDatabaseResourcePropertiesBackupInformation =
   SqlServerDatabaseResourcePropertiesInputBackupInformation;
 /** Database create mode. PointInTimeRestore: Create a database by restoring a point in time backup of an existing database. sourceDatabaseId and restorePointInTime must be specified. */
 export type SqlServerDatabaseResourcePropertiesCreateMode = "Default" | "PointInTimeRestore";
-const SqlServerDatabaseResourcePropertiesCreateMode = S.String;
-
 export interface DatabaseAssessmentsItem {
   appliesToMigrationTargetPlatform?: string;
   featureId?: string;
   issueCategory?: string;
   moreInformation?: string;
 }
-const DatabaseAssessmentsItem = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<DatabaseAssessmentsItem>;
-
 /** Issues and warnings impacting the migration of Database to particular Azure Migration Target. */
 export type DatabaseAssessments = Array<DatabaseAssessmentsItem>;
-const DatabaseAssessments = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<DatabaseAssessments>;
-
 /** The target recommendation Status for this database. */
 export type SkuRecommendationSummaryRecommendationStatus =
   | "NotReady"
   | "Ready"
   | "ReadyWithConditions"
   | "Unknown";
-const SkuRecommendationSummaryRecommendationStatus = S.String;
-
 /** summary information about the incompatible feature id, number of objects impacted and category of issue (warning/error) */
 export interface SkuRecommendationSummaryImpactedObjectsSummaryItem {
   /** Represents the feature id from https://learn.microsoft.com/en-us/data-migration/sql-server/database/assessment-rules?view=azuresql. OR https://learn.microsoft.com/en-us/data-migration/sql-server/managed-instance/assessment-rules?view=azuresql */
@@ -2047,18 +1459,8 @@ export interface SkuRecommendationSummaryImpactedObjectsSummaryItem {
   /** Issue or Warning */
   issueCategory?: string;
 }
-const SkuRecommendationSummaryImpactedObjectsSummaryItem = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<SkuRecommendationSummaryImpactedObjectsSummaryItem>;
-
 export type SkuRecommendationSummaryImpactedObjectsSummaryList =
   Array<SkuRecommendationSummaryImpactedObjectsSummaryItem>;
-const SkuRecommendationSummaryImpactedObjectsSummaryList = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<SkuRecommendationSummaryImpactedObjectsSummaryList>;
-
 /** The monthly cost of the particular SKU. */
 export interface SkuRecommendationSummaryMonthlyCost {
   /** Represents the Cost of Compute. */
@@ -2074,11 +1476,6 @@ export interface SkuRecommendationSummaryMonthlyCost {
   /** Represents the Total Cost. */
   totalCost?: number;
 }
-const SkuRecommendationSummaryMonthlyCost = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<SkuRecommendationSummaryMonthlyCost>;
-
 /** The Monthly cost of the particular SKU. */
 export interface CostTypeValues {
   /** Represents the Cost of Compute. */
@@ -2088,27 +1485,15 @@ export interface CostTypeValues {
   /** Represents the Cost of IOPS. */
   iopsCost?: number;
 }
-const CostTypeValues = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<CostTypeValues>;
-
 /** The monthly cost values for this saving option combination for the particular SKU. */
 export interface SkuRecommendationResultsMonthlyCostOptionItem {
   /** The unique combination of saving options for a price e.g. With1YearASPAndProd. */
   keyName?: string;
   keyValue?: CostTypeValues;
 }
-const SkuRecommendationResultsMonthlyCostOptionItem = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<SkuRecommendationResultsMonthlyCostOptionItem>;
-
 /** The monthly cost for all different savings options applicable for the particular SKU. */
 export type SkuRecommendationSummaryMonthlyCostOptionsList =
   Array<SkuRecommendationResultsMonthlyCostOptionItem>;
-const SkuRecommendationSummaryMonthlyCostOptionsList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<SkuRecommendationSummaryMonthlyCostOptionsList>;
-
 export interface SkuRecommendationSummaryTargetSkuCategory {
   /** The compute tier of the target SKU. */
   computeTier?: string;
@@ -2121,11 +1506,6 @@ export interface SkuRecommendationSummaryTargetSkuCategory {
   /** Indicates if zone redundancy is available for the target SKU. */
   zoneRedundancyAvailable?: boolean;
 }
-const SkuRecommendationSummaryTargetSkuCategory = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<SkuRecommendationSummaryTargetSkuCategory>;
-
 export interface SkuRecommendationSummaryTargetSku {
   category?: SkuRecommendationSummaryTargetSkuCategory;
   /** Compute Size in vCores. */
@@ -2141,11 +1521,6 @@ export interface SkuRecommendationSummaryTargetSku {
   /** The max throughput in Azure SQL, will impact the billing cost. */
   maxThroughputMBps?: number;
 }
-const SkuRecommendationSummaryTargetSku = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<SkuRecommendationSummaryTargetSku>;
-
 /** The SKU recommendation summary. */
 export interface SkuRecommendationSummary {
   numOfBlockerIssues?: number;
@@ -2158,19 +1533,12 @@ export interface SkuRecommendationSummary {
   monthlyCostOptions?: SkuRecommendationSummaryMonthlyCostOptionsList;
   targetSku?: SkuRecommendationSummaryTargetSku;
 }
-const SkuRecommendationSummary = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<SkuRecommendationSummary>;
-
 /** The target readiness for migration for this database. */
 export interface TargetReadiness {
   azureSqlDatabase?: SkuRecommendationSummary;
   azureSqlManagedInstance?: SkuRecommendationSummary;
   azureSqlVirtualMachine?: SkuRecommendationSummary;
 }
-const TargetReadiness = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<TargetReadiness>;
-
 /** The migration assessment related configuration. */
 export interface DataBaseMigrationAssessment {
   /** The time when Migration Assessment Report upload was last performed. */
@@ -2178,18 +1546,11 @@ export interface DataBaseMigrationAssessment {
   databaseAssessments?: DatabaseAssessments;
   targetReadiness?: TargetReadiness;
 }
-const DataBaseMigrationAssessment = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DataBaseMigrationAssessment>;
-
 /** Migration related configuration. */
 export interface DataBaseMigration {
   /** Migration assessments related configuration. */
   assessment?: DataBaseMigrationAssessment;
 }
-const DataBaseMigration = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<DataBaseMigration>;
-
 /** The properties of Arc Sql Server database resource */
 export interface SqlServerDatabaseResourceProperties {
   /** Collation of the database. */
@@ -2233,11 +1594,6 @@ export interface SqlServerDatabaseResourceProperties {
   lastDatabaseUploadTime?: string;
   migration?: DataBaseMigration;
 }
-const SqlServerDatabaseResourceProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<SqlServerDatabaseResourceProperties>;
-
 export interface CreateSqlServerDatabaseResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2254,38 +1610,22 @@ export interface CreateSqlServerDatabaseResponse {
   /** Properties of Arc Sql Server database */
   properties: SqlServerDatabaseResourceProperties;
 }
-const CreateSqlServerDatabaseResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<CreateSqlServerDatabaseResponse>;
-
 /** Resource tags. */
 export type CreateSqlServerEsuLicenseRequestTagsMap = { [key: string]: string | undefined };
-const CreateSqlServerEsuLicenseRequestTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerEsuLicenseRequestTagsMap>;
-
 /** SQL Server ESU license type. */
 export type SqlServerEsuLicensePropertiesInputBillingPlan = "PAYG";
-const SqlServerEsuLicensePropertiesInputBillingPlan = S.String;
-
 /** The SQL Server version the license covers. */
 export type SqlServerEsuLicensePropertiesInputVersion = "SQL Server 2012" | "SQL Server 2014";
-const SqlServerEsuLicensePropertiesInputVersion = S.String;
-
 /** The activation state of the license. */
 export type SqlServerEsuLicensePropertiesInputActivationState =
   | "Inactive"
   | "Active"
   | "Terminated";
-const SqlServerEsuLicensePropertiesInputActivationState = S.String;
-
 /** The Azure scope to which the license will apply. */
 export type SqlServerEsuLicensePropertiesInputScopeType =
   | "Tenant"
   | "Subscription"
   | "ResourceGroup";
-const SqlServerEsuLicensePropertiesInputScopeType = S.String;
-
 /** Properties of SQL Server ESU license. */
 export interface SqlServerEsuLicensePropertiesInput {
   /** SQL Server ESU license type. */
@@ -2299,11 +1639,6 @@ export interface SqlServerEsuLicensePropertiesInput {
   /** The Azure scope to which the license will apply. */
   scopeType: SqlServerEsuLicensePropertiesInputScopeType | (string & {});
 }
-const SqlServerEsuLicensePropertiesInput = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<SqlServerEsuLicensePropertiesInput>;
-
 export interface CreateSqlServerEsuLicenseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2318,32 +1653,16 @@ export interface CreateSqlServerEsuLicenseRequest {
   /** SQL Server ESU license properties */
   properties: SqlServerEsuLicensePropertiesInput;
 }
-const CreateSqlServerEsuLicenseRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<CreateSqlServerEsuLicenseRequest>;
-
 /** Resource tags. */
 export type CreateSqlServerEsuLicenseResponseTagsMap = { [key: string]: string | undefined };
-const CreateSqlServerEsuLicenseResponseTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerEsuLicenseResponseTagsMap>;
-
 /** SQL Server ESU license type. */
 export type SqlServerEsuLicensePropertiesBillingPlan = "PAYG";
-const SqlServerEsuLicensePropertiesBillingPlan = S.String;
-
 /** The SQL Server version the license covers. */
 export type SqlServerEsuLicensePropertiesVersion = "SQL Server 2012" | "SQL Server 2014";
-const SqlServerEsuLicensePropertiesVersion = S.String;
-
 /** The activation state of the license. */
 export type SqlServerEsuLicensePropertiesActivationState = "Inactive" | "Active" | "Terminated";
-const SqlServerEsuLicensePropertiesActivationState = S.String;
-
 /** The Azure scope to which the license will apply. */
 export type SqlServerEsuLicensePropertiesScopeType = "Tenant" | "Subscription" | "ResourceGroup";
-const SqlServerEsuLicensePropertiesScopeType = S.String;
-
 /** Properties of SQL Server ESU license. */
 export interface SqlServerEsuLicenseProperties {
   /** SQL Server ESU license type. */
@@ -2365,11 +1684,6 @@ export interface SqlServerEsuLicenseProperties {
   /** The tenantId the SQL Server ESU license resource subscription resides in. */
   tenantId?: string;
 }
-const SqlServerEsuLicenseProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<SqlServerEsuLicenseProperties>;
-
 export interface CreateSqlServerEsuLicenseResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2386,16 +1700,8 @@ export interface CreateSqlServerEsuLicenseResponse {
   /** SQL Server ESU license properties */
   properties: SqlServerEsuLicenseProperties;
 }
-const CreateSqlServerEsuLicenseResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<CreateSqlServerEsuLicenseResponse>;
-
 /** Resource tags. */
 export type CreateSqlServerInstanceRequestTagsMap = { [key: string]: string | undefined };
-const CreateSqlServerInstanceRequestTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerInstanceRequestTagsMap>;
-
 /** SQL Server version. */
 export type SqlServerInstancePropertiesInputVersion =
   | "Unknown"
@@ -2406,8 +1712,6 @@ export type SqlServerInstancePropertiesInputVersion =
   | "SQL Server 2019"
   | "SQL Server 2022"
   | "SQL Server 2025";
-const SqlServerInstancePropertiesInputVersion = S.String;
-
 /** SQL Server edition. */
 export type SqlServerInstancePropertiesInputEdition =
   | "Evaluation"
@@ -2418,8 +1722,6 @@ export type SqlServerInstancePropertiesInputEdition =
   | "Express"
   | "Business Intelligence"
   | "Standard Developer";
-const SqlServerInstancePropertiesInputEdition = S.String;
-
 /** Type of host for Azure Arc SQL Server */
 export type SqlServerInstancePropertiesInputHostType =
   | "Azure Virtual Machine"
@@ -2435,8 +1737,6 @@ export type SqlServerInstancePropertiesInputHostType =
   | "AWS Virtual Machine"
   | "GCP Virtual Machine"
   | "Other";
-const SqlServerInstancePropertiesInputHostType = S.String;
-
 /** The encryption algorithm(s) used by the endpoint. */
 export type DBMEndpointInputEncryptionAlgorithm =
   | "NONE"
@@ -2448,8 +1748,6 @@ export type DBMEndpointInputEncryptionAlgorithm =
   | "AES, RC4"
   | "NONE, RC4, AES"
   | "NONE, AES, RC4";
-const DBMEndpointInputEncryptionAlgorithm = S.String;
-
 /** The endpoint connection authentication type(s). */
 export type DBMEndpointInputConnectionAuth =
   | "Windows_NTLM"
@@ -2462,8 +1760,6 @@ export type DBMEndpointInputConnectionAuth =
   | "Certificate_Windows_NTLM"
   | "Certificate_Windows_Kerberos"
   | "Certificate_Windows_Negotiate";
-const DBMEndpointInputConnectionAuth = S.String;
-
 /** Database mirroring endpoint related properties. */
 export interface DBMEndpointInput {
   /** The encryption algorithm(s) used by the endpoint. */
@@ -2471,8 +1767,6 @@ export interface DBMEndpointInput {
   /** The endpoint connection authentication type(s). */
   connectionAuth?: DBMEndpointInputConnectionAuth | (string & {});
 }
-const DBMEndpointInput = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<DBMEndpointInput>;
-
 /** Failover Cluster Instance properties. */
 export type FailoverClusterInput = AvailabilityGroupStateInput;
 /** The monitoring configuration. */
@@ -2480,8 +1774,6 @@ export interface Monitoring {
   /** Indicates if monitoring is enabled for this SQL Server instance. */
   enabled?: boolean;
 }
-const Monitoring = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<Monitoring>;
-
 /** Cost option value for the different cost factors selected. */
 export interface CostOptionSelectedValues {
   /** selected cost saving option e.g. With1YearASPAndDevTest. */
@@ -2491,11 +1783,6 @@ export interface CostOptionSelectedValues {
   /** With Azure Hybrid Benefit(AHB) or not for Windows. */
   windowsLicenseCostOption?: string;
 }
-const CostOptionSelectedValues = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<CostOptionSelectedValues>;
-
 /** Settings impacting the migration assessment computation - configurable with some default values if not set. */
 export interface MigrationAssessmentSettings {
   /** The target location for Azure SQL SKU for migration. - default West US */
@@ -2513,11 +1800,6 @@ export interface MigrationAssessmentSettings {
   /** Selected cost option value. */
   costOptions?: CostOptionSelectedValues;
 }
-const MigrationAssessmentSettings = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<MigrationAssessmentSettings>;
-
 /** Represents a summary of migration readiness issues/warnings per feature type for Azure SQL DB and SQL MI targets */
 export type MigrationAssessmentInputImpactedObjectsSummary = AvailabilityGroupStateInput;
 /** The migration assessment related configuration. */
@@ -2528,18 +1810,11 @@ export interface MigrationAssessmentInput {
   /** Represents a summary of migration readiness issues/warnings per feature type for Azure SQL DB and SQL MI targets */
   impactedObjectsSummary?: AvailabilityGroupStateInput;
 }
-const MigrationAssessmentInput = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<MigrationAssessmentInput>;
-
 /** Migration related configuration. */
 export interface MigrationInput {
   /** Migration assessments related configuration. */
   assessment?: MigrationAssessmentInput;
 }
-const MigrationInput = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<MigrationInput>;
-
 /** The cron trigger configuration. */
 export interface CronTrigger {
   /** Indicates the start time for the trigger. The default value is the time at which the trigger was created. */
@@ -2549,48 +1824,31 @@ export interface CronTrigger {
   /** A cron string representing a CronTab expression. A crontab expression is a very compact way to express a recurring schedule with the following format: '{minutes} {hours} {days} {months} {days-of-week}'. */
   expression?: string;
 }
-const CronTrigger = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<CronTrigger>;
-
 /** The scheduling configuration. */
 export interface Schedule {
   /** Indicates whether scheduling is enabled. */
   enabled?: boolean;
   cronTrigger?: CronTrigger;
 }
-const Schedule = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<Schedule>;
-
 /** The configuration related to SQL best practices assessment. */
 export interface BestPracticesAssessment {
   /** Indicates if SQL best practices assessment is enabled for the SQL Server instance. */
   enabled?: boolean;
   schedule?: Schedule;
 }
-const BestPracticesAssessment = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<BestPracticesAssessment>;
-
 /** Client connection related configuration. */
 export interface ClientConnection {
   /** Indicates if client connection is enabled for this SQL Server instance. */
   enabled?: boolean;
 }
-const ClientConnection = Monitoring as any as S.Schema<ClientConnection>;
-
 /** Indicates if the resource represents a SQL Server engine or a SQL Server component service installed on the host. */
 export type ServiceType = "Engine" | "SSRS" | "SSAS" | "SSIS" | "PBIRS";
-const ServiceType = S.String;
-
 /** Mode of authentication in SqlServer. */
 export type AuthenticationMode = "Mixed" | "Windows" | "Undefined";
-const AuthenticationMode = S.String;
-
 /** The method used for Entra authentication */
 export type AuthenticationSqlServerEntraIdentityItemIdentityType =
   | "SystemAssignedManagedIdentity"
   | "UserAssignedManagedIdentity";
-const AuthenticationSqlServerEntraIdentityItemIdentityType = S.String;
-
 /** Entra Authentication configuration. */
 export interface AuthenticationSqlServerEntraIdentityItem {
   /** The method used for Entra authentication */
@@ -2598,19 +1856,9 @@ export interface AuthenticationSqlServerEntraIdentityItem {
   /** The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity. */
   clientId?: string;
 }
-const AuthenticationSqlServerEntraIdentityItem = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<AuthenticationSqlServerEntraIdentityItem>;
-
 /** Entra Authentication configuration for the SQL Server Instance. */
 export type AuthenticationSqlServerEntraIdentityList =
   Array<AuthenticationSqlServerEntraIdentityItem>;
-const AuthenticationSqlServerEntraIdentityList = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<AuthenticationSqlServerEntraIdentityList>;
-
 /** Authentication related configuration for the SQL Server Instance. */
 export interface Authentication {
   /** Mode of authentication in SqlServer. */
@@ -2618,8 +1866,6 @@ export interface Authentication {
   /** Entra Authentication configuration for the SQL Server Instance. */
   sqlServerEntraIdentity?: AuthenticationSqlServerEntraIdentityList;
 }
-const Authentication = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<Authentication>;
-
 /** Properties of SqlServerInstance. */
 export interface SqlServerInstancePropertiesInput {
   /** SQL Server version. */
@@ -2653,11 +1899,6 @@ export interface SqlServerInstancePropertiesInput {
   /** Authentication related configuration for the SQL Server Instance. */
   authentication?: Authentication;
 }
-const SqlServerInstancePropertiesInput = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<SqlServerInstancePropertiesInput>;
-
 export interface CreateSqlServerInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -2672,16 +1913,8 @@ export interface CreateSqlServerInstanceRequest {
   /** null */
   properties?: SqlServerInstancePropertiesInput;
 }
-const CreateSqlServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<CreateSqlServerInstanceRequest>;
-
 /** Resource tags. */
 export type CreateSqlServerInstanceResponseTagsMap = { [key: string]: string | undefined };
-const CreateSqlServerInstanceResponseTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerInstanceResponseTagsMap>;
-
 /** SQL Server version. */
 export type SqlServerInstancePropertiesVersion =
   | "Unknown"
@@ -2692,8 +1925,6 @@ export type SqlServerInstancePropertiesVersion =
   | "SQL Server 2019"
   | "SQL Server 2022"
   | "SQL Server 2025";
-const SqlServerInstancePropertiesVersion = S.String;
-
 /** SQL Server edition. */
 export type SqlServerInstancePropertiesEdition =
   | "Evaluation"
@@ -2704,23 +1935,14 @@ export type SqlServerInstancePropertiesEdition =
   | "Express"
   | "Business Intelligence"
   | "Standard Developer";
-const SqlServerInstancePropertiesEdition = S.String;
-
 /** The cloud connectivity status. */
 export type SqlServerInstancePropertiesStatus =
   | "Connected"
   | "Disconnected"
   | "Registered"
   | "Unknown";
-const SqlServerInstancePropertiesStatus = S.String;
-
 /** An array of integers, where each value represents the enabled trace flags in SQL Server. */
 export type SqlServerInstancePropertiesTraceFlagsList = Array<number>;
-const SqlServerInstancePropertiesTraceFlagsList = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<SqlServerInstancePropertiesTraceFlagsList>;
-
 /** SQL Server license type. */
 export type SqlServerInstancePropertiesLicenseType =
   | "Undefined"
@@ -2731,15 +1953,11 @@ export type SqlServerInstancePropertiesLicenseType =
   | "PAYG"
   | "Paid"
   | "FabricCapacity";
-const SqlServerInstancePropertiesLicenseType = S.String;
-
 /** Status of Azure Defender. */
 export type SqlServerInstancePropertiesAzureDefenderStatus =
   | "Protected"
   | "Unprotected"
   | "Unknown";
-const SqlServerInstancePropertiesAzureDefenderStatus = S.String;
-
 /** Type of host for Azure Arc SQL Server */
 export type SqlServerInstancePropertiesHostType =
   | "Azure Virtual Machine"
@@ -2755,20 +1973,14 @@ export type SqlServerInstancePropertiesHostType =
   | "AWS Virtual Machine"
   | "GCP Virtual Machine"
   | "Other";
-const SqlServerInstancePropertiesHostType = S.String;
-
 /** The role of the SQL Server, based on availability. */
 export type SqlServerInstancePropertiesAlwaysOnRole =
   | "None"
   | "FailoverClusterInstance"
   | "FailoverClusterNode"
   | "AvailabilityGroupReplica";
-const SqlServerInstancePropertiesAlwaysOnRole = S.String;
-
 /** Mirroring Role */
 export type DBMEndpointRole = "NONE" | "PARTNER" | "WITNESS" | "ALL";
-const DBMEndpointRole = S.String;
-
 /** The encryption algorithm(s) used by the endpoint. */
 export type DBMEndpointEncryptionAlgorithm =
   | "NONE"
@@ -2780,8 +1992,6 @@ export type DBMEndpointEncryptionAlgorithm =
   | "AES, RC4"
   | "NONE, RC4, AES"
   | "NONE, AES, RC4";
-const DBMEndpointEncryptionAlgorithm = S.String;
-
 /** The endpoint connection authentication type(s). */
 export type DBMEndpointConnectionAuth =
   | "Windows_NTLM"
@@ -2794,8 +2004,6 @@ export type DBMEndpointConnectionAuth =
   | "Certificate_Windows_NTLM"
   | "Certificate_Windows_Kerberos"
   | "Certificate_Windows_Negotiate";
-const DBMEndpointConnectionAuth = S.String;
-
 /** Database mirroring endpoint related properties. */
 export interface DBMEndpoint {
   /** Name of the database mirroring endpoint. */
@@ -2819,18 +2027,10 @@ export interface DBMEndpoint {
   /** The certificate expiry date */
   certificateExpiryDate?: string;
 }
-const DBMEndpoint = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<DBMEndpoint>;
-
 /** The ARM IDs of the Arc SQL Server resources, belonging to the current server's Failover cluster. */
 export type FailoverClusterSqlInstanceIdsList = Array<string>;
-const FailoverClusterSqlInstanceIdsList =
-  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<FailoverClusterSqlInstanceIdsList>;
-
 /** The host names which are part of the SQL FCI resource group. */
 export type FailoverClusterHostNamesList = Array<string>;
-const FailoverClusterHostNamesList =
-  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<FailoverClusterHostNamesList>;
-
 /** IP address and subnet mask. */
 export interface HostIPAddressInformation {
   /** IP address */
@@ -2838,18 +2038,8 @@ export interface HostIPAddressInformation {
   /** Subnet mask */
   subnetMask?: string;
 }
-const HostIPAddressInformation = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<HostIPAddressInformation>;
-
 /** The IP addresses and subnet masks associated with the SQL Failover Cluster Instance on this host. */
 export type FailoverClusterHostIPAddressesList = Array<HostIPAddressInformation>;
-const FailoverClusterHostIPAddressesList = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<FailoverClusterHostIPAddressesList>;
-
 /** Failover Cluster Instance properties. */
 export interface FailoverCluster {
   /** The GUID of the SQL Server's underlying Failover Cluster. */
@@ -2863,25 +2053,13 @@ export interface FailoverCluster {
   /** The IP addresses and subnet masks associated with the SQL Failover Cluster Instance on this host. */
   hostIPAddresses?: FailoverClusterHostIPAddressesList;
 }
-const FailoverCluster = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<FailoverCluster>;
-
 export interface ServerAssessmentsItemImpactedObjectsItem {
   impactDetail?: string;
   name?: string;
   objectType?: string;
 }
-const ServerAssessmentsItemImpactedObjectsItem = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ServerAssessmentsItemImpactedObjectsItem>;
-
 export type ServerAssessmentsItemImpactedObjectsList =
   Array<ServerAssessmentsItemImpactedObjectsItem>;
-const ServerAssessmentsItemImpactedObjectsList = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ServerAssessmentsItemImpactedObjectsList>;
-
 export interface ServerAssessmentsItem {
   appliesToMigrationTargetPlatform?: string;
   featureId?: string;
@@ -2889,32 +2067,20 @@ export interface ServerAssessmentsItem {
   issueCategory?: string;
   moreInformation?: string;
 }
-const ServerAssessmentsItem = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ServerAssessmentsItem>;
-
 /** Issues and warnings impacting the migration of SQL Server instance to particular Azure Migration Target. */
 export type ServerAssessments = Array<ServerAssessmentsItem>;
-const ServerAssessments = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<ServerAssessments>;
-
 /** The target recommendation Status for this database. */
 export type SkuRecommendationResultsAzureSqlDatabaseRecommendationStatus =
   | "NotReady"
   | "Ready"
   | "ReadyWithConditions"
   | "Unknown";
-const SkuRecommendationResultsAzureSqlDatabaseRecommendationStatus = S.String;
-
 /** The monthly cost of the particular SKU. */
 export type SkuRecommendationResultsAzureSqlDatabaseMonthlyCost =
   SkuRecommendationSummaryMonthlyCost;
 /** The monthly cost for all different savings options applicable for the particular SKU. */
 export type SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList =
   Array<SkuRecommendationResultsMonthlyCostOptionItem>;
-const SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList =
-  SkuRecommendationSummaryMonthlyCostOptionsList as any as S.Schema<SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList>;
-
 export type SkuRecommendationResultsAzureSqlDatabaseTargetSkuCategory =
   SkuRecommendationSummaryTargetSkuCategory;
 export interface SkuRecommendationResultsAzureSqlDatabaseTargetSku {
@@ -2932,9 +2098,6 @@ export interface SkuRecommendationResultsAzureSqlDatabaseTargetSku {
   /** The maximum throughput in Azure SQL, will impact the billing cost. */
   maxThroughputMBps?: number;
 }
-const SkuRecommendationResultsAzureSqlDatabaseTargetSku =
-  SkuRecommendationSummaryTargetSku as any as S.Schema<SkuRecommendationResultsAzureSqlDatabaseTargetSku>;
-
 /** SKU Recommendation results for Azure SQL Database. */
 export interface SkuRecommendationResultsAzureSqlDatabase {
   /** The target recommendation Status for this database. */
@@ -2946,30 +2109,18 @@ export interface SkuRecommendationResultsAzureSqlDatabase {
   monthlyCostOptions?: SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList;
   targetSku?: SkuRecommendationResultsAzureSqlDatabaseTargetSku;
 }
-const SkuRecommendationResultsAzureSqlDatabase = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<SkuRecommendationResultsAzureSqlDatabase>;
-
 /** The target recommendation Status for this database. */
 export type SkuRecommendationResultsAzureSqlManagedInstanceRecommendationStatus =
   | "NotReady"
   | "Ready"
   | "ReadyWithConditions"
   | "Unknown";
-const SkuRecommendationResultsAzureSqlManagedInstanceRecommendationStatus = S.String;
-
 /** The monthly cost of the particular SKU. */
 export type SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCost =
   SkuRecommendationSummaryMonthlyCost;
 /** The monthly cost for all different savings options applicable for the particular SKU. */
 export type SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCostOptionsList =
   Array<SkuRecommendationResultsMonthlyCostOptionItem>;
-const SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCostOptionsList = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCostOptionsList>;
-
 export type SkuRecommendationResultsAzureSqlManagedInstanceTargetSkuCategory =
   SkuRecommendationSummaryTargetSkuCategory;
 export type SkuRecommendationResultsAzureSqlManagedInstanceTargetSku =
@@ -2985,45 +2136,27 @@ export interface SkuRecommendationResultsAzureSqlManagedInstance {
   monthlyCostOptions?: SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCostOptionsList;
   targetSku?: SkuRecommendationResultsAzureSqlDatabaseTargetSku;
 }
-const SkuRecommendationResultsAzureSqlManagedInstance = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<SkuRecommendationResultsAzureSqlManagedInstance>;
-
 /** The target recommendation Status for this database. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineRecommendationStatus =
   | "NotReady"
   | "Ready"
   | "ReadyWithConditions"
   | "Unknown";
-const SkuRecommendationResultsAzureSqlVirtualMachineRecommendationStatus = S.String;
-
 /** The monthly cost of the particular SKU. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCost =
   SkuRecommendationSummaryMonthlyCost;
 /** The monthly cost for all different savings options applicable for the particular SKU. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsList =
   Array<SkuRecommendationResultsMonthlyCostOptionItem>;
-const SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsList =
-  SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCostOptionsList as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsList>;
-
 /** Available VM SKUs for the Azure SQL Virtual Machine. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategoryAvailableVmSkusList =
   Array<string>;
-const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategoryAvailableVmSkusList =
-  SqlAvailabilityGroupStaticIPListenerPropertiesIpV6AddressesList as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategoryAvailableVmSkusList>;
-
 export interface SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategory {
   /** Available VM SKUs for the Azure SQL Virtual Machine. */
   availableVmSkus?: SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategoryAvailableVmSkusList;
   /** The virtual machine family of the target SKU. */
   virtualMachineFamily?: string;
 }
-const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategory = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategory>;
-
 /** size parameters for VM size. */
 export interface SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuVirtualMachineSize {
   /** Virtual Machine Family, for example : standardMSFamily */
@@ -3039,12 +2172,6 @@ export interface SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuVirtualM
   /** maximum network interfaces. */
   maxNetworkInterfaces?: number;
 }
-const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuVirtualMachineSize =
-  /*@__PURE__*/ __L.at(
-    __c17,
-    2,
-  ) as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuVirtualMachineSize>;
-
 /** disk size values */
 export interface DiskSizes {
   /** Type of managed disk. */
@@ -3062,29 +2189,15 @@ export interface DiskSizes {
   /** maximum number of input/output operations per second (IOPS). */
   maxIops?: number;
 }
-const DiskSizes = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<DiskSizes>;
-
 /** Data disk sizes. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuDataDiskSizesList =
   Array<DiskSizes>;
-const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuDataDiskSizesList =
-  /*@__PURE__*/ __L.at(
-    __c17,
-    4,
-  ) as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuDataDiskSizesList>;
-
 /** Log disk sizes. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuLogDiskSizesList =
   Array<DiskSizes>;
-const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuLogDiskSizesList =
-  SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuDataDiskSizesList as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuLogDiskSizesList>;
-
 /** temp db disk sizes. */
 export type SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuTempDbDiskSizesList =
   Array<DiskSizes>;
-const SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuTempDbDiskSizesList =
-  SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuDataDiskSizesList as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuTempDbDiskSizesList>;
-
 export interface SkuRecommendationResultsAzureSqlVirtualMachineTargetSku {
   category?: SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategory;
   /** Compute Size in vCores. */
@@ -3102,11 +2215,6 @@ export interface SkuRecommendationResultsAzureSqlVirtualMachineTargetSku {
   /** temp db disk sizes. */
   tempDbDiskSizes?: SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuTempDbDiskSizesList;
 }
-const SkuRecommendationResultsAzureSqlVirtualMachineTargetSku = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachineTargetSku>;
-
 /** SKU Recommendation results for Azure SQL Virtual Machine. */
 export interface SkuRecommendationResultsAzureSqlVirtualMachine {
   /** The target recommendation Status for this database. */
@@ -3118,46 +2226,23 @@ export interface SkuRecommendationResultsAzureSqlVirtualMachine {
   monthlyCostOptions?: SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsList;
   targetSku?: SkuRecommendationResultsAzureSqlVirtualMachineTargetSku;
 }
-const SkuRecommendationResultsAzureSqlVirtualMachine = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<SkuRecommendationResultsAzureSqlVirtualMachine>;
-
 /** SKU Recommendation results for Azure migration targets for SQL Server. */
 export interface SkuRecommendationResults {
   azureSqlDatabase?: SkuRecommendationResultsAzureSqlDatabase;
   azureSqlManagedInstance?: SkuRecommendationResultsAzureSqlManagedInstance;
   azureSqlVirtualMachine?: SkuRecommendationResultsAzureSqlVirtualMachine;
 }
-const SkuRecommendationResults = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<SkuRecommendationResults>;
-
 /** summary information about the incompatible feature id, number of objects impacted and category of issue (warning/error) */
 export type ImpactedObjectsInfo = SkuRecommendationSummaryImpactedObjectsSummaryItem;
 export type MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList =
   Array<SkuRecommendationSummaryImpactedObjectsSummaryItem>;
-const MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList =
-  SkuRecommendationSummaryImpactedObjectsSummaryList as any as S.Schema<MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList>;
-
 export type MigrationAssessmentImpactedObjectsSummaryAzureSqlManagedInstanceList =
   Array<SkuRecommendationSummaryImpactedObjectsSummaryItem>;
-const MigrationAssessmentImpactedObjectsSummaryAzureSqlManagedInstanceList = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<MigrationAssessmentImpactedObjectsSummaryAzureSqlManagedInstanceList>;
-
 /** Represents a summary of migration readiness issues/warnings per feature type for Azure SQL DB and SQL MI targets */
 export interface MigrationAssessmentImpactedObjectsSummary {
   azureSqlDatabase?: MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList;
   azureSqlManagedInstance?: MigrationAssessmentImpactedObjectsSummaryAzureSqlManagedInstanceList;
 }
-const MigrationAssessmentImpactedObjectsSummary = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<MigrationAssessmentImpactedObjectsSummary>;
-
 /** The migration assessment related configuration. */
 export interface MigrationAssessment {
   /** Indicates if migration assessment is enabled for this SQL Server instance. */
@@ -3172,15 +2257,11 @@ export interface MigrationAssessment {
   /** Represents a summary of migration readiness issues/warnings per feature type for Azure SQL DB and SQL MI targets */
   impactedObjectsSummary?: MigrationAssessmentImpactedObjectsSummary;
 }
-const MigrationAssessment = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<MigrationAssessment>;
-
 /** Migration related configuration. */
 export interface Migration {
   /** Migration assessments related configuration. */
   assessment?: MigrationAssessment;
 }
-const Migration = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<Migration>;
-
 /** Properties of SqlServerInstance. */
 export interface SqlServerInstanceProperties {
   /** SQL Server version. */
@@ -3262,11 +2343,6 @@ export interface SqlServerInstanceProperties {
   /** Authentication related configuration for the SQL Server Instance. */
   authentication?: Authentication;
 }
-const SqlServerInstanceProperties = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<SqlServerInstanceProperties>;
-
 export interface CreateSqlServerInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3283,32 +2359,16 @@ export interface CreateSqlServerInstanceResponse {
   /** null */
   properties?: SqlServerInstanceProperties;
 }
-const CreateSqlServerInstanceResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<CreateSqlServerInstanceResponse>;
-
 /** Resource tags. */
 export type CreateSqlServerLicenseRequestTagsMap = { [key: string]: string | undefined };
-const CreateSqlServerLicenseRequestTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerLicenseRequestTagsMap>;
-
 /** SQL Server license type. */
 export type SqlServerLicensePropertiesInputBillingPlan = "PAYG" | "Paid";
-const SqlServerLicensePropertiesInputBillingPlan = S.String;
-
 /** This property represents the choice between SQL Server Core and ESU licenses. */
 export type SqlServerLicensePropertiesInputLicenseCategory = "Core";
-const SqlServerLicensePropertiesInputLicenseCategory = S.String;
-
 /** The activation state of the license. */
 export type SqlServerLicensePropertiesInputActivationState = "Activated" | "Deactivated";
-const SqlServerLicensePropertiesInputActivationState = S.String;
-
 /** The Azure scope to which the license will apply. */
 export type SqlServerLicensePropertiesInputScopeType = "Tenant" | "Subscription" | "ResourceGroup";
-const SqlServerLicensePropertiesInputScopeType = S.String;
-
 /** Properties of SQL Server License. */
 export interface SqlServerLicensePropertiesInput {
   /** SQL Server license type. */
@@ -3322,11 +2382,6 @@ export interface SqlServerLicensePropertiesInput {
   /** The Azure scope to which the license will apply. */
   scopeType: SqlServerLicensePropertiesInputScopeType | (string & {});
 }
-const SqlServerLicensePropertiesInput = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<SqlServerLicensePropertiesInput>;
-
 export interface CreateSqlServerLicenseRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -3341,32 +2396,16 @@ export interface CreateSqlServerLicenseRequest {
   /** SQL Server license properties */
   properties: SqlServerLicensePropertiesInput;
 }
-const CreateSqlServerLicenseRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<CreateSqlServerLicenseRequest>;
-
 /** Resource tags. */
 export type CreateSqlServerLicenseResponseTagsMap = { [key: string]: string | undefined };
-const CreateSqlServerLicenseResponseTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<CreateSqlServerLicenseResponseTagsMap>;
-
 /** SQL Server license type. */
 export type SqlServerLicensePropertiesBillingPlan = "PAYG" | "Paid";
-const SqlServerLicensePropertiesBillingPlan = S.String;
-
 /** This property represents the choice between SQL Server Core and ESU licenses. */
 export type SqlServerLicensePropertiesLicenseCategory = "Core";
-const SqlServerLicensePropertiesLicenseCategory = S.String;
-
 /** The activation state of the license. */
 export type SqlServerLicensePropertiesActivationState = "Activated" | "Deactivated";
-const SqlServerLicensePropertiesActivationState = S.String;
-
 /** The Azure scope to which the license will apply. */
 export type SqlServerLicensePropertiesScopeType = "Tenant" | "Subscription" | "ResourceGroup";
-const SqlServerLicensePropertiesScopeType = S.String;
-
 /** Properties of SQL Server License. */
 export interface SqlServerLicenseProperties {
   /** SQL Server license type. */
@@ -3386,11 +2425,6 @@ export interface SqlServerLicenseProperties {
   /** The tenantId the SQL Server license resource subscription resides in. */
   tenantId?: string;
 }
-const SqlServerLicenseProperties = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<SqlServerLicenseProperties>;
-
 export interface CreateSqlServerLicenseResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3407,11 +2441,6 @@ export interface CreateSqlServerLicenseResponse {
   /** SQL Server license properties */
   properties: SqlServerLicenseProperties;
 }
-const CreateSqlServerLicenseResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<CreateSqlServerLicenseResponse>;
-
 export interface DeleteActiveDirectoryConnectorRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -3422,17 +2451,7 @@ export interface DeleteActiveDirectoryConnectorRequest {
   /** The name of the Active Directory connector instance */
   activeDirectoryConnectorName: string;
 }
-const DeleteActiveDirectoryConnectorRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<DeleteActiveDirectoryConnectorRequest>;
-
 export interface DeleteActiveDirectoryConnectorResponse {}
-const DeleteActiveDirectoryConnectorResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<DeleteActiveDirectoryConnectorResponse>;
-
 export interface DeleteDataControllerDataControllerRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -3441,15 +2460,7 @@ export interface DeleteDataControllerDataControllerRequest {
   /** The name of the data controller */
   dataControllerName: string;
 }
-const DeleteDataControllerDataControllerRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<DeleteDataControllerDataControllerRequest>;
-
 export interface DeleteDataControllerDataControllerResponse {}
-const DeleteDataControllerDataControllerResponse =
-  DeleteActiveDirectoryConnectorResponse as any as S.Schema<DeleteDataControllerDataControllerResponse>;
-
 export interface DeleteFailoverGroupRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -3460,15 +2471,7 @@ export interface DeleteFailoverGroupRequest {
   /** The name of the Failover Group */
   failoverGroupName: string;
 }
-const DeleteFailoverGroupRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<DeleteFailoverGroupRequest>;
-
 export interface DeleteFailoverGroupResponse {}
-const DeleteFailoverGroupResponse =
-  AvailabilityGroupStateInput as any as S.Schema<DeleteFailoverGroupResponse>;
-
 export interface DeletePostgresInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -3477,15 +2480,7 @@ export interface DeletePostgresInstanceRequest {
   /** Name of Postgres Instance */
   postgresInstanceName: string;
 }
-const DeletePostgresInstanceRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<DeletePostgresInstanceRequest>;
-
 export interface DeletePostgresInstanceResponse {}
-const DeletePostgresInstanceResponse =
-  AvailabilityGroupStateInput as any as S.Schema<DeletePostgresInstanceResponse>;
-
 export interface DeleteSqlManagedInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -3494,15 +2489,7 @@ export interface DeleteSqlManagedInstanceRequest {
   /** Name of SQL Managed Instance */
   sqlManagedInstanceName: string;
 }
-const DeleteSqlManagedInstanceRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<DeleteSqlManagedInstanceRequest>;
-
 export interface DeleteSqlManagedInstanceResponse {}
-const DeleteSqlManagedInstanceResponse =
-  DeleteActiveDirectoryConnectorResponse as any as S.Schema<DeleteSqlManagedInstanceResponse>;
-
 export interface DeleteSqlServerAvailabilityGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3513,15 +2500,7 @@ export interface DeleteSqlServerAvailabilityGroupRequest {
   /** Name of SQL Availability Group */
   availabilityGroupName: string;
 }
-const DeleteSqlServerAvailabilityGroupRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<DeleteSqlServerAvailabilityGroupRequest>;
-
 export interface DeleteSqlServerAvailabilityGroupResponse {}
-const DeleteSqlServerAvailabilityGroupResponse =
-  DeleteActiveDirectoryConnectorResponse as any as S.Schema<DeleteSqlServerAvailabilityGroupResponse>;
-
 export interface DeleteSqlServerAvailabilityGroupMiLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3532,15 +2511,7 @@ export interface DeleteSqlServerAvailabilityGroupMiLinkRequest {
   /** Name of SQL Availability Group */
   availabilityGroupName: string;
 }
-const DeleteSqlServerAvailabilityGroupMiLinkRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<DeleteSqlServerAvailabilityGroupMiLinkRequest>;
-
 export interface DeleteSqlServerAvailabilityGroupMiLinkResponse {}
-const DeleteSqlServerAvailabilityGroupMiLinkResponse =
-  DeleteActiveDirectoryConnectorResponse as any as S.Schema<DeleteSqlServerAvailabilityGroupMiLinkResponse>;
-
 export interface DeleteSqlServerDatabaseRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -3551,17 +2522,7 @@ export interface DeleteSqlServerDatabaseRequest {
   /** Name of the database */
   databaseName: string;
 }
-const DeleteSqlServerDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<DeleteSqlServerDatabaseRequest>;
-
 export interface DeleteSqlServerDatabaseResponse {}
-const DeleteSqlServerDatabaseResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<DeleteSqlServerDatabaseResponse>;
-
 export interface DeleteSqlServerEsuLicenseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3570,15 +2531,7 @@ export interface DeleteSqlServerEsuLicenseRequest {
   /** Name of SQL Server ESU License */
   sqlServerEsuLicenseName: string;
 }
-const DeleteSqlServerEsuLicenseRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<DeleteSqlServerEsuLicenseRequest>;
-
 export interface DeleteSqlServerEsuLicenseResponse {}
-const DeleteSqlServerEsuLicenseResponse =
-  DeleteActiveDirectoryConnectorResponse as any as S.Schema<DeleteSqlServerEsuLicenseResponse>;
-
 export interface DeleteSqlServerInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -3587,15 +2540,7 @@ export interface DeleteSqlServerInstanceRequest {
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
 }
-const DeleteSqlServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<DeleteSqlServerInstanceRequest>;
-
 export interface DeleteSqlServerInstanceResponse {}
-const DeleteSqlServerInstanceResponse =
-  DeleteSqlServerDatabaseResponse as any as S.Schema<DeleteSqlServerInstanceResponse>;
-
 export interface DeleteSqlServerLicenseRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -3604,15 +2549,7 @@ export interface DeleteSqlServerLicenseRequest {
   /** Name of SQL Server License */
   sqlServerLicenseName: string;
 }
-const DeleteSqlServerLicenseRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<DeleteSqlServerLicenseRequest>;
-
 export interface DeleteSqlServerLicenseResponse {}
-const DeleteSqlServerLicenseResponse =
-  AvailabilityGroupStateInput as any as S.Schema<DeleteSqlServerLicenseResponse>;
-
 export interface GetActiveDirectoryConnectorRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -3623,11 +2560,6 @@ export interface GetActiveDirectoryConnectorRequest {
   /** The name of the Active Directory connector instance */
   activeDirectoryConnectorName: string;
 }
-const GetActiveDirectoryConnectorRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<GetActiveDirectoryConnectorRequest>;
-
 export interface GetActiveDirectoryConnectorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3640,9 +2572,6 @@ export interface GetActiveDirectoryConnectorResponse {
   /** null */
   properties: ActiveDirectoryConnectorProperties;
 }
-const GetActiveDirectoryConnectorResponse =
-  CreateActiveDirectoryConnectorResponse as any as S.Schema<GetActiveDirectoryConnectorResponse>;
-
 export interface GetDataControllerDataControllerRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -3651,16 +2580,8 @@ export interface GetDataControllerDataControllerRequest {
   /** The name of the data controller */
   dataControllerName: string;
 }
-const GetDataControllerDataControllerRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<GetDataControllerDataControllerRequest>;
-
 /** Resource tags. */
 export type GetDataControllerDataControllerResponseTagsMap = { [key: string]: string | undefined };
-const GetDataControllerDataControllerResponseTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<GetDataControllerDataControllerResponseTagsMap>;
-
 /** The complex type of the extended location. */
 export type GetDataControllerDataControllerResponseExtendedLocation =
   CreatePostgresInstanceResponseExtendedLocation;
@@ -3672,8 +2593,6 @@ export type DataControllerPropertiesInfrastructure =
   | "alibaba"
   | "onpremises"
   | "other";
-const DataControllerPropertiesInfrastructure = S.String;
-
 /** Properties from the Kubernetes data controller */
 export interface OnPremiseProperty {
   /** A globally unique ID identifying the associated Kubernetes cluster */
@@ -3683,8 +2602,6 @@ export interface OnPremiseProperty {
   /** Unique thumbprint returned to customer to verify the certificate being uploaded */
   signingCertificateThumbprint?: string;
 }
-const OnPremiseProperty = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<OnPremiseProperty>;
-
 /** Properties on upload watermark. Mostly timestamp for each upload data type */
 export interface UploadWatermark {
   /** Last uploaded date for metrics from kubernetes cluster. Defaults to current date time */
@@ -3694,8 +2611,6 @@ export interface UploadWatermark {
   /** Last uploaded date for usages from kubernetes cluster. Defaults to current date time */
   usages?: string;
 }
-const UploadWatermark = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<UploadWatermark>;
-
 /** Username and password for basic login authentication. */
 export type DataControllerPropertiesBasicLoginInformation =
   ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
@@ -3712,11 +2627,6 @@ export interface LogAnalyticsWorkspaceConfig {
   /** Primary key of the workspace */
   primaryKey?: string;
 }
-const LogAnalyticsWorkspaceConfig = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<LogAnalyticsWorkspaceConfig>;
-
 /** Service principal for uploading billing, metrics and logs. */
 export interface UploadServicePrincipal {
   /** Client ID of the service principal for uploading data. */
@@ -3728,11 +2638,6 @@ export interface UploadServicePrincipal {
   /** Secret of the service principal */
   clientSecret?: string | Redacted.Redacted<string>;
 }
-const UploadServicePrincipal = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<UploadServicePrincipal>;
-
 /** The data controller properties. */
 export interface DataControllerProperties {
   /** The infrastructure the data controller is running on. */
@@ -3759,11 +2664,6 @@ export interface DataControllerProperties {
   /** If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to. */
   extensionId?: string;
 }
-const DataControllerProperties = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<DataControllerProperties>;
-
 export interface GetDataControllerDataControllerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3782,11 +2682,6 @@ export interface GetDataControllerDataControllerResponse {
   /** The data controller's properties */
   properties: DataControllerProperties;
 }
-const GetDataControllerDataControllerResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<GetDataControllerDataControllerResponse>;
-
 export interface GetFailoverGroupRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -3797,11 +2692,6 @@ export interface GetFailoverGroupRequest {
   /** The name of the Failover Group */
   failoverGroupName: string;
 }
-const GetFailoverGroupRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<GetFailoverGroupRequest>;
-
 export interface GetFailoverGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3814,11 +2704,6 @@ export interface GetFailoverGroupResponse {
   /** null */
   properties: FailoverGroupProperties;
 }
-const GetFailoverGroupResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<GetFailoverGroupResponse>;
-
 export interface GetPostgresInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -3827,11 +2712,6 @@ export interface GetPostgresInstanceRequest {
   /** Name of Postgres Instance */
   postgresInstanceName: string;
 }
-const GetPostgresInstanceRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<GetPostgresInstanceRequest>;
-
 /** Resource tags. */
 export type GetPostgresInstanceResponseTagsMap = { [key: string]: string | undefined };
 /** The complex type of the extended location. */
@@ -3857,9 +2737,6 @@ export interface GetPostgresInstanceResponse {
   /** Resource sku. */
   sku?: PostgresInstanceSku;
 }
-const GetPostgresInstanceResponse =
-  CreatePostgresInstanceResponse as any as S.Schema<GetPostgresInstanceResponse>;
-
 export interface GetSqlManagedInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -3868,11 +2745,6 @@ export interface GetSqlManagedInstanceRequest {
   /** Name of SQL Managed Instance */
   sqlManagedInstanceName: string;
 }
-const GetSqlManagedInstanceRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<GetSqlManagedInstanceRequest>;
-
 /** Resource tags. */
 export type GetSqlManagedInstanceResponseTagsMap = { [key: string]: string | undefined };
 /** The complex type of the extended location. */
@@ -3898,9 +2770,6 @@ export interface GetSqlManagedInstanceResponse {
   /** Resource sku. */
   sku?: SqlManagedInstanceSku;
 }
-const GetSqlManagedInstanceResponse =
-  CreateSqlManagedInstanceResponse as any as S.Schema<GetSqlManagedInstanceResponse>;
-
 export interface GetSqlServerAvailabilityGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3911,11 +2780,6 @@ export interface GetSqlServerAvailabilityGroupRequest {
   /** Name of SQL Availability Group */
   availabilityGroupName: string;
 }
-const GetSqlServerAvailabilityGroupRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<GetSqlServerAvailabilityGroupRequest>;
-
 /** Resource tags. */
 export type GetSqlServerAvailabilityGroupResponseTagsMap = { [key: string]: string | undefined };
 export interface GetSqlServerAvailabilityGroupResponse {
@@ -3934,9 +2798,6 @@ export interface GetSqlServerAvailabilityGroupResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-const GetSqlServerAvailabilityGroupResponse =
-  AddSqlServerAvailabilityGroupDatabasesResponse as any as S.Schema<GetSqlServerAvailabilityGroupResponse>;
-
 export interface GetSqlServerDatabaseRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -3947,11 +2808,6 @@ export interface GetSqlServerDatabaseRequest {
   /** Name of the database */
   databaseName: string;
 }
-const GetSqlServerDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<GetSqlServerDatabaseRequest>;
-
 /** Resource tags. */
 export type GetSqlServerDatabaseResponseTagsMap = { [key: string]: string | undefined };
 export interface GetSqlServerDatabaseResponse {
@@ -3970,9 +2826,6 @@ export interface GetSqlServerDatabaseResponse {
   /** Properties of Arc Sql Server database */
   properties: SqlServerDatabaseResourceProperties;
 }
-const GetSqlServerDatabaseResponse =
-  CreateSqlServerDatabaseResponse as any as S.Schema<GetSqlServerDatabaseResponse>;
-
 export interface GetSqlServerEsuLicenseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3981,11 +2834,6 @@ export interface GetSqlServerEsuLicenseRequest {
   /** Name of SQL Server ESU License */
   sqlServerEsuLicenseName: string;
 }
-const GetSqlServerEsuLicenseRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<GetSqlServerEsuLicenseRequest>;
-
 /** Resource tags. */
 export type GetSqlServerEsuLicenseResponseTagsMap = { [key: string]: string | undefined };
 export interface GetSqlServerEsuLicenseResponse {
@@ -4004,9 +2852,6 @@ export interface GetSqlServerEsuLicenseResponse {
   /** SQL Server ESU license properties */
   properties: SqlServerEsuLicenseProperties;
 }
-const GetSqlServerEsuLicenseResponse =
-  CreateSqlServerEsuLicenseResponse as any as S.Schema<GetSqlServerEsuLicenseResponse>;
-
 export interface GetSqlServerInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -4015,11 +2860,6 @@ export interface GetSqlServerInstanceRequest {
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
 }
-const GetSqlServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<GetSqlServerInstanceRequest>;
-
 /** Resource tags. */
 export type GetSqlServerInstanceResponseTagsMap = { [key: string]: string | undefined };
 export interface GetSqlServerInstanceResponse {
@@ -4038,20 +2878,13 @@ export interface GetSqlServerInstanceResponse {
   /** null */
   properties?: SqlServerInstanceProperties;
 }
-const GetSqlServerInstanceResponse =
-  CreateSqlServerInstanceResponse as any as S.Schema<GetSqlServerInstanceResponse>;
-
 /** Filter retrieval based on availability group type. */
 export type AvailabilityGroupTypeFilter = "CONTAINED" | "DISTRIBUTED" | "DEFAULT";
-const AvailabilityGroupTypeFilter = S.String;
-
 export type ReplicationPartnerType =
   | "SQLServer"
   | "AzureSQLVM"
   | "AzureSQLManagedInstance"
   | "Unknown";
-const ReplicationPartnerType = S.String;
-
 export interface GetSqlServerInstanceAllAvailabilityGroupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4062,11 +2895,6 @@ export interface GetSqlServerInstanceAllAvailabilityGroupsRequest {
   availabilityGroupTypeFilter?: AvailabilityGroupTypeFilter | (string & {});
   replicationPartnerTypeFilter?: ReplicationPartnerType | (string & {});
 }
-const GetSqlServerInstanceAllAvailabilityGroupsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<GetSqlServerInstanceAllAvailabilityGroupsRequest>;
-
 /** Resource tags. */
 export type SqlServerAvailabilityGroupResourceTagsMap = { [key: string]: string | undefined };
 /** Arc Sql Server Availability Group */
@@ -4086,17 +2914,9 @@ export interface SqlServerAvailabilityGroupResource {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-const SqlServerAvailabilityGroupResource =
-  AddSqlServerAvailabilityGroupDatabasesResponse as any as S.Schema<SqlServerAvailabilityGroupResource>;
-
 /** Array of Arc Sql Server Availability Groups. */
 export type ArcSqlServerAvailabilityGroupListResultValueList =
   Array<SqlServerAvailabilityGroupResource>;
-const ArcSqlServerAvailabilityGroupListResultValueList = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<ArcSqlServerAvailabilityGroupListResultValueList>;
-
 /** A list of Arc Sql Server Availability Groups. */
 export interface ArcSqlServerAvailabilityGroupListResult {
   /** Array of Arc Sql Server Availability Groups. */
@@ -4104,17 +2924,10 @@ export interface ArcSqlServerAvailabilityGroupListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const ArcSqlServerAvailabilityGroupListResult = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<ArcSqlServerAvailabilityGroupListResult>;
-
 /** The report type that needs to be fetched. If not specified, the default is AssessmentSummary. */
 export type GetSqlServerInstanceBestPracticesAssessmentRequestReportType =
   | "AssessmentDataPoint"
   | "AssessmentSummary";
-const GetSqlServerInstanceBestPracticesAssessmentRequestReportType = S.String;
-
 export interface GetSqlServerInstanceBestPracticesAssessmentRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -4129,11 +2942,6 @@ export interface GetSqlServerInstanceBestPracticesAssessmentRequest {
   /** The opaque token to use to skip to a specific page of the report. If not specified, the first page will be returned. */
   skipToken?: string;
 }
-const GetSqlServerInstanceBestPracticesAssessmentRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<GetSqlServerInstanceBestPracticesAssessmentRequest>;
-
 /** The type of the result column. */
 export type SqlServerInstanceBpaColumnType =
   | "bool"
@@ -4151,30 +2959,14 @@ export interface SqlServerInstanceBpaColumn {
   /** The type of the result column. */
   type?: SqlServerInstanceBpaColumnType;
 }
-const SqlServerInstanceBpaColumn =
-  CreatePostgresInstanceRequestExtendedLocation as any as S.Schema<SqlServerInstanceBpaColumn>;
-
 /** The SQL best practices assessment response columns. */
 export type GetSqlServerInstanceBestPracticesAssessmentResponseColumnsList =
   Array<SqlServerInstanceBpaColumn>;
-const GetSqlServerInstanceBestPracticesAssessmentResponseColumnsList = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<GetSqlServerInstanceBestPracticesAssessmentResponseColumnsList>;
-
 /** An array of values representing a row in the SQL best practices assessment results. */
 export type SqlServerInstanceBpaRow = Array<string>;
-const SqlServerInstanceBpaRow =
-  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<SqlServerInstanceBpaRow>;
-
 /** An array of results of the SQL best practices assessment response. */
 export type GetSqlServerInstanceBestPracticesAssessmentResponseRowsList =
   Array<SqlServerInstanceBpaRow>;
-const GetSqlServerInstanceBestPracticesAssessmentResponseRowsList = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<GetSqlServerInstanceBestPracticesAssessmentResponseRowsList>;
-
 export interface GetSqlServerInstanceBestPracticesAssessmentResponse {
   /** The SQL best practices assessment response columns. */
   columns: GetSqlServerInstanceBestPracticesAssessmentResponseColumnsList;
@@ -4183,11 +2975,6 @@ export interface GetSqlServerInstanceBestPracticesAssessmentResponse {
   /** The link to the next page of the best practices assessment response for the SQL Server instance. Null, if no more pages are available. */
   nextLink?: string;
 }
-const GetSqlServerInstanceBestPracticesAssessmentResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<GetSqlServerInstanceBestPracticesAssessmentResponse>;
-
 export interface GetSqlServerInstanceJobsStatusRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -4200,19 +2987,12 @@ export interface GetSqlServerInstanceJobsStatusRequest {
   /** The type of the job to retrieve the status for. */
   jobType?: string;
 }
-const GetSqlServerInstanceJobsStatusRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<GetSqlServerInstanceJobsStatusRequest>;
-
 /** The status of the job. */
 export type SqlServerInstanceJobStatusJobStatus =
   | "NotStarted"
   | "InProgress"
   | "Succeeded"
   | "Failed";
-const SqlServerInstanceJobStatusJobStatus = S.String;
-
 /** The state of the background job. */
 export type BackgroundJobState =
   | "Enabled"
@@ -4221,12 +3001,8 @@ export type BackgroundJobState =
   | "Completed"
   | "Faulted"
   | "Suspended";
-const BackgroundJobState = S.String;
-
 /** The execution state of the background job. */
 export type BackgroundJobExecutionState = "Waiting" | "Running";
-const BackgroundJobExecutionState = S.String;
-
 /** The last execution status of the background job. */
 export type BackgroundJobLastExecutionStatus =
   | "Succeeded"
@@ -4235,8 +3011,6 @@ export type BackgroundJobLastExecutionStatus =
   | "Faulted"
   | "Postponed"
   | "Rescheduled";
-const BackgroundJobLastExecutionStatus = S.String;
-
 /** The background job details. */
 export interface BackgroundJob {
   /** The state of the background job. */
@@ -4252,8 +3026,6 @@ export interface BackgroundJob {
   /** The last execution time of the background job. */
   lastExecutionTime?: string;
 }
-const BackgroundJob = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<BackgroundJob>;
-
 /** The state of the sequencer action. */
 export type SequencerActionState =
   | "NotStarted"
@@ -4261,8 +3033,6 @@ export type SequencerActionState =
   | "ExecutingAction"
   | "CreatingSuccessors"
   | "Completed";
-const SequencerActionState = S.String;
-
 /** The result of the sequencer action. */
 export type SequencerActionResult =
   | "NotCompleted"
@@ -4270,8 +3040,6 @@ export type SequencerActionResult =
   | "Failed"
   | "TimedOut"
   | "Skipped";
-const SequencerActionResult = S.String;
-
 /** The sequencer action details. */
 export interface SequencerAction {
   /** The unique identifier of the sequencer action. */
@@ -4281,15 +3049,8 @@ export interface SequencerAction {
   /** The result of the sequencer action. */
   result?: SequencerActionResult;
 }
-const SequencerAction = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<SequencerAction>;
-
 /** The list of sequencer actions. */
 export type SqlServerInstanceJobStatusSequencerActionsList = Array<SequencerAction>;
-const SqlServerInstanceJobStatusSequencerActionsList = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<SqlServerInstanceJobStatusSequencerActionsList>;
-
 /** The status of the job running on the SQL Server instance. */
 export interface SqlServerInstanceJobStatus {
   /** The unique identifier of the job. */
@@ -4305,28 +3066,13 @@ export interface SqlServerInstanceJobStatus {
   /** The list of sequencer actions. */
   sequencerActions?: SqlServerInstanceJobStatusSequencerActionsList;
 }
-const SqlServerInstanceJobStatus = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<SqlServerInstanceJobStatus>;
-
 /** The list of jobs status running on the SQL Server instance. */
 export type GetSqlServerInstanceJobsStatusResponseJobsStatusList =
   Array<SqlServerInstanceJobStatus>;
-const GetSqlServerInstanceJobsStatusResponseJobsStatusList = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<GetSqlServerInstanceJobsStatusResponseJobsStatusList>;
-
 export interface GetSqlServerInstanceJobsStatusResponse {
   /** The list of jobs status running on the SQL Server instance. */
   jobsStatus?: GetSqlServerInstanceJobsStatusResponseJobsStatusList;
 }
-const GetSqlServerInstanceJobsStatusResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<GetSqlServerInstanceJobsStatusResponse>;
-
 /** The aggregation type to use for the numerical columns in the dataset. */
 export type GetSqlServerInstanceTelemetryRequestAggregationType =
   | "Average"
@@ -4334,13 +3080,8 @@ export type GetSqlServerInstanceTelemetryRequestAggregationType =
   | "Maximum"
   | "Sum"
   | "Count";
-const GetSqlServerInstanceTelemetryRequestAggregationType = S.String;
-
 /** The list of database names to return telemetry for. If not specified, telemetry for all databases will be aggregated and returned. */
 export type GetSqlServerInstanceTelemetryRequestDatabaseNamesList = Array<string>;
-const GetSqlServerInstanceTelemetryRequestDatabaseNamesList =
-  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<GetSqlServerInstanceTelemetryRequestDatabaseNamesList>;
-
 export interface GetSqlServerInstanceTelemetryRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -4361,11 +3102,6 @@ export interface GetSqlServerInstanceTelemetryRequest {
   /** The list of database names to return telemetry for. If not specified, telemetry for all databases will be aggregated and returned. */
   databaseNames?: GetSqlServerInstanceTelemetryRequestDatabaseNamesList;
 }
-const GetSqlServerInstanceTelemetryRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<GetSqlServerInstanceTelemetryRequest>;
-
 /** The type of the telemetry column. */
 export type SqlServerInstanceTelemetryColumnType =
   | "bool"
@@ -4386,16 +3122,10 @@ export interface SqlServerInstanceTelemetryColumn {
 /** The columns of the result telemetry table for the SQL Server instance. */
 export type GetSqlServerInstanceTelemetryResponseColumnsList =
   Array<SqlServerInstanceTelemetryColumn>;
-const GetSqlServerInstanceTelemetryResponseColumnsList =
-  GetSqlServerInstanceBestPracticesAssessmentResponseColumnsList as any as S.Schema<GetSqlServerInstanceTelemetryResponseColumnsList>;
-
 /** An array of values representing a telemetry row for the SQL Server instance. */
 export type SqlServerInstanceTelemetryRow = Array<string>;
 /** A list of rows from the result telemetry table for the SQL Server instance. */
 export type GetSqlServerInstanceTelemetryResponseRowsList = Array<SqlServerInstanceTelemetryRow>;
-const GetSqlServerInstanceTelemetryResponseRowsList =
-  GetSqlServerInstanceBestPracticesAssessmentResponseRowsList as any as S.Schema<GetSqlServerInstanceTelemetryResponseRowsList>;
-
 export interface GetSqlServerInstanceTelemetryResponse {
   /** The columns of the result telemetry table for the SQL Server instance. */
   columns: GetSqlServerInstanceTelemetryResponseColumnsList;
@@ -4404,11 +3134,6 @@ export interface GetSqlServerInstanceTelemetryResponse {
   /** The link to the next section of rows of the telemetry response for the SQL Server instance. Null if no more sections are available. */
   nextLink?: string;
 }
-const GetSqlServerInstanceTelemetryResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<GetSqlServerInstanceTelemetryResponse>;
-
 export interface GetSqlServerLicenseRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -4417,11 +3142,6 @@ export interface GetSqlServerLicenseRequest {
   /** Name of SQL Server License */
   sqlServerLicenseName: string;
 }
-const GetSqlServerLicenseRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<GetSqlServerLicenseRequest>;
-
 /** Resource tags. */
 export type GetSqlServerLicenseResponseTagsMap = { [key: string]: string | undefined };
 export interface GetSqlServerLicenseResponse {
@@ -4440,9 +3160,6 @@ export interface GetSqlServerLicenseResponse {
   /** SQL Server license properties */
   properties: SqlServerLicenseProperties;
 }
-const GetSqlServerLicenseResponse =
-  CreateSqlServerLicenseResponse as any as S.Schema<GetSqlServerLicenseResponse>;
-
 export interface ListActiveDirectoryConnectorsRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -4451,11 +3168,6 @@ export interface ListActiveDirectoryConnectorsRequest {
   /** The name of the data controller */
   dataControllerName: string;
 }
-const ListActiveDirectoryConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ListActiveDirectoryConnectorsRequest>;
-
 /** Active directory connector resource */
 export interface ActiveDirectoryConnectorResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4469,44 +3181,23 @@ export interface ActiveDirectoryConnectorResource {
   /** null */
   properties: ActiveDirectoryConnectorProperties;
 }
-const ActiveDirectoryConnectorResource =
-  CreateActiveDirectoryConnectorResponse as any as S.Schema<ActiveDirectoryConnectorResource>;
-
 /** Array of results. */
 export type ListActiveDirectoryConnectorsResponseValueList =
   Array<ActiveDirectoryConnectorResource>;
-const ListActiveDirectoryConnectorsResponseValueList = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<ListActiveDirectoryConnectorsResponseValueList>;
-
 export interface ListActiveDirectoryConnectorsResponse {
   /** Array of results. */
   value?: ListActiveDirectoryConnectorsResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const ListActiveDirectoryConnectorsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<ListActiveDirectoryConnectorsResponse>;
-
 export interface ListDataControllerInGroupRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
   resourceGroupName: string;
 }
-const ListDataControllerInGroupRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<ListDataControllerInGroupRequest>;
-
 /** Resource tags. */
 export type DataControllerResourceTagsMap = { [key: string]: string | undefined };
-const DataControllerResourceTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<DataControllerResourceTagsMap>;
-
 /** The complex type of the extended location. */
 export type DataControllerResourceExtendedLocation = CreatePostgresInstanceResponseExtendedLocation;
 /** Data controller resource */
@@ -4528,38 +3219,18 @@ export interface DataControllerResource {
   /** The data controller's properties */
   properties: DataControllerProperties;
 }
-const DataControllerResource = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<DataControllerResource>;
-
 /** Array of results. */
 export type ListDataControllerInGroupResponseValueList = Array<DataControllerResource>;
-const ListDataControllerInGroupResponseValueList = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<ListDataControllerInGroupResponseValueList>;
-
 export interface ListDataControllerInGroupResponse {
   /** Array of results. */
   value?: ListDataControllerInGroupResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const ListDataControllerInGroupResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<ListDataControllerInGroupResponse>;
-
 export interface ListDataControllerInSubscriptionRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
 }
-const ListDataControllerInSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<ListDataControllerInSubscriptionRequest>;
-
 /** Array of results. */
 export type ListDataControllerInSubscriptionResponseValueList = Array<DataControllerResource>;
 export interface ListDataControllerInSubscriptionResponse {
@@ -4568,9 +3239,6 @@ export interface ListDataControllerInSubscriptionResponse {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const ListDataControllerInSubscriptionResponse =
-  ListDataControllerInGroupResponse as any as S.Schema<ListDataControllerInSubscriptionResponse>;
-
 export interface ListFailoverGroupsRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -4579,11 +3247,6 @@ export interface ListFailoverGroupsRequest {
   /** Name of SQL Managed Instance */
   sqlManagedInstanceName: string;
 }
-const ListFailoverGroupsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<ListFailoverGroupsRequest>;
-
 /** A failover group resource. */
 export interface FailoverGroupResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4597,32 +3260,15 @@ export interface FailoverGroupResource {
   /** null */
   properties: FailoverGroupProperties;
 }
-const FailoverGroupResource = GetFailoverGroupResponse as any as S.Schema<FailoverGroupResource>;
-
 /** Array of failover group results. */
 export type ListFailoverGroupsResponseValueList = Array<FailoverGroupResource>;
-const ListFailoverGroupsResponseValueList = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<ListFailoverGroupsResponseValueList>;
-
 export interface ListFailoverGroupsResponse {
   /** Array of failover group results. */
   value?: ListFailoverGroupsResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const ListFailoverGroupsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ListFailoverGroupsResponse>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Display metadata associated with the operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name. */
@@ -4634,19 +3280,10 @@ export interface OperationDisplay {
   /** The localized friendly description for the operation. */
   description: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation. */
 export type OperationOrigin = "user" | "system";
-const OperationOrigin = S.String;
-
 /** Additional descriptions for the operation. */
 export type OperationPropertiesMap = { [key: string]: unknown | undefined };
-const OperationPropertiesMap = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<OperationPropertiesMap>;
-
 /** Azure Data Services on Azure Arc operation definition. */
 export interface Operation {
   /** The name of the operation being performed on this particular object. */
@@ -4660,42 +3297,22 @@ export interface Operation {
   /** Additional descriptions for the operation. */
   properties?: OperationPropertiesMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c26, 6) as any as S.Schema<Operation>;
-
 /** Array of results. */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** Array of results. */
   value?: ListOperationsResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListPostgresInstanceByResourceGroupRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
   resourceGroupName: string;
 }
-const ListPostgresInstanceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<ListPostgresInstanceByResourceGroupRequest>;
-
 /** Resource tags. */
 export type PostgresInstanceTagsMap = { [key: string]: string | undefined };
-const PostgresInstanceTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<PostgresInstanceTagsMap>;
-
 /** The complex type of the extended location. */
 export type PostgresInstanceExtendedLocation = CreatePostgresInstanceResponseExtendedLocation;
 /** A Postgres Instance. */
@@ -4719,35 +3336,18 @@ export interface PostgresInstance {
   /** Resource sku. */
   sku?: PostgresInstanceSku;
 }
-const PostgresInstance = /*@__PURE__*/ __L.at(__c27, 2) as any as S.Schema<PostgresInstance>;
-
 /** Array of results. */
 export type ListPostgresInstanceByResourceGroupResponseValueList = Array<PostgresInstance>;
-const ListPostgresInstanceByResourceGroupResponseValueList = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ListPostgresInstanceByResourceGroupResponseValueList>;
-
 export interface ListPostgresInstanceByResourceGroupResponse {
   /** Array of results. */
   value?: ListPostgresInstanceByResourceGroupResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const ListPostgresInstanceByResourceGroupResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<ListPostgresInstanceByResourceGroupResponse>;
-
 export interface ListPostgresInstancesRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
 }
-const ListPostgresInstancesRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<ListPostgresInstancesRequest>;
-
 /** Array of results. */
 export type ListPostgresInstancesResponseValueList = Array<PostgresInstance>;
 export interface ListPostgresInstancesResponse {
@@ -4756,25 +3356,14 @@ export interface ListPostgresInstancesResponse {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const ListPostgresInstancesResponse =
-  ListPostgresInstanceByResourceGroupResponse as any as S.Schema<ListPostgresInstancesResponse>;
-
 export interface ListSqlManagedInstanceByResourceGroupRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
   resourceGroupName: string;
 }
-const ListSqlManagedInstanceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<ListSqlManagedInstanceByResourceGroupRequest>;
-
 /** Resource tags. */
 export type SqlManagedInstanceTagsMap = { [key: string]: string | undefined };
-const SqlManagedInstanceTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<SqlManagedInstanceTagsMap>;
-
 /** The complex type of the extended location. */
 export type SqlManagedInstanceExtendedLocation = CreatePostgresInstanceResponseExtendedLocation;
 /** A SqlManagedInstance. */
@@ -4798,35 +3387,18 @@ export interface SqlManagedInstance {
   /** Resource sku. */
   sku?: SqlManagedInstanceSku;
 }
-const SqlManagedInstance = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<SqlManagedInstance>;
-
 /** Array of results. */
 export type ListSqlManagedInstanceByResourceGroupResponseValueList = Array<SqlManagedInstance>;
-const ListSqlManagedInstanceByResourceGroupResponseValueList = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<ListSqlManagedInstanceByResourceGroupResponseValueList>;
-
 export interface ListSqlManagedInstanceByResourceGroupResponse {
   /** Array of results. */
   value?: ListSqlManagedInstanceByResourceGroupResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const ListSqlManagedInstanceByResourceGroupResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<ListSqlManagedInstanceByResourceGroupResponse>;
-
 export interface ListSqlManagedInstancesRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
 }
-const ListSqlManagedInstancesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<ListSqlManagedInstancesRequest>;
-
 /** Array of results. */
 export type ListSqlManagedInstancesResponseValueList = Array<SqlManagedInstance>;
 export interface ListSqlManagedInstancesResponse {
@@ -4835,9 +3407,6 @@ export interface ListSqlManagedInstancesResponse {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const ListSqlManagedInstancesResponse =
-  ListSqlManagedInstanceByResourceGroupResponse as any as S.Schema<ListSqlManagedInstancesResponse>;
-
 export interface ListSqlServerAvailabilityGroupsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4846,11 +3415,6 @@ export interface ListSqlServerAvailabilityGroupsRequest {
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
 }
-const ListSqlServerAvailabilityGroupsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<ListSqlServerAvailabilityGroupsRequest>;
-
 export interface ListSqlServerDatabasesRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -4859,11 +3423,6 @@ export interface ListSqlServerDatabasesRequest {
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
 }
-const ListSqlServerDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<ListSqlServerDatabasesRequest>;
-
 /** Resource tags. */
 export type SqlServerDatabaseResourceTagsMap = { [key: string]: string | undefined };
 /** Arc Sql Server database */
@@ -4883,16 +3442,8 @@ export interface SqlServerDatabaseResource {
   /** Properties of Arc Sql Server database */
   properties: SqlServerDatabaseResourceProperties;
 }
-const SqlServerDatabaseResource =
-  CreateSqlServerDatabaseResponse as any as S.Schema<SqlServerDatabaseResource>;
-
 /** Array of Arc Sql Server database. */
 export type ArcSqlServerDatabaseListResultValueList = Array<SqlServerDatabaseResource>;
-const ArcSqlServerDatabaseListResultValueList = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<ArcSqlServerDatabaseListResultValueList>;
-
 /** A list of Arc Sql Server database. */
 export interface ArcSqlServerDatabaseListResult {
   /** Array of Arc Sql Server database. */
@@ -4900,27 +3451,14 @@ export interface ArcSqlServerDatabaseListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const ArcSqlServerDatabaseListResult = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<ArcSqlServerDatabaseListResult>;
-
 export interface ListSqlServerEsuLicenseByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListSqlServerEsuLicenseByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<ListSqlServerEsuLicenseByResourceGroupRequest>;
-
 /** Resource tags. */
 export type SqlServerEsuLicenseTagsMap = { [key: string]: string | undefined };
-const SqlServerEsuLicenseTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<SqlServerEsuLicenseTagsMap>;
-
 /** Describe SQL Server ESU license resource. */
 export interface SqlServerEsuLicense {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -4938,15 +3476,8 @@ export interface SqlServerEsuLicense {
   /** SQL Server ESU license properties */
   properties: SqlServerEsuLicenseProperties;
 }
-const SqlServerEsuLicense = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<SqlServerEsuLicense>;
-
 /** Array of results. */
 export type SqlServerEsuLicenseListResultValueList = Array<SqlServerEsuLicense>;
-const SqlServerEsuLicenseListResultValueList = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<SqlServerEsuLicenseListResultValueList>;
-
 /** A list of SQL Server ESU licenses. */
 export interface SqlServerEsuLicenseListResult {
   /** Array of results. */
@@ -4954,36 +3485,18 @@ export interface SqlServerEsuLicenseListResult {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const SqlServerEsuLicenseListResult = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<SqlServerEsuLicenseListResult>;
-
 export interface ListSqlServerEsuLicensesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListSqlServerEsuLicensesRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<ListSqlServerEsuLicensesRequest>;
-
 export interface ListSqlServerInstanceByResourceGroupRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
   resourceGroupName: string;
 }
-const ListSqlServerInstanceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<ListSqlServerInstanceByResourceGroupRequest>;
-
 /** Resource tags. */
 export type SqlServerInstanceTagsMap = { [key: string]: string | undefined };
-const SqlServerInstanceTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<SqlServerInstanceTagsMap>;
-
 /** A SqlServerInstance. */
 export interface SqlServerInstance {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5001,35 +3514,18 @@ export interface SqlServerInstance {
   /** null */
   properties?: SqlServerInstanceProperties;
 }
-const SqlServerInstance = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<SqlServerInstance>;
-
 /** Array of results. */
 export type ListSqlServerInstanceByResourceGroupResponseValueList = Array<SqlServerInstance>;
-const ListSqlServerInstanceByResourceGroupResponseValueList = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<ListSqlServerInstanceByResourceGroupResponseValueList>;
-
 export interface ListSqlServerInstanceByResourceGroupResponse {
   /** Array of results. */
   value?: ListSqlServerInstanceByResourceGroupResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const ListSqlServerInstanceByResourceGroupResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<ListSqlServerInstanceByResourceGroupResponse>;
-
 export interface ListSqlServerInstancesRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
 }
-const ListSqlServerInstancesRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<ListSqlServerInstancesRequest>;
-
 /** Array of results. */
 export type ListSqlServerInstancesResponseValueList = Array<SqlServerInstance>;
 export interface ListSqlServerInstancesResponse {
@@ -5038,25 +3534,14 @@ export interface ListSqlServerInstancesResponse {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const ListSqlServerInstancesResponse =
-  ListSqlServerInstanceByResourceGroupResponse as any as S.Schema<ListSqlServerInstancesResponse>;
-
 export interface ListSqlServerLicenseByResourceGroupRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
   /** The name of the Azure resource group */
   resourceGroupName: string;
 }
-const ListSqlServerLicenseByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<ListSqlServerLicenseByResourceGroupRequest>;
-
 /** Resource tags. */
 export type SqlServerLicenseTagsMap = { [key: string]: string | undefined };
-const SqlServerLicenseTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<SqlServerLicenseTagsMap>;
-
 /** Describe SQL Server license resource. */
 export interface SqlServerLicense {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5074,35 +3559,18 @@ export interface SqlServerLicense {
   /** SQL Server license properties */
   properties: SqlServerLicenseProperties;
 }
-const SqlServerLicense = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<SqlServerLicense>;
-
 /** Array of results. */
 export type ListSqlServerLicenseByResourceGroupResponseValueList = Array<SqlServerLicense>;
-const ListSqlServerLicenseByResourceGroupResponseValueList = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<ListSqlServerLicenseByResourceGroupResponseValueList>;
-
 export interface ListSqlServerLicenseByResourceGroupResponse {
   /** Array of results. */
   value?: ListSqlServerLicenseByResourceGroupResponseValueList;
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const ListSqlServerLicenseByResourceGroupResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<ListSqlServerLicenseByResourceGroupResponse>;
-
 export interface ListSqlServerLicensesRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
 }
-const ListSqlServerLicensesRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<ListSqlServerLicensesRequest>;
-
 /** Array of results. */
 export type ListSqlServerLicensesResponseValueList = Array<SqlServerLicense>;
 export interface ListSqlServerLicensesResponse {
@@ -5111,14 +3579,8 @@ export interface ListSqlServerLicensesResponse {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const ListSqlServerLicensesResponse =
-  ListSqlServerLicenseByResourceGroupResponse as any as S.Schema<ListSqlServerLicensesResponse>;
-
 /** Resource tags */
 export type PatchDataControllerDataControllerRequestTagsMap = { [key: string]: string | undefined };
-const PatchDataControllerDataControllerRequestTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<PatchDataControllerDataControllerRequestTagsMap>;
-
 /** The infrastructure the data controller is running on. */
 export type DataControllerPropertiesInputInfrastructure =
   | "azure"
@@ -5127,8 +3589,6 @@ export type DataControllerPropertiesInputInfrastructure =
   | "alibaba"
   | "onpremises"
   | "other";
-const DataControllerPropertiesInputInfrastructure = S.String;
-
 /** Username and password for basic login authentication. */
 export type DataControllerPropertiesInputBasicLoginInformation =
   ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation;
@@ -5162,11 +3622,6 @@ export interface DataControllerPropertiesInput {
   /** If a CustomLocation is provided, this contains the ARM id of the extension the custom location belongs to. */
   extensionId?: string;
 }
-const DataControllerPropertiesInput = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<DataControllerPropertiesInput>;
-
 export interface PatchDataControllerDataControllerRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -5179,11 +3634,6 @@ export interface PatchDataControllerDataControllerRequest {
   /** The data controller's properties */
   properties?: DataControllerPropertiesInput;
 }
-const PatchDataControllerDataControllerRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<PatchDataControllerDataControllerRequest>;
-
 /** Resource tags. */
 export type PatchDataControllerDataControllerResponseTagsMap = {
   [key: string]: string | undefined;
@@ -5209,9 +3659,6 @@ export interface PatchDataControllerDataControllerResponse {
   /** The data controller's properties */
   properties: DataControllerProperties;
 }
-const PatchDataControllerDataControllerResponse =
-  GetDataControllerDataControllerResponse as any as S.Schema<PatchDataControllerDataControllerResponse>;
-
 export interface PostSqlServerInstanceUpgradeRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -5220,11 +3667,6 @@ export interface PostSqlServerInstanceUpgradeRequest {
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
 }
-const PostSqlServerInstanceUpgradeRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<PostSqlServerInstanceUpgradeRequest>;
-
 /** Resource tags. */
 export type PostSqlServerInstanceUpgradeResponseTagsMap = { [key: string]: string | undefined };
 export interface PostSqlServerInstanceUpgradeResponse {
@@ -5243,14 +3685,8 @@ export interface PostSqlServerInstanceUpgradeResponse {
   /** null */
   properties?: SqlServerInstanceProperties;
 }
-const PostSqlServerInstanceUpgradeResponse =
-  CreateSqlServerInstanceResponse as any as S.Schema<PostSqlServerInstanceUpgradeResponse>;
-
 /** Resource tags. */
 export type PutDataControllerDataControllerRequestTagsMap = { [key: string]: string | undefined };
-const PutDataControllerDataControllerRequestTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<PutDataControllerDataControllerRequestTagsMap>;
-
 /** The complex type of the extended location. */
 export type PutDataControllerDataControllerRequestExtendedLocation =
   CreatePostgresInstanceRequestExtendedLocation;
@@ -5270,11 +3706,6 @@ export interface PutDataControllerDataControllerRequest {
   /** The data controller's properties */
   properties: DataControllerPropertiesInput;
 }
-const PutDataControllerDataControllerRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<PutDataControllerDataControllerRequest>;
-
 /** Resource tags. */
 export type PutDataControllerDataControllerResponseTagsMap = { [key: string]: string | undefined };
 /** The complex type of the extended location. */
@@ -5298,14 +3729,8 @@ export interface PutDataControllerDataControllerResponse {
   /** The data controller's properties */
   properties: DataControllerProperties;
 }
-const PutDataControllerDataControllerResponse =
-  GetDataControllerDataControllerResponse as any as S.Schema<PutDataControllerDataControllerResponse>;
-
 /** List of database names. */
 export type RemoveSqlServerAvailabilityGroupDatabasesRequestValuesList = Array<string>;
-const RemoveSqlServerAvailabilityGroupDatabasesRequestValuesList =
-  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<RemoveSqlServerAvailabilityGroupDatabasesRequestValuesList>;
-
 export interface RemoveSqlServerAvailabilityGroupDatabasesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5318,11 +3743,6 @@ export interface RemoveSqlServerAvailabilityGroupDatabasesRequest {
   /** List of database names. */
   values?: RemoveSqlServerAvailabilityGroupDatabasesRequestValuesList;
 }
-const RemoveSqlServerAvailabilityGroupDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<RemoveSqlServerAvailabilityGroupDatabasesRequest>;
-
 /** Resource tags. */
 export type RemoveSqlServerAvailabilityGroupDatabasesResponseTagsMap = {
   [key: string]: string | undefined;
@@ -5343,9 +3763,6 @@ export interface RemoveSqlServerAvailabilityGroupDatabasesResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-const RemoveSqlServerAvailabilityGroupDatabasesResponse =
-  AddSqlServerAvailabilityGroupDatabasesResponse as any as S.Schema<RemoveSqlServerAvailabilityGroupDatabasesResponse>;
-
 export interface RunSqlServerInstanceBestPracticesAssessmentRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -5354,28 +3771,15 @@ export interface RunSqlServerInstanceBestPracticesAssessmentRequest {
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
 }
-const RunSqlServerInstanceBestPracticesAssessmentRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<RunSqlServerInstanceBestPracticesAssessmentRequest>;
-
 /** The status of the job. */
 export type RunSqlServerInstanceBestPracticesAssessmentResponseJobStatus =
   | "NotStarted"
   | "InProgress"
   | "Succeeded"
   | "Failed";
-const RunSqlServerInstanceBestPracticesAssessmentResponseJobStatus = S.String;
-
 /** The list of sequencer actions. */
 export type RunSqlServerInstanceBestPracticesAssessmentResponseSequencerActionsList =
   Array<SequencerAction>;
-const RunSqlServerInstanceBestPracticesAssessmentResponseSequencerActionsList =
-  /*@__PURE__*/ __L.at(
-    __c31,
-    4,
-  ) as any as S.Schema<RunSqlServerInstanceBestPracticesAssessmentResponseSequencerActionsList>;
-
 export interface RunSqlServerInstanceBestPracticesAssessmentResponse {
   /** The unique identifier of the job. */
   id?: string;
@@ -5390,23 +3794,13 @@ export interface RunSqlServerInstanceBestPracticesAssessmentResponse {
   /** The list of sequencer actions. */
   sequencerActions?: RunSqlServerInstanceBestPracticesAssessmentResponseSequencerActionsList;
 }
-const RunSqlServerInstanceBestPracticesAssessmentResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<RunSqlServerInstanceBestPracticesAssessmentResponse>;
-
 /** The role of managed instance in a distributed availability group, can be Primary or Secondary. */
 export type RunSqlServerInstanceManagedInstanceLinkAssessmentRequestAzureManagedInstanceRole =
   | "Primary"
   | "Secondary";
-const RunSqlServerInstanceManagedInstanceLinkAssessmentRequestAzureManagedInstanceRole = S.String;
-
 /** An array of strings, where each value represents the name of a database to be replicated to the Azure SQL Managed Instance. */
 export type RunSqlServerInstanceManagedInstanceLinkAssessmentRequestDatabaseNamesList =
   Array<string>;
-const RunSqlServerInstanceManagedInstanceLinkAssessmentRequestDatabaseNamesList =
-  SqlAvailabilityGroupStaticIPListenerPropertiesIpV6AddressesList as any as S.Schema<RunSqlServerInstanceManagedInstanceLinkAssessmentRequestDatabaseNamesList>;
-
 /** Validation category for the MI Link prerequisites assessment. */
 export type MiLinkAssessmentCategory =
   | "SqlInstance"
@@ -5419,17 +3813,9 @@ export type MiLinkAssessmentCategory =
   | "MiToBoxNetworkConnectivity"
   | "SqlInstanceAg"
   | "DagCrossValidation";
-const MiLinkAssessmentCategory = S.String;
-
 /** An array of strings, where each value represents the category of the assessment to be run. If this field is not provided, all assessment categories will be run. */
 export type RunSqlServerInstanceManagedInstanceLinkAssessmentRequestAssessmentCategoriesList =
   Array<MiLinkAssessmentCategory | (string & {})>;
-const RunSqlServerInstanceManagedInstanceLinkAssessmentRequestAssessmentCategoriesList =
-  /*@__PURE__*/ __L.at(
-    __c31,
-    6,
-  ) as any as S.Schema<RunSqlServerInstanceManagedInstanceLinkAssessmentRequestAssessmentCategoriesList>;
-
 export interface RunSqlServerInstanceManagedInstanceLinkAssessmentRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5454,23 +3840,13 @@ export interface RunSqlServerInstanceManagedInstanceLinkAssessmentRequest {
   /** The IP address of the SQL Server instance. */
   sqlServerIpAddress?: string;
 }
-const RunSqlServerInstanceManagedInstanceLinkAssessmentRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<RunSqlServerInstanceManagedInstanceLinkAssessmentRequest>;
-
 /** The status of the requirement. */
 export type SqlServerInstanceManagedInstanceLinkAssessmentStatus =
   | "Success"
   | "Warning"
   | "Failure";
-const SqlServerInstanceManagedInstanceLinkAssessmentStatus = S.String;
-
 /** List of names of databases that are failing the given assessment. */
 export type SqlServerInstanceManagedInstanceLinkAssessmentFailingDbsList = Array<string>;
-const SqlServerInstanceManagedInstanceLinkAssessmentFailingDbsList =
-  AddSqlServerAvailabilityGroupDatabasesRequestValuesList as any as S.Schema<SqlServerInstanceManagedInstanceLinkAssessmentFailingDbsList>;
-
 /** The status of an individual requirement for MI Link. */
 export interface SqlServerInstanceManagedInstanceLinkAssessment {
   /** The name of the requirement. */
@@ -5485,29 +3861,13 @@ export interface SqlServerInstanceManagedInstanceLinkAssessment {
   /** List of names of databases that are failing the given assessment. */
   failingDbs?: SqlServerInstanceManagedInstanceLinkAssessmentFailingDbsList;
 }
-const SqlServerInstanceManagedInstanceLinkAssessment = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<SqlServerInstanceManagedInstanceLinkAssessment>;
-
 /** The list of the results for MI Link assessment. */
 export type RunSqlServerInstanceManagedInstanceLinkAssessmentResponseAssessmentsList =
   Array<SqlServerInstanceManagedInstanceLinkAssessment>;
-const RunSqlServerInstanceManagedInstanceLinkAssessmentResponseAssessmentsList =
-  /*@__PURE__*/ __L.at(
-    __c32,
-    1,
-  ) as any as S.Schema<RunSqlServerInstanceManagedInstanceLinkAssessmentResponseAssessmentsList>;
-
 export interface RunSqlServerInstanceManagedInstanceLinkAssessmentResponse {
   /** The list of the results for MI Link assessment. */
   assessments?: RunSqlServerInstanceManagedInstanceLinkAssessmentResponseAssessmentsList;
 }
-const RunSqlServerInstanceManagedInstanceLinkAssessmentResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<RunSqlServerInstanceManagedInstanceLinkAssessmentResponse>;
-
 export interface RunSqlServerInstanceMigrationAssessmentRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -5516,25 +3876,15 @@ export interface RunSqlServerInstanceMigrationAssessmentRequest {
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
 }
-const RunSqlServerInstanceMigrationAssessmentRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<RunSqlServerInstanceMigrationAssessmentRequest>;
-
 /** The status of the job. */
 export type RunSqlServerInstanceMigrationAssessmentResponseJobStatus =
   | "NotStarted"
   | "InProgress"
   | "Succeeded"
   | "Failed";
-const RunSqlServerInstanceMigrationAssessmentResponseJobStatus = S.String;
-
 /** The list of sequencer actions. */
 export type RunSqlServerInstanceMigrationAssessmentResponseSequencerActionsList =
   Array<SequencerAction>;
-const RunSqlServerInstanceMigrationAssessmentResponseSequencerActionsList =
-  RunSqlServerInstanceBestPracticesAssessmentResponseSequencerActionsList as any as S.Schema<RunSqlServerInstanceMigrationAssessmentResponseSequencerActionsList>;
-
 export interface RunSqlServerInstanceMigrationAssessmentResponse {
   /** The unique identifier of the job. */
   id?: string;
@@ -5549,11 +3899,6 @@ export interface RunSqlServerInstanceMigrationAssessmentResponse {
   /** The list of sequencer actions. */
   sequencerActions?: RunSqlServerInstanceMigrationAssessmentResponseSequencerActionsList;
 }
-const RunSqlServerInstanceMigrationAssessmentResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<RunSqlServerInstanceMigrationAssessmentResponse>;
-
 export interface SqlServerAvailabilityGroupsDetailViewRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5564,11 +3909,6 @@ export interface SqlServerAvailabilityGroupsDetailViewRequest {
   /** Name of SQL Availability Group */
   availabilityGroupName: string;
 }
-const SqlServerAvailabilityGroupsDetailViewRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<SqlServerAvailabilityGroupsDetailViewRequest>;
-
 /** Resource tags. */
 export type SqlServerAvailabilityGroupsDetailViewResponseTagsMap = {
   [key: string]: string | undefined;
@@ -5589,9 +3929,6 @@ export interface SqlServerAvailabilityGroupsDetailViewResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-const SqlServerAvailabilityGroupsDetailViewResponse =
-  AddSqlServerAvailabilityGroupDatabasesResponse as any as S.Schema<SqlServerAvailabilityGroupsDetailViewResponse>;
-
 export interface SqlServerAvailabilityGroupsFailoverRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5602,11 +3939,6 @@ export interface SqlServerAvailabilityGroupsFailoverRequest {
   /** Name of SQL Availability Group */
   availabilityGroupName: string;
 }
-const SqlServerAvailabilityGroupsFailoverRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<SqlServerAvailabilityGroupsFailoverRequest>;
-
 /** Resource tags. */
 export type SqlServerAvailabilityGroupsFailoverResponseTagsMap = {
   [key: string]: string | undefined;
@@ -5627,9 +3959,6 @@ export interface SqlServerAvailabilityGroupsFailoverResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-const SqlServerAvailabilityGroupsFailoverResponse =
-  AddSqlServerAvailabilityGroupDatabasesResponse as any as S.Schema<SqlServerAvailabilityGroupsFailoverResponse>;
-
 export interface SqlServerAvailabilityGroupsFailoverMiLinkRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5644,11 +3973,6 @@ export interface SqlServerAvailabilityGroupsFailoverMiLinkRequest {
   /** Whether to perform a Force Failover as opposed to just a regular Failover. */
   force?: boolean;
 }
-const SqlServerAvailabilityGroupsFailoverMiLinkRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkRequest>;
-
 /** Resource tags. */
 export type SqlServerAvailabilityGroupsFailoverMiLinkResponseTagsMap = {
   [key: string]: string | undefined;
@@ -5669,9 +3993,6 @@ export interface SqlServerAvailabilityGroupsFailoverMiLinkResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-const SqlServerAvailabilityGroupsFailoverMiLinkResponse =
-  AddSqlServerAvailabilityGroupDatabasesResponse as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkResponse>;
-
 export interface SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5682,11 +4003,6 @@ export interface SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest {
   /** Name of SQL Availability Group */
   availabilityGroupName: string;
 }
-const SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest>;
-
 /** Resource tags. */
 export type SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponseTagsMap = {
   [key: string]: string | undefined;
@@ -5707,9 +4023,6 @@ export interface SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-const SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse =
-  CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse as any as S.Schema<SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse>;
-
 export interface SqlServerInstancesPreUpgradeRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -5718,11 +4031,6 @@ export interface SqlServerInstancesPreUpgradeRequest {
   /** Name of SQL Server Instance */
   sqlServerInstanceName: string;
 }
-const SqlServerInstancesPreUpgradeRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<SqlServerInstancesPreUpgradeRequest>;
-
 /** Resource tags. */
 export type SqlServerInstancesPreUpgradeResponseTagsMap = { [key: string]: string | undefined };
 export interface SqlServerInstancesPreUpgradeResponse {
@@ -5741,14 +4049,8 @@ export interface SqlServerInstancesPreUpgradeResponse {
   /** null */
   properties?: SqlServerInstanceProperties;
 }
-const SqlServerInstancesPreUpgradeResponse =
-  CreateSqlServerInstanceResponse as any as S.Schema<SqlServerInstancesPreUpgradeResponse>;
-
 /** Resource tags. */
 export type UpdatePostgresInstanceRequestTagsMap = { [key: string]: string | undefined };
-const UpdatePostgresInstanceRequestTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdatePostgresInstanceRequestTagsMap>;
-
 export interface UpdatePostgresInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -5760,11 +4062,6 @@ export interface UpdatePostgresInstanceRequest {
   tags?: UpdatePostgresInstanceRequestTagsMap;
   properties?: PostgresInstancePropertiesInput;
 }
-const UpdatePostgresInstanceRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<UpdatePostgresInstanceRequest>;
-
 /** Resource tags. */
 export type UpdatePostgresInstanceResponseTagsMap = { [key: string]: string | undefined };
 /** The complex type of the extended location. */
@@ -5790,14 +4087,8 @@ export interface UpdatePostgresInstanceResponse {
   /** Resource sku. */
   sku?: PostgresInstanceSku;
 }
-const UpdatePostgresInstanceResponse =
-  CreatePostgresInstanceResponse as any as S.Schema<UpdatePostgresInstanceResponse>;
-
 /** Resource tags. */
 export type UpdateSqlManagedInstanceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSqlManagedInstanceRequestTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlManagedInstanceRequestTagsMap>;
-
 export interface UpdateSqlManagedInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -5808,11 +4099,6 @@ export interface UpdateSqlManagedInstanceRequest {
   /** Resource tags. */
   tags?: UpdateSqlManagedInstanceRequestTagsMap;
 }
-const UpdateSqlManagedInstanceRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<UpdateSqlManagedInstanceRequest>;
-
 /** Resource tags. */
 export type UpdateSqlManagedInstanceResponseTagsMap = { [key: string]: string | undefined };
 /** The complex type of the extended location. */
@@ -5838,14 +4124,8 @@ export interface UpdateSqlManagedInstanceResponse {
   /** Resource sku. */
   sku?: SqlManagedInstanceSku;
 }
-const UpdateSqlManagedInstanceResponse =
-  CreateSqlManagedInstanceResponse as any as S.Schema<UpdateSqlManagedInstanceResponse>;
-
 /** Resource tags. */
 export type UpdateSqlServerAvailabilityGroupRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSqlServerAvailabilityGroupRequestTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlServerAvailabilityGroupRequestTagsMap>;
-
 export interface UpdateSqlServerAvailabilityGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5860,11 +4140,6 @@ export interface UpdateSqlServerAvailabilityGroupRequest {
   /** The Server Availability Group's properties */
   properties?: SqlServerAvailabilityGroupResourcePropertiesInput;
 }
-const UpdateSqlServerAvailabilityGroupRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<UpdateSqlServerAvailabilityGroupRequest>;
-
 /** Resource tags. */
 export type UpdateSqlServerAvailabilityGroupResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSqlServerAvailabilityGroupResponse {
@@ -5883,14 +4158,8 @@ export interface UpdateSqlServerAvailabilityGroupResponse {
   /** Properties of Arc Sql Server availability group */
   properties: SqlServerAvailabilityGroupResourceProperties;
 }
-const UpdateSqlServerAvailabilityGroupResponse =
-  AddSqlServerAvailabilityGroupDatabasesResponse as any as S.Schema<UpdateSqlServerAvailabilityGroupResponse>;
-
 /** Resource tags. */
 export type UpdateSqlServerDatabaseRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSqlServerDatabaseRequestTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlServerDatabaseRequestTagsMap>;
-
 export interface UpdateSqlServerDatabaseRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -5905,11 +4174,6 @@ export interface UpdateSqlServerDatabaseRequest {
   /** The data controller's properties */
   properties?: SqlServerDatabaseResourcePropertiesInput;
 }
-const UpdateSqlServerDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<UpdateSqlServerDatabaseRequest>;
-
 /** Resource tags. */
 export type UpdateSqlServerDatabaseResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSqlServerDatabaseResponse {
@@ -5928,36 +4192,22 @@ export interface UpdateSqlServerDatabaseResponse {
   /** Properties of Arc Sql Server database */
   properties: SqlServerDatabaseResourceProperties;
 }
-const UpdateSqlServerDatabaseResponse =
-  CreateSqlServerDatabaseResponse as any as S.Schema<UpdateSqlServerDatabaseResponse>;
-
 /** Resource tags. */
 export type UpdateSqlServerEsuLicenseRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSqlServerEsuLicenseRequestTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlServerEsuLicenseRequestTagsMap>;
-
 /** SQL Server ESU license type. */
 export type SqlServerEsuLicenseUpdatePropertiesInputBillingPlan = "PAYG";
-const SqlServerEsuLicenseUpdatePropertiesInputBillingPlan = S.String;
-
 /** The SQL Server version the license covers. */
 export type SqlServerEsuLicenseUpdatePropertiesInputVersion = "SQL Server 2012" | "SQL Server 2014";
-const SqlServerEsuLicenseUpdatePropertiesInputVersion = S.String;
-
 /** The activation state of the license. */
 export type SqlServerEsuLicenseUpdatePropertiesInputActivationState =
   | "Inactive"
   | "Active"
   | "Terminated";
-const SqlServerEsuLicenseUpdatePropertiesInputActivationState = S.String;
-
 /** The Azure scope to which the license will apply. */
 export type SqlServerEsuLicenseUpdatePropertiesInputScopeType =
   | "Tenant"
   | "Subscription"
   | "ResourceGroup";
-const SqlServerEsuLicenseUpdatePropertiesInputScopeType = S.String;
-
 /** Properties of update SqlServerEsuLicense. */
 export interface SqlServerEsuLicenseUpdatePropertiesInput {
   /** SQL Server ESU license type. */
@@ -5971,11 +4221,6 @@ export interface SqlServerEsuLicenseUpdatePropertiesInput {
   /** The Azure scope to which the license will apply. */
   scopeType?: SqlServerEsuLicenseUpdatePropertiesInputScopeType | (string & {});
 }
-const SqlServerEsuLicenseUpdatePropertiesInput = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<SqlServerEsuLicenseUpdatePropertiesInput>;
-
 export interface UpdateSqlServerEsuLicenseRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5988,11 +4233,6 @@ export interface UpdateSqlServerEsuLicenseRequest {
   /** null */
   properties?: SqlServerEsuLicenseUpdatePropertiesInput;
 }
-const UpdateSqlServerEsuLicenseRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<UpdateSqlServerEsuLicenseRequest>;
-
 /** Resource tags. */
 export type UpdateSqlServerEsuLicenseResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSqlServerEsuLicenseResponse {
@@ -6011,14 +4251,8 @@ export interface UpdateSqlServerEsuLicenseResponse {
   /** SQL Server ESU license properties */
   properties: SqlServerEsuLicenseProperties;
 }
-const UpdateSqlServerEsuLicenseResponse =
-  CreateSqlServerEsuLicenseResponse as any as S.Schema<UpdateSqlServerEsuLicenseResponse>;
-
 /** Resource tags. */
 export type UpdateSqlServerInstanceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSqlServerInstanceRequestTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlServerInstanceRequestTagsMap>;
-
 /** SQL Server version. */
 export type SqlServerInstanceUpdatePropertiesInputVersion =
   | "Unknown"
@@ -6029,8 +4263,6 @@ export type SqlServerInstanceUpdatePropertiesInputVersion =
   | "SQL Server 2019"
   | "SQL Server 2022"
   | "SQL Server 2025";
-const SqlServerInstanceUpdatePropertiesInputVersion = S.String;
-
 /** SQL Server edition. */
 export type SqlServerInstanceUpdatePropertiesInputEdition =
   | "Evaluation"
@@ -6041,8 +4273,6 @@ export type SqlServerInstanceUpdatePropertiesInputEdition =
   | "Express"
   | "Business Intelligence"
   | "Standard Developer";
-const SqlServerInstanceUpdatePropertiesInputEdition = S.String;
-
 /** Type of host for Azure Arc SQL Server */
 export type SqlServerInstanceUpdatePropertiesInputHostType =
   | "Azure Virtual Machine"
@@ -6058,8 +4288,6 @@ export type SqlServerInstanceUpdatePropertiesInputHostType =
   | "AWS Virtual Machine"
   | "GCP Virtual Machine"
   | "Other";
-const SqlServerInstanceUpdatePropertiesInputHostType = S.String;
-
 /** Properties of update SqlServerInstance. */
 export interface SqlServerInstanceUpdatePropertiesInput {
   /** SQL Server version. */
@@ -6099,11 +4327,6 @@ export interface SqlServerInstanceUpdatePropertiesInput {
   /** maximum server memory (MB) value configured for this instance. */
   maxServerMemoryMB?: number;
 }
-const SqlServerInstanceUpdatePropertiesInput = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<SqlServerInstanceUpdatePropertiesInput>;
-
 export interface UpdateSqlServerInstanceRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -6116,11 +4339,6 @@ export interface UpdateSqlServerInstanceRequest {
   /** null */
   properties?: SqlServerInstanceUpdatePropertiesInput;
 }
-const UpdateSqlServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<UpdateSqlServerInstanceRequest>;
-
 /** Resource tags. */
 export type UpdateSqlServerInstanceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSqlServerInstanceResponse {
@@ -6139,33 +4357,19 @@ export interface UpdateSqlServerInstanceResponse {
   /** null */
   properties?: SqlServerInstanceProperties;
 }
-const UpdateSqlServerInstanceResponse =
-  CreateSqlServerInstanceResponse as any as S.Schema<UpdateSqlServerInstanceResponse>;
-
 /** Resource tags. */
 export type UpdateSqlServerLicenseRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSqlServerLicenseRequestTagsMap =
-  AddSqlServerAvailabilityGroupDatabasesResponseTagsMap as any as S.Schema<UpdateSqlServerLicenseRequestTagsMap>;
-
 /** SQL Server license type. */
 export type SqlServerLicenseUpdatePropertiesInputBillingPlan = "PAYG" | "Paid";
-const SqlServerLicenseUpdatePropertiesInputBillingPlan = S.String;
-
 /** This property represents the choice between SQL Server Core and ESU licenses. */
 export type SqlServerLicenseUpdatePropertiesInputLicenseCategory = "Core";
-const SqlServerLicenseUpdatePropertiesInputLicenseCategory = S.String;
-
 /** The activation state of the license. */
 export type SqlServerLicenseUpdatePropertiesInputActivationState = "Activated" | "Deactivated";
-const SqlServerLicenseUpdatePropertiesInputActivationState = S.String;
-
 /** The Azure scope to which the license will apply. */
 export type SqlServerLicenseUpdatePropertiesInputScopeType =
   | "Tenant"
   | "Subscription"
   | "ResourceGroup";
-const SqlServerLicenseUpdatePropertiesInputScopeType = S.String;
-
 /** Properties of update SqlServerLicense. */
 export interface SqlServerLicenseUpdatePropertiesInput {
   /** SQL Server license type. */
@@ -6179,11 +4383,6 @@ export interface SqlServerLicenseUpdatePropertiesInput {
   /** The Azure scope to which the license will apply. */
   scopeType?: SqlServerLicenseUpdatePropertiesInputScopeType | (string & {});
 }
-const SqlServerLicenseUpdatePropertiesInput = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<SqlServerLicenseUpdatePropertiesInput>;
-
 export interface UpdateSqlServerLicenseRequest {
   /** The ID of the Azure subscription */
   subscriptionId: string;
@@ -6196,11 +4395,6 @@ export interface UpdateSqlServerLicenseRequest {
   /** null */
   properties?: SqlServerLicenseUpdatePropertiesInput;
 }
-const UpdateSqlServerLicenseRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<UpdateSqlServerLicenseRequest>;
-
 /** Resource tags. */
 export type UpdateSqlServerLicenseResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSqlServerLicenseResponse {
@@ -6219,9 +4413,6 @@ export interface UpdateSqlServerLicenseResponse {
   /** SQL Server license properties */
   properties: SqlServerLicenseProperties;
 }
-const UpdateSqlServerLicenseResponse =
-  CreateSqlServerLicenseResponse as any as S.Schema<UpdateSqlServerLicenseResponse>;
-
 export type AddSqlServerAvailabilityGroupDatabasesError = AzureOpError;
 /** Request adding database(s) to an existing availability group. */
 export const AddSqlServerAvailabilityGroupDatabases: API.OperationMethod<
@@ -6230,8 +4421,8 @@ export const AddSqlServerAvailabilityGroupDatabases: API.OperationMethod<
   AddSqlServerAvailabilityGroupDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddSqlServerAvailabilityGroupDatabasesRequest,
-  output: AddSqlServerAvailabilityGroupDatabasesResponse,
+  input: __S(1) as any as S.Schema<AddSqlServerAvailabilityGroupDatabasesRequest>,
+  output: __S(18) as any as S.Schema<AddSqlServerAvailabilityGroupDatabasesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6245,8 +4436,8 @@ export const CreateActiveDirectoryConnector: API.OperationMethod<
   CreateActiveDirectoryConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateActiveDirectoryConnectorRequest,
-  output: CreateActiveDirectoryConnectorResponse,
+  input: __S(28) as any as S.Schema<CreateActiveDirectoryConnectorRequest>,
+  output: __S(30) as any as S.Schema<CreateActiveDirectoryConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6260,8 +4451,8 @@ export const CreateFailoverGroup: API.OperationMethod<
   CreateFailoverGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFailoverGroupRequest,
-  output: CreateFailoverGroupResponse,
+  input: __S(33) as any as S.Schema<CreateFailoverGroupRequest>,
+  output: __S(35) as any as S.Schema<CreateFailoverGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6275,8 +4466,8 @@ export const CreatePostgresInstance: API.OperationMethod<
   CreatePostgresInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePostgresInstanceRequest,
-  output: CreatePostgresInstanceResponse,
+  input: __S(39) as any as S.Schema<CreatePostgresInstanceRequest>,
+  output: __S(41) as any as S.Schema<CreatePostgresInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6290,8 +4481,8 @@ export const CreateSqlManagedInstance: API.OperationMethod<
   CreateSqlManagedInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSqlManagedInstanceRequest,
-  output: CreateSqlManagedInstanceResponse,
+  input: __S(57) as any as S.Schema<CreateSqlManagedInstanceRequest>,
+  output: __S(59) as any as S.Schema<CreateSqlManagedInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6305,8 +4496,8 @@ export const CreateSqlServerAvailabilityGroup: API.OperationMethod<
   CreateSqlServerAvailabilityGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSqlServerAvailabilityGroupRequest,
-  output: CreateSqlServerAvailabilityGroupResponse,
+  input: __S(70) as any as S.Schema<CreateSqlServerAvailabilityGroupRequest>,
+  output: __S(18) as any as S.Schema<CreateSqlServerAvailabilityGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6320,8 +4511,8 @@ export const CreateSqlServerAvailabilityGroupAvailabilityGroup: API.OperationMet
   CreateSqlServerAvailabilityGroupAvailabilityGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSqlServerAvailabilityGroupAvailabilityGroupRequest,
-  output: CreateSqlServerAvailabilityGroupAvailabilityGroupResponse,
+  input: __S(73) as any as S.Schema<CreateSqlServerAvailabilityGroupAvailabilityGroupRequest>,
+  output: __S(75) as any as S.Schema<CreateSqlServerAvailabilityGroupAvailabilityGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6335,8 +4526,12 @@ export const CreateSqlServerAvailabilityGroupDistributedAvailabilityGroup: API.O
   CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupRequest,
-  output: CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse,
+  input: __S(
+    78,
+  ) as any as S.Schema<CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupRequest>,
+  output: __S(
+    79,
+  ) as any as S.Schema<CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6350,8 +4545,8 @@ export const CreateSqlServerAvailabilityGroupManagedInstanceLink: API.OperationM
   CreateSqlServerAvailabilityGroupManagedInstanceLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSqlServerAvailabilityGroupManagedInstanceLinkRequest,
-  output: CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse,
+  input: __S(84) as any as S.Schema<CreateSqlServerAvailabilityGroupManagedInstanceLinkRequest>,
+  output: __S(75) as any as S.Schema<CreateSqlServerAvailabilityGroupManagedInstanceLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6365,8 +4560,8 @@ export const CreateSqlServerDatabase: API.OperationMethod<
   CreateSqlServerDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSqlServerDatabaseRequest,
-  output: CreateSqlServerDatabaseResponse,
+  input: __S(90) as any as S.Schema<CreateSqlServerDatabaseRequest>,
+  output: __S(106) as any as S.Schema<CreateSqlServerDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6380,8 +4575,8 @@ export const CreateSqlServerEsuLicense: API.OperationMethod<
   CreateSqlServerEsuLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSqlServerEsuLicenseRequest,
-  output: CreateSqlServerEsuLicenseResponse,
+  input: __S(108) as any as S.Schema<CreateSqlServerEsuLicenseRequest>,
+  output: __S(110) as any as S.Schema<CreateSqlServerEsuLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6395,8 +4590,8 @@ export const CreateSqlServerInstance: API.OperationMethod<
   CreateSqlServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSqlServerInstanceRequest,
-  output: CreateSqlServerInstanceResponse,
+  input: __S(124) as any as S.Schema<CreateSqlServerInstanceRequest>,
+  output: __S(149) as any as S.Schema<CreateSqlServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6410,8 +4605,8 @@ export const CreateSqlServerLicense: API.OperationMethod<
   CreateSqlServerLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSqlServerLicenseRequest,
-  output: CreateSqlServerLicenseResponse,
+  input: __S(151) as any as S.Schema<CreateSqlServerLicenseRequest>,
+  output: __S(153) as any as S.Schema<CreateSqlServerLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6425,8 +4620,8 @@ export const DeleteActiveDirectoryConnector: API.OperationMethod<
   DeleteActiveDirectoryConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteActiveDirectoryConnectorRequest,
-  output: DeleteActiveDirectoryConnectorResponse,
+  input: __S(154) as any as S.Schema<DeleteActiveDirectoryConnectorRequest>,
+  output: __S(155) as any as S.Schema<DeleteActiveDirectoryConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6440,8 +4635,8 @@ export const DeleteDataControllerDataController: API.OperationMethod<
   DeleteDataControllerDataControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataControllerDataControllerRequest,
-  output: DeleteDataControllerDataControllerResponse,
+  input: __S(156) as any as S.Schema<DeleteDataControllerDataControllerRequest>,
+  output: __S(155) as any as S.Schema<DeleteDataControllerDataControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6455,8 +4650,8 @@ export const DeleteFailoverGroup: API.OperationMethod<
   DeleteFailoverGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFailoverGroupRequest,
-  output: DeleteFailoverGroupResponse,
+  input: __S(157) as any as S.Schema<DeleteFailoverGroupRequest>,
+  output: __S(62) as any as S.Schema<DeleteFailoverGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6470,8 +4665,8 @@ export const DeletePostgresInstance: API.OperationMethod<
   DeletePostgresInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePostgresInstanceRequest,
-  output: DeletePostgresInstanceResponse,
+  input: __S(158) as any as S.Schema<DeletePostgresInstanceRequest>,
+  output: __S(62) as any as S.Schema<DeletePostgresInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6485,8 +4680,8 @@ export const DeleteSqlManagedInstance: API.OperationMethod<
   DeleteSqlManagedInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSqlManagedInstanceRequest,
-  output: DeleteSqlManagedInstanceResponse,
+  input: __S(159) as any as S.Schema<DeleteSqlManagedInstanceRequest>,
+  output: __S(155) as any as S.Schema<DeleteSqlManagedInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6500,8 +4695,8 @@ export const DeleteSqlServerAvailabilityGroup: API.OperationMethod<
   DeleteSqlServerAvailabilityGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSqlServerAvailabilityGroupRequest,
-  output: DeleteSqlServerAvailabilityGroupResponse,
+  input: __S(160) as any as S.Schema<DeleteSqlServerAvailabilityGroupRequest>,
+  output: __S(155) as any as S.Schema<DeleteSqlServerAvailabilityGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6515,8 +4710,8 @@ export const DeleteSqlServerAvailabilityGroupMiLink: API.OperationMethod<
   DeleteSqlServerAvailabilityGroupMiLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSqlServerAvailabilityGroupMiLinkRequest,
-  output: DeleteSqlServerAvailabilityGroupMiLinkResponse,
+  input: __S(161) as any as S.Schema<DeleteSqlServerAvailabilityGroupMiLinkRequest>,
+  output: __S(155) as any as S.Schema<DeleteSqlServerAvailabilityGroupMiLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6530,8 +4725,8 @@ export const DeleteSqlServerDatabase: API.OperationMethod<
   DeleteSqlServerDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSqlServerDatabaseRequest,
-  output: DeleteSqlServerDatabaseResponse,
+  input: __S(162) as any as S.Schema<DeleteSqlServerDatabaseRequest>,
+  output: __S(163) as any as S.Schema<DeleteSqlServerDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6545,8 +4740,8 @@ export const DeleteSqlServerEsuLicense: API.OperationMethod<
   DeleteSqlServerEsuLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSqlServerEsuLicenseRequest,
-  output: DeleteSqlServerEsuLicenseResponse,
+  input: __S(164) as any as S.Schema<DeleteSqlServerEsuLicenseRequest>,
+  output: __S(155) as any as S.Schema<DeleteSqlServerEsuLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6560,8 +4755,8 @@ export const DeleteSqlServerInstance: API.OperationMethod<
   DeleteSqlServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSqlServerInstanceRequest,
-  output: DeleteSqlServerInstanceResponse,
+  input: __S(165) as any as S.Schema<DeleteSqlServerInstanceRequest>,
+  output: __S(163) as any as S.Schema<DeleteSqlServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6575,8 +4770,8 @@ export const DeleteSqlServerLicense: API.OperationMethod<
   DeleteSqlServerLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSqlServerLicenseRequest,
-  output: DeleteSqlServerLicenseResponse,
+  input: __S(166) as any as S.Schema<DeleteSqlServerLicenseRequest>,
+  output: __S(62) as any as S.Schema<DeleteSqlServerLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6590,8 +4785,8 @@ export const GetActiveDirectoryConnector: API.OperationMethod<
   GetActiveDirectoryConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActiveDirectoryConnectorRequest,
-  output: GetActiveDirectoryConnectorResponse,
+  input: __S(167) as any as S.Schema<GetActiveDirectoryConnectorRequest>,
+  output: __S(30) as any as S.Schema<GetActiveDirectoryConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6605,8 +4800,8 @@ export const GetDataControllerDataController: API.OperationMethod<
   GetDataControllerDataControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataControllerDataControllerRequest,
-  output: GetDataControllerDataControllerResponse,
+  input: __S(168) as any as S.Schema<GetDataControllerDataControllerRequest>,
+  output: __S(174) as any as S.Schema<GetDataControllerDataControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6620,8 +4815,8 @@ export const GetFailoverGroup: API.OperationMethod<
   GetFailoverGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFailoverGroupRequest,
-  output: GetFailoverGroupResponse,
+  input: __S(175) as any as S.Schema<GetFailoverGroupRequest>,
+  output: __S(176) as any as S.Schema<GetFailoverGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6635,8 +4830,8 @@ export const GetPostgresInstance: API.OperationMethod<
   GetPostgresInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPostgresInstanceRequest,
-  output: GetPostgresInstanceResponse,
+  input: __S(177) as any as S.Schema<GetPostgresInstanceRequest>,
+  output: __S(41) as any as S.Schema<GetPostgresInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6650,8 +4845,8 @@ export const GetSqlManagedInstance: API.OperationMethod<
   GetSqlManagedInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSqlManagedInstanceRequest,
-  output: GetSqlManagedInstanceResponse,
+  input: __S(178) as any as S.Schema<GetSqlManagedInstanceRequest>,
+  output: __S(59) as any as S.Schema<GetSqlManagedInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6665,8 +4860,8 @@ export const GetSqlServerAvailabilityGroup: API.OperationMethod<
   GetSqlServerAvailabilityGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSqlServerAvailabilityGroupRequest,
-  output: GetSqlServerAvailabilityGroupResponse,
+  input: __S(179) as any as S.Schema<GetSqlServerAvailabilityGroupRequest>,
+  output: __S(18) as any as S.Schema<GetSqlServerAvailabilityGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6680,8 +4875,8 @@ export const GetSqlServerDatabase: API.OperationMethod<
   GetSqlServerDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSqlServerDatabaseRequest,
-  output: GetSqlServerDatabaseResponse,
+  input: __S(180) as any as S.Schema<GetSqlServerDatabaseRequest>,
+  output: __S(106) as any as S.Schema<GetSqlServerDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6695,8 +4890,8 @@ export const GetSqlServerEsuLicense: API.OperationMethod<
   GetSqlServerEsuLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSqlServerEsuLicenseRequest,
-  output: GetSqlServerEsuLicenseResponse,
+  input: __S(181) as any as S.Schema<GetSqlServerEsuLicenseRequest>,
+  output: __S(110) as any as S.Schema<GetSqlServerEsuLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6710,8 +4905,8 @@ export const GetSqlServerInstance: API.OperationMethod<
   GetSqlServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSqlServerInstanceRequest,
-  output: GetSqlServerInstanceResponse,
+  input: __S(182) as any as S.Schema<GetSqlServerInstanceRequest>,
+  output: __S(149) as any as S.Schema<GetSqlServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6725,8 +4920,8 @@ export const GetSqlServerInstanceAllAvailabilityGroups: API.OperationMethod<
   GetSqlServerInstanceAllAvailabilityGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSqlServerInstanceAllAvailabilityGroupsRequest,
-  output: ArcSqlServerAvailabilityGroupListResult,
+  input: __S(183) as any as S.Schema<GetSqlServerInstanceAllAvailabilityGroupsRequest>,
+  output: __S(185) as any as S.Schema<ArcSqlServerAvailabilityGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6740,8 +4935,8 @@ export const GetSqlServerInstanceBestPracticesAssessment: API.OperationMethod<
   GetSqlServerInstanceBestPracticesAssessmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSqlServerInstanceBestPracticesAssessmentRequest,
-  output: GetSqlServerInstanceBestPracticesAssessmentResponse,
+  input: __S(186) as any as S.Schema<GetSqlServerInstanceBestPracticesAssessmentRequest>,
+  output: __S(189) as any as S.Schema<GetSqlServerInstanceBestPracticesAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6755,8 +4950,8 @@ export const GetSqlServerInstanceJobsStatus: API.OperationMethod<
   GetSqlServerInstanceJobsStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSqlServerInstanceJobsStatusRequest,
-  output: GetSqlServerInstanceJobsStatusResponse,
+  input: __S(190) as any as S.Schema<GetSqlServerInstanceJobsStatusRequest>,
+  output: __S(196) as any as S.Schema<GetSqlServerInstanceJobsStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6770,8 +4965,8 @@ export const GetSqlServerInstanceTelemetry: API.OperationMethod<
   GetSqlServerInstanceTelemetryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSqlServerInstanceTelemetryRequest,
-  output: GetSqlServerInstanceTelemetryResponse,
+  input: __S(197) as any as S.Schema<GetSqlServerInstanceTelemetryRequest>,
+  output: __S(198) as any as S.Schema<GetSqlServerInstanceTelemetryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6785,8 +4980,8 @@ export const GetSqlServerLicense: API.OperationMethod<
   GetSqlServerLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSqlServerLicenseRequest,
-  output: GetSqlServerLicenseResponse,
+  input: __S(199) as any as S.Schema<GetSqlServerLicenseRequest>,
+  output: __S(153) as any as S.Schema<GetSqlServerLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6800,8 +4995,8 @@ export const ListActiveDirectoryConnectors: API.OperationMethod<
   ListActiveDirectoryConnectorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListActiveDirectoryConnectorsRequest,
-  output: ListActiveDirectoryConnectorsResponse,
+  input: __S(200) as any as S.Schema<ListActiveDirectoryConnectorsRequest>,
+  output: __S(202) as any as S.Schema<ListActiveDirectoryConnectorsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6815,8 +5010,8 @@ export const ListDataControllerInGroup: API.OperationMethod<
   ListDataControllerInGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataControllerInGroupRequest,
-  output: ListDataControllerInGroupResponse,
+  input: __S(203) as any as S.Schema<ListDataControllerInGroupRequest>,
+  output: __S(206) as any as S.Schema<ListDataControllerInGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6830,8 +5025,8 @@ export const ListDataControllerInSubscription: API.OperationMethod<
   ListDataControllerInSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataControllerInSubscriptionRequest,
-  output: ListDataControllerInSubscriptionResponse,
+  input: __S(207) as any as S.Schema<ListDataControllerInSubscriptionRequest>,
+  output: __S(206) as any as S.Schema<ListDataControllerInSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6845,8 +5040,8 @@ export const ListFailoverGroups: API.OperationMethod<
   ListFailoverGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFailoverGroupsRequest,
-  output: ListFailoverGroupsResponse,
+  input: __S(208) as any as S.Schema<ListFailoverGroupsRequest>,
+  output: __S(210) as any as S.Schema<ListFailoverGroupsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6860,8 +5055,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(211) as any as S.Schema<ListOperationsRequest>,
+  output: __S(216) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6875,8 +5070,8 @@ export const ListPostgresInstanceByResourceGroup: API.OperationMethod<
   ListPostgresInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPostgresInstanceByResourceGroupRequest,
-  output: ListPostgresInstanceByResourceGroupResponse,
+  input: __S(217) as any as S.Schema<ListPostgresInstanceByResourceGroupRequest>,
+  output: __S(220) as any as S.Schema<ListPostgresInstanceByResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6890,8 +5085,8 @@ export const ListPostgresInstances: API.OperationMethod<
   ListPostgresInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPostgresInstancesRequest,
-  output: ListPostgresInstancesResponse,
+  input: __S(221) as any as S.Schema<ListPostgresInstancesRequest>,
+  output: __S(220) as any as S.Schema<ListPostgresInstancesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6905,8 +5100,8 @@ export const ListSqlManagedInstanceByResourceGroup: API.OperationMethod<
   ListSqlManagedInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSqlManagedInstanceByResourceGroupRequest,
-  output: ListSqlManagedInstanceByResourceGroupResponse,
+  input: __S(222) as any as S.Schema<ListSqlManagedInstanceByResourceGroupRequest>,
+  output: __S(225) as any as S.Schema<ListSqlManagedInstanceByResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6920,8 +5115,8 @@ export const ListSqlManagedInstances: API.OperationMethod<
   ListSqlManagedInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSqlManagedInstancesRequest,
-  output: ListSqlManagedInstancesResponse,
+  input: __S(226) as any as S.Schema<ListSqlManagedInstancesRequest>,
+  output: __S(225) as any as S.Schema<ListSqlManagedInstancesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6935,8 +5130,8 @@ export const ListSqlServerAvailabilityGroups: API.OperationMethod<
   ListSqlServerAvailabilityGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSqlServerAvailabilityGroupsRequest,
-  output: ArcSqlServerAvailabilityGroupListResult,
+  input: __S(227) as any as S.Schema<ListSqlServerAvailabilityGroupsRequest>,
+  output: __S(185) as any as S.Schema<ArcSqlServerAvailabilityGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6950,8 +5145,8 @@ export const ListSqlServerDatabases: API.OperationMethod<
   ListSqlServerDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSqlServerDatabasesRequest,
-  output: ArcSqlServerDatabaseListResult,
+  input: __S(228) as any as S.Schema<ListSqlServerDatabasesRequest>,
+  output: __S(230) as any as S.Schema<ArcSqlServerDatabaseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6965,8 +5160,8 @@ export const ListSqlServerEsuLicenseByResourceGroup: API.OperationMethod<
   ListSqlServerEsuLicenseByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSqlServerEsuLicenseByResourceGroupRequest,
-  output: SqlServerEsuLicenseListResult,
+  input: __S(231) as any as S.Schema<ListSqlServerEsuLicenseByResourceGroupRequest>,
+  output: __S(234) as any as S.Schema<SqlServerEsuLicenseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6980,8 +5175,8 @@ export const ListSqlServerEsuLicenses: API.OperationMethod<
   ListSqlServerEsuLicensesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSqlServerEsuLicensesRequest,
-  output: SqlServerEsuLicenseListResult,
+  input: __S(235) as any as S.Schema<ListSqlServerEsuLicensesRequest>,
+  output: __S(234) as any as S.Schema<SqlServerEsuLicenseListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6995,8 +5190,8 @@ export const ListSqlServerInstanceByResourceGroup: API.OperationMethod<
   ListSqlServerInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSqlServerInstanceByResourceGroupRequest,
-  output: ListSqlServerInstanceByResourceGroupResponse,
+  input: __S(236) as any as S.Schema<ListSqlServerInstanceByResourceGroupRequest>,
+  output: __S(239) as any as S.Schema<ListSqlServerInstanceByResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7010,8 +5205,8 @@ export const ListSqlServerInstances: API.OperationMethod<
   ListSqlServerInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSqlServerInstancesRequest,
-  output: ListSqlServerInstancesResponse,
+  input: __S(240) as any as S.Schema<ListSqlServerInstancesRequest>,
+  output: __S(239) as any as S.Schema<ListSqlServerInstancesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7025,8 +5220,8 @@ export const ListSqlServerLicenseByResourceGroup: API.OperationMethod<
   ListSqlServerLicenseByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSqlServerLicenseByResourceGroupRequest,
-  output: ListSqlServerLicenseByResourceGroupResponse,
+  input: __S(241) as any as S.Schema<ListSqlServerLicenseByResourceGroupRequest>,
+  output: __S(244) as any as S.Schema<ListSqlServerLicenseByResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7040,8 +5235,8 @@ export const ListSqlServerLicenses: API.OperationMethod<
   ListSqlServerLicensesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSqlServerLicensesRequest,
-  output: ListSqlServerLicensesResponse,
+  input: __S(245) as any as S.Schema<ListSqlServerLicensesRequest>,
+  output: __S(244) as any as S.Schema<ListSqlServerLicensesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7055,8 +5250,8 @@ export const PatchDataControllerDataController: API.OperationMethod<
   PatchDataControllerDataControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchDataControllerDataControllerRequest,
-  output: PatchDataControllerDataControllerResponse,
+  input: __S(247) as any as S.Schema<PatchDataControllerDataControllerRequest>,
+  output: __S(174) as any as S.Schema<PatchDataControllerDataControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7070,8 +5265,8 @@ export const PostSqlServerInstanceUpgrade: API.OperationMethod<
   PostSqlServerInstanceUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostSqlServerInstanceUpgradeRequest,
-  output: PostSqlServerInstanceUpgradeResponse,
+  input: __S(248) as any as S.Schema<PostSqlServerInstanceUpgradeRequest>,
+  output: __S(149) as any as S.Schema<PostSqlServerInstanceUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7085,8 +5280,8 @@ export const PutDataControllerDataController: API.OperationMethod<
   PutDataControllerDataControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDataControllerDataControllerRequest,
-  output: PutDataControllerDataControllerResponse,
+  input: __S(249) as any as S.Schema<PutDataControllerDataControllerRequest>,
+  output: __S(174) as any as S.Schema<PutDataControllerDataControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7100,8 +5295,8 @@ export const RemoveSqlServerAvailabilityGroupDatabases: API.OperationMethod<
   RemoveSqlServerAvailabilityGroupDatabasesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveSqlServerAvailabilityGroupDatabasesRequest,
-  output: RemoveSqlServerAvailabilityGroupDatabasesResponse,
+  input: __S(250) as any as S.Schema<RemoveSqlServerAvailabilityGroupDatabasesRequest>,
+  output: __S(18) as any as S.Schema<RemoveSqlServerAvailabilityGroupDatabasesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7115,8 +5310,8 @@ export const RunSqlServerInstanceBestPracticesAssessment: API.OperationMethod<
   RunSqlServerInstanceBestPracticesAssessmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunSqlServerInstanceBestPracticesAssessmentRequest,
-  output: RunSqlServerInstanceBestPracticesAssessmentResponse,
+  input: __S(251) as any as S.Schema<RunSqlServerInstanceBestPracticesAssessmentRequest>,
+  output: __S(253) as any as S.Schema<RunSqlServerInstanceBestPracticesAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7130,8 +5325,8 @@ export const RunSqlServerInstanceManagedInstanceLinkAssessment: API.OperationMet
   RunSqlServerInstanceManagedInstanceLinkAssessmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunSqlServerInstanceManagedInstanceLinkAssessmentRequest,
-  output: RunSqlServerInstanceManagedInstanceLinkAssessmentResponse,
+  input: __S(255) as any as S.Schema<RunSqlServerInstanceManagedInstanceLinkAssessmentRequest>,
+  output: __S(258) as any as S.Schema<RunSqlServerInstanceManagedInstanceLinkAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7145,8 +5340,8 @@ export const RunSqlServerInstanceMigrationAssessment: API.OperationMethod<
   RunSqlServerInstanceMigrationAssessmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunSqlServerInstanceMigrationAssessmentRequest,
-  output: RunSqlServerInstanceMigrationAssessmentResponse,
+  input: __S(259) as any as S.Schema<RunSqlServerInstanceMigrationAssessmentRequest>,
+  output: __S(260) as any as S.Schema<RunSqlServerInstanceMigrationAssessmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7160,8 +5355,8 @@ export const SqlServerAvailabilityGroupsDetailView: API.OperationMethod<
   SqlServerAvailabilityGroupsDetailViewError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerAvailabilityGroupsDetailViewRequest,
-  output: SqlServerAvailabilityGroupsDetailViewResponse,
+  input: __S(261) as any as S.Schema<SqlServerAvailabilityGroupsDetailViewRequest>,
+  output: __S(18) as any as S.Schema<SqlServerAvailabilityGroupsDetailViewResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7175,8 +5370,8 @@ export const SqlServerAvailabilityGroupsFailover: API.OperationMethod<
   SqlServerAvailabilityGroupsFailoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerAvailabilityGroupsFailoverRequest,
-  output: SqlServerAvailabilityGroupsFailoverResponse,
+  input: __S(262) as any as S.Schema<SqlServerAvailabilityGroupsFailoverRequest>,
+  output: __S(18) as any as S.Schema<SqlServerAvailabilityGroupsFailoverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7190,8 +5385,8 @@ export const SqlServerAvailabilityGroupsFailoverMiLink: API.OperationMethod<
   SqlServerAvailabilityGroupsFailoverMiLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerAvailabilityGroupsFailoverMiLinkRequest,
-  output: SqlServerAvailabilityGroupsFailoverMiLinkResponse,
+  input: __S(263) as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkRequest>,
+  output: __S(18) as any as S.Schema<SqlServerAvailabilityGroupsFailoverMiLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7205,8 +5400,8 @@ export const SqlServerAvailabilityGroupsForceFailoverAllowDataLoss: API.Operatio
   SqlServerAvailabilityGroupsForceFailoverAllowDataLossError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest,
-  output: SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse,
+  input: __S(264) as any as S.Schema<SqlServerAvailabilityGroupsForceFailoverAllowDataLossRequest>,
+  output: __S(79) as any as S.Schema<SqlServerAvailabilityGroupsForceFailoverAllowDataLossResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7220,8 +5415,8 @@ export const SqlServerInstancesPreUpgrade: API.OperationMethod<
   SqlServerInstancesPreUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SqlServerInstancesPreUpgradeRequest,
-  output: SqlServerInstancesPreUpgradeResponse,
+  input: __S(265) as any as S.Schema<SqlServerInstancesPreUpgradeRequest>,
+  output: __S(149) as any as S.Schema<SqlServerInstancesPreUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7235,8 +5430,8 @@ export const UpdatePostgresInstance: API.OperationMethod<
   UpdatePostgresInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePostgresInstanceRequest,
-  output: UpdatePostgresInstanceResponse,
+  input: __S(266) as any as S.Schema<UpdatePostgresInstanceRequest>,
+  output: __S(41) as any as S.Schema<UpdatePostgresInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7250,8 +5445,8 @@ export const UpdateSqlManagedInstance: API.OperationMethod<
   UpdateSqlManagedInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSqlManagedInstanceRequest,
-  output: UpdateSqlManagedInstanceResponse,
+  input: __S(267) as any as S.Schema<UpdateSqlManagedInstanceRequest>,
+  output: __S(59) as any as S.Schema<UpdateSqlManagedInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7265,8 +5460,8 @@ export const UpdateSqlServerAvailabilityGroup: API.OperationMethod<
   UpdateSqlServerAvailabilityGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSqlServerAvailabilityGroupRequest,
-  output: UpdateSqlServerAvailabilityGroupResponse,
+  input: __S(268) as any as S.Schema<UpdateSqlServerAvailabilityGroupRequest>,
+  output: __S(18) as any as S.Schema<UpdateSqlServerAvailabilityGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7280,8 +5475,8 @@ export const UpdateSqlServerDatabase: API.OperationMethod<
   UpdateSqlServerDatabaseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSqlServerDatabaseRequest,
-  output: UpdateSqlServerDatabaseResponse,
+  input: __S(269) as any as S.Schema<UpdateSqlServerDatabaseRequest>,
+  output: __S(106) as any as S.Schema<UpdateSqlServerDatabaseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7295,8 +5490,8 @@ export const UpdateSqlServerEsuLicense: API.OperationMethod<
   UpdateSqlServerEsuLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSqlServerEsuLicenseRequest,
-  output: UpdateSqlServerEsuLicenseResponse,
+  input: __S(271) as any as S.Schema<UpdateSqlServerEsuLicenseRequest>,
+  output: __S(110) as any as S.Schema<UpdateSqlServerEsuLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7310,8 +5505,8 @@ export const UpdateSqlServerInstance: API.OperationMethod<
   UpdateSqlServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSqlServerInstanceRequest,
-  output: UpdateSqlServerInstanceResponse,
+  input: __S(273) as any as S.Schema<UpdateSqlServerInstanceRequest>,
+  output: __S(149) as any as S.Schema<UpdateSqlServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7325,8 +5520,8 @@ export const UpdateSqlServerLicense: API.OperationMethod<
   UpdateSqlServerLicenseError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSqlServerLicenseRequest,
-  output: UpdateSqlServerLicenseResponse,
+  input: __S(275) as any as S.Schema<UpdateSqlServerLicenseRequest>,
+  output: __S(153) as any as S.Schema<UpdateSqlServerLicenseResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -7344,7 +5539,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
           availabilityGroupName: S.String.pipe(T.Label()),
-          values: S.optional(AddSqlServerAvailabilityGroupDatabasesRequestValuesList),
+          values: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7360,10 +5555,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -7379,17 +5574,15 @@ function __c0(j: number): any {
         identifier: "SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesItem",
       });
     case 5:
-      return S.Array(SqlAvailabilityGroupIpV4AddressesAndMasksPropertiesItem);
+      return S.Array(__S(4));
     case 6:
       return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
           dnsName: S.optional(S.String),
-          ipV4AddressesAndMasks: S.optional(SqlAvailabilityGroupIpV4AddressesAndMasksProperties),
-          ipV6Addresses: S.optional(
-            SqlAvailabilityGroupStaticIPListenerPropertiesIpV6AddressesList,
-          ),
+          ipV4AddressesAndMasks: S.optional(__S(5)),
+          ipV6Addresses: S.optional(__S(6)),
           port: S.optional(S.Number),
         }),
       ).annotate({
@@ -7417,8 +5610,8 @@ function __c1(j: number): any {
           primaryRecoveryHealthDescription: S.optional(S.String),
           secondaryRecoveryHealthDescription: S.optional(S.String),
           synchronizationHealthDescription: S.optional(S.String),
-          replicationPartnerType: S.optional(AvailabilityGroupInfoReplicationPartnerType),
-          listener: S.optional(SqlAvailabilityGroupStaticIPListenerProperties),
+          replicationPartnerType: S.optional(S.String),
+          listener: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "AvailabilityGroupInfo" });
     case 1:
@@ -7426,28 +5619,24 @@ function __c1(j: number): any {
         S.Struct({
           endpointName: S.optional(S.String),
           endpointUrl: S.optional(S.String),
-          endpointAuthenticationMode: S.optional(
-            AvailabilityGroupConfigureEndpointAuthenticationMode,
-          ),
+          endpointAuthenticationMode: S.optional(S.String),
           certificateName: S.optional(S.String),
           endpointConnectLogin: S.optional(S.String),
-          availabilityMode: S.optional(AvailabilityGroupConfigureAvailabilityMode),
+          availabilityMode: S.optional(S.String),
           availabilityModeDescription: S.optional(S.String),
-          failoverMode: S.optional(AvailabilityGroupConfigureFailoverMode),
+          failoverMode: S.optional(S.String),
           failoverModeDescription: S.optional(S.String),
           sessionTimeout: S.optional(S.Number),
-          primaryAllowConnections: S.optional(AvailabilityGroupConfigurePrimaryAllowConnections),
+          primaryAllowConnections: S.optional(S.String),
           primaryRoleAllowConnectionsDescription: S.optional(S.String),
-          secondaryAllowConnections: S.optional(
-            AvailabilityGroupConfigureSecondaryAllowConnections,
-          ),
+          secondaryAllowConnections: S.optional(S.String),
           secondaryRoleAllowConnectionsDescription: S.optional(S.String),
           replicaCreateDate: S.optional(S.String),
           replicaModifyDate: S.optional(S.String),
           backupPriority: S.optional(S.Number),
           readOnlyRoutingUrl: S.optional(S.String),
           readWriteRoutingUrl: S.optional(S.String),
-          seedingMode: S.optional(AvailabilityGroupConfigureSeedingMode),
+          seedingMode: S.optional(S.String),
           seedingModeDescription: S.optional(S.String),
         }),
       ).annotate({
@@ -7471,18 +5660,18 @@ function __c1(j: number): any {
           replicaId: S.optional(S.String),
           replicaName: S.optional(S.String),
           replicaResourceId: S.optional(S.String),
-          configure: S.optional(AvailabilityGroupConfigure),
-          state: S.optional(AvailabilityGroupState),
+          configure: S.optional(__S(9)),
+          state: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "SqlAvailabilityGroupReplicaResourceProperties",
       });
     case 4:
-      return S.Array(SqlAvailabilityGroupReplicaResourceProperties);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SqlServerAvailabilityGroupResourcePropertiesReplicasValueList),
+          value: S.optional(__S(12)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -7506,7 +5695,7 @@ function __c1(j: number): any {
         identifier: "SqlAvailabilityGroupDatabaseReplicaResourceProperties",
       });
     case 7:
-      return S.Array(SqlAvailabilityGroupDatabaseReplicaResourceProperties);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -7514,7 +5703,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SqlServerAvailabilityGroupResourcePropertiesDatabasesValueList),
+          value: S.optional(__S(15)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -7528,9 +5717,9 @@ function __c2(j: number): any {
           instanceName: S.optional(S.String),
           vmId: S.optional(S.String),
           collectionTimestamp: S.optional(S.String),
-          info: S.optional(AvailabilityGroupInfo),
-          replicas: S.optional(SqlServerAvailabilityGroupResourcePropertiesReplicas),
-          databases: S.optional(SqlServerAvailabilityGroupResourcePropertiesDatabases),
+          info: S.optional(__S(8)),
+          replicas: S.optional(__S(13)),
+          databases: S.optional(__S(16)),
           provisioningState: S.optional(S.String),
         }),
       ).annotate({
@@ -7542,10 +5731,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(AddSqlServerAvailabilityGroupDatabasesResponseTagsMap),
+          systemData: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: SqlServerAvailabilityGroupResourceProperties,
+          properties: __S(17),
         }),
       ).annotate({
         identifier: "AddSqlServerAvailabilityGroupDatabasesResponse",
@@ -7568,12 +5757,12 @@ function __c2(j: number): any {
         identifier: "ActiveDirectoryDomainController",
       });
     case 5:
-      return S.Array(ActiveDirectoryDomainController);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          primaryDomainController: S.optional(ActiveDirectoryDomainController),
-          secondaryDomainControllers: S.optional(ActiveDirectorySecondaryDomainControllers),
+          primaryDomainController: S.optional(__S(20)),
+          secondaryDomainControllers: S.optional(__S(21)),
         }),
       ).annotate({
         identifier: "ActiveDirectoryDomainControllers",
@@ -7583,11 +5772,9 @@ function __c2(j: number): any {
         S.Struct({
           realm: S.String,
           netbiosDomainName: S.optional(S.String),
-          serviceAccountProvisioning: S.optional(
-            ActiveDirectoryConnectorDomainDetailsServiceAccountProvisioning,
-          ),
+          serviceAccountProvisioning: S.optional(S.String),
           ouDistinguishedName: S.optional(S.String),
-          domainControllers: S.optional(ActiveDirectoryDomainControllers),
+          domainControllers: S.optional(__S(22)),
         }),
       ).annotate({
         identifier: "ActiveDirectoryConnectorDomainDetails",
@@ -7600,7 +5787,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
-          nameserverIPAddresses: ActiveDirectoryConnectorDNSDetailsNameserverIPAddressesList,
+          nameserverIPAddresses: __S(0),
           replicas: S.optional(S.Number),
           preferK8sDnsForPtrLookups: S.optional(S.Boolean),
         }),
@@ -7610,8 +5797,8 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          activeDirectory: ActiveDirectoryConnectorDomainDetails,
-          dns: ActiveDirectoryConnectorDNSDetails,
+          activeDirectory: __S(23),
+          dns: __S(24),
         }),
       ).annotate({
         identifier: "ActiveDirectoryConnectorSpec",
@@ -7629,11 +5816,9 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          domainServiceAccountLoginInformation: S.optional(
-            ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-          ),
-          spec: ActiveDirectoryConnectorSpec,
-          status: S.optional(ActiveDirectoryConnectorStatus),
+          domainServiceAccountLoginInformation: S.optional(__S(19)),
+          spec: __S(25),
+          status: S.optional(__S(26)),
         }),
       ).annotate({
         identifier: "ActiveDirectoryConnectorPropertiesInput",
@@ -7645,7 +5830,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dataControllerName: S.String.pipe(T.Label()),
           activeDirectoryConnectorName: S.String.pipe(T.Label()),
-          properties: ActiveDirectoryConnectorPropertiesInput,
+          properties: __S(27),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7660,12 +5845,10 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          domainServiceAccountLoginInformation: S.optional(
-            ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-          ),
+          domainServiceAccountLoginInformation: S.optional(__S(19)),
           provisioningState: S.optional(S.String),
-          spec: ActiveDirectoryConnectorSpec,
-          status: S.optional(ActiveDirectoryConnectorStatus),
+          spec: __S(25),
+          status: S.optional(__S(26)),
         }),
       ).annotate({
         identifier: "ActiveDirectoryConnectorProperties",
@@ -7676,8 +5859,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ActiveDirectoryConnectorProperties,
+          systemData: S.optional(__S(2)),
+          properties: __S(29),
         }),
       ).annotate({
         identifier: "CreateActiveDirectoryConnectorResponse",
@@ -7690,8 +5873,8 @@ function __c3(j: number): any {
           partnerMI: S.optional(S.String),
           partnerMirroringURL: S.optional(S.String),
           partnerMirroringCert: S.optional(S.String),
-          partnerSyncMode: S.optional(FailoverGroupSpecPartnerSyncMode),
-          role: FailoverGroupSpecRole,
+          partnerSyncMode: S.optional(S.String),
+          role: S.String,
         }),
       ).annotate({ identifier: "FailoverGroupSpec" });
   }
@@ -7702,7 +5885,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           partnerManagedInstanceId: S.String,
-          spec: FailoverGroupSpec,
+          spec: __S(31),
           status: S.optional(S.Unknown),
         }),
       ).annotate({
@@ -7715,7 +5898,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlManagedInstanceName: S.String.pipe(T.Label()),
           failoverGroupName: S.String.pipe(T.Label()),
-          properties: FailoverGroupPropertiesInput,
+          properties: __S(32),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7730,9 +5913,9 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(FailoverGroupPropertiesProvisioningState),
+          provisioningState: S.optional(S.String),
           partnerManagedInstanceId: S.String,
-          spec: FailoverGroupSpec,
+          spec: __S(31),
           status: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "FailoverGroupProperties" });
@@ -7742,8 +5925,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: FailoverGroupProperties,
+          systemData: S.optional(__S(2)),
+          properties: __S(34),
         }),
       ).annotate({
         identifier: "CreateFailoverGroupResponse",
@@ -7752,7 +5935,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(ExtendedLocationType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreatePostgresInstanceRequestExtendedLocation",
@@ -7762,9 +5945,7 @@ function __c4(j: number): any {
         S.Struct({
           dataControllerId: S.optional(S.String),
           admin: S.optional(S.String),
-          basicLoginInformation: S.optional(
-            ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-          ),
+          basicLoginInformation: S.optional(__S(19)),
           k8sRaw: S.optional(S.Unknown),
           lastUploadedDate: S.optional(S.String),
         }),
@@ -7779,7 +5960,7 @@ function __c4(j: number): any {
           size: S.optional(S.String),
           family: S.optional(S.String),
           capacity: S.optional(S.Number),
-          tier: S.optional(PostgresInstanceSkuTier),
+          tier: S.optional(S.String),
         }),
       ).annotate({ identifier: "PostgresInstanceSku" });
     case 7:
@@ -7788,11 +5969,11 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           postgresInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(CreatePostgresInstanceRequestTagsMap),
+          tags: S.optional(__S(3)),
           location: S.String,
-          extendedLocation: S.optional(CreatePostgresInstanceRequestExtendedLocation),
-          properties: PostgresInstancePropertiesInput,
-          sku: S.optional(PostgresInstanceSku),
+          extendedLocation: S.optional(__S(36)),
+          properties: __S(37),
+          sku: S.optional(__S(38)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7813,9 +5994,7 @@ function __c5(j: number): any {
         S.Struct({
           dataControllerId: S.optional(S.String),
           admin: S.optional(S.String),
-          basicLoginInformation: S.optional(
-            ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-          ),
+          basicLoginInformation: S.optional(__S(19)),
           k8sRaw: S.optional(S.Unknown),
           lastUploadedDate: S.optional(S.String),
           provisioningState: S.optional(S.String),
@@ -7829,12 +6008,12 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreatePostgresInstanceResponseTagsMap),
+          systemData: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          extendedLocation: S.optional(CreatePostgresInstanceResponseExtendedLocation),
-          properties: PostgresInstanceProperties,
-          sku: S.optional(PostgresInstanceSku),
+          extendedLocation: S.optional(__S(36)),
+          properties: __S(40),
+          sku: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "CreatePostgresInstanceResponse",
@@ -7842,20 +6021,20 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(K8sResourceRequirementsRequestsMap),
-          limits: S.optional(K8sResourceRequirementsLimitsMap),
+          requests: S.optional(__S(3)),
+          limits: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "K8sResourceRequirements" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(K8sResourceRequirements),
+          resources: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "K8sSchedulingOptions" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          default: S.optional(K8sSchedulingOptions),
+          default: S.optional(__S(43)),
         }),
       ).annotate({ identifier: "K8sScheduling" });
     case 5:
@@ -7870,10 +6049,10 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          connector: S.optional(K8sActiveDirectoryConnector),
+          connector: S.optional(__S(45)),
           accountName: S.optional(S.String),
           keytabSecret: S.optional(S.String),
-          encryptionTypes: S.optional(K8sActiveDirectoryEncryptionTypesList),
+          encryptionTypes: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "K8sActiveDirectory" });
     case 7:
@@ -7894,8 +6073,8 @@ function __c6(j: number): any {
         S.Struct({
           adminLoginSecret: S.optional(S.String),
           serviceCertificateSecret: S.optional(S.String),
-          activeDirectory: S.optional(K8sActiveDirectory),
-          transparentDataEncryption: S.optional(K8stransparentDataEncryption),
+          activeDirectory: S.optional(__S(46)),
+          transparentDataEncryption: S.optional(__S(47)),
         }),
       ).annotate({ identifier: "K8sSecurity" });
     case 1:
@@ -7909,16 +6088,16 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          network: S.optional(K8sNetworkSettings),
+          network: S.optional(__S(49)),
         }),
       ).annotate({ identifier: "K8sSettings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          scheduling: S.optional(K8sScheduling),
+          scheduling: S.optional(__S(44)),
           replicas: S.optional(S.Number),
-          security: S.optional(K8sSecurity),
-          settings: S.optional(K8sSettings),
+          security: S.optional(__S(48)),
+          settings: S.optional(__S(50)),
         }),
       ).annotate({
         identifier: "SqlManagedInstanceK8sSpec",
@@ -7926,7 +6105,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          spec: S.optional(SqlManagedInstanceK8sSpec),
+          spec: S.optional(__S(51)),
         }),
       ).annotate({ identifier: "SqlManagedInstanceK8sRaw" });
     case 5:
@@ -7938,7 +6117,7 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          keytabInformation: S.optional(KeytabInformation),
+          keytabInformation: S.optional(__S(53)),
         }),
       ).annotate({
         identifier: "ActiveDirectoryInformation",
@@ -7950,13 +6129,11 @@ function __c6(j: number): any {
           admin: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          k8sRaw: S.optional(SqlManagedInstanceK8sRaw),
-          basicLoginInformation: S.optional(
-            ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-          ),
+          k8sRaw: S.optional(__S(52)),
+          basicLoginInformation: S.optional(__S(19)),
           lastUploadedDate: S.optional(S.String),
-          activeDirectoryInformation: S.optional(ActiveDirectoryInformation),
-          licenseType: S.optional(SqlManagedInstancePropertiesInputLicenseType),
+          activeDirectoryInformation: S.optional(__S(54)),
+          licenseType: S.optional(S.String),
           clusterId: S.optional(S.String),
           extensionId: S.optional(S.String),
         }),
@@ -7970,8 +6147,8 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: SqlManagedInstanceSkuName,
-          tier: S.optional(SqlManagedInstanceSkuTier),
+          name: S.String,
+          tier: S.optional(S.String),
           dev: S.optional(S.Boolean),
           size: S.optional(S.String),
           family: S.optional(S.String),
@@ -7984,11 +6161,11 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlManagedInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateSqlManagedInstanceRequestTagsMap),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: SqlManagedInstancePropertiesInput,
-          extendedLocation: S.optional(CreatePostgresInstanceRequestExtendedLocation),
-          sku: S.optional(SqlManagedInstanceSku),
+          properties: __S(55),
+          extendedLocation: S.optional(__S(36)),
+          sku: S.optional(__S(56)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8007,14 +6184,12 @@ function __c7(j: number): any {
           admin: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          k8sRaw: S.optional(SqlManagedInstanceK8sRaw),
-          basicLoginInformation: S.optional(
-            ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-          ),
+          k8sRaw: S.optional(__S(52)),
+          basicLoginInformation: S.optional(__S(19)),
           lastUploadedDate: S.optional(S.String),
           provisioningState: S.optional(S.String),
-          activeDirectoryInformation: S.optional(ActiveDirectoryInformation),
-          licenseType: S.optional(SqlManagedInstancePropertiesLicenseType),
+          activeDirectoryInformation: S.optional(__S(54)),
+          licenseType: S.optional(S.String),
           clusterId: S.optional(S.String),
           extensionId: S.optional(S.String),
         }),
@@ -8027,12 +6202,12 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateSqlManagedInstanceResponseTagsMap),
+          systemData: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: SqlManagedInstanceProperties,
-          extendedLocation: S.optional(CreatePostgresInstanceResponseExtendedLocation),
-          sku: S.optional(SqlManagedInstanceSku),
+          properties: __S(58),
+          extendedLocation: S.optional(__S(36)),
+          sku: S.optional(__S(56)),
         }),
       ).annotate({
         identifier: "CreateSqlManagedInstanceResponse",
@@ -8048,7 +6223,7 @@ function __c7(j: number): any {
           isDistributed: S.optional(S.Boolean),
           requiredSynchronizedSecondariesToCommit: S.optional(S.Number),
           isContained: S.optional(S.Boolean),
-          listener: S.optional(SqlAvailabilityGroupStaticIPListenerProperties),
+          listener: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "AvailabilityGroupInfoInput",
@@ -8058,24 +6233,18 @@ function __c7(j: number): any {
         S.Struct({
           endpointName: S.optional(S.String),
           endpointUrl: S.optional(S.String),
-          endpointAuthenticationMode: S.optional(
-            AvailabilityGroupConfigureInputEndpointAuthenticationMode,
-          ),
+          endpointAuthenticationMode: S.optional(S.String),
           certificateName: S.optional(S.String),
           endpointConnectLogin: S.optional(S.String),
-          availabilityMode: S.optional(AvailabilityGroupConfigureInputAvailabilityMode),
-          failoverMode: S.optional(AvailabilityGroupConfigureInputFailoverMode),
+          availabilityMode: S.optional(S.String),
+          failoverMode: S.optional(S.String),
           sessionTimeout: S.optional(S.Number),
-          primaryAllowConnections: S.optional(
-            AvailabilityGroupConfigureInputPrimaryAllowConnections,
-          ),
-          secondaryAllowConnections: S.optional(
-            AvailabilityGroupConfigureInputSecondaryAllowConnections,
-          ),
+          primaryAllowConnections: S.optional(S.String),
+          secondaryAllowConnections: S.optional(S.String),
           backupPriority: S.optional(S.Number),
           readOnlyRoutingUrl: S.optional(S.String),
           readWriteRoutingUrl: S.optional(S.String),
-          seedingMode: S.optional(AvailabilityGroupConfigureInputSeedingMode),
+          seedingMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AvailabilityGroupConfigureInput",
@@ -8089,8 +6258,8 @@ function __c7(j: number): any {
         S.Struct({
           replicaName: S.optional(S.String),
           replicaResourceId: S.optional(S.String),
-          configure: S.optional(AvailabilityGroupConfigureInput),
-          state: S.optional(AvailabilityGroupStateInput),
+          configure: S.optional(__S(61)),
+          state: S.optional(__S(62)),
         }),
       ).annotate({
         identifier: "SqlAvailabilityGroupReplicaResourcePropertiesInput",
@@ -8100,11 +6269,11 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SqlAvailabilityGroupReplicaResourcePropertiesInput);
+      return S.Array(__S(63));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SqlServerAvailabilityGroupResourcePropertiesInputReplicasValueList),
+          value: S.optional(__S(64)),
         }),
       ).annotate({
         identifier: "SqlServerAvailabilityGroupResourcePropertiesInputReplicas",
@@ -8118,11 +6287,11 @@ function __c8(j: number): any {
         identifier: "SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput",
       });
     case 3:
-      return S.Array(SqlAvailabilityGroupDatabaseReplicaResourcePropertiesInput);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SqlServerAvailabilityGroupResourcePropertiesInputDatabasesValueList),
+          value: S.optional(__S(67)),
         }),
       ).annotate({
         identifier: "SqlServerAvailabilityGroupResourcePropertiesInputDatabases",
@@ -8130,9 +6299,9 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          info: S.optional(AvailabilityGroupInfoInput),
-          replicas: S.optional(SqlServerAvailabilityGroupResourcePropertiesInputReplicas),
-          databases: S.optional(SqlServerAvailabilityGroupResourcePropertiesInputDatabases),
+          info: S.optional(__S(60)),
+          replicas: S.optional(__S(65)),
+          databases: S.optional(__S(68)),
         }),
       ).annotate({
         identifier: "SqlServerAvailabilityGroupResourcePropertiesInput",
@@ -8144,9 +6313,9 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
           availabilityGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateSqlServerAvailabilityGroupRequestTagsMap),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: SqlServerAvailabilityGroupResourcePropertiesInput,
+          properties: __S(69),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8164,27 +6333,17 @@ function __c8(j: number): any {
           serverInstance: S.optional(S.String),
           endpointName: S.optional(S.String),
           endpointUrl: S.optional(S.String),
-          endpointAuthenticationMode: S.optional(
-            AvailabilityGroupCreateUpdateReplicaConfigurationEndpointAuthenticationMode,
-          ),
+          endpointAuthenticationMode: S.optional(S.String),
           certificateName: S.optional(S.String),
           endpointConnectLogin: S.optional(S.String),
-          availabilityMode: S.optional(
-            AvailabilityGroupCreateUpdateReplicaConfigurationAvailabilityMode,
-          ),
-          failoverMode: S.optional(AvailabilityGroupCreateUpdateReplicaConfigurationFailoverMode),
-          seedingMode: S.optional(AvailabilityGroupCreateUpdateReplicaConfigurationSeedingMode),
+          availabilityMode: S.optional(S.String),
+          failoverMode: S.optional(S.String),
+          seedingMode: S.optional(S.String),
           backupPriority: S.optional(S.Number),
-          secondaryRoleAllowConnections: S.optional(
-            AvailabilityGroupCreateUpdateReplicaConfigurationSecondaryRoleAllowConnections,
-          ),
+          secondaryRoleAllowConnections: S.optional(S.String),
           secondaryRoleReadOnlyRoutingUrl: S.optional(S.String),
-          primaryRoleAllowConnections: S.optional(
-            AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleAllowConnections,
-          ),
-          primaryRoleReadOnlyRoutingList: S.optional(
-            AvailabilityGroupCreateUpdateReplicaConfigurationPrimaryRoleReadOnlyRoutingListList,
-          ),
+          primaryRoleAllowConnections: S.optional(S.String),
+          primaryRoleReadOnlyRoutingList: S.optional(__S(6)),
           sessionTimeout: S.optional(S.Number),
         }),
       ).annotate({
@@ -8195,7 +6354,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AvailabilityGroupCreateUpdateReplicaConfiguration);
+      return S.Array(__S(71));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8203,30 +6362,16 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
           availabilityGroupName: S.optional(S.String),
-          replicas: S.optional(
-            CreateSqlServerAvailabilityGroupAvailabilityGroupRequestReplicasList,
-          ),
-          databases: S.optional(
-            CreateSqlServerAvailabilityGroupAvailabilityGroupRequestDatabasesList,
-          ),
-          automatedBackupPreference: S.optional(
-            CreateSqlServerAvailabilityGroupAvailabilityGroupRequestAutomatedBackupPreference,
-          ),
-          failureConditionLevel: S.optional(
-            CreateSqlServerAvailabilityGroupAvailabilityGroupRequestFailureConditionLevel,
-          ),
+          replicas: S.optional(__S(72)),
+          databases: S.optional(__S(6)),
+          automatedBackupPreference: S.optional(S.String),
+          failureConditionLevel: S.optional(S.Number),
           healthCheckTimeout: S.optional(S.Number),
-          dbFailover: S.optional(
-            CreateSqlServerAvailabilityGroupAvailabilityGroupRequestDbFailover,
-          ),
-          dtcSupport: S.optional(
-            CreateSqlServerAvailabilityGroupAvailabilityGroupRequestDtcSupport,
-          ),
+          dbFailover: S.optional(S.String),
+          dtcSupport: S.optional(S.String),
           requiredSynchronizedSecondariesToCommit: S.optional(S.Number),
-          clusterType: S.optional(
-            CreateSqlServerAvailabilityGroupAvailabilityGroupRequestClusterType,
-          ),
-          listener: S.optional(SqlAvailabilityGroupStaticIPListenerProperties),
+          clusterType: S.optional(S.String),
+          listener: S.optional(__S(7)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8246,10 +6391,10 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateSqlServerAvailabilityGroupAvailabilityGroupResponseTagsMap),
+          systemData: S.optional(__S(2)),
+          tags: S.optional(__S(74)),
           location: S.String,
-          properties: SqlServerAvailabilityGroupResourceProperties,
+          properties: __S(17),
         }),
       ).annotate({
         identifier: "CreateSqlServerAvailabilityGroupAvailabilityGroupResponse",
@@ -8268,18 +6413,10 @@ function __c9(j: number): any {
         S.Struct({
           availabilityGroup: S.optional(S.String),
           listenerUrl: S.optional(S.String),
-          availabilityMode: S.optional(
-            DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationAvailabilityMode,
-          ),
-          failoverMode: S.optional(
-            DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationFailoverMode,
-          ),
-          seedingMode: S.optional(
-            DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfigurationSeedingMode,
-          ),
-          certificateConfiguration: S.optional(
-            DistributedAvailabilityGroupCreateUpdateAvailabilityGroupCertificateConfiguration,
-          ),
+          availabilityMode: S.optional(S.String),
+          failoverMode: S.optional(S.String),
+          seedingMode: S.optional(S.String),
+          certificateConfiguration: S.optional(__S(76)),
         }),
       ).annotate({
         identifier: "DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration",
@@ -8291,12 +6428,8 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
           availabilityGroupName: S.optional(S.String),
-          primaryAvailabilityGroup: S.optional(
-            DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration,
-          ),
-          secondaryAvailabilityGroup: S.optional(
-            DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration,
-          ),
+          primaryAvailabilityGroup: S.optional(__S(77)),
+          secondaryAvailabilityGroup: S.optional(__S(77)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8314,12 +6447,10 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(
-            CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponseTagsMap,
-          ),
+          systemData: S.optional(__S(2)),
+          tags: S.optional(__S(74)),
           location: S.String,
-          properties: SqlServerAvailabilityGroupResourceProperties,
+          properties: __S(17),
         }),
       ).annotate({
         identifier: "CreateSqlServerAvailabilityGroupDistributedAvailabilityGroupResponse",
@@ -8329,25 +6460,21 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AvailabilityGroupCreateUpdateReplicaConfiguration);
+      return S.Array(__S(71));
     case 1:
       return S.suspend(() =>
         S.Struct({
           availabilityGroupName: S.optional(S.String),
-          replicas: S.optional(AvailabilityGroupCreateUpdateConfigurationReplicasList),
-          databases: S.optional(AvailabilityGroupCreateUpdateConfigurationDatabasesList),
-          automatedBackupPreference: S.optional(
-            AvailabilityGroupCreateUpdateConfigurationAutomatedBackupPreference,
-          ),
-          failureConditionLevel: S.optional(
-            AvailabilityGroupCreateUpdateConfigurationFailureConditionLevel,
-          ),
+          replicas: S.optional(__S(80)),
+          databases: S.optional(__S(0)),
+          automatedBackupPreference: S.optional(S.String),
+          failureConditionLevel: S.optional(S.Number),
           healthCheckTimeout: S.optional(S.Number),
-          dbFailover: S.optional(AvailabilityGroupCreateUpdateConfigurationDbFailover),
-          dtcSupport: S.optional(AvailabilityGroupCreateUpdateConfigurationDtcSupport),
+          dbFailover: S.optional(S.String),
+          dtcSupport: S.optional(S.String),
           requiredSynchronizedSecondariesToCommit: S.optional(S.Number),
-          clusterType: S.optional(AvailabilityGroupCreateUpdateConfigurationClusterType),
-          listener: S.optional(SqlAvailabilityGroupStaticIPListenerProperties),
+          clusterType: S.optional(S.String),
+          listener: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "AvailabilityGroupCreateUpdateConfiguration",
@@ -8356,12 +6483,8 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           availabilityGroupName: S.optional(S.String),
-          primaryAvailabilityGroup: S.optional(
-            DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration,
-          ),
-          secondaryAvailabilityGroup: S.optional(
-            DistributedAvailabilityGroupCreateUpdateAvailabilityGroupConfiguration,
-          ),
+          primaryAvailabilityGroup: S.optional(__S(77)),
+          secondaryAvailabilityGroup: S.optional(__S(77)),
         }),
       ).annotate({
         identifier: "DistributedAvailabilityGroupCreateUpdateConfiguration",
@@ -8380,11 +6503,9 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
-          availabilityGroup: S.optional(AvailabilityGroupCreateUpdateConfiguration),
-          distributedAvailabilityGroup: S.optional(
-            DistributedAvailabilityGroupCreateUpdateConfiguration,
-          ),
-          miLinkConfiguration: S.optional(MiLinkCreateUpdateConfiguration),
+          availabilityGroup: S.optional(__S(81)),
+          distributedAvailabilityGroup: S.optional(__S(82)),
+          miLinkConfiguration: S.optional(__S(83)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8427,7 +6548,7 @@ function __c10(j: number): any {
         S.Struct({
           retentionPeriodDays: S.optional(S.Number),
           fullBackupDays: S.optional(S.Number),
-          differentialBackupHours: S.optional(BackupPolicyDifferentialBackupHours),
+          differentialBackupHours: S.optional(S.Number),
           transactionLogBackupMinutes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BackupPolicy" });
@@ -8438,7 +6559,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          assessment: S.optional(AvailabilityGroupStateInput),
+          assessment: S.optional(__S(62)),
         }),
       ).annotate({ identifier: "DataBaseMigrationInput" });
     case 1:
@@ -8451,16 +6572,16 @@ function __c11(j: number): any {
           logFileSizeMB: S.optional(S.Number),
           dataFileSizeMB: S.optional(S.Number),
           spaceAvailableMB: S.optional(S.Number),
-          state: S.optional(SqlServerDatabaseResourcePropertiesInputState),
+          state: S.optional(S.String),
           isReadOnly: S.optional(S.Boolean),
-          recoveryMode: S.optional(SqlServerDatabaseResourcePropertiesInputRecoveryMode),
-          databaseOptions: S.optional(SqlServerDatabaseResourcePropertiesInputDatabaseOptions),
-          backupInformation: S.optional(SqlServerDatabaseResourcePropertiesInputBackupInformation),
-          backupPolicy: S.optional(BackupPolicy),
-          createMode: S.optional(SqlServerDatabaseResourcePropertiesInputCreateMode),
+          recoveryMode: S.optional(S.String),
+          databaseOptions: S.optional(__S(85)),
+          backupInformation: S.optional(__S(86)),
+          backupPolicy: S.optional(__S(87)),
+          createMode: S.optional(S.String),
           sourceDatabaseId: S.optional(S.String),
           restorePointInTime: S.optional(S.String),
-          migration: S.optional(DataBaseMigrationInput),
+          migration: S.optional(__S(88)),
         }),
       ).annotate({
         identifier: "SqlServerDatabaseResourcePropertiesInput",
@@ -8472,9 +6593,9 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateSqlServerDatabaseRequestTagsMap),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: SqlServerDatabaseResourcePropertiesInput,
+          properties: __S(89),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8496,7 +6617,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "DatabaseAssessmentsItem" });
     case 4:
-      return S.Array(DatabaseAssessmentsItem);
+      return S.Array(__S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -8508,7 +6629,7 @@ function __c11(j: number): any {
         identifier: "SkuRecommendationSummaryImpactedObjectsSummaryItem",
       });
     case 6:
-      return S.Array(SkuRecommendationSummaryImpactedObjectsSummaryItem);
+      return S.Array(__S(93));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -8538,13 +6659,13 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           keyName: S.optional(S.String),
-          keyValue: S.optional(CostTypeValues),
+          keyValue: S.optional(__S(96)),
         }),
       ).annotate({
         identifier: "SkuRecommendationResultsMonthlyCostOptionItem",
       });
     case 2:
-      return S.Array(SkuRecommendationResultsMonthlyCostOptionItem);
+      return S.Array(__S(97));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -8560,7 +6681,7 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(SkuRecommendationSummaryTargetSkuCategory),
+          category: S.optional(__S(99)),
           computeSize: S.optional(S.Number),
           storageMaxSizeInMb: S.optional(S.Number),
           predictedDataSizeInMb: S.optional(S.Number),
@@ -8575,27 +6696,27 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           numOfBlockerIssues: S.optional(S.Number),
-          recommendationStatus: S.optional(SkuRecommendationSummaryRecommendationStatus),
-          impactedObjectsSummary: S.optional(SkuRecommendationSummaryImpactedObjectsSummaryList),
-          monthlyCost: S.optional(SkuRecommendationSummaryMonthlyCost),
-          monthlyCostOptions: S.optional(SkuRecommendationSummaryMonthlyCostOptionsList),
-          targetSku: S.optional(SkuRecommendationSummaryTargetSku),
+          recommendationStatus: S.optional(S.String),
+          impactedObjectsSummary: S.optional(__S(94)),
+          monthlyCost: S.optional(__S(95)),
+          monthlyCostOptions: S.optional(__S(98)),
+          targetSku: S.optional(__S(100)),
         }),
       ).annotate({ identifier: "SkuRecommendationSummary" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          azureSqlDatabase: S.optional(SkuRecommendationSummary),
-          azureSqlManagedInstance: S.optional(SkuRecommendationSummary),
-          azureSqlVirtualMachine: S.optional(SkuRecommendationSummary),
+          azureSqlDatabase: S.optional(__S(101)),
+          azureSqlManagedInstance: S.optional(__S(101)),
+          azureSqlVirtualMachine: S.optional(__S(101)),
         }),
       ).annotate({ identifier: "TargetReadiness" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           assessmentUploadTime: S.optional(S.String),
-          databaseAssessments: S.optional(DatabaseAssessments),
-          targetReadiness: S.optional(TargetReadiness),
+          databaseAssessments: S.optional(__S(92)),
+          targetReadiness: S.optional(__S(102)),
         }),
       ).annotate({
         identifier: "DataBaseMigrationAssessment",
@@ -8607,7 +6728,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          assessment: S.optional(DataBaseMigrationAssessment),
+          assessment: S.optional(__S(103)),
         }),
       ).annotate({ identifier: "DataBaseMigration" });
     case 1:
@@ -8620,20 +6741,20 @@ function __c13(j: number): any {
           logFileSizeMB: S.optional(S.Number),
           dataFileSizeMB: S.optional(S.Number),
           spaceAvailableMB: S.optional(S.Number),
-          state: S.optional(SqlServerDatabaseResourcePropertiesState),
+          state: S.optional(S.String),
           isReadOnly: S.optional(S.Boolean),
-          recoveryMode: S.optional(SqlServerDatabaseResourcePropertiesRecoveryMode),
-          databaseOptions: S.optional(SqlServerDatabaseResourcePropertiesInputDatabaseOptions),
-          backupInformation: S.optional(SqlServerDatabaseResourcePropertiesInputBackupInformation),
-          backupPolicy: S.optional(BackupPolicy),
+          recoveryMode: S.optional(S.String),
+          databaseOptions: S.optional(__S(85)),
+          backupInformation: S.optional(__S(86)),
+          backupPolicy: S.optional(__S(87)),
           earliestRestoreDate: S.optional(S.String),
-          createMode: S.optional(SqlServerDatabaseResourcePropertiesCreateMode),
+          createMode: S.optional(S.String),
           sourceDatabaseId: S.optional(S.String),
           vmId: S.optional(S.String),
           restorePointInTime: S.optional(S.String),
           provisioningState: S.optional(S.String),
           lastDatabaseUploadTime: S.optional(S.String),
-          migration: S.optional(DataBaseMigration),
+          migration: S.optional(__S(104)),
         }),
       ).annotate({
         identifier: "SqlServerDatabaseResourceProperties",
@@ -8644,10 +6765,10 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateSqlServerDatabaseResponseTagsMap),
+          systemData: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: SqlServerDatabaseResourceProperties,
+          properties: __S(105),
         }),
       ).annotate({
         identifier: "CreateSqlServerDatabaseResponse",
@@ -8655,11 +6776,11 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          billingPlan: SqlServerEsuLicensePropertiesInputBillingPlan,
-          version: SqlServerEsuLicensePropertiesInputVersion,
+          billingPlan: S.String,
+          version: S.String,
           physicalCores: S.Number,
-          activationState: SqlServerEsuLicensePropertiesInputActivationState,
-          scopeType: SqlServerEsuLicensePropertiesInputScopeType,
+          activationState: S.String,
+          scopeType: S.String,
         }),
       ).annotate({
         identifier: "SqlServerEsuLicensePropertiesInput",
@@ -8670,9 +6791,9 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerEsuLicenseName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateSqlServerEsuLicenseRequestTagsMap),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: SqlServerEsuLicensePropertiesInput,
+          properties: __S(107),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8687,12 +6808,12 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          billingPlan: SqlServerEsuLicensePropertiesBillingPlan,
-          version: SqlServerEsuLicensePropertiesVersion,
+          billingPlan: S.String,
+          version: S.String,
           uniqueId: S.optional(S.String),
           physicalCores: S.Number,
-          activationState: SqlServerEsuLicensePropertiesActivationState,
-          scopeType: SqlServerEsuLicensePropertiesScopeType,
+          activationState: S.String,
+          scopeType: S.String,
           activatedAt: S.optional(S.String),
           terminatedAt: S.optional(S.String),
           tenantId: S.optional(S.String),
@@ -8706,10 +6827,10 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateSqlServerEsuLicenseResponseTagsMap),
+          systemData: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: SqlServerEsuLicenseProperties,
+          properties: __S(109),
         }),
       ).annotate({
         identifier: "CreateSqlServerEsuLicenseResponse",
@@ -8717,8 +6838,8 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          encryptionAlgorithm: S.optional(DBMEndpointInputEncryptionAlgorithm),
-          connectionAuth: S.optional(DBMEndpointInputConnectionAuth),
+          encryptionAlgorithm: S.optional(S.String),
+          connectionAuth: S.optional(S.String),
         }),
       ).annotate({ identifier: "DBMEndpointInput" });
   }
@@ -8748,7 +6869,7 @@ function __c14(j: number): any {
           strategy: S.optional(S.String),
           currency: S.optional(S.String),
           discountPercentage: S.optional(S.Number),
-          costOptions: S.optional(CostOptionSelectedValues),
+          costOptions: S.optional(__S(113)),
         }),
       ).annotate({
         identifier: "MigrationAssessmentSettings",
@@ -8757,14 +6878,14 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          settings: S.optional(MigrationAssessmentSettings),
-          impactedObjectsSummary: S.optional(AvailabilityGroupStateInput),
+          settings: S.optional(__S(114)),
+          impactedObjectsSummary: S.optional(__S(62)),
         }),
       ).annotate({ identifier: "MigrationAssessmentInput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          assessment: S.optional(MigrationAssessmentInput),
+          assessment: S.optional(__S(115)),
         }),
       ).annotate({ identifier: "MigrationInput" });
     case 5:
@@ -8779,14 +6900,14 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          cronTrigger: S.optional(CronTrigger),
+          cronTrigger: S.optional(__S(117)),
         }),
       ).annotate({ identifier: "Schedule" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          schedule: S.optional(Schedule),
+          schedule: S.optional(__S(118)),
         }),
       ).annotate({ identifier: "BestPracticesAssessment" });
   }
@@ -8796,39 +6917,39 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          identityType: S.optional(AuthenticationSqlServerEntraIdentityItemIdentityType),
+          identityType: S.optional(S.String),
           clientId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AuthenticationSqlServerEntraIdentityItem",
       });
     case 1:
-      return S.Array(AuthenticationSqlServerEntraIdentityItem);
+      return S.Array(__S(120));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(AuthenticationMode),
-          sqlServerEntraIdentity: S.optional(AuthenticationSqlServerEntraIdentityList),
+          mode: S.optional(S.String),
+          sqlServerEntraIdentity: S.optional(__S(121)),
         }),
       ).annotate({ identifier: "Authentication" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(SqlServerInstancePropertiesInputVersion),
-          edition: S.optional(SqlServerInstancePropertiesInputEdition),
+          version: S.optional(S.String),
+          edition: S.optional(S.String),
           cores: S.optional(S.String),
           instanceName: S.optional(S.String),
-          hostType: S.optional(SqlServerInstancePropertiesInputHostType),
-          databaseMirroringEndpoint: S.optional(DBMEndpointInput),
-          failoverCluster: S.optional(AvailabilityGroupStateInput),
-          backupPolicy: S.optional(BackupPolicy),
+          hostType: S.optional(S.String),
+          databaseMirroringEndpoint: S.optional(__S(111)),
+          failoverCluster: S.optional(__S(62)),
+          backupPolicy: S.optional(__S(87)),
           upgradeLockedUntil: S.optional(S.String),
-          monitoring: S.optional(Monitoring),
-          migration: S.optional(MigrationInput),
-          bestPracticesAssessment: S.optional(BestPracticesAssessment),
-          clientConnection: S.optional(ClientConnection),
-          serviceType: S.optional(ServiceType),
-          authentication: S.optional(Authentication),
+          monitoring: S.optional(__S(112)),
+          migration: S.optional(__S(116)),
+          bestPracticesAssessment: S.optional(__S(119)),
+          clientConnection: S.optional(__S(112)),
+          serviceType: S.optional(S.String),
+          authentication: S.optional(__S(122)),
         }),
       ).annotate({
         identifier: "SqlServerInstancePropertiesInput",
@@ -8839,9 +6960,9 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateSqlServerInstanceRequestTagsMap),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: S.optional(SqlServerInstancePropertiesInput),
+          properties: S.optional(__S(123)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8859,10 +6980,10 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpointName: S.optional(S.String),
-          role: S.optional(DBMEndpointRole),
+          role: S.optional(S.String),
           isEncryptionEnabled: S.optional(S.Boolean),
-          encryptionAlgorithm: S.optional(DBMEndpointEncryptionAlgorithm),
-          connectionAuth: S.optional(DBMEndpointConnectionAuth),
+          encryptionAlgorithm: S.optional(S.String),
+          connectionAuth: S.optional(S.String),
           port: S.optional(S.Number),
           isDynamicPort: S.optional(S.Boolean),
           ipAddress: S.optional(S.String),
@@ -8882,15 +7003,15 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(HostIPAddressInformation);
+      return S.Array(__S(127));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           networkName: S.optional(S.String),
-          sqlInstanceIds: S.optional(FailoverClusterSqlInstanceIdsList),
-          hostNames: S.optional(FailoverClusterHostNamesList),
-          hostIPAddresses: S.optional(FailoverClusterHostIPAddressesList),
+          sqlInstanceIds: S.optional(__S(0)),
+          hostNames: S.optional(__S(0)),
+          hostIPAddresses: S.optional(__S(128)),
         }),
       ).annotate({ identifier: "FailoverCluster" });
     case 2:
@@ -8904,37 +7025,33 @@ function __c16(j: number): any {
         identifier: "ServerAssessmentsItemImpactedObjectsItem",
       });
     case 3:
-      return S.Array(ServerAssessmentsItemImpactedObjectsItem);
+      return S.Array(__S(130));
     case 4:
       return S.suspend(() =>
         S.Struct({
           appliesToMigrationTargetPlatform: S.optional(S.String),
           featureId: S.optional(S.String),
-          impactedObjects: S.optional(ServerAssessmentsItemImpactedObjectsList),
+          impactedObjects: S.optional(__S(131)),
           issueCategory: S.optional(S.String),
           moreInformation: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServerAssessmentsItem" });
     case 5:
-      return S.Array(ServerAssessmentsItem);
+      return S.Array(__S(132));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          recommendationStatus: S.optional(
-            SkuRecommendationResultsAzureSqlDatabaseRecommendationStatus,
-          ),
+          recommendationStatus: S.optional(S.String),
           numberOfServerBlockerIssues: S.optional(S.Number),
-          monthlyCost: S.optional(SkuRecommendationSummaryMonthlyCost),
-          monthlyCostOptions: S.optional(
-            SkuRecommendationResultsAzureSqlDatabaseMonthlyCostOptionsList,
-          ),
-          targetSku: S.optional(SkuRecommendationResultsAzureSqlDatabaseTargetSku),
+          monthlyCost: S.optional(__S(95)),
+          monthlyCostOptions: S.optional(__S(98)),
+          targetSku: S.optional(__S(100)),
         }),
       ).annotate({
         identifier: "SkuRecommendationResultsAzureSqlDatabase",
       });
     case 7:
-      return S.Array(SkuRecommendationResultsMonthlyCostOptionItem);
+      return S.Array(__S(97));
   }
 }
 function __c17(j: number): any {
@@ -8942,15 +7059,11 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          recommendationStatus: S.optional(
-            SkuRecommendationResultsAzureSqlManagedInstanceRecommendationStatus,
-          ),
+          recommendationStatus: S.optional(S.String),
           numberOfServerBlockerIssues: S.optional(S.Number),
-          monthlyCost: S.optional(SkuRecommendationSummaryMonthlyCost),
-          monthlyCostOptions: S.optional(
-            SkuRecommendationResultsAzureSqlManagedInstanceMonthlyCostOptionsList,
-          ),
-          targetSku: S.optional(SkuRecommendationResultsAzureSqlDatabaseTargetSku),
+          monthlyCost: S.optional(__S(95)),
+          monthlyCostOptions: S.optional(__S(135)),
+          targetSku: S.optional(__S(100)),
         }),
       ).annotate({
         identifier: "SkuRecommendationResultsAzureSqlManagedInstance",
@@ -8958,9 +7071,7 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          availableVmSkus: S.optional(
-            SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategoryAvailableVmSkusList,
-          ),
+          availableVmSkus: S.optional(__S(6)),
           virtualMachineFamily: S.optional(S.String),
         }),
       ).annotate({
@@ -8992,26 +7103,18 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "DiskSizes" });
     case 4:
-      return S.Array(DiskSizes);
+      return S.Array(__S(139));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuCategory),
+          category: S.optional(__S(137)),
           computeSize: S.optional(S.Number),
           predictedDataSizeInMb: S.optional(S.Number),
           predictedLogSizeInMb: S.optional(S.Number),
-          virtualMachineSize: S.optional(
-            SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuVirtualMachineSize,
-          ),
-          dataDiskSizes: S.optional(
-            SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuDataDiskSizesList,
-          ),
-          logDiskSizes: S.optional(
-            SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuLogDiskSizesList,
-          ),
-          tempDbDiskSizes: S.optional(
-            SkuRecommendationResultsAzureSqlVirtualMachineTargetSkuTempDbDiskSizesList,
-          ),
+          virtualMachineSize: S.optional(__S(138)),
+          dataDiskSizes: S.optional(__S(140)),
+          logDiskSizes: S.optional(__S(140)),
+          tempDbDiskSizes: S.optional(__S(140)),
         }),
       ).annotate({
         identifier: "SkuRecommendationResultsAzureSqlVirtualMachineTargetSku",
@@ -9019,15 +7122,11 @@ function __c17(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          recommendationStatus: S.optional(
-            SkuRecommendationResultsAzureSqlVirtualMachineRecommendationStatus,
-          ),
+          recommendationStatus: S.optional(S.String),
           numberOfServerBlockerIssues: S.optional(S.Number),
-          monthlyCost: S.optional(SkuRecommendationSummaryMonthlyCost),
-          monthlyCostOptions: S.optional(
-            SkuRecommendationResultsAzureSqlVirtualMachineMonthlyCostOptionsList,
-          ),
-          targetSku: S.optional(SkuRecommendationResultsAzureSqlVirtualMachineTargetSku),
+          monthlyCost: S.optional(__S(95)),
+          monthlyCostOptions: S.optional(__S(135)),
+          targetSku: S.optional(__S(141)),
         }),
       ).annotate({
         identifier: "SkuRecommendationResultsAzureSqlVirtualMachine",
@@ -9035,9 +7134,9 @@ function __c17(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          azureSqlDatabase: S.optional(SkuRecommendationResultsAzureSqlDatabase),
-          azureSqlManagedInstance: S.optional(SkuRecommendationResultsAzureSqlManagedInstance),
-          azureSqlVirtualMachine: S.optional(SkuRecommendationResultsAzureSqlVirtualMachine),
+          azureSqlDatabase: S.optional(__S(134)),
+          azureSqlManagedInstance: S.optional(__S(136)),
+          azureSqlVirtualMachine: S.optional(__S(142)),
         }),
       ).annotate({ identifier: "SkuRecommendationResults" });
   }
@@ -9045,16 +7144,12 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SkuRecommendationSummaryImpactedObjectsSummaryItem);
+      return S.Array(__S(93));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          azureSqlDatabase: S.optional(
-            MigrationAssessmentImpactedObjectsSummaryAzureSqlDatabaseList,
-          ),
-          azureSqlManagedInstance: S.optional(
-            MigrationAssessmentImpactedObjectsSummaryAzureSqlManagedInstanceList,
-          ),
+          azureSqlDatabase: S.optional(__S(94)),
+          azureSqlManagedInstance: S.optional(__S(144)),
         }),
       ).annotate({
         identifier: "MigrationAssessmentImpactedObjectsSummary",
@@ -9065,60 +7160,60 @@ function __c18(j: number): any {
           enabled: S.optional(S.Boolean),
           assessmentUploadTime: S.optional(S.String),
           version: S.optional(S.String),
-          settings: S.optional(MigrationAssessmentSettings),
-          serverAssessments: S.optional(ServerAssessments),
-          skuRecommendationResults: S.optional(SkuRecommendationResults),
-          impactedObjectsSummary: S.optional(MigrationAssessmentImpactedObjectsSummary),
+          settings: S.optional(__S(114)),
+          serverAssessments: S.optional(__S(133)),
+          skuRecommendationResults: S.optional(__S(143)),
+          impactedObjectsSummary: S.optional(__S(145)),
         }),
       ).annotate({ identifier: "MigrationAssessment" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          assessment: S.optional(MigrationAssessment),
+          assessment: S.optional(__S(146)),
         }),
       ).annotate({ identifier: "Migration" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(SqlServerInstancePropertiesVersion),
-          edition: S.optional(SqlServerInstancePropertiesEdition),
+          version: S.optional(S.String),
+          edition: S.optional(S.String),
           containerResourceId: S.optional(S.String),
           vmId: S.optional(S.String),
           createTime: S.optional(S.String),
           vCore: S.optional(S.String),
           cores: S.optional(S.String),
-          status: S.optional(SqlServerInstancePropertiesStatus),
+          status: S.optional(S.String),
           patchLevel: S.optional(S.String),
           collation: S.optional(S.String),
           dbMasterKeyExists: S.optional(S.Boolean),
           isHadrEnabled: S.optional(S.Boolean),
-          traceFlags: S.optional(SqlServerInstancePropertiesTraceFlagsList),
+          traceFlags: S.optional(__S(125)),
           currentVersion: S.optional(S.String),
           instanceName: S.optional(S.String),
           tcpDynamicPorts: S.optional(S.String),
           tcpStaticPorts: S.optional(S.String),
           productId: S.optional(S.String),
-          licenseType: S.optional(SqlServerInstancePropertiesLicenseType),
+          licenseType: S.optional(S.String),
           azureDefenderStatusLastUpdated: S.optional(S.String),
-          azureDefenderStatus: S.optional(SqlServerInstancePropertiesAzureDefenderStatus),
+          azureDefenderStatus: S.optional(S.String),
           provisioningState: S.optional(S.String),
           lastInventoryUploadTime: S.optional(S.String),
           lastUsageUploadTime: S.optional(S.String),
-          hostType: S.optional(SqlServerInstancePropertiesHostType),
-          alwaysOnRole: S.optional(SqlServerInstancePropertiesAlwaysOnRole),
-          databaseMirroringEndpoint: S.optional(DBMEndpoint),
-          failoverCluster: S.optional(FailoverCluster),
-          backupPolicy: S.optional(BackupPolicy),
+          hostType: S.optional(S.String),
+          alwaysOnRole: S.optional(S.String),
+          databaseMirroringEndpoint: S.optional(__S(126)),
+          failoverCluster: S.optional(__S(129)),
+          backupPolicy: S.optional(__S(87)),
           upgradeLockedUntil: S.optional(S.String),
-          monitoring: S.optional(Monitoring),
-          migration: S.optional(Migration),
-          bestPracticesAssessment: S.optional(BestPracticesAssessment),
-          clientConnection: S.optional(ClientConnection),
-          serviceType: S.optional(ServiceType),
+          monitoring: S.optional(__S(112)),
+          migration: S.optional(__S(147)),
+          bestPracticesAssessment: S.optional(__S(119)),
+          clientConnection: S.optional(__S(112)),
+          serviceType: S.optional(S.String),
           maxServerMemoryMB: S.optional(S.Number),
           isMicrosoftPkiCertTrustConfigured: S.optional(S.Boolean),
           isDigiCertPkiCertTrustConfigured: S.optional(S.Boolean),
-          authentication: S.optional(Authentication),
+          authentication: S.optional(__S(122)),
         }),
       ).annotate({
         identifier: "SqlServerInstanceProperties",
@@ -9129,10 +7224,10 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateSqlServerInstanceResponseTagsMap),
+          systemData: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: S.optional(SqlServerInstanceProperties),
+          properties: S.optional(__S(148)),
         }),
       ).annotate({
         identifier: "CreateSqlServerInstanceResponse",
@@ -9140,11 +7235,11 @@ function __c18(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          billingPlan: SqlServerLicensePropertiesInputBillingPlan,
+          billingPlan: S.String,
           physicalCores: S.Number,
-          licenseCategory: SqlServerLicensePropertiesInputLicenseCategory,
-          activationState: SqlServerLicensePropertiesInputActivationState,
-          scopeType: SqlServerLicensePropertiesInputScopeType,
+          licenseCategory: S.String,
+          activationState: S.String,
+          scopeType: S.String,
         }),
       ).annotate({
         identifier: "SqlServerLicensePropertiesInput",
@@ -9155,9 +7250,9 @@ function __c18(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerLicenseName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateSqlServerLicenseRequestTagsMap),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: SqlServerLicensePropertiesInput,
+          properties: __S(150),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9176,11 +7271,11 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          billingPlan: SqlServerLicensePropertiesBillingPlan,
+          billingPlan: S.String,
           physicalCores: S.Number,
-          licenseCategory: SqlServerLicensePropertiesLicenseCategory,
-          activationState: SqlServerLicensePropertiesActivationState,
-          scopeType: SqlServerLicensePropertiesScopeType,
+          licenseCategory: S.String,
+          activationState: S.String,
+          scopeType: S.String,
           lastActivatedAt: S.optional(S.String),
           lastDeactivatedAt: S.optional(S.String),
           tenantId: S.optional(S.String),
@@ -9194,10 +7289,10 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateSqlServerLicenseResponseTagsMap),
+          systemData: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: SqlServerLicenseProperties,
+          properties: __S(152),
         }),
       ).annotate({
         identifier: "CreateSqlServerLicenseResponse",
@@ -9482,22 +7577,16 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          infrastructure: S.optional(DataControllerPropertiesInfrastructure),
-          onPremiseProperty: S.optional(OnPremiseProperty),
+          infrastructure: S.optional(S.String),
+          onPremiseProperty: S.optional(__S(169)),
           k8sRaw: S.optional(S.Unknown),
-          uploadWatermark: S.optional(UploadWatermark),
+          uploadWatermark: S.optional(__S(170)),
           lastUploadedDate: S.optional(S.String),
-          basicLoginInformation: S.optional(
-            ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-          ),
-          metricsDashboardCredential: S.optional(
-            ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-          ),
-          logsDashboardCredential: S.optional(
-            ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-          ),
-          logAnalyticsWorkspaceConfig: S.optional(LogAnalyticsWorkspaceConfig),
-          uploadServicePrincipal: S.optional(UploadServicePrincipal),
+          basicLoginInformation: S.optional(__S(19)),
+          metricsDashboardCredential: S.optional(__S(19)),
+          logsDashboardCredential: S.optional(__S(19)),
+          logAnalyticsWorkspaceConfig: S.optional(__S(171)),
+          uploadServicePrincipal: S.optional(__S(172)),
           provisioningState: S.optional(S.String),
           clusterId: S.optional(S.String),
           extensionId: S.optional(S.String),
@@ -9509,11 +7598,11 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetDataControllerDataControllerResponseTagsMap),
+          systemData: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          extendedLocation: S.optional(CreatePostgresInstanceResponseExtendedLocation),
-          properties: DataControllerProperties,
+          extendedLocation: S.optional(__S(36)),
+          properties: __S(173),
         }),
       ).annotate({
         identifier: "GetDataControllerDataControllerResponse",
@@ -9544,8 +7633,8 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: FailoverGroupProperties,
+          systemData: S.optional(__S(2)),
+          properties: __S(34),
         }),
       ).annotate({ identifier: "GetFailoverGroupResponse" });
     case 1:
@@ -9658,8 +7747,8 @@ function __c22(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
-          availabilityGroupTypeFilter: S.optional(AvailabilityGroupTypeFilter),
-          replicationPartnerTypeFilter: S.optional(ReplicationPartnerType),
+          availabilityGroupTypeFilter: S.optional(S.String),
+          replicationPartnerTypeFilter: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9676,11 +7765,11 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SqlServerAvailabilityGroupResource);
+      return S.Array(__S(18));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ArcSqlServerAvailabilityGroupListResultValueList),
+          value: S.optional(__S(184)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9692,7 +7781,7 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
-          reportType: S.optional(GetSqlServerInstanceBestPracticesAssessmentRequestReportType),
+          reportType: S.optional(S.String),
           reportId: S.optional(S.String),
           skipToken: S.optional(S.String),
         }).pipe(
@@ -9707,14 +7796,14 @@ function __c23(j: number): any {
         identifier: "GetSqlServerInstanceBestPracticesAssessmentRequest",
       });
     case 3:
-      return S.Array(SqlServerInstanceBpaColumn);
+      return S.Array(__S(36));
     case 4:
-      return S.Array(SqlServerInstanceBpaRow);
+      return S.Array(__S(0));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          columns: GetSqlServerInstanceBestPracticesAssessmentResponseColumnsList,
-          rows: GetSqlServerInstanceBestPracticesAssessmentResponseRowsList,
+          columns: __S(187),
+          rows: __S(188),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9742,11 +7831,11 @@ function __c23(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(BackgroundJobState),
-          executionState: S.optional(BackgroundJobExecutionState),
+          state: S.optional(S.String),
+          executionState: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          lastExecutionStatus: S.optional(BackgroundJobLastExecutionStatus),
+          lastExecutionStatus: S.optional(S.String),
           lastExecutionTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "BackgroundJob" });
@@ -9758,31 +7847,31 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           actionId: S.optional(S.String),
-          state: S.optional(SequencerActionState),
-          result: S.optional(SequencerActionResult),
+          state: S.optional(S.String),
+          result: S.optional(S.String),
         }),
       ).annotate({ identifier: "SequencerAction" });
     case 1:
-      return S.Array(SequencerAction);
+      return S.Array(__S(192));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           instanceName: S.optional(S.String),
-          jobStatus: S.optional(SqlServerInstanceJobStatusJobStatus),
+          jobStatus: S.optional(S.String),
           jobException: S.optional(S.String),
-          backgroundJob: S.optional(BackgroundJob),
-          sequencerActions: S.optional(SqlServerInstanceJobStatusSequencerActionsList),
+          backgroundJob: S.optional(__S(191)),
+          sequencerActions: S.optional(__S(193)),
         }),
       ).annotate({
         identifier: "SqlServerInstanceJobStatus",
       });
     case 3:
-      return S.Array(SqlServerInstanceJobStatus);
+      return S.Array(__S(194));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          jobsStatus: S.optional(GetSqlServerInstanceJobsStatusResponseJobsStatusList),
+          jobsStatus: S.optional(__S(195)),
         }),
       ).annotate({
         identifier: "GetSqlServerInstanceJobsStatusResponse",
@@ -9797,8 +7886,8 @@ function __c24(j: number): any {
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           interval: S.optional(S.String),
-          aggregationType: S.optional(GetSqlServerInstanceTelemetryRequestAggregationType),
-          databaseNames: S.optional(GetSqlServerInstanceTelemetryRequestDatabaseNamesList),
+          aggregationType: S.optional(S.String),
+          databaseNames: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9813,8 +7902,8 @@ function __c24(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          columns: GetSqlServerInstanceTelemetryResponseColumnsList,
-          rows: GetSqlServerInstanceTelemetryResponseRowsList,
+          columns: __S(187),
+          rows: __S(188),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9859,11 +7948,11 @@ function __c25(j: number): any {
         identifier: "ListActiveDirectoryConnectorsRequest",
       });
     case 1:
-      return S.Array(ActiveDirectoryConnectorResource);
+      return S.Array(__S(30));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListActiveDirectoryConnectorsResponseValueList),
+          value: S.optional(__S(201)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9891,19 +7980,19 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(DataControllerResourceTagsMap),
+          systemData: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          extendedLocation: S.optional(CreatePostgresInstanceResponseExtendedLocation),
-          properties: DataControllerProperties,
+          extendedLocation: S.optional(__S(36)),
+          properties: __S(173),
         }),
       ).annotate({ identifier: "DataControllerResource" });
     case 5:
-      return S.Array(DataControllerResource);
+      return S.Array(__S(204));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListDataControllerInGroupResponseValueList),
+          value: S.optional(__S(205)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9946,11 +8035,11 @@ function __c26(j: number): any {
         identifier: "ListFailoverGroupsRequest",
       });
     case 1:
-      return S.Array(FailoverGroupResource);
+      return S.Array(__S(176));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListFailoverGroupsResponseValueList),
+          value: S.optional(__S(209)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -9982,14 +8071,14 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          display: OperationDisplay,
-          origin: S.optional(OperationOrigin),
+          display: __S(212),
+          origin: S.optional(S.String),
           isDataAction: S.Boolean,
-          properties: S.optional(OperationPropertiesMap),
+          properties: S.optional(__S(213)),
         }),
       ).annotate({ identifier: "Operation" });
     case 7:
-      return S.Array(Operation);
+      return S.Array(__S(214));
   }
 }
 function __c27(j: number): any {
@@ -9997,7 +8086,7 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(215)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -10023,20 +8112,20 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(PostgresInstanceTagsMap),
+          systemData: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          extendedLocation: S.optional(CreatePostgresInstanceResponseExtendedLocation),
-          properties: PostgresInstanceProperties,
-          sku: S.optional(PostgresInstanceSku),
+          extendedLocation: S.optional(__S(36)),
+          properties: __S(40),
+          sku: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "PostgresInstance" });
     case 3:
-      return S.Array(PostgresInstance);
+      return S.Array(__S(218));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListPostgresInstanceByResourceGroupResponseValueList),
+          value: S.optional(__S(219)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10079,12 +8168,12 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(SqlManagedInstanceTagsMap),
+          systemData: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: SqlManagedInstanceProperties,
-          extendedLocation: S.optional(CreatePostgresInstanceResponseExtendedLocation),
-          sku: S.optional(SqlManagedInstanceSku),
+          properties: __S(58),
+          extendedLocation: S.optional(__S(36)),
+          sku: S.optional(__S(56)),
         }),
       ).annotate({ identifier: "SqlManagedInstance" });
   }
@@ -10092,11 +8181,11 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SqlManagedInstance);
+      return S.Array(__S(223));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListSqlManagedInstanceByResourceGroupResponseValueList),
+          value: S.optional(__S(224)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10152,11 +8241,11 @@ function __c28(j: number): any {
         identifier: "ListSqlServerDatabasesRequest",
       });
     case 5:
-      return S.Array(SqlServerDatabaseResource);
+      return S.Array(__S(106));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ArcSqlServerDatabaseListResultValueList),
+          value: S.optional(__S(229)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10188,18 +8277,18 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(SqlServerEsuLicenseTagsMap),
+          systemData: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: SqlServerEsuLicenseProperties,
+          properties: __S(109),
         }),
       ).annotate({ identifier: "SqlServerEsuLicense" });
     case 1:
-      return S.Array(SqlServerEsuLicense);
+      return S.Array(__S(232));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SqlServerEsuLicenseListResultValueList),
+          value: S.optional(__S(233)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10242,18 +8331,18 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(SqlServerInstanceTagsMap),
+          systemData: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: S.optional(SqlServerInstanceProperties),
+          properties: S.optional(__S(148)),
         }),
       ).annotate({ identifier: "SqlServerInstance" });
     case 6:
-      return S.Array(SqlServerInstance);
+      return S.Array(__S(237));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListSqlServerInstanceByResourceGroupResponseValueList),
+          value: S.optional(__S(238)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10300,18 +8389,18 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(SqlServerLicenseTagsMap),
+          systemData: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: SqlServerLicenseProperties,
+          properties: __S(152),
         }),
       ).annotate({ identifier: "SqlServerLicense" });
     case 3:
-      return S.Array(SqlServerLicense);
+      return S.Array(__S(242));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListSqlServerLicenseByResourceGroupResponseValueList),
+          value: S.optional(__S(243)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -10335,22 +8424,16 @@ function __c30(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          infrastructure: S.optional(DataControllerPropertiesInputInfrastructure),
-          onPremiseProperty: S.optional(OnPremiseProperty),
+          infrastructure: S.optional(S.String),
+          onPremiseProperty: S.optional(__S(169)),
           k8sRaw: S.optional(S.Unknown),
-          uploadWatermark: S.optional(UploadWatermark),
+          uploadWatermark: S.optional(__S(170)),
           lastUploadedDate: S.optional(S.String),
-          basicLoginInformation: S.optional(
-            ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-          ),
-          metricsDashboardCredential: S.optional(
-            ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-          ),
-          logsDashboardCredential: S.optional(
-            ActiveDirectoryConnectorPropertiesInputDomainServiceAccountLoginInformation,
-          ),
-          logAnalyticsWorkspaceConfig: S.optional(LogAnalyticsWorkspaceConfig),
-          uploadServicePrincipal: S.optional(UploadServicePrincipal),
+          basicLoginInformation: S.optional(__S(19)),
+          metricsDashboardCredential: S.optional(__S(19)),
+          logsDashboardCredential: S.optional(__S(19)),
+          logAnalyticsWorkspaceConfig: S.optional(__S(171)),
+          uploadServicePrincipal: S.optional(__S(172)),
           clusterId: S.optional(S.String),
           extensionId: S.optional(S.String),
         }),
@@ -10363,8 +8446,8 @@ function __c30(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dataControllerName: S.String.pipe(T.Label()),
-          tags: S.optional(PatchDataControllerDataControllerRequestTagsMap),
-          properties: S.optional(DataControllerPropertiesInput),
+          tags: S.optional(__S(3)),
+          properties: S.optional(__S(246)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10403,10 +8486,10 @@ function __c31(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dataControllerName: S.String.pipe(T.Label()),
-          tags: S.optional(PutDataControllerDataControllerRequestTagsMap),
+          tags: S.optional(__S(3)),
           location: S.String,
-          extendedLocation: S.optional(CreatePostgresInstanceRequestExtendedLocation),
-          properties: DataControllerPropertiesInput,
+          extendedLocation: S.optional(__S(36)),
+          properties: __S(246),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10425,7 +8508,7 @@ function __c31(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
           availabilityGroupName: S.String.pipe(T.Label()),
-          values: S.optional(RemoveSqlServerAvailabilityGroupDatabasesRequestValuesList),
+          values: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10455,24 +8538,22 @@ function __c31(j: number): any {
         identifier: "RunSqlServerInstanceBestPracticesAssessmentRequest",
       });
     case 4:
-      return S.Array(SequencerAction);
+      return S.Array(__S(192));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           instanceName: S.optional(S.String),
-          jobStatus: S.optional(RunSqlServerInstanceBestPracticesAssessmentResponseJobStatus),
+          jobStatus: S.optional(S.String),
           jobException: S.optional(S.String),
-          backgroundJob: S.optional(BackgroundJob),
-          sequencerActions: S.optional(
-            RunSqlServerInstanceBestPracticesAssessmentResponseSequencerActionsList,
-          ),
+          backgroundJob: S.optional(__S(191)),
+          sequencerActions: S.optional(__S(252)),
         }),
       ).annotate({
         identifier: "RunSqlServerInstanceBestPracticesAssessmentResponse",
       });
     case 6:
-      return S.Array(MiLinkAssessmentCategory);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -10480,15 +8561,11 @@ function __c31(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
           azureManagedInstanceResourceId: S.String,
-          azureManagedInstanceRole: S.optional(
-            RunSqlServerInstanceManagedInstanceLinkAssessmentRequestAzureManagedInstanceRole,
-          ),
-          databaseNames: RunSqlServerInstanceManagedInstanceLinkAssessmentRequestDatabaseNamesList,
+          azureManagedInstanceRole: S.optional(S.String),
+          databaseNames: __S(6),
           availabilityGroupName: S.String,
           distributedAvailabilityGroupName: S.String,
-          assessmentCategories: S.optional(
-            RunSqlServerInstanceManagedInstanceLinkAssessmentRequestAssessmentCategoriesList,
-          ),
+          assessmentCategories: S.optional(__S(254)),
           sqlServerIpAddress: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -10509,23 +8586,21 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          category: S.optional(MiLinkAssessmentCategory),
-          status: S.optional(SqlServerInstanceManagedInstanceLinkAssessmentStatus),
+          category: S.optional(S.String),
+          status: S.optional(S.String),
           information: S.optional(S.String),
           additionalInformation: S.optional(S.String),
-          failingDbs: S.optional(SqlServerInstanceManagedInstanceLinkAssessmentFailingDbsList),
+          failingDbs: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "SqlServerInstanceManagedInstanceLinkAssessment",
       });
     case 1:
-      return S.Array(SqlServerInstanceManagedInstanceLinkAssessment);
+      return S.Array(__S(256));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          assessments: S.optional(
-            RunSqlServerInstanceManagedInstanceLinkAssessmentResponseAssessmentsList,
-          ),
+          assessments: S.optional(__S(257)),
         }),
       ).annotate({
         identifier: "RunSqlServerInstanceManagedInstanceLinkAssessmentResponse",
@@ -10552,12 +8627,10 @@ function __c32(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           instanceName: S.optional(S.String),
-          jobStatus: S.optional(RunSqlServerInstanceMigrationAssessmentResponseJobStatus),
+          jobStatus: S.optional(S.String),
           jobException: S.optional(S.String),
-          backgroundJob: S.optional(BackgroundJob),
-          sequencerActions: S.optional(
-            RunSqlServerInstanceMigrationAssessmentResponseSequencerActionsList,
-          ),
+          backgroundJob: S.optional(__S(191)),
+          sequencerActions: S.optional(__S(252)),
         }),
       ).annotate({
         identifier: "RunSqlServerInstanceMigrationAssessmentResponse",
@@ -10663,8 +8736,8 @@ function __c33(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           postgresInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdatePostgresInstanceRequestTagsMap),
-          properties: S.optional(PostgresInstancePropertiesInput),
+          tags: S.optional(__S(3)),
+          properties: S.optional(__S(37)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10682,7 +8755,7 @@ function __c33(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlManagedInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSqlManagedInstanceRequestTagsMap),
+          tags: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10701,8 +8774,8 @@ function __c33(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
           availabilityGroupName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSqlServerAvailabilityGroupRequestTagsMap),
-          properties: S.optional(SqlServerAvailabilityGroupResourcePropertiesInput),
+          tags: S.optional(__S(3)),
+          properties: S.optional(__S(69)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10721,8 +8794,8 @@ function __c33(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
           databaseName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSqlServerDatabaseRequestTagsMap),
-          properties: S.optional(SqlServerDatabaseResourcePropertiesInput),
+          tags: S.optional(__S(3)),
+          properties: S.optional(__S(89)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10737,11 +8810,11 @@ function __c33(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          billingPlan: S.optional(SqlServerEsuLicenseUpdatePropertiesInputBillingPlan),
-          version: S.optional(SqlServerEsuLicenseUpdatePropertiesInputVersion),
+          billingPlan: S.optional(S.String),
+          version: S.optional(S.String),
           physicalCores: S.optional(S.Number),
-          activationState: S.optional(SqlServerEsuLicenseUpdatePropertiesInputActivationState),
-          scopeType: S.optional(SqlServerEsuLicenseUpdatePropertiesInputScopeType),
+          activationState: S.optional(S.String),
+          scopeType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SqlServerEsuLicenseUpdatePropertiesInput",
@@ -10752,8 +8825,8 @@ function __c33(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerEsuLicenseName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSqlServerEsuLicenseRequestTagsMap),
-          properties: S.optional(SqlServerEsuLicenseUpdatePropertiesInput),
+          tags: S.optional(__S(3)),
+          properties: S.optional(__S(270)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10772,21 +8845,21 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          version: S.optional(SqlServerInstanceUpdatePropertiesInputVersion),
-          edition: S.optional(SqlServerInstanceUpdatePropertiesInputEdition),
+          version: S.optional(S.String),
+          edition: S.optional(S.String),
           cores: S.optional(S.String),
           instanceName: S.optional(S.String),
-          hostType: S.optional(SqlServerInstanceUpdatePropertiesInputHostType),
-          failoverCluster: S.optional(AvailabilityGroupStateInput),
-          backupPolicy: S.optional(BackupPolicy),
+          hostType: S.optional(S.String),
+          failoverCluster: S.optional(__S(62)),
+          backupPolicy: S.optional(__S(87)),
           upgradeLockedUntil: S.optional(S.String),
-          monitoring: S.optional(Monitoring),
-          migration: S.optional(MigrationInput),
-          bestPracticesAssessment: S.optional(BestPracticesAssessment),
-          clientConnection: S.optional(ClientConnection),
-          serviceType: S.optional(ServiceType),
-          authentication: S.optional(Authentication),
-          databaseMirroringEndpoint: S.optional(DBMEndpointInput),
+          monitoring: S.optional(__S(112)),
+          migration: S.optional(__S(116)),
+          bestPracticesAssessment: S.optional(__S(119)),
+          clientConnection: S.optional(__S(112)),
+          serviceType: S.optional(S.String),
+          authentication: S.optional(__S(122)),
+          databaseMirroringEndpoint: S.optional(__S(111)),
           isMicrosoftPkiCertTrustConfigured: S.optional(S.Boolean),
           isDigiCertPkiCertTrustConfigured: S.optional(S.Boolean),
           maxServerMemoryMB: S.optional(S.Number),
@@ -10800,8 +8873,8 @@ function __c34(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSqlServerInstanceRequestTagsMap),
-          properties: S.optional(SqlServerInstanceUpdatePropertiesInput),
+          tags: S.optional(__S(3)),
+          properties: S.optional(__S(272)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10816,11 +8889,11 @@ function __c34(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          billingPlan: S.optional(SqlServerLicenseUpdatePropertiesInputBillingPlan),
+          billingPlan: S.optional(S.String),
           physicalCores: S.optional(S.Number),
-          licenseCategory: S.optional(SqlServerLicenseUpdatePropertiesInputLicenseCategory),
-          activationState: S.optional(SqlServerLicenseUpdatePropertiesInputActivationState),
-          scopeType: S.optional(SqlServerLicenseUpdatePropertiesInputScopeType),
+          licenseCategory: S.optional(S.String),
+          activationState: S.optional(S.String),
+          scopeType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SqlServerLicenseUpdatePropertiesInput",
@@ -10831,8 +8904,8 @@ function __c34(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sqlServerLicenseName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSqlServerLicenseRequestTagsMap),
-          properties: S.optional(SqlServerLicenseUpdatePropertiesInput),
+          tags: S.optional(__S(3)),
+          properties: S.optional(__S(274)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -10844,5 +8917,84 @@ function __c34(j: number): any {
       ).annotate({
         identifier: "UpdateSqlServerLicenseRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
   }
 }

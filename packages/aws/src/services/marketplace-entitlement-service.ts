@@ -7,6 +7,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Marketplace Entitlement Service",
   serviceShapeName: "AWSMPEntitlementService",
@@ -127,13 +129,9 @@ export type GetEntitlementFilterName =
   | "CUSTOMER_AWS_ACCOUNT_ID"
   | "LICENSE_ARN"
   | (string & {});
-const GetEntitlementFilterName = S.String;
-
 export type FilterValue = string;
 export type FilterValueList = string[];
-const FilterValueList = /*@__PURE__*/ __L.at(__c0, 0);
 export type GetEntitlementFilters = { [key in GetEntitlementFilterName]?: string[] };
-const GetEntitlementFilters = /*@__PURE__*/ __L.at(__c0, 1);
 export type NonEmptyString = string;
 export type PageSizeInteger = number;
 export interface GetEntitlementsRequest {
@@ -142,17 +140,12 @@ export interface GetEntitlementsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const GetEntitlementsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetEntitlementsRequest>;
 export interface EntitlementValue {
   IntegerValue?: number;
   DoubleValue?: number;
   BooleanValue?: boolean;
   StringValue?: string;
 }
-const EntitlementValue = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<EntitlementValue>;
 export interface Entitlement {
   ProductCode?: string;
   Dimension?: string;
@@ -162,17 +155,11 @@ export interface Entitlement {
   ExpirationDate?: Date;
   LicenseArn?: string;
 }
-const Entitlement = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Entitlement>;
 export type EntitlementList = Entitlement[];
-const EntitlementList = /*@__PURE__*/ __L.at(__c0, 5);
 export interface GetEntitlementsResult {
   Entitlements?: Entitlement[];
   NextToken?: string;
 }
-const GetEntitlementsResult = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetEntitlementsResult>;
 export type ErrorMessage = string;
 export type GetEntitlementsError =
   | InternalServiceErrorException
@@ -190,8 +177,8 @@ export const getEntitlements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetEntitlementsRequest,
-  output: GetEntitlementsResult,
+  input: __S(2) as any as S.Schema<GetEntitlementsRequest>,
+  output: __S(6) as any as S.Schema<GetEntitlementsResult>,
   errors: [InternalServiceErrorException, InvalidParameterException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -209,12 +196,12 @@ function __c0(j: number): any {
     case 0:
       return S.Array(S.String);
     case 1:
-      return S.Record(GetEntitlementFilterName, /*@__PURE__*/ FilterValueList.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(0).pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ProductCode: S.String,
-          Filter: S.optional(GetEntitlementFilters),
+          Filter: S.optional(__S(1)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -235,16 +222,27 @@ function __c0(j: number): any {
           Dimension: S.optional(S.String),
           CustomerIdentifier: S.optional(S.String),
           CustomerAWSAccountId: S.optional(S.String),
-          Value: S.optional(EntitlementValue),
+          Value: S.optional(__S(3)),
           ExpirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LicenseArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Entitlement" });
     case 5:
-      return S.Array(Entitlement);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Entitlements: S.optional(EntitlementList), NextToken: S.optional(S.String) }),
+        S.Struct({ Entitlements: S.optional(__S(5)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetEntitlementsResult" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

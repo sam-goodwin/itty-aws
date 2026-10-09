@@ -6,24 +6,17 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type CreateElasticSanRequestTagsMap = { [key: string]: string | undefined };
-const CreateElasticSanRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateElasticSanRequestTagsMap>;
-
 /** The sku name. */
 export type SkuName = "Premium_LRS" | "Premium_ZRS";
-const SkuName = S.String;
-
 /** The sku tier. */
 export type SkuTier = "Premium";
-const SkuTier = S.String;
-
 /** The SKU name. Required for account creation; optional for update. */
 export interface Sku {
   /** The sku name. */
@@ -31,23 +24,12 @@ export interface Sku {
   /** The sku tier. */
   tier?: SkuTier | (string & {});
 }
-const Sku = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Sku>;
-
 /** Logical zone for Elastic San resource; example: ["1"]. */
 export type ElasticSanPropertiesInputAvailabilityZonesList = Array<string>;
-const ElasticSanPropertiesInputAvailabilityZonesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ElasticSanPropertiesInputAvailabilityZonesList>;
-
 /** Allow or disallow public network access to ElasticSan. Value is optional but if passed in, must be 'Enabled' or 'Disabled'. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
-const PublicNetworkAccess = S.String;
-
 /** Enable or Disable scale up setting on Elastic San Appliance. */
 export type AutoScalePolicyEnforcement = "None" | "Enabled" | "Disabled";
-const AutoScalePolicyEnforcement = S.String;
-
 /** Scale up properties on Elastic San Appliance. */
 export interface ScaleUpProperties {
   /** Unused size on Elastic San appliance in TiB. */
@@ -59,15 +41,11 @@ export interface ScaleUpProperties {
   /** Enable or Disable scale up setting on Elastic San Appliance. */
   autoScalePolicyEnforcement?: AutoScalePolicyEnforcement | (string & {});
 }
-const ScaleUpProperties = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ScaleUpProperties>;
-
 /** The auto scale settings on Elastic San Appliance. */
 export interface AutoScaleProperties {
   /** Scale up settings on Elastic San Appliance. */
   scaleUpProperties?: ScaleUpProperties;
 }
-const AutoScaleProperties = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AutoScaleProperties>;
-
 /** Elastic San response properties. */
 export interface ElasticSanPropertiesInput {
   /** resource sku */
@@ -83,11 +61,6 @@ export interface ElasticSanPropertiesInput {
   /** Auto Scale Properties for Elastic San Appliance. */
   autoScaleProperties?: AutoScaleProperties;
 }
-const ElasticSanPropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ElasticSanPropertiesInput>;
-
 export interface CreateElasticSanRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -102,19 +75,10 @@ export interface CreateElasticSanRequest {
   /** Properties of ElasticSan. */
   properties: ElasticSanPropertiesInput;
 }
-const CreateElasticSanRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateElasticSanRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -130,18 +94,10 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
 export type CreateElasticSanResponseTagsMap = { [key: string]: string | undefined };
-const CreateElasticSanResponseTagsMap =
-  CreateElasticSanRequestTagsMap as any as S.Schema<CreateElasticSanResponseTagsMap>;
-
 /** Logical zone for Elastic San resource; example: ["1"]. */
 export type ElasticSanPropertiesAvailabilityZonesList = Array<string>;
-const ElasticSanPropertiesAvailabilityZonesList =
-  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<ElasticSanPropertiesAvailabilityZonesList>;
-
 /** Provisioning state of the iSCSI Target. */
 export type ProvisioningStates =
   | "Invalid"
@@ -154,19 +110,13 @@ export type ProvisioningStates =
   | "Deleting"
   | "Deleted"
   | "Restoring";
-const ProvisioningStates = S.String;
-
 /** Response for PrivateEndpoint */
 export interface PrivateEndpoint {
   /** The ARM identifier for Private Endpoint */
   id?: string;
 }
-const PrivateEndpoint = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PrivateEndpoint>;
-
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Failed" | "Rejected";
-const PrivateEndpointServiceConnectionStatus = S.String;
-
 /** Response for Private Link Service Connection state */
 export interface PrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -176,16 +126,8 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PrivateLinkServiceConnectionState>;
-
 /** List of resources private endpoint is mapped */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-const PrivateEndpointConnectionPropertiesGroupIdsList =
-  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
-
 /** Response for PrivateEndpoint connection properties */
 export interface PrivateEndpointConnectionProperties {
   /** Provisioning State of Private Endpoint connection resource */
@@ -197,11 +139,6 @@ export interface PrivateEndpointConnectionProperties {
   /** List of resources private endpoint is mapped */
   groupIds?: PrivateEndpointConnectionPropertiesGroupIdsList;
 }
-const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PrivateEndpointConnectionProperties>;
-
 /** Response for PrivateEndpoint Connection object */
 export interface PrivateEndpointConnection {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -215,18 +152,8 @@ export interface PrivateEndpointConnection {
   /** Private Endpoint Connection Properties. */
   properties: PrivateEndpointConnectionProperties;
 }
-const PrivateEndpointConnection = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<PrivateEndpointConnection>;
-
 /** The list of Private Endpoint Connections. */
 export type ElasticSanPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-const ElasticSanPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ElasticSanPropertiesPrivateEndpointConnectionsList>;
-
 /** Elastic San response properties. */
 export interface ElasticSanProperties {
   /** resource sku */
@@ -256,8 +183,6 @@ export interface ElasticSanProperties {
   /** Auto Scale Properties for Elastic San Appliance. */
   autoScaleProperties?: AutoScaleProperties;
 }
-const ElasticSanProperties = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ElasticSanProperties>;
-
 export interface CreateElasticSanResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -274,20 +199,10 @@ export interface CreateElasticSanResponse {
   /** Properties of ElasticSan. */
   properties: ElasticSanProperties;
 }
-const CreateElasticSanResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateElasticSanResponse>;
-
 /** Response for PrivateEndpoint */
 export interface PrivateEndpointInput {}
-const PrivateEndpointInput = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<PrivateEndpointInput>;
-
 /** List of resources private endpoint is mapped */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList = Array<string>;
-const PrivateEndpointConnectionPropertiesInputGroupIdsList =
-  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
-
 /** Response for PrivateEndpoint connection properties */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** Private Endpoint resource */
@@ -297,11 +212,6 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** List of resources private endpoint is mapped */
   groupIds?: PrivateEndpointConnectionPropertiesInputGroupIdsList;
 }
-const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
-
 export interface CreatePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -314,11 +224,6 @@ export interface CreatePrivateEndpointConnectionRequest {
   /** Private Endpoint Connection Properties. */
   properties: PrivateEndpointConnectionPropertiesInput;
 }
-const CreatePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreatePrivateEndpointConnectionRequest>;
-
 export interface CreatePrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -331,9 +236,6 @@ export interface CreatePrivateEndpointConnectionResponse {
   /** Private Endpoint Connection Properties. */
   properties: PrivateEndpointConnectionProperties;
 }
-const CreatePrivateEndpointConnectionResponse =
-  PrivateEndpointConnection as any as S.Schema<CreatePrivateEndpointConnectionResponse>;
-
 /** This enumerates the possible sources of a volume creation. */
 export type VolumeCreateOption =
   | "None"
@@ -341,8 +243,6 @@ export type VolumeCreateOption =
   | "DiskSnapshot"
   | "Disk"
   | "DiskRestorePoint";
-const VolumeCreateOption = S.String;
-
 /** Data source used when creating the volume. */
 export interface SourceCreationData {
   /** This enumerates the possible sources of a volume creation. */
@@ -350,15 +250,11 @@ export interface SourceCreationData {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   sourceId?: string;
 }
-const SourceCreationData = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SourceCreationData>;
-
 /** Parent resource information. */
 export interface ManagedByInfo {
   /** Resource ID of the resource managing the volume, this is a restricted field and can only be set for internal use. */
   resourceId?: string;
 }
-const ManagedByInfo = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ManagedByInfo>;
-
 /** Volume response properties. */
 export interface VolumePropertiesInput {
   /** State of the operation on the resource. */
@@ -368,11 +264,6 @@ export interface VolumePropertiesInput {
   /** Parent resource information. */
   managedBy?: ManagedByInfo;
 }
-const VolumePropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<VolumePropertiesInput>;
-
 export interface CreateVolumeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -387,8 +278,6 @@ export interface CreateVolumeRequest {
   /** Properties of Volume. */
   properties: VolumePropertiesInput;
 }
-const CreateVolumeRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CreateVolumeRequest>;
-
 /** Operational status of the resource. */
 export type OperationalStatus =
   | "Invalid"
@@ -399,8 +288,6 @@ export type OperationalStatus =
   | "Running"
   | "Stopped"
   | "Stopped (deallocated)";
-const OperationalStatus = S.String;
-
 /** Iscsi target information */
 export interface IscsiTargetInfo {
   /** iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server". */
@@ -414,8 +301,6 @@ export interface IscsiTargetInfo {
   /** Operational status of the iSCSI Target. */
   status?: OperationalStatus;
 }
-const IscsiTargetInfo = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<IscsiTargetInfo>;
-
 /** Volume response properties. */
 export interface VolumeProperties {
   /** Unique Id of the volume in GUID format */
@@ -431,8 +316,6 @@ export interface VolumeProperties {
   /** State of the operation on the resource. */
   provisioningState?: ProvisioningStates;
 }
-const VolumeProperties = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<VolumeProperties>;
-
 export interface CreateVolumeResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -445,23 +328,14 @@ export interface CreateVolumeResponse {
   /** Properties of Volume. */
   properties: VolumeProperties;
 }
-const CreateVolumeResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CreateVolumeResponse>;
-
 /** The identity type. */
 export type IdentityType = "None" | "SystemAssigned" | "UserAssigned";
-const IdentityType = S.String;
-
 /** UserAssignedIdentity for the resource. */
 export type UserAssignedIdentityInput = PrivateEndpointInput;
 /** Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group. The key is the ARM resource identifier of the identity. */
 export type IdentityInputUserAssignedIdentitiesMap = {
   [key: string]: PrivateEndpointInput | undefined;
 };
-const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
-
 /** Identity for the resource. */
 export interface IdentityInput {
   /** The identity type. */
@@ -469,18 +343,12 @@ export interface IdentityInput {
   /** Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group. The key is the ARM resource identifier of the identity. */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
-const IdentityInput = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<IdentityInput>;
-
 /** Storage Target type. */
 export type StorageTargetType = "Iscsi" | "None";
-const StorageTargetType = S.String;
-
 /** The type of key used to encrypt the data of the disk. */
 export type EncryptionType =
   | "EncryptionAtRestWithPlatformKey"
   | "EncryptionAtRestWithCustomerManagedKey";
-const EncryptionType = S.String;
-
 /** Properties of key vault. */
 export interface KeyVaultPropertiesInput {
   /** The name of KeyVault key. */
@@ -490,18 +358,11 @@ export interface KeyVaultPropertiesInput {
   /** The Uri of KeyVault. */
   keyVaultUri?: string;
 }
-const KeyVaultPropertiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<KeyVaultPropertiesInput>;
-
 /** Encryption identity for the volume group. */
 export interface EncryptionIdentity {
   /** Resource identifier of the UserAssigned identity to be associated with server-side encryption on the volume group. */
   userAssignedIdentity?: string;
 }
-const EncryptionIdentity = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<EncryptionIdentity>;
-
 /** The encryption settings on the volume group. */
 export interface EncryptionPropertiesInput {
   /** Properties provided by key vault. */
@@ -509,15 +370,8 @@ export interface EncryptionPropertiesInput {
   /** The identity to be used with service-side encryption at rest. */
   identity?: EncryptionIdentity;
 }
-const EncryptionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<EncryptionPropertiesInput>;
-
 /** The action of virtual network rule. */
 export type VirtualNetworkRuleAction = "Allow";
-const VirtualNetworkRuleAction = S.String;
-
 /** Virtual Network rule. */
 export interface VirtualNetworkRule {
   /** Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}. */
@@ -525,22 +379,13 @@ export interface VirtualNetworkRule {
   /** The action of virtual network rule. */
   action?: VirtualNetworkRuleAction | (string & {});
 }
-const VirtualNetworkRule = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<VirtualNetworkRule>;
-
 /** The list of virtual network rules. */
 export type NetworkRuleSetVirtualNetworkRulesList = Array<VirtualNetworkRule>;
-const NetworkRuleSetVirtualNetworkRulesList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<NetworkRuleSetVirtualNetworkRulesList>;
-
 /** A set of rules governing the network accessibility. */
 export interface NetworkRuleSet {
   /** The list of virtual network rules. */
   virtualNetworkRules?: NetworkRuleSetVirtualNetworkRulesList;
 }
-const NetworkRuleSet = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<NetworkRuleSet>;
-
 /** VolumeGroup response properties. */
 export interface VolumeGroupPropertiesInput {
   /** Type of storage target */
@@ -554,11 +399,6 @@ export interface VolumeGroupPropertiesInput {
   /** A boolean indicating whether or not Data Integrity Check is enabled */
   enforceDataIntegrityCheckForIscsi?: boolean;
 }
-const VolumeGroupPropertiesInput = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<VolumeGroupPropertiesInput>;
-
 export interface CreateVolumeGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -573,11 +413,6 @@ export interface CreateVolumeGroupRequest {
   /** Properties of VolumeGroup. */
   properties?: VolumeGroupPropertiesInput;
 }
-const CreateVolumeGroupRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateVolumeGroupRequest>;
-
 /** UserAssignedIdentity for the resource. */
 export interface UserAssignedIdentity {
   /** The principal ID of the identity. */
@@ -585,15 +420,8 @@ export interface UserAssignedIdentity {
   /** The client ID of the identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<UserAssignedIdentity>;
-
 /** Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group. The key is the ARM resource identifier of the identity. */
 export type IdentityUserAssignedIdentitiesMap = { [key: string]: UserAssignedIdentity | undefined };
-const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<IdentityUserAssignedIdentitiesMap>;
-
 /** Identity for the resource. */
 export interface Identity {
   /** The principal ID of resource identity. */
@@ -605,8 +433,6 @@ export interface Identity {
   /** Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group. The key is the ARM resource identifier of the identity. */
   userAssignedIdentities?: IdentityUserAssignedIdentitiesMap;
 }
-const Identity = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Identity>;
-
 /** Properties of key vault. */
 export interface KeyVaultProperties {
   /** The name of KeyVault key. */
@@ -622,8 +448,6 @@ export interface KeyVaultProperties {
   /** This is a read only property that represents the expiration time of the current version of the customer managed key used for encryption. */
   currentVersionedKeyExpirationTimestamp?: string;
 }
-const KeyVaultProperties = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<KeyVaultProperties>;
-
 /** The encryption settings on the volume group. */
 export interface EncryptionProperties {
   /** Properties provided by key vault. */
@@ -631,13 +455,8 @@ export interface EncryptionProperties {
   /** The identity to be used with service-side encryption at rest. */
   identity?: EncryptionIdentity;
 }
-const EncryptionProperties = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<EncryptionProperties>;
-
 /** The list of Private Endpoint Connections. */
 export type VolumeGroupPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-const VolumeGroupPropertiesPrivateEndpointConnectionsList =
-  ElasticSanPropertiesPrivateEndpointConnectionsList as any as S.Schema<VolumeGroupPropertiesPrivateEndpointConnectionsList>;
-
 /** VolumeGroup response properties. */
 export interface VolumeGroupProperties {
   /** State of the operation on the resource. */
@@ -655,11 +474,6 @@ export interface VolumeGroupProperties {
   /** A boolean indicating whether or not Data Integrity Check is enabled */
   enforceDataIntegrityCheckForIscsi?: boolean;
 }
-const VolumeGroupProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<VolumeGroupProperties>;
-
 export interface CreateVolumeGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -674,28 +488,16 @@ export interface CreateVolumeGroupResponse {
   /** Properties of VolumeGroup. */
   properties?: VolumeGroupProperties;
 }
-const CreateVolumeGroupResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateVolumeGroupResponse>;
-
 /** Data used when creating a volume snapshot. */
 export interface SnapshotCreationData {
   /** Fully qualified resource ID of the volume. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}" */
   sourceId: string;
 }
-const SnapshotCreationData = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<SnapshotCreationData>;
-
 /** Properties for Snapshot. */
 export interface SnapshotPropertiesInput {
   /** Data used when creating a volume snapshot. */
   creationData: SnapshotCreationData;
 }
-const SnapshotPropertiesInput = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<SnapshotPropertiesInput>;
-
 export interface CreateVolumeSnapshotRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -710,11 +512,6 @@ export interface CreateVolumeSnapshotRequest {
   /** Properties of Volume Snapshot. */
   properties: SnapshotPropertiesInput;
 }
-const CreateVolumeSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateVolumeSnapshotRequest>;
-
 /** Properties for Snapshot. */
 export interface SnapshotProperties {
   /** Data used when creating a volume snapshot. */
@@ -726,8 +523,6 @@ export interface SnapshotProperties {
   /** Source Volume Name of a snapshot */
   volumeName?: string;
 }
-const SnapshotProperties = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<SnapshotProperties>;
-
 export interface CreateVolumeSnapshotResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -740,11 +535,6 @@ export interface CreateVolumeSnapshotResponse {
   /** Properties of Volume Snapshot. */
   properties: SnapshotProperties;
 }
-const CreateVolumeSnapshotResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateVolumeSnapshotResponse>;
-
 export interface DeleteElasticSanRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -753,14 +543,7 @@ export interface DeleteElasticSanRequest {
   /** The name of the ElasticSan. */
   elasticSanName: string;
 }
-const DeleteElasticSanRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DeleteElasticSanRequest>;
-
 export interface DeleteElasticSanResponse {}
-const DeleteElasticSanResponse = PrivateEndpointInput as any as S.Schema<DeleteElasticSanResponse>;
-
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -771,17 +554,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the Private Endpoint connection. */
   privateEndpointConnectionName: string;
 }
-const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
-
 export interface DeletePrivateEndpointConnectionResponse {}
-const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
-
 export interface DeleteVolumeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -798,11 +571,7 @@ export interface DeleteVolumeRequest {
   /** Optional, used to delete volume if active sessions present. Allowed value are only true or false. Default value is false. */
   xMsForceDelete?: string;
 }
-const DeleteVolumeRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<DeleteVolumeRequest>;
-
 export interface DeleteVolumeResponse {}
-const DeleteVolumeResponse = PrivateEndpointInput as any as S.Schema<DeleteVolumeResponse>;
-
 export interface DeleteVolumeGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -813,15 +582,7 @@ export interface DeleteVolumeGroupRequest {
   /** The name of the VolumeGroup. */
   volumeGroupName: string;
 }
-const DeleteVolumeGroupRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DeleteVolumeGroupRequest>;
-
 export interface DeleteVolumeGroupResponse {}
-const DeleteVolumeGroupResponse =
-  PrivateEndpointInput as any as S.Schema<DeleteVolumeGroupResponse>;
-
 export interface DeleteVolumeSnapshotRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -834,15 +595,7 @@ export interface DeleteVolumeSnapshotRequest {
   /** The name of the volume snapshot within the given volume group. */
   snapshotName: string;
 }
-const DeleteVolumeSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DeleteVolumeSnapshotRequest>;
-
 export interface DeleteVolumeSnapshotResponse {}
-const DeleteVolumeSnapshotResponse =
-  PrivateEndpointInput as any as S.Schema<DeleteVolumeSnapshotResponse>;
-
 export interface GetElasticSanRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -851,8 +604,6 @@ export interface GetElasticSanRequest {
   /** The name of the ElasticSan. */
   elasticSanName: string;
 }
-const GetElasticSanRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<GetElasticSanRequest>;
-
 /** Resource tags. */
 export type GetElasticSanResponseTagsMap = { [key: string]: string | undefined };
 export interface GetElasticSanResponse {
@@ -871,8 +622,6 @@ export interface GetElasticSanResponse {
   /** Properties of ElasticSan. */
   properties: ElasticSanProperties;
 }
-const GetElasticSanResponse = CreateElasticSanResponse as any as S.Schema<GetElasticSanResponse>;
-
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -883,11 +632,6 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the Private Endpoint connection. */
   privateEndpointConnectionName: string;
 }
-const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
-
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -900,9 +644,6 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Private Endpoint Connection Properties. */
   properties: PrivateEndpointConnectionProperties;
 }
-const GetPrivateEndpointConnectionResponse =
-  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
-
 export interface GetVolumeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -915,8 +656,6 @@ export interface GetVolumeRequest {
   /** The name of the Volume. */
   volumeName: string;
 }
-const GetVolumeRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetVolumeRequest>;
-
 export interface GetVolumeResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -929,8 +668,6 @@ export interface GetVolumeResponse {
   /** Properties of Volume. */
   properties: VolumeProperties;
 }
-const GetVolumeResponse = CreateVolumeResponse as any as S.Schema<GetVolumeResponse>;
-
 export interface GetVolumeGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -941,11 +678,6 @@ export interface GetVolumeGroupRequest {
   /** The name of the VolumeGroup. */
   volumeGroupName: string;
 }
-const GetVolumeGroupRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetVolumeGroupRequest>;
-
 export interface GetVolumeGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -960,11 +692,6 @@ export interface GetVolumeGroupResponse {
   /** Properties of VolumeGroup. */
   properties?: VolumeGroupProperties;
 }
-const GetVolumeGroupResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetVolumeGroupResponse>;
-
 export interface GetVolumeSnapshotRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -977,11 +704,6 @@ export interface GetVolumeSnapshotRequest {
   /** The name of the volume snapshot within the given volume group. */
   snapshotName: string;
 }
-const GetVolumeSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetVolumeSnapshotRequest>;
-
 export interface GetVolumeSnapshotResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -994,20 +716,12 @@ export interface GetVolumeSnapshotResponse {
   /** Properties of Volume Snapshot. */
   properties: SnapshotProperties;
 }
-const GetVolumeSnapshotResponse =
-  CreateVolumeSnapshotResponse as any as S.Schema<GetVolumeSnapshotResponse>;
-
 export interface ListElasticSanByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListElasticSanByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListElasticSanByResourceGroupRequest>;
-
 /** Resource tags. */
 export type ElasticSanTagsMap = { [key: string]: string | undefined };
 /** Response for ElasticSan request. */
@@ -1027,15 +741,8 @@ export interface ElasticSan {
   /** Properties of ElasticSan. */
   properties: ElasticSanProperties;
 }
-const ElasticSan = CreateElasticSanResponse as any as S.Schema<ElasticSan>;
-
 /** The ElasticSan items on this page */
 export type ElasticSanListValueList = Array<ElasticSan>;
-const ElasticSanListValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ElasticSanListValueList>;
-
 /** List of Elastic Sans */
 export interface ElasticSanList {
   /** The ElasticSan items on this page */
@@ -1043,23 +750,11 @@ export interface ElasticSanList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ElasticSanList = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ElasticSanList>;
-
 export interface ListElasticSanBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListElasticSanBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListElasticSanBySubscriptionRequest>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -1071,16 +766,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -1094,26 +783,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListPrivateEndpointConnectionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1122,16 +799,8 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** The name of the ElasticSan. */
   elasticSanName: string;
 }
-const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListPrivateEndpointConnectionsRequest>;
-
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-const PrivateEndpointConnectionListResultValueList =
-  ElasticSanPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
-
 /** The response of a PrivateEndpointConnection list operation. */
 export interface PrivateEndpointConnectionListResult {
   /** The PrivateEndpointConnection items on this page */
@@ -1139,11 +808,6 @@ export interface PrivateEndpointConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<PrivateEndpointConnectionListResult>;
-
 export interface ListPrivateLinkResourceByElasticSanRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1152,21 +816,10 @@ export interface ListPrivateLinkResourceByElasticSanRequest {
   /** The name of the ElasticSan. */
   elasticSanName: string;
 }
-const ListPrivateLinkResourceByElasticSanRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListPrivateLinkResourceByElasticSanRequest>;
-
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredMembersList =
-  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -1176,11 +829,6 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource Private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<PrivateLinkResourceProperties>;
-
 /** A private link resource */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1194,15 +842,8 @@ export interface PrivateLinkResource {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<PrivateLinkResource>;
-
 /** Array of private link resources */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-const PrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<PrivateLinkResourceListResultValueList>;
-
 /** A list of private link resources */
 export interface PrivateLinkResourceListResult {
   /** Array of private link resources */
@@ -1210,29 +851,16 @@ export interface PrivateLinkResourceListResult {
   /** URI to fetch the next section of the paginated response. */
   nextLink?: string;
 }
-const PrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<PrivateLinkResourceListResult>;
-
 export interface ListSkusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Specify $filter='location eq <location>' to filter on location. */
   _filter?: string;
 }
-const ListSkusRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ListSkusRequest>;
-
 /** The set of locations that the SKU is available. This will be supported and registered Azure Geo Regions (e.g. West US, East US, Southeast Asia, etc.). */
 export type SkuInformationLocationsList = Array<string>;
-const SkuInformationLocationsList =
-  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<SkuInformationLocationsList>;
-
 /** The zones. */
 export type SkuLocationInfoZonesList = Array<string>;
-const SkuLocationInfoZonesList =
-  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<SkuLocationInfoZonesList>;
-
 /** The location info. */
 export interface SkuLocationInfo {
   /** The location. */
@@ -1240,15 +868,8 @@ export interface SkuLocationInfo {
   /** The zones. */
   zones?: SkuLocationInfoZonesList;
 }
-const SkuLocationInfo = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<SkuLocationInfo>;
-
 /** Availability of the SKU for the location/zone */
 export type SkuInformationLocationInfoList = Array<SkuLocationInfo>;
-const SkuInformationLocationInfoList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<SkuInformationLocationInfoList>;
-
 /** The capability information in the specified SKU. */
 export interface SKUCapability {
   /** The name of capability. */
@@ -1256,15 +877,8 @@ export interface SKUCapability {
   /** A string value to indicate states of given capability. */
   value?: string;
 }
-const SKUCapability = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<SKUCapability>;
-
 /** The capability information in the specified SKU. */
 export type SkuInformationCapabilitiesList = Array<SKUCapability>;
-const SkuInformationCapabilitiesList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<SkuInformationCapabilitiesList>;
-
 /** ElasticSAN SKU and its properties */
 export interface SkuInformation {
   /** Sku Name */
@@ -1280,15 +894,8 @@ export interface SkuInformation {
   /** The capability information in the specified SKU. */
   capabilities?: SkuInformationCapabilitiesList;
 }
-const SkuInformation = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<SkuInformation>;
-
 /** The SkuInformation items on this page */
 export type SkuInformationListValueList = Array<SkuInformation>;
-const SkuInformationListValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<SkuInformationListValueList>;
-
 /** List of SKU Information objects */
 export interface SkuInformationList {
   /** The SkuInformation items on this page */
@@ -1296,8 +903,6 @@ export interface SkuInformationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const SkuInformationList = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<SkuInformationList>;
-
 export interface ListVolumeByVolumeGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1308,11 +913,6 @@ export interface ListVolumeByVolumeGroupRequest {
   /** The name of the VolumeGroup. */
   volumeGroupName: string;
 }
-const ListVolumeByVolumeGroupRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ListVolumeByVolumeGroupRequest>;
-
 /** Response for Volume request. */
 export interface Volume {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1326,12 +926,8 @@ export interface Volume {
   /** Properties of Volume. */
   properties: VolumeProperties;
 }
-const Volume = CreateVolumeResponse as any as S.Schema<Volume>;
-
 /** The Volume items on this page */
 export type VolumeListValueList = Array<Volume>;
-const VolumeListValueList = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<VolumeListValueList>;
-
 /** List of Volumes */
 export interface VolumeList {
   /** The Volume items on this page */
@@ -1339,8 +935,6 @@ export interface VolumeList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const VolumeList = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<VolumeList>;
-
 export interface ListVolumeGroupByElasticSanRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1349,11 +943,6 @@ export interface ListVolumeGroupByElasticSanRequest {
   /** The name of the ElasticSan. */
   elasticSanName: string;
 }
-const ListVolumeGroupByElasticSanRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListVolumeGroupByElasticSanRequest>;
-
 /** Response for Volume Group request. */
 export interface VolumeGroup {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1369,15 +958,8 @@ export interface VolumeGroup {
   /** Properties of VolumeGroup. */
   properties?: VolumeGroupProperties;
 }
-const VolumeGroup = GetVolumeGroupResponse as any as S.Schema<VolumeGroup>;
-
 /** The VolumeGroup items on this page */
 export type VolumeGroupListValueList = Array<VolumeGroup>;
-const VolumeGroupListValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<VolumeGroupListValueList>;
-
 /** List of Volume Groups */
 export interface VolumeGroupList {
   /** The VolumeGroup items on this page */
@@ -1385,8 +967,6 @@ export interface VolumeGroupList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const VolumeGroupList = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<VolumeGroupList>;
-
 export interface ListVolumeSnapshotByVolumeGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1399,11 +979,6 @@ export interface ListVolumeSnapshotByVolumeGroupRequest {
   /** Specify $filter='volumeName eq <volume name>' to filter on volume. */
   _filter?: string;
 }
-const ListVolumeSnapshotByVolumeGroupRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListVolumeSnapshotByVolumeGroupRequest>;
-
 /** Response for Volume Snapshot request. */
 export interface Snapshot {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1417,15 +992,8 @@ export interface Snapshot {
   /** Properties of Volume Snapshot. */
   properties: SnapshotProperties;
 }
-const Snapshot = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<Snapshot>;
-
 /** The Snapshot items on this page */
 export type SnapshotListValueList = Array<Snapshot>;
-const SnapshotListValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<SnapshotListValueList>;
-
 /** List of Snapshots */
 export interface SnapshotList {
   /** The Snapshot items on this page */
@@ -1433,13 +1001,8 @@ export interface SnapshotList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const SnapshotList = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<SnapshotList>;
-
 /** array of DiskSnapshot ARM IDs */
 export type RestoreVolumesPreRequestDiskSnapshotIdsList = Array<string>;
-const RestoreVolumesPreRequestDiskSnapshotIdsList =
-  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<RestoreVolumesPreRequestDiskSnapshotIdsList>;
-
 export interface RestoreVolumesPreRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1452,21 +1015,11 @@ export interface RestoreVolumesPreRequest {
   /** array of DiskSnapshot ARM IDs */
   diskSnapshotIds: RestoreVolumesPreRequestDiskSnapshotIdsList;
 }
-const RestoreVolumesPreRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<RestoreVolumesPreRequest>;
-
 /** response object for pre validation api */
 export interface PreValidationResponse {
   /** a status value indicating success or failure of validation */
   validationStatus?: string;
 }
-const PreValidationResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<PreValidationResponse>;
-
 /** Elastic San update properties. */
 export interface ElasticSanUpdateProperties {
   /** Base size of the Elastic San appliance in TiB. */
@@ -1478,16 +1031,8 @@ export interface ElasticSanUpdateProperties {
   /** Auto Scale Properties for Elastic San Appliance. */
   autoScaleProperties?: AutoScaleProperties;
 }
-const ElasticSanUpdateProperties = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ElasticSanUpdateProperties>;
-
 /** Update tags */
 export type UpdateElasticSanRequestTagsMap = { [key: string]: string | undefined };
-const UpdateElasticSanRequestTagsMap =
-  CreateElasticSanRequestTagsMap as any as S.Schema<UpdateElasticSanRequestTagsMap>;
-
 export interface UpdateElasticSanRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1500,11 +1045,6 @@ export interface UpdateElasticSanRequest {
   /** Update tags */
   tags?: UpdateElasticSanRequestTagsMap;
 }
-const UpdateElasticSanRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<UpdateElasticSanRequest>;
-
 /** Resource tags. */
 export type UpdateElasticSanResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateElasticSanResponse {
@@ -1523,9 +1063,6 @@ export interface UpdateElasticSanResponse {
   /** Properties of ElasticSan. */
   properties: ElasticSanProperties;
 }
-const UpdateElasticSanResponse =
-  CreateElasticSanResponse as any as S.Schema<UpdateElasticSanResponse>;
-
 /** Volume response properties. */
 export interface VolumeUpdateProperties {
   /** Volume size. */
@@ -1533,11 +1070,6 @@ export interface VolumeUpdateProperties {
   /** Parent resource information. */
   managedBy?: ManagedByInfo;
 }
-const VolumeUpdateProperties = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<VolumeUpdateProperties>;
-
 export interface UpdateVolumeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1552,8 +1084,6 @@ export interface UpdateVolumeRequest {
   /** Properties of Volume. */
   properties?: VolumeUpdateProperties;
 }
-const UpdateVolumeRequest = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<UpdateVolumeRequest>;
-
 export interface UpdateVolumeResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1566,8 +1096,6 @@ export interface UpdateVolumeResponse {
   /** Properties of Volume. */
   properties: VolumeProperties;
 }
-const UpdateVolumeResponse = CreateVolumeResponse as any as S.Schema<UpdateVolumeResponse>;
-
 /** VolumeGroup response properties. */
 export type VolumeGroupUpdatePropertiesInput = VolumeGroupPropertiesInput;
 export interface UpdateVolumeGroupRequest {
@@ -1584,11 +1112,6 @@ export interface UpdateVolumeGroupRequest {
   /** Properties of VolumeGroup. */
   properties?: VolumeGroupPropertiesInput;
 }
-const UpdateVolumeGroupRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<UpdateVolumeGroupRequest>;
-
 export interface UpdateVolumeGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1603,14 +1126,8 @@ export interface UpdateVolumeGroupResponse {
   /** Properties of VolumeGroup. */
   properties?: VolumeGroupProperties;
 }
-const UpdateVolumeGroupResponse =
-  CreateVolumeGroupResponse as any as S.Schema<UpdateVolumeGroupResponse>;
-
 /** array of volume names */
 export type VolumesPreBackupRequestVolumeNamesList = Array<string>;
-const VolumesPreBackupRequestVolumeNamesList =
-  ElasticSanPropertiesInputAvailabilityZonesList as any as S.Schema<VolumesPreBackupRequestVolumeNamesList>;
-
 export interface VolumesPreBackupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1623,11 +1140,6 @@ export interface VolumesPreBackupRequest {
   /** array of volume names */
   volumeNames: VolumesPreBackupRequestVolumeNamesList;
 }
-const VolumesPreBackupRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<VolumesPreBackupRequest>;
-
 export type CreateElasticSanError = AzureOpError;
 /** Create ElasticSan. */
 export const CreateElasticSan: API.OperationMethod<
@@ -1636,8 +1148,8 @@ export const CreateElasticSan: API.OperationMethod<
   CreateElasticSanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateElasticSanRequest,
-  output: CreateElasticSanResponse,
+  input: __S(6) as any as S.Schema<CreateElasticSanRequest>,
+  output: __S(14) as any as S.Schema<CreateElasticSanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1651,8 +1163,8 @@ export const CreatePrivateEndpointConnection: API.OperationMethod<
   CreatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePrivateEndpointConnectionRequest,
-  output: CreatePrivateEndpointConnectionResponse,
+  input: __S(17) as any as S.Schema<CreatePrivateEndpointConnectionRequest>,
+  output: __S(11) as any as S.Schema<CreatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1666,8 +1178,8 @@ export const CreateVolume: API.OperationMethod<
   CreateVolumeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVolumeRequest,
-  output: CreateVolumeResponse,
+  input: __S(21) as any as S.Schema<CreateVolumeRequest>,
+  output: __S(24) as any as S.Schema<CreateVolumeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1681,8 +1193,8 @@ export const CreateVolumeGroup: API.OperationMethod<
   CreateVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVolumeGroupRequest,
-  output: CreateVolumeGroupResponse,
+  input: __S(34) as any as S.Schema<CreateVolumeGroupRequest>,
+  output: __S(41) as any as S.Schema<CreateVolumeGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1696,8 +1208,8 @@ export const CreateVolumeSnapshot: API.OperationMethod<
   CreateVolumeSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVolumeSnapshotRequest,
-  output: CreateVolumeSnapshotResponse,
+  input: __S(44) as any as S.Schema<CreateVolumeSnapshotRequest>,
+  output: __S(46) as any as S.Schema<CreateVolumeSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1711,8 +1223,8 @@ export const DeleteElasticSan: API.OperationMethod<
   DeleteElasticSanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteElasticSanRequest,
-  output: DeleteElasticSanResponse,
+  input: __S(47) as any as S.Schema<DeleteElasticSanRequest>,
+  output: __S(15) as any as S.Schema<DeleteElasticSanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1726,8 +1238,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateEndpointConnectionRequest,
-  output: DeletePrivateEndpointConnectionResponse,
+  input: __S(48) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(49) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1741,8 +1253,8 @@ export const DeleteVolume: API.OperationMethod<
   DeleteVolumeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVolumeRequest,
-  output: DeleteVolumeResponse,
+  input: __S(50) as any as S.Schema<DeleteVolumeRequest>,
+  output: __S(15) as any as S.Schema<DeleteVolumeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1756,8 +1268,8 @@ export const DeleteVolumeGroup: API.OperationMethod<
   DeleteVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVolumeGroupRequest,
-  output: DeleteVolumeGroupResponse,
+  input: __S(51) as any as S.Schema<DeleteVolumeGroupRequest>,
+  output: __S(15) as any as S.Schema<DeleteVolumeGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1771,8 +1283,8 @@ export const DeleteVolumeSnapshot: API.OperationMethod<
   DeleteVolumeSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVolumeSnapshotRequest,
-  output: DeleteVolumeSnapshotResponse,
+  input: __S(52) as any as S.Schema<DeleteVolumeSnapshotRequest>,
+  output: __S(15) as any as S.Schema<DeleteVolumeSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1786,8 +1298,8 @@ export const GetElasticSan: API.OperationMethod<
   GetElasticSanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetElasticSanRequest,
-  output: GetElasticSanResponse,
+  input: __S(53) as any as S.Schema<GetElasticSanRequest>,
+  output: __S(14) as any as S.Schema<GetElasticSanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1801,8 +1313,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateEndpointConnectionRequest,
-  output: GetPrivateEndpointConnectionResponse,
+  input: __S(54) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(11) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1816,8 +1328,8 @@ export const GetVolume: API.OperationMethod<
   GetVolumeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVolumeRequest,
-  output: GetVolumeResponse,
+  input: __S(55) as any as S.Schema<GetVolumeRequest>,
+  output: __S(24) as any as S.Schema<GetVolumeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1831,8 +1343,8 @@ export const GetVolumeGroup: API.OperationMethod<
   GetVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVolumeGroupRequest,
-  output: GetVolumeGroupResponse,
+  input: __S(56) as any as S.Schema<GetVolumeGroupRequest>,
+  output: __S(57) as any as S.Schema<GetVolumeGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1846,8 +1358,8 @@ export const GetVolumeSnapshot: API.OperationMethod<
   GetVolumeSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVolumeSnapshotRequest,
-  output: GetVolumeSnapshotResponse,
+  input: __S(58) as any as S.Schema<GetVolumeSnapshotRequest>,
+  output: __S(46) as any as S.Schema<GetVolumeSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1861,8 +1373,8 @@ export const ListElasticSanByResourceGroup: API.OperationMethod<
   ListElasticSanByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListElasticSanByResourceGroupRequest,
-  output: ElasticSanList,
+  input: __S(59) as any as S.Schema<ListElasticSanByResourceGroupRequest>,
+  output: __S(61) as any as S.Schema<ElasticSanList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1876,8 +1388,8 @@ export const ListElasticSanBySubscription: API.OperationMethod<
   ListElasticSanBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListElasticSanBySubscriptionRequest,
-  output: ElasticSanList,
+  input: __S(62) as any as S.Schema<ListElasticSanBySubscriptionRequest>,
+  output: __S(61) as any as S.Schema<ElasticSanList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1891,8 +1403,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(63) as any as S.Schema<ListOperationsRequest>,
+  output: __S(67) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1906,8 +1418,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateEndpointConnectionsRequest,
-  output: PrivateEndpointConnectionListResult,
+  input: __S(68) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(69) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1921,8 +1433,8 @@ export const ListPrivateLinkResourceByElasticSan: API.OperationMethod<
   ListPrivateLinkResourceByElasticSanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateLinkResourceByElasticSanRequest,
-  output: PrivateLinkResourceListResult,
+  input: __S(70) as any as S.Schema<ListPrivateLinkResourceByElasticSanRequest>,
+  output: __S(74) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1936,8 +1448,8 @@ export const ListSkus: API.OperationMethod<
   ListSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSkusRequest,
-  output: SkuInformationList,
+  input: __S(75) as any as S.Schema<ListSkusRequest>,
+  output: __S(82) as any as S.Schema<SkuInformationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1951,8 +1463,8 @@ export const ListVolumeByVolumeGroup: API.OperationMethod<
   ListVolumeByVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVolumeByVolumeGroupRequest,
-  output: VolumeList,
+  input: __S(83) as any as S.Schema<ListVolumeByVolumeGroupRequest>,
+  output: __S(85) as any as S.Schema<VolumeList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1966,8 +1478,8 @@ export const ListVolumeGroupByElasticSan: API.OperationMethod<
   ListVolumeGroupByElasticSanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVolumeGroupByElasticSanRequest,
-  output: VolumeGroupList,
+  input: __S(86) as any as S.Schema<ListVolumeGroupByElasticSanRequest>,
+  output: __S(88) as any as S.Schema<VolumeGroupList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1981,8 +1493,8 @@ export const ListVolumeSnapshotByVolumeGroup: API.OperationMethod<
   ListVolumeSnapshotByVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVolumeSnapshotByVolumeGroupRequest,
-  output: SnapshotList,
+  input: __S(89) as any as S.Schema<ListVolumeSnapshotByVolumeGroupRequest>,
+  output: __S(92) as any as S.Schema<SnapshotList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1996,8 +1508,8 @@ export const RestoreVolumesPre: API.OperationMethod<
   RestoreVolumesPreError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreVolumesPreRequest,
-  output: PreValidationResponse,
+  input: __S(93) as any as S.Schema<RestoreVolumesPreRequest>,
+  output: __S(94) as any as S.Schema<PreValidationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2011,8 +1523,8 @@ export const UpdateElasticSan: API.OperationMethod<
   UpdateElasticSanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateElasticSanRequest,
-  output: UpdateElasticSanResponse,
+  input: __S(96) as any as S.Schema<UpdateElasticSanRequest>,
+  output: __S(14) as any as S.Schema<UpdateElasticSanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2026,8 +1538,8 @@ export const UpdateVolume: API.OperationMethod<
   UpdateVolumeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVolumeRequest,
-  output: UpdateVolumeResponse,
+  input: __S(98) as any as S.Schema<UpdateVolumeRequest>,
+  output: __S(24) as any as S.Schema<UpdateVolumeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2041,8 +1553,8 @@ export const UpdateVolumeGroup: API.OperationMethod<
   UpdateVolumeGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVolumeGroupRequest,
-  output: UpdateVolumeGroupResponse,
+  input: __S(99) as any as S.Schema<UpdateVolumeGroupRequest>,
+  output: __S(41) as any as S.Schema<UpdateVolumeGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2056,8 +1568,8 @@ export const VolumesPreBackup: API.OperationMethod<
   VolumesPreBackupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VolumesPreBackupRequest,
-  output: PreValidationResponse,
+  input: __S(100) as any as S.Schema<VolumesPreBackupRequest>,
+  output: __S(94) as any as S.Schema<PreValidationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2071,8 +1583,8 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: SkuName,
-          tier: S.optional(SkuTier),
+          name: S.String,
+          tier: S.optional(S.String),
         }),
       ).annotate({ identifier: "Sku" });
     case 2:
@@ -2083,24 +1595,24 @@ function __c0(j: number): any {
           unusedSizeTiB: S.optional(S.Number),
           increaseCapacityUnitByTiB: S.optional(S.Number),
           capacityUnitScaleUpLimitTiB: S.optional(S.Number),
-          autoScalePolicyEnforcement: S.optional(AutoScalePolicyEnforcement),
+          autoScalePolicyEnforcement: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScaleUpProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          scaleUpProperties: S.optional(ScaleUpProperties),
+          scaleUpProperties: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "AutoScaleProperties" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sku: Sku,
-          availabilityZones: S.optional(ElasticSanPropertiesInputAvailabilityZonesList),
+          sku: __S(1),
+          availabilityZones: S.optional(__S(2)),
           baseSizeTiB: S.Number,
           extendedCapacitySizeTiB: S.Number,
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
-          autoScaleProperties: S.optional(AutoScaleProperties),
+          publicNetworkAccess: S.optional(S.String),
+          autoScaleProperties: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "ElasticSanPropertiesInput",
@@ -2111,9 +1623,9 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           elasticSanName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateElasticSanRequestTagsMap),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: ElasticSanPropertiesInput,
+          properties: __S(5),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2127,10 +1639,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -2147,7 +1659,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(PrivateEndpointServiceConnectionStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -2157,10 +1669,10 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningStates),
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
-          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
+          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(__S(8)),
+          privateLinkServiceConnectionState: __S(9),
+          groupIds: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -2171,20 +1683,20 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: PrivateEndpointConnectionProperties,
+          systemData: S.optional(__S(7)),
+          properties: __S(10),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnection",
       });
     case 4:
-      return S.Array(PrivateEndpointConnection);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sku: Sku,
-          availabilityZones: S.optional(ElasticSanPropertiesAvailabilityZonesList),
-          provisioningState: S.optional(ProvisioningStates),
+          sku: __S(1),
+          availabilityZones: S.optional(__S(2)),
+          provisioningState: S.optional(S.String),
           baseSizeTiB: S.Number,
           extendedCapacitySizeTiB: S.Number,
           totalVolumeSizeGiB: S.optional(S.Number),
@@ -2192,11 +1704,9 @@ function __c1(j: number): any {
           totalIops: S.optional(S.Number),
           totalMBps: S.optional(S.Number),
           totalSizeTiB: S.optional(S.Number),
-          privateEndpointConnections: S.optional(
-            ElasticSanPropertiesPrivateEndpointConnectionsList,
-          ),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
-          autoScaleProperties: S.optional(AutoScaleProperties),
+          privateEndpointConnections: S.optional(__S(12)),
+          publicNetworkAccess: S.optional(S.String),
+          autoScaleProperties: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "ElasticSanProperties" });
     case 6:
@@ -2205,10 +1715,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateElasticSanResponseTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: ElasticSanProperties,
+          properties: __S(13),
         }),
       ).annotate({ identifier: "CreateElasticSanResponse" });
     case 7:
@@ -2222,9 +1732,9 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(PrivateEndpointInput),
-          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
-          groupIds: S.optional(PrivateEndpointConnectionPropertiesInputGroupIdsList),
+          privateEndpoint: S.optional(__S(15)),
+          privateLinkServiceConnectionState: __S(9),
+          groupIds: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -2236,7 +1746,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           elasticSanName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: PrivateEndpointConnectionPropertiesInput,
+          properties: __S(16),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2251,7 +1761,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          createSource: S.optional(VolumeCreateOption),
+          createSource: S.optional(S.String),
           sourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceCreationData" });
@@ -2264,9 +1774,9 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          creationData: S.optional(SourceCreationData),
+          creationData: S.optional(__S(18)),
           sizeGiB: S.Number,
-          managedBy: S.optional(ManagedByInfo),
+          managedBy: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "VolumePropertiesInput" });
     case 5:
@@ -2277,7 +1787,7 @@ function __c2(j: number): any {
           elasticSanName: S.String.pipe(T.Label()),
           volumeGroupName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
-          properties: VolumePropertiesInput,
+          properties: __S(20),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2293,19 +1803,19 @@ function __c2(j: number): any {
           targetIqn: S.optional(S.String),
           targetPortalHostname: S.optional(S.String),
           targetPortalPort: S.optional(S.Number),
-          provisioningState: S.optional(ProvisioningStates),
-          status: S.optional(OperationalStatus),
+          provisioningState: S.optional(S.String),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "IscsiTargetInfo" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           volumeId: S.optional(S.String),
-          creationData: S.optional(SourceCreationData),
+          creationData: S.optional(__S(18)),
           sizeGiB: S.Number,
-          storageTarget: S.optional(IscsiTargetInfo),
-          managedBy: S.optional(ManagedByInfo),
-          provisioningState: S.optional(ProvisioningStates),
+          storageTarget: S.optional(__S(22)),
+          managedBy: S.optional(__S(19)),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeProperties" });
   }
@@ -2318,17 +1828,17 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: VolumeProperties,
+          systemData: S.optional(__S(7)),
+          properties: __S(23),
         }),
       ).annotate({ identifier: "CreateVolumeResponse" });
     case 1:
-      return S.Record(S.String, PrivateEndpointInput);
+      return S.Record(S.String, __S(15));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: IdentityType,
-          userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(25)),
         }),
       ).annotate({ identifier: "IdentityInput" });
     case 3:
@@ -2348,8 +1858,8 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: S.optional(KeyVaultPropertiesInput),
-          identity: S.optional(EncryptionIdentity),
+          keyVaultProperties: S.optional(__S(27)),
+          identity: S.optional(__S(28)),
         }),
       ).annotate({
         identifier: "EncryptionPropertiesInput",
@@ -2358,11 +1868,11 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          action: S.optional(VirtualNetworkRuleAction),
+          action: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNetworkRule" });
     case 7:
-      return S.Array(VirtualNetworkRule);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
@@ -2370,16 +1880,16 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          virtualNetworkRules: S.optional(NetworkRuleSetVirtualNetworkRulesList),
+          virtualNetworkRules: S.optional(__S(31)),
         }),
       ).annotate({ identifier: "NetworkRuleSet" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          protocolType: S.optional(StorageTargetType),
-          encryption: S.optional(EncryptionType),
-          encryptionProperties: S.optional(EncryptionPropertiesInput),
-          networkAcls: S.optional(NetworkRuleSet),
+          protocolType: S.optional(S.String),
+          encryption: S.optional(S.String),
+          encryptionProperties: S.optional(__S(29)),
+          networkAcls: S.optional(__S(32)),
           enforceDataIntegrityCheckForIscsi: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -2392,8 +1902,8 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           elasticSanName: S.String.pipe(T.Label()),
           volumeGroupName: S.String.pipe(T.Label()),
-          identity: S.optional(IdentityInput),
-          properties: S.optional(VolumeGroupPropertiesInput),
+          identity: S.optional(__S(26)),
+          properties: S.optional(__S(33)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2411,14 +1921,14 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 4:
-      return S.Record(S.String, UserAssignedIdentity);
+      return S.Record(S.String, __S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: IdentityType,
-          userAssignedIdentities: S.optional(IdentityUserAssignedIdentitiesMap),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(36)),
         }),
       ).annotate({ identifier: "Identity" });
     case 6:
@@ -2435,8 +1945,8 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: S.optional(KeyVaultProperties),
-          identity: S.optional(EncryptionIdentity),
+          keyVaultProperties: S.optional(__S(38)),
+          identity: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "EncryptionProperties" });
   }
@@ -2446,14 +1956,12 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningStates),
-          protocolType: S.optional(StorageTargetType),
-          encryption: S.optional(EncryptionType),
-          encryptionProperties: S.optional(EncryptionProperties),
-          networkAcls: S.optional(NetworkRuleSet),
-          privateEndpointConnections: S.optional(
-            VolumeGroupPropertiesPrivateEndpointConnectionsList,
-          ),
+          provisioningState: S.optional(S.String),
+          protocolType: S.optional(S.String),
+          encryption: S.optional(S.String),
+          encryptionProperties: S.optional(__S(39)),
+          networkAcls: S.optional(__S(32)),
+          privateEndpointConnections: S.optional(__S(12)),
           enforceDataIntegrityCheckForIscsi: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "VolumeGroupProperties" });
@@ -2463,9 +1971,9 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          identity: S.optional(Identity),
-          properties: S.optional(VolumeGroupProperties),
+          systemData: S.optional(__S(7)),
+          identity: S.optional(__S(37)),
+          properties: S.optional(__S(40)),
         }),
       ).annotate({
         identifier: "CreateVolumeGroupResponse",
@@ -2479,7 +1987,7 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          creationData: SnapshotCreationData,
+          creationData: __S(42),
         }),
       ).annotate({ identifier: "SnapshotPropertiesInput" });
     case 4:
@@ -2490,7 +1998,7 @@ function __c5(j: number): any {
           elasticSanName: S.String.pipe(T.Label()),
           volumeGroupName: S.String.pipe(T.Label()),
           snapshotName: S.String.pipe(T.Label()),
-          properties: SnapshotPropertiesInput,
+          properties: __S(43),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2505,8 +2013,8 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          creationData: SnapshotCreationData,
-          provisioningState: S.optional(ProvisioningStates),
+          creationData: __S(42),
+          provisioningState: S.optional(S.String),
           sourceVolumeSizeGiB: S.optional(S.Number),
           volumeName: S.optional(S.String),
         }),
@@ -2517,8 +2025,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: SnapshotProperties,
+          systemData: S.optional(__S(7)),
+          properties: __S(45),
         }),
       ).annotate({
         identifier: "CreateVolumeSnapshotResponse",
@@ -2694,9 +2202,9 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          identity: S.optional(Identity),
-          properties: S.optional(VolumeGroupProperties),
+          systemData: S.optional(__S(7)),
+          identity: S.optional(__S(37)),
+          properties: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "GetVolumeGroupResponse" });
     case 2:
@@ -2733,11 +2241,11 @@ function __c7(j: number): any {
         identifier: "ListElasticSanByResourceGroupRequest",
       });
     case 4:
-      return S.Array(ElasticSan);
+      return S.Array(__S(14));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: ElasticSanListValueList,
+          value: __S(60),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ElasticSanList" });
@@ -2785,17 +2293,17 @@ function __c8(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(64)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
-      return S.Array(Operation);
+      return S.Array(__S(65));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(66)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -2819,7 +2327,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: PrivateEndpointConnectionListResultValueList,
+          value: __S(12),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2846,8 +2354,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
+          requiredMembers: S.optional(__S(2)),
+          requiredZoneNames: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -2862,16 +2370,16 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateLinkResourceProperties),
+          systemData: S.optional(__S(7)),
+          properties: S.optional(__S(71)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 1:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(72));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: PrivateLinkResourceListResultValueList,
+          value: __S(73),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -2895,11 +2403,11 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
-          zones: S.optional(SkuLocationInfoZonesList),
+          zones: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "SkuLocationInfo" });
     case 5:
-      return S.Array(SkuLocationInfo);
+      return S.Array(__S(76));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2908,7 +2416,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "SKUCapability" });
     case 7:
-      return S.Array(SKUCapability);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
@@ -2916,20 +2424,20 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: SkuName,
-          tier: S.optional(SkuTier),
+          name: S.String,
+          tier: S.optional(S.String),
           resourceType: S.optional(S.String),
-          locations: S.optional(SkuInformationLocationsList),
-          locationInfo: S.optional(SkuInformationLocationInfoList),
-          capabilities: S.optional(SkuInformationCapabilitiesList),
+          locations: S.optional(__S(2)),
+          locationInfo: S.optional(__S(77)),
+          capabilities: S.optional(__S(79)),
         }),
       ).annotate({ identifier: "SkuInformation" });
     case 1:
-      return S.Array(SkuInformation);
+      return S.Array(__S(80));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: SkuInformationListValueList,
+          value: __S(81),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SkuInformationList" });
@@ -2952,11 +2460,11 @@ function __c10(j: number): any {
         identifier: "ListVolumeByVolumeGroupRequest",
       });
     case 4:
-      return S.Array(Volume);
+      return S.Array(__S(24));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: VolumeListValueList,
+          value: __S(84),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeList" });
@@ -2978,7 +2486,7 @@ function __c10(j: number): any {
         identifier: "ListVolumeGroupByElasticSanRequest",
       });
     case 7:
-      return S.Array(VolumeGroup);
+      return S.Array(__S(57));
   }
 }
 function __c11(j: number): any {
@@ -2986,7 +2494,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: VolumeGroupListValueList,
+          value: __S(87),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeGroupList" });
@@ -3015,16 +2523,16 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: SnapshotProperties,
+          systemData: S.optional(__S(7)),
+          properties: __S(45),
         }),
       ).annotate({ identifier: "Snapshot" });
     case 3:
-      return S.Array(Snapshot);
+      return S.Array(__S(90));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: SnapshotListValueList,
+          value: __S(91),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotList" });
@@ -3035,7 +2543,7 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           elasticSanName: S.String.pipe(T.Label()),
           volumeGroupName: S.String.pipe(T.Label()),
-          diskSnapshotIds: RestoreVolumesPreRequestDiskSnapshotIdsList,
+          diskSnapshotIds: __S(2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3056,8 +2564,8 @@ function __c11(j: number): any {
         S.Struct({
           baseSizeTiB: S.optional(S.Number),
           extendedCapacitySizeTiB: S.optional(S.Number),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
-          autoScaleProperties: S.optional(AutoScaleProperties),
+          publicNetworkAccess: S.optional(S.String),
+          autoScaleProperties: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "ElasticSanUpdateProperties",
@@ -3072,8 +2580,8 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           elasticSanName: S.String.pipe(T.Label()),
-          properties: S.optional(ElasticSanUpdateProperties),
-          tags: S.optional(UpdateElasticSanRequestTagsMap),
+          properties: S.optional(__S(95)),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3087,7 +2595,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sizeGiB: S.optional(S.Number),
-          managedBy: S.optional(ManagedByInfo),
+          managedBy: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "VolumeUpdateProperties" });
     case 2:
@@ -3098,7 +2606,7 @@ function __c12(j: number): any {
           elasticSanName: S.String.pipe(T.Label()),
           volumeGroupName: S.String.pipe(T.Label()),
           volumeName: S.String.pipe(T.Label()),
-          properties: S.optional(VolumeUpdateProperties),
+          properties: S.optional(__S(97)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3115,8 +2623,8 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           elasticSanName: S.String.pipe(T.Label()),
           volumeGroupName: S.String.pipe(T.Label()),
-          identity: S.optional(IdentityInput),
-          properties: S.optional(VolumeGroupPropertiesInput),
+          identity: S.optional(__S(26)),
+          properties: S.optional(__S(33)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3133,7 +2641,7 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           elasticSanName: S.String.pipe(T.Label()),
           volumeGroupName: S.String.pipe(T.Label()),
-          volumeNames: VolumesPreBackupRequestVolumeNamesList,
+          volumeNames: __S(2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3143,5 +2651,40 @@ function __c12(j: number): any {
           }),
         ),
       ).annotate({ identifier: "VolumesPreBackupRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
   }
 }

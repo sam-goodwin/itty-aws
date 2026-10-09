@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,17 +19,7 @@ export interface DeleteWorkbookRequest {
   /** The name of the workbook resource. The value must be an UUID. */
   resourceName: string;
 }
-const DeleteWorkbookRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteWorkbookRequest>;
-
 export interface DeleteWorkbookResponse {}
-const DeleteWorkbookResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteWorkbookResponse>;
-
 export interface GetWorkbookRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -38,16 +30,10 @@ export interface GetWorkbookRequest {
   /** Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks. */
   canFetchContent?: boolean;
 }
-const GetWorkbookRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetWorkbookRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -63,22 +49,10 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
 export type GetWorkbookResponseTagsMap = { [key: string]: string | undefined };
-const GetWorkbookResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetWorkbookResponseTagsMap>;
-
 /** Being deprecated, please use the other tags field */
 export type WorkbookPropertiesTagsList = Array<string>;
-const WorkbookPropertiesTagsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<WorkbookPropertiesTagsList>;
-
 /** Properties that contain a workbook. */
 export interface WorkbookProperties {
   /** The user-defined name (display name) of the workbook. */
@@ -104,16 +78,12 @@ export interface WorkbookProperties {
   /** The unique revision id for this workbook definition */
   revision?: string | null;
 }
-const WorkbookProperties = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<WorkbookProperties>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const ManagedServiceIdentityType = S.String;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -121,15 +91,8 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<UserAssignedIdentity>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
-const UserAssignedIdentities = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<UserAssignedIdentities>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface WorkbookResourceIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -139,15 +102,8 @@ export interface WorkbookResourceIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-const WorkbookResourceIdentity = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<WorkbookResourceIdentity>;
-
 /** The kind of workbook. Only valid value is shared. */
 export type ApplicationInsightsCommonTypesWorkbookSharedTypeKind = "shared";
-const ApplicationInsightsCommonTypesWorkbookSharedTypeKind = S.String;
-
 export interface GetWorkbookResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -170,8 +126,6 @@ export interface GetWorkbookResponse {
   /** Resource etag */
   etag?: string;
 }
-const GetWorkbookResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetWorkbookResponse>;
-
 export interface GetWorkbooksRevisionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -182,16 +136,8 @@ export interface GetWorkbooksRevisionRequest {
   /** The id of the workbook's revision. */
   revisionId: string;
 }
-const GetWorkbooksRevisionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetWorkbooksRevisionRequest>;
-
 /** Resource tags. */
 export type GetWorkbooksRevisionResponseTagsMap = { [key: string]: string | undefined };
-const GetWorkbooksRevisionResponseTagsMap =
-  GetWorkbookResponseTagsMap as any as S.Schema<GetWorkbooksRevisionResponseTagsMap>;
-
 export interface GetWorkbooksRevisionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -214,22 +160,12 @@ export interface GetWorkbooksRevisionResponse {
   /** Resource etag */
   etag?: string;
 }
-const GetWorkbooksRevisionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetWorkbooksRevisionResponse>;
-
 export type ListWorkbookByResourceGroupRequestCategory =
   | "workbook"
   | "TSG"
   | "performance"
   | "retention";
-const ListWorkbookByResourceGroupRequestCategory = S.String;
-
 export type ListWorkbookByResourceGroupRequestTagsList = Array<string>;
-const ListWorkbookByResourceGroupRequestTagsList =
-  WorkbookPropertiesTagsList as any as S.Schema<ListWorkbookByResourceGroupRequestTagsList>;
-
 export interface ListWorkbookByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -244,11 +180,6 @@ export interface ListWorkbookByResourceGroupRequest {
   /** Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks. */
   canFetchContent?: boolean;
 }
-const ListWorkbookByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListWorkbookByResourceGroupRequest>;
-
 /** Resource tags. */
 export type WorkbookTagsMap = { [key: string]: string | undefined };
 /** A workbook definition. */
@@ -274,15 +205,8 @@ export interface Workbook {
   /** Resource etag */
   etag?: string;
 }
-const Workbook = GetWorkbookResponse as any as S.Schema<Workbook>;
-
 /** An array of workbooks. */
 export type WorkbooksListResultValueList = Array<Workbook>;
-const WorkbooksListResultValueList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<WorkbooksListResultValueList>;
-
 /** Workbook list result. */
 export interface WorkbooksListResult {
   /** An array of workbooks. */
@@ -290,19 +214,12 @@ export interface WorkbooksListResult {
   /** The link to the next page of results. */
   nextLink?: string;
 }
-const WorkbooksListResult = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<WorkbooksListResult>;
-
 export type ListWorkbookBySubscriptionRequestCategory =
   | "workbook"
   | "TSG"
   | "performance"
   | "retention";
-const ListWorkbookBySubscriptionRequestCategory = S.String;
-
 export type ListWorkbookBySubscriptionRequestTagsList = Array<string>;
-const ListWorkbookBySubscriptionRequestTagsList =
-  WorkbookPropertiesTagsList as any as S.Schema<ListWorkbookBySubscriptionRequestTagsList>;
-
 export interface ListWorkbookBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -313,11 +230,6 @@ export interface ListWorkbookBySubscriptionRequest {
   /** Flag indicating whether or not to return the full content for each applicable workbook. If false, only return summary content for workbooks. */
   canFetchContent?: boolean;
 }
-const ListWorkbookBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListWorkbookBySubscriptionRequest>;
-
 export interface ListWorkbooksRevisionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -326,25 +238,12 @@ export interface ListWorkbooksRevisionsRequest {
   /** The name of the workbook resource. The value must be an UUID. */
   resourceName: string;
 }
-const ListWorkbooksRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListWorkbooksRevisionsRequest>;
-
 /** The kind of workbook. Only valid value is shared. */
 export type WorkbookUpdateSharedTypeKind = "shared";
-const WorkbookUpdateSharedTypeKind = S.String;
-
 /** Resource tags. */
 export type UpdateWorkbookRequestTagsMap = { [key: string]: string | undefined };
-const UpdateWorkbookRequestTagsMap =
-  GetWorkbookResponseTagsMap as any as S.Schema<UpdateWorkbookRequestTagsMap>;
-
 /** A list of 0 or more tags that are associated with this workbook definition */
 export type WorkbookPropertiesUpdateParametersTagsList = Array<string>;
-const WorkbookPropertiesUpdateParametersTagsList =
-  WorkbookPropertiesTagsList as any as S.Schema<WorkbookPropertiesUpdateParametersTagsList>;
-
 /** Properties that contain a workbook for PATCH operation. */
 export interface WorkbookPropertiesUpdateParameters {
   /** The user-defined name (display name) of the workbook. */
@@ -360,11 +259,6 @@ export interface WorkbookPropertiesUpdateParameters {
   /** The unique revision id for this workbook definition */
   revision?: string | null;
 }
-const WorkbookPropertiesUpdateParameters = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<WorkbookPropertiesUpdateParameters>;
-
 export interface UpdateWorkbookRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -381,11 +275,6 @@ export interface UpdateWorkbookRequest {
   /** Metadata describing a workbook for an Azure resource. */
   properties?: WorkbookPropertiesUpdateParameters;
 }
-const UpdateWorkbookRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<UpdateWorkbookRequest>;
-
 /** Resource tags. */
 export type UpdateWorkbookResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateWorkbookResponse {
@@ -410,18 +299,10 @@ export interface UpdateWorkbookResponse {
   /** Resource etag */
   etag?: string;
 }
-const UpdateWorkbookResponse = GetWorkbookResponse as any as S.Schema<UpdateWorkbookResponse>;
-
 /** Resource tags. */
 export type WorkbooksCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const WorkbooksCreateOrUpdateRequestTagsMap =
-  GetWorkbookResponseTagsMap as any as S.Schema<WorkbooksCreateOrUpdateRequestTagsMap>;
-
 /** Being deprecated, please use the other tags field */
 export type WorkbookPropertiesInputTagsList = Array<string>;
-const WorkbookPropertiesInputTagsList =
-  WorkbookPropertiesTagsList as any as S.Schema<WorkbookPropertiesInputTagsList>;
-
 /** Properties that contain a workbook. */
 export interface WorkbookPropertiesInput {
   /** The user-defined name (display name) of the workbook. */
@@ -441,35 +322,17 @@ export interface WorkbookPropertiesInput {
   /** The description of the workbook. */
   description?: string | null;
 }
-const WorkbookPropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<WorkbookPropertiesInput>;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-const UserAssignedIdentityInput =
-  DeleteWorkbookResponse as any as S.Schema<UserAssignedIdentityInput>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<UserAssignedIdentitiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface WorkbookResourceIdentityInput {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-const WorkbookResourceIdentityInput = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<WorkbookResourceIdentityInput>;
-
 export interface WorkbooksCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -492,11 +355,6 @@ export interface WorkbooksCreateOrUpdateRequest {
   /** Resource etag */
   etag?: string;
 }
-const WorkbooksCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<WorkbooksCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type WorkbooksCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface WorkbooksCreateOrUpdateResponse {
@@ -521,9 +379,6 @@ export interface WorkbooksCreateOrUpdateResponse {
   /** Resource etag */
   etag?: string;
 }
-const WorkbooksCreateOrUpdateResponse =
-  GetWorkbooksRevisionResponse as any as S.Schema<WorkbooksCreateOrUpdateResponse>;
-
 export type DeleteWorkbookError = AzureOpError;
 /** Delete a workbook. */
 export const DeleteWorkbook: API.OperationMethod<
@@ -532,8 +387,8 @@ export const DeleteWorkbook: API.OperationMethod<
   DeleteWorkbookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWorkbookRequest,
-  output: DeleteWorkbookResponse,
+  input: __S(0) as any as S.Schema<DeleteWorkbookRequest>,
+  output: __S(1) as any as S.Schema<DeleteWorkbookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -547,8 +402,8 @@ export const GetWorkbook: API.OperationMethod<
   GetWorkbookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkbookRequest,
-  output: GetWorkbookResponse,
+  input: __S(2) as any as S.Schema<GetWorkbookRequest>,
+  output: __S(10) as any as S.Schema<GetWorkbookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -562,8 +417,8 @@ export const GetWorkbooksRevision: API.OperationMethod<
   GetWorkbooksRevisionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkbooksRevisionRequest,
-  output: GetWorkbooksRevisionResponse,
+  input: __S(11) as any as S.Schema<GetWorkbooksRevisionRequest>,
+  output: __S(12) as any as S.Schema<GetWorkbooksRevisionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -577,8 +432,8 @@ export const ListWorkbookByResourceGroup: API.OperationMethod<
   ListWorkbookByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkbookByResourceGroupRequest,
-  output: WorkbooksListResult,
+  input: __S(13) as any as S.Schema<ListWorkbookByResourceGroupRequest>,
+  output: __S(15) as any as S.Schema<WorkbooksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -592,8 +447,8 @@ export const ListWorkbookBySubscription: API.OperationMethod<
   ListWorkbookBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkbookBySubscriptionRequest,
-  output: WorkbooksListResult,
+  input: __S(16) as any as S.Schema<ListWorkbookBySubscriptionRequest>,
+  output: __S(15) as any as S.Schema<WorkbooksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -607,8 +462,8 @@ export const ListWorkbooksRevisions: API.OperationMethod<
   ListWorkbooksRevisionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkbooksRevisionsRequest,
-  output: WorkbooksListResult,
+  input: __S(17) as any as S.Schema<ListWorkbooksRevisionsRequest>,
+  output: __S(15) as any as S.Schema<WorkbooksListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -622,8 +477,8 @@ export const UpdateWorkbook: API.OperationMethod<
   UpdateWorkbookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWorkbookRequest,
-  output: UpdateWorkbookResponse,
+  input: __S(19) as any as S.Schema<UpdateWorkbookRequest>,
+  output: __S(10) as any as S.Schema<UpdateWorkbookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -637,8 +492,8 @@ export const WorkbooksCreateOrUpdate: API.OperationMethod<
   WorkbooksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkbooksCreateOrUpdateRequest,
-  output: WorkbooksCreateOrUpdateResponse,
+  input: __S(23) as any as S.Schema<WorkbooksCreateOrUpdateRequest>,
+  output: __S(12) as any as S.Schema<WorkbooksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -686,10 +541,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -705,7 +560,7 @@ function __c0(j: number): any {
           version: S.optional(S.String),
           timeModified: S.optional(S.String),
           category: S.String,
-          tags: S.optional(WorkbookPropertiesTagsList),
+          tags: S.optional(__S(5)),
           userId: S.optional(S.String),
           sourceId: S.optional(S.String),
           storageUri: S.optional(S.NullOr(S.String)),
@@ -725,14 +580,14 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(7)));
     case 1:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentities),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "WorkbookResourceIdentity" });
     case 2:
@@ -741,12 +596,12 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetWorkbookResponseTagsMap),
+          systemData: S.optional(__S(3)),
+          tags: S.optional(__S(4)),
           location: S.String,
-          properties: S.optional(WorkbookProperties),
-          identity: S.optional(WorkbookResourceIdentity),
-          kind: S.optional(ApplicationInsightsCommonTypesWorkbookSharedTypeKind),
+          properties: S.optional(__S(6)),
+          identity: S.optional(__S(9)),
+          kind: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetWorkbookResponse" });
@@ -774,12 +629,12 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetWorkbooksRevisionResponseTagsMap),
+          systemData: S.optional(__S(3)),
+          tags: S.optional(__S(4)),
           location: S.String,
-          properties: S.optional(WorkbookProperties),
-          identity: S.optional(WorkbookResourceIdentity),
-          kind: S.optional(ApplicationInsightsCommonTypesWorkbookSharedTypeKind),
+          properties: S.optional(__S(6)),
+          identity: S.optional(__S(9)),
+          kind: S.optional(S.String),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -790,8 +645,8 @@ function __c1(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
-          category: ListWorkbookByResourceGroupRequestCategory.pipe(T.Query()),
-          tags: S.optional(ListWorkbookByResourceGroupRequestTagsList.pipe(T.Query())),
+          category: S.String.pipe(T.Query()),
+          tags: S.optional(__S(5).pipe(T.Query())),
           sourceId: S.optional(S.String.pipe(T.Query())),
           canFetchContent: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
@@ -806,11 +661,11 @@ function __c1(j: number): any {
         identifier: "ListWorkbookByResourceGroupRequest",
       });
     case 6:
-      return S.Array(Workbook);
+      return S.Array(__S(10));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(WorkbooksListResultValueList),
+          value: S.optional(__S(14)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkbooksListResult" });
@@ -822,8 +677,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          category: ListWorkbookBySubscriptionRequestCategory.pipe(T.Query()),
-          tags: S.optional(ListWorkbookBySubscriptionRequestTagsList.pipe(T.Query())),
+          category: S.String.pipe(T.Query()),
+          tags: S.optional(__S(5).pipe(T.Query())),
           canFetchContent: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -859,7 +714,7 @@ function __c2(j: number): any {
           displayName: S.optional(S.String),
           serializedData: S.optional(S.String),
           category: S.optional(S.String),
-          tags: S.optional(WorkbookPropertiesUpdateParametersTagsList),
+          tags: S.optional(__S(5)),
           description: S.optional(S.NullOr(S.String)),
           revision: S.optional(S.NullOr(S.String)),
         }),
@@ -873,9 +728,9 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           sourceId: S.optional(S.String.pipe(T.Query())),
-          kind: S.optional(WorkbookUpdateSharedTypeKind),
-          tags: S.optional(UpdateWorkbookRequestTagsMap),
-          properties: S.optional(WorkbookPropertiesUpdateParameters),
+          kind: S.optional(S.String),
+          tags: S.optional(__S(4)),
+          properties: S.optional(__S(18)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -892,19 +747,19 @@ function __c2(j: number): any {
           serializedData: S.NullOr(S.String),
           version: S.optional(S.String),
           category: S.String,
-          tags: S.optional(WorkbookPropertiesInputTagsList),
+          tags: S.optional(__S(5)),
           sourceId: S.optional(S.String),
           storageUri: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "WorkbookPropertiesInput" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(1)));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(21)),
         }),
       ).annotate({
         identifier: "WorkbookResourceIdentityInput",
@@ -916,11 +771,11 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           sourceId: S.optional(S.String.pipe(T.Query())),
-          tags: S.optional(WorkbooksCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(4)),
           location: S.String,
-          properties: S.optional(WorkbookPropertiesInput),
-          identity: S.optional(WorkbookResourceIdentityInput),
-          kind: S.optional(ApplicationInsightsCommonTypesWorkbookSharedTypeKind),
+          properties: S.optional(__S(20)),
+          identity: S.optional(__S(22)),
+          kind: S.optional(S.String),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -933,5 +788,20 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "WorkbooksCreateOrUpdateRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

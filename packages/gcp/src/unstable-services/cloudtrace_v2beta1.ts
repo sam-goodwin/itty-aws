@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -67,8 +69,6 @@ export interface OutputConfig {
   /** Required. The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" */
   destination?: string;
 }
-const OutputConfig = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<OutputConfig>;
-
 /** Describes a sink used to export traces to a BigQuery dataset. The sink must be created within a project. */
 export interface TraceSink {
   /** Identifier. The canonical sink resource name, unique within the project. Must be of the form: projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. */
@@ -78,41 +78,22 @@ export interface TraceSink {
   /** Output only. A service account name for exporting the data. This field is set by sinks.create and sinks.update. The service account will need to be granted write access to the destination specified in the output configuration, see [Granting access for a resource](/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). To create tables and to write data, this account needs the `dataEditor` role. Read more about roles in the [BigQuery documentation](https://cloud.google.com/bigquery/docs/access-control). E.g.: "service-00000001@00000002.iam.gserviceaccount.com" */
   writerIdentity?: string;
 }
-const TraceSink = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<TraceSink>;
-
 export interface CreateProjectsTraceSinksRequest {
   /** Required. The resource in which to create the sink (currently only project sinks are supported): "projects/[PROJECT_ID]" Examples: `"projects/my-trace-project"`, `"projects/123456789"`. */
   parent: string;
   /** Request body */
   body?: TraceSink;
 }
-const CreateProjectsTraceSinksRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateProjectsTraceSinksRequest>;
-
 export interface DeleteProjectsTraceSinksRequest {
   /** Required. The full resource name of the sink to delete, including the parent resource and the sink identifier: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. */
   name: string;
 }
-const DeleteProjectsTraceSinksRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteProjectsTraceSinksRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Empty>;
-
 export interface GetProjectsTraceSinksRequest {
   /** Required. The resource name of the sink: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. */
   name: string;
 }
-const GetProjectsTraceSinksRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetProjectsTraceSinksRequest>;
-
 export interface ListProjectsTraceSinksRequest {
   /** Optional. If present, then retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call. */
   pageToken?: string;
@@ -121,14 +102,7 @@ export interface ListProjectsTraceSinksRequest {
   /** Required. The parent resource whose sinks are to be listed (currently only project parent resources are supported): "projects/[PROJECT_ID]" */
   parent: string;
 }
-const ListProjectsTraceSinksRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ListProjectsTraceSinksRequest>;
-
 export type TraceSinkList = Array<TraceSink>;
-const TraceSinkList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<TraceSinkList>;
-
 /** Result returned from `ListTraceSinks`. */
 export interface ListTraceSinksResponse {
   /** A paginated response where more pages might be available has `next_page_token` set. To get the next set of results, call the same method again using the value of `next_page_token` as `page_token`. */
@@ -136,11 +110,6 @@ export interface ListTraceSinksResponse {
   /** A list of sinks. */
   sinks?: TraceSinkList;
 }
-const ListTraceSinksResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListTraceSinksResponse>;
-
 export interface PatchProjectsTraceSinksRequest {
   /** Required. Field mask that specifies the fields in `trace_sink` that are to be updated. A sink field is overwritten if, and only if, it is in the update mask. `name` and `writer_identity` fields cannot be updated. An empty `update_mask` is considered an error. For a detailed `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask Example: `updateMask=output_config`. */
   updateMask?: string;
@@ -149,11 +118,6 @@ export interface PatchProjectsTraceSinksRequest {
   /** Request body */
   body?: TraceSink;
 }
-const PatchProjectsTraceSinksRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PatchProjectsTraceSinksRequest>;
-
 export type CreateProjectsTraceSinksError =
   | NotFound
   | Forbidden
@@ -167,8 +131,8 @@ export const createProjectsTraceSinks: API.OperationMethod<
   CreateProjectsTraceSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsTraceSinksRequest,
-  output: TraceSink,
+  input: __S(2) as any as S.Schema<CreateProjectsTraceSinksRequest>,
+  output: __S(1) as any as S.Schema<TraceSink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -187,8 +151,8 @@ export const deleteProjectsTraceSinks: API.OperationMethod<
   DeleteProjectsTraceSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsTraceSinksRequest,
-  output: Empty,
+  input: __S(3) as any as S.Schema<DeleteProjectsTraceSinksRequest>,
+  output: __S(4) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -202,8 +166,8 @@ export const getProjectsTraceSinks: API.OperationMethod<
   GetProjectsTraceSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsTraceSinksRequest,
-  output: TraceSink,
+  input: __S(5) as any as S.Schema<GetProjectsTraceSinksRequest>,
+  output: __S(1) as any as S.Schema<TraceSink>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -218,8 +182,8 @@ export const listProjectsTraceSinks: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTraceSinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsTraceSinksRequest,
-  output: ListTraceSinksResponse,
+  input: __S(6) as any as S.Schema<ListProjectsTraceSinksRequest>,
+  output: __S(8) as any as S.Schema<ListTraceSinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -239,8 +203,8 @@ export const patchProjectsTraceSinks: API.OperationMethod<
   PatchProjectsTraceSinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsTraceSinksRequest,
-  output: TraceSink,
+  input: __S(9) as any as S.Schema<PatchProjectsTraceSinksRequest>,
+  output: __S(1) as any as S.Schema<TraceSink>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -259,7 +223,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          outputConfig: S.optional(OutputConfig),
+          outputConfig: S.optional(__S(0)),
           writerIdentity: S.optional(S.String),
         }),
       ).annotate({ identifier: "TraceSink" });
@@ -267,7 +231,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(TraceSink.pipe(T.HttpBody())),
+          body: S.optional(__S(1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -327,7 +291,7 @@ function __c0(j: number): any {
         identifier: "ListProjectsTraceSinksRequest",
       });
     case 7:
-      return S.Array(TraceSink);
+      return S.Array(__S(1));
   }
 }
 function __c1(j: number): any {
@@ -336,7 +300,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          sinks: S.optional(TraceSinkList),
+          sinks: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "ListTraceSinksResponse" });
     case 1:
@@ -344,7 +308,7 @@ function __c1(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(TraceSink.pipe(T.HttpBody())),
+          body: S.optional(__S(1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -355,5 +319,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "PatchProjectsTraceSinksRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

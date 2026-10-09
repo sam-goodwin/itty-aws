@@ -5,13 +5,13 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `llm_judge` - LLM as a judge * `hog` - Hog * `sentiment` - Sentiment analysis */
 export type EvaluationTypeEnum = "llm_judge" | "hog" | "sentiment";
-const EvaluationTypeEnum = S.String;
-
 export interface CreateEvaluationRequestEvaluationConfigCase0 {
   /** Evaluation criteria for the LLM judge. Describe what makes a good vs bad response. */
   prompt: string;
@@ -31,36 +31,19 @@ export type CreateEvaluationRequestEvaluationConfig =
   | CreateEvaluationRequestEvaluationConfigCase0
   | CreateEvaluationRequestEvaluationConfigCase1
   | CreateEvaluationRequestEvaluationConfigCase2;
-const CreateEvaluationRequestEvaluationConfig =
-  S.Unknown as any as S.Schema<CreateEvaluationRequestEvaluationConfig>;
-
 /** * `boolean` - Boolean (Pass/Fail) * `numeric` - Numeric * `categorical` - Categorical * `sentiment` - Sentiment */
 export type OutputTypeEnum = "boolean" | "numeric" | "categorical" | "sentiment";
-const OutputTypeEnum = S.String;
-
 export interface CreateEvaluationRequestOutputConfigOptionsItem {
   /** Stable category key. */
   key: string;
   /** Category display label. */
   label: string;
 }
-const CreateEvaluationRequestOutputConfigOptionsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateEvaluationRequestOutputConfigOptionsItem>;
-
 /** Categorical output options. Keys identify stored results; labels are displayed to users. */
 export type CreateEvaluationRequestOutputConfigOptionsList =
   Array<CreateEvaluationRequestOutputConfigOptionsItem>;
-const CreateEvaluationRequestOutputConfigOptionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateEvaluationRequestOutputConfigOptionsList>;
-
 /** Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single. */
 export type CreateEvaluationRequestOutputConfigSelectionMode = "single" | "multiple";
-const CreateEvaluationRequestOutputConfigSelectionMode = S.String;
-
 /** Pass at or above (gte), or at or below (lte), the threshold. */
 export type CreateEvaluationRequestOutputConfigPassingRuleCase0Operator = "gte" | "lte";
 export interface CreateEvaluationRequestOutputConfigPassingRuleCase0 {
@@ -79,9 +62,6 @@ export interface CreateEvaluationRequestOutputConfigPassingRuleCase1 {
 export type CreateEvaluationRequestOutputConfigPassingRule =
   | CreateEvaluationRequestOutputConfigPassingRuleCase0
   | CreateEvaluationRequestOutputConfigPassingRuleCase1;
-const CreateEvaluationRequestOutputConfigPassingRule =
-  S.Unknown as any as S.Schema<CreateEvaluationRequestOutputConfigPassingRule>;
-
 /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For 'numeric': only min/max/step, allows_na, and passing_rule {operator: 'gte'|'lte', threshold}. For 'categorical': options [{key, label}], selection_mode (single or multiple), allows_na, and optional passing_rule {categories: [key]}. Do not send true_is_failure for numeric or categorical output. For 'sentiment': {}. */
 export interface CreateEvaluationRequestOutputConfig {
   /** Whether the evaluation can return N/A for non-applicable generations. */
@@ -101,24 +81,9 @@ export interface CreateEvaluationRequestOutputConfig {
   /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
   passing_rule?: CreateEvaluationRequestOutputConfigPassingRule | null;
 }
-const CreateEvaluationRequestOutputConfig = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateEvaluationRequestOutputConfig>;
-
 export type EvaluationConditionPropertiesItemMap = { [key: string]: unknown | undefined };
-const EvaluationConditionPropertiesItemMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<EvaluationConditionPropertiesItemMap>;
-
 /** Property filters (event or person) that scope which generations match this condition set. */
 export type EvaluationConditionPropertiesList = Array<EvaluationConditionPropertiesItemMap>;
-const EvaluationConditionPropertiesList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<EvaluationConditionPropertiesList>;
-
 /** A trigger condition set controlling which generations an evaluation runs on. */
 export interface EvaluationCondition {
   /** Stable identifier for this condition set. */
@@ -128,19 +93,10 @@ export interface EvaluationCondition {
   /** Property filters (event or person) that scope which generations match this condition set. */
   properties?: EvaluationConditionPropertiesList;
 }
-const EvaluationCondition = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<EvaluationCondition>;
-
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type CreateEvaluationRequestConditionsList = Array<EvaluationCondition>;
-const CreateEvaluationRequestConditionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateEvaluationRequestConditionsList>;
-
 /** * `generation` - Generation * `trace` - Trace * `session` - Session */
 export type EvaluationTargetEnum = "generation" | "trace" | "session";
-const EvaluationTargetEnum = S.String;
-
 /** Wait a fixed window after the first matching generation, then evaluate. */
 export type CreateEvaluationRequestTargetConfigCase0Strategy = "fixed_window";
 export interface CreateEvaluationRequestTargetConfigCase0 {
@@ -163,9 +119,6 @@ export interface CreateEvaluationRequestTargetConfigCase1 {
 export type CreateEvaluationRequestTargetConfig =
   | CreateEvaluationRequestTargetConfigCase0
   | CreateEvaluationRequestTargetConfigCase1;
-const CreateEvaluationRequestTargetConfig =
-  S.Unknown as any as S.Schema<CreateEvaluationRequestTargetConfig>;
-
 /** * `openai` - Openai * `anthropic` - Anthropic * `gemini` - Gemini * `openrouter` - Openrouter * `fireworks` - Fireworks * `azure_openai` - Azure OpenAI * `together_ai` - Together AI * `minimax` - MiniMax * `zeabur` - Zeabur AI Hub * `system_one` - System One * `openai_compatible` - OpenAI-compatible */
 export type LLMProviderEnum =
   | "openai"
@@ -179,8 +132,6 @@ export type LLMProviderEnum =
   | "zeabur"
   | "system_one"
   | "openai_compatible";
-const LLMProviderEnum = S.String;
-
 /** Nested serializer for model configuration. */
 export interface ModelConfigurationInput {
   provider?: LLMProviderEnum | (string & {});
@@ -188,11 +139,6 @@ export interface ModelConfigurationInput {
   /** Optional team provider key to run this evaluation with; it must use the same provider. May be null when no key is pinned or after the selected key is removed. */
   provider_key_id?: string | null;
 }
-const ModelConfigurationInput = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ModelConfigurationInput>;
-
 export interface CreateEvaluationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -223,15 +169,8 @@ export interface CreateEvaluationRequest {
   /** Set to true to soft-delete the evaluation. */
   deleted?: boolean;
 }
-const CreateEvaluationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateEvaluationRequest>;
-
 /** * `active` - Active * `paused` - Paused * `error` - Error */
 export type EvaluationStatusEnum = "active" | "paused" | "error";
-const EvaluationStatusEnum = S.String;
-
 /** * `provider_key_required` - No provider API key configured * `provider_key_deleted` - Provider API key was deleted * `no_default_model` - No default model available for the selected provider * `provider_key_invalid` - Provider API key is invalid * `provider_key_permission_denied` - Provider API key lacks model access * `provider_key_quota_exceeded` - Provider API key quota exceeded * `provider_key_rate_limited` - Provider API key is rate limited * `model_not_found` - Model not found * `model_not_supported` - Model does not support chat completions * `hog_error` - Hog evaluation code failed */
 export type EvaluationStatusReasonEnum =
   | "provider_key_required"
@@ -244,8 +183,6 @@ export type EvaluationStatusReasonEnum =
   | "model_not_found"
   | "model_not_supported"
   | "hog_error";
-const EvaluationStatusReasonEnum = S.String;
-
 export type EvaluationEvaluationConfigCase0 = CreateEvaluationRequestEvaluationConfigCase0;
 export type EvaluationEvaluationConfigCase1 = CreateEvaluationRequestEvaluationConfigCase1;
 /** Classify sentiment from user messages in the generation input. The classifier is trained on English, so labels are unreliable for other languages; use an 'llm_judge' evaluation for multilingual agents. */
@@ -259,19 +196,12 @@ export type EvaluationEvaluationConfig =
   | CreateEvaluationRequestEvaluationConfigCase0
   | CreateEvaluationRequestEvaluationConfigCase1
   | EvaluationEvaluationConfigCase2;
-const EvaluationEvaluationConfig = S.Unknown as any as S.Schema<EvaluationEvaluationConfig>;
-
 export type EvaluationOutputConfigOptionsItem = CreateEvaluationRequestOutputConfigOptionsItem;
 /** Categorical output options. Keys identify stored results; labels are displayed to users. */
 export type EvaluationOutputConfigOptionsList =
   Array<CreateEvaluationRequestOutputConfigOptionsItem>;
-const EvaluationOutputConfigOptionsList =
-  CreateEvaluationRequestOutputConfigOptionsList as any as S.Schema<EvaluationOutputConfigOptionsList>;
-
 /** Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single. */
 export type EvaluationOutputConfigSelectionMode = "single" | "multiple";
-const EvaluationOutputConfigSelectionMode = S.String;
-
 /** Pass at or above (gte), or at or below (lte), the threshold. */
 export type EvaluationOutputConfigPassingRuleCase0Operator = "gte" | "lte";
 export interface EvaluationOutputConfigPassingRuleCase0 {
@@ -282,11 +212,6 @@ export interface EvaluationOutputConfigPassingRuleCase0 {
 }
 /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
 export type EvaluationOutputConfigPassingRuleCase1CategoriesList = Array<string>;
-const EvaluationOutputConfigPassingRuleCase1CategoriesList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<EvaluationOutputConfigPassingRuleCase1CategoriesList>;
-
 export interface EvaluationOutputConfigPassingRuleCase1 {
   /** Passing category keys. With keys selected, results must be non-empty and contain only these keys. If no passing keys are selected, only an empty result passes. */
   categories: EvaluationOutputConfigPassingRuleCase1CategoriesList;
@@ -295,9 +220,6 @@ export interface EvaluationOutputConfigPassingRuleCase1 {
 export type EvaluationOutputConfigPassingRule =
   | EvaluationOutputConfigPassingRuleCase0
   | EvaluationOutputConfigPassingRuleCase1;
-const EvaluationOutputConfigPassingRule =
-  S.Unknown as any as S.Schema<EvaluationOutputConfigPassingRule>;
-
 /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For 'numeric': only min/max/step, allows_na, and passing_rule {operator: 'gte'|'lte', threshold}. For 'categorical': options [{key, label}], selection_mode (single or multiple), allows_na, and optional passing_rule {categories: [key]}. Do not send true_is_failure for numeric or categorical output. For 'sentiment': {}. */
 export interface EvaluationOutputConfig {
   /** Whether the evaluation can return N/A for non-applicable generations. */
@@ -317,16 +239,8 @@ export interface EvaluationOutputConfig {
   /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
   passing_rule?: EvaluationOutputConfigPassingRule | null;
 }
-const EvaluationOutputConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<EvaluationOutputConfig>;
-
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type EvaluationConditionsList = Array<EvaluationCondition>;
-const EvaluationConditionsList =
-  CreateEvaluationRequestConditionsList as any as S.Schema<EvaluationConditionsList>;
-
 /** Wait a fixed window after the first matching generation, then evaluate. */
 export type EvaluationTargetConfigCase0Strategy = "fixed_window";
 export interface EvaluationTargetConfigCase0 {
@@ -347,8 +261,6 @@ export interface EvaluationTargetConfigCase1 {
 }
 /** Target-specific config. For 'trace' and 'session' targets: a settle config discriminated on `strategy`, either 'fixed_window' {window_seconds} or 'inactivity' {quiet_period_seconds, max_age_seconds}. Send `strategy` explicitly. The server fills in any other field you omit, using per-target defaults, and the accepted bounds also depend on `target`. Empty for 'generation'. */
 export type EvaluationTargetConfig = EvaluationTargetConfigCase0 | EvaluationTargetConfigCase1;
-const EvaluationTargetConfig = S.Unknown as any as S.Schema<EvaluationTargetConfig>;
-
 /** Nested serializer for model configuration. */
 export interface ModelConfiguration {
   provider?: LLMProviderEnum;
@@ -357,12 +269,7 @@ export interface ModelConfiguration {
   provider_key_id?: string | null;
   provider_key_name?: string | null;
 }
-const ModelConfiguration = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ModelConfiguration>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap =
-  EvaluationConditionPropertiesItemMap as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -376,8 +283,6 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -389,8 +294,6 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<UserBasic>;
-
 /** An evaluation that scores LLM generations, traces, or sessions. */
 export interface Evaluation {
   id?: string;
@@ -431,13 +334,8 @@ export interface Evaluation {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-const Evaluation = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Evaluation>;
-
 /** Condition sets to match. Defaults to the evaluation's own condition sets. */
 export type CreateEvaluationsBackfillRequestConditionsList = Array<EvaluationCondition>;
-const CreateEvaluationsBackfillRequestConditionsList =
-  CreateEvaluationRequestConditionsList as any as S.Schema<CreateEvaluationsBackfillRequestConditionsList>;
-
 export interface CreateEvaluationsBackfillRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -451,22 +349,12 @@ export interface CreateEvaluationsBackfillRequest {
   /** Evaluate units again even when this evaluation already has a result for them. */
   rerun_existing?: boolean;
 }
-const CreateEvaluationsBackfillRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateEvaluationsBackfillRequest>;
-
 /** * `running` - Running * `completed` - Completed * `cancelled` - Cancelled */
 export type EvaluationBackfillStatusEnum = "running" | "completed" | "cancelled";
-const EvaluationBackfillStatusEnum = S.String;
-
 export type EvaluationBackfillConditionPropertiesItemMap = { [key: string]: unknown | undefined };
 /** Property filters (event or person) that scope which units match this condition set. */
 export type EvaluationBackfillConditionPropertiesList =
   Array<EvaluationBackfillConditionPropertiesItemMap>;
-const EvaluationBackfillConditionPropertiesList =
-  EvaluationConditionPropertiesList as any as S.Schema<EvaluationBackfillConditionPropertiesList>;
-
 /** One condition set as it was frozen onto the backfill: no id, no compiled bytecode. */
 export interface EvaluationBackfillCondition {
   /** Property filters (event or person) that scope which units match this condition set. */
@@ -474,18 +362,8 @@ export interface EvaluationBackfillCondition {
   /** Percentage (0-100) of matching units sampled for this condition set. */
   rollout_percentage?: number;
 }
-const EvaluationBackfillCondition = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<EvaluationBackfillCondition>;
-
 /** Condition sets frozen at creation, so an edit to the evaluation does not change this run. */
 export type EvaluationBackfillConditionsList = Array<EvaluationBackfillCondition>;
-const EvaluationBackfillConditionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<EvaluationBackfillConditionsList>;
-
 export interface EvaluationBackfill {
   /** Backfill identifier. */
   id: string;
@@ -518,13 +396,8 @@ export interface EvaluationBackfill {
   /** When the backfill reached a terminal status; null while it runs. */
   finished_at: string | null;
 }
-const EvaluationBackfill = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<EvaluationBackfill>;
-
 /** Condition sets to match. Defaults to the evaluation's own condition sets. */
 export type CreateEvaluationsBackfillsEstimateRequestConditionsList = Array<EvaluationCondition>;
-const CreateEvaluationsBackfillsEstimateRequestConditionsList =
-  CreateEvaluationRequestConditionsList as any as S.Schema<CreateEvaluationsBackfillsEstimateRequestConditionsList>;
-
 export interface CreateEvaluationsBackfillsEstimateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -538,11 +411,6 @@ export interface CreateEvaluationsBackfillsEstimateRequest {
   /** Evaluate units again even when this evaluation already has a result for them. */
   rerun_existing?: boolean;
 }
-const CreateEvaluationsBackfillsEstimateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateEvaluationsBackfillsEstimateRequest>;
-
 export interface EvaluationBackfillEstimate {
   /** Units that would be evaluated. */
   total_units: number;
@@ -555,27 +423,15 @@ export interface EvaluationBackfillEstimate {
   /** Window end after clamping. */
   window_end: string;
 }
-const EvaluationBackfillEstimate = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<EvaluationBackfillEstimate>;
-
 /** * `boolean` - Boolean (Pass/Fail) * `numeric` - Numeric * `categorical` - Categorical */
 export type HogEvaluationOutputTypeEnum = "boolean" | "numeric" | "categorical";
-const HogEvaluationOutputTypeEnum = S.String;
-
 export type CreateEvaluationsTestHogRequestOutputConfigOptionsItem =
   CreateEvaluationRequestOutputConfigOptionsItem;
 /** Categorical output options. Keys identify stored results; labels are displayed to users. */
 export type CreateEvaluationsTestHogRequestOutputConfigOptionsList =
   Array<CreateEvaluationRequestOutputConfigOptionsItem>;
-const CreateEvaluationsTestHogRequestOutputConfigOptionsList =
-  CreateEvaluationRequestOutputConfigOptionsList as any as S.Schema<CreateEvaluationsTestHogRequestOutputConfigOptionsList>;
-
 /** Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single. */
 export type CreateEvaluationsTestHogRequestOutputConfigSelectionMode = "single" | "multiple";
-const CreateEvaluationsTestHogRequestOutputConfigSelectionMode = S.String;
-
 /** Pass at or above (gte), or at or below (lte), the threshold. */
 export type CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase0Operator = "gte" | "lte";
 export interface CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase0 {
@@ -595,9 +451,6 @@ export interface CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1 {
 export type CreateEvaluationsTestHogRequestOutputConfigPassingRule =
   | CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase0
   | CreateEvaluationsTestHogRequestOutputConfigPassingRuleCase1;
-const CreateEvaluationsTestHogRequestOutputConfigPassingRule =
-  S.Unknown as any as S.Schema<CreateEvaluationsTestHogRequestOutputConfigPassingRule>;
-
 /** Output settings used to validate the preview, including bounds, categories, and allows_na. */
 export interface CreateEvaluationsTestHogRequestOutputConfig {
   /** Whether the evaluation can return N/A for non-applicable generations. */
@@ -617,28 +470,18 @@ export interface CreateEvaluationsTestHogRequestOutputConfig {
   /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
   passing_rule?: CreateEvaluationsTestHogRequestOutputConfigPassingRule | null;
 }
-const CreateEvaluationsTestHogRequestOutputConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateEvaluationsTestHogRequestOutputConfig>;
-
 export type CreateEvaluationsTestHogRequestConditionsItemMap = {
   [key: string]: unknown | undefined;
 };
 /** Optional trigger conditions to filter which events are sampled. */
 export type CreateEvaluationsTestHogRequestConditionsList =
   Array<CreateEvaluationsTestHogRequestConditionsItemMap>;
-const CreateEvaluationsTestHogRequestConditionsList =
-  EvaluationConditionPropertiesList as any as S.Schema<CreateEvaluationsTestHogRequestConditionsList>;
-
 export interface TestHogTargetConfig {
   /** Aggregation window for trace samples, in seconds. */
   window_seconds?: number;
   /** For session samples: only sessions with no activity for this long are previewed, matching when a session evaluation would actually run. */
   quiet_period_seconds?: number;
 }
-const TestHogTargetConfig = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<TestHogTargetConfig>;
-
 export interface CreateEvaluationsTestHogRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -659,16 +502,8 @@ export interface CreateEvaluationsTestHogRequest {
   /** Target-specific preview settings. For a trace target, set window_seconds between 10 and 7200. */
   target_config?: TestHogTargetConfig;
 }
-const CreateEvaluationsTestHogRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateEvaluationsTestHogRequest>;
-
 /** Selected category keys. An empty list is an applicable result; null means no categorical result was produced. */
 export type TestHogResultItemCategoriesList = Array<string>;
-const TestHogResultItemCategoriesList =
-  EvaluationOutputConfigPassingRuleCase1CategoriesList as any as S.Schema<TestHogResultItemCategoriesList>;
-
 export interface TestHogResultItem {
   /** Selected category keys. An empty list is an applicable result; null means no categorical result was produced. */
   categories?: TestHogResultItemCategoriesList | null;
@@ -693,21 +528,12 @@ export interface TestHogResultItem {
   /** Error message if the Hog code raised an exception. */
   error?: string | null;
 }
-const TestHogResultItem = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<TestHogResultItem>;
-
 export type TestHogResponseResultsList = Array<TestHogResultItem>;
-const TestHogResponseResultsList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<TestHogResponseResultsList>;
-
 export interface TestHogResponse {
   results?: TestHogResponseResultsList;
   /** Optional message, e.g. when no recent events were found. */
   message?: string;
 }
-const TestHogResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<TestHogResponse>;
-
 export interface EvaluationsBackfillsCancelCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -715,36 +541,19 @@ export interface EvaluationsBackfillsCancelCreateRequest {
   /** A UUID string identifying this evaluation backfill. */
   id: string;
 }
-const EvaluationsBackfillsCancelCreateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<EvaluationsBackfillsCancelCreateRequest>;
-
 export interface EvaluationsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this evaluation. */
   id: string;
 }
-const EvaluationsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<EvaluationsDestroyRequest>;
-
 export interface EvaluationsDestroyResponse {}
-const EvaluationsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<EvaluationsDestroyResponse>;
-
 export interface GetEvaluationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this evaluation. */
   id: string;
 }
-const GetEvaluationRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetEvaluationRequest>;
-
 export interface GetEvaluationsBackfillRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -752,18 +561,8 @@ export interface GetEvaluationsBackfillRequest {
   /** A UUID string identifying this evaluation backfill. */
   id: string;
 }
-const GetEvaluationsBackfillRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetEvaluationsBackfillRequest>;
-
 export type ListEvaluationsRequestEvaluationType = "hog" | "llm_judge" | "sentiment";
-const ListEvaluationsRequestEvaluationType = S.String;
-
 export type ListEvaluationsRequestIdInList = Array<string>;
-const ListEvaluationsRequestIdInList =
-  EvaluationOutputConfigPassingRuleCase1CategoriesList as any as S.Schema<ListEvaluationsRequestIdInList>;
-
 export type ListEvaluationsRequestOrderByItem =
   | "-created_at"
   | "-name"
@@ -771,16 +570,9 @@ export type ListEvaluationsRequestOrderByItem =
   | "created_at"
   | "name"
   | "updated_at";
-const ListEvaluationsRequestOrderByItem = S.String;
-
 export type ListEvaluationsRequestOrderByList = Array<
   ListEvaluationsRequestOrderByItem | (string & {})
 >;
-const ListEvaluationsRequestOrderByList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListEvaluationsRequestOrderByList>;
-
 export interface ListEvaluationsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -803,28 +595,13 @@ export interface ListEvaluationsRequest {
   /** Search in name or description */
   search?: string;
 }
-const ListEvaluationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListEvaluationsRequest>;
-
 export type PaginatedEvaluationListResultsList = Array<Evaluation>;
-const PaginatedEvaluationListResultsList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<PaginatedEvaluationListResultsList>;
-
 export interface PaginatedEvaluationList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedEvaluationListResultsList;
 }
-const PaginatedEvaluationList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<PaginatedEvaluationList>;
-
 export interface ListEvaluationsBackfillsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -834,28 +611,13 @@ export interface ListEvaluationsBackfillsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListEvaluationsBackfillsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListEvaluationsBackfillsRequest>;
-
 export type PaginatedEvaluationBackfillListResultsList = Array<EvaluationBackfill>;
-const PaginatedEvaluationBackfillListResultsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<PaginatedEvaluationBackfillListResultsList>;
-
 export interface PaginatedEvaluationBackfillList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedEvaluationBackfillListResultsList;
 }
-const PaginatedEvaluationBackfillList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<PaginatedEvaluationBackfillList>;
-
 export type UpdateEvaluationRequestEvaluationConfigCase0 =
   CreateEvaluationRequestEvaluationConfigCase0;
 export type UpdateEvaluationRequestEvaluationConfigCase1 =
@@ -871,21 +633,13 @@ export type UpdateEvaluationRequestEvaluationConfig =
   | CreateEvaluationRequestEvaluationConfigCase0
   | CreateEvaluationRequestEvaluationConfigCase1
   | UpdateEvaluationRequestEvaluationConfigCase2;
-const UpdateEvaluationRequestEvaluationConfig =
-  S.Unknown as any as S.Schema<UpdateEvaluationRequestEvaluationConfig>;
-
 export type UpdateEvaluationRequestOutputConfigOptionsItem =
   CreateEvaluationRequestOutputConfigOptionsItem;
 /** Categorical output options. Keys identify stored results; labels are displayed to users. */
 export type UpdateEvaluationRequestOutputConfigOptionsList =
   Array<CreateEvaluationRequestOutputConfigOptionsItem>;
-const UpdateEvaluationRequestOutputConfigOptionsList =
-  CreateEvaluationRequestOutputConfigOptionsList as any as S.Schema<UpdateEvaluationRequestOutputConfigOptionsList>;
-
 /** Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single. */
 export type UpdateEvaluationRequestOutputConfigSelectionMode = "single" | "multiple";
-const UpdateEvaluationRequestOutputConfigSelectionMode = S.String;
-
 /** Pass at or above (gte), or at or below (lte), the threshold. */
 export type UpdateEvaluationRequestOutputConfigPassingRuleCase0Operator = "gte" | "lte";
 export interface UpdateEvaluationRequestOutputConfigPassingRuleCase0 {
@@ -904,9 +658,6 @@ export interface UpdateEvaluationRequestOutputConfigPassingRuleCase1 {
 export type UpdateEvaluationRequestOutputConfigPassingRule =
   | UpdateEvaluationRequestOutputConfigPassingRuleCase0
   | UpdateEvaluationRequestOutputConfigPassingRuleCase1;
-const UpdateEvaluationRequestOutputConfigPassingRule =
-  S.Unknown as any as S.Schema<UpdateEvaluationRequestOutputConfigPassingRule>;
-
 /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For 'numeric': only min/max/step, allows_na, and passing_rule {operator: 'gte'|'lte', threshold}. For 'categorical': options [{key, label}], selection_mode (single or multiple), allows_na, and optional passing_rule {categories: [key]}. Do not send true_is_failure for numeric or categorical output. For 'sentiment': {}. */
 export interface UpdateEvaluationRequestOutputConfig {
   /** Whether the evaluation can return N/A for non-applicable generations. */
@@ -926,16 +677,8 @@ export interface UpdateEvaluationRequestOutputConfig {
   /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
   passing_rule?: UpdateEvaluationRequestOutputConfigPassingRule | null;
 }
-const UpdateEvaluationRequestOutputConfig = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<UpdateEvaluationRequestOutputConfig>;
-
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type UpdateEvaluationRequestConditionsList = Array<EvaluationCondition>;
-const UpdateEvaluationRequestConditionsList =
-  CreateEvaluationRequestConditionsList as any as S.Schema<UpdateEvaluationRequestConditionsList>;
-
 /** Wait a fixed window after the first matching generation, then evaluate. */
 export type UpdateEvaluationRequestTargetConfigCase0Strategy = "fixed_window";
 export interface UpdateEvaluationRequestTargetConfigCase0 {
@@ -958,9 +701,6 @@ export interface UpdateEvaluationRequestTargetConfigCase1 {
 export type UpdateEvaluationRequestTargetConfig =
   | UpdateEvaluationRequestTargetConfigCase0
   | UpdateEvaluationRequestTargetConfigCase1;
-const UpdateEvaluationRequestTargetConfig =
-  S.Unknown as any as S.Schema<UpdateEvaluationRequestTargetConfig>;
-
 export interface UpdateEvaluationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -993,11 +733,6 @@ export interface UpdateEvaluationRequest {
   /** Set to true to soft-delete the evaluation. */
   deleted?: boolean;
 }
-const UpdateEvaluationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<UpdateEvaluationRequest>;
-
 export type UpdateEvaluationsPartialRequestEvaluationConfigCase0 =
   CreateEvaluationRequestEvaluationConfigCase0;
 export type UpdateEvaluationsPartialRequestEvaluationConfigCase1 =
@@ -1013,21 +748,13 @@ export type UpdateEvaluationsPartialRequestEvaluationConfig =
   | CreateEvaluationRequestEvaluationConfigCase0
   | CreateEvaluationRequestEvaluationConfigCase1
   | UpdateEvaluationsPartialRequestEvaluationConfigCase2;
-const UpdateEvaluationsPartialRequestEvaluationConfig =
-  S.Unknown as any as S.Schema<UpdateEvaluationsPartialRequestEvaluationConfig>;
-
 export type UpdateEvaluationsPartialRequestOutputConfigOptionsItem =
   CreateEvaluationRequestOutputConfigOptionsItem;
 /** Categorical output options. Keys identify stored results; labels are displayed to users. */
 export type UpdateEvaluationsPartialRequestOutputConfigOptionsList =
   Array<CreateEvaluationRequestOutputConfigOptionsItem>;
-const UpdateEvaluationsPartialRequestOutputConfigOptionsList =
-  CreateEvaluationRequestOutputConfigOptionsList as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfigOptionsList>;
-
 /** Select one category or multiple categories. Multiple selection allows an empty result. Defaults to single. */
 export type UpdateEvaluationsPartialRequestOutputConfigSelectionMode = "single" | "multiple";
-const UpdateEvaluationsPartialRequestOutputConfigSelectionMode = S.String;
-
 /** Pass at or above (gte), or at or below (lte), the threshold. */
 export type UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0Operator = "gte" | "lte";
 export interface UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0 {
@@ -1047,9 +774,6 @@ export interface UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1 {
 export type UpdateEvaluationsPartialRequestOutputConfigPassingRule =
   | UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase0
   | UpdateEvaluationsPartialRequestOutputConfigPassingRuleCase1;
-const UpdateEvaluationsPartialRequestOutputConfigPassingRule =
-  S.Unknown as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfigPassingRule>;
-
 /** Output config. For 'boolean' output_type: {allows_na} to permit N/A results, and {true_is_failure} to declare that a true result means the evaluation found a problem. For 'numeric': only min/max/step, allows_na, and passing_rule {operator: 'gte'|'lte', threshold}. For 'categorical': options [{key, label}], selection_mode (single or multiple), allows_na, and optional passing_rule {categories: [key]}. Do not send true_is_failure for numeric or categorical output. For 'sentiment': {}. */
 export interface UpdateEvaluationsPartialRequestOutputConfig {
   /** Whether the evaluation can return N/A for non-applicable generations. */
@@ -1069,16 +793,8 @@ export interface UpdateEvaluationsPartialRequestOutputConfig {
   /** Optional numeric or categorical passing rule. Null removes the rule; historical results use the current rule. */
   passing_rule?: UpdateEvaluationsPartialRequestOutputConfigPassingRule | null;
 }
-const UpdateEvaluationsPartialRequestOutputConfig = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<UpdateEvaluationsPartialRequestOutputConfig>;
-
 /** Trigger conditions that filter which events are evaluated. OR between condition sets, AND within each. Each set is {id, rollout_percentage, properties[]} -- `rollout_percentage` (0-100, defaults to 100) is the sampling field the dispatcher reads. */
 export type UpdateEvaluationsPartialRequestConditionsList = Array<EvaluationCondition>;
-const UpdateEvaluationsPartialRequestConditionsList =
-  CreateEvaluationRequestConditionsList as any as S.Schema<UpdateEvaluationsPartialRequestConditionsList>;
-
 /** Wait a fixed window after the first matching generation, then evaluate. */
 export type UpdateEvaluationsPartialRequestTargetConfigCase0Strategy = "fixed_window";
 export interface UpdateEvaluationsPartialRequestTargetConfigCase0 {
@@ -1101,9 +817,6 @@ export interface UpdateEvaluationsPartialRequestTargetConfigCase1 {
 export type UpdateEvaluationsPartialRequestTargetConfig =
   | UpdateEvaluationsPartialRequestTargetConfigCase0
   | UpdateEvaluationsPartialRequestTargetConfigCase1;
-const UpdateEvaluationsPartialRequestTargetConfig =
-  S.Unknown as any as S.Schema<UpdateEvaluationsPartialRequestTargetConfig>;
-
 export interface UpdateEvaluationsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1136,11 +849,6 @@ export interface UpdateEvaluationsPartialRequest {
   /** Set to true to soft-delete the evaluation. */
   deleted?: boolean;
 }
-const UpdateEvaluationsPartialRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<UpdateEvaluationsPartialRequest>;
-
 export type CreateEvaluationError = PosthogOpError;
 export const createEvaluation: API.OperationMethod<
   CreateEvaluationRequest,
@@ -1148,8 +856,8 @@ export const createEvaluation: API.OperationMethod<
   CreateEvaluationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEvaluationRequest,
-  output: Evaluation,
+  input: __S(8) as any as S.Schema<CreateEvaluationRequest>,
+  output: __S(13) as any as S.Schema<Evaluation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1163,8 +871,8 @@ export const createEvaluationsBackfill: API.OperationMethod<
   CreateEvaluationsBackfillError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEvaluationsBackfillRequest,
-  output: EvaluationBackfill,
+  input: __S(14) as any as S.Schema<CreateEvaluationsBackfillRequest>,
+  output: __S(17) as any as S.Schema<EvaluationBackfill>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1178,8 +886,8 @@ export const createEvaluationsBackfillsEstimate: API.OperationMethod<
   CreateEvaluationsBackfillsEstimateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEvaluationsBackfillsEstimateRequest,
-  output: EvaluationBackfillEstimate,
+  input: __S(18) as any as S.Schema<CreateEvaluationsBackfillsEstimateRequest>,
+  output: __S(19) as any as S.Schema<EvaluationBackfillEstimate>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1193,8 +901,8 @@ export const createEvaluationsTestHog: API.OperationMethod<
   CreateEvaluationsTestHogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEvaluationsTestHogRequest,
-  output: TestHogResponse,
+  input: __S(22) as any as S.Schema<CreateEvaluationsTestHogRequest>,
+  output: __S(25) as any as S.Schema<TestHogResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1208,8 +916,8 @@ export const evaluationsBackfillsCancelCreate: API.OperationMethod<
   EvaluationsBackfillsCancelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EvaluationsBackfillsCancelCreateRequest,
-  output: EvaluationBackfill,
+  input: __S(26) as any as S.Schema<EvaluationsBackfillsCancelCreateRequest>,
+  output: __S(17) as any as S.Schema<EvaluationBackfill>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1223,8 +931,8 @@ export const evaluationsDestroy: API.OperationMethod<
   EvaluationsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EvaluationsDestroyRequest,
-  output: EvaluationsDestroyResponse,
+  input: __S(27) as any as S.Schema<EvaluationsDestroyRequest>,
+  output: __S(28) as any as S.Schema<EvaluationsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1237,8 +945,8 @@ export const getEvaluation: API.OperationMethod<
   GetEvaluationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEvaluationRequest,
-  output: Evaluation,
+  input: __S(29) as any as S.Schema<GetEvaluationRequest>,
+  output: __S(13) as any as S.Schema<Evaluation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1252,8 +960,8 @@ export const getEvaluationsBackfill: API.OperationMethod<
   GetEvaluationsBackfillError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEvaluationsBackfillRequest,
-  output: EvaluationBackfill,
+  input: __S(30) as any as S.Schema<GetEvaluationsBackfillRequest>,
+  output: __S(17) as any as S.Schema<EvaluationBackfill>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1266,8 +974,8 @@ export const listEvaluations: API.OperationMethod<
   ListEvaluationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEvaluationsRequest,
-  output: PaginatedEvaluationList,
+  input: __S(32) as any as S.Schema<ListEvaluationsRequest>,
+  output: __S(34) as any as S.Schema<PaginatedEvaluationList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1281,8 +989,8 @@ export const listEvaluationsBackfills: API.OperationMethod<
   ListEvaluationsBackfillsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEvaluationsBackfillsRequest,
-  output: PaginatedEvaluationBackfillList,
+  input: __S(35) as any as S.Schema<ListEvaluationsBackfillsRequest>,
+  output: __S(37) as any as S.Schema<PaginatedEvaluationBackfillList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1295,8 +1003,8 @@ export const updateEvaluation: API.OperationMethod<
   UpdateEvaluationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEvaluationRequest,
-  output: Evaluation,
+  input: __S(39) as any as S.Schema<UpdateEvaluationRequest>,
+  output: __S(13) as any as S.Schema<Evaluation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1309,8 +1017,8 @@ export const updateEvaluationsPartial: API.OperationMethod<
   UpdateEvaluationsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEvaluationsPartialRequest,
-  output: Evaluation,
+  input: __S(41) as any as S.Schema<UpdateEvaluationsPartialRequest>,
+  output: __S(13) as any as S.Schema<Evaluation>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1329,7 +1037,7 @@ function __c0(j: number): any {
         identifier: "CreateEvaluationRequestOutputConfigOptionsItem",
       });
     case 1:
-      return S.Array(CreateEvaluationRequestOutputConfigOptionsItem);
+      return S.Array(__S(0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1338,9 +1046,9 @@ function __c0(j: number): any {
           min: S.optional(S.NullOr(S.Number)),
           max: S.optional(S.NullOr(S.Number)),
           step: S.optional(S.NullOr(S.Number)),
-          options: S.optional(CreateEvaluationRequestOutputConfigOptionsList),
-          selection_mode: S.optional(CreateEvaluationRequestOutputConfigSelectionMode),
-          passing_rule: S.optional(S.NullOr(CreateEvaluationRequestOutputConfigPassingRule)),
+          options: S.optional(__S(1)),
+          selection_mode: S.optional(S.String),
+          passing_rule: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({
         identifier: "CreateEvaluationRequestOutputConfig",
@@ -1348,21 +1056,21 @@ function __c0(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(EvaluationConditionPropertiesItemMap);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           rollout_percentage: S.optional(S.Number),
-          properties: S.optional(EvaluationConditionPropertiesList),
+          properties: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "EvaluationCondition" });
     case 6:
-      return S.Array(EvaluationCondition);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provider: S.optional(LLMProviderEnum),
+          provider: S.optional(S.String),
           model: S.optional(S.String),
           provider_key_id: S.optional(S.NullOr(S.String)),
         }),
@@ -1379,14 +1087,14 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           directory_id: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.Boolean),
-          evaluation_type: S.optional(EvaluationTypeEnum),
-          evaluation_config: S.optional(CreateEvaluationRequestEvaluationConfig),
-          output_type: S.optional(OutputTypeEnum),
-          output_config: S.optional(CreateEvaluationRequestOutputConfig),
-          conditions: S.optional(CreateEvaluationRequestConditionsList),
-          target: S.optional(EvaluationTargetEnum),
-          target_config: S.optional(CreateEvaluationRequestTargetConfig),
-          model_configuration: S.optional(S.NullOr(ModelConfigurationInput)),
+          evaluation_type: S.optional(S.String),
+          evaluation_config: S.optional(S.Unknown),
+          output_type: S.optional(S.String),
+          output_config: S.optional(__S(2)),
+          conditions: S.optional(__S(6)),
+          target: S.optional(S.String),
+          target_config: S.optional(S.Unknown),
+          model_configuration: S.optional(S.NullOr(__S(7))),
           deleted: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/evaluations/", code: 200 }),
@@ -1402,15 +1110,15 @@ function __c1(j: number): any {
           min: S.optional(S.NullOr(S.Number)),
           max: S.optional(S.NullOr(S.Number)),
           step: S.optional(S.NullOr(S.Number)),
-          options: S.optional(EvaluationOutputConfigOptionsList),
-          selection_mode: S.optional(EvaluationOutputConfigSelectionMode),
-          passing_rule: S.optional(S.NullOr(EvaluationOutputConfigPassingRule)),
+          options: S.optional(__S(1)),
+          selection_mode: S.optional(S.String),
+          passing_rule: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "EvaluationOutputConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provider: S.optional(LLMProviderEnum),
+          provider: S.optional(S.String),
           model: S.optional(S.String),
           provider_key_id: S.optional(S.NullOr(S.String)),
           provider_key_name: S.optional(S.NullOr(S.String)),
@@ -1426,8 +1134,8 @@ function __c1(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(3))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 5:
@@ -1438,20 +1146,20 @@ function __c1(j: number): any {
           description: S.optional(S.String),
           directory_id: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.Boolean),
-          status: S.optional(EvaluationStatusEnum),
-          status_reason: S.optional(S.NullOr(EvaluationStatusReasonEnum)),
+          status: S.optional(S.String),
+          status_reason: S.optional(S.NullOr(S.String)),
           status_reason_detail: S.optional(S.NullOr(S.String)),
-          evaluation_type: S.optional(EvaluationTypeEnum),
-          evaluation_config: S.optional(EvaluationEvaluationConfig),
-          output_type: S.optional(OutputTypeEnum),
-          output_config: S.optional(EvaluationOutputConfig),
-          conditions: S.optional(EvaluationConditionsList),
-          target: S.optional(EvaluationTargetEnum),
-          target_config: S.optional(EvaluationTargetConfig),
-          model_configuration: S.optional(S.NullOr(ModelConfiguration)),
+          evaluation_type: S.optional(S.String),
+          evaluation_config: S.optional(S.Unknown),
+          output_type: S.optional(S.String),
+          output_config: S.optional(__S(10)),
+          conditions: S.optional(__S(6)),
+          target: S.optional(S.String),
+          target_config: S.optional(S.Unknown),
+          model_configuration: S.optional(S.NullOr(__S(11))),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(12))),
           deleted: S.optional(S.Boolean),
           user_access_level: S.optional(S.NullOr(S.String)),
         }),
@@ -1463,7 +1171,7 @@ function __c1(j: number): any {
           evaluation_id: S.String.pipe(T.Label()),
           window_start: S.String,
           window_end: S.String,
-          conditions: S.optional(CreateEvaluationsBackfillRequestConditionsList),
+          conditions: S.optional(__S(6)),
           rerun_existing: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -1478,7 +1186,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(EvaluationBackfillConditionPropertiesList),
+          properties: S.optional(__S(4)),
           rollout_percentage: S.optional(S.Number),
         }),
       ).annotate({
@@ -1489,23 +1197,23 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(EvaluationBackfillCondition);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: EvaluationBackfillStatusEnum,
-          target: EvaluationTargetEnum,
+          status: S.String,
+          target: S.String,
           window_start: S.String,
           window_end: S.String,
-          conditions: EvaluationBackfillConditionsList,
+          conditions: __S(16),
           rerun_existing: S.Boolean,
           total_count: S.Number,
           dispatched_count: S.Number,
           skipped_count: S.Number,
           failed_count: S.Number,
           remaining_count: S.NullOr(S.Number),
-          created_by: S.NullOr(UserBasic),
+          created_by: S.NullOr(__S(12)),
           created_at: S.String,
           finished_at: S.NullOr(S.String),
         }),
@@ -1517,7 +1225,7 @@ function __c2(j: number): any {
           evaluation_id: S.String.pipe(T.Label()),
           window_start: S.String,
           window_end: S.String,
-          conditions: S.optional(CreateEvaluationsBackfillsEstimateRequestConditionsList),
+          conditions: S.optional(__S(6)),
           rerun_existing: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -1534,7 +1242,7 @@ function __c2(j: number): any {
         S.Struct({
           total_units: S.Number,
           already_evaluated_units: S.Number,
-          unit: EvaluationTargetEnum,
+          unit: S.String,
           window_start: S.String,
           window_end: S.String,
         }),
@@ -1549,11 +1257,9 @@ function __c2(j: number): any {
           min: S.optional(S.NullOr(S.Number)),
           max: S.optional(S.NullOr(S.Number)),
           step: S.optional(S.NullOr(S.Number)),
-          options: S.optional(CreateEvaluationsTestHogRequestOutputConfigOptionsList),
-          selection_mode: S.optional(CreateEvaluationsTestHogRequestOutputConfigSelectionMode),
-          passing_rule: S.optional(
-            S.NullOr(CreateEvaluationsTestHogRequestOutputConfigPassingRule),
-          ),
+          options: S.optional(__S(1)),
+          selection_mode: S.optional(S.String),
+          passing_rule: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({
         identifier: "CreateEvaluationsTestHogRequestOutputConfig",
@@ -1569,14 +1275,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          output_type: S.optional(HogEvaluationOutputTypeEnum),
-          output_config: S.optional(CreateEvaluationsTestHogRequestOutputConfig),
+          output_type: S.optional(S.String),
+          output_config: S.optional(__S(20)),
           source: S.optional(S.String),
           sample_count: S.optional(S.Number),
           allows_na: S.optional(S.Boolean),
-          conditions: S.optional(CreateEvaluationsTestHogRequestConditionsList),
-          target: S.optional(EvaluationTargetEnum),
-          target_config: S.optional(TestHogTargetConfig),
+          conditions: S.optional(__S(4)),
+          target: S.optional(S.String),
+          target_config: S.optional(__S(21)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1590,10 +1296,10 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(S.NullOr(TestHogResultItemCategoriesList)),
+          categories: S.optional(S.NullOr(__S(9))),
           score: S.optional(S.NullOr(S.Number)),
           sample_id: S.optional(S.String),
-          sample_type: S.optional(EvaluationTargetEnum),
+          sample_type: S.optional(S.String),
           event_uuid: S.optional(S.NullOr(S.String)),
           trace_id: S.optional(S.NullOr(S.String)),
           input_preview: S.optional(S.String),
@@ -1608,11 +1314,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TestHogResultItem);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(TestHogResponseResultsList),
+          results: S.optional(__S(24)),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "TestHogResponse" });
@@ -1677,7 +1383,7 @@ function __c3(j: number): any {
         identifier: "GetEvaluationsBackfillRequest",
       });
     case 7:
-      return S.Array(ListEvaluationsRequestOrderByItem);
+      return S.Array(S.String);
   }
 }
 function __c4(j: number): any {
@@ -1689,25 +1395,25 @@ function __c4(j: number): any {
           directory_id: S.optional(S.String.pipe(T.Query())),
           directory_id__isnull: S.optional(S.Boolean.pipe(T.Query())),
           enabled: S.optional(S.Boolean.pipe(T.Query())),
-          evaluation_type: S.optional(ListEvaluationsRequestEvaluationType.pipe(T.Query())),
-          id__in: S.optional(ListEvaluationsRequestIdInList.pipe(T.Query())),
+          evaluation_type: S.optional(S.String.pipe(T.Query())),
+          id__in: S.optional(__S(9).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          order_by: S.optional(ListEvaluationsRequestOrderByList.pipe(T.Query())),
+          order_by: S.optional(__S(31).pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/evaluations/", code: 200 }),
         ),
       ).annotate({ identifier: "ListEvaluationsRequest" });
     case 1:
-      return S.Array(Evaluation);
+      return S.Array(__S(13));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedEvaluationListResultsList),
+          results: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "PaginatedEvaluationList" });
     case 3:
@@ -1728,14 +1434,14 @@ function __c4(j: number): any {
         identifier: "ListEvaluationsBackfillsRequest",
       });
     case 4:
-      return S.Array(EvaluationBackfill);
+      return S.Array(__S(17));
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedEvaluationBackfillListResultsList,
+          results: __S(36),
         }),
       ).annotate({
         identifier: "PaginatedEvaluationBackfillList",
@@ -1748,9 +1454,9 @@ function __c4(j: number): any {
           min: S.optional(S.NullOr(S.Number)),
           max: S.optional(S.NullOr(S.Number)),
           step: S.optional(S.NullOr(S.Number)),
-          options: S.optional(UpdateEvaluationRequestOutputConfigOptionsList),
-          selection_mode: S.optional(UpdateEvaluationRequestOutputConfigSelectionMode),
-          passing_rule: S.optional(S.NullOr(UpdateEvaluationRequestOutputConfigPassingRule)),
+          options: S.optional(__S(1)),
+          selection_mode: S.optional(S.String),
+          passing_rule: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({
         identifier: "UpdateEvaluationRequestOutputConfig",
@@ -1764,14 +1470,14 @@ function __c4(j: number): any {
           description: S.optional(S.String),
           directory_id: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.Boolean),
-          evaluation_type: S.optional(EvaluationTypeEnum),
-          evaluation_config: S.optional(UpdateEvaluationRequestEvaluationConfig),
-          output_type: S.optional(OutputTypeEnum),
-          output_config: S.optional(UpdateEvaluationRequestOutputConfig),
-          conditions: S.optional(UpdateEvaluationRequestConditionsList),
-          target: S.optional(EvaluationTargetEnum),
-          target_config: S.optional(UpdateEvaluationRequestTargetConfig),
-          model_configuration: S.optional(S.NullOr(ModelConfigurationInput)),
+          evaluation_type: S.optional(S.String),
+          evaluation_config: S.optional(S.Unknown),
+          output_type: S.optional(S.String),
+          output_config: S.optional(__S(38)),
+          conditions: S.optional(__S(6)),
+          target: S.optional(S.String),
+          target_config: S.optional(S.Unknown),
+          model_configuration: S.optional(S.NullOr(__S(7))),
           deleted: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "PUT", uri: "/api/projects/{project_id}/evaluations/{id}/", code: 200 }),
@@ -1789,11 +1495,9 @@ function __c5(j: number): any {
           min: S.optional(S.NullOr(S.Number)),
           max: S.optional(S.NullOr(S.Number)),
           step: S.optional(S.NullOr(S.Number)),
-          options: S.optional(UpdateEvaluationsPartialRequestOutputConfigOptionsList),
-          selection_mode: S.optional(UpdateEvaluationsPartialRequestOutputConfigSelectionMode),
-          passing_rule: S.optional(
-            S.NullOr(UpdateEvaluationsPartialRequestOutputConfigPassingRule),
-          ),
+          options: S.optional(__S(1)),
+          selection_mode: S.optional(S.String),
+          passing_rule: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({
         identifier: "UpdateEvaluationsPartialRequestOutputConfig",
@@ -1807,14 +1511,14 @@ function __c5(j: number): any {
           description: S.optional(S.String),
           directory_id: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.Boolean),
-          evaluation_type: S.optional(EvaluationTypeEnum),
-          evaluation_config: S.optional(UpdateEvaluationsPartialRequestEvaluationConfig),
-          output_type: S.optional(OutputTypeEnum),
-          output_config: S.optional(UpdateEvaluationsPartialRequestOutputConfig),
-          conditions: S.optional(UpdateEvaluationsPartialRequestConditionsList),
-          target: S.optional(EvaluationTargetEnum),
-          target_config: S.optional(UpdateEvaluationsPartialRequestTargetConfig),
-          model_configuration: S.optional(S.NullOr(ModelConfigurationInput)),
+          evaluation_type: S.optional(S.String),
+          evaluation_config: S.optional(S.Unknown),
+          output_type: S.optional(S.String),
+          output_config: S.optional(__S(40)),
+          conditions: S.optional(__S(6)),
+          target: S.optional(S.String),
+          target_config: S.optional(S.Unknown),
+          model_configuration: S.optional(S.NullOr(__S(7))),
           deleted: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -1826,5 +1530,26 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateEvaluationsPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
   }
 }

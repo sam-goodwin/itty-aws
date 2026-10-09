@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,26 +66,14 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 export type InstancePlatformEditionEnum =
   | "PLATFORM_EDITION_UNSPECIFIED"
   | "LOOKER_CORE_TRIAL"
@@ -97,8 +87,6 @@ export type InstancePlatformEditionEnum =
   | "LOOKER_CORE_TRIAL_STANDARD"
   | "LOOKER_CORE_TRIAL_ENTERPRISE"
   | "LOOKER_CORE_TRIAL_EMBED";
-const InstancePlatformEditionEnum = S.String;
-
 /** Auth type for the Looker instance. */
 export interface AuthType {
   /** Optional. Whether google auth is enabled on the Looker instance. */
@@ -106,8 +94,6 @@ export interface AuthType {
   /** Optional. Whether Workforce auth is enabled on the Looker instance. */
   workforceAuthEnabled?: boolean;
 }
-const AuthType = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AuthType>;
-
 /** Ingress IP allowlist rule. */
 export interface IngressIpAllowlistRule {
   /** Optional. The IP range to allow ingress traffic from. */
@@ -115,17 +101,7 @@ export interface IngressIpAllowlistRule {
   /** Optional. Description for the IP range. */
   description?: string;
 }
-const IngressIpAllowlistRule = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<IngressIpAllowlistRule>;
-
 export type IngressIpAllowlistRuleList = Array<IngressIpAllowlistRule>;
-const IngressIpAllowlistRuleList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<IngressIpAllowlistRuleList>;
-
 /** Ingress IP allowlist configuration. */
 export interface IngressIpAllowlistConfig {
   /** Optional. Whether google service connections are enabled for the instance. */
@@ -135,11 +111,6 @@ export interface IngressIpAllowlistConfig {
   /** Optional. Whether ingress IP allowlist functionality is enabled on the Looker instance. */
   enabled?: boolean;
 }
-const IngressIpAllowlistConfig = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<IngressIpAllowlistConfig>;
-
 /** Looker instance OAuth login settings. */
 export interface OAuthConfig {
   /** Input only. Client secret from an external OAuth application. This is an input-only field, and thus will not be set in any responses. */
@@ -149,18 +120,12 @@ export interface OAuthConfig {
   /** Input only. Client ID from an external OAuth application. This is an input-only field, and thus will not be set in any responses. */
   clientId?: string;
 }
-const OAuthConfig = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<OAuthConfig>;
-
 export type InstanceReleaseChannelEnum =
   | "RELEASE_CHANNEL_UNSPECIFIED"
   | "RAPID"
   | "REGULAR"
   | "STABLE";
-const InstanceReleaseChannelEnum = S.String;
-
 export type EncryptionConfigKmsKeyStateEnum = "KMS_KEY_STATE_UNSPECIFIED" | "VALID" | "REVOKED";
-const EncryptionConfigKmsKeyStateEnum = S.String;
-
 /** Encryption configuration (i.e. CMEK). */
 export interface EncryptionConfig {
   /** Name of the CMEK key in KMS (input parameter). */
@@ -170,8 +135,6 @@ export interface EncryptionConfig {
   /** Output only. Status of the CMEK key. */
   kmsKeyState?: EncryptionConfigKmsKeyStateEnum | (string & {});
 }
-const EncryptionConfig = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<EncryptionConfig>;
-
 /** Published upcoming future maintenance schedule. */
 export interface MaintenanceSchedule {
   /** The scheduled end time for the maintenance. */
@@ -179,8 +142,6 @@ export interface MaintenanceSchedule {
   /** The scheduled start time for the maintenance. */
   startTime?: string;
 }
-const MaintenanceSchedule = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<MaintenanceSchedule>;
-
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
@@ -192,8 +153,6 @@ export interface TimeOfDay {
   /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
   nanos?: number;
 }
-const TimeOfDay = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<TimeOfDay>;
-
 export type MaintenanceWindowDayOfWeekEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
   | "MONDAY"
@@ -203,8 +162,6 @@ export type MaintenanceWindowDayOfWeekEnum =
   | "FRIDAY"
   | "SATURDAY"
   | "SUNDAY";
-const MaintenanceWindowDayOfWeekEnum = S.String;
-
 /** Specifies the recurring maintenance window. */
 export interface MaintenanceWindow {
   /** Required. Time in UTC when the period starts. Maintenance will be scheduled within 60 minutes. */
@@ -212,11 +169,7 @@ export interface MaintenanceWindow {
   /** Required. Day of the week for this MaintenanceWindow (in UTC). */
   dayOfWeek?: MaintenanceWindowDayOfWeekEnum | (string & {});
 }
-const MaintenanceWindow = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<MaintenanceWindow>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<StringList>;
-
 export type ServiceAttachmentConnectionStatusEnum =
   | "UNKNOWN"
   | "ACCEPTED"
@@ -224,8 +177,6 @@ export type ServiceAttachmentConnectionStatusEnum =
   | "REJECTED"
   | "NEEDS_ATTENTION"
   | "CLOSED";
-const ServiceAttachmentConnectionStatusEnum = S.String;
-
 /** Service attachment configuration. */
 export interface ServiceAttachment {
   /** Optional. Fully qualified domain name that will be used in the private DNS record created for the service attachment. */
@@ -239,14 +190,7 @@ export interface ServiceAttachment {
   /** Output only. Reason the service attachment creation failed. This value will only be populated if the service attachment encounters an issue during provisioning. */
   failureReason?: string;
 }
-const ServiceAttachment = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ServiceAttachment>;
-
 export type ServiceAttachmentList = Array<ServiceAttachment>;
-const ServiceAttachmentList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ServiceAttachmentList>;
-
 /** Information for Private Service Connect (PSC) setup for a Looker instance. */
 export interface PscConfig {
   /** Optional. List of VPCs that are allowed ingress into looker. Format: projects/{project}/global/networks/{network} */
@@ -256,18 +200,12 @@ export interface PscConfig {
   /** Optional. List of egress service attachment configurations. */
   serviceAttachments?: ServiceAttachmentList;
 }
-const PscConfig = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PscConfig>;
-
 export type InstanceSoftDeleteReasonEnum =
   | "SOFT_DELETE_REASON_UNSPECIFIED"
   | "BILLING_ACCOUNT_ISSUE"
   | "TRIAL_EXPIRED"
   | "CUSTOMER_REQUEST";
-const InstanceSoftDeleteReasonEnum = S.String;
-
 export type InstanceClassTypeEnum = "CLASS_TYPE_UNSPECIFIED" | "R1" | "P1";
-const InstanceClassTypeEnum = S.String;
-
 /** Metadata about users for a Looker instance. */
 export interface UserMetadata {
   /** Optional. The number of additional standard users the instance owner has purchased. */
@@ -277,8 +215,6 @@ export interface UserMetadata {
   /** Optional. The number of additional viewer users the instance owner has purchased. */
   additionalViewerUserCount?: number;
 }
-const UserMetadata = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<UserMetadata>;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Looker_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -288,8 +224,6 @@ export interface Looker_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
   year?: number;
 }
-const Looker_Date = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Looker_Date>;
-
 /** Specifies the maintenance denial period. */
 export interface DenyMaintenancePeriod {
   /** Required. Time in UTC when the period starts and ends. */
@@ -299,11 +233,6 @@ export interface DenyMaintenancePeriod {
   /** Required. End date of the deny maintenance period. */
   endDate?: Looker_Date;
 }
-const DenyMaintenancePeriod = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DenyMaintenancePeriod>;
-
 export type CustomDomainStateEnum =
   | "CUSTOM_DOMAIN_STATE_UNSPECIFIED"
   | "UNVERIFIED"
@@ -312,8 +241,6 @@ export type CustomDomainStateEnum =
   | "AVAILABLE"
   | "UNAVAILABLE"
   | "UNKNOWN";
-const CustomDomainStateEnum = S.String;
-
 /** Custom domain information. */
 export interface CustomDomain {
   /** Domain name. */
@@ -321,8 +248,6 @@ export interface CustomDomain {
   /** Domain state. */
   state?: CustomDomainStateEnum | (string & {});
 }
-const CustomDomain = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CustomDomain>;
-
 /** Controlled egress configuration. */
 export interface ControlledEgressConfig {
   /** Optional. List of fully qualified domain names to be added to the allowlist for outbound traffic. */
@@ -332,11 +257,6 @@ export interface ControlledEgressConfig {
   /** Optional. Whether marketplace is enabled. */
   marketplaceEnabled?: boolean;
 }
-const ControlledEgressConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ControlledEgressConfig>;
-
 /** Configuration for periodic export. */
 export interface PeriodicExportConfig {
   /** Required. Cloud Storage bucket URI for periodic export. Format: gs://{bucket_name} */
@@ -346,15 +266,11 @@ export interface PeriodicExportConfig {
   /** Required. Time in UTC to start the periodic export job. */
   startTime?: TimeOfDay;
 }
-const PeriodicExportConfig = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<PeriodicExportConfig>;
-
 /** Looker instance Admin settings fields. */
 export interface AdminSettings {
   /** Email domain allowlist for the instance. */
   allowedEmailDomains?: StringList;
 }
-const AdminSettings = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<AdminSettings>;
-
 export type InstanceStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -365,8 +281,6 @@ export type InstanceStateEnum =
   | "DELETING"
   | "EXPORTING"
   | "IMPORTING";
-const InstanceStateEnum = S.String;
-
 /** A Looker instance. */
 export interface Instance {
   /** Name of a reserved IP address range within the Instance.consumer_network, to be used for private services access connection. May or may not be specified in a create request. */
@@ -452,8 +366,6 @@ export interface Instance {
   /** Optional. Whether controlled egress is enabled on the Looker instance. */
   controlledEgressEnabled?: boolean;
 }
-const Instance = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Instance>;
-
 export interface CreateProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}`. */
   parent: string;
@@ -462,17 +374,8 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -482,8 +385,6 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-const Status = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -497,16 +398,12 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Operation>;
-
 export type InstanceBackupStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "DELETING"
   | "ACTIVE"
   | "FAILED";
-const InstanceBackupStateEnum = S.String;
-
 /** The details of a backup resource. */
 export interface InstanceBackup {
   /** Output only. The current state of the backup. */
@@ -520,58 +417,31 @@ export interface InstanceBackup {
   /** Output only. The time when the backup was started. */
   createTime?: string;
 }
-const InstanceBackup = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<InstanceBackup>;
-
 export interface CreateProjectsLocationsInstancesBackupsRequest {
   /** Required. Format: projects/{project}/locations/{location}/instances/{instance} */
   parent: string;
   /** Request body */
   body?: InstanceBackup;
 }
-const CreateProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateProjectsLocationsInstancesBackupsRequest>;
-
 export interface DeleteProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
   name: string;
   /** Whether to force cascading delete. */
   force?: boolean;
 }
-const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
-
 export interface DeleteProjectsLocationsInstancesBackupsRequest {
   /** Required. Format: projects/{project}/locations/{location}/instances/{instance}/backups/{backup} */
   name: string;
 }
-const DeleteProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsInstancesBackupsRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 /** Configuration for Encryption - e.g. CMEK. */
 export interface ExportEncryptionConfig {
   /** Required. Name of the CMEK key in KMS. */
   kmsKeyName?: string;
 }
-const ExportEncryptionConfig = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ExportEncryptionConfig>;
-
 /** Request options for exporting data of an Instance. */
 export interface ExportInstanceRequest {
   /** The path to the folder in Google Cloud Storage where the export will be stored. The URI is in the form `gs://bucketName/folderName`. */
@@ -579,34 +449,17 @@ export interface ExportInstanceRequest {
   /** Required. Encryption configuration (CMEK). For CMEK enabled instances it should be same as looker CMEK. */
   encryptionConfig?: ExportEncryptionConfig;
 }
-const ExportInstanceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ExportInstanceRequest>;
-
 export interface ExportProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
   name: string;
   /** Request body */
   body?: ExportInstanceRequest;
 }
-const ExportProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ExportProjectsLocationsInstancesRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<StringMap>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -620,56 +473,29 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
   name: string;
 }
-const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
-
 export interface GetProjectsLocationsInstancesBackupsRequest {
   /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}/backups/{backup}`. */
   name: string;
 }
-const GetProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetProjectsLocationsInstancesBackupsRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 /** Requestion options for importing looker data to an Instance */
 export interface ImportInstanceRequest {
   /** Path to the import folder in Google Cloud Storage, in the form `gs://bucketName/folderName`. */
   gcsUri?: string;
 }
-const ImportInstanceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ImportInstanceRequest>;
-
 export interface ImportProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
   name: string;
   /** Request body */
   body?: ImportInstanceRequest;
 }
-const ImportProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ImportProjectsLocationsInstancesRequest>;
-
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
@@ -682,14 +508,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -697,11 +516,6 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsInstancesRequest {
   /** Required. Format: `projects/{project}/locations/{location}`. */
   parent: string;
@@ -712,14 +526,7 @@ export interface ListProjectsLocationsInstancesRequest {
   /** A page token received from a previous ListInstancesRequest. */
   pageToken?: string;
 }
-const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
-
 export type InstanceList = Array<Instance>;
-const InstanceList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<InstanceList>;
-
 /** Response from ListInstances. */
 export interface ListInstancesResponse {
   /** The list of instances matching the request filters, up to the requested `pageSize`. */
@@ -729,11 +536,6 @@ export interface ListInstancesResponse {
   /** If provided, a page token that can look up the next `pageSize` results. If empty, the results list is exhausted. */
   nextPageToken?: string;
 }
-const ListInstancesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListInstancesResponse>;
-
 export interface ListProjectsLocationsInstancesBackupsRequest {
   /** Required. Format: projects/{project}/locations/{location}/instances/{instance}. */
   parent: string;
@@ -744,14 +546,7 @@ export interface ListProjectsLocationsInstancesBackupsRequest {
   /** A page token received from a previous ListInstances request. */
   pageToken?: string;
 }
-const ListProjectsLocationsInstancesBackupsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListProjectsLocationsInstancesBackupsRequest>;
-
 export type InstanceBackupList = Array<InstanceBackup>;
-const InstanceBackupList = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<InstanceBackupList>;
-
 /** Response from listing Looker instance backups. */
 export interface ListInstanceBackupsResponse {
   /** Locations that could not be reached. */
@@ -761,11 +556,6 @@ export interface ListInstanceBackupsResponse {
   /** The list of instances matching the request filters, up to the requested `page_size`. */
   instanceBackups?: InstanceBackupList;
 }
-const ListInstanceBackupsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListInstanceBackupsResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
@@ -778,14 +568,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -795,11 +578,6 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface PatchProjectsLocationsInstancesRequest {
   /** Output only. Format: `projects/{project}/locations/{location}/instances/{instance}`. */
   name: string;
@@ -808,11 +586,6 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: Instance;
 }
-const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
-
 /** Request options for restarting an instance. */
 export type RestartInstanceRequest = CancelOperationRequest;
 export interface RestartProjectsLocationsInstancesRequest {
@@ -821,32 +594,17 @@ export interface RestartProjectsLocationsInstancesRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const RestartProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<RestartProjectsLocationsInstancesRequest>;
-
 /** Request options for restoring an instance */
 export interface RestoreInstanceRequest {
   /** Required. Backup being used to restore the instance Format: projects/{project}/locations/{location}/instances/{instance}/backups/{backup} */
   backup?: string;
 }
-const RestoreInstanceRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<RestoreInstanceRequest>;
-
 export interface RestoreProjectsLocationsInstancesRequest {
   /** Required. Instance being restored Format: projects/{project}/locations/{location}/instances/{instance} */
   name: string;
   /** Request body */
   body?: RestoreInstanceRequest;
 }
-const RestoreProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<RestoreProjectsLocationsInstancesRequest>;
-
 /** Request options for undeleting an instance. */
 export type UndeleteInstanceRequest = CancelOperationRequest;
 export interface UndeleteProjectsLocationsInstancesRequest {
@@ -855,11 +613,6 @@ export interface UndeleteProjectsLocationsInstancesRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const UndeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<UndeleteProjectsLocationsInstancesRequest>;
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -873,8 +626,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -893,8 +646,8 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsInstancesRequest,
-  output: Operation,
+  input: __S(23) as any as S.Schema<CreateProjectsLocationsInstancesRequest>,
+  output: __S(27) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -913,8 +666,8 @@ export const createProjectsLocationsInstancesBackups: API.OperationMethod<
   CreateProjectsLocationsInstancesBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsInstancesBackupsRequest,
-  output: Operation,
+  input: __S(29) as any as S.Schema<CreateProjectsLocationsInstancesBackupsRequest>,
+  output: __S(27) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -933,8 +686,8 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsInstancesRequest,
-  output: Operation,
+  input: __S(30) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>,
+  output: __S(27) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -953,8 +706,8 @@ export const deleteProjectsLocationsInstancesBackups: API.OperationMethod<
   DeleteProjectsLocationsInstancesBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsInstancesBackupsRequest,
-  output: Operation,
+  input: __S(31) as any as S.Schema<DeleteProjectsLocationsInstancesBackupsRequest>,
+  output: __S(27) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -973,8 +726,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(32) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -993,8 +746,8 @@ export const exportProjectsLocationsInstances: API.OperationMethod<
   ExportProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportProjectsLocationsInstancesRequest,
-  output: Operation,
+  input: __S(35) as any as S.Schema<ExportProjectsLocationsInstancesRequest>,
+  output: __S(27) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1008,8 +761,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(36) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(38) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1023,8 +776,8 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsInstancesRequest,
-  output: Instance,
+  input: __S(39) as any as S.Schema<GetProjectsLocationsInstancesRequest>,
+  output: __S(22) as any as S.Schema<Instance>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1037,8 +790,8 @@ export const getProjectsLocationsInstancesBackups: API.OperationMethod<
   GetProjectsLocationsInstancesBackupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsInstancesBackupsRequest,
-  output: InstanceBackup,
+  input: __S(40) as any as S.Schema<GetProjectsLocationsInstancesBackupsRequest>,
+  output: __S(28) as any as S.Schema<InstanceBackup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1052,8 +805,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(41) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(27) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1072,8 +825,8 @@ export const importProjectsLocationsInstances: API.OperationMethod<
   ImportProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportProjectsLocationsInstancesRequest,
-  output: Operation,
+  input: __S(43) as any as S.Schema<ImportProjectsLocationsInstancesRequest>,
+  output: __S(27) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1088,8 +841,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(44) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(46) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1105,8 +858,8 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   GcpOpContext,
   ListInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsInstancesRequest,
-  output: ListInstancesResponse,
+  input: __S(47) as any as S.Schema<ListProjectsLocationsInstancesRequest>,
+  output: __S(49) as any as S.Schema<ListInstancesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1122,8 +875,8 @@ export const listProjectsLocationsInstancesBackups: API.PaginatedOperationMethod
   GcpOpContext,
   ListInstanceBackupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsInstancesBackupsRequest,
-  output: ListInstanceBackupsResponse,
+  input: __S(50) as any as S.Schema<ListProjectsLocationsInstancesBackupsRequest>,
+  output: __S(52) as any as S.Schema<ListInstanceBackupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1139,8 +892,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(53) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(55) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1160,8 +913,8 @@ export const patchProjectsLocationsInstances: API.OperationMethod<
   PatchProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsInstancesRequest,
-  output: Operation,
+  input: __S(56) as any as S.Schema<PatchProjectsLocationsInstancesRequest>,
+  output: __S(27) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1180,8 +933,8 @@ export const restartProjectsLocationsInstances: API.OperationMethod<
   RestartProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartProjectsLocationsInstancesRequest,
-  output: Operation,
+  input: __S(57) as any as S.Schema<RestartProjectsLocationsInstancesRequest>,
+  output: __S(27) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1200,8 +953,8 @@ export const restoreProjectsLocationsInstances: API.OperationMethod<
   RestoreProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreProjectsLocationsInstancesRequest,
-  output: Operation,
+  input: __S(59) as any as S.Schema<RestoreProjectsLocationsInstancesRequest>,
+  output: __S(27) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1220,8 +973,8 @@ export const undeleteProjectsLocationsInstances: API.OperationMethod<
   UndeleteProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeleteProjectsLocationsInstancesRequest,
-  output: Operation,
+  input: __S(60) as any as S.Schema<UndeleteProjectsLocationsInstancesRequest>,
+  output: __S(27) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1238,7 +991,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1264,12 +1017,12 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "IngressIpAllowlistRule" });
     case 4:
-      return S.Array(IngressIpAllowlistRule);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           googleServicesEnabled: S.optional(S.Boolean),
-          allowlistRules: S.optional(IngressIpAllowlistRuleList),
+          allowlistRules: S.optional(__S(4)),
           enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "IngressIpAllowlistConfig" });
@@ -1286,7 +1039,7 @@ function __c0(j: number): any {
         S.Struct({
           kmsKeyName: S.optional(S.String),
           kmsKeyNameVersion: S.optional(S.String),
-          kmsKeyState: S.optional(EncryptionConfigKmsKeyStateEnum),
+          kmsKeyState: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptionConfig" });
   }
@@ -1312,8 +1065,8 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          startTime: S.optional(TimeOfDay),
-          dayOfWeek: S.optional(MaintenanceWindowDayOfWeekEnum),
+          startTime: S.optional(__S(9)),
+          dayOfWeek: S.optional(S.String),
         }),
       ).annotate({ identifier: "MaintenanceWindow" });
     case 3:
@@ -1323,19 +1076,19 @@ function __c1(j: number): any {
         S.Struct({
           localFqdn: S.optional(S.String),
           targetServiceAttachmentUri: S.optional(S.String),
-          localFqdns: S.optional(StringList),
-          connectionStatus: S.optional(ServiceAttachmentConnectionStatusEnum),
+          localFqdns: S.optional(__S(11)),
+          connectionStatus: S.optional(S.String),
           failureReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceAttachment" });
     case 5:
-      return S.Array(ServiceAttachment);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          allowedVpcs: S.optional(StringList),
+          allowedVpcs: S.optional(__S(11)),
           lookerServiceAttachmentUri: S.optional(S.String),
-          serviceAttachments: S.optional(ServiceAttachmentList),
+          serviceAttachments: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "PscConfig" });
     case 7:
@@ -1361,23 +1114,23 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          time: S.optional(TimeOfDay),
-          startDate: S.optional(Looker_Date),
-          endDate: S.optional(Looker_Date),
+          time: S.optional(__S(9)),
+          startDate: S.optional(__S(16)),
+          endDate: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "DenyMaintenancePeriod" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
-          state: S.optional(CustomDomainStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomDomain" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          egressFqdns: S.optional(StringList),
-          webProxyIps: S.optional(StringList),
+          egressFqdns: S.optional(__S(11)),
+          webProxyIps: S.optional(__S(11)),
           marketplaceEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ControlledEgressConfig" });
@@ -1386,13 +1139,13 @@ function __c2(j: number): any {
         S.Struct({
           gcsUri: S.optional(S.String),
           kmsKey: S.optional(S.String),
-          startTime: S.optional(TimeOfDay),
+          startTime: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "PeriodicExportConfig" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          allowedEmailDomains: S.optional(StringList),
+          allowedEmailDomains: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "AdminSettings" });
     case 6:
@@ -1401,39 +1154,39 @@ function __c2(j: number): any {
           reservedRange: S.optional(S.String),
           name: S.optional(S.String),
           lookerVersion: S.optional(S.String),
-          platformEdition: S.optional(InstancePlatformEditionEnum),
-          authType: S.optional(AuthType),
-          ingressIpAllowlistConfig: S.optional(IngressIpAllowlistConfig),
-          oauthConfig: S.optional(OAuthConfig),
-          releaseChannel: S.optional(InstanceReleaseChannelEnum),
+          platformEdition: S.optional(S.String),
+          authType: S.optional(__S(2)),
+          ingressIpAllowlistConfig: S.optional(__S(5)),
+          oauthConfig: S.optional(__S(6)),
+          releaseChannel: S.optional(S.String),
           createTime: S.optional(S.String),
-          encryptionConfig: S.optional(EncryptionConfig),
-          maintenanceSchedule: S.optional(MaintenanceSchedule),
+          encryptionConfig: S.optional(__S(7)),
+          maintenanceSchedule: S.optional(__S(8)),
           lookerUri: S.optional(S.String),
           egressPublicIp: S.optional(S.String),
           catalogIntegrationOptOut: S.optional(S.Boolean),
           fipsEnabled: S.optional(S.Boolean),
           satisfiesPzi: S.optional(S.Boolean),
-          maintenanceWindow: S.optional(MaintenanceWindow),
+          maintenanceWindow: S.optional(__S(10)),
           ingressPublicIp: S.optional(S.String),
-          pscConfig: S.optional(PscConfig),
+          pscConfig: S.optional(__S(14)),
           privateIpEnabled: S.optional(S.Boolean),
           updateTime: S.optional(S.String),
-          softDeleteReason: S.optional(InstanceSoftDeleteReasonEnum),
+          softDeleteReason: S.optional(S.String),
           publicIpEnabled: S.optional(S.Boolean),
           satisfiesPzs: S.optional(S.Boolean),
-          classType: S.optional(InstanceClassTypeEnum),
+          classType: S.optional(S.String),
           pscEnabled: S.optional(S.Boolean),
-          userMetadata: S.optional(UserMetadata),
-          denyMaintenancePeriod: S.optional(DenyMaintenancePeriod),
+          userMetadata: S.optional(__S(15)),
+          denyMaintenancePeriod: S.optional(__S(17)),
           acceleratedSecurityPatchEnabled: S.optional(S.Boolean),
-          customDomain: S.optional(CustomDomain),
+          customDomain: S.optional(__S(18)),
           ingressPrivateIp: S.optional(S.String),
-          controlledEgressConfig: S.optional(ControlledEgressConfig),
-          periodicExportConfig: S.optional(PeriodicExportConfig),
-          lastDenyMaintenancePeriod: S.optional(DenyMaintenancePeriod),
-          adminSettings: S.optional(AdminSettings),
-          state: S.optional(InstanceStateEnum),
+          controlledEgressConfig: S.optional(__S(19)),
+          periodicExportConfig: S.optional(__S(20)),
+          lastDenyMaintenancePeriod: S.optional(__S(17)),
+          adminSettings: S.optional(__S(21)),
+          state: S.optional(S.String),
           geminiEnabled: S.optional(S.Boolean),
           suspendedTime: S.optional(S.String),
           linkedLspProjectNumber: S.optional(S.String),
@@ -1446,7 +1199,7 @@ function __c2(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           instanceId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Instance.pipe(T.HttpBody())),
+          body: S.optional(__S(22).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1464,30 +1217,30 @@ function __c3(j: number): any {
     case 0:
       return S.Record(S.String, S.Unknown);
     case 1:
-      return S.Array(DocumentMap);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(25)),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
-          error: S.optional(Status),
+          metadata: S.optional(__S(24)),
+          error: S.optional(__S(26)),
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          response: S.optional(DocumentMap),
+          response: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(InstanceBackupStateEnum),
-          encryptionConfig: S.optional(EncryptionConfig),
+          state: S.optional(S.String),
+          encryptionConfig: S.optional(__S(7)),
           name: S.optional(S.String),
           expireTime: S.optional(S.String),
           createTime: S.optional(S.String),
@@ -1497,7 +1250,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(InstanceBackup.pipe(T.HttpBody())),
+          body: S.optional(__S(28).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1565,14 +1318,14 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           gcsUri: S.optional(S.String),
-          encryptionConfig: S.optional(ExportEncryptionConfig),
+          encryptionConfig: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "ExportInstanceRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ExportInstanceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(34).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1599,9 +1352,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           locationId: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(24)),
           name: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(37)),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
@@ -1649,7 +1402,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ImportInstanceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(42).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1666,7 +1419,7 @@ function __c5(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(11).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1679,12 +1432,12 @@ function __c5(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 5:
-      return S.Array(Location);
+      return S.Array(__S(38));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(45)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 7:
@@ -1709,12 +1462,12 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Instance);
+      return S.Array(__S(22));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          instances: S.optional(InstanceList),
-          unreachable: S.optional(StringList),
+          instances: S.optional(__S(48)),
+          unreachable: S.optional(__S(11)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
@@ -1736,13 +1489,13 @@ function __c6(j: number): any {
         identifier: "ListProjectsLocationsInstancesBackupsRequest",
       });
     case 3:
-      return S.Array(InstanceBackup);
+      return S.Array(__S(28));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(11)),
           nextPageToken: S.optional(S.String),
-          instanceBackups: S.optional(InstanceBackupList),
+          instanceBackups: S.optional(__S(51)),
         }),
       ).annotate({
         identifier: "ListInstanceBackupsResponse",
@@ -1766,12 +1519,12 @@ function __c6(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 6:
-      return S.Array(Operation);
+      return S.Array(__S(27));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(OperationList),
-          unreachable: S.optional(StringList),
+          operations: S.optional(__S(54)),
+          unreachable: S.optional(__S(11)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1784,7 +1537,7 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Instance.pipe(T.HttpBody())),
+          body: S.optional(__S(22).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://looker.googleapis.com/" }),
         ),
@@ -1795,7 +1548,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1816,7 +1569,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(RestoreInstanceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(58).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1831,7 +1584,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1842,5 +1595,30 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UndeleteProjectsLocationsInstancesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
   }
 }

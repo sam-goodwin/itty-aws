@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -15,15 +17,8 @@ export interface CheckServiceDeviceServiceNameAvailabilityRequest {
   /** The name of the Windows IoT Device Service to check. */
   name: string;
 }
-const CheckServiceDeviceServiceNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckServiceDeviceServiceNameAvailabilityRequest>;
-
 /** The reason for unavailability. */
 export type DeviceServiceNameAvailabilityInfoReason = "Invalid" | "AlreadyExists";
-const DeviceServiceNameAvailabilityInfoReason = S.String;
-
 /** The properties indicating whether a given Windows IoT Device Service name is available. */
 export interface DeviceServiceNameAvailabilityInfo {
   /** The value which indicates whether the provided name is available. */
@@ -33,11 +28,6 @@ export interface DeviceServiceNameAvailabilityInfo {
   /** The detailed reason message. */
   message?: string;
 }
-const DeviceServiceNameAvailabilityInfo = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeviceServiceNameAvailabilityInfo>;
-
 export interface DeleteServiceRequest {
   /** The subscription identifier. */
   subscriptionId: string;
@@ -46,15 +36,8 @@ export interface DeleteServiceRequest {
   /** The name of the Windows IoT Device Service. */
   deviceName: string;
 }
-const DeleteServiceRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeleteServiceRequest>;
-
 /** Resource tags. */
 export type DeleteServiceResponseTagsMap = { [key: string]: string | undefined };
-const DeleteServiceResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteServiceResponseTagsMap>;
-
 /** The properties of a Windows IoT Device Service. */
 export interface DeviceServiceProperties {
   /** Windows IoT Device Service notes. */
@@ -68,11 +51,6 @@ export interface DeviceServiceProperties {
   /** Windows IoT Device Service OEM AAD domain */
   adminDomainName?: string;
 }
-const DeviceServiceProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeviceServiceProperties>;
-
 export interface DeleteServiceResponse {
   /** Fully qualified resource Id for the resource */
   id?: string;
@@ -89,11 +67,6 @@ export interface DeleteServiceResponse {
   /** The properties of a Windows IoT Device Service. */
   properties?: DeviceServiceProperties;
 }
-const DeleteServiceResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeleteServiceResponse>;
-
 export interface GetServiceRequest {
   /** The subscription identifier. */
   subscriptionId: string;
@@ -102,8 +75,6 @@ export interface GetServiceRequest {
   /** The name of the Windows IoT Device Service. */
   deviceName: string;
 }
-const GetServiceRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetServiceRequest>;
-
 /** Resource tags. */
 export type GetServiceResponseTagsMap = { [key: string]: string | undefined };
 export interface GetServiceResponse {
@@ -122,14 +93,7 @@ export interface GetServiceResponse {
   /** The properties of a Windows IoT Device Service. */
   properties?: DeviceServiceProperties;
 }
-const GetServiceResponse = DeleteServiceResponse as any as S.Schema<GetServiceResponse>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** The operation supported by Azure Data Catalog Service. */
 export interface OperationDisplayInfo {
   /** The description of the operation. */
@@ -141,8 +105,6 @@ export interface OperationDisplayInfo {
   /** Resource on which the operation is performed. */
   resource?: string;
 }
-const OperationDisplayInfo = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<OperationDisplayInfo>;
-
 /** The operation supported by Azure Data Catalog Service. */
 export interface OperationEntity {
   /** Operation name: {provider}/{resource}/{operation}. */
@@ -154,15 +116,8 @@ export interface OperationEntity {
   /** Indicates the executor of the operation. */
   origin?: string;
 }
-const OperationEntity = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<OperationEntity>;
-
 /** List of Windows IoT Device Service operations supported by the Microsoft.WindowsIoT resource provider. */
 export type OperationListResultValueList = Array<OperationEntity>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** Result of the request to list Windows IoT Device Service operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of Windows IoT Device Service operations supported by the Microsoft.WindowsIoT resource provider. */
@@ -170,19 +125,12 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<OperationListResult>;
-
 export interface ListServiceByResourceGroupRequest {
   /** The subscription identifier. */
   subscriptionId: string;
   /** The name of the resource group that contains the Windows IoT Device Service. */
   resourceGroupName: string;
 }
-const ListServiceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListServiceByResourceGroupRequest>;
-
 /** Resource tags. */
 export type DeviceServiceTagsMap = { [key: string]: string | undefined };
 /** The description of the Windows IoT Device Service. */
@@ -202,15 +150,8 @@ export interface DeviceService {
   /** The properties of a Windows IoT Device Service. */
   properties?: DeviceServiceProperties;
 }
-const DeviceService = DeleteServiceResponse as any as S.Schema<DeviceService>;
-
 /** The array of DeviceService objects. */
 export type DeviceServiceDescriptionListResultValueList = Array<DeviceService>;
-const DeviceServiceDescriptionListResultValueList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeviceServiceDescriptionListResultValueList>;
-
 /** The JSON-serialized array of DeviceService objects with a next link. */
 export interface DeviceServiceDescriptionListResult {
   /** The array of DeviceService objects. */
@@ -218,22 +159,12 @@ export interface DeviceServiceDescriptionListResult {
   /** The next link. */
   nextLink?: string;
 }
-const DeviceServiceDescriptionListResult = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeviceServiceDescriptionListResult>;
-
 export interface ListServicesRequest {
   /** The subscription identifier. */
   subscriptionId: string;
 }
-const ListServicesRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ListServicesRequest>;
-
 /** Resource tags. */
 export type ServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ServicesCreateOrUpdateRequestTagsMap =
-  DeleteServiceResponseTagsMap as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
-
 /** The properties of a Windows IoT Device Service. */
 export interface DeviceServicePropertiesInput {
   /** Windows IoT Device Service notes. */
@@ -245,11 +176,6 @@ export interface DeviceServicePropertiesInput {
   /** Windows IoT Device Service OEM AAD domain */
   adminDomainName?: string;
 }
-const DeviceServicePropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeviceServicePropertiesInput>;
-
 export interface ServicesCreateOrUpdateRequest {
   /** The subscription identifier. */
   subscriptionId: string;
@@ -266,16 +192,8 @@ export interface ServicesCreateOrUpdateRequest {
   /** The properties of a Windows IoT Device Service. */
   properties?: DeviceServicePropertiesInput;
 }
-const ServicesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ServicesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type ServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ServicesCreateOrUpdateResponseTagsMap =
-  DeleteServiceResponseTagsMap as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
-
 export interface ServicesCreateOrUpdateResponse {
   /** Fully qualified resource Id for the resource */
   id?: string;
@@ -292,16 +210,8 @@ export interface ServicesCreateOrUpdateResponse {
   /** The properties of a Windows IoT Device Service. */
   properties?: DeviceServiceProperties;
 }
-const ServicesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ServicesCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type UpdateServiceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateServiceRequestTagsMap =
-  DeleteServiceResponseTagsMap as any as S.Schema<UpdateServiceRequestTagsMap>;
-
 export interface UpdateServiceRequest {
   /** The subscription identifier. */
   subscriptionId: string;
@@ -318,8 +228,6 @@ export interface UpdateServiceRequest {
   /** The properties of a Windows IoT Device Service. */
   properties?: DeviceServicePropertiesInput;
 }
-const UpdateServiceRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<UpdateServiceRequest>;
-
 /** Resource tags. */
 export type UpdateServiceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateServiceResponse {
@@ -338,8 +246,6 @@ export interface UpdateServiceResponse {
   /** The properties of a Windows IoT Device Service. */
   properties?: DeviceServiceProperties;
 }
-const UpdateServiceResponse = DeleteServiceResponse as any as S.Schema<UpdateServiceResponse>;
-
 export type CheckServiceDeviceServiceNameAvailabilityError = AzureOpError;
 /** Check if a Windows IoT Device Service name is available. */
 export const CheckServiceDeviceServiceNameAvailability: API.OperationMethod<
@@ -348,8 +254,8 @@ export const CheckServiceDeviceServiceNameAvailability: API.OperationMethod<
   CheckServiceDeviceServiceNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckServiceDeviceServiceNameAvailabilityRequest,
-  output: DeviceServiceNameAvailabilityInfo,
+  input: __S(0) as any as S.Schema<CheckServiceDeviceServiceNameAvailabilityRequest>,
+  output: __S(1) as any as S.Schema<DeviceServiceNameAvailabilityInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -363,8 +269,8 @@ export const DeleteService: API.OperationMethod<
   DeleteServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceRequest,
-  output: DeleteServiceResponse,
+  input: __S(2) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(5) as any as S.Schema<DeleteServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -378,8 +284,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceRequest,
-  output: GetServiceResponse,
+  input: __S(6) as any as S.Schema<GetServiceRequest>,
+  output: __S(5) as any as S.Schema<GetServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -393,8 +299,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(7) as any as S.Schema<ListOperationsRequest>,
+  output: __S(11) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -408,8 +314,8 @@ export const ListServiceByResourceGroup: API.OperationMethod<
   ListServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceByResourceGroupRequest,
-  output: DeviceServiceDescriptionListResult,
+  input: __S(12) as any as S.Schema<ListServiceByResourceGroupRequest>,
+  output: __S(14) as any as S.Schema<DeviceServiceDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -423,8 +329,8 @@ export const ListServices: API.OperationMethod<
   ListServicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServicesRequest,
-  output: DeviceServiceDescriptionListResult,
+  input: __S(15) as any as S.Schema<ListServicesRequest>,
+  output: __S(14) as any as S.Schema<DeviceServiceDescriptionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -438,8 +344,8 @@ export const ServicesCreateOrUpdate: API.OperationMethod<
   ServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServicesCreateOrUpdateRequest,
-  output: ServicesCreateOrUpdateResponse,
+  input: __S(17) as any as S.Schema<ServicesCreateOrUpdateRequest>,
+  output: __S(18) as any as S.Schema<ServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -453,8 +359,8 @@ export const UpdateService: API.OperationMethod<
   UpdateServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceRequest,
-  output: UpdateServiceResponse,
+  input: __S(19) as any as S.Schema<UpdateServiceRequest>,
+  output: __S(5) as any as S.Schema<UpdateServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -483,7 +389,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(DeviceServiceNameAvailabilityInfoReason),
+          reason: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -522,10 +428,10 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(DeleteServiceResponseTagsMap),
+          tags: S.optional(__S(3)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(DeviceServiceProperties),
+          properties: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "DeleteServiceResponse" });
     case 6:
@@ -571,17 +477,17 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(OperationDisplayInfo),
+          display: S.optional(__S(8)),
           isDataAction: S.optional(S.Boolean),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationEntity" });
     case 2:
-      return S.Array(OperationEntity);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(OperationListResultValueList),
+          value: S.optional(__S(10)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -602,11 +508,11 @@ function __c1(j: number): any {
         identifier: "ListServiceByResourceGroupRequest",
       });
     case 5:
-      return S.Array(DeviceService);
+      return S.Array(__S(5));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(DeviceServiceDescriptionListResultValueList),
+          value: S.optional(__S(13)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -646,10 +552,10 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          tags: S.optional(ServicesCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(3)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(DeviceServicePropertiesInput),
+          properties: S.optional(__S(16)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -667,10 +573,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          tags: S.optional(ServicesCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(3)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(DeviceServiceProperties),
+          properties: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "ServicesCreateOrUpdateResponse",
@@ -681,10 +587,10 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateServiceRequestTagsMap),
+          tags: S.optional(__S(3)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(DeviceServicePropertiesInput),
+          properties: S.optional(__S(16)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -694,5 +600,20 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateServiceRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

@@ -7,6 +7,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -47,12 +49,8 @@ export class NotFound
   ) {}
 
 export type CreateKeyRequestRegionId = "eu01";
-const CreateKeyRequestRegionId = S.String;
-
 /** The access scope of the key. */
 export type AccessScope = "PUBLIC" | "SNA";
-const AccessScope = S.String;
-
 /** The algorithm the key material uses. */
 export type Algorithm =
   | "aes_256_gcm"
@@ -66,16 +64,12 @@ export type Algorithm =
   | "ecdsa_p256_sha256"
   | "ecdsa_p384_sha384"
   | "ecdsa_p521_sha512";
-const Algorithm = S.String;
-
 /** The purpose of the key. */
 export type Purpose =
   | "symmetric_encrypt_decrypt"
   | "asymmetric_encrypt_decrypt"
   | "message_authentication_code"
   | "asymmetric_sign_verify";
-const Purpose = S.String;
-
 export interface CreateKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -94,8 +88,6 @@ export interface CreateKeyRequest {
   protection: string;
   purpose: Purpose | (string & {});
 }
-const CreateKeyRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateKeyRequest>;
-
 /** The current state of the key. */
 export type KeyState =
   | "active"
@@ -104,8 +96,6 @@ export type KeyState =
   | "errors_exist"
   | "creating"
   | "no_version";
-const KeyState = S.String;
-
 export interface Key {
   access_scope: AccessScope;
   algorithm: Algorithm;
@@ -128,11 +118,7 @@ export interface Key {
   /** The current state of the key. */
   state: KeyState;
 }
-const Key = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Key>;
-
 export type CreateKeyRingRequestRegionId = "eu01";
-const CreateKeyRingRequestRegionId = S.String;
-
 export interface CreateKeyRingRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -143,12 +129,8 @@ export interface CreateKeyRingRequest {
   /** The display name to distinguish multiple key rings. Valid characters: letters, digits, underscores and hyphens. */
   displayName: string;
 }
-const CreateKeyRingRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateKeyRingRequest>;
-
 /** The current state of the key ring. */
 export type KeyRingState = "creating" | "active" | "deleted";
-const KeyRingState = S.String;
-
 export interface KeyRing {
   /** The date and time the creation of the key ring was triggered. */
   createdAt: string;
@@ -161,11 +143,7 @@ export interface KeyRing {
   /** The current state of the key ring. */
   state: KeyRingState;
 }
-const KeyRing = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<KeyRing>;
-
 export type CreateWrappingKeyRequestRegionId = "eu01";
-const CreateWrappingKeyRequestRegionId = S.String;
-
 /** The wrapping algorithm used to wrap the key to import. */
 export type WrappingAlgorithm =
   | "rsa_2048_oaep_sha256"
@@ -176,12 +154,8 @@ export type WrappingAlgorithm =
   | "rsa_3072_oaep_sha256_aes_256_key_wrap"
   | "rsa_4096_oaep_sha256_aes_256_key_wrap"
   | "rsa_4096_oaep_sha512_aes_256_key_wrap";
-const WrappingAlgorithm = S.String;
-
 /** The wrapping purpose for the wrapping key. */
 export type WrappingPurpose = "wrap_symmetric_key" | "wrap_asymmetric_key";
-const WrappingPurpose = S.String;
-
 export interface CreateWrappingKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -198,11 +172,6 @@ export interface CreateWrappingKeyRequest {
   protection: string;
   purpose: WrappingPurpose | (string & {});
 }
-const CreateWrappingKeyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateWrappingKeyRequest>;
-
 /** The current state of the wrapping key. */
 export type WrappingKeyState =
   | "active"
@@ -210,8 +179,6 @@ export type WrappingKeyState =
   | "expired"
   | "deleted"
   | "key_material_unavailable";
-const WrappingKeyState = S.String;
-
 export interface WrappingKey {
   access_scope: AccessScope;
   algorithm: WrappingAlgorithm;
@@ -234,11 +201,7 @@ export interface WrappingKey {
   /** The current state of the wrapping key. */
   state: WrappingKeyState;
 }
-const WrappingKey = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<WrappingKey>;
-
 export type DecryptRequestRegionId = "eu01";
-const DecryptRequestRegionId = S.String;
-
 export interface DecryptRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -253,17 +216,11 @@ export interface DecryptRequest {
   /** The data that has to be decrypted. Encoded in base64. */
   data: string;
 }
-const DecryptRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DecryptRequest>;
-
 export interface DecryptedData {
   /** The decrypted data. Encoded in base64. */
   data: string;
 }
-const DecryptedData = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DecryptedData>;
-
 export type DeleteKeyRequestRegionId = "eu01";
-const DeleteKeyRequestRegionId = S.String;
-
 export interface DeleteKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -274,14 +231,8 @@ export interface DeleteKeyRequest {
   /** The key UUID. */
   keyId: string;
 }
-const DeleteKeyRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeleteKeyRequest>;
-
 export interface DeleteKeyResponse {}
-const DeleteKeyResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DeleteKeyResponse>;
-
 export type DeleteKeyRingRequestRegionId = "eu01";
-const DeleteKeyRingRequestRegionId = S.String;
-
 export interface DeleteKeyRingRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -290,14 +241,8 @@ export interface DeleteKeyRingRequest {
   /** The key ring UUID. */
   keyRingId: string;
 }
-const DeleteKeyRingRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeleteKeyRingRequest>;
-
 export interface DeleteKeyRingResponse {}
-const DeleteKeyRingResponse = DeleteKeyResponse as any as S.Schema<DeleteKeyRingResponse>;
-
 export type DeleteWrappingKeyRequestRegionId = "eu01";
-const DeleteWrappingKeyRequestRegionId = S.String;
-
 export interface DeleteWrappingKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -308,17 +253,8 @@ export interface DeleteWrappingKeyRequest {
   /** The wrapping key UUID. */
   wrappingKeyId: string;
 }
-const DeleteWrappingKeyRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteWrappingKeyRequest>;
-
 export interface DeleteWrappingKeyResponse {}
-const DeleteWrappingKeyResponse = DeleteKeyResponse as any as S.Schema<DeleteWrappingKeyResponse>;
-
 export type DestroyVersionRequestRegionId = "eu01";
-const DestroyVersionRequestRegionId = S.String;
-
 export interface DestroyVersionRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -331,17 +267,8 @@ export interface DestroyVersionRequest {
   /** The version number. */
   versionNumber: number;
 }
-const DestroyVersionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DestroyVersionRequest>;
-
 export interface DestroyVersionResponse {}
-const DestroyVersionResponse = DeleteKeyResponse as any as S.Schema<DestroyVersionResponse>;
-
 export type DisableVersionRequestRegionId = "eu01";
-const DisableVersionRequestRegionId = S.String;
-
 export interface DisableVersionRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -354,17 +281,8 @@ export interface DisableVersionRequest {
   /** The version number. */
   versionNumber: number;
 }
-const DisableVersionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DisableVersionRequest>;
-
 export interface DisableVersionResponse {}
-const DisableVersionResponse = DeleteKeyResponse as any as S.Schema<DisableVersionResponse>;
-
 export type EnableVersionRequestRegionId = "eu01";
-const EnableVersionRequestRegionId = S.String;
-
 export interface EnableVersionRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -377,14 +295,8 @@ export interface EnableVersionRequest {
   /** The version number. */
   versionNumber: number;
 }
-const EnableVersionRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<EnableVersionRequest>;
-
 export interface EnableVersionResponse {}
-const EnableVersionResponse = DeleteKeyResponse as any as S.Schema<EnableVersionResponse>;
-
 export type EncryptRequestRegionId = "eu01";
-const EncryptRequestRegionId = S.String;
-
 export interface EncryptRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -399,17 +311,11 @@ export interface EncryptRequest {
   /** The data that has to be encrypted. Encoded in base64. */
   data: string;
 }
-const EncryptRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<EncryptRequest>;
-
 export interface EncryptedData {
   /** The encrypted data. Encoded in base64. */
   data: string;
 }
-const EncryptedData = DecryptedData as any as S.Schema<EncryptedData>;
-
 export type GetKeyRequestRegionId = "eu01";
-const GetKeyRequestRegionId = S.String;
-
 export interface GetKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -420,11 +326,7 @@ export interface GetKeyRequest {
   /** The key UUID. */
   keyId: string;
 }
-const GetKeyRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetKeyRequest>;
-
 export type GetKeyRingRequestRegionId = "eu01";
-const GetKeyRingRequestRegionId = S.String;
-
 export interface GetKeyRingRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -433,11 +335,7 @@ export interface GetKeyRingRequest {
   /** The key ring UUID. */
   keyRingId: string;
 }
-const GetKeyRingRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetKeyRingRequest>;
-
 export type GetVersionRequestRegionId = "eu01";
-const GetVersionRequestRegionId = S.String;
-
 export interface GetVersionRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -450,8 +348,6 @@ export interface GetVersionRequest {
   /** The version number. */
   versionNumber: number;
 }
-const GetVersionRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetVersionRequest>;
-
 /** The current state of the key. */
 export type VersionState =
   | "active"
@@ -460,8 +356,6 @@ export type VersionState =
   | "key_material_unavailable"
   | "disabled"
   | "destroyed";
-const VersionState = S.String;
-
 export interface Version {
   /** The date and time the creation of the key was triggered. */
   createdAt: string;
@@ -480,11 +374,7 @@ export interface Version {
   /** The current state of the key. */
   state: VersionState;
 }
-const Version = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Version>;
-
 export type GetWrappingKeyRequestRegionId = "eu01";
-const GetWrappingKeyRequestRegionId = S.String;
-
 export interface GetWrappingKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -495,14 +385,7 @@ export interface GetWrappingKeyRequest {
   /** The wrapping key UUID. */
   wrappingKeyId: string;
 }
-const GetWrappingKeyRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetWrappingKeyRequest>;
-
 export type ImportKeyRequestRegionId = "eu01";
-const ImportKeyRequestRegionId = S.String;
-
 export interface ImportKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -517,33 +400,18 @@ export interface ImportKeyRequest {
   /** The unique id of the wrapping key the key material has been wrapped with. */
   wrappingKeyId: string;
 }
-const ImportKeyRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ImportKeyRequest>;
-
 export type ListKeyRingsRequestRegionId = "eu01";
-const ListKeyRingsRequestRegionId = S.String;
-
 export interface ListKeyRingsRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
   /** The STACKIT region name the key ring is located in. */
   regionId: ListKeyRingsRequestRegionId | (string & {});
 }
-const ListKeyRingsRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ListKeyRingsRequest>;
-
 export type KeyRingListKeyRingsList = Array<KeyRing>;
-const KeyRingListKeyRingsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<KeyRingListKeyRingsList>;
-
 export interface KeyRingList {
   keyRings: KeyRingListKeyRingsList;
 }
-const KeyRingList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<KeyRingList>;
-
 export type ListKeysRequestRegionId = "eu01";
-const ListKeysRequestRegionId = S.String;
-
 export interface ListKeysRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -552,19 +420,11 @@ export interface ListKeysRequest {
   /** The key ring UUID. */
   keyRingId: string;
 }
-const ListKeysRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListKeysRequest>;
-
 export type KeyListKeysList = Array<Key>;
-const KeyListKeysList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<KeyListKeysList>;
-
 export interface KeyList {
   keys: KeyListKeysList;
 }
-const KeyList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<KeyList>;
-
 export type ListVersionsRequestRegionId = "eu01";
-const ListVersionsRequestRegionId = S.String;
-
 export interface ListVersionsRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -575,22 +435,11 @@ export interface ListVersionsRequest {
   /** The key UUID. */
   keyId: string;
 }
-const ListVersionsRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListVersionsRequest>;
-
 export type VersionListVersionsList = Array<Version>;
-const VersionListVersionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<VersionListVersionsList>;
-
 export interface VersionList {
   versions: VersionListVersionsList;
 }
-const VersionList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<VersionList>;
-
 export type ListWrappingKeysRequestRegionId = "eu01";
-const ListWrappingKeysRequestRegionId = S.String;
-
 export interface ListWrappingKeysRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -599,25 +448,11 @@ export interface ListWrappingKeysRequest {
   /** The key ring UUID. */
   keyRingId: string;
 }
-const ListWrappingKeysRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListWrappingKeysRequest>;
-
 export type WrappingKeyListWrappingKeysList = Array<WrappingKey>;
-const WrappingKeyListWrappingKeysList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<WrappingKeyListWrappingKeysList>;
-
 export interface WrappingKeyList {
   wrappingKeys: WrappingKeyListWrappingKeysList;
 }
-const WrappingKeyList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<WrappingKeyList>;
-
 export type RestoreKeyRequestRegionId = "eu01";
-const RestoreKeyRequestRegionId = S.String;
-
 export interface RestoreKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -628,14 +463,8 @@ export interface RestoreKeyRequest {
   /** The key UUID. */
   keyId: string;
 }
-const RestoreKeyRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<RestoreKeyRequest>;
-
 export interface RestoreKeyResponse {}
-const RestoreKeyResponse = DeleteKeyResponse as any as S.Schema<RestoreKeyResponse>;
-
 export type RestoreVersionRequestRegionId = "eu01";
-const RestoreVersionRequestRegionId = S.String;
-
 export interface RestoreVersionRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -648,17 +477,8 @@ export interface RestoreVersionRequest {
   /** The version number. */
   versionNumber: number;
 }
-const RestoreVersionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<RestoreVersionRequest>;
-
 export interface RestoreVersionResponse {}
-const RestoreVersionResponse = DeleteKeyResponse as any as S.Schema<RestoreVersionResponse>;
-
 export type RotateKeyRequestRegionId = "eu01";
-const RotateKeyRequestRegionId = S.String;
-
 export interface RotateKeyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -669,11 +489,7 @@ export interface RotateKeyRequest {
   /** The key UUID. */
   keyId: string;
 }
-const RotateKeyRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<RotateKeyRequest>;
-
 export type SignRequestRegionId = "eu01";
-const SignRequestRegionId = S.String;
-
 export interface SignRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -688,19 +504,13 @@ export interface SignRequest {
   /** The data that has to be signed. Encoded in base64. */
   data: string;
 }
-const SignRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SignRequest>;
-
 export interface SignedData {
   /** The data that was signed. Encoded in base64. */
   data: string;
   /** The signature of the data. Encoded in base64. */
   signature: string;
 }
-const SignedData = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<SignedData>;
-
 export type VerifyRequestRegionId = "eu01";
-const VerifyRequestRegionId = S.String;
-
 export interface VerifyRequest {
   /** The STACKIT portal project UUID the key ring is part of. */
   projectId: string;
@@ -717,14 +527,10 @@ export interface VerifyRequest {
   /** The signature of the data. Encoded in base64. */
   signature: string;
 }
-const VerifyRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<VerifyRequest>;
-
 export interface VerifiedData {
   /** Whether or not the data has a valid signature. */
   valid: boolean;
 }
-const VerifiedData = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<VerifiedData>;
-
 export type CreateKeyError = BadRequest | NotFound | StackitOpError;
 /** Create key Creates a new key for the given key ring. */
 export const createKey: API.OperationMethod<
@@ -733,8 +539,8 @@ export const createKey: API.OperationMethod<
   CreateKeyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateKeyRequest,
-  output: Key,
+  input: __S(0) as any as S.Schema<CreateKeyRequest>,
+  output: __S(1) as any as S.Schema<Key>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -748,8 +554,8 @@ export const createKeyRing: API.OperationMethod<
   CreateKeyRingError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateKeyRingRequest,
-  output: KeyRing,
+  input: __S(2) as any as S.Schema<CreateKeyRingRequest>,
+  output: __S(3) as any as S.Schema<KeyRing>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -763,8 +569,8 @@ export const createWrappingKey: API.OperationMethod<
   CreateWrappingKeyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWrappingKeyRequest,
-  output: WrappingKey,
+  input: __S(4) as any as S.Schema<CreateWrappingKeyRequest>,
+  output: __S(5) as any as S.Schema<WrappingKey>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -778,8 +584,8 @@ export const decrypt: API.OperationMethod<
   DecryptError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DecryptRequest,
-  output: DecryptedData,
+  input: __S(6) as any as S.Schema<DecryptRequest>,
+  output: __S(7) as any as S.Schema<DecryptedData>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -793,8 +599,8 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteKeyRequest,
-  output: DeleteKeyResponse,
+  input: __S(8) as any as S.Schema<DeleteKeyRequest>,
+  output: __S(9) as any as S.Schema<DeleteKeyResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -808,8 +614,8 @@ export const deleteKeyRing: API.OperationMethod<
   DeleteKeyRingError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteKeyRingRequest,
-  output: DeleteKeyRingResponse,
+  input: __S(10) as any as S.Schema<DeleteKeyRingRequest>,
+  output: __S(9) as any as S.Schema<DeleteKeyRingResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -823,8 +629,8 @@ export const deleteWrappingKey: API.OperationMethod<
   DeleteWrappingKeyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWrappingKeyRequest,
-  output: DeleteWrappingKeyResponse,
+  input: __S(11) as any as S.Schema<DeleteWrappingKeyRequest>,
+  output: __S(9) as any as S.Schema<DeleteWrappingKeyResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -838,8 +644,8 @@ export const destroyVersion: API.OperationMethod<
   DestroyVersionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DestroyVersionRequest,
-  output: DestroyVersionResponse,
+  input: __S(12) as any as S.Schema<DestroyVersionRequest>,
+  output: __S(9) as any as S.Schema<DestroyVersionResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -853,8 +659,8 @@ export const disableVersion: API.OperationMethod<
   DisableVersionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableVersionRequest,
-  output: DisableVersionResponse,
+  input: __S(13) as any as S.Schema<DisableVersionRequest>,
+  output: __S(9) as any as S.Schema<DisableVersionResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -868,8 +674,8 @@ export const enableVersion: API.OperationMethod<
   EnableVersionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableVersionRequest,
-  output: EnableVersionResponse,
+  input: __S(14) as any as S.Schema<EnableVersionRequest>,
+  output: __S(9) as any as S.Schema<EnableVersionResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -883,8 +689,8 @@ export const encrypt: API.OperationMethod<
   EncryptError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EncryptRequest,
-  output: EncryptedData,
+  input: __S(15) as any as S.Schema<EncryptRequest>,
+  output: __S(7) as any as S.Schema<EncryptedData>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -894,8 +700,8 @@ export type GetKeyError = BadRequest | NotFound | StackitOpError;
 /** Get key Returns the details for the given key. */
 export const getKey: API.OperationMethod<GetKeyRequest, Key, GetKeyError, StackitOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetKeyRequest,
-    output: Key,
+    input: __S(16) as any as S.Schema<GetKeyRequest>,
+    output: __S(1) as any as S.Schema<Key>,
     errors: [BadRequest, NotFound, UnknownStackitError],
     protocol: StackitProtocol,
     retry: Retry.Retry,
@@ -909,8 +715,8 @@ export const getKeyRing: API.OperationMethod<
   GetKeyRingError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetKeyRingRequest,
-  output: KeyRing,
+  input: __S(17) as any as S.Schema<GetKeyRingRequest>,
+  output: __S(3) as any as S.Schema<KeyRing>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -924,8 +730,8 @@ export const getVersion: API.OperationMethod<
   GetVersionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVersionRequest,
-  output: Version,
+  input: __S(18) as any as S.Schema<GetVersionRequest>,
+  output: __S(19) as any as S.Schema<Version>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -939,8 +745,8 @@ export const getWrappingKey: API.OperationMethod<
   GetWrappingKeyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWrappingKeyRequest,
-  output: WrappingKey,
+  input: __S(20) as any as S.Schema<GetWrappingKeyRequest>,
+  output: __S(5) as any as S.Schema<WrappingKey>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -954,8 +760,8 @@ export const importKey: API.OperationMethod<
   ImportKeyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportKeyRequest,
-  output: Version,
+  input: __S(21) as any as S.Schema<ImportKeyRequest>,
+  output: __S(19) as any as S.Schema<Version>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -969,8 +775,8 @@ export const listKeyRings: API.OperationMethod<
   ListKeyRingsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListKeyRingsRequest,
-  output: KeyRingList,
+  input: __S(22) as any as S.Schema<ListKeyRingsRequest>,
+  output: __S(24) as any as S.Schema<KeyRingList>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -984,8 +790,8 @@ export const listKeys: API.OperationMethod<
   ListKeysError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListKeysRequest,
-  output: KeyList,
+  input: __S(25) as any as S.Schema<ListKeysRequest>,
+  output: __S(27) as any as S.Schema<KeyList>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -999,8 +805,8 @@ export const listVersions: API.OperationMethod<
   ListVersionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVersionsRequest,
-  output: VersionList,
+  input: __S(28) as any as S.Schema<ListVersionsRequest>,
+  output: __S(30) as any as S.Schema<VersionList>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1014,8 +820,8 @@ export const listWrappingKeys: API.OperationMethod<
   ListWrappingKeysError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWrappingKeysRequest,
-  output: WrappingKeyList,
+  input: __S(31) as any as S.Schema<ListWrappingKeysRequest>,
+  output: __S(33) as any as S.Schema<WrappingKeyList>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1029,8 +835,8 @@ export const restoreKey: API.OperationMethod<
   RestoreKeyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreKeyRequest,
-  output: RestoreKeyResponse,
+  input: __S(34) as any as S.Schema<RestoreKeyRequest>,
+  output: __S(9) as any as S.Schema<RestoreKeyResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1044,8 +850,8 @@ export const restoreVersion: API.OperationMethod<
   RestoreVersionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreVersionRequest,
-  output: RestoreVersionResponse,
+  input: __S(35) as any as S.Schema<RestoreVersionRequest>,
+  output: __S(9) as any as S.Schema<RestoreVersionResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1059,8 +865,8 @@ export const rotateKey: API.OperationMethod<
   RotateKeyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateKeyRequest,
-  output: Version,
+  input: __S(36) as any as S.Schema<RotateKeyRequest>,
+  output: __S(19) as any as S.Schema<Version>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1070,8 +876,8 @@ export type SignError = BadRequest | NotFound | Conflict | StackitOpError;
 /** Sign Sign data using the given key version as secret. */
 export const sign: API.OperationMethod<SignRequest, SignedData, SignError, StackitOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: SignRequest,
-    output: SignedData,
+    input: __S(37) as any as S.Schema<SignRequest>,
+    output: __S(38) as any as S.Schema<SignedData>,
     errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
     protocol: StackitProtocol,
     retry: Retry.Retry,
@@ -1085,8 +891,8 @@ export const verify: API.OperationMethod<
   VerifyError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyRequest,
-  output: VerifiedData,
+  input: __S(39) as any as S.Schema<VerifyRequest>,
+  output: __S(40) as any as S.Schema<VerifiedData>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -1099,15 +905,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: CreateKeyRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
-          access_scope: S.optional(AccessScope),
-          algorithm: Algorithm,
+          access_scope: S.optional(S.String),
+          algorithm: S.String,
           description: S.optional(S.String),
           displayName: S.String,
           importOnly: S.optional(S.Boolean),
           protection: S.String,
-          purpose: Purpose,
+          purpose: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1120,8 +926,8 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          access_scope: AccessScope,
-          algorithm: Algorithm,
+          access_scope: S.String,
+          algorithm: S.String,
           createdAt: S.String,
           deletionDate: S.optional(S.String),
           description: S.optional(S.String),
@@ -1130,15 +936,15 @@ function __c0(j: number): any {
           importOnly: S.Boolean,
           keyRingId: S.String,
           protection: S.String,
-          purpose: Purpose,
-          state: KeyState,
+          purpose: S.String,
+          state: S.String,
         }),
       ).annotate({ identifier: "Key" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: CreateKeyRingRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           description: S.optional(S.String),
           displayName: S.String,
         }).pipe(
@@ -1157,21 +963,21 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           displayName: S.String,
           id: S.String,
-          state: KeyRingState,
+          state: S.String,
         }),
       ).annotate({ identifier: "KeyRing" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: CreateWrappingKeyRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
-          access_scope: S.optional(AccessScope),
-          algorithm: WrappingAlgorithm,
+          access_scope: S.optional(S.String),
+          algorithm: S.String,
           description: S.optional(S.String),
           displayName: S.String,
           protection: S.String,
-          purpose: WrappingPurpose,
+          purpose: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -1184,8 +990,8 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          access_scope: AccessScope,
-          algorithm: WrappingAlgorithm,
+          access_scope: S.String,
+          algorithm: S.String,
           createdAt: S.String,
           description: S.optional(S.String),
           displayName: S.String,
@@ -1194,15 +1000,15 @@ function __c0(j: number): any {
           keyRingId: S.String,
           protection: S.String,
           publicKey: S.optional(S.String),
-          purpose: WrappingPurpose,
-          state: WrappingKeyState,
+          purpose: S.String,
+          state: S.String,
         }),
       ).annotate({ identifier: "WrappingKey" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: DecryptRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           keyId: S.String.pipe(T.Label()),
           versionNumber: S.Number.pipe(T.Label()),
@@ -1230,7 +1036,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: DeleteKeyRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           keyId: S.String.pipe(T.Label()),
         }).pipe(
@@ -1250,7 +1056,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: DeleteKeyRingRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1265,7 +1071,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: DeleteWrappingKeyRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           wrappingKeyId: S.String.pipe(T.Label()),
         }).pipe(
@@ -1281,7 +1087,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: DestroyVersionRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           keyId: S.String.pipe(T.Label()),
           versionNumber: S.Number.pipe(T.Label()),
@@ -1298,7 +1104,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: DisableVersionRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           keyId: S.String.pipe(T.Label()),
           versionNumber: S.Number.pipe(T.Label()),
@@ -1315,7 +1121,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: EnableVersionRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           keyId: S.String.pipe(T.Label()),
           versionNumber: S.Number.pipe(T.Label()),
@@ -1332,7 +1138,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: EncryptRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           keyId: S.String.pipe(T.Label()),
           versionNumber: S.Number.pipe(T.Label()),
@@ -1354,7 +1160,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: GetKeyRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           keyId: S.String.pipe(T.Label()),
         }).pipe(
@@ -1370,7 +1176,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: GetKeyRingRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1385,7 +1191,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: GetVersionRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           keyId: S.String.pipe(T.Label()),
           versionNumber: S.Number.pipe(T.Label()),
@@ -1408,14 +1214,14 @@ function __c2(j: number): any {
           keyRingId: S.String,
           number: S.Number,
           publicKey: S.optional(S.String),
-          state: VersionState,
+          state: S.String,
         }),
       ).annotate({ identifier: "Version" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: GetWrappingKeyRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           wrappingKeyId: S.String.pipe(T.Label()),
         }).pipe(
@@ -1431,7 +1237,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: ImportKeyRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           keyId: S.String.pipe(T.Label()),
           wrappedKey: S.String,
@@ -1449,7 +1255,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: ListKeyRingsRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1460,7 +1266,7 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListKeyRingsRequest" });
     case 7:
-      return S.Array(KeyRing);
+      return S.Array(__S(3));
   }
 }
 function __c3(j: number): any {
@@ -1468,14 +1274,14 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          keyRings: KeyRingListKeyRingsList,
+          keyRings: __S(23),
         }),
       ).annotate({ identifier: "KeyRingList" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: ListKeysRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1487,18 +1293,18 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListKeysRequest" });
     case 2:
-      return S.Array(Key);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          keys: KeyListKeysList,
+          keys: __S(26),
         }),
       ).annotate({ identifier: "KeyList" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: ListVersionsRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           keyId: S.String.pipe(T.Label()),
         }).pipe(
@@ -1511,18 +1317,18 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListVersionsRequest" });
     case 5:
-      return S.Array(Version);
+      return S.Array(__S(19));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          versions: VersionListVersionsList,
+          versions: __S(29),
         }),
       ).annotate({ identifier: "VersionList" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: ListWrappingKeysRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -1538,18 +1344,18 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(WrappingKey);
+      return S.Array(__S(5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          wrappingKeys: WrappingKeyListWrappingKeysList,
+          wrappingKeys: __S(32),
         }),
       ).annotate({ identifier: "WrappingKeyList" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: RestoreKeyRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           keyId: S.String.pipe(T.Label()),
         }).pipe(
@@ -1565,7 +1371,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: RestoreVersionRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           keyId: S.String.pipe(T.Label()),
           versionNumber: S.Number.pipe(T.Label()),
@@ -1582,7 +1388,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: RotateKeyRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           keyId: S.String.pipe(T.Label()),
         }).pipe(
@@ -1598,7 +1404,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: SignRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           keyId: S.String.pipe(T.Label()),
           versionNumber: S.Number.pipe(T.Label()),
@@ -1623,7 +1429,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          regionId: VerifyRequestRegionId.pipe(T.Label()),
+          regionId: S.String.pipe(T.Label()),
           keyRingId: S.String.pipe(T.Label()),
           keyId: S.String.pipe(T.Label()),
           versionNumber: S.Number.pipe(T.Label()),
@@ -1648,5 +1454,26 @@ function __c5(j: number): any {
           valid: S.Boolean,
         }),
       ).annotate({ identifier: "VerifiedData" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
   }
 }

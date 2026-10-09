@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Marketplace Catalog",
   serviceShapeName: "AWSMPSeymour",
@@ -129,7 +131,7 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       ValidationExceptionFieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(95)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -142,16 +144,10 @@ export interface EntityRequest {
   Catalog: string;
   EntityId: string;
 }
-const EntityRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<EntityRequest>;
 export type EntityRequestList = EntityRequest[];
-const EntityRequestList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface BatchDescribeEntitiesRequest {
   EntityRequestList: EntityRequest[];
 }
-const BatchDescribeEntitiesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BatchDescribeEntitiesRequest>;
 export type EntityType = string;
 export type ARN = string;
 export type Identifier = string;
@@ -164,59 +160,32 @@ export interface EntityDetail {
   LastModifiedDate?: string;
   DetailsDocument?: any;
 }
-const EntityDetail = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<EntityDetail>;
 export type EntityDetails = { [key: string]: EntityDetail | undefined };
-const EntityDetails = /*@__PURE__*/ __L.at(__c0, 4);
 export type BatchDescribeErrorCodeString = string;
 export type BatchDescribeErrorMessageContent = string;
 export interface BatchDescribeErrorDetail {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-const BatchDescribeErrorDetail = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<BatchDescribeErrorDetail>;
 export type Errors = { [key: string]: BatchDescribeErrorDetail | undefined };
-const Errors = /*@__PURE__*/ __L.at(__c0, 6);
 export interface BatchDescribeEntitiesResponse {
   EntityDetails?: { [key: string]: EntityDetail | undefined };
   Errors?: { [key: string]: BatchDescribeErrorDetail | undefined };
 }
-const BatchDescribeEntitiesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BatchDescribeEntitiesResponse>;
 export type ResourceId = string;
 export interface CancelChangeSetRequest {
   Catalog: string;
   ChangeSetId: string;
 }
-const CancelChangeSetRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CancelChangeSetRequest>;
 export interface CancelChangeSetResponse {
   ChangeSetId?: string;
   ChangeSetArn?: string;
 }
-const CancelChangeSetResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CancelChangeSetResponse>;
 export type ResourceARN = string;
 export interface DeleteResourcePolicyRequest {
   ResourceArn: string;
 }
-const DeleteResourcePolicyRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeleteResourcePolicyRequest>;
 export interface DeleteResourcePolicyResponse {}
-const DeleteResourcePolicyResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteResourcePolicyResponse>;
 export type AssessmentIdentifier = string;
 export type DescribeAssessmentMaxResultInteger = number;
 export type NextToken = string;
@@ -226,42 +195,27 @@ export interface DescribeAssessmentRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const DescribeAssessmentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DescribeAssessmentRequest>;
 export type VersionedFrameworkId = string;
 export interface AssessmentTargetSummary {
   EntityId?: string;
   ChangeSetId?: string;
 }
-const AssessmentTargetSummary = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<AssessmentTargetSummary>;
 export interface AMISecuritySummary {
   DeliveryOptionId?: string;
 }
-const AMISecuritySummary = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AMISecuritySummary>;
 export interface ContainerSecuritySummary {
   DeliveryOptionId?: string;
 }
-const ContainerSecuritySummary = AMISecuritySummary as any as S.Schema<ContainerSecuritySummary>;
 export type FrameworkSummary =
   | { AMISecuritySummary: AMISecuritySummary; ContainerSecuritySummary?: never }
   | { AMISecuritySummary?: never; ContainerSecuritySummary: ContainerSecuritySummary };
-const FrameworkSummary = /*@__PURE__*/ __L.at(__c1, 7);
 export type AssessmentResult = "PASS" | "FAIL" | (string & {});
-const AssessmentResult = S.String;
-
 export type ControlAssessmentResult =
   | "PASS"
   | "FAIL"
   | "NOT_EXECUTED"
   | "EXEMPTION_PASS"
   | (string & {});
-const ControlAssessmentResult = S.String;
-
 export type ErrorCode = string;
 export type ErrorMessage = string;
 export type ScopeName = string;
@@ -270,25 +224,19 @@ export interface ErrorScope {
   Name?: string;
   Value?: string;
 }
-const ErrorScope = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ErrorScope>;
 export type ErrorScopeList = ErrorScope[];
-const ErrorScopeList = /*@__PURE__*/ __L.at(__c2, 1);
 export interface ControlError {
   Code?: string;
   Message?: string;
   Scope?: ErrorScope[];
 }
-const ControlError = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ControlError>;
 export type ControlErrorList = ControlError[];
-const ControlErrorList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface ControlAssessment {
   ControlId?: string;
   ControlAssessmentResult?: ControlAssessmentResult;
   Errors?: ControlError[];
 }
-const ControlAssessment = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ControlAssessment>;
 export type ControlAssessmentList = ControlAssessment[];
-const ControlAssessmentList = /*@__PURE__*/ __L.at(__c2, 5);
 export interface DescribeAssessmentResponse {
   AssessmentArn?: string;
   AssessmentId?: string;
@@ -301,22 +249,12 @@ export interface DescribeAssessmentResponse {
   ControlAssessments?: ControlAssessment[];
   NextToken?: string;
 }
-const DescribeAssessmentResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DescribeAssessmentResponse>;
 export interface DescribeChangeSetRequest {
   Catalog: string;
   ChangeSetId: string;
 }
-const DescribeChangeSetRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DescribeChangeSetRequest>;
 export type ChangeSetName = string;
 export type Intent = "VALIDATE" | "APPLY" | (string & {});
-const Intent = S.String;
-
 export type ChangeStatus =
   | "PREPARING"
   | "APPLYING"
@@ -324,27 +262,20 @@ export type ChangeStatus =
   | "CANCELLED"
   | "FAILED"
   | (string & {});
-const ChangeStatus = S.String;
-
 export type FailureCode = "CLIENT_ERROR" | "SERVER_FAULT" | (string & {});
-const FailureCode = S.String;
-
 export type ExceptionMessageContent = string;
 export type ChangeType = string;
 export interface Entity {
   Type: string;
   Identifier?: string;
 }
-const Entity = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Entity>;
 export type Json = string;
 export type ErrorCodeString = string;
 export interface ErrorDetail {
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-const ErrorDetail = BatchDescribeErrorDetail as any as S.Schema<ErrorDetail>;
 export type ErrorDetailList = ErrorDetail[];
-const ErrorDetailList = /*@__PURE__*/ __L.at(__c3, 1);
 export type ChangeName = string;
 export interface ChangeSummary {
   ChangeType?: string;
@@ -354,9 +285,7 @@ export interface ChangeSummary {
   ErrorDetailList?: ErrorDetail[];
   ChangeName?: string;
 }
-const ChangeSummary = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ChangeSummary>;
 export type ChangeSetDescription = ChangeSummary[];
-const ChangeSetDescription = /*@__PURE__*/ __L.at(__c3, 3);
 export interface DescribeChangeSetResponse {
   ChangeSetId?: string;
   ChangeSetArn?: string;
@@ -369,18 +298,10 @@ export interface DescribeChangeSetResponse {
   FailureDescription?: string;
   ChangeSet?: ChangeSummary[];
 }
-const DescribeChangeSetResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DescribeChangeSetResponse>;
 export interface DescribeEntityRequest {
   Catalog: string;
   EntityId: string;
 }
-const DescribeEntityRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DescribeEntityRequest>;
 export interface DescribeEntityResponse {
   EntityType?: string;
   EntityIdentifier?: string;
@@ -389,43 +310,27 @@ export interface DescribeEntityResponse {
   Details?: string;
   DetailsDocument?: any;
 }
-const DescribeEntityResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DescribeEntityResponse>;
 export interface GetResourcePolicyRequest {
   ResourceArn: string;
 }
-const GetResourcePolicyRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetResourcePolicyRequest>;
 export type ResourcePolicyJson = string;
 export interface GetResourcePolicyResponse {
   Policy?: string;
 }
-const GetResourcePolicyResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetResourcePolicyResponse>;
 export type FrameworkId = string;
 export interface AssessmentTargetFilter {
   EntityId?: string;
   ChangeSetId?: string;
 }
-const AssessmentTargetFilter = AssessmentTargetSummary as any as S.Schema<AssessmentTargetFilter>;
 export interface AMISecurityFilters {
   DeliveryOptionId?: string;
 }
-const AMISecurityFilters = AMISecuritySummary as any as S.Schema<AMISecurityFilters>;
 export interface ContainerSecurityFilters {
   DeliveryOptionId?: string;
 }
-const ContainerSecurityFilters = AMISecuritySummary as any as S.Schema<ContainerSecurityFilters>;
 export type FrameworkFilters =
   | { AMISecurityFilters: AMISecurityFilters; ContainerSecurityFilters?: never }
   | { AMISecurityFilters?: never; ContainerSecurityFilters: ContainerSecurityFilters };
-const FrameworkFilters = /*@__PURE__*/ __L.at(__c4, 1);
 export type ListAssessmentsMaxResultInteger = number;
 export interface ListAssessmentsRequest {
   Catalog: string;
@@ -435,10 +340,6 @@ export interface ListAssessmentsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListAssessmentsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListAssessmentsRequest>;
 export interface AssessmentSummary {
   AssessmentArn?: string;
   AssessmentId?: string;
@@ -449,37 +350,25 @@ export interface AssessmentSummary {
   CreatedAt?: string;
   ExpiresAt?: string;
 }
-const AssessmentSummary = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<AssessmentSummary>;
 export type AssessmentSummaryList = AssessmentSummary[];
-const AssessmentSummaryList = /*@__PURE__*/ __L.at(__c4, 4);
 export interface ListAssessmentsResponse {
   AssessmentSummaryList?: AssessmentSummary[];
   NextToken?: string;
 }
-const ListAssessmentsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListAssessmentsResponse>;
 export type FilterName = string;
 export type FilterValueContent = string;
 export type ValueList = string[];
-const ValueList = /*@__PURE__*/ __L.at(__c4, 6);
 export interface Filter {
   Name?: string;
   ValueList?: string[];
 }
-const Filter = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
-const FilterList = /*@__PURE__*/ __L.at(__c5, 0);
 export type SortBy = string;
 export type SortOrder = "ASCENDING" | "DESCENDING" | (string & {});
-const SortOrder = S.String;
-
 export interface Sort {
   SortBy?: string;
   SortOrder?: SortOrder;
 }
-const Sort = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Sort>;
 export type ListChangeSetsMaxResultInteger = number;
 export interface ListChangeSetsRequest {
   Catalog: string;
@@ -488,12 +377,7 @@ export interface ListChangeSetsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListChangeSetsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ListChangeSetsRequest>;
 export type ResourceIdList = string[];
-const ResourceIdList = ValueList as any as S.Schema<ResourceIdList>;
 export interface ChangeSetSummaryListItem {
   ChangeSetId?: string;
   ChangeSetArn?: string;
@@ -504,47 +388,24 @@ export interface ChangeSetSummaryListItem {
   EntityIdList?: string[];
   FailureCode?: FailureCode;
 }
-const ChangeSetSummaryListItem = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ChangeSetSummaryListItem>;
 export type ChangeSetSummaryList = ChangeSetSummaryListItem[];
-const ChangeSetSummaryList = /*@__PURE__*/ __L.at(__c5, 4);
 export interface ListChangeSetsResponse {
   ChangeSetSummaryList?: ChangeSetSummaryListItem[];
   NextToken?: string;
 }
-const ListChangeSetsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListChangeSetsResponse>;
 export type ListEntitiesMaxResultInteger = number;
 export type OwnershipType = "SELF" | "SHARED" | (string & {});
-const OwnershipType = S.String;
-
 export type DataProductEntityIdString = string;
 export type DataProductEntityIdFilterValueList = string[];
-const DataProductEntityIdFilterValueList =
-  ValueList as any as S.Schema<DataProductEntityIdFilterValueList>;
 export interface DataProductEntityIdFilter {
   ValueList?: string[];
 }
-const DataProductEntityIdFilter = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<DataProductEntityIdFilter>;
 export type DataProductTitleString = string;
 export type DataProductTitleFilterValueList = string[];
-const DataProductTitleFilterValueList =
-  ValueList as any as S.Schema<DataProductTitleFilterValueList>;
 export interface DataProductTitleFilter {
   ValueList?: string[];
   WildCardValue?: string;
 }
-const DataProductTitleFilter = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DataProductTitleFilter>;
 export type DataProductVisibilityString =
   | "Limited"
   | "Public"
@@ -552,53 +413,34 @@ export type DataProductVisibilityString =
   | "Unavailable"
   | "Draft"
   | (string & {});
-const DataProductVisibilityString = S.String;
-
 export type DataProductVisibilityFilterValueList = DataProductVisibilityString[];
-const DataProductVisibilityFilterValueList = /*@__PURE__*/ __L.at(__c6, 0);
 export interface DataProductVisibilityFilter {
   ValueList?: DataProductVisibilityString[];
 }
-const DataProductVisibilityFilter = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DataProductVisibilityFilter>;
 export interface DataProductLastModifiedDateFilterDateRange {
   AfterValue?: string;
   BeforeValue?: string;
 }
-const DataProductLastModifiedDateFilterDateRange = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DataProductLastModifiedDateFilterDateRange>;
 export interface DataProductLastModifiedDateFilter {
   DateRange?: DataProductLastModifiedDateFilterDateRange;
 }
-const DataProductLastModifiedDateFilter = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DataProductLastModifiedDateFilter>;
 export interface DataProductFilters {
   EntityId?: DataProductEntityIdFilter;
   ProductTitle?: DataProductTitleFilter;
   Visibility?: DataProductVisibilityFilter;
   LastModifiedDate?: DataProductLastModifiedDateFilter;
 }
-const DataProductFilters = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<DataProductFilters>;
 export type SaaSProductEntityIdString = string;
 export type SaaSProductEntityIdFilterValueList = string[];
 export interface SaaSProductEntityIdFilter {
   ValueList?: string[];
 }
-const SaaSProductEntityIdFilter =
-  DataProductEntityIdFilter as any as S.Schema<SaaSProductEntityIdFilter>;
 export type SaaSProductTitleString = string;
 export type SaaSProductTitleFilterValueList = string[];
 export interface SaaSProductTitleFilter {
   ValueList?: string[];
   WildCardValue?: string;
 }
-const SaaSProductTitleFilter = DataProductTitleFilter as any as S.Schema<SaaSProductTitleFilter>;
 export type SaaSProductVisibilityString =
   | "Limited"
   | "Public"
@@ -609,8 +451,6 @@ export type SaaSProductVisibilityFilterValueList = SaaSProductVisibilityString[]
 export interface SaaSProductVisibilityFilter {
   ValueList?: SaaSProductVisibilityString[];
 }
-const SaaSProductVisibilityFilter =
-  DataProductVisibilityFilter as any as S.Schema<SaaSProductVisibilityFilter>;
 export interface SaaSProductLastModifiedDateFilterDateRange {
   AfterValue?: string;
   BeforeValue?: string;
@@ -618,26 +458,17 @@ export interface SaaSProductLastModifiedDateFilterDateRange {
 export interface SaaSProductLastModifiedDateFilter {
   DateRange?: SaaSProductLastModifiedDateFilterDateRange;
 }
-const SaaSProductLastModifiedDateFilter =
-  DataProductLastModifiedDateFilter as any as S.Schema<SaaSProductLastModifiedDateFilter>;
 export interface SaaSProductFilters {
   EntityId?: SaaSProductEntityIdFilter;
   ProductTitle?: SaaSProductTitleFilter;
   Visibility?: SaaSProductVisibilityFilter;
   LastModifiedDate?: SaaSProductLastModifiedDateFilter;
 }
-const SaaSProductFilters = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<SaaSProductFilters>;
 export type AmiProductEntityIdString = string;
 export type AmiProductEntityIdFilterValueList = string[];
-const AmiProductEntityIdFilterValueList =
-  ValueList as any as S.Schema<AmiProductEntityIdFilterValueList>;
 export interface AmiProductEntityIdFilter {
   ValueList?: string[];
 }
-const AmiProductEntityIdFilter = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<AmiProductEntityIdFilter>;
 export interface AmiProductLastModifiedDateFilterDateRange {
   AfterValue?: string;
   BeforeValue?: string;
@@ -645,75 +476,56 @@ export interface AmiProductLastModifiedDateFilterDateRange {
 export interface AmiProductLastModifiedDateFilter {
   DateRange?: AmiProductLastModifiedDateFilterDateRange;
 }
-const AmiProductLastModifiedDateFilter =
-  DataProductLastModifiedDateFilter as any as S.Schema<AmiProductLastModifiedDateFilter>;
 export type AmiProductTitleString = string;
 export type AmiProductTitleFilterValueList = string[];
 export interface AmiProductTitleFilter {
   ValueList?: string[];
   WildCardValue?: string;
 }
-const AmiProductTitleFilter = DataProductTitleFilter as any as S.Schema<AmiProductTitleFilter>;
 export type AmiProductVisibilityString =
   | "Limited"
   | "Public"
   | "Restricted"
   | "Draft"
   | (string & {});
-const AmiProductVisibilityString = S.String;
-
 export type AmiProductVisibilityFilterValueList = AmiProductVisibilityString[];
 export interface AmiProductVisibilityFilter {
   ValueList?: AmiProductVisibilityString[];
 }
-const AmiProductVisibilityFilter =
-  DataProductVisibilityFilter as any as S.Schema<AmiProductVisibilityFilter>;
 export interface AmiProductFilters {
   EntityId?: AmiProductEntityIdFilter;
   LastModifiedDate?: AmiProductLastModifiedDateFilter;
   ProductTitle?: AmiProductTitleFilter;
   Visibility?: AmiProductVisibilityFilter;
 }
-const AmiProductFilters = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<AmiProductFilters>;
 export type OfferEntityIdString = string;
 export type OfferEntityIdFilterValueList = string[];
 export interface OfferEntityIdFilter {
   ValueList?: string[];
 }
-const OfferEntityIdFilter = AmiProductEntityIdFilter as any as S.Schema<OfferEntityIdFilter>;
 export type OfferNameString = string;
 export type OfferNameFilterValueList = string[];
 export interface OfferNameFilter {
   ValueList?: string[];
   WildCardValue?: string;
 }
-const OfferNameFilter = DataProductTitleFilter as any as S.Schema<OfferNameFilter>;
 export type OfferProductIdString = string;
 export type OfferProductIdFilterValueList = string[];
 export interface OfferProductIdFilter {
   ValueList?: string[];
 }
-const OfferProductIdFilter = AmiProductEntityIdFilter as any as S.Schema<OfferProductIdFilter>;
 export type OfferResaleAuthorizationIdString = string;
 export type OfferResaleAuthorizationIdFilterValueList = string[];
 export interface OfferResaleAuthorizationIdFilter {
   ValueList?: string[];
 }
-const OfferResaleAuthorizationIdFilter =
-  DataProductEntityIdFilter as any as S.Schema<OfferResaleAuthorizationIdFilter>;
 export interface OfferReleaseDateFilterDateRange {
   AfterValue?: string;
   BeforeValue?: string;
 }
-const OfferReleaseDateFilterDateRange =
-  DataProductLastModifiedDateFilterDateRange as any as S.Schema<OfferReleaseDateFilterDateRange>;
 export interface OfferReleaseDateFilter {
   DateRange?: OfferReleaseDateFilterDateRange;
 }
-const OfferReleaseDateFilter = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<OfferReleaseDateFilter>;
 export interface OfferAvailabilityEndDateFilterDateRange {
   AfterValue?: string;
   BeforeValue?: string;
@@ -721,25 +533,15 @@ export interface OfferAvailabilityEndDateFilterDateRange {
 export interface OfferAvailabilityEndDateFilter {
   DateRange?: OfferAvailabilityEndDateFilterDateRange;
 }
-const OfferAvailabilityEndDateFilter =
-  DataProductLastModifiedDateFilter as any as S.Schema<OfferAvailabilityEndDateFilter>;
 export type OfferBuyerAccountsFilterWildcard = string;
 export interface OfferBuyerAccountsFilter {
   WildCardValue?: string;
 }
-const OfferBuyerAccountsFilter = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<OfferBuyerAccountsFilter>;
 export type OfferStateString = "Draft" | "Released" | (string & {});
-const OfferStateString = S.String;
-
 export type OfferStateFilterValueList = OfferStateString[];
-const OfferStateFilterValueList = /*@__PURE__*/ __L.at(__c7, 2);
 export interface OfferStateFilter {
   ValueList?: OfferStateString[];
 }
-const OfferStateFilter = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<OfferStateFilter>;
 export type OfferTargetingString =
   | "BuyerAccounts"
   | "ParticipatingPrograms"
@@ -747,12 +549,9 @@ export type OfferTargetingString =
   | "None"
   | (string & {});
 export type OfferTargetingFilterValueList = OfferTargetingString[];
-const OfferTargetingFilterValueList =
-  OfferStateFilterValueList as any as S.Schema<OfferTargetingFilterValueList>;
 export interface OfferTargetingFilter {
   ValueList?: OfferTargetingString[];
 }
-const OfferTargetingFilter = OfferStateFilter as any as S.Schema<OfferTargetingFilter>;
 export interface OfferLastModifiedDateFilterDateRange {
   AfterValue?: string;
   BeforeValue?: string;
@@ -760,39 +559,26 @@ export interface OfferLastModifiedDateFilterDateRange {
 export interface OfferLastModifiedDateFilter {
   DateRange?: OfferLastModifiedDateFilterDateRange;
 }
-const OfferLastModifiedDateFilter =
-  DataProductLastModifiedDateFilter as any as S.Schema<OfferLastModifiedDateFilter>;
 export type OfferSetIdString = string;
 export type OfferSetIdFilterValueList = string[];
 export interface OfferSetIdFilter {
   ValueList?: string[];
 }
-const OfferSetIdFilter = AmiProductEntityIdFilter as any as S.Schema<OfferSetIdFilter>;
 export type OfferTargetAgreementIdString = string;
 export type OfferTargetAgreementIdFilterValueList = string[];
 export interface OfferTargetAgreementIdFilter {
   ValueList?: string[];
 }
-const OfferTargetAgreementIdFilter =
-  DataProductEntityIdFilter as any as S.Schema<OfferTargetAgreementIdFilter>;
 export type OfferTargetAgreementIntentString = "Renew" | (string & {});
-const OfferTargetAgreementIntentString = S.String;
-
 export type OfferTargetAgreementIntentFilterValueList = OfferTargetAgreementIntentString[];
 export interface OfferTargetAgreementIntentFilter {
   ValueList?: OfferTargetAgreementIntentString[];
 }
-const OfferTargetAgreementIntentFilter =
-  DataProductVisibilityFilter as any as S.Schema<OfferTargetAgreementIntentFilter>;
 export type OfferCreatedBySourceString = "Seller" | "AwsMarketplace" | (string & {});
-const OfferCreatedBySourceString = S.String;
-
 export type OfferCreatedBySourceFilterValueList = OfferCreatedBySourceString[];
 export interface OfferCreatedBySourceFilter {
   ValueList?: OfferCreatedBySourceString[];
 }
-const OfferCreatedBySourceFilter =
-  DataProductVisibilityFilter as any as S.Schema<OfferCreatedBySourceFilter>;
 export interface OfferFilters {
   EntityId?: OfferEntityIdFilter;
   Name?: OfferNameFilter;
@@ -809,14 +595,11 @@ export interface OfferFilters {
   TargetAgreementIntent?: OfferTargetAgreementIntentFilter;
   CreatedBySource?: OfferCreatedBySourceFilter;
 }
-const OfferFilters = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<OfferFilters>;
 export type ContainerProductEntityIdString = string;
 export type ContainerProductEntityIdFilterValueList = string[];
 export interface ContainerProductEntityIdFilter {
   ValueList?: string[];
 }
-const ContainerProductEntityIdFilter =
-  DataProductEntityIdFilter as any as S.Schema<ContainerProductEntityIdFilter>;
 export interface ContainerProductLastModifiedDateFilterDateRange {
   AfterValue?: string;
   BeforeValue?: string;
@@ -824,20 +607,12 @@ export interface ContainerProductLastModifiedDateFilterDateRange {
 export interface ContainerProductLastModifiedDateFilter {
   DateRange?: ContainerProductLastModifiedDateFilterDateRange;
 }
-const ContainerProductLastModifiedDateFilter =
-  DataProductLastModifiedDateFilter as any as S.Schema<ContainerProductLastModifiedDateFilter>;
 export type ContainerProductTitleString = string;
 export type ContainerProductTitleFilterValueList = string[];
-const ContainerProductTitleFilterValueList =
-  ValueList as any as S.Schema<ContainerProductTitleFilterValueList>;
 export interface ContainerProductTitleFilter {
   ValueList?: string[];
   WildCardValue?: string;
 }
-const ContainerProductTitleFilter = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ContainerProductTitleFilter>;
 export type ContainerProductVisibilityString =
   | "Limited"
   | "Public"
@@ -848,25 +623,17 @@ export type ContainerProductVisibilityFilterValueList = ContainerProductVisibili
 export interface ContainerProductVisibilityFilter {
   ValueList?: ContainerProductVisibilityString[];
 }
-const ContainerProductVisibilityFilter =
-  DataProductVisibilityFilter as any as S.Schema<ContainerProductVisibilityFilter>;
 export interface ContainerProductFilters {
   EntityId?: ContainerProductEntityIdFilter;
   LastModifiedDate?: ContainerProductLastModifiedDateFilter;
   ProductTitle?: ContainerProductTitleFilter;
   Visibility?: ContainerProductVisibilityFilter;
 }
-const ContainerProductFilters = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ContainerProductFilters>;
 export type ResaleAuthorizationEntityIdString = string;
 export type ResaleAuthorizationEntityIdFilterValueList = string[];
 export interface ResaleAuthorizationEntityIdFilter {
   ValueList?: string[];
 }
-const ResaleAuthorizationEntityIdFilter =
-  DataProductEntityIdFilter as any as S.Schema<ResaleAuthorizationEntityIdFilter>;
 export type ResaleAuthorizationNameString = string;
 export type ResaleAuthorizationNameFilterValueList = string[];
 export type ResaleAuthorizationNameFilterWildcard = string;
@@ -874,8 +641,6 @@ export interface ResaleAuthorizationNameFilter {
   ValueList?: string[];
   WildCardValue?: string;
 }
-const ResaleAuthorizationNameFilter =
-  ContainerProductTitleFilter as any as S.Schema<ResaleAuthorizationNameFilter>;
 export type ResaleAuthorizationProductIdString = string;
 export type ResaleAuthorizationProductIdFilterValueList = string[];
 export type ResaleAuthorizationProductIdFilterWildcard = string;
@@ -883,54 +648,31 @@ export interface ResaleAuthorizationProductIdFilter {
   ValueList?: string[];
   WildCardValue?: string;
 }
-const ResaleAuthorizationProductIdFilter =
-  ContainerProductTitleFilter as any as S.Schema<ResaleAuthorizationProductIdFilter>;
 export interface ResaleAuthorizationCreatedDateFilterDateRange {
   AfterValue?: string;
   BeforeValue?: string;
 }
-const ResaleAuthorizationCreatedDateFilterDateRange =
-  DataProductLastModifiedDateFilterDateRange as any as S.Schema<ResaleAuthorizationCreatedDateFilterDateRange>;
 export type ResaleAuthorizationCreatedDateFilterValueList = string[];
-const ResaleAuthorizationCreatedDateFilterValueList =
-  ValueList as any as S.Schema<ResaleAuthorizationCreatedDateFilterValueList>;
 export interface ResaleAuthorizationCreatedDateFilter {
   DateRange?: ResaleAuthorizationCreatedDateFilterDateRange;
   ValueList?: string[];
 }
-const ResaleAuthorizationCreatedDateFilter = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ResaleAuthorizationCreatedDateFilter>;
 export interface ResaleAuthorizationAvailabilityEndDateFilterDateRange {
   AfterValue?: string;
   BeforeValue?: string;
 }
-const ResaleAuthorizationAvailabilityEndDateFilterDateRange =
-  DataProductLastModifiedDateFilterDateRange as any as S.Schema<ResaleAuthorizationAvailabilityEndDateFilterDateRange>;
 export type ResaleAuthorizationAvailabilityEndDateFilterValueList = string[];
-const ResaleAuthorizationAvailabilityEndDateFilterValueList = /*@__PURE__*/ __L.at(__c8, 0);
 export interface ResaleAuthorizationAvailabilityEndDateFilter {
   DateRange?: ResaleAuthorizationAvailabilityEndDateFilterDateRange;
   ValueList?: string[];
 }
-const ResaleAuthorizationAvailabilityEndDateFilter = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ResaleAuthorizationAvailabilityEndDateFilter>;
 export type ResaleAuthorizationManufacturerAccountIdString = string;
 export type ResaleAuthorizationManufacturerAccountIdFilterValueList = string[];
-const ResaleAuthorizationManufacturerAccountIdFilterValueList =
-  ResaleAuthorizationAvailabilityEndDateFilterValueList as any as S.Schema<ResaleAuthorizationManufacturerAccountIdFilterValueList>;
 export type ResaleAuthorizationManufacturerAccountIdFilterWildcard = string;
 export interface ResaleAuthorizationManufacturerAccountIdFilter {
   ValueList?: string[];
   WildCardValue?: string;
 }
-const ResaleAuthorizationManufacturerAccountIdFilter = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ResaleAuthorizationManufacturerAccountIdFilter>;
 export type ResaleAuthorizationProductNameString = string;
 export type ResaleAuthorizationProductNameFilterValueList = string[];
 export type ResaleAuthorizationProductNameFilterWildcard = string;
@@ -938,8 +680,6 @@ export interface ResaleAuthorizationProductNameFilter {
   ValueList?: string[];
   WildCardValue?: string;
 }
-const ResaleAuthorizationProductNameFilter =
-  ContainerProductTitleFilter as any as S.Schema<ResaleAuthorizationProductNameFilter>;
 export type ResaleAuthorizationManufacturerLegalNameString = string;
 export type ResaleAuthorizationManufacturerLegalNameFilterValueList = string[];
 export type ResaleAuthorizationManufacturerLegalNameFilterWildcard = string;
@@ -947,8 +687,6 @@ export interface ResaleAuthorizationManufacturerLegalNameFilter {
   ValueList?: string[];
   WildCardValue?: string;
 }
-const ResaleAuthorizationManufacturerLegalNameFilter =
-  ResaleAuthorizationManufacturerAccountIdFilter as any as S.Schema<ResaleAuthorizationManufacturerLegalNameFilter>;
 export type ResaleAuthorizationResellerAccountIDString = string;
 export type ResaleAuthorizationResellerAccountIDFilterValueList = string[];
 export type ResaleAuthorizationResellerAccountIDFilterWildcard = string;
@@ -956,8 +694,6 @@ export interface ResaleAuthorizationResellerAccountIDFilter {
   ValueList?: string[];
   WildCardValue?: string;
 }
-const ResaleAuthorizationResellerAccountIDFilter =
-  ContainerProductTitleFilter as any as S.Schema<ResaleAuthorizationResellerAccountIDFilter>;
 export type ResaleAuthorizationResellerLegalNameString = string;
 export type ResaleAuthorizationResellerLegalNameFilterValueList = string[];
 export type ResaleAuthorizationResellerLegalNameFilterWildcard = string;
@@ -965,28 +701,16 @@ export interface ResaleAuthorizationResellerLegalNameFilter {
   ValueList?: string[];
   WildCardValue?: string;
 }
-const ResaleAuthorizationResellerLegalNameFilter =
-  ContainerProductTitleFilter as any as S.Schema<ResaleAuthorizationResellerLegalNameFilter>;
 export type ResaleAuthorizationStatusString = "Draft" | "Active" | "Restricted" | (string & {});
-const ResaleAuthorizationStatusString = S.String;
-
 export type ResaleAuthorizationStatusFilterValueList = ResaleAuthorizationStatusString[];
 export interface ResaleAuthorizationStatusFilter {
   ValueList?: ResaleAuthorizationStatusString[];
 }
-const ResaleAuthorizationStatusFilter =
-  DataProductVisibilityFilter as any as S.Schema<ResaleAuthorizationStatusFilter>;
 export type ResaleAuthorizationOfferExtendedStatusString = string;
 export type ResaleAuthorizationOfferExtendedStatusFilterValueList = string[];
-const ResaleAuthorizationOfferExtendedStatusFilterValueList =
-  ResaleAuthorizationAvailabilityEndDateFilterValueList as any as S.Schema<ResaleAuthorizationOfferExtendedStatusFilterValueList>;
 export interface ResaleAuthorizationOfferExtendedStatusFilter {
   ValueList?: string[];
 }
-const ResaleAuthorizationOfferExtendedStatusFilter = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ResaleAuthorizationOfferExtendedStatusFilter>;
 export interface ResaleAuthorizationLastModifiedDateFilterDateRange {
   AfterValue?: string;
   BeforeValue?: string;
@@ -994,35 +718,25 @@ export interface ResaleAuthorizationLastModifiedDateFilterDateRange {
 export interface ResaleAuthorizationLastModifiedDateFilter {
   DateRange?: ResaleAuthorizationLastModifiedDateFilterDateRange;
 }
-const ResaleAuthorizationLastModifiedDateFilter =
-  DataProductLastModifiedDateFilter as any as S.Schema<ResaleAuthorizationLastModifiedDateFilter>;
 export type ResaleAuthorizationResellerRoleString =
   | "ChannelPartner"
   | "Distributor"
   | (string & {});
-const ResaleAuthorizationResellerRoleString = S.String;
-
 export type ResaleAuthorizationResellerRoleFilterValueList =
   ResaleAuthorizationResellerRoleString[];
 export interface ResaleAuthorizationResellerRoleFilter {
   ValueList?: ResaleAuthorizationResellerRoleString[];
 }
-const ResaleAuthorizationResellerRoleFilter =
-  DataProductVisibilityFilter as any as S.Schema<ResaleAuthorizationResellerRoleFilter>;
 export type ResaleAuthorizationSourceAuthorizationString = string;
 export type ResaleAuthorizationSourceAuthorizationFilterValueList = string[];
 export interface ResaleAuthorizationSourceAuthorizationFilter {
   ValueList?: string[];
 }
-const ResaleAuthorizationSourceAuthorizationFilter =
-  ResaleAuthorizationOfferExtendedStatusFilter as any as S.Schema<ResaleAuthorizationSourceAuthorizationFilter>;
 export type ResaleAuthorizationIssuerAccountIdString = string;
 export type ResaleAuthorizationIssuerAccountIdFilterValueList = string[];
 export interface ResaleAuthorizationIssuerAccountIdFilter {
   ValueList?: string[];
 }
-const ResaleAuthorizationIssuerAccountIdFilter =
-  DataProductEntityIdFilter as any as S.Schema<ResaleAuthorizationIssuerAccountIdFilter>;
 export interface ResaleAuthorizationFilters {
   EntityId?: ResaleAuthorizationEntityIdFilter;
   Name?: ResaleAuthorizationNameFilter;
@@ -1041,17 +755,11 @@ export interface ResaleAuthorizationFilters {
   SourceAuthorization?: ResaleAuthorizationSourceAuthorizationFilter;
   IssuerAccountId?: ResaleAuthorizationIssuerAccountIdFilter;
 }
-const ResaleAuthorizationFilters = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ResaleAuthorizationFilters>;
 export type MachineLearningProductEntityIdString = string;
 export type MachineLearningProductEntityIdFilterValueList = string[];
 export interface MachineLearningProductEntityIdFilter {
   ValueList?: string[];
 }
-const MachineLearningProductEntityIdFilter =
-  DataProductEntityIdFilter as any as S.Schema<MachineLearningProductEntityIdFilter>;
 export interface MachineLearningProductLastModifiedDateFilterDateRange {
   AfterValue?: string;
   BeforeValue?: string;
@@ -1059,61 +767,44 @@ export interface MachineLearningProductLastModifiedDateFilterDateRange {
 export interface MachineLearningProductLastModifiedDateFilter {
   DateRange?: MachineLearningProductLastModifiedDateFilterDateRange;
 }
-const MachineLearningProductLastModifiedDateFilter =
-  DataProductLastModifiedDateFilter as any as S.Schema<MachineLearningProductLastModifiedDateFilter>;
 export type MachineLearningProductTitleString = string;
 export type MachineLearningProductTitleFilterValueList = string[];
 export interface MachineLearningProductTitleFilter {
   ValueList?: string[];
   WildCardValue?: string;
 }
-const MachineLearningProductTitleFilter =
-  ContainerProductTitleFilter as any as S.Schema<MachineLearningProductTitleFilter>;
 export type MachineLearningProductVisibilityString =
   | "Limited"
   | "Public"
   | "Restricted"
   | "Draft"
   | (string & {});
-const MachineLearningProductVisibilityString = S.String;
-
 export type MachineLearningProductVisibilityFilterValueList =
   MachineLearningProductVisibilityString[];
 export interface MachineLearningProductVisibilityFilter {
   ValueList?: MachineLearningProductVisibilityString[];
 }
-const MachineLearningProductVisibilityFilter =
-  DataProductVisibilityFilter as any as S.Schema<MachineLearningProductVisibilityFilter>;
 export interface MachineLearningProductFilters {
   EntityId?: MachineLearningProductEntityIdFilter;
   LastModifiedDate?: MachineLearningProductLastModifiedDateFilter;
   ProductTitle?: MachineLearningProductTitleFilter;
   Visibility?: MachineLearningProductVisibilityFilter;
 }
-const MachineLearningProductFilters = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<MachineLearningProductFilters>;
 export type OfferSetEntityIdString = string;
 export type OfferSetEntityIdFilterValueList = string[];
 export interface OfferSetEntityIdFilter {
   ValueList?: string[];
 }
-const OfferSetEntityIdFilter = AmiProductEntityIdFilter as any as S.Schema<OfferSetEntityIdFilter>;
 export type OfferSetNameString = string;
 export type OfferSetNameFilterValueList = string[];
 export interface OfferSetNameFilter {
   ValueList?: string[];
 }
-const OfferSetNameFilter = AmiProductEntityIdFilter as any as S.Schema<OfferSetNameFilter>;
 export type OfferSetStateString = "Draft" | "Released" | (string & {});
-const OfferSetStateString = S.String;
-
 export type OfferSetStateFilterValueList = OfferSetStateString[];
 export interface OfferSetStateFilter {
   ValueList?: OfferSetStateString[];
 }
-const OfferSetStateFilter = OfferStateFilter as any as S.Schema<OfferSetStateFilter>;
 export interface OfferSetReleaseDateFilterDateRange {
   AfterValue?: string;
   BeforeValue?: string;
@@ -1121,22 +812,16 @@ export interface OfferSetReleaseDateFilterDateRange {
 export interface OfferSetReleaseDateFilter {
   DateRange?: OfferSetReleaseDateFilterDateRange;
 }
-const OfferSetReleaseDateFilter =
-  DataProductLastModifiedDateFilter as any as S.Schema<OfferSetReleaseDateFilter>;
 export type OfferSetAssociatedOfferIdsString = string;
 export type OfferSetAssociatedOfferIdsFilterValueList = string[];
 export interface OfferSetAssociatedOfferIdsFilter {
   ValueList?: string[];
 }
-const OfferSetAssociatedOfferIdsFilter =
-  DataProductEntityIdFilter as any as S.Schema<OfferSetAssociatedOfferIdsFilter>;
 export type OfferSetSolutionIdString = string;
 export type OfferSetSolutionIdFilterValueList = string[];
 export interface OfferSetSolutionIdFilter {
   ValueList?: string[];
 }
-const OfferSetSolutionIdFilter =
-  AmiProductEntityIdFilter as any as S.Schema<OfferSetSolutionIdFilter>;
 export interface OfferSetLastModifiedDateFilterDateRange {
   AfterValue?: string;
   BeforeValue?: string;
@@ -1144,8 +829,6 @@ export interface OfferSetLastModifiedDateFilterDateRange {
 export interface OfferSetLastModifiedDateFilter {
   DateRange?: OfferSetLastModifiedDateFilterDateRange;
 }
-const OfferSetLastModifiedDateFilter =
-  DataProductLastModifiedDateFilter as any as S.Schema<OfferSetLastModifiedDateFilter>;
 export interface OfferSetFilters {
   EntityId?: OfferSetEntityIdFilter;
   Name?: OfferSetNameFilter;
@@ -1155,7 +838,6 @@ export interface OfferSetFilters {
   SolutionId?: OfferSetSolutionIdFilter;
   LastModifiedDate?: OfferSetLastModifiedDateFilter;
 }
-const OfferSetFilters = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<OfferSetFilters>;
 export type EntityTypeFilters =
   | {
       DataProductFilters: DataProductFilters;
@@ -1237,20 +919,16 @@ export type EntityTypeFilters =
       MachineLearningProductFilters?: never;
       OfferSetFilters: OfferSetFilters;
     };
-const EntityTypeFilters = /*@__PURE__*/ __L.at(__c8, 7);
 export type DataProductSortBy =
   | "EntityId"
   | "ProductTitle"
   | "Visibility"
   | "LastModifiedDate"
   | (string & {});
-const DataProductSortBy = S.String;
-
 export interface DataProductSort {
   SortBy?: DataProductSortBy;
   SortOrder?: SortOrder;
 }
-const DataProductSort = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<DataProductSort>;
 export type SaaSProductSortBy =
   | "EntityId"
   | "ProductTitle"
@@ -1262,7 +940,6 @@ export interface SaaSProductSort {
   SortBy?: SaaSProductSortBy;
   SortOrder?: SortOrder;
 }
-const SaaSProductSort = DataProductSort as any as S.Schema<SaaSProductSort>;
 export type AmiProductSortBy =
   | "EntityId"
   | "LastModifiedDate"
@@ -1273,7 +950,6 @@ export interface AmiProductSort {
   SortBy?: AmiProductSortBy;
   SortOrder?: SortOrder;
 }
-const AmiProductSort = DataProductSort as any as S.Schema<AmiProductSort>;
 export type OfferSortBy =
   | "EntityId"
   | "Name"
@@ -1294,7 +970,6 @@ export interface OfferSort {
   SortBy?: OfferSortBy;
   SortOrder?: SortOrder;
 }
-const OfferSort = DataProductSort as any as S.Schema<OfferSort>;
 export type ContainerProductSortBy =
   | "EntityId"
   | "LastModifiedDate"
@@ -1306,7 +981,6 @@ export interface ContainerProductSort {
   SortBy?: ContainerProductSortBy;
   SortOrder?: SortOrder;
 }
-const ContainerProductSort = DataProductSort as any as S.Schema<ContainerProductSort>;
 export type ResaleAuthorizationSortBy =
   | "EntityId"
   | "Name"
@@ -1329,23 +1003,16 @@ export interface ResaleAuthorizationSort {
   SortBy?: ResaleAuthorizationSortBy;
   SortOrder?: SortOrder;
 }
-const ResaleAuthorizationSort = DataProductSort as any as S.Schema<ResaleAuthorizationSort>;
 export type MachineLearningProductSortBy =
   | "EntityId"
   | "LastModifiedDate"
   | "ProductTitle"
   | "Visibility"
   | (string & {});
-const MachineLearningProductSortBy = S.String;
-
 export interface MachineLearningProductSort {
   SortBy?: MachineLearningProductSortBy;
   SortOrder?: SortOrder;
 }
-const MachineLearningProductSort = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<MachineLearningProductSort>;
 export type OfferSetSortBy =
   | "Name"
   | "State"
@@ -1358,7 +1025,6 @@ export interface OfferSetSort {
   SortBy?: OfferSetSortBy;
   SortOrder?: SortOrder;
 }
-const OfferSetSort = DataProductSort as any as S.Schema<OfferSetSort>;
 export type EntityTypeSort =
   | {
       DataProductSort: DataProductSort;
@@ -1440,7 +1106,6 @@ export type EntityTypeSort =
       MachineLearningProductSort?: never;
       OfferSetSort: OfferSetSort;
     };
-const EntityTypeSort = /*@__PURE__*/ __L.at(__c9, 2);
 export interface ListEntitiesRequest {
   Catalog: string;
   EntityType: string;
@@ -1452,34 +1117,27 @@ export interface ListEntitiesRequest {
   EntityTypeFilters?: EntityTypeFilters;
   EntityTypeSort?: EntityTypeSort;
 }
-const ListEntitiesRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ListEntitiesRequest>;
 export type EntityNameString = string;
 export type VisibilityValue = string;
 export interface AmiProductSummary {
   ProductTitle?: string;
   Visibility?: AmiProductVisibilityString;
 }
-const AmiProductSummary = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<AmiProductSummary>;
 export interface ContainerProductSummary {
   ProductTitle?: string;
   Visibility?: ContainerProductVisibilityString;
 }
-const ContainerProductSummary = AmiProductSummary as any as S.Schema<ContainerProductSummary>;
 export interface DataProductSummary {
   ProductTitle?: string;
   Visibility?: DataProductVisibilityString;
 }
-const DataProductSummary = AmiProductSummary as any as S.Schema<DataProductSummary>;
 export interface SaaSProductSummary {
   ProductTitle?: string;
   Visibility?: SaaSProductVisibilityString;
 }
-const SaaSProductSummary = AmiProductSummary as any as S.Schema<SaaSProductSummary>;
 export type OfferBuyerAccountsString = string;
 export type OfferBuyerAccountsList = string[];
-const OfferBuyerAccountsList = ValueList as any as S.Schema<OfferBuyerAccountsList>;
 export type OfferTargetingList = OfferTargetingString[];
-const OfferTargetingList = OfferTargetingFilterValueList as any as S.Schema<OfferTargetingList>;
 export interface OfferSummary {
   Name?: string;
   ProductId?: string;
@@ -1494,7 +1152,6 @@ export interface OfferSummary {
   TargetAgreementIntent?: OfferTargetAgreementIntentString;
   CreatedBySource?: OfferCreatedBySourceString;
 }
-const OfferSummary = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<OfferSummary>;
 export interface ResaleAuthorizationSummary {
   Name?: string;
   ProductId?: string;
@@ -1511,20 +1168,11 @@ export interface ResaleAuthorizationSummary {
   SourceAuthorization?: string;
   IssuerAccountId?: string;
 }
-const ResaleAuthorizationSummary = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ResaleAuthorizationSummary>;
 export interface MachineLearningProductSummary {
   ProductTitle?: string;
   Visibility?: MachineLearningProductVisibilityString;
 }
-const MachineLearningProductSummary = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<MachineLearningProductSummary>;
 export type OfferSetAssociatedOfferIdsList = string[];
-const OfferSetAssociatedOfferIdsList = ValueList as any as S.Schema<OfferSetAssociatedOfferIdsList>;
 export interface OfferSetSummary {
   Name?: string;
   State?: OfferSetStateString;
@@ -1532,7 +1180,6 @@ export interface OfferSetSummary {
   AssociatedOfferIds?: string[];
   SolutionId?: string;
 }
-const OfferSetSummary = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<OfferSetSummary>;
 export interface EntitySummary {
   Name?: string;
   EntityType?: string;
@@ -1549,52 +1196,30 @@ export interface EntitySummary {
   MachineLearningProductSummary?: MachineLearningProductSummary;
   OfferSetSummary?: OfferSetSummary;
 }
-const EntitySummary = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<EntitySummary>;
 export type EntitySummaryList = EntitySummary[];
-const EntitySummaryList = /*@__PURE__*/ __L.at(__c10, 2);
 export interface ListEntitiesResponse {
   EntitySummaryList?: EntitySummary[];
   NextToken?: string;
 }
-const ListEntitiesResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ListEntitiesResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c10, 6);
 export interface ListTagsForResourceResponse {
   ResourceArn?: string;
   Tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutResourcePolicyRequest {
   ResourceArn: string;
   Policy: string;
 }
-const PutResourcePolicyRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<PutResourcePolicyRequest>;
 export interface PutResourcePolicyResponse {}
-const PutResourcePolicyResponse =
-  DeleteResourcePolicyResponse as any as S.Schema<PutResourcePolicyResponse>;
 export interface Change {
   ChangeType: string;
   Entity: Entity;
@@ -1603,9 +1228,7 @@ export interface Change {
   DetailsDocument?: any;
   ChangeName?: string;
 }
-const Change = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<Change>;
 export type RequestedChangeList = Change[];
-const RequestedChangeList = /*@__PURE__*/ __L.at(__c11, 2);
 export type ClientRequestToken = string;
 export interface StartChangeSetRequest {
   Catalog: string;
@@ -1615,43 +1238,27 @@ export interface StartChangeSetRequest {
   ChangeSetTags?: Tag[];
   Intent?: Intent;
 }
-const StartChangeSetRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<StartChangeSetRequest>;
 export interface StartChangeSetResponse {
   ChangeSetId?: string;
   ChangeSetArn?: string;
 }
-const StartChangeSetResponse = CancelChangeSetResponse as any as S.Schema<StartChangeSetResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteResourcePolicyResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = ValueList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse =
-  DeleteResourcePolicyResponse as any as S.Schema<UntagResourceResponse>;
 export type ValidationExceptionReason =
   | "UnknownOperation"
   | "CannotParse"
   | "FieldValidationFailed"
   | "Other"
   | (string & {});
-const ValidationExceptionReason = S.String;
-
 export type FieldName = string;
 export interface ValidationExceptionField {
   Reason?: ValidationExceptionReason;
@@ -1661,12 +1268,7 @@ export interface ValidationExceptionField {
   Field?: string;
   Message?: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c11, 7);
 export type BatchDescribeEntitiesError =
   | AccessDeniedException
   | InternalServiceException
@@ -1682,8 +1284,8 @@ export const batchDescribeEntities: API.OperationMethod<
   BatchDescribeEntitiesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchDescribeEntitiesRequest,
-  output: BatchDescribeEntitiesResponse,
+  input: __S(2) as any as S.Schema<BatchDescribeEntitiesRequest>,
+  output: __S(7) as any as S.Schema<BatchDescribeEntitiesResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1715,8 +1317,8 @@ export const cancelChangeSet: API.OperationMethod<
   CancelChangeSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelChangeSetRequest,
-  output: CancelChangeSetResponse,
+  input: __S(8) as any as S.Schema<CancelChangeSetRequest>,
+  output: __S(9) as any as S.Schema<CancelChangeSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1747,8 +1349,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteResourcePolicyRequest,
-  output: DeleteResourcePolicyResponse,
+  input: __S(10) as any as S.Schema<DeleteResourcePolicyRequest>,
+  output: __S(11) as any as S.Schema<DeleteResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1783,8 +1385,8 @@ export const describeAssessment: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ControlAssessment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeAssessmentRequest,
-  output: DescribeAssessmentResponse,
+  input: __S(12) as any as S.Schema<DescribeAssessmentRequest>,
+  output: __S(22) as any as S.Schema<DescribeAssessmentResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1819,8 +1421,8 @@ export const describeChangeSet: API.OperationMethod<
   DescribeChangeSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeChangeSetRequest,
-  output: DescribeChangeSetResponse,
+  input: __S(23) as any as S.Schema<DescribeChangeSetRequest>,
+  output: __S(28) as any as S.Schema<DescribeChangeSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1850,8 +1452,8 @@ export const describeEntity: API.OperationMethod<
   DescribeEntityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeEntityRequest,
-  output: DescribeEntityResponse,
+  input: __S(29) as any as S.Schema<DescribeEntityRequest>,
+  output: __S(30) as any as S.Schema<DescribeEntityResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1882,8 +1484,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourcePolicyRequest,
-  output: GetResourcePolicyResponse,
+  input: __S(31) as any as S.Schema<GetResourcePolicyRequest>,
+  output: __S(32) as any as S.Schema<GetResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1922,8 +1524,8 @@ export const listAssessments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AssessmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAssessmentsRequest,
-  output: ListAssessmentsResponse,
+  input: __S(34) as any as S.Schema<ListAssessmentsRequest>,
+  output: __S(37) as any as S.Schema<ListAssessmentsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1963,8 +1565,8 @@ export const listChangeSets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ChangeSetSummaryListItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListChangeSetsRequest,
-  output: ListChangeSetsResponse,
+  input: __S(42) as any as S.Schema<ListChangeSetsRequest>,
+  output: __S(45) as any as S.Schema<ListChangeSetsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -1999,8 +1601,8 @@ export const listEntities: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EntitySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEntitiesRequest,
-  output: ListEntitiesResponse,
+  input: __S(75) as any as S.Schema<ListEntitiesRequest>,
+  output: __S(83) as any as S.Schema<ListEntitiesResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2035,8 +1637,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(84) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(87) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2066,8 +1668,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutResourcePolicyRequest,
-  output: PutResourcePolicyResponse,
+  input: __S(88) as any as S.Schema<PutResourcePolicyRequest>,
+  output: __S(11) as any as S.Schema<PutResourcePolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2115,8 +1717,8 @@ export const startChangeSet: API.OperationMethod<
   StartChangeSetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartChangeSetRequest,
-  output: StartChangeSetResponse,
+  input: __S(91) as any as S.Schema<StartChangeSetRequest>,
+  output: __S(9) as any as S.Schema<StartChangeSetResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2147,8 +1749,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(92) as any as S.Schema<TagResourceRequest>,
+  output: __S(11) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2177,8 +1779,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(93) as any as S.Schema<UntagResourceRequest>,
+  output: __S(11) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceException,
@@ -2199,10 +1801,10 @@ function __c0(j: number): any {
         identifier: "EntityRequest",
       });
     case 1:
-      return S.Array(EntityRequest);
+      return S.Array(__S(0));
     case 2:
       return S.suspend(() =>
-        S.Struct({ EntityRequestList: EntityRequestList }).pipe(
+        S.Struct({ EntityRequestList: __S(1) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/BatchDescribeEntities" }),
             svc,
@@ -2226,16 +1828,16 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "EntityDetail" });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ EntityDetail.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(3).pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({ ErrorCode: S.optional(S.String), ErrorMessage: S.optional(S.String) }),
       ).annotate({ identifier: "BatchDescribeErrorDetail" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ BatchDescribeErrorDetail.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(5).pipe(S.optional));
     case 7:
       return S.suspend(() =>
-        S.Struct({ EntityDetails: S.optional(EntityDetails), Errors: S.optional(Errors) }),
+        S.Struct({ EntityDetails: S.optional(__S(4)), Errors: S.optional(__S(6)) }),
       ).annotate({
         identifier: "BatchDescribeEntitiesResponse",
       });
@@ -2305,8 +1907,8 @@ function __c1(j: number): any {
       });
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ AMISecuritySummary: AMISecuritySummary }),
-        /*@__PURE__*/ S.Struct({ ContainerSecuritySummary: ContainerSecuritySummary }),
+        /*@__PURE__*/ S.Struct({ AMISecuritySummary: __S(14) }),
+        /*@__PURE__*/ S.Struct({ ContainerSecuritySummary: __S(14) }),
       ]);
   }
 }
@@ -2317,39 +1919,39 @@ function __c2(j: number): any {
         S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "ErrorScope" });
     case 1:
-      return S.Array(ErrorScope);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
           Code: S.optional(S.String),
           Message: S.optional(S.String),
-          Scope: S.optional(ErrorScopeList),
+          Scope: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "ControlError" });
     case 3:
-      return S.Array(ControlError);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
           ControlId: S.optional(S.String),
-          ControlAssessmentResult: S.optional(ControlAssessmentResult),
-          Errors: S.optional(ControlErrorList),
+          ControlAssessmentResult: S.optional(S.String),
+          Errors: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "ControlAssessment" });
     case 5:
-      return S.Array(ControlAssessment);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
           AssessmentArn: S.optional(S.String),
           AssessmentId: S.optional(S.String),
           FrameworkId: S.optional(S.String),
-          AssessmentTargetSummary: S.optional(AssessmentTargetSummary),
-          FrameworkSummary: S.optional(FrameworkSummary),
-          AssessmentResult: S.optional(AssessmentResult),
+          AssessmentTargetSummary: S.optional(__S(13)),
+          FrameworkSummary: S.optional(__S(15)),
+          AssessmentResult: S.optional(S.String),
           CreatedAt: S.optional(S.String),
           ExpiresAt: S.optional(S.String),
-          ControlAssessments: S.optional(ControlAssessmentList),
+          ControlAssessments: S.optional(__S(21)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2373,33 +1975,33 @@ function __c3(j: number): any {
         S.Struct({ Type: S.String, Identifier: S.optional(S.String) }),
       ).annotate({ identifier: "Entity" });
     case 1:
-      return S.Array(ErrorDetail);
+      return S.Array(__S(5));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ChangeType: S.optional(S.String),
-          Entity: S.optional(Entity),
+          Entity: S.optional(__S(24)),
           Details: S.optional(S.String),
           DetailsDocument: S.optional(S.Any),
-          ErrorDetailList: S.optional(ErrorDetailList),
+          ErrorDetailList: S.optional(__S(25)),
           ChangeName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChangeSummary" });
     case 3:
-      return S.Array(ChangeSummary);
+      return S.Array(__S(26));
     case 4:
       return S.suspend(() =>
         S.Struct({
           ChangeSetId: S.optional(S.String),
           ChangeSetArn: S.optional(S.String),
           ChangeSetName: S.optional(S.String),
-          Intent: S.optional(Intent),
+          Intent: S.optional(S.String),
           StartTime: S.optional(S.String),
           EndTime: S.optional(S.String),
-          Status: S.optional(ChangeStatus),
-          FailureCode: S.optional(FailureCode),
+          Status: S.optional(S.String),
+          FailureCode: S.optional(S.String),
           FailureDescription: S.optional(S.String),
-          ChangeSet: S.optional(ChangeSetDescription),
+          ChangeSet: S.optional(__S(27)),
         }),
       ).annotate({
         identifier: "DescribeChangeSetResponse",
@@ -2440,16 +2042,16 @@ function __c4(j: number): any {
       });
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ AMISecurityFilters: AMISecurityFilters }),
-        /*@__PURE__*/ S.Struct({ ContainerSecurityFilters: ContainerSecurityFilters }),
+        /*@__PURE__*/ S.Struct({ AMISecurityFilters: __S(14) }),
+        /*@__PURE__*/ S.Struct({ ContainerSecurityFilters: __S(14) }),
       ]);
     case 2:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
           FrameworkId: S.optional(S.String),
-          AssessmentTargetFilter: S.optional(AssessmentTargetFilter),
-          FrameworkFilters: S.optional(FrameworkFilters),
+          AssessmentTargetFilter: S.optional(__S(13)),
+          FrameworkFilters: S.optional(__S(33)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -2462,19 +2064,19 @@ function __c4(j: number): any {
           AssessmentArn: S.optional(S.String),
           AssessmentId: S.optional(S.String),
           FrameworkId: S.optional(S.String),
-          AssessmentTargetSummary: S.optional(AssessmentTargetSummary),
-          FrameworkSummary: S.optional(FrameworkSummary),
-          AssessmentResult: S.optional(AssessmentResult),
+          AssessmentTargetSummary: S.optional(__S(13)),
+          FrameworkSummary: S.optional(__S(15)),
+          AssessmentResult: S.optional(S.String),
           CreatedAt: S.optional(S.String),
           ExpiresAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssessmentSummary" });
     case 4:
-      return S.Array(AssessmentSummary);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          AssessmentSummaryList: S.optional(AssessmentSummaryList),
+          AssessmentSummaryList: S.optional(__S(36)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAssessmentsResponse" });
@@ -2482,24 +2084,24 @@ function __c4(j: number): any {
       return S.Array(S.String);
     case 7:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), ValueList: S.optional(ValueList) }),
+        S.Struct({ Name: S.optional(S.String), ValueList: S.optional(__S(38)) }),
       ).annotate({ identifier: "Filter" });
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Filter);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
-        S.Struct({ SortBy: S.optional(S.String), SortOrder: S.optional(SortOrder) }),
+        S.Struct({ SortBy: S.optional(S.String), SortOrder: S.optional(S.String) }),
       ).annotate({ identifier: "Sort" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
-          FilterList: S.optional(FilterList),
-          Sort: S.optional(Sort),
+          FilterList: S.optional(__S(40)),
+          Sort: S.optional(__S(41)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -2514,30 +2116,28 @@ function __c5(j: number): any {
           ChangeSetName: S.optional(S.String),
           StartTime: S.optional(S.String),
           EndTime: S.optional(S.String),
-          Status: S.optional(ChangeStatus),
-          EntityIdList: S.optional(ResourceIdList),
-          FailureCode: S.optional(FailureCode),
+          Status: S.optional(S.String),
+          EntityIdList: S.optional(__S(38)),
+          FailureCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChangeSetSummaryListItem" });
     case 4:
-      return S.Array(ChangeSetSummaryListItem);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ChangeSetSummaryList: S.optional(ChangeSetSummaryList),
+          ChangeSetSummaryList: S.optional(__S(44)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListChangeSetsResponse" });
     case 6:
-      return S.suspend(() =>
-        S.Struct({ ValueList: S.optional(DataProductEntityIdFilterValueList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ ValueList: S.optional(__S(38)) })).annotate({
         identifier: "DataProductEntityIdFilter",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ValueList: S.optional(DataProductTitleFilterValueList),
+          ValueList: S.optional(__S(38)),
           WildCardValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataProductTitleFilter" });
@@ -2546,11 +2146,9 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DataProductVisibilityString);
+      return S.Array(S.String);
     case 1:
-      return S.suspend(() =>
-        S.Struct({ ValueList: S.optional(DataProductVisibilityFilterValueList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ ValueList: S.optional(__S(48)) })).annotate({
         identifier: "DataProductVisibilityFilter",
       });
     case 2:
@@ -2560,40 +2158,38 @@ function __c6(j: number): any {
         identifier: "DataProductLastModifiedDateFilterDateRange",
       });
     case 3:
-      return S.suspend(() =>
-        S.Struct({ DateRange: S.optional(DataProductLastModifiedDateFilterDateRange) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ DateRange: S.optional(__S(50)) })).annotate({
         identifier: "DataProductLastModifiedDateFilter",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          EntityId: S.optional(DataProductEntityIdFilter),
-          ProductTitle: S.optional(DataProductTitleFilter),
-          Visibility: S.optional(DataProductVisibilityFilter),
-          LastModifiedDate: S.optional(DataProductLastModifiedDateFilter),
+          EntityId: S.optional(__S(46)),
+          ProductTitle: S.optional(__S(47)),
+          Visibility: S.optional(__S(49)),
+          LastModifiedDate: S.optional(__S(51)),
         }),
       ).annotate({ identifier: "DataProductFilters" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          EntityId: S.optional(SaaSProductEntityIdFilter),
-          ProductTitle: S.optional(SaaSProductTitleFilter),
-          Visibility: S.optional(SaaSProductVisibilityFilter),
-          LastModifiedDate: S.optional(SaaSProductLastModifiedDateFilter),
+          EntityId: S.optional(__S(46)),
+          ProductTitle: S.optional(__S(47)),
+          Visibility: S.optional(__S(49)),
+          LastModifiedDate: S.optional(__S(51)),
         }),
       ).annotate({ identifier: "SaaSProductFilters" });
     case 6:
-      return S.suspend(() =>
-        S.Struct({ ValueList: S.optional(AmiProductEntityIdFilterValueList) }),
-      ).annotate({ identifier: "AmiProductEntityIdFilter" });
+      return S.suspend(() => S.Struct({ ValueList: S.optional(__S(38)) })).annotate({
+        identifier: "AmiProductEntityIdFilter",
+      });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          EntityId: S.optional(AmiProductEntityIdFilter),
-          LastModifiedDate: S.optional(AmiProductLastModifiedDateFilter),
-          ProductTitle: S.optional(AmiProductTitleFilter),
-          Visibility: S.optional(AmiProductVisibilityFilter),
+          EntityId: S.optional(__S(54)),
+          LastModifiedDate: S.optional(__S(51)),
+          ProductTitle: S.optional(__S(47)),
+          Visibility: S.optional(__S(49)),
         }),
       ).annotate({ identifier: "AmiProductFilters" });
   }
@@ -2601,42 +2197,42 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ DateRange: S.optional(OfferReleaseDateFilterDateRange) }),
-      ).annotate({ identifier: "OfferReleaseDateFilter" });
+      return S.suspend(() => S.Struct({ DateRange: S.optional(__S(50)) })).annotate({
+        identifier: "OfferReleaseDateFilter",
+      });
     case 1:
       return S.suspend(() => S.Struct({ WildCardValue: S.optional(S.String) })).annotate({
         identifier: "OfferBuyerAccountsFilter",
       });
     case 2:
-      return S.Array(OfferStateString);
+      return S.Array(S.String);
     case 3:
-      return S.suspend(() =>
-        S.Struct({ ValueList: S.optional(OfferStateFilterValueList) }),
-      ).annotate({ identifier: "OfferStateFilter" });
+      return S.suspend(() => S.Struct({ ValueList: S.optional(__S(58)) })).annotate({
+        identifier: "OfferStateFilter",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          EntityId: S.optional(OfferEntityIdFilter),
-          Name: S.optional(OfferNameFilter),
-          ProductId: S.optional(OfferProductIdFilter),
-          ResaleAuthorizationId: S.optional(OfferResaleAuthorizationIdFilter),
-          ReleaseDate: S.optional(OfferReleaseDateFilter),
-          AvailabilityEndDate: S.optional(OfferAvailabilityEndDateFilter),
-          BuyerAccounts: S.optional(OfferBuyerAccountsFilter),
-          State: S.optional(OfferStateFilter),
-          Targeting: S.optional(OfferTargetingFilter),
-          LastModifiedDate: S.optional(OfferLastModifiedDateFilter),
-          OfferSetId: S.optional(OfferSetIdFilter),
-          TargetAgreementId: S.optional(OfferTargetAgreementIdFilter),
-          TargetAgreementIntent: S.optional(OfferTargetAgreementIntentFilter),
-          CreatedBySource: S.optional(OfferCreatedBySourceFilter),
+          EntityId: S.optional(__S(54)),
+          Name: S.optional(__S(47)),
+          ProductId: S.optional(__S(54)),
+          ResaleAuthorizationId: S.optional(__S(46)),
+          ReleaseDate: S.optional(__S(56)),
+          AvailabilityEndDate: S.optional(__S(51)),
+          BuyerAccounts: S.optional(__S(57)),
+          State: S.optional(__S(59)),
+          Targeting: S.optional(__S(59)),
+          LastModifiedDate: S.optional(__S(51)),
+          OfferSetId: S.optional(__S(54)),
+          TargetAgreementId: S.optional(__S(46)),
+          TargetAgreementIntent: S.optional(__S(49)),
+          CreatedBySource: S.optional(__S(49)),
         }),
       ).annotate({ identifier: "OfferFilters" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ValueList: S.optional(ContainerProductTitleFilterValueList),
+          ValueList: S.optional(__S(38)),
           WildCardValue: S.optional(S.String),
         }),
       ).annotate({
@@ -2645,17 +2241,17 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          EntityId: S.optional(ContainerProductEntityIdFilter),
-          LastModifiedDate: S.optional(ContainerProductLastModifiedDateFilter),
-          ProductTitle: S.optional(ContainerProductTitleFilter),
-          Visibility: S.optional(ContainerProductVisibilityFilter),
+          EntityId: S.optional(__S(46)),
+          LastModifiedDate: S.optional(__S(51)),
+          ProductTitle: S.optional(__S(61)),
+          Visibility: S.optional(__S(49)),
         }),
       ).annotate({ identifier: "ContainerProductFilters" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          DateRange: S.optional(ResaleAuthorizationCreatedDateFilterDateRange),
-          ValueList: S.optional(ResaleAuthorizationCreatedDateFilterValueList),
+          DateRange: S.optional(__S(50)),
+          ValueList: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "ResaleAuthorizationCreatedDateFilter",
@@ -2669,8 +2265,8 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DateRange: S.optional(ResaleAuthorizationAvailabilityEndDateFilterDateRange),
-          ValueList: S.optional(ResaleAuthorizationAvailabilityEndDateFilterValueList),
+          DateRange: S.optional(__S(50)),
+          ValueList: S.optional(__S(64)),
         }),
       ).annotate({
         identifier: "ResaleAuthorizationAvailabilityEndDateFilter",
@@ -2678,37 +2274,35 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ValueList: S.optional(ResaleAuthorizationManufacturerAccountIdFilterValueList),
+          ValueList: S.optional(__S(64)),
           WildCardValue: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ResaleAuthorizationManufacturerAccountIdFilter",
       });
     case 3:
-      return S.suspend(() =>
-        S.Struct({ ValueList: S.optional(ResaleAuthorizationOfferExtendedStatusFilterValueList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ ValueList: S.optional(__S(64)) })).annotate({
         identifier: "ResaleAuthorizationOfferExtendedStatusFilter",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          EntityId: S.optional(ResaleAuthorizationEntityIdFilter),
-          Name: S.optional(ResaleAuthorizationNameFilter),
-          ProductId: S.optional(ResaleAuthorizationProductIdFilter),
-          CreatedDate: S.optional(ResaleAuthorizationCreatedDateFilter),
-          AvailabilityEndDate: S.optional(ResaleAuthorizationAvailabilityEndDateFilter),
-          ManufacturerAccountId: S.optional(ResaleAuthorizationManufacturerAccountIdFilter),
-          ProductName: S.optional(ResaleAuthorizationProductNameFilter),
-          ManufacturerLegalName: S.optional(ResaleAuthorizationManufacturerLegalNameFilter),
-          ResellerAccountID: S.optional(ResaleAuthorizationResellerAccountIDFilter),
-          ResellerLegalName: S.optional(ResaleAuthorizationResellerLegalNameFilter),
-          Status: S.optional(ResaleAuthorizationStatusFilter),
-          OfferExtendedStatus: S.optional(ResaleAuthorizationOfferExtendedStatusFilter),
-          LastModifiedDate: S.optional(ResaleAuthorizationLastModifiedDateFilter),
-          ResellerRole: S.optional(ResaleAuthorizationResellerRoleFilter),
-          SourceAuthorization: S.optional(ResaleAuthorizationSourceAuthorizationFilter),
-          IssuerAccountId: S.optional(ResaleAuthorizationIssuerAccountIdFilter),
+          EntityId: S.optional(__S(46)),
+          Name: S.optional(__S(61)),
+          ProductId: S.optional(__S(61)),
+          CreatedDate: S.optional(__S(63)),
+          AvailabilityEndDate: S.optional(__S(65)),
+          ManufacturerAccountId: S.optional(__S(66)),
+          ProductName: S.optional(__S(61)),
+          ManufacturerLegalName: S.optional(__S(66)),
+          ResellerAccountID: S.optional(__S(61)),
+          ResellerLegalName: S.optional(__S(61)),
+          Status: S.optional(__S(49)),
+          OfferExtendedStatus: S.optional(__S(67)),
+          LastModifiedDate: S.optional(__S(51)),
+          ResellerRole: S.optional(__S(49)),
+          SourceAuthorization: S.optional(__S(67)),
+          IssuerAccountId: S.optional(__S(46)),
         }),
       ).annotate({
         identifier: "ResaleAuthorizationFilters",
@@ -2716,10 +2310,10 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          EntityId: S.optional(MachineLearningProductEntityIdFilter),
-          LastModifiedDate: S.optional(MachineLearningProductLastModifiedDateFilter),
-          ProductTitle: S.optional(MachineLearningProductTitleFilter),
-          Visibility: S.optional(MachineLearningProductVisibilityFilter),
+          EntityId: S.optional(__S(46)),
+          LastModifiedDate: S.optional(__S(51)),
+          ProductTitle: S.optional(__S(61)),
+          Visibility: S.optional(__S(49)),
         }),
       ).annotate({
         identifier: "MachineLearningProductFilters",
@@ -2727,25 +2321,25 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          EntityId: S.optional(OfferSetEntityIdFilter),
-          Name: S.optional(OfferSetNameFilter),
-          State: S.optional(OfferSetStateFilter),
-          ReleaseDate: S.optional(OfferSetReleaseDateFilter),
-          AssociatedOfferIds: S.optional(OfferSetAssociatedOfferIdsFilter),
-          SolutionId: S.optional(OfferSetSolutionIdFilter),
-          LastModifiedDate: S.optional(OfferSetLastModifiedDateFilter),
+          EntityId: S.optional(__S(54)),
+          Name: S.optional(__S(54)),
+          State: S.optional(__S(59)),
+          ReleaseDate: S.optional(__S(51)),
+          AssociatedOfferIds: S.optional(__S(46)),
+          SolutionId: S.optional(__S(54)),
+          LastModifiedDate: S.optional(__S(51)),
         }),
       ).annotate({ identifier: "OfferSetFilters" });
     case 7:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ DataProductFilters: DataProductFilters }),
-        /*@__PURE__*/ S.Struct({ SaaSProductFilters: SaaSProductFilters }),
-        /*@__PURE__*/ S.Struct({ AmiProductFilters: AmiProductFilters }),
-        /*@__PURE__*/ S.Struct({ OfferFilters: OfferFilters }),
-        /*@__PURE__*/ S.Struct({ ContainerProductFilters: ContainerProductFilters }),
-        /*@__PURE__*/ S.Struct({ ResaleAuthorizationFilters: ResaleAuthorizationFilters }),
-        /*@__PURE__*/ S.Struct({ MachineLearningProductFilters: MachineLearningProductFilters }),
-        /*@__PURE__*/ S.Struct({ OfferSetFilters: OfferSetFilters }),
+        /*@__PURE__*/ S.Struct({ DataProductFilters: __S(52) }),
+        /*@__PURE__*/ S.Struct({ SaaSProductFilters: __S(53) }),
+        /*@__PURE__*/ S.Struct({ AmiProductFilters: __S(55) }),
+        /*@__PURE__*/ S.Struct({ OfferFilters: __S(60) }),
+        /*@__PURE__*/ S.Struct({ ContainerProductFilters: __S(62) }),
+        /*@__PURE__*/ S.Struct({ ResaleAuthorizationFilters: __S(68) }),
+        /*@__PURE__*/ S.Struct({ MachineLearningProductFilters: __S(69) }),
+        /*@__PURE__*/ S.Struct({ OfferSetFilters: __S(70) }),
       ]);
   }
 }
@@ -2753,40 +2347,40 @@ function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ SortBy: S.optional(DataProductSortBy), SortOrder: S.optional(SortOrder) }),
+        S.Struct({ SortBy: S.optional(S.String), SortOrder: S.optional(S.String) }),
       ).annotate({ identifier: "DataProductSort" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          SortBy: S.optional(MachineLearningProductSortBy),
-          SortOrder: S.optional(SortOrder),
+          SortBy: S.optional(S.String),
+          SortOrder: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MachineLearningProductSort",
       });
     case 2:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ DataProductSort: DataProductSort }),
-        /*@__PURE__*/ S.Struct({ SaaSProductSort: SaaSProductSort }),
-        /*@__PURE__*/ S.Struct({ AmiProductSort: AmiProductSort }),
-        /*@__PURE__*/ S.Struct({ OfferSort: OfferSort }),
-        /*@__PURE__*/ S.Struct({ ContainerProductSort: ContainerProductSort }),
-        /*@__PURE__*/ S.Struct({ ResaleAuthorizationSort: ResaleAuthorizationSort }),
-        /*@__PURE__*/ S.Struct({ MachineLearningProductSort: MachineLearningProductSort }),
-        /*@__PURE__*/ S.Struct({ OfferSetSort: OfferSetSort }),
+        /*@__PURE__*/ S.Struct({ DataProductSort: __S(72) }),
+        /*@__PURE__*/ S.Struct({ SaaSProductSort: __S(72) }),
+        /*@__PURE__*/ S.Struct({ AmiProductSort: __S(72) }),
+        /*@__PURE__*/ S.Struct({ OfferSort: __S(72) }),
+        /*@__PURE__*/ S.Struct({ ContainerProductSort: __S(72) }),
+        /*@__PURE__*/ S.Struct({ ResaleAuthorizationSort: __S(72) }),
+        /*@__PURE__*/ S.Struct({ MachineLearningProductSort: __S(73) }),
+        /*@__PURE__*/ S.Struct({ OfferSetSort: __S(72) }),
       ]);
     case 3:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
           EntityType: S.String,
-          FilterList: S.optional(FilterList),
-          Sort: S.optional(Sort),
+          FilterList: S.optional(__S(40)),
+          Sort: S.optional(__S(41)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          OwnershipType: S.optional(OwnershipType),
-          EntityTypeFilters: S.optional(EntityTypeFilters),
-          EntityTypeSort: S.optional(EntityTypeSort),
+          OwnershipType: S.optional(S.String),
+          EntityTypeFilters: S.optional(__S(71)),
+          EntityTypeSort: S.optional(__S(74)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/ListEntities" }), svc, auth, proto, ver, rules),
         ),
@@ -2795,7 +2389,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ProductTitle: S.optional(S.String),
-          Visibility: S.optional(AmiProductVisibilityString),
+          Visibility: S.optional(S.String),
         }),
       ).annotate({ identifier: "AmiProductSummary" });
     case 5:
@@ -2806,13 +2400,13 @@ function __c9(j: number): any {
           ResaleAuthorizationId: S.optional(S.String),
           ReleaseDate: S.optional(S.String),
           AvailabilityEndDate: S.optional(S.String),
-          BuyerAccounts: S.optional(OfferBuyerAccountsList),
-          State: S.optional(OfferStateString),
-          Targeting: S.optional(OfferTargetingList),
+          BuyerAccounts: S.optional(__S(38)),
+          State: S.optional(S.String),
+          Targeting: S.optional(__S(58)),
           OfferSetId: S.optional(S.String),
           TargetAgreementId: S.optional(S.String),
-          TargetAgreementIntent: S.optional(OfferTargetAgreementIntentString),
-          CreatedBySource: S.optional(OfferCreatedBySourceString),
+          TargetAgreementIntent: S.optional(S.String),
+          CreatedBySource: S.optional(S.String),
         }),
       ).annotate({ identifier: "OfferSummary" });
     case 6:
@@ -2825,11 +2419,11 @@ function __c9(j: number): any {
           ManufacturerLegalName: S.optional(S.String),
           ResellerAccountID: S.optional(S.String),
           ResellerLegalName: S.optional(S.String),
-          Status: S.optional(ResaleAuthorizationStatusString),
+          Status: S.optional(S.String),
           OfferExtendedStatus: S.optional(S.String),
           CreatedDate: S.optional(S.String),
           AvailabilityEndDate: S.optional(S.String),
-          ResellerRole: S.optional(ResaleAuthorizationResellerRoleString),
+          ResellerRole: S.optional(S.String),
           SourceAuthorization: S.optional(S.String),
           IssuerAccountId: S.optional(S.String),
         }),
@@ -2840,7 +2434,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ProductTitle: S.optional(S.String),
-          Visibility: S.optional(MachineLearningProductVisibilityString),
+          Visibility: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MachineLearningProductSummary",
@@ -2853,9 +2447,9 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          State: S.optional(OfferSetStateString),
+          State: S.optional(S.String),
           ReleaseDate: S.optional(S.String),
-          AssociatedOfferIds: S.optional(OfferSetAssociatedOfferIdsList),
+          AssociatedOfferIds: S.optional(__S(38)),
           SolutionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "OfferSetSummary" });
@@ -2868,22 +2462,22 @@ function __c10(j: number): any {
           EntityArn: S.optional(S.String),
           LastModifiedDate: S.optional(S.String),
           Visibility: S.optional(S.String),
-          AmiProductSummary: S.optional(AmiProductSummary),
-          ContainerProductSummary: S.optional(ContainerProductSummary),
-          DataProductSummary: S.optional(DataProductSummary),
-          SaaSProductSummary: S.optional(SaaSProductSummary),
-          OfferSummary: S.optional(OfferSummary),
-          ResaleAuthorizationSummary: S.optional(ResaleAuthorizationSummary),
-          MachineLearningProductSummary: S.optional(MachineLearningProductSummary),
-          OfferSetSummary: S.optional(OfferSetSummary),
+          AmiProductSummary: S.optional(__S(76)),
+          ContainerProductSummary: S.optional(__S(76)),
+          DataProductSummary: S.optional(__S(76)),
+          SaaSProductSummary: S.optional(__S(76)),
+          OfferSummary: S.optional(__S(77)),
+          ResaleAuthorizationSummary: S.optional(__S(78)),
+          MachineLearningProductSummary: S.optional(__S(79)),
+          OfferSetSummary: S.optional(__S(80)),
         }),
       ).annotate({ identifier: "EntitySummary" });
     case 2:
-      return S.Array(EntitySummary);
+      return S.Array(__S(81));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EntitySummaryList: S.optional(EntitySummaryList),
+          EntitySummaryList: S.optional(__S(82)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListEntitiesResponse" });
@@ -2907,10 +2501,10 @@ function __c10(j: number): any {
         identifier: "Tag",
       });
     case 6:
-      return S.Array(Tag);
+      return S.Array(__S(85));
     case 7:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(TagList) }),
+        S.Struct({ ResourceArn: S.optional(S.String), Tags: S.optional(__S(86)) }),
       ).annotate({
         identifier: "ListTagsForResourceResponse",
       });
@@ -2935,44 +2529,44 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ChangeType: S.String,
-          Entity: Entity,
-          EntityTags: S.optional(TagList),
+          Entity: __S(24),
+          EntityTags: S.optional(__S(86)),
           Details: S.optional(S.String),
           DetailsDocument: S.optional(S.Any),
           ChangeName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Change" });
     case 2:
-      return S.Array(Change);
+      return S.Array(__S(89));
     case 3:
       return S.suspend(() =>
         S.Struct({
           Catalog: S.String,
-          ChangeSet: RequestedChangeList,
+          ChangeSet: __S(90),
           ChangeSetName: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          ChangeSetTags: S.optional(TagList),
-          Intent: S.optional(Intent),
+          ChangeSetTags: S.optional(__S(86)),
+          Intent: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/StartChangeSet" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "StartChangeSetRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, Tags: TagList }).pipe(
+        S.Struct({ ResourceArn: S.String, Tags: __S(86) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/TagResource" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String, TagKeys: TagKeyList }).pipe(
+        S.Struct({ ResourceArn: S.String, TagKeys: __S(38) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/UntagResource" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Reason: S.optional(ValidationExceptionReason),
+          Reason: S.optional(S.String),
           EntityType: S.optional(S.String),
           EntityId: S.optional(S.String),
           ChangeType: S.optional(S.String),
@@ -2981,6 +2575,39 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "ValidationExceptionField" });
     case 7:
-      return S.Array(ValidationExceptionField);
+      return S.Array(__S(94));
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
   }
 }

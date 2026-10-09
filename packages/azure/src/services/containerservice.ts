@@ -7,6 +7,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -20,17 +22,7 @@ export interface AbortAgentPoolLatestOperationRequest {
   /** The name of the agent pool. */
   agentPoolName: string;
 }
-const AbortAgentPoolLatestOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AbortAgentPoolLatestOperationRequest>;
-
 export interface AbortAgentPoolLatestOperationResponse {}
-const AbortAgentPoolLatestOperationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AbortAgentPoolLatestOperationResponse>;
-
 export interface AbortManagedClusterLatestOperationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -39,35 +31,17 @@ export interface AbortManagedClusterLatestOperationRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const AbortManagedClusterLatestOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AbortManagedClusterLatestOperationRequest>;
-
 export interface AbortManagedClusterLatestOperationResponse {}
-const AbortManagedClusterLatestOperationResponse =
-  AbortAgentPoolLatestOperationResponse as any as S.Schema<AbortManagedClusterLatestOperationResponse>;
-
 /** The OS disk type to be used for machines in the agent pool. The default is 'Ephemeral' if the VM supports it and has a cache disk larger than the requested OSDiskSizeGB. Otherwise, defaults to 'Managed'. May not be changed after creation. For more information see [Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os). */
 export type OSDiskType = "Managed" | "Ephemeral";
-const OSDiskType = S.String;
-
 /** Determines the placement of emptyDir volumes, container runtime data root, and Kubelet ephemeral storage. */
 export type KubeletDiskType = "OS" | "Temporary";
-const KubeletDiskType = S.String;
-
 /** Determines the type of workload a node can run. */
 export type WorkloadRuntime = "OCIContainer" | "WasmWasi" | "KataVmIsolation";
-const WorkloadRuntime = S.String;
-
 /** Pod IP Allocation Mode. The IP allocation mode for pods in the agent pool. Must be used with podSubnetId. The default is 'DynamicIndividual'. */
 export type PodIPAllocationMode = "DynamicIndividual" | "StaticBlock";
-const PodIPAllocationMode = S.String;
-
 /** The operating system type. The default is Linux. */
 export type ManagedClusterAgentPoolProfilePropertiesInputOsType = "Linux" | "Windows";
-const ManagedClusterAgentPoolProfilePropertiesInputOsType = S.String;
-
 /** Specifies the OS SKU used by the agent pool. The default is Ubuntu if OSType is Linux. The default is Windows2019 when Kubernetes <= 1.24 or Windows2022 when Kubernetes >= 1.25 if OSType is Windows. */
 export type OSSKU =
   | "Ubuntu"
@@ -80,24 +54,14 @@ export type OSSKU =
   | "Windows2025"
   | "Ubuntu2404"
   | "AzureContainerLinux";
-const OSSKU = S.String;
-
 /** Describes how VMs are added to or removed from Agent Pools. See [billing states](https://docs.microsoft.com/azure/virtual-machines/states-billing). */
 export type ScaleDownMode = "Delete" | "Deallocate";
-const ScaleDownMode = S.String;
-
 /** The type of Agent Pool. */
 export type AgentPoolType = "VirtualMachineScaleSets" | "AvailabilitySet" | "VirtualMachines";
-const AgentPoolType = S.String;
-
 /** The mode of an agent pool. A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools */
 export type AgentPoolMode = "System" | "User" | "Gateway";
-const AgentPoolMode = S.String;
-
 /** Defines the behavior for undrainable nodes during upgrade. The most common cause of undrainable nodes is Pod Disruption Budgets (PDBs), but other issues, such as pod termination grace period is exceeding the remaining per-node drain timeout or pod is still being in a running state, can also cause undrainable nodes. */
 export type UndrainableNodeBehavior = "Cordon" | "Schedule";
-const UndrainableNodeBehavior = S.String;
-
 /** Settings for upgrading an agentpool */
 export interface AgentPoolUpgradeSettings {
   /** The maximum number or percentage of nodes that are surged during upgrade. This can either be set to an integer (e.g. '5') or a percentage (e.g. '50%'). If a percentage is specified, it is the percentage of the total agent pool size at the time of the upgrade. For percentages, fractional nodes are rounded up. If not specified, the default is 10%. For more information, including best practices, see: https://learn.microsoft.com/en-us/azure/aks/upgrade-cluster */
@@ -111,67 +75,33 @@ export interface AgentPoolUpgradeSettings {
   /** Defines the behavior for undrainable nodes during upgrade. The most common cause of undrainable nodes is Pod Disruption Budgets (PDBs), but other issues, such as pod termination grace period is exceeding the remaining per-node drain timeout or pod is still being in a running state, can also cause undrainable nodes. */
   undrainableNodeBehavior?: UndrainableNodeBehavior | (string & {});
 }
-const AgentPoolUpgradeSettings = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AgentPoolUpgradeSettings>;
-
 /** Tells whether the cluster is Running or Stopped */
 export type Code = "Running" | "Stopped";
-const Code = S.String;
-
 /** Describes the Power State of the cluster */
 export interface PowerState {
   /** Tells whether the cluster is Running or Stopped */
   code?: Code | (string & {});
 }
-const PowerState = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<PowerState>;
-
 /** The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'. */
 export type ManagedClusterAgentPoolProfilePropertiesInputAvailabilityZonesList = Array<string>;
-const ManagedClusterAgentPoolProfilePropertiesInputAvailabilityZonesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ManagedClusterAgentPoolProfilePropertiesInputAvailabilityZonesList>;
-
 /** The Virtual Machine Scale Set priority. */
 export type ManagedClusterAgentPoolProfilePropertiesInputScaleSetPriority = "Spot" | "Regular";
-const ManagedClusterAgentPoolProfilePropertiesInputScaleSetPriority = S.String;
-
 /** The Virtual Machine Scale Set eviction policy. The eviction policy specifies what to do with the VM when it is evicted. The default is Delete. For more information about eviction see [spot VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms) */
 export type ManagedClusterAgentPoolProfilePropertiesInputScaleSetEvictionPolicy =
   | "Delete"
   | "Deallocate";
-const ManagedClusterAgentPoolProfilePropertiesInputScaleSetEvictionPolicy = S.String;
-
 /** The tags to be persisted on the agent pool virtual machine scale set. */
 export type ManagedClusterAgentPoolProfilePropertiesInputTagsMap = {
   [key: string]: string | undefined;
 };
-const ManagedClusterAgentPoolProfilePropertiesInputTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ManagedClusterAgentPoolProfilePropertiesInputTagsMap>;
-
 /** The node labels to be persisted across all nodes in agent pool. */
 export type ManagedClusterAgentPoolProfilePropertiesInputNodeLabelsMap = {
   [key: string]: string | undefined;
 };
-const ManagedClusterAgentPoolProfilePropertiesInputNodeLabelsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<ManagedClusterAgentPoolProfilePropertiesInputNodeLabelsMap>;
-
 /** The taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList = Array<string>;
-const ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList>;
-
 /** Allowed list of unsafe sysctls or unsafe sysctl patterns (ending in `*`). */
 export type KubeletConfigAllowedUnsafeSysctlsList = Array<string>;
-const KubeletConfigAllowedUnsafeSysctlsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<KubeletConfigAllowedUnsafeSysctlsList>;
-
 /** Kubelet configurations of agent nodes. See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details. */
 export interface KubeletConfig {
   /** The CPU Manager policy to use. The default is 'none'. See [Kubernetes CPU management policies](https://kubernetes.io/docs/tasks/administer-cluster/cpu-management-policies/#cpu-management-policies) for more information. Allowed values are 'none' and 'static'. */
@@ -197,8 +127,6 @@ export interface KubeletConfig {
   /** The maximum number of processes per pod. */
   podMaxPids?: number;
 }
-const KubeletConfig = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<KubeletConfig>;
-
 /** Sysctl settings for Linux agent nodes. */
 export interface SysctlConfig {
   /** Sysctl setting net.core.somaxconn. */
@@ -258,8 +186,6 @@ export interface SysctlConfig {
   /** Sysctl setting vm.vfs_cache_pressure. */
   vmVfsCachePressure?: number;
 }
-const SysctlConfig = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<SysctlConfig>;
-
 /** OS configurations of Linux agent nodes. See [AKS custom node configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration) for more details. */
 export interface LinuxOSConfig {
   /** Sysctl settings for Linux agent nodes. */
@@ -271,19 +197,13 @@ export interface LinuxOSConfig {
   /** The size in MB of a swap file that will be created on each node. */
   swapFileSizeMB?: number;
 }
-const LinuxOSConfig = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<LinuxOSConfig>;
-
 /** GPUInstanceProfile to be used to specify GPU MIG instance profile for supported GPU VM SKU. */
 export type GPUInstanceProfile = "MIG1g" | "MIG2g" | "MIG3g" | "MIG4g" | "MIG7g";
-const GPUInstanceProfile = S.String;
-
 /** Data used when creating a target resource from a source resource. */
 export interface CreationData {
   /** This is the ARM ID of the source object to be used to create the target object. */
   sourceResourceId?: string;
 }
-const CreationData = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreationData>;
-
 /** Contains the IPTag associated with the object. */
 export interface IPTag {
   /** The IP tag type. Example: RoutingPreference. */
@@ -291,19 +211,10 @@ export interface IPTag {
   /** The value of the IP tag associated with the public IP. Example: Internet. */
   tag?: string;
 }
-const IPTag = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<IPTag>;
-
 /** IPTags of instance-level public IPs. */
 export type AgentPoolNetworkProfileNodePublicIPTagsList = Array<IPTag>;
-const AgentPoolNetworkProfileNodePublicIPTagsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<AgentPoolNetworkProfileNodePublicIPTagsList>;
-
 /** The network protocol of the port. */
 export type Protocol = "TCP" | "UDP";
-const Protocol = S.String;
-
 /** The port range. */
 export interface PortRange {
   /** The minimum port that is included in the range. It should be ranged from 1 to 65535, and be less than or equal to portEnd. */
@@ -313,31 +224,17 @@ export interface PortRange {
   /** The network protocol of the port. */
   protocol?: Protocol | (string & {});
 }
-const PortRange = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PortRange>;
-
 /** The port ranges that are allowed to access. The specified ranges are allowed to overlap. */
 export type AgentPoolNetworkProfileAllowedHostPortsList = Array<PortRange>;
-const AgentPoolNetworkProfileAllowedHostPortsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<AgentPoolNetworkProfileAllowedHostPortsList>;
-
 /** The IDs of the application security groups which agent pool will associate when created. */
 export type AgentPoolNetworkProfileApplicationSecurityGroupsList = Array<string>;
-const AgentPoolNetworkProfileApplicationSecurityGroupsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<AgentPoolNetworkProfileApplicationSecurityGroupsList>;
-
 /** The DRANET mode for the agent pool. */
 export type DRANETMode = "Unmanaged" | "Managed";
-const DRANETMode = S.String;
-
 /** DRANET settings of an agent pool. */
 export interface DRANETProfile {
   /** The DRANET mode for the agent pool. */
   mode?: DRANETMode | (string & {});
 }
-const DRANETProfile = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DRANETProfile>;
-
 /** Network settings of an agent pool. */
 export interface AgentPoolNetworkProfile {
   /** IPTags of instance-level public IPs. */
@@ -349,25 +246,13 @@ export interface AgentPoolNetworkProfile {
   /** DRANET settings of an agent pool. */
   dranet?: DRANETProfile;
 }
-const AgentPoolNetworkProfile = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<AgentPoolNetworkProfile>;
-
 /** The Windows agent pool's specific profile. */
 export interface AgentPoolWindowsProfile {
   /** Whether to disable OutboundNAT in windows nodes. The default value is false. Outbound NAT can only be disabled if the cluster outboundType is NAT Gateway and the Windows agent pool does not have node public IP enabled. */
   disableOutboundNat?: boolean;
 }
-const AgentPoolWindowsProfile = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AgentPoolWindowsProfile>;
-
 /** SSH access method of an agent pool. */
 export type AgentPoolSSHAccess = "LocalUser" | "Disabled" | "EntraId";
-const AgentPoolSSHAccess = S.String;
-
 /** The security settings of an agent pool. */
 export interface AgentPoolSecurityProfile {
   /** vTPM is a Trusted Launch feature for configuring a dedicated secure vault for keys and measurements held locally on the node. For more details, see aka.ms/aks/trustedlaunch. If not specified, the default is false. */
@@ -377,42 +262,23 @@ export interface AgentPoolSecurityProfile {
   /** SSH access method of an agent pool. */
   sshAccess?: AgentPoolSSHAccess | (string & {});
 }
-const AgentPoolSecurityProfile = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<AgentPoolSecurityProfile>;
-
 /** Whether to install GPU drivers. When it's not specified, default is Install. */
 export type GPUDriver = "Install" | "None";
-const GPUDriver = S.String;
-
 /** GPU settings for the Agent Pool. */
 export interface GPUProfile {
   /** Whether to install GPU drivers. When it's not specified, default is Install. */
   driver?: GPUDriver | (string & {});
 }
-const GPUProfile = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GPUProfile>;
-
 /** Profile of the managed cluster gateway agent pool. */
 export interface AgentPoolGatewayProfile {
   /** The Gateway agent pool associates one public IPPrefix for each static egress gateway to provide public egress. The size of Public IPPrefix should be selected by the user. Each node in the agent pool is assigned with one IP from the IPPrefix. The IPPrefix size thus serves as a cap on the size of the Gateway agent pool. Due to Azure public IPPrefix size limitation, the valid value range is [28, 31] (/31 = 2 nodes/IPs, /30 = 4 nodes/IPs, /29 = 8 nodes/IPs, /28 = 16 nodes/IPs). The default value is 31. */
   publicIPPrefixSize?: number;
 }
-const AgentPoolGatewayProfile = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<AgentPoolGatewayProfile>;
-
 /** Artifact streaming profile for the agent pool. */
 export interface AgentPoolArtifactStreamingProfile {
   /** Artifact streaming speeds up the cold-start of containers on a node through on-demand image loading. To use this feature, container images must also enable artifact streaming on ACR. If not specified, the default is false. */
   enabled?: boolean;
 }
-const AgentPoolArtifactStreamingProfile = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<AgentPoolArtifactStreamingProfile>;
-
 /** Specifications on number of machines. */
 export interface ManualScaleProfile {
   /** VM size that AKS will use when creating and scaling e.g. 'Standard_E4s_v3', 'Standard_E16s_v3' or 'Standard_D16s_v5'. */
@@ -420,15 +286,8 @@ export interface ManualScaleProfile {
   /** Number of nodes. */
   count?: number;
 }
-const ManualScaleProfile = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ManualScaleProfile>;
-
 /** Specifications on how to scale the VirtualMachines agent pool to a fixed size. */
 export type ScaleProfileManualList = Array<ManualScaleProfile>;
-const ScaleProfileManualList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ScaleProfileManualList>;
-
 /** Specifications on auto-scaling. */
 export interface AutoScaleProfile {
   /** VM size that AKS will use when creating and scaling e.g. 'Standard_E4s_v3', 'Standard_E16s_v3' or 'Standard_D16s_v5'. */
@@ -438,15 +297,8 @@ export interface AutoScaleProfile {
   /** The maximum number of nodes of the specified sizes. */
   maxCount?: number;
 }
-const AutoScaleProfile = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<AutoScaleProfile>;
-
 /** Specifications on how to auto-scale the VirtualMachines agent pool within a predefined size range. Each profile targets a specific VM SKU and is evaluated independently. Scaling decisions across profiles are governed by the cluster autoscaler expander, configurable via `ManagedCluster.properties.autoScalerProfile.expander`. */
 export type ScaleProfileAutoscaleList = Array<AutoScaleProfile>;
-const ScaleProfileAutoscaleList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ScaleProfileAutoscaleList>;
-
 /** Specifications on how to scale a VirtualMachines agent pool. */
 export interface ScaleProfile {
   /** Specifications on how to scale the VirtualMachines agent pool to a fixed size. */
@@ -454,18 +306,11 @@ export interface ScaleProfile {
   /** Specifications on how to auto-scale the VirtualMachines agent pool within a predefined size range. Each profile targets a specific VM SKU and is evaluated independently. Scaling decisions across profiles are governed by the cluster autoscaler expander, configurable via `ManagedCluster.properties.autoScalerProfile.expander`. */
   autoscale?: ScaleProfileAutoscaleList;
 }
-const ScaleProfile = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ScaleProfile>;
-
 /** Specifications on VirtualMachines agent pool. */
 export interface VirtualMachinesProfile {
   /** Specifications on how to scale a VirtualMachines agent pool. */
   scale?: ScaleProfile;
 }
-const VirtualMachinesProfile = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<VirtualMachinesProfile>;
-
 /** Current status on a group of nodes of the same vm size. */
 export interface VirtualMachineNodes {
   /** The VM size of the agents used to host this group of nodes. */
@@ -473,57 +318,30 @@ export interface VirtualMachineNodes {
   /** Number of nodes. */
   count?: number;
 }
-const VirtualMachineNodes = ManualScaleProfile as any as S.Schema<VirtualMachineNodes>;
-
 /** The status of nodes in a VirtualMachines agent pool. */
 export type ManagedClusterAgentPoolProfilePropertiesInputVirtualMachineNodesStatusList =
   Array<VirtualMachineNodes>;
-const ManagedClusterAgentPoolProfilePropertiesInputVirtualMachineNodesStatusList =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    5,
-  ) as any as S.Schema<ManagedClusterAgentPoolProfilePropertiesInputVirtualMachineNodesStatusList>;
-
 /** The error detail. */
 export interface AgentPoolStatusInputProvisioningError {}
-const AgentPoolStatusInputProvisioningError =
-  AbortAgentPoolLatestOperationResponse as any as S.Schema<AgentPoolStatusInputProvisioningError>;
-
 /** Contains read-only information about the Agent Pool. */
 export interface AgentPoolStatusInput {
   /** The error detail. */
   provisioningError?: AgentPoolStatusInputProvisioningError;
 }
-const AgentPoolStatusInput = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<AgentPoolStatusInput>;
-
 /** Mode of enablement for localDNS. */
 export type LocalDNSProfileMode = "Preferred" | "Required" | "Disabled";
-const LocalDNSProfileMode = S.String;
-
 /** System-generated state of localDNS. */
 export type LocalDNSState = "Enabled" | "Disabled";
-const LocalDNSState = S.String;
-
 /** Log level for DNS queries in localDNS. */
 export type LocalDNSOverrideQueryLogging = "Error" | "Log";
-const LocalDNSOverrideQueryLogging = S.String;
-
 /** Enforce TCP or prefer UDP protocol for connections from localDNS to upstream DNS server. */
 export type LocalDNSOverrideProtocol = "PreferUDP" | "ForceTCP";
-const LocalDNSOverrideProtocol = S.String;
-
 /** Destination server for DNS queries to be forwarded from localDNS. */
 export type LocalDNSOverrideForwardDestination = "ClusterCoreDNS" | "VnetDNS";
-const LocalDNSOverrideForwardDestination = S.String;
-
 /** Forward policy for selecting upstream DNS server. See [forward plugin](https://coredns.io/plugins/forward) for more information. */
 export type LocalDNSOverrideForwardPolicy = "Sequential" | "RoundRobin" | "Random";
-const LocalDNSOverrideForwardPolicy = S.String;
-
 /** Policy for serving stale data. See [cache plugin](https://coredns.io/plugins/cache) for more information. */
 export type LocalDNSOverrideServeStale = "Verify" | "Immediate" | "Disable";
-const LocalDNSOverrideServeStale = S.String;
-
 /** Overrides for localDNS profile. */
 export interface LocalDNSOverride {
   /** Log level for DNS queries in localDNS. */
@@ -543,20 +361,10 @@ export interface LocalDNSOverride {
   /** Policy for serving stale data. See [cache plugin](https://coredns.io/plugins/cache) for more information. */
   serveStale?: LocalDNSOverrideServeStale | (string & {});
 }
-const LocalDNSOverride = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<LocalDNSOverride>;
-
 /** VnetDNS overrides apply to DNS traffic from pods with dnsPolicy:default or kubelet (referred to as VnetDNS traffic). */
 export type LocalDNSProfileVnetDNSOverridesMap = { [key: string]: LocalDNSOverride | undefined };
-const LocalDNSProfileVnetDNSOverridesMap = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<LocalDNSProfileVnetDNSOverridesMap>;
-
 /** KubeDNS overrides apply to DNS traffic from pods with dnsPolicy:ClusterFirst (referred to as KubeDNS traffic). */
 export type LocalDNSProfileKubeDNSOverridesMap = { [key: string]: LocalDNSOverride | undefined };
-const LocalDNSProfileKubeDNSOverridesMap =
-  LocalDNSProfileVnetDNSOverridesMap as any as S.Schema<LocalDNSProfileKubeDNSOverridesMap>;
-
 /** Configures the per-node local DNS, with VnetDNS and KubeDNS overrides. LocalDNS helps improve performance and reliability of DNS resolution in an AKS cluster. For more details see aka.ms/aks/localdns. */
 export interface LocalDNSProfile {
   /** Mode of enablement for localDNS. */
@@ -568,8 +376,6 @@ export interface LocalDNSProfile {
   /** KubeDNS overrides apply to DNS traffic from pods with dnsPolicy:ClusterFirst (referred to as KubeDNS traffic). */
   kubeDNSOverrides?: LocalDNSProfileKubeDNSOverridesMap;
 }
-const LocalDNSProfile = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<LocalDNSProfile>;
-
 /** Properties for the container service agent pool profile. */
 export interface ManagedClusterAgentPoolProfilePropertiesInput {
   /** Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1. */
@@ -679,11 +485,6 @@ export interface ManagedClusterAgentPoolProfilePropertiesInput {
   /** Configures the per-node local DNS, with VnetDNS and KubeDNS overrides. LocalDNS helps improve performance and reliability of DNS resolution in an AKS cluster. For more details see aka.ms/aks/localdns. */
   localDNSProfile?: LocalDNSProfile;
 }
-const ManagedClusterAgentPoolProfilePropertiesInput = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ManagedClusterAgentPoolProfilePropertiesInput>;
-
 export interface AgentPoolsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -696,19 +497,10 @@ export interface AgentPoolsCreateOrUpdateRequest {
   /** Properties of an agent pool. */
   properties?: ManagedClusterAgentPoolProfilePropertiesInput;
 }
-const AgentPoolsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<AgentPoolsCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -724,57 +516,29 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<SystemData>;
-
 /** The operating system type. The default is Linux. */
 export type ManagedClusterAgentPoolProfilePropertiesOsType = "Linux" | "Windows";
-const ManagedClusterAgentPoolProfilePropertiesOsType = S.String;
-
 /** The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'. */
 export type ManagedClusterAgentPoolProfilePropertiesAvailabilityZonesList = Array<string>;
-const ManagedClusterAgentPoolProfilePropertiesAvailabilityZonesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<ManagedClusterAgentPoolProfilePropertiesAvailabilityZonesList>;
-
 /** The Virtual Machine Scale Set priority. */
 export type ManagedClusterAgentPoolProfilePropertiesScaleSetPriority = "Spot" | "Regular";
-const ManagedClusterAgentPoolProfilePropertiesScaleSetPriority = S.String;
-
 /** The Virtual Machine Scale Set eviction policy. The eviction policy specifies what to do with the VM when it is evicted. The default is Delete. For more information about eviction see [spot VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms) */
 export type ManagedClusterAgentPoolProfilePropertiesScaleSetEvictionPolicy =
   | "Delete"
   | "Deallocate";
-const ManagedClusterAgentPoolProfilePropertiesScaleSetEvictionPolicy = S.String;
-
 /** The tags to be persisted on the agent pool virtual machine scale set. */
 export type ManagedClusterAgentPoolProfilePropertiesTagsMap = { [key: string]: string | undefined };
-const ManagedClusterAgentPoolProfilePropertiesTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<ManagedClusterAgentPoolProfilePropertiesTagsMap>;
-
 /** The node labels to be persisted across all nodes in agent pool. */
 export type ManagedClusterAgentPoolProfilePropertiesNodeLabelsMap = {
   [key: string]: string | undefined;
 };
-const ManagedClusterAgentPoolProfilePropertiesNodeLabelsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<ManagedClusterAgentPoolProfilePropertiesNodeLabelsMap>;
-
 /** The taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type ManagedClusterAgentPoolProfilePropertiesNodeTaintsList = Array<string>;
-const ManagedClusterAgentPoolProfilePropertiesNodeTaintsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<ManagedClusterAgentPoolProfilePropertiesNodeTaintsList>;
-
 /** The status of nodes in a VirtualMachines agent pool. */
 export type ManagedClusterAgentPoolProfilePropertiesVirtualMachineNodesStatusList =
   Array<VirtualMachineNodes>;
-const ManagedClusterAgentPoolProfilePropertiesVirtualMachineNodesStatusList =
-  ManagedClusterAgentPoolProfilePropertiesInputVirtualMachineNodesStatusList as any as S.Schema<ManagedClusterAgentPoolProfilePropertiesVirtualMachineNodesStatusList>;
-
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-const ErrorDetailDetailsList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ErrorDetailDetailsList>;
-
 /** The resource management error additional info. */
 export interface ErrorAdditionalInfo {
   /** The additional info type. */
@@ -782,15 +546,8 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-const ErrorAdditionalInfo = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ErrorAdditionalInfo>;
-
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-const ErrorDetailAdditionalInfoList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ErrorDetailAdditionalInfoList>;
-
 /** The error detail. */
 export interface ErrorDetail {
   /** The error code. */
@@ -804,20 +561,10 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-const ErrorDetail = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ErrorDetail>;
-
 /** The error details. */
 export type AgentPoolStatusProvisioningErrorDetailsList = Array<ErrorDetail>;
-const AgentPoolStatusProvisioningErrorDetailsList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<AgentPoolStatusProvisioningErrorDetailsList>;
-
 /** The error additional info. */
 export type AgentPoolStatusProvisioningErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-const AgentPoolStatusProvisioningErrorAdditionalInfoList =
-  ErrorDetailAdditionalInfoList as any as S.Schema<AgentPoolStatusProvisioningErrorAdditionalInfoList>;
-
 /** The error detail. */
 export interface AgentPoolStatusProvisioningError {
   /** The error code. */
@@ -831,18 +578,11 @@ export interface AgentPoolStatusProvisioningError {
   /** The error additional info. */
   additionalInfo?: AgentPoolStatusProvisioningErrorAdditionalInfoList;
 }
-const AgentPoolStatusProvisioningError = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<AgentPoolStatusProvisioningError>;
-
 /** Contains read-only information about the Agent Pool. */
 export interface AgentPoolStatus {
   /** The error detail. */
   provisioningError?: AgentPoolStatusProvisioningError;
 }
-const AgentPoolStatus = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<AgentPoolStatus>;
-
 /** Properties for the container service agent pool profile. */
 export interface ManagedClusterAgentPoolProfileProperties {
   /** Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal eTag convention. */
@@ -956,11 +696,6 @@ export interface ManagedClusterAgentPoolProfileProperties {
   /** Configures the per-node local DNS, with VnetDNS and KubeDNS overrides. LocalDNS helps improve performance and reliability of DNS resolution in an AKS cluster. For more details see aka.ms/aks/localdns. */
   localDNSProfile?: LocalDNSProfile;
 }
-const ManagedClusterAgentPoolProfileProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ManagedClusterAgentPoolProfileProperties>;
-
 export interface AgentPoolsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -973,11 +708,6 @@ export interface AgentPoolsCreateOrUpdateResponse {
   /** Properties of an agent pool. */
   properties?: ManagedClusterAgentPoolProfileProperties;
 }
-const AgentPoolsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<AgentPoolsCreateOrUpdateResponse>;
-
 export interface AgentPoolsUpgradeNodeImageVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -988,15 +718,7 @@ export interface AgentPoolsUpgradeNodeImageVersionRequest {
   /** The name of the agent pool. */
   agentPoolName: string;
 }
-const AgentPoolsUpgradeNodeImageVersionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<AgentPoolsUpgradeNodeImageVersionRequest>;
-
 export interface AgentPoolsUpgradeNodeImageVersionResponse {}
-const AgentPoolsUpgradeNodeImageVersionResponse =
-  AbortAgentPoolLatestOperationResponse as any as S.Schema<AgentPoolsUpgradeNodeImageVersionResponse>;
-
 export interface AutoUpgradeProfileOperationsGenerateUpdateRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1007,36 +729,20 @@ export interface AutoUpgradeProfileOperationsGenerateUpdateRunRequest {
   /** The name of the AutoUpgradeProfile resource. */
   autoUpgradeProfileName: string;
 }
-const AutoUpgradeProfileOperationsGenerateUpdateRunRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<AutoUpgradeProfileOperationsGenerateUpdateRunRequest>;
-
 /** GenerateResponse is the response of a generate request. */
 export interface GenerateResponse {
   /** The ARM resource id of the generated UpdateRun. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}'. */
   id: string;
 }
-const GenerateResponse = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GenerateResponse>;
-
 /** Configuration of how auto upgrade will be run. */
 export type UpgradeChannel_2 = "Stable" | "Rapid" | "NodeImage" | "TargetKubernetesVersion";
-const UpgradeChannel_2 = S.String;
-
 /** The node image upgrade type. */
 export type AutoUpgradeNodeImageSelectionType = "Latest" | "Consistent";
-const AutoUpgradeNodeImageSelectionType = S.String;
-
 /** The node image upgrade to be applied to the target clusters in auto upgrade. */
 export interface AutoUpgradeNodeImageSelection {
   /** The node image upgrade type. */
   type: AutoUpgradeNodeImageSelectionType | (string & {});
 }
-const AutoUpgradeNodeImageSelection = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<AutoUpgradeNodeImageSelection>;
-
 /** The error detail. */
 export type AutoUpgradeProfileStatusInputLastTriggerError = AgentPoolStatusInputProvisioningError;
 /** AutoUpgradeProfileStatus is the status of an auto upgrade profile. */
@@ -1044,11 +750,6 @@ export interface AutoUpgradeProfileStatusInput {
   /** The error detail. */
   lastTriggerError?: AgentPoolStatusInputProvisioningError;
 }
-const AutoUpgradeProfileStatusInput = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<AutoUpgradeProfileStatusInput>;
-
 /** The properties of the AutoUpgradeProfile. */
 export interface AutoUpgradeProfilePropertiesInput {
   /** The resource id of the UpdateStrategy resource to reference. If not specified, the auto upgrade will run on all clusters which are members of the fleet. */
@@ -1066,11 +767,6 @@ export interface AutoUpgradeProfilePropertiesInput {
   /** If upgrade channel is not TargetKubernetesVersion, this field must be False. If set to True: Fleet auto upgrade will continue generate update runs for patches of minor versions earlier than N-2 (where N is the latest supported minor version) if those minor versions support Long-Term Support (LTS). By default, this is set to False. For more information on AKS LTS, please see https://learn.microsoft.com/en-us/azure/aks/long-term-support */
   longTermSupport?: boolean;
 }
-const AutoUpgradeProfilePropertiesInput = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<AutoUpgradeProfilePropertiesInput>;
-
 export interface AutoUpgradeProfilesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1083,19 +779,10 @@ export interface AutoUpgradeProfilesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: AutoUpgradeProfilePropertiesInput;
 }
-const AutoUpgradeProfilesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<AutoUpgradeProfilesCreateOrUpdateRequest>;
-
 /** The provisioning state of the AutoUpgradeProfile resource. */
 export type AutoUpgradeProfileProvisioningState = "Succeeded" | "Failed" | "Canceled";
-const AutoUpgradeProfileProvisioningState = S.String;
-
 /** AutoUpgradeLastTriggerStatus is the status of the last AutoUpgrade trigger (attempt to automatically create and start UpdateRun when there are new released versions) of an auto upgrade profile. */
 export type AutoUpgradeLastTriggerStatus = "Succeeded" | "Failed";
-const AutoUpgradeLastTriggerStatus = S.String;
-
 /** The error details. */
 export type AutoUpgradeProfileStatusLastTriggerErrorDetailsList = Array<ErrorDetail>;
 /** The error additional info. */
@@ -1113,14 +800,8 @@ export interface AutoUpgradeProfileStatusLastTriggerError {
   /** The error additional info. */
   additionalInfo?: AutoUpgradeProfileStatusLastTriggerErrorAdditionalInfoList;
 }
-const AutoUpgradeProfileStatusLastTriggerError =
-  AgentPoolStatusProvisioningError as any as S.Schema<AutoUpgradeProfileStatusLastTriggerError>;
-
 /** The target Kubernetes version or node image versions of the last trigger. */
 export type AutoUpgradeProfileStatusLastTriggerUpgradeVersionsList = Array<string>;
-const AutoUpgradeProfileStatusLastTriggerUpgradeVersionsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<AutoUpgradeProfileStatusLastTriggerUpgradeVersionsList>;
-
 /** AutoUpgradeProfileStatus is the status of an auto upgrade profile. */
 export interface AutoUpgradeProfileStatus {
   /** The UTC time of the last attempt to automatically create and start an UpdateRun as triggered by the release of new versions. */
@@ -1132,11 +813,6 @@ export interface AutoUpgradeProfileStatus {
   /** The target Kubernetes version or node image versions of the last trigger. */
   lastTriggerUpgradeVersions?: AutoUpgradeProfileStatusLastTriggerUpgradeVersionsList;
 }
-const AutoUpgradeProfileStatus = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<AutoUpgradeProfileStatus>;
-
 /** The properties of the AutoUpgradeProfile. */
 export interface AutoUpgradeProfileProperties {
   /** The provisioning state of the AutoUpgradeProfile resource. */
@@ -1156,11 +832,6 @@ export interface AutoUpgradeProfileProperties {
   /** If upgrade channel is not TargetKubernetesVersion, this field must be False. If set to True: Fleet auto upgrade will continue generate update runs for patches of minor versions earlier than N-2 (where N is the latest supported minor version) if those minor versions support Long-Term Support (LTS). By default, this is set to False. For more information on AKS LTS, please see https://learn.microsoft.com/en-us/azure/aks/long-term-support */
   longTermSupport?: boolean;
 }
-const AutoUpgradeProfileProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<AutoUpgradeProfileProperties>;
-
 export interface AutoUpgradeProfilesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1175,24 +846,12 @@ export interface AutoUpgradeProfilesCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const AutoUpgradeProfilesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<AutoUpgradeProfilesCreateOrUpdateResponse>;
-
 /** Specifies the level of Deployment Safeguards */
 export type DeploymentSafeguardsLevel = "Warn" | "Enforce";
-const DeploymentSafeguardsLevel = S.String;
-
 /** User defined list of namespaces to exclude from Deployment Safeguards. Deployments in these namespaces will not be checked against any safeguards */
 export type DeploymentSafeguardsPropertiesInputExcludedNamespacesList = Array<string>;
-const DeploymentSafeguardsPropertiesInputExcludedNamespacesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<DeploymentSafeguardsPropertiesInputExcludedNamespacesList>;
-
 /** Specifies the Pod Security Standards level */
 export type PodSecurityStandardsLevel = "Privileged" | "Baseline" | "Restricted";
-const PodSecurityStandardsLevel = S.String;
-
 /** DeploymentSafeguards Properties */
 export interface DeploymentSafeguardsPropertiesInput {
   /** The deployment safeguards level. Possible values are Warn and Enforce */
@@ -1202,22 +861,12 @@ export interface DeploymentSafeguardsPropertiesInput {
   /** The pod security standards level */
   podSecurityStandardsLevel?: PodSecurityStandardsLevel | (string & {});
 }
-const DeploymentSafeguardsPropertiesInput = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<DeploymentSafeguardsPropertiesInput>;
-
 export interface CreateDeploymentSafeguardRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
   /** The resource-specific properties for this resource. */
   properties?: DeploymentSafeguardsPropertiesInput;
 }
-const CreateDeploymentSafeguardRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateDeploymentSafeguardRequest>;
-
 /** The provisioning state of the last accepted operation. */
 export type ProvisioningState =
   | "Succeeded"
@@ -1226,18 +875,10 @@ export type ProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting";
-const ProvisioningState = S.String;
-
 /** User defined list of namespaces to exclude from Deployment Safeguards. Deployments in these namespaces will not be checked against any safeguards */
 export type DeploymentSafeguardsPropertiesExcludedNamespacesList = Array<string>;
-const DeploymentSafeguardsPropertiesExcludedNamespacesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<DeploymentSafeguardsPropertiesExcludedNamespacesList>;
-
 /** System defined list of namespaces excluded from Deployment Safeguards. These are determined by the underlying provider (such as AKS), and cannot be changed. Deployments in these namespaces will not be checked */
 export type DeploymentSafeguardsPropertiesSystemExcludedNamespacesList = Array<string>;
-const DeploymentSafeguardsPropertiesSystemExcludedNamespacesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<DeploymentSafeguardsPropertiesSystemExcludedNamespacesList>;
-
 /** DeploymentSafeguards Properties */
 export interface DeploymentSafeguardsProperties {
   /** Provisioning State */
@@ -1251,11 +892,6 @@ export interface DeploymentSafeguardsProperties {
   /** The pod security standards level */
   podSecurityStandardsLevel?: PodSecurityStandardsLevel;
 }
-const DeploymentSafeguardsProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DeploymentSafeguardsProperties>;
-
 export interface CreateDeploymentSafeguardResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1270,16 +906,8 @@ export interface CreateDeploymentSafeguardResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const CreateDeploymentSafeguardResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateDeploymentSafeguardResponse>;
-
 /** The labels for the fleet member. */
 export type FleetMemberPropertiesInputLabelsMap = { [key: string]: string | undefined };
-const FleetMemberPropertiesInputLabelsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<FleetMemberPropertiesInputLabelsMap>;
-
 /** A member of the Fleet. It contains a reference to an existing Kubernetes cluster on Azure. */
 export interface FleetMemberPropertiesInput {
   /** The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'. */
@@ -1289,11 +917,6 @@ export interface FleetMemberPropertiesInput {
   /** The labels for the fleet member. */
   labels?: FleetMemberPropertiesInputLabelsMap;
 }
-const FleetMemberPropertiesInput = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<FleetMemberPropertiesInput>;
-
 export interface CreateFleetMemberRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1306,11 +929,6 @@ export interface CreateFleetMemberRequest {
   /** The resource-specific properties for this resource. */
   properties?: FleetMemberPropertiesInput;
 }
-const CreateFleetMemberRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateFleetMemberRequest>;
-
 /** The provisioning state of the last accepted operation. */
 export type FleetMemberProvisioningState =
   | "Succeeded"
@@ -1319,13 +937,8 @@ export type FleetMemberProvisioningState =
   | "Joining"
   | "Leaving"
   | "Updating";
-const FleetMemberProvisioningState = S.String;
-
 /** The labels for the fleet member. */
 export type FleetMemberPropertiesLabelsMap = { [key: string]: string | undefined };
-const FleetMemberPropertiesLabelsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<FleetMemberPropertiesLabelsMap>;
-
 /** The error details. */
 export type FleetMemberStatusLastOperationErrorDetailsList = Array<ErrorDetail>;
 /** The error additional info. */
@@ -1343,9 +956,6 @@ export interface FleetMemberStatusLastOperationError {
   /** The error additional info. */
   additionalInfo?: FleetMemberStatusLastOperationErrorAdditionalInfoList;
 }
-const FleetMemberStatusLastOperationError =
-  AgentPoolStatusProvisioningError as any as S.Schema<FleetMemberStatusLastOperationError>;
-
 /** Status information for the fleet member */
 export interface FleetMemberStatus {
   /** The last operation ID for the fleet member */
@@ -1353,8 +963,6 @@ export interface FleetMemberStatus {
   /** The error detail. */
   lastOperationError?: FleetMemberStatusLastOperationError;
 }
-const FleetMemberStatus = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<FleetMemberStatus>;
-
 /** A member of the Fleet. It contains a reference to an existing Kubernetes cluster on Azure. */
 export interface FleetMemberProperties {
   /** The ARM resource id of the cluster that joins the Fleet. Must be a valid Azure resource id. e.g.: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{clusterName}'. */
@@ -1368,11 +976,6 @@ export interface FleetMemberProperties {
   /** Status information of the last operation for fleet member. */
   status?: FleetMemberStatus;
 }
-const FleetMemberProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<FleetMemberProperties>;
-
 export interface CreateFleetMemberResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1387,11 +990,6 @@ export interface CreateFleetMemberResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const CreateFleetMemberResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CreateFleetMemberResponse>;
-
 export interface DeleteAgentPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1404,22 +1002,9 @@ export interface DeleteAgentPoolRequest {
   /** ignore-pod-disruption-budget=true to delete those pods on a node without considering Pod Disruption Budget */
   ignore_pod_disruption_budget?: boolean;
 }
-const DeleteAgentPoolRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeleteAgentPoolRequest>;
-
 export interface DeleteAgentPoolResponse {}
-const DeleteAgentPoolResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DeleteAgentPoolResponse>;
-
 /** The agent pool machine names. */
 export type DeleteAgentPoolMachinesRequestMachineNamesList = Array<string>;
-const DeleteAgentPoolMachinesRequestMachineNamesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<DeleteAgentPoolMachinesRequestMachineNamesList>;
-
 export interface DeleteAgentPoolMachinesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1432,17 +1017,7 @@ export interface DeleteAgentPoolMachinesRequest {
   /** The agent pool machine names. */
   machineNames: DeleteAgentPoolMachinesRequestMachineNamesList;
 }
-const DeleteAgentPoolMachinesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DeleteAgentPoolMachinesRequest>;
-
 export interface DeleteAgentPoolMachinesResponse {}
-const DeleteAgentPoolMachinesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeleteAgentPoolMachinesResponse>;
-
 export interface DeleteAutoUpgradeProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1453,28 +1028,12 @@ export interface DeleteAutoUpgradeProfileRequest {
   /** The name of the AutoUpgradeProfile resource. */
   autoUpgradeProfileName: string;
 }
-const DeleteAutoUpgradeProfileRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DeleteAutoUpgradeProfileRequest>;
-
 export interface DeleteAutoUpgradeProfileResponse {}
-const DeleteAutoUpgradeProfileResponse =
-  AbortAgentPoolLatestOperationResponse as any as S.Schema<DeleteAutoUpgradeProfileResponse>;
-
 export interface DeleteDeploymentSafeguardRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-const DeleteDeploymentSafeguardRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DeleteDeploymentSafeguardRequest>;
-
 export interface DeleteDeploymentSafeguardResponse {}
-const DeleteDeploymentSafeguardResponse =
-  AbortAgentPoolLatestOperationResponse as any as S.Schema<DeleteDeploymentSafeguardResponse>;
-
 export interface DeleteFleetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1483,11 +1042,7 @@ export interface DeleteFleetRequest {
   /** The name of the Fleet resource. */
   fleetName: string;
 }
-const DeleteFleetRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<DeleteFleetRequest>;
-
 export interface DeleteFleetResponse {}
-const DeleteFleetResponse = DeleteAgentPoolResponse as any as S.Schema<DeleteFleetResponse>;
-
 export interface DeleteFleetManagedNamespaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1498,15 +1053,7 @@ export interface DeleteFleetManagedNamespaceRequest {
   /** The name of the fleet managed namespace resource. */
   managedNamespaceName: string;
 }
-const DeleteFleetManagedNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DeleteFleetManagedNamespaceRequest>;
-
 export interface DeleteFleetManagedNamespaceResponse {}
-const DeleteFleetManagedNamespaceResponse =
-  AbortAgentPoolLatestOperationResponse as any as S.Schema<DeleteFleetManagedNamespaceResponse>;
-
 export interface DeleteFleetMemberRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1517,15 +1064,7 @@ export interface DeleteFleetMemberRequest {
   /** The name of the Fleet member resource. */
   fleetMemberName: string;
 }
-const DeleteFleetMemberRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DeleteFleetMemberRequest>;
-
 export interface DeleteFleetMemberResponse {}
-const DeleteFleetMemberResponse =
-  DeleteAgentPoolResponse as any as S.Schema<DeleteFleetMemberResponse>;
-
 export interface DeleteFleetUpdateStrategyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1536,15 +1075,7 @@ export interface DeleteFleetUpdateStrategyRequest {
   /** The name of the UpdateStrategy resource. */
   updateStrategyName: string;
 }
-const DeleteFleetUpdateStrategyRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DeleteFleetUpdateStrategyRequest>;
-
 export interface DeleteFleetUpdateStrategyResponse {}
-const DeleteFleetUpdateStrategyResponse =
-  AbortAgentPoolLatestOperationResponse as any as S.Schema<DeleteFleetUpdateStrategyResponse>;
-
 export interface DeleteIdentityBindingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1555,15 +1086,7 @@ export interface DeleteIdentityBindingRequest {
   /** The name of the identity binding. */
   identityBindingName: string;
 }
-const DeleteIdentityBindingRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DeleteIdentityBindingRequest>;
-
 export interface DeleteIdentityBindingResponse {}
-const DeleteIdentityBindingResponse =
-  DeleteAgentPoolResponse as any as S.Schema<DeleteIdentityBindingResponse>;
-
 export interface DeleteMaintenanceConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1574,15 +1097,7 @@ export interface DeleteMaintenanceConfigurationRequest {
   /** The name of the maintenance configuration. Supported values are 'default', 'aksManagedAutoUpgradeSchedule', or 'aksManagedNodeOSUpgradeSchedule'. */
   configName: string;
 }
-const DeleteMaintenanceConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeleteMaintenanceConfigurationRequest>;
-
 export interface DeleteMaintenanceConfigurationResponse {}
-const DeleteMaintenanceConfigurationResponse =
-  AbortAgentPoolLatestOperationResponse as any as S.Schema<DeleteMaintenanceConfigurationResponse>;
-
 export interface DeleteManagedClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1591,15 +1106,7 @@ export interface DeleteManagedClusterRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const DeleteManagedClusterRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeleteManagedClusterRequest>;
-
 export interface DeleteManagedClusterResponse {}
-const DeleteManagedClusterResponse =
-  DeleteAgentPoolResponse as any as S.Schema<DeleteManagedClusterResponse>;
-
 export interface DeleteManagedNamespaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1610,15 +1117,7 @@ export interface DeleteManagedNamespaceRequest {
   /** The name of the managed namespace. */
   managedNamespaceName: string;
 }
-const DeleteManagedNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DeleteManagedNamespaceRequest>;
-
 export interface DeleteManagedNamespaceResponse {}
-const DeleteManagedNamespaceResponse =
-  DeleteAgentPoolResponse as any as S.Schema<DeleteManagedNamespaceResponse>;
-
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1629,15 +1128,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
-
 export interface DeletePrivateEndpointConnectionResponse {}
-const DeletePrivateEndpointConnectionResponse =
-  AbortAgentPoolLatestOperationResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
-
 export interface DeleteSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1646,14 +1137,7 @@ export interface DeleteSnapshotRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const DeleteSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DeleteSnapshotRequest>;
-
 export interface DeleteSnapshotResponse {}
-const DeleteSnapshotResponse = DeleteAgentPoolResponse as any as S.Schema<DeleteSnapshotResponse>;
-
 export interface DeleteTrustedAccessRoleBindingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1664,15 +1148,7 @@ export interface DeleteTrustedAccessRoleBindingRequest {
   /** The name of trusted access role binding. */
   trustedAccessRoleBindingName: string;
 }
-const DeleteTrustedAccessRoleBindingRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<DeleteTrustedAccessRoleBindingRequest>;
-
 export interface DeleteTrustedAccessRoleBindingResponse {}
-const DeleteTrustedAccessRoleBindingResponse =
-  AbortAgentPoolLatestOperationResponse as any as S.Schema<DeleteTrustedAccessRoleBindingResponse>;
-
 export interface DeleteUpdateRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1683,31 +1159,15 @@ export interface DeleteUpdateRunRequest {
   /** The name of the UpdateRun resource. */
   updateRunName: string;
 }
-const DeleteUpdateRunRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DeleteUpdateRunRequest>;
-
 export interface DeleteUpdateRunResponse {}
-const DeleteUpdateRunResponse = DeleteAgentPoolResponse as any as S.Schema<DeleteUpdateRunResponse>;
-
 /** Resource tags. */
 export type FleetManagedNamespacesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const FleetManagedNamespacesCreateOrUpdateRequestTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<FleetManagedNamespacesCreateOrUpdateRequestTagsMap>;
-
 /** The labels for the fleet managed namespace. */
 export type ManagedNamespacePropertiesLabelsMap = { [key: string]: string | undefined };
-const ManagedNamespacePropertiesLabelsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<ManagedNamespacePropertiesLabelsMap>;
-
 /** The annotations for the fleet managed namespace. */
 export type ManagedNamespacePropertiesAnnotationsMap = { [key: string]: string | undefined };
-const ManagedNamespacePropertiesAnnotationsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<ManagedNamespacePropertiesAnnotationsMap>;
-
 /** The resource quota for the managed namespace. */
 export interface ResourceQuota_2 {
   /** The CPU request for the managed namespace. See more at https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu */
@@ -1719,12 +1179,8 @@ export interface ResourceQuota_2 {
   /** The memory limit for the managed namespace. See more at https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory */
   memoryLimit?: string;
 }
-const ResourceQuota_2 = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<ResourceQuota_2>;
-
 /** The possible values representing different network policy rules. */
 export type PolicyRule = "AllowAll" | "DenyAll" | "AllowSameNamespace";
-const PolicyRule = S.String;
-
 /** The network policy for the managed namespace. */
 export interface NetworkPolicy_2 {
   /** The ingress policy for the managed namespace. */
@@ -1732,8 +1188,6 @@ export interface NetworkPolicy_2 {
   /** The egress policy for the managed namespace. */
   egress?: PolicyRule | (string & {});
 }
-const NetworkPolicy_2 = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<NetworkPolicy_2>;
-
 /** The namespace properties for the fleet managed namespace. */
 export interface ManagedNamespaceProperties {
   /** The labels for the fleet managed namespace. */
@@ -1745,46 +1199,22 @@ export interface ManagedNamespaceProperties {
   /** The default network policy for the fleet managed namespace. */
   defaultNetworkPolicy?: NetworkPolicy_2;
 }
-const ManagedNamespaceProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ManagedNamespaceProperties>;
-
 /** Action if the Namespace with the same name already exists. */
 export type AdoptionPolicy_2 = "Never" | "IfIdentical" | "Always";
-const AdoptionPolicy_2 = S.String;
-
 /** Delete options for the ARM managed namespace. */
 export type DeletePolicy_2 = "Keep" | "Delete";
-const DeletePolicy_2 = S.String;
-
 /** How the namespace will be provisioned among the fleet members. */
 export type PropagationType = "Placement";
-const PropagationType = S.String;
-
 /** PlacementType identifies the type of placement. */
 export type PlacementV1PlacementType = "PickAll" | "PickFixed";
-const PlacementV1PlacementType = S.String;
-
 /** ClusterNames contains a list of names of MemberCluster to place the selected resources. Only valid if the placement type is "PickFixed" */
 export type PlacementV1PlacementPolicyClusterNamesList = Array<string>;
-const PlacementV1PlacementPolicyClusterNamesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<PlacementV1PlacementPolicyClusterNamesList>;
-
 /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
 export type MetaV1LabelSelectorMatchLabelsMap = { [key: string]: string | undefined };
-const MetaV1LabelSelectorMatchLabelsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<MetaV1LabelSelectorMatchLabelsMap>;
-
 /** A label selector operator is the set of operators that can be used in a selector requirement. */
 export type MetaV1LabelSelectorOperator = "In" | "NotIn" | "Exists" | "DoesNotExist";
-const MetaV1LabelSelectorOperator = S.String;
-
 /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
 export type MetaV1LabelSelectorRequirementValuesList = Array<string>;
-const MetaV1LabelSelectorRequirementValuesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<MetaV1LabelSelectorRequirementValuesList>;
-
 /** A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values. */
 export interface MetaV1LabelSelectorRequirement {
   /** key is the label key that the selector applies to. */
@@ -1794,18 +1224,8 @@ export interface MetaV1LabelSelectorRequirement {
   /** values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch. */
   values?: MetaV1LabelSelectorRequirementValuesList;
 }
-const MetaV1LabelSelectorRequirement = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<MetaV1LabelSelectorRequirement>;
-
 /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
 export type MetaV1LabelSelectorMatchExpressionsList = Array<MetaV1LabelSelectorRequirement>;
-const MetaV1LabelSelectorMatchExpressionsList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<MetaV1LabelSelectorMatchExpressionsList>;
-
 /** A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects. */
 export interface MetaV1LabelSelector {
   /** matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is "key", the operator is "In", and the values array contains only "value". The requirements are ANDed. */
@@ -1813,17 +1233,10 @@ export interface MetaV1LabelSelector {
   /** matchExpressions is a list of label selector requirements. The requirements are ANDed. */
   matchExpressions?: MetaV1LabelSelectorMatchExpressionsList;
 }
-const MetaV1LabelSelector = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<MetaV1LabelSelector>;
-
 /** PropertySelectorOperator is the operator that can be used with PropertySelectorRequirements. */
 export type PlacementV1PropertySelectorOperator = "Gt" | "Ge" | "Eq" | "Ne" | "Lt" | "Le";
-const PlacementV1PropertySelectorOperator = S.String;
-
 /** Values are a list of values of the specified property which Fleet will compare against the observed values of individual member clusters in accordance with the given operator. At this moment, each value should be a Kubernetes quantity. For more information, see https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity. If the operator is Gt (greater than), Ge (greater than or equal to), Lt (less than), or `Le` (less than or equal to), Eq (equal to), or Ne (ne), exactly one value must be specified in the list. */
 export type PlacementV1PropertySelectorRequirementValuesList = Array<string>;
-const PlacementV1PropertySelectorRequirementValuesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<PlacementV1PropertySelectorRequirementValuesList>;
-
 /** PropertySelectorRequirement is a specific property requirement when picking clusters for resource placement. */
 export interface PlacementV1PropertySelectorRequirement {
   /** Name is the name of the property; it should be a Kubernetes label name. */
@@ -1833,29 +1246,14 @@ export interface PlacementV1PropertySelectorRequirement {
   /** Values are a list of values of the specified property which Fleet will compare against the observed values of individual member clusters in accordance with the given operator. At this moment, each value should be a Kubernetes quantity. For more information, see https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity. If the operator is Gt (greater than), Ge (greater than or equal to), Lt (less than), or `Le` (less than or equal to), Eq (equal to), or Ne (ne), exactly one value must be specified in the list. */
   values: PlacementV1PropertySelectorRequirementValuesList;
 }
-const PlacementV1PropertySelectorRequirement = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<PlacementV1PropertySelectorRequirement>;
-
 /** MatchExpressions is an array of PropertySelectorRequirements. The requirements are AND'd. */
 export type PlacementV1PropertySelectorMatchExpressionsList =
   Array<PlacementV1PropertySelectorRequirement>;
-const PlacementV1PropertySelectorMatchExpressionsList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<PlacementV1PropertySelectorMatchExpressionsList>;
-
 /** PropertySelector helps user specify property requirements when picking clusters for resource placement. */
 export interface PlacementV1PropertySelector {
   /** MatchExpressions is an array of PropertySelectorRequirements. The requirements are AND'd. */
   matchExpressions: PlacementV1PropertySelectorMatchExpressionsList;
 }
-const PlacementV1PropertySelector = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<PlacementV1PropertySelector>;
-
 /** ClusterSelectorTerm */
 export interface PlacementV1ClusterSelectorTerm {
   /** LabelSelector is a label query over all the joined member clusters. Clusters matching the query are selected. If you specify both label and property selectors in the same term, the results are AND'd. */
@@ -1863,54 +1261,28 @@ export interface PlacementV1ClusterSelectorTerm {
   /** PropertySelector is a property query over all joined member clusters. Clusters matching the query are selected. If you specify both label and property selectors in the same term, the results are AND'd. At this moment, PropertySelector can only be used with `RequiredDuringSchedulingIgnoredDuringExecution` affinity terms. This field is beta-level; it is for the property-based scheduling feature and is only functional when a property provider is enabled in the deployment. */
   propertySelector?: PlacementV1PropertySelector;
 }
-const PlacementV1ClusterSelectorTerm = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<PlacementV1ClusterSelectorTerm>;
-
 /** ClusterSelectorTerms is a list of cluster selector terms. The terms are `ORed`. */
 export type PlacementV1ClusterSelectorClusterSelectorTermsList =
   Array<PlacementV1ClusterSelectorTerm>;
-const PlacementV1ClusterSelectorClusterSelectorTermsList = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<PlacementV1ClusterSelectorClusterSelectorTermsList>;
-
 /** ClusterSelector */
 export interface PlacementV1ClusterSelector {
   /** ClusterSelectorTerms is a list of cluster selector terms. The terms are `ORed`. */
   clusterSelectorTerms: PlacementV1ClusterSelectorClusterSelectorTermsList;
 }
-const PlacementV1ClusterSelector = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<PlacementV1ClusterSelector>;
-
 /** ClusterAffinity contains cluster affinity scheduling rules for the selected resources. */
 export interface PlacementV1ClusterAffinity {
   /** If the affinity requirements specified by this field are not met at scheduling time, the resource will not be scheduled onto the cluster. If the affinity requirements specified by this field cease to be met at some point after the placement (e.g. due to an update), the system may or may not try to eventually remove the resource from the cluster. */
   requiredDuringSchedulingIgnoredDuringExecution?: PlacementV1ClusterSelector;
 }
-const PlacementV1ClusterAffinity = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<PlacementV1ClusterAffinity>;
-
 /** Affinity is a group of cluster affinity scheduling rules. More to be added. */
 export interface PlacementV1Affinity {
   /** ClusterAffinity contains cluster affinity scheduling rules for the selected resources. */
   clusterAffinity?: PlacementV1ClusterAffinity;
 }
-const PlacementV1Affinity = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<PlacementV1Affinity>;
-
 /** A toleration operator is the set of operators that can be used in a toleration. */
 export type CoreV1TolerationOperator = "Exists" | "Equal";
-const CoreV1TolerationOperator = S.String;
-
 /** TaintEffect */
 export type CoreV1TaintEffect = "NoSchedule";
-const CoreV1TaintEffect = S.String;
-
 /** Toleration allows ClusterResourcePlacement to tolerate any taint that matches the triple <key,value,effect> using the matching operator <operator>. */
 export interface PlacementV1Toleration {
   /** Key is the taint key that the toleration applies to. Empty means match all taint keys. If the key is empty, operator must be Exists; this combination means to match all values and all keys. */
@@ -1922,18 +1294,8 @@ export interface PlacementV1Toleration {
   /** Effect indicates the taint effect to match. Empty means match all taint effects. When specified, only allowed value is NoSchedule. */
   effect?: CoreV1TaintEffect | (string & {});
 }
-const PlacementV1Toleration = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<PlacementV1Toleration>;
-
 /** If specified, the ClusterResourcePlacement's Tolerations. Tolerations cannot be updated or deleted. This field is beta-level and is for the taints and tolerations feature. */
 export type PlacementV1PlacementPolicyTolerationsList = Array<PlacementV1Toleration>;
-const PlacementV1PlacementPolicyTolerationsList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<PlacementV1PlacementPolicyTolerationsList>;
-
 /** PlacementPolicy contains the rules to select target member clusters to place the selected resources. Note that only clusters that are both joined and satisfying the rules will be selected. You can only specify at most one of the two fields: ClusterNames and Affinity. If none is specified, all the joined clusters are selected. */
 export interface PlacementV1PlacementPolicy {
   /** Type of placement. Can be "PickAll", "PickN" or "PickFixed". Default is PickAll. */
@@ -1945,28 +1307,16 @@ export interface PlacementV1PlacementPolicy {
   /** If specified, the ClusterResourcePlacement's Tolerations. Tolerations cannot be updated or deleted. This field is beta-level and is for the taints and tolerations feature. */
   tolerations?: PlacementV1PlacementPolicyTolerationsList;
 }
-const PlacementV1PlacementPolicy = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<PlacementV1PlacementPolicy>;
-
 /** ClusterResourcePlacementSpec defines the desired state of ClusterResourcePlacement. */
 export interface PlacementV1ClusterResourcePlacementSpec {
   /** Policy defines how to select member clusters to place the selected resources. If unspecified, all the joined member clusters are selected. */
   policy?: PlacementV1PlacementPolicy;
 }
-const PlacementV1ClusterResourcePlacementSpec = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<PlacementV1ClusterResourcePlacementSpec>;
-
 /** The configuration profile for default ClusterResourcePlacement for placement. */
 export interface PlacementProfile {
   /** The default ClusterResourcePlacement policy configuration. */
   defaultClusterResourcePlacement?: PlacementV1ClusterResourcePlacementSpec;
 }
-const PlacementProfile = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<PlacementProfile>;
-
 /** The propagation to be used for provisioning the namespace among the fleet. */
 export interface PropagationPolicy {
   /** The type of the policy to be used. Default is Placement. */
@@ -1974,8 +1324,6 @@ export interface PropagationPolicy {
   /** The profile to be used for propagation via placement. */
   placementProfile?: PlacementProfile;
 }
-const PropagationPolicy = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<PropagationPolicy>;
-
 /** The properties of a fleet managed namespace. */
 export interface FleetManagedNamespacePropertiesInput {
   /** The namespace properties for the fleet managed namespace. */
@@ -1987,11 +1335,6 @@ export interface FleetManagedNamespacePropertiesInput {
   /** The profile of the propagation to create the namespace. */
   propagationPolicy?: PropagationPolicy;
 }
-const FleetManagedNamespacePropertiesInput = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<FleetManagedNamespacePropertiesInput>;
-
 export interface FleetManagedNamespacesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2008,18 +1351,10 @@ export interface FleetManagedNamespacesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: FleetManagedNamespacePropertiesInput;
 }
-const FleetManagedNamespacesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<FleetManagedNamespacesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type FleetManagedNamespacesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const FleetManagedNamespacesCreateOrUpdateResponseTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<FleetManagedNamespacesCreateOrUpdateResponseTagsMap>;
-
 /** The provisioning state of the fleet managed namespace resource */
 export type FleetManagedNamespaceProvisioningState =
   | "Succeeded"
@@ -2028,21 +1363,11 @@ export type FleetManagedNamespaceProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting";
-const FleetManagedNamespaceProvisioningState = S.String;
-
 /** The error details. */
 export type FleetManagedNamespaceStatusLastOperationErrorDetailsList = Array<ErrorDetail>;
-const FleetManagedNamespaceStatusLastOperationErrorDetailsList =
-  AgentPoolStatusProvisioningErrorDetailsList as any as S.Schema<FleetManagedNamespaceStatusLastOperationErrorDetailsList>;
-
 /** The error additional info. */
 export type FleetManagedNamespaceStatusLastOperationErrorAdditionalInfoList =
   Array<ErrorAdditionalInfo>;
-const FleetManagedNamespaceStatusLastOperationErrorAdditionalInfoList = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<FleetManagedNamespaceStatusLastOperationErrorAdditionalInfoList>;
-
 /** The error detail. */
 export interface FleetManagedNamespaceStatusLastOperationError {
   /** The error code. */
@@ -2056,11 +1381,6 @@ export interface FleetManagedNamespaceStatusLastOperationError {
   /** The error additional info. */
   additionalInfo?: FleetManagedNamespaceStatusLastOperationErrorAdditionalInfoList;
 }
-const FleetManagedNamespaceStatusLastOperationError = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<FleetManagedNamespaceStatusLastOperationError>;
-
 /** Status information for the fleet managed namespace. */
 export interface FleetManagedNamespaceStatus {
   /** The last operation ID for the fleet managed namespace */
@@ -2068,11 +1388,6 @@ export interface FleetManagedNamespaceStatus {
   /** The error detail. */
   lastOperationError?: FleetManagedNamespaceStatusLastOperationError;
 }
-const FleetManagedNamespaceStatus = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<FleetManagedNamespaceStatus>;
-
 /** The properties of a fleet managed namespace. */
 export interface FleetManagedNamespaceProperties {
   /** The status of the last operation. */
@@ -2090,11 +1405,6 @@ export interface FleetManagedNamespaceProperties {
   /** The Azure Portal FQDN of the Fleet hub. */
   portalFqdn?: string;
 }
-const FleetManagedNamespaceProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<FleetManagedNamespaceProperties>;
-
 export interface FleetManagedNamespacesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2113,16 +1423,8 @@ export interface FleetManagedNamespacesCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const FleetManagedNamespacesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<FleetManagedNamespacesCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type FleetsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const FleetsCreateOrUpdateRequestTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<FleetsCreateOrUpdateRequestTagsMap>;
-
 /** Access profile for the Fleet hub API server. */
 export interface APIServerAccessProfile {
   /** Whether to create the Fleet hub as a private cluster or not. */
@@ -2132,11 +1434,6 @@ export interface APIServerAccessProfile {
   /** The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new Fleet with BYO vnet. */
   subnetId?: string;
 }
-const APIServerAccessProfile = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<APIServerAccessProfile>;
-
 /** Agent profile for the Fleet hub. */
 export interface AgentProfile {
   /** The ID of the subnet which the Fleet hub node will join on startup. If this is not specified, a vnet and subnet will be generated and used. */
@@ -2144,8 +1441,6 @@ export interface AgentProfile {
   /** The virtual machine size of the Fleet hub. */
   vmSize?: string;
 }
-const AgentProfile = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<AgentProfile>;
-
 /** The FleetHubProfile configures the fleet hub. */
 export interface FleetHubProfileInput {
   /** DNS prefix used to create the FQDN for the Fleet hub. */
@@ -2155,50 +1450,28 @@ export interface FleetHubProfileInput {
   /** The agent profile for the Fleet hub. */
   agentProfile?: AgentProfile;
 }
-const FleetHubProfileInput = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<FleetHubProfileInput>;
-
 /** Fleet properties. */
 export interface FleetPropertiesInput {
   /** The FleetHubProfile configures the Fleet's hub. */
   hubProfile?: FleetHubProfileInput;
 }
-const FleetPropertiesInput = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<FleetPropertiesInput>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned";
-const ManagedServiceIdentityType = S.String;
-
 /** User assigned identity properties */
 export type UserAssignedIdentityInput = AgentPoolStatusInputProvisioningError;
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: AgentPoolStatusInputProvisioningError | undefined;
 };
-const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<UserAssignedIdentitiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface FleetsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-const FleetsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<FleetsCreateOrUpdateRequestIdentity>;
-
 export interface FleetsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2215,16 +1488,8 @@ export interface FleetsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: FleetsCreateOrUpdateRequestIdentity;
 }
-const FleetsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<FleetsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type FleetsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const FleetsCreateOrUpdateResponseTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<FleetsCreateOrUpdateResponseTagsMap>;
-
 /** The provisioning state of the last accepted operation. */
 export type FleetProvisioningState =
   | "Succeeded"
@@ -2233,8 +1498,6 @@ export type FleetProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting";
-const FleetProvisioningState = S.String;
-
 /** The FleetHubProfile configures the fleet hub. */
 export interface FleetHubProfile {
   /** DNS prefix used to create the FQDN for the Fleet hub. */
@@ -2250,8 +1513,6 @@ export interface FleetHubProfile {
   /** The Azure Portal FQDN of the Fleet hub. */
   portalFqdn?: string;
 }
-const FleetHubProfile = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<FleetHubProfile>;
-
 /** The error details. */
 export type FleetStatusLastOperationErrorDetailsList = Array<ErrorDetail>;
 /** The error additional info. */
@@ -2276,8 +1537,6 @@ export interface FleetStatus {
   /** The error detail. */
   lastOperationError?: FleetStatusLastOperationError;
 }
-const FleetStatus = FleetMemberStatus as any as S.Schema<FleetStatus>;
-
 /** Fleet properties. */
 export interface FleetProperties {
   /** The status of the last operation. */
@@ -2287,8 +1546,6 @@ export interface FleetProperties {
   /** Status information for the fleet. */
   status?: FleetStatus;
 }
-const FleetProperties = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<FleetProperties>;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentity_2 {
   /** The principal ID of the assigned identity. */
@@ -2296,18 +1553,8 @@ export interface UserAssignedIdentity_2 {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentity_2 = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<UserAssignedIdentity_2>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity_2 | undefined };
-const UserAssignedIdentities = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<UserAssignedIdentities>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface FleetsCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -2317,11 +1564,6 @@ export interface FleetsCreateOrUpdateResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-const FleetsCreateOrUpdateResponseIdentity = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<FleetsCreateOrUpdateResponseIdentity>;
-
 export interface FleetsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2342,15 +1584,8 @@ export interface FleetsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: FleetsCreateOrUpdateResponseIdentity;
 }
-const FleetsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<FleetsCreateOrUpdateResponse>;
-
 /** The type of the Gate determines how it is completed. */
 export type GateType = "Approval";
-const GateType = S.String;
-
 /** GateConfiguration is used to define where Gates should be placed within the Update Run. */
 export interface GateConfiguration {
   /** The human-readable display name of the Gate. */
@@ -2358,20 +1593,10 @@ export interface GateConfiguration {
   /** The type of the Gate determines how it is completed. */
   type: GateType | (string & {});
 }
-const GateConfiguration = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<GateConfiguration>;
-
 /** A list of Gates that will be created before this Group is executed. */
 export type UpdateGroupBeforeGatesList = Array<GateConfiguration>;
-const UpdateGroupBeforeGatesList = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<UpdateGroupBeforeGatesList>;
-
 /** A list of Gates that will be created after this Group is executed. */
 export type UpdateGroupAfterGatesList = Array<GateConfiguration>;
-const UpdateGroupAfterGatesList =
-  UpdateGroupBeforeGatesList as any as S.Schema<UpdateGroupAfterGatesList>;
-
 /** A group to be updated. */
 export interface UpdateGroup {
   /** Name of the group. It must match a group name of an existing fleet member. */
@@ -2383,25 +1608,12 @@ export interface UpdateGroup {
   /** A list of Gates that will be created after this Group is executed. */
   afterGates?: UpdateGroupAfterGatesList;
 }
-const UpdateGroup = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<UpdateGroup>;
-
 /** Defines the groups to be executed in parallel in this stage. Duplicate groups are not allowed. Min size: 1. */
 export type UpdateStageGroupsList = Array<UpdateGroup>;
-const UpdateStageGroupsList = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<UpdateStageGroupsList>;
-
 /** A list of Gates that will be created before this Stage is executed. */
 export type UpdateStageBeforeGatesList = Array<GateConfiguration>;
-const UpdateStageBeforeGatesList =
-  UpdateGroupBeforeGatesList as any as S.Schema<UpdateStageBeforeGatesList>;
-
 /** A list of Gates that will be created after this Stage is executed. */
 export type UpdateStageAfterGatesList = Array<GateConfiguration>;
-const UpdateStageAfterGatesList =
-  UpdateGroupBeforeGatesList as any as S.Schema<UpdateStageAfterGatesList>;
-
 /** Defines a stage which contains the groups to update and the steps to take (e.g., wait for a time period) before starting the next stage. */
 export interface UpdateStage {
   /** The name of the stage. Must be unique within the UpdateRun. */
@@ -2417,32 +1629,18 @@ export interface UpdateStage {
   /** A list of Gates that will be created after this Stage is executed. */
   afterGates?: UpdateStageAfterGatesList;
 }
-const UpdateStage = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<UpdateStage>;
-
 /** The list of stages that compose this update run. Min size: 1. */
 export type UpdateRunStrategyStagesList = Array<UpdateStage>;
-const UpdateRunStrategyStagesList = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<UpdateRunStrategyStagesList>;
-
 /** Defines the update sequence of the clusters via stages and groups. Stages within a run are executed sequentially one after another. Groups within a stage are executed in parallel. Member clusters within a group are updated sequentially one after another. A valid strategy contains no duplicate groups within or across stages. */
 export interface UpdateRunStrategy {
   /** The list of stages that compose this update run. Min size: 1. */
   stages: UpdateRunStrategyStagesList;
 }
-const UpdateRunStrategy = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<UpdateRunStrategy>;
-
 /** The properties of the UpdateStrategy. */
 export interface FleetUpdateStrategyPropertiesInput {
   /** Defines the update sequence of the clusters. */
   strategy: UpdateRunStrategy;
 }
-const FleetUpdateStrategyPropertiesInput = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<FleetUpdateStrategyPropertiesInput>;
-
 export interface FleetUpdateStrategiesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2455,15 +1653,8 @@ export interface FleetUpdateStrategiesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: FleetUpdateStrategyPropertiesInput;
 }
-const FleetUpdateStrategiesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<FleetUpdateStrategiesCreateOrUpdateRequest>;
-
 /** The provisioning state of the UpdateStrategy resource. */
 export type FleetUpdateStrategyProvisioningState = "Succeeded" | "Failed" | "Canceled";
-const FleetUpdateStrategyProvisioningState = S.String;
-
 /** The properties of the UpdateStrategy. */
 export interface FleetUpdateStrategyProperties {
   /** The provisioning state of the UpdateStrategy resource. */
@@ -2471,11 +1662,6 @@ export interface FleetUpdateStrategyProperties {
   /** Defines the update sequence of the clusters. */
   strategy: UpdateRunStrategy;
 }
-const FleetUpdateStrategyProperties = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<FleetUpdateStrategyProperties>;
-
 export interface FleetUpdateStrategiesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2490,11 +1676,6 @@ export interface FleetUpdateStrategiesCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const FleetUpdateStrategiesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<FleetUpdateStrategiesCreateOrUpdateResponse>;
-
 export interface GetAgentPoolRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2505,8 +1686,6 @@ export interface GetAgentPoolRequest {
   /** The name of the agent pool. */
   agentPoolName: string;
 }
-const GetAgentPoolRequest = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<GetAgentPoolRequest>;
-
 export interface GetAgentPoolResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2519,11 +1698,6 @@ export interface GetAgentPoolResponse {
   /** Properties of an agent pool. */
   properties?: ManagedClusterAgentPoolProfileProperties;
 }
-const GetAgentPoolResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GetAgentPoolResponse>;
-
 export interface GetAgentPoolAvailableAgentPoolVersionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2532,11 +1706,6 @@ export interface GetAgentPoolAvailableAgentPoolVersionsRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const GetAgentPoolAvailableAgentPoolVersionsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<GetAgentPoolAvailableAgentPoolVersionsRequest>;
-
 /** Available version information for an agent pool. */
 export interface AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem {
   /** Whether this version is the default agent pool version. */
@@ -2546,29 +1715,14 @@ export interface AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem {
   /** Whether Kubernetes version is currently in preview. */
   isPreview?: boolean;
 }
-const AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem>;
-
 /** List of versions available for agent pool. */
 export type AgentPoolAvailableVersionsPropertiesAgentPoolVersionsList =
   Array<AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem>;
-const AgentPoolAvailableVersionsPropertiesAgentPoolVersionsList = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<AgentPoolAvailableVersionsPropertiesAgentPoolVersionsList>;
-
 /** The list of available agent pool versions. */
 export interface AgentPoolAvailableVersionsProperties {
   /** List of versions available for agent pool. */
   agentPoolVersions?: AgentPoolAvailableVersionsPropertiesAgentPoolVersionsList;
 }
-const AgentPoolAvailableVersionsProperties = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<AgentPoolAvailableVersionsProperties>;
-
 /** The list of available versions for an agent pool. */
 export interface AgentPoolAvailableVersions {
   /** The ID of the agent pool version list. */
@@ -2580,11 +1734,6 @@ export interface AgentPoolAvailableVersions {
   /** Properties of agent pool available versions. */
   properties: AgentPoolAvailableVersionsProperties;
 }
-const AgentPoolAvailableVersions = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<AgentPoolAvailableVersions>;
-
 export interface GetAgentPoolUpgradeProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2595,15 +1744,8 @@ export interface GetAgentPoolUpgradeProfileRequest {
   /** The name of the agent pool. */
   agentPoolName: string;
 }
-const GetAgentPoolUpgradeProfileRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<GetAgentPoolUpgradeProfileRequest>;
-
 /** The operating system type. The default is Linux. */
 export type AgentPoolUpgradeProfilePropertiesOsType = "Linux" | "Windows";
-const AgentPoolUpgradeProfilePropertiesOsType = S.String;
-
 /** Available upgrades for an AgentPool. */
 export interface AgentPoolUpgradeProfilePropertiesUpgradesItem {
   /** The Kubernetes version (major.minor.patch). */
@@ -2611,19 +1753,9 @@ export interface AgentPoolUpgradeProfilePropertiesUpgradesItem {
   /** Whether the Kubernetes version is currently in preview. */
   isPreview?: boolean;
 }
-const AgentPoolUpgradeProfilePropertiesUpgradesItem = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<AgentPoolUpgradeProfilePropertiesUpgradesItem>;
-
 /** List of orchestrator types and versions available for upgrade. */
 export type AgentPoolUpgradeProfilePropertiesUpgradesList =
   Array<AgentPoolUpgradeProfilePropertiesUpgradesItem>;
-const AgentPoolUpgradeProfilePropertiesUpgradesList = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<AgentPoolUpgradeProfilePropertiesUpgradesList>;
-
 /** A historical version that can be used for rollback operations. */
 export interface AgentPoolRecentlyUsedVersion {
   /** The Kubernetes version (major.minor.patch) available for rollback. */
@@ -2633,19 +1765,9 @@ export interface AgentPoolRecentlyUsedVersion {
   /** The timestamp when this version was last used. */
   timestamp?: string;
 }
-const AgentPoolRecentlyUsedVersion = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<AgentPoolRecentlyUsedVersion>;
-
 /** List of historical good versions for rollback operations. */
 export type AgentPoolUpgradeProfilePropertiesRecentlyUsedVersionsList =
   Array<AgentPoolRecentlyUsedVersion>;
-const AgentPoolUpgradeProfilePropertiesRecentlyUsedVersionsList = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<AgentPoolUpgradeProfilePropertiesRecentlyUsedVersionsList>;
-
 /** The list of available upgrade versions. */
 export interface AgentPoolUpgradeProfileProperties {
   /** The Kubernetes version (major.minor.patch). */
@@ -2659,11 +1781,6 @@ export interface AgentPoolUpgradeProfileProperties {
   /** The latest AKS supported node image version. */
   latestNodeImageVersion?: string;
 }
-const AgentPoolUpgradeProfileProperties = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<AgentPoolUpgradeProfileProperties>;
-
 export interface GetAgentPoolUpgradeProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2676,11 +1793,6 @@ export interface GetAgentPoolUpgradeProfileResponse {
   /** The properties of the agent pool upgrade profile. */
   properties: AgentPoolUpgradeProfileProperties;
 }
-const GetAgentPoolUpgradeProfileResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<GetAgentPoolUpgradeProfileResponse>;
-
 export interface GetAutoUpgradeProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2691,11 +1803,6 @@ export interface GetAutoUpgradeProfileRequest {
   /** The name of the AutoUpgradeProfile resource. */
   autoUpgradeProfileName: string;
 }
-const GetAutoUpgradeProfileRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GetAutoUpgradeProfileRequest>;
-
 export interface GetAutoUpgradeProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2710,18 +1817,10 @@ export interface GetAutoUpgradeProfileResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const GetAutoUpgradeProfileResponse =
-  AutoUpgradeProfilesCreateOrUpdateResponse as any as S.Schema<GetAutoUpgradeProfileResponse>;
-
 export interface GetDeploymentSafeguardRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-const GetDeploymentSafeguardRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GetDeploymentSafeguardRequest>;
-
 export interface GetDeploymentSafeguardResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2736,9 +1835,6 @@ export interface GetDeploymentSafeguardResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const GetDeploymentSafeguardResponse =
-  CreateDeploymentSafeguardResponse as any as S.Schema<GetDeploymentSafeguardResponse>;
-
 export interface GetFleetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2747,13 +1843,8 @@ export interface GetFleetRequest {
   /** The name of the Fleet resource. */
   fleetName: string;
 }
-const GetFleetRequest = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<GetFleetRequest>;
-
 /** Resource tags. */
 export type GetFleetResponseTagsMap = { [key: string]: string | undefined };
-const GetFleetResponseTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<GetFleetResponseTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetFleetResponseIdentity = FleetsCreateOrUpdateResponseIdentity;
 export interface GetFleetResponse {
@@ -2776,8 +1867,6 @@ export interface GetFleetResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: FleetsCreateOrUpdateResponseIdentity;
 }
-const GetFleetResponse = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<GetFleetResponse>;
-
 export interface GetFleetManagedNamespaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2788,11 +1877,6 @@ export interface GetFleetManagedNamespaceRequest {
   /** The name of the fleet managed namespace resource. */
   managedNamespaceName: string;
 }
-const GetFleetManagedNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<GetFleetManagedNamespaceRequest>;
-
 /** Resource tags. */
 export type GetFleetManagedNamespaceResponseTagsMap = { [key: string]: string | undefined };
 export interface GetFleetManagedNamespaceResponse {
@@ -2813,9 +1897,6 @@ export interface GetFleetManagedNamespaceResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const GetFleetManagedNamespaceResponse =
-  FleetManagedNamespacesCreateOrUpdateResponse as any as S.Schema<GetFleetManagedNamespaceResponse>;
-
 export interface GetFleetMemberRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2826,11 +1907,6 @@ export interface GetFleetMemberRequest {
   /** The name of the Fleet member resource. */
   fleetMemberName: string;
 }
-const GetFleetMemberRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<GetFleetMemberRequest>;
-
 export interface GetFleetMemberResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2845,11 +1921,6 @@ export interface GetFleetMemberResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const GetFleetMemberResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetFleetMemberResponse>;
-
 export interface GetFleetUpdateStrategyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2860,11 +1931,6 @@ export interface GetFleetUpdateStrategyRequest {
   /** The name of the UpdateStrategy resource. */
   updateStrategyName: string;
 }
-const GetFleetUpdateStrategyRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GetFleetUpdateStrategyRequest>;
-
 export interface GetFleetUpdateStrategyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2879,9 +1945,6 @@ export interface GetFleetUpdateStrategyResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const GetFleetUpdateStrategyResponse =
-  FleetUpdateStrategiesCreateOrUpdateResponse as any as S.Schema<GetFleetUpdateStrategyResponse>;
-
 export interface GetGateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2892,16 +1955,10 @@ export interface GetGateRequest {
   /** The name of the Gate resource, a GUID. */
   gateName: string;
 }
-const GetGateRequest = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<GetGateRequest>;
-
 /** The provisioning state of the Gate resource. */
 export type GateProvisioningState = "Succeeded" | "Failed" | "Canceled";
-const GateProvisioningState = S.String;
-
 /** Whether the Gate is placed before or after the target. */
 export type Timing = "Before" | "After";
-const Timing = S.String;
-
 /** The properties of the Update Run that the Gate is targeting. */
 export interface UpdateRunGateTargetProperties {
   /** The name of the Update Run. */
@@ -2913,11 +1970,6 @@ export interface UpdateRunGateTargetProperties {
   /** Whether the Gate is placed before or after the update itself. */
   timing: Timing;
 }
-const UpdateRunGateTargetProperties = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<UpdateRunGateTargetProperties>;
-
 /** The target that the Gate is controlling, e.g. an Update Run. Exactly one of the properties objects will be set. */
 export interface GateTarget {
   /** The resource id that the Gate is controlling the rollout of. */
@@ -2925,12 +1977,8 @@ export interface GateTarget {
   /** The properties of the Update Run that the Gate is targeting. */
   updateRunProperties?: UpdateRunGateTargetProperties;
 }
-const GateTarget = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<GateTarget>;
-
 /** The state of the Gate. */
 export type GateState = "Pending" | "Skipped" | "Completed";
-const GateState = S.String;
-
 /** A Gate controls the progression during a staged rollout, e.g. in an Update Run. */
 export interface GateProperties {
   /** The provisioning state of the Gate resource. */
@@ -2944,8 +1992,6 @@ export interface GateProperties {
   /** The state of the Gate. */
   state: GateState;
 }
-const GateProperties = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<GateProperties>;
-
 export interface GetGateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2960,8 +2006,6 @@ export interface GetGateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const GetGateResponse = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<GetGateResponse>;
-
 export interface GetIdentityBindingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2972,11 +2016,6 @@ export interface GetIdentityBindingRequest {
   /** The name of the identity binding. */
   identityBindingName: string;
 }
-const GetIdentityBindingRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<GetIdentityBindingRequest>;
-
 /** Managed identity profile for the identity binding. */
 export interface IdentityBindingManagedIdentityProfile {
   /** The resource ID of the managed identity. */
@@ -2988,21 +2027,11 @@ export interface IdentityBindingManagedIdentityProfile {
   /** The tenant ID of the managed identity. */
   tenantId?: string;
 }
-const IdentityBindingManagedIdentityProfile = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<IdentityBindingManagedIdentityProfile>;
-
 /** IdentityBinding OIDC issuer profile. */
 export interface IdentityBindingOidcIssuerProfile {
   /** The OIDC issuer URL of the IdentityBinding. */
   oidcIssuerUrl?: string;
 }
-const IdentityBindingOidcIssuerProfile = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<IdentityBindingOidcIssuerProfile>;
-
 /** The provisioning state of the last accepted operation. */
 export type IdentityBindingProvisioningState =
   | "Succeeded"
@@ -3011,8 +2040,6 @@ export type IdentityBindingProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting";
-const IdentityBindingProvisioningState = S.String;
-
 /** IdentityBinding properties. */
 export interface IdentityBindingProperties {
   /** Managed identity profile for the identity binding. */
@@ -3022,11 +2049,6 @@ export interface IdentityBindingProperties {
   /** The status of the last operation. */
   provisioningState?: IdentityBindingProvisioningState;
 }
-const IdentityBindingProperties = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<IdentityBindingProperties>;
-
 export interface GetIdentityBindingResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3041,11 +2063,6 @@ export interface GetIdentityBindingResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const GetIdentityBindingResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<GetIdentityBindingResponse>;
-
 export interface GetMachineRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3058,12 +2075,8 @@ export interface GetMachineRequest {
   /** Host name of the machine. */
   machineName: string;
 }
-const GetMachineRequest = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<GetMachineRequest>;
-
 /** To determine if address belongs IPv4 or IPv6 family */
 export type IPFamily = "IPv4" | "IPv6";
-const IPFamily = S.String;
-
 /** The machine IP address details. */
 export interface MachineIpAddress {
   /** To determine if address belongs IPv4 or IPv6 family */
@@ -3071,25 +2084,13 @@ export interface MachineIpAddress {
   /** IPv4 or IPv6 address of the machine */
   ip?: string;
 }
-const MachineIpAddress = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<MachineIpAddress>;
-
 /** IPv4, IPv6 addresses of the machine */
 export type MachineNetworkPropertiesIpAddressesList = Array<MachineIpAddress>;
-const MachineNetworkPropertiesIpAddressesList = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<MachineNetworkPropertiesIpAddressesList>;
-
 /** network properties of the machine */
 export interface MachineNetworkProperties {
   /** IPv4, IPv6 addresses of the machine */
   ipAddresses?: MachineNetworkPropertiesIpAddressesList;
 }
-const MachineNetworkProperties = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<MachineNetworkProperties>;
-
 /** The properties of the machine */
 export interface MachineProperties {
   /** network properties of the machine */
@@ -3097,13 +2098,8 @@ export interface MachineProperties {
   /** Azure resource id of the machine. It can be used to GET underlying VM Instance */
   resourceId?: string;
 }
-const MachineProperties = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<MachineProperties>;
-
 /** The Availability zone in which machine is located. */
 export type GetMachineResponseZonesList = Array<string>;
-const GetMachineResponseZonesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<GetMachineResponseZonesList>;
-
 export interface GetMachineResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3118,8 +2114,6 @@ export interface GetMachineResponse {
   /** The Availability zone in which machine is located. */
   zones?: GetMachineResponseZonesList;
 }
-const GetMachineResponse = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<GetMachineResponse>;
-
 export interface GetMaintenanceConfigurationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3130,11 +2124,6 @@ export interface GetMaintenanceConfigurationRequest {
   /** The name of the maintenance configuration. Supported values are 'default', 'aksManagedAutoUpgradeSchedule', or 'aksManagedNodeOSUpgradeSchedule'. */
   configName: string;
 }
-const GetMaintenanceConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<GetMaintenanceConfigurationRequest>;
-
 /** The weekday enum. */
 export type WeekDay =
   | "Sunday"
@@ -3144,15 +2133,8 @@ export type WeekDay =
   | "Thursday"
   | "Friday"
   | "Saturday";
-const WeekDay = S.String;
-
 /** A list of hours in the day used to identify a time range. Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range. */
 export type TimeInWeekHourSlotsList = Array<number>;
-const TimeInWeekHourSlotsList = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<TimeInWeekHourSlotsList>;
-
 /** Time in a week. */
 export interface TimeInWeek {
   /** The day of the week. */
@@ -3160,15 +2142,8 @@ export interface TimeInWeek {
   /** A list of hours in the day used to identify a time range. Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range. */
   hourSlots?: TimeInWeekHourSlotsList;
 }
-const TimeInWeek = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<TimeInWeek>;
-
 /** Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries. */
 export type MaintenanceConfigurationPropertiesTimeInWeekList = Array<TimeInWeek>;
-const MaintenanceConfigurationPropertiesTimeInWeekList = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<MaintenanceConfigurationPropertiesTimeInWeekList>;
-
 /** A time range. For example, between 2021-05-25T13:00:00Z and 2021-05-25T14:00:00Z. */
 export interface TimeSpan {
   /** The start of a time span */
@@ -3176,22 +2151,13 @@ export interface TimeSpan {
   /** The end of a time span */
   end?: string;
 }
-const TimeSpan = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<TimeSpan>;
-
 /** Time slots on which upgrade is not allowed. */
 export type MaintenanceConfigurationPropertiesNotAllowedTimeList = Array<TimeSpan>;
-const MaintenanceConfigurationPropertiesNotAllowedTimeList = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<MaintenanceConfigurationPropertiesNotAllowedTimeList>;
-
 /** For schedules like: 'recur every day' or 'recur every 3 days'. */
 export interface DailySchedule {
   /** Specifies the number of days between each set of occurrences. */
   intervalDays: number;
 }
-const DailySchedule = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<DailySchedule>;
-
 /** For schedules like: 'recur every Monday' or 'recur every 3 weeks on Wednesday'. */
 export interface WeeklySchedule {
   /** Specifies the number of weeks between each set of occurrences. */
@@ -3199,8 +2165,6 @@ export interface WeeklySchedule {
   /** Specifies on which day of the week the maintenance occurs. */
   dayOfWeek: WeekDay | (string & {});
 }
-const WeeklySchedule = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<WeeklySchedule>;
-
 /** For schedules like: 'recur every month on the 15th' or 'recur every 3 months on the 20th'. */
 export interface AbsoluteMonthlySchedule {
   /** Specifies the number of months between each set of occurrences. */
@@ -3208,15 +2172,8 @@ export interface AbsoluteMonthlySchedule {
   /** The date of the month. */
   dayOfMonth: number;
 }
-const AbsoluteMonthlySchedule = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<AbsoluteMonthlySchedule>;
-
 /** The week index. Specifies on which week of the month the dayOfWeek applies. */
 export type Type = "First" | "Second" | "Third" | "Fourth" | "Last";
-const Type = S.String;
-
 /** For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'. */
 export interface RelativeMonthlySchedule {
   /** Specifies the number of months between each set of occurrences. */
@@ -3226,11 +2183,6 @@ export interface RelativeMonthlySchedule {
   /** Specifies on which day of the week the maintenance occurs. */
   dayOfWeek: WeekDay | (string & {});
 }
-const RelativeMonthlySchedule = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<RelativeMonthlySchedule>;
-
 /** One and only one of the schedule types should be specified. Choose either 'daily', 'weekly', 'absoluteMonthly' or 'relativeMonthly' for your maintenance schedule. */
 export interface Schedule {
   /** For schedules like: 'recur every day' or 'recur every 3 days'. */
@@ -3242,8 +2194,6 @@ export interface Schedule {
   /** For schedules like: 'recur every month on the first Monday' or 'recur every 3 months on last Friday'. */
   relativeMonthly?: RelativeMonthlySchedule;
 }
-const Schedule = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<Schedule>;
-
 /** A date range. For example, between '2022-12-23' and '2023-01-05'. */
 export interface DateSpan {
   /** The start date of the date span. */
@@ -3251,15 +2201,8 @@ export interface DateSpan {
   /** The end date of the date span. */
   end: string;
 }
-const DateSpan = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<DateSpan>;
-
 /** Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time. */
 export type MaintenanceWindowNotAllowedDatesList = Array<DateSpan>;
-const MaintenanceWindowNotAllowedDatesList = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<MaintenanceWindowNotAllowedDatesList>;
-
 /** Maintenance window used to configure scheduled auto-upgrade for a Managed Cluster. */
 export interface MaintenanceWindow {
   /** Recurrence schedule for the maintenance window. */
@@ -3275,8 +2218,6 @@ export interface MaintenanceWindow {
   /** Date ranges on which upgrade is not allowed. 'utcOffset' applies to this field. For example, with 'utcOffset: +02:00' and 'dateSpan' being '2022-12-23' to '2023-01-03', maintenance will be blocked from '2022-12-22 22:00' to '2023-01-03 22:00' in UTC time. */
   notAllowedDates?: MaintenanceWindowNotAllowedDatesList;
 }
-const MaintenanceWindow = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<MaintenanceWindow>;
-
 /** Properties used to configure planned maintenance for a Managed Cluster. */
 export interface MaintenanceConfigurationProperties {
   /** Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries. */
@@ -3286,11 +2227,6 @@ export interface MaintenanceConfigurationProperties {
   /** Maintenance window for the maintenance configuration. */
   maintenanceWindow?: MaintenanceWindow;
 }
-const MaintenanceConfigurationProperties = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<MaintenanceConfigurationProperties>;
-
 export interface GetMaintenanceConfigurationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3303,11 +2239,6 @@ export interface GetMaintenanceConfigurationResponse {
   /** Properties of a default maintenance configuration. */
   properties?: MaintenanceConfigurationProperties;
 }
-const GetMaintenanceConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<GetMaintenanceConfigurationResponse>;
-
 export interface GetManagedClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3316,54 +2247,25 @@ export interface GetManagedClusterRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const GetManagedClusterRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<GetManagedClusterRequest>;
-
 /** Resource tags. */
 export type GetManagedClusterResponseTagsMap = { [key: string]: string | undefined };
-const GetManagedClusterResponseTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<GetManagedClusterResponseTagsMap>;
-
 /** The operating system type. The default is Linux. */
 export type ManagedClusterAgentPoolProfileOsType = "Linux" | "Windows";
-const ManagedClusterAgentPoolProfileOsType = S.String;
-
 /** The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'. */
 export type ManagedClusterAgentPoolProfileAvailabilityZonesList = Array<string>;
-const ManagedClusterAgentPoolProfileAvailabilityZonesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<ManagedClusterAgentPoolProfileAvailabilityZonesList>;
-
 /** The Virtual Machine Scale Set priority. */
 export type ManagedClusterAgentPoolProfileScaleSetPriority = "Spot" | "Regular";
-const ManagedClusterAgentPoolProfileScaleSetPriority = S.String;
-
 /** The Virtual Machine Scale Set eviction policy. The eviction policy specifies what to do with the VM when it is evicted. The default is Delete. For more information about eviction see [spot VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms) */
 export type ManagedClusterAgentPoolProfileScaleSetEvictionPolicy = "Delete" | "Deallocate";
-const ManagedClusterAgentPoolProfileScaleSetEvictionPolicy = S.String;
-
 /** The tags to be persisted on the agent pool virtual machine scale set. */
 export type ManagedClusterAgentPoolProfileTagsMap = { [key: string]: string | undefined };
-const ManagedClusterAgentPoolProfileTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<ManagedClusterAgentPoolProfileTagsMap>;
-
 /** The node labels to be persisted across all nodes in agent pool. */
 export type ManagedClusterAgentPoolProfileNodeLabelsMap = { [key: string]: string | undefined };
-const ManagedClusterAgentPoolProfileNodeLabelsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<ManagedClusterAgentPoolProfileNodeLabelsMap>;
-
 /** The taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type ManagedClusterAgentPoolProfileNodeTaintsList = Array<string>;
-const ManagedClusterAgentPoolProfileNodeTaintsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<ManagedClusterAgentPoolProfileNodeTaintsList>;
-
 /** The status of nodes in a VirtualMachines agent pool. */
 export type ManagedClusterAgentPoolProfileVirtualMachineNodesStatusList =
   Array<VirtualMachineNodes>;
-const ManagedClusterAgentPoolProfileVirtualMachineNodesStatusList =
-  ScaleProfileManualList as any as S.Schema<ManagedClusterAgentPoolProfileVirtualMachineNodesStatusList>;
-
 /** Profile for the container service agent pool. */
 export interface ManagedClusterAgentPoolProfile {
   /** Unique read-only string used to implement optimistic concurrency. The eTag value will change when the resource is updated. Specify an if-match or if-none-match header with the eTag value for a subsequent request to enable optimistic concurrency per the normal eTag convention. */
@@ -3479,45 +2381,20 @@ export interface ManagedClusterAgentPoolProfile {
   /** Unique name of the agent pool profile in the context of the subscription and resource group. Windows agent pool names must be 6 characters or less. */
   name: string;
 }
-const ManagedClusterAgentPoolProfile = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ManagedClusterAgentPoolProfile>;
-
 /** The agent pool properties. */
 export type ManagedClusterPropertiesAgentPoolProfilesList = Array<ManagedClusterAgentPoolProfile>;
-const ManagedClusterPropertiesAgentPoolProfilesList = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<ManagedClusterPropertiesAgentPoolProfilesList>;
-
 /** Contains information about SSH certificate public key data. */
 export interface ContainerServiceSshPublicKey {
   /** Certificate public key used to authenticate with VMs through SSH. The certificate must be in PEM format with or without headers. */
   keyData: string;
 }
-const ContainerServiceSshPublicKey = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<ContainerServiceSshPublicKey>;
-
 /** The list of SSH public keys used to authenticate with Linux-based VMs. A maximum of 1 key may be specified. */
 export type ContainerServiceSshConfigurationPublicKeysList = Array<ContainerServiceSshPublicKey>;
-const ContainerServiceSshConfigurationPublicKeysList = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<ContainerServiceSshConfigurationPublicKeysList>;
-
 /** SSH configuration for Linux-based VMs running on Azure. */
 export interface ContainerServiceSshConfiguration {
   /** The list of SSH public keys used to authenticate with Linux-based VMs. A maximum of 1 key may be specified. */
   publicKeys: ContainerServiceSshConfigurationPublicKeysList;
 }
-const ContainerServiceSshConfiguration = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<ContainerServiceSshConfiguration>;
-
 /** Profile for Linux VMs in the container service cluster. */
 export interface ContainerServiceLinuxProfile {
   /** The administrator username to use for Linux VMs. */
@@ -3525,15 +2402,8 @@ export interface ContainerServiceLinuxProfile {
   /** The SSH configuration for Linux-based VMs running on Azure. */
   ssh: ContainerServiceSshConfiguration;
 }
-const ContainerServiceLinuxProfile = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<ContainerServiceLinuxProfile>;
-
 /** The license type to use for Windows VMs. See [Azure Hybrid User Benefits](https://azure.microsoft.com/pricing/hybrid-benefit/faq/) for more details. */
 export type LicenseType = "None" | "Windows_Server";
-const LicenseType = S.String;
-
 /** Windows gMSA Profile in the managed cluster. */
 export interface WindowsGmsaProfile {
   /** Whether to enable Windows gMSA. Specifies whether to enable Windows gMSA in the managed cluster. */
@@ -3543,8 +2413,6 @@ export interface WindowsGmsaProfile {
   /** Specifies the root domain name for Windows gMSA. <br><br> Set it to empty if you have configured the DNS server in the vnet which is used to create the managed cluster. */
   rootDomainName?: string;
 }
-const WindowsGmsaProfile = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<WindowsGmsaProfile>;
-
 /** Profile for Windows VMs in the managed cluster. */
 export interface ManagedClusterWindowsProfile {
   /** Specifies the name of the administrator account. <br><br> **Restriction:** Cannot end in "." <br><br> **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5". <br><br> **Minimum-length:** 1 character <br><br> **Max-length:** 20 characters */
@@ -3558,11 +2426,6 @@ export interface ManagedClusterWindowsProfile {
   /** The Windows gMSA Profile in the Managed Cluster. */
   gmsaProfile?: WindowsGmsaProfile;
 }
-const ManagedClusterWindowsProfile = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ManagedClusterWindowsProfile>;
-
 /** Information about a service principal identity for the cluster to use for manipulating Azure APIs. */
 export interface ManagedClusterServicePrincipalProfile {
   /** The ID for the service principal. */
@@ -3570,16 +2433,8 @@ export interface ManagedClusterServicePrincipalProfile {
   /** The secret password associated with the service principal in plain text. */
   secret?: string | Redacted.Redacted<string>;
 }
-const ManagedClusterServicePrincipalProfile = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<ManagedClusterServicePrincipalProfile>;
-
 /** Key-value pairs for configuring an add-on. */
 export type ManagedClusterAddonProfileConfigMap = { [key: string]: string | undefined };
-const ManagedClusterAddonProfileConfigMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<ManagedClusterAddonProfileConfigMap>;
-
 /** Details about a user assigned identity. */
 export interface UserAssignedIdentity {
   /** The resource ID of the user assigned identity. */
@@ -3589,11 +2444,6 @@ export interface UserAssignedIdentity {
   /** The object ID of the user assigned identity. */
   objectId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<UserAssignedIdentity>;
-
 /** A Kubernetes add-on profile for a managed cluster. */
 export interface ManagedClusterAddonProfile {
   /** Whether the add-on is enabled or not. */
@@ -3603,20 +2453,10 @@ export interface ManagedClusterAddonProfile {
   /** Information of user assigned identity used by this add-on. */
   identity?: UserAssignedIdentity;
 }
-const ManagedClusterAddonProfile = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<ManagedClusterAddonProfile>;
-
 /** The profile of managed cluster add-on. */
 export type ManagedClusterPropertiesAddonProfilesMap = {
   [key: string]: ManagedClusterAddonProfile | undefined;
 };
-const ManagedClusterPropertiesAddonProfilesMap = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ManagedClusterPropertiesAddonProfilesMap>;
-
 /** The current provisioning state of the pod identity. */
 export type ManagedClusterPodIdentityProvisioningState =
   | "Assigned"
@@ -3625,16 +2465,9 @@ export type ManagedClusterPodIdentityProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Updating";
-const ManagedClusterPodIdentityProvisioningState = S.String;
-
 /** A list of additional details about the error. */
 export type ManagedClusterPodIdentityProvisioningErrorBodyDetailsList =
   Array<ManagedClusterPodIdentityProvisioningErrorBody>;
-const ManagedClusterPodIdentityProvisioningErrorBodyDetailsList = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<ManagedClusterPodIdentityProvisioningErrorBodyDetailsList>;
-
 /** An error response from the pod identity provisioning. */
 export interface ManagedClusterPodIdentityProvisioningErrorBody {
   /** An identifier for the error. Codes are invariant and are intended to be consumed programmatically. */
@@ -3646,31 +2479,16 @@ export interface ManagedClusterPodIdentityProvisioningErrorBody {
   /** A list of additional details about the error. */
   details?: ManagedClusterPodIdentityProvisioningErrorBodyDetailsList;
 }
-const ManagedClusterPodIdentityProvisioningErrorBody = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<ManagedClusterPodIdentityProvisioningErrorBody>;
-
 /** An error response from the pod identity provisioning. */
 export interface ManagedClusterPodIdentityProvisioningError {
   /** Details about the error. */
   error?: ManagedClusterPodIdentityProvisioningErrorBody;
 }
-const ManagedClusterPodIdentityProvisioningError = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<ManagedClusterPodIdentityProvisioningError>;
-
 /** Pod identity provisioning information. */
 export interface ManagedClusterPodIdentityProvisioningInfo {
   /** Pod identity assignment error (if any). */
   error?: ManagedClusterPodIdentityProvisioningError;
 }
-const ManagedClusterPodIdentityProvisioningInfo = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<ManagedClusterPodIdentityProvisioningInfo>;
-
 /** Details about the pod identity assigned to the Managed Cluster. */
 export interface ManagedClusterPodIdentity {
   /** The name of the pod identity. */
@@ -3686,24 +2504,11 @@ export interface ManagedClusterPodIdentity {
   /** The provisioning information for the pod identity. */
   provisioningInfo?: ManagedClusterPodIdentityProvisioningInfo;
 }
-const ManagedClusterPodIdentity = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<ManagedClusterPodIdentity>;
-
 /** The pod identities to use in the cluster. */
 export type ManagedClusterPodIdentityProfileUserAssignedIdentitiesList =
   Array<ManagedClusterPodIdentity>;
-const ManagedClusterPodIdentityProfileUserAssignedIdentitiesList = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<ManagedClusterPodIdentityProfileUserAssignedIdentitiesList>;
-
 /** The pod labels to match. */
 export type ManagedClusterPodIdentityExceptionPodLabelsMap = { [key: string]: string | undefined };
-const ManagedClusterPodIdentityExceptionPodLabelsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<ManagedClusterPodIdentityExceptionPodLabelsMap>;
-
 /** A pod identity exception, which allows pods with certain labels to access the Azure Instance Metadata Service (IMDS) endpoint without being intercepted by the node-managed identity (NMI) server. See [disable AAD Pod Identity for a specific Pod/Application](https://azure.github.io/aad-pod-identity/docs/configure/application_exception/) for more details. */
 export interface ManagedClusterPodIdentityException {
   /** The name of the pod identity exception. */
@@ -3713,19 +2518,9 @@ export interface ManagedClusterPodIdentityException {
   /** The pod labels to match. */
   podLabels: ManagedClusterPodIdentityExceptionPodLabelsMap;
 }
-const ManagedClusterPodIdentityException = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<ManagedClusterPodIdentityException>;
-
 /** The pod identity exceptions to allow. */
 export type ManagedClusterPodIdentityProfileUserAssignedIdentityExceptionsList =
   Array<ManagedClusterPodIdentityException>;
-const ManagedClusterPodIdentityProfileUserAssignedIdentityExceptionsList = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<ManagedClusterPodIdentityProfileUserAssignedIdentityExceptionsList>;
-
 /** The pod identity profile of the Managed Cluster. See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod identity integration. */
 export interface ManagedClusterPodIdentityProfile {
   /** Whether the pod identity addon is enabled. */
@@ -3737,11 +2532,6 @@ export interface ManagedClusterPodIdentityProfile {
   /** The pod identity exceptions to allow. */
   userAssignedIdentityExceptions?: ManagedClusterPodIdentityProfileUserAssignedIdentityExceptionsList;
 }
-const ManagedClusterPodIdentityProfile = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<ManagedClusterPodIdentityProfile>;
-
 /** The OIDC issuer profile of the Managed Cluster. */
 export interface ManagedClusterOIDCIssuerProfile {
   /** The OIDC issuer url of the Managed Cluster. */
@@ -3749,75 +2539,39 @@ export interface ManagedClusterOIDCIssuerProfile {
   /** Whether the OIDC issuer is enabled. */
   enabled?: boolean;
 }
-const ManagedClusterOIDCIssuerProfile = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ManagedClusterOIDCIssuerProfile>;
-
 /** The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted' */
 export type RestrictionLevel = "Unrestricted" | "ReadOnly";
-const RestrictionLevel = S.String;
-
 /** Node resource group lockdown profile for a managed cluster. */
 export interface ManagedClusterNodeResourceGroupProfile {
   /** The restriction level applied to the cluster's node resource group. If not specified, the default is 'Unrestricted' */
   restrictionLevel?: RestrictionLevel | (string & {});
 }
-const ManagedClusterNodeResourceGroupProfile = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<ManagedClusterNodeResourceGroupProfile>;
-
 /** Different support tiers for AKS managed clusters */
 export type KubernetesSupportPlan = "KubernetesOfficial" | "AKSLongTermSupport";
-const KubernetesSupportPlan = S.String;
-
 /** Network plugin used for building the Kubernetes network. */
 export type NetworkPlugin = "azure" | "kubenet" | "none";
-const NetworkPlugin = S.String;
-
 /** The mode the network plugin should use. */
 export type NetworkPluginMode = "overlay";
-const NetworkPluginMode = S.String;
-
 /** Network policy used for building the Kubernetes network. */
 export type NetworkPolicy = "none" | "calico" | "azure" | "cilium";
-const NetworkPolicy = S.String;
-
 /** The network mode Azure CNI is configured with. This cannot be specified if networkPlugin is anything other than 'azure'. */
 export type NetworkMode = "transparent" | "bridge";
-const NetworkMode = S.String;
-
 /** Network dataplane used in the Kubernetes cluster. */
 export type NetworkDataplane = "azure" | "cilium";
-const NetworkDataplane = S.String;
-
 /** Observability profile to enable advanced network metrics and flow logs with historical contexts. */
 export interface AdvancedNetworkingObservability {
   /** Indicates the enablement of Advanced Networking observability functionalities on clusters. */
   enabled?: boolean;
 }
-const AdvancedNetworkingObservability =
-  AgentPoolArtifactStreamingProfile as any as S.Schema<AdvancedNetworkingObservability>;
-
 /** Enable advanced network policies. This allows users to configure Layer 7 network policies (FQDN, HTTP, Kafka). Policies themselves must be configured via the Cilium Network Policy resources, see https://docs.cilium.io/en/latest/security/policy/index.html. This can be enabled only on cilium-based clusters. If not specified, the default value is FQDN if security.enabled is set to true. */
 export type AdvancedNetworkPolicies = "L7" | "FQDN" | "None";
-const AdvancedNetworkPolicies = S.String;
-
 /** Configures pod-to-pod encryption. This can be enabled only on Cilium-based clusters. If not specified, the default value is None. */
 export type TransitEncryptionType = "WireGuard" | "None";
-const TransitEncryptionType = S.String;
-
 /** Encryption configuration for Cilium-based clusters. Once enabled all traffic between Cilium managed pods will be encrypted when it leaves the node boundary. */
 export interface AdvancedNetworkingSecurityTransitEncryption {
   /** Configures pod-to-pod encryption. This can be enabled only on Cilium-based clusters. If not specified, the default value is None. */
   type?: TransitEncryptionType | (string & {});
 }
-const AdvancedNetworkingSecurityTransitEncryption = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<AdvancedNetworkingSecurityTransitEncryption>;
-
 /** Security profile to enable security features on cilium based cluster. */
 export interface AdvancedNetworkingSecurity {
   /** This feature allows user to configure network policy based on DNS (FQDN) names. It can be enabled only on cilium based clusters. If not specified, the default is false. */
@@ -3827,25 +2581,13 @@ export interface AdvancedNetworkingSecurity {
   /** Encryption configuration for Cilium-based clusters. Once enabled all traffic between Cilium managed pods will be encrypted when it leaves the node boundary. */
   transitEncryption?: AdvancedNetworkingSecurityTransitEncryption;
 }
-const AdvancedNetworkingSecurity = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<AdvancedNetworkingSecurity>;
-
 /** Enable advanced network acceleration options. This allows users to configure acceleration using BPF host routing. This can be enabled only with Cilium dataplane. If not specified, the default value is None (no acceleration). The acceleration mode can be changed on a pre-existing cluster. See https://aka.ms/acnsperformance for a detailed explanation */
 export type AdvancedNetworkingPerformanceAccelerationMode = "BpfVeth" | "None";
-const AdvancedNetworkingPerformanceAccelerationMode = S.String;
-
 /** Profile to enable performance-enhancing features on clusters that use Azure CNI powered by Cilium. */
 export interface AdvancedNetworkingPerformance {
   /** Enable advanced network acceleration options. This allows users to configure acceleration using BPF host routing. This can be enabled only with Cilium dataplane. If not specified, the default value is None (no acceleration). The acceleration mode can be changed on a pre-existing cluster. See https://aka.ms/acnsperformance for a detailed explanation */
   accelerationMode?: AdvancedNetworkingPerformanceAccelerationMode | (string & {});
 }
-const AdvancedNetworkingPerformance = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<AdvancedNetworkingPerformance>;
-
 /** Advanced Networking profile for enabling observability and security feature suite on a cluster. For more information see aka.ms/aksadvancednetworking. */
 export interface AdvancedNetworking {
   /** Indicates the enablement of Advanced Networking functionalities of observability and security on AKS clusters. When this is set to true, all observability and security features will be set to enabled unless explicitly disabled. If not specified, the default is false. */
@@ -3857,8 +2599,6 @@ export interface AdvancedNetworking {
   /** Profile to enable performance-enhancing features on clusters that use Azure CNI powered by Cilium. */
   performance?: AdvancedNetworkingPerformance;
 }
-const AdvancedNetworking = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<AdvancedNetworking>;
-
 /** The outbound (egress) routing method. This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype). */
 export type ContainerServiceNetworkProfileOutboundType =
   | "loadBalancer"
@@ -3866,12 +2606,8 @@ export type ContainerServiceNetworkProfileOutboundType =
   | "managedNATGateway"
   | "userAssignedNATGateway"
   | "none";
-const ContainerServiceNetworkProfileOutboundType = S.String;
-
 /** The load balancer sku for the managed cluster. The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more information about the differences between load balancer SKUs. */
 export type LoadBalancerSku = "standard" | "basic";
-const LoadBalancerSku = S.String;
-
 /** Desired managed outbound IPs for the cluster load balancer. */
 export interface ManagedClusterLoadBalancerProfileManagedOutboundIPs {
   /** The desired number of IPv4 outbound IPs created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 1. */
@@ -3879,63 +2615,30 @@ export interface ManagedClusterLoadBalancerProfileManagedOutboundIPs {
   /** The desired number of IPv6 outbound IPs created/managed by Azure for the cluster load balancer. Allowed values must be in the range of 1 to 100 (inclusive). The default value is 0 for single-stack and 1 for dual-stack. */
   countIPv6?: number;
 }
-const ManagedClusterLoadBalancerProfileManagedOutboundIPs = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<ManagedClusterLoadBalancerProfileManagedOutboundIPs>;
-
 /** A reference to an Azure resource. */
 export interface ResourceReference {
   /** The fully qualified Azure resource id. */
   id?: string;
 }
-const ResourceReference = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<ResourceReference>;
-
 /** A list of public IP prefix resources. */
 export type ManagedClusterLoadBalancerProfileOutboundIPPrefixesPublicIPPrefixesList =
   Array<ResourceReference>;
-const ManagedClusterLoadBalancerProfileOutboundIPPrefixesPublicIPPrefixesList =
-  /*@__PURE__*/ __L.at(
-    __c27,
-    2,
-  ) as any as S.Schema<ManagedClusterLoadBalancerProfileOutboundIPPrefixesPublicIPPrefixesList>;
-
 /** Desired outbound IP Prefix resources for the cluster load balancer. */
 export interface ManagedClusterLoadBalancerProfileOutboundIPPrefixes {
   /** A list of public IP prefix resources. */
   publicIPPrefixes?: ManagedClusterLoadBalancerProfileOutboundIPPrefixesPublicIPPrefixesList;
 }
-const ManagedClusterLoadBalancerProfileOutboundIPPrefixes = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ManagedClusterLoadBalancerProfileOutboundIPPrefixes>;
-
 /** A list of public IP resources. */
 export type ManagedClusterLoadBalancerProfileOutboundIPsPublicIPsList = Array<ResourceReference>;
-const ManagedClusterLoadBalancerProfileOutboundIPsPublicIPsList = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<ManagedClusterLoadBalancerProfileOutboundIPsPublicIPsList>;
-
 /** Desired outbound IP resources for the cluster load balancer. */
 export interface ManagedClusterLoadBalancerProfileOutboundIPs {
   /** A list of public IP resources. */
   publicIPs?: ManagedClusterLoadBalancerProfileOutboundIPsPublicIPsList;
 }
-const ManagedClusterLoadBalancerProfileOutboundIPs = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<ManagedClusterLoadBalancerProfileOutboundIPs>;
-
 /** The effective outbound IP resources of the cluster load balancer. */
 export type ManagedClusterLoadBalancerProfileEffectiveOutboundIPsList = Array<ResourceReference>;
-const ManagedClusterLoadBalancerProfileEffectiveOutboundIPsList =
-  ManagedClusterLoadBalancerProfileOutboundIPsPublicIPsList as any as S.Schema<ManagedClusterLoadBalancerProfileEffectiveOutboundIPsList>;
-
 /** The type of the managed inbound Load Balancer BackendPool. */
 export type ManagedClusterLoadBalancerProfileBackendPoolType = "NodeIPConfiguration" | "NodeIP";
-const ManagedClusterLoadBalancerProfileBackendPoolType = S.String;
-
 /** Profile of the managed cluster load balancer. */
 export interface ManagedClusterLoadBalancerProfile {
   /** Desired managed outbound IPs for the cluster load balancer. */
@@ -3955,15 +2658,8 @@ export interface ManagedClusterLoadBalancerProfile {
   /** The type of the managed inbound Load Balancer BackendPool. */
   backendPoolType?: ManagedClusterLoadBalancerProfileBackendPoolType;
 }
-const ManagedClusterLoadBalancerProfile = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<ManagedClusterLoadBalancerProfile>;
-
 /** The SKU of a managed cluster NAT Gateway. */
 export type ManagedClusterNATGatewaySku = "Standard" | "StandardV2";
-const ManagedClusterNATGatewaySku = S.String;
-
 /** Profile of the managed outbound IP resources of the managed cluster. */
 export interface ManagedClusterManagedOutboundIPProfile {
   /** The desired number of outbound IPs created/managed by Azure. Allowed values must be in the range of 1 to 16 (inclusive). The default value is 1. */
@@ -3971,44 +2667,22 @@ export interface ManagedClusterManagedOutboundIPProfile {
   /** The desired number of IPv6 outbound IPs created/managed by Azure. Allowed values must be in the range of 1 to 16 (inclusive). */
   countIPv6?: number;
 }
-const ManagedClusterManagedOutboundIPProfile =
-  ManagedClusterLoadBalancerProfileManagedOutboundIPs as any as S.Schema<ManagedClusterManagedOutboundIPProfile>;
-
 /** The effective outbound IP resources of the cluster NAT gateway. */
 export type ManagedClusterNATGatewayProfileEffectiveOutboundIPsList = Array<ResourceReference>;
-const ManagedClusterNATGatewayProfileEffectiveOutboundIPsList =
-  ManagedClusterLoadBalancerProfileOutboundIPsPublicIPsList as any as S.Schema<ManagedClusterNATGatewayProfileEffectiveOutboundIPsList>;
-
 /** A list of public IP prefix resources. */
 export type ManagedClusterNATGatewayProfileOutboundIPPrefixesPublicIPPrefixesList = Array<string>;
-const ManagedClusterNATGatewayProfileOutboundIPPrefixesPublicIPPrefixesList =
-  ManagedClusterAgentPoolProfilePropertiesInputAvailabilityZonesList as any as S.Schema<ManagedClusterNATGatewayProfileOutboundIPPrefixesPublicIPPrefixesList>;
-
 /** Desired outbound IP Prefix resources for the managed NAT Gateway. Only compatible with NAT Gateway V2. */
 export interface ManagedClusterNATGatewayProfileOutboundIPPrefixes {
   /** A list of public IP prefix resources. */
   publicIPPrefixes?: ManagedClusterNATGatewayProfileOutboundIPPrefixesPublicIPPrefixesList;
 }
-const ManagedClusterNATGatewayProfileOutboundIPPrefixes = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<ManagedClusterNATGatewayProfileOutboundIPPrefixes>;
-
 /** A list of public IP resources. */
 export type ManagedClusterNATGatewayProfileOutboundIPsPublicIPsList = Array<string>;
-const ManagedClusterNATGatewayProfileOutboundIPsPublicIPsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<ManagedClusterNATGatewayProfileOutboundIPsPublicIPsList>;
-
 /** Desired outbound IP resources for the managed NAT Gateway. */
 export interface ManagedClusterNATGatewayProfileOutboundIPs {
   /** A list of public IP resources. */
   publicIPs?: ManagedClusterNATGatewayProfileOutboundIPsPublicIPsList;
 }
-const ManagedClusterNATGatewayProfileOutboundIPs = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<ManagedClusterNATGatewayProfileOutboundIPs>;
-
 /** Profile of the managed cluster NAT gateway. */
 export interface ManagedClusterNATGatewayProfile {
   /** The SKU of the managed cluster NAT Gateway. Defaults to 'StandardV2' where available in the region, otherwise 'Standard'. */
@@ -4024,36 +2698,17 @@ export interface ManagedClusterNATGatewayProfile {
   /** Desired outbound flow idle timeout in minutes. Allowed values are in the range of 4 to 120 (inclusive). The default value is 4 minutes. */
   idleTimeoutInMinutes?: number;
 }
-const ManagedClusterNATGatewayProfile = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<ManagedClusterNATGatewayProfile>;
-
 /** The Static Egress Gateway addon configuration for the cluster. */
 export interface ManagedClusterStaticEgressGatewayProfile {
   /** Enable Static Egress Gateway addon. Indicates if Static Egress Gateway addon is enabled or not. */
   enabled?: boolean;
 }
-const ManagedClusterStaticEgressGatewayProfile =
-  AgentPoolArtifactStreamingProfile as any as S.Schema<ManagedClusterStaticEgressGatewayProfile>;
-
 /** The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. */
 export type ContainerServiceNetworkProfilePodCidrsList = Array<string>;
-const ContainerServiceNetworkProfilePodCidrsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<ContainerServiceNetworkProfilePodCidrsList>;
-
 /** The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges. */
 export type ContainerServiceNetworkProfileServiceCidrsList = Array<string>;
-const ContainerServiceNetworkProfileServiceCidrsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<ContainerServiceNetworkProfileServiceCidrsList>;
-
 /** The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6. */
 export type ContainerServiceNetworkProfileIpFamiliesList = Array<IPFamily>;
-const ContainerServiceNetworkProfileIpFamiliesList = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<ContainerServiceNetworkProfileIpFamiliesList>;
-
 /** Profile of network configuration. */
 export interface ContainerServiceNetworkProfile {
   /** Network plugin used for building the Kubernetes network. */
@@ -4091,16 +2746,8 @@ export interface ContainerServiceNetworkProfile {
   /** The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6. */
   ipFamilies?: ContainerServiceNetworkProfileIpFamiliesList;
 }
-const ContainerServiceNetworkProfile = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<ContainerServiceNetworkProfile>;
-
 /** The list of AAD group object IDs that will have admin role of the cluster. */
 export type ManagedClusterAADProfileAdminGroupObjectIDsList = Array<string>;
-const ManagedClusterAADProfileAdminGroupObjectIDsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<ManagedClusterAADProfileAdminGroupObjectIDsList>;
-
 /** AADProfile specifies attributes for Azure Active Directory integration. For more details see [managed AAD on AKS](https://docs.microsoft.com/azure/aks/managed-aad). */
 export interface ManagedClusterAADProfile {
   /** Whether to enable managed AAD. */
@@ -4118,19 +2765,10 @@ export interface ManagedClusterAADProfile {
   /** The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription. */
   tenantID?: string;
 }
-const ManagedClusterAADProfile = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<ManagedClusterAADProfile>;
-
 /** The upgrade channel for auto upgrade. The default is 'none'. For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel). */
 export type UpgradeChannel = "rapid" | "stable" | "patch" | "node-image" | "none";
-const UpgradeChannel = S.String;
-
 /** Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage. */
 export type NodeOSUpgradeChannel = "None" | "Unmanaged" | "NodeImage" | "SecurityPatch";
-const NodeOSUpgradeChannel = S.String;
-
 /** Auto upgrade profile for a managed cluster. */
 export interface ManagedClusterAutoUpgradeProfile {
   /** The upgrade channel for auto upgrade. The default is 'none'. For more information see [setting the AKS cluster auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel). */
@@ -4138,11 +2776,6 @@ export interface ManagedClusterAutoUpgradeProfile {
   /** Node OS Upgrade Channel. Manner in which the OS on your nodes is updated. The default is NodeImage. */
   nodeOSUpgradeChannel?: NodeOSUpgradeChannel | (string & {});
 }
-const ManagedClusterAutoUpgradeProfile = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<ManagedClusterAutoUpgradeProfile>;
-
 /** Settings for overrides when upgrading a cluster. */
 export interface UpgradeOverrideSettings {
   /** Whether to force upgrade the cluster. Note that this option instructs upgrade operation to bypass upgrade protections such as checking for deprecated API usage. Enable this option only with caution. */
@@ -4150,25 +2783,13 @@ export interface UpgradeOverrideSettings {
   /** Until when the overrides are effective. Note that this only matches the start time of an upgrade, and the effectiveness won't change once an upgrade starts even if the `until` expires as upgrade proceeds. This field is not set by default. It must be set for the overrides to take effect. */
   until?: string;
 }
-const UpgradeOverrideSettings = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<UpgradeOverrideSettings>;
-
 /** Settings for upgrading a cluster. */
 export interface ClusterUpgradeSettings {
   /** Settings for overrides. */
   overrideSettings?: UpgradeOverrideSettings;
 }
-const ClusterUpgradeSettings = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<ClusterUpgradeSettings>;
-
 /** The expander to use when scaling up. If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders) for more information. */
 export type Expander = "least-waste" | "most-pods" | "priority" | "random";
-const Expander = S.String;
-
 /** Parameters to be applied to the cluster-autoscaler when enabled */
 export interface ManagedClusterPropertiesAutoScalerProfile {
   /** Detects similar node pools and balances the number of nodes between them. Valid values are 'true' and 'false' */
@@ -4212,16 +2833,8 @@ export interface ManagedClusterPropertiesAutoScalerProfile {
   /** If cluster autoscaler will skip deleting nodes with pods from kube-system (except for DaemonSet or mirror pods). The default is true. */
   skip_nodes_with_system_pods?: string;
 }
-const ManagedClusterPropertiesAutoScalerProfile = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<ManagedClusterPropertiesAutoScalerProfile>;
-
 /** The IP ranges authorized to access the Kubernetes API server. IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges). */
 export type ManagedClusterAPIServerAccessProfileAuthorizedIPRangesList = Array<string>;
-const ManagedClusterAPIServerAccessProfileAuthorizedIPRangesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<ManagedClusterAPIServerAccessProfileAuthorizedIPRangesList>;
-
 /** Access profile for managed cluster API server. */
 export interface ManagedClusterAPIServerAccessProfile {
   /** The IP ranges authorized to access the Kubernetes API server. IP ranges are specified in CIDR format, e.g. 137.117.106.88/29. This feature is not compatible with clusters that use Public IP Per Node, or clusters that are using a Basic Load Balancer. For more information see [API server authorized IP ranges](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges). */
@@ -4239,25 +2852,12 @@ export interface ManagedClusterAPIServerAccessProfile {
   /** The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new cluster with BYO Vnet, or when updating an existing cluster to enable apiserver vnet integration. */
   subnetId?: string;
 }
-const ManagedClusterAPIServerAccessProfile = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<ManagedClusterAPIServerAccessProfile>;
-
 /** The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}". */
 export type ManagedClusterPropertiesIdentityProfileMap = {
   [key: string]: UserAssignedIdentity | undefined;
 };
-const ManagedClusterPropertiesIdentityProfileMap = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<ManagedClusterPropertiesIdentityProfileMap>;
-
 /** The RequiredMembers of the resource */
 export type PrivateLinkResourceRequiredMembersList = Array<string>;
-const PrivateLinkResourceRequiredMembersList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<PrivateLinkResourceRequiredMembersList>;
-
 /** A private link resource */
 export interface PrivateLinkResource {
   /** The ID of the private link resource. */
@@ -4273,20 +2873,10 @@ export interface PrivateLinkResource {
   /** The private link service ID of the resource, this field is exposed only to NRP internally. */
   privateLinkServiceID?: string;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<PrivateLinkResource>;
-
 /** Private link resources associated with the cluster. */
 export type ManagedClusterPropertiesPrivateLinkResourcesList = Array<PrivateLinkResource>;
-const ManagedClusterPropertiesPrivateLinkResourcesList = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<ManagedClusterPropertiesPrivateLinkResourcesList>;
-
 /** The endpoints that should not go through proxy. */
 export type ManagedClusterHTTPProxyConfigNoProxyList = Array<string>;
-const ManagedClusterHTTPProxyConfigNoProxyList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<ManagedClusterHTTPProxyConfigNoProxyList>;
-
 /** Cluster HTTP proxy configuration. */
 export interface ManagedClusterHTTPProxyConfig {
   /** The HTTP proxy server endpoint to use. */
@@ -4300,19 +2890,11 @@ export interface ManagedClusterHTTPProxyConfig {
   /** Whether to enable HTTP proxy. If disabled, the specified proxy configuration will be not be set on pods and nodes. If not specified, the default is true. */
   enabled?: boolean;
 }
-const ManagedClusterHTTPProxyConfig = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<ManagedClusterHTTPProxyConfig>;
-
 /** Microsoft Defender settings for the security profile threat detection. */
 export interface ManagedClusterSecurityProfileDefenderSecurityMonitoring {
   /** Whether to enable Defender threat detection */
   enabled?: boolean;
 }
-const ManagedClusterSecurityProfileDefenderSecurityMonitoring =
-  AgentPoolArtifactStreamingProfile as any as S.Schema<ManagedClusterSecurityProfileDefenderSecurityMonitoring>;
-
 /** Identity mapping used by Defender security gating for registry access. */
 export interface ManagedClusterSecurityProfileDefenderSecurityGatingIdentity {
   /** The container registry for which the identity will be used; the identity specified here should have a federated identity credential attached to it. */
@@ -4320,19 +2902,9 @@ export interface ManagedClusterSecurityProfileDefenderSecurityGatingIdentity {
   /** The identity object used to access the registry */
   identity?: UserAssignedIdentity;
 }
-const ManagedClusterSecurityProfileDefenderSecurityGatingIdentity = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<ManagedClusterSecurityProfileDefenderSecurityGatingIdentity>;
-
 /** List of identities that the admission controller uses to pull security artifacts from registries. These are the same identities used by the cluster to pull container images. For more information on configuring this identity, see https://learn.microsoft.com/en-us/azure/defender-for-cloud/gated-deployment-infrastructure-as-code. */
 export type ManagedClusterSecurityProfileDefenderSecurityGatingIdentitiesList =
   Array<ManagedClusterSecurityProfileDefenderSecurityGatingIdentity>;
-const ManagedClusterSecurityProfileDefenderSecurityGatingIdentitiesList = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<ManagedClusterSecurityProfileDefenderSecurityGatingIdentitiesList>;
-
 /** Microsoft Defender settings for security gating. This validates container image eligibility for deployment based on Defender for Containers security findings. Using Admission Controller, it either audits or prevents deployment of images that do not meet security standards. */
 export interface ManagedClusterSecurityProfileDefenderSecurityGating {
   /** Whether to enable Defender security gating. When enabled, the gating feature scans container images and audits or blocks deployment of images that do not meet security standards according to configured security rules. For more information, see https://aka.ms/KubernetesDefenderAuditRule. */
@@ -4342,11 +2914,6 @@ export interface ManagedClusterSecurityProfileDefenderSecurityGating {
   /** In use only while registry access is granted by secret rather than managed identity. Sets whether to grant the Defender gating agent access to cluster secrets for pulling images from registries. If secret access is denied and the registry requires pull secrets, the add-on will not perform image validation. Default value is false. */
   allowSecretAccess?: boolean;
 }
-const ManagedClusterSecurityProfileDefenderSecurityGating = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<ManagedClusterSecurityProfileDefenderSecurityGating>;
-
 /** Microsoft Defender settings for the security profile. */
 export interface ManagedClusterSecurityProfileDefender {
   /** Resource ID of the Log Analytics workspace to be associated with Microsoft Defender. When Microsoft Defender is enabled, this field is required and must be a valid workspace resource ID. When Microsoft Defender is disabled, leave the field empty. */
@@ -4356,15 +2923,8 @@ export interface ManagedClusterSecurityProfileDefender {
   /** Microsoft Defender settings for security gating. This validates container images eligibility for deployment based on Defender for Containers security findings. Using Admission Controller, it either audits or prevents deployment of images that do not meet security standards. For more information, see https://aka.ms/KubernetesDefenderAuditRule. */
   securityGating?: ManagedClusterSecurityProfileDefenderSecurityGating;
 }
-const ManagedClusterSecurityProfileDefender = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<ManagedClusterSecurityProfileDefender>;
-
 /** Network access of the key vault. Network access of key vault. The possible values are `Public` and `Private`. `Public` means the key vault allows public access from all networks. `Private` means the key vault disables public access and enables private link. The default value is `Public`. */
 export type AzureKeyVaultKmsKeyVaultNetworkAccess = "Public" | "Private";
-const AzureKeyVaultKmsKeyVaultNetworkAccess = S.String;
-
 /** Azure Key Vault key management service settings for the security profile. */
 export interface AzureKeyVaultKms {
   /** Whether to enable Azure Key Vault key management service. The default is false. */
@@ -4376,30 +2936,18 @@ export interface AzureKeyVaultKms {
   /** Resource ID of key vault. When keyVaultNetworkAccess is `Private`, this field is required and must be a valid resource ID. When keyVaultNetworkAccess is `Public`, leave the field empty. */
   keyVaultResourceId?: string;
 }
-const AzureKeyVaultKms = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<AzureKeyVaultKms>;
-
 /** Whether to enable encryption at rest of Kubernetes resource objects using service-managed keys. More information on this can be found under https://aka.ms/aks/kubernetesResourceObjectEncryption. */
 export type InfrastructureEncryption = "Enabled";
-const InfrastructureEncryption = S.String;
-
 /** Encryption at rest of Kubernetes resource objects using service-managed keys. More information on this can be found under https://aka.ms/aks/kubernetesResourceObjectEncryption. */
 export interface KubernetesResourceObjectEncryptionProfile {
   /** Whether to enable encryption at rest of Kubernetes resource objects using service-managed keys. More information on this can be found under https://aka.ms/aks/kubernetesResourceObjectEncryption. */
   infrastructureEncryption?: InfrastructureEncryption | (string & {});
 }
-const KubernetesResourceObjectEncryptionProfile = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<KubernetesResourceObjectEncryptionProfile>;
-
 /** Workload identity settings for the security profile. */
 export interface ManagedClusterSecurityProfileWorkloadIdentity {
   /** Whether to enable workload identity. */
   enabled?: boolean;
 }
-const ManagedClusterSecurityProfileWorkloadIdentity =
-  AgentPoolArtifactStreamingProfile as any as S.Schema<ManagedClusterSecurityProfileWorkloadIdentity>;
-
 /** Image Cleaner removes unused images from nodes, freeing up disk space and helping to reduce attack surface area. Here are settings for the security profile. */
 export interface ManagedClusterSecurityProfileImageCleaner {
   /** Whether to enable Image Cleaner on AKS cluster. */
@@ -4407,16 +2955,8 @@ export interface ManagedClusterSecurityProfileImageCleaner {
   /** Image Cleaner scanning interval in hours. */
   intervalHours?: number;
 }
-const ManagedClusterSecurityProfileImageCleaner = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<ManagedClusterSecurityProfileImageCleaner>;
-
 /** A list of up to 10 base64 encoded CAs that will be added to the trust store on all nodes in the cluster. For more information see [Custom CA Trust Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority). */
 export type ManagedClusterSecurityProfileCustomCATrustCertificatesList = Array<string>;
-const ManagedClusterSecurityProfileCustomCATrustCertificatesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<ManagedClusterSecurityProfileCustomCATrustCertificatesList>;
-
 /** Security profile for the container service cluster. */
 export interface ManagedClusterSecurityProfile {
   /** Microsoft Defender settings for the security profile. */
@@ -4432,43 +2972,26 @@ export interface ManagedClusterSecurityProfile {
   /** A list of up to 10 base64 encoded CAs that will be added to the trust store on all nodes in the cluster. For more information see [Custom CA Trust Certificates](https://learn.microsoft.com/en-us/azure/aks/custom-certificate-authority). */
   customCATrustCertificates?: ManagedClusterSecurityProfileCustomCATrustCertificatesList;
 }
-const ManagedClusterSecurityProfile = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<ManagedClusterSecurityProfile>;
-
 /** AzureDisk CSI Driver settings for the storage profile. */
 export interface ManagedClusterStorageProfileDiskCSIDriver {
   /** Whether to enable AzureDisk CSI Driver. The default value is true. */
   enabled?: boolean;
 }
-const ManagedClusterStorageProfileDiskCSIDriver =
-  AgentPoolArtifactStreamingProfile as any as S.Schema<ManagedClusterStorageProfileDiskCSIDriver>;
-
 /** AzureFile CSI Driver settings for the storage profile. */
 export interface ManagedClusterStorageProfileFileCSIDriver {
   /** Whether to enable AzureFile CSI Driver. The default value is true. */
   enabled?: boolean;
 }
-const ManagedClusterStorageProfileFileCSIDriver =
-  AgentPoolArtifactStreamingProfile as any as S.Schema<ManagedClusterStorageProfileFileCSIDriver>;
-
 /** Snapshot Controller settings for the storage profile. */
 export interface ManagedClusterStorageProfileSnapshotController {
   /** Whether to enable Snapshot Controller. The default value is true. */
   enabled?: boolean;
 }
-const ManagedClusterStorageProfileSnapshotController =
-  AgentPoolArtifactStreamingProfile as any as S.Schema<ManagedClusterStorageProfileSnapshotController>;
-
 /** AzureBlob CSI Driver settings for the storage profile. */
 export interface ManagedClusterStorageProfileBlobCSIDriver {
   /** Whether to enable AzureBlob CSI Driver. The default value is false. */
   enabled?: boolean;
 }
-const ManagedClusterStorageProfileBlobCSIDriver =
-  AgentPoolArtifactStreamingProfile as any as S.Schema<ManagedClusterStorageProfileBlobCSIDriver>;
-
 /** Storage profile for the container service cluster. */
 export interface ManagedClusterStorageProfile {
   /** AzureDisk CSI Driver settings for the storage profile. */
@@ -4480,54 +3003,27 @@ export interface ManagedClusterStorageProfile {
   /** AzureBlob CSI Driver settings for the storage profile. */
   blobCSIDriver?: ManagedClusterStorageProfileBlobCSIDriver;
 }
-const ManagedClusterStorageProfile = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<ManagedClusterStorageProfile>;
-
 /** Whether to enable Istio as a Gateway API implementation for managed ingress with App Routing. */
 export type GatewayAPIIstioEnabled = "Enabled" | "Disabled";
-const GatewayAPIIstioEnabled = S.String;
-
 /** Configuration for using a sidecar-less Istio control plane for managed ingress via the Gateway API with App Routing. See https://aka.ms/gateway-on-istio for information on using Istio for ingress via the Gateway API. */
 export interface ManagedClusterAppRoutingIstio {
   /** Whether to enable Istio as a Gateway API implementation for managed ingress with App Routing. */
   mode?: GatewayAPIIstioEnabled | (string & {});
 }
-const ManagedClusterAppRoutingIstio = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<ManagedClusterAppRoutingIstio>;
-
 /** Configurations for Gateway API providers to be used for managed ingress with App Routing. */
 export interface ManagedClusterWebAppRoutingGatewayAPIImplementations {
   /** Configuration for using a sidecar-less Istio control plane for managed ingress via the Gateway API with App Routing. See https://aka.ms/gateway-on-istio for information on using Istio for ingress via the Gateway API. */
   appRoutingIstio?: ManagedClusterAppRoutingIstio;
 }
-const ManagedClusterWebAppRoutingGatewayAPIImplementations = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<ManagedClusterWebAppRoutingGatewayAPIImplementations>;
-
 /** Resource IDs of the DNS zones to be associated with the Application Routing add-on. Used only when Application Routing add-on is enabled. Public and private DNS zones can be in different resource groups, but all public DNS zones must be in the same resource group and all private DNS zones must be in the same resource group. */
 export type ManagedClusterIngressProfileWebAppRoutingDnsZoneResourceIdsList = Array<string>;
-const ManagedClusterIngressProfileWebAppRoutingDnsZoneResourceIdsList =
-  ManagedClusterAgentPoolProfilePropertiesInputAvailabilityZonesList as any as S.Schema<ManagedClusterIngressProfileWebAppRoutingDnsZoneResourceIdsList>;
-
 /** Ingress type for the default NginxIngressController custom resource */
 export type NginxIngressControllerType = "AnnotationControlled" | "External" | "Internal" | "None";
-const NginxIngressControllerType = S.String;
-
 /** Nginx ingress controller configuration for the managed cluster ingress profile. */
 export interface ManagedClusterIngressProfileNginx {
   /** Ingress type for the default NginxIngressController custom resource */
   defaultIngressControllerType?: NginxIngressControllerType | (string & {});
 }
-const ManagedClusterIngressProfileNginx = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<ManagedClusterIngressProfileNginx>;
-
 /** Application Routing add-on settings for the ingress profile. */
 export interface ManagedClusterIngressProfileWebAppRouting {
   /** Whether to enable the Application Routing add-on. */
@@ -4541,25 +3037,13 @@ export interface ManagedClusterIngressProfileWebAppRouting {
   /** Managed identity of the Application Routing add-on. This is the identity that should be granted permissions, for example, to manage the associated Azure DNS resource and get certificates from Azure Key Vault. See [this overview of the add-on](https://learn.microsoft.com/en-us/azure/aks/web-app-routing?tabs=with-osm) for more instructions. */
   identity?: UserAssignedIdentity;
 }
-const ManagedClusterIngressProfileWebAppRouting = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<ManagedClusterIngressProfileWebAppRouting>;
-
 /** Configuration for the managed Gateway API installation. If not specified, the default is 'Disabled'. See https://aka.ms/k8s-gateway-api for more details. */
 export type ManagedGatewayType = "Disabled" | "Standard";
-const ManagedGatewayType = S.String;
-
 /** Configuration for managed Gateway API CRDs. See https://aka.ms/k8s-gateway-api for more details. */
 export interface ManagedClusterIngressProfileGatewayConfiguration {
   /** Configuration for the managed Gateway API installation. If not specified, the default is 'Disabled'. See https://aka.ms/k8s-gateway-api for more details. */
   installation?: ManagedGatewayType | (string & {});
 }
-const ManagedClusterIngressProfileGatewayConfiguration = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<ManagedClusterIngressProfileGatewayConfiguration>;
-
 /** Ingress profile for the container service cluster. */
 export interface ManagedClusterIngressProfile {
   /** App Routing settings for the ingress profile. You can find an overview and onboarding guide for this feature at https://learn.microsoft.com/en-us/azure/aks/app-routing?tabs=default%2Cdeploy-app-default. */
@@ -4567,35 +3051,18 @@ export interface ManagedClusterIngressProfile {
   /** Settings for the managed Gateway API installation */
   gatewayAPI?: ManagedClusterIngressProfileGatewayConfiguration;
 }
-const ManagedClusterIngressProfile = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<ManagedClusterIngressProfile>;
-
 /** PublicNetworkAccess of the managedCluster. Allow or deny public network access for AKS */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
-const PublicNetworkAccess = S.String;
-
 /** KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile. */
 export interface ManagedClusterWorkloadAutoScalerProfileKeda {
   /** Whether to enable KEDA. */
   enabled: boolean;
 }
-const ManagedClusterWorkloadAutoScalerProfileKeda = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<ManagedClusterWorkloadAutoScalerProfileKeda>;
-
 /** VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile. */
 export interface ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler {
   /** Whether to enable VPA. Default value is false. */
   enabled: boolean;
 }
-const ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler>;
-
 /** Workload Auto-scaler profile for the managed cluster. */
 export interface ManagedClusterWorkloadAutoScalerProfile {
   /** KEDA (Kubernetes Event-driven Autoscaling) settings for the workload auto-scaler profile. */
@@ -4603,11 +3070,6 @@ export interface ManagedClusterWorkloadAutoScalerProfile {
   /** VPA (Vertical Pod Autoscaler) settings for the workload auto-scaler profile. */
   verticalPodAutoscaler?: ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler;
 }
-const ManagedClusterWorkloadAutoScalerProfile = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<ManagedClusterWorkloadAutoScalerProfile>;
-
 /** Kube State Metrics profile for the Azure Managed Prometheus addon. These optional settings are for the kube-state-metrics pod that is deployed with the addon. See aka.ms/AzureManagedPrometheus-optional-parameters for details. */
 export interface ManagedClusterAzureMonitorProfileKubeStateMetrics {
   /** Comma-separated list of additional Kubernetes label keys that will be used in the resource's labels metric (Example: 'namespaces=[k8s-label-1,k8s-label-n,...],pods=[app],...'). By default the metric contains only resource name and namespace labels. */
@@ -4615,19 +3077,11 @@ export interface ManagedClusterAzureMonitorProfileKubeStateMetrics {
   /** Comma-separated list of Kubernetes annotation keys that will be used in the resource's labels metric (Example: 'namespaces=[kubernetes.io/team,...],pods=[kubernetes.io/team],...'). By default the metric contains only resource name and namespace labels. */
   metricAnnotationsAllowList?: string;
 }
-const ManagedClusterAzureMonitorProfileKubeStateMetrics = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<ManagedClusterAzureMonitorProfileKubeStateMetrics>;
-
 /** Control plane metrics collection profile for the Azure Managed Prometheus addon. Configures collection of operational runtime metrics from managed control plane components (kube-apiserver, etcd, etc). See aka.ms/aks/controlplane-metrics for an overview. */
 export interface ManagedClusterAzureMonitorProfileMetricsControlPlane {
   /** Whether to enable or disable collection of control plane metrics by the Azure Managed Prometheus addon. Defaults to disabled. See aka.ms/aks/controlplane-metrics for details. */
   enabled?: boolean;
 }
-const ManagedClusterAzureMonitorProfileMetricsControlPlane =
-  AgentPoolArtifactStreamingProfile as any as S.Schema<ManagedClusterAzureMonitorProfileMetricsControlPlane>;
-
 /** Metrics profile for the Azure Monitor managed service for Prometheus addon. Collect out-of-the-box Kubernetes infrastructure metrics to send to an Azure Monitor Workspace and configure additional scraping for custom targets. See aka.ms/AzureManagedPrometheus for an overview. */
 export interface ManagedClusterAzureMonitorProfileMetrics {
   /** Whether to enable or disable the Azure Managed Prometheus addon for Prometheus monitoring. See aka.ms/AzureManagedPrometheus-aks-enable for details on enabling and disabling. */
@@ -4637,15 +3091,8 @@ export interface ManagedClusterAzureMonitorProfileMetrics {
   /** Control plane metrics collection profile for the Azure Managed Prometheus addon. Configures collection of operational runtime metrics from managed control plane components (kube-apiserver, etcd, etc). See aka.ms/aks/controlplane-metrics for an overview. */
   controlPlane?: ManagedClusterAzureMonitorProfileMetricsControlPlane;
 }
-const ManagedClusterAzureMonitorProfileMetrics = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<ManagedClusterAzureMonitorProfileMetrics>;
-
 /** Allowed values for container network logs ingestion with Azure Monitor. When `Enabled`, the specific log types ingested are controlled by the associated CRD; defaults to `Disabled`. See https://aka.ms/ContainerNetworkLogsDoc and https://aka.ms/acns/howtoenablecnl for details. */
 export type ContainerNetworkLogs = "Disabled" | "Enabled";
-const ContainerNetworkLogs = S.String;
-
 /** Azure Monitor Container Insights profile. Represents the configuration for collecting Kubernetes events, inventory, and container stdout & stderr logs. See aka.ms/AzureMonitorContainerInsights for an overview. */
 export interface ManagedClusterAzureMonitorProfileContainerInsights {
   /** Indicates if Azure Monitor Container Insights Logs Addon is enabled or not. */
@@ -4659,21 +3106,11 @@ export interface ManagedClusterAzureMonitorProfileContainerInsights {
   /** Configures container network logs ingestion with Azure Monitor. The log types ingested are controlled by the associated CRD; if unspecified, defaults to `Disabled`. See https://aka.ms/ContainerNetworkLogsDoc and https://aka.ms/acns/howtoenablecnl for details. */
   containerNetworkLogs?: ContainerNetworkLogs | (string & {});
 }
-const ManagedClusterAzureMonitorProfileContainerInsights = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<ManagedClusterAzureMonitorProfileContainerInsights>;
-
 /** Application Monitoring auto-instrumentation for AKS. Deploys a webhook that auto-instruments workloads with Microsoft OpenTelemetry Distros to collect OpenTelemetry metrics, logs, and traces. See https://aka.ms/AKSAppMonitoringDocs and https://aka.ms/AzureMonitorApplicationMonitoring for an overview. */
 export interface ManagedClusterAzureMonitorProfileAppMonitoringAutoInstrumentation {
   /** Indicates if Application Monitoring Auto-instrumentation is enabled or not. */
   enabled?: boolean;
 }
-const ManagedClusterAzureMonitorProfileAppMonitoringAutoInstrumentation = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<ManagedClusterAzureMonitorProfileAppMonitoringAutoInstrumentation>;
-
 /** Application Monitoring OpenTelemetry Metrics Profile for AKS. Collects OpenTelemetry metrics of the application using Azure Monitor OpenTelemetry based SDKs. See https://aka.ms/AKSAppMonitoringDocs and https://aka.ms/AzureMonitorApplicationMonitoring for an overview. */
 export interface ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics {
   /** Indicates if Application Monitoring OpenTelemetry Metrics is enabled or not. */
@@ -4683,11 +3120,6 @@ export interface ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetr
   /** The host port for OpenTelemetry GRPC metrics. If not specified, the default port is 28334. */
   grpcPort?: number;
 }
-const ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics>;
-
 /** Application Monitoring OpenTelemetry logs and traces profile for AKS. Collects OpenTelemetry logs and traces of the application using Azure Monitor OpenTelemetry based SDKs. See https://aka.ms/AKSAppMonitoringDocs and https://aka.ms/AzureMonitorApplicationMonitoring for an overview. */
 export interface ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryLogsAndTraces {
   /** Indicates if Application Monitoring OpenTelemetry Logs and traces is enabled or not. */
@@ -4697,9 +3129,6 @@ export interface ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryLogs
   /** The host port for OpenTelemetry GRPC logs and traces. If not specified, the default port is 28332. */
   grpcPort?: number;
 }
-const ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryLogsAndTraces =
-  ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics as any as S.Schema<ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryLogsAndTraces>;
-
 /** Application Monitoring profile for AKS. */
 export interface ManagedClusterAzureMonitorProfileAppMonitoring {
   /** Application Monitoring auto-instrumentation for AKS. Deploys a webhook that auto-instruments workloads with Microsoft OpenTelemetry Distros to collect OpenTelemetry metrics, logs, and traces. See https://aka.ms/AKSAppMonitoringDocs and https://aka.ms/AzureMonitorApplicationMonitoring for an overview. */
@@ -4709,11 +3138,6 @@ export interface ManagedClusterAzureMonitorProfileAppMonitoring {
   /** Application Monitoring OpenTelemetry logs and traces profile for AKS. Collects OpenTelemetry logs and traces of the application using Azure Monitor OpenTelemetry based SDKs. See https://aka.ms/AKSAppMonitoringDocs and https://aka.ms/AzureMonitorApplicationMonitoring for an overview. */
   openTelemetryLogsAndTraces?: ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryLogsAndTraces;
 }
-const ManagedClusterAzureMonitorProfileAppMonitoring = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<ManagedClusterAzureMonitorProfileAppMonitoring>;
-
 /** Azure Monitor addon profiles for monitoring the managed cluster. */
 export interface ManagedClusterAzureMonitorProfile {
   /** Metrics profile for the Azure Monitor managed service for Prometheus addon. Collect out-of-the-box Kubernetes infrastructure metrics to send to an Azure Monitor Workspace and configure additional scraping for custom targets. See aka.ms/AzureManagedPrometheus for an overview. */
@@ -4723,19 +3147,10 @@ export interface ManagedClusterAzureMonitorProfile {
   /** Application Monitoring Profile for Kubernetes Application Container. Collects application logs, metrics and traces through auto-instrumentation of the application using Azure Monitor OpenTelemetry based SDKs. See aka.ms/AzureMonitorApplicationMonitoring for an overview. */
   appMonitoring?: ManagedClusterAzureMonitorProfileAppMonitoring;
 }
-const ManagedClusterAzureMonitorProfile = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<ManagedClusterAzureMonitorProfile>;
-
 /** Mode of the service mesh. */
 export type ServiceMeshMode = "Istio" | "Disabled";
-const ServiceMeshMode = S.String;
-
 /** Mode of an ingress gateway. */
 export type IstioIngressGatewayMode = "External" | "Internal";
-const IstioIngressGatewayMode = S.String;
-
 /** Istio ingress gateway configuration. For now, we support up to one external ingress gateway named `aks-istio-ingressgateway-external` and one internal ingress gateway named `aks-istio-ingressgateway-internal`. */
 export interface IstioIngressGateway {
   /** Mode of an ingress gateway. */
@@ -4743,15 +3158,8 @@ export interface IstioIngressGateway {
   /** Whether to enable the ingress gateway. */
   enabled: boolean;
 }
-const IstioIngressGateway = /*@__PURE__*/ __L.at(__c32, 7) as any as S.Schema<IstioIngressGateway>;
-
 /** Istio ingress gateways. */
 export type IstioComponentsIngressGatewaysList = Array<IstioIngressGateway>;
-const IstioComponentsIngressGatewaysList = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<IstioComponentsIngressGatewaysList>;
-
 /** Istio egress gateway configuration. */
 export interface IstioEgressGateway {
   /** Whether to enable the egress gateway. */
@@ -4763,19 +3171,10 @@ export interface IstioEgressGateway {
   /** Name of the gateway configuration custom resource for the Istio add-on egress gateway. Must be specified when enabling the Istio egress gateway. Must be deployed in the same namespace that the Istio egress gateway will be deployed in. */
   gatewayConfigurationName?: string;
 }
-const IstioEgressGateway = /*@__PURE__*/ __L.at(__c33, 1) as any as S.Schema<IstioEgressGateway>;
-
 /** Istio egress gateways. */
 export type IstioComponentsEgressGatewaysList = Array<IstioEgressGateway>;
-const IstioComponentsEgressGatewaysList = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<IstioComponentsEgressGatewaysList>;
-
 /** Mode of traffic redirection. */
 export type ProxyRedirectionMechanism = "InitContainers" | "CNIChaining";
-const ProxyRedirectionMechanism = S.String;
-
 /** Istio components configuration. */
 export interface IstioComponents {
   /** Istio ingress gateways. */
@@ -4785,8 +3184,6 @@ export interface IstioComponents {
   /** Mode of traffic redirection. */
   proxyRedirectionMechanism?: ProxyRedirectionMechanism | (string & {});
 }
-const IstioComponents = /*@__PURE__*/ __L.at(__c33, 3) as any as S.Schema<IstioComponents>;
-
 /** Plugin certificates information for Service Mesh. */
 export interface IstioPluginCertificateAuthority {
   /** The resource ID of the Key Vault. */
@@ -4800,26 +3197,13 @@ export interface IstioPluginCertificateAuthority {
   /** Certificate chain object name in Azure Key Vault. */
   certChainObjectName?: string;
 }
-const IstioPluginCertificateAuthority = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<IstioPluginCertificateAuthority>;
-
 /** Istio Service Mesh Certificate Authority (CA) configuration. For now, we only support plugin certificates as described here https://aka.ms/asm-plugin-ca */
 export interface IstioCertificateAuthority {
   /** Plugin certificates information for Service Mesh. */
   plugin?: IstioPluginCertificateAuthority;
 }
-const IstioCertificateAuthority = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<IstioCertificateAuthority>;
-
 /** The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade */
 export type IstioServiceMeshRevisionsList = Array<string>;
-const IstioServiceMeshRevisionsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<IstioServiceMeshRevisionsList>;
-
 /** Istio service mesh configuration. */
 export interface IstioServiceMesh {
   /** Istio components configuration. */
@@ -4829,8 +3213,6 @@ export interface IstioServiceMesh {
   /** The list of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. For more information, see: https://learn.microsoft.com/en-us/azure/aks/istio-upgrade */
   revisions?: IstioServiceMeshRevisionsList;
 }
-const IstioServiceMesh = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<IstioServiceMesh>;
-
 /** Service mesh profile for a managed cluster. */
 export interface ServiceMeshProfile {
   /** Mode of the service mesh. */
@@ -4838,34 +3220,20 @@ export interface ServiceMeshProfile {
   /** Istio service mesh configuration. */
   istio?: IstioServiceMesh;
 }
-const ServiceMeshProfile = /*@__PURE__*/ __L.at(__c33, 7) as any as S.Schema<ServiceMeshProfile>;
-
 /** The cost analysis configuration for the cluster */
 export interface ManagedClusterCostAnalysis {
   /** Whether to enable cost analysis. The Managed Cluster sku.tier must be set to 'Standard' or 'Premium' to enable this feature. Enabling this will add Kubernetes Namespace and Deployment details to the Cost Analysis views in the Azure portal. If not specified, the default is false. For more information see aka.ms/aks/docs/cost-analysis. */
   enabled?: boolean;
 }
-const ManagedClusterCostAnalysis =
-  AgentPoolArtifactStreamingProfile as any as S.Schema<ManagedClusterCostAnalysis>;
-
 /** The metrics profile for the ManagedCluster. */
 export interface ManagedClusterMetricsProfile {
   /** The configuration for detailed per-Kubernetes resource cost analysis. */
   costAnalysis?: ManagedClusterCostAnalysis;
 }
-const ManagedClusterMetricsProfile = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<ManagedClusterMetricsProfile>;
-
 /** The node provisioning mode. If not specified, the default is Manual. */
 export type NodeProvisioningMode = "Manual" | "Auto";
-const NodeProvisioningMode = S.String;
-
 /** The set of default Karpenter NodePools (CRDs) configured for node provisioning. This field has no effect unless mode is 'Auto'. Warning: Changing this from Auto to None on an existing cluster will cause the default Karpenter NodePools to be deleted, which will drain and delete the nodes associated with those pools. It is strongly recommended to not do this unless there are idle nodes ready to take the pods evicted by that action. If not specified, the default is Auto. For more information see aka.ms/aks/nap#node-pools. */
 export type ManagedClusterNodeProvisioningProfileDefaultNodePools = "None" | "Auto";
-const ManagedClusterNodeProvisioningProfileDefaultNodePools = S.String;
-
 /** Node provisioning profile for the managed cluster. */
 export interface ManagedClusterNodeProvisioningProfile {
   /** The node provisioning mode. If not specified, the default is Manual. */
@@ -4873,15 +3241,8 @@ export interface ManagedClusterNodeProvisioningProfile {
   /** The set of default Karpenter NodePools (CRDs) configured for node provisioning. This field has no effect unless mode is 'Auto'. Warning: Changing this from Auto to None on an existing cluster will cause the default Karpenter NodePools to be deleted, which will drain and delete the nodes associated with those pools. It is strongly recommended to not do this unless there are idle nodes ready to take the pods evicted by that action. If not specified, the default is Auto. For more information see aka.ms/aks/nap#node-pools. */
   defaultNodePools?: ManagedClusterNodeProvisioningProfileDefaultNodePools | (string & {});
 }
-const ManagedClusterNodeProvisioningProfile = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<ManagedClusterNodeProvisioningProfile>;
-
 /** The artifact source. The source where the artifacts are downloaded from. */
 export type ManagedClusterBootstrapProfileArtifactSource = "Cache" | "Direct";
-const ManagedClusterBootstrapProfileArtifactSource = S.String;
-
 /** The bootstrap profile. */
 export interface ManagedClusterBootstrapProfile {
   /** The artifact source. The source where the artifacts are downloaded from. */
@@ -4889,40 +3250,23 @@ export interface ManagedClusterBootstrapProfile {
   /** The resource Id of Azure Container Registry. The registry must have private network access, premium SKU and zone redundancy. */
   containerRegistryId?: string;
 }
-const ManagedClusterBootstrapProfile = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<ManagedClusterBootstrapProfile>;
-
 /** When enabling the operator, a set of AKS managed CRDs and controllers will be installed in the cluster. The operator automates the deployment of OSS models for inference and/or training purposes. It provides a set of preset models and enables distributed inference against them. */
 export interface ManagedClusterAIToolchainOperatorProfile {
   /** Whether to enable AI toolchain operator to the cluster. Indicates if AI toolchain operator enabled or not. */
   enabled?: boolean;
 }
-const ManagedClusterAIToolchainOperatorProfile =
-  AgentPoolArtifactStreamingProfile as any as S.Schema<ManagedClusterAIToolchainOperatorProfile>;
-
 /** The config customization mode for this scheduler instance. */
 export type SchedulerConfigMode = "Default" | "ManagedByCRD";
-const SchedulerConfigMode = S.String;
-
 /** Profile with settings related to a specific instance of an AKS-managed scheduler. */
 export interface SchedulerInstanceProfile {
   /** The configuration mode to be used by the AKS-managed scheduler. */
   schedulerConfigMode?: SchedulerConfigMode | (string & {});
 }
-const SchedulerInstanceProfile = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<SchedulerInstanceProfile>;
-
 /** Profile with scheduler-related settings, like the configuration mode for each scheduler managed by AKS. See https://aka.ms/aks/scheduler-profile. */
 export interface SchedulerProfile {
   /** Profile with settings related to upstream variant of kube-scheduler (https://github.com/kubernetes/kubernetes/tree/master/pkg/scheduler). */
   upstream?: SchedulerInstanceProfile;
 }
-const SchedulerProfile = /*@__PURE__*/ __L.at(__c34, 4) as any as S.Schema<SchedulerProfile>;
-
 /** Settings for hosted system addons. */
 export interface ManagedClusterHostedSystemProfile {
   /** Whether to enable hosted system addons for the cluster. */
@@ -4932,11 +3276,6 @@ export interface ManagedClusterHostedSystemProfile {
   /** The ID of the subnet that will be joined by worker nodes managed by node auto provisioner for running workload pods in your tenant. This must be provided together with `systemNodeSubnetID` and `apiserverAccessProfile.subnetId`, and all three subnet IDs must be in the same VNet. If you don't specify it, AKS will create a subnet in the managed resource group using a default /16 CIDR. */
   nodeSubnetID?: string;
 }
-const ManagedClusterHostedSystemProfile = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<ManagedClusterHostedSystemProfile>;
-
 /** The error details. */
 export type ManagedClusterStatusProvisioningErrorDetailsList = Array<ErrorDetail>;
 /** The error additional info. */
@@ -4959,8 +3298,6 @@ export interface ManagedClusterStatus {
   /** The error detail. */
   provisioningError?: ManagedClusterStatusProvisioningError;
 }
-const ManagedClusterStatus = AgentPoolStatus as any as S.Schema<ManagedClusterStatus>;
-
 /** Properties of the managed cluster. */
 export interface ManagedClusterProperties {
   /** The current provisioning state. */
@@ -5060,19 +3397,10 @@ export interface ManagedClusterProperties {
   /** Contains read-only information about the Managed Cluster. */
   status?: ManagedClusterStatus;
 }
-const ManagedClusterProperties = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<ManagedClusterProperties>;
-
 /** The name of a managed cluster SKU. */
 export type ManagedClusterSKUName = "Base" | "Automatic";
-const ManagedClusterSKUName = S.String;
-
 /** The tier of a managed cluster SKU. If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details. */
 export type ManagedClusterSKUTier = "Premium" | "Standard" | "Free";
-const ManagedClusterSKUTier = S.String;
-
 /** The SKU of a Managed Cluster. */
 export interface ManagedClusterSKU {
   /** The name of a managed cluster SKU. */
@@ -5080,12 +3408,8 @@ export interface ManagedClusterSKU {
   /** The tier of a managed cluster SKU. If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details. */
   tier?: ManagedClusterSKUTier | (string & {});
 }
-const ManagedClusterSKU = /*@__PURE__*/ __L.at(__c34, 7) as any as S.Schema<ManagedClusterSKU>;
-
 /** The type of extendedLocation. */
 export type ExtendedLocationTypes = "EdgeZone";
-const ExtendedLocationTypes = S.String;
-
 /** The complex type of the extended location. */
 export interface ExtendedLocation {
   /** The name of the extended location. */
@@ -5093,12 +3417,8 @@ export interface ExtendedLocation {
   /** The type of the extended location. */
   type?: ExtendedLocationTypes | (string & {});
 }
-const ExtendedLocation = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<ExtendedLocation>;
-
 /** The type of identity used for the managed cluster. For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity). */
 export type ResourceIdentityType = "SystemAssigned" | "UserAssigned" | "None";
-const ResourceIdentityType = S.String;
-
 /** Delegated resource properties - internal use only. */
 export interface ManagedClusterIdentityDelegatedResourcesValue {
   /** The ARM resource id of the delegated resource - internal use only. */
@@ -5110,20 +3430,10 @@ export interface ManagedClusterIdentityDelegatedResourcesValue {
   /** The source resource location - internal use only. */
   location?: string;
 }
-const ManagedClusterIdentityDelegatedResourcesValue = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<ManagedClusterIdentityDelegatedResourcesValue>;
-
 /** The delegated identity resources assigned to this managed cluster. This can only be set by another Azure Resource Provider, and managed cluster only accept one delegated identity resource. Internal use only. */
 export type ManagedClusterIdentityDelegatedResourcesMap = {
   [key: string]: ManagedClusterIdentityDelegatedResourcesValue | undefined;
 };
-const ManagedClusterIdentityDelegatedResourcesMap = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<ManagedClusterIdentityDelegatedResourcesMap>;
-
 /** User assigned identity properties. */
 export interface ManagedServiceIdentityUserAssignedIdentitiesValue {
   /** The principal id of user assigned identity. */
@@ -5131,20 +3441,10 @@ export interface ManagedServiceIdentityUserAssignedIdentitiesValue {
   /** The client id of user assigned identity. */
   clientId?: string;
 }
-const ManagedServiceIdentityUserAssignedIdentitiesValue = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<ManagedServiceIdentityUserAssignedIdentitiesValue>;
-
 /** The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type ManagedClusterIdentityUserAssignedIdentitiesMap = {
   [key: string]: ManagedServiceIdentityUserAssignedIdentitiesValue | undefined;
 };
-const ManagedClusterIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<ManagedClusterIdentityUserAssignedIdentitiesMap>;
-
 /** Identity for the managed cluster. */
 export interface ManagedClusterIdentity {
   /** The principal id of the system assigned identity which is used by master components. */
@@ -5158,11 +3458,6 @@ export interface ManagedClusterIdentity {
   /** The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: ManagedClusterIdentityUserAssignedIdentitiesMap;
 }
-const ManagedClusterIdentity = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<ManagedClusterIdentity>;
-
 export interface GetManagedClusterResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5189,11 +3484,6 @@ export interface GetManagedClusterResponse {
   /** This is primarily used to expose different UI experiences in the portal for different kinds */
   kind?: string;
 }
-const GetManagedClusterResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<GetManagedClusterResponse>;
-
 export interface GetManagedClusterCommandResultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5204,11 +3494,6 @@ export interface GetManagedClusterCommandResultRequest {
   /** Id of the command. */
   commandId: string;
 }
-const GetManagedClusterCommandResultRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<GetManagedClusterCommandResultRequest>;
-
 /** The results of a run command */
 export interface CommandResultProperties {
   /** provisioning State */
@@ -5224,11 +3509,6 @@ export interface CommandResultProperties {
   /** An explanation of why provisioningState is set to failed (if so). */
   reason?: string;
 }
-const CommandResultProperties = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<CommandResultProperties>;
-
 /** run command result. */
 export interface RunCommandResult {
   /** The command id. */
@@ -5236,8 +3516,6 @@ export interface RunCommandResult {
   /** Properties of command result. */
   properties?: CommandResultProperties;
 }
-const RunCommandResult = /*@__PURE__*/ __L.at(__c36, 1) as any as S.Schema<RunCommandResult>;
-
 export interface GetManagedClusterMeshRevisionProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5246,21 +3524,10 @@ export interface GetManagedClusterMeshRevisionProfileRequest {
   /** The mode of the mesh. */
   mode: string;
 }
-const GetManagedClusterMeshRevisionProfileRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<GetManagedClusterMeshRevisionProfileRequest>;
-
 /** List of revisions available for upgrade of a specific mesh revision */
 export type MeshRevisionUpgradesList = Array<string>;
-const MeshRevisionUpgradesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<MeshRevisionUpgradesList>;
-
 /** Product/service versions compatible with a service mesh add-on revision. */
 export type CompatibleVersionsVersionsList = Array<string>;
-const CompatibleVersionsVersionsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<CompatibleVersionsVersionsList>;
-
 /** Version information about a product/service that is compatible with a service mesh revision. */
 export interface CompatibleVersions {
   /** The product/service name. */
@@ -5268,15 +3535,8 @@ export interface CompatibleVersions {
   /** Product/service versions compatible with a service mesh add-on revision. */
   versions?: CompatibleVersionsVersionsList;
 }
-const CompatibleVersions = /*@__PURE__*/ __L.at(__c36, 3) as any as S.Schema<CompatibleVersions>;
-
 /** List of items this revision of service mesh is compatible with, and their associated versions. */
 export type MeshRevisionCompatibleWithList = Array<CompatibleVersions>;
-const MeshRevisionCompatibleWithList = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<MeshRevisionCompatibleWithList>;
-
 /** Holds information on upgrades and compatibility for given major.minor mesh release. */
 export interface MeshRevision {
   /** The revision of the mesh release. */
@@ -5286,25 +3546,13 @@ export interface MeshRevision {
   /** List of items this revision of service mesh is compatible with, and their associated versions. */
   compatibleWith?: MeshRevisionCompatibleWithList;
 }
-const MeshRevision = /*@__PURE__*/ __L.at(__c36, 5) as any as S.Schema<MeshRevision>;
-
 /** Available mesh revisions. */
 export type MeshRevisionProfilePropertiesMeshRevisionsList = Array<MeshRevision>;
-const MeshRevisionProfilePropertiesMeshRevisionsList = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<MeshRevisionProfilePropertiesMeshRevisionsList>;
-
 /** Mesh revision profile properties for a mesh */
 export interface MeshRevisionProfileProperties {
   /** Available mesh revisions. */
   meshRevisions?: MeshRevisionProfilePropertiesMeshRevisionsList;
 }
-const MeshRevisionProfileProperties = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<MeshRevisionProfileProperties>;
-
 export interface GetManagedClusterMeshRevisionProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5317,11 +3565,6 @@ export interface GetManagedClusterMeshRevisionProfileResponse {
   /** Mesh revision profile properties for a mesh */
   properties?: MeshRevisionProfileProperties;
 }
-const GetManagedClusterMeshRevisionProfileResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<GetManagedClusterMeshRevisionProfileResponse>;
-
 export interface GetManagedClusterMeshUpgradeProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5332,11 +3575,6 @@ export interface GetManagedClusterMeshUpgradeProfileRequest {
   /** The mode of the mesh. */
   mode: string;
 }
-const GetManagedClusterMeshUpgradeProfileRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<GetManagedClusterMeshUpgradeProfileRequest>;
-
 export interface GetManagedClusterMeshUpgradeProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5349,11 +3587,6 @@ export interface GetManagedClusterMeshUpgradeProfileResponse {
   /** Mesh upgrade profile properties for a major.minor release. */
   properties?: MeshRevision;
 }
-const GetManagedClusterMeshUpgradeProfileResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<GetManagedClusterMeshUpgradeProfileResponse>;
-
 export interface GetManagedClusterUpgradeProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5362,24 +3595,14 @@ export interface GetManagedClusterUpgradeProfileRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const GetManagedClusterUpgradeProfileRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<GetManagedClusterUpgradeProfileRequest>;
-
 /** The operating system type. The default is Linux. */
 export type ManagedClusterPoolUpgradeProfileOsType = "Linux" | "Windows";
-const ManagedClusterPoolUpgradeProfileOsType = S.String;
-
 /** Available upgrades for an AgentPool. */
 export type ManagedClusterPoolUpgradeProfileUpgradesItem =
   AgentPoolUpgradeProfilePropertiesUpgradesItem;
 /** List of orchestrator types and versions available for upgrade. */
 export type ManagedClusterPoolUpgradeProfileUpgradesList =
   Array<AgentPoolUpgradeProfilePropertiesUpgradesItem>;
-const ManagedClusterPoolUpgradeProfileUpgradesList =
-  AgentPoolUpgradeProfilePropertiesUpgradesList as any as S.Schema<ManagedClusterPoolUpgradeProfileUpgradesList>;
-
 /** The list of available upgrade versions. */
 export interface ManagedClusterPoolUpgradeProfile {
   /** The Kubernetes version (major.minor.patch). */
@@ -5391,19 +3614,9 @@ export interface ManagedClusterPoolUpgradeProfile {
   /** List of orchestrator types and versions available for upgrade. */
   upgrades?: ManagedClusterPoolUpgradeProfileUpgradesList;
 }
-const ManagedClusterPoolUpgradeProfile = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<ManagedClusterPoolUpgradeProfile>;
-
 /** The list of available upgrade versions for agent pools. */
 export type ManagedClusterUpgradeProfilePropertiesAgentPoolProfilesList =
   Array<ManagedClusterPoolUpgradeProfile>;
-const ManagedClusterUpgradeProfilePropertiesAgentPoolProfilesList = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<ManagedClusterUpgradeProfilePropertiesAgentPoolProfilesList>;
-
 /** Control plane and agent pool upgrade profiles. */
 export interface ManagedClusterUpgradeProfileProperties {
   /** The list of available upgrade versions for the control plane. */
@@ -5411,11 +3624,6 @@ export interface ManagedClusterUpgradeProfileProperties {
   /** The list of available upgrade versions for agent pools. */
   agentPoolProfiles: ManagedClusterUpgradeProfilePropertiesAgentPoolProfilesList;
 }
-const ManagedClusterUpgradeProfileProperties = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<ManagedClusterUpgradeProfileProperties>;
-
 export interface GetManagedClusterUpgradeProfileResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5428,11 +3636,6 @@ export interface GetManagedClusterUpgradeProfileResponse {
   /** The properties of the upgrade profile. */
   properties: ManagedClusterUpgradeProfileProperties;
 }
-const GetManagedClusterUpgradeProfileResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<GetManagedClusterUpgradeProfileResponse>;
-
 export interface GetManagedNamespaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5443,16 +3646,8 @@ export interface GetManagedNamespaceRequest {
   /** The name of the managed namespace. */
   managedNamespaceName: string;
 }
-const GetManagedNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<GetManagedNamespaceRequest>;
-
 /** Resource tags. */
 export type GetManagedNamespaceResponseTagsMap = { [key: string]: string | undefined };
-const GetManagedNamespaceResponseTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<GetManagedNamespaceResponseTagsMap>;
-
 /** The current provisioning state of the namespace. */
 export type NamespaceProvisioningState =
   | "Updating"
@@ -5461,18 +3656,10 @@ export type NamespaceProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled";
-const NamespaceProvisioningState = S.String;
-
 /** The labels of managed namespace. */
 export type NamespacePropertiesLabelsMap = { [key: string]: string | undefined };
-const NamespacePropertiesLabelsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<NamespacePropertiesLabelsMap>;
-
 /** The annotations of managed namespace. */
 export type NamespacePropertiesAnnotationsMap = { [key: string]: string | undefined };
-const NamespacePropertiesAnnotationsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<NamespacePropertiesAnnotationsMap>;
-
 /** Resource quota for the namespace. */
 export interface ResourceQuota {
   /** CPU request of the namespace in one-thousandth CPU form. See [CPU resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu) for more details. */
@@ -5484,8 +3671,6 @@ export interface ResourceQuota {
   /** Memory limit of the namespace in the power-of-two equivalents form: Ei, Pi, Ti, Gi, Mi, Ki. See [Memory resource units](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-memory) for more details. */
   memoryLimit?: string;
 }
-const ResourceQuota = ResourceQuota_2 as any as S.Schema<ResourceQuota>;
-
 /** Enum representing different network policy rules. */
 export type NetworkPoliciesIngress = "DenyAll" | "AllowAll" | "AllowSameNamespace";
 /** Enum representing different network policy rules. */
@@ -5497,16 +3682,10 @@ export interface NetworkPolicies {
   /** Enum representing different network policy rules. */
   egress?: NetworkPoliciesEgress | (string & {});
 }
-const NetworkPolicies = NetworkPolicy_2 as any as S.Schema<NetworkPolicies>;
-
 /** Action if Kubernetes namespace with same name already exists. */
 export type AdoptionPolicy = "Never" | "IfIdentical" | "Always";
-const AdoptionPolicy = S.String;
-
 /** Delete options of a namespace. */
 export type DeletePolicy = "Keep" | "Delete";
-const DeletePolicy = S.String;
-
 /** Properties of a namespace managed by ARM */
 export interface NamespaceProperties {
   /** The current provisioning state of the namespace. */
@@ -5526,8 +3705,6 @@ export interface NamespaceProperties {
   /** Delete options of a namespace. */
   deletePolicy?: DeletePolicy;
 }
-const NamespaceProperties = /*@__PURE__*/ __L.at(__c38, 1) as any as S.Schema<NamespaceProperties>;
-
 export interface GetManagedNamespaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5546,11 +3723,6 @@ export interface GetManagedNamespaceResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const GetManagedNamespaceResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<GetManagedNamespaceResponse>;
-
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5561,11 +3733,6 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
-
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Canceled"
@@ -5573,19 +3740,13 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Deleting"
   | "Failed"
   | "Succeeded";
-const PrivateEndpointConnectionProvisioningState = S.String;
-
 /** Private endpoint which a connection belongs to. */
 export interface PrivateEndpoint {
   /** The resource ID of the private endpoint */
   id?: string;
 }
-const PrivateEndpoint = ResourceReference as any as S.Schema<PrivateEndpoint>;
-
 /** The private link service connection status. */
 export type ConnectionStatus = "Pending" | "Approved" | "Rejected" | "Disconnected";
-const ConnectionStatus = S.String;
-
 /** The state of a private link service connection. */
 export interface PrivateLinkServiceConnectionState {
   /** The private link service connection status. */
@@ -5593,11 +3754,6 @@ export interface PrivateLinkServiceConnectionState {
   /** The private link service connection description. */
   description?: string;
 }
-const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<PrivateLinkServiceConnectionState>;
-
 /** Properties of a private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
   /** The current provisioning state. */
@@ -5607,11 +3763,6 @@ export interface PrivateEndpointConnectionProperties {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<PrivateEndpointConnectionProperties>;
-
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5624,11 +3775,6 @@ export interface GetPrivateEndpointConnectionResponse {
   /** The properties of a private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const GetPrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<GetPrivateEndpointConnectionResponse>;
-
 export interface GetSnapshotRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5637,21 +3783,12 @@ export interface GetSnapshotRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const GetSnapshotRequest = /*@__PURE__*/ __L.at(__c38, 7) as any as S.Schema<GetSnapshotRequest>;
-
 /** Resource tags. */
 export type GetSnapshotResponseTagsMap = { [key: string]: string | undefined };
-const GetSnapshotResponseTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<GetSnapshotResponseTagsMap>;
-
 /** The type of a snapshot. The default is NodePool. */
 export type SnapshotPropertiesSnapshotType = "NodePool";
-const SnapshotPropertiesSnapshotType = S.String;
-
 /** The operating system type. The default is Linux. */
 export type SnapshotPropertiesOsType = "Linux" | "Windows";
-const SnapshotPropertiesOsType = S.String;
-
 /** Properties used to configure a node pool snapshot. */
 export interface SnapshotProperties {
   /** CreationData to be used to specify the source agent pool resource ID to create this snapshot. */
@@ -5671,8 +3808,6 @@ export interface SnapshotProperties {
   /** Whether to use a FIPS-enabled OS. */
   enableFIPS?: boolean;
 }
-const SnapshotProperties = /*@__PURE__*/ __L.at(__c39, 0) as any as S.Schema<SnapshotProperties>;
-
 export interface GetSnapshotResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5689,8 +3824,6 @@ export interface GetSnapshotResponse {
   /** Properties of a snapshot. */
   properties?: SnapshotProperties;
 }
-const GetSnapshotResponse = /*@__PURE__*/ __L.at(__c39, 1) as any as S.Schema<GetSnapshotResponse>;
-
 export interface GetTrustedAccessRoleBindingRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5701,11 +3834,6 @@ export interface GetTrustedAccessRoleBindingRequest {
   /** The name of trusted access role binding. */
   trustedAccessRoleBindingName: string;
 }
-const GetTrustedAccessRoleBindingRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<GetTrustedAccessRoleBindingRequest>;
-
 /** The current provisioning state of trusted access role binding. */
 export type TrustedAccessRoleBindingProvisioningState =
   | "Canceled"
@@ -5713,13 +3841,8 @@ export type TrustedAccessRoleBindingProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Updating";
-const TrustedAccessRoleBindingProvisioningState = S.String;
-
 /** A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'. */
 export type TrustedAccessRoleBindingPropertiesRolesList = Array<string>;
-const TrustedAccessRoleBindingPropertiesRolesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<TrustedAccessRoleBindingPropertiesRolesList>;
-
 /** Properties for trusted access role binding */
 export interface TrustedAccessRoleBindingProperties {
   /** The current provisioning state of trusted access role binding. */
@@ -5729,11 +3852,6 @@ export interface TrustedAccessRoleBindingProperties {
   /** A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'. */
   roles: TrustedAccessRoleBindingPropertiesRolesList;
 }
-const TrustedAccessRoleBindingProperties = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<TrustedAccessRoleBindingProperties>;
-
 export interface GetTrustedAccessRoleBindingResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -5746,11 +3864,6 @@ export interface GetTrustedAccessRoleBindingResponse {
   /** Properties for trusted access role binding */
   properties: TrustedAccessRoleBindingProperties;
 }
-const GetTrustedAccessRoleBindingResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<GetTrustedAccessRoleBindingResponse>;
-
 export interface GetUpdateRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -5761,16 +3874,10 @@ export interface GetUpdateRunRequest {
   /** The name of the UpdateRun resource. */
   updateRunName: string;
 }
-const GetUpdateRunRequest = /*@__PURE__*/ __L.at(__c39, 5) as any as S.Schema<GetUpdateRunRequest>;
-
 /** The provisioning state of the UpdateRun resource. */
 export type UpdateRunProvisioningState = "Succeeded" | "Failed" | "Canceled";
-const UpdateRunProvisioningState = S.String;
-
 /** The type of upgrade to perform when targeting ManagedClusters. */
 export type ManagedClusterUpgradeType = "Full" | "NodeImageOnly" | "ControlPlaneOnly";
-const ManagedClusterUpgradeType = S.String;
-
 /** The upgrade to apply to a ManagedCluster. */
 export interface ManagedClusterUpgradeSpec {
   /** ManagedClusterUpgradeType is the type of upgrade to be applied. */
@@ -5778,29 +3885,15 @@ export interface ManagedClusterUpgradeSpec {
   /** The Kubernetes version to upgrade the member clusters to. */
   kubernetesVersion?: string;
 }
-const ManagedClusterUpgradeSpec = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<ManagedClusterUpgradeSpec>;
-
 /** The node image upgrade type. */
 export type NodeImageSelectionType = "Latest" | "Consistent" | "Custom";
-const NodeImageSelectionType = S.String;
-
 /** The node upgrade image version. */
 export interface NodeImageVersion {
   /** The image version to upgrade the nodes to (e.g., 'AKSUbuntu-1804gen2containerd-2022.12.13'). */
   version?: string;
 }
-const NodeImageVersion = /*@__PURE__*/ __L.at(__c39, 7) as any as S.Schema<NodeImageVersion>;
-
 /** Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded. */
 export type NodeImageSelectionCustomNodeImageVersionsList = Array<NodeImageVersion>;
-const NodeImageSelectionCustomNodeImageVersionsList = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<NodeImageSelectionCustomNodeImageVersionsList>;
-
 /** The node image upgrade to be applied to the target nodes in update run. */
 export interface NodeImageSelection {
   /** The node image upgrade type. */
@@ -5808,8 +3901,6 @@ export interface NodeImageSelection {
   /** Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded. */
   customNodeImageVersions?: NodeImageSelectionCustomNodeImageVersionsList;
 }
-const NodeImageSelection = /*@__PURE__*/ __L.at(__c40, 1) as any as S.Schema<NodeImageSelection>;
-
 /** The update to be applied to the ManagedClusters. */
 export interface ManagedClusterUpdate {
   /** The upgrade to apply to the ManagedClusters. */
@@ -5817,11 +3908,6 @@ export interface ManagedClusterUpdate {
   /** The node image upgrade to be applied to the target nodes in update run. */
   nodeImageSelection?: NodeImageSelection;
 }
-const ManagedClusterUpdate = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<ManagedClusterUpdate>;
-
 /** The state of the UpdateRun, UpdateStage, UpdateGroup, or MemberUpdate. */
 export type UpdateState =
   | "NotStarted"
@@ -5832,18 +3918,10 @@ export type UpdateState =
   | "Failed"
   | "Pending"
   | "Completed";
-const UpdateState = S.String;
-
 /** The error details. */
 export type UpdateStatusErrorDetailsList = Array<ErrorDetail>;
-const UpdateStatusErrorDetailsList =
-  AgentPoolStatusProvisioningErrorDetailsList as any as S.Schema<UpdateStatusErrorDetailsList>;
-
 /** The error additional info. */
 export type UpdateStatusErrorAdditionalInfoList = Array<ErrorAdditionalInfo>;
-const UpdateStatusErrorAdditionalInfoList =
-  ErrorDetailAdditionalInfoList as any as S.Schema<UpdateStatusErrorAdditionalInfoList>;
-
 /** The error detail. */
 export interface UpdateStatusError {
   /** The error code. */
@@ -5857,8 +3935,6 @@ export interface UpdateStatusError {
   /** The error additional info. */
   additionalInfo?: UpdateStatusErrorAdditionalInfoList;
 }
-const UpdateStatusError = /*@__PURE__*/ __L.at(__c40, 3) as any as S.Schema<UpdateStatusError>;
-
 /** The status for an operation or group of operations. */
 export interface UpdateStatus {
   /** The time the operation or group was started. */
@@ -5870,8 +3946,6 @@ export interface UpdateStatus {
   /** The error detail. */
   error?: UpdateStatusError;
 }
-const UpdateStatus = /*@__PURE__*/ __L.at(__c40, 4) as any as S.Schema<UpdateStatus>;
-
 /** The status of a member update operation. */
 export interface MemberUpdateStatus {
   /** The status of the MemberUpdate operation. */
@@ -5885,15 +3959,8 @@ export interface MemberUpdateStatus {
   /** The status message after processing the member update operation. */
   message?: string;
 }
-const MemberUpdateStatus = /*@__PURE__*/ __L.at(__c40, 5) as any as S.Schema<MemberUpdateStatus>;
-
 /** The list of member this UpdateGroup updates. */
 export type UpdateGroupStatusMembersList = Array<MemberUpdateStatus>;
-const UpdateGroupStatusMembersList = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<UpdateGroupStatusMembersList>;
-
 /** The status of the Gate, as represented in the Update Run. */
 export interface UpdateRunGateStatus {
   /** The human-readable display name of the Gate. */
@@ -5903,20 +3970,10 @@ export interface UpdateRunGateStatus {
   /** The status of the Gate. */
   status?: UpdateStatus;
 }
-const UpdateRunGateStatus = /*@__PURE__*/ __L.at(__c40, 7) as any as S.Schema<UpdateRunGateStatus>;
-
 /** The list of Gates that will run before this UpdateGroup. */
 export type UpdateGroupStatusBeforeGatesList = Array<UpdateRunGateStatus>;
-const UpdateGroupStatusBeforeGatesList = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<UpdateGroupStatusBeforeGatesList>;
-
 /** The list of Gates that will run after this UpdateGroup. */
 export type UpdateGroupStatusAfterGatesList = Array<UpdateRunGateStatus>;
-const UpdateGroupStatusAfterGatesList =
-  UpdateGroupStatusBeforeGatesList as any as S.Schema<UpdateGroupStatusAfterGatesList>;
-
 /** The status of a UpdateGroup. */
 export interface UpdateGroupStatus {
   /** The status of the UpdateGroup. */
@@ -5932,25 +3989,12 @@ export interface UpdateGroupStatus {
   /** The list of Gates that will run after this UpdateGroup. */
   afterGates?: UpdateGroupStatusAfterGatesList;
 }
-const UpdateGroupStatus = /*@__PURE__*/ __L.at(__c41, 1) as any as S.Schema<UpdateGroupStatus>;
-
 /** The list of groups to be updated as part of this UpdateStage. */
 export type UpdateStageStatusGroupsList = Array<UpdateGroupStatus>;
-const UpdateStageStatusGroupsList = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<UpdateStageStatusGroupsList>;
-
 /** The list of Gates that will run before this UpdateStage. */
 export type UpdateStageStatusBeforeGatesList = Array<UpdateRunGateStatus>;
-const UpdateStageStatusBeforeGatesList =
-  UpdateGroupStatusBeforeGatesList as any as S.Schema<UpdateStageStatusBeforeGatesList>;
-
 /** The list of Gates that will run after this UpdateStage. */
 export type UpdateStageStatusAfterGatesList = Array<UpdateRunGateStatus>;
-const UpdateStageStatusAfterGatesList =
-  UpdateGroupStatusBeforeGatesList as any as S.Schema<UpdateStageStatusAfterGatesList>;
-
 /** The status of the wait duration. */
 export interface WaitStatus {
   /** The status of the wait duration. */
@@ -5958,8 +4002,6 @@ export interface WaitStatus {
   /** The wait duration configured in seconds. */
   waitDurationInSeconds?: number;
 }
-const WaitStatus = /*@__PURE__*/ __L.at(__c41, 3) as any as S.Schema<WaitStatus>;
-
 /** The status of a UpdateStage. */
 export interface UpdateStageStatus {
   /** The status of the UpdateStage. */
@@ -5977,30 +4019,15 @@ export interface UpdateStageStatus {
   /** The status of the wait period configured on the UpdateStage. */
   afterStageWaitStatus?: WaitStatus;
 }
-const UpdateStageStatus = /*@__PURE__*/ __L.at(__c41, 4) as any as S.Schema<UpdateStageStatus>;
-
 /** The stages composing an update run. Stages are run sequentially withing an UpdateRun. */
 export type UpdateRunStatusStagesList = Array<UpdateStageStatus>;
-const UpdateRunStatusStagesList = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<UpdateRunStatusStagesList>;
-
 /** The image versions to upgrade the nodes to. */
 export type NodeImageSelectionStatusSelectedNodeImageVersionsList = Array<NodeImageVersion>;
-const NodeImageSelectionStatusSelectedNodeImageVersionsList =
-  NodeImageSelectionCustomNodeImageVersionsList as any as S.Schema<NodeImageSelectionStatusSelectedNodeImageVersionsList>;
-
 /** The node image upgrade specs for the update run. */
 export interface NodeImageSelectionStatus {
   /** The image versions to upgrade the nodes to. */
   selectedNodeImageVersions?: NodeImageSelectionStatusSelectedNodeImageVersionsList;
 }
-const NodeImageSelectionStatus = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<NodeImageSelectionStatus>;
-
 /** The status of a UpdateRun. */
 export interface UpdateRunStatus {
   /** The status of the UpdateRun. */
@@ -6010,8 +4037,6 @@ export interface UpdateRunStatus {
   /** The node image upgrade specs for the update run. It is only set in update run when `NodeImageSelection.type` is `Consistent`. */
   nodeImageSelection?: NodeImageSelectionStatus;
 }
-const UpdateRunStatus = /*@__PURE__*/ __L.at(__c41, 7) as any as S.Schema<UpdateRunStatus>;
-
 /** The properties of the UpdateRun. */
 export interface UpdateRunProperties {
   /** The provisioning state of the UpdateRun resource. */
@@ -6027,8 +4052,6 @@ export interface UpdateRunProperties {
   /** AutoUpgradeProfileId is the id of an auto upgrade profile resource. */
   autoUpgradeProfileId?: string;
 }
-const UpdateRunProperties = /*@__PURE__*/ __L.at(__c42, 0) as any as S.Schema<UpdateRunProperties>;
-
 export interface GetUpdateRunResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6043,31 +4066,16 @@ export interface GetUpdateRunResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const GetUpdateRunResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<GetUpdateRunResponse>;
-
 /** Managed identity profile for the identity binding. */
 export interface IdentityBindingManagedIdentityProfileInput {
   /** The resource ID of the managed identity. */
   resourceId: string;
 }
-const IdentityBindingManagedIdentityProfileInput = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<IdentityBindingManagedIdentityProfileInput>;
-
 /** IdentityBinding properties. */
 export interface IdentityBindingPropertiesInput {
   /** Managed identity profile for the identity binding. */
   managedIdentity: IdentityBindingManagedIdentityProfileInput;
 }
-const IdentityBindingPropertiesInput = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<IdentityBindingPropertiesInput>;
-
 export interface IdentityBindingsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6080,11 +4088,6 @@ export interface IdentityBindingsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: IdentityBindingPropertiesInput;
 }
-const IdentityBindingsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<IdentityBindingsCreateOrUpdateRequest>;
-
 export interface IdentityBindingsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -6099,9 +4102,6 @@ export interface IdentityBindingsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const IdentityBindingsCreateOrUpdateResponse =
-  GetIdentityBindingResponse as any as S.Schema<IdentityBindingsCreateOrUpdateResponse>;
-
 export interface ListAgentPoolsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6110,11 +4110,6 @@ export interface ListAgentPoolsRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const ListAgentPoolsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<ListAgentPoolsRequest>;
-
 /** Agent Pool. */
 export interface AgentPool {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6128,15 +4123,8 @@ export interface AgentPool {
   /** Properties of an agent pool. */
   properties?: ManagedClusterAgentPoolProfileProperties;
 }
-const AgentPool = GetAgentPoolResponse as any as S.Schema<AgentPool>;
-
 /** The AgentPool items on this page */
 export type AgentPoolListResultValueList = Array<AgentPool>;
-const AgentPoolListResultValueList = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<AgentPoolListResultValueList>;
-
 /** The response of a AgentPool list operation. */
 export interface AgentPoolListResult {
   /** The AgentPool items on this page */
@@ -6144,8 +4132,6 @@ export interface AgentPoolListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const AgentPoolListResult = /*@__PURE__*/ __L.at(__c42, 7) as any as S.Schema<AgentPoolListResult>;
-
 export interface ListAutoUpgradeProfileByFleetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6158,11 +4144,6 @@ export interface ListAutoUpgradeProfileByFleetRequest {
   /** The page-continuation token to use with a paged version of this API. */
   _skipToken?: string;
 }
-const ListAutoUpgradeProfileByFleetRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<ListAutoUpgradeProfileByFleetRequest>;
-
 /** The AutoUpgradeProfile resource. */
 export interface AutoUpgradeProfile {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6178,15 +4159,8 @@ export interface AutoUpgradeProfile {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const AutoUpgradeProfile = /*@__PURE__*/ __L.at(__c43, 1) as any as S.Schema<AutoUpgradeProfile>;
-
 /** The AutoUpgradeProfile items on this page */
 export type AutoUpgradeProfileListResultValueList = Array<AutoUpgradeProfile>;
-const AutoUpgradeProfileListResultValueList = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<AutoUpgradeProfileListResultValueList>;
-
 /** The response of a AutoUpgradeProfile list operation. */
 export interface AutoUpgradeProfileListResult {
   /** The AutoUpgradeProfile items on this page */
@@ -6194,20 +4168,10 @@ export interface AutoUpgradeProfileListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const AutoUpgradeProfileListResult = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<AutoUpgradeProfileListResult>;
-
 export interface ListDeploymentSafeguardsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceUri: string;
 }
-const ListDeploymentSafeguardsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<ListDeploymentSafeguardsRequest>;
-
 /** Deployment Safeguards */
 export interface DeploymentSafeguard {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6223,15 +4187,8 @@ export interface DeploymentSafeguard {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const DeploymentSafeguard = /*@__PURE__*/ __L.at(__c43, 5) as any as S.Schema<DeploymentSafeguard>;
-
 /** The DeploymentSafeguard items on this page */
 export type DeploymentSafeguardListResultValueList = Array<DeploymentSafeguard>;
-const DeploymentSafeguardListResultValueList = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<DeploymentSafeguardListResultValueList>;
-
 /** The response of a DeploymentSafeguard list operation. */
 export interface DeploymentSafeguardListResult {
   /** The DeploymentSafeguard items on this page */
@@ -6239,22 +4196,12 @@ export interface DeploymentSafeguardListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DeploymentSafeguardListResult = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<DeploymentSafeguardListResult>;
-
 export interface ListFleetByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListFleetByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<ListFleetByResourceGroupRequest>;
-
 /** Resource tags. */
 export type FleetTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -6280,15 +4227,8 @@ export interface Fleet {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: FleetsCreateOrUpdateResponseIdentity;
 }
-const Fleet = GetFleetResponse as any as S.Schema<Fleet>;
-
 /** The Fleet items on this page */
 export type FleetListResultValueList = Array<Fleet>;
-const FleetListResultValueList = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<FleetListResultValueList>;
-
 /** The response of a Fleet list operation. */
 export interface FleetListResult {
   /** The Fleet items on this page */
@@ -6296,8 +4236,6 @@ export interface FleetListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FleetListResult = /*@__PURE__*/ __L.at(__c44, 2) as any as S.Schema<FleetListResult>;
-
 export interface ListFleetBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6306,11 +4244,6 @@ export interface ListFleetBySubscriptionRequest {
   /** The page-continuation token to use with a paged version of this API. */
   _skipToken?: string;
 }
-const ListFleetBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<ListFleetBySubscriptionRequest>;
-
 export interface ListFleetCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6319,11 +4252,6 @@ export interface ListFleetCredentialsRequest {
   /** The name of the Fleet resource. */
   fleetName: string;
 }
-const ListFleetCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<ListFleetCredentialsRequest>;
-
 /** One credential result item. */
 export interface FleetCredentialResult {
   /** The name of the credential. */
@@ -6331,28 +4259,13 @@ export interface FleetCredentialResult {
   /** Base64-encoded Kubernetes configuration file. */
   value?: string;
 }
-const FleetCredentialResult = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<FleetCredentialResult>;
-
 /** Array of base64-encoded Kubernetes configuration files. */
 export type FleetCredentialResultsKubeconfigsList = Array<FleetCredentialResult>;
-const FleetCredentialResultsKubeconfigsList = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<FleetCredentialResultsKubeconfigsList>;
-
 /** The Credential results response. */
 export interface FleetCredentialResults {
   /** Array of base64-encoded Kubernetes configuration files. */
   kubeconfigs?: FleetCredentialResultsKubeconfigsList;
 }
-const FleetCredentialResults = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<FleetCredentialResults>;
-
 export interface ListFleetManagedNamespaceByFleetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6361,16 +4274,8 @@ export interface ListFleetManagedNamespaceByFleetRequest {
   /** The name of the Fleet resource. */
   fleetName: string;
 }
-const ListFleetManagedNamespaceByFleetRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<ListFleetManagedNamespaceByFleetRequest>;
-
 /** Resource tags. */
 export type FleetManagedNamespaceTagsMap = { [key: string]: string | undefined };
-const FleetManagedNamespaceTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<FleetManagedNamespaceTagsMap>;
-
 /** A fleet managed namespace. */
 export interface FleetManagedNamespace {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6390,18 +4295,8 @@ export interface FleetManagedNamespace {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const FleetManagedNamespace = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<FleetManagedNamespace>;
-
 /** The FleetManagedNamespace items on this page */
 export type FleetManagedNamespaceListResultValueList = Array<FleetManagedNamespace>;
-const FleetManagedNamespaceListResultValueList = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<FleetManagedNamespaceListResultValueList>;
-
 /** The response of a FleetManagedNamespace list operation. */
 export interface FleetManagedNamespaceListResult {
   /** The FleetManagedNamespace items on this page */
@@ -6409,11 +4304,6 @@ export interface FleetManagedNamespaceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FleetManagedNamespaceListResult = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<FleetManagedNamespaceListResult>;
-
 export interface ListFleetMemberByFleetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6428,11 +4318,6 @@ export interface ListFleetMemberByFleetRequest {
   /** Filter the result list using the given expression. */
   _filter?: string;
 }
-const ListFleetMemberByFleetRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<ListFleetMemberByFleetRequest>;
-
 /** A member of the Fleet. It contains a reference to an existing Kubernetes cluster on Azure. */
 export interface FleetMember {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6448,15 +4333,8 @@ export interface FleetMember {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const FleetMember = GetFleetMemberResponse as any as S.Schema<FleetMember>;
-
 /** The FleetMember items on this page */
 export type FleetMemberListResultValueList = Array<FleetMember>;
-const FleetMemberListResultValueList = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<FleetMemberListResultValueList>;
-
 /** The response of a FleetMember list operation. */
 export interface FleetMemberListResult {
   /** The FleetMember items on this page */
@@ -6464,11 +4342,6 @@ export interface FleetMemberListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FleetMemberListResult = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<FleetMemberListResult>;
-
 export interface ListFleetUpdateStrategyByFleetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6481,11 +4354,6 @@ export interface ListFleetUpdateStrategyByFleetRequest {
   /** The page-continuation token to use with a paged version of this API. */
   _skipToken?: string;
 }
-const ListFleetUpdateStrategyByFleetRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<ListFleetUpdateStrategyByFleetRequest>;
-
 /** Defines a multi-stage process to perform update operations across members of a Fleet. */
 export interface FleetUpdateStrategy {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6501,15 +4369,8 @@ export interface FleetUpdateStrategy {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const FleetUpdateStrategy = /*@__PURE__*/ __L.at(__c46, 0) as any as S.Schema<FleetUpdateStrategy>;
-
 /** The FleetUpdateStrategy items on this page */
 export type FleetUpdateStrategyListResultValueList = Array<FleetUpdateStrategy>;
-const FleetUpdateStrategyListResultValueList = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<FleetUpdateStrategyListResultValueList>;
-
 /** The response of a FleetUpdateStrategy list operation. */
 export interface FleetUpdateStrategyListResult {
   /** The FleetUpdateStrategy items on this page */
@@ -6517,11 +4378,6 @@ export interface FleetUpdateStrategyListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const FleetUpdateStrategyListResult = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<FleetUpdateStrategyListResult>;
-
 export interface ListGateByFleetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6536,11 +4392,6 @@ export interface ListGateByFleetRequest {
   /** The page-continuation token to use with a paged version of this API. */
   _skipToken?: string;
 }
-const ListGateByFleetRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  3,
-) as any as S.Schema<ListGateByFleetRequest>;
-
 /** A Gate controls the progression during a staged rollout, e.g. in an Update Run. */
 export interface Gate {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6556,15 +4407,8 @@ export interface Gate {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const Gate = GetGateResponse as any as S.Schema<Gate>;
-
 /** The Gate items on this page */
 export type GateListResultValueList = Array<Gate>;
-const GateListResultValueList = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<GateListResultValueList>;
-
 /** The response of a Gate list operation. */
 export interface GateListResult {
   /** The Gate items on this page */
@@ -6572,8 +4416,6 @@ export interface GateListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const GateListResult = /*@__PURE__*/ __L.at(__c46, 5) as any as S.Schema<GateListResult>;
-
 export interface ListIdentityBindingByManagedClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6582,11 +4424,6 @@ export interface ListIdentityBindingByManagedClusterRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const ListIdentityBindingByManagedClusterRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<ListIdentityBindingByManagedClusterRequest>;
-
 /** The IdentityBinding resource. */
 export interface IdentityBinding {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6602,15 +4439,8 @@ export interface IdentityBinding {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const IdentityBinding = /*@__PURE__*/ __L.at(__c46, 7) as any as S.Schema<IdentityBinding>;
-
 /** The IdentityBinding items on this page */
 export type IdentityBindingListResultValueList = Array<IdentityBinding>;
-const IdentityBindingListResultValueList = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<IdentityBindingListResultValueList>;
-
 /** The response of a IdentityBinding list operation. */
 export interface IdentityBindingListResult {
   /** The IdentityBinding items on this page */
@@ -6618,11 +4448,6 @@ export interface IdentityBindingListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const IdentityBindingListResult = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<IdentityBindingListResult>;
-
 export interface ListMachinesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6633,8 +4458,6 @@ export interface ListMachinesRequest {
   /** The name of the agent pool. */
   agentPoolName: string;
 }
-const ListMachinesRequest = /*@__PURE__*/ __L.at(__c47, 2) as any as S.Schema<ListMachinesRequest>;
-
 /** The Availability zone in which machine is located. */
 export type MachineZonesList = Array<string>;
 /** A machine. Contains details about the underlying virtual machine. A machine may be visible here but not in kubectl get nodes; if so it may be because the machine has not been registered with the Kubernetes API Server yet. */
@@ -6652,15 +4475,8 @@ export interface Machine {
   /** The Availability zone in which machine is located. */
   zones?: MachineZonesList;
 }
-const Machine = GetMachineResponse as any as S.Schema<Machine>;
-
 /** The Machine items on this page */
 export type MachineListResultValueList = Array<Machine>;
-const MachineListResultValueList = /*@__PURE__*/ __L.at(
-  __c47,
-  3,
-) as any as S.Schema<MachineListResultValueList>;
-
 /** The response of a Machine list operation. */
 export interface MachineListResult {
   /** The Machine items on this page */
@@ -6668,8 +4484,6 @@ export interface MachineListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const MachineListResult = /*@__PURE__*/ __L.at(__c47, 4) as any as S.Schema<MachineListResult>;
-
 export interface ListMaintenanceConfigurationByManagedClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6678,11 +4492,6 @@ export interface ListMaintenanceConfigurationByManagedClusterRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const ListMaintenanceConfigurationByManagedClusterRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<ListMaintenanceConfigurationByManagedClusterRequest>;
-
 /** Planned maintenance configuration, used to configure when updates can be deployed to a Managed Cluster. See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance. */
 export interface MaintenanceConfiguration {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6696,18 +4505,8 @@ export interface MaintenanceConfiguration {
   /** Properties of a default maintenance configuration. */
   properties?: MaintenanceConfigurationProperties;
 }
-const MaintenanceConfiguration = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<MaintenanceConfiguration>;
-
 /** The MaintenanceConfiguration items on this page */
 export type MaintenanceConfigurationListResultValueList = Array<MaintenanceConfiguration>;
-const MaintenanceConfigurationListResultValueList = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<MaintenanceConfigurationListResultValueList>;
-
 /** The response of a MaintenanceConfiguration list operation. */
 export interface MaintenanceConfigurationListResult {
   /** The MaintenanceConfiguration items on this page */
@@ -6715,27 +4514,14 @@ export interface MaintenanceConfigurationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const MaintenanceConfigurationListResult = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<MaintenanceConfigurationListResult>;
-
 export interface ListManagedClusterByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListManagedClusterByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  1,
-) as any as S.Schema<ListManagedClusterByResourceGroupRequest>;
-
 /** Resource tags. */
 export type ManagedClusterTagsMap = { [key: string]: string | undefined };
-const ManagedClusterTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<ManagedClusterTagsMap>;
-
 /** Managed cluster. */
 export interface ManagedCluster {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6763,15 +4549,8 @@ export interface ManagedCluster {
   /** This is primarily used to expose different UI experiences in the portal for different kinds */
   kind?: string;
 }
-const ManagedCluster = /*@__PURE__*/ __L.at(__c48, 2) as any as S.Schema<ManagedCluster>;
-
 /** The ManagedCluster items on this page */
 export type ManagedClusterListResultValueList = Array<ManagedCluster>;
-const ManagedClusterListResultValueList = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<ManagedClusterListResultValueList>;
-
 /** The response of a ManagedCluster list operation. */
 export interface ManagedClusterListResult {
   /** The ManagedCluster items on this page */
@@ -6779,11 +4558,6 @@ export interface ManagedClusterListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ManagedClusterListResult = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<ManagedClusterListResult>;
-
 export interface ListManagedClusterClusterAdminCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6794,11 +4568,6 @@ export interface ListManagedClusterClusterAdminCredentialsRequest {
   /** server fqdn type for credentials to be returned */
   server_fqdn?: string;
 }
-const ListManagedClusterClusterAdminCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<ListManagedClusterClusterAdminCredentialsRequest>;
-
 /** The credential result response. */
 export type CredentialResult = FleetCredentialResult;
 /** Base64-encoded Kubernetes configuration file. */
@@ -6808,8 +4577,6 @@ export interface CredentialResults {
   /** Base64-encoded Kubernetes configuration file. */
   kubeconfigs?: CredentialResultsKubeconfigsList;
 }
-const CredentialResults = FleetCredentialResults as any as S.Schema<CredentialResults>;
-
 export interface ListManagedClusterClusterMonitoringUserCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6820,14 +4587,7 @@ export interface ListManagedClusterClusterMonitoringUserCredentialsRequest {
   /** server fqdn type for credentials to be returned */
   server_fqdn?: string;
 }
-const ListManagedClusterClusterMonitoringUserCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  6,
-) as any as S.Schema<ListManagedClusterClusterMonitoringUserCredentialsRequest>;
-
 export type ListManagedClusterClusterUserCredentialsRequestFormat = "azure" | "exec";
-const ListManagedClusterClusterUserCredentialsRequestFormat = S.String;
-
 export interface ListManagedClusterClusterUserCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6840,61 +4600,30 @@ export interface ListManagedClusterClusterUserCredentialsRequest {
   /** Only apply to AAD clusters, specifies the format of returned kubeconfig. Format 'azure' will return azure auth-provider kubeconfig; format 'exec' will return exec format kubeconfig, which requires kubelogin binary in the path. */
   format?: ListManagedClusterClusterUserCredentialsRequestFormat | (string & {});
 }
-const ListManagedClusterClusterUserCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<ListManagedClusterClusterUserCredentialsRequest>;
-
 export interface ListManagedClusterKubernetesVersionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
-const ListManagedClusterKubernetesVersionsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<ListManagedClusterKubernetesVersionsRequest>;
-
 /** Kubernetes support plans available for this version. */
 export type KubernetesVersionCapabilitiesSupportPlanList = Array<KubernetesSupportPlan>;
-const KubernetesVersionCapabilitiesSupportPlanList =
-  ContainerServiceNetworkProfileIpFamiliesList as any as S.Schema<KubernetesVersionCapabilitiesSupportPlanList>;
-
 /** Capabilities on this Kubernetes version. */
 export interface KubernetesVersionCapabilities {
   /** Kubernetes support plans available for this version. */
   supportPlan?: KubernetesVersionCapabilitiesSupportPlanList;
 }
-const KubernetesVersionCapabilities = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<KubernetesVersionCapabilities>;
-
 /** Possible upgrade path for given patch version */
 export type KubernetesPatchVersionUpgradesList = Array<string>;
-const KubernetesPatchVersionUpgradesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<KubernetesPatchVersionUpgradesList>;
-
 /** Kubernetes patch version profile */
 export interface KubernetesPatchVersion {
   /** Possible upgrade path for given patch version */
   upgrades?: KubernetesPatchVersionUpgradesList;
 }
-const KubernetesPatchVersion = /*@__PURE__*/ __L.at(
-  __c49,
-  2,
-) as any as S.Schema<KubernetesPatchVersion>;
-
 /** Patch versions of Kubernetes release */
 export type KubernetesVersionPatchVersionsMap = {
   [key: string]: KubernetesPatchVersion | undefined;
 };
-const KubernetesVersionPatchVersionsMap = /*@__PURE__*/ __L.at(
-  __c49,
-  3,
-) as any as S.Schema<KubernetesVersionPatchVersionsMap>;
-
 /** Kubernetes version profile for given major.minor release. */
 export interface KubernetesVersion {
   /** major.minor version of Kubernetes release */
@@ -6908,36 +4637,19 @@ export interface KubernetesVersion {
   /** Patch versions of Kubernetes release */
   patchVersions?: KubernetesVersionPatchVersionsMap;
 }
-const KubernetesVersion = /*@__PURE__*/ __L.at(__c49, 4) as any as S.Schema<KubernetesVersion>;
-
 /** Array of AKS supported Kubernetes versions. */
 export type KubernetesVersionListResultValuesList = Array<KubernetesVersion>;
-const KubernetesVersionListResultValuesList = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<KubernetesVersionListResultValuesList>;
-
 /** Hold values properties, which is array of KubernetesVersion */
 export interface KubernetesVersionListResult {
   /** Array of AKS supported Kubernetes versions. */
   values?: KubernetesVersionListResultValuesList;
 }
-const KubernetesVersionListResult = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<KubernetesVersionListResult>;
-
 export interface ListManagedClusterMeshRevisionProfilesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
-const ListManagedClusterMeshRevisionProfilesRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<ListManagedClusterMeshRevisionProfilesRequest>;
-
 /** Mesh revision profile for a mesh. */
 export interface MeshRevisionProfile {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6951,15 +4663,8 @@ export interface MeshRevisionProfile {
   /** Mesh revision profile properties for a mesh */
   properties?: MeshRevisionProfileProperties;
 }
-const MeshRevisionProfile = /*@__PURE__*/ __L.at(__c50, 0) as any as S.Schema<MeshRevisionProfile>;
-
 /** The MeshRevisionProfile items on this page */
 export type MeshRevisionProfileListValueList = Array<MeshRevisionProfile>;
-const MeshRevisionProfileListValueList = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<MeshRevisionProfileListValueList>;
-
 /** Holds an array of MeshRevisionsProfiles */
 export interface MeshRevisionProfileList {
   /** The MeshRevisionProfile items on this page */
@@ -6967,11 +4672,6 @@ export interface MeshRevisionProfileList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const MeshRevisionProfileList = /*@__PURE__*/ __L.at(
-  __c50,
-  2,
-) as any as S.Schema<MeshRevisionProfileList>;
-
 export interface ListManagedClusterMeshUpgradeProfilesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -6980,11 +4680,6 @@ export interface ListManagedClusterMeshUpgradeProfilesRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const ListManagedClusterMeshUpgradeProfilesRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<ListManagedClusterMeshUpgradeProfilesRequest>;
-
 /** Upgrade profile for given mesh. */
 export interface MeshUpgradeProfile {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -6998,15 +4693,8 @@ export interface MeshUpgradeProfile {
   /** Mesh upgrade profile properties for a major.minor release. */
   properties?: MeshRevision;
 }
-const MeshUpgradeProfile = /*@__PURE__*/ __L.at(__c50, 4) as any as S.Schema<MeshUpgradeProfile>;
-
 /** The MeshUpgradeProfile items on this page */
 export type MeshUpgradeProfileListValueList = Array<MeshUpgradeProfile>;
-const MeshUpgradeProfileListValueList = /*@__PURE__*/ __L.at(
-  __c50,
-  5,
-) as any as S.Schema<MeshUpgradeProfileListValueList>;
-
 /** Holds an array of MeshUpgradeProfiles */
 export interface MeshUpgradeProfileList {
   /** The MeshUpgradeProfile items on this page */
@@ -7014,11 +4702,6 @@ export interface MeshUpgradeProfileList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const MeshUpgradeProfileList = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<MeshUpgradeProfileList>;
-
 export interface ListManagedClusterOutboundNetworkDependenciesEndpointsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7027,11 +4710,6 @@ export interface ListManagedClusterOutboundNetworkDependenciesEndpointsRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const ListManagedClusterOutboundNetworkDependenciesEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<ListManagedClusterOutboundNetworkDependenciesEndpointsRequest>;
-
 /** connect information from the AKS agent nodes to a single endpoint. */
 export interface EndpointDetail {
   /** An IP Address that Domain Name currently resolves to. */
@@ -7043,15 +4721,8 @@ export interface EndpointDetail {
   /** Description of the detail */
   description?: string;
 }
-const EndpointDetail = /*@__PURE__*/ __L.at(__c51, 0) as any as S.Schema<EndpointDetail>;
-
 /** The Ports and Protocols used when connecting to domainName. */
 export type EndpointDependencyEndpointDetailsList = Array<EndpointDetail>;
-const EndpointDependencyEndpointDetailsList = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<EndpointDependencyEndpointDetailsList>;
-
 /** A domain name that AKS agent nodes are reaching at. */
 export interface EndpointDependency {
   /** The domain name of the dependency. */
@@ -7059,15 +4730,8 @@ export interface EndpointDependency {
   /** The Ports and Protocols used when connecting to domainName. */
   endpointDetails?: EndpointDependencyEndpointDetailsList;
 }
-const EndpointDependency = /*@__PURE__*/ __L.at(__c51, 2) as any as S.Schema<EndpointDependency>;
-
 /** The endpoints that AKS agent nodes connect to */
 export type OutboundEnvironmentEndpointEndpointsList = Array<EndpointDependency>;
-const OutboundEnvironmentEndpointEndpointsList = /*@__PURE__*/ __L.at(
-  __c51,
-  3,
-) as any as S.Schema<OutboundEnvironmentEndpointEndpointsList>;
-
 /** Egress endpoints which AKS agent nodes connect to for common purpose. */
 export interface OutboundEnvironmentEndpoint {
   /** The category of endpoints accessed by the AKS agent node, e.g. azure-resource-management, apiserver, etc. */
@@ -7075,18 +4739,8 @@ export interface OutboundEnvironmentEndpoint {
   /** The endpoints that AKS agent nodes connect to */
   endpoints?: OutboundEnvironmentEndpointEndpointsList;
 }
-const OutboundEnvironmentEndpoint = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<OutboundEnvironmentEndpoint>;
-
 /** The OutboundEnvironmentEndpoint items on this page */
 export type OutboundEnvironmentEndpointCollectionValueList = Array<OutboundEnvironmentEndpoint>;
-const OutboundEnvironmentEndpointCollectionValueList = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<OutboundEnvironmentEndpointCollectionValueList>;
-
 /** Collection of OutboundEnvironmentEndpoint */
 export interface OutboundEnvironmentEndpointCollection {
   /** The OutboundEnvironmentEndpoint items on this page */
@@ -7094,20 +4748,10 @@ export interface OutboundEnvironmentEndpointCollection {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const OutboundEnvironmentEndpointCollection = /*@__PURE__*/ __L.at(
-  __c51,
-  6,
-) as any as S.Schema<OutboundEnvironmentEndpointCollection>;
-
 export interface ListManagedClustersRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListManagedClustersRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<ListManagedClustersRequest>;
-
 export interface ListManagedNamespaceByManagedClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7116,16 +4760,8 @@ export interface ListManagedNamespaceByManagedClusterRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const ListManagedNamespaceByManagedClusterRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<ListManagedNamespaceByManagedClusterRequest>;
-
 /** Resource tags. */
 export type ManagedNamespaceTagsMap = { [key: string]: string | undefined };
-const ManagedNamespaceTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<ManagedNamespaceTagsMap>;
-
 /** Namespace managed by ARM. */
 export interface ManagedNamespace {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7145,15 +4781,8 @@ export interface ManagedNamespace {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const ManagedNamespace = /*@__PURE__*/ __L.at(__c52, 1) as any as S.Schema<ManagedNamespace>;
-
 /** The ManagedNamespace items on this page */
 export type ManagedNamespaceListResultValueList = Array<ManagedNamespace>;
-const ManagedNamespaceListResultValueList = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<ManagedNamespaceListResultValueList>;
-
 /** The response of a ManagedNamespace list operation. */
 export interface ManagedNamespaceListResult {
   /** The ManagedNamespace items on this page */
@@ -7161,11 +4790,6 @@ export interface ManagedNamespaceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ManagedNamespaceListResult = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<ManagedNamespaceListResult>;
-
 export interface ListManagedNamespaceCredentialRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7176,17 +4800,7 @@ export interface ListManagedNamespaceCredentialRequest {
   /** The name of the managed namespace. */
   managedNamespaceName: string;
 }
-const ListManagedNamespaceCredentialRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<ListManagedNamespaceCredentialRequest>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Describes the properties of a Operation Value Display. */
 export interface OperationValueDisplay {
   /** The display name of the operation. */
@@ -7198,11 +4812,6 @@ export interface OperationValueDisplay {
   /** The resource provider for the operation. */
   provider?: string;
 }
-const OperationValueDisplay = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<OperationValueDisplay>;
-
 /** Describes the properties of a Operation value. */
 export interface OperationValue {
   /** The origin of the operation. */
@@ -7212,15 +4821,8 @@ export interface OperationValue {
   /** Describes the properties of a Operation Value Display. */
   display?: OperationValueDisplay;
 }
-const OperationValue = /*@__PURE__*/ __L.at(__c52, 7) as any as S.Schema<OperationValue>;
-
 /** The list of operations */
 export type OperationListResultValueList = Array<OperationValue>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** The List Operation response. */
 export interface OperationListResult {
   /** The list of operations */
@@ -7228,8 +4830,6 @@ export interface OperationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c53, 1) as any as S.Schema<OperationListResult>;
-
 export interface ListPrivateEndpointConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7238,11 +4838,6 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  2,
-) as any as S.Schema<ListPrivateEndpointConnectionsRequest>;
-
 /** A private endpoint connection */
 export interface PrivateEndpointConnection {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7256,26 +4851,13 @@ export interface PrivateEndpointConnection {
   /** The properties of a private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const PrivateEndpointConnection =
-  GetPrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnection>;
-
 /** The collection value. */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
-
 /** A list of private endpoint connections */
 export interface PrivateEndpointConnectionListResult {
   /** The collection value. */
   value?: PrivateEndpointConnectionListResultValueList;
 }
-const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<PrivateEndpointConnectionListResult>;
-
 export interface ListPrivateLinkResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7284,37 +4866,19 @@ export interface ListPrivateLinkResourcesRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const ListPrivateLinkResourcesRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<ListPrivateLinkResourcesRequest>;
-
 /** The collection value. */
 export type PrivateLinkResourcesListResultValueList = Array<PrivateLinkResource>;
-const PrivateLinkResourcesListResultValueList =
-  ManagedClusterPropertiesPrivateLinkResourcesList as any as S.Schema<PrivateLinkResourcesListResultValueList>;
-
 /** A list of private link resources */
 export interface PrivateLinkResourcesListResult {
   /** The collection value. */
   value?: PrivateLinkResourcesListResultValueList;
 }
-const PrivateLinkResourcesListResult = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<PrivateLinkResourcesListResult>;
-
 export interface ListSnapshotByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListSnapshotByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<ListSnapshotByResourceGroupRequest>;
-
 /** Resource tags. */
 export type SnapshotTagsMap = { [key: string]: string | undefined };
 /** A node pool snapshot resource. */
@@ -7334,15 +4898,8 @@ export interface Snapshot {
   /** Properties of a snapshot. */
   properties?: SnapshotProperties;
 }
-const Snapshot = GetSnapshotResponse as any as S.Schema<Snapshot>;
-
 /** The Snapshot items on this page */
 export type SnapshotListResultValueList = Array<Snapshot>;
-const SnapshotListResultValueList = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<SnapshotListResultValueList>;
-
 /** The response of a Snapshot list operation. */
 export interface SnapshotListResult {
   /** The Snapshot items on this page */
@@ -7350,17 +4907,10 @@ export interface SnapshotListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const SnapshotListResult = /*@__PURE__*/ __L.at(__c54, 1) as any as S.Schema<SnapshotListResult>;
-
 export interface ListSnapshotsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListSnapshotsRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-) as any as S.Schema<ListSnapshotsRequest>;
-
 export interface ListTrustedAccessRoleBindingsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7369,11 +4919,6 @@ export interface ListTrustedAccessRoleBindingsRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const ListTrustedAccessRoleBindingsRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<ListTrustedAccessRoleBindingsRequest>;
-
 /** Defines binding between a resource and role */
 export interface TrustedAccessRoleBinding {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7387,18 +4932,8 @@ export interface TrustedAccessRoleBinding {
   /** Properties for trusted access role binding */
   properties: TrustedAccessRoleBindingProperties;
 }
-const TrustedAccessRoleBinding = /*@__PURE__*/ __L.at(
-  __c54,
-  4,
-) as any as S.Schema<TrustedAccessRoleBinding>;
-
 /** The TrustedAccessRoleBinding items on this page */
 export type TrustedAccessRoleBindingListResultValueList = Array<TrustedAccessRoleBinding>;
-const TrustedAccessRoleBindingListResultValueList = /*@__PURE__*/ __L.at(
-  __c54,
-  5,
-) as any as S.Schema<TrustedAccessRoleBindingListResultValueList>;
-
 /** The response of a TrustedAccessRoleBinding list operation. */
 export interface TrustedAccessRoleBindingListResult {
   /** The TrustedAccessRoleBinding items on this page */
@@ -7406,47 +4941,22 @@ export interface TrustedAccessRoleBindingListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const TrustedAccessRoleBindingListResult = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<TrustedAccessRoleBindingListResult>;
-
 export interface ListTrustedAccessRolesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the Azure region. */
   location: string;
 }
-const ListTrustedAccessRolesRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  7,
-) as any as S.Schema<ListTrustedAccessRolesRequest>;
-
 /** List of allowed verbs */
 export type TrustedAccessRoleRuleVerbsList = Array<string>;
-const TrustedAccessRoleRuleVerbsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<TrustedAccessRoleRuleVerbsList>;
-
 /** List of allowed apiGroups */
 export type TrustedAccessRoleRuleApiGroupsList = Array<string>;
-const TrustedAccessRoleRuleApiGroupsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<TrustedAccessRoleRuleApiGroupsList>;
-
 /** List of allowed resources */
 export type TrustedAccessRoleRuleResourcesList = Array<string>;
-const TrustedAccessRoleRuleResourcesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<TrustedAccessRoleRuleResourcesList>;
-
 /** List of allowed names */
 export type TrustedAccessRoleRuleResourceNamesList = Array<string>;
-const TrustedAccessRoleRuleResourceNamesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<TrustedAccessRoleRuleResourceNamesList>;
-
 /** List of allowed nonResourceURLs */
 export type TrustedAccessRoleRuleNonResourceURLsList = Array<string>;
-const TrustedAccessRoleRuleNonResourceURLsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<TrustedAccessRoleRuleNonResourceURLsList>;
-
 /** Rule for trusted access role */
 export interface TrustedAccessRoleRule {
   /** List of allowed verbs */
@@ -7460,18 +4970,8 @@ export interface TrustedAccessRoleRule {
   /** List of allowed nonResourceURLs */
   nonResourceURLs?: TrustedAccessRoleRuleNonResourceURLsList;
 }
-const TrustedAccessRoleRule = /*@__PURE__*/ __L.at(
-  __c55,
-  0,
-) as any as S.Schema<TrustedAccessRoleRule>;
-
 /** List of rules for the role. This maps to 'rules' property of [Kubernetes Cluster Role](https://kubernetes.io/docs/reference/kubernetes-api/authorization-resources/cluster-role-v1/#ClusterRole). */
 export type TrustedAccessRoleRulesList = Array<TrustedAccessRoleRule>;
-const TrustedAccessRoleRulesList = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<TrustedAccessRoleRulesList>;
-
 /** Trusted access role definition. */
 export interface TrustedAccessRole {
   /** Resource type of Azure resource */
@@ -7481,15 +4981,8 @@ export interface TrustedAccessRole {
   /** List of rules for the role. This maps to 'rules' property of [Kubernetes Cluster Role](https://kubernetes.io/docs/reference/kubernetes-api/authorization-resources/cluster-role-v1/#ClusterRole). */
   rules?: TrustedAccessRoleRulesList;
 }
-const TrustedAccessRole = /*@__PURE__*/ __L.at(__c55, 2) as any as S.Schema<TrustedAccessRole>;
-
 /** The TrustedAccessRole items on this page */
 export type TrustedAccessRoleListResultValueList = Array<TrustedAccessRole>;
-const TrustedAccessRoleListResultValueList = /*@__PURE__*/ __L.at(
-  __c55,
-  3,
-) as any as S.Schema<TrustedAccessRoleListResultValueList>;
-
 /** List of trusted access roles */
 export interface TrustedAccessRoleListResult {
   /** The TrustedAccessRole items on this page */
@@ -7497,11 +4990,6 @@ export interface TrustedAccessRoleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const TrustedAccessRoleListResult = /*@__PURE__*/ __L.at(
-  __c55,
-  4,
-) as any as S.Schema<TrustedAccessRoleListResult>;
-
 export interface ListUpdateRunByFleetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7514,11 +5002,6 @@ export interface ListUpdateRunByFleetRequest {
   /** The page-continuation token to use with a paged version of this API. */
   _skipToken?: string;
 }
-const ListUpdateRunByFleetRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  5,
-) as any as S.Schema<ListUpdateRunByFleetRequest>;
-
 /** A multi-stage process to perform update operations across members of a Fleet. */
 export interface UpdateRun {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -7534,15 +5017,8 @@ export interface UpdateRun {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const UpdateRun = GetUpdateRunResponse as any as S.Schema<UpdateRun>;
-
 /** The UpdateRun items on this page */
 export type UpdateRunListResultValueList = Array<UpdateRun>;
-const UpdateRunListResultValueList = /*@__PURE__*/ __L.at(
-  __c55,
-  6,
-) as any as S.Schema<UpdateRunListResultValueList>;
-
 /** The response of a UpdateRun list operation. */
 export interface UpdateRunListResult {
   /** The UpdateRun items on this page */
@@ -7550,8 +5026,6 @@ export interface UpdateRunListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const UpdateRunListResult = /*@__PURE__*/ __L.at(__c55, 7) as any as S.Schema<UpdateRunListResult>;
-
 export interface MaintenanceConfigurationsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -7564,11 +5038,6 @@ export interface MaintenanceConfigurationsCreateOrUpdateRequest {
   /** Properties of a default maintenance configuration. */
   properties?: MaintenanceConfigurationProperties;
 }
-const MaintenanceConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  0,
-) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateRequest>;
-
 export interface MaintenanceConfigurationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -7581,54 +5050,27 @@ export interface MaintenanceConfigurationsCreateOrUpdateResponse {
   /** Properties of a default maintenance configuration. */
   properties?: MaintenanceConfigurationProperties;
 }
-const MaintenanceConfigurationsCreateOrUpdateResponse =
-  GetMaintenanceConfigurationResponse as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type ManagedClustersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ManagedClustersCreateOrUpdateRequestTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<ManagedClustersCreateOrUpdateRequestTagsMap>;
-
 /** The operating system type. The default is Linux. */
 export type ManagedClusterAgentPoolProfileInputOsType = "Linux" | "Windows";
-const ManagedClusterAgentPoolProfileInputOsType = S.String;
-
 /** The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'. */
 export type ManagedClusterAgentPoolProfileInputAvailabilityZonesList = Array<string>;
-const ManagedClusterAgentPoolProfileInputAvailabilityZonesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<ManagedClusterAgentPoolProfileInputAvailabilityZonesList>;
-
 /** The Virtual Machine Scale Set priority. */
 export type ManagedClusterAgentPoolProfileInputScaleSetPriority = "Spot" | "Regular";
-const ManagedClusterAgentPoolProfileInputScaleSetPriority = S.String;
-
 /** The Virtual Machine Scale Set eviction policy. The eviction policy specifies what to do with the VM when it is evicted. The default is Delete. For more information about eviction see [spot VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms) */
 export type ManagedClusterAgentPoolProfileInputScaleSetEvictionPolicy = "Delete" | "Deallocate";
-const ManagedClusterAgentPoolProfileInputScaleSetEvictionPolicy = S.String;
-
 /** The tags to be persisted on the agent pool virtual machine scale set. */
 export type ManagedClusterAgentPoolProfileInputTagsMap = { [key: string]: string | undefined };
-const ManagedClusterAgentPoolProfileInputTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<ManagedClusterAgentPoolProfileInputTagsMap>;
-
 /** The node labels to be persisted across all nodes in agent pool. */
 export type ManagedClusterAgentPoolProfileInputNodeLabelsMap = {
   [key: string]: string | undefined;
 };
-const ManagedClusterAgentPoolProfileInputNodeLabelsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<ManagedClusterAgentPoolProfileInputNodeLabelsMap>;
-
 /** The taints added to new nodes during node pool create and scale. For example, key=value:NoSchedule. */
 export type ManagedClusterAgentPoolProfileInputNodeTaintsList = Array<string>;
-const ManagedClusterAgentPoolProfileInputNodeTaintsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<ManagedClusterAgentPoolProfileInputNodeTaintsList>;
-
 /** The status of nodes in a VirtualMachines agent pool. */
 export type ManagedClusterAgentPoolProfileInputVirtualMachineNodesStatusList =
   Array<VirtualMachineNodes>;
-const ManagedClusterAgentPoolProfileInputVirtualMachineNodesStatusList =
-  ManagedClusterAgentPoolProfilePropertiesInputVirtualMachineNodesStatusList as any as S.Schema<ManagedClusterAgentPoolProfileInputVirtualMachineNodesStatusList>;
-
 /** Profile for the container service agent pool. */
 export interface ManagedClusterAgentPoolProfileInput {
   /** Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1. */
@@ -7740,26 +5182,13 @@ export interface ManagedClusterAgentPoolProfileInput {
   /** Unique name of the agent pool profile in the context of the subscription and resource group. Windows agent pool names must be 6 characters or less. */
   name: string;
 }
-const ManagedClusterAgentPoolProfileInput = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<ManagedClusterAgentPoolProfileInput>;
-
 /** The agent pool properties. */
 export type ManagedClusterPropertiesInputAgentPoolProfilesList =
   Array<ManagedClusterAgentPoolProfileInput>;
-const ManagedClusterPropertiesInputAgentPoolProfilesList = /*@__PURE__*/ __L.at(
-  __c56,
-  2,
-) as any as S.Schema<ManagedClusterPropertiesInputAgentPoolProfilesList>;
-
 /** The profile of managed cluster add-on. */
 export type ManagedClusterPropertiesInputAddonProfilesMap = {
   [key: string]: ManagedClusterAddonProfile | undefined;
 };
-const ManagedClusterPropertiesInputAddonProfilesMap =
-  ManagedClusterPropertiesAddonProfilesMap as any as S.Schema<ManagedClusterPropertiesInputAddonProfilesMap>;
-
 /** Details about the pod identity assigned to the Managed Cluster. */
 export interface ManagedClusterPodIdentityInput {
   /** The name of the pod identity. */
@@ -7771,25 +5200,12 @@ export interface ManagedClusterPodIdentityInput {
   /** The user assigned identity details. */
   identity: UserAssignedIdentity;
 }
-const ManagedClusterPodIdentityInput = /*@__PURE__*/ __L.at(
-  __c56,
-  3,
-) as any as S.Schema<ManagedClusterPodIdentityInput>;
-
 /** The pod identities to use in the cluster. */
 export type ManagedClusterPodIdentityProfileInputUserAssignedIdentitiesList =
   Array<ManagedClusterPodIdentityInput>;
-const ManagedClusterPodIdentityProfileInputUserAssignedIdentitiesList = /*@__PURE__*/ __L.at(
-  __c56,
-  4,
-) as any as S.Schema<ManagedClusterPodIdentityProfileInputUserAssignedIdentitiesList>;
-
 /** The pod identity exceptions to allow. */
 export type ManagedClusterPodIdentityProfileInputUserAssignedIdentityExceptionsList =
   Array<ManagedClusterPodIdentityException>;
-const ManagedClusterPodIdentityProfileInputUserAssignedIdentityExceptionsList =
-  ManagedClusterPodIdentityProfileUserAssignedIdentityExceptionsList as any as S.Schema<ManagedClusterPodIdentityProfileInputUserAssignedIdentityExceptionsList>;
-
 /** The pod identity profile of the Managed Cluster. See [use AAD pod identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity) for more details on pod identity integration. */
 export interface ManagedClusterPodIdentityProfileInput {
   /** Whether the pod identity addon is enabled. */
@@ -7801,19 +5217,11 @@ export interface ManagedClusterPodIdentityProfileInput {
   /** The pod identity exceptions to allow. */
   userAssignedIdentityExceptions?: ManagedClusterPodIdentityProfileInputUserAssignedIdentityExceptionsList;
 }
-const ManagedClusterPodIdentityProfileInput = /*@__PURE__*/ __L.at(
-  __c56,
-  5,
-) as any as S.Schema<ManagedClusterPodIdentityProfileInput>;
-
 /** The OIDC issuer profile of the Managed Cluster. */
 export interface ManagedClusterOIDCIssuerProfileInput {
   /** Whether the OIDC issuer is enabled. */
   enabled?: boolean;
 }
-const ManagedClusterOIDCIssuerProfileInput =
-  AgentPoolArtifactStreamingProfile as any as S.Schema<ManagedClusterOIDCIssuerProfileInput>;
-
 /** The outbound (egress) routing method. This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype). */
 export type ContainerServiceNetworkProfileInputOutboundType =
   | "loadBalancer"
@@ -7821,14 +5229,10 @@ export type ContainerServiceNetworkProfileInputOutboundType =
   | "managedNATGateway"
   | "userAssignedNATGateway"
   | "none";
-const ContainerServiceNetworkProfileInputOutboundType = S.String;
-
 /** The type of the managed inbound Load Balancer BackendPool. */
 export type ManagedClusterLoadBalancerProfileInputBackendPoolType =
   | "NodeIPConfiguration"
   | "NodeIP";
-const ManagedClusterLoadBalancerProfileInputBackendPoolType = S.String;
-
 /** Profile of the managed cluster load balancer. */
 export interface ManagedClusterLoadBalancerProfileInput {
   /** Desired managed outbound IPs for the cluster load balancer. */
@@ -7846,11 +5250,6 @@ export interface ManagedClusterLoadBalancerProfileInput {
   /** The type of the managed inbound Load Balancer BackendPool. */
   backendPoolType?: ManagedClusterLoadBalancerProfileInputBackendPoolType | (string & {});
 }
-const ManagedClusterLoadBalancerProfileInput = /*@__PURE__*/ __L.at(
-  __c56,
-  6,
-) as any as S.Schema<ManagedClusterLoadBalancerProfileInput>;
-
 /** A list of public IP prefix resources. */
 export type ManagedClusterNATGatewayProfileInputOutboundIPPrefixesPublicIPPrefixesList =
   Array<string>;
@@ -7859,9 +5258,6 @@ export interface ManagedClusterNATGatewayProfileInputOutboundIPPrefixes {
   /** A list of public IP prefix resources. */
   publicIPPrefixes?: ManagedClusterNATGatewayProfileInputOutboundIPPrefixesPublicIPPrefixesList;
 }
-const ManagedClusterNATGatewayProfileInputOutboundIPPrefixes =
-  ManagedClusterNATGatewayProfileOutboundIPPrefixes as any as S.Schema<ManagedClusterNATGatewayProfileInputOutboundIPPrefixes>;
-
 /** A list of public IP resources. */
 export type ManagedClusterNATGatewayProfileInputOutboundIPsPublicIPsList = Array<string>;
 /** Desired outbound IP resources for the managed NAT Gateway. */
@@ -7869,9 +5265,6 @@ export interface ManagedClusterNATGatewayProfileInputOutboundIPs {
   /** A list of public IP resources. */
   publicIPs?: ManagedClusterNATGatewayProfileInputOutboundIPsPublicIPsList;
 }
-const ManagedClusterNATGatewayProfileInputOutboundIPs =
-  ManagedClusterNATGatewayProfileOutboundIPs as any as S.Schema<ManagedClusterNATGatewayProfileInputOutboundIPs>;
-
 /** Profile of the managed cluster NAT gateway. */
 export interface ManagedClusterNATGatewayProfileInput {
   /** The SKU of the managed cluster NAT Gateway. Defaults to 'StandardV2' where available in the region, otherwise 'Standard'. */
@@ -7885,26 +5278,12 @@ export interface ManagedClusterNATGatewayProfileInput {
   /** Desired outbound flow idle timeout in minutes. Allowed values are in the range of 4 to 120 (inclusive). The default value is 4 minutes. */
   idleTimeoutInMinutes?: number;
 }
-const ManagedClusterNATGatewayProfileInput = /*@__PURE__*/ __L.at(
-  __c56,
-  7,
-) as any as S.Schema<ManagedClusterNATGatewayProfileInput>;
-
 /** The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. */
 export type ContainerServiceNetworkProfileInputPodCidrsList = Array<string>;
-const ContainerServiceNetworkProfileInputPodCidrsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<ContainerServiceNetworkProfileInputPodCidrsList>;
-
 /** The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges. */
 export type ContainerServiceNetworkProfileInputServiceCidrsList = Array<string>;
-const ContainerServiceNetworkProfileInputServiceCidrsList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<ContainerServiceNetworkProfileInputServiceCidrsList>;
-
 /** The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6. */
 export type ContainerServiceNetworkProfileInputIpFamiliesList = Array<IPFamily | (string & {})>;
-const ContainerServiceNetworkProfileInputIpFamiliesList =
-  ContainerServiceNetworkProfileIpFamiliesList as any as S.Schema<ContainerServiceNetworkProfileInputIpFamiliesList>;
-
 /** Profile of network configuration. */
 export interface ContainerServiceNetworkProfileInput {
   /** Network plugin used for building the Kubernetes network. */
@@ -7942,23 +5321,12 @@ export interface ContainerServiceNetworkProfileInput {
   /** The IP families used to specify IP versions available to the cluster. IP families are used to determine single-stack or dual-stack clusters. For single-stack, the expected value is IPv4. For dual-stack, the expected values are IPv4 and IPv6. */
   ipFamilies?: ContainerServiceNetworkProfileInputIpFamiliesList;
 }
-const ContainerServiceNetworkProfileInput = /*@__PURE__*/ __L.at(
-  __c57,
-  0,
-) as any as S.Schema<ContainerServiceNetworkProfileInput>;
-
 /** The user identity associated with the managed cluster. This identity will be used by the kubelet. Only one user assigned identity is allowed. The only accepted key is "kubeletidentity", with value of "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}". */
 export type ManagedClusterPropertiesInputIdentityProfileMap = {
   [key: string]: UserAssignedIdentity | undefined;
 };
-const ManagedClusterPropertiesInputIdentityProfileMap =
-  ManagedClusterPropertiesIdentityProfileMap as any as S.Schema<ManagedClusterPropertiesInputIdentityProfileMap>;
-
 /** The RequiredMembers of the resource */
 export type PrivateLinkResourceInputRequiredMembersList = Array<string>;
-const PrivateLinkResourceInputRequiredMembersList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<PrivateLinkResourceInputRequiredMembersList>;
-
 /** A private link resource */
 export interface PrivateLinkResourceInput {
   /** The ID of the private link resource. */
@@ -7972,18 +5340,8 @@ export interface PrivateLinkResourceInput {
   /** The RequiredMembers of the resource */
   requiredMembers?: PrivateLinkResourceInputRequiredMembersList;
 }
-const PrivateLinkResourceInput = /*@__PURE__*/ __L.at(
-  __c57,
-  1,
-) as any as S.Schema<PrivateLinkResourceInput>;
-
 /** Private link resources associated with the cluster. */
 export type ManagedClusterPropertiesInputPrivateLinkResourcesList = Array<PrivateLinkResourceInput>;
-const ManagedClusterPropertiesInputPrivateLinkResourcesList = /*@__PURE__*/ __L.at(
-  __c57,
-  2,
-) as any as S.Schema<ManagedClusterPropertiesInputPrivateLinkResourcesList>;
-
 /** The error detail. */
 export type ManagedClusterStatusInputProvisioningError = AgentPoolStatusInputProvisioningError;
 /** Contains read-only information about the Managed Cluster. */
@@ -8071,11 +5429,6 @@ export interface ManagedClusterPropertiesInput {
   /** Contains read-only information about the Managed Cluster. */
   status?: AgentPoolStatusInput;
 }
-const ManagedClusterPropertiesInput = /*@__PURE__*/ __L.at(
-  __c57,
-  3,
-) as any as S.Schema<ManagedClusterPropertiesInput>;
-
 /** Delegated resource properties - internal use only. */
 export type ManagedClusterIdentityInputDelegatedResourcesValue =
   ManagedClusterIdentityDelegatedResourcesValue;
@@ -8083,9 +5436,6 @@ export type ManagedClusterIdentityInputDelegatedResourcesValue =
 export type ManagedClusterIdentityInputDelegatedResourcesMap = {
   [key: string]: ManagedClusterIdentityDelegatedResourcesValue | undefined;
 };
-const ManagedClusterIdentityInputDelegatedResourcesMap =
-  ManagedClusterIdentityDelegatedResourcesMap as any as S.Schema<ManagedClusterIdentityInputDelegatedResourcesMap>;
-
 /** User assigned identity properties. */
 export type ManagedServiceIdentityUserAssignedIdentitiesValueInput =
   AgentPoolStatusInputProvisioningError;
@@ -8093,9 +5443,6 @@ export type ManagedServiceIdentityUserAssignedIdentitiesValueInput =
 export type ManagedClusterIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: AgentPoolStatusInputProvisioningError | undefined;
 };
-const ManagedClusterIdentityInputUserAssignedIdentitiesMap =
-  UserAssignedIdentitiesInput as any as S.Schema<ManagedClusterIdentityInputUserAssignedIdentitiesMap>;
-
 /** Identity for the managed cluster. */
 export interface ManagedClusterIdentityInput {
   /** The type of identity used for the managed cluster. For more information see [use managed identities in AKS](https://docs.microsoft.com/azure/aks/use-managed-identity). */
@@ -8105,11 +5452,6 @@ export interface ManagedClusterIdentityInput {
   /** The user identity associated with the managed cluster. This identity will be used in control plane. Only one user assigned identity is allowed. The keys must be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: ManagedClusterIdentityInputUserAssignedIdentitiesMap;
 }
-const ManagedClusterIdentityInput = /*@__PURE__*/ __L.at(
-  __c57,
-  4,
-) as any as S.Schema<ManagedClusterIdentityInput>;
-
 export interface ManagedClustersCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8132,11 +5474,6 @@ export interface ManagedClustersCreateOrUpdateRequest {
   /** This is primarily used to expose different UI experiences in the portal for different kinds */
   kind?: string;
 }
-const ManagedClustersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  5,
-) as any as S.Schema<ManagedClustersCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type ManagedClustersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface ManagedClustersCreateOrUpdateResponse {
@@ -8165,24 +5502,12 @@ export interface ManagedClustersCreateOrUpdateResponse {
   /** This is primarily used to expose different UI experiences in the portal for different kinds */
   kind?: string;
 }
-const ManagedClustersCreateOrUpdateResponse =
-  GetManagedClusterResponse as any as S.Schema<ManagedClustersCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type ManagedNamespacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ManagedNamespacesCreateOrUpdateRequestTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<ManagedNamespacesCreateOrUpdateRequestTagsMap>;
-
 /** The labels of managed namespace. */
 export type NamespacePropertiesInputLabelsMap = { [key: string]: string | undefined };
-const NamespacePropertiesInputLabelsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<NamespacePropertiesInputLabelsMap>;
-
 /** The annotations of managed namespace. */
 export type NamespacePropertiesInputAnnotationsMap = { [key: string]: string | undefined };
-const NamespacePropertiesInputAnnotationsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<NamespacePropertiesInputAnnotationsMap>;
-
 /** Properties of a namespace managed by ARM */
 export interface NamespacePropertiesInput {
   /** The labels of managed namespace. */
@@ -8198,11 +5523,6 @@ export interface NamespacePropertiesInput {
   /** Delete options of a namespace. */
   deletePolicy?: DeletePolicy | (string & {});
 }
-const NamespacePropertiesInput = /*@__PURE__*/ __L.at(
-  __c57,
-  6,
-) as any as S.Schema<NamespacePropertiesInput>;
-
 export interface ManagedNamespacesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8219,11 +5539,6 @@ export interface ManagedNamespacesCreateOrUpdateRequest {
   /** Properties of a namespace. */
   properties?: NamespacePropertiesInput;
 }
-const ManagedNamespacesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  7,
-) as any as S.Schema<ManagedNamespacesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type ManagedNamespacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface ManagedNamespacesCreateOrUpdateResponse {
@@ -8244,14 +5559,8 @@ export interface ManagedNamespacesCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const ManagedNamespacesCreateOrUpdateResponse =
-  GetManagedNamespaceResponse as any as S.Schema<ManagedNamespacesCreateOrUpdateResponse>;
-
 /** The RequiredMembers of the resource */
 export type PostResolvePrivateLinkServiceIdRequestRequiredMembersList = Array<string>;
-const PostResolvePrivateLinkServiceIdRequestRequiredMembersList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<PostResolvePrivateLinkServiceIdRequestRequiredMembersList>;
-
 export interface PostResolvePrivateLinkServiceIdRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8270,11 +5579,6 @@ export interface PostResolvePrivateLinkServiceIdRequest {
   /** The RequiredMembers of the resource */
   requiredMembers?: PostResolvePrivateLinkServiceIdRequestRequiredMembersList;
 }
-const PostResolvePrivateLinkServiceIdRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  0,
-) as any as S.Schema<PostResolvePrivateLinkServiceIdRequest>;
-
 export interface ResetManagedClusterServicePrincipalProfileRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8287,15 +5591,7 @@ export interface ResetManagedClusterServicePrincipalProfileRequest {
   /** The secret password associated with the service principal in plain text. */
   secret?: string | Redacted.Redacted<string>;
 }
-const ResetManagedClusterServicePrincipalProfileRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  1,
-) as any as S.Schema<ResetManagedClusterServicePrincipalProfileRequest>;
-
 export interface ResetManagedClusterServicePrincipalProfileResponse {}
-const ResetManagedClusterServicePrincipalProfileResponse =
-  AbortAgentPoolLatestOperationResponse as any as S.Schema<ResetManagedClusterServicePrincipalProfileResponse>;
-
 export interface RotateManagedClusterClusterCertificatesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8304,15 +5600,7 @@ export interface RotateManagedClusterClusterCertificatesRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const RotateManagedClusterClusterCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  2,
-) as any as S.Schema<RotateManagedClusterClusterCertificatesRequest>;
-
 export interface RotateManagedClusterClusterCertificatesResponse {}
-const RotateManagedClusterClusterCertificatesResponse =
-  AbortAgentPoolLatestOperationResponse as any as S.Schema<RotateManagedClusterClusterCertificatesResponse>;
-
 export interface RotateManagedClusterServiceAccountSigningKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8321,15 +5609,7 @@ export interface RotateManagedClusterServiceAccountSigningKeysRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const RotateManagedClusterServiceAccountSigningKeysRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  3,
-) as any as S.Schema<RotateManagedClusterServiceAccountSigningKeysRequest>;
-
 export interface RotateManagedClusterServiceAccountSigningKeysResponse {}
-const RotateManagedClusterServiceAccountSigningKeysResponse =
-  AbortAgentPoolLatestOperationResponse as any as S.Schema<RotateManagedClusterServiceAccountSigningKeysResponse>;
-
 export interface RunManagedClusterCommandRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8344,20 +5624,10 @@ export interface RunManagedClusterCommandRequest {
   /** AuthToken issued for AKS AAD Server App. */
   clusterToken?: string;
 }
-const RunManagedClusterCommandRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  4,
-) as any as S.Schema<RunManagedClusterCommandRequest>;
-
 /** Resource tags. */
 export type SnapshotsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const SnapshotsCreateOrUpdateRequestTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<SnapshotsCreateOrUpdateRequestTagsMap>;
-
 /** The type of a snapshot. The default is NodePool. */
 export type SnapshotPropertiesInputSnapshotType = "NodePool";
-const SnapshotPropertiesInputSnapshotType = S.String;
-
 /** Properties used to configure a node pool snapshot. */
 export interface SnapshotPropertiesInput {
   /** CreationData to be used to specify the source agent pool resource ID to create this snapshot. */
@@ -8365,11 +5635,6 @@ export interface SnapshotPropertiesInput {
   /** The type of a snapshot. The default is NodePool. */
   snapshotType?: SnapshotPropertiesInputSnapshotType | (string & {});
 }
-const SnapshotPropertiesInput = /*@__PURE__*/ __L.at(
-  __c58,
-  5,
-) as any as S.Schema<SnapshotPropertiesInput>;
-
 export interface SnapshotsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8384,16 +5649,8 @@ export interface SnapshotsCreateOrUpdateRequest {
   /** Properties of a snapshot. */
   properties?: SnapshotPropertiesInput;
 }
-const SnapshotsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  6,
-) as any as S.Schema<SnapshotsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type SnapshotsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const SnapshotsCreateOrUpdateResponseTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<SnapshotsCreateOrUpdateResponseTagsMap>;
-
 export interface SnapshotsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8410,11 +5667,6 @@ export interface SnapshotsCreateOrUpdateResponse {
   /** Properties of a snapshot. */
   properties?: SnapshotProperties;
 }
-const SnapshotsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c58,
-  7,
-) as any as S.Schema<SnapshotsCreateOrUpdateResponse>;
-
 export interface StartManagedClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8423,15 +5675,7 @@ export interface StartManagedClusterRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const StartManagedClusterRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  0,
-) as any as S.Schema<StartManagedClusterRequest>;
-
 export interface StartManagedClusterResponse {}
-const StartManagedClusterResponse =
-  DeleteAgentPoolResponse as any as S.Schema<StartManagedClusterResponse>;
-
 export interface StartUpdateRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8442,11 +5686,6 @@ export interface StartUpdateRunRequest {
   /** The name of the UpdateRun resource. */
   updateRunName: string;
 }
-const StartUpdateRunRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  1,
-) as any as S.Schema<StartUpdateRunRequest>;
-
 export interface StartUpdateRunResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8461,8 +5700,6 @@ export interface StartUpdateRunResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const StartUpdateRunResponse = GetUpdateRunResponse as any as S.Schema<StartUpdateRunResponse>;
-
 export interface StopManagedClusterRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8471,15 +5708,7 @@ export interface StopManagedClusterRequest {
   /** The name of the managed cluster resource. */
   resourceName: string;
 }
-const StopManagedClusterRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  2,
-) as any as S.Schema<StopManagedClusterRequest>;
-
 export interface StopManagedClusterResponse {}
-const StopManagedClusterResponse =
-  DeleteAgentPoolResponse as any as S.Schema<StopManagedClusterResponse>;
-
 export interface StopUpdateRunRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8490,11 +5719,6 @@ export interface StopUpdateRunRequest {
   /** The name of the UpdateRun resource. */
   updateRunName: string;
 }
-const StopUpdateRunRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  3,
-) as any as S.Schema<StopUpdateRunRequest>;
-
 export interface StopUpdateRunResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8509,13 +5733,8 @@ export interface StopUpdateRunResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const StopUpdateRunResponse = GetUpdateRunResponse as any as S.Schema<StopUpdateRunResponse>;
-
 /** A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'. */
 export type TrustedAccessRoleBindingPropertiesInputRolesList = Array<string>;
-const TrustedAccessRoleBindingPropertiesInputRolesList =
-  ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList as any as S.Schema<TrustedAccessRoleBindingPropertiesInputRolesList>;
-
 /** Properties for trusted access role binding */
 export interface TrustedAccessRoleBindingPropertiesInput {
   /** The ARM resource ID of source resource that trusted access is configured for. */
@@ -8523,11 +5742,6 @@ export interface TrustedAccessRoleBindingPropertiesInput {
   /** A list of roles to bind, each item is a resource type qualified role name. For example: 'Microsoft.MachineLearningServices/workspaces/reader'. */
   roles: TrustedAccessRoleBindingPropertiesInputRolesList;
 }
-const TrustedAccessRoleBindingPropertiesInput = /*@__PURE__*/ __L.at(
-  __c59,
-  4,
-) as any as S.Schema<TrustedAccessRoleBindingPropertiesInput>;
-
 export interface TrustedAccessRoleBindingsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8540,11 +5754,6 @@ export interface TrustedAccessRoleBindingsCreateOrUpdateRequest {
   /** Properties for trusted access role binding */
   properties: TrustedAccessRoleBindingPropertiesInput;
 }
-const TrustedAccessRoleBindingsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  5,
-) as any as S.Schema<TrustedAccessRoleBindingsCreateOrUpdateRequest>;
-
 export interface TrustedAccessRoleBindingsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8557,14 +5766,8 @@ export interface TrustedAccessRoleBindingsCreateOrUpdateResponse {
   /** Properties for trusted access role binding */
   properties: TrustedAccessRoleBindingProperties;
 }
-const TrustedAccessRoleBindingsCreateOrUpdateResponse =
-  GetTrustedAccessRoleBindingResponse as any as S.Schema<TrustedAccessRoleBindingsCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type UpdateFleetRequestTagsMap = { [key: string]: string | undefined };
-const UpdateFleetRequestTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<UpdateFleetRequestTagsMap>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateFleetRequestIdentity = FleetsCreateOrUpdateRequestIdentity;
 export interface UpdateFleetRequest {
@@ -8579,8 +5782,6 @@ export interface UpdateFleetRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: FleetsCreateOrUpdateRequestIdentity;
 }
-const UpdateFleetRequest = /*@__PURE__*/ __L.at(__c59, 6) as any as S.Schema<UpdateFleetRequest>;
-
 /** Resource tags. */
 export type UpdateFleetResponseTagsMap = { [key: string]: string | undefined };
 /** Managed service identity (system assigned and/or user assigned identities) */
@@ -8605,13 +5806,8 @@ export interface UpdateFleetResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: FleetsCreateOrUpdateResponseIdentity;
 }
-const UpdateFleetResponse = GetFleetResponse as any as S.Schema<UpdateFleetResponse>;
-
 /** Resource tags. */
 export type UpdateFleetManagedNamespaceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateFleetManagedNamespaceRequestTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<UpdateFleetManagedNamespaceRequestTagsMap>;
-
 export interface UpdateFleetManagedNamespaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8624,11 +5820,6 @@ export interface UpdateFleetManagedNamespaceRequest {
   /** Resource tags. */
   tags?: UpdateFleetManagedNamespaceRequestTagsMap;
 }
-const UpdateFleetManagedNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  7,
-) as any as S.Schema<UpdateFleetManagedNamespaceRequest>;
-
 /** Resource tags. */
 export type UpdateFleetManagedNamespaceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateFleetManagedNamespaceResponse {
@@ -8649,14 +5840,8 @@ export interface UpdateFleetManagedNamespaceResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const UpdateFleetManagedNamespaceResponse =
-  FleetManagedNamespacesCreateOrUpdateResponse as any as S.Schema<UpdateFleetManagedNamespaceResponse>;
-
 /** The labels for the fleet member. */
 export type FleetMemberUpdatePropertiesLabelsMap = { [key: string]: string | undefined };
-const FleetMemberUpdatePropertiesLabelsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<FleetMemberUpdatePropertiesLabelsMap>;
-
 /** The updatable properties of the FleetMember. */
 export interface FleetMemberUpdateProperties {
   /** The group this member belongs to for multi-cluster update management. */
@@ -8664,11 +5849,6 @@ export interface FleetMemberUpdateProperties {
   /** The labels for the fleet member. */
   labels?: FleetMemberUpdatePropertiesLabelsMap;
 }
-const FleetMemberUpdateProperties = /*@__PURE__*/ __L.at(
-  __c60,
-  0,
-) as any as S.Schema<FleetMemberUpdateProperties>;
-
 export interface UpdateFleetMemberRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8681,11 +5861,6 @@ export interface UpdateFleetMemberRequest {
   /** The resource-specific properties for this resource. */
   properties?: FleetMemberUpdateProperties;
 }
-const UpdateFleetMemberRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  1,
-) as any as S.Schema<UpdateFleetMemberRequest>;
-
 export interface UpdateFleetMemberResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8700,16 +5875,11 @@ export interface UpdateFleetMemberResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const UpdateFleetMemberResponse =
-  CreateFleetMemberResponse as any as S.Schema<UpdateFleetMemberResponse>;
-
 /** Properties of a Gate that can be patched. */
 export interface GatePatchProperties {
   /** The state of the Gate. */
   state?: GateState | (string & {});
 }
-const GatePatchProperties = /*@__PURE__*/ __L.at(__c60, 2) as any as S.Schema<GatePatchProperties>;
-
 export interface UpdateGateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8722,8 +5892,6 @@ export interface UpdateGateRequest {
   /** Properties of a Gate that can be patched. */
   properties?: GatePatchProperties;
 }
-const UpdateGateRequest = /*@__PURE__*/ __L.at(__c60, 3) as any as S.Schema<UpdateGateRequest>;
-
 export interface UpdateGateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8738,13 +5906,8 @@ export interface UpdateGateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const UpdateGateResponse = GetGateResponse as any as S.Schema<UpdateGateResponse>;
-
 /** Resource tags. */
 export type UpdateManagedClusterTagsRequestTagsMap = { [key: string]: string | undefined };
-const UpdateManagedClusterTagsRequestTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<UpdateManagedClusterTagsRequestTagsMap>;
-
 export interface UpdateManagedClusterTagsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8755,11 +5918,6 @@ export interface UpdateManagedClusterTagsRequest {
   /** Resource tags. */
   tags?: UpdateManagedClusterTagsRequestTagsMap;
 }
-const UpdateManagedClusterTagsRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  4,
-) as any as S.Schema<UpdateManagedClusterTagsRequest>;
-
 /** Resource tags. */
 export type UpdateManagedClusterTagsResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateManagedClusterTagsResponse {
@@ -8788,14 +5946,8 @@ export interface UpdateManagedClusterTagsResponse {
   /** This is primarily used to expose different UI experiences in the portal for different kinds */
   kind?: string;
 }
-const UpdateManagedClusterTagsResponse =
-  GetManagedClusterResponse as any as S.Schema<UpdateManagedClusterTagsResponse>;
-
 /** Resource tags. */
 export type UpdateManagedNamespaceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateManagedNamespaceRequestTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<UpdateManagedNamespaceRequestTagsMap>;
-
 export interface UpdateManagedNamespaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8808,11 +5960,6 @@ export interface UpdateManagedNamespaceRequest {
   /** Resource tags. */
   tags?: UpdateManagedNamespaceRequestTagsMap;
 }
-const UpdateManagedNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  5,
-) as any as S.Schema<UpdateManagedNamespaceRequest>;
-
 /** Resource tags. */
 export type UpdateManagedNamespaceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateManagedNamespaceResponse {
@@ -8833,9 +5980,6 @@ export interface UpdateManagedNamespaceResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const UpdateManagedNamespaceResponse =
-  GetManagedNamespaceResponse as any as S.Schema<UpdateManagedNamespaceResponse>;
-
 /** Properties of a private endpoint connection. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The resource of private endpoint. */
@@ -8843,11 +5987,6 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** A collection of information about the state of the connection between service consumer and provider. */
   privateLinkServiceConnectionState: PrivateLinkServiceConnectionState;
 }
-const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c60,
-  6,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
-
 export interface UpdatePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8860,11 +5999,6 @@ export interface UpdatePrivateEndpointConnectionRequest {
   /** The properties of a private endpoint connection. */
   properties?: PrivateEndpointConnectionPropertiesInput;
 }
-const UpdatePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  7,
-) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>;
-
 export interface UpdatePrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8877,19 +6011,11 @@ export interface UpdatePrivateEndpointConnectionResponse {
   /** The properties of a private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const UpdatePrivateEndpointConnectionResponse =
-  GetPrivateEndpointConnectionResponse as any as S.Schema<UpdatePrivateEndpointConnectionResponse>;
-
 /** The node upgrade image version. */
 export type NodeImageVersionInput = AgentPoolStatusInputProvisioningError;
 /** Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded. */
 export type NodeImageSelectionInputCustomNodeImageVersionsList =
   Array<AgentPoolStatusInputProvisioningError>;
-const NodeImageSelectionInputCustomNodeImageVersionsList = /*@__PURE__*/ __L.at(
-  __c61,
-  0,
-) as any as S.Schema<NodeImageSelectionInputCustomNodeImageVersionsList>;
-
 /** The node image upgrade to be applied to the target nodes in update run. */
 export interface NodeImageSelectionInput {
   /** The node image upgrade type. */
@@ -8897,11 +6023,6 @@ export interface NodeImageSelectionInput {
   /** Custom node image versions to upgrade the nodes to. This field is required if node image selection type is Custom. Otherwise, it must be empty. For each node image family (e.g., 'AKSUbuntu-1804gen2containerd'), this field can contain at most one version (e.g., only one of 'AKSUbuntu-1804gen2containerd-2023.01.12' or 'AKSUbuntu-1804gen2containerd-2023.02.12', not both). If the nodes belong to a family without a matching image version in this field, they are not upgraded. */
   customNodeImageVersions?: NodeImageSelectionInputCustomNodeImageVersionsList;
 }
-const NodeImageSelectionInput = /*@__PURE__*/ __L.at(
-  __c61,
-  1,
-) as any as S.Schema<NodeImageSelectionInput>;
-
 /** The update to be applied to the ManagedClusters. */
 export interface ManagedClusterUpdateInput {
   /** The upgrade to apply to the ManagedClusters. */
@@ -8909,11 +6030,6 @@ export interface ManagedClusterUpdateInput {
   /** The node image upgrade to be applied to the target nodes in update run. */
   nodeImageSelection?: NodeImageSelectionInput;
 }
-const ManagedClusterUpdateInput = /*@__PURE__*/ __L.at(
-  __c61,
-  2,
-) as any as S.Schema<ManagedClusterUpdateInput>;
-
 /** The properties of the UpdateRun. */
 export interface UpdateRunPropertiesInput {
   /** The resource id of the FleetUpdateStrategy resource to reference. When creating a new run, there are three ways to define a strategy for the run: 1. Define a new strategy in place: Set the "strategy" field. 2. Use an existing strategy: Set the "updateStrategyId" field. (since 2023-08-15-preview) 3. Use the default strategy to update all the members one by one: Leave both "updateStrategyId" and "strategy" unset. (since 2023-08-15-preview) Setting both "updateStrategyId" and "strategy" is invalid. UpdateRuns created by "updateStrategyId" snapshot the referenced UpdateStrategy at the time of creation and store it in the "strategy" field. Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate. UpdateRunStrategy changes can be made directly on the "strategy" field before launching the UpdateRun. */
@@ -8923,11 +6039,6 @@ export interface UpdateRunPropertiesInput {
   /** The update to be applied to all clusters in the UpdateRun. The managedClusterUpdate can be modified until the run is started. */
   managedClusterUpdate: ManagedClusterUpdateInput;
 }
-const UpdateRunPropertiesInput = /*@__PURE__*/ __L.at(
-  __c61,
-  3,
-) as any as S.Schema<UpdateRunPropertiesInput>;
-
 export interface UpdateRunsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8940,11 +6051,6 @@ export interface UpdateRunsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: UpdateRunPropertiesInput;
 }
-const UpdateRunsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  4,
-) as any as S.Schema<UpdateRunsCreateOrUpdateRequest>;
-
 export interface UpdateRunsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -8959,15 +6065,8 @@ export interface UpdateRunsCreateOrUpdateResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const UpdateRunsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c61,
-  5,
-) as any as S.Schema<UpdateRunsCreateOrUpdateResponse>;
-
 /** The target type of a skip request. */
 export type TargetType = "Member" | "Group" | "Stage" | "AfterStageWait";
-const TargetType = S.String;
-
 /** The definition of a single skip request. */
 export interface SkipTarget {
   /** The skip target type. */
@@ -8975,15 +6074,8 @@ export interface SkipTarget {
   /** The skip target's name. To skip a member/group/stage, use the member/group/stage's name; Tp skip an after stage wait, use the parent stage's name. */
   name: string;
 }
-const SkipTarget = /*@__PURE__*/ __L.at(__c61, 6) as any as S.Schema<SkipTarget>;
-
 /** The targets to skip. */
 export type UpdateRunsSkipRequestTargetsList = Array<SkipTarget>;
-const UpdateRunsSkipRequestTargetsList = /*@__PURE__*/ __L.at(
-  __c61,
-  7,
-) as any as S.Schema<UpdateRunsSkipRequestTargetsList>;
-
 export interface UpdateRunsSkipRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -8996,11 +6088,6 @@ export interface UpdateRunsSkipRequest {
   /** The targets to skip. */
   targets: UpdateRunsSkipRequestTargetsList;
 }
-const UpdateRunsSkipRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  0,
-) as any as S.Schema<UpdateRunsSkipRequest>;
-
 export interface UpdateRunsSkipResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -9015,13 +6102,8 @@ export interface UpdateRunsSkipResponse {
   /** If eTag is provided in the response body, it may also be provided as a header per the normal etag convention. Entity tags are used for comparing two or more entities from the same requested resource. HTTP/1.1 uses entity tags in the etag (section 14.19), If-Match (section 14.24), If-None-Match (section 14.26), and If-Range (section 14.27) header fields. */
   eTag?: string;
 }
-const UpdateRunsSkipResponse = GetUpdateRunResponse as any as S.Schema<UpdateRunsSkipResponse>;
-
 /** Resource tags. */
 export type UpdateSnapshotTagsRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSnapshotTagsRequestTagsMap =
-  ManagedClusterAgentPoolProfilePropertiesInputTagsMap as any as S.Schema<UpdateSnapshotTagsRequestTagsMap>;
-
 export interface UpdateSnapshotTagsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -9032,11 +6114,6 @@ export interface UpdateSnapshotTagsRequest {
   /** Resource tags. */
   tags?: UpdateSnapshotTagsRequestTagsMap;
 }
-const UpdateSnapshotTagsRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  1,
-) as any as S.Schema<UpdateSnapshotTagsRequest>;
-
 /** Resource tags. */
 export type UpdateSnapshotTagsResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSnapshotTagsResponse {
@@ -9055,9 +6132,6 @@ export interface UpdateSnapshotTagsResponse {
   /** Properties of a snapshot. */
   properties?: SnapshotProperties;
 }
-const UpdateSnapshotTagsResponse =
-  SnapshotsCreateOrUpdateResponse as any as S.Schema<UpdateSnapshotTagsResponse>;
-
 export type AbortAgentPoolLatestOperationError = AzureOpError;
 /** Aborts last operation running on agent pool. Aborts the currently running operation on the agent pool. The Agent Pool will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes. If the operation completes before cancellation can take place, a 409 error code is returned. */
 export const AbortAgentPoolLatestOperation: API.OperationMethod<
@@ -9066,8 +6140,8 @@ export const AbortAgentPoolLatestOperation: API.OperationMethod<
   AbortAgentPoolLatestOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AbortAgentPoolLatestOperationRequest,
-  output: AbortAgentPoolLatestOperationResponse,
+  input: __S(0) as any as S.Schema<AbortAgentPoolLatestOperationRequest>,
+  output: __S(1) as any as S.Schema<AbortAgentPoolLatestOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9081,8 +6155,8 @@ export const AbortManagedClusterLatestOperation: API.OperationMethod<
   AbortManagedClusterLatestOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AbortManagedClusterLatestOperationRequest,
-  output: AbortManagedClusterLatestOperationResponse,
+  input: __S(2) as any as S.Schema<AbortManagedClusterLatestOperationRequest>,
+  output: __S(1) as any as S.Schema<AbortManagedClusterLatestOperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9096,8 +6170,8 @@ export const AgentPoolsCreateOrUpdate: API.OperationMethod<
   AgentPoolsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AgentPoolsCreateOrUpdateRequest,
-  output: AgentPoolsCreateOrUpdateResponse,
+  input: __S(35) as any as S.Schema<AgentPoolsCreateOrUpdateRequest>,
+  output: __S(45) as any as S.Schema<AgentPoolsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9111,8 +6185,8 @@ export const AgentPoolsUpgradeNodeImageVersion: API.OperationMethod<
   AgentPoolsUpgradeNodeImageVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AgentPoolsUpgradeNodeImageVersionRequest,
-  output: AgentPoolsUpgradeNodeImageVersionResponse,
+  input: __S(46) as any as S.Schema<AgentPoolsUpgradeNodeImageVersionRequest>,
+  output: __S(1) as any as S.Schema<AgentPoolsUpgradeNodeImageVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9126,8 +6200,8 @@ export const AutoUpgradeProfileOperationsGenerateUpdateRun: API.OperationMethod<
   AutoUpgradeProfileOperationsGenerateUpdateRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AutoUpgradeProfileOperationsGenerateUpdateRunRequest,
-  output: GenerateResponse,
+  input: __S(47) as any as S.Schema<AutoUpgradeProfileOperationsGenerateUpdateRunRequest>,
+  output: __S(48) as any as S.Schema<GenerateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9141,8 +6215,8 @@ export const AutoUpgradeProfilesCreateOrUpdate: API.OperationMethod<
   AutoUpgradeProfilesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AutoUpgradeProfilesCreateOrUpdateRequest,
-  output: AutoUpgradeProfilesCreateOrUpdateResponse,
+  input: __S(52) as any as S.Schema<AutoUpgradeProfilesCreateOrUpdateRequest>,
+  output: __S(55) as any as S.Schema<AutoUpgradeProfilesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9156,8 +6230,8 @@ export const CreateDeploymentSafeguard: API.OperationMethod<
   CreateDeploymentSafeguardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeploymentSafeguardRequest,
-  output: CreateDeploymentSafeguardResponse,
+  input: __S(57) as any as S.Schema<CreateDeploymentSafeguardRequest>,
+  output: __S(59) as any as S.Schema<CreateDeploymentSafeguardResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9171,8 +6245,8 @@ export const CreateFleetMember: API.OperationMethod<
   CreateFleetMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFleetMemberRequest,
-  output: CreateFleetMemberResponse,
+  input: __S(61) as any as S.Schema<CreateFleetMemberRequest>,
+  output: __S(64) as any as S.Schema<CreateFleetMemberResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9186,8 +6260,8 @@ export const DeleteAgentPool: API.OperationMethod<
   DeleteAgentPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAgentPoolRequest,
-  output: DeleteAgentPoolResponse,
+  input: __S(65) as any as S.Schema<DeleteAgentPoolRequest>,
+  output: __S(66) as any as S.Schema<DeleteAgentPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9201,8 +6275,8 @@ export const DeleteAgentPoolMachines: API.OperationMethod<
   DeleteAgentPoolMachinesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAgentPoolMachinesRequest,
-  output: DeleteAgentPoolMachinesResponse,
+  input: __S(67) as any as S.Schema<DeleteAgentPoolMachinesRequest>,
+  output: __S(68) as any as S.Schema<DeleteAgentPoolMachinesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9216,8 +6290,8 @@ export const DeleteAutoUpgradeProfile: API.OperationMethod<
   DeleteAutoUpgradeProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAutoUpgradeProfileRequest,
-  output: DeleteAutoUpgradeProfileResponse,
+  input: __S(69) as any as S.Schema<DeleteAutoUpgradeProfileRequest>,
+  output: __S(1) as any as S.Schema<DeleteAutoUpgradeProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9231,8 +6305,8 @@ export const DeleteDeploymentSafeguard: API.OperationMethod<
   DeleteDeploymentSafeguardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeploymentSafeguardRequest,
-  output: DeleteDeploymentSafeguardResponse,
+  input: __S(70) as any as S.Schema<DeleteDeploymentSafeguardRequest>,
+  output: __S(1) as any as S.Schema<DeleteDeploymentSafeguardResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9246,8 +6320,8 @@ export const DeleteFleet: API.OperationMethod<
   DeleteFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFleetRequest,
-  output: DeleteFleetResponse,
+  input: __S(71) as any as S.Schema<DeleteFleetRequest>,
+  output: __S(66) as any as S.Schema<DeleteFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9261,8 +6335,8 @@ export const DeleteFleetManagedNamespace: API.OperationMethod<
   DeleteFleetManagedNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFleetManagedNamespaceRequest,
-  output: DeleteFleetManagedNamespaceResponse,
+  input: __S(72) as any as S.Schema<DeleteFleetManagedNamespaceRequest>,
+  output: __S(1) as any as S.Schema<DeleteFleetManagedNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9276,8 +6350,8 @@ export const DeleteFleetMember: API.OperationMethod<
   DeleteFleetMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFleetMemberRequest,
-  output: DeleteFleetMemberResponse,
+  input: __S(73) as any as S.Schema<DeleteFleetMemberRequest>,
+  output: __S(66) as any as S.Schema<DeleteFleetMemberResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9291,8 +6365,8 @@ export const DeleteFleetUpdateStrategy: API.OperationMethod<
   DeleteFleetUpdateStrategyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFleetUpdateStrategyRequest,
-  output: DeleteFleetUpdateStrategyResponse,
+  input: __S(74) as any as S.Schema<DeleteFleetUpdateStrategyRequest>,
+  output: __S(1) as any as S.Schema<DeleteFleetUpdateStrategyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9306,8 +6380,8 @@ export const DeleteIdentityBinding: API.OperationMethod<
   DeleteIdentityBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIdentityBindingRequest,
-  output: DeleteIdentityBindingResponse,
+  input: __S(75) as any as S.Schema<DeleteIdentityBindingRequest>,
+  output: __S(66) as any as S.Schema<DeleteIdentityBindingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9321,8 +6395,8 @@ export const DeleteMaintenanceConfiguration: API.OperationMethod<
   DeleteMaintenanceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMaintenanceConfigurationRequest,
-  output: DeleteMaintenanceConfigurationResponse,
+  input: __S(76) as any as S.Schema<DeleteMaintenanceConfigurationRequest>,
+  output: __S(1) as any as S.Schema<DeleteMaintenanceConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9336,8 +6410,8 @@ export const DeleteManagedCluster: API.OperationMethod<
   DeleteManagedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteManagedClusterRequest,
-  output: DeleteManagedClusterResponse,
+  input: __S(77) as any as S.Schema<DeleteManagedClusterRequest>,
+  output: __S(66) as any as S.Schema<DeleteManagedClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9351,8 +6425,8 @@ export const DeleteManagedNamespace: API.OperationMethod<
   DeleteManagedNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteManagedNamespaceRequest,
-  output: DeleteManagedNamespaceResponse,
+  input: __S(78) as any as S.Schema<DeleteManagedNamespaceRequest>,
+  output: __S(66) as any as S.Schema<DeleteManagedNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9366,8 +6440,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateEndpointConnectionRequest,
-  output: DeletePrivateEndpointConnectionResponse,
+  input: __S(79) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(1) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9381,8 +6455,8 @@ export const DeleteSnapshot: API.OperationMethod<
   DeleteSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSnapshotRequest,
-  output: DeleteSnapshotResponse,
+  input: __S(80) as any as S.Schema<DeleteSnapshotRequest>,
+  output: __S(66) as any as S.Schema<DeleteSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9396,8 +6470,8 @@ export const DeleteTrustedAccessRoleBinding: API.OperationMethod<
   DeleteTrustedAccessRoleBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTrustedAccessRoleBindingRequest,
-  output: DeleteTrustedAccessRoleBindingResponse,
+  input: __S(81) as any as S.Schema<DeleteTrustedAccessRoleBindingRequest>,
+  output: __S(1) as any as S.Schema<DeleteTrustedAccessRoleBindingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9411,8 +6485,8 @@ export const DeleteUpdateRun: API.OperationMethod<
   DeleteUpdateRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUpdateRunRequest,
-  output: DeleteUpdateRunResponse,
+  input: __S(82) as any as S.Schema<DeleteUpdateRunRequest>,
+  output: __S(66) as any as S.Schema<DeleteUpdateRunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9426,8 +6500,8 @@ export const FleetManagedNamespacesCreateOrUpdate: API.OperationMethod<
   FleetManagedNamespacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FleetManagedNamespacesCreateOrUpdateRequest,
-  output: FleetManagedNamespacesCreateOrUpdateResponse,
+  input: __S(104) as any as S.Schema<FleetManagedNamespacesCreateOrUpdateRequest>,
+  output: __S(109) as any as S.Schema<FleetManagedNamespacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9441,8 +6515,8 @@ export const FleetsCreateOrUpdate: API.OperationMethod<
   FleetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FleetsCreateOrUpdateRequest,
-  output: FleetsCreateOrUpdateResponse,
+  input: __S(116) as any as S.Schema<FleetsCreateOrUpdateRequest>,
+  output: __S(122) as any as S.Schema<FleetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9456,8 +6530,8 @@ export const FleetUpdateStrategiesCreateOrUpdate: API.OperationMethod<
   FleetUpdateStrategiesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FleetUpdateStrategiesCreateOrUpdateRequest,
-  output: FleetUpdateStrategiesCreateOrUpdateResponse,
+  input: __S(131) as any as S.Schema<FleetUpdateStrategiesCreateOrUpdateRequest>,
+  output: __S(133) as any as S.Schema<FleetUpdateStrategiesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9471,8 +6545,8 @@ export const GetAgentPool: API.OperationMethod<
   GetAgentPoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgentPoolRequest,
-  output: GetAgentPoolResponse,
+  input: __S(134) as any as S.Schema<GetAgentPoolRequest>,
+  output: __S(135) as any as S.Schema<GetAgentPoolResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9486,8 +6560,8 @@ export const GetAgentPoolAvailableAgentPoolVersions: API.OperationMethod<
   GetAgentPoolAvailableAgentPoolVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgentPoolAvailableAgentPoolVersionsRequest,
-  output: AgentPoolAvailableVersions,
+  input: __S(136) as any as S.Schema<GetAgentPoolAvailableAgentPoolVersionsRequest>,
+  output: __S(140) as any as S.Schema<AgentPoolAvailableVersions>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9501,8 +6575,8 @@ export const GetAgentPoolUpgradeProfile: API.OperationMethod<
   GetAgentPoolUpgradeProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgentPoolUpgradeProfileRequest,
-  output: GetAgentPoolUpgradeProfileResponse,
+  input: __S(141) as any as S.Schema<GetAgentPoolUpgradeProfileRequest>,
+  output: __S(147) as any as S.Schema<GetAgentPoolUpgradeProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9516,8 +6590,8 @@ export const GetAutoUpgradeProfile: API.OperationMethod<
   GetAutoUpgradeProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutoUpgradeProfileRequest,
-  output: GetAutoUpgradeProfileResponse,
+  input: __S(148) as any as S.Schema<GetAutoUpgradeProfileRequest>,
+  output: __S(55) as any as S.Schema<GetAutoUpgradeProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9531,8 +6605,8 @@ export const GetDeploymentSafeguard: API.OperationMethod<
   GetDeploymentSafeguardError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeploymentSafeguardRequest,
-  output: GetDeploymentSafeguardResponse,
+  input: __S(149) as any as S.Schema<GetDeploymentSafeguardRequest>,
+  output: __S(59) as any as S.Schema<GetDeploymentSafeguardResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9546,8 +6620,8 @@ export const GetFleet: API.OperationMethod<
   GetFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFleetRequest,
-  output: GetFleetResponse,
+  input: __S(150) as any as S.Schema<GetFleetRequest>,
+  output: __S(151) as any as S.Schema<GetFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9561,8 +6635,8 @@ export const GetFleetManagedNamespace: API.OperationMethod<
   GetFleetManagedNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFleetManagedNamespaceRequest,
-  output: GetFleetManagedNamespaceResponse,
+  input: __S(152) as any as S.Schema<GetFleetManagedNamespaceRequest>,
+  output: __S(109) as any as S.Schema<GetFleetManagedNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9576,8 +6650,8 @@ export const GetFleetMember: API.OperationMethod<
   GetFleetMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFleetMemberRequest,
-  output: GetFleetMemberResponse,
+  input: __S(153) as any as S.Schema<GetFleetMemberRequest>,
+  output: __S(154) as any as S.Schema<GetFleetMemberResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9591,8 +6665,8 @@ export const GetFleetUpdateStrategy: API.OperationMethod<
   GetFleetUpdateStrategyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFleetUpdateStrategyRequest,
-  output: GetFleetUpdateStrategyResponse,
+  input: __S(155) as any as S.Schema<GetFleetUpdateStrategyRequest>,
+  output: __S(133) as any as S.Schema<GetFleetUpdateStrategyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9606,8 +6680,8 @@ export const GetGate: API.OperationMethod<
   GetGateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGateRequest,
-  output: GetGateResponse,
+  input: __S(156) as any as S.Schema<GetGateRequest>,
+  output: __S(160) as any as S.Schema<GetGateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9621,8 +6695,8 @@ export const GetIdentityBinding: API.OperationMethod<
   GetIdentityBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIdentityBindingRequest,
-  output: GetIdentityBindingResponse,
+  input: __S(161) as any as S.Schema<GetIdentityBindingRequest>,
+  output: __S(165) as any as S.Schema<GetIdentityBindingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9636,8 +6710,8 @@ export const GetMachine: API.OperationMethod<
   GetMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMachineRequest,
-  output: GetMachineResponse,
+  input: __S(166) as any as S.Schema<GetMachineRequest>,
+  output: __S(171) as any as S.Schema<GetMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9651,8 +6725,8 @@ export const GetMaintenanceConfiguration: API.OperationMethod<
   GetMaintenanceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMaintenanceConfigurationRequest,
-  output: GetMaintenanceConfigurationResponse,
+  input: __S(172) as any as S.Schema<GetMaintenanceConfigurationRequest>,
+  output: __S(187) as any as S.Schema<GetMaintenanceConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9666,8 +6740,8 @@ export const GetManagedCluster: API.OperationMethod<
   GetManagedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedClusterRequest,
-  output: GetManagedClusterResponse,
+  input: __S(188) as any as S.Schema<GetManagedClusterRequest>,
+  output: __S(286) as any as S.Schema<GetManagedClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9681,8 +6755,8 @@ export const GetManagedClusterCommandResult: API.OperationMethod<
   GetManagedClusterCommandResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedClusterCommandResultRequest,
-  output: RunCommandResult,
+  input: __S(287) as any as S.Schema<GetManagedClusterCommandResultRequest>,
+  output: __S(289) as any as S.Schema<RunCommandResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9696,8 +6770,8 @@ export const GetManagedClusterMeshRevisionProfile: API.OperationMethod<
   GetManagedClusterMeshRevisionProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedClusterMeshRevisionProfileRequest,
-  output: GetManagedClusterMeshRevisionProfileResponse,
+  input: __S(290) as any as S.Schema<GetManagedClusterMeshRevisionProfileRequest>,
+  output: __S(296) as any as S.Schema<GetManagedClusterMeshRevisionProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9711,8 +6785,8 @@ export const GetManagedClusterMeshUpgradeProfile: API.OperationMethod<
   GetManagedClusterMeshUpgradeProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedClusterMeshUpgradeProfileRequest,
-  output: GetManagedClusterMeshUpgradeProfileResponse,
+  input: __S(297) as any as S.Schema<GetManagedClusterMeshUpgradeProfileRequest>,
+  output: __S(298) as any as S.Schema<GetManagedClusterMeshUpgradeProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9726,8 +6800,8 @@ export const GetManagedClusterUpgradeProfile: API.OperationMethod<
   GetManagedClusterUpgradeProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedClusterUpgradeProfileRequest,
-  output: GetManagedClusterUpgradeProfileResponse,
+  input: __S(299) as any as S.Schema<GetManagedClusterUpgradeProfileRequest>,
+  output: __S(303) as any as S.Schema<GetManagedClusterUpgradeProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9741,8 +6815,8 @@ export const GetManagedNamespace: API.OperationMethod<
   GetManagedNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedNamespaceRequest,
-  output: GetManagedNamespaceResponse,
+  input: __S(304) as any as S.Schema<GetManagedNamespaceRequest>,
+  output: __S(306) as any as S.Schema<GetManagedNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9756,8 +6830,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateEndpointConnectionRequest,
-  output: GetPrivateEndpointConnectionResponse,
+  input: __S(307) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(310) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9771,8 +6845,8 @@ export const GetSnapshot: API.OperationMethod<
   GetSnapshotError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSnapshotRequest,
-  output: GetSnapshotResponse,
+  input: __S(311) as any as S.Schema<GetSnapshotRequest>,
+  output: __S(313) as any as S.Schema<GetSnapshotResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9786,8 +6860,8 @@ export const GetTrustedAccessRoleBinding: API.OperationMethod<
   GetTrustedAccessRoleBindingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTrustedAccessRoleBindingRequest,
-  output: GetTrustedAccessRoleBindingResponse,
+  input: __S(314) as any as S.Schema<GetTrustedAccessRoleBindingRequest>,
+  output: __S(316) as any as S.Schema<GetTrustedAccessRoleBindingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9801,8 +6875,8 @@ export const GetUpdateRun: API.OperationMethod<
   GetUpdateRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUpdateRunRequest,
-  output: GetUpdateRunResponse,
+  input: __S(317) as any as S.Schema<GetUpdateRunRequest>,
+  output: __S(337) as any as S.Schema<GetUpdateRunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9816,8 +6890,8 @@ export const IdentityBindingsCreateOrUpdate: API.OperationMethod<
   IdentityBindingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IdentityBindingsCreateOrUpdateRequest,
-  output: IdentityBindingsCreateOrUpdateResponse,
+  input: __S(340) as any as S.Schema<IdentityBindingsCreateOrUpdateRequest>,
+  output: __S(165) as any as S.Schema<IdentityBindingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9831,8 +6905,8 @@ export const ListAgentPools: API.OperationMethod<
   ListAgentPoolsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAgentPoolsRequest,
-  output: AgentPoolListResult,
+  input: __S(341) as any as S.Schema<ListAgentPoolsRequest>,
+  output: __S(343) as any as S.Schema<AgentPoolListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9846,8 +6920,8 @@ export const ListAutoUpgradeProfileByFleet: API.OperationMethod<
   ListAutoUpgradeProfileByFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAutoUpgradeProfileByFleetRequest,
-  output: AutoUpgradeProfileListResult,
+  input: __S(344) as any as S.Schema<ListAutoUpgradeProfileByFleetRequest>,
+  output: __S(347) as any as S.Schema<AutoUpgradeProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9861,8 +6935,8 @@ export const ListDeploymentSafeguards: API.OperationMethod<
   ListDeploymentSafeguardsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeploymentSafeguardsRequest,
-  output: DeploymentSafeguardListResult,
+  input: __S(348) as any as S.Schema<ListDeploymentSafeguardsRequest>,
+  output: __S(351) as any as S.Schema<DeploymentSafeguardListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9876,8 +6950,8 @@ export const ListFleetByResourceGroup: API.OperationMethod<
   ListFleetByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFleetByResourceGroupRequest,
-  output: FleetListResult,
+  input: __S(352) as any as S.Schema<ListFleetByResourceGroupRequest>,
+  output: __S(354) as any as S.Schema<FleetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9891,8 +6965,8 @@ export const ListFleetBySubscription: API.OperationMethod<
   ListFleetBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFleetBySubscriptionRequest,
-  output: FleetListResult,
+  input: __S(355) as any as S.Schema<ListFleetBySubscriptionRequest>,
+  output: __S(354) as any as S.Schema<FleetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9906,8 +6980,8 @@ export const ListFleetCredentials: API.OperationMethod<
   ListFleetCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFleetCredentialsRequest,
-  output: FleetCredentialResults,
+  input: __S(356) as any as S.Schema<ListFleetCredentialsRequest>,
+  output: __S(359) as any as S.Schema<FleetCredentialResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9921,8 +6995,8 @@ export const ListFleetManagedNamespaceByFleet: API.OperationMethod<
   ListFleetManagedNamespaceByFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFleetManagedNamespaceByFleetRequest,
-  output: FleetManagedNamespaceListResult,
+  input: __S(360) as any as S.Schema<ListFleetManagedNamespaceByFleetRequest>,
+  output: __S(363) as any as S.Schema<FleetManagedNamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9936,8 +7010,8 @@ export const ListFleetMemberByFleet: API.OperationMethod<
   ListFleetMemberByFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFleetMemberByFleetRequest,
-  output: FleetMemberListResult,
+  input: __S(364) as any as S.Schema<ListFleetMemberByFleetRequest>,
+  output: __S(366) as any as S.Schema<FleetMemberListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9951,8 +7025,8 @@ export const ListFleetUpdateStrategyByFleet: API.OperationMethod<
   ListFleetUpdateStrategyByFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFleetUpdateStrategyByFleetRequest,
-  output: FleetUpdateStrategyListResult,
+  input: __S(367) as any as S.Schema<ListFleetUpdateStrategyByFleetRequest>,
+  output: __S(370) as any as S.Schema<FleetUpdateStrategyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9966,8 +7040,8 @@ export const ListGateByFleet: API.OperationMethod<
   ListGateByFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGateByFleetRequest,
-  output: GateListResult,
+  input: __S(371) as any as S.Schema<ListGateByFleetRequest>,
+  output: __S(373) as any as S.Schema<GateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9981,8 +7055,8 @@ export const ListIdentityBindingByManagedCluster: API.OperationMethod<
   ListIdentityBindingByManagedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIdentityBindingByManagedClusterRequest,
-  output: IdentityBindingListResult,
+  input: __S(374) as any as S.Schema<ListIdentityBindingByManagedClusterRequest>,
+  output: __S(377) as any as S.Schema<IdentityBindingListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9996,8 +7070,8 @@ export const ListMachines: API.OperationMethod<
   ListMachinesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMachinesRequest,
-  output: MachineListResult,
+  input: __S(378) as any as S.Schema<ListMachinesRequest>,
+  output: __S(380) as any as S.Schema<MachineListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10011,8 +7085,8 @@ export const ListMaintenanceConfigurationByManagedCluster: API.OperationMethod<
   ListMaintenanceConfigurationByManagedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMaintenanceConfigurationByManagedClusterRequest,
-  output: MaintenanceConfigurationListResult,
+  input: __S(381) as any as S.Schema<ListMaintenanceConfigurationByManagedClusterRequest>,
+  output: __S(384) as any as S.Schema<MaintenanceConfigurationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10026,8 +7100,8 @@ export const ListManagedClusterByResourceGroup: API.OperationMethod<
   ListManagedClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedClusterByResourceGroupRequest,
-  output: ManagedClusterListResult,
+  input: __S(385) as any as S.Schema<ListManagedClusterByResourceGroupRequest>,
+  output: __S(388) as any as S.Schema<ManagedClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10041,8 +7115,8 @@ export const ListManagedClusterClusterAdminCredentials: API.OperationMethod<
   ListManagedClusterClusterAdminCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedClusterClusterAdminCredentialsRequest,
-  output: CredentialResults,
+  input: __S(389) as any as S.Schema<ListManagedClusterClusterAdminCredentialsRequest>,
+  output: __S(359) as any as S.Schema<CredentialResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10056,8 +7130,8 @@ export const ListManagedClusterClusterMonitoringUserCredentials: API.OperationMe
   ListManagedClusterClusterMonitoringUserCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedClusterClusterMonitoringUserCredentialsRequest,
-  output: CredentialResults,
+  input: __S(390) as any as S.Schema<ListManagedClusterClusterMonitoringUserCredentialsRequest>,
+  output: __S(359) as any as S.Schema<CredentialResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10071,8 +7145,8 @@ export const ListManagedClusterClusterUserCredentials: API.OperationMethod<
   ListManagedClusterClusterUserCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedClusterClusterUserCredentialsRequest,
-  output: CredentialResults,
+  input: __S(391) as any as S.Schema<ListManagedClusterClusterUserCredentialsRequest>,
+  output: __S(359) as any as S.Schema<CredentialResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10086,8 +7160,8 @@ export const ListManagedClusterKubernetesVersions: API.OperationMethod<
   ListManagedClusterKubernetesVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedClusterKubernetesVersionsRequest,
-  output: KubernetesVersionListResult,
+  input: __S(392) as any as S.Schema<ListManagedClusterKubernetesVersionsRequest>,
+  output: __S(398) as any as S.Schema<KubernetesVersionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10101,8 +7175,8 @@ export const ListManagedClusterMeshRevisionProfiles: API.OperationMethod<
   ListManagedClusterMeshRevisionProfilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedClusterMeshRevisionProfilesRequest,
-  output: MeshRevisionProfileList,
+  input: __S(399) as any as S.Schema<ListManagedClusterMeshRevisionProfilesRequest>,
+  output: __S(402) as any as S.Schema<MeshRevisionProfileList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10116,8 +7190,8 @@ export const ListManagedClusterMeshUpgradeProfiles: API.OperationMethod<
   ListManagedClusterMeshUpgradeProfilesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedClusterMeshUpgradeProfilesRequest,
-  output: MeshUpgradeProfileList,
+  input: __S(403) as any as S.Schema<ListManagedClusterMeshUpgradeProfilesRequest>,
+  output: __S(406) as any as S.Schema<MeshUpgradeProfileList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10131,8 +7205,8 @@ export const ListManagedClusterOutboundNetworkDependenciesEndpoints: API.Operati
   ListManagedClusterOutboundNetworkDependenciesEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedClusterOutboundNetworkDependenciesEndpointsRequest,
-  output: OutboundEnvironmentEndpointCollection,
+  input: __S(407) as any as S.Schema<ListManagedClusterOutboundNetworkDependenciesEndpointsRequest>,
+  output: __S(414) as any as S.Schema<OutboundEnvironmentEndpointCollection>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10146,8 +7220,8 @@ export const ListManagedClusters: API.OperationMethod<
   ListManagedClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedClustersRequest,
-  output: ManagedClusterListResult,
+  input: __S(415) as any as S.Schema<ListManagedClustersRequest>,
+  output: __S(388) as any as S.Schema<ManagedClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10161,8 +7235,8 @@ export const ListManagedNamespaceByManagedCluster: API.OperationMethod<
   ListManagedNamespaceByManagedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedNamespaceByManagedClusterRequest,
-  output: ManagedNamespaceListResult,
+  input: __S(416) as any as S.Schema<ListManagedNamespaceByManagedClusterRequest>,
+  output: __S(419) as any as S.Schema<ManagedNamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10176,8 +7250,8 @@ export const ListManagedNamespaceCredential: API.OperationMethod<
   ListManagedNamespaceCredentialError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedNamespaceCredentialRequest,
-  output: CredentialResults,
+  input: __S(420) as any as S.Schema<ListManagedNamespaceCredentialRequest>,
+  output: __S(359) as any as S.Schema<CredentialResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10191,8 +7265,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(421) as any as S.Schema<ListOperationsRequest>,
+  output: __S(425) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10206,8 +7280,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateEndpointConnectionsRequest,
-  output: PrivateEndpointConnectionListResult,
+  input: __S(426) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(428) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10221,8 +7295,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateLinkResourcesRequest,
-  output: PrivateLinkResourcesListResult,
+  input: __S(429) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(430) as any as S.Schema<PrivateLinkResourcesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10236,8 +7310,8 @@ export const ListSnapshotByResourceGroup: API.OperationMethod<
   ListSnapshotByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSnapshotByResourceGroupRequest,
-  output: SnapshotListResult,
+  input: __S(431) as any as S.Schema<ListSnapshotByResourceGroupRequest>,
+  output: __S(433) as any as S.Schema<SnapshotListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10251,8 +7325,8 @@ export const ListSnapshots: API.OperationMethod<
   ListSnapshotsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSnapshotsRequest,
-  output: SnapshotListResult,
+  input: __S(434) as any as S.Schema<ListSnapshotsRequest>,
+  output: __S(433) as any as S.Schema<SnapshotListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10266,8 +7340,8 @@ export const ListTrustedAccessRoleBindings: API.OperationMethod<
   ListTrustedAccessRoleBindingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTrustedAccessRoleBindingsRequest,
-  output: TrustedAccessRoleBindingListResult,
+  input: __S(435) as any as S.Schema<ListTrustedAccessRoleBindingsRequest>,
+  output: __S(438) as any as S.Schema<TrustedAccessRoleBindingListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10281,8 +7355,8 @@ export const ListTrustedAccessRoles: API.OperationMethod<
   ListTrustedAccessRolesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTrustedAccessRolesRequest,
-  output: TrustedAccessRoleListResult,
+  input: __S(439) as any as S.Schema<ListTrustedAccessRolesRequest>,
+  output: __S(444) as any as S.Schema<TrustedAccessRoleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10296,8 +7370,8 @@ export const ListUpdateRunByFleet: API.OperationMethod<
   ListUpdateRunByFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUpdateRunByFleetRequest,
-  output: UpdateRunListResult,
+  input: __S(445) as any as S.Schema<ListUpdateRunByFleetRequest>,
+  output: __S(447) as any as S.Schema<UpdateRunListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10311,8 +7385,8 @@ export const MaintenanceConfigurationsCreateOrUpdate: API.OperationMethod<
   MaintenanceConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MaintenanceConfigurationsCreateOrUpdateRequest,
-  output: MaintenanceConfigurationsCreateOrUpdateResponse,
+  input: __S(448) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateRequest>,
+  output: __S(187) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10326,8 +7400,8 @@ export const ManagedClustersCreateOrUpdate: API.OperationMethod<
   ManagedClustersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ManagedClustersCreateOrUpdateRequest,
-  output: ManagedClustersCreateOrUpdateResponse,
+  input: __S(461) as any as S.Schema<ManagedClustersCreateOrUpdateRequest>,
+  output: __S(286) as any as S.Schema<ManagedClustersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10341,8 +7415,8 @@ export const ManagedNamespacesCreateOrUpdate: API.OperationMethod<
   ManagedNamespacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ManagedNamespacesCreateOrUpdateRequest,
-  output: ManagedNamespacesCreateOrUpdateResponse,
+  input: __S(463) as any as S.Schema<ManagedNamespacesCreateOrUpdateRequest>,
+  output: __S(306) as any as S.Schema<ManagedNamespacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10356,8 +7430,8 @@ export const PostResolvePrivateLinkServiceId: API.OperationMethod<
   PostResolvePrivateLinkServiceIdError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostResolvePrivateLinkServiceIdRequest,
-  output: PrivateLinkResource,
+  input: __S(464) as any as S.Schema<PostResolvePrivateLinkServiceIdRequest>,
+  output: __S(235) as any as S.Schema<PrivateLinkResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10371,8 +7445,8 @@ export const ResetManagedClusterServicePrincipalProfile: API.OperationMethod<
   ResetManagedClusterServicePrincipalProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetManagedClusterServicePrincipalProfileRequest,
-  output: ResetManagedClusterServicePrincipalProfileResponse,
+  input: __S(465) as any as S.Schema<ResetManagedClusterServicePrincipalProfileRequest>,
+  output: __S(1) as any as S.Schema<ResetManagedClusterServicePrincipalProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10386,8 +7460,8 @@ export const RotateManagedClusterClusterCertificates: API.OperationMethod<
   RotateManagedClusterClusterCertificatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateManagedClusterClusterCertificatesRequest,
-  output: RotateManagedClusterClusterCertificatesResponse,
+  input: __S(466) as any as S.Schema<RotateManagedClusterClusterCertificatesRequest>,
+  output: __S(1) as any as S.Schema<RotateManagedClusterClusterCertificatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10401,8 +7475,8 @@ export const RotateManagedClusterServiceAccountSigningKeys: API.OperationMethod<
   RotateManagedClusterServiceAccountSigningKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateManagedClusterServiceAccountSigningKeysRequest,
-  output: RotateManagedClusterServiceAccountSigningKeysResponse,
+  input: __S(467) as any as S.Schema<RotateManagedClusterServiceAccountSigningKeysRequest>,
+  output: __S(1) as any as S.Schema<RotateManagedClusterServiceAccountSigningKeysResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10416,8 +7490,8 @@ export const RunManagedClusterCommand: API.OperationMethod<
   RunManagedClusterCommandError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunManagedClusterCommandRequest,
-  output: RunCommandResult,
+  input: __S(468) as any as S.Schema<RunManagedClusterCommandRequest>,
+  output: __S(289) as any as S.Schema<RunCommandResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10431,8 +7505,8 @@ export const SnapshotsCreateOrUpdate: API.OperationMethod<
   SnapshotsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SnapshotsCreateOrUpdateRequest,
-  output: SnapshotsCreateOrUpdateResponse,
+  input: __S(470) as any as S.Schema<SnapshotsCreateOrUpdateRequest>,
+  output: __S(471) as any as S.Schema<SnapshotsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10446,8 +7520,8 @@ export const StartManagedCluster: API.OperationMethod<
   StartManagedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartManagedClusterRequest,
-  output: StartManagedClusterResponse,
+  input: __S(472) as any as S.Schema<StartManagedClusterRequest>,
+  output: __S(66) as any as S.Schema<StartManagedClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10461,8 +7535,8 @@ export const StartUpdateRun: API.OperationMethod<
   StartUpdateRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartUpdateRunRequest,
-  output: StartUpdateRunResponse,
+  input: __S(473) as any as S.Schema<StartUpdateRunRequest>,
+  output: __S(337) as any as S.Schema<StartUpdateRunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10476,8 +7550,8 @@ export const StopManagedCluster: API.OperationMethod<
   StopManagedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopManagedClusterRequest,
-  output: StopManagedClusterResponse,
+  input: __S(474) as any as S.Schema<StopManagedClusterRequest>,
+  output: __S(66) as any as S.Schema<StopManagedClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10491,8 +7565,8 @@ export const StopUpdateRun: API.OperationMethod<
   StopUpdateRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopUpdateRunRequest,
-  output: StopUpdateRunResponse,
+  input: __S(475) as any as S.Schema<StopUpdateRunRequest>,
+  output: __S(337) as any as S.Schema<StopUpdateRunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10506,8 +7580,8 @@ export const TrustedAccessRoleBindingsCreateOrUpdate: API.OperationMethod<
   TrustedAccessRoleBindingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TrustedAccessRoleBindingsCreateOrUpdateRequest,
-  output: TrustedAccessRoleBindingsCreateOrUpdateResponse,
+  input: __S(477) as any as S.Schema<TrustedAccessRoleBindingsCreateOrUpdateRequest>,
+  output: __S(316) as any as S.Schema<TrustedAccessRoleBindingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10521,8 +7595,8 @@ export const UpdateFleet: API.OperationMethod<
   UpdateFleetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFleetRequest,
-  output: UpdateFleetResponse,
+  input: __S(478) as any as S.Schema<UpdateFleetRequest>,
+  output: __S(151) as any as S.Schema<UpdateFleetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10536,8 +7610,8 @@ export const UpdateFleetManagedNamespace: API.OperationMethod<
   UpdateFleetManagedNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFleetManagedNamespaceRequest,
-  output: UpdateFleetManagedNamespaceResponse,
+  input: __S(479) as any as S.Schema<UpdateFleetManagedNamespaceRequest>,
+  output: __S(109) as any as S.Schema<UpdateFleetManagedNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10551,8 +7625,8 @@ export const UpdateFleetMember: API.OperationMethod<
   UpdateFleetMemberError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFleetMemberRequest,
-  output: UpdateFleetMemberResponse,
+  input: __S(481) as any as S.Schema<UpdateFleetMemberRequest>,
+  output: __S(64) as any as S.Schema<UpdateFleetMemberResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10566,8 +7640,8 @@ export const UpdateGate: API.OperationMethod<
   UpdateGateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGateRequest,
-  output: UpdateGateResponse,
+  input: __S(483) as any as S.Schema<UpdateGateRequest>,
+  output: __S(160) as any as S.Schema<UpdateGateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10581,8 +7655,8 @@ export const UpdateManagedClusterTags: API.OperationMethod<
   UpdateManagedClusterTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateManagedClusterTagsRequest,
-  output: UpdateManagedClusterTagsResponse,
+  input: __S(484) as any as S.Schema<UpdateManagedClusterTagsRequest>,
+  output: __S(286) as any as S.Schema<UpdateManagedClusterTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10596,8 +7670,8 @@ export const UpdateManagedNamespace: API.OperationMethod<
   UpdateManagedNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateManagedNamespaceRequest,
-  output: UpdateManagedNamespaceResponse,
+  input: __S(485) as any as S.Schema<UpdateManagedNamespaceRequest>,
+  output: __S(306) as any as S.Schema<UpdateManagedNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10611,8 +7685,8 @@ export const UpdatePrivateEndpointConnection: API.OperationMethod<
   UpdatePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePrivateEndpointConnectionRequest,
-  output: UpdatePrivateEndpointConnectionResponse,
+  input: __S(487) as any as S.Schema<UpdatePrivateEndpointConnectionRequest>,
+  output: __S(310) as any as S.Schema<UpdatePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10626,8 +7700,8 @@ export const UpdateRunsCreateOrUpdate: API.OperationMethod<
   UpdateRunsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRunsCreateOrUpdateRequest,
-  output: UpdateRunsCreateOrUpdateResponse,
+  input: __S(492) as any as S.Schema<UpdateRunsCreateOrUpdateRequest>,
+  output: __S(493) as any as S.Schema<UpdateRunsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10641,8 +7715,8 @@ export const UpdateRunsSkip: API.OperationMethod<
   UpdateRunsSkipError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRunsSkipRequest,
-  output: UpdateRunsSkipResponse,
+  input: __S(496) as any as S.Schema<UpdateRunsSkipRequest>,
+  output: __S(337) as any as S.Schema<UpdateRunsSkipResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10656,8 +7730,8 @@ export const UpdateSnapshotTags: API.OperationMethod<
   UpdateSnapshotTagsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSnapshotTagsRequest,
-  output: UpdateSnapshotTagsResponse,
+  input: __S(497) as any as S.Schema<UpdateSnapshotTagsRequest>,
+  output: __S(471) as any as S.Schema<UpdateSnapshotTagsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10712,13 +7786,13 @@ function __c0(j: number): any {
           maxUnavailable: S.optional(S.String),
           drainTimeoutInMinutes: S.optional(S.Number),
           nodeSoakDurationInMinutes: S.optional(S.Number),
-          undrainableNodeBehavior: S.optional(UndrainableNodeBehavior),
+          undrainableNodeBehavior: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentPoolUpgradeSettings" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(Code),
+          code: S.optional(S.String),
         }),
       ).annotate({ identifier: "PowerState" });
     case 5:
@@ -10740,7 +7814,7 @@ function __c1(j: number): any {
           imageGcHighThreshold: S.optional(S.Number),
           imageGcLowThreshold: S.optional(S.Number),
           topologyManagerPolicy: S.optional(S.String),
-          allowedUnsafeSysctls: S.optional(KubeletConfigAllowedUnsafeSysctlsList),
+          allowedUnsafeSysctls: S.optional(__S(7)),
           failSwapOn: S.optional(S.Boolean),
           containerLogMaxSizeMB: S.optional(S.Number),
           containerLogMaxFiles: S.optional(S.Number),
@@ -10783,7 +7857,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sysctls: S.optional(SysctlConfig),
+          sysctls: S.optional(__S(9)),
           transparentHugePageEnabled: S.optional(S.String),
           transparentHugePageDefrag: S.optional(S.String),
           swapFileSizeMB: S.optional(S.Number),
@@ -10803,17 +7877,17 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "IPTag" });
     case 5:
-      return S.Array(IPTag);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           portStart: S.optional(S.Number),
           portEnd: S.optional(S.Number),
-          protocol: S.optional(Protocol),
+          protocol: S.optional(S.String),
         }),
       ).annotate({ identifier: "PortRange" });
     case 7:
-      return S.Array(PortRange);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -10821,18 +7895,16 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(DRANETMode),
+          mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DRANETProfile" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          nodePublicIPTags: S.optional(AgentPoolNetworkProfileNodePublicIPTagsList),
-          allowedHostPorts: S.optional(AgentPoolNetworkProfileAllowedHostPortsList),
-          applicationSecurityGroups: S.optional(
-            AgentPoolNetworkProfileApplicationSecurityGroupsList,
-          ),
-          dranet: S.optional(DRANETProfile),
+          nodePublicIPTags: S.optional(__S(13)),
+          allowedHostPorts: S.optional(__S(15)),
+          applicationSecurityGroups: S.optional(__S(7)),
+          dranet: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "AgentPoolNetworkProfile" });
     case 2:
@@ -10846,13 +7918,13 @@ function __c2(j: number): any {
         S.Struct({
           enableVTPM: S.optional(S.Boolean),
           enableSecureBoot: S.optional(S.Boolean),
-          sshAccess: S.optional(AgentPoolSSHAccess),
+          sshAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentPoolSecurityProfile" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          driver: S.optional(GPUDriver),
+          driver: S.optional(S.String),
         }),
       ).annotate({ identifier: "GPUProfile" });
     case 5:
@@ -10881,7 +7953,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ManualScaleProfile);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10891,39 +7963,39 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "AutoScaleProfile" });
     case 2:
-      return S.Array(AutoScaleProfile);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          manual: S.optional(ScaleProfileManualList),
-          autoscale: S.optional(ScaleProfileAutoscaleList),
+          manual: S.optional(__S(24)),
+          autoscale: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "ScaleProfile" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          scale: S.optional(ScaleProfile),
+          scale: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "VirtualMachinesProfile" });
     case 5:
-      return S.Array(VirtualMachineNodes);
+      return S.Array(__S(23));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningError: S.optional(AgentPoolStatusInputProvisioningError),
+          provisioningError: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "AgentPoolStatusInput" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          queryLogging: S.optional(LocalDNSOverrideQueryLogging),
-          protocol: S.optional(LocalDNSOverrideProtocol),
-          forwardDestination: S.optional(LocalDNSOverrideForwardDestination),
-          forwardPolicy: S.optional(LocalDNSOverrideForwardPolicy),
+          queryLogging: S.optional(S.String),
+          protocol: S.optional(S.String),
+          forwardDestination: S.optional(S.String),
+          forwardPolicy: S.optional(S.String),
           maxConcurrent: S.optional(S.Number),
           cacheDurationInSeconds: S.optional(S.Number),
           serveStaleDurationInSeconds: S.optional(S.Number),
-          serveStale: S.optional(LocalDNSOverrideServeStale),
+          serveStale: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocalDNSOverride" });
   }
@@ -10931,14 +8003,14 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, LocalDNSOverride);
+      return S.Record(S.String, __S(31));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(LocalDNSProfileMode),
-          state: S.optional(LocalDNSState),
-          vnetDNSOverrides: S.optional(LocalDNSProfileVnetDNSOverridesMap),
-          kubeDNSOverrides: S.optional(LocalDNSProfileKubeDNSOverridesMap),
+          mode: S.optional(S.String),
+          state: S.optional(S.String),
+          vnetDNSOverrides: S.optional(__S(32)),
+          kubeDNSOverrides: S.optional(__S(32)),
         }),
       ).annotate({ identifier: "LocalDNSProfile" });
     case 2:
@@ -10947,63 +8019,55 @@ function __c4(j: number): any {
           count: S.optional(S.Number),
           vmSize: S.optional(S.String),
           osDiskSizeGB: S.optional(S.Number),
-          osDiskType: S.optional(OSDiskType),
-          kubeletDiskType: S.optional(KubeletDiskType),
-          workloadRuntime: S.optional(WorkloadRuntime),
+          osDiskType: S.optional(S.String),
+          kubeletDiskType: S.optional(S.String),
+          workloadRuntime: S.optional(S.String),
           messageOfTheDay: S.optional(S.String),
           vnetSubnetID: S.optional(S.String),
           podSubnetID: S.optional(S.String),
-          podIPAllocationMode: S.optional(PodIPAllocationMode),
+          podIPAllocationMode: S.optional(S.String),
           maxPods: S.optional(S.Number),
-          osType: S.optional(ManagedClusterAgentPoolProfilePropertiesInputOsType),
-          osSKU: S.optional(OSSKU),
+          osType: S.optional(S.String),
+          osSKU: S.optional(S.String),
           maxCount: S.optional(S.Number),
           minCount: S.optional(S.Number),
           enableAutoScaling: S.optional(S.Boolean),
-          scaleDownMode: S.optional(ScaleDownMode),
-          type: S.optional(AgentPoolType),
-          mode: S.optional(AgentPoolMode),
+          scaleDownMode: S.optional(S.String),
+          type: S.optional(S.String),
+          mode: S.optional(S.String),
           orchestratorVersion: S.optional(S.String),
           nodeImageVersion: S.optional(S.String),
-          upgradeSettings: S.optional(AgentPoolUpgradeSettings),
-          powerState: S.optional(PowerState),
-          availabilityZones: S.optional(
-            ManagedClusterAgentPoolProfilePropertiesInputAvailabilityZonesList,
-          ),
+          upgradeSettings: S.optional(__S(3)),
+          powerState: S.optional(__S(4)),
+          availabilityZones: S.optional(__S(5)),
           enableNodePublicIP: S.optional(S.Boolean),
           nodePublicIPPrefixID: S.optional(S.String),
-          scaleSetPriority: S.optional(
-            ManagedClusterAgentPoolProfilePropertiesInputScaleSetPriority,
-          ),
-          scaleSetEvictionPolicy: S.optional(
-            ManagedClusterAgentPoolProfilePropertiesInputScaleSetEvictionPolicy,
-          ),
+          scaleSetPriority: S.optional(S.String),
+          scaleSetEvictionPolicy: S.optional(S.String),
           spotMaxPrice: S.optional(S.Number),
-          tags: S.optional(ManagedClusterAgentPoolProfilePropertiesInputTagsMap),
-          nodeLabels: S.optional(ManagedClusterAgentPoolProfilePropertiesInputNodeLabelsMap),
-          nodeTaints: S.optional(ManagedClusterAgentPoolProfilePropertiesInputNodeTaintsList),
+          tags: S.optional(__S(6)),
+          nodeLabels: S.optional(__S(6)),
+          nodeTaints: S.optional(__S(7)),
           proximityPlacementGroupID: S.optional(S.String),
-          kubeletConfig: S.optional(KubeletConfig),
-          linuxOSConfig: S.optional(LinuxOSConfig),
+          kubeletConfig: S.optional(__S(8)),
+          linuxOSConfig: S.optional(__S(10)),
           enableEncryptionAtHost: S.optional(S.Boolean),
           enableUltraSSD: S.optional(S.Boolean),
           enableFIPS: S.optional(S.Boolean),
-          gpuInstanceProfile: S.optional(GPUInstanceProfile),
-          creationData: S.optional(CreationData),
+          gpuInstanceProfile: S.optional(S.String),
+          creationData: S.optional(__S(11)),
           capacityReservationGroupID: S.optional(S.String),
           hostGroupID: S.optional(S.String),
-          networkProfile: S.optional(AgentPoolNetworkProfile),
-          windowsProfile: S.optional(AgentPoolWindowsProfile),
-          securityProfile: S.optional(AgentPoolSecurityProfile),
-          gpuProfile: S.optional(GPUProfile),
-          gatewayProfile: S.optional(AgentPoolGatewayProfile),
-          artifactStreamingProfile: S.optional(AgentPoolArtifactStreamingProfile),
-          virtualMachinesProfile: S.optional(VirtualMachinesProfile),
-          virtualMachineNodesStatus: S.optional(
-            ManagedClusterAgentPoolProfilePropertiesInputVirtualMachineNodesStatusList,
-          ),
-          status: S.optional(AgentPoolStatusInput),
-          localDNSProfile: S.optional(LocalDNSProfile),
+          networkProfile: S.optional(__S(17)),
+          windowsProfile: S.optional(__S(18)),
+          securityProfile: S.optional(__S(19)),
+          gpuProfile: S.optional(__S(20)),
+          gatewayProfile: S.optional(__S(21)),
+          artifactStreamingProfile: S.optional(__S(22)),
+          virtualMachinesProfile: S.optional(__S(28)),
+          virtualMachineNodesStatus: S.optional(__S(29)),
+          status: S.optional(__S(30)),
+          localDNSProfile: S.optional(__S(33)),
         }),
       ).annotate({
         identifier: "ManagedClusterAgentPoolProfilePropertiesInput",
@@ -11015,7 +8079,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           agentPoolName: S.String.pipe(T.Label()),
-          properties: S.optional(ManagedClusterAgentPoolProfilePropertiesInput),
+          properties: S.optional(__S(34)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11031,15 +8095,15 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
     case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => ErrorDetail));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(40)));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -11048,7 +8112,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 7:
-      return S.Array(ErrorAdditionalInfo);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
@@ -11059,20 +8123,20 @@ function __c5(j: number): any {
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(ErrorDetailDetailsList),
-          additionalInfo: S.optional(ErrorDetailAdditionalInfoList),
+          details: S.optional(__S(37)),
+          additionalInfo: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 1:
-      return S.Array(ErrorDetail);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(AgentPoolStatusProvisioningErrorDetailsList),
-          additionalInfo: S.optional(AgentPoolStatusProvisioningErrorAdditionalInfoList),
+          details: S.optional(__S(41)),
+          additionalInfo: S.optional(__S(39)),
         }),
       ).annotate({
         identifier: "AgentPoolStatusProvisioningError",
@@ -11080,7 +8144,7 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningError: S.optional(AgentPoolStatusProvisioningError),
+          provisioningError: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "AgentPoolStatus" });
     case 4:
@@ -11090,63 +8154,57 @@ function __c5(j: number): any {
           count: S.optional(S.Number),
           vmSize: S.optional(S.String),
           osDiskSizeGB: S.optional(S.Number),
-          osDiskType: S.optional(OSDiskType),
-          kubeletDiskType: S.optional(KubeletDiskType),
-          workloadRuntime: S.optional(WorkloadRuntime),
+          osDiskType: S.optional(S.String),
+          kubeletDiskType: S.optional(S.String),
+          workloadRuntime: S.optional(S.String),
           messageOfTheDay: S.optional(S.String),
           vnetSubnetID: S.optional(S.String),
           podSubnetID: S.optional(S.String),
-          podIPAllocationMode: S.optional(PodIPAllocationMode),
+          podIPAllocationMode: S.optional(S.String),
           maxPods: S.optional(S.Number),
-          osType: S.optional(ManagedClusterAgentPoolProfilePropertiesOsType),
-          osSKU: S.optional(OSSKU),
+          osType: S.optional(S.String),
+          osSKU: S.optional(S.String),
           maxCount: S.optional(S.Number),
           minCount: S.optional(S.Number),
           enableAutoScaling: S.optional(S.Boolean),
-          scaleDownMode: S.optional(ScaleDownMode),
-          type: S.optional(AgentPoolType),
-          mode: S.optional(AgentPoolMode),
+          scaleDownMode: S.optional(S.String),
+          type: S.optional(S.String),
+          mode: S.optional(S.String),
           orchestratorVersion: S.optional(S.String),
           currentOrchestratorVersion: S.optional(S.String),
           nodeImageVersion: S.optional(S.String),
-          upgradeSettings: S.optional(AgentPoolUpgradeSettings),
+          upgradeSettings: S.optional(__S(3)),
           provisioningState: S.optional(S.String),
-          powerState: S.optional(PowerState),
-          availabilityZones: S.optional(
-            ManagedClusterAgentPoolProfilePropertiesAvailabilityZonesList,
-          ),
+          powerState: S.optional(__S(4)),
+          availabilityZones: S.optional(__S(7)),
           enableNodePublicIP: S.optional(S.Boolean),
           nodePublicIPPrefixID: S.optional(S.String),
-          scaleSetPriority: S.optional(ManagedClusterAgentPoolProfilePropertiesScaleSetPriority),
-          scaleSetEvictionPolicy: S.optional(
-            ManagedClusterAgentPoolProfilePropertiesScaleSetEvictionPolicy,
-          ),
+          scaleSetPriority: S.optional(S.String),
+          scaleSetEvictionPolicy: S.optional(S.String),
           spotMaxPrice: S.optional(S.Number),
-          tags: S.optional(ManagedClusterAgentPoolProfilePropertiesTagsMap),
-          nodeLabels: S.optional(ManagedClusterAgentPoolProfilePropertiesNodeLabelsMap),
-          nodeTaints: S.optional(ManagedClusterAgentPoolProfilePropertiesNodeTaintsList),
+          tags: S.optional(__S(6)),
+          nodeLabels: S.optional(__S(6)),
+          nodeTaints: S.optional(__S(7)),
           proximityPlacementGroupID: S.optional(S.String),
-          kubeletConfig: S.optional(KubeletConfig),
-          linuxOSConfig: S.optional(LinuxOSConfig),
+          kubeletConfig: S.optional(__S(8)),
+          linuxOSConfig: S.optional(__S(10)),
           enableEncryptionAtHost: S.optional(S.Boolean),
           enableUltraSSD: S.optional(S.Boolean),
           enableFIPS: S.optional(S.Boolean),
-          gpuInstanceProfile: S.optional(GPUInstanceProfile),
-          creationData: S.optional(CreationData),
+          gpuInstanceProfile: S.optional(S.String),
+          creationData: S.optional(__S(11)),
           capacityReservationGroupID: S.optional(S.String),
           hostGroupID: S.optional(S.String),
-          networkProfile: S.optional(AgentPoolNetworkProfile),
-          windowsProfile: S.optional(AgentPoolWindowsProfile),
-          securityProfile: S.optional(AgentPoolSecurityProfile),
-          gpuProfile: S.optional(GPUProfile),
-          gatewayProfile: S.optional(AgentPoolGatewayProfile),
-          artifactStreamingProfile: S.optional(AgentPoolArtifactStreamingProfile),
-          virtualMachinesProfile: S.optional(VirtualMachinesProfile),
-          virtualMachineNodesStatus: S.optional(
-            ManagedClusterAgentPoolProfilePropertiesVirtualMachineNodesStatusList,
-          ),
-          status: S.optional(AgentPoolStatus),
-          localDNSProfile: S.optional(LocalDNSProfile),
+          networkProfile: S.optional(__S(17)),
+          windowsProfile: S.optional(__S(18)),
+          securityProfile: S.optional(__S(19)),
+          gpuProfile: S.optional(__S(20)),
+          gatewayProfile: S.optional(__S(21)),
+          artifactStreamingProfile: S.optional(__S(22)),
+          virtualMachinesProfile: S.optional(__S(28)),
+          virtualMachineNodesStatus: S.optional(__S(29)),
+          status: S.optional(__S(43)),
+          localDNSProfile: S.optional(__S(33)),
         }),
       ).annotate({
         identifier: "ManagedClusterAgentPoolProfileProperties",
@@ -11157,8 +8215,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ManagedClusterAgentPoolProfileProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(44)),
         }),
       ).annotate({
         identifier: "AgentPoolsCreateOrUpdateResponse",
@@ -11212,7 +8270,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: AutoUpgradeNodeImageSelectionType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "AutoUpgradeNodeImageSelection",
@@ -11220,7 +8278,7 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          lastTriggerError: S.optional(AgentPoolStatusInputProvisioningError),
+          lastTriggerError: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "AutoUpgradeProfileStatusInput",
@@ -11229,10 +8287,10 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateStrategyId: S.optional(S.String),
-          channel: UpgradeChannel_2,
-          nodeImageSelection: S.optional(AutoUpgradeNodeImageSelection),
+          channel: S.String,
+          nodeImageSelection: S.optional(__S(49)),
           disabled: S.optional(S.Boolean),
-          autoUpgradeProfileStatus: S.optional(AutoUpgradeProfileStatusInput),
+          autoUpgradeProfileStatus: S.optional(__S(50)),
           targetKubernetesVersion: S.optional(S.String),
           longTermSupport: S.optional(S.Boolean),
         }),
@@ -11246,7 +8304,7 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           autoUpgradeProfileName: S.String.pipe(T.Label()),
-          properties: S.optional(AutoUpgradeProfilePropertiesInput),
+          properties: S.optional(__S(51)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11262,22 +8320,20 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lastTriggeredAt: S.optional(S.String),
-          lastTriggerStatus: S.optional(AutoUpgradeLastTriggerStatus),
-          lastTriggerError: S.optional(AutoUpgradeProfileStatusLastTriggerError),
-          lastTriggerUpgradeVersions: S.optional(
-            AutoUpgradeProfileStatusLastTriggerUpgradeVersionsList,
-          ),
+          lastTriggerStatus: S.optional(S.String),
+          lastTriggerError: S.optional(__S(42)),
+          lastTriggerUpgradeVersions: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "AutoUpgradeProfileStatus" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(AutoUpgradeProfileProvisioningState),
+          provisioningState: S.optional(S.String),
           updateStrategyId: S.optional(S.String),
-          channel: UpgradeChannel_2,
-          nodeImageSelection: S.optional(AutoUpgradeNodeImageSelection),
+          channel: S.String,
+          nodeImageSelection: S.optional(__S(49)),
           disabled: S.optional(S.Boolean),
-          autoUpgradeProfileStatus: S.optional(AutoUpgradeProfileStatus),
+          autoUpgradeProfileStatus: S.optional(__S(53)),
           targetKubernetesVersion: S.optional(S.String),
           longTermSupport: S.optional(S.Boolean),
         }),
@@ -11290,8 +8346,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(AutoUpgradeProfileProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(54)),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -11304,9 +8360,9 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          level: DeploymentSafeguardsLevel,
-          excludedNamespaces: S.optional(DeploymentSafeguardsPropertiesInputExcludedNamespacesList),
-          podSecurityStandardsLevel: S.optional(PodSecurityStandardsLevel),
+          level: S.String,
+          excludedNamespaces: S.optional(__S(7)),
+          podSecurityStandardsLevel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DeploymentSafeguardsPropertiesInput",
@@ -11315,7 +8371,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceUri: S.String.pipe(T.Label()),
-          properties: S.optional(DeploymentSafeguardsPropertiesInput),
+          properties: S.optional(__S(56)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11330,11 +8386,11 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
-          level: DeploymentSafeguardsLevel,
-          excludedNamespaces: S.optional(DeploymentSafeguardsPropertiesExcludedNamespacesList),
-          systemExcludedNamespaces: DeploymentSafeguardsPropertiesSystemExcludedNamespacesList,
-          podSecurityStandardsLevel: S.optional(PodSecurityStandardsLevel),
+          provisioningState: S.optional(S.String),
+          level: S.String,
+          excludedNamespaces: S.optional(__S(7)),
+          systemExcludedNamespaces: __S(7),
+          podSecurityStandardsLevel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DeploymentSafeguardsProperties",
@@ -11345,8 +8401,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeploymentSafeguardsProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(58)),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -11357,7 +8413,7 @@ function __c7(j: number): any {
         S.Struct({
           clusterResourceId: S.String,
           group: S.optional(S.String),
-          labels: S.optional(FleetMemberPropertiesInputLabelsMap),
+          labels: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "FleetMemberPropertiesInput",
@@ -11369,7 +8425,7 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           fleetMemberName: S.String.pipe(T.Label()),
-          properties: S.optional(FleetMemberPropertiesInput),
+          properties: S.optional(__S(60)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11383,7 +8439,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lastOperationId: S.optional(S.String),
-          lastOperationError: S.optional(FleetMemberStatusLastOperationError),
+          lastOperationError: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "FleetMemberStatus" });
     case 7:
@@ -11391,9 +8447,9 @@ function __c7(j: number): any {
         S.Struct({
           clusterResourceId: S.String,
           group: S.optional(S.String),
-          provisioningState: S.optional(FleetMemberProvisioningState),
-          labels: S.optional(FleetMemberPropertiesLabelsMap),
-          status: S.optional(FleetMemberStatus),
+          provisioningState: S.optional(S.String),
+          labels: S.optional(__S(6)),
+          status: S.optional(__S(62)),
         }),
       ).annotate({ identifier: "FleetMemberProperties" });
   }
@@ -11406,8 +8462,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(FleetMemberProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(63)),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -11443,7 +8499,7 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           agentPoolName: S.String.pipe(T.Label()),
-          machineNames: DeleteAgentPoolMachinesRequestMachineNamesList,
+          machineNames: __S(7),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11717,17 +8773,17 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ingress: S.optional(PolicyRule),
-          egress: S.optional(PolicyRule),
+          ingress: S.optional(S.String),
+          egress: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkPolicy_2" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(ManagedNamespacePropertiesLabelsMap),
-          annotations: S.optional(ManagedNamespacePropertiesAnnotationsMap),
-          defaultResourceQuota: S.optional(ResourceQuota_2),
-          defaultNetworkPolicy: S.optional(NetworkPolicy_2),
+          labels: S.optional(__S(6)),
+          annotations: S.optional(__S(6)),
+          defaultResourceQuota: S.optional(__S(83)),
+          defaultNetworkPolicy: S.optional(__S(84)),
         }),
       ).annotate({
         identifier: "ManagedNamespaceProperties",
@@ -11736,14 +8792,14 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          operator: MetaV1LabelSelectorOperator,
-          values: S.optional(MetaV1LabelSelectorRequirementValuesList),
+          operator: S.String,
+          values: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "MetaV1LabelSelectorRequirement",
       });
     case 7:
-      return S.Array(MetaV1LabelSelectorRequirement);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -11751,26 +8807,26 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          matchLabels: S.optional(MetaV1LabelSelectorMatchLabelsMap),
-          matchExpressions: S.optional(MetaV1LabelSelectorMatchExpressionsList),
+          matchLabels: S.optional(__S(6)),
+          matchExpressions: S.optional(__S(87)),
         }),
       ).annotate({ identifier: "MetaV1LabelSelector" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          operator: PlacementV1PropertySelectorOperator,
-          values: PlacementV1PropertySelectorRequirementValuesList,
+          operator: S.String,
+          values: __S(7),
         }),
       ).annotate({
         identifier: "PlacementV1PropertySelectorRequirement",
       });
     case 2:
-      return S.Array(PlacementV1PropertySelectorRequirement);
+      return S.Array(__S(89));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          matchExpressions: PlacementV1PropertySelectorMatchExpressionsList,
+          matchExpressions: __S(90),
         }),
       ).annotate({
         identifier: "PlacementV1PropertySelector",
@@ -11778,18 +8834,18 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          labelSelector: S.optional(MetaV1LabelSelector),
-          propertySelector: S.optional(PlacementV1PropertySelector),
+          labelSelector: S.optional(__S(88)),
+          propertySelector: S.optional(__S(91)),
         }),
       ).annotate({
         identifier: "PlacementV1ClusterSelectorTerm",
       });
     case 5:
-      return S.Array(PlacementV1ClusterSelectorTerm);
+      return S.Array(__S(92));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          clusterSelectorTerms: PlacementV1ClusterSelectorClusterSelectorTermsList,
+          clusterSelectorTerms: __S(93),
         }),
       ).annotate({
         identifier: "PlacementV1ClusterSelector",
@@ -11797,7 +8853,7 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          requiredDuringSchedulingIgnoredDuringExecution: S.optional(PlacementV1ClusterSelector),
+          requiredDuringSchedulingIgnoredDuringExecution: S.optional(__S(94)),
         }),
       ).annotate({
         identifier: "PlacementV1ClusterAffinity",
@@ -11809,27 +8865,27 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          clusterAffinity: S.optional(PlacementV1ClusterAffinity),
+          clusterAffinity: S.optional(__S(95)),
         }),
       ).annotate({ identifier: "PlacementV1Affinity" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          operator: S.optional(CoreV1TolerationOperator),
+          operator: S.optional(S.String),
           value: S.optional(S.String),
-          effect: S.optional(CoreV1TaintEffect),
+          effect: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlacementV1Toleration" });
     case 2:
-      return S.Array(PlacementV1Toleration);
+      return S.Array(__S(97));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          placementType: S.optional(PlacementV1PlacementType),
-          clusterNames: S.optional(PlacementV1PlacementPolicyClusterNamesList),
-          affinity: S.optional(PlacementV1Affinity),
-          tolerations: S.optional(PlacementV1PlacementPolicyTolerationsList),
+          placementType: S.optional(S.String),
+          clusterNames: S.optional(__S(7)),
+          affinity: S.optional(__S(96)),
+          tolerations: S.optional(__S(98)),
         }),
       ).annotate({
         identifier: "PlacementV1PlacementPolicy",
@@ -11837,7 +8893,7 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(PlacementV1PlacementPolicy),
+          policy: S.optional(__S(99)),
         }),
       ).annotate({
         identifier: "PlacementV1ClusterResourcePlacementSpec",
@@ -11845,23 +8901,23 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          defaultClusterResourcePlacement: S.optional(PlacementV1ClusterResourcePlacementSpec),
+          defaultClusterResourcePlacement: S.optional(__S(100)),
         }),
       ).annotate({ identifier: "PlacementProfile" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: PropagationType,
-          placementProfile: S.optional(PlacementProfile),
+          type: S.String,
+          placementProfile: S.optional(__S(101)),
         }),
       ).annotate({ identifier: "PropagationPolicy" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          managedNamespaceProperties: S.optional(ManagedNamespaceProperties),
-          adoptionPolicy: AdoptionPolicy_2,
-          deletePolicy: DeletePolicy_2,
-          propagationPolicy: S.optional(PropagationPolicy),
+          managedNamespaceProperties: S.optional(__S(85)),
+          adoptionPolicy: S.String,
+          deletePolicy: S.String,
+          propagationPolicy: S.optional(__S(102)),
         }),
       ).annotate({
         identifier: "FleetManagedNamespacePropertiesInput",
@@ -11877,9 +8933,9 @@ function __c13(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           managedNamespaceName: S.String.pipe(T.Label()),
-          tags: S.optional(FleetManagedNamespacesCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(6)),
           location: S.String,
-          properties: S.optional(FleetManagedNamespacePropertiesInput),
+          properties: S.optional(__S(103)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11892,17 +8948,15 @@ function __c13(j: number): any {
         identifier: "FleetManagedNamespacesCreateOrUpdateRequest",
       });
     case 1:
-      return S.Array(ErrorAdditionalInfo);
+      return S.Array(__S(38));
     case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(FleetManagedNamespaceStatusLastOperationErrorDetailsList),
-          additionalInfo: S.optional(
-            FleetManagedNamespaceStatusLastOperationErrorAdditionalInfoList,
-          ),
+          details: S.optional(__S(41)),
+          additionalInfo: S.optional(__S(105)),
         }),
       ).annotate({
         identifier: "FleetManagedNamespaceStatusLastOperationError",
@@ -11911,7 +8965,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lastOperationId: S.optional(S.String),
-          lastOperationError: S.optional(FleetManagedNamespaceStatusLastOperationError),
+          lastOperationError: S.optional(__S(106)),
         }),
       ).annotate({
         identifier: "FleetManagedNamespaceStatus",
@@ -11919,12 +8973,12 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(FleetManagedNamespaceProvisioningState),
-          managedNamespaceProperties: S.optional(ManagedNamespaceProperties),
-          adoptionPolicy: AdoptionPolicy_2,
-          deletePolicy: DeletePolicy_2,
-          propagationPolicy: S.optional(PropagationPolicy),
-          status: S.optional(FleetManagedNamespaceStatus),
+          provisioningState: S.optional(S.String),
+          managedNamespaceProperties: S.optional(__S(85)),
+          adoptionPolicy: S.String,
+          deletePolicy: S.String,
+          propagationPolicy: S.optional(__S(102)),
+          status: S.optional(__S(107)),
           portalFqdn: S.optional(S.String),
         }),
       ).annotate({
@@ -11936,10 +8990,10 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(FleetManagedNamespacesCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(36)),
+          tags: S.optional(__S(6)),
           location: S.String,
-          properties: S.optional(FleetManagedNamespaceProperties),
+          properties: S.optional(__S(108)),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -11968,23 +9022,23 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dnsPrefix: S.optional(S.String),
-          apiServerAccessProfile: S.optional(APIServerAccessProfile),
-          agentProfile: S.optional(AgentProfile),
+          apiServerAccessProfile: S.optional(__S(110)),
+          agentProfile: S.optional(__S(111)),
         }),
       ).annotate({ identifier: "FleetHubProfileInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          hubProfile: S.optional(FleetHubProfileInput),
+          hubProfile: S.optional(__S(112)),
         }),
       ).annotate({ identifier: "FleetPropertiesInput" });
     case 2:
-      return S.Record(S.String, AgentPoolStatusInputProvisioningError);
+      return S.Record(S.String, __S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(114)),
         }),
       ).annotate({
         identifier: "FleetsCreateOrUpdateRequestIdentity",
@@ -11995,10 +9049,10 @@ function __c14(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
-          tags: S.optional(FleetsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(6)),
           location: S.String,
-          properties: S.optional(FleetPropertiesInput),
-          identity: S.optional(FleetsCreateOrUpdateRequestIdentity),
+          properties: S.optional(__S(113)),
+          identity: S.optional(__S(115)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12014,8 +9068,8 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dnsPrefix: S.optional(S.String),
-          apiServerAccessProfile: S.optional(APIServerAccessProfile),
-          agentProfile: S.optional(AgentProfile),
+          apiServerAccessProfile: S.optional(__S(110)),
+          agentProfile: S.optional(__S(111)),
           fqdn: S.optional(S.String),
           kubernetesVersion: S.optional(S.String),
           portalFqdn: S.optional(S.String),
@@ -12024,9 +9078,9 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(FleetProvisioningState),
-          hubProfile: S.optional(FleetHubProfile),
-          status: S.optional(FleetStatus),
+          provisioningState: S.optional(S.String),
+          hubProfile: S.optional(__S(117)),
+          status: S.optional(__S(62)),
         }),
       ).annotate({ identifier: "FleetProperties" });
     case 7:
@@ -12041,14 +9095,14 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, UserAssignedIdentity_2);
+      return S.Record(S.String, __S(119));
     case 1:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentities),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(120)),
         }),
       ).annotate({
         identifier: "FleetsCreateOrUpdateResponseIdentity",
@@ -12059,12 +9113,12 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(FleetsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(36)),
+          tags: S.optional(__S(6)),
           location: S.String,
-          properties: S.optional(FleetProperties),
+          properties: S.optional(__S(118)),
           eTag: S.optional(S.String),
-          identity: S.optional(FleetsCreateOrUpdateResponseIdentity),
+          identity: S.optional(__S(121)),
         }),
       ).annotate({
         identifier: "FleetsCreateOrUpdateResponse",
@@ -12073,31 +9127,31 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          type: GateType,
+          type: S.String,
         }),
       ).annotate({ identifier: "GateConfiguration" });
     case 4:
-      return S.Array(GateConfiguration);
+      return S.Array(__S(123));
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           maxConcurrency: S.optional(S.String),
-          beforeGates: S.optional(UpdateGroupBeforeGatesList),
-          afterGates: S.optional(UpdateGroupAfterGatesList),
+          beforeGates: S.optional(__S(124)),
+          afterGates: S.optional(__S(124)),
         }),
       ).annotate({ identifier: "UpdateGroup" });
     case 6:
-      return S.Array(UpdateGroup);
+      return S.Array(__S(125));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          groups: S.optional(UpdateStageGroupsList),
+          groups: S.optional(__S(126)),
           afterStageWaitInSeconds: S.optional(S.Number),
           maxConcurrency: S.optional(S.String),
-          beforeGates: S.optional(UpdateStageBeforeGatesList),
-          afterGates: S.optional(UpdateStageAfterGatesList),
+          beforeGates: S.optional(__S(124)),
+          afterGates: S.optional(__S(124)),
         }),
       ).annotate({ identifier: "UpdateStage" });
   }
@@ -12105,17 +9159,17 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UpdateStage);
+      return S.Array(__S(127));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          stages: UpdateRunStrategyStagesList,
+          stages: __S(128),
         }),
       ).annotate({ identifier: "UpdateRunStrategy" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          strategy: UpdateRunStrategy,
+          strategy: __S(129),
         }),
       ).annotate({
         identifier: "FleetUpdateStrategyPropertiesInput",
@@ -12127,7 +9181,7 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           updateStrategyName: S.String.pipe(T.Label()),
-          properties: S.optional(FleetUpdateStrategyPropertiesInput),
+          properties: S.optional(__S(130)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12142,8 +9196,8 @@ function __c16(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(FleetUpdateStrategyProvisioningState),
-          strategy: UpdateRunStrategy,
+          provisioningState: S.optional(S.String),
+          strategy: __S(129),
         }),
       ).annotate({
         identifier: "FleetUpdateStrategyProperties",
@@ -12154,8 +9208,8 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(FleetUpdateStrategyProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(132)),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -12183,8 +9237,8 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ManagedClusterAgentPoolProfileProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(44)),
         }),
       ).annotate({ identifier: "GetAgentPoolResponse" });
   }
@@ -12219,11 +9273,11 @@ function __c17(j: number): any {
         identifier: "AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem",
       });
     case 2:
-      return S.Array(AgentPoolAvailableVersionsPropertiesAgentPoolVersionsItem);
+      return S.Array(__S(137));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          agentPoolVersions: S.optional(AgentPoolAvailableVersionsPropertiesAgentPoolVersionsList),
+          agentPoolVersions: S.optional(__S(138)),
         }),
       ).annotate({
         identifier: "AgentPoolAvailableVersionsProperties",
@@ -12234,7 +9288,7 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: AgentPoolAvailableVersionsProperties,
+          properties: __S(139),
         }),
       ).annotate({
         identifier: "AgentPoolAvailableVersions",
@@ -12267,7 +9321,7 @@ function __c17(j: number): any {
         identifier: "AgentPoolUpgradeProfilePropertiesUpgradesItem",
       });
     case 7:
-      return S.Array(AgentPoolUpgradeProfilePropertiesUpgradesItem);
+      return S.Array(__S(142));
   }
 }
 function __c18(j: number): any {
@@ -12283,16 +9337,14 @@ function __c18(j: number): any {
         identifier: "AgentPoolRecentlyUsedVersion",
       });
     case 1:
-      return S.Array(AgentPoolRecentlyUsedVersion);
+      return S.Array(__S(144));
     case 2:
       return S.suspend(() =>
         S.Struct({
           kubernetesVersion: S.String,
-          osType: AgentPoolUpgradeProfilePropertiesOsType,
-          upgrades: S.optional(AgentPoolUpgradeProfilePropertiesUpgradesList),
-          recentlyUsedVersions: S.optional(
-            AgentPoolUpgradeProfilePropertiesRecentlyUsedVersionsList,
-          ),
+          osType: S.String,
+          upgrades: S.optional(__S(143)),
+          recentlyUsedVersions: S.optional(__S(145)),
           latestNodeImageVersion: S.optional(S.String),
         }),
       ).annotate({
@@ -12304,8 +9356,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: AgentPoolUpgradeProfileProperties,
+          systemData: S.optional(__S(36)),
+          properties: __S(146),
         }),
       ).annotate({
         identifier: "GetAgentPoolUpgradeProfileResponse",
@@ -12364,12 +9416,12 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetFleetResponseTagsMap),
+          systemData: S.optional(__S(36)),
+          tags: S.optional(__S(6)),
           location: S.String,
-          properties: S.optional(FleetProperties),
+          properties: S.optional(__S(118)),
           eTag: S.optional(S.String),
-          identity: S.optional(FleetsCreateOrUpdateResponseIdentity),
+          identity: S.optional(__S(121)),
         }),
       ).annotate({ identifier: "GetFleetResponse" });
   }
@@ -12416,8 +9468,8 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(FleetMemberProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(63)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetFleetMemberResponse" });
@@ -12461,7 +9513,7 @@ function __c19(j: number): any {
           name: S.String,
           stage: S.optional(S.String),
           group: S.optional(S.String),
-          timing: Timing,
+          timing: S.String,
         }),
       ).annotate({
         identifier: "UpdateRunGateTargetProperties",
@@ -12470,17 +9522,17 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          updateRunProperties: S.optional(UpdateRunGateTargetProperties),
+          updateRunProperties: S.optional(__S(157)),
         }),
       ).annotate({ identifier: "GateTarget" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(GateProvisioningState),
+          provisioningState: S.optional(S.String),
           displayName: S.optional(S.String),
-          gateType: GateType,
-          target: GateTarget,
-          state: GateState,
+          gateType: S.String,
+          target: __S(158),
+          state: S.String,
         }),
       ).annotate({ identifier: "GateProperties" });
   }
@@ -12493,8 +9545,8 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(GateProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(159)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetGateResponse" });
@@ -12538,9 +9590,9 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          managedIdentity: IdentityBindingManagedIdentityProfile,
-          oidcIssuer: S.optional(IdentityBindingOidcIssuerProfile),
-          provisioningState: S.optional(IdentityBindingProvisioningState),
+          managedIdentity: __S(162),
+          oidcIssuer: S.optional(__S(163)),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IdentityBindingProperties",
@@ -12551,8 +9603,8 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(IdentityBindingProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(164)),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -12578,7 +9630,7 @@ function __c20(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          family: S.optional(IPFamily),
+          family: S.optional(S.String),
           ip: S.optional(S.String),
         }),
       ).annotate({ identifier: "MachineIpAddress" });
@@ -12587,17 +9639,17 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MachineIpAddress);
+      return S.Array(__S(167));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ipAddresses: S.optional(MachineNetworkPropertiesIpAddressesList),
+          ipAddresses: S.optional(__S(168)),
         }),
       ).annotate({ identifier: "MachineNetworkProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          network: S.optional(MachineNetworkProperties),
+          network: S.optional(__S(169)),
           resourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "MachineProperties" });
@@ -12607,9 +9659,9 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(MachineProperties),
-          zones: S.optional(GetMachineResponseZonesList),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(170)),
+          zones: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "GetMachineResponse" });
     case 4:
@@ -12635,12 +9687,12 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          day: S.optional(WeekDay),
-          hourSlots: S.optional(TimeInWeekHourSlotsList),
+          day: S.optional(S.String),
+          hourSlots: S.optional(__S(173)),
         }),
       ).annotate({ identifier: "TimeInWeek" });
     case 7:
-      return S.Array(TimeInWeek);
+      return S.Array(__S(174));
   }
 }
 function __c22(j: number): any {
@@ -12653,7 +9705,7 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "TimeSpan" });
     case 1:
-      return S.Array(TimeSpan);
+      return S.Array(__S(176));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -12664,7 +9716,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           intervalWeeks: S.Number,
-          dayOfWeek: WeekDay,
+          dayOfWeek: S.String,
         }),
       ).annotate({ identifier: "WeeklySchedule" });
     case 4:
@@ -12678,17 +9730,17 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           intervalMonths: S.Number,
-          weekIndex: Type,
-          dayOfWeek: WeekDay,
+          weekIndex: S.String,
+          dayOfWeek: S.String,
         }),
       ).annotate({ identifier: "RelativeMonthlySchedule" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          daily: S.optional(DailySchedule),
-          weekly: S.optional(WeeklySchedule),
-          absoluteMonthly: S.optional(AbsoluteMonthlySchedule),
-          relativeMonthly: S.optional(RelativeMonthlySchedule),
+          daily: S.optional(__S(178)),
+          weekly: S.optional(__S(179)),
+          absoluteMonthly: S.optional(__S(180)),
+          relativeMonthly: S.optional(__S(181)),
         }),
       ).annotate({ identifier: "Schedule" });
     case 7:
@@ -12703,24 +9755,24 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DateSpan);
+      return S.Array(__S(183));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          schedule: Schedule,
+          schedule: __S(182),
           durationHours: S.Number,
           utcOffset: S.optional(S.String),
           startDate: S.optional(S.String),
           startTime: S.String,
-          notAllowedDates: S.optional(MaintenanceWindowNotAllowedDatesList),
+          notAllowedDates: S.optional(__S(184)),
         }),
       ).annotate({ identifier: "MaintenanceWindow" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          timeInWeek: S.optional(MaintenanceConfigurationPropertiesTimeInWeekList),
-          notAllowedTime: S.optional(MaintenanceConfigurationPropertiesNotAllowedTimeList),
-          maintenanceWindow: S.optional(MaintenanceWindow),
+          timeInWeek: S.optional(__S(175)),
+          notAllowedTime: S.optional(__S(177)),
+          maintenanceWindow: S.optional(__S(185)),
         }),
       ).annotate({
         identifier: "MaintenanceConfigurationProperties",
@@ -12731,8 +9783,8 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(MaintenanceConfigurationProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(186)),
         }),
       ).annotate({
         identifier: "GetMaintenanceConfigurationResponse",
@@ -12759,66 +9811,64 @@ function __c23(j: number): any {
           count: S.optional(S.Number),
           vmSize: S.optional(S.String),
           osDiskSizeGB: S.optional(S.Number),
-          osDiskType: S.optional(OSDiskType),
-          kubeletDiskType: S.optional(KubeletDiskType),
-          workloadRuntime: S.optional(WorkloadRuntime),
+          osDiskType: S.optional(S.String),
+          kubeletDiskType: S.optional(S.String),
+          workloadRuntime: S.optional(S.String),
           messageOfTheDay: S.optional(S.String),
           vnetSubnetID: S.optional(S.String),
           podSubnetID: S.optional(S.String),
-          podIPAllocationMode: S.optional(PodIPAllocationMode),
+          podIPAllocationMode: S.optional(S.String),
           maxPods: S.optional(S.Number),
-          osType: S.optional(ManagedClusterAgentPoolProfileOsType),
-          osSKU: S.optional(OSSKU),
+          osType: S.optional(S.String),
+          osSKU: S.optional(S.String),
           maxCount: S.optional(S.Number),
           minCount: S.optional(S.Number),
           enableAutoScaling: S.optional(S.Boolean),
-          scaleDownMode: S.optional(ScaleDownMode),
-          type: S.optional(AgentPoolType),
-          mode: S.optional(AgentPoolMode),
+          scaleDownMode: S.optional(S.String),
+          type: S.optional(S.String),
+          mode: S.optional(S.String),
           orchestratorVersion: S.optional(S.String),
           currentOrchestratorVersion: S.optional(S.String),
           nodeImageVersion: S.optional(S.String),
-          upgradeSettings: S.optional(AgentPoolUpgradeSettings),
+          upgradeSettings: S.optional(__S(3)),
           provisioningState: S.optional(S.String),
-          powerState: S.optional(PowerState),
-          availabilityZones: S.optional(ManagedClusterAgentPoolProfileAvailabilityZonesList),
+          powerState: S.optional(__S(4)),
+          availabilityZones: S.optional(__S(7)),
           enableNodePublicIP: S.optional(S.Boolean),
           nodePublicIPPrefixID: S.optional(S.String),
-          scaleSetPriority: S.optional(ManagedClusterAgentPoolProfileScaleSetPriority),
-          scaleSetEvictionPolicy: S.optional(ManagedClusterAgentPoolProfileScaleSetEvictionPolicy),
+          scaleSetPriority: S.optional(S.String),
+          scaleSetEvictionPolicy: S.optional(S.String),
           spotMaxPrice: S.optional(S.Number),
-          tags: S.optional(ManagedClusterAgentPoolProfileTagsMap),
-          nodeLabels: S.optional(ManagedClusterAgentPoolProfileNodeLabelsMap),
-          nodeTaints: S.optional(ManagedClusterAgentPoolProfileNodeTaintsList),
+          tags: S.optional(__S(6)),
+          nodeLabels: S.optional(__S(6)),
+          nodeTaints: S.optional(__S(7)),
           proximityPlacementGroupID: S.optional(S.String),
-          kubeletConfig: S.optional(KubeletConfig),
-          linuxOSConfig: S.optional(LinuxOSConfig),
+          kubeletConfig: S.optional(__S(8)),
+          linuxOSConfig: S.optional(__S(10)),
           enableEncryptionAtHost: S.optional(S.Boolean),
           enableUltraSSD: S.optional(S.Boolean),
           enableFIPS: S.optional(S.Boolean),
-          gpuInstanceProfile: S.optional(GPUInstanceProfile),
-          creationData: S.optional(CreationData),
+          gpuInstanceProfile: S.optional(S.String),
+          creationData: S.optional(__S(11)),
           capacityReservationGroupID: S.optional(S.String),
           hostGroupID: S.optional(S.String),
-          networkProfile: S.optional(AgentPoolNetworkProfile),
-          windowsProfile: S.optional(AgentPoolWindowsProfile),
-          securityProfile: S.optional(AgentPoolSecurityProfile),
-          gpuProfile: S.optional(GPUProfile),
-          gatewayProfile: S.optional(AgentPoolGatewayProfile),
-          artifactStreamingProfile: S.optional(AgentPoolArtifactStreamingProfile),
-          virtualMachinesProfile: S.optional(VirtualMachinesProfile),
-          virtualMachineNodesStatus: S.optional(
-            ManagedClusterAgentPoolProfileVirtualMachineNodesStatusList,
-          ),
-          status: S.optional(AgentPoolStatus),
-          localDNSProfile: S.optional(LocalDNSProfile),
+          networkProfile: S.optional(__S(17)),
+          windowsProfile: S.optional(__S(18)),
+          securityProfile: S.optional(__S(19)),
+          gpuProfile: S.optional(__S(20)),
+          gatewayProfile: S.optional(__S(21)),
+          artifactStreamingProfile: S.optional(__S(22)),
+          virtualMachinesProfile: S.optional(__S(28)),
+          virtualMachineNodesStatus: S.optional(__S(24)),
+          status: S.optional(__S(43)),
+          localDNSProfile: S.optional(__S(33)),
           name: S.String,
         }),
       ).annotate({
         identifier: "ManagedClusterAgentPoolProfile",
       });
     case 6:
-      return S.Array(ManagedClusterAgentPoolProfile);
+      return S.Array(__S(189));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -12832,11 +9882,11 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ContainerServiceSshPublicKey);
+      return S.Array(__S(191));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          publicKeys: ContainerServiceSshConfigurationPublicKeysList,
+          publicKeys: __S(192),
         }),
       ).annotate({
         identifier: "ContainerServiceSshConfiguration",
@@ -12845,7 +9895,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           adminUsername: S.String,
-          ssh: ContainerServiceSshConfiguration,
+          ssh: __S(193),
         }),
       ).annotate({
         identifier: "ContainerServiceLinuxProfile",
@@ -12863,9 +9913,9 @@ function __c24(j: number): any {
         S.Struct({
           adminUsername: S.String,
           adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          licenseType: S.optional(LicenseType),
+          licenseType: S.optional(S.String),
           enableCSIProxy: S.optional(S.Boolean),
-          gmsaProfile: S.optional(WindowsGmsaProfile),
+          gmsaProfile: S.optional(__S(195)),
         }),
       ).annotate({
         identifier: "ManagedClusterWindowsProfile",
@@ -12891,8 +9941,8 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          config: S.optional(ManagedClusterAddonProfileConfigMap),
-          identity: S.optional(UserAssignedIdentity),
+          config: S.optional(__S(6)),
+          identity: S.optional(__S(198)),
         }),
       ).annotate({
         identifier: "ManagedClusterAddonProfile",
@@ -12902,16 +9952,16 @@ function __c24(j: number): any {
 function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, ManagedClusterAddonProfile);
+      return S.Record(S.String, __S(199));
     case 1:
-      return S.Array(/*@__PURE__*/ S.suspend(() => ManagedClusterPodIdentityProvisioningErrorBody));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(202)));
     case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(ManagedClusterPodIdentityProvisioningErrorBodyDetailsList),
+          details: S.optional(__S(201)),
         }),
       ).annotate({
         identifier: "ManagedClusterPodIdentityProvisioningErrorBody",
@@ -12919,7 +9969,7 @@ function __c25(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(ManagedClusterPodIdentityProvisioningErrorBody),
+          error: S.optional(__S(202)),
         }),
       ).annotate({
         identifier: "ManagedClusterPodIdentityProvisioningError",
@@ -12927,7 +9977,7 @@ function __c25(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(ManagedClusterPodIdentityProvisioningError),
+          error: S.optional(__S(203)),
         }),
       ).annotate({
         identifier: "ManagedClusterPodIdentityProvisioningInfo",
@@ -12938,21 +9988,21 @@ function __c25(j: number): any {
           name: S.String,
           namespace: S.String,
           bindingSelector: S.optional(S.String),
-          identity: UserAssignedIdentity,
-          provisioningState: S.optional(ManagedClusterPodIdentityProvisioningState),
-          provisioningInfo: S.optional(ManagedClusterPodIdentityProvisioningInfo),
+          identity: __S(198),
+          provisioningState: S.optional(S.String),
+          provisioningInfo: S.optional(__S(204)),
         }),
       ).annotate({
         identifier: "ManagedClusterPodIdentity",
       });
     case 6:
-      return S.Array(ManagedClusterPodIdentity);
+      return S.Array(__S(205));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           namespace: S.String,
-          podLabels: ManagedClusterPodIdentityExceptionPodLabelsMap,
+          podLabels: __S(6),
         }),
       ).annotate({
         identifier: "ManagedClusterPodIdentityException",
@@ -12962,18 +10012,14 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ManagedClusterPodIdentityException);
+      return S.Array(__S(207));
     case 1:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
           allowNetworkPluginKubenet: S.optional(S.Boolean),
-          userAssignedIdentities: S.optional(
-            ManagedClusterPodIdentityProfileUserAssignedIdentitiesList,
-          ),
-          userAssignedIdentityExceptions: S.optional(
-            ManagedClusterPodIdentityProfileUserAssignedIdentityExceptionsList,
-          ),
+          userAssignedIdentities: S.optional(__S(206)),
+          userAssignedIdentityExceptions: S.optional(__S(208)),
         }),
       ).annotate({
         identifier: "ManagedClusterPodIdentityProfile",
@@ -12990,7 +10036,7 @@ function __c26(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          restrictionLevel: S.optional(RestrictionLevel),
+          restrictionLevel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedClusterNodeResourceGroupProfile",
@@ -12998,7 +10044,7 @@ function __c26(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(TransitEncryptionType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AdvancedNetworkingSecurityTransitEncryption",
@@ -13007,8 +10053,8 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          advancedNetworkPolicies: S.optional(AdvancedNetworkPolicies),
-          transitEncryption: S.optional(AdvancedNetworkingSecurityTransitEncryption),
+          advancedNetworkPolicies: S.optional(S.String),
+          transitEncryption: S.optional(__S(212)),
         }),
       ).annotate({
         identifier: "AdvancedNetworkingSecurity",
@@ -13016,7 +10062,7 @@ function __c26(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          accelerationMode: S.optional(AdvancedNetworkingPerformanceAccelerationMode),
+          accelerationMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AdvancedNetworkingPerformance",
@@ -13025,9 +10071,9 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          observability: S.optional(AdvancedNetworkingObservability),
-          security: S.optional(AdvancedNetworkingSecurity),
-          performance: S.optional(AdvancedNetworkingPerformance),
+          observability: S.optional(__S(22)),
+          security: S.optional(__S(213)),
+          performance: S.optional(__S(214)),
         }),
       ).annotate({ identifier: "AdvancedNetworking" });
   }
@@ -13050,23 +10096,21 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "ResourceReference" });
     case 2:
-      return S.Array(ResourceReference);
+      return S.Array(__S(217));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          publicIPPrefixes: S.optional(
-            ManagedClusterLoadBalancerProfileOutboundIPPrefixesPublicIPPrefixesList,
-          ),
+          publicIPPrefixes: S.optional(__S(218)),
         }),
       ).annotate({
         identifier: "ManagedClusterLoadBalancerProfileOutboundIPPrefixes",
       });
     case 4:
-      return S.Array(ResourceReference);
+      return S.Array(__S(217));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          publicIPs: S.optional(ManagedClusterLoadBalancerProfileOutboundIPsPublicIPsList),
+          publicIPs: S.optional(__S(220)),
         }),
       ).annotate({
         identifier: "ManagedClusterLoadBalancerProfileOutboundIPs",
@@ -13074,16 +10118,14 @@ function __c27(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          managedOutboundIPs: S.optional(ManagedClusterLoadBalancerProfileManagedOutboundIPs),
-          outboundIPPrefixes: S.optional(ManagedClusterLoadBalancerProfileOutboundIPPrefixes),
-          outboundIPs: S.optional(ManagedClusterLoadBalancerProfileOutboundIPs),
-          effectiveOutboundIPs: S.optional(
-            ManagedClusterLoadBalancerProfileEffectiveOutboundIPsList,
-          ),
+          managedOutboundIPs: S.optional(__S(216)),
+          outboundIPPrefixes: S.optional(__S(219)),
+          outboundIPs: S.optional(__S(221)),
+          effectiveOutboundIPs: S.optional(__S(220)),
           allocatedOutboundPorts: S.optional(S.Number),
           idleTimeoutInMinutes: S.optional(S.Number),
           enableMultipleStandardLoadBalancers: S.optional(S.Boolean),
-          backendPoolType: S.optional(ManagedClusterLoadBalancerProfileBackendPoolType),
+          backendPoolType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedClusterLoadBalancerProfile",
@@ -13091,9 +10133,7 @@ function __c27(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          publicIPPrefixes: S.optional(
-            ManagedClusterNATGatewayProfileOutboundIPPrefixesPublicIPPrefixesList,
-          ),
+          publicIPPrefixes: S.optional(__S(5)),
         }),
       ).annotate({
         identifier: "ManagedClusterNATGatewayProfileOutboundIPPrefixes",
@@ -13105,7 +10145,7 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          publicIPs: S.optional(ManagedClusterNATGatewayProfileOutboundIPsPublicIPsList),
+          publicIPs: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "ManagedClusterNATGatewayProfileOutboundIPs",
@@ -13113,38 +10153,38 @@ function __c28(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(ManagedClusterNATGatewaySku),
-          managedOutboundIPProfile: S.optional(ManagedClusterManagedOutboundIPProfile),
-          effectiveOutboundIPs: S.optional(ManagedClusterNATGatewayProfileEffectiveOutboundIPsList),
-          outboundIPPrefixes: S.optional(ManagedClusterNATGatewayProfileOutboundIPPrefixes),
-          outboundIPs: S.optional(ManagedClusterNATGatewayProfileOutboundIPs),
+          sku: S.optional(S.String),
+          managedOutboundIPProfile: S.optional(__S(216)),
+          effectiveOutboundIPs: S.optional(__S(220)),
+          outboundIPPrefixes: S.optional(__S(223)),
+          outboundIPs: S.optional(__S(224)),
           idleTimeoutInMinutes: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ManagedClusterNATGatewayProfile",
       });
     case 2:
-      return S.Array(IPFamily);
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          networkPlugin: S.optional(NetworkPlugin),
-          networkPluginMode: S.optional(NetworkPluginMode),
-          networkPolicy: S.optional(NetworkPolicy),
-          networkMode: S.optional(NetworkMode),
-          networkDataplane: S.optional(NetworkDataplane),
-          advancedNetworking: S.optional(AdvancedNetworking),
+          networkPlugin: S.optional(S.String),
+          networkPluginMode: S.optional(S.String),
+          networkPolicy: S.optional(S.String),
+          networkMode: S.optional(S.String),
+          networkDataplane: S.optional(S.String),
+          advancedNetworking: S.optional(__S(215)),
           podCidr: S.optional(S.String),
           serviceCidr: S.optional(S.String),
           dnsServiceIP: S.optional(S.String),
-          outboundType: S.optional(ContainerServiceNetworkProfileOutboundType),
-          loadBalancerSku: S.optional(LoadBalancerSku),
-          loadBalancerProfile: S.optional(ManagedClusterLoadBalancerProfile),
-          natGatewayProfile: S.optional(ManagedClusterNATGatewayProfile),
-          staticEgressGatewayProfile: S.optional(ManagedClusterStaticEgressGatewayProfile),
-          podCidrs: S.optional(ContainerServiceNetworkProfilePodCidrsList),
-          serviceCidrs: S.optional(ContainerServiceNetworkProfileServiceCidrsList),
-          ipFamilies: S.optional(ContainerServiceNetworkProfileIpFamiliesList),
+          outboundType: S.optional(S.String),
+          loadBalancerSku: S.optional(S.String),
+          loadBalancerProfile: S.optional(__S(222)),
+          natGatewayProfile: S.optional(__S(225)),
+          staticEgressGatewayProfile: S.optional(__S(22)),
+          podCidrs: S.optional(__S(7)),
+          serviceCidrs: S.optional(__S(7)),
+          ipFamilies: S.optional(__S(226)),
         }),
       ).annotate({
         identifier: "ContainerServiceNetworkProfile",
@@ -13154,7 +10194,7 @@ function __c28(j: number): any {
         S.Struct({
           managed: S.optional(S.Boolean),
           enableAzureRBAC: S.optional(S.Boolean),
-          adminGroupObjectIDs: S.optional(ManagedClusterAADProfileAdminGroupObjectIDsList),
+          adminGroupObjectIDs: S.optional(__S(7)),
           clientAppID: S.optional(S.String),
           serverAppID: S.optional(S.String),
           serverAppSecret: S.optional(S.String),
@@ -13164,8 +10204,8 @@ function __c28(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          upgradeChannel: S.optional(UpgradeChannel),
-          nodeOSUpgradeChannel: S.optional(NodeOSUpgradeChannel),
+          upgradeChannel: S.optional(S.String),
+          nodeOSUpgradeChannel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedClusterAutoUpgradeProfile",
@@ -13180,7 +10220,7 @@ function __c28(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          overrideSettings: S.optional(UpgradeOverrideSettings),
+          overrideSettings: S.optional(__S(230)),
         }),
       ).annotate({ identifier: "ClusterUpgradeSettings" });
   }
@@ -13202,7 +10242,7 @@ function __c29(j: number): any {
           ignore_daemonsets_utilization: S.optional(
             S.Boolean.pipe(T.Body("ignore-daemonsets-utilization")),
           ),
-          expander: S.optional(Expander),
+          expander: S.optional(S.String),
           max_empty_bulk_delete: S.optional(S.String.pipe(T.Body("max-empty-bulk-delete"))),
           max_graceful_termination_sec: S.optional(
             S.String.pipe(T.Body("max-graceful-termination-sec")),
@@ -13241,9 +10281,7 @@ function __c29(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          authorizedIPRanges: S.optional(
-            ManagedClusterAPIServerAccessProfileAuthorizedIPRangesList,
-          ),
+          authorizedIPRanges: S.optional(__S(7)),
           enablePrivateCluster: S.optional(S.Boolean),
           privateDNSZone: S.optional(S.String),
           enablePrivateClusterPublicFQDN: S.optional(S.Boolean),
@@ -13255,7 +10293,7 @@ function __c29(j: number): any {
         identifier: "ManagedClusterAPIServerAccessProfile",
       });
     case 2:
-      return S.Record(S.String, UserAssignedIdentity);
+      return S.Record(S.String, __S(198));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -13263,18 +10301,18 @@ function __c29(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourceRequiredMembersList),
+          requiredMembers: S.optional(__S(7)),
           privateLinkServiceID: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 4:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(235));
     case 5:
       return S.suspend(() =>
         S.Struct({
           httpProxy: S.optional(S.String),
           httpsProxy: S.optional(S.String),
-          noProxy: S.optional(ManagedClusterHTTPProxyConfigNoProxyList),
+          noProxy: S.optional(__S(7)),
           trustedCa: S.optional(S.String),
           enabled: S.optional(S.Boolean),
         }),
@@ -13285,13 +10323,13 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           azureContainerRegistry: S.optional(S.String),
-          identity: S.optional(UserAssignedIdentity),
+          identity: S.optional(__S(198)),
         }),
       ).annotate({
         identifier: "ManagedClusterSecurityProfileDefenderSecurityGatingIdentity",
       });
     case 7:
-      return S.Array(ManagedClusterSecurityProfileDefenderSecurityGatingIdentity);
+      return S.Array(__S(238));
   }
 }
 function __c30(j: number): any {
@@ -13300,7 +10338,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          identities: S.optional(ManagedClusterSecurityProfileDefenderSecurityGatingIdentitiesList),
+          identities: S.optional(__S(239)),
           allowSecretAccess: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -13310,8 +10348,8 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           logAnalyticsWorkspaceResourceId: S.optional(S.String),
-          securityMonitoring: S.optional(ManagedClusterSecurityProfileDefenderSecurityMonitoring),
-          securityGating: S.optional(ManagedClusterSecurityProfileDefenderSecurityGating),
+          securityMonitoring: S.optional(__S(22)),
+          securityGating: S.optional(__S(240)),
         }),
       ).annotate({
         identifier: "ManagedClusterSecurityProfileDefender",
@@ -13321,14 +10359,14 @@ function __c30(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           keyId: S.optional(S.String),
-          keyVaultNetworkAccess: S.optional(AzureKeyVaultKmsKeyVaultNetworkAccess),
+          keyVaultNetworkAccess: S.optional(S.String),
           keyVaultResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AzureKeyVaultKms" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          infrastructureEncryption: S.optional(InfrastructureEncryption),
+          infrastructureEncryption: S.optional(S.String),
         }),
       ).annotate({
         identifier: "KubernetesResourceObjectEncryptionProfile",
@@ -13345,16 +10383,12 @@ function __c30(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          defender: S.optional(ManagedClusterSecurityProfileDefender),
-          azureKeyVaultKms: S.optional(AzureKeyVaultKms),
-          kubernetesResourceObjectEncryptionProfile: S.optional(
-            KubernetesResourceObjectEncryptionProfile,
-          ),
-          workloadIdentity: S.optional(ManagedClusterSecurityProfileWorkloadIdentity),
-          imageCleaner: S.optional(ManagedClusterSecurityProfileImageCleaner),
-          customCATrustCertificates: S.optional(
-            ManagedClusterSecurityProfileCustomCATrustCertificatesList,
-          ),
+          defender: S.optional(__S(241)),
+          azureKeyVaultKms: S.optional(__S(242)),
+          kubernetesResourceObjectEncryptionProfile: S.optional(__S(243)),
+          workloadIdentity: S.optional(__S(22)),
+          imageCleaner: S.optional(__S(244)),
+          customCATrustCertificates: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "ManagedClusterSecurityProfile",
@@ -13362,10 +10396,10 @@ function __c30(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          diskCSIDriver: S.optional(ManagedClusterStorageProfileDiskCSIDriver),
-          fileCSIDriver: S.optional(ManagedClusterStorageProfileFileCSIDriver),
-          snapshotController: S.optional(ManagedClusterStorageProfileSnapshotController),
-          blobCSIDriver: S.optional(ManagedClusterStorageProfileBlobCSIDriver),
+          diskCSIDriver: S.optional(__S(22)),
+          fileCSIDriver: S.optional(__S(22)),
+          snapshotController: S.optional(__S(22)),
+          blobCSIDriver: S.optional(__S(22)),
         }),
       ).annotate({
         identifier: "ManagedClusterStorageProfile",
@@ -13373,7 +10407,7 @@ function __c30(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(GatewayAPIIstioEnabled),
+          mode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedClusterAppRoutingIstio",
@@ -13385,7 +10419,7 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          appRoutingIstio: S.optional(ManagedClusterAppRoutingIstio),
+          appRoutingIstio: S.optional(__S(247)),
         }),
       ).annotate({
         identifier: "ManagedClusterWebAppRoutingGatewayAPIImplementations",
@@ -13393,7 +10427,7 @@ function __c31(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          defaultIngressControllerType: S.optional(NginxIngressControllerType),
+          defaultIngressControllerType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedClusterIngressProfileNginx",
@@ -13402,14 +10436,10 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          gatewayAPIImplementations: S.optional(
-            ManagedClusterWebAppRoutingGatewayAPIImplementations,
-          ),
-          dnsZoneResourceIds: S.optional(
-            ManagedClusterIngressProfileWebAppRoutingDnsZoneResourceIdsList,
-          ),
-          nginx: S.optional(ManagedClusterIngressProfileNginx),
-          identity: S.optional(UserAssignedIdentity),
+          gatewayAPIImplementations: S.optional(__S(248)),
+          dnsZoneResourceIds: S.optional(__S(5)),
+          nginx: S.optional(__S(249)),
+          identity: S.optional(__S(198)),
         }),
       ).annotate({
         identifier: "ManagedClusterIngressProfileWebAppRouting",
@@ -13417,7 +10447,7 @@ function __c31(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          installation: S.optional(ManagedGatewayType),
+          installation: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedClusterIngressProfileGatewayConfiguration",
@@ -13425,8 +10455,8 @@ function __c31(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          webAppRouting: S.optional(ManagedClusterIngressProfileWebAppRouting),
-          gatewayAPI: S.optional(ManagedClusterIngressProfileGatewayConfiguration),
+          webAppRouting: S.optional(__S(250)),
+          gatewayAPI: S.optional(__S(251)),
         }),
       ).annotate({
         identifier: "ManagedClusterIngressProfile",
@@ -13450,10 +10480,8 @@ function __c31(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          keda: S.optional(ManagedClusterWorkloadAutoScalerProfileKeda),
-          verticalPodAutoscaler: S.optional(
-            ManagedClusterWorkloadAutoScalerProfileVerticalPodAutoscaler,
-          ),
+          keda: S.optional(__S(253)),
+          verticalPodAutoscaler: S.optional(__S(254)),
         }),
       ).annotate({
         identifier: "ManagedClusterWorkloadAutoScalerProfile",
@@ -13475,8 +10503,8 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          kubeStateMetrics: S.optional(ManagedClusterAzureMonitorProfileKubeStateMetrics),
-          controlPlane: S.optional(ManagedClusterAzureMonitorProfileMetricsControlPlane),
+          kubeStateMetrics: S.optional(__S(256)),
+          controlPlane: S.optional(__S(22)),
         }),
       ).annotate({
         identifier: "ManagedClusterAzureMonitorProfileMetrics",
@@ -13488,7 +10516,7 @@ function __c32(j: number): any {
           logAnalyticsWorkspaceResourceId: S.optional(S.String),
           syslogPort: S.optional(S.Number),
           disablePrometheusMetricsScraping: S.optional(S.Boolean),
-          containerNetworkLogs: S.optional(ContainerNetworkLogs),
+          containerNetworkLogs: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedClusterAzureMonitorProfileContainerInsights",
@@ -13514,15 +10542,9 @@ function __c32(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          autoInstrumentation: S.optional(
-            ManagedClusterAzureMonitorProfileAppMonitoringAutoInstrumentation,
-          ),
-          openTelemetryMetrics: S.optional(
-            ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryMetrics,
-          ),
-          openTelemetryLogsAndTraces: S.optional(
-            ManagedClusterAzureMonitorProfileAppMonitoringOpenTelemetryLogsAndTraces,
-          ),
+          autoInstrumentation: S.optional(__S(259)),
+          openTelemetryMetrics: S.optional(__S(260)),
+          openTelemetryLogsAndTraces: S.optional(__S(260)),
         }),
       ).annotate({
         identifier: "ManagedClusterAzureMonitorProfileAppMonitoring",
@@ -13530,9 +10552,9 @@ function __c32(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metrics: S.optional(ManagedClusterAzureMonitorProfileMetrics),
-          containerInsights: S.optional(ManagedClusterAzureMonitorProfileContainerInsights),
-          appMonitoring: S.optional(ManagedClusterAzureMonitorProfileAppMonitoring),
+          metrics: S.optional(__S(257)),
+          containerInsights: S.optional(__S(258)),
+          appMonitoring: S.optional(__S(261)),
         }),
       ).annotate({
         identifier: "ManagedClusterAzureMonitorProfile",
@@ -13540,7 +10562,7 @@ function __c32(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          mode: IstioIngressGatewayMode,
+          mode: S.String,
           enabled: S.Boolean,
         }),
       ).annotate({ identifier: "IstioIngressGateway" });
@@ -13549,7 +10571,7 @@ function __c32(j: number): any {
 function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IstioIngressGateway);
+      return S.Array(__S(263));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -13560,13 +10582,13 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "IstioEgressGateway" });
     case 2:
-      return S.Array(IstioEgressGateway);
+      return S.Array(__S(265));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ingressGateways: S.optional(IstioComponentsIngressGatewaysList),
-          egressGateways: S.optional(IstioComponentsEgressGatewaysList),
-          proxyRedirectionMechanism: S.optional(ProxyRedirectionMechanism),
+          ingressGateways: S.optional(__S(264)),
+          egressGateways: S.optional(__S(266)),
+          proxyRedirectionMechanism: S.optional(S.String),
         }),
       ).annotate({ identifier: "IstioComponents" });
     case 4:
@@ -13584,7 +10606,7 @@ function __c33(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          plugin: S.optional(IstioPluginCertificateAuthority),
+          plugin: S.optional(__S(268)),
         }),
       ).annotate({
         identifier: "IstioCertificateAuthority",
@@ -13592,16 +10614,16 @@ function __c33(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          components: S.optional(IstioComponents),
-          certificateAuthority: S.optional(IstioCertificateAuthority),
-          revisions: S.optional(IstioServiceMeshRevisionsList),
+          components: S.optional(__S(267)),
+          certificateAuthority: S.optional(__S(269)),
+          revisions: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "IstioServiceMesh" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          mode: ServiceMeshMode,
-          istio: S.optional(IstioServiceMesh),
+          mode: S.String,
+          istio: S.optional(__S(270)),
         }),
       ).annotate({ identifier: "ServiceMeshProfile" });
   }
@@ -13611,7 +10633,7 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          costAnalysis: S.optional(ManagedClusterCostAnalysis),
+          costAnalysis: S.optional(__S(22)),
         }),
       ).annotate({
         identifier: "ManagedClusterMetricsProfile",
@@ -13619,8 +10641,8 @@ function __c34(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(NodeProvisioningMode),
-          defaultNodePools: S.optional(ManagedClusterNodeProvisioningProfileDefaultNodePools),
+          mode: S.optional(S.String),
+          defaultNodePools: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedClusterNodeProvisioningProfile",
@@ -13628,7 +10650,7 @@ function __c34(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          artifactSource: S.optional(ManagedClusterBootstrapProfileArtifactSource),
+          artifactSource: S.optional(S.String),
           containerRegistryId: S.optional(S.String),
         }),
       ).annotate({
@@ -13637,13 +10659,13 @@ function __c34(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          schedulerConfigMode: S.optional(SchedulerConfigMode),
+          schedulerConfigMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchedulerInstanceProfile" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          upstream: S.optional(SchedulerInstanceProfile),
+          upstream: S.optional(__S(275)),
         }),
       ).annotate({ identifier: "SchedulerProfile" });
     case 5:
@@ -13660,7 +10682,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          powerState: S.optional(PowerState),
+          powerState: S.optional(__S(4)),
           maxAgentPools: S.optional(S.Number),
           kubernetesVersion: S.optional(S.String),
           currentKubernetesVersion: S.optional(S.String),
@@ -13669,51 +10691,51 @@ function __c34(j: number): any {
           fqdn: S.optional(S.String),
           privateFQDN: S.optional(S.String),
           azurePortalFQDN: S.optional(S.String),
-          agentPoolProfiles: S.optional(ManagedClusterPropertiesAgentPoolProfilesList),
-          linuxProfile: S.optional(ContainerServiceLinuxProfile),
-          windowsProfile: S.optional(ManagedClusterWindowsProfile),
-          servicePrincipalProfile: S.optional(ManagedClusterServicePrincipalProfile),
-          addonProfiles: S.optional(ManagedClusterPropertiesAddonProfilesMap),
-          podIdentityProfile: S.optional(ManagedClusterPodIdentityProfile),
-          oidcIssuerProfile: S.optional(ManagedClusterOIDCIssuerProfile),
+          agentPoolProfiles: S.optional(__S(190)),
+          linuxProfile: S.optional(__S(194)),
+          windowsProfile: S.optional(__S(196)),
+          servicePrincipalProfile: S.optional(__S(197)),
+          addonProfiles: S.optional(__S(200)),
+          podIdentityProfile: S.optional(__S(209)),
+          oidcIssuerProfile: S.optional(__S(210)),
           nodeResourceGroup: S.optional(S.String),
-          nodeResourceGroupProfile: S.optional(ManagedClusterNodeResourceGroupProfile),
+          nodeResourceGroupProfile: S.optional(__S(211)),
           enableRBAC: S.optional(S.Boolean),
-          supportPlan: S.optional(KubernetesSupportPlan),
+          supportPlan: S.optional(S.String),
           enableFIPS: S.optional(S.Boolean),
-          networkProfile: S.optional(ContainerServiceNetworkProfile),
-          aadProfile: S.optional(ManagedClusterAADProfile),
-          autoUpgradeProfile: S.optional(ManagedClusterAutoUpgradeProfile),
-          upgradeSettings: S.optional(ClusterUpgradeSettings),
-          autoScalerProfile: S.optional(ManagedClusterPropertiesAutoScalerProfile),
-          apiServerAccessProfile: S.optional(ManagedClusterAPIServerAccessProfile),
+          networkProfile: S.optional(__S(227)),
+          aadProfile: S.optional(__S(228)),
+          autoUpgradeProfile: S.optional(__S(229)),
+          upgradeSettings: S.optional(__S(231)),
+          autoScalerProfile: S.optional(__S(232)),
+          apiServerAccessProfile: S.optional(__S(233)),
           diskEncryptionSetID: S.optional(S.String),
-          identityProfile: S.optional(ManagedClusterPropertiesIdentityProfileMap),
-          privateLinkResources: S.optional(ManagedClusterPropertiesPrivateLinkResourcesList),
+          identityProfile: S.optional(__S(234)),
+          privateLinkResources: S.optional(__S(236)),
           disableLocalAccounts: S.optional(S.Boolean),
-          httpProxyConfig: S.optional(ManagedClusterHTTPProxyConfig),
-          securityProfile: S.optional(ManagedClusterSecurityProfile),
-          storageProfile: S.optional(ManagedClusterStorageProfile),
-          ingressProfile: S.optional(ManagedClusterIngressProfile),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
-          workloadAutoScalerProfile: S.optional(ManagedClusterWorkloadAutoScalerProfile),
-          azureMonitorProfile: S.optional(ManagedClusterAzureMonitorProfile),
-          serviceMeshProfile: S.optional(ServiceMeshProfile),
+          httpProxyConfig: S.optional(__S(237)),
+          securityProfile: S.optional(__S(245)),
+          storageProfile: S.optional(__S(246)),
+          ingressProfile: S.optional(__S(252)),
+          publicNetworkAccess: S.optional(S.String),
+          workloadAutoScalerProfile: S.optional(__S(255)),
+          azureMonitorProfile: S.optional(__S(262)),
+          serviceMeshProfile: S.optional(__S(271)),
           resourceUID: S.optional(S.String),
-          metricsProfile: S.optional(ManagedClusterMetricsProfile),
-          nodeProvisioningProfile: S.optional(ManagedClusterNodeProvisioningProfile),
-          bootstrapProfile: S.optional(ManagedClusterBootstrapProfile),
-          aiToolchainOperatorProfile: S.optional(ManagedClusterAIToolchainOperatorProfile),
-          schedulerProfile: S.optional(SchedulerProfile),
-          hostedSystemProfile: S.optional(ManagedClusterHostedSystemProfile),
-          status: S.optional(ManagedClusterStatus),
+          metricsProfile: S.optional(__S(272)),
+          nodeProvisioningProfile: S.optional(__S(273)),
+          bootstrapProfile: S.optional(__S(274)),
+          aiToolchainOperatorProfile: S.optional(__S(22)),
+          schedulerProfile: S.optional(__S(276)),
+          hostedSystemProfile: S.optional(__S(277)),
+          status: S.optional(__S(43)),
         }),
       ).annotate({ identifier: "ManagedClusterProperties" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(ManagedClusterSKUName),
-          tier: S.optional(ManagedClusterSKUTier),
+          name: S.optional(S.String),
+          tier: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedClusterSKU" });
   }
@@ -13724,7 +10746,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(ExtendedLocationTypes),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtendedLocation" });
     case 1:
@@ -13739,7 +10761,7 @@ function __c35(j: number): any {
         identifier: "ManagedClusterIdentityDelegatedResourcesValue",
       });
     case 2:
-      return S.Record(S.String, ManagedClusterIdentityDelegatedResourcesValue);
+      return S.Record(S.String, __S(281));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -13750,15 +10772,15 @@ function __c35(j: number): any {
         identifier: "ManagedServiceIdentityUserAssignedIdentitiesValue",
       });
     case 4:
-      return S.Record(S.String, ManagedServiceIdentityUserAssignedIdentitiesValue);
+      return S.Record(S.String, __S(283));
     case 5:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(ResourceIdentityType),
-          delegatedResources: S.optional(ManagedClusterIdentityDelegatedResourcesMap),
-          userAssignedIdentities: S.optional(ManagedClusterIdentityUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          delegatedResources: S.optional(__S(282)),
+          userAssignedIdentities: S.optional(__S(284)),
         }),
       ).annotate({ identifier: "ManagedClusterIdentity" });
     case 6:
@@ -13767,14 +10789,14 @@ function __c35(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetManagedClusterResponseTagsMap),
+          systemData: S.optional(__S(36)),
+          tags: S.optional(__S(6)),
           location: S.String,
-          properties: S.optional(ManagedClusterProperties),
+          properties: S.optional(__S(278)),
           eTag: S.optional(S.String),
-          sku: S.optional(ManagedClusterSKU),
-          extendedLocation: S.optional(ExtendedLocation),
-          identity: S.optional(ManagedClusterIdentity),
+          sku: S.optional(__S(279)),
+          extendedLocation: S.optional(__S(280)),
+          identity: S.optional(__S(285)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -13817,7 +10839,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          properties: S.optional(CommandResultProperties),
+          properties: S.optional(__S(288)),
         }),
       ).annotate({ identifier: "RunCommandResult" });
     case 2:
@@ -13841,25 +10863,25 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          versions: S.optional(CompatibleVersionsVersionsList),
+          versions: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "CompatibleVersions" });
     case 4:
-      return S.Array(CompatibleVersions);
+      return S.Array(__S(291));
     case 5:
       return S.suspend(() =>
         S.Struct({
           revision: S.optional(S.String),
-          upgrades: S.optional(MeshRevisionUpgradesList),
-          compatibleWith: S.optional(MeshRevisionCompatibleWithList),
+          upgrades: S.optional(__S(7)),
+          compatibleWith: S.optional(__S(292)),
         }),
       ).annotate({ identifier: "MeshRevision" });
     case 6:
-      return S.Array(MeshRevision);
+      return S.Array(__S(293));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          meshRevisions: S.optional(MeshRevisionProfilePropertiesMeshRevisionsList),
+          meshRevisions: S.optional(__S(294)),
         }),
       ).annotate({
         identifier: "MeshRevisionProfileProperties",
@@ -13874,8 +10896,8 @@ function __c37(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(MeshRevisionProfileProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(295)),
         }),
       ).annotate({
         identifier: "GetManagedClusterMeshRevisionProfileResponse",
@@ -13904,8 +10926,8 @@ function __c37(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(MeshRevision),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(293)),
         }),
       ).annotate({
         identifier: "GetManagedClusterMeshUpgradeProfileResponse",
@@ -13932,19 +10954,19 @@ function __c37(j: number): any {
         S.Struct({
           kubernetesVersion: S.String,
           name: S.optional(S.String),
-          osType: ManagedClusterPoolUpgradeProfileOsType,
-          upgrades: S.optional(ManagedClusterPoolUpgradeProfileUpgradesList),
+          osType: S.String,
+          upgrades: S.optional(__S(143)),
         }),
       ).annotate({
         identifier: "ManagedClusterPoolUpgradeProfile",
       });
     case 5:
-      return S.Array(ManagedClusterPoolUpgradeProfile);
+      return S.Array(__S(300));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          controlPlaneProfile: ManagedClusterPoolUpgradeProfile,
-          agentPoolProfiles: ManagedClusterUpgradeProfilePropertiesAgentPoolProfilesList,
+          controlPlaneProfile: __S(300),
+          agentPoolProfiles: __S(301),
         }),
       ).annotate({
         identifier: "ManagedClusterUpgradeProfileProperties",
@@ -13955,8 +10977,8 @@ function __c37(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ManagedClusterUpgradeProfileProperties,
+          systemData: S.optional(__S(36)),
+          properties: __S(302),
         }),
       ).annotate({
         identifier: "GetManagedClusterUpgradeProfileResponse",
@@ -13986,14 +11008,14 @@ function __c38(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(NamespaceProvisioningState),
-          labels: S.optional(NamespacePropertiesLabelsMap),
-          annotations: S.optional(NamespacePropertiesAnnotationsMap),
+          provisioningState: S.optional(S.String),
+          labels: S.optional(__S(6)),
+          annotations: S.optional(__S(6)),
           portalFqdn: S.optional(S.String),
-          defaultResourceQuota: S.optional(ResourceQuota),
-          defaultNetworkPolicy: S.optional(NetworkPolicies),
-          adoptionPolicy: S.optional(AdoptionPolicy),
-          deletePolicy: S.optional(DeletePolicy),
+          defaultResourceQuota: S.optional(__S(83)),
+          defaultNetworkPolicy: S.optional(__S(84)),
+          adoptionPolicy: S.optional(S.String),
+          deletePolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "NamespaceProperties" });
     case 2:
@@ -14002,10 +11024,10 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetManagedNamespaceResponseTagsMap),
+          systemData: S.optional(__S(36)),
+          tags: S.optional(__S(6)),
           location: S.String,
-          properties: S.optional(NamespaceProperties),
+          properties: S.optional(__S(305)),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -14032,7 +11054,7 @@ function __c38(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ConnectionStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({
@@ -14041,9 +11063,9 @@ function __c38(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          provisioningState: S.optional(S.String),
+          privateEndpoint: S.optional(__S(217)),
+          privateLinkServiceConnectionState: __S(308),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -14054,8 +11076,8 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateEndpointConnectionProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(309)),
         }),
       ).annotate({
         identifier: "GetPrivateEndpointConnectionResponse",
@@ -14082,12 +11104,12 @@ function __c39(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          creationData: S.optional(CreationData),
-          snapshotType: S.optional(SnapshotPropertiesSnapshotType),
+          creationData: S.optional(__S(11)),
+          snapshotType: S.optional(S.String),
           kubernetesVersion: S.optional(S.String),
           nodeImageVersion: S.optional(S.String),
-          osType: S.optional(SnapshotPropertiesOsType),
-          osSku: S.optional(OSSKU),
+          osType: S.optional(S.String),
+          osSku: S.optional(S.String),
           vmSize: S.optional(S.String),
           enableFIPS: S.optional(S.Boolean),
         }),
@@ -14098,10 +11120,10 @@ function __c39(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetSnapshotResponseTagsMap),
+          systemData: S.optional(__S(36)),
+          tags: S.optional(__S(6)),
           location: S.String,
-          properties: S.optional(SnapshotProperties),
+          properties: S.optional(__S(312)),
         }),
       ).annotate({ identifier: "GetSnapshotResponse" });
     case 2:
@@ -14125,9 +11147,9 @@ function __c39(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(TrustedAccessRoleBindingProvisioningState),
+          provisioningState: S.optional(S.String),
           sourceResourceId: S.String,
-          roles: TrustedAccessRoleBindingPropertiesRolesList,
+          roles: __S(7),
         }),
       ).annotate({
         identifier: "TrustedAccessRoleBindingProperties",
@@ -14138,8 +11160,8 @@ function __c39(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: TrustedAccessRoleBindingProperties,
+          systemData: S.optional(__S(36)),
+          properties: __S(315),
         }),
       ).annotate({
         identifier: "GetTrustedAccessRoleBindingResponse",
@@ -14163,7 +11185,7 @@ function __c39(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedClusterUpgradeType,
+          type: S.String,
           kubernetesVersion: S.optional(S.String),
         }),
       ).annotate({
@@ -14180,19 +11202,19 @@ function __c39(j: number): any {
 function __c40(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(NodeImageVersion);
+      return S.Array(__S(319));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: NodeImageSelectionType,
-          customNodeImageVersions: S.optional(NodeImageSelectionCustomNodeImageVersionsList),
+          type: S.String,
+          customNodeImageVersions: S.optional(__S(320)),
         }),
       ).annotate({ identifier: "NodeImageSelection" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          upgrade: ManagedClusterUpgradeSpec,
-          nodeImageSelection: S.optional(NodeImageSelection),
+          upgrade: __S(318),
+          nodeImageSelection: S.optional(__S(321)),
         }),
       ).annotate({ identifier: "ManagedClusterUpdate" });
     case 3:
@@ -14201,8 +11223,8 @@ function __c40(j: number): any {
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(UpdateStatusErrorDetailsList),
-          additionalInfo: S.optional(UpdateStatusErrorAdditionalInfoList),
+          details: S.optional(__S(41)),
+          additionalInfo: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "UpdateStatusError" });
     case 4:
@@ -14210,14 +11232,14 @@ function __c40(j: number): any {
         S.Struct({
           startTime: S.optional(S.String),
           completedTime: S.optional(S.String),
-          state: S.optional(UpdateState),
-          error: S.optional(UpdateStatusError),
+          state: S.optional(S.String),
+          error: S.optional(__S(323)),
         }),
       ).annotate({ identifier: "UpdateStatus" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(UpdateStatus),
+          status: S.optional(__S(324)),
           name: S.optional(S.String),
           clusterResourceId: S.optional(S.String),
           operationId: S.optional(S.String),
@@ -14225,13 +11247,13 @@ function __c40(j: number): any {
         }),
       ).annotate({ identifier: "MemberUpdateStatus" });
     case 6:
-      return S.Array(MemberUpdateStatus);
+      return S.Array(__S(325));
     case 7:
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
           gateId: S.optional(S.String),
-          status: S.optional(UpdateStatus),
+          status: S.optional(__S(324)),
         }),
       ).annotate({ identifier: "UpdateRunGateStatus" });
   }
@@ -14239,55 +11261,53 @@ function __c40(j: number): any {
 function __c41(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UpdateRunGateStatus);
+      return S.Array(__S(327));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(UpdateStatus),
+          status: S.optional(__S(324)),
           name: S.optional(S.String),
           maxConcurrency: S.optional(S.Number),
-          members: S.optional(UpdateGroupStatusMembersList),
-          beforeGates: S.optional(UpdateGroupStatusBeforeGatesList),
-          afterGates: S.optional(UpdateGroupStatusAfterGatesList),
+          members: S.optional(__S(326)),
+          beforeGates: S.optional(__S(328)),
+          afterGates: S.optional(__S(328)),
         }),
       ).annotate({ identifier: "UpdateGroupStatus" });
     case 2:
-      return S.Array(UpdateGroupStatus);
+      return S.Array(__S(329));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(UpdateStatus),
+          status: S.optional(__S(324)),
           waitDurationInSeconds: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WaitStatus" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(UpdateStatus),
+          status: S.optional(__S(324)),
           name: S.optional(S.String),
           maxConcurrency: S.optional(S.Number),
-          groups: S.optional(UpdateStageStatusGroupsList),
-          beforeGates: S.optional(UpdateStageStatusBeforeGatesList),
-          afterGates: S.optional(UpdateStageStatusAfterGatesList),
-          afterStageWaitStatus: S.optional(WaitStatus),
+          groups: S.optional(__S(330)),
+          beforeGates: S.optional(__S(328)),
+          afterGates: S.optional(__S(328)),
+          afterStageWaitStatus: S.optional(__S(331)),
         }),
       ).annotate({ identifier: "UpdateStageStatus" });
     case 5:
-      return S.Array(UpdateStageStatus);
+      return S.Array(__S(332));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          selectedNodeImageVersions: S.optional(
-            NodeImageSelectionStatusSelectedNodeImageVersionsList,
-          ),
+          selectedNodeImageVersions: S.optional(__S(320)),
         }),
       ).annotate({ identifier: "NodeImageSelectionStatus" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(UpdateStatus),
-          stages: S.optional(UpdateRunStatusStagesList),
-          nodeImageSelection: S.optional(NodeImageSelectionStatus),
+          status: S.optional(__S(324)),
+          stages: S.optional(__S(333)),
+          nodeImageSelection: S.optional(__S(334)),
         }),
       ).annotate({ identifier: "UpdateRunStatus" });
   }
@@ -14297,11 +11317,11 @@ function __c42(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(UpdateRunProvisioningState),
+          provisioningState: S.optional(S.String),
           updateStrategyId: S.optional(S.String),
-          strategy: S.optional(UpdateRunStrategy),
-          managedClusterUpdate: ManagedClusterUpdate,
-          status: S.optional(UpdateRunStatus),
+          strategy: S.optional(__S(129)),
+          managedClusterUpdate: __S(322),
+          status: S.optional(__S(335)),
           autoUpgradeProfileId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateRunProperties" });
@@ -14311,8 +11331,8 @@ function __c42(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(UpdateRunProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(336)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetUpdateRunResponse" });
@@ -14327,7 +11347,7 @@ function __c42(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          managedIdentity: IdentityBindingManagedIdentityProfileInput,
+          managedIdentity: __S(338),
         }),
       ).annotate({
         identifier: "IdentityBindingPropertiesInput",
@@ -14339,7 +11359,7 @@ function __c42(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           identityBindingName: S.String.pipe(T.Label()),
-          properties: S.optional(IdentityBindingPropertiesInput),
+          properties: S.optional(__S(339)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -14367,11 +11387,11 @@ function __c42(j: number): any {
         ),
       ).annotate({ identifier: "ListAgentPoolsRequest" });
     case 6:
-      return S.Array(AgentPool);
+      return S.Array(__S(135));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: AgentPoolListResultValueList,
+          value: __S(342),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentPoolListResult" });
@@ -14404,17 +11424,17 @@ function __c43(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(AutoUpgradeProfileProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(54)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutoUpgradeProfile" });
     case 2:
-      return S.Array(AutoUpgradeProfile);
+      return S.Array(__S(345));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: AutoUpgradeProfileListResultValueList,
+          value: __S(346),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -14441,17 +11461,17 @@ function __c43(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeploymentSafeguardsProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(58)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentSafeguard" });
     case 6:
-      return S.Array(DeploymentSafeguard);
+      return S.Array(__S(349));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: DeploymentSafeguardListResultValueList,
+          value: __S(350),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -14478,11 +11498,11 @@ function __c44(j: number): any {
         identifier: "ListFleetByResourceGroupRequest",
       });
     case 1:
-      return S.Array(Fleet);
+      return S.Array(__S(151));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: FleetListResultValueList,
+          value: __S(353),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetListResult" });
@@ -14528,11 +11548,11 @@ function __c44(j: number): any {
         }),
       ).annotate({ identifier: "FleetCredentialResult" });
     case 6:
-      return S.Array(FleetCredentialResult);
+      return S.Array(__S(357));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          kubeconfigs: S.optional(FleetCredentialResultsKubeconfigsList),
+          kubeconfigs: S.optional(__S(358)),
         }),
       ).annotate({ identifier: "FleetCredentialResults" });
   }
@@ -14562,19 +11582,19 @@ function __c45(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(FleetManagedNamespaceTagsMap),
+          systemData: S.optional(__S(36)),
+          tags: S.optional(__S(6)),
           location: S.String,
-          properties: S.optional(FleetManagedNamespaceProperties),
+          properties: S.optional(__S(108)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetManagedNamespace" });
     case 2:
-      return S.Array(FleetManagedNamespace);
+      return S.Array(__S(361));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: FleetManagedNamespaceListResultValueList,
+          value: __S(362),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -14601,11 +11621,11 @@ function __c45(j: number): any {
         identifier: "ListFleetMemberByFleetRequest",
       });
     case 5:
-      return S.Array(FleetMember);
+      return S.Array(__S(154));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: FleetMemberListResultValueList,
+          value: __S(365),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetMemberListResult" });
@@ -14638,17 +11658,17 @@ function __c46(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(FleetUpdateStrategyProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(132)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "FleetUpdateStrategy" });
     case 1:
-      return S.Array(FleetUpdateStrategy);
+      return S.Array(__S(368));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: FleetUpdateStrategyListResultValueList,
+          value: __S(369),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -14673,11 +11693,11 @@ function __c46(j: number): any {
         ),
       ).annotate({ identifier: "ListGateByFleetRequest" });
     case 4:
-      return S.Array(Gate);
+      return S.Array(__S(160));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: GateListResultValueList,
+          value: __S(372),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GateListResult" });
@@ -14704,8 +11724,8 @@ function __c46(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(IdentityBindingProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(164)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentityBinding" });
@@ -14714,11 +11734,11 @@ function __c46(j: number): any {
 function __c47(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IdentityBinding);
+      return S.Array(__S(375));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: IdentityBindingListResultValueList,
+          value: __S(376),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -14741,11 +11761,11 @@ function __c47(j: number): any {
         ),
       ).annotate({ identifier: "ListMachinesRequest" });
     case 3:
-      return S.Array(Machine);
+      return S.Array(__S(171));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: MachineListResultValueList,
+          value: __S(379),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MachineListResult" });
@@ -14772,12 +11792,12 @@ function __c47(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(MaintenanceConfigurationProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(186)),
         }),
       ).annotate({ identifier: "MaintenanceConfiguration" });
     case 7:
-      return S.Array(MaintenanceConfiguration);
+      return S.Array(__S(382));
   }
 }
 function __c48(j: number): any {
@@ -14785,7 +11805,7 @@ function __c48(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: MaintenanceConfigurationListResultValueList,
+          value: __S(383),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -14813,23 +11833,23 @@ function __c48(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(ManagedClusterTagsMap),
+          systemData: S.optional(__S(36)),
+          tags: S.optional(__S(6)),
           location: S.String,
-          properties: S.optional(ManagedClusterProperties),
+          properties: S.optional(__S(278)),
           eTag: S.optional(S.String),
-          sku: S.optional(ManagedClusterSKU),
-          extendedLocation: S.optional(ExtendedLocation),
-          identity: S.optional(ManagedClusterIdentity),
+          sku: S.optional(__S(279)),
+          extendedLocation: S.optional(__S(280)),
+          identity: S.optional(__S(285)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedCluster" });
     case 3:
-      return S.Array(ManagedCluster);
+      return S.Array(__S(386));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: ManagedClusterListResultValueList,
+          value: __S(387),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedClusterListResult" });
@@ -14876,7 +11896,7 @@ function __c48(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           server_fqdn: S.optional(S.String.pipe(T.Query("server-fqdn"))),
-          format: S.optional(ListManagedClusterClusterUserCredentialsRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14911,7 +11931,7 @@ function __c49(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          supportPlan: S.optional(KubernetesVersionCapabilitiesSupportPlanList),
+          supportPlan: S.optional(__S(226)),
         }),
       ).annotate({
         identifier: "KubernetesVersionCapabilities",
@@ -14919,27 +11939,27 @@ function __c49(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          upgrades: S.optional(KubernetesPatchVersionUpgradesList),
+          upgrades: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "KubernetesPatchVersion" });
     case 3:
-      return S.Record(S.String, KubernetesPatchVersion);
+      return S.Record(S.String, __S(394));
     case 4:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
-          capabilities: S.optional(KubernetesVersionCapabilities),
+          capabilities: S.optional(__S(393)),
           isDefault: S.optional(S.Boolean),
           isPreview: S.optional(S.Boolean),
-          patchVersions: S.optional(KubernetesVersionPatchVersionsMap),
+          patchVersions: S.optional(__S(395)),
         }),
       ).annotate({ identifier: "KubernetesVersion" });
     case 5:
-      return S.Array(KubernetesVersion);
+      return S.Array(__S(396));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(KubernetesVersionListResultValuesList),
+          values: S.optional(__S(397)),
         }),
       ).annotate({
         identifier: "KubernetesVersionListResult",
@@ -14970,16 +11990,16 @@ function __c50(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(MeshRevisionProfileProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(295)),
         }),
       ).annotate({ identifier: "MeshRevisionProfile" });
     case 1:
-      return S.Array(MeshRevisionProfile);
+      return S.Array(__S(400));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: MeshRevisionProfileListValueList,
+          value: __S(401),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MeshRevisionProfileList" });
@@ -15006,16 +12026,16 @@ function __c50(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(MeshRevision),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(293)),
         }),
       ).annotate({ identifier: "MeshUpgradeProfile" });
     case 5:
-      return S.Array(MeshUpgradeProfile);
+      return S.Array(__S(404));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: MeshUpgradeProfileListValueList,
+          value: __S(405),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MeshUpgradeProfileList" });
@@ -15050,31 +12070,31 @@ function __c51(j: number): any {
         }),
       ).annotate({ identifier: "EndpointDetail" });
     case 1:
-      return S.Array(EndpointDetail);
+      return S.Array(__S(408));
     case 2:
       return S.suspend(() =>
         S.Struct({
           domainName: S.optional(S.String),
-          endpointDetails: S.optional(EndpointDependencyEndpointDetailsList),
+          endpointDetails: S.optional(__S(409)),
         }),
       ).annotate({ identifier: "EndpointDependency" });
     case 3:
-      return S.Array(EndpointDependency);
+      return S.Array(__S(410));
     case 4:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.String),
-          endpoints: S.optional(OutboundEnvironmentEndpointEndpointsList),
+          endpoints: S.optional(__S(411)),
         }),
       ).annotate({
         identifier: "OutboundEnvironmentEndpoint",
       });
     case 5:
-      return S.Array(OutboundEnvironmentEndpoint);
+      return S.Array(__S(412));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: OutboundEnvironmentEndpointCollectionValueList,
+          value: __S(413),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -15122,19 +12142,19 @@ function __c52(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(ManagedNamespaceTagsMap),
+          systemData: S.optional(__S(36)),
+          tags: S.optional(__S(6)),
           location: S.String,
-          properties: S.optional(NamespaceProperties),
+          properties: S.optional(__S(305)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedNamespace" });
     case 2:
-      return S.Array(ManagedNamespace);
+      return S.Array(__S(417));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: ManagedNamespaceListResultValueList,
+          value: __S(418),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -15183,7 +12203,7 @@ function __c52(j: number): any {
         S.Struct({
           origin: S.optional(S.String),
           name: S.optional(S.String),
-          display: S.optional(OperationValueDisplay),
+          display: S.optional(__S(422)),
         }),
       ).annotate({ identifier: "OperationValue" });
   }
@@ -15191,11 +12211,11 @@ function __c52(j: number): any {
 function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OperationValue);
+      return S.Array(__S(423));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: OperationListResultValueList,
+          value: __S(424),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -15217,11 +12237,11 @@ function __c53(j: number): any {
         identifier: "ListPrivateEndpointConnectionsRequest",
       });
     case 3:
-      return S.Array(PrivateEndpointConnection);
+      return S.Array(__S(310));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PrivateEndpointConnectionListResultValueList),
+          value: S.optional(__S(427)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionListResult",
@@ -15246,7 +12266,7 @@ function __c53(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PrivateLinkResourcesListResultValueList),
+          value: S.optional(__S(236)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourcesListResult",
@@ -15272,11 +12292,11 @@ function __c53(j: number): any {
 function __c54(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Snapshot);
+      return S.Array(__S(313));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: SnapshotListResultValueList,
+          value: __S(432),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotListResult" });
@@ -15316,16 +12336,16 @@ function __c54(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: TrustedAccessRoleBindingProperties,
+          systemData: S.optional(__S(36)),
+          properties: __S(315),
         }),
       ).annotate({ identifier: "TrustedAccessRoleBinding" });
     case 5:
-      return S.Array(TrustedAccessRoleBinding);
+      return S.Array(__S(436));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: TrustedAccessRoleBindingListResultValueList,
+          value: __S(437),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -15354,29 +12374,29 @@ function __c55(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          verbs: S.optional(TrustedAccessRoleRuleVerbsList),
-          apiGroups: S.optional(TrustedAccessRoleRuleApiGroupsList),
-          resources: S.optional(TrustedAccessRoleRuleResourcesList),
-          resourceNames: S.optional(TrustedAccessRoleRuleResourceNamesList),
-          nonResourceURLs: S.optional(TrustedAccessRoleRuleNonResourceURLsList),
+          verbs: S.optional(__S(7)),
+          apiGroups: S.optional(__S(7)),
+          resources: S.optional(__S(7)),
+          resourceNames: S.optional(__S(7)),
+          nonResourceURLs: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "TrustedAccessRoleRule" });
     case 1:
-      return S.Array(TrustedAccessRoleRule);
+      return S.Array(__S(440));
     case 2:
       return S.suspend(() =>
         S.Struct({
           sourceResourceType: S.optional(S.String),
           name: S.optional(S.String),
-          rules: S.optional(TrustedAccessRoleRulesList),
+          rules: S.optional(__S(441)),
         }),
       ).annotate({ identifier: "TrustedAccessRole" });
     case 3:
-      return S.Array(TrustedAccessRole);
+      return S.Array(__S(442));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: TrustedAccessRoleListResultValueList,
+          value: __S(443),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -15402,11 +12422,11 @@ function __c55(j: number): any {
         identifier: "ListUpdateRunByFleetRequest",
       });
     case 6:
-      return S.Array(UpdateRun);
+      return S.Array(__S(337));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: UpdateRunListResultValueList,
+          value: __S(446),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateRunListResult" });
@@ -15421,7 +12441,7 @@ function __c56(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           configName: S.String.pipe(T.Label()),
-          properties: S.optional(MaintenanceConfigurationProperties),
+          properties: S.optional(__S(186)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15439,90 +12459,82 @@ function __c56(j: number): any {
           count: S.optional(S.Number),
           vmSize: S.optional(S.String),
           osDiskSizeGB: S.optional(S.Number),
-          osDiskType: S.optional(OSDiskType),
-          kubeletDiskType: S.optional(KubeletDiskType),
-          workloadRuntime: S.optional(WorkloadRuntime),
+          osDiskType: S.optional(S.String),
+          kubeletDiskType: S.optional(S.String),
+          workloadRuntime: S.optional(S.String),
           messageOfTheDay: S.optional(S.String),
           vnetSubnetID: S.optional(S.String),
           podSubnetID: S.optional(S.String),
-          podIPAllocationMode: S.optional(PodIPAllocationMode),
+          podIPAllocationMode: S.optional(S.String),
           maxPods: S.optional(S.Number),
-          osType: S.optional(ManagedClusterAgentPoolProfileInputOsType),
-          osSKU: S.optional(OSSKU),
+          osType: S.optional(S.String),
+          osSKU: S.optional(S.String),
           maxCount: S.optional(S.Number),
           minCount: S.optional(S.Number),
           enableAutoScaling: S.optional(S.Boolean),
-          scaleDownMode: S.optional(ScaleDownMode),
-          type: S.optional(AgentPoolType),
-          mode: S.optional(AgentPoolMode),
+          scaleDownMode: S.optional(S.String),
+          type: S.optional(S.String),
+          mode: S.optional(S.String),
           orchestratorVersion: S.optional(S.String),
           nodeImageVersion: S.optional(S.String),
-          upgradeSettings: S.optional(AgentPoolUpgradeSettings),
-          powerState: S.optional(PowerState),
-          availabilityZones: S.optional(ManagedClusterAgentPoolProfileInputAvailabilityZonesList),
+          upgradeSettings: S.optional(__S(3)),
+          powerState: S.optional(__S(4)),
+          availabilityZones: S.optional(__S(7)),
           enableNodePublicIP: S.optional(S.Boolean),
           nodePublicIPPrefixID: S.optional(S.String),
-          scaleSetPriority: S.optional(ManagedClusterAgentPoolProfileInputScaleSetPriority),
-          scaleSetEvictionPolicy: S.optional(
-            ManagedClusterAgentPoolProfileInputScaleSetEvictionPolicy,
-          ),
+          scaleSetPriority: S.optional(S.String),
+          scaleSetEvictionPolicy: S.optional(S.String),
           spotMaxPrice: S.optional(S.Number),
-          tags: S.optional(ManagedClusterAgentPoolProfileInputTagsMap),
-          nodeLabels: S.optional(ManagedClusterAgentPoolProfileInputNodeLabelsMap),
-          nodeTaints: S.optional(ManagedClusterAgentPoolProfileInputNodeTaintsList),
+          tags: S.optional(__S(6)),
+          nodeLabels: S.optional(__S(6)),
+          nodeTaints: S.optional(__S(7)),
           proximityPlacementGroupID: S.optional(S.String),
-          kubeletConfig: S.optional(KubeletConfig),
-          linuxOSConfig: S.optional(LinuxOSConfig),
+          kubeletConfig: S.optional(__S(8)),
+          linuxOSConfig: S.optional(__S(10)),
           enableEncryptionAtHost: S.optional(S.Boolean),
           enableUltraSSD: S.optional(S.Boolean),
           enableFIPS: S.optional(S.Boolean),
-          gpuInstanceProfile: S.optional(GPUInstanceProfile),
-          creationData: S.optional(CreationData),
+          gpuInstanceProfile: S.optional(S.String),
+          creationData: S.optional(__S(11)),
           capacityReservationGroupID: S.optional(S.String),
           hostGroupID: S.optional(S.String),
-          networkProfile: S.optional(AgentPoolNetworkProfile),
-          windowsProfile: S.optional(AgentPoolWindowsProfile),
-          securityProfile: S.optional(AgentPoolSecurityProfile),
-          gpuProfile: S.optional(GPUProfile),
-          gatewayProfile: S.optional(AgentPoolGatewayProfile),
-          artifactStreamingProfile: S.optional(AgentPoolArtifactStreamingProfile),
-          virtualMachinesProfile: S.optional(VirtualMachinesProfile),
-          virtualMachineNodesStatus: S.optional(
-            ManagedClusterAgentPoolProfileInputVirtualMachineNodesStatusList,
-          ),
-          status: S.optional(AgentPoolStatusInput),
-          localDNSProfile: S.optional(LocalDNSProfile),
+          networkProfile: S.optional(__S(17)),
+          windowsProfile: S.optional(__S(18)),
+          securityProfile: S.optional(__S(19)),
+          gpuProfile: S.optional(__S(20)),
+          gatewayProfile: S.optional(__S(21)),
+          artifactStreamingProfile: S.optional(__S(22)),
+          virtualMachinesProfile: S.optional(__S(28)),
+          virtualMachineNodesStatus: S.optional(__S(29)),
+          status: S.optional(__S(30)),
+          localDNSProfile: S.optional(__S(33)),
           name: S.String,
         }),
       ).annotate({
         identifier: "ManagedClusterAgentPoolProfileInput",
       });
     case 2:
-      return S.Array(ManagedClusterAgentPoolProfileInput);
+      return S.Array(__S(449));
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           namespace: S.String,
           bindingSelector: S.optional(S.String),
-          identity: UserAssignedIdentity,
+          identity: __S(198),
         }),
       ).annotate({
         identifier: "ManagedClusterPodIdentityInput",
       });
     case 4:
-      return S.Array(ManagedClusterPodIdentityInput);
+      return S.Array(__S(451));
     case 5:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
           allowNetworkPluginKubenet: S.optional(S.Boolean),
-          userAssignedIdentities: S.optional(
-            ManagedClusterPodIdentityProfileInputUserAssignedIdentitiesList,
-          ),
-          userAssignedIdentityExceptions: S.optional(
-            ManagedClusterPodIdentityProfileInputUserAssignedIdentityExceptionsList,
-          ),
+          userAssignedIdentities: S.optional(__S(452)),
+          userAssignedIdentityExceptions: S.optional(__S(208)),
         }),
       ).annotate({
         identifier: "ManagedClusterPodIdentityProfileInput",
@@ -15530,13 +12542,13 @@ function __c56(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          managedOutboundIPs: S.optional(ManagedClusterLoadBalancerProfileManagedOutboundIPs),
-          outboundIPPrefixes: S.optional(ManagedClusterLoadBalancerProfileOutboundIPPrefixes),
-          outboundIPs: S.optional(ManagedClusterLoadBalancerProfileOutboundIPs),
+          managedOutboundIPs: S.optional(__S(216)),
+          outboundIPPrefixes: S.optional(__S(219)),
+          outboundIPs: S.optional(__S(221)),
           allocatedOutboundPorts: S.optional(S.Number),
           idleTimeoutInMinutes: S.optional(S.Number),
           enableMultipleStandardLoadBalancers: S.optional(S.Boolean),
-          backendPoolType: S.optional(ManagedClusterLoadBalancerProfileInputBackendPoolType),
+          backendPoolType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedClusterLoadBalancerProfileInput",
@@ -15544,10 +12556,10 @@ function __c56(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(ManagedClusterNATGatewaySku),
-          managedOutboundIPProfile: S.optional(ManagedClusterManagedOutboundIPProfile),
-          outboundIPPrefixes: S.optional(ManagedClusterNATGatewayProfileInputOutboundIPPrefixes),
-          outboundIPs: S.optional(ManagedClusterNATGatewayProfileInputOutboundIPs),
+          sku: S.optional(S.String),
+          managedOutboundIPProfile: S.optional(__S(216)),
+          outboundIPPrefixes: S.optional(__S(223)),
+          outboundIPs: S.optional(__S(224)),
           idleTimeoutInMinutes: S.optional(S.Number),
         }),
       ).annotate({
@@ -15560,23 +12572,23 @@ function __c57(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          networkPlugin: S.optional(NetworkPlugin),
-          networkPluginMode: S.optional(NetworkPluginMode),
-          networkPolicy: S.optional(NetworkPolicy),
-          networkMode: S.optional(NetworkMode),
-          networkDataplane: S.optional(NetworkDataplane),
-          advancedNetworking: S.optional(AdvancedNetworking),
+          networkPlugin: S.optional(S.String),
+          networkPluginMode: S.optional(S.String),
+          networkPolicy: S.optional(S.String),
+          networkMode: S.optional(S.String),
+          networkDataplane: S.optional(S.String),
+          advancedNetworking: S.optional(__S(215)),
           podCidr: S.optional(S.String),
           serviceCidr: S.optional(S.String),
           dnsServiceIP: S.optional(S.String),
-          outboundType: S.optional(ContainerServiceNetworkProfileInputOutboundType),
-          loadBalancerSku: S.optional(LoadBalancerSku),
-          loadBalancerProfile: S.optional(ManagedClusterLoadBalancerProfileInput),
-          natGatewayProfile: S.optional(ManagedClusterNATGatewayProfileInput),
-          staticEgressGatewayProfile: S.optional(ManagedClusterStaticEgressGatewayProfile),
-          podCidrs: S.optional(ContainerServiceNetworkProfileInputPodCidrsList),
-          serviceCidrs: S.optional(ContainerServiceNetworkProfileInputServiceCidrsList),
-          ipFamilies: S.optional(ContainerServiceNetworkProfileInputIpFamiliesList),
+          outboundType: S.optional(S.String),
+          loadBalancerSku: S.optional(S.String),
+          loadBalancerProfile: S.optional(__S(454)),
+          natGatewayProfile: S.optional(__S(455)),
+          staticEgressGatewayProfile: S.optional(__S(22)),
+          podCidrs: S.optional(__S(7)),
+          serviceCidrs: S.optional(__S(7)),
+          ipFamilies: S.optional(__S(226)),
         }),
       ).annotate({
         identifier: "ContainerServiceNetworkProfileInput",
@@ -15588,54 +12600,54 @@ function __c57(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourceInputRequiredMembersList),
+          requiredMembers: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "PrivateLinkResourceInput" });
     case 2:
-      return S.Array(PrivateLinkResourceInput);
+      return S.Array(__S(457));
     case 3:
       return S.suspend(() =>
         S.Struct({
           kubernetesVersion: S.optional(S.String),
           dnsPrefix: S.optional(S.String),
           fqdnSubdomain: S.optional(S.String),
-          agentPoolProfiles: S.optional(ManagedClusterPropertiesInputAgentPoolProfilesList),
-          linuxProfile: S.optional(ContainerServiceLinuxProfile),
-          windowsProfile: S.optional(ManagedClusterWindowsProfile),
-          servicePrincipalProfile: S.optional(ManagedClusterServicePrincipalProfile),
-          addonProfiles: S.optional(ManagedClusterPropertiesInputAddonProfilesMap),
-          podIdentityProfile: S.optional(ManagedClusterPodIdentityProfileInput),
-          oidcIssuerProfile: S.optional(ManagedClusterOIDCIssuerProfileInput),
+          agentPoolProfiles: S.optional(__S(450)),
+          linuxProfile: S.optional(__S(194)),
+          windowsProfile: S.optional(__S(196)),
+          servicePrincipalProfile: S.optional(__S(197)),
+          addonProfiles: S.optional(__S(200)),
+          podIdentityProfile: S.optional(__S(453)),
+          oidcIssuerProfile: S.optional(__S(22)),
           nodeResourceGroup: S.optional(S.String),
-          nodeResourceGroupProfile: S.optional(ManagedClusterNodeResourceGroupProfile),
+          nodeResourceGroupProfile: S.optional(__S(211)),
           enableRBAC: S.optional(S.Boolean),
-          supportPlan: S.optional(KubernetesSupportPlan),
+          supportPlan: S.optional(S.String),
           enableFIPS: S.optional(S.Boolean),
-          networkProfile: S.optional(ContainerServiceNetworkProfileInput),
-          aadProfile: S.optional(ManagedClusterAADProfile),
-          autoUpgradeProfile: S.optional(ManagedClusterAutoUpgradeProfile),
-          upgradeSettings: S.optional(ClusterUpgradeSettings),
-          autoScalerProfile: S.optional(ManagedClusterPropertiesAutoScalerProfile),
-          apiServerAccessProfile: S.optional(ManagedClusterAPIServerAccessProfile),
+          networkProfile: S.optional(__S(456)),
+          aadProfile: S.optional(__S(228)),
+          autoUpgradeProfile: S.optional(__S(229)),
+          upgradeSettings: S.optional(__S(231)),
+          autoScalerProfile: S.optional(__S(232)),
+          apiServerAccessProfile: S.optional(__S(233)),
           diskEncryptionSetID: S.optional(S.String),
-          identityProfile: S.optional(ManagedClusterPropertiesInputIdentityProfileMap),
-          privateLinkResources: S.optional(ManagedClusterPropertiesInputPrivateLinkResourcesList),
+          identityProfile: S.optional(__S(234)),
+          privateLinkResources: S.optional(__S(458)),
           disableLocalAccounts: S.optional(S.Boolean),
-          httpProxyConfig: S.optional(ManagedClusterHTTPProxyConfig),
-          securityProfile: S.optional(ManagedClusterSecurityProfile),
-          storageProfile: S.optional(ManagedClusterStorageProfile),
-          ingressProfile: S.optional(ManagedClusterIngressProfile),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
-          workloadAutoScalerProfile: S.optional(ManagedClusterWorkloadAutoScalerProfile),
-          azureMonitorProfile: S.optional(ManagedClusterAzureMonitorProfile),
-          serviceMeshProfile: S.optional(ServiceMeshProfile),
-          metricsProfile: S.optional(ManagedClusterMetricsProfile),
-          nodeProvisioningProfile: S.optional(ManagedClusterNodeProvisioningProfile),
-          bootstrapProfile: S.optional(ManagedClusterBootstrapProfile),
-          aiToolchainOperatorProfile: S.optional(ManagedClusterAIToolchainOperatorProfile),
-          schedulerProfile: S.optional(SchedulerProfile),
-          hostedSystemProfile: S.optional(ManagedClusterHostedSystemProfile),
-          status: S.optional(AgentPoolStatusInput),
+          httpProxyConfig: S.optional(__S(237)),
+          securityProfile: S.optional(__S(245)),
+          storageProfile: S.optional(__S(246)),
+          ingressProfile: S.optional(__S(252)),
+          publicNetworkAccess: S.optional(S.String),
+          workloadAutoScalerProfile: S.optional(__S(255)),
+          azureMonitorProfile: S.optional(__S(262)),
+          serviceMeshProfile: S.optional(__S(271)),
+          metricsProfile: S.optional(__S(272)),
+          nodeProvisioningProfile: S.optional(__S(273)),
+          bootstrapProfile: S.optional(__S(274)),
+          aiToolchainOperatorProfile: S.optional(__S(22)),
+          schedulerProfile: S.optional(__S(276)),
+          hostedSystemProfile: S.optional(__S(277)),
+          status: S.optional(__S(30)),
         }),
       ).annotate({
         identifier: "ManagedClusterPropertiesInput",
@@ -15643,9 +12655,9 @@ function __c57(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ResourceIdentityType),
-          delegatedResources: S.optional(ManagedClusterIdentityInputDelegatedResourcesMap),
-          userAssignedIdentities: S.optional(ManagedClusterIdentityInputUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          delegatedResources: S.optional(__S(282)),
+          userAssignedIdentities: S.optional(__S(114)),
         }),
       ).annotate({
         identifier: "ManagedClusterIdentityInput",
@@ -15656,12 +12668,12 @@ function __c57(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(ManagedClustersCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(6)),
           location: S.String,
-          properties: S.optional(ManagedClusterPropertiesInput),
-          sku: S.optional(ManagedClusterSKU),
-          extendedLocation: S.optional(ExtendedLocation),
-          identity: S.optional(ManagedClusterIdentityInput),
+          properties: S.optional(__S(459)),
+          sku: S.optional(__S(279)),
+          extendedLocation: S.optional(__S(280)),
+          identity: S.optional(__S(460)),
           kind: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -15677,12 +12689,12 @@ function __c57(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(NamespacePropertiesInputLabelsMap),
-          annotations: S.optional(NamespacePropertiesInputAnnotationsMap),
-          defaultResourceQuota: S.optional(ResourceQuota),
-          defaultNetworkPolicy: S.optional(NetworkPolicies),
-          adoptionPolicy: S.optional(AdoptionPolicy),
-          deletePolicy: S.optional(DeletePolicy),
+          labels: S.optional(__S(6)),
+          annotations: S.optional(__S(6)),
+          defaultResourceQuota: S.optional(__S(83)),
+          defaultNetworkPolicy: S.optional(__S(84)),
+          adoptionPolicy: S.optional(S.String),
+          deletePolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "NamespacePropertiesInput" });
     case 7:
@@ -15692,9 +12704,9 @@ function __c57(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           managedNamespaceName: S.String.pipe(T.Label()),
-          tags: S.optional(ManagedNamespacesCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(6)),
           location: S.String,
-          properties: S.optional(NamespacePropertiesInput),
+          properties: S.optional(__S(462)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15720,7 +12732,7 @@ function __c58(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PostResolvePrivateLinkServiceIdRequestRequiredMembersList),
+          requiredMembers: S.optional(__S(7)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15808,8 +12820,8 @@ function __c58(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          creationData: S.optional(CreationData),
-          snapshotType: S.optional(SnapshotPropertiesInputSnapshotType),
+          creationData: S.optional(__S(11)),
+          snapshotType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotPropertiesInput" });
     case 6:
@@ -15818,9 +12830,9 @@ function __c58(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(SnapshotsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(6)),
           location: S.String,
-          properties: S.optional(SnapshotPropertiesInput),
+          properties: S.optional(__S(469)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15838,10 +12850,10 @@ function __c58(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(SnapshotsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(36)),
+          tags: S.optional(__S(6)),
           location: S.String,
-          properties: S.optional(SnapshotProperties),
+          properties: S.optional(__S(312)),
         }),
       ).annotate({
         identifier: "SnapshotsCreateOrUpdateResponse",
@@ -15920,7 +12932,7 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sourceResourceId: S.String,
-          roles: TrustedAccessRoleBindingPropertiesInputRolesList,
+          roles: __S(7),
         }),
       ).annotate({
         identifier: "TrustedAccessRoleBindingPropertiesInput",
@@ -15932,7 +12944,7 @@ function __c59(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           trustedAccessRoleBindingName: S.String.pipe(T.Label()),
-          properties: TrustedAccessRoleBindingPropertiesInput,
+          properties: __S(476),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15950,8 +12962,8 @@ function __c59(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateFleetRequestTagsMap),
-          identity: S.optional(FleetsCreateOrUpdateRequestIdentity),
+          tags: S.optional(__S(6)),
+          identity: S.optional(__S(115)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15968,7 +12980,7 @@ function __c59(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           managedNamespaceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateFleetManagedNamespaceRequestTagsMap),
+          tags: S.optional(__S(6)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15988,7 +13000,7 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           group: S.optional(S.String),
-          labels: S.optional(FleetMemberUpdatePropertiesLabelsMap),
+          labels: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "FleetMemberUpdateProperties",
@@ -16000,7 +13012,7 @@ function __c60(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           fleetMemberName: S.String.pipe(T.Label()),
-          properties: S.optional(FleetMemberUpdateProperties),
+          properties: S.optional(__S(480)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16013,7 +13025,7 @@ function __c60(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(GateState),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "GatePatchProperties" });
     case 3:
@@ -16023,7 +13035,7 @@ function __c60(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           gateName: S.String.pipe(T.Label()),
-          properties: S.optional(GatePatchProperties),
+          properties: S.optional(__S(482)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16039,7 +13051,7 @@ function __c60(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateManagedClusterTagsRequestTagsMap),
+          tags: S.optional(__S(6)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16058,7 +13070,7 @@ function __c60(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           managedNamespaceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateManagedNamespaceRequestTagsMap),
+          tags: S.optional(__S(6)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16073,8 +13085,8 @@ function __c60(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: PrivateLinkServiceConnectionState,
+          privateEndpoint: S.optional(__S(217)),
+          privateLinkServiceConnectionState: __S(308),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -16086,7 +13098,7 @@ function __c60(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(PrivateEndpointConnectionPropertiesInput),
+          properties: S.optional(__S(486)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16103,19 +13115,19 @@ function __c60(j: number): any {
 function __c61(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AgentPoolStatusInputProvisioningError);
+      return S.Array(__S(1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: NodeImageSelectionType,
-          customNodeImageVersions: S.optional(NodeImageSelectionInputCustomNodeImageVersionsList),
+          type: S.String,
+          customNodeImageVersions: S.optional(__S(488)),
         }),
       ).annotate({ identifier: "NodeImageSelectionInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          upgrade: ManagedClusterUpgradeSpec,
-          nodeImageSelection: S.optional(NodeImageSelectionInput),
+          upgrade: __S(318),
+          nodeImageSelection: S.optional(__S(489)),
         }),
       ).annotate({
         identifier: "ManagedClusterUpdateInput",
@@ -16124,8 +13136,8 @@ function __c61(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateStrategyId: S.optional(S.String),
-          strategy: S.optional(UpdateRunStrategy),
-          managedClusterUpdate: ManagedClusterUpdateInput,
+          strategy: S.optional(__S(129)),
+          managedClusterUpdate: __S(490),
         }),
       ).annotate({ identifier: "UpdateRunPropertiesInput" });
     case 4:
@@ -16135,7 +13147,7 @@ function __c61(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           updateRunName: S.String.pipe(T.Label()),
-          properties: S.optional(UpdateRunPropertiesInput),
+          properties: S.optional(__S(491)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -16153,8 +13165,8 @@ function __c61(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(UpdateRunProperties),
+          systemData: S.optional(__S(36)),
+          properties: S.optional(__S(336)),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -16163,12 +13175,12 @@ function __c61(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: TargetType,
+          type: S.String,
           name: S.String,
         }),
       ).annotate({ identifier: "SkipTarget" });
     case 7:
-      return S.Array(SkipTarget);
+      return S.Array(__S(494));
   }
 }
 function __c62(j: number): any {
@@ -16180,7 +13192,7 @@ function __c62(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           fleetName: S.String.pipe(T.Label()),
           updateRunName: S.String.pipe(T.Label()),
-          targets: UpdateRunsSkipRequestTargetsList,
+          targets: __S(495),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16196,7 +13208,7 @@ function __c62(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSnapshotTagsRequestTagsMap),
+          tags: S.optional(__S(6)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16208,5 +13220,140 @@ function __c62(j: number): any {
       ).annotate({
         identifier: "UpdateSnapshotTagsRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
+    case 41:
+      return __c41(i & 7);
+    case 42:
+      return __c42(i & 7);
+    case 43:
+      return __c43(i & 7);
+    case 44:
+      return __c44(i & 7);
+    case 45:
+      return __c45(i & 7);
+    case 46:
+      return __c46(i & 7);
+    case 47:
+      return __c47(i & 7);
+    case 48:
+      return __c48(i & 7);
+    case 49:
+      return __c49(i & 7);
+    case 50:
+      return __c50(i & 7);
+    case 51:
+      return __c51(i & 7);
+    case 52:
+      return __c52(i & 7);
+    case 53:
+      return __c53(i & 7);
+    case 54:
+      return __c54(i & 7);
+    case 55:
+      return __c55(i & 7);
+    case 56:
+      return __c56(i & 7);
+    case 57:
+      return __c57(i & 7);
+    case 58:
+      return __c58(i & 7);
+    case 59:
+      return __c59(i & 7);
+    case 60:
+      return __c60(i & 7);
+    case 61:
+      return __c61(i & 7);
+    case 62:
+      return __c62(i & 7);
   }
 }

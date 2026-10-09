@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CustomerioOpError, CustomerioOpContext };
 
@@ -60,11 +62,6 @@ export class UnprocessableEntity
   ) {}
 
 export type AddCollectionRequestBodyCase0DataItemMap = { [key: string]: unknown | undefined };
-const AddCollectionRequestBodyCase0DataItemMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddCollectionRequestBodyCase0DataItemMap>;
-
 /** An array of data objects that you want to reference in this collection. */
 export type AddCollectionRequestBodyCase0DataList = Array<AddCollectionRequestBodyCase0DataItemMap>;
 export interface AddCollectionRequestBodyCase0 {
@@ -82,20 +79,11 @@ export interface AddCollectionRequestBodyCase1 {
 export type AddCollectionRequestBody =
   | AddCollectionRequestBodyCase0
   | AddCollectionRequestBodyCase1;
-const AddCollectionRequestBody = S.Unknown as any as S.Schema<AddCollectionRequestBody>;
-
 export interface AddCollectionRequest {
   body?: AddCollectionRequestBody;
 }
-const AddCollectionRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddCollectionRequest>;
-
 /** Lists the top-level keys that you can reference within this collection. Customer.io does not enforce any of these keys as required from your `data`. */
 export type AddCollectionResponseCollectionSchemaList = Array<string>;
-const AddCollectionResponseCollectionSchemaList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddCollectionResponseCollectionSchemaList>;
-
 export interface AddCollectionResponseCollection {
   /** The size of the collection in bytes. */
   bytes?: number;
@@ -112,22 +100,10 @@ export interface AddCollectionResponseCollection {
   /** The date time when the referenced ID was last updated. */
   updated_at?: number;
 }
-const AddCollectionResponseCollection = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AddCollectionResponseCollection>;
-
 export interface AddCollectionResponse {
   collection?: AddCollectionResponseCollection;
 }
-const AddCollectionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AddCollectionResponse>;
-
 export type BroadcastActionLinksRequestPeriod = "hours" | "days" | "weeks" | "months";
-const BroadcastActionLinksRequestPeriod = S.String;
-
 export type BroadcastActionLinksRequestType =
   | "email"
   | "webhook"
@@ -137,8 +113,6 @@ export type BroadcastActionLinksRequestType =
   | "push"
   | "in_app"
   | "live_notification";
-const BroadcastActionLinksRequestType = S.String;
-
 export interface BroadcastActionLinksRequest {
   /** The identifier of a broadcast. */
   broadcast_id: number;
@@ -151,41 +125,18 @@ export interface BroadcastActionLinksRequest {
   /** The type of item you want to return metrics for. When empty, the response contains metrics for all possible types. */
   type?: BroadcastActionLinksRequestType | (string & {});
 }
-const BroadcastActionLinksRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<BroadcastActionLinksRequest>;
-
 export interface BroadcastActionLinksResponseLinksItemLink {
   /** The link destination--a URL, mailto, etc. */
   href?: string;
   /** The ID of the link. */
   id?: number;
 }
-const BroadcastActionLinksResponseLinksItemLink = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<BroadcastActionLinksResponseLinksItemLink>;
-
 /** An array of results from oldest to newest, where each result indicates a period. */
 export type BroadcastActionLinksResponseLinksItemMetricSeriesClickedList = Array<number>;
-const BroadcastActionLinksResponseLinksItemMetricSeriesClickedList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BroadcastActionLinksResponseLinksItemMetricSeriesClickedList>;
-
 /** An array of human click counts (clicks excluding machine clicks) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList = Array<number>;
-const BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList>;
-
 /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionLinksResponseLinksItemMetricSeriesMachineClickedList = Array<number>;
-const BroadcastActionLinksResponseLinksItemMetricSeriesMachineClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionLinksResponseLinksItemMetricSeriesMachineClickedList>;
-
 export interface BroadcastActionLinksResponseLinksItemMetricSeries {
   /** An array of results from oldest to newest, where each result indicates a period. */
   clicked?: BroadcastActionLinksResponseLinksItemMetricSeriesClickedList;
@@ -194,49 +145,22 @@ export interface BroadcastActionLinksResponseLinksItemMetricSeries {
   /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
   machine_clicked?: BroadcastActionLinksResponseLinksItemMetricSeriesMachineClickedList;
 }
-const BroadcastActionLinksResponseLinksItemMetricSeries = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BroadcastActionLinksResponseLinksItemMetricSeries>;
-
 /** Contains metrics for the link. */
 export interface BroadcastActionLinksResponseLinksItemMetric {
   series?: BroadcastActionLinksResponseLinksItemMetricSeries;
 }
-const BroadcastActionLinksResponseLinksItemMetric = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<BroadcastActionLinksResponseLinksItemMetric>;
-
 export interface BroadcastActionLinksResponseLinksItem {
   link?: BroadcastActionLinksResponseLinksItemLink;
   /** Contains metrics for the link. */
   metric?: BroadcastActionLinksResponseLinksItemMetric;
 }
-const BroadcastActionLinksResponseLinksItem = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<BroadcastActionLinksResponseLinksItem>;
-
 /** Each object in the array represents a link in your broadcast variant. */
 export type BroadcastActionLinksResponseLinksList = Array<BroadcastActionLinksResponseLinksItem>;
-const BroadcastActionLinksResponseLinksList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<BroadcastActionLinksResponseLinksList>;
-
 export interface BroadcastActionLinksResponse {
   /** Each object in the array represents a link in your broadcast variant. */
   links?: BroadcastActionLinksResponseLinksList;
 }
-const BroadcastActionLinksResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<BroadcastActionLinksResponse>;
-
 export type BroadcastActionMetricsRequestPeriod = "hours" | "days" | "weeks" | "months";
-const BroadcastActionMetricsRequestPeriod = S.String;
-
 export type BroadcastActionMetricsRequestType =
   | "email"
   | "webhook"
@@ -246,8 +170,6 @@ export type BroadcastActionMetricsRequestType =
   | "push"
   | "in_app"
   | "live_notification";
-const BroadcastActionMetricsRequestType = S.String;
-
 export interface BroadcastActionMetricsRequest {
   /** The identifier of a broadcast. */
   broadcast_id: number;
@@ -260,152 +182,69 @@ export interface BroadcastActionMetricsRequest {
   /** The type of item you want to return metrics for. When empty, the response contains metrics for all possible types. */
   type?: BroadcastActionMetricsRequestType | (string & {});
 }
-const BroadcastActionMetricsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<BroadcastActionMetricsRequest>;
-
 /** The number of `attempted` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesAttemptedList = Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesAttemptedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesAttemptedList>;
-
 /** The number of `bounced` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesBouncedList = Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesBouncedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesBouncedList>;
-
 /** The number of `clicked` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesClickedList = Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesClickedList>;
-
 /** The number of `converted` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesConvertedList = Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesConvertedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesConvertedList>;
-
 /** The number of `created` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesCreatedList = Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesCreatedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesCreatedList>;
-
 /** The number of `deferred` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesDeferredList = Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesDeferredList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesDeferredList>;
-
 /** The number of `delivered` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesDeliveredList = Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesDeliveredList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesDeliveredList>;
-
 /** The number of `drafted` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesDraftedList = Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesDraftedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesDraftedList>;
-
 /** The number of `failed` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesFailedList = Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesFailedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesFailedList>;
-
 /** The number of `clicked` emails excluding machine clicks. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanClickedList =
   Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanClickedList>;
-
 /** The number of `opened` emails excluding machine opens. This metric is reliable starting March 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanOpenedList =
   Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanOpenedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanOpenedList>;
-
 /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList =
   Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList>;
-
 /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList =
   Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList>;
-
 /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList =
   Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList>;
-
 /** The number of `opened` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenedList = Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenedList>;
-
 /** The number of `opened` emails attributed to machines. This metric is reliable starting March 20, 2025. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesPrefetchOpenedList =
   Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesPrefetchOpenedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesPrefetchOpenedList>;
-
 /** The number of SMS/MMS messages a person replied to with a keyword. [Learn more about inbound messages](/messaging/channels/sms/inbound/get-started/). */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesRepliedList = Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesRepliedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesRepliedList>;
-
 /** The number of sent messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesSentList = Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesSentList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesSentList>;
-
 /** The number of spam complaints. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesSpammedList = Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesSpammedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesSpammedList>;
-
 /** The number of `suppressed` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesSuppressedList = Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesSuppressedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesSuppressedList>;
-
 /** The number of topic unsubscribes in a given period. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesTopicUnsubscribedList =
   Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesTopicUnsubscribedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesTopicUnsubscribedList>;
-
 /** The number of people who denied consent to email open tracking in the period. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentDeniedList =
   Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentDeniedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentDeniedList>;
-
 /** The number of people who granted consent to email open tracking in the period. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentGrantedList =
   Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentGrantedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentGrantedList>;
-
 /** The number of `undeliverable` messages. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesUndeliverableList =
   Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesUndeliverableList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesUndeliverableList>;
-
 /** The number of unsubscribes attributed to the automation or message. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesUnsubscribedList =
   Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesUnsubscribedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesUnsubscribedList>;
-
 /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
 export type BroadcastActionMetricsResponseLanguageVariantsValueSeriesUntrackedList = Array<number>;
-const BroadcastActionMetricsResponseLanguageVariantsValueSeriesUntrackedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeriesUntrackedList>;
-
 /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
 export interface BroadcastActionMetricsResponseLanguageVariantsValueSeries {
   /** The number of `attempted` messages. */
@@ -461,11 +300,6 @@ export interface BroadcastActionMetricsResponseLanguageVariantsValueSeries {
   /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
   untracked?: BroadcastActionMetricsResponseLanguageVariantsValueSeriesUntrackedList;
 }
-const BroadcastActionMetricsResponseLanguageVariantsValueSeries = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValueSeries>;
-
 export interface BroadcastActionMetricsResponseLanguageVariantsValue {
   /** Whether this is the default variant. Exactly one variant per multi-language message is the default, and it always has an empty `language`. */
   default?: boolean;
@@ -474,150 +308,62 @@ export interface BroadcastActionMetricsResponseLanguageVariantsValue {
   /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
   series?: BroadcastActionMetricsResponseLanguageVariantsValueSeries;
 }
-const BroadcastActionMetricsResponseLanguageVariantsValue = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsValue>;
-
 /** Metrics for each language variant of a multi-language message, keyed by the variant's action ID. Only returned when you request metrics for a multi-language branch action. */
 export type BroadcastActionMetricsResponseLanguageVariantsMap = {
   [key: string]: BroadcastActionMetricsResponseLanguageVariantsValue | undefined;
 };
-const BroadcastActionMetricsResponseLanguageVariantsMap = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<BroadcastActionMetricsResponseLanguageVariantsMap>;
-
 /** The number of `attempted` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesAttemptedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesAttemptedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesAttemptedList>;
-
 /** The number of `bounced` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesBouncedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesBouncedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesBouncedList>;
-
 /** The number of `clicked` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesClickedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesClickedList>;
-
 /** The number of `converted` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesConvertedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesConvertedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesConvertedList>;
-
 /** The number of `created` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesCreatedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesCreatedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesCreatedList>;
-
 /** The number of `deferred` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesDeferredList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesDeferredList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesDeferredList>;
-
 /** The number of `delivered` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesDeliveredList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesDeliveredList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesDeliveredList>;
-
 /** The number of `drafted` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesDraftedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesDraftedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesDraftedList>;
-
 /** The number of `failed` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesFailedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesFailedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesFailedList>;
-
 /** The number of `clicked` emails excluding machine clicks. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionMetricsResponseMetricSeriesHumanClickedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesHumanClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesHumanClickedList>;
-
 /** The number of `opened` emails excluding machine opens. This metric is reliable starting March 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionMetricsResponseMetricSeriesHumanOpenedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesHumanOpenedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesHumanOpenedList>;
-
 /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
 export type BroadcastActionMetricsResponseMetricSeriesLinkUntrackedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesLinkUntrackedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesLinkUntrackedList>;
-
 /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastActionMetricsResponseMetricSeriesMachineClickedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesMachineClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesMachineClickedList>;
-
 /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type BroadcastActionMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesOpenUntrackedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesOpenUntrackedList>;
-
 /** The number of `opened` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesOpenedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesOpenedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesOpenedList>;
-
 /** The number of `opened` emails attributed to machines. This metric is reliable starting March 20, 2025. */
 export type BroadcastActionMetricsResponseMetricSeriesPrefetchOpenedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesPrefetchOpenedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesPrefetchOpenedList>;
-
 /** The number of SMS/MMS messages a person replied to with a keyword. [Learn more about inbound messages](/messaging/channels/sms/inbound/get-started/). */
 export type BroadcastActionMetricsResponseMetricSeriesRepliedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesRepliedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesRepliedList>;
-
 /** The number of sent messages. */
 export type BroadcastActionMetricsResponseMetricSeriesSentList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesSentList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesSentList>;
-
 /** The number of spam complaints. */
 export type BroadcastActionMetricsResponseMetricSeriesSpammedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesSpammedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesSpammedList>;
-
 /** The number of `suppressed` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesSuppressedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesSuppressedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesSuppressedList>;
-
 /** The number of topic unsubscribes in a given period. */
 export type BroadcastActionMetricsResponseMetricSeriesTopicUnsubscribedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesTopicUnsubscribedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesTopicUnsubscribedList>;
-
 /** The number of people who denied consent to email open tracking in the period. */
 export type BroadcastActionMetricsResponseMetricSeriesTrackingConsentDeniedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesTrackingConsentDeniedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesTrackingConsentDeniedList>;
-
 /** The number of people who granted consent to email open tracking in the period. */
 export type BroadcastActionMetricsResponseMetricSeriesTrackingConsentGrantedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesTrackingConsentGrantedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesTrackingConsentGrantedList>;
-
 /** The number of `undeliverable` messages. */
 export type BroadcastActionMetricsResponseMetricSeriesUndeliverableList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesUndeliverableList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesUndeliverableList>;
-
 /** The number of unsubscribes attributed to the automation or message. */
 export type BroadcastActionMetricsResponseMetricSeriesUnsubscribedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesUnsubscribedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesUnsubscribedList>;
-
 /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
 export type BroadcastActionMetricsResponseMetricSeriesUntrackedList = Array<number>;
-const BroadcastActionMetricsResponseMetricSeriesUntrackedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastActionMetricsResponseMetricSeriesUntrackedList>;
-
 /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
 export interface BroadcastActionMetricsResponseMetricSeries {
   /** The number of `attempted` messages. */
@@ -673,39 +419,19 @@ export interface BroadcastActionMetricsResponseMetricSeries {
   /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
   untracked?: BroadcastActionMetricsResponseMetricSeriesUntrackedList;
 }
-const BroadcastActionMetricsResponseMetricSeries = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<BroadcastActionMetricsResponseMetricSeries>;
-
 export interface BroadcastActionMetricsResponseMetric {
   /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
   series?: BroadcastActionMetricsResponseMetricSeries;
 }
-const BroadcastActionMetricsResponseMetric = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<BroadcastActionMetricsResponseMetric>;
-
 export interface BroadcastActionMetricsResponse {
   /** Metrics for each language variant of a multi-language message, keyed by the variant's action ID. Only returned when you request metrics for a multi-language branch action. */
   language_variants?: BroadcastActionMetricsResponseLanguageVariantsMap;
   metric?: BroadcastActionMetricsResponseMetric;
 }
-const BroadcastActionMetricsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<BroadcastActionMetricsResponse>;
-
 export interface BroadcastActionsRequest {
   /** The identifier of a broadcast. */
   broadcast_id: number;
 }
-const BroadcastActionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<BroadcastActionsRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type BroadcastActionsResponseActionsItemCase0Preprocessor = "premailer";
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
@@ -889,23 +615,10 @@ export type BroadcastActionsResponseActionsItem =
   | BroadcastActionsResponseActionsItemCase1
   | BroadcastActionsResponseActionsItemCase2
   | BroadcastActionsResponseActionsItemCase3;
-const BroadcastActionsResponseActionsItem =
-  S.Unknown as any as S.Schema<BroadcastActionsResponseActionsItem>;
-
 export type BroadcastActionsResponseActionsList = Array<BroadcastActionsResponseActionsItem>;
-const BroadcastActionsResponseActionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<BroadcastActionsResponseActionsList>;
-
 export interface BroadcastActionsResponse {
   actions?: BroadcastActionsResponseActionsList;
 }
-const BroadcastActionsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<BroadcastActionsResponse>;
-
 export interface BroadcastErrorsRequest {
   /** The ID of the broadcast that you want to return information about. */
   broadcast_id: number;
@@ -916,30 +629,15 @@ export interface BroadcastErrorsRequest {
   /** The maximum number of results you want to retrieve per page. */
   limit?: number;
 }
-const BroadcastErrorsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<BroadcastErrorsRequest>;
-
 /** A list of errors in the format `line <x>: <error text>` to help you troubleshoot errors associated with your audience or data file. */
 export type BroadcastErrorsResponseErrorsList = Array<string>;
-const BroadcastErrorsResponseErrorsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<BroadcastErrorsResponseErrorsList>;
-
 export interface BroadcastErrorsResponse {
   /** A list of errors in the format `line <x>: <error text>` to help you troubleshoot errors associated with your audience or data file. */
   errors?: BroadcastErrorsResponseErrorsList;
   /** The offset to pass as the `start` value to fetch the next page of errors. */
   next?: number;
 }
-const BroadcastErrorsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<BroadcastErrorsResponse>;
-
 export type BroadcastLinksRequestPeriod = "hours" | "days" | "weeks" | "months";
-const BroadcastLinksRequestPeriod = S.String;
-
 export interface BroadcastLinksRequest {
   /** The identifier of a broadcast. */
   broadcast_id: number;
@@ -950,27 +648,13 @@ export interface BroadcastLinksRequest {
   /** If true, the response contains only unique customer results, i.e. a customer who clicks a link twice is only counted once. If false, the response contains the total number of results without regard to uniqueness. */
   unique?: boolean;
 }
-const BroadcastLinksRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<BroadcastLinksRequest>;
-
 export type BroadcastLinksResponseLinksItemLink = BroadcastActionLinksResponseLinksItemLink;
 /** An array of results from oldest to newest, where each result indicates a period. */
 export type BroadcastLinksResponseLinksItemMetricSeriesClickedList = Array<number>;
-const BroadcastLinksResponseLinksItemMetricSeriesClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastLinksResponseLinksItemMetricSeriesClickedList>;
-
 /** An array of human click counts (clicks excluding machine clicks) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastLinksResponseLinksItemMetricSeriesHumanClickedList = Array<number>;
-const BroadcastLinksResponseLinksItemMetricSeriesHumanClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastLinksResponseLinksItemMetricSeriesHumanClickedList>;
-
 /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastLinksResponseLinksItemMetricSeriesMachineClickedList = Array<number>;
-const BroadcastLinksResponseLinksItemMetricSeriesMachineClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastLinksResponseLinksItemMetricSeriesMachineClickedList>;
-
 export interface BroadcastLinksResponseLinksItemMetricSeries {
   /** An array of results from oldest to newest, where each result indicates a period. */
   clicked?: BroadcastLinksResponseLinksItemMetricSeriesClickedList;
@@ -979,44 +663,19 @@ export interface BroadcastLinksResponseLinksItemMetricSeries {
   /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
   machine_clicked?: BroadcastLinksResponseLinksItemMetricSeriesMachineClickedList;
 }
-const BroadcastLinksResponseLinksItemMetricSeries = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<BroadcastLinksResponseLinksItemMetricSeries>;
-
 /** Contains metrics for the link. */
 export interface BroadcastLinksResponseLinksItemMetric {
   series?: BroadcastLinksResponseLinksItemMetricSeries;
 }
-const BroadcastLinksResponseLinksItemMetric = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<BroadcastLinksResponseLinksItemMetric>;
-
 export interface BroadcastLinksResponseLinksItem {
   link?: BroadcastActionLinksResponseLinksItemLink;
   /** Contains metrics for the link. */
   metric?: BroadcastLinksResponseLinksItemMetric;
 }
-const BroadcastLinksResponseLinksItem = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<BroadcastLinksResponseLinksItem>;
-
 export type BroadcastLinksResponseLinksList = Array<BroadcastLinksResponseLinksItem>;
-const BroadcastLinksResponseLinksList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<BroadcastLinksResponseLinksList>;
-
 export interface BroadcastLinksResponse {
   links?: BroadcastLinksResponseLinksList;
 }
-const BroadcastLinksResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<BroadcastLinksResponse>;
-
 export type BroadcastMessagesRequestMetric =
   | "attempted"
   | "sent"
@@ -1030,11 +689,7 @@ export type BroadcastMessagesRequestMetric =
   | "dropped"
   | "failed"
   | "undeliverable";
-const BroadcastMessagesRequestMetric = S.String;
-
 export type BroadcastMessagesRequestState = "failed" | "sent" | "drafted" | "attempted";
-const BroadcastMessagesRequestState = S.String;
-
 export type BroadcastMessagesRequestType =
   | "email"
   | "webhook"
@@ -1044,8 +699,6 @@ export type BroadcastMessagesRequestType =
   | "push"
   | "in_app"
   | "live_notification";
-const BroadcastMessagesRequestType = S.String;
-
 export interface BroadcastMessagesRequest {
   /** The identifier of a broadcast. */
   broadcast_id: number;
@@ -1066,11 +719,6 @@ export interface BroadcastMessagesRequest {
   /** If true, the response includes `tracked_responses` for each message--an object containing tracked response option names for in-app survey responses. */
   get_tracked_responses?: boolean;
 }
-const BroadcastMessagesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<BroadcastMessagesRequest>;
-
 /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export interface BroadcastMessagesResponseMessagesItemCustomerIdentifiers {
   /** A unique identifier set by Customer.io, used to reference a person if you want to update their identifiers. */
@@ -1080,11 +728,6 @@ export interface BroadcastMessagesResponseMessagesItemCustomerIdentifiers {
   /** A person's unique ID, if set. This is the same as the `customer_id` if present. */
   id: string | null;
 }
-const BroadcastMessagesResponseMessagesItemCustomerIdentifiers = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<BroadcastMessagesResponseMessagesItemCustomerIdentifiers>;
-
 /** Metrics for an individual instance of a message; each item in the object represents the timestamp when a message achieved a particular metric. This object only contains metrics that have been recorded. */
 export interface BroadcastMessagesResponseMessagesItemMetrics {
   /** The timestamp when the message `bounced`. */
@@ -1122,31 +765,16 @@ export interface BroadcastMessagesResponseMessagesItemMetrics {
   /** The timestamp when a person unsubscribed based on this message. */
   unsubscribed?: number;
 }
-const BroadcastMessagesResponseMessagesItemMetrics = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<BroadcastMessagesResponseMessagesItemMetrics>;
-
 export interface BroadcastMessagesResponseMessagesItemTrackedResponsesValue {
   /** The identifier for the tracked response. */
   id?: number;
   /** A unix timestamp representing when the response was tracked. */
   ts?: number;
 }
-const BroadcastMessagesResponseMessagesItemTrackedResponsesValue = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<BroadcastMessagesResponseMessagesItemTrackedResponsesValue>;
-
 /** Tracked in-app survey responses, keyed by response option name. Present only when `get_tracked_responses` is `true`. */
 export type BroadcastMessagesResponseMessagesItemTrackedResponsesMap = {
   [key: string]: BroadcastMessagesResponseMessagesItemTrackedResponsesValue | undefined;
 };
-const BroadcastMessagesResponseMessagesItemTrackedResponsesMap = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<BroadcastMessagesResponseMessagesItemTrackedResponsesMap>;
-
 /** The type of message or action for a delivery, automation action, or related object. Includes channels that one-time sends do not support (for example, `slack` and `whatsapp`). */
 export type BroadcastMessagesResponseMessagesItemType =
   | "email"
@@ -1157,8 +785,6 @@ export type BroadcastMessagesResponseMessagesItemType =
   | "slack"
   | "whatsapp"
   | "live_notification";
-const BroadcastMessagesResponseMessagesItemType = S.String;
-
 /** Describes an individual message delivery. The object contains keys for all possible parents of the message (`newsletter_id`, `broadcast_id`, etc) but only the parents of the delivery are populated. Other parent IDs are null. */
 export interface BroadcastMessagesResponseMessagesItem {
   /** The identifier for an action. */
@@ -1199,28 +825,11 @@ export interface BroadcastMessagesResponseMessagesItem {
   /** The type of message or action for a delivery, automation action, or related object. Includes channels that one-time sends do not support (for example, `slack` and `whatsapp`). */
   type?: BroadcastMessagesResponseMessagesItemType;
 }
-const BroadcastMessagesResponseMessagesItem = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<BroadcastMessagesResponseMessagesItem>;
-
 export type BroadcastMessagesResponseMessagesList = Array<BroadcastMessagesResponseMessagesItem>;
-const BroadcastMessagesResponseMessagesList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<BroadcastMessagesResponseMessagesList>;
-
 export interface BroadcastMessagesResponse {
   messages?: BroadcastMessagesResponseMessagesList;
 }
-const BroadcastMessagesResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<BroadcastMessagesResponse>;
-
 export type BroadcastMetricsRequestPeriod = "hours" | "days" | "weeks" | "months";
-const BroadcastMetricsRequestPeriod = S.String;
-
 export type BroadcastMetricsRequestType =
   | "email"
   | "webhook"
@@ -1230,8 +839,6 @@ export type BroadcastMetricsRequestType =
   | "push"
   | "in_app"
   | "live_notification";
-const BroadcastMetricsRequestType = S.String;
-
 export interface BroadcastMetricsRequest {
   /** The identifier of a broadcast. */
   broadcast_id: number;
@@ -1242,141 +849,58 @@ export interface BroadcastMetricsRequest {
   /** The type of item you want to return metrics for. When empty, the response contains metrics for all possible types. */
   type?: BroadcastMetricsRequestType | (string & {});
 }
-const BroadcastMetricsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<BroadcastMetricsRequest>;
-
 /** The number of `attempted` messages. */
 export type BroadcastMetricsResponseMetricSeriesAttemptedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesAttemptedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesAttemptedList>;
-
 /** The number of `bounced` messages. */
 export type BroadcastMetricsResponseMetricSeriesBouncedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesBouncedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesBouncedList>;
-
 /** The number of `clicked` messages. */
 export type BroadcastMetricsResponseMetricSeriesClickedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesClickedList>;
-
 /** The number of `converted` messages. */
 export type BroadcastMetricsResponseMetricSeriesConvertedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesConvertedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesConvertedList>;
-
 /** The number of `created` messages. */
 export type BroadcastMetricsResponseMetricSeriesCreatedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesCreatedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesCreatedList>;
-
 /** The number of `deferred` messages. */
 export type BroadcastMetricsResponseMetricSeriesDeferredList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesDeferredList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesDeferredList>;
-
 /** The number of `delivered` messages. */
 export type BroadcastMetricsResponseMetricSeriesDeliveredList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesDeliveredList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesDeliveredList>;
-
 /** The number of `drafted` messages. */
 export type BroadcastMetricsResponseMetricSeriesDraftedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesDraftedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesDraftedList>;
-
 /** The number of `failed` messages. */
 export type BroadcastMetricsResponseMetricSeriesFailedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesFailedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesFailedList>;
-
 /** The number of `clicked` emails excluding machine clicks. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastMetricsResponseMetricSeriesHumanClickedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesHumanClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesHumanClickedList>;
-
 /** The number of `opened` emails excluding machine opens. This metric is reliable starting March 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastMetricsResponseMetricSeriesHumanOpenedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesHumanOpenedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesHumanOpenedList>;
-
 /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
 export type BroadcastMetricsResponseMetricSeriesLinkUntrackedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesLinkUntrackedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesLinkUntrackedList>;
-
 /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type BroadcastMetricsResponseMetricSeriesMachineClickedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesMachineClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesMachineClickedList>;
-
 /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type BroadcastMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesOpenUntrackedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesOpenUntrackedList>;
-
 /** The number of `opened` messages. */
 export type BroadcastMetricsResponseMetricSeriesOpenedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesOpenedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesOpenedList>;
-
 /** The number of `opened` emails attributed to machines. This metric is reliable starting March 20, 2025. */
 export type BroadcastMetricsResponseMetricSeriesPrefetchOpenedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesPrefetchOpenedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesPrefetchOpenedList>;
-
 /** The number of SMS/MMS messages a person replied to with a keyword. [Learn more about inbound messages](/messaging/channels/sms/inbound/get-started/). */
 export type BroadcastMetricsResponseMetricSeriesRepliedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesRepliedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesRepliedList>;
-
 /** The number of sent messages. */
 export type BroadcastMetricsResponseMetricSeriesSentList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesSentList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesSentList>;
-
 /** The number of spam complaints. */
 export type BroadcastMetricsResponseMetricSeriesSpammedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesSpammedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesSpammedList>;
-
 /** The number of `suppressed` messages. */
 export type BroadcastMetricsResponseMetricSeriesSuppressedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesSuppressedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesSuppressedList>;
-
 /** The number of topic unsubscribes in a given period. */
 export type BroadcastMetricsResponseMetricSeriesTopicUnsubscribedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesTopicUnsubscribedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesTopicUnsubscribedList>;
-
 /** The number of people who denied consent to email open tracking in the period. */
 export type BroadcastMetricsResponseMetricSeriesTrackingConsentDeniedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesTrackingConsentDeniedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesTrackingConsentDeniedList>;
-
 /** The number of people who granted consent to email open tracking in the period. */
 export type BroadcastMetricsResponseMetricSeriesTrackingConsentGrantedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesTrackingConsentGrantedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesTrackingConsentGrantedList>;
-
 /** The number of `undeliverable` messages. */
 export type BroadcastMetricsResponseMetricSeriesUndeliverableList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesUndeliverableList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesUndeliverableList>;
-
 /** The number of unsubscribes attributed to the automation or message. */
 export type BroadcastMetricsResponseMetricSeriesUnsubscribedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesUnsubscribedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesUnsubscribedList>;
-
 /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
 export type BroadcastMetricsResponseMetricSeriesUntrackedList = Array<number>;
-const BroadcastMetricsResponseMetricSeriesUntrackedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<BroadcastMetricsResponseMetricSeriesUntrackedList>;
-
 /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
 export interface BroadcastMetricsResponseMetricSeries {
   /** The number of `attempted` messages. */
@@ -1432,39 +956,19 @@ export interface BroadcastMetricsResponseMetricSeries {
   /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
   untracked?: BroadcastMetricsResponseMetricSeriesUntrackedList;
 }
-const BroadcastMetricsResponseMetricSeries = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<BroadcastMetricsResponseMetricSeries>;
-
 export interface BroadcastMetricsResponseMetric {
   /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
   series?: BroadcastMetricsResponseMetricSeries;
 }
-const BroadcastMetricsResponseMetric = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<BroadcastMetricsResponseMetric>;
-
 export interface BroadcastMetricsResponse {
   metric?: BroadcastMetricsResponseMetric;
 }
-const BroadcastMetricsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<BroadcastMetricsResponse>;
-
 export interface BroadcastStatusRequest {
   /** The ID of the broadcast that you want to return information about. */
   broadcast_id: number;
   /** The ID of the automation trigger that you want to return information for. */
   trigger_id: number;
 }
-const BroadcastStatusRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<BroadcastStatusRequest>;
-
 export interface BroadcastStatusResponse {
   /** The identifier for a broadcast. */
   broadcast_id?: number;
@@ -1481,14 +985,7 @@ export interface BroadcastStatusResponse {
   /** The date-time this trigger is scheduled to send at, or `0` if you didn't schedule it. */
   scheduled_at?: number;
 }
-const BroadcastStatusResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<BroadcastStatusResponse>;
-
 export type CampaignActionLinksRequestPeriod = "hours" | "days" | "weeks" | "months";
-const CampaignActionLinksRequestPeriod = S.String;
-
 export type CampaignActionLinksRequestType =
   | "email"
   | "webhook"
@@ -1498,8 +995,6 @@ export type CampaignActionLinksRequestType =
   | "push"
   | "in_app"
   | "live_notification";
-const CampaignActionLinksRequestType = S.String;
-
 export interface CampaignActionLinksRequest {
   /** The ID of the automation that you want to trigger or return information about. */
   campaign_id: number;
@@ -1514,27 +1009,13 @@ export interface CampaignActionLinksRequest {
   /** If true, the response contains only unique customer results, i.e. a customer who clicks a link twice is only counted once. If false, the response contains the total number of results without regard to uniqueness. */
   unique?: boolean;
 }
-const CampaignActionLinksRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CampaignActionLinksRequest>;
-
 export type CampaignActionLinksResponseLinksItemLink = BroadcastActionLinksResponseLinksItemLink;
 /** An array of results from oldest to newest, where each result indicates a period. */
 export type CampaignActionLinksResponseLinksItemMetricSeriesClickedList = Array<number>;
-const CampaignActionLinksResponseLinksItemMetricSeriesClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionLinksResponseLinksItemMetricSeriesClickedList>;
-
 /** An array of human click counts (clicks excluding machine clicks) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignActionLinksResponseLinksItemMetricSeriesHumanClickedList = Array<number>;
-const CampaignActionLinksResponseLinksItemMetricSeriesHumanClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionLinksResponseLinksItemMetricSeriesHumanClickedList>;
-
 /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignActionLinksResponseLinksItemMetricSeriesMachineClickedList = Array<number>;
-const CampaignActionLinksResponseLinksItemMetricSeriesMachineClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionLinksResponseLinksItemMetricSeriesMachineClickedList>;
-
 export interface CampaignActionLinksResponseLinksItemMetricSeries {
   /** An array of results from oldest to newest, where each result indicates a period. */
   clicked?: CampaignActionLinksResponseLinksItemMetricSeriesClickedList;
@@ -1543,49 +1024,22 @@ export interface CampaignActionLinksResponseLinksItemMetricSeries {
   /** An array of machine click counts (clicks attributed to bots or prefetching) from oldest to newest, where each result indicates a period. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
   machine_clicked?: CampaignActionLinksResponseLinksItemMetricSeriesMachineClickedList;
 }
-const CampaignActionLinksResponseLinksItemMetricSeries = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CampaignActionLinksResponseLinksItemMetricSeries>;
-
 /** Contains metrics for the link. */
 export interface CampaignActionLinksResponseLinksItemMetric {
   series?: CampaignActionLinksResponseLinksItemMetricSeries;
 }
-const CampaignActionLinksResponseLinksItemMetric = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CampaignActionLinksResponseLinksItemMetric>;
-
 export interface CampaignActionLinksResponseLinksItem {
   link?: BroadcastActionLinksResponseLinksItemLink;
   /** Contains metrics for the link. */
   metric?: CampaignActionLinksResponseLinksItemMetric;
 }
-const CampaignActionLinksResponseLinksItem = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CampaignActionLinksResponseLinksItem>;
-
 /** Each object in the array represents a link in your action. */
 export type CampaignActionLinksResponseLinksList = Array<CampaignActionLinksResponseLinksItem>;
-const CampaignActionLinksResponseLinksList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CampaignActionLinksResponseLinksList>;
-
 export interface CampaignActionLinksResponse {
   /** Each object in the array represents a link in your action. */
   links?: CampaignActionLinksResponseLinksList;
 }
-const CampaignActionLinksResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CampaignActionLinksResponse>;
-
 export type CampaignActionMetricsRequestVersion = "1" | "2";
-const CampaignActionMetricsRequestVersion = S.String;
-
 export type CampaignActionMetricsRequestRes =
   | "hours"
   | "hourly"
@@ -1595,11 +1049,7 @@ export type CampaignActionMetricsRequestRes =
   | "weekly"
   | "months"
   | "monthly";
-const CampaignActionMetricsRequestRes = S.String;
-
 export type CampaignActionMetricsRequestPeriod = "hours" | "days" | "weeks" | "months";
-const CampaignActionMetricsRequestPeriod = S.String;
-
 export type CampaignActionMetricsRequestType =
   | "email"
   | "webhook"
@@ -1609,8 +1059,6 @@ export type CampaignActionMetricsRequestType =
   | "push"
   | "in_app"
   | "live_notification";
-const CampaignActionMetricsRequestType = S.String;
-
 export interface CampaignActionMetricsRequest {
   /** The ID of the automation that you want to trigger or return information about. */
   campaign_id: number;
@@ -1633,11 +1081,6 @@ export interface CampaignActionMetricsRequest {
   /** The type of item you want to return metrics for. When empty, the response contains metrics for all possible types. */
   type?: CampaignActionMetricsRequestType | (string & {});
 }
-const CampaignActionMetricsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CampaignActionMetricsRequest>;
-
 /** The number of `attempted` messages. */
 export type CampaignActionMetricsResponseLanguageVariantsValueSeriesAttemptedList = Array<number>;
 /** The number of `bounced` messages. */
@@ -1767,139 +1210,58 @@ export interface CampaignActionMetricsResponseLanguageVariantsValue {
 export type CampaignActionMetricsResponseLanguageVariantsMap = {
   [key: string]: CampaignActionMetricsResponseLanguageVariantsValue | undefined;
 };
-const CampaignActionMetricsResponseLanguageVariantsMap =
-  BroadcastActionMetricsResponseLanguageVariantsMap as any as S.Schema<CampaignActionMetricsResponseLanguageVariantsMap>;
-
 /** The number of `attempted` messages. */
 export type CampaignActionMetricsResponseMetricSeriesAttemptedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesAttemptedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesAttemptedList>;
-
 /** The number of `bounced` messages. */
 export type CampaignActionMetricsResponseMetricSeriesBouncedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesBouncedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesBouncedList>;
-
 /** The number of `clicked` messages. */
 export type CampaignActionMetricsResponseMetricSeriesClickedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesClickedList>;
-
 /** The number of `converted` messages. */
 export type CampaignActionMetricsResponseMetricSeriesConvertedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesConvertedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesConvertedList>;
-
 /** The number of `created` messages. */
 export type CampaignActionMetricsResponseMetricSeriesCreatedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesCreatedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesCreatedList>;
-
 /** The number of `deferred` messages. */
 export type CampaignActionMetricsResponseMetricSeriesDeferredList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesDeferredList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesDeferredList>;
-
 /** The number of `delivered` messages. */
 export type CampaignActionMetricsResponseMetricSeriesDeliveredList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesDeliveredList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesDeliveredList>;
-
 /** The number of `drafted` messages. */
 export type CampaignActionMetricsResponseMetricSeriesDraftedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesDraftedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesDraftedList>;
-
 /** The number of `failed` messages. */
 export type CampaignActionMetricsResponseMetricSeriesFailedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesFailedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesFailedList>;
-
 /** The number of `clicked` emails excluding machine clicks. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignActionMetricsResponseMetricSeriesHumanClickedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesHumanClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesHumanClickedList>;
-
 /** The number of `opened` emails excluding machine opens. This metric is reliable starting March 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignActionMetricsResponseMetricSeriesHumanOpenedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesHumanOpenedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesHumanOpenedList>;
-
 /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
 export type CampaignActionMetricsResponseMetricSeriesLinkUntrackedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesLinkUntrackedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesLinkUntrackedList>;
-
 /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type CampaignActionMetricsResponseMetricSeriesMachineClickedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesMachineClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesMachineClickedList>;
-
 /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type CampaignActionMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesOpenUntrackedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesOpenUntrackedList>;
-
 /** The number of `opened` messages. */
 export type CampaignActionMetricsResponseMetricSeriesOpenedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesOpenedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesOpenedList>;
-
 /** The number of `opened` emails attributed to machines. This metric is reliable starting March 20, 2025. */
 export type CampaignActionMetricsResponseMetricSeriesPrefetchOpenedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesPrefetchOpenedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesPrefetchOpenedList>;
-
 /** The number of SMS/MMS messages a person replied to with a keyword. [Learn more about inbound messages](/messaging/channels/sms/inbound/get-started/). */
 export type CampaignActionMetricsResponseMetricSeriesRepliedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesRepliedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesRepliedList>;
-
 /** The number of sent messages. */
 export type CampaignActionMetricsResponseMetricSeriesSentList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesSentList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesSentList>;
-
 /** The number of spam complaints. */
 export type CampaignActionMetricsResponseMetricSeriesSpammedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesSpammedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesSpammedList>;
-
 /** The number of `suppressed` messages. */
 export type CampaignActionMetricsResponseMetricSeriesSuppressedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesSuppressedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesSuppressedList>;
-
 /** The number of topic unsubscribes in a given period. */
 export type CampaignActionMetricsResponseMetricSeriesTopicUnsubscribedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesTopicUnsubscribedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesTopicUnsubscribedList>;
-
 /** The number of people who denied consent to email open tracking in the period. */
 export type CampaignActionMetricsResponseMetricSeriesTrackingConsentDeniedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesTrackingConsentDeniedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesTrackingConsentDeniedList>;
-
 /** The number of people who granted consent to email open tracking in the period. */
 export type CampaignActionMetricsResponseMetricSeriesTrackingConsentGrantedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesTrackingConsentGrantedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesTrackingConsentGrantedList>;
-
 /** The number of `undeliverable` messages. */
 export type CampaignActionMetricsResponseMetricSeriesUndeliverableList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesUndeliverableList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesUndeliverableList>;
-
 /** The number of unsubscribes attributed to the automation or message. */
 export type CampaignActionMetricsResponseMetricSeriesUnsubscribedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesUnsubscribedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesUnsubscribedList>;
-
 /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
 export type CampaignActionMetricsResponseMetricSeriesUntrackedList = Array<number>;
-const CampaignActionMetricsResponseMetricSeriesUntrackedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignActionMetricsResponseMetricSeriesUntrackedList>;
-
 /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
 export interface CampaignActionMetricsResponseMetricSeries {
   /** The number of `attempted` messages. */
@@ -1955,20 +1317,10 @@ export interface CampaignActionMetricsResponseMetricSeries {
   /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
   untracked?: CampaignActionMetricsResponseMetricSeriesUntrackedList;
 }
-const CampaignActionMetricsResponseMetricSeries = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CampaignActionMetricsResponseMetricSeries>;
-
 export interface CampaignActionMetricsResponseMetric {
   /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
   series?: CampaignActionMetricsResponseMetricSeries;
 }
-const CampaignActionMetricsResponseMetric = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CampaignActionMetricsResponseMetric>;
-
 /** The resolution we reported at. */
 export type CampaignActionMetricsResponseRes =
   | "hours"
@@ -1979,8 +1331,6 @@ export type CampaignActionMetricsResponseRes =
   | "weekly"
   | "months"
   | "monthly";
-const CampaignActionMetricsResponseRes = S.String;
-
 export interface CampaignActionMetricsResponse {
   /** The end of the window we reported on, in ISO 8601 format. */
   end?: string;
@@ -1992,11 +1342,6 @@ export interface CampaignActionMetricsResponse {
   /** The start of the window we reported on, in ISO 8601 format. */
   start?: string;
 }
-const CampaignActionMetricsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CampaignActionMetricsResponse>;
-
 export type CampaignJourneyMetricsRequestResolution =
   | "hours"
   | "hourly"
@@ -2006,8 +1351,6 @@ export type CampaignJourneyMetricsRequestResolution =
   | "weekly"
   | "months"
   | "monthly";
-const CampaignJourneyMetricsRequestResolution = S.String;
-
 export interface CampaignJourneyMetricsRequest {
   /** The ID of the automation that you want to trigger or return information about. */
   campaign_id: number;
@@ -2018,46 +1361,20 @@ export interface CampaignJourneyMetricsRequest {
   /** Determines the increment for journey metrics--hourly, daily, weekly, or monthly. */
   resolution: CampaignJourneyMetricsRequestResolution | (string & {});
 }
-const CampaignJourneyMetricsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CampaignJourneyMetricsRequest>;
-
 /** People who started a journey and were not filtered out before they experienced an action. */
 export type CampaignJourneyMetricsResponseJourneyMetricActivatedList = Array<number>;
-const CampaignJourneyMetricsResponseJourneyMetricActivatedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricActivatedList>;
-
 /** People who matched the conversion criteria for the automation. */
 export type CampaignJourneyMetricsResponseJourneyMetricConvertedList = Array<number>;
-const CampaignJourneyMetricsResponseJourneyMetricConvertedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricConvertedList>;
-
 /** People who started a journey but stopped meeting the automation trigger/filter criteria. */
 export type CampaignJourneyMetricsResponseJourneyMetricExitedEarlyList = Array<number>;
-const CampaignJourneyMetricsResponseJourneyMetricExitedEarlyList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricExitedEarlyList>;
-
 /** People who finished the journey. */
 export type CampaignJourneyMetricsResponseJourneyMetricFinishedList = Array<number>;
-const CampaignJourneyMetricsResponseJourneyMetricFinishedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricFinishedList>;
-
 /** People who experienced at least one non-delay action in the journey. This metric typically represents journeys in progress. */
 export type CampaignJourneyMetricsResponseJourneyMetricMessagedList = Array<number>;
-const CampaignJourneyMetricsResponseJourneyMetricMessagedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricMessagedList>;
-
 /** People who started a journey but were filtered out before they could experience any of the actions in the journey. */
 export type CampaignJourneyMetricsResponseJourneyMetricNeverActivatedList = Array<number>;
-const CampaignJourneyMetricsResponseJourneyMetricNeverActivatedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricNeverActivatedList>;
-
 /** The total number of people who meet the trigger criteria for a journey. This count occurs before filters are applied. */
 export type CampaignJourneyMetricsResponseJourneyMetricStartedList = Array<number>;
-const CampaignJourneyMetricsResponseJourneyMetricStartedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetricStartedList>;
-
 export interface CampaignJourneyMetricsResponseJourneyMetric {
   /** People who started a journey and were not filtered out before they experienced an action. */
   activated?: CampaignJourneyMetricsResponseJourneyMetricActivatedList;
@@ -2074,22 +1391,10 @@ export interface CampaignJourneyMetricsResponseJourneyMetric {
   /** The total number of people who meet the trigger criteria for a journey. This count occurs before filters are applied. */
   started?: CampaignJourneyMetricsResponseJourneyMetricStartedList;
 }
-const CampaignJourneyMetricsResponseJourneyMetric = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CampaignJourneyMetricsResponseJourneyMetric>;
-
 export interface CampaignJourneyMetricsResponse {
   journey_metric?: CampaignJourneyMetricsResponseJourneyMetric;
 }
-const CampaignJourneyMetricsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CampaignJourneyMetricsResponse>;
-
 export type CampaignLinkMetricsRequestPeriod = "hours" | "days" | "weeks" | "months";
-const CampaignLinkMetricsRequestPeriod = S.String;
-
 export interface CampaignLinkMetricsRequest {
   /** The ID of the automation that you want to trigger or return information about. */
   campaign_id: number;
@@ -2100,11 +1405,6 @@ export interface CampaignLinkMetricsRequest {
   /** If true, the response contains only unique customer results, i.e. a customer who clicks a link twice is only counted once. If false, the response contains the total number of results without regard to uniqueness. */
   unique?: boolean;
 }
-const CampaignLinkMetricsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CampaignLinkMetricsRequest>;
-
 export type CampaignLinkMetricsResponseLinksItemLink = BroadcastActionLinksResponseLinksItemLink;
 /** An array of results from oldest to newest, where each result indicates a period. */
 export type CampaignLinkMetricsResponseLinksItemMetricSeriesClickedList = Array<number>;
@@ -2133,12 +1433,7 @@ export type CampaignLinkMetricsResponseLinksList = Array<CampaignLinkMetricsResp
 export interface CampaignLinkMetricsResponse {
   links?: CampaignLinkMetricsResponseLinksList;
 }
-const CampaignLinkMetricsResponse =
-  CampaignActionLinksResponse as any as S.Schema<CampaignLinkMetricsResponse>;
-
 export type CampaignMetricsRequestVersion = "1" | "2";
-const CampaignMetricsRequestVersion = S.String;
-
 export type CampaignMetricsRequestRes =
   | "hours"
   | "hourly"
@@ -2148,11 +1443,7 @@ export type CampaignMetricsRequestRes =
   | "weekly"
   | "months"
   | "monthly";
-const CampaignMetricsRequestRes = S.String;
-
 export type CampaignMetricsRequestPeriod = "hours" | "days" | "weeks" | "months";
-const CampaignMetricsRequestPeriod = S.String;
-
 export type CampaignMetricsRequestType =
   | "email"
   | "webhook"
@@ -2162,8 +1453,6 @@ export type CampaignMetricsRequestType =
   | "push"
   | "in_app"
   | "live_notification";
-const CampaignMetricsRequestType = S.String;
-
 export interface CampaignMetricsRequest {
   /** The ID of the automation that you want to trigger or return information about. */
   campaign_id: number;
@@ -2184,11 +1473,6 @@ export interface CampaignMetricsRequest {
   /** The type of item you want to return metrics for. When empty, the response contains metrics for all possible types. */
   type?: CampaignMetricsRequestType | (string & {});
 }
-const CampaignMetricsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CampaignMetricsRequest>;
-
 /** The number of `attempted` messages. */
 export type CampaignMetricsResponseMetricSeriesAttemptedList = Array<number>;
 /** The number of `bounced` messages. */
@@ -2300,9 +1584,6 @@ export interface CampaignMetricsResponseMetric {
   /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
   series?: CampaignMetricsResponseMetricSeries;
 }
-const CampaignMetricsResponseMetric =
-  BroadcastMetricsResponseMetric as any as S.Schema<CampaignMetricsResponseMetric>;
-
 /** The resolution for metrics set in the request. */
 export type CampaignMetricsResponseRes =
   | "hours"
@@ -2313,8 +1594,6 @@ export type CampaignMetricsResponseRes =
   | "weekly"
   | "months"
   | "monthly";
-const CampaignMetricsResponseRes = S.String;
-
 export interface CampaignMetricsResponse {
   /** The end period set in the request, in ISO 8601 format. */
   end?: string;
@@ -2324,22 +1603,12 @@ export interface CampaignMetricsResponse {
   /** The start period set in the request, in ISO 8601 format. */
   start?: string;
 }
-const CampaignMetricsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CampaignMetricsResponse>;
-
 export interface CancelBroadcastTriggerRequest {
   /** The ID of the broadcast you triggered. */
   broadcast_id: number;
   /** The ID of the trigger you want to cancel. You get it back from the [trigger](/integrations/api/app/tag/send-messages/triggerBroadcast/) request that scheduled the send. */
   trigger_id: number;
 }
-const CancelBroadcastTriggerRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CancelBroadcastTriggerRequest>;
-
 export interface CancelBroadcastTriggerResponseTrigger {
   /** The ID of the broadcast you cancelled the trigger for. Canceling a trigger doesn't cancel the broadcast itself, so you can trigger it again. */
   broadcast_id?: number;
@@ -2356,37 +1625,17 @@ export interface CancelBroadcastTriggerResponseTrigger {
   /** Unix timestamp when the trigger was scheduled to send. */
   scheduled_at?: number;
 }
-const CancelBroadcastTriggerResponseTrigger = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<CancelBroadcastTriggerResponseTrigger>;
-
 export interface CancelBroadcastTriggerResponse {
   trigger?: CancelBroadcastTriggerResponseTrigger;
 }
-const CancelBroadcastTriggerResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CancelBroadcastTriggerResponse>;
-
 export interface CheckUnpublishedChangesRequest {
   /** The id of the email. If your email has multiple languages, you must provide the ID of the **default** language template. This links the workflow to all of the language variants for the template. */
   id: string;
 }
-const CheckUnpublishedChangesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CheckUnpublishedChangesRequest>;
-
 export interface CheckUnpublishedChangesResponse {
   /** Indicates whether the email or any of its translations has content changes that haven't been published. */
   has_unpublished_changes?: boolean;
 }
-const CheckUnpublishedChangesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CheckUnpublishedChangesResponse>;
-
 export interface CreateAssetRequest {
   /** The file to upload. Must be an accepted image or PDF type. Accepted file types: `image/bmp`, `image/jpeg`, `image/jpg`, `image/png`, `image/gif`, `application/pdf`. Maximum file size: 2 MB. Maximum image dimensions: 4096px. */
   file: string;
@@ -2395,8 +1644,6 @@ export interface CreateAssetRequest {
   /** The ID of the parent folder. Omit or set to "0" to place the asset at the root level. */
   parent_folder_id?: number | null;
 }
-const CreateAssetRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<CreateAssetRequest>;
-
 export interface CreateAssetResponseAsset {
   /** Unix timestamp when the asset was created. */
   created?: number;
@@ -2413,27 +1660,15 @@ export interface CreateAssetResponseAsset {
   /** Unix timestamp when the asset was last updated. */
   updated?: number;
 }
-const CreateAssetResponseAsset = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateAssetResponseAsset>;
-
 export interface CreateAssetResponse {
   asset?: CreateAssetResponseAsset;
 }
-const CreateAssetResponse = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<CreateAssetResponse>;
-
 export interface CreateAssetFolderRequest {
   /** Display name for the folder. Must be unique among siblings in the same parent folder. */
   name: string;
   /** The ID of the parent folder. Omit or set to "0" to create at the root level. */
   parent_folder_id?: number | null;
 }
-const CreateAssetFolderRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateAssetFolderRequest>;
-
 export interface CreateAssetFolderResponseFolder {
   /** Unix timestamp when the folder was created. */
   created?: number;
@@ -2446,19 +1681,9 @@ export interface CreateAssetFolderResponseFolder {
   /** Unix timestamp when the folder was last updated. */
   updated?: number;
 }
-const CreateAssetFolderResponseFolder = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<CreateAssetFolderResponseFolder>;
-
 export interface CreateAssetFolderResponse {
   folder?: CreateAssetFolderResponseFolder;
 }
-const CreateAssetFolderResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<CreateAssetFolderResponse>;
-
 export interface CreateComponentRequest {
   /** HTML content */
   content: string;
@@ -2469,11 +1694,6 @@ export interface CreateComponentRequest {
   /** UUID of the parent folder. Omit or pass `null` to create in the root directory. */
   parent_folder_id?: string | null;
 }
-const CreateComponentRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CreateComponentRequest>;
-
 export interface CreateComponentResponseComponent {
   /** HTML content */
   content?: string;
@@ -2490,19 +1710,9 @@ export interface CreateComponentResponseComponent {
   /** Unix timestamp of the last update to the component. */
   updated?: number;
 }
-const CreateComponentResponseComponent = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<CreateComponentResponseComponent>;
-
 export interface CreateComponentResponse {
   component?: CreateComponentResponseComponent;
 }
-const CreateComponentResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CreateComponentResponse>;
-
 /** The content of your email. */
 export interface CreateEmailRequestContent {
   /** AMP HTML body. */
@@ -2516,27 +1726,12 @@ export interface CreateEmailRequestContent {
   /** Plain text body. */
   text?: string;
 }
-const CreateEmailRequestContent = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<CreateEmailRequestContent>;
-
 export interface CreateEmailRequestEnvelopeHeadersItem {
   name?: string;
   value?: string;
 }
-const CreateEmailRequestEnvelopeHeadersItem = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<CreateEmailRequestEnvelopeHeadersItem>;
-
 /** Custom headers. Each item: { "name": "string", "value": "string" }. */
 export type CreateEmailRequestEnvelopeHeadersList = Array<CreateEmailRequestEnvelopeHeadersItem>;
-const CreateEmailRequestEnvelopeHeadersList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<CreateEmailRequestEnvelopeHeadersList>;
-
 /** The envelope of your email, like from and to addresses. */
 export interface CreateEmailRequestEnvelope {
   /** BCC email address. */
@@ -2552,11 +1747,6 @@ export interface CreateEmailRequestEnvelope {
   /** Reply-to identity ID. Must reference an existing identity from *Workspace Settings > Email* under your From Addresses. */
   reply_to_id?: number | null;
 }
-const CreateEmailRequestEnvelope = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<CreateEmailRequestEnvelope>;
-
 /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
 export interface CreateEmailRequestTransformersAccessibility {
   /** Add `dir` attribute to direct children of `<body>`. */
@@ -2584,11 +1774,6 @@ export interface CreateEmailRequestTransformersAccessibility {
   /** Remove viewport `<meta>` tags that restrict zoom (`user-scalable=0`, `user-scalable=no`, `maximum-scale=1`, or `maximum-scale=2`). */
   remove_zoom_meta_tag?: boolean;
 }
-const CreateEmailRequestTransformersAccessibility = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<CreateEmailRequestTransformersAccessibility>;
-
 /** Controls adding redundant HTML attributes alongside inlined CSS to different HTML elements. */
 export interface CreateEmailRequestTransformersCssInlinerApplyHtmlAttributes {
   /** Add redundant HTML `height` attributes alongside inlined CSS `height` on `<table>`, `<td>`, `<th>`, and `<img>` elements. Only applies to `px` values (and `%` on table elements). Needed for email clients that ignore CSS height. */
@@ -2600,11 +1785,6 @@ export interface CreateEmailRequestTransformersCssInlinerApplyHtmlAttributes {
   /** Enable adding redundant HTML attributes. */
   enabled?: boolean;
 }
-const CreateEmailRequestTransformersCssInlinerApplyHtmlAttributes = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<CreateEmailRequestTransformersCssInlinerApplyHtmlAttributes>;
-
 /** Moves CSS from `<style>` tags into inline `style` attributes on each element. Essential for email clients with limited `<style>` support (for example, older Gmail and some Outlook versions). Uses the `juice` library. Elements in `<style>` tags marked with `data-ignore-inlining` are skipped. */
 export interface CreateEmailRequestTransformersCssInliner {
   /** Controls adding redundant HTML attributes alongside inlined CSS to different HTML elements. */
@@ -2628,11 +1808,6 @@ export interface CreateEmailRequestTransformersCssInliner {
   /** Remove `<style>` tags after inlining their rules. */
   remove_style_tags?: boolean;
 }
-const CreateEmailRequestTransformersCssInliner = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<CreateEmailRequestTransformersCssInliner>;
-
 /** Resolves CSS custom properties (`var(--name)`) into their computed values. Required for email clients that do not support CSS custom properties (most email clients). Variables declared in one `<style>` tag are available in subsequent `<style>` tags. */
 export interface CreateEmailRequestTransformersCssVariables {
   /** Enable CSS variable resolution. */
@@ -2640,25 +1815,13 @@ export interface CreateEmailRequestTransformersCssVariables {
   /** Keep original custom property declarations (`--name: value`) alongside the resolved values. */
   preserve?: boolean;
 }
-const CreateEmailRequestTransformersCssVariables = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<CreateEmailRequestTransformersCssVariables>;
-
 /** Encodes special characters (for example, `©`, `(TM)`, and `--`) as their HTML entity equivalents. Improves rendering consistency across email clients with varying character encoding support. Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags and avoids double-encoding existing entities. */
 export interface CreateEmailRequestTransformersEncodeEntities {
   /** Enable HTML entity encoding. */
   enabled?: boolean;
 }
-const CreateEmailRequestTransformersEncodeEntities = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<CreateEmailRequestTransformersEncodeEntities>;
-
 /** HTML comment removal level. `"0"` keeps all comments, `"1"` removes non-conditional comments (preserves MSO conditionals like `<!--[if mso]>`), and `"2"` removes all comments including conditional. */
 export type CreateEmailRequestTransformersFormatterMinifyRemoveHtmlComments = "0" | "1" | "2";
-const CreateEmailRequestTransformersFormatterMinifyRemoveHtmlComments = S.String;
-
 /** Options used when `type` is `"minify"`. Reduces file size by stripping whitespace and comments. */
 export interface CreateEmailRequestTransformersFormatterMinify {
   /** Maximum characters per line before inserting a line break. */
@@ -2674,15 +1837,8 @@ export interface CreateEmailRequestTransformersFormatterMinify {
   /** Remove all line breaks from the output. */
   remove_line_breaks?: boolean;
 }
-const CreateEmailRequestTransformersFormatterMinify = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<CreateEmailRequestTransformersFormatterMinify>;
-
 /** Character used for indentation. */
 export type CreateEmailRequestTransformersFormatterPrettifyIndentCharacter = "spaces" | "tabs";
-const CreateEmailRequestTransformersFormatterPrettifyIndentCharacter = S.String;
-
 /** Options used when `type` is `"prettify"`. Produces human-readable, indented HTML output. */
 export interface CreateEmailRequestTransformersFormatterPrettify {
   /** Character used for indentation. */
@@ -2692,15 +1848,8 @@ export interface CreateEmailRequestTransformersFormatterPrettify {
   /** Wrap HTML attributes onto separate lines (`force-expand-multiline` mode). */
   wrap_attributes?: boolean;
 }
-const CreateEmailRequestTransformersFormatterPrettify = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<CreateEmailRequestTransformersFormatterPrettify>;
-
 /** Formatting mode to apply. */
 export type CreateEmailRequestTransformersFormatterType = "none" | "prettify" | "minify";
-const CreateEmailRequestTransformersFormatterType = S.String;
-
 /** Controls the output formatting of the final HTML. Only one mode (`prettify` or `minify`) can be active at a time. Set to `"none"` to skip formatting entirely. */
 export interface CreateEmailRequestTransformersFormatter {
   /** Options used when `type` is `"minify"`. Reduces file size by stripping whitespace and comments. */
@@ -2710,43 +1859,22 @@ export interface CreateEmailRequestTransformersFormatter {
   /** Formatting mode to apply. */
   type?: CreateEmailRequestTransformersFormatterType | (string & {});
 }
-const CreateEmailRequestTransformersFormatter = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<CreateEmailRequestTransformersFormatter>;
-
 /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export interface CreateEmailRequestTransformersPreventWidows {
   /** Enable widow word prevention. */
   enabled?: boolean;
 }
-const CreateEmailRequestTransformersPreventWidows =
-  CreateEmailRequestTransformersEncodeEntities as any as S.Schema<CreateEmailRequestTransformersPreventWidows>;
-
 export interface CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem {
   /** Opening delimiter. */
   heads?: string;
   /** Closing delimiter. */
   tails?: string;
 }
-const CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem>;
-
 /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
 export type CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList =
   Array<CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem>;
-const CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList>;
-
 /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
 export type CreateEmailRequestTransformersRemoveUnusedCssWhitelistList = Array<string>;
-const CreateEmailRequestTransformersRemoveUnusedCssWhitelistList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<CreateEmailRequestTransformersRemoveUnusedCssWhitelistList>;
-
 /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface CreateEmailRequestTransformersRemoveUnusedCss {
   /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
@@ -2758,11 +1886,6 @@ export interface CreateEmailRequestTransformersRemoveUnusedCss {
   /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
   whitelist?: CreateEmailRequestTransformersRemoveUnusedCssWhitelistList;
 }
-const CreateEmailRequestTransformersRemoveUnusedCss = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<CreateEmailRequestTransformersRemoveUnusedCss>;
-
 export interface CreateEmailRequestTransformersUrlParametersParametersItem {
   /** Parameter name. */
   key?: string;
@@ -2771,19 +1894,9 @@ export interface CreateEmailRequestTransformersUrlParametersParametersItem {
   /** Parameter value. May contain template variables. */
   value?: string;
 }
-const CreateEmailRequestTransformersUrlParametersParametersItem = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<CreateEmailRequestTransformersUrlParametersParametersItem>;
-
 /** List of parameters to append to URLs. */
 export type CreateEmailRequestTransformersUrlParametersParametersList =
   Array<CreateEmailRequestTransformersUrlParametersParametersItem>;
-const CreateEmailRequestTransformersUrlParametersParametersList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<CreateEmailRequestTransformersUrlParametersParametersList>;
-
 /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
 export interface CreateEmailRequestTransformersUrlParameters {
   /** Enable URL parameter injection. */
@@ -2791,11 +1904,6 @@ export interface CreateEmailRequestTransformersUrlParameters {
   /** List of parameters to append to URLs. */
   parameters?: CreateEmailRequestTransformersUrlParametersParametersList;
 }
-const CreateEmailRequestTransformersUrlParameters = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<CreateEmailRequestTransformersUrlParameters>;
-
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface CreateEmailRequestTransformers {
   /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
@@ -2815,11 +1923,6 @@ export interface CreateEmailRequestTransformers {
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: CreateEmailRequestTransformersUrlParameters;
 }
-const CreateEmailRequestTransformers = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<CreateEmailRequestTransformers>;
-
 export interface CreateEmailRequest {
   /** Display name of the email. */
   name: string;
@@ -2834,22 +1937,14 @@ export interface CreateEmailRequest {
   /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
   transformers?: CreateEmailRequestTransformers;
 }
-const CreateEmailRequest = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<CreateEmailRequest>;
-
 /** List of [language codes](/journeys/channels/localization/attribute/#supported-languages) that reflect the languages this default email has been translated to. */
 export type CreateEmailResponseEmailAvailableLanguagesList = Array<string>;
-const CreateEmailResponseEmailAvailableLanguagesList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<CreateEmailResponseEmailAvailableLanguagesList>;
-
 /** The content of your email. */
 export type CreateEmailResponseEmailContent = CreateEmailRequestContent;
 export type CreateEmailResponseEmailEnvelopeHeadersItem = CreateEmailRequestEnvelopeHeadersItem;
 /** Custom headers. Each item: { "name": "string", "value": "string" }. */
 export type CreateEmailResponseEmailEnvelopeHeadersList =
   Array<CreateEmailRequestEnvelopeHeadersItem>;
-const CreateEmailResponseEmailEnvelopeHeadersList =
-  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<CreateEmailResponseEmailEnvelopeHeadersList>;
-
 export interface CreateEmailResponseEmailEnvelope {
   /** BCC email address. */
   bcc?: string;
@@ -2868,11 +1963,6 @@ export interface CreateEmailResponseEmailEnvelope {
   /** Reply-to identity ID. This matches one of the ids in *Workspace Settings > Email*. */
   reply_to_id?: number | null;
 }
-const CreateEmailResponseEmailEnvelope = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<CreateEmailResponseEmailEnvelope>;
-
 /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
 export type CreateEmailResponseEmailTransformersAccessibility =
   CreateEmailRequestTransformersAccessibility;
@@ -2903,15 +1993,10 @@ export interface CreateEmailResponseEmailTransformersFormatterMinify {
   /** Remove all line breaks from the output. */
   remove_line_breaks?: boolean;
 }
-const CreateEmailResponseEmailTransformersFormatterMinify =
-  CreateEmailRequestTransformersFormatterMinify as any as S.Schema<CreateEmailResponseEmailTransformersFormatterMinify>;
-
 /** Character used for indentation. */
 export type CreateEmailResponseEmailTransformersFormatterPrettifyIndentCharacter =
   | "spaces"
   | "tabs";
-const CreateEmailResponseEmailTransformersFormatterPrettifyIndentCharacter = S.String;
-
 /** Options used when `type` is `"prettify"`. Produces human-readable, indented HTML output. */
 export interface CreateEmailResponseEmailTransformersFormatterPrettify {
   /** Character used for indentation. */
@@ -2921,15 +2006,8 @@ export interface CreateEmailResponseEmailTransformersFormatterPrettify {
   /** Wrap HTML attributes onto separate lines (`force-expand-multiline` mode). */
   wrap_attributes?: boolean;
 }
-const CreateEmailResponseEmailTransformersFormatterPrettify = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<CreateEmailResponseEmailTransformersFormatterPrettify>;
-
 /** Formatting mode to apply. */
 export type CreateEmailResponseEmailTransformersFormatterType = "none" | "prettify" | "minify";
-const CreateEmailResponseEmailTransformersFormatterType = S.String;
-
 /** Controls the output formatting of the final HTML. Only one mode (`prettify` or `minify`) can be active at a time. Set to `"none"` to skip formatting entirely. */
 export interface CreateEmailResponseEmailTransformersFormatter {
   /** Options used when `type` is `"minify"`. Reduces file size by stripping whitespace and comments. */
@@ -2939,11 +2017,6 @@ export interface CreateEmailResponseEmailTransformersFormatter {
   /** Formatting mode to apply. */
   type?: CreateEmailResponseEmailTransformersFormatterType;
 }
-const CreateEmailResponseEmailTransformersFormatter = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<CreateEmailResponseEmailTransformersFormatter>;
-
 /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type CreateEmailResponseEmailTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
@@ -2952,16 +2025,8 @@ export type CreateEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersIte
 /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
 export type CreateEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersList =
   Array<CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem>;
-const CreateEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersList =
-  CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList as any as S.Schema<CreateEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersList>;
-
 /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
 export type CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList = Array<string>;
-const CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList>;
-
 /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface CreateEmailResponseEmailTransformersRemoveUnusedCss {
   /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
@@ -2973,21 +2038,11 @@ export interface CreateEmailResponseEmailTransformersRemoveUnusedCss {
   /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
   whitelist?: CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList;
 }
-const CreateEmailResponseEmailTransformersRemoveUnusedCss = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<CreateEmailResponseEmailTransformersRemoveUnusedCss>;
-
 export type CreateEmailResponseEmailTransformersUrlParametersParametersItem =
   CreateEmailRequestTransformersUrlParametersParametersItem;
 /** List of parameters to append to URLs. */
 export type CreateEmailResponseEmailTransformersUrlParametersParametersList =
   Array<CreateEmailRequestTransformersUrlParametersParametersItem>;
-const CreateEmailResponseEmailTransformersUrlParametersParametersList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<CreateEmailResponseEmailTransformersUrlParametersParametersList>;
-
 /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
 export interface CreateEmailResponseEmailTransformersUrlParameters {
   /** Enable URL parameter injection. */
@@ -2995,11 +2050,6 @@ export interface CreateEmailResponseEmailTransformersUrlParameters {
   /** List of parameters to append to URLs. */
   parameters?: CreateEmailResponseEmailTransformersUrlParametersParametersList;
 }
-const CreateEmailResponseEmailTransformersUrlParameters = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<CreateEmailResponseEmailTransformersUrlParameters>;
-
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface CreateEmailResponseEmailTransformers {
   /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
@@ -3019,11 +2069,6 @@ export interface CreateEmailResponseEmailTransformers {
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: CreateEmailResponseEmailTransformersUrlParameters;
 }
-const CreateEmailResponseEmailTransformers = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<CreateEmailResponseEmailTransformers>;
-
 export interface CreateEmailResponseEmail {
   /** List of [language codes](/journeys/channels/localization/attribute/#supported-languages) that reflect the languages this default email has been translated to. */
   available_languages?: CreateEmailResponseEmailAvailableLanguagesList;
@@ -3047,16 +2092,9 @@ export interface CreateEmailResponseEmail {
   /** Unix timestamp of the last update to the email. */
   updated?: number;
 }
-const CreateEmailResponseEmail = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<CreateEmailResponseEmail>;
-
 export interface CreateEmailResponse {
   email?: CreateEmailResponseEmail;
 }
-const CreateEmailResponse = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<CreateEmailResponse>;
-
 /** The content of your email. */
 export type CreateEmailTranslationRequestContent = CreateEmailRequestContent;
 export type CreateEmailTranslationRequestEnvelopeHeadersItem =
@@ -3079,9 +2117,6 @@ export interface CreateEmailTranslationRequestEnvelope {
   /** Reply-to identity ID. Must reference an existing identity from *Workspace Settings > Email* under your From Addresses. */
   reply_to_id?: number | null;
 }
-const CreateEmailTranslationRequestEnvelope =
-  CreateEmailRequestEnvelope as any as S.Schema<CreateEmailTranslationRequestEnvelope>;
-
 /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
 export type CreateEmailTranslationRequestTransformersAccessibility =
   CreateEmailRequestTransformersAccessibility;
@@ -3102,8 +2137,6 @@ export type CreateEmailTranslationRequestTransformersFormatterMinifyRemoveHtmlCo
   | "0"
   | "1"
   | "2";
-const CreateEmailTranslationRequestTransformersFormatterMinifyRemoveHtmlComments = S.String;
-
 /** Options used when `type` is `"minify"`. Reduces file size by stripping whitespace and comments. */
 export interface CreateEmailTranslationRequestTransformersFormatterMinify {
   /** Maximum characters per line before inserting a line break. */
@@ -3119,17 +2152,10 @@ export interface CreateEmailTranslationRequestTransformersFormatterMinify {
   /** Remove all line breaks from the output. */
   remove_line_breaks?: boolean;
 }
-const CreateEmailTranslationRequestTransformersFormatterMinify = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<CreateEmailTranslationRequestTransformersFormatterMinify>;
-
 /** Character used for indentation. */
 export type CreateEmailTranslationRequestTransformersFormatterPrettifyIndentCharacter =
   | "spaces"
   | "tabs";
-const CreateEmailTranslationRequestTransformersFormatterPrettifyIndentCharacter = S.String;
-
 /** Options used when `type` is `"prettify"`. Produces human-readable, indented HTML output. */
 export interface CreateEmailTranslationRequestTransformersFormatterPrettify {
   /** Character used for indentation. */
@@ -3141,15 +2167,8 @@ export interface CreateEmailTranslationRequestTransformersFormatterPrettify {
   /** Wrap HTML attributes onto separate lines (`force-expand-multiline` mode). */
   wrap_attributes?: boolean;
 }
-const CreateEmailTranslationRequestTransformersFormatterPrettify = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<CreateEmailTranslationRequestTransformersFormatterPrettify>;
-
 /** Formatting mode to apply. */
 export type CreateEmailTranslationRequestTransformersFormatterType = "none" | "prettify" | "minify";
-const CreateEmailTranslationRequestTransformersFormatterType = S.String;
-
 /** Controls the output formatting of the final HTML. Only one mode (`prettify` or `minify`) can be active at a time. Set to `"none"` to skip formatting entirely. */
 export interface CreateEmailTranslationRequestTransformersFormatter {
   /** Options used when `type` is `"minify"`. Reduces file size by stripping whitespace and comments. */
@@ -3159,11 +2178,6 @@ export interface CreateEmailTranslationRequestTransformersFormatter {
   /** Formatting mode to apply. */
   type?: CreateEmailTranslationRequestTransformersFormatterType | (string & {});
 }
-const CreateEmailTranslationRequestTransformersFormatter = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<CreateEmailTranslationRequestTransformersFormatter>;
-
 /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type CreateEmailTranslationRequestTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
@@ -3172,14 +2186,8 @@ export type CreateEmailTranslationRequestTransformersRemoveUnusedCssBackendMarke
 /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
 export type CreateEmailTranslationRequestTransformersRemoveUnusedCssBackendMarkersList =
   Array<CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem>;
-const CreateEmailTranslationRequestTransformersRemoveUnusedCssBackendMarkersList =
-  CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList as any as S.Schema<CreateEmailTranslationRequestTransformersRemoveUnusedCssBackendMarkersList>;
-
 /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
 export type CreateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList = Array<string>;
-const CreateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList =
-  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<CreateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList>;
-
 /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface CreateEmailTranslationRequestTransformersRemoveUnusedCss {
   /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
@@ -3191,11 +2199,6 @@ export interface CreateEmailTranslationRequestTransformersRemoveUnusedCss {
   /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
   whitelist?: CreateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList;
 }
-const CreateEmailTranslationRequestTransformersRemoveUnusedCss = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<CreateEmailTranslationRequestTransformersRemoveUnusedCss>;
-
 export type CreateEmailTranslationRequestTransformersUrlParametersParametersItem =
   CreateEmailRequestTransformersUrlParametersParametersItem;
 /** List of parameters to append to URLs. */
@@ -3208,9 +2211,6 @@ export interface CreateEmailTranslationRequestTransformersUrlParameters {
   /** List of parameters to append to URLs. */
   parameters?: CreateEmailTranslationRequestTransformersUrlParametersParametersList;
 }
-const CreateEmailTranslationRequestTransformersUrlParameters =
-  CreateEmailResponseEmailTransformersUrlParameters as any as S.Schema<CreateEmailTranslationRequestTransformersUrlParameters>;
-
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface CreateEmailTranslationRequestTransformers {
   /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
@@ -3230,11 +2230,6 @@ export interface CreateEmailTranslationRequestTransformers {
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: CreateEmailTranslationRequestTransformersUrlParameters;
 }
-const CreateEmailTranslationRequestTransformers = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<CreateEmailTranslationRequestTransformers>;
-
 export interface CreateEmailTranslationRequest {
   /** The id of the email. If your email has multiple languages, you must provide the ID of the **default** language template. This links the workflow to all of the language variants for the template. */
   id: string;
@@ -3247,16 +2242,8 @@ export interface CreateEmailTranslationRequest {
   /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
   transformers?: CreateEmailTranslationRequestTransformers;
 }
-const CreateEmailTranslationRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<CreateEmailTranslationRequest>;
-
 /** List of [language codes](/journeys/channels/localization/attribute/#supported-languages) that reflect the languages this default email has been translated to. */
 export type CreateEmailTranslationResponseEmailTranslationAvailableLanguagesList = Array<string>;
-const CreateEmailTranslationResponseEmailTranslationAvailableLanguagesList =
-  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<CreateEmailTranslationResponseEmailTranslationAvailableLanguagesList>;
-
 /** The content of your email. */
 export type CreateEmailTranslationResponseEmailTranslationContent = CreateEmailRequestContent;
 export type CreateEmailTranslationResponseEmailTranslationEnvelopeHeadersItem =
@@ -3264,11 +2251,6 @@ export type CreateEmailTranslationResponseEmailTranslationEnvelopeHeadersItem =
 /** Custom headers. Each item: { "name": "string", "value": "string" }. */
 export type CreateEmailTranslationResponseEmailTranslationEnvelopeHeadersList =
   Array<CreateEmailRequestEnvelopeHeadersItem>;
-const CreateEmailTranslationResponseEmailTranslationEnvelopeHeadersList = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<CreateEmailTranslationResponseEmailTranslationEnvelopeHeadersList>;
-
 export interface CreateEmailTranslationResponseEmailTranslationEnvelope {
   /** BCC email address. */
   bcc?: string;
@@ -3287,11 +2269,6 @@ export interface CreateEmailTranslationResponseEmailTranslationEnvelope {
   /** Reply-to identity ID. This matches one of the ids in *Workspace Settings > Email*. */
   reply_to_id?: number | null;
 }
-const CreateEmailTranslationResponseEmailTranslationEnvelope = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<CreateEmailTranslationResponseEmailTranslationEnvelope>;
-
 /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
 export type CreateEmailTranslationResponseEmailTranslationTransformersAccessibility =
   CreateEmailRequestTransformersAccessibility;
@@ -3312,9 +2289,6 @@ export type CreateEmailTranslationResponseEmailTranslationTransformersFormatterM
   | "0"
   | "1"
   | "2";
-const CreateEmailTranslationResponseEmailTranslationTransformersFormatterMinifyRemoveHtmlComments =
-  S.String;
-
 /** Options used when `type` is `"minify"`. Reduces file size by stripping whitespace and comments. */
 export interface CreateEmailTranslationResponseEmailTranslationTransformersFormatterMinify {
   /** Maximum characters per line before inserting a line break. */
@@ -3328,19 +2302,10 @@ export interface CreateEmailTranslationResponseEmailTranslationTransformersForma
   /** Remove all line breaks from the output. */
   remove_line_breaks?: boolean;
 }
-const CreateEmailTranslationResponseEmailTranslationTransformersFormatterMinify =
-  /*@__PURE__*/ __L.at(
-    __c14,
-    2,
-  ) as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformersFormatterMinify>;
-
 /** Character used for indentation. */
 export type CreateEmailTranslationResponseEmailTranslationTransformersFormatterPrettifyIndentCharacter =
   | "spaces"
   | "tabs";
-const CreateEmailTranslationResponseEmailTranslationTransformersFormatterPrettifyIndentCharacter =
-  S.String;
-
 /** Options used when `type` is `"prettify"`. Produces human-readable, indented HTML output. */
 export interface CreateEmailTranslationResponseEmailTranslationTransformersFormatterPrettify {
   /** Character used for indentation. */
@@ -3350,19 +2315,11 @@ export interface CreateEmailTranslationResponseEmailTranslationTransformersForma
   /** Wrap HTML attributes onto separate lines (`force-expand-multiline` mode). */
   wrap_attributes?: boolean;
 }
-const CreateEmailTranslationResponseEmailTranslationTransformersFormatterPrettify =
-  /*@__PURE__*/ __L.at(
-    __c14,
-    3,
-  ) as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformersFormatterPrettify>;
-
 /** Formatting mode to apply. */
 export type CreateEmailTranslationResponseEmailTranslationTransformersFormatterType =
   | "none"
   | "prettify"
   | "minify";
-const CreateEmailTranslationResponseEmailTranslationTransformersFormatterType = S.String;
-
 /** Controls the output formatting of the final HTML. Only one mode (`prettify` or `minify`) can be active at a time. Set to `"none"` to skip formatting entirely. */
 export interface CreateEmailTranslationResponseEmailTranslationTransformersFormatter {
   /** Options used when `type` is `"minify"`. Reduces file size by stripping whitespace and comments. */
@@ -3372,11 +2329,6 @@ export interface CreateEmailTranslationResponseEmailTranslationTransformersForma
   /** Formatting mode to apply. */
   type?: CreateEmailTranslationResponseEmailTranslationTransformersFormatterType;
 }
-const CreateEmailTranslationResponseEmailTranslationTransformersFormatter = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformersFormatter>;
-
 /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type CreateEmailTranslationResponseEmailTranslationTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
@@ -3385,15 +2337,9 @@ export type CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnus
 /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
 export type CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssBackendMarkersList =
   Array<CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem>;
-const CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssBackendMarkersList =
-  CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssBackendMarkersList>;
-
 /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
 export type CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList =
   Array<string>;
-const CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList =
-  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList>;
-
 /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss {
   /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
@@ -3405,20 +2351,11 @@ export interface CreateEmailTranslationResponseEmailTranslationTransformersRemov
   /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
   whitelist?: CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList;
 }
-const CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss =
-  /*@__PURE__*/ __L.at(
-    __c14,
-    5,
-  ) as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss>;
-
 export type CreateEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersItem =
   CreateEmailRequestTransformersUrlParametersParametersItem;
 /** List of parameters to append to URLs. */
 export type CreateEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersList =
   Array<CreateEmailRequestTransformersUrlParametersParametersItem>;
-const CreateEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersList =
-  CreateEmailResponseEmailTransformersUrlParametersParametersList as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersList>;
-
 /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
 export interface CreateEmailTranslationResponseEmailTranslationTransformersUrlParameters {
   /** Enable URL parameter injection. */
@@ -3426,12 +2363,6 @@ export interface CreateEmailTranslationResponseEmailTranslationTransformersUrlPa
   /** List of parameters to append to URLs. */
   parameters?: CreateEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersList;
 }
-const CreateEmailTranslationResponseEmailTranslationTransformersUrlParameters =
-  /*@__PURE__*/ __L.at(
-    __c14,
-    6,
-  ) as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformersUrlParameters>;
-
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface CreateEmailTranslationResponseEmailTranslationTransformers {
   /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
@@ -3451,11 +2382,6 @@ export interface CreateEmailTranslationResponseEmailTranslationTransformers {
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: CreateEmailTranslationResponseEmailTranslationTransformersUrlParameters;
 }
-const CreateEmailTranslationResponseEmailTranslationTransformers = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<CreateEmailTranslationResponseEmailTranslationTransformers>;
-
 export interface CreateEmailTranslationResponseEmailTranslation {
   /** List of [language codes](/journeys/channels/localization/attribute/#supported-languages) that reflect the languages this default email has been translated to. */
   available_languages?: CreateEmailTranslationResponseEmailTranslationAvailableLanguagesList;
@@ -3479,27 +2405,15 @@ export interface CreateEmailTranslationResponseEmailTranslation {
   /** Unix timestamp of the last update to the translation. */
   updated?: number;
 }
-const CreateEmailTranslationResponseEmailTranslation = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<CreateEmailTranslationResponseEmailTranslation>;
-
 export interface CreateEmailTranslationResponse {
   email_translation?: CreateEmailTranslationResponseEmailTranslation;
 }
-const CreateEmailTranslationResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<CreateEmailTranslationResponse>;
-
 export interface CreateFolderRequest {
   /** The name of the folder. Cannot contain these characters: < > : " / \ | ? * . */
   name: string;
   /** UUID of the parent folder. Omit or pass `null` to create at root. */
   parent_folder_id?: string | null;
 }
-const CreateFolderRequest = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<CreateFolderRequest>;
-
 export interface CreateFolderResponseFolder {
   /** Timestamp of when the folder was created. */
   created?: number;
@@ -3512,56 +2426,26 @@ export interface CreateFolderResponseFolder {
   /** Timestamp of last update to the folder. */
   updated?: number;
 }
-const CreateFolderResponseFolder = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<CreateFolderResponseFolder>;
-
 export interface CreateFolderResponse {
   folder?: CreateFolderResponseFolder;
 }
-const CreateFolderResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<CreateFolderResponse>;
-
 export interface CreateManSegmentRequestSegment {
   /** The name of the segment. */
   name: string;
   /** A description for the segment. This can help you understand the purpose of the segment when you encounter it in other requests or in the UI. */
   description?: string;
 }
-const CreateManSegmentRequestSegment = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<CreateManSegmentRequestSegment>;
-
 export interface CreateManSegmentRequest {
   segment: CreateManSegmentRequestSegment;
 }
-const CreateManSegmentRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<CreateManSegmentRequest>;
-
 /** The conditions that determine who belongs to the segment, as a tree of nested `and` and `or` groups. Customer.io includes this object for data-driven segments and omits it for manual segments, which don't have conditions. A profile attribute condition appears as an `attribute_change` event with a `to` filter and an inverted `from` filter, and filter values are always strings, even for numeric or boolean attributes. */
 export type CreateManSegmentResponseSegmentConditionsMap = { [key: string]: unknown | undefined };
-const CreateManSegmentResponseSegmentConditionsMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<CreateManSegmentResponseSegmentConditionsMap>;
-
 /** The segment's build state. The state is `build` while Customer.io calculates who belongs to the segment, and `finished` when membership is up to date. */
 export type CreateManSegmentResponseSegmentState = "build" | "finished";
-const CreateManSegmentResponseSegmentState = S.String;
-
 /** The tags assigned to the segment, if any. Tags may help you sort through your segments. */
 export type CreateManSegmentResponseSegmentTagsList = Array<string>;
-const CreateManSegmentResponseSegmentTagsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<CreateManSegmentResponseSegmentTagsList>;
-
 /** The type of segment. */
 export type CreateManSegmentResponseSegmentType = "dynamic" | "manual";
-const CreateManSegmentResponseSegmentType = S.String;
-
 export interface CreateManSegmentResponseSegment {
   /** The conditions that determine who belongs to the segment, as a tree of nested `and` and `or` groups. Customer.io includes this object for data-driven segments and omits it for manual segments, which don't have conditions. A profile attribute condition appears as an `attribute_change` event with a `to` filter and an inverted `from` filter, and filter values are always strings, even for numeric or boolean attributes. */
   conditions?: CreateManSegmentResponseSegmentConditionsMap;
@@ -3586,19 +2470,9 @@ export interface CreateManSegmentResponseSegment {
   /** The date time when the referenced ID was last updated. */
   updated_at?: number;
 }
-const CreateManSegmentResponseSegment = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<CreateManSegmentResponseSegment>;
-
 export interface CreateManSegmentResponse {
   segment?: CreateManSegmentResponseSegment;
 }
-const CreateManSegmentResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<CreateManSegmentResponse>;
-
 /** The channel type for the one-time send. */
 export type CreateNewsletterRequestBodyCase0Type = "email";
 /** Time period in seconds for rate limiting. Must be one of 60 (minute), 3600 (hour), or 86400 (day). */
@@ -4053,34 +2927,19 @@ export type CreateNewsletterRequestBody =
   | CreateNewsletterRequestBodyCase3
   | CreateNewsletterRequestBodyCase4
   | CreateNewsletterRequestBodyCase5;
-const CreateNewsletterRequestBody = S.Unknown as any as S.Schema<CreateNewsletterRequestBody>;
-
 export interface CreateNewsletterRequest {
   body: CreateNewsletterRequestBody;
 }
-const CreateNewsletterRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<CreateNewsletterRequest>;
-
 /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
 export type CreateNewsletterResponseNewsletterContentIdsList = Array<number>;
-const CreateNewsletterResponseNewsletterContentIdsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CreateNewsletterResponseNewsletterContentIdsList>;
-
 /** How far Customer.io has got with a recipient file, whether you uploaded it in the UI or passed `recipient_file_url`. Customer.io omits this field when the audience came from a `recipients` filter. Wait for `done` before you send or schedule. */
 export type CreateNewsletterResponseNewsletterRecipientFileStatus =
   | "pending"
   | "processing"
   | "done"
   | "error";
-const CreateNewsletterResponseNewsletterRecipientFileStatus = S.String;
-
 /** If the recipient conditions included segments, this returns a list of those segment ids. */
 export type CreateNewsletterResponseNewsletterRecipientSegmentIdsList = Array<number>;
-const CreateNewsletterResponseNewsletterRecipientSegmentIdsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CreateNewsletterResponseNewsletterRecipientSegmentIdsList>;
-
 /** Where the one-time send is in its lifecycle. Always included. This matches the status shown in Customer.io, with one exception noted under `awaiting_winner`. - `drafted`: The one-time send isn't scheduled and hasn't been sent. - `scheduled`: A send time is set and sending hasn't started. - `sending`: Sending has started and is still in progress. More batches are due (timezone-match batches or the remainder of an A/B test), or messages are still being delivered. - `sent`: The one-time send is no longer sending. This doesn't mean that every individual message has reached a final state. - `paused`: The one-time send is paused. - `stopped`: The one-time send was stopped. - `failed`: The one-time send failed. - `awaiting_winner`: An A/B test has started and is waiting for you to pick a winner before the rest of the audience gets it. Test messages might still be going out. Customer.io's UI stops showing "awaiting winner" 30 days after the first send, but the API keeps reporting `awaiting_winner` because you can still pick a winner. When more than one state applies, Customer.io reports the first match in this order: `stopped`, `failed`, `paused`, `awaiting_winner`, `sending`, `sent`, `scheduled`, `drafted`. */
 export type CreateNewsletterResponseNewsletterSendState =
   | "drafted"
@@ -4091,13 +2950,8 @@ export type CreateNewsletterResponseNewsletterSendState =
   | "stopped"
   | "failed"
   | "awaiting_winner";
-const CreateNewsletterResponseNewsletterSendState = S.String;
-
 /** An array of tags associated with the one-time send. */
 export type CreateNewsletterResponseNewsletterTagsList = Array<string>;
-const CreateNewsletterResponseNewsletterTagsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<CreateNewsletterResponseNewsletterTagsList>;
-
 /** Channel type for a one-time send or one-time send content variant. */
 export type CreateNewsletterResponseNewsletterType =
   | "email"
@@ -4106,8 +2960,6 @@ export type CreateNewsletterResponseNewsletterType =
   | "push"
   | "in_app"
   | "inbox";
-const CreateNewsletterResponseNewsletterType = S.String;
-
 export interface CreateNewsletterResponseNewsletter {
   /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
   content_ids?: CreateNewsletterResponseNewsletterContentIdsList;
@@ -4146,19 +2998,9 @@ export interface CreateNewsletterResponseNewsletter {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-const CreateNewsletterResponseNewsletter = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<CreateNewsletterResponseNewsletter>;
-
 export interface CreateNewsletterResponse {
   newsletter?: CreateNewsletterResponseNewsletter;
 }
-const CreateNewsletterResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<CreateNewsletterResponse>;
-
 /** Add a language variant to an email one-time send. Requires `language`, `subject`, and `body`. */
 export interface CreateNewsletterLanguageVariantRequestBodyCase0 {
   /** The HTML body content for the variant. */
@@ -4211,38 +3053,22 @@ export type CreateNewsletterLanguageVariantRequestBody =
   | CreateNewsletterLanguageVariantRequestBodyCase2
   | CreateNewsletterLanguageVariantRequestBodyCase3
   | CreateNewsletterLanguageVariantRequestBodyCase4;
-const CreateNewsletterLanguageVariantRequestBody =
-  S.Unknown as any as S.Schema<CreateNewsletterLanguageVariantRequestBody>;
-
 export interface CreateNewsletterLanguageVariantRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
   body: CreateNewsletterLanguageVariantRequestBody;
 }
-const CreateNewsletterLanguageVariantRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<CreateNewsletterLanguageVariantRequest>;
-
 /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
 export type CreateNewsletterLanguageVariantResponseNewsletterContentIdsList = Array<number>;
-const CreateNewsletterLanguageVariantResponseNewsletterContentIdsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CreateNewsletterLanguageVariantResponseNewsletterContentIdsList>;
-
 /** How far Customer.io has got with a recipient file, whether you uploaded it in the UI or passed `recipient_file_url`. Customer.io omits this field when the audience came from a `recipients` filter. Wait for `done` before you send or schedule. */
 export type CreateNewsletterLanguageVariantResponseNewsletterRecipientFileStatus =
   | "pending"
   | "processing"
   | "done"
   | "error";
-const CreateNewsletterLanguageVariantResponseNewsletterRecipientFileStatus = S.String;
-
 /** If the recipient conditions included segments, this returns a list of those segment ids. */
 export type CreateNewsletterLanguageVariantResponseNewsletterRecipientSegmentIdsList =
   Array<number>;
-const CreateNewsletterLanguageVariantResponseNewsletterRecipientSegmentIdsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CreateNewsletterLanguageVariantResponseNewsletterRecipientSegmentIdsList>;
-
 /** Where the one-time send is in its lifecycle. Always included. This matches the status shown in Customer.io, with one exception noted under `awaiting_winner`. - `drafted`: The one-time send isn't scheduled and hasn't been sent. - `scheduled`: A send time is set and sending hasn't started. - `sending`: Sending has started and is still in progress. More batches are due (timezone-match batches or the remainder of an A/B test), or messages are still being delivered. - `sent`: The one-time send is no longer sending. This doesn't mean that every individual message has reached a final state. - `paused`: The one-time send is paused. - `stopped`: The one-time send was stopped. - `failed`: The one-time send failed. - `awaiting_winner`: An A/B test has started and is waiting for you to pick a winner before the rest of the audience gets it. Test messages might still be going out. Customer.io's UI stops showing "awaiting winner" 30 days after the first send, but the API keeps reporting `awaiting_winner` because you can still pick a winner. When more than one state applies, Customer.io reports the first match in this order: `stopped`, `failed`, `paused`, `awaiting_winner`, `sending`, `sent`, `scheduled`, `drafted`. */
 export type CreateNewsletterLanguageVariantResponseNewsletterSendState =
   | "drafted"
@@ -4253,13 +3079,8 @@ export type CreateNewsletterLanguageVariantResponseNewsletterSendState =
   | "stopped"
   | "failed"
   | "awaiting_winner";
-const CreateNewsletterLanguageVariantResponseNewsletterSendState = S.String;
-
 /** An array of tags associated with the one-time send. */
 export type CreateNewsletterLanguageVariantResponseNewsletterTagsList = Array<string>;
-const CreateNewsletterLanguageVariantResponseNewsletterTagsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<CreateNewsletterLanguageVariantResponseNewsletterTagsList>;
-
 /** Channel type for a one-time send or one-time send content variant. */
 export type CreateNewsletterLanguageVariantResponseNewsletterType =
   | "email"
@@ -4268,8 +3089,6 @@ export type CreateNewsletterLanguageVariantResponseNewsletterType =
   | "push"
   | "in_app"
   | "inbox";
-const CreateNewsletterLanguageVariantResponseNewsletterType = S.String;
-
 export interface CreateNewsletterLanguageVariantResponseNewsletter {
   /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
   content_ids?: CreateNewsletterLanguageVariantResponseNewsletterContentIdsList;
@@ -4308,46 +3127,23 @@ export interface CreateNewsletterLanguageVariantResponseNewsletter {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-const CreateNewsletterLanguageVariantResponseNewsletter = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<CreateNewsletterLanguageVariantResponseNewsletter>;
-
 export interface CreateNewsletterLanguageVariantResponse {
   newsletter?: CreateNewsletterLanguageVariantResponseNewsletter;
 }
-const CreateNewsletterLanguageVariantResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<CreateNewsletterLanguageVariantResponse>;
-
 export interface CreateNewsletterTestGroupRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
 }
-const CreateNewsletterTestGroupRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<CreateNewsletterTestGroupRequest>;
-
 /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
 export type CreateNewsletterTestGroupResponseNewsletterContentIdsList = Array<number>;
-const CreateNewsletterTestGroupResponseNewsletterContentIdsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<CreateNewsletterTestGroupResponseNewsletterContentIdsList>;
-
 /** How far Customer.io has got with a recipient file, whether you uploaded it in the UI or passed `recipient_file_url`. Customer.io omits this field when the audience came from a `recipients` filter. Wait for `done` before you send or schedule. */
 export type CreateNewsletterTestGroupResponseNewsletterRecipientFileStatus =
   | "pending"
   | "processing"
   | "done"
   | "error";
-const CreateNewsletterTestGroupResponseNewsletterRecipientFileStatus = S.String;
-
 /** If the recipient conditions included segments, this returns a list of those segment ids. */
 export type CreateNewsletterTestGroupResponseNewsletterRecipientSegmentIdsList = Array<number>;
-const CreateNewsletterTestGroupResponseNewsletterRecipientSegmentIdsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CreateNewsletterTestGroupResponseNewsletterRecipientSegmentIdsList>;
-
 /** Where the one-time send is in its lifecycle. Always included. This matches the status shown in Customer.io, with one exception noted under `awaiting_winner`. - `drafted`: The one-time send isn't scheduled and hasn't been sent. - `scheduled`: A send time is set and sending hasn't started. - `sending`: Sending has started and is still in progress. More batches are due (timezone-match batches or the remainder of an A/B test), or messages are still being delivered. - `sent`: The one-time send is no longer sending. This doesn't mean that every individual message has reached a final state. - `paused`: The one-time send is paused. - `stopped`: The one-time send was stopped. - `failed`: The one-time send failed. - `awaiting_winner`: An A/B test has started and is waiting for you to pick a winner before the rest of the audience gets it. Test messages might still be going out. Customer.io's UI stops showing "awaiting winner" 30 days after the first send, but the API keeps reporting `awaiting_winner` because you can still pick a winner. When more than one state applies, Customer.io reports the first match in this order: `stopped`, `failed`, `paused`, `awaiting_winner`, `sending`, `sent`, `scheduled`, `drafted`. */
 export type CreateNewsletterTestGroupResponseNewsletterSendState =
   | "drafted"
@@ -4358,13 +3154,8 @@ export type CreateNewsletterTestGroupResponseNewsletterSendState =
   | "stopped"
   | "failed"
   | "awaiting_winner";
-const CreateNewsletterTestGroupResponseNewsletterSendState = S.String;
-
 /** An array of tags associated with the one-time send. */
 export type CreateNewsletterTestGroupResponseNewsletterTagsList = Array<string>;
-const CreateNewsletterTestGroupResponseNewsletterTagsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<CreateNewsletterTestGroupResponseNewsletterTagsList>;
-
 /** Channel type for a one-time send or one-time send content variant. */
 export type CreateNewsletterTestGroupResponseNewsletterType =
   | "email"
@@ -4373,8 +3164,6 @@ export type CreateNewsletterTestGroupResponseNewsletterType =
   | "push"
   | "in_app"
   | "inbox";
-const CreateNewsletterTestGroupResponseNewsletterType = S.String;
-
 export interface CreateNewsletterTestGroupResponseNewsletter {
   /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
   content_ids?: CreateNewsletterTestGroupResponseNewsletterContentIdsList;
@@ -4413,19 +3202,9 @@ export interface CreateNewsletterTestGroupResponseNewsletter {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-const CreateNewsletterTestGroupResponseNewsletter = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<CreateNewsletterTestGroupResponseNewsletter>;
-
 export interface CreateNewsletterTestGroupResponse {
   newsletter?: CreateNewsletterTestGroupResponseNewsletter;
 }
-const CreateNewsletterTestGroupResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<CreateNewsletterTestGroupResponse>;
-
 /** Add a language variant to an email one-time send. Requires `language`, `subject`, and `body`. */
 export type CreateNewsletterTestLanguageVariantRequestBodyCase0 =
   CreateNewsletterLanguageVariantRequestBodyCase0;
@@ -4448,9 +3227,6 @@ export type CreateNewsletterTestLanguageVariantRequestBody =
   | CreateNewsletterLanguageVariantRequestBodyCase2
   | CreateNewsletterLanguageVariantRequestBodyCase3
   | CreateNewsletterLanguageVariantRequestBodyCase4;
-const CreateNewsletterTestLanguageVariantRequestBody =
-  S.Unknown as any as S.Schema<CreateNewsletterTestLanguageVariantRequestBody>;
-
 export interface CreateNewsletterTestLanguageVariantRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
@@ -4458,30 +3234,17 @@ export interface CreateNewsletterTestLanguageVariantRequest {
   test_group_id: string;
   body: CreateNewsletterTestLanguageVariantRequestBody;
 }
-const CreateNewsletterTestLanguageVariantRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<CreateNewsletterTestLanguageVariantRequest>;
-
 /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
 export type CreateNewsletterTestLanguageVariantResponseNewsletterContentIdsList = Array<number>;
-const CreateNewsletterTestLanguageVariantResponseNewsletterContentIdsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CreateNewsletterTestLanguageVariantResponseNewsletterContentIdsList>;
-
 /** How far Customer.io has got with a recipient file, whether you uploaded it in the UI or passed `recipient_file_url`. Customer.io omits this field when the audience came from a `recipients` filter. Wait for `done` before you send or schedule. */
 export type CreateNewsletterTestLanguageVariantResponseNewsletterRecipientFileStatus =
   | "pending"
   | "processing"
   | "done"
   | "error";
-const CreateNewsletterTestLanguageVariantResponseNewsletterRecipientFileStatus = S.String;
-
 /** If the recipient conditions included segments, this returns a list of those segment ids. */
 export type CreateNewsletterTestLanguageVariantResponseNewsletterRecipientSegmentIdsList =
   Array<number>;
-const CreateNewsletterTestLanguageVariantResponseNewsletterRecipientSegmentIdsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<CreateNewsletterTestLanguageVariantResponseNewsletterRecipientSegmentIdsList>;
-
 /** Where the one-time send is in its lifecycle. Always included. This matches the status shown in Customer.io, with one exception noted under `awaiting_winner`. - `drafted`: The one-time send isn't scheduled and hasn't been sent. - `scheduled`: A send time is set and sending hasn't started. - `sending`: Sending has started and is still in progress. More batches are due (timezone-match batches or the remainder of an A/B test), or messages are still being delivered. - `sent`: The one-time send is no longer sending. This doesn't mean that every individual message has reached a final state. - `paused`: The one-time send is paused. - `stopped`: The one-time send was stopped. - `failed`: The one-time send failed. - `awaiting_winner`: An A/B test has started and is waiting for you to pick a winner before the rest of the audience gets it. Test messages might still be going out. Customer.io's UI stops showing "awaiting winner" 30 days after the first send, but the API keeps reporting `awaiting_winner` because you can still pick a winner. When more than one state applies, Customer.io reports the first match in this order: `stopped`, `failed`, `paused`, `awaiting_winner`, `sending`, `sent`, `scheduled`, `drafted`. */
 export type CreateNewsletterTestLanguageVariantResponseNewsletterSendState =
   | "drafted"
@@ -4492,13 +3255,8 @@ export type CreateNewsletterTestLanguageVariantResponseNewsletterSendState =
   | "stopped"
   | "failed"
   | "awaiting_winner";
-const CreateNewsletterTestLanguageVariantResponseNewsletterSendState = S.String;
-
 /** An array of tags associated with the one-time send. */
 export type CreateNewsletterTestLanguageVariantResponseNewsletterTagsList = Array<string>;
-const CreateNewsletterTestLanguageVariantResponseNewsletterTagsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<CreateNewsletterTestLanguageVariantResponseNewsletterTagsList>;
-
 /** Channel type for a one-time send or one-time send content variant. */
 export type CreateNewsletterTestLanguageVariantResponseNewsletterType =
   | "email"
@@ -4507,8 +3265,6 @@ export type CreateNewsletterTestLanguageVariantResponseNewsletterType =
   | "push"
   | "in_app"
   | "inbox";
-const CreateNewsletterTestLanguageVariantResponseNewsletterType = S.String;
-
 export interface CreateNewsletterTestLanguageVariantResponseNewsletter {
   /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
   content_ids?: CreateNewsletterTestLanguageVariantResponseNewsletterContentIdsList;
@@ -4547,30 +3303,15 @@ export interface CreateNewsletterTestLanguageVariantResponseNewsletter {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-const CreateNewsletterTestLanguageVariantResponseNewsletter = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<CreateNewsletterTestLanguageVariantResponseNewsletter>;
-
 export interface CreateNewsletterTestLanguageVariantResponse {
   newsletter?: CreateNewsletterTestLanguageVariantResponseNewsletter;
 }
-const CreateNewsletterTestLanguageVariantResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<CreateNewsletterTestLanguageVariantResponse>;
-
 export interface CreateSnippetRequest {
   /** The name of the snippet, must be unique. Trimmed of leading and trailing whitespace before storage. */
   name: string;
   /** The contents of the snippet (plain text or Liquid). Trimmed of leading and trailing whitespace before storage. Max length is environment-specific (default 16000). */
   value: string;
 }
-const CreateSnippetRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<CreateSnippetRequest>;
-
 /** describes a piece of reusable content. You must provide a name for the snippet and the `value`--the content that appears in messages that use the snippet. */
 export interface CreateSnippetResponseSnippet {
   /** The name of the snippet, must be unique. */
@@ -4580,20 +3321,10 @@ export interface CreateSnippetResponseSnippet {
   /** The last date-time the snippet was updated. */
   updated_at?: number;
 }
-const CreateSnippetResponseSnippet = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<CreateSnippetResponseSnippet>;
-
 export interface CreateSnippetResponse {
   /** describes a piece of reusable content. You must provide a name for the snippet and the `value`--the content that appears in messages that use the snippet. */
   snippet?: CreateSnippetResponseSnippet;
 }
-const CreateSnippetResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<CreateSnippetResponse>;
-
 export type CreateWebhookRequestEventsItem =
   | "customer_subscribed"
   | "customer_unsubscribed"
@@ -4667,15 +3398,8 @@ export type CreateWebhookRequestEventsItem =
   | "webhook_converted"
   | "webhook_failed"
   | "webhook_undeliverable";
-const CreateWebhookRequestEventsItem = S.String;
-
 /** Specifies the types of events you want to report to your webhook. See our [reporting webhooks reference](/integrations/api/webhooks/) for more information about event types and the information they return. */
 export type CreateWebhookRequestEventsList = Array<CreateWebhookRequestEventsItem | (string & {})>;
-const CreateWebhookRequestEventsList = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<CreateWebhookRequestEventsList>;
-
 export interface CreateWebhookRequest {
   /** The webhook URL. */
   endpoint: string;
@@ -4690,11 +3414,6 @@ export interface CreateWebhookRequest {
   /** Set to `true` to include the message `body` in `_sent` events. */
   with_content?: boolean;
 }
-const CreateWebhookRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<CreateWebhookRequest>;
-
 export type CreateWebhookResponseEventsItem =
   | "customer_subscribed"
   | "customer_unsubscribed"
@@ -4770,13 +3489,8 @@ export type CreateWebhookResponseEventsItem =
   | "webhook_undeliverable";
 /** Specifies the types of events you want to report to your webhook. See our [reporting webhooks reference](/integrations/api/webhooks/) for more information about event types and the information they return. */
 export type CreateWebhookResponseEventsList = Array<CreateWebhookResponseEventsItem>;
-const CreateWebhookResponseEventsList =
-  CreateWebhookRequestEventsList as any as S.Schema<CreateWebhookResponseEventsList>;
-
 /** The type of webhook--`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
 export type CreateWebhookResponseType = "webhook" | "js";
-const CreateWebhookResponseType = S.String;
-
 export interface CreateWebhookResponse {
   /** The webhook URL. */
   endpoint: string;
@@ -4795,130 +3509,60 @@ export interface CreateWebhookResponse {
   /** Set to `true` to include the message `body` in `_sent` events. */
   with_content?: boolean;
 }
-const CreateWebhookResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<CreateWebhookResponse>;
-
 export interface DeleteAssetRequest {
   /** The unique identifier of the resource. */
   id: number;
 }
-const DeleteAssetRequest = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<DeleteAssetRequest>;
-
 export interface DeleteAssetResponse {}
-const DeleteAssetResponse = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<DeleteAssetResponse>;
-
 export interface DeleteAssetFolderRequest {
   /** The unique identifier of the resource. */
   id: number;
 }
-const DeleteAssetFolderRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<DeleteAssetFolderRequest>;
-
 export interface DeleteAssetFolderResponse {}
-const DeleteAssetFolderResponse = DeleteAssetResponse as any as S.Schema<DeleteAssetFolderResponse>;
-
 export interface DeleteCollectionRequest {
   /** The identifier for a collection. */
   collection_id: number;
 }
-const DeleteCollectionRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<DeleteCollectionRequest>;
-
 export interface DeleteCollectionResponse {}
-const DeleteCollectionResponse = DeleteAssetResponse as any as S.Schema<DeleteCollectionResponse>;
-
 export interface DeleteComponentRequest {
   /** The UUID of the component. */
   id: string;
 }
-const DeleteComponentRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<DeleteComponentRequest>;
-
 export interface DeleteComponentResponse {}
-const DeleteComponentResponse = DeleteAssetResponse as any as S.Schema<DeleteComponentResponse>;
-
 export interface DeleteEmailRequest {
   /** The id of the email. If your email has multiple languages, you must provide the ID of the **default** language template. This links the workflow to all of the language variants for the template. */
   id: string;
 }
-const DeleteEmailRequest = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<DeleteEmailRequest>;
-
 export interface DeleteEmailResponse {}
-const DeleteEmailResponse = DeleteAssetResponse as any as S.Schema<DeleteEmailResponse>;
-
 export interface DeleteEmailTranslationRequest {
   /** The id of the email. If your email has multiple languages, you must provide the ID of the **default** language template. This links the workflow to all of the language variants for the template. */
   id: string;
   /** A [language code](/journeys/channels/localization/attribute/#supported-languages) that indicates the language of your translated email */
   language: string;
 }
-const DeleteEmailTranslationRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<DeleteEmailTranslationRequest>;
-
 export interface DeleteEmailTranslationResponse {}
-const DeleteEmailTranslationResponse =
-  DeleteAssetResponse as any as S.Schema<DeleteEmailTranslationResponse>;
-
 export interface DeleteFolderRequest {
   /** The UUID of the folder. */
   id: string;
 }
-const DeleteFolderRequest = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<DeleteFolderRequest>;
-
 export interface DeleteFolderResponse {}
-const DeleteFolderResponse = DeleteAssetResponse as any as S.Schema<DeleteFolderResponse>;
-
 export interface DeleteManSegmentRequest {
   /** The identifier for a segment. You can find your segment's ID on its page in the dashboard--go to *Segments*, select your segment, and find the ID under *Usage*. Or you can find your segment using the [App API](/integrations/api/app/tag/segments/). */
   segment_id: number;
 }
-const DeleteManSegmentRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<DeleteManSegmentRequest>;
-
 export interface DeleteManSegmentResponse {}
-const DeleteManSegmentResponse = DeleteAssetResponse as any as S.Schema<DeleteManSegmentResponse>;
-
 export interface DeleteNewsletterLanguageVariantRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
   /** A [language tag](/journeys/channels/subscriptions/unsubscribe-faqs/#currently-supported-languages) of a language variant. If you don't provide a language (an empty string), we'll use your default language. If the language variant does not exist, we'll return an error. */
   language: string;
 }
-const DeleteNewsletterLanguageVariantRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<DeleteNewsletterLanguageVariantRequest>;
-
 export interface DeleteNewsletterLanguageVariantResponse {}
-const DeleteNewsletterLanguageVariantResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<DeleteNewsletterLanguageVariantResponse>;
-
 export interface DeleteNewslettersRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
 }
-const DeleteNewslettersRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<DeleteNewslettersRequest>;
-
 export interface DeleteNewslettersResponse {}
-const DeleteNewslettersResponse = DeleteAssetResponse as any as S.Schema<DeleteNewslettersResponse>;
-
 export interface DeleteNewsletterTestLanguageVariantRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
@@ -4927,97 +3571,46 @@ export interface DeleteNewsletterTestLanguageVariantRequest {
   /** A [language tag](/journeys/channels/subscriptions/unsubscribe-faqs/#currently-supported-languages) of a language variant. If you don't provide a language (an empty string), we'll use your default language. If the language variant does not exist, we'll return an error. */
   language: string;
 }
-const DeleteNewsletterTestLanguageVariantRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<DeleteNewsletterTestLanguageVariantRequest>;
-
 export interface DeleteNewsletterTestLanguageVariantResponse {}
-const DeleteNewsletterTestLanguageVariantResponse =
-  DeleteNewsletterLanguageVariantResponse as any as S.Schema<DeleteNewsletterTestLanguageVariantResponse>;
-
 export interface DeleteSnippetRequest {
   /** The name of a snippet. */
   snippet_name: string;
 }
-const DeleteSnippetRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<DeleteSnippetRequest>;
-
 export interface DeleteSnippetResponse {}
-const DeleteSnippetResponse = DeleteAssetResponse as any as S.Schema<DeleteSnippetResponse>;
-
 export type DeleteSuppressionRequestSuppressionType =
   | "blocks"
   | "bounces"
   | "spam_reports"
   | "invalid_emails";
-const DeleteSuppressionRequestSuppressionType = S.String;
-
 export interface DeleteSuppressionRequest {
   /** The reason a person's email address was suppressed by the email service provider (ESP). */
   suppression_type: DeleteSuppressionRequestSuppressionType | (string & {});
   /** The email address of the person you want to look up. */
   email_address: string;
 }
-const DeleteSuppressionRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<DeleteSuppressionRequest>;
-
 export interface DeleteSuppressionResponse {}
-const DeleteSuppressionResponse = DeleteAssetResponse as any as S.Schema<DeleteSuppressionResponse>;
-
 export interface DeleteVersionRequest {
   /** The UUID of the email. If your email has translations, this is the ID of a specific language variant. */
   id: string;
   /** The UUID of the version. */
   version_id: string;
 }
-const DeleteVersionRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<DeleteVersionRequest>;
-
 export interface DeleteVersionResponse {}
-const DeleteVersionResponse = DeleteAssetResponse as any as S.Schema<DeleteVersionResponse>;
-
 export interface DeleteWebhookRequest {
   /** The identifier of a webhook. */
   webhook_id: number;
 }
-const DeleteWebhookRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<DeleteWebhookRequest>;
-
 export interface DeleteWebhookResponse {}
-const DeleteWebhookResponse = DeleteAssetResponse as any as S.Schema<DeleteWebhookResponse>;
-
 export interface DownloadExportRequest {
   /** The export_id you want to access. */
   export_id: number;
 }
-const DownloadExportRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<DownloadExportRequest>;
-
 export interface DownloadExportResponse {
   /** A link to download your export. Expires after 15 minutes. */
   url?: string;
 }
-const DownloadExportResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<DownloadExportResponse>;
-
 /** Static activity fields, for renderers that need them alongside the content state. */
 export type EndLiveNotificationRequestAttributesMap = { [key: string]: unknown | undefined };
-const EndLiveNotificationRequestAttributesMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<EndLiveNotificationRequestAttributesMap>;
-
 /** Your own dynamic fields. On iOS, field names must match your `ContentState` type. For Android custom types, fields pass through to your app's renderer as-is. Date fields are epoch seconds. */
 export type EndLiveNotificationRequestContentStateCase0Map = { [key: string]: unknown | undefined };
 /** Dynamic fields for the multi-step tracker template. `notification_type`: `io.customer.livenotifications.segments`. */
@@ -5047,9 +3640,6 @@ export type EndLiveNotificationRequestContentState =
   | EndLiveNotificationRequestContentStateCase0Map
   | EndLiveNotificationRequestContentStateCase1
   | EndLiveNotificationRequestContentStateCase2;
-const EndLiveNotificationRequestContentState =
-  S.Unknown as any as S.Schema<EndLiveNotificationRequestContentState>;
-
 export interface EndLiveNotificationRequestPushPayloadAlert {
   /** The alert body. */
   body: string;
@@ -5058,20 +3648,10 @@ export interface EndLiveNotificationRequestPushPayloadAlert {
   /** The sound to play with the end event. */
   sound?: string;
 }
-const EndLiveNotificationRequestPushPayloadAlert = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<EndLiveNotificationRequestPushPayloadAlert>;
-
 /** The alert to accompany the end event. Optional whether Customer.io delivers directly through APNs or relays through Firebase Cloud Messaging (FCM). If you include an alert, provide both its `title` and `body`. */
 export interface EndLiveNotificationRequestPushPayload {
   alert?: EndLiveNotificationRequestPushPayloadAlert;
 }
-const EndLiveNotificationRequestPushPayload = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<EndLiveNotificationRequestPushPayload>;
-
 export interface EndLiveNotificationRequest {
   /** The activity's instance ID (ULID), returned when you started it. */
   instance_id: string;
@@ -5084,20 +3664,10 @@ export interface EndLiveNotificationRequest {
   /** The alert to accompany the end event. Optional whether Customer.io delivers directly through APNs or relays through Firebase Cloud Messaging (FCM). If you include an alert, provide both its `title` and `body`. */
   push_payload?: EndLiveNotificationRequestPushPayload;
 }
-const EndLiveNotificationRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<EndLiveNotificationRequest>;
-
 export interface EndLiveNotificationResponse {
   /** The activity's instance ID. */
   instance_id?: string;
 }
-const EndLiveNotificationResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<EndLiveNotificationResponse>;
-
 /** Recipient attributes you want to include as extra columns in your export. You can't include event or trigger properties. */
 export type ExportDeliveriesDataRequestBodyCase0AttributesList = Array<string>;
 /** Determines the metric(s) you want to return. */
@@ -5239,25 +3809,13 @@ export type ExportDeliveriesDataRequestBody =
   | ExportDeliveriesDataRequestBodyCase1
   | ExportDeliveriesDataRequestBodyCase2
   | ExportDeliveriesDataRequestBodyCase3;
-const ExportDeliveriesDataRequestBody =
-  S.Unknown as any as S.Schema<ExportDeliveriesDataRequestBody>;
-
 export interface ExportDeliveriesDataRequest {
   body?: ExportDeliveriesDataRequestBody;
 }
-const ExportDeliveriesDataRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ExportDeliveriesDataRequest>;
-
 /** The state of your export where `done` indicates an export that you can download, `pending`, indicates that your export is not ready to download, and `failed` indicates an export that has failed and will not be downloadable. */
 export type ExportDeliveriesDataResponseExportStatus = "done" | "pending" | "failed";
-const ExportDeliveriesDataResponseExportStatus = S.String;
-
 /** The type of information contained in the export. */
 export type ExportDeliveriesDataResponseExportType = "customers" | "deliveries";
-const ExportDeliveriesDataResponseExportType = S.String;
-
 /** Metadata about an export. */
 export interface ExportDeliveriesDataResponseExport {
   /** The date time when the referenced ID was created. */
@@ -5285,20 +3843,10 @@ export interface ExportDeliveriesDataResponseExport {
   /** The user who created the export. */
   user_id?: number;
 }
-const ExportDeliveriesDataResponseExport = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ExportDeliveriesDataResponseExport>;
-
 export interface ExportDeliveriesDataResponse {
   /** Metadata about an export. */
   export?: ExportDeliveriesDataResponseExport;
 }
-const ExportDeliveriesDataResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ExportDeliveriesDataResponse>;
-
 /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type ExportPeopleDataRequestFiltersCase0AndItemAttributeOperator = "eq" | "exists";
 /** Filter your audience by attribute. */
@@ -6074,24 +4622,14 @@ export type ExportPeopleDataRequestFilters =
   | ExportPeopleDataRequestFiltersCase2
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
   | ExportPeopleDataRequestFiltersCase4;
-const ExportPeopleDataRequestFilters = S.Unknown as any as S.Schema<ExportPeopleDataRequestFilters>;
-
 /** Recipient attributes you want to include as extra columns in your export. */
 export type ExportPeopleDataRequestAttributesList = Array<string>;
-const ExportPeopleDataRequestAttributesList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<ExportPeopleDataRequestAttributesList>;
-
 export interface ExportPeopleDataRequest {
   /** Use `and`, `or`, and `not` to combine segment and attribute conditions. The top-level object accepts one property; nest groups for complex filters. */
   filters: ExportPeopleDataRequestFilters;
   /** Recipient attributes you want to include as extra columns in your export. */
   attributes?: ExportPeopleDataRequestAttributesList;
 }
-const ExportPeopleDataRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<ExportPeopleDataRequest>;
-
 /** The state of your export where `done` indicates an export that you can download, `pending`, indicates that your export is not ready to download, and `failed` indicates an export that has failed and will not be downloadable. */
 export type ExportPeopleDataResponseExportStatus = "done" | "pending" | "failed";
 /** The type of information contained in the export. */
@@ -6123,27 +4661,14 @@ export interface ExportPeopleDataResponseExport {
   /** The user who created the export. */
   user_id?: number;
 }
-const ExportPeopleDataResponseExport =
-  ExportDeliveriesDataResponseExport as any as S.Schema<ExportPeopleDataResponseExport>;
-
 export interface ExportPeopleDataResponse {
   /** Metadata about an export. */
   export?: ExportPeopleDataResponseExport;
 }
-const ExportPeopleDataResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<ExportPeopleDataResponse>;
-
 export interface GetArchivedMessageRequest {
   /** The identifier of a message. */
   message_id: string;
 }
-const GetArchivedMessageRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<GetArchivedMessageRequest>;
-
 /** The method used in conjunction with a webhook `url`. */
 export type GetArchivedMessageResponseArchivedMessageRequestMethod =
   | "GET"
@@ -6151,8 +4676,6 @@ export type GetArchivedMessageResponseArchivedMessageRequestMethod =
   | "PUT"
   | "DELETE"
   | "PATCH";
-const GetArchivedMessageResponseArchivedMessageRequestMethod = S.String;
-
 /** An archived message, including a complete message body. */
 export interface GetArchivedMessageResponseArchivedMessage {
   /** The blind-copy address(es) for this action. */
@@ -6184,56 +4707,30 @@ export interface GetArchivedMessageResponseArchivedMessage {
   /** The URL of a webhook or action. */
   url?: string;
 }
-const GetArchivedMessageResponseArchivedMessage = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<GetArchivedMessageResponseArchivedMessage>;
-
 export interface GetArchivedMessageResponse {
   /** An archived message, including a complete message body. */
   archived_message?: GetArchivedMessageResponseArchivedMessage;
 }
-const GetArchivedMessageResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<GetArchivedMessageResponse>;
-
 export interface GetAssetRequest {
   /** The unique identifier of the resource. */
   id: number;
 }
-const GetAssetRequest = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<GetAssetRequest>;
-
 export type GetAssetResponseAsset = CreateAssetResponseAsset;
 export interface GetAssetResponse {
   asset?: CreateAssetResponseAsset;
 }
-const GetAssetResponse = CreateAssetResponse as any as S.Schema<GetAssetResponse>;
-
 export interface GetAssetFolderRequest {
   /** The unique identifier of the resource. */
   id: number;
 }
-const GetAssetFolderRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<GetAssetFolderRequest>;
-
 export type GetAssetFolderResponseFolder = CreateAssetFolderResponseFolder;
 export interface GetAssetFolderResponse {
   folder?: CreateAssetFolderResponseFolder;
 }
-const GetAssetFolderResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<GetAssetFolderResponse>;
-
 export interface GetBroadcastRequest {
   /** The identifier of a broadcast. */
   broadcast_id: number;
 }
-const GetBroadcastRequest = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<GetBroadcastRequest>;
-
 /** The type of action. */
 export type GetBroadcastResponseBroadcastActionsItemType =
   | "email"
@@ -6241,27 +4738,15 @@ export type GetBroadcastResponseBroadcastActionsItemType =
   | "push"
   | "sms"
   | "slack";
-const GetBroadcastResponseBroadcastActionsItemType = S.String;
-
 export interface GetBroadcastResponseBroadcastActionsItem {
   /** The identifier for the action. */
   id?: number;
   /** The type of action. */
   type?: GetBroadcastResponseBroadcastActionsItemType;
 }
-const GetBroadcastResponseBroadcastActionsItem = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<GetBroadcastResponseBroadcastActionsItem>;
-
 /** A list of actions used by the broadcast. */
 export type GetBroadcastResponseBroadcastActionsList =
   Array<GetBroadcastResponseBroadcastActionsItem>;
-const GetBroadcastResponseBroadcastActionsList = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<GetBroadcastResponseBroadcastActionsList>;
-
 /** The type of template. */
 export type GetBroadcastResponseBroadcastMsgTemplateIdsItemType =
   | "email"
@@ -6278,22 +4763,12 @@ export interface GetBroadcastResponseBroadcastMsgTemplateIdsItem {
 /** Indicates the message template(s) used in this broadcast. */
 export type GetBroadcastResponseBroadcastMsgTemplateIdsList =
   Array<GetBroadcastResponseBroadcastMsgTemplateIdsItem>;
-const GetBroadcastResponseBroadcastMsgTemplateIdsList =
-  GetBroadcastResponseBroadcastActionsList as any as S.Schema<GetBroadcastResponseBroadcastMsgTemplateIdsList>;
-
 /** The state of the broadcast. */
 export type GetBroadcastResponseBroadcastState = "running" | "draft";
-const GetBroadcastResponseBroadcastState = S.String;
-
 /** An array of tags you set on this broadcast. */
 export type GetBroadcastResponseBroadcastTagsList = Array<string>;
-const GetBroadcastResponseBroadcastTagsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetBroadcastResponseBroadcastTagsList>;
-
 /** The type of broadcast. */
 export type GetBroadcastResponseBroadcastType = "triggered_broadcast";
-const GetBroadcastResponseBroadcastType = S.String;
-
 export interface GetBroadcastResponseBroadcast {
   /** A list of actions used by the broadcast. */
   actions?: GetBroadcastResponseBroadcastActionsList;
@@ -6320,30 +4795,15 @@ export interface GetBroadcastResponseBroadcast {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-const GetBroadcastResponseBroadcast = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<GetBroadcastResponseBroadcast>;
-
 export interface GetBroadcastResponse {
   broadcast?: GetBroadcastResponseBroadcast;
 }
-const GetBroadcastResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<GetBroadcastResponse>;
-
 export interface GetBroadcastActionRequest {
   /** The identifier of a broadcast. */
   broadcast_id: number;
   /** The action you want to lookup or act on. */
   action_id: number;
 }
-const GetBroadcastActionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<GetBroadcastActionRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type GetBroadcastActionResponseActionCase0Preprocessor = "premailer";
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
@@ -6527,17 +4987,9 @@ export type GetBroadcastActionResponseAction =
   | GetBroadcastActionResponseActionCase1
   | GetBroadcastActionResponseActionCase2
   | GetBroadcastActionResponseActionCase3;
-const GetBroadcastActionResponseAction =
-  S.Unknown as any as S.Schema<GetBroadcastActionResponseAction>;
-
 export interface GetBroadcastActionResponse {
   action?: GetBroadcastActionResponseAction;
 }
-const GetBroadcastActionResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<GetBroadcastActionResponse>;
-
 export interface GetBroadcastActionLanguageRequest {
   /** The identifier of a broadcast. */
   broadcast_id: number;
@@ -6546,11 +4998,6 @@ export interface GetBroadcastActionLanguageRequest {
   /** A [language tag](/journeys/channels/subscriptions/unsubscribe-faqs/#currently-supported-languages) of a language variant. If you don't provide a language (an empty string), we'll use your default language. If the language variant does not exist, we'll return an error. */
   language: string;
 }
-const GetBroadcastActionLanguageRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<GetBroadcastActionLanguageRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type GetBroadcastActionLanguageResponseActionCase0Preprocessor = "premailer";
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
@@ -6746,28 +5193,15 @@ export type GetBroadcastActionLanguageResponseAction =
   | GetBroadcastActionLanguageResponseActionCase1
   | GetBroadcastActionLanguageResponseActionCase2
   | GetBroadcastActionLanguageResponseActionCase3;
-const GetBroadcastActionLanguageResponseAction =
-  S.Unknown as any as S.Schema<GetBroadcastActionLanguageResponseAction>;
-
 export interface GetBroadcastActionLanguageResponse {
   action?: GetBroadcastActionLanguageResponseAction;
 }
-const GetBroadcastActionLanguageResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<GetBroadcastActionLanguageResponse>;
-
 export interface GetCampaignActionRequest {
   /** The ID of the automation that you want to trigger or return information about. */
   campaign_id: number;
   /** The action you want to lookup or act on. */
   action_id: number;
 }
-const GetCampaignActionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<GetCampaignActionRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type GetCampaignActionResponseActionCase0Preprocessor = "premailer";
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
@@ -6961,17 +5395,9 @@ export type GetCampaignActionResponseAction =
   | GetCampaignActionResponseActionCase1
   | GetCampaignActionResponseActionCase2
   | GetCampaignActionResponseActionCase3;
-const GetCampaignActionResponseAction =
-  S.Unknown as any as S.Schema<GetCampaignActionResponseAction>;
-
 export interface GetCampaignActionResponse {
   action?: GetCampaignActionResponseAction;
 }
-const GetCampaignActionResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<GetCampaignActionResponse>;
-
 export interface GetCampaignActionTranslationRequest {
   /** The ID of the automation that you want to trigger or return information about. */
   campaign_id: number;
@@ -6980,11 +5406,6 @@ export interface GetCampaignActionTranslationRequest {
   /** A [language tag](/journeys/channels/subscriptions/unsubscribe-faqs/#currently-supported-languages) of a language variant. If you don't provide a language (an empty string), we'll use your default language. If the language variant does not exist, we'll return an error. */
   language: string;
 }
-const GetCampaignActionTranslationRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<GetCampaignActionTranslationRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type GetCampaignActionTranslationResponseActionCase0Preprocessor = "premailer";
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
@@ -7190,17 +5611,9 @@ export type GetCampaignActionTranslationResponseAction =
   | GetCampaignActionTranslationResponseActionCase1
   | GetCampaignActionTranslationResponseActionCase2
   | GetCampaignActionTranslationResponseActionCase3;
-const GetCampaignActionTranslationResponseAction =
-  S.Unknown as any as S.Schema<GetCampaignActionTranslationResponseAction>;
-
 export interface GetCampaignActionTranslationResponse {
   action?: GetCampaignActionTranslationResponseAction;
 }
-const GetCampaignActionTranslationResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<GetCampaignActionTranslationResponse>;
-
 export type GetCampaignMessagesRequestType =
   | "email"
   | "webhook"
@@ -7210,8 +5623,6 @@ export type GetCampaignMessagesRequestType =
   | "push"
   | "in_app"
   | "live_notification";
-const GetCampaignMessagesRequestType = S.String;
-
 export type GetCampaignMessagesRequestMetric =
   | "attempted"
   | "sent"
@@ -7225,8 +5636,6 @@ export type GetCampaignMessagesRequestMetric =
   | "dropped"
   | "failed"
   | "undeliverable";
-const GetCampaignMessagesRequestMetric = S.String;
-
 export interface GetCampaignMessagesRequest {
   /** The ID of the automation that you want to trigger or return information about. */
   campaign_id: number;
@@ -7247,11 +5656,6 @@ export interface GetCampaignMessagesRequest {
   /** If true, the response includes `tracked_responses` for each message--an object containing tracked response option names for in-app survey responses. */
   get_tracked_responses?: boolean;
 }
-const GetCampaignMessagesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<GetCampaignMessagesRequest>;
-
 /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type GetCampaignMessagesResponseMessagesItemCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
@@ -7264,9 +5668,6 @@ export type GetCampaignMessagesResponseMessagesItemTrackedResponsesValue =
 export type GetCampaignMessagesResponseMessagesItemTrackedResponsesMap = {
   [key: string]: BroadcastMessagesResponseMessagesItemTrackedResponsesValue | undefined;
 };
-const GetCampaignMessagesResponseMessagesItemTrackedResponsesMap =
-  BroadcastMessagesResponseMessagesItemTrackedResponsesMap as any as S.Schema<GetCampaignMessagesResponseMessagesItemTrackedResponsesMap>;
-
 /** The type of message or action for a delivery, automation action, or related object. Includes channels that one-time sends do not support (for example, `slack` and `whatsapp`). */
 export type GetCampaignMessagesResponseMessagesItemType =
   | "email"
@@ -7277,8 +5678,6 @@ export type GetCampaignMessagesResponseMessagesItemType =
   | "slack"
   | "whatsapp"
   | "live_notification";
-const GetCampaignMessagesResponseMessagesItemType = S.String;
-
 /** Describes an individual message delivery. The object contains keys for all possible parents of the message (`newsletter_id`, `broadcast_id`, etc) but only the parents of the delivery are populated. Other parent IDs are null. */
 export interface GetCampaignMessagesResponseMessagesItem {
   /** The identifier for an action. */
@@ -7319,32 +5718,15 @@ export interface GetCampaignMessagesResponseMessagesItem {
   /** The type of message or action for a delivery, automation action, or related object. Includes channels that one-time sends do not support (for example, `slack` and `whatsapp`). */
   type?: GetCampaignMessagesResponseMessagesItemType;
 }
-const GetCampaignMessagesResponseMessagesItem = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<GetCampaignMessagesResponseMessagesItem>;
-
 export type GetCampaignMessagesResponseMessagesList =
   Array<GetCampaignMessagesResponseMessagesItem>;
-const GetCampaignMessagesResponseMessagesList = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<GetCampaignMessagesResponseMessagesList>;
-
 export interface GetCampaignMessagesResponse {
   messages?: GetCampaignMessagesResponseMessagesList;
 }
-const GetCampaignMessagesResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<GetCampaignMessagesResponse>;
-
 export interface GetCampaignsRequest {
   /** The ID of the automation that you want to trigger or return information about. */
   campaign_id: number;
 }
-const GetCampaignsRequest = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<GetCampaignsRequest>;
-
 export interface GetCampaignsResponseCampaignCase0ActionsItem {
   /** The identifier for the action. */
   id?: number;
@@ -7717,19 +6099,10 @@ export type GetCampaignsResponseCampaign =
   | GetCampaignsResponseCampaignCase4
   | GetCampaignsResponseCampaignCase5
   | GetCampaignsResponseCampaignCase6;
-const GetCampaignsResponseCampaign = S.Unknown as any as S.Schema<GetCampaignsResponseCampaign>;
-
 export interface GetCampaignsResponse {
   campaign?: GetCampaignsResponseCampaign;
 }
-const GetCampaignsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<GetCampaignsResponse>;
-
 export interface GetChannelsRequest {}
-const GetChannelsRequest = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<GetChannelsRequest>;
-
 /** The type of delivery channel. */
 export type GetChannelsResponseChannelsItemType =
   | "email"
@@ -7741,8 +6114,6 @@ export type GetChannelsResponseChannelsItemType =
   | "line"
   | "inbox"
   | "whatsapp";
-const GetChannelsResponseChannelsItemType = S.String;
-
 export interface GetChannelsResponseChannelsItem {
   /** A description of the channel. */
   description?: string;
@@ -7755,49 +6126,19 @@ export interface GetChannelsResponseChannelsItem {
   /** The type of delivery channel. */
   type?: GetChannelsResponseChannelsItemType;
 }
-const GetChannelsResponseChannelsItem = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<GetChannelsResponseChannelsItem>;
-
 export type GetChannelsResponseChannelsList = Array<GetChannelsResponseChannelsItem>;
-const GetChannelsResponseChannelsList = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<GetChannelsResponseChannelsList>;
-
 export interface GetChannelsResponse {
   channels?: GetChannelsResponseChannelsList;
 }
-const GetChannelsResponse = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<GetChannelsResponse>;
-
 export interface GetCioAllowlistRequest {}
-const GetCioAllowlistRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<GetCioAllowlistRequest>;
-
 export type GetCioAllowlistResponseIpAddressesList = Array<string>;
-const GetCioAllowlistResponseIpAddressesList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetCioAllowlistResponseIpAddressesList>;
-
 export interface GetCioAllowlistResponse {
   ip_addresses?: GetCioAllowlistResponseIpAddressesList;
 }
-const GetCioAllowlistResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<GetCioAllowlistResponse>;
-
 export interface GetCollectionRequest {
   /** The identifier for a collection. */
   collection_id: number;
 }
-const GetCollectionRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<GetCollectionRequest>;
-
 /** Lists the top-level keys that you can reference within this collection. Customer.io does not enforce any of these keys as required from your `data`. */
 export type GetCollectionResponseCollectionSchemaList = Array<string>;
 export interface GetCollectionResponseCollection {
@@ -7819,33 +6160,13 @@ export interface GetCollectionResponseCollection {
 export interface GetCollectionResponse {
   collection?: GetCollectionResponseCollection;
 }
-const GetCollectionResponse = AddCollectionResponse as any as S.Schema<GetCollectionResponse>;
-
 export interface GetCollectionContentsRequest {
   /** The identifier for a collection. */
   collection_id: number;
 }
-const GetCollectionContentsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<GetCollectionContentsRequest>;
-
 export type GetCollectionContentsResponseBodyMap = { [key: string]: unknown | undefined };
-const GetCollectionContentsResponseBodyMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<GetCollectionContentsResponseBodyMap>;
-
 export type GetCollectionContentsResponse = GetCollectionContentsResponseBodyMap;
-const GetCollectionContentsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<GetCollectionContentsResponse>;
-
 export interface GetCollectionsRequest {}
-const GetCollectionsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<GetCollectionsRequest>;
-
 /** Lists the top-level keys that you can reference within this collection. Customer.io does not enforce any of these keys as required from your `data`. */
 export type GetCollectionsResponseCollectionsItemSchemaList = Array<string>;
 export interface GetCollectionsResponseCollectionsItem {
@@ -7864,42 +6185,23 @@ export interface GetCollectionsResponseCollectionsItem {
   /** The date time when the referenced ID was last updated. */
   updated_at?: number;
 }
-const GetCollectionsResponseCollectionsItem =
-  AddCollectionResponseCollection as any as S.Schema<GetCollectionsResponseCollectionsItem>;
-
 export type GetCollectionsResponseCollectionsList = Array<GetCollectionsResponseCollectionsItem>;
-const GetCollectionsResponseCollectionsList = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<GetCollectionsResponseCollectionsList>;
-
 export interface GetCollectionsResponse {
   collections?: GetCollectionsResponseCollectionsList;
 }
-const GetCollectionsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<GetCollectionsResponse>;
-
 export interface GetComponentRequest {
   /** The UUID of the component. */
   id: string;
 }
-const GetComponentRequest = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<GetComponentRequest>;
-
 export type GetComponentResponseComponent = CreateComponentResponseComponent;
 export interface GetComponentResponse {
   component?: CreateComponentResponseComponent;
 }
-const GetComponentResponse = CreateComponentResponse as any as S.Schema<GetComponentResponse>;
-
 export type GetDomainSuppressionsByTypeRequestSuppressionType =
   | "blocks"
   | "bounces"
   | "spam_reports"
   | "invalid_emails";
-const GetDomainSuppressionsByTypeRequestSuppressionType = S.String;
-
 export interface GetDomainSuppressionsByTypeRequest {
   /** The sending domain you want to look up suppressions for. */
   domain_name: string;
@@ -7912,15 +6214,8 @@ export interface GetDomainSuppressionsByTypeRequest {
   /** Filter results to a specific email address. When provided, returns at most one result and cursor-based pagination does not apply. */
   email?: string;
 }
-const GetDomainSuppressionsByTypeRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<GetDomainSuppressionsByTypeRequest>;
-
 /** The reason the addresses are suppressed. */
 export type GetDomainSuppressionsByTypeResponseCategory = "bounces" | "spam";
-const GetDomainSuppressionsByTypeResponseCategory = S.String;
-
 export interface GetDomainSuppressionsByTypeResponseSuppressionsItem {
   /** The timestamp (in seconds), when the ESP suppressed the address. */
   created?: number;
@@ -7931,19 +6226,9 @@ export interface GetDomainSuppressionsByTypeResponseSuppressionsItem {
   /** The status code for the suppression, as [recorded by mailgun](https://documentation.mailgun.com/en/latest/api-suppressions.html). This is normally `550`. */
   status?: string;
 }
-const GetDomainSuppressionsByTypeResponseSuppressionsItem = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<GetDomainSuppressionsByTypeResponseSuppressionsItem>;
-
 /** The addresses suppressed in this category. */
 export type GetDomainSuppressionsByTypeResponseSuppressionsList =
   Array<GetDomainSuppressionsByTypeResponseSuppressionsItem>;
-const GetDomainSuppressionsByTypeResponseSuppressionsList = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<GetDomainSuppressionsByTypeResponseSuppressionsList>;
-
 export interface GetDomainSuppressionsByTypeResponse {
   /** The reason the addresses are suppressed. */
   category?: GetDomainSuppressionsByTypeResponseCategory;
@@ -7952,22 +6237,12 @@ export interface GetDomainSuppressionsByTypeResponse {
   /** The addresses suppressed in this category. */
   suppressions?: GetDomainSuppressionsByTypeResponseSuppressionsList;
 }
-const GetDomainSuppressionsByTypeResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<GetDomainSuppressionsByTypeResponse>;
-
 export interface GetEmailRequest {
   /** The id of the email. If your email has multiple languages, you must provide the ID of the **default** language template. This links the workflow to all of the language variants for the template. */
   id: string;
 }
-const GetEmailRequest = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<GetEmailRequest>;
-
 /** List of [language codes](/journeys/channels/localization/attribute/#supported-languages) that reflect the languages this default email has been translated to. */
 export type GetEmailResponseEmailAvailableLanguagesList = Array<string>;
-const GetEmailResponseEmailAvailableLanguagesList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetEmailResponseEmailAvailableLanguagesList>;
-
 /** The content of your email. */
 export type GetEmailResponseEmailContent = CreateEmailRequestContent;
 export type GetEmailResponseEmailEnvelopeHeadersItem = CreateEmailRequestEnvelopeHeadersItem;
@@ -7991,9 +6266,6 @@ export interface GetEmailResponseEmailEnvelope {
   /** Reply-to identity ID. This matches one of the ids in *Workspace Settings > Email*. */
   reply_to_id?: number | null;
 }
-const GetEmailResponseEmailEnvelope =
-  CreateEmailResponseEmailEnvelope as any as S.Schema<GetEmailResponseEmailEnvelope>;
-
 /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
 export type GetEmailResponseEmailTransformersAccessibility =
   CreateEmailRequestTransformersAccessibility;
@@ -8045,9 +6317,6 @@ export interface GetEmailResponseEmailTransformersFormatter {
   /** Formatting mode to apply. */
   type?: GetEmailResponseEmailTransformersFormatterType;
 }
-const GetEmailResponseEmailTransformersFormatter =
-  CreateEmailRequestTransformersFormatter as any as S.Schema<GetEmailResponseEmailTransformersFormatter>;
-
 /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type GetEmailResponseEmailTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
@@ -8069,9 +6338,6 @@ export interface GetEmailResponseEmailTransformersRemoveUnusedCss {
   /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
   whitelist?: GetEmailResponseEmailTransformersRemoveUnusedCssWhitelistList;
 }
-const GetEmailResponseEmailTransformersRemoveUnusedCss =
-  CreateEmailRequestTransformersRemoveUnusedCss as any as S.Schema<GetEmailResponseEmailTransformersRemoveUnusedCss>;
-
 export type GetEmailResponseEmailTransformersUrlParametersParametersItem =
   CreateEmailRequestTransformersUrlParametersParametersItem;
 /** List of parameters to append to URLs. */
@@ -8084,9 +6350,6 @@ export interface GetEmailResponseEmailTransformersUrlParameters {
   /** List of parameters to append to URLs. */
   parameters?: GetEmailResponseEmailTransformersUrlParametersParametersList;
 }
-const GetEmailResponseEmailTransformersUrlParameters =
-  CreateEmailRequestTransformersUrlParameters as any as S.Schema<GetEmailResponseEmailTransformersUrlParameters>;
-
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface GetEmailResponseEmailTransformers {
   /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
@@ -8106,11 +6369,6 @@ export interface GetEmailResponseEmailTransformers {
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: GetEmailResponseEmailTransformersUrlParameters;
 }
-const GetEmailResponseEmailTransformers = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<GetEmailResponseEmailTransformers>;
-
 export interface GetEmailResponseEmail {
   /** List of [language codes](/journeys/channels/localization/attribute/#supported-languages) that reflect the languages this default email has been translated to. */
   available_languages?: GetEmailResponseEmailAvailableLanguagesList;
@@ -8134,32 +6392,17 @@ export interface GetEmailResponseEmail {
   /** Unix timestamp of the last update to the email. */
   updated?: number;
 }
-const GetEmailResponseEmail = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<GetEmailResponseEmail>;
-
 export interface GetEmailResponse {
   email?: GetEmailResponseEmail;
 }
-const GetEmailResponse = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<GetEmailResponse>;
-
 export interface GetEmailTranslationRequest {
   /** The id of the email. If your email has multiple languages, you must provide the ID of the **default** language template. This links the workflow to all of the language variants for the template. */
   id: string;
   /** A [language code](/journeys/channels/localization/attribute/#supported-languages) that indicates the language of your translated email */
   language: string;
 }
-const GetEmailTranslationRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<GetEmailTranslationRequest>;
-
 /** List of [language codes](/journeys/channels/localization/attribute/#supported-languages) that reflect the languages this default email has been translated to. */
 export type GetEmailTranslationResponseEmailTranslationAvailableLanguagesList = Array<string>;
-const GetEmailTranslationResponseEmailTranslationAvailableLanguagesList =
-  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<GetEmailTranslationResponseEmailTranslationAvailableLanguagesList>;
-
 /** The content of your email. */
 export type GetEmailTranslationResponseEmailTranslationContent = CreateEmailRequestContent;
 export type GetEmailTranslationResponseEmailTranslationEnvelopeHeadersItem =
@@ -8185,9 +6428,6 @@ export interface GetEmailTranslationResponseEmailTranslationEnvelope {
   /** Reply-to identity ID. This matches one of the ids in *Workspace Settings > Email*. */
   reply_to_id?: number | null;
 }
-const GetEmailTranslationResponseEmailTranslationEnvelope =
-  CreateEmailResponseEmailEnvelope as any as S.Schema<GetEmailTranslationResponseEmailTranslationEnvelope>;
-
 /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
 export type GetEmailTranslationResponseEmailTranslationTransformersAccessibility =
   CreateEmailRequestTransformersAccessibility;
@@ -8248,9 +6488,6 @@ export interface GetEmailTranslationResponseEmailTranslationTransformersFormatte
   /** Formatting mode to apply. */
   type?: GetEmailTranslationResponseEmailTranslationTransformersFormatterType;
 }
-const GetEmailTranslationResponseEmailTranslationTransformersFormatter =
-  CreateEmailTranslationResponseEmailTranslationTransformersFormatter as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersFormatter>;
-
 /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type GetEmailTranslationResponseEmailTranslationTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
@@ -8273,9 +6510,6 @@ export interface GetEmailTranslationResponseEmailTranslationTransformersRemoveUn
   /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
   whitelist?: GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList;
 }
-const GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss =
-  CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss>;
-
 export type GetEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersItem =
   CreateEmailRequestTransformersUrlParametersParametersItem;
 /** List of parameters to append to URLs. */
@@ -8288,9 +6522,6 @@ export interface GetEmailTranslationResponseEmailTranslationTransformersUrlParam
   /** List of parameters to append to URLs. */
   parameters?: GetEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersList;
 }
-const GetEmailTranslationResponseEmailTranslationTransformersUrlParameters =
-  CreateEmailTranslationResponseEmailTranslationTransformersUrlParameters as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformersUrlParameters>;
-
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface GetEmailTranslationResponseEmailTranslationTransformers {
   /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
@@ -8310,11 +6541,6 @@ export interface GetEmailTranslationResponseEmailTranslationTransformers {
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: GetEmailTranslationResponseEmailTranslationTransformersUrlParameters;
 }
-const GetEmailTranslationResponseEmailTranslationTransformers = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<GetEmailTranslationResponseEmailTranslationTransformers>;
-
 export interface GetEmailTranslationResponseEmailTranslation {
   /** List of [language codes](/journeys/channels/localization/attribute/#supported-languages) that reflect the languages this default email has been translated to. */
   available_languages?: GetEmailTranslationResponseEmailTranslationAvailableLanguagesList;
@@ -8338,33 +6564,17 @@ export interface GetEmailTranslationResponseEmailTranslation {
   /** Unix timestamp of the last update to the translation. */
   updated?: number;
 }
-const GetEmailTranslationResponseEmailTranslation = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<GetEmailTranslationResponseEmailTranslation>;
-
 export interface GetEmailTranslationResponse {
   email_translation?: GetEmailTranslationResponseEmailTranslation;
 }
-const GetEmailTranslationResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<GetEmailTranslationResponse>;
-
 export interface GetExportRequest {
   /** The export_id you want to access. */
   export_id: number;
 }
-const GetExportRequest = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<GetExportRequest>;
-
 /** The state of your export where `done` indicates an export that you can download, `pending`, indicates that your export is not ready to download, and `failed` indicates an export that has failed and will not be downloadable. */
 export type GetExportResponseExportStatus = "done" | "pending" | "failed";
-const GetExportResponseExportStatus = S.String;
-
 /** The type of information contained in the export. */
 export type GetExportResponseExportType = "customers" | "deliveries";
-const GetExportResponseExportType = S.String;
-
 /** Metadata about an export. */
 export interface GetExportResponseExport {
   /** The date time when the referenced ID was created. */
@@ -8392,47 +6602,28 @@ export interface GetExportResponseExport {
   /** The user who created the export. */
   user_id?: number;
 }
-const GetExportResponseExport = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<GetExportResponseExport>;
-
 export interface GetExportResponse {
   /** Metadata about an export. */
   export?: GetExportResponseExport;
 }
-const GetExportResponse = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<GetExportResponse>;
-
 export interface GetFolderRequest {
   /** The UUID of the folder. */
   id: string;
 }
-const GetFolderRequest = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<GetFolderRequest>;
-
 export type GetFolderResponseFolder = CreateFolderResponseFolder;
 export interface GetFolderResponse {
   folder?: CreateFolderResponseFolder;
 }
-const GetFolderResponse = CreateFolderResponse as any as S.Schema<GetFolderResponse>;
-
 export interface GetImportRequest {
   /** The `id` of the import you want to lookup. This value is [returned from an import](/integrations/api/app/tag/imports/import/) that was accepted and queued for processing. */
   import_id: number;
 }
-const GetImportRequest = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<GetImportRequest>;
-
 /** Controls whether your import adds and updates all rows, adds only new rows, or updates only existing rows. Defaults to `all`. Event imports support only `all` and `only_existing`. Formerly called `people_to_process`. */
 export type GetImportResponseImportDataToProcess = "all" | "only_new" | "only_existing";
-const GetImportResponseImportDataToProcess = S.String;
-
 /** The type of identifier you used to identify people in your CSV. Not applicable for object imports. */
 export type GetImportResponseImportIdentifier = "id" | "email";
-const GetImportResponseImportIdentifier = S.String;
-
 /** Returned for people and event imports, even if you imported using the field `data_to_process`. This field will be deprecated soon. */
 export type GetImportResponseImportPeopleToProcess = "all" | "only_new" | "only_existing";
-const GetImportResponseImportPeopleToProcess = S.String;
-
 /** The state of the import--whether your import is being processed, fully completed (`imported`), or if it failed. */
 export type GetImportResponseImportState =
   | "preprocessing"
@@ -8443,12 +6634,8 @@ export type GetImportResponseImportState =
   | "imported"
   | "failed"
   | "canceled";
-const GetImportResponseImportState = S.String;
-
 /** The type of import. */
 export type GetImportResponseImportType = "people" | "event" | "object" | "relationship";
-const GetImportResponseImportType = S.String;
-
 export interface GetImportResponseImport {
   /** The date time when the referenced ID was created. */
   created_at?: number;
@@ -8487,19 +6674,10 @@ export interface GetImportResponseImport {
   /** ID of the export containing warnings for the import, which can retrieved via [the *Get an export* endpoint](/integrations/api/app/tag/exports/getExport/). Only present when there are warnings. */
   warning_export_id?: number;
 }
-const GetImportResponseImport = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<GetImportResponseImport>;
-
 export interface GetImportResponse {
   import: GetImportResponseImport;
 }
-const GetImportResponse = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<GetImportResponse>;
-
 export type GetInboxPreviewCaptureRequestVariant = "screenshot" | "thumbnail" | "full_thumbnail";
-const GetInboxPreviewCaptureRequestVariant = S.String;
-
 export interface GetInboxPreviewCaptureRequest {
   /** The UUID of the email. If your email has translations, this is the ID of a specific language variant. */
   id: string;
@@ -8512,25 +6690,10 @@ export interface GetInboxPreviewCaptureRequest {
   /** Only applies when `variant` is `screenshot`. Match this to a key in that tile's `screenshots` object from [Get an inbox preview job](/integrations/api/app/tag/design-studio-emails/getInboxPreviewJob/)--most devices only have `default`, but some carry extra vendor-defined captures, like an image-blocking render. */
   key?: string;
 }
-const GetInboxPreviewCaptureRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<GetInboxPreviewCaptureRequest>;
-
 export interface GetInboxPreviewCaptureResponse {}
-const GetInboxPreviewCaptureResponse =
-  DeleteAssetResponse as any as S.Schema<GetInboxPreviewCaptureResponse>;
-
 export interface GetInboxPreviewCreditsRequest {}
-const GetInboxPreviewCreditsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<GetInboxPreviewCreditsRequest>;
-
 /** The credit tier this pool belongs to. The [`free` tier](/accounts/billing/inbox-previews/) covers two kinds of pools, the monthly allowance of 25 credits every account gets and any free pools Customer.io support has granted. Because of that, `free` can appear more than once in the response. The `paid` tier covers credits purchased for the account. */
 export type GetInboxPreviewCreditsResponseCreditsItemTier = "free" | "paid";
-const GetInboxPreviewCreditsResponseCreditsItemTier = S.String;
-
 /** Credits available for generating inbox previews. */
 export interface GetInboxPreviewCreditsResponseCreditsItem {
   /** Credits originally granted for a tier. */
@@ -8542,46 +6705,21 @@ export interface GetInboxPreviewCreditsResponseCreditsItem {
   /** The credit tier this pool belongs to. The [`free` tier](/accounts/billing/inbox-previews/) covers two kinds of pools, the monthly allowance of 25 credits every account gets and any free pools Customer.io support has granted. Because of that, `free` can appear more than once in the response. The `paid` tier covers credits purchased for the account. */
   tier?: GetInboxPreviewCreditsResponseCreditsItemTier;
 }
-const GetInboxPreviewCreditsResponseCreditsItem = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<GetInboxPreviewCreditsResponseCreditsItem>;
-
 export type GetInboxPreviewCreditsResponseCreditsList =
   Array<GetInboxPreviewCreditsResponseCreditsItem>;
-const GetInboxPreviewCreditsResponseCreditsList = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<GetInboxPreviewCreditsResponseCreditsList>;
-
 export interface GetInboxPreviewCreditsResponse {
   credits?: GetInboxPreviewCreditsResponseCreditsList;
 }
-const GetInboxPreviewCreditsResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<GetInboxPreviewCreditsResponse>;
-
 export interface GetInboxPreviewJobRequest {
   /** The UUID of the email. If your email has translations, this is the ID of a specific language variant. */
   id: string;
   /** The ID of the inbox preview job, returned by [Send for inbox previews](/integrations/api/app/tag/design-studio-emails/submitInboxPreview/). */
   run_id: number;
 }
-const GetInboxPreviewJobRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<GetInboxPreviewJobRequest>;
-
 /** The device identifiers requested for this job. */
 export type GetInboxPreviewJobResponseClientIdsList = Array<string>;
-const GetInboxPreviewJobResponseClientIdsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetInboxPreviewJobResponseClientIdsList>;
-
 /** Client category. `Mobile` is a phone's native mail app, for example the Gmail App on Android devices. `Application` is a desktop native mail app, for example Apple Mail on macOS. `Web` is webmail viewed in a desktop browser, for example Gmail.com in Firefox, and includes a `browser` value. */
 export type GetInboxPreviewJobResponsePreviewsItemCategory = "Mobile" | "Application" | "Web";
-const GetInboxPreviewJobResponsePreviewsItemCategory = S.String;
-
 /** Why this device has no screenshot: - `bounced`: the vendor rendered the device and reported a bounce. - `vendor_timeout`: submitted to the vendor, but didn't finish in time. - `client_rejected`: the vendor refused the device id. - `vendor_request`: the submission to the vendor itself failed. - `abandoned`: submitted, but the outcome is unknown. - `expired`: the screenshot rendered successfully but has since aged out of its retention window and is no longer available. Unlike the other types, this isn't a render failure. - `other`: any other cause. A tile with any of these types (except `expired`) was refunded its credit. */
 export type GetInboxPreviewJobResponsePreviewsItemErrorType =
   | "bounced"
@@ -8591,8 +6729,6 @@ export type GetInboxPreviewJobResponsePreviewsItemErrorType =
   | "abandoned"
   | "expired"
   | "other";
-const GetInboxPreviewJobResponsePreviewsItemErrorType = S.String;
-
 /** Details for a tile whose rendering failed. */
 export interface GetInboxPreviewJobResponsePreviewsItemError {
   /** A human-readable explanation, safe to show to a user. */
@@ -8600,28 +6736,16 @@ export interface GetInboxPreviewJobResponsePreviewsItemError {
   /** Why this device has no screenshot: - `bounced`: the vendor rendered the device and reported a bounce. - `vendor_timeout`: submitted to the vendor, but didn't finish in time. - `client_rejected`: the vendor refused the device id. - `vendor_request`: the submission to the vendor itself failed. - `abandoned`: submitted, but the outcome is unknown. - `expired`: the screenshot rendered successfully but has since aged out of its retention window and is no longer available. Unlike the other types, this isn't a render failure. - `other`: any other cause. A tile with any of these types (except `expired`) was refunded its credit. */
   type?: GetInboxPreviewJobResponsePreviewsItemErrorType;
 }
-const GetInboxPreviewJobResponsePreviewsItemError = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<GetInboxPreviewJobResponsePreviewsItemError>;
-
 /** Capture URLs keyed by image name--the full-size screenshot under `default`, plus a key per extra image the device renders. This is the only place the full-size URL appears; `thumbnail` and `full_thumbnail` are reduced variants. Omitted unless the render completed. */
 export type GetInboxPreviewJobResponsePreviewsItemScreenshotsMap = {
   [key: string]: string | undefined;
 };
-const GetInboxPreviewJobResponsePreviewsItemScreenshotsMap = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<GetInboxPreviewJobResponsePreviewsItemScreenshotsMap>;
-
 /** The vendor's own status for this device's render. Only `Complete` and `Bounced` are terminal. */
 export type GetInboxPreviewJobResponsePreviewsItemStatus =
   | "Pending"
   | "Processing"
   | "Complete"
   | "Bounced";
-const GetInboxPreviewJobResponsePreviewsItemStatus = S.String;
-
 /** The data for a single preview. */
 export interface GetInboxPreviewJobResponsePreviewsItem {
   /** Browser used to render the client, when applicable. Populates when `category` is `Web`. */
@@ -8647,18 +6771,8 @@ export interface GetInboxPreviewJobResponsePreviewsItem {
   /** Capture URL for a reduced-size version of the default screenshot. Useful for grid/list views where you don't want to load full-size screenshots. Omitted unless the render completed. */
   thumbnail?: string;
 }
-const GetInboxPreviewJobResponsePreviewsItem = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<GetInboxPreviewJobResponsePreviewsItem>;
-
 /** One object per requested preview. */
 export type GetInboxPreviewJobResponsePreviewsList = Array<GetInboxPreviewJobResponsePreviewsItem>;
-const GetInboxPreviewJobResponsePreviewsList = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<GetInboxPreviewJobResponsePreviewsList>;
-
 export interface GetInboxPreviewJobResponse {
   /** The device identifiers requested for this job. */
   client_ids?: GetInboxPreviewJobResponseClientIdsList;
@@ -8685,32 +6799,18 @@ export interface GetInboxPreviewJobResponse {
   /** When the job's status was last updated. */
   updated_at?: number;
 }
-const GetInboxPreviewJobResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<GetInboxPreviewJobResponse>;
-
 export interface GetLiveNotificationRequest {
   /** The activity's instance ID (ULID), returned when you started it. */
   instance_id: string;
 }
-const GetLiveNotificationRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<GetLiveNotificationRequest>;
-
 /** The lifecycle operation the delivery carried. */
 export type GetLiveNotificationResponseLastDeliveryOperation = "start" | "update" | "end";
-const GetLiveNotificationResponseLastDeliveryOperation = S.String;
-
 /** The delivery's status. */
 export type GetLiveNotificationResponseLastDeliveryStatus =
   | "queued"
   | "sent"
   | "failed"
   | "undeliverable";
-const GetLiveNotificationResponseLastDeliveryStatus = S.String;
-
 /** The most recent delivery for the activity. */
 export interface GetLiveNotificationResponseLastDelivery {
   /** When the delivery was created (unix timestamp). */
@@ -8724,15 +6824,8 @@ export interface GetLiveNotificationResponseLastDelivery {
   /** The delivery's status. */
   status?: GetLiveNotificationResponseLastDeliveryStatus;
 }
-const GetLiveNotificationResponseLastDelivery = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<GetLiveNotificationResponseLastDelivery>;
-
 /** The activity's lifecycle state. */
 export type GetLiveNotificationResponseState = "active" | "ended" | "expired" | "failed";
-const GetLiveNotificationResponseState = S.String;
-
 export interface GetLiveNotificationResponse {
   /** When the activity ended (unix timestamp). */
   ended_at?: number | null;
@@ -8753,19 +6846,12 @@ export interface GetLiveNotificationResponse {
   /** The activity's lifecycle state. */
   state?: GetLiveNotificationResponseState;
 }
-const GetLiveNotificationResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<GetLiveNotificationResponse>;
-
 export interface GetMessageRequest {
   /** The identifier of a message. */
   message_id: string;
   /** If true, the response includes `tracked_responses` for each message--an object containing tracked response option names for in-app survey responses. */
   get_tracked_responses?: boolean;
 }
-const GetMessageRequest = /*@__PURE__*/ __L.at(__c30, 6) as any as S.Schema<GetMessageRequest>;
-
 /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type GetMessageResponseMessageCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
@@ -8777,9 +6863,6 @@ export type GetMessageResponseMessageTrackedResponsesValue =
 export type GetMessageResponseMessageTrackedResponsesMap = {
   [key: string]: BroadcastMessagesResponseMessagesItemTrackedResponsesValue | undefined;
 };
-const GetMessageResponseMessageTrackedResponsesMap =
-  BroadcastMessagesResponseMessagesItemTrackedResponsesMap as any as S.Schema<GetMessageResponseMessageTrackedResponsesMap>;
-
 /** The type of message or action for a delivery, automation action, or related object. Includes channels that one-time sends do not support (for example, `slack` and `whatsapp`). */
 export type GetMessageResponseMessageType =
   | "email"
@@ -8790,8 +6873,6 @@ export type GetMessageResponseMessageType =
   | "slack"
   | "whatsapp"
   | "live_notification";
-const GetMessageResponseMessageType = S.String;
-
 /** Describes an individual message delivery. The object contains keys for all possible parents of the message (`newsletter_id`, `broadcast_id`, etc) but only the parents of the delivery are populated. Other parent IDs are null. */
 export interface GetMessageResponseMessage {
   /** The identifier for an action. */
@@ -8832,20 +6913,11 @@ export interface GetMessageResponseMessage {
   /** The type of message or action for a delivery, automation action, or related object. Includes channels that one-time sends do not support (for example, `slack` and `whatsapp`). */
   type?: GetMessageResponseMessageType;
 }
-const GetMessageResponseMessage = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<GetMessageResponseMessage>;
-
 export interface GetMessageResponse {
   /** Describes an individual message delivery. The object contains keys for all possible parents of the message (`newsletter_id`, `broadcast_id`, etc) but only the parents of the delivery are populated. Other parent IDs are null. */
   message?: GetMessageResponseMessage;
 }
-const GetMessageResponse = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<GetMessageResponse>;
-
 export type GetNewsletterLinksRequestPeriod = "hours" | "days" | "weeks" | "months";
-const GetNewsletterLinksRequestPeriod = S.String;
-
 export interface GetNewsletterLinksRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
@@ -8856,11 +6928,6 @@ export interface GetNewsletterLinksRequest {
   /** If true, the response contains only unique customer results, i.e. a customer who clicks a link twice is only counted once. If false, the response contains the total number of results without regard to uniqueness. */
   unique?: boolean;
 }
-const GetNewsletterLinksRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<GetNewsletterLinksRequest>;
-
 export type GetNewsletterLinksResponseLinksItemLink = BroadcastActionLinksResponseLinksItemLink;
 /** An array of results from oldest to newest, where each result indicates a period. */
 export type GetNewsletterLinksResponseLinksItemMetricSeriesClickedList = Array<number>;
@@ -8889,12 +6956,7 @@ export type GetNewsletterLinksResponseLinksList = Array<GetNewsletterLinksRespon
 export interface GetNewsletterLinksResponse {
   links?: GetNewsletterLinksResponseLinksList;
 }
-const GetNewsletterLinksResponse =
-  CampaignActionLinksResponse as any as S.Schema<GetNewsletterLinksResponse>;
-
 export type GetNewsletterMetricsRequestPeriod = "hours" | "days" | "weeks" | "months";
-const GetNewsletterMetricsRequestPeriod = S.String;
-
 export type GetNewsletterMetricsRequestType =
   | "email"
   | "webhook"
@@ -8902,8 +6964,6 @@ export type GetNewsletterMetricsRequestType =
   | "push"
   | "in_app"
   | "inbox";
-const GetNewsletterMetricsRequestType = S.String;
-
 export interface GetNewsletterMetricsRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
@@ -8914,11 +6974,6 @@ export interface GetNewsletterMetricsRequest {
   /** The type of item you want to return metrics for. When empty, the response contains metrics for all possible types. */
   type?: GetNewsletterMetricsRequestType | (string & {});
 }
-const GetNewsletterMetricsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<GetNewsletterMetricsRequest>;
-
 /** The number of `attempted` messages. */
 export type GetNewsletterMetricsResponseMetricSeriesAttemptedList = Array<number>;
 /** The number of `bounced` messages. */
@@ -9026,9 +7081,6 @@ export interface GetNewsletterMetricsResponseMetricSeries {
   /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
   untracked?: GetNewsletterMetricsResponseMetricSeriesUntrackedList;
 }
-const GetNewsletterMetricsResponseMetricSeries =
-  CampaignActionMetricsResponseMetricSeries as any as S.Schema<GetNewsletterMetricsResponseMetricSeries>;
-
 /** Channel type for a one-time send or one-time send content variant. */
 export type GetNewsletterMetricsResponseMetricType =
   | "email"
@@ -9037,27 +7089,15 @@ export type GetNewsletterMetricsResponseMetricType =
   | "push"
   | "in_app"
   | "inbox";
-const GetNewsletterMetricsResponseMetricType = S.String;
-
 export interface GetNewsletterMetricsResponseMetric {
   /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
   series?: GetNewsletterMetricsResponseMetricSeries;
   /** Channel type for a one-time send or one-time send content variant. */
   type?: GetNewsletterMetricsResponseMetricType;
 }
-const GetNewsletterMetricsResponseMetric = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<GetNewsletterMetricsResponseMetric>;
-
 export interface GetNewsletterMetricsResponse {
   metric?: GetNewsletterMetricsResponseMetric;
 }
-const GetNewsletterMetricsResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<GetNewsletterMetricsResponse>;
-
 export type GetNewsletterMsgMetaRequestMetric =
   | "attempted"
   | "sent"
@@ -9071,8 +7111,6 @@ export type GetNewsletterMsgMetaRequestMetric =
   | "dropped"
   | "failed"
   | "undeliverable";
-const GetNewsletterMsgMetaRequestMetric = S.String;
-
 export interface GetNewsletterMsgMetaRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
@@ -9089,11 +7127,6 @@ export interface GetNewsletterMsgMetaRequest {
   /** If true, the response includes `tracked_responses` for each message--an object containing tracked response option names for in-app survey responses. */
   get_tracked_responses?: boolean;
 }
-const GetNewsletterMsgMetaRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<GetNewsletterMsgMetaRequest>;
-
 /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type GetNewsletterMsgMetaResponseMessagesItemCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
@@ -9106,9 +7139,6 @@ export type GetNewsletterMsgMetaResponseMessagesItemTrackedResponsesValue =
 export type GetNewsletterMsgMetaResponseMessagesItemTrackedResponsesMap = {
   [key: string]: BroadcastMessagesResponseMessagesItemTrackedResponsesValue | undefined;
 };
-const GetNewsletterMsgMetaResponseMessagesItemTrackedResponsesMap =
-  BroadcastMessagesResponseMessagesItemTrackedResponsesMap as any as S.Schema<GetNewsletterMsgMetaResponseMessagesItemTrackedResponsesMap>;
-
 /** Channel type for a one-time send or one-time send content variant. */
 export type GetNewsletterMsgMetaResponseMessagesItemType =
   | "email"
@@ -9117,8 +7147,6 @@ export type GetNewsletterMsgMetaResponseMessagesItemType =
   | "push"
   | "in_app"
   | "inbox";
-const GetNewsletterMsgMetaResponseMessagesItemType = S.String;
-
 /** Each object is a delivery of a one-time send. */
 export interface GetNewsletterMsgMetaResponseMessagesItem {
   /** The identifier for an action. */
@@ -9159,53 +7187,25 @@ export interface GetNewsletterMsgMetaResponseMessagesItem {
   /** Channel type for a one-time send or one-time send content variant. */
   type?: GetNewsletterMsgMetaResponseMessagesItemType;
 }
-const GetNewsletterMsgMetaResponseMessagesItem = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<GetNewsletterMsgMetaResponseMessagesItem>;
-
 export type GetNewsletterMsgMetaResponseMessagesList =
   Array<GetNewsletterMsgMetaResponseMessagesItem>;
-const GetNewsletterMsgMetaResponseMessagesList = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<GetNewsletterMsgMetaResponseMessagesList>;
-
 export interface GetNewsletterMsgMetaResponse {
   messages?: GetNewsletterMsgMetaResponseMessagesList;
 }
-const GetNewsletterMsgMetaResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<GetNewsletterMsgMetaResponse>;
-
 export interface GetNewslettersRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
 }
-const GetNewslettersRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<GetNewslettersRequest>;
-
 /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
 export type GetNewslettersResponseNewsletterContentIdsList = Array<number>;
-const GetNewslettersResponseNewsletterContentIdsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewslettersResponseNewsletterContentIdsList>;
-
 /** How far Customer.io has got with a recipient file, whether you uploaded it in the UI or passed `recipient_file_url`. Customer.io omits this field when the audience came from a `recipients` filter. Wait for `done` before you send or schedule. */
 export type GetNewslettersResponseNewsletterRecipientFileStatus =
   | "pending"
   | "processing"
   | "done"
   | "error";
-const GetNewslettersResponseNewsletterRecipientFileStatus = S.String;
-
 /** If the recipient conditions included segments, this returns a list of those segment ids. */
 export type GetNewslettersResponseNewsletterRecipientSegmentIdsList = Array<number>;
-const GetNewslettersResponseNewsletterRecipientSegmentIdsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetNewslettersResponseNewsletterRecipientSegmentIdsList>;
-
 /** Where the one-time send is in its lifecycle. Always included. This matches the status shown in Customer.io, with one exception noted under `awaiting_winner`. - `drafted`: The one-time send isn't scheduled and hasn't been sent. - `scheduled`: A send time is set and sending hasn't started. - `sending`: Sending has started and is still in progress. More batches are due (timezone-match batches or the remainder of an A/B test), or messages are still being delivered. - `sent`: The one-time send is no longer sending. This doesn't mean that every individual message has reached a final state. - `paused`: The one-time send is paused. - `stopped`: The one-time send was stopped. - `failed`: The one-time send failed. - `awaiting_winner`: An A/B test has started and is waiting for you to pick a winner before the rest of the audience gets it. Test messages might still be going out. Customer.io's UI stops showing "awaiting winner" 30 days after the first send, but the API keeps reporting `awaiting_winner` because you can still pick a winner. When more than one state applies, Customer.io reports the first match in this order: `stopped`, `failed`, `paused`, `awaiting_winner`, `sending`, `sent`, `scheduled`, `drafted`. */
 export type GetNewslettersResponseNewsletterSendState =
   | "drafted"
@@ -9216,13 +7216,8 @@ export type GetNewslettersResponseNewsletterSendState =
   | "stopped"
   | "failed"
   | "awaiting_winner";
-const GetNewslettersResponseNewsletterSendState = S.String;
-
 /** An array of tags associated with the one-time send. */
 export type GetNewslettersResponseNewsletterTagsList = Array<string>;
-const GetNewslettersResponseNewsletterTagsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetNewslettersResponseNewsletterTagsList>;
-
 /** Channel type for a one-time send or one-time send content variant. */
 export type GetNewslettersResponseNewsletterType =
   | "email"
@@ -9231,8 +7226,6 @@ export type GetNewslettersResponseNewsletterType =
   | "push"
   | "in_app"
   | "inbox";
-const GetNewslettersResponseNewsletterType = S.String;
-
 export interface GetNewslettersResponseNewsletter {
   /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
   content_ids?: GetNewslettersResponseNewsletterContentIdsList;
@@ -9271,33 +7264,15 @@ export interface GetNewslettersResponseNewsletter {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-const GetNewslettersResponseNewsletter = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<GetNewslettersResponseNewsletter>;
-
 export interface GetNewslettersResponse {
   newsletter?: GetNewslettersResponseNewsletter;
 }
-const GetNewslettersResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<GetNewslettersResponse>;
-
 export interface GetNewsletterTestGroupsRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
 }
-const GetNewsletterTestGroupsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<GetNewsletterTestGroupsRequest>;
-
 /** A list of content_ids for each variant in the test group. */
 export type GetNewsletterTestGroupsResponseTestGroupsItemContentIdsList = Array<string>;
-const GetNewsletterTestGroupsResponseTestGroupsItemContentIdsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetNewsletterTestGroupsResponseTestGroupsItemContentIdsList>;
-
 export interface GetNewsletterTestGroupsResponseTestGroupsItem {
   /** A list of content_ids for each variant in the test group. */
   content_ids?: GetNewsletterTestGroupsResponseTestGroupsItemContentIdsList;
@@ -9310,43 +7285,21 @@ export interface GetNewsletterTestGroupsResponseTestGroupsItem {
   /** Whether this variant is the winner of the test. */
   winner?: boolean;
 }
-const GetNewsletterTestGroupsResponseTestGroupsItem = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<GetNewsletterTestGroupsResponseTestGroupsItem>;
-
 /** Each object represents one of the test groups. */
 export type GetNewsletterTestGroupsResponseTestGroupsList =
   Array<GetNewsletterTestGroupsResponseTestGroupsItem>;
-const GetNewsletterTestGroupsResponseTestGroupsList = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<GetNewsletterTestGroupsResponseTestGroupsList>;
-
 export interface GetNewsletterTestGroupsResponse {
   /** Each object represents one of the test groups. */
   test_groups?: GetNewsletterTestGroupsResponseTestGroupsList;
 }
-const GetNewsletterTestGroupsResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<GetNewsletterTestGroupsResponse>;
-
 export interface GetNewsletterVariantRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
   /** The identifier of a message in a one-time send. If your one-time send has an A/B test group or includes multiple languages, each variant has its own `content_id`, separate from the `newsletter_id`. Use [List variants of a one-time send](/integrations/api/app/tag/newsletter-variants/listNewsletterVariants/) to find the `content_id` associated with the right variant. */
   content_id: number;
 }
-const GetNewsletterVariantRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<GetNewsletterVariantRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type GetNewsletterVariantResponseContentPreprocessor = "premailer";
-const GetNewsletterVariantResponseContentPreprocessor = S.String;
-
 /** Channel type for a one-time send or one-time send content variant. */
 export type GetNewsletterVariantResponseContentType =
   | "email"
@@ -9355,8 +7308,6 @@ export type GetNewsletterVariantResponseContentType =
   | "push"
   | "in_app"
   | "inbox";
-const GetNewsletterVariantResponseContentType = S.String;
-
 export interface GetNewsletterVariantResponseContent {
   /** The blind-copy address(es) for this action. */
   bcc?: string;
@@ -9401,30 +7352,15 @@ export interface GetNewsletterVariantResponseContent {
   /** Channel type for a one-time send or one-time send content variant. */
   type?: GetNewsletterVariantResponseContentType;
 }
-const GetNewsletterVariantResponseContent = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<GetNewsletterVariantResponseContent>;
-
 export interface GetNewsletterVariantResponse {
   content?: GetNewsletterVariantResponseContent;
 }
-const GetNewsletterVariantResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<GetNewsletterVariantResponse>;
-
 export interface GetNewsletterVariantTranslationRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
   /** A [language tag](/journeys/channels/subscriptions/unsubscribe-faqs/#currently-supported-languages) of a language variant. If you don't provide a language (an empty string), we'll use your default language. If the language variant does not exist, we'll return an error. */
   language: string;
 }
-const GetNewsletterVariantTranslationRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<GetNewsletterVariantTranslationRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type GetNewsletterVariantTranslationResponseContentPreprocessor = "premailer";
 /** Channel type for a one-time send or one-time send content variant. */
@@ -9482,9 +7418,6 @@ export interface GetNewsletterVariantTranslationResponseContent {
 export interface GetNewsletterVariantTranslationResponse {
   content?: GetNewsletterVariantTranslationResponseContent;
 }
-const GetNewsletterVariantTranslationResponse =
-  GetNewsletterVariantResponse as any as S.Schema<GetNewsletterVariantTranslationResponse>;
-
 export interface GetNewsletterVariantTranslationTestRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
@@ -9493,11 +7426,6 @@ export interface GetNewsletterVariantTranslationTestRequest {
   /** A [language tag](/journeys/channels/subscriptions/unsubscribe-faqs/#currently-supported-languages) of a language variant. If you don't provide a language (an empty string), we'll use your default language. If the language variant does not exist, we'll return an error. */
   language: string;
 }
-const GetNewsletterVariantTranslationTestRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<GetNewsletterVariantTranslationTestRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type GetNewsletterVariantTranslationTestResponseContentPreprocessor = "premailer";
 /** Channel type for a one-time send or one-time send content variant. */
@@ -9555,12 +7483,7 @@ export interface GetNewsletterVariantTranslationTestResponseContent {
 export interface GetNewsletterVariantTranslationTestResponse {
   content?: GetNewsletterVariantTranslationTestResponseContent;
 }
-const GetNewsletterVariantTranslationTestResponse =
-  GetNewsletterVariantResponse as any as S.Schema<GetNewsletterVariantTranslationTestResponse>;
-
 export type GetObjectAttributesRequestIdType = "object_id" | "cio_object_id";
-const GetObjectAttributesRequestIdType = S.String;
-
 export interface GetObjectAttributesRequest {
   /** The object type an object belongs to--like "Companies" or "Accounts". Object type IDs begin at `1` and increment for each new type. */
   object_type_id: number;
@@ -9568,16 +7491,8 @@ export interface GetObjectAttributesRequest {
   object_id: string;
   id_type?: GetObjectAttributesRequestIdType | (string & {});
 }
-const GetObjectAttributesRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<GetObjectAttributesRequest>;
-
 /** Attributes assigned to this object. */
 export type GetObjectAttributesResponseObjectAttributesMap = { [key: string]: unknown | undefined };
-const GetObjectAttributesResponseObjectAttributesMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<GetObjectAttributesResponseObjectAttributesMap>;
-
 /** Identifies an object. */
 export interface GetObjectAttributesResponseObjectIdentifiers {
   /** A unique identifier set by Customer.io, used to reference a person if you want to update their identifiers. */
@@ -9587,18 +7502,8 @@ export interface GetObjectAttributesResponseObjectIdentifiers {
   /** The ID of a customer profile, analogous to a "person" in the UI. If your workspace supports multiple identifiers (email and ID), this value can be null. */
   id?: string | null;
 }
-const GetObjectAttributesResponseObjectIdentifiers = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<GetObjectAttributesResponseObjectIdentifiers>;
-
 /** The epoch timestamps when corresponding attributes were set on the object. */
 export type GetObjectAttributesResponseObjectTimestampsMap = { [key: string]: number | undefined };
-const GetObjectAttributesResponseObjectTimestampsMap = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<GetObjectAttributesResponseObjectTimestampsMap>;
-
 /** The object specified in the endpoint path */
 export interface GetObjectAttributesResponseObject {
   /** Attributes assigned to this object. */
@@ -9610,23 +7515,11 @@ export interface GetObjectAttributesResponseObject {
   /** The epoch timestamps when corresponding attributes were set on the object. */
   timestamps?: GetObjectAttributesResponseObjectTimestampsMap;
 }
-const GetObjectAttributesResponseObject = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<GetObjectAttributesResponseObject>;
-
 export interface GetObjectAttributesResponse {
   /** The object specified in the endpoint path */
   object?: GetObjectAttributesResponseObject;
 }
-const GetObjectAttributesResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<GetObjectAttributesResponse>;
-
 export type GetObjectRelationshipsRequestIdType = "object_id" | "cio_object_id";
-const GetObjectRelationshipsRequestIdType = S.String;
-
 export interface GetObjectRelationshipsRequest {
   /** The object type an object belongs to--like "Companies" or "Accounts". Object type IDs begin at `1` and increment for each new type. */
   object_type_id: number;
@@ -9638,11 +7531,6 @@ export interface GetObjectRelationshipsRequest {
   limit?: number;
   id_type?: GetObjectRelationshipsRequestIdType | (string & {});
 }
-const GetObjectRelationshipsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<GetObjectRelationshipsRequest>;
-
 /** Identifies an individual person. */
 export interface GetObjectRelationshipsResponseCioRelationshipsItemIdentifiers {
   /** A unique identifier set by Customer.io, used to reference a person if you want to update their identifiers. */
@@ -9652,11 +7540,6 @@ export interface GetObjectRelationshipsResponseCioRelationshipsItemIdentifiers {
   /** The ID of a customer profile, analogous to a "person" in the UI. If your workspace supports multiple identifiers (email and ID), this value can be null. */
   id?: string | null;
 }
-const GetObjectRelationshipsResponseCioRelationshipsItemIdentifiers = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<GetObjectRelationshipsResponseCioRelationshipsItemIdentifiers>;
-
 export interface GetObjectRelationshipsResponseCioRelationshipsItem {
   /** Identifies an individual person. */
   identifiers?: GetObjectRelationshipsResponseCioRelationshipsItemIdentifiers;
@@ -9665,30 +7548,15 @@ export interface GetObjectRelationshipsResponseCioRelationshipsItem {
   /** The object type an object belongs to--like "Companies" or "Accounts". Object type IDs are string-formatted integers that begin at `1` and increment for each new type. */
   object_type_id?: string;
 }
-const GetObjectRelationshipsResponseCioRelationshipsItem = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<GetObjectRelationshipsResponseCioRelationshipsItem>;
-
 /** A list of people related to the object specified in the endpoint path. */
 export type GetObjectRelationshipsResponseCioRelationshipsList =
   Array<GetObjectRelationshipsResponseCioRelationshipsItem>;
-const GetObjectRelationshipsResponseCioRelationshipsList = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<GetObjectRelationshipsResponseCioRelationshipsList>;
-
 export interface GetObjectRelationshipsResponse {
   /** A list of people related to the object specified in the endpoint path. */
   cio_relationships?: GetObjectRelationshipsResponseCioRelationshipsList;
   /** Indicates the next page of results. Add `?start=<next_value>` to the request to get the next page of results. */
   next?: string;
 }
-const GetObjectRelationshipsResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<GetObjectRelationshipsResponse>;
-
 /** Determine how to evaluate criteria against the field--`exists` returns results if an object has the attribute; `eq` returns results an object's attribute exists and the attribute has the `value` you specify. */
 export type GetObjectsFilterRequestFilterCase0AndItemObjectAttributeOperator = "eq" | "exists";
 /** Filter your objects by their attributes. */
@@ -9783,8 +7651,6 @@ export type GetObjectsFilterRequestFilter =
   | GetObjectsFilterRequestFilterCase1
   | GetObjectsFilterRequestFilterCase2
   | GetObjectsFilterRequestFilterCase3;
-const GetObjectsFilterRequestFilter = S.Unknown as any as S.Schema<GetObjectsFilterRequestFilter>;
-
 export interface GetObjectsFilterRequest {
   /** The token for the page of results you want to return. Responses contain a `next` property. Use this property as the `start` value to return the next page of results. */
   start?: string;
@@ -9795,34 +7661,16 @@ export interface GetObjectsFilterRequest {
   /** The type of object you want to search in. Object type IDs are integers passed as strings. */
   object_type_id: string;
 }
-const GetObjectsFilterRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<GetObjectsFilterRequest>;
-
 export interface GetObjectsFilterResponseIdentifiersItem {
   /** The canonical, immutable identifier for the object, assigned by Customer.io. */
   cio_object_id?: string;
   /** The ID of the object, assigned by you or your systems. */
   object_id?: string;
 }
-const GetObjectsFilterResponseIdentifiersItem = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<GetObjectsFilterResponseIdentifiersItem>;
-
 export type GetObjectsFilterResponseIdentifiersList =
   Array<GetObjectsFilterResponseIdentifiersItem>;
-const GetObjectsFilterResponseIdentifiersList = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<GetObjectsFilterResponseIdentifiersList>;
-
 /** A list of object IDs matching the object_type_id and filter in the request. Items are the same as the `object_id` values under `identifiers`, but this array may be easier to search/sort through if you have a large number of objects and don't need to to use the `cio_object_id`. */
 export type GetObjectsFilterResponseIdsList = Array<string>;
-const GetObjectsFilterResponseIdsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetObjectsFilterResponseIdsList>;
-
 export interface GetObjectsFilterResponse {
   identifiers?: GetObjectsFilterResponseIdentifiersList;
   /** A list of object IDs matching the object_type_id and filter in the request. Items are the same as the `object_id` values under `identifiers`, but this array may be easier to search/sort through if you have a large number of objects and don't need to to use the `cio_object_id`. */
@@ -9830,17 +7678,7 @@ export interface GetObjectsFilterResponse {
   /** Indicates the next page of results. Add `?start=<next_value>` to the request to get the next page of results. */
   next?: string;
 }
-const GetObjectsFilterResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<GetObjectsFilterResponse>;
-
 export interface GetObjectTypesRequest {}
-const GetObjectTypesRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<GetObjectTypesRequest>;
-
 export interface GetObjectTypesResponseTypesItem {
   /** If true, the object type is enabled. */
   enabled?: boolean;
@@ -9857,25 +7695,10 @@ export interface GetObjectTypesResponseTypesItem {
   /** The slug of the page in the Customer.io UI for the object type. */
   slug?: string;
 }
-const GetObjectTypesResponseTypesItem = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<GetObjectTypesResponseTypesItem>;
-
 export type GetObjectTypesResponseTypesList = Array<GetObjectTypesResponseTypesItem>;
-const GetObjectTypesResponseTypesList = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<GetObjectTypesResponseTypesList>;
-
 export interface GetObjectTypesResponse {
   types?: GetObjectTypesResponseTypesList;
 }
-const GetObjectTypesResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<GetObjectTypesResponse>;
-
 export interface GetOptoutsRequest {
   /** Filter for a specific sender on any channel. For SMS, this is a sender phone number (E.164), an alphanumeric sender ID, or a messaging-service SID; for WhatsApp, it's the sender phone number. */
   from?: string;
@@ -9884,31 +7707,17 @@ export interface GetOptoutsRequest {
   /** The maximum number of results you want to retrieve per page. */
   limit?: number;
 }
-const GetOptoutsRequest = /*@__PURE__*/ __L.at(__c35, 7) as any as S.Schema<GetOptoutsRequest>;
-
 /** The channel that the person is opted out of. */
 export type GetOptoutsResponseOptoutsItemOptoutsItemChannel = "sms" | "whatsapp";
-const GetOptoutsResponseOptoutsItemOptoutsItemChannel = S.String;
-
 export interface GetOptoutsResponseOptoutsItemOptoutsItem {
   /** The channel that the person is opted out of. */
   channel?: GetOptoutsResponseOptoutsItemOptoutsItemChannel;
   /** The sender that the person is opted out of. For SMS, this is a sender phone number (E.164), an alphanumeric sender ID, or a messaging-service SID; for WhatsApp, it's the sender phone number. */
   from?: string;
 }
-const GetOptoutsResponseOptoutsItemOptoutsItem = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<GetOptoutsResponseOptoutsItemOptoutsItem>;
-
 /** The senders and channels that the person is opted out of. An entry's presence means the person is opted out of that sender on that channel. */
 export type GetOptoutsResponseOptoutsItemOptoutsList =
   Array<GetOptoutsResponseOptoutsItemOptoutsItem>;
-const GetOptoutsResponseOptoutsItemOptoutsList = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<GetOptoutsResponseOptoutsItemOptoutsList>;
-
 export interface GetOptoutsResponseOptoutsItem {
   /** A unique identifier set by Customer.io, used to reference a person if you want to update their identifiers. */
   cio_id?: string;
@@ -9917,45 +7726,23 @@ export interface GetOptoutsResponseOptoutsItem {
   /** The senders and channels that the person is opted out of. An entry's presence means the person is opted out of that sender on that channel. */
   optouts?: GetOptoutsResponseOptoutsItemOptoutsList;
 }
-const GetOptoutsResponseOptoutsItem = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<GetOptoutsResponseOptoutsItem>;
-
 /** A list of people and their opt-outs. Each object represents a person and the senders/channels they've opted out of. */
 export type GetOptoutsResponseOptoutsList = Array<GetOptoutsResponseOptoutsItem>;
-const GetOptoutsResponseOptoutsList = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<GetOptoutsResponseOptoutsList>;
-
 export interface GetOptoutsResponse {
   /** The `start` value for the next page of results. Absent or empty when there are no more results. */
   next?: string;
   /** A list of people and their opt-outs. Each object represents a person and the senders/channels they've opted out of. */
   optouts?: GetOptoutsResponseOptoutsList;
 }
-const GetOptoutsResponse = /*@__PURE__*/ __L.at(__c36, 4) as any as S.Schema<GetOptoutsResponse>;
-
 export type GetPeopleByIdRequestIdType = "id" | "email" | "phone" | "cio_id";
-const GetPeopleByIdRequestIdType = S.String;
-
 /** An array of up to 100 customer identifiers. All values must match the `id_type` query parameter--`id` values by default. */
 export type GetPeopleByIdRequestIdsList = Array<string>;
-const GetPeopleByIdRequestIdsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetPeopleByIdRequestIdsList>;
-
 export interface GetPeopleByIdRequest {
   /** The type of `customer_id` you want to use to reference a person. If you don't provide this parameter, we assume that the `customer_id` in your request is a person's `id`. You can use `email` and `phone` only if they're enabled as identifiers in your [workspace settings](/accounts/workspaces/overview/#migrate-workspace); otherwise the request returns `400`. Reference `phone` values in [E.164 format](https://en.wikipedia.org/wiki/E.164), like `+14155552671`, and URL-encode the leading `+` as `%2B`. */
   id_type?: GetPeopleByIdRequestIdType | (string & {});
   /** An array of up to 100 customer identifiers. All values must match the `id_type` query parameter--`id` values by default. */
   ids: GetPeopleByIdRequestIdsList;
 }
-const GetPeopleByIdRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<GetPeopleByIdRequest>;
-
 /** Contains attributes assigned to this profile, including your workspace's people-identifiers (by default, these are `id`, `email`, and `cio_id`). Attributes are all stored as strings. */
 export interface GetPeopleByIdResponseCustomersItemCustomerAttributes {
   /** A person's computed subscription preferences as stringified JSON, combining set preferences with defaults for unset topics. [Learn more about backfilled preferences](/messaging/channels/subscriptions/center/#backfill-preferences). */
@@ -9969,29 +7756,18 @@ export interface GetPeopleByIdResponseCustomersItemCustomerAttributes {
   /** The ID of a customer profile, analogous to a "person" in the UI. If your workspace supports multiple identifiers (email and ID), this value can be null. */
   id?: string | null;
 }
-const GetPeopleByIdResponseCustomersItemCustomerAttributes = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<GetPeopleByIdResponseCustomersItemCustomerAttributes>;
-
 /** The device/messaging platform. */
 export type GetPeopleByIdResponseCustomersItemCustomerDevicesItemPlatform = "ios" | "android";
-const GetPeopleByIdResponseCustomersItemCustomerDevicesItemPlatform = S.String;
-
 /** The delivery status of the last message sent to the device--sent, bounced, or suppressed. An empty string indicates that that the device hasn't received a push yet. */
 export type GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributesLastStatus =
   | ""
   | "bounced"
   | "sent"
   | "suppressed";
-const GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributesLastStatus = S.String;
-
 /** If `"true"`, the device is opted-in and can receive push notifications. */
 export type GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributesPushEnabled =
   | "true"
   | "false";
-const GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributesPushEnabled = S.String;
-
 /** Attributes that you can reference to segment your audience--like a person's attributes, but specific to a device. These can be either the attributes defined below or custom key-value attributes. */
 export interface GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributes {
   /** The delivery status of the last message sent to the device--sent, bounced, or suppressed. An empty string indicates that that the device hasn't received a push yet. */
@@ -10011,11 +7787,6 @@ export interface GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributes
   /** If `"true"`, the device is opted-in and can receive push notifications. */
   push_enabled?: GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributesPushEnabled;
 }
-const GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributes = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributes>;
-
 /** Device properties collected by [Customer.io SDKs](/integrations/sdk/) unless `autoTrackDeviceAttributes` is disabled. You can use these properties in segments and Liquid. */
 export interface GetPeopleByIdResponseCustomersItemCustomerDevicesItem {
   /** The device token. */
@@ -10027,19 +7798,9 @@ export interface GetPeopleByIdResponseCustomersItemCustomerDevicesItem {
   /** The `timestamp` when you last identified this device. If you don't pass a timestamp when you add or update a device, we use the time of the request itself. Our SDKs identify a device when a person launches their app. */
   last_used?: number;
 }
-const GetPeopleByIdResponseCustomersItemCustomerDevicesItem = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<GetPeopleByIdResponseCustomersItemCustomerDevicesItem>;
-
 /** Lists the devices associated with the customer profile. */
 export type GetPeopleByIdResponseCustomersItemCustomerDevicesList =
   Array<GetPeopleByIdResponseCustomersItemCustomerDevicesItem>;
-const GetPeopleByIdResponseCustomersItemCustomerDevicesList = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<GetPeopleByIdResponseCustomersItemCustomerDevicesList>;
-
 /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type GetPeopleByIdResponseCustomersItemCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
@@ -10062,11 +7823,6 @@ export interface GetPeopleByIdResponseCustomersItemCustomerTimestamps {
   /** The date-time when the person unsubscribed. */
   unsubscribed?: number;
 }
-const GetPeopleByIdResponseCustomersItemCustomerTimestamps = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<GetPeopleByIdResponseCustomersItemCustomerTimestamps>;
-
 /** The profile you referenced by ID in the request. */
 export interface GetPeopleByIdResponseCustomersItemCustomer {
   /** Contains attributes assigned to this profile, including your workspace's people-identifiers (by default, these are `id`, `email`, and `cio_id`). Attributes are all stored as strings. */
@@ -10082,43 +7838,18 @@ export interface GetPeopleByIdResponseCustomersItemCustomer {
   /** If `true`, a person is globally unsubscribed from email, SMS, WhatsApp, and push. Values like `true`, `TRUE`, `1`, and `"1"` count as true; other values are treated as subscribed or topic-based. */
   unsubscribed?: boolean;
 }
-const GetPeopleByIdResponseCustomersItemCustomer = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<GetPeopleByIdResponseCustomersItemCustomer>;
-
 export interface GetPeopleByIdResponseCustomersItem {
   /** The profile you referenced by ID in the request. */
   customer?: GetPeopleByIdResponseCustomersItemCustomer;
 }
-const GetPeopleByIdResponseCustomersItem = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<GetPeopleByIdResponseCustomersItem>;
-
 export type GetPeopleByIdResponseCustomersList = Array<GetPeopleByIdResponseCustomersItem>;
-const GetPeopleByIdResponseCustomersList = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<GetPeopleByIdResponseCustomersList>;
-
 export interface GetPeopleByIdResponse {
   customers?: GetPeopleByIdResponseCustomersList;
 }
-const GetPeopleByIdResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<GetPeopleByIdResponse>;
-
 export interface GetPeopleEmailRequest {
   /** The email address you want to search for. */
   email: string;
 }
-const GetPeopleEmailRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<GetPeopleEmailRequest>;
-
 export interface GetPeopleEmailResponseResultsItem {
   /** A unique identifier set by Customer.io, used to reference a person if you want to update their identifiers. */
   cio_id: string;
@@ -10127,27 +7858,12 @@ export interface GetPeopleEmailResponseResultsItem {
   /** A person's unique ID, if set. */
   id: string | null;
 }
-const GetPeopleEmailResponseResultsItem = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<GetPeopleEmailResponseResultsItem>;
-
 /** A list of customers matching the email address in your query. */
 export type GetPeopleEmailResponseResultsList = Array<GetPeopleEmailResponseResultsItem>;
-const GetPeopleEmailResponseResultsList = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<GetPeopleEmailResponseResultsList>;
-
 export interface GetPeopleEmailResponse {
   /** A list of customers matching the email address in your query. */
   results?: GetPeopleEmailResponseResultsList;
 }
-const GetPeopleEmailResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<GetPeopleEmailResponse>;
-
 /** Determine how to evaluate criteria against the field--`exists` returns results if a person in the audience has the attribute; `eq` returns results if the audience has the attribute and the attribute has the `value` you specify. */
 export type GetPeopleFilterRequestFilterCase0AndItemAttributeOperator = "eq" | "exists";
 /** Filter your audience by attribute. */
@@ -10911,8 +8627,6 @@ export type GetPeopleFilterRequestFilter =
   | GetPeopleFilterRequestFilterCase2
   | ExportPeopleDataRequestFiltersCase0AndItemNotCase0AndItemCase0
   | GetPeopleFilterRequestFilterCase4;
-const GetPeopleFilterRequestFilter = S.Unknown as any as S.Schema<GetPeopleFilterRequestFilter>;
-
 export interface GetPeopleFilterRequest {
   /** The token for the page of results you want to return. Responses contain a `next` property. Use this property as the `start` value to return the next page of results. */
   start?: string;
@@ -10921,22 +8635,11 @@ export interface GetPeopleFilterRequest {
   /** Use `and`, `or`, and `not` to combine segment and attribute conditions. The top-level object accepts one property; nest groups for complex filters. */
   filter: GetPeopleFilterRequestFilter;
 }
-const GetPeopleFilterRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<GetPeopleFilterRequest>;
-
 export type GetPeopleFilterResponseIdentifiersItem = GetPeopleEmailResponseResultsItem;
 /** An array of objects, where each object represents a customer. Each object contains identifiers for a customer. */
 export type GetPeopleFilterResponseIdentifiersList = Array<GetPeopleEmailResponseResultsItem>;
-const GetPeopleFilterResponseIdentifiersList =
-  GetPeopleEmailResponseResultsList as any as S.Schema<GetPeopleFilterResponseIdentifiersList>;
-
 /** In general, you should use the `identifiers` array. This array contains identifiers for people captured in your filter. However, as of June 2021, some workspaces let you add people without an `id`. Entries without an `id` are empty strings in this array, where the `identifiers` array contains more complete information for each person captured in the filter. */
 export type GetPeopleFilterResponseIdsList = Array<string>;
-const GetPeopleFilterResponseIdsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetPeopleFilterResponseIdsList>;
-
 export interface GetPeopleFilterResponse {
   /** An array of objects, where each object represents a customer. Each object contains identifiers for a customer. */
   identifiers?: GetPeopleFilterResponseIdentifiersList;
@@ -10945,14 +8648,7 @@ export interface GetPeopleFilterResponse {
   /** The `start` value for the next page of results. */
   next?: string;
 }
-const GetPeopleFilterResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<GetPeopleFilterResponse>;
-
 export type GetPersonActivitiesRequestIdType = "id" | "email" | "phone" | "cio_id";
-const GetPersonActivitiesRequestIdType = S.String;
-
 /** The type of activity. Types with `_o:<object_type_id>` are for objects and types with `_r:<object_type_id>` are for relationships. */
 export type GetPersonActivitiesRequestType =
   | "add_relationship"
@@ -11072,8 +8768,6 @@ export type GetPersonActivitiesRequestType =
   | "_o:<object_type_id>:failed_attribute_change"
   | "_r:<object_type_id>:attribute_change"
   | "_r:<object_type_id>:failed_attribute_change";
-const GetPersonActivitiesRequestType = S.String;
-
 export interface GetPersonActivitiesRequest {
   /** The ID of the customer you want to perform an operation against. */
   customer_id: string;
@@ -11088,11 +8782,6 @@ export interface GetPersonActivitiesRequest {
   /** For `event` and `attribute_update` types, you can search by event or attribute name respectively. */
   name?: string;
 }
-const GetPersonActivitiesRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<GetPersonActivitiesRequest>;
-
 /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type GetPersonActivitiesResponseActivitiesItemCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
@@ -11117,17 +8806,12 @@ export type GetPersonActivitiesResponseActivitiesItemDataCase1Map = {
 export type GetPersonActivitiesResponseActivitiesItemData =
   | GetPersonActivitiesResponseActivitiesItemDataCase0
   | GetPersonActivitiesResponseActivitiesItemDataCase1Map;
-const GetPersonActivitiesResponseActivitiesItemData =
-  S.Unknown as any as S.Schema<GetPersonActivitiesResponseActivitiesItemData>;
-
 /** The recipient device, if applicable. */
 export type GetPersonActivitiesResponseActivitiesItemDeliveryType =
   | "ios"
   | "android"
   | "email"
   | "phone";
-const GetPersonActivitiesResponseActivitiesItemDeliveryType = S.String;
-
 /** The type of activity. Types with `_o:<object_type_id>` are for objects and types with `_r:<object_type_id>` are for relationships. */
 export type GetPersonActivitiesResponseActivitiesItemType =
   | "add_relationship"
@@ -11247,8 +8931,6 @@ export type GetPersonActivitiesResponseActivitiesItemType =
   | "_o:<object_type_id>:failed_attribute_change"
   | "_r:<object_type_id>:attribute_change"
   | "_r:<object_type_id>:failed_attribute_change";
-const GetPersonActivitiesResponseActivitiesItemType = S.String;
-
 export interface GetPersonActivitiesResponseActivitiesItem {
   /** The ID of a customer profile, analogous to a "person" in the UI. If your workspace supports multiple identifiers (email and ID), this value can be null. */
   customer_id?: string | null;
@@ -11270,59 +8952,31 @@ export interface GetPersonActivitiesResponseActivitiesItem {
   /** The page URL, for `page` activities. */
   url?: string;
 }
-const GetPersonActivitiesResponseActivitiesItem = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<GetPersonActivitiesResponseActivitiesItem>;
-
 export type GetPersonActivitiesResponseActivitiesList =
   Array<GetPersonActivitiesResponseActivitiesItem>;
-const GetPersonActivitiesResponseActivitiesList = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<GetPersonActivitiesResponseActivitiesList>;
-
 export interface GetPersonActivitiesResponse {
   activities?: GetPersonActivitiesResponseActivitiesList;
 }
-const GetPersonActivitiesResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<GetPersonActivitiesResponse>;
-
 export type GetPersonAttributesRequestIdType = "id" | "email" | "phone" | "cio_id";
-const GetPersonAttributesRequestIdType = S.String;
-
 export interface GetPersonAttributesRequest {
   /** The ID of the customer you want to perform an operation against. */
   customer_id: string;
   /** The type of `customer_id` you want to use to reference a person. If you don't provide this parameter, we assume that the `customer_id` in your request is a person's `id`. You can use `email` and `phone` only if they're enabled as identifiers in your [workspace settings](/accounts/workspaces/overview/#migrate-workspace); otherwise the request returns `400`. Reference `phone` values in [E.164 format](https://en.wikipedia.org/wiki/E.164), like `+14155552671`, and URL-encode the leading `+` as `%2B`. */
   id_type?: GetPersonAttributesRequestIdType | (string & {});
 }
-const GetPersonAttributesRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<GetPersonAttributesRequest>;
-
 /** Contains attributes assigned to this profile, including your workspace's people-identifiers (by default, these are `id`, `email`, and `cio_id`). Attributes are all stored as strings. */
 export type GetPersonAttributesResponseCustomerAttributes =
   GetPeopleByIdResponseCustomersItemCustomerAttributes;
 /** The device/messaging platform. */
 export type GetPersonAttributesResponseCustomerDevicesItemPlatform = "ios" | "android";
-const GetPersonAttributesResponseCustomerDevicesItemPlatform = S.String;
-
 /** The delivery status of the last message sent to the device--sent, bounced, or suppressed. An empty string indicates that that the device hasn't received a push yet. */
 export type GetPersonAttributesResponseCustomerDevicesItemAttributesLastStatus =
   | ""
   | "bounced"
   | "sent"
   | "suppressed";
-const GetPersonAttributesResponseCustomerDevicesItemAttributesLastStatus = S.String;
-
 /** If `"true"`, the device is opted-in and can receive push notifications. */
 export type GetPersonAttributesResponseCustomerDevicesItemAttributesPushEnabled = "true" | "false";
-const GetPersonAttributesResponseCustomerDevicesItemAttributesPushEnabled = S.String;
-
 /** Attributes that you can reference to segment your audience--like a person's attributes, but specific to a device. These can be either the attributes defined below or custom key-value attributes. */
 export interface GetPersonAttributesResponseCustomerDevicesItemAttributes {
   /** The delivery status of the last message sent to the device--sent, bounced, or suppressed. An empty string indicates that that the device hasn't received a push yet. */
@@ -11342,11 +8996,6 @@ export interface GetPersonAttributesResponseCustomerDevicesItemAttributes {
   /** If `"true"`, the device is opted-in and can receive push notifications. */
   push_enabled?: GetPersonAttributesResponseCustomerDevicesItemAttributesPushEnabled;
 }
-const GetPersonAttributesResponseCustomerDevicesItemAttributes = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<GetPersonAttributesResponseCustomerDevicesItemAttributes>;
-
 /** Device properties collected by [Customer.io SDKs](/integrations/sdk/) unless `autoTrackDeviceAttributes` is disabled. You can use these properties in segments and Liquid. */
 export interface GetPersonAttributesResponseCustomerDevicesItem {
   /** The device token. */
@@ -11358,19 +9007,9 @@ export interface GetPersonAttributesResponseCustomerDevicesItem {
   /** The `timestamp` when you last identified this device. If you don't pass a timestamp when you add or update a device, we use the time of the request itself. Our SDKs identify a device when a person launches their app. */
   last_used?: number;
 }
-const GetPersonAttributesResponseCustomerDevicesItem = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<GetPersonAttributesResponseCustomerDevicesItem>;
-
 /** Lists the devices associated with the customer profile. */
 export type GetPersonAttributesResponseCustomerDevicesList =
   Array<GetPersonAttributesResponseCustomerDevicesItem>;
-const GetPersonAttributesResponseCustomerDevicesList = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<GetPersonAttributesResponseCustomerDevicesList>;
-
 /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type GetPersonAttributesResponseCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
@@ -11392,23 +9031,11 @@ export interface GetPersonAttributesResponseCustomer {
   /** If `true`, a person is globally unsubscribed from email, SMS, WhatsApp, and push. Values like `true`, `TRUE`, `1`, and `"1"` count as true; other values are treated as subscribed or topic-based. */
   unsubscribed?: boolean;
 }
-const GetPersonAttributesResponseCustomer = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<GetPersonAttributesResponseCustomer>;
-
 export interface GetPersonAttributesResponse {
   /** The profile you referenced by ID in the request. */
   customer?: GetPersonAttributesResponseCustomer;
 }
-const GetPersonAttributesResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<GetPersonAttributesResponse>;
-
 export type GetPersonMessagesRequestIdType = "id" | "email" | "phone" | "cio_id";
-const GetPersonMessagesRequestIdType = S.String;
-
 export interface GetPersonMessagesRequest {
   /** The ID of the customer you want to perform an operation against. */
   customer_id: string;
@@ -11423,11 +9050,6 @@ export interface GetPersonMessagesRequest {
   /** The ending timestamp for your query. */
   end_ts?: number;
 }
-const GetPersonMessagesRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<GetPersonMessagesRequest>;
-
 /** Contains information about the send and delivery time of the message. */
 export interface GetPersonMessagesResponseMessagesItemMetrics {
   /** The date and time when the customer received the message. */
@@ -11435,11 +9057,6 @@ export interface GetPersonMessagesResponseMessagesItemMetrics {
   /** The date and time when the message was sent. */
   sent?: number;
 }
-const GetPersonMessagesResponseMessagesItemMetrics = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<GetPersonMessagesResponseMessagesItemMetrics>;
-
 /** The type of message. */
 export type GetPersonMessagesResponseMessagesItemType =
   | "email"
@@ -11449,8 +9066,6 @@ export type GetPersonMessagesResponseMessagesItemType =
   | "push"
   | "in_app"
   | "whatsapp";
-const GetPersonMessagesResponseMessagesItemType = S.String;
-
 export interface GetPersonMessagesResponseMessagesItem {
   /** The identifier for the message action within the automation or broadcast the message belonged to. */
   action_id?: number;
@@ -11485,39 +9100,17 @@ export interface GetPersonMessagesResponseMessagesItem {
   /** The type of message. */
   type?: GetPersonMessagesResponseMessagesItemType;
 }
-const GetPersonMessagesResponseMessagesItem = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<GetPersonMessagesResponseMessagesItem>;
-
 export type GetPersonMessagesResponseMessagesList = Array<GetPersonMessagesResponseMessagesItem>;
-const GetPersonMessagesResponseMessagesList = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<GetPersonMessagesResponseMessagesList>;
-
 export interface GetPersonMessagesResponse {
   messages?: GetPersonMessagesResponseMessagesList;
 }
-const GetPersonMessagesResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<GetPersonMessagesResponse>;
-
 export type GetPersonOptoutsRequestIdType = "id" | "email" | "phone" | "cio_id";
-const GetPersonOptoutsRequestIdType = S.String;
-
 export interface GetPersonOptoutsRequest {
   /** The ID of the customer you want to perform an operation against. */
   customer_id: string;
   /** The type of `customer_id` you want to use to reference a person. If you don't provide this parameter, we assume that the `customer_id` in your request is a person's `id`. You can use `email` and `phone` only if they're enabled as identifiers in your [workspace settings](/accounts/workspaces/overview/#migrate-workspace); otherwise the request returns `400`. Reference `phone` values in [E.164 format](https://en.wikipedia.org/wiki/E.164), like `+14155552671`, and URL-encode the leading `+` as `%2B`. */
   id_type?: GetPersonOptoutsRequestIdType | (string & {});
 }
-const GetPersonOptoutsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<GetPersonOptoutsRequest>;
-
 /** The channel that the person is opted out of. */
 export type GetPersonOptoutsResponseOptoutsItemChannel = "sms" | "whatsapp";
 export interface GetPersonOptoutsResponseOptoutsItem {
@@ -11528,21 +9121,11 @@ export interface GetPersonOptoutsResponseOptoutsItem {
 }
 /** The senders and channels that the person is opted out of. An entry's presence means the person is opted out of that sender on that channel. */
 export type GetPersonOptoutsResponseOptoutsList = Array<GetPersonOptoutsResponseOptoutsItem>;
-const GetPersonOptoutsResponseOptoutsList =
-  GetOptoutsResponseOptoutsItemOptoutsList as any as S.Schema<GetPersonOptoutsResponseOptoutsList>;
-
 export interface GetPersonOptoutsResponse {
   /** The senders and channels that the person is opted out of. An entry's presence means the person is opted out of that sender on that channel. */
   optouts?: GetPersonOptoutsResponseOptoutsList;
 }
-const GetPersonOptoutsResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<GetPersonOptoutsResponse>;
-
 export type GetPersonRelationshipsRequestIdType = "id" | "email" | "phone" | "cio_id";
-const GetPersonRelationshipsRequestIdType = S.String;
-
 export interface GetPersonRelationshipsRequest {
   /** The ID of the customer you want to perform an operation against. */
   customer_id: string;
@@ -11553,20 +9136,10 @@ export interface GetPersonRelationshipsRequest {
   /** The maximum number of results you want to retrieve per page. */
   limit?: number;
 }
-const GetPersonRelationshipsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<GetPersonRelationshipsRequest>;
-
 /** Attributes for the relationship between the person and the object. */
 export type GetPersonRelationshipsResponseCioRelationshipsItemAttributesMap = {
   [key: string]: unknown | undefined;
 };
-const GetPersonRelationshipsResponseCioRelationshipsItemAttributesMap = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<GetPersonRelationshipsResponseCioRelationshipsItemAttributesMap>;
-
 /** The `object_id` and `cio_object_id` that a person is related to. */
 export interface GetPersonRelationshipsResponseCioRelationshipsItemIdentifiers {
   /** The canonical, immutable identifier for the object that the customer is related to. */
@@ -11574,20 +9147,10 @@ export interface GetPersonRelationshipsResponseCioRelationshipsItemIdentifiers {
   /** The ID of the object that the customer is related to. */
   object_id?: string;
 }
-const GetPersonRelationshipsResponseCioRelationshipsItemIdentifiers = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<GetPersonRelationshipsResponseCioRelationshipsItemIdentifiers>;
-
 /** Unix timestamps when the object's attributes were last updated. */
 export type GetPersonRelationshipsResponseCioRelationshipsItemTimestampsMap = {
   [key: string]: number | undefined;
 };
-const GetPersonRelationshipsResponseCioRelationshipsItemTimestampsMap = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<GetPersonRelationshipsResponseCioRelationshipsItemTimestampsMap>;
-
 export interface GetPersonRelationshipsResponseCioRelationshipsItem {
   /** Attributes for the relationship between the person and the object. */
   attributes?: GetPersonRelationshipsResponseCioRelationshipsItemAttributesMap;
@@ -11598,44 +9161,22 @@ export interface GetPersonRelationshipsResponseCioRelationshipsItem {
   /** Unix timestamps when the object's attributes were last updated. */
   timestamps?: GetPersonRelationshipsResponseCioRelationshipsItemTimestampsMap;
 }
-const GetPersonRelationshipsResponseCioRelationshipsItem = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<GetPersonRelationshipsResponseCioRelationshipsItem>;
-
 /** A list of "objects" that the customer is related to; each JSON object in the array represents an "object" in Customer.io. */
 export type GetPersonRelationshipsResponseCioRelationshipsList =
   Array<GetPersonRelationshipsResponseCioRelationshipsItem>;
-const GetPersonRelationshipsResponseCioRelationshipsList = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<GetPersonRelationshipsResponseCioRelationshipsList>;
-
 export interface GetPersonRelationshipsResponse {
   /** A list of "objects" that the customer is related to; each JSON object in the array represents an "object" in Customer.io. */
   cio_relationships?: GetPersonRelationshipsResponseCioRelationshipsList;
   /** Indicates the next page of results. Add `?start=<next_value>` to the request to get the next page of results. */
   next?: string;
 }
-const GetPersonRelationshipsResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<GetPersonRelationshipsResponse>;
-
 export type GetPersonSegmentsRequestIdType = "id" | "email" | "phone" | "cio_id";
-const GetPersonSegmentsRequestIdType = S.String;
-
 export interface GetPersonSegmentsRequest {
   /** The ID of the customer you want to perform an operation against. */
   customer_id: string;
   /** The type of `customer_id` you want to use to reference a person. If you don't provide this parameter, we assume that the `customer_id` in your request is a person's `id`. You can use `email` and `phone` only if they're enabled as identifiers in your [workspace settings](/accounts/workspaces/overview/#migrate-workspace); otherwise the request returns `400`. Reference `phone` values in [E.164 format](https://en.wikipedia.org/wiki/E.164), like `+14155552671`, and URL-encode the leading `+` as `%2B`. */
   id_type?: GetPersonSegmentsRequestIdType | (string & {});
 }
-const GetPersonSegmentsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<GetPersonSegmentsRequest>;
-
 export interface GetPersonSegmentsResponseSegmentsItem {
   /** The description of the segment, as entered in the UI. */
   description?: string;
@@ -11644,28 +9185,11 @@ export interface GetPersonSegmentsResponseSegmentsItem {
   /** The name of the segment. */
   name?: string;
 }
-const GetPersonSegmentsResponseSegmentsItem = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<GetPersonSegmentsResponseSegmentsItem>;
-
 export type GetPersonSegmentsResponseSegmentsList = Array<GetPersonSegmentsResponseSegmentsItem>;
-const GetPersonSegmentsResponseSegmentsList = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<GetPersonSegmentsResponseSegmentsList>;
-
 export interface GetPersonSegmentsResponse {
   segments?: GetPersonSegmentsResponseSegmentsList;
 }
-const GetPersonSegmentsResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<GetPersonSegmentsResponse>;
-
 export type GetPersonSubscriptionPreferencesRequestIdType = "id" | "email" | "phone" | "cio_id";
-const GetPersonSubscriptionPreferencesRequestIdType = S.String;
-
 export interface GetPersonSubscriptionPreferencesRequest {
   /** The ID of the customer you want to perform an operation against. */
   customer_id: string;
@@ -11674,22 +9198,12 @@ export interface GetPersonSubscriptionPreferencesRequest {
   /** A [language tag](/journeys/channels/subscriptions/unsubscribe-faqs/#currently-supported-languages) you want the content translated in. If none is provided, the content will be sent in the default language of your subscription center. */
   language?: string;
 }
-const GetPersonSubscriptionPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<GetPersonSubscriptionPreferencesRequest>;
-
 export interface GetPersonSubscriptionPreferencesResponseCustomerHeader {
   /** The subtitle or headline beneath the header of the subscription preferences page. */
   subtitle?: string;
   /** The header of the subscription preferences page. */
   title?: string;
 }
-const GetPersonSubscriptionPreferencesResponseCustomerHeader = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<GetPersonSubscriptionPreferencesResponseCustomerHeader>;
-
 /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type GetPersonSubscriptionPreferencesResponseCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
@@ -11703,19 +9217,9 @@ export interface GetPersonSubscriptionPreferencesResponseCustomerTopicsItem {
   /** If true, the customer is subscribed to the topic. If false, the customer is unsubscribed from the topic. */
   subscribed?: boolean;
 }
-const GetPersonSubscriptionPreferencesResponseCustomerTopicsItem = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<GetPersonSubscriptionPreferencesResponseCustomerTopicsItem>;
-
 /** A list of all subscription preferences for the customer. */
 export type GetPersonSubscriptionPreferencesResponseCustomerTopicsList =
   Array<GetPersonSubscriptionPreferencesResponseCustomerTopicsItem>;
-const GetPersonSubscriptionPreferencesResponseCustomerTopicsList = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<GetPersonSubscriptionPreferencesResponseCustomerTopicsList>;
-
 /** The profile you referenced by ID in the request. */
 export interface GetPersonSubscriptionPreferencesResponseCustomer {
   header?: GetPersonSubscriptionPreferencesResponseCustomerHeader;
@@ -11728,31 +9232,16 @@ export interface GetPersonSubscriptionPreferencesResponseCustomer {
   /** If true, the customer is unsubscribed from all messaging. If false, the customer is subscribed according to their topic preferences. */
   unsubscribed?: boolean;
 }
-const GetPersonSubscriptionPreferencesResponseCustomer = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<GetPersonSubscriptionPreferencesResponseCustomer>;
-
 export interface GetPersonSubscriptionPreferencesResponse {
   /** The profile you referenced by ID in the request. */
   customer?: GetPersonSubscriptionPreferencesResponseCustomer;
 }
-const GetPersonSubscriptionPreferencesResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<GetPersonSubscriptionPreferencesResponse>;
-
 export interface GetPublishStatusRequest {
   /** The id of the email. If your email has multiple languages, you must provide the ID of the **default** language template. This links the workflow to all of the language variants for the template. */
   id: string;
   /** The publish ID returned when a multi-language publish is pending. */
   publish_id: string;
 }
-const GetPublishStatusRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<GetPublishStatusRequest>;
-
 /** A single node-to-template-version mapping produced by the publish process. */
 export interface GetPublishStatusResponseMappingsItem {
   /** The language code of the published node. Empty for the default-language email. */
@@ -11764,57 +9253,28 @@ export interface GetPublishStatusResponseMappingsItem {
   /** The identifier of the template version created by the publish. */
   version_id?: string;
 }
-const GetPublishStatusResponseMappingsItem = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<GetPublishStatusResponseMappingsItem>;
-
 /** The template versions created by the publish. Present when `status` is `done`. */
 export type GetPublishStatusResponseMappingsList = Array<GetPublishStatusResponseMappingsItem>;
-const GetPublishStatusResponseMappingsList = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<GetPublishStatusResponseMappingsList>;
-
 /** `pending` while the publish is still running; `done` when it has finished. */
 export type GetPublishStatusResponseStatus = "pending" | "done";
-const GetPublishStatusResponseStatus = S.String;
-
 export interface GetPublishStatusResponse {
   /** The template versions created by the publish. Present when `status` is `done`. */
   mappings?: GetPublishStatusResponseMappingsList;
   /** `pending` while the publish is still running; `done` when it has finished. */
   status?: GetPublishStatusResponseStatus;
 }
-const GetPublishStatusResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<GetPublishStatusResponse>;
-
 export interface GetSegmentRequest {
   /** The identifier for a segment. You can find your segment's ID on its page in the dashboard--go to *Segments*, select your segment, and find the ID under *Usage*. Or you can find your segment using the [App API](/integrations/api/app/tag/segments/). */
   segment_id: number;
 }
-const GetSegmentRequest = /*@__PURE__*/ __L.at(__c43, 3) as any as S.Schema<GetSegmentRequest>;
-
 /** The conditions that determine who belongs to the segment, as a tree of nested `and` and `or` groups. Customer.io includes this object for data-driven segments and omits it for manual segments, which don't have conditions. A profile attribute condition appears as an `attribute_change` event with a `to` filter and an inverted `from` filter, and filter values are always strings, even for numeric or boolean attributes. */
 export type GetSegmentResponseSegmentConditionsMap = { [key: string]: unknown | undefined };
-const GetSegmentResponseSegmentConditionsMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<GetSegmentResponseSegmentConditionsMap>;
-
 /** The segment's build state. The state is `build` while Customer.io calculates who belongs to the segment, and `finished` when membership is up to date. */
 export type GetSegmentResponseSegmentState = "build" | "finished";
-const GetSegmentResponseSegmentState = S.String;
-
 /** The tags assigned to the segment, if any. Tags may help you sort through your segments. */
 export type GetSegmentResponseSegmentTagsList = Array<string>;
-const GetSegmentResponseSegmentTagsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetSegmentResponseSegmentTagsList>;
-
 /** The type of segment. */
 export type GetSegmentResponseSegmentType = "dynamic" | "manual";
-const GetSegmentResponseSegmentType = S.String;
-
 export interface GetSegmentResponseSegment {
   /** The conditions that determine who belongs to the segment, as a tree of nested `and` and `or` groups. Customer.io includes this object for data-driven segments and omits it for manual segments, which don't have conditions. A profile attribute condition appears as an `attribute_change` event with a `to` filter and an inverted `from` filter, and filter values are always strings, even for numeric or boolean attributes. */
   conditions?: GetSegmentResponseSegmentConditionsMap;
@@ -11839,60 +9299,29 @@ export interface GetSegmentResponseSegment {
   /** The date time when the referenced ID was last updated. */
   updated_at?: number;
 }
-const GetSegmentResponseSegment = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<GetSegmentResponseSegment>;
-
 export interface GetSegmentResponse {
   segment?: GetSegmentResponseSegment;
 }
-const GetSegmentResponse = /*@__PURE__*/ __L.at(__c43, 5) as any as S.Schema<GetSegmentResponse>;
-
 export interface GetSegmentCountRequest {
   /** The identifier for a segment. You can find your segment's ID on its page in the dashboard--go to *Segments*, select your segment, and find the ID under *Usage*. Or you can find your segment using the [App API](/integrations/api/app/tag/segments/). */
   segment_id: number;
 }
-const GetSegmentCountRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<GetSegmentCountRequest>;
-
 export interface GetSegmentCountResponse {
   /** The total number of customers in the segment. */
   count?: number;
   /** The identifier for a segment; used to target a segment in requests. */
   segment_id?: number;
 }
-const GetSegmentCountResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<GetSegmentCountResponse>;
-
 export interface GetSegmentDependenciesRequest {
   /** The identifier for a segment. You can find your segment's ID on its page in the dashboard--go to *Segments*, select your segment, and find the ID under *Usage*. Or you can find your segment using the [App API](/integrations/api/app/tag/segments/). */
   segment_id: number;
 }
-const GetSegmentDependenciesRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<GetSegmentDependenciesRequest>;
-
 /** The automations that use this segment. */
 export type GetSegmentDependenciesResponseUsedByCampaignsList = Array<number>;
-const GetSegmentDependenciesResponseUsedByCampaignsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetSegmentDependenciesResponseUsedByCampaignsList>;
-
 /** The one-time sends that are still in a draft state that reference this segment. */
 export type GetSegmentDependenciesResponseUsedByDraftNewslettersList = Array<number>;
-const GetSegmentDependenciesResponseUsedByDraftNewslettersList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetSegmentDependenciesResponseUsedByDraftNewslettersList>;
-
 /** The one-time sends that you've sent that use this segment. */
 export type GetSegmentDependenciesResponseUsedBySentNewslettersList = Array<number>;
-const GetSegmentDependenciesResponseUsedBySentNewslettersList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetSegmentDependenciesResponseUsedBySentNewslettersList>;
-
 export interface GetSegmentDependenciesResponseUsedBy {
   /** The automations that use this segment. */
   campaigns?: GetSegmentDependenciesResponseUsedByCampaignsList;
@@ -11903,19 +9332,9 @@ export interface GetSegmentDependenciesResponseUsedBy {
   /** The one-time sends that you've sent that use this segment. */
   sent_newsletters?: GetSegmentDependenciesResponseUsedBySentNewslettersList;
 }
-const GetSegmentDependenciesResponseUsedBy = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<GetSegmentDependenciesResponseUsedBy>;
-
 export interface GetSegmentDependenciesResponse {
   used_by?: GetSegmentDependenciesResponseUsedBy;
 }
-const GetSegmentDependenciesResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<GetSegmentDependenciesResponse>;
-
 export interface GetSegmentMembershipRequest {
   /** The identifier for a segment. You can find your segment's ID on its page in the dashboard--go to *Segments*, select your segment, and find the ID under *Usage*. Or you can find your segment using the [App API](/integrations/api/app/tag/segments/). */
   segment_id: number;
@@ -11924,11 +9343,6 @@ export interface GetSegmentMembershipRequest {
   /** The maximum number of results you want to retrieve per page. */
   limit?: number;
 }
-const GetSegmentMembershipRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<GetSegmentMembershipRequest>;
-
 /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type GetSegmentMembershipResponseBodyCase0IdentifiersItem =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
@@ -11972,25 +9386,13 @@ export interface GetSegmentMembershipResponseBodyCase1 {
 export type GetSegmentMembershipResponseBody =
   | GetSegmentMembershipResponseBodyCase0
   | GetSegmentMembershipResponseBodyCase1;
-const GetSegmentMembershipResponseBody =
-  S.Unknown as any as S.Schema<GetSegmentMembershipResponseBody>;
-
 export type GetSegmentMembershipResponse = GetSegmentMembershipResponseBody;
-const GetSegmentMembershipResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<GetSegmentMembershipResponse>;
-
 export interface GetSenderRequest {
   /** The identifier of a sender. */
   sender_id: number;
 }
-const GetSenderRequest = /*@__PURE__*/ __L.at(__c44, 5) as any as S.Schema<GetSenderRequest>;
-
 /** The type of sender. */
 export type GetSenderResponseSenderIdentityTemplateType = "email" | "phone";
-const GetSenderResponseSenderIdentityTemplateType = S.String;
-
 /** Information about a sender. */
 export interface GetSenderResponseSenderIdentity {
   /** The sender name and email address in the format `name <name@example.com>`. */
@@ -12012,41 +9414,20 @@ export interface GetSenderResponseSenderIdentity {
   /** The type of sender. */
   template_type?: GetSenderResponseSenderIdentityTemplateType;
 }
-const GetSenderResponseSenderIdentity = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<GetSenderResponseSenderIdentity>;
-
 export interface GetSenderResponse {
   /** Information about a sender. */
   sender_identity?: GetSenderResponseSenderIdentity;
 }
-const GetSenderResponse = /*@__PURE__*/ __L.at(__c44, 7) as any as S.Schema<GetSenderResponse>;
-
 export interface GetSenderUsageRequest {
   /** The identifier of a sender. */
   sender_id: number;
 }
-const GetSenderUsageRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<GetSenderUsageRequest>;
-
 /** The automations that use the sender. */
 export type GetSenderUsageResponseCampaignsList = Array<number>;
-const GetSenderUsageResponseCampaignsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetSenderUsageResponseCampaignsList>;
-
 /** The one-time send drafts that are set up using the sender. */
 export type GetSenderUsageResponseDraftNewslettersList = Array<number>;
-const GetSenderUsageResponseDraftNewslettersList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetSenderUsageResponseDraftNewslettersList>;
-
 /** The one-time sends you've sent that used the sender. */
 export type GetSenderUsageResponseSentNewslettersList = Array<number>;
-const GetSenderUsageResponseSentNewslettersList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetSenderUsageResponseSentNewslettersList>;
-
 export interface GetSenderUsageResponse {
   /** The automations that use the sender. */
   campaigns?: GetSenderUsageResponseCampaignsList;
@@ -12055,70 +9436,38 @@ export interface GetSenderUsageResponse {
   /** The one-time sends you've sent that used the sender. */
   sent_newsletters?: GetSenderUsageResponseSentNewslettersList;
 }
-const GetSenderUsageResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<GetSenderUsageResponse>;
-
 export interface GetSubscriptionCenterTokenRequest {
   /** The identifier for a person in your workspace--the same value you'd use as an `id` or `email` to identify a person in Customer.io. */
   customer_id: string;
 }
-const GetSubscriptionCenterTokenRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<GetSubscriptionCenterTokenRequest>;
-
 export interface GetSubscriptionCenterTokenResponse {
   /** A signed token representing the person's subscription center session. The token expires after 24 hours. If you want to use a custom link tracking domain, you can point your customers to `https://<your-tracking-domain>/u/i/<your-token>/<language-code (optional)>`. */
   token?: string;
   /** A full URL to the person's standalone subscription center page. You can use this URL directly as a link. */
   url?: string;
 }
-const GetSubscriptionCenterTokenResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<GetSubscriptionCenterTokenResponse>;
-
 export interface GetSuppressionRequest {
   /** The email address of the person you want to look up. */
   email_address: string;
 }
-const GetSuppressionRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<GetSuppressionRequest>;
-
 /** The reason the addresses are suppressed. */
 export type GetSuppressionResponseCategory = "bounces" | "spam";
-const GetSuppressionResponseCategory = S.String;
-
 export type GetSuppressionResponseSuppressionsItem =
   GetDomainSuppressionsByTypeResponseSuppressionsItem;
 /** The addresses suppressed in this category. */
 export type GetSuppressionResponseSuppressionsList =
   Array<GetDomainSuppressionsByTypeResponseSuppressionsItem>;
-const GetSuppressionResponseSuppressionsList =
-  GetDomainSuppressionsByTypeResponseSuppressionsList as any as S.Schema<GetSuppressionResponseSuppressionsList>;
-
 export interface GetSuppressionResponse {
   /** The reason the addresses are suppressed. */
   category?: GetSuppressionResponseCategory;
   /** The addresses suppressed in this category. */
   suppressions?: GetSuppressionResponseSuppressionsList;
 }
-const GetSuppressionResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<GetSuppressionResponse>;
-
 export type GetSuppressionByTypeRequestSuppressionType =
   | "blocks"
   | "bounces"
   | "spam_reports"
   | "invalid_emails";
-const GetSuppressionByTypeRequestSuppressionType = S.String;
-
 export interface GetSuppressionByTypeRequest {
   /** The reason a person's email address was suppressed by the email service provider (ESP). */
   suppression_type: GetSuppressionByTypeRequestSuppressionType | (string & {});
@@ -12129,37 +9478,20 @@ export interface GetSuppressionByTypeRequest {
   /** Filter by sending domain. */
   domain?: string;
 }
-const GetSuppressionByTypeRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<GetSuppressionByTypeRequest>;
-
 /** The reason the addresses are suppressed. */
 export type GetSuppressionByTypeResponseCategory = "bounces" | "spam";
-const GetSuppressionByTypeResponseCategory = S.String;
-
 export type GetSuppressionByTypeResponseSuppressionsItem =
   GetDomainSuppressionsByTypeResponseSuppressionsItem;
 /** The addresses suppressed in this category. */
 export type GetSuppressionByTypeResponseSuppressionsList =
   Array<GetDomainSuppressionsByTypeResponseSuppressionsItem>;
-const GetSuppressionByTypeResponseSuppressionsList =
-  GetDomainSuppressionsByTypeResponseSuppressionsList as any as S.Schema<GetSuppressionByTypeResponseSuppressionsList>;
-
 export interface GetSuppressionByTypeResponse {
   /** The reason the addresses are suppressed. */
   category?: GetSuppressionByTypeResponseCategory;
   /** The addresses suppressed in this category. */
   suppressions?: GetSuppressionByTypeResponseSuppressionsList;
 }
-const GetSuppressionByTypeResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<GetSuppressionByTypeResponse>;
-
 export interface GetTopicsRequest {}
-const GetTopicsRequest = /*@__PURE__*/ __L.at(__c46, 0) as any as S.Schema<GetTopicsRequest>;
-
 export interface GetTopicsResponseTopicsItem {
   /** A description of the topic that you provided when you created the topic in the UI. */
   description?: string;
@@ -12172,31 +9504,14 @@ export interface GetTopicsResponseTopicsItem {
   /** If false, a person is opted-out by default. If true, a person is opted-in by default. */
   subscribed_by_default?: boolean;
 }
-const GetTopicsResponseTopicsItem = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<GetTopicsResponseTopicsItem>;
-
 export type GetTopicsResponseTopicsList = Array<GetTopicsResponseTopicsItem>;
-const GetTopicsResponseTopicsList = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<GetTopicsResponseTopicsList>;
-
 export interface GetTopicsResponse {
   topics?: GetTopicsResponseTopicsList;
 }
-const GetTopicsResponse = /*@__PURE__*/ __L.at(__c46, 3) as any as S.Schema<GetTopicsResponse>;
-
 export interface GetTransactionalRequest {
   /** The identifier of your transactional message. You'll find this in the UI or URL of your transactional message. For example, if this is the path of a transactional message URL - `/transactional/3/templates/139` - the `transactional_id` is 3. */
   transactional_id: number;
 }
-const GetTransactionalRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<GetTransactionalRequest>;
-
 /** Contains information about a transactional message. */
 export interface GetTransactionalResponseMessage {
   /** The date time when the referenced ID was created. */
@@ -12220,39 +9535,20 @@ export interface GetTransactionalResponseMessage {
   /** The date time when the referenced ID was last updated. */
   updated_at?: number;
 }
-const GetTransactionalResponseMessage = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<GetTransactionalResponseMessage>;
-
 export interface GetTransactionalResponse {
   /** Contains information about a transactional message. */
   message?: GetTransactionalResponseMessage;
 }
-const GetTransactionalResponse = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<GetTransactionalResponse>;
-
 export interface GetTransactionalTranslationByIdRequest {
   /** The identifier of your transactional message. You'll find this in the UI or URL of your transactional message. For example, if this is the path of a transactional message URL - `/transactional/3/templates/139` - the `transactional_id` is 3. */
   transactional_id: number;
   /** A translated variant of your transactional message. You'll find the id in the URL of your transactional message. For example, if this is the path of a transactional message URL - `/transactional/3/templates/139` - the `content_id` is 139. */
   content_id: number;
 }
-const GetTransactionalTranslationByIdRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<GetTransactionalTranslationByIdRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type GetTransactionalTranslationByIdResponseContentPreprocessor = "premailer";
-const GetTransactionalTranslationByIdResponseContentPreprocessor = S.String;
-
 /** The type of message. */
 export type GetTransactionalTranslationByIdResponseContentType = "email" | "push";
-const GetTransactionalTranslationByIdResponseContentType = S.String;
-
 export interface GetTransactionalTranslationByIdResponseContent {
   /** The blind-copy address(es) for this action. */
   bcc?: string;
@@ -12295,30 +9591,15 @@ export interface GetTransactionalTranslationByIdResponseContent {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-const GetTransactionalTranslationByIdResponseContent = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<GetTransactionalTranslationByIdResponseContent>;
-
 export interface GetTransactionalTranslationByIdResponse {
   content?: GetTransactionalTranslationByIdResponseContent;
 }
-const GetTransactionalTranslationByIdResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<GetTransactionalTranslationByIdResponse>;
-
 export interface GetTransactionalVariantRequest {
   /** The identifier of your transactional message. You'll find this in the UI or URL of your transactional message. For example, if this is the path of a transactional message URL - `/transactional/3/templates/139` - the `transactional_id` is 3. */
   transactional_id: number;
   /** A [language tag](/journeys/channels/subscriptions/unsubscribe-faqs/#currently-supported-languages) of a language variant. If you don't provide a language (an empty string), we'll use your default language. If the language variant does not exist, we'll return an error. */
   language: string;
 }
-const GetTransactionalVariantRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<GetTransactionalVariantRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type GetTransactionalVariantResponseContentItemPreprocessor = "premailer";
 /** The type of message. */
@@ -12365,29 +9646,14 @@ export interface GetTransactionalVariantResponseContentItem {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-const GetTransactionalVariantResponseContentItem =
-  GetTransactionalTranslationByIdResponseContent as any as S.Schema<GetTransactionalVariantResponseContentItem>;
-
 /** The object represents a variant. */
 export type GetTransactionalVariantResponseContentList =
   Array<GetTransactionalVariantResponseContentItem>;
-const GetTransactionalVariantResponseContentList = /*@__PURE__*/ __L.at(
-  __c47,
-  3,
-) as any as S.Schema<GetTransactionalVariantResponseContentList>;
-
 export interface GetTransactionalVariantResponse {
   /** The object represents a variant. */
   content?: GetTransactionalVariantResponseContentList;
 }
-const GetTransactionalVariantResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<GetTransactionalVariantResponse>;
-
 export type GetVariantLinksRequestPeriod = "hours" | "days" | "weeks" | "months";
-const GetVariantLinksRequestPeriod = S.String;
-
 export type GetVariantLinksRequestType =
   | "email"
   | "webhook"
@@ -12395,8 +9661,6 @@ export type GetVariantLinksRequestType =
   | "push"
   | "in_app"
   | "inbox";
-const GetVariantLinksRequestType = S.String;
-
 export interface GetVariantLinksRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
@@ -12409,11 +9673,6 @@ export interface GetVariantLinksRequest {
   /** The type of item you want to return metrics for. When empty, the response contains metrics for all possible types. */
   type?: GetVariantLinksRequestType | (string & {});
 }
-const GetVariantLinksRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<GetVariantLinksRequest>;
-
 export type GetVariantLinksResponseLinksItemLink = BroadcastActionLinksResponseLinksItemLink;
 /** An array of results from oldest to newest, where each result indicates a period. */
 export type GetVariantLinksResponseLinksItemMetricSeriesClickedList = Array<number>;
@@ -12444,11 +9703,7 @@ export interface GetVariantLinksResponse {
   /** Each object in the array represents a link in your one-time send variant. */
   links?: GetVariantLinksResponseLinksList;
 }
-const GetVariantLinksResponse = BroadcastLinksResponse as any as S.Schema<GetVariantLinksResponse>;
-
 export type GetVariantMetricsRequestPeriod = "hours" | "days" | "weeks" | "months";
-const GetVariantMetricsRequestPeriod = S.String;
-
 export type GetVariantMetricsRequestType =
   | "email"
   | "webhook"
@@ -12456,8 +9711,6 @@ export type GetVariantMetricsRequestType =
   | "push"
   | "in_app"
   | "inbox";
-const GetVariantMetricsRequestType = S.String;
-
 export interface GetVariantMetricsRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
@@ -12470,141 +9723,58 @@ export interface GetVariantMetricsRequest {
   /** The type of item you want to return metrics for. When empty, the response contains metrics for all possible types. */
   type?: GetVariantMetricsRequestType | (string & {});
 }
-const GetVariantMetricsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<GetVariantMetricsRequest>;
-
 /** The number of `attempted` messages. */
 export type GetVariantMetricsResponseMetricSeriesAttemptedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesAttemptedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesAttemptedList>;
-
 /** The number of `bounced` messages. */
 export type GetVariantMetricsResponseMetricSeriesBouncedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesBouncedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesBouncedList>;
-
 /** The number of `clicked` messages. */
 export type GetVariantMetricsResponseMetricSeriesClickedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesClickedList>;
-
 /** The number of `converted` messages. */
 export type GetVariantMetricsResponseMetricSeriesConvertedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesConvertedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesConvertedList>;
-
 /** The number of `created` messages. */
 export type GetVariantMetricsResponseMetricSeriesCreatedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesCreatedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesCreatedList>;
-
 /** The number of `deferred` messages. */
 export type GetVariantMetricsResponseMetricSeriesDeferredList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesDeferredList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesDeferredList>;
-
 /** The number of `delivered` messages. */
 export type GetVariantMetricsResponseMetricSeriesDeliveredList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesDeliveredList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesDeliveredList>;
-
 /** The number of `drafted` messages. */
 export type GetVariantMetricsResponseMetricSeriesDraftedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesDraftedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesDraftedList>;
-
 /** The number of `failed` messages. */
 export type GetVariantMetricsResponseMetricSeriesFailedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesFailedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesFailedList>;
-
 /** The number of `clicked` emails excluding machine clicks. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type GetVariantMetricsResponseMetricSeriesHumanClickedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesHumanClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesHumanClickedList>;
-
 /** The number of `opened` emails excluding machine opens. This metric is reliable starting March 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type GetVariantMetricsResponseMetricSeriesHumanOpenedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesHumanOpenedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesHumanOpenedList>;
-
 /** The number of emails delivered with link tracking inactive for any reason. We subtract these from the click-rate denominator. */
 export type GetVariantMetricsResponseMetricSeriesLinkUntrackedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesLinkUntrackedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesLinkUntrackedList>;
-
 /** The number of `clicked` emails attributed to machines--security scanners, bot user agents, known proxy services, and repetitive click patterns. This metric is reliable starting April 20, 2025. [Learn more](/messaging/metrics/analytics/#delivery-metrics). */
 export type GetVariantMetricsResponseMetricSeriesMachineClickedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesMachineClickedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesMachineClickedList>;
-
 /** The number of emails delivered with open tracking inactive for any reason--including the consent opt-outs that `untracked` counts and messages sent with open tracking disabled. We subtract these from the open-rate denominator. */
 export type GetVariantMetricsResponseMetricSeriesOpenUntrackedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesOpenUntrackedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesOpenUntrackedList>;
-
 /** The number of `opened` messages. */
 export type GetVariantMetricsResponseMetricSeriesOpenedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesOpenedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesOpenedList>;
-
 /** The number of `opened` emails attributed to machines. This metric is reliable starting March 20, 2025. */
 export type GetVariantMetricsResponseMetricSeriesPrefetchOpenedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesPrefetchOpenedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesPrefetchOpenedList>;
-
 /** The number of SMS/MMS messages a person replied to with a keyword. [Learn more about inbound messages](/messaging/channels/sms/inbound/get-started/). */
 export type GetVariantMetricsResponseMetricSeriesRepliedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesRepliedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesRepliedList>;
-
 /** The number of sent messages. */
 export type GetVariantMetricsResponseMetricSeriesSentList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesSentList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesSentList>;
-
 /** The number of spam complaints. */
 export type GetVariantMetricsResponseMetricSeriesSpammedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesSpammedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesSpammedList>;
-
 /** The number of `suppressed` messages. */
 export type GetVariantMetricsResponseMetricSeriesSuppressedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesSuppressedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesSuppressedList>;
-
 /** The number of topic unsubscribes in a given period. */
 export type GetVariantMetricsResponseMetricSeriesTopicUnsubscribedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesTopicUnsubscribedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesTopicUnsubscribedList>;
-
 /** The number of people who denied consent to email open tracking in the period. */
 export type GetVariantMetricsResponseMetricSeriesTrackingConsentDeniedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesTrackingConsentDeniedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesTrackingConsentDeniedList>;
-
 /** The number of people who granted consent to email open tracking in the period. */
 export type GetVariantMetricsResponseMetricSeriesTrackingConsentGrantedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesTrackingConsentGrantedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesTrackingConsentGrantedList>;
-
 /** The number of `undeliverable` messages. */
 export type GetVariantMetricsResponseMetricSeriesUndeliverableList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesUndeliverableList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesUndeliverableList>;
-
 /** The number of unsubscribes attributed to the automation or message. */
 export type GetVariantMetricsResponseMetricSeriesUnsubscribedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesUnsubscribedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesUnsubscribedList>;
-
 /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
 export type GetVariantMetricsResponseMetricSeriesUntrackedList = Array<number>;
-const GetVariantMetricsResponseMetricSeriesUntrackedList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<GetVariantMetricsResponseMetricSeriesUntrackedList>;
-
 /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
 export interface GetVariantMetricsResponseMetricSeries {
   /** The number of `attempted` messages. */
@@ -12660,11 +9830,6 @@ export interface GetVariantMetricsResponseMetricSeries {
   /** The number of `sent` emails whose open pixel we withheld because the person opted out of open tracking. We exclude these from the open-rate denominator; click tracking is unaffected. */
   untracked?: GetVariantMetricsResponseMetricSeriesUntrackedList;
 }
-const GetVariantMetricsResponseMetricSeries = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<GetVariantMetricsResponseMetricSeries>;
-
 /** Channel type for a one-time send or one-time send content variant. */
 export type GetVariantMetricsResponseMetricType =
   | "email"
@@ -12673,39 +9838,23 @@ export type GetVariantMetricsResponseMetricType =
   | "push"
   | "in_app"
   | "inbox";
-const GetVariantMetricsResponseMetricType = S.String;
-
 export interface GetVariantMetricsResponseMetric {
   /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
   series?: GetVariantMetricsResponseMetricSeries;
   /** Channel type for a one-time send or one-time send content variant. */
   type?: GetVariantMetricsResponseMetricType;
 }
-const GetVariantMetricsResponseMetric = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<GetVariantMetricsResponseMetric>;
-
 export interface GetVariantMetricsResponse {
   metric?: GetVariantMetricsResponseMetric;
 }
-const GetVariantMetricsResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  1,
-) as any as S.Schema<GetVariantMetricsResponse>;
-
 export interface GetVersionRequest {
   /** The UUID of the email. If your email has translations, this is the ID of a specific language variant. */
   id: string;
   /** The UUID of the version. */
   version_id: string;
 }
-const GetVersionRequest = /*@__PURE__*/ __L.at(__c48, 2) as any as S.Schema<GetVersionRequest>;
-
 /** Always `COMPONENT`. */
 export type GetVersionResponseDependenciesItemNodeType = "COMPONENT";
-const GetVersionResponseDependenciesItemNodeType = S.String;
-
 /** The code of the referenced custom component(s) in the node version. */
 export interface GetVersionResponseDependenciesItem {
   /** The component tag name when you saved this version. */
@@ -12719,17 +9868,7 @@ export interface GetVersionResponseDependenciesItem {
   /** Always `COMPONENT`. */
   node_type?: GetVersionResponseDependenciesItemNodeType;
 }
-const GetVersionResponseDependenciesItem = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<GetVersionResponseDependenciesItem>;
-
 export type GetVersionResponseDependenciesList = Array<GetVersionResponseDependenciesItem>;
-const GetVersionResponseDependenciesList = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<GetVersionResponseDependenciesList>;
-
 export type GetVersionResponseNodeEnvelopeHeadersItem = CreateEmailRequestEnvelopeHeadersItem;
 /** Custom headers. Each item: { "name": "string", "value": "string" }. */
 export type GetVersionResponseNodeEnvelopeHeadersList =
@@ -12752,13 +9891,8 @@ export interface GetVersionResponseNodeEnvelope {
   /** Reply-to identity ID. This matches one of the ids in *Workspace Settings > Email*. */
   reply_to_id?: number | null;
 }
-const GetVersionResponseNodeEnvelope =
-  CreateEmailResponseEmailEnvelope as any as S.Schema<GetVersionResponseNodeEnvelope>;
-
 /** Always `EMAIL` for the node. */
 export type GetVersionResponseNodeNodeType = "EMAIL";
-const GetVersionResponseNodeNodeType = S.String;
-
 /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
 export type GetVersionResponseNodeTransformersAccessibility =
   CreateEmailRequestTransformersAccessibility;
@@ -12810,9 +9944,6 @@ export interface GetVersionResponseNodeTransformersFormatter {
   /** Formatting mode to apply. */
   type?: GetVersionResponseNodeTransformersFormatterType;
 }
-const GetVersionResponseNodeTransformersFormatter =
-  CreateEmailResponseEmailTransformersFormatter as any as S.Schema<GetVersionResponseNodeTransformersFormatter>;
-
 /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type GetVersionResponseNodeTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
@@ -12821,14 +9952,8 @@ export type GetVersionResponseNodeTransformersRemoveUnusedCssBackendMarkersItem 
 /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
 export type GetVersionResponseNodeTransformersRemoveUnusedCssBackendMarkersList =
   Array<CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem>;
-const GetVersionResponseNodeTransformersRemoveUnusedCssBackendMarkersList =
-  CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList as any as S.Schema<GetVersionResponseNodeTransformersRemoveUnusedCssBackendMarkersList>;
-
 /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
 export type GetVersionResponseNodeTransformersRemoveUnusedCssWhitelistList = Array<string>;
-const GetVersionResponseNodeTransformersRemoveUnusedCssWhitelistList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<GetVersionResponseNodeTransformersRemoveUnusedCssWhitelistList>;
-
 /** Scans the HTML and removes any CSS selectors from `<style>` tags that are not referenced in the document. Reduces file size and helps avoid Gmail's 102 KB clipping limit. HTML and CSS comments are always preserved by this step (comment removal is handled separately by the formatter object). */
 export interface GetVersionResponseNodeTransformersRemoveUnusedCss {
   /** Template syntax delimiters (e.g., Liquid, Handlebars) that the CSS parser should skip over to avoid treating template expressions as invalid CSS. */
@@ -12840,11 +9965,6 @@ export interface GetVersionResponseNodeTransformersRemoveUnusedCss {
   /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
   whitelist?: GetVersionResponseNodeTransformersRemoveUnusedCssWhitelistList;
 }
-const GetVersionResponseNodeTransformersRemoveUnusedCss = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<GetVersionResponseNodeTransformersRemoveUnusedCss>;
-
 export type GetVersionResponseNodeTransformersUrlParametersParametersItem =
   CreateEmailRequestTransformersUrlParametersParametersItem;
 /** List of parameters to append to URLs. */
@@ -12857,9 +9977,6 @@ export interface GetVersionResponseNodeTransformersUrlParameters {
   /** List of parameters to append to URLs. */
   parameters?: GetVersionResponseNodeTransformersUrlParametersParametersList;
 }
-const GetVersionResponseNodeTransformersUrlParameters =
-  CreateEmailRequestTransformersUrlParameters as any as S.Schema<GetVersionResponseNodeTransformersUrlParameters>;
-
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface GetVersionResponseNodeTransformers {
   /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
@@ -12879,11 +9996,6 @@ export interface GetVersionResponseNodeTransformers {
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: GetVersionResponseNodeTransformersUrlParameters;
 }
-const GetVersionResponseNodeTransformers = /*@__PURE__*/ __L.at(
-  __c48,
-  6,
-) as any as S.Schema<GetVersionResponseNodeTransformers>;
-
 /** The content and settings stored in the version. */
 export interface GetVersionResponseNode {
   /** AMP HTML body as of the snapshot. Omitted if the email had none. */
@@ -12906,15 +10018,8 @@ export interface GetVersionResponseNode {
   /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
   transformers?: GetVersionResponseNodeTransformers;
 }
-const GetVersionResponseNode = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<GetVersionResponseNode>;
-
 /** Always `"EMAIL"`. */
 export type GetVersionResponseVersionNodeType = "EMAIL";
-const GetVersionResponseVersionNodeType = S.String;
-
 export interface GetVersionResponseVersion {
   /** The date-time the version was created. */
   created?: number;
@@ -12933,25 +10038,16 @@ export interface GetVersionResponseVersion {
   /** Always `"EMAIL"`. */
   node_type?: GetVersionResponseVersionNodeType;
 }
-const GetVersionResponseVersion = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<GetVersionResponseVersion>;
-
 export interface GetVersionResponse {
   dependencies?: GetVersionResponseDependenciesList;
   /** The content and settings stored in the version. */
   node?: GetVersionResponseNode;
   version?: GetVersionResponseVersion;
 }
-const GetVersionResponse = /*@__PURE__*/ __L.at(__c49, 1) as any as S.Schema<GetVersionResponse>;
-
 export interface GetWebhookRequest {
   /** The identifier of a webhook. */
   webhook_id: number;
 }
-const GetWebhookRequest = /*@__PURE__*/ __L.at(__c49, 2) as any as S.Schema<GetWebhookRequest>;
-
 export type GetWebhookResponseEventsItem =
   | "customer_subscribed"
   | "customer_unsubscribed"
@@ -13047,8 +10143,6 @@ export interface GetWebhookResponse {
   /** Set to `true` to include the message `body` in `_sent` events. */
   with_content?: boolean;
 }
-const GetWebhookResponse = CreateWebhookResponse as any as S.Schema<GetWebhookResponse>;
-
 /** The type of identifier you want to use to identify people in your sheet--`id` or `email`. At least one column in the CSV must contain an identifier. */
 export type ImportRequestImportCase0Identifier = "id" | "email";
 /** The type of import. */
@@ -13136,25 +10230,15 @@ export type ImportRequestImport =
   | ImportRequestImportCase1
   | ImportRequestImportCase2
   | ImportRequestImportCase3;
-const ImportRequestImport = S.Unknown as any as S.Schema<ImportRequestImport>;
-
 export interface ImportRequest {
   import: ImportRequestImport;
 }
-const ImportRequest = /*@__PURE__*/ __L.at(__c49, 3) as any as S.Schema<ImportRequest>;
-
 /** Controls whether your import adds and updates all rows, adds only new rows, or updates only existing rows. Defaults to `all`. Event imports support only `all` and `only_existing`. Formerly called `people_to_process`. */
 export type ImportResponseImportDataToProcess = "all" | "only_new" | "only_existing";
-const ImportResponseImportDataToProcess = S.String;
-
 /** The type of identifier you used to identify people in your CSV. Not applicable for object imports. */
 export type ImportResponseImportIdentifier = "id" | "email";
-const ImportResponseImportIdentifier = S.String;
-
 /** Returned for people and event imports, even if you imported using the field `data_to_process`. This field will be deprecated soon. */
 export type ImportResponseImportPeopleToProcess = "all" | "only_new" | "only_existing";
-const ImportResponseImportPeopleToProcess = S.String;
-
 /** The state of the import--whether your import is being processed, fully completed (`imported`), or if it failed. */
 export type ImportResponseImportState =
   | "preprocessing"
@@ -13165,12 +10249,8 @@ export type ImportResponseImportState =
   | "imported"
   | "failed"
   | "canceled";
-const ImportResponseImportState = S.String;
-
 /** The type of import. */
 export type ImportResponseImportType = "people" | "event" | "object" | "relationship";
-const ImportResponseImportType = S.String;
-
 /** Represents an import operation. */
 export interface ImportResponseImport {
   /** The date time when the referenced ID was created. */
@@ -13202,21 +10282,12 @@ export interface ImportResponseImport {
   /** The date time when the referenced ID was last updated. */
   updated_at?: number;
 }
-const ImportResponseImport = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<ImportResponseImport>;
-
 export interface ImportResponse {
   /** Represents an import operation. */
   import: ImportResponseImport;
 }
-const ImportResponse = /*@__PURE__*/ __L.at(__c49, 5) as any as S.Schema<ImportResponse>;
-
 /** The kind of workflow to link. Provide the matching ID field for the type you choose. Use `campaign_action` for an automation or API-triggered broadcast. */
 export type LinkEmailRequestTargetType = "transactional_message" | "newsletter" | "campaign_action";
-const LinkEmailRequestTargetType = S.String;
-
 /** The workflow to link the content to. */
 export interface LinkEmailRequestTarget {
   /** The kind of workflow to link. Provide the matching ID field for the type you choose. Use `campaign_action` for an automation or API-triggered broadcast. */
@@ -13228,11 +10299,6 @@ export interface LinkEmailRequestTarget {
   /** The ID of the transactional message to link your content to. Required when `type` is `transactional_message`. */
   transactional_message_id?: number;
 }
-const LinkEmailRequestTarget = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<LinkEmailRequestTarget>;
-
 export interface LinkEmailRequest {
   /** The id of the email. If your email has multiple languages, you must provide the ID of the **default** language template. This links the workflow to all of the language variants for the template. */
   id: string;
@@ -13241,8 +10307,6 @@ export interface LinkEmailRequest {
   /** Replace an existing link if the workflow or action is already linked to *different* Design Studio content. */
   force?: boolean;
 }
-const LinkEmailRequest = /*@__PURE__*/ __L.at(__c49, 7) as any as S.Schema<LinkEmailRequest>;
-
 /** The type of workflow linked. */
 export type LinkEmailResponseTargetType =
   | "transactional_message"
@@ -13259,8 +10323,6 @@ export interface LinkEmailResponseTarget {
   /** The ID of the transactional message linked. */
   transactional_message_id?: number;
 }
-const LinkEmailResponseTarget = LinkEmailRequestTarget as any as S.Schema<LinkEmailResponseTarget>;
-
 export interface LinkEmailResponse {
   /** The UUID of the linked message. */
   node_id?: string;
@@ -13269,8 +10331,6 @@ export interface LinkEmailResponse {
   /** The ID of the workflow template the content is now linked to. */
   template_id?: number;
 }
-const LinkEmailResponse = /*@__PURE__*/ __L.at(__c50, 0) as any as S.Schema<LinkEmailResponse>;
-
 /** The type of activity. Types with `_o:<object_type_id>` are for objects and types with `_r:<object_type_id>` are for relationships. */
 export type ListActivitiesRequestType =
   | "add_relationship"
@@ -13390,11 +10450,7 @@ export type ListActivitiesRequestType =
   | "_o:<object_type_id>:failed_attribute_change"
   | "_r:<object_type_id>:attribute_change"
   | "_r:<object_type_id>:failed_attribute_change";
-const ListActivitiesRequestType = S.String;
-
 export type ListActivitiesRequestIdType = "id" | "email" | "phone" | "cio_id";
-const ListActivitiesRequestIdType = S.String;
-
 export interface ListActivitiesRequest {
   /** The token for the page of results you want to return. Responses contain a `next` property. Use this property as the `start` value to return the next page of results. */
   start?: string;
@@ -13411,11 +10467,6 @@ export interface ListActivitiesRequest {
   /** The maximum number of results you want to retrieve per page. */
   limit?: number;
 }
-const ListActivitiesRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<ListActivitiesRequest>;
-
 /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type ListActivitiesResponseActivitiesItemCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
@@ -13430,17 +10481,12 @@ export type ListActivitiesResponseActivitiesItemDataCase1Map = {
 export type ListActivitiesResponseActivitiesItemData =
   | GetPersonActivitiesResponseActivitiesItemDataCase0
   | ListActivitiesResponseActivitiesItemDataCase1Map;
-const ListActivitiesResponseActivitiesItemData =
-  S.Unknown as any as S.Schema<ListActivitiesResponseActivitiesItemData>;
-
 /** The recipient device, if applicable. */
 export type ListActivitiesResponseActivitiesItemDeliveryType =
   | "ios"
   | "android"
   | "email"
   | "phone";
-const ListActivitiesResponseActivitiesItemDeliveryType = S.String;
-
 /** The type of activity. Types with `_o:<object_type_id>` are for objects and types with `_r:<object_type_id>` are for relationships. */
 export type ListActivitiesResponseActivitiesItemType =
   | "add_relationship"
@@ -13560,8 +10606,6 @@ export type ListActivitiesResponseActivitiesItemType =
   | "_o:<object_type_id>:failed_attribute_change"
   | "_r:<object_type_id>:attribute_change"
   | "_r:<object_type_id>:failed_attribute_change";
-const ListActivitiesResponseActivitiesItemType = S.String;
-
 export interface ListActivitiesResponseActivitiesItem {
   /** The ID of a customer profile, analogous to a "person" in the UI. If your workspace supports multiple identifiers (email and ID), this value can be null. */
   customer_id?: string | null;
@@ -13583,27 +10627,12 @@ export interface ListActivitiesResponseActivitiesItem {
   /** The page URL, for `page` activities. */
   url?: string;
 }
-const ListActivitiesResponseActivitiesItem = /*@__PURE__*/ __L.at(
-  __c50,
-  2,
-) as any as S.Schema<ListActivitiesResponseActivitiesItem>;
-
 export type ListActivitiesResponseActivitiesList = Array<ListActivitiesResponseActivitiesItem>;
-const ListActivitiesResponseActivitiesList = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<ListActivitiesResponseActivitiesList>;
-
 export interface ListActivitiesResponse {
   activities?: ListActivitiesResponseActivitiesList;
   /** Indicates the next page of results. Add `?start=<next_value>` to the request to get the next page of results. */
   next?: string;
 }
-const ListActivitiesResponse = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<ListActivitiesResponse>;
-
 export interface ListAssetFoldersRequest {
   /** Filter results to a specific parent folder. Use 0 or omit to target the root level. */
   parent_folder_id?: number;
@@ -13614,19 +10643,9 @@ export interface ListAssetFoldersRequest {
   /** Limit the number of results per page. */
   limit?: number;
 }
-const ListAssetFoldersRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  5,
-) as any as S.Schema<ListAssetFoldersRequest>;
-
 export type ListAssetFoldersResponseFoldersItem = CreateAssetFolderResponseFolder;
 /** The list of folders matching the query. */
 export type ListAssetFoldersResponseFoldersList = Array<CreateAssetFolderResponseFolder>;
-const ListAssetFoldersResponseFoldersList = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<ListAssetFoldersResponseFoldersList>;
-
 /** The filters that were applied to the query. */
 export interface ListAssetFoldersResponseMetaFilters {
   /** Whether the results were limited to direct descendants only. */
@@ -13634,11 +10653,6 @@ export interface ListAssetFoldersResponseMetaFilters {
   /** The parent folder ID filter that was applied, or null if not filtering by parent. */
   parent_folder_id?: number | null;
 }
-const ListAssetFoldersResponseMetaFilters = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<ListAssetFoldersResponseMetaFilters>;
-
 /** Pagination details for the current result set. */
 export interface ListAssetFoldersResponseMetaPagination {
   /** The maximum number of results per page. */
@@ -13648,11 +10662,6 @@ export interface ListAssetFoldersResponseMetaPagination {
   /** The total number of matching results across all pages. */
   total?: number;
 }
-const ListAssetFoldersResponseMetaPagination = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<ListAssetFoldersResponseMetaPagination>;
-
 /** Metadata about the paginated response including pagination details and applied filters. */
 export interface ListAssetFoldersResponseMeta {
   /** The filters that were applied to the query. */
@@ -13660,22 +10669,12 @@ export interface ListAssetFoldersResponseMeta {
   /** Pagination details for the current result set. */
   pagination?: ListAssetFoldersResponseMetaPagination;
 }
-const ListAssetFoldersResponseMeta = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<ListAssetFoldersResponseMeta>;
-
 export interface ListAssetFoldersResponse {
   /** The list of folders matching the query. */
   folders?: ListAssetFoldersResponseFoldersList;
   /** Metadata about the paginated response including pagination details and applied filters. */
   meta?: ListAssetFoldersResponseMeta;
 }
-const ListAssetFoldersResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  2,
-) as any as S.Schema<ListAssetFoldersResponse>;
-
 export interface ListAssetsRequest {
   /** Filter results to a specific parent folder. Use 0 or omit to target the root level. */
   parent_folder_id?: number;
@@ -13686,16 +10685,9 @@ export interface ListAssetsRequest {
   /** Limit the number of results per page. */
   limit?: number;
 }
-const ListAssetsRequest = /*@__PURE__*/ __L.at(__c51, 3) as any as S.Schema<ListAssetsRequest>;
-
 export type ListAssetsResponseAssetsItem = CreateAssetResponseAsset;
 /** The list of file assets matching the query. */
 export type ListAssetsResponseAssetsList = Array<CreateAssetResponseAsset>;
-const ListAssetsResponseAssetsList = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<ListAssetsResponseAssetsList>;
-
 /** The filters that were applied to the query. */
 export type ListAssetsResponseMetaFilters = ListAssetFoldersResponseMetaFilters;
 /** Pagination details for the current result set. */
@@ -13708,14 +10700,7 @@ export interface ListAssetsResponse {
   /** Metadata about the paginated response including pagination details and applied filters. */
   meta?: ListAssetFoldersResponseMeta;
 }
-const ListAssetsResponse = /*@__PURE__*/ __L.at(__c51, 5) as any as S.Schema<ListAssetsResponse>;
-
 export interface ListBroadcastsRequest {}
-const ListBroadcastsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  6,
-) as any as S.Schema<ListBroadcastsRequest>;
-
 /** The type of action. */
 export type ListBroadcastsResponseBroadcastsItemActionsItemType =
   | "email"
@@ -13732,9 +10717,6 @@ export interface ListBroadcastsResponseBroadcastsItemActionsItem {
 /** A list of actions used by the broadcast. */
 export type ListBroadcastsResponseBroadcastsItemActionsList =
   Array<ListBroadcastsResponseBroadcastsItemActionsItem>;
-const ListBroadcastsResponseBroadcastsItemActionsList =
-  GetBroadcastResponseBroadcastActionsList as any as S.Schema<ListBroadcastsResponseBroadcastsItemActionsList>;
-
 /** The type of template. */
 export type ListBroadcastsResponseBroadcastsItemMsgTemplateIdsItemType =
   | "email"
@@ -13751,22 +10733,12 @@ export interface ListBroadcastsResponseBroadcastsItemMsgTemplateIdsItem {
 /** Indicates the message template(s) used in this broadcast. */
 export type ListBroadcastsResponseBroadcastsItemMsgTemplateIdsList =
   Array<ListBroadcastsResponseBroadcastsItemMsgTemplateIdsItem>;
-const ListBroadcastsResponseBroadcastsItemMsgTemplateIdsList =
-  GetBroadcastResponseBroadcastActionsList as any as S.Schema<ListBroadcastsResponseBroadcastsItemMsgTemplateIdsList>;
-
 /** The state of the broadcast. */
 export type ListBroadcastsResponseBroadcastsItemState = "running" | "draft";
-const ListBroadcastsResponseBroadcastsItemState = S.String;
-
 /** An array of tags you set on this broadcast. */
 export type ListBroadcastsResponseBroadcastsItemTagsList = Array<string>;
-const ListBroadcastsResponseBroadcastsItemTagsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<ListBroadcastsResponseBroadcastsItemTagsList>;
-
 /** The type of broadcast. */
 export type ListBroadcastsResponseBroadcastsItemType = "triggered_broadcast";
-const ListBroadcastsResponseBroadcastsItemType = S.String;
-
 export interface ListBroadcastsResponseBroadcastsItem {
   /** A list of actions used by the broadcast. */
   actions?: ListBroadcastsResponseBroadcastsItemActionsList;
@@ -13793,34 +10765,14 @@ export interface ListBroadcastsResponseBroadcastsItem {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-const ListBroadcastsResponseBroadcastsItem = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<ListBroadcastsResponseBroadcastsItem>;
-
 export type ListBroadcastsResponseBroadcastsList = Array<ListBroadcastsResponseBroadcastsItem>;
-const ListBroadcastsResponseBroadcastsList = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<ListBroadcastsResponseBroadcastsList>;
-
 export interface ListBroadcastsResponse {
   broadcasts?: ListBroadcastsResponseBroadcastsList;
 }
-const ListBroadcastsResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  1,
-) as any as S.Schema<ListBroadcastsResponse>;
-
 export interface ListBroadcastTriggersRequest {
   /** The identifier of a broadcast. */
   broadcast_id: number;
 }
-const ListBroadcastTriggersRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<ListBroadcastTriggersRequest>;
-
 /** You can get triggers to know when you triggered a broadcast and whether or not it's been processed. */
 export interface ListBroadcastTriggersResponseTriggersItem {
   /** The identifier for a broadcast. */
@@ -13838,37 +10790,19 @@ export interface ListBroadcastTriggersResponseTriggersItem {
   /** The date-time this trigger is scheduled to send at, or `0` if you didn't schedule it. */
   scheduled_at?: number;
 }
-const ListBroadcastTriggersResponseTriggersItem =
-  CancelBroadcastTriggerResponseTrigger as any as S.Schema<ListBroadcastTriggersResponseTriggersItem>;
-
 /** Each object in the array represents a time that your broadcast was triggered/sent. */
 export type ListBroadcastTriggersResponseTriggersList =
   Array<ListBroadcastTriggersResponseTriggersItem>;
-const ListBroadcastTriggersResponseTriggersList = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<ListBroadcastTriggersResponseTriggersList>;
-
 export interface ListBroadcastTriggersResponse {
   /** Each object in the array represents a time that your broadcast was triggered/sent. */
   triggers?: ListBroadcastTriggersResponseTriggersList;
 }
-const ListBroadcastTriggersResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<ListBroadcastTriggersResponse>;
-
 export interface ListCampaignActionsRequest {
   /** The ID of the automation that you want to trigger or return information about. */
   campaign_id: number;
   /** The token for the page of results you want to return. Responses contain a `next` property. Use this property as the `start` value to return the next page of results. */
   start?: string;
 }
-const ListCampaignActionsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<ListCampaignActionsRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type ListCampaignActionsResponseActionsItemCase0Preprocessor = "premailer";
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
@@ -14062,33 +10996,15 @@ export type ListCampaignActionsResponseActionsItem =
   | ListCampaignActionsResponseActionsItemCase1
   | ListCampaignActionsResponseActionsItemCase2
   | ListCampaignActionsResponseActionsItemCase3;
-const ListCampaignActionsResponseActionsItem =
-  S.Unknown as any as S.Schema<ListCampaignActionsResponseActionsItem>;
-
 /** Each object in the array represents an action in your automation. */
 export type ListCampaignActionsResponseActionsList = Array<ListCampaignActionsResponseActionsItem>;
-const ListCampaignActionsResponseActionsList = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<ListCampaignActionsResponseActionsList>;
-
 export interface ListCampaignActionsResponse {
   /** Each object in the array represents an action in your automation. */
   actions?: ListCampaignActionsResponseActionsList;
   /** Indicates the next page of results. Add `?start=<next_value>` to the request to get the next page of results. */
   next?: string;
 }
-const ListCampaignActionsResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  7,
-) as any as S.Schema<ListCampaignActionsResponse>;
-
 export interface ListCampaignsRequest {}
-const ListCampaignsRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<ListCampaignsRequest>;
-
 export type ListCampaignsResponseCampaignsItemCase0ActionsItem =
   GetCampaignsResponseCampaignCase0ActionsItem;
 /** An array of actions contained within the automation. */
@@ -14445,31 +11361,14 @@ export type ListCampaignsResponseCampaignsItem =
   | ListCampaignsResponseCampaignsItemCase4
   | ListCampaignsResponseCampaignsItemCase5
   | ListCampaignsResponseCampaignsItemCase6;
-const ListCampaignsResponseCampaignsItem =
-  S.Unknown as any as S.Schema<ListCampaignsResponseCampaignsItem>;
-
 /** Each object is an automation in your workspace with one of seven types of automation triggers. */
 export type ListCampaignsResponseCampaignsList = Array<ListCampaignsResponseCampaignsItem>;
-const ListCampaignsResponseCampaignsList = /*@__PURE__*/ __L.at(
-  __c53,
-  1,
-) as any as S.Schema<ListCampaignsResponseCampaignsList>;
-
 export interface ListCampaignsResponse {
   /** Each object is an automation in your workspace with one of seven types of automation triggers. */
   campaigns?: ListCampaignsResponseCampaignsList;
 }
-const ListCampaignsResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  2,
-) as any as S.Schema<ListCampaignsResponse>;
-
 export type ListComponentsRequestSortBy = "created" | "updated" | "name";
-const ListComponentsRequestSortBy = S.String;
-
 export type ListComponentsRequestSortOrder = "asc" | "desc";
-const ListComponentsRequestSortOrder = S.String;
-
 export interface ListComponentsRequest {
   /** Filter by component tag name. This is the name of the tag inserted into your emails. */
   tag?: string;
@@ -14492,11 +11391,6 @@ export interface ListComponentsRequest {
   /** Return records updated after this time. Must be a unix timestamp. */
   updated_after?: number;
 }
-const ListComponentsRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<ListComponentsRequest>;
-
 export interface ListComponentsResponseComponentsItem {
   /** Unix timestamp of when the component was created. */
   created?: number;
@@ -14511,24 +11405,9 @@ export interface ListComponentsResponseComponentsItem {
   /** Unix timestamp of the last update to the component. */
   updated?: number;
 }
-const ListComponentsResponseComponentsItem = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<ListComponentsResponseComponentsItem>;
-
 export type ListComponentsResponseComponentsList = Array<ListComponentsResponseComponentsItem>;
-const ListComponentsResponseComponentsList = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<ListComponentsResponseComponentsList>;
-
 export type ListComponentsResponseFoldersItem = CreateFolderResponseFolder;
 export type ListComponentsResponseFoldersList = Array<CreateFolderResponseFolder>;
-const ListComponentsResponseFoldersList = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<ListComponentsResponseFoldersList>;
-
 export interface ListComponentsResponseMetaPagination {
   /** The number of results per page. */
   limit?: number;
@@ -14537,44 +11416,21 @@ export interface ListComponentsResponseMetaPagination {
   /** The total number of folders. */
   total?: number;
 }
-const ListComponentsResponseMetaPagination =
-  ListAssetFoldersResponseMetaPagination as any as S.Schema<ListComponentsResponseMetaPagination>;
-
 export interface ListComponentsResponseMeta {
   /** The filters applied in your request. */
   filters?: unknown;
   pagination?: ListComponentsResponseMetaPagination;
 }
-const ListComponentsResponseMeta = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<ListComponentsResponseMeta>;
-
 export interface ListComponentsResponse {
   components?: ListComponentsResponseComponentsList;
   folders?: ListComponentsResponseFoldersList;
   meta?: ListComponentsResponseMeta;
 }
-const ListComponentsResponse = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<ListComponentsResponse>;
-
 export type ListEmailsRequestSortBy = "created" | "updated" | "name";
-const ListEmailsRequestSortBy = S.String;
-
 export type ListEmailsRequestSortOrder = "asc" | "desc";
-const ListEmailsRequestSortOrder = S.String;
-
 export type ListEmailsRequestIsTemplate = "true" | "false" | "any";
-const ListEmailsRequestIsTemplate = S.String;
-
 export type ListEmailsRequestHasTranslations = "true" | "false" | "any";
-const ListEmailsRequestHasTranslations = S.String;
-
 export type ListEmailsRequestIsLinked = "true" | "false" | "any";
-const ListEmailsRequestIsLinked = S.String;
-
 export interface ListEmailsRequest {
   /** The page number of results you want to display. Use with `limit`. */
   page?: number;
@@ -14601,8 +11457,6 @@ export interface ListEmailsRequest {
   /** Filter by whether the email is linked to a workflow (automation, broadcast, etc). */
   is_linked?: ListEmailsRequestIsLinked | (string & {});
 }
-const ListEmailsRequest = /*@__PURE__*/ __L.at(__c54, 1) as any as S.Schema<ListEmailsRequest>;
-
 export interface ListEmailsResponseEmailsItem {
   /** Timestamp of when the email was created. */
   created?: number;
@@ -14621,22 +11475,9 @@ export interface ListEmailsResponseEmailsItem {
   /** Timestamp of last update to the email. */
   updated?: number;
 }
-const ListEmailsResponseEmailsItem = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-) as any as S.Schema<ListEmailsResponseEmailsItem>;
-
 export type ListEmailsResponseEmailsList = Array<ListEmailsResponseEmailsItem>;
-const ListEmailsResponseEmailsList = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<ListEmailsResponseEmailsList>;
-
 export type ListEmailsResponseFoldersItem = CreateFolderResponseFolder;
 export type ListEmailsResponseFoldersList = Array<CreateFolderResponseFolder>;
-const ListEmailsResponseFoldersList =
-  ListComponentsResponseFoldersList as any as S.Schema<ListEmailsResponseFoldersList>;
-
 export type ListEmailsResponseMetaPagination = ListComponentsResponseMetaPagination;
 export type ListEmailsResponseMeta = ListComponentsResponseMeta;
 export interface ListEmailsResponse {
@@ -14644,23 +11485,13 @@ export interface ListEmailsResponse {
   folders?: ListEmailsResponseFoldersList;
   meta?: ListComponentsResponseMeta;
 }
-const ListEmailsResponse = /*@__PURE__*/ __L.at(__c54, 4) as any as S.Schema<ListEmailsResponse>;
-
 export interface ListEmailTranslationsRequest {
   /** The id of the email. If your email has multiple languages, you must provide the ID of the **default** language template. This links the workflow to all of the language variants for the template. */
   id: string;
 }
-const ListEmailTranslationsRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  5,
-) as any as S.Schema<ListEmailTranslationsRequest>;
-
 /** List of [language codes](/journeys/channels/localization/attribute/#supported-languages) that reflect the languages this default email has been translated to. */
 export type ListEmailTranslationsResponseEmailTranslationsItemAvailableLanguagesList =
   Array<string>;
-const ListEmailTranslationsResponseEmailTranslationsItemAvailableLanguagesList =
-  CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemAvailableLanguagesList>;
-
 /** The content of your email. */
 export type ListEmailTranslationsResponseEmailTranslationsItemContent = CreateEmailRequestContent;
 export type ListEmailTranslationsResponseEmailTranslationsItemEnvelopeHeadersItem =
@@ -14668,9 +11499,6 @@ export type ListEmailTranslationsResponseEmailTranslationsItemEnvelopeHeadersIte
 /** Custom headers. Each item: { "name": "string", "value": "string" }. */
 export type ListEmailTranslationsResponseEmailTranslationsItemEnvelopeHeadersList =
   Array<CreateEmailRequestEnvelopeHeadersItem>;
-const ListEmailTranslationsResponseEmailTranslationsItemEnvelopeHeadersList =
-  CreateEmailTranslationResponseEmailTranslationEnvelopeHeadersList as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemEnvelopeHeadersList>;
-
 export interface ListEmailTranslationsResponseEmailTranslationsItemEnvelope {
   /** BCC email address. */
   bcc?: string;
@@ -14689,11 +11517,6 @@ export interface ListEmailTranslationsResponseEmailTranslationsItemEnvelope {
   /** Reply-to identity ID. This matches one of the ids in *Workspace Settings > Email*. */
   reply_to_id?: number | null;
 }
-const ListEmailTranslationsResponseEmailTranslationsItemEnvelope = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemEnvelope>;
-
 /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
 export type ListEmailTranslationsResponseEmailTranslationsItemTransformersAccessibility =
   CreateEmailRequestTransformersAccessibility;
@@ -14727,9 +11550,6 @@ export interface ListEmailTranslationsResponseEmailTranslationsItemTransformersF
   /** Remove all line breaks from the output. */
   remove_line_breaks?: boolean;
 }
-const ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterMinify =
-  CreateEmailTranslationResponseEmailTranslationTransformersFormatterMinify as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterMinify>;
-
 /** Character used for indentation. */
 export type ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterPrettifyIndentCharacter =
   | "spaces"
@@ -14743,16 +11563,11 @@ export interface ListEmailTranslationsResponseEmailTranslationsItemTransformersF
   /** Wrap HTML attributes onto separate lines (`force-expand-multiline` mode). */
   wrap_attributes?: boolean;
 }
-const ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterPrettify =
-  CreateEmailTranslationResponseEmailTranslationTransformersFormatterPrettify as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterPrettify>;
-
 /** Formatting mode to apply. */
 export type ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterType =
   | "none"
   | "prettify"
   | "minify";
-const ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterType = S.String;
-
 /** Controls the output formatting of the final HTML. Only one mode (`prettify` or `minify`) can be active at a time. Set to `"none"` to skip formatting entirely. */
 export interface ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatter {
   /** Options used when `type` is `"minify"`. Reduces file size by stripping whitespace and comments. */
@@ -14762,12 +11577,6 @@ export interface ListEmailTranslationsResponseEmailTranslationsItemTransformersF
   /** Formatting mode to apply. */
   type?: ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterType;
 }
-const ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatter =
-  /*@__PURE__*/ __L.at(
-    __c54,
-    7,
-  ) as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatter>;
-
 /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type ListEmailTranslationsResponseEmailTranslationsItemTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
@@ -14790,9 +11599,6 @@ export interface ListEmailTranslationsResponseEmailTranslationsItemTransformersR
   /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
   whitelist?: ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCssWhitelistList;
 }
-const ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCss =
-  CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCss>;
-
 export type ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParametersParametersItem =
   CreateEmailRequestTransformersUrlParametersParametersItem;
 /** List of parameters to append to URLs. */
@@ -14805,9 +11611,6 @@ export interface ListEmailTranslationsResponseEmailTranslationsItemTransformersU
   /** List of parameters to append to URLs. */
   parameters?: ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParametersParametersList;
 }
-const ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParameters =
-  CreateEmailTranslationResponseEmailTranslationTransformersUrlParameters as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParameters>;
-
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface ListEmailTranslationsResponseEmailTranslationsItemTransformers {
   /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
@@ -14827,11 +11630,6 @@ export interface ListEmailTranslationsResponseEmailTranslationsItemTransformers 
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParameters;
 }
-const ListEmailTranslationsResponseEmailTranslationsItemTransformers = /*@__PURE__*/ __L.at(
-  __c55,
-  0,
-) as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItemTransformers>;
-
 export interface ListEmailTranslationsResponseEmailTranslationsItem {
   /** List of [language codes](/journeys/channels/localization/attribute/#supported-languages) that reflect the languages this default email has been translated to. */
   available_languages?: ListEmailTranslationsResponseEmailTranslationsItemAvailableLanguagesList;
@@ -14855,29 +11653,12 @@ export interface ListEmailTranslationsResponseEmailTranslationsItem {
   /** Unix timestamp of the last update to the translation. */
   updated?: number;
 }
-const ListEmailTranslationsResponseEmailTranslationsItem = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsItem>;
-
 export type ListEmailTranslationsResponseEmailTranslationsList =
   Array<ListEmailTranslationsResponseEmailTranslationsItem>;
-const ListEmailTranslationsResponseEmailTranslationsList = /*@__PURE__*/ __L.at(
-  __c55,
-  2,
-) as any as S.Schema<ListEmailTranslationsResponseEmailTranslationsList>;
-
 export interface ListEmailTranslationsResponse {
   email_translations?: ListEmailTranslationsResponseEmailTranslationsList;
 }
-const ListEmailTranslationsResponse = /*@__PURE__*/ __L.at(
-  __c55,
-  3,
-) as any as S.Schema<ListEmailTranslationsResponse>;
-
 export interface ListExportsRequest {}
-const ListExportsRequest = /*@__PURE__*/ __L.at(__c55, 4) as any as S.Schema<ListExportsRequest>;
-
 /** The state of your export where `done` indicates an export that you can download, `pending`, indicates that your export is not ready to download, and `failed` indicates an export that has failed and will not be downloadable. */
 export type ListExportsResponseExportsItemStatus = "done" | "pending" | "failed";
 /** The type of information contained in the export. */
@@ -14909,26 +11690,12 @@ export interface ListExportsResponseExportsItem {
   /** The user who created the export. */
   user_id?: number;
 }
-const ListExportsResponseExportsItem =
-  ExportDeliveriesDataResponseExport as any as S.Schema<ListExportsResponseExportsItem>;
-
 export type ListExportsResponseExportsList = Array<ListExportsResponseExportsItem>;
-const ListExportsResponseExportsList = /*@__PURE__*/ __L.at(
-  __c55,
-  5,
-) as any as S.Schema<ListExportsResponseExportsList>;
-
 export interface ListExportsResponse {
   exports?: ListExportsResponseExportsList;
 }
-const ListExportsResponse = /*@__PURE__*/ __L.at(__c55, 6) as any as S.Schema<ListExportsResponse>;
-
 export type ListFoldersRequestSortBy = "created" | "updated" | "name";
-const ListFoldersRequestSortBy = S.String;
-
 export type ListFoldersRequestSortOrder = "asc" | "desc";
-const ListFoldersRequestSortOrder = S.String;
-
 export interface ListFoldersRequest {
   /** The page number of results you want to display. Use with `limit`. */
   page?: number;
@@ -14949,31 +11716,17 @@ export interface ListFoldersRequest {
   /** Return records updated after this time. Must be a unix timestamp. */
   updated_after?: number;
 }
-const ListFoldersRequest = /*@__PURE__*/ __L.at(__c55, 7) as any as S.Schema<ListFoldersRequest>;
-
 export type ListFoldersResponseFoldersItem = CreateFolderResponseFolder;
 export type ListFoldersResponseFoldersList = Array<CreateFolderResponseFolder>;
-const ListFoldersResponseFoldersList =
-  ListComponentsResponseFoldersList as any as S.Schema<ListFoldersResponseFoldersList>;
-
 export type ListFoldersResponseMetaPagination = ListComponentsResponseMetaPagination;
 export type ListFoldersResponseMeta = ListComponentsResponseMeta;
 export interface ListFoldersResponse {
   folders?: ListFoldersResponseFoldersList;
   meta?: ListComponentsResponseMeta;
 }
-const ListFoldersResponse = /*@__PURE__*/ __L.at(__c56, 0) as any as S.Schema<ListFoldersResponse>;
-
 export interface ListInboxPreviewClientsRequest {}
-const ListInboxPreviewClientsRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<ListInboxPreviewClientsRequest>;
-
 /** Where the client renders. `Mobile` is a phone's native mail app, for example the Gmail App on Android devices. `Application` is a desktop native mail app, for example Apple Mail on macOS. `Web` is webmail viewed in a desktop browser, for example Gmail.com in Firefox, and includes a `browser` value. */
 export type ListInboxPreviewClientsResponseClientsItemCategory = "Mobile" | "Application" | "Web";
-const ListInboxPreviewClientsResponseClientsItemCategory = S.String;
-
 /** An email client available for inbox previews. */
 export interface ListInboxPreviewClientsResponseClientsItem {
   /** Browser used to render the client. Populates when `category` is `Web`. */
@@ -14987,26 +11740,11 @@ export interface ListInboxPreviewClientsResponseClientsItem {
   /** Operating system the client runs on. Look for `(Dark Mode)` if you want to locate preview options for dark mode. */
   os?: string;
 }
-const ListInboxPreviewClientsResponseClientsItem = /*@__PURE__*/ __L.at(
-  __c56,
-  2,
-) as any as S.Schema<ListInboxPreviewClientsResponseClientsItem>;
-
 export type ListInboxPreviewClientsResponseClientsList =
   Array<ListInboxPreviewClientsResponseClientsItem>;
-const ListInboxPreviewClientsResponseClientsList = /*@__PURE__*/ __L.at(
-  __c56,
-  3,
-) as any as S.Schema<ListInboxPreviewClientsResponseClientsList>;
-
 export interface ListInboxPreviewClientsResponse {
   clients?: ListInboxPreviewClientsResponseClientsList;
 }
-const ListInboxPreviewClientsResponse = /*@__PURE__*/ __L.at(
-  __c56,
-  4,
-) as any as S.Schema<ListInboxPreviewClientsResponse>;
-
 export interface ListInboxPreviewJobsRequest {
   /** Filter to preview jobs submitted for a specific email. */
   node_id?: string;
@@ -15015,30 +11753,15 @@ export interface ListInboxPreviewJobsRequest {
   /** A pagination cursor returned in the previous page's `meta.pagination.next_cursor`. Omit to return the first page. */
   cursor?: string;
 }
-const ListInboxPreviewJobsRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  5,
-) as any as S.Schema<ListInboxPreviewJobsRequest>;
-
 export interface ListInboxPreviewJobsResponseMetaPagination {
   /** The `limit` used for this page. */
   limit?: number;
   /** Pass this as `cursor` to fetch the next page. Omitted when there are no more results. */
   next_cursor?: string;
 }
-const ListInboxPreviewJobsResponseMetaPagination = /*@__PURE__*/ __L.at(
-  __c56,
-  6,
-) as any as S.Schema<ListInboxPreviewJobsResponseMetaPagination>;
-
 export interface ListInboxPreviewJobsResponseMeta {
   pagination?: ListInboxPreviewJobsResponseMetaPagination;
 }
-const ListInboxPreviewJobsResponseMeta = /*@__PURE__*/ __L.at(
-  __c56,
-  7,
-) as any as S.Schema<ListInboxPreviewJobsResponseMeta>;
-
 /** A summary entry in the inbox previews job history. */
 export interface ListInboxPreviewJobsResponsePreviewJobsItem {
   /** When the job was submitted. */
@@ -15066,27 +11789,12 @@ export interface ListInboxPreviewJobsResponsePreviewJobsItem {
   /** When the job's status was last updated. */
   updated_at?: number;
 }
-const ListInboxPreviewJobsResponsePreviewJobsItem = /*@__PURE__*/ __L.at(
-  __c57,
-  0,
-) as any as S.Schema<ListInboxPreviewJobsResponsePreviewJobsItem>;
-
 export type ListInboxPreviewJobsResponsePreviewJobsList =
   Array<ListInboxPreviewJobsResponsePreviewJobsItem>;
-const ListInboxPreviewJobsResponsePreviewJobsList = /*@__PURE__*/ __L.at(
-  __c57,
-  1,
-) as any as S.Schema<ListInboxPreviewJobsResponsePreviewJobsList>;
-
 export interface ListInboxPreviewJobsResponse {
   meta?: ListInboxPreviewJobsResponseMeta;
   preview_jobs?: ListInboxPreviewJobsResponsePreviewJobsList;
 }
-const ListInboxPreviewJobsResponse = /*@__PURE__*/ __L.at(
-  __c57,
-  2,
-) as any as S.Schema<ListInboxPreviewJobsResponse>;
-
 export type ListMessagesRequestType =
   | "email"
   | "webhook"
@@ -15096,8 +11804,6 @@ export type ListMessagesRequestType =
   | "push"
   | "in_app"
   | "live_notification";
-const ListMessagesRequestType = S.String;
-
 export type ListMessagesRequestMetric =
   | "attempted"
   | "sent"
@@ -15111,8 +11817,6 @@ export type ListMessagesRequestMetric =
   | "dropped"
   | "failed"
   | "undeliverable";
-const ListMessagesRequestMetric = S.String;
-
 export interface ListMessagesRequest {
   /** The token for the page of results you want to return. Responses contain a `next` property. Use this property as the `start` value to return the next page of results. */
   start?: string;
@@ -15137,8 +11841,6 @@ export interface ListMessagesRequest {
   /** If true, the response includes `tracked_responses` for each message--an object containing tracked response option names for in-app survey responses. */
   get_tracked_responses?: boolean;
 }
-const ListMessagesRequest = /*@__PURE__*/ __L.at(__c57, 3) as any as S.Schema<ListMessagesRequest>;
-
 /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type ListMessagesResponseMessagesItemCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
@@ -15150,9 +11852,6 @@ export type ListMessagesResponseMessagesItemTrackedResponsesValue =
 export type ListMessagesResponseMessagesItemTrackedResponsesMap = {
   [key: string]: BroadcastMessagesResponseMessagesItemTrackedResponsesValue | undefined;
 };
-const ListMessagesResponseMessagesItemTrackedResponsesMap =
-  BroadcastMessagesResponseMessagesItemTrackedResponsesMap as any as S.Schema<ListMessagesResponseMessagesItemTrackedResponsesMap>;
-
 /** The type of message or action for a delivery, automation action, or related object. Includes channels that one-time sends do not support (for example, `slack` and `whatsapp`). */
 export type ListMessagesResponseMessagesItemType =
   | "email"
@@ -15163,8 +11862,6 @@ export type ListMessagesResponseMessagesItemType =
   | "slack"
   | "whatsapp"
   | "live_notification";
-const ListMessagesResponseMessagesItemType = S.String;
-
 /** Describes an individual message delivery. The object contains keys for all possible parents of the message (`newsletter_id`, `broadcast_id`, etc) but only the parents of the delivery are populated. Other parent IDs are null. */
 export interface ListMessagesResponseMessagesItem {
   /** The identifier for an action. */
@@ -15205,30 +11902,13 @@ export interface ListMessagesResponseMessagesItem {
   /** The type of message or action for a delivery, automation action, or related object. Includes channels that one-time sends do not support (for example, `slack` and `whatsapp`). */
   type?: ListMessagesResponseMessagesItemType;
 }
-const ListMessagesResponseMessagesItem = /*@__PURE__*/ __L.at(
-  __c57,
-  4,
-) as any as S.Schema<ListMessagesResponseMessagesItem>;
-
 /** Each object in the array describes an individual message delivery. The object contains keys for all possible parents of the message (`newsletter_id`, `broadcast_id`, etc) but only the parents of the delivery are populated. Other parent IDs are null. */
 export type ListMessagesResponseMessagesList = Array<ListMessagesResponseMessagesItem>;
-const ListMessagesResponseMessagesList = /*@__PURE__*/ __L.at(
-  __c57,
-  5,
-) as any as S.Schema<ListMessagesResponseMessagesList>;
-
 export interface ListMessagesResponse {
   /** Each object in the array describes an individual message delivery. The object contains keys for all possible parents of the message (`newsletter_id`, `broadcast_id`, etc) but only the parents of the delivery are populated. Other parent IDs are null. */
   messages?: ListMessagesResponseMessagesList;
 }
-const ListMessagesResponse = /*@__PURE__*/ __L.at(
-  __c57,
-  6,
-) as any as S.Schema<ListMessagesResponse>;
-
 export type ListNewslettersRequestSort = "asc" | "desc";
-const ListNewslettersRequestSort = S.String;
-
 export interface ListNewslettersRequest {
   /** The maximum number of results you want to retrieve per page. */
   limit?: number;
@@ -15237,29 +11917,16 @@ export interface ListNewslettersRequest {
   /** The token for the page of results you want to return. Responses contain a `next` property. Use this property as the `start` value to return the next page of results. */
   start?: string;
 }
-const ListNewslettersRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  7,
-) as any as S.Schema<ListNewslettersRequest>;
-
 /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
 export type ListNewslettersResponseNewslettersItemContentIdsList = Array<number>;
-const ListNewslettersResponseNewslettersItemContentIdsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<ListNewslettersResponseNewslettersItemContentIdsList>;
-
 /** How far Customer.io has got with a recipient file, whether you uploaded it in the UI or passed `recipient_file_url`. Customer.io omits this field when the audience came from a `recipients` filter. Wait for `done` before you send or schedule. */
 export type ListNewslettersResponseNewslettersItemRecipientFileStatus =
   | "pending"
   | "processing"
   | "done"
   | "error";
-const ListNewslettersResponseNewslettersItemRecipientFileStatus = S.String;
-
 /** If the recipient conditions included segments, this returns a list of those segment ids. */
 export type ListNewslettersResponseNewslettersItemRecipientSegmentIdsList = Array<number>;
-const ListNewslettersResponseNewslettersItemRecipientSegmentIdsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<ListNewslettersResponseNewslettersItemRecipientSegmentIdsList>;
-
 /** Where the one-time send is in its lifecycle. Always included. This matches the status shown in Customer.io, with one exception noted under `awaiting_winner`. - `drafted`: The one-time send isn't scheduled and hasn't been sent. - `scheduled`: A send time is set and sending hasn't started. - `sending`: Sending has started and is still in progress. More batches are due (timezone-match batches or the remainder of an A/B test), or messages are still being delivered. - `sent`: The one-time send is no longer sending. This doesn't mean that every individual message has reached a final state. - `paused`: The one-time send is paused. - `stopped`: The one-time send was stopped. - `failed`: The one-time send failed. - `awaiting_winner`: An A/B test has started and is waiting for you to pick a winner before the rest of the audience gets it. Test messages might still be going out. Customer.io's UI stops showing "awaiting winner" 30 days after the first send, but the API keeps reporting `awaiting_winner` because you can still pick a winner. When more than one state applies, Customer.io reports the first match in this order: `stopped`, `failed`, `paused`, `awaiting_winner`, `sending`, `sent`, `scheduled`, `drafted`. */
 export type ListNewslettersResponseNewslettersItemSendState =
   | "drafted"
@@ -15270,13 +11937,8 @@ export type ListNewslettersResponseNewslettersItemSendState =
   | "stopped"
   | "failed"
   | "awaiting_winner";
-const ListNewslettersResponseNewslettersItemSendState = S.String;
-
 /** An array of tags associated with the one-time send. */
 export type ListNewslettersResponseNewslettersItemTagsList = Array<string>;
-const ListNewslettersResponseNewslettersItemTagsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<ListNewslettersResponseNewslettersItemTagsList>;
-
 /** Channel type for a one-time send or one-time send content variant. */
 export type ListNewslettersResponseNewslettersItemType =
   | "email"
@@ -15285,8 +11947,6 @@ export type ListNewslettersResponseNewslettersItemType =
   | "push"
   | "in_app"
   | "inbox";
-const ListNewslettersResponseNewslettersItemType = S.String;
-
 export interface ListNewslettersResponseNewslettersItem {
   /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
   content_ids?: ListNewslettersResponseNewslettersItemContentIdsList;
@@ -15325,36 +11985,16 @@ export interface ListNewslettersResponseNewslettersItem {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-const ListNewslettersResponseNewslettersItem = /*@__PURE__*/ __L.at(
-  __c58,
-  0,
-) as any as S.Schema<ListNewslettersResponseNewslettersItem>;
-
 export type ListNewslettersResponseNewslettersList = Array<ListNewslettersResponseNewslettersItem>;
-const ListNewslettersResponseNewslettersList = /*@__PURE__*/ __L.at(
-  __c58,
-  1,
-) as any as S.Schema<ListNewslettersResponseNewslettersList>;
-
 export interface ListNewslettersResponse {
   newsletters?: ListNewslettersResponseNewslettersList;
   /** Indicates the next page of results. Add `?start=<next_value>` to the request to get the next page of results. */
   next?: string;
 }
-const ListNewslettersResponse = /*@__PURE__*/ __L.at(
-  __c58,
-  2,
-) as any as S.Schema<ListNewslettersResponse>;
-
 export interface ListNewsletterVariantsRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
 }
-const ListNewsletterVariantsRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  3,
-) as any as S.Schema<ListNewsletterVariantsRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type ListNewsletterVariantsResponseContentsItemPreprocessor = "premailer";
 /** Channel type for a one-time send or one-time send content variant. */
@@ -15409,45 +12049,20 @@ export interface ListNewsletterVariantsResponseContentsItem {
   /** Channel type for a one-time send or one-time send content variant. */
   type?: ListNewsletterVariantsResponseContentsItemType;
 }
-const ListNewsletterVariantsResponseContentsItem =
-  GetNewsletterVariantResponseContent as any as S.Schema<ListNewsletterVariantsResponseContentsItem>;
-
 export type ListNewsletterVariantsResponseContentsList =
   Array<ListNewsletterVariantsResponseContentsItem>;
-const ListNewsletterVariantsResponseContentsList = /*@__PURE__*/ __L.at(
-  __c58,
-  4,
-) as any as S.Schema<ListNewsletterVariantsResponseContentsList>;
-
 export interface ListNewsletterVariantsResponse {
   contents?: ListNewsletterVariantsResponseContentsList;
 }
-const ListNewsletterVariantsResponse = /*@__PURE__*/ __L.at(
-  __c58,
-  5,
-) as any as S.Schema<ListNewsletterVariantsResponse>;
-
 export interface ListSegmentsRequest {}
-const ListSegmentsRequest = /*@__PURE__*/ __L.at(__c58, 6) as any as S.Schema<ListSegmentsRequest>;
-
 /** The conditions that determine who belongs to the segment, as a tree of nested `and` and `or` groups. Customer.io includes this object for data-driven segments and omits it for manual segments, which don't have conditions. A profile attribute condition appears as an `attribute_change` event with a `to` filter and an inverted `from` filter, and filter values are always strings, even for numeric or boolean attributes. */
 export type ListSegmentsResponseSegmentsItemConditionsMap = { [key: string]: unknown | undefined };
-const ListSegmentsResponseSegmentsItemConditionsMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<ListSegmentsResponseSegmentsItemConditionsMap>;
-
 /** The segment's build state. The state is `build` while Customer.io calculates who belongs to the segment, and `finished` when membership is up to date. */
 export type ListSegmentsResponseSegmentsItemState = "build" | "finished";
-const ListSegmentsResponseSegmentsItemState = S.String;
-
 /** The tags assigned to the segment, if any. Tags may help you sort through your segments. */
 export type ListSegmentsResponseSegmentsItemTagsList = Array<string>;
-const ListSegmentsResponseSegmentsItemTagsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<ListSegmentsResponseSegmentsItemTagsList>;
-
 /** The type of segment. */
 export type ListSegmentsResponseSegmentsItemType = "dynamic" | "manual";
-const ListSegmentsResponseSegmentsItemType = S.String;
-
 export interface ListSegmentsResponseSegmentsItem {
   /** The conditions that determine who belongs to the segment, as a tree of nested `and` and `or` groups. Customer.io includes this object for data-driven segments and omits it for manual segments, which don't have conditions. A profile attribute condition appears as an `attribute_change` event with a `to` filter and an inverted `from` filter, and filter values are always strings, even for numeric or boolean attributes. */
   conditions?: ListSegmentsResponseSegmentsItemConditionsMap;
@@ -15472,28 +12087,11 @@ export interface ListSegmentsResponseSegmentsItem {
   /** The date time when the referenced ID was last updated. */
   updated_at?: number;
 }
-const ListSegmentsResponseSegmentsItem = /*@__PURE__*/ __L.at(
-  __c58,
-  7,
-) as any as S.Schema<ListSegmentsResponseSegmentsItem>;
-
 export type ListSegmentsResponseSegmentsList = Array<ListSegmentsResponseSegmentsItem>;
-const ListSegmentsResponseSegmentsList = /*@__PURE__*/ __L.at(
-  __c59,
-  0,
-) as any as S.Schema<ListSegmentsResponseSegmentsList>;
-
 export interface ListSegmentsResponse {
   segments?: ListSegmentsResponseSegmentsList;
 }
-const ListSegmentsResponse = /*@__PURE__*/ __L.at(
-  __c59,
-  1,
-) as any as S.Schema<ListSegmentsResponse>;
-
 export type ListSendersRequestSort = "asc" | "desc";
-const ListSendersRequestSort = S.String;
-
 export interface ListSendersRequest {
   /** The token for the page of results you want to return. Responses contain a `next` property. Use this property as the `start` value to return the next page of results. */
   start?: string;
@@ -15504,8 +12102,6 @@ export interface ListSendersRequest {
   /** If true, include hidden senders in the results. */
   hidden?: boolean;
 }
-const ListSendersRequest = /*@__PURE__*/ __L.at(__c59, 2) as any as S.Schema<ListSendersRequest>;
-
 /** The type of sender. */
 export type ListSendersResponseSenderIdentitiesItemTemplateType = "email" | "phone";
 /** Information about a sender. */
@@ -15529,73 +12125,31 @@ export interface ListSendersResponseSenderIdentitiesItem {
   /** The type of sender. */
   template_type?: ListSendersResponseSenderIdentitiesItemTemplateType;
 }
-const ListSendersResponseSenderIdentitiesItem =
-  GetSenderResponseSenderIdentity as any as S.Schema<ListSendersResponseSenderIdentitiesItem>;
-
 export type ListSendersResponseSenderIdentitiesList =
   Array<ListSendersResponseSenderIdentitiesItem>;
-const ListSendersResponseSenderIdentitiesList = /*@__PURE__*/ __L.at(
-  __c59,
-  3,
-) as any as S.Schema<ListSendersResponseSenderIdentitiesList>;
-
 export interface ListSendersResponse {
   /** Indicates the next page of results. Add `?start=<next_value>` to the request to get the next page of results. */
   next?: string;
   sender_identities?: ListSendersResponseSenderIdentitiesList;
 }
-const ListSendersResponse = /*@__PURE__*/ __L.at(__c59, 4) as any as S.Schema<ListSendersResponse>;
-
 export interface ListSnippetsRequest {}
-const ListSnippetsRequest = /*@__PURE__*/ __L.at(__c59, 5) as any as S.Schema<ListSnippetsRequest>;
-
 /** describes a piece of reusable content. You must provide a name for the snippet and the `value`--the content that appears in messages that use the snippet. */
 export type ListSnippetsResponseSnippetsItem = CreateSnippetResponseSnippet;
 export type ListSnippetsResponseSnippetsList = Array<CreateSnippetResponseSnippet>;
-const ListSnippetsResponseSnippetsList = /*@__PURE__*/ __L.at(
-  __c59,
-  6,
-) as any as S.Schema<ListSnippetsResponseSnippetsList>;
-
 export interface ListSnippetsResponse {
   snippets?: ListSnippetsResponseSnippetsList;
 }
-const ListSnippetsResponse = /*@__PURE__*/ __L.at(
-  __c59,
-  7,
-) as any as S.Schema<ListSnippetsResponse>;
-
 export interface ListTransactionalRequest {}
-const ListTransactionalRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  0,
-) as any as S.Schema<ListTransactionalRequest>;
-
 /** Contains information about a transactional message. */
 export type ListTransactionalResponseMessagesItem = GetTransactionalResponseMessage;
 export type ListTransactionalResponseMessagesList = Array<GetTransactionalResponseMessage>;
-const ListTransactionalResponseMessagesList = /*@__PURE__*/ __L.at(
-  __c60,
-  1,
-) as any as S.Schema<ListTransactionalResponseMessagesList>;
-
 export interface ListTransactionalResponse {
   messages?: ListTransactionalResponseMessagesList;
 }
-const ListTransactionalResponse = /*@__PURE__*/ __L.at(
-  __c60,
-  2,
-) as any as S.Schema<ListTransactionalResponse>;
-
 export interface ListTransactionalVariantsRequest {
   /** The identifier of your transactional message. You'll find this in the UI or URL of your transactional message. For example, if this is the path of a transactional message URL - `/transactional/3/templates/139` - the `transactional_id` is 3. */
   transactional_id: number;
 }
-const ListTransactionalVariantsRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  3,
-) as any as S.Schema<ListTransactionalVariantsRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type ListTransactionalVariantsResponseContentsItemPreprocessor = "premailer";
 /** The type of message. */
@@ -15645,18 +12199,10 @@ export interface ListTransactionalVariantsResponseContentsItem {
 /** Each object represents one of the variants. */
 export type ListTransactionalVariantsResponseContentsList =
   Array<ListTransactionalVariantsResponseContentsItem>;
-const ListTransactionalVariantsResponseContentsList =
-  GetTransactionalVariantResponseContentList as any as S.Schema<ListTransactionalVariantsResponseContentsList>;
-
 export interface ListTransactionalVariantsResponse {
   /** Each object represents one of the variants. */
   contents?: ListTransactionalVariantsResponseContentsList;
 }
-const ListTransactionalVariantsResponse = /*@__PURE__*/ __L.at(
-  __c60,
-  4,
-) as any as S.Schema<ListTransactionalVariantsResponse>;
-
 export interface ListVersionsRequest {
   /** The UUID of the email. If your email has translations, this is the ID of a specific language variant. */
   id: string;
@@ -15665,8 +12211,6 @@ export interface ListVersionsRequest {
   /** Return versions created at or before this time. Must be a unix timestamp. Requires `start_date`. */
   end_date?: number;
 }
-const ListVersionsRequest = /*@__PURE__*/ __L.at(__c60, 5) as any as S.Schema<ListVersionsRequest>;
-
 /** Always `"EMAIL"`. */
 export type ListVersionsResponseVersionsItemNodeType = "EMAIL";
 export interface ListVersionsResponseVersionsItem {
@@ -15687,26 +12231,11 @@ export interface ListVersionsResponseVersionsItem {
   /** Always `"EMAIL"`. */
   node_type?: ListVersionsResponseVersionsItemNodeType;
 }
-const ListVersionsResponseVersionsItem =
-  GetVersionResponseVersion as any as S.Schema<ListVersionsResponseVersionsItem>;
-
 export type ListVersionsResponseVersionsList = Array<ListVersionsResponseVersionsItem>;
-const ListVersionsResponseVersionsList = /*@__PURE__*/ __L.at(
-  __c60,
-  6,
-) as any as S.Schema<ListVersionsResponseVersionsList>;
-
 export interface ListVersionsResponse {
   versions?: ListVersionsResponseVersionsList;
 }
-const ListVersionsResponse = /*@__PURE__*/ __L.at(
-  __c60,
-  7,
-) as any as S.Schema<ListVersionsResponse>;
-
 export interface ListWebhooksRequest {}
-const ListWebhooksRequest = /*@__PURE__*/ __L.at(__c61, 0) as any as S.Schema<ListWebhooksRequest>;
-
 export type ListWebhooksResponseReportingWebhooksItemEventsItem =
   | "customer_subscribed"
   | "customer_unsubscribed"
@@ -15783,13 +12312,8 @@ export type ListWebhooksResponseReportingWebhooksItemEventsItem =
 /** Specifies the types of events you want to report to your webhook. See our [reporting webhooks reference](/integrations/api/webhooks/) for more information about event types and the information they return. */
 export type ListWebhooksResponseReportingWebhooksItemEventsList =
   Array<ListWebhooksResponseReportingWebhooksItemEventsItem>;
-const ListWebhooksResponseReportingWebhooksItemEventsList =
-  CreateWebhookRequestEventsList as any as S.Schema<ListWebhooksResponseReportingWebhooksItemEventsList>;
-
 /** The type of webhook--`webhook` for a standard reporting webhook or `js` for a JavaScript webhook. */
 export type ListWebhooksResponseReportingWebhooksItemType = "webhook" | "js";
-const ListWebhooksResponseReportingWebhooksItemType = S.String;
-
 export interface ListWebhooksResponseReportingWebhooksItem {
   /** The webhook URL. */
   endpoint: string;
@@ -15808,32 +12332,12 @@ export interface ListWebhooksResponseReportingWebhooksItem {
   /** Set to `true` to include the message `body` in `_sent` events. */
   with_content?: boolean;
 }
-const ListWebhooksResponseReportingWebhooksItem = /*@__PURE__*/ __L.at(
-  __c61,
-  1,
-) as any as S.Schema<ListWebhooksResponseReportingWebhooksItem>;
-
 export type ListWebhooksResponseReportingWebhooksList =
   Array<ListWebhooksResponseReportingWebhooksItem>;
-const ListWebhooksResponseReportingWebhooksList = /*@__PURE__*/ __L.at(
-  __c61,
-  2,
-) as any as S.Schema<ListWebhooksResponseReportingWebhooksList>;
-
 export interface ListWebhooksResponse {
   reporting_webhooks?: ListWebhooksResponseReportingWebhooksList;
 }
-const ListWebhooksResponse = /*@__PURE__*/ __L.at(
-  __c61,
-  3,
-) as any as S.Schema<ListWebhooksResponse>;
-
 export interface ListWorkspacesRequest {}
-const ListWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  4,
-) as any as S.Schema<ListWorkspacesRequest>;
-
 /** Contains workspace properties including the count of messages, people, and objects. Customer.io caches these counts, so your data may be up to two hours old. */
 export interface ListWorkspacesResponseWorkspacesItem {
   /** The count of [emails sent](/journeys/channels/message-statuses/#sent) that are considered for billing in your current billing period. Ultimately, we only bill for the overages on your plan. */
@@ -15851,49 +12355,22 @@ export interface ListWorkspacesResponseWorkspacesItem {
   /** The current count of people profiles in the workspace. Updates roughly every hour. */
   people?: number;
 }
-const ListWorkspacesResponseWorkspacesItem = /*@__PURE__*/ __L.at(
-  __c61,
-  5,
-) as any as S.Schema<ListWorkspacesResponseWorkspacesItem>;
-
 export type ListWorkspacesResponseWorkspacesList = Array<ListWorkspacesResponseWorkspacesItem>;
-const ListWorkspacesResponseWorkspacesList = /*@__PURE__*/ __L.at(
-  __c61,
-  6,
-) as any as S.Schema<ListWorkspacesResponseWorkspacesList>;
-
 export interface ListWorkspacesResponse {
   workspaces?: ListWorkspacesResponseWorkspacesList;
 }
-const ListWorkspacesResponse = /*@__PURE__*/ __L.at(
-  __c61,
-  7,
-) as any as S.Schema<ListWorkspacesResponse>;
-
 export type PostSuppressionRequestSuppressionType =
   | "blocks"
   | "bounces"
   | "spam_reports"
   | "invalid_emails";
-const PostSuppressionRequestSuppressionType = S.String;
-
 export interface PostSuppressionRequest {
   /** The reason a person's email address was suppressed by the email service provider (ESP). */
   suppression_type: PostSuppressionRequestSuppressionType | (string & {});
   /** The email address of the person you want to look up. */
   email_address: string;
 }
-const PostSuppressionRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  0,
-) as any as S.Schema<PostSuppressionRequest>;
-
 export type PostSuppressionResponse = unknown;
-const PostSuppressionResponse = /*@__PURE__*/ __L.at(
-  __c62,
-  1,
-) as any as S.Schema<PostSuppressionResponse>;
-
 export interface PreviewEmailRequest {
   /** The UUID of the email. If your email has translations, this is the ID of a specific language variant. */
   id: string;
@@ -15914,83 +12391,36 @@ export interface PreviewEmailRequest {
   /** Trigger data for `{{trigger.*}}`. */
   trigger?: unknown;
 }
-const PreviewEmailRequest = /*@__PURE__*/ __L.at(__c62, 2) as any as S.Schema<PreviewEmailRequest>;
-
 /** BCC field Liquid errors. */
 export type PreviewEmailResponseErrorsBccList = Array<string>;
-const PreviewEmailResponseErrorsBccList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsBccList>;
-
 /** HTML body Liquid errors. */
 export type PreviewEmailResponseErrorsBodyList = Array<string>;
-const PreviewEmailResponseErrorsBodyList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsBodyList>;
-
 /** AMP body Liquid errors. */
 export type PreviewEmailResponseErrorsBodyAmpList = Array<string>;
-const PreviewEmailResponseErrorsBodyAmpList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsBodyAmpList>;
-
 /** Plain-text body Liquid errors. */
 export type PreviewEmailResponseErrorsBodyPlainList = Array<string>;
-const PreviewEmailResponseErrorsBodyPlainList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsBodyPlainList>;
-
 /** CC field Liquid errors. */
 export type PreviewEmailResponseErrorsCcList = Array<string>;
-const PreviewEmailResponseErrorsCcList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsCcList>;
-
 /** Event data Liquid errors. */
 export type PreviewEmailResponseErrorsEventList = Array<string>;
-const PreviewEmailResponseErrorsEventList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsEventList>;
-
 /** From address Liquid errors. */
 export type PreviewEmailResponseErrorsFromList = Array<string>;
-const PreviewEmailResponseErrorsFromList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsFromList>;
-
 /** Layout template errors. */
 export type PreviewEmailResponseErrorsLayoutList = Array<string>;
-const PreviewEmailResponseErrorsLayoutList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsLayoutList>;
-
 /** Message-level errors. */
 export type PreviewEmailResponseErrorsMessageList = Array<string>;
-const PreviewEmailResponseErrorsMessageList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsMessageList>;
-
 /** Preheader Liquid errors. */
 export type PreviewEmailResponseErrorsPreheaderTextList = Array<string>;
-const PreviewEmailResponseErrorsPreheaderTextList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsPreheaderTextList>;
-
 /** Reply-to address Liquid errors. */
 export type PreviewEmailResponseErrorsReplyToList = Array<string>;
-const PreviewEmailResponseErrorsReplyToList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsReplyToList>;
-
 /** Snippet rendering errors. */
 export type PreviewEmailResponseErrorsSnippetsList = Array<string>;
-const PreviewEmailResponseErrorsSnippetsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsSnippetsList>;
-
 /** Subject line Liquid errors. */
 export type PreviewEmailResponseErrorsSubjectList = Array<string>;
-const PreviewEmailResponseErrorsSubjectList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsSubjectList>;
-
 /** Recipient field Liquid errors, for example `"undefined variable: customer.email"`. */
 export type PreviewEmailResponseErrorsToList = Array<string>;
-const PreviewEmailResponseErrorsToList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsToList>;
-
 /** Trigger data Liquid errors. */
 export type PreviewEmailResponseErrorsTriggerList = Array<string>;
-const PreviewEmailResponseErrorsTriggerList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseErrorsTriggerList>;
-
 /** Per-field Liquid error arrays. All 15 fields are always present; an empty array means no errors for that field. */
 export interface PreviewEmailResponseErrors {
   /** BCC field Liquid errors. */
@@ -16024,44 +12454,20 @@ export interface PreviewEmailResponseErrors {
   /** Trigger data Liquid errors. */
   trigger?: PreviewEmailResponseErrorsTriggerList;
 }
-const PreviewEmailResponseErrors = /*@__PURE__*/ __L.at(
-  __c62,
-  3,
-) as any as S.Schema<PreviewEmailResponseErrors>;
-
 /** Errors in the header name. */
 export type PreviewEmailResponseHeadersItemNameList = Array<string>;
-const PreviewEmailResponseHeadersItemNameList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseHeadersItemNameList>;
-
 /** Errors in the header value. */
 export type PreviewEmailResponseHeadersItemValueList = Array<string>;
-const PreviewEmailResponseHeadersItemValueList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseHeadersItemValueList>;
-
 export interface PreviewEmailResponseHeadersItem {
   /** Errors in the header name. */
   name?: PreviewEmailResponseHeadersItemNameList;
   /** Errors in the header value. */
   value?: PreviewEmailResponseHeadersItemValueList;
 }
-const PreviewEmailResponseHeadersItem = /*@__PURE__*/ __L.at(
-  __c62,
-  4,
-) as any as S.Schema<PreviewEmailResponseHeadersItem>;
-
 /** One entry per custom header that has Liquid errors. Omitted when there are none. */
 export type PreviewEmailResponseHeadersList = Array<PreviewEmailResponseHeadersItem>;
-const PreviewEmailResponseHeadersList = /*@__PURE__*/ __L.at(
-  __c62,
-  5,
-) as any as S.Schema<PreviewEmailResponseHeadersList>;
-
 /** Problems with this link, like a relative URL or liquid tags that were URL-encoded. Empty when the link is fine. */
 export type PreviewEmailResponseLinksItemErrorsList = Array<string>;
-const PreviewEmailResponseLinksItemErrorsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<PreviewEmailResponseLinksItemErrorsList>;
-
 export interface PreviewEmailResponseLinksItem {
   /** Problems with this link, like a relative URL or liquid tags that were URL-encoded. Empty when the link is fine. */
   errors?: PreviewEmailResponseLinksItemErrorsList;
@@ -16072,22 +12478,10 @@ export interface PreviewEmailResponseLinksItem {
   /** The link URL after liquid evaluation. */
   url?: string;
 }
-const PreviewEmailResponseLinksItem = /*@__PURE__*/ __L.at(
-  __c62,
-  6,
-) as any as S.Schema<PreviewEmailResponseLinksItem>;
-
 /** Every link in the evaluated HTML body, with any per-link problems. */
 export type PreviewEmailResponseLinksList = Array<PreviewEmailResponseLinksItem>;
-const PreviewEmailResponseLinksList = /*@__PURE__*/ __L.at(
-  __c62,
-  7,
-) as any as S.Schema<PreviewEmailResponseLinksList>;
-
 /** Always `"EMAIL"`. */
 export type PreviewEmailResponseNodeType = "EMAIL";
-const PreviewEmailResponseNodeType = S.String;
-
 export interface PreviewEmailResponse {
   /** AMP HTML variant with liquid evaluated. Omitted if the email doesn't have an AMP version. */
   amp?: string;
@@ -16116,28 +12510,16 @@ export interface PreviewEmailResponse {
   /** Plain-text body with liquid evaluated. Omitted if the email doesn't have a plain text version. */
   text?: string;
 }
-const PreviewEmailResponse = /*@__PURE__*/ __L.at(
-  __c63,
-  0,
-) as any as S.Schema<PreviewEmailResponse>;
-
 export interface PublishEmailRequest {
   /** The id of the email. If your email has multiple languages, you must provide the ID of the **default** language template. This links the workflow to all of the language variants for the template. */
   id: string;
 }
-const PublishEmailRequest = /*@__PURE__*/ __L.at(__c63, 1) as any as S.Schema<PublishEmailRequest>;
-
 /** A single node-to-template-version mapping produced by the publish process. */
 export type PublishEmailResponseMappingsItem = GetPublishStatusResponseMappingsItem;
 /** The template versions created by the publish. Present when `status` is `done`. */
 export type PublishEmailResponseMappingsList = Array<GetPublishStatusResponseMappingsItem>;
-const PublishEmailResponseMappingsList =
-  GetPublishStatusResponseMappingsList as any as S.Schema<PublishEmailResponseMappingsList>;
-
 /** Returns `done` when the publish process finished within the request window. Returns `pending` when publish is still running for a multi-language email (poll with `publish_id`). */
 export type PublishEmailResponseStatus = "done" | "pending";
-const PublishEmailResponseStatus = S.String;
-
 export interface PublishEmailResponse {
   /** The template versions created by the publish. Present when `status` is `done`. */
   mappings?: PublishEmailResponseMappingsList;
@@ -16146,21 +12528,12 @@ export interface PublishEmailResponse {
   /** Returns `done` when the publish process finished within the request window. Returns `pending` when publish is still running for a multi-language email (poll with `publish_id`). */
   status?: PublishEmailResponseStatus;
 }
-const PublishEmailResponse = /*@__PURE__*/ __L.at(
-  __c63,
-  2,
-) as any as S.Schema<PublishEmailResponse>;
-
 export interface RenderEmailRequest {
   /** The UUID of the email. If your email has translations, this is the ID of a specific language variant. */
   id: string;
 }
-const RenderEmailRequest = /*@__PURE__*/ __L.at(__c63, 3) as any as S.Schema<RenderEmailRequest>;
-
 /** Always `"EMAIL"`. */
 export type RenderEmailResponseNodeType = "EMAIL";
-const RenderEmailResponseNodeType = S.String;
-
 export interface RenderEmailResponse {
   /** AMP HTML variant. Omitted unless you added an AMP version when you [created the email](/integrations/api/app/tag/design-studio-emails/createEmail/). */
   amp?: string;
@@ -16175,24 +12548,14 @@ export interface RenderEmailResponse {
   /** Plain text version of the email. Omitted unless you added a plain text version when you [created the email](/integrations/api/app/tag/design-studio-emails/createEmail/). */
   text?: string;
 }
-const RenderEmailResponse = /*@__PURE__*/ __L.at(__c63, 4) as any as S.Schema<RenderEmailResponse>;
-
 export interface RestoreVersionRequest {
   /** The UUID of the email. If your email has translations, this is the ID of a specific language variant. */
   id: string;
   /** The UUID of the version. */
   version_id: string;
 }
-const RestoreVersionRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  5,
-) as any as S.Schema<RestoreVersionRequest>;
-
 /** The nodes whose content was rolled back. Always just the email node itself--component dependencies aren't restored. */
 export type RestoreVersionResponseRestoredNodeIdsList = Array<string>;
-const RestoreVersionResponseRestoredNodeIdsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<RestoreVersionResponseRestoredNodeIdsList>;
-
 export interface RestoreVersionResponse {
   /** The UUID of the restored email node. */
   node_id?: string;
@@ -16201,49 +12564,26 @@ export interface RestoreVersionResponse {
   /** The UUID of the version that was restored. */
   version_id?: string;
 }
-const RestoreVersionResponse = /*@__PURE__*/ __L.at(
-  __c63,
-  6,
-) as any as S.Schema<RestoreVersionResponse>;
-
 export interface ReviewEmailRequest {
   /** The UUID of the email node. This can be the default-language node or a specific translation node. */
   id: string;
 }
-const ReviewEmailRequest = /*@__PURE__*/ __L.at(__c63, 7) as any as S.Schema<ReviewEmailRequest>;
-
 /** `complete`: findings are authoritative. `degraded`: the check ran on reduced input (for example, some URL validations failed) -- its findings aren't authoritative. `error`: the check couldn't run and contributed no findings. `skipped`: the check has no server-side signal for API callers. */
 export type ReviewEmailResponseChecksValueStatus = "complete" | "degraded" | "error" | "skipped";
-const ReviewEmailResponseChecksValueStatus = S.String;
-
 export interface ReviewEmailResponseChecksValue {
   /** Present when `status` is `degraded` or `error`. Explains what was missing or what failed. */
   error?: string;
   /** `complete`: findings are authoritative. `degraded`: the check ran on reduced input (for example, some URL validations failed) -- its findings aren't authoritative. `error`: the check couldn't run and contributed no findings. `skipped`: the check has no server-side signal for API callers. */
   status?: ReviewEmailResponseChecksValueStatus;
 }
-const ReviewEmailResponseChecksValue = /*@__PURE__*/ __L.at(
-  __c64,
-  0,
-) as any as S.Schema<ReviewEmailResponseChecksValue>;
-
 /** Per-check status, keyed by check name. See the endpoint description for the full list of checks. */
 export type ReviewEmailResponseChecksMap = {
   [key: string]: ReviewEmailResponseChecksValue | undefined;
 };
-const ReviewEmailResponseChecksMap = /*@__PURE__*/ __L.at(
-  __c64,
-  1,
-) as any as S.Schema<ReviewEmailResponseChecksMap>;
-
 /** Fix all errors to make sure your recipients get your email and you follow compliance requirements. Review warnings and tips to improve the quality of your email. */
 export type ReviewEmailResponseFindingsItemSeverity = "error" | "warning" | "tip";
-const ReviewEmailResponseFindingsItemSeverity = S.String;
-
 /** Whether this finding represents an issue. Passing findings don't affect the score. */
 export type ReviewEmailResponseFindingsItemState = "pass" | "fail";
-const ReviewEmailResponseFindingsItemState = S.String;
-
 export interface ReviewEmailResponseFindingsItem {
   /** Which check produced this finding. */
   check?: string;
@@ -16260,17 +12600,7 @@ export interface ReviewEmailResponseFindingsItem {
   /** Short human-readable title. */
   title?: string;
 }
-const ReviewEmailResponseFindingsItem = /*@__PURE__*/ __L.at(
-  __c64,
-  2,
-) as any as S.Schema<ReviewEmailResponseFindingsItem>;
-
 export type ReviewEmailResponseFindingsList = Array<ReviewEmailResponseFindingsItem>;
-const ReviewEmailResponseFindingsList = /*@__PURE__*/ __L.at(
-  __c64,
-  3,
-) as any as S.Schema<ReviewEmailResponseFindingsList>;
-
 /** Finding counts by severity across all checks. */
 export interface ReviewEmailResponseScoreCounts {
   /** The number of failing `error` findings. */
@@ -16280,11 +12610,6 @@ export interface ReviewEmailResponseScoreCounts {
   /** The number of failing `warning` findings. */
   warning?: number;
 }
-const ReviewEmailResponseScoreCounts = /*@__PURE__*/ __L.at(
-  __c64,
-  4,
-) as any as S.Schema<ReviewEmailResponseScoreCounts>;
-
 /** Readiness score. Omitted when `status` is `render_failed`. */
 export interface ReviewEmailResponseScore {
   /** Finding counts by severity across all checks. */
@@ -16292,15 +12617,8 @@ export interface ReviewEmailResponseScore {
   /** 0-100 readiness estimate. Starts at 100 and is reduced per failing finding. An error drops the score to 60 or below; fix all errors to make sure your recipients get your email and you follow compliance requirements. See **findings** to locate errors. */
   score?: number;
 }
-const ReviewEmailResponseScore = /*@__PURE__*/ __L.at(
-  __c64,
-  5,
-) as any as S.Schema<ReviewEmailResponseScore>;
-
 /** - `complete`: every check ran to completion. - `partial`: at least one check errored, ran on reduced input, or was skipped. `failed-components` is always skipped and doesn't [affect this status. If you get a `partial` status, send the request again after a few seconds to try to get a complete set of findings. - `render_failed`: the underlying render failed; no checks ran, `score` is omitted, and `findings` is empty. If it's a timeout, send the request again after a few seconds. If it's a content or compilation error, fix the email before sending the request again. */
 export type ReviewEmailResponseStatus = "complete" | "partial" | "render_failed";
-const ReviewEmailResponseStatus = S.String;
-
 export interface ReviewEmailResponse {
   /** Per-check status, keyed by check name. See the endpoint description for the full list of checks. */
   checks?: ReviewEmailResponseChecksMap;
@@ -16312,8 +12630,6 @@ export interface ReviewEmailResponse {
   /** - `complete`: every check ran to completion. - `partial`: at least one check errored, ran on reduced input, or was skipped. `failed-components` is always skipped and doesn't [affect this status. If you get a `partial` status, send the request again after a few seconds to try to get a complete set of findings. - `render_failed`: the underlying render failed; no checks ran, `score` is omitted, and `findings` is empty. If it's a timeout, send the request again after a few seconds. If it's a content or compilation error, fix the email before sending the request again. */
   status?: ReviewEmailResponseStatus;
 }
-const ReviewEmailResponse = /*@__PURE__*/ __L.at(__c64, 6) as any as S.Schema<ReviewEmailResponse>;
-
 export interface SaveVersionRequest {
   /** The UUID of the email. If your email has translations, this is the ID of a specific language variant. */
   id: string;
@@ -16322,8 +12638,6 @@ export interface SaveVersionRequest {
   /** Note about the version. */
   description?: string;
 }
-const SaveVersionRequest = /*@__PURE__*/ __L.at(__c64, 7) as any as S.Schema<SaveVersionRequest>;
-
 /** Always `"EMAIL"`. */
 export type SaveVersionResponseVersionNodeType = "EMAIL";
 export interface SaveVersionResponseVersion {
@@ -16344,20 +12658,13 @@ export interface SaveVersionResponseVersion {
   /** Always `"EMAIL"`. */
   node_type?: SaveVersionResponseVersionNodeType;
 }
-const SaveVersionResponseVersion =
-  GetVersionResponseVersion as any as S.Schema<SaveVersionResponseVersion>;
-
 export interface SaveVersionResponse {
   /** `false` when the email and its dependencies matched the most recent version exactly, so no new version was saved. `true` when this call created a new version. */
   created?: boolean;
   version?: SaveVersionResponseVersion;
 }
-const SaveVersionResponse = /*@__PURE__*/ __L.at(__c65, 0) as any as S.Schema<SaveVersionResponse>;
-
 /** Time period in seconds for rate limiting. Must be one of 60 (minute), 3600 (hour), or 86400 (day). */
 export type ScheduleNewsletterRequestRateLimitTimePeriod = 60 | 3600 | 86400;
-const ScheduleNewsletterRequestRateLimitTimePeriod = S.Number;
-
 export interface ScheduleNewsletterRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
@@ -16376,29 +12683,16 @@ export interface ScheduleNewsletterRequest {
   /** When `true`, sends at the same local time in each recipient's timezone. If it's set to `true` and `rate_limit_time_period` is provided, then the period can't be greater than `3600` (1 hour). */
   tz_match_enabled?: boolean;
 }
-const ScheduleNewsletterRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  1,
-) as any as S.Schema<ScheduleNewsletterRequest>;
-
 /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
 export type ScheduleNewsletterResponseNewsletterContentIdsList = Array<number>;
-const ScheduleNewsletterResponseNewsletterContentIdsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<ScheduleNewsletterResponseNewsletterContentIdsList>;
-
 /** How far Customer.io has got with a recipient file, whether you uploaded it in the UI or passed `recipient_file_url`. Customer.io omits this field when the audience came from a `recipients` filter. Wait for `done` before you send or schedule. */
 export type ScheduleNewsletterResponseNewsletterRecipientFileStatus =
   | "pending"
   | "processing"
   | "done"
   | "error";
-const ScheduleNewsletterResponseNewsletterRecipientFileStatus = S.String;
-
 /** If the recipient conditions included segments, this returns a list of those segment ids. */
 export type ScheduleNewsletterResponseNewsletterRecipientSegmentIdsList = Array<number>;
-const ScheduleNewsletterResponseNewsletterRecipientSegmentIdsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<ScheduleNewsletterResponseNewsletterRecipientSegmentIdsList>;
-
 /** Where the one-time send is in its lifecycle. Always included. This matches the status shown in Customer.io, with one exception noted under `awaiting_winner`. - `drafted`: The one-time send isn't scheduled and hasn't been sent. - `scheduled`: A send time is set and sending hasn't started. - `sending`: Sending has started and is still in progress. More batches are due (timezone-match batches or the remainder of an A/B test), or messages are still being delivered. - `sent`: The one-time send is no longer sending. This doesn't mean that every individual message has reached a final state. - `paused`: The one-time send is paused. - `stopped`: The one-time send was stopped. - `failed`: The one-time send failed. - `awaiting_winner`: An A/B test has started and is waiting for you to pick a winner before the rest of the audience gets it. Test messages might still be going out. Customer.io's UI stops showing "awaiting winner" 30 days after the first send, but the API keeps reporting `awaiting_winner` because you can still pick a winner. When more than one state applies, Customer.io reports the first match in this order: `stopped`, `failed`, `paused`, `awaiting_winner`, `sending`, `sent`, `scheduled`, `drafted`. */
 export type ScheduleNewsletterResponseNewsletterSendState =
   | "drafted"
@@ -16409,13 +12703,8 @@ export type ScheduleNewsletterResponseNewsletterSendState =
   | "stopped"
   | "failed"
   | "awaiting_winner";
-const ScheduleNewsletterResponseNewsletterSendState = S.String;
-
 /** An array of tags associated with the one-time send. */
 export type ScheduleNewsletterResponseNewsletterTagsList = Array<string>;
-const ScheduleNewsletterResponseNewsletterTagsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<ScheduleNewsletterResponseNewsletterTagsList>;
-
 /** Channel type for a one-time send or one-time send content variant. */
 export type ScheduleNewsletterResponseNewsletterType =
   | "email"
@@ -16424,8 +12713,6 @@ export type ScheduleNewsletterResponseNewsletterType =
   | "push"
   | "in_app"
   | "inbox";
-const ScheduleNewsletterResponseNewsletterType = S.String;
-
 export interface ScheduleNewsletterResponseNewsletter {
   /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
   content_ids?: ScheduleNewsletterResponseNewsletterContentIdsList;
@@ -16464,28 +12751,13 @@ export interface ScheduleNewsletterResponseNewsletter {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-const ScheduleNewsletterResponseNewsletter = /*@__PURE__*/ __L.at(
-  __c65,
-  2,
-) as any as S.Schema<ScheduleNewsletterResponseNewsletter>;
-
 export interface ScheduleNewsletterResponse {
   newsletter?: ScheduleNewsletterResponseNewsletter;
 }
-const ScheduleNewsletterResponse = /*@__PURE__*/ __L.at(
-  __c65,
-  3,
-) as any as S.Schema<ScheduleNewsletterResponse>;
-
 /** A dictionary of attachments where the filename is the key and the value is the base64-encoded contents. The filename must include the extension (i.e. `name.csv`). The total size of all attachments must be less than 2 MB. */
 export interface SendEmailRequestAttachments {
   _file_name_?: string;
 }
-const SendEmailRequestAttachments = /*@__PURE__*/ __L.at(
-  __c65,
-  4,
-) as any as S.Schema<SendEmailRequestAttachments>;
-
 export interface SendEmailRequestIdentifiersCase0 {
   /** The identifier for the person represented by the transactional message. **NOTE**: If your workspace identifies people by email, use the `email` identifier instead. */
   id: string;
@@ -16503,18 +12775,10 @@ export type SendEmailRequestIdentifiers =
   | SendEmailRequestIdentifiersCase0
   | SendEmailRequestIdentifiersCase1
   | SendEmailRequestIdentifiersCase2;
-const SendEmailRequestIdentifiers = S.Unknown as any as S.Schema<SendEmailRequestIdentifiers>;
-
 /** An object containing the key-value pairs referenced using liquid in your message. */
 export type SendEmailRequestMessageDataMap = { [key: string]: unknown | undefined };
-const SendEmailRequestMessageDataMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<SendEmailRequestMessageDataMap>;
-
 /** The transactional message template you want to use. You can call the template by its numerical ID or by the *Trigger Name* that you assigned to the template in the UI (case insensitive). */
 export type SendEmailRequestTransactionalMessageId = number | string;
-const SendEmailRequestTransactionalMessageId =
-  S.Unknown as any as S.Schema<SendEmailRequestTransactionalMessageId>;
-
 export interface SendEmailRequest {
   /** The recipients you want to send to, separated by commas. You can include up to 15 total recipients across `to`, `cc`, and `bcc`, with optional display names in quotes. */
   to: string;
@@ -16565,8 +12829,6 @@ export interface SendEmailRequest {
   /** The transactional message template you want to use. You can call the template by its numerical ID or by the *Trigger Name* that you assigned to the template in the UI (case insensitive). */
   transactional_message_id?: SendEmailRequestTransactionalMessageId;
 }
-const SendEmailRequest = /*@__PURE__*/ __L.at(__c65, 5) as any as S.Schema<SendEmailRequest>;
-
 export interface SendEmailResponse {
   /** A unique identifier for the message. */
   delivery_id?: string;
@@ -16575,8 +12837,6 @@ export interface SendEmailResponse {
   /** For a scheduled message, the Unix timestamp when the message is set to send. Returned only when you provide a future `send_at`. */
   send_at?: number;
 }
-const SendEmailResponse = /*@__PURE__*/ __L.at(__c65, 6) as any as S.Schema<SendEmailResponse>;
-
 export type SendInAppRequestIdentifiersCase0 = SendEmailRequestIdentifiersCase0;
 export type SendInAppRequestIdentifiersCase1 = SendEmailRequestIdentifiersCase1;
 export type SendInAppRequestIdentifiersCase2 = SendEmailRequestIdentifiersCase2;
@@ -16585,18 +12845,10 @@ export type SendInAppRequestIdentifiers =
   | SendEmailRequestIdentifiersCase0
   | SendEmailRequestIdentifiersCase1
   | SendEmailRequestIdentifiersCase2;
-const SendInAppRequestIdentifiers = S.Unknown as any as S.Schema<SendInAppRequestIdentifiers>;
-
 /** The transactional message template that you want to use for your message. You can call the template by its numerical ID or by the *Trigger Name* that you assigned to the template in the UI (case insensitive). */
 export type SendInAppRequestTransactionalMessageId = number | string;
-const SendInAppRequestTransactionalMessageId =
-  S.Unknown as any as S.Schema<SendInAppRequestTransactionalMessageId>;
-
 /** An object containing the key-value pairs referenced using liquid in the format `{{trigger.<property_name>}}` in your in-app message. These values populate the `properties` field in the message that the SDK delivers to your application. */
 export type SendInAppRequestMessageDataMap = { [key: string]: unknown | undefined };
-const SendInAppRequestMessageDataMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<SendInAppRequestMessageDataMap>;
-
 export interface SendInAppRequest {
   /** Identifies the person represented by your transactional message by one of, and only one of, `id`, `email`, or `cio_id`. */
   identifiers: SendInAppRequestIdentifiers;
@@ -16613,8 +12865,6 @@ export interface SendInAppRequest {
   /** A unix timestamp (seconds since epoch) determining when the message will be sent. The timestamp can be up to 90 days in the future. If this value is in the past, your message is sent immediately. */
   send_at?: number;
 }
-const SendInAppRequest = /*@__PURE__*/ __L.at(__c65, 7) as any as S.Schema<SendInAppRequest>;
-
 export interface SendInAppResponse {
   /** A unique identifier for the message. */
   delivery_id?: string;
@@ -16623,8 +12873,6 @@ export interface SendInAppResponse {
   /** For a scheduled message, the Unix timestamp when the message is set to send. Returned only when you provide a future `send_at`. */
   send_at?: number;
 }
-const SendInAppResponse = SendEmailResponse as any as S.Schema<SendInAppResponse>;
-
 export type SendInboxMessageRequestIdentifiersCase0 = SendEmailRequestIdentifiersCase0;
 export type SendInboxMessageRequestIdentifiersCase1 = SendEmailRequestIdentifiersCase1;
 export type SendInboxMessageRequestIdentifiersCase2 = SendEmailRequestIdentifiersCase2;
@@ -16633,19 +12881,10 @@ export type SendInboxMessageRequestIdentifiers =
   | SendEmailRequestIdentifiersCase0
   | SendEmailRequestIdentifiersCase1
   | SendEmailRequestIdentifiersCase2;
-const SendInboxMessageRequestIdentifiers =
-  S.Unknown as any as S.Schema<SendInboxMessageRequestIdentifiers>;
-
 /** The transactional message template that you want to use for your message. You can call the template by its numerical ID or by the *Trigger Name* that you assigned to the template in the UI (case insensitive). */
 export type SendInboxMessageRequestTransactionalMessageId = number | string;
-const SendInboxMessageRequestTransactionalMessageId =
-  S.Unknown as any as S.Schema<SendInboxMessageRequestTransactionalMessageId>;
-
 /** An object containing the key-value pairs referenced using liquid in the format `{{trigger.<property_name>}}` in your inbox message. These values will populate the `properties` field in the message received by your application. */
 export type SendInboxMessageRequestMessageDataMap = { [key: string]: unknown | undefined };
-const SendInboxMessageRequestMessageDataMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<SendInboxMessageRequestMessageDataMap>;
-
 export interface SendInboxMessageRequest {
   /** Identifies the person represented by your transactional message by one of, and only one of, `id`, `email`, or `cio_id`. */
   identifiers: SendInboxMessageRequestIdentifiers;
@@ -16664,11 +12903,6 @@ export interface SendInboxMessageRequest {
   /** Optional override for the recipient. This is typically not needed as the message is sent to the person identified by `identifiers`. */
   to?: string;
 }
-const SendInboxMessageRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  0,
-) as any as S.Schema<SendInboxMessageRequest>;
-
 export interface SendInboxMessageResponse {
   /** A unique identifier for the message. */
   delivery_id?: string;
@@ -16677,12 +12911,8 @@ export interface SendInboxMessageResponse {
   /** For a scheduled message, the Unix timestamp when the message is set to send. Returned only when you provide a future `send_at`. */
   send_at?: number;
 }
-const SendInboxMessageResponse = SendEmailResponse as any as S.Schema<SendInboxMessageResponse>;
-
 /** Time period in seconds for rate limiting. Must be one of 60 (minute), 3600 (hour), or 86400 (day). */
 export type SendNewsletterRequestRateLimitTimePeriod = 60 | 3600 | 86400;
-const SendNewsletterRequestRateLimitTimePeriod = S.Number;
-
 export interface SendNewsletterRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
@@ -16695,29 +12925,16 @@ export interface SendNewsletterRequest {
   /** Time period in seconds for rate limiting. Must be one of 60 (minute), 3600 (hour), or 86400 (day). */
   rate_limit_time_period?: SendNewsletterRequestRateLimitTimePeriod | (number & {});
 }
-const SendNewsletterRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  1,
-) as any as S.Schema<SendNewsletterRequest>;
-
 /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
 export type SendNewsletterResponseNewsletterContentIdsList = Array<number>;
-const SendNewsletterResponseNewsletterContentIdsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<SendNewsletterResponseNewsletterContentIdsList>;
-
 /** How far Customer.io has got with a recipient file, whether you uploaded it in the UI or passed `recipient_file_url`. Customer.io omits this field when the audience came from a `recipients` filter. Wait for `done` before you send or schedule. */
 export type SendNewsletterResponseNewsletterRecipientFileStatus =
   | "pending"
   | "processing"
   | "done"
   | "error";
-const SendNewsletterResponseNewsletterRecipientFileStatus = S.String;
-
 /** If the recipient conditions included segments, this returns a list of those segment ids. */
 export type SendNewsletterResponseNewsletterRecipientSegmentIdsList = Array<number>;
-const SendNewsletterResponseNewsletterRecipientSegmentIdsList =
-  BroadcastActionLinksResponseLinksItemMetricSeriesClickedList as any as S.Schema<SendNewsletterResponseNewsletterRecipientSegmentIdsList>;
-
 /** Where the one-time send is in its lifecycle. Always included. This matches the status shown in Customer.io, with one exception noted under `awaiting_winner`. - `drafted`: The one-time send isn't scheduled and hasn't been sent. - `scheduled`: A send time is set and sending hasn't started. - `sending`: Sending has started and is still in progress. More batches are due (timezone-match batches or the remainder of an A/B test), or messages are still being delivered. - `sent`: The one-time send is no longer sending. This doesn't mean that every individual message has reached a final state. - `paused`: The one-time send is paused. - `stopped`: The one-time send was stopped. - `failed`: The one-time send failed. - `awaiting_winner`: An A/B test has started and is waiting for you to pick a winner before the rest of the audience gets it. Test messages might still be going out. Customer.io's UI stops showing "awaiting winner" 30 days after the first send, but the API keeps reporting `awaiting_winner` because you can still pick a winner. When more than one state applies, Customer.io reports the first match in this order: `stopped`, `failed`, `paused`, `awaiting_winner`, `sending`, `sent`, `scheduled`, `drafted`. */
 export type SendNewsletterResponseNewsletterSendState =
   | "drafted"
@@ -16728,13 +12945,8 @@ export type SendNewsletterResponseNewsletterSendState =
   | "stopped"
   | "failed"
   | "awaiting_winner";
-const SendNewsletterResponseNewsletterSendState = S.String;
-
 /** An array of tags associated with the one-time send. */
 export type SendNewsletterResponseNewsletterTagsList = Array<string>;
-const SendNewsletterResponseNewsletterTagsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<SendNewsletterResponseNewsletterTagsList>;
-
 /** Channel type for a one-time send or one-time send content variant. */
 export type SendNewsletterResponseNewsletterType =
   | "email"
@@ -16743,8 +12955,6 @@ export type SendNewsletterResponseNewsletterType =
   | "push"
   | "in_app"
   | "inbox";
-const SendNewsletterResponseNewsletterType = S.String;
-
 export interface SendNewsletterResponseNewsletter {
   /** A list of message variants in a one-time send, where a variant is a translation or A/B test. */
   content_ids?: SendNewsletterResponseNewsletterContentIdsList;
@@ -16783,19 +12993,9 @@ export interface SendNewsletterResponseNewsletter {
   /** The date time when the referenced ID was last updated. */
   updated?: number;
 }
-const SendNewsletterResponseNewsletter = /*@__PURE__*/ __L.at(
-  __c66,
-  2,
-) as any as S.Schema<SendNewsletterResponseNewsletter>;
-
 export interface SendNewsletterResponse {
   newsletter?: SendNewsletterResponseNewsletter;
 }
-const SendNewsletterResponse = /*@__PURE__*/ __L.at(
-  __c66,
-  3,
-) as any as S.Schema<SendNewsletterResponse>;
-
 export type SendPushRequestIdentifiersCase0 = SendEmailRequestIdentifiersCase0;
 export type SendPushRequestIdentifiersCase1 = SendEmailRequestIdentifiersCase1;
 export type SendPushRequestIdentifiersCase2 = SendEmailRequestIdentifiersCase2;
@@ -16804,17 +13004,10 @@ export type SendPushRequestIdentifiers =
   | SendEmailRequestIdentifiersCase0
   | SendEmailRequestIdentifiersCase1
   | SendEmailRequestIdentifiersCase2;
-const SendPushRequestIdentifiers = S.Unknown as any as S.Schema<SendPushRequestIdentifiers>;
-
 /** The transactional message template that you want to use for your message. You can call the template by its numerical ID or by the *Trigger Name* that you assigned to the template in the UI (case insensitive). */
 export type SendPushRequestTransactionalMessageId = number | string;
-const SendPushRequestTransactionalMessageId =
-  S.Unknown as any as S.Schema<SendPushRequestTransactionalMessageId>;
-
 /** The device/messaging platform. */
 export type SendPushRequestCustomDevicePlatform = "ios" | "android";
-const SendPushRequestCustomDevicePlatform = S.String;
-
 /** Attributes that you can reference to segment your audience--like a person's attributes, but specific to a device. These can be either the attributes defined below or custom key-value attributes. */
 export interface SendPushRequestCustomDeviceAttributes {
   /** The app that the device belongs to--the **Bundle ID / App identifier** you entered with that app's push credentials. If you have more than one app, we use this attribute to send push notifications to the right app. A device without an app identifier receives push notifications you send to your [default app](/messaging/channels/push/getting-started/#the-default-app). */
@@ -16832,11 +13025,6 @@ export interface SendPushRequestCustomDeviceAttributes {
   /** If `"true"`, the device is opted-in and can receive push notifications. */
   push_enabled?: boolean;
 }
-const SendPushRequestCustomDeviceAttributes = /*@__PURE__*/ __L.at(
-  __c66,
-  4,
-) as any as S.Schema<SendPushRequestCustomDeviceAttributes>;
-
 /** A device to perform an upsert operation at the time of send. The device will be added/updated on the profile from the Identifiers block. */
 export interface SendPushRequestCustomDevice {
   /** The device/messaging platform. */
@@ -16848,11 +13036,6 @@ export interface SendPushRequestCustomDevice {
   /** The `timestamp` when you last identified this device. If you don't pass a timestamp when you add or update a device, we use the time of the request itself. Our SDKs identify a device when a person launches their app. */
   last_used?: number;
 }
-const SendPushRequestCustomDevice = /*@__PURE__*/ __L.at(
-  __c66,
-  5,
-) as any as S.Schema<SendPushRequestCustomDevice>;
-
 /** Properties supported specifically by Android on FCM. */
 export interface SendPushRequestCustomPayloadAndroidMessageAndroidNotification {
   /** Variable string values used in place of the format specifiers in `body_loc_key` to localize the body text to the user's current localization. See Formatting and Styling for more information. */
@@ -16874,28 +13057,15 @@ export interface SendPushRequestCustomPayloadAndroidMessageAndroidNotification {
   /** String resource key used to localize the title text. See Android [String resources](https://developer.android.com/guide/topics/resources/string-resource/). */
   title_loc_key?: string;
 }
-const SendPushRequestCustomPayloadAndroidMessageAndroidNotification = /*@__PURE__*/ __L.at(
-  __c66,
-  6,
-) as any as S.Schema<SendPushRequestCustomPayloadAndroidMessageAndroidNotification>;
-
 /** Contains custom push options for your notification. */
 export interface SendPushRequestCustomPayloadAndroidMessageAndroid {
   /** Properties supported specifically by Android on FCM. */
   notification?: SendPushRequestCustomPayloadAndroidMessageAndroidNotification;
 }
-const SendPushRequestCustomPayloadAndroidMessageAndroid = /*@__PURE__*/ __L.at(
-  __c66,
-  7,
-) as any as S.Schema<SendPushRequestCustomPayloadAndroidMessageAndroid>;
-
 /** Contains key-value pairs that your app interprets. */
 export type SendPushRequestCustomPayloadAndroidMessageDataMap = {
   [key: string]: string | undefined;
 };
-const SendPushRequestCustomPayloadAndroidMessageDataMap =
-  GetInboxPreviewJobResponsePreviewsItemScreenshotsMap as any as S.Schema<SendPushRequestCustomPayloadAndroidMessageDataMap>;
-
 /** Contains the push body and title. */
 export interface SendPushRequestCustomPayloadAndroidMessageNotification {
   /** The body of your push notification. */
@@ -16903,11 +13073,6 @@ export interface SendPushRequestCustomPayloadAndroidMessageNotification {
   /** The title of your push notification. */
   title?: string;
 }
-const SendPushRequestCustomPayloadAndroidMessageNotification = /*@__PURE__*/ __L.at(
-  __c67,
-  0,
-) as any as S.Schema<SendPushRequestCustomPayloadAndroidMessageNotification>;
-
 /** The parent object for Android custom push payloads. */
 export interface SendPushRequestCustomPayloadAndroidMessage {
   /** Contains custom push options for your notification. */
@@ -16917,21 +13082,11 @@ export interface SendPushRequestCustomPayloadAndroidMessage {
   /** Contains the push body and title. */
   notification?: SendPushRequestCustomPayloadAndroidMessageNotification;
 }
-const SendPushRequestCustomPayloadAndroidMessage = /*@__PURE__*/ __L.at(
-  __c67,
-  1,
-) as any as S.Schema<SendPushRequestCustomPayloadAndroidMessage>;
-
 /** A custom push payload for Android devices. */
 export interface SendPushRequestCustomPayloadAndroid {
   /** The parent object for Android custom push payloads. */
   message: SendPushRequestCustomPayloadAndroidMessage;
 }
-const SendPushRequestCustomPayloadAndroid = /*@__PURE__*/ __L.at(
-  __c67,
-  2,
-) as any as S.Schema<SendPushRequestCustomPayloadAndroid>;
-
 /** An array of replacement value strings for variables in your message text. Each %@ character in the loc-key is replaced by a value from this array, in the order they appear in the message body. */
 export type SendPushRequestCustomPayloadIosCase0MessageApnsPayloadApsAlertCase1LocArgsList =
   Array<string>;
@@ -17130,9 +13285,6 @@ export interface SendPushRequestCustomPayloadIosCase1 {
 export type SendPushRequestCustomPayloadIos =
   | SendPushRequestCustomPayloadIosCase0
   | SendPushRequestCustomPayloadIosCase1;
-const SendPushRequestCustomPayloadIos =
-  S.Unknown as any as S.Schema<SendPushRequestCustomPayloadIos>;
-
 /** Optional key/value pairs you want to attach to the push payload. Firebase only supports string values. This overrides all other payload values, including the Custom Payload from your transactional template. */
 export interface SendPushRequestCustomPayload {
   /** A custom push payload for Android devices. */
@@ -17140,24 +13292,12 @@ export interface SendPushRequestCustomPayload {
   /** Your payload changes depending on whether you send to iOS devices through Google's Firebase Cloud Messaging (FCM) or Apple's Push Notification service (APNs). */
   ios?: SendPushRequestCustomPayloadIos;
 }
-const SendPushRequestCustomPayload = /*@__PURE__*/ __L.at(
-  __c67,
-  3,
-) as any as S.Schema<SendPushRequestCustomPayload>;
-
 /** An object containing the key-value pairs referenced using liquid in your message. */
 export type SendPushRequestMessageDataMap = { [key: string]: unknown | undefined };
-const SendPushRequestMessageDataMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<SendPushRequestMessageDataMap>;
-
 /** **For iOS Only**: your notification can alert users with the device's default notification sound or play no sound at all. */
 export type SendPushRequestSound = "default" | "none";
-const SendPushRequestSound = S.String;
-
 /** The devices you want to send this push to--`all`, `last_used`, or a custom device token from the identified profile. Defaults to `all` and overrides the `To` value from your transactional template. */
 export type SendPushRequestTo = "all" | "last_used" | "$device_token";
-const SendPushRequestTo = S.String;
-
 export interface SendPushRequest {
   /** Identifies the person represented by your transactional message by one of, and only one of, `id`, `email`, or `cio_id`. */
   identifiers: SendPushRequestIdentifiers;
@@ -17196,8 +13336,6 @@ export interface SendPushRequest {
   /** The devices you want to send this push to--`all`, `last_used`, or a custom device token from the identified profile. Defaults to `all` and overrides the `To` value from your transactional template. */
   to?: SendPushRequestTo | (string & {});
 }
-const SendPushRequest = /*@__PURE__*/ __L.at(__c67, 4) as any as S.Schema<SendPushRequest>;
-
 export interface SendPushResponse {
   /** A unique identifier for the message. */
   delivery_id?: string;
@@ -17206,8 +13344,6 @@ export interface SendPushResponse {
   /** For a scheduled message, the Unix timestamp when the message is set to send. Returned only when you provide a future `send_at`. */
   send_at?: number;
 }
-const SendPushResponse = SendEmailResponse as any as S.Schema<SendPushResponse>;
-
 export type SendSMSRequestIdentifiersCase0 = SendEmailRequestIdentifiersCase0;
 export type SendSMSRequestIdentifiersCase1 = SendEmailRequestIdentifiersCase1;
 export type SendSMSRequestIdentifiersCase2 = SendEmailRequestIdentifiersCase2;
@@ -17216,18 +13352,10 @@ export type SendSMSRequestIdentifiers =
   | SendEmailRequestIdentifiersCase0
   | SendEmailRequestIdentifiersCase1
   | SendEmailRequestIdentifiersCase2;
-const SendSMSRequestIdentifiers = S.Unknown as any as S.Schema<SendSMSRequestIdentifiers>;
-
 /** The transactional message template that you want to use for your message. You can call the template by its numerical ID or by the *Trigger Name* that you assigned to the template in the UI (case insensitive). */
 export type SendSMSRequestTransactionalMessageId = number | string;
-const SendSMSRequestTransactionalMessageId =
-  S.Unknown as any as S.Schema<SendSMSRequestTransactionalMessageId>;
-
 /** An object containing the key-value pairs referenced using liquid in your message. */
 export type SendSMSRequestMessageDataMap = { [key: string]: unknown | undefined };
-const SendSMSRequestMessageDataMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<SendSMSRequestMessageDataMap>;
-
 export interface SendSMSRequest {
   /** Identifies the person represented by your transactional message by one of, and only one of, `id`, `email`, or `cio_id`. */
   identifiers: SendSMSRequestIdentifiers;
@@ -17254,8 +13382,6 @@ export interface SendSMSRequest {
   /** Whether to track link clicks for this SMS. Defaults to the transactional message's own tracking setting. */
   tracked?: boolean;
 }
-const SendSMSRequest = /*@__PURE__*/ __L.at(__c67, 5) as any as S.Schema<SendSMSRequest>;
-
 export interface SendSMSResponse {
   /** A unique identifier for the message. */
   delivery_id?: string;
@@ -17264,8 +13390,6 @@ export interface SendSMSResponse {
   /** For a scheduled message, the Unix timestamp when the message is set to send. Returned only when you provide a future `send_at`. */
   send_at?: number;
 }
-const SendSMSResponse = SendEmailResponse as any as S.Schema<SendSMSResponse>;
-
 export type SendWhatsAppRequestIdentifiersCase0 = SendEmailRequestIdentifiersCase0;
 export type SendWhatsAppRequestIdentifiersCase1 = SendEmailRequestIdentifiersCase1;
 export type SendWhatsAppRequestIdentifiersCase2 = SendEmailRequestIdentifiersCase2;
@@ -17274,18 +13398,10 @@ export type SendWhatsAppRequestIdentifiers =
   | SendEmailRequestIdentifiersCase0
   | SendEmailRequestIdentifiersCase1
   | SendEmailRequestIdentifiersCase2;
-const SendWhatsAppRequestIdentifiers = S.Unknown as any as S.Schema<SendWhatsAppRequestIdentifiers>;
-
 /** The transactional message template that you want to use for your message. You can call the template by its numerical ID or by the *Trigger Name* that you assigned to the template in the UI (case insensitive). */
 export type SendWhatsAppRequestTransactionalMessageId = number | string;
-const SendWhatsAppRequestTransactionalMessageId =
-  S.Unknown as any as S.Schema<SendWhatsAppRequestTransactionalMessageId>;
-
 /** An object containing the key-value pairs referenced using liquid in your message. */
 export type SendWhatsAppRequestMessageDataMap = { [key: string]: unknown | undefined };
-const SendWhatsAppRequestMessageDataMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<SendWhatsAppRequestMessageDataMap>;
-
 export interface SendWhatsAppRequest {
   /** Identifies the person represented by your transactional message by one of, and only one of, `id`, `email`, or `cio_id`. */
   identifiers: SendWhatsAppRequestIdentifiers;
@@ -17310,8 +13426,6 @@ export interface SendWhatsAppRequest {
   /** Whether to track link clicks for this WhatsApp message. Defaults to the transactional message's own tracking setting. */
   tracked?: boolean;
 }
-const SendWhatsAppRequest = /*@__PURE__*/ __L.at(__c67, 6) as any as S.Schema<SendWhatsAppRequest>;
-
 export interface SendWhatsAppResponse {
   /** A unique identifier for the message. */
   delivery_id?: string;
@@ -17320,8 +13434,6 @@ export interface SendWhatsAppResponse {
   /** For a scheduled message, the Unix timestamp when the message is set to send. Returned only when you provide a future `send_at`. */
   send_at?: number;
 }
-const SendWhatsAppResponse = SendEmailResponse as any as S.Schema<SendWhatsAppResponse>;
-
 /** Your own static fields. On iOS, field names must match the `ActivityAttributes` type in your app. For Android custom types, fields pass through to your app's renderer as-is. */
 export type StartLiveNotificationRequestAttributesCase0Map = { [key: string]: unknown | undefined };
 /** Static fields for a multi-step tracker template. `notification_type`: `io.customer.livenotifications.segments`. */
@@ -17339,9 +13451,6 @@ export type StartLiveNotificationRequestAttributes =
   | StartLiveNotificationRequestAttributesCase0Map
   | StartLiveNotificationRequestAttributesCase1
   | StartLiveNotificationRequestAttributesCase2;
-const StartLiveNotificationRequestAttributes =
-  S.Unknown as any as S.Schema<StartLiveNotificationRequestAttributes>;
-
 /** Your own dynamic fields. On iOS, field names must match your `ContentState` type. For Android custom types, fields pass through to your app's renderer as-is. Date fields are epoch seconds. */
 export type StartLiveNotificationRequestContentStateCase0Map = {
   [key: string]: unknown | undefined;
@@ -17357,9 +13466,6 @@ export type StartLiveNotificationRequestContentState =
   | StartLiveNotificationRequestContentStateCase0Map
   | EndLiveNotificationRequestContentStateCase1
   | EndLiveNotificationRequestContentStateCase2;
-const StartLiveNotificationRequestContentState =
-  S.Unknown as any as S.Schema<StartLiveNotificationRequestContentState>;
-
 /** Identifies the profile you want to start the activity for. You must provide exactly one of `id`, `email`, `phone`, or `internal` (our internal identifier, `cio_` followed by an alphanumeric string). You cannot target anonymous profiles. */
 export interface StartLiveNotificationRequestIdentifiers {
   /** The profile's email address. */
@@ -17371,15 +13477,8 @@ export interface StartLiveNotificationRequestIdentifiers {
   /** The profile's phone number. */
   phone?: string;
 }
-const StartLiveNotificationRequestIdentifiers = /*@__PURE__*/ __L.at(
-  __c67,
-  7,
-) as any as S.Schema<StartLiveNotificationRequestIdentifiers>;
-
 /** The device platform. */
 export type StartLiveNotificationRequestPlatform = "ios" | "android";
-const StartLiveNotificationRequestPlatform = S.String;
-
 export interface StartLiveNotificationRequestPushPayloadAlert {
   /** The alert body. */
   body: string;
@@ -17392,9 +13491,6 @@ export interface StartLiveNotificationRequestPushPayloadAlert {
 export interface StartLiveNotificationRequestPushPayload {
   alert?: StartLiveNotificationRequestPushPayloadAlert;
 }
-const StartLiveNotificationRequestPushPayload =
-  EndLiveNotificationRequestPushPayload as any as S.Schema<StartLiveNotificationRequestPushPayload>;
-
 export interface StartLiveNotificationRequest {
   /** Static fields used to create the activity--an order number, a flight's origin and destination, or the teams in a match. On iOS they can't change after start. On Android, include the static fields your renderer needs on update and end calls too, because the SDK renders from a merged payload. The shape depends on your `notification_type`: pick the free form variant for iOS or a free form Android activity, or the matching bundled-template variant below. Template fields are documented for [iOS](/integrations/sdk/ios/live-activities/reference/#built-in-templates) and [Android](/integrations/sdk/android/live-notifications/reference/#built-in-templates). */
   attributes: StartLiveNotificationRequestAttributes;
@@ -17417,28 +13513,14 @@ export interface StartLiveNotificationRequest {
   /** The alert shown when the activity starts. Required for iOS. */
   push_payload?: StartLiveNotificationRequestPushPayload;
 }
-const StartLiveNotificationRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  0,
-) as any as S.Schema<StartLiveNotificationRequest>;
-
 export interface StartLiveNotificationResponse {
   /** The unique identifier (ULID) for the new activity instance. Use it to update, end, or check the status of the activity. */
   instance_id?: string;
 }
-const StartLiveNotificationResponse =
-  EndLiveNotificationResponse as any as S.Schema<StartLiveNotificationResponse>;
-
 /** The identifiers of the preview options you want. You can retrieve client IDs from [List inbox preview options](/integrations/api/app/tag/design-studio-emails/listInboxPreviewClients/). */
 export type SubmitInboxPreviewRequestClientIdsList = Array<string>;
-const SubmitInboxPreviewRequestClientIdsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<SubmitInboxPreviewRequestClientIdsList>;
-
 /** Liquid variables to render with, as a JSON object--any shape is accepted, from flat variables like `{"first_name": "Janine"}` to nested ones like `{"customer": {"first_name": "Janine"}}`. Defaults to none, which fails the render on any variable the content needs beyond the ones a preview already sets for you. Set `lax_mode` to render missing variables as blank instead. Limited to 128 KB. */
 export type SubmitInboxPreviewRequestSampleDataMap = { [key: string]: unknown | undefined };
-const SubmitInboxPreviewRequestSampleDataMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<SubmitInboxPreviewRequestSampleDataMap>;
-
 export interface SubmitInboxPreviewRequest {
   /** The UUID of the email. If your email has translations, this is the ID of a specific language variant. */
   id: string;
@@ -17451,42 +13533,20 @@ export interface SubmitInboxPreviewRequest {
   /** Liquid variables to render with, as a JSON object--any shape is accepted, from flat variables like `{"first_name": "Janine"}` to nested ones like `{"customer": {"first_name": "Janine"}}`. Defaults to none, which fails the render on any variable the content needs beyond the ones a preview already sets for you. Set `lax_mode` to render missing variables as blank instead. Limited to 128 KB. */
   sample_data?: SubmitInboxPreviewRequestSampleDataMap;
 }
-const SubmitInboxPreviewRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  1,
-) as any as S.Schema<SubmitInboxPreviewRequest>;
-
 export interface SubmitInboxPreviewResponse {
   /** `true` when this call returned an existing run instead of starting a new one, and you weren't charged a second time for it. This happens for an identical request (same email, content, and devices) submitted again on the same UTC day, an identical request from the day before that's still processing, or a concurrent identical request that got there first. The run may belong to another client in your workspace, including the Journeys UI--`created_at` is that run's, and a `name` you send is applied to it. */
   replayed?: boolean;
   /** ID of the preview job. Check when it's complete with [Get an inbox preview job](/integrations/api/app/tag/design-studio-emails/getInboxPreviewJob/). */
   run_id?: number;
 }
-const SubmitInboxPreviewResponse = /*@__PURE__*/ __L.at(
-  __c68,
-  2,
-) as any as S.Schema<SubmitInboxPreviewResponse>;
-
 /** The email addresses you want to send the test to. You can send to up to 25 addresses per request; up to three addresses on a trial account; or a single address (the account owner's address or your workspace's delivery address) if your account isn't verified yet. */
 export type TestSendEmailRequestToList = Array<string>;
-const TestSendEmailRequestToList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<TestSendEmailRequestToList>;
-
 /** Sample profile attributes for `customer.*` liquid variables, as a flat object of values. Encode a nested value as a JSON string. You can pass this alongside `customer_id`: Customer.io uses the profile's attributes, and a value here overrides the profile's value for the same key. */
 export type TestSendEmailRequestCustomerMap = { [key: string]: unknown | undefined };
-const TestSendEmailRequestCustomerMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<TestSendEmailRequestCustomerMap>;
-
 /** Sample event data for `event.*` liquid variables. The `event` key references trigger data for event-triggered automations. */
 export type TestSendEmailRequestEventMap = { [key: string]: unknown | undefined };
-const TestSendEmailRequestEventMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<TestSendEmailRequestEventMap>;
-
 /** Sample trigger data for `trigger.*` liquid variables. The `trigger` key references trigger data for these specific workflows: API-triggered broadcasts or transactional messages. */
 export type TestSendEmailRequestTriggerMap = { [key: string]: unknown | undefined };
-const TestSendEmailRequestTriggerMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<TestSendEmailRequestTriggerMap>;
-
 export interface TestSendEmailRequest {
   /** The UUID of the email. If your email has translations, this is the ID of a specific language variant. */
   id: string;
@@ -17507,25 +13567,12 @@ export interface TestSendEmailRequest {
   /** Sample trigger data for `trigger.*` liquid variables. The `trigger` key references trigger data for these specific workflows: API-triggered broadcasts or transactional messages. */
   trigger?: TestSendEmailRequestTriggerMap | null;
 }
-const TestSendEmailRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  3,
-) as any as S.Schema<TestSendEmailRequest>;
-
 /** The response represents an email. */
 export type TestSendEmailResponseNodeType = "EMAIL";
-const TestSendEmailResponseNodeType = S.String;
-
 /** The recipients the test was sent to. */
 export type TestSendEmailResponseToList = Array<string>;
-const TestSendEmailResponseToList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<TestSendEmailResponseToList>;
-
 /** The ways this test differs from a real send. Customer.io delivered the email anyway, so read these before you trust what landed in the inbox. You might see that no profile data was available, that context a test send can't supply rendered as empty strings (like `campaign.*` or `message.*` on an email that isn't linked to a workflow), that Customer.io ignored a routing key like `recipient` or `from_address` in your `event` or `trigger` data, or that a recipient field in the template failed to render. That last one doesn't change who got the test: it goes only to the addresses in `to`. Omitted when there's nothing to report. */
 export type TestSendEmailResponseWarningsList = Array<string>;
-const TestSendEmailResponseWarningsList =
-  AddCollectionResponseCollectionSchemaList as any as S.Schema<TestSendEmailResponseWarningsList>;
-
 export interface TestSendEmailResponse {
   /** Always `true` in a 200 response. Anything that stops the send returns a 4xx instead. Acceptance isn't proof of delivery. */
   accepted?: boolean;
@@ -17544,14 +13591,7 @@ export interface TestSendEmailResponse {
   /** The ways this test differs from a real send. Customer.io delivered the email anyway, so read these before you trust what landed in the inbox. You might see that no profile data was available, that context a test send can't supply rendered as empty strings (like `campaign.*` or `message.*` on an email that isn't linked to a workflow), that Customer.io ignored a routing key like `recipient` or `from_address` in your `event` or `trigger` data, or that a recipient field in the template failed to render. That last one doesn't change who got the test: it goes only to the addresses in `to`. Omitted when there's nothing to report. */
   warnings?: TestSendEmailResponseWarningsList;
 }
-const TestSendEmailResponse = /*@__PURE__*/ __L.at(
-  __c68,
-  4,
-) as any as S.Schema<TestSendEmailResponse>;
-
 export type TransactionalLinksRequestPeriod = "hours" | "days" | "weeks" | "months";
-const TransactionalLinksRequestPeriod = S.String;
-
 export interface TransactionalLinksRequest {
   /** The identifier of your transactional message. You'll find this in the UI or URL of your transactional message. For example, if this is the path of a transactional message URL - `/transactional/3/templates/139` - the `transactional_id` is 3. */
   transactional_id: number;
@@ -17562,11 +13602,6 @@ export interface TransactionalLinksRequest {
   /** If true, the response contains only unique customer results, i.e. a customer who clicks a link twice is only counted once. If false, the response contains the total number of results without regard to uniqueness. */
   unique?: boolean;
 }
-const TransactionalLinksRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  5,
-) as any as S.Schema<TransactionalLinksRequest>;
-
 export type TransactionalLinksResponseLinksItemLink = BroadcastActionLinksResponseLinksItemLink;
 /** An array of results from oldest to newest, where each result indicates a period. */
 export type TransactionalLinksResponseLinksItemMetricSeriesClickedList = Array<number>;
@@ -17595,9 +13630,6 @@ export type TransactionalLinksResponseLinksList = Array<TransactionalLinksRespon
 export interface TransactionalLinksResponse {
   links?: TransactionalLinksResponseLinksList;
 }
-const TransactionalLinksResponse =
-  CampaignActionLinksResponse as any as S.Schema<TransactionalLinksResponse>;
-
 export type TransactionalMessagesRequestMetric =
   | "attempted"
   | "sent"
@@ -17611,11 +13643,7 @@ export type TransactionalMessagesRequestMetric =
   | "dropped"
   | "failed"
   | "undeliverable";
-const TransactionalMessagesRequestMetric = S.String;
-
 export type TransactionalMessagesRequestState = "failed" | "sent" | "drafted" | "attempted";
-const TransactionalMessagesRequestState = S.String;
-
 export interface TransactionalMessagesRequest {
   /** The identifier of your transactional message. You'll find this in the UI or URL of your transactional message. For example, if this is the path of a transactional message URL - `/transactional/3/templates/139` - the `transactional_id` is 3. */
   transactional_id: number;
@@ -17634,11 +13662,6 @@ export interface TransactionalMessagesRequest {
   /** If true, the response includes `tracked_responses` for each message--an object containing tracked response option names for in-app survey responses. */
   get_tracked_responses?: boolean;
 }
-const TransactionalMessagesRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  6,
-) as any as S.Schema<TransactionalMessagesRequest>;
-
 /** Identifiers for the person in a response--`id`, `cio_id`, and `email`. Unset `id` or `email` values are `null`. We recommend this object over the less descriptive `customer_id`. This object doesn't include `phone`, even if your workspace uses phone numbers as an identifier; look for the person's `phone` attribute instead. */
 export type TransactionalMessagesResponseMessagesItemCustomerIdentifiers =
   BroadcastMessagesResponseMessagesItemCustomerIdentifiers;
@@ -17651,9 +13674,6 @@ export type TransactionalMessagesResponseMessagesItemTrackedResponsesValue =
 export type TransactionalMessagesResponseMessagesItemTrackedResponsesMap = {
   [key: string]: BroadcastMessagesResponseMessagesItemTrackedResponsesValue | undefined;
 };
-const TransactionalMessagesResponseMessagesItemTrackedResponsesMap =
-  BroadcastMessagesResponseMessagesItemTrackedResponsesMap as any as S.Schema<TransactionalMessagesResponseMessagesItemTrackedResponsesMap>;
-
 /** The type of message or action for a delivery, automation action, or related object. Includes channels that one-time sends do not support (for example, `slack` and `whatsapp`). */
 export type TransactionalMessagesResponseMessagesItemType =
   | "email"
@@ -17664,8 +13684,6 @@ export type TransactionalMessagesResponseMessagesItemType =
   | "slack"
   | "whatsapp"
   | "live_notification";
-const TransactionalMessagesResponseMessagesItemType = S.String;
-
 /** Describes an individual message delivery. The object contains keys for all possible parents of the message (`newsletter_id`, `broadcast_id`, etc) but only the parents of the delivery are populated. Other parent IDs are null. */
 export interface TransactionalMessagesResponseMessagesItem {
   /** The identifier for an action. */
@@ -17706,29 +13724,12 @@ export interface TransactionalMessagesResponseMessagesItem {
   /** The type of message or action for a delivery, automation action, or related object. Includes channels that one-time sends do not support (for example, `slack` and `whatsapp`). */
   type?: TransactionalMessagesResponseMessagesItemType;
 }
-const TransactionalMessagesResponseMessagesItem = /*@__PURE__*/ __L.at(
-  __c68,
-  7,
-) as any as S.Schema<TransactionalMessagesResponseMessagesItem>;
-
 export type TransactionalMessagesResponseMessagesList =
   Array<TransactionalMessagesResponseMessagesItem>;
-const TransactionalMessagesResponseMessagesList = /*@__PURE__*/ __L.at(
-  __c69,
-  0,
-) as any as S.Schema<TransactionalMessagesResponseMessagesList>;
-
 export interface TransactionalMessagesResponse {
   messages?: TransactionalMessagesResponseMessagesList;
 }
-const TransactionalMessagesResponse = /*@__PURE__*/ __L.at(
-  __c69,
-  1,
-) as any as S.Schema<TransactionalMessagesResponse>;
-
 export type TransactionalMetricsRequestPeriod = "hours" | "days" | "weeks" | "months";
-const TransactionalMetricsRequestPeriod = S.String;
-
 export interface TransactionalMetricsRequest {
   /** The identifier of your transactional message. You'll find this in the UI or URL of your transactional message. For example, if this is the path of a transactional message URL - `/transactional/3/templates/139` - the `transactional_id` is 3. */
   transactional_id: number;
@@ -17737,11 +13738,6 @@ export interface TransactionalMetricsRequest {
   /** The number of periods you want to return. Defaults to the maximum available, or `12` if the period is in `months`. Maximums are 24 hours, 45 days, 12 weeks, or 121 months. Days start at 00:00 EST. Weeks start at 00:00 EST on Sunday. Months start at 00:00 EST on the 1st of the month. */
   steps?: number;
 }
-const TransactionalMetricsRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  2,
-) as any as S.Schema<TransactionalMetricsRequest>;
-
 /** The number of `attempted` messages. */
 export type TransactionalMetricsResponseMetricSeriesAttemptedList = Array<number>;
 /** The number of `bounced` messages. */
@@ -17853,17 +13849,9 @@ export interface TransactionalMetricsResponseMetric {
   /** Metrics grouped by the requested resolution. Each property is an array where each entry represents one period, such as one day. */
   series?: TransactionalMetricsResponseMetricSeries;
 }
-const TransactionalMetricsResponseMetric =
-  CampaignActionMetricsResponseMetric as any as S.Schema<TransactionalMetricsResponseMetric>;
-
 export interface TransactionalMetricsResponse {
   metric?: TransactionalMetricsResponseMetric;
 }
-const TransactionalMetricsResponse = /*@__PURE__*/ __L.at(
-  __c69,
-  3,
-) as any as S.Schema<TransactionalMetricsResponse>;
-
 /** Contains information you want to use to populate your broadcast. */
 export type TriggerBroadcastRequestBodyCase0DataMap = { [key: string]: unknown | undefined };
 /** Send your broadcast to the default set of recipients defined in the UI. */
@@ -18810,27 +14798,15 @@ export type TriggerBroadcastRequestBody =
   | TriggerBroadcastRequestBodyCase3
   | TriggerBroadcastRequestBodyCase4
   | TriggerBroadcastRequestBodyCase5;
-const TriggerBroadcastRequestBody = S.Unknown as any as S.Schema<TriggerBroadcastRequestBody>;
-
 export interface TriggerBroadcastRequest {
   /** The ID of the broadcast that you want to trigger. */
   broadcast_id: number;
   body?: TriggerBroadcastRequestBody;
 }
-const TriggerBroadcastRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  4,
-) as any as S.Schema<TriggerBroadcastRequest>;
-
 export interface TriggerBroadcastResponse {
   /** The `trigger_id` for this operation. You can use this ID to get the status of your broadcast or [check for errors](/integrations/api/app/tag/broadcasts/broadcastErrors/). */
   id?: number;
 }
-const TriggerBroadcastResponse = /*@__PURE__*/ __L.at(
-  __c69,
-  5,
-) as any as S.Schema<TriggerBroadcastResponse>;
-
 export interface UpdateAssetRequest {
   /** The unique identifier of the resource. */
   id: number;
@@ -18839,11 +14815,7 @@ export interface UpdateAssetRequest {
   /** The ID of the new parent folder. Set to `null` to move the asset to the root level. */
   parent_folder_id?: number | null;
 }
-const UpdateAssetRequest = /*@__PURE__*/ __L.at(__c69, 6) as any as S.Schema<UpdateAssetRequest>;
-
 export interface UpdateAssetResponse {}
-const UpdateAssetResponse = DeleteAssetResponse as any as S.Schema<UpdateAssetResponse>;
-
 export interface UpdateAssetFolderRequest {
   /** The unique identifier of the resource. */
   id: number;
@@ -18852,18 +14824,9 @@ export interface UpdateAssetFolderRequest {
   /** The ID of the new parent folder. Set to `null` to move the folder to the root level. Cannot be the folder itself or one of its descendants. */
   parent_folder_id?: number | null;
 }
-const UpdateAssetFolderRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  7,
-) as any as S.Schema<UpdateAssetFolderRequest>;
-
 export interface UpdateAssetFolderResponse {}
-const UpdateAssetFolderResponse = DeleteAssetResponse as any as S.Schema<UpdateAssetFolderResponse>;
-
 /** Available on Premium plans. This indicates whether an attribute is sensitive or not. 0 means NOT sensitive. 1 means sensitive. */
 export type UpdateAttributeMetadataRequestAttributesItemPrivacyLevel = 0 | 1;
-const UpdateAttributeMetadataRequestAttributesItemPrivacyLevel = S.Number;
-
 export interface UpdateAttributeMetadataRequestAttributesItem {
   /** The name of the attribute to update */
   name: string;
@@ -18872,34 +14835,14 @@ export interface UpdateAttributeMetadataRequestAttributesItem {
   /** Available on Premium plans. This indicates whether an attribute is sensitive or not. 0 means NOT sensitive. 1 means sensitive. */
   privacy_level?: UpdateAttributeMetadataRequestAttributesItemPrivacyLevel | (number & {});
 }
-const UpdateAttributeMetadataRequestAttributesItem = /*@__PURE__*/ __L.at(
-  __c70,
-  0,
-) as any as S.Schema<UpdateAttributeMetadataRequestAttributesItem>;
-
 /** Array of attribute updates */
 export type UpdateAttributeMetadataRequestAttributesList =
   Array<UpdateAttributeMetadataRequestAttributesItem>;
-const UpdateAttributeMetadataRequestAttributesList = /*@__PURE__*/ __L.at(
-  __c70,
-  1,
-) as any as S.Schema<UpdateAttributeMetadataRequestAttributesList>;
-
 export interface UpdateAttributeMetadataRequest {
   /** Array of attribute updates */
   attributes: UpdateAttributeMetadataRequestAttributesList;
 }
-const UpdateAttributeMetadataRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  2,
-) as any as S.Schema<UpdateAttributeMetadataRequest>;
-
 export interface UpdateAttributeMetadataResponse {}
-const UpdateAttributeMetadataResponse = /*@__PURE__*/ __L.at(
-  __c70,
-  3,
-) as any as S.Schema<UpdateAttributeMetadataResponse>;
-
 export interface UpdateBroadcastActionRequestBodyCase0HeadersItem {
   /** The name of the header. */
   name?: string;
@@ -18996,9 +14939,6 @@ export type UpdateBroadcastActionRequestBody =
   | UpdateBroadcastActionRequestBodyCase1
   | UpdateBroadcastActionRequestBodyCase2
   | UpdateBroadcastActionRequestBodyCase3;
-const UpdateBroadcastActionRequestBody =
-  S.Unknown as any as S.Schema<UpdateBroadcastActionRequestBody>;
-
 export interface UpdateBroadcastActionRequest {
   /** The identifier of a broadcast. */
   broadcast_id: number;
@@ -19006,11 +14946,6 @@ export interface UpdateBroadcastActionRequest {
   action_id: number;
   body?: UpdateBroadcastActionRequestBody;
 }
-const UpdateBroadcastActionRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  4,
-) as any as S.Schema<UpdateBroadcastActionRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type UpdateBroadcastActionResponseActionCase0Preprocessor = "premailer";
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
@@ -19194,17 +15129,9 @@ export type UpdateBroadcastActionResponseAction =
   | UpdateBroadcastActionResponseActionCase1
   | UpdateBroadcastActionResponseActionCase2
   | UpdateBroadcastActionResponseActionCase3;
-const UpdateBroadcastActionResponseAction =
-  S.Unknown as any as S.Schema<UpdateBroadcastActionResponseAction>;
-
 export interface UpdateBroadcastActionResponse {
   action?: UpdateBroadcastActionResponseAction;
 }
-const UpdateBroadcastActionResponse = /*@__PURE__*/ __L.at(
-  __c70,
-  5,
-) as any as S.Schema<UpdateBroadcastActionResponse>;
-
 export type UpdateBroadcastActionLanguageRequestBodyCase0HeadersItem =
   UpdateBroadcastActionRequestBodyCase0HeadersItem;
 /** Headers you want to add or update. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
@@ -19309,9 +15236,6 @@ export type UpdateBroadcastActionLanguageRequestBody =
   | UpdateBroadcastActionLanguageRequestBodyCase1
   | UpdateBroadcastActionLanguageRequestBodyCase2
   | UpdateBroadcastActionLanguageRequestBodyCase3;
-const UpdateBroadcastActionLanguageRequestBody =
-  S.Unknown as any as S.Schema<UpdateBroadcastActionLanguageRequestBody>;
-
 export interface UpdateBroadcastActionLanguageRequest {
   /** The identifier of a broadcast. */
   broadcast_id: number;
@@ -19321,11 +15245,6 @@ export interface UpdateBroadcastActionLanguageRequest {
   language: string;
   body?: UpdateBroadcastActionLanguageRequestBody;
 }
-const UpdateBroadcastActionLanguageRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  6,
-) as any as S.Schema<UpdateBroadcastActionLanguageRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type UpdateBroadcastActionLanguageResponseActionCase0Preprocessor = "premailer";
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
@@ -19521,17 +15440,9 @@ export type UpdateBroadcastActionLanguageResponseAction =
   | UpdateBroadcastActionLanguageResponseActionCase1
   | UpdateBroadcastActionLanguageResponseActionCase2
   | UpdateBroadcastActionLanguageResponseActionCase3;
-const UpdateBroadcastActionLanguageResponseAction =
-  S.Unknown as any as S.Schema<UpdateBroadcastActionLanguageResponseAction>;
-
 export interface UpdateBroadcastActionLanguageResponse {
   action?: UpdateBroadcastActionLanguageResponseAction;
 }
-const UpdateBroadcastActionLanguageResponse = /*@__PURE__*/ __L.at(
-  __c70,
-  7,
-) as any as S.Schema<UpdateBroadcastActionLanguageResponse>;
-
 export type UpdateCampaignActionRequestBodyCase0HeadersItem =
   UpdateBroadcastActionRequestBodyCase0HeadersItem;
 /** Headers you want to add or update. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
@@ -19626,9 +15537,6 @@ export type UpdateCampaignActionRequestBody =
   | UpdateCampaignActionRequestBodyCase1
   | UpdateCampaignActionRequestBodyCase2
   | UpdateCampaignActionRequestBodyCase3;
-const UpdateCampaignActionRequestBody =
-  S.Unknown as any as S.Schema<UpdateCampaignActionRequestBody>;
-
 export interface UpdateCampaignActionRequest {
   /** The ID of the automation that you want to trigger or return information about. */
   campaign_id: number;
@@ -19636,11 +15544,6 @@ export interface UpdateCampaignActionRequest {
   action_id: number;
   body?: UpdateCampaignActionRequestBody;
 }
-const UpdateCampaignActionRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  0,
-) as any as S.Schema<UpdateCampaignActionRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type UpdateCampaignActionResponseActionCase0Preprocessor = "premailer";
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
@@ -19834,17 +15737,9 @@ export type UpdateCampaignActionResponseAction =
   | UpdateCampaignActionResponseActionCase1
   | UpdateCampaignActionResponseActionCase2
   | UpdateCampaignActionResponseActionCase3;
-const UpdateCampaignActionResponseAction =
-  S.Unknown as any as S.Schema<UpdateCampaignActionResponseAction>;
-
 export interface UpdateCampaignActionResponse {
   action?: UpdateCampaignActionResponseAction;
 }
-const UpdateCampaignActionResponse = /*@__PURE__*/ __L.at(
-  __c71,
-  1,
-) as any as S.Schema<UpdateCampaignActionResponse>;
-
 export type UpdateCampaignActionTranslationRequestBodyCase0HeadersItem =
   UpdateBroadcastActionRequestBodyCase0HeadersItem;
 /** Headers you want to add or update. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
@@ -19951,9 +15846,6 @@ export type UpdateCampaignActionTranslationRequestBody =
   | UpdateCampaignActionTranslationRequestBodyCase1
   | UpdateCampaignActionTranslationRequestBodyCase2
   | UpdateCampaignActionTranslationRequestBodyCase3;
-const UpdateCampaignActionTranslationRequestBody =
-  S.Unknown as any as S.Schema<UpdateCampaignActionTranslationRequestBody>;
-
 export interface UpdateCampaignActionTranslationRequest {
   /** The ID of the automation that you want to trigger or return information about. */
   campaign_id: number;
@@ -19963,11 +15855,6 @@ export interface UpdateCampaignActionTranslationRequest {
   language: string;
   body?: UpdateCampaignActionTranslationRequestBody;
 }
-const UpdateCampaignActionTranslationRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  2,
-) as any as S.Schema<UpdateCampaignActionTranslationRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type UpdateCampaignActionTranslationResponseActionCase0Preprocessor = "premailer";
 /** Determines the sending behavior for the action. `automatic` sends the action automatically when triggered; `draft` queues drafts when the action is triggered; or `off` to disable the action. */
@@ -20173,17 +16060,9 @@ export type UpdateCampaignActionTranslationResponseAction =
   | UpdateCampaignActionTranslationResponseActionCase1
   | UpdateCampaignActionTranslationResponseActionCase2
   | UpdateCampaignActionTranslationResponseActionCase3;
-const UpdateCampaignActionTranslationResponseAction =
-  S.Unknown as any as S.Schema<UpdateCampaignActionTranslationResponseAction>;
-
 export interface UpdateCampaignActionTranslationResponse {
   action?: UpdateCampaignActionTranslationResponseAction;
 }
-const UpdateCampaignActionTranslationResponse = /*@__PURE__*/ __L.at(
-  __c71,
-  3,
-) as any as S.Schema<UpdateCampaignActionTranslationResponse>;
-
 export type UpdateCollectionRequestBodyCase0DataItemMap = { [key: string]: unknown | undefined };
 /** An array of data objects that you want to reference in this collection. */
 export type UpdateCollectionRequestBodyCase0DataList =
@@ -20203,18 +16082,11 @@ export interface UpdateCollectionRequestBodyCase1 {
 export type UpdateCollectionRequestBody =
   | UpdateCollectionRequestBodyCase0
   | UpdateCollectionRequestBodyCase1;
-const UpdateCollectionRequestBody = S.Unknown as any as S.Schema<UpdateCollectionRequestBody>;
-
 export interface UpdateCollectionRequest {
   /** The identifier for a collection. */
   collection_id: number;
   body?: UpdateCollectionRequestBody;
 }
-const UpdateCollectionRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  4,
-) as any as S.Schema<UpdateCollectionRequest>;
-
 /** Lists the top-level keys that you can reference within this collection. Customer.io does not enforce any of these keys as required from your `data`. */
 export type UpdateCollectionResponseCollectionSchemaList = Array<string>;
 export interface UpdateCollectionResponseCollection {
@@ -20236,22 +16108,12 @@ export interface UpdateCollectionResponseCollection {
 export interface UpdateCollectionResponse {
   collection?: UpdateCollectionResponseCollection;
 }
-const UpdateCollectionResponse = AddCollectionResponse as any as S.Schema<UpdateCollectionResponse>;
-
 export type UpdateCollectionContentsRequestBodyMap = { [key: string]: unknown | undefined };
-const UpdateCollectionContentsRequestBodyMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<UpdateCollectionContentsRequestBodyMap>;
-
 export interface UpdateCollectionContentsRequest {
   /** The identifier for a collection. */
   collection_id: number;
   body?: UpdateCollectionContentsRequestBodyMap;
 }
-const UpdateCollectionContentsRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  5,
-) as any as S.Schema<UpdateCollectionContentsRequest>;
-
 /** Lists the top-level keys that you can reference within this collection. Customer.io does not enforce any of these keys as required from your `data`. */
 export type UpdateCollectionContentsResponseCollectionSchemaList = Array<string>;
 export interface UpdateCollectionContentsResponseCollection {
@@ -20270,17 +16132,9 @@ export interface UpdateCollectionContentsResponseCollection {
   /** The date time when the referenced ID was last updated. */
   updated_at?: number;
 }
-const UpdateCollectionContentsResponseCollection =
-  AddCollectionResponseCollection as any as S.Schema<UpdateCollectionContentsResponseCollection>;
-
 export interface UpdateCollectionContentsResponse {
   collection?: UpdateCollectionContentsResponseCollection;
 }
-const UpdateCollectionContentsResponse = /*@__PURE__*/ __L.at(
-  __c71,
-  6,
-) as any as S.Schema<UpdateCollectionContentsResponse>;
-
 export interface UpdateComponentRequest {
   /** The UUID of the component. */
   id: string;
@@ -20293,14 +16147,7 @@ export interface UpdateComponentRequest {
   /** The component tag name, used to reference your component in an email. Learn what [characters](/journeys/design-studio/reusable/components/code-custom-component/#component-tag-name-validation) you can use. */
   tag?: string;
 }
-const UpdateComponentRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  7,
-) as any as S.Schema<UpdateComponentRequest>;
-
 export interface UpdateComponentResponse {}
-const UpdateComponentResponse = DeleteAssetResponse as any as S.Schema<UpdateComponentResponse>;
-
 /** The content of your email. */
 export type UpdateEmailRequestContent = CreateEmailRequestContent;
 export type UpdateEmailRequestEnvelopeHeadersItem = CreateEmailRequestEnvelopeHeadersItem;
@@ -20321,9 +16168,6 @@ export interface UpdateEmailRequestEnvelope {
   /** Reply-to identity ID. Must reference an existing identity from *Workspace Settings > Email* under your From Addresses. */
   reply_to_id?: number | null;
 }
-const UpdateEmailRequestEnvelope =
-  CreateEmailRequestEnvelope as any as S.Schema<UpdateEmailRequestEnvelope>;
-
 /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
 export type UpdateEmailRequestTransformersAccessibility =
   CreateEmailRequestTransformersAccessibility;
@@ -20376,9 +16220,6 @@ export interface UpdateEmailRequestTransformersFormatter {
   /** Formatting mode to apply. */
   type?: UpdateEmailRequestTransformersFormatterType | (string & {});
 }
-const UpdateEmailRequestTransformersFormatter =
-  CreateEmailRequestTransformersFormatter as any as S.Schema<UpdateEmailRequestTransformersFormatter>;
-
 /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type UpdateEmailRequestTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
@@ -20400,9 +16241,6 @@ export interface UpdateEmailRequestTransformersRemoveUnusedCss {
   /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
   whitelist?: UpdateEmailRequestTransformersRemoveUnusedCssWhitelistList;
 }
-const UpdateEmailRequestTransformersRemoveUnusedCss =
-  CreateEmailRequestTransformersRemoveUnusedCss as any as S.Schema<UpdateEmailRequestTransformersRemoveUnusedCss>;
-
 export type UpdateEmailRequestTransformersUrlParametersParametersItem =
   CreateEmailRequestTransformersUrlParametersParametersItem;
 /** List of parameters to append to URLs. */
@@ -20415,9 +16253,6 @@ export interface UpdateEmailRequestTransformersUrlParameters {
   /** List of parameters to append to URLs. */
   parameters?: UpdateEmailRequestTransformersUrlParametersParametersList;
 }
-const UpdateEmailRequestTransformersUrlParameters =
-  CreateEmailRequestTransformersUrlParameters as any as S.Schema<UpdateEmailRequestTransformersUrlParameters>;
-
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface UpdateEmailRequestTransformers {
   /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
@@ -20437,11 +16272,6 @@ export interface UpdateEmailRequestTransformers {
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: UpdateEmailRequestTransformersUrlParameters;
 }
-const UpdateEmailRequestTransformers = /*@__PURE__*/ __L.at(
-  __c72,
-  0,
-) as any as S.Schema<UpdateEmailRequestTransformers>;
-
 export interface UpdateEmailRequest {
   /** The id of the email. If your email has multiple languages, you must provide the ID of the **default** language template. This links the workflow to all of the language variants for the template. */
   id: string;
@@ -20458,11 +16288,7 @@ export interface UpdateEmailRequest {
   /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
   transformers?: UpdateEmailRequestTransformers;
 }
-const UpdateEmailRequest = /*@__PURE__*/ __L.at(__c72, 1) as any as S.Schema<UpdateEmailRequest>;
-
 export interface UpdateEmailResponse {}
-const UpdateEmailResponse = DeleteAssetResponse as any as S.Schema<UpdateEmailResponse>;
-
 /** The content of your email. */
 export type UpdateEmailTranslationRequestContent = CreateEmailRequestContent;
 export type UpdateEmailTranslationRequestEnvelopeHeadersItem =
@@ -20485,9 +16311,6 @@ export interface UpdateEmailTranslationRequestEnvelope {
   /** Reply-to identity ID. Must reference an existing identity from *Workspace Settings > Email* under your From Addresses. */
   reply_to_id?: number | null;
 }
-const UpdateEmailTranslationRequestEnvelope =
-  CreateEmailRequestEnvelope as any as S.Schema<UpdateEmailTranslationRequestEnvelope>;
-
 /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
 export type UpdateEmailTranslationRequestTransformersAccessibility =
   CreateEmailRequestTransformersAccessibility;
@@ -20549,9 +16372,6 @@ export interface UpdateEmailTranslationRequestTransformersFormatter {
   /** Formatting mode to apply. */
   type?: UpdateEmailTranslationRequestTransformersFormatterType | (string & {});
 }
-const UpdateEmailTranslationRequestTransformersFormatter =
-  CreateEmailTranslationRequestTransformersFormatter as any as S.Schema<UpdateEmailTranslationRequestTransformersFormatter>;
-
 /** Replaces the last space in text blocks with a non-breaking space (`&nbsp;`) to prevent a single word from wrapping onto its own line (a "widow"). Only processes text nodes in the `<body>` and skips `<script>`, `<style>`, `<noscript>`, `<svg>`, and `<head>` elements. Preserves Liquid template tags (`{{ }} ` and `{% %}`). */
 export type UpdateEmailTranslationRequestTransformersPreventWidows =
   CreateEmailRequestTransformersPreventWidows;
@@ -20573,9 +16393,6 @@ export interface UpdateEmailTranslationRequestTransformersRemoveUnusedCss {
   /** CSS selectors to always keep, even if they are not found in the HTML. - .ReadMsgBody - .ExternalClass - .aBn - .a6S - .im - .yshortcuts - "#outlook" - .MsoHyperlink - .MsoHyperlinkFollowed */
   whitelist?: UpdateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList;
 }
-const UpdateEmailTranslationRequestTransformersRemoveUnusedCss =
-  CreateEmailTranslationRequestTransformersRemoveUnusedCss as any as S.Schema<UpdateEmailTranslationRequestTransformersRemoveUnusedCss>;
-
 export type UpdateEmailTranslationRequestTransformersUrlParametersParametersItem =
   CreateEmailRequestTransformersUrlParametersParametersItem;
 /** List of parameters to append to URLs. */
@@ -20588,9 +16405,6 @@ export interface UpdateEmailTranslationRequestTransformersUrlParameters {
   /** List of parameters to append to URLs. */
   parameters?: UpdateEmailTranslationRequestTransformersUrlParametersParametersList;
 }
-const UpdateEmailTranslationRequestTransformersUrlParameters =
-  CreateEmailResponseEmailTransformersUrlParameters as any as S.Schema<UpdateEmailTranslationRequestTransformersUrlParameters>;
-
 /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
 export interface UpdateEmailTranslationRequestTransformers {
   /** Applies a set of accessibility improvements to the email HTML. When no `language` is set, this falls back to the `lang` attribute on the `<html>` tag, or `"und"` (undetermined). The `dir` attribute is automatically derived from the language using RTL detection. */
@@ -20610,11 +16424,6 @@ export interface UpdateEmailTranslationRequestTransformers {
   /** Appends query string parameters to all absolute URLs in `<a>` and VML elements. Useful for adding UTM tracking or other analytics parameters. Skips `mailto:`, `tel:`, and `sms:` links. Elements marked with `data-ignore-params` are excluded. */
   url_parameters?: UpdateEmailTranslationRequestTransformersUrlParameters;
 }
-const UpdateEmailTranslationRequestTransformers = /*@__PURE__*/ __L.at(
-  __c72,
-  2,
-) as any as S.Schema<UpdateEmailTranslationRequestTransformers>;
-
 export interface UpdateEmailTranslationRequest {
   /** The id of the email. If your email has multiple languages, you must provide the ID of the **default** language template. This links the workflow to all of the language variants for the template. */
   id: string;
@@ -20627,44 +16436,20 @@ export interface UpdateEmailTranslationRequest {
   /** Automate repetitive actions like removing white space and inlining CSS with [transformers](/journeys/design-studio/emails/code-editor/overview/#transformers). */
   transformers?: UpdateEmailTranslationRequestTransformers;
 }
-const UpdateEmailTranslationRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  3,
-) as any as S.Schema<UpdateEmailTranslationRequest>;
-
 export interface UpdateEmailTranslationResponse {}
-const UpdateEmailTranslationResponse =
-  DeleteAssetResponse as any as S.Schema<UpdateEmailTranslationResponse>;
-
 export interface UpdateEventMetadataRequestEventsItem {
   /** The name of the event */
   name: string;
   /** The meaning of the event */
   description?: string;
 }
-const UpdateEventMetadataRequestEventsItem =
-  CreateManSegmentRequestSegment as any as S.Schema<UpdateEventMetadataRequestEventsItem>;
-
 /** Array of event updates */
 export type UpdateEventMetadataRequestEventsList = Array<UpdateEventMetadataRequestEventsItem>;
-const UpdateEventMetadataRequestEventsList = /*@__PURE__*/ __L.at(
-  __c72,
-  4,
-) as any as S.Schema<UpdateEventMetadataRequestEventsList>;
-
 export interface UpdateEventMetadataRequest {
   /** Array of event updates */
   events: UpdateEventMetadataRequestEventsList;
 }
-const UpdateEventMetadataRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  5,
-) as any as S.Schema<UpdateEventMetadataRequest>;
-
 export interface UpdateEventMetadataResponse {}
-const UpdateEventMetadataResponse =
-  DeleteAssetResponse as any as S.Schema<UpdateEventMetadataResponse>;
-
 export interface UpdateFolderRequest {
   /** The UUID of the folder. */
   id: string;
@@ -20673,11 +16458,7 @@ export interface UpdateFolderRequest {
   /** The UUID of the parent folder. Omit if you want no change to where the folder or file is located. Include `null` to move it to your root directory. Or add the UUID of another folder to move it there. */
   parent_folder_id?: string | null;
 }
-const UpdateFolderRequest = /*@__PURE__*/ __L.at(__c72, 6) as any as S.Schema<UpdateFolderRequest>;
-
 export interface UpdateFolderResponse {}
-const UpdateFolderResponse = DeleteAssetResponse as any as S.Schema<UpdateFolderResponse>;
-
 /** Your own dynamic fields. On iOS, field names must match your `ContentState` type. For Android custom types, fields pass through to your app's renderer as-is. Date fields are epoch seconds. */
 export type UpdateLiveNotificationRequestContentStateCase0Map = {
   [key: string]: unknown | undefined;
@@ -20693,14 +16474,8 @@ export type UpdateLiveNotificationRequestContentState =
   | UpdateLiveNotificationRequestContentStateCase0Map
   | EndLiveNotificationRequestContentStateCase1
   | EndLiveNotificationRequestContentStateCase2;
-const UpdateLiveNotificationRequestContentState =
-  S.Unknown as any as S.Schema<UpdateLiveNotificationRequestContentState>;
-
 /** Static activity fields, for renderers that need them alongside the content state. On iOS, attributes can't change after start. */
 export type UpdateLiveNotificationRequestAttributesMap = { [key: string]: unknown | undefined };
-const UpdateLiveNotificationRequestAttributesMap =
-  AddCollectionRequestBodyCase0DataItemMap as any as S.Schema<UpdateLiveNotificationRequestAttributesMap>;
-
 export interface UpdateLiveNotificationRequestPushPayloadAlert {
   /** The alert body. */
   body: string;
@@ -20713,9 +16488,6 @@ export interface UpdateLiveNotificationRequestPushPayloadAlert {
 export interface UpdateLiveNotificationRequestPushPayload {
   alert?: UpdateLiveNotificationRequestPushPayloadAlert;
 }
-const UpdateLiveNotificationRequestPushPayload =
-  EndLiveNotificationRequestPushPayload as any as S.Schema<UpdateLiveNotificationRequestPushPayload>;
-
 export interface UpdateLiveNotificationRequest {
   /** The complete new content state for the activity. The content state's shape depends on the activity's `notification_type`. For iOS or a free form Android activity, pick the free form variant. For other Android notification types, pick the matching variant below. Date fields are epoch seconds. */
   content_state: UpdateLiveNotificationRequestContentState;
@@ -20728,18 +16500,10 @@ export interface UpdateLiveNotificationRequest {
   /** The alert to accompany the update. Optional whether Customer.io delivers directly through APNs or relays through Firebase Cloud Messaging (FCM). If you include an alert, provide both its `title` and `body`. */
   push_payload?: UpdateLiveNotificationRequestPushPayload;
 }
-const UpdateLiveNotificationRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  7,
-) as any as S.Schema<UpdateLiveNotificationRequest>;
-
 export interface UpdateLiveNotificationResponse {
   /** The activity's instance ID. */
   instance_id?: string;
 }
-const UpdateLiveNotificationResponse =
-  EndLiveNotificationResponse as any as S.Schema<UpdateLiveNotificationResponse>;
-
 /** Update the contents of an email one-time send variant. You can set the sender with `from_id`. If you don't provide it, the existing sender is preserved. */
 export interface UpdateNewsletterTestTranslationRequestBodyCase0 {
   /** The HTML body of the email. You cannot modify the body if you created the one-time send with Design Studio or the drag-and-drop editor. */
@@ -20795,9 +16559,6 @@ export type UpdateNewsletterTestTranslationRequestBody =
   | UpdateNewsletterTestTranslationRequestBodyCase3
   | UpdateNewsletterTestTranslationRequestBodyCase4
   | UpdateNewsletterTestTranslationRequestBodyCase4;
-const UpdateNewsletterTestTranslationRequestBody =
-  S.Unknown as any as S.Schema<UpdateNewsletterTestTranslationRequestBody>;
-
 export interface UpdateNewsletterTestTranslationRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
@@ -20807,11 +16568,6 @@ export interface UpdateNewsletterTestTranslationRequest {
   language: string;
   body?: UpdateNewsletterTestTranslationRequestBody;
 }
-const UpdateNewsletterTestTranslationRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  0,
-) as any as S.Schema<UpdateNewsletterTestTranslationRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type UpdateNewsletterTestTranslationResponseContentPreprocessor = "premailer";
 /** Channel type for a one-time send or one-time send content variant. */
@@ -20869,9 +16625,6 @@ export interface UpdateNewsletterTestTranslationResponseContent {
 export interface UpdateNewsletterTestTranslationResponse {
   content?: UpdateNewsletterTestTranslationResponseContent;
 }
-const UpdateNewsletterTestTranslationResponse =
-  GetNewsletterVariantResponse as any as S.Schema<UpdateNewsletterTestTranslationResponse>;
-
 /** Update the contents of an email one-time send variant. You can set the sender with `from_id`. If you don't provide it, the existing sender is preserved. */
 export type UpdateNewsletterVariantRequestBodyCase0 =
   UpdateNewsletterTestTranslationRequestBodyCase0;
@@ -20906,9 +16659,6 @@ export type UpdateNewsletterVariantRequestBody =
   | UpdateNewsletterVariantRequestBodyCase3
   | UpdateNewsletterTestTranslationRequestBodyCase4
   | UpdateNewsletterTestTranslationRequestBodyCase4;
-const UpdateNewsletterVariantRequestBody =
-  S.Unknown as any as S.Schema<UpdateNewsletterVariantRequestBody>;
-
 export interface UpdateNewsletterVariantRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
@@ -20916,11 +16666,6 @@ export interface UpdateNewsletterVariantRequest {
   content_id: number;
   body?: UpdateNewsletterVariantRequestBody;
 }
-const UpdateNewsletterVariantRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  1,
-) as any as S.Schema<UpdateNewsletterVariantRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type UpdateNewsletterVariantResponseContentPreprocessor = "premailer";
 /** Channel type for a one-time send or one-time send content variant. */
@@ -20978,9 +16723,6 @@ export interface UpdateNewsletterVariantResponseContent {
 export interface UpdateNewsletterVariantResponse {
   content?: UpdateNewsletterVariantResponseContent;
 }
-const UpdateNewsletterVariantResponse =
-  GetNewsletterVariantResponse as any as S.Schema<UpdateNewsletterVariantResponse>;
-
 /** Update the contents of an email one-time send variant. You can set the sender with `from_id`. If you don't provide it, the existing sender is preserved. */
 export type UpdateNewsletterVariantTranslationRequestBodyCase0 =
   UpdateNewsletterTestTranslationRequestBodyCase0;
@@ -21015,9 +16757,6 @@ export type UpdateNewsletterVariantTranslationRequestBody =
   | UpdateNewsletterVariantTranslationRequestBodyCase3
   | UpdateNewsletterTestTranslationRequestBodyCase4
   | UpdateNewsletterTestTranslationRequestBodyCase4;
-const UpdateNewsletterVariantTranslationRequestBody =
-  S.Unknown as any as S.Schema<UpdateNewsletterVariantTranslationRequestBody>;
-
 export interface UpdateNewsletterVariantTranslationRequest {
   /** The identifier of a one-time send. */
   newsletter_id: number;
@@ -21025,11 +16764,6 @@ export interface UpdateNewsletterVariantTranslationRequest {
   language: string;
   body?: UpdateNewsletterVariantTranslationRequestBody;
 }
-const UpdateNewsletterVariantTranslationRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  2,
-) as any as S.Schema<UpdateNewsletterVariantTranslationRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type UpdateNewsletterVariantTranslationResponseContentPreprocessor = "premailer";
 /** Channel type for a one-time send or one-time send content variant. */
@@ -21087,16 +16821,9 @@ export interface UpdateNewsletterVariantTranslationResponseContent {
 export interface UpdateNewsletterVariantTranslationResponse {
   content?: UpdateNewsletterVariantTranslationResponseContent;
 }
-const UpdateNewsletterVariantTranslationResponse =
-  GetNewsletterVariantResponse as any as S.Schema<UpdateNewsletterVariantTranslationResponse>;
-
 export type UpdatePersonOptoutsRequestIdType = "id" | "email" | "phone" | "cio_id";
-const UpdatePersonOptoutsRequestIdType = S.String;
-
 /** The channel for the opt-out. Defaults to `sms`. */
 export type UpdatePersonOptoutsRequestOptoutsItemChannel = "sms" | "whatsapp";
-const UpdatePersonOptoutsRequestOptoutsItemChannel = S.String;
-
 export interface UpdatePersonOptoutsRequestOptoutsItem {
   /** The sender you want to opt the person out of, or back in to. For SMS, this is a sender phone number (E.164), an alphanumeric sender ID, or a messaging-service SID; for WhatsApp, it's the sender phone number. */
   from: string;
@@ -21105,18 +16832,8 @@ export interface UpdatePersonOptoutsRequestOptoutsItem {
   /** The channel for the opt-out. Defaults to `sms`. */
   channel?: UpdatePersonOptoutsRequestOptoutsItemChannel | (string & {});
 }
-const UpdatePersonOptoutsRequestOptoutsItem = /*@__PURE__*/ __L.at(
-  __c73,
-  3,
-) as any as S.Schema<UpdatePersonOptoutsRequestOptoutsItem>;
-
 /** The senders and channels you want to opt the person out of, or back in to. Provide one entry per sender/channel. */
 export type UpdatePersonOptoutsRequestOptoutsList = Array<UpdatePersonOptoutsRequestOptoutsItem>;
-const UpdatePersonOptoutsRequestOptoutsList = /*@__PURE__*/ __L.at(
-  __c73,
-  4,
-) as any as S.Schema<UpdatePersonOptoutsRequestOptoutsList>;
-
 export interface UpdatePersonOptoutsRequest {
   /** The ID of the customer you want to perform an operation against. */
   customer_id: string;
@@ -21125,42 +16842,24 @@ export interface UpdatePersonOptoutsRequest {
   /** The senders and channels you want to opt the person out of, or back in to. Provide one entry per sender/channel. */
   optouts: UpdatePersonOptoutsRequestOptoutsList;
 }
-const UpdatePersonOptoutsRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  5,
-) as any as S.Schema<UpdatePersonOptoutsRequest>;
-
 export interface UpdatePersonOptoutsResponse {}
-const UpdatePersonOptoutsResponse =
-  DeleteAssetResponse as any as S.Schema<UpdatePersonOptoutsResponse>;
-
 export interface UpdateSnippetsRequest {
   /** The name of the snippet, must be unique. Trimmed of leading and trailing whitespace before storage. */
   name: string;
   /** The contents of the snippet (plain text or Liquid). Trimmed of leading and trailing whitespace before storage. Max length is environment-specific (default 16000). */
   value: string;
 }
-const UpdateSnippetsRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  6,
-) as any as S.Schema<UpdateSnippetsRequest>;
-
 /** describes a piece of reusable content. You must provide a name for the snippet and the `value`--the content that appears in messages that use the snippet. */
 export type UpdateSnippetsResponseSnippet = CreateSnippetResponseSnippet;
 export interface UpdateSnippetsResponse {
   /** describes a piece of reusable content. You must provide a name for the snippet and the `value`--the content that appears in messages that use the snippet. */
   snippet?: CreateSnippetResponseSnippet;
 }
-const UpdateSnippetsResponse = CreateSnippetResponse as any as S.Schema<UpdateSnippetsResponse>;
-
 export type UpdateTransactionalRequestHeadersItem =
   UpdateBroadcastActionRequestBodyCase0HeadersItem;
 /** Headers you want to add or update. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
 export type UpdateTransactionalRequestHeadersList =
   Array<UpdateBroadcastActionRequestBodyCase0HeadersItem>;
-const UpdateTransactionalRequestHeadersList =
-  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<UpdateTransactionalRequestHeadersList>;
-
 export interface UpdateTransactionalRequest {
   /** The identifier of your transactional message. You'll find this in the UI or URL of your transactional message. For example, if this is the path of a transactional message URL - `/transactional/3/templates/139` - the `transactional_id` is 3. */
   transactional_id: number;
@@ -21183,11 +16882,6 @@ export interface UpdateTransactionalRequest {
   /** The subject line for an `email` action. */
   subject?: string;
 }
-const UpdateTransactionalRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  7,
-) as any as S.Schema<UpdateTransactionalRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type UpdateTransactionalResponseContentItemPreprocessor = "premailer";
 /** The type of message. */
@@ -21240,17 +16934,11 @@ export interface UpdateTransactionalResponse {
   /** The object includes the transactional message content and metadata. */
   content?: UpdateTransactionalResponseContentList;
 }
-const UpdateTransactionalResponse =
-  GetTransactionalVariantResponse as any as S.Schema<UpdateTransactionalResponse>;
-
 export type UpdateTransactionalVariantRequestHeadersItem =
   UpdateBroadcastActionRequestBodyCase0HeadersItem;
 /** Headers you want to add or update. Names and values must be strings, with no non-ASCII characters or spaces. You can't overwrite reserved headers. */
 export type UpdateTransactionalVariantRequestHeadersList =
   Array<UpdateBroadcastActionRequestBodyCase0HeadersItem>;
-const UpdateTransactionalVariantRequestHeadersList =
-  CreateEmailRequestEnvelopeHeadersList as any as S.Schema<UpdateTransactionalVariantRequestHeadersList>;
-
 export interface UpdateTransactionalVariantRequest {
   /** The identifier of your transactional message. You'll find this in the UI or URL of your transactional message. For example, if this is the path of a transactional message URL - `/transactional/3/templates/139` - the `transactional_id` is 3. */
   transactional_id: number;
@@ -21273,11 +16961,6 @@ export interface UpdateTransactionalVariantRequest {
   /** The subject line for an `email` action. */
   subject?: string;
 }
-const UpdateTransactionalVariantRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  0,
-) as any as S.Schema<UpdateTransactionalVariantRequest>;
-
 /** If CSS pre-processing is enabled, this key is populated with `premailer`. Note, Juice replaced Premailer as the pre-processor, but you will only see `premailer` as the value. */
 export type UpdateTransactionalVariantResponseContentItemPreprocessor = "premailer";
 /** The type of message. */
@@ -21331,9 +17014,6 @@ export interface UpdateTransactionalVariantResponse {
   /** Each object represents one of the variants. */
   content?: UpdateTransactionalVariantResponseContentList;
 }
-const UpdateTransactionalVariantResponse =
-  GetTransactionalVariantResponse as any as S.Schema<UpdateTransactionalVariantResponse>;
-
 export type UpdateWebhookRequestEventsItem =
   | "customer_subscribed"
   | "customer_unsubscribed"
@@ -21409,9 +17089,6 @@ export type UpdateWebhookRequestEventsItem =
   | "webhook_undeliverable";
 /** Specifies the types of events you want to report to your webhook. See our [reporting webhooks reference](/integrations/api/webhooks/) for more information about event types and the information they return. */
 export type UpdateWebhookRequestEventsList = Array<UpdateWebhookRequestEventsItem | (string & {})>;
-const UpdateWebhookRequestEventsList =
-  CreateWebhookRequestEventsList as any as S.Schema<UpdateWebhookRequestEventsList>;
-
 export interface UpdateWebhookRequest {
   /** The identifier of a webhook. */
   webhook_id: number;
@@ -21428,11 +17105,6 @@ export interface UpdateWebhookRequest {
   /** Set to `true` to include the message `body` in `_sent` events. */
   with_content?: boolean;
 }
-const UpdateWebhookRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  1,
-) as any as S.Schema<UpdateWebhookRequest>;
-
 export type UpdateWebhookResponseEventsItem =
   | "customer_subscribed"
   | "customer_unsubscribed"
@@ -21528,8 +17200,6 @@ export interface UpdateWebhookResponse {
   /** Set to `true` to include the message `body` in `_sent` events. */
   with_content?: boolean;
 }
-const UpdateWebhookResponse = CreateWebhookResponse as any as S.Schema<UpdateWebhookResponse>;
-
 export type AddCollectionError = BadRequest | CustomerioOpError;
 /** Create a collection Create a new collection and provide the `data` that you'll access from the collection or the `url` that you'll download CSV or JSON data from. **Note**: A collection cannot be more than 10 MB in size. No individual row in the collection can be more than 10 KB. */
 export const addCollection: API.OperationMethod<
@@ -21538,8 +17208,8 @@ export const addCollection: API.OperationMethod<
   AddCollectionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddCollectionRequest,
-  output: AddCollectionResponse,
+  input: __S(1) as any as S.Schema<AddCollectionRequest>,
+  output: __S(4) as any as S.Schema<AddCollectionResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21553,8 +17223,8 @@ export const broadcastActionLinks: API.OperationMethod<
   BroadcastActionLinksError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BroadcastActionLinksRequest,
-  output: BroadcastActionLinksResponse,
+  input: __S(5) as any as S.Schema<BroadcastActionLinksRequest>,
+  output: __S(13) as any as S.Schema<BroadcastActionLinksResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21568,8 +17238,8 @@ export const broadcastActionMetrics: API.OperationMethod<
   BroadcastActionMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BroadcastActionMetricsRequest,
-  output: BroadcastActionMetricsResponse,
+  input: __S(14) as any as S.Schema<BroadcastActionMetricsRequest>,
+  output: __S(20) as any as S.Schema<BroadcastActionMetricsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21583,8 +17253,8 @@ export const broadcastActions: API.OperationMethod<
   BroadcastActionsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BroadcastActionsRequest,
-  output: BroadcastActionsResponse,
+  input: __S(21) as any as S.Schema<BroadcastActionsRequest>,
+  output: __S(23) as any as S.Schema<BroadcastActionsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21598,8 +17268,8 @@ export const broadcastErrors: API.OperationMethod<
   BroadcastErrorsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BroadcastErrorsRequest,
-  output: BroadcastErrorsResponse,
+  input: __S(24) as any as S.Schema<BroadcastErrorsRequest>,
+  output: __S(25) as any as S.Schema<BroadcastErrorsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21613,8 +17283,8 @@ export const broadcastLinks: API.OperationMethod<
   BroadcastLinksError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BroadcastLinksRequest,
-  output: BroadcastLinksResponse,
+  input: __S(26) as any as S.Schema<BroadcastLinksRequest>,
+  output: __S(31) as any as S.Schema<BroadcastLinksResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21628,8 +17298,8 @@ export const broadcastMessages: API.OperationMethod<
   BroadcastMessagesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BroadcastMessagesRequest,
-  output: BroadcastMessagesResponse,
+  input: __S(32) as any as S.Schema<BroadcastMessagesRequest>,
+  output: __S(39) as any as S.Schema<BroadcastMessagesResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21643,8 +17313,8 @@ export const broadcastMetrics: API.OperationMethod<
   BroadcastMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BroadcastMetricsRequest,
-  output: BroadcastMetricsResponse,
+  input: __S(40) as any as S.Schema<BroadcastMetricsRequest>,
+  output: __S(43) as any as S.Schema<BroadcastMetricsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21658,8 +17328,8 @@ export const broadcastStatus: API.OperationMethod<
   BroadcastStatusError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BroadcastStatusRequest,
-  output: BroadcastStatusResponse,
+  input: __S(44) as any as S.Schema<BroadcastStatusRequest>,
+  output: __S(45) as any as S.Schema<BroadcastStatusResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21673,8 +17343,8 @@ export const campaignActionLinks: API.OperationMethod<
   CampaignActionLinksError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CampaignActionLinksRequest,
-  output: CampaignActionLinksResponse,
+  input: __S(46) as any as S.Schema<CampaignActionLinksRequest>,
+  output: __S(51) as any as S.Schema<CampaignActionLinksResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21688,8 +17358,8 @@ export const campaignActionMetrics: API.OperationMethod<
   CampaignActionMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CampaignActionMetricsRequest,
-  output: CampaignActionMetricsResponse,
+  input: __S(52) as any as S.Schema<CampaignActionMetricsRequest>,
+  output: __S(55) as any as S.Schema<CampaignActionMetricsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21703,8 +17373,8 @@ export const campaignJourneyMetrics: API.OperationMethod<
   CampaignJourneyMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CampaignJourneyMetricsRequest,
-  output: CampaignJourneyMetricsResponse,
+  input: __S(56) as any as S.Schema<CampaignJourneyMetricsRequest>,
+  output: __S(58) as any as S.Schema<CampaignJourneyMetricsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21718,8 +17388,8 @@ export const campaignLinkMetrics: API.OperationMethod<
   CampaignLinkMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CampaignLinkMetricsRequest,
-  output: CampaignLinkMetricsResponse,
+  input: __S(59) as any as S.Schema<CampaignLinkMetricsRequest>,
+  output: __S(51) as any as S.Schema<CampaignLinkMetricsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21733,8 +17403,8 @@ export const campaignMetrics: API.OperationMethod<
   CampaignMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CampaignMetricsRequest,
-  output: CampaignMetricsResponse,
+  input: __S(60) as any as S.Schema<CampaignMetricsRequest>,
+  output: __S(61) as any as S.Schema<CampaignMetricsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21748,8 +17418,8 @@ export const cancelBroadcastTrigger: API.OperationMethod<
   CancelBroadcastTriggerError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelBroadcastTriggerRequest,
-  output: CancelBroadcastTriggerResponse,
+  input: __S(62) as any as S.Schema<CancelBroadcastTriggerRequest>,
+  output: __S(64) as any as S.Schema<CancelBroadcastTriggerResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21763,8 +17433,8 @@ export const checkUnpublishedChanges: API.OperationMethod<
   CheckUnpublishedChangesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckUnpublishedChangesRequest,
-  output: CheckUnpublishedChangesResponse,
+  input: __S(65) as any as S.Schema<CheckUnpublishedChangesRequest>,
+  output: __S(66) as any as S.Schema<CheckUnpublishedChangesResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21778,8 +17448,8 @@ export const createAsset: API.OperationMethod<
   CreateAssetError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAssetRequest,
-  output: CreateAssetResponse,
+  input: __S(67) as any as S.Schema<CreateAssetRequest>,
+  output: __S(69) as any as S.Schema<CreateAssetResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21793,8 +17463,8 @@ export const createAssetFolder: API.OperationMethod<
   CreateAssetFolderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAssetFolderRequest,
-  output: CreateAssetFolderResponse,
+  input: __S(70) as any as S.Schema<CreateAssetFolderRequest>,
+  output: __S(72) as any as S.Schema<CreateAssetFolderResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21808,8 +17478,8 @@ export const createComponent: API.OperationMethod<
   CreateComponentError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateComponentRequest,
-  output: CreateComponentResponse,
+  input: __S(73) as any as S.Schema<CreateComponentRequest>,
+  output: __S(75) as any as S.Schema<CreateComponentResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21823,8 +17493,8 @@ export const createEmail: API.OperationMethod<
   CreateEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmailRequest,
-  output: CreateEmailResponse,
+  input: __S(95) as any as S.Schema<CreateEmailRequest>,
+  output: __S(105) as any as S.Schema<CreateEmailResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21838,8 +17508,8 @@ export const createEmailTranslation: API.OperationMethod<
   CreateEmailTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmailTranslationRequest,
-  output: CreateEmailTranslationResponse,
+  input: __S(111) as any as S.Schema<CreateEmailTranslationRequest>,
+  output: __S(121) as any as S.Schema<CreateEmailTranslationResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21853,8 +17523,8 @@ export const createFolder: API.OperationMethod<
   CreateFolderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFolderRequest,
-  output: CreateFolderResponse,
+  input: __S(122) as any as S.Schema<CreateFolderRequest>,
+  output: __S(124) as any as S.Schema<CreateFolderResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21868,8 +17538,8 @@ export const createManSegment: API.OperationMethod<
   CreateManSegmentError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateManSegmentRequest,
-  output: CreateManSegmentResponse,
+  input: __S(126) as any as S.Schema<CreateManSegmentRequest>,
+  output: __S(128) as any as S.Schema<CreateManSegmentResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21883,8 +17553,8 @@ export const createNewsletter: API.OperationMethod<
   CreateNewsletterError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNewsletterRequest,
-  output: CreateNewsletterResponse,
+  input: __S(129) as any as S.Schema<CreateNewsletterRequest>,
+  output: __S(131) as any as S.Schema<CreateNewsletterResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21902,8 +17572,8 @@ export const createNewsletterLanguageVariant: API.OperationMethod<
   CreateNewsletterLanguageVariantError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNewsletterLanguageVariantRequest,
-  output: CreateNewsletterLanguageVariantResponse,
+  input: __S(132) as any as S.Schema<CreateNewsletterLanguageVariantRequest>,
+  output: __S(134) as any as S.Schema<CreateNewsletterLanguageVariantResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21917,8 +17587,8 @@ export const createNewsletterTestGroup: API.OperationMethod<
   CreateNewsletterTestGroupError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNewsletterTestGroupRequest,
-  output: CreateNewsletterTestGroupResponse,
+  input: __S(135) as any as S.Schema<CreateNewsletterTestGroupRequest>,
+  output: __S(137) as any as S.Schema<CreateNewsletterTestGroupResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21936,8 +17606,8 @@ export const createNewsletterTestLanguageVariant: API.OperationMethod<
   CreateNewsletterTestLanguageVariantError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNewsletterTestLanguageVariantRequest,
-  output: CreateNewsletterTestLanguageVariantResponse,
+  input: __S(138) as any as S.Schema<CreateNewsletterTestLanguageVariantRequest>,
+  output: __S(140) as any as S.Schema<CreateNewsletterTestLanguageVariantResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21951,8 +17621,8 @@ export const createSnippet: API.OperationMethod<
   CreateSnippetError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSnippetRequest,
-  output: CreateSnippetResponse,
+  input: __S(141) as any as S.Schema<CreateSnippetRequest>,
+  output: __S(143) as any as S.Schema<CreateSnippetResponse>,
   errors: [UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21966,8 +17636,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWebhookRequest,
-  output: CreateWebhookResponse,
+  input: __S(145) as any as S.Schema<CreateWebhookRequest>,
+  output: __S(146) as any as S.Schema<CreateWebhookResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21981,8 +17651,8 @@ export const deleteAsset: API.OperationMethod<
   DeleteAssetError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAssetRequest,
-  output: DeleteAssetResponse,
+  input: __S(147) as any as S.Schema<DeleteAssetRequest>,
+  output: __S(148) as any as S.Schema<DeleteAssetResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -21996,8 +17666,8 @@ export const deleteAssetFolder: API.OperationMethod<
   DeleteAssetFolderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAssetFolderRequest,
-  output: DeleteAssetFolderResponse,
+  input: __S(149) as any as S.Schema<DeleteAssetFolderRequest>,
+  output: __S(148) as any as S.Schema<DeleteAssetFolderResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22011,8 +17681,8 @@ export const deleteCollection: API.OperationMethod<
   DeleteCollectionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCollectionRequest,
-  output: DeleteCollectionResponse,
+  input: __S(150) as any as S.Schema<DeleteCollectionRequest>,
+  output: __S(148) as any as S.Schema<DeleteCollectionResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22026,8 +17696,8 @@ export const deleteComponent: API.OperationMethod<
   DeleteComponentError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteComponentRequest,
-  output: DeleteComponentResponse,
+  input: __S(151) as any as S.Schema<DeleteComponentRequest>,
+  output: __S(148) as any as S.Schema<DeleteComponentResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22041,8 +17711,8 @@ export const deleteEmail: API.OperationMethod<
   DeleteEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmailRequest,
-  output: DeleteEmailResponse,
+  input: __S(152) as any as S.Schema<DeleteEmailRequest>,
+  output: __S(148) as any as S.Schema<DeleteEmailResponse>,
   errors: [NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22056,8 +17726,8 @@ export const deleteEmailTranslation: API.OperationMethod<
   DeleteEmailTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmailTranslationRequest,
-  output: DeleteEmailTranslationResponse,
+  input: __S(153) as any as S.Schema<DeleteEmailTranslationRequest>,
+  output: __S(148) as any as S.Schema<DeleteEmailTranslationResponse>,
   errors: [NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22071,8 +17741,8 @@ export const deleteFolder: API.OperationMethod<
   DeleteFolderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFolderRequest,
-  output: DeleteFolderResponse,
+  input: __S(154) as any as S.Schema<DeleteFolderRequest>,
+  output: __S(148) as any as S.Schema<DeleteFolderResponse>,
   errors: [NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22086,8 +17756,8 @@ export const deleteManSegment: API.OperationMethod<
   DeleteManSegmentError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteManSegmentRequest,
-  output: DeleteManSegmentResponse,
+  input: __S(155) as any as S.Schema<DeleteManSegmentRequest>,
+  output: __S(148) as any as S.Schema<DeleteManSegmentResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22101,8 +17771,8 @@ export const deleteNewsletterLanguageVariant: API.OperationMethod<
   DeleteNewsletterLanguageVariantError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNewsletterLanguageVariantRequest,
-  output: DeleteNewsletterLanguageVariantResponse,
+  input: __S(156) as any as S.Schema<DeleteNewsletterLanguageVariantRequest>,
+  output: __S(157) as any as S.Schema<DeleteNewsletterLanguageVariantResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22116,8 +17786,8 @@ export const deleteNewsletters: API.OperationMethod<
   DeleteNewslettersError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNewslettersRequest,
-  output: DeleteNewslettersResponse,
+  input: __S(158) as any as S.Schema<DeleteNewslettersRequest>,
+  output: __S(148) as any as S.Schema<DeleteNewslettersResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22131,8 +17801,8 @@ export const deleteNewsletterTestLanguageVariant: API.OperationMethod<
   DeleteNewsletterTestLanguageVariantError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNewsletterTestLanguageVariantRequest,
-  output: DeleteNewsletterTestLanguageVariantResponse,
+  input: __S(159) as any as S.Schema<DeleteNewsletterTestLanguageVariantRequest>,
+  output: __S(157) as any as S.Schema<DeleteNewsletterTestLanguageVariantResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22146,8 +17816,8 @@ export const deleteSnippet: API.OperationMethod<
   DeleteSnippetError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSnippetRequest,
-  output: DeleteSnippetResponse,
+  input: __S(160) as any as S.Schema<DeleteSnippetRequest>,
+  output: __S(148) as any as S.Schema<DeleteSnippetResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22161,8 +17831,8 @@ export const deleteSuppression: API.OperationMethod<
   DeleteSuppressionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSuppressionRequest,
-  output: DeleteSuppressionResponse,
+  input: __S(161) as any as S.Schema<DeleteSuppressionRequest>,
+  output: __S(148) as any as S.Schema<DeleteSuppressionResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22176,8 +17846,8 @@ export const deleteVersion: API.OperationMethod<
   DeleteVersionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVersionRequest,
-  output: DeleteVersionResponse,
+  input: __S(162) as any as S.Schema<DeleteVersionRequest>,
+  output: __S(148) as any as S.Schema<DeleteVersionResponse>,
   errors: [NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22191,8 +17861,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebhookRequest,
-  output: DeleteWebhookResponse,
+  input: __S(163) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(148) as any as S.Schema<DeleteWebhookResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22206,8 +17876,8 @@ export const downloadExport: API.OperationMethod<
   DownloadExportError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadExportRequest,
-  output: DownloadExportResponse,
+  input: __S(164) as any as S.Schema<DownloadExportRequest>,
+  output: __S(165) as any as S.Schema<DownloadExportResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22221,8 +17891,8 @@ export const endLiveNotification: API.OperationMethod<
   EndLiveNotificationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndLiveNotificationRequest,
-  output: EndLiveNotificationResponse,
+  input: __S(168) as any as S.Schema<EndLiveNotificationRequest>,
+  output: __S(169) as any as S.Schema<EndLiveNotificationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22236,8 +17906,8 @@ export const exportDeliveriesData: API.OperationMethod<
   ExportDeliveriesDataError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportDeliveriesDataRequest,
-  output: ExportDeliveriesDataResponse,
+  input: __S(170) as any as S.Schema<ExportDeliveriesDataRequest>,
+  output: __S(172) as any as S.Schema<ExportDeliveriesDataResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22251,8 +17921,8 @@ export const exportPeopleData: API.OperationMethod<
   ExportPeopleDataError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportPeopleDataRequest,
-  output: ExportPeopleDataResponse,
+  input: __S(173) as any as S.Schema<ExportPeopleDataRequest>,
+  output: __S(174) as any as S.Schema<ExportPeopleDataResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22266,8 +17936,8 @@ export const getArchivedMessage: API.OperationMethod<
   GetArchivedMessageError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetArchivedMessageRequest,
-  output: GetArchivedMessageResponse,
+  input: __S(175) as any as S.Schema<GetArchivedMessageRequest>,
+  output: __S(177) as any as S.Schema<GetArchivedMessageResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22281,8 +17951,8 @@ export const getAsset: API.OperationMethod<
   GetAssetError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAssetRequest,
-  output: GetAssetResponse,
+  input: __S(178) as any as S.Schema<GetAssetRequest>,
+  output: __S(69) as any as S.Schema<GetAssetResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22296,8 +17966,8 @@ export const getAssetFolder: API.OperationMethod<
   GetAssetFolderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAssetFolderRequest,
-  output: GetAssetFolderResponse,
+  input: __S(179) as any as S.Schema<GetAssetFolderRequest>,
+  output: __S(180) as any as S.Schema<GetAssetFolderResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22311,8 +17981,8 @@ export const getBroadcast: API.OperationMethod<
   GetBroadcastError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBroadcastRequest,
-  output: GetBroadcastResponse,
+  input: __S(181) as any as S.Schema<GetBroadcastRequest>,
+  output: __S(185) as any as S.Schema<GetBroadcastResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22326,8 +17996,8 @@ export const getBroadcastAction: API.OperationMethod<
   GetBroadcastActionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBroadcastActionRequest,
-  output: GetBroadcastActionResponse,
+  input: __S(186) as any as S.Schema<GetBroadcastActionRequest>,
+  output: __S(187) as any as S.Schema<GetBroadcastActionResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22341,8 +18011,8 @@ export const getBroadcastActionLanguage: API.OperationMethod<
   GetBroadcastActionLanguageError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBroadcastActionLanguageRequest,
-  output: GetBroadcastActionLanguageResponse,
+  input: __S(188) as any as S.Schema<GetBroadcastActionLanguageRequest>,
+  output: __S(189) as any as S.Schema<GetBroadcastActionLanguageResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22356,8 +18026,8 @@ export const getCampaignAction: API.OperationMethod<
   GetCampaignActionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCampaignActionRequest,
-  output: GetCampaignActionResponse,
+  input: __S(190) as any as S.Schema<GetCampaignActionRequest>,
+  output: __S(191) as any as S.Schema<GetCampaignActionResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22371,8 +18041,8 @@ export const getCampaignActionTranslation: API.OperationMethod<
   GetCampaignActionTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCampaignActionTranslationRequest,
-  output: GetCampaignActionTranslationResponse,
+  input: __S(192) as any as S.Schema<GetCampaignActionTranslationRequest>,
+  output: __S(193) as any as S.Schema<GetCampaignActionTranslationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22386,8 +18056,8 @@ export const getCampaignMessages: API.OperationMethod<
   GetCampaignMessagesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCampaignMessagesRequest,
-  output: GetCampaignMessagesResponse,
+  input: __S(194) as any as S.Schema<GetCampaignMessagesRequest>,
+  output: __S(197) as any as S.Schema<GetCampaignMessagesResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22401,8 +18071,8 @@ export const getCampaigns: API.OperationMethod<
   GetCampaignsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCampaignsRequest,
-  output: GetCampaignsResponse,
+  input: __S(198) as any as S.Schema<GetCampaignsRequest>,
+  output: __S(199) as any as S.Schema<GetCampaignsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22416,8 +18086,8 @@ export const getChannels: API.OperationMethod<
   GetChannelsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChannelsRequest,
-  output: GetChannelsResponse,
+  input: __S(200) as any as S.Schema<GetChannelsRequest>,
+  output: __S(203) as any as S.Schema<GetChannelsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22431,8 +18101,8 @@ export const getCioAllowlist: API.OperationMethod<
   GetCioAllowlistError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCioAllowlistRequest,
-  output: GetCioAllowlistResponse,
+  input: __S(204) as any as S.Schema<GetCioAllowlistRequest>,
+  output: __S(205) as any as S.Schema<GetCioAllowlistResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22446,8 +18116,8 @@ export const getCollection: API.OperationMethod<
   GetCollectionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionRequest,
-  output: GetCollectionResponse,
+  input: __S(206) as any as S.Schema<GetCollectionRequest>,
+  output: __S(4) as any as S.Schema<GetCollectionResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22461,8 +18131,8 @@ export const getCollectionContents: API.OperationMethod<
   GetCollectionContentsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionContentsRequest,
-  output: GetCollectionContentsResponse,
+  input: __S(207) as any as S.Schema<GetCollectionContentsRequest>,
+  output: __S(208) as any as S.Schema<GetCollectionContentsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22476,8 +18146,8 @@ export const getCollections: API.OperationMethod<
   GetCollectionsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionsRequest,
-  output: GetCollectionsResponse,
+  input: __S(209) as any as S.Schema<GetCollectionsRequest>,
+  output: __S(211) as any as S.Schema<GetCollectionsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22491,8 +18161,8 @@ export const getComponent: API.OperationMethod<
   GetComponentError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetComponentRequest,
-  output: GetComponentResponse,
+  input: __S(212) as any as S.Schema<GetComponentRequest>,
+  output: __S(75) as any as S.Schema<GetComponentResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22506,8 +18176,8 @@ export const getDomainSuppressionsByType: API.OperationMethod<
   GetDomainSuppressionsByTypeError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainSuppressionsByTypeRequest,
-  output: GetDomainSuppressionsByTypeResponse,
+  input: __S(213) as any as S.Schema<GetDomainSuppressionsByTypeRequest>,
+  output: __S(216) as any as S.Schema<GetDomainSuppressionsByTypeResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22521,8 +18191,8 @@ export const getEmail: API.OperationMethod<
   GetEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailRequest,
-  output: GetEmailResponse,
+  input: __S(217) as any as S.Schema<GetEmailRequest>,
+  output: __S(220) as any as S.Schema<GetEmailResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22536,8 +18206,8 @@ export const getEmailTranslation: API.OperationMethod<
   GetEmailTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmailTranslationRequest,
-  output: GetEmailTranslationResponse,
+  input: __S(221) as any as S.Schema<GetEmailTranslationRequest>,
+  output: __S(224) as any as S.Schema<GetEmailTranslationResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22551,8 +18221,8 @@ export const getExport: API.OperationMethod<
   GetExportError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExportRequest,
-  output: GetExportResponse,
+  input: __S(225) as any as S.Schema<GetExportRequest>,
+  output: __S(227) as any as S.Schema<GetExportResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22566,8 +18236,8 @@ export const getFolder: API.OperationMethod<
   GetFolderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFolderRequest,
-  output: GetFolderResponse,
+  input: __S(228) as any as S.Schema<GetFolderRequest>,
+  output: __S(124) as any as S.Schema<GetFolderResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22581,8 +18251,8 @@ export const getImport: API.OperationMethod<
   GetImportError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetImportRequest,
-  output: GetImportResponse,
+  input: __S(229) as any as S.Schema<GetImportRequest>,
+  output: __S(231) as any as S.Schema<GetImportResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22596,8 +18266,8 @@ export const getInboxPreviewCapture: API.OperationMethod<
   GetInboxPreviewCaptureError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInboxPreviewCaptureRequest,
-  output: GetInboxPreviewCaptureResponse,
+  input: __S(232) as any as S.Schema<GetInboxPreviewCaptureRequest>,
+  output: __S(148) as any as S.Schema<GetInboxPreviewCaptureResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22611,8 +18281,8 @@ export const getInboxPreviewCredits: API.OperationMethod<
   GetInboxPreviewCreditsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInboxPreviewCreditsRequest,
-  output: GetInboxPreviewCreditsResponse,
+  input: __S(233) as any as S.Schema<GetInboxPreviewCreditsRequest>,
+  output: __S(236) as any as S.Schema<GetInboxPreviewCreditsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22626,8 +18296,8 @@ export const getInboxPreviewJob: API.OperationMethod<
   GetInboxPreviewJobError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInboxPreviewJobRequest,
-  output: GetInboxPreviewJobResponse,
+  input: __S(237) as any as S.Schema<GetInboxPreviewJobRequest>,
+  output: __S(242) as any as S.Schema<GetInboxPreviewJobResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22641,8 +18311,8 @@ export const getLiveNotification: API.OperationMethod<
   GetLiveNotificationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLiveNotificationRequest,
-  output: GetLiveNotificationResponse,
+  input: __S(243) as any as S.Schema<GetLiveNotificationRequest>,
+  output: __S(245) as any as S.Schema<GetLiveNotificationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22656,8 +18326,8 @@ export const getMessage: API.OperationMethod<
   GetMessageError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMessageRequest,
-  output: GetMessageResponse,
+  input: __S(246) as any as S.Schema<GetMessageRequest>,
+  output: __S(248) as any as S.Schema<GetMessageResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22671,8 +18341,8 @@ export const getNewsletterLinks: API.OperationMethod<
   GetNewsletterLinksError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNewsletterLinksRequest,
-  output: GetNewsletterLinksResponse,
+  input: __S(249) as any as S.Schema<GetNewsletterLinksRequest>,
+  output: __S(51) as any as S.Schema<GetNewsletterLinksResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22686,8 +18356,8 @@ export const getNewsletterMetrics: API.OperationMethod<
   GetNewsletterMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNewsletterMetricsRequest,
-  output: GetNewsletterMetricsResponse,
+  input: __S(250) as any as S.Schema<GetNewsletterMetricsRequest>,
+  output: __S(252) as any as S.Schema<GetNewsletterMetricsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22701,8 +18371,8 @@ export const getNewsletterMsgMeta: API.OperationMethod<
   GetNewsletterMsgMetaError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNewsletterMsgMetaRequest,
-  output: GetNewsletterMsgMetaResponse,
+  input: __S(253) as any as S.Schema<GetNewsletterMsgMetaRequest>,
+  output: __S(256) as any as S.Schema<GetNewsletterMsgMetaResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22716,8 +18386,8 @@ export const getNewsletters: API.OperationMethod<
   GetNewslettersError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNewslettersRequest,
-  output: GetNewslettersResponse,
+  input: __S(257) as any as S.Schema<GetNewslettersRequest>,
+  output: __S(259) as any as S.Schema<GetNewslettersResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22731,8 +18401,8 @@ export const getNewsletterTestGroups: API.OperationMethod<
   GetNewsletterTestGroupsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNewsletterTestGroupsRequest,
-  output: GetNewsletterTestGroupsResponse,
+  input: __S(260) as any as S.Schema<GetNewsletterTestGroupsRequest>,
+  output: __S(263) as any as S.Schema<GetNewsletterTestGroupsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22746,8 +18416,8 @@ export const getNewsletterVariant: API.OperationMethod<
   GetNewsletterVariantError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNewsletterVariantRequest,
-  output: GetNewsletterVariantResponse,
+  input: __S(264) as any as S.Schema<GetNewsletterVariantRequest>,
+  output: __S(266) as any as S.Schema<GetNewsletterVariantResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22761,8 +18431,8 @@ export const getNewsletterVariantTranslation: API.OperationMethod<
   GetNewsletterVariantTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNewsletterVariantTranslationRequest,
-  output: GetNewsletterVariantTranslationResponse,
+  input: __S(267) as any as S.Schema<GetNewsletterVariantTranslationRequest>,
+  output: __S(266) as any as S.Schema<GetNewsletterVariantTranslationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22776,8 +18446,8 @@ export const getNewsletterVariantTranslationTest: API.OperationMethod<
   GetNewsletterVariantTranslationTestError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNewsletterVariantTranslationTestRequest,
-  output: GetNewsletterVariantTranslationTestResponse,
+  input: __S(268) as any as S.Schema<GetNewsletterVariantTranslationTestRequest>,
+  output: __S(266) as any as S.Schema<GetNewsletterVariantTranslationTestResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22791,8 +18461,8 @@ export const getObjectAttributes: API.OperationMethod<
   GetObjectAttributesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetObjectAttributesRequest,
-  output: GetObjectAttributesResponse,
+  input: __S(269) as any as S.Schema<GetObjectAttributesRequest>,
+  output: __S(273) as any as S.Schema<GetObjectAttributesResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22806,8 +18476,8 @@ export const getObjectRelationships: API.OperationMethod<
   GetObjectRelationshipsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetObjectRelationshipsRequest,
-  output: GetObjectRelationshipsResponse,
+  input: __S(274) as any as S.Schema<GetObjectRelationshipsRequest>,
+  output: __S(278) as any as S.Schema<GetObjectRelationshipsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22821,8 +18491,8 @@ export const getObjectsFilter: API.OperationMethod<
   GetObjectsFilterError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetObjectsFilterRequest,
-  output: GetObjectsFilterResponse,
+  input: __S(279) as any as S.Schema<GetObjectsFilterRequest>,
+  output: __S(282) as any as S.Schema<GetObjectsFilterResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22836,8 +18506,8 @@ export const getObjectTypes: API.OperationMethod<
   GetObjectTypesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetObjectTypesRequest,
-  output: GetObjectTypesResponse,
+  input: __S(283) as any as S.Schema<GetObjectTypesRequest>,
+  output: __S(286) as any as S.Schema<GetObjectTypesResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22851,8 +18521,8 @@ export const getOptouts: API.OperationMethod<
   GetOptoutsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOptoutsRequest,
-  output: GetOptoutsResponse,
+  input: __S(287) as any as S.Schema<GetOptoutsRequest>,
+  output: __S(292) as any as S.Schema<GetOptoutsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22866,8 +18536,8 @@ export const getPeopleById: API.OperationMethod<
   GetPeopleByIdError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPeopleByIdRequest,
-  output: GetPeopleByIdResponse,
+  input: __S(293) as any as S.Schema<GetPeopleByIdRequest>,
+  output: __S(302) as any as S.Schema<GetPeopleByIdResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22881,8 +18551,8 @@ export const getPeopleEmail: API.OperationMethod<
   GetPeopleEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPeopleEmailRequest,
-  output: GetPeopleEmailResponse,
+  input: __S(303) as any as S.Schema<GetPeopleEmailRequest>,
+  output: __S(306) as any as S.Schema<GetPeopleEmailResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22896,8 +18566,8 @@ export const getPeopleFilter: API.OperationMethod<
   GetPeopleFilterError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPeopleFilterRequest,
-  output: GetPeopleFilterResponse,
+  input: __S(307) as any as S.Schema<GetPeopleFilterRequest>,
+  output: __S(308) as any as S.Schema<GetPeopleFilterResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22911,8 +18581,8 @@ export const getPersonActivities: API.OperationMethod<
   GetPersonActivitiesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPersonActivitiesRequest,
-  output: GetPersonActivitiesResponse,
+  input: __S(309) as any as S.Schema<GetPersonActivitiesRequest>,
+  output: __S(312) as any as S.Schema<GetPersonActivitiesResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22926,8 +18596,8 @@ export const getPersonAttributes: API.OperationMethod<
   GetPersonAttributesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPersonAttributesRequest,
-  output: GetPersonAttributesResponse,
+  input: __S(313) as any as S.Schema<GetPersonAttributesRequest>,
+  output: __S(318) as any as S.Schema<GetPersonAttributesResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22941,8 +18611,8 @@ export const getPersonMessages: API.OperationMethod<
   GetPersonMessagesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPersonMessagesRequest,
-  output: GetPersonMessagesResponse,
+  input: __S(319) as any as S.Schema<GetPersonMessagesRequest>,
+  output: __S(323) as any as S.Schema<GetPersonMessagesResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22956,8 +18626,8 @@ export const getPersonOptouts: API.OperationMethod<
   GetPersonOptoutsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPersonOptoutsRequest,
-  output: GetPersonOptoutsResponse,
+  input: __S(324) as any as S.Schema<GetPersonOptoutsRequest>,
+  output: __S(325) as any as S.Schema<GetPersonOptoutsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22971,8 +18641,8 @@ export const getPersonRelationships: API.OperationMethod<
   GetPersonRelationshipsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPersonRelationshipsRequest,
-  output: GetPersonRelationshipsResponse,
+  input: __S(326) as any as S.Schema<GetPersonRelationshipsRequest>,
+  output: __S(332) as any as S.Schema<GetPersonRelationshipsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -22986,8 +18656,8 @@ export const getPersonSegments: API.OperationMethod<
   GetPersonSegmentsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPersonSegmentsRequest,
-  output: GetPersonSegmentsResponse,
+  input: __S(333) as any as S.Schema<GetPersonSegmentsRequest>,
+  output: __S(336) as any as S.Schema<GetPersonSegmentsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23001,8 +18671,8 @@ export const getPersonSubscriptionPreferences: API.OperationMethod<
   GetPersonSubscriptionPreferencesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPersonSubscriptionPreferencesRequest,
-  output: GetPersonSubscriptionPreferencesResponse,
+  input: __S(337) as any as S.Schema<GetPersonSubscriptionPreferencesRequest>,
+  output: __S(342) as any as S.Schema<GetPersonSubscriptionPreferencesResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23021,8 +18691,8 @@ export const getPublishStatus: API.OperationMethod<
   GetPublishStatusError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPublishStatusRequest,
-  output: GetPublishStatusResponse,
+  input: __S(343) as any as S.Schema<GetPublishStatusRequest>,
+  output: __S(346) as any as S.Schema<GetPublishStatusResponse>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23036,8 +18706,8 @@ export const getSegment: API.OperationMethod<
   GetSegmentError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentRequest,
-  output: GetSegmentResponse,
+  input: __S(347) as any as S.Schema<GetSegmentRequest>,
+  output: __S(349) as any as S.Schema<GetSegmentResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23051,8 +18721,8 @@ export const getSegmentCount: API.OperationMethod<
   GetSegmentCountError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentCountRequest,
-  output: GetSegmentCountResponse,
+  input: __S(350) as any as S.Schema<GetSegmentCountRequest>,
+  output: __S(351) as any as S.Schema<GetSegmentCountResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23066,8 +18736,8 @@ export const getSegmentDependencies: API.OperationMethod<
   GetSegmentDependenciesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentDependenciesRequest,
-  output: GetSegmentDependenciesResponse,
+  input: __S(352) as any as S.Schema<GetSegmentDependenciesRequest>,
+  output: __S(354) as any as S.Schema<GetSegmentDependenciesResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23081,8 +18751,8 @@ export const getSegmentMembership: API.OperationMethod<
   GetSegmentMembershipError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentMembershipRequest,
-  output: GetSegmentMembershipResponse,
+  input: __S(355) as any as S.Schema<GetSegmentMembershipRequest>,
+  output: __S(356) as any as S.Schema<GetSegmentMembershipResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23096,8 +18766,8 @@ export const getSender: API.OperationMethod<
   GetSenderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSenderRequest,
-  output: GetSenderResponse,
+  input: __S(357) as any as S.Schema<GetSenderRequest>,
+  output: __S(359) as any as S.Schema<GetSenderResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23111,8 +18781,8 @@ export const getSenderUsage: API.OperationMethod<
   GetSenderUsageError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSenderUsageRequest,
-  output: GetSenderUsageResponse,
+  input: __S(360) as any as S.Schema<GetSenderUsageRequest>,
+  output: __S(361) as any as S.Schema<GetSenderUsageResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23126,8 +18796,8 @@ export const getSubscriptionCenterToken: API.OperationMethod<
   GetSubscriptionCenterTokenError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionCenterTokenRequest,
-  output: GetSubscriptionCenterTokenResponse,
+  input: __S(362) as any as S.Schema<GetSubscriptionCenterTokenRequest>,
+  output: __S(363) as any as S.Schema<GetSubscriptionCenterTokenResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23141,8 +18811,8 @@ export const getSuppression: API.OperationMethod<
   GetSuppressionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSuppressionRequest,
-  output: GetSuppressionResponse,
+  input: __S(364) as any as S.Schema<GetSuppressionRequest>,
+  output: __S(365) as any as S.Schema<GetSuppressionResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23156,8 +18826,8 @@ export const getSuppressionByType: API.OperationMethod<
   GetSuppressionByTypeError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSuppressionByTypeRequest,
-  output: GetSuppressionByTypeResponse,
+  input: __S(366) as any as S.Schema<GetSuppressionByTypeRequest>,
+  output: __S(367) as any as S.Schema<GetSuppressionByTypeResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23171,8 +18841,8 @@ export const getTopics: API.OperationMethod<
   GetTopicsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTopicsRequest,
-  output: GetTopicsResponse,
+  input: __S(368) as any as S.Schema<GetTopicsRequest>,
+  output: __S(371) as any as S.Schema<GetTopicsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23186,8 +18856,8 @@ export const getTransactional: API.OperationMethod<
   GetTransactionalError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransactionalRequest,
-  output: GetTransactionalResponse,
+  input: __S(372) as any as S.Schema<GetTransactionalRequest>,
+  output: __S(374) as any as S.Schema<GetTransactionalResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23201,8 +18871,8 @@ export const getTransactionalTranslationById: API.OperationMethod<
   GetTransactionalTranslationByIdError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransactionalTranslationByIdRequest,
-  output: GetTransactionalTranslationByIdResponse,
+  input: __S(375) as any as S.Schema<GetTransactionalTranslationByIdRequest>,
+  output: __S(377) as any as S.Schema<GetTransactionalTranslationByIdResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23216,8 +18886,8 @@ export const getTransactionalVariant: API.OperationMethod<
   GetTransactionalVariantError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransactionalVariantRequest,
-  output: GetTransactionalVariantResponse,
+  input: __S(378) as any as S.Schema<GetTransactionalVariantRequest>,
+  output: __S(380) as any as S.Schema<GetTransactionalVariantResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23231,8 +18901,8 @@ export const getVariantLinks: API.OperationMethod<
   GetVariantLinksError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVariantLinksRequest,
-  output: GetVariantLinksResponse,
+  input: __S(381) as any as S.Schema<GetVariantLinksRequest>,
+  output: __S(31) as any as S.Schema<GetVariantLinksResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23246,8 +18916,8 @@ export const getVariantMetrics: API.OperationMethod<
   GetVariantMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVariantMetricsRequest,
-  output: GetVariantMetricsResponse,
+  input: __S(382) as any as S.Schema<GetVariantMetricsRequest>,
+  output: __S(385) as any as S.Schema<GetVariantMetricsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23261,8 +18931,8 @@ export const getVersion: API.OperationMethod<
   GetVersionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVersionRequest,
-  output: GetVersionResponse,
+  input: __S(386) as any as S.Schema<GetVersionRequest>,
+  output: __S(393) as any as S.Schema<GetVersionResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23276,8 +18946,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhookRequest,
-  output: GetWebhookResponse,
+  input: __S(394) as any as S.Schema<GetWebhookRequest>,
+  output: __S(146) as any as S.Schema<GetWebhookResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23291,8 +18961,8 @@ export const Import: API.OperationMethod<
   ImportError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportRequest,
-  output: ImportResponse,
+  input: __S(395) as any as S.Schema<ImportRequest>,
+  output: __S(397) as any as S.Schema<ImportResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23306,8 +18976,8 @@ export const linkEmail: API.OperationMethod<
   LinkEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LinkEmailRequest,
-  output: LinkEmailResponse,
+  input: __S(399) as any as S.Schema<LinkEmailRequest>,
+  output: __S(400) as any as S.Schema<LinkEmailResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23321,8 +18991,8 @@ export const listActivities: API.OperationMethod<
   ListActivitiesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListActivitiesRequest,
-  output: ListActivitiesResponse,
+  input: __S(401) as any as S.Schema<ListActivitiesRequest>,
+  output: __S(404) as any as S.Schema<ListActivitiesResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23336,8 +19006,8 @@ export const listAssetFolders: API.OperationMethod<
   ListAssetFoldersError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAssetFoldersRequest,
-  output: ListAssetFoldersResponse,
+  input: __S(405) as any as S.Schema<ListAssetFoldersRequest>,
+  output: __S(410) as any as S.Schema<ListAssetFoldersResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23351,8 +19021,8 @@ export const listAssets: API.OperationMethod<
   ListAssetsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAssetsRequest,
-  output: ListAssetsResponse,
+  input: __S(411) as any as S.Schema<ListAssetsRequest>,
+  output: __S(413) as any as S.Schema<ListAssetsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23366,8 +19036,8 @@ export const listBroadcasts: API.OperationMethod<
   ListBroadcastsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBroadcastsRequest,
-  output: ListBroadcastsResponse,
+  input: __S(414) as any as S.Schema<ListBroadcastsRequest>,
+  output: __S(417) as any as S.Schema<ListBroadcastsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23381,8 +19051,8 @@ export const listBroadcastTriggers: API.OperationMethod<
   ListBroadcastTriggersError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBroadcastTriggersRequest,
-  output: ListBroadcastTriggersResponse,
+  input: __S(418) as any as S.Schema<ListBroadcastTriggersRequest>,
+  output: __S(420) as any as S.Schema<ListBroadcastTriggersResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23396,8 +19066,8 @@ export const listCampaignActions: API.OperationMethod<
   ListCampaignActionsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCampaignActionsRequest,
-  output: ListCampaignActionsResponse,
+  input: __S(421) as any as S.Schema<ListCampaignActionsRequest>,
+  output: __S(423) as any as S.Schema<ListCampaignActionsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23411,8 +19081,8 @@ export const listCampaigns: API.OperationMethod<
   ListCampaignsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCampaignsRequest,
-  output: ListCampaignsResponse,
+  input: __S(424) as any as S.Schema<ListCampaignsRequest>,
+  output: __S(426) as any as S.Schema<ListCampaignsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23426,8 +19096,8 @@ export const listComponents: API.OperationMethod<
   ListComponentsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListComponentsRequest,
-  output: ListComponentsResponse,
+  input: __S(427) as any as S.Schema<ListComponentsRequest>,
+  output: __S(432) as any as S.Schema<ListComponentsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23441,8 +19111,8 @@ export const listEmails: API.OperationMethod<
   ListEmailsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmailsRequest,
-  output: ListEmailsResponse,
+  input: __S(433) as any as S.Schema<ListEmailsRequest>,
+  output: __S(436) as any as S.Schema<ListEmailsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23456,8 +19126,8 @@ export const listEmailTranslations: API.OperationMethod<
   ListEmailTranslationsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEmailTranslationsRequest,
-  output: ListEmailTranslationsResponse,
+  input: __S(437) as any as S.Schema<ListEmailTranslationsRequest>,
+  output: __S(443) as any as S.Schema<ListEmailTranslationsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23471,8 +19141,8 @@ export const listExports: API.OperationMethod<
   ListExportsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListExportsRequest,
-  output: ListExportsResponse,
+  input: __S(444) as any as S.Schema<ListExportsRequest>,
+  output: __S(446) as any as S.Schema<ListExportsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23486,8 +19156,8 @@ export const listFolders: API.OperationMethod<
   ListFoldersError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFoldersRequest,
-  output: ListFoldersResponse,
+  input: __S(447) as any as S.Schema<ListFoldersRequest>,
+  output: __S(448) as any as S.Schema<ListFoldersResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23501,8 +19171,8 @@ export const listInboxPreviewClients: API.OperationMethod<
   ListInboxPreviewClientsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInboxPreviewClientsRequest,
-  output: ListInboxPreviewClientsResponse,
+  input: __S(449) as any as S.Schema<ListInboxPreviewClientsRequest>,
+  output: __S(452) as any as S.Schema<ListInboxPreviewClientsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23516,8 +19186,8 @@ export const listInboxPreviewJobs: API.OperationMethod<
   ListInboxPreviewJobsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInboxPreviewJobsRequest,
-  output: ListInboxPreviewJobsResponse,
+  input: __S(453) as any as S.Schema<ListInboxPreviewJobsRequest>,
+  output: __S(458) as any as S.Schema<ListInboxPreviewJobsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23531,8 +19201,8 @@ export const listMessages: API.OperationMethod<
   ListMessagesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMessagesRequest,
-  output: ListMessagesResponse,
+  input: __S(459) as any as S.Schema<ListMessagesRequest>,
+  output: __S(462) as any as S.Schema<ListMessagesResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23546,8 +19216,8 @@ export const listNewsletters: API.OperationMethod<
   ListNewslettersError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNewslettersRequest,
-  output: ListNewslettersResponse,
+  input: __S(463) as any as S.Schema<ListNewslettersRequest>,
+  output: __S(466) as any as S.Schema<ListNewslettersResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23561,8 +19231,8 @@ export const listNewsletterVariants: API.OperationMethod<
   ListNewsletterVariantsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNewsletterVariantsRequest,
-  output: ListNewsletterVariantsResponse,
+  input: __S(467) as any as S.Schema<ListNewsletterVariantsRequest>,
+  output: __S(469) as any as S.Schema<ListNewsletterVariantsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23576,8 +19246,8 @@ export const listSegments: API.OperationMethod<
   ListSegmentsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSegmentsRequest,
-  output: ListSegmentsResponse,
+  input: __S(470) as any as S.Schema<ListSegmentsRequest>,
+  output: __S(473) as any as S.Schema<ListSegmentsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23591,8 +19261,8 @@ export const listSenders: API.OperationMethod<
   ListSendersError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSendersRequest,
-  output: ListSendersResponse,
+  input: __S(474) as any as S.Schema<ListSendersRequest>,
+  output: __S(476) as any as S.Schema<ListSendersResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23606,8 +19276,8 @@ export const listSnippets: API.OperationMethod<
   ListSnippetsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSnippetsRequest,
-  output: ListSnippetsResponse,
+  input: __S(477) as any as S.Schema<ListSnippetsRequest>,
+  output: __S(479) as any as S.Schema<ListSnippetsResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23621,8 +19291,8 @@ export const listTransactional: API.OperationMethod<
   ListTransactionalError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTransactionalRequest,
-  output: ListTransactionalResponse,
+  input: __S(480) as any as S.Schema<ListTransactionalRequest>,
+  output: __S(482) as any as S.Schema<ListTransactionalResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23636,8 +19306,8 @@ export const listTransactionalVariants: API.OperationMethod<
   ListTransactionalVariantsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTransactionalVariantsRequest,
-  output: ListTransactionalVariantsResponse,
+  input: __S(483) as any as S.Schema<ListTransactionalVariantsRequest>,
+  output: __S(484) as any as S.Schema<ListTransactionalVariantsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23651,8 +19321,8 @@ export const listVersions: API.OperationMethod<
   ListVersionsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVersionsRequest,
-  output: ListVersionsResponse,
+  input: __S(485) as any as S.Schema<ListVersionsRequest>,
+  output: __S(487) as any as S.Schema<ListVersionsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23666,8 +19336,8 @@ export const listWebhooks: API.OperationMethod<
   ListWebhooksError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebhooksRequest,
-  output: ListWebhooksResponse,
+  input: __S(488) as any as S.Schema<ListWebhooksRequest>,
+  output: __S(491) as any as S.Schema<ListWebhooksResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23681,8 +19351,8 @@ export const listWorkspaces: API.OperationMethod<
   ListWorkspacesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkspacesRequest,
-  output: ListWorkspacesResponse,
+  input: __S(492) as any as S.Schema<ListWorkspacesRequest>,
+  output: __S(495) as any as S.Schema<ListWorkspacesResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23696,8 +19366,8 @@ export const postSuppression: API.OperationMethod<
   PostSuppressionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostSuppressionRequest,
-  output: PostSuppressionResponse,
+  input: __S(496) as any as S.Schema<PostSuppressionRequest>,
+  output: __S(497) as any as S.Schema<PostSuppressionResponse>,
   errors: [UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23711,8 +19381,8 @@ export const previewEmail: API.OperationMethod<
   PreviewEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PreviewEmailRequest,
-  output: PreviewEmailResponse,
+  input: __S(498) as any as S.Schema<PreviewEmailRequest>,
+  output: __S(504) as any as S.Schema<PreviewEmailResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23731,8 +19401,8 @@ export const publishEmail: API.OperationMethod<
   PublishEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishEmailRequest,
-  output: PublishEmailResponse,
+  input: __S(505) as any as S.Schema<PublishEmailRequest>,
+  output: __S(506) as any as S.Schema<PublishEmailResponse>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23746,8 +19416,8 @@ export const renderEmail: API.OperationMethod<
   RenderEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RenderEmailRequest,
-  output: RenderEmailResponse,
+  input: __S(507) as any as S.Schema<RenderEmailRequest>,
+  output: __S(508) as any as S.Schema<RenderEmailResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23761,8 +19431,8 @@ export const restoreVersion: API.OperationMethod<
   RestoreVersionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreVersionRequest,
-  output: RestoreVersionResponse,
+  input: __S(509) as any as S.Schema<RestoreVersionRequest>,
+  output: __S(510) as any as S.Schema<RestoreVersionResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23776,8 +19446,8 @@ export const reviewEmail: API.OperationMethod<
   ReviewEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReviewEmailRequest,
-  output: ReviewEmailResponse,
+  input: __S(511) as any as S.Schema<ReviewEmailRequest>,
+  output: __S(518) as any as S.Schema<ReviewEmailResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23791,8 +19461,8 @@ export const saveVersion: API.OperationMethod<
   SaveVersionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SaveVersionRequest,
-  output: SaveVersionResponse,
+  input: __S(519) as any as S.Schema<SaveVersionRequest>,
+  output: __S(520) as any as S.Schema<SaveVersionResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23810,8 +19480,8 @@ export const scheduleNewsletter: API.OperationMethod<
   ScheduleNewsletterError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScheduleNewsletterRequest,
-  output: ScheduleNewsletterResponse,
+  input: __S(521) as any as S.Schema<ScheduleNewsletterRequest>,
+  output: __S(523) as any as S.Schema<ScheduleNewsletterResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23825,8 +19495,8 @@ export const sendEmail: API.OperationMethod<
   SendEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendEmailRequest,
-  output: SendEmailResponse,
+  input: __S(525) as any as S.Schema<SendEmailRequest>,
+  output: __S(526) as any as S.Schema<SendEmailResponse>,
   errors: [BadRequest, Forbidden, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23840,8 +19510,8 @@ export const sendInApp: API.OperationMethod<
   SendInAppError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendInAppRequest,
-  output: SendInAppResponse,
+  input: __S(527) as any as S.Schema<SendInAppRequest>,
+  output: __S(526) as any as S.Schema<SendInAppResponse>,
   errors: [BadRequest, Forbidden, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23855,8 +19525,8 @@ export const sendInboxMessage: API.OperationMethod<
   SendInboxMessageError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendInboxMessageRequest,
-  output: SendInboxMessageResponse,
+  input: __S(528) as any as S.Schema<SendInboxMessageRequest>,
+  output: __S(526) as any as S.Schema<SendInboxMessageResponse>,
   errors: [BadRequest, Forbidden, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23870,8 +19540,8 @@ export const sendNewsletter: API.OperationMethod<
   SendNewsletterError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendNewsletterRequest,
-  output: SendNewsletterResponse,
+  input: __S(529) as any as S.Schema<SendNewsletterRequest>,
+  output: __S(531) as any as S.Schema<SendNewsletterResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23885,8 +19555,8 @@ export const sendPush: API.OperationMethod<
   SendPushError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendPushRequest,
-  output: SendPushResponse,
+  input: __S(540) as any as S.Schema<SendPushRequest>,
+  output: __S(526) as any as S.Schema<SendPushResponse>,
   errors: [BadRequest, Forbidden, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23900,8 +19570,8 @@ export const sendSMS: API.OperationMethod<
   SendSMSError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendSMSRequest,
-  output: SendSMSResponse,
+  input: __S(541) as any as S.Schema<SendSMSRequest>,
+  output: __S(526) as any as S.Schema<SendSMSResponse>,
   errors: [BadRequest, Forbidden, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23915,8 +19585,8 @@ export const sendWhatsApp: API.OperationMethod<
   SendWhatsAppError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendWhatsAppRequest,
-  output: SendWhatsAppResponse,
+  input: __S(542) as any as S.Schema<SendWhatsAppRequest>,
+  output: __S(526) as any as S.Schema<SendWhatsAppResponse>,
   errors: [BadRequest, Forbidden, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23930,8 +19600,8 @@ export const startLiveNotification: API.OperationMethod<
   StartLiveNotificationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartLiveNotificationRequest,
-  output: StartLiveNotificationResponse,
+  input: __S(544) as any as S.Schema<StartLiveNotificationRequest>,
+  output: __S(169) as any as S.Schema<StartLiveNotificationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23951,8 +19621,8 @@ export const submitInboxPreview: API.OperationMethod<
   SubmitInboxPreviewError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubmitInboxPreviewRequest,
-  output: SubmitInboxPreviewResponse,
+  input: __S(545) as any as S.Schema<SubmitInboxPreviewRequest>,
+  output: __S(546) as any as S.Schema<SubmitInboxPreviewResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23966,8 +19636,8 @@ export const testSendEmail: API.OperationMethod<
   TestSendEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestSendEmailRequest,
-  output: TestSendEmailResponse,
+  input: __S(547) as any as S.Schema<TestSendEmailRequest>,
+  output: __S(548) as any as S.Schema<TestSendEmailResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23981,8 +19651,8 @@ export const transactionalLinks: API.OperationMethod<
   TransactionalLinksError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransactionalLinksRequest,
-  output: TransactionalLinksResponse,
+  input: __S(549) as any as S.Schema<TransactionalLinksRequest>,
+  output: __S(51) as any as S.Schema<TransactionalLinksResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -23996,8 +19666,8 @@ export const transactionalMessages: API.OperationMethod<
   TransactionalMessagesError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransactionalMessagesRequest,
-  output: TransactionalMessagesResponse,
+  input: __S(550) as any as S.Schema<TransactionalMessagesRequest>,
+  output: __S(553) as any as S.Schema<TransactionalMessagesResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24011,8 +19681,8 @@ export const transactionalMetrics: API.OperationMethod<
   TransactionalMetricsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransactionalMetricsRequest,
-  output: TransactionalMetricsResponse,
+  input: __S(554) as any as S.Schema<TransactionalMetricsRequest>,
+  output: __S(555) as any as S.Schema<TransactionalMetricsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24026,8 +19696,8 @@ export const triggerBroadcast: API.OperationMethod<
   TriggerBroadcastError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TriggerBroadcastRequest,
-  output: TriggerBroadcastResponse,
+  input: __S(556) as any as S.Schema<TriggerBroadcastRequest>,
+  output: __S(557) as any as S.Schema<TriggerBroadcastResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24041,8 +19711,8 @@ export const updateAsset: API.OperationMethod<
   UpdateAssetError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAssetRequest,
-  output: UpdateAssetResponse,
+  input: __S(558) as any as S.Schema<UpdateAssetRequest>,
+  output: __S(148) as any as S.Schema<UpdateAssetResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24056,8 +19726,8 @@ export const updateAssetFolder: API.OperationMethod<
   UpdateAssetFolderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAssetFolderRequest,
-  output: UpdateAssetFolderResponse,
+  input: __S(559) as any as S.Schema<UpdateAssetFolderRequest>,
+  output: __S(148) as any as S.Schema<UpdateAssetFolderResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24071,8 +19741,8 @@ export const updateAttributeMetadata: API.OperationMethod<
   UpdateAttributeMetadataError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAttributeMetadataRequest,
-  output: UpdateAttributeMetadataResponse,
+  input: __S(562) as any as S.Schema<UpdateAttributeMetadataRequest>,
+  output: __S(563) as any as S.Schema<UpdateAttributeMetadataResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24086,8 +19756,8 @@ export const updateBroadcastAction: API.OperationMethod<
   UpdateBroadcastActionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBroadcastActionRequest,
-  output: UpdateBroadcastActionResponse,
+  input: __S(564) as any as S.Schema<UpdateBroadcastActionRequest>,
+  output: __S(565) as any as S.Schema<UpdateBroadcastActionResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24101,8 +19771,8 @@ export const updateBroadcastActionLanguage: API.OperationMethod<
   UpdateBroadcastActionLanguageError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBroadcastActionLanguageRequest,
-  output: UpdateBroadcastActionLanguageResponse,
+  input: __S(566) as any as S.Schema<UpdateBroadcastActionLanguageRequest>,
+  output: __S(567) as any as S.Schema<UpdateBroadcastActionLanguageResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24116,8 +19786,8 @@ export const updateCampaignAction: API.OperationMethod<
   UpdateCampaignActionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCampaignActionRequest,
-  output: UpdateCampaignActionResponse,
+  input: __S(568) as any as S.Schema<UpdateCampaignActionRequest>,
+  output: __S(569) as any as S.Schema<UpdateCampaignActionResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24131,8 +19801,8 @@ export const updateCampaignActionTranslation: API.OperationMethod<
   UpdateCampaignActionTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCampaignActionTranslationRequest,
-  output: UpdateCampaignActionTranslationResponse,
+  input: __S(570) as any as S.Schema<UpdateCampaignActionTranslationRequest>,
+  output: __S(571) as any as S.Schema<UpdateCampaignActionTranslationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24146,8 +19816,8 @@ export const updateCollection: API.OperationMethod<
   UpdateCollectionError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCollectionRequest,
-  output: UpdateCollectionResponse,
+  input: __S(572) as any as S.Schema<UpdateCollectionRequest>,
+  output: __S(4) as any as S.Schema<UpdateCollectionResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24161,8 +19831,8 @@ export const updateCollectionContents: API.OperationMethod<
   UpdateCollectionContentsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCollectionContentsRequest,
-  output: UpdateCollectionContentsResponse,
+  input: __S(573) as any as S.Schema<UpdateCollectionContentsRequest>,
+  output: __S(574) as any as S.Schema<UpdateCollectionContentsResponse>,
   errors: [NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24176,8 +19846,8 @@ export const updateComponent: API.OperationMethod<
   UpdateComponentError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateComponentRequest,
-  output: UpdateComponentResponse,
+  input: __S(575) as any as S.Schema<UpdateComponentRequest>,
+  output: __S(148) as any as S.Schema<UpdateComponentResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24191,8 +19861,8 @@ export const updateEmail: API.OperationMethod<
   UpdateEmailError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEmailRequest,
-  output: UpdateEmailResponse,
+  input: __S(577) as any as S.Schema<UpdateEmailRequest>,
+  output: __S(148) as any as S.Schema<UpdateEmailResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24206,8 +19876,8 @@ export const updateEmailTranslation: API.OperationMethod<
   UpdateEmailTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEmailTranslationRequest,
-  output: UpdateEmailTranslationResponse,
+  input: __S(579) as any as S.Schema<UpdateEmailTranslationRequest>,
+  output: __S(148) as any as S.Schema<UpdateEmailTranslationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24221,8 +19891,8 @@ export const updateEventMetadata: API.OperationMethod<
   UpdateEventMetadataError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEventMetadataRequest,
-  output: UpdateEventMetadataResponse,
+  input: __S(581) as any as S.Schema<UpdateEventMetadataRequest>,
+  output: __S(148) as any as S.Schema<UpdateEventMetadataResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24236,8 +19906,8 @@ export const updateFolder: API.OperationMethod<
   UpdateFolderError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFolderRequest,
-  output: UpdateFolderResponse,
+  input: __S(582) as any as S.Schema<UpdateFolderRequest>,
+  output: __S(148) as any as S.Schema<UpdateFolderResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24251,8 +19921,8 @@ export const updateLiveNotification: API.OperationMethod<
   UpdateLiveNotificationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLiveNotificationRequest,
-  output: UpdateLiveNotificationResponse,
+  input: __S(583) as any as S.Schema<UpdateLiveNotificationRequest>,
+  output: __S(169) as any as S.Schema<UpdateLiveNotificationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24266,8 +19936,8 @@ export const updateNewsletterTestTranslation: API.OperationMethod<
   UpdateNewsletterTestTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNewsletterTestTranslationRequest,
-  output: UpdateNewsletterTestTranslationResponse,
+  input: __S(584) as any as S.Schema<UpdateNewsletterTestTranslationRequest>,
+  output: __S(266) as any as S.Schema<UpdateNewsletterTestTranslationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24281,8 +19951,8 @@ export const updateNewsletterVariant: API.OperationMethod<
   UpdateNewsletterVariantError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNewsletterVariantRequest,
-  output: UpdateNewsletterVariantResponse,
+  input: __S(585) as any as S.Schema<UpdateNewsletterVariantRequest>,
+  output: __S(266) as any as S.Schema<UpdateNewsletterVariantResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24296,8 +19966,8 @@ export const updateNewsletterVariantTranslation: API.OperationMethod<
   UpdateNewsletterVariantTranslationError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNewsletterVariantTranslationRequest,
-  output: UpdateNewsletterVariantTranslationResponse,
+  input: __S(586) as any as S.Schema<UpdateNewsletterVariantTranslationRequest>,
+  output: __S(266) as any as S.Schema<UpdateNewsletterVariantTranslationResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24311,8 +19981,8 @@ export const updatePersonOptouts: API.OperationMethod<
   UpdatePersonOptoutsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePersonOptoutsRequest,
-  output: UpdatePersonOptoutsResponse,
+  input: __S(589) as any as S.Schema<UpdatePersonOptoutsRequest>,
+  output: __S(148) as any as S.Schema<UpdatePersonOptoutsResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24326,8 +19996,8 @@ export const updateSnippets: API.OperationMethod<
   UpdateSnippetsError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSnippetsRequest,
-  output: UpdateSnippetsResponse,
+  input: __S(590) as any as S.Schema<UpdateSnippetsRequest>,
+  output: __S(143) as any as S.Schema<UpdateSnippetsResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24341,8 +20011,8 @@ export const updateTransactional: API.OperationMethod<
   UpdateTransactionalError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTransactionalRequest,
-  output: UpdateTransactionalResponse,
+  input: __S(591) as any as S.Schema<UpdateTransactionalRequest>,
+  output: __S(380) as any as S.Schema<UpdateTransactionalResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24356,8 +20026,8 @@ export const updateTransactionalVariant: API.OperationMethod<
   UpdateTransactionalVariantError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTransactionalVariantRequest,
-  output: UpdateTransactionalVariantResponse,
+  input: __S(592) as any as S.Schema<UpdateTransactionalVariantRequest>,
+  output: __S(380) as any as S.Schema<UpdateTransactionalVariantResponse>,
   errors: [BadRequest, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24371,8 +20041,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   CustomerioOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebhookRequest,
-  output: UpdateWebhookResponse,
+  input: __S(593) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(146) as any as S.Schema<UpdateWebhookResponse>,
   errors: [BadRequest, NotFound, UnknownCustomerioError],
   protocol: CustomerioProtocol,
   retry: Retry.Retry,
@@ -24386,7 +20056,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(AddCollectionRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/v1/collections", code: 200 })),
       ).annotate({ identifier: "AddCollectionRequest" });
     case 2:
@@ -24399,7 +20069,7 @@ function __c0(j: number): any {
           id: S.optional(S.Number),
           name: S.optional(S.String),
           rows: S.optional(S.Number),
-          schema: S.optional(AddCollectionResponseCollectionSchemaList),
+          schema: S.optional(__S(2)),
           updated_at: S.optional(S.Number),
         }),
       ).annotate({
@@ -24408,7 +20078,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          collection: S.optional(AddCollectionResponseCollection),
+          collection: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "AddCollectionResponse" });
     case 5:
@@ -24416,9 +20086,9 @@ function __c0(j: number): any {
         S.Struct({
           broadcast_id: S.Number.pipe(T.Label()),
           action_id: S.Number.pipe(T.Label()),
-          period: S.optional(BroadcastActionLinksRequestPeriod.pipe(T.Query())),
+          period: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(BroadcastActionLinksRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -24449,13 +20119,9 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          clicked: S.optional(BroadcastActionLinksResponseLinksItemMetricSeriesClickedList),
-          human_clicked: S.optional(
-            BroadcastActionLinksResponseLinksItemMetricSeriesHumanClickedList,
-          ),
-          machine_clicked: S.optional(
-            BroadcastActionLinksResponseLinksItemMetricSeriesMachineClickedList,
-          ),
+          clicked: S.optional(__S(7)),
+          human_clicked: S.optional(__S(8)),
+          machine_clicked: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "BroadcastActionLinksResponseLinksItemMetricSeries",
@@ -24463,7 +20129,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          series: S.optional(BroadcastActionLinksResponseLinksItemMetricSeries),
+          series: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "BroadcastActionLinksResponseLinksItemMetric",
@@ -24471,18 +20137,18 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          link: S.optional(BroadcastActionLinksResponseLinksItemLink),
-          metric: S.optional(BroadcastActionLinksResponseLinksItemMetric),
+          link: S.optional(__S(6)),
+          metric: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "BroadcastActionLinksResponseLinksItem",
       });
     case 4:
-      return S.Array(BroadcastActionLinksResponseLinksItem);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(BroadcastActionLinksResponseLinksList),
+          links: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "BroadcastActionLinksResponse",
@@ -24492,9 +20158,9 @@ function __c1(j: number): any {
         S.Struct({
           broadcast_id: S.Number.pipe(T.Label()),
           action_id: S.Number.pipe(T.Label()),
-          period: S.optional(BroadcastActionMetricsRequestPeriod.pipe(T.Query())),
+          period: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(BroadcastActionMetricsRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -24508,66 +20174,32 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          attempted: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesAttemptedList,
-          ),
-          bounced: S.optional(BroadcastActionMetricsResponseLanguageVariantsValueSeriesBouncedList),
-          clicked: S.optional(BroadcastActionMetricsResponseLanguageVariantsValueSeriesClickedList),
-          converted: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesConvertedList,
-          ),
-          created: S.optional(BroadcastActionMetricsResponseLanguageVariantsValueSeriesCreatedList),
-          deferred: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesDeferredList,
-          ),
-          delivered: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesDeliveredList,
-          ),
-          drafted: S.optional(BroadcastActionMetricsResponseLanguageVariantsValueSeriesDraftedList),
-          failed: S.optional(BroadcastActionMetricsResponseLanguageVariantsValueSeriesFailedList),
-          human_clicked: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanClickedList,
-          ),
-          human_opened: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesHumanOpenedList,
-          ),
-          link_untracked: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesLinkUntrackedList,
-          ),
-          machine_clicked: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesMachineClickedList,
-          ),
-          open_untracked: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenUntrackedList,
-          ),
-          opened: S.optional(BroadcastActionMetricsResponseLanguageVariantsValueSeriesOpenedList),
-          prefetch_opened: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesPrefetchOpenedList,
-          ),
-          replied: S.optional(BroadcastActionMetricsResponseLanguageVariantsValueSeriesRepliedList),
-          sent: S.optional(BroadcastActionMetricsResponseLanguageVariantsValueSeriesSentList),
-          spammed: S.optional(BroadcastActionMetricsResponseLanguageVariantsValueSeriesSpammedList),
-          suppressed: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesSuppressedList,
-          ),
-          topic_unsubscribed: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesTopicUnsubscribedList,
-          ),
-          tracking_consent_denied: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentDeniedList,
-          ),
-          tracking_consent_granted: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesTrackingConsentGrantedList,
-          ),
-          undeliverable: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesUndeliverableList,
-          ),
-          unsubscribed: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesUnsubscribedList,
-          ),
-          untracked: S.optional(
-            BroadcastActionMetricsResponseLanguageVariantsValueSeriesUntrackedList,
-          ),
+          attempted: S.optional(__S(8)),
+          bounced: S.optional(__S(8)),
+          clicked: S.optional(__S(8)),
+          converted: S.optional(__S(8)),
+          created: S.optional(__S(8)),
+          deferred: S.optional(__S(8)),
+          delivered: S.optional(__S(8)),
+          drafted: S.optional(__S(8)),
+          failed: S.optional(__S(8)),
+          human_clicked: S.optional(__S(8)),
+          human_opened: S.optional(__S(8)),
+          link_untracked: S.optional(__S(8)),
+          machine_clicked: S.optional(__S(8)),
+          open_untracked: S.optional(__S(8)),
+          opened: S.optional(__S(8)),
+          prefetch_opened: S.optional(__S(8)),
+          replied: S.optional(__S(8)),
+          sent: S.optional(__S(8)),
+          spammed: S.optional(__S(8)),
+          suppressed: S.optional(__S(8)),
+          topic_unsubscribed: S.optional(__S(8)),
+          tracking_consent_denied: S.optional(__S(8)),
+          tracking_consent_granted: S.optional(__S(8)),
+          undeliverable: S.optional(__S(8)),
+          unsubscribed: S.optional(__S(8)),
+          untracked: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "BroadcastActionMetricsResponseLanguageVariantsValueSeries",
@@ -24581,48 +20213,42 @@ function __c2(j: number): any {
         S.Struct({
           default: S.optional(S.Boolean),
           language: S.optional(S.String),
-          series: S.optional(BroadcastActionMetricsResponseLanguageVariantsValueSeries),
+          series: S.optional(__S(15)),
         }),
       ).annotate({
         identifier: "BroadcastActionMetricsResponseLanguageVariantsValue",
       });
     case 1:
-      return S.Record(S.String, BroadcastActionMetricsResponseLanguageVariantsValue);
+      return S.Record(S.String, __S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          attempted: S.optional(BroadcastActionMetricsResponseMetricSeriesAttemptedList),
-          bounced: S.optional(BroadcastActionMetricsResponseMetricSeriesBouncedList),
-          clicked: S.optional(BroadcastActionMetricsResponseMetricSeriesClickedList),
-          converted: S.optional(BroadcastActionMetricsResponseMetricSeriesConvertedList),
-          created: S.optional(BroadcastActionMetricsResponseMetricSeriesCreatedList),
-          deferred: S.optional(BroadcastActionMetricsResponseMetricSeriesDeferredList),
-          delivered: S.optional(BroadcastActionMetricsResponseMetricSeriesDeliveredList),
-          drafted: S.optional(BroadcastActionMetricsResponseMetricSeriesDraftedList),
-          failed: S.optional(BroadcastActionMetricsResponseMetricSeriesFailedList),
-          human_clicked: S.optional(BroadcastActionMetricsResponseMetricSeriesHumanClickedList),
-          human_opened: S.optional(BroadcastActionMetricsResponseMetricSeriesHumanOpenedList),
-          link_untracked: S.optional(BroadcastActionMetricsResponseMetricSeriesLinkUntrackedList),
-          machine_clicked: S.optional(BroadcastActionMetricsResponseMetricSeriesMachineClickedList),
-          open_untracked: S.optional(BroadcastActionMetricsResponseMetricSeriesOpenUntrackedList),
-          opened: S.optional(BroadcastActionMetricsResponseMetricSeriesOpenedList),
-          prefetch_opened: S.optional(BroadcastActionMetricsResponseMetricSeriesPrefetchOpenedList),
-          replied: S.optional(BroadcastActionMetricsResponseMetricSeriesRepliedList),
-          sent: S.optional(BroadcastActionMetricsResponseMetricSeriesSentList),
-          spammed: S.optional(BroadcastActionMetricsResponseMetricSeriesSpammedList),
-          suppressed: S.optional(BroadcastActionMetricsResponseMetricSeriesSuppressedList),
-          topic_unsubscribed: S.optional(
-            BroadcastActionMetricsResponseMetricSeriesTopicUnsubscribedList,
-          ),
-          tracking_consent_denied: S.optional(
-            BroadcastActionMetricsResponseMetricSeriesTrackingConsentDeniedList,
-          ),
-          tracking_consent_granted: S.optional(
-            BroadcastActionMetricsResponseMetricSeriesTrackingConsentGrantedList,
-          ),
-          undeliverable: S.optional(BroadcastActionMetricsResponseMetricSeriesUndeliverableList),
-          unsubscribed: S.optional(BroadcastActionMetricsResponseMetricSeriesUnsubscribedList),
-          untracked: S.optional(BroadcastActionMetricsResponseMetricSeriesUntrackedList),
+          attempted: S.optional(__S(7)),
+          bounced: S.optional(__S(7)),
+          clicked: S.optional(__S(7)),
+          converted: S.optional(__S(7)),
+          created: S.optional(__S(7)),
+          deferred: S.optional(__S(7)),
+          delivered: S.optional(__S(7)),
+          drafted: S.optional(__S(7)),
+          failed: S.optional(__S(7)),
+          human_clicked: S.optional(__S(7)),
+          human_opened: S.optional(__S(7)),
+          link_untracked: S.optional(__S(7)),
+          machine_clicked: S.optional(__S(7)),
+          open_untracked: S.optional(__S(7)),
+          opened: S.optional(__S(7)),
+          prefetch_opened: S.optional(__S(7)),
+          replied: S.optional(__S(7)),
+          sent: S.optional(__S(7)),
+          spammed: S.optional(__S(7)),
+          suppressed: S.optional(__S(7)),
+          topic_unsubscribed: S.optional(__S(8)),
+          tracking_consent_denied: S.optional(__S(8)),
+          tracking_consent_granted: S.optional(__S(8)),
+          undeliverable: S.optional(__S(7)),
+          unsubscribed: S.optional(__S(7)),
+          untracked: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "BroadcastActionMetricsResponseMetricSeries",
@@ -24630,7 +20256,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          series: S.optional(BroadcastActionMetricsResponseMetricSeries),
+          series: S.optional(__S(18)),
         }),
       ).annotate({
         identifier: "BroadcastActionMetricsResponseMetric",
@@ -24638,8 +20264,8 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          language_variants: S.optional(BroadcastActionMetricsResponseLanguageVariantsMap),
-          metric: S.optional(BroadcastActionMetricsResponseMetric),
+          language_variants: S.optional(__S(17)),
+          metric: S.optional(__S(19)),
         }),
       ).annotate({
         identifier: "BroadcastActionMetricsResponse",
@@ -24651,11 +20277,11 @@ function __c2(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/broadcasts/{broadcast_id}/actions", code: 200 })),
       ).annotate({ identifier: "BroadcastActionsRequest" });
     case 6:
-      return S.Array(BroadcastActionsResponseActionsItem);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(BroadcastActionsResponseActionsList),
+          actions: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "BroadcastActionsResponse" });
   }
@@ -24680,7 +20306,7 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(BroadcastErrorsResponseErrorsList),
+          errors: S.optional(__S(2)),
           next: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BroadcastErrorsResponse" });
@@ -24688,7 +20314,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           broadcast_id: S.Number.pipe(T.Label()),
-          period: S.optional(BroadcastLinksRequestPeriod.pipe(T.Query())),
+          period: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
           unique: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
@@ -24698,11 +20324,9 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          clicked: S.optional(BroadcastLinksResponseLinksItemMetricSeriesClickedList),
-          human_clicked: S.optional(BroadcastLinksResponseLinksItemMetricSeriesHumanClickedList),
-          machine_clicked: S.optional(
-            BroadcastLinksResponseLinksItemMetricSeriesMachineClickedList,
-          ),
+          clicked: S.optional(__S(7)),
+          human_clicked: S.optional(__S(7)),
+          machine_clicked: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "BroadcastLinksResponseLinksItemMetricSeries",
@@ -24710,7 +20334,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          series: S.optional(BroadcastLinksResponseLinksItemMetricSeries),
+          series: S.optional(__S(27)),
         }),
       ).annotate({
         identifier: "BroadcastLinksResponseLinksItemMetric",
@@ -24718,18 +20342,18 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          link: S.optional(BroadcastActionLinksResponseLinksItemLink),
-          metric: S.optional(BroadcastLinksResponseLinksItemMetric),
+          link: S.optional(__S(6)),
+          metric: S.optional(__S(28)),
         }),
       ).annotate({
         identifier: "BroadcastLinksResponseLinksItem",
       });
     case 6:
-      return S.Array(BroadcastLinksResponseLinksItem);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(BroadcastLinksResponseLinksList),
+          links: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "BroadcastLinksResponse" });
   }
@@ -24742,9 +20366,9 @@ function __c4(j: number): any {
           broadcast_id: S.Number.pipe(T.Label()),
           start: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          metric: S.optional(BroadcastMessagesRequestMetric.pipe(T.Query())),
-          state: S.optional(BroadcastMessagesRequestState.pipe(T.Query())),
-          type: S.optional(BroadcastMessagesRequestType.pipe(T.Query())),
+          metric: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
           start_ts: S.optional(S.Number.pipe(T.Query())),
           end_ts: S.optional(S.Number.pipe(T.Query())),
           get_tracked_responses: S.optional(S.Boolean.pipe(T.Query())),
@@ -24796,7 +20420,7 @@ function __c4(j: number): any {
         identifier: "BroadcastMessagesResponseMessagesItemTrackedResponsesValue",
       });
     case 4:
-      return S.Record(S.String, BroadcastMessagesResponseMessagesItemTrackedResponsesValue);
+      return S.Record(S.String, __S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -24806,32 +20430,30 @@ function __c4(j: number): any {
           content_id: S.optional(S.Number),
           created: S.optional(S.Number),
           customer_id: S.optional(S.NullOr(S.String)),
-          customer_identifiers: S.optional(
-            BroadcastMessagesResponseMessagesItemCustomerIdentifiers,
-          ),
+          customer_identifiers: S.optional(__S(33)),
           deduplicate_id: S.optional(S.String),
           failure_message: S.optional(S.NullOr(S.String)),
           forgotten: S.optional(S.Boolean),
           id: S.optional(S.String),
           message_template_id: S.optional(S.Number),
-          metrics: S.optional(BroadcastMessagesResponseMessagesItemMetrics),
+          metrics: S.optional(__S(34)),
           newsletter_id: S.optional(S.NullOr(S.Number)),
           parent_action_id: S.optional(S.Number),
           recipient: S.optional(S.String),
           subject: S.optional(S.String),
-          tracked_responses: S.optional(BroadcastMessagesResponseMessagesItemTrackedResponsesMap),
+          tracked_responses: S.optional(__S(36)),
           trigger_event_id: S.optional(S.String),
-          type: S.optional(BroadcastMessagesResponseMessagesItemType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BroadcastMessagesResponseMessagesItem",
       });
     case 6:
-      return S.Array(BroadcastMessagesResponseMessagesItem);
+      return S.Array(__S(37));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(BroadcastMessagesResponseMessagesList),
+          messages: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "BroadcastMessagesResponse",
@@ -24844,44 +20466,40 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           broadcast_id: S.Number.pipe(T.Label()),
-          period: S.optional(BroadcastMetricsRequestPeriod.pipe(T.Query())),
+          period: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(BroadcastMetricsRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/broadcasts/{broadcast_id}/metrics", code: 200 })),
       ).annotate({ identifier: "BroadcastMetricsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          attempted: S.optional(BroadcastMetricsResponseMetricSeriesAttemptedList),
-          bounced: S.optional(BroadcastMetricsResponseMetricSeriesBouncedList),
-          clicked: S.optional(BroadcastMetricsResponseMetricSeriesClickedList),
-          converted: S.optional(BroadcastMetricsResponseMetricSeriesConvertedList),
-          created: S.optional(BroadcastMetricsResponseMetricSeriesCreatedList),
-          deferred: S.optional(BroadcastMetricsResponseMetricSeriesDeferredList),
-          delivered: S.optional(BroadcastMetricsResponseMetricSeriesDeliveredList),
-          drafted: S.optional(BroadcastMetricsResponseMetricSeriesDraftedList),
-          failed: S.optional(BroadcastMetricsResponseMetricSeriesFailedList),
-          human_clicked: S.optional(BroadcastMetricsResponseMetricSeriesHumanClickedList),
-          human_opened: S.optional(BroadcastMetricsResponseMetricSeriesHumanOpenedList),
-          link_untracked: S.optional(BroadcastMetricsResponseMetricSeriesLinkUntrackedList),
-          machine_clicked: S.optional(BroadcastMetricsResponseMetricSeriesMachineClickedList),
-          open_untracked: S.optional(BroadcastMetricsResponseMetricSeriesOpenUntrackedList),
-          opened: S.optional(BroadcastMetricsResponseMetricSeriesOpenedList),
-          prefetch_opened: S.optional(BroadcastMetricsResponseMetricSeriesPrefetchOpenedList),
-          replied: S.optional(BroadcastMetricsResponseMetricSeriesRepliedList),
-          sent: S.optional(BroadcastMetricsResponseMetricSeriesSentList),
-          spammed: S.optional(BroadcastMetricsResponseMetricSeriesSpammedList),
-          suppressed: S.optional(BroadcastMetricsResponseMetricSeriesSuppressedList),
-          topic_unsubscribed: S.optional(BroadcastMetricsResponseMetricSeriesTopicUnsubscribedList),
-          tracking_consent_denied: S.optional(
-            BroadcastMetricsResponseMetricSeriesTrackingConsentDeniedList,
-          ),
-          tracking_consent_granted: S.optional(
-            BroadcastMetricsResponseMetricSeriesTrackingConsentGrantedList,
-          ),
-          undeliverable: S.optional(BroadcastMetricsResponseMetricSeriesUndeliverableList),
-          unsubscribed: S.optional(BroadcastMetricsResponseMetricSeriesUnsubscribedList),
-          untracked: S.optional(BroadcastMetricsResponseMetricSeriesUntrackedList),
+          attempted: S.optional(__S(7)),
+          bounced: S.optional(__S(7)),
+          clicked: S.optional(__S(7)),
+          converted: S.optional(__S(7)),
+          created: S.optional(__S(7)),
+          deferred: S.optional(__S(7)),
+          delivered: S.optional(__S(7)),
+          drafted: S.optional(__S(7)),
+          failed: S.optional(__S(7)),
+          human_clicked: S.optional(__S(7)),
+          human_opened: S.optional(__S(7)),
+          link_untracked: S.optional(__S(7)),
+          machine_clicked: S.optional(__S(7)),
+          open_untracked: S.optional(__S(7)),
+          opened: S.optional(__S(7)),
+          prefetch_opened: S.optional(__S(7)),
+          replied: S.optional(__S(7)),
+          sent: S.optional(__S(7)),
+          spammed: S.optional(__S(7)),
+          suppressed: S.optional(__S(7)),
+          topic_unsubscribed: S.optional(__S(7)),
+          tracking_consent_denied: S.optional(__S(7)),
+          tracking_consent_granted: S.optional(__S(7)),
+          undeliverable: S.optional(__S(7)),
+          unsubscribed: S.optional(__S(7)),
+          untracked: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "BroadcastMetricsResponseMetricSeries",
@@ -24889,7 +20507,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          series: S.optional(BroadcastMetricsResponseMetricSeries),
+          series: S.optional(__S(41)),
         }),
       ).annotate({
         identifier: "BroadcastMetricsResponseMetric",
@@ -24897,7 +20515,7 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metric: S.optional(BroadcastMetricsResponseMetric),
+          metric: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "BroadcastMetricsResponse" });
     case 4:
@@ -24930,9 +20548,9 @@ function __c5(j: number): any {
         S.Struct({
           campaign_id: S.Number.pipe(T.Label()),
           action_id: S.Number.pipe(T.Label()),
-          period: S.optional(CampaignActionLinksRequestPeriod.pipe(T.Query())),
+          period: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(CampaignActionLinksRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
           unique: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -24947,13 +20565,9 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          clicked: S.optional(CampaignActionLinksResponseLinksItemMetricSeriesClickedList),
-          human_clicked: S.optional(
-            CampaignActionLinksResponseLinksItemMetricSeriesHumanClickedList,
-          ),
-          machine_clicked: S.optional(
-            CampaignActionLinksResponseLinksItemMetricSeriesMachineClickedList,
-          ),
+          clicked: S.optional(__S(7)),
+          human_clicked: S.optional(__S(8)),
+          machine_clicked: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "CampaignActionLinksResponseLinksItemMetricSeries",
@@ -24965,7 +20579,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          series: S.optional(CampaignActionLinksResponseLinksItemMetricSeries),
+          series: S.optional(__S(47)),
         }),
       ).annotate({
         identifier: "CampaignActionLinksResponseLinksItemMetric",
@@ -24973,18 +20587,18 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          link: S.optional(BroadcastActionLinksResponseLinksItemLink),
-          metric: S.optional(CampaignActionLinksResponseLinksItemMetric),
+          link: S.optional(__S(6)),
+          metric: S.optional(__S(48)),
         }),
       ).annotate({
         identifier: "CampaignActionLinksResponseLinksItem",
       });
     case 2:
-      return S.Array(CampaignActionLinksResponseLinksItem);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(CampaignActionLinksResponseLinksList),
+          links: S.optional(__S(50)),
         }),
       ).annotate({
         identifier: "CampaignActionLinksResponse",
@@ -24994,14 +20608,14 @@ function __c6(j: number): any {
         S.Struct({
           campaign_id: S.Number.pipe(T.Label()),
           action_id: S.Number.pipe(T.Label()),
-          version: S.optional(CampaignActionMetricsRequestVersion.pipe(T.Query())),
-          res: S.optional(CampaignActionMetricsRequestRes.pipe(T.Query())),
+          version: S.optional(S.String.pipe(T.Query())),
+          res: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.Number.pipe(T.Query())),
           end: S.optional(S.Number.pipe(T.Query())),
           tz: S.optional(S.String.pipe(T.Query())),
-          period: S.optional(CampaignActionMetricsRequestPeriod.pipe(T.Query())),
+          period: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(CampaignActionMetricsRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -25015,38 +20629,32 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          attempted: S.optional(CampaignActionMetricsResponseMetricSeriesAttemptedList),
-          bounced: S.optional(CampaignActionMetricsResponseMetricSeriesBouncedList),
-          clicked: S.optional(CampaignActionMetricsResponseMetricSeriesClickedList),
-          converted: S.optional(CampaignActionMetricsResponseMetricSeriesConvertedList),
-          created: S.optional(CampaignActionMetricsResponseMetricSeriesCreatedList),
-          deferred: S.optional(CampaignActionMetricsResponseMetricSeriesDeferredList),
-          delivered: S.optional(CampaignActionMetricsResponseMetricSeriesDeliveredList),
-          drafted: S.optional(CampaignActionMetricsResponseMetricSeriesDraftedList),
-          failed: S.optional(CampaignActionMetricsResponseMetricSeriesFailedList),
-          human_clicked: S.optional(CampaignActionMetricsResponseMetricSeriesHumanClickedList),
-          human_opened: S.optional(CampaignActionMetricsResponseMetricSeriesHumanOpenedList),
-          link_untracked: S.optional(CampaignActionMetricsResponseMetricSeriesLinkUntrackedList),
-          machine_clicked: S.optional(CampaignActionMetricsResponseMetricSeriesMachineClickedList),
-          open_untracked: S.optional(CampaignActionMetricsResponseMetricSeriesOpenUntrackedList),
-          opened: S.optional(CampaignActionMetricsResponseMetricSeriesOpenedList),
-          prefetch_opened: S.optional(CampaignActionMetricsResponseMetricSeriesPrefetchOpenedList),
-          replied: S.optional(CampaignActionMetricsResponseMetricSeriesRepliedList),
-          sent: S.optional(CampaignActionMetricsResponseMetricSeriesSentList),
-          spammed: S.optional(CampaignActionMetricsResponseMetricSeriesSpammedList),
-          suppressed: S.optional(CampaignActionMetricsResponseMetricSeriesSuppressedList),
-          topic_unsubscribed: S.optional(
-            CampaignActionMetricsResponseMetricSeriesTopicUnsubscribedList,
-          ),
-          tracking_consent_denied: S.optional(
-            CampaignActionMetricsResponseMetricSeriesTrackingConsentDeniedList,
-          ),
-          tracking_consent_granted: S.optional(
-            CampaignActionMetricsResponseMetricSeriesTrackingConsentGrantedList,
-          ),
-          undeliverable: S.optional(CampaignActionMetricsResponseMetricSeriesUndeliverableList),
-          unsubscribed: S.optional(CampaignActionMetricsResponseMetricSeriesUnsubscribedList),
-          untracked: S.optional(CampaignActionMetricsResponseMetricSeriesUntrackedList),
+          attempted: S.optional(__S(7)),
+          bounced: S.optional(__S(7)),
+          clicked: S.optional(__S(7)),
+          converted: S.optional(__S(7)),
+          created: S.optional(__S(7)),
+          deferred: S.optional(__S(7)),
+          delivered: S.optional(__S(7)),
+          drafted: S.optional(__S(7)),
+          failed: S.optional(__S(7)),
+          human_clicked: S.optional(__S(7)),
+          human_opened: S.optional(__S(7)),
+          link_untracked: S.optional(__S(7)),
+          machine_clicked: S.optional(__S(7)),
+          open_untracked: S.optional(__S(7)),
+          opened: S.optional(__S(7)),
+          prefetch_opened: S.optional(__S(7)),
+          replied: S.optional(__S(7)),
+          sent: S.optional(__S(7)),
+          spammed: S.optional(__S(7)),
+          suppressed: S.optional(__S(7)),
+          topic_unsubscribed: S.optional(__S(7)),
+          tracking_consent_denied: S.optional(__S(8)),
+          tracking_consent_granted: S.optional(__S(8)),
+          undeliverable: S.optional(__S(7)),
+          unsubscribed: S.optional(__S(7)),
+          untracked: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "CampaignActionMetricsResponseMetricSeries",
@@ -25054,7 +20662,7 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          series: S.optional(CampaignActionMetricsResponseMetricSeries),
+          series: S.optional(__S(53)),
         }),
       ).annotate({
         identifier: "CampaignActionMetricsResponseMetric",
@@ -25063,9 +20671,9 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           end: S.optional(S.String),
-          language_variants: S.optional(CampaignActionMetricsResponseLanguageVariantsMap),
-          metric: S.optional(CampaignActionMetricsResponseMetric),
-          res: S.optional(CampaignActionMetricsResponseRes),
+          language_variants: S.optional(__S(17)),
+          metric: S.optional(__S(54)),
+          res: S.optional(S.String),
           start: S.optional(S.String),
         }),
       ).annotate({
@@ -25081,7 +20689,7 @@ function __c7(j: number): any {
           campaign_id: S.Number.pipe(T.Label()),
           start: S.Number.pipe(T.Query()),
           end: S.Number.pipe(T.Query()),
-          resolution: CampaignJourneyMetricsRequestResolution.pipe(T.Query()),
+          resolution: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({ method: "GET", uri: "/v1/campaigns/{campaign_id}/journey_metrics", code: 200 }),
         ),
@@ -25091,15 +20699,13 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          activated: S.optional(CampaignJourneyMetricsResponseJourneyMetricActivatedList),
-          converted: S.optional(CampaignJourneyMetricsResponseJourneyMetricConvertedList),
-          exited_early: S.optional(CampaignJourneyMetricsResponseJourneyMetricExitedEarlyList),
-          finished: S.optional(CampaignJourneyMetricsResponseJourneyMetricFinishedList),
-          messaged: S.optional(CampaignJourneyMetricsResponseJourneyMetricMessagedList),
-          never_activated: S.optional(
-            CampaignJourneyMetricsResponseJourneyMetricNeverActivatedList,
-          ),
-          started: S.optional(CampaignJourneyMetricsResponseJourneyMetricStartedList),
+          activated: S.optional(__S(7)),
+          converted: S.optional(__S(7)),
+          exited_early: S.optional(__S(7)),
+          finished: S.optional(__S(7)),
+          messaged: S.optional(__S(7)),
+          never_activated: S.optional(__S(7)),
+          started: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "CampaignJourneyMetricsResponseJourneyMetric",
@@ -25107,7 +20713,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          journey_metric: S.optional(CampaignJourneyMetricsResponseJourneyMetric),
+          journey_metric: S.optional(__S(57)),
         }),
       ).annotate({
         identifier: "CampaignJourneyMetricsResponse",
@@ -25116,7 +20722,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           campaign_id: S.Number.pipe(T.Label()),
-          period: S.optional(CampaignLinkMetricsRequestPeriod.pipe(T.Query())),
+          period: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
           unique: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
@@ -25129,22 +20735,22 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           campaign_id: S.Number.pipe(T.Label()),
-          version: S.optional(CampaignMetricsRequestVersion.pipe(T.Query())),
-          res: S.optional(CampaignMetricsRequestRes.pipe(T.Query())),
+          version: S.optional(S.String.pipe(T.Query())),
+          res: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.Number.pipe(T.Query())),
           end: S.optional(S.Number.pipe(T.Query())),
           tz: S.optional(S.String.pipe(T.Query())),
-          period: S.optional(CampaignMetricsRequestPeriod.pipe(T.Query())),
+          period: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(CampaignMetricsRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/campaigns/{campaign_id}/metrics", code: 200 })),
       ).annotate({ identifier: "CampaignMetricsRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           end: S.optional(S.String),
-          metric: S.optional(CampaignMetricsResponseMetric),
-          res: S.optional(CampaignMetricsResponseRes),
+          metric: S.optional(__S(42)),
+          res: S.optional(S.String),
           start: S.optional(S.String),
         }),
       ).annotate({ identifier: "CampaignMetricsResponse" });
@@ -25184,7 +20790,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          trigger: S.optional(CancelBroadcastTriggerResponseTrigger),
+          trigger: S.optional(__S(63)),
         }),
       ).annotate({
         identifier: "CancelBroadcastTriggerResponse",
@@ -25236,7 +20842,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          asset: S.optional(CreateAssetResponseAsset),
+          asset: S.optional(__S(68)),
         }),
       ).annotate({ identifier: "CreateAssetResponse" });
     case 6:
@@ -25265,7 +20871,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          folder: S.optional(CreateAssetFolderResponseFolder),
+          folder: S.optional(__S(71)),
         }),
       ).annotate({
         identifier: "CreateAssetFolderResponse",
@@ -25296,7 +20902,7 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          component: S.optional(CreateComponentResponseComponent),
+          component: S.optional(__S(74)),
         }),
       ).annotate({ identifier: "CreateComponentResponse" });
     case 4:
@@ -25321,14 +20927,14 @@ function __c9(j: number): any {
         identifier: "CreateEmailRequestEnvelopeHeadersItem",
       });
     case 6:
-      return S.Array(CreateEmailRequestEnvelopeHeadersItem);
+      return S.Array(__S(77));
     case 7:
       return S.suspend(() =>
         S.Struct({
           bcc: S.optional(S.String),
           fake_bcc: S.optional(S.Boolean),
           from_id: S.optional(S.NullOr(S.Number)),
-          headers: S.optional(CreateEmailRequestEnvelopeHeadersList),
+          headers: S.optional(__S(78)),
           recipient: S.optional(S.String),
           reply_to_id: S.optional(S.NullOr(S.Number)),
         }),
@@ -25372,9 +20978,7 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          apply_html_attributes: S.optional(
-            CreateEmailRequestTransformersCssInlinerApplyHtmlAttributes,
-          ),
+          apply_html_attributes: S.optional(__S(81)),
           apply_style_tags: S.optional(S.Boolean),
           enabled: S.optional(S.Boolean),
           inline_pseudo_elements: S.optional(S.Boolean),
@@ -25410,9 +21014,7 @@ function __c10(j: number): any {
         S.Struct({
           line_length_limit: S.optional(S.Number),
           remove_css_comments: S.optional(S.Boolean),
-          remove_html_comments: S.optional(
-            CreateEmailRequestTransformersFormatterMinifyRemoveHtmlComments,
-          ),
+          remove_html_comments: S.optional(S.String),
           remove_indentations: S.optional(S.Boolean),
           remove_line_breaks: S.optional(S.Boolean),
         }),
@@ -25422,9 +21024,7 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          indent_character: S.optional(
-            CreateEmailRequestTransformersFormatterPrettifyIndentCharacter,
-          ),
+          indent_character: S.optional(S.String),
           indent_size: S.optional(S.Number),
           wrap_attributes: S.optional(S.Boolean),
         }),
@@ -25434,9 +21034,9 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          minify: S.optional(CreateEmailRequestTransformersFormatterMinify),
-          prettify: S.optional(CreateEmailRequestTransformersFormatterPrettify),
-          type: S.optional(CreateEmailRequestTransformersFormatterType),
+          minify: S.optional(__S(85)),
+          prettify: S.optional(__S(86)),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateEmailRequestTransformersFormatter",
@@ -25455,16 +21055,14 @@ function __c11(j: number): any {
         identifier: "CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem",
       });
     case 1:
-      return S.Array(CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersItem);
+      return S.Array(__S(88));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          backend_markers: S.optional(
-            CreateEmailRequestTransformersRemoveUnusedCssBackendMarkersList,
-          ),
+          backend_markers: S.optional(__S(89)),
           enabled: S.optional(S.Boolean),
           uglify: S.optional(S.Boolean),
-          whitelist: S.optional(CreateEmailRequestTransformersRemoveUnusedCssWhitelistList),
+          whitelist: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "CreateEmailRequestTransformersRemoveUnusedCss",
@@ -25480,12 +21078,12 @@ function __c11(j: number): any {
         identifier: "CreateEmailRequestTransformersUrlParametersParametersItem",
       });
     case 4:
-      return S.Array(CreateEmailRequestTransformersUrlParametersParametersItem);
+      return S.Array(__S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          parameters: S.optional(CreateEmailRequestTransformersUrlParametersParametersList),
+          parameters: S.optional(__S(92)),
         }),
       ).annotate({
         identifier: "CreateEmailRequestTransformersUrlParameters",
@@ -25493,14 +21091,14 @@ function __c11(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          accessibility: S.optional(CreateEmailRequestTransformersAccessibility),
-          css_inliner: S.optional(CreateEmailRequestTransformersCssInliner),
-          css_variables: S.optional(CreateEmailRequestTransformersCssVariables),
-          encode_entities: S.optional(CreateEmailRequestTransformersEncodeEntities),
-          formatter: S.optional(CreateEmailRequestTransformersFormatter),
-          prevent_widows: S.optional(CreateEmailRequestTransformersPreventWidows),
-          remove_unused_css: S.optional(CreateEmailRequestTransformersRemoveUnusedCss),
-          url_parameters: S.optional(CreateEmailRequestTransformersUrlParameters),
+          accessibility: S.optional(__S(80)),
+          css_inliner: S.optional(__S(82)),
+          css_variables: S.optional(__S(83)),
+          encode_entities: S.optional(__S(84)),
+          formatter: S.optional(__S(87)),
+          prevent_widows: S.optional(__S(84)),
+          remove_unused_css: S.optional(__S(90)),
+          url_parameters: S.optional(__S(93)),
         }),
       ).annotate({
         identifier: "CreateEmailRequestTransformers",
@@ -25509,11 +21107,11 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          content: S.optional(CreateEmailRequestContent),
-          envelope: S.optional(CreateEmailRequestEnvelope),
+          content: S.optional(__S(76)),
+          envelope: S.optional(__S(79)),
           is_template: S.optional(S.Boolean),
           parent_folder_id: S.optional(S.NullOr(S.String)),
-          transformers: S.optional(CreateEmailRequestTransformers),
+          transformers: S.optional(__S(94)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/design_studio/emails", code: 200 })),
       ).annotate({ identifier: "CreateEmailRequest" });
   }
@@ -25527,7 +21125,7 @@ function __c12(j: number): any {
           fake_bcc: S.optional(S.Boolean),
           from: S.optional(S.String),
           from_id: S.optional(S.NullOr(S.Number)),
-          headers: S.optional(CreateEmailResponseEmailEnvelopeHeadersList),
+          headers: S.optional(__S(78)),
           recipient: S.optional(S.String),
           reply_to: S.optional(S.String),
           reply_to_id: S.optional(S.NullOr(S.Number)),
@@ -25538,9 +21136,7 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          indent_character: S.optional(
-            CreateEmailResponseEmailTransformersFormatterPrettifyIndentCharacter,
-          ),
+          indent_character: S.optional(S.String),
           indent_size: S.optional(S.Number),
           wrap_attributes: S.optional(S.Boolean),
         }),
@@ -25550,9 +21146,9 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          minify: S.optional(CreateEmailResponseEmailTransformersFormatterMinify),
-          prettify: S.optional(CreateEmailResponseEmailTransformersFormatterPrettify),
-          type: S.optional(CreateEmailResponseEmailTransformersFormatterType),
+          minify: S.optional(__S(85)),
+          prettify: S.optional(__S(97)),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateEmailResponseEmailTransformersFormatter",
@@ -25562,23 +21158,21 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          backend_markers: S.optional(
-            CreateEmailResponseEmailTransformersRemoveUnusedCssBackendMarkersList,
-          ),
+          backend_markers: S.optional(__S(89)),
           enabled: S.optional(S.Boolean),
           uglify: S.optional(S.Boolean),
-          whitelist: S.optional(CreateEmailResponseEmailTransformersRemoveUnusedCssWhitelistList),
+          whitelist: S.optional(__S(99)),
         }),
       ).annotate({
         identifier: "CreateEmailResponseEmailTransformersRemoveUnusedCss",
       });
     case 5:
-      return S.Array(CreateEmailRequestTransformersUrlParametersParametersItem);
+      return S.Array(__S(91));
     case 6:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          parameters: S.optional(CreateEmailResponseEmailTransformersUrlParametersParametersList),
+          parameters: S.optional(__S(101)),
         }),
       ).annotate({
         identifier: "CreateEmailResponseEmailTransformersUrlParameters",
@@ -25586,14 +21180,14 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          accessibility: S.optional(CreateEmailRequestTransformersAccessibility),
-          css_inliner: S.optional(CreateEmailRequestTransformersCssInliner),
-          css_variables: S.optional(CreateEmailRequestTransformersCssVariables),
-          encode_entities: S.optional(CreateEmailRequestTransformersEncodeEntities),
-          formatter: S.optional(CreateEmailResponseEmailTransformersFormatter),
-          prevent_widows: S.optional(CreateEmailRequestTransformersPreventWidows),
-          remove_unused_css: S.optional(CreateEmailResponseEmailTransformersRemoveUnusedCss),
-          url_parameters: S.optional(CreateEmailResponseEmailTransformersUrlParameters),
+          accessibility: S.optional(__S(80)),
+          css_inliner: S.optional(__S(82)),
+          css_variables: S.optional(__S(83)),
+          encode_entities: S.optional(__S(84)),
+          formatter: S.optional(__S(98)),
+          prevent_widows: S.optional(__S(84)),
+          remove_unused_css: S.optional(__S(100)),
+          url_parameters: S.optional(__S(102)),
         }),
       ).annotate({
         identifier: "CreateEmailResponseEmailTransformers",
@@ -25605,23 +21199,23 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          available_languages: S.optional(CreateEmailResponseEmailAvailableLanguagesList),
-          content: S.optional(CreateEmailRequestContent),
+          available_languages: S.optional(__S(2)),
+          content: S.optional(__S(76)),
           created: S.optional(S.Number),
-          envelope: S.optional(CreateEmailResponseEmailEnvelope),
+          envelope: S.optional(__S(96)),
           id: S.optional(S.String),
           is_linked: S.optional(S.Boolean),
           is_template: S.optional(S.Boolean),
           name: S.optional(S.String),
           parent_folder_id: S.optional(S.NullOr(S.String)),
-          transformers: S.optional(CreateEmailResponseEmailTransformers),
+          transformers: S.optional(__S(103)),
           updated: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CreateEmailResponseEmail" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          email: S.optional(CreateEmailResponseEmail),
+          email: S.optional(__S(104)),
         }),
       ).annotate({ identifier: "CreateEmailResponse" });
     case 2:
@@ -25629,9 +21223,7 @@ function __c13(j: number): any {
         S.Struct({
           line_length_limit: S.optional(S.Number),
           remove_css_comments: S.optional(S.Boolean),
-          remove_html_comments: S.optional(
-            CreateEmailTranslationRequestTransformersFormatterMinifyRemoveHtmlComments,
-          ),
+          remove_html_comments: S.optional(S.String),
           remove_indentations: S.optional(S.Boolean),
           remove_line_breaks: S.optional(S.Boolean),
         }),
@@ -25641,9 +21233,7 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          indent_character: S.optional(
-            CreateEmailTranslationRequestTransformersFormatterPrettifyIndentCharacter,
-          ),
+          indent_character: S.optional(S.String),
           indent_size: S.optional(S.Number),
           wrap_attributes: S.optional(S.Boolean),
         }),
@@ -25653,9 +21243,9 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          minify: S.optional(CreateEmailTranslationRequestTransformersFormatterMinify),
-          prettify: S.optional(CreateEmailTranslationRequestTransformersFormatterPrettify),
-          type: S.optional(CreateEmailTranslationRequestTransformersFormatterType),
+          minify: S.optional(__S(106)),
+          prettify: S.optional(__S(107)),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateEmailTranslationRequestTransformersFormatter",
@@ -25663,14 +21253,10 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          backend_markers: S.optional(
-            CreateEmailTranslationRequestTransformersRemoveUnusedCssBackendMarkersList,
-          ),
+          backend_markers: S.optional(__S(89)),
           enabled: S.optional(S.Boolean),
           uglify: S.optional(S.Boolean),
-          whitelist: S.optional(
-            CreateEmailTranslationRequestTransformersRemoveUnusedCssWhitelistList,
-          ),
+          whitelist: S.optional(__S(99)),
         }),
       ).annotate({
         identifier: "CreateEmailTranslationRequestTransformersRemoveUnusedCss",
@@ -25678,14 +21264,14 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          accessibility: S.optional(CreateEmailRequestTransformersAccessibility),
-          css_inliner: S.optional(CreateEmailRequestTransformersCssInliner),
-          css_variables: S.optional(CreateEmailRequestTransformersCssVariables),
-          encode_entities: S.optional(CreateEmailRequestTransformersEncodeEntities),
-          formatter: S.optional(CreateEmailTranslationRequestTransformersFormatter),
-          prevent_widows: S.optional(CreateEmailRequestTransformersPreventWidows),
-          remove_unused_css: S.optional(CreateEmailTranslationRequestTransformersRemoveUnusedCss),
-          url_parameters: S.optional(CreateEmailTranslationRequestTransformersUrlParameters),
+          accessibility: S.optional(__S(80)),
+          css_inliner: S.optional(__S(82)),
+          css_variables: S.optional(__S(83)),
+          encode_entities: S.optional(__S(84)),
+          formatter: S.optional(__S(108)),
+          prevent_widows: S.optional(__S(84)),
+          remove_unused_css: S.optional(__S(109)),
+          url_parameters: S.optional(__S(102)),
         }),
       ).annotate({
         identifier: "CreateEmailTranslationRequestTransformers",
@@ -25695,9 +21281,9 @@ function __c13(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           language: S.String,
-          content: S.optional(CreateEmailRequestContent),
-          envelope: S.optional(CreateEmailTranslationRequestEnvelope),
-          transformers: S.optional(CreateEmailTranslationRequestTransformers),
+          content: S.optional(__S(76)),
+          envelope: S.optional(__S(79)),
+          transformers: S.optional(__S(110)),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/design_studio/emails/{id}/languages", code: 200 }),
         ),
@@ -25709,7 +21295,7 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateEmailRequestEnvelopeHeadersItem);
+      return S.Array(__S(77));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -25717,7 +21303,7 @@ function __c14(j: number): any {
           fake_bcc: S.optional(S.Boolean),
           from: S.optional(S.String),
           from_id: S.optional(S.NullOr(S.Number)),
-          headers: S.optional(CreateEmailTranslationResponseEmailTranslationEnvelopeHeadersList),
+          headers: S.optional(__S(112)),
           recipient: S.optional(S.String),
           reply_to: S.optional(S.String),
           reply_to_id: S.optional(S.NullOr(S.Number)),
@@ -25730,9 +21316,7 @@ function __c14(j: number): any {
         S.Struct({
           line_length_limit: S.optional(S.Number),
           remove_css_comments: S.optional(S.Boolean),
-          remove_html_comments: S.optional(
-            CreateEmailTranslationResponseEmailTranslationTransformersFormatterMinifyRemoveHtmlComments,
-          ),
+          remove_html_comments: S.optional(S.String),
           remove_indentations: S.optional(S.Boolean),
           remove_line_breaks: S.optional(S.Boolean),
         }),
@@ -25742,9 +21326,7 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          indent_character: S.optional(
-            CreateEmailTranslationResponseEmailTranslationTransformersFormatterPrettifyIndentCharacter,
-          ),
+          indent_character: S.optional(S.String),
           indent_size: S.optional(S.Number),
           wrap_attributes: S.optional(S.Boolean),
         }),
@@ -25754,13 +21336,9 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          minify: S.optional(
-            CreateEmailTranslationResponseEmailTranslationTransformersFormatterMinify,
-          ),
-          prettify: S.optional(
-            CreateEmailTranslationResponseEmailTranslationTransformersFormatterPrettify,
-          ),
-          type: S.optional(CreateEmailTranslationResponseEmailTranslationTransformersFormatterType),
+          minify: S.optional(__S(114)),
+          prettify: S.optional(__S(115)),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateEmailTranslationResponseEmailTranslationTransformersFormatter",
@@ -25768,14 +21346,10 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          backend_markers: S.optional(
-            CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssBackendMarkersList,
-          ),
+          backend_markers: S.optional(__S(89)),
           enabled: S.optional(S.Boolean),
           uglify: S.optional(S.Boolean),
-          whitelist: S.optional(
-            CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCssWhitelistList,
-          ),
+          whitelist: S.optional(__S(99)),
         }),
       ).annotate({
         identifier: "CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss",
@@ -25784,9 +21358,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          parameters: S.optional(
-            CreateEmailTranslationResponseEmailTranslationTransformersUrlParametersParametersList,
-          ),
+          parameters: S.optional(__S(101)),
         }),
       ).annotate({
         identifier: "CreateEmailTranslationResponseEmailTranslationTransformersUrlParameters",
@@ -25794,20 +21366,14 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          accessibility: S.optional(CreateEmailRequestTransformersAccessibility),
-          css_inliner: S.optional(CreateEmailRequestTransformersCssInliner),
-          css_variables: S.optional(CreateEmailRequestTransformersCssVariables),
-          encode_entities: S.optional(CreateEmailRequestTransformersEncodeEntities),
-          formatter: S.optional(
-            CreateEmailTranslationResponseEmailTranslationTransformersFormatter,
-          ),
-          prevent_widows: S.optional(CreateEmailRequestTransformersPreventWidows),
-          remove_unused_css: S.optional(
-            CreateEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss,
-          ),
-          url_parameters: S.optional(
-            CreateEmailTranslationResponseEmailTranslationTransformersUrlParameters,
-          ),
+          accessibility: S.optional(__S(80)),
+          css_inliner: S.optional(__S(82)),
+          css_variables: S.optional(__S(83)),
+          encode_entities: S.optional(__S(84)),
+          formatter: S.optional(__S(116)),
+          prevent_widows: S.optional(__S(84)),
+          remove_unused_css: S.optional(__S(117)),
+          url_parameters: S.optional(__S(118)),
         }),
       ).annotate({
         identifier: "CreateEmailTranslationResponseEmailTranslationTransformers",
@@ -25819,18 +21385,16 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          available_languages: S.optional(
-            CreateEmailTranslationResponseEmailTranslationAvailableLanguagesList,
-          ),
-          content: S.optional(CreateEmailRequestContent),
+          available_languages: S.optional(__S(99)),
+          content: S.optional(__S(76)),
           created: S.optional(S.Number),
-          envelope: S.optional(CreateEmailTranslationResponseEmailTranslationEnvelope),
+          envelope: S.optional(__S(113)),
           is_linked: S.optional(S.Boolean),
           is_template: S.optional(S.Boolean),
           language: S.optional(S.String),
           language_group_id: S.optional(S.String),
           parent_folder_id: S.optional(S.NullOr(S.String)),
-          transformers: S.optional(CreateEmailTranslationResponseEmailTranslationTransformers),
+          transformers: S.optional(__S(119)),
           updated: S.optional(S.Number),
         }),
       ).annotate({
@@ -25839,7 +21403,7 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          email_translation: S.optional(CreateEmailTranslationResponseEmailTranslation),
+          email_translation: S.optional(__S(120)),
         }),
       ).annotate({
         identifier: "CreateEmailTranslationResponse",
@@ -25866,7 +21430,7 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          folder: S.optional(CreateFolderResponseFolder),
+          folder: S.optional(__S(123)),
         }),
       ).annotate({ identifier: "CreateFolderResponse" });
     case 5:
@@ -25881,22 +21445,22 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          segment: CreateManSegmentRequestSegment,
+          segment: __S(125),
         }).pipe(T.Http({ method: "POST", uri: "/v1/segments", code: 200 })),
       ).annotate({ identifier: "CreateManSegmentRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(CreateManSegmentResponseSegmentConditionsMap),
+          conditions: S.optional(__S(0)),
           created_at: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           description: S.optional(S.String),
           id: S.optional(S.Number),
           name: S.optional(S.String),
           progress: S.optional(S.NullOr(S.Number)),
-          state: S.optional(CreateManSegmentResponseSegmentState),
-          tags: S.optional(S.NullOr(CreateManSegmentResponseSegmentTagsList)),
-          type: S.optional(CreateManSegmentResponseSegmentType),
+          state: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(2))),
+          type: S.optional(S.String),
           updated_at: S.optional(S.Number),
         }),
       ).annotate({
@@ -25909,36 +21473,34 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          segment: S.optional(CreateManSegmentResponseSegment),
+          segment: S.optional(__S(127)),
         }),
       ).annotate({ identifier: "CreateManSegmentResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: CreateNewsletterRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v1/newsletters", code: 200 })),
       ).annotate({ identifier: "CreateNewsletterRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          content_ids: S.optional(CreateNewsletterResponseNewsletterContentIdsList),
+          content_ids: S.optional(__S(7)),
           created: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           expires_after: S.optional(S.Number),
           id: S.optional(S.Number),
           name: S.optional(S.String),
           recipient_file_error: S.optional(S.String),
-          recipient_file_status: S.optional(CreateNewsletterResponseNewsletterRecipientFileStatus),
-          recipient_segment_ids: S.optional(
-            CreateNewsletterResponseNewsletterRecipientSegmentIdsList,
-          ),
+          recipient_file_status: S.optional(S.String),
+          recipient_segment_ids: S.optional(__S(7)),
           scheduled_at: S.optional(S.NullOr(S.Number)),
-          send_state: S.optional(CreateNewsletterResponseNewsletterSendState),
+          send_state: S.optional(S.String),
           sent_at: S.optional(S.NullOr(S.Number)),
           subscription_topic_id: S.optional(S.Number),
-          tags: S.optional(CreateNewsletterResponseNewsletterTagsList),
+          tags: S.optional(__S(2)),
           timezone: S.optional(S.String),
-          type: S.optional(CreateNewsletterResponseNewsletterType),
+          type: S.optional(S.String),
           tz_match_enabled: S.optional(S.Boolean),
           updated: S.optional(S.Number),
         }),
@@ -25948,14 +21510,14 @@ function __c16(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          newsletter: S.optional(CreateNewsletterResponseNewsletter),
+          newsletter: S.optional(__S(130)),
         }),
       ).annotate({ identifier: "CreateNewsletterResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
-          body: CreateNewsletterLanguageVariantRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/newsletters/{newsletter_id}/language", code: 200 }),
         ),
@@ -25965,26 +21527,22 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          content_ids: S.optional(CreateNewsletterLanguageVariantResponseNewsletterContentIdsList),
+          content_ids: S.optional(__S(8)),
           created: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           expires_after: S.optional(S.Number),
           id: S.optional(S.Number),
           name: S.optional(S.String),
           recipient_file_error: S.optional(S.String),
-          recipient_file_status: S.optional(
-            CreateNewsletterLanguageVariantResponseNewsletterRecipientFileStatus,
-          ),
-          recipient_segment_ids: S.optional(
-            CreateNewsletterLanguageVariantResponseNewsletterRecipientSegmentIdsList,
-          ),
+          recipient_file_status: S.optional(S.String),
+          recipient_segment_ids: S.optional(__S(8)),
           scheduled_at: S.optional(S.NullOr(S.Number)),
-          send_state: S.optional(CreateNewsletterLanguageVariantResponseNewsletterSendState),
+          send_state: S.optional(S.String),
           sent_at: S.optional(S.NullOr(S.Number)),
           subscription_topic_id: S.optional(S.Number),
-          tags: S.optional(CreateNewsletterLanguageVariantResponseNewsletterTagsList),
+          tags: S.optional(__S(2)),
           timezone: S.optional(S.String),
-          type: S.optional(CreateNewsletterLanguageVariantResponseNewsletterType),
+          type: S.optional(S.String),
           tz_match_enabled: S.optional(S.Boolean),
           updated: S.optional(S.Number),
         }),
@@ -25994,7 +21552,7 @@ function __c16(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          newsletter: S.optional(CreateNewsletterLanguageVariantResponseNewsletter),
+          newsletter: S.optional(__S(133)),
         }),
       ).annotate({
         identifier: "CreateNewsletterLanguageVariantResponse",
@@ -26016,26 +21574,22 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          content_ids: S.optional(CreateNewsletterTestGroupResponseNewsletterContentIdsList),
+          content_ids: S.optional(__S(7)),
           created: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           expires_after: S.optional(S.Number),
           id: S.optional(S.Number),
           name: S.optional(S.String),
           recipient_file_error: S.optional(S.String),
-          recipient_file_status: S.optional(
-            CreateNewsletterTestGroupResponseNewsletterRecipientFileStatus,
-          ),
-          recipient_segment_ids: S.optional(
-            CreateNewsletterTestGroupResponseNewsletterRecipientSegmentIdsList,
-          ),
+          recipient_file_status: S.optional(S.String),
+          recipient_segment_ids: S.optional(__S(8)),
           scheduled_at: S.optional(S.NullOr(S.Number)),
-          send_state: S.optional(CreateNewsletterTestGroupResponseNewsletterSendState),
+          send_state: S.optional(S.String),
           sent_at: S.optional(S.NullOr(S.Number)),
           subscription_topic_id: S.optional(S.Number),
-          tags: S.optional(CreateNewsletterTestGroupResponseNewsletterTagsList),
+          tags: S.optional(__S(2)),
           timezone: S.optional(S.String),
-          type: S.optional(CreateNewsletterTestGroupResponseNewsletterType),
+          type: S.optional(S.String),
           tz_match_enabled: S.optional(S.Boolean),
           updated: S.optional(S.Number),
         }),
@@ -26045,7 +21599,7 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          newsletter: S.optional(CreateNewsletterTestGroupResponseNewsletter),
+          newsletter: S.optional(__S(136)),
         }),
       ).annotate({
         identifier: "CreateNewsletterTestGroupResponse",
@@ -26055,7 +21609,7 @@ function __c17(j: number): any {
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
           test_group_id: S.String.pipe(T.Label()),
-          body: CreateNewsletterTestLanguageVariantRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -26069,28 +21623,22 @@ function __c17(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          content_ids: S.optional(
-            CreateNewsletterTestLanguageVariantResponseNewsletterContentIdsList,
-          ),
+          content_ids: S.optional(__S(8)),
           created: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           expires_after: S.optional(S.Number),
           id: S.optional(S.Number),
           name: S.optional(S.String),
           recipient_file_error: S.optional(S.String),
-          recipient_file_status: S.optional(
-            CreateNewsletterTestLanguageVariantResponseNewsletterRecipientFileStatus,
-          ),
-          recipient_segment_ids: S.optional(
-            CreateNewsletterTestLanguageVariantResponseNewsletterRecipientSegmentIdsList,
-          ),
+          recipient_file_status: S.optional(S.String),
+          recipient_segment_ids: S.optional(__S(8)),
           scheduled_at: S.optional(S.NullOr(S.Number)),
-          send_state: S.optional(CreateNewsletterTestLanguageVariantResponseNewsletterSendState),
+          send_state: S.optional(S.String),
           sent_at: S.optional(S.NullOr(S.Number)),
           subscription_topic_id: S.optional(S.Number),
-          tags: S.optional(CreateNewsletterTestLanguageVariantResponseNewsletterTagsList),
+          tags: S.optional(__S(2)),
           timezone: S.optional(S.String),
-          type: S.optional(CreateNewsletterTestLanguageVariantResponseNewsletterType),
+          type: S.optional(S.String),
           tz_match_enabled: S.optional(S.Boolean),
           updated: S.optional(S.Number),
         }),
@@ -26100,7 +21648,7 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          newsletter: S.optional(CreateNewsletterTestLanguageVariantResponseNewsletter),
+          newsletter: S.optional(__S(139)),
         }),
       ).annotate({
         identifier: "CreateNewsletterTestLanguageVariantResponse",
@@ -26125,7 +21673,7 @@ function __c17(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          snippet: S.optional(CreateSnippetResponseSnippet),
+          snippet: S.optional(__S(142)),
         }),
       ).annotate({ identifier: "CreateSnippetResponse" });
   }
@@ -26133,12 +21681,12 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateWebhookRequestEventsItem);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String,
-          events: CreateWebhookRequestEventsList,
+          events: __S(144),
           name: S.String,
           disabled: S.optional(S.Boolean),
           full_resolution: S.optional(S.Boolean),
@@ -26149,12 +21697,12 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String,
-          events: CreateWebhookResponseEventsList,
+          events: __S(144),
           name: S.String,
           disabled: S.optional(S.Boolean),
           full_resolution: S.optional(S.Boolean),
           id: S.optional(S.Number),
-          type: S.optional(CreateWebhookResponseType),
+          type: S.optional(S.String),
           with_content: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CreateWebhookResponse" });
@@ -26277,7 +21825,7 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          suppression_type: DeleteSuppressionRequestSuppressionType.pipe(T.Label()),
+          suppression_type: S.String.pipe(T.Label()),
           email_address: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -26333,7 +21881,7 @@ function __c20(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          alert: S.optional(EndLiveNotificationRequestPushPayloadAlert),
+          alert: S.optional(__S(166)),
         }),
       ).annotate({
         identifier: "EndLiveNotificationRequestPushPayload",
@@ -26346,10 +21894,10 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           instance_id: S.String,
-          attributes: S.optional(EndLiveNotificationRequestAttributesMap),
-          content_state: S.optional(EndLiveNotificationRequestContentState),
+          attributes: S.optional(__S(0)),
+          content_state: S.optional(S.Unknown),
           deep_link: S.optional(S.String),
-          push_payload: S.optional(EndLiveNotificationRequestPushPayload),
+          push_payload: S.optional(__S(167)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/live_notifications/end", code: 200 })),
       ).annotate({
         identifier: "EndLiveNotificationRequest",
@@ -26365,7 +21913,7 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(ExportDeliveriesDataRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/v1/exports/deliveries", code: 200 })),
       ).annotate({
         identifier: "ExportDeliveriesDataRequest",
@@ -26379,9 +21927,9 @@ function __c21(j: number): any {
           downloads: S.optional(S.Number),
           failed: S.optional(S.Boolean),
           id: S.optional(S.Number),
-          status: S.optional(ExportDeliveriesDataResponseExportStatus),
+          status: S.optional(S.String),
           total: S.optional(S.Number),
-          type: S.optional(ExportDeliveriesDataResponseExportType),
+          type: S.optional(S.String),
           updated_at: S.optional(S.Number),
           user_email: S.optional(S.String),
           user_id: S.optional(S.Number),
@@ -26392,7 +21940,7 @@ function __c21(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          export: S.optional(ExportDeliveriesDataResponseExport),
+          export: S.optional(__S(171)),
         }),
       ).annotate({
         identifier: "ExportDeliveriesDataResponse",
@@ -26400,14 +21948,14 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          filters: ExportPeopleDataRequestFilters,
-          attributes: S.optional(ExportPeopleDataRequestAttributesList),
+          filters: S.Unknown,
+          attributes: S.optional(__S(2)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/exports/customers", code: 200 })),
       ).annotate({ identifier: "ExportPeopleDataRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          export: S.optional(ExportPeopleDataResponseExport),
+          export: S.optional(__S(171)),
         }),
       ).annotate({ identifier: "ExportPeopleDataResponse" });
     case 7:
@@ -26438,7 +21986,7 @@ function __c22(j: number): any {
           preheader_text: S.optional(S.String),
           recipient: S.optional(S.String),
           reply_to: S.optional(S.String),
-          request_method: S.optional(GetArchivedMessageResponseArchivedMessageRequestMethod),
+          request_method: S.optional(S.String),
           subject: S.optional(S.String),
           url: S.optional(S.String),
         }),
@@ -26448,7 +21996,7 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          archived_message: S.optional(GetArchivedMessageResponseArchivedMessage),
+          archived_message: S.optional(__S(176)),
         }),
       ).annotate({
         identifier: "GetArchivedMessageResponse",
@@ -26468,7 +22016,7 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          folder: S.optional(CreateAssetFolderResponseFolder),
+          folder: S.optional(__S(71)),
         }),
       ).annotate({ identifier: "GetAssetFolderResponse" });
     case 5:
@@ -26481,13 +22029,13 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          type: S.optional(GetBroadcastResponseBroadcastActionsItemType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetBroadcastResponseBroadcastActionsItem",
       });
     case 7:
-      return S.Array(GetBroadcastResponseBroadcastActionsItem);
+      return S.Array(__S(182));
   }
 }
 function __c23(j: number): any {
@@ -26495,17 +22043,17 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(GetBroadcastResponseBroadcastActionsList),
+          actions: S.optional(__S(183)),
           active: S.optional(S.Boolean),
           created: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           first_started: S.optional(S.Number),
           id: S.optional(S.Number),
-          msg_template_ids: S.optional(GetBroadcastResponseBroadcastMsgTemplateIdsList),
+          msg_template_ids: S.optional(__S(183)),
           name: S.optional(S.String),
-          state: S.optional(GetBroadcastResponseBroadcastState),
-          tags: S.optional(GetBroadcastResponseBroadcastTagsList),
-          type: S.optional(GetBroadcastResponseBroadcastType),
+          state: S.optional(S.String),
+          tags: S.optional(__S(2)),
+          type: S.optional(S.String),
           updated: S.optional(S.Number),
         }),
       ).annotate({
@@ -26514,7 +22062,7 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          broadcast: S.optional(GetBroadcastResponseBroadcast),
+          broadcast: S.optional(__S(184)),
         }),
       ).annotate({ identifier: "GetBroadcastResponse" });
     case 2:
@@ -26535,7 +22083,7 @@ function __c23(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(GetBroadcastActionResponseAction),
+          action: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "GetBroadcastActionResponse",
@@ -26559,7 +22107,7 @@ function __c23(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(GetBroadcastActionLanguageResponseAction),
+          action: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "GetBroadcastActionLanguageResponse",
@@ -26580,7 +22128,7 @@ function __c23(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(GetCampaignActionResponseAction),
+          action: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "GetCampaignActionResponse",
@@ -26608,7 +22156,7 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(GetCampaignActionTranslationResponseAction),
+          action: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "GetCampaignActionTranslationResponse",
@@ -26619,8 +22167,8 @@ function __c24(j: number): any {
           campaign_id: S.Number.pipe(T.Label()),
           start: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(GetCampaignMessagesRequestType.pipe(T.Query())),
-          metric: S.optional(GetCampaignMessagesRequestMetric.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          metric: S.optional(S.String.pipe(T.Query())),
           drafts: S.optional(S.Boolean.pipe(T.Query())),
           start_ts: S.optional(S.Number.pipe(T.Query())),
           end_ts: S.optional(S.Number.pipe(T.Query())),
@@ -26638,32 +22186,30 @@ function __c24(j: number): any {
           content_id: S.optional(S.Number),
           created: S.optional(S.Number),
           customer_id: S.optional(S.NullOr(S.String)),
-          customer_identifiers: S.optional(
-            BroadcastMessagesResponseMessagesItemCustomerIdentifiers,
-          ),
+          customer_identifiers: S.optional(__S(33)),
           deduplicate_id: S.optional(S.String),
           failure_message: S.optional(S.NullOr(S.String)),
           forgotten: S.optional(S.Boolean),
           id: S.optional(S.String),
           message_template_id: S.optional(S.Number),
-          metrics: S.optional(BroadcastMessagesResponseMessagesItemMetrics),
+          metrics: S.optional(__S(34)),
           newsletter_id: S.optional(S.NullOr(S.Number)),
           parent_action_id: S.optional(S.Number),
           recipient: S.optional(S.String),
           subject: S.optional(S.String),
-          tracked_responses: S.optional(GetCampaignMessagesResponseMessagesItemTrackedResponsesMap),
+          tracked_responses: S.optional(__S(36)),
           trigger_event_id: S.optional(S.String),
-          type: S.optional(GetCampaignMessagesResponseMessagesItemType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetCampaignMessagesResponseMessagesItem",
       });
     case 4:
-      return S.Array(GetCampaignMessagesResponseMessagesItem);
+      return S.Array(__S(195));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(GetCampaignMessagesResponseMessagesList),
+          messages: S.optional(__S(196)),
         }),
       ).annotate({
         identifier: "GetCampaignMessagesResponse",
@@ -26677,7 +22223,7 @@ function __c24(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          campaign: S.optional(GetCampaignsResponseCampaign),
+          campaign: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "GetCampaignsResponse" });
   }
@@ -26695,17 +22241,17 @@ function __c25(j: number): any {
           id: S.optional(S.Number),
           name: S.optional(S.String),
           subscribed_by_default: S.optional(S.Boolean),
-          type: S.optional(GetChannelsResponseChannelsItemType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetChannelsResponseChannelsItem",
       });
     case 2:
-      return S.Array(GetChannelsResponseChannelsItem);
+      return S.Array(__S(201));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          channels: S.optional(GetChannelsResponseChannelsList),
+          channels: S.optional(__S(202)),
         }),
       ).annotate({ identifier: "GetChannelsResponse" });
     case 4:
@@ -26715,7 +22261,7 @@ function __c25(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ip_addresses: S.optional(GetCioAllowlistResponseIpAddressesList),
+          ip_addresses: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "GetCioAllowlistResponse" });
     case 6:
@@ -26739,9 +22285,7 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        GetCollectionContentsResponseBodyMap.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(0).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetCollectionContentsResponse",
       });
     case 1:
@@ -26749,11 +22293,11 @@ function __c26(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/collections", code: 200 })),
       ).annotate({ identifier: "GetCollectionsRequest" });
     case 2:
-      return S.Array(GetCollectionsResponseCollectionsItem);
+      return S.Array(__S(3));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          collections: S.optional(GetCollectionsResponseCollectionsList),
+          collections: S.optional(__S(210)),
         }),
       ).annotate({ identifier: "GetCollectionsResponse" });
     case 4:
@@ -26766,7 +22310,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain_name: S.String.pipe(T.Label()),
-          suppression_type: GetDomainSuppressionsByTypeRequestSuppressionType.pipe(T.Label()),
+          suppression_type: S.String.pipe(T.Label()),
           limit: S.optional(S.Number.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           email: S.optional(S.String.pipe(T.Query())),
@@ -26792,7 +22336,7 @@ function __c26(j: number): any {
         identifier: "GetDomainSuppressionsByTypeResponseSuppressionsItem",
       });
     case 7:
-      return S.Array(GetDomainSuppressionsByTypeResponseSuppressionsItem);
+      return S.Array(__S(214));
   }
 }
 function __c27(j: number): any {
@@ -26800,9 +22344,9 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(GetDomainSuppressionsByTypeResponseCategory),
+          category: S.optional(S.String),
           next: S.optional(S.String),
-          suppressions: S.optional(GetDomainSuppressionsByTypeResponseSuppressionsList),
+          suppressions: S.optional(__S(215)),
         }),
       ).annotate({
         identifier: "GetDomainSuppressionsByTypeResponse",
@@ -26816,14 +22360,14 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          accessibility: S.optional(CreateEmailRequestTransformersAccessibility),
-          css_inliner: S.optional(CreateEmailRequestTransformersCssInliner),
-          css_variables: S.optional(CreateEmailRequestTransformersCssVariables),
-          encode_entities: S.optional(CreateEmailRequestTransformersEncodeEntities),
-          formatter: S.optional(GetEmailResponseEmailTransformersFormatter),
-          prevent_widows: S.optional(CreateEmailRequestTransformersPreventWidows),
-          remove_unused_css: S.optional(GetEmailResponseEmailTransformersRemoveUnusedCss),
-          url_parameters: S.optional(GetEmailResponseEmailTransformersUrlParameters),
+          accessibility: S.optional(__S(80)),
+          css_inliner: S.optional(__S(82)),
+          css_variables: S.optional(__S(83)),
+          encode_entities: S.optional(__S(84)),
+          formatter: S.optional(__S(87)),
+          prevent_widows: S.optional(__S(84)),
+          remove_unused_css: S.optional(__S(90)),
+          url_parameters: S.optional(__S(93)),
         }),
       ).annotate({
         identifier: "GetEmailResponseEmailTransformers",
@@ -26831,23 +22375,23 @@ function __c27(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          available_languages: S.optional(GetEmailResponseEmailAvailableLanguagesList),
-          content: S.optional(CreateEmailRequestContent),
+          available_languages: S.optional(__S(2)),
+          content: S.optional(__S(76)),
           created: S.optional(S.Number),
-          envelope: S.optional(GetEmailResponseEmailEnvelope),
+          envelope: S.optional(__S(96)),
           id: S.optional(S.String),
           is_linked: S.optional(S.Boolean),
           is_template: S.optional(S.Boolean),
           name: S.optional(S.String),
           parent_folder_id: S.optional(S.NullOr(S.String)),
-          transformers: S.optional(GetEmailResponseEmailTransformers),
+          transformers: S.optional(__S(218)),
           updated: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GetEmailResponseEmail" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          email: S.optional(GetEmailResponseEmail),
+          email: S.optional(__S(219)),
         }),
       ).annotate({ identifier: "GetEmailResponse" });
     case 5:
@@ -26868,18 +22412,14 @@ function __c27(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          accessibility: S.optional(CreateEmailRequestTransformersAccessibility),
-          css_inliner: S.optional(CreateEmailRequestTransformersCssInliner),
-          css_variables: S.optional(CreateEmailRequestTransformersCssVariables),
-          encode_entities: S.optional(CreateEmailRequestTransformersEncodeEntities),
-          formatter: S.optional(GetEmailTranslationResponseEmailTranslationTransformersFormatter),
-          prevent_widows: S.optional(CreateEmailRequestTransformersPreventWidows),
-          remove_unused_css: S.optional(
-            GetEmailTranslationResponseEmailTranslationTransformersRemoveUnusedCss,
-          ),
-          url_parameters: S.optional(
-            GetEmailTranslationResponseEmailTranslationTransformersUrlParameters,
-          ),
+          accessibility: S.optional(__S(80)),
+          css_inliner: S.optional(__S(82)),
+          css_variables: S.optional(__S(83)),
+          encode_entities: S.optional(__S(84)),
+          formatter: S.optional(__S(116)),
+          prevent_widows: S.optional(__S(84)),
+          remove_unused_css: S.optional(__S(117)),
+          url_parameters: S.optional(__S(118)),
         }),
       ).annotate({
         identifier: "GetEmailTranslationResponseEmailTranslationTransformers",
@@ -26887,18 +22427,16 @@ function __c27(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          available_languages: S.optional(
-            GetEmailTranslationResponseEmailTranslationAvailableLanguagesList,
-          ),
-          content: S.optional(CreateEmailRequestContent),
+          available_languages: S.optional(__S(99)),
+          content: S.optional(__S(76)),
           created: S.optional(S.Number),
-          envelope: S.optional(GetEmailTranslationResponseEmailTranslationEnvelope),
+          envelope: S.optional(__S(96)),
           is_linked: S.optional(S.Boolean),
           is_template: S.optional(S.Boolean),
           language: S.optional(S.String),
           language_group_id: S.optional(S.String),
           parent_folder_id: S.optional(S.NullOr(S.String)),
-          transformers: S.optional(GetEmailTranslationResponseEmailTranslationTransformers),
+          transformers: S.optional(__S(222)),
           updated: S.optional(S.Number),
         }),
       ).annotate({
@@ -26911,7 +22449,7 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          email_translation: S.optional(GetEmailTranslationResponseEmailTranslation),
+          email_translation: S.optional(__S(223)),
         }),
       ).annotate({
         identifier: "GetEmailTranslationResponse",
@@ -26931,9 +22469,9 @@ function __c28(j: number): any {
           downloads: S.optional(S.Number),
           failed: S.optional(S.Boolean),
           id: S.optional(S.Number),
-          status: S.optional(GetExportResponseExportStatus),
+          status: S.optional(S.String),
           total: S.optional(S.Number),
-          type: S.optional(GetExportResponseExportType),
+          type: S.optional(S.String),
           updated_at: S.optional(S.Number),
           user_email: S.optional(S.String),
           user_id: S.optional(S.Number),
@@ -26942,7 +22480,7 @@ function __c28(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          export: S.optional(GetExportResponseExport),
+          export: S.optional(__S(226)),
         }),
       ).annotate({ identifier: "GetExportResponse" });
     case 4:
@@ -26961,20 +22499,20 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.Number),
-          data_to_process: S.optional(GetImportResponseImportDataToProcess),
+          data_to_process: S.optional(S.String),
           description: S.optional(S.String),
           error: S.optional(S.String),
           error_download_url: S.optional(S.String),
           error_export_id: S.optional(S.Number),
           id: S.optional(S.Number),
-          identifier: S.optional(GetImportResponseImportIdentifier),
+          identifier: S.optional(S.String),
           name: S.optional(S.String),
           object_type_id: S.optional(S.String),
-          people_to_process: S.optional(GetImportResponseImportPeopleToProcess),
+          people_to_process: S.optional(S.String),
           rows_imported: S.optional(S.Number),
           rows_to_import: S.optional(S.Number),
-          state: S.optional(GetImportResponseImportState),
-          type: S.optional(GetImportResponseImportType),
+          state: S.optional(S.String),
+          type: S.optional(S.String),
           updated_at: S.optional(S.Number),
           warning_download_url: S.optional(S.String),
           warning_export_id: S.optional(S.Number),
@@ -26983,7 +22521,7 @@ function __c28(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          import: GetImportResponseImport,
+          import: __S(230),
         }),
       ).annotate({ identifier: "GetImportResponse" });
   }
@@ -26996,7 +22534,7 @@ function __c29(j: number): any {
           id: S.String.pipe(T.Label()),
           run_id: S.Number.pipe(T.Label()),
           client_id: S.String.pipe(T.Label()),
-          variant: S.optional(GetInboxPreviewCaptureRequestVariant.pipe(T.Query())),
+          variant: S.optional(S.String.pipe(T.Query())),
           key: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -27022,17 +22560,17 @@ function __c29(j: number): any {
           credits_original: S.optional(S.Number),
           credits_remaining: S.optional(S.Number),
           expires_at: S.optional(S.NullOr(S.Number)),
-          tier: S.optional(GetInboxPreviewCreditsResponseCreditsItemTier),
+          tier: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetInboxPreviewCreditsResponseCreditsItem",
       });
     case 3:
-      return S.Array(GetInboxPreviewCreditsResponseCreditsItem);
+      return S.Array(__S(234));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          credits: S.optional(GetInboxPreviewCreditsResponseCreditsList),
+          credits: S.optional(__S(235)),
         }),
       ).annotate({
         identifier: "GetInboxPreviewCreditsResponse",
@@ -27056,7 +22594,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          type: S.optional(GetInboxPreviewJobResponsePreviewsItemErrorType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetInboxPreviewJobResponsePreviewsItemError",
@@ -27072,29 +22610,29 @@ function __c30(j: number): any {
         S.Struct({
           browser: S.optional(S.String),
           cached: S.optional(S.Boolean),
-          category: S.optional(GetInboxPreviewJobResponsePreviewsItemCategory),
+          category: S.optional(S.String),
           client_id: S.optional(S.String),
           display_name: S.optional(S.String),
-          error: S.optional(GetInboxPreviewJobResponsePreviewsItemError),
+          error: S.optional(__S(238)),
           full_thumbnail: S.optional(S.String),
           os: S.optional(S.String),
-          screenshots: S.optional(GetInboxPreviewJobResponsePreviewsItemScreenshotsMap),
-          status: S.optional(GetInboxPreviewJobResponsePreviewsItemStatus),
+          screenshots: S.optional(__S(239)),
+          status: S.optional(S.String),
           thumbnail: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetInboxPreviewJobResponsePreviewsItem",
       });
     case 1:
-      return S.Array(GetInboxPreviewJobResponsePreviewsItem);
+      return S.Array(__S(240));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          client_ids: S.optional(GetInboxPreviewJobResponseClientIdsList),
+          client_ids: S.optional(__S(2)),
           created_at: S.optional(S.Number),
           is_processed: S.optional(S.Boolean),
           name: S.optional(S.String),
-          previews: S.optional(GetInboxPreviewJobResponsePreviewsList),
+          previews: S.optional(__S(241)),
           run_id: S.optional(S.Number),
           total_previews_bounced: S.optional(S.Number),
           total_previews_cached: S.optional(S.Number),
@@ -27119,9 +22657,9 @@ function __c30(j: number): any {
         S.Struct({
           created_at: S.optional(S.Number),
           id: S.optional(S.String),
-          operation: S.optional(GetLiveNotificationResponseLastDeliveryOperation),
+          operation: S.optional(S.String),
           source: S.optional(S.String),
-          status: S.optional(GetLiveNotificationResponseLastDeliveryStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetLiveNotificationResponseLastDelivery",
@@ -27133,11 +22671,11 @@ function __c30(j: number): any {
           expires_at: S.optional(S.NullOr(S.Number)),
           failure_reason: S.optional(S.NullOr(S.String)),
           instance_id: S.optional(S.String),
-          last_delivery: S.optional(S.NullOr(GetLiveNotificationResponseLastDelivery)),
+          last_delivery: S.optional(S.NullOr(__S(244))),
           notification_type: S.optional(S.String),
           platform: S.optional(S.String),
           started_at: S.optional(S.Number),
-          state: S.optional(GetLiveNotificationResponseState),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetLiveNotificationResponse",
@@ -27158,22 +22696,20 @@ function __c30(j: number): any {
           content_id: S.optional(S.Number),
           created: S.optional(S.Number),
           customer_id: S.optional(S.NullOr(S.String)),
-          customer_identifiers: S.optional(
-            BroadcastMessagesResponseMessagesItemCustomerIdentifiers,
-          ),
+          customer_identifiers: S.optional(__S(33)),
           deduplicate_id: S.optional(S.String),
           failure_message: S.optional(S.NullOr(S.String)),
           forgotten: S.optional(S.Boolean),
           id: S.optional(S.String),
           message_template_id: S.optional(S.Number),
-          metrics: S.optional(BroadcastMessagesResponseMessagesItemMetrics),
+          metrics: S.optional(__S(34)),
           newsletter_id: S.optional(S.NullOr(S.Number)),
           parent_action_id: S.optional(S.Number),
           recipient: S.optional(S.String),
           subject: S.optional(S.String),
-          tracked_responses: S.optional(GetMessageResponseMessageTrackedResponsesMap),
+          tracked_responses: S.optional(__S(36)),
           trigger_event_id: S.optional(S.String),
-          type: S.optional(GetMessageResponseMessageType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetMessageResponseMessage",
@@ -27185,14 +22721,14 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(GetMessageResponseMessage),
+          message: S.optional(__S(247)),
         }),
       ).annotate({ identifier: "GetMessageResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
-          period: S.optional(GetNewsletterLinksRequestPeriod.pipe(T.Query())),
+          period: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
           unique: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
@@ -27209,9 +22745,9 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
-          period: S.optional(GetNewsletterMetricsRequestPeriod.pipe(T.Query())),
+          period: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(GetNewsletterMetricsRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/v1/newsletters/{newsletter_id}/metrics", code: 200 }),
         ),
@@ -27221,8 +22757,8 @@ function __c31(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          series: S.optional(GetNewsletterMetricsResponseMetricSeries),
-          type: S.optional(GetNewsletterMetricsResponseMetricType),
+          series: S.optional(__S(53)),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetNewsletterMetricsResponseMetric",
@@ -27230,7 +22766,7 @@ function __c31(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metric: S.optional(GetNewsletterMetricsResponseMetric),
+          metric: S.optional(__S(251)),
         }),
       ).annotate({
         identifier: "GetNewsletterMetricsResponse",
@@ -27241,7 +22777,7 @@ function __c31(j: number): any {
           newsletter_id: S.Number.pipe(T.Label()),
           start: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          metric: S.optional(GetNewsletterMsgMetaRequestMetric.pipe(T.Query())),
+          metric: S.optional(S.String.pipe(T.Query())),
           start_ts: S.optional(S.Number.pipe(T.Query())),
           end_ts: S.optional(S.Number.pipe(T.Query())),
           get_tracked_responses: S.optional(S.Boolean.pipe(T.Query())),
@@ -27260,30 +22796,26 @@ function __c31(j: number): any {
           content_id: S.optional(S.Number),
           created: S.optional(S.Number),
           customer_id: S.optional(S.NullOr(S.String)),
-          customer_identifiers: S.optional(
-            BroadcastMessagesResponseMessagesItemCustomerIdentifiers,
-          ),
+          customer_identifiers: S.optional(__S(33)),
           deduplicate_id: S.optional(S.String),
           failure_message: S.optional(S.NullOr(S.String)),
           forgotten: S.optional(S.Boolean),
           id: S.optional(S.String),
           message_template_id: S.optional(S.Number),
-          metrics: S.optional(BroadcastMessagesResponseMessagesItemMetrics),
+          metrics: S.optional(__S(34)),
           newsletter_id: S.optional(S.NullOr(S.Number)),
           parent_action_id: S.optional(S.Number),
           recipient: S.optional(S.String),
           subject: S.optional(S.String),
-          tracked_responses: S.optional(
-            GetNewsletterMsgMetaResponseMessagesItemTrackedResponsesMap,
-          ),
+          tracked_responses: S.optional(__S(36)),
           trigger_event_id: S.optional(S.String),
-          type: S.optional(GetNewsletterMsgMetaResponseMessagesItemType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetNewsletterMsgMetaResponseMessagesItem",
       });
     case 7:
-      return S.Array(GetNewsletterMsgMetaResponseMessagesItem);
+      return S.Array(__S(254));
   }
 }
 function __c32(j: number): any {
@@ -27291,7 +22823,7 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(GetNewsletterMsgMetaResponseMessagesList),
+          messages: S.optional(__S(255)),
         }),
       ).annotate({
         identifier: "GetNewsletterMsgMetaResponse",
@@ -27305,24 +22837,22 @@ function __c32(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          content_ids: S.optional(GetNewslettersResponseNewsletterContentIdsList),
+          content_ids: S.optional(__S(7)),
           created: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           expires_after: S.optional(S.Number),
           id: S.optional(S.Number),
           name: S.optional(S.String),
           recipient_file_error: S.optional(S.String),
-          recipient_file_status: S.optional(GetNewslettersResponseNewsletterRecipientFileStatus),
-          recipient_segment_ids: S.optional(
-            GetNewslettersResponseNewsletterRecipientSegmentIdsList,
-          ),
+          recipient_file_status: S.optional(S.String),
+          recipient_segment_ids: S.optional(__S(7)),
           scheduled_at: S.optional(S.NullOr(S.Number)),
-          send_state: S.optional(GetNewslettersResponseNewsletterSendState),
+          send_state: S.optional(S.String),
           sent_at: S.optional(S.NullOr(S.Number)),
           subscription_topic_id: S.optional(S.Number),
-          tags: S.optional(GetNewslettersResponseNewsletterTagsList),
+          tags: S.optional(__S(2)),
           timezone: S.optional(S.String),
-          type: S.optional(GetNewslettersResponseNewsletterType),
+          type: S.optional(S.String),
           tz_match_enabled: S.optional(S.Boolean),
           updated: S.optional(S.Number),
         }),
@@ -27332,7 +22862,7 @@ function __c32(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          newsletter: S.optional(GetNewslettersResponseNewsletter),
+          newsletter: S.optional(__S(258)),
         }),
       ).annotate({ identifier: "GetNewslettersResponse" });
     case 4:
@@ -27348,7 +22878,7 @@ function __c32(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          content_ids: S.optional(GetNewsletterTestGroupsResponseTestGroupsItemContentIdsList),
+          content_ids: S.optional(__S(2)),
           id: S.optional(S.Number),
           label: S.optional(S.String),
           name: S.optional(S.String),
@@ -27358,11 +22888,11 @@ function __c32(j: number): any {
         identifier: "GetNewsletterTestGroupsResponseTestGroupsItem",
       });
     case 6:
-      return S.Array(GetNewsletterTestGroupsResponseTestGroupsItem);
+      return S.Array(__S(261));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          test_groups: S.optional(GetNewsletterTestGroupsResponseTestGroupsList),
+          test_groups: S.optional(__S(262)),
         }),
       ).annotate({
         identifier: "GetNewsletterTestGroupsResponse",
@@ -27404,12 +22934,12 @@ function __c33(j: number): any {
           name: S.optional(S.String),
           newsletter_id: S.optional(S.Number),
           preheader_text: S.optional(S.String),
-          preprocessor: S.optional(GetNewsletterVariantResponseContentPreprocessor),
+          preprocessor: S.optional(S.String),
           recipient: S.optional(S.String),
           reply_to: S.optional(S.String),
           reply_to_id: S.optional(S.NullOr(S.Number)),
           subject: S.optional(S.String),
-          type: S.optional(GetNewsletterVariantResponseContentType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetNewsletterVariantResponseContent",
@@ -27417,7 +22947,7 @@ function __c33(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          content: S.optional(GetNewsletterVariantResponseContent),
+          content: S.optional(__S(265)),
         }),
       ).annotate({
         identifier: "GetNewsletterVariantResponse",
@@ -27458,7 +22988,7 @@ function __c33(j: number): any {
         S.Struct({
           object_type_id: S.Number.pipe(T.Label()),
           object_id: S.String.pipe(T.Label()),
-          id_type: S.optional(GetObjectAttributesRequestIdType.pipe(T.Query())),
+          id_type: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -27488,10 +23018,10 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(GetObjectAttributesResponseObjectAttributesMap),
-          identifiers: S.optional(GetObjectAttributesResponseObjectIdentifiers),
+          attributes: S.optional(__S(0)),
+          identifiers: S.optional(__S(270)),
           object_type_id: S.optional(S.String),
-          timestamps: S.optional(GetObjectAttributesResponseObjectTimestampsMap),
+          timestamps: S.optional(__S(271)),
         }),
       ).annotate({
         identifier: "GetObjectAttributesResponseObject",
@@ -27499,7 +23029,7 @@ function __c34(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          object: S.optional(GetObjectAttributesResponseObject),
+          object: S.optional(__S(272)),
         }),
       ).annotate({
         identifier: "GetObjectAttributesResponse",
@@ -27511,7 +23041,7 @@ function __c34(j: number): any {
           object_id: S.String.pipe(T.Label()),
           start: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          id_type: S.optional(GetObjectRelationshipsRequestIdType.pipe(T.Query())),
+          id_type: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -27535,7 +23065,7 @@ function __c34(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          identifiers: S.optional(GetObjectRelationshipsResponseCioRelationshipsItemIdentifiers),
+          identifiers: S.optional(__S(275)),
           object_type_disabled: S.optional(S.Boolean),
           object_type_id: S.optional(S.String),
         }),
@@ -27543,11 +23073,11 @@ function __c34(j: number): any {
         identifier: "GetObjectRelationshipsResponseCioRelationshipsItem",
       });
     case 5:
-      return S.Array(GetObjectRelationshipsResponseCioRelationshipsItem);
+      return S.Array(__S(276));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          cio_relationships: S.optional(GetObjectRelationshipsResponseCioRelationshipsList),
+          cio_relationships: S.optional(__S(277)),
           next: S.optional(S.String),
         }),
       ).annotate({
@@ -27558,7 +23088,7 @@ function __c34(j: number): any {
         S.Struct({
           start: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          filter: GetObjectsFilterRequestFilter,
+          filter: S.Unknown,
           object_type_id: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/v1/objects", code: 200 })),
       ).annotate({ identifier: "GetObjectsFilterRequest" });
@@ -27576,12 +23106,12 @@ function __c35(j: number): any {
         identifier: "GetObjectsFilterResponseIdentifiersItem",
       });
     case 1:
-      return S.Array(GetObjectsFilterResponseIdentifiersItem);
+      return S.Array(__S(280));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          identifiers: S.optional(GetObjectsFilterResponseIdentifiersList),
-          ids: S.optional(GetObjectsFilterResponseIdsList),
+          identifiers: S.optional(__S(281)),
+          ids: S.optional(__S(2)),
           next: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetObjectsFilterResponse" });
@@ -27604,11 +23134,11 @@ function __c35(j: number): any {
         identifier: "GetObjectTypesResponseTypesItem",
       });
     case 5:
-      return S.Array(GetObjectTypesResponseTypesItem);
+      return S.Array(__S(284));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          types: S.optional(GetObjectTypesResponseTypesList),
+          types: S.optional(__S(285)),
         }),
       ).annotate({ identifier: "GetObjectTypesResponse" });
     case 7:
@@ -27626,38 +23156,38 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          channel: S.optional(GetOptoutsResponseOptoutsItemOptoutsItemChannel),
+          channel: S.optional(S.String),
           from: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetOptoutsResponseOptoutsItemOptoutsItem",
       });
     case 1:
-      return S.Array(GetOptoutsResponseOptoutsItemOptoutsItem);
+      return S.Array(__S(288));
     case 2:
       return S.suspend(() =>
         S.Struct({
           cio_id: S.optional(S.String),
           customer_id: S.optional(S.String),
-          optouts: S.optional(GetOptoutsResponseOptoutsItemOptoutsList),
+          optouts: S.optional(__S(289)),
         }),
       ).annotate({
         identifier: "GetOptoutsResponseOptoutsItem",
       });
     case 3:
-      return S.Array(GetOptoutsResponseOptoutsItem);
+      return S.Array(__S(290));
     case 4:
       return S.suspend(() =>
         S.Struct({
           next: S.optional(S.String),
-          optouts: S.optional(GetOptoutsResponseOptoutsList),
+          optouts: S.optional(__S(291)),
         }),
       ).annotate({ identifier: "GetOptoutsResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          id_type: S.optional(GetPeopleByIdRequestIdType.pipe(T.Query())),
-          ids: GetPeopleByIdRequestIdsList,
+          id_type: S.optional(S.String.pipe(T.Query())),
+          ids: __S(2),
         }).pipe(T.Http({ method: "POST", uri: "/v1/customers/attributes", code: 200 })),
       ).annotate({ identifier: "GetPeopleByIdRequest" });
     case 6:
@@ -27675,18 +23205,14 @@ function __c36(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          _last_status: S.optional(
-            GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributesLastStatus,
-          ),
+          _last_status: S.optional(S.String),
           app_identifier: S.optional(S.String),
           app_version: S.optional(S.String),
           cio_sdk_version: S.optional(S.String),
           device_locale: S.optional(S.String),
           device_model: S.optional(S.String),
           device_os: S.optional(S.String),
-          push_enabled: S.optional(
-            GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributesPushEnabled,
-          ),
+          push_enabled: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributes",
@@ -27699,15 +23225,15 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          platform: GetPeopleByIdResponseCustomersItemCustomerDevicesItemPlatform,
-          attributes: S.optional(GetPeopleByIdResponseCustomersItemCustomerDevicesItemAttributes),
+          platform: S.String,
+          attributes: S.optional(__S(295)),
           last_used: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GetPeopleByIdResponseCustomersItemCustomerDevicesItem",
       });
     case 1:
-      return S.Array(GetPeopleByIdResponseCustomersItemCustomerDevicesItem);
+      return S.Array(__S(296));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -27726,11 +23252,11 @@ function __c37(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(GetPeopleByIdResponseCustomersItemCustomerAttributes),
-          devices: S.optional(GetPeopleByIdResponseCustomersItemCustomerDevicesList),
+          attributes: S.optional(__S(294)),
+          devices: S.optional(__S(297)),
           id: S.optional(S.String),
-          identifiers: S.optional(BroadcastMessagesResponseMessagesItemCustomerIdentifiers),
-          timestamps: S.optional(GetPeopleByIdResponseCustomersItemCustomerTimestamps),
+          identifiers: S.optional(__S(33)),
+          timestamps: S.optional(__S(298)),
           unsubscribed: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -27739,17 +23265,17 @@ function __c37(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(GetPeopleByIdResponseCustomersItemCustomer),
+          customer: S.optional(__S(299)),
         }),
       ).annotate({
         identifier: "GetPeopleByIdResponseCustomersItem",
       });
     case 5:
-      return S.Array(GetPeopleByIdResponseCustomersItem);
+      return S.Array(__S(300));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          customers: S.optional(GetPeopleByIdResponseCustomersList),
+          customers: S.optional(__S(301)),
         }),
       ).annotate({ identifier: "GetPeopleByIdResponse" });
     case 7:
@@ -27773,11 +23299,11 @@ function __c38(j: number): any {
         identifier: "GetPeopleEmailResponseResultsItem",
       });
     case 1:
-      return S.Array(GetPeopleEmailResponseResultsItem);
+      return S.Array(__S(304));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(GetPeopleEmailResponseResultsList),
+          results: S.optional(__S(305)),
         }),
       ).annotate({ identifier: "GetPeopleEmailResponse" });
     case 3:
@@ -27785,14 +23311,14 @@ function __c38(j: number): any {
         S.Struct({
           start: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          filter: GetPeopleFilterRequestFilter,
+          filter: S.Unknown,
         }).pipe(T.Http({ method: "POST", uri: "/v1/customers", code: 200 })),
       ).annotate({ identifier: "GetPeopleFilterRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          identifiers: S.optional(GetPeopleFilterResponseIdentifiersList),
-          ids: S.optional(GetPeopleFilterResponseIdsList),
+          identifiers: S.optional(__S(305)),
+          ids: S.optional(__S(2)),
           next: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetPeopleFilterResponse" });
@@ -27800,10 +23326,10 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer_id: S.String.pipe(T.Label()),
-          id_type: S.optional(GetPersonActivitiesRequestIdType.pipe(T.Query())),
+          id_type: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(GetPersonActivitiesRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/v1/customers/{customer_id}/activities", code: 200 }),
@@ -27815,23 +23341,21 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer_id: S.optional(S.NullOr(S.String)),
-          customer_identifiers: S.optional(
-            BroadcastMessagesResponseMessagesItemCustomerIdentifiers,
-          ),
-          data: S.optional(GetPersonActivitiesResponseActivitiesItemData),
+          customer_identifiers: S.optional(__S(33)),
+          data: S.optional(S.Unknown),
           delivery_id: S.optional(S.String),
-          delivery_type: S.optional(GetPersonActivitiesResponseActivitiesItemDeliveryType),
+          delivery_type: S.optional(S.String),
           id: S.optional(S.String),
           name: S.optional(S.String),
           timestamp: S.optional(S.Number),
-          type: S.optional(GetPersonActivitiesResponseActivitiesItemType),
+          type: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetPersonActivitiesResponseActivitiesItem",
       });
     case 7:
-      return S.Array(GetPersonActivitiesResponseActivitiesItem);
+      return S.Array(__S(310));
   }
 }
 function __c39(j: number): any {
@@ -27839,7 +23363,7 @@ function __c39(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          activities: S.optional(GetPersonActivitiesResponseActivitiesList),
+          activities: S.optional(__S(311)),
         }),
       ).annotate({
         identifier: "GetPersonActivitiesResponse",
@@ -27848,7 +23372,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer_id: S.String.pipe(T.Label()),
-          id_type: S.optional(GetPersonAttributesRequestIdType.pipe(T.Query())),
+          id_type: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/v1/customers/{customer_id}/attributes", code: 200 }),
         ),
@@ -27858,18 +23382,14 @@ function __c39(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          _last_status: S.optional(
-            GetPersonAttributesResponseCustomerDevicesItemAttributesLastStatus,
-          ),
+          _last_status: S.optional(S.String),
           app_identifier: S.optional(S.String),
           app_version: S.optional(S.String),
           cio_sdk_version: S.optional(S.String),
           device_locale: S.optional(S.String),
           device_model: S.optional(S.String),
           device_os: S.optional(S.String),
-          push_enabled: S.optional(
-            GetPersonAttributesResponseCustomerDevicesItemAttributesPushEnabled,
-          ),
+          push_enabled: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetPersonAttributesResponseCustomerDevicesItemAttributes",
@@ -27878,23 +23398,23 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          platform: GetPersonAttributesResponseCustomerDevicesItemPlatform,
-          attributes: S.optional(GetPersonAttributesResponseCustomerDevicesItemAttributes),
+          platform: S.String,
+          attributes: S.optional(__S(314)),
           last_used: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "GetPersonAttributesResponseCustomerDevicesItem",
       });
     case 4:
-      return S.Array(GetPersonAttributesResponseCustomerDevicesItem);
+      return S.Array(__S(315));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(GetPeopleByIdResponseCustomersItemCustomerAttributes),
-          devices: S.optional(GetPersonAttributesResponseCustomerDevicesList),
+          attributes: S.optional(__S(294)),
+          devices: S.optional(__S(316)),
           id: S.optional(S.String),
-          identifiers: S.optional(BroadcastMessagesResponseMessagesItemCustomerIdentifiers),
-          timestamps: S.optional(GetPeopleByIdResponseCustomersItemCustomerTimestamps),
+          identifiers: S.optional(__S(33)),
+          timestamps: S.optional(__S(298)),
           unsubscribed: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -27903,7 +23423,7 @@ function __c39(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(GetPersonAttributesResponseCustomer),
+          customer: S.optional(__S(317)),
         }),
       ).annotate({
         identifier: "GetPersonAttributesResponse",
@@ -27912,7 +23432,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer_id: S.String.pipe(T.Label()),
-          id_type: S.optional(GetPersonMessagesRequestIdType.pipe(T.Query())),
+          id_type: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           start_ts: S.optional(S.Number.pipe(T.Query())),
@@ -27945,22 +23465,22 @@ function __c40(j: number): any {
           failure_message: S.optional(S.NullOr(S.String)),
           forgotten: S.optional(S.Boolean),
           id: S.optional(S.String),
-          metrics: S.optional(GetPersonMessagesResponseMessagesItemMetrics),
+          metrics: S.optional(__S(320)),
           msg_template_id: S.optional(S.String),
           newsletter_id: S.optional(S.NullOr(S.Number)),
           recipient: S.optional(S.String),
           subject: S.optional(S.String),
-          type: S.optional(GetPersonMessagesResponseMessagesItemType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetPersonMessagesResponseMessagesItem",
       });
     case 2:
-      return S.Array(GetPersonMessagesResponseMessagesItem);
+      return S.Array(__S(321));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(GetPersonMessagesResponseMessagesList),
+          messages: S.optional(__S(322)),
         }),
       ).annotate({
         identifier: "GetPersonMessagesResponse",
@@ -27969,20 +23489,20 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer_id: S.String.pipe(T.Label()),
-          id_type: S.optional(GetPersonOptoutsRequestIdType.pipe(T.Query())),
+          id_type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/customers/{customer_id}/optouts", code: 200 })),
       ).annotate({ identifier: "GetPersonOptoutsRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          optouts: S.optional(GetPersonOptoutsResponseOptoutsList),
+          optouts: S.optional(__S(289)),
         }),
       ).annotate({ identifier: "GetPersonOptoutsResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           customer_id: S.String.pipe(T.Label()),
-          id_type: S.optional(GetPersonRelationshipsRequestIdType.pipe(T.Query())),
+          id_type: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -28011,20 +23531,20 @@ function __c41(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(GetPersonRelationshipsResponseCioRelationshipsItemAttributesMap),
-          identifiers: S.optional(GetPersonRelationshipsResponseCioRelationshipsItemIdentifiers),
+          attributes: S.optional(__S(327)),
+          identifiers: S.optional(__S(328)),
           object_type_id: S.optional(S.Number),
-          timestamps: S.optional(GetPersonRelationshipsResponseCioRelationshipsItemTimestampsMap),
+          timestamps: S.optional(__S(329)),
         }),
       ).annotate({
         identifier: "GetPersonRelationshipsResponseCioRelationshipsItem",
       });
     case 3:
-      return S.Array(GetPersonRelationshipsResponseCioRelationshipsItem);
+      return S.Array(__S(330));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          cio_relationships: S.optional(GetPersonRelationshipsResponseCioRelationshipsList),
+          cio_relationships: S.optional(__S(331)),
           next: S.optional(S.String),
         }),
       ).annotate({
@@ -28034,7 +23554,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer_id: S.String.pipe(T.Label()),
-          id_type: S.optional(GetPersonSegmentsRequestIdType.pipe(T.Query())),
+          id_type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/customers/{customer_id}/segments", code: 200 })),
       ).annotate({ identifier: "GetPersonSegmentsRequest" });
     case 6:
@@ -28048,7 +23568,7 @@ function __c41(j: number): any {
         identifier: "GetPersonSegmentsResponseSegmentsItem",
       });
     case 7:
-      return S.Array(GetPersonSegmentsResponseSegmentsItem);
+      return S.Array(__S(334));
   }
 }
 function __c42(j: number): any {
@@ -28056,7 +23576,7 @@ function __c42(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          segments: S.optional(GetPersonSegmentsResponseSegmentsList),
+          segments: S.optional(__S(335)),
         }),
       ).annotate({
         identifier: "GetPersonSegmentsResponse",
@@ -28065,7 +23585,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer_id: S.String.pipe(T.Label()),
-          id_type: S.optional(GetPersonSubscriptionPreferencesRequestIdType.pipe(T.Query())),
+          id_type: S.optional(S.String.pipe(T.Query())),
           language: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -28098,14 +23618,14 @@ function __c42(j: number): any {
         identifier: "GetPersonSubscriptionPreferencesResponseCustomerTopicsItem",
       });
     case 4:
-      return S.Array(GetPersonSubscriptionPreferencesResponseCustomerTopicsItem);
+      return S.Array(__S(339));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          header: S.optional(GetPersonSubscriptionPreferencesResponseCustomerHeader),
+          header: S.optional(__S(338)),
           id: S.optional(S.NullOr(S.String)),
-          identifiers: S.optional(BroadcastMessagesResponseMessagesItemCustomerIdentifiers),
-          topics: S.optional(GetPersonSubscriptionPreferencesResponseCustomerTopicsList),
+          identifiers: S.optional(__S(33)),
+          topics: S.optional(__S(340)),
           unsubscribed: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -28114,7 +23634,7 @@ function __c42(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(GetPersonSubscriptionPreferencesResponseCustomer),
+          customer: S.optional(__S(341)),
         }),
       ).annotate({
         identifier: "GetPersonSubscriptionPreferencesResponse",
@@ -28144,12 +23664,12 @@ function __c43(j: number): any {
         identifier: "GetPublishStatusResponseMappingsItem",
       });
     case 1:
-      return S.Array(GetPublishStatusResponseMappingsItem);
+      return S.Array(__S(344));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          mappings: S.optional(GetPublishStatusResponseMappingsList),
-          status: S.optional(GetPublishStatusResponseStatus),
+          mappings: S.optional(__S(345)),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetPublishStatusResponse" });
     case 3:
@@ -28161,16 +23681,16 @@ function __c43(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(GetSegmentResponseSegmentConditionsMap),
+          conditions: S.optional(__S(0)),
           created_at: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           description: S.optional(S.String),
           id: S.optional(S.Number),
           name: S.optional(S.String),
           progress: S.optional(S.NullOr(S.Number)),
-          state: S.optional(GetSegmentResponseSegmentState),
-          tags: S.optional(S.NullOr(GetSegmentResponseSegmentTagsList)),
-          type: S.optional(GetSegmentResponseSegmentType),
+          state: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(2))),
+          type: S.optional(S.String),
           updated_at: S.optional(S.Number),
         }),
       ).annotate({
@@ -28179,7 +23699,7 @@ function __c43(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          segment: S.optional(GetSegmentResponseSegment),
+          segment: S.optional(__S(348)),
         }),
       ).annotate({ identifier: "GetSegmentResponse" });
     case 6:
@@ -28212,10 +23732,10 @@ function __c44(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          campaigns: S.optional(GetSegmentDependenciesResponseUsedByCampaignsList),
-          draft_newsletters: S.optional(GetSegmentDependenciesResponseUsedByDraftNewslettersList),
+          campaigns: S.optional(__S(7)),
+          draft_newsletters: S.optional(__S(7)),
           segment_id: S.optional(S.Number),
-          sent_newsletters: S.optional(GetSegmentDependenciesResponseUsedBySentNewslettersList),
+          sent_newsletters: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "GetSegmentDependenciesResponseUsedBy",
@@ -28223,7 +23743,7 @@ function __c44(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          used_by: S.optional(GetSegmentDependenciesResponseUsedBy),
+          used_by: S.optional(__S(353)),
         }),
       ).annotate({
         identifier: "GetSegmentDependenciesResponse",
@@ -28239,7 +23759,7 @@ function __c44(j: number): any {
         identifier: "GetSegmentMembershipRequest",
       });
     case 4:
-      return S.suspend(() => GetSegmentMembershipResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetSegmentMembershipResponse",
       });
     case 5:
@@ -28259,7 +23779,7 @@ function __c44(j: number): any {
           id: S.optional(S.Number),
           name: S.optional(S.String),
           phone: S.optional(S.String),
-          template_type: S.optional(GetSenderResponseSenderIdentityTemplateType),
+          template_type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetSenderResponseSenderIdentity",
@@ -28267,7 +23787,7 @@ function __c44(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sender_identity: S.optional(GetSenderResponseSenderIdentity),
+          sender_identity: S.optional(__S(358)),
         }),
       ).annotate({ identifier: "GetSenderResponse" });
   }
@@ -28285,9 +23805,9 @@ function __c45(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          campaigns: S.optional(GetSenderUsageResponseCampaignsList),
-          draft_newsletters: S.optional(GetSenderUsageResponseDraftNewslettersList),
-          sent_newsletters: S.optional(GetSenderUsageResponseSentNewslettersList),
+          campaigns: S.optional(__S(7)),
+          draft_newsletters: S.optional(__S(7)),
+          sent_newsletters: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "GetSenderUsageResponse" });
     case 2:
@@ -28320,14 +23840,14 @@ function __c45(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(GetSuppressionResponseCategory),
-          suppressions: S.optional(GetSuppressionResponseSuppressionsList),
+          category: S.optional(S.String),
+          suppressions: S.optional(__S(215)),
         }),
       ).annotate({ identifier: "GetSuppressionResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          suppression_type: GetSuppressionByTypeRequestSuppressionType.pipe(T.Label()),
+          suppression_type: S.String.pipe(T.Label()),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           domain: S.optional(S.String.pipe(T.Query())),
@@ -28340,8 +23860,8 @@ function __c45(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(GetSuppressionByTypeResponseCategory),
-          suppressions: S.optional(GetSuppressionByTypeResponseSuppressionsList),
+          category: S.optional(S.String),
+          suppressions: S.optional(__S(215)),
         }),
       ).annotate({
         identifier: "GetSuppressionByTypeResponse",
@@ -28367,11 +23887,11 @@ function __c46(j: number): any {
         identifier: "GetTopicsResponseTopicsItem",
       });
     case 2:
-      return S.Array(GetTopicsResponseTopicsItem);
+      return S.Array(__S(369));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          topics: S.optional(GetTopicsResponseTopicsList),
+          topics: S.optional(__S(370)),
         }),
       ).annotate({ identifier: "GetTopicsResponse" });
     case 4:
@@ -28400,7 +23920,7 @@ function __c46(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(GetTransactionalResponseMessage),
+          message: S.optional(__S(373)),
         }),
       ).annotate({ identifier: "GetTransactionalResponse" });
     case 7:
@@ -28438,12 +23958,12 @@ function __c47(j: number): any {
           language: S.optional(S.String),
           name: S.optional(S.String),
           preheader_text: S.optional(S.String),
-          preprocessor: S.optional(GetTransactionalTranslationByIdResponseContentPreprocessor),
+          preprocessor: S.optional(S.String),
           recipient: S.optional(S.String),
           reply_to: S.optional(S.String),
           reply_to_id: S.optional(S.NullOr(S.Number)),
           subject: S.optional(S.String),
-          type: S.optional(GetTransactionalTranslationByIdResponseContentType),
+          type: S.optional(S.String),
           updated: S.optional(S.Number),
         }),
       ).annotate({
@@ -28452,7 +23972,7 @@ function __c47(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          content: S.optional(GetTransactionalTranslationByIdResponseContent),
+          content: S.optional(__S(376)),
         }),
       ).annotate({
         identifier: "GetTransactionalTranslationByIdResponse",
@@ -28473,11 +23993,11 @@ function __c47(j: number): any {
         identifier: "GetTransactionalVariantRequest",
       });
     case 3:
-      return S.Array(GetTransactionalVariantResponseContentItem);
+      return S.Array(__S(376));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          content: S.optional(GetTransactionalVariantResponseContentList),
+          content: S.optional(__S(379)),
         }),
       ).annotate({
         identifier: "GetTransactionalVariantResponse",
@@ -28487,9 +24007,9 @@ function __c47(j: number): any {
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
           content_id: S.Number.pipe(T.Label()),
-          period: S.optional(GetVariantLinksRequestPeriod.pipe(T.Query())),
+          period: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(GetVariantLinksRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -28503,9 +24023,9 @@ function __c47(j: number): any {
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
           content_id: S.Number.pipe(T.Label()),
-          period: S.optional(GetVariantMetricsRequestPeriod.pipe(T.Query())),
+          period: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(GetVariantMetricsRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -28517,38 +24037,32 @@ function __c47(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          attempted: S.optional(GetVariantMetricsResponseMetricSeriesAttemptedList),
-          bounced: S.optional(GetVariantMetricsResponseMetricSeriesBouncedList),
-          clicked: S.optional(GetVariantMetricsResponseMetricSeriesClickedList),
-          converted: S.optional(GetVariantMetricsResponseMetricSeriesConvertedList),
-          created: S.optional(GetVariantMetricsResponseMetricSeriesCreatedList),
-          deferred: S.optional(GetVariantMetricsResponseMetricSeriesDeferredList),
-          delivered: S.optional(GetVariantMetricsResponseMetricSeriesDeliveredList),
-          drafted: S.optional(GetVariantMetricsResponseMetricSeriesDraftedList),
-          failed: S.optional(GetVariantMetricsResponseMetricSeriesFailedList),
-          human_clicked: S.optional(GetVariantMetricsResponseMetricSeriesHumanClickedList),
-          human_opened: S.optional(GetVariantMetricsResponseMetricSeriesHumanOpenedList),
-          link_untracked: S.optional(GetVariantMetricsResponseMetricSeriesLinkUntrackedList),
-          machine_clicked: S.optional(GetVariantMetricsResponseMetricSeriesMachineClickedList),
-          open_untracked: S.optional(GetVariantMetricsResponseMetricSeriesOpenUntrackedList),
-          opened: S.optional(GetVariantMetricsResponseMetricSeriesOpenedList),
-          prefetch_opened: S.optional(GetVariantMetricsResponseMetricSeriesPrefetchOpenedList),
-          replied: S.optional(GetVariantMetricsResponseMetricSeriesRepliedList),
-          sent: S.optional(GetVariantMetricsResponseMetricSeriesSentList),
-          spammed: S.optional(GetVariantMetricsResponseMetricSeriesSpammedList),
-          suppressed: S.optional(GetVariantMetricsResponseMetricSeriesSuppressedList),
-          topic_unsubscribed: S.optional(
-            GetVariantMetricsResponseMetricSeriesTopicUnsubscribedList,
-          ),
-          tracking_consent_denied: S.optional(
-            GetVariantMetricsResponseMetricSeriesTrackingConsentDeniedList,
-          ),
-          tracking_consent_granted: S.optional(
-            GetVariantMetricsResponseMetricSeriesTrackingConsentGrantedList,
-          ),
-          undeliverable: S.optional(GetVariantMetricsResponseMetricSeriesUndeliverableList),
-          unsubscribed: S.optional(GetVariantMetricsResponseMetricSeriesUnsubscribedList),
-          untracked: S.optional(GetVariantMetricsResponseMetricSeriesUntrackedList),
+          attempted: S.optional(__S(7)),
+          bounced: S.optional(__S(7)),
+          clicked: S.optional(__S(7)),
+          converted: S.optional(__S(7)),
+          created: S.optional(__S(7)),
+          deferred: S.optional(__S(7)),
+          delivered: S.optional(__S(7)),
+          drafted: S.optional(__S(7)),
+          failed: S.optional(__S(7)),
+          human_clicked: S.optional(__S(7)),
+          human_opened: S.optional(__S(7)),
+          link_untracked: S.optional(__S(7)),
+          machine_clicked: S.optional(__S(7)),
+          open_untracked: S.optional(__S(7)),
+          opened: S.optional(__S(7)),
+          prefetch_opened: S.optional(__S(7)),
+          replied: S.optional(__S(7)),
+          sent: S.optional(__S(7)),
+          spammed: S.optional(__S(7)),
+          suppressed: S.optional(__S(7)),
+          topic_unsubscribed: S.optional(__S(7)),
+          tracking_consent_denied: S.optional(__S(7)),
+          tracking_consent_granted: S.optional(__S(8)),
+          undeliverable: S.optional(__S(7)),
+          unsubscribed: S.optional(__S(7)),
+          untracked: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "GetVariantMetricsResponseMetricSeries",
@@ -28560,8 +24074,8 @@ function __c48(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          series: S.optional(GetVariantMetricsResponseMetricSeries),
-          type: S.optional(GetVariantMetricsResponseMetricType),
+          series: S.optional(__S(383)),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetVariantMetricsResponseMetric",
@@ -28569,7 +24083,7 @@ function __c48(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          metric: S.optional(GetVariantMetricsResponseMetric),
+          metric: S.optional(__S(384)),
         }),
       ).annotate({
         identifier: "GetVariantMetricsResponse",
@@ -28594,22 +24108,20 @@ function __c48(j: number): any {
           content: S.optional(S.String),
           name: S.optional(S.String),
           node_id: S.optional(S.String),
-          node_type: S.optional(GetVersionResponseDependenciesItemNodeType),
+          node_type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetVersionResponseDependenciesItem",
       });
     case 4:
-      return S.Array(GetVersionResponseDependenciesItem);
+      return S.Array(__S(387));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          backend_markers: S.optional(
-            GetVersionResponseNodeTransformersRemoveUnusedCssBackendMarkersList,
-          ),
+          backend_markers: S.optional(__S(89)),
           enabled: S.optional(S.Boolean),
           uglify: S.optional(S.Boolean),
-          whitelist: S.optional(GetVersionResponseNodeTransformersRemoveUnusedCssWhitelistList),
+          whitelist: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "GetVersionResponseNodeTransformersRemoveUnusedCss",
@@ -28617,14 +24129,14 @@ function __c48(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          accessibility: S.optional(CreateEmailRequestTransformersAccessibility),
-          css_inliner: S.optional(CreateEmailRequestTransformersCssInliner),
-          css_variables: S.optional(CreateEmailRequestTransformersCssVariables),
-          encode_entities: S.optional(CreateEmailRequestTransformersEncodeEntities),
-          formatter: S.optional(GetVersionResponseNodeTransformersFormatter),
-          prevent_widows: S.optional(CreateEmailRequestTransformersPreventWidows),
-          remove_unused_css: S.optional(GetVersionResponseNodeTransformersRemoveUnusedCss),
-          url_parameters: S.optional(GetVersionResponseNodeTransformersUrlParameters),
+          accessibility: S.optional(__S(80)),
+          css_inliner: S.optional(__S(82)),
+          css_variables: S.optional(__S(83)),
+          encode_entities: S.optional(__S(84)),
+          formatter: S.optional(__S(98)),
+          prevent_widows: S.optional(__S(84)),
+          remove_unused_css: S.optional(__S(389)),
+          url_parameters: S.optional(__S(93)),
         }),
       ).annotate({
         identifier: "GetVersionResponseNodeTransformers",
@@ -28634,14 +24146,14 @@ function __c48(j: number): any {
         S.Struct({
           amp: S.optional(S.String),
           content: S.optional(S.String),
-          envelope: S.optional(GetVersionResponseNodeEnvelope),
+          envelope: S.optional(__S(96)),
           name: S.optional(S.String),
           node_id: S.optional(S.String),
-          node_type: S.optional(GetVersionResponseNodeNodeType),
+          node_type: S.optional(S.String),
           preheader_text: S.optional(S.String),
           subject: S.optional(S.String),
           text: S.optional(S.String),
-          transformers: S.optional(GetVersionResponseNodeTransformers),
+          transformers: S.optional(__S(390)),
         }),
       ).annotate({ identifier: "GetVersionResponseNode" });
   }
@@ -28658,7 +24170,7 @@ function __c49(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           node_id: S.optional(S.String),
-          node_type: S.optional(GetVersionResponseVersionNodeType),
+          node_type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetVersionResponseVersion",
@@ -28666,9 +24178,9 @@ function __c49(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dependencies: S.optional(GetVersionResponseDependenciesList),
-          node: S.optional(GetVersionResponseNode),
-          version: S.optional(GetVersionResponseVersion),
+          dependencies: S.optional(__S(388)),
+          node: S.optional(__S(391)),
+          version: S.optional(__S(392)),
         }),
       ).annotate({ identifier: "GetVersionResponse" });
     case 2:
@@ -28680,38 +24192,38 @@ function __c49(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          import: ImportRequestImport,
+          import: S.Unknown,
         }).pipe(T.Http({ method: "POST", uri: "/v1/imports", code: 200 })),
       ).annotate({ identifier: "ImportRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           created_at: S.optional(S.Number),
-          data_to_process: S.optional(ImportResponseImportDataToProcess),
+          data_to_process: S.optional(S.String),
           description: S.optional(S.String),
           error: S.optional(S.String),
           id: S.optional(S.Number),
-          identifier: S.optional(ImportResponseImportIdentifier),
+          identifier: S.optional(S.String),
           name: S.optional(S.String),
           object_type_id: S.optional(S.String),
-          people_to_process: S.optional(ImportResponseImportPeopleToProcess),
+          people_to_process: S.optional(S.String),
           rows_imported: S.optional(S.Number),
           rows_to_import: S.optional(S.Number),
-          state: S.optional(ImportResponseImportState),
-          type: S.optional(ImportResponseImportType),
+          state: S.optional(S.String),
+          type: S.optional(S.String),
           updated_at: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ImportResponseImport" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          import: ImportResponseImport,
+          import: __S(396),
         }),
       ).annotate({ identifier: "ImportResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: LinkEmailRequestTargetType,
+          type: S.String,
           action_id: S.optional(S.Number),
           newsletter_id: S.optional(S.Number),
           transactional_message_id: S.optional(S.Number),
@@ -28721,7 +24233,7 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          target: LinkEmailRequestTarget,
+          target: __S(398),
           force: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/v1/design_studio/emails/{id}/link", code: 200 })),
       ).annotate({ identifier: "LinkEmailRequest" });
@@ -28733,7 +24245,7 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           node_id: S.optional(S.String),
-          target: S.optional(LinkEmailResponseTarget),
+          target: S.optional(__S(398)),
           template_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "LinkEmailResponse" });
@@ -28741,11 +24253,11 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           start: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(ListActivitiesRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           deleted: S.optional(S.Boolean.pipe(T.Query())),
           customer_id: S.optional(S.String.pipe(T.Query())),
-          id_type: S.optional(ListActivitiesRequestIdType.pipe(T.Query())),
+          id_type: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/activities", code: 200 })),
       ).annotate({ identifier: "ListActivitiesRequest" });
@@ -28753,27 +24265,25 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customer_id: S.optional(S.NullOr(S.String)),
-          customer_identifiers: S.optional(
-            BroadcastMessagesResponseMessagesItemCustomerIdentifiers,
-          ),
-          data: S.optional(ListActivitiesResponseActivitiesItemData),
+          customer_identifiers: S.optional(__S(33)),
+          data: S.optional(S.Unknown),
           delivery_id: S.optional(S.String),
-          delivery_type: S.optional(ListActivitiesResponseActivitiesItemDeliveryType),
+          delivery_type: S.optional(S.String),
           id: S.optional(S.String),
           name: S.optional(S.String),
           timestamp: S.optional(S.Number),
-          type: S.optional(ListActivitiesResponseActivitiesItemType),
+          type: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListActivitiesResponseActivitiesItem",
       });
     case 3:
-      return S.Array(ListActivitiesResponseActivitiesItem);
+      return S.Array(__S(402));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          activities: S.optional(ListActivitiesResponseActivitiesList),
+          activities: S.optional(__S(403)),
           next: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListActivitiesResponse" });
@@ -28787,7 +24297,7 @@ function __c50(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/assets/folders", code: 200 })),
       ).annotate({ identifier: "ListAssetFoldersRequest" });
     case 6:
-      return S.Array(CreateAssetFolderResponseFolder);
+      return S.Array(__S(71));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -28814,8 +24324,8 @@ function __c51(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(ListAssetFoldersResponseMetaFilters),
-          pagination: S.optional(ListAssetFoldersResponseMetaPagination),
+          filters: S.optional(__S(407)),
+          pagination: S.optional(__S(408)),
         }),
       ).annotate({
         identifier: "ListAssetFoldersResponseMeta",
@@ -28823,8 +24333,8 @@ function __c51(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          folders: S.optional(ListAssetFoldersResponseFoldersList),
-          meta: S.optional(ListAssetFoldersResponseMeta),
+          folders: S.optional(__S(406)),
+          meta: S.optional(__S(409)),
         }),
       ).annotate({ identifier: "ListAssetFoldersResponse" });
     case 3:
@@ -28837,12 +24347,12 @@ function __c51(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/assets", code: 200 })),
       ).annotate({ identifier: "ListAssetsRequest" });
     case 4:
-      return S.Array(CreateAssetResponseAsset);
+      return S.Array(__S(68));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          assets: S.optional(ListAssetsResponseAssetsList),
-          meta: S.optional(ListAssetFoldersResponseMeta),
+          assets: S.optional(__S(412)),
+          meta: S.optional(__S(409)),
         }),
       ).annotate({ identifier: "ListAssetsResponse" });
     case 6:
@@ -28852,17 +24362,17 @@ function __c51(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(ListBroadcastsResponseBroadcastsItemActionsList),
+          actions: S.optional(__S(183)),
           active: S.optional(S.Boolean),
           created: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           first_started: S.optional(S.Number),
           id: S.optional(S.Number),
-          msg_template_ids: S.optional(ListBroadcastsResponseBroadcastsItemMsgTemplateIdsList),
+          msg_template_ids: S.optional(__S(183)),
           name: S.optional(S.String),
-          state: S.optional(ListBroadcastsResponseBroadcastsItemState),
-          tags: S.optional(ListBroadcastsResponseBroadcastsItemTagsList),
-          type: S.optional(ListBroadcastsResponseBroadcastsItemType),
+          state: S.optional(S.String),
+          tags: S.optional(__S(2)),
+          type: S.optional(S.String),
           updated: S.optional(S.Number),
         }),
       ).annotate({
@@ -28873,11 +24383,11 @@ function __c51(j: number): any {
 function __c52(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListBroadcastsResponseBroadcastsItem);
+      return S.Array(__S(415));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          broadcasts: S.optional(ListBroadcastsResponseBroadcastsList),
+          broadcasts: S.optional(__S(416)),
         }),
       ).annotate({ identifier: "ListBroadcastsResponse" });
     case 2:
@@ -28891,11 +24401,11 @@ function __c52(j: number): any {
         identifier: "ListBroadcastTriggersRequest",
       });
     case 3:
-      return S.Array(ListBroadcastTriggersResponseTriggersItem);
+      return S.Array(__S(63));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          triggers: S.optional(ListBroadcastTriggersResponseTriggersList),
+          triggers: S.optional(__S(419)),
         }),
       ).annotate({
         identifier: "ListBroadcastTriggersResponse",
@@ -28910,11 +24420,11 @@ function __c52(j: number): any {
         identifier: "ListCampaignActionsRequest",
       });
     case 6:
-      return S.Array(ListCampaignActionsResponseActionsItem);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(ListCampaignActionsResponseActionsList),
+          actions: S.optional(__S(422)),
           next: S.optional(S.String),
         }),
       ).annotate({
@@ -28929,11 +24439,11 @@ function __c53(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/campaigns", code: 200 })),
       ).annotate({ identifier: "ListCampaignsRequest" });
     case 1:
-      return S.Array(ListCampaignsResponseCampaignsItem);
+      return S.Array(S.Unknown);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          campaigns: S.optional(ListCampaignsResponseCampaignsList),
+          campaigns: S.optional(__S(425)),
         }),
       ).annotate({ identifier: "ListCampaignsResponse" });
     case 3:
@@ -28944,8 +24454,8 @@ function __c53(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           parent_folder_id: S.optional(S.String.pipe(T.Query())),
           direct_descendants_only: S.optional(S.Boolean.pipe(T.Query())),
-          sort_by: S.optional(ListComponentsRequestSortBy.pipe(T.Query())),
-          sort_order: S.optional(ListComponentsRequestSortOrder.pipe(T.Query())),
+          sort_by: S.optional(S.String.pipe(T.Query())),
+          sort_order: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.Number.pipe(T.Query())),
           created_after: S.optional(S.Number.pipe(T.Query())),
           updated_before: S.optional(S.Number.pipe(T.Query())),
@@ -28966,14 +24476,14 @@ function __c53(j: number): any {
         identifier: "ListComponentsResponseComponentsItem",
       });
     case 5:
-      return S.Array(ListComponentsResponseComponentsItem);
+      return S.Array(__S(428));
     case 6:
-      return S.Array(CreateFolderResponseFolder);
+      return S.Array(__S(123));
     case 7:
       return S.suspend(() =>
         S.Struct({
           filters: S.optional(S.Unknown),
-          pagination: S.optional(ListComponentsResponseMetaPagination),
+          pagination: S.optional(__S(408)),
         }),
       ).annotate({
         identifier: "ListComponentsResponseMeta",
@@ -28985,9 +24495,9 @@ function __c54(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          components: S.optional(ListComponentsResponseComponentsList),
-          folders: S.optional(ListComponentsResponseFoldersList),
-          meta: S.optional(ListComponentsResponseMeta),
+          components: S.optional(__S(429)),
+          folders: S.optional(__S(430)),
+          meta: S.optional(__S(431)),
         }),
       ).annotate({ identifier: "ListComponentsResponse" });
     case 1:
@@ -28997,15 +24507,15 @@ function __c54(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           parent_folder_id: S.optional(S.String.pipe(T.Query())),
           direct_descendants_only: S.optional(S.Boolean.pipe(T.Query())),
-          sort_by: S.optional(ListEmailsRequestSortBy.pipe(T.Query())),
-          sort_order: S.optional(ListEmailsRequestSortOrder.pipe(T.Query())),
+          sort_by: S.optional(S.String.pipe(T.Query())),
+          sort_order: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.Number.pipe(T.Query())),
           created_after: S.optional(S.Number.pipe(T.Query())),
           updated_before: S.optional(S.Number.pipe(T.Query())),
           updated_after: S.optional(S.Number.pipe(T.Query())),
-          is_template: S.optional(ListEmailsRequestIsTemplate.pipe(T.Query())),
-          has_translations: S.optional(ListEmailsRequestHasTranslations.pipe(T.Query())),
-          is_linked: S.optional(ListEmailsRequestIsLinked.pipe(T.Query())),
+          is_template: S.optional(S.String.pipe(T.Query())),
+          has_translations: S.optional(S.String.pipe(T.Query())),
+          is_linked: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/design_studio/emails", code: 200 })),
       ).annotate({ identifier: "ListEmailsRequest" });
     case 2:
@@ -29024,13 +24534,13 @@ function __c54(j: number): any {
         identifier: "ListEmailsResponseEmailsItem",
       });
     case 3:
-      return S.Array(ListEmailsResponseEmailsItem);
+      return S.Array(__S(434));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          emails: S.optional(ListEmailsResponseEmailsList),
-          folders: S.optional(ListEmailsResponseFoldersList),
-          meta: S.optional(ListComponentsResponseMeta),
+          emails: S.optional(__S(435)),
+          folders: S.optional(__S(430)),
+          meta: S.optional(__S(431)),
         }),
       ).annotate({ identifier: "ListEmailsResponse" });
     case 5:
@@ -29050,9 +24560,7 @@ function __c54(j: number): any {
           fake_bcc: S.optional(S.Boolean),
           from: S.optional(S.String),
           from_id: S.optional(S.NullOr(S.Number)),
-          headers: S.optional(
-            ListEmailTranslationsResponseEmailTranslationsItemEnvelopeHeadersList,
-          ),
+          headers: S.optional(__S(112)),
           recipient: S.optional(S.String),
           reply_to: S.optional(S.String),
           reply_to_id: S.optional(S.NullOr(S.Number)),
@@ -29063,15 +24571,9 @@ function __c54(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          minify: S.optional(
-            ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterMinify,
-          ),
-          prettify: S.optional(
-            ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterPrettify,
-          ),
-          type: S.optional(
-            ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatterType,
-          ),
+          minify: S.optional(__S(114)),
+          prettify: S.optional(__S(115)),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatter",
@@ -29083,20 +24585,14 @@ function __c55(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accessibility: S.optional(CreateEmailRequestTransformersAccessibility),
-          css_inliner: S.optional(CreateEmailRequestTransformersCssInliner),
-          css_variables: S.optional(CreateEmailRequestTransformersCssVariables),
-          encode_entities: S.optional(CreateEmailRequestTransformersEncodeEntities),
-          formatter: S.optional(
-            ListEmailTranslationsResponseEmailTranslationsItemTransformersFormatter,
-          ),
-          prevent_widows: S.optional(CreateEmailRequestTransformersPreventWidows),
-          remove_unused_css: S.optional(
-            ListEmailTranslationsResponseEmailTranslationsItemTransformersRemoveUnusedCss,
-          ),
-          url_parameters: S.optional(
-            ListEmailTranslationsResponseEmailTranslationsItemTransformersUrlParameters,
-          ),
+          accessibility: S.optional(__S(80)),
+          css_inliner: S.optional(__S(82)),
+          css_variables: S.optional(__S(83)),
+          encode_entities: S.optional(__S(84)),
+          formatter: S.optional(__S(439)),
+          prevent_widows: S.optional(__S(84)),
+          remove_unused_css: S.optional(__S(117)),
+          url_parameters: S.optional(__S(118)),
         }),
       ).annotate({
         identifier: "ListEmailTranslationsResponseEmailTranslationsItemTransformers",
@@ -29104,29 +24600,27 @@ function __c55(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          available_languages: S.optional(
-            ListEmailTranslationsResponseEmailTranslationsItemAvailableLanguagesList,
-          ),
-          content: S.optional(CreateEmailRequestContent),
+          available_languages: S.optional(__S(99)),
+          content: S.optional(__S(76)),
           created: S.optional(S.Number),
-          envelope: S.optional(ListEmailTranslationsResponseEmailTranslationsItemEnvelope),
+          envelope: S.optional(__S(438)),
           is_linked: S.optional(S.Boolean),
           is_template: S.optional(S.Boolean),
           language: S.optional(S.String),
           language_group_id: S.optional(S.String),
           parent_folder_id: S.optional(S.NullOr(S.String)),
-          transformers: S.optional(ListEmailTranslationsResponseEmailTranslationsItemTransformers),
+          transformers: S.optional(__S(440)),
           updated: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ListEmailTranslationsResponseEmailTranslationsItem",
       });
     case 2:
-      return S.Array(ListEmailTranslationsResponseEmailTranslationsItem);
+      return S.Array(__S(441));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          email_translations: S.optional(ListEmailTranslationsResponseEmailTranslationsList),
+          email_translations: S.optional(__S(442)),
         }),
       ).annotate({
         identifier: "ListEmailTranslationsResponse",
@@ -29136,11 +24630,11 @@ function __c55(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/exports", code: 200 })),
       ).annotate({ identifier: "ListExportsRequest" });
     case 5:
-      return S.Array(ListExportsResponseExportsItem);
+      return S.Array(__S(171));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          exports: S.optional(ListExportsResponseExportsList),
+          exports: S.optional(__S(445)),
         }),
       ).annotate({ identifier: "ListExportsResponse" });
     case 7:
@@ -29150,8 +24644,8 @@ function __c55(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           parent_folder_id: S.optional(S.String.pipe(T.Query())),
           direct_descendants_only: S.optional(S.Boolean.pipe(T.Query())),
-          sort_by: S.optional(ListFoldersRequestSortBy.pipe(T.Query())),
-          sort_order: S.optional(ListFoldersRequestSortOrder.pipe(T.Query())),
+          sort_by: S.optional(S.String.pipe(T.Query())),
+          sort_order: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.Number.pipe(T.Query())),
           created_after: S.optional(S.Number.pipe(T.Query())),
           updated_before: S.optional(S.Number.pipe(T.Query())),
@@ -29165,8 +24659,8 @@ function __c56(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          folders: S.optional(ListFoldersResponseFoldersList),
-          meta: S.optional(ListComponentsResponseMeta),
+          folders: S.optional(__S(430)),
+          meta: S.optional(__S(431)),
         }),
       ).annotate({ identifier: "ListFoldersResponse" });
     case 1:
@@ -29181,7 +24675,7 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           browser: S.optional(S.String),
-          category: S.optional(ListInboxPreviewClientsResponseClientsItemCategory),
+          category: S.optional(S.String),
           client: S.optional(S.String),
           id: S.optional(S.String),
           os: S.optional(S.String),
@@ -29190,11 +24684,11 @@ function __c56(j: number): any {
         identifier: "ListInboxPreviewClientsResponseClientsItem",
       });
     case 3:
-      return S.Array(ListInboxPreviewClientsResponseClientsItem);
+      return S.Array(__S(450));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          clients: S.optional(ListInboxPreviewClientsResponseClientsList),
+          clients: S.optional(__S(451)),
         }),
       ).annotate({
         identifier: "ListInboxPreviewClientsResponse",
@@ -29221,7 +24715,7 @@ function __c56(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pagination: S.optional(ListInboxPreviewJobsResponseMetaPagination),
+          pagination: S.optional(__S(454)),
         }),
       ).annotate({
         identifier: "ListInboxPreviewJobsResponseMeta",
@@ -29250,12 +24744,12 @@ function __c57(j: number): any {
         identifier: "ListInboxPreviewJobsResponsePreviewJobsItem",
       });
     case 1:
-      return S.Array(ListInboxPreviewJobsResponsePreviewJobsItem);
+      return S.Array(__S(456));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          meta: S.optional(ListInboxPreviewJobsResponseMeta),
-          preview_jobs: S.optional(ListInboxPreviewJobsResponsePreviewJobsList),
+          meta: S.optional(__S(455)),
+          preview_jobs: S.optional(__S(457)),
         }),
       ).annotate({
         identifier: "ListInboxPreviewJobsResponse",
@@ -29265,8 +24759,8 @@ function __c57(j: number): any {
         S.Struct({
           start: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(ListMessagesRequestType.pipe(T.Query())),
-          metric: S.optional(ListMessagesRequestMetric.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          metric: S.optional(S.String.pipe(T.Query())),
           drafts: S.optional(S.Boolean.pipe(T.Query())),
           campaign_id: S.optional(S.Number.pipe(T.Query())),
           newsletter_id: S.optional(S.Number.pipe(T.Query())),
@@ -29285,39 +24779,37 @@ function __c57(j: number): any {
           content_id: S.optional(S.Number),
           created: S.optional(S.Number),
           customer_id: S.optional(S.NullOr(S.String)),
-          customer_identifiers: S.optional(
-            BroadcastMessagesResponseMessagesItemCustomerIdentifiers,
-          ),
+          customer_identifiers: S.optional(__S(33)),
           deduplicate_id: S.optional(S.String),
           failure_message: S.optional(S.NullOr(S.String)),
           forgotten: S.optional(S.Boolean),
           id: S.optional(S.String),
           message_template_id: S.optional(S.Number),
-          metrics: S.optional(BroadcastMessagesResponseMessagesItemMetrics),
+          metrics: S.optional(__S(34)),
           newsletter_id: S.optional(S.NullOr(S.Number)),
           parent_action_id: S.optional(S.Number),
           recipient: S.optional(S.String),
           subject: S.optional(S.String),
-          tracked_responses: S.optional(ListMessagesResponseMessagesItemTrackedResponsesMap),
+          tracked_responses: S.optional(__S(36)),
           trigger_event_id: S.optional(S.String),
-          type: S.optional(ListMessagesResponseMessagesItemType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListMessagesResponseMessagesItem",
       });
     case 5:
-      return S.Array(ListMessagesResponseMessagesItem);
+      return S.Array(__S(460));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(ListMessagesResponseMessagesList),
+          messages: S.optional(__S(461)),
         }),
       ).annotate({ identifier: "ListMessagesResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(ListNewslettersRequestSort.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/newsletters", code: 200 })),
       ).annotate({ identifier: "ListNewslettersRequest" });
@@ -29328,26 +24820,22 @@ function __c58(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          content_ids: S.optional(ListNewslettersResponseNewslettersItemContentIdsList),
+          content_ids: S.optional(__S(7)),
           created: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           expires_after: S.optional(S.Number),
           id: S.optional(S.Number),
           name: S.optional(S.String),
           recipient_file_error: S.optional(S.String),
-          recipient_file_status: S.optional(
-            ListNewslettersResponseNewslettersItemRecipientFileStatus,
-          ),
-          recipient_segment_ids: S.optional(
-            ListNewslettersResponseNewslettersItemRecipientSegmentIdsList,
-          ),
+          recipient_file_status: S.optional(S.String),
+          recipient_segment_ids: S.optional(__S(7)),
           scheduled_at: S.optional(S.NullOr(S.Number)),
-          send_state: S.optional(ListNewslettersResponseNewslettersItemSendState),
+          send_state: S.optional(S.String),
           sent_at: S.optional(S.NullOr(S.Number)),
           subscription_topic_id: S.optional(S.Number),
-          tags: S.optional(ListNewslettersResponseNewslettersItemTagsList),
+          tags: S.optional(__S(2)),
           timezone: S.optional(S.String),
-          type: S.optional(ListNewslettersResponseNewslettersItemType),
+          type: S.optional(S.String),
           tz_match_enabled: S.optional(S.Boolean),
           updated: S.optional(S.Number),
         }),
@@ -29355,11 +24843,11 @@ function __c58(j: number): any {
         identifier: "ListNewslettersResponseNewslettersItem",
       });
     case 1:
-      return S.Array(ListNewslettersResponseNewslettersItem);
+      return S.Array(__S(464));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          newsletters: S.optional(ListNewslettersResponseNewslettersList),
+          newsletters: S.optional(__S(465)),
           next: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListNewslettersResponse" });
@@ -29374,11 +24862,11 @@ function __c58(j: number): any {
         identifier: "ListNewsletterVariantsRequest",
       });
     case 4:
-      return S.Array(ListNewsletterVariantsResponseContentsItem);
+      return S.Array(__S(265));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          contents: S.optional(ListNewsletterVariantsResponseContentsList),
+          contents: S.optional(__S(468)),
         }),
       ).annotate({
         identifier: "ListNewsletterVariantsResponse",
@@ -29390,16 +24878,16 @@ function __c58(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          conditions: S.optional(ListSegmentsResponseSegmentsItemConditionsMap),
+          conditions: S.optional(__S(0)),
           created_at: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           description: S.optional(S.String),
           id: S.optional(S.Number),
           name: S.optional(S.String),
           progress: S.optional(S.NullOr(S.Number)),
-          state: S.optional(ListSegmentsResponseSegmentsItemState),
-          tags: S.optional(S.NullOr(ListSegmentsResponseSegmentsItemTagsList)),
-          type: S.optional(ListSegmentsResponseSegmentsItemType),
+          state: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(2))),
+          type: S.optional(S.String),
           updated_at: S.optional(S.Number),
         }),
       ).annotate({
@@ -29410,11 +24898,11 @@ function __c58(j: number): any {
 function __c59(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListSegmentsResponseSegmentsItem);
+      return S.Array(__S(471));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          segments: S.optional(ListSegmentsResponseSegmentsList),
+          segments: S.optional(__S(472)),
         }),
       ).annotate({ identifier: "ListSegmentsResponse" });
     case 2:
@@ -29422,17 +24910,17 @@ function __c59(j: number): any {
         S.Struct({
           start: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(ListSendersRequestSort.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
           hidden: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/sender_identities", code: 200 })),
       ).annotate({ identifier: "ListSendersRequest" });
     case 3:
-      return S.Array(ListSendersResponseSenderIdentitiesItem);
+      return S.Array(__S(358));
     case 4:
       return S.suspend(() =>
         S.Struct({
           next: S.optional(S.String),
-          sender_identities: S.optional(ListSendersResponseSenderIdentitiesList),
+          sender_identities: S.optional(__S(475)),
         }),
       ).annotate({ identifier: "ListSendersResponse" });
     case 5:
@@ -29440,11 +24928,11 @@ function __c59(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/snippets", code: 200 })),
       ).annotate({ identifier: "ListSnippetsRequest" });
     case 6:
-      return S.Array(CreateSnippetResponseSnippet);
+      return S.Array(__S(142));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          snippets: S.optional(ListSnippetsResponseSnippetsList),
+          snippets: S.optional(__S(478)),
         }),
       ).annotate({ identifier: "ListSnippetsResponse" });
   }
@@ -29456,11 +24944,11 @@ function __c60(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/transactional", code: 200 })),
       ).annotate({ identifier: "ListTransactionalRequest" });
     case 1:
-      return S.Array(GetTransactionalResponseMessage);
+      return S.Array(__S(373));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(ListTransactionalResponseMessagesList),
+          messages: S.optional(__S(481)),
         }),
       ).annotate({
         identifier: "ListTransactionalResponse",
@@ -29482,7 +24970,7 @@ function __c60(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          contents: S.optional(ListTransactionalVariantsResponseContentsList),
+          contents: S.optional(__S(379)),
         }),
       ).annotate({
         identifier: "ListTransactionalVariantsResponse",
@@ -29498,11 +24986,11 @@ function __c60(j: number): any {
         ),
       ).annotate({ identifier: "ListVersionsRequest" });
     case 6:
-      return S.Array(ListVersionsResponseVersionsItem);
+      return S.Array(__S(392));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          versions: S.optional(ListVersionsResponseVersionsList),
+          versions: S.optional(__S(486)),
         }),
       ).annotate({ identifier: "ListVersionsResponse" });
   }
@@ -29517,23 +25005,23 @@ function __c61(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpoint: S.String,
-          events: ListWebhooksResponseReportingWebhooksItemEventsList,
+          events: __S(144),
           name: S.String,
           disabled: S.optional(S.Boolean),
           full_resolution: S.optional(S.Boolean),
           id: S.optional(S.Number),
-          type: S.optional(ListWebhooksResponseReportingWebhooksItemType),
+          type: S.optional(S.String),
           with_content: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "ListWebhooksResponseReportingWebhooksItem",
       });
     case 2:
-      return S.Array(ListWebhooksResponseReportingWebhooksItem);
+      return S.Array(__S(489));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          reporting_webhooks: S.optional(ListWebhooksResponseReportingWebhooksList),
+          reporting_webhooks: S.optional(__S(490)),
         }),
       ).annotate({ identifier: "ListWebhooksResponse" });
     case 4:
@@ -29555,11 +25043,11 @@ function __c61(j: number): any {
         identifier: "ListWorkspacesResponseWorkspacesItem",
       });
     case 6:
-      return S.Array(ListWorkspacesResponseWorkspacesItem);
+      return S.Array(__S(493));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          workspaces: S.optional(ListWorkspacesResponseWorkspacesList),
+          workspaces: S.optional(__S(494)),
         }),
       ).annotate({ identifier: "ListWorkspacesResponse" });
   }
@@ -29569,7 +25057,7 @@ function __c62(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          suppression_type: PostSuppressionRequestSuppressionType.pipe(T.Label()),
+          suppression_type: S.String.pipe(T.Label()),
           email_address: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -29602,21 +25090,21 @@ function __c62(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          bcc: S.optional(PreviewEmailResponseErrorsBccList),
-          body: S.optional(PreviewEmailResponseErrorsBodyList),
-          body_amp: S.optional(PreviewEmailResponseErrorsBodyAmpList),
-          body_plain: S.optional(PreviewEmailResponseErrorsBodyPlainList),
-          cc: S.optional(PreviewEmailResponseErrorsCcList),
-          event: S.optional(PreviewEmailResponseErrorsEventList),
-          from: S.optional(PreviewEmailResponseErrorsFromList),
-          layout: S.optional(PreviewEmailResponseErrorsLayoutList),
-          message: S.optional(PreviewEmailResponseErrorsMessageList),
-          preheader_text: S.optional(PreviewEmailResponseErrorsPreheaderTextList),
-          reply_to: S.optional(PreviewEmailResponseErrorsReplyToList),
-          snippets: S.optional(PreviewEmailResponseErrorsSnippetsList),
-          subject: S.optional(PreviewEmailResponseErrorsSubjectList),
-          to: S.optional(PreviewEmailResponseErrorsToList),
-          trigger: S.optional(PreviewEmailResponseErrorsTriggerList),
+          bcc: S.optional(__S(2)),
+          body: S.optional(__S(2)),
+          body_amp: S.optional(__S(2)),
+          body_plain: S.optional(__S(2)),
+          cc: S.optional(__S(2)),
+          event: S.optional(__S(2)),
+          from: S.optional(__S(2)),
+          layout: S.optional(__S(2)),
+          message: S.optional(__S(2)),
+          preheader_text: S.optional(__S(2)),
+          reply_to: S.optional(__S(2)),
+          snippets: S.optional(__S(2)),
+          subject: S.optional(__S(2)),
+          to: S.optional(__S(2)),
+          trigger: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "PreviewEmailResponseErrors",
@@ -29624,18 +25112,18 @@ function __c62(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(PreviewEmailResponseHeadersItemNameList),
-          value: S.optional(PreviewEmailResponseHeadersItemValueList),
+          name: S.optional(__S(2)),
+          value: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "PreviewEmailResponseHeadersItem",
       });
     case 5:
-      return S.Array(PreviewEmailResponseHeadersItem);
+      return S.Array(__S(500));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(PreviewEmailResponseLinksItemErrorsList),
+          errors: S.optional(__S(2)),
           text: S.optional(S.String),
           tracked: S.optional(S.Boolean),
           url: S.optional(S.String),
@@ -29644,7 +25132,7 @@ function __c62(j: number): any {
         identifier: "PreviewEmailResponseLinksItem",
       });
     case 7:
-      return S.Array(PreviewEmailResponseLinksItem);
+      return S.Array(__S(502));
   }
 }
 function __c63(j: number): any {
@@ -29653,14 +25141,14 @@ function __c63(j: number): any {
       return S.suspend(() =>
         S.Struct({
           amp: S.optional(S.String),
-          errors: S.optional(PreviewEmailResponseErrors),
+          errors: S.optional(__S(499)),
           from: S.optional(S.String),
-          headers: S.optional(PreviewEmailResponseHeadersList),
+          headers: S.optional(__S(501)),
           html: S.optional(S.String),
           language: S.optional(S.String),
-          links: S.optional(PreviewEmailResponseLinksList),
+          links: S.optional(__S(503)),
           node_id: S.optional(S.String),
-          node_type: S.optional(PreviewEmailResponseNodeType),
+          node_type: S.optional(S.String),
           plaintext_body: S.optional(S.String),
           preheader_text: S.optional(S.String),
           subject: S.optional(S.String),
@@ -29678,9 +25166,9 @@ function __c63(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          mappings: S.optional(PublishEmailResponseMappingsList),
+          mappings: S.optional(__S(345)),
           publish_id: S.optional(S.String),
-          status: S.optional(PublishEmailResponseStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublishEmailResponse" });
     case 3:
@@ -29696,7 +25184,7 @@ function __c63(j: number): any {
           html: S.optional(S.String),
           language: S.optional(S.String),
           node_id: S.optional(S.String),
-          node_type: S.optional(RenderEmailResponseNodeType),
+          node_type: S.optional(S.String),
           text: S.optional(S.String),
         }),
       ).annotate({ identifier: "RenderEmailResponse" });
@@ -29717,7 +25205,7 @@ function __c63(j: number): any {
       return S.suspend(() =>
         S.Struct({
           node_id: S.optional(S.String),
-          restored_node_ids: S.optional(RestoreVersionResponseRestoredNodeIdsList),
+          restored_node_ids: S.optional(__S(2)),
           version_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestoreVersionResponse" });
@@ -29735,21 +25223,21 @@ function __c64(j: number): any {
       return S.suspend(() =>
         S.Struct({
           error: S.optional(S.String),
-          status: S.optional(ReviewEmailResponseChecksValueStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ReviewEmailResponseChecksValue",
       });
     case 1:
-      return S.Record(S.String, ReviewEmailResponseChecksValue);
+      return S.Record(S.String, __S(512));
     case 2:
       return S.suspend(() =>
         S.Struct({
           check: S.optional(S.String),
           details: S.optional(S.String),
           id: S.optional(S.String),
-          severity: S.optional(ReviewEmailResponseFindingsItemSeverity),
-          state: S.optional(ReviewEmailResponseFindingsItemState),
+          severity: S.optional(S.String),
+          state: S.optional(S.String),
           summary: S.optional(S.String),
           title: S.optional(S.String),
         }),
@@ -29757,7 +25245,7 @@ function __c64(j: number): any {
         identifier: "ReviewEmailResponseFindingsItem",
       });
     case 3:
-      return S.Array(ReviewEmailResponseFindingsItem);
+      return S.Array(__S(514));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -29771,18 +25259,18 @@ function __c64(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          counts: S.optional(ReviewEmailResponseScoreCounts),
+          counts: S.optional(__S(516)),
           score: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ReviewEmailResponseScore" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          checks: S.optional(ReviewEmailResponseChecksMap),
-          findings: S.optional(ReviewEmailResponseFindingsList),
+          checks: S.optional(__S(513)),
+          findings: S.optional(__S(515)),
           node_id: S.optional(S.String),
-          score: S.optional(ReviewEmailResponseScore),
-          status: S.optional(ReviewEmailResponseStatus),
+          score: S.optional(__S(517)),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReviewEmailResponse" });
     case 7:
@@ -29803,7 +25291,7 @@ function __c65(j: number): any {
       return S.suspend(() =>
         S.Struct({
           created: S.optional(S.Boolean),
-          version: S.optional(SaveVersionResponseVersion),
+          version: S.optional(__S(392)),
         }),
       ).annotate({ identifier: "SaveVersionResponse" });
     case 1:
@@ -29814,7 +25302,7 @@ function __c65(j: number): any {
           expires_after: S.optional(S.Number),
           rate_limit_email_rate: S.optional(S.Number),
           rate_limit_spread: S.optional(S.Boolean),
-          rate_limit_time_period: S.optional(ScheduleNewsletterRequestRateLimitTimePeriod),
+          rate_limit_time_period: S.optional(S.Number),
           timezone: S.optional(S.String),
           tz_match_enabled: S.optional(S.Boolean),
         }).pipe(
@@ -29826,26 +25314,22 @@ function __c65(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          content_ids: S.optional(ScheduleNewsletterResponseNewsletterContentIdsList),
+          content_ids: S.optional(__S(7)),
           created: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           expires_after: S.optional(S.Number),
           id: S.optional(S.Number),
           name: S.optional(S.String),
           recipient_file_error: S.optional(S.String),
-          recipient_file_status: S.optional(
-            ScheduleNewsletterResponseNewsletterRecipientFileStatus,
-          ),
-          recipient_segment_ids: S.optional(
-            ScheduleNewsletterResponseNewsletterRecipientSegmentIdsList,
-          ),
+          recipient_file_status: S.optional(S.String),
+          recipient_segment_ids: S.optional(__S(7)),
           scheduled_at: S.optional(S.NullOr(S.Number)),
-          send_state: S.optional(ScheduleNewsletterResponseNewsletterSendState),
+          send_state: S.optional(S.String),
           sent_at: S.optional(S.NullOr(S.Number)),
           subscription_topic_id: S.optional(S.Number),
-          tags: S.optional(ScheduleNewsletterResponseNewsletterTagsList),
+          tags: S.optional(__S(2)),
           timezone: S.optional(S.String),
-          type: S.optional(ScheduleNewsletterResponseNewsletterType),
+          type: S.optional(S.String),
           tz_match_enabled: S.optional(S.Boolean),
           updated: S.optional(S.Number),
         }),
@@ -29855,7 +25339,7 @@ function __c65(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          newsletter: S.optional(ScheduleNewsletterResponseNewsletter),
+          newsletter: S.optional(__S(522)),
         }),
       ).annotate({
         identifier: "ScheduleNewsletterResponse",
@@ -29872,7 +25356,7 @@ function __c65(j: number): any {
       return S.suspend(() =>
         S.Struct({
           to: S.String,
-          attachments: S.optional(SendEmailRequestAttachments),
+          attachments: S.optional(__S(524)),
           auto_create: S.optional(S.Boolean),
           bcc: S.optional(S.String),
           body: S.optional(S.String),
@@ -29884,9 +25368,9 @@ function __c65(j: number): any {
           fake_bcc: S.optional(S.Boolean),
           from: S.optional(S.String),
           headers: S.optional(S.String),
-          identifiers: S.optional(SendEmailRequestIdentifiers),
+          identifiers: S.optional(S.Unknown),
           language: S.optional(S.String),
-          message_data: S.optional(SendEmailRequestMessageDataMap),
+          message_data: S.optional(__S(0)),
           preheader: S.optional(S.String),
           queue_draft: S.optional(S.Boolean),
           reply_to: S.optional(S.String),
@@ -29894,7 +25378,7 @@ function __c65(j: number): any {
           send_to_unsubscribed: S.optional(S.Boolean),
           subject: S.optional(S.String),
           tracked: S.optional(S.Boolean),
-          transactional_message_id: S.optional(SendEmailRequestTransactionalMessageId),
+          transactional_message_id: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/v1/send/email", code: 200 })),
       ).annotate({ identifier: "SendEmailRequest" });
     case 6:
@@ -29908,11 +25392,11 @@ function __c65(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          identifiers: SendInAppRequestIdentifiers,
-          transactional_message_id: SendInAppRequestTransactionalMessageId,
+          identifiers: S.Unknown,
+          transactional_message_id: S.Unknown,
           auto_create: S.optional(S.Boolean),
           language: S.optional(S.String),
-          message_data: S.optional(SendInAppRequestMessageDataMap),
+          message_data: S.optional(__S(0)),
           queue_draft: S.optional(S.Boolean),
           send_at: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/v1/send/in_app", code: 200 })),
@@ -29924,11 +25408,11 @@ function __c66(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          identifiers: SendInboxMessageRequestIdentifiers,
-          transactional_message_id: SendInboxMessageRequestTransactionalMessageId,
+          identifiers: S.Unknown,
+          transactional_message_id: S.Unknown,
           auto_create: S.optional(S.Boolean),
           language: S.optional(S.String),
-          message_data: S.optional(SendInboxMessageRequestMessageDataMap),
+          message_data: S.optional(__S(0)),
           queue_draft: S.optional(S.Boolean),
           send_at: S.optional(S.Number),
           to: S.optional(S.String),
@@ -29941,30 +25425,28 @@ function __c66(j: number): any {
           expires_after: S.optional(S.Number),
           rate_limit_email_rate: S.optional(S.Number),
           rate_limit_spread: S.optional(S.Boolean),
-          rate_limit_time_period: S.optional(SendNewsletterRequestRateLimitTimePeriod),
+          rate_limit_time_period: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/v1/newsletters/{newsletter_id}/send", code: 200 })),
       ).annotate({ identifier: "SendNewsletterRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          content_ids: S.optional(SendNewsletterResponseNewsletterContentIdsList),
+          content_ids: S.optional(__S(7)),
           created: S.optional(S.Number),
           deduplicate_id: S.optional(S.String),
           expires_after: S.optional(S.Number),
           id: S.optional(S.Number),
           name: S.optional(S.String),
           recipient_file_error: S.optional(S.String),
-          recipient_file_status: S.optional(SendNewsletterResponseNewsletterRecipientFileStatus),
-          recipient_segment_ids: S.optional(
-            SendNewsletterResponseNewsletterRecipientSegmentIdsList,
-          ),
+          recipient_file_status: S.optional(S.String),
+          recipient_segment_ids: S.optional(__S(7)),
           scheduled_at: S.optional(S.NullOr(S.Number)),
-          send_state: S.optional(SendNewsletterResponseNewsletterSendState),
+          send_state: S.optional(S.String),
           sent_at: S.optional(S.NullOr(S.Number)),
           subscription_topic_id: S.optional(S.Number),
-          tags: S.optional(SendNewsletterResponseNewsletterTagsList),
+          tags: S.optional(__S(2)),
           timezone: S.optional(S.String),
-          type: S.optional(SendNewsletterResponseNewsletterType),
+          type: S.optional(S.String),
           tz_match_enabled: S.optional(S.Boolean),
           updated: S.optional(S.Number),
         }),
@@ -29974,7 +25456,7 @@ function __c66(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          newsletter: S.optional(SendNewsletterResponseNewsletter),
+          newsletter: S.optional(__S(530)),
         }),
       ).annotate({ identifier: "SendNewsletterResponse" });
     case 4:
@@ -29994,9 +25476,9 @@ function __c66(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          platform: SendPushRequestCustomDevicePlatform,
+          platform: S.String,
           token: S.String,
-          attributes: S.optional(SendPushRequestCustomDeviceAttributes),
+          attributes: S.optional(__S(532)),
           last_used: S.optional(S.Number),
         }),
       ).annotate({
@@ -30021,7 +25503,7 @@ function __c66(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          notification: S.optional(SendPushRequestCustomPayloadAndroidMessageAndroidNotification),
+          notification: S.optional(__S(534)),
         }),
       ).annotate({
         identifier: "SendPushRequestCustomPayloadAndroidMessageAndroid",
@@ -30042,9 +25524,9 @@ function __c67(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          android: S.optional(SendPushRequestCustomPayloadAndroidMessageAndroid),
-          data: S.optional(SendPushRequestCustomPayloadAndroidMessageDataMap),
-          notification: S.optional(SendPushRequestCustomPayloadAndroidMessageNotification),
+          android: S.optional(__S(535)),
+          data: S.optional(__S(239)),
+          notification: S.optional(__S(536)),
         }),
       ).annotate({
         identifier: "SendPushRequestCustomPayloadAndroidMessage",
@@ -30052,7 +25534,7 @@ function __c67(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          message: SendPushRequestCustomPayloadAndroidMessage,
+          message: __S(537),
         }),
       ).annotate({
         identifier: "SendPushRequestCustomPayloadAndroid",
@@ -30060,8 +25542,8 @@ function __c67(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          android: S.optional(SendPushRequestCustomPayloadAndroid),
-          ios: S.optional(SendPushRequestCustomPayloadIos),
+          android: S.optional(__S(538)),
+          ios: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "SendPushRequestCustomPayload",
@@ -30069,37 +25551,37 @@ function __c67(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          identifiers: SendPushRequestIdentifiers,
-          transactional_message_id: SendPushRequestTransactionalMessageId,
+          identifiers: S.Unknown,
+          transactional_message_id: S.Unknown,
           auto_create: S.optional(S.Boolean),
           custom_data: S.optional(S.Unknown),
-          custom_device: S.optional(SendPushRequestCustomDevice),
-          custom_payload: S.optional(SendPushRequestCustomPayload),
+          custom_device: S.optional(__S(533)),
+          custom_payload: S.optional(__S(539)),
           disable_message_retention: S.optional(S.Boolean),
           image_url: S.optional(S.String),
           language: S.optional(S.String),
           link: S.optional(S.String),
           message: S.optional(S.String),
-          message_data: S.optional(SendPushRequestMessageDataMap),
+          message_data: S.optional(__S(0)),
           queue_draft: S.optional(S.Boolean),
           send_at: S.optional(S.Number),
           send_to_unsubscribed: S.optional(S.Boolean),
-          sound: S.optional(SendPushRequestSound),
+          sound: S.optional(S.String),
           title: S.optional(S.String),
-          to: S.optional(SendPushRequestTo),
+          to: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/send/push", code: 200 })),
       ).annotate({ identifier: "SendPushRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          identifiers: SendSMSRequestIdentifiers,
+          identifiers: S.Unknown,
           to: S.String,
-          transactional_message_id: SendSMSRequestTransactionalMessageId,
+          transactional_message_id: S.Unknown,
           auto_create: S.optional(S.Boolean),
           disable_message_retention: S.optional(S.Boolean),
           from: S.optional(S.String),
           language: S.optional(S.String),
-          message_data: S.optional(SendSMSRequestMessageDataMap),
+          message_data: S.optional(__S(0)),
           queue_draft: S.optional(S.Boolean),
           send_at: S.optional(S.Number),
           send_to_unsubscribed: S.optional(S.Boolean),
@@ -30109,13 +25591,13 @@ function __c67(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          identifiers: SendWhatsAppRequestIdentifiers,
+          identifiers: S.Unknown,
           to: S.String,
-          transactional_message_id: SendWhatsAppRequestTransactionalMessageId,
+          transactional_message_id: S.Unknown,
           disable_message_retention: S.optional(S.Boolean),
           from: S.optional(S.String),
           language: S.optional(S.String),
-          message_data: S.optional(SendWhatsAppRequestMessageDataMap),
+          message_data: S.optional(__S(0)),
           queue_draft: S.optional(S.Boolean),
           send_at: S.optional(S.Number),
           send_to_unsubscribed: S.optional(S.Boolean),
@@ -30140,16 +25622,16 @@ function __c68(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          attributes: StartLiveNotificationRequestAttributes,
-          content_state: StartLiveNotificationRequestContentState,
-          identifiers: StartLiveNotificationRequestIdentifiers,
+          attributes: S.Unknown,
+          content_state: S.Unknown,
+          identifiers: __S(543),
           notification_type: S.String,
           app_identifier: S.optional(S.String),
           deep_link: S.optional(S.String),
           device_id: S.optional(S.String),
           expiration: S.optional(S.Number),
-          platform: S.optional(StartLiveNotificationRequestPlatform),
-          push_payload: S.optional(StartLiveNotificationRequestPushPayload),
+          platform: S.optional(S.String),
+          push_payload: S.optional(__S(167)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/live_notifications/start", code: 200 })),
       ).annotate({
         identifier: "StartLiveNotificationRequest",
@@ -30158,10 +25640,10 @@ function __c68(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          client_ids: SubmitInboxPreviewRequestClientIdsList,
+          client_ids: __S(2),
           lax_mode: S.optional(S.Boolean),
           name: S.optional(S.String),
-          sample_data: S.optional(SubmitInboxPreviewRequestSampleDataMap),
+          sample_data: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -30185,14 +25667,14 @@ function __c68(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          to: TestSendEmailRequestToList,
-          customer: S.optional(S.NullOr(TestSendEmailRequestCustomerMap)),
+          to: __S(2),
+          customer: S.optional(S.NullOr(__S(0))),
           customer_id: S.optional(S.NullOr(S.String)),
-          event: S.optional(S.NullOr(TestSendEmailRequestEventMap)),
+          event: S.optional(S.NullOr(__S(0))),
           lax: S.optional(S.Boolean),
           prepend_test: S.optional(S.Boolean),
           tracked: S.optional(S.Boolean),
-          trigger: S.optional(S.NullOr(TestSendEmailRequestTriggerMap)),
+          trigger: S.optional(S.NullOr(__S(0))),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/design_studio/emails/{id}/test_send", code: 200 }),
         ),
@@ -30204,17 +25686,17 @@ function __c68(j: number): any {
           from: S.optional(S.String),
           language: S.optional(S.String),
           node_id: S.optional(S.String),
-          node_type: S.optional(TestSendEmailResponseNodeType),
+          node_type: S.optional(S.String),
           subject: S.optional(S.String),
-          to: S.optional(TestSendEmailResponseToList),
-          warnings: S.optional(TestSendEmailResponseWarningsList),
+          to: S.optional(__S(2)),
+          warnings: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "TestSendEmailResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           transactional_id: S.Number.pipe(T.Label()),
-          period: S.optional(TransactionalLinksRequestPeriod.pipe(T.Query())),
+          period: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
           unique: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
@@ -30233,8 +25715,8 @@ function __c68(j: number): any {
           transactional_id: S.Number.pipe(T.Label()),
           start: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          metric: S.optional(TransactionalMessagesRequestMetric.pipe(T.Query())),
-          state: S.optional(TransactionalMessagesRequestState.pipe(T.Query())),
+          metric: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
           start_ts: S.optional(S.Number.pipe(T.Query())),
           end_ts: S.optional(S.Number.pipe(T.Query())),
           get_tracked_responses: S.optional(S.Boolean.pipe(T.Query())),
@@ -30257,24 +25739,20 @@ function __c68(j: number): any {
           content_id: S.optional(S.Number),
           created: S.optional(S.Number),
           customer_id: S.optional(S.NullOr(S.String)),
-          customer_identifiers: S.optional(
-            BroadcastMessagesResponseMessagesItemCustomerIdentifiers,
-          ),
+          customer_identifiers: S.optional(__S(33)),
           deduplicate_id: S.optional(S.String),
           failure_message: S.optional(S.NullOr(S.String)),
           forgotten: S.optional(S.Boolean),
           id: S.optional(S.String),
           message_template_id: S.optional(S.Number),
-          metrics: S.optional(BroadcastMessagesResponseMessagesItemMetrics),
+          metrics: S.optional(__S(34)),
           newsletter_id: S.optional(S.NullOr(S.Number)),
           parent_action_id: S.optional(S.Number),
           recipient: S.optional(S.String),
           subject: S.optional(S.String),
-          tracked_responses: S.optional(
-            TransactionalMessagesResponseMessagesItemTrackedResponsesMap,
-          ),
+          tracked_responses: S.optional(__S(36)),
           trigger_event_id: S.optional(S.String),
-          type: S.optional(TransactionalMessagesResponseMessagesItemType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TransactionalMessagesResponseMessagesItem",
@@ -30284,11 +25762,11 @@ function __c68(j: number): any {
 function __c69(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TransactionalMessagesResponseMessagesItem);
+      return S.Array(__S(551));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(TransactionalMessagesResponseMessagesList),
+          messages: S.optional(__S(552)),
         }),
       ).annotate({
         identifier: "TransactionalMessagesResponse",
@@ -30297,7 +25775,7 @@ function __c69(j: number): any {
       return S.suspend(() =>
         S.Struct({
           transactional_id: S.Number.pipe(T.Label()),
-          period: S.optional(TransactionalMetricsRequestPeriod.pipe(T.Query())),
+          period: S.optional(S.String.pipe(T.Query())),
           steps: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/v1/transactional/{transactional_id}/metrics", code: 200 }),
@@ -30308,7 +25786,7 @@ function __c69(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metric: S.optional(TransactionalMetricsResponseMetric),
+          metric: S.optional(__S(54)),
         }),
       ).annotate({
         identifier: "TransactionalMetricsResponse",
@@ -30317,7 +25795,7 @@ function __c69(j: number): any {
       return S.suspend(() =>
         S.Struct({
           broadcast_id: S.Number.pipe(T.Label()),
-          body: S.optional(TriggerBroadcastRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/campaigns/{broadcast_id}/triggers", code: 200 }),
         ),
@@ -30353,17 +25831,17 @@ function __c70(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          privacy_level: S.optional(UpdateAttributeMetadataRequestAttributesItemPrivacyLevel),
+          privacy_level: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "UpdateAttributeMetadataRequestAttributesItem",
       });
     case 1:
-      return S.Array(UpdateAttributeMetadataRequestAttributesItem);
+      return S.Array(__S(560));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          attributes: UpdateAttributeMetadataRequestAttributesList,
+          attributes: __S(561),
         }).pipe(T.Http({ method: "POST", uri: "/v1/data_index/attributes", code: 200 })),
       ).annotate({
         identifier: "UpdateAttributeMetadataRequest",
@@ -30377,7 +25855,7 @@ function __c70(j: number): any {
         S.Struct({
           broadcast_id: S.Number.pipe(T.Label()),
           action_id: S.Number.pipe(T.Label()),
-          body: S.optional(UpdateBroadcastActionRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -30391,7 +25869,7 @@ function __c70(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(UpdateBroadcastActionResponseAction),
+          action: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "UpdateBroadcastActionResponse",
@@ -30402,7 +25880,7 @@ function __c70(j: number): any {
           broadcast_id: S.Number.pipe(T.Label()),
           action_id: S.Number.pipe(T.Label()),
           language: S.String.pipe(T.Label()),
-          body: S.optional(UpdateBroadcastActionLanguageRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -30416,7 +25894,7 @@ function __c70(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(UpdateBroadcastActionLanguageResponseAction),
+          action: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "UpdateBroadcastActionLanguageResponse",
@@ -30430,7 +25908,7 @@ function __c71(j: number): any {
         S.Struct({
           campaign_id: S.Number.pipe(T.Label()),
           action_id: S.Number.pipe(T.Label()),
-          body: S.optional(UpdateCampaignActionRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -30444,7 +25922,7 @@ function __c71(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(UpdateCampaignActionResponseAction),
+          action: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "UpdateCampaignActionResponse",
@@ -30455,7 +25933,7 @@ function __c71(j: number): any {
           campaign_id: S.Number.pipe(T.Label()),
           action_id: S.Number.pipe(T.Label()),
           language: S.String.pipe(T.Label()),
-          body: S.optional(UpdateCampaignActionTranslationRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -30469,7 +25947,7 @@ function __c71(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(UpdateCampaignActionTranslationResponseAction),
+          action: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "UpdateCampaignActionTranslationResponse",
@@ -30478,14 +25956,14 @@ function __c71(j: number): any {
       return S.suspend(() =>
         S.Struct({
           collection_id: S.Number.pipe(T.Label()),
-          body: S.optional(UpdateCollectionRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/collections/{collection_id}", code: 200 })),
       ).annotate({ identifier: "UpdateCollectionRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           collection_id: S.Number.pipe(T.Label()),
-          body: S.optional(UpdateCollectionContentsRequestBodyMap.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "/v1/collections/{collection_id}/content", code: 200 }),
         ),
@@ -30495,7 +25973,7 @@ function __c71(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          collection: S.optional(UpdateCollectionContentsResponseCollection),
+          collection: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "UpdateCollectionContentsResponse",
@@ -30517,14 +25995,14 @@ function __c72(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accessibility: S.optional(CreateEmailRequestTransformersAccessibility),
-          css_inliner: S.optional(CreateEmailRequestTransformersCssInliner),
-          css_variables: S.optional(CreateEmailRequestTransformersCssVariables),
-          encode_entities: S.optional(CreateEmailRequestTransformersEncodeEntities),
-          formatter: S.optional(UpdateEmailRequestTransformersFormatter),
-          prevent_widows: S.optional(CreateEmailRequestTransformersPreventWidows),
-          remove_unused_css: S.optional(UpdateEmailRequestTransformersRemoveUnusedCss),
-          url_parameters: S.optional(UpdateEmailRequestTransformersUrlParameters),
+          accessibility: S.optional(__S(80)),
+          css_inliner: S.optional(__S(82)),
+          css_variables: S.optional(__S(83)),
+          encode_entities: S.optional(__S(84)),
+          formatter: S.optional(__S(87)),
+          prevent_widows: S.optional(__S(84)),
+          remove_unused_css: S.optional(__S(90)),
+          url_parameters: S.optional(__S(93)),
         }),
       ).annotate({
         identifier: "UpdateEmailRequestTransformers",
@@ -30533,25 +26011,25 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          content: S.optional(CreateEmailRequestContent),
-          envelope: S.optional(UpdateEmailRequestEnvelope),
+          content: S.optional(__S(76)),
+          envelope: S.optional(__S(79)),
           is_template: S.optional(S.Boolean),
           name: S.optional(S.String),
           parent_folder_id: S.optional(S.NullOr(S.String)),
-          transformers: S.optional(UpdateEmailRequestTransformers),
+          transformers: S.optional(__S(576)),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/design_studio/emails/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateEmailRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          accessibility: S.optional(CreateEmailRequestTransformersAccessibility),
-          css_inliner: S.optional(CreateEmailRequestTransformersCssInliner),
-          css_variables: S.optional(CreateEmailRequestTransformersCssVariables),
-          encode_entities: S.optional(CreateEmailRequestTransformersEncodeEntities),
-          formatter: S.optional(UpdateEmailTranslationRequestTransformersFormatter),
-          prevent_widows: S.optional(CreateEmailRequestTransformersPreventWidows),
-          remove_unused_css: S.optional(UpdateEmailTranslationRequestTransformersRemoveUnusedCss),
-          url_parameters: S.optional(UpdateEmailTranslationRequestTransformersUrlParameters),
+          accessibility: S.optional(__S(80)),
+          css_inliner: S.optional(__S(82)),
+          css_variables: S.optional(__S(83)),
+          encode_entities: S.optional(__S(84)),
+          formatter: S.optional(__S(108)),
+          prevent_widows: S.optional(__S(84)),
+          remove_unused_css: S.optional(__S(109)),
+          url_parameters: S.optional(__S(102)),
         }),
       ).annotate({
         identifier: "UpdateEmailTranslationRequestTransformers",
@@ -30561,9 +26039,9 @@ function __c72(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           language: S.String.pipe(T.Label()),
-          content: S.optional(CreateEmailRequestContent),
-          envelope: S.optional(UpdateEmailTranslationRequestEnvelope),
-          transformers: S.optional(UpdateEmailTranslationRequestTransformers),
+          content: S.optional(__S(76)),
+          envelope: S.optional(__S(79)),
+          transformers: S.optional(__S(578)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -30575,11 +26053,11 @@ function __c72(j: number): any {
         identifier: "UpdateEmailTranslationRequest",
       });
     case 4:
-      return S.Array(UpdateEventMetadataRequestEventsItem);
+      return S.Array(__S(125));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          events: UpdateEventMetadataRequestEventsList,
+          events: __S(580),
         }).pipe(T.Http({ method: "POST", uri: "/v1/data_index/events", code: 200 })),
       ).annotate({
         identifier: "UpdateEventMetadataRequest",
@@ -30595,11 +26073,11 @@ function __c72(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          content_state: UpdateLiveNotificationRequestContentState,
+          content_state: S.Unknown,
           instance_id: S.String,
-          attributes: S.optional(UpdateLiveNotificationRequestAttributesMap),
+          attributes: S.optional(__S(0)),
           deep_link: S.optional(S.String),
-          push_payload: S.optional(UpdateLiveNotificationRequestPushPayload),
+          push_payload: S.optional(__S(167)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/live_notifications/update", code: 200 })),
       ).annotate({
         identifier: "UpdateLiveNotificationRequest",
@@ -30614,7 +26092,7 @@ function __c73(j: number): any {
           newsletter_id: S.Number.pipe(T.Label()),
           test_group_id: S.String.pipe(T.Label()),
           language: S.String.pipe(T.Label()),
-          body: S.optional(UpdateNewsletterTestTranslationRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -30630,7 +26108,7 @@ function __c73(j: number): any {
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
           content_id: S.Number.pipe(T.Label()),
-          body: S.optional(UpdateNewsletterVariantRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -30646,7 +26124,7 @@ function __c73(j: number): any {
         S.Struct({
           newsletter_id: S.Number.pipe(T.Label()),
           language: S.String.pipe(T.Label()),
-          body: S.optional(UpdateNewsletterVariantTranslationRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -30662,19 +26140,19 @@ function __c73(j: number): any {
         S.Struct({
           from: S.String,
           optout: S.Boolean,
-          channel: S.optional(UpdatePersonOptoutsRequestOptoutsItemChannel),
+          channel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdatePersonOptoutsRequestOptoutsItem",
       });
     case 4:
-      return S.Array(UpdatePersonOptoutsRequestOptoutsItem);
+      return S.Array(__S(587));
     case 5:
       return S.suspend(() =>
         S.Struct({
           customer_id: S.String.pipe(T.Label()),
-          id_type: S.optional(UpdatePersonOptoutsRequestIdType.pipe(T.Query())),
-          optouts: UpdatePersonOptoutsRequestOptoutsList,
+          id_type: S.optional(S.String.pipe(T.Query())),
+          optouts: __S(588),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/customers/{customer_id}/optouts", code: 200 })),
       ).annotate({
         identifier: "UpdatePersonOptoutsRequest",
@@ -30694,7 +26172,7 @@ function __c73(j: number): any {
           body: S.optional(S.String),
           body_amp: S.optional(S.String),
           from_id: S.optional(S.Number),
-          headers: S.optional(UpdateTransactionalRequestHeadersList),
+          headers: S.optional(__S(78)),
           preheader_text: S.optional(S.String),
           recipient: S.optional(S.String),
           reply_to_id: S.optional(S.NullOr(S.Number)),
@@ -30721,7 +26199,7 @@ function __c74(j: number): any {
           body: S.optional(S.String),
           body_amp: S.optional(S.String),
           from_id: S.optional(S.Number),
-          headers: S.optional(UpdateTransactionalVariantRequestHeadersList),
+          headers: S.optional(__S(78)),
           preheader_text: S.optional(S.String),
           recipient: S.optional(S.String),
           reply_to_id: S.optional(S.NullOr(S.Number)),
@@ -30741,12 +26219,171 @@ function __c74(j: number): any {
         S.Struct({
           webhook_id: S.Number.pipe(T.Label()),
           endpoint: S.String,
-          events: UpdateWebhookRequestEventsList,
+          events: __S(144),
           name: S.String,
           disabled: S.optional(S.Boolean),
           full_resolution: S.optional(S.Boolean),
           with_content: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/reporting_webhooks/{webhook_id}", code: 200 })),
       ).annotate({ identifier: "UpdateWebhookRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
+    case 41:
+      return __c41(i & 7);
+    case 42:
+      return __c42(i & 7);
+    case 43:
+      return __c43(i & 7);
+    case 44:
+      return __c44(i & 7);
+    case 45:
+      return __c45(i & 7);
+    case 46:
+      return __c46(i & 7);
+    case 47:
+      return __c47(i & 7);
+    case 48:
+      return __c48(i & 7);
+    case 49:
+      return __c49(i & 7);
+    case 50:
+      return __c50(i & 7);
+    case 51:
+      return __c51(i & 7);
+    case 52:
+      return __c52(i & 7);
+    case 53:
+      return __c53(i & 7);
+    case 54:
+      return __c54(i & 7);
+    case 55:
+      return __c55(i & 7);
+    case 56:
+      return __c56(i & 7);
+    case 57:
+      return __c57(i & 7);
+    case 58:
+      return __c58(i & 7);
+    case 59:
+      return __c59(i & 7);
+    case 60:
+      return __c60(i & 7);
+    case 61:
+      return __c61(i & 7);
+    case 62:
+      return __c62(i & 7);
+    case 63:
+      return __c63(i & 7);
+    case 64:
+      return __c64(i & 7);
+    case 65:
+      return __c65(i & 7);
+    case 66:
+      return __c66(i & 7);
+    case 67:
+      return __c67(i & 7);
+    case 68:
+      return __c68(i & 7);
+    case 69:
+      return __c69(i & 7);
+    case 70:
+      return __c70(i & 7);
+    case 71:
+      return __c71(i & 7);
+    case 72:
+      return __c72(i & 7);
+    case 73:
+      return __c73(i & 7);
+    case 74:
+      return __c74(i & 7);
   }
 }

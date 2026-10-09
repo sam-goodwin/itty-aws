@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -41,22 +43,14 @@ export interface GetMemberRequest {
   /** Member ID (`mber_` tag). */
   id: string;
 }
-const GetMemberRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetMemberRequest>;
-
 /** What the member can reach on the account: `customer` for paying members, `admin` for team members, `no_access` once every grant has lapsed. */
 export type MemberAccessLevel = "no_access" | "admin" | "customer";
-const MemberAccessLevel = S.String;
-
 /** `joined` while the member is part of the account, `left` after they leave. */
 export type MemberStatus = "joined" | "left";
-const MemberStatus = S.String;
-
 export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
-const UserProfilePicture = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<UserProfilePicture>;
-
 export interface UserSummary {
   /** User ID, prefixed `user_`. */
   id: string;
@@ -67,8 +61,6 @@ export interface UserSummary {
   /** Public username. */
   username: string;
 }
-const UserSummary = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserSummary>;
-
 export interface Member {
   /** What the member can reach on the account: `customer` for paying members, `admin` for team members, `no_access` once every grant has lapsed. */
   access_level: MemberAccessLevel;
@@ -91,8 +83,6 @@ export interface Member {
   /** The user behind this member. `null` when the buyer is another business rather than a person. */
   user: UserSummary | null;
 }
-const Member = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Member>;
-
 export interface ListMemberLogsRequest {
   /** Member ID (`mber_` tag). */
   id: string;
@@ -105,79 +95,36 @@ export interface ListMemberLogsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-const ListMemberLogsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListMemberLogsRequest>;
-
 export interface ListMemberLogsResponseDataItemActor {
   id: string;
   name?: string | null;
   username?: string | null;
 }
-const ListMemberLogsResponseDataItemActor = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListMemberLogsResponseDataItemActor>;
-
 export interface ListMemberLogsResponseDataItem {
   action: string | null;
   actor: ListMemberLogsResponseDataItemActor | null;
   created_at: string;
 }
-const ListMemberLogsResponseDataItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ListMemberLogsResponseDataItem>;
-
 export type ListMemberLogsResponseDataList = Array<ListMemberLogsResponseDataItem>;
-const ListMemberLogsResponseDataList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListMemberLogsResponseDataList>;
-
 export interface ListMemberLogsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListMemberLogsResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListMemberLogsResponsePageInfo>;
-
 export interface ListMemberLogsResponse {
   data: ListMemberLogsResponseDataList;
   page_info: ListMemberLogsResponsePageInfo;
 }
-const ListMemberLogsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListMemberLogsResponse>;
-
 export type ListMembersRequestAccessLevel = "no_access" | "admin" | "customer";
-const ListMembersRequestAccessLevel = S.String;
-
 export type ListMembersRequestStatus = "joined" | "left";
-const ListMembersRequestStatus = S.String;
-
 export type ListMembersRequestUserIdsList = Array<string>;
-const ListMembersRequestUserIdsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListMembersRequestUserIdsList>;
-
 export type ListMembersRequestOrder =
   | "created_at"
   | "joined_at"
   | "last_accessed_at"
   | "usd_total_spent";
-const ListMembersRequestOrder = S.String;
-
 export type ListMembersRequestDirection = "asc" | "desc";
-const ListMembersRequestDirection = S.String;
-
 export interface ListMembersRequest {
   /** The account to list members for (`biz_` tag). Defaults to the account the credential acts as. */
   account_id?: string;
@@ -206,21 +153,12 @@ export interface ListMembersRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-const ListMembersRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListMembersRequest>;
-
 export type ListMembersResponseDataList = Array<Member>;
-const ListMembersResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListMembersResponseDataList>;
-
 export type ListMembersResponsePageInfo = ListMemberLogsResponsePageInfo;
 export interface ListMembersResponse {
   data: ListMembersResponseDataList;
   page_info: ListMemberLogsResponsePageInfo;
 }
-const ListMembersResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ListMembersResponse>;
-
 export type GetMemberError = Forbidden | NotFound | WhopOpError;
 /** Retrieve Member Retrieves a member by ID. Accessible to the account and to the member's own user. */
 export const getMember: API.OperationMethod<
@@ -229,8 +167,8 @@ export const getMember: API.OperationMethod<
   GetMemberError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMemberRequest,
-  output: Member,
+  input: __S(0) as any as S.Schema<GetMemberRequest>,
+  output: __S(3) as any as S.Schema<Member>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -246,8 +184,8 @@ export const listMemberLogs: API.PaginatedOperationMethod<
   ListMemberLogsResponseDataItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListMemberLogsRequest,
-    output: ListMemberLogsResponse,
+    input: __S(4) as any as S.Schema<ListMemberLogsRequest>,
+    output: __S(9) as any as S.Schema<ListMemberLogsResponse>,
     errors: [Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -273,8 +211,8 @@ export const listMembers: API.PaginatedOperationMethod<
   Member
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListMembersRequest,
-    output: ListMembersResponse,
+    input: __S(11) as any as S.Schema<ListMembersRequest>,
+    output: __S(13) as any as S.Schema<ListMembersResponse>,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -310,23 +248,23 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           name: S.NullOr(S.String),
-          profile_picture: UserProfilePicture,
+          profile_picture: __S(1),
           username: S.String,
         }),
       ).annotate({ identifier: "UserSummary" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          access_level: MemberAccessLevel,
+          access_level: S.String,
           account_id: S.String,
           created_at: S.String,
           id: S.String,
           joined_at: S.String,
           last_accessed_at: S.NullOr(S.String),
           phone_number: S.NullOr(S.String),
-          status: MemberStatus,
+          status: S.String,
           token_balance: S.Number,
-          user: S.NullOr(UserSummary),
+          user: S.NullOr(__S(2)),
         }),
       ).annotate({ identifier: "Member" });
     case 4:
@@ -353,14 +291,14 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           action: S.NullOr(S.String),
-          actor: S.NullOr(ListMemberLogsResponseDataItemActor),
+          actor: S.NullOr(__S(5)),
           created_at: S.String,
         }),
       ).annotate({
         identifier: "ListMemberLogsResponseDataItem",
       });
     case 7:
-      return S.Array(ListMemberLogsResponseDataItem);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -379,8 +317,8 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: ListMemberLogsResponseDataList,
-          page_info: ListMemberLogsResponsePageInfo,
+          data: __S(7),
+          page_info: __S(8),
         }),
       ).annotate({ identifier: "ListMemberLogsResponse" });
     case 2:
@@ -389,14 +327,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          access_level: S.optional(ListMembersRequestAccessLevel.pipe(T.Query())),
-          status: S.optional(ListMembersRequestStatus.pipe(T.Query())),
-          user_ids: S.optional(ListMembersRequestUserIdsList.pipe(T.Query())),
+          access_level: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          user_ids: S.optional(__S(10).pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListMembersRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListMembersRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -404,13 +342,26 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/members", code: 200 })),
       ).annotate({ identifier: "ListMembersRequest" });
     case 4:
-      return S.Array(Member);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: ListMembersResponseDataList,
-          page_info: ListMemberLogsResponsePageInfo,
+          data: __S(12),
+          page_info: __S(8),
         }),
       ).annotate({ identifier: "ListMembersResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

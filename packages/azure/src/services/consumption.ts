@@ -6,13 +6,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** The category of the budget, whether the budget tracks cost or usage. */
 export type CategoryType = "Cost";
-const CategoryType = S.String;
-
 /** The time covered by a budget. Tracking of the amount will be reset based on the time grain. BillingMonth, BillingQuarter, and BillingAnnual are only supported by WD customers */
 export type TimeGrainType =
   | "Monthly"
@@ -21,8 +21,6 @@ export type TimeGrainType =
   | "BillingMonth"
   | "BillingQuarter"
   | "BillingAnnual";
-const TimeGrainType = S.String;
-
 /** The start and end date for a budget. */
 export interface BudgetTimePeriod {
   /** The start date for the budget. */
@@ -30,19 +28,10 @@ export interface BudgetTimePeriod {
   /** The end date for the budget. If not provided, we default this to 10 years from the start date. */
   endDate?: string;
 }
-const BudgetTimePeriod = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<BudgetTimePeriod>;
-
 /** The operator to use for comparison. */
 export type BudgetOperatorType = "In";
-const BudgetOperatorType = S.String;
-
 /** Array of values to use for comparison */
 export type BudgetComparisonExpressionValuesList = Array<string>;
-const BudgetComparisonExpressionValuesList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<BudgetComparisonExpressionValuesList>;
-
 /** The comparison expression to be used in the budgets. */
 export interface BudgetComparisonExpression {
   /** The name of the column to use in comparison. */
@@ -52,11 +41,6 @@ export interface BudgetComparisonExpression {
   /** Array of values to use for comparison */
   values: BudgetComparisonExpressionValuesList;
 }
-const BudgetComparisonExpression = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BudgetComparisonExpression>;
-
 /** The Dimensions or Tags to filter a budget by. */
 export interface BudgetFilterProperties {
   /** Has comparison expression for a dimension */
@@ -64,15 +48,8 @@ export interface BudgetFilterProperties {
   /** Has comparison expression for a tag */
   tags?: BudgetComparisonExpression;
 }
-const BudgetFilterProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<BudgetFilterProperties>;
-
 /** The logical "AND" expression. Must have at least 2 items. */
 export type BudgetFilterAndList = Array<BudgetFilterProperties>;
-const BudgetFilterAndList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<BudgetFilterAndList>;
-
 /** May be used to filter budgets by resource group, resource, or meter. */
 export interface BudgetFilter {
   /** The logical "AND" expression. Must have at least 2 items. */
@@ -82,31 +59,16 @@ export interface BudgetFilter {
   /** Has comparison expression for a tag */
   tags?: BudgetComparisonExpression;
 }
-const BudgetFilter = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<BudgetFilter>;
-
 /** The comparison operator. */
 export type OperatorType = "EqualTo" | "GreaterThan" | "GreaterThanOrEqualTo";
-const OperatorType = S.String;
-
 /** Email addresses to send the budget notification to when the threshold is exceeded. Must have at least one contact email or contact group specified at the Subscription or Resource Group scopes. All other scopes must have at least one contact email specified. */
 export type NotificationContactEmailsList = Array<string>;
-const NotificationContactEmailsList =
-  BudgetComparisonExpressionValuesList as any as S.Schema<NotificationContactEmailsList>;
-
 /** Contact roles to send the budget notification to when the threshold is exceeded. */
 export type NotificationContactRolesList = Array<string>;
-const NotificationContactRolesList =
-  BudgetComparisonExpressionValuesList as any as S.Schema<NotificationContactRolesList>;
-
 /** Action groups to send the budget notification to when the threshold is exceeded. Must be provided as a fully qualified Azure resource id. Only supported at Subscription or Resource Group scopes. */
 export type NotificationContactGroupsList = Array<string>;
-const NotificationContactGroupsList =
-  BudgetComparisonExpressionValuesList as any as S.Schema<NotificationContactGroupsList>;
-
 /** The type of threshold */
 export type NotificationThresholdType = "Actual" | "Forecasted";
-const NotificationThresholdType = S.String;
-
 /** Language in which the recipient will receive the notification */
 export type CultureCode =
   | "en-us"
@@ -130,8 +92,6 @@ export type CultureCode =
   | "nl-nl"
   | "pt-pt"
   | "sv-se";
-const CultureCode = S.String;
-
 /** The notification associated with a budget. */
 export interface Notification {
   /** The notification is enabled or not. */
@@ -151,15 +111,8 @@ export interface Notification {
   /** Language in which the recipient will receive the notification */
   locale?: CultureCode | (string & {});
 }
-const Notification = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Notification>;
-
 /** Dictionary of notifications associated with the budget. Budget can have up to five notifications. */
 export type BudgetPropertiesInputNotificationsMap = { [key: string]: Notification | undefined };
-const BudgetPropertiesInputNotificationsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BudgetPropertiesInputNotificationsMap>;
-
 /** The properties of the budget. */
 export interface BudgetPropertiesInput {
   /** The category of the budget, whether the budget tracks cost or usage. */
@@ -175,11 +128,6 @@ export interface BudgetPropertiesInput {
   /** Dictionary of notifications associated with the budget. Budget can have up to five notifications. */
   notifications?: BudgetPropertiesInputNotificationsMap;
 }
-const BudgetPropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<BudgetPropertiesInput>;
-
 export interface BudgetsCreateOrUpdateRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
@@ -190,19 +138,10 @@ export interface BudgetsCreateOrUpdateRequest {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-const BudgetsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BudgetsCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -218,8 +157,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SystemData>;
-
 /** The current amount of cost which is being tracked for a budget. */
 export interface CurrentSpend {
   /** The total amount of cost which is being tracked by the budget. */
@@ -227,13 +164,8 @@ export interface CurrentSpend {
   /** The unit of measure for the budget amount. */
   unit?: string;
 }
-const CurrentSpend = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CurrentSpend>;
-
 /** Dictionary of notifications associated with the budget. Budget can have up to five notifications. */
 export type BudgetPropertiesNotificationsMap = { [key: string]: Notification | undefined };
-const BudgetPropertiesNotificationsMap =
-  BudgetPropertiesInputNotificationsMap as any as S.Schema<BudgetPropertiesNotificationsMap>;
-
 /** The forecasted cost which is being tracked for a budget. */
 export interface ForecastSpend {
   /** The forecasted cost for the total time period which is being tracked by the budget. This value is only provided if the budget contains a forecast alert type. */
@@ -241,8 +173,6 @@ export interface ForecastSpend {
   /** The unit of measure for the budget amount. */
   unit?: string;
 }
-const ForecastSpend = CurrentSpend as any as S.Schema<ForecastSpend>;
-
 /** The properties of the budget. */
 export interface BudgetProperties {
   /** The category of the budget, whether the budget tracks cost or usage. */
@@ -262,8 +192,6 @@ export interface BudgetProperties {
   /** The forecasted cost which is being tracked for a budget. */
   forecastSpend?: ForecastSpend;
 }
-const BudgetProperties = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<BudgetProperties>;
-
 export interface BudgetsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -278,37 +206,21 @@ export interface BudgetsCreateOrUpdateResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-const BudgetsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<BudgetsCreateOrUpdateResponse>;
-
 export interface DeleteBudgetRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** Budget Name. */
   budgetName: string;
 }
-const DeleteBudgetRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DeleteBudgetRequest>;
-
 export interface DeleteBudgetResponse {}
-const DeleteBudgetResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteBudgetResponse>;
-
 export interface DownloadPriceSheetByBillingAccountPeriodRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** Billing Period Name. */
   billingPeriodName: string;
 }
-const DownloadPriceSheetByBillingAccountPeriodRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DownloadPriceSheetByBillingAccountPeriodRequest>;
-
 /** The status of the long running operation. */
 export type OperationStatusType = "Running" | "Completed" | "Failed";
-const OperationStatusType = S.String;
-
 /** The properties of the price sheet download. */
 export interface PricesheetDownloadProperties {
   /** The link (url) to download the pricesheet. */
@@ -316,11 +228,6 @@ export interface PricesheetDownloadProperties {
   /** Download link validity. */
   validTill?: string;
 }
-const PricesheetDownloadProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<PricesheetDownloadProperties>;
-
 /** The status of the long running operation. */
 export interface OperationStatus {
   /** The status of the long running operation. */
@@ -328,26 +235,14 @@ export interface OperationStatus {
   /** The properties of the resource generated. */
   properties?: PricesheetDownloadProperties;
 }
-const OperationStatus = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<OperationStatus>;
-
 export interface GetAggregatedCostByManagementGroupRequest {
   /** Order Id of the reservation */
   managementGroupId: string;
   /** Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter?: string;
 }
-const GetAggregatedCostByManagementGroupRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetAggregatedCostByManagementGroupRequest>;
-
 /** Resource tags. */
 export type ManagementGroupAggregatedCostResultTagsMap = { [key: string]: string | undefined };
-const ManagementGroupAggregatedCostResultTagsMap = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ManagementGroupAggregatedCostResultTagsMap>;
-
 /** A management group aggregated cost resource. */
 export interface ManagementGroupAggregatedCostResult {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -365,31 +260,13 @@ export interface ManagementGroupAggregatedCostResult {
   /** Resource tags. */
   tags?: ManagementGroupAggregatedCostResultTagsMap;
 }
-const ManagementGroupAggregatedCostResult = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ManagementGroupAggregatedCostResult>;
-
 /** Children of a management group */
 export type ManagementGroupAggregatedCostPropertiesChildrenList =
   Array<ManagementGroupAggregatedCostResult>;
-const ManagementGroupAggregatedCostPropertiesChildrenList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ManagementGroupAggregatedCostPropertiesChildrenList>;
-
 /** List of subscription Guids included in the calculation of aggregated cost */
 export type ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList = Array<string>;
-const ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList>;
-
 /** List of subscription Guids excluded from the calculation of aggregated cost */
 export type ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList = Array<string>;
-const ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList =
-  ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList as any as S.Schema<ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList>;
-
 /** The properties of the Management Group Aggregated Cost. */
 export interface ManagementGroupAggregatedCostProperties {
   /** The id of the billing period resource that the aggregated cost belongs to. */
@@ -413,18 +290,10 @@ export interface ManagementGroupAggregatedCostProperties {
   /** List of subscription Guids excluded from the calculation of aggregated cost */
   excludedSubscriptions?: ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList;
 }
-const ManagementGroupAggregatedCostProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ManagementGroupAggregatedCostProperties>;
-
 /** Resource tags. */
 export type GetAggregatedCostByManagementGroupResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const GetAggregatedCostByManagementGroupResponseTagsMap =
-  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetAggregatedCostByManagementGroupResponseTagsMap>;
-
 export interface GetAggregatedCostByManagementGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -441,31 +310,16 @@ export interface GetAggregatedCostByManagementGroupResponse {
   /** Resource tags. */
   tags?: GetAggregatedCostByManagementGroupResponseTagsMap;
 }
-const GetAggregatedCostByManagementGroupResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetAggregatedCostByManagementGroupResponse>;
-
 export interface GetAggregatedCostForBillingPeriodByManagementGroupRequest {
   /** Order Id of the reservation */
   managementGroupId: string;
   /** Billing Period Name. */
   billingPeriodName: string;
 }
-const GetAggregatedCostForBillingPeriodByManagementGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetAggregatedCostForBillingPeriodByManagementGroupRequest>;
-
 /** Resource tags. */
 export type GetAggregatedCostForBillingPeriodByManagementGroupResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const GetAggregatedCostForBillingPeriodByManagementGroupResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetAggregatedCostForBillingPeriodByManagementGroupResponseTagsMap>;
-
 export interface GetAggregatedCostForBillingPeriodByManagementGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -482,43 +336,21 @@ export interface GetAggregatedCostForBillingPeriodByManagementGroupResponse {
   /** Resource tags. */
   tags?: GetAggregatedCostForBillingPeriodByManagementGroupResponseTagsMap;
 }
-const GetAggregatedCostForBillingPeriodByManagementGroupResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetAggregatedCostForBillingPeriodByManagementGroupResponse>;
-
 export interface GetBalanceByBillingAccountRequest {
   /** BillingAccount ID */
   billingAccountId: string;
 }
-const GetBalanceByBillingAccountRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetBalanceByBillingAccountRequest>;
-
 /** The billing frequency. */
 export type BillingFrequency = "Month" | "Quarter" | "Year";
-const BillingFrequency = S.String;
-
 export interface BalancePropertiesNewPurchasesDetailsItem {
   /** the name of new purchase. */
   name?: string;
   /** the value of new purchase. */
   value?: number;
 }
-const BalancePropertiesNewPurchasesDetailsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<BalancePropertiesNewPurchasesDetailsItem>;
-
 /** List of new purchases. */
 export type BalancePropertiesNewPurchasesDetailsList =
   Array<BalancePropertiesNewPurchasesDetailsItem>;
-const BalancePropertiesNewPurchasesDetailsList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<BalancePropertiesNewPurchasesDetailsList>;
-
 export interface BalancePropertiesAdjustmentDetailsItem {
   /** the name of new adjustment. */
   name?: string;
@@ -527,9 +359,6 @@ export interface BalancePropertiesAdjustmentDetailsItem {
 }
 /** List of Adjustments (Promo credit, SIE credit etc.). */
 export type BalancePropertiesAdjustmentDetailsList = Array<BalancePropertiesAdjustmentDetailsItem>;
-const BalancePropertiesAdjustmentDetailsList =
-  BalancePropertiesNewPurchasesDetailsList as any as S.Schema<BalancePropertiesAdjustmentDetailsList>;
-
 /** The properties of the balance. */
 export interface BalanceProperties {
   /** The ISO currency in which the meter is charged, for example, USD. */
@@ -565,13 +394,8 @@ export interface BalanceProperties {
   /** List of Adjustments (Promo credit, SIE credit etc.). */
   adjustmentDetails?: BalancePropertiesAdjustmentDetailsList;
 }
-const BalanceProperties = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<BalanceProperties>;
-
 /** Resource tags. */
 export type GetBalanceByBillingAccountResponseTagsMap = { [key: string]: string | undefined };
-const GetBalanceByBillingAccountResponseTagsMap =
-  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetBalanceByBillingAccountResponseTagsMap>;
-
 export interface GetBalanceByBillingAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -588,22 +412,12 @@ export interface GetBalanceByBillingAccountResponse {
   /** Resource tags. */
   tags?: GetBalanceByBillingAccountResponseTagsMap;
 }
-const GetBalanceByBillingAccountResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetBalanceByBillingAccountResponse>;
-
 export interface GetBalanceForBillingPeriodByBillingAccountRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** Billing Period Name. */
   billingPeriodName: string;
 }
-const GetBalanceForBillingPeriodByBillingAccountRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetBalanceForBillingPeriodByBillingAccountRequest>;
-
 /** Resource tags. */
 export type GetBalanceForBillingPeriodByBillingAccountResponseTagsMap = {
   [key: string]: string | undefined;
@@ -624,17 +438,12 @@ export interface GetBalanceForBillingPeriodByBillingAccountResponse {
   /** Resource tags. */
   tags?: GetBalanceForBillingPeriodByBillingAccountResponseTagsMap;
 }
-const GetBalanceForBillingPeriodByBillingAccountResponse =
-  GetBalanceByBillingAccountResponse as any as S.Schema<GetBalanceForBillingPeriodByBillingAccountResponse>;
-
 export interface GetBudgetRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
   /** Budget Name. */
   budgetName: string;
 }
-const GetBudgetRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GetBudgetRequest>;
-
 export interface GetBudgetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -649,16 +458,12 @@ export interface GetBudgetResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-const GetBudgetResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetBudgetResponse>;
-
 export interface GetCreditRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** Azure Billing Profile ID. */
   billingProfileId: string;
 }
-const GetCreditRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GetCreditRequest>;
-
 /** The amount plus currency . */
 export interface Amount {
   /** Amount currency. */
@@ -666,8 +471,6 @@ export interface Amount {
   /** Amount. */
   value?: number;
 }
-const Amount = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Amount>;
-
 /** The amount with exchange rate. */
 export interface AmountWithExchangeRate {
   /** Amount currency. */
@@ -679,11 +482,6 @@ export interface AmountWithExchangeRate {
   /** The exchange rate month. */
   exchangeRateMonth?: number;
 }
-const AmountWithExchangeRate = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<AmountWithExchangeRate>;
-
 /** Summary of credit balances. */
 export interface CreditBalanceSummary {
   /** Estimated balance. */
@@ -693,8 +491,6 @@ export interface CreditBalanceSummary {
   /** Estimated balance in billing currency. */
   estimatedBalanceInBillingCurrency?: AmountWithExchangeRate;
 }
-const CreditBalanceSummary = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<CreditBalanceSummary>;
-
 /** The reseller properties. */
 export interface Reseller {
   /** The reseller property ID. */
@@ -702,8 +498,6 @@ export interface Reseller {
   /** The reseller property description. */
   resellerDescription?: string;
 }
-const Reseller = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Reseller>;
-
 /** The properties of the credit summary. */
 export interface CreditSummaryProperties {
   /** Summary of balances associated with this credit summary. */
@@ -725,16 +519,8 @@ export interface CreditSummaryProperties {
   /** The eTag for the resource. */
   eTag?: string;
 }
-const CreditSummaryProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CreditSummaryProperties>;
-
 /** A list of Tag. */
 export type GetCreditResponseTagsMap = { [key: string]: string | undefined };
-const GetCreditResponseTagsMap =
-  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetCreditResponseTagsMap>;
-
 export interface GetCreditResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -751,8 +537,6 @@ export interface GetCreditResponse {
   /** A list of Tag. */
   tags?: GetCreditResponseTagsMap;
 }
-const GetCreditResponse = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetCreditResponse>;
-
 export interface GetPriceSheetRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -763,8 +547,6 @@ export interface GetPriceSheetRequest {
   /** May be used to limit the number of results to the top N results. */
   _top?: number;
 }
-const GetPriceSheetRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GetPriceSheetRequest>;
-
 /** The properties of the meter detail. */
 export interface MeterDetails {
   /** The name of the meter, within the given meter category */
@@ -786,8 +568,6 @@ export interface MeterDetails {
   /** The service tier. */
   serviceTier?: string;
 }
-const MeterDetails = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<MeterDetails>;
-
 /** The properties of the SavingsPlan. */
 export interface SavingsPlan {
   /** SavingsPlan term */
@@ -797,8 +577,6 @@ export interface SavingsPlan {
   /** SavingsPlan Effective Price */
   effectivePrice?: number;
 }
-const SavingsPlan = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<SavingsPlan>;
-
 /** The properties of the price sheet. */
 export interface PriceSheetProperties {
   /** The id of the billing period resource that the usage belongs to. */
@@ -822,15 +600,8 @@ export interface PriceSheetProperties {
   /** SavingsPlan Details */
   savingsPlan?: SavingsPlan;
 }
-const PriceSheetProperties = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<PriceSheetProperties>;
-
 /** Price sheet */
 export type PriceSheetModelPricesheetsList = Array<PriceSheetProperties>;
-const PriceSheetModelPricesheetsList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<PriceSheetModelPricesheetsList>;
-
 /** price sheet result. It contains the pricesheet associated with billing period */
 export interface PriceSheetModel {
   /** Price sheet */
@@ -840,13 +611,8 @@ export interface PriceSheetModel {
   /** Pricesheet download details. */
   download?: MeterDetails;
 }
-const PriceSheetModel = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<PriceSheetModel>;
-
 /** Resource tags. */
 export type GetPriceSheetResponseTagsMap = { [key: string]: string | undefined };
-const GetPriceSheetResponseTagsMap =
-  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetPriceSheetResponseTagsMap>;
-
 export interface GetPriceSheetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -863,11 +629,6 @@ export interface GetPriceSheetResponse {
   /** Resource tags. */
   tags?: GetPriceSheetResponseTagsMap;
 }
-const GetPriceSheetResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetPriceSheetResponse>;
-
 export interface GetPriceSheetByBillingPeriodRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -880,16 +641,8 @@ export interface GetPriceSheetByBillingPeriodRequest {
   /** May be used to limit the number of results to the top N results. */
   _top?: number;
 }
-const GetPriceSheetByBillingPeriodRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetPriceSheetByBillingPeriodRequest>;
-
 /** Resource tags. */
 export type GetPriceSheetByBillingPeriodResponseTagsMap = { [key: string]: string | undefined };
-const GetPriceSheetByBillingPeriodResponseTagsMap =
-  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetPriceSheetByBillingPeriodResponseTagsMap>;
-
 export interface GetPriceSheetByBillingPeriodResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -906,26 +659,15 @@ export interface GetPriceSheetByBillingPeriodResponse {
   /** Resource tags. */
   tags?: GetPriceSheetByBillingPeriodResponseTagsMap;
 }
-const GetPriceSheetByBillingPeriodResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetPriceSheetByBillingPeriodResponse>;
-
 export type GetReservationRecommendationDetailRequestScope =
   | "Single"
   | "Shared"
   | "ManagementGroup";
-const GetReservationRecommendationDetailRequestScope = S.String;
-
 export type GetReservationRecommendationDetailRequestTerm = "P1M" | "P1Y" | "P3Y";
-const GetReservationRecommendationDetailRequestTerm = S.String;
-
 export type GetReservationRecommendationDetailRequestLookBackPeriod =
   | "Last7Days"
   | "Last30Days"
   | "Last60Days";
-const GetReservationRecommendationDetailRequestLookBackPeriod = S.String;
-
 export interface GetReservationRecommendationDetailRequest {
   /** The scope associated with reservation recommendation details operations. This includes '/subscriptions/{subscriptionId}/' for subscription scope, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resource group scope, /providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for BillingAccount scope, and '/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope */
   resourceScope: string;
@@ -944,16 +686,8 @@ export interface GetReservationRecommendationDetailRequest {
   /** Specify the management group ID. Required when recommendation scope is 'ManagementGroup'. */
   managementGroupId?: string;
 }
-const GetReservationRecommendationDetailRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetReservationRecommendationDetailRequest>;
-
 /** List of subscriptions for which the reservation is applied. */
 export type ReservationRecommendationDetailsResourcePropertiesAppliedScopesList = Array<string>;
-const ReservationRecommendationDetailsResourcePropertiesAppliedScopesList =
-  ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList as any as S.Schema<ReservationRecommendationDetailsResourcePropertiesAppliedScopesList>;
-
 /** Details of the resource. */
 export interface ReservationRecommendationDetailsResourceProperties {
   /** List of subscriptions for which the reservation is applied. */
@@ -969,11 +703,6 @@ export interface ReservationRecommendationDetailsResourceProperties {
   /** The azure resource type. */
   resourceType?: string;
 }
-const ReservationRecommendationDetailsResourceProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ReservationRecommendationDetailsResourceProperties>;
-
 /** Details of estimated savings. The costs and savings are estimated for the term. */
 export interface ReservationRecommendationDetailsCalculatedSavingsProperties {
   /** The cost without reservation. Includes hardware and software cost. */
@@ -991,19 +720,9 @@ export interface ReservationRecommendationDetailsCalculatedSavingsProperties {
   /** The amount saved by purchasing the recommended quantity of reservation. This is equal to onDemandCost - totalReservationCost. */
   savings?: number;
 }
-const ReservationRecommendationDetailsCalculatedSavingsProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ReservationRecommendationDetailsCalculatedSavingsProperties>;
-
 /** List of calculated savings. */
 export type ReservationRecommendationDetailsSavingsPropertiesCalculatedSavingsList =
   Array<ReservationRecommendationDetailsCalculatedSavingsProperties>;
-const ReservationRecommendationDetailsSavingsPropertiesCalculatedSavingsList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ReservationRecommendationDetailsSavingsPropertiesCalculatedSavingsList>;
-
 /** Details of the estimated savings. */
 export interface ReservationRecommendationDetailsSavingsProperties {
   /** List of calculated savings. */
@@ -1019,18 +738,8 @@ export interface ReservationRecommendationDetailsSavingsProperties {
   /** Measurement unit ex: hour etc. */
   unitOfMeasure?: string;
 }
-const ReservationRecommendationDetailsSavingsProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ReservationRecommendationDetailsSavingsProperties>;
-
 /** The breakdown of historical resource usage. The values are in the order of usage between the firstConsumptionDate and the lastConsumptionDate. */
 export type ReservationRecommendationDetailsUsagePropertiesUsageDataList = Array<number>;
-const ReservationRecommendationDetailsUsagePropertiesUsageDataList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ReservationRecommendationDetailsUsagePropertiesUsageDataList>;
-
 /** Details about historical usage data that has been used for computing the recommendation. */
 export interface ReservationRecommendationDetailsUsageProperties {
   /** The first usage date used for looking back for computing the recommendation. */
@@ -1044,21 +753,11 @@ export interface ReservationRecommendationDetailsUsageProperties {
   /** The grain of the values represented in the usage data ex: hourly. */
   usageGrain?: string;
 }
-const ReservationRecommendationDetailsUsageProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ReservationRecommendationDetailsUsageProperties>;
-
 /** Details about projected usage data that has been used for computing the recommendation. */
 export interface ReservationRecommendationDetailsProjectedUsageProperties {
   /** Total projected retail usage in commitment units (CUs). */
   totalRetailUsageInCUs?: number;
 }
-const ReservationRecommendationDetailsProjectedUsageProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ReservationRecommendationDetailsProjectedUsageProperties>;
-
 /** The properties of the reservation recommendation. */
 export interface ReservationRecommendationDetailsProperties {
   /** An ISO 4217 currency code identifier for the costs and savings */
@@ -1080,18 +779,10 @@ export interface ReservationRecommendationDetailsProperties {
   /** Projected usage details used for generating the recommendation. */
   projectedUsage?: ReservationRecommendationDetailsProjectedUsageProperties;
 }
-const ReservationRecommendationDetailsProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ReservationRecommendationDetailsProperties>;
-
 /** Resource tags. */
 export type GetReservationRecommendationDetailResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const GetReservationRecommendationDetailResponseTagsMap =
-  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<GetReservationRecommendationDetailResponseTagsMap>;
-
 export interface GetReservationRecommendationDetailResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1112,21 +803,12 @@ export interface GetReservationRecommendationDetailResponse {
   /** Resource tags. */
   tags?: GetReservationRecommendationDetailResponseTagsMap;
 }
-const GetReservationRecommendationDetailResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GetReservationRecommendationDetailResponse>;
-
 export interface GetTagRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
 }
-const GetTagRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<GetTagRequest>;
-
 /** Tag values. */
 export type TagValueList = Array<string>;
-const TagValueList = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<TagValueList>;
-
 /** The tag resource. */
 export interface Tag {
   /** Tag key. */
@@ -1134,15 +816,8 @@ export interface Tag {
   /** Tag values. */
   value?: TagValueList;
 }
-const Tag = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Tag>;
-
 /** A list of Tag. */
 export type TagPropertiesTagsList = Array<Tag>;
-const TagPropertiesTagsList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<TagPropertiesTagsList>;
-
 /** The properties of the tag. */
 export interface TagProperties {
   /** A list of Tag. */
@@ -1152,8 +827,6 @@ export interface TagProperties {
   /** The link (url) to the previous page of results. */
   previousLink?: string;
 }
-const TagProperties = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<TagProperties>;
-
 export interface GetTagResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1168,14 +841,10 @@ export interface GetTagResponse {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-const GetTagResponse = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<GetTagResponse>;
-
 export interface ListBudgetsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
 }
-const ListBudgetsRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ListBudgetsRequest>;
-
 /** A budget resource. */
 export interface Budget {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1191,15 +860,8 @@ export interface Budget {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-const Budget = GetBudgetResponse as any as S.Schema<Budget>;
-
 /** The list of budgets. */
 export type BudgetsListResultValueList = Array<Budget>;
-const BudgetsListResultValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<BudgetsListResultValueList>;
-
 /** Result of listing budgets. It contains a list of available budgets in the scope provided. */
 export interface BudgetsListResult {
   /** The list of budgets. */
@@ -1207,8 +869,6 @@ export interface BudgetsListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-const BudgetsListResult = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<BudgetsListResult>;
-
 export interface ListChargesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
@@ -1221,12 +881,8 @@ export interface ListChargesRequest {
   /** May be used to group charges for billingAccount scope by properties/billingProfileId, properties/invoiceSectionId, properties/customerId (specific for Partner Led), or for billingProfile scope by properties/invoiceSectionId. */
   _apply?: string;
 }
-const ListChargesRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ListChargesRequest>;
-
 /** Specifies the kind of charge summary. */
 export type ChargeSummaryKind = "legacy" | "modern";
-const ChargeSummaryKind = S.String;
-
 /** A charge summary resource. */
 export interface ChargeSummary {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1242,33 +898,19 @@ export interface ChargeSummary {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-const ChargeSummary = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ChargeSummary>;
-
 /** The list of charge summary */
 export type ChargesListResultValueList = Array<ChargeSummary>;
-const ChargesListResultValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ChargesListResultValueList>;
-
 /** Result of listing charge summary. */
 export interface ChargesListResult {
   /** The list of charge summary */
   value?: ChargesListResultValueList;
 }
-const ChargesListResult = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ChargesListResult>;
-
 export interface ListEventByBillingAccountRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** May be used to filter the events by lotId, lotSource etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
   _filter?: string;
 }
-const ListEventByBillingAccountRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListEventByBillingAccountRequest>;
-
 /** Identifies the type of the event. */
 export type EventType =
   | "SettledCharges"
@@ -1279,8 +921,6 @@ export type EventType =
   | "UnKnown"
   | "NewCredit"
   | "CreditExpired";
-const EventType = S.String;
-
 /** The event properties. */
 export interface EventProperties {
   /** The date of the event. */
@@ -1336,8 +976,6 @@ export interface EventProperties {
   /** The eTag for the resource. */
   eTag?: string;
 }
-const EventProperties = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<EventProperties>;
-
 /** An event summary resource. */
 export interface EventSummary {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1353,12 +991,8 @@ export interface EventSummary {
   /** The eTag for the resource. */
   eTag?: string;
 }
-const EventSummary = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<EventSummary>;
-
 /** The list of event summary. */
 export type EventsValueList = Array<EventSummary>;
-const EventsValueList = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<EventsValueList>;
-
 /** Result of listing event summary. */
 export interface Events {
   /** The list of event summary. */
@@ -1366,8 +1000,6 @@ export interface Events {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-const Events = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<Events>;
-
 export interface ListEventByBillingProfileRequest {
   /** BillingAccount ID */
   billingAccountId: string;
@@ -1378,34 +1010,18 @@ export interface ListEventByBillingProfileRequest {
   /** End date */
   endDate: string;
 }
-const ListEventByBillingProfileRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ListEventByBillingProfileRequest>;
-
 export interface ListLotByBillingAccountRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** May be used to filter the lots by Status, Source etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. It does not currently support 'ne', 'or', or 'not'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
   _filter?: string;
 }
-const ListLotByBillingAccountRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListLotByBillingAccountRequest>;
-
 /** The source of the lot. */
 export type LotSource = "PurchasedCredit" | "PromotionalCredit" | "ConsumptionCommitment";
-const LotSource = S.String;
-
 /** The status of the lot. */
 export type Status = "None" | "Active" | "Inactive" | "Expired" | "Complete" | "Canceled";
-const Status = S.String;
-
 /** The organization type of the lot. */
 export type OrganizationType = "Primary" | "Contributor";
-const OrganizationType = S.String;
-
 /** The lot properties. */
 export interface LotProperties {
   /** The original amount of a lot, Note: This will not be returned for Contributor Organization Type in Multi-Entity consumption commitment */
@@ -1443,8 +1059,6 @@ export interface LotProperties {
   /** Amount consumed from the commitment. */
   usedAmount?: Amount;
 }
-const LotProperties = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<LotProperties>;
-
 /** A lot summary resource. */
 export interface LotSummary {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1460,12 +1074,8 @@ export interface LotSummary {
   /** eTag of the resource. To handle concurrent update scenario, this field will be used to determine whether the user is updating the latest version or not. */
   eTag?: string;
 }
-const LotSummary = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<LotSummary>;
-
 /** The list of lot summary. */
 export type LotsValueList = Array<LotSummary>;
-const LotsValueList = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<LotsValueList>;
-
 /** Result of listing lot summary. */
 export interface Lots {
   /** The list of lot summary. */
@@ -1473,19 +1083,12 @@ export interface Lots {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-const Lots = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<Lots>;
-
 export interface ListLotByBillingProfileRequest {
   /** BillingAccount ID */
   billingAccountId: string;
   /** Azure Billing Profile ID. */
   billingProfileId: string;
 }
-const ListLotByBillingProfileRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListLotByBillingProfileRequest>;
-
 export interface ListLotByCustomerRequest {
   /** BillingAccount ID */
   billingAccountId: string;
@@ -1494,11 +1097,6 @@ export interface ListLotByCustomerRequest {
   /** May be used to filter the lots by Status, Source etc. The filter supports 'eq', 'lt', 'gt', 'le', 'ge', and 'and'. Tag filter is a key value pair string where key and value is separated by a colon (:). */
   _filter?: string;
 }
-const ListLotByCustomerRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListLotByCustomerRequest>;
-
 export interface ListMarketplacesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
@@ -1509,11 +1107,6 @@ export interface ListMarketplacesRequest {
   /** Skiptoken is only used if a previous operation returned a partial result. If a previous response contains a nextLink element, the value of the nextLink element will include a skiptoken parameter that specifies a starting point to use for subsequent calls. */
   _skiptoken?: string;
 }
-const ListMarketplacesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListMarketplacesRequest>;
-
 /** The properties of the marketplace usage detail. */
 export interface MarketplaceProperties {
   /** The id of the billing period resource that the usage belongs to. */
@@ -1569,16 +1162,8 @@ export interface MarketplaceProperties {
   /** Flag indicating whether this is a recurring charge or not. */
   isRecurringCharge?: boolean;
 }
-const MarketplaceProperties = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<MarketplaceProperties>;
-
 /** Resource tags. */
 export type MarketplaceTagsMap = { [key: string]: string | undefined };
-const MarketplaceTagsMap =
-  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<MarketplaceTagsMap>;
-
 /** A marketplace resource. */
 export interface Marketplace {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1596,15 +1181,8 @@ export interface Marketplace {
   /** Resource tags. */
   tags?: MarketplaceTagsMap;
 }
-const Marketplace = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<Marketplace>;
-
 /** The list of marketplaces. */
 export type MarketplacesListResultValueList = Array<Marketplace>;
-const MarketplacesListResultValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<MarketplacesListResultValueList>;
-
 /** Result of listing marketplaces. It contains a list of available marketplaces in reverse chronological order by billing period. */
 export interface MarketplacesListResult {
   /** The list of marketplaces. */
@@ -1612,17 +1190,7 @@ export interface MarketplacesListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-const MarketplacesListResult = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<MarketplacesListResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.Consumption. */
@@ -1634,8 +1202,6 @@ export interface OperationDisplay {
   /** Description of the operation. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<OperationDisplay>;
-
 /** A Consumption REST API operation. */
 export interface Operation {
   /** Operation Id. */
@@ -1645,15 +1211,8 @@ export interface Operation {
   /** The object that represents the operation. */
   display?: OperationDisplay;
 }
-const Operation = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<Operation>;
-
 /** List of consumption operations supported by the Microsoft.Consumption resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** Result of listing consumption operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of consumption operations supported by the Microsoft.Consumption resource provider. */
@@ -1661,35 +1220,24 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<OperationListResult>;
-
 export interface ListReservationRecommendationsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceScope: string;
   /** May be used to filter reservationRecommendations by: properties/scope with allowed values ['Single', 'Shared'] and default value 'Single'; properties/resourceType with allowed values ['VirtualMachines', 'SQLDatabases', 'PostgreSQL', 'ManagedDisk', 'MySQL', 'RedHat', 'MariaDB', 'RedisCache', 'CosmosDB', 'SqlDataWarehouse', 'SUSELinux', 'AppService', 'BlockBlob', 'AzureDataExplorer', 'VMwareCloudSimple'] and default value 'VirtualMachines'; and properties/lookBackPeriod with allowed values ['Last7Days', 'Last30Days', 'Last60Days'] and default value 'Last7Days'. */
   _filter?: string;
 }
-const ListReservationRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListReservationRecommendationsRequest>;
-
 /** The type of identity that created the resource. */
 export type ReservationRecommendationSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ReservationRecommendationSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ReservationRecommendationSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ReservationRecommendationSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ReservationRecommendationSystemData {
   /** The identity that created the resource. */
@@ -1705,20 +1253,10 @@ export interface ReservationRecommendationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const ReservationRecommendationSystemData = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ReservationRecommendationSystemData>;
-
 /** Resource tags. */
 export type ReservationRecommendationTagsMap = { [key: string]: string | undefined };
-const ReservationRecommendationTagsMap =
-  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<ReservationRecommendationTagsMap>;
-
 /** Specifies the kind of reservation recommendation. */
 export type ReservationRecommendationKind = "legacy" | "modern";
-const ReservationRecommendationKind = S.String;
-
 /** A reservation recommendation resource. */
 export interface ReservationRecommendation {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1740,18 +1278,8 @@ export interface ReservationRecommendation {
   /** Specifies the kind of reservation recommendation. */
   kind: ReservationRecommendationKind;
 }
-const ReservationRecommendation = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ReservationRecommendation>;
-
 /** The list of reservation recommendations. */
 export type ReservationRecommendationsListResultValueList = Array<ReservationRecommendation>;
-const ReservationRecommendationsListResultValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ReservationRecommendationsListResultValueList>;
-
 /** Result of listing reservation recommendations. */
 export interface ReservationRecommendationsListResult {
   /** The list of reservation recommendations. */
@@ -1761,22 +1289,12 @@ export interface ReservationRecommendationsListResult {
   /** The link (url) to the previous page of results. */
   previousLink?: string;
 }
-const ReservationRecommendationsListResult = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ReservationRecommendationsListResult>;
-
 export interface ListReservationsDetailByReservationOrderRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
   /** Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter: string;
 }
-const ListReservationsDetailByReservationOrderRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListReservationsDetailByReservationOrderRequest>;
-
 /** The properties of the reservation detail. */
 export interface ReservationDetailProperties {
   /** The reservation order ID is the identifier for a reservation purchase. Each reservation order ID represents a single purchase transaction. A reservation order contains reservations. The reservation order specifies the VM size and region for the reservations. */
@@ -1802,16 +1320,8 @@ export interface ReservationDetailProperties {
   /** The reservation kind. */
   kind?: string;
 }
-const ReservationDetailProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ReservationDetailProperties>;
-
 /** Resource tags. */
 export type ReservationDetailTagsMap = { [key: string]: string | undefined };
-const ReservationDetailTagsMap =
-  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<ReservationDetailTagsMap>;
-
 /** reservation detail resource. */
 export interface ReservationDetail {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1829,15 +1339,8 @@ export interface ReservationDetail {
   /** Resource tags. */
   tags?: ReservationDetailTagsMap;
 }
-const ReservationDetail = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<ReservationDetail>;
-
 /** The list of reservation details. */
 export type ReservationDetailsListResultValueList = Array<ReservationDetail>;
-const ReservationDetailsListResultValueList = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ReservationDetailsListResultValueList>;
-
 /** Result of listing reservation details. */
 export interface ReservationDetailsListResult {
   /** The list of reservation details. */
@@ -1845,11 +1348,6 @@ export interface ReservationDetailsListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-const ReservationDetailsListResult = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ReservationDetailsListResult>;
-
 export interface ListReservationsDetailsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceScope: string;
@@ -1864,14 +1362,7 @@ export interface ListReservationsDetailsRequest {
   /** Reservation Order Id GUID. Required if reservationId is provided. Filter to a specific reservation order */
   reservationOrderId?: string;
 }
-const ListReservationsDetailsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ListReservationsDetailsRequest>;
-
 export type ListReservationsSummariesRequestGrain = "daily" | "monthly";
-const ListReservationsSummariesRequestGrain = S.String;
-
 export interface ListReservationsSummariesRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   resourceScope: string;
@@ -1888,11 +1379,6 @@ export interface ListReservationsSummariesRequest {
   /** Reservation Order Id GUID. Required if reservationId is provided. Filter to a specific reservation order */
   reservationOrderId?: string;
 }
-const ListReservationsSummariesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ListReservationsSummariesRequest>;
-
 /** The properties of the reservation summary. */
 export interface ReservationSummaryProperties {
   /** The reservation order ID is the identifier for a reservation purchase. Each reservation order ID represents a single purchase transaction. A reservation order contains reservations. The reservation order specifies the VM size and region for the reservations. */
@@ -1926,16 +1412,8 @@ export interface ReservationSummaryProperties {
   /** This is the utilized percentage for the reservation Id. */
   utilizedPercentage?: number;
 }
-const ReservationSummaryProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ReservationSummaryProperties>;
-
 /** Resource tags. */
 export type ReservationSummaryTagsMap = { [key: string]: string | undefined };
-const ReservationSummaryTagsMap =
-  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<ReservationSummaryTagsMap>;
-
 /** reservation summary resource. */
 export interface ReservationSummary {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1953,15 +1431,8 @@ export interface ReservationSummary {
   /** Resource tags. */
   tags?: ReservationSummaryTagsMap;
 }
-const ReservationSummary = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<ReservationSummary>;
-
 /** The list of reservation summaries. */
 export type ReservationSummariesListResultValueList = Array<ReservationSummary>;
-const ReservationSummariesListResultValueList = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ReservationSummariesListResultValueList>;
-
 /** Result of listing reservation summaries. */
 export interface ReservationSummariesListResult {
   /** The list of reservation summaries. */
@@ -1969,14 +1440,7 @@ export interface ReservationSummariesListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-const ReservationSummariesListResult = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ReservationSummariesListResult>;
-
 export type ListReservationsSummaryByReservationOrderRequestGrain = "daily" | "monthly";
-const ListReservationsSummaryByReservationOrderRequestGrain = S.String;
-
 export interface ListReservationsSummaryByReservationOrderRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
@@ -1985,11 +1449,6 @@ export interface ListReservationsSummaryByReservationOrderRequest {
   /** Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter?: string;
 }
-const ListReservationsSummaryByReservationOrderRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ListReservationsSummaryByReservationOrderRequest>;
-
 export interface ListReservationTransactionByBillingProfileRequest {
   /** BillingAccount ID */
   billingAccountId: string;
@@ -1998,11 +1457,6 @@ export interface ListReservationTransactionByBillingProfileRequest {
   /** Filter reservation transactions by date range. The properties/EventDate for start date and end date. The filter supports 'le' and 'ge'. Note: API returns data for the entire start date's and end date's billing month. For example, filter properties/eventDate+ge+2020-01-01+AND+properties/eventDate+le+2020-12-29 will include data for entire December 2020 month (i.e. will contain records for dates December 30 and 31) */
   _filter?: string;
 }
-const ListReservationTransactionByBillingProfileRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ListReservationTransactionByBillingProfileRequest>;
-
 /** The properties of a modern reservation transaction. */
 export interface ModernReservationTransactionProperties {
   /** The charge of the transaction. */
@@ -2046,16 +1500,8 @@ export interface ModernReservationTransactionProperties {
   /** This is the term of the transaction. */
   term?: string;
 }
-const ModernReservationTransactionProperties = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<ModernReservationTransactionProperties>;
-
 /** Resource tags. */
 export type ModernReservationTransactionTagsList = Array<string>;
-const ModernReservationTransactionTagsList =
-  BudgetComparisonExpressionValuesList as any as S.Schema<ModernReservationTransactionTagsList>;
-
 /** Modern Reservation transaction resource. */
 export interface ModernReservationTransaction {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2071,18 +1517,8 @@ export interface ModernReservationTransaction {
   /** Resource tags. */
   tags?: ModernReservationTransactionTagsList;
 }
-const ModernReservationTransaction = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ModernReservationTransaction>;
-
 /** The list of reservation recommendations. */
 export type ModernReservationTransactionsListResultValueList = Array<ModernReservationTransaction>;
-const ModernReservationTransactionsListResultValueList = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ModernReservationTransactionsListResultValueList>;
-
 /** Result of listing reservation recommendations. */
 export interface ModernReservationTransactionsListResult {
   /** The list of reservation recommendations. */
@@ -2090,11 +1526,6 @@ export interface ModernReservationTransactionsListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-const ModernReservationTransactionsListResult = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ModernReservationTransactionsListResult>;
-
 export interface ListReservationTransactionsRequest {
   /** BillingAccount ID */
   billingAccountId: string;
@@ -2105,11 +1536,6 @@ export interface ListReservationTransactionsRequest {
   /** Preview markup percentage to be applied. */
   previewMarkupPercentage?: number;
 }
-const ListReservationTransactionsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ListReservationTransactionsRequest>;
-
 /** The properties of a legacy reservation transaction. */
 export interface LegacyReservationTransactionProperties {
   /** The date of the transaction */
@@ -2159,16 +1585,8 @@ export interface LegacyReservationTransactionProperties {
   /** The overage amount at the enrollment scope. */
   overage?: number;
 }
-const LegacyReservationTransactionProperties = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<LegacyReservationTransactionProperties>;
-
 /** Resource tags. */
 export type ReservationTransactionTagsList = Array<string>;
-const ReservationTransactionTagsList =
-  BudgetComparisonExpressionValuesList as any as S.Schema<ReservationTransactionTagsList>;
-
 /** Reservation transaction resource. */
 export interface ReservationTransaction {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2184,18 +1602,8 @@ export interface ReservationTransaction {
   /** Resource tags. */
   tags?: ReservationTransactionTagsList;
 }
-const ReservationTransaction = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ReservationTransaction>;
-
 /** The list of reservation recommendations. */
 export type ReservationTransactionsListResultValueList = Array<ReservationTransaction>;
-const ReservationTransactionsListResultValueList = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<ReservationTransactionsListResultValueList>;
-
 /** Result of listing reservation recommendations. */
 export interface ReservationTransactionsListResult {
   /** The list of reservation recommendations. */
@@ -2203,14 +1611,7 @@ export interface ReservationTransactionsListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-const ReservationTransactionsListResult = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<ReservationTransactionsListResult>;
-
 export type ListUsageDetailsRequestMetric = "actualcost" | "amortizedcost" | "usage";
-const ListUsageDetailsRequestMetric = S.String;
-
 export interface ListUsageDetailsRequest {
   /** The fully qualified Azure Resource manager identifier of the resource. */
   scope: string;
@@ -2225,20 +1626,10 @@ export interface ListUsageDetailsRequest {
   /** Allows to select different type of cost/usage records. */
   metric?: ListUsageDetailsRequestMetric | (string & {});
 }
-const ListUsageDetailsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ListUsageDetailsRequest>;
-
 /** Specifies the kind of usage details. */
 export type UsageDetailsKind = "legacy" | "modern";
-const UsageDetailsKind = S.String;
-
 /** Resource tags. */
 export type UsageDetailTagsMap = { [key: string]: string | undefined };
-const UsageDetailTagsMap =
-  ManagementGroupAggregatedCostResultTagsMap as any as S.Schema<UsageDetailTagsMap>;
-
 /** An usage detail resource. */
 export interface UsageDetail {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2256,15 +1647,8 @@ export interface UsageDetail {
   /** Resource tags. */
   tags?: UsageDetailTagsMap;
 }
-const UsageDetail = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<UsageDetail>;
-
 /** The list of usage details. */
 export type UsageDetailsListResultValueList = Array<UsageDetail>;
-const UsageDetailsListResultValueList = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<UsageDetailsListResultValueList>;
-
 /** Result of listing usage details. It contains a list of available usage details in reverse chronological order by billing period. */
 export interface UsageDetailsListResult {
   /** The list of usage details. */
@@ -2272,11 +1656,6 @@ export interface UsageDetailsListResult {
   /** The link (url) to the next page of results. */
   nextLink?: string;
 }
-const UsageDetailsListResult = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<UsageDetailsListResult>;
-
 export interface ReservationsDetailsListByReservationOrderAndReservationRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
@@ -2285,16 +1664,9 @@ export interface ReservationsDetailsListByReservationOrderAndReservationRequest 
   /** Filter reservation details by date range. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter: string;
 }
-const ReservationsDetailsListByReservationOrderAndReservationRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ReservationsDetailsListByReservationOrderAndReservationRequest>;
-
 export type ReservationsSummariesListByReservationOrderAndReservationRequestGrain =
   | "daily"
   | "monthly";
-const ReservationsSummariesListByReservationOrderAndReservationRequestGrain = S.String;
-
 export interface ReservationsSummariesListByReservationOrderAndReservationRequest {
   /** Order Id of the reservation */
   reservationOrderId: string;
@@ -2305,11 +1677,6 @@ export interface ReservationsSummariesListByReservationOrderAndReservationReques
   /** Required only for daily grain. The properties/UsageDate for start date and end date. The filter supports 'le' and 'ge' */
   _filter?: string;
 }
-const ReservationsSummariesListByReservationOrderAndReservationRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ReservationsSummariesListByReservationOrderAndReservationRequest>;
-
 export type BudgetsCreateOrUpdateError = AzureOpError;
 /** The operation to create or update a budget. You can optionally provide an eTag if desired as a form of concurrency control. To obtain the latest eTag for a given budget, perform a get operation prior to your put operation. */
 export const BudgetsCreateOrUpdate: API.OperationMethod<
@@ -2318,8 +1685,8 @@ export const BudgetsCreateOrUpdate: API.OperationMethod<
   BudgetsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BudgetsCreateOrUpdateRequest,
-  output: BudgetsCreateOrUpdateResponse,
+  input: __S(9) as any as S.Schema<BudgetsCreateOrUpdateRequest>,
+  output: __S(13) as any as S.Schema<BudgetsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2333,8 +1700,8 @@ export const DeleteBudget: API.OperationMethod<
   DeleteBudgetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBudgetRequest,
-  output: DeleteBudgetResponse,
+  input: __S(14) as any as S.Schema<DeleteBudgetRequest>,
+  output: __S(15) as any as S.Schema<DeleteBudgetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2348,8 +1715,8 @@ export const DownloadPriceSheetByBillingAccountPeriod: API.OperationMethod<
   DownloadPriceSheetByBillingAccountPeriodError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadPriceSheetByBillingAccountPeriodRequest,
-  output: OperationStatus,
+  input: __S(16) as any as S.Schema<DownloadPriceSheetByBillingAccountPeriodRequest>,
+  output: __S(18) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2363,8 +1730,8 @@ export const GetAggregatedCostByManagementGroup: API.OperationMethod<
   GetAggregatedCostByManagementGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAggregatedCostByManagementGroupRequest,
-  output: GetAggregatedCostByManagementGroupResponse,
+  input: __S(19) as any as S.Schema<GetAggregatedCostByManagementGroupRequest>,
+  output: __S(25) as any as S.Schema<GetAggregatedCostByManagementGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2378,8 +1745,8 @@ export const GetAggregatedCostForBillingPeriodByManagementGroup: API.OperationMe
   GetAggregatedCostForBillingPeriodByManagementGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAggregatedCostForBillingPeriodByManagementGroupRequest,
-  output: GetAggregatedCostForBillingPeriodByManagementGroupResponse,
+  input: __S(26) as any as S.Schema<GetAggregatedCostForBillingPeriodByManagementGroupRequest>,
+  output: __S(28) as any as S.Schema<GetAggregatedCostForBillingPeriodByManagementGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2393,8 +1760,8 @@ export const GetBalanceByBillingAccount: API.OperationMethod<
   GetBalanceByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBalanceByBillingAccountRequest,
-  output: GetBalanceByBillingAccountResponse,
+  input: __S(29) as any as S.Schema<GetBalanceByBillingAccountRequest>,
+  output: __S(33) as any as S.Schema<GetBalanceByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2408,8 +1775,8 @@ export const GetBalanceForBillingPeriodByBillingAccount: API.OperationMethod<
   GetBalanceForBillingPeriodByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBalanceForBillingPeriodByBillingAccountRequest,
-  output: GetBalanceForBillingPeriodByBillingAccountResponse,
+  input: __S(34) as any as S.Schema<GetBalanceForBillingPeriodByBillingAccountRequest>,
+  output: __S(33) as any as S.Schema<GetBalanceForBillingPeriodByBillingAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2423,8 +1790,8 @@ export const GetBudget: API.OperationMethod<
   GetBudgetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBudgetRequest,
-  output: GetBudgetResponse,
+  input: __S(35) as any as S.Schema<GetBudgetRequest>,
+  output: __S(36) as any as S.Schema<GetBudgetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2438,8 +1805,8 @@ export const GetCredit: API.OperationMethod<
   GetCreditError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCreditRequest,
-  output: GetCreditResponse,
+  input: __S(37) as any as S.Schema<GetCreditRequest>,
+  output: __S(43) as any as S.Schema<GetCreditResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2453,8 +1820,8 @@ export const GetPriceSheet: API.OperationMethod<
   GetPriceSheetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPriceSheetRequest,
-  output: GetPriceSheetResponse,
+  input: __S(44) as any as S.Schema<GetPriceSheetRequest>,
+  output: __S(50) as any as S.Schema<GetPriceSheetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2468,8 +1835,8 @@ export const GetPriceSheetByBillingPeriod: API.OperationMethod<
   GetPriceSheetByBillingPeriodError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPriceSheetByBillingPeriodRequest,
-  output: GetPriceSheetByBillingPeriodResponse,
+  input: __S(51) as any as S.Schema<GetPriceSheetByBillingPeriodRequest>,
+  output: __S(52) as any as S.Schema<GetPriceSheetByBillingPeriodResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2483,8 +1850,8 @@ export const GetReservationRecommendationDetail: API.OperationMethod<
   GetReservationRecommendationDetailError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReservationRecommendationDetailRequest,
-  output: GetReservationRecommendationDetailResponse,
+  input: __S(53) as any as S.Schema<GetReservationRecommendationDetailRequest>,
+  output: __S(62) as any as S.Schema<GetReservationRecommendationDetailResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2498,8 +1865,8 @@ export const GetTag: API.OperationMethod<
   GetTagError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTagRequest,
-  output: GetTagResponse,
+  input: __S(63) as any as S.Schema<GetTagRequest>,
+  output: __S(68) as any as S.Schema<GetTagResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2513,8 +1880,8 @@ export const ListBudgets: API.OperationMethod<
   ListBudgetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBudgetsRequest,
-  output: BudgetsListResult,
+  input: __S(69) as any as S.Schema<ListBudgetsRequest>,
+  output: __S(71) as any as S.Schema<BudgetsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2528,8 +1895,8 @@ export const ListCharges: API.OperationMethod<
   ListChargesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListChargesRequest,
-  output: ChargesListResult,
+  input: __S(72) as any as S.Schema<ListChargesRequest>,
+  output: __S(75) as any as S.Schema<ChargesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2543,8 +1910,8 @@ export const ListEventByBillingAccount: API.OperationMethod<
   ListEventByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventByBillingAccountRequest,
-  output: Events,
+  input: __S(76) as any as S.Schema<ListEventByBillingAccountRequest>,
+  output: __S(80) as any as S.Schema<Events>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2558,8 +1925,8 @@ export const ListEventByBillingProfile: API.OperationMethod<
   ListEventByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventByBillingProfileRequest,
-  output: Events,
+  input: __S(81) as any as S.Schema<ListEventByBillingProfileRequest>,
+  output: __S(80) as any as S.Schema<Events>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2573,8 +1940,8 @@ export const ListLotByBillingAccount: API.OperationMethod<
   ListLotByBillingAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLotByBillingAccountRequest,
-  output: Lots,
+  input: __S(82) as any as S.Schema<ListLotByBillingAccountRequest>,
+  output: __S(86) as any as S.Schema<Lots>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2588,8 +1955,8 @@ export const ListLotByBillingProfile: API.OperationMethod<
   ListLotByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLotByBillingProfileRequest,
-  output: Lots,
+  input: __S(87) as any as S.Schema<ListLotByBillingProfileRequest>,
+  output: __S(86) as any as S.Schema<Lots>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2603,8 +1970,8 @@ export const ListLotByCustomer: API.OperationMethod<
   ListLotByCustomerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLotByCustomerRequest,
-  output: Lots,
+  input: __S(88) as any as S.Schema<ListLotByCustomerRequest>,
+  output: __S(86) as any as S.Schema<Lots>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2618,8 +1985,8 @@ export const ListMarketplaces: API.OperationMethod<
   ListMarketplacesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMarketplacesRequest,
-  output: MarketplacesListResult,
+  input: __S(89) as any as S.Schema<ListMarketplacesRequest>,
+  output: __S(93) as any as S.Schema<MarketplacesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2633,8 +2000,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(94) as any as S.Schema<ListOperationsRequest>,
+  output: __S(98) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2648,8 +2015,8 @@ export const ListReservationRecommendations: API.OperationMethod<
   ListReservationRecommendationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReservationRecommendationsRequest,
-  output: ReservationRecommendationsListResult,
+  input: __S(99) as any as S.Schema<ListReservationRecommendationsRequest>,
+  output: __S(103) as any as S.Schema<ReservationRecommendationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2663,8 +2030,8 @@ export const ListReservationsDetailByReservationOrder: API.OperationMethod<
   ListReservationsDetailByReservationOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReservationsDetailByReservationOrderRequest,
-  output: ReservationDetailsListResult,
+  input: __S(104) as any as S.Schema<ListReservationsDetailByReservationOrderRequest>,
+  output: __S(108) as any as S.Schema<ReservationDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2678,8 +2045,8 @@ export const ListReservationsDetails: API.OperationMethod<
   ListReservationsDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReservationsDetailsRequest,
-  output: ReservationDetailsListResult,
+  input: __S(109) as any as S.Schema<ListReservationsDetailsRequest>,
+  output: __S(108) as any as S.Schema<ReservationDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2693,8 +2060,8 @@ export const ListReservationsSummaries: API.OperationMethod<
   ListReservationsSummariesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReservationsSummariesRequest,
-  output: ReservationSummariesListResult,
+  input: __S(110) as any as S.Schema<ListReservationsSummariesRequest>,
+  output: __S(114) as any as S.Schema<ReservationSummariesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2708,8 +2075,8 @@ export const ListReservationsSummaryByReservationOrder: API.OperationMethod<
   ListReservationsSummaryByReservationOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReservationsSummaryByReservationOrderRequest,
-  output: ReservationSummariesListResult,
+  input: __S(115) as any as S.Schema<ListReservationsSummaryByReservationOrderRequest>,
+  output: __S(114) as any as S.Schema<ReservationSummariesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2723,8 +2090,8 @@ export const ListReservationTransactionByBillingProfile: API.OperationMethod<
   ListReservationTransactionByBillingProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReservationTransactionByBillingProfileRequest,
-  output: ModernReservationTransactionsListResult,
+  input: __S(116) as any as S.Schema<ListReservationTransactionByBillingProfileRequest>,
+  output: __S(120) as any as S.Schema<ModernReservationTransactionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2738,8 +2105,8 @@ export const ListReservationTransactions: API.OperationMethod<
   ListReservationTransactionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReservationTransactionsRequest,
-  output: ReservationTransactionsListResult,
+  input: __S(121) as any as S.Schema<ListReservationTransactionsRequest>,
+  output: __S(125) as any as S.Schema<ReservationTransactionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2753,8 +2120,8 @@ export const ListUsageDetails: API.OperationMethod<
   ListUsageDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsageDetailsRequest,
-  output: UsageDetailsListResult,
+  input: __S(126) as any as S.Schema<ListUsageDetailsRequest>,
+  output: __S(129) as any as S.Schema<UsageDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2768,8 +2135,10 @@ export const ReservationsDetailsListByReservationOrderAndReservation: API.Operat
   ReservationsDetailsListByReservationOrderAndReservationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReservationsDetailsListByReservationOrderAndReservationRequest,
-  output: ReservationDetailsListResult,
+  input: __S(
+    130,
+  ) as any as S.Schema<ReservationsDetailsListByReservationOrderAndReservationRequest>,
+  output: __S(108) as any as S.Schema<ReservationDetailsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2783,8 +2152,10 @@ export const ReservationsSummariesListByReservationOrderAndReservation: API.Oper
   ReservationsSummariesListByReservationOrderAndReservationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReservationsSummariesListByReservationOrderAndReservationRequest,
-  output: ReservationSummariesListResult,
+  input: __S(
+    131,
+  ) as any as S.Schema<ReservationsSummariesListByReservationOrderAndReservationRequest>,
+  output: __S(114) as any as S.Schema<ReservationSummariesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2806,8 +2177,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          operator: BudgetOperatorType,
-          values: BudgetComparisonExpressionValuesList,
+          operator: S.String,
+          values: __S(1),
         }),
       ).annotate({
         identifier: "BudgetComparisonExpression",
@@ -2815,35 +2186,35 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(BudgetComparisonExpression),
-          tags: S.optional(BudgetComparisonExpression),
+          dimensions: S.optional(__S(2)),
+          tags: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "BudgetFilterProperties" });
     case 4:
-      return S.Array(BudgetFilterProperties);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          and: S.optional(BudgetFilterAndList),
-          dimensions: S.optional(BudgetComparisonExpression),
-          tags: S.optional(BudgetComparisonExpression),
+          and: S.optional(__S(4)),
+          dimensions: S.optional(__S(2)),
+          tags: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "BudgetFilter" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          operator: OperatorType,
+          operator: S.String,
           threshold: S.Number,
-          contactEmails: NotificationContactEmailsList,
-          contactRoles: S.optional(NotificationContactRolesList),
-          contactGroups: S.optional(NotificationContactGroupsList),
-          thresholdType: S.optional(NotificationThresholdType),
-          locale: S.optional(CultureCode),
+          contactEmails: __S(1),
+          contactRoles: S.optional(__S(1)),
+          contactGroups: S.optional(__S(1)),
+          thresholdType: S.optional(S.String),
+          locale: S.optional(S.String),
         }),
       ).annotate({ identifier: "Notification" });
     case 7:
-      return S.Record(S.String, Notification);
+      return S.Record(S.String, __S(6));
   }
 }
 function __c1(j: number): any {
@@ -2851,12 +2222,12 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          category: CategoryType,
+          category: S.String,
           amount: S.Number,
-          timeGrain: TimeGrainType,
-          timePeriod: BudgetTimePeriod,
-          filter: S.optional(BudgetFilter),
-          notifications: S.optional(BudgetPropertiesInputNotificationsMap),
+          timeGrain: S.String,
+          timePeriod: __S(0),
+          filter: S.optional(__S(5)),
+          notifications: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "BudgetPropertiesInput" });
     case 1:
@@ -2864,7 +2235,7 @@ function __c1(j: number): any {
         S.Struct({
           scope: S.String.pipe(T.Label()),
           budgetName: S.String.pipe(T.Label()),
-          properties: S.optional(BudgetPropertiesInput),
+          properties: S.optional(__S(8)),
           eTag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -2881,10 +2252,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -2898,14 +2269,14 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          category: CategoryType,
+          category: S.String,
           amount: S.Number,
-          timeGrain: TimeGrainType,
-          timePeriod: BudgetTimePeriod,
-          filter: S.optional(BudgetFilter),
-          currentSpend: S.optional(CurrentSpend),
-          notifications: S.optional(BudgetPropertiesNotificationsMap),
-          forecastSpend: S.optional(ForecastSpend),
+          timeGrain: S.String,
+          timePeriod: __S(0),
+          filter: S.optional(__S(5)),
+          currentSpend: S.optional(__S(11)),
+          notifications: S.optional(__S(7)),
+          forecastSpend: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "BudgetProperties" });
     case 5:
@@ -2914,8 +2285,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(BudgetProperties),
+          systemData: S.optional(__S(10)),
+          properties: S.optional(__S(12)),
           eTag: S.optional(S.String),
         }),
       ).annotate({
@@ -2971,8 +2342,8 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(OperationStatusType),
-          properties: S.optional(PricesheetDownloadProperties),
+          status: S.optional(S.String),
+          properties: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "OperationStatus" });
     case 3:
@@ -2999,16 +2370,16 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(S.suspend(() => ManagementGroupAggregatedCostProperties)),
+          systemData: S.optional(__S(10)),
+          properties: S.optional(S.suspend(() => __S(24))),
           etag: S.optional(S.String),
-          tags: S.optional(ManagementGroupAggregatedCostResultTagsMap),
+          tags: S.optional(__S(20)),
         }),
       ).annotate({
         identifier: "ManagementGroupAggregatedCostResult",
       });
     case 6:
-      return S.Array(ManagementGroupAggregatedCostResult);
+      return S.Array(__S(21));
     case 7:
       return S.Array(S.String);
   }
@@ -3025,13 +2396,9 @@ function __c3(j: number): any {
           marketplaceCharges: S.optional(S.Number),
           chargesBilledSeparately: S.optional(S.Number),
           currency: S.optional(S.String),
-          children: S.optional(ManagementGroupAggregatedCostPropertiesChildrenList),
-          includedSubscriptions: S.optional(
-            ManagementGroupAggregatedCostPropertiesIncludedSubscriptionsList,
-          ),
-          excludedSubscriptions: S.optional(
-            ManagementGroupAggregatedCostPropertiesExcludedSubscriptionsList,
-          ),
+          children: S.optional(__S(22)),
+          includedSubscriptions: S.optional(__S(23)),
+          excludedSubscriptions: S.optional(__S(23)),
         }),
       ).annotate({
         identifier: "ManagementGroupAggregatedCostProperties",
@@ -3042,10 +2409,10 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ManagementGroupAggregatedCostProperties),
+          systemData: S.optional(__S(10)),
+          properties: S.optional(__S(24)),
           etag: S.optional(S.String),
-          tags: S.optional(GetAggregatedCostByManagementGroupResponseTagsMap),
+          tags: S.optional(__S(20)),
         }),
       ).annotate({
         identifier: "GetAggregatedCostByManagementGroupResponse",
@@ -3074,10 +2441,10 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ManagementGroupAggregatedCostProperties),
+          systemData: S.optional(__S(10)),
+          properties: S.optional(__S(24)),
           etag: S.optional(S.String),
-          tags: S.optional(GetAggregatedCostForBillingPeriodByManagementGroupResponseTagsMap),
+          tags: S.optional(__S(27)),
         }),
       ).annotate({
         identifier: "GetAggregatedCostForBillingPeriodByManagementGroupResponse",
@@ -3107,7 +2474,7 @@ function __c3(j: number): any {
         identifier: "BalancePropertiesNewPurchasesDetailsItem",
       });
     case 7:
-      return S.Array(BalancePropertiesNewPurchasesDetailsItem);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
@@ -3126,11 +2493,11 @@ function __c4(j: number): any {
           totalOverage: S.optional(S.Number),
           totalUsage: S.optional(S.Number),
           azureMarketplaceServiceCharges: S.optional(S.Number),
-          billingFrequency: S.optional(BillingFrequency),
+          billingFrequency: S.optional(S.String),
           priceHidden: S.optional(S.Boolean),
           overageRefund: S.optional(S.Number),
-          newPurchasesDetails: S.optional(BalancePropertiesNewPurchasesDetailsList),
-          adjustmentDetails: S.optional(BalancePropertiesAdjustmentDetailsList),
+          newPurchasesDetails: S.optional(__S(31)),
+          adjustmentDetails: S.optional(__S(31)),
         }),
       ).annotate({ identifier: "BalanceProperties" });
     case 1:
@@ -3139,10 +2506,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(BalanceProperties),
+          systemData: S.optional(__S(10)),
+          properties: S.optional(__S(32)),
           etag: S.optional(S.String),
-          tags: S.optional(GetBalanceByBillingAccountResponseTagsMap),
+          tags: S.optional(__S(20)),
         }),
       ).annotate({
         identifier: "GetBalanceByBillingAccountResponse",
@@ -3183,8 +2550,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(BudgetProperties),
+          systemData: S.optional(__S(10)),
+          properties: S.optional(__S(12)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetBudgetResponse" });
@@ -3225,9 +2592,9 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          estimatedBalance: S.optional(Amount),
-          currentBalance: S.optional(Amount),
-          estimatedBalanceInBillingCurrency: S.optional(AmountWithExchangeRate),
+          estimatedBalance: S.optional(__S(38)),
+          currentBalance: S.optional(__S(38)),
+          estimatedBalanceInBillingCurrency: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "CreditBalanceSummary" });
     case 1:
@@ -3240,13 +2607,13 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          balanceSummary: S.optional(CreditBalanceSummary),
-          pendingCreditAdjustments: S.optional(Amount),
-          expiredCredit: S.optional(Amount),
-          pendingEligibleCharges: S.optional(Amount),
+          balanceSummary: S.optional(__S(40)),
+          pendingCreditAdjustments: S.optional(__S(38)),
+          expiredCredit: S.optional(__S(38)),
+          pendingEligibleCharges: S.optional(__S(38)),
           creditCurrency: S.optional(S.String),
           billingCurrency: S.optional(S.String),
-          reseller: S.optional(Reseller),
+          reseller: S.optional(__S(41)),
           isEstimatedBalance: S.optional(S.Boolean),
           eTag: S.optional(S.String),
         }),
@@ -3257,10 +2624,10 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(CreditSummaryProperties),
+          systemData: S.optional(__S(10)),
+          properties: S.optional(__S(42)),
           eTag: S.optional(S.String),
-          tags: S.optional(GetCreditResponseTagsMap),
+          tags: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "GetCreditResponse" });
     case 4:
@@ -3306,14 +2673,14 @@ function __c5(j: number): any {
         S.Struct({
           billingPeriodId: S.optional(S.String),
           meterId: S.optional(S.String),
-          meterDetails: S.optional(MeterDetails),
+          meterDetails: S.optional(__S(45)),
           unitOfMeasure: S.optional(S.String),
           includedQuantity: S.optional(S.Number),
           partNumber: S.optional(S.String),
           unitPrice: S.optional(S.Number),
           currencyCode: S.optional(S.String),
           offerId: S.optional(S.String),
-          savingsPlan: S.optional(SavingsPlan),
+          savingsPlan: S.optional(__S(46)),
         }),
       ).annotate({ identifier: "PriceSheetProperties" });
   }
@@ -3321,13 +2688,13 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PriceSheetProperties);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          pricesheets: S.optional(PriceSheetModelPricesheetsList),
+          pricesheets: S.optional(__S(48)),
           nextLink: S.optional(S.String),
-          download: S.optional(MeterDetails),
+          download: S.optional(__S(45)),
         }),
       ).annotate({ identifier: "PriceSheetModel" });
     case 2:
@@ -3336,10 +2703,10 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PriceSheetModel),
+          systemData: S.optional(__S(10)),
+          properties: S.optional(__S(49)),
           etag: S.optional(S.String),
-          tags: S.optional(GetPriceSheetResponseTagsMap),
+          tags: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "GetPriceSheetResponse" });
     case 3:
@@ -3367,10 +2734,10 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PriceSheetModel),
+          systemData: S.optional(__S(10)),
+          properties: S.optional(__S(49)),
           etag: S.optional(S.String),
-          tags: S.optional(GetPriceSheetByBillingPeriodResponseTagsMap),
+          tags: S.optional(__S(20)),
         }),
       ).annotate({
         identifier: "GetPriceSheetByBillingPeriodResponse",
@@ -3379,10 +2746,10 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceScope: S.String.pipe(T.Label()),
-          scope: GetReservationRecommendationDetailRequestScope.pipe(T.Query()),
+          scope: S.String.pipe(T.Query()),
           region: S.String.pipe(T.Query()),
-          term: GetReservationRecommendationDetailRequestTerm.pipe(T.Query()),
-          lookBackPeriod: GetReservationRecommendationDetailRequestLookBackPeriod.pipe(T.Query()),
+          term: S.String.pipe(T.Query()),
+          lookBackPeriod: S.String.pipe(T.Query()),
           product: S.String.pipe(T.Query()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           managementGroupId: S.optional(S.String.pipe(T.Query())),
@@ -3400,9 +2767,7 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          appliedScopes: S.optional(
-            ReservationRecommendationDetailsResourcePropertiesAppliedScopesList,
-          ),
+          appliedScopes: S.optional(__S(23)),
           onDemandRate: S.optional(S.Number),
           product: S.optional(S.String),
           region: S.optional(S.String),
@@ -3431,13 +2796,11 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ReservationRecommendationDetailsCalculatedSavingsProperties);
+      return S.Array(__S(55));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          calculatedSavings: S.optional(
-            ReservationRecommendationDetailsSavingsPropertiesCalculatedSavingsList,
-          ),
+          calculatedSavings: S.optional(__S(56)),
           lookBackPeriod: S.optional(S.Number),
           recommendedQuantity: S.optional(S.Number),
           reservationOrderTerm: S.optional(S.String),
@@ -3455,7 +2818,7 @@ function __c7(j: number): any {
           firstConsumptionDate: S.optional(S.String),
           lastConsumptionDate: S.optional(S.String),
           lookBackUnitType: S.optional(S.String),
-          usageData: S.optional(ReservationRecommendationDetailsUsagePropertiesUsageDataList),
+          usageData: S.optional(__S(58)),
           usageGrain: S.optional(S.String),
         }),
       ).annotate({
@@ -3473,14 +2836,14 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           currency: S.optional(S.String),
-          resource: S.optional(ReservationRecommendationDetailsResourceProperties),
+          resource: S.optional(__S(54)),
           resourceGroup: S.optional(S.String),
-          savings: S.optional(ReservationRecommendationDetailsSavingsProperties),
+          savings: S.optional(__S(57)),
           scope: S.optional(S.String),
-          usage: S.optional(ReservationRecommendationDetailsUsageProperties),
+          usage: S.optional(__S(59)),
           managementGroupId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          projectedUsage: S.optional(ReservationRecommendationDetailsProjectedUsageProperties),
+          projectedUsage: S.optional(__S(60)),
         }),
       ).annotate({
         identifier: "ReservationRecommendationDetailsProperties",
@@ -3491,12 +2854,12 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(10)),
           location: S.optional(S.String),
           sku: S.optional(S.String),
-          properties: S.optional(ReservationRecommendationDetailsProperties),
+          properties: S.optional(__S(61)),
           etag: S.optional(S.String),
-          tags: S.optional(GetReservationRecommendationDetailResponseTagsMap),
+          tags: S.optional(__S(20)),
         }),
       ).annotate({
         identifier: "GetReservationRecommendationDetailResponse",
@@ -3524,15 +2887,15 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          value: S.optional(TagValueList),
+          value: S.optional(__S(64)),
         }),
       ).annotate({ identifier: "Tag" });
     case 2:
-      return S.Array(Tag);
+      return S.Array(__S(65));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(TagPropertiesTagsList),
+          tags: S.optional(__S(66)),
           nextLink: S.optional(S.String),
           previousLink: S.optional(S.String),
         }),
@@ -3543,8 +2906,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(TagProperties),
+          systemData: S.optional(__S(10)),
+          properties: S.optional(__S(67)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetTagResponse" });
@@ -3562,11 +2925,11 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListBudgetsRequest" });
     case 6:
-      return S.Array(Budget);
+      return S.Array(__S(36));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(BudgetsListResultValueList),
+          value: S.optional(__S(70)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BudgetsListResult" });
@@ -3597,17 +2960,17 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          kind: ChargeSummaryKind,
+          systemData: S.optional(__S(10)),
+          kind: S.String,
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChargeSummary" });
     case 2:
-      return S.Array(ChargeSummary);
+      return S.Array(__S(73));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ChargesListResultValueList),
+          value: S.optional(__S(74)),
         }),
       ).annotate({ identifier: "ChargesListResult" });
     case 4:
@@ -3631,28 +2994,28 @@ function __c9(j: number): any {
         S.Struct({
           transactionDate: S.optional(S.String),
           description: S.optional(S.String),
-          newCredit: S.optional(Amount),
-          adjustments: S.optional(Amount),
-          creditExpired: S.optional(Amount),
-          charges: S.optional(Amount),
-          closedBalance: S.optional(Amount),
+          newCredit: S.optional(__S(38)),
+          adjustments: S.optional(__S(38)),
+          creditExpired: S.optional(__S(38)),
+          charges: S.optional(__S(38)),
+          closedBalance: S.optional(__S(38)),
           billingAccountId: S.optional(S.String),
           billingAccountDisplayName: S.optional(S.String),
-          eventType: S.optional(EventType),
+          eventType: S.optional(S.String),
           invoiceNumber: S.optional(S.String),
           billingProfileId: S.optional(S.String),
           billingProfileDisplayName: S.optional(S.String),
           lotId: S.optional(S.String),
           lotSource: S.optional(S.String),
-          canceledCredit: S.optional(Amount),
+          canceledCredit: S.optional(__S(38)),
           creditCurrency: S.optional(S.String),
           billingCurrency: S.optional(S.String),
-          reseller: S.optional(Reseller),
-          creditExpiredInBillingCurrency: S.optional(AmountWithExchangeRate),
-          newCreditInBillingCurrency: S.optional(AmountWithExchangeRate),
-          adjustmentsInBillingCurrency: S.optional(AmountWithExchangeRate),
-          chargesInBillingCurrency: S.optional(AmountWithExchangeRate),
-          closedBalanceInBillingCurrency: S.optional(AmountWithExchangeRate),
+          reseller: S.optional(__S(41)),
+          creditExpiredInBillingCurrency: S.optional(__S(39)),
+          newCreditInBillingCurrency: S.optional(__S(39)),
+          adjustmentsInBillingCurrency: S.optional(__S(39)),
+          chargesInBillingCurrency: S.optional(__S(39)),
+          closedBalanceInBillingCurrency: S.optional(__S(39)),
           isEstimatedBalance: S.optional(S.Boolean),
           eTag: S.optional(S.String),
         }),
@@ -3663,13 +3026,13 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EventProperties),
+          systemData: S.optional(__S(10)),
+          properties: S.optional(__S(77)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventSummary" });
     case 7:
-      return S.Array(EventSummary);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
@@ -3677,7 +3040,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(EventsValueList),
+          value: S.optional(__S(79)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "Events" });
@@ -3718,23 +3081,23 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          originalAmount: S.optional(Amount),
-          closedBalance: S.optional(Amount),
-          source: S.optional(LotSource),
+          originalAmount: S.optional(__S(38)),
+          closedBalance: S.optional(__S(38)),
+          source: S.optional(S.String),
           startDate: S.optional(S.String),
           expirationDate: S.optional(S.String),
           poNumber: S.optional(S.String),
           purchasedDate: S.optional(S.String),
-          status: S.optional(Status),
+          status: S.optional(S.String),
           creditCurrency: S.optional(S.String),
           billingCurrency: S.optional(S.String),
-          originalAmountInBillingCurrency: S.optional(AmountWithExchangeRate),
-          closedBalanceInBillingCurrency: S.optional(AmountWithExchangeRate),
-          reseller: S.optional(Reseller),
+          originalAmountInBillingCurrency: S.optional(__S(39)),
+          closedBalanceInBillingCurrency: S.optional(__S(39)),
+          reseller: S.optional(__S(41)),
           isEstimatedBalance: S.optional(S.Boolean),
           eTag: S.optional(S.String),
-          OrganizationType: S.optional(OrganizationType),
-          usedAmount: S.optional(Amount),
+          OrganizationType: S.optional(S.String),
+          usedAmount: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "LotProperties" });
     case 4:
@@ -3743,17 +3106,17 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(LotProperties),
+          systemData: S.optional(__S(10)),
+          properties: S.optional(__S(83)),
           eTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "LotSummary" });
     case 5:
-      return S.Array(LotSummary);
+      return S.Array(__S(84));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(LotsValueList),
+          value: S.optional(__S(85)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "Lots" });
@@ -3845,18 +3208,18 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(MarketplaceProperties),
+          systemData: S.optional(__S(10)),
+          properties: S.optional(__S(90)),
           etag: S.optional(S.String),
-          tags: S.optional(MarketplaceTagsMap),
+          tags: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "Marketplace" });
     case 4:
-      return S.Array(Marketplace);
+      return S.Array(__S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(MarketplacesListResultValueList),
+          value: S.optional(__S(92)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MarketplacesListResult" });
@@ -3889,15 +3252,15 @@ function __c12(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          display: S.optional(OperationDisplay),
+          display: S.optional(__S(95)),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(Operation);
+      return S.Array(__S(96));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(OperationListResultValueList),
+          value: S.optional(__S(97)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -3921,10 +3284,10 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(ReservationRecommendationSystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(ReservationRecommendationSystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -3936,22 +3299,22 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(ReservationRecommendationSystemData),
+          systemData: S.optional(__S(100)),
           location: S.optional(S.String),
           sku: S.optional(S.String),
           etag: S.optional(S.String),
-          tags: S.optional(ReservationRecommendationTagsMap),
-          kind: ReservationRecommendationKind,
+          tags: S.optional(__S(20)),
+          kind: S.String,
         }),
       ).annotate({
         identifier: "ReservationRecommendation",
       });
     case 6:
-      return S.Array(ReservationRecommendation);
+      return S.Array(__S(101));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ReservationRecommendationsListResultValueList),
+          value: S.optional(__S(102)),
           nextLink: S.optional(S.String),
           previousLink: S.optional(S.String),
         }),
@@ -4002,18 +3365,18 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ReservationDetailProperties),
+          systemData: S.optional(__S(10)),
+          properties: S.optional(__S(105)),
           etag: S.optional(S.String),
-          tags: S.optional(ReservationDetailTagsMap),
+          tags: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "ReservationDetail" });
     case 3:
-      return S.Array(ReservationDetail);
+      return S.Array(__S(106));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ReservationDetailsListResultValueList),
+          value: S.optional(__S(107)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4043,7 +3406,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceScope: S.String.pipe(T.Label()),
-          grain: ListReservationsSummariesRequestGrain.pipe(T.Query()),
+          grain: S.String.pipe(T.Query()),
           startDate: S.optional(S.String.pipe(T.Query())),
           endDate: S.optional(S.String.pipe(T.Query())),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
@@ -4092,18 +3455,18 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ReservationSummaryProperties),
+          systemData: S.optional(__S(10)),
+          properties: S.optional(__S(111)),
           etag: S.optional(S.String),
-          tags: S.optional(ReservationSummaryTagsMap),
+          tags: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "ReservationSummary" });
     case 1:
-      return S.Array(ReservationSummary);
+      return S.Array(__S(112));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ReservationSummariesListResultValueList),
+          value: S.optional(__S(113)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4113,7 +3476,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
-          grain: ListReservationsSummaryByReservationOrderRequestGrain.pipe(T.Query()),
+          grain: S.String.pipe(T.Query()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
         }).pipe(
           T.Http({
@@ -4176,15 +3539,15 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ModernReservationTransactionProperties,
-          tags: S.optional(ModernReservationTransactionTagsList),
+          systemData: S.optional(__S(10)),
+          properties: __S(117),
+          tags: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "ModernReservationTransaction",
       });
     case 7:
-      return S.Array(ModernReservationTransaction);
+      return S.Array(__S(118));
   }
 }
 function __c15(j: number): any {
@@ -4192,7 +3555,7 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ModernReservationTransactionsListResultValueList),
+          value: S.optional(__S(119)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4252,17 +3615,17 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(LegacyReservationTransactionProperties),
-          tags: S.optional(ReservationTransactionTagsList),
+          systemData: S.optional(__S(10)),
+          properties: S.optional(__S(122)),
+          tags: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "ReservationTransaction" });
     case 4:
-      return S.Array(ReservationTransaction);
+      return S.Array(__S(123));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ReservationTransactionsListResultValueList),
+          value: S.optional(__S(124)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -4276,7 +3639,7 @@ function __c15(j: number): any {
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
           _skiptoken: S.optional(S.String.pipe(T.Query("$skiptoken"))),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
-          metric: S.optional(ListUsageDetailsRequestMetric.pipe(T.Query())),
+          metric: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4292,10 +3655,10 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          kind: UsageDetailsKind,
+          systemData: S.optional(__S(10)),
+          kind: S.String,
           etag: S.optional(S.String),
-          tags: S.optional(UsageDetailTagsMap),
+          tags: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "UsageDetail" });
   }
@@ -4303,11 +3666,11 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UsageDetail);
+      return S.Array(__S(127));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(UsageDetailsListResultValueList),
+          value: S.optional(__S(128)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageDetailsListResult" });
@@ -4333,9 +3696,7 @@ function __c16(j: number): any {
         S.Struct({
           reservationOrderId: S.String.pipe(T.Label()),
           reservationId: S.String.pipe(T.Label()),
-          grain: ReservationsSummariesListByReservationOrderAndReservationRequestGrain.pipe(
-            T.Query(),
-          ),
+          grain: S.String.pipe(T.Query()),
           _filter: S.optional(S.String.pipe(T.Query("$filter"))),
         }).pipe(
           T.Http({
@@ -4348,5 +3709,48 @@ function __c16(j: number): any {
       ).annotate({
         identifier: "ReservationsSummariesListByReservationOrderAndReservationRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
   }
 }

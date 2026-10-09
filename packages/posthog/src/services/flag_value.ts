@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -42,28 +44,14 @@ export interface GetFlagValueValueRequest {
   /** The flag ID */
   key?: string;
 }
-const GetFlagValueValueRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetFlagValueValueRequest>;
-
 export interface FlagValueItem {
   name?: unknown;
 }
-const FlagValueItem = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<FlagValueItem>;
-
 export type FlagValueResponseResultsList = Array<FlagValueItem>;
-const FlagValueResponseResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<FlagValueResponseResultsList>;
-
 export interface FlagValueResponse {
   results?: FlagValueResponseResultsList;
   refreshing?: boolean;
 }
-const FlagValueResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<FlagValueResponse>;
-
 export type GetFlagValueValueError = BadRequest | Forbidden | NotFound | PosthogOpError;
 /** Get possible values for a feature flag. Query parameters: - key: The flag ID (required) Returns: - Array of objects with 'name' field containing possible values */
 export const getFlagValueValue: API.OperationMethod<
@@ -72,8 +60,8 @@ export const getFlagValueValue: API.OperationMethod<
   GetFlagValueValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFlagValueValueRequest,
-  output: FlagValueResponse,
+  input: __S(0) as any as S.Schema<GetFlagValueValueRequest>,
+  output: __S(3) as any as S.Schema<FlagValueResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -102,13 +90,24 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "FlagValueItem" });
     case 2:
-      return S.Array(FlagValueItem);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(FlagValueResponseResultsList),
+          results: S.optional(__S(2)),
           refreshing: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "FlagValueResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 2) {
+    case 0:
+      return __c0(i & 3);
   }
 }

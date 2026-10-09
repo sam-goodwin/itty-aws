@@ -8,6 +8,8 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -53,11 +55,6 @@ export interface ActivateDedicatedServerAntiDDosGameRequest {
   /** scheduling operation to activate anti DDoS protection (0=disable || 1=enable) */
   enable: boolean;
 }
-const ActivateDedicatedServerAntiDDosGameRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ActivateDedicatedServerAntiDDosGameRequest>;
-
 /** different task operation */
 export type DedicatedTaskFunctionEnum =
   | "INFRA_002_VirtualNetworkInterface"
@@ -101,8 +98,6 @@ export type DedicatedTaskFunctionEnum =
   | "testIPMIping"
   | "virtualMacAdd"
   | "virtualMacDelete";
-const DedicatedTaskFunctionEnum = S.String;
-
 /** different task status */
 export type DedicatedTaskStatusEnum =
   | "cancelled"
@@ -112,25 +107,13 @@ export type DedicatedTaskStatusEnum =
   | "init"
   | "ovhError"
   | "todo";
-const DedicatedTaskStatusEnum = S.String;
-
 /** Key and value, with proper key strings */
 export interface ComplexTypeSafeKeyValueCanBeNullString {
   key?: string | null;
   value?: string;
 }
-const ComplexTypeSafeKeyValueCanBeNullString = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ComplexTypeSafeKeyValueCanBeNullString>;
-
 /** Task result tags output */
 export type DedicatedServerTaskTagsList = Array<ComplexTypeSafeKeyValueCanBeNullString>;
-const DedicatedServerTaskTagsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DedicatedServerTaskTagsList>;
-
 /** Server tasks */
 export interface DedicatedServerTask {
   /** Details of this task */
@@ -158,25 +141,13 @@ export interface DedicatedServerTask {
   /** Reference of the thread on the support tool */
   ticketReference?: string | null;
 }
-const DedicatedServerTask = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DedicatedServerTask>;
-
 export interface CancelDedicatedServerTaskRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** the id of the task */
   taskId: number;
 }
-const CancelDedicatedServerTaskRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CancelDedicatedServerTaskRequest>;
-
 export interface CancelDedicatedServerTaskResponse {}
-const CancelDedicatedServerTaskResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CancelDedicatedServerTaskResponse>;
-
 /** All future uses you can provide for a service termination */
 export type ServiceTerminationFutureUseEnum =
   | "NOT_REPLACING_SERVICE"
@@ -184,8 +155,6 @@ export type ServiceTerminationFutureUseEnum =
   | "SUBSCRIBE_AN_OTHER_SERVICE"
   | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR"
   | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR";
-const ServiceTerminationFutureUseEnum = S.String;
-
 /** All reasons you can provide for a service termination */
 export type ServiceTerminationReasonEnum =
   | "FEATURES_DONT_SUIT_ME"
@@ -202,8 +171,6 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
-const ServiceTerminationReasonEnum = S.String;
-
 export interface ConfirmDedicatedServerTerminationRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -216,26 +183,11 @@ export interface ConfirmDedicatedServerTerminationRequest {
   /** The termination token sent by email to the admin contact */
   token: string;
 }
-const ConfirmDedicatedServerTerminationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ConfirmDedicatedServerTerminationRequest>;
-
 export type ConfirmDedicatedServerTerminationResponse = string;
-const ConfirmDedicatedServerTerminationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ConfirmDedicatedServerTerminationResponse>;
-
 export interface CreateDedicatedServerAuthenticationSecretRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const CreateDedicatedServerAuthenticationSecretRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateDedicatedServerAuthenticationSecretRequest>;
-
 /** Application access type */
 export type DedicatedServerAccessTypeEnum =
   | "DIRECTADMIN_PANEL"
@@ -245,8 +197,6 @@ export type DedicatedServerAccessTypeEnum =
   | "SQL_SERVER"
   | "SSH"
   | "WEB_PANEL";
-const DedicatedServerAccessTypeEnum = S.String;
-
 /** A structure describing the server's access */
 export interface DedicatedServerAccess {
   /** Password */
@@ -258,25 +208,10 @@ export interface DedicatedServerAccess {
   /** Login */
   user?: string | null;
 }
-const DedicatedServerAccess = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DedicatedServerAccess>;
-
 export type CreateDedicatedServerAuthenticationSecretResponseBodyList =
   Array<DedicatedServerAccess>;
-const CreateDedicatedServerAuthenticationSecretResponseBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateDedicatedServerAuthenticationSecretResponseBodyList>;
-
 export type CreateDedicatedServerAuthenticationSecretResponse =
   CreateDedicatedServerAuthenticationSecretResponseBodyList;
-const CreateDedicatedServerAuthenticationSecretResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateDedicatedServerAuthenticationSecretResponse>;
-
 /** SGX PRMRR value enum */
 export type DedicatedServerBiosSettingsSgxPrmrrEnum =
   | "128"
@@ -291,15 +226,11 @@ export type DedicatedServerBiosSettingsSgxPrmrrEnum =
   | "64"
   | "65536"
   | "8192";
-const DedicatedServerBiosSettingsSgxPrmrrEnum = S.String;
-
 /** SGX Status enum */
 export type DedicatedServerBiosSettingsSgxStatusEnum =
   | "disabled"
   | "enabled"
   | "software controlled";
-const DedicatedServerBiosSettingsSgxStatusEnum = S.String;
-
 export interface CreateDedicatedServerBiosSettingsSgxConfigureRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -308,11 +239,6 @@ export interface CreateDedicatedServerBiosSettingsSgxConfigureRequest {
   /** Desired SGX status */
   status?: DedicatedServerBiosSettingsSgxStatusEnum | (string & {});
 }
-const CreateDedicatedServerBiosSettingsSgxConfigureRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateDedicatedServerBiosSettingsSgxConfigureRequest>;
-
 export interface CreateDedicatedServerChangeContactRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -323,24 +249,9 @@ export interface CreateDedicatedServerChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-const CreateDedicatedServerChangeContactRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateDedicatedServerChangeContactRequest>;
-
 export type CreateDedicatedServerChangeContactResponseBodyList = Array<number>;
-const CreateDedicatedServerChangeContactResponseBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateDedicatedServerChangeContactResponseBodyList>;
-
 export type CreateDedicatedServerChangeContactResponse =
   CreateDedicatedServerChangeContactResponseBodyList;
-const CreateDedicatedServerChangeContactResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateDedicatedServerChangeContactResponse>;
-
 export interface CreateDedicatedServerFeatureBackupCloudRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -349,16 +260,8 @@ export interface CreateDedicatedServerFeatureBackupCloudRequest {
   /** Project description of the project to be created (ignored when an existing project is already specified) */
   projectDescription?: string;
 }
-const CreateDedicatedServerFeatureBackupCloudRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateDedicatedServerFeatureBackupCloudRequest>;
-
 /** Agreement ids waiting for validation */
 export type DedicatedServerBackupCloudAgreementsList = Array<number>;
-const DedicatedServerBackupCloudAgreementsList =
-  CreateDedicatedServerChangeContactResponseBodyList as any as S.Schema<DedicatedServerBackupCloudAgreementsList>;
-
 /** Cloud project struct. */
 export interface DedicatedServerBackupBackupProject {
   /** Project description. */
@@ -366,21 +269,11 @@ export interface DedicatedServerBackupBackupProject {
   /** Project id. */
   projectId?: string | null;
 }
-const DedicatedServerBackupBackupProject = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DedicatedServerBackupBackupProject>;
-
 /** A numeric value tagged with its unit */
 export interface ComplexTypeUnitAndValueLong {
   unit?: string;
   value?: number;
 }
-const ComplexTypeUnitAndValueLong = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ComplexTypeUnitAndValueLong>;
-
 /** A structure describing quota associated to the current container */
 export interface DedicatedServerBackupBackupQuota {
   /** Volume r/w bandwidth limit: read/write volume offered per month on the container. */
@@ -392,11 +285,6 @@ export interface DedicatedServerBackupBackupQuota {
   /** Volume usage in percent */
   usagePercent?: number | null;
 }
-const DedicatedServerBackupBackupQuota = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DedicatedServerBackupBackupQuota>;
-
 /** A structure describing the SFTP access to a container */
 export interface DedicatedServerBackupBackupSftp {
   /** Sftp password. */
@@ -406,11 +294,6 @@ export interface DedicatedServerBackupBackupSftp {
   /** Username */
   username?: string | null;
 }
-const DedicatedServerBackupBackupSftp = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DedicatedServerBackupBackupSftp>;
-
 /** A structure describing the information related to Openstack to reach the container. */
 export interface DedicatedServerBackupBackupSwift {
   /** Auth url. */
@@ -420,11 +303,6 @@ export interface DedicatedServerBackupBackupSwift {
   /** Openstack username to use swift. */
   username?: string | null;
 }
-const DedicatedServerBackupBackupSwift = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DedicatedServerBackupBackupSwift>;
-
 /** A structure describing informations about the backup cloud feature */
 export interface DedicatedServerBackupBackupContainer {
   /** /cloud project which the container belongs to. */
@@ -442,11 +320,6 @@ export interface DedicatedServerBackupBackupContainer {
   /** Swift related information to reach the container */
   swift?: DedicatedServerBackupBackupSwift | null;
 }
-const DedicatedServerBackupBackupContainer = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DedicatedServerBackupBackupContainer>;
-
 /** Possible values for backup status code */
 export type DedicatedServerBackupBackupStatusCodeEnum =
   | "DELETING"
@@ -456,8 +329,6 @@ export type DedicatedServerBackupBackupStatusCodeEnum =
   | "SUSPENDING"
   | "UNKNOWN"
   | "WAITING_AGREEMENTS_VALIDATION";
-const DedicatedServerBackupBackupStatusCodeEnum = S.String;
-
 /** A structure describing the status of your backup */
 export interface DedicatedServerBackupBackupStatus {
   /** Status code */
@@ -465,11 +336,6 @@ export interface DedicatedServerBackupBackupStatus {
   /** Status code reason (when not ok) */
   reason?: string | null;
 }
-const DedicatedServerBackupBackupStatus = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DedicatedServerBackupBackupStatus>;
-
 /** Backup Cloud assigned to this server */
 export interface DedicatedServerBackupCloud {
   /** Agreement ids waiting for validation */
@@ -481,20 +347,10 @@ export interface DedicatedServerBackupCloud {
   /** Storage space info. */
   storage?: DedicatedServerBackupBackupContainer | null;
 }
-const DedicatedServerBackupCloud = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DedicatedServerBackupCloud>;
-
 export interface CreateDedicatedServerFeatureBackupCloudPasswordRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const CreateDedicatedServerFeatureBackupCloudPasswordRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateDedicatedServerFeatureBackupCloudPasswordRequest>;
-
 /** A structure describing regenerated passwords */
 export interface DedicatedServerBackupBackupPassword {
   /** Password to reach the archive container through the sftp gw. */
@@ -506,20 +362,10 @@ export interface DedicatedServerBackupBackupPassword {
   /** Password to reach the storage container through swift. */
   swiftStorage?: string | null;
 }
-const DedicatedServerBackupBackupPassword = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DedicatedServerBackupBackupPassword>;
-
 export interface CreateDedicatedServerFeatureBackupFTPRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const CreateDedicatedServerFeatureBackupFTPRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateDedicatedServerFeatureBackupFTPRequest>;
-
 export interface CreateDedicatedServerFeatureBackupFTPAccessRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -532,24 +378,12 @@ export interface CreateDedicatedServerFeatureBackupFTPAccessRequest {
   /** Whether to allow the NFS protocol for this ACL */
   nfs: boolean;
 }
-const CreateDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateDedicatedServerFeatureBackupFTPAccessRequest>;
-
 export interface CreateDedicatedServerFeatureBackupFTPPasswordRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const CreateDedicatedServerFeatureBackupFTPPasswordRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateDedicatedServerFeatureBackupFTPPasswordRequest>;
-
 /** Time to live in minutes for cache */
 export type DedicatedServerCacheTTLEnum = 1 | 3 | 5 | 10 | 15;
-const DedicatedServerCacheTTLEnum = S.Number;
-
 export interface CreateDedicatedServerFeatureBmcJavaKvmRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -558,11 +392,6 @@ export interface CreateDedicatedServerFeatureBmcJavaKvmRequest {
   /** Time to live in minutes to get session credentials, default is 5 minutes */
   ttl?: DedicatedServerCacheTTLEnum | (number & {});
 }
-const CreateDedicatedServerFeatureBmcJavaKvmRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateDedicatedServerFeatureBmcJavaKvmRequest>;
-
 /** List of operation type */
 export type DedicatedOperationFunctionEnum =
   | "bmc/javaKvm"
@@ -574,8 +403,6 @@ export type DedicatedOperationFunctionEnum =
   | "bmc/testWeb"
   | "bmc/webKvm"
   | "bmc/webSol";
-const DedicatedOperationFunctionEnum = S.String;
-
 /** Server operations */
 export interface DedicatedServerOperation {
   /** Details of this task */
@@ -593,11 +420,6 @@ export interface DedicatedServerOperation {
   /** Task status */
   status?: DedicatedTaskStatusEnum;
 }
-const DedicatedServerOperation = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DedicatedServerOperation>;
-
 export interface CreateDedicatedServerFeatureBmcSshSolRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -606,11 +428,6 @@ export interface CreateDedicatedServerFeatureBmcSshSolRequest {
   /** Time to live in minutes to get session credentials, default is 5 minutes */
   ttl?: DedicatedServerCacheTTLEnum | (number & {});
 }
-const CreateDedicatedServerFeatureBmcSshSolRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateDedicatedServerFeatureBmcSshSolRequest>;
-
 export interface CreateDedicatedServerFeatureBmcWebKvmRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -619,11 +436,6 @@ export interface CreateDedicatedServerFeatureBmcWebKvmRequest {
   /** Time to live in minutes to get session credentials, default is 5 minutes */
   ttl?: DedicatedServerCacheTTLEnum | (number & {});
 }
-const CreateDedicatedServerFeatureBmcWebKvmRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateDedicatedServerFeatureBmcWebKvmRequest>;
-
 export interface CreateDedicatedServerFeatureBmcWebSolRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -632,19 +444,12 @@ export interface CreateDedicatedServerFeatureBmcWebSolRequest {
   /** Time to live in minutes to get session credentials, default is 5 minutes */
   ttl?: DedicatedServerCacheTTLEnum | (number & {});
 }
-const CreateDedicatedServerFeatureBmcWebSolRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateDedicatedServerFeatureBmcWebSolRequest>;
-
 /** Distinct way to acces a KVM IPMI session */
 export type DedicatedServerIpmiAccessTypeEnum =
   | "kvmipHtml5URL"
   | "kvmipJnlp"
   | "serialOverLanSshKey"
   | "serialOverLanURL";
-const DedicatedServerIpmiAccessTypeEnum = S.String;
-
 export interface CreateDedicatedServerFeatureIpmiAccessRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -657,33 +462,18 @@ export interface CreateDedicatedServerFeatureIpmiAccessRequest {
   /** IPMI console access */
   type: DedicatedServerIpmiAccessTypeEnum | (string & {});
 }
-const CreateDedicatedServerFeatureIpmiAccessRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateDedicatedServerFeatureIpmiAccessRequest>;
-
 export interface CreateDedicatedServerIpBlockMergeRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** The splitted block you want to merge */
   block: string;
 }
-const CreateDedicatedServerIpBlockMergeRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateDedicatedServerIpBlockMergeRequest>;
-
 export interface CreateDedicatedServerIpMoveRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** The ip to move to this server */
   ip: string;
 }
-const CreateDedicatedServerIpMoveRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateDedicatedServerIpMoveRequest>;
-
 /** All versions for Windows products */
 export type LicenseWindowsOsVersionEnum =
   | "WINDOWS_SERVER_2003_ENTERPRISE_EDITION"
@@ -1266,8 +1056,6 @@ export type LicenseWindowsOsVersionEnum =
   | "windows-server-2025-license-standard-edition-72-cores"
   | "windows-server-2025-license-standard-edition-8-cores"
   | "windows-server-2025-license-standard-edition-96-cores";
-const LicenseWindowsOsVersionEnum = S.String;
-
 export interface CreateDedicatedServerLicenseWindowsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -1276,22 +1064,10 @@ export interface CreateDedicatedServerLicenseWindowsRequest {
   /** Your license version */
   version: LicenseWindowsOsVersionEnum | (string & {});
 }
-const CreateDedicatedServerLicenseWindowsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateDedicatedServerLicenseWindowsRequest>;
-
 /** Mac address or list of mac addresses */
 export type DedicatedServerInterfacesMacsList = Array<string>;
-const DedicatedServerInterfacesMacsList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DedicatedServerInterfacesMacsList>;
-
 /** Network type */
 export type DedicatedServerNetworkingTypeEnum = "public" | "vrack";
-const DedicatedServerNetworkingTypeEnum = S.String;
-
 /** Interface or interfaces aggregation */
 export interface DedicatedServerInterfaces {
   /** Mac address or list of mac addresses */
@@ -1299,38 +1075,18 @@ export interface DedicatedServerInterfaces {
   /** Network type */
   type?: DedicatedServerNetworkingTypeEnum | (string & {});
 }
-const DedicatedServerInterfaces = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<DedicatedServerInterfaces>;
-
 /** Interface or interfaces aggregation */
 export type CreateDedicatedServerNetworkingRequestInterfacesList = Array<DedicatedServerInterfaces>;
-const CreateDedicatedServerNetworkingRequestInterfacesList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateDedicatedServerNetworkingRequestInterfacesList>;
-
 export interface CreateDedicatedServerNetworkingRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** Interface or interfaces aggregation */
   interfaces: CreateDedicatedServerNetworkingRequestInterfacesList;
 }
-const CreateDedicatedServerNetworkingRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CreateDedicatedServerNetworkingRequest>;
-
 /** Interface or interfaces aggregation */
 export type DedicatedServerNetworkingInterfacesList = Array<DedicatedServerInterfaces>;
-const DedicatedServerNetworkingInterfacesList =
-  CreateDedicatedServerNetworkingRequestInterfacesList as any as S.Schema<DedicatedServerNetworkingInterfacesList>;
-
 /** Network operation states */
 export type DedicatedServerNetworkingOperationEnum = "active" | "deploying";
-const DedicatedServerNetworkingOperationEnum = S.String;
-
 /** Network configuration */
 export interface DedicatedServerNetworking {
   /** Operation description */
@@ -1340,18 +1096,8 @@ export interface DedicatedServerNetworking {
   /** Operation status */
   status?: DedicatedServerNetworkingOperationEnum | null;
 }
-const DedicatedServerNetworking = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DedicatedServerNetworking>;
-
 /** Interfaces to aggregate */
 export type CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList = Array<string>;
-const CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList>;
-
 export interface CreateDedicatedServerOlaAggregationRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -1360,32 +1106,18 @@ export interface CreateDedicatedServerOlaAggregationRequest {
   /** Interfaces to aggregate */
   virtualNetworkInterfaces: CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList;
 }
-const CreateDedicatedServerOlaAggregationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CreateDedicatedServerOlaAggregationRequest>;
-
 /** Image HTTP Headers */
 export type DedicatedServerReinstallCustomizationsHttpHeadersMap = {
   [key: string]: string | undefined;
 };
-const DedicatedServerReinstallCustomizationsHttpHeadersMap = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<DedicatedServerReinstallCustomizationsHttpHeadersMap>;
-
 /** Checksum type */
 export type DedicatedServerReinstallCustomizationsImageCheckSumTypeEnum =
   | "md5"
   | "sha1"
   | "sha256"
   | "sha512";
-const DedicatedServerReinstallCustomizationsImageCheckSumTypeEnum = S.String;
-
 /** Image Type */
 export type DedicatedServerReinstallCustomizationsImageTypeEnum = "qcow2" | "raw";
-const DedicatedServerReinstallCustomizationsImageTypeEnum = S.String;
-
 /** Display Language */
 export type DedicatedServerReinstallCustomizationsLanguageEnum =
   | "cs-cz"
@@ -1397,14 +1129,10 @@ export type DedicatedServerReinstallCustomizationsLanguageEnum =
   | "nl-nl"
   | "pl-pl"
   | "pt-pt";
-const DedicatedServerReinstallCustomizationsLanguageEnum = S.String;
-
 /** Post-Installation Script File Extension */
 export type DedicatedServerReinstallCustomizationsPostInstallationScriptExtensionEnum =
   | "cmd"
   | "ps1";
-const DedicatedServerReinstallCustomizationsPostInstallationScriptExtensionEnum = S.String;
-
 /** OS reinstallation customizations */
 export interface DedicatedServerReinstallCustomizations {
   /** Config Drive UserData */
@@ -1434,22 +1162,12 @@ export interface DedicatedServerReinstallCustomizations {
   /** SSH Public Key */
   sshKey?: string;
 }
-const DedicatedServerReinstallCustomizations = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DedicatedServerReinstallCustomizations>;
-
 /** Arbitrary properties to pass to cloud-init's config drive datasource */
 export type CreateDedicatedServerReinstallRequestPropertiesMap = {
   [key: string]: string | undefined;
 };
-const CreateDedicatedServerReinstallRequestPropertiesMap =
-  DedicatedServerReinstallCustomizationsHttpHeadersMap as any as S.Schema<CreateDedicatedServerReinstallRequestPropertiesMap>;
-
 /** Hardware raid types */
 export type DedicatedServerReinstallStorageHardwareRaidRaidLevelEnum = 0 | 1 | 5 | 6 | 10 | 50 | 60;
-const DedicatedServerReinstallStorageHardwareRaidRaidLevelEnum = S.Number;
-
 /** Hardware Raid configuration */
 export interface DedicatedServerReinstallStorageHardwareRaid {
   /** Number of arrays (default is 1) */
@@ -1461,37 +1179,19 @@ export interface DedicatedServerReinstallStorageHardwareRaid {
   /** Number of disks in the disk group involved in the spare (default is 0) */
   spares?: number;
 }
-const DedicatedServerReinstallStorageHardwareRaid = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DedicatedServerReinstallStorageHardwareRaid>;
-
 /** Hardware Raid configurations (if not specified, all disks of the chosen disk group id will be configured in JBOD mode) */
 export type DedicatedServerReinstallStorageHardwareRaidList =
   Array<DedicatedServerReinstallStorageHardwareRaid>;
-const DedicatedServerReinstallStorageHardwareRaidList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DedicatedServerReinstallStorageHardwareRaidList>;
-
 /** LVM-specific parameters */
 export interface DedicatedServerReinstallStoragePartitioningLayoutExtrasLv {
   /** Logical volume name */
   name?: string;
 }
-const DedicatedServerReinstallStoragePartitioningLayoutExtrasLv = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DedicatedServerReinstallStoragePartitioningLayoutExtrasLv>;
-
 /** ZFS-specific parameters */
 export interface DedicatedServerReinstallStoragePartitioningLayoutExtrasZp {
   /** zpool name (generated automatically if not specified, note that multiple ZFS partitions with same zpool names will be configured as multiple datasets belonging to the same zpool if compatible) */
   name?: string;
 }
-const DedicatedServerReinstallStoragePartitioningLayoutExtrasZp =
-  DedicatedServerReinstallStoragePartitioningLayoutExtrasLv as any as S.Schema<DedicatedServerReinstallStoragePartitioningLayoutExtrasZp>;
-
 /** Partition extras parameters */
 export interface DedicatedServerReinstallStoragePartitioningLayoutExtras {
   /** LVM-specific parameters */
@@ -1499,11 +1199,6 @@ export interface DedicatedServerReinstallStoragePartitioningLayoutExtras {
   /** ZFS-specific parameters */
   zp?: DedicatedServerReinstallStoragePartitioningLayoutExtrasZp;
 }
-const DedicatedServerReinstallStoragePartitioningLayoutExtras = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DedicatedServerReinstallStoragePartitioningLayoutExtras>;
-
 /** File system types */
 export type DedicatedServerReinstallStoragePartitioningLayoutFileSystemEnum =
   | "btrfs"
@@ -1520,12 +1215,8 @@ export type DedicatedServerReinstallStoragePartitioningLayoutFileSystemEnum =
   | "vmfsl"
   | "xfs"
   | "zfs";
-const DedicatedServerReinstallStoragePartitioningLayoutFileSystemEnum = S.String;
-
 /** Software raid types */
 export type DedicatedServerReinstallStoragePartitioningLayoutRaidLevelEnum = 0 | 1 | 5 | 6 | 7 | 10;
-const DedicatedServerReinstallStoragePartitioningLayoutRaidLevelEnum = S.Number;
-
 /** Custom partition parameters */
 export interface DedicatedServerReinstallStoragePartitioningLayout {
   /** Partition extras parameters */
@@ -1539,19 +1230,9 @@ export interface DedicatedServerReinstallStoragePartitioningLayout {
   /** Partition size in MiB (default value is 0 which means to fill the disk with that partition) */
   size?: number;
 }
-const DedicatedServerReinstallStoragePartitioningLayout = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DedicatedServerReinstallStoragePartitioningLayout>;
-
 /** Custom partitioning layout (default is the default layout of the operating system's default partitioning scheme) */
 export type DedicatedServerReinstallStoragePartitioningLayoutList =
   Array<DedicatedServerReinstallStoragePartitioningLayout>;
-const DedicatedServerReinstallStoragePartitioningLayoutList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<DedicatedServerReinstallStoragePartitioningLayoutList>;
-
 /** Partitioning configuration */
 export interface DedicatedServerReinstallStoragePartitioning {
   /** Total number of disks in the disk group involved in the partitioning configuration (all disks of the disk group by default) */
@@ -1561,11 +1242,6 @@ export interface DedicatedServerReinstallStoragePartitioning {
   /** Partitioning scheme (if applicable with selected operating system) */
   schemeName?: string;
 }
-const DedicatedServerReinstallStoragePartitioning = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<DedicatedServerReinstallStoragePartitioning>;
-
 /** OS reinstallation storage configuration */
 export interface DedicatedServerReinstallStorage {
   /** Disk group id (default is 0, meaning automatic) */
@@ -1575,19 +1251,9 @@ export interface DedicatedServerReinstallStorage {
   /** Partitioning configuration */
   partitioning?: DedicatedServerReinstallStoragePartitioning;
 }
-const DedicatedServerReinstallStorage = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<DedicatedServerReinstallStorage>;
-
 /** OS reinstallation storage configurations */
 export type CreateDedicatedServerReinstallRequestStorageList =
   Array<DedicatedServerReinstallStorage>;
-const CreateDedicatedServerReinstallRequestStorageList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CreateDedicatedServerReinstallRequestStorageList>;
-
 export interface CreateDedicatedServerReinstallRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -1600,11 +1266,6 @@ export interface CreateDedicatedServerReinstallRequest {
   /** OS reinstallation storage configurations */
   storage?: CreateDedicatedServerReinstallRequestStorageList;
 }
-const CreateDedicatedServerReinstallRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateDedicatedServerReinstallRequest>;
-
 /** Task operation types */
 export type DedicatedServerTaskFunctionEnum =
   | "INFRA_002_VirtualNetworkInterface"
@@ -1648,8 +1309,6 @@ export type DedicatedServerTaskFunctionEnum =
   | "testIPMIping"
   | "virtualMacAdd"
   | "virtualMacDelete";
-const DedicatedServerTaskFunctionEnum = S.String;
-
 /** Task statuses */
 export type DedicatedServerTaskStatusEnum =
   | "cancelled"
@@ -1659,8 +1318,6 @@ export type DedicatedServerTaskStatusEnum =
   | "init"
   | "ovhError"
   | "todo";
-const DedicatedServerTaskStatusEnum = S.String;
-
 /** Dedicated server task */
 export interface DedicatedServerTaskResponse {
   /** Details of this task */
@@ -1676,11 +1333,6 @@ export interface DedicatedServerTaskResponse {
   /** Task id */
   taskId?: number;
 }
-const DedicatedServerTaskResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DedicatedServerTaskResponse>;
-
 export interface CreateDedicatedServerSecondaryDnsDomainRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -1688,19 +1340,9 @@ export interface CreateDedicatedServerSecondaryDnsDomainRequest {
   domain: string;
   ip?: string;
 }
-const CreateDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateDedicatedServerSecondaryDnsDomainRequest>;
-
 export interface CreateDedicatedServerSecondaryDnsDomainResponse {}
-const CreateDedicatedServerSecondaryDnsDomainResponse =
-  CancelDedicatedServerTaskResponse as any as S.Schema<CreateDedicatedServerSecondaryDnsDomainResponse>;
-
 /** SPLA license type */
 export type DedicatedServerSplaTypeEnum = "os" | "sqlstd" | "sqlweb";
-const DedicatedServerSplaTypeEnum = S.String;
-
 export interface CreateDedicatedServerSplaRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -1709,17 +1351,7 @@ export interface CreateDedicatedServerSplaRequest {
   /** License type */
   type: DedicatedServerSplaTypeEnum | (string & {});
 }
-const CreateDedicatedServerSplaRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateDedicatedServerSplaRequest>;
-
 export type CreateDedicatedServerSplaResponse = number;
-const CreateDedicatedServerSplaResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateDedicatedServerSplaResponse>;
-
 export interface CreateDedicatedServerSupportReplaceCoolingRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -1728,11 +1360,6 @@ export interface CreateDedicatedServerSupportReplaceCoolingRequest {
   /** Technical details or logs */
   details: string;
 }
-const CreateDedicatedServerSupportReplaceCoolingRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CreateDedicatedServerSupportReplaceCoolingRequest>;
-
 /** Newly created support identifiers */
 export interface SupportNewMessageInfo {
   /** Notice or warning */
@@ -1744,11 +1371,6 @@ export interface SupportNewMessageInfo {
   /** Ticket external number */
   ticketNumber?: number;
 }
-const SupportNewMessageInfo = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<SupportNewMessageInfo>;
-
 /** Hdd replace support request details. */
 export interface DedicatedServerSupportReplaceHddInfo {
   /** Disk serial number */
@@ -1756,19 +1378,9 @@ export interface DedicatedServerSupportReplaceHddInfo {
   /** Disk slotId (if any) */
   slot_id?: number | null;
 }
-const DedicatedServerSupportReplaceHddInfo = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DedicatedServerSupportReplaceHddInfo>;
-
 /** If 'inverse' is set as 'false', the list of HDD TO REPLACE. If 'inverse' is set as 'true', the list of HDD TO NOT REPLACE. */
 export type CreateDedicatedServerSupportReplaceHardDiskDriveRequestDisksList =
   Array<DedicatedServerSupportReplaceHddInfo>;
-const CreateDedicatedServerSupportReplaceHardDiskDriveRequestDisksList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CreateDedicatedServerSupportReplaceHardDiskDriveRequestDisksList>;
-
 export interface CreateDedicatedServerSupportReplaceHardDiskDriveRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -1779,16 +1391,8 @@ export interface CreateDedicatedServerSupportReplaceHardDiskDriveRequest {
   /** If set to 'true', replace only NON LISTED DISKS */
   inverse: boolean;
 }
-const CreateDedicatedServerSupportReplaceHardDiskDriveRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CreateDedicatedServerSupportReplaceHardDiskDriveRequest>;
-
 /** The list of faulty RAM slots (if you have the information) */
 export type CreateDedicatedServerSupportReplaceMemoryRequestSlotsList = Array<string>;
-const CreateDedicatedServerSupportReplaceMemoryRequestSlotsList =
-  DedicatedServerInterfacesMacsList as any as S.Schema<CreateDedicatedServerSupportReplaceMemoryRequestSlotsList>;
-
 export interface CreateDedicatedServerSupportReplaceMemoryRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -1799,11 +1403,6 @@ export interface CreateDedicatedServerSupportReplaceMemoryRequest {
   /** The list of faulty RAM slots (if you have the information) */
   slots?: CreateDedicatedServerSupportReplaceMemoryRequestSlotsList;
 }
-const CreateDedicatedServerSupportReplaceMemoryRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<CreateDedicatedServerSupportReplaceMemoryRequest>;
-
 export interface CreateDedicatedServerTaskScheduleRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -1814,19 +1413,9 @@ export interface CreateDedicatedServerTaskScheduleRequest {
   /** Wanted begining date for your intervention */
   wantedBeginingDate: string;
 }
-const CreateDedicatedServerTaskScheduleRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateDedicatedServerTaskScheduleRequest>;
-
 export interface CreateDedicatedServerTaskScheduleResponse {}
-const CreateDedicatedServerTaskScheduleResponse =
-  CancelDedicatedServerTaskResponse as any as S.Schema<CreateDedicatedServerTaskScheduleResponse>;
-
 /** Distinct type of virtual mac */
 export type DedicatedServerVmacTypeEnum = "ovh" | "vmware";
-const DedicatedServerVmacTypeEnum = S.String;
-
 export interface CreateDedicatedServerVirtualMacRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -1837,11 +1426,6 @@ export interface CreateDedicatedServerVirtualMacRequest {
   /** Friendly name of your Virtual Machine behind this IP/MAC */
   virtualMachineName: string;
 }
-const CreateDedicatedServerVirtualMacRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateDedicatedServerVirtualMacRequest>;
-
 export interface CreateDedicatedServerVirtualMacVirtualAddressRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -1852,53 +1436,25 @@ export interface CreateDedicatedServerVirtualMacVirtualAddressRequest {
   /** Friendly name of your Virtual Machine behind this IP/MAC */
   virtualMachineName: string;
 }
-const CreateDedicatedServerVirtualMacVirtualAddressRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateDedicatedServerVirtualMacVirtualAddressRequest>;
-
 export interface DeleteDedicatedServerFeatureBackupCloudRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const DeleteDedicatedServerFeatureBackupCloudRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DeleteDedicatedServerFeatureBackupCloudRequest>;
-
 export interface DeleteDedicatedServerFeatureBackupCloudResponse {}
-const DeleteDedicatedServerFeatureBackupCloudResponse =
-  CancelDedicatedServerTaskResponse as any as S.Schema<DeleteDedicatedServerFeatureBackupCloudResponse>;
-
 export interface DeleteDedicatedServerFeatureBackupFTPRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const DeleteDedicatedServerFeatureBackupFTPRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DeleteDedicatedServerFeatureBackupFTPRequest>;
-
 export interface DeleteDedicatedServerFeatureBackupFTPAccessRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** The IP Block specific to this ACL */
   ipBlock: string;
 }
-const DeleteDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DeleteDedicatedServerFeatureBackupFTPAccessRequest>;
-
 export interface DeleteDedicatedServerNetworkingRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const DeleteDedicatedServerNetworkingRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DeleteDedicatedServerNetworkingRequest>;
-
 /** All options a dedicated server can have and release */
 export type DeleteDedicatedServerOptionRequestOption =
   | "BACKUPPROTOCOL"
@@ -1912,38 +1468,20 @@ export type DeleteDedicatedServerOptionRequestOption =
   | "TUNING_FIREWALL"
   | "TUNING_KVM"
   | "USB_KVM_IP";
-const DeleteDedicatedServerOptionRequestOption = S.String;
-
 export interface DeleteDedicatedServerOptionRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** The option name */
   option: DeleteDedicatedServerOptionRequestOption | (string & {});
 }
-const DeleteDedicatedServerOptionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DeleteDedicatedServerOptionRequest>;
-
 export interface DeleteDedicatedServerOptionResponse {}
-const DeleteDedicatedServerOptionResponse =
-  CancelDedicatedServerTaskResponse as any as S.Schema<DeleteDedicatedServerOptionResponse>;
-
 export interface DeleteDedicatedServerSecondaryDnsDomainRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** domain on slave server */
   domain: string;
 }
-const DeleteDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeleteDedicatedServerSecondaryDnsDomainRequest>;
-
 export interface DeleteDedicatedServerSecondaryDnsDomainResponse {}
-const DeleteDedicatedServerSecondaryDnsDomainResponse =
-  CancelDedicatedServerTaskResponse as any as S.Schema<DeleteDedicatedServerSecondaryDnsDomainResponse>;
-
 export interface DeleteDedicatedServerVirtualMacVirtualAddressRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -1952,26 +1490,14 @@ export interface DeleteDedicatedServerVirtualMacVirtualAddressRequest {
   /** IP address */
   ipAddress: string;
 }
-const DeleteDedicatedServerVirtualMacVirtualAddressRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeleteDedicatedServerVirtualMacVirtualAddressRequest>;
-
 export interface DeleteDedicatedServerVrackRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** vrack name */
   vrack: string;
 }
-const DeleteDedicatedServerVrackRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DeleteDedicatedServerVrackRequest>;
-
 /** All states a vRack Task can be in */
 export type VrackTaskStatusEnum = "cancelled" | "doing" | "done" | "init" | "todo";
-const VrackTaskStatusEnum = S.String;
-
 /** vrack tasks */
 export interface VrackTask {
   function?: string;
@@ -1984,17 +1510,10 @@ export interface VrackTask {
   targetDomain?: string | null;
   todoDate?: string | null;
 }
-const VrackTask = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<VrackTask>;
-
 export interface GetDedicatedServerRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetDedicatedServerRequest>;
-
 /** ovh datacenter */
 export type DedicatedDatacenterEnum =
   | "bhs1"
@@ -2051,13 +1570,8 @@ export type DedicatedDatacenterEnum =
   | "waw1"
   | "ynm1"
   | "yyz01";
-const DedicatedDatacenterEnum = S.String;
-
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-const IamResourceMetadataTagsMap =
-  DedicatedServerReinstallCustomizationsHttpHeadersMap as any as S.Schema<IamResourceMetadataTagsMap>;
-
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
   /** Resource display name */
@@ -2069,20 +1583,12 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-const IamResourceMetadata = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<IamResourceMetadata>;
-
 /** Power states of a Dedicated */
 export type DedicatedServerPowerStateEnum = "poweroff" | "poweron";
-const DedicatedServerPowerStateEnum = S.String;
-
 /** All states a Dedicated can in */
 export type DedicatedServerStateEnum = "error" | "hacked" | "hackedBlocked" | "ok";
-const DedicatedServerStateEnum = S.String;
-
 /** distincts support level */
 export type DedicatedServerSupportLevelEnum = "critical" | "fastpath" | "gs" | "pro";
-const DedicatedServerSupportLevelEnum = S.String;
-
 /** Server informations */
 export interface DedicatedServerDedicatedWithIAM {
   /** dedicated AZ localisation */
@@ -2130,39 +1636,17 @@ export interface DedicatedServerDedicatedWithIAM {
   /** Dedicated server support level */
   supportLevel?: DedicatedServerSupportLevelEnum;
 }
-const DedicatedServerDedicatedWithIAM = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DedicatedServerDedicatedWithIAM>;
-
 export interface GetDedicatedServerAntiDDosGameStatusRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerAntiDDosGameStatusRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GetDedicatedServerAntiDDosGameStatusRequest>;
-
 /** enable or disable */
 export type DedicatedStatusEnum = "disable" | "enable";
-const DedicatedStatusEnum = S.String;
-
 export type GetDedicatedServerAntiDDosGameStatusResponse = DedicatedStatusEnum;
-const GetDedicatedServerAntiDDosGameStatusResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GetDedicatedServerAntiDDosGameStatusResponse>;
-
 export interface GetDedicatedServerBackupCloudOfferDetailsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerBackupCloudOfferDetailsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GetDedicatedServerBackupCloudOfferDetailsRequest>;
-
 /** Backup cloud offer description for a dedicated server */
 export interface DedicatedServerBackupBackupOffer {
   /** Archive container max size. */
@@ -2174,34 +1658,16 @@ export interface DedicatedServerBackupBackupOffer {
   /** Storage container max size. */
   maxStorage?: ComplexTypeUnitAndValueLong | null;
 }
-const DedicatedServerBackupBackupOffer = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DedicatedServerBackupBackupOffer>;
-
 export interface GetDedicatedServerBiosSettingsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerBiosSettingsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GetDedicatedServerBiosSettingsRequest>;
-
 /** Supported SGX prmrr values */
 export type DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList =
   Array<DedicatedServerBiosSettingsSgxPrmrrEnum>;
-const DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList>;
-
 /** Supported SGX statuses */
 export type DedicatedServerBiosSettingsSupportSgxOptionsStatusList =
   Array<DedicatedServerBiosSettingsSgxStatusEnum>;
-const DedicatedServerBiosSettingsSupportSgxOptionsStatusList =
-  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<DedicatedServerBiosSettingsSupportSgxOptionsStatusList>;
-
 /** A structure describing supported SGX options values */
 export interface DedicatedServerBiosSettingsSupportSgxOptions {
   /** Supported SGX prmrr values */
@@ -2209,11 +1675,6 @@ export interface DedicatedServerBiosSettingsSupportSgxOptions {
   /** Supported SGX statuses */
   status?: DedicatedServerBiosSettingsSupportSgxOptionsStatusList;
 }
-const DedicatedServerBiosSettingsSupportSgxOptions = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<DedicatedServerBiosSettingsSupportSgxOptions>;
-
 /** A structure describing supported bios settings */
 export interface DedicatedServerBiosSettingsSupport {
   /** SGX feature support */
@@ -2221,30 +1682,15 @@ export interface DedicatedServerBiosSettingsSupport {
   /** Supported SGX options */
   sgxOptions?: DedicatedServerBiosSettingsSupportSgxOptions;
 }
-const DedicatedServerBiosSettingsSupport = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<DedicatedServerBiosSettingsSupport>;
-
 /** Your BiosSettings */
 export interface DedicatedBiosSettingsBiosSettings {
   /** List supported setting */
   supportedSettings?: DedicatedServerBiosSettingsSupport;
 }
-const DedicatedBiosSettingsBiosSettings = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<DedicatedBiosSettingsBiosSettings>;
-
 export interface GetDedicatedServerBiosSettingsSgxRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerBiosSettingsSgxRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GetDedicatedServerBiosSettingsSgxRequest>;
-
 /** Your BiosSettings for SGX feature */
 export interface DedicatedBiosSettingsSgxBiosSettingsSgx {
   /** Settings sections */
@@ -2252,26 +1698,14 @@ export interface DedicatedBiosSettingsSgxBiosSettingsSgx {
   /** Settings sections */
   status?: DedicatedServerBiosSettingsSgxStatusEnum;
 }
-const DedicatedBiosSettingsSgxBiosSettingsSgx = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<DedicatedBiosSettingsSgxBiosSettingsSgx>;
-
 export interface GetDedicatedServerBootRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** boot id */
   bootId: number;
 }
-const GetDedicatedServerBootRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetDedicatedServerBootRequest>;
-
 /** Different netboot boot */
 export type DedicatedServerBootTypeEnum = "harddisk" | "internal" | "network" | "power" | "rescue";
-const DedicatedServerBootTypeEnum = S.String;
-
 /** Available boots */
 export interface DedicatedServerNetboot {
   /** boot id */
@@ -2283,15 +1717,8 @@ export interface DedicatedServerNetboot {
   /** The boot kernel */
   kernel?: string;
 }
-const DedicatedServerNetboot = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<DedicatedServerNetboot>;
-
 /** Different option activated on netboot */
 export type GetDedicatedServerBootOptionRequestOption = "cpufamily" | "grsec" | "ipv6" | "smp";
-const GetDedicatedServerBootOptionRequestOption = S.String;
-
 export interface GetDedicatedServerBootOptionRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -2300,15 +1727,8 @@ export interface GetDedicatedServerBootOptionRequest {
   /** The option of this boot */
   option: GetDedicatedServerBootOptionRequestOption | (string & {});
 }
-const GetDedicatedServerBootOptionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GetDedicatedServerBootOptionRequest>;
-
 /** Different option activated on netboot */
 export type DedicatedServerBootOptionEnum = "cpufamily" | "grsec" | "ipv6" | "smp";
-const DedicatedServerBootOptionEnum = S.String;
-
 /** Available boot options */
 export interface DedicatedServerNetbootOption {
   /** The option of this boot */
@@ -2316,24 +1736,12 @@ export interface DedicatedServerNetbootOption {
   /** the value of this option */
   value?: string;
 }
-const DedicatedServerNetbootOption = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<DedicatedServerNetbootOption>;
-
 export interface GetDedicatedServerBurstRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerBurstRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GetDedicatedServerBurstRequest>;
-
 /** Dedicated server bandwidth burst */
 export type DedicatedServerBurstStatusEnum = "active" | "inactive" | "inactiveLocked";
-const DedicatedServerBurstStatusEnum = S.String;
-
 /** Server bandwidth burst details */
 export interface DedicatedServerServerBurst {
   /** Bandwidth busrt capacity */
@@ -2341,24 +1749,12 @@ export interface DedicatedServerServerBurst {
   /** indicates whether burstable bandwidth is currently active, allowing it to temporarily exceed the normally included bandwidth.OvhToInternet amount, within the limits indicated by the burst.capacity item. It can also be inactiveLocked when temporarily disabled due to overuse, capping it to the included non-burstable bandwidth capacity of bandwidth.OvhToInternet */
   status?: DedicatedServerBurstStatusEnum;
 }
-const DedicatedServerServerBurst = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<DedicatedServerServerBurst>;
-
 export interface GetDedicatedServerFeatureBackupFTPRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerFeatureBackupFTPRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GetDedicatedServerFeatureBackupFTPRequest>;
-
 /** Different backup storage type */
 export type DedicatedServerBackupStorageTypeEnum = "included" | "storage";
-const DedicatedServerBackupStorageTypeEnum = S.String;
-
 /** Backup Ftp assigned to this server */
 export interface DedicatedServerBackupFtp {
   /** The backup FTP server name */
@@ -2372,22 +1768,12 @@ export interface DedicatedServerBackupFtp {
   /** The disk space currently used on your backup FTP in percent */
   usage?: ComplexTypeUnitAndValueLong | null;
 }
-const DedicatedServerBackupFtp = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<DedicatedServerBackupFtp>;
-
 export interface GetDedicatedServerFeatureBackupFTPAccessRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** The IP Block specific to this ACL */
   ipBlock: string;
 }
-const GetDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GetDedicatedServerFeatureBackupFTPAccessRequest>;
-
 /** Backup Ftp ACL for this server and Backup Ftp */
 export interface DedicatedServerBackupFtpAcl {
   /** Whether to allow the CIFS (SMB) protocol for this ACL */
@@ -2403,20 +1789,10 @@ export interface DedicatedServerBackupFtpAcl {
   /** Whether to allow the NFS protocol for this ACL */
   nfs?: boolean;
 }
-const DedicatedServerBackupFtpAcl = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DedicatedServerBackupFtpAcl>;
-
 export interface GetDedicatedServerFeatureBmcRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerFeatureBmcRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<GetDedicatedServerFeatureBmcRequest>;
-
 /** A structure describing the BMC supported features */
 export interface DedicatedServerBmcSupportedFeatures {
   /** Access to the KVM through a Java web launch application */
@@ -2434,11 +1810,6 @@ export interface DedicatedServerBmcSupportedFeatures {
   /** Access to the virtual serial port of your server through a Web interface */
   webSol?: boolean;
 }
-const DedicatedServerBmcSupportedFeatures = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<DedicatedServerBmcSupportedFeatures>;
-
 /** Server BMC interface (formerly named IPMI) */
 export interface DedicatedServerBMC {
   /** True, if a BMC is available on this server */
@@ -2446,19 +1817,12 @@ export interface DedicatedServerBMC {
   /** A structure describing the BMC supported features */
   supportedFeatures?: DedicatedServerBmcSupportedFeatures;
 }
-const DedicatedServerBMC = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<DedicatedServerBMC>;
-
 export interface GetDedicatedServerFeatureBmcJavaKvmRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** The ID of the request access operation */
   operationId: string;
 }
-const GetDedicatedServerFeatureBmcJavaKvmRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<GetDedicatedServerFeatureBmcJavaKvmRequest>;
-
 /** Java KVM session information */
 export interface DedicatedServerBmcJavaKvmValue {
   /** Date on which the credentials will no longer be retrievable */
@@ -2466,22 +1830,12 @@ export interface DedicatedServerBmcJavaKvmValue {
   /** value */
   jnlp?: string;
 }
-const DedicatedServerBmcJavaKvmValue = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<DedicatedServerBmcJavaKvmValue>;
-
 export interface GetDedicatedServerFeatureBmcSshSolRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** The ID of the request access operation */
   operationId: string;
 }
-const GetDedicatedServerFeatureBmcSshSolRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GetDedicatedServerFeatureBmcSshSolRequest>;
-
 /** Ssh SOL session information */
 export interface DedicatedServerBmcSshSolValue {
   /** Date on which the credentials will no longer be retrievable */
@@ -2489,15 +1843,8 @@ export interface DedicatedServerBmcSshSolValue {
   /** Ssh user and host in "user@host" format */
   uri?: string;
 }
-const DedicatedServerBmcSshSolValue = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<DedicatedServerBmcSshSolValue>;
-
 /** List of tests to run on a BMC */
 export type DedicatedServerBmcTestTypeEnum = "password" | "ping" | "web";
-const DedicatedServerBmcTestTypeEnum = S.String;
-
 export interface GetDedicatedServerFeatureBmcTestRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -2506,11 +1853,6 @@ export interface GetDedicatedServerFeatureBmcTestRequest {
   /** Test to execute on the BMC interface */
   type: DedicatedServerBmcTestTypeEnum | (string & {});
 }
-const GetDedicatedServerFeatureBmcTestRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetDedicatedServerFeatureBmcTestRequest>;
-
 /** A structure describing BMC test result */
 export interface DedicatedServerBmcTestResult {
   /** Date of expiration of the result of this test */
@@ -2520,22 +1862,12 @@ export interface DedicatedServerBmcTestResult {
   /** Test result, true if successful */
   status?: boolean;
 }
-const DedicatedServerBmcTestResult = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<DedicatedServerBmcTestResult>;
-
 export interface GetDedicatedServerFeatureBmcWebKvmRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** The ID of the request access operation */
   operationId: string;
 }
-const GetDedicatedServerFeatureBmcWebKvmRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GetDedicatedServerFeatureBmcWebKvmRequest>;
-
 /** Web KVM session information */
 export interface DedicatedServerBmcWebKvmValue {
   /** Date on which the credentials will no longer be retrievable */
@@ -2543,22 +1875,12 @@ export interface DedicatedServerBmcWebKvmValue {
   /** URL of the Web KVM session */
   url?: string;
 }
-const DedicatedServerBmcWebKvmValue = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<DedicatedServerBmcWebKvmValue>;
-
 export interface GetDedicatedServerFeatureBmcWebSolRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** The ID of the request access operation */
   operationId: string;
 }
-const GetDedicatedServerFeatureBmcWebSolRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GetDedicatedServerFeatureBmcWebSolRequest>;
-
 /** Web SOL session information */
 export interface DedicatedServerBmcWebSolValue {
   /** Date on which the credentials will no longer be retrievable */
@@ -2566,26 +1888,14 @@ export interface DedicatedServerBmcWebSolValue {
   /** URL of the Web SOL session */
   url?: string;
 }
-const DedicatedServerBmcWebSolValue =
-  DedicatedServerBmcWebKvmValue as any as S.Schema<DedicatedServerBmcWebSolValue>;
-
 export interface GetDedicatedServerFeatureFirewallRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerFeatureFirewallRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GetDedicatedServerFeatureFirewallRequest>;
-
 /** Dedicated server firewall mode */
 export type DedicatedServerFirewallModeEnum = "routed" | "transparent";
-const DedicatedServerFirewallModeEnum = S.String;
-
 /** Firewall model name */
 export type DedicatedServerFirewallModelEnum = "asa5505" | "asa5510" | "asa5520";
-const DedicatedServerFirewallModelEnum = S.String;
-
 /** Firewall attached to this server */
 export interface DedicatedServerFirewall {
   enabled?: boolean;
@@ -2597,20 +1907,10 @@ export interface DedicatedServerFirewall {
   /** Firewall model */
   model?: DedicatedServerFirewallModelEnum | null;
 }
-const DedicatedServerFirewall = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<DedicatedServerFirewall>;
-
 export interface GetDedicatedServerFeatureIpmiRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerFeatureIpmiRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GetDedicatedServerFeatureIpmiRequest>;
-
 /** A structure describing the IPMI supported features */
 export interface DedicatedServerIpmiSupportedFeatures {
   /** Access to the KVM through an HTML web interface */
@@ -2622,11 +1922,6 @@ export interface DedicatedServerIpmiSupportedFeatures {
   /** Access to the virtual serial port of your server through an HTML command line interface */
   serialOverLanURL?: boolean;
 }
-const DedicatedServerIpmiSupportedFeatures = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<DedicatedServerIpmiSupportedFeatures>;
-
 /** Server IPMI interface */
 export interface DedicatedServerIpmi {
   /** true, if IPMI is available on this server */
@@ -2634,19 +1929,12 @@ export interface DedicatedServerIpmi {
   /** A structure describing the IPMI supported features */
   supportedFeatures?: DedicatedServerIpmiSupportedFeatures;
 }
-const DedicatedServerIpmi = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<DedicatedServerIpmi>;
-
 export interface GetDedicatedServerFeatureIpmiAccessRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** IPMI console access */
   type: DedicatedServerIpmiAccessTypeEnum | (string & {});
 }
-const GetDedicatedServerFeatureIpmiAccessRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<GetDedicatedServerFeatureIpmiAccessRequest>;
-
 /** A structure describing ipmi access value */
 export interface DedicatedServerIpmiAccessValue {
   /** Session expiration date */
@@ -2654,26 +1942,14 @@ export interface DedicatedServerIpmiAccessValue {
   /** value */
   value?: string | null;
 }
-const DedicatedServerIpmiAccessValue = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<DedicatedServerIpmiAccessValue>;
-
 /** Different test can be made on IPMI interface */
 export type DedicatedServerIpmiTestTypeEnum = "http" | "password" | "ping";
-const DedicatedServerIpmiTestTypeEnum = S.String;
-
 export interface GetDedicatedServerFeatureIpmiTestRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** Test type result on KVM IPMI interface */
   type: DedicatedServerIpmiTestTypeEnum | (string & {});
 }
-const GetDedicatedServerFeatureIpmiTestRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<GetDedicatedServerFeatureIpmiTestRequest>;
-
 /** A structure describing IPMI test result */
 export interface DedicatedServerIpmiTestResult {
   /** Test running date */
@@ -2681,20 +1957,10 @@ export interface DedicatedServerIpmiTestResult {
   /** Test result */
   status?: string | null;
 }
-const DedicatedServerIpmiTestResult = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<DedicatedServerIpmiTestResult>;
-
 export interface GetDedicatedServerFeatureKvmRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerFeatureKvmRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GetDedicatedServerFeatureKvmRequest>;
-
 /** Physical KVM */
 export interface DedicatedServerKvm {
   /** KVM expiration date */
@@ -2704,19 +1970,12 @@ export interface DedicatedServerKvm {
   /** KVM hostname */
   name?: string;
 }
-const DedicatedServerKvm = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<DedicatedServerKvm>;
-
 export interface GetDedicatedServerInterventionRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** The intervention id */
   interventionId: number;
 }
-const GetDedicatedServerInterventionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GetDedicatedServerInterventionRequest>;
-
 /** Intervention made on this server */
 export interface DedicatedServerIntervention {
   /** the intervention start date */
@@ -2726,37 +1985,19 @@ export interface DedicatedServerIntervention {
   /** the intervention type */
   type?: string | null;
 }
-const DedicatedServerIntervention = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<DedicatedServerIntervention>;
-
 export interface GetDedicatedServerIpCanBeMovedToRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** The ip to move to this server */
   ip: string;
 }
-const GetDedicatedServerIpCanBeMovedToRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GetDedicatedServerIpCanBeMovedToRequest>;
-
 export interface GetDedicatedServerIpCanBeMovedToResponse {}
-const GetDedicatedServerIpCanBeMovedToResponse =
-  CancelDedicatedServerTaskResponse as any as S.Schema<GetDedicatedServerIpCanBeMovedToResponse>;
-
 export interface GetDedicatedServerNetworkInterfaceControllerRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** NetworkInterfaceController mac */
   mac: string;
 }
-const GetDedicatedServerNetworkInterfaceControllerRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetDedicatedServerNetworkInterfaceControllerRequest>;
-
 /** List NetworkInterfaceController linktype */
 export type DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum =
   | "isolated"
@@ -2766,8 +2007,6 @@ export type DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTyp
   | "provisioning_lag"
   | "public"
   | "public_lag";
-const DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum = S.String;
-
 /** Your networkInterfaceController */
 export interface DedicatedNetworkInterfaceControllerNetworkInterfaceController {
   /** NetworkInterfaceController linkType */
@@ -2777,22 +2016,12 @@ export interface DedicatedNetworkInterfaceControllerNetworkInterfaceController {
   /** VirtualNetworkInterface bound to this NetworkInterfaceController */
   virtualNetworkInterface?: string | null;
 }
-const DedicatedNetworkInterfaceControllerNetworkInterfaceController = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<DedicatedNetworkInterfaceControllerNetworkInterfaceController>;
-
 export interface GetDedicatedServerOperationRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** The unique identifier of the operation */
   operationId: string;
 }
-const GetDedicatedServerOperationRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<GetDedicatedServerOperationRequest>;
-
 /** All options a dedicated server can have and release */
 export type GetDedicatedServerOptionRequestOption =
   | "BACKUPPROTOCOL"
@@ -2806,19 +2035,12 @@ export type GetDedicatedServerOptionRequestOption =
   | "TUNING_FIREWALL"
   | "TUNING_KVM"
   | "USB_KVM_IP";
-const GetDedicatedServerOptionRequestOption = S.String;
-
 export interface GetDedicatedServerOptionRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** The option name */
   option: GetDedicatedServerOptionRequestOption | (string & {});
 }
-const GetDedicatedServerOptionRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<GetDedicatedServerOptionRequest>;
-
 /** All options a dedicated server can have and release */
 export type DedicatedServerOptionEnum =
   | "BACKUPPROTOCOL"
@@ -2832,12 +2054,8 @@ export type DedicatedServerOptionEnum =
   | "TUNING_FIREWALL"
   | "TUNING_KVM"
   | "USB_KVM_IP";
-const DedicatedServerOptionEnum = S.String;
-
 /** All states a dedicated server option can be in */
 export type DedicatedServerOptionStateEnum = "released" | "subscribed";
-const DedicatedServerOptionStateEnum = S.String;
-
 /** Information about the options of a dedicated server */
 export interface DedicatedServerOption {
   /** The option name */
@@ -2845,90 +2063,40 @@ export interface DedicatedServerOption {
   /** The state of the option */
   state?: DedicatedServerOptionStateEnum;
 }
-const DedicatedServerOption = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<DedicatedServerOption>;
-
 /** Dedicated server orderable features */
 export type DedicatedServerOrderableSysFeatureEnum = "backupProtocol" | "monitoring";
-const DedicatedServerOrderableSysFeatureEnum = S.String;
-
 export interface GetDedicatedServerOrderableFeatureRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** the feature */
   feature: DedicatedServerOrderableSysFeatureEnum | (string & {});
 }
-const GetDedicatedServerOrderableFeatureRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GetDedicatedServerOrderableFeatureRequest>;
-
 export type GetDedicatedServerOrderableFeatureResponse = boolean;
-const GetDedicatedServerOrderableFeatureResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<GetDedicatedServerOrderableFeatureResponse>;
-
 export interface GetDedicatedServerOrderableKvmRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerOrderableKvmRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<GetDedicatedServerOrderableKvmRequest>;
-
 export type GetDedicatedServerOrderableKvmResponse = boolean;
-const GetDedicatedServerOrderableKvmResponse =
-  GetDedicatedServerOrderableFeatureResponse as any as S.Schema<GetDedicatedServerOrderableKvmResponse>;
-
 export interface GetDedicatedServerOrderableKvmExpressRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerOrderableKvmExpressRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<GetDedicatedServerOrderableKvmExpressRequest>;
-
 export type GetDedicatedServerOrderableKvmExpressResponse = boolean;
-const GetDedicatedServerOrderableKvmExpressResponse =
-  GetDedicatedServerOrderableFeatureResponse as any as S.Schema<GetDedicatedServerOrderableKvmExpressResponse>;
-
 export interface GetDedicatedServerOrderableProfessionalUseRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerOrderableProfessionalUseRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<GetDedicatedServerOrderableProfessionalUseRequest>;
-
 export type GetDedicatedServerOrderableProfessionalUseResponse = boolean;
-const GetDedicatedServerOrderableProfessionalUseResponse =
-  GetDedicatedServerOrderableFeatureResponse as any as S.Schema<GetDedicatedServerOrderableProfessionalUseResponse>;
-
 export interface GetDedicatedServerPlannedInterventionRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** ID of the intervention */
   interventionId: number;
 }
-const GetDedicatedServerPlannedInterventionRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<GetDedicatedServerPlannedInterventionRequest>;
-
 /** Intervention status */
 export type DedicatedPlannedInterventionStatusEnum = "doing" | "done" | "todo";
-const DedicatedPlannedInterventionStatusEnum = S.String;
-
 /** Intervention type */
 export type DedicatedPlannedInterventionTypeEnum = "HARDWARE_UPGRADE_ON_ACTIVE_SERVER";
-const DedicatedPlannedInterventionTypeEnum = S.String;
-
 /** Planned intervention on the server */
 export interface DedicatedServerPlannedIntervention {
   /** Expected end date for this intervention */
@@ -2942,22 +2110,12 @@ export interface DedicatedServerPlannedIntervention {
   /** Wanted start date for this intervention */
   wantedStartDate?: string;
 }
-const DedicatedServerPlannedIntervention = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<DedicatedServerPlannedIntervention>;
-
 export interface GetDedicatedServerSecondaryDnsDomainRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** domain on slave server */
   domain: string;
 }
-const GetDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GetDedicatedServerSecondaryDnsDomainRequest>;
-
 /** Secondary dns infos */
 export interface SecondaryDnsSecondaryDNS {
   creationDate?: string;
@@ -2968,22 +2126,12 @@ export interface SecondaryDnsSecondaryDNS {
   /** master ip */
   ipMaster?: string;
 }
-const SecondaryDnsSecondaryDNS = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<SecondaryDnsSecondaryDNS>;
-
 export interface GetDedicatedServerSecondaryDnsDomainDnsServerRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** domain on slave server */
   domain: string;
 }
-const GetDedicatedServerSecondaryDnsDomainDnsServerRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GetDedicatedServerSecondaryDnsDomainDnsServerRequest>;
-
 /** A structure describing informations about available nameserver for secondary dns */
 export interface SecondaryDnsSecondaryDNSNameServer {
   /** the name server */
@@ -2991,22 +2139,12 @@ export interface SecondaryDnsSecondaryDNSNameServer {
   ip?: string;
   ipv6?: string | null;
 }
-const SecondaryDnsSecondaryDNSNameServer = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<SecondaryDnsSecondaryDNSNameServer>;
-
 export interface GetDedicatedServerSecondaryDnsNameDomainTokenRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** The domain to check */
   domain: string;
 }
-const GetDedicatedServerSecondaryDnsNameDomainTokenRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GetDedicatedServerSecondaryDnsNameDomainTokenRequest>;
-
 /** Resource record fieldType */
 export type ZoneNamedResolutionFieldTypeEnum =
   | "A"
@@ -3026,8 +2164,6 @@ export type ZoneNamedResolutionFieldTypeEnum =
   | "SSHFP"
   | "TLSA"
   | "TXT";
-const ZoneNamedResolutionFieldTypeEnum = S.String;
-
 /** A structure describing informations about secondary dns check field */
 export interface SecondaryDnsSecondaryDNSCheckField {
   /** The field type to add on your DNS zone for this subDomain */
@@ -3037,34 +2173,16 @@ export interface SecondaryDnsSecondaryDNSCheckField {
   /** The subdomain to add on your DNS zone for the domain */
   subDomain?: string;
 }
-const SecondaryDnsSecondaryDNSCheckField = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<SecondaryDnsSecondaryDNSCheckField>;
-
 export interface GetDedicatedServerSecondaryDnsNameServerAvailableRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerSecondaryDnsNameServerAvailableRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GetDedicatedServerSecondaryDnsNameServerAvailableRequest>;
-
 export interface GetDedicatedServerServiceInfosRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GetDedicatedServerServiceInfosRequest>;
-
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-const ServicesServicePossibleRenewPeriodList =
-  CreateDedicatedServerChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
-
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
   /** The service is automatically renewed */
@@ -3078,8 +2196,6 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-const ServiceRenewType = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<ServiceRenewType>;
-
 /** Detailed renewal type of a service */
 export type ServiceRenewalTypeEnum =
   | "automaticForcedProduct"
@@ -3090,8 +2206,6 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-const ServiceRenewalTypeEnum = S.String;
-
 export type ServiceStateEnum =
   | "autorenewInProgress"
   | "expired"
@@ -3099,8 +2213,6 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-const ServiceStateEnum = S.String;
-
 /** Details about a Service */
 export interface ServicesService {
   /** Indicates that the service can be set up to be deleted at expiration */
@@ -3120,21 +2232,12 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-const ServicesService = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<ServicesService>;
-
 export interface GetDedicatedServerSpecificationHardwareRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerSpecificationHardwareRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<GetDedicatedServerSpecificationHardwareRequest>;
-
 /** Server boot mode */
 export type DedicatedServerBootModeEnum = "legacy" | "uefi" | "uefi-legacy";
-const DedicatedServerBootModeEnum = S.String;
-
 /** Raid hard configuration */
 export type DedicatedServerHardwareSpecificationsRaidHardEnum =
   | "raid0"
@@ -3145,8 +2248,6 @@ export type DedicatedServerHardwareSpecificationsRaidHardEnum =
   | "raid50"
   | "raid6"
   | "raid60";
-const DedicatedServerHardwareSpecificationsRaidHardEnum = S.String;
-
 /** A structure describing informations about server disks */
 export interface DedicatedServerHardwareSpecificationsDisk {
   /** default hardware raid size for this disk group */
@@ -3166,23 +2267,11 @@ export interface DedicatedServerHardwareSpecificationsDisk {
   /** raid controller, if any, managing this group of disks */
   raidController?: string | null;
 }
-const DedicatedServerHardwareSpecificationsDisk = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<DedicatedServerHardwareSpecificationsDisk>;
-
 /** details about the groups of disks in the server */
 export type DedicatedServerHardwareSpecificationsDiskGroupsList =
   Array<DedicatedServerHardwareSpecificationsDisk>;
-const DedicatedServerHardwareSpecificationsDiskGroupsList = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<DedicatedServerHardwareSpecificationsDiskGroupsList>;
-
 /** Expansion card type enum */
 export type DedicatedServerHardwareSpecificationsExpansionCardTypeEnum = "fpga" | "gpu";
-const DedicatedServerHardwareSpecificationsExpansionCardTypeEnum = S.String;
-
 /** A structure describing informations about server expansion cards */
 export interface DedicatedServerHardwareSpecificationsExpansionCard {
   /** expansion card description */
@@ -3190,23 +2279,11 @@ export interface DedicatedServerHardwareSpecificationsExpansionCard {
   /** expansion card type */
   type?: DedicatedServerHardwareSpecificationsExpansionCardTypeEnum;
 }
-const DedicatedServerHardwareSpecificationsExpansionCard = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<DedicatedServerHardwareSpecificationsExpansionCard>;
-
 /** details about the server's expansion cards */
 export type DedicatedServerHardwareSpecificationsExpansionCardsList =
   Array<DedicatedServerHardwareSpecificationsExpansionCard>;
-const DedicatedServerHardwareSpecificationsExpansionCardsList = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<DedicatedServerHardwareSpecificationsExpansionCardsList>;
-
 /** Server form factor */
 export type DedicatedServerFormFactorEnum = "0.25u" | "0.5u" | "1u" | "2u" | "3u" | "4u";
-const DedicatedServerFormFactorEnum = S.String;
-
 /** cpu family */
 export type DedicatedServerCpuFamilyEnum =
   | "arm64"
@@ -3215,15 +2292,8 @@ export type DedicatedServerCpuFamilyEnum =
   | "x86"
   | "x86-ht"
   | "x86_64";
-const DedicatedServerCpuFamilyEnum = S.String;
-
 /** Capacity of the USB keys installed on your server, if any */
 export type DedicatedServerHardwareSpecificationsUsbKeysList = Array<ComplexTypeUnitAndValueLong>;
-const DedicatedServerHardwareSpecificationsUsbKeysList = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<DedicatedServerHardwareSpecificationsUsbKeysList>;
-
 /** A structure describing informations about this dedicated server */
 export interface DedicatedServerHardwareSpecifications {
   /** Server boot mode */
@@ -3257,20 +2327,10 @@ export interface DedicatedServerHardwareSpecifications {
   /** Capacity of the USB keys installed on your server, if any */
   usbKeys?: DedicatedServerHardwareSpecificationsUsbKeysList | null;
 }
-const DedicatedServerHardwareSpecifications = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<DedicatedServerHardwareSpecifications>;
-
 export interface GetDedicatedServerSpecificationNetworkRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const GetDedicatedServerSpecificationNetworkRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<GetDedicatedServerSpecificationNetworkRequest>;
-
 /** Different Bandwidth type */
 export type DedicatedServerBandwidthTypeEnum =
   | "improved"
@@ -3279,8 +2339,6 @@ export type DedicatedServerBandwidthTypeEnum =
   | "premium"
   | "standard"
   | "ultimate";
-const DedicatedServerBandwidthTypeEnum = S.String;
-
 /** A structure describing bandwidth informations about this dedicated server */
 export interface DedicatedServerBandwidthDetails {
   /** bandwidth limitation Internet to OVH */
@@ -3292,15 +2350,8 @@ export interface DedicatedServerBandwidthDetails {
   /** bandwidth offer type */
   type?: DedicatedServerBandwidthTypeEnum | null;
 }
-const DedicatedServerBandwidthDetails = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<DedicatedServerBandwidthDetails>;
-
 /** An enum describing OVH Link Aggregation interface types */
 export type DedicatedServerOlaInterfaceModeEnum = "public" | "vrack";
-const DedicatedServerOlaInterfaceModeEnum = S.String;
-
 /** A structure describing OVH Link Aggregation interface configuration */
 export interface DedicatedServerOlaInterface {
   /** Interface aggregation status */
@@ -3310,18 +2361,8 @@ export interface DedicatedServerOlaInterface {
   /** Interface mode */
   type?: DedicatedServerOlaInterfaceModeEnum;
 }
-const DedicatedServerOlaInterface = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<DedicatedServerOlaInterface>;
-
 /** Interface layout */
 export type DedicatedServerOlaAvailableModesInterfacesList = Array<DedicatedServerOlaInterface>;
-const DedicatedServerOlaAvailableModesInterfacesList = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<DedicatedServerOlaAvailableModesInterfacesList>;
-
 /** A structure describing OVH Link Aggregation available modes */
 export interface DedicatedServerOlaAvailableModes {
   /** Is it the default configuration of the server */
@@ -3331,32 +2372,17 @@ export interface DedicatedServerOlaAvailableModes {
   /** Mode name */
   name?: string;
 }
-const DedicatedServerOlaAvailableModes = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<DedicatedServerOlaAvailableModes>;
-
 /** What modes are supported */
 export type DedicatedServerOlaDetailsAvailableModesList = Array<DedicatedServerOlaAvailableModes>;
-const DedicatedServerOlaDetailsAvailableModesList = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<DedicatedServerOlaDetailsAvailableModesList>;
-
 /** Available VirtualNetworkInterface modes */
 export type DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum =
   | "public"
   | "public_aggregation"
   | "vrack"
   | "vrack_aggregation";
-const DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum = S.String;
-
 /** (DEPRECATED) What modes are supported */
 export type DedicatedServerOlaDetailsSupportedModesList =
   Array<DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum>;
-const DedicatedServerOlaDetailsSupportedModesList =
-  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<DedicatedServerOlaDetailsSupportedModesList>;
-
 /** A structure describing OVH Link Aggregation available modes for this dedicated server */
 export interface DedicatedServerOlaDetails {
   /** Is the OLA feature available */
@@ -3366,11 +2392,6 @@ export interface DedicatedServerOlaDetails {
   /** (DEPRECATED) What modes are supported */
   supportedModes?: DedicatedServerOlaDetailsSupportedModesList | null;
 }
-const DedicatedServerOlaDetails = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<DedicatedServerOlaDetails>;
-
 /** A structure describing IPv4 routing informations about this dedicated server */
 export interface DedicatedServerRoutingDetailsIpv4 {
   /** Server gateway */
@@ -3380,11 +2401,6 @@ export interface DedicatedServerRoutingDetailsIpv4 {
   /** Server network */
   network?: string | null;
 }
-const DedicatedServerRoutingDetailsIpv4 = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<DedicatedServerRoutingDetailsIpv4>;
-
 /** A structure describing IPv6 routing informations about this dedicated server */
 export type DedicatedServerRoutingDetailsIpv6 = DedicatedServerRoutingDetailsIpv4;
 /** A structure describing routing informations about this dedicated server */
@@ -3394,21 +2410,11 @@ export interface DedicatedServerRoutingDetails {
   /** Ipv6 routing details */
   ipv6?: DedicatedServerRoutingDetailsIpv4 | null;
 }
-const DedicatedServerRoutingDetails = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<DedicatedServerRoutingDetails>;
-
 /** A structure describing switching informations about this dedicated server */
 export interface DedicatedServerSwitchingDetails {
   /** Switch name */
   name?: string | null;
 }
-const DedicatedServerSwitchingDetails = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<DedicatedServerSwitchingDetails>;
-
 /** A structure describing traffic informations about this dedicated server */
 export interface DedicatedServerTrafficDetails {
   /** Monthly input traffic quota allowed */
@@ -3424,11 +2430,6 @@ export interface DedicatedServerTrafficDetails {
   /** Next reset quota date for traffic counter */
   resetQuotaDate?: string | null;
 }
-const DedicatedServerTrafficDetails = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<DedicatedServerTrafficDetails>;
-
 /** A structure describing VMAC Infos for this dedicated server */
 export interface DedicatedServerVmacDetails {
   /** Maximum number of VirtualMacs allowed on this server */
@@ -3436,15 +2437,8 @@ export interface DedicatedServerVmacDetails {
   /** Server is compatible vmac or not */
   supported?: boolean;
 }
-const DedicatedServerVmacDetails = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<DedicatedServerVmacDetails>;
-
 /** Different Bandwidth type */
 export type DedicatedServerBandwidthvRackTypeEnum = "included" | "standard";
-const DedicatedServerBandwidthvRackTypeEnum = S.String;
-
 /** A structure describing vRack bandwidth informations about this dedicated server */
 export interface DedicatedServerBandwidthvRackDetails {
   /** vrack bandwidth limitation */
@@ -3452,11 +2446,6 @@ export interface DedicatedServerBandwidthvRackDetails {
   /** bandwidth offer type */
   type?: DedicatedServerBandwidthvRackTypeEnum | null;
 }
-const DedicatedServerBandwidthvRackDetails = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<DedicatedServerBandwidthvRackDetails>;
-
 /** A structure describing network informations about this dedicated server */
 export interface DedicatedServerNetworkSpecifications {
   /** Bandwidth details */
@@ -3476,26 +2465,14 @@ export interface DedicatedServerNetworkSpecifications {
   /** vRack details */
   vrack?: DedicatedServerBandwidthvRackDetails | null;
 }
-const DedicatedServerNetworkSpecifications = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<DedicatedServerNetworkSpecifications>;
-
 export interface GetDedicatedServerSplaRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** License id */
   id: number;
 }
-const GetDedicatedServerSplaRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<GetDedicatedServerSplaRequest>;
-
 /** SPLA license status */
 export type DedicatedServerSplaStatusEnum = "terminated" | "used" | "waitingToCheck";
-const DedicatedServerSplaStatusEnum = S.String;
-
 /** SPLA licenses management */
 export interface DedicatedServerSpla {
   /** License id */
@@ -3509,30 +2486,18 @@ export interface DedicatedServerSpla {
   /** License type */
   type?: DedicatedServerSplaTypeEnum;
 }
-const DedicatedServerSpla = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<DedicatedServerSpla>;
-
 export interface GetDedicatedServerTaskRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** the id of the task */
   taskId: number;
 }
-const GetDedicatedServerTaskRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<GetDedicatedServerTaskRequest>;
-
 export interface GetDedicatedServerVirtualMacRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** Virtual MAC address in 00:00:00:00:00:00 format */
   macAddress: string;
 }
-const GetDedicatedServerVirtualMacRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<GetDedicatedServerVirtualMacRequest>;
-
 /** A virtual MAC address associated to one or more IPs */
 export interface DedicatedServerVirtualMac {
   /** Virtual MAC address in 00:00:00:00:00:00 format */
@@ -3540,11 +2505,6 @@ export interface DedicatedServerVirtualMac {
   /** Virtual MAC address type */
   type?: DedicatedServerVmacTypeEnum;
 }
-const DedicatedServerVirtualMac = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<DedicatedServerVirtualMac>;
-
 export interface GetDedicatedServerVirtualMacVirtualAddressRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -3553,11 +2513,6 @@ export interface GetDedicatedServerVirtualMacVirtualAddressRequest {
   /** IP address */
   ipAddress: string;
 }
-const GetDedicatedServerVirtualMacVirtualAddressRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<GetDedicatedServerVirtualMacVirtualAddressRequest>;
-
 /** ip address linked with this virtual mac address */
 export interface DedicatedServerVirtualMacManagement {
   /** IP address */
@@ -3565,25 +2520,12 @@ export interface DedicatedServerVirtualMacManagement {
   /** Friendly name of your Virtual Machine behind this IP/MAC */
   virtualMachineName?: string;
 }
-const DedicatedServerVirtualMacManagement = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<DedicatedServerVirtualMacManagement>;
-
 export interface GetDedicatedServerVirtualNetworkInterfaceRequest {
   /** Uuid */
   uuid: string;
 }
-const GetDedicatedServerVirtualNetworkInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<GetDedicatedServerVirtualNetworkInterfaceRequest>;
-
 /** NetworkInterfaceControllers bound to this VirtualNetworkInterface */
 export type DedicatedServerVirtualNetworkInterfaceNetworkInterfaceControllerList = Array<string>;
-const DedicatedServerVirtualNetworkInterfaceNetworkInterfaceControllerList =
-  CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList as any as S.Schema<DedicatedServerVirtualNetworkInterfaceNetworkInterfaceControllerList>;
-
 /** Your VirtualNetworkInterface */
 export interface DedicatedServerVirtualNetworkInterface {
   /** VirtualNetworkInterface activation state */
@@ -3601,22 +2543,12 @@ export interface DedicatedServerVirtualNetworkInterface {
   /** vRack name */
   vrack?: string | null;
 }
-const DedicatedServerVirtualNetworkInterface = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<DedicatedServerVirtualNetworkInterface>;
-
 export interface GetDedicatedServerVirtualNetworkInterfaceByUuidRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** VirtualNetworkInterface unique id */
   uuid: string;
 }
-const GetDedicatedServerVirtualNetworkInterfaceByUuidRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<GetDedicatedServerVirtualNetworkInterfaceByUuidRequest>;
-
 /** NetworkInterfaceControllers bound to this VirtualNetworkInterface */
 export type DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceNetworkInterfaceControllerList =
   Array<string>;
@@ -3637,20 +2569,12 @@ export interface DedicatedVirtualNetworkInterfaceVirtualNetworkInterface {
   /** vRack name */
   vrack?: string | null;
 }
-const DedicatedVirtualNetworkInterfaceVirtualNetworkInterface =
-  DedicatedServerVirtualNetworkInterface as any as S.Schema<DedicatedVirtualNetworkInterfaceVirtualNetworkInterface>;
-
 export interface GetDedicatedServerVrackRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** vrack name */
   vrack: string;
 }
-const GetDedicatedServerVrackRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<GetDedicatedServerVrackRequest>;
-
 /** vrack dedicated server interfaces (LEGACY) */
 export interface VrackDedicatedServer {
   /** Dedicated Server */
@@ -3658,57 +2582,19 @@ export interface VrackDedicatedServer {
   /** vrack name */
   vrack?: string;
 }
-const VrackDedicatedServer = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<VrackDedicatedServer>;
-
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-const IamResourceTagFilterInput = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<IamResourceTagFilterInput>;
-
 export type ListDedicatedServerRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-const ListDedicatedServerRequestIamTagsValueList = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ListDedicatedServerRequestIamTagsValueList>;
-
 export type ListDedicatedServerRequestIamTagsMap = {
   [key: string]: ListDedicatedServerRequestIamTagsValueList | undefined;
 };
-const ListDedicatedServerRequestIamTagsMap = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<ListDedicatedServerRequestIamTagsMap>;
-
 export interface ListDedicatedServerRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListDedicatedServerRequestIamTagsMap;
 }
-const ListDedicatedServerRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<ListDedicatedServerRequest>;
-
 export type ListDedicatedServerResponseBodyList = Array<string>;
-const ListDedicatedServerResponseBodyList =
-  DedicatedServerInterfacesMacsList as any as S.Schema<ListDedicatedServerResponseBodyList>;
-
 export type ListDedicatedServerResponse = ListDedicatedServerResponseBodyList;
-const ListDedicatedServerResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ListDedicatedServerResponse>;
-
 export interface ListDedicatedServerAvailabilityRawRequest {}
-const ListDedicatedServerAvailabilityRawRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<ListDedicatedServerAvailabilityRawRequest>;
-
 /** The availability */
 export type DedicatedAvailabilityEnum =
   | "120H"
@@ -3724,8 +2610,6 @@ export type DedicatedAvailabilityEnum =
   | "comingSoon"
   | "unavailable"
   | "unknown";
-const DedicatedAvailabilityEnum = S.String;
-
 /** The region */
 export type DedicatedAvailabilityRegionEnum =
   | "ap-south-1-a"
@@ -3772,8 +2656,6 @@ export type DedicatedAvailabilityRegionEnum =
   | "vin"
   | "waw"
   | "ynm";
-const DedicatedAvailabilityRegionEnum = S.String;
-
 /** A structure describing the availabilities of dedicated server */
 export interface DedicatedAvailabilitiesRaw {
   /** The availability */
@@ -3801,61 +2683,25 @@ export interface DedicatedAvailabilitiesRaw {
   /** The region */
   zone?: DedicatedAvailabilityRegionEnum;
 }
-const DedicatedAvailabilitiesRaw = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<DedicatedAvailabilitiesRaw>;
-
 export type ListDedicatedServerAvailabilityRawResponseBodyList = Array<DedicatedAvailabilitiesRaw>;
-const ListDedicatedServerAvailabilityRawResponseBodyList = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<ListDedicatedServerAvailabilityRawResponseBodyList>;
-
 export type ListDedicatedServerAvailabilityRawResponse =
   ListDedicatedServerAvailabilityRawResponseBodyList;
-const ListDedicatedServerAvailabilityRawResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<ListDedicatedServerAvailabilityRawResponse>;
-
 export interface ListDedicatedServerBootRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** Filter the value of bootType property (=) */
   bootType?: DedicatedServerBootTypeEnum | (string & {});
 }
-const ListDedicatedServerBootRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<ListDedicatedServerBootRequest>;
-
 export type ListDedicatedServerBootResponseBodyList = Array<number>;
 export type ListDedicatedServerBootResponse = ListDedicatedServerBootResponseBodyList;
-const ListDedicatedServerBootResponse =
-  CreateDedicatedServerChangeContactResponse as any as S.Schema<ListDedicatedServerBootResponse>;
-
 export interface ListDedicatedServerBootOptionRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** boot id */
   bootId: number;
 }
-const ListDedicatedServerBootOptionRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<ListDedicatedServerBootOptionRequest>;
-
 export type ListDedicatedServerBootOptionResponseBodyList = Array<DedicatedServerBootOptionEnum>;
-const ListDedicatedServerBootOptionResponseBodyList =
-  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<ListDedicatedServerBootOptionResponseBodyList>;
-
 export type ListDedicatedServerBootOptionResponse = ListDedicatedServerBootOptionResponseBodyList;
-const ListDedicatedServerBootOptionResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ListDedicatedServerBootOptionResponse>;
-
 export interface ListDedicatedServerDatacenterAvailabilitiesRequest {
   /** The names of datacenters separated by commas */
   datacenters?: string;
@@ -3874,11 +2720,6 @@ export interface ListDedicatedServerDatacenterAvailabilitiesRequest {
   /** The name of the system storage hardware part */
   systemStorage?: string;
 }
-const ListDedicatedServerDatacenterAvailabilitiesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<ListDedicatedServerDatacenterAvailabilitiesRequest>;
-
 /** The datacenter */
 export type DedicatedAvailabilityDatacenterEnum =
   | "ap-south-1-a"
@@ -3929,8 +2770,6 @@ export type DedicatedAvailabilityDatacenterEnum =
   | "vin"
   | "waw"
   | "ynm";
-const DedicatedAvailabilityDatacenterEnum = S.String;
-
 /** A structure describing the hardware availability for each datacenter */
 export interface DedicatedAvailabilityDatacenter {
   /** The availability */
@@ -3938,18 +2777,8 @@ export interface DedicatedAvailabilityDatacenter {
   /** The datacenter */
   datacenter?: DedicatedAvailabilityDatacenterEnum;
 }
-const DedicatedAvailabilityDatacenter = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<DedicatedAvailabilityDatacenter>;
-
 /** The hardware availability for each datacenter */
 export type DedicatedDatacenterAvailabilityDatacentersList = Array<DedicatedAvailabilityDatacenter>;
-const DedicatedDatacenterAvailabilityDatacentersList = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<DedicatedDatacenterAvailabilityDatacentersList>;
-
 /** A structure describing the availabilities of dedicated server */
 export interface DedicatedDatacenterAvailability {
   /** The hardware availability for each datacenter */
@@ -3969,25 +2798,10 @@ export interface DedicatedDatacenterAvailability {
   /** Name of the system storage hardware part */
   systemStorage?: string | null;
 }
-const DedicatedDatacenterAvailability = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<DedicatedDatacenterAvailability>;
-
 export type ListDedicatedServerDatacenterAvailabilitiesResponseBodyList =
   Array<DedicatedDatacenterAvailability>;
-const ListDedicatedServerDatacenterAvailabilitiesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<ListDedicatedServerDatacenterAvailabilitiesResponseBodyList>;
-
 export type ListDedicatedServerDatacenterAvailabilitiesResponse =
   ListDedicatedServerDatacenterAvailabilitiesResponseBodyList;
-const ListDedicatedServerDatacenterAvailabilitiesResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<ListDedicatedServerDatacenterAvailabilitiesResponse>;
-
 export interface ListDedicatedServerDatacenterAvailabilityRawRequest {
   /** The names of datacenters separated by commas */
   datacenters?: string;
@@ -4006,11 +2820,6 @@ export interface ListDedicatedServerDatacenterAvailabilityRawRequest {
   /** The name of the system storage hardware part */
   systemStorage?: string;
 }
-const ListDedicatedServerDatacenterAvailabilityRawRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<ListDedicatedServerDatacenterAvailabilityRawRequest>;
-
 /** A structure describing the hardware raw availability for each datacenter */
 export interface DedicatedAvailabilityRawDatacenter {
   /** The availability */
@@ -4024,19 +2833,9 @@ export interface DedicatedAvailabilityRawDatacenter {
   /** Real stock */
   trueAvailable?: number;
 }
-const DedicatedAvailabilityRawDatacenter = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<DedicatedAvailabilityRawDatacenter>;
-
 /** The hardware raw availability for each datacenter */
 export type DedicatedDatacenterRawAvailabilityDatacentersList =
   Array<DedicatedAvailabilityRawDatacenter>;
-const DedicatedDatacenterRawAvailabilityDatacentersList = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<DedicatedDatacenterRawAvailabilityDatacentersList>;
-
 /** The availability zone */
 export type DedicatedAvailabilityAvailabilityZoneEnum =
   | "ap-south-1-a"
@@ -4063,8 +2862,6 @@ export type DedicatedAvailabilityAvailabilityZoneEnum =
   | "eu-west-sbg-a"
   | "us-east-vin-a"
   | "us-west-hil-a";
-const DedicatedAvailabilityAvailabilityZoneEnum = S.String;
-
 /** A structure describing the hardware raw availability for each availability zone */
 export interface DedicatedAvailabilityRawAvailabilityZones {
   /** The availability */
@@ -4078,19 +2875,9 @@ export interface DedicatedAvailabilityRawAvailabilityZones {
   /** Real stock */
   trueAvailable?: number;
 }
-const DedicatedAvailabilityRawAvailabilityZones = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<DedicatedAvailabilityRawAvailabilityZones>;
-
 /** Availability for each availability zone */
 export type DedicatedAvailabilityRawRegionAvailabilityZonesList =
   Array<DedicatedAvailabilityRawAvailabilityZones>;
-const DedicatedAvailabilityRawRegionAvailabilityZonesList = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<DedicatedAvailabilityRawRegionAvailabilityZonesList>;
-
 /** The region */
 export type DedicatedAvailabilityRegionalizationEnum =
   | "ap-south-1"
@@ -4111,8 +2898,6 @@ export type DedicatedAvailabilityRegionalizationEnum =
   | "eu-west-sbg"
   | "us-east-vin"
   | "us-west-hil";
-const DedicatedAvailabilityRegionalizationEnum = S.String;
-
 /** A structure describing the hardware raw availability for each datacenter */
 export interface DedicatedAvailabilityRawRegion {
   /** The availability */
@@ -4128,18 +2913,8 @@ export interface DedicatedAvailabilityRawRegion {
   /** Real stock */
   trueAvailable?: number;
 }
-const DedicatedAvailabilityRawRegion = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<DedicatedAvailabilityRawRegion>;
-
 /** The hardware raw availability for each datacenter */
 export type DedicatedDatacenterRawAvailabilityRegionsList = Array<DedicatedAvailabilityRawRegion>;
-const DedicatedDatacenterRawAvailabilityRegionsList = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<DedicatedDatacenterRawAvailabilityRegionsList>;
-
 /** A structure describing the raw availabilities of dedicated server */
 export interface DedicatedDatacenterRawAvailability {
   /** The hardware raw availability for each datacenter */
@@ -4161,110 +2936,45 @@ export interface DedicatedDatacenterRawAvailability {
   /** Name of the system storage hardware part */
   systemStorage?: string | null;
 }
-const DedicatedDatacenterRawAvailability = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<DedicatedDatacenterRawAvailability>;
-
 export type ListDedicatedServerDatacenterAvailabilityRawResponseBodyList =
   Array<DedicatedDatacenterRawAvailability>;
-const ListDedicatedServerDatacenterAvailabilityRawResponseBodyList = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<ListDedicatedServerDatacenterAvailabilityRawResponseBodyList>;
-
 export type ListDedicatedServerDatacenterAvailabilityRawResponse =
   ListDedicatedServerDatacenterAvailabilityRawResponseBodyList;
-const ListDedicatedServerDatacenterAvailabilityRawResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<ListDedicatedServerDatacenterAvailabilityRawResponse>;
-
 export interface ListDedicatedServerFeatureBackupCloudRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerFeatureBackupCloudRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<ListDedicatedServerFeatureBackupCloudRequest>;
-
 export interface ListDedicatedServerFeatureBackupFTPAccessRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAccessRequest>;
-
 export type ListDedicatedServerFeatureBackupFTPAccessResponseBodyList = Array<string>;
 export type ListDedicatedServerFeatureBackupFTPAccessResponse =
   ListDedicatedServerFeatureBackupFTPAccessResponseBodyList;
-const ListDedicatedServerFeatureBackupFTPAccessResponse =
-  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerFeatureBackupFTPAccessResponse>;
-
 export interface ListDedicatedServerFeatureBackupFTPAuthorizableBlocksRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerFeatureBackupFTPAuthorizableBlocksRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAuthorizableBlocksRequest>;
-
 export type ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList = Array<string>;
-const ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList =
-  CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList as any as S.Schema<ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList>;
-
 export type ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponse =
   ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList;
-const ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponse>;
-
 export interface ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   templateName: string;
 }
-const ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest>;
-
 export type ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponseBodyList =
   Array<string>;
-const ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponseBodyList =
-  CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList as any as S.Schema<ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponseBodyList>;
-
 export type ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponse =
   ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponseBodyList;
-const ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponse>;
-
 export interface ListDedicatedServerInstallCompatibleTemplatesRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerInstallCompatibleTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ListDedicatedServerInstallCompatibleTemplatesRequest>;
-
 /** Names list of ovh installationtemplates compatibles with this server */
 export type DedicatedServerInstallTemplateOvhList = Array<string>;
-const DedicatedServerInstallTemplateOvhList =
-  DedicatedServerInterfacesMacsList as any as S.Schema<DedicatedServerInstallTemplateOvhList>;
-
 /** Names list of yours installation templates compatibles with this server */
 export type DedicatedServerInstallTemplatePersonalList = Array<string>;
-const DedicatedServerInstallTemplatePersonalList =
-  DedicatedServerInterfacesMacsList as any as S.Schema<DedicatedServerInstallTemplatePersonalList>;
-
 /** A structure describing informations about an Installation templates */
 export interface DedicatedServerInstallTemplate {
   /** Names list of ovh installationtemplates compatibles with this server */
@@ -4272,39 +2982,19 @@ export interface DedicatedServerInstallTemplate {
   /** Names list of yours installation templates compatibles with this server */
   personal?: DedicatedServerInstallTemplatePersonalList | null;
 }
-const DedicatedServerInstallTemplate = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<DedicatedServerInstallTemplate>;
-
 export interface ListDedicatedServerInstallHardwareRaidProfileRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerInstallHardwareRaidProfileRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<ListDedicatedServerInstallHardwareRaidProfileRequest>;
-
 /** Disk names */
 export type DedicatedServerHardwareRaidDiskGroupNamesList = Array<string>;
-const DedicatedServerHardwareRaidDiskGroupNamesList =
-  DedicatedServerInterfacesMacsList as any as S.Schema<DedicatedServerHardwareRaidDiskGroupNamesList>;
-
 /** A numeric value tagged with its unit */
 export interface ComplexTypeUnitAndValueString {
   unit?: string;
   value?: string;
 }
-const ComplexTypeUnitAndValueString = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<ComplexTypeUnitAndValueString>;
-
 /** Disk interface type enum */
 export type DedicatedServerDiskTypeEnum = "NVMe" | "SAS" | "SATA" | "SSD" | "Unknown";
-const DedicatedServerDiskTypeEnum = S.String;
-
 /** Disk attached to a RAID controller */
 export interface DedicatedServerHardwareRaidDiskGroup {
   /** Disk capacity */
@@ -4318,19 +3008,9 @@ export interface DedicatedServerHardwareRaidDiskGroup {
   /** Disk type */
   type?: DedicatedServerDiskTypeEnum;
 }
-const DedicatedServerHardwareRaidDiskGroup = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<DedicatedServerHardwareRaidDiskGroup>;
-
 /** Connected disk type */
 export type DedicatedServerHardwareRaidControllerDisksList =
   Array<DedicatedServerHardwareRaidDiskGroup>;
-const DedicatedServerHardwareRaidControllerDisksList = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<DedicatedServerHardwareRaidControllerDisksList>;
-
 /** RAID controller configuration */
 export interface DedicatedServerHardwareRaidController {
   /** Connected disk type */
@@ -4340,29 +3020,14 @@ export interface DedicatedServerHardwareRaidController {
   /** Raid controler type */
   type?: string;
 }
-const DedicatedServerHardwareRaidController = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<DedicatedServerHardwareRaidController>;
-
 /** Hardware RAID controller list */
 export type DedicatedServerHardwareRaidProfileControllersList =
   Array<DedicatedServerHardwareRaidController>;
-const DedicatedServerHardwareRaidProfileControllersList = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<DedicatedServerHardwareRaidProfileControllersList>;
-
 /** A structure describing the server's hardware RAID configuration */
 export interface DedicatedServerHardwareRaidProfile {
   /** Hardware RAID controller list */
   controllers?: DedicatedServerHardwareRaidProfileControllersList;
 }
-const DedicatedServerHardwareRaidProfile = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<DedicatedServerHardwareRaidProfile>;
-
 export interface ListDedicatedServerInstallHardwareRaidSizeRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -4371,11 +3036,6 @@ export interface ListDedicatedServerInstallHardwareRaidSizeRequest {
   /** Template name */
   templateName: string;
 }
-const ListDedicatedServerInstallHardwareRaidSizeRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<ListDedicatedServerInstallHardwareRaidSizeRequest>;
-
 /** Simulated result of how the hardware RAID template will be configured on this server */
 export interface DedicatedServerHardwareRaidConfiguration {
   /** RAID total capacity */
@@ -4393,38 +3053,18 @@ export interface DedicatedServerHardwareRaidConfiguration {
   /** RAID controller type */
   type?: string;
 }
-const DedicatedServerHardwareRaidConfiguration = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<DedicatedServerHardwareRaidConfiguration>;
-
 /** Hardware RAID configuration list */
 export type DedicatedServerHardwareRaidSizeConfigurationsList =
   Array<DedicatedServerHardwareRaidConfiguration>;
-const DedicatedServerHardwareRaidSizeConfigurationsList = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<DedicatedServerHardwareRaidSizeConfigurationsList>;
-
 /** A structure describing the server's resulting layout after RAID configuration */
 export interface DedicatedServerHardwareRaidSize {
   /** Hardware RAID configuration list */
   configurations?: DedicatedServerHardwareRaidSizeConfigurationsList;
 }
-const DedicatedServerHardwareRaidSize = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<DedicatedServerHardwareRaidSize>;
-
 export interface ListDedicatedServerInstallStatusRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerInstallStatusRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<ListDedicatedServerInstallStatusRequest>;
-
 /** Distinct Installation status */
 export type DedicatedServerInstallationProgressStatusEnum =
   | "doing"
@@ -4435,8 +3075,6 @@ export type DedicatedServerInstallationProgressStatusEnum =
   | "pending"
   | "stopping"
   | "todo";
-const DedicatedServerInstallationProgressStatusEnum = S.String;
-
 /** A structure describing informations about this dedicated server installation steps */
 export interface DedicatedServerInstallationProgressSteps {
   /** Informations about this installation step */
@@ -4446,19 +3084,9 @@ export interface DedicatedServerInstallationProgressSteps {
   /** Status of this installation step */
   status?: DedicatedServerInstallationProgressStatusEnum;
 }
-const DedicatedServerInstallationProgressSteps = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<DedicatedServerInstallationProgressSteps>;
-
 /** Installation steps */
 export type DedicatedServerInstallationProgressStatusProgressList =
   Array<DedicatedServerInstallationProgressSteps>;
-const DedicatedServerInstallationProgressStatusProgressList = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<DedicatedServerInstallationProgressStatusProgressList>;
-
 /** A structure describing informations about this dedicated server installation status */
 export interface DedicatedServerInstallationProgressStatus {
   /** Elapsed time in seconds since installation beggining */
@@ -4466,35 +3094,17 @@ export interface DedicatedServerInstallationProgressStatus {
   /** Installation steps */
   progress?: DedicatedServerInstallationProgressStatusProgressList | null;
 }
-const DedicatedServerInstallationProgressStatus = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<DedicatedServerInstallationProgressStatus>;
-
 export interface ListDedicatedServerInterventionRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerInterventionRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<ListDedicatedServerInterventionRequest>;
-
 export type ListDedicatedServerInterventionResponseBodyList = Array<number>;
 export type ListDedicatedServerInterventionResponse =
   ListDedicatedServerInterventionResponseBodyList;
-const ListDedicatedServerInterventionResponse =
-  CreateDedicatedServerChangeContactResponse as any as S.Schema<ListDedicatedServerInterventionResponse>;
-
 export interface ListDedicatedServerIpCountryAvailableRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerIpCountryAvailableRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<ListDedicatedServerIpCountryAvailableRequest>;
-
 /** Available localization for this static IP */
 export type DedicatedServerIpCountryEnum =
   | "au"
@@ -4519,48 +3129,24 @@ export type ListDedicatedServerIpCountryAvailableResponseBodyList =
   Array<DedicatedServerIpCountryEnum>;
 export type ListDedicatedServerIpCountryAvailableResponse =
   ListDedicatedServerIpCountryAvailableResponseBodyList;
-const ListDedicatedServerIpCountryAvailableResponse =
-  ListDedicatedServerBootOptionResponse as any as S.Schema<ListDedicatedServerIpCountryAvailableResponse>;
-
 export interface ListDedicatedServerIpsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerIpsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<ListDedicatedServerIpsRequest>;
-
 export type ListDedicatedServerIpsResponseBodyList = Array<string>;
 export type ListDedicatedServerIpsResponse = ListDedicatedServerIpsResponseBodyList;
-const ListDedicatedServerIpsResponse =
-  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerIpsResponse>;
-
 export interface ListDedicatedServerLicenseCompliantWindowsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerLicenseCompliantWindowsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsRequest>;
-
 export type ListDedicatedServerLicenseCompliantWindowsResponseBodyList =
   Array<LicenseWindowsOsVersionEnum>;
 export type ListDedicatedServerLicenseCompliantWindowsResponse =
   ListDedicatedServerLicenseCompliantWindowsResponseBodyList;
-const ListDedicatedServerLicenseCompliantWindowsResponse =
-  ListDedicatedServerBootOptionResponse as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsResponse>;
-
 export interface ListDedicatedServerLicenseCompliantWindowsSqlServerRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerLicenseCompliantWindowsSqlServerRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsSqlServerRequest>;
-
 /** All SQL Server versions for Windows products */
 export type LicenseWindowsSqlVersionEnum =
   | "SQL_SERVER_2008_STANDARD_EDITION"
@@ -4587,31 +3173,14 @@ export type LicenseWindowsSqlVersionEnum =
   | "SQL_SERVER_2012_WEB_EDITION_4_CORES"
   | "SQL_SERVER_2012_WEB_EDITION_6_CORES"
   | "SQL_SERVER_2012_WEB_EDITION_8_CORES";
-const LicenseWindowsSqlVersionEnum = S.String;
-
 export type ListDedicatedServerLicenseCompliantWindowsSqlServerResponseBodyList =
   Array<LicenseWindowsSqlVersionEnum>;
-const ListDedicatedServerLicenseCompliantWindowsSqlServerResponseBodyList = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsSqlServerResponseBodyList>;
-
 export type ListDedicatedServerLicenseCompliantWindowsSqlServerResponse =
   ListDedicatedServerLicenseCompliantWindowsSqlServerResponseBodyList;
-const ListDedicatedServerLicenseCompliantWindowsSqlServerResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsSqlServerResponse>;
-
 export interface ListDedicatedServerNetworkingRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerNetworkingRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<ListDedicatedServerNetworkingRequest>;
-
 export interface ListDedicatedServerNetworkInterfaceControllerRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -4620,21 +3189,11 @@ export interface ListDedicatedServerNetworkInterfaceControllerRequest {
     | DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum
     | (string & {});
 }
-const ListDedicatedServerNetworkInterfaceControllerRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerRequest>;
-
 export type ListDedicatedServerNetworkInterfaceControllerResponseBodyList = Array<string>;
 export type ListDedicatedServerNetworkInterfaceControllerResponse =
   ListDedicatedServerNetworkInterfaceControllerResponseBodyList;
-const ListDedicatedServerNetworkInterfaceControllerResponse =
-  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerResponse>;
-
 /** distincts MRTG period */
 export type DedicatedServerMrtgPeriodEnum = "daily" | "hourly" | "monthly" | "weekly" | "yearly";
-const DedicatedServerMrtgPeriodEnum = S.String;
-
 /** distincts MRTG type */
 export type DedicatedServerMrtgTypeEnum =
   | "errors:download"
@@ -4643,8 +3202,6 @@ export type DedicatedServerMrtgTypeEnum =
   | "packets:upload"
   | "traffic:download"
   | "traffic:upload";
-const DedicatedServerMrtgTypeEnum = S.String;
-
 export interface ListDedicatedServerNetworkInterfaceControllerMrtgRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -4655,11 +3212,6 @@ export interface ListDedicatedServerNetworkInterfaceControllerMrtgRequest {
   /** mrtg type */
   type: DedicatedServerMrtgTypeEnum | (string & {});
 }
-const ListDedicatedServerNetworkInterfaceControllerMrtgRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerMrtgRequest>;
-
 /** A numeric value tagged with its unit */
 export type ComplexTypeUnitAndValueDouble = ComplexTypeUnitAndValueLong;
 /** A timestamp associated to a value */
@@ -4667,34 +3219,14 @@ export interface DedicatedServerMrtgTimestampValue {
   timestamp?: number;
   value?: ComplexTypeUnitAndValueLong | null;
 }
-const DedicatedServerMrtgTimestampValue = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<DedicatedServerMrtgTimestampValue>;
-
 export type ListDedicatedServerNetworkInterfaceControllerMrtgResponseBodyList =
   Array<DedicatedServerMrtgTimestampValue>;
-const ListDedicatedServerNetworkInterfaceControllerMrtgResponseBodyList = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerMrtgResponseBodyList>;
-
 export type ListDedicatedServerNetworkInterfaceControllerMrtgResponse =
   ListDedicatedServerNetworkInterfaceControllerMrtgResponseBodyList;
-const ListDedicatedServerNetworkInterfaceControllerMrtgResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerMrtgResponse>;
-
 export interface ListDedicatedServerOngoingRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerOngoingRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<ListDedicatedServerOngoingRequest>;
-
 /** A task for a dedicated server */
 export interface DedicatedExposedTask {
   /** Location of the server */
@@ -4706,23 +3238,8 @@ export interface DedicatedExposedTask {
   /** Timestamp for processing */
   todoDate?: string;
 }
-const DedicatedExposedTask = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<DedicatedExposedTask>;
-
 export type ListDedicatedServerOngoingResponseBodyList = Array<DedicatedExposedTask>;
-const ListDedicatedServerOngoingResponseBodyList = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<ListDedicatedServerOngoingResponseBodyList>;
-
 export type ListDedicatedServerOngoingResponse = ListDedicatedServerOngoingResponseBodyList;
-const ListDedicatedServerOngoingResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<ListDedicatedServerOngoingResponse>;
-
 export interface ListDedicatedServerOperationRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -4731,51 +3248,23 @@ export interface ListDedicatedServerOperationRequest {
   /** Filter the value of status property (=) */
   status?: DedicatedTaskStatusEnum | (string & {});
 }
-const ListDedicatedServerOperationRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<ListDedicatedServerOperationRequest>;
-
 export type ListDedicatedServerOperationResponseBodyList = Array<string>;
 export type ListDedicatedServerOperationResponse = ListDedicatedServerOperationResponseBodyList;
-const ListDedicatedServerOperationResponse =
-  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerOperationResponse>;
-
 export interface ListDedicatedServerOptionRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerOptionRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<ListDedicatedServerOptionRequest>;
-
 export type ListDedicatedServerOptionResponseBodyList = Array<DedicatedServerOptionEnum>;
 export type ListDedicatedServerOptionResponse = ListDedicatedServerOptionResponseBodyList;
-const ListDedicatedServerOptionResponse =
-  ListDedicatedServerBootOptionResponse as any as S.Schema<ListDedicatedServerOptionResponse>;
-
 export interface ListDedicatedServerOrderableBackupStorageRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerOrderableBackupStorageRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<ListDedicatedServerOrderableBackupStorageRequest>;
-
 /** Different backup storage capacity in gigabytes */
 export type DedicatedServerBackupStorageCapacityEnum = 500 | 1000 | 5000 | 10000;
-const DedicatedServerBackupStorageCapacityEnum = S.Number;
-
 /** Backup storage orderable capacities in gigabytes */
 export type DedicatedServerBackupStorageOrderableCapacitiesList =
   Array<DedicatedServerBackupStorageCapacityEnum>;
-const DedicatedServerBackupStorageOrderableCapacitiesList = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<DedicatedServerBackupStorageOrderableCapacitiesList>;
-
 /** A structure describing informations storage backup orderable for this dedicated server */
 export interface DedicatedServerBackupStorageOrderable {
   /** Backup storage orderable capacities in gigabytes */
@@ -4783,39 +3272,20 @@ export interface DedicatedServerBackupStorageOrderable {
   /** Is a backup storage is orderable for this server */
   orderable?: boolean;
 }
-const DedicatedServerBackupStorageOrderable = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<DedicatedServerBackupStorageOrderable>;
-
 export interface ListDedicatedServerOrderableBandwidthRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerOrderableBandwidthRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<ListDedicatedServerOrderableBandwidthRequest>;
-
 /** Different Bandwidth orderable in Mbps */
 export type DedicatedServerBandwidthOrderEnum = 1000 | 2000 | 3000;
 /** Bandwidth "platinum" orderable in mbps */
 export type DedicatedServerBandwidthOrderablePlatinumList =
   Array<DedicatedServerBandwidthOrderEnum>;
-const DedicatedServerBandwidthOrderablePlatinumList =
-  DedicatedServerBackupStorageOrderableCapacitiesList as any as S.Schema<DedicatedServerBandwidthOrderablePlatinumList>;
-
 /** Bandwidth "premium" orderable in mbps */
 export type DedicatedServerBandwidthOrderablePremiumList = Array<DedicatedServerBandwidthOrderEnum>;
-const DedicatedServerBandwidthOrderablePremiumList =
-  DedicatedServerBandwidthOrderablePlatinumList as any as S.Schema<DedicatedServerBandwidthOrderablePremiumList>;
-
 /** Bandwidth "ultimate" orderable in mbps */
 export type DedicatedServerBandwidthOrderableUltimateList =
   Array<DedicatedServerBandwidthOrderEnum>;
-const DedicatedServerBandwidthOrderableUltimateList =
-  DedicatedServerBandwidthOrderablePlatinumList as any as S.Schema<DedicatedServerBandwidthOrderableUltimateList>;
-
 /** A structure describing informations bandwidth orderable for this dedicated server */
 export interface DedicatedServerBandwidthOrderable {
   /** Is bandwidth orderable for this server */
@@ -4827,28 +3297,15 @@ export interface DedicatedServerBandwidthOrderable {
   /** Bandwidth "ultimate" orderable in mbps */
   ultimate?: DedicatedServerBandwidthOrderableUltimateList | null;
 }
-const DedicatedServerBandwidthOrderable = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<DedicatedServerBandwidthOrderable>;
-
 export interface ListDedicatedServerOrderableBandwidthvRackRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerOrderableBandwidthvRackRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<ListDedicatedServerOrderableBandwidthvRackRequest>;
-
 /** Different vRack Bandwidth orderable in Mbps */
 export type DedicatedServerBandwidthvRackOrderEnum = 1000 | 3000;
 /** vRack Bandwidth orderable in mbps */
 export type DedicatedServerBandwidthvRackOrderableVrackList =
   Array<DedicatedServerBandwidthvRackOrderEnum>;
-const DedicatedServerBandwidthvRackOrderableVrackList =
-  DedicatedServerBackupStorageOrderableCapacitiesList as any as S.Schema<DedicatedServerBandwidthvRackOrderableVrackList>;
-
 /** A structure describing informations bandwidth orderable for this dedicated server */
 export interface DedicatedServerBandwidthvRackOrderable {
   /** Is bandwidth orderable for this server */
@@ -4856,35 +3313,18 @@ export interface DedicatedServerBandwidthvRackOrderable {
   /** vRack Bandwidth orderable in mbps */
   vrack?: DedicatedServerBandwidthvRackOrderableVrackList | null;
 }
-const DedicatedServerBandwidthvRackOrderable = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<DedicatedServerBandwidthvRackOrderable>;
-
 export interface ListDedicatedServerOrderableIpRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerOrderableIpRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<ListDedicatedServerOrderableIpRequest>;
-
 /** IP block size */
 export type DedicatedServerIpBlockSizeEnum = 1 | 4 | 8 | 16 | 32 | 64 | 128 | 256;
 /** Orderable IP blocks sizes */
 export type DedicatedServerIpOrderableDetailsBlockSizesList = Array<DedicatedServerIpBlockSizeEnum>;
-const DedicatedServerIpOrderableDetailsBlockSizesList =
-  DedicatedServerBackupStorageOrderableCapacitiesList as any as S.Schema<DedicatedServerIpOrderableDetailsBlockSizesList>;
-
 /** Required option */
 export type DedicatedServerOptionRequiredEnum = "professionalUse";
-const DedicatedServerOptionRequiredEnum = S.String;
-
 /** Orderable IP type */
 export type DedicatedServerIpTypeOrderableEnum = "failover" | "static" | "unshielded";
-const DedicatedServerIpTypeOrderableEnum = S.String;
-
 /** A structure describing informations about orderable IP address */
 export interface DedicatedServerIpOrderableDetails {
   /** Orderable IP blocks sizes */
@@ -4900,23 +3340,10 @@ export interface DedicatedServerIpOrderableDetails {
   /** this IP type */
   type?: DedicatedServerIpTypeOrderableEnum;
 }
-const DedicatedServerIpOrderableDetails = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<DedicatedServerIpOrderableDetails>;
-
 /** Orderable IP v4 details */
 export type DedicatedServerIpOrderableIpv4List = Array<DedicatedServerIpOrderableDetails>;
-const DedicatedServerIpOrderableIpv4List = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<DedicatedServerIpOrderableIpv4List>;
-
 /** Orderable IP v6 details */
 export type DedicatedServerIpOrderableIpv6List = Array<DedicatedServerIpOrderableDetails>;
-const DedicatedServerIpOrderableIpv6List =
-  DedicatedServerIpOrderableIpv4List as any as S.Schema<DedicatedServerIpOrderableIpv6List>;
-
 /** A structure describing informations about orderable IP address */
 export interface DedicatedServerIpOrderable {
   /** Orderable IP v4 details */
@@ -4924,28 +3351,15 @@ export interface DedicatedServerIpOrderable {
   /** Orderable IP v6 details */
   ipv6?: DedicatedServerIpOrderableIpv6List | null;
 }
-const DedicatedServerIpOrderable = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<DedicatedServerIpOrderable>;
-
 export interface ListDedicatedServerOrderableSupportLevelRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerOrderableSupportLevelRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<ListDedicatedServerOrderableSupportLevelRequest>;
-
 /** distincts support level */
 export type DedicatedServerSupportLevelOrderableEnum = "critical" | "fastpath" | "gs";
 /** Support level orderable */
 export type DedicatedServerSupportLevelOrderableLevelsList =
   Array<DedicatedServerSupportLevelOrderableEnum>;
-const DedicatedServerSupportLevelOrderableLevelsList =
-  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<DedicatedServerSupportLevelOrderableLevelsList>;
-
 /** A structure describing informations support level orderable for this dedicated server */
 export interface DedicatedServerSupportLevelOrderable {
   /** Support level orderable */
@@ -4953,20 +3367,10 @@ export interface DedicatedServerSupportLevelOrderable {
   /** Is a support level is orderable for this server */
   orderable?: boolean;
 }
-const DedicatedServerSupportLevelOrderable = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<DedicatedServerSupportLevelOrderable>;
-
 export interface ListDedicatedServerOrderableTrafficRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerOrderableTrafficRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<ListDedicatedServerOrderableTrafficRequest>;
-
 /** traffic orderable */
 export type DedicatedServerTrafficOrderEnum =
   | "100Mbps-Unlimited"
@@ -4974,9 +3378,6 @@ export type DedicatedServerTrafficOrderEnum =
   | "500Mbps-Unlimited";
 /** traffic orderable */
 export type DedicatedServerTrafficOrderableTrafficList = Array<DedicatedServerTrafficOrderEnum>;
-const DedicatedServerTrafficOrderableTrafficList =
-  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<DedicatedServerTrafficOrderableTrafficList>;
-
 /** A structure describing informations bandwidth orderable for this dedicated server */
 export interface DedicatedServerTrafficOrderable {
   /** Is traffic orderable for this server */
@@ -4984,28 +3385,15 @@ export interface DedicatedServerTrafficOrderable {
   /** traffic orderable */
   traffic?: DedicatedServerTrafficOrderableTrafficList | null;
 }
-const DedicatedServerTrafficOrderable = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<DedicatedServerTrafficOrderable>;
-
 export interface ListDedicatedServerOrderableUsbKeyRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerOrderableUsbKeyRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<ListDedicatedServerOrderableUsbKeyRequest>;
-
 /** Different USB key capacity in gigabytes */
 export type DedicatedServerUsbKeyCapacityEnum = 16 | 32 | 64 | 128 | 256;
 /** Orderable USB keys capacity in gigabytes */
 export type DedicatedServerUsbKeyOrderableDetailsCapacityList =
   Array<DedicatedServerUsbKeyCapacityEnum>;
-const DedicatedServerUsbKeyOrderableDetailsCapacityList =
-  DedicatedServerBackupStorageOrderableCapacitiesList as any as S.Schema<DedicatedServerUsbKeyOrderableDetailsCapacityList>;
-
 /** A structure describing informations about orderable USB keys */
 export interface DedicatedServerUsbKeyOrderableDetails {
   /** Orderable USB keys capacity in gigabytes */
@@ -5017,41 +3405,20 @@ export interface DedicatedServerUsbKeyOrderableDetails {
   /** Is USB keys orderable for this server */
   orderable?: boolean;
 }
-const DedicatedServerUsbKeyOrderableDetails = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<DedicatedServerUsbKeyOrderableDetails>;
-
 export interface ListDedicatedServerOsAvailabilitiesRequest {
   /** Hardware reference requested */
   hardware: string;
 }
-const ListDedicatedServerOsAvailabilitiesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<ListDedicatedServerOsAvailabilitiesRequest>;
-
 export type ListDedicatedServerOsAvailabilitiesResponseBodyList = Array<string>;
 export type ListDedicatedServerOsAvailabilitiesResponse =
   ListDedicatedServerOsAvailabilitiesResponseBodyList;
-const ListDedicatedServerOsAvailabilitiesResponse =
-  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerOsAvailabilitiesResponse>;
-
 export interface ListDedicatedServerPlannedInterventionRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerPlannedInterventionRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<ListDedicatedServerPlannedInterventionRequest>;
-
 export type ListDedicatedServerPlannedInterventionResponseBodyList = Array<number>;
 export type ListDedicatedServerPlannedInterventionResponse =
   ListDedicatedServerPlannedInterventionResponseBodyList;
-const ListDedicatedServerPlannedInterventionResponse =
-  CreateDedicatedServerChangeContactResponse as any as S.Schema<ListDedicatedServerPlannedInterventionResponse>;
-
 /** The region */
 export type DedicatedServerAvailabilityRegionalizationEnum =
   | "ap-south-1"
@@ -5068,14 +3435,9 @@ export type DedicatedServerAvailabilityRegionalizationEnum =
   | "eu-west-sbg"
   | "us-east-vin"
   | "us-west-hil";
-const DedicatedServerAvailabilityRegionalizationEnum = S.String;
-
 export type ListDedicatedServerRegionAvailabilitiesRequestRegionsList = Array<
   DedicatedServerAvailabilityRegionalizationEnum | (string & {})
 >;
-const ListDedicatedServerRegionAvailabilitiesRequestRegionsList =
-  DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList as any as S.Schema<ListDedicatedServerRegionAvailabilitiesRequestRegionsList>;
-
 export interface ListDedicatedServerRegionAvailabilitiesRequest {
   /** If true, all regions are returned except those listed in regions parameter */
   excludeRegions?: boolean;
@@ -5094,11 +3456,6 @@ export interface ListDedicatedServerRegionAvailabilitiesRequest {
   /** The name of the system storage hardware part */
   systemStorage?: string;
 }
-const ListDedicatedServerRegionAvailabilitiesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<ListDedicatedServerRegionAvailabilitiesRequest>;
-
 /** The availability */
 export type DedicatedServerAvailabilityEnum =
   | "120H"
@@ -5114,8 +3471,6 @@ export type DedicatedServerAvailabilityEnum =
   | "comingSoon"
   | "unavailable"
   | "unknown";
-const DedicatedServerAvailabilityEnum = S.String;
-
 /** The availability zone */
 export type DedicatedServerAvailabilityZonesEnum =
   | "ap-south-1-a"
@@ -5142,8 +3497,6 @@ export type DedicatedServerAvailabilityZonesEnum =
   | "eu-west-sbg-a"
   | "us-east-vin-a"
   | "us-west-hil-a";
-const DedicatedServerAvailabilityZonesEnum = S.String;
-
 /** A structure describing the hardware availability for each availability zone */
 export interface DedicatedServerAvailabilityZones {
   /** The availability */
@@ -5151,19 +3504,9 @@ export interface DedicatedServerAvailabilityZones {
   /** The availability zone */
   availabilityZone?: DedicatedServerAvailabilityZonesEnum;
 }
-const DedicatedServerAvailabilityZones = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<DedicatedServerAvailabilityZones>;
-
 /** Availability zones */
 export type DedicatedServerAvailabilityByRegionAvailabilityZonesList =
   Array<DedicatedServerAvailabilityZones>;
-const DedicatedServerAvailabilityByRegionAvailabilityZonesList = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<DedicatedServerAvailabilityByRegionAvailabilityZonesList>;
-
 /** A structure describing the hardware availability for each region */
 export interface DedicatedServerAvailabilityByRegion {
   /** The availability */
@@ -5173,19 +3516,9 @@ export interface DedicatedServerAvailabilityByRegion {
   /** The region */
   region?: DedicatedServerAvailabilityRegionalizationEnum;
 }
-const DedicatedServerAvailabilityByRegion = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<DedicatedServerAvailabilityByRegion>;
-
 /** The hardware availability for each region */
 export type DedicatedServerRegionAvailabilityRegionsList =
   Array<DedicatedServerAvailabilityByRegion>;
-const DedicatedServerRegionAvailabilityRegionsList = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<DedicatedServerRegionAvailabilityRegionsList>;
-
 /** A structure describing the availabilities of dedicated server */
 export interface DedicatedServerRegionAvailability {
   /** Fully qualified and unique name of the hardware */
@@ -5205,49 +3538,21 @@ export interface DedicatedServerRegionAvailability {
   /** Name of the system storage hardware part */
   systemStorage?: string | null;
 }
-const DedicatedServerRegionAvailability = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<DedicatedServerRegionAvailability>;
-
 export type ListDedicatedServerRegionAvailabilitiesResponseBodyList =
   Array<DedicatedServerRegionAvailability>;
-const ListDedicatedServerRegionAvailabilitiesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<ListDedicatedServerRegionAvailabilitiesResponseBodyList>;
-
 export type ListDedicatedServerRegionAvailabilitiesResponse =
   ListDedicatedServerRegionAvailabilitiesResponseBodyList;
-const ListDedicatedServerRegionAvailabilitiesResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<ListDedicatedServerRegionAvailabilitiesResponse>;
-
 export interface ListDedicatedServerSecondaryDnsDomainsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerSecondaryDnsDomainsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<ListDedicatedServerSecondaryDnsDomainsRequest>;
-
 export type ListDedicatedServerSecondaryDnsDomainsResponseBodyList = Array<string>;
 export type ListDedicatedServerSecondaryDnsDomainsResponse =
   ListDedicatedServerSecondaryDnsDomainsResponseBodyList;
-const ListDedicatedServerSecondaryDnsDomainsResponse =
-  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerSecondaryDnsDomainsResponse>;
-
 export interface ListDedicatedServerSpecificationIpRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerSpecificationIpRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<ListDedicatedServerSpecificationIpRequest>;
-
 export interface ListDedicatedServerSplaRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -5256,16 +3561,8 @@ export interface ListDedicatedServerSplaRequest {
   /** Filter the value of type property (=) */
   type?: DedicatedServerSplaTypeEnum | (string & {});
 }
-const ListDedicatedServerSplaRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<ListDedicatedServerSplaRequest>;
-
 export type ListDedicatedServerSplaResponseBodyList = Array<number>;
 export type ListDedicatedServerSplaResponse = ListDedicatedServerSplaResponseBodyList;
-const ListDedicatedServerSplaResponse =
-  CreateDedicatedServerChangeContactResponse as any as S.Schema<ListDedicatedServerSplaResponse>;
-
 export interface ListDedicatedServerTaskRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -5274,16 +3571,8 @@ export interface ListDedicatedServerTaskRequest {
   /** Filter the value of status property (=) */
   status?: DedicatedTaskStatusEnum | (string & {});
 }
-const ListDedicatedServerTaskRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<ListDedicatedServerTaskRequest>;
-
 export type ListDedicatedServerTaskResponseBodyList = Array<number>;
 export type ListDedicatedServerTaskResponse = ListDedicatedServerTaskResponseBodyList;
-const ListDedicatedServerTaskResponse =
-  CreateDedicatedServerChangeContactResponse as any as S.Schema<ListDedicatedServerTaskResponse>;
-
 export interface ListDedicatedServerTaskAvailableTimeslotsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -5294,11 +3583,6 @@ export interface ListDedicatedServerTaskAvailableTimeslotsRequest {
   /** Begining of the period to query */
   periodStart: string;
 }
-const ListDedicatedServerTaskAvailableTimeslotsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<ListDedicatedServerTaskAvailableTimeslotsRequest>;
-
 /** A time slot for a planned intervention */
 export interface DedicatedPlannedInterventionTimeSlot {
   /** End date for the planned intervention */
@@ -5306,40 +3590,18 @@ export interface DedicatedPlannedInterventionTimeSlot {
   /** Start date for the planned intervention */
   startDate?: string;
 }
-const DedicatedPlannedInterventionTimeSlot = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<DedicatedPlannedInterventionTimeSlot>;
-
 export type ListDedicatedServerTaskAvailableTimeslotsResponseBodyList =
   Array<DedicatedPlannedInterventionTimeSlot>;
-const ListDedicatedServerTaskAvailableTimeslotsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<ListDedicatedServerTaskAvailableTimeslotsResponseBodyList>;
-
 export type ListDedicatedServerTaskAvailableTimeslotsResponse =
   ListDedicatedServerTaskAvailableTimeslotsResponseBodyList;
-const ListDedicatedServerTaskAvailableTimeslotsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<ListDedicatedServerTaskAvailableTimeslotsResponse>;
-
 /** Addon family */
 export type DedicatedServerAddonFamilyEnum = "memory" | "storage";
-const DedicatedServerAddonFamilyEnum = S.String;
-
 export interface ListDedicatedServerUpdateAllowedRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** Desired option family */
   family: DedicatedServerAddonFamilyEnum | (string & {});
 }
-const ListDedicatedServerUpdateAllowedRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<ListDedicatedServerUpdateAllowedRequest>;
-
 /** Dedicated server addon. */
 export interface DedicatedServerBillingAddon {
   /** Addon family */
@@ -5347,24 +3609,9 @@ export interface DedicatedServerBillingAddon {
   /** Plan code to order */
   planCode?: string;
 }
-const DedicatedServerBillingAddon = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<DedicatedServerBillingAddon>;
-
 export type ListDedicatedServerUpdateAllowedResponseBodyList = Array<DedicatedServerBillingAddon>;
-const ListDedicatedServerUpdateAllowedResponseBodyList = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<ListDedicatedServerUpdateAllowedResponseBodyList>;
-
 export type ListDedicatedServerUpdateAllowedResponse =
   ListDedicatedServerUpdateAllowedResponseBodyList;
-const ListDedicatedServerUpdateAllowedResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<ListDedicatedServerUpdateAllowedResponse>;
-
 export interface ListDedicatedServerUpgradeAvailableTimeslotsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -5373,51 +3620,27 @@ export interface ListDedicatedServerUpgradeAvailableTimeslotsRequest {
   /** Begining of the period to query */
   periodStart: string;
 }
-const ListDedicatedServerUpgradeAvailableTimeslotsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<ListDedicatedServerUpgradeAvailableTimeslotsRequest>;
-
 /** A time slot for a planned intervention */
 export type DedicatedServerHardwareUpgradeTimeslot = DedicatedPlannedInterventionTimeSlot;
 export type ListDedicatedServerUpgradeAvailableTimeslotsResponseBodyList =
   Array<DedicatedPlannedInterventionTimeSlot>;
 export type ListDedicatedServerUpgradeAvailableTimeslotsResponse =
   ListDedicatedServerUpgradeAvailableTimeslotsResponseBodyList;
-const ListDedicatedServerUpgradeAvailableTimeslotsResponse =
-  ListDedicatedServerTaskAvailableTimeslotsResponse as any as S.Schema<ListDedicatedServerUpgradeAvailableTimeslotsResponse>;
-
 export interface ListDedicatedServerVirtualMacRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerVirtualMacRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<ListDedicatedServerVirtualMacRequest>;
-
 export type ListDedicatedServerVirtualMacResponseBodyList = Array<string>;
 export type ListDedicatedServerVirtualMacResponse = ListDedicatedServerVirtualMacResponseBodyList;
-const ListDedicatedServerVirtualMacResponse =
-  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerVirtualMacResponse>;
-
 export interface ListDedicatedServerVirtualMacVirtualAddressRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** Virtual MAC address in 00:00:00:00:00:00 format */
   macAddress: string;
 }
-const ListDedicatedServerVirtualMacVirtualAddressRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<ListDedicatedServerVirtualMacVirtualAddressRequest>;
-
 export type ListDedicatedServerVirtualMacVirtualAddressResponseBodyList = Array<string>;
 export type ListDedicatedServerVirtualMacVirtualAddressResponse =
   ListDedicatedServerVirtualMacVirtualAddressResponseBodyList;
-const ListDedicatedServerVirtualMacVirtualAddressResponse =
-  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerVirtualMacVirtualAddressResponse>;
-
 export interface ListDedicatedServerVirtualNetworkInterfaceRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -5430,31 +3653,15 @@ export interface ListDedicatedServerVirtualNetworkInterfaceRequest {
   /** Filter the value of vrack property (=) */
   vrack?: string;
 }
-const ListDedicatedServerVirtualNetworkInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<ListDedicatedServerVirtualNetworkInterfaceRequest>;
-
 export type ListDedicatedServerVirtualNetworkInterfaceResponseBodyList = Array<string>;
 export type ListDedicatedServerVirtualNetworkInterfaceResponse =
   ListDedicatedServerVirtualNetworkInterfaceResponseBodyList;
-const ListDedicatedServerVirtualNetworkInterfaceResponse =
-  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerVirtualNetworkInterfaceResponse>;
-
 export interface ListDedicatedServerVrackRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ListDedicatedServerVrackRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<ListDedicatedServerVrackRequest>;
-
 export type ListDedicatedServerVrackResponseBodyList = Array<string>;
 export type ListDedicatedServerVrackResponse = ListDedicatedServerVrackResponseBodyList;
-const ListDedicatedServerVrackResponse =
-  ListDedicatedServerResponse as any as S.Schema<ListDedicatedServerVrackResponse>;
-
 export interface PutDedicatedServerRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -5474,32 +3681,14 @@ export interface PutDedicatedServerRequest {
   rootDevice?: string | null;
   state?: DedicatedServerStateEnum | (string & {});
 }
-const PutDedicatedServerRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<PutDedicatedServerRequest>;
-
 export interface PutDedicatedServerResponse {}
-const PutDedicatedServerResponse =
-  IamResourceTagFilterInput as any as S.Schema<PutDedicatedServerResponse>;
-
 export interface PutDedicatedServerBurstRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** indicates whether burstable bandwidth is currently active, allowing it to temporarily exceed the normally included bandwidth.OvhToInternet amount, within the limits indicated by the burst.capacity item. It can also be inactiveLocked when temporarily disabled due to overuse, capping it to the included non-burstable bandwidth capacity of bandwidth.OvhToInternet */
   status?: DedicatedServerBurstStatusEnum | (string & {});
 }
-const PutDedicatedServerBurstRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<PutDedicatedServerBurstRequest>;
-
 export interface PutDedicatedServerBurstResponse {}
-const PutDedicatedServerBurstResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<PutDedicatedServerBurstResponse>;
-
 export interface PutDedicatedServerFeatureBackupFTPAccessRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -5512,29 +3701,13 @@ export interface PutDedicatedServerFeatureBackupFTPAccessRequest {
   /** Whether to allow the NFS protocol for this ACL */
   nfs?: boolean;
 }
-const PutDedicatedServerFeatureBackupFTPAccessRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<PutDedicatedServerFeatureBackupFTPAccessRequest>;
-
 export interface PutDedicatedServerFeatureBackupFTPAccessResponse {}
-const PutDedicatedServerFeatureBackupFTPAccessResponse =
-  CancelDedicatedServerTaskResponse as any as S.Schema<PutDedicatedServerFeatureBackupFTPAccessResponse>;
-
 export interface PutDedicatedServerFeatureFirewallRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   enabled?: boolean;
 }
-const PutDedicatedServerFeatureFirewallRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<PutDedicatedServerFeatureFirewallRequest>;
-
 export interface PutDedicatedServerFeatureFirewallResponse {}
-const PutDedicatedServerFeatureFirewallResponse =
-  CancelDedicatedServerTaskResponse as any as S.Schema<PutDedicatedServerFeatureFirewallResponse>;
-
 export interface PutDedicatedServerSecondaryDnsDomainRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -5543,30 +3716,14 @@ export interface PutDedicatedServerSecondaryDnsDomainRequest {
   /** master ip */
   ipMaster?: string;
 }
-const PutDedicatedServerSecondaryDnsDomainRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<PutDedicatedServerSecondaryDnsDomainRequest>;
-
 export interface PutDedicatedServerSecondaryDnsDomainResponse {}
-const PutDedicatedServerSecondaryDnsDomainResponse =
-  CancelDedicatedServerTaskResponse as any as S.Schema<PutDedicatedServerSecondaryDnsDomainResponse>;
-
 export interface PutDedicatedServerServiceInfosRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-const PutDedicatedServerServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<PutDedicatedServerServiceInfosRequest>;
-
 export interface PutDedicatedServerServiceInfosResponse {}
-const PutDedicatedServerServiceInfosResponse =
-  CancelDedicatedServerTaskResponse as any as S.Schema<PutDedicatedServerServiceInfosResponse>;
-
 export interface PutDedicatedServerSplaRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -5575,15 +3732,7 @@ export interface PutDedicatedServerSplaRequest {
   /** License serial number */
   serialNumber?: string;
 }
-const PutDedicatedServerSplaRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<PutDedicatedServerSplaRequest>;
-
 export interface PutDedicatedServerSplaResponse {}
-const PutDedicatedServerSplaResponse =
-  IamResourceTagFilterInput as any as S.Schema<PutDedicatedServerSplaResponse>;
-
 export interface PutDedicatedServerUpgradeScheduleRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -5592,86 +3741,40 @@ export interface PutDedicatedServerUpgradeScheduleRequest {
   /** Wanted beginning date for the upgrade intervention */
   wantedBeginningDate: string;
 }
-const PutDedicatedServerUpgradeScheduleRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<PutDedicatedServerUpgradeScheduleRequest>;
-
 export interface PutDedicatedServerUpgradeScheduleResponse {}
-const PutDedicatedServerUpgradeScheduleResponse =
-  CancelDedicatedServerTaskResponse as any as S.Schema<PutDedicatedServerUpgradeScheduleResponse>;
-
 export interface RebootDedicatedServerRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const RebootDedicatedServerRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<RebootDedicatedServerRequest>;
-
 export interface ResetDedicatedServerFeaturesIpmiInterfaceRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ResetDedicatedServerFeaturesIpmiInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<ResetDedicatedServerFeaturesIpmiInterfaceRequest>;
-
 export interface ResetDedicatedServerFeaturesIpmiSessionsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const ResetDedicatedServerFeaturesIpmiSessionsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<ResetDedicatedServerFeaturesIpmiSessionsRequest>;
-
 export interface ResetDedicatedServerOlaRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** Interface to reset */
   virtualNetworkInterface: string;
 }
-const ResetDedicatedServerOlaRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<ResetDedicatedServerOlaRequest>;
-
 export interface RestartDedicatedServerFeaturesBmcRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const RestartDedicatedServerFeaturesBmcRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<RestartDedicatedServerFeaturesBmcRequest>;
-
 export interface RevokeDedicatedServerFeaturesBmcSessionsRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const RevokeDedicatedServerFeaturesBmcSessionsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<RevokeDedicatedServerFeaturesBmcSessionsRequest>;
-
 export interface RevokeDedicatedServerSplaRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
   /** License id */
   id: number;
 }
-const RevokeDedicatedServerSplaRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<RevokeDedicatedServerSplaRequest>;
-
 export interface RevokeDedicatedServerSplaResponse {}
-const RevokeDedicatedServerSplaResponse =
-  CancelDedicatedServerTaskResponse as any as S.Schema<RevokeDedicatedServerSplaResponse>;
-
 /** A structure describing informations about installation custom */
 export interface DedicatedServerInstallCustom {
   /** Personnal hostname to use in server reinstallation */
@@ -5687,29 +3790,14 @@ export interface DedicatedServerInstallCustom {
   /** Number of devices to use for system's software RAID */
   softRaidDevices?: number | null;
 }
-const DedicatedServerInstallCustom = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<DedicatedServerInstallCustom>;
-
 /** Key and value, with proper key strings */
 export interface ComplexTypeSafeKeyValueString {
   key?: string;
   value?: string;
 }
-const ComplexTypeSafeKeyValueString = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<ComplexTypeSafeKeyValueString>;
-
 /** Metadata */
 export type StartDedicatedServerInstallRequestUserMetadataList =
   Array<ComplexTypeSafeKeyValueString>;
-const StartDedicatedServerInstallRequestUserMetadataList = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<StartDedicatedServerInstallRequestUserMetadataList>;
-
 export interface StartDedicatedServerInstallRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -5722,24 +3810,11 @@ export interface StartDedicatedServerInstallRequest {
   /** Metadata */
   userMetadata?: StartDedicatedServerInstallRequestUserMetadataList;
 }
-const StartDedicatedServerInstallRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<StartDedicatedServerInstallRequest>;
-
 export interface TerminateDedicatedServerRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
 }
-const TerminateDedicatedServerRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<TerminateDedicatedServerRequest>;
-
 export type TerminateDedicatedServerResponse = string;
-const TerminateDedicatedServerResponse =
-  ConfirmDedicatedServerTerminationResponse as any as S.Schema<TerminateDedicatedServerResponse>;
-
 export interface TestDedicatedServerFeaturesBmcRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -5748,11 +3823,6 @@ export interface TestDedicatedServerFeaturesBmcRequest {
   /** Test to execute on the BMC interface */
   type: DedicatedServerBmcTestTypeEnum | (string & {});
 }
-const TestDedicatedServerFeaturesBmcRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<TestDedicatedServerFeaturesBmcRequest>;
-
 export interface TestDedicatedServerFeaturesIpmiRequest {
   /** The internal name of your dedicated server */
   serviceName: string;
@@ -5761,11 +3831,6 @@ export interface TestDedicatedServerFeaturesIpmiRequest {
   /** Test to make on KVM IPMI interface */
   type: DedicatedServerIpmiTestTypeEnum | (string & {});
 }
-const TestDedicatedServerFeaturesIpmiRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<TestDedicatedServerFeaturesIpmiRequest>;
-
 export type ActivateDedicatedServerAntiDDosGameError = OvhOpError;
 /** Enable // Disable global filtering of anti DDoS Game protection on dedicated Game Server */
 export const activateDedicatedServerAntiDDosGame: API.OperationMethod<
@@ -5774,8 +3839,8 @@ export const activateDedicatedServerAntiDDosGame: API.OperationMethod<
   ActivateDedicatedServerAntiDDosGameError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActivateDedicatedServerAntiDDosGameRequest,
-  output: DedicatedServerTask,
+  input: __S(0) as any as S.Schema<ActivateDedicatedServerAntiDDosGameRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5789,8 +3854,8 @@ export const cancelDedicatedServerTask: API.OperationMethod<
   CancelDedicatedServerTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelDedicatedServerTaskRequest,
-  output: CancelDedicatedServerTaskResponse,
+  input: __S(4) as any as S.Schema<CancelDedicatedServerTaskRequest>,
+  output: __S(5) as any as S.Schema<CancelDedicatedServerTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5804,8 +3869,8 @@ export const confirmDedicatedServerTermination: API.OperationMethod<
   ConfirmDedicatedServerTerminationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfirmDedicatedServerTerminationRequest,
-  output: ConfirmDedicatedServerTerminationResponse,
+  input: __S(6) as any as S.Schema<ConfirmDedicatedServerTerminationRequest>,
+  output: __S(7) as any as S.Schema<ConfirmDedicatedServerTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5819,8 +3884,8 @@ export const createDedicatedServerAuthenticationSecret: API.OperationMethod<
   CreateDedicatedServerAuthenticationSecretError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerAuthenticationSecretRequest,
-  output: CreateDedicatedServerAuthenticationSecretResponse,
+  input: __S(8) as any as S.Schema<CreateDedicatedServerAuthenticationSecretRequest>,
+  output: __S(11) as any as S.Schema<CreateDedicatedServerAuthenticationSecretResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5834,8 +3899,8 @@ export const createDedicatedServerBiosSettingsSgxConfigure: API.OperationMethod<
   CreateDedicatedServerBiosSettingsSgxConfigureError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerBiosSettingsSgxConfigureRequest,
-  output: DedicatedServerTask,
+  input: __S(12) as any as S.Schema<CreateDedicatedServerBiosSettingsSgxConfigureRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5849,8 +3914,8 @@ export const createDedicatedServerChangeContact: API.OperationMethod<
   CreateDedicatedServerChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerChangeContactRequest,
-  output: CreateDedicatedServerChangeContactResponse,
+  input: __S(13) as any as S.Schema<CreateDedicatedServerChangeContactRequest>,
+  output: __S(15) as any as S.Schema<CreateDedicatedServerChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5864,8 +3929,8 @@ export const createDedicatedServerFeatureBackupCloud: API.OperationMethod<
   CreateDedicatedServerFeatureBackupCloudError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerFeatureBackupCloudRequest,
-  output: DedicatedServerBackupCloud,
+  input: __S(16) as any as S.Schema<CreateDedicatedServerFeatureBackupCloudRequest>,
+  output: __S(24) as any as S.Schema<DedicatedServerBackupCloud>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5879,8 +3944,8 @@ export const createDedicatedServerFeatureBackupCloudPassword: API.OperationMetho
   CreateDedicatedServerFeatureBackupCloudPasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerFeatureBackupCloudPasswordRequest,
-  output: DedicatedServerBackupBackupPassword,
+  input: __S(25) as any as S.Schema<CreateDedicatedServerFeatureBackupCloudPasswordRequest>,
+  output: __S(26) as any as S.Schema<DedicatedServerBackupBackupPassword>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5894,8 +3959,8 @@ export const createDedicatedServerFeatureBackupFTP: API.OperationMethod<
   CreateDedicatedServerFeatureBackupFTPError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerFeatureBackupFTPRequest,
-  output: DedicatedServerTask,
+  input: __S(27) as any as S.Schema<CreateDedicatedServerFeatureBackupFTPRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5909,8 +3974,8 @@ export const createDedicatedServerFeatureBackupFTPAccess: API.OperationMethod<
   CreateDedicatedServerFeatureBackupFTPAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerFeatureBackupFTPAccessRequest,
-  output: DedicatedServerTask,
+  input: __S(28) as any as S.Schema<CreateDedicatedServerFeatureBackupFTPAccessRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5924,8 +3989,8 @@ export const createDedicatedServerFeatureBackupFTPPassword: API.OperationMethod<
   CreateDedicatedServerFeatureBackupFTPPasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerFeatureBackupFTPPasswordRequest,
-  output: DedicatedServerTask,
+  input: __S(29) as any as S.Schema<CreateDedicatedServerFeatureBackupFTPPasswordRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5939,8 +4004,8 @@ export const createDedicatedServerFeatureBmcJavaKvm: API.OperationMethod<
   CreateDedicatedServerFeatureBmcJavaKvmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerFeatureBmcJavaKvmRequest,
-  output: DedicatedServerOperation,
+  input: __S(30) as any as S.Schema<CreateDedicatedServerFeatureBmcJavaKvmRequest>,
+  output: __S(31) as any as S.Schema<DedicatedServerOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5954,8 +4019,8 @@ export const createDedicatedServerFeatureBmcSshSol: API.OperationMethod<
   CreateDedicatedServerFeatureBmcSshSolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerFeatureBmcSshSolRequest,
-  output: DedicatedServerOperation,
+  input: __S(32) as any as S.Schema<CreateDedicatedServerFeatureBmcSshSolRequest>,
+  output: __S(31) as any as S.Schema<DedicatedServerOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5969,8 +4034,8 @@ export const createDedicatedServerFeatureBmcWebKvm: API.OperationMethod<
   CreateDedicatedServerFeatureBmcWebKvmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerFeatureBmcWebKvmRequest,
-  output: DedicatedServerOperation,
+  input: __S(33) as any as S.Schema<CreateDedicatedServerFeatureBmcWebKvmRequest>,
+  output: __S(31) as any as S.Schema<DedicatedServerOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5984,8 +4049,8 @@ export const createDedicatedServerFeatureBmcWebSol: API.OperationMethod<
   CreateDedicatedServerFeatureBmcWebSolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerFeatureBmcWebSolRequest,
-  output: DedicatedServerOperation,
+  input: __S(34) as any as S.Schema<CreateDedicatedServerFeatureBmcWebSolRequest>,
+  output: __S(31) as any as S.Schema<DedicatedServerOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5999,8 +4064,8 @@ export const createDedicatedServerFeatureIpmiAccess: API.OperationMethod<
   CreateDedicatedServerFeatureIpmiAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerFeatureIpmiAccessRequest,
-  output: DedicatedServerTask,
+  input: __S(35) as any as S.Schema<CreateDedicatedServerFeatureIpmiAccessRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6014,8 +4079,8 @@ export const createDedicatedServerIpBlockMerge: API.OperationMethod<
   CreateDedicatedServerIpBlockMergeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerIpBlockMergeRequest,
-  output: DedicatedServerTask,
+  input: __S(36) as any as S.Schema<CreateDedicatedServerIpBlockMergeRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6029,8 +4094,8 @@ export const createDedicatedServerIpMove: API.OperationMethod<
   CreateDedicatedServerIpMoveError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerIpMoveRequest,
-  output: DedicatedServerTask,
+  input: __S(37) as any as S.Schema<CreateDedicatedServerIpMoveRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6044,8 +4109,8 @@ export const createDedicatedServerLicenseWindows: API.OperationMethod<
   CreateDedicatedServerLicenseWindowsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerLicenseWindowsRequest,
-  output: DedicatedServerTask,
+  input: __S(38) as any as S.Schema<CreateDedicatedServerLicenseWindowsRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6059,8 +4124,8 @@ export const createDedicatedServerNetworking: API.OperationMethod<
   CreateDedicatedServerNetworkingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerNetworkingRequest,
-  output: DedicatedServerNetworking,
+  input: __S(42) as any as S.Schema<CreateDedicatedServerNetworkingRequest>,
+  output: __S(43) as any as S.Schema<DedicatedServerNetworking>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6074,8 +4139,8 @@ export const createDedicatedServerOlaAggregation: API.OperationMethod<
   CreateDedicatedServerOlaAggregationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerOlaAggregationRequest,
-  output: DedicatedServerTask,
+  input: __S(45) as any as S.Schema<CreateDedicatedServerOlaAggregationRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6094,8 +4159,8 @@ export const createDedicatedServerReinstall: API.OperationMethod<
   CreateDedicatedServerReinstallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerReinstallRequest,
-  output: DedicatedServerTaskResponse,
+  input: __S(57) as any as S.Schema<CreateDedicatedServerReinstallRequest>,
+  output: __S(58) as any as S.Schema<DedicatedServerTaskResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6109,8 +4174,8 @@ export const createDedicatedServerSecondaryDnsDomain: API.OperationMethod<
   CreateDedicatedServerSecondaryDnsDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerSecondaryDnsDomainRequest,
-  output: CreateDedicatedServerSecondaryDnsDomainResponse,
+  input: __S(59) as any as S.Schema<CreateDedicatedServerSecondaryDnsDomainRequest>,
+  output: __S(5) as any as S.Schema<CreateDedicatedServerSecondaryDnsDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6124,8 +4189,8 @@ export const createDedicatedServerSpla: API.OperationMethod<
   CreateDedicatedServerSplaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerSplaRequest,
-  output: CreateDedicatedServerSplaResponse,
+  input: __S(60) as any as S.Schema<CreateDedicatedServerSplaRequest>,
+  output: __S(61) as any as S.Schema<CreateDedicatedServerSplaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6139,8 +4204,8 @@ export const createDedicatedServerSupportReplaceCooling: API.OperationMethod<
   CreateDedicatedServerSupportReplaceCoolingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerSupportReplaceCoolingRequest,
-  output: SupportNewMessageInfo,
+  input: __S(62) as any as S.Schema<CreateDedicatedServerSupportReplaceCoolingRequest>,
+  output: __S(63) as any as S.Schema<SupportNewMessageInfo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6154,8 +4219,8 @@ export const createDedicatedServerSupportReplaceHardDiskDrive: API.OperationMeth
   CreateDedicatedServerSupportReplaceHardDiskDriveError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerSupportReplaceHardDiskDriveRequest,
-  output: SupportNewMessageInfo,
+  input: __S(66) as any as S.Schema<CreateDedicatedServerSupportReplaceHardDiskDriveRequest>,
+  output: __S(63) as any as S.Schema<SupportNewMessageInfo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6169,8 +4234,8 @@ export const createDedicatedServerSupportReplaceMemory: API.OperationMethod<
   CreateDedicatedServerSupportReplaceMemoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerSupportReplaceMemoryRequest,
-  output: SupportNewMessageInfo,
+  input: __S(67) as any as S.Schema<CreateDedicatedServerSupportReplaceMemoryRequest>,
+  output: __S(63) as any as S.Schema<SupportNewMessageInfo>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6184,8 +4249,8 @@ export const createDedicatedServerTaskSchedule: API.OperationMethod<
   CreateDedicatedServerTaskScheduleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerTaskScheduleRequest,
-  output: CreateDedicatedServerTaskScheduleResponse,
+  input: __S(68) as any as S.Schema<CreateDedicatedServerTaskScheduleRequest>,
+  output: __S(5) as any as S.Schema<CreateDedicatedServerTaskScheduleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6199,8 +4264,8 @@ export const createDedicatedServerVirtualMac: API.OperationMethod<
   CreateDedicatedServerVirtualMacError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerVirtualMacRequest,
-  output: DedicatedServerTask,
+  input: __S(69) as any as S.Schema<CreateDedicatedServerVirtualMacRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6214,8 +4279,8 @@ export const createDedicatedServerVirtualMacVirtualAddress: API.OperationMethod<
   CreateDedicatedServerVirtualMacVirtualAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDedicatedServerVirtualMacVirtualAddressRequest,
-  output: DedicatedServerTask,
+  input: __S(70) as any as S.Schema<CreateDedicatedServerVirtualMacVirtualAddressRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6229,8 +4294,8 @@ export const deleteDedicatedServerFeatureBackupCloud: API.OperationMethod<
   DeleteDedicatedServerFeatureBackupCloudError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDedicatedServerFeatureBackupCloudRequest,
-  output: DeleteDedicatedServerFeatureBackupCloudResponse,
+  input: __S(71) as any as S.Schema<DeleteDedicatedServerFeatureBackupCloudRequest>,
+  output: __S(5) as any as S.Schema<DeleteDedicatedServerFeatureBackupCloudResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6244,8 +4309,8 @@ export const deleteDedicatedServerFeatureBackupFTP: API.OperationMethod<
   DeleteDedicatedServerFeatureBackupFTPError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDedicatedServerFeatureBackupFTPRequest,
-  output: DedicatedServerTask,
+  input: __S(72) as any as S.Schema<DeleteDedicatedServerFeatureBackupFTPRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6259,8 +4324,8 @@ export const deleteDedicatedServerFeatureBackupFTPAccess: API.OperationMethod<
   DeleteDedicatedServerFeatureBackupFTPAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDedicatedServerFeatureBackupFTPAccessRequest,
-  output: DedicatedServerTask,
+  input: __S(73) as any as S.Schema<DeleteDedicatedServerFeatureBackupFTPAccessRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6274,8 +4339,8 @@ export const deleteDedicatedServerNetworking: API.OperationMethod<
   DeleteDedicatedServerNetworkingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDedicatedServerNetworkingRequest,
-  output: DedicatedServerNetworking,
+  input: __S(74) as any as S.Schema<DeleteDedicatedServerNetworkingRequest>,
+  output: __S(43) as any as S.Schema<DedicatedServerNetworking>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6289,8 +4354,8 @@ export const deleteDedicatedServerOption: API.OperationMethod<
   DeleteDedicatedServerOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDedicatedServerOptionRequest,
-  output: DeleteDedicatedServerOptionResponse,
+  input: __S(75) as any as S.Schema<DeleteDedicatedServerOptionRequest>,
+  output: __S(5) as any as S.Schema<DeleteDedicatedServerOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6304,8 +4369,8 @@ export const deleteDedicatedServerSecondaryDnsDomain: API.OperationMethod<
   DeleteDedicatedServerSecondaryDnsDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDedicatedServerSecondaryDnsDomainRequest,
-  output: DeleteDedicatedServerSecondaryDnsDomainResponse,
+  input: __S(76) as any as S.Schema<DeleteDedicatedServerSecondaryDnsDomainRequest>,
+  output: __S(5) as any as S.Schema<DeleteDedicatedServerSecondaryDnsDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6319,8 +4384,8 @@ export const deleteDedicatedServerVirtualMacVirtualAddress: API.OperationMethod<
   DeleteDedicatedServerVirtualMacVirtualAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDedicatedServerVirtualMacVirtualAddressRequest,
-  output: DedicatedServerTask,
+  input: __S(77) as any as S.Schema<DeleteDedicatedServerVirtualMacVirtualAddressRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6334,8 +4399,8 @@ export const deleteDedicatedServerVrack: API.OperationMethod<
   DeleteDedicatedServerVrackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDedicatedServerVrackRequest,
-  output: VrackTask,
+  input: __S(78) as any as S.Schema<DeleteDedicatedServerVrackRequest>,
+  output: __S(79) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6349,8 +4414,8 @@ export const getDedicatedServer: API.OperationMethod<
   GetDedicatedServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerRequest,
-  output: DedicatedServerDedicatedWithIAM,
+  input: __S(80) as any as S.Schema<GetDedicatedServerRequest>,
+  output: __S(82) as any as S.Schema<DedicatedServerDedicatedWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6364,8 +4429,8 @@ export const getDedicatedServerAntiDDosGameStatus: API.OperationMethod<
   GetDedicatedServerAntiDDosGameStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerAntiDDosGameStatusRequest,
-  output: GetDedicatedServerAntiDDosGameStatusResponse,
+  input: __S(83) as any as S.Schema<GetDedicatedServerAntiDDosGameStatusRequest>,
+  output: __S(84) as any as S.Schema<GetDedicatedServerAntiDDosGameStatusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6379,8 +4444,8 @@ export const getDedicatedServerBackupCloudOfferDetails: API.OperationMethod<
   GetDedicatedServerBackupCloudOfferDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerBackupCloudOfferDetailsRequest,
-  output: DedicatedServerBackupBackupOffer,
+  input: __S(85) as any as S.Schema<GetDedicatedServerBackupCloudOfferDetailsRequest>,
+  output: __S(86) as any as S.Schema<DedicatedServerBackupBackupOffer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6394,8 +4459,8 @@ export const getDedicatedServerBiosSettings: API.OperationMethod<
   GetDedicatedServerBiosSettingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerBiosSettingsRequest,
-  output: DedicatedBiosSettingsBiosSettings,
+  input: __S(87) as any as S.Schema<GetDedicatedServerBiosSettingsRequest>,
+  output: __S(91) as any as S.Schema<DedicatedBiosSettingsBiosSettings>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6409,8 +4474,8 @@ export const getDedicatedServerBiosSettingsSgx: API.OperationMethod<
   GetDedicatedServerBiosSettingsSgxError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerBiosSettingsSgxRequest,
-  output: DedicatedBiosSettingsSgxBiosSettingsSgx,
+  input: __S(92) as any as S.Schema<GetDedicatedServerBiosSettingsSgxRequest>,
+  output: __S(93) as any as S.Schema<DedicatedBiosSettingsSgxBiosSettingsSgx>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6424,8 +4489,8 @@ export const getDedicatedServerBoot: API.OperationMethod<
   GetDedicatedServerBootError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerBootRequest,
-  output: DedicatedServerNetboot,
+  input: __S(94) as any as S.Schema<GetDedicatedServerBootRequest>,
+  output: __S(95) as any as S.Schema<DedicatedServerNetboot>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6439,8 +4504,8 @@ export const getDedicatedServerBootOption: API.OperationMethod<
   GetDedicatedServerBootOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerBootOptionRequest,
-  output: DedicatedServerNetbootOption,
+  input: __S(96) as any as S.Schema<GetDedicatedServerBootOptionRequest>,
+  output: __S(97) as any as S.Schema<DedicatedServerNetbootOption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6454,8 +4519,8 @@ export const getDedicatedServerBurst: API.OperationMethod<
   GetDedicatedServerBurstError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerBurstRequest,
-  output: DedicatedServerServerBurst,
+  input: __S(98) as any as S.Schema<GetDedicatedServerBurstRequest>,
+  output: __S(99) as any as S.Schema<DedicatedServerServerBurst>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6469,8 +4534,8 @@ export const getDedicatedServerFeatureBackupFTP: API.OperationMethod<
   GetDedicatedServerFeatureBackupFTPError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerFeatureBackupFTPRequest,
-  output: DedicatedServerBackupFtp,
+  input: __S(100) as any as S.Schema<GetDedicatedServerFeatureBackupFTPRequest>,
+  output: __S(101) as any as S.Schema<DedicatedServerBackupFtp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6484,8 +4549,8 @@ export const getDedicatedServerFeatureBackupFTPAccess: API.OperationMethod<
   GetDedicatedServerFeatureBackupFTPAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerFeatureBackupFTPAccessRequest,
-  output: DedicatedServerBackupFtpAcl,
+  input: __S(102) as any as S.Schema<GetDedicatedServerFeatureBackupFTPAccessRequest>,
+  output: __S(103) as any as S.Schema<DedicatedServerBackupFtpAcl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6499,8 +4564,8 @@ export const getDedicatedServerFeatureBmc: API.OperationMethod<
   GetDedicatedServerFeatureBmcError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerFeatureBmcRequest,
-  output: DedicatedServerBMC,
+  input: __S(104) as any as S.Schema<GetDedicatedServerFeatureBmcRequest>,
+  output: __S(106) as any as S.Schema<DedicatedServerBMC>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6514,8 +4579,8 @@ export const getDedicatedServerFeatureBmcJavaKvm: API.OperationMethod<
   GetDedicatedServerFeatureBmcJavaKvmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerFeatureBmcJavaKvmRequest,
-  output: DedicatedServerBmcJavaKvmValue,
+  input: __S(107) as any as S.Schema<GetDedicatedServerFeatureBmcJavaKvmRequest>,
+  output: __S(108) as any as S.Schema<DedicatedServerBmcJavaKvmValue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6529,8 +4594,8 @@ export const getDedicatedServerFeatureBmcSshSol: API.OperationMethod<
   GetDedicatedServerFeatureBmcSshSolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerFeatureBmcSshSolRequest,
-  output: DedicatedServerBmcSshSolValue,
+  input: __S(109) as any as S.Schema<GetDedicatedServerFeatureBmcSshSolRequest>,
+  output: __S(110) as any as S.Schema<DedicatedServerBmcSshSolValue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6544,8 +4609,8 @@ export const getDedicatedServerFeatureBmcTest: API.OperationMethod<
   GetDedicatedServerFeatureBmcTestError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerFeatureBmcTestRequest,
-  output: DedicatedServerBmcTestResult,
+  input: __S(111) as any as S.Schema<GetDedicatedServerFeatureBmcTestRequest>,
+  output: __S(112) as any as S.Schema<DedicatedServerBmcTestResult>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6559,8 +4624,8 @@ export const getDedicatedServerFeatureBmcWebKvm: API.OperationMethod<
   GetDedicatedServerFeatureBmcWebKvmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerFeatureBmcWebKvmRequest,
-  output: DedicatedServerBmcWebKvmValue,
+  input: __S(113) as any as S.Schema<GetDedicatedServerFeatureBmcWebKvmRequest>,
+  output: __S(114) as any as S.Schema<DedicatedServerBmcWebKvmValue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6574,8 +4639,8 @@ export const getDedicatedServerFeatureBmcWebSol: API.OperationMethod<
   GetDedicatedServerFeatureBmcWebSolError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerFeatureBmcWebSolRequest,
-  output: DedicatedServerBmcWebSolValue,
+  input: __S(115) as any as S.Schema<GetDedicatedServerFeatureBmcWebSolRequest>,
+  output: __S(114) as any as S.Schema<DedicatedServerBmcWebSolValue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6589,8 +4654,8 @@ export const getDedicatedServerFeatureFirewall: API.OperationMethod<
   GetDedicatedServerFeatureFirewallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerFeatureFirewallRequest,
-  output: DedicatedServerFirewall,
+  input: __S(116) as any as S.Schema<GetDedicatedServerFeatureFirewallRequest>,
+  output: __S(117) as any as S.Schema<DedicatedServerFirewall>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6604,8 +4669,8 @@ export const getDedicatedServerFeatureIpmi: API.OperationMethod<
   GetDedicatedServerFeatureIpmiError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerFeatureIpmiRequest,
-  output: DedicatedServerIpmi,
+  input: __S(118) as any as S.Schema<GetDedicatedServerFeatureIpmiRequest>,
+  output: __S(120) as any as S.Schema<DedicatedServerIpmi>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6619,8 +4684,8 @@ export const getDedicatedServerFeatureIpmiAccess: API.OperationMethod<
   GetDedicatedServerFeatureIpmiAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerFeatureIpmiAccessRequest,
-  output: DedicatedServerIpmiAccessValue,
+  input: __S(121) as any as S.Schema<GetDedicatedServerFeatureIpmiAccessRequest>,
+  output: __S(122) as any as S.Schema<DedicatedServerIpmiAccessValue>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6634,8 +4699,8 @@ export const getDedicatedServerFeatureIpmiTest: API.OperationMethod<
   GetDedicatedServerFeatureIpmiTestError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerFeatureIpmiTestRequest,
-  output: DedicatedServerIpmiTestResult,
+  input: __S(123) as any as S.Schema<GetDedicatedServerFeatureIpmiTestRequest>,
+  output: __S(124) as any as S.Schema<DedicatedServerIpmiTestResult>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6649,8 +4714,8 @@ export const getDedicatedServerFeatureKvm: API.OperationMethod<
   GetDedicatedServerFeatureKvmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerFeatureKvmRequest,
-  output: DedicatedServerKvm,
+  input: __S(125) as any as S.Schema<GetDedicatedServerFeatureKvmRequest>,
+  output: __S(126) as any as S.Schema<DedicatedServerKvm>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6664,8 +4729,8 @@ export const getDedicatedServerIntervention: API.OperationMethod<
   GetDedicatedServerInterventionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerInterventionRequest,
-  output: DedicatedServerIntervention,
+  input: __S(127) as any as S.Schema<GetDedicatedServerInterventionRequest>,
+  output: __S(128) as any as S.Schema<DedicatedServerIntervention>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6679,8 +4744,8 @@ export const getDedicatedServerIpCanBeMovedTo: API.OperationMethod<
   GetDedicatedServerIpCanBeMovedToError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerIpCanBeMovedToRequest,
-  output: GetDedicatedServerIpCanBeMovedToResponse,
+  input: __S(129) as any as S.Schema<GetDedicatedServerIpCanBeMovedToRequest>,
+  output: __S(5) as any as S.Schema<GetDedicatedServerIpCanBeMovedToResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6694,8 +4759,10 @@ export const getDedicatedServerNetworkInterfaceController: API.OperationMethod<
   GetDedicatedServerNetworkInterfaceControllerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerNetworkInterfaceControllerRequest,
-  output: DedicatedNetworkInterfaceControllerNetworkInterfaceController,
+  input: __S(130) as any as S.Schema<GetDedicatedServerNetworkInterfaceControllerRequest>,
+  output: __S(
+    131,
+  ) as any as S.Schema<DedicatedNetworkInterfaceControllerNetworkInterfaceController>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6709,8 +4776,8 @@ export const getDedicatedServerOperation: API.OperationMethod<
   GetDedicatedServerOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerOperationRequest,
-  output: DedicatedServerOperation,
+  input: __S(132) as any as S.Schema<GetDedicatedServerOperationRequest>,
+  output: __S(31) as any as S.Schema<DedicatedServerOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6724,8 +4791,8 @@ export const getDedicatedServerOption: API.OperationMethod<
   GetDedicatedServerOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerOptionRequest,
-  output: DedicatedServerOption,
+  input: __S(133) as any as S.Schema<GetDedicatedServerOptionRequest>,
+  output: __S(134) as any as S.Schema<DedicatedServerOption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6739,8 +4806,8 @@ export const getDedicatedServerOrderableFeature: API.OperationMethod<
   GetDedicatedServerOrderableFeatureError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerOrderableFeatureRequest,
-  output: GetDedicatedServerOrderableFeatureResponse,
+  input: __S(135) as any as S.Schema<GetDedicatedServerOrderableFeatureRequest>,
+  output: __S(136) as any as S.Schema<GetDedicatedServerOrderableFeatureResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6754,8 +4821,8 @@ export const getDedicatedServerOrderableKvm: API.OperationMethod<
   GetDedicatedServerOrderableKvmError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerOrderableKvmRequest,
-  output: GetDedicatedServerOrderableKvmResponse,
+  input: __S(137) as any as S.Schema<GetDedicatedServerOrderableKvmRequest>,
+  output: __S(136) as any as S.Schema<GetDedicatedServerOrderableKvmResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6769,8 +4836,8 @@ export const getDedicatedServerOrderableKvmExpress: API.OperationMethod<
   GetDedicatedServerOrderableKvmExpressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerOrderableKvmExpressRequest,
-  output: GetDedicatedServerOrderableKvmExpressResponse,
+  input: __S(138) as any as S.Schema<GetDedicatedServerOrderableKvmExpressRequest>,
+  output: __S(136) as any as S.Schema<GetDedicatedServerOrderableKvmExpressResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6784,8 +4851,8 @@ export const getDedicatedServerOrderableProfessionalUse: API.OperationMethod<
   GetDedicatedServerOrderableProfessionalUseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerOrderableProfessionalUseRequest,
-  output: GetDedicatedServerOrderableProfessionalUseResponse,
+  input: __S(139) as any as S.Schema<GetDedicatedServerOrderableProfessionalUseRequest>,
+  output: __S(136) as any as S.Schema<GetDedicatedServerOrderableProfessionalUseResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6799,8 +4866,8 @@ export const getDedicatedServerPlannedIntervention: API.OperationMethod<
   GetDedicatedServerPlannedInterventionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerPlannedInterventionRequest,
-  output: DedicatedServerPlannedIntervention,
+  input: __S(140) as any as S.Schema<GetDedicatedServerPlannedInterventionRequest>,
+  output: __S(141) as any as S.Schema<DedicatedServerPlannedIntervention>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6814,8 +4881,8 @@ export const getDedicatedServerSecondaryDnsDomain: API.OperationMethod<
   GetDedicatedServerSecondaryDnsDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerSecondaryDnsDomainRequest,
-  output: SecondaryDnsSecondaryDNS,
+  input: __S(142) as any as S.Schema<GetDedicatedServerSecondaryDnsDomainRequest>,
+  output: __S(143) as any as S.Schema<SecondaryDnsSecondaryDNS>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6829,8 +4896,8 @@ export const getDedicatedServerSecondaryDnsDomainDnsServer: API.OperationMethod<
   GetDedicatedServerSecondaryDnsDomainDnsServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerSecondaryDnsDomainDnsServerRequest,
-  output: SecondaryDnsSecondaryDNSNameServer,
+  input: __S(144) as any as S.Schema<GetDedicatedServerSecondaryDnsDomainDnsServerRequest>,
+  output: __S(145) as any as S.Schema<SecondaryDnsSecondaryDNSNameServer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6844,8 +4911,8 @@ export const getDedicatedServerSecondaryDnsNameDomainToken: API.OperationMethod<
   GetDedicatedServerSecondaryDnsNameDomainTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerSecondaryDnsNameDomainTokenRequest,
-  output: SecondaryDnsSecondaryDNSCheckField,
+  input: __S(146) as any as S.Schema<GetDedicatedServerSecondaryDnsNameDomainTokenRequest>,
+  output: __S(147) as any as S.Schema<SecondaryDnsSecondaryDNSCheckField>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6859,8 +4926,8 @@ export const getDedicatedServerSecondaryDnsNameServerAvailable: API.OperationMet
   GetDedicatedServerSecondaryDnsNameServerAvailableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerSecondaryDnsNameServerAvailableRequest,
-  output: SecondaryDnsSecondaryDNSNameServer,
+  input: __S(148) as any as S.Schema<GetDedicatedServerSecondaryDnsNameServerAvailableRequest>,
+  output: __S(145) as any as S.Schema<SecondaryDnsSecondaryDNSNameServer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6874,8 +4941,8 @@ export const getDedicatedServerServiceInfos: API.OperationMethod<
   GetDedicatedServerServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerServiceInfosRequest,
-  output: ServicesService,
+  input: __S(149) as any as S.Schema<GetDedicatedServerServiceInfosRequest>,
+  output: __S(151) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6889,8 +4956,8 @@ export const getDedicatedServerSpecificationHardware: API.OperationMethod<
   GetDedicatedServerSpecificationHardwareError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerSpecificationHardwareRequest,
-  output: DedicatedServerHardwareSpecifications,
+  input: __S(152) as any as S.Schema<GetDedicatedServerSpecificationHardwareRequest>,
+  output: __S(158) as any as S.Schema<DedicatedServerHardwareSpecifications>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6904,8 +4971,8 @@ export const getDedicatedServerSpecificationNetwork: API.OperationMethod<
   GetDedicatedServerSpecificationNetworkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerSpecificationNetworkRequest,
-  output: DedicatedServerNetworkSpecifications,
+  input: __S(159) as any as S.Schema<GetDedicatedServerSpecificationNetworkRequest>,
+  output: __S(172) as any as S.Schema<DedicatedServerNetworkSpecifications>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6919,8 +4986,8 @@ export const getDedicatedServerSpla: API.OperationMethod<
   GetDedicatedServerSplaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerSplaRequest,
-  output: DedicatedServerSpla,
+  input: __S(173) as any as S.Schema<GetDedicatedServerSplaRequest>,
+  output: __S(174) as any as S.Schema<DedicatedServerSpla>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6934,8 +5001,8 @@ export const getDedicatedServerTask: API.OperationMethod<
   GetDedicatedServerTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerTaskRequest,
-  output: DedicatedServerTask,
+  input: __S(175) as any as S.Schema<GetDedicatedServerTaskRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6949,8 +5016,8 @@ export const getDedicatedServerVirtualMac: API.OperationMethod<
   GetDedicatedServerVirtualMacError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerVirtualMacRequest,
-  output: DedicatedServerVirtualMac,
+  input: __S(176) as any as S.Schema<GetDedicatedServerVirtualMacRequest>,
+  output: __S(177) as any as S.Schema<DedicatedServerVirtualMac>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6964,8 +5031,8 @@ export const getDedicatedServerVirtualMacVirtualAddress: API.OperationMethod<
   GetDedicatedServerVirtualMacVirtualAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerVirtualMacVirtualAddressRequest,
-  output: DedicatedServerVirtualMacManagement,
+  input: __S(178) as any as S.Schema<GetDedicatedServerVirtualMacVirtualAddressRequest>,
+  output: __S(179) as any as S.Schema<DedicatedServerVirtualMacManagement>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6979,8 +5046,8 @@ export const getDedicatedServerVirtualNetworkInterface: API.OperationMethod<
   GetDedicatedServerVirtualNetworkInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerVirtualNetworkInterfaceRequest,
-  output: DedicatedServerVirtualNetworkInterface,
+  input: __S(180) as any as S.Schema<GetDedicatedServerVirtualNetworkInterfaceRequest>,
+  output: __S(181) as any as S.Schema<DedicatedServerVirtualNetworkInterface>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6994,8 +5061,8 @@ export const getDedicatedServerVirtualNetworkInterfaceByUuid: API.OperationMetho
   GetDedicatedServerVirtualNetworkInterfaceByUuidError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerVirtualNetworkInterfaceByUuidRequest,
-  output: DedicatedVirtualNetworkInterfaceVirtualNetworkInterface,
+  input: __S(182) as any as S.Schema<GetDedicatedServerVirtualNetworkInterfaceByUuidRequest>,
+  output: __S(181) as any as S.Schema<DedicatedVirtualNetworkInterfaceVirtualNetworkInterface>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7009,8 +5076,8 @@ export const getDedicatedServerVrack: API.OperationMethod<
   GetDedicatedServerVrackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedServerVrackRequest,
-  output: VrackDedicatedServer,
+  input: __S(183) as any as S.Schema<GetDedicatedServerVrackRequest>,
+  output: __S(184) as any as S.Schema<VrackDedicatedServer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7024,8 +5091,8 @@ export const listDedicatedServer: API.OperationMethod<
   ListDedicatedServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerRequest,
-  output: ListDedicatedServerResponse,
+  input: __S(188) as any as S.Schema<ListDedicatedServerRequest>,
+  output: __S(189) as any as S.Schema<ListDedicatedServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7039,8 +5106,8 @@ export const listDedicatedServerAvailabilityRaw: API.OperationMethod<
   ListDedicatedServerAvailabilityRawError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerAvailabilityRawRequest,
-  output: ListDedicatedServerAvailabilityRawResponse,
+  input: __S(190) as any as S.Schema<ListDedicatedServerAvailabilityRawRequest>,
+  output: __S(193) as any as S.Schema<ListDedicatedServerAvailabilityRawResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7054,8 +5121,8 @@ export const listDedicatedServerBoot: API.OperationMethod<
   ListDedicatedServerBootError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerBootRequest,
-  output: ListDedicatedServerBootResponse,
+  input: __S(194) as any as S.Schema<ListDedicatedServerBootRequest>,
+  output: __S(15) as any as S.Schema<ListDedicatedServerBootResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7069,8 +5136,8 @@ export const listDedicatedServerBootOption: API.OperationMethod<
   ListDedicatedServerBootOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerBootOptionRequest,
-  output: ListDedicatedServerBootOptionResponse,
+  input: __S(195) as any as S.Schema<ListDedicatedServerBootOptionRequest>,
+  output: __S(196) as any as S.Schema<ListDedicatedServerBootOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7084,8 +5151,8 @@ export const listDedicatedServerDatacenterAvailabilities: API.OperationMethod<
   ListDedicatedServerDatacenterAvailabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerDatacenterAvailabilitiesRequest,
-  output: ListDedicatedServerDatacenterAvailabilitiesResponse,
+  input: __S(197) as any as S.Schema<ListDedicatedServerDatacenterAvailabilitiesRequest>,
+  output: __S(202) as any as S.Schema<ListDedicatedServerDatacenterAvailabilitiesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7099,8 +5166,8 @@ export const listDedicatedServerDatacenterAvailabilityRaw: API.OperationMethod<
   ListDedicatedServerDatacenterAvailabilityRawError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerDatacenterAvailabilityRawRequest,
-  output: ListDedicatedServerDatacenterAvailabilityRawResponse,
+  input: __S(203) as any as S.Schema<ListDedicatedServerDatacenterAvailabilityRawRequest>,
+  output: __S(212) as any as S.Schema<ListDedicatedServerDatacenterAvailabilityRawResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7114,8 +5181,8 @@ export const listDedicatedServerFeatureBackupCloud: API.OperationMethod<
   ListDedicatedServerFeatureBackupCloudError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerFeatureBackupCloudRequest,
-  output: DedicatedServerBackupCloud,
+  input: __S(213) as any as S.Schema<ListDedicatedServerFeatureBackupCloudRequest>,
+  output: __S(24) as any as S.Schema<DedicatedServerBackupCloud>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7129,8 +5196,8 @@ export const listDedicatedServerFeatureBackupFTPAccess: API.OperationMethod<
   ListDedicatedServerFeatureBackupFTPAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerFeatureBackupFTPAccessRequest,
-  output: ListDedicatedServerFeatureBackupFTPAccessResponse,
+  input: __S(214) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAccessRequest>,
+  output: __S(189) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7144,8 +5211,10 @@ export const listDedicatedServerFeatureBackupFTPAuthorizableBlocks: API.Operatio
   ListDedicatedServerFeatureBackupFTPAuthorizableBlocksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerFeatureBackupFTPAuthorizableBlocksRequest,
-  output: ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponse,
+  input: __S(215) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAuthorizableBlocksRequest>,
+  output: __S(
+    216,
+  ) as any as S.Schema<ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7159,8 +5228,12 @@ export const listDedicatedServerInstallCompatibleTemplatePartitionSchemes: API.O
   ListDedicatedServerInstallCompatibleTemplatePartitionSchemesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest,
-  output: ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponse,
+  input: __S(
+    217,
+  ) as any as S.Schema<ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest>,
+  output: __S(
+    218,
+  ) as any as S.Schema<ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7174,8 +5247,8 @@ export const listDedicatedServerInstallCompatibleTemplates: API.OperationMethod<
   ListDedicatedServerInstallCompatibleTemplatesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerInstallCompatibleTemplatesRequest,
-  output: DedicatedServerInstallTemplate,
+  input: __S(219) as any as S.Schema<ListDedicatedServerInstallCompatibleTemplatesRequest>,
+  output: __S(220) as any as S.Schema<DedicatedServerInstallTemplate>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7189,8 +5262,8 @@ export const listDedicatedServerInstallHardwareRaidProfile: API.OperationMethod<
   ListDedicatedServerInstallHardwareRaidProfileError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerInstallHardwareRaidProfileRequest,
-  output: DedicatedServerHardwareRaidProfile,
+  input: __S(221) as any as S.Schema<ListDedicatedServerInstallHardwareRaidProfileRequest>,
+  output: __S(227) as any as S.Schema<DedicatedServerHardwareRaidProfile>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7204,8 +5277,8 @@ export const listDedicatedServerInstallHardwareRaidSize: API.OperationMethod<
   ListDedicatedServerInstallHardwareRaidSizeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerInstallHardwareRaidSizeRequest,
-  output: DedicatedServerHardwareRaidSize,
+  input: __S(228) as any as S.Schema<ListDedicatedServerInstallHardwareRaidSizeRequest>,
+  output: __S(231) as any as S.Schema<DedicatedServerHardwareRaidSize>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7219,8 +5292,8 @@ export const listDedicatedServerInstallStatus: API.OperationMethod<
   ListDedicatedServerInstallStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerInstallStatusRequest,
-  output: DedicatedServerInstallationProgressStatus,
+  input: __S(232) as any as S.Schema<ListDedicatedServerInstallStatusRequest>,
+  output: __S(235) as any as S.Schema<DedicatedServerInstallationProgressStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7234,8 +5307,8 @@ export const listDedicatedServerIntervention: API.OperationMethod<
   ListDedicatedServerInterventionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerInterventionRequest,
-  output: ListDedicatedServerInterventionResponse,
+  input: __S(236) as any as S.Schema<ListDedicatedServerInterventionRequest>,
+  output: __S(15) as any as S.Schema<ListDedicatedServerInterventionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7249,8 +5322,8 @@ export const listDedicatedServerIpCountryAvailable: API.OperationMethod<
   ListDedicatedServerIpCountryAvailableError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerIpCountryAvailableRequest,
-  output: ListDedicatedServerIpCountryAvailableResponse,
+  input: __S(237) as any as S.Schema<ListDedicatedServerIpCountryAvailableRequest>,
+  output: __S(196) as any as S.Schema<ListDedicatedServerIpCountryAvailableResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7264,8 +5337,8 @@ export const listDedicatedServerIps: API.OperationMethod<
   ListDedicatedServerIpsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerIpsRequest,
-  output: ListDedicatedServerIpsResponse,
+  input: __S(238) as any as S.Schema<ListDedicatedServerIpsRequest>,
+  output: __S(189) as any as S.Schema<ListDedicatedServerIpsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7279,8 +5352,8 @@ export const listDedicatedServerLicenseCompliantWindows: API.OperationMethod<
   ListDedicatedServerLicenseCompliantWindowsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerLicenseCompliantWindowsRequest,
-  output: ListDedicatedServerLicenseCompliantWindowsResponse,
+  input: __S(239) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsRequest>,
+  output: __S(196) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7294,8 +5367,8 @@ export const listDedicatedServerLicenseCompliantWindowsSqlServer: API.OperationM
   ListDedicatedServerLicenseCompliantWindowsSqlServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerLicenseCompliantWindowsSqlServerRequest,
-  output: ListDedicatedServerLicenseCompliantWindowsSqlServerResponse,
+  input: __S(240) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsSqlServerRequest>,
+  output: __S(242) as any as S.Schema<ListDedicatedServerLicenseCompliantWindowsSqlServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7309,8 +5382,8 @@ export const listDedicatedServerNetworking: API.OperationMethod<
   ListDedicatedServerNetworkingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerNetworkingRequest,
-  output: DedicatedServerNetworking,
+  input: __S(243) as any as S.Schema<ListDedicatedServerNetworkingRequest>,
+  output: __S(43) as any as S.Schema<DedicatedServerNetworking>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7324,8 +5397,8 @@ export const listDedicatedServerNetworkInterfaceController: API.OperationMethod<
   ListDedicatedServerNetworkInterfaceControllerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerNetworkInterfaceControllerRequest,
-  output: ListDedicatedServerNetworkInterfaceControllerResponse,
+  input: __S(244) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerRequest>,
+  output: __S(189) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7339,8 +5412,8 @@ export const listDedicatedServerNetworkInterfaceControllerMrtg: API.OperationMet
   ListDedicatedServerNetworkInterfaceControllerMrtgError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerNetworkInterfaceControllerMrtgRequest,
-  output: ListDedicatedServerNetworkInterfaceControllerMrtgResponse,
+  input: __S(245) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerMrtgRequest>,
+  output: __S(248) as any as S.Schema<ListDedicatedServerNetworkInterfaceControllerMrtgResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7354,8 +5427,8 @@ export const listDedicatedServerOngoing: API.OperationMethod<
   ListDedicatedServerOngoingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerOngoingRequest,
-  output: ListDedicatedServerOngoingResponse,
+  input: __S(249) as any as S.Schema<ListDedicatedServerOngoingRequest>,
+  output: __S(252) as any as S.Schema<ListDedicatedServerOngoingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7369,8 +5442,8 @@ export const listDedicatedServerOperation: API.OperationMethod<
   ListDedicatedServerOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerOperationRequest,
-  output: ListDedicatedServerOperationResponse,
+  input: __S(253) as any as S.Schema<ListDedicatedServerOperationRequest>,
+  output: __S(189) as any as S.Schema<ListDedicatedServerOperationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7384,8 +5457,8 @@ export const listDedicatedServerOption: API.OperationMethod<
   ListDedicatedServerOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerOptionRequest,
-  output: ListDedicatedServerOptionResponse,
+  input: __S(254) as any as S.Schema<ListDedicatedServerOptionRequest>,
+  output: __S(196) as any as S.Schema<ListDedicatedServerOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7399,8 +5472,8 @@ export const listDedicatedServerOrderableBackupStorage: API.OperationMethod<
   ListDedicatedServerOrderableBackupStorageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerOrderableBackupStorageRequest,
-  output: DedicatedServerBackupStorageOrderable,
+  input: __S(255) as any as S.Schema<ListDedicatedServerOrderableBackupStorageRequest>,
+  output: __S(257) as any as S.Schema<DedicatedServerBackupStorageOrderable>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7414,8 +5487,8 @@ export const listDedicatedServerOrderableBandwidth: API.OperationMethod<
   ListDedicatedServerOrderableBandwidthError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerOrderableBandwidthRequest,
-  output: DedicatedServerBandwidthOrderable,
+  input: __S(258) as any as S.Schema<ListDedicatedServerOrderableBandwidthRequest>,
+  output: __S(259) as any as S.Schema<DedicatedServerBandwidthOrderable>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7429,8 +5502,8 @@ export const listDedicatedServerOrderableBandwidthvRack: API.OperationMethod<
   ListDedicatedServerOrderableBandwidthvRackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerOrderableBandwidthvRackRequest,
-  output: DedicatedServerBandwidthvRackOrderable,
+  input: __S(260) as any as S.Schema<ListDedicatedServerOrderableBandwidthvRackRequest>,
+  output: __S(261) as any as S.Schema<DedicatedServerBandwidthvRackOrderable>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7444,8 +5517,8 @@ export const listDedicatedServerOrderableIp: API.OperationMethod<
   ListDedicatedServerOrderableIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerOrderableIpRequest,
-  output: DedicatedServerIpOrderable,
+  input: __S(262) as any as S.Schema<ListDedicatedServerOrderableIpRequest>,
+  output: __S(265) as any as S.Schema<DedicatedServerIpOrderable>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7459,8 +5532,8 @@ export const listDedicatedServerOrderableSupportLevel: API.OperationMethod<
   ListDedicatedServerOrderableSupportLevelError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerOrderableSupportLevelRequest,
-  output: DedicatedServerSupportLevelOrderable,
+  input: __S(266) as any as S.Schema<ListDedicatedServerOrderableSupportLevelRequest>,
+  output: __S(267) as any as S.Schema<DedicatedServerSupportLevelOrderable>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7474,8 +5547,8 @@ export const listDedicatedServerOrderableTraffic: API.OperationMethod<
   ListDedicatedServerOrderableTrafficError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerOrderableTrafficRequest,
-  output: DedicatedServerTrafficOrderable,
+  input: __S(268) as any as S.Schema<ListDedicatedServerOrderableTrafficRequest>,
+  output: __S(269) as any as S.Schema<DedicatedServerTrafficOrderable>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7489,8 +5562,8 @@ export const listDedicatedServerOrderableUsbKey: API.OperationMethod<
   ListDedicatedServerOrderableUsbKeyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerOrderableUsbKeyRequest,
-  output: DedicatedServerUsbKeyOrderableDetails,
+  input: __S(270) as any as S.Schema<ListDedicatedServerOrderableUsbKeyRequest>,
+  output: __S(271) as any as S.Schema<DedicatedServerUsbKeyOrderableDetails>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7504,8 +5577,8 @@ export const listDedicatedServerOsAvailabilities: API.OperationMethod<
   ListDedicatedServerOsAvailabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerOsAvailabilitiesRequest,
-  output: ListDedicatedServerOsAvailabilitiesResponse,
+  input: __S(272) as any as S.Schema<ListDedicatedServerOsAvailabilitiesRequest>,
+  output: __S(189) as any as S.Schema<ListDedicatedServerOsAvailabilitiesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7519,8 +5592,8 @@ export const listDedicatedServerPlannedIntervention: API.OperationMethod<
   ListDedicatedServerPlannedInterventionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerPlannedInterventionRequest,
-  output: ListDedicatedServerPlannedInterventionResponse,
+  input: __S(273) as any as S.Schema<ListDedicatedServerPlannedInterventionRequest>,
+  output: __S(15) as any as S.Schema<ListDedicatedServerPlannedInterventionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7534,8 +5607,8 @@ export const listDedicatedServerRegionAvailabilities: API.OperationMethod<
   ListDedicatedServerRegionAvailabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerRegionAvailabilitiesRequest,
-  output: ListDedicatedServerRegionAvailabilitiesResponse,
+  input: __S(274) as any as S.Schema<ListDedicatedServerRegionAvailabilitiesRequest>,
+  output: __S(281) as any as S.Schema<ListDedicatedServerRegionAvailabilitiesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7549,8 +5622,8 @@ export const listDedicatedServerSecondaryDnsDomains: API.OperationMethod<
   ListDedicatedServerSecondaryDnsDomainsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerSecondaryDnsDomainsRequest,
-  output: ListDedicatedServerSecondaryDnsDomainsResponse,
+  input: __S(282) as any as S.Schema<ListDedicatedServerSecondaryDnsDomainsRequest>,
+  output: __S(189) as any as S.Schema<ListDedicatedServerSecondaryDnsDomainsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7564,8 +5637,8 @@ export const listDedicatedServerSpecificationIp: API.OperationMethod<
   ListDedicatedServerSpecificationIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerSpecificationIpRequest,
-  output: DedicatedServerIpOrderable,
+  input: __S(283) as any as S.Schema<ListDedicatedServerSpecificationIpRequest>,
+  output: __S(265) as any as S.Schema<DedicatedServerIpOrderable>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7579,8 +5652,8 @@ export const listDedicatedServerSpla: API.OperationMethod<
   ListDedicatedServerSplaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerSplaRequest,
-  output: ListDedicatedServerSplaResponse,
+  input: __S(284) as any as S.Schema<ListDedicatedServerSplaRequest>,
+  output: __S(15) as any as S.Schema<ListDedicatedServerSplaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7594,8 +5667,8 @@ export const listDedicatedServerTask: API.OperationMethod<
   ListDedicatedServerTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerTaskRequest,
-  output: ListDedicatedServerTaskResponse,
+  input: __S(285) as any as S.Schema<ListDedicatedServerTaskRequest>,
+  output: __S(15) as any as S.Schema<ListDedicatedServerTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7609,8 +5682,8 @@ export const listDedicatedServerTaskAvailableTimeslots: API.OperationMethod<
   ListDedicatedServerTaskAvailableTimeslotsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerTaskAvailableTimeslotsRequest,
-  output: ListDedicatedServerTaskAvailableTimeslotsResponse,
+  input: __S(286) as any as S.Schema<ListDedicatedServerTaskAvailableTimeslotsRequest>,
+  output: __S(289) as any as S.Schema<ListDedicatedServerTaskAvailableTimeslotsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7624,8 +5697,8 @@ export const listDedicatedServerUpdateAllowed: API.OperationMethod<
   ListDedicatedServerUpdateAllowedError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerUpdateAllowedRequest,
-  output: ListDedicatedServerUpdateAllowedResponse,
+  input: __S(290) as any as S.Schema<ListDedicatedServerUpdateAllowedRequest>,
+  output: __S(293) as any as S.Schema<ListDedicatedServerUpdateAllowedResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7639,8 +5712,8 @@ export const listDedicatedServerUpgradeAvailableTimeslots: API.OperationMethod<
   ListDedicatedServerUpgradeAvailableTimeslotsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerUpgradeAvailableTimeslotsRequest,
-  output: ListDedicatedServerUpgradeAvailableTimeslotsResponse,
+  input: __S(294) as any as S.Schema<ListDedicatedServerUpgradeAvailableTimeslotsRequest>,
+  output: __S(289) as any as S.Schema<ListDedicatedServerUpgradeAvailableTimeslotsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7654,8 +5727,8 @@ export const listDedicatedServerVirtualMac: API.OperationMethod<
   ListDedicatedServerVirtualMacError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerVirtualMacRequest,
-  output: ListDedicatedServerVirtualMacResponse,
+  input: __S(295) as any as S.Schema<ListDedicatedServerVirtualMacRequest>,
+  output: __S(189) as any as S.Schema<ListDedicatedServerVirtualMacResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7669,8 +5742,8 @@ export const listDedicatedServerVirtualMacVirtualAddress: API.OperationMethod<
   ListDedicatedServerVirtualMacVirtualAddressError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerVirtualMacVirtualAddressRequest,
-  output: ListDedicatedServerVirtualMacVirtualAddressResponse,
+  input: __S(296) as any as S.Schema<ListDedicatedServerVirtualMacVirtualAddressRequest>,
+  output: __S(189) as any as S.Schema<ListDedicatedServerVirtualMacVirtualAddressResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7684,8 +5757,8 @@ export const listDedicatedServerVirtualNetworkInterface: API.OperationMethod<
   ListDedicatedServerVirtualNetworkInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerVirtualNetworkInterfaceRequest,
-  output: ListDedicatedServerVirtualNetworkInterfaceResponse,
+  input: __S(297) as any as S.Schema<ListDedicatedServerVirtualNetworkInterfaceRequest>,
+  output: __S(189) as any as S.Schema<ListDedicatedServerVirtualNetworkInterfaceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7699,8 +5772,8 @@ export const listDedicatedServerVrack: API.OperationMethod<
   ListDedicatedServerVrackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedServerVrackRequest,
-  output: ListDedicatedServerVrackResponse,
+  input: __S(298) as any as S.Schema<ListDedicatedServerVrackRequest>,
+  output: __S(189) as any as S.Schema<ListDedicatedServerVrackResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7714,8 +5787,8 @@ export const putDedicatedServer: API.OperationMethod<
   PutDedicatedServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDedicatedServerRequest,
-  output: PutDedicatedServerResponse,
+  input: __S(299) as any as S.Schema<PutDedicatedServerRequest>,
+  output: __S(185) as any as S.Schema<PutDedicatedServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7729,8 +5802,8 @@ export const putDedicatedServerBurst: API.OperationMethod<
   PutDedicatedServerBurstError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDedicatedServerBurstRequest,
-  output: PutDedicatedServerBurstResponse,
+  input: __S(300) as any as S.Schema<PutDedicatedServerBurstRequest>,
+  output: __S(301) as any as S.Schema<PutDedicatedServerBurstResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7744,8 +5817,8 @@ export const putDedicatedServerFeatureBackupFTPAccess: API.OperationMethod<
   PutDedicatedServerFeatureBackupFTPAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDedicatedServerFeatureBackupFTPAccessRequest,
-  output: PutDedicatedServerFeatureBackupFTPAccessResponse,
+  input: __S(302) as any as S.Schema<PutDedicatedServerFeatureBackupFTPAccessRequest>,
+  output: __S(5) as any as S.Schema<PutDedicatedServerFeatureBackupFTPAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7759,8 +5832,8 @@ export const putDedicatedServerFeatureFirewall: API.OperationMethod<
   PutDedicatedServerFeatureFirewallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDedicatedServerFeatureFirewallRequest,
-  output: PutDedicatedServerFeatureFirewallResponse,
+  input: __S(303) as any as S.Schema<PutDedicatedServerFeatureFirewallRequest>,
+  output: __S(5) as any as S.Schema<PutDedicatedServerFeatureFirewallResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7774,8 +5847,8 @@ export const putDedicatedServerSecondaryDnsDomain: API.OperationMethod<
   PutDedicatedServerSecondaryDnsDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDedicatedServerSecondaryDnsDomainRequest,
-  output: PutDedicatedServerSecondaryDnsDomainResponse,
+  input: __S(304) as any as S.Schema<PutDedicatedServerSecondaryDnsDomainRequest>,
+  output: __S(5) as any as S.Schema<PutDedicatedServerSecondaryDnsDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7789,8 +5862,8 @@ export const putDedicatedServerServiceInfos: API.OperationMethod<
   PutDedicatedServerServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDedicatedServerServiceInfosRequest,
-  output: PutDedicatedServerServiceInfosResponse,
+  input: __S(305) as any as S.Schema<PutDedicatedServerServiceInfosRequest>,
+  output: __S(5) as any as S.Schema<PutDedicatedServerServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7804,8 +5877,8 @@ export const putDedicatedServerSpla: API.OperationMethod<
   PutDedicatedServerSplaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDedicatedServerSplaRequest,
-  output: PutDedicatedServerSplaResponse,
+  input: __S(306) as any as S.Schema<PutDedicatedServerSplaRequest>,
+  output: __S(185) as any as S.Schema<PutDedicatedServerSplaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7819,8 +5892,8 @@ export const putDedicatedServerUpgradeSchedule: API.OperationMethod<
   PutDedicatedServerUpgradeScheduleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDedicatedServerUpgradeScheduleRequest,
-  output: PutDedicatedServerUpgradeScheduleResponse,
+  input: __S(307) as any as S.Schema<PutDedicatedServerUpgradeScheduleRequest>,
+  output: __S(5) as any as S.Schema<PutDedicatedServerUpgradeScheduleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7834,8 +5907,8 @@ export const rebootDedicatedServer: API.OperationMethod<
   RebootDedicatedServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RebootDedicatedServerRequest,
-  output: DedicatedServerTask,
+  input: __S(308) as any as S.Schema<RebootDedicatedServerRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7849,8 +5922,8 @@ export const resetDedicatedServerFeaturesIpmiInterface: API.OperationMethod<
   ResetDedicatedServerFeaturesIpmiInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetDedicatedServerFeaturesIpmiInterfaceRequest,
-  output: DedicatedServerTask,
+  input: __S(309) as any as S.Schema<ResetDedicatedServerFeaturesIpmiInterfaceRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7864,8 +5937,8 @@ export const resetDedicatedServerFeaturesIpmiSessions: API.OperationMethod<
   ResetDedicatedServerFeaturesIpmiSessionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetDedicatedServerFeaturesIpmiSessionsRequest,
-  output: DedicatedServerTask,
+  input: __S(310) as any as S.Schema<ResetDedicatedServerFeaturesIpmiSessionsRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7879,8 +5952,8 @@ export const resetDedicatedServerOla: API.OperationMethod<
   ResetDedicatedServerOlaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetDedicatedServerOlaRequest,
-  output: DedicatedServerTask,
+  input: __S(311) as any as S.Schema<ResetDedicatedServerOlaRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7894,8 +5967,8 @@ export const restartDedicatedServerFeaturesBmc: API.OperationMethod<
   RestartDedicatedServerFeaturesBmcError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartDedicatedServerFeaturesBmcRequest,
-  output: DedicatedServerOperation,
+  input: __S(312) as any as S.Schema<RestartDedicatedServerFeaturesBmcRequest>,
+  output: __S(31) as any as S.Schema<DedicatedServerOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7909,8 +5982,8 @@ export const revokeDedicatedServerFeaturesBmcSessions: API.OperationMethod<
   RevokeDedicatedServerFeaturesBmcSessionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeDedicatedServerFeaturesBmcSessionsRequest,
-  output: DedicatedServerOperation,
+  input: __S(313) as any as S.Schema<RevokeDedicatedServerFeaturesBmcSessionsRequest>,
+  output: __S(31) as any as S.Schema<DedicatedServerOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7924,8 +5997,8 @@ export const revokeDedicatedServerSpla: API.OperationMethod<
   RevokeDedicatedServerSplaError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeDedicatedServerSplaRequest,
-  output: RevokeDedicatedServerSplaResponse,
+  input: __S(314) as any as S.Schema<RevokeDedicatedServerSplaRequest>,
+  output: __S(5) as any as S.Schema<RevokeDedicatedServerSplaResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7939,8 +6012,8 @@ export const startDedicatedServerInstall: API.OperationMethod<
   StartDedicatedServerInstallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartDedicatedServerInstallRequest,
-  output: DedicatedServerTask,
+  input: __S(318) as any as S.Schema<StartDedicatedServerInstallRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7954,8 +6027,8 @@ export const terminateDedicatedServer: API.OperationMethod<
   TerminateDedicatedServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TerminateDedicatedServerRequest,
-  output: TerminateDedicatedServerResponse,
+  input: __S(319) as any as S.Schema<TerminateDedicatedServerRequest>,
+  output: __S(7) as any as S.Schema<TerminateDedicatedServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7969,8 +6042,8 @@ export const testDedicatedServerFeaturesBmc: API.OperationMethod<
   TestDedicatedServerFeaturesBmcError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestDedicatedServerFeaturesBmcRequest,
-  output: DedicatedServerOperation,
+  input: __S(320) as any as S.Schema<TestDedicatedServerFeaturesBmcRequest>,
+  output: __S(31) as any as S.Schema<DedicatedServerOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7984,8 +6057,8 @@ export const testDedicatedServerFeaturesIpmi: API.OperationMethod<
   TestDedicatedServerFeaturesIpmiError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestDedicatedServerFeaturesIpmiRequest,
-  output: DedicatedServerTask,
+  input: __S(321) as any as S.Schema<TestDedicatedServerFeaturesIpmiRequest>,
+  output: __S(3) as any as S.Schema<DedicatedServerTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8019,20 +6092,20 @@ function __c0(j: number): any {
         identifier: "ComplexTypeSafeKeyValueCanBeNullString",
       });
     case 2:
-      return S.Array(ComplexTypeSafeKeyValueCanBeNullString);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.NullOr(S.String)),
           doneDate: S.optional(S.NullOr(S.String)),
-          function: S.optional(DedicatedTaskFunctionEnum),
+          function: S.optional(S.String),
           lastUpdate: S.optional(S.NullOr(S.String)),
           needSchedule: S.optional(S.Boolean),
           note: S.optional(S.NullOr(S.String)),
           plannedInterventionId: S.optional(S.NullOr(S.Number)),
           startDate: S.optional(S.String),
-          status: S.optional(DedicatedTaskStatusEnum),
-          tags: S.optional(S.NullOr(DedicatedServerTaskTagsList)),
+          status: S.optional(S.String),
+          tags: S.optional(S.NullOr(__S(2))),
           taskId: S.optional(S.Number),
           ticketReference: S.optional(S.NullOr(S.String)),
         }),
@@ -8061,8 +6134,8 @@ function __c0(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           commentary: S.optional(S.String),
-          futureUse: S.optional(ServiceTerminationFutureUseEnum),
-          reason: S.optional(ServiceTerminationReasonEnum),
+          futureUse: S.optional(S.String),
+          reason: S.optional(S.String),
           token: S.String,
         }).pipe(
           T.Http({
@@ -8100,25 +6173,23 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
-          type: S.optional(DedicatedServerAccessTypeEnum),
+          type: S.optional(S.String),
           url: S.optional(S.NullOr(S.String)),
           user: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "DedicatedServerAccess" });
     case 2:
-      return S.Array(DedicatedServerAccess);
+      return S.Array(__S(9));
     case 3:
-      return S.suspend(() =>
-        CreateDedicatedServerAuthenticationSecretResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(10).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateDedicatedServerAuthenticationSecretResponse",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          prmrr: S.optional(DedicatedServerBiosSettingsSgxPrmrrEnum),
-          status: S.optional(DedicatedServerBiosSettingsSgxStatusEnum),
+          prmrr: S.optional(S.String),
+          status: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8149,9 +6220,7 @@ function __c1(j: number): any {
     case 6:
       return S.Array(S.Number);
     case 7:
-      return S.suspend(() =>
-        CreateDedicatedServerChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(14).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateDedicatedServerChangeContactResponse",
       });
   }
@@ -8195,9 +6264,9 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          maxBandwidth: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
-          maxStorage: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
-          storageUsed: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
+          maxBandwidth: S.optional(S.NullOr(__S(18))),
+          maxStorage: S.optional(S.NullOr(__S(18))),
+          storageUsed: S.optional(S.NullOr(__S(18))),
           usagePercent: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
@@ -8226,13 +6295,13 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          cloudProject: S.optional(S.NullOr(DedicatedServerBackupBackupProject)),
+          cloudProject: S.optional(S.NullOr(__S(17))),
           id: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          quota: S.optional(S.NullOr(DedicatedServerBackupBackupQuota)),
+          quota: S.optional(S.NullOr(__S(19))),
           region: S.optional(S.NullOr(S.String)),
-          sftp: S.optional(S.NullOr(DedicatedServerBackupBackupSftp)),
-          swift: S.optional(S.NullOr(DedicatedServerBackupBackupSwift)),
+          sftp: S.optional(S.NullOr(__S(20))),
+          swift: S.optional(S.NullOr(__S(21))),
         }),
       ).annotate({
         identifier: "DedicatedServerBackupBackupContainer",
@@ -8240,7 +6309,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(DedicatedServerBackupBackupStatusCodeEnum),
+          code: S.optional(S.String),
           reason: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -8253,10 +6322,10 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          agreements: S.optional(S.NullOr(DedicatedServerBackupCloudAgreementsList)),
-          archive: S.optional(S.NullOr(DedicatedServerBackupBackupContainer)),
-          status: S.optional(DedicatedServerBackupBackupStatus),
-          storage: S.optional(S.NullOr(DedicatedServerBackupBackupContainer)),
+          agreements: S.optional(S.NullOr(__S(14))),
+          archive: S.optional(S.NullOr(__S(22))),
+          status: S.optional(__S(23)),
+          storage: S.optional(S.NullOr(__S(22))),
         }),
       ).annotate({
         identifier: "DedicatedServerBackupCloud",
@@ -8337,7 +6406,7 @@ function __c3(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           ipToAllow: S.optional(S.String),
-          ttl: S.optional(DedicatedServerCacheTTLEnum),
+          ttl: S.optional(S.Number),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8353,11 +6422,11 @@ function __c3(j: number): any {
         S.Struct({
           comment: S.optional(S.NullOr(S.String)),
           doneDate: S.optional(S.NullOr(S.String)),
-          function: S.optional(DedicatedOperationFunctionEnum),
+          function: S.optional(S.String),
           lastUpdate: S.optional(S.NullOr(S.String)),
           operationId: S.optional(S.String),
           startDate: S.optional(S.String),
-          status: S.optional(DedicatedTaskStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedServerOperation" });
   }
@@ -8369,7 +6438,7 @@ function __c4(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           sshKey: S.String,
-          ttl: S.optional(DedicatedServerCacheTTLEnum),
+          ttl: S.optional(S.Number),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8385,7 +6454,7 @@ function __c4(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           ipToAllow: S.optional(S.String),
-          ttl: S.optional(DedicatedServerCacheTTLEnum),
+          ttl: S.optional(S.Number),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8401,7 +6470,7 @@ function __c4(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           ipToAllow: S.optional(S.String),
-          ttl: S.optional(DedicatedServerCacheTTLEnum),
+          ttl: S.optional(S.Number),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8418,8 +6487,8 @@ function __c4(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           ipToAllow: S.optional(S.String),
           sshKey: S.optional(S.String),
-          ttl: DedicatedServerCacheTTLEnum,
-          type: DedicatedServerIpmiAccessTypeEnum,
+          ttl: S.Number,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8461,7 +6530,7 @@ function __c4(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           licenseId: S.String,
-          version: LicenseWindowsOsVersionEnum,
+          version: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8481,19 +6550,19 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          macs: S.optional(DedicatedServerInterfacesMacsList),
-          type: S.optional(DedicatedServerNetworkingTypeEnum),
+          macs: S.optional(__S(39)),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerInterfaces",
       });
     case 1:
-      return S.Array(DedicatedServerInterfaces);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          interfaces: CreateDedicatedServerNetworkingRequestInterfacesList,
+          interfaces: __S(41),
         }).pipe(
           T.Http({ method: "POST", uri: "/dedicated/server/{serviceName}/networking", code: 200 }),
         ),
@@ -8504,8 +6573,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          interfaces: S.optional(DedicatedServerNetworkingInterfacesList),
-          status: S.optional(S.NullOr(DedicatedServerNetworkingOperationEnum)),
+          interfaces: S.optional(__S(41)),
+          status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DedicatedServerNetworking",
@@ -8517,8 +6586,7 @@ function __c5(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           name: S.String,
-          virtualNetworkInterfaces:
-            CreateDedicatedServerOlaAggregationRequestVirtualNetworkInterfacesList,
+          virtualNetworkInterfaces: __S(44),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8537,18 +6605,14 @@ function __c5(j: number): any {
           configDriveUserData: S.optional(S.String),
           efiBootloaderPath: S.optional(S.String),
           hostname: S.optional(S.String),
-          httpHeaders: S.optional(DedicatedServerReinstallCustomizationsHttpHeadersMap),
+          httpHeaders: S.optional(__S(46)),
           imageCheckSum: S.optional(S.String),
-          imageCheckSumType: S.optional(
-            DedicatedServerReinstallCustomizationsImageCheckSumTypeEnum,
-          ),
-          imageType: S.optional(DedicatedServerReinstallCustomizationsImageTypeEnum),
+          imageCheckSumType: S.optional(S.String),
+          imageType: S.optional(S.String),
           imageURL: S.optional(S.String),
-          language: S.optional(DedicatedServerReinstallCustomizationsLanguageEnum),
+          language: S.optional(S.String),
           postInstallationScript: S.optional(S.String),
-          postInstallationScriptExtension: S.optional(
-            DedicatedServerReinstallCustomizationsPostInstallationScriptExtensionEnum,
-          ),
+          postInstallationScriptExtension: S.optional(S.String),
           sshKey: S.optional(S.String),
         }),
       ).annotate({
@@ -8563,14 +6627,14 @@ function __c6(j: number): any {
         S.Struct({
           arrays: S.optional(S.Number),
           disks: S.optional(S.Number),
-          raidLevel: S.optional(DedicatedServerReinstallStorageHardwareRaidRaidLevelEnum),
+          raidLevel: S.optional(S.Number),
           spares: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "DedicatedServerReinstallStorageHardwareRaid",
       });
     case 1:
-      return S.Array(DedicatedServerReinstallStorageHardwareRaid);
+      return S.Array(__S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8582,8 +6646,8 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          lv: S.optional(DedicatedServerReinstallStoragePartitioningLayoutExtrasLv),
-          zp: S.optional(DedicatedServerReinstallStoragePartitioningLayoutExtrasZp),
+          lv: S.optional(__S(50)),
+          zp: S.optional(__S(50)),
         }),
       ).annotate({
         identifier: "DedicatedServerReinstallStoragePartitioningLayoutExtras",
@@ -8591,22 +6655,22 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          extras: S.optional(DedicatedServerReinstallStoragePartitioningLayoutExtras),
-          fileSystem: DedicatedServerReinstallStoragePartitioningLayoutFileSystemEnum,
+          extras: S.optional(__S(51)),
+          fileSystem: S.String,
           mountPoint: S.String,
-          raidLevel: S.optional(DedicatedServerReinstallStoragePartitioningLayoutRaidLevelEnum),
+          raidLevel: S.optional(S.Number),
           size: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "DedicatedServerReinstallStoragePartitioningLayout",
       });
     case 5:
-      return S.Array(DedicatedServerReinstallStoragePartitioningLayout);
+      return S.Array(__S(52));
     case 6:
       return S.suspend(() =>
         S.Struct({
           disks: S.optional(S.Number),
-          layout: S.optional(DedicatedServerReinstallStoragePartitioningLayoutList),
+          layout: S.optional(__S(53)),
           schemeName: S.optional(S.String),
         }),
       ).annotate({
@@ -8616,8 +6680,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           diskGroupId: S.optional(S.Number),
-          hardwareRaid: S.optional(DedicatedServerReinstallStorageHardwareRaidList),
-          partitioning: S.optional(DedicatedServerReinstallStoragePartitioning),
+          hardwareRaid: S.optional(__S(49)),
+          partitioning: S.optional(__S(54)),
         }),
       ).annotate({
         identifier: "DedicatedServerReinstallStorage",
@@ -8627,15 +6691,15 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DedicatedServerReinstallStorage);
+      return S.Array(__S(55));
     case 1:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          customizations: S.optional(DedicatedServerReinstallCustomizations),
+          customizations: S.optional(__S(47)),
           operatingSystem: S.String,
-          properties: S.optional(CreateDedicatedServerReinstallRequestPropertiesMap),
-          storage: S.optional(CreateDedicatedServerReinstallRequestStorageList),
+          properties: S.optional(__S(46)),
+          storage: S.optional(__S(56)),
         }).pipe(
           T.Http({ method: "POST", uri: "/dedicated/server/{serviceName}/reinstall", code: 200 }),
         ),
@@ -8647,9 +6711,9 @@ function __c7(j: number): any {
         S.Struct({
           comment: S.optional(S.String),
           doneDate: S.optional(S.NullOr(S.String)),
-          function: S.optional(DedicatedServerTaskFunctionEnum),
+          function: S.optional(S.String),
           startDate: S.optional(S.String),
-          status: S.optional(DedicatedServerTaskStatusEnum),
+          status: S.optional(S.String),
           taskId: S.optional(S.Number),
         }),
       ).annotate({
@@ -8676,7 +6740,7 @@ function __c7(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           serialNumber: S.String,
-          type: DedicatedServerSplaTypeEnum,
+          type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/dedicated/server/{serviceName}/spla", code: 200 })),
       ).annotate({
         identifier: "CreateDedicatedServerSplaRequest",
@@ -8724,13 +6788,13 @@ function __c8(j: number): any {
         identifier: "DedicatedServerSupportReplaceHddInfo",
       });
     case 1:
-      return S.Array(DedicatedServerSupportReplaceHddInfo);
+      return S.Array(__S(64));
     case 2:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           comment: S.String,
-          disks: CreateDedicatedServerSupportReplaceHardDiskDriveRequestDisksList,
+          disks: __S(65),
           inverse: S.Boolean,
         }).pipe(
           T.Http({
@@ -8748,7 +6812,7 @@ function __c8(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           comment: S.String,
           details: S.String,
-          slots: S.optional(CreateDedicatedServerSupportReplaceMemoryRequestSlotsList),
+          slots: S.optional(__S(39)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8781,7 +6845,7 @@ function __c8(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           ipAddress: S.String,
-          type: DedicatedServerVmacTypeEnum,
+          type: S.String,
           virtualMachineName: S.String,
         }).pipe(
           T.Http({ method: "POST", uri: "/dedicated/server/{serviceName}/virtualMac", code: 200 }),
@@ -8871,7 +6935,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          option: DeleteDedicatedServerOptionRequestOption.pipe(T.Label()),
+          option: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -8936,7 +7000,7 @@ function __c9(j: number): any {
           lastUpdate: S.optional(S.NullOr(S.String)),
           orderId: S.optional(S.NullOr(S.Number)),
           serviceName: S.optional(S.NullOr(S.String)),
-          status: S.optional(VrackTaskStatusEnum),
+          status: S.optional(S.String),
           targetDomain: S.optional(S.NullOr(S.String)),
           todoDate: S.optional(S.NullOr(S.String)),
         }),
@@ -8958,7 +7022,7 @@ function __c10(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(IamResourceMetadataTagsMap)),
+          tags: S.optional(S.NullOr(__S(46))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
@@ -8969,9 +7033,9 @@ function __c10(j: number): any {
           bootId: S.optional(S.NullOr(S.Number)),
           bootScript: S.optional(S.NullOr(S.String)),
           commercialRange: S.optional(S.NullOr(S.String)),
-          datacenter: S.optional(DedicatedDatacenterEnum),
+          datacenter: S.optional(S.String),
           efiBootloaderPath: S.optional(S.NullOr(S.String)),
-          iam: S.optional(S.NullOr(IamResourceMetadata)),
+          iam: S.optional(S.NullOr(__S(81))),
           ip: S.optional(S.String),
           linkSpeed: S.optional(S.NullOr(S.Number)),
           monitoring: S.optional(S.Boolean),
@@ -8979,7 +7043,7 @@ function __c10(j: number): any {
           newUpgradeSystem: S.optional(S.Boolean),
           noIntervention: S.optional(S.Boolean),
           os: S.optional(S.String),
-          powerState: S.optional(DedicatedServerPowerStateEnum),
+          powerState: S.optional(S.String),
           professionalUse: S.optional(S.Boolean),
           rack: S.optional(S.String),
           region: S.optional(S.String),
@@ -8988,8 +7052,8 @@ function __c10(j: number): any {
           reverse: S.optional(S.NullOr(S.String)),
           rootDevice: S.optional(S.NullOr(S.String)),
           serverId: S.optional(S.Number),
-          state: S.optional(DedicatedServerStateEnum),
-          supportLevel: S.optional(DedicatedServerSupportLevelEnum),
+          state: S.optional(S.String),
+          supportLevel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerDedicatedWithIAM",
@@ -9009,7 +7073,7 @@ function __c10(j: number): any {
         identifier: "GetDedicatedServerAntiDDosGameStatusRequest",
       });
     case 4:
-      return S.suspend(() => DedicatedStatusEnum.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDedicatedServerAntiDDosGameStatusResponse",
       });
     case 5:
@@ -9029,10 +7093,10 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          maxArchive: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
-          maxBandwidthArchive: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
-          maxBandwidthStorage: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
-          maxStorage: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
+          maxArchive: S.optional(S.NullOr(__S(18))),
+          maxBandwidthArchive: S.optional(S.NullOr(__S(18))),
+          maxBandwidthStorage: S.optional(S.NullOr(__S(18))),
+          maxStorage: S.optional(S.NullOr(__S(18))),
         }),
       ).annotate({
         identifier: "DedicatedServerBackupBackupOffer",
@@ -9052,12 +7116,12 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DedicatedServerBiosSettingsSgxPrmrrEnum);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          prmrr: S.optional(DedicatedServerBiosSettingsSupportSgxOptionsPrmrrList),
-          status: S.optional(DedicatedServerBiosSettingsSupportSgxOptionsStatusList),
+          prmrr: S.optional(__S(88)),
+          status: S.optional(__S(88)),
         }),
       ).annotate({
         identifier: "DedicatedServerBiosSettingsSupportSgxOptions",
@@ -9066,7 +7130,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sgx: S.optional(S.Boolean),
-          sgxOptions: S.optional(DedicatedServerBiosSettingsSupportSgxOptions),
+          sgxOptions: S.optional(__S(89)),
         }),
       ).annotate({
         identifier: "DedicatedServerBiosSettingsSupport",
@@ -9074,7 +7138,7 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          supportedSettings: S.optional(DedicatedServerBiosSettingsSupport),
+          supportedSettings: S.optional(__S(90)),
         }),
       ).annotate({
         identifier: "DedicatedBiosSettingsBiosSettings",
@@ -9096,8 +7160,8 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          prmrr: S.optional(DedicatedServerBiosSettingsSgxPrmrrEnum),
-          status: S.optional(DedicatedServerBiosSettingsSgxStatusEnum),
+          prmrr: S.optional(S.String),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedBiosSettingsSgxBiosSettingsSgx",
@@ -9121,7 +7185,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           bootId: S.optional(S.Number),
-          bootType: S.optional(DedicatedServerBootTypeEnum),
+          bootType: S.optional(S.String),
           description: S.optional(S.String),
           kernel: S.optional(S.String),
         }),
@@ -9135,7 +7199,7 @@ function __c12(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           bootId: S.Number.pipe(T.Label()),
-          option: GetDedicatedServerBootOptionRequestOption.pipe(T.Label()),
+          option: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -9149,7 +7213,7 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          option: S.optional(DedicatedServerBootOptionEnum),
+          option: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({
@@ -9166,8 +7230,8 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          capacity: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
-          status: S.optional(DedicatedServerBurstStatusEnum),
+          capacity: S.optional(S.NullOr(__S(18))),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerServerBurst",
@@ -9190,10 +7254,10 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ftpBackupName: S.optional(S.String),
-          quota: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
+          quota: S.optional(S.NullOr(__S(18))),
           readOnlyDate: S.optional(S.NullOr(S.String)),
-          type: S.optional(DedicatedServerBackupStorageTypeEnum),
-          usage: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
+          type: S.optional(S.String),
+          usage: S.optional(S.NullOr(__S(18))),
         }),
       ).annotate({ identifier: "DedicatedServerBackupFtp" });
     case 6:
@@ -9256,7 +7320,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           available: S.optional(S.Boolean),
-          supportedFeatures: S.optional(DedicatedServerBmcSupportedFeatures),
+          supportedFeatures: S.optional(__S(105)),
         }),
       ).annotate({ identifier: "DedicatedServerBMC" });
     case 3:
@@ -9312,7 +7376,7 @@ function __c13(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           operationId: S.String.pipe(T.Query()),
-          type: DedicatedServerBmcTestTypeEnum.pipe(T.Query()),
+          type: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -9396,8 +7460,8 @@ function __c14(j: number): any {
           enabled: S.optional(S.Boolean),
           firewall: S.optional(S.String),
           ip: S.optional(S.String),
-          mode: S.optional(DedicatedServerFirewallModeEnum),
-          model: S.optional(S.NullOr(DedicatedServerFirewallModelEnum)),
+          mode: S.optional(S.String),
+          model: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "DedicatedServerFirewall" });
     case 6:
@@ -9433,14 +7497,14 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           activated: S.optional(S.Boolean),
-          supportedFeatures: S.optional(DedicatedServerIpmiSupportedFeatures),
+          supportedFeatures: S.optional(__S(119)),
         }),
       ).annotate({ identifier: "DedicatedServerIpmi" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          type: DedicatedServerIpmiAccessTypeEnum.pipe(T.Query()),
+          type: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -9464,7 +7528,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          type: DedicatedServerIpmiTestTypeEnum.pipe(T.Query()),
+          type: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -9564,9 +7628,7 @@ function __c16(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          linkType: S.optional(
-            DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum,
-          ),
+          linkType: S.optional(S.String),
           mac: S.optional(S.String),
           virtualNetworkInterface: S.optional(S.NullOr(S.String)),
         }),
@@ -9592,7 +7654,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          option: GetDedicatedServerOptionRequestOption.pipe(T.Label()),
+          option: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -9606,15 +7668,15 @@ function __c16(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          option: S.optional(DedicatedServerOptionEnum),
-          state: S.optional(DedicatedServerOptionStateEnum),
+          option: S.optional(S.String),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedServerOption" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          feature: DedicatedServerOrderableSysFeatureEnum.pipe(T.Query()),
+          feature: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -9695,8 +7757,8 @@ function __c17(j: number): any {
         S.Struct({
           expectedEndDate: S.optional(S.String),
           id: S.optional(S.Number),
-          status: S.optional(DedicatedPlannedInterventionStatusEnum),
-          type: S.optional(DedicatedPlannedInterventionTypeEnum),
+          status: S.optional(S.String),
+          type: S.optional(S.String),
           wantedStartDate: S.optional(S.String),
         }),
       ).annotate({
@@ -9773,7 +7835,7 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          fieldType: S.optional(ZoneNamedResolutionFieldTypeEnum),
+          fieldType: S.optional(S.String),
           fieldValue: S.optional(S.String),
           subDomain: S.optional(S.String),
         }),
@@ -9825,11 +7887,11 @@ function __c18(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(ServicesServicePossibleRenewPeriodList)),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
-          renewalType: S.optional(ServiceRenewalTypeEnum),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(14))),
+          renew: S.optional(S.NullOr(__S(150))),
+          renewalType: S.optional(S.String),
           serviceId: S.optional(S.Number),
-          status: S.optional(ServiceStateEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServicesService" });
   }
@@ -9853,13 +7915,11 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          defaultHardwareRaidSize: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
-          defaultHardwareRaidType: S.optional(
-            S.NullOr(DedicatedServerHardwareSpecificationsRaidHardEnum),
-          ),
+          defaultHardwareRaidSize: S.optional(S.NullOr(__S(18))),
+          defaultHardwareRaidType: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           diskGroupId: S.optional(S.NullOr(S.Number)),
-          diskSize: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
+          diskSize: S.optional(S.NullOr(__S(18))),
           diskType: S.optional(S.NullOr(S.String)),
           numberOfDisks: S.optional(S.NullOr(S.Number)),
           raidController: S.optional(S.NullOr(S.String)),
@@ -9868,42 +7928,38 @@ function __c19(j: number): any {
         identifier: "DedicatedServerHardwareSpecificationsDisk",
       });
     case 2:
-      return S.Array(DedicatedServerHardwareSpecificationsDisk);
+      return S.Array(__S(153));
     case 3:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          type: S.optional(DedicatedServerHardwareSpecificationsExpansionCardTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerHardwareSpecificationsExpansionCard",
       });
     case 4:
-      return S.Array(DedicatedServerHardwareSpecificationsExpansionCard);
+      return S.Array(__S(155));
     case 5:
-      return S.Array(ComplexTypeUnitAndValueLong);
+      return S.Array(__S(18));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          bootMode: S.optional(DedicatedServerBootModeEnum),
+          bootMode: S.optional(S.String),
           coresPerProcessor: S.optional(S.NullOr(S.Number)),
-          defaultHardwareRaidSize: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
-          defaultHardwareRaidType: S.optional(
-            S.NullOr(DedicatedServerHardwareSpecificationsRaidHardEnum),
-          ),
+          defaultHardwareRaidSize: S.optional(S.NullOr(__S(18))),
+          defaultHardwareRaidType: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          diskGroups: S.optional(S.NullOr(DedicatedServerHardwareSpecificationsDiskGroupsList)),
-          expansionCards: S.optional(
-            S.NullOr(DedicatedServerHardwareSpecificationsExpansionCardsList),
-          ),
-          formFactor: S.optional(S.NullOr(DedicatedServerFormFactorEnum)),
-          memorySize: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
+          diskGroups: S.optional(S.NullOr(__S(154))),
+          expansionCards: S.optional(S.NullOr(__S(156))),
+          formFactor: S.optional(S.NullOr(S.String)),
+          memorySize: S.optional(S.NullOr(__S(18))),
           motherboard: S.optional(S.NullOr(S.String)),
           numberOfProcessors: S.optional(S.NullOr(S.Number)),
-          processorArchitecture: S.optional(S.NullOr(DedicatedServerCpuFamilyEnum)),
+          processorArchitecture: S.optional(S.NullOr(S.String)),
           processorName: S.optional(S.NullOr(S.String)),
           threadsPerProcessor: S.optional(S.NullOr(S.Number)),
-          usbKeys: S.optional(S.NullOr(DedicatedServerHardwareSpecificationsUsbKeysList)),
+          usbKeys: S.optional(S.NullOr(__S(157))),
         }),
       ).annotate({
         identifier: "DedicatedServerHardwareSpecifications",
@@ -9929,10 +7985,10 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          InternetToOvh: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
-          OvhToInternet: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
-          OvhToOvh: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
-          type: S.optional(S.NullOr(DedicatedServerBandwidthTypeEnum)),
+          InternetToOvh: S.optional(S.NullOr(__S(18))),
+          OvhToInternet: S.optional(S.NullOr(__S(18))),
+          OvhToOvh: S.optional(S.NullOr(__S(18))),
+          type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DedicatedServerBandwidthDetails",
@@ -9942,31 +7998,31 @@ function __c20(j: number): any {
         S.Struct({
           aggregation: S.optional(S.Boolean),
           count: S.optional(S.Number),
-          type: S.optional(DedicatedServerOlaInterfaceModeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerOlaInterface",
       });
     case 2:
-      return S.Array(DedicatedServerOlaInterface);
+      return S.Array(__S(161));
     case 3:
       return S.suspend(() =>
         S.Struct({
           default: S.optional(S.Boolean),
-          interfaces: S.optional(DedicatedServerOlaAvailableModesInterfacesList),
+          interfaces: S.optional(__S(162)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerOlaAvailableModes",
       });
     case 4:
-      return S.Array(DedicatedServerOlaAvailableModes);
+      return S.Array(__S(163));
     case 5:
       return S.suspend(() =>
         S.Struct({
           available: S.optional(S.Boolean),
-          availableModes: S.optional(DedicatedServerOlaDetailsAvailableModesList),
-          supportedModes: S.optional(S.NullOr(DedicatedServerOlaDetailsSupportedModesList)),
+          availableModes: S.optional(__S(164)),
+          supportedModes: S.optional(S.NullOr(__S(88))),
         }),
       ).annotate({
         identifier: "DedicatedServerOlaDetails",
@@ -9984,8 +8040,8 @@ function __c20(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ipv4: S.optional(S.NullOr(DedicatedServerRoutingDetailsIpv4)),
-          ipv6: S.optional(S.NullOr(DedicatedServerRoutingDetailsIpv4)),
+          ipv4: S.optional(S.NullOr(__S(166))),
+          ipv6: S.optional(S.NullOr(__S(166))),
         }),
       ).annotate({
         identifier: "DedicatedServerRoutingDetails",
@@ -10005,11 +8061,11 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          inputQuotaSize: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
-          inputQuotaUsed: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
+          inputQuotaSize: S.optional(S.NullOr(__S(18))),
+          inputQuotaUsed: S.optional(S.NullOr(__S(18))),
           isThrottled: S.optional(S.NullOr(S.Boolean)),
-          outputQuotaSize: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
-          outputQuotaUsed: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
+          outputQuotaSize: S.optional(S.NullOr(__S(18))),
+          outputQuotaUsed: S.optional(S.NullOr(__S(18))),
           resetQuotaDate: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -10027,8 +8083,8 @@ function __c21(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          bandwidth: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
-          type: S.optional(S.NullOr(DedicatedServerBandwidthvRackTypeEnum)),
+          bandwidth: S.optional(S.NullOr(__S(18))),
+          type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DedicatedServerBandwidthvRackDetails",
@@ -10036,14 +8092,14 @@ function __c21(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          bandwidth: S.optional(S.NullOr(DedicatedServerBandwidthDetails)),
-          connection: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
-          ola: S.optional(S.NullOr(DedicatedServerOlaDetails)),
-          routing: S.optional(S.NullOr(DedicatedServerRoutingDetails)),
-          switching: S.optional(S.NullOr(DedicatedServerSwitchingDetails)),
-          traffic: S.optional(S.NullOr(DedicatedServerTrafficDetails)),
-          vmac: S.optional(DedicatedServerVmacDetails),
-          vrack: S.optional(S.NullOr(DedicatedServerBandwidthvRackDetails)),
+          bandwidth: S.optional(S.NullOr(__S(160))),
+          connection: S.optional(S.NullOr(__S(18))),
+          ola: S.optional(S.NullOr(__S(165))),
+          routing: S.optional(S.NullOr(__S(167))),
+          switching: S.optional(S.NullOr(__S(168))),
+          traffic: S.optional(S.NullOr(__S(169))),
+          vmac: S.optional(__S(170)),
+          vrack: S.optional(S.NullOr(__S(171))),
         }),
       ).annotate({
         identifier: "DedicatedServerNetworkSpecifications",
@@ -10065,8 +8121,8 @@ function __c21(j: number): any {
           id: S.optional(S.Number),
           lastUpdate: S.optional(S.String),
           serialNumber: S.optional(S.String),
-          status: S.optional(DedicatedServerSplaStatusEnum),
-          type: S.optional(DedicatedServerSplaTypeEnum),
+          status: S.optional(S.String),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedServerSpla" });
     case 7:
@@ -10107,7 +8163,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           macAddress: S.optional(S.String),
-          type: S.optional(DedicatedServerVmacTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerVirtualMac",
@@ -10155,11 +8211,9 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          mode: S.optional(DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum),
+          mode: S.optional(S.String),
           name: S.optional(S.String),
-          networkInterfaceController: S.optional(
-            DedicatedServerVirtualNetworkInterfaceNetworkInterfaceControllerList,
-          ),
+          networkInterfaceController: S.optional(__S(44)),
           serverName: S.optional(S.String),
           uuid: S.optional(S.String),
           vrack: S.optional(S.NullOr(S.String)),
@@ -10213,21 +8267,19 @@ function __c23(j: number): any {
         identifier: "IamResourceTagFilterInput",
       });
     case 2:
-      return S.Array(IamResourceTagFilterInput);
+      return S.Array(__S(185));
     case 3:
-      return S.Record(S.String, ListDedicatedServerRequestIamTagsValueList);
+      return S.Record(S.String, __S(186));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(ListDedicatedServerRequestIamTagsMap.pipe(T.Query())),
+          iamTags: S.optional(__S(187).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/dedicated/server", code: 200 })),
       ).annotate({
         identifier: "ListDedicatedServerRequest",
       });
     case 5:
-      return S.suspend(() =>
-        ListDedicatedServerResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(39).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerResponse",
       });
     case 6:
@@ -10241,7 +8293,7 @@ function __c23(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          availability: S.optional(DedicatedAvailabilityEnum),
+          availability: S.optional(S.String),
           available: S.optional(S.Number),
           incomingDatacenter: S.optional(S.NullOr(S.Number)),
           lastRule: S.optional(S.NullOr(S.String)),
@@ -10252,7 +8304,7 @@ function __c23(j: number): any {
           trueAvailable: S.optional(S.Number),
           trueAvailable24H: S.optional(S.NullOr(S.Number)),
           trueAvailable4H: S.optional(S.NullOr(S.Number)),
-          zone: S.optional(DedicatedAvailabilityRegionEnum),
+          zone: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedAvailabilitiesRaw",
@@ -10262,18 +8314,16 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DedicatedAvailabilitiesRaw);
+      return S.Array(__S(191));
     case 1:
-      return S.suspend(() =>
-        ListDedicatedServerAvailabilityRawResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(192).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerAvailabilityRawResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          bootType: S.optional(DedicatedServerBootTypeEnum.pipe(T.Query())),
+          bootType: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/boot", code: 200 })),
       ).annotate({
         identifier: "ListDedicatedServerBootRequest",
@@ -10294,9 +8344,7 @@ function __c24(j: number): any {
         identifier: "ListDedicatedServerBootOptionRequest",
       });
     case 4:
-      return S.suspend(() =>
-        ListDedicatedServerBootOptionResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(88).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerBootOptionResponse",
       });
     case 5:
@@ -10319,14 +8367,14 @@ function __c24(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          availability: S.optional(DedicatedAvailabilityEnum),
-          datacenter: S.optional(DedicatedAvailabilityDatacenterEnum),
+          availability: S.optional(S.String),
+          datacenter: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedAvailabilityDatacenter",
       });
     case 7:
-      return S.Array(DedicatedAvailabilityDatacenter);
+      return S.Array(__S(198));
   }
 }
 function __c25(j: number): any {
@@ -10334,7 +8382,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          datacenters: S.optional(DedicatedDatacenterAvailabilityDatacentersList),
+          datacenters: S.optional(__S(199)),
           fqn: S.optional(S.String),
           gpu: S.optional(S.NullOr(S.String)),
           memory: S.optional(S.NullOr(S.String)),
@@ -10347,11 +8395,9 @@ function __c25(j: number): any {
         identifier: "DedicatedDatacenterAvailability",
       });
     case 1:
-      return S.Array(DedicatedDatacenterAvailability);
+      return S.Array(__S(200));
     case 2:
-      return S.suspend(() =>
-        ListDedicatedServerDatacenterAvailabilitiesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(201).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerDatacenterAvailabilitiesResponse",
       });
     case 3:
@@ -10378,8 +8424,8 @@ function __c25(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          availability: S.optional(DedicatedAvailabilityEnum),
-          datacenter: S.optional(DedicatedAvailabilityDatacenterEnum),
+          availability: S.optional(S.String),
+          datacenter: S.optional(S.String),
           lastRule: S.optional(S.NullOr(S.String)),
           parentAvailable: S.optional(S.Number),
           trueAvailable: S.optional(S.Number),
@@ -10388,12 +8434,12 @@ function __c25(j: number): any {
         identifier: "DedicatedAvailabilityRawDatacenter",
       });
     case 5:
-      return S.Array(DedicatedAvailabilityRawDatacenter);
+      return S.Array(__S(204));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          availability: S.optional(DedicatedAvailabilityEnum),
-          availabilityZone: S.optional(DedicatedAvailabilityAvailabilityZoneEnum),
+          availability: S.optional(S.String),
+          availabilityZone: S.optional(S.String),
           lastRule: S.optional(S.NullOr(S.String)),
           parentAvailable: S.optional(S.Number),
           trueAvailable: S.optional(S.Number),
@@ -10402,7 +8448,7 @@ function __c25(j: number): any {
         identifier: "DedicatedAvailabilityRawAvailabilityZones",
       });
     case 7:
-      return S.Array(DedicatedAvailabilityRawAvailabilityZones);
+      return S.Array(__S(206));
   }
 }
 function __c26(j: number): any {
@@ -10410,27 +8456,27 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          availability: S.optional(DedicatedAvailabilityEnum),
-          availabilityZones: S.optional(DedicatedAvailabilityRawRegionAvailabilityZonesList),
+          availability: S.optional(S.String),
+          availabilityZones: S.optional(__S(207)),
           lastRule: S.optional(S.NullOr(S.String)),
           parentAvailable: S.optional(S.Number),
-          region: S.optional(DedicatedAvailabilityRegionalizationEnum),
+          region: S.optional(S.String),
           trueAvailable: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "DedicatedAvailabilityRawRegion",
       });
     case 1:
-      return S.Array(DedicatedAvailabilityRawRegion);
+      return S.Array(__S(208));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          datacenters: S.optional(DedicatedDatacenterRawAvailabilityDatacentersList),
+          datacenters: S.optional(__S(205)),
           fqn: S.optional(S.String),
           gpu: S.optional(S.NullOr(S.String)),
           memory: S.optional(S.NullOr(S.String)),
           planCode: S.optional(S.String),
-          regions: S.optional(S.NullOr(DedicatedDatacenterRawAvailabilityRegionsList)),
+          regions: S.optional(S.NullOr(__S(209))),
           server: S.optional(S.String),
           storage: S.optional(S.NullOr(S.String)),
           systemStorage: S.optional(S.NullOr(S.String)),
@@ -10439,11 +8485,9 @@ function __c26(j: number): any {
         identifier: "DedicatedDatacenterRawAvailability",
       });
     case 3:
-      return S.Array(DedicatedDatacenterRawAvailability);
+      return S.Array(__S(210));
     case 4:
-      return S.suspend(() =>
-        ListDedicatedServerDatacenterAvailabilityRawResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(211).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerDatacenterAvailabilityRawResponse",
       });
     case 5:
@@ -10493,11 +8537,7 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponseBodyList.pipe(
-          T.RawResponseRoot(),
-        ),
-      ).annotate({
+      return S.suspend(() => __S(44).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerFeatureBackupFTPAuthorizableBlocksResponse",
       });
     case 1:
@@ -10516,11 +8556,7 @@ function __c27(j: number): any {
         identifier: "ListDedicatedServerInstallCompatibleTemplatePartitionSchemesRequest",
       });
     case 2:
-      return S.suspend(() =>
-        ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponseBodyList.pipe(
-          T.RawResponseRoot(),
-        ),
-      ).annotate({
+      return S.suspend(() => __S(44).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerInstallCompatibleTemplatePartitionSchemesResponse",
       });
     case 3:
@@ -10540,8 +8576,8 @@ function __c27(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ovh: S.optional(S.NullOr(DedicatedServerInstallTemplateOvhList)),
-          personal: S.optional(S.NullOr(DedicatedServerInstallTemplatePersonalList)),
+          ovh: S.optional(S.NullOr(__S(39))),
+          personal: S.optional(S.NullOr(__S(39))),
         }),
       ).annotate({
         identifier: "DedicatedServerInstallTemplate",
@@ -10572,11 +8608,11 @@ function __c27(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          capacity: S.optional(ComplexTypeUnitAndValueLong),
+          capacity: S.optional(__S(18)),
           diskGroupId: S.optional(S.Number),
-          names: S.optional(DedicatedServerHardwareRaidDiskGroupNamesList),
-          speed: S.optional(ComplexTypeUnitAndValueString),
-          type: S.optional(DedicatedServerDiskTypeEnum),
+          names: S.optional(__S(39)),
+          speed: S.optional(__S(222)),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerHardwareRaidDiskGroup",
@@ -10586,11 +8622,11 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DedicatedServerHardwareRaidDiskGroup);
+      return S.Array(__S(223));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          disks: S.optional(DedicatedServerHardwareRaidControllerDisksList),
+          disks: S.optional(__S(224)),
           model: S.optional(S.String),
           type: S.optional(S.String),
         }),
@@ -10598,11 +8634,11 @@ function __c28(j: number): any {
         identifier: "DedicatedServerHardwareRaidController",
       });
     case 2:
-      return S.Array(DedicatedServerHardwareRaidController);
+      return S.Array(__S(225));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          controllers: S.optional(DedicatedServerHardwareRaidProfileControllersList),
+          controllers: S.optional(__S(226)),
         }),
       ).annotate({
         identifier: "DedicatedServerHardwareRaidProfile",
@@ -10626,11 +8662,11 @@ function __c28(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          capacity: S.optional(ComplexTypeUnitAndValueLong),
+          capacity: S.optional(__S(18)),
           diskCount: S.optional(S.Number),
-          diskSize: S.optional(ComplexTypeUnitAndValueLong),
+          diskSize: S.optional(__S(18)),
           diskSpanSize: S.optional(S.Number),
-          mode: S.optional(DedicatedServerHardwareSpecificationsRaidHardEnum),
+          mode: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
@@ -10638,11 +8674,11 @@ function __c28(j: number): any {
         identifier: "DedicatedServerHardwareRaidConfiguration",
       });
     case 6:
-      return S.Array(DedicatedServerHardwareRaidConfiguration);
+      return S.Array(__S(229));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          configurations: S.optional(DedicatedServerHardwareRaidSizeConfigurationsList),
+          configurations: S.optional(__S(230)),
         }),
       ).annotate({
         identifier: "DedicatedServerHardwareRaidSize",
@@ -10670,18 +8706,18 @@ function __c29(j: number): any {
         S.Struct({
           comment: S.optional(S.String),
           error: S.optional(S.NullOr(S.String)),
-          status: S.optional(DedicatedServerInstallationProgressStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerInstallationProgressSteps",
       });
     case 2:
-      return S.Array(DedicatedServerInstallationProgressSteps);
+      return S.Array(__S(233));
     case 3:
       return S.suspend(() =>
         S.Struct({
           elapsedTime: S.optional(S.Number),
-          progress: S.optional(S.NullOr(DedicatedServerInstallationProgressStatusProgressList)),
+          progress: S.optional(S.NullOr(__S(234))),
         }),
       ).annotate({
         identifier: "DedicatedServerInstallationProgressStatus",
@@ -10751,13 +8787,9 @@ function __c30(j: number): any {
         identifier: "ListDedicatedServerLicenseCompliantWindowsSqlServerRequest",
       });
     case 1:
-      return S.Array(LicenseWindowsSqlVersionEnum);
+      return S.Array(S.String);
     case 2:
-      return S.suspend(() =>
-        ListDedicatedServerLicenseCompliantWindowsSqlServerResponseBodyList.pipe(
-          T.RawResponseRoot(),
-        ),
-      ).annotate({
+      return S.suspend(() => __S(241).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerLicenseCompliantWindowsSqlServerResponse",
       });
     case 3:
@@ -10774,11 +8806,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          linkType: S.optional(
-            DedicatedNetworkInterfaceControllerNetworkInterfaceControllerLinkTypeEnum.pipe(
-              T.Query(),
-            ),
-          ),
+          linkType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -10794,8 +8822,8 @@ function __c30(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           mac: S.String.pipe(T.Label()),
-          period: DedicatedServerMrtgPeriodEnum.pipe(T.Query()),
-          type: DedicatedServerMrtgTypeEnum.pipe(T.Query()),
+          period: S.String.pipe(T.Query()),
+          type: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -10810,21 +8838,19 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           timestamp: S.optional(S.Number),
-          value: S.optional(S.NullOr(ComplexTypeUnitAndValueLong)),
+          value: S.optional(S.NullOr(__S(18))),
         }),
       ).annotate({
         identifier: "DedicatedServerMrtgTimestampValue",
       });
     case 7:
-      return S.Array(DedicatedServerMrtgTimestampValue);
+      return S.Array(__S(246));
   }
 }
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListDedicatedServerNetworkInterfaceControllerMrtgResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(247).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerNetworkInterfaceControllerMrtgResponse",
       });
     case 1:
@@ -10840,26 +8866,24 @@ function __c31(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          datacenter: S.optional(DedicatedDatacenterEnum),
+          datacenter: S.optional(S.String),
           description: S.optional(S.String),
           server: S.optional(S.String),
           todoDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedExposedTask" });
     case 3:
-      return S.Array(DedicatedExposedTask);
+      return S.Array(__S(250));
     case 4:
-      return S.suspend(() =>
-        ListDedicatedServerOngoingResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(251).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerOngoingResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          function: S.optional(DedicatedOperationFunctionEnum.pipe(T.Query())),
-          status: S.optional(DedicatedTaskStatusEnum.pipe(T.Query())),
+          function: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/operation", code: 200 }),
         ),
@@ -10895,11 +8919,11 @@ function __c31(j: number): any {
 function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DedicatedServerBackupStorageCapacityEnum);
+      return S.Array(S.Number);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          capacities: S.optional(S.NullOr(DedicatedServerBackupStorageOrderableCapacitiesList)),
+          capacities: S.optional(S.NullOr(__S(256))),
           orderable: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -10923,9 +8947,9 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           orderable: S.optional(S.Boolean),
-          platinum: S.optional(S.NullOr(DedicatedServerBandwidthOrderablePlatinumList)),
-          premium: S.optional(S.NullOr(DedicatedServerBandwidthOrderablePremiumList)),
-          ultimate: S.optional(S.NullOr(DedicatedServerBandwidthOrderableUltimateList)),
+          platinum: S.optional(S.NullOr(__S(256))),
+          premium: S.optional(S.NullOr(__S(256))),
+          ultimate: S.optional(S.NullOr(__S(256))),
         }),
       ).annotate({
         identifier: "DedicatedServerBandwidthOrderable",
@@ -10948,7 +8972,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           orderable: S.optional(S.Boolean),
-          vrack: S.optional(S.NullOr(DedicatedServerBandwidthvRackOrderableVrackList)),
+          vrack: S.optional(S.NullOr(__S(256))),
         }),
       ).annotate({
         identifier: "DedicatedServerBandwidthvRackOrderable",
@@ -10966,12 +8990,12 @@ function __c32(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          blockSizes: S.optional(DedicatedServerIpOrderableDetailsBlockSizesList),
+          blockSizes: S.optional(__S(256)),
           included: S.optional(S.Boolean),
           ipNumber: S.optional(S.NullOr(S.Number)),
           number: S.optional(S.Number),
-          optionRequired: S.optional(S.NullOr(DedicatedServerOptionRequiredEnum)),
-          type: S.optional(DedicatedServerIpTypeOrderableEnum),
+          optionRequired: S.optional(S.NullOr(S.String)),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerIpOrderableDetails",
@@ -10981,12 +9005,12 @@ function __c32(j: number): any {
 function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DedicatedServerIpOrderableDetails);
+      return S.Array(__S(263));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ipv4: S.optional(S.NullOr(DedicatedServerIpOrderableIpv4List)),
-          ipv6: S.optional(S.NullOr(DedicatedServerIpOrderableIpv6List)),
+          ipv4: S.optional(S.NullOr(__S(264))),
+          ipv6: S.optional(S.NullOr(__S(264))),
         }),
       ).annotate({
         identifier: "DedicatedServerIpOrderable",
@@ -11008,7 +9032,7 @@ function __c33(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          levels: S.optional(S.NullOr(DedicatedServerSupportLevelOrderableLevelsList)),
+          levels: S.optional(S.NullOr(__S(88))),
           orderable: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -11032,7 +9056,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           orderable: S.optional(S.Boolean),
-          traffic: S.optional(S.NullOr(DedicatedServerTrafficOrderableTrafficList)),
+          traffic: S.optional(S.NullOr(__S(88))),
         }),
       ).annotate({
         identifier: "DedicatedServerTrafficOrderable",
@@ -11054,9 +9078,9 @@ function __c33(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          capacity: S.optional(DedicatedServerUsbKeyOrderableDetailsCapacityList),
+          capacity: S.optional(__S(256)),
           number: S.optional(S.Number),
-          optionRequired: S.optional(S.NullOr(DedicatedServerOptionRequiredEnum)),
+          optionRequired: S.optional(S.NullOr(S.String)),
           orderable: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -11095,9 +9119,7 @@ function __c34(j: number): any {
           gpu: S.optional(S.String.pipe(T.Query())),
           memory: S.optional(S.String.pipe(T.Query())),
           planCode: S.optional(S.String.pipe(T.Query())),
-          regions: S.optional(
-            ListDedicatedServerRegionAvailabilitiesRequestRegionsList.pipe(T.Query()),
-          ),
+          regions: S.optional(__S(88).pipe(T.Query())),
           server: S.optional(S.String.pipe(T.Query())),
           storage: S.optional(S.String.pipe(T.Query())),
           systemStorage: S.optional(S.String.pipe(T.Query())),
@@ -11110,26 +9132,26 @@ function __c34(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          availability: S.optional(DedicatedServerAvailabilityEnum),
-          availabilityZone: S.optional(DedicatedServerAvailabilityZonesEnum),
+          availability: S.optional(S.String),
+          availabilityZone: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerAvailabilityZones",
       });
     case 4:
-      return S.Array(DedicatedServerAvailabilityZones);
+      return S.Array(__S(275));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          availability: S.optional(DedicatedServerAvailabilityEnum),
-          availabilityZones: S.optional(DedicatedServerAvailabilityByRegionAvailabilityZonesList),
-          region: S.optional(DedicatedServerAvailabilityRegionalizationEnum),
+          availability: S.optional(S.String),
+          availabilityZones: S.optional(__S(276)),
+          region: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerAvailabilityByRegion",
       });
     case 6:
-      return S.Array(DedicatedServerAvailabilityByRegion);
+      return S.Array(__S(277));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -11137,7 +9159,7 @@ function __c34(j: number): any {
           gpu: S.optional(S.NullOr(S.String)),
           memory: S.optional(S.NullOr(S.String)),
           planCode: S.optional(S.String),
-          regions: S.optional(S.NullOr(DedicatedServerRegionAvailabilityRegionsList)),
+          regions: S.optional(S.NullOr(__S(278))),
           server: S.optional(S.String),
           storage: S.optional(S.NullOr(S.String)),
           systemStorage: S.optional(S.NullOr(S.String)),
@@ -11150,11 +9172,9 @@ function __c34(j: number): any {
 function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DedicatedServerRegionAvailability);
+      return S.Array(__S(279));
     case 1:
-      return S.suspend(() =>
-        ListDedicatedServerRegionAvailabilitiesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(280).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerRegionAvailabilitiesResponse",
       });
     case 2:
@@ -11189,8 +9209,8 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          status: S.optional(DedicatedServerSplaStatusEnum.pipe(T.Query())),
-          type: S.optional(DedicatedServerSplaTypeEnum.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/spla", code: 200 })),
       ).annotate({
         identifier: "ListDedicatedServerSplaRequest",
@@ -11199,8 +9219,8 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          function: S.optional(DedicatedTaskFunctionEnum.pipe(T.Query())),
-          status: S.optional(DedicatedTaskStatusEnum.pipe(T.Query())),
+          function: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/dedicated/server/{serviceName}/task", code: 200 })),
       ).annotate({
         identifier: "ListDedicatedServerTaskRequest",
@@ -11236,18 +9256,16 @@ function __c35(j: number): any {
 function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DedicatedPlannedInterventionTimeSlot);
+      return S.Array(__S(287));
     case 1:
-      return S.suspend(() =>
-        ListDedicatedServerTaskAvailableTimeslotsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(288).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerTaskAvailableTimeslotsResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          family: DedicatedServerAddonFamilyEnum.pipe(T.Query()),
+          family: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -11261,18 +9279,16 @@ function __c36(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          family: S.optional(DedicatedServerAddonFamilyEnum),
+          family: S.optional(S.String),
           planCode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DedicatedServerBillingAddon",
       });
     case 4:
-      return S.Array(DedicatedServerBillingAddon);
+      return S.Array(__S(291));
     case 5:
-      return S.suspend(() =>
-        ListDedicatedServerUpdateAllowedResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(292).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDedicatedServerUpdateAllowedResponse",
       });
     case 6:
@@ -11325,9 +9341,7 @@ function __c37(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           enabled: S.optional(S.Boolean.pipe(T.Query())),
-          mode: S.optional(
-            DedicatedVirtualNetworkInterfaceVirtualNetworkInterfaceModeEnum.pipe(T.Query()),
-          ),
+          mode: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           vrack: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -11360,7 +9374,7 @@ function __c37(j: number): any {
           rescueMail: S.optional(S.NullOr(S.String)),
           rescueSshKey: S.optional(S.NullOr(S.String)),
           rootDevice: S.optional(S.NullOr(S.String)),
-          state: S.optional(DedicatedServerStateEnum),
+          state: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/dedicated/server/{serviceName}", code: 200 })),
       ).annotate({
         identifier: "PutDedicatedServerRequest",
@@ -11369,7 +9383,7 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          status: S.optional(DedicatedServerBurstStatusEnum),
+          status: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/dedicated/server/{serviceName}/burst", code: 200 })),
       ).annotate({
         identifier: "PutDedicatedServerBurstRequest",
@@ -11435,7 +9449,7 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renew: S.optional(S.NullOr(__S(150))),
         }).pipe(
           T.Http({ method: "PUT", uri: "/dedicated/server/{serviceName}/serviceInfos", code: 200 }),
         ),
@@ -11589,15 +9603,15 @@ function __c39(j: number): any {
         identifier: "ComplexTypeSafeKeyValueString",
       });
     case 5:
-      return S.Array(ComplexTypeSafeKeyValueString);
+      return S.Array(__S(316));
     case 6:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          details: S.optional(DedicatedServerInstallCustom),
+          details: S.optional(__S(315)),
           partitionSchemeName: S.optional(S.String),
           templateName: S.String,
-          userMetadata: S.optional(StartDedicatedServerInstallRequestUserMetadataList),
+          userMetadata: S.optional(__S(317)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11626,8 +9640,8 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          ttl: S.optional(DedicatedServerCacheTTLEnum),
-          type: DedicatedServerBmcTestTypeEnum,
+          ttl: S.optional(S.Number),
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -11642,8 +9656,8 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          ttl: DedicatedServerCacheTTLEnum,
-          type: DedicatedServerIpmiTestTypeEnum,
+          ttl: S.Number,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -11654,5 +9668,96 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "TestDedicatedServerFeaturesIpmiRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
   }
 }

@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -67,22 +69,12 @@ export interface ApproveApprovalRequestMessage {
   /** The expiration time of this approval. */
   expireTime?: string;
 }
-const ApproveApprovalRequestMessage = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ApproveApprovalRequestMessage>;
-
 export interface ApproveFoldersApprovalRequestsRequest {
   /** Name of the approval request to approve. */
   name: string;
   /** Request body */
   body?: ApproveApprovalRequestMessage;
 }
-const ApproveFoldersApprovalRequestsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ApproveFoldersApprovalRequestsRequest>;
-
 /** A decision that has been made to dismiss an approval request. */
 export interface DismissDecision {
   /** The time at which the approval request was dismissed. */
@@ -90,8 +82,6 @@ export interface DismissDecision {
   /** This field will be true if the ApprovalRequest was implicitly dismissed due to inaction by the access approval approvers (the request is not acted on by the approvers before the exiration time). */
   implicit?: boolean;
 }
-const DismissDecision = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DismissDecision>;
-
 export type AccessReasonTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "CUSTOMER_INITIATED_SUPPORT"
@@ -100,16 +90,12 @@ export type AccessReasonTypeEnum =
   | "THIRD_PARTY_DATA_REQUEST"
   | "GOOGLE_RESPONSE_TO_PRODUCTION_ALERT"
   | "CLOUD_INITIATED_ACCESS";
-const AccessReasonTypeEnum = S.String;
-
 export interface AccessReason {
   /** More detail about certain reason types. See comments for each type above. */
   detail?: string;
   /** Type of access reason. */
   type?: AccessReasonTypeEnum;
 }
-const AccessReason = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AccessReason>;
-
 /** Physical assigned office and physical location of the Google administrator performing the access. */
 export interface AccessLocations {
   /** The "home office" location of the Google administrator. A two-letter country code (ISO 3166-1 alpha-2), such as "US", "DE" or "GB" or a region code. In some limited situations Google systems may refer refer to a region code instead of a country code. Possible Region Codes: * ASI: Asia * EUR: Europe * OCE: Oceania * AFR: Africa * NAM: North America * SAM: South America * ANT: Antarctica * ANY: Any location */
@@ -117,8 +103,6 @@ export interface AccessLocations {
   /** Physical location of the Google administrator at the time of the access. A two-letter country code (ISO 3166-1 alpha-2), such as "US", "DE" or "GB" or a region code. In some limited situations Google systems may refer refer to a region code instead of a country code. Possible Region Codes: * ASI: Asia * EUR: Europe * OCE: Oceania * AFR: Africa * NAM: North America * SAM: South America * ANT: Antarctica * ANY: Any location */
   principalPhysicalLocationCountry?: string;
 }
-const AccessLocations = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AccessLocations>;
-
 export type SignatureInfoGoogleKeyAlgorithmEnum =
   | "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED"
   | "GOOGLE_SYMMETRIC_ENCRYPTION"
@@ -170,8 +154,6 @@ export type SignatureInfoGoogleKeyAlgorithmEnum =
   | "KEM_ECDH_P256"
   | "KEM_ECDH_P384"
   | "AES_256_KWP";
-const SignatureInfoGoogleKeyAlgorithmEnum = S.String;
-
 /** Information about the digital signature of the resource. */
 export interface SignatureInfo {
   /** The hashing algorithm used for signature verification. It will only be present in the case of Google managed keys. */
@@ -185,8 +167,6 @@ export interface SignatureInfo {
   /** The resource name of the customer CryptoKeyVersion used for signing. */
   customerKmsKeyVersion?: string;
 }
-const SignatureInfo = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SignatureInfo>;
-
 /** A decision that has been made to approve access to a resource. */
 export interface ApproveDecision {
   /** The time at which approval was granted. */
@@ -202,22 +182,16 @@ export interface ApproveDecision {
   /** True when the request has been approved by the customer's defined policy. */
   policyApproved?: boolean;
 }
-const ApproveDecision = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ApproveDecision>;
-
 /** This field contains the augmented information of the request. Requires augmented administrative access to be enabled. */
 export interface AugmentedInfo {
   /** For command-line tools, the full command-line exactly as entered by the actor without adding any additional characters (such as quotation marks). */
   command?: string;
 }
-const AugmentedInfo = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AugmentedInfo>;
-
 /** The properties associated with the resource of the request. */
 export interface ResourceProperties {
   /** Whether an approval will exclude the descendants of the resource being requested. */
   excludesDescendants?: boolean;
 }
-const ResourceProperties = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ResourceProperties>;
-
 /** A request for the customer to approve access to a resource. */
 export interface ApprovalRequest {
   /** The request was dismissed. */
@@ -243,113 +217,58 @@ export interface ApprovalRequest {
   /** The requested access duration. */
   requestedDuration?: string;
 }
-const ApprovalRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ApprovalRequest>;
-
 export interface ApproveOrganizationsApprovalRequestsRequest {
   /** Name of the approval request to approve. */
   name: string;
   /** Request body */
   body?: ApproveApprovalRequestMessage;
 }
-const ApproveOrganizationsApprovalRequestsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ApproveOrganizationsApprovalRequestsRequest>;
-
 export interface ApproveProjectsApprovalRequestsRequest {
   /** Name of the approval request to approve. */
   name: string;
   /** Request body */
   body?: ApproveApprovalRequestMessage;
 }
-const ApproveProjectsApprovalRequestsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ApproveProjectsApprovalRequestsRequest>;
-
 export interface DeleteAccessApprovalSettingsFoldersRequest {
   /** Name of the AccessApprovalSettings to delete. */
   name: string;
 }
-const DeleteAccessApprovalSettingsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteAccessApprovalSettingsFoldersRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Empty>;
-
 export interface DeleteAccessApprovalSettingsOrganizationsRequest {
   /** Name of the AccessApprovalSettings to delete. */
   name: string;
 }
-const DeleteAccessApprovalSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteAccessApprovalSettingsOrganizationsRequest>;
-
 export interface DeleteAccessApprovalSettingsProjectsRequest {
   /** Name of the AccessApprovalSettings to delete. */
   name: string;
 }
-const DeleteAccessApprovalSettingsProjectsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteAccessApprovalSettingsProjectsRequest>;
-
 /** Request to dismiss an approval request. */
 export interface DismissApprovalRequestMessage {}
-const DismissApprovalRequestMessage = Empty as any as S.Schema<DismissApprovalRequestMessage>;
-
 export interface DismissFoldersApprovalRequestsRequest {
   /** Name of the ApprovalRequest to dismiss. */
   name: string;
   /** Request body */
   body?: DismissApprovalRequestMessage;
 }
-const DismissFoldersApprovalRequestsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DismissFoldersApprovalRequestsRequest>;
-
 export interface DismissOrganizationsApprovalRequestsRequest {
   /** Name of the ApprovalRequest to dismiss. */
   name: string;
   /** Request body */
   body?: DismissApprovalRequestMessage;
 }
-const DismissOrganizationsApprovalRequestsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DismissOrganizationsApprovalRequestsRequest>;
-
 export interface DismissProjectsApprovalRequestsRequest {
   /** Name of the ApprovalRequest to dismiss. */
   name: string;
   /** Request body */
   body?: DismissApprovalRequestMessage;
 }
-const DismissProjectsApprovalRequestsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DismissProjectsApprovalRequestsRequest>;
-
 export interface GetAccessApprovalSettingsFoldersRequest {
   /** The name of the AccessApprovalSettings to retrieve. Format: "{projects|folders|organizations}/{id}/accessApprovalSettings" */
   name: string;
 }
-const GetAccessApprovalSettingsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetAccessApprovalSettingsFoldersRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<StringList>;
-
 export type EnrolledServiceEnrollmentLevelEnum = "ENROLLMENT_LEVEL_UNSPECIFIED" | "BLOCK_ALL";
-const EnrolledServiceEnrollmentLevelEnum = S.String;
-
 /** Represents the enrollment of a cloud resource into a specific service. */
 export interface EnrolledService {
   /** The product for which Access Approval will be enrolled. Allowed values are listed below (case-sensitive): * all * GA * Access Context Manager * Anthos Identity Service * AlloyDB for PostgreSQL * Apigee * Application Integration * App Hub * Artifact Registry * Anthos Service Mesh * Access Transparency * BigQuery * Certificate Authority Service * Cloud Bigtable * CCAI Assist and Knowledge * Cloud Dataflow * Cloud Dataproc * CEP Security Gateway * Compliance Evaluation Service * Cloud Firestore * Cloud Healthcare API * Chronicle * Cloud AI Companion Gateway - Titan * Google Cloud Armor * Cloud Asset Inventory * Cloud Asset Search * Cloud Deploy * Cloud DNS * Cloud Latency * Cloud Memorystore for Redis * CloudNet Control * Cloud Riptide * Cloud Tasks * Cloud Trace * Cloud Data Transfer * Cloud Composer * Integration Connectors * Contact Center AI Insights * Cloud Pub/Sub * Cloud Run * Resource Manager * Cloud Spanner * Database Center * Cloud Dataform * Cloud Data Fusion * Dataplex * Dialogflow Customer Experience Edition * Cloud DLP * Document AI * Edge Container * Edge Network * Cloud EKM * Eventarc * Firebase Data Connect * Firebase Rules * App Engine * Cloud Build * Compute Engine * Cloud Functions (2nd Gen) * Cloud Filestore * Cloud Interconnect * Cloud NetApp Volumes * Cloud Storage * Generative AI App Builder * Google Kubernetes Engine * Backup for GKE API * GKE Connect * GKE Hub * Hoverboard * Cloud HSM * Cloud Identity and Access Management * Cloud Identity-Aware Proxy * Infrastructure Manager * Identity Storage Service * Key Access Justifications * Cloud Key Management Service * Cloud Logging * Looker (Google Cloud core) * Looker Studio * Management Hub * Model Armor * Cloud Monitoring * Cloud NAT * Connectivity Hub * External passthrough Network Load Balancer * OIDC One * Organization Policy Service * Org Lifecycle * Persistent Disk * Parameter Manager * Private Services Access * Regional Internal Application Load Balancer * Storage Batch Operations * Cloud Security Command Center * Secure Source Manager * Seeker * Service Provisioning * Speaker ID * Secret Manager * Cloud SQL * Cloud Speech-to-Text * Traffic Director * Cloud Text-to-Speech * USPS Andromeda * Vertex AI * Virtual Private Cloud (VPC) * VPC Access * VPC Service Controls Troubleshooter * VPC virtnet * Cloud Workstations * Web Risk Note: These values are supported as input for legacy purposes, but will not be returned from the API. * all * ga-only * appengine.googleapis.com * artifactregistry.googleapis.com * bigquery.googleapis.com * bigtable.googleapis.com * container.googleapis.com * cloudkms.googleapis.com * cloudresourcemanager.googleapis.com * cloudsql.googleapis.com * compute.googleapis.com * dataflow.googleapis.com * dataproc.googleapis.com * dlp.googleapis.com * iam.googleapis.com * logging.googleapis.com * orgpolicy.googleapis.com * pubsub.googleapis.com * spanner.googleapis.com * secretmanager.googleapis.com * speakerid.googleapis.com * storage.googleapis.com Calls to UpdateAccessApprovalSettings using 'all' or any of the XXX.googleapis.com will be translated to the associated product name ('all', 'App Engine', etc.). Note: 'all' will enroll the resource in all products supported at both 'GA' and 'Preview' levels. More information about levels of support is available at https://cloud.google.com/access-approval/docs/supported-services */
@@ -357,26 +276,18 @@ export interface EnrolledService {
   /** The enrollment level of the service. */
   enrollmentLevel?: EnrolledServiceEnrollmentLevelEnum | (string & {});
 }
-const EnrolledService = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<EnrolledService>;
-
 export type EnrolledServiceList = Array<EnrolledService>;
-const EnrolledServiceList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<EnrolledServiceList>;
-
 export type AccessApprovalSettingsRequestScopeMaxWidthPreferenceEnum =
   | "REQUEST_SCOPE_MAX_WIDTH_PREFERENCE_UNSPECIFIED"
   | "ORGANIZATION"
   | "FOLDER"
   | "PROJECT";
-const AccessApprovalSettingsRequestScopeMaxWidthPreferenceEnum = S.String;
-
 export type CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum =
   | "JUSTIFICATION_BASED_APPROVAL_POLICY_UNSPECIFIED"
   | "JUSTIFICATION_BASED_APPROVAL_ENABLED_ALL"
   | "JUSTIFICATION_BASED_APPROVAL_ENABLED_EXTERNAL_JUSTIFICATIONS"
   | "JUSTIFICATION_BASED_APPROVAL_NOT_ENABLED"
   | "JUSTIFICATION_BASED_APPROVAL_INHERITED";
-const CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum = S.String;
-
 /** Represents all the policies that can be set for Customer Approval. */
 export interface CustomerApprovalApprovalPolicy {
   /** Optional. Policy for approval based on the justification given. */
@@ -384,11 +295,6 @@ export interface CustomerApprovalApprovalPolicy {
     | CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum
     | (string & {});
 }
-const CustomerApprovalApprovalPolicy = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CustomerApprovalApprovalPolicy>;
-
 /** Settings on a Project/Folder/Organization related to Access Approval. */
 export interface AccessApprovalSettings {
   /** This field is used to set a preference for granularity of an access approval request. If true, Google personnel will be asked to send resource-level requests when possible. If false, Google personnel will be asked to send requests at the project level. */
@@ -424,65 +330,30 @@ export interface AccessApprovalSettings {
   /** Optional. Policy configuration for Access Approval that sets the operating mode. The available policies are Transparency, Streamlined Support, and Approval Required. */
   approvalPolicy?: CustomerApprovalApprovalPolicy;
 }
-const AccessApprovalSettings = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<AccessApprovalSettings>;
-
 export interface GetAccessApprovalSettingsOrganizationsRequest {
   /** The name of the AccessApprovalSettings to retrieve. Format: "{projects|folders|organizations}/{id}/accessApprovalSettings" */
   name: string;
 }
-const GetAccessApprovalSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetAccessApprovalSettingsOrganizationsRequest>;
-
 export interface GetAccessApprovalSettingsProjectsRequest {
   /** The name of the AccessApprovalSettings to retrieve. Format: "{projects|folders|organizations}/{id}/accessApprovalSettings" */
   name: string;
 }
-const GetAccessApprovalSettingsProjectsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetAccessApprovalSettingsProjectsRequest>;
-
 export interface GetFoldersApprovalRequestsRequest {
   /** The name of the approval request to retrieve. Format: "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}" */
   name: string;
 }
-const GetFoldersApprovalRequestsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetFoldersApprovalRequestsRequest>;
-
 export interface GetOrganizationsApprovalRequestsRequest {
   /** The name of the approval request to retrieve. Format: "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}" */
   name: string;
 }
-const GetOrganizationsApprovalRequestsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetOrganizationsApprovalRequestsRequest>;
-
 export interface GetProjectsApprovalRequestsRequest {
   /** The name of the approval request to retrieve. Format: "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}" */
   name: string;
 }
-const GetProjectsApprovalRequestsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetProjectsApprovalRequestsRequest>;
-
 export interface GetServiceAccountFoldersRequest {
   /** Name of the AccessApprovalServiceAccount to retrieve. */
   name: string;
 }
-const GetServiceAccountFoldersRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetServiceAccountFoldersRequest>;
-
 /** Access Approval service account related to a project/folder/organization. */
 export interface AccessApprovalServiceAccount {
   /** The resource name of the Access Approval service account. Format is one of: * "projects/{project}/serviceAccount" * "folders/{folder}/serviceAccount" * "organizations/{organization}/serviceAccount" */
@@ -490,29 +361,14 @@ export interface AccessApprovalServiceAccount {
   /** Email address of the service account. */
   accountEmail?: string;
 }
-const AccessApprovalServiceAccount = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<AccessApprovalServiceAccount>;
-
 export interface GetServiceAccountOrganizationsRequest {
   /** Name of the AccessApprovalServiceAccount to retrieve. */
   name: string;
 }
-const GetServiceAccountOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetServiceAccountOrganizationsRequest>;
-
 export interface GetServiceAccountProjectsRequest {
   /** Name of the AccessApprovalServiceAccount to retrieve. */
   name: string;
 }
-const GetServiceAccountProjectsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetServiceAccountProjectsRequest>;
-
 /** Request to invalidate an existing approval. */
 export type InvalidateApprovalRequestMessage = DismissApprovalRequestMessage;
 export interface InvalidateFoldersApprovalRequestsRequest {
@@ -521,33 +377,18 @@ export interface InvalidateFoldersApprovalRequestsRequest {
   /** Request body */
   body?: DismissApprovalRequestMessage;
 }
-const InvalidateFoldersApprovalRequestsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<InvalidateFoldersApprovalRequestsRequest>;
-
 export interface InvalidateOrganizationsApprovalRequestsRequest {
   /** Name of the ApprovalRequest to invalidate. */
   name: string;
   /** Request body */
   body?: DismissApprovalRequestMessage;
 }
-const InvalidateOrganizationsApprovalRequestsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<InvalidateOrganizationsApprovalRequestsRequest>;
-
 export interface InvalidateProjectsApprovalRequestsRequest {
   /** Name of the ApprovalRequest to invalidate. */
   name: string;
   /** Request body */
   body?: DismissApprovalRequestMessage;
 }
-const InvalidateProjectsApprovalRequestsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<InvalidateProjectsApprovalRequestsRequest>;
-
 export interface ListFoldersApprovalRequestsRequest {
   /** A filter on the type of approval requests to retrieve. Must be one of the following values: * [not set]: Requests that are pending or have active approvals. * ALL: All requests. * PENDING: Only pending requests. * ACTIVE: Only active (i.e. currently approved) requests. * DISMISSED: Only requests that have been dismissed, or requests that are not approved and past expiration. * EXPIRED: Only requests that have been approved, and the approval has expired. * HISTORY: Active, dismissed and expired requests. */
   filter?: string;
@@ -558,14 +399,7 @@ export interface ListFoldersApprovalRequestsRequest {
   /** Requested page size. */
   pageSize?: number;
 }
-const ListFoldersApprovalRequestsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListFoldersApprovalRequestsRequest>;
-
 export type ApprovalRequestList = Array<ApprovalRequest>;
-const ApprovalRequestList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ApprovalRequestList>;
-
 /** Response to listing of ApprovalRequest objects. */
 export interface ListApprovalRequestsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more. */
@@ -573,11 +407,6 @@ export interface ListApprovalRequestsResponse {
   /** Approval request details. */
   approvalRequests?: ApprovalRequestList;
 }
-const ListApprovalRequestsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListApprovalRequestsResponse>;
-
 export interface ListOrganizationsApprovalRequestsRequest {
   /** The parent resource. This may be "projects/{project}", "folders/{folder}", or "organizations/{organization}". */
   parent: string;
@@ -588,11 +417,6 @@ export interface ListOrganizationsApprovalRequestsRequest {
   /** Requested page size. */
   pageSize?: number;
 }
-const ListOrganizationsApprovalRequestsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListOrganizationsApprovalRequestsRequest>;
-
 export interface ListProjectsApprovalRequestsRequest {
   /** A token identifying the page of results to return. */
   pageToken?: string;
@@ -603,11 +427,6 @@ export interface ListProjectsApprovalRequestsRequest {
   /** The parent resource. This may be "projects/{project}", "folders/{folder}", or "organizations/{organization}". */
   parent: string;
 }
-const ListProjectsApprovalRequestsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListProjectsApprovalRequestsRequest>;
-
 export interface UpdateAccessApprovalSettingsFoldersRequest {
   /** The resource name of the settings. Format is one of: * "projects/{project}/accessApprovalSettings" * "folders/{folder}/accessApprovalSettings" * "organizations/{organization}/accessApprovalSettings" */
   name: string;
@@ -616,11 +435,6 @@ export interface UpdateAccessApprovalSettingsFoldersRequest {
   /** Request body */
   body?: AccessApprovalSettings;
 }
-const UpdateAccessApprovalSettingsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<UpdateAccessApprovalSettingsFoldersRequest>;
-
 export interface UpdateAccessApprovalSettingsOrganizationsRequest {
   /** The resource name of the settings. Format is one of: * "projects/{project}/accessApprovalSettings" * "folders/{folder}/accessApprovalSettings" * "organizations/{organization}/accessApprovalSettings" */
   name: string;
@@ -629,11 +443,6 @@ export interface UpdateAccessApprovalSettingsOrganizationsRequest {
   /** Request body */
   body?: AccessApprovalSettings;
 }
-const UpdateAccessApprovalSettingsOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<UpdateAccessApprovalSettingsOrganizationsRequest>;
-
 export interface UpdateAccessApprovalSettingsProjectsRequest {
   /** The update mask applies to the settings. Only the top level fields of AccessApprovalSettings (notification_emails & enrolled_services) are supported. For each field, if it is included, the currently stored value will be entirely overwritten with the value of the field passed in this request. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If this field is left unset, only the notification_emails field will be updated. */
   updateMask?: string;
@@ -642,11 +451,6 @@ export interface UpdateAccessApprovalSettingsProjectsRequest {
   /** Request body */
   body?: AccessApprovalSettings;
 }
-const UpdateAccessApprovalSettingsProjectsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<UpdateAccessApprovalSettingsProjectsRequest>;
-
 export type ApproveFoldersApprovalRequestsError =
   | NotFound
   | Forbidden
@@ -660,8 +464,8 @@ export const approveFoldersApprovalRequests: API.OperationMethod<
   ApproveFoldersApprovalRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApproveFoldersApprovalRequestsRequest,
-  output: ApprovalRequest,
+  input: __S(1) as any as S.Schema<ApproveFoldersApprovalRequestsRequest>,
+  output: __S(9) as any as S.Schema<ApprovalRequest>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -680,8 +484,8 @@ export const approveOrganizationsApprovalRequests: API.OperationMethod<
   ApproveOrganizationsApprovalRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApproveOrganizationsApprovalRequestsRequest,
-  output: ApprovalRequest,
+  input: __S(10) as any as S.Schema<ApproveOrganizationsApprovalRequestsRequest>,
+  output: __S(9) as any as S.Schema<ApprovalRequest>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -700,8 +504,8 @@ export const approveProjectsApprovalRequests: API.OperationMethod<
   ApproveProjectsApprovalRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApproveProjectsApprovalRequestsRequest,
-  output: ApprovalRequest,
+  input: __S(11) as any as S.Schema<ApproveProjectsApprovalRequestsRequest>,
+  output: __S(9) as any as S.Schema<ApprovalRequest>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -720,8 +524,8 @@ export const deleteAccessApprovalSettingsFolders: API.OperationMethod<
   DeleteAccessApprovalSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessApprovalSettingsFoldersRequest,
-  output: Empty,
+  input: __S(12) as any as S.Schema<DeleteAccessApprovalSettingsFoldersRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -740,8 +544,8 @@ export const deleteAccessApprovalSettingsOrganizations: API.OperationMethod<
   DeleteAccessApprovalSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessApprovalSettingsOrganizationsRequest,
-  output: Empty,
+  input: __S(14) as any as S.Schema<DeleteAccessApprovalSettingsOrganizationsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -760,8 +564,8 @@ export const deleteAccessApprovalSettingsProjects: API.OperationMethod<
   DeleteAccessApprovalSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccessApprovalSettingsProjectsRequest,
-  output: Empty,
+  input: __S(15) as any as S.Schema<DeleteAccessApprovalSettingsProjectsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -780,8 +584,8 @@ export const dismissFoldersApprovalRequests: API.OperationMethod<
   DismissFoldersApprovalRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DismissFoldersApprovalRequestsRequest,
-  output: ApprovalRequest,
+  input: __S(16) as any as S.Schema<DismissFoldersApprovalRequestsRequest>,
+  output: __S(9) as any as S.Schema<ApprovalRequest>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -800,8 +604,8 @@ export const dismissOrganizationsApprovalRequests: API.OperationMethod<
   DismissOrganizationsApprovalRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DismissOrganizationsApprovalRequestsRequest,
-  output: ApprovalRequest,
+  input: __S(17) as any as S.Schema<DismissOrganizationsApprovalRequestsRequest>,
+  output: __S(9) as any as S.Schema<ApprovalRequest>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -820,8 +624,8 @@ export const dismissProjectsApprovalRequests: API.OperationMethod<
   DismissProjectsApprovalRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DismissProjectsApprovalRequestsRequest,
-  output: ApprovalRequest,
+  input: __S(18) as any as S.Schema<DismissProjectsApprovalRequestsRequest>,
+  output: __S(9) as any as S.Schema<ApprovalRequest>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -835,8 +639,8 @@ export const getAccessApprovalSettingsFolders: API.OperationMethod<
   GetAccessApprovalSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessApprovalSettingsFoldersRequest,
-  output: AccessApprovalSettings,
+  input: __S(19) as any as S.Schema<GetAccessApprovalSettingsFoldersRequest>,
+  output: __S(24) as any as S.Schema<AccessApprovalSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -850,8 +654,8 @@ export const getAccessApprovalSettingsOrganizations: API.OperationMethod<
   GetAccessApprovalSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessApprovalSettingsOrganizationsRequest,
-  output: AccessApprovalSettings,
+  input: __S(25) as any as S.Schema<GetAccessApprovalSettingsOrganizationsRequest>,
+  output: __S(24) as any as S.Schema<AccessApprovalSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -865,8 +669,8 @@ export const getAccessApprovalSettingsProjects: API.OperationMethod<
   GetAccessApprovalSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessApprovalSettingsProjectsRequest,
-  output: AccessApprovalSettings,
+  input: __S(26) as any as S.Schema<GetAccessApprovalSettingsProjectsRequest>,
+  output: __S(24) as any as S.Schema<AccessApprovalSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -880,8 +684,8 @@ export const getFoldersApprovalRequests: API.OperationMethod<
   GetFoldersApprovalRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFoldersApprovalRequestsRequest,
-  output: ApprovalRequest,
+  input: __S(27) as any as S.Schema<GetFoldersApprovalRequestsRequest>,
+  output: __S(9) as any as S.Schema<ApprovalRequest>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -895,8 +699,8 @@ export const getOrganizationsApprovalRequests: API.OperationMethod<
   GetOrganizationsApprovalRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsApprovalRequestsRequest,
-  output: ApprovalRequest,
+  input: __S(28) as any as S.Schema<GetOrganizationsApprovalRequestsRequest>,
+  output: __S(9) as any as S.Schema<ApprovalRequest>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -910,8 +714,8 @@ export const getProjectsApprovalRequests: API.OperationMethod<
   GetProjectsApprovalRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsApprovalRequestsRequest,
-  output: ApprovalRequest,
+  input: __S(29) as any as S.Schema<GetProjectsApprovalRequestsRequest>,
+  output: __S(9) as any as S.Schema<ApprovalRequest>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -925,8 +729,8 @@ export const getServiceAccountFolders: API.OperationMethod<
   GetServiceAccountFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceAccountFoldersRequest,
-  output: AccessApprovalServiceAccount,
+  input: __S(30) as any as S.Schema<GetServiceAccountFoldersRequest>,
+  output: __S(31) as any as S.Schema<AccessApprovalServiceAccount>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -940,8 +744,8 @@ export const getServiceAccountOrganizations: API.OperationMethod<
   GetServiceAccountOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceAccountOrganizationsRequest,
-  output: AccessApprovalServiceAccount,
+  input: __S(32) as any as S.Schema<GetServiceAccountOrganizationsRequest>,
+  output: __S(31) as any as S.Schema<AccessApprovalServiceAccount>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -955,8 +759,8 @@ export const getServiceAccountProjects: API.OperationMethod<
   GetServiceAccountProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceAccountProjectsRequest,
-  output: AccessApprovalServiceAccount,
+  input: __S(33) as any as S.Schema<GetServiceAccountProjectsRequest>,
+  output: __S(31) as any as S.Schema<AccessApprovalServiceAccount>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -975,8 +779,8 @@ export const invalidateFoldersApprovalRequests: API.OperationMethod<
   InvalidateFoldersApprovalRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvalidateFoldersApprovalRequestsRequest,
-  output: ApprovalRequest,
+  input: __S(34) as any as S.Schema<InvalidateFoldersApprovalRequestsRequest>,
+  output: __S(9) as any as S.Schema<ApprovalRequest>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -995,8 +799,8 @@ export const invalidateOrganizationsApprovalRequests: API.OperationMethod<
   InvalidateOrganizationsApprovalRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvalidateOrganizationsApprovalRequestsRequest,
-  output: ApprovalRequest,
+  input: __S(35) as any as S.Schema<InvalidateOrganizationsApprovalRequestsRequest>,
+  output: __S(9) as any as S.Schema<ApprovalRequest>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1015,8 +819,8 @@ export const invalidateProjectsApprovalRequests: API.OperationMethod<
   InvalidateProjectsApprovalRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvalidateProjectsApprovalRequestsRequest,
-  output: ApprovalRequest,
+  input: __S(36) as any as S.Schema<InvalidateProjectsApprovalRequestsRequest>,
+  output: __S(9) as any as S.Schema<ApprovalRequest>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1031,8 +835,8 @@ export const listFoldersApprovalRequests: API.PaginatedOperationMethod<
   GcpOpContext,
   ListApprovalRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFoldersApprovalRequestsRequest,
-  output: ListApprovalRequestsResponse,
+  input: __S(37) as any as S.Schema<ListFoldersApprovalRequestsRequest>,
+  output: __S(39) as any as S.Schema<ListApprovalRequestsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1048,8 +852,8 @@ export const listOrganizationsApprovalRequests: API.PaginatedOperationMethod<
   GcpOpContext,
   ListApprovalRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsApprovalRequestsRequest,
-  output: ListApprovalRequestsResponse,
+  input: __S(40) as any as S.Schema<ListOrganizationsApprovalRequestsRequest>,
+  output: __S(39) as any as S.Schema<ListApprovalRequestsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1065,8 +869,8 @@ export const listProjectsApprovalRequests: API.PaginatedOperationMethod<
   GcpOpContext,
   ListApprovalRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsApprovalRequestsRequest,
-  output: ListApprovalRequestsResponse,
+  input: __S(41) as any as S.Schema<ListProjectsApprovalRequestsRequest>,
+  output: __S(39) as any as S.Schema<ListApprovalRequestsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1086,8 +890,8 @@ export const updateAccessApprovalSettingsFolders: API.OperationMethod<
   UpdateAccessApprovalSettingsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccessApprovalSettingsFoldersRequest,
-  output: AccessApprovalSettings,
+  input: __S(42) as any as S.Schema<UpdateAccessApprovalSettingsFoldersRequest>,
+  output: __S(24) as any as S.Schema<AccessApprovalSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1106,8 +910,8 @@ export const updateAccessApprovalSettingsOrganizations: API.OperationMethod<
   UpdateAccessApprovalSettingsOrganizationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccessApprovalSettingsOrganizationsRequest,
-  output: AccessApprovalSettings,
+  input: __S(43) as any as S.Schema<UpdateAccessApprovalSettingsOrganizationsRequest>,
+  output: __S(24) as any as S.Schema<AccessApprovalSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1126,8 +930,8 @@ export const updateAccessApprovalSettingsProjects: API.OperationMethod<
   UpdateAccessApprovalSettingsProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccessApprovalSettingsProjectsRequest,
-  output: AccessApprovalSettings,
+  input: __S(44) as any as S.Schema<UpdateAccessApprovalSettingsProjectsRequest>,
+  output: __S(24) as any as S.Schema<AccessApprovalSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1148,7 +952,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ApproveApprovalRequestMessage.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1170,7 +974,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           detail: S.optional(S.String),
-          type: S.optional(AccessReasonTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccessReason" });
     case 4:
@@ -1183,7 +987,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          googleKeyAlgorithm: S.optional(SignatureInfoGoogleKeyAlgorithmEnum),
+          googleKeyAlgorithm: S.optional(S.String),
           googlePublicKeyPem: S.optional(S.String),
           signature: S.optional(S.String),
           serializedApprovalRequest: S.optional(S.String),
@@ -1196,7 +1000,7 @@ function __c0(j: number): any {
           approveTime: S.optional(S.String),
           expireTime: S.optional(S.String),
           autoApproved: S.optional(S.Boolean),
-          signatureInfo: S.optional(SignatureInfo),
+          signatureInfo: S.optional(__S(5)),
           invalidateTime: S.optional(S.String),
           policyApproved: S.optional(S.Boolean),
         }),
@@ -1220,16 +1024,16 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dismiss: S.optional(DismissDecision),
-          requestedReason: S.optional(AccessReason),
+          dismiss: S.optional(__S(2)),
+          requestedReason: S.optional(__S(3)),
           name: S.optional(S.String),
-          requestedLocations: S.optional(AccessLocations),
+          requestedLocations: S.optional(__S(4)),
           requestedExpiration: S.optional(S.String),
           requestTime: S.optional(S.String),
-          approve: S.optional(ApproveDecision),
-          requestedAugmentedInfo: S.optional(AugmentedInfo),
+          approve: S.optional(__S(6)),
+          requestedAugmentedInfo: S.optional(__S(7)),
           requestedResourceName: S.optional(S.String),
-          requestedResourceProperties: S.optional(ResourceProperties),
+          requestedResourceProperties: S.optional(__S(8)),
           requestedDuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApprovalRequest" });
@@ -1237,7 +1041,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ApproveApprovalRequestMessage.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1252,7 +1056,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ApproveApprovalRequestMessage.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1317,7 +1121,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(DismissApprovalRequestMessage.pipe(T.HttpBody())),
+          body: S.optional(__S(13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1332,7 +1136,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(DismissApprovalRequestMessage.pipe(T.HttpBody())),
+          body: S.optional(__S(13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1347,7 +1151,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(DismissApprovalRequestMessage.pipe(T.HttpBody())),
+          body: S.optional(__S(13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1378,17 +1182,15 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cloudProduct: S.optional(S.String),
-          enrollmentLevel: S.optional(EnrolledServiceEnrollmentLevelEnum),
+          enrollmentLevel: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnrolledService" });
     case 6:
-      return S.Array(EnrolledService);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          justificationBasedApprovalPolicy: S.optional(
-            CustomerApprovalApprovalPolicyJustificationBasedApprovalPolicyEnum,
-          ),
+          justificationBasedApprovalPolicy: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CustomerApprovalApprovalPolicy",
@@ -1401,22 +1203,20 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           preferNoBroadApprovalRequests: S.optional(S.Boolean),
-          notificationEmails: S.optional(StringList),
-          enrolledServices: S.optional(EnrolledServiceList),
-          requestScopeMaxWidthPreference: S.optional(
-            AccessApprovalSettingsRequestScopeMaxWidthPreferenceEnum,
-          ),
+          notificationEmails: S.optional(__S(20)),
+          enrolledServices: S.optional(__S(22)),
+          requestScopeMaxWidthPreference: S.optional(S.String),
           ancestorHasActiveKeyVersion: S.optional(S.Boolean),
           enrolledAncestor: S.optional(S.Boolean),
-          effectiveApprovalPolicy: S.optional(CustomerApprovalApprovalPolicy),
+          effectiveApprovalPolicy: S.optional(__S(23)),
           requireCustomerVisibleJustification: S.optional(S.Boolean),
           notificationPubsubTopic: S.optional(S.String),
           invalidKeyVersion: S.optional(S.Boolean),
           activeKeyVersion: S.optional(S.String),
-          ancestorsEnrolledServices: S.optional(EnrolledServiceList),
+          ancestorsEnrolledServices: S.optional(__S(22)),
           name: S.optional(S.String),
           preferredRequestExpirationDays: S.optional(S.Number),
-          approvalPolicy: S.optional(CustomerApprovalApprovalPolicy),
+          approvalPolicy: S.optional(__S(23)),
         }),
       ).annotate({ identifier: "AccessApprovalSettings" });
     case 1:
@@ -1548,7 +1348,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(DismissApprovalRequestMessage.pipe(T.HttpBody())),
+          body: S.optional(__S(13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1563,7 +1363,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(DismissApprovalRequestMessage.pipe(T.HttpBody())),
+          body: S.optional(__S(13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1578,7 +1378,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(DismissApprovalRequestMessage.pipe(T.HttpBody())),
+          body: S.optional(__S(13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1607,12 +1407,12 @@ function __c4(j: number): any {
         identifier: "ListFoldersApprovalRequestsRequest",
       });
     case 6:
-      return S.Array(ApprovalRequest);
+      return S.Array(__S(9));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          approvalRequests: S.optional(ApprovalRequestList),
+          approvalRequests: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "ListApprovalRequestsResponse",
@@ -1660,7 +1460,7 @@ function __c5(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(AccessApprovalSettings.pipe(T.HttpBody())),
+          body: S.optional(__S(24).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1676,7 +1476,7 @@ function __c5(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(AccessApprovalSettings.pipe(T.HttpBody())),
+          body: S.optional(__S(24).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1692,7 +1492,7 @@ function __c5(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(AccessApprovalSettings.pipe(T.HttpBody())),
+          body: S.optional(__S(24).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1703,5 +1503,26 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateAccessApprovalSettingsProjectsRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
   }
 }

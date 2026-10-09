@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -40,11 +42,7 @@ export type GetFinancialReportRequestReportType =
   | "balance_summary"
   | "income_statement"
   | "balance_activity";
-const GetFinancialReportRequestReportType = S.String;
-
 export type GetFinancialReportRequestGroupBy = "hour" | "day" | "week" | "month";
-const GetFinancialReportRequestGroupBy = S.String;
-
 export type GetFinancialReportRequestLineTypesItem =
   | "account_settlement"
   | "ad_budget_release"
@@ -185,19 +183,10 @@ export type GetFinancialReportRequestLineTypesItem =
   | "withdrawal_reclassification"
   | "withdrawal_reversal"
   | "withdrawal_topup_adjustment";
-const GetFinancialReportRequestLineTypesItem = S.String;
-
 export type GetFinancialReportRequestLineTypesList = Array<
   GetFinancialReportRequestLineTypesItem | (string & {})
 >;
-const GetFinancialReportRequestLineTypesList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetFinancialReportRequestLineTypesList>;
-
 export type GetFinancialReportRequestDirection = "money_in" | "money_out";
-const GetFinancialReportRequestDirection = S.String;
-
 export interface GetFinancialReportRequest {
   /** The owning account ID (a biz_ identifier), or `global` for a platform-wide report across all ledger accounts (requires internal admin access). */
   account_id: string;
@@ -226,22 +215,9 @@ export interface GetFinancialReportRequest {
   /** Balance activity only: include payment costs grouped by payment method and provider. */
   include_payment_fee_breakdown?: boolean;
 }
-const GetFinancialReportRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetFinancialReportRequest>;
-
 /** Every lifetime cashflow currency, ordered by cashflow volume in the requested period. */
 export type GetFinancialReportResponseCurrenciesList = Array<string>;
-const GetFinancialReportResponseCurrenciesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetFinancialReportResponseCurrenciesList>;
-
 export type GetFinancialReportResponseFxExcludedCurrenciesList = Array<string>;
-const GetFinancialReportResponseFxExcludedCurrenciesList =
-  GetFinancialReportResponseCurrenciesList as any as S.Schema<GetFinancialReportResponseFxExcludedCurrenciesList>;
-
 export interface Money {
   /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
@@ -252,8 +228,6 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-const Money = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Money>;
-
 /** The customer-facing payment method family or standalone service. */
 export type GetFinancialReportResponsePaymentFeeBreakdownItemCategory =
   | "app_store_payments"
@@ -268,8 +242,6 @@ export type GetFinancialReportResponsePaymentFeeBreakdownItemCategory =
   | "wallet_payments"
   | "whop_balance"
   | "whop_orchestration";
-const GetFinancialReportResponsePaymentFeeBreakdownItemCategory = S.String;
-
 export interface GetFinancialReportResponsePaymentFeeBreakdownItem {
   /** Payment costs attributed to this payment method. */
   amount: Money;
@@ -280,26 +252,14 @@ export interface GetFinancialReportResponsePaymentFeeBreakdownItem {
   /** Start of the time bucket containing these payment costs. */
   period: string;
 }
-const GetFinancialReportResponsePaymentFeeBreakdownItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetFinancialReportResponsePaymentFeeBreakdownItem>;
-
 /** Payment costs grouped by customer-facing payment method and provider when requested. */
 export type GetFinancialReportResponsePaymentFeeBreakdownList =
   Array<GetFinancialReportResponsePaymentFeeBreakdownItem>;
-const GetFinancialReportResponsePaymentFeeBreakdownList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetFinancialReportResponsePaymentFeeBreakdownList>;
-
 /** The report that was generated, echoing the requested `report_type`. */
 export type GetFinancialReportResponseReportType =
   | "balance_summary"
   | "income_statement"
   | "balance_activity";
-const GetFinancialReportResponseReportType = S.String;
-
 /** The family the row's `line_category` rolls up into. Balance summary rows are always `balance`. */
 export type GetFinancialReportResponseRowsItemGrouping =
   | "advertising"
@@ -324,8 +284,6 @@ export type GetFinancialReportResponseRowsItemGrouping =
   | "transfers"
   | "wallets_and_balance"
   | "withdrawals";
-const GetFinancialReportResponseRowsItemGrouping = S.String;
-
 /** The ledger line category the row aggregates. Balance summary rows carry the balance bucket instead. */
 export type GetFinancialReportResponseRowsItemLineCategory =
   | "accelerated_settlement_fee"
@@ -628,12 +586,8 @@ export type GetFinancialReportResponseRowsItemLineCategory =
   | "withdrawal_reclassification"
   | "withdrawal_reversal"
   | "withdrawal_topup_adjustment";
-const GetFinancialReportResponseRowsItemLineCategory = S.String;
-
 /** Which side of the income statement the category falls on, or `null` when it is not a P&L category. */
 export type GetFinancialReportResponseRowsItemProfitAndLossSection = "revenue" | "cost_of_revenue";
-const GetFinancialReportResponseRowsItemProfitAndLossSection = S.String;
-
 export interface GetFinancialReportResponseRowsItem {
   account_ik_path?: string | null;
   account_name?: string | null;
@@ -649,17 +603,7 @@ export interface GetFinancialReportResponseRowsItem {
   /** Which side of the income statement the category falls on, or `null` when it is not a P&L category. */
   profit_and_loss_section?: GetFinancialReportResponseRowsItemProfitAndLossSection | null;
 }
-const GetFinancialReportResponseRowsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetFinancialReportResponseRowsItem>;
-
 export type GetFinancialReportResponseRowsList = Array<GetFinancialReportResponseRowsItem>;
-const GetFinancialReportResponseRowsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetFinancialReportResponseRowsList>;
-
 export interface GetFinancialReportResponse {
   beginning_balance?: number | null;
   /** Every lifetime cashflow currency, ordered by cashflow volume in the requested period. */
@@ -673,11 +617,6 @@ export interface GetFinancialReportResponse {
   rows: GetFinancialReportResponseRowsList;
   total: number;
 }
-const GetFinancialReportResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetFinancialReportResponse>;
-
 export type GetFinancialReportBreakdownRequestBucket =
   | "transfers"
   | "payments"
@@ -696,14 +635,8 @@ export type GetFinancialReportBreakdownRequestBucket =
   | "revenue_share"
   | "swaps"
   | "card_loads";
-const GetFinancialReportBreakdownRequestBucket = S.String;
-
 export type GetFinancialReportBreakdownRequestDirection = "money_in" | "money_out";
-const GetFinancialReportBreakdownRequestDirection = S.String;
-
 export type GetFinancialReportBreakdownRequestGroupBy = "hour" | "day" | "week" | "month";
-const GetFinancialReportBreakdownRequestGroupBy = S.String;
-
 export interface GetFinancialReportBreakdownRequest {
   /** The owning account ID (a biz_ identifier). */
   account_id: string;
@@ -722,29 +655,12 @@ export interface GetFinancialReportBreakdownRequest {
   /** IANA timezone used by the parent report to bucket periods. Defaults to UTC. */
   timezone?: string;
 }
-const GetFinancialReportBreakdownRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetFinancialReportBreakdownRequest>;
-
 export type GetFinancialReportBreakdownResponseActivityFiltersDirection = "money_in" | "money_out";
-const GetFinancialReportBreakdownResponseActivityFiltersDirection = S.String;
-
 export type GetFinancialReportBreakdownResponseActivityFiltersLineTypesList = Array<string>;
-const GetFinancialReportBreakdownResponseActivityFiltersLineTypesList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetFinancialReportBreakdownResponseActivityFiltersLineTypesList>;
-
 export interface GetFinancialReportBreakdownResponseActivityFilters {
   direction: GetFinancialReportBreakdownResponseActivityFiltersDirection;
   line_types: GetFinancialReportBreakdownResponseActivityFiltersLineTypesList;
 }
-const GetFinancialReportBreakdownResponseActivityFilters = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetFinancialReportBreakdownResponseActivityFilters>;
-
 export type GetFinancialReportBreakdownResponseBucket =
   | "transfers"
   | "payments"
@@ -763,24 +679,13 @@ export type GetFinancialReportBreakdownResponseBucket =
   | "revenue_share"
   | "swaps"
   | "card_loads";
-const GetFinancialReportBreakdownResponseBucket = S.String;
-
 export type GetFinancialReportBreakdownResponseDirection = "money_in" | "money_out";
-const GetFinancialReportBreakdownResponseDirection = S.String;
-
 export type GetFinancialReportBreakdownResponseItemsItemAvatarShape = "circle" | "square";
-const GetFinancialReportBreakdownResponseItemsItemAvatarShape = S.String;
-
 export interface GetFinancialReportBreakdownResponseItemsItemAvatar {
   shape: GetFinancialReportBreakdownResponseItemsItemAvatarShape;
   /** The image to show, or `null` to fall back to the row's initials. */
   url: string | null;
 }
-const GetFinancialReportBreakdownResponseItemsItemAvatar = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetFinancialReportBreakdownResponseItemsItemAvatar>;
-
 export type GetFinancialReportBreakdownResponseItemsItemObject =
   | "user"
   | "account"
@@ -789,8 +694,6 @@ export type GetFinancialReportBreakdownResponseItemsItemObject =
   | "balance"
   | "withdrawal_adjustment"
   | "ad_campaign";
-const GetFinancialReportBreakdownResponseItemsItemObject = S.String;
-
 export interface GetFinancialReportBreakdownResponseItemsItem {
   amount: Money;
   /** How to draw the row's icon. `null` when the row has nothing to show (balances, adjustments, ad campaigns), so clients render no icon rather than a placeholder. */
@@ -803,18 +706,8 @@ export interface GetFinancialReportBreakdownResponseItemsItem {
   /** The prefixed identifier of the represented Whop resource, when one exists. */
   resource_id: string | null;
 }
-const GetFinancialReportBreakdownResponseItemsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetFinancialReportBreakdownResponseItemsItem>;
-
 export type GetFinancialReportBreakdownResponseItemsList =
   Array<GetFinancialReportBreakdownResponseItemsItem>;
-const GetFinancialReportBreakdownResponseItemsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetFinancialReportBreakdownResponseItemsList>;
-
 export interface GetFinancialReportBreakdownResponse {
   activity_filters: GetFinancialReportBreakdownResponseActivityFilters;
   bucket: GetFinancialReportBreakdownResponseBucket;
@@ -824,11 +717,6 @@ export interface GetFinancialReportBreakdownResponse {
   other_amount: Money | null;
   other_name: string;
 }
-const GetFinancialReportBreakdownResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetFinancialReportBreakdownResponse>;
-
 export type ListFinancialActivityRequestLineTypesItem =
   | "account_settlement"
   | "ad_budget_release"
@@ -972,12 +860,7 @@ export type ListFinancialActivityRequestLineTypesItem =
 export type ListFinancialActivityRequestLineTypesList = Array<
   ListFinancialActivityRequestLineTypesItem | (string & {})
 >;
-const ListFinancialActivityRequestLineTypesList =
-  GetFinancialReportRequestLineTypesList as any as S.Schema<ListFinancialActivityRequestLineTypesList>;
-
 export type ListFinancialActivityRequestDirection = "money_in" | "money_out";
-const ListFinancialActivityRequestDirection = S.String;
-
 export interface ListFinancialActivityRequest {
   /** The owning account ID (a biz_ identifier). Provide this or user_id. */
   account_id?: string;
@@ -1012,11 +895,6 @@ export interface ListFinancialActivityRequest {
   /** Cursor returned by the previous page. */
   cursor?: string;
 }
-const ListFinancialActivityRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListFinancialActivityRequest>;
-
 export type LedgerActivityAccountCase0Object = "account";
 export interface LedgerActivityAccountCase0 {
   /** Account ID. */
@@ -1043,8 +921,6 @@ export interface LedgerActivityAccountCase1 {
 }
 /** The viewer account that owns this row's ledger. Present only when the response aggregates owned accounts (include_owned_accounts=true); omitted otherwise. */
 export type LedgerActivityAccount = LedgerActivityAccountCase0 | LedgerActivityAccountCase1;
-const LedgerActivityAccount = S.Unknown as any as S.Schema<LedgerActivityAccount>;
-
 /** Currency for this ledger activity. */
 export interface LedgerActivityCurrency {
   /** Currency code. */
@@ -1052,11 +928,6 @@ export interface LedgerActivityCurrency {
   /** Precision factor for the currency, for example `100000000` for USD. */
   precision: string;
 }
-const LedgerActivityCurrency = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<LedgerActivityCurrency>;
-
 /** The ledger line category this activity was posted under. */
 export type LedgerActivityLineType =
   | "account_settlement"
@@ -1202,14 +1073,8 @@ export type LedgerActivityLineType =
   | "wallet_transfer_outgoing"
   | "swap_source"
   | "swap_target";
-const LedgerActivityLineType = S.String;
-
 export type LedgerActivityObject = "ledger_activity";
-const LedgerActivityObject = S.String;
-
 export type LedgerActivityPaymentObject = "payment";
-const LedgerActivityPaymentObject = S.String;
-
 /** Plan associated with the payment, when applicable. */
 export interface LedgerActivityPaymentPlan {
   /** Plan ID, prefixed `plan_`. */
@@ -1217,11 +1082,6 @@ export interface LedgerActivityPaymentPlan {
   /** Plan name. */
   name: string | null;
 }
-const LedgerActivityPaymentPlan = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<LedgerActivityPaymentPlan>;
-
 /** Product associated with the payment, when applicable. */
 export interface LedgerActivityPaymentProduct {
   /** Product ID, prefixed `prod_`. */
@@ -1229,11 +1089,6 @@ export interface LedgerActivityPaymentProduct {
   /** Product name. */
   name: string;
 }
-const LedgerActivityPaymentProduct = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<LedgerActivityPaymentProduct>;
-
 /** Customer associated with the payment. Email requires member:email:read. */
 export interface LedgerActivityPaymentUser {
   /** Customer email, or null without member:email:read. */
@@ -1243,11 +1098,6 @@ export interface LedgerActivityPaymentUser {
   /** Customer display name. */
   name: string;
 }
-const LedgerActivityPaymentUser = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<LedgerActivityPaymentUser>;
-
 export interface LedgerActivityPayment {
   /** Total charged by the payment. */
   amount: Money | null;
@@ -1271,11 +1121,6 @@ export interface LedgerActivityPayment {
   /** Customer associated with the payment. Email requires member:email:read. */
   user: LedgerActivityPaymentUser | null;
 }
-const LedgerActivityPayment = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<LedgerActivityPayment>;
-
 export type LedgerActivityResourceCase0Object = "account";
 export interface LedgerActivityResourceCase0 {
   /** Account ID. */
@@ -1433,22 +1278,13 @@ export type LedgerActivityResource =
   | LedgerActivityResourceCase4
   | LedgerActivityResourceCase5
   | LedgerActivityResourceCase6;
-const LedgerActivityResource = S.Unknown as any as S.Schema<LedgerActivityResource>;
-
 /** Action that generated a platform markup fee: deposit, swap, transfer, card_spend, or payout. Present for platform_markup_fee and platform_markup_fee_payout, including when include_resource is false. Null when the originating action is unavailable; omitted on other source types. */
 export type LedgerActivitySourceFeeKind = "payout" | "transfer" | "deposit" | "swap" | "card_spend";
-const LedgerActivitySourceFeeKind = S.String;
-
 /** Payout destination display info (payout sources only). */
 export interface LedgerActivitySourcePayoutDestination {
   icon_url?: string | null;
   payer_name?: string | null;
 }
-const LedgerActivitySourcePayoutDestination = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<LedgerActivitySourcePayoutDestination>;
-
 /** Source of this ledger activity. Platform markup fees use object platform_fee and the ledger activity ID. */
 export interface LedgerActivitySource {
   /** Payout amount as a decimal number in the destination currency (payout sources only; requires payout:withdrawal:read). */
@@ -1500,8 +1336,6 @@ export interface LedgerActivitySource {
   /** On-chain transaction hash (onchain_transaction and swap sources only). */
   tx_hash?: string | null;
 }
-const LedgerActivitySource = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<LedgerActivitySource>;
-
 export interface LedgerActivity {
   /** The viewer account that owns this row's ledger. Present only when the response aggregates owned accounts (include_owned_accounts=true); omitted otherwise. */
   account?: LedgerActivityAccount;
@@ -1545,34 +1379,17 @@ export interface LedgerActivity {
   /** Display name of the customer associated with the payment. */
   user_name?: string | null;
 }
-const LedgerActivity = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<LedgerActivity>;
-
 export type ListFinancialActivityResponseDataList = Array<LedgerActivity>;
-const ListFinancialActivityResponseDataList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListFinancialActivityResponseDataList>;
-
 export interface ListFinancialActivityResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListFinancialActivityResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListFinancialActivityResponsePageInfo>;
-
 export interface ListFinancialActivityResponse {
   data: ListFinancialActivityResponseDataList;
   page_info: ListFinancialActivityResponsePageInfo;
 }
-const ListFinancialActivityResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListFinancialActivityResponse>;
-
 export type GetFinancialReportError = BadRequest | Forbidden | NotFound | WhopOpError;
 /** Get Financial Report Returns a financial report -- balance activity, income statement, or balance summary -- for an account over a date range. */
 export const getFinancialReport: API.OperationMethod<
@@ -1581,8 +1398,8 @@ export const getFinancialReport: API.OperationMethod<
   GetFinancialReportError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFinancialReportRequest,
-  output: GetFinancialReportResponse,
+  input: __S(1) as any as S.Schema<GetFinancialReportRequest>,
+  output: __S(8) as any as S.Schema<GetFinancialReportResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1596,8 +1413,8 @@ export const getFinancialReportBreakdown: API.OperationMethod<
   GetFinancialReportBreakdownError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFinancialReportBreakdownRequest,
-  output: GetFinancialReportBreakdownResponse,
+  input: __S(9) as any as S.Schema<GetFinancialReportBreakdownRequest>,
+  output: __S(15) as any as S.Schema<GetFinancialReportBreakdownResponse>,
   errors: [BadRequest, Forbidden],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1611,8 +1428,8 @@ export const listFinancialActivity: API.OperationMethod<
   ListFinancialActivityError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFinancialActivityRequest,
-  output: ListFinancialActivityResponse,
+  input: __S(16) as any as S.Schema<ListFinancialActivityRequest>,
+  output: __S(27) as any as S.Schema<ListFinancialActivityResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1622,20 +1439,20 @@ export const listFinancialActivity: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetFinancialReportRequestLineTypesItem);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String.pipe(T.Query()),
-          report_type: GetFinancialReportRequestReportType.pipe(T.Query()),
+          report_type: S.String.pipe(T.Query()),
           currency: S.optional(S.String.pipe(T.Query())),
           in_currency: S.optional(S.String.pipe(T.Query())),
           from: S.optional(S.String.pipe(T.Query())),
           to: S.optional(S.String.pipe(T.Query())),
-          group_by: S.optional(GetFinancialReportRequestGroupBy.pipe(T.Query())),
+          group_by: S.optional(S.String.pipe(T.Query())),
           timezone: S.optional(S.String.pipe(T.Query())),
-          line_types: S.optional(GetFinancialReportRequestLineTypesList.pipe(T.Query())),
-          direction: S.optional(GetFinancialReportRequestDirection.pipe(T.Query())),
+          line_types: S.optional(__S(0).pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           cumulative: S.optional(S.Boolean.pipe(T.Query())),
           scope_account_id: S.optional(S.String.pipe(T.Query())),
           include_payment_fee_breakdown: S.optional(S.Boolean.pipe(T.Query())),
@@ -1657,8 +1474,8 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          amount: Money,
-          category: GetFinancialReportResponsePaymentFeeBreakdownItemCategory,
+          amount: __S(3),
+          category: S.String,
           payment_method: S.String,
           period: S.String,
         }),
@@ -1666,7 +1483,7 @@ function __c0(j: number): any {
         identifier: "GetFinancialReportResponsePaymentFeeBreakdownItem",
       });
     case 5:
-      return S.Array(GetFinancialReportResponsePaymentFeeBreakdownItem);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1674,19 +1491,17 @@ function __c0(j: number): any {
           account_name: S.optional(S.NullOr(S.String)),
           account_type: S.optional(S.NullOr(S.String)),
           amount: S.Number,
-          grouping: GetFinancialReportResponseRowsItemGrouping,
-          line_category: GetFinancialReportResponseRowsItemLineCategory,
+          grouping: S.String,
+          line_category: S.String,
           line_count: S.optional(S.NullOr(S.Number)),
           period: S.String,
-          profit_and_loss_section: S.optional(
-            S.NullOr(GetFinancialReportResponseRowsItemProfitAndLossSection),
-          ),
+          profit_and_loss_section: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "GetFinancialReportResponseRowsItem",
       });
     case 7:
-      return S.Array(GetFinancialReportResponseRowsItem);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -1695,12 +1510,12 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           beginning_balance: S.optional(S.NullOr(S.Number)),
-          currencies: S.optional(GetFinancialReportResponseCurrenciesList),
+          currencies: S.optional(__S(2)),
           ending_balance: S.optional(S.NullOr(S.Number)),
-          fx_excluded_currencies: S.optional(GetFinancialReportResponseFxExcludedCurrenciesList),
-          payment_fee_breakdown: S.optional(GetFinancialReportResponsePaymentFeeBreakdownList),
-          report_type: GetFinancialReportResponseReportType,
-          rows: GetFinancialReportResponseRowsList,
+          fx_excluded_currencies: S.optional(__S(2)),
+          payment_fee_breakdown: S.optional(__S(5)),
+          report_type: S.String,
+          rows: __S(7),
           total: S.Number,
         }),
       ).annotate({
@@ -1710,12 +1525,12 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.String.pipe(T.Query()),
-          bucket: GetFinancialReportBreakdownRequestBucket.pipe(T.Query()),
-          direction: GetFinancialReportBreakdownRequestDirection.pipe(T.Query()),
+          bucket: S.String.pipe(T.Query()),
+          direction: S.String.pipe(T.Query()),
           currency: S.String.pipe(T.Query()),
           from: S.String.pipe(T.Query()),
           to: S.String.pipe(T.Query()),
-          group_by: S.optional(GetFinancialReportBreakdownRequestGroupBy.pipe(T.Query())),
+          group_by: S.optional(S.String.pipe(T.Query())),
           timezone: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/financial_reports/breakdown", code: 200 })),
       ).annotate({
@@ -1726,8 +1541,8 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          direction: GetFinancialReportBreakdownResponseActivityFiltersDirection,
-          line_types: GetFinancialReportBreakdownResponseActivityFiltersLineTypesList,
+          direction: S.String,
+          line_types: __S(10),
         }),
       ).annotate({
         identifier: "GetFinancialReportBreakdownResponseActivityFilters",
@@ -1735,7 +1550,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          shape: GetFinancialReportBreakdownResponseItemsItemAvatarShape,
+          shape: S.String,
           url: S.NullOr(S.String),
         }),
       ).annotate({
@@ -1744,28 +1559,28 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          amount: Money,
-          avatar: S.NullOr(GetFinancialReportBreakdownResponseItemsItemAvatar),
+          amount: __S(3),
+          avatar: S.NullOr(__S(12)),
           image_url: S.NullOr(S.String),
           key: S.String,
           name: S.String,
-          object: GetFinancialReportBreakdownResponseItemsItemObject,
+          object: S.String,
           resource_id: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "GetFinancialReportBreakdownResponseItemsItem",
       });
     case 6:
-      return S.Array(GetFinancialReportBreakdownResponseItemsItem);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          activity_filters: GetFinancialReportBreakdownResponseActivityFilters,
-          bucket: GetFinancialReportBreakdownResponseBucket,
+          activity_filters: __S(11),
+          bucket: S.String,
           currency: S.String,
-          direction: GetFinancialReportBreakdownResponseDirection,
-          items: GetFinancialReportBreakdownResponseItemsList,
-          other_amount: S.NullOr(Money),
+          direction: S.String,
+          items: __S(14),
+          other_amount: S.NullOr(__S(3)),
           other_name: S.String,
         }),
       ).annotate({
@@ -1782,8 +1597,8 @@ function __c2(j: number): any {
           user_id: S.optional(S.String.pipe(T.Query())),
           include_owned_accounts: S.optional(S.Boolean.pipe(T.Query())),
           include_resource: S.optional(S.Boolean.pipe(T.Query())),
-          line_types: S.optional(ListFinancialActivityRequestLineTypesList.pipe(T.Query())),
-          direction: S.optional(ListFinancialActivityRequestDirection.pipe(T.Query())),
+          line_types: S.optional(__S(0).pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           resource_id: S.optional(S.String.pipe(T.Query())),
           activity_id: S.optional(S.String.pipe(T.Query())),
           exclude_internal_movements: S.optional(S.Boolean.pipe(T.Query())),
@@ -1836,17 +1651,17 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          amount: S.NullOr(Money),
+          amount: S.NullOr(__S(3)),
           card_brand: S.NullOr(S.String),
           card_last4: S.NullOr(S.String),
           created_at: S.String,
           id: S.String,
-          object: LedgerActivityPaymentObject,
+          object: S.String,
           payment_method_type: S.NullOr(S.String),
           payment_processor: S.NullOr(S.String),
-          plan: S.NullOr(LedgerActivityPaymentPlan),
-          product: S.NullOr(LedgerActivityPaymentProduct),
-          user: S.NullOr(LedgerActivityPaymentUser),
+          plan: S.NullOr(__S(18)),
+          product: S.NullOr(__S(19)),
+          user: S.NullOr(__S(20)),
         }),
       ).annotate({ identifier: "LedgerActivityPayment" });
     case 6:
@@ -1867,17 +1682,17 @@ function __c2(j: number): any {
           claim_url: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           estimated_arrival: S.optional(S.NullOr(S.String)),
-          fee_kind: S.optional(S.NullOr(LedgerActivitySourceFeeKind)),
+          fee_kind: S.optional(S.NullOr(S.String)),
           from_amount: S.optional(S.NullOr(S.String)),
           from_currency: S.optional(S.NullOr(S.String)),
           id: S.String,
           notes: S.optional(S.NullOr(S.String)),
           object: S.String,
           payer_name: S.optional(S.NullOr(S.String)),
-          payment_amount: S.optional(S.NullOr(Money)),
+          payment_amount: S.optional(S.NullOr(__S(3))),
           payment_method_type: S.optional(S.NullOr(S.String)),
           payment_processor: S.optional(S.NullOr(S.String)),
-          payout_destination: S.optional(S.NullOr(LedgerActivitySourcePayoutDestination)),
+          payout_destination: S.optional(S.NullOr(__S(22))),
           payout_token_nickname: S.optional(S.NullOr(S.String)),
           reason: S.optional(S.NullOr(S.String)),
           risk_review_hold: S.optional(S.NullOr(S.Boolean)),
@@ -1895,23 +1710,23 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          account: S.optional(LedgerActivityAccount),
+          account: S.optional(S.Unknown),
           amount: S.String,
           available_at: S.NullOr(S.String),
-          currency: LedgerActivityCurrency,
+          currency: __S(17),
           id: S.String,
           ledger_account_id: S.optional(S.NullOr(S.String)),
-          line_type: LedgerActivityLineType,
-          object: LedgerActivityObject,
-          payment: S.optional(S.NullOr(LedgerActivityPayment)),
+          line_type: S.String,
+          object: S.String,
+          payment: S.optional(S.NullOr(__S(21))),
           payment_id: S.optional(S.NullOr(S.String)),
           plan_id: S.optional(S.NullOr(S.String)),
           plan_name: S.optional(S.NullOr(S.String)),
           posted_at: S.String,
           product_id: S.optional(S.NullOr(S.String)),
           product_name: S.optional(S.NullOr(S.String)),
-          resource: S.NullOr(LedgerActivityResource),
-          source: S.NullOr(LedgerActivitySource),
+          resource: S.NullOr(S.Unknown),
+          source: S.NullOr(__S(23)),
           usd_amount: S.NullOr(S.String),
           user_email: S.optional(S.NullOr(S.String)),
           user_id: S.optional(S.NullOr(S.String)),
@@ -1919,7 +1734,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "LedgerActivity" });
     case 1:
-      return S.Array(LedgerActivity);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1934,11 +1749,28 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: ListFinancialActivityResponseDataList,
-          page_info: ListFinancialActivityResponsePageInfo,
+          data: __S(25),
+          page_info: __S(26),
         }),
       ).annotate({
         identifier: "ListFinancialActivityResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

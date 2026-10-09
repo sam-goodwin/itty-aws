@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -69,8 +71,6 @@ export type ConnectorStateEnum =
   | "DELETING"
   | "ERROR"
   | "UPDATING";
-const ConnectorStateEnum = S.String;
-
 /** The subnet in which to house the connector */
 export interface Subnet {
   /** Optional. Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName} */
@@ -78,11 +78,7 @@ export interface Subnet {
   /** Optional. Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued. */
   projectId?: string;
 }
-const Subnet = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Subnet>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringList>;
-
 /** Definition of a Serverless VPC Access connector. */
 export interface Connector {
   /** The resource name in the format `projects/*\/locations/*\/connectors/*`. */
@@ -108,8 +104,6 @@ export interface Connector {
   /** Minimum value of instances in autoscaling group underlying the connector. */
   minInstances?: number;
 }
-const Connector = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Connector>;
-
 export interface CreateProjectsLocationsConnectorsRequest {
   /** Required. The ID to use for this connector. */
   connectorId?: string;
@@ -118,17 +112,8 @@ export interface CreateProjectsLocationsConnectorsRequest {
   /** Request body */
   body?: Connector;
 }
-const CreateProjectsLocationsConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateProjectsLocationsConnectorsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -138,8 +123,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -153,35 +136,18 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-const Operation = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Operation>;
-
 export interface DeleteProjectsLocationsConnectorsRequest {
   /** Required. Name of a Serverless VPC Access connector to delete. */
   name: string;
 }
-const DeleteProjectsLocationsConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsConnectorsRequest>;
-
 export interface GetProjectsLocationsConnectorsRequest {
   /** Required. Name of a Serverless VPC Access connector to get. */
   name: string;
 }
-const GetProjectsLocationsConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetProjectsLocationsConnectorsRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
@@ -194,14 +160,7 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StringMap>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -215,11 +174,7 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Location>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -227,11 +182,6 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsConnectorsRequest {
   /** Required. The project and location from which the routes should be listed. */
   parent: string;
@@ -240,14 +190,7 @@ export interface ListProjectsLocationsConnectorsRequest {
   /** Maximum number of functions to return per call. */
   pageSize?: number;
 }
-const ListProjectsLocationsConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListProjectsLocationsConnectorsRequest>;
-
 export type ConnectorList = Array<Connector>;
-const ConnectorList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ConnectorList>;
-
 /** Response for listing Serverless VPC Access connectors. */
 export interface ListConnectorsResponse {
   /** List of Serverless VPC Access connectors. */
@@ -255,11 +198,6 @@ export interface ListConnectorsResponse {
   /** Continuation token. */
   nextPageToken?: string;
 }
-const ListConnectorsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListConnectorsResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
@@ -272,14 +210,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -289,11 +220,6 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface PatchProjectsLocationsConnectorsRequest {
   /** The fields to update on the entry group. If absent or empty, all modifiable fields are updated. */
   updateMask?: string;
@@ -302,11 +228,6 @@ export interface PatchProjectsLocationsConnectorsRequest {
   /** Request body */
   body?: Connector;
 }
-const PatchProjectsLocationsConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<PatchProjectsLocationsConnectorsRequest>;
-
 export type CreateProjectsLocationsConnectorsError =
   | NotFound
   | Forbidden
@@ -320,8 +241,8 @@ export const createProjectsLocationsConnectors: API.OperationMethod<
   CreateProjectsLocationsConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsConnectorsRequest,
-  output: Operation,
+  input: __S(3) as any as S.Schema<CreateProjectsLocationsConnectorsRequest>,
+  output: __S(7) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -340,8 +261,8 @@ export const deleteProjectsLocationsConnectors: API.OperationMethod<
   DeleteProjectsLocationsConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsConnectorsRequest,
-  output: Operation,
+  input: __S(8) as any as S.Schema<DeleteProjectsLocationsConnectorsRequest>,
+  output: __S(7) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -355,8 +276,8 @@ export const getProjectsLocationsConnectors: API.OperationMethod<
   GetProjectsLocationsConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConnectorsRequest,
-  output: Connector,
+  input: __S(9) as any as S.Schema<GetProjectsLocationsConnectorsRequest>,
+  output: __S(2) as any as S.Schema<Connector>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -370,8 +291,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(10) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(7) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -386,8 +307,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(11) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(15) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -403,8 +324,8 @@ export const listProjectsLocationsConnectors: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConnectorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectorsRequest,
-  output: ListConnectorsResponse,
+  input: __S(16) as any as S.Schema<ListProjectsLocationsConnectorsRequest>,
+  output: __S(18) as any as S.Schema<ListConnectorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -420,8 +341,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(19) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(21) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -441,8 +362,8 @@ export const patchProjectsLocationsConnectors: API.OperationMethod<
   PatchProjectsLocationsConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsConnectorsRequest,
-  output: Operation,
+  input: __S(22) as any as S.Schema<PatchProjectsLocationsConnectorsRequest>,
+  output: __S(7) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -468,10 +389,10 @@ function __c0(j: number): any {
           machineType: S.optional(S.String),
           maxThroughput: S.optional(S.Number),
           network: S.optional(S.String),
-          state: S.optional(ConnectorStateEnum),
-          subnet: S.optional(Subnet),
+          state: S.optional(S.String),
+          subnet: S.optional(__S(0)),
           maxInstances: S.optional(S.Number),
-          connectedProjects: S.optional(StringList),
+          connectedProjects: S.optional(__S(1)),
           minThroughput: S.optional(S.Number),
           minInstances: S.optional(S.Number),
         }),
@@ -481,7 +402,7 @@ function __c0(j: number): any {
         S.Struct({
           connectorId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Connector.pipe(T.HttpBody())),
+          body: S.optional(__S(2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -495,13 +416,13 @@ function __c0(j: number): any {
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(DocumentMap);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "Status" });
     case 7:
@@ -509,9 +430,9 @@ function __c0(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          metadata: S.optional(DocumentMap),
-          response: S.optional(DocumentMap),
-          error: S.optional(Status),
+          metadata: S.optional(__S(4)),
+          response: S.optional(__S(4)),
+          error: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "Operation" });
   }
@@ -563,7 +484,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(1).pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
@@ -585,17 +506,17 @@ function __c1(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           locationId: S.optional(S.String),
-          labels: S.optional(StringMap),
-          metadata: S.optional(DocumentMap),
+          labels: S.optional(__S(12)),
+          metadata: S.optional(__S(4)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
     case 6:
-      return S.Array(Location);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(14)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -620,11 +541,11 @@ function __c2(j: number): any {
         identifier: "ListProjectsLocationsConnectorsRequest",
       });
     case 1:
-      return S.Array(Connector);
+      return S.Array(__S(2));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          connectors: S.optional(ConnectorList),
+          connectors: S.optional(__S(17)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListConnectorsResponse" });
@@ -647,12 +568,12 @@ function __c2(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 4:
-      return S.Array(Operation);
+      return S.Array(__S(7));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          operations: S.optional(OperationList),
+          unreachable: S.optional(__S(1)),
+          operations: S.optional(__S(20)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -661,7 +582,7 @@ function __c2(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Connector.pipe(T.HttpBody())),
+          body: S.optional(__S(2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -672,5 +593,20 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsConnectorsRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

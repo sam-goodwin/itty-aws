@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -24,8 +26,6 @@ export interface ListIpsRequest {
   /** Specified as `jdcloud` to list IPs used by JD Cloud data centers. */
   networks?: string;
 }
-const ListIpsRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ListIpsRequest>;
-
 export type ListResultPublicIPIPsIpv4CidrsList = Array<string>;
 export type ListResultPublicIPIPsIpv6CidrsList = Array<string>;
 export interface ListResultPublicIPIPs {
@@ -50,11 +50,7 @@ export interface ListResultPublicIPIPsJDCloud {
   jdcloudCidrs?: ListResultPublicIPIPsJDCloudJdcloudCidrsList | null;
 }
 export type ListResult = ListResultPublicIPIPs | ListResultPublicIPIPsJDCloud;
-const ListResult = /*@__PURE__*/ __L.at(__c0, 1);
-
 export type ListIpsResponse = ListResult;
-const ListIpsResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ListIpsResponse>;
-
 export type ListIpsError = CloudflareOpError;
 /** Get IPs used on the Cloudflare/JD Cloud network, see https://www.cloudflare.com/ips for Cloudflare IPs or https://developers.cloudflare.com/china-network/reference/infrastructure/ for JD Cloud IPs. */
 export const listIps: API.OperationMethod<
@@ -63,8 +59,8 @@ export const listIps: API.OperationMethod<
   ListIpsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpsRequest,
-  output: ListIpsResponse,
+  input: __S(0) as any as S.Schema<ListIpsRequest>,
+  output: __S(2) as any as S.Schema<ListIpsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -90,7 +86,18 @@ function __c0(j: number): any {
       );
     case 2:
       return S.suspend(() =>
-        ListResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(1).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListIpsResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 2) {
+    case 0:
+      return __c0(i & 3);
   }
 }

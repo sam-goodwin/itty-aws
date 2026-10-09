@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,16 +65,12 @@ export class NotFound
   ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringMap>;
-
 export type QuotaOperationQuotaModeEnum =
   | "UNSPECIFIED"
   | "NORMAL"
   | "BEST_EFFORT"
   | "CHECK_ONLY"
   | "ADJUST_ONLY";
-const QuotaOperationQuotaModeEnum = S.String;
-
 /** Represents an amount of money with its currency type. */
 export interface Money {
   /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
@@ -82,24 +80,14 @@ export interface Money {
   /** The three-letter currency code defined in ISO 4217. */
   currencyCode?: string;
 }
-const Money = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Money>;
-
 export type DoubleList = Array<number>;
-const DoubleList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DoubleList>;
-
 /** Describing buckets with arbitrary user-provided width. */
 export interface ExplicitBuckets {
   /** 'bound' is a list of strictly increasing boundaries between buckets. Note that a list of length N-1 defines N buckets because of fenceposting. See comments on `bucket_options` for details. The i'th finite bucket covers the interval [bound[i-1], bound[i]) where i ranges from 1 to bound_size() - 1. Note that there are no finite buckets at all if 'bound' only contains a single element; in that special case the single bound defines the boundary between the underflow and overflow buckets. bucket number lower bound upper bound i == 0 (underflow) -inf bound[i] 0 < i < bound_size() bound[i-1] bound[i] i == bound_size() (overflow) bound[i-1] +inf */
   bounds?: DoubleList;
 }
-const ExplicitBuckets = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ExplicitBuckets>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DocumentMapList>;
-
 /** Exemplars are example points that may be used to annotate aggregated distribution values. They are metadata that gives information about a particular value added to a Distribution bucket, such as a trace ID that was active when a value was added. They may contain further information, such as a example values and timestamps, origin, etc. */
 export interface Exemplar {
   /** The observation (sampling) time of the above value. */
@@ -109,11 +97,7 @@ export interface Exemplar {
   /** Value of the exemplar point. This value determines to which bucket the exemplar belongs. */
   value?: number;
 }
-const Exemplar = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Exemplar>;
-
 export type ExemplarList = Array<Exemplar>;
-const ExemplarList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ExemplarList>;
-
 /** Describing buckets with exponentially growing width. */
 export interface ExponentialBuckets {
   /** The number of finite buckets. With the underflow and overflow buckets, the total number of buckets is `num_finite_buckets` + 2. See comments on `bucket_options` for details. */
@@ -123,11 +107,7 @@ export interface ExponentialBuckets {
   /** The i'th exponential bucket covers the interval [scale * growth_factor^(i-1), scale * growth_factor^i) where i ranges from 1 to num_finite_buckets inclusive. Must be larger than 1.0. */
   growthFactor?: number;
 }
-const ExponentialBuckets = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ExponentialBuckets>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<StringList>;
-
 /** Describing buckets with constant width. */
 export interface LinearBuckets {
   /** The i'th linear bucket covers the interval [offset + (i-1) * width, offset + i * width) where i ranges from 1 to num_finite_buckets, inclusive. Must be strictly positive. */
@@ -137,8 +117,6 @@ export interface LinearBuckets {
   /** The i'th linear bucket covers the interval [offset + (i-1) * width, offset + i * width) where i ranges from 1 to num_finite_buckets, inclusive. */
   offset?: number;
 }
-const LinearBuckets = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<LinearBuckets>;
-
 /** Distribution represents a frequency distribution of double-valued sample points. It contains the size of the population of sample points plus additional optional information: * the arithmetic mean of the samples * the minimum and maximum of the samples * the sum-squared-deviation of the samples, used to compute variance * a histogram of the values of the sample points */
 export interface Distribution {
   /** The sum of squared deviations from the mean: Sum[i=1..count]((x_i - mean)^2) where each x_i is a sample values. If `count` is zero then this field must be zero, otherwise validation of the request fails. */
@@ -162,8 +140,6 @@ export interface Distribution {
   /** Buckets with constant width. */
   linearBuckets?: LinearBuckets;
 }
-const Distribution = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Distribution>;
-
 /** Represents a single metric value. */
 export interface MetricValue {
   /** The labels describing the metric value. See comments on google.api.servicecontrol.v1.Operation.labels for the overriding relationship. Note that this map must not contain monitored resource labels. */
@@ -185,11 +161,7 @@ export interface MetricValue {
   /** A text string value. */
   stringValue?: string;
 }
-const MetricValue = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<MetricValue>;
-
 export type MetricValueList = Array<MetricValue>;
-const MetricValueList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<MetricValueList>;
-
 /** Represents a set of metric values in the same metric. Each metric value in the set should have a unique combination of start time, end time, and label values. */
 export interface MetricValueSet {
   /** The metric name defined in the service configuration. */
@@ -197,11 +169,7 @@ export interface MetricValueSet {
   /** The values in this metric. */
   metricValues?: MetricValueList;
 }
-const MetricValueSet = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<MetricValueSet>;
-
 export type MetricValueSetList = Array<MetricValueSet>;
-const MetricValueSetList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<MetricValueSetList>;
-
 /** Represents information regarding a quota operation. */
 export interface QuotaOperation {
   /** Identity of the operation. For Allocation Quota, this is expected to be unique within the scope of the service that generated the operation, and guarantees idempotency in case of retries. In order to ensure best performance and latency in the Quota backends, operation_ids are optimally associated with time, so that related operations can be accessed fast in storage. For this reason, the recommended token for services that intend to operate at a high QPS is Unix time in nanos + UUID */
@@ -217,8 +185,6 @@ export interface QuotaOperation {
   /** Fully qualified name of the API method for which this quota operation is requested. This name is used for matching quota rules or metric rules and billing status rules defined in service configuration. This field should not be set if any of the following is true: (1) the quota operation is performed on non-API resources. (2) quota_metrics is set because the caller is doing quota override. Example of an RPC method name: google.example.library.v1.LibraryService.CreateShelf */
   methodName?: string;
 }
-const QuotaOperation = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<QuotaOperation>;
-
 /** Request message for the AllocateQuota method. */
 export interface AllocateQuotaRequest {
   /** Specifies which version of service configuration should be used to process the request. If unspecified or no matching version can be found, the latest one will be used. */
@@ -226,25 +192,16 @@ export interface AllocateQuotaRequest {
   /** Operation that describes the quota allocation. */
   allocateOperation?: QuotaOperation;
 }
-const AllocateQuotaRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<AllocateQuotaRequest>;
-
 export interface AllocateQuotaServicesRequest {
   /** Name of the service as specified in the service configuration. For example, `"pubsub.googleapis.com"`. See google.api.Service for the definition of a service name. */
   serviceName: string;
   /** Request body */
   body?: AllocateQuotaRequest;
 }
-const AllocateQuotaServicesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AllocateQuotaServicesRequest>;
-
 export interface AllocateInfo {
   /** A list of label keys that were unused by the server in processing the request. Thus, for similar requests repeated in a certain future time window, the caller can choose to ignore these labels in the requests to achieve better client-side cache hits and quota aggregation for rate quota. This field is not populated for allocation quota checks. */
   unusedArguments?: StringList;
 }
-const AllocateInfo = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<AllocateInfo>;
-
 export type QuotaErrorCodeEnum =
   | "UNSPECIFIED"
   | "RESOURCE_EXHAUSTED"
@@ -260,8 +217,6 @@ export type QuotaErrorCodeEnum =
   | "SERVICE_STATUS_UNAVAILABLE"
   | "BILLING_STATUS_UNAVAILABLE"
   | "QUOTA_SYSTEM_UNAVAILABLE";
-const QuotaErrorCodeEnum = S.String;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -271,8 +226,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Status>;
-
 /** Represents error information for QuotaOperation. */
 export interface QuotaError {
   /** Subject to whom this error applies. See the specific enum for more details on this field. For example, "clientip:" or "project:". */
@@ -284,11 +237,7 @@ export interface QuotaError {
   /** Contains additional information about the quota error. If available, `status.code` will be non zero. */
   status?: Status;
 }
-const QuotaError = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<QuotaError>;
-
 export type QuotaErrorList = Array<QuotaError>;
-const QuotaErrorList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<QuotaErrorList>;
-
 /** Response message for the AllocateQuota method. */
 export interface AllocateQuotaResponse {
   /** The same operation_id value used in the AllocateQuotaRequest. Used for logging and diagnostics purposes. */
@@ -302,24 +251,13 @@ export interface AllocateQuotaResponse {
   /** ID of the actual config used to process the request. */
   serviceConfigId?: string;
 }
-const AllocateQuotaResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<AllocateQuotaResponse>;
-
 export type QuotaPropertiesQuotaModeEnum = "ACQUIRE" | "ACQUIRE_BEST_EFFORT" | "CHECK";
-const QuotaPropertiesQuotaModeEnum = S.String;
-
 /** Represents the properties needed for quota operations. */
 export interface QuotaProperties {
   /** Quota mode for this operation. */
   quotaMode?: QuotaPropertiesQuotaModeEnum | (string & {});
 }
-const QuotaProperties = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<QuotaProperties>;
-
 export type OperationImportanceEnum = "LOW" | "HIGH" | "DEBUG" | "PROMOTED";
-const OperationImportanceEnum = S.String;
-
 /** Represents a string that might be shortened to a specified length. */
 export interface TruncatableString {
   /** The shortened string. For example, if the original string is 500 bytes long and the limit of the string is 128 bytes, then `value` contains the first 128 bytes of the 500-byte string. Truncation always happens on a UTF8 character boundary. If there are multi-byte characters in the string, then the length of the shortened string might be less than the size limit. */
@@ -327,8 +265,6 @@ export interface TruncatableString {
   /** The number of bytes removed from the original string. If this value is 0, then the string was not shortened. */
   truncatedByteCount?: number;
 }
-const TruncatableString = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<TruncatableString>;
-
 /** The allowed types for [VALUE] in a `[KEY]:[VALUE]` attribute. */
 export interface AttributeValue {
   /** A 64-bit signed integer. */
@@ -338,11 +274,7 @@ export interface AttributeValue {
   /** A Boolean value represented by `true` or `false`. */
   boolValue?: boolean;
 }
-const AttributeValue = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<AttributeValue>;
-
 export type AttributeValueMap = { [key: string]: AttributeValue | undefined };
-const AttributeValueMap = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<AttributeValueMap>;
-
 /** A set of attributes, each in the format `[KEY]:[VALUE]`. */
 export interface Attributes {
   /** The set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string up to 256 bytes, a signed 64-bit integer, or the Boolean values `true` and `false`. For example: "/instance_id": "my-instance" "/http/user_agent": "" "/http/request_bytes": 300 "example.com/myattribute": true */
@@ -350,8 +282,6 @@ export interface Attributes {
   /** The number of attributes that were discarded. Attributes can be discarded because their keys are too long or because there are too many attributes. If this value is 0 then all attributes are valid. */
   droppedAttributesCount?: number;
 }
-const Attributes = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Attributes>;
-
 export type TraceSpanSpanKindEnum =
   | "SPAN_KIND_UNSPECIFIED"
   | "INTERNAL"
@@ -359,8 +289,6 @@ export type TraceSpanSpanKindEnum =
   | "CLIENT"
   | "PRODUCER"
   | "CONSUMER";
-const TraceSpanSpanKindEnum = S.String;
-
 /** A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a trace contains a root span that describes the end-to-end latency, and one or more subspans for its sub-operations. A trace can also contain multiple root spans, or none at all. Spans do not need to be contiguous--there may be gaps or overlaps between spans in a trace. */
 export interface TraceSpan {
   /** The start time of the span. On the client side, this is the time kept by the local machine where the span execution starts. On the server side, this is the time when the server's application handler starts running. */
@@ -386,11 +314,7 @@ export interface TraceSpan {
   /** Distinguishes between spans generated in a particular context. For example, two spans with the same name may be distinguished using `CLIENT` (caller) and `SERVER` (callee) to identify an RPC call. */
   spanKind?: TraceSpanSpanKindEnum | (string & {});
 }
-const TraceSpan = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<TraceSpan>;
-
 export type TraceSpanList = Array<TraceSpan>;
-const TraceSpanList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<TraceSpanList>;
-
 /** Describes a resource associated with this operation. */
 export interface ResourceInfo {
   /** Name of the resource. This is used for auditing purposes. */
@@ -402,11 +326,7 @@ export interface ResourceInfo {
   /** The resource permission required for this request. */
   permission?: string;
 }
-const ResourceInfo = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ResourceInfo>;
-
 export type ResourceInfoList = Array<ResourceInfo>;
-const ResourceInfoList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ResourceInfoList>;
-
 export type LogEntrySeverityEnum =
   | "DEFAULT"
   | "DEBUG"
@@ -417,8 +337,6 @@ export type LogEntrySeverityEnum =
   | "CRITICAL"
   | "ALERT"
   | "EMERGENCY";
-const LogEntrySeverityEnum = S.String;
-
 /** A common proto for logging HTTP requests. Only contains semantics defined by the HTTP specification. Product-specific logging information MUST be defined in a separate message. */
 export interface HttpRequest {
   /** The scheme (http, https), the host name, the path, and the query portion of the URL that was requested. Example: `"http://example.com/some/info?color=red"`. */
@@ -452,8 +370,6 @@ export interface HttpRequest {
   /** The referer URL of the request, as defined in [HTTP/1.1 Header Field Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html). */
   referer?: string;
 }
-const HttpRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<HttpRequest>;
-
 /** Additional information about a potentially long-running operation with which a log entry is associated. */
 export interface LogEntryOperation {
   /** Optional. Set this to True if this is the last log entry in the operation. */
@@ -465,8 +381,6 @@ export interface LogEntryOperation {
   /** Optional. An arbitrary operation identifier. Log entries with the same identifier are assumed to be part of the same operation. */
   id?: string;
 }
-const LogEntryOperation = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<LogEntryOperation>;
-
 /** Additional information about the source code location that produced the log entry. */
 export interface LogEntrySourceLocation {
   /** Optional. Line within the source file. 1-based; 0 indicates no line number available. */
@@ -476,11 +390,6 @@ export interface LogEntrySourceLocation {
   /** Optional. Source file name. Depending on the runtime environment, this might be a simple name or a fully-qualified name. */
   file?: string;
 }
-const LogEntrySourceLocation = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<LogEntrySourceLocation>;
-
 /** An individual log entry. */
 export interface LogEntry {
   /** A set of user-defined (key, value) data that provides additional information about the log entry. */
@@ -508,11 +417,7 @@ export interface LogEntry {
   /** The time the event described by the log entry occurred. If omitted, defaults to operation start time. */
   timestamp?: string;
 }
-const LogEntry = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<LogEntry>;
-
 export type LogEntryList = Array<LogEntry>;
-const LogEntryList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<LogEntryList>;
-
 /** Represents information regarding an operation. */
 export interface Operation {
   /** Represents the properties needed for quota check. Applicable only if this operation is for a quota check request. If this is not specified, no quota check will be performed. */
@@ -542,8 +447,6 @@ export interface Operation {
   /** Represents information to be logged. */
   logEntries?: LogEntryList;
 }
-const Operation = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Operation>;
-
 /** Request message for the Check method. */
 export interface CheckRequest {
   /** The operation to be checked. */
@@ -555,24 +458,18 @@ export interface CheckRequest {
   /** Requests the project settings to be returned as part of the check response. */
   requestProjectSettings?: boolean;
 }
-const CheckRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<CheckRequest>;
-
 export interface CheckServicesRequest {
   /** The service name as specified in its service configuration. For example, `"pubsub.googleapis.com"`. See [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service) for the definition of a service name. */
   serviceName: string;
   /** Request body */
   body?: CheckRequest;
 }
-const CheckServicesRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<CheckServicesRequest>;
-
 export type ConsumerInfoTypeEnum =
   | "CONSUMER_TYPE_UNSPECIFIED"
   | "PROJECT"
   | "FOLDER"
   | "ORGANIZATION"
   | "SERVICE_SPECIFIC";
-const ConsumerInfoTypeEnum = S.String;
-
 /** `ConsumerInfo` provides information about the consumer. */
 export interface ConsumerInfo {
   /** The type of the consumer which should have been defined in [Google Resource Manager](https://cloud.google.com/resource-manager/). */
@@ -582,8 +479,6 @@ export interface ConsumerInfo {
   /** The consumer identity number, can be Google cloud project number, folder number or organization number e.g. 1234567890. A value of 0 indicates no consumer number is found. */
   consumerNumber?: string;
 }
-const ConsumerInfo = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ConsumerInfo>;
-
 /** Contains additional information about the check operation. */
 export interface CheckInfo {
   /** Consumer info of this check. */
@@ -595,17 +490,11 @@ export interface CheckInfo {
   /** The unique id of the api key in the format of "apikey:". This field will be populated when the consumer passed to Chemist is an API key and all the API key related validations are successful. */
   apiKeyUid?: string;
 }
-const CheckInfo = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<CheckInfo>;
-
 export type QuotaInfoQuotaExtractionStateEnum =
   | "QUOTA_EXTRACTION_STATE_UNSPECIFIED"
   | "QUOTA_EXTRACTION_STATE_DARK_LAUNCH"
   | "QUOTA_EXTRACTION_STATE_TRAFFIC_MIGRATION";
-const QuotaInfoQuotaExtractionStateEnum = S.String;
-
 export type IntegerMap = { [key: string]: number | undefined };
-const IntegerMap = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<IntegerMap>;
-
 /** Contains the quota information for a quota check response. */
 export interface QuotaInfo {
   /** Quota metrics to indicate the usage. Depending on the check request, one or more of the following metrics will be included: 1. For rate quota, per quota group or per quota metric incremental usage will be specified using the following delta metric: "serviceruntime.googleapis.com/api/consumer/quota_used_count" 2. For allocation quota, per quota metric total usage will be specified using the following gauge metric: "serviceruntime.googleapis.com/allocation/consumer/quota_used_count" 3. For both rate quota and allocation quota, the quota limit reached condition will be specified using the following boolean metric: "serviceruntime.googleapis.com/quota/exceeded" */
@@ -617,8 +506,6 @@ export interface QuotaInfo {
   /** Map of quota group name to the actual number of tokens consumed. If the quota check was not successful, then this will not be populated due to no quota consumption. We are not merging this field with 'quota_metrics' field because of the complexity of scaling in Chemist client code base. For simplicity, we will keep this field for Castor (that scales quota usage) and 'quota_metrics' for SuperQuota (that doesn't scale quota usage). */
   quotaConsumed?: IntegerMap;
 }
-const QuotaInfo = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<QuotaInfo>;
-
 export type CheckErrorCodeEnum =
   | "ERROR_CODE_UNSPECIFIED"
   | "NOT_FOUND"
@@ -657,8 +544,6 @@ export type CheckErrorCodeEnum =
   | "SECURITY_POLICY_BACKEND_UNAVAILABLE"
   | "LOCATION_POLICY_BACKEND_UNAVAILABLE"
   | "INJECTED_ERROR";
-const CheckErrorCodeEnum = S.String;
-
 /** Defines the errors to be returned in google.api.servicecontrol.v1.CheckResponse.check_errors. */
 export interface CheckError {
   /** The error code. */
@@ -670,11 +555,7 @@ export interface CheckError {
   /** Subject to whom this error applies. See the specific code enum for more details on this field. For example: - "project:" - "folder:" - "organization:" */
   subject?: string;
 }
-const CheckError = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CheckError>;
-
 export type CheckErrorList = Array<CheckError>;
-const CheckErrorList = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<CheckErrorList>;
-
 /** Response message for the Check method. */
 export interface CheckResponse {
   /** Feedback data returned from the server during processing a Check request. */
@@ -690,11 +571,7 @@ export interface CheckResponse {
   /** Indicate the decision of the check. If no check errors are present, the service should process the operation. Otherwise the service should use the list of errors to determine the appropriate action. */
   checkErrors?: CheckErrorList;
 }
-const CheckResponse = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<CheckResponse>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<OperationList>;
-
 /** Request message for the Report method. */
 export interface ReportRequest {
   /** Operations to be reported. Typically the service should report one operation per request. Putting multiple operations into a single request is allowed, but should be used only when multiple operations are natually available at the time of the report. There is no limit on the number of operations in the same ReportRequest, however the ReportRequest size should be no larger than 1MB. See ReportResponse.report_errors for partial failure behavior. */
@@ -702,19 +579,12 @@ export interface ReportRequest {
   /** Specifies which version of service config should be used to process the request. If unspecified or no matching version can be found, the latest one will be used. */
   serviceConfigId?: string;
 }
-const ReportRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ReportRequest>;
-
 export interface ReportServicesRequest {
   /** The service name as specified in its service configuration. For example, `"pubsub.googleapis.com"`. See [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service) for the definition of a service name. */
   serviceName: string;
   /** Request body */
   body?: ReportRequest;
 }
-const ReportServicesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ReportServicesRequest>;
-
 /** Represents the processing error of one Operation in the request. */
 export interface ReportError {
   /** The Operation.operation_id value from the request. */
@@ -722,11 +592,7 @@ export interface ReportError {
   /** Details of the error when processing the Operation. */
   status?: Status;
 }
-const ReportError = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ReportError>;
-
 export type ReportErrorList = Array<ReportError>;
-const ReportErrorList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ReportErrorList>;
-
 /** Response message for the Report method. */
 export interface ReportResponse {
   /** Partial failures, one for each `Operation` in the request that failed processing. There are three possible combinations of the RPC status: 1. The combination of a successful RPC status and an empty `report_errors` list indicates a complete success where all `Operations` in the request are processed successfully. 2. The combination of a successful RPC status and a non-empty `report_errors` list indicates a partial success where some `Operations` in the request succeeded. Each `Operation` that failed processing has a corresponding item in this list. 3. A failed RPC status indicates a general non-deterministic failure. When this happens, it's impossible to know which of the 'Operations' in the request succeeded or failed. */
@@ -736,8 +602,6 @@ export interface ReportResponse {
   /** The current service rollout id used to process the request. */
   serviceRolloutId?: string;
 }
-const ReportResponse = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ReportResponse>;
-
 export type AllocateQuotaServicesError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Attempts to allocate quota for the specified consumer. It should be called before the operation is executed. This method requires the `servicemanagement.services.quota` permission on the specified service. For more information, see [Cloud IAM](https://cloud.google.com/iam). **NOTE:** The client **must** fail-open on server errors `INTERNAL`, `UNKNOWN`, `DEADLINE_EXCEEDED`, and `UNAVAILABLE`. To ensure system reliability, the server may inject these errors to prohibit any hard dependency on the quota functionality. */
 export const allocateQuotaServices: API.OperationMethod<
@@ -746,8 +610,8 @@ export const allocateQuotaServices: API.OperationMethod<
   AllocateQuotaServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AllocateQuotaServicesRequest,
-  output: AllocateQuotaResponse,
+  input: __S(18) as any as S.Schema<AllocateQuotaServicesRequest>,
+  output: __S(23) as any as S.Schema<AllocateQuotaResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -761,8 +625,8 @@ export const checkServices: API.OperationMethod<
   CheckServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckServicesRequest,
-  output: CheckResponse,
+  input: __S(40) as any as S.Schema<CheckServicesRequest>,
+  output: __S(47) as any as S.Schema<CheckResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -776,8 +640,8 @@ export const reportServices: API.OperationMethod<
   ReportServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReportServicesRequest,
-  output: ReportResponse,
+  input: __S(50) as any as S.Schema<ReportServicesRequest>,
+  output: __S(53) as any as S.Schema<ReportResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -801,23 +665,23 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          bounds: S.optional(DoubleList),
+          bounds: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "ExplicitBuckets" });
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(DocumentMap);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           timestamp: S.optional(S.String),
-          attachments: S.optional(DocumentMapList),
+          attachments: S.optional(__S(5)),
           value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Exemplar" });
     case 7:
-      return S.Array(Exemplar);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -844,42 +708,42 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sumOfSquaredDeviation: S.optional(S.Number),
-          explicitBuckets: S.optional(ExplicitBuckets),
+          explicitBuckets: S.optional(__S(3)),
           maximum: S.optional(S.Number),
-          exemplars: S.optional(ExemplarList),
+          exemplars: S.optional(__S(7)),
           minimum: S.optional(S.Number),
-          exponentialBuckets: S.optional(ExponentialBuckets),
+          exponentialBuckets: S.optional(__S(8)),
           mean: S.optional(S.Number),
-          bucketCounts: S.optional(StringList),
+          bucketCounts: S.optional(__S(9)),
           count: S.optional(S.String),
-          linearBuckets: S.optional(LinearBuckets),
+          linearBuckets: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "Distribution" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(0)),
           int64Value: S.optional(S.String),
           doubleValue: S.optional(S.Number),
-          moneyValue: S.optional(Money),
+          moneyValue: S.optional(__S(1)),
           endTime: S.optional(S.String),
           startTime: S.optional(S.String),
           boolValue: S.optional(S.Boolean),
-          distributionValue: S.optional(Distribution),
+          distributionValue: S.optional(__S(11)),
           stringValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricValue" });
     case 5:
-      return S.Array(MetricValue);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           metricName: S.optional(S.String),
-          metricValues: S.optional(MetricValueList),
+          metricValues: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "MetricValueSet" });
     case 7:
-      return S.Array(MetricValueSet);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -888,9 +752,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           operationId: S.optional(S.String),
-          labels: S.optional(StringMap),
-          quotaMode: S.optional(QuotaOperationQuotaModeEnum),
-          quotaMetrics: S.optional(MetricValueSetList),
+          labels: S.optional(__S(0)),
+          quotaMode: S.optional(S.String),
+          quotaMetrics: S.optional(__S(15)),
           consumerId: S.optional(S.String),
           methodName: S.optional(S.String),
         }),
@@ -899,14 +763,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceConfigId: S.optional(S.String),
-          allocateOperation: S.optional(QuotaOperation),
+          allocateOperation: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "AllocateQuotaRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          body: S.optional(AllocateQuotaRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(17).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -920,14 +784,14 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          unusedArguments: S.optional(StringList),
+          unusedArguments: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "AllocateInfo" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(5)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
@@ -936,19 +800,19 @@ function __c2(j: number): any {
         S.Struct({
           subject: S.optional(S.String),
           description: S.optional(S.String),
-          code: S.optional(QuotaErrorCodeEnum),
-          status: S.optional(Status),
+          code: S.optional(S.String),
+          status: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "QuotaError" });
     case 6:
-      return S.Array(QuotaError);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
           operationId: S.optional(S.String),
-          allocateInfo: S.optional(AllocateInfo),
-          allocateErrors: S.optional(QuotaErrorList),
-          quotaMetrics: S.optional(MetricValueSetList),
+          allocateInfo: S.optional(__S(19)),
+          allocateErrors: S.optional(__S(22)),
+          quotaMetrics: S.optional(__S(15)),
           serviceConfigId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AllocateQuotaResponse" });
@@ -959,7 +823,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          quotaMode: S.optional(QuotaPropertiesQuotaModeEnum),
+          quotaMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaProperties" });
     case 1:
@@ -973,16 +837,16 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           intValue: S.optional(S.String),
-          stringValue: S.optional(TruncatableString),
+          stringValue: S.optional(__S(25)),
           boolValue: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AttributeValue" });
     case 3:
-      return S.Record(S.String, AttributeValue);
+      return S.Record(S.String, __S(26));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          attributeMap: S.optional(AttributeValueMap),
+          attributeMap: S.optional(__S(27)),
           droppedAttributesCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Attributes" });
@@ -990,20 +854,20 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
-          attributes: S.optional(Attributes),
+          attributes: S.optional(__S(28)),
           name: S.optional(S.String),
-          displayName: S.optional(TruncatableString),
+          displayName: S.optional(__S(25)),
           sameProcessAsParentSpan: S.optional(S.Boolean),
           spanId: S.optional(S.String),
-          status: S.optional(Status),
+          status: S.optional(__S(20)),
           parentSpanId: S.optional(S.String),
           endTime: S.optional(S.String),
           childSpanCount: S.optional(S.Number),
-          spanKind: S.optional(TraceSpanSpanKindEnum),
+          spanKind: S.optional(S.String),
         }),
       ).annotate({ identifier: "TraceSpan" });
     case 6:
-      return S.Array(TraceSpan);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1018,7 +882,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ResourceInfo);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1059,44 +923,44 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
-          severity: S.optional(LogEntrySeverityEnum),
-          protoPayload: S.optional(DocumentMap),
+          labels: S.optional(__S(0)),
+          severity: S.optional(S.String),
+          protoPayload: S.optional(__S(4)),
           trace: S.optional(S.String),
           textPayload: S.optional(S.String),
-          structPayload: S.optional(DocumentMap),
+          structPayload: S.optional(__S(4)),
           name: S.optional(S.String),
           insertId: S.optional(S.String),
-          httpRequest: S.optional(HttpRequest),
-          operation: S.optional(LogEntryOperation),
-          sourceLocation: S.optional(LogEntrySourceLocation),
+          httpRequest: S.optional(__S(33)),
+          operation: S.optional(__S(34)),
+          sourceLocation: S.optional(__S(35)),
           timestamp: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogEntry" });
     case 5:
-      return S.Array(LogEntry);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          quotaProperties: S.optional(QuotaProperties),
+          quotaProperties: S.optional(__S(24)),
           consumerId: S.optional(S.String),
-          userLabels: S.optional(StringMap),
+          userLabels: S.optional(__S(0)),
           operationId: S.optional(S.String),
-          importance: S.optional(OperationImportanceEnum),
-          metricValueSets: S.optional(MetricValueSetList),
-          traceSpans: S.optional(TraceSpanList),
-          labels: S.optional(StringMap),
+          importance: S.optional(S.String),
+          metricValueSets: S.optional(__S(15)),
+          traceSpans: S.optional(__S(30)),
+          labels: S.optional(__S(0)),
           endTime: S.optional(S.String),
           operationName: S.optional(S.String),
           startTime: S.optional(S.String),
-          resources: S.optional(ResourceInfoList),
-          logEntries: S.optional(LogEntryList),
+          resources: S.optional(__S(32)),
+          logEntries: S.optional(__S(37)),
         }),
       ).annotate({ identifier: "Operation" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          operation: S.optional(Operation),
+          operation: S.optional(__S(38)),
           serviceConfigId: S.optional(S.String),
           skipActivationCheck: S.optional(S.Boolean),
           requestProjectSettings: S.optional(S.Boolean),
@@ -1110,7 +974,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          body: S.optional(CheckRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(39).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1122,7 +986,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ConsumerInfoTypeEnum),
+          type: S.optional(S.String),
           projectNumber: S.optional(S.String),
           consumerNumber: S.optional(S.String),
         }),
@@ -1130,8 +994,8 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          consumerInfo: S.optional(ConsumerInfo),
-          unusedArguments: S.optional(StringList),
+          consumerInfo: S.optional(__S(41)),
+          unusedArguments: S.optional(__S(9)),
           ignoreApiKeyUidAsCredentialId: S.optional(S.Boolean),
           apiKeyUid: S.optional(S.String),
         }),
@@ -1141,32 +1005,32 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          quotaMetrics: S.optional(MetricValueSetList),
-          limitExceeded: S.optional(StringList),
-          quotaExtractionState: S.optional(QuotaInfoQuotaExtractionStateEnum),
-          quotaConsumed: S.optional(IntegerMap),
+          quotaMetrics: S.optional(__S(15)),
+          limitExceeded: S.optional(__S(9)),
+          quotaExtractionState: S.optional(S.String),
+          quotaConsumed: S.optional(__S(43)),
         }),
       ).annotate({ identifier: "QuotaInfo" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(CheckErrorCodeEnum),
+          code: S.optional(S.String),
           detail: S.optional(S.String),
-          status: S.optional(Status),
+          status: S.optional(__S(20)),
           subject: S.optional(S.String),
         }),
       ).annotate({ identifier: "CheckError" });
     case 6:
-      return S.Array(CheckError);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          checkInfo: S.optional(CheckInfo),
-          quotaInfo: S.optional(QuotaInfo),
+          checkInfo: S.optional(__S(42)),
+          quotaInfo: S.optional(__S(44)),
           operationId: S.optional(S.String),
           serviceConfigId: S.optional(S.String),
           serviceRolloutId: S.optional(S.String),
-          checkErrors: S.optional(CheckErrorList),
+          checkErrors: S.optional(__S(46)),
         }),
       ).annotate({ identifier: "CheckResponse" });
   }
@@ -1174,11 +1038,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Operation);
+      return S.Array(__S(38));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(OperationList),
+          operations: S.optional(__S(48)),
           serviceConfigId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportRequest" });
@@ -1186,7 +1050,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          body: S.optional(ReportRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(49).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1199,18 +1063,41 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           operationId: S.optional(S.String),
-          status: S.optional(Status),
+          status: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "ReportError" });
     case 4:
-      return S.Array(ReportError);
+      return S.Array(__S(51));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          reportErrors: S.optional(ReportErrorList),
+          reportErrors: S.optional(__S(52)),
           serviceConfigId: S.optional(S.String),
           serviceRolloutId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
   }
 }

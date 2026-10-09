@@ -6,16 +6,14 @@ import { UnknownHetznerError } from "../errors.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
 export interface GetPricingRequest {}
-const GetPricingRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetPricingRequest>;
-
 /** Type of [Primary IP](#tag/primary-ips) the price is for. */
 export type GetPricingResponsePricingPrimaryIpsItemType = "ipv4" | "ipv6";
-const GetPricingResponsePricingPrimaryIpsItemType = S.String;
-
 /** Hourly price in this [Location](#tag/locations). */
 export interface GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly {
   /** Price without VAT. */
@@ -23,11 +21,6 @@ export interface GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly {
   /** Price with VAT added. */
   gross: string;
 }
-const GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly>;
-
 /** Monthly price in this [Location](#tag/locations). */
 export type GetPricingResponsePricingPrimaryIpsItemPricesItemPriceMonthly =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
@@ -39,42 +32,20 @@ export interface GetPricingResponsePricingPrimaryIpsItemPricesItem {
   /** Monthly price in this [Location](#tag/locations). */
   price_monthly: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
 }
-const GetPricingResponsePricingPrimaryIpsItemPricesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetPricingResponsePricingPrimaryIpsItemPricesItem>;
-
 /** Price of the [Primary IP](#tag/primary-ips) type per [Location](#tag/locations). */
 export type GetPricingResponsePricingPrimaryIpsItemPricesList =
   Array<GetPricingResponsePricingPrimaryIpsItemPricesItem>;
-const GetPricingResponsePricingPrimaryIpsItemPricesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetPricingResponsePricingPrimaryIpsItemPricesList>;
-
 export interface GetPricingResponsePricingPrimaryIpsItem {
   /** Type of [Primary IP](#tag/primary-ips) the price is for. */
   type: GetPricingResponsePricingPrimaryIpsItemType;
   /** Price of the [Primary IP](#tag/primary-ips) type per [Location](#tag/locations). */
   prices: GetPricingResponsePricingPrimaryIpsItemPricesList;
 }
-const GetPricingResponsePricingPrimaryIpsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetPricingResponsePricingPrimaryIpsItem>;
-
 /** Price of [Primary IPs](#tag/primary-ips) per type and per [Location](#tag/locations). */
 export type GetPricingResponsePricingPrimaryIpsList =
   Array<GetPricingResponsePricingPrimaryIpsItem>;
-const GetPricingResponsePricingPrimaryIpsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetPricingResponsePricingPrimaryIpsList>;
-
 /** Type of [Floating IP](#tag/floating-ips) the price is for. */
 export type GetPricingResponsePricingFloatingIpsItemType = "ipv4" | "ipv6";
-const GetPricingResponsePricingFloatingIpsItemType = S.String;
-
 /** Monthly price in this [Location](#tag/locations). */
 export type GetPricingResponsePricingFloatingIpsItemPricesItemPriceMonthly =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
@@ -84,38 +55,18 @@ export interface GetPricingResponsePricingFloatingIpsItemPricesItem {
   /** Monthly price in this [Location](#tag/locations). */
   price_monthly: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
 }
-const GetPricingResponsePricingFloatingIpsItemPricesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetPricingResponsePricingFloatingIpsItemPricesItem>;
-
 /** Price of the [Floating IP](#tag/floating-ips) type per [Location](#tag/locations). */
 export type GetPricingResponsePricingFloatingIpsItemPricesList =
   Array<GetPricingResponsePricingFloatingIpsItemPricesItem>;
-const GetPricingResponsePricingFloatingIpsItemPricesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetPricingResponsePricingFloatingIpsItemPricesList>;
-
 export interface GetPricingResponsePricingFloatingIpsItem {
   /** Type of [Floating IP](#tag/floating-ips) the price is for. */
   type: GetPricingResponsePricingFloatingIpsItemType;
   /** Price of the [Floating IP](#tag/floating-ips) type per [Location](#tag/locations). */
   prices: GetPricingResponsePricingFloatingIpsItemPricesList;
 }
-const GetPricingResponsePricingFloatingIpsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetPricingResponsePricingFloatingIpsItem>;
-
 /** Price of [Floating IPs](#tag/floating-ips) per type and per [Location](#tag/locations). */
 export type GetPricingResponsePricingFloatingIpsList =
   Array<GetPricingResponsePricingFloatingIpsItem>;
-const GetPricingResponsePricingFloatingIpsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetPricingResponsePricingFloatingIpsList>;
-
 /** Price of [Images](#tag/images) per GB/month. */
 export type GetPricingResponsePricingImagePricePerGbMonth =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
@@ -124,11 +75,6 @@ export interface GetPricingResponsePricingImage {
   /** Price of [Images](#tag/images) per GB/month. */
   price_per_gb_month: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
 }
-const GetPricingResponsePricingImage = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetPricingResponsePricingImage>;
-
 /** Price of [Volumes](#tag/volumes) per GB/month. */
 export type GetPricingResponsePricingVolumePricePerGbMonth =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
@@ -137,19 +83,11 @@ export interface GetPricingResponsePricingVolume {
   /** Price of [Volumes](#tag/volumes) per GB/month. */
   price_per_gb_month: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
 }
-const GetPricingResponsePricingVolume =
-  GetPricingResponsePricingImage as any as S.Schema<GetPricingResponsePricingVolume>;
-
 /** Price of [Server](#tag/servers) backups. */
 export interface GetPricingResponsePricingServerBackup {
   /** Price increase of the [Server](#tag/servers) base price in percentage. */
   percentage: string;
 }
-const GetPricingResponsePricingServerBackup = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetPricingResponsePricingServerBackup>;
-
 /** Hourly price in this [Location](#tag/locations). */
 export type GetPricingResponsePricingServerTypesItemPricesItemPriceHourly =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
@@ -171,19 +109,9 @@ export interface GetPricingResponsePricingServerTypesItemPricesItem {
   /** Additional traffic price per TB in this [Location](#tag/locations). */
   price_per_tb_traffic: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
 }
-const GetPricingResponsePricingServerTypesItemPricesItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetPricingResponsePricingServerTypesItemPricesItem>;
-
 /** Price of the [Server Types](#tag/server-types) per [Location](#tag/locations). */
 export type GetPricingResponsePricingServerTypesItemPricesList =
   Array<GetPricingResponsePricingServerTypesItemPricesItem>;
-const GetPricingResponsePricingServerTypesItemPricesList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetPricingResponsePricingServerTypesItemPricesList>;
-
 export interface GetPricingResponsePricingServerTypesItem {
   /** ID of the [Server Types](#tag/server-types) the price is for. */
   id: number;
@@ -192,19 +120,9 @@ export interface GetPricingResponsePricingServerTypesItem {
   /** Price of the [Server Types](#tag/server-types) per [Location](#tag/locations). */
   prices: GetPricingResponsePricingServerTypesItemPricesList;
 }
-const GetPricingResponsePricingServerTypesItem = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetPricingResponsePricingServerTypesItem>;
-
 /** Price of Server per [type](#tag/server-types) and per [Location](#tag/locations). */
 export type GetPricingResponsePricingServerTypesList =
   Array<GetPricingResponsePricingServerTypesItem>;
-const GetPricingResponsePricingServerTypesList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetPricingResponsePricingServerTypesList>;
-
 /** Hourly price in this [Location](#tag/locations). */
 export type GetPricingResponsePricingLoadBalancerTypesItemPricesItemPriceHourly =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
@@ -230,9 +148,6 @@ export interface GetPricingResponsePricingLoadBalancerTypesItem {
 /** Price of Load Balancer per [type](#tag/load-balancer-types) and per [Location](#tag/locations). */
 export type GetPricingResponsePricingLoadBalancerTypesList =
   Array<GetPricingResponsePricingLoadBalancerTypesItem>;
-const GetPricingResponsePricingLoadBalancerTypesList =
-  GetPricingResponsePricingServerTypesList as any as S.Schema<GetPricingResponsePricingLoadBalancerTypesList>;
-
 /** Price of one [Floating IP](#tag/floating-ips) per month. */
 export type GetPricingResponsePricingFloatingIpPriceMonthly =
   GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
@@ -241,11 +156,6 @@ export interface GetPricingResponsePricingFloatingIp {
   /** Price of one [Floating IP](#tag/floating-ips) per month. */
   price_monthly: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly;
 }
-const GetPricingResponsePricingFloatingIp = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetPricingResponsePricingFloatingIp>;
-
 export interface GetPricingResponsePricing {
   /** Currency the returned prices are expressed in, coded according to [ISO 4217](https://wikipedia.org/wiki/ISO_4217). */
   currency: string;
@@ -268,16 +178,9 @@ export interface GetPricingResponsePricing {
   /** Price of [Floating IPs](#tag/floating-ips). **Deprecated**: This field is deprecated, please refer to the `floating_ips` field instead. See the [Changelog](https://docs.hetzner.cloud/changelog#2024-08-29-field-floating_ip-in-pricing-response-is-now-deprecated) for more details. */
   floating_ip: GetPricingResponsePricingFloatingIp;
 }
-const GetPricingResponsePricing = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetPricingResponsePricing>;
-
 export interface GetPricingResponse {
   pricing: GetPricingResponsePricing;
 }
-const GetPricingResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetPricingResponse>;
-
 export type GetPricingError = HetznerOpError;
 /** Get all prices Returns prices for all resources available on the platform. VAT and currency of the Project owner are used for calculations. Both net and gross prices are included in the response. */
 export const getPricing: API.OperationMethod<
@@ -286,8 +189,8 @@ export const getPricing: API.OperationMethod<
   GetPricingError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPricingRequest,
-  output: GetPricingResponse,
+  input: __S(0) as any as S.Schema<GetPricingRequest>,
+  output: __S(18) as any as S.Schema<GetPricingResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -313,36 +216,36 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          price_hourly: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly,
-          price_monthly: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly,
+          price_hourly: __S(1),
+          price_monthly: __S(1),
         }),
       ).annotate({
         identifier: "GetPricingResponsePricingPrimaryIpsItemPricesItem",
       });
     case 3:
-      return S.Array(GetPricingResponsePricingPrimaryIpsItemPricesItem);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: GetPricingResponsePricingPrimaryIpsItemType,
-          prices: GetPricingResponsePricingPrimaryIpsItemPricesList,
+          type: S.String,
+          prices: __S(3),
         }),
       ).annotate({
         identifier: "GetPricingResponsePricingPrimaryIpsItem",
       });
     case 5:
-      return S.Array(GetPricingResponsePricingPrimaryIpsItem);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          price_monthly: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly,
+          price_monthly: __S(1),
         }),
       ).annotate({
         identifier: "GetPricingResponsePricingFloatingIpsItemPricesItem",
       });
     case 7:
-      return S.Array(GetPricingResponsePricingFloatingIpsItemPricesItem);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -350,18 +253,18 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: GetPricingResponsePricingFloatingIpsItemType,
-          prices: GetPricingResponsePricingFloatingIpsItemPricesList,
+          type: S.String,
+          prices: __S(7),
         }),
       ).annotate({
         identifier: "GetPricingResponsePricingFloatingIpsItem",
       });
     case 1:
-      return S.Array(GetPricingResponsePricingFloatingIpsItem);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          price_per_gb_month: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly,
+          price_per_gb_month: __S(1),
         }),
       ).annotate({
         identifier: "GetPricingResponsePricingImage",
@@ -378,28 +281,28 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          price_hourly: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly,
-          price_monthly: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly,
+          price_hourly: __S(1),
+          price_monthly: __S(1),
           included_traffic: S.Number,
-          price_per_tb_traffic: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly,
+          price_per_tb_traffic: __S(1),
         }),
       ).annotate({
         identifier: "GetPricingResponsePricingServerTypesItemPricesItem",
       });
     case 5:
-      return S.Array(GetPricingResponsePricingServerTypesItemPricesItem);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          prices: GetPricingResponsePricingServerTypesItemPricesList,
+          prices: __S(13),
         }),
       ).annotate({
         identifier: "GetPricingResponsePricingServerTypesItem",
       });
     case 7:
-      return S.Array(GetPricingResponsePricingServerTypesItem);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -407,7 +310,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          price_monthly: GetPricingResponsePricingPrimaryIpsItemPricesItemPriceHourly,
+          price_monthly: __S(1),
         }),
       ).annotate({
         identifier: "GetPricingResponsePricingFloatingIp",
@@ -417,14 +320,14 @@ function __c2(j: number): any {
         S.Struct({
           currency: S.String,
           vat_rate: S.String,
-          primary_ips: GetPricingResponsePricingPrimaryIpsList,
-          floating_ips: GetPricingResponsePricingFloatingIpsList,
-          image: GetPricingResponsePricingImage,
-          volume: GetPricingResponsePricingVolume,
-          server_backup: GetPricingResponsePricingServerBackup,
-          server_types: GetPricingResponsePricingServerTypesList,
-          load_balancer_types: GetPricingResponsePricingLoadBalancerTypesList,
-          floating_ip: GetPricingResponsePricingFloatingIp,
+          primary_ips: __S(5),
+          floating_ips: __S(9),
+          image: __S(10),
+          volume: __S(10),
+          server_backup: __S(11),
+          server_types: __S(15),
+          load_balancer_types: __S(15),
+          floating_ip: __S(16),
         }),
       ).annotate({
         identifier: "GetPricingResponsePricing",
@@ -432,8 +335,23 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          pricing: GetPricingResponsePricing,
+          pricing: __S(17),
         }),
       ).annotate({ identifier: "GetPricingResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

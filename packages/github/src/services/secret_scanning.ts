@@ -7,6 +7,8 @@ import * as Redacted from "effect/Redacted";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -57,16 +59,8 @@ export class UnprocessableEntity
 
 /** List of regexes that the secret must match. */
 export type SecretScanningCustomPatternToCreateMustMatchList = Array<string>;
-const SecretScanningCustomPatternToCreateMustMatchList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<SecretScanningCustomPatternToCreateMustMatchList>;
-
 /** List of regexes that the secret must not match. */
 export type SecretScanningCustomPatternToCreateMustNotMatchList = Array<string>;
-const SecretScanningCustomPatternToCreateMustNotMatchList =
-  SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<SecretScanningCustomPatternToCreateMustNotMatchList>;
-
 /** A custom pattern to create in a bulk operation. */
 export interface SecretScanningCustomPatternToCreate {
   /** The name of the custom pattern. */
@@ -82,44 +76,21 @@ export interface SecretScanningCustomPatternToCreate {
   /** List of regexes that the secret must not match. */
   must_not_match?: SecretScanningCustomPatternToCreateMustNotMatchList;
 }
-const SecretScanningCustomPatternToCreate = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<SecretScanningCustomPatternToCreate>;
-
 /** The list of custom patterns to create (maximum 100). */
 export type BulkCreateOrgCustomPatternsRequestPatternsList =
   Array<SecretScanningCustomPatternToCreate>;
-const BulkCreateOrgCustomPatternsRequestPatternsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BulkCreateOrgCustomPatternsRequestPatternsList>;
-
 export interface BulkCreateOrgCustomPatternsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The list of custom patterns to create (maximum 100). */
   patterns: BulkCreateOrgCustomPatternsRequestPatternsList;
 }
-const BulkCreateOrgCustomPatternsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<BulkCreateOrgCustomPatternsRequest>;
-
 /** The state of the custom pattern. */
 export type SecretScanningCustomPatternState = "published" | "unpublished";
-const SecretScanningCustomPatternState = S.String;
-
 /** List of regexes that the secret must match. */
 export type SecretScanningCustomPatternMustMatchList = Array<string>;
-const SecretScanningCustomPatternMustMatchList =
-  SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<SecretScanningCustomPatternMustMatchList>;
-
 /** List of regexes that the secret must not match. */
 export type SecretScanningCustomPatternMustNotMatchList = Array<string>;
-const SecretScanningCustomPatternMustNotMatchList =
-  SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<SecretScanningCustomPatternMustNotMatchList>;
-
 /** A custom pattern for secret scanning. */
 export interface SecretScanningCustomPattern {
   /** The ID of the custom pattern. */
@@ -148,34 +119,16 @@ export interface SecretScanningCustomPattern {
   /** The date and time the custom pattern was last updated in ISO 8601 format. */
   updated_at?: string;
 }
-const SecretScanningCustomPattern = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<SecretScanningCustomPattern>;
-
 /** The list of successfully created custom patterns. */
 export type BulkCreateOrgCustomPatternsResponseCreatedPatternsList =
   Array<SecretScanningCustomPattern>;
-const BulkCreateOrgCustomPatternsResponseCreatedPatternsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<BulkCreateOrgCustomPatternsResponseCreatedPatternsList>;
-
 export interface BulkCreateOrgCustomPatternsResponse {
   /** The list of successfully created custom patterns. */
   created_patterns?: BulkCreateOrgCustomPatternsResponseCreatedPatternsList;
 }
-const BulkCreateOrgCustomPatternsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<BulkCreateOrgCustomPatternsResponse>;
-
 /** The list of custom patterns to create (maximum 100). */
 export type BulkCreateRepoCustomPatternsRequestPatternsList =
   Array<SecretScanningCustomPatternToCreate>;
-const BulkCreateRepoCustomPatternsRequestPatternsList =
-  BulkCreateOrgCustomPatternsRequestPatternsList as any as S.Schema<BulkCreateRepoCustomPatternsRequestPatternsList>;
-
 export interface BulkCreateRepoCustomPatternsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -184,11 +137,6 @@ export interface BulkCreateRepoCustomPatternsRequest {
   /** The list of custom patterns to create (maximum 100). */
   patterns: BulkCreateRepoCustomPatternsRequestPatternsList;
 }
-const BulkCreateRepoCustomPatternsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BulkCreateRepoCustomPatternsRequest>;
-
 /** The list of successfully created custom patterns. */
 export type BulkCreateRepoCustomPatternsResponseCreatedPatternsList =
   Array<SecretScanningCustomPattern>;
@@ -196,32 +144,17 @@ export interface BulkCreateRepoCustomPatternsResponse {
   /** The list of successfully created custom patterns. */
   created_patterns?: BulkCreateRepoCustomPatternsResponseCreatedPatternsList;
 }
-const BulkCreateRepoCustomPatternsResponse =
-  BulkCreateOrgCustomPatternsResponse as any as S.Schema<BulkCreateRepoCustomPatternsResponse>;
-
 /** A custom pattern to delete in a bulk operation. */
 export interface SecretScanningCustomPatternToDelete {
   /** The ID of the custom pattern to delete. */
   pattern_id: number;
   custom_pattern_version?: string | null;
 }
-const SecretScanningCustomPatternToDelete = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<SecretScanningCustomPatternToDelete>;
-
 /** The list of custom patterns to delete. */
 export type BulkDeleteOrgCustomPatternsRequestPatternsList =
   Array<SecretScanningCustomPatternToDelete>;
-const BulkDeleteOrgCustomPatternsRequestPatternsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BulkDeleteOrgCustomPatternsRequestPatternsList>;
-
 /** What to do with alerts associated with the deleted patterns. `delete_alerts` permanently removes the alerts. `resolve_alerts` resolves the alerts as "pattern deleted". Defaults to `delete_alerts` when not specified. */
 export type BulkDeleteOrgCustomPatternsRequestPostDeleteAction = "delete_alerts" | "resolve_alerts";
-const BulkDeleteOrgCustomPatternsRequestPostDeleteAction = S.String;
-
 export interface BulkDeleteOrgCustomPatternsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -230,29 +163,14 @@ export interface BulkDeleteOrgCustomPatternsRequest {
   /** What to do with alerts associated with the deleted patterns. `delete_alerts` permanently removes the alerts. `resolve_alerts` resolves the alerts as "pattern deleted". Defaults to `delete_alerts` when not specified. */
   post_delete_action?: BulkDeleteOrgCustomPatternsRequestPostDeleteAction | (string & {});
 }
-const BulkDeleteOrgCustomPatternsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<BulkDeleteOrgCustomPatternsRequest>;
-
 export interface BulkDeleteOrgCustomPatternsResponse {}
-const BulkDeleteOrgCustomPatternsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<BulkDeleteOrgCustomPatternsResponse>;
-
 /** The list of custom patterns to delete. */
 export type BulkDeleteRepoCustomPatternsRequestPatternsList =
   Array<SecretScanningCustomPatternToDelete>;
-const BulkDeleteRepoCustomPatternsRequestPatternsList =
-  BulkDeleteOrgCustomPatternsRequestPatternsList as any as S.Schema<BulkDeleteRepoCustomPatternsRequestPatternsList>;
-
 /** What to do with alerts associated with the deleted patterns. `delete_alerts` permanently removes the alerts. `resolve_alerts` resolves the alerts as "pattern deleted". Defaults to `delete_alerts` when not specified. */
 export type BulkDeleteRepoCustomPatternsRequestPostDeleteAction =
   | "delete_alerts"
   | "resolve_alerts";
-const BulkDeleteRepoCustomPatternsRequestPostDeleteAction = S.String;
-
 export interface BulkDeleteRepoCustomPatternsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -263,22 +181,12 @@ export interface BulkDeleteRepoCustomPatternsRequest {
   /** What to do with alerts associated with the deleted patterns. `delete_alerts` permanently removes the alerts. `resolve_alerts` resolves the alerts as "pattern deleted". Defaults to `delete_alerts` when not specified. */
   post_delete_action?: BulkDeleteRepoCustomPatternsRequestPostDeleteAction | (string & {});
 }
-const BulkDeleteRepoCustomPatternsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<BulkDeleteRepoCustomPatternsRequest>;
-
 export interface BulkDeleteRepoCustomPatternsResponse {}
-const BulkDeleteRepoCustomPatternsResponse =
-  BulkDeleteOrgCustomPatternsResponse as any as S.Schema<BulkDeleteRepoCustomPatternsResponse>;
-
 /** The reason for bypassing push protection. */
 export type SecretScanningPushProtectionBypassReason =
   | "false_positive"
   | "used_in_tests"
   | "will_fix_later";
-const SecretScanningPushProtectionBypassReason = S.String;
-
 export interface CreatePushProtectionBypassRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -287,11 +195,6 @@ export interface CreatePushProtectionBypassRequest {
   reason: SecretScanningPushProtectionBypassReason | (string & {});
   placeholder_id: string;
 }
-const CreatePushProtectionBypassRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreatePushProtectionBypassRequest>;
-
 export interface SecretScanningPushProtectionBypass {
   reason?: SecretScanningPushProtectionBypassReason;
   /** The time that the bypass will expire in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`. */
@@ -299,11 +202,6 @@ export interface SecretScanningPushProtectionBypass {
   /** The token type this bypass is for. */
   token_type?: string;
 }
-const SecretScanningPushProtectionBypass = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<SecretScanningPushProtectionBypass>;
-
 export interface GetAlertRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -314,20 +212,14 @@ export interface GetAlertRequest {
   /** A boolean value representing whether or not to hide literal secrets in the results. */
   hide_secret?: boolean;
 }
-const GetAlertRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetAlertRequest>;
-
 /** Sets the state of the secret scanning alert. You must provide `resolution` when you set the state to `resolved`. */
 export type SecretScanningAlertState = "open" | "resolved";
-const SecretScanningAlertState = S.String;
-
 /** **Required when the `state` is `resolved`.** The reason for resolving the alert. */
 export type SecretScanningAlertResolution =
   | "false_positive"
   | "wont_fix"
   | "revoked"
   | "used_in_tests";
-const SecretScanningAlertResolution = S.String;
-
 /** A GitHub user. */
 export interface NullableSimpleUser {
   name?: string | null;
@@ -353,12 +245,8 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-const NullableSimpleUser = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<NullableSimpleUser>;
-
 /** The token status as of the latest validity check. */
 export type SecretScanningAlertWithMetadataValidity = "active" | "inactive" | "unknown";
-const SecretScanningAlertWithMetadataValidity = S.String;
-
 /** Represents a 'commit' secret scanning location type. This location type shows that a secret was detected inside a commit to a repository. */
 export interface SecretScanningLocationCommit {
   /** The file path in the repository */
@@ -489,27 +377,14 @@ export type NullableSecretScanningFirstDetectedLocation =
   | SecretScanningLocationPullRequestComment
   | SecretScanningLocationPullRequestReview
   | SecretScanningLocationPullRequestReviewComment;
-const NullableSecretScanningFirstDetectedLocation =
-  S.Unknown as any as S.Schema<NullableSecretScanningFirstDetectedLocation>;
-
 export interface SecretScanningAlertMetadataItem {
   /** The metadata key. */
   key: string;
   /** The metadata value. */
   value: string;
 }
-const SecretScanningAlertMetadataItem = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<SecretScanningAlertMetadataItem>;
-
 /** A list of metadata key/value pairs associated with the secret scanning alert. */
 export type SecretScanningAlertMetadata = Array<SecretScanningAlertMetadataItem>;
-const SecretScanningAlertMetadata = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<SecretScanningAlertMetadata>;
-
 export interface SecretScanningAlertWithMetadata {
   number?: number;
   created_at?: string;
@@ -566,22 +441,12 @@ export interface SecretScanningAlertWithMetadata {
   closure_request_reviewer?: NullableSimpleUser | null;
   metadata?: SecretScanningAlertMetadata;
 }
-const SecretScanningAlertWithMetadata = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<SecretScanningAlertWithMetadata>;
-
 export interface GetScanHistoryRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetScanHistoryRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetScanHistoryRequest>;
-
 /** Information on a single scan performed by secret scanning on the repository */
 export interface SecretScanningScan {
   /** The type of scan */
@@ -593,22 +458,9 @@ export interface SecretScanningScan {
   /** The time that the scan was started. Empty if the scan is pending */
   started_at?: string | null;
 }
-const SecretScanningScan = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<SecretScanningScan>;
-
 export type SecretScanningScanHistoryIncrementalScansList = Array<SecretScanningScan>;
-const SecretScanningScanHistoryIncrementalScansList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<SecretScanningScanHistoryIncrementalScansList>;
-
 export type SecretScanningScanHistoryPatternUpdateScansList = Array<SecretScanningScan>;
-const SecretScanningScanHistoryPatternUpdateScansList =
-  SecretScanningScanHistoryIncrementalScansList as any as S.Schema<SecretScanningScanHistoryPatternUpdateScansList>;
-
 export type SecretScanningScanHistoryBackfillScansList = Array<SecretScanningScan>;
-const SecretScanningScanHistoryBackfillScansList =
-  SecretScanningScanHistoryIncrementalScansList as any as S.Schema<SecretScanningScanHistoryBackfillScansList>;
-
 export interface SecretScanningScanHistoryCustomPatternBackfillScansItem {
   /** The type of scan */
   type?: string;
@@ -623,22 +475,9 @@ export interface SecretScanningScanHistoryCustomPatternBackfillScansItem {
   /** Level at which the custom pattern is defined, one of "repository", "organization", or "enterprise" */
   pattern_scope?: string;
 }
-const SecretScanningScanHistoryCustomPatternBackfillScansItem = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<SecretScanningScanHistoryCustomPatternBackfillScansItem>;
-
 export type SecretScanningScanHistoryCustomPatternBackfillScansList =
   Array<SecretScanningScanHistoryCustomPatternBackfillScansItem>;
-const SecretScanningScanHistoryCustomPatternBackfillScansList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<SecretScanningScanHistoryCustomPatternBackfillScansList>;
-
 export type SecretScanningScanHistoryGenericSecretsBackfillScansList = Array<SecretScanningScan>;
-const SecretScanningScanHistoryGenericSecretsBackfillScansList =
-  SecretScanningScanHistoryIncrementalScansList as any as S.Schema<SecretScanningScanHistoryGenericSecretsBackfillScansList>;
-
 export interface SecretScanningScanHistory {
   incremental_scans?: SecretScanningScanHistoryIncrementalScansList;
   pattern_update_scans?: SecretScanningScanHistoryPatternUpdateScansList;
@@ -646,20 +485,9 @@ export interface SecretScanningScanHistory {
   custom_pattern_backfill_scans?: SecretScanningScanHistoryCustomPatternBackfillScansList;
   generic_secrets_backfill_scans?: SecretScanningScanHistoryGenericSecretsBackfillScansList;
 }
-const SecretScanningScanHistory = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<SecretScanningScanHistory>;
-
 export type ListAlertsForOrgRequestState = "open" | "resolved";
-const ListAlertsForOrgRequestState = S.String;
-
 export type ListAlertsForOrgRequestSort = "created" | "updated";
-const ListAlertsForOrgRequestSort = S.String;
-
 export type ListAlertsForOrgRequestDirection = "asc" | "desc";
-const ListAlertsForOrgRequestDirection = S.String;
-
 export interface ListAlertsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -704,11 +532,6 @@ export interface ListAlertsForOrgRequest {
   /** Filters alerts to only those whose attached `owner_email` metadata field matches the provided value. The value must be the lowercase hex-encoded SHA-256 hash of the email address to match (for example, the SHA-256 of `user@example.com`). Only alerts that have an `owner_email` metadata value whose SHA-256 hash equals this parameter are returned. */
   owner_email_hash?: string;
 }
-const ListAlertsForOrgRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListAlertsForOrgRequest>;
-
 /** A GitHub user. */
 export type SimpleUser = NullableSimpleUser;
 /** A GitHub repository. */
@@ -805,12 +628,8 @@ export interface SimpleRepository {
   /** The API URL to list the hooks on the repository. */
   hooks_url: string;
 }
-const SimpleRepository = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<SimpleRepository>;
-
 /** The token status as of the latest validity check. */
 export type OrganizationSecretScanningAlertValidity = "active" | "inactive" | "unknown";
-const OrganizationSecretScanningAlertValidity = S.String;
-
 export interface OrganizationSecretScanningAlert {
   number?: number;
   created_at?: string;
@@ -867,32 +686,11 @@ export interface OrganizationSecretScanningAlert {
   closure_request_reviewer_comment?: string | null;
   closure_request_reviewer?: NullableSimpleUser | null;
 }
-const OrganizationSecretScanningAlert = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<OrganizationSecretScanningAlert>;
-
 export type ListAlertsForOrgResponseBodyList = Array<OrganizationSecretScanningAlert>;
-const ListAlertsForOrgResponseBodyList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListAlertsForOrgResponseBodyList>;
-
 export type ListAlertsForOrgResponse = ListAlertsForOrgResponseBodyList;
-const ListAlertsForOrgResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListAlertsForOrgResponse>;
-
 export type ListAlertsForRepoRequestState = "open" | "resolved";
-const ListAlertsForRepoRequestState = S.String;
-
 export type ListAlertsForRepoRequestSort = "created" | "updated";
-const ListAlertsForRepoRequestSort = S.String;
-
 export type ListAlertsForRepoRequestDirection = "asc" | "desc";
-const ListAlertsForRepoRequestDirection = S.String;
-
 export interface ListAlertsForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -939,15 +737,8 @@ export interface ListAlertsForRepoRequest {
   /** Filters alerts to only those whose attached `owner_email` metadata field matches the provided value. The value must be the lowercase hex-encoded SHA-256 hash of the email address to match (for example, the SHA-256 of `user@example.com`). Only alerts that have an `owner_email` metadata value whose SHA-256 hash equals this parameter are returned. */
   owner_email_hash?: string;
 }
-const ListAlertsForRepoRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListAlertsForRepoRequest>;
-
 /** The token status as of the latest validity check. */
 export type SecretScanningAlertValidity = "active" | "inactive" | "unknown";
-const SecretScanningAlertValidity = S.String;
-
 export interface SecretScanningAlert {
   number?: number;
   created_at?: string;
@@ -1003,20 +794,8 @@ export interface SecretScanningAlert {
   closure_request_reviewer_comment?: string | null;
   closure_request_reviewer?: NullableSimpleUser | null;
 }
-const SecretScanningAlert = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<SecretScanningAlert>;
-
 export type ListAlertsForRepoResponseBodyList = Array<SecretScanningAlert>;
-const ListAlertsForRepoResponseBodyList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListAlertsForRepoResponseBodyList>;
-
 export type ListAlertsForRepoResponse = ListAlertsForRepoResponseBodyList;
-const ListAlertsForRepoResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListAlertsForRepoResponse>;
-
 export interface ListLocationsForAlertRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1029,11 +808,6 @@ export interface ListLocationsForAlertRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-const ListLocationsForAlertRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListLocationsForAlertRequest>;
-
 /** The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found. */
 export type SecretScanningLocationType =
   | "commit"
@@ -1049,8 +823,6 @@ export type SecretScanningLocationType =
   | "pull_request_comment"
   | "pull_request_review"
   | "pull_request_review_comment";
-const SecretScanningLocationType = S.String;
-
 export type SecretScanningLocationDetails =
   | SecretScanningLocationCommit
   | SecretScanningLocationWikiCommit
@@ -1065,43 +837,18 @@ export type SecretScanningLocationDetails =
   | SecretScanningLocationPullRequestComment
   | SecretScanningLocationPullRequestReview
   | SecretScanningLocationPullRequestReviewComment;
-const SecretScanningLocationDetails = S.Unknown as any as S.Schema<SecretScanningLocationDetails>;
-
 export interface SecretScanningLocation {
   /** The location type. Because secrets may be found in different types of resources (ie. code, comments, issues, pull requests, discussions), this field identifies the type of resource where the secret was found. */
   type?: SecretScanningLocationType;
   details?: SecretScanningLocationDetails;
 }
-const SecretScanningLocation = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<SecretScanningLocation>;
-
 /** List of locations where the secret was detected */
 export type ListLocationsForAlertResponseBodyList = Array<SecretScanningLocation>;
-const ListLocationsForAlertResponseBodyList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListLocationsForAlertResponseBodyList>;
-
 export type ListLocationsForAlertResponse = ListLocationsForAlertResponseBodyList;
-const ListLocationsForAlertResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListLocationsForAlertResponse>;
-
 export type ListOrgCustomPatternsRequestState = "published" | "unpublished";
-const ListOrgCustomPatternsRequestState = S.String;
-
 export type ListOrgCustomPatternsRequestPushProtection = "enabled" | "disabled";
-const ListOrgCustomPatternsRequestPushProtection = S.String;
-
 export type ListOrgCustomPatternsRequestSort = "created" | "updated" | "name";
-const ListOrgCustomPatternsRequestSort = S.String;
-
 export type ListOrgCustomPatternsRequestDirection = "asc" | "desc";
-const ListOrgCustomPatternsRequestDirection = S.String;
-
 export interface ListOrgCustomPatternsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1118,42 +865,18 @@ export interface ListOrgCustomPatternsRequest {
   /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   after?: string;
 }
-const ListOrgCustomPatternsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListOrgCustomPatternsRequest>;
-
 export type ListOrgCustomPatternsResponseBodyList = Array<SecretScanningCustomPattern>;
-const ListOrgCustomPatternsResponseBodyList =
-  BulkCreateOrgCustomPatternsResponseCreatedPatternsList as any as S.Schema<ListOrgCustomPatternsResponseBodyList>;
-
 export type ListOrgCustomPatternsResponse = ListOrgCustomPatternsResponseBodyList;
-const ListOrgCustomPatternsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListOrgCustomPatternsResponse>;
-
 export interface ListOrgPatternConfigsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const ListOrgPatternConfigsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListOrgPatternConfigsRequest>;
-
 /** The default push protection setting for this pattern. */
 export type SecretScanningPatternOverrideDefaultSetting = "disabled" | "enabled";
-const SecretScanningPatternOverrideDefaultSetting = S.String;
-
 /** The push protection setting for this pattern set at the enterprise level. Only present for partner patterns when the organization has a parent enterprise. */
 export type SecretScanningPatternOverrideEnterpriseSetting = "not-set" | "disabled" | "enabled";
-const SecretScanningPatternOverrideEnterpriseSetting = S.String;
-
 /** The current push protection setting for this pattern. If this is `not-set`, then it inherits either the enterprise setting if it exists or the default setting. */
 export type SecretScanningPatternOverrideSetting = "not-set" | "disabled" | "enabled";
-const SecretScanningPatternOverrideSetting = S.String;
-
 export interface SecretScanningPatternOverride {
   /** The ID of the pattern. */
   token_type?: string;
@@ -1180,25 +903,12 @@ export interface SecretScanningPatternOverride {
   /** The current push protection setting for this pattern. If this is `not-set`, then it inherits either the enterprise setting if it exists or the default setting. */
   setting?: SecretScanningPatternOverrideSetting;
 }
-const SecretScanningPatternOverride = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<SecretScanningPatternOverride>;
-
 /** Overrides for partner patterns. */
 export type SecretScanningPatternConfigurationProviderPatternOverridesList =
   Array<SecretScanningPatternOverride>;
-const SecretScanningPatternConfigurationProviderPatternOverridesList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<SecretScanningPatternConfigurationProviderPatternOverridesList>;
-
 /** Overrides for custom patterns defined by the organization. */
 export type SecretScanningPatternConfigurationCustomPatternOverridesList =
   Array<SecretScanningPatternOverride>;
-const SecretScanningPatternConfigurationCustomPatternOverridesList =
-  SecretScanningPatternConfigurationProviderPatternOverridesList as any as S.Schema<SecretScanningPatternConfigurationCustomPatternOverridesList>;
-
 /** A collection of secret scanning patterns and their settings related to push protection. */
 export interface SecretScanningPatternConfiguration {
   pattern_config_version?: string | null;
@@ -1207,23 +917,10 @@ export interface SecretScanningPatternConfiguration {
   /** Overrides for custom patterns defined by the organization. */
   custom_pattern_overrides?: SecretScanningPatternConfigurationCustomPatternOverridesList;
 }
-const SecretScanningPatternConfiguration = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<SecretScanningPatternConfiguration>;
-
 export type ListRepoCustomPatternsRequestState = "published" | "unpublished";
-const ListRepoCustomPatternsRequestState = S.String;
-
 export type ListRepoCustomPatternsRequestPushProtection = "enabled" | "disabled";
-const ListRepoCustomPatternsRequestPushProtection = S.String;
-
 export type ListRepoCustomPatternsRequestSort = "created" | "updated" | "name";
-const ListRepoCustomPatternsRequestSort = S.String;
-
 export type ListRepoCustomPatternsRequestDirection = "asc" | "desc";
-const ListRepoCustomPatternsRequestDirection = S.String;
-
 export interface ListRepoCustomPatternsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1242,20 +939,10 @@ export interface ListRepoCustomPatternsRequest {
   /** A cursor, as given in the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers). If specified, the query only searches for results after this cursor. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   after?: string;
 }
-const ListRepoCustomPatternsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListRepoCustomPatternsRequest>;
-
 export type ListRepoCustomPatternsResponseBodyList = Array<SecretScanningCustomPattern>;
 export type ListRepoCustomPatternsResponse = ListRepoCustomPatternsResponseBodyList;
-const ListRepoCustomPatternsResponse =
-  ListOrgCustomPatternsResponse as any as S.Schema<ListRepoCustomPatternsResponse>;
-
 /** Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override. */
 export type UpdateAlertRequestValidity = "active" | "inactive";
-const UpdateAlertRequestValidity = S.String;
-
 export interface UpdateAlertRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1270,18 +957,10 @@ export interface UpdateAlertRequest {
   /** Sets the validity of the secret scanning alert. Can be `active`, `inactive`, or `null` to clear the override. */
   validity?: UpdateAlertRequestValidity | (string & {}) | null;
 }
-const UpdateAlertRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<UpdateAlertRequest>;
-
 /** Updated list of regexes that the secret must match. */
 export type UpdateOrgCustomPatternRequestMustMatchList = Array<string>;
-const UpdateOrgCustomPatternRequestMustMatchList =
-  SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<UpdateOrgCustomPatternRequestMustMatchList>;
-
 /** Updated list of regexes that the secret must not match. */
 export type UpdateOrgCustomPatternRequestMustNotMatchList = Array<string>;
-const UpdateOrgCustomPatternRequestMustNotMatchList =
-  SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<UpdateOrgCustomPatternRequestMustNotMatchList>;
-
 export interface UpdateOrgCustomPatternRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1299,18 +978,11 @@ export interface UpdateOrgCustomPatternRequest {
   must_not_match?: UpdateOrgCustomPatternRequestMustNotMatchList;
   custom_pattern_version: string | null;
 }
-const UpdateOrgCustomPatternRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<UpdateOrgCustomPatternRequest>;
-
 /** Push protection setting to set for the pattern. */
 export type UpdateOrgPatternConfigsRequestProviderPatternSettingsItemPushProtectionSetting =
   | "not-set"
   | "disabled"
   | "enabled";
-const UpdateOrgPatternConfigsRequestProviderPatternSettingsItemPushProtectionSetting = S.String;
-
 export interface UpdateOrgPatternConfigsRequestProviderPatternSettingsItem {
   /** The ID of the pattern to configure. */
   token_type?: string;
@@ -1319,25 +991,13 @@ export interface UpdateOrgPatternConfigsRequestProviderPatternSettingsItem {
     | UpdateOrgPatternConfigsRequestProviderPatternSettingsItemPushProtectionSetting
     | (string & {});
 }
-const UpdateOrgPatternConfigsRequestProviderPatternSettingsItem = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<UpdateOrgPatternConfigsRequestProviderPatternSettingsItem>;
-
 /** Pattern settings for provider patterns. */
 export type UpdateOrgPatternConfigsRequestProviderPatternSettingsList =
   Array<UpdateOrgPatternConfigsRequestProviderPatternSettingsItem>;
-const UpdateOrgPatternConfigsRequestProviderPatternSettingsList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<UpdateOrgPatternConfigsRequestProviderPatternSettingsList>;
-
 /** Push protection setting to set for the pattern. */
 export type UpdateOrgPatternConfigsRequestCustomPatternSettingsItemPushProtectionSetting =
   | "disabled"
   | "enabled";
-const UpdateOrgPatternConfigsRequestCustomPatternSettingsItemPushProtectionSetting = S.String;
-
 export interface UpdateOrgPatternConfigsRequestCustomPatternSettingsItem {
   /** The ID of the pattern to configure. */
   token_type?: string;
@@ -1347,19 +1007,9 @@ export interface UpdateOrgPatternConfigsRequestCustomPatternSettingsItem {
     | UpdateOrgPatternConfigsRequestCustomPatternSettingsItemPushProtectionSetting
     | (string & {});
 }
-const UpdateOrgPatternConfigsRequestCustomPatternSettingsItem = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<UpdateOrgPatternConfigsRequestCustomPatternSettingsItem>;
-
 /** Pattern settings for custom patterns. */
 export type UpdateOrgPatternConfigsRequestCustomPatternSettingsList =
   Array<UpdateOrgPatternConfigsRequestCustomPatternSettingsItem>;
-const UpdateOrgPatternConfigsRequestCustomPatternSettingsList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<UpdateOrgPatternConfigsRequestCustomPatternSettingsList>;
-
 export interface UpdateOrgPatternConfigsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1369,30 +1019,14 @@ export interface UpdateOrgPatternConfigsRequest {
   /** Pattern settings for custom patterns. */
   custom_pattern_settings?: UpdateOrgPatternConfigsRequestCustomPatternSettingsList;
 }
-const UpdateOrgPatternConfigsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<UpdateOrgPatternConfigsRequest>;
-
 export interface UpdateOrgPatternConfigsResponse {
   /** The updated pattern configuration version. */
   pattern_config_version?: string;
 }
-const UpdateOrgPatternConfigsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<UpdateOrgPatternConfigsResponse>;
-
 /** Updated list of regexes that the secret must match. */
 export type UpdateRepoCustomPatternRequestMustMatchList = Array<string>;
-const UpdateRepoCustomPatternRequestMustMatchList =
-  SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<UpdateRepoCustomPatternRequestMustMatchList>;
-
 /** Updated list of regexes that the secret must not match. */
 export type UpdateRepoCustomPatternRequestMustNotMatchList = Array<string>;
-const UpdateRepoCustomPatternRequestMustNotMatchList =
-  SecretScanningCustomPatternToCreateMustMatchList as any as S.Schema<UpdateRepoCustomPatternRequestMustNotMatchList>;
-
 export interface UpdateRepoCustomPatternRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1412,11 +1046,6 @@ export interface UpdateRepoCustomPatternRequest {
   must_not_match?: UpdateRepoCustomPatternRequestMustNotMatchList;
   custom_pattern_version: string | null;
 }
-const UpdateRepoCustomPatternRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<UpdateRepoCustomPatternRequest>;
-
 export type BulkCreateOrgCustomPatternsError =
   | BadRequest
   | Forbidden
@@ -1430,8 +1059,8 @@ export const bulkCreateOrgCustomPatterns: API.OperationMethod<
   BulkCreateOrgCustomPatternsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkCreateOrgCustomPatternsRequest,
-  output: BulkCreateOrgCustomPatternsResponse,
+  input: __S(3) as any as S.Schema<BulkCreateOrgCustomPatternsRequest>,
+  output: __S(6) as any as S.Schema<BulkCreateOrgCustomPatternsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1450,8 +1079,8 @@ export const bulkCreateRepoCustomPatterns: API.OperationMethod<
   BulkCreateRepoCustomPatternsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkCreateRepoCustomPatternsRequest,
-  output: BulkCreateRepoCustomPatternsResponse,
+  input: __S(7) as any as S.Schema<BulkCreateRepoCustomPatternsRequest>,
+  output: __S(6) as any as S.Schema<BulkCreateRepoCustomPatternsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1465,8 +1094,8 @@ export const bulkDeleteOrgCustomPatterns: API.OperationMethod<
   BulkDeleteOrgCustomPatternsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteOrgCustomPatternsRequest,
-  output: BulkDeleteOrgCustomPatternsResponse,
+  input: __S(10) as any as S.Schema<BulkDeleteOrgCustomPatternsRequest>,
+  output: __S(11) as any as S.Schema<BulkDeleteOrgCustomPatternsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1480,8 +1109,8 @@ export const bulkDeleteRepoCustomPatterns: API.OperationMethod<
   BulkDeleteRepoCustomPatternsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteRepoCustomPatternsRequest,
-  output: BulkDeleteRepoCustomPatternsResponse,
+  input: __S(12) as any as S.Schema<BulkDeleteRepoCustomPatternsRequest>,
+  output: __S(11) as any as S.Schema<BulkDeleteRepoCustomPatternsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1499,8 +1128,8 @@ export const createPushProtectionBypass: API.OperationMethod<
   CreatePushProtectionBypassError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePushProtectionBypassRequest,
-  output: SecretScanningPushProtectionBypass,
+  input: __S(13) as any as S.Schema<CreatePushProtectionBypassRequest>,
+  output: __S(14) as any as S.Schema<SecretScanningPushProtectionBypass>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1514,8 +1143,8 @@ export const getAlert: API.OperationMethod<
   GetAlertError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAlertRequest,
-  output: SecretScanningAlertWithMetadata,
+  input: __S(15) as any as S.Schema<GetAlertRequest>,
+  output: __S(19) as any as S.Schema<SecretScanningAlertWithMetadata>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1529,8 +1158,8 @@ export const getScanHistory: API.OperationMethod<
   GetScanHistoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetScanHistoryRequest,
-  output: SecretScanningScanHistory,
+  input: __S(20) as any as S.Schema<GetScanHistoryRequest>,
+  output: __S(25) as any as S.Schema<SecretScanningScanHistory>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1544,8 +1173,8 @@ export const listAlertsForOrg: API.OperationMethod<
   ListAlertsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAlertsForOrgRequest,
-  output: ListAlertsForOrgResponse,
+  input: __S(26) as any as S.Schema<ListAlertsForOrgRequest>,
+  output: __S(30) as any as S.Schema<ListAlertsForOrgResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1559,8 +1188,8 @@ export const listAlertsForRepo: API.OperationMethod<
   ListAlertsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAlertsForRepoRequest,
-  output: ListAlertsForRepoResponse,
+  input: __S(31) as any as S.Schema<ListAlertsForRepoRequest>,
+  output: __S(34) as any as S.Schema<ListAlertsForRepoResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1574,8 +1203,8 @@ export const listLocationsForAlert: API.OperationMethod<
   ListLocationsForAlertError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLocationsForAlertRequest,
-  output: ListLocationsForAlertResponse,
+  input: __S(35) as any as S.Schema<ListLocationsForAlertRequest>,
+  output: __S(38) as any as S.Schema<ListLocationsForAlertResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1589,8 +1218,8 @@ export const listOrgCustomPatterns: API.OperationMethod<
   ListOrgCustomPatternsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrgCustomPatternsRequest,
-  output: ListOrgCustomPatternsResponse,
+  input: __S(39) as any as S.Schema<ListOrgCustomPatternsRequest>,
+  output: __S(40) as any as S.Schema<ListOrgCustomPatternsResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1604,8 +1233,8 @@ export const listOrgPatternConfigs: API.OperationMethod<
   ListOrgPatternConfigsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrgPatternConfigsRequest,
-  output: SecretScanningPatternConfiguration,
+  input: __S(41) as any as S.Schema<ListOrgPatternConfigsRequest>,
+  output: __S(44) as any as S.Schema<SecretScanningPatternConfiguration>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1619,8 +1248,8 @@ export const listRepoCustomPatterns: API.OperationMethod<
   ListRepoCustomPatternsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRepoCustomPatternsRequest,
-  output: ListRepoCustomPatternsResponse,
+  input: __S(45) as any as S.Schema<ListRepoCustomPatternsRequest>,
+  output: __S(40) as any as S.Schema<ListRepoCustomPatternsResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1639,8 +1268,8 @@ export const updateAlert: API.OperationMethod<
   UpdateAlertError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAlertRequest,
-  output: SecretScanningAlertWithMetadata,
+  input: __S(46) as any as S.Schema<UpdateAlertRequest>,
+  output: __S(19) as any as S.Schema<SecretScanningAlertWithMetadata>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1659,8 +1288,8 @@ export const updateOrgCustomPattern: API.OperationMethod<
   UpdateOrgCustomPatternError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOrgCustomPatternRequest,
-  output: SecretScanningCustomPattern,
+  input: __S(47) as any as S.Schema<UpdateOrgCustomPatternRequest>,
+  output: __S(4) as any as S.Schema<SecretScanningCustomPattern>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1680,8 +1309,8 @@ export const updateOrgPatternConfigs: API.OperationMethod<
   UpdateOrgPatternConfigsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOrgPatternConfigsRequest,
-  output: UpdateOrgPatternConfigsResponse,
+  input: __S(52) as any as S.Schema<UpdateOrgPatternConfigsRequest>,
+  output: __S(53) as any as S.Schema<UpdateOrgPatternConfigsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1700,8 +1329,8 @@ export const updateRepoCustomPattern: API.OperationMethod<
   UpdateRepoCustomPatternError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRepoCustomPatternRequest,
-  output: SecretScanningCustomPattern,
+  input: __S(54) as any as S.Schema<UpdateRepoCustomPatternRequest>,
+  output: __S(4) as any as S.Schema<SecretScanningCustomPattern>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1719,19 +1348,19 @@ function __c0(j: number): any {
           pattern: S.String,
           start_delimiter: S.optional(S.String),
           end_delimiter: S.optional(S.String),
-          must_match: S.optional(SecretScanningCustomPatternToCreateMustMatchList),
-          must_not_match: S.optional(SecretScanningCustomPatternToCreateMustNotMatchList),
+          must_match: S.optional(__S(0)),
+          must_not_match: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "SecretScanningCustomPatternToCreate",
       });
     case 2:
-      return S.Array(SecretScanningCustomPatternToCreate);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          patterns: BulkCreateOrgCustomPatternsRequestPatternsList,
+          patterns: __S(2),
         }).pipe(
           T.Http({ method: "POST", uri: "/orgs/{org}/secret-scanning/custom-patterns", code: 200 }),
         ),
@@ -1745,12 +1374,12 @@ function __c0(j: number): any {
           name: S.String,
           pattern: S.String,
           slug: S.String,
-          state: SecretScanningCustomPatternState,
+          state: S.String,
           push_protection_enabled: S.Boolean,
           start_delimiter: S.optional(S.NullOr(S.String)),
           end_delimiter: S.optional(S.NullOr(S.String)),
-          must_match: S.optional(S.NullOr(SecretScanningCustomPatternMustMatchList)),
-          must_not_match: S.optional(S.NullOr(SecretScanningCustomPatternMustNotMatchList)),
+          must_match: S.optional(S.NullOr(__S(0))),
+          must_not_match: S.optional(S.NullOr(__S(0))),
           custom_pattern_version: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
@@ -1759,11 +1388,11 @@ function __c0(j: number): any {
         identifier: "SecretScanningCustomPattern",
       });
     case 5:
-      return S.Array(SecretScanningCustomPattern);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          created_patterns: S.optional(BulkCreateOrgCustomPatternsResponseCreatedPatternsList),
+          created_patterns: S.optional(__S(5)),
         }),
       ).annotate({
         identifier: "BulkCreateOrgCustomPatternsResponse",
@@ -1773,7 +1402,7 @@ function __c0(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          patterns: BulkCreateRepoCustomPatternsRequestPatternsList,
+          patterns: __S(2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1798,13 +1427,13 @@ function __c1(j: number): any {
         identifier: "SecretScanningCustomPatternToDelete",
       });
     case 1:
-      return S.Array(SecretScanningCustomPatternToDelete);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          patterns: BulkDeleteOrgCustomPatternsRequestPatternsList,
-          post_delete_action: S.optional(BulkDeleteOrgCustomPatternsRequestPostDeleteAction),
+          patterns: __S(9),
+          post_delete_action: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -1824,8 +1453,8 @@ function __c1(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          patterns: BulkDeleteRepoCustomPatternsRequestPatternsList,
-          post_delete_action: S.optional(BulkDeleteRepoCustomPatternsRequestPostDeleteAction),
+          patterns: __S(9),
+          post_delete_action: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -1841,7 +1470,7 @@ function __c1(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          reason: SecretScanningPushProtectionBypassReason,
+          reason: S.String,
           placeholder_id: S.String,
         }).pipe(
           T.Http({
@@ -1856,7 +1485,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          reason: S.optional(SecretScanningPushProtectionBypassReason),
+          reason: S.optional(S.String),
           expire_at: S.optional(S.NullOr(S.String)),
           token_type: S.optional(S.String),
         }),
@@ -1919,7 +1548,7 @@ function __c2(j: number): any {
         identifier: "SecretScanningAlertMetadataItem",
       });
     case 2:
-      return S.Array(SecretScanningAlertMetadataItem);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1929,10 +1558,10 @@ function __c2(j: number): any {
           url: S.optional(S.String),
           html_url: S.optional(S.String),
           locations_url: S.optional(S.String),
-          state: S.optional(SecretScanningAlertState),
-          resolution: S.optional(S.NullOr(SecretScanningAlertResolution)),
+          state: S.optional(S.String),
+          resolution: S.optional(S.NullOr(S.String)),
           resolved_at: S.optional(S.NullOr(S.String)),
-          resolved_by: S.optional(S.NullOr(NullableSimpleUser)),
+          resolved_by: S.optional(S.NullOr(__S(16))),
           resolution_comment: S.optional(S.NullOr(S.String)),
           secret_type: S.optional(S.String),
           secret_type_display_name: S.optional(S.String),
@@ -1940,25 +1569,23 @@ function __c2(j: number): any {
           provider_slug: S.optional(S.NullOr(S.String)),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           push_protection_bypassed: S.optional(S.NullOr(S.Boolean)),
-          push_protection_bypassed_by: S.optional(S.NullOr(NullableSimpleUser)),
+          push_protection_bypassed_by: S.optional(S.NullOr(__S(16))),
           push_protection_bypassed_at: S.optional(S.NullOr(S.String)),
-          push_protection_bypass_request_reviewer: S.optional(S.NullOr(NullableSimpleUser)),
+          push_protection_bypass_request_reviewer: S.optional(S.NullOr(__S(16))),
           push_protection_bypass_request_reviewer_comment: S.optional(S.NullOr(S.String)),
           push_protection_bypass_request_comment: S.optional(S.NullOr(S.String)),
           push_protection_bypass_request_html_url: S.optional(S.NullOr(S.String)),
-          validity: S.optional(SecretScanningAlertWithMetadataValidity),
+          validity: S.optional(S.String),
           publicly_leaked: S.optional(S.NullOr(S.Boolean)),
           multi_repo: S.optional(S.NullOr(S.Boolean)),
           is_base64_encoded: S.optional(S.NullOr(S.Boolean)),
-          first_location_detected: S.optional(
-            S.NullOr(NullableSecretScanningFirstDetectedLocation),
-          ),
+          first_location_detected: S.optional(S.NullOr(S.Unknown)),
           has_more_locations: S.optional(S.Boolean),
-          assigned_to: S.optional(S.NullOr(NullableSimpleUser)),
+          assigned_to: S.optional(S.NullOr(__S(16))),
           closure_request_comment: S.optional(S.NullOr(S.String)),
           closure_request_reviewer_comment: S.optional(S.NullOr(S.String)),
-          closure_request_reviewer: S.optional(S.NullOr(NullableSimpleUser)),
-          metadata: S.optional(SecretScanningAlertMetadata),
+          closure_request_reviewer: S.optional(S.NullOr(__S(16))),
+          metadata: S.optional(__S(18)),
         }),
       ).annotate({
         identifier: "SecretScanningAlertWithMetadata",
@@ -1986,7 +1613,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "SecretScanningScan" });
     case 6:
-      return S.Array(SecretScanningScan);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2005,19 +1632,15 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SecretScanningScanHistoryCustomPatternBackfillScansItem);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          incremental_scans: S.optional(SecretScanningScanHistoryIncrementalScansList),
-          pattern_update_scans: S.optional(SecretScanningScanHistoryPatternUpdateScansList),
-          backfill_scans: S.optional(SecretScanningScanHistoryBackfillScansList),
-          custom_pattern_backfill_scans: S.optional(
-            SecretScanningScanHistoryCustomPatternBackfillScansList,
-          ),
-          generic_secrets_backfill_scans: S.optional(
-            SecretScanningScanHistoryGenericSecretsBackfillScansList,
-          ),
+          incremental_scans: S.optional(__S(22)),
+          pattern_update_scans: S.optional(__S(22)),
+          backfill_scans: S.optional(__S(22)),
+          custom_pattern_backfill_scans: S.optional(__S(24)),
+          generic_secrets_backfill_scans: S.optional(__S(22)),
         }),
       ).annotate({
         identifier: "SecretScanningScanHistory",
@@ -2026,15 +1649,15 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          state: S.optional(ListAlertsForOrgRequestState.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
           secret_type: S.optional(S.String.pipe(T.Query())),
           exclude_secret_types: S.optional(S.String.pipe(T.Query())),
           exclude_providers: S.optional(S.String.pipe(T.Query())),
           providers: S.optional(S.String.pipe(T.Query())),
           resolution: S.optional(S.String.pipe(T.Query())),
           assignee: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(ListAlertsForOrgRequestSort.pipe(T.Query())),
-          direction: S.optional(ListAlertsForOrgRequestDirection.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
@@ -2055,7 +1678,7 @@ function __c3(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: NullableSimpleUser,
+          owner: __S(16),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -2108,44 +1731,42 @@ function __c3(j: number): any {
           url: S.optional(S.String),
           html_url: S.optional(S.String),
           locations_url: S.optional(S.String),
-          state: S.optional(SecretScanningAlertState),
-          resolution: S.optional(S.NullOr(SecretScanningAlertResolution)),
+          state: S.optional(S.String),
+          resolution: S.optional(S.NullOr(S.String)),
           resolved_at: S.optional(S.NullOr(S.String)),
-          resolved_by: S.optional(S.NullOr(NullableSimpleUser)),
+          resolved_by: S.optional(S.NullOr(__S(16))),
           secret_type: S.optional(S.String),
           secret_type_display_name: S.optional(S.String),
           provider: S.optional(S.NullOr(S.String)),
           provider_slug: S.optional(S.NullOr(S.String)),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          repository: S.optional(SimpleRepository),
+          repository: S.optional(__S(27)),
           push_protection_bypassed: S.optional(S.NullOr(S.Boolean)),
-          push_protection_bypassed_by: S.optional(S.NullOr(NullableSimpleUser)),
+          push_protection_bypassed_by: S.optional(S.NullOr(__S(16))),
           push_protection_bypassed_at: S.optional(S.NullOr(S.String)),
-          push_protection_bypass_request_reviewer: S.optional(S.NullOr(NullableSimpleUser)),
+          push_protection_bypass_request_reviewer: S.optional(S.NullOr(__S(16))),
           push_protection_bypass_request_reviewer_comment: S.optional(S.NullOr(S.String)),
           push_protection_bypass_request_comment: S.optional(S.NullOr(S.String)),
           push_protection_bypass_request_html_url: S.optional(S.NullOr(S.String)),
           resolution_comment: S.optional(S.NullOr(S.String)),
-          validity: S.optional(OrganizationSecretScanningAlertValidity),
+          validity: S.optional(S.String),
           publicly_leaked: S.optional(S.NullOr(S.Boolean)),
           multi_repo: S.optional(S.NullOr(S.Boolean)),
           is_base64_encoded: S.optional(S.NullOr(S.Boolean)),
-          first_location_detected: S.optional(
-            S.NullOr(NullableSecretScanningFirstDetectedLocation),
-          ),
+          first_location_detected: S.optional(S.NullOr(S.Unknown)),
           has_more_locations: S.optional(S.Boolean),
-          assigned_to: S.optional(S.NullOr(NullableSimpleUser)),
+          assigned_to: S.optional(S.NullOr(__S(16))),
           closure_request_comment: S.optional(S.NullOr(S.String)),
           closure_request_reviewer_comment: S.optional(S.NullOr(S.String)),
-          closure_request_reviewer: S.optional(S.NullOr(NullableSimpleUser)),
+          closure_request_reviewer: S.optional(S.NullOr(__S(16))),
         }),
       ).annotate({
         identifier: "OrganizationSecretScanningAlert",
       });
     case 5:
-      return S.Array(OrganizationSecretScanningAlert);
+      return S.Array(__S(28));
     case 6:
-      return S.suspend(() => ListAlertsForOrgResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(29).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAlertsForOrgResponse",
       });
     case 7:
@@ -2153,15 +1774,15 @@ function __c3(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          state: S.optional(ListAlertsForRepoRequestState.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
           secret_type: S.optional(S.String.pipe(T.Query())),
           exclude_secret_types: S.optional(S.String.pipe(T.Query())),
           exclude_providers: S.optional(S.String.pipe(T.Query())),
           providers: S.optional(S.String.pipe(T.Query())),
           resolution: S.optional(S.String.pipe(T.Query())),
           assignee: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(ListAlertsForRepoRequestSort.pipe(T.Query())),
-          direction: S.optional(ListAlertsForRepoRequestDirection.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
@@ -2190,10 +1811,10 @@ function __c4(j: number): any {
           url: S.optional(S.String),
           html_url: S.optional(S.String),
           locations_url: S.optional(S.String),
-          state: S.optional(SecretScanningAlertState),
-          resolution: S.optional(S.NullOr(SecretScanningAlertResolution)),
+          state: S.optional(S.String),
+          resolution: S.optional(S.NullOr(S.String)),
           resolved_at: S.optional(S.NullOr(S.String)),
-          resolved_by: S.optional(S.NullOr(NullableSimpleUser)),
+          resolved_by: S.optional(S.NullOr(__S(16))),
           resolution_comment: S.optional(S.NullOr(S.String)),
           secret_type: S.optional(S.String),
           secret_type_display_name: S.optional(S.String),
@@ -2201,30 +1822,28 @@ function __c4(j: number): any {
           provider_slug: S.optional(S.NullOr(S.String)),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           push_protection_bypassed: S.optional(S.NullOr(S.Boolean)),
-          push_protection_bypassed_by: S.optional(S.NullOr(NullableSimpleUser)),
+          push_protection_bypassed_by: S.optional(S.NullOr(__S(16))),
           push_protection_bypassed_at: S.optional(S.NullOr(S.String)),
-          push_protection_bypass_request_reviewer: S.optional(S.NullOr(NullableSimpleUser)),
+          push_protection_bypass_request_reviewer: S.optional(S.NullOr(__S(16))),
           push_protection_bypass_request_reviewer_comment: S.optional(S.NullOr(S.String)),
           push_protection_bypass_request_comment: S.optional(S.NullOr(S.String)),
           push_protection_bypass_request_html_url: S.optional(S.NullOr(S.String)),
-          validity: S.optional(SecretScanningAlertValidity),
+          validity: S.optional(S.String),
           publicly_leaked: S.optional(S.NullOr(S.Boolean)),
           multi_repo: S.optional(S.NullOr(S.Boolean)),
           is_base64_encoded: S.optional(S.NullOr(S.Boolean)),
-          first_location_detected: S.optional(
-            S.NullOr(NullableSecretScanningFirstDetectedLocation),
-          ),
+          first_location_detected: S.optional(S.NullOr(S.Unknown)),
           has_more_locations: S.optional(S.Boolean),
-          assigned_to: S.optional(S.NullOr(NullableSimpleUser)),
+          assigned_to: S.optional(S.NullOr(__S(16))),
           closure_request_comment: S.optional(S.NullOr(S.String)),
           closure_request_reviewer_comment: S.optional(S.NullOr(S.String)),
-          closure_request_reviewer: S.optional(S.NullOr(NullableSimpleUser)),
+          closure_request_reviewer: S.optional(S.NullOr(__S(16))),
         }),
       ).annotate({ identifier: "SecretScanningAlert" });
     case 1:
-      return S.Array(SecretScanningAlert);
+      return S.Array(__S(32));
     case 2:
-      return S.suspend(() => ListAlertsForRepoResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(33).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAlertsForRepoResponse",
       });
     case 3:
@@ -2248,26 +1867,24 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(SecretScanningLocationType),
-          details: S.optional(SecretScanningLocationDetails),
+          type: S.optional(S.String),
+          details: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "SecretScanningLocation" });
     case 5:
-      return S.Array(SecretScanningLocation);
+      return S.Array(__S(36));
     case 6:
-      return S.suspend(() =>
-        ListLocationsForAlertResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(37).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListLocationsForAlertResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          state: S.optional(ListOrgCustomPatternsRequestState.pipe(T.Query())),
-          push_protection: S.optional(ListOrgCustomPatternsRequestPushProtection.pipe(T.Query())),
-          sort: S.optional(ListOrgCustomPatternsRequestSort.pipe(T.Query())),
-          direction: S.optional(ListOrgCustomPatternsRequestDirection.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
+          push_protection: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -2281,9 +1898,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListOrgCustomPatternsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrgCustomPatternsResponse",
       });
     case 1:
@@ -2312,25 +1927,21 @@ function __c5(j: number): any {
           false_positives: S.optional(S.Number),
           false_positive_rate: S.optional(S.Number),
           bypass_rate: S.optional(S.Number),
-          default_setting: S.optional(SecretScanningPatternOverrideDefaultSetting),
-          enterprise_setting: S.optional(S.NullOr(SecretScanningPatternOverrideEnterpriseSetting)),
-          setting: S.optional(SecretScanningPatternOverrideSetting),
+          default_setting: S.optional(S.String),
+          enterprise_setting: S.optional(S.NullOr(S.String)),
+          setting: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecretScanningPatternOverride",
       });
     case 3:
-      return S.Array(SecretScanningPatternOverride);
+      return S.Array(__S(42));
     case 4:
       return S.suspend(() =>
         S.Struct({
           pattern_config_version: S.optional(S.NullOr(S.String)),
-          provider_pattern_overrides: S.optional(
-            SecretScanningPatternConfigurationProviderPatternOverridesList,
-          ),
-          custom_pattern_overrides: S.optional(
-            SecretScanningPatternConfigurationCustomPatternOverridesList,
-          ),
+          provider_pattern_overrides: S.optional(__S(43)),
+          custom_pattern_overrides: S.optional(__S(43)),
         }),
       ).annotate({
         identifier: "SecretScanningPatternConfiguration",
@@ -2340,10 +1951,10 @@ function __c5(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          state: S.optional(ListRepoCustomPatternsRequestState.pipe(T.Query())),
-          push_protection: S.optional(ListRepoCustomPatternsRequestPushProtection.pipe(T.Query())),
-          sort: S.optional(ListRepoCustomPatternsRequestSort.pipe(T.Query())),
-          direction: S.optional(ListRepoCustomPatternsRequestDirection.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
+          push_protection: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -2362,11 +1973,11 @@ function __c5(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           alert_number: S.Number.pipe(T.Label()),
-          state: S.optional(SecretScanningAlertState),
-          resolution: S.optional(S.NullOr(SecretScanningAlertResolution)),
+          state: S.optional(S.String),
+          resolution: S.optional(S.NullOr(S.String)),
           resolution_comment: S.optional(S.NullOr(S.String)),
           assignee: S.optional(S.NullOr(S.String)),
-          validity: S.optional(S.NullOr(UpdateAlertRequestValidity)),
+          validity: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2383,8 +1994,8 @@ function __c5(j: number): any {
           pattern: S.optional(S.String),
           start_delimiter: S.optional(S.String),
           end_delimiter: S.optional(S.String),
-          must_match: S.optional(UpdateOrgCustomPatternRequestMustMatchList),
-          must_not_match: S.optional(UpdateOrgCustomPatternRequestMustNotMatchList),
+          must_match: S.optional(__S(0)),
+          must_not_match: S.optional(__S(0)),
           custom_pattern_version: S.NullOr(S.String),
         }).pipe(
           T.Http({
@@ -2404,40 +2015,32 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           token_type: S.optional(S.String),
-          push_protection_setting: S.optional(
-            UpdateOrgPatternConfigsRequestProviderPatternSettingsItemPushProtectionSetting,
-          ),
+          push_protection_setting: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateOrgPatternConfigsRequestProviderPatternSettingsItem",
       });
     case 1:
-      return S.Array(UpdateOrgPatternConfigsRequestProviderPatternSettingsItem);
+      return S.Array(__S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
           token_type: S.optional(S.String),
           custom_pattern_version: S.optional(S.NullOr(S.String)),
-          push_protection_setting: S.optional(
-            UpdateOrgPatternConfigsRequestCustomPatternSettingsItemPushProtectionSetting,
-          ),
+          push_protection_setting: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateOrgPatternConfigsRequestCustomPatternSettingsItem",
       });
     case 3:
-      return S.Array(UpdateOrgPatternConfigsRequestCustomPatternSettingsItem);
+      return S.Array(__S(50));
     case 4:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
           pattern_config_version: S.optional(S.NullOr(S.String)),
-          provider_pattern_settings: S.optional(
-            UpdateOrgPatternConfigsRequestProviderPatternSettingsList,
-          ),
-          custom_pattern_settings: S.optional(
-            UpdateOrgPatternConfigsRequestCustomPatternSettingsList,
-          ),
+          provider_pattern_settings: S.optional(__S(49)),
+          custom_pattern_settings: S.optional(__S(51)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2465,8 +2068,8 @@ function __c6(j: number): any {
           pattern: S.optional(S.String),
           start_delimiter: S.optional(S.String),
           end_delimiter: S.optional(S.String),
-          must_match: S.optional(UpdateRepoCustomPatternRequestMustMatchList),
-          must_not_match: S.optional(UpdateRepoCustomPatternRequestMustNotMatchList),
+          must_match: S.optional(__S(0)),
+          must_not_match: S.optional(__S(0)),
           custom_pattern_version: S.NullOr(S.String),
         }).pipe(
           T.Http({
@@ -2478,5 +2081,28 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateRepoCustomPatternRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
   }
 }

@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -47,30 +49,15 @@ export class WidgetNotFound
   ) {}
 
 export type WidgetsCreateRequestDirection = "asc" | "desc";
-const WidgetsCreateRequestDirection = S.String;
-
 export type WidgetsCreateRequestOrder = "id" | "sitekey" | "name" | "created_on" | "modified_on";
-const WidgetsCreateRequestOrder = S.String;
-
 export type WidgetsCreateRequestDomainsList = Array<string>;
-const WidgetsCreateRequestDomainsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<WidgetsCreateRequestDomainsList>;
-
 export type WidgetsCreateRequestMode = "non-interactive" | "invisible" | "managed";
-const WidgetsCreateRequestMode = S.String;
-
 export type WidgetsCreateRequestClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
   | "interactive";
-const WidgetsCreateRequestClearanceLevel = S.String;
-
 export type WidgetsCreateRequestRegion = "world" | "china";
-const WidgetsCreateRequestRegion = S.String;
-
 export interface CreateWidgetRequest {
   /** Identifier */
   accountId: string;
@@ -100,41 +87,26 @@ export interface CreateWidgetRequest {
   /** Region where this widget can be used. This cannot be changed after creation. */
   region?: WidgetsCreateRequestRegion | (string & {});
 }
-const CreateWidgetRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateWidgetRequest>;
-
 export type WidgetsCreateResponseClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
   | "interactive";
-const WidgetsCreateResponseClearanceLevel = S.String;
-
 export type WidgetsCreateResponseDomainsList = Array<string>;
-const WidgetsCreateResponseDomainsList =
-  WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsCreateResponseDomainsList>;
-
 export type WidgetsCreateResponseMode = "non-interactive" | "invisible" | "managed";
-const WidgetsCreateResponseMode = S.String;
-
 export type WidgetsCreateResponseRegion = "world" | "china";
-const WidgetsCreateResponseRegion = S.String;
-
 export type WidgetsCreateResponseDeployedVia =
   | "wrangler"
   | "dashboard"
   | "spin"
   | "api"
   | "unknown";
-const WidgetsCreateResponseDeployedVia = S.String;
-
 export type WidgetsCreateResponseLastModifiedVia =
   | "wrangler"
   | "dashboard"
   | "spin"
   | "api"
   | "unknown";
-const WidgetsCreateResponseLastModifiedVia = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
@@ -165,49 +137,32 @@ export interface CreateWidgetResponse {
   /** Origin of the most recent mutation (create, update, delete, or secret rotation). Server-derived; not client-settable. Omitted for widgets last mutated before this field existed. */
   lastModifiedVia?: WidgetsCreateResponseLastModifiedVia | null;
 }
-const CreateWidgetResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateWidgetResponse>;
-
 export interface DeleteWidgetRequest {
   /** Identifier */
   accountId: string;
   /** Unique identifier for a Turnstile widget. */
   sitekey: string;
 }
-const DeleteWidgetRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteWidgetRequest>;
-
 export type WidgetsDeleteResponseClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
   | "interactive";
-const WidgetsDeleteResponseClearanceLevel = S.String;
-
 export type WidgetsDeleteResponseDomainsList = Array<string>;
-const WidgetsDeleteResponseDomainsList =
-  WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsDeleteResponseDomainsList>;
-
 export type WidgetsDeleteResponseMode = "non-interactive" | "invisible" | "managed";
-const WidgetsDeleteResponseMode = S.String;
-
 export type WidgetsDeleteResponseRegion = "world" | "china";
-const WidgetsDeleteResponseRegion = S.String;
-
 export type WidgetsDeleteResponseDeployedVia =
   | "wrangler"
   | "dashboard"
   | "spin"
   | "api"
   | "unknown";
-const WidgetsDeleteResponseDeployedVia = S.String;
-
 export type WidgetsDeleteResponseLastModifiedVia =
   | "wrangler"
   | "dashboard"
   | "spin"
   | "api"
   | "unknown";
-const WidgetsDeleteResponseLastModifiedVia = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
@@ -238,44 +193,27 @@ export interface DeleteWidgetResponse {
   /** Origin of the most recent mutation (create, update, delete, or secret rotation). Server-derived; not client-settable. Omitted for widgets last mutated before this field existed. */
   lastModifiedVia?: WidgetsDeleteResponseLastModifiedVia | null;
 }
-const DeleteWidgetResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DeleteWidgetResponse>;
-
 export interface GetWidgetRequest {
   /** Identifier */
   accountId: string;
   /** Unique identifier for a Turnstile widget. */
   sitekey: string;
 }
-const GetWidgetRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetWidgetRequest>;
-
 export type WidgetsGetResponseClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
   | "interactive";
-const WidgetsGetResponseClearanceLevel = S.String;
-
 export type WidgetsGetResponseDomainsList = Array<string>;
-const WidgetsGetResponseDomainsList =
-  WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsGetResponseDomainsList>;
-
 export type WidgetsGetResponseMode = "non-interactive" | "invisible" | "managed";
-const WidgetsGetResponseMode = S.String;
-
 export type WidgetsGetResponseRegion = "world" | "china";
-const WidgetsGetResponseRegion = S.String;
-
 export type WidgetsGetResponseDeployedVia = "wrangler" | "dashboard" | "spin" | "api" | "unknown";
-const WidgetsGetResponseDeployedVia = S.String;
-
 export type WidgetsGetResponseLastModifiedVia =
   | "wrangler"
   | "dashboard"
   | "spin"
   | "api"
   | "unknown";
-const WidgetsGetResponseLastModifiedVia = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
@@ -306,14 +244,8 @@ export interface GetWidgetResponse {
   /** Origin of the most recent mutation (create, update, delete, or secret rotation). Server-derived; not client-settable. Omitted for widgets last mutated before this field existed. */
   lastModifiedVia?: WidgetsGetResponseLastModifiedVia | null;
 }
-const GetWidgetResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetWidgetResponse>;
-
 export type WidgetsListRequestDirection = "asc" | "desc";
-const WidgetsListRequestDirection = S.String;
-
 export type WidgetsListRequestOrder = "id" | "sitekey" | "name" | "created_on" | "modified_on";
-const WidgetsListRequestOrder = S.String;
-
 export interface ListWidgetsRequest {
   /** Identifier */
   accountId: string;
@@ -328,41 +260,26 @@ export interface ListWidgetsRequest {
   /** Number of items per page. */
   perPage?: number;
 }
-const ListWidgetsRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ListWidgetsRequest>;
-
 export type WidgetsListResultItemClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
   | "interactive";
-const WidgetsListResultItemClearanceLevel = S.String;
-
 export type WidgetsListResultItemDomainsList = Array<string>;
-const WidgetsListResultItemDomainsList =
-  WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsListResultItemDomainsList>;
-
 export type WidgetsListResultItemMode = "non-interactive" | "invisible" | "managed";
-const WidgetsListResultItemMode = S.String;
-
 export type WidgetsListResultItemRegion = "world" | "china";
-const WidgetsListResultItemRegion = S.String;
-
 export type WidgetsListResultItemDeployedVia =
   | "wrangler"
   | "dashboard"
   | "spin"
   | "api"
   | "unknown";
-const WidgetsListResultItemDeployedVia = S.String;
-
 export type WidgetsListResultItemLastModifiedVia =
   | "wrangler"
   | "dashboard"
   | "spin"
   | "api"
   | "unknown";
-const WidgetsListResultItemLastModifiedVia = S.String;
-
 export interface WidgetsListResultItem {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
   botFightMode: boolean;
@@ -390,25 +307,13 @@ export interface WidgetsListResultItem {
   /** Origin of the most recent mutation (create, update, delete, or secret rotation). Server-derived; not client-settable. Omitted for widgets last mutated before this field existed. */
   lastModifiedVia?: WidgetsListResultItemLastModifiedVia | null;
 }
-const WidgetsListResultItem = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<WidgetsListResultItem>;
-
 export type WidgetsListResultList = Array<WidgetsListResultItem>;
-const WidgetsListResultList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<WidgetsListResultList>;
-
 export interface ListWidgetsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: WidgetsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListWidgetsResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ListWidgetsResponse>;
-
 export interface RotateSecretWidgetRequest {
   /** Identifier */
   accountId: string;
@@ -417,44 +322,26 @@ export interface RotateSecretWidgetRequest {
   /** If `invalidate_immediately` is set to `false`, the previous secret will remain valid for two hours. Otherwise, the secret is immediately invalidated, and requests using it will be rejected. */
   invalidateImmediately?: boolean;
 }
-const RotateSecretWidgetRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<RotateSecretWidgetRequest>;
-
 export type WidgetsRotateSecretResponseClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
   | "interactive";
-const WidgetsRotateSecretResponseClearanceLevel = S.String;
-
 export type WidgetsRotateSecretResponseDomainsList = Array<string>;
-const WidgetsRotateSecretResponseDomainsList =
-  WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsRotateSecretResponseDomainsList>;
-
 export type WidgetsRotateSecretResponseMode = "non-interactive" | "invisible" | "managed";
-const WidgetsRotateSecretResponseMode = S.String;
-
 export type WidgetsRotateSecretResponseRegion = "world" | "china";
-const WidgetsRotateSecretResponseRegion = S.String;
-
 export type WidgetsRotateSecretResponseDeployedVia =
   | "wrangler"
   | "dashboard"
   | "spin"
   | "api"
   | "unknown";
-const WidgetsRotateSecretResponseDeployedVia = S.String;
-
 export type WidgetsRotateSecretResponseLastModifiedVia =
   | "wrangler"
   | "dashboard"
   | "spin"
   | "api"
   | "unknown";
-const WidgetsRotateSecretResponseLastModifiedVia = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RotateSecretWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
@@ -485,28 +372,14 @@ export interface RotateSecretWidgetResponse {
   /** Origin of the most recent mutation (create, update, delete, or secret rotation). Server-derived; not client-settable. Omitted for widgets last mutated before this field existed. */
   lastModifiedVia?: WidgetsRotateSecretResponseLastModifiedVia | null;
 }
-const RotateSecretWidgetResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<RotateSecretWidgetResponse>;
-
 export type WidgetsUpdateRequestDomainsList = Array<string>;
-const WidgetsUpdateRequestDomainsList =
-  WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsUpdateRequestDomainsList>;
-
 export type WidgetsUpdateRequestMode = "non-interactive" | "invisible" | "managed";
-const WidgetsUpdateRequestMode = S.String;
-
 export type WidgetsUpdateRequestClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
   | "interactive";
-const WidgetsUpdateRequestClearanceLevel = S.String;
-
 export type WidgetsUpdateRequestRegion = "world" | "china";
-const WidgetsUpdateRequestRegion = S.String;
-
 export interface UpdateWidgetRequest {
   /** Identifier */
   accountId: string;
@@ -528,41 +401,26 @@ export interface UpdateWidgetRequest {
   /** Region where this widget can be used. This cannot be changed after creation. */
   region?: WidgetsUpdateRequestRegion | (string & {});
 }
-const UpdateWidgetRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<UpdateWidgetRequest>;
-
 export type WidgetsUpdateResponseClearanceLevel =
   | "no_clearance"
   | "jschallenge"
   | "managed"
   | "interactive";
-const WidgetsUpdateResponseClearanceLevel = S.String;
-
 export type WidgetsUpdateResponseDomainsList = Array<string>;
-const WidgetsUpdateResponseDomainsList =
-  WidgetsCreateRequestDomainsList as any as S.Schema<WidgetsUpdateResponseDomainsList>;
-
 export type WidgetsUpdateResponseMode = "non-interactive" | "invisible" | "managed";
-const WidgetsUpdateResponseMode = S.String;
-
 export type WidgetsUpdateResponseRegion = "world" | "china";
-const WidgetsUpdateResponseRegion = S.String;
-
 export type WidgetsUpdateResponseDeployedVia =
   | "wrangler"
   | "dashboard"
   | "spin"
   | "api"
   | "unknown";
-const WidgetsUpdateResponseDeployedVia = S.String;
-
 export type WidgetsUpdateResponseLastModifiedVia =
   | "wrangler"
   | "dashboard"
   | "spin"
   | "api"
   | "unknown";
-const WidgetsUpdateResponseLastModifiedVia = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally expensive challenges in response to malicious bots (ENT only). */
@@ -593,8 +451,6 @@ export interface UpdateWidgetResponse {
   /** Origin of the most recent mutation (create, update, delete, or secret rotation). Server-derived; not client-settable. Omitted for widgets last mutated before this field existed. */
   lastModifiedVia?: WidgetsUpdateResponseLastModifiedVia | null;
 }
-const UpdateWidgetResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<UpdateWidgetResponse>;
-
 export type CreateWidgetError = CloudflareOpError;
 /** Creates a Turnstile widget for an account. */
 export const createWidget: API.OperationMethod<
@@ -603,8 +459,8 @@ export const createWidget: API.OperationMethod<
   CreateWidgetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWidgetRequest,
-  output: CreateWidgetResponse,
+  input: __S(1) as any as S.Schema<CreateWidgetRequest>,
+  output: __S(2) as any as S.Schema<CreateWidgetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -618,8 +474,8 @@ export const deleteWidget: API.OperationMethod<
   DeleteWidgetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWidgetRequest,
-  output: DeleteWidgetResponse,
+  input: __S(3) as any as S.Schema<DeleteWidgetRequest>,
+  output: __S(4) as any as S.Schema<DeleteWidgetResponse>,
   errors: [WidgetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -633,8 +489,8 @@ export const getWidget: API.OperationMethod<
   GetWidgetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWidgetRequest,
-  output: GetWidgetResponse,
+  input: __S(5) as any as S.Schema<GetWidgetRequest>,
+  output: __S(6) as any as S.Schema<GetWidgetResponse>,
   errors: [WidgetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -650,8 +506,8 @@ export const listWidgets: API.PaginatedOperationMethod<
   WidgetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListWidgetsRequest,
-    output: ListWidgetsResponse,
+    input: __S(7) as any as S.Schema<ListWidgetsRequest>,
+    output: __S(10) as any as S.Schema<ListWidgetsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -674,8 +530,8 @@ export const rotateSecretWidget: API.OperationMethod<
   RotateSecretWidgetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateSecretWidgetRequest,
-  output: RotateSecretWidgetResponse,
+  input: __S(11) as any as S.Schema<RotateSecretWidgetRequest>,
+  output: __S(12) as any as S.Schema<RotateSecretWidgetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -689,8 +545,8 @@ export const updateWidget: API.OperationMethod<
   UpdateWidgetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWidgetRequest,
-  output: UpdateWidgetResponse,
+  input: __S(13) as any as S.Schema<UpdateWidgetRequest>,
+  output: __S(14) as any as S.Schema<UpdateWidgetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -705,21 +561,19 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          direction: S.optional(WidgetsCreateRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(WidgetsCreateRequestOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          domains: WidgetsCreateRequestDomainsList,
-          mode: WidgetsCreateRequestMode,
+          domains: __S(0),
+          mode: S.String,
           name: S.String,
           botFightMode: S.optional(S.Boolean.pipe(T.Body("bot_fight_mode"))),
-          clearanceLevel: S.optional(
-            WidgetsCreateRequestClearanceLevel.pipe(T.Body("clearance_level")),
-          ),
+          clearanceLevel: S.optional(S.String.pipe(T.Body("clearance_level"))),
           ephemeralId: S.optional(S.Boolean.pipe(T.Body("ephemeral_id"))),
           offlabel: S.optional(S.Boolean),
-          region: S.optional(WidgetsCreateRequestRegion),
+          region: S.optional(S.String),
         })
           .pipe(
             T.Http({ method: "POST", uri: "/accounts/{account_id}/challenges/widgets", code: 200 }),
@@ -730,23 +584,19 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
-          clearanceLevel: WidgetsCreateResponseClearanceLevel.pipe(T.Body("clearance_level")),
+          clearanceLevel: S.String.pipe(T.Body("clearance_level")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          domains: WidgetsCreateResponseDomainsList,
+          domains: __S(0),
           ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
-          mode: WidgetsCreateResponseMode,
+          mode: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
           offlabel: S.Boolean,
-          region: WidgetsCreateResponseRegion,
+          region: S.String,
           secret: S.String,
           sitekey: S.String,
-          deployedVia: S.optional(
-            S.NullOr(WidgetsCreateResponseDeployedVia).pipe(T.Body("deployed_via")),
-          ),
-          lastModifiedVia: S.optional(
-            S.NullOr(WidgetsCreateResponseLastModifiedVia).pipe(T.Body("last_modified_via")),
-          ),
+          deployedVia: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_via"))),
+          lastModifiedVia: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified_via"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateWidgetResponse" });
     case 3:
@@ -768,23 +618,19 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
-          clearanceLevel: WidgetsDeleteResponseClearanceLevel.pipe(T.Body("clearance_level")),
+          clearanceLevel: S.String.pipe(T.Body("clearance_level")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          domains: WidgetsDeleteResponseDomainsList,
+          domains: __S(0),
           ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
-          mode: WidgetsDeleteResponseMode,
+          mode: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
           offlabel: S.Boolean,
-          region: WidgetsDeleteResponseRegion,
+          region: S.String,
           secret: S.String,
           sitekey: S.String,
-          deployedVia: S.optional(
-            S.NullOr(WidgetsDeleteResponseDeployedVia).pipe(T.Body("deployed_via")),
-          ),
-          lastModifiedVia: S.optional(
-            S.NullOr(WidgetsDeleteResponseLastModifiedVia).pipe(T.Body("last_modified_via")),
-          ),
+          deployedVia: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_via"))),
+          lastModifiedVia: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified_via"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteWidgetResponse" });
     case 5:
@@ -806,32 +652,28 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
-          clearanceLevel: WidgetsGetResponseClearanceLevel.pipe(T.Body("clearance_level")),
+          clearanceLevel: S.String.pipe(T.Body("clearance_level")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          domains: WidgetsGetResponseDomainsList,
+          domains: __S(0),
           ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
-          mode: WidgetsGetResponseMode,
+          mode: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
           offlabel: S.Boolean,
-          region: WidgetsGetResponseRegion,
+          region: S.String,
           secret: S.String,
           sitekey: S.String,
-          deployedVia: S.optional(
-            S.NullOr(WidgetsGetResponseDeployedVia).pipe(T.Body("deployed_via")),
-          ),
-          lastModifiedVia: S.optional(
-            S.NullOr(WidgetsGetResponseLastModifiedVia).pipe(T.Body("last_modified_via")),
-          ),
+          deployedVia: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_via"))),
+          lastModifiedVia: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified_via"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetWidgetResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          direction: S.optional(WidgetsListRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(WidgetsListRequestOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
         })
@@ -848,30 +690,26 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
-          clearanceLevel: WidgetsListResultItemClearanceLevel.pipe(T.Body("clearance_level")),
+          clearanceLevel: S.String.pipe(T.Body("clearance_level")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          domains: WidgetsListResultItemDomainsList,
+          domains: __S(0),
           ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
-          mode: WidgetsListResultItemMode,
+          mode: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
           offlabel: S.Boolean,
-          region: WidgetsListResultItemRegion,
+          region: S.String,
           sitekey: S.String,
-          deployedVia: S.optional(
-            S.NullOr(WidgetsListResultItemDeployedVia).pipe(T.Body("deployed_via")),
-          ),
-          lastModifiedVia: S.optional(
-            S.NullOr(WidgetsListResultItemLastModifiedVia).pipe(T.Body("last_modified_via")),
-          ),
+          deployedVia: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_via"))),
+          lastModifiedVia: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified_via"))),
         }),
       ).annotate({ identifier: "WidgetsListResultItem" });
     case 1:
-      return S.Array(WidgetsListResultItem);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: WidgetsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(9).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListWidgetsResponse" });
@@ -897,23 +735,19 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
-          clearanceLevel: WidgetsRotateSecretResponseClearanceLevel.pipe(T.Body("clearance_level")),
+          clearanceLevel: S.String.pipe(T.Body("clearance_level")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          domains: WidgetsRotateSecretResponseDomainsList,
+          domains: __S(0),
           ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
-          mode: WidgetsRotateSecretResponseMode,
+          mode: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
           offlabel: S.Boolean,
-          region: WidgetsRotateSecretResponseRegion,
+          region: S.String,
           secret: S.String,
           sitekey: S.String,
-          deployedVia: S.optional(
-            S.NullOr(WidgetsRotateSecretResponseDeployedVia).pipe(T.Body("deployed_via")),
-          ),
-          lastModifiedVia: S.optional(
-            S.NullOr(WidgetsRotateSecretResponseLastModifiedVia).pipe(T.Body("last_modified_via")),
-          ),
+          deployedVia: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_via"))),
+          lastModifiedVia: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified_via"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "RotateSecretWidgetResponse",
@@ -923,16 +757,14 @@ function __c1(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           sitekey: S.String.pipe(T.Label()),
-          domains: WidgetsUpdateRequestDomainsList,
-          mode: WidgetsUpdateRequestMode,
+          domains: __S(0),
+          mode: S.String,
           name: S.String,
           botFightMode: S.optional(S.Boolean.pipe(T.Body("bot_fight_mode"))),
-          clearanceLevel: S.optional(
-            WidgetsUpdateRequestClearanceLevel.pipe(T.Body("clearance_level")),
-          ),
+          clearanceLevel: S.optional(S.String.pipe(T.Body("clearance_level"))),
           ephemeralId: S.optional(S.Boolean.pipe(T.Body("ephemeral_id"))),
           offlabel: S.optional(S.Boolean),
-          region: S.optional(WidgetsUpdateRequestRegion),
+          region: S.optional(S.String),
         })
           .pipe(
             T.Http({
@@ -947,24 +779,33 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
-          clearanceLevel: WidgetsUpdateResponseClearanceLevel.pipe(T.Body("clearance_level")),
+          clearanceLevel: S.String.pipe(T.Body("clearance_level")),
           createdOn: S.String.pipe(T.Body("created_on")),
-          domains: WidgetsUpdateResponseDomainsList,
+          domains: __S(0),
           ephemeralId: S.Boolean.pipe(T.Body("ephemeral_id")),
-          mode: WidgetsUpdateResponseMode,
+          mode: S.String,
           modifiedOn: S.String.pipe(T.Body("modified_on")),
           name: S.String,
           offlabel: S.Boolean,
-          region: WidgetsUpdateResponseRegion,
+          region: S.String,
           secret: S.String,
           sitekey: S.String,
-          deployedVia: S.optional(
-            S.NullOr(WidgetsUpdateResponseDeployedVia).pipe(T.Body("deployed_via")),
-          ),
-          lastModifiedVia: S.optional(
-            S.NullOr(WidgetsUpdateResponseLastModifiedVia).pipe(T.Body("last_modified_via")),
-          ),
+          deployedVia: S.optional(S.NullOr(S.String).pipe(T.Body("deployed_via"))),
+          lastModifiedVia: S.optional(S.NullOr(S.String).pipe(T.Body("last_modified_via"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateWidgetResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -37,21 +39,9 @@ export class NotFound
   ) {}
 
 export type CreateEventDefinitionRequestTagsList = Array<unknown>;
-const CreateEventDefinitionRequestTagsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateEventDefinitionRequestTagsList>;
-
 /** * `allow` - Allow * `reject` - Reject */
 export type SchemaEnforcementModeEnum = "allow" | "reject";
-const SchemaEnforcementModeEnum = S.String;
-
 export type CreateEventDefinitionRequestDefaultColumnsList = Array<string>;
-const CreateEventDefinitionRequestDefaultColumnsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateEventDefinitionRequestDefaultColumnsList>;
-
 export interface CreateEventDefinitionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -67,21 +57,8 @@ export interface CreateEventDefinitionRequest {
   post_to_slack?: boolean;
   default_columns?: CreateEventDefinitionRequestDefaultColumnsList;
 }
-const CreateEventDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateEventDefinitionRequest>;
-
 export type EnterpriseEventDefinitionTagsList = Array<unknown>;
-const EnterpriseEventDefinitionTagsList =
-  CreateEventDefinitionRequestTagsList as any as S.Schema<EnterpriseEventDefinitionTagsList>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -95,8 +72,6 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -108,16 +83,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<UserBasic>;
-
 export type EnterpriseEventDefinitionDefaultColumnsList = Array<string>;
-const EnterpriseEventDefinitionDefaultColumnsList =
-  CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<EnterpriseEventDefinitionDefaultColumnsList>;
-
 export type EnterpriseEventDefinitionMediaPreviewUrlsList = Array<string>;
-const EnterpriseEventDefinitionMediaPreviewUrlsList =
-  CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<EnterpriseEventDefinitionMediaPreviewUrlsList>;
-
 /** Serializer mixin that handles tags for objects. */
 export interface EnterpriseEventDefinition {
   id?: string;
@@ -146,16 +113,8 @@ export interface EnterpriseEventDefinition {
   default_columns?: EnterpriseEventDefinitionDefaultColumnsList;
   media_preview_urls?: EnterpriseEventDefinitionMediaPreviewUrlsList;
 }
-const EnterpriseEventDefinition = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<EnterpriseEventDefinition>;
-
 /** List of event definition UUIDs to update. */
 export type EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList = Array<string>;
-const EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList =
-  CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList>;
-
 export interface EventDefinitionsBulkUpdateVerifiedCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -164,102 +123,49 @@ export interface EventDefinitionsBulkUpdateVerifiedCreateRequest {
   /** Target verified state to apply to every matched event. `true` marks the events as verified (and unhides them, since an event cannot be both hidden and verified); `false` unverifies them. */
   verified: boolean;
 }
-const EventDefinitionsBulkUpdateVerifiedCreateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<EventDefinitionsBulkUpdateVerifiedCreateRequest>;
-
 export interface EventDefinitionBulkUpdateVerifiedItem {
   /** UUID of the event definition whose verified state changed. */
   id: string;
   /** The event's verified state after the update. */
   verified: boolean;
 }
-const EventDefinitionBulkUpdateVerifiedItem = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<EventDefinitionBulkUpdateVerifiedItem>;
-
 /** Events whose verified state was changed. Events already in the target state are omitted. */
 export type EventDefinitionBulkUpdateVerifiedResponseUpdatedList =
   Array<EventDefinitionBulkUpdateVerifiedItem>;
-const EventDefinitionBulkUpdateVerifiedResponseUpdatedList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<EventDefinitionBulkUpdateVerifiedResponseUpdatedList>;
-
 export interface BulkUpdateTagsUUIDError {
   /** UUID of the object that was skipped. */
   id: string;
   /** Why the object was skipped, e.g. 'Not found or no edit access'. */
   reason: string;
 }
-const BulkUpdateTagsUUIDError = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BulkUpdateTagsUUIDError>;
-
 /** Events that were skipped (e.g. not found in this project), with a reason each. */
 export type EventDefinitionBulkUpdateVerifiedResponseSkippedList = Array<BulkUpdateTagsUUIDError>;
-const EventDefinitionBulkUpdateVerifiedResponseSkippedList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<EventDefinitionBulkUpdateVerifiedResponseSkippedList>;
-
 export interface EventDefinitionBulkUpdateVerifiedResponse {
   /** Events whose verified state was changed. Events already in the target state are omitted. */
   updated: EventDefinitionBulkUpdateVerifiedResponseUpdatedList;
   /** Events that were skipped (e.g. not found in this project), with a reason each. */
   skipped: EventDefinitionBulkUpdateVerifiedResponseSkippedList;
 }
-const EventDefinitionBulkUpdateVerifiedResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<EventDefinitionBulkUpdateVerifiedResponse>;
-
 export interface EventDefinitionsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this event definition. */
   id: string;
 }
-const EventDefinitionsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<EventDefinitionsDestroyRequest>;
-
 export interface EventDefinitionsDestroyResponse {}
-const EventDefinitionsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<EventDefinitionsDestroyResponse>;
-
 export interface GetEventDefinitionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this event definition. */
   id: string;
 }
-const GetEventDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetEventDefinitionRequest>;
-
 export interface GetEventDefinitionsByNameRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The exact event name to look up */
   name: string;
 }
-const GetEventDefinitionsByNameRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetEventDefinitionsByNameRequest>;
-
 export type EventDefinitionRecordTagsList = Array<unknown>;
-const EventDefinitionRecordTagsList =
-  CreateEventDefinitionRequestTagsList as any as S.Schema<EventDefinitionRecordTagsList>;
-
 /** Serializer mixin that handles tags for objects. */
 export interface EventDefinitionRecord {
   id?: string;
@@ -278,90 +184,36 @@ export interface EventDefinitionRecord {
   created_by?: UserBasic | null;
   post_to_slack?: boolean;
 }
-const EventDefinitionRecord = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<EventDefinitionRecord>;
-
 export interface GetEventDefinitionsGolangRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetEventDefinitionsGolangRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetEventDefinitionsGolangRequest>;
-
 export interface GetEventDefinitionsGolangResponse {}
-const GetEventDefinitionsGolangResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetEventDefinitionsGolangResponse>;
-
 export type GetEventDefinitionsPrimaryPropertyRequestNamesList = Array<string>;
-const GetEventDefinitionsPrimaryPropertyRequestNamesList =
-  CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<GetEventDefinitionsPrimaryPropertyRequestNamesList>;
-
 export interface GetEventDefinitionsPrimaryPropertyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Optional: restrict the response to these event names. Repeat the parameter for multiple names (e.g. `?names=a&names=b`). When omitted, returns every team-configured primary property. */
   names?: GetEventDefinitionsPrimaryPropertyRequestNamesList;
 }
-const GetEventDefinitionsPrimaryPropertyRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetEventDefinitionsPrimaryPropertyRequest>;
-
 /** Mapping from event name to the team-configured primary property for that event. Names without a configured primary property are omitted; callers should fall back to the core taxonomy defaults for those. */
 export type PrimaryPropertiesResponsePrimaryPropertiesMap = { [key: string]: string | undefined };
-const PrimaryPropertiesResponsePrimaryPropertiesMap = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<PrimaryPropertiesResponsePrimaryPropertiesMap>;
-
 export interface PrimaryPropertiesResponse {
   /** Mapping from event name to the team-configured primary property for that event. Names without a configured primary property are omitted; callers should fall back to the core taxonomy defaults for those. */
   primary_properties: PrimaryPropertiesResponsePrimaryPropertiesMap;
 }
-const PrimaryPropertiesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<PrimaryPropertiesResponse>;
-
 export interface GetEventDefinitionsPythonRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetEventDefinitionsPythonRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetEventDefinitionsPythonRequest>;
-
 export interface GetEventDefinitionsPythonResponse {}
-const GetEventDefinitionsPythonResponse =
-  GetEventDefinitionsGolangResponse as any as S.Schema<GetEventDefinitionsPythonResponse>;
-
 export interface GetEventDefinitionsTypescriptRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetEventDefinitionsTypescriptRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetEventDefinitionsTypescriptRequest>;
-
 export interface GetEventDefinitionsTypescriptResponse {}
-const GetEventDefinitionsTypescriptResponse =
-  GetEventDefinitionsGolangResponse as any as S.Schema<GetEventDefinitionsTypescriptResponse>;
-
 export type ListEventDefinitionsRequestEventType = "event" | "event_custom" | "event_posthog";
-const ListEventDefinitionsRequestEventType = S.String;
-
 export type ListEventDefinitionsRequestNamesList = Array<string>;
-const ListEventDefinitionsRequestNamesList =
-  CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<ListEventDefinitionsRequestNamesList>;
-
 export type ListEventDefinitionsRequestOrderingItem =
   | "-created_at"
   | "-created_at::date"
@@ -373,16 +225,9 @@ export type ListEventDefinitionsRequestOrderingItem =
   | "last_seen_at"
   | "last_seen_at::date"
   | "name";
-const ListEventDefinitionsRequestOrderingItem = S.String;
-
 export type ListEventDefinitionsRequestOrderingList = Array<
   ListEventDefinitionsRequestOrderingItem | (string & {})
 >;
-const ListEventDefinitionsRequestOrderingList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListEventDefinitionsRequestOrderingList>;
-
 export interface ListEventDefinitionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -409,17 +254,7 @@ export interface ListEventDefinitionsRequest {
   /** When true, keep only verified events and core PostHog events. When false, keep the rest (Enterprise only). */
   verified?: boolean;
 }
-const ListEventDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListEventDefinitionsRequest>;
-
 export type PaginatedEnterpriseEventDefinitionListResultsList = Array<EnterpriseEventDefinition>;
-const PaginatedEnterpriseEventDefinitionListResultsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<PaginatedEnterpriseEventDefinitionListResultsList>;
-
 export interface PaginatedEnterpriseEventDefinitionList {
   count?: number;
   next?: string | null;
@@ -428,19 +263,8 @@ export interface PaginatedEnterpriseEventDefinitionList {
   /** True when `count` stopped at a cap, so it is a lower bound and `next` keeps paging past it. */
   count_is_capped?: boolean;
 }
-const PaginatedEnterpriseEventDefinitionList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<PaginatedEnterpriseEventDefinitionList>;
-
 export type UpdateEventDefinitionRequestTagsList = Array<unknown>;
-const UpdateEventDefinitionRequestTagsList =
-  CreateEventDefinitionRequestTagsList as any as S.Schema<UpdateEventDefinitionRequestTagsList>;
-
 export type UpdateEventDefinitionRequestDefaultColumnsList = Array<string>;
-const UpdateEventDefinitionRequestDefaultColumnsList =
-  CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<UpdateEventDefinitionRequestDefaultColumnsList>;
-
 export interface UpdateEventDefinitionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -458,19 +282,8 @@ export interface UpdateEventDefinitionRequest {
   post_to_slack?: boolean;
   default_columns?: UpdateEventDefinitionRequestDefaultColumnsList;
 }
-const UpdateEventDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<UpdateEventDefinitionRequest>;
-
 export type UpdateEventDefinitionsPartialRequestTagsList = Array<unknown>;
-const UpdateEventDefinitionsPartialRequestTagsList =
-  CreateEventDefinitionRequestTagsList as any as S.Schema<UpdateEventDefinitionsPartialRequestTagsList>;
-
 export type UpdateEventDefinitionsPartialRequestDefaultColumnsList = Array<string>;
-const UpdateEventDefinitionsPartialRequestDefaultColumnsList =
-  CreateEventDefinitionRequestDefaultColumnsList as any as S.Schema<UpdateEventDefinitionsPartialRequestDefaultColumnsList>;
-
 export interface UpdateEventDefinitionsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -488,11 +301,6 @@ export interface UpdateEventDefinitionsPartialRequest {
   post_to_slack?: boolean;
   default_columns?: UpdateEventDefinitionsPartialRequestDefaultColumnsList;
 }
-const UpdateEventDefinitionsPartialRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<UpdateEventDefinitionsPartialRequest>;
-
 export type CreateEventDefinitionError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createEventDefinition: API.OperationMethod<
   CreateEventDefinitionRequest,
@@ -500,8 +308,8 @@ export const createEventDefinition: API.OperationMethod<
   CreateEventDefinitionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEventDefinitionRequest,
-  output: EnterpriseEventDefinition,
+  input: __S(2) as any as S.Schema<CreateEventDefinitionRequest>,
+  output: __S(5) as any as S.Schema<EnterpriseEventDefinition>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -515,8 +323,8 @@ export const eventDefinitionsBulkUpdateVerifiedCreate: API.OperationMethod<
   EventDefinitionsBulkUpdateVerifiedCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventDefinitionsBulkUpdateVerifiedCreateRequest,
-  output: EventDefinitionBulkUpdateVerifiedResponse,
+  input: __S(6) as any as S.Schema<EventDefinitionsBulkUpdateVerifiedCreateRequest>,
+  output: __S(11) as any as S.Schema<EventDefinitionBulkUpdateVerifiedResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -529,8 +337,8 @@ export const eventDefinitionsDestroy: API.OperationMethod<
   EventDefinitionsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventDefinitionsDestroyRequest,
-  output: EventDefinitionsDestroyResponse,
+  input: __S(12) as any as S.Schema<EventDefinitionsDestroyRequest>,
+  output: __S(13) as any as S.Schema<EventDefinitionsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -543,8 +351,8 @@ export const getEventDefinition: API.OperationMethod<
   GetEventDefinitionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventDefinitionRequest,
-  output: EnterpriseEventDefinition,
+  input: __S(14) as any as S.Schema<GetEventDefinitionRequest>,
+  output: __S(5) as any as S.Schema<EnterpriseEventDefinition>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -558,8 +366,8 @@ export const getEventDefinitionsByName: API.OperationMethod<
   GetEventDefinitionsByNameError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventDefinitionsByNameRequest,
-  output: EventDefinitionRecord,
+  input: __S(15) as any as S.Schema<GetEventDefinitionsByNameRequest>,
+  output: __S(16) as any as S.Schema<EventDefinitionRecord>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -572,8 +380,8 @@ export const getEventDefinitionsGolang: API.OperationMethod<
   GetEventDefinitionsGolangError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventDefinitionsGolangRequest,
-  output: GetEventDefinitionsGolangResponse,
+  input: __S(17) as any as S.Schema<GetEventDefinitionsGolangRequest>,
+  output: __S(18) as any as S.Schema<GetEventDefinitionsGolangResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -587,8 +395,8 @@ export const getEventDefinitionsPrimaryProperty: API.OperationMethod<
   GetEventDefinitionsPrimaryPropertyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventDefinitionsPrimaryPropertyRequest,
-  output: PrimaryPropertiesResponse,
+  input: __S(19) as any as S.Schema<GetEventDefinitionsPrimaryPropertyRequest>,
+  output: __S(21) as any as S.Schema<PrimaryPropertiesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -601,8 +409,8 @@ export const getEventDefinitionsPython: API.OperationMethod<
   GetEventDefinitionsPythonError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventDefinitionsPythonRequest,
-  output: GetEventDefinitionsPythonResponse,
+  input: __S(22) as any as S.Schema<GetEventDefinitionsPythonRequest>,
+  output: __S(18) as any as S.Schema<GetEventDefinitionsPythonResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -615,8 +423,8 @@ export const getEventDefinitionsTypescript: API.OperationMethod<
   GetEventDefinitionsTypescriptError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventDefinitionsTypescriptRequest,
-  output: GetEventDefinitionsTypescriptResponse,
+  input: __S(23) as any as S.Schema<GetEventDefinitionsTypescriptRequest>,
+  output: __S(18) as any as S.Schema<GetEventDefinitionsTypescriptResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -630,8 +438,8 @@ export const listEventDefinitions: API.OperationMethod<
   ListEventDefinitionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventDefinitionsRequest,
-  output: PaginatedEnterpriseEventDefinitionList,
+  input: __S(25) as any as S.Schema<ListEventDefinitionsRequest>,
+  output: __S(27) as any as S.Schema<PaginatedEnterpriseEventDefinitionList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -644,8 +452,8 @@ export const updateEventDefinition: API.OperationMethod<
   UpdateEventDefinitionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEventDefinitionRequest,
-  output: EnterpriseEventDefinition,
+  input: __S(28) as any as S.Schema<UpdateEventDefinitionRequest>,
+  output: __S(5) as any as S.Schema<EnterpriseEventDefinition>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -658,8 +466,8 @@ export const updateEventDefinitionsPartial: API.OperationMethod<
   UpdateEventDefinitionsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEventDefinitionsPartialRequest,
-  output: EnterpriseEventDefinition,
+  input: __S(29) as any as S.Schema<UpdateEventDefinitionsPartialRequest>,
+  output: __S(5) as any as S.Schema<EnterpriseEventDefinition>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -679,13 +487,13 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           owner: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(CreateEventDefinitionRequestTagsList),
+          tags: S.optional(__S(0)),
           verified: S.optional(S.Boolean),
           hidden: S.optional(S.NullOr(S.Boolean)),
-          enforcement_mode: S.optional(SchemaEnforcementModeEnum),
+          enforcement_mode: S.optional(S.String),
           primary_property: S.optional(S.NullOr(S.String)),
           post_to_slack: S.optional(S.Boolean),
-          default_columns: S.optional(CreateEventDefinitionRequestDefaultColumnsList),
+          default_columns: S.optional(__S(1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -708,8 +516,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(3))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 5:
@@ -719,26 +527,26 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           owner: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(EnterpriseEventDefinitionTagsList),
+          tags: S.optional(__S(0)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.String),
-          updated_by: S.optional(S.NullOr(UserBasic)),
+          updated_by: S.optional(S.NullOr(__S(4))),
           last_seen_at: S.optional(S.NullOr(S.String)),
           last_updated_at: S.optional(S.String),
           verified: S.optional(S.Boolean),
           verified_at: S.optional(S.NullOr(S.String)),
-          verified_by: S.optional(S.NullOr(UserBasic)),
+          verified_by: S.optional(S.NullOr(__S(4))),
           hidden: S.optional(S.NullOr(S.Boolean)),
-          enforcement_mode: S.optional(SchemaEnforcementModeEnum),
+          enforcement_mode: S.optional(S.String),
           primary_property: S.optional(S.NullOr(S.String)),
           is_action: S.optional(S.Boolean),
           action_id: S.optional(S.Number),
           is_calculating: S.optional(S.Boolean),
           last_calculated_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(4))),
           post_to_slack: S.optional(S.Boolean),
-          default_columns: S.optional(EnterpriseEventDefinitionDefaultColumnsList),
-          media_preview_urls: S.optional(EnterpriseEventDefinitionMediaPreviewUrlsList),
+          default_columns: S.optional(__S(1)),
+          media_preview_urls: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "EnterpriseEventDefinition",
@@ -747,7 +555,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          ids: EventDefinitionsBulkUpdateVerifiedCreateRequestIdsList,
+          ids: __S(1),
           verified: S.Boolean,
         }).pipe(
           T.Http({
@@ -773,7 +581,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(EventDefinitionBulkUpdateVerifiedItem);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -782,12 +590,12 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "BulkUpdateTagsUUIDError" });
     case 2:
-      return S.Array(BulkUpdateTagsUUIDError);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          updated: EventDefinitionBulkUpdateVerifiedResponseUpdatedList,
-          skipped: EventDefinitionBulkUpdateVerifiedResponseSkippedList,
+          updated: __S(8),
+          skipped: __S(10),
         }),
       ).annotate({
         identifier: "EventDefinitionBulkUpdateVerifiedResponse",
@@ -853,14 +661,14 @@ function __c2(j: number): any {
           created_at: S.optional(S.NullOr(S.String)),
           last_seen_at: S.optional(S.NullOr(S.String)),
           last_updated_at: S.optional(S.String),
-          tags: S.optional(EventDefinitionRecordTagsList),
-          enforcement_mode: S.optional(SchemaEnforcementModeEnum),
+          tags: S.optional(__S(0)),
+          enforcement_mode: S.optional(S.String),
           primary_property: S.optional(S.NullOr(S.String)),
           is_action: S.optional(S.Boolean),
           action_id: S.optional(S.Number),
           is_calculating: S.optional(S.Boolean),
           last_calculated_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(4))),
           post_to_slack: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EventDefinitionRecord" });
@@ -886,7 +694,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          names: S.optional(GetEventDefinitionsPrimaryPropertyRequestNamesList.pipe(T.Query())),
+          names: S.optional(__S(1).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -902,7 +710,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          primary_properties: PrimaryPropertiesResponsePrimaryPropertiesMap,
+          primary_properties: __S(20),
         }),
       ).annotate({
         identifier: "PrimaryPropertiesResponse",
@@ -940,19 +748,19 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListEventDefinitionsRequestOrderingItem);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          event_type: S.optional(ListEventDefinitionsRequestEventType.pipe(T.Query())),
+          event_type: S.optional(S.String.pipe(T.Query())),
           exclude_hidden: S.optional(S.Boolean.pipe(T.Query())),
           exclude_stale: S.optional(S.Boolean.pipe(T.Query())),
           excluded_properties: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          names: S.optional(ListEventDefinitionsRequestNamesList.pipe(T.Query())),
+          names: S.optional(__S(1).pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          ordering: S.optional(ListEventDefinitionsRequestOrderingList.pipe(T.Query())),
+          ordering: S.optional(__S(24).pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           tags: S.optional(S.String.pipe(T.Query())),
           verified: S.optional(S.Boolean.pipe(T.Query())),
@@ -967,14 +775,14 @@ function __c3(j: number): any {
         identifier: "ListEventDefinitionsRequest",
       });
     case 2:
-      return S.Array(EnterpriseEventDefinition);
+      return S.Array(__S(5));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedEnterpriseEventDefinitionListResultsList),
+          results: S.optional(__S(26)),
           count_is_capped: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -988,13 +796,13 @@ function __c3(j: number): any {
           name: S.optional(S.String),
           owner: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(UpdateEventDefinitionRequestTagsList),
+          tags: S.optional(__S(0)),
           verified: S.optional(S.Boolean),
           hidden: S.optional(S.NullOr(S.Boolean)),
-          enforcement_mode: S.optional(SchemaEnforcementModeEnum),
+          enforcement_mode: S.optional(S.String),
           primary_property: S.optional(S.NullOr(S.String)),
           post_to_slack: S.optional(S.Boolean),
-          default_columns: S.optional(UpdateEventDefinitionRequestDefaultColumnsList),
+          default_columns: S.optional(__S(1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1013,13 +821,13 @@ function __c3(j: number): any {
           name: S.optional(S.String),
           owner: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(UpdateEventDefinitionsPartialRequestTagsList),
+          tags: S.optional(__S(0)),
           verified: S.optional(S.Boolean),
           hidden: S.optional(S.NullOr(S.Boolean)),
-          enforcement_mode: S.optional(SchemaEnforcementModeEnum),
+          enforcement_mode: S.optional(S.String),
           primary_property: S.optional(S.NullOr(S.String)),
           post_to_slack: S.optional(S.Boolean),
-          default_columns: S.optional(UpdateEventDefinitionsPartialRequestDefaultColumnsList),
+          default_columns: S.optional(__S(1)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1030,5 +838,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateEventDefinitionsPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

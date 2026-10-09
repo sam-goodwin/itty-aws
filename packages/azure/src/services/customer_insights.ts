@@ -6,20 +6,15 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Supported permission types. */
 export type PermissionTypes = "Read" | "Write" | "Manage";
-const PermissionTypes = S.String;
-
 /** The permissions associated with the policy. */
 export type AuthorizationPolicyInputPermissionsList = Array<PermissionTypes | (string & {})>;
-const AuthorizationPolicyInputPermissionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AuthorizationPolicyInputPermissionsList>;
-
 /** The authorization policy. */
 export interface AuthorizationPolicyInput {
   /** The permissions associated with the policy. */
@@ -29,11 +24,6 @@ export interface AuthorizationPolicyInput {
   /** Secondary key associated with the policy. */
   secondaryKey?: string;
 }
-const AuthorizationPolicyInput = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AuthorizationPolicyInput>;
-
 export interface AuthorizationPoliciesCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -45,16 +35,8 @@ export interface AuthorizationPoliciesCreateOrUpdateRequest {
   authorizationPolicyName: string;
   properties?: AuthorizationPolicyInput;
 }
-const AuthorizationPoliciesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AuthorizationPoliciesCreateOrUpdateRequest>;
-
 /** The permissions associated with the policy. */
 export type AuthorizationPolicyPermissionsList = Array<PermissionTypes>;
-const AuthorizationPolicyPermissionsList =
-  AuthorizationPolicyInputPermissionsList as any as S.Schema<AuthorizationPolicyPermissionsList>;
-
 /** The authorization policy. */
 export interface AuthorizationPolicy {
   /** Name of the policy. */
@@ -66,8 +48,6 @@ export interface AuthorizationPolicy {
   /** Secondary key associated with the policy. */
   secondaryKey?: string;
 }
-const AuthorizationPolicy = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AuthorizationPolicy>;
-
 export interface AuthorizationPoliciesCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -77,11 +57,6 @@ export interface AuthorizationPoliciesCreateOrUpdateResponse {
   type?: string;
   properties?: AuthorizationPolicy;
 }
-const AuthorizationPoliciesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AuthorizationPoliciesCreateOrUpdateResponse>;
-
 /** Type of connector. */
 export type ConnectorType =
   | "None"
@@ -90,19 +65,13 @@ export type ConnectorType =
   | "Salesforce"
   | "ExchangeOnline"
   | "Outbound";
-const ConnectorType = S.String;
-
 /** Defines which entity type the file should map to. */
 export type ConnectorMappingInputEntityType = "None" | "Profile" | "Interaction" | "Relationship";
-const ConnectorMappingInputEntityType = S.String;
-
 /** The type of error management to use for the mapping. */
 export type ConnectorMappingErrorManagementErrorManagementType =
   | "RejectAndContinue"
   | "StopImport"
   | "RejectUntilLimit";
-const ConnectorMappingErrorManagementErrorManagementType = S.String;
-
 /** The error management. */
 export interface ConnectorMappingErrorManagement {
   /** The type of error management to use for the mapping. */
@@ -110,15 +79,8 @@ export interface ConnectorMappingErrorManagement {
   /** The error limit allowed while importing data. */
   errorLimit?: number;
 }
-const ConnectorMappingErrorManagement = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ConnectorMappingErrorManagement>;
-
 /** The type mapping format. */
 export type ConnectorMappingFormatFormatType = "TextFormat";
-const ConnectorMappingFormatFormatType = S.String;
-
 /** Connector mapping property format. */
 export interface ConnectorMappingFormat {
   /** The type mapping format. */
@@ -134,15 +96,8 @@ export interface ConnectorMappingFormat {
   /** Character separating array elements. */
   arraySeparator?: string;
 }
-const ConnectorMappingFormat = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ConnectorMappingFormat>;
-
 /** The frequency to update. */
 export type ConnectorMappingAvailabilityFrequency = "Minute" | "Hour" | "Day" | "Week" | "Month";
-const ConnectorMappingAvailabilityFrequency = S.String;
-
 /** Connector mapping property availability. */
 export interface ConnectorMappingAvailability {
   /** The frequency to update. */
@@ -150,11 +105,6 @@ export interface ConnectorMappingAvailability {
   /** The interval of the given frequency to use. */
   interval: number;
 }
-const ConnectorMappingAvailability = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ConnectorMappingAvailability>;
-
 /** Connector mapping property structure. */
 export interface ConnectorMappingStructure {
   /** The property name of the mapping entity. */
@@ -166,25 +116,13 @@ export interface ConnectorMappingStructure {
   /** Indicates if the column is encrypted. */
   isEncrypted?: boolean;
 }
-const ConnectorMappingStructure = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ConnectorMappingStructure>;
-
 /** Ingestion mapping information at property level. */
 export type ConnectorMappingPropertiesStructureList = Array<ConnectorMappingStructure>;
-const ConnectorMappingPropertiesStructureList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ConnectorMappingPropertiesStructureList>;
-
 /** The type of completion operation. */
 export type ConnectorMappingCompleteOperationCompletionOperationType =
   | "DoNothing"
   | "DeleteFile"
   | "MoveFile";
-const ConnectorMappingCompleteOperationCompletionOperationType = S.String;
-
 /** The complete operation. */
 export interface ConnectorMappingCompleteOperation {
   /** The type of completion operation. */
@@ -194,11 +132,6 @@ export interface ConnectorMappingCompleteOperation {
   /** The destination folder where files will be moved to once the import is done. */
   destinationFolder?: string;
 }
-const ConnectorMappingCompleteOperation = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ConnectorMappingCompleteOperation>;
-
 /** The connector mapping properties. */
 export interface ConnectorMappingProperties {
   /** The folder path for the mapping. */
@@ -218,11 +151,6 @@ export interface ConnectorMappingProperties {
   /** The operation after import is done. */
   completeOperation: ConnectorMappingCompleteOperation;
 }
-const ConnectorMappingProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ConnectorMappingProperties>;
-
 /** The connector mapping definition. */
 export interface ConnectorMappingInput {
   /** Type of connector. */
@@ -238,11 +166,6 @@ export interface ConnectorMappingInput {
   /** The properties of the mapping. */
   mappingProperties: ConnectorMappingProperties;
 }
-const ConnectorMappingInput = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ConnectorMappingInput>;
-
 export interface ConnectorMappingsCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -256,15 +179,8 @@ export interface ConnectorMappingsCreateOrUpdateRequest {
   mappingName: string;
   properties?: ConnectorMappingInput;
 }
-const ConnectorMappingsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ConnectorMappingsCreateOrUpdateRequest>;
-
 /** Defines which entity type the file should map to. */
 export type ConnectorMappingEntityType = "None" | "Profile" | "Interaction" | "Relationship";
-const ConnectorMappingEntityType = S.String;
-
 /** State of connector mapping. */
 export type ConnectorMappingState =
   | "Creating"
@@ -274,8 +190,6 @@ export type ConnectorMappingState =
   | "Running"
   | "Stopped"
   | "Expiring";
-const ConnectorMappingState = S.String;
-
 /** The connector mapping definition. */
 export interface ConnectorMapping {
   /** The connector name. */
@@ -309,8 +223,6 @@ export interface ConnectorMapping {
   /** The hub name. */
   tenantId?: string;
 }
-const ConnectorMapping = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ConnectorMapping>;
-
 export interface ConnectorMappingsCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -320,18 +232,8 @@ export interface ConnectorMappingsCreateOrUpdateResponse {
   type?: string;
   properties?: ConnectorMapping;
 }
-const ConnectorMappingsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ConnectorMappingsCreateOrUpdateResponse>;
-
 /** The connector properties. */
 export type ConnectorInputConnectorPropertiesMap = { [key: string]: unknown | undefined };
-const ConnectorInputConnectorPropertiesMap = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ConnectorInputConnectorPropertiesMap>;
-
 /** Properties of connector. */
 export interface ConnectorInput {
   /** Name of the connector. */
@@ -347,8 +249,6 @@ export interface ConnectorInput {
   /** If this is an internal connector. */
   isInternal?: boolean;
 }
-const ConnectorInput = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ConnectorInput>;
-
 export interface ConnectorsCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -360,20 +260,10 @@ export interface ConnectorsCreateOrUpdateRequest {
   connectorName: string;
   properties?: ConnectorInput;
 }
-const ConnectorsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ConnectorsCreateOrUpdateRequest>;
-
 /** The connector properties. */
 export type ConnectorConnectorPropertiesMap = { [key: string]: unknown | undefined };
-const ConnectorConnectorPropertiesMap =
-  ConnectorInputConnectorPropertiesMap as any as S.Schema<ConnectorConnectorPropertiesMap>;
-
 /** State of connector. */
 export type ConnectorState = "Creating" | "Created" | "Ready" | "Expiring" | "Deleting" | "Failed";
-const ConnectorState = S.String;
-
 /** Properties of connector. */
 export interface Connector {
   /** ID of the connector. */
@@ -399,8 +289,6 @@ export interface Connector {
   /** If this is an internal connector. */
   isInternal?: boolean;
 }
-const Connector = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Connector>;
-
 export interface ConnectorsCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -410,11 +298,6 @@ export interface ConnectorsCreateOrUpdateResponse {
   type?: string;
   properties?: Connector;
 }
-const ConnectorsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ConnectorsCreateOrUpdateResponse>;
-
 export interface DeleteConnectorRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -425,17 +308,7 @@ export interface DeleteConnectorRequest {
   /** The name of the connector. */
   connectorName: string;
 }
-const DeleteConnectorRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteConnectorRequest>;
-
 export interface DeleteConnectorResponse {}
-const DeleteConnectorResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteConnectorResponse>;
-
 export interface DeleteConnectorMappingRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -448,15 +321,7 @@ export interface DeleteConnectorMappingRequest {
   /** The name of the connector mapping. */
   mappingName: string;
 }
-const DeleteConnectorMappingRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DeleteConnectorMappingRequest>;
-
 export interface DeleteConnectorMappingResponse {}
-const DeleteConnectorMappingResponse =
-  DeleteConnectorResponse as any as S.Schema<DeleteConnectorMappingResponse>;
-
 export interface DeleteHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -465,11 +330,7 @@ export interface DeleteHubRequest {
   /** The name of the hub. */
   hubName: string;
 }
-const DeleteHubRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DeleteHubRequest>;
-
 export interface DeleteHubResponse {}
-const DeleteHubResponse = DeleteConnectorResponse as any as S.Schema<DeleteHubResponse>;
-
 export interface DeleteKpiRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -480,11 +341,7 @@ export interface DeleteKpiRequest {
   /** The name of the KPI. */
   kpiName: string;
 }
-const DeleteKpiRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DeleteKpiRequest>;
-
 export interface DeleteKpiResponse {}
-const DeleteKpiResponse = DeleteConnectorResponse as any as S.Schema<DeleteKpiResponse>;
-
 export interface DeleteLinkRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -495,11 +352,7 @@ export interface DeleteLinkRequest {
   /** The name of the link. */
   linkName: string;
 }
-const DeleteLinkRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DeleteLinkRequest>;
-
 export interface DeleteLinkResponse {}
-const DeleteLinkResponse = DeleteConnectorResponse as any as S.Schema<DeleteLinkResponse>;
-
 export interface DeletePredictionRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -510,15 +363,7 @@ export interface DeletePredictionRequest {
   /** The name of the Prediction. */
   predictionName: string;
 }
-const DeletePredictionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeletePredictionRequest>;
-
 export interface DeletePredictionResponse {}
-const DeletePredictionResponse =
-  DeleteConnectorResponse as any as S.Schema<DeletePredictionResponse>;
-
 export interface DeleteProfileRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -531,11 +376,7 @@ export interface DeleteProfileRequest {
   /** Locale of profile to retrieve, default is en-us. */
   locale_code?: string;
 }
-const DeleteProfileRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DeleteProfileRequest>;
-
 export interface DeleteProfileResponse {}
-const DeleteProfileResponse = DeleteConnectorResponse as any as S.Schema<DeleteProfileResponse>;
-
 export interface DeleteRelationshipRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -546,15 +387,7 @@ export interface DeleteRelationshipRequest {
   /** The name of the relationship. */
   relationshipName: string;
 }
-const DeleteRelationshipRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeleteRelationshipRequest>;
-
 export interface DeleteRelationshipResponse {}
-const DeleteRelationshipResponse =
-  DeleteConnectorResponse as any as S.Schema<DeleteRelationshipResponse>;
-
 export interface DeleteRelationshipLinkRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -565,15 +398,7 @@ export interface DeleteRelationshipLinkRequest {
   /** The name of the relationship. */
   relationshipLinkName: string;
 }
-const DeleteRelationshipLinkRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeleteRelationshipLinkRequest>;
-
 export interface DeleteRelationshipLinkResponse {}
-const DeleteRelationshipLinkResponse =
-  DeleteConnectorResponse as any as S.Schema<DeleteRelationshipLinkResponse>;
-
 export interface DeleteRoleAssignmentRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -584,15 +409,7 @@ export interface DeleteRoleAssignmentRequest {
   /** The name of the role assignment. */
   assignmentName: string;
 }
-const DeleteRoleAssignmentRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DeleteRoleAssignmentRequest>;
-
 export interface DeleteRoleAssignmentResponse {}
-const DeleteRoleAssignmentResponse =
-  DeleteConnectorResponse as any as S.Schema<DeleteRoleAssignmentResponse>;
-
 export interface DeleteViewRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -605,11 +422,7 @@ export interface DeleteViewRequest {
   /** The user ID. Use * to retrieve hub level view. */
   userId: string;
 }
-const DeleteViewRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DeleteViewRequest>;
-
 export interface DeleteViewResponse {}
-const DeleteViewResponse = DeleteConnectorResponse as any as S.Schema<DeleteViewResponse>;
-
 export interface GetAuthorizationPolicyRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -620,11 +433,6 @@ export interface GetAuthorizationPolicyRequest {
   /** The name of the policy. */
   authorizationPolicyName: string;
 }
-const GetAuthorizationPolicyRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetAuthorizationPolicyRequest>;
-
 export interface GetAuthorizationPolicyResponse {
   /** Resource ID. */
   id?: string;
@@ -634,9 +442,6 @@ export interface GetAuthorizationPolicyResponse {
   type?: string;
   properties?: AuthorizationPolicy;
 }
-const GetAuthorizationPolicyResponse =
-  AuthorizationPoliciesCreateOrUpdateResponse as any as S.Schema<GetAuthorizationPolicyResponse>;
-
 export interface GetConnectorRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -647,8 +452,6 @@ export interface GetConnectorRequest {
   /** The name of the connector. */
   connectorName: string;
 }
-const GetConnectorRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GetConnectorRequest>;
-
 export interface GetConnectorResponse {
   /** Resource ID. */
   id?: string;
@@ -658,8 +461,6 @@ export interface GetConnectorResponse {
   type?: string;
   properties?: Connector;
 }
-const GetConnectorResponse = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GetConnectorResponse>;
-
 export interface GetConnectorMappingRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -672,11 +473,6 @@ export interface GetConnectorMappingRequest {
   /** The name of the connector mapping. */
   mappingName: string;
 }
-const GetConnectorMappingRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetConnectorMappingRequest>;
-
 export interface GetConnectorMappingResponse {
   /** Resource ID. */
   id?: string;
@@ -686,9 +482,6 @@ export interface GetConnectorMappingResponse {
   type?: string;
   properties?: ConnectorMapping;
 }
-const GetConnectorMappingResponse =
-  ConnectorMappingsCreateOrUpdateResponse as any as S.Schema<GetConnectorMappingResponse>;
-
 export interface GetHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -697,15 +490,8 @@ export interface GetHubRequest {
   /** The name of the hub. */
   hubName: string;
 }
-const GetHubRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GetHubRequest>;
-
 /** Resource tags. */
 export type GetHubResponseTagsMap = { [key: string]: string | undefined };
-const GetHubResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetHubResponseTagsMap>;
-
 /** Hub billing info. */
 export interface HubBillingInfoFormat {
   /** The sku name. */
@@ -715,8 +501,6 @@ export interface HubBillingInfoFormat {
   /** The maximum number of units can be used. One unit is 10,000 Profiles and 100,000 Interactions. */
   maxUnits?: number;
 }
-const HubBillingInfoFormat = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<HubBillingInfoFormat>;
-
 /** Properties of hub. */
 export interface HubPropertiesFormat {
   /** API endpoint URL of the hub. */
@@ -730,8 +514,6 @@ export interface HubPropertiesFormat {
   /** Billing settings of the hub. */
   hubBillingInfo?: HubBillingInfoFormat;
 }
-const HubPropertiesFormat = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<HubPropertiesFormat>;
-
 export interface GetHubResponse {
   /** Resource ID. */
   id?: string;
@@ -745,8 +527,6 @@ export interface GetHubResponse {
   tags?: GetHubResponseTagsMap;
   properties?: HubPropertiesFormat;
 }
-const GetHubResponse = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GetHubResponse>;
-
 export interface GetInteractionRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -759,66 +539,32 @@ export interface GetInteractionRequest {
   /** Locale of interaction to retrieve, default is en-us. */
   locale_code?: string;
 }
-const GetInteractionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetInteractionRequest>;
-
 export type InteractionTypeDefinitionAttributesValueList = Array<string>;
-const InteractionTypeDefinitionAttributesValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<InteractionTypeDefinitionAttributesValueList>;
-
 /** The attributes for the Type. */
 export type InteractionTypeDefinitionAttributesMap = {
   [key: string]: InteractionTypeDefinitionAttributesValueList | undefined;
 };
-const InteractionTypeDefinitionAttributesMap = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<InteractionTypeDefinitionAttributesMap>;
-
 /** Localized descriptions for the property. */
 export type InteractionTypeDefinitionDescriptionMap = { [key: string]: string | undefined };
-const InteractionTypeDefinitionDescriptionMap =
-  GetHubResponseTagsMap as any as S.Schema<InteractionTypeDefinitionDescriptionMap>;
-
 /** Localized display names for the property. */
 export type InteractionTypeDefinitionDisplayNameMap = { [key: string]: string | undefined };
-const InteractionTypeDefinitionDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<InteractionTypeDefinitionDisplayNameMap>;
-
 export type InteractionTypeDefinitionLocalizedAttributesValueMap = {
   [key: string]: string | undefined;
 };
-const InteractionTypeDefinitionLocalizedAttributesValueMap =
-  GetHubResponseTagsMap as any as S.Schema<InteractionTypeDefinitionLocalizedAttributesValueMap>;
-
 /** Any custom localized attributes for the Type. */
 export type InteractionTypeDefinitionLocalizedAttributesMap = {
   [key: string]: InteractionTypeDefinitionLocalizedAttributesValueMap | undefined;
 };
-const InteractionTypeDefinitionLocalizedAttributesMap = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<InteractionTypeDefinitionLocalizedAttributesMap>;
-
 /** Type of entity. */
 export type InteractionTypeDefinitionEntityType =
   | "None"
   | "Profile"
   | "Interaction"
   | "Relationship";
-const InteractionTypeDefinitionEntityType = S.String;
-
 /** Localized names of the enum member. */
 export type ProfileEnumValidValuesFormatLocalizedValueNamesMap = {
   [key: string]: string | undefined;
 };
-const ProfileEnumValidValuesFormatLocalizedValueNamesMap =
-  GetHubResponseTagsMap as any as S.Schema<ProfileEnumValidValuesFormatLocalizedValueNamesMap>;
-
 /** Valid enum values in case of an enum property. */
 export interface ProfileEnumValidValuesFormat {
   /** The integer value of the enum member. */
@@ -826,26 +572,12 @@ export interface ProfileEnumValidValuesFormat {
   /** Localized names of the enum member. */
   localizedValueNames?: ProfileEnumValidValuesFormatLocalizedValueNamesMap;
 }
-const ProfileEnumValidValuesFormat = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ProfileEnumValidValuesFormat>;
-
 /** Describes valid values for an enum property. */
 export type PropertyDefinitionEnumValidValuesList = Array<ProfileEnumValidValuesFormat>;
-const PropertyDefinitionEnumValidValuesList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<PropertyDefinitionEnumValidValuesList>;
-
 /** The data source type. */
 export type DataSourceDataSourceType = "Connector" | "LinkInteraction" | "SystemDefault";
-const DataSourceDataSourceType = S.String;
-
 /** The data source status. */
 export type DataSourceStatus = "None" | "Active" | "Deleted";
-const DataSourceStatus = S.String;
-
 /** Data Source is a way for us to know the source of instances. A single type can have data coming in from multiple places. In activities we use this to determine precedence rules. */
 export interface DataSource {
   /** The data source name */
@@ -859,23 +591,14 @@ export interface DataSource {
   /** The data source reference id. */
   dataSourceReferenceId?: string;
 }
-const DataSource = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<DataSource>;
-
 /** The data source precedence is a way to know the precedence of each data source. */
 export interface DataSourcePrecedence {
   dataSource?: DataSource;
   /** the precedence value. */
   precedence?: number;
 }
-const DataSourcePrecedence = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DataSourcePrecedence>;
-
 /** This is specific to interactions modeled as activities. Data sources are used to determine where data is stored and also in precedence rules. */
 export type PropertyDefinitionDataSourcePrecedenceRulesList = Array<DataSourcePrecedence>;
-const PropertyDefinitionDataSourcePrecedenceRulesList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<PropertyDefinitionDataSourcePrecedenceRulesList>;
-
 /** Property definition. */
 export interface PropertyDefinition {
   /** Array value separator for properties with isArray set. */
@@ -911,15 +634,8 @@ export interface PropertyDefinition {
   /** This is specific to interactions modeled as activities. Data sources are used to determine where data is stored and also in precedence rules. */
   dataSourcePrecedenceRules?: PropertyDefinitionDataSourcePrecedenceRulesList;
 }
-const PropertyDefinition = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<PropertyDefinition>;
-
 /** The properties of the Profile. */
 export type InteractionTypeDefinitionFieldsList = Array<PropertyDefinition>;
-const InteractionTypeDefinitionFieldsList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<InteractionTypeDefinitionFieldsList>;
-
 /** Provisioning state. */
 export type ProvisioningState =
   | "Provisioning"
@@ -928,13 +644,8 @@ export type ProvisioningState =
   | "Deleting"
   | "HumanIntervention"
   | "Failed";
-const ProvisioningState = S.String;
-
 /** The id property names. Properties which uniquely identify an interaction instance. */
 export type InteractionTypeDefinitionIdPropertyNamesList = Array<string>;
-const InteractionTypeDefinitionIdPropertyNamesList =
-  InteractionTypeDefinitionAttributesValueList as any as S.Schema<InteractionTypeDefinitionIdPropertyNamesList>;
-
 /** The participant property reference. */
 export interface ParticipantPropertyReference {
   /** The source property that maps to the target property. */
@@ -942,28 +653,12 @@ export interface ParticipantPropertyReference {
   /** The target property that maps to the source property. */
   targetPropertyName: string;
 }
-const ParticipantPropertyReference = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ParticipantPropertyReference>;
-
 /** The property references. */
 export type ParticipantParticipantPropertyReferencesList = Array<ParticipantPropertyReference>;
-const ParticipantParticipantPropertyReferencesList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ParticipantParticipantPropertyReferencesList>;
-
 /** Localized display name. */
 export type ParticipantDisplayNameMap = { [key: string]: string | undefined };
-const ParticipantDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<ParticipantDisplayNameMap>;
-
 /** Localized descriptions. */
 export type ParticipantDescriptionMap = { [key: string]: string | undefined };
-const ParticipantDescriptionMap =
-  GetHubResponseTagsMap as any as S.Schema<ParticipantDescriptionMap>;
-
 /** Describes a profile type participating in an interaction. */
 export interface Participant {
   /** Profile type name. */
@@ -979,20 +674,10 @@ export interface Participant {
   /** The role that the participant is playing in the interaction. */
   role?: string;
 }
-const Participant = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Participant>;
-
 /** Profiles that participated in the interaction. */
 export type InteractionTypeDefinitionParticipantProfilesList = Array<Participant>;
-const InteractionTypeDefinitionParticipantProfilesList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<InteractionTypeDefinitionParticipantProfilesList>;
-
 /** This is specific to interactions modeled as activities. Data sources are used to determine where data is stored and also in precedence rules. */
 export type InteractionTypeDefinitionDataSourcePrecedenceRulesList = Array<DataSourcePrecedence>;
-const InteractionTypeDefinitionDataSourcePrecedenceRulesList =
-  PropertyDefinitionDataSourcePrecedenceRulesList as any as S.Schema<InteractionTypeDefinitionDataSourcePrecedenceRulesList>;
-
 /** The Interaction Type Definition */
 export interface InteractionTypeDefinition {
   /** The attributes for the Type. */
@@ -1042,11 +727,6 @@ export interface InteractionTypeDefinition {
   /** An interaction can be tagged as an activity only during create. This enables the interaction to be editable and can enable merging of properties from multiple data sources based on precedence, which is defined at a link level. */
   isActivity?: boolean;
 }
-const InteractionTypeDefinition = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<InteractionTypeDefinition>;
-
 export interface GetInteractionResponse {
   /** Resource ID. */
   id?: string;
@@ -1056,11 +736,6 @@ export interface GetInteractionResponse {
   type?: string;
   properties?: InteractionTypeDefinition;
 }
-const GetInteractionResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetInteractionResponse>;
-
 export interface GetKpiRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1071,26 +746,14 @@ export interface GetKpiRequest {
   /** The name of the KPI. */
   kpiName: string;
 }
-const GetKpiRequest = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<GetKpiRequest>;
-
 /** The mapping entity type. */
 export type KpiDefinitionEntityType = "None" | "Profile" | "Interaction" | "Relationship";
-const KpiDefinitionEntityType = S.String;
-
 /** Localized display name for the KPI. */
 export type KpiDefinitionDisplayNameMap = { [key: string]: string | undefined };
-const KpiDefinitionDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<KpiDefinitionDisplayNameMap>;
-
 /** Localized description for the KPI. */
 export type KpiDefinitionDescriptionMap = { [key: string]: string | undefined };
-const KpiDefinitionDescriptionMap =
-  GetHubResponseTagsMap as any as S.Schema<KpiDefinitionDescriptionMap>;
-
 /** The calculation window. */
 export type KpiDefinitionCalculationWindow = "Lifetime" | "Hour" | "Day" | "Week" | "Month";
-const KpiDefinitionCalculationWindow = S.String;
-
 /** The computation function for the KPI. */
 export type KpiDefinitionFunction =
   | "Sum"
@@ -1101,18 +764,10 @@ export type KpiDefinitionFunction =
   | "Count"
   | "None"
   | "CountDistinct";
-const KpiDefinitionFunction = S.String;
-
 /** the group by properties for the KPI. */
 export type KpiDefinitionGroupByList = Array<string>;
-const KpiDefinitionGroupByList =
-  InteractionTypeDefinitionAttributesValueList as any as S.Schema<KpiDefinitionGroupByList>;
-
 /** The display name. */
 export type KpiGroupByMetadataDisplayNameMap = { [key: string]: string | undefined };
-const KpiGroupByMetadataDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<KpiGroupByMetadataDisplayNameMap>;
-
 /** The KPI GroupBy field metadata. */
 export interface KpiGroupByMetadata {
   /** The display name. */
@@ -1122,32 +777,15 @@ export interface KpiGroupByMetadata {
   /** The type of the field. */
   fieldType?: string;
 }
-const KpiGroupByMetadata = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<KpiGroupByMetadata>;
-
 /** The KPI GroupByMetadata. */
 export type KpiDefinitionGroupByMetadataList = Array<KpiGroupByMetadata>;
-const KpiDefinitionGroupByMetadataList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<KpiDefinitionGroupByMetadataList>;
-
 /** The KPI participant profile metadata. */
 export interface KpiParticipantProfilesMetadata {
   /** Name of the type. */
   typeName: string;
 }
-const KpiParticipantProfilesMetadata = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<KpiParticipantProfilesMetadata>;
-
 /** The participant profiles. */
 export type KpiDefinitionParticipantProfilesMetadataList = Array<KpiParticipantProfilesMetadata>;
-const KpiDefinitionParticipantProfilesMetadataList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<KpiDefinitionParticipantProfilesMetadataList>;
-
 /** Defines the KPI Threshold limits. */
 export interface KpiThresholds {
   /** The lower threshold limit. */
@@ -1157,8 +795,6 @@ export interface KpiThresholds {
   /** Whether or not the KPI is an increasing KPI. */
   increasingKpi: boolean;
 }
-const KpiThresholds = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<KpiThresholds>;
-
 /** The KPI alias. */
 export interface KpiAlias {
   /** KPI alias name. */
@@ -1166,15 +802,8 @@ export interface KpiAlias {
   /** The expression. */
   expression: string;
 }
-const KpiAlias = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<KpiAlias>;
-
 /** The aliases. */
 export type KpiDefinitionAliasesList = Array<KpiAlias>;
-const KpiDefinitionAliasesList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<KpiDefinitionAliasesList>;
-
 /** The KPI extract. */
 export interface KpiExtract {
   /** KPI extract name. */
@@ -1182,15 +811,8 @@ export interface KpiExtract {
   /** The expression. */
   expression: string;
 }
-const KpiExtract = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<KpiExtract>;
-
 /** The KPI extracts. */
 export type KpiDefinitionExtractsList = Array<KpiExtract>;
-const KpiDefinitionExtractsList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<KpiDefinitionExtractsList>;
-
 /** Defines the KPI Threshold limits. */
 export interface KpiDefinition {
   /** The mapping entity type. */
@@ -1232,8 +854,6 @@ export interface KpiDefinition {
   /** The KPI extracts. */
   extracts?: KpiDefinitionExtractsList;
 }
-const KpiDefinition = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<KpiDefinition>;
-
 export interface GetKpiResponse {
   /** Resource ID. */
   id?: string;
@@ -1243,8 +863,6 @@ export interface GetKpiResponse {
   type?: string;
   properties?: KpiDefinition;
 }
-const GetKpiResponse = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<GetKpiResponse>;
-
 export interface GetLinkRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1255,30 +873,16 @@ export interface GetLinkRequest {
   /** The name of the link. */
   linkName: string;
 }
-const GetLinkRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<GetLinkRequest>;
-
 /** Type of source entity. */
 export type LinkDefinitionSourceEntityType = "None" | "Profile" | "Interaction" | "Relationship";
-const LinkDefinitionSourceEntityType = S.String;
-
 /** Type of target entity. */
 export type LinkDefinitionTargetEntityType = "None" | "Profile" | "Interaction" | "Relationship";
-const LinkDefinitionTargetEntityType = S.String;
-
 /** Localized display name for the Link. */
 export type LinkDefinitionDisplayNameMap = { [key: string]: string | undefined };
-const LinkDefinitionDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<LinkDefinitionDisplayNameMap>;
-
 /** Localized descriptions for the Link. */
 export type LinkDefinitionDescriptionMap = { [key: string]: string | undefined };
-const LinkDefinitionDescriptionMap =
-  GetHubResponseTagsMap as any as S.Schema<LinkDefinitionDescriptionMap>;
-
 /** Link type. */
 export type TypePropertiesMappingLinkType = "UpdateAlways" | "CopyIfNull";
-const TypePropertiesMappingLinkType = S.String;
-
 /** Metadata for a Link's property mapping. */
 export interface TypePropertiesMapping {
   /** Property name on the source Entity Type. */
@@ -1288,27 +892,12 @@ export interface TypePropertiesMapping {
   /** Link type. */
   linkType?: TypePropertiesMappingLinkType | (string & {});
 }
-const TypePropertiesMapping = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<TypePropertiesMapping>;
-
 /** The set of properties mappings between the source and target Types. */
 export type LinkDefinitionMappingsList = Array<TypePropertiesMapping>;
-const LinkDefinitionMappingsList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<LinkDefinitionMappingsList>;
-
 /** The properties that represent the participating profile. */
 export type LinkDefinitionParticipantPropertyReferencesList = Array<ParticipantPropertyReference>;
-const LinkDefinitionParticipantPropertyReferencesList =
-  ParticipantParticipantPropertyReferencesList as any as S.Schema<LinkDefinitionParticipantPropertyReferencesList>;
-
 /** Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only. */
 export type LinkDefinitionOperationType = "Upsert" | "Delete";
-const LinkDefinitionOperationType = S.String;
-
 /** The definition of Link. */
 export interface LinkDefinition {
   /** The hub name. */
@@ -1338,8 +927,6 @@ export interface LinkDefinition {
   /** Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only. */
   operationType?: LinkDefinitionOperationType;
 }
-const LinkDefinition = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<LinkDefinition>;
-
 export interface GetLinkResponse {
   /** Resource ID. */
   id?: string;
@@ -1349,8 +936,6 @@ export interface GetLinkResponse {
   type?: string;
   properties?: LinkDefinition;
 }
-const GetLinkResponse = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<GetLinkResponse>;
-
 export interface GetPredictionRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1361,31 +946,16 @@ export interface GetPredictionRequest {
   /** The name of the Prediction. */
   predictionName: string;
 }
-const GetPredictionRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<GetPredictionRequest>;
-
 /** Description of the prediction. */
 export type PredictionDescriptionMap = { [key: string]: string | undefined };
-const PredictionDescriptionMap = GetHubResponseTagsMap as any as S.Schema<PredictionDescriptionMap>;
-
 /** Display name of the prediction. */
 export type PredictionDisplayNameMap = { [key: string]: string | undefined };
-const PredictionDisplayNameMap = GetHubResponseTagsMap as any as S.Schema<PredictionDisplayNameMap>;
-
 /** Interaction types involved in the prediction. */
 export type PredictionInvolvedInteractionTypesList = Array<string>;
-const PredictionInvolvedInteractionTypesList =
-  InteractionTypeDefinitionAttributesValueList as any as S.Schema<PredictionInvolvedInteractionTypesList>;
-
 /** KPI types involved in the prediction. */
 export type PredictionInvolvedKpiTypesList = Array<string>;
-const PredictionInvolvedKpiTypesList =
-  InteractionTypeDefinitionAttributesValueList as any as S.Schema<PredictionInvolvedKpiTypesList>;
-
 /** Relationships involved in the prediction. */
 export type PredictionInvolvedRelationshipsList = Array<string>;
-const PredictionInvolvedRelationshipsList =
-  InteractionTypeDefinitionAttributesValueList as any as S.Schema<PredictionInvolvedRelationshipsList>;
-
 /** Definition of the link mapping of prediction. */
 export interface PredictionMappings {
   /** The score of the link mapping. */
@@ -1395,8 +965,6 @@ export interface PredictionMappings {
   /** The reason of the link mapping. */
   reason: string;
 }
-const PredictionMappings = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<PredictionMappings>;
-
 /** The definition of a prediction grade. */
 export interface PredictionGradesItem {
   /** Name of the grade. */
@@ -1406,29 +974,16 @@ export interface PredictionGradesItem {
   /** Maximum score threshold. */
   maxScoreThreshold?: number;
 }
-const PredictionGradesItem = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<PredictionGradesItem>;
-
 /** The prediction grades. */
 export type PredictionGradesList = Array<PredictionGradesItem>;
-const PredictionGradesList = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<PredictionGradesList>;
-
 /** Generated interaction types. */
 export type PredictionSystemGeneratedEntitiesGeneratedInteractionTypesList = Array<string>;
-const PredictionSystemGeneratedEntitiesGeneratedInteractionTypesList =
-  InteractionTypeDefinitionAttributesValueList as any as S.Schema<PredictionSystemGeneratedEntitiesGeneratedInteractionTypesList>;
-
 /** Generated links. */
 export type PredictionSystemGeneratedEntitiesGeneratedLinksList = Array<string>;
-const PredictionSystemGeneratedEntitiesGeneratedLinksList =
-  InteractionTypeDefinitionAttributesValueList as any as S.Schema<PredictionSystemGeneratedEntitiesGeneratedLinksList>;
-
 /** Generated KPIs. */
 export type PredictionSystemGeneratedEntitiesGeneratedKpisMap = {
   [key: string]: string | undefined;
 };
-const PredictionSystemGeneratedEntitiesGeneratedKpisMap =
-  GetHubResponseTagsMap as any as S.Schema<PredictionSystemGeneratedEntitiesGeneratedKpisMap>;
-
 /** System generated entities. */
 export interface PredictionSystemGeneratedEntities {
   /** Generated interaction types. */
@@ -1438,11 +993,6 @@ export interface PredictionSystemGeneratedEntities {
   /** Generated KPIs. */
   generatedKpis?: PredictionSystemGeneratedEntitiesGeneratedKpisMap;
 }
-const PredictionSystemGeneratedEntities = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<PredictionSystemGeneratedEntities>;
-
 /** The prediction definition. */
 export interface Prediction {
   /** Description of the prediction. */
@@ -1480,8 +1030,6 @@ export interface Prediction {
   /** System generated entities. */
   systemGeneratedEntities?: PredictionSystemGeneratedEntities;
 }
-const Prediction = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<Prediction>;
-
 export interface GetPredictionResponse {
   /** Resource ID. */
   id?: string;
@@ -1491,11 +1039,6 @@ export interface GetPredictionResponse {
   type?: string;
   properties?: Prediction;
 }
-const GetPredictionResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GetPredictionResponse>;
-
 export interface GetPredictionModelStatusRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1506,11 +1049,6 @@ export interface GetPredictionModelStatusRequest {
   /** The name of the Prediction. */
   predictionName: string;
 }
-const GetPredictionModelStatusRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GetPredictionModelStatusRequest>;
-
 /** Prediction model life cycle. When prediction is in PendingModelConfirmation status, it is allowed to update the status to PendingFeaturing or Active through API. */
 export type PredictionModelStatusStatus =
   | "New"
@@ -1531,8 +1069,6 @@ export type PredictionModelStatusStatus =
   | "Deleted"
   | "HumanIntervention"
   | "Failed";
-const PredictionModelStatusStatus = S.String;
-
 /** The prediction model status. */
 export interface PredictionModelStatus {
   /** The hub name. */
@@ -1558,11 +1094,6 @@ export interface PredictionModelStatus {
   /** Version of the model. */
   modelVersion?: string;
 }
-const PredictionModelStatus = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<PredictionModelStatus>;
-
 export interface GetPredictionTrainingResultsRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1573,11 +1104,6 @@ export interface GetPredictionTrainingResultsRequest {
   /** The name of the Prediction. */
   predictionName: string;
 }
-const GetPredictionTrainingResultsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GetPredictionTrainingResultsRequest>;
-
 /** The definition of a prediction distribution. */
 export interface PredictionDistributionDefinitionDistributionsItem {
   /** Score threshold. */
@@ -1591,19 +1117,9 @@ export interface PredictionDistributionDefinitionDistributionsItem {
   /** Number of negatives above threshold. */
   negativesAboveThreshold?: number;
 }
-const PredictionDistributionDefinitionDistributionsItem = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<PredictionDistributionDefinitionDistributionsItem>;
-
 /** Distributions of the prediction. */
 export type PredictionDistributionDefinitionDistributionsList =
   Array<PredictionDistributionDefinitionDistributionsItem>;
-const PredictionDistributionDefinitionDistributionsList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<PredictionDistributionDefinitionDistributionsList>;
-
 /** The definition of the prediction distribution. */
 export interface PredictionDistributionDefinition {
   /** Total positive in the distribution. */
@@ -1613,19 +1129,12 @@ export interface PredictionDistributionDefinition {
   /** Distributions of the prediction. */
   distributions?: PredictionDistributionDefinitionDistributionsList;
 }
-const PredictionDistributionDefinition = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<PredictionDistributionDefinition>;
-
 /** Type of canonical property value. */
 export type CanonicalProfileDefinitionPropertiesItemType =
   | "Numeric"
   | "Categorical"
   | "DerivedCategorical"
   | "DerivedNumeric";
-const CanonicalProfileDefinitionPropertiesItemType = S.String;
-
 /** The definition of a canonical profile property. */
 export interface CanonicalProfileDefinitionPropertiesItem {
   /** Profile name. */
@@ -1639,19 +1148,9 @@ export interface CanonicalProfileDefinitionPropertiesItem {
   /** Value of the canonical property. */
   value?: string;
 }
-const CanonicalProfileDefinitionPropertiesItem = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<CanonicalProfileDefinitionPropertiesItem>;
-
 /** Properties of the canonical profile. */
 export type CanonicalProfileDefinitionPropertiesList =
   Array<CanonicalProfileDefinitionPropertiesItem>;
-const CanonicalProfileDefinitionPropertiesList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<CanonicalProfileDefinitionPropertiesList>;
-
 /** Definition of canonical profile. */
 export interface CanonicalProfileDefinition {
   /** Canonical profile ID. */
@@ -1659,18 +1158,8 @@ export interface CanonicalProfileDefinition {
   /** Properties of the canonical profile. */
   properties?: CanonicalProfileDefinitionPropertiesList;
 }
-const CanonicalProfileDefinition = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<CanonicalProfileDefinition>;
-
 /** Canonical profiles. */
 export type PredictionTrainingResultsCanonicalProfilesList = Array<CanonicalProfileDefinition>;
-const PredictionTrainingResultsCanonicalProfilesList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<PredictionTrainingResultsCanonicalProfilesList>;
-
 /** The training results of the prediction. */
 export interface PredictionTrainingResults {
   /** The hub name. */
@@ -1684,11 +1173,6 @@ export interface PredictionTrainingResults {
   /** Instance count of the primary profile. */
   primaryProfileInstanceCount?: number;
 }
-const PredictionTrainingResults = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<PredictionTrainingResults>;
-
 export interface GetProfileRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1701,26 +1185,15 @@ export interface GetProfileRequest {
   /** Locale of profile to retrieve, default is en-us. */
   locale_code?: string;
 }
-const GetProfileRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<GetProfileRequest>;
-
 export type ProfileTypeDefinitionAttributesValueList = Array<string>;
 /** The attributes for the Type. */
 export type ProfileTypeDefinitionAttributesMap = {
   [key: string]: ProfileTypeDefinitionAttributesValueList | undefined;
 };
-const ProfileTypeDefinitionAttributesMap =
-  InteractionTypeDefinitionAttributesMap as any as S.Schema<ProfileTypeDefinitionAttributesMap>;
-
 /** Localized descriptions for the property. */
 export type ProfileTypeDefinitionDescriptionMap = { [key: string]: string | undefined };
-const ProfileTypeDefinitionDescriptionMap =
-  GetHubResponseTagsMap as any as S.Schema<ProfileTypeDefinitionDescriptionMap>;
-
 /** Localized display names for the property. */
 export type ProfileTypeDefinitionDisplayNameMap = { [key: string]: string | undefined };
-const ProfileTypeDefinitionDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<ProfileTypeDefinitionDisplayNameMap>;
-
 export type ProfileTypeDefinitionLocalizedAttributesValueMap = {
   [key: string]: string | undefined;
 };
@@ -1728,31 +1201,16 @@ export type ProfileTypeDefinitionLocalizedAttributesValueMap = {
 export type ProfileTypeDefinitionLocalizedAttributesMap = {
   [key: string]: ProfileTypeDefinitionLocalizedAttributesValueMap | undefined;
 };
-const ProfileTypeDefinitionLocalizedAttributesMap =
-  InteractionTypeDefinitionLocalizedAttributesMap as any as S.Schema<ProfileTypeDefinitionLocalizedAttributesMap>;
-
 /** Type of entity. */
 export type ProfileTypeDefinitionEntityType = "None" | "Profile" | "Interaction" | "Relationship";
-const ProfileTypeDefinitionEntityType = S.String;
-
 /** The properties of the Profile. */
 export type ProfileTypeDefinitionFieldsList = Array<PropertyDefinition>;
-const ProfileTypeDefinitionFieldsList =
-  InteractionTypeDefinitionFieldsList as any as S.Schema<ProfileTypeDefinitionFieldsList>;
-
 /** The properties which make up the unique ID. */
 export type StrongIdKeyPropertyNamesList = Array<string>;
-const StrongIdKeyPropertyNamesList =
-  InteractionTypeDefinitionAttributesValueList as any as S.Schema<StrongIdKeyPropertyNamesList>;
-
 /** Localized display name. */
 export type StrongIdDisplayNameMap = { [key: string]: string | undefined };
-const StrongIdDisplayNameMap = GetHubResponseTagsMap as any as S.Schema<StrongIdDisplayNameMap>;
-
 /** Localized descriptions. */
 export type StrongIdDescriptionMap = { [key: string]: string | undefined };
-const StrongIdDescriptionMap = GetHubResponseTagsMap as any as S.Schema<StrongIdDescriptionMap>;
-
 /** Property/Properties which represent a unique ID. */
 export interface StrongId {
   /** The properties which make up the unique ID. */
@@ -1764,15 +1222,8 @@ export interface StrongId {
   /** Localized descriptions. */
   description?: StrongIdDescriptionMap;
 }
-const StrongId = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<StrongId>;
-
 /** The strong IDs. */
 export type ProfileTypeDefinitionStrongIdsList = Array<StrongId>;
-const ProfileTypeDefinitionStrongIdsList = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ProfileTypeDefinitionStrongIdsList>;
-
 /** The profile type definition. */
 export interface ProfileTypeDefinition {
   /** The attributes for the Type. */
@@ -1812,11 +1263,6 @@ export interface ProfileTypeDefinition {
   /** The strong IDs. */
   strongIds?: ProfileTypeDefinitionStrongIdsList;
 }
-const ProfileTypeDefinition = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ProfileTypeDefinition>;
-
 export interface GetProfileResponse {
   /** Resource ID. */
   id?: string;
@@ -1826,8 +1272,6 @@ export interface GetProfileResponse {
   type?: string;
   properties?: ProfileTypeDefinition;
 }
-const GetProfileResponse = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<GetProfileResponse>;
-
 export interface GetProfileEnrichingKpisRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1838,23 +1282,8 @@ export interface GetProfileEnrichingKpisRequest {
   /** The name of the profile. */
   profileName: string;
 }
-const GetProfileEnrichingKpisRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetProfileEnrichingKpisRequest>;
-
 export type GetProfileEnrichingKpisResponseBodyList = Array<KpiDefinition>;
-const GetProfileEnrichingKpisResponseBodyList = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GetProfileEnrichingKpisResponseBodyList>;
-
 export type GetProfileEnrichingKpisResponse = GetProfileEnrichingKpisResponseBodyList;
-const GetProfileEnrichingKpisResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GetProfileEnrichingKpisResponse>;
-
 export interface GetRelationshipRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1865,30 +1294,14 @@ export interface GetRelationshipRequest {
   /** The name of the relationship. */
   relationshipName: string;
 }
-const GetRelationshipRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GetRelationshipRequest>;
-
 /** The Relationship Cardinality. */
 export type RelationshipDefinitionCardinality = "OneToOne" | "OneToMany" | "ManyToMany";
-const RelationshipDefinitionCardinality = S.String;
-
 /** Localized display name for the Relationship. */
 export type RelationshipDefinitionDisplayNameMap = { [key: string]: string | undefined };
-const RelationshipDefinitionDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<RelationshipDefinitionDisplayNameMap>;
-
 /** Localized descriptions for the Relationship. */
 export type RelationshipDefinitionDescriptionMap = { [key: string]: string | undefined };
-const RelationshipDefinitionDescriptionMap =
-  GetHubResponseTagsMap as any as S.Schema<RelationshipDefinitionDescriptionMap>;
-
 /** The properties of the Relationship. */
 export type RelationshipDefinitionFieldsList = Array<PropertyDefinition>;
-const RelationshipDefinitionFieldsList =
-  InteractionTypeDefinitionFieldsList as any as S.Schema<RelationshipDefinitionFieldsList>;
-
 /** Map a field of profile to its corresponding StrongId in Related Profile. */
 export interface RelationshipTypeFieldMapping {
   /** Specifies the fieldName in profile. */
@@ -1896,35 +1309,15 @@ export interface RelationshipTypeFieldMapping {
   /** Specifies the KeyProperty (from StrongId) of the related profile. */
   relatedProfileKeyProperty: string;
 }
-const RelationshipTypeFieldMapping = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<RelationshipTypeFieldMapping>;
-
 /** Maps a profile property with the StrongId of related profile. This is an array to support StrongIds that are composite key as well. */
 export type RelationshipTypeMappingFieldMappingsList = Array<RelationshipTypeFieldMapping>;
-const RelationshipTypeMappingFieldMappingsList = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<RelationshipTypeMappingFieldMappingsList>;
-
 /** Maps fields in Profile to their corresponding StrongIds in Related Profile. */
 export interface RelationshipTypeMapping {
   /** Maps a profile property with the StrongId of related profile. This is an array to support StrongIds that are composite key as well. */
   fieldMappings: RelationshipTypeMappingFieldMappingsList;
 }
-const RelationshipTypeMapping = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<RelationshipTypeMapping>;
-
 /** Optional property to be used to map fields in profile to their strong ids in related profile. */
 export type RelationshipDefinitionLookupMappingsList = Array<RelationshipTypeMapping>;
-const RelationshipDefinitionLookupMappingsList = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<RelationshipDefinitionLookupMappingsList>;
-
 /** The definition of Relationship. */
 export interface RelationshipDefinition {
   /** The Relationship Cardinality. */
@@ -1952,11 +1345,6 @@ export interface RelationshipDefinition {
   /** The hub name. */
   tenantId?: string;
 }
-const RelationshipDefinition = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<RelationshipDefinition>;
-
 export interface GetRelationshipResponse {
   /** Resource ID. */
   id?: string;
@@ -1966,11 +1354,6 @@ export interface GetRelationshipResponse {
   type?: string;
   properties?: RelationshipDefinition;
 }
-const GetRelationshipResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GetRelationshipResponse>;
-
 export interface GetRelationshipLinkRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1981,25 +1364,12 @@ export interface GetRelationshipLinkRequest {
   /** The name of the relationship link. */
   relationshipLinkName: string;
 }
-const GetRelationshipLinkRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GetRelationshipLinkRequest>;
-
 /** Localized display name for the Relationship Link. */
 export type RelationshipLinkDefinitionDisplayNameMap = { [key: string]: string | undefined };
-const RelationshipLinkDefinitionDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<RelationshipLinkDefinitionDisplayNameMap>;
-
 /** Localized descriptions for the Relationship Link. */
 export type RelationshipLinkDefinitionDescriptionMap = { [key: string]: string | undefined };
-const RelationshipLinkDefinitionDescriptionMap =
-  GetHubResponseTagsMap as any as S.Schema<RelationshipLinkDefinitionDescriptionMap>;
-
 /** Link type. */
 export type RelationshipLinkFieldMappingLinkType = "UpdateAlways" | "CopyIfNull";
-const RelationshipLinkFieldMappingLinkType = S.String;
-
 /** The fields mapping for Relationships. */
 export interface RelationshipLinkFieldMapping {
   /** The field name on the Interaction Type. */
@@ -2009,18 +1379,8 @@ export interface RelationshipLinkFieldMapping {
   /** The field name on the Relationship metadata. */
   relationshipFieldName: string;
 }
-const RelationshipLinkFieldMapping = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<RelationshipLinkFieldMapping>;
-
 /** The mappings between Interaction and Relationship fields. */
 export type RelationshipLinkDefinitionMappingsList = Array<RelationshipLinkFieldMapping>;
-const RelationshipLinkDefinitionMappingsList = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<RelationshipLinkDefinitionMappingsList>;
-
 /** The participant profile property reference. */
 export interface ParticipantProfilePropertyReference {
   /** The source interaction property that maps to the target profile property. */
@@ -2028,25 +1388,12 @@ export interface ParticipantProfilePropertyReference {
   /** The target profile property that maps to the source interaction property. */
   profilePropertyName: string;
 }
-const ParticipantProfilePropertyReference = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ParticipantProfilePropertyReference>;
-
 /** The property references for the Profile of the Relationship. */
 export type RelationshipLinkDefinitionProfilePropertyReferencesList =
   Array<ParticipantProfilePropertyReference>;
-const RelationshipLinkDefinitionProfilePropertyReferencesList = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<RelationshipLinkDefinitionProfilePropertyReferencesList>;
-
 /** The property references for the Related Profile of the Relationship. */
 export type RelationshipLinkDefinitionRelatedProfilePropertyReferencesList =
   Array<ParticipantProfilePropertyReference>;
-const RelationshipLinkDefinitionRelatedProfilePropertyReferencesList =
-  RelationshipLinkDefinitionProfilePropertyReferencesList as any as S.Schema<RelationshipLinkDefinitionRelatedProfilePropertyReferencesList>;
-
 /** The definition of relationship link. */
 export interface RelationshipLinkDefinition {
   /** Localized display name for the Relationship Link. */
@@ -2072,11 +1419,6 @@ export interface RelationshipLinkDefinition {
   /** The hub name. */
   tenantId?: string;
 }
-const RelationshipLinkDefinition = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<RelationshipLinkDefinition>;
-
 export interface GetRelationshipLinkResponse {
   /** Resource ID. */
   id?: string;
@@ -2086,11 +1428,6 @@ export interface GetRelationshipLinkResponse {
   type?: string;
   properties?: RelationshipLinkDefinition;
 }
-const GetRelationshipLinkResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GetRelationshipLinkResponse>;
-
 export interface GetRoleAssignmentRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2101,21 +1438,10 @@ export interface GetRoleAssignmentRequest {
   /** The name of the role assignment. */
   assignmentName: string;
 }
-const GetRoleAssignmentRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GetRoleAssignmentRequest>;
-
 /** Localized display names for the metadata. */
 export type RoleAssignmentDisplayNameMap = { [key: string]: string | undefined };
-const RoleAssignmentDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<RoleAssignmentDisplayNameMap>;
-
 /** Localized description for the metadata. */
 export type RoleAssignmentDescriptionMap = { [key: string]: string | undefined };
-const RoleAssignmentDescriptionMap =
-  GetHubResponseTagsMap as any as S.Schema<RoleAssignmentDescriptionMap>;
-
 /** Type of roles. */
 export type RoleAssignmentRole =
   | "Admin"
@@ -2124,13 +1450,8 @@ export type RoleAssignmentRole =
   | "ManageReader"
   | "DataAdmin"
   | "DataReader";
-const RoleAssignmentRole = S.String;
-
 /** Other metadata for the principal. */
 export type AssignmentPrincipalPrincipalMetadataMap = { [key: string]: string | undefined };
-const AssignmentPrincipalPrincipalMetadataMap =
-  GetHubResponseTagsMap as any as S.Schema<AssignmentPrincipalPrincipalMetadataMap>;
-
 /** The AssignmentPrincipal */
 export interface AssignmentPrincipal {
   /** The principal id being assigned to. */
@@ -2140,25 +1461,12 @@ export interface AssignmentPrincipal {
   /** Other metadata for the principal. */
   principalMetadata?: AssignmentPrincipalPrincipalMetadataMap;
 }
-const AssignmentPrincipal = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<AssignmentPrincipal>;
-
 /** The principals being assigned to. */
 export type RoleAssignmentPrincipalsList = Array<AssignmentPrincipal>;
-const RoleAssignmentPrincipalsList = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<RoleAssignmentPrincipalsList>;
-
 /** The elements included in the set. */
 export type ResourceSetDescriptionElementsList = Array<string>;
-const ResourceSetDescriptionElementsList =
-  InteractionTypeDefinitionAttributesValueList as any as S.Schema<ResourceSetDescriptionElementsList>;
-
 /** The elements that are not included in the set, in case elements contains '*' indicating 'all'. */
 export type ResourceSetDescriptionExceptionsList = Array<string>;
-const ResourceSetDescriptionExceptionsList =
-  InteractionTypeDefinitionAttributesValueList as any as S.Schema<ResourceSetDescriptionExceptionsList>;
-
 /** The resource set description. */
 export interface ResourceSetDescription {
   /** The elements included in the set. */
@@ -2166,11 +1474,6 @@ export interface ResourceSetDescription {
   /** The elements that are not included in the set, in case elements contains '*' indicating 'all'. */
   exceptions?: ResourceSetDescriptionExceptionsList;
 }
-const ResourceSetDescription = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ResourceSetDescription>;
-
 /** The Role Assignment definition. */
 export interface RoleAssignment {
   /** The hub name. */
@@ -2214,8 +1517,6 @@ export interface RoleAssignment {
   /** The Role assignments set for the assignment. */
   segments?: ResourceSetDescription;
 }
-const RoleAssignment = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<RoleAssignment>;
-
 export interface GetRoleAssignmentResponse {
   /** Resource ID. */
   id?: string;
@@ -2225,11 +1526,6 @@ export interface GetRoleAssignmentResponse {
   type?: string;
   properties?: RoleAssignment;
 }
-const GetRoleAssignmentResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<GetRoleAssignmentResponse>;
-
 export interface GetViewRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2242,12 +1538,8 @@ export interface GetViewRequest {
   /** The user ID. Use * to retrieve hub level view. */
   userId: string;
 }
-const GetViewRequest = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<GetViewRequest>;
-
 /** Localized display name for the view. */
 export type ViewDisplayNameMap = { [key: string]: string | undefined };
-const ViewDisplayNameMap = GetHubResponseTagsMap as any as S.Schema<ViewDisplayNameMap>;
-
 /** The view in Customer 360 web application. */
 export interface View {
   /** Name of the view. */
@@ -2265,8 +1557,6 @@ export interface View {
   /** Date time when view was created. */
   created?: string;
 }
-const View = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<View>;
-
 export interface GetViewResponse {
   /** Resource ID. */
   id?: string;
@@ -2276,8 +1566,6 @@ export interface GetViewResponse {
   type?: string;
   properties?: View;
 }
-const GetViewResponse = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<GetViewResponse>;
-
 export interface GetWidgetTypeRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2288,15 +1576,8 @@ export interface GetWidgetTypeRequest {
   /** The name of the widget type. */
   widgetTypeName: string;
 }
-const GetWidgetTypeRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GetWidgetTypeRequest>;
-
 /** Localized display name for the widget type. */
 export type WidgetTypeDisplayNameMap = { [key: string]: string | undefined };
-const WidgetTypeDisplayNameMap = GetHubResponseTagsMap as any as S.Schema<WidgetTypeDisplayNameMap>;
-
 /** Definition of WidgetType. */
 export interface WidgetType {
   /** Name of the widget type. */
@@ -2318,8 +1599,6 @@ export interface WidgetType {
   /** Date time when widget type was created. */
   created?: string;
 }
-const WidgetType = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<WidgetType>;
-
 export interface GetWidgetTypeResponse {
   /** Resource ID. */
   id?: string;
@@ -2329,16 +1608,8 @@ export interface GetWidgetTypeResponse {
   type?: string;
   properties?: WidgetType;
 }
-const GetWidgetTypeResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GetWidgetTypeResponse>;
-
 /** Resource tags. */
 export type HubsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const HubsCreateOrUpdateRequestTagsMap =
-  GetHubResponseTagsMap as any as S.Schema<HubsCreateOrUpdateRequestTagsMap>;
-
 /** Properties of hub. */
 export interface HubPropertiesFormatInput {
   /** The bit flags for enabled hub features. Bit 0 is set to 1 indicates graph is enabled, or disabled if set to 0. Bit 1 is set to 1 indicates the hub is disabled, or enabled if set to 0. */
@@ -2346,11 +1617,6 @@ export interface HubPropertiesFormatInput {
   /** Billing settings of the hub. */
   hubBillingInfo?: HubBillingInfoFormat;
 }
-const HubPropertiesFormatInput = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<HubPropertiesFormatInput>;
-
 export interface HubsCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2364,16 +1630,8 @@ export interface HubsCreateOrUpdateRequest {
   tags?: HubsCreateOrUpdateRequestTagsMap;
   properties?: HubPropertiesFormatInput;
 }
-const HubsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<HubsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type HubsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const HubsCreateOrUpdateResponseTagsMap =
-  GetHubResponseTagsMap as any as S.Schema<HubsCreateOrUpdateResponseTagsMap>;
-
 export interface HubsCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -2387,11 +1645,6 @@ export interface HubsCreateOrUpdateResponse {
   tags?: HubsCreateOrUpdateResponseTagsMap;
   properties?: HubPropertiesFormat;
 }
-const HubsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<HubsCreateOrUpdateResponse>;
-
 export interface ImagesGetUploadUrlForDataRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2406,11 +1659,6 @@ export interface ImagesGetUploadUrlForDataRequest {
   /** Relative path of the image. */
   relativePath?: string;
 }
-const ImagesGetUploadUrlForDataRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ImagesGetUploadUrlForDataRequest>;
-
 /** The image definition. */
 export interface ImageDefinition {
   /** Whether image exists already. */
@@ -2420,8 +1668,6 @@ export interface ImageDefinition {
   /** Relative path of the image. */
   relativePath?: string;
 }
-const ImageDefinition = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<ImageDefinition>;
-
 export interface ImagesGetUploadUrlForEntityTypeRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2436,29 +1682,15 @@ export interface ImagesGetUploadUrlForEntityTypeRequest {
   /** Relative path of the image. */
   relativePath?: string;
 }
-const ImagesGetUploadUrlForEntityTypeRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ImagesGetUploadUrlForEntityTypeRequest>;
-
 export type InteractionTypeDefinitionInputAttributesValueList = Array<string>;
 /** The attributes for the Type. */
 export type InteractionTypeDefinitionInputAttributesMap = {
   [key: string]: InteractionTypeDefinitionInputAttributesValueList | undefined;
 };
-const InteractionTypeDefinitionInputAttributesMap =
-  InteractionTypeDefinitionAttributesMap as any as S.Schema<InteractionTypeDefinitionInputAttributesMap>;
-
 /** Localized descriptions for the property. */
 export type InteractionTypeDefinitionInputDescriptionMap = { [key: string]: string | undefined };
-const InteractionTypeDefinitionInputDescriptionMap =
-  GetHubResponseTagsMap as any as S.Schema<InteractionTypeDefinitionInputDescriptionMap>;
-
 /** Localized display names for the property. */
 export type InteractionTypeDefinitionInputDisplayNameMap = { [key: string]: string | undefined };
-const InteractionTypeDefinitionInputDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<InteractionTypeDefinitionInputDisplayNameMap>;
-
 export type InteractionTypeDefinitionInputLocalizedAttributesValueMap = {
   [key: string]: string | undefined;
 };
@@ -2466,22 +1698,14 @@ export type InteractionTypeDefinitionInputLocalizedAttributesValueMap = {
 export type InteractionTypeDefinitionInputLocalizedAttributesMap = {
   [key: string]: InteractionTypeDefinitionInputLocalizedAttributesValueMap | undefined;
 };
-const InteractionTypeDefinitionInputLocalizedAttributesMap =
-  InteractionTypeDefinitionLocalizedAttributesMap as any as S.Schema<InteractionTypeDefinitionInputLocalizedAttributesMap>;
-
 /** Type of entity. */
 export type InteractionTypeDefinitionInputEntityType =
   | "None"
   | "Profile"
   | "Interaction"
   | "Relationship";
-const InteractionTypeDefinitionInputEntityType = S.String;
-
 /** Describes valid values for an enum property. */
 export type PropertyDefinitionInputEnumValidValuesList = Array<ProfileEnumValidValuesFormat>;
-const PropertyDefinitionInputEnumValidValuesList =
-  PropertyDefinitionEnumValidValuesList as any as S.Schema<PropertyDefinitionInputEnumValidValuesList>;
-
 /** Property definition. */
 export interface PropertyDefinitionInput {
   /** Array value separator for properties with isArray set. */
@@ -2515,32 +1739,14 @@ export interface PropertyDefinitionInput {
   /** Whether property is available in graph or not. */
   isAvailableInGraph?: boolean;
 }
-const PropertyDefinitionInput = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<PropertyDefinitionInput>;
-
 /** The properties of the Profile. */
 export type InteractionTypeDefinitionInputFieldsList = Array<PropertyDefinitionInput>;
-const InteractionTypeDefinitionInputFieldsList = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<InteractionTypeDefinitionInputFieldsList>;
-
 /** The id property names. Properties which uniquely identify an interaction instance. */
 export type InteractionTypeDefinitionInputIdPropertyNamesList = Array<string>;
-const InteractionTypeDefinitionInputIdPropertyNamesList =
-  InteractionTypeDefinitionAttributesValueList as any as S.Schema<InteractionTypeDefinitionInputIdPropertyNamesList>;
-
 /** Profiles that participated in the interaction. */
 export type InteractionTypeDefinitionInputParticipantProfilesList = Array<Participant>;
-const InteractionTypeDefinitionInputParticipantProfilesList =
-  InteractionTypeDefinitionParticipantProfilesList as any as S.Schema<InteractionTypeDefinitionInputParticipantProfilesList>;
-
 /** Data Source is a way for us to know the source of instances. A single type can have data coming in from multiple places. In activities we use this to determine precedence rules. */
 export interface DataSourceInput {}
-const DataSourceInput = DeleteConnectorResponse as any as S.Schema<DataSourceInput>;
-
 /** The Interaction Type Definition */
 export interface InteractionTypeDefinitionInput {
   /** The attributes for the Type. */
@@ -2582,11 +1788,6 @@ export interface InteractionTypeDefinitionInput {
   /** An interaction can be tagged as an activity only during create. This enables the interaction to be editable and can enable merging of properties from multiple data sources based on precedence, which is defined at a link level. */
   isActivity?: boolean;
 }
-const InteractionTypeDefinitionInput = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<InteractionTypeDefinitionInput>;
-
 export interface InteractionsCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2598,11 +1799,6 @@ export interface InteractionsCreateOrUpdateRequest {
   interactionName: string;
   properties?: InteractionTypeDefinitionInput;
 }
-const InteractionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<InteractionsCreateOrUpdateRequest>;
-
 export interface InteractionsCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -2612,11 +1808,6 @@ export interface InteractionsCreateOrUpdateResponse {
   type?: string;
   properties?: InteractionTypeDefinition;
 }
-const InteractionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<InteractionsCreateOrUpdateResponse>;
-
 export interface InteractionsSuggestRelationshipLinksRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2627,23 +1818,12 @@ export interface InteractionsSuggestRelationshipLinksRequest {
   /** The name of the interaction. */
   interactionName: string;
 }
-const InteractionsSuggestRelationshipLinksRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<InteractionsSuggestRelationshipLinksRequest>;
-
 /** The property references for the profile type. */
 export type RelationshipsLookupProfilePropertyReferencesList =
   Array<ParticipantProfilePropertyReference>;
-const RelationshipsLookupProfilePropertyReferencesList =
-  RelationshipLinkDefinitionProfilePropertyReferencesList as any as S.Schema<RelationshipsLookupProfilePropertyReferencesList>;
-
 /** The property references for the related profile type. */
 export type RelationshipsLookupRelatedProfilePropertyReferencesList =
   Array<ParticipantProfilePropertyReference>;
-const RelationshipsLookupRelatedProfilePropertyReferencesList =
-  RelationshipLinkDefinitionProfilePropertyReferencesList as any as S.Schema<RelationshipsLookupRelatedProfilePropertyReferencesList>;
-
 /** The definition of suggested relationship for the type. */
 export interface RelationshipsLookup {
   /** The relationship profile. */
@@ -2657,15 +1837,8 @@ export interface RelationshipsLookup {
   /** The name of existing Relationship. */
   existingRelationshipName?: string;
 }
-const RelationshipsLookup = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<RelationshipsLookup>;
-
 /** Suggested relationships for the type. */
 export type SuggestRelationshipLinksResponseSuggestedRelationshipsList = Array<RelationshipsLookup>;
-const SuggestRelationshipLinksResponseSuggestedRelationshipsList = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<SuggestRelationshipLinksResponseSuggestedRelationshipsList>;
-
 /** The response of suggest relationship links operation. */
 export interface SuggestRelationshipLinksResponse {
   /** The interaction name. */
@@ -2673,29 +1846,14 @@ export interface SuggestRelationshipLinksResponse {
   /** Suggested relationships for the type. */
   suggestedRelationships?: SuggestRelationshipLinksResponseSuggestedRelationshipsList;
 }
-const SuggestRelationshipLinksResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<SuggestRelationshipLinksResponse>;
-
 /** The mapping entity type. */
 export type KpiDefinitionInputEntityType = "None" | "Profile" | "Interaction" | "Relationship";
-const KpiDefinitionInputEntityType = S.String;
-
 /** Localized display name for the KPI. */
 export type KpiDefinitionInputDisplayNameMap = { [key: string]: string | undefined };
-const KpiDefinitionInputDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<KpiDefinitionInputDisplayNameMap>;
-
 /** Localized description for the KPI. */
 export type KpiDefinitionInputDescriptionMap = { [key: string]: string | undefined };
-const KpiDefinitionInputDescriptionMap =
-  GetHubResponseTagsMap as any as S.Schema<KpiDefinitionInputDescriptionMap>;
-
 /** The calculation window. */
 export type KpiDefinitionInputCalculationWindow = "Lifetime" | "Hour" | "Day" | "Week" | "Month";
-const KpiDefinitionInputCalculationWindow = S.String;
-
 /** The computation function for the KPI. */
 export type KpiDefinitionInputFunction =
   | "Sum"
@@ -2706,23 +1864,12 @@ export type KpiDefinitionInputFunction =
   | "Count"
   | "None"
   | "CountDistinct";
-const KpiDefinitionInputFunction = S.String;
-
 /** the group by properties for the KPI. */
 export type KpiDefinitionInputGroupByList = Array<string>;
-const KpiDefinitionInputGroupByList =
-  InteractionTypeDefinitionAttributesValueList as any as S.Schema<KpiDefinitionInputGroupByList>;
-
 /** The aliases. */
 export type KpiDefinitionInputAliasesList = Array<KpiAlias>;
-const KpiDefinitionInputAliasesList =
-  KpiDefinitionAliasesList as any as S.Schema<KpiDefinitionInputAliasesList>;
-
 /** The KPI extracts. */
 export type KpiDefinitionInputExtractsList = Array<KpiExtract>;
-const KpiDefinitionInputExtractsList =
-  KpiDefinitionExtractsList as any as S.Schema<KpiDefinitionInputExtractsList>;
-
 /** Defines the KPI Threshold limits. */
 export interface KpiDefinitionInput {
   /** The mapping entity type. */
@@ -2754,8 +1901,6 @@ export interface KpiDefinitionInput {
   /** The KPI extracts. */
   extracts?: KpiDefinitionInputExtractsList;
 }
-const KpiDefinitionInput = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<KpiDefinitionInput>;
-
 export interface KpiCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2767,11 +1912,6 @@ export interface KpiCreateOrUpdateRequest {
   kpiName: string;
   properties?: KpiDefinitionInput;
 }
-const KpiCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<KpiCreateOrUpdateRequest>;
-
 export interface KpiCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -2781,11 +1921,6 @@ export interface KpiCreateOrUpdateResponse {
   type?: string;
   properties?: KpiDefinition;
 }
-const KpiCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<KpiCreateOrUpdateResponse>;
-
 export interface KpiReprocessRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2796,52 +1931,30 @@ export interface KpiReprocessRequest {
   /** The name of the KPI. */
   kpiName: string;
 }
-const KpiReprocessRequest = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<KpiReprocessRequest>;
-
 export interface KpiReprocessResponse {}
-const KpiReprocessResponse = DeleteConnectorResponse as any as S.Schema<KpiReprocessResponse>;
-
 /** Type of source entity. */
 export type LinkDefinitionInputSourceEntityType =
   | "None"
   | "Profile"
   | "Interaction"
   | "Relationship";
-const LinkDefinitionInputSourceEntityType = S.String;
-
 /** Type of target entity. */
 export type LinkDefinitionInputTargetEntityType =
   | "None"
   | "Profile"
   | "Interaction"
   | "Relationship";
-const LinkDefinitionInputTargetEntityType = S.String;
-
 /** Localized display name for the Link. */
 export type LinkDefinitionInputDisplayNameMap = { [key: string]: string | undefined };
-const LinkDefinitionInputDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<LinkDefinitionInputDisplayNameMap>;
-
 /** Localized descriptions for the Link. */
 export type LinkDefinitionInputDescriptionMap = { [key: string]: string | undefined };
-const LinkDefinitionInputDescriptionMap =
-  GetHubResponseTagsMap as any as S.Schema<LinkDefinitionInputDescriptionMap>;
-
 /** The set of properties mappings between the source and target Types. */
 export type LinkDefinitionInputMappingsList = Array<TypePropertiesMapping>;
-const LinkDefinitionInputMappingsList =
-  LinkDefinitionMappingsList as any as S.Schema<LinkDefinitionInputMappingsList>;
-
 /** The properties that represent the participating profile. */
 export type LinkDefinitionInputParticipantPropertyReferencesList =
   Array<ParticipantPropertyReference>;
-const LinkDefinitionInputParticipantPropertyReferencesList =
-  ParticipantParticipantPropertyReferencesList as any as S.Schema<LinkDefinitionInputParticipantPropertyReferencesList>;
-
 /** Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only. */
 export type LinkDefinitionInputOperationType = "Upsert" | "Delete";
-const LinkDefinitionInputOperationType = S.String;
-
 /** The definition of Link. */
 export interface LinkDefinitionInput {
   /** Type of source entity. */
@@ -2865,8 +1978,6 @@ export interface LinkDefinitionInput {
   /** Determines whether this link is supposed to create or delete instances if Link is NOT Reference Only. */
   operationType?: LinkDefinitionInputOperationType | (string & {});
 }
-const LinkDefinitionInput = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<LinkDefinitionInput>;
-
 export interface LinksCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2878,11 +1989,6 @@ export interface LinksCreateOrUpdateRequest {
   linkName: string;
   properties?: LinkDefinitionInput;
 }
-const LinksCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<LinksCreateOrUpdateRequest>;
-
 export interface LinksCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -2892,11 +1998,6 @@ export interface LinksCreateOrUpdateResponse {
   type?: string;
   properties?: LinkDefinition;
 }
-const LinksCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<LinksCreateOrUpdateResponse>;
-
 export interface ListAuthorizationPolicyByHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2905,11 +2006,6 @@ export interface ListAuthorizationPolicyByHubRequest {
   /** The name of the hub. */
   hubName: string;
 }
-const ListAuthorizationPolicyByHubRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ListAuthorizationPolicyByHubRequest>;
-
 /** The authorization policy resource format. */
 export interface AuthorizationPolicyResourceFormat {
   /** Resource ID. */
@@ -2920,16 +2016,8 @@ export interface AuthorizationPolicyResourceFormat {
   type?: string;
   properties?: AuthorizationPolicy;
 }
-const AuthorizationPolicyResourceFormat =
-  AuthorizationPoliciesCreateOrUpdateResponse as any as S.Schema<AuthorizationPolicyResourceFormat>;
-
 /** Results of the list operation. */
 export type AuthorizationPolicyListResultValueList = Array<AuthorizationPolicyResourceFormat>;
-const AuthorizationPolicyListResultValueList = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<AuthorizationPolicyListResultValueList>;
-
 /** The response of list authorization policy operation. */
 export interface AuthorizationPolicyListResult {
   /** Results of the list operation. */
@@ -2937,11 +2025,6 @@ export interface AuthorizationPolicyListResult {
   /** Link to the next set of results. */
   nextLink?: string;
 }
-const AuthorizationPolicyListResult = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<AuthorizationPolicyListResult>;
-
 export interface ListConnectorByHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2950,11 +2033,6 @@ export interface ListConnectorByHubRequest {
   /** The name of the hub. */
   hubName: string;
 }
-const ListConnectorByHubRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ListConnectorByHubRequest>;
-
 /** The connector resource format. */
 export interface ConnectorResourceFormat {
   /** Resource ID. */
@@ -2965,15 +2043,8 @@ export interface ConnectorResourceFormat {
   type?: string;
   properties?: Connector;
 }
-const ConnectorResourceFormat = GetConnectorResponse as any as S.Schema<ConnectorResourceFormat>;
-
 /** Results of the list operation. */
 export type ConnectorListResultValueList = Array<ConnectorResourceFormat>;
-const ConnectorListResultValueList = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<ConnectorListResultValueList>;
-
 /** The response of list connector operation. */
 export interface ConnectorListResult {
   /** Results of the list operation. */
@@ -2981,8 +2052,6 @@ export interface ConnectorListResult {
   /** Link to the next set of results. */
   nextLink?: string;
 }
-const ConnectorListResult = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<ConnectorListResult>;
-
 export interface ListConnectorMappingByConnectorRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2993,11 +2062,6 @@ export interface ListConnectorMappingByConnectorRequest {
   /** The name of the connector. */
   connectorName: string;
 }
-const ListConnectorMappingByConnectorRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ListConnectorMappingByConnectorRequest>;
-
 /** The connector mapping resource format. */
 export interface ConnectorMappingResourceFormat {
   /** Resource ID. */
@@ -3008,16 +2072,8 @@ export interface ConnectorMappingResourceFormat {
   type?: string;
   properties?: ConnectorMapping;
 }
-const ConnectorMappingResourceFormat =
-  ConnectorMappingsCreateOrUpdateResponse as any as S.Schema<ConnectorMappingResourceFormat>;
-
 /** Results of the list operation. */
 export type ConnectorMappingListResultValueList = Array<ConnectorMappingResourceFormat>;
-const ConnectorMappingListResultValueList = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ConnectorMappingListResultValueList>;
-
 /** The response of list connector mapping operation. */
 export interface ConnectorMappingListResult {
   /** Results of the list operation. */
@@ -3025,26 +2081,14 @@ export interface ConnectorMappingListResult {
   /** Link to the next set of results. */
   nextLink?: string;
 }
-const ConnectorMappingListResult = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ConnectorMappingListResult>;
-
 export interface ListHubByResourceGroupRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the resource group. */
   resourceGroupName: string;
 }
-const ListHubByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ListHubByResourceGroupRequest>;
-
 /** Resource tags. */
 export type HubTagsMap = { [key: string]: string | undefined };
-const HubTagsMap = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<HubTagsMap>;
-
 /** Hub resource. */
 export interface Hub {
   /** Resource ID. */
@@ -3059,15 +2103,8 @@ export interface Hub {
   tags?: HubTagsMap;
   properties?: HubPropertiesFormat;
 }
-const Hub = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<Hub>;
-
 /** Results of the list operation. */
 export type HubListResultValueList = Array<Hub>;
-const HubListResultValueList = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<HubListResultValueList>;
-
 /** Response of list hub operation. */
 export interface HubListResult {
   /** Results of the list operation. */
@@ -3075,14 +2112,10 @@ export interface HubListResult {
   /** Link for next set of results. */
   nextLink?: string;
 }
-const HubListResult = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<HubListResult>;
-
 export interface ListHubsRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-const ListHubsRequest = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<ListHubsRequest>;
-
 export interface ListInteractionByHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3093,11 +2126,6 @@ export interface ListInteractionByHubRequest {
   /** Locale of interaction to retrieve, default is en-us. */
   locale_code?: string;
 }
-const ListInteractionByHubRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListInteractionByHubRequest>;
-
 /** The interaction resource format. */
 export interface InteractionResourceFormat {
   /** Resource ID. */
@@ -3108,16 +2136,8 @@ export interface InteractionResourceFormat {
   type?: string;
   properties?: InteractionTypeDefinition;
 }
-const InteractionResourceFormat =
-  InteractionsCreateOrUpdateResponse as any as S.Schema<InteractionResourceFormat>;
-
 /** Results of the list operation. */
 export type InteractionListResultValueList = Array<InteractionResourceFormat>;
-const InteractionListResultValueList = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<InteractionListResultValueList>;
-
 /** The response of list interaction operation. */
 export interface InteractionListResult {
   /** Results of the list operation. */
@@ -3125,11 +2145,6 @@ export interface InteractionListResult {
   /** Link to the next set of results. */
   nextLink?: string;
 }
-const InteractionListResult = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<InteractionListResult>;
-
 export interface ListKpiByHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3138,8 +2153,6 @@ export interface ListKpiByHubRequest {
   /** The name of the hub. */
   hubName: string;
 }
-const ListKpiByHubRequest = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<ListKpiByHubRequest>;
-
 /** The KPI resource format. */
 export interface KpiResourceFormat {
   /** Resource ID. */
@@ -3150,15 +2163,8 @@ export interface KpiResourceFormat {
   type?: string;
   properties?: KpiDefinition;
 }
-const KpiResourceFormat = GetKpiResponse as any as S.Schema<KpiResourceFormat>;
-
 /** Results of the list operation. */
 export type KpiListResultValueList = Array<KpiResourceFormat>;
-const KpiListResultValueList = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<KpiListResultValueList>;
-
 /** The response of list KPI operation. */
 export interface KpiListResult {
   /** Results of the list operation. */
@@ -3166,8 +2172,6 @@ export interface KpiListResult {
   /** Link to the next set of results. */
   nextLink?: string;
 }
-const KpiListResult = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<KpiListResult>;
-
 export interface ListLinkByHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3176,11 +2180,6 @@ export interface ListLinkByHubRequest {
   /** The name of the hub. */
   hubName: string;
 }
-const ListLinkByHubRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ListLinkByHubRequest>;
-
 /** The link resource format. */
 export interface LinkResourceFormat {
   /** Resource ID. */
@@ -3191,15 +2190,8 @@ export interface LinkResourceFormat {
   type?: string;
   properties?: LinkDefinition;
 }
-const LinkResourceFormat = GetLinkResponse as any as S.Schema<LinkResourceFormat>;
-
 /** Results of the list operation. */
 export type LinkListResultValueList = Array<LinkResourceFormat>;
-const LinkListResultValueList = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<LinkListResultValueList>;
-
 /** The response of list link operation. */
 export interface LinkListResult {
   /** Results of the list operation. */
@@ -3207,14 +2199,7 @@ export interface LinkListResult {
   /** Link to the next set of results. */
   nextLink?: string;
 }
-const LinkListResult = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<LinkListResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.CustomerInsights */
@@ -3224,8 +2209,6 @@ export interface OperationDisplay {
   /** Operation type: Read, write, delete, etc. */
   operation?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<OperationDisplay>;
-
 /** A Customer Insights REST API operation */
 export interface Operation {
   /** Operation name: {provider}/{resource}/{operation} */
@@ -3233,15 +2216,8 @@ export interface Operation {
   /** The object that represents the operation. */
   display?: OperationDisplay;
 }
-const Operation = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<Operation>;
-
 /** List of Customer Insights operations supported by the Microsoft.CustomerInsights resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** Result of the request to list Customer Insights operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of Customer Insights operations supported by the Microsoft.CustomerInsights resource provider. */
@@ -3249,8 +2225,6 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<OperationListResult>;
-
 export interface ListPredictionByHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3259,11 +2233,6 @@ export interface ListPredictionByHubRequest {
   /** The name of the hub. */
   hubName: string;
 }
-const ListPredictionByHubRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<ListPredictionByHubRequest>;
-
 /** The prediction resource format. */
 export interface PredictionResourceFormat {
   /** Resource ID. */
@@ -3274,15 +2243,8 @@ export interface PredictionResourceFormat {
   type?: string;
   properties?: Prediction;
 }
-const PredictionResourceFormat = GetPredictionResponse as any as S.Schema<PredictionResourceFormat>;
-
 /** Results of the list operation. */
 export type PredictionListResultValueList = Array<PredictionResourceFormat>;
-const PredictionListResultValueList = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<PredictionListResultValueList>;
-
 /** The response of list predictions operation. */
 export interface PredictionListResult {
   /** Results of the list operation. */
@@ -3290,11 +2252,6 @@ export interface PredictionListResult {
   /** Link to the next set of results. */
   nextLink?: string;
 }
-const PredictionListResult = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<PredictionListResult>;
-
 export interface ListProfileByHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3305,11 +2262,6 @@ export interface ListProfileByHubRequest {
   /** Locale of profile to retrieve, default is en-us. */
   locale_code?: string;
 }
-const ListProfileByHubRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<ListProfileByHubRequest>;
-
 /** The profile resource format. */
 export interface ProfileResourceFormat {
   /** Resource ID. */
@@ -3320,15 +2272,8 @@ export interface ProfileResourceFormat {
   type?: string;
   properties?: ProfileTypeDefinition;
 }
-const ProfileResourceFormat = GetProfileResponse as any as S.Schema<ProfileResourceFormat>;
-
 /** Results of the list operation. */
 export type ProfileListResultValueList = Array<ProfileResourceFormat>;
-const ProfileListResultValueList = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ProfileListResultValueList>;
-
 /** The response of list profile operation. */
 export interface ProfileListResult {
   /** Results of the list operation. */
@@ -3336,8 +2281,6 @@ export interface ProfileListResult {
   /** Link to the next set of results. */
   nextLink?: string;
 }
-const ProfileListResult = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<ProfileListResult>;
-
 export interface ListRelationshipByHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3346,11 +2289,6 @@ export interface ListRelationshipByHubRequest {
   /** The name of the hub. */
   hubName: string;
 }
-const ListRelationshipByHubRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<ListRelationshipByHubRequest>;
-
 /** The relationship resource format. */
 export interface RelationshipResourceFormat {
   /** Resource ID. */
@@ -3361,18 +2299,8 @@ export interface RelationshipResourceFormat {
   type?: string;
   properties?: RelationshipDefinition;
 }
-const RelationshipResourceFormat = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<RelationshipResourceFormat>;
-
 /** Results of the list operation. */
 export type RelationshipListResultValueList = Array<RelationshipResourceFormat>;
-const RelationshipListResultValueList = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<RelationshipListResultValueList>;
-
 /** The response of list relationship operation. */
 export interface RelationshipListResult {
   /** Results of the list operation. */
@@ -3380,11 +2308,6 @@ export interface RelationshipListResult {
   /** Link to the next set of results. */
   nextLink?: string;
 }
-const RelationshipListResult = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<RelationshipListResult>;
-
 export interface ListRelationshipLinkByHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3393,11 +2316,6 @@ export interface ListRelationshipLinkByHubRequest {
   /** The name of the hub. */
   hubName: string;
 }
-const ListRelationshipLinkByHubRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ListRelationshipLinkByHubRequest>;
-
 /** The relationship link resource format. */
 export interface RelationshipLinkResourceFormat {
   /** Resource ID. */
@@ -3408,16 +2326,8 @@ export interface RelationshipLinkResourceFormat {
   type?: string;
   properties?: RelationshipLinkDefinition;
 }
-const RelationshipLinkResourceFormat =
-  GetRelationshipLinkResponse as any as S.Schema<RelationshipLinkResourceFormat>;
-
 /** Results of the list operation. */
 export type RelationshipLinkListResultValueList = Array<RelationshipLinkResourceFormat>;
-const RelationshipLinkListResultValueList = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<RelationshipLinkListResultValueList>;
-
 /** The response of list relationship link operation. */
 export interface RelationshipLinkListResult {
   /** Results of the list operation. */
@@ -3425,11 +2335,6 @@ export interface RelationshipLinkListResult {
   /** Link to the next set of results. */
   nextLink?: string;
 }
-const RelationshipLinkListResult = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<RelationshipLinkListResult>;
-
 export interface ListRoleAssignmentByHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3438,11 +2343,6 @@ export interface ListRoleAssignmentByHubRequest {
   /** The name of the hub. */
   hubName: string;
 }
-const ListRoleAssignmentByHubRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<ListRoleAssignmentByHubRequest>;
-
 /** The Role Assignment resource format. */
 export interface RoleAssignmentResourceFormat {
   /** Resource ID. */
@@ -3453,16 +2353,8 @@ export interface RoleAssignmentResourceFormat {
   type?: string;
   properties?: RoleAssignment;
 }
-const RoleAssignmentResourceFormat =
-  GetRoleAssignmentResponse as any as S.Schema<RoleAssignmentResourceFormat>;
-
 /** Results of the list operation. */
 export type RoleAssignmentListResultValueList = Array<RoleAssignmentResourceFormat>;
-const RoleAssignmentListResultValueList = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<RoleAssignmentListResultValueList>;
-
 /** The response of list role assignment operation. */
 export interface RoleAssignmentListResult {
   /** Results of the list operation. */
@@ -3470,11 +2362,6 @@ export interface RoleAssignmentListResult {
   /** Link to the next set of results. */
   nextLink?: string;
 }
-const RoleAssignmentListResult = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<RoleAssignmentListResult>;
-
 export interface ListRoleByHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3483,11 +2370,6 @@ export interface ListRoleByHubRequest {
   /** The name of the hub. */
   hubName: string;
 }
-const ListRoleByHubRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<ListRoleByHubRequest>;
-
 /** The Role definition. */
 export interface Role {
   /** The role name. */
@@ -3495,8 +2377,6 @@ export interface Role {
   /** The description of the role. */
   description?: string;
 }
-const Role = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<Role>;
-
 /** The role resource format. */
 export interface RoleResourceFormat {
   /** Resource ID. */
@@ -3507,15 +2387,8 @@ export interface RoleResourceFormat {
   type?: string;
   properties?: Role;
 }
-const RoleResourceFormat = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<RoleResourceFormat>;
-
 /** Results of the list operation. */
 export type RoleListResultValueList = Array<RoleResourceFormat>;
-const RoleListResultValueList = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<RoleListResultValueList>;
-
 /** The response of list role assignment operation. */
 export interface RoleListResult {
   /** Results of the list operation. */
@@ -3523,8 +2396,6 @@ export interface RoleListResult {
   /** Link to the next set of results. */
   nextLink?: string;
 }
-const RoleListResult = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<RoleListResult>;
-
 export interface ListViewByHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3535,11 +2406,6 @@ export interface ListViewByHubRequest {
   /** The user ID. Use * to retrieve hub level views. */
   userId: string;
 }
-const ListViewByHubRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ListViewByHubRequest>;
-
 /** The view resource format. */
 export interface ViewResourceFormat {
   /** Resource ID. */
@@ -3550,15 +2416,8 @@ export interface ViewResourceFormat {
   type?: string;
   properties?: View;
 }
-const ViewResourceFormat = GetViewResponse as any as S.Schema<ViewResourceFormat>;
-
 /** Results of the list operation. */
 export type ViewListResultValueList = Array<ViewResourceFormat>;
-const ViewListResultValueList = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<ViewListResultValueList>;
-
 /** The response of list view operation. */
 export interface ViewListResult {
   /** Results of the list operation. */
@@ -3566,8 +2425,6 @@ export interface ViewListResult {
   /** Link to the next set of results. */
   nextLink?: string;
 }
-const ViewListResult = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<ViewListResult>;
-
 export interface ListWidgetTypeByHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3576,11 +2433,6 @@ export interface ListWidgetTypeByHubRequest {
   /** The name of the hub. */
   hubName: string;
 }
-const ListWidgetTypeByHubRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<ListWidgetTypeByHubRequest>;
-
 /** The WidgetTypeResourceFormat */
 export interface WidgetTypeResourceFormat {
   /** Resource ID. */
@@ -3591,15 +2443,8 @@ export interface WidgetTypeResourceFormat {
   type?: string;
   properties?: WidgetType;
 }
-const WidgetTypeResourceFormat = GetWidgetTypeResponse as any as S.Schema<WidgetTypeResourceFormat>;
-
 /** Results of the list operation. */
 export type WidgetTypeListResultValueList = Array<WidgetTypeResourceFormat>;
-const WidgetTypeListResultValueList = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<WidgetTypeListResultValueList>;
-
 /** The response of list widget type operation. */
 export interface WidgetTypeListResult {
   /** Results of the list operation. */
@@ -3607,45 +2452,22 @@ export interface WidgetTypeListResult {
   /** Link to the next set of results. */
   nextLink?: string;
 }
-const WidgetTypeListResult = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<WidgetTypeListResult>;
-
 /** Description of the prediction. */
 export type PredictionInputDescriptionMap = { [key: string]: string | undefined };
-const PredictionInputDescriptionMap =
-  GetHubResponseTagsMap as any as S.Schema<PredictionInputDescriptionMap>;
-
 /** Display name of the prediction. */
 export type PredictionInputDisplayNameMap = { [key: string]: string | undefined };
-const PredictionInputDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<PredictionInputDisplayNameMap>;
-
 /** Interaction types involved in the prediction. */
 export type PredictionInputInvolvedInteractionTypesList = Array<string>;
-const PredictionInputInvolvedInteractionTypesList =
-  InteractionTypeDefinitionAttributesValueList as any as S.Schema<PredictionInputInvolvedInteractionTypesList>;
-
 /** KPI types involved in the prediction. */
 export type PredictionInputInvolvedKpiTypesList = Array<string>;
-const PredictionInputInvolvedKpiTypesList =
-  InteractionTypeDefinitionAttributesValueList as any as S.Schema<PredictionInputInvolvedKpiTypesList>;
-
 /** Relationships involved in the prediction. */
 export type PredictionInputInvolvedRelationshipsList = Array<string>;
-const PredictionInputInvolvedRelationshipsList =
-  InteractionTypeDefinitionAttributesValueList as any as S.Schema<PredictionInputInvolvedRelationshipsList>;
-
 /** Definition of the link mapping of prediction. */
 export type PredictionInputMappings = PredictionMappings;
 /** The definition of a prediction grade. */
 export type PredictionInputGradesItem = PredictionGradesItem;
 /** The prediction grades. */
 export type PredictionInputGradesList = Array<PredictionGradesItem>;
-const PredictionInputGradesList =
-  PredictionGradesList as any as S.Schema<PredictionInputGradesList>;
-
 /** The prediction definition. */
 export interface PredictionInput {
   /** Description of the prediction. */
@@ -3677,8 +2499,6 @@ export interface PredictionInput {
   /** The prediction grades. */
   grades?: PredictionInputGradesList;
 }
-const PredictionInput = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<PredictionInput>;
-
 export interface PredictionsCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3690,11 +2510,6 @@ export interface PredictionsCreateOrUpdateRequest {
   predictionName: string;
   properties?: PredictionInput;
 }
-const PredictionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<PredictionsCreateOrUpdateRequest>;
-
 export interface PredictionsCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -3704,11 +2519,6 @@ export interface PredictionsCreateOrUpdateResponse {
   type?: string;
   properties?: Prediction;
 }
-const PredictionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<PredictionsCreateOrUpdateResponse>;
-
 /** Prediction model life cycle. When prediction is in PendingModelConfirmation status, it is allowed to update the status to PendingFeaturing or Active through API. */
 export type PredictionsModelStatusRequestStatus =
   | "New"
@@ -3729,8 +2539,6 @@ export type PredictionsModelStatusRequestStatus =
   | "Deleted"
   | "HumanIntervention"
   | "Failed";
-const PredictionsModelStatusRequestStatus = S.String;
-
 export interface PredictionsModelStatusRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3743,33 +2551,16 @@ export interface PredictionsModelStatusRequest {
   /** Prediction model life cycle. When prediction is in PendingModelConfirmation status, it is allowed to update the status to PendingFeaturing or Active through API. */
   status: PredictionsModelStatusRequestStatus | (string & {});
 }
-const PredictionsModelStatusRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<PredictionsModelStatusRequest>;
-
 export interface PredictionsModelStatusResponse {}
-const PredictionsModelStatusResponse =
-  DeleteConnectorResponse as any as S.Schema<PredictionsModelStatusResponse>;
-
 export type ProfileTypeDefinitionInputAttributesValueList = Array<string>;
 /** The attributes for the Type. */
 export type ProfileTypeDefinitionInputAttributesMap = {
   [key: string]: ProfileTypeDefinitionInputAttributesValueList | undefined;
 };
-const ProfileTypeDefinitionInputAttributesMap =
-  InteractionTypeDefinitionAttributesMap as any as S.Schema<ProfileTypeDefinitionInputAttributesMap>;
-
 /** Localized descriptions for the property. */
 export type ProfileTypeDefinitionInputDescriptionMap = { [key: string]: string | undefined };
-const ProfileTypeDefinitionInputDescriptionMap =
-  GetHubResponseTagsMap as any as S.Schema<ProfileTypeDefinitionInputDescriptionMap>;
-
 /** Localized display names for the property. */
 export type ProfileTypeDefinitionInputDisplayNameMap = { [key: string]: string | undefined };
-const ProfileTypeDefinitionInputDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<ProfileTypeDefinitionInputDisplayNameMap>;
-
 export type ProfileTypeDefinitionInputLocalizedAttributesValueMap = {
   [key: string]: string | undefined;
 };
@@ -3777,27 +2568,16 @@ export type ProfileTypeDefinitionInputLocalizedAttributesValueMap = {
 export type ProfileTypeDefinitionInputLocalizedAttributesMap = {
   [key: string]: ProfileTypeDefinitionInputLocalizedAttributesValueMap | undefined;
 };
-const ProfileTypeDefinitionInputLocalizedAttributesMap =
-  InteractionTypeDefinitionLocalizedAttributesMap as any as S.Schema<ProfileTypeDefinitionInputLocalizedAttributesMap>;
-
 /** Type of entity. */
 export type ProfileTypeDefinitionInputEntityType =
   | "None"
   | "Profile"
   | "Interaction"
   | "Relationship";
-const ProfileTypeDefinitionInputEntityType = S.String;
-
 /** The properties of the Profile. */
 export type ProfileTypeDefinitionInputFieldsList = Array<PropertyDefinitionInput>;
-const ProfileTypeDefinitionInputFieldsList =
-  InteractionTypeDefinitionInputFieldsList as any as S.Schema<ProfileTypeDefinitionInputFieldsList>;
-
 /** The strong IDs. */
 export type ProfileTypeDefinitionInputStrongIdsList = Array<StrongId>;
-const ProfileTypeDefinitionInputStrongIdsList =
-  ProfileTypeDefinitionStrongIdsList as any as S.Schema<ProfileTypeDefinitionInputStrongIdsList>;
-
 /** The profile type definition. */
 export interface ProfileTypeDefinitionInput {
   /** The attributes for the Type. */
@@ -3831,11 +2611,6 @@ export interface ProfileTypeDefinitionInput {
   /** The strong IDs. */
   strongIds?: ProfileTypeDefinitionInputStrongIdsList;
 }
-const ProfileTypeDefinitionInput = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ProfileTypeDefinitionInput>;
-
 export interface ProfilesCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3847,11 +2622,6 @@ export interface ProfilesCreateOrUpdateRequest {
   profileName: string;
   properties?: ProfileTypeDefinitionInput;
 }
-const ProfilesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<ProfilesCreateOrUpdateRequest>;
-
 export interface ProfilesCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -3861,11 +2631,6 @@ export interface ProfilesCreateOrUpdateResponse {
   type?: string;
   properties?: ProfileTypeDefinition;
 }
-const ProfilesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<ProfilesCreateOrUpdateResponse>;
-
 export interface RegenerateAuthorizationPolicyPrimaryKeyRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3876,11 +2641,6 @@ export interface RegenerateAuthorizationPolicyPrimaryKeyRequest {
   /** The name of the policy. */
   authorizationPolicyName: string;
 }
-const RegenerateAuthorizationPolicyPrimaryKeyRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<RegenerateAuthorizationPolicyPrimaryKeyRequest>;
-
 export interface RegenerateAuthorizationPolicySecondaryKeyRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3891,40 +2651,18 @@ export interface RegenerateAuthorizationPolicySecondaryKeyRequest {
   /** The name of the policy. */
   authorizationPolicyName: string;
 }
-const RegenerateAuthorizationPolicySecondaryKeyRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<RegenerateAuthorizationPolicySecondaryKeyRequest>;
-
 /** Localized display name for the Relationship Link. */
 export type RelationshipLinkDefinitionInputDisplayNameMap = { [key: string]: string | undefined };
-const RelationshipLinkDefinitionInputDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<RelationshipLinkDefinitionInputDisplayNameMap>;
-
 /** Localized descriptions for the Relationship Link. */
 export type RelationshipLinkDefinitionInputDescriptionMap = { [key: string]: string | undefined };
-const RelationshipLinkDefinitionInputDescriptionMap =
-  GetHubResponseTagsMap as any as S.Schema<RelationshipLinkDefinitionInputDescriptionMap>;
-
 /** The mappings between Interaction and Relationship fields. */
 export type RelationshipLinkDefinitionInputMappingsList = Array<RelationshipLinkFieldMapping>;
-const RelationshipLinkDefinitionInputMappingsList =
-  RelationshipLinkDefinitionMappingsList as any as S.Schema<RelationshipLinkDefinitionInputMappingsList>;
-
 /** The property references for the Profile of the Relationship. */
 export type RelationshipLinkDefinitionInputProfilePropertyReferencesList =
   Array<ParticipantProfilePropertyReference>;
-const RelationshipLinkDefinitionInputProfilePropertyReferencesList =
-  RelationshipLinkDefinitionProfilePropertyReferencesList as any as S.Schema<RelationshipLinkDefinitionInputProfilePropertyReferencesList>;
-
 /** The property references for the Related Profile of the Relationship. */
 export type RelationshipLinkDefinitionInputRelatedProfilePropertyReferencesList =
   Array<ParticipantProfilePropertyReference>;
-const RelationshipLinkDefinitionInputRelatedProfilePropertyReferencesList = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<RelationshipLinkDefinitionInputRelatedProfilePropertyReferencesList>;
-
 /** The definition of relationship link. */
 export interface RelationshipLinkDefinitionInput {
   /** Localized display name for the Relationship Link. */
@@ -3942,11 +2680,6 @@ export interface RelationshipLinkDefinitionInput {
   /** The Relationship associated with the Link. */
   relationshipName: string;
 }
-const RelationshipLinkDefinitionInput = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<RelationshipLinkDefinitionInput>;
-
 export interface RelationshipLinksCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -3958,11 +2691,6 @@ export interface RelationshipLinksCreateOrUpdateRequest {
   relationshipLinkName: string;
   properties?: RelationshipLinkDefinitionInput;
 }
-const RelationshipLinksCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<RelationshipLinksCreateOrUpdateRequest>;
-
 export interface RelationshipLinksCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -3972,33 +2700,16 @@ export interface RelationshipLinksCreateOrUpdateResponse {
   type?: string;
   properties?: RelationshipLinkDefinition;
 }
-const RelationshipLinksCreateOrUpdateResponse =
-  GetRelationshipLinkResponse as any as S.Schema<RelationshipLinksCreateOrUpdateResponse>;
-
 /** The Relationship Cardinality. */
 export type RelationshipDefinitionInputCardinality = "OneToOne" | "OneToMany" | "ManyToMany";
-const RelationshipDefinitionInputCardinality = S.String;
-
 /** Localized display name for the Relationship. */
 export type RelationshipDefinitionInputDisplayNameMap = { [key: string]: string | undefined };
-const RelationshipDefinitionInputDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<RelationshipDefinitionInputDisplayNameMap>;
-
 /** Localized descriptions for the Relationship. */
 export type RelationshipDefinitionInputDescriptionMap = { [key: string]: string | undefined };
-const RelationshipDefinitionInputDescriptionMap =
-  GetHubResponseTagsMap as any as S.Schema<RelationshipDefinitionInputDescriptionMap>;
-
 /** The properties of the Relationship. */
 export type RelationshipDefinitionInputFieldsList = Array<PropertyDefinitionInput>;
-const RelationshipDefinitionInputFieldsList =
-  InteractionTypeDefinitionInputFieldsList as any as S.Schema<RelationshipDefinitionInputFieldsList>;
-
 /** Optional property to be used to map fields in profile to their strong ids in related profile. */
 export type RelationshipDefinitionInputLookupMappingsList = Array<RelationshipTypeMapping>;
-const RelationshipDefinitionInputLookupMappingsList =
-  RelationshipDefinitionLookupMappingsList as any as S.Schema<RelationshipDefinitionInputLookupMappingsList>;
-
 /** The definition of Relationship. */
 export interface RelationshipDefinitionInput {
   /** The Relationship Cardinality. */
@@ -4018,11 +2729,6 @@ export interface RelationshipDefinitionInput {
   /** Related profile being referenced. */
   relatedProfileType: string;
 }
-const RelationshipDefinitionInput = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<RelationshipDefinitionInput>;
-
 export interface RelationshipsCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4034,11 +2740,6 @@ export interface RelationshipsCreateOrUpdateRequest {
   relationshipName: string;
   properties?: RelationshipDefinitionInput;
 }
-const RelationshipsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<RelationshipsCreateOrUpdateRequest>;
-
 export interface RelationshipsCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -4048,19 +2749,10 @@ export interface RelationshipsCreateOrUpdateResponse {
   type?: string;
   properties?: RelationshipDefinition;
 }
-const RelationshipsCreateOrUpdateResponse =
-  RelationshipResourceFormat as any as S.Schema<RelationshipsCreateOrUpdateResponse>;
-
 /** Localized display names for the metadata. */
 export type RoleAssignmentInputDisplayNameMap = { [key: string]: string | undefined };
-const RoleAssignmentInputDisplayNameMap =
-  GetHubResponseTagsMap as any as S.Schema<RoleAssignmentInputDisplayNameMap>;
-
 /** Localized description for the metadata. */
 export type RoleAssignmentInputDescriptionMap = { [key: string]: string | undefined };
-const RoleAssignmentInputDescriptionMap =
-  GetHubResponseTagsMap as any as S.Schema<RoleAssignmentInputDescriptionMap>;
-
 /** Type of roles. */
 export type RoleAssignmentInputRole =
   | "Admin"
@@ -4069,13 +2761,8 @@ export type RoleAssignmentInputRole =
   | "ManageReader"
   | "DataAdmin"
   | "DataReader";
-const RoleAssignmentInputRole = S.String;
-
 /** The principals being assigned to. */
 export type RoleAssignmentInputPrincipalsList = Array<AssignmentPrincipal>;
-const RoleAssignmentInputPrincipalsList =
-  RoleAssignmentPrincipalsList as any as S.Schema<RoleAssignmentInputPrincipalsList>;
-
 /** The Role Assignment definition. */
 export interface RoleAssignmentInput {
   /** Localized display names for the metadata. */
@@ -4113,8 +2800,6 @@ export interface RoleAssignmentInput {
   /** The Role assignments set for the assignment. */
   segments?: ResourceSetDescription;
 }
-const RoleAssignmentInput = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<RoleAssignmentInput>;
-
 export interface RoleAssignmentsCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4126,11 +2811,6 @@ export interface RoleAssignmentsCreateOrUpdateRequest {
   assignmentName: string;
   properties?: RoleAssignmentInput;
 }
-const RoleAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<RoleAssignmentsCreateOrUpdateRequest>;
-
 export interface RoleAssignmentsCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -4140,13 +2820,8 @@ export interface RoleAssignmentsCreateOrUpdateResponse {
   type?: string;
   properties?: RoleAssignment;
 }
-const RoleAssignmentsCreateOrUpdateResponse =
-  GetRoleAssignmentResponse as any as S.Schema<RoleAssignmentsCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type UpdateHubRequestTagsMap = { [key: string]: string | undefined };
-const UpdateHubRequestTagsMap = GetHubResponseTagsMap as any as S.Schema<UpdateHubRequestTagsMap>;
-
 export interface UpdateHubRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4160,8 +2835,6 @@ export interface UpdateHubRequest {
   tags?: UpdateHubRequestTagsMap;
   properties?: HubPropertiesFormatInput;
 }
-const UpdateHubRequest = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<UpdateHubRequest>;
-
 /** Resource tags. */
 export type UpdateHubResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateHubResponse {
@@ -4177,12 +2850,8 @@ export interface UpdateHubResponse {
   tags?: UpdateHubResponseTagsMap;
   properties?: HubPropertiesFormat;
 }
-const UpdateHubResponse = GetHubResponse as any as S.Schema<UpdateHubResponse>;
-
 /** Localized display name for the view. */
 export type ViewInputDisplayNameMap = { [key: string]: string | undefined };
-const ViewInputDisplayNameMap = GetHubResponseTagsMap as any as S.Schema<ViewInputDisplayNameMap>;
-
 /** The view in Customer 360 web application. */
 export interface ViewInput {
   /** the user ID. */
@@ -4192,8 +2861,6 @@ export interface ViewInput {
   /** View definition. */
   definition: string;
 }
-const ViewInput = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<ViewInput>;
-
 export interface ViewsCreateOrUpdateRequest {
   /** Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -4205,11 +2872,6 @@ export interface ViewsCreateOrUpdateRequest {
   viewName: string;
   properties?: ViewInput;
 }
-const ViewsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<ViewsCreateOrUpdateRequest>;
-
 export interface ViewsCreateOrUpdateResponse {
   /** Resource ID. */
   id?: string;
@@ -4219,11 +2881,6 @@ export interface ViewsCreateOrUpdateResponse {
   type?: string;
   properties?: View;
 }
-const ViewsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<ViewsCreateOrUpdateResponse>;
-
 export type AuthorizationPoliciesCreateOrUpdateError = AzureOpError;
 /** Creates an authorization policy or updates an existing authorization policy. */
 export const AuthorizationPoliciesCreateOrUpdate: API.OperationMethod<
@@ -4232,8 +2889,8 @@ export const AuthorizationPoliciesCreateOrUpdate: API.OperationMethod<
   AuthorizationPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizationPoliciesCreateOrUpdateRequest,
-  output: AuthorizationPoliciesCreateOrUpdateResponse,
+  input: __S(2) as any as S.Schema<AuthorizationPoliciesCreateOrUpdateRequest>,
+  output: __S(4) as any as S.Schema<AuthorizationPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4247,8 +2904,8 @@ export const ConnectorMappingsCreateOrUpdate: API.OperationMethod<
   ConnectorMappingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorMappingsCreateOrUpdateRequest,
-  output: ConnectorMappingsCreateOrUpdateResponse,
+  input: __S(13) as any as S.Schema<ConnectorMappingsCreateOrUpdateRequest>,
+  output: __S(15) as any as S.Schema<ConnectorMappingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4262,8 +2919,8 @@ export const ConnectorsCreateOrUpdate: API.OperationMethod<
   ConnectorsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorsCreateOrUpdateRequest,
-  output: ConnectorsCreateOrUpdateResponse,
+  input: __S(18) as any as S.Schema<ConnectorsCreateOrUpdateRequest>,
+  output: __S(20) as any as S.Schema<ConnectorsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4277,8 +2934,8 @@ export const DeleteConnector: API.OperationMethod<
   DeleteConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConnectorRequest,
-  output: DeleteConnectorResponse,
+  input: __S(21) as any as S.Schema<DeleteConnectorRequest>,
+  output: __S(22) as any as S.Schema<DeleteConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4292,8 +2949,8 @@ export const DeleteConnectorMapping: API.OperationMethod<
   DeleteConnectorMappingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConnectorMappingRequest,
-  output: DeleteConnectorMappingResponse,
+  input: __S(23) as any as S.Schema<DeleteConnectorMappingRequest>,
+  output: __S(22) as any as S.Schema<DeleteConnectorMappingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4307,8 +2964,8 @@ export const DeleteHub: API.OperationMethod<
   DeleteHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHubRequest,
-  output: DeleteHubResponse,
+  input: __S(24) as any as S.Schema<DeleteHubRequest>,
+  output: __S(22) as any as S.Schema<DeleteHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4322,8 +2979,8 @@ export const DeleteKpi: API.OperationMethod<
   DeleteKpiError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteKpiRequest,
-  output: DeleteKpiResponse,
+  input: __S(25) as any as S.Schema<DeleteKpiRequest>,
+  output: __S(22) as any as S.Schema<DeleteKpiResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4337,8 +2994,8 @@ export const DeleteLink: API.OperationMethod<
   DeleteLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLinkRequest,
-  output: DeleteLinkResponse,
+  input: __S(26) as any as S.Schema<DeleteLinkRequest>,
+  output: __S(22) as any as S.Schema<DeleteLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4352,8 +3009,8 @@ export const DeletePrediction: API.OperationMethod<
   DeletePredictionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePredictionRequest,
-  output: DeletePredictionResponse,
+  input: __S(27) as any as S.Schema<DeletePredictionRequest>,
+  output: __S(22) as any as S.Schema<DeletePredictionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4367,8 +3024,8 @@ export const DeleteProfile: API.OperationMethod<
   DeleteProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProfileRequest,
-  output: DeleteProfileResponse,
+  input: __S(28) as any as S.Schema<DeleteProfileRequest>,
+  output: __S(22) as any as S.Schema<DeleteProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4382,8 +3039,8 @@ export const DeleteRelationship: API.OperationMethod<
   DeleteRelationshipError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRelationshipRequest,
-  output: DeleteRelationshipResponse,
+  input: __S(29) as any as S.Schema<DeleteRelationshipRequest>,
+  output: __S(22) as any as S.Schema<DeleteRelationshipResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4397,8 +3054,8 @@ export const DeleteRelationshipLink: API.OperationMethod<
   DeleteRelationshipLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRelationshipLinkRequest,
-  output: DeleteRelationshipLinkResponse,
+  input: __S(30) as any as S.Schema<DeleteRelationshipLinkRequest>,
+  output: __S(22) as any as S.Schema<DeleteRelationshipLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4412,8 +3069,8 @@ export const DeleteRoleAssignment: API.OperationMethod<
   DeleteRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRoleAssignmentRequest,
-  output: DeleteRoleAssignmentResponse,
+  input: __S(31) as any as S.Schema<DeleteRoleAssignmentRequest>,
+  output: __S(22) as any as S.Schema<DeleteRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4427,8 +3084,8 @@ export const DeleteView: API.OperationMethod<
   DeleteViewError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteViewRequest,
-  output: DeleteViewResponse,
+  input: __S(32) as any as S.Schema<DeleteViewRequest>,
+  output: __S(22) as any as S.Schema<DeleteViewResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4442,8 +3099,8 @@ export const GetAuthorizationPolicy: API.OperationMethod<
   GetAuthorizationPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuthorizationPolicyRequest,
-  output: GetAuthorizationPolicyResponse,
+  input: __S(33) as any as S.Schema<GetAuthorizationPolicyRequest>,
+  output: __S(4) as any as S.Schema<GetAuthorizationPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4457,8 +3114,8 @@ export const GetConnector: API.OperationMethod<
   GetConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectorRequest,
-  output: GetConnectorResponse,
+  input: __S(34) as any as S.Schema<GetConnectorRequest>,
+  output: __S(35) as any as S.Schema<GetConnectorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4472,8 +3129,8 @@ export const GetConnectorMapping: API.OperationMethod<
   GetConnectorMappingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectorMappingRequest,
-  output: GetConnectorMappingResponse,
+  input: __S(36) as any as S.Schema<GetConnectorMappingRequest>,
+  output: __S(15) as any as S.Schema<GetConnectorMappingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4487,8 +3144,8 @@ export const GetHub: API.OperationMethod<
   GetHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHubRequest,
-  output: GetHubResponse,
+  input: __S(37) as any as S.Schema<GetHubRequest>,
+  output: __S(41) as any as S.Schema<GetHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4502,8 +3159,8 @@ export const GetInteraction: API.OperationMethod<
   GetInteractionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInteractionRequest,
-  output: GetInteractionResponse,
+  input: __S(42) as any as S.Schema<GetInteractionRequest>,
+  output: __S(58) as any as S.Schema<GetInteractionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4517,8 +3174,8 @@ export const GetKpi: API.OperationMethod<
   GetKpiError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetKpiRequest,
-  output: GetKpiResponse,
+  input: __S(59) as any as S.Schema<GetKpiRequest>,
+  output: __S(70) as any as S.Schema<GetKpiResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4532,8 +3189,8 @@ export const GetLink: API.OperationMethod<
   GetLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLinkRequest,
-  output: GetLinkResponse,
+  input: __S(71) as any as S.Schema<GetLinkRequest>,
+  output: __S(75) as any as S.Schema<GetLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4547,8 +3204,8 @@ export const GetPrediction: API.OperationMethod<
   GetPredictionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPredictionRequest,
-  output: GetPredictionResponse,
+  input: __S(76) as any as S.Schema<GetPredictionRequest>,
+  output: __S(82) as any as S.Schema<GetPredictionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4562,8 +3219,8 @@ export const GetPredictionModelStatus: API.OperationMethod<
   GetPredictionModelStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPredictionModelStatusRequest,
-  output: PredictionModelStatus,
+  input: __S(83) as any as S.Schema<GetPredictionModelStatusRequest>,
+  output: __S(84) as any as S.Schema<PredictionModelStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4577,8 +3234,8 @@ export const GetPredictionTrainingResults: API.OperationMethod<
   GetPredictionTrainingResultsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPredictionTrainingResultsRequest,
-  output: PredictionTrainingResults,
+  input: __S(85) as any as S.Schema<GetPredictionTrainingResultsRequest>,
+  output: __S(93) as any as S.Schema<PredictionTrainingResults>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4592,8 +3249,8 @@ export const GetProfile: API.OperationMethod<
   GetProfileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProfileRequest,
-  output: GetProfileResponse,
+  input: __S(94) as any as S.Schema<GetProfileRequest>,
+  output: __S(98) as any as S.Schema<GetProfileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4607,8 +3264,8 @@ export const GetProfileEnrichingKpis: API.OperationMethod<
   GetProfileEnrichingKpisError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProfileEnrichingKpisRequest,
-  output: GetProfileEnrichingKpisResponse,
+  input: __S(99) as any as S.Schema<GetProfileEnrichingKpisRequest>,
+  output: __S(101) as any as S.Schema<GetProfileEnrichingKpisResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4622,8 +3279,8 @@ export const GetRelationship: API.OperationMethod<
   GetRelationshipError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRelationshipRequest,
-  output: GetRelationshipResponse,
+  input: __S(102) as any as S.Schema<GetRelationshipRequest>,
+  output: __S(108) as any as S.Schema<GetRelationshipResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4637,8 +3294,8 @@ export const GetRelationshipLink: API.OperationMethod<
   GetRelationshipLinkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRelationshipLinkRequest,
-  output: GetRelationshipLinkResponse,
+  input: __S(109) as any as S.Schema<GetRelationshipLinkRequest>,
+  output: __S(115) as any as S.Schema<GetRelationshipLinkResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4652,8 +3309,8 @@ export const GetRoleAssignment: API.OperationMethod<
   GetRoleAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRoleAssignmentRequest,
-  output: GetRoleAssignmentResponse,
+  input: __S(116) as any as S.Schema<GetRoleAssignmentRequest>,
+  output: __S(121) as any as S.Schema<GetRoleAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4667,8 +3324,8 @@ export const GetView: API.OperationMethod<
   GetViewError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetViewRequest,
-  output: GetViewResponse,
+  input: __S(122) as any as S.Schema<GetViewRequest>,
+  output: __S(124) as any as S.Schema<GetViewResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4682,8 +3339,8 @@ export const GetWidgetType: API.OperationMethod<
   GetWidgetTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWidgetTypeRequest,
-  output: GetWidgetTypeResponse,
+  input: __S(125) as any as S.Schema<GetWidgetTypeRequest>,
+  output: __S(127) as any as S.Schema<GetWidgetTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4697,8 +3354,8 @@ export const HubsCreateOrUpdate: API.OperationMethod<
   HubsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HubsCreateOrUpdateRequest,
-  output: HubsCreateOrUpdateResponse,
+  input: __S(129) as any as S.Schema<HubsCreateOrUpdateRequest>,
+  output: __S(130) as any as S.Schema<HubsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4712,8 +3369,8 @@ export const ImagesGetUploadUrlForData: API.OperationMethod<
   ImagesGetUploadUrlForDataError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImagesGetUploadUrlForDataRequest,
-  output: ImageDefinition,
+  input: __S(131) as any as S.Schema<ImagesGetUploadUrlForDataRequest>,
+  output: __S(132) as any as S.Schema<ImageDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4727,8 +3384,8 @@ export const ImagesGetUploadUrlForEntityType: API.OperationMethod<
   ImagesGetUploadUrlForEntityTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImagesGetUploadUrlForEntityTypeRequest,
-  output: ImageDefinition,
+  input: __S(133) as any as S.Schema<ImagesGetUploadUrlForEntityTypeRequest>,
+  output: __S(132) as any as S.Schema<ImageDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4742,8 +3399,8 @@ export const InteractionsCreateOrUpdate: API.OperationMethod<
   InteractionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InteractionsCreateOrUpdateRequest,
-  output: InteractionsCreateOrUpdateResponse,
+  input: __S(137) as any as S.Schema<InteractionsCreateOrUpdateRequest>,
+  output: __S(138) as any as S.Schema<InteractionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4757,8 +3414,8 @@ export const InteractionsSuggestRelationshipLinks: API.OperationMethod<
   InteractionsSuggestRelationshipLinksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InteractionsSuggestRelationshipLinksRequest,
-  output: SuggestRelationshipLinksResponse,
+  input: __S(139) as any as S.Schema<InteractionsSuggestRelationshipLinksRequest>,
+  output: __S(142) as any as S.Schema<SuggestRelationshipLinksResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4772,8 +3429,8 @@ export const KpiCreateOrUpdate: API.OperationMethod<
   KpiCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KpiCreateOrUpdateRequest,
-  output: KpiCreateOrUpdateResponse,
+  input: __S(144) as any as S.Schema<KpiCreateOrUpdateRequest>,
+  output: __S(145) as any as S.Schema<KpiCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4787,8 +3444,8 @@ export const KpiReprocess: API.OperationMethod<
   KpiReprocessError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KpiReprocessRequest,
-  output: KpiReprocessResponse,
+  input: __S(146) as any as S.Schema<KpiReprocessRequest>,
+  output: __S(22) as any as S.Schema<KpiReprocessResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4802,8 +3459,8 @@ export const LinksCreateOrUpdate: API.OperationMethod<
   LinksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LinksCreateOrUpdateRequest,
-  output: LinksCreateOrUpdateResponse,
+  input: __S(148) as any as S.Schema<LinksCreateOrUpdateRequest>,
+  output: __S(149) as any as S.Schema<LinksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4817,8 +3474,8 @@ export const ListAuthorizationPolicyByHub: API.OperationMethod<
   ListAuthorizationPolicyByHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAuthorizationPolicyByHubRequest,
-  output: AuthorizationPolicyListResult,
+  input: __S(150) as any as S.Schema<ListAuthorizationPolicyByHubRequest>,
+  output: __S(152) as any as S.Schema<AuthorizationPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4832,8 +3489,8 @@ export const ListConnectorByHub: API.OperationMethod<
   ListConnectorByHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConnectorByHubRequest,
-  output: ConnectorListResult,
+  input: __S(153) as any as S.Schema<ListConnectorByHubRequest>,
+  output: __S(155) as any as S.Schema<ConnectorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4847,8 +3504,8 @@ export const ListConnectorMappingByConnector: API.OperationMethod<
   ListConnectorMappingByConnectorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConnectorMappingByConnectorRequest,
-  output: ConnectorMappingListResult,
+  input: __S(156) as any as S.Schema<ListConnectorMappingByConnectorRequest>,
+  output: __S(158) as any as S.Schema<ConnectorMappingListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4862,8 +3519,8 @@ export const ListHubByResourceGroup: API.OperationMethod<
   ListHubByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHubByResourceGroupRequest,
-  output: HubListResult,
+  input: __S(159) as any as S.Schema<ListHubByResourceGroupRequest>,
+  output: __S(163) as any as S.Schema<HubListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4877,8 +3534,8 @@ export const ListHubs: API.OperationMethod<
   ListHubsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHubsRequest,
-  output: HubListResult,
+  input: __S(164) as any as S.Schema<ListHubsRequest>,
+  output: __S(163) as any as S.Schema<HubListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4892,8 +3549,8 @@ export const ListInteractionByHub: API.OperationMethod<
   ListInteractionByHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInteractionByHubRequest,
-  output: InteractionListResult,
+  input: __S(165) as any as S.Schema<ListInteractionByHubRequest>,
+  output: __S(167) as any as S.Schema<InteractionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4907,8 +3564,8 @@ export const ListKpiByHub: API.OperationMethod<
   ListKpiByHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListKpiByHubRequest,
-  output: KpiListResult,
+  input: __S(168) as any as S.Schema<ListKpiByHubRequest>,
+  output: __S(170) as any as S.Schema<KpiListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4922,8 +3579,8 @@ export const ListLinkByHub: API.OperationMethod<
   ListLinkByHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLinkByHubRequest,
-  output: LinkListResult,
+  input: __S(171) as any as S.Schema<ListLinkByHubRequest>,
+  output: __S(173) as any as S.Schema<LinkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4937,8 +3594,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(174) as any as S.Schema<ListOperationsRequest>,
+  output: __S(178) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4952,8 +3609,8 @@ export const ListPredictionByHub: API.OperationMethod<
   ListPredictionByHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPredictionByHubRequest,
-  output: PredictionListResult,
+  input: __S(179) as any as S.Schema<ListPredictionByHubRequest>,
+  output: __S(181) as any as S.Schema<PredictionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4967,8 +3624,8 @@ export const ListProfileByHub: API.OperationMethod<
   ListProfileByHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProfileByHubRequest,
-  output: ProfileListResult,
+  input: __S(182) as any as S.Schema<ListProfileByHubRequest>,
+  output: __S(184) as any as S.Schema<ProfileListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4982,8 +3639,8 @@ export const ListRelationshipByHub: API.OperationMethod<
   ListRelationshipByHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRelationshipByHubRequest,
-  output: RelationshipListResult,
+  input: __S(185) as any as S.Schema<ListRelationshipByHubRequest>,
+  output: __S(188) as any as S.Schema<RelationshipListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4997,8 +3654,8 @@ export const ListRelationshipLinkByHub: API.OperationMethod<
   ListRelationshipLinkByHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRelationshipLinkByHubRequest,
-  output: RelationshipLinkListResult,
+  input: __S(189) as any as S.Schema<ListRelationshipLinkByHubRequest>,
+  output: __S(191) as any as S.Schema<RelationshipLinkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5012,8 +3669,8 @@ export const ListRoleAssignmentByHub: API.OperationMethod<
   ListRoleAssignmentByHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRoleAssignmentByHubRequest,
-  output: RoleAssignmentListResult,
+  input: __S(192) as any as S.Schema<ListRoleAssignmentByHubRequest>,
+  output: __S(194) as any as S.Schema<RoleAssignmentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5027,8 +3684,8 @@ export const ListRoleByHub: API.OperationMethod<
   ListRoleByHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRoleByHubRequest,
-  output: RoleListResult,
+  input: __S(195) as any as S.Schema<ListRoleByHubRequest>,
+  output: __S(199) as any as S.Schema<RoleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5042,8 +3699,8 @@ export const ListViewByHub: API.OperationMethod<
   ListViewByHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListViewByHubRequest,
-  output: ViewListResult,
+  input: __S(200) as any as S.Schema<ListViewByHubRequest>,
+  output: __S(202) as any as S.Schema<ViewListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5057,8 +3714,8 @@ export const ListWidgetTypeByHub: API.OperationMethod<
   ListWidgetTypeByHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWidgetTypeByHubRequest,
-  output: WidgetTypeListResult,
+  input: __S(203) as any as S.Schema<ListWidgetTypeByHubRequest>,
+  output: __S(205) as any as S.Schema<WidgetTypeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5072,8 +3729,8 @@ export const PredictionsCreateOrUpdate: API.OperationMethod<
   PredictionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PredictionsCreateOrUpdateRequest,
-  output: PredictionsCreateOrUpdateResponse,
+  input: __S(207) as any as S.Schema<PredictionsCreateOrUpdateRequest>,
+  output: __S(208) as any as S.Schema<PredictionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5087,8 +3744,8 @@ export const PredictionsModelStatus: API.OperationMethod<
   PredictionsModelStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PredictionsModelStatusRequest,
-  output: PredictionsModelStatusResponse,
+  input: __S(209) as any as S.Schema<PredictionsModelStatusRequest>,
+  output: __S(22) as any as S.Schema<PredictionsModelStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5102,8 +3759,8 @@ export const ProfilesCreateOrUpdate: API.OperationMethod<
   ProfilesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesCreateOrUpdateRequest,
-  output: ProfilesCreateOrUpdateResponse,
+  input: __S(211) as any as S.Schema<ProfilesCreateOrUpdateRequest>,
+  output: __S(212) as any as S.Schema<ProfilesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5117,8 +3774,8 @@ export const RegenerateAuthorizationPolicyPrimaryKey: API.OperationMethod<
   RegenerateAuthorizationPolicyPrimaryKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegenerateAuthorizationPolicyPrimaryKeyRequest,
-  output: AuthorizationPolicy,
+  input: __S(213) as any as S.Schema<RegenerateAuthorizationPolicyPrimaryKeyRequest>,
+  output: __S(3) as any as S.Schema<AuthorizationPolicy>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5132,8 +3789,8 @@ export const RegenerateAuthorizationPolicySecondaryKey: API.OperationMethod<
   RegenerateAuthorizationPolicySecondaryKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegenerateAuthorizationPolicySecondaryKeyRequest,
-  output: AuthorizationPolicy,
+  input: __S(214) as any as S.Schema<RegenerateAuthorizationPolicySecondaryKeyRequest>,
+  output: __S(3) as any as S.Schema<AuthorizationPolicy>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5147,8 +3804,8 @@ export const RelationshipLinksCreateOrUpdate: API.OperationMethod<
   RelationshipLinksCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RelationshipLinksCreateOrUpdateRequest,
-  output: RelationshipLinksCreateOrUpdateResponse,
+  input: __S(217) as any as S.Schema<RelationshipLinksCreateOrUpdateRequest>,
+  output: __S(115) as any as S.Schema<RelationshipLinksCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5162,8 +3819,8 @@ export const RelationshipsCreateOrUpdate: API.OperationMethod<
   RelationshipsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RelationshipsCreateOrUpdateRequest,
-  output: RelationshipsCreateOrUpdateResponse,
+  input: __S(219) as any as S.Schema<RelationshipsCreateOrUpdateRequest>,
+  output: __S(186) as any as S.Schema<RelationshipsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5177,8 +3834,8 @@ export const RoleAssignmentsCreateOrUpdate: API.OperationMethod<
   RoleAssignmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RoleAssignmentsCreateOrUpdateRequest,
-  output: RoleAssignmentsCreateOrUpdateResponse,
+  input: __S(221) as any as S.Schema<RoleAssignmentsCreateOrUpdateRequest>,
+  output: __S(121) as any as S.Schema<RoleAssignmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5192,8 +3849,8 @@ export const UpdateHub: API.OperationMethod<
   UpdateHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateHubRequest,
-  output: UpdateHubResponse,
+  input: __S(222) as any as S.Schema<UpdateHubRequest>,
+  output: __S(41) as any as S.Schema<UpdateHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5207,8 +3864,8 @@ export const ViewsCreateOrUpdate: API.OperationMethod<
   ViewsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ViewsCreateOrUpdateRequest,
-  output: ViewsCreateOrUpdateResponse,
+  input: __S(224) as any as S.Schema<ViewsCreateOrUpdateRequest>,
+  output: __S(225) as any as S.Schema<ViewsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5218,11 +3875,11 @@ export const ViewsCreateOrUpdate: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PermissionTypes);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          permissions: AuthorizationPolicyInputPermissionsList,
+          permissions: __S(0),
           primaryKey: S.optional(S.String),
           secondaryKey: S.optional(S.String),
         }),
@@ -5234,7 +3891,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           authorizationPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(AuthorizationPolicyInput),
+          properties: S.optional(__S(1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5250,7 +3907,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           policyName: S.optional(S.String),
-          permissions: AuthorizationPolicyPermissionsList,
+          permissions: __S(0),
           primaryKey: S.optional(S.String),
           secondaryKey: S.optional(S.String),
         }),
@@ -5261,7 +3918,7 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(AuthorizationPolicy),
+          properties: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "AuthorizationPoliciesCreateOrUpdateResponse",
@@ -5269,7 +3926,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          errorManagementType: ConnectorMappingErrorManagementErrorManagementType,
+          errorManagementType: S.String,
           errorLimit: S.optional(S.Number),
         }),
       ).annotate({
@@ -5278,7 +3935,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          formatType: ConnectorMappingFormatFormatType,
+          formatType: S.String,
           columnDelimiter: S.optional(S.String),
           acceptLanguage: S.optional(S.String),
           quoteCharacter: S.optional(S.String),
@@ -5289,7 +3946,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          frequency: S.optional(ConnectorMappingAvailabilityFrequency),
+          frequency: S.optional(S.String),
           interval: S.Number,
         }),
       ).annotate({
@@ -5311,13 +3968,11 @@ function __c1(j: number): any {
         identifier: "ConnectorMappingStructure",
       });
     case 1:
-      return S.Array(ConnectorMappingStructure);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          completionOperationType: S.optional(
-            ConnectorMappingCompleteOperationCompletionOperationType,
-          ),
+          completionOperationType: S.optional(S.String),
           destinationFolder: S.optional(S.String),
         }),
       ).annotate({
@@ -5329,11 +3984,11 @@ function __c1(j: number): any {
           folderPath: S.optional(S.String),
           fileFilter: S.optional(S.String),
           hasHeader: S.optional(S.Boolean),
-          errorManagement: ConnectorMappingErrorManagement,
-          format: ConnectorMappingFormat,
-          availability: ConnectorMappingAvailability,
-          structure: ConnectorMappingPropertiesStructureList,
-          completeOperation: ConnectorMappingCompleteOperation,
+          errorManagement: __S(5),
+          format: __S(6),
+          availability: __S(7),
+          structure: __S(9),
+          completeOperation: __S(10),
         }),
       ).annotate({
         identifier: "ConnectorMappingProperties",
@@ -5341,12 +3996,12 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          connectorType: S.optional(ConnectorType),
-          entityType: ConnectorMappingInputEntityType,
+          connectorType: S.optional(S.String),
+          entityType: S.String,
           entityTypeName: S.String,
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          mappingProperties: ConnectorMappingProperties,
+          mappingProperties: __S(11),
         }),
       ).annotate({ identifier: "ConnectorMappingInput" });
     case 5:
@@ -5357,7 +4012,7 @@ function __c1(j: number): any {
           hubName: S.String.pipe(T.Label()),
           connectorName: S.String.pipe(T.Label()),
           mappingName: S.String.pipe(T.Label()),
-          properties: S.optional(ConnectorMappingInput),
+          properties: S.optional(__S(12)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5373,19 +4028,19 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           connectorName: S.optional(S.String),
-          connectorType: S.optional(ConnectorType),
+          connectorType: S.optional(S.String),
           created: S.optional(S.String),
           lastModified: S.optional(S.String),
-          entityType: ConnectorMappingEntityType,
+          entityType: S.String,
           entityTypeName: S.String,
           connectorMappingName: S.optional(S.String),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
           dataFormatId: S.optional(S.String),
-          mappingProperties: ConnectorMappingProperties,
+          mappingProperties: __S(11),
           nextRunTime: S.optional(S.String),
           runId: S.optional(S.String),
-          state: S.optional(ConnectorMappingState),
+          state: S.optional(S.String),
           tenantId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectorMapping" });
@@ -5395,7 +4050,7 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(ConnectorMapping),
+          properties: S.optional(__S(14)),
         }),
       ).annotate({
         identifier: "ConnectorMappingsCreateOrUpdateResponse",
@@ -5410,10 +4065,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           connectorName: S.optional(S.String),
-          connectorType: ConnectorType,
+          connectorType: S.String,
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          connectorProperties: ConnectorInputConnectorPropertiesMap,
+          connectorProperties: __S(16),
           isInternal: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ConnectorInput" });
@@ -5424,7 +4079,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           connectorName: S.String.pipe(T.Label()),
-          properties: S.optional(ConnectorInput),
+          properties: S.optional(__S(17)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5441,13 +4096,13 @@ function __c2(j: number): any {
         S.Struct({
           connectorId: S.optional(S.Number),
           connectorName: S.optional(S.String),
-          connectorType: ConnectorType,
+          connectorType: S.String,
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          connectorProperties: ConnectorConnectorPropertiesMap,
+          connectorProperties: __S(16),
           created: S.optional(S.String),
           lastModified: S.optional(S.String),
-          state: S.optional(ConnectorState),
+          state: S.optional(S.String),
           tenantId: S.optional(S.String),
           isInternal: S.optional(S.Boolean),
         }),
@@ -5458,7 +4113,7 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(Connector),
+          properties: S.optional(__S(19)),
         }),
       ).annotate({
         identifier: "ConnectorsCreateOrUpdateResponse",
@@ -5701,7 +4356,7 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(Connector),
+          properties: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "GetConnectorResponse" });
     case 4:
@@ -5759,7 +4414,7 @@ function __c5(j: number): any {
           webEndpoint: S.optional(S.String),
           provisioningState: S.optional(S.String),
           tenantFeatures: S.optional(S.Number),
-          hubBillingInfo: S.optional(HubBillingInfoFormat),
+          hubBillingInfo: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "HubPropertiesFormat" });
     case 1:
@@ -5769,8 +4424,8 @@ function __c5(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(GetHubResponseTagsMap),
-          properties: S.optional(HubPropertiesFormat),
+          tags: S.optional(__S(38)),
+          properties: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "GetHubResponse" });
     case 2:
@@ -5793,20 +4448,20 @@ function __c5(j: number): any {
     case 3:
       return S.Array(S.String);
     case 4:
-      return S.Record(S.String, InteractionTypeDefinitionAttributesValueList);
+      return S.Record(S.String, __S(43));
     case 5:
-      return S.Record(S.String, InteractionTypeDefinitionLocalizedAttributesValueMap);
+      return S.Record(S.String, __S(38));
     case 6:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Number),
-          localizedValueNames: S.optional(ProfileEnumValidValuesFormatLocalizedValueNamesMap),
+          localizedValueNames: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "ProfileEnumValidValuesFormat",
       });
     case 7:
-      return S.Array(ProfileEnumValidValuesFormat);
+      return S.Array(__S(46));
   }
 }
 function __c6(j: number): any {
@@ -5815,8 +4470,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          dataSourceType: S.optional(DataSourceDataSourceType),
-          status: S.optional(DataSourceStatus),
+          dataSourceType: S.optional(S.String),
+          status: S.optional(S.String),
           id: S.optional(S.Number),
           dataSourceReferenceId: S.optional(S.String),
         }),
@@ -5824,17 +4479,17 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dataSource: S.optional(DataSource),
+          dataSource: S.optional(__S(48)),
           precedence: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DataSourcePrecedence" });
     case 2:
-      return S.Array(DataSourcePrecedence);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
           arrayValueSeparator: S.optional(S.String),
-          enumValidValues: S.optional(PropertyDefinitionEnumValidValuesList),
+          enumValidValues: S.optional(__S(47)),
           fieldName: S.String,
           fieldType: S.String,
           isArray: S.optional(S.Boolean),
@@ -5848,11 +4503,11 @@ function __c6(j: number): any {
           schemaItemPropLink: S.optional(S.String),
           maxLength: S.optional(S.Number),
           isAvailableInGraph: S.optional(S.Boolean),
-          dataSourcePrecedenceRules: S.optional(PropertyDefinitionDataSourcePrecedenceRulesList),
+          dataSourcePrecedenceRules: S.optional(__S(50)),
         }),
       ).annotate({ identifier: "PropertyDefinition" });
     case 4:
-      return S.Array(PropertyDefinition);
+      return S.Array(__S(51));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5863,15 +4518,15 @@ function __c6(j: number): any {
         identifier: "ParticipantPropertyReference",
       });
     case 6:
-      return S.Array(ParticipantPropertyReference);
+      return S.Array(__S(53));
     case 7:
       return S.suspend(() =>
         S.Struct({
           profileTypeName: S.String,
-          participantPropertyReferences: ParticipantParticipantPropertyReferencesList,
+          participantPropertyReferences: __S(54),
           participantName: S.String,
-          displayName: S.optional(ParticipantDisplayNameMap),
-          description: S.optional(ParticipantDescriptionMap),
+          displayName: S.optional(__S(38)),
+          description: S.optional(__S(38)),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "Participant" });
@@ -5880,34 +4535,32 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Participant);
+      return S.Array(__S(55));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(InteractionTypeDefinitionAttributesMap),
-          description: S.optional(InteractionTypeDefinitionDescriptionMap),
-          displayName: S.optional(InteractionTypeDefinitionDisplayNameMap),
-          localizedAttributes: S.optional(InteractionTypeDefinitionLocalizedAttributesMap),
+          attributes: S.optional(__S(44)),
+          description: S.optional(__S(38)),
+          displayName: S.optional(__S(38)),
+          localizedAttributes: S.optional(__S(45)),
           smallImage: S.optional(S.String),
           mediumImage: S.optional(S.String),
           largeImage: S.optional(S.String),
           apiEntitySetName: S.optional(S.String),
-          entityType: S.optional(InteractionTypeDefinitionEntityType),
-          fields: S.optional(InteractionTypeDefinitionFieldsList),
+          entityType: S.optional(S.String),
+          fields: S.optional(__S(52)),
           instancesCount: S.optional(S.Number),
           lastChangedUtc: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           schemaItemTypeLink: S.optional(S.String),
           tenantId: S.optional(S.String),
           timestampFieldName: S.optional(S.String),
           typeName: S.optional(S.String),
-          idPropertyNames: S.optional(InteractionTypeDefinitionIdPropertyNamesList),
-          participantProfiles: S.optional(InteractionTypeDefinitionParticipantProfilesList),
+          idPropertyNames: S.optional(__S(43)),
+          participantProfiles: S.optional(__S(56)),
           primaryParticipantProfilePropertyName: S.optional(S.String),
-          dataSourcePrecedenceRules: S.optional(
-            InteractionTypeDefinitionDataSourcePrecedenceRulesList,
-          ),
-          defaultDataSource: S.optional(DataSource),
+          dataSourcePrecedenceRules: S.optional(__S(50)),
+          defaultDataSource: S.optional(__S(48)),
           isActivity: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -5919,7 +4572,7 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(InteractionTypeDefinition),
+          properties: S.optional(__S(57)),
         }),
       ).annotate({ identifier: "GetInteractionResponse" });
     case 3:
@@ -5941,13 +4594,13 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          displayName: S.optional(KpiGroupByMetadataDisplayNameMap),
+          displayName: S.optional(__S(38)),
           fieldName: S.optional(S.String),
           fieldType: S.optional(S.String),
         }),
       ).annotate({ identifier: "KpiGroupByMetadata" });
     case 5:
-      return S.Array(KpiGroupByMetadata);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5957,7 +4610,7 @@ function __c7(j: number): any {
         identifier: "KpiParticipantProfilesMetadata",
       });
     case 7:
-      return S.Array(KpiParticipantProfilesMetadata);
+      return S.Array(__S(62));
   }
 }
 function __c8(j: number): any {
@@ -5978,7 +4631,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "KpiAlias" });
     case 2:
-      return S.Array(KpiAlias);
+      return S.Array(__S(65));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5987,29 +4640,29 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "KpiExtract" });
     case 4:
-      return S.Array(KpiExtract);
+      return S.Array(__S(67));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          entityType: KpiDefinitionEntityType,
+          entityType: S.String,
           entityTypeName: S.String,
           tenantId: S.optional(S.String),
           kpiName: S.optional(S.String),
-          displayName: S.optional(KpiDefinitionDisplayNameMap),
-          description: S.optional(KpiDefinitionDescriptionMap),
-          calculationWindow: KpiDefinitionCalculationWindow,
+          displayName: S.optional(__S(38)),
+          description: S.optional(__S(38)),
+          calculationWindow: S.String,
           calculationWindowFieldName: S.optional(S.String),
-          function: KpiDefinitionFunction,
+          function: S.String,
           expression: S.String,
           unit: S.optional(S.String),
           filter: S.optional(S.String),
-          groupBy: S.optional(KpiDefinitionGroupByList),
-          groupByMetadata: S.optional(KpiDefinitionGroupByMetadataList),
-          participantProfilesMetadata: S.optional(KpiDefinitionParticipantProfilesMetadataList),
-          provisioningState: S.optional(ProvisioningState),
-          thresHolds: S.optional(KpiThresholds),
-          aliases: S.optional(KpiDefinitionAliasesList),
-          extracts: S.optional(KpiDefinitionExtractsList),
+          groupBy: S.optional(__S(43)),
+          groupByMetadata: S.optional(__S(61)),
+          participantProfilesMetadata: S.optional(__S(63)),
+          provisioningState: S.optional(S.String),
+          thresHolds: S.optional(__S(64)),
+          aliases: S.optional(__S(66)),
+          extracts: S.optional(__S(68)),
         }),
       ).annotate({ identifier: "KpiDefinition" });
     case 6:
@@ -6018,7 +4671,7 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(KpiDefinition),
+          properties: S.optional(__S(69)),
         }),
       ).annotate({ identifier: "GetKpiResponse" });
     case 7:
@@ -6046,27 +4699,27 @@ function __c9(j: number): any {
         S.Struct({
           sourcePropertyName: S.String,
           targetPropertyName: S.String,
-          linkType: S.optional(TypePropertiesMappingLinkType),
+          linkType: S.optional(S.String),
         }),
       ).annotate({ identifier: "TypePropertiesMapping" });
     case 1:
-      return S.Array(TypePropertiesMapping);
+      return S.Array(__S(72));
     case 2:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
           linkName: S.optional(S.String),
-          sourceEntityType: LinkDefinitionSourceEntityType,
-          targetEntityType: LinkDefinitionTargetEntityType,
+          sourceEntityType: S.String,
+          targetEntityType: S.String,
           sourceEntityTypeName: S.String,
           targetEntityTypeName: S.String,
-          displayName: S.optional(LinkDefinitionDisplayNameMap),
-          description: S.optional(LinkDefinitionDescriptionMap),
-          mappings: S.optional(LinkDefinitionMappingsList),
-          participantPropertyReferences: LinkDefinitionParticipantPropertyReferencesList,
-          provisioningState: S.optional(ProvisioningState),
+          displayName: S.optional(__S(38)),
+          description: S.optional(__S(38)),
+          mappings: S.optional(__S(73)),
+          participantPropertyReferences: __S(54),
+          provisioningState: S.optional(S.String),
           referenceOnly: S.optional(S.Boolean),
-          operationType: S.optional(LinkDefinitionOperationType),
+          operationType: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkDefinition" });
     case 3:
@@ -6075,7 +4728,7 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(LinkDefinition),
+          properties: S.optional(__S(74)),
         }),
       ).annotate({ identifier: "GetLinkResponse" });
     case 4:
@@ -6111,7 +4764,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "PredictionGradesItem" });
     case 7:
-      return S.Array(PredictionGradesItem);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
@@ -6119,11 +4772,9 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          generatedInteractionTypes: S.optional(
-            PredictionSystemGeneratedEntitiesGeneratedInteractionTypesList,
-          ),
-          generatedLinks: S.optional(PredictionSystemGeneratedEntitiesGeneratedLinksList),
-          generatedKpis: S.optional(PredictionSystemGeneratedEntitiesGeneratedKpisMap),
+          generatedInteractionTypes: S.optional(__S(43)),
+          generatedLinks: S.optional(__S(43)),
+          generatedKpis: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "PredictionSystemGeneratedEntities",
@@ -6131,23 +4782,23 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          description: S.optional(PredictionDescriptionMap),
-          displayName: S.optional(PredictionDisplayNameMap),
-          involvedInteractionTypes: S.optional(PredictionInvolvedInteractionTypesList),
-          involvedKpiTypes: S.optional(PredictionInvolvedKpiTypesList),
-          involvedRelationships: S.optional(PredictionInvolvedRelationshipsList),
+          description: S.optional(__S(38)),
+          displayName: S.optional(__S(38)),
+          involvedInteractionTypes: S.optional(__S(43)),
+          involvedKpiTypes: S.optional(__S(43)),
+          involvedRelationships: S.optional(__S(43)),
           negativeOutcomeExpression: S.String,
           positiveOutcomeExpression: S.String,
           primaryProfileType: S.String,
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           predictionName: S.optional(S.String),
           scopeExpression: S.String,
           tenantId: S.optional(S.String),
           autoAnalyze: S.Boolean,
-          mappings: PredictionMappings,
+          mappings: __S(77),
           scoreLabel: S.String,
-          grades: S.optional(PredictionGradesList),
-          systemGeneratedEntities: S.optional(PredictionSystemGeneratedEntities),
+          grades: S.optional(__S(79)),
+          systemGeneratedEntities: S.optional(__S(80)),
         }),
       ).annotate({ identifier: "Prediction" });
     case 2:
@@ -6156,7 +4807,7 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(Prediction),
+          properties: S.optional(__S(81)),
         }),
       ).annotate({ identifier: "GetPredictionResponse" });
     case 3:
@@ -6183,7 +4834,7 @@ function __c10(j: number): any {
           tenantId: S.optional(S.String),
           predictionName: S.optional(S.String),
           predictionGuidId: S.optional(S.String),
-          status: PredictionModelStatusStatus,
+          status: S.String,
           message: S.optional(S.String),
           trainingSetCount: S.optional(S.Number),
           testSetCount: S.optional(S.Number),
@@ -6224,7 +4875,7 @@ function __c10(j: number): any {
         identifier: "PredictionDistributionDefinitionDistributionsItem",
       });
     case 7:
-      return S.Array(PredictionDistributionDefinitionDistributionsItem);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -6234,7 +4885,7 @@ function __c11(j: number): any {
         S.Struct({
           totalPositives: S.optional(S.Number),
           totalNegatives: S.optional(S.Number),
-          distributions: S.optional(PredictionDistributionDefinitionDistributionsList),
+          distributions: S.optional(__S(87)),
         }),
       ).annotate({
         identifier: "PredictionDistributionDefinition",
@@ -6245,32 +4896,32 @@ function __c11(j: number): any {
           profileName: S.optional(S.String),
           profilePropertyName: S.optional(S.String),
           rank: S.optional(S.Number),
-          type: S.optional(CanonicalProfileDefinitionPropertiesItemType),
+          type: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CanonicalProfileDefinitionPropertiesItem",
       });
     case 2:
-      return S.Array(CanonicalProfileDefinitionPropertiesItem);
+      return S.Array(__S(89));
     case 3:
       return S.suspend(() =>
         S.Struct({
           canonicalProfileId: S.optional(S.Number),
-          properties: S.optional(CanonicalProfileDefinitionPropertiesList),
+          properties: S.optional(__S(90)),
         }),
       ).annotate({
         identifier: "CanonicalProfileDefinition",
       });
     case 4:
-      return S.Array(CanonicalProfileDefinition);
+      return S.Array(__S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
           scoreName: S.optional(S.String),
-          predictionDistribution: S.optional(PredictionDistributionDefinition),
-          canonicalProfiles: S.optional(PredictionTrainingResultsCanonicalProfilesList),
+          predictionDistribution: S.optional(__S(88)),
+          canonicalProfiles: S.optional(__S(92)),
           primaryProfileInstanceCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -6296,10 +4947,10 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          keyPropertyNames: StrongIdKeyPropertyNamesList,
+          keyPropertyNames: __S(43),
           strongIdName: S.String,
-          displayName: S.optional(StrongIdDisplayNameMap),
-          description: S.optional(StrongIdDescriptionMap),
+          displayName: S.optional(__S(38)),
+          description: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "StrongId" });
   }
@@ -6307,28 +4958,28 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(StrongId);
+      return S.Array(__S(95));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(ProfileTypeDefinitionAttributesMap),
-          description: S.optional(ProfileTypeDefinitionDescriptionMap),
-          displayName: S.optional(ProfileTypeDefinitionDisplayNameMap),
-          localizedAttributes: S.optional(ProfileTypeDefinitionLocalizedAttributesMap),
+          attributes: S.optional(__S(44)),
+          description: S.optional(__S(38)),
+          displayName: S.optional(__S(38)),
+          localizedAttributes: S.optional(__S(45)),
           smallImage: S.optional(S.String),
           mediumImage: S.optional(S.String),
           largeImage: S.optional(S.String),
           apiEntitySetName: S.optional(S.String),
-          entityType: S.optional(ProfileTypeDefinitionEntityType),
-          fields: S.optional(ProfileTypeDefinitionFieldsList),
+          entityType: S.optional(S.String),
+          fields: S.optional(__S(52)),
           instancesCount: S.optional(S.Number),
           lastChangedUtc: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           schemaItemTypeLink: S.optional(S.String),
           tenantId: S.optional(S.String),
           timestampFieldName: S.optional(S.String),
           typeName: S.optional(S.String),
-          strongIds: S.optional(ProfileTypeDefinitionStrongIdsList),
+          strongIds: S.optional(__S(96)),
         }),
       ).annotate({ identifier: "ProfileTypeDefinition" });
     case 2:
@@ -6337,7 +4988,7 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(ProfileTypeDefinition),
+          properties: S.optional(__S(97)),
         }),
       ).annotate({ identifier: "GetProfileResponse" });
     case 3:
@@ -6359,11 +5010,9 @@ function __c12(j: number): any {
         identifier: "GetProfileEnrichingKpisRequest",
       });
     case 4:
-      return S.Array(KpiDefinition);
+      return S.Array(__S(69));
     case 5:
-      return S.suspend(() =>
-        GetProfileEnrichingKpisResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(100).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetProfileEnrichingKpisResponse",
       });
     case 6:
@@ -6396,26 +5045,26 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RelationshipTypeFieldMapping);
+      return S.Array(__S(103));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          fieldMappings: RelationshipTypeMappingFieldMappingsList,
+          fieldMappings: __S(104),
         }),
       ).annotate({ identifier: "RelationshipTypeMapping" });
     case 2:
-      return S.Array(RelationshipTypeMapping);
+      return S.Array(__S(105));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cardinality: S.optional(RelationshipDefinitionCardinality),
-          displayName: S.optional(RelationshipDefinitionDisplayNameMap),
-          description: S.optional(RelationshipDefinitionDescriptionMap),
+          cardinality: S.optional(S.String),
+          displayName: S.optional(__S(38)),
+          description: S.optional(__S(38)),
           expiryDateTimeUtc: S.optional(S.String),
-          fields: S.optional(RelationshipDefinitionFieldsList),
-          lookupMappings: S.optional(RelationshipDefinitionLookupMappingsList),
+          fields: S.optional(__S(52)),
+          lookupMappings: S.optional(__S(106)),
           profileType: S.String,
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           relationshipName: S.optional(S.String),
           relatedProfileType: S.String,
           relationshipGuidId: S.optional(S.String),
@@ -6428,7 +5077,7 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(RelationshipDefinition),
+          properties: S.optional(__S(107)),
         }),
       ).annotate({ identifier: "GetRelationshipResponse" });
     case 5:
@@ -6453,14 +5102,14 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           interactionFieldName: S.String,
-          linkType: S.optional(RelationshipLinkFieldMappingLinkType),
+          linkType: S.optional(S.String),
           relationshipFieldName: S.String,
         }),
       ).annotate({
         identifier: "RelationshipLinkFieldMapping",
       });
     case 7:
-      return S.Array(RelationshipLinkFieldMapping);
+      return S.Array(__S(110));
   }
 }
 function __c14(j: number): any {
@@ -6475,19 +5124,18 @@ function __c14(j: number): any {
         identifier: "ParticipantProfilePropertyReference",
       });
     case 1:
-      return S.Array(ParticipantProfilePropertyReference);
+      return S.Array(__S(112));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          displayName: S.optional(RelationshipLinkDefinitionDisplayNameMap),
-          description: S.optional(RelationshipLinkDefinitionDescriptionMap),
+          displayName: S.optional(__S(38)),
+          description: S.optional(__S(38)),
           interactionType: S.String,
           linkName: S.optional(S.String),
-          mappings: S.optional(RelationshipLinkDefinitionMappingsList),
-          profilePropertyReferences: RelationshipLinkDefinitionProfilePropertyReferencesList,
-          provisioningState: S.optional(ProvisioningState),
-          relatedProfilePropertyReferences:
-            RelationshipLinkDefinitionRelatedProfilePropertyReferencesList,
+          mappings: S.optional(__S(111)),
+          profilePropertyReferences: __S(113),
+          provisioningState: S.optional(S.String),
+          relatedProfilePropertyReferences: __S(113),
           relationshipName: S.String,
           relationshipGuidId: S.optional(S.String),
           tenantId: S.optional(S.String),
@@ -6501,7 +5149,7 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(RelationshipLinkDefinition),
+          properties: S.optional(__S(114)),
         }),
       ).annotate({
         identifier: "GetRelationshipLinkResponse",
@@ -6527,16 +5175,16 @@ function __c14(j: number): any {
         S.Struct({
           principalId: S.String,
           principalType: S.String,
-          principalMetadata: S.optional(AssignmentPrincipalPrincipalMetadataMap),
+          principalMetadata: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "AssignmentPrincipal" });
     case 6:
-      return S.Array(AssignmentPrincipal);
+      return S.Array(__S(117));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          elements: S.optional(ResourceSetDescriptionElementsList),
-          exceptions: S.optional(ResourceSetDescriptionExceptionsList),
+          elements: S.optional(__S(43)),
+          exceptions: S.optional(__S(43)),
         }),
       ).annotate({ identifier: "ResourceSetDescription" });
   }
@@ -6548,24 +5196,24 @@ function __c15(j: number): any {
         S.Struct({
           tenantId: S.optional(S.String),
           assignmentName: S.optional(S.String),
-          displayName: S.optional(RoleAssignmentDisplayNameMap),
-          description: S.optional(RoleAssignmentDescriptionMap),
-          provisioningState: S.optional(ProvisioningState),
-          role: RoleAssignmentRole,
-          principals: RoleAssignmentPrincipalsList,
-          profiles: S.optional(ResourceSetDescription),
-          interactions: S.optional(ResourceSetDescription),
-          links: S.optional(ResourceSetDescription),
-          kpis: S.optional(ResourceSetDescription),
-          sasPolicies: S.optional(ResourceSetDescription),
-          connectors: S.optional(ResourceSetDescription),
-          views: S.optional(ResourceSetDescription),
-          relationshipLinks: S.optional(ResourceSetDescription),
-          relationships: S.optional(ResourceSetDescription),
-          widgetTypes: S.optional(ResourceSetDescription),
-          roleAssignments: S.optional(ResourceSetDescription),
-          conflationPolicies: S.optional(ResourceSetDescription),
-          segments: S.optional(ResourceSetDescription),
+          displayName: S.optional(__S(38)),
+          description: S.optional(__S(38)),
+          provisioningState: S.optional(S.String),
+          role: S.String,
+          principals: __S(118),
+          profiles: S.optional(__S(119)),
+          interactions: S.optional(__S(119)),
+          links: S.optional(__S(119)),
+          kpis: S.optional(__S(119)),
+          sasPolicies: S.optional(__S(119)),
+          connectors: S.optional(__S(119)),
+          views: S.optional(__S(119)),
+          relationshipLinks: S.optional(__S(119)),
+          relationships: S.optional(__S(119)),
+          widgetTypes: S.optional(__S(119)),
+          roleAssignments: S.optional(__S(119)),
+          conflationPolicies: S.optional(__S(119)),
+          segments: S.optional(__S(119)),
         }),
       ).annotate({ identifier: "RoleAssignment" });
     case 1:
@@ -6574,7 +5222,7 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(RoleAssignment),
+          properties: S.optional(__S(120)),
         }),
       ).annotate({
         identifier: "GetRoleAssignmentResponse",
@@ -6602,7 +5250,7 @@ function __c15(j: number): any {
           viewName: S.optional(S.String),
           userId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          displayName: S.optional(ViewDisplayNameMap),
+          displayName: S.optional(__S(38)),
           definition: S.String,
           changed: S.optional(S.String),
           created: S.optional(S.String),
@@ -6614,7 +5262,7 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(View),
+          properties: S.optional(__S(123)),
         }),
       ).annotate({ identifier: "GetViewResponse" });
     case 5:
@@ -6639,7 +5287,7 @@ function __c15(j: number): any {
           widgetTypeName: S.optional(S.String),
           definition: S.String,
           description: S.optional(S.String),
-          displayName: S.optional(WidgetTypeDisplayNameMap),
+          displayName: S.optional(__S(38)),
           imageUrl: S.optional(S.String),
           tenantId: S.optional(S.String),
           widgetVersion: S.optional(S.String),
@@ -6653,7 +5301,7 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(WidgetType),
+          properties: S.optional(__S(126)),
         }),
       ).annotate({ identifier: "GetWidgetTypeResponse" });
   }
@@ -6664,7 +5312,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tenantFeatures: S.optional(S.Number),
-          hubBillingInfo: S.optional(HubBillingInfoFormat),
+          hubBillingInfo: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "HubPropertiesFormatInput" });
     case 1:
@@ -6674,8 +5322,8 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(HubsCreateOrUpdateRequestTagsMap),
-          properties: S.optional(HubPropertiesFormatInput),
+          tags: S.optional(__S(38)),
+          properties: S.optional(__S(128)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6694,8 +5342,8 @@ function __c16(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(HubsCreateOrUpdateResponseTagsMap),
-          properties: S.optional(HubPropertiesFormat),
+          tags: S.optional(__S(38)),
+          properties: S.optional(__S(40)),
         }),
       ).annotate({
         identifier: "HubsCreateOrUpdateResponse",
@@ -6752,7 +5400,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           arrayValueSeparator: S.optional(S.String),
-          enumValidValues: S.optional(PropertyDefinitionInputEnumValidValuesList),
+          enumValidValues: S.optional(__S(47)),
           fieldName: S.String,
           fieldType: S.String,
           isArray: S.optional(S.Boolean),
@@ -6769,7 +5417,7 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "PropertyDefinitionInput" });
     case 7:
-      return S.Array(PropertyDefinitionInput);
+      return S.Array(__S(134));
   }
 }
 function __c17(j: number): any {
@@ -6777,24 +5425,24 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(InteractionTypeDefinitionInputAttributesMap),
-          description: S.optional(InteractionTypeDefinitionInputDescriptionMap),
-          displayName: S.optional(InteractionTypeDefinitionInputDisplayNameMap),
-          localizedAttributes: S.optional(InteractionTypeDefinitionInputLocalizedAttributesMap),
+          attributes: S.optional(__S(44)),
+          description: S.optional(__S(38)),
+          displayName: S.optional(__S(38)),
+          localizedAttributes: S.optional(__S(45)),
           smallImage: S.optional(S.String),
           mediumImage: S.optional(S.String),
           largeImage: S.optional(S.String),
           apiEntitySetName: S.optional(S.String),
-          entityType: S.optional(InteractionTypeDefinitionInputEntityType),
-          fields: S.optional(InteractionTypeDefinitionInputFieldsList),
+          entityType: S.optional(S.String),
+          fields: S.optional(__S(135)),
           instancesCount: S.optional(S.Number),
           schemaItemTypeLink: S.optional(S.String),
           timestampFieldName: S.optional(S.String),
           typeName: S.optional(S.String),
-          idPropertyNames: S.optional(InteractionTypeDefinitionInputIdPropertyNamesList),
-          participantProfiles: S.optional(InteractionTypeDefinitionInputParticipantProfilesList),
+          idPropertyNames: S.optional(__S(43)),
+          participantProfiles: S.optional(__S(56)),
           primaryParticipantProfilePropertyName: S.optional(S.String),
-          defaultDataSource: S.optional(DataSourceInput),
+          defaultDataSource: S.optional(__S(22)),
           isActivity: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -6807,7 +5455,7 @@ function __c17(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           interactionName: S.String.pipe(T.Label()),
-          properties: S.optional(InteractionTypeDefinitionInput),
+          properties: S.optional(__S(136)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6825,7 +5473,7 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(InteractionTypeDefinition),
+          properties: S.optional(__S(57)),
         }),
       ).annotate({
         identifier: "InteractionsCreateOrUpdateResponse",
@@ -6852,23 +5500,19 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           profileName: S.optional(S.String),
-          profilePropertyReferences: S.optional(RelationshipsLookupProfilePropertyReferencesList),
+          profilePropertyReferences: S.optional(__S(113)),
           relatedProfileName: S.optional(S.String),
-          relatedProfilePropertyReferences: S.optional(
-            RelationshipsLookupRelatedProfilePropertyReferencesList,
-          ),
+          relatedProfilePropertyReferences: S.optional(__S(113)),
           existingRelationshipName: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelationshipsLookup" });
     case 5:
-      return S.Array(RelationshipsLookup);
+      return S.Array(__S(140));
     case 6:
       return S.suspend(() =>
         S.Struct({
           interactionName: S.optional(S.String),
-          suggestedRelationships: S.optional(
-            SuggestRelationshipLinksResponseSuggestedRelationshipsList,
-          ),
+          suggestedRelationships: S.optional(__S(141)),
         }),
       ).annotate({
         identifier: "SuggestRelationshipLinksResponse",
@@ -6876,20 +5520,20 @@ function __c17(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entityType: KpiDefinitionInputEntityType,
+          entityType: S.String,
           entityTypeName: S.String,
-          displayName: S.optional(KpiDefinitionInputDisplayNameMap),
-          description: S.optional(KpiDefinitionInputDescriptionMap),
-          calculationWindow: KpiDefinitionInputCalculationWindow,
+          displayName: S.optional(__S(38)),
+          description: S.optional(__S(38)),
+          calculationWindow: S.String,
           calculationWindowFieldName: S.optional(S.String),
-          function: KpiDefinitionInputFunction,
+          function: S.String,
           expression: S.String,
           unit: S.optional(S.String),
           filter: S.optional(S.String),
-          groupBy: S.optional(KpiDefinitionInputGroupByList),
-          thresHolds: S.optional(KpiThresholds),
-          aliases: S.optional(KpiDefinitionInputAliasesList),
-          extracts: S.optional(KpiDefinitionInputExtractsList),
+          groupBy: S.optional(__S(43)),
+          thresHolds: S.optional(__S(64)),
+          aliases: S.optional(__S(66)),
+          extracts: S.optional(__S(68)),
         }),
       ).annotate({ identifier: "KpiDefinitionInput" });
   }
@@ -6903,7 +5547,7 @@ function __c18(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           kpiName: S.String.pipe(T.Label()),
-          properties: S.optional(KpiDefinitionInput),
+          properties: S.optional(__S(143)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6919,7 +5563,7 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(KpiDefinition),
+          properties: S.optional(__S(69)),
         }),
       ).annotate({
         identifier: "KpiCreateOrUpdateResponse",
@@ -6943,16 +5587,16 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sourceEntityType: LinkDefinitionInputSourceEntityType,
-          targetEntityType: LinkDefinitionInputTargetEntityType,
+          sourceEntityType: S.String,
+          targetEntityType: S.String,
           sourceEntityTypeName: S.String,
           targetEntityTypeName: S.String,
-          displayName: S.optional(LinkDefinitionInputDisplayNameMap),
-          description: S.optional(LinkDefinitionInputDescriptionMap),
-          mappings: S.optional(LinkDefinitionInputMappingsList),
-          participantPropertyReferences: LinkDefinitionInputParticipantPropertyReferencesList,
+          displayName: S.optional(__S(38)),
+          description: S.optional(__S(38)),
+          mappings: S.optional(__S(73)),
+          participantPropertyReferences: __S(54),
           referenceOnly: S.optional(S.Boolean),
-          operationType: S.optional(LinkDefinitionInputOperationType),
+          operationType: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkDefinitionInput" });
     case 4:
@@ -6962,7 +5606,7 @@ function __c18(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           linkName: S.String.pipe(T.Label()),
-          properties: S.optional(LinkDefinitionInput),
+          properties: S.optional(__S(147)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6980,7 +5624,7 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(LinkDefinition),
+          properties: S.optional(__S(74)),
         }),
       ).annotate({
         identifier: "LinksCreateOrUpdateResponse",
@@ -7003,7 +5647,7 @@ function __c18(j: number): any {
         identifier: "ListAuthorizationPolicyByHubRequest",
       });
     case 7:
-      return S.Array(AuthorizationPolicyResourceFormat);
+      return S.Array(__S(4));
   }
 }
 function __c19(j: number): any {
@@ -7011,7 +5655,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(AuthorizationPolicyListResultValueList),
+          value: S.optional(__S(151)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -7035,11 +5679,11 @@ function __c19(j: number): any {
         identifier: "ListConnectorByHubRequest",
       });
     case 2:
-      return S.Array(ConnectorResourceFormat);
+      return S.Array(__S(35));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ConnectorListResultValueList),
+          value: S.optional(__S(154)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectorListResult" });
@@ -7062,11 +5706,11 @@ function __c19(j: number): any {
         identifier: "ListConnectorMappingByConnectorRequest",
       });
     case 5:
-      return S.Array(ConnectorMappingResourceFormat);
+      return S.Array(__S(15));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ConnectorMappingListResultValueList),
+          value: S.optional(__S(157)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -7101,16 +5745,16 @@ function __c20(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(HubTagsMap),
-          properties: S.optional(HubPropertiesFormat),
+          tags: S.optional(__S(160)),
+          properties: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "Hub" });
     case 2:
-      return S.Array(Hub);
+      return S.Array(__S(161));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(HubListResultValueList),
+          value: S.optional(__S(162)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "HubListResult" });
@@ -7146,11 +5790,11 @@ function __c20(j: number): any {
         identifier: "ListInteractionByHubRequest",
       });
     case 6:
-      return S.Array(InteractionResourceFormat);
+      return S.Array(__S(138));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(InteractionListResultValueList),
+          value: S.optional(__S(166)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "InteractionListResult" });
@@ -7174,11 +5818,11 @@ function __c21(j: number): any {
         ),
       ).annotate({ identifier: "ListKpiByHubRequest" });
     case 1:
-      return S.Array(KpiResourceFormat);
+      return S.Array(__S(70));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(KpiListResultValueList),
+          value: S.optional(__S(169)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "KpiListResult" });
@@ -7198,11 +5842,11 @@ function __c21(j: number): any {
         ),
       ).annotate({ identifier: "ListLinkByHubRequest" });
     case 4:
-      return S.Array(LinkResourceFormat);
+      return S.Array(__S(75));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(LinkListResultValueList),
+          value: S.optional(__S(172)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "LinkListResult" });
@@ -7233,15 +5877,15 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(OperationDisplay),
+          display: S.optional(__S(175)),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(Operation);
+      return S.Array(__S(176));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(OperationListResultValueList),
+          value: S.optional(__S(177)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -7263,11 +5907,11 @@ function __c22(j: number): any {
         identifier: "ListPredictionByHubRequest",
       });
     case 4:
-      return S.Array(PredictionResourceFormat);
+      return S.Array(__S(82));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PredictionListResultValueList),
+          value: S.optional(__S(180)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PredictionListResult" });
@@ -7288,7 +5932,7 @@ function __c22(j: number): any {
         ),
       ).annotate({ identifier: "ListProfileByHubRequest" });
     case 7:
-      return S.Array(ProfileResourceFormat);
+      return S.Array(__S(98));
   }
 }
 function __c23(j: number): any {
@@ -7296,7 +5940,7 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ProfileListResultValueList),
+          value: S.optional(__S(183)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProfileListResult" });
@@ -7323,17 +5967,17 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(RelationshipDefinition),
+          properties: S.optional(__S(107)),
         }),
       ).annotate({
         identifier: "RelationshipResourceFormat",
       });
     case 3:
-      return S.Array(RelationshipResourceFormat);
+      return S.Array(__S(186));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(RelationshipListResultValueList),
+          value: S.optional(__S(187)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelationshipListResult" });
@@ -7355,11 +5999,11 @@ function __c23(j: number): any {
         identifier: "ListRelationshipLinkByHubRequest",
       });
     case 6:
-      return S.Array(RelationshipLinkResourceFormat);
+      return S.Array(__S(115));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(RelationshipLinkListResultValueList),
+          value: S.optional(__S(190)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -7387,11 +6031,11 @@ function __c24(j: number): any {
         identifier: "ListRoleAssignmentByHubRequest",
       });
     case 1:
-      return S.Array(RoleAssignmentResourceFormat);
+      return S.Array(__S(121));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(RoleAssignmentListResultValueList),
+          value: S.optional(__S(193)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleAssignmentListResult" });
@@ -7423,15 +6067,15 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(Role),
+          properties: S.optional(__S(196)),
         }),
       ).annotate({ identifier: "RoleResourceFormat" });
     case 6:
-      return S.Array(RoleResourceFormat);
+      return S.Array(__S(197));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(RoleListResultValueList),
+          value: S.optional(__S(198)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleListResult" });
@@ -7456,11 +6100,11 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListViewByHubRequest" });
     case 1:
-      return S.Array(ViewResourceFormat);
+      return S.Array(__S(124));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ViewListResultValueList),
+          value: S.optional(__S(201)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ViewListResult" });
@@ -7482,31 +6126,31 @@ function __c25(j: number): any {
         identifier: "ListWidgetTypeByHubRequest",
       });
     case 4:
-      return S.Array(WidgetTypeResourceFormat);
+      return S.Array(__S(127));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(WidgetTypeListResultValueList),
+          value: S.optional(__S(204)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WidgetTypeListResult" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          description: S.optional(PredictionInputDescriptionMap),
-          displayName: S.optional(PredictionInputDisplayNameMap),
-          involvedInteractionTypes: S.optional(PredictionInputInvolvedInteractionTypesList),
-          involvedKpiTypes: S.optional(PredictionInputInvolvedKpiTypesList),
-          involvedRelationships: S.optional(PredictionInputInvolvedRelationshipsList),
+          description: S.optional(__S(38)),
+          displayName: S.optional(__S(38)),
+          involvedInteractionTypes: S.optional(__S(43)),
+          involvedKpiTypes: S.optional(__S(43)),
+          involvedRelationships: S.optional(__S(43)),
           negativeOutcomeExpression: S.String,
           positiveOutcomeExpression: S.String,
           primaryProfileType: S.String,
           predictionName: S.optional(S.String),
           scopeExpression: S.String,
           autoAnalyze: S.Boolean,
-          mappings: PredictionMappings,
+          mappings: __S(77),
           scoreLabel: S.String,
-          grades: S.optional(PredictionInputGradesList),
+          grades: S.optional(__S(79)),
         }),
       ).annotate({ identifier: "PredictionInput" });
     case 7:
@@ -7516,7 +6160,7 @@ function __c25(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           predictionName: S.String.pipe(T.Label()),
-          properties: S.optional(PredictionInput),
+          properties: S.optional(__S(206)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7538,7 +6182,7 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(Prediction),
+          properties: S.optional(__S(81)),
         }),
       ).annotate({
         identifier: "PredictionsCreateOrUpdateResponse",
@@ -7550,7 +6194,7 @@ function __c26(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           predictionName: S.String.pipe(T.Label()),
-          status: PredictionsModelStatusRequestStatus,
+          status: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -7565,21 +6209,21 @@ function __c26(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(ProfileTypeDefinitionInputAttributesMap),
-          description: S.optional(ProfileTypeDefinitionInputDescriptionMap),
-          displayName: S.optional(ProfileTypeDefinitionInputDisplayNameMap),
-          localizedAttributes: S.optional(ProfileTypeDefinitionInputLocalizedAttributesMap),
+          attributes: S.optional(__S(44)),
+          description: S.optional(__S(38)),
+          displayName: S.optional(__S(38)),
+          localizedAttributes: S.optional(__S(45)),
           smallImage: S.optional(S.String),
           mediumImage: S.optional(S.String),
           largeImage: S.optional(S.String),
           apiEntitySetName: S.optional(S.String),
-          entityType: S.optional(ProfileTypeDefinitionInputEntityType),
-          fields: S.optional(ProfileTypeDefinitionInputFieldsList),
+          entityType: S.optional(S.String),
+          fields: S.optional(__S(135)),
           instancesCount: S.optional(S.Number),
           schemaItemTypeLink: S.optional(S.String),
           timestampFieldName: S.optional(S.String),
           typeName: S.optional(S.String),
-          strongIds: S.optional(ProfileTypeDefinitionInputStrongIdsList),
+          strongIds: S.optional(__S(96)),
         }),
       ).annotate({
         identifier: "ProfileTypeDefinitionInput",
@@ -7591,7 +6235,7 @@ function __c26(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           profileName: S.String.pipe(T.Label()),
-          properties: S.optional(ProfileTypeDefinitionInput),
+          properties: S.optional(__S(210)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7609,7 +6253,7 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(ProfileTypeDefinition),
+          properties: S.optional(__S(97)),
         }),
       ).annotate({
         identifier: "ProfilesCreateOrUpdateResponse",
@@ -7651,7 +6295,7 @@ function __c26(j: number): any {
         identifier: "RegenerateAuthorizationPolicySecondaryKeyRequest",
       });
     case 7:
-      return S.Array(ParticipantProfilePropertyReference);
+      return S.Array(__S(112));
   }
 }
 function __c27(j: number): any {
@@ -7659,13 +6303,12 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          displayName: S.optional(RelationshipLinkDefinitionInputDisplayNameMap),
-          description: S.optional(RelationshipLinkDefinitionInputDescriptionMap),
+          displayName: S.optional(__S(38)),
+          description: S.optional(__S(38)),
           interactionType: S.String,
-          mappings: S.optional(RelationshipLinkDefinitionInputMappingsList),
-          profilePropertyReferences: RelationshipLinkDefinitionInputProfilePropertyReferencesList,
-          relatedProfilePropertyReferences:
-            RelationshipLinkDefinitionInputRelatedProfilePropertyReferencesList,
+          mappings: S.optional(__S(111)),
+          profilePropertyReferences: __S(113),
+          relatedProfilePropertyReferences: __S(215),
           relationshipName: S.String,
         }),
       ).annotate({
@@ -7678,7 +6321,7 @@ function __c27(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           relationshipLinkName: S.String.pipe(T.Label()),
-          properties: S.optional(RelationshipLinkDefinitionInput),
+          properties: S.optional(__S(216)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7693,12 +6336,12 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cardinality: S.optional(RelationshipDefinitionInputCardinality),
-          displayName: S.optional(RelationshipDefinitionInputDisplayNameMap),
-          description: S.optional(RelationshipDefinitionInputDescriptionMap),
+          cardinality: S.optional(S.String),
+          displayName: S.optional(__S(38)),
+          description: S.optional(__S(38)),
           expiryDateTimeUtc: S.optional(S.String),
-          fields: S.optional(RelationshipDefinitionInputFieldsList),
-          lookupMappings: S.optional(RelationshipDefinitionInputLookupMappingsList),
+          fields: S.optional(__S(135)),
+          lookupMappings: S.optional(__S(106)),
           profileType: S.String,
           relatedProfileType: S.String,
         }),
@@ -7712,7 +6355,7 @@ function __c27(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           relationshipName: S.String.pipe(T.Label()),
-          properties: S.optional(RelationshipDefinitionInput),
+          properties: S.optional(__S(218)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7727,23 +6370,23 @@ function __c27(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          displayName: S.optional(RoleAssignmentInputDisplayNameMap),
-          description: S.optional(RoleAssignmentInputDescriptionMap),
-          role: RoleAssignmentInputRole,
-          principals: RoleAssignmentInputPrincipalsList,
-          profiles: S.optional(ResourceSetDescription),
-          interactions: S.optional(ResourceSetDescription),
-          links: S.optional(ResourceSetDescription),
-          kpis: S.optional(ResourceSetDescription),
-          sasPolicies: S.optional(ResourceSetDescription),
-          connectors: S.optional(ResourceSetDescription),
-          views: S.optional(ResourceSetDescription),
-          relationshipLinks: S.optional(ResourceSetDescription),
-          relationships: S.optional(ResourceSetDescription),
-          widgetTypes: S.optional(ResourceSetDescription),
-          roleAssignments: S.optional(ResourceSetDescription),
-          conflationPolicies: S.optional(ResourceSetDescription),
-          segments: S.optional(ResourceSetDescription),
+          displayName: S.optional(__S(38)),
+          description: S.optional(__S(38)),
+          role: S.String,
+          principals: __S(118),
+          profiles: S.optional(__S(119)),
+          interactions: S.optional(__S(119)),
+          links: S.optional(__S(119)),
+          kpis: S.optional(__S(119)),
+          sasPolicies: S.optional(__S(119)),
+          connectors: S.optional(__S(119)),
+          views: S.optional(__S(119)),
+          relationshipLinks: S.optional(__S(119)),
+          relationships: S.optional(__S(119)),
+          widgetTypes: S.optional(__S(119)),
+          roleAssignments: S.optional(__S(119)),
+          conflationPolicies: S.optional(__S(119)),
+          segments: S.optional(__S(119)),
         }),
       ).annotate({ identifier: "RoleAssignmentInput" });
     case 5:
@@ -7753,7 +6396,7 @@ function __c27(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           assignmentName: S.String.pipe(T.Label()),
-          properties: S.optional(RoleAssignmentInput),
+          properties: S.optional(__S(220)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7772,8 +6415,8 @@ function __c27(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(UpdateHubRequestTagsMap),
-          properties: S.optional(HubPropertiesFormatInput),
+          tags: S.optional(__S(38)),
+          properties: S.optional(__S(128)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7787,7 +6430,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           userId: S.optional(S.String),
-          displayName: S.optional(ViewInputDisplayNameMap),
+          displayName: S.optional(__S(38)),
           definition: S.String,
         }),
       ).annotate({ identifier: "ViewInput" });
@@ -7802,7 +6445,7 @@ function __c28(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           hubName: S.String.pipe(T.Label()),
           viewName: S.String.pipe(T.Label()),
-          properties: S.optional(ViewInput),
+          properties: S.optional(__S(223)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7820,10 +6463,77 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(View),
+          properties: S.optional(__S(123)),
         }),
       ).annotate({
         identifier: "ViewsCreateOrUpdateResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
   }
 }

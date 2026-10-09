@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,26 +66,14 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 /** `CancelWorkflowInvocation` request message. */
 export type CancelWorkflowInvocationRequest = CancelOperationRequest;
 export interface CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest {
@@ -92,18 +82,8 @@ export interface CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
-
 /** `CancelWorkflowInvocation` response message. */
 export interface CancelWorkflowInvocationResponse {}
-const CancelWorkflowInvocationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CancelWorkflowInvocationResponse>;
-
 /** `CheckoutWorkspaceBranch` request message. */
 export interface CheckoutWorkspaceBranchRequest {
   /** Optional. The name of the branch in the Git repository from which the new branch should be created. If left unset, the workspace's current branch name will be used. Accepts only branch names from FetchWorkspaceBranches response, and can only be set if `create_if_not_exists` is true. Oherwise, an error will be thrown. */
@@ -113,22 +93,12 @@ export interface CheckoutWorkspaceBranchRequest {
   /** Optional. If set to true and the branch does not exist, it will be created. Otherwise, an error will be thrown. */
   createIfNotExists?: boolean;
 }
-const CheckoutWorkspaceBranchRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CheckoutWorkspaceBranchRequest>;
-
 export interface CheckoutProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace resource name. Format: projects/{project}/locations/{location}/repositories/{repository}/workspaces/{workspace} */
   name: string;
   /** Request body */
   body?: CheckoutWorkspaceBranchRequest;
 }
-const CheckoutProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CheckoutProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** Represents the author of a Git commit. */
 export interface CommitAuthor {
   /** Required. The commit author's email address. */
@@ -136,8 +106,6 @@ export interface CommitAuthor {
   /** Required. The commit author's name. */
   name?: string;
 }
-const CommitAuthor = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CommitAuthor>;
-
 /** Represents a Dataform Git commit. */
 export interface CommitMetadata {
   /** Required. The commit's author. */
@@ -145,15 +113,11 @@ export interface CommitMetadata {
   /** Optional. The commit's message. */
   commitMessage?: string;
 }
-const CommitMetadata = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CommitMetadata>;
-
 /** Represents the write file operation (for files added or modified). */
 export interface WriteFile {
   /** The file's contents. */
   contents?: string;
 }
-const WriteFile = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<WriteFile>;
-
 /** Represents the delete file operation. */
 export type DeleteFile = CancelOperationRequest;
 /** Represents a single file operation to the repository. */
@@ -163,11 +127,7 @@ export interface FileOperation {
   /** Represents the delete operation. */
   deleteFile?: CancelOperationRequest;
 }
-const FileOperation = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<FileOperation>;
-
 export type FileOperationMap = { [key: string]: FileOperation | undefined };
-const FileOperationMap = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<FileOperationMap>;
-
 /** `CommitRepositoryChanges` request message. */
 export interface CommitRepositoryChangesRequest {
   /** Optional. The commit SHA which must be the repository's current HEAD before applying this commit; otherwise this request will fail. If unset, no validation on the current HEAD commit SHA is performed. */
@@ -177,35 +137,18 @@ export interface CommitRepositoryChangesRequest {
   /** Optional. A map to the path of the file to the operation. The path is the full file path including filename, from repository root. */
   fileOperations?: FileOperationMap;
 }
-const CommitRepositoryChangesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CommitRepositoryChangesRequest>;
-
 export interface CommitProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
   name: string;
   /** Request body */
   body?: CommitRepositoryChangesRequest;
 }
-const CommitProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CommitProjectsLocationsRepositoriesRequest>;
-
 /** `CommitRepositoryChanges` response message. */
 export interface CommitRepositoryChangesResponse {
   /** The commit SHA of the current commit. */
   commitSha?: string;
 }
-const CommitRepositoryChangesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CommitRepositoryChangesResponse>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<StringList>;
-
 /** `CommitWorkspaceChanges` request message. */
 export interface CommitWorkspaceChangesRequest {
   /** Required. The commit's author. */
@@ -215,54 +158,29 @@ export interface CommitWorkspaceChangesRequest {
   /** Optional. The commit's message. */
   commitMessage?: string;
 }
-const CommitWorkspaceChangesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CommitWorkspaceChangesRequest>;
-
 export interface CommitProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   name: string;
   /** Request body */
   body?: CommitWorkspaceChangesRequest;
 }
-const CommitProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CommitProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `CommitWorkspaceChanges` response message. */
 export interface CommitWorkspaceChangesResponse {}
-const CommitWorkspaceChangesResponse =
-  CancelOperationRequest as any as S.Schema<CommitWorkspaceChangesResponse>;
-
 export interface ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
   name: string;
 }
-const ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest>;
-
 export type ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum =
   | "TOKEN_STATUS_UNSPECIFIED"
   | "NOT_FOUND"
   | "INVALID"
   | "VALID"
   | "PERMISSION_DENIED";
-const ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum = S.String;
-
 /** `ComputeRepositoryAccessTokenStatus` response message. */
 export interface ComputeRepositoryAccessTokenStatusResponse {
   /** Indicates the status of the Git access token. */
   tokenStatus?: ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum;
 }
-const ComputeRepositoryAccessTokenStatusResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ComputeRepositoryAccessTokenStatusResponse>;
-
 /** Represents a Dataform Folder. This is a resource that is used to organize Files and other Folders and provide hierarchical access controls. */
 export interface Folder {
   /** Output only. The timestamp of when the Folder was last updated. */
@@ -282,8 +200,6 @@ export interface Folder {
   /** Output only. The timestamp of when the Folder was created. */
   createTime?: string;
 }
-const Folder = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Folder>;
-
 export interface CreateProjectsLocationsFoldersRequest {
   /** Required. The location in which to create the Folder. Must be in the format `projects/*\/locations/*`. */
   parent: string;
@@ -292,11 +208,6 @@ export interface CreateProjectsLocationsFoldersRequest {
   /** Request body */
   body?: Folder;
 }
-const CreateProjectsLocationsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateProjectsLocationsFoldersRequest>;
-
 /** Configures workspace compilation overrides for a repository. Primarily used by the UI (`console.cloud.google.com`). `schema_suffix` and `table_prefix` can have a special expression - `${workspaceName}`, which refers to the workspace name from which the compilation results will be created. API callers are expected to resolve the expression in these overrides and provide them explicitly in `code_compilation_config` (https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.compilationResults#codecompilationconfig) when creating workspace-scoped compilation results. */
 export interface WorkspaceCompilationOverrides {
   /** Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names. */
@@ -306,42 +217,27 @@ export interface WorkspaceCompilationOverrides {
   /** Optional. The prefix that should be prepended to all table names. */
   tablePrefix?: string;
 }
-const WorkspaceCompilationOverrides = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<WorkspaceCompilationOverrides>;
-
 /** Describes encryption state of a resource. */
 export interface DataEncryptionState {
   /** Required. The KMS key version name with which data of a resource is encrypted. */
   kmsKeyVersionName?: string;
 }
-const DataEncryptionState = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DataEncryptionState>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<StringMap>;
-
 /** OAuth configuration for end user authentication. */
 export interface OAuthConfig {
   /** Optional. Additional OAuth scopes to use for BigQuery executions. Scopes always in use: `https://www.googleapis.com/auth/bigquery` */
   additionalOauthScopes?: StringList;
 }
-const OAuthConfig = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<OAuthConfig>;
-
 /** Includes configuration options for repository end user authentication. */
 export interface EndUserAuthConfig {
   /** Optional. OAuth configuration for repository end user authentication. */
   oauthConfig?: OAuthConfig;
 }
-const EndUserAuthConfig = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<EndUserAuthConfig>;
-
 export type GitRemoteSettingsTokenStatusEnum =
   | "TOKEN_STATUS_UNSPECIFIED"
   | "NOT_FOUND"
   | "INVALID"
   | "VALID";
-const GitRemoteSettingsTokenStatusEnum = S.String;
-
 /** Configures fields for performing SSH authentication. */
 export interface SshAuthenticationConfig {
   /** Required. The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*\/secrets/*\/versions/*`. */
@@ -349,11 +245,6 @@ export interface SshAuthenticationConfig {
   /** Required. Content of a public SSH key to verify an identity of a remote Git host. */
   hostPublicKey?: string;
 }
-const SshAuthenticationConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<SshAuthenticationConfig>;
-
 /** Controls Git remote configuration for a repository. */
 export interface GitRemoteSettings {
   /** Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*\/secrets/*\/versions/*`. */
@@ -371,8 +262,6 @@ export interface GitRemoteSettings {
   /** Required. The Git remote's URL. */
   url?: string;
 }
-const GitRemoteSettings = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GitRemoteSettings>;
-
 /** Represents a Dataform Git repository. */
 export interface Repository {
   /** Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the repository and all child resources. It is not possible to add or update the encryption key after the repository is created. Example: `projects/{kms_project}/locations/{location}/keyRings/{key_location}/cryptoKeys/{key}` */
@@ -406,8 +295,6 @@ export interface Repository {
   /** Optional. If set, configures this repository to be linked to a Git remote. */
   gitRemoteSettings?: GitRemoteSettings;
 }
-const Repository = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Repository>;
-
 export interface CreateProjectsLocationsRepositoriesRequest {
   /** Required. The location in which to create the repository. Must be in the format `projects/*\/locations/*`. */
   parent: string;
@@ -416,18 +303,11 @@ export interface CreateProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: Repository;
 }
-const CreateProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateProjectsLocationsRepositoriesRequest>;
-
 export type PipelineConfigPipelineTypeEnum =
   | "PIPELINE_TYPE_UNSPECIFIED"
   | "DATAFORM"
   | "SQL"
   | "NOTEBOOK";
-const PipelineConfigPipelineTypeEnum = S.String;
-
 /** Defines the pipeline type and path within the Git repository. */
 export interface PipelineConfig {
   /** Required. The type of the pipeline. */
@@ -435,18 +315,11 @@ export interface PipelineConfig {
   /** Required. The relative path within the Git repository where the pipeline is defined. For example, for a Dataform pipeline, it is a path to the folder where `workflow_settings.yaml` or `dataform.json` is located. */
   path?: string;
 }
-const PipelineConfig = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<PipelineConfig>;
-
 /** Configures the destination for a repository snapshot. */
 export interface GcsRepositorySnapshotDestination {
   /** Optional. The Google Cloud Storage destination to upload the repository snapshot to. Format: `gs://bucket-name/path/`. */
   repositorySnapshotUri?: string;
 }
-const GcsRepositorySnapshotDestination = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GcsRepositorySnapshotDestination>;
-
 /** Configures various aspects of Dataform notebook runtime. */
 export interface NotebookRuntimeOptions {
   /** Optional. The Google Cloud Storage location to upload the result to. Format: `gs://bucket-name`. */
@@ -456,11 +329,6 @@ export interface NotebookRuntimeOptions {
   /** Optional. The Google Cloud Storage destination to upload the snapshot to. For empty URI it defaults to the provided gcs_output_bucket. Format: `gs://bucket-name/path/`. */
   gcsRepositorySnapshotDestination?: GcsRepositorySnapshotDestination;
 }
-const NotebookRuntimeOptions = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<NotebookRuntimeOptions>;
-
 /** Configures various aspects of Dataform code compilation. */
 export interface CodeCompilationConfig {
   /** Optional. The default schema (BigQuery dataset ID) for assertions. */
@@ -486,21 +354,11 @@ export interface CodeCompilationConfig {
   /** Optional. The default BigQuery location to use. Defaults to "US". See the BigQuery docs for a full list of locations: https://cloud.google.com/bigquery/docs/locations. */
   defaultLocation?: string;
 }
-const CodeCompilationConfig = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CodeCompilationConfig>;
-
 /** Metadata used to identify if a resource is user scoped. */
 export interface PrivateResourceMetadata {
   /** Output only. If true, this resource is user-scoped, meaning it is either a workspace or sourced from a workspace. */
   userScoped?: boolean;
 }
-const PrivateResourceMetadata = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<PrivateResourceMetadata>;
-
 /** Represents an action identifier. If the action writes output, the output will be written to the referenced database object. */
 export interface Target {
   /** Optional. The action's schema (BigQuery dataset ID), within `database`. */
@@ -510,8 +368,6 @@ export interface Target {
   /** Optional. The action's name, within `database` and `schema`. */
   name?: string;
 }
-const Target = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Target>;
-
 /** An error encountered when attempting to compile a Dataform project. */
 export interface CompilationError {
   /** Output only. The error's full stack trace. */
@@ -523,11 +379,7 @@ export interface CompilationError {
   /** Output only. The error's top level message. */
   message?: string;
 }
-const CompilationError = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CompilationError>;
-
 export type CompilationErrorList = Array<CompilationError>;
-const CompilationErrorList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<CompilationErrorList>;
-
 /** Metadata about a repository snapshot stored in Google Cloud Storage. */
 export interface GcsRepositorySnapshotMetadata {
   /** Output only. The crc32c checksum of the repository snapshot, big-endian base64 encoded. */
@@ -537,11 +389,6 @@ export interface GcsRepositorySnapshotMetadata {
   /** Output only. The Google Cloud Storage URI of the repository snapshot. */
   repositorySnapshotUri?: string;
 }
-const GcsRepositorySnapshotMetadata = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GcsRepositorySnapshotMetadata>;
-
 /** Represents the result of compiling a Dataform project. */
 export interface CompilationResult {
   /** Immutable. If set, fields of `code_compilation_config` override the default compilation settings that are specified in dataform.json. */
@@ -571,25 +418,14 @@ export interface CompilationResult {
   /** Output only. Only set if the repository has a KMS Key. */
   dataEncryptionState?: DataEncryptionState;
 }
-const CompilationResult = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<CompilationResult>;
-
 export interface CreateProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Required. The repository in which to create the compilation result. Must be in the format `projects/*\/locations/*\/repositories/*`. */
   parent: string;
   /** Request body */
   body?: CompilationResult;
 }
-const CreateProjectsLocationsRepositoriesCompilationResultsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateProjectsLocationsRepositoriesCompilationResultsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -599,8 +435,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Status>;
-
 /** A record of an attempt to create a compilation result for this release config. */
 export interface ScheduledReleaseRecord {
   /** The name of the created compilation result, if one was successfully created. Must be in the format `projects/*\/locations/*\/repositories/*\/compilationResults/*`. */
@@ -610,17 +444,7 @@ export interface ScheduledReleaseRecord {
   /** Output only. The timestamp of this release attempt. */
   releaseTime?: string;
 }
-const ScheduledReleaseRecord = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ScheduledReleaseRecord>;
-
 export type ScheduledReleaseRecordList = Array<ScheduledReleaseRecord>;
-const ScheduledReleaseRecordList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ScheduledReleaseRecordList>;
-
 /** Represents a Dataform release configuration. */
 export interface ReleaseConfig {
   /** Required. Git commit/tag/branch name at which the repository should be compiled. Must exist in the remote repository. Examples: - a commit SHA: `12ade345` - a tag: `tag1` - a branch name: `branch1` */
@@ -642,8 +466,6 @@ export interface ReleaseConfig {
   /** Output only. All the metadata information that is used internally to serve the resource. For example: timestamps, flags, status fields, etc. The format of this field is a JSON string. */
   internalMetadata?: string;
 }
-const ReleaseConfig = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ReleaseConfig>;
-
 export interface CreateProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Required. The repository in which to create the release config. Must be in the format `projects/*\/locations/*\/repositories/*`. */
   parent: string;
@@ -652,11 +474,6 @@ export interface CreateProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Request body */
   body?: ReleaseConfig;
 }
-const CreateProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CreateProjectsLocationsRepositoriesReleaseConfigsRequest>;
-
 /** A record of an attempt to create a workflow invocation for this workflow config. */
 export interface ScheduledExecutionRecord {
   /** The error status encountered upon this attempt to create the workflow invocation, if the attempt was unsuccessful. */
@@ -666,17 +483,7 @@ export interface ScheduledExecutionRecord {
   /** The name of the created workflow invocation, if one was successfully created. Must be in the format `projects/*\/locations/*\/repositories/*\/workflowInvocations/*`. */
   workflowInvocation?: string;
 }
-const ScheduledExecutionRecord = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ScheduledExecutionRecord>;
-
 export type ScheduledExecutionRecordList = Array<ScheduledExecutionRecord>;
-const ScheduledExecutionRecordList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ScheduledExecutionRecordList>;
-
 /** A record of an attempt to evaluate trigger conditions. */
 export interface TriggerEvaluationRecord {
   /** Output only. The timestamp of this trigger evaluation attempt. */
@@ -684,20 +491,8 @@ export interface TriggerEvaluationRecord {
   /** Output only. The status of the trigger evaluation. Success is indicated by a code of 0 (OK). Message will only be present if the status code is non-zero. */
   status?: Status;
 }
-const TriggerEvaluationRecord = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<TriggerEvaluationRecord>;
-
 export type TriggerEvaluationRecordList = Array<TriggerEvaluationRecord>;
-const TriggerEvaluationRecordList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<TriggerEvaluationRecordList>;
-
 export type WorkflowTriggerConfigConditionEnum = "CONDITION_UNSPECIFIED" | "ALL" | "ANY";
-const WorkflowTriggerConfigConditionEnum = S.String;
-
 /** Represents a table update trigger configuration. */
 export interface TableUpdateTrigger {
   /** The target table to trigger the workflow. */
@@ -705,18 +500,12 @@ export interface TableUpdateTrigger {
   /** Output only. The modification time of this table that resulted in an invocation of the workflow. This would be updated by the triggering service after a successful workflow invocation. */
   triggerUpdateTime?: string;
 }
-const TableUpdateTrigger = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<TableUpdateTrigger>;
-
 /** The trigger definition to invoke a workflow. */
 export interface WorkflowTrigger {
   /** The table update trigger configuration. */
   tableUpdateTrigger?: TableUpdateTrigger;
 }
-const WorkflowTrigger = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<WorkflowTrigger>;
-
 export type WorkflowTriggerList = Array<WorkflowTrigger>;
-const WorkflowTriggerList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<WorkflowTriggerList>;
-
 /** Represents a trigger configuration for a workflow. */
 export interface WorkflowTriggerConfig {
   /** Output only. Records of the 10 most recent trigger evaluations, ordered in descending order of `evaluation_time`. Updated whenever the service evaluates the trigger conditions (via polling or upon receiving a push event). */
@@ -732,27 +521,16 @@ export interface WorkflowTriggerConfig {
   /** Optional. The effective maximum wait time duration for the trigger condition to be met. If not specified, the workflow won't be triggered until conditions are met. */
   maxWaitDuration?: string;
 }
-const WorkflowTriggerConfig = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<WorkflowTriggerConfig>;
-
 export type InvocationConfigQueryPriorityEnum =
   | "QUERY_PRIORITY_UNSPECIFIED"
   | "INTERACTIVE"
   | "BATCH";
-const InvocationConfigQueryPriorityEnum = S.String;
-
 export type InvocationConfigExecutionModeEnum =
   | "EXECUTION_MODE_UNSPECIFIED"
   | "DEFAULT"
   | "ALL_EXCEPT_UNIT_TESTS"
   | "UNIT_TESTS_ONLY";
-const InvocationConfigExecutionModeEnum = S.String;
-
 export type TargetList = Array<Target>;
-const TargetList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<TargetList>;
-
 /** Includes configuration options for end user authentication. */
 export interface EndUserAuthenticationConfig {
   /** Optional. OAuth configuration for end user authentication. */
@@ -760,11 +538,6 @@ export interface EndUserAuthenticationConfig {
   /** Output only. Email address of the user to run workflow invocations under. */
   userEmail?: string;
 }
-const EndUserAuthenticationConfig = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<EndUserAuthenticationConfig>;
-
 /** Includes various configuration options for a workflow invocation. If both `included_targets` and `included_tags` are unset, all actions will be included. */
 export interface InvocationConfig {
   /** Optional. When set to true, transitive dependencies of included actions will be executed. */
@@ -786,8 +559,6 @@ export interface InvocationConfig {
   /** Optional. Configuration for end user authentication. Note that this should not be set when `service_account` is used. */
   endUserAuthConfig?: EndUserAuthenticationConfig;
 }
-const InvocationConfig = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<InvocationConfig>;
-
 /** Represents a Dataform workflow configuration. */
 export interface WorkflowConfig {
   /** Optional. Disables automatic creation of workflow invocations. */
@@ -813,8 +584,6 @@ export interface WorkflowConfig {
   /** Identifier. The workflow config's name. */
   name?: string;
 }
-const WorkflowConfig = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<WorkflowConfig>;
-
 export interface CreateProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Required. The ID to use for the workflow config, which will become the final component of the workflow config's resource name. */
   workflowConfigId?: string;
@@ -823,11 +592,6 @@ export interface CreateProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Request body */
   body?: WorkflowConfig;
 }
-const CreateProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateProjectsLocationsRepositoriesWorkflowConfigsRequest>;
-
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
@@ -835,8 +599,6 @@ export interface Interval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
   startTime?: string;
 }
-const Interval = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Interval>;
-
 export type WorkflowInvocationStateEnum =
   | "STATE_UNSPECIFIED"
   | "RUNNING"
@@ -844,8 +606,6 @@ export type WorkflowInvocationStateEnum =
   | "CANCELLED"
   | "FAILED"
   | "CANCELING";
-const WorkflowInvocationStateEnum = S.String;
-
 /** Represents a single invocation of a compilation result. */
 export interface WorkflowInvocation {
   /** Output only. This workflow invocation's timing details. */
@@ -871,19 +631,12 @@ export interface WorkflowInvocation {
   /** Output only. This workflow invocation's current state. */
   state?: WorkflowInvocationStateEnum | (string & {});
 }
-const WorkflowInvocation = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<WorkflowInvocation>;
-
 export interface CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Required. The repository in which to create the workflow invocation. Must be in the format `projects/*\/locations/*\/repositories/*`. */
   parent: string;
   /** Request body */
   body?: WorkflowInvocation;
 }
-const CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
-
 /** Represents a Dataform Git workspace. */
 export interface Workspace {
   /** Identifier. The workspace's name. */
@@ -907,8 +660,6 @@ export interface Workspace {
   /** Optional. Input only. Immutable. The name of the default upstream branch for all pull/push operations in the remote repository for this workspace. If empty, the HEAD branch from repository will be used. */
   originalBranch?: string;
 }
-const Workspace = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<Workspace>;
-
 export interface CreateProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The repository in which to create the workspace. Must be in the format `projects/*\/locations/*\/repositories/*`. */
   parent: string;
@@ -917,11 +668,6 @@ export interface CreateProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: Workspace;
 }
-const CreateProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CreateProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** Represents a Dataform TeamFolder. This is a resource that sits at the project level and is used to organize Repositories and Folders with hierarchical access controls. They provide a team context and stricter access controls. */
 export interface TeamFolder {
   /** Output only. The timestamp of when the TeamFolder was last updated. */
@@ -937,8 +683,6 @@ export interface TeamFolder {
   /** Output only. The timestamp of when the TeamFolder was created. */
   createTime?: string;
 }
-const TeamFolder = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<TeamFolder>;
-
 export interface CreateProjectsLocationsTeamFoldersRequest {
   /** Deprecated: This field is not used. The resource name is generated automatically. The ID to use for the TeamFolder, which will become the final component of the TeamFolder's resource name. */
   teamFolderId?: string;
@@ -947,11 +691,6 @@ export interface CreateProjectsLocationsTeamFoldersRequest {
   /** Request body */
   body?: TeamFolder;
 }
-const CreateProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<CreateProjectsLocationsTeamFoldersRequest>;
-
 /** `DeleteBranch` request message. */
 export interface DeleteBranchRequest {
   /** Optional. If set to true, any non-pushed commits on the branch will be deleted. Upstream branch name will be the same as the branch to delete. */
@@ -959,44 +698,25 @@ export interface DeleteBranchRequest {
   /** Required. The name of the branch in the Git repository to delete. */
   branch?: string;
 }
-const DeleteBranchRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<DeleteBranchRequest>;
-
 export interface DeleteBranchProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace resource name. Format: projects/{project}/locations/{location}/repositories/{repository}/workspaces/{workspace} */
   name: string;
   /** Request body */
   body?: DeleteBranchRequest;
 }
-const DeleteBranchProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DeleteBranchProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `DeleteBranch` response message. */
 export interface DeleteBranchResponse {}
-const DeleteBranchResponse = CancelOperationRequest as any as S.Schema<DeleteBranchResponse>;
-
 /** `DeleteRepositoryLongRunning` request message. */
 export interface DeleteRepositoryLongRunningRequest {
   /** Optional. If set to true, child resources of this repository (compilation results and workflow invocations) will also be deleted. Otherwise, the request will only succeed if the repository has no child resources. **Note:** *This flag doesn't support deletion of workspaces, release configs or workflow configs. If any of such resources exists in the repository, the request will fail.* */
   force?: boolean;
 }
-const DeleteRepositoryLongRunningRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DeleteRepositoryLongRunningRequest>;
-
 export interface DeleteLongRunningProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
   name: string;
   /** Request body */
   body?: DeleteRepositoryLongRunningRequest;
 }
-const DeleteLongRunningProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DeleteLongRunningProjectsLocationsRepositoriesRequest>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -1010,103 +730,51 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-const Operation = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<Operation>;
-
 export interface DeleteProjectsLocationsFoldersRequest {
   /** Required. The Folder's name. */
   name: string;
 }
-const DeleteProjectsLocationsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsFoldersRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 export interface DeleteProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
   name: string;
   /** Optional. If set to true, child resources of this repository (compilation results and workflow invocations) will also be deleted. Otherwise, the request will only succeed if the repository has no child resources. **Note:** *This flag doesn't support deletion of workspaces, release configs or workflow configs. If any of such resources exists in the repository, the request will fail.*. */
   force?: boolean;
 }
-const DeleteProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsRepositoriesRequest>;
-
 export interface DeleteProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Required. The release config's name. */
   name: string;
 }
-const DeleteProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsRepositoriesReleaseConfigsRequest>;
-
 export interface DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Required. The workflow config's name. */
   name: string;
 }
-const DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest>;
-
 export interface DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Required. The workflow invocation resource's name. */
   name: string;
 }
-const DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
-
 export interface DeleteProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace resource's name. */
   name: string;
 }
-const DeleteProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsRepositoriesWorkspacesRequest>;
-
 export interface DeleteProjectsLocationsTeamFoldersRequest {
   /** Required. The TeamFolder's name. */
   name: string;
 }
-const DeleteProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsTeamFoldersRequest>;
-
 /** `DeleteFolderTree` request message. */
 export interface DeleteFolderTreeRequest {
   /** Optional. If `false` (default): The operation will fail if any Repository within the folder hierarchy has associated Release Configs or Workflow Configs. If `true`: The operation will attempt to delete everything, including any Release Configs and Workflow Configs linked to Repositories within the folder hierarchy. This permanently removes schedules and resources. */
   force?: boolean;
 }
-const DeleteFolderTreeRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<DeleteFolderTreeRequest>;
-
 export interface DeleteTreeProjectsLocationsFoldersRequest {
   /** Required. The Folder's name. Format: projects/{project}/locations/{location}/folders/{folder} */
   name: string;
   /** Request body */
   body?: DeleteFolderTreeRequest;
 }
-const DeleteTreeProjectsLocationsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DeleteTreeProjectsLocationsFoldersRequest>;
-
 /** `DeleteTeamFolderTree` request message. */
 export type DeleteTeamFolderTreeRequest = DeleteFolderTreeRequest;
 export interface DeleteTreeProjectsLocationsTeamFoldersRequest {
@@ -1115,18 +783,11 @@ export interface DeleteTreeProjectsLocationsTeamFoldersRequest {
   /** Request body */
   body?: DeleteFolderTreeRequest;
 }
-const DeleteTreeProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DeleteTreeProjectsLocationsTeamFoldersRequest>;
-
 export type FetchBranchesProjectsLocationsRepositoriesWorkspacesFilterEnum =
   | "BRANCH_FILTER_UNSPECIFIED"
   | "LOCAL_ONLY"
   | "REMOTE_ONLY"
   | "ALL";
-const FetchBranchesProjectsLocationsRepositoriesWorkspacesFilterEnum = S.String;
-
 export interface FetchBranchesProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. Maximum number of branches to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -1137,11 +798,6 @@ export interface FetchBranchesProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. Filter for the returned list. */
   filter?: FetchBranchesProjectsLocationsRepositoriesWorkspacesFilterEnum | (string & {});
 }
-const FetchBranchesProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<FetchBranchesProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** Represents a single commit log. */
 export interface CommitLogEntry {
   /** Commit timestamp. */
@@ -1153,8 +809,6 @@ export interface CommitLogEntry {
   /** The commit message for this commit log entry. */
   commitMessage?: string;
 }
-const CommitLogEntry = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<CommitLogEntry>;
-
 /** Contains metadata about a branch. */
 export interface BranchMetadata {
   /** The branch name. */
@@ -1162,11 +816,7 @@ export interface BranchMetadata {
   /** The last commit on the branch. */
   lastCommit?: CommitLogEntry;
 }
-const BranchMetadata = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<BranchMetadata>;
-
 export type BranchMetadataList = Array<BranchMetadata>;
-const BranchMetadataList = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<BranchMetadataList>;
-
 /** Response message for `FetchWorkspaceBranches` method. */
 export interface FetchWorkspaceBranchesResponse {
   /** The branches in the workspace. */
@@ -1174,68 +824,36 @@ export interface FetchWorkspaceBranchesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const FetchWorkspaceBranchesResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<FetchWorkspaceBranchesResponse>;
-
 export interface FetchCurrentBranchProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace resource name. Format: projects/{project}/locations/{location}/repositories/{repository}/workspaces/{workspace} */
   name: string;
 }
-const FetchCurrentBranchProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<FetchCurrentBranchProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** Response message for `FetchCurrentWorkspaceBranch` method. */
 export interface FetchCurrentWorkspaceBranchResponse {
   /** The name of the current branch for the workspace. */
   branchName?: string;
 }
-const FetchCurrentWorkspaceBranchResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<FetchCurrentWorkspaceBranchResponse>;
-
 export interface FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   workspace: string;
   /** Required. The file's full path including filename, relative to the workspace root. */
   path?: string;
 }
-const FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `FetchFileDiff` response message. */
 export interface FetchFileDiffResponse {
   /** The raw formatted Git diff for the file. */
   formattedDiff?: string;
 }
-const FetchFileDiffResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<FetchFileDiffResponse>;
-
 export interface FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   name: string;
 }
-const FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest>;
-
 export type UncommittedFileChangeStateEnum =
   | "STATE_UNSPECIFIED"
   | "ADDED"
   | "DELETED"
   | "MODIFIED"
   | "HAS_CONFLICTS";
-const UncommittedFileChangeStateEnum = S.String;
-
 /** Represents the Git state of a file with uncommitted changes. */
 export interface UncommittedFileChange {
   /** The file's full path including filename, relative to the workspace root. */
@@ -1243,38 +861,18 @@ export interface UncommittedFileChange {
   /** Output only. Indicates the status of the file. */
   state?: UncommittedFileChangeStateEnum;
 }
-const UncommittedFileChange = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<UncommittedFileChange>;
-
 export type UncommittedFileChangeList = Array<UncommittedFileChange>;
-const UncommittedFileChangeList = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<UncommittedFileChangeList>;
-
 /** `FetchFileGitStatuses` response message. */
 export interface FetchFileGitStatusesResponse {
   /** A list of all files which have uncommitted Git changes. There will only be a single entry for any given file. */
   uncommittedFileChanges?: UncommittedFileChangeList;
 }
-const FetchFileGitStatusesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<FetchFileGitStatusesResponse>;
-
 export interface FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   name: string;
   /** Optional. The name of the branch in the Git remote against which this workspace should be compared. If left unset, the repository's default branch name will be used. */
   remoteBranch?: string;
 }
-const FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `FetchGitAheadBehind` response message. */
 export interface FetchGitAheadBehindResponse {
   /** The number of commits in the remote branch that are not in the workspace. */
@@ -1282,11 +880,6 @@ export interface FetchGitAheadBehindResponse {
   /** The number of commits in the workspace that are not in the remote branch. */
   commitsBehind?: number;
 }
-const FetchGitAheadBehindResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<FetchGitAheadBehindResponse>;
-
 export interface FetchHistoryProjectsLocationsRepositoriesRequest {
   /** Optional. Maximum number of commits to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
@@ -1295,14 +888,7 @@ export interface FetchHistoryProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
   name: string;
 }
-const FetchHistoryProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<FetchHistoryProjectsLocationsRepositoriesRequest>;
-
 export type CommitLogEntryList = Array<CommitLogEntry>;
-const CommitLogEntryList = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<CommitLogEntryList>;
-
 /** `FetchRepositoryHistory` response message. */
 export interface FetchRepositoryHistoryResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -1310,39 +896,19 @@ export interface FetchRepositoryHistoryResponse {
   /** A list of commit logs, ordered by 'git log' default order. */
   commits?: CommitLogEntryList;
 }
-const FetchRepositoryHistoryResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<FetchRepositoryHistoryResponse>;
-
 export interface FetchRemoteBranchesProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
   name: string;
 }
-const FetchRemoteBranchesProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<FetchRemoteBranchesProjectsLocationsRepositoriesRequest>;
-
 /** `FetchRemoteBranches` response message. */
 export interface FetchRemoteBranchesResponse {
   /** The remote repository's branch names. */
   branches?: StringList;
 }
-const FetchRemoteBranchesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<FetchRemoteBranchesResponse>;
-
 export interface GetConfigProjectsLocationsRequest {
   /** Required. The config name. */
   name: string;
 }
-const GetConfigProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<GetConfigProjectsLocationsRequest>;
-
 /** Config for all repositories in a given project and location. */
 export interface Config {
   /** Output only. All the metadata information that is used internally to serve the resource. For example: timestamps, flags, status fields, etc. The format of this field is a JSON string. */
@@ -1352,19 +918,12 @@ export interface Config {
   /** Identifier. The config name. */
   name?: string;
 }
-const Config = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<Config>;
-
 export interface GetIamPolicyProjectsLocationsFoldersRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-const GetIamPolicyProjectsLocationsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GetIamPolicyProjectsLocationsFoldersRequest>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -1376,8 +935,6 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-const Expr = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<Expr>;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1387,11 +944,7 @@ export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
   role?: string;
 }
-const Binding = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<Binding>;
-
 export type BindingList = Array<Binding>;
-const BindingList = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<BindingList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1401,50 +954,28 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
-const Policy = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<Policy>;
-
 export interface GetIamPolicyProjectsLocationsRepositoriesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>;
-
 export interface GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-const GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest>;
-
 export interface GetIamPolicyProjectsLocationsTeamFoldersRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-const GetIamPolicyProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GetIamPolicyProjectsLocationsTeamFoldersRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
@@ -1458,115 +989,55 @@ export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
-const Location = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsFoldersRequest {
   /** Required. The Folder's name. */
   name: string;
 }
-const GetProjectsLocationsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GetProjectsLocationsFoldersRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsRepositoriesRequest {
   /** Required. The repository's name. */
   name: string;
 }
-const GetProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GetProjectsLocationsRepositoriesRequest>;
-
 export interface GetProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Required. The compilation result's name. */
   name: string;
 }
-const GetProjectsLocationsRepositoriesCompilationResultsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<GetProjectsLocationsRepositoriesCompilationResultsRequest>;
-
 export interface GetProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Required. The release config's name. */
   name: string;
 }
-const GetProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<GetProjectsLocationsRepositoriesReleaseConfigsRequest>;
-
 export interface GetProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Required. The workflow config's name. */
   name: string;
 }
-const GetProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<GetProjectsLocationsRepositoriesWorkflowConfigsRequest>;
-
 export interface GetProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Required. The workflow invocation resource's name. */
   name: string;
 }
-const GetProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GetProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
-
 export interface GetProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   name: string;
 }
-const GetProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<GetProjectsLocationsRepositoriesWorkspacesRequest>;
-
 export interface GetProjectsLocationsTeamFoldersRequest {
   /** Required. The TeamFolder's name. */
   name: string;
 }
-const GetProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GetProjectsLocationsTeamFoldersRequest>;
-
 /** `InstallNpmPackages` request message. */
 export interface InstallNpmPackagesRequest {
   /** Optional. The pipeline options which defines the pipeline type and path within the Git repository. */
   pipelineConfig?: PipelineConfig;
 }
-const InstallNpmPackagesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<InstallNpmPackagesRequest>;
-
 export interface InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   workspace: string;
   /** Request body */
   body?: InstallNpmPackagesRequest;
 }
-const InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `InstallNpmPackages` response message. */
 export interface InstallNpmPackagesResponse {}
-const InstallNpmPackagesResponse =
-  CancelOperationRequest as any as S.Schema<InstallNpmPackagesResponse>;
-
 export interface ListProjectsLocationsRequest {
   /** A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. */
   pageToken?: string;
@@ -1579,14 +1050,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -1594,11 +1058,6 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -1611,14 +1070,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -1628,11 +1080,6 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListProjectsLocationsRepositoriesRequest {
   /** Optional. This field only supports ordering by `name`. If unspecified, the server will choose the ordering. If specified, the default order is ascending for the `name` field. */
   orderBy?: string;
@@ -1645,14 +1092,7 @@ export interface ListProjectsLocationsRepositoriesRequest {
   /** Required. The location in which to list repositories. Must be in the format `projects/*\/locations/*`. */
   parent: string;
 }
-const ListProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>;
-
 export type RepositoryList = Array<Repository>;
-const RepositoryList = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<RepositoryList>;
-
 /** `ListRepositories` response message. */
 export interface ListRepositoriesResponse {
   /** A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -1662,11 +1102,6 @@ export interface ListRepositoriesResponse {
   /** List of repositories. */
   repositories?: RepositoryList;
 }
-const ListRepositoriesResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListRepositoriesResponse>;
-
 export interface ListProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Optional. Filter for the returned list. */
   filter?: string;
@@ -1679,17 +1114,7 @@ export interface ListProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Optional. Maximum number of compilation results to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-const ListProjectsLocationsRepositoriesCompilationResultsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListProjectsLocationsRepositoriesCompilationResultsRequest>;
-
 export type CompilationResultList = Array<CompilationResult>;
-const CompilationResultList = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<CompilationResultList>;
-
 /** `ListCompilationResults` response message. */
 export interface ListCompilationResultsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -1699,11 +1124,6 @@ export interface ListCompilationResultsResponse {
   /** Locations which could not be reached. */
   unreachable?: StringList;
 }
-const ListCompilationResultsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ListCompilationResultsResponse>;
-
 export interface ListProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Required. The repository in which to list release configs. Must be in the format `projects/*\/locations/*\/repositories/*`. */
   parent: string;
@@ -1712,14 +1132,7 @@ export interface ListProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Optional. Maximum number of release configs to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-const ListProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListProjectsLocationsRepositoriesReleaseConfigsRequest>;
-
 export type ReleaseConfigList = Array<ReleaseConfig>;
-const ReleaseConfigList = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<ReleaseConfigList>;
-
 /** `ListReleaseConfigs` response message. */
 export interface ListReleaseConfigsResponse {
   /** Locations which could not be reached. */
@@ -1729,11 +1142,6 @@ export interface ListReleaseConfigsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListReleaseConfigsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ListReleaseConfigsResponse>;
-
 export interface ListProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Required. The repository in which to list workflow configs. Must be in the format `projects/*\/locations/*\/repositories/*`. */
   parent: string;
@@ -1742,14 +1150,7 @@ export interface ListProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Optional. Page token received from a previous `ListWorkflowConfigs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListWorkflowConfigs`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ListProjectsLocationsRepositoriesWorkflowConfigsRequest>;
-
 export type WorkflowConfigList = Array<WorkflowConfig>;
-const WorkflowConfigList = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<WorkflowConfigList>;
-
 /** `ListWorkflowConfigs` response message. */
 export interface ListWorkflowConfigsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -1759,11 +1160,6 @@ export interface ListWorkflowConfigsResponse {
   /** List of workflow configs. */
   workflowConfigs?: WorkflowConfigList;
 }
-const ListWorkflowConfigsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ListWorkflowConfigsResponse>;
-
 export interface ListProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Optional. Page token received from a previous `ListWorkflowInvocations` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListWorkflowInvocations`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
@@ -1776,17 +1172,7 @@ export interface ListProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Optional. Filter for the returned list. */
   filter?: string;
 }
-const ListProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ListProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
-
 export type WorkflowInvocationList = Array<WorkflowInvocation>;
-const WorkflowInvocationList = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<WorkflowInvocationList>;
-
 /** `ListWorkflowInvocations` response message. */
 export interface ListWorkflowInvocationsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -1796,11 +1182,6 @@ export interface ListWorkflowInvocationsResponse {
   /** Locations which could not be reached. */
   unreachable?: StringList;
 }
-const ListWorkflowInvocationsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<ListWorkflowInvocationsResponse>;
-
 export interface ListProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. Filter for the returned list. */
   filter?: string;
@@ -1813,14 +1194,7 @@ export interface ListProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The repository in which to list workspaces. Must be in the format `projects/*\/locations/*\/repositories/*`. */
   parent: string;
 }
-const ListProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ListProjectsLocationsRepositoriesWorkspacesRequest>;
-
 export type WorkspaceList = Array<Workspace>;
-const WorkspaceList = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<WorkspaceList>;
-
 /** `ListWorkspaces` response message. */
 export interface ListWorkspacesResponse {
   /** Locations which could not be reached. */
@@ -1830,36 +1204,19 @@ export interface ListWorkspacesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListWorkspacesResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ListWorkspacesResponse>;
-
 /** `MakeDirectory` request message. */
 export interface MakeDirectoryRequest {
   /** Required. The directory's full path including directory name, relative to the workspace root. */
   path?: string;
 }
-const MakeDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<MakeDirectoryRequest>;
-
 export interface MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   workspace: string;
   /** Request body */
   body?: MakeDirectoryRequest;
 }
-const MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `MakeDirectory` response message. */
 export interface MakeDirectoryResponse {}
-const MakeDirectoryResponse = CancelOperationRequest as any as S.Schema<MakeDirectoryResponse>;
-
 /** `MoveDirectory` request message. */
 export interface MoveDirectoryRequest {
   /** Required. The new path for the directory including directory name, rooted at workspace root. */
@@ -1867,26 +1224,14 @@ export interface MoveDirectoryRequest {
   /** Required. The directory's full path including directory name, relative to the workspace root. */
   path?: string;
 }
-const MoveDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<MoveDirectoryRequest>;
-
 export interface MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   workspace: string;
   /** Request body */
   body?: MoveDirectoryRequest;
 }
-const MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `MoveDirectory` response message. */
 export interface MoveDirectoryResponse {}
-const MoveDirectoryResponse = CancelOperationRequest as any as S.Schema<MoveDirectoryResponse>;
-
 /** `MoveFile` request message. */
 export interface MoveFileRequest {
   /** Required. The file's full path including filename, relative to the workspace root. */
@@ -1894,59 +1239,36 @@ export interface MoveFileRequest {
   /** Required. The file's new path including filename, relative to the workspace root. */
   newPath?: string;
 }
-const MoveFileRequest = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<MoveFileRequest>;
-
 export interface MoveFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   workspace: string;
   /** Request body */
   body?: MoveFileRequest;
 }
-const MoveFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<MoveFileProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `MoveFile` response message. */
 export interface MoveFileResponse {}
-const MoveFileResponse = CancelOperationRequest as any as S.Schema<MoveFileResponse>;
-
 /** `MoveFolder` request message. */
 export interface MoveFolderRequest {
   /** Optional. The name of the Folder, TeamFolder, or root location to move the Folder to. Can be in the format of: "" to move into the root User folder, `projects/*\/locations/*\/folders/*`, `projects/*\/locations/*\/teamFolders/*` */
   destinationContainingFolder?: string;
 }
-const MoveFolderRequest = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<MoveFolderRequest>;
-
 export interface MoveProjectsLocationsFoldersRequest {
   /** Required. The full resource name of the Folder to move. */
   name: string;
   /** Request body */
   body?: MoveFolderRequest;
 }
-const MoveProjectsLocationsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<MoveProjectsLocationsFoldersRequest>;
-
 /** `MoveRepository` request message. */
 export interface MoveRepositoryRequest {
   /** Optional. The name of the Folder, TeamFolder, or root location to move the repository to. Can be in the format of: "" to move into the root User folder, `projects/*\/locations/*\/folders/*`, `projects/*\/locations/*\/teamFolders/*` */
   destinationContainingFolder?: string;
 }
-const MoveRepositoryRequest = MoveFolderRequest as any as S.Schema<MoveRepositoryRequest>;
-
 export interface MoveProjectsLocationsRepositoriesRequest {
   /** Required. The full resource name of the repository to move. */
   name: string;
   /** Request body */
   body?: MoveRepositoryRequest;
 }
-const MoveProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<MoveProjectsLocationsRepositoriesRequest>;
-
 export interface PatchProjectsLocationsFoldersRequest {
   /** Identifier. The Folder's name. */
   name: string;
@@ -1955,11 +1277,6 @@ export interface PatchProjectsLocationsFoldersRequest {
   /** Request body */
   body?: Folder;
 }
-const PatchProjectsLocationsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<PatchProjectsLocationsFoldersRequest>;
-
 export interface PatchProjectsLocationsRepositoriesRequest {
   /** Identifier. The repository's name. */
   name: string;
@@ -1968,11 +1285,6 @@ export interface PatchProjectsLocationsRepositoriesRequest {
   /** Request body */
   body?: Repository;
 }
-const PatchProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<PatchProjectsLocationsRepositoriesRequest>;
-
 export interface PatchProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Identifier. The release config's name. */
   name: string;
@@ -1981,11 +1293,6 @@ export interface PatchProjectsLocationsRepositoriesReleaseConfigsRequest {
   /** Request body */
   body?: ReleaseConfig;
 }
-const PatchProjectsLocationsRepositoriesReleaseConfigsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<PatchProjectsLocationsRepositoriesReleaseConfigsRequest>;
-
 export interface PatchProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Identifier. The workflow config's name. */
   name: string;
@@ -1994,11 +1301,6 @@ export interface PatchProjectsLocationsRepositoriesWorkflowConfigsRequest {
   /** Request body */
   body?: WorkflowConfig;
 }
-const PatchProjectsLocationsRepositoriesWorkflowConfigsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<PatchProjectsLocationsRepositoriesWorkflowConfigsRequest>;
-
 export interface PatchProjectsLocationsTeamFoldersRequest {
   /** Identifier. The TeamFolder's name. */
   name: string;
@@ -2007,11 +1309,6 @@ export interface PatchProjectsLocationsTeamFoldersRequest {
   /** Request body */
   body?: TeamFolder;
 }
-const PatchProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<PatchProjectsLocationsTeamFoldersRequest>;
-
 /** `PullGitCommits` request message. */
 export interface PullGitCommitsRequest {
   /** Optional. The name of the branch in the Git remote from which to pull commits. If left unset, the repository's default branch name will be used. */
@@ -2019,51 +1316,27 @@ export interface PullGitCommitsRequest {
   /** Required. The author of any merge commit which may be created as a result of merging fetched Git commits into this workspace. */
   author?: CommitAuthor;
 }
-const PullGitCommitsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<PullGitCommitsRequest>;
-
 export interface PullProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   name: string;
   /** Request body */
   body?: PullGitCommitsRequest;
 }
-const PullProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<PullProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `PullGitCommits` response message. */
 export interface PullGitCommitsResponse {}
-const PullGitCommitsResponse = CancelOperationRequest as any as S.Schema<PullGitCommitsResponse>;
-
 /** `PushGitCommits` request message. */
 export interface PushGitCommitsRequest {
   /** Optional. The name of the branch in the Git remote to which commits should be pushed. If left unset, the repository's default branch name will be used. */
   remoteBranch?: string;
 }
-const PushGitCommitsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<PushGitCommitsRequest>;
-
 export interface PushProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   name: string;
   /** Request body */
   body?: PushGitCommitsRequest;
 }
-const PushProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<PushProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `PushGitCommits` response message. */
 export interface PushGitCommitsResponse {}
-const PushGitCommitsResponse = CancelOperationRequest as any as S.Schema<PushGitCommitsResponse>;
-
 export interface QueryContentsProjectsLocationsTeamFoldersRequest {
   /** Optional. Optional filtering for the returned list. Filtering is currently only supported on the `display_name` field. Example: * `filter="display_name="MyFolder""` */
   filter?: string;
@@ -2076,11 +1349,6 @@ export interface QueryContentsProjectsLocationsTeamFoldersRequest {
   /** Optional. Field to additionally sort results by. Will order Folders before Repositories, and then by `order_by` in ascending order. Supported keywords: `display_name` (default), `create_time`, last_modified_time. Examples: * `orderBy="display_name"` * `orderBy="display_name desc"` */
   orderBy?: string;
 }
-const QueryContentsProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<QueryContentsProjectsLocationsTeamFoldersRequest>;
-
 /** Represents a single content entry. */
 export interface TeamFolderContentsEntry {
   /** A subfolder. */
@@ -2088,17 +1356,7 @@ export interface TeamFolderContentsEntry {
   /** A repository. */
   repository?: Repository;
 }
-const TeamFolderContentsEntry = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<TeamFolderContentsEntry>;
-
 export type TeamFolderContentsEntryList = Array<TeamFolderContentsEntry>;
-const TeamFolderContentsEntryList = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<TeamFolderContentsEntryList>;
-
 /** `QueryTeamFolderContents` response message. */
 export interface QueryTeamFolderContentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2106,11 +1364,6 @@ export interface QueryTeamFolderContentsResponse {
   /** List of entries in the TeamFolder. */
   entries?: TeamFolderContentsEntryList;
 }
-const QueryTeamFolderContentsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<QueryTeamFolderContentsResponse>;
-
 export interface QueryDirectoryContentsProjectsLocationsRepositoriesRequest {
   /** Optional. Page token received from a previous `QueryRepositoryDirectoryContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryRepositoryDirectoryContents`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
@@ -2123,11 +1376,6 @@ export interface QueryDirectoryContentsProjectsLocationsRepositoriesRequest {
   /** Optional. Maximum number of paths to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-const QueryDirectoryContentsProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<QueryDirectoryContentsProjectsLocationsRepositoriesRequest>;
-
 /** Represents metadata for a single entry in a filesystem. */
 export interface FilesystemEntryMetadata {
   /** Output only. Provides the size of the entry in bytes. For directories, this will be 0. */
@@ -2135,11 +1383,6 @@ export interface FilesystemEntryMetadata {
   /** Output only. Represents the time of the last modification of the entry. */
   updateTime?: string;
 }
-const FilesystemEntryMetadata = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<FilesystemEntryMetadata>;
-
 /** Represents a single entry in a directory. */
 export interface DirectoryEntry {
   /** A file in the directory. The path is returned including the full folder structure from the root. */
@@ -2149,11 +1392,7 @@ export interface DirectoryEntry {
   /** A child directory in the directory. The path is returned including the full folder structure from the root. */
   directory?: string;
 }
-const DirectoryEntry = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<DirectoryEntry>;
-
 export type DirectoryEntryList = Array<DirectoryEntry>;
-const DirectoryEntryList = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<DirectoryEntryList>;
-
 /** `QueryRepositoryDirectoryContents` response message. */
 export interface QueryRepositoryDirectoryContentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2161,17 +1400,10 @@ export interface QueryRepositoryDirectoryContentsResponse {
   /** List of entries in the directory. */
   directoryEntries?: DirectoryEntryList;
 }
-const QueryRepositoryDirectoryContentsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<QueryRepositoryDirectoryContentsResponse>;
-
 export type QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesViewEnum =
   | "DIRECTORY_CONTENTS_VIEW_UNSPECIFIED"
   | "DIRECTORY_CONTENTS_VIEW_BASIC"
   | "DIRECTORY_CONTENTS_VIEW_METADATA";
-const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesViewEnum = S.String;
-
 export interface QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. Maximum number of paths to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
@@ -2184,11 +1416,6 @@ export interface QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRe
   /** Optional. Page token received from a previous `QueryDirectoryContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryDirectoryContents`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
 }
-const QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `QueryDirectoryContents` response message. */
 export interface QueryDirectoryContentsResponse {
   /** List of entries in the directory. */
@@ -2196,11 +1423,6 @@ export interface QueryDirectoryContentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const QueryDirectoryContentsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<QueryDirectoryContentsResponse>;
-
 export interface QueryFolderContentsProjectsLocationsFoldersRequest {
   /** Optional. Optional filtering for the returned list. Filtering is currently only supported on the `display_name` field. Example: * `filter="display_name="MyFolder""` */
   filter?: string;
@@ -2213,11 +1435,6 @@ export interface QueryFolderContentsProjectsLocationsFoldersRequest {
   /** Optional. Page token received from a previous `QueryFolderContents` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryFolderContents`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
 }
-const QueryFolderContentsProjectsLocationsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<QueryFolderContentsProjectsLocationsFoldersRequest>;
-
 /** Represents a single content entry. */
 export type FolderContentsEntry = TeamFolderContentsEntry;
 export type FolderContentsEntryList = Array<TeamFolderContentsEntry>;
@@ -2228,9 +1445,6 @@ export interface QueryFolderContentsResponse {
   /** List of entries in the folder. */
   entries?: FolderContentsEntryList;
 }
-const QueryFolderContentsResponse =
-  QueryTeamFolderContentsResponse as any as S.Schema<QueryFolderContentsResponse>;
-
 export interface QueryProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Required. The compilation result's name. */
   name: string;
@@ -2241,11 +1455,6 @@ export interface QueryProjectsLocationsRepositoriesCompilationResultsRequest {
   /** Optional. Page token received from a previous `QueryCompilationResultActions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryCompilationResultActions`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
 }
-const QueryProjectsLocationsRepositoriesCompilationResultsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<QueryProjectsLocationsRepositoriesCompilationResultsRequest>;
-
 /** Simple load definition */
 export type SimpleLoadMode = CancelOperationRequest;
 /** Load definition for incremental load modes */
@@ -2253,8 +1462,6 @@ export interface IncrementalLoadMode {
   /** Column name for incremental load modes */
   column?: string;
 }
-const IncrementalLoadMode = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<IncrementalLoadMode>;
-
 /** Simplified load configuration for actions */
 export interface LoadConfig {
   /** Replace destination table */
@@ -2266,8 +1473,6 @@ export interface LoadConfig {
   /** Insert records where the value exceeds the previous maximum value for a column in the destination table */
   maximum?: IncrementalLoadMode;
 }
-const LoadConfig = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<LoadConfig>;
-
 /** Error table information, used to write error data into a BigQuery table. */
 export interface ErrorTable {
   /** Error Table target. */
@@ -2275,8 +1480,6 @@ export interface ErrorTable {
   /** Error table partition expiration in days. Only positive values are allowed. */
   retentionDays?: number;
 }
-const ErrorTable = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<ErrorTable>;
-
 /** Definition of a SQL Data Preparation */
 export interface SqlDefinition {
   /** The SQL query representing the data preparation steps. Formatted as a Pipe SQL query statement. */
@@ -2286,8 +1489,6 @@ export interface SqlDefinition {
   /** Error table configuration, */
   errorTable?: ErrorTable;
 }
-const SqlDefinition = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<SqlDefinition>;
-
 /** Defines a compiled Data Preparation entity */
 export interface DataPreparation {
   /** A list of actions that this action depends on. */
@@ -2301,22 +1502,14 @@ export interface DataPreparation {
   /** Whether this action is disabled (i.e. should not be run). */
   disabled?: boolean;
 }
-const DataPreparation = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<DataPreparation>;
-
 export type RelationRelationTypeEnum =
   | "RELATION_TYPE_UNSPECIFIED"
   | "TABLE"
   | "VIEW"
   | "INCREMENTAL_TABLE"
   | "MATERIALIZED_VIEW";
-const RelationRelationTypeEnum = S.String;
-
 export type RelationFileFormatEnum = "FILE_FORMAT_UNSPECIFIED" | "PARQUET";
-const RelationFileFormatEnum = S.String;
-
 export type RelationTableFormatEnum = "TABLE_FORMAT_UNSPECIFIED" | "ICEBERG";
-const RelationTableFormatEnum = S.String;
-
 /** Describes a column. */
 export interface ColumnDescriptor {
   /** A list of BigQuery policy tags that will be applied to the column. */
@@ -2326,14 +1519,7 @@ export interface ColumnDescriptor {
   /** A textual description of the column. */
   description?: string;
 }
-const ColumnDescriptor = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<ColumnDescriptor>;
-
 export type ColumnDescriptorList = Array<ColumnDescriptor>;
-const ColumnDescriptorList = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<ColumnDescriptorList>;
-
 /** Describes a relation and its columns. */
 export interface RelationDescriptor {
   /** A list of descriptions of columns within the relation. */
@@ -2343,8 +1529,6 @@ export interface RelationDescriptor {
   /** A text description of the relation. */
   description?: string;
 }
-const RelationDescriptor = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<RelationDescriptor>;
-
 /** Contains settings for relations of type `INCREMENTAL_TABLE`. */
 export interface IncrementalTableConfig {
   /** A set of columns or SQL expressions used to define row uniqueness. If any duplicates are discovered (as defined by `unique_key_parts`), only the newly selected rows (as defined by `incremental_select_query`) will be included in the relation. */
@@ -2360,11 +1544,6 @@ export interface IncrementalTableConfig {
   /** SQL statements to be executed before inserting new rows into the relation. */
   incrementalPreOperations?: StringList;
 }
-const IncrementalTableConfig = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<IncrementalTableConfig>;
-
 /** Represents a database relation. */
 export interface Relation {
   /** Optional. The fully qualified location prefix of the external folder where table data is stored. The URI should be in the format `gs://bucket/path_to_table/`. */
@@ -2404,8 +1583,6 @@ export interface Relation {
   /** SQL statements to be executed after creating the relation. */
   postOperations?: StringList;
 }
-const Relation = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<Relation>;
-
 /** Represents a notebook. */
 export interface Notebook {
   /** Arbitrary, user-defined tags on this action. */
@@ -2417,8 +1594,6 @@ export interface Notebook {
   /** The contents of the notebook. */
   contents?: string;
 }
-const Notebook = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<Notebook>;
-
 /** Represents an assertion upon a SQL query which is required return zero rows. */
 export interface Assertion {
   /** Whether this action is disabled (i.e. should not be run). */
@@ -2434,15 +1609,11 @@ export interface Assertion {
   /** The parent action of this assertion. Only set if this assertion was automatically generated. */
   parentAction?: Target;
 }
-const Assertion = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<Assertion>;
-
 /** Represents a relation which is not managed by Dataform but which may be referenced by Dataform actions. */
 export interface Declaration {
   /** Descriptor for the relation and its columns. Used as documentation only, i.e. values here will result in no changes to the relation's metadata. */
   relationDescriptor?: RelationDescriptor;
 }
-const Declaration = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<Declaration>;
-
 /** Represents a list of arbitrary database operations. */
 export interface Operations {
   /** Whether this action is disabled (i.e. should not be run). */
@@ -2458,8 +1629,6 @@ export interface Operations {
   /** Whether these operations produce an output relation. */
   hasOutput?: boolean;
 }
-const Operations = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<Operations>;
-
 /** Represents a BigQuery unit test. */
 export interface BigQueryUnitTest {
   /** The name of the unit test. */
@@ -2475,8 +1644,6 @@ export interface BigQueryUnitTest {
   /** Expected output query to compare against the test query. */
   expectedOutputQuery?: string;
 }
-const BigQueryUnitTest = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<BigQueryUnitTest>;
-
 /** Represents a single Dataform action in a compilation result. */
 export interface CompilationResultAction {
   /** The action's identifier if the project had been compiled without any overrides configured. Unique within the compilation result. */
@@ -2502,17 +1669,7 @@ export interface CompilationResultAction {
   /** The unit test executed by this action. */
   bigqueryUnitTest?: BigQueryUnitTest;
 }
-const CompilationResultAction = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<CompilationResultAction>;
-
 export type CompilationResultActionList = Array<CompilationResultAction>;
-const CompilationResultActionList = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<CompilationResultActionList>;
-
 /** `QueryCompilationResultActions` response message. */
 export interface QueryCompilationResultActionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2520,11 +1677,6 @@ export interface QueryCompilationResultActionsResponse {
   /** List of compilation result actions. */
   compilationResultActions?: CompilationResultActionList;
 }
-const QueryCompilationResultActionsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<QueryCompilationResultActionsResponse>;
-
 export interface QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Optional. Page token received from a previous `QueryWorkflowInvocationActions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryWorkflowInvocationActions`, with the exception of `page_size`, must match the call that provided the page token. */
   pageToken?: string;
@@ -2533,11 +1685,6 @@ export interface QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest {
   /** Optional. Maximum number of workflow invocations to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
 }
-const QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest>;
-
 /** Represents a workflow action that will run a BigQuery unit test. */
 export interface BigQueryUnitTestAction {
   /** Output only. SQL script for the expected results. */
@@ -2553,11 +1700,6 @@ export interface BigQueryUnitTestAction {
   /** Output only. Job ID for the expected results. */
   expectedResultsJobId?: string;
 }
-const BigQueryUnitTestAction = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<BigQueryUnitTestAction>;
-
 export type WorkflowInvocationActionStateEnum =
   | "PENDING"
   | "RUNNING"
@@ -2566,8 +1708,6 @@ export type WorkflowInvocationActionStateEnum =
   | "SUCCEEDED"
   | "CANCELLED"
   | "FAILED";
-const WorkflowInvocationActionStateEnum = S.String;
-
 /** Represents a workflow action that will run against BigQuery. */
 export interface BigQueryAction {
   /** Output only. The ID of the BigQuery job that executed the SQL in sql_script. Only set once the job has started to run. */
@@ -2575,8 +1715,6 @@ export interface BigQueryAction {
   /** Output only. The generated BigQuery SQL script that will be executed. */
   sqlScript?: string;
 }
-const BigQueryAction = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<BigQueryAction>;
-
 /** Load definition for incremental load modes */
 export type ActionIncrementalLoadMode = IncrementalLoadMode;
 /** Simple load definition */
@@ -2592,8 +1730,6 @@ export interface ActionLoadConfig {
   /** Replace destination table */
   replace?: CancelOperationRequest;
 }
-const ActionLoadConfig = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<ActionLoadConfig>;
-
 /** Error table information, used to write error data into a BigQuery table. */
 export type ActionErrorTable = ErrorTable;
 /** Definition of a SQL Data Preparation */
@@ -2605,8 +1741,6 @@ export interface ActionSqlDefinition {
   /** Error table configuration, */
   errorTable?: ErrorTable;
 }
-const ActionSqlDefinition = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<ActionSqlDefinition>;
-
 /** Represents a workflow action that will run a Data Preparation. */
 export interface DataPreparationAction {
   /** Output only. The ID of the BigQuery job that executed the SQL in sql_script. Only set once the job has started to run. */
@@ -2618,11 +1752,6 @@ export interface DataPreparationAction {
   /** Output only. The generated BigQuery SQL script that will be executed. For reference only. */
   generatedSql?: string;
 }
-const DataPreparationAction = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<DataPreparationAction>;
-
 /** Represents a workflow action that will run against a Notebook runtime. */
 export interface NotebookAction {
   /** Output only. The ID of the Gemini Enterprise Agent Platform job that executed the notebook in contents and also the ID used for the outputs created in Google Cloud Storage buckets. Only set once the job has started to run. */
@@ -2632,8 +1761,6 @@ export interface NotebookAction {
   /** Output only. The path to the notebook file in the repository. */
   filePath?: string;
 }
-const NotebookAction = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<NotebookAction>;
-
 /** Represents a single action in a workflow invocation. */
 export interface WorkflowInvocationAction {
   /** Output only. The workflow action's unit test details. */
@@ -2657,17 +1784,7 @@ export interface WorkflowInvocationAction {
   /** Output only. If and only if action's state is FAILED a failure reason is set. */
   failureReason?: string;
 }
-const WorkflowInvocationAction = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<WorkflowInvocationAction>;
-
 export type WorkflowInvocationActionList = Array<WorkflowInvocationAction>;
-const WorkflowInvocationActionList = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<WorkflowInvocationActionList>;
-
 /** `QueryWorkflowInvocationActions` response message. */
 export interface QueryWorkflowInvocationActionsResponse {
   /** List of workflow invocation actions. */
@@ -2675,11 +1792,6 @@ export interface QueryWorkflowInvocationActionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const QueryWorkflowInvocationActionsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<QueryWorkflowInvocationActionsResponse>;
-
 export interface QueryUserRootContentsProjectsLocationsRequest {
   /** Optional. Maximum number of paths to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. */
   pageSize?: number;
@@ -2692,16 +1804,9 @@ export interface QueryUserRootContentsProjectsLocationsRequest {
   /** Optional. Field to additionally sort results by. Will order Folders before Repositories, and then by `order_by` in ascending order. Supported keywords: display_name (default), created_at, last_modified_at. Examples: * `orderBy="display_name"` * `orderBy="display_name desc"` */
   orderBy?: string;
 }
-const QueryUserRootContentsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<QueryUserRootContentsProjectsLocationsRequest>;
-
 /** Represents a single content entry. */
 export type RootContentsEntry = TeamFolderContentsEntry;
 export type RootContentsEntryList = Array<TeamFolderContentsEntry>;
-const RootContentsEntryList = TeamFolderContentsEntryList as any as S.Schema<RootContentsEntryList>;
-
 /** `QueryUserRootContents` response message. */
 export interface QueryUserRootContentsResponse {
   /** List of entries in the folder. */
@@ -2709,11 +1814,6 @@ export interface QueryUserRootContentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const QueryUserRootContentsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<QueryUserRootContentsResponse>;
-
 export interface ReadFileProjectsLocationsRepositoriesRequest {
   /** Optional. The commit SHA for the commit to read from. If unset, the file will be read from HEAD. */
   commitSha?: string;
@@ -2722,21 +1822,11 @@ export interface ReadFileProjectsLocationsRepositoriesRequest {
   /** Required. Full file path to read including filename, from repository root. */
   path?: string;
 }
-const ReadFileProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<ReadFileProjectsLocationsRepositoriesRequest>;
-
 /** `ReadRepositoryFile` response message. */
 export interface ReadRepositoryFileResponse {
   /** The file's contents. */
   contents?: string;
 }
-const ReadRepositoryFileResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<ReadRepositoryFileResponse>;
-
 export interface ReadFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   workspace: string;
@@ -2745,18 +1835,11 @@ export interface ReadFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. The Git revision of the file to return. If left empty, the current contents of `path` will be returned. */
   revision?: string;
 }
-const ReadFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<ReadFileProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `ReadFile` response message. */
 export interface ReadFileResponse {
   /** The file's contents. */
   fileContents?: string;
 }
-const ReadFileResponse = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<ReadFileResponse>;
-
 /** `RemoveDirectory` request message. */
 export type RemoveDirectoryRequest = MakeDirectoryRequest;
 export interface RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest {
@@ -2765,37 +1848,21 @@ export interface RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest {
   /** Request body */
   body?: MakeDirectoryRequest;
 }
-const RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `RemoveDirectory` response message. */
 export interface RemoveDirectoryResponse {}
-const RemoveDirectoryResponse = CancelOperationRequest as any as S.Schema<RemoveDirectoryResponse>;
-
 /** `RemoveFile` request message. */
 export interface RemoveFileRequest {
   /** Required. The file's full path including filename, relative to the workspace root. */
   path?: string;
 }
-const RemoveFileRequest = MakeDirectoryRequest as any as S.Schema<RemoveFileRequest>;
-
 export interface RemoveFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   workspace: string;
   /** Request body */
   body?: RemoveFileRequest;
 }
-const RemoveFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<RemoveFileProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `RemoveFile` response message. */
 export interface RemoveFileResponse {}
-const RemoveFileResponse = CancelOperationRequest as any as S.Schema<RemoveFileResponse>;
-
 /** `ResetWorkspaceChanges` request message. */
 export interface ResetWorkspaceChangesRequest {
   /** Optional. Full file paths to reset back to their committed state including filename, rooted at workspace root. If left empty, all files will be reset. */
@@ -2803,27 +1870,14 @@ export interface ResetWorkspaceChangesRequest {
   /** Optional. If set to true, untracked files will be deleted. */
   clean?: boolean;
 }
-const ResetWorkspaceChangesRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<ResetWorkspaceChangesRequest>;
-
 export interface ResetProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   name: string;
   /** Request body */
   body?: ResetWorkspaceChangesRequest;
 }
-const ResetProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ResetProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `ResetWorkspaceChanges` response message. */
 export interface ResetWorkspaceChangesResponse {}
-const ResetWorkspaceChangesResponse =
-  CancelOperationRequest as any as S.Schema<ResetWorkspaceChangesResponse>;
-
 export interface SearchFilesProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   workspace: string;
@@ -2834,25 +1888,16 @@ export interface SearchFilesProjectsLocationsRepositoriesWorkspacesRequest {
   /** Optional. Optional filter for the returned list in filtering format. Filtering is only currently supported on the `path` field. See https://google.aip.dev/160 for details. */
   filter?: string;
 }
-const SearchFilesProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<SearchFilesProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** Client-facing representation of a directory entry in search results. */
 export interface DirectorySearchResult {
   /** File system path relative to the workspace root. */
   path?: string;
 }
-const DirectorySearchResult = MakeDirectoryRequest as any as S.Schema<DirectorySearchResult>;
-
 /** Client-facing representation of a file entry in search results. */
 export interface FileSearchResult {
   /** File system path relative to the file tree root. */
   path?: string;
 }
-const FileSearchResult = MakeDirectoryRequest as any as S.Schema<FileSearchResult>;
-
 /** Client-facing representation of a search result entry. */
 export interface SearchResult {
   /** Details when search result is a directory. */
@@ -2860,11 +1905,7 @@ export interface SearchResult {
   /** Details when search result is a file. */
   file?: FileSearchResult;
 }
-const SearchResult = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<SearchResult>;
-
 export type SearchResultList = Array<SearchResult>;
-const SearchResultList = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<SearchResultList>;
-
 /** Client-facing representation of a file search response. */
 export interface SearchFilesResponse {
   /** List of matched results. */
@@ -2872,8 +1913,6 @@ export interface SearchFilesResponse {
   /** Optional. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const SearchFilesResponse = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<SearchFilesResponse>;
-
 export interface SearchProjectsLocationsTeamFoldersRequest {
   /** Optional. Field to additionally sort results by. Supported keywords: `display_name` (default), `create_time`, `last_modified_time`. Examples: * `orderBy="display_name"` * `orderBy="display_name desc"` */
   orderBy?: string;
@@ -2886,27 +1925,12 @@ export interface SearchProjectsLocationsTeamFoldersRequest {
   /** Optional. Maximum number of `TeamFolders` to return. The server may return fewer items than requested. If unspecified, the server will pick a default of `page_size` = 50. */
   pageSize?: number;
 }
-const SearchProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<SearchProjectsLocationsTeamFoldersRequest>;
-
 /** Represents a single content entry. */
 export interface TeamFolderSearchResult {
   /** A TeamFolder resource that is in the project / location. */
   teamFolder?: TeamFolder;
 }
-const TeamFolderSearchResult = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<TeamFolderSearchResult>;
-
 export type TeamFolderSearchResultList = Array<TeamFolderSearchResult>;
-const TeamFolderSearchResultList = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<TeamFolderSearchResultList>;
-
 /** `SearchTeamFolders` response message. */
 export interface SearchTeamFoldersResponse {
   /** List of TeamFolders that match the search query. */
@@ -2914,62 +1938,35 @@ export interface SearchTeamFoldersResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const SearchTeamFoldersResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<SearchTeamFoldersResponse>;
-
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
-const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<SetIamPolicyRequest>;
-
 export interface SetIamPolicyProjectsLocationsFoldersRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<SetIamPolicyProjectsLocationsFoldersRequest>;
-
 export interface SetIamPolicyProjectsLocationsRepositoriesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesRequest>;
-
 export interface SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest>;
-
 export interface SetIamPolicyProjectsLocationsTeamFoldersRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<SetIamPolicyProjectsLocationsTeamFoldersRequest>;
-
 /** `SyncWorkspaceRefs` request message. */
 export interface SyncWorkspaceRefsRequest {
   /** Optional. Can be used to deepen the commit history of shallow clones. Git documentation: https://git-scm.com/docs/git-fetch#Documentation/git-fetch.txt---deependepth */
@@ -2977,89 +1974,48 @@ export interface SyncWorkspaceRefsRequest {
   /** Optional. The name of the branch in the Git remote to which the refs should be fetched for. If left unset, all remote branches will be fetched. */
   remoteBranchName?: string;
 }
-const SyncWorkspaceRefsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<SyncWorkspaceRefsRequest>;
-
 export interface SyncWorkspaceRefsProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace resource name. Format: projects/{project}/locations/{location}/repositories/{repository}/workspaces/{workspace} */
   name: string;
   /** Request body */
   body?: SyncWorkspaceRefsRequest;
 }
-const SyncWorkspaceRefsProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<SyncWorkspaceRefsProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `SyncWorkspaceRefs` response message. */
 export interface SyncWorkspaceRefsResponse {}
-const SyncWorkspaceRefsResponse =
-  CancelOperationRequest as any as S.Schema<SyncWorkspaceRefsResponse>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsFoldersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsFoldersRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsFoldersRequest>;
-
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-const TestIamPermissionsResponse =
-  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
-
 export interface TestIamPermissionsProjectsLocationsRepositoriesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesRequest>;
-
 export interface TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest>;
-
 export interface TestIamPermissionsProjectsLocationsTeamFoldersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsTeamFoldersRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsTeamFoldersRequest>;
-
 export interface UpdateConfigProjectsLocationsRequest {
   /** Optional. Specifies the fields to be updated in the config. */
   updateMask?: string;
@@ -3068,11 +2024,6 @@ export interface UpdateConfigProjectsLocationsRequest {
   /** Request body */
   body?: Config;
 }
-const UpdateConfigProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<UpdateConfigProjectsLocationsRequest>;
-
 /** `WriteFile` request message. */
 export interface WriteFileRequest {
   /** Required. The file. */
@@ -3080,23 +2031,14 @@ export interface WriteFileRequest {
   /** Required. The file's contents. */
   contents?: string;
 }
-const WriteFileRequest = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<WriteFileRequest>;
-
 export interface WriteFileProjectsLocationsRepositoriesWorkspacesRequest {
   /** Required. The workspace's name. */
   workspace: string;
   /** Request body */
   body?: WriteFileRequest;
 }
-const WriteFileProjectsLocationsRepositoriesWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<WriteFileProjectsLocationsRepositoriesWorkspacesRequest>;
-
 /** `WriteFile` response message. */
 export interface WriteFileResponse {}
-const WriteFileResponse = CancelOperationRequest as any as S.Schema<WriteFileResponse>;
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -3110,8 +2052,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3130,8 +2072,8 @@ export const cancelProjectsLocationsRepositoriesWorkflowInvocations: API.Operati
   CancelProjectsLocationsRepositoriesWorkflowInvocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest,
-  output: CancelWorkflowInvocationResponse,
+  input: __S(2) as any as S.Schema<CancelProjectsLocationsRepositoriesWorkflowInvocationsRequest>,
+  output: __S(3) as any as S.Schema<CancelWorkflowInvocationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3150,8 +2092,8 @@ export const checkoutProjectsLocationsRepositoriesWorkspaces: API.OperationMetho
   CheckoutProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckoutProjectsLocationsRepositoriesWorkspacesRequest,
-  output: Empty,
+  input: __S(5) as any as S.Schema<CheckoutProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3170,8 +2112,8 @@ export const commitProjectsLocationsRepositories: API.OperationMethod<
   CommitProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitProjectsLocationsRepositoriesRequest,
-  output: CommitRepositoryChangesResponse,
+  input: __S(12) as any as S.Schema<CommitProjectsLocationsRepositoriesRequest>,
+  output: __S(13) as any as S.Schema<CommitRepositoryChangesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3190,8 +2132,8 @@ export const commitProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   CommitProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitProjectsLocationsRepositoriesWorkspacesRequest,
-  output: CommitWorkspaceChangesResponse,
+  input: __S(16) as any as S.Schema<CommitProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(0) as any as S.Schema<CommitWorkspaceChangesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3208,8 +2150,8 @@ export const computeAccessTokenStatusProjectsLocationsRepositories: API.Operatio
   ComputeAccessTokenStatusProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest,
-  output: ComputeRepositoryAccessTokenStatusResponse,
+  input: __S(17) as any as S.Schema<ComputeAccessTokenStatusProjectsLocationsRepositoriesRequest>,
+  output: __S(18) as any as S.Schema<ComputeRepositoryAccessTokenStatusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3228,8 +2170,8 @@ export const createProjectsLocationsFolders: API.OperationMethod<
   CreateProjectsLocationsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsFoldersRequest,
-  output: Folder,
+  input: __S(20) as any as S.Schema<CreateProjectsLocationsFoldersRequest>,
+  output: __S(19) as any as S.Schema<Folder>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3248,8 +2190,8 @@ export const createProjectsLocationsRepositories: API.OperationMethod<
   CreateProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsRepositoriesRequest,
-  output: Repository,
+  input: __S(29) as any as S.Schema<CreateProjectsLocationsRepositoriesRequest>,
+  output: __S(28) as any as S.Schema<Repository>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3268,8 +2210,8 @@ export const createProjectsLocationsRepositoriesCompilationResults: API.Operatio
   CreateProjectsLocationsRepositoriesCompilationResultsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsRepositoriesCompilationResultsRequest,
-  output: CompilationResult,
+  input: __S(40) as any as S.Schema<CreateProjectsLocationsRepositoriesCompilationResultsRequest>,
+  output: __S(39) as any as S.Schema<CompilationResult>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3288,8 +2230,8 @@ export const createProjectsLocationsRepositoriesReleaseConfigs: API.OperationMet
   CreateProjectsLocationsRepositoriesReleaseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsRepositoriesReleaseConfigsRequest,
-  output: ReleaseConfig,
+  input: __S(47) as any as S.Schema<CreateProjectsLocationsRepositoriesReleaseConfigsRequest>,
+  output: __S(46) as any as S.Schema<ReleaseConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3308,8 +2250,8 @@ export const createProjectsLocationsRepositoriesWorkflowConfigs: API.OperationMe
   CreateProjectsLocationsRepositoriesWorkflowConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsRepositoriesWorkflowConfigsRequest,
-  output: WorkflowConfig,
+  input: __S(60) as any as S.Schema<CreateProjectsLocationsRepositoriesWorkflowConfigsRequest>,
+  output: __S(59) as any as S.Schema<WorkflowConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3328,8 +2270,8 @@ export const createProjectsLocationsRepositoriesWorkflowInvocations: API.Operati
   CreateProjectsLocationsRepositoriesWorkflowInvocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest,
-  output: WorkflowInvocation,
+  input: __S(63) as any as S.Schema<CreateProjectsLocationsRepositoriesWorkflowInvocationsRequest>,
+  output: __S(62) as any as S.Schema<WorkflowInvocation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3348,8 +2290,8 @@ export const createProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   CreateProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsRepositoriesWorkspacesRequest,
-  output: Workspace,
+  input: __S(65) as any as S.Schema<CreateProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(64) as any as S.Schema<Workspace>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3368,8 +2310,8 @@ export const createProjectsLocationsTeamFolders: API.OperationMethod<
   CreateProjectsLocationsTeamFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsTeamFoldersRequest,
-  output: TeamFolder,
+  input: __S(67) as any as S.Schema<CreateProjectsLocationsTeamFoldersRequest>,
+  output: __S(66) as any as S.Schema<TeamFolder>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3388,8 +2330,8 @@ export const deleteBranchProjectsLocationsRepositoriesWorkspaces: API.OperationM
   DeleteBranchProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBranchProjectsLocationsRepositoriesWorkspacesRequest,
-  output: DeleteBranchResponse,
+  input: __S(69) as any as S.Schema<DeleteBranchProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(0) as any as S.Schema<DeleteBranchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3408,8 +2350,8 @@ export const deleteLongRunningProjectsLocationsRepositories: API.OperationMethod
   DeleteLongRunningProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLongRunningProjectsLocationsRepositoriesRequest,
-  output: Operation,
+  input: __S(71) as any as S.Schema<DeleteLongRunningProjectsLocationsRepositoriesRequest>,
+  output: __S(72) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3428,8 +2370,8 @@ export const deleteProjectsLocationsFolders: API.OperationMethod<
   DeleteProjectsLocationsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsFoldersRequest,
-  output: Empty,
+  input: __S(73) as any as S.Schema<DeleteProjectsLocationsFoldersRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3448,8 +2390,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(74) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3468,8 +2410,8 @@ export const deleteProjectsLocationsRepositories: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsRepositoriesRequest,
-  output: Empty,
+  input: __S(75) as any as S.Schema<DeleteProjectsLocationsRepositoriesRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3488,8 +2430,8 @@ export const deleteProjectsLocationsRepositoriesReleaseConfigs: API.OperationMet
   DeleteProjectsLocationsRepositoriesReleaseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsRepositoriesReleaseConfigsRequest,
-  output: Empty,
+  input: __S(76) as any as S.Schema<DeleteProjectsLocationsRepositoriesReleaseConfigsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3508,8 +2450,8 @@ export const deleteProjectsLocationsRepositoriesWorkflowConfigs: API.OperationMe
   DeleteProjectsLocationsRepositoriesWorkflowConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest,
-  output: Empty,
+  input: __S(77) as any as S.Schema<DeleteProjectsLocationsRepositoriesWorkflowConfigsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3528,8 +2470,8 @@ export const deleteProjectsLocationsRepositoriesWorkflowInvocations: API.Operati
   DeleteProjectsLocationsRepositoriesWorkflowInvocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest,
-  output: Empty,
+  input: __S(78) as any as S.Schema<DeleteProjectsLocationsRepositoriesWorkflowInvocationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3548,8 +2490,8 @@ export const deleteProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   DeleteProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsRepositoriesWorkspacesRequest,
-  output: Empty,
+  input: __S(79) as any as S.Schema<DeleteProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3568,8 +2510,8 @@ export const deleteProjectsLocationsTeamFolders: API.OperationMethod<
   DeleteProjectsLocationsTeamFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsTeamFoldersRequest,
-  output: Empty,
+  input: __S(80) as any as S.Schema<DeleteProjectsLocationsTeamFoldersRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3588,8 +2530,8 @@ export const deleteTreeProjectsLocationsFolders: API.OperationMethod<
   DeleteTreeProjectsLocationsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTreeProjectsLocationsFoldersRequest,
-  output: Operation,
+  input: __S(82) as any as S.Schema<DeleteTreeProjectsLocationsFoldersRequest>,
+  output: __S(72) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3608,8 +2550,8 @@ export const deleteTreeProjectsLocationsTeamFolders: API.OperationMethod<
   DeleteTreeProjectsLocationsTeamFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTreeProjectsLocationsTeamFoldersRequest,
-  output: Operation,
+  input: __S(83) as any as S.Schema<DeleteTreeProjectsLocationsTeamFoldersRequest>,
+  output: __S(72) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3627,8 +2569,8 @@ export const fetchBranchesProjectsLocationsRepositoriesWorkspaces: API.Paginated
   GcpOpContext,
   FetchWorkspaceBranchesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: FetchBranchesProjectsLocationsRepositoriesWorkspacesRequest,
-  output: FetchWorkspaceBranchesResponse,
+  input: __S(84) as any as S.Schema<FetchBranchesProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(88) as any as S.Schema<FetchWorkspaceBranchesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3646,8 +2588,10 @@ export const fetchCurrentBranchProjectsLocationsRepositoriesWorkspaces: API.Oper
   FetchCurrentBranchProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchCurrentBranchProjectsLocationsRepositoriesWorkspacesRequest,
-  output: FetchCurrentWorkspaceBranchResponse,
+  input: __S(
+    89,
+  ) as any as S.Schema<FetchCurrentBranchProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(90) as any as S.Schema<FetchCurrentWorkspaceBranchResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3664,8 +2608,8 @@ export const fetchFileDiffProjectsLocationsRepositoriesWorkspaces: API.Operation
   FetchFileDiffProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest,
-  output: FetchFileDiffResponse,
+  input: __S(91) as any as S.Schema<FetchFileDiffProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(92) as any as S.Schema<FetchFileDiffResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3682,8 +2626,10 @@ export const fetchFileGitStatusesProjectsLocationsRepositoriesWorkspaces: API.Op
   FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest,
-  output: FetchFileGitStatusesResponse,
+  input: __S(
+    93,
+  ) as any as S.Schema<FetchFileGitStatusesProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(96) as any as S.Schema<FetchFileGitStatusesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3700,8 +2646,10 @@ export const fetchGitAheadBehindProjectsLocationsRepositoriesWorkspaces: API.Ope
   FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest,
-  output: FetchGitAheadBehindResponse,
+  input: __S(
+    97,
+  ) as any as S.Schema<FetchGitAheadBehindProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(98) as any as S.Schema<FetchGitAheadBehindResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3716,8 +2664,8 @@ export const fetchHistoryProjectsLocationsRepositories: API.PaginatedOperationMe
   GcpOpContext,
   FetchRepositoryHistoryResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: FetchHistoryProjectsLocationsRepositoriesRequest,
-  output: FetchRepositoryHistoryResponse,
+  input: __S(99) as any as S.Schema<FetchHistoryProjectsLocationsRepositoriesRequest>,
+  output: __S(101) as any as S.Schema<FetchRepositoryHistoryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3735,8 +2683,8 @@ export const fetchRemoteBranchesProjectsLocationsRepositories: API.OperationMeth
   FetchRemoteBranchesProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchRemoteBranchesProjectsLocationsRepositoriesRequest,
-  output: FetchRemoteBranchesResponse,
+  input: __S(102) as any as S.Schema<FetchRemoteBranchesProjectsLocationsRepositoriesRequest>,
+  output: __S(103) as any as S.Schema<FetchRemoteBranchesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3750,8 +2698,8 @@ export const getConfigProjectsLocations: API.OperationMethod<
   GetConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigProjectsLocationsRequest,
-  output: Config,
+  input: __S(104) as any as S.Schema<GetConfigProjectsLocationsRequest>,
+  output: __S(105) as any as S.Schema<Config>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3765,8 +2713,8 @@ export const getIamPolicyProjectsLocationsFolders: API.OperationMethod<
   GetIamPolicyProjectsLocationsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsFoldersRequest,
-  output: Policy,
+  input: __S(106) as any as S.Schema<GetIamPolicyProjectsLocationsFoldersRequest>,
+  output: __S(110) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3780,8 +2728,8 @@ export const getIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   GetIamPolicyProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsRepositoriesRequest,
-  output: Policy,
+  input: __S(111) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesRequest>,
+  output: __S(110) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3798,8 +2746,8 @@ export const getIamPolicyProjectsLocationsRepositoriesWorkspaces: API.OperationM
   GetIamPolicyProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest,
-  output: Policy,
+  input: __S(112) as any as S.Schema<GetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(110) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3813,8 +2761,8 @@ export const getIamPolicyProjectsLocationsTeamFolders: API.OperationMethod<
   GetIamPolicyProjectsLocationsTeamFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsTeamFoldersRequest,
-  output: Policy,
+  input: __S(113) as any as S.Schema<GetIamPolicyProjectsLocationsTeamFoldersRequest>,
+  output: __S(110) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3828,8 +2776,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(114) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(115) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3843,8 +2791,8 @@ export const getProjectsLocationsFolders: API.OperationMethod<
   GetProjectsLocationsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsFoldersRequest,
-  output: Folder,
+  input: __S(116) as any as S.Schema<GetProjectsLocationsFoldersRequest>,
+  output: __S(19) as any as S.Schema<Folder>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3858,8 +2806,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(117) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(72) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3873,8 +2821,8 @@ export const getProjectsLocationsRepositories: API.OperationMethod<
   GetProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRepositoriesRequest,
-  output: Repository,
+  input: __S(118) as any as S.Schema<GetProjectsLocationsRepositoriesRequest>,
+  output: __S(28) as any as S.Schema<Repository>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3891,8 +2839,8 @@ export const getProjectsLocationsRepositoriesCompilationResults: API.OperationMe
   GetProjectsLocationsRepositoriesCompilationResultsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRepositoriesCompilationResultsRequest,
-  output: CompilationResult,
+  input: __S(119) as any as S.Schema<GetProjectsLocationsRepositoriesCompilationResultsRequest>,
+  output: __S(39) as any as S.Schema<CompilationResult>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3906,8 +2854,8 @@ export const getProjectsLocationsRepositoriesReleaseConfigs: API.OperationMethod
   GetProjectsLocationsRepositoriesReleaseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRepositoriesReleaseConfigsRequest,
-  output: ReleaseConfig,
+  input: __S(120) as any as S.Schema<GetProjectsLocationsRepositoriesReleaseConfigsRequest>,
+  output: __S(46) as any as S.Schema<ReleaseConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3924,8 +2872,8 @@ export const getProjectsLocationsRepositoriesWorkflowConfigs: API.OperationMetho
   GetProjectsLocationsRepositoriesWorkflowConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRepositoriesWorkflowConfigsRequest,
-  output: WorkflowConfig,
+  input: __S(121) as any as S.Schema<GetProjectsLocationsRepositoriesWorkflowConfigsRequest>,
+  output: __S(59) as any as S.Schema<WorkflowConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3942,8 +2890,8 @@ export const getProjectsLocationsRepositoriesWorkflowInvocations: API.OperationM
   GetProjectsLocationsRepositoriesWorkflowInvocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRepositoriesWorkflowInvocationsRequest,
-  output: WorkflowInvocation,
+  input: __S(122) as any as S.Schema<GetProjectsLocationsRepositoriesWorkflowInvocationsRequest>,
+  output: __S(62) as any as S.Schema<WorkflowInvocation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3957,8 +2905,8 @@ export const getProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   GetProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRepositoriesWorkspacesRequest,
-  output: Workspace,
+  input: __S(123) as any as S.Schema<GetProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(64) as any as S.Schema<Workspace>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3972,8 +2920,8 @@ export const getProjectsLocationsTeamFolders: API.OperationMethod<
   GetProjectsLocationsTeamFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsTeamFoldersRequest,
-  output: TeamFolder,
+  input: __S(124) as any as S.Schema<GetProjectsLocationsTeamFoldersRequest>,
+  output: __S(66) as any as S.Schema<TeamFolder>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3992,8 +2940,10 @@ export const installNpmPackagesProjectsLocationsRepositoriesWorkspaces: API.Oper
   InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest,
-  output: InstallNpmPackagesResponse,
+  input: __S(
+    126,
+  ) as any as S.Schema<InstallNpmPackagesProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(0) as any as S.Schema<InstallNpmPackagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4008,8 +2958,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(127) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(129) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4025,8 +2975,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(130) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(132) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4042,8 +2992,8 @@ export const listProjectsLocationsRepositories: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRepositoriesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRepositoriesRequest,
-  output: ListRepositoriesResponse,
+  input: __S(133) as any as S.Schema<ListProjectsLocationsRepositoriesRequest>,
+  output: __S(135) as any as S.Schema<ListRepositoriesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4062,8 +3012,8 @@ export const listProjectsLocationsRepositoriesCompilationResults: API.PaginatedO
   GcpOpContext,
   ListCompilationResultsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRepositoriesCompilationResultsRequest,
-  output: ListCompilationResultsResponse,
+  input: __S(136) as any as S.Schema<ListProjectsLocationsRepositoriesCompilationResultsRequest>,
+  output: __S(138) as any as S.Schema<ListCompilationResultsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4082,8 +3032,8 @@ export const listProjectsLocationsRepositoriesReleaseConfigs: API.PaginatedOpera
   GcpOpContext,
   ListReleaseConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRepositoriesReleaseConfigsRequest,
-  output: ListReleaseConfigsResponse,
+  input: __S(139) as any as S.Schema<ListProjectsLocationsRepositoriesReleaseConfigsRequest>,
+  output: __S(141) as any as S.Schema<ListReleaseConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4102,8 +3052,8 @@ export const listProjectsLocationsRepositoriesWorkflowConfigs: API.PaginatedOper
   GcpOpContext,
   ListWorkflowConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRepositoriesWorkflowConfigsRequest,
-  output: ListWorkflowConfigsResponse,
+  input: __S(142) as any as S.Schema<ListProjectsLocationsRepositoriesWorkflowConfigsRequest>,
+  output: __S(144) as any as S.Schema<ListWorkflowConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4122,8 +3072,8 @@ export const listProjectsLocationsRepositoriesWorkflowInvocations: API.Paginated
   GcpOpContext,
   ListWorkflowInvocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRepositoriesWorkflowInvocationsRequest,
-  output: ListWorkflowInvocationsResponse,
+  input: __S(145) as any as S.Schema<ListProjectsLocationsRepositoriesWorkflowInvocationsRequest>,
+  output: __S(147) as any as S.Schema<ListWorkflowInvocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4139,8 +3089,8 @@ export const listProjectsLocationsRepositoriesWorkspaces: API.PaginatedOperation
   GcpOpContext,
   ListWorkspacesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRepositoriesWorkspacesRequest,
-  output: ListWorkspacesResponse,
+  input: __S(148) as any as S.Schema<ListProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(150) as any as S.Schema<ListWorkspacesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4160,8 +3110,8 @@ export const makeDirectoryProjectsLocationsRepositoriesWorkspaces: API.Operation
   MakeDirectoryProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest,
-  output: MakeDirectoryResponse,
+  input: __S(152) as any as S.Schema<MakeDirectoryProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(0) as any as S.Schema<MakeDirectoryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4180,8 +3130,8 @@ export const moveDirectoryProjectsLocationsRepositoriesWorkspaces: API.Operation
   MoveDirectoryProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest,
-  output: MoveDirectoryResponse,
+  input: __S(154) as any as S.Schema<MoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(0) as any as S.Schema<MoveDirectoryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4200,8 +3150,8 @@ export const moveFileProjectsLocationsRepositoriesWorkspaces: API.OperationMetho
   MoveFileProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveFileProjectsLocationsRepositoriesWorkspacesRequest,
-  output: MoveFileResponse,
+  input: __S(156) as any as S.Schema<MoveFileProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(0) as any as S.Schema<MoveFileResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4220,8 +3170,8 @@ export const moveProjectsLocationsFolders: API.OperationMethod<
   MoveProjectsLocationsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveProjectsLocationsFoldersRequest,
-  output: Operation,
+  input: __S(158) as any as S.Schema<MoveProjectsLocationsFoldersRequest>,
+  output: __S(72) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4240,8 +3190,8 @@ export const moveProjectsLocationsRepositories: API.OperationMethod<
   MoveProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveProjectsLocationsRepositoriesRequest,
-  output: Operation,
+  input: __S(159) as any as S.Schema<MoveProjectsLocationsRepositoriesRequest>,
+  output: __S(72) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4260,8 +3210,8 @@ export const patchProjectsLocationsFolders: API.OperationMethod<
   PatchProjectsLocationsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsFoldersRequest,
-  output: Folder,
+  input: __S(160) as any as S.Schema<PatchProjectsLocationsFoldersRequest>,
+  output: __S(19) as any as S.Schema<Folder>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4280,8 +3230,8 @@ export const patchProjectsLocationsRepositories: API.OperationMethod<
   PatchProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsRepositoriesRequest,
-  output: Repository,
+  input: __S(161) as any as S.Schema<PatchProjectsLocationsRepositoriesRequest>,
+  output: __S(28) as any as S.Schema<Repository>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4300,8 +3250,8 @@ export const patchProjectsLocationsRepositoriesReleaseConfigs: API.OperationMeth
   PatchProjectsLocationsRepositoriesReleaseConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsRepositoriesReleaseConfigsRequest,
-  output: ReleaseConfig,
+  input: __S(162) as any as S.Schema<PatchProjectsLocationsRepositoriesReleaseConfigsRequest>,
+  output: __S(46) as any as S.Schema<ReleaseConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4320,8 +3270,8 @@ export const patchProjectsLocationsRepositoriesWorkflowConfigs: API.OperationMet
   PatchProjectsLocationsRepositoriesWorkflowConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsRepositoriesWorkflowConfigsRequest,
-  output: WorkflowConfig,
+  input: __S(163) as any as S.Schema<PatchProjectsLocationsRepositoriesWorkflowConfigsRequest>,
+  output: __S(59) as any as S.Schema<WorkflowConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4340,8 +3290,8 @@ export const patchProjectsLocationsTeamFolders: API.OperationMethod<
   PatchProjectsLocationsTeamFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsTeamFoldersRequest,
-  output: TeamFolder,
+  input: __S(164) as any as S.Schema<PatchProjectsLocationsTeamFoldersRequest>,
+  output: __S(66) as any as S.Schema<TeamFolder>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4360,8 +3310,8 @@ export const pullProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   PullProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PullProjectsLocationsRepositoriesWorkspacesRequest,
-  output: PullGitCommitsResponse,
+  input: __S(166) as any as S.Schema<PullProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(0) as any as S.Schema<PullGitCommitsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4380,8 +3330,8 @@ export const pushProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   PushProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PushProjectsLocationsRepositoriesWorkspacesRequest,
-  output: PushGitCommitsResponse,
+  input: __S(168) as any as S.Schema<PushProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(0) as any as S.Schema<PushGitCommitsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4396,8 +3346,8 @@ export const queryContentsProjectsLocationsTeamFolders: API.PaginatedOperationMe
   GcpOpContext,
   QueryTeamFolderContentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: QueryContentsProjectsLocationsTeamFoldersRequest,
-  output: QueryTeamFolderContentsResponse,
+  input: __S(169) as any as S.Schema<QueryContentsProjectsLocationsTeamFoldersRequest>,
+  output: __S(172) as any as S.Schema<QueryTeamFolderContentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4416,8 +3366,8 @@ export const queryDirectoryContentsProjectsLocationsRepositories: API.PaginatedO
   GcpOpContext,
   QueryRepositoryDirectoryContentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: QueryDirectoryContentsProjectsLocationsRepositoriesRequest,
-  output: QueryRepositoryDirectoryContentsResponse,
+  input: __S(173) as any as S.Schema<QueryDirectoryContentsProjectsLocationsRepositoriesRequest>,
+  output: __S(177) as any as S.Schema<QueryRepositoryDirectoryContentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4436,8 +3386,10 @@ export const queryDirectoryContentsProjectsLocationsRepositoriesWorkspaces: API.
   GcpOpContext,
   QueryDirectoryContentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest,
-  output: QueryDirectoryContentsResponse,
+  input: __S(
+    178,
+  ) as any as S.Schema<QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(179) as any as S.Schema<QueryDirectoryContentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4453,8 +3405,8 @@ export const queryFolderContentsProjectsLocationsFolders: API.PaginatedOperation
   GcpOpContext,
   QueryFolderContentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: QueryFolderContentsProjectsLocationsFoldersRequest,
-  output: QueryFolderContentsResponse,
+  input: __S(180) as any as S.Schema<QueryFolderContentsProjectsLocationsFoldersRequest>,
+  output: __S(172) as any as S.Schema<QueryFolderContentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4473,8 +3425,8 @@ export const queryProjectsLocationsRepositoriesCompilationResults: API.Paginated
   GcpOpContext,
   QueryCompilationResultActionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: QueryProjectsLocationsRepositoriesCompilationResultsRequest,
-  output: QueryCompilationResultActionsResponse,
+  input: __S(181) as any as S.Schema<QueryProjectsLocationsRepositoriesCompilationResultsRequest>,
+  output: __S(199) as any as S.Schema<QueryCompilationResultActionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4493,8 +3445,8 @@ export const queryProjectsLocationsRepositoriesWorkflowInvocations: API.Paginate
   GcpOpContext,
   QueryWorkflowInvocationActionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest,
-  output: QueryWorkflowInvocationActionsResponse,
+  input: __S(200) as any as S.Schema<QueryProjectsLocationsRepositoriesWorkflowInvocationsRequest>,
+  output: __S(209) as any as S.Schema<QueryWorkflowInvocationActionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4510,8 +3462,8 @@ export const queryUserRootContentsProjectsLocations: API.PaginatedOperationMetho
   GcpOpContext,
   QueryUserRootContentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: QueryUserRootContentsProjectsLocationsRequest,
-  output: QueryUserRootContentsResponse,
+  input: __S(210) as any as S.Schema<QueryUserRootContentsProjectsLocationsRequest>,
+  output: __S(211) as any as S.Schema<QueryUserRootContentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4526,8 +3478,8 @@ export const readFileProjectsLocationsRepositories: API.OperationMethod<
   ReadFileProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadFileProjectsLocationsRepositoriesRequest,
-  output: ReadRepositoryFileResponse,
+  input: __S(212) as any as S.Schema<ReadFileProjectsLocationsRepositoriesRequest>,
+  output: __S(213) as any as S.Schema<ReadRepositoryFileResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4544,8 +3496,8 @@ export const readFileProjectsLocationsRepositoriesWorkspaces: API.OperationMetho
   ReadFileProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadFileProjectsLocationsRepositoriesWorkspacesRequest,
-  output: ReadFileResponse,
+  input: __S(214) as any as S.Schema<ReadFileProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(215) as any as S.Schema<ReadFileResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4564,8 +3516,8 @@ export const removeDirectoryProjectsLocationsRepositoriesWorkspaces: API.Operati
   RemoveDirectoryProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest,
-  output: RemoveDirectoryResponse,
+  input: __S(216) as any as S.Schema<RemoveDirectoryProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(0) as any as S.Schema<RemoveDirectoryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4584,8 +3536,8 @@ export const removeFileProjectsLocationsRepositoriesWorkspaces: API.OperationMet
   RemoveFileProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveFileProjectsLocationsRepositoriesWorkspacesRequest,
-  output: RemoveFileResponse,
+  input: __S(217) as any as S.Schema<RemoveFileProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(0) as any as S.Schema<RemoveFileResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4604,8 +3556,8 @@ export const resetProjectsLocationsRepositoriesWorkspaces: API.OperationMethod<
   ResetProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetProjectsLocationsRepositoriesWorkspacesRequest,
-  output: ResetWorkspaceChangesResponse,
+  input: __S(219) as any as S.Schema<ResetProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(0) as any as S.Schema<ResetWorkspaceChangesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4623,8 +3575,8 @@ export const searchFilesProjectsLocationsRepositoriesWorkspaces: API.PaginatedOp
   GcpOpContext,
   SearchFilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchFilesProjectsLocationsRepositoriesWorkspacesRequest,
-  output: SearchFilesResponse,
+  input: __S(220) as any as S.Schema<SearchFilesProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(223) as any as S.Schema<SearchFilesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4640,8 +3592,8 @@ export const searchProjectsLocationsTeamFolders: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchTeamFoldersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchProjectsLocationsTeamFoldersRequest,
-  output: SearchTeamFoldersResponse,
+  input: __S(224) as any as S.Schema<SearchProjectsLocationsTeamFoldersRequest>,
+  output: __S(227) as any as S.Schema<SearchTeamFoldersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4661,8 +3613,8 @@ export const setIamPolicyProjectsLocationsFolders: API.OperationMethod<
   SetIamPolicyProjectsLocationsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsFoldersRequest,
-  output: Policy,
+  input: __S(229) as any as S.Schema<SetIamPolicyProjectsLocationsFoldersRequest>,
+  output: __S(110) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4681,8 +3633,8 @@ export const setIamPolicyProjectsLocationsRepositories: API.OperationMethod<
   SetIamPolicyProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsRepositoriesRequest,
-  output: Policy,
+  input: __S(230) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesRequest>,
+  output: __S(110) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4701,8 +3653,8 @@ export const setIamPolicyProjectsLocationsRepositoriesWorkspaces: API.OperationM
   SetIamPolicyProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest,
-  output: Policy,
+  input: __S(231) as any as S.Schema<SetIamPolicyProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(110) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4721,8 +3673,8 @@ export const setIamPolicyProjectsLocationsTeamFolders: API.OperationMethod<
   SetIamPolicyProjectsLocationsTeamFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsTeamFoldersRequest,
-  output: Policy,
+  input: __S(232) as any as S.Schema<SetIamPolicyProjectsLocationsTeamFoldersRequest>,
+  output: __S(110) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4741,8 +3693,10 @@ export const syncWorkspaceRefsProjectsLocationsRepositoriesWorkspaces: API.Opera
   SyncWorkspaceRefsProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SyncWorkspaceRefsProjectsLocationsRepositoriesWorkspacesRequest,
-  output: SyncWorkspaceRefsResponse,
+  input: __S(
+    234,
+  ) as any as S.Schema<SyncWorkspaceRefsProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(0) as any as S.Schema<SyncWorkspaceRefsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4761,8 +3715,8 @@ export const testIamPermissionsProjectsLocationsFolders: API.OperationMethod<
   TestIamPermissionsProjectsLocationsFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsFoldersRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(236) as any as S.Schema<TestIamPermissionsProjectsLocationsFoldersRequest>,
+  output: __S(235) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4781,8 +3735,8 @@ export const testIamPermissionsProjectsLocationsRepositories: API.OperationMetho
   TestIamPermissionsProjectsLocationsRepositoriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsRepositoriesRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(237) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesRequest>,
+  output: __S(235) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4801,8 +3755,10 @@ export const testIamPermissionsProjectsLocationsRepositoriesWorkspaces: API.Oper
   TestIamPermissionsProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(
+    238,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(235) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4821,8 +3777,8 @@ export const testIamPermissionsProjectsLocationsTeamFolders: API.OperationMethod
   TestIamPermissionsProjectsLocationsTeamFoldersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsTeamFoldersRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(239) as any as S.Schema<TestIamPermissionsProjectsLocationsTeamFoldersRequest>,
+  output: __S(235) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4841,8 +3797,8 @@ export const updateConfigProjectsLocations: API.OperationMethod<
   UpdateConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConfigProjectsLocationsRequest,
-  output: Config,
+  input: __S(240) as any as S.Schema<UpdateConfigProjectsLocationsRequest>,
+  output: __S(105) as any as S.Schema<Config>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4861,8 +3817,8 @@ export const writeFileProjectsLocationsRepositoriesWorkspaces: API.OperationMeth
   WriteFileProjectsLocationsRepositoriesWorkspacesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WriteFileProjectsLocationsRepositoriesWorkspacesRequest,
-  output: WriteFileResponse,
+  input: __S(242) as any as S.Schema<WriteFileProjectsLocationsRepositoriesWorkspacesRequest>,
+  output: __S(0) as any as S.Schema<WriteFileResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4879,7 +3835,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4894,7 +3850,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4923,7 +3879,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CheckoutWorkspaceBranchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4944,7 +3900,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          author: S.optional(CommitAuthor),
+          author: S.optional(__S(6)),
           commitMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommitMetadata" });
@@ -4961,18 +3917,18 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          writeFile: S.optional(WriteFile),
-          deleteFile: S.optional(CancelOperationRequest),
+          writeFile: S.optional(__S(8)),
+          deleteFile: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "FileOperation" });
     case 2:
-      return S.Record(S.String, FileOperation);
+      return S.Record(S.String, __S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
           requiredHeadCommitSha: S.optional(S.String),
-          commitMetadata: S.optional(CommitMetadata),
-          fileOperations: S.optional(FileOperationMap),
+          commitMetadata: S.optional(__S(7)),
+          fileOperations: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "CommitRepositoryChangesRequest",
@@ -4981,7 +3937,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CommitRepositoryChangesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(11).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5005,8 +3961,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          author: S.optional(CommitAuthor),
-          paths: S.optional(StringList),
+          author: S.optional(__S(6)),
+          paths: S.optional(__S(14)),
           commitMessage: S.optional(S.String),
         }),
       ).annotate({
@@ -5020,7 +3976,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CommitWorkspaceChangesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5048,7 +4004,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          tokenStatus: S.optional(ComputeRepositoryAccessTokenStatusResponseTokenStatusEnum),
+          tokenStatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ComputeRepositoryAccessTokenStatusResponse",
@@ -5071,7 +4027,7 @@ function __c2(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           folderId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Folder.pipe(T.HttpBody())),
+          body: S.optional(__S(19).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5107,13 +4063,13 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          additionalOauthScopes: S.optional(StringList),
+          additionalOauthScopes: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "OAuthConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          oauthConfig: S.optional(OAuthConfig),
+          oauthConfig: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "EndUserAuthConfig" });
     case 2:
@@ -5128,9 +4084,9 @@ function __c3(j: number): any {
         S.Struct({
           authenticationTokenSecretVersion: S.optional(S.String),
           gitRepositoryLink: S.optional(S.String),
-          tokenStatus: S.optional(GitRemoteSettingsTokenStatusEnum),
+          tokenStatus: S.optional(S.String),
           defaultBranch: S.optional(S.String),
-          sshAuthenticationConfig: S.optional(SshAuthenticationConfig),
+          sshAuthenticationConfig: S.optional(__S(26)),
           effectiveDefaultBranch: S.optional(S.String),
           url: S.optional(S.String),
         }),
@@ -5143,16 +4099,16 @@ function __c3(j: number): any {
           serviceAccount: S.optional(S.String),
           createTime: S.optional(S.String),
           setAuthenticatedUserAdmin: S.optional(S.Boolean),
-          workspaceCompilationOverrides: S.optional(WorkspaceCompilationOverrides),
-          dataEncryptionState: S.optional(DataEncryptionState),
-          labels: S.optional(StringMap),
+          workspaceCompilationOverrides: S.optional(__S(21)),
+          dataEncryptionState: S.optional(__S(22)),
+          labels: S.optional(__S(23)),
           name: S.optional(S.String),
           npmrcEnvironmentVariablesSecretVersion: S.optional(S.String),
-          endUserAuthConfig: S.optional(EndUserAuthConfig),
+          endUserAuthConfig: S.optional(__S(25)),
           teamFolderName: S.optional(S.String),
           containingFolder: S.optional(S.String),
           displayName: S.optional(S.String),
-          gitRemoteSettings: S.optional(GitRemoteSettings),
+          gitRemoteSettings: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "Repository" });
     case 5:
@@ -5160,7 +4116,7 @@ function __c3(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           repositoryId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Repository.pipe(T.HttpBody())),
+          body: S.optional(__S(28).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5174,7 +4130,7 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          pipelineType: S.optional(PipelineConfigPipelineTypeEnum),
+          pipelineType: S.optional(S.String),
           path: S.optional(S.String),
         }),
       ).annotate({ identifier: "PipelineConfig" });
@@ -5195,7 +4151,7 @@ function __c4(j: number): any {
         S.Struct({
           gcsOutputBucket: S.optional(S.String),
           aiPlatformNotebookRuntimeTemplate: S.optional(S.String),
-          gcsRepositorySnapshotDestination: S.optional(GcsRepositorySnapshotDestination),
+          gcsRepositorySnapshotDestination: S.optional(__S(31)),
         }),
       ).annotate({ identifier: "NotebookRuntimeOptions" });
     case 1:
@@ -5203,13 +4159,13 @@ function __c4(j: number): any {
         S.Struct({
           assertionSchema: S.optional(S.String),
           defaultSchema: S.optional(S.String),
-          pipelineConfig: S.optional(PipelineConfig),
-          vars: S.optional(StringMap),
+          pipelineConfig: S.optional(__S(30)),
+          vars: S.optional(__S(23)),
           builtinAssertionNamePrefix: S.optional(S.String),
           databaseSuffix: S.optional(S.String),
           schemaSuffix: S.optional(S.String),
           tablePrefix: S.optional(S.String),
-          defaultNotebookRuntimeOptions: S.optional(NotebookRuntimeOptions),
+          defaultNotebookRuntimeOptions: S.optional(__S(32)),
           defaultDatabase: S.optional(S.String),
           defaultLocation: S.optional(S.String),
         }),
@@ -5233,12 +4189,12 @@ function __c4(j: number): any {
         S.Struct({
           stack: S.optional(S.String),
           path: S.optional(S.String),
-          actionTarget: S.optional(Target),
+          actionTarget: S.optional(__S(35)),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "CompilationError" });
     case 5:
-      return S.Array(CompilationError);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5252,19 +4208,19 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          codeCompilationConfig: S.optional(CodeCompilationConfig),
+          codeCompilationConfig: S.optional(__S(33)),
           createTime: S.optional(S.String),
           gitCommitish: S.optional(S.String),
           dataformCoreVersion: S.optional(S.String),
-          privateResourceMetadata: S.optional(PrivateResourceMetadata),
+          privateResourceMetadata: S.optional(__S(34)),
           internalMetadata: S.optional(S.String),
           name: S.optional(S.String),
-          compilationErrors: S.optional(CompilationErrorList),
+          compilationErrors: S.optional(__S(37)),
           releaseConfig: S.optional(S.String),
           workspace: S.optional(S.String),
-          gcsRepositorySnapshotMetadata: S.optional(GcsRepositorySnapshotMetadata),
+          gcsRepositorySnapshotMetadata: S.optional(__S(38)),
           resolvedGitCommitSha: S.optional(S.String),
-          dataEncryptionState: S.optional(DataEncryptionState),
+          dataEncryptionState: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "CompilationResult" });
   }
@@ -5275,7 +4231,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CompilationResult.pipe(T.HttpBody())),
+          body: S.optional(__S(39).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5289,34 +4245,34 @@ function __c5(j: number): any {
     case 1:
       return S.Record(S.String, S.Unknown);
     case 2:
-      return S.Array(DocumentMap);
+      return S.Array(__S(41));
     case 3:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "Status" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           compilationResult: S.optional(S.String),
-          errorStatus: S.optional(Status),
+          errorStatus: S.optional(__S(43)),
           releaseTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduledReleaseRecord" });
     case 5:
-      return S.Array(ScheduledReleaseRecord);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
           gitCommitish: S.optional(S.String),
           releaseCompilationResult: S.optional(S.String),
           name: S.optional(S.String),
-          codeCompilationConfig: S.optional(CodeCompilationConfig),
+          codeCompilationConfig: S.optional(__S(33)),
           disabled: S.optional(S.Boolean),
-          recentScheduledReleaseRecords: S.optional(ScheduledReleaseRecordList),
+          recentScheduledReleaseRecords: S.optional(__S(45)),
           timeZone: S.optional(S.String),
           cronSchedule: S.optional(S.String),
           internalMetadata: S.optional(S.String),
@@ -5327,7 +4283,7 @@ function __c5(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           releaseConfigId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ReleaseConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(46).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5345,43 +4301,43 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          errorStatus: S.optional(Status),
+          errorStatus: S.optional(__S(43)),
           executionTime: S.optional(S.String),
           workflowInvocation: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScheduledExecutionRecord" });
     case 1:
-      return S.Array(ScheduledExecutionRecord);
+      return S.Array(__S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
           evaluationTime: S.optional(S.String),
-          status: S.optional(Status),
+          status: S.optional(__S(43)),
         }),
       ).annotate({ identifier: "TriggerEvaluationRecord" });
     case 3:
-      return S.Array(TriggerEvaluationRecord);
+      return S.Array(__S(50));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          table: S.optional(Target),
+          table: S.optional(__S(35)),
           triggerUpdateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "TableUpdateTrigger" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          tableUpdateTrigger: S.optional(TableUpdateTrigger),
+          tableUpdateTrigger: S.optional(__S(52)),
         }),
       ).annotate({ identifier: "WorkflowTrigger" });
     case 6:
-      return S.Array(WorkflowTrigger);
+      return S.Array(__S(53));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          recentTriggerEvaluationRecords: S.optional(TriggerEvaluationRecordList),
-          condition: S.optional(WorkflowTriggerConfigConditionEnum),
-          workflowTriggers: S.optional(WorkflowTriggerList),
+          recentTriggerEvaluationRecords: S.optional(__S(51)),
+          condition: S.optional(S.String),
+          workflowTriggers: S.optional(__S(54)),
           lastSuccessfulEvaluationTime: S.optional(S.String),
           minExecutionDuration: S.optional(S.String),
           maxWaitDuration: S.optional(S.String),
@@ -5392,11 +4348,11 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Target);
+      return S.Array(__S(35));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          oauthConfig: S.optional(OAuthConfig),
+          oauthConfig: S.optional(__S(24)),
           userEmail: S.optional(S.String),
         }),
       ).annotate({
@@ -5407,13 +4363,13 @@ function __c7(j: number): any {
         S.Struct({
           transitiveDependenciesIncluded: S.optional(S.Boolean),
           serviceAccount: S.optional(S.String),
-          queryPriority: S.optional(InvocationConfigQueryPriorityEnum),
-          executionMode: S.optional(InvocationConfigExecutionModeEnum),
+          queryPriority: S.optional(S.String),
+          executionMode: S.optional(S.String),
           fullyRefreshIncrementalTablesEnabled: S.optional(S.Boolean),
-          includedTags: S.optional(StringList),
+          includedTags: S.optional(__S(14)),
           transitiveDependentsIncluded: S.optional(S.Boolean),
-          includedTargets: S.optional(TargetList),
-          endUserAuthConfig: S.optional(EndUserAuthenticationConfig),
+          includedTargets: S.optional(__S(56)),
+          endUserAuthConfig: S.optional(__S(57)),
         }),
       ).annotate({ identifier: "InvocationConfig" });
     case 3:
@@ -5422,13 +4378,13 @@ function __c7(j: number): any {
           disabled: S.optional(S.Boolean),
           createTime: S.optional(S.String),
           timeZone: S.optional(S.String),
-          recentScheduledExecutionRecords: S.optional(ScheduledExecutionRecordList),
+          recentScheduledExecutionRecords: S.optional(__S(49)),
           internalMetadata: S.optional(S.String),
           updateTime: S.optional(S.String),
           cronSchedule: S.optional(S.String),
           releaseConfig: S.optional(S.String),
-          workflowTriggerConfig: S.optional(WorkflowTriggerConfig),
-          invocationConfig: S.optional(InvocationConfig),
+          workflowTriggerConfig: S.optional(__S(55)),
+          invocationConfig: S.optional(__S(58)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowConfig" });
@@ -5437,7 +4393,7 @@ function __c7(j: number): any {
         S.Struct({
           workflowConfigId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(WorkflowConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(59).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5458,24 +4414,24 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          invocationTiming: S.optional(Interval),
-          privateResourceMetadata: S.optional(PrivateResourceMetadata),
-          dataEncryptionState: S.optional(DataEncryptionState),
+          invocationTiming: S.optional(__S(61)),
+          privateResourceMetadata: S.optional(__S(34)),
+          dataEncryptionState: S.optional(__S(22)),
           workflowConfig: S.optional(S.String),
-          pipelineConfig: S.optional(PipelineConfig),
-          invocationConfig: S.optional(InvocationConfig),
+          pipelineConfig: S.optional(__S(30)),
+          invocationConfig: S.optional(__S(58)),
           internalMetadata: S.optional(S.String),
           resolvedCompilationResult: S.optional(S.String),
           compilationResult: S.optional(S.String),
           name: S.optional(S.String),
-          state: S.optional(WorkflowInvocationStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowInvocation" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(WorkflowInvocation.pipe(T.HttpBody())),
+          body: S.optional(__S(62).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5497,9 +4453,9 @@ function __c8(j: number): any {
           enableBranchManagement: S.optional(S.Boolean),
           shallow: S.optional(S.Boolean),
           depth: S.optional(S.Number),
-          privateResourceMetadata: S.optional(PrivateResourceMetadata),
+          privateResourceMetadata: S.optional(__S(34)),
           internalMetadata: S.optional(S.String),
-          dataEncryptionState: S.optional(DataEncryptionState),
+          dataEncryptionState: S.optional(__S(22)),
           createTime: S.optional(S.String),
           disableMoves: S.optional(S.Boolean),
           originalBranch: S.optional(S.String),
@@ -5510,7 +4466,7 @@ function __c8(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           workspaceId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Workspace.pipe(T.HttpBody())),
+          body: S.optional(__S(64).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5537,7 +4493,7 @@ function __c8(j: number): any {
         S.Struct({
           teamFolderId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(TeamFolder.pipe(T.HttpBody())),
+          body: S.optional(__S(66).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5559,7 +4515,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(DeleteBranchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(68).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5582,7 +4538,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(DeleteRepositoryLongRunningRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(70).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5600,10 +4556,10 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(DocumentMap),
-          metadata: S.optional(DocumentMap),
+          response: S.optional(__S(41)),
+          metadata: S.optional(__S(41)),
           done: S.optional(S.Boolean),
-          error: S.optional(Status),
+          error: S.optional(__S(43)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
@@ -5734,7 +4690,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(DeleteFolderTreeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(81).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5749,7 +4705,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(DeleteFolderTreeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(81).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5766,9 +4722,7 @@ function __c10(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          filter: S.optional(
-            FetchBranchesProjectsLocationsRepositoriesWorkspacesFilterEnum.pipe(T.Query()),
-          ),
+          filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -5783,7 +4737,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           commitTime: S.optional(S.String),
-          author: S.optional(CommitAuthor),
+          author: S.optional(__S(6)),
           commitSha: S.optional(S.String),
           commitMessage: S.optional(S.String),
         }),
@@ -5792,11 +4746,11 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           branchName: S.optional(S.String),
-          lastCommit: S.optional(CommitLogEntry),
+          lastCommit: S.optional(__S(85)),
         }),
       ).annotate({ identifier: "BranchMetadata" });
     case 7:
-      return S.Array(BranchMetadata);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -5804,7 +4758,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          branches: S.optional(BranchMetadataList),
+          branches: S.optional(__S(87)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5871,11 +4825,11 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
-          state: S.optional(UncommittedFileChangeStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "UncommittedFileChange" });
     case 7:
-      return S.Array(UncommittedFileChange);
+      return S.Array(__S(94));
   }
 }
 function __c12(j: number): any {
@@ -5883,7 +4837,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          uncommittedFileChanges: S.optional(UncommittedFileChangeList),
+          uncommittedFileChanges: S.optional(__S(95)),
         }),
       ).annotate({
         identifier: "FetchFileGitStatusesResponse",
@@ -5929,12 +4883,12 @@ function __c12(j: number): any {
         identifier: "FetchHistoryProjectsLocationsRepositoriesRequest",
       });
     case 4:
-      return S.Array(CommitLogEntry);
+      return S.Array(__S(85));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          commits: S.optional(CommitLogEntryList),
+          commits: S.optional(__S(100)),
         }),
       ).annotate({
         identifier: "FetchRepositoryHistoryResponse",
@@ -5956,7 +4910,7 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          branches: S.optional(StringList),
+          branches: S.optional(__S(14)),
         }),
       ).annotate({
         identifier: "FetchRemoteBranchesResponse",
@@ -6014,18 +4968,18 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(Expr),
-          members: S.optional(StringList),
+          condition: S.optional(__S(107)),
+          members: S.optional(__S(14)),
           role: S.optional(S.String),
         }),
       ).annotate({ identifier: "Binding" });
     case 5:
-      return S.Array(Binding);
+      return S.Array(__S(108));
     case 6:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
-          bindings: S.optional(BindingList),
+          bindings: S.optional(__S(109)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Policy" });
@@ -6095,11 +5049,11 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(41)),
           locationId: S.optional(S.String),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(23)),
         }),
       ).annotate({ identifier: "Location" });
     case 4:
@@ -6235,7 +5189,7 @@ function __c15(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          pipelineConfig: S.optional(PipelineConfig),
+          pipelineConfig: S.optional(__S(30)),
         }),
       ).annotate({
         identifier: "InstallNpmPackagesRequest",
@@ -6244,7 +5198,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           workspace: S.String.pipe(T.Label()),
-          body: S.optional(InstallNpmPackagesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(125).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6259,7 +5213,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(14).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -6278,12 +5232,12 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Location);
+      return S.Array(__S(115));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(128)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 2:
@@ -6305,13 +5259,13 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 3:
-      return S.Array(Operation);
+      return S.Array(__S(72));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(OperationList),
+          operations: S.optional(__S(131)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 5:
@@ -6333,13 +5287,13 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsRepositoriesRequest",
       });
     case 6:
-      return S.Array(Repository);
+      return S.Array(__S(28));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          repositories: S.optional(RepositoryList),
+          unreachable: S.optional(__S(14)),
+          repositories: S.optional(__S(134)),
         }),
       ).annotate({ identifier: "ListRepositoriesResponse" });
   }
@@ -6365,13 +5319,13 @@ function __c17(j: number): any {
         identifier: "ListProjectsLocationsRepositoriesCompilationResultsRequest",
       });
     case 1:
-      return S.Array(CompilationResult);
+      return S.Array(__S(39));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          compilationResults: S.optional(CompilationResultList),
-          unreachable: S.optional(StringList),
+          compilationResults: S.optional(__S(137)),
+          unreachable: S.optional(__S(14)),
         }),
       ).annotate({
         identifier: "ListCompilationResultsResponse",
@@ -6393,12 +5347,12 @@ function __c17(j: number): any {
         identifier: "ListProjectsLocationsRepositoriesReleaseConfigsRequest",
       });
     case 4:
-      return S.Array(ReleaseConfig);
+      return S.Array(__S(46));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          releaseConfigs: S.optional(ReleaseConfigList),
+          unreachable: S.optional(__S(14)),
+          releaseConfigs: S.optional(__S(140)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6421,7 +5375,7 @@ function __c17(j: number): any {
         identifier: "ListProjectsLocationsRepositoriesWorkflowConfigsRequest",
       });
     case 7:
-      return S.Array(WorkflowConfig);
+      return S.Array(__S(59));
   }
 }
 function __c18(j: number): any {
@@ -6430,8 +5384,8 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          workflowConfigs: S.optional(WorkflowConfigList),
+          unreachable: S.optional(__S(14)),
+          workflowConfigs: S.optional(__S(143)),
         }),
       ).annotate({
         identifier: "ListWorkflowConfigsResponse",
@@ -6455,13 +5409,13 @@ function __c18(j: number): any {
         identifier: "ListProjectsLocationsRepositoriesWorkflowInvocationsRequest",
       });
     case 2:
-      return S.Array(WorkflowInvocation);
+      return S.Array(__S(62));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          workflowInvocations: S.optional(WorkflowInvocationList),
-          unreachable: S.optional(StringList),
+          workflowInvocations: S.optional(__S(146)),
+          unreachable: S.optional(__S(14)),
         }),
       ).annotate({
         identifier: "ListWorkflowInvocationsResponse",
@@ -6485,12 +5439,12 @@ function __c18(j: number): any {
         identifier: "ListProjectsLocationsRepositoriesWorkspacesRequest",
       });
     case 5:
-      return S.Array(Workspace);
+      return S.Array(__S(64));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          workspaces: S.optional(WorkspaceList),
+          unreachable: S.optional(__S(14)),
+          workspaces: S.optional(__S(149)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListWorkspacesResponse" });
@@ -6508,7 +5462,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           workspace: S.String.pipe(T.Label()),
-          body: S.optional(MakeDirectoryRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(151).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6530,7 +5484,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           workspace: S.String.pipe(T.Label()),
-          body: S.optional(MoveDirectoryRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(153).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6552,7 +5506,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           workspace: S.String.pipe(T.Label()),
-          body: S.optional(MoveFileRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(155).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6573,7 +5527,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(MoveFolderRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(157).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6588,7 +5542,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(MoveRepositoryRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(157).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6608,7 +5562,7 @@ function __c20(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Folder.pipe(T.HttpBody())),
+          body: S.optional(__S(19).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6624,7 +5578,7 @@ function __c20(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Repository.pipe(T.HttpBody())),
+          body: S.optional(__S(28).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6640,7 +5594,7 @@ function __c20(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ReleaseConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(46).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6656,7 +5610,7 @@ function __c20(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(WorkflowConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(59).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6672,7 +5626,7 @@ function __c20(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(TeamFolder.pipe(T.HttpBody())),
+          body: S.optional(__S(66).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6687,14 +5641,14 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           remoteBranch: S.optional(S.String),
-          author: S.optional(CommitAuthor),
+          author: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "PullGitCommitsRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(PullGitCommitsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(165).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6719,7 +5673,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(PushGitCommitsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(167).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6751,17 +5705,17 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          folder: S.optional(Folder),
-          repository: S.optional(Repository),
+          folder: S.optional(__S(19)),
+          repository: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "TeamFolderContentsEntry" });
     case 3:
-      return S.Array(TeamFolderContentsEntry);
+      return S.Array(__S(170));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          entries: S.optional(TeamFolderContentsEntryList),
+          entries: S.optional(__S(171)),
         }),
       ).annotate({
         identifier: "QueryTeamFolderContentsResponse",
@@ -6795,7 +5749,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           file: S.optional(S.String),
-          metadata: S.optional(FilesystemEntryMetadata),
+          metadata: S.optional(__S(174)),
           directory: S.optional(S.String),
         }),
       ).annotate({ identifier: "DirectoryEntry" });
@@ -6804,12 +5758,12 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DirectoryEntry);
+      return S.Array(__S(175));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          directoryEntries: S.optional(DirectoryEntryList),
+          directoryEntries: S.optional(__S(176)),
         }),
       ).annotate({
         identifier: "QueryRepositoryDirectoryContentsResponse",
@@ -6820,9 +5774,7 @@ function __c22(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           path: S.optional(S.String.pipe(T.Query())),
           workspace: S.String.pipe(T.Label()),
-          view: S.optional(
-            QueryDirectoryContentsProjectsLocationsRepositoriesWorkspacesViewEnum.pipe(T.Query()),
-          ),
+          view: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -6837,7 +5789,7 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          directoryEntries: S.optional(DirectoryEntryList),
+          directoryEntries: S.optional(__S(176)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6887,10 +5839,10 @@ function __c22(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          replace: S.optional(CancelOperationRequest),
-          append: S.optional(CancelOperationRequest),
-          unique: S.optional(IncrementalLoadMode),
-          maximum: S.optional(IncrementalLoadMode),
+          replace: S.optional(__S(0)),
+          append: S.optional(__S(0)),
+          unique: S.optional(__S(182)),
+          maximum: S.optional(__S(182)),
         }),
       ).annotate({ identifier: "LoadConfig" });
   }
@@ -6900,7 +5852,7 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          target: S.optional(Target),
+          target: S.optional(__S(35)),
           retentionDays: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ErrorTable" });
@@ -6908,47 +5860,47 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
-          load: S.optional(LoadConfig),
-          errorTable: S.optional(ErrorTable),
+          load: S.optional(__S(183)),
+          errorTable: S.optional(__S(184)),
         }),
       ).annotate({ identifier: "SqlDefinition" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dependencyTargets: S.optional(TargetList),
+          dependencyTargets: S.optional(__S(56)),
           contentsYaml: S.optional(S.String),
-          contentsSql: S.optional(SqlDefinition),
-          tags: S.optional(StringList),
+          contentsSql: S.optional(__S(185)),
+          tags: S.optional(__S(14)),
           disabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DataPreparation" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          bigqueryPolicyTags: S.optional(StringList),
-          path: S.optional(StringList),
+          bigqueryPolicyTags: S.optional(__S(14)),
+          path: S.optional(__S(14)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "ColumnDescriptor" });
     case 4:
-      return S.Array(ColumnDescriptor);
+      return S.Array(__S(187));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(ColumnDescriptorList),
-          bigqueryLabels: S.optional(StringMap),
+          columns: S.optional(__S(188)),
+          bigqueryLabels: S.optional(__S(23)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "RelationDescriptor" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          uniqueKeyParts: S.optional(StringList),
+          uniqueKeyParts: S.optional(__S(14)),
           incrementalSelectQuery: S.optional(S.String),
-          incrementalPostOperations: S.optional(StringList),
+          incrementalPostOperations: S.optional(__S(14)),
           updatePartitionFilter: S.optional(S.String),
           refreshDisabled: S.optional(S.Boolean),
-          incrementalPreOperations: S.optional(StringList),
+          incrementalPreOperations: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "IncrementalTableConfig" });
     case 7:
@@ -6956,22 +5908,22 @@ function __c23(j: number): any {
         S.Struct({
           storageUri: S.optional(S.String),
           disabled: S.optional(S.Boolean),
-          additionalOptions: S.optional(StringMap),
+          additionalOptions: S.optional(__S(23)),
           connection: S.optional(S.String),
-          relationType: S.optional(RelationRelationTypeEnum),
-          dependencyTargets: S.optional(TargetList),
-          fileFormat: S.optional(RelationFileFormatEnum),
+          relationType: S.optional(S.String),
+          dependencyTargets: S.optional(__S(56)),
+          fileFormat: S.optional(S.String),
           selectQuery: S.optional(S.String),
-          tableFormat: S.optional(RelationTableFormatEnum),
-          relationDescriptor: S.optional(RelationDescriptor),
-          incrementalTableConfig: S.optional(IncrementalTableConfig),
+          tableFormat: S.optional(S.String),
+          relationDescriptor: S.optional(__S(189)),
+          incrementalTableConfig: S.optional(__S(190)),
           partitionExpirationDays: S.optional(S.Number),
-          tags: S.optional(StringList),
-          preOperations: S.optional(StringList),
+          tags: S.optional(__S(14)),
+          preOperations: S.optional(__S(14)),
           requirePartitionFilter: S.optional(S.Boolean),
           partitionExpression: S.optional(S.String),
-          clusterExpressions: S.optional(StringList),
-          postOperations: S.optional(StringList),
+          clusterExpressions: S.optional(__S(14)),
+          postOperations: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "Relation" });
   }
@@ -6981,9 +5933,9 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(StringList),
+          tags: S.optional(__S(14)),
           disabled: S.optional(S.Boolean),
-          dependencyTargets: S.optional(TargetList),
+          dependencyTargets: S.optional(__S(56)),
           contents: S.optional(S.String),
         }),
       ).annotate({ identifier: "Notebook" });
@@ -6991,27 +5943,27 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           disabled: S.optional(S.Boolean),
-          tags: S.optional(StringList),
-          dependencyTargets: S.optional(TargetList),
+          tags: S.optional(__S(14)),
+          dependencyTargets: S.optional(__S(56)),
           selectQuery: S.optional(S.String),
-          relationDescriptor: S.optional(RelationDescriptor),
-          parentAction: S.optional(Target),
+          relationDescriptor: S.optional(__S(189)),
+          parentAction: S.optional(__S(35)),
         }),
       ).annotate({ identifier: "Assertion" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          relationDescriptor: S.optional(RelationDescriptor),
+          relationDescriptor: S.optional(__S(189)),
         }),
       ).annotate({ identifier: "Declaration" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           disabled: S.optional(S.Boolean),
-          dependencyTargets: S.optional(TargetList),
-          tags: S.optional(StringList),
-          relationDescriptor: S.optional(RelationDescriptor),
-          queries: S.optional(StringList),
+          dependencyTargets: S.optional(__S(56)),
+          tags: S.optional(__S(14)),
+          relationDescriptor: S.optional(__S(189)),
+          queries: S.optional(__S(14)),
           hasOutput: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operations" });
@@ -7020,35 +5972,35 @@ function __c24(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           disabled: S.optional(S.Boolean),
-          tags: S.optional(StringList),
+          tags: S.optional(__S(14)),
           testQuery: S.optional(S.String),
-          dependencyTargets: S.optional(TargetList),
+          dependencyTargets: S.optional(__S(56)),
           expectedOutputQuery: S.optional(S.String),
         }),
       ).annotate({ identifier: "BigQueryUnitTest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          canonicalTarget: S.optional(Target),
+          canonicalTarget: S.optional(__S(35)),
           internalMetadata: S.optional(S.String),
-          dataPreparation: S.optional(DataPreparation),
+          dataPreparation: S.optional(__S(186)),
           filePath: S.optional(S.String),
-          relation: S.optional(Relation),
-          notebook: S.optional(Notebook),
-          assertion: S.optional(Assertion),
-          declaration: S.optional(Declaration),
-          operations: S.optional(Operations),
-          target: S.optional(Target),
-          bigqueryUnitTest: S.optional(BigQueryUnitTest),
+          relation: S.optional(__S(191)),
+          notebook: S.optional(__S(192)),
+          assertion: S.optional(__S(193)),
+          declaration: S.optional(__S(194)),
+          operations: S.optional(__S(195)),
+          target: S.optional(__S(35)),
+          bigqueryUnitTest: S.optional(__S(196)),
         }),
       ).annotate({ identifier: "CompilationResultAction" });
     case 6:
-      return S.Array(CompilationResultAction);
+      return S.Array(__S(197));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          compilationResultActions: S.optional(CompilationResultActionList),
+          compilationResultActions: S.optional(__S(198)),
         }),
       ).annotate({
         identifier: "QueryCompilationResultActionsResponse",
@@ -7094,25 +6046,25 @@ function __c25(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          unique: S.optional(IncrementalLoadMode),
-          maximum: S.optional(IncrementalLoadMode),
-          append: S.optional(CancelOperationRequest),
-          replace: S.optional(CancelOperationRequest),
+          unique: S.optional(__S(182)),
+          maximum: S.optional(__S(182)),
+          append: S.optional(__S(0)),
+          replace: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "ActionLoadConfig" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          loadConfig: S.optional(ActionLoadConfig),
+          loadConfig: S.optional(__S(203)),
           query: S.optional(S.String),
-          errorTable: S.optional(ErrorTable),
+          errorTable: S.optional(__S(184)),
         }),
       ).annotate({ identifier: "ActionSqlDefinition" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           jobId: S.optional(S.String),
-          contentsSql: S.optional(ActionSqlDefinition),
+          contentsSql: S.optional(__S(204)),
           contentsYaml: S.optional(S.String),
           generatedSql: S.optional(S.String),
         }),
@@ -7128,15 +6080,15 @@ function __c25(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          bigqueryUnitTestAction: S.optional(BigQueryUnitTestAction),
+          bigqueryUnitTestAction: S.optional(__S(201)),
           internalMetadata: S.optional(S.String),
-          state: S.optional(WorkflowInvocationActionStateEnum),
-          bigqueryAction: S.optional(BigQueryAction),
-          dataPreparationAction: S.optional(DataPreparationAction),
-          notebookAction: S.optional(NotebookAction),
-          target: S.optional(Target),
-          invocationTiming: S.optional(Interval),
-          canonicalTarget: S.optional(Target),
+          state: S.optional(S.String),
+          bigqueryAction: S.optional(__S(202)),
+          dataPreparationAction: S.optional(__S(205)),
+          notebookAction: S.optional(__S(206)),
+          target: S.optional(__S(35)),
+          invocationTiming: S.optional(__S(61)),
+          canonicalTarget: S.optional(__S(35)),
           failureReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowInvocationAction" });
@@ -7145,11 +6097,11 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(WorkflowInvocationAction);
+      return S.Array(__S(207));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          workflowInvocationActions: S.optional(WorkflowInvocationActionList),
+          workflowInvocationActions: S.optional(__S(208)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7176,7 +6128,7 @@ function __c26(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(RootContentsEntryList),
+          entries: S.optional(__S(171)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7236,7 +6188,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           workspace: S.String.pipe(T.Label()),
-          body: S.optional(MakeDirectoryRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(151).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7251,7 +6203,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           workspace: S.String.pipe(T.Label()),
-          body: S.optional(RemoveFileRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(151).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7265,7 +6217,7 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          paths: S.optional(StringList),
+          paths: S.optional(__S(14)),
           clean: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -7275,7 +6227,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ResetWorkspaceChangesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(218).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7306,16 +6258,16 @@ function __c27(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          directory: S.optional(DirectorySearchResult),
-          file: S.optional(FileSearchResult),
+          directory: S.optional(__S(151)),
+          file: S.optional(__S(151)),
         }),
       ).annotate({ identifier: "SearchResult" });
     case 6:
-      return S.Array(SearchResult);
+      return S.Array(__S(221));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          searchResults: S.optional(SearchResultList),
+          searchResults: S.optional(__S(222)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchFilesResponse" });
@@ -7344,15 +6296,15 @@ function __c28(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          teamFolder: S.optional(TeamFolder),
+          teamFolder: S.optional(__S(66)),
         }),
       ).annotate({ identifier: "TeamFolderSearchResult" });
     case 2:
-      return S.Array(TeamFolderSearchResult);
+      return S.Array(__S(225));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(TeamFolderSearchResultList),
+          results: S.optional(__S(226)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -7361,14 +6313,14 @@ function __c28(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(Policy),
+          policy: S.optional(__S(110)),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(228).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7383,7 +6335,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(228).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7398,7 +6350,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(228).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7417,7 +6369,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(228).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7439,7 +6391,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(SyncWorkspaceRefsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(233).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7453,7 +6405,7 @@ function __c29(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(14)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -7462,7 +6414,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(235).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7477,7 +6429,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(235).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7492,7 +6444,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(235).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7507,7 +6459,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(235).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7527,7 +6479,7 @@ function __c30(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Config.pipe(T.HttpBody())),
+          body: S.optional(__S(105).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7549,7 +6501,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           workspace: S.String.pipe(T.Label()),
-          body: S.optional(WriteFileRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(241).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7560,5 +6512,76 @@ function __c30(j: number): any {
       ).annotate({
         identifier: "WriteFileProjectsLocationsRepositoriesWorkspacesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
   }
 }

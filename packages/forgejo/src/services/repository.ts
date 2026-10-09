@@ -7,6 +7,8 @@ import * as Redacted from "effect/Redacted";
 import { ForgejoProtocol, type ForgejoOpError, type ForgejoOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ForgejoOpError, ForgejoOpContext };
 
@@ -70,17 +72,7 @@ export interface AcceptRepoTransferRequest {
   /** name of the repo to transfer */
   repo: string;
 }
-const AcceptRepoTransferRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AcceptRepoTransferRequest>;
-
 export interface AcceptRepoTransferResponse {}
-const AcceptRepoTransferResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AcceptRepoTransferResponse>;
-
 export interface ActionRunRequest {
   /** owner of the repo */
   owner: string;
@@ -89,8 +81,6 @@ export interface ActionRunRequest {
   /** id of the action run */
   run_id: number;
 }
-const ActionRunRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ActionRunRequest>;
-
 /** ExternalTracker represents settings for external tracker */
 export interface ExternalTracker {
   /** External Issue Tracker URL Format. Use the placeholders {user}, {repo} and {index} for the username, repository name and issue index. */
@@ -102,15 +92,11 @@ export interface ExternalTracker {
   /** URL of external issue tracker. */
   external_tracker_url?: string;
 }
-const ExternalTracker = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ExternalTracker>;
-
 /** ExternalWiki represents setting for external wiki */
 export interface ExternalWiki {
   /** URL of external wiki. */
   external_wiki_url?: string;
 }
-const ExternalWiki = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ExternalWiki>;
-
 /** InternalTracker represents settings for internal tracker */
 export interface InternalTracker {
   /** Let only contributors track time (Built-in issue tracker) */
@@ -120,12 +106,8 @@ export interface InternalTracker {
   /** Enable time tracking (Built-in issue tracker) */
   enable_time_tracker?: boolean;
 }
-const InternalTracker = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<InternalTracker>;
-
 /** ObjectFormatName of the underlying git repository */
 export type RepositoryObjectFormatName = "sha1" | "sha256";
-const RepositoryObjectFormatName = S.String;
-
 /** User represents a user */
 export interface User {
   /** Is user active */
@@ -170,16 +152,12 @@ export interface User {
   /** the user's website */
   website?: string;
 }
-const User = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<User>;
-
 /** Permission represents a set of permissions */
 export interface Permission {
   admin?: boolean;
   pull?: boolean;
   push?: boolean;
 }
-const Permission = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Permission>;
-
 /** Organization represents an organization */
 export interface Organization {
   avatar_url?: string;
@@ -196,17 +174,9 @@ export interface Organization {
   visibility?: string;
   website?: string;
 }
-const Organization = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Organization>;
-
 export type TeamPermission = "none" | "read" | "write" | "admin" | "owner";
-const TeamPermission = S.String;
-
 export type TeamUnitsList = Array<string>;
-const TeamUnitsList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<TeamUnitsList>;
-
 export type TeamUnitsMapMap = { [key: string]: string | undefined };
-const TeamUnitsMapMap = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<TeamUnitsMapMap>;
-
 /** Team represents a team in an organization */
 export interface Team {
   can_create_org_repo?: boolean;
@@ -219,25 +189,14 @@ export interface Team {
   units?: TeamUnitsList;
   units_map?: TeamUnitsMapMap;
 }
-const Team = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Team>;
-
 export type RepoTransferTeamsList = Array<Team>;
-const RepoTransferTeamsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<RepoTransferTeamsList>;
-
 /** RepoTransfer represents a pending repo transfer */
 export interface RepoTransfer {
   doer?: User;
   recipient?: User;
   teams?: RepoTransferTeamsList;
 }
-const RepoTransfer = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<RepoTransfer>;
-
 export type RepositoryTopicsList = Array<string>;
-const RepositoryTopicsList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<RepositoryTopicsList>;
-
 /** Repository represents a repository */
 export interface Repository {
   allow_fast_forward_only_merge?: boolean;
@@ -310,8 +269,6 @@ export interface Repository {
   wiki_clone_url?: string;
   wiki_ssh_url?: string;
 }
-const Repository = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Repository>;
-
 /** ActionRun represents an action run */
 export interface ActionRun {
   /** the cron id for the schedule trigger */
@@ -358,8 +315,6 @@ export interface ActionRun {
   /** the name of workflow file */
   workflow_id?: string;
 }
-const ActionRun = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ActionRun>;
-
 export interface CancelActionRunRequest {
   /** owner of the repo */
   owner: string;
@@ -368,35 +323,21 @@ export interface CancelActionRunRequest {
   /** ID of the workflow run */
   run_id: number;
 }
-const CancelActionRunRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CancelActionRunRequest>;
-
 export interface CancelActionRunResponse {}
-const CancelActionRunResponse =
-  AcceptRepoTransferResponse as any as S.Schema<CancelActionRunResponse>;
-
 export interface ConvertRepoRequest {
   /** owner of the repo to convert */
   owner: string;
   /** name of the repo to convert */
   repo: string;
 }
-const ConvertRepoRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ConvertRepoRequest>;
-
 /** ObjectFormatName of the underlying git repository */
 export type CreateCurrentUserRepoRequestObjectFormatName = "sha1" | "sha256";
-const CreateCurrentUserRepoRequestObjectFormatName = S.String;
-
 /** TrustModel of the repository */
 export type CreateCurrentUserRepoRequestTrustModel =
   | "default"
   | "collaborator"
   | "committer"
   | "collaboratorcommitter";
-const CreateCurrentUserRepoRequestTrustModel = S.String;
-
 export interface CreateCurrentUserRepoRequest {
   /** Whether the repository should be auto-initialized? */
   auto_init?: boolean;
@@ -423,11 +364,6 @@ export interface CreateCurrentUserRepoRequest {
   /** TrustModel of the repository */
   trust_model?: CreateCurrentUserRepoRequestTrustModel | (string & {});
 }
-const CreateCurrentUserRepoRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateCurrentUserRepoRequest>;
-
 export interface CreateForkRequest {
   /** owner of the repo to fork */
   owner: string;
@@ -438,11 +374,7 @@ export interface CreateForkRequest {
   /** organization name, if forking into an organization */
   organization?: string;
 }
-const CreateForkRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateForkRequest>;
-
 export interface CreateForkResponse {}
-const CreateForkResponse = AcceptRepoTransferResponse as any as S.Schema<CreateForkResponse>;
-
 export interface CreateRepoVariableRequest {
   /** name of the owner */
   owner: string;
@@ -453,15 +385,7 @@ export interface CreateRepoVariableRequest {
   /** Value of the variable to create. Special characters will be retained. Line endings will be normalized to LF to match the behaviour of browsers. Encode the data with Base64 if line endings should be retained. */
   value: string;
 }
-const CreateRepoVariableRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateRepoVariableRequest>;
-
 export interface CreateRepoVariableResponse {}
-const CreateRepoVariableResponse =
-  AcceptRepoTransferResponse as any as S.Schema<CreateRepoVariableResponse>;
-
 export interface DeleteActionArtifactRequest {
   /** owner of the repo */
   owner: string;
@@ -470,15 +394,7 @@ export interface DeleteActionArtifactRequest {
   /** ID of the artifact */
   artifact_id: number;
 }
-const DeleteActionArtifactRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteActionArtifactRequest>;
-
 export interface DeleteActionArtifactResponse {}
-const DeleteActionArtifactResponse =
-  AcceptRepoTransferResponse as any as S.Schema<DeleteActionArtifactResponse>;
-
 export interface DeleteActionRunRequest {
   /** owner of the repo */
   owner: string;
@@ -487,26 +403,14 @@ export interface DeleteActionRunRequest {
   /** id of the action run */
   run_id: number;
 }
-const DeleteActionRunRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DeleteActionRunRequest>;
-
 export interface DeleteActionRunResponse {}
-const DeleteActionRunResponse =
-  AcceptRepoTransferResponse as any as S.Schema<DeleteActionRunResponse>;
-
 export interface DeleteRepoRequest {
   /** owner of the repo to delete */
   owner: string;
   /** name of the repo to delete */
   repo: string;
 }
-const DeleteRepoRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DeleteRepoRequest>;
-
 export interface DeleteRepoResponse {}
-const DeleteRepoResponse = AcceptRepoTransferResponse as any as S.Schema<DeleteRepoResponse>;
-
 export interface DeleteRepoRunnerRequest {
   /** owner of the repo */
   owner: string;
@@ -515,15 +419,7 @@ export interface DeleteRepoRunnerRequest {
   /** ID of the runner */
   runner_id: string;
 }
-const DeleteRepoRunnerRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteRepoRunnerRequest>;
-
 export interface DeleteRepoRunnerResponse {}
-const DeleteRepoRunnerResponse =
-  AcceptRepoTransferResponse as any as S.Schema<DeleteRepoRunnerResponse>;
-
 export interface DeleteRepoSecretRequest {
   /** owner of the repository */
   owner: string;
@@ -532,15 +428,7 @@ export interface DeleteRepoSecretRequest {
   /** name of the secret */
   secretname: string;
 }
-const DeleteRepoSecretRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeleteRepoSecretRequest>;
-
 export interface DeleteRepoSecretResponse {}
-const DeleteRepoSecretResponse =
-  AcceptRepoTransferResponse as any as S.Schema<DeleteRepoSecretResponse>;
-
 export interface DeleteRepoVariableRequest {
   /** name of the owner */
   owner: string;
@@ -549,20 +437,9 @@ export interface DeleteRepoVariableRequest {
   /** name of the variable */
   variablename: string;
 }
-const DeleteRepoVariableRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteRepoVariableRequest>;
-
 export interface DeleteRepoVariableResponse {}
-const DeleteRepoVariableResponse =
-  AcceptRepoTransferResponse as any as S.Schema<DeleteRepoVariableResponse>;
-
 /** Input keys and values configured in the workflow file. */
 export type DispatchWorkflowRequestInputsMap = { [key: string]: string | undefined };
-const DispatchWorkflowRequestInputsMap =
-  TeamUnitsMapMap as any as S.Schema<DispatchWorkflowRequestInputsMap>;
-
 export interface DispatchWorkflowRequest {
   /** owner of the repo */
   owner: string;
@@ -577,16 +454,8 @@ export interface DispatchWorkflowRequest {
   /** Flag to return the run info */
   return_run_info?: boolean;
 }
-const DispatchWorkflowRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DispatchWorkflowRequest>;
-
 /** the jobs name */
 export type DispatchWorkflowRunJobsList = Array<string>;
-const DispatchWorkflowRunJobsList =
-  RepositoryTopicsList as any as S.Schema<DispatchWorkflowRunJobsList>;
-
 /** DispatchWorkflowRun represents a workflow run */
 export interface DispatchWorkflowRun {
   /** the workflow run id */
@@ -596,8 +465,6 @@ export interface DispatchWorkflowRun {
   /** a unique number for each run of a repository */
   run_number?: number;
 }
-const DispatchWorkflowRun = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DispatchWorkflowRun>;
-
 export interface DownloadActionArtifactRequest {
   /** owner of the repo */
   owner: string;
@@ -606,15 +473,7 @@ export interface DownloadActionArtifactRequest {
   /** ID of the artifact */
   artifact_id: number;
 }
-const DownloadActionArtifactRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DownloadActionArtifactRequest>;
-
 export interface DownloadActionArtifactResponse {}
-const DownloadActionArtifactResponse =
-  AcceptRepoTransferResponse as any as S.Schema<DownloadActionArtifactResponse>;
-
 export interface EditRepoRequest {
   /** owner of the repo to edit */
   owner: string;
@@ -686,8 +545,6 @@ export interface EditRepoRequest {
   /** sets the branch used for this repository's wiki. */
   wiki_branch?: string;
 }
-const EditRepoRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<EditRepoRequest>;
-
 export interface GenerateRepoRequest {
   /** name of the template repository owner */
   template_owner: string;
@@ -718,8 +575,6 @@ export interface GenerateRepoRequest {
   /** include webhooks in template repo */
   webhooks?: boolean;
 }
-const GenerateRepoRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GenerateRepoRequest>;
-
 export interface GetActionArtifactRequest {
   /** owner of the repo */
   owner: string;
@@ -728,11 +583,6 @@ export interface GetActionArtifactRequest {
   /** ID of the artifact */
   artifact_id: number;
 }
-const GetActionArtifactRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetActionArtifactRequest>;
-
 /** ActionArtifact represents an artifact of a workflow run */
 export interface ActionArtifact {
   /** the URL to download the artifact zip archive */
@@ -751,8 +601,6 @@ export interface ActionArtifact {
   size_in_bytes?: number;
   updated_at?: string;
 }
-const ActionArtifact = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ActionArtifact>;
-
 export interface GetAnnotatedTagRequest {
   /** owner of the repo */
   owner: string;
@@ -761,36 +609,22 @@ export interface GetAnnotatedTagRequest {
   /** sha of the tag. The Git tags API only supports annotated tag objects, not lightweight tags. */
   sha: string;
 }
-const GetAnnotatedTagRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetAnnotatedTagRequest>;
-
 /** TagArchiveDownloadCount counts how many times a archive was downloaded */
 export interface TagArchiveDownloadCount {
   tar_gz?: number;
   zip?: number;
 }
-const TagArchiveDownloadCount = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<TagArchiveDownloadCount>;
-
 /** AnnotatedTagObject contains meta information of the tag object */
 export interface AnnotatedTagObject {
   sha?: string;
   type?: string;
   url?: string;
 }
-const AnnotatedTagObject = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<AnnotatedTagObject>;
-
 export interface CommitUser {
   date?: string;
   email?: string;
   name?: string;
 }
-const CommitUser = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<CommitUser>;
-
 /** PayloadUser represents the author or committer of a commit */
 export interface PayloadUser {
   email?: string;
@@ -798,8 +632,6 @@ export interface PayloadUser {
   name?: string;
   username?: string;
 }
-const PayloadUser = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<PayloadUser>;
-
 /** PayloadCommitVerification represents the GPG verification of a commit */
 export interface PayloadCommitVerification {
   payload?: string;
@@ -808,11 +640,6 @@ export interface PayloadCommitVerification {
   signer?: PayloadUser;
   verified?: boolean;
 }
-const PayloadCommitVerification = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<PayloadCommitVerification>;
-
 /** AnnotatedTag represents an annotated tag */
 export interface AnnotatedTag {
   archive_download_count?: TagArchiveDownloadCount;
@@ -824,8 +651,6 @@ export interface AnnotatedTag {
   url?: string;
   verification?: PayloadCommitVerification;
 }
-const AnnotatedTag = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<AnnotatedTag>;
-
 export interface GetBlobRequest {
   /** owner of the repo */
   owner: string;
@@ -834,8 +659,6 @@ export interface GetBlobRequest {
   /** sha of the blob to retrieve */
   sha: string;
 }
-const GetBlobRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GetBlobRequest>;
-
 /** GitBlob represents a git blob */
 export interface GitBlob {
   content?: string;
@@ -844,8 +667,6 @@ export interface GitBlob {
   size?: number;
   url?: string;
 }
-const GitBlob = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GitBlob>;
-
 export interface GetBlobsRequest {
   /** owner of the repo */
   owner: string;
@@ -854,25 +675,14 @@ export interface GetBlobsRequest {
   /** a comma separated list of blob-sha (mind the overall URL-length limit of ~2,083 chars) */
   shas: string;
 }
-const GetBlobsRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GetBlobsRequest>;
-
 export type GetBlobsResponseBodyList = Array<GitBlob>;
-const GetBlobsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetBlobsResponseBodyList>;
-
 export type GetBlobsResponse = GetBlobsResponseBodyList;
-const GetBlobsResponse = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<GetBlobsResponse>;
-
 export interface GetRepoRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const GetRepoRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<GetRepoRequest>;
-
 export interface GetRepoPermissionsRequest {
   /** owner of the repo */
   owner: string;
@@ -881,22 +691,12 @@ export interface GetRepoPermissionsRequest {
   /** username of the collaborator */
   collaborator: string;
 }
-const GetRepoPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetRepoPermissionsRequest>;
-
 /** RepoCollaboratorPermission to get repository permission for a collaborator */
 export interface RepoCollaboratorPermission {
   permission?: string;
   role_name?: string;
   user?: User;
 }
-const RepoCollaboratorPermission = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<RepoCollaboratorPermission>;
-
 export interface GetRepoRunnerRequest {
   /** owner of the repo */
   owner: string;
@@ -905,16 +705,10 @@ export interface GetRepoRunnerRequest {
   /** ID of the runner */
   runner_id: string;
 }
-const GetRepoRunnerRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<GetRepoRunnerRequest>;
-
 /** Labels is a list of labels attached to this runner. */
 export type ActionRunnerLabelsList = Array<string>;
-const ActionRunnerLabelsList = RepositoryTopicsList as any as S.Schema<ActionRunnerLabelsList>;
-
 /** Status indicates whether this runner is offline, or active, for example. */
 export type ActionRunnerStatus = "offline" | "idle" | "active";
-const ActionRunnerStatus = S.String;
-
 /** ActionRunner represents a runner */
 export interface ActionRunner {
   /** Description provides optional details about this runner. */
@@ -938,8 +732,6 @@ export interface ActionRunner {
   /** Version is the self-reported version string of Forgejo Runner. */
   version?: string;
 }
-const ActionRunner = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ActionRunner>;
-
 export interface GetRepoRunnersRequest {
   /** owner of the repo */
   owner: string;
@@ -952,23 +744,8 @@ export interface GetRepoRunnersRequest {
   /** page size of results */
   limit?: number;
 }
-const GetRepoRunnersRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetRepoRunnersRequest>;
-
 export type GetRepoRunnersResponseBodyList = Array<ActionRunner>;
-const GetRepoRunnersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetRepoRunnersResponseBodyList>;
-
 export type GetRepoRunnersResponse = GetRepoRunnersResponseBodyList;
-const GetRepoRunnersResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetRepoRunnersResponse>;
-
 export interface GetRepoVariableRequest {
   /** name of the owner */
   owner: string;
@@ -977,11 +754,6 @@ export interface GetRepoVariableRequest {
   /** name of the variable */
   variablename: string;
 }
-const GetRepoVariableRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetRepoVariableRequest>;
-
 /** ActionVariable return value of the query API */
 export interface ActionVariable {
   /** the value of the variable */
@@ -993,8 +765,6 @@ export interface ActionVariable {
   /** the repository to which the variable belongs */
   repo_id?: number;
 }
-const ActionVariable = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ActionVariable>;
-
 export interface GetRepoVariablesListRequest {
   /** name of the owner */
   owner: string;
@@ -1005,23 +775,8 @@ export interface GetRepoVariablesListRequest {
   /** page size of results */
   limit?: number;
 }
-const GetRepoVariablesListRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetRepoVariablesListRequest>;
-
 export type GetRepoVariablesListResponseBodyList = Array<ActionVariable>;
-const GetRepoVariablesListResponseBodyList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetRepoVariablesListResponseBodyList>;
-
 export type GetRepoVariablesListResponse = GetRepoVariablesListResponseBodyList;
-const GetRepoVariablesListResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetRepoVariablesListResponse>;
-
 export interface GetTreeRequest {
   /** owner of the repo */
   owner: string;
@@ -1036,8 +791,6 @@ export interface GetTreeRequest {
   /** number of items per page */
   per_page?: number;
 }
-const GetTreeRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<GetTreeRequest>;
-
 /** GitEntry represents a git tree */
 export interface GitEntry {
   mode?: string;
@@ -1047,14 +800,7 @@ export interface GitEntry {
   type?: string;
   url?: string;
 }
-const GitEntry = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GitEntry>;
-
 export type GitTreeResponseTreeList = Array<GitEntry>;
-const GitTreeResponseTreeList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GitTreeResponseTreeList>;
-
 /** GitTreeResponse returns a git tree */
 export interface GitTreeResponse {
   page?: number;
@@ -1064,8 +810,6 @@ export interface GitTreeResponse {
   truncated?: boolean;
   url?: string;
 }
-const GitTreeResponse = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<GitTreeResponse>;
-
 export interface ListActionArtifactsRequest {
   /** owner of the repo */
   owner: string;
@@ -1078,23 +822,8 @@ export interface ListActionArtifactsRequest {
   /** page size of results, default maximum page size is 50 */
   limit?: number;
 }
-const ListActionArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListActionArtifactsRequest>;
-
 export type ListActionArtifactsResponseBodyList = Array<ActionArtifact>;
-const ListActionArtifactsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ListActionArtifactsResponseBodyList>;
-
 export type ListActionArtifactsResponse = ListActionArtifactsResponseBodyList;
-const ListActionArtifactsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListActionArtifactsResponse>;
-
 export interface ListActionRunArtifactsRequest {
   /** owner of the repo */
   owner: string;
@@ -1109,16 +838,8 @@ export interface ListActionRunArtifactsRequest {
   /** page size of results, default maximum page size is 50 */
   limit?: number;
 }
-const ListActionRunArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListActionRunArtifactsRequest>;
-
 export type ListActionRunArtifactsResponseBodyList = Array<ActionArtifact>;
 export type ListActionRunArtifactsResponse = ListActionRunArtifactsResponseBodyList;
-const ListActionRunArtifactsResponse =
-  ListActionArtifactsResponse as any as S.Schema<ListActionRunArtifactsResponse>;
-
 export interface ListActionRunJobsRequest {
   /** owner of the repo */
   owner: string;
@@ -1127,19 +848,10 @@ export interface ListActionRunJobsRequest {
   /** ID of the workflow run */
   run_id: number;
 }
-const ListActionRunJobsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListActionRunJobsRequest>;
-
 /** the action run job needed ids */
 export type ActionRunJobNeedsList = Array<string>;
-const ActionRunJobNeedsList = RepositoryTopicsList as any as S.Schema<ActionRunJobNeedsList>;
-
 /** the action run job labels to run on */
 export type ActionRunJobRunsOnList = Array<string>;
-const ActionRunJobRunsOnList = RepositoryTopicsList as any as S.Schema<ActionRunJobRunsOnList>;
-
 /** ActionRunJob represents a job of a run */
 export interface ActionRunJob {
   /** How many times the job has been attempted including the current attempt. */
@@ -1165,24 +877,9 @@ export interface ActionRunJob {
   /** the action run job latest task id */
   task_id?: number;
 }
-const ActionRunJob = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ActionRunJob>;
-
 export type ListActionRunJobsResponseBodyList = Array<ActionRunJob>;
-const ListActionRunJobsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListActionRunJobsResponseBodyList>;
-
 export type ListActionRunJobsResponse = ListActionRunJobsResponseBodyList;
-const ListActionRunJobsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListActionRunJobsResponse>;
-
 export type ListActionRunsRequestEventList = Array<string>;
-const ListActionRunsRequestEventList =
-  RepositoryTopicsList as any as S.Schema<ListActionRunsRequestEventList>;
-
 export type ListActionRunsRequestStatusItem =
   | "unknown"
   | "waiting"
@@ -1192,16 +889,9 @@ export type ListActionRunsRequestStatusItem =
   | "cancelled"
   | "skipped"
   | "blocked";
-const ListActionRunsRequestStatusItem = S.String;
-
 export type ListActionRunsRequestStatusList = Array<
   ListActionRunsRequestStatusItem | (string & {})
 >;
-const ListActionRunsRequestStatusList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListActionRunsRequestStatusList>;
-
 export interface ListActionRunsRequest {
   /** owner of the repo */
   owner: string;
@@ -1224,27 +914,12 @@ export interface ListActionRunsRequest {
   /** Only return workflow runs that involve the given workflow ID. */
   workflow_id?: string;
 }
-const ListActionRunsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ListActionRunsRequest>;
-
 export type ListActionRunResponseWorkflowRunsList = Array<ActionRun>;
-const ListActionRunResponseWorkflowRunsList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListActionRunResponseWorkflowRunsList>;
-
 /** ListActionRunResponse return a list of ActionRun */
 export interface ListActionRunResponse {
   total_count?: number;
   workflow_runs?: ListActionRunResponseWorkflowRunsList;
 }
-const ListActionRunResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListActionRunResponse>;
-
 export type ListActionTasksRequestStatusItem =
   | "unknown"
   | "waiting"
@@ -1257,9 +932,6 @@ export type ListActionTasksRequestStatusItem =
 export type ListActionTasksRequestStatusList = Array<
   ListActionTasksRequestStatusItem | (string & {})
 >;
-const ListActionTasksRequestStatusList =
-  ListActionRunsRequestStatusList as any as S.Schema<ListActionTasksRequestStatusList>;
-
 export interface ListActionTasksRequest {
   /** owner of the repo */
   owner: string;
@@ -1272,11 +944,6 @@ export interface ListActionTasksRequest {
   /** Returns workflow tasks with the check run status or conclusion that is specified. For example, a conclusion can be success or a status can be in_progress. */
   status?: ListActionTasksRequestStatusList;
 }
-const ListActionTasksRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListActionTasksRequest>;
-
 /** ActionTask represents a ActionTask */
 export interface ActionTask {
   created_at?: string;
@@ -1293,21 +960,12 @@ export interface ActionTask {
   url?: string;
   workflow_id?: string;
 }
-const ActionTask = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ActionTask>;
-
 export type ActionTaskResponseWorkflowRunsList = Array<ActionTask>;
-const ActionTaskResponseWorkflowRunsList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ActionTaskResponseWorkflowRunsList>;
-
 /** ActionTaskResponse returns a ActionTask */
 export interface ActionTaskResponse {
   total_count?: number;
   workflow_runs?: ActionTaskResponseWorkflowRunsList;
 }
-const ActionTaskResponse = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ActionTaskResponse>;
-
 export interface ListForksRequest {
   /** owner of the repo */
   owner: string;
@@ -1318,17 +976,8 @@ export interface ListForksRequest {
   /** page size of results */
   limit?: number;
 }
-const ListForksRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ListForksRequest>;
-
 export type ListForksResponseBodyList = Array<Repository>;
-const ListForksResponseBodyList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ListForksResponseBodyList>;
-
 export type ListForksResponse = ListForksResponseBodyList;
-const ListForksResponse = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<ListForksResponse>;
-
 export type MigrateRepoRequestService =
   | "git"
   | "github"
@@ -1340,8 +989,6 @@ export type MigrateRepoRequestService =
   | "codebase"
   | "forgejo"
   | "pagure";
-const MigrateRepoRequestService = S.String;
-
 export interface MigrateRepoRequest {
   auth_password?: string | Redacted.Redacted<string>;
   auth_token?: string;
@@ -1366,8 +1013,6 @@ export interface MigrateRepoRequest {
   uid?: number;
   wiki?: boolean;
 }
-const MigrateRepoRequest = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<MigrateRepoRequest>;
-
 export interface RegisterRepoRunnerRequest {
   /** owner of the repo */
   owner: string;
@@ -1380,35 +1025,18 @@ export interface RegisterRepoRunnerRequest {
   /** Name of the runner to register. The name of the runner does not have to be unique. */
   name: string;
 }
-const RegisterRepoRunnerRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<RegisterRepoRunnerRequest>;
-
 export interface RegisterRunnerResponse {
   id?: number;
   token?: string;
   uuid?: string;
 }
-const RegisterRunnerResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<RegisterRunnerResponse>;
-
 export interface RejectRepoTransferRequest {
   /** owner of the repo to transfer */
   owner: string;
   /** name of the repo to transfer */
   repo: string;
 }
-const RejectRepoTransferRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<RejectRepoTransferRequest>;
-
 export type RepoAddCollaboratorRequestPermission = "read" | "write" | "admin";
-const RepoAddCollaboratorRequestPermission = S.String;
-
 export interface RepoAddCollaboratorRequest {
   /** owner of the repo */
   owner: string;
@@ -1418,15 +1046,7 @@ export interface RepoAddCollaboratorRequest {
   collaborator: string;
   permission?: RepoAddCollaboratorRequestPermission | (string & {});
 }
-const RepoAddCollaboratorRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<RepoAddCollaboratorRequest>;
-
 export interface RepoAddCollaboratorResponse {}
-const RepoAddCollaboratorResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoAddCollaboratorResponse>;
-
 export interface RepoAddFlagRequest {
   /** owner of the repo */
   owner: string;
@@ -1435,11 +1055,7 @@ export interface RepoAddFlagRequest {
   /** name of the flag */
   flag: string;
 }
-const RepoAddFlagRequest = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<RepoAddFlagRequest>;
-
 export interface RepoAddFlagResponse {}
-const RepoAddFlagResponse = AcceptRepoTransferResponse as any as S.Schema<RepoAddFlagResponse>;
-
 export interface RepoAddPushMirrorRequest {
   /** owner of the repo */
   owner: string;
@@ -1453,11 +1069,6 @@ export interface RepoAddPushMirrorRequest {
   sync_on_commit?: boolean;
   use_ssh?: boolean;
 }
-const RepoAddPushMirrorRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<RepoAddPushMirrorRequest>;
-
 /** PushMirror represents information of a push mirror */
 export interface PushMirror {
   branch_filter?: string;
@@ -1471,8 +1082,6 @@ export interface PushMirror {
   repo_name?: string;
   sync_on_commit?: boolean;
 }
-const PushMirror = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<PushMirror>;
-
 export interface RepoAddTeamRequest {
   /** owner of the repo */
   owner: string;
@@ -1481,11 +1090,7 @@ export interface RepoAddTeamRequest {
   /** team name */
   team: string;
 }
-const RepoAddTeamRequest = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<RepoAddTeamRequest>;
-
 export interface RepoAddTeamResponse {}
-const RepoAddTeamResponse = AcceptRepoTransferResponse as any as S.Schema<RepoAddTeamResponse>;
-
 export interface RepoAddTopicRequest {
   /** owner of the repo */
   owner: string;
@@ -1494,25 +1099,17 @@ export interface RepoAddTopicRequest {
   /** name of the topic to add */
   topic: string;
 }
-const RepoAddTopicRequest = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<RepoAddTopicRequest>;
-
 export interface RepoAddTopicResponse {}
-const RepoAddTopicResponse = AcceptRepoTransferResponse as any as S.Schema<RepoAddTopicResponse>;
-
 /** Identity for a person's identity like an author or committer */
 export interface Identity {
   email?: string;
   name?: string;
 }
-const Identity = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<Identity>;
-
 /** CommitDateOptions store dates for GIT_AUTHOR_DATE and GIT_COMMITTER_DATE */
 export interface CommitDateOptions {
   author?: string;
   committer?: string;
 }
-const CommitDateOptions = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<CommitDateOptions>;
-
 export interface RepoApplyDiffPatchRequest {
   /** owner of the repo */
   owner: string;
@@ -1538,24 +1135,12 @@ export interface RepoApplyDiffPatchRequest {
   /** Add a Signed-off-by trailer by the committer at the end of the commit log message. */
   signoff?: boolean;
 }
-const RepoApplyDiffPatchRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<RepoApplyDiffPatchRequest>;
-
 export interface CommitMeta {
   created?: string;
   sha?: string;
   url?: string;
 }
-const CommitMeta = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<CommitMeta>;
-
 export type FileCommitResponseParentsList = Array<CommitMeta>;
-const FileCommitResponseParentsList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<FileCommitResponseParentsList>;
-
 export interface FileCommitResponse {
   author?: CommitUser;
   committer?: CommitUser;
@@ -1567,16 +1152,12 @@ export interface FileCommitResponse {
   tree?: CommitMeta;
   url?: string;
 }
-const FileCommitResponse = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<FileCommitResponse>;
-
 /** FileLinksResponse contains the links for a repo's file */
 export interface FileLinksResponse {
   git?: string;
   html?: string;
   self?: string;
 }
-const FileLinksResponse = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<FileLinksResponse>;
-
 /** ContentsResponse contains information about a repo's entry's (dir, file, symlink, submodule) metadata and content */
 export interface ContentsResponse {
   _links?: FileLinksResponse;
@@ -1601,16 +1182,12 @@ export interface ContentsResponse {
   type?: string;
   url?: string;
 }
-const ContentsResponse = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<ContentsResponse>;
-
 /** FileResponse contains information about a repo's file */
 export interface FileResponse {
   commit?: FileCommitResponse;
   content?: ContentsResponse;
   verification?: PayloadCommitVerification;
 }
-const FileResponse = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<FileResponse>;
-
 export interface RepoCancelScheduledAutoMergeRequest {
   /** owner of the repo */
   owner: string;
@@ -1619,21 +1196,9 @@ export interface RepoCancelScheduledAutoMergeRequest {
   /** index of the pull request to merge */
   index: number;
 }
-const RepoCancelScheduledAutoMergeRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<RepoCancelScheduledAutoMergeRequest>;
-
 export interface RepoCancelScheduledAutoMergeResponse {}
-const RepoCancelScheduledAutoMergeResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<RepoCancelScheduledAutoMergeResponse>;
-
 /** indicates what to do with the file */
 export type ChangeFileOperationOperation = "create" | "update" | "delete";
-const ChangeFileOperationOperation = S.String;
-
 /** ChangeFileOperation for creating, updating or deleting a file */
 export interface ChangeFileOperation {
   /** new or updated file content, must be base64 encoded */
@@ -1647,15 +1212,8 @@ export interface ChangeFileOperation {
   /** sha is the SHA for the file that already exists, required for update or delete */
   sha?: string;
 }
-const ChangeFileOperation = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<ChangeFileOperation>;
-
 /** list of file operations */
 export type RepoChangeFilesRequestFilesList = Array<ChangeFileOperation>;
-const RepoChangeFilesRequestFilesList = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<RepoChangeFilesRequestFilesList>;
-
 export interface RepoChangeFilesRequest {
   /** owner of the repo */
   owner: string;
@@ -1677,25 +1235,13 @@ export interface RepoChangeFilesRequest {
   /** Add a Signed-off-by trailer by the committer at the end of the commit log message. */
   signoff?: boolean;
 }
-const RepoChangeFilesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<RepoChangeFilesRequest>;
-
 export type FilesResponseFilesList = Array<ContentsResponse>;
-const FilesResponseFilesList = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<FilesResponseFilesList>;
-
 /** FilesResponse contains information about multiple files from a repo */
 export interface FilesResponse {
   commit?: FileCommitResponse;
   files?: FilesResponseFilesList;
   verification?: PayloadCommitVerification;
 }
-const FilesResponse = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<FilesResponse>;
-
 export interface RepoCheckCollaboratorRequest {
   /** owner of the repo */
   owner: string;
@@ -1704,15 +1250,7 @@ export interface RepoCheckCollaboratorRequest {
   /** username of the collaborator */
   collaborator: string;
 }
-const RepoCheckCollaboratorRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<RepoCheckCollaboratorRequest>;
-
 export interface RepoCheckCollaboratorResponse {}
-const RepoCheckCollaboratorResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoCheckCollaboratorResponse>;
-
 export interface RepoCheckFlagRequest {
   /** owner of the repo */
   owner: string;
@@ -1721,14 +1259,7 @@ export interface RepoCheckFlagRequest {
   /** name of the flag */
   flag: string;
 }
-const RepoCheckFlagRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<RepoCheckFlagRequest>;
-
 export interface RepoCheckFlagResponse {}
-const RepoCheckFlagResponse = AcceptRepoTransferResponse as any as S.Schema<RepoCheckFlagResponse>;
-
 export interface RepoCheckTeamRequest {
   /** owner of the repo */
   owner: string;
@@ -1737,11 +1268,6 @@ export interface RepoCheckTeamRequest {
   /** team name */
   team: string;
 }
-const RepoCheckTeamRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<RepoCheckTeamRequest>;
-
 export interface RepoCompareDiffRequest {
   /** owner of the repo */
   owner: string;
@@ -1750,11 +1276,6 @@ export interface RepoCompareDiffRequest {
   /** compare two branches or commits */
   basehead: string;
 }
-const RepoCompareDiffRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<RepoCompareDiffRequest>;
-
 export interface RepoCommit {
   author?: CommitUser;
   committer?: CommitUser;
@@ -1763,29 +1284,19 @@ export interface RepoCommit {
   url?: string;
   verification?: PayloadCommitVerification;
 }
-const RepoCommit = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<RepoCommit>;
-
 /** CommitAffectedFiles store information about files affected by the commit */
 export interface CommitAffectedFiles {
   filename?: string;
   status?: string;
 }
-const CommitAffectedFiles = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<CommitAffectedFiles>;
-
 export type CommitFilesList = Array<CommitAffectedFiles>;
-const CommitFilesList = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<CommitFilesList>;
-
 export type CommitParentsList = Array<CommitMeta>;
-const CommitParentsList = FileCommitResponseParentsList as any as S.Schema<CommitParentsList>;
-
 /** CommitStats is statistics for a RepoCommit */
 export interface CommitStats {
   additions?: number;
   deletions?: number;
   total?: number;
 }
-const CommitStats = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<CommitStats>;
-
 export interface Commit {
   author?: User;
   commit?: RepoCommit;
@@ -1798,21 +1309,13 @@ export interface Commit {
   stats?: CommitStats;
   url?: string;
 }
-const Commit = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<Commit>;
-
 export type CompareCommitsList = Array<Commit>;
-const CompareCommitsList = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<CompareCommitsList>;
-
 export type CompareFilesList = Array<CommitAffectedFiles>;
-const CompareFilesList = CommitFilesList as any as S.Schema<CompareFilesList>;
-
 export interface Compare {
   commits?: CompareCommitsList;
   files?: CompareFilesList;
   total_commits?: number;
 }
-const Compare = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<Compare>;
-
 export interface RepoCreateBranchRequest {
   /** owner of the repo */
   owner: string;
@@ -1825,21 +1328,9 @@ export interface RepoCreateBranchRequest {
   /** Name of the old branch/tag/commit to create from */
   old_ref_name?: string;
 }
-const RepoCreateBranchRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<RepoCreateBranchRequest>;
-
 export type PayloadCommitAddedList = Array<string>;
-const PayloadCommitAddedList = RepositoryTopicsList as any as S.Schema<PayloadCommitAddedList>;
-
 export type PayloadCommitModifiedList = Array<string>;
-const PayloadCommitModifiedList =
-  RepositoryTopicsList as any as S.Schema<PayloadCommitModifiedList>;
-
 export type PayloadCommitRemovedList = Array<string>;
-const PayloadCommitRemovedList = RepositoryTopicsList as any as S.Schema<PayloadCommitRemovedList>;
-
 /** PayloadCommit represents a commit */
 export interface PayloadCommit {
   added?: PayloadCommitAddedList;
@@ -1854,12 +1345,7 @@ export interface PayloadCommit {
   url?: string;
   verification?: PayloadCommitVerification;
 }
-const PayloadCommit = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<PayloadCommit>;
-
 export type BranchStatusCheckContextsList = Array<string>;
-const BranchStatusCheckContextsList =
-  RepositoryTopicsList as any as S.Schema<BranchStatusCheckContextsList>;
-
 /** Branch represents a repository branch */
 export interface Branch {
   commit?: PayloadCommit;
@@ -1872,38 +1358,13 @@ export interface Branch {
   user_can_merge?: boolean;
   user_can_push?: boolean;
 }
-const Branch = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<Branch>;
-
 export type RepoCreateBranchProtectionRequestApprovalsWhitelistTeamsList = Array<string>;
-const RepoCreateBranchProtectionRequestApprovalsWhitelistTeamsList =
-  RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestApprovalsWhitelistTeamsList>;
-
 export type RepoCreateBranchProtectionRequestApprovalsWhitelistUsernameList = Array<string>;
-const RepoCreateBranchProtectionRequestApprovalsWhitelistUsernameList = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<RepoCreateBranchProtectionRequestApprovalsWhitelistUsernameList>;
-
 export type RepoCreateBranchProtectionRequestMergeWhitelistTeamsList = Array<string>;
-const RepoCreateBranchProtectionRequestMergeWhitelistTeamsList =
-  RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestMergeWhitelistTeamsList>;
-
 export type RepoCreateBranchProtectionRequestMergeWhitelistUsernamesList = Array<string>;
-const RepoCreateBranchProtectionRequestMergeWhitelistUsernamesList =
-  RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestMergeWhitelistUsernamesList>;
-
 export type RepoCreateBranchProtectionRequestPushWhitelistTeamsList = Array<string>;
-const RepoCreateBranchProtectionRequestPushWhitelistTeamsList =
-  RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestPushWhitelistTeamsList>;
-
 export type RepoCreateBranchProtectionRequestPushWhitelistUsernamesList = Array<string>;
-const RepoCreateBranchProtectionRequestPushWhitelistUsernamesList =
-  RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestPushWhitelistUsernamesList>;
-
 export type RepoCreateBranchProtectionRequestStatusCheckContextsList = Array<string>;
-const RepoCreateBranchProtectionRequestStatusCheckContextsList =
-  RepositoryTopicsList as any as S.Schema<RepoCreateBranchProtectionRequestStatusCheckContextsList>;
-
 export interface RepoCreateBranchProtectionRequest {
   /** owner of the repo */
   owner: string;
@@ -1936,39 +1397,13 @@ export interface RepoCreateBranchProtectionRequest {
   status_check_contexts?: RepoCreateBranchProtectionRequestStatusCheckContextsList;
   unprotected_file_patterns?: string;
 }
-const RepoCreateBranchProtectionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<RepoCreateBranchProtectionRequest>;
-
 export type BranchProtectionApprovalsWhitelistTeamsList = Array<string>;
-const BranchProtectionApprovalsWhitelistTeamsList =
-  RepositoryTopicsList as any as S.Schema<BranchProtectionApprovalsWhitelistTeamsList>;
-
 export type BranchProtectionApprovalsWhitelistUsernameList = Array<string>;
-const BranchProtectionApprovalsWhitelistUsernameList =
-  RepositoryTopicsList as any as S.Schema<BranchProtectionApprovalsWhitelistUsernameList>;
-
 export type BranchProtectionMergeWhitelistTeamsList = Array<string>;
-const BranchProtectionMergeWhitelistTeamsList =
-  RepositoryTopicsList as any as S.Schema<BranchProtectionMergeWhitelistTeamsList>;
-
 export type BranchProtectionMergeWhitelistUsernamesList = Array<string>;
-const BranchProtectionMergeWhitelistUsernamesList =
-  RepositoryTopicsList as any as S.Schema<BranchProtectionMergeWhitelistUsernamesList>;
-
 export type BranchProtectionPushWhitelistTeamsList = Array<string>;
-const BranchProtectionPushWhitelistTeamsList =
-  RepositoryTopicsList as any as S.Schema<BranchProtectionPushWhitelistTeamsList>;
-
 export type BranchProtectionPushWhitelistUsernamesList = Array<string>;
-const BranchProtectionPushWhitelistUsernamesList =
-  RepositoryTopicsList as any as S.Schema<BranchProtectionPushWhitelistUsernamesList>;
-
 export type BranchProtectionStatusCheckContextsList = Array<string>;
-const BranchProtectionStatusCheckContextsList =
-  RepositoryTopicsList as any as S.Schema<BranchProtectionStatusCheckContextsList>;
-
 /** BranchProtection represents a branch protection for a repository */
 export interface BranchProtection {
   apply_to_admins?: boolean;
@@ -2000,8 +1435,6 @@ export interface BranchProtection {
   unprotected_file_patterns?: string;
   updated_at: string;
 }
-const BranchProtection = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<BranchProtection>;
-
 export interface RepoCreateFileRequest {
   /** owner of the repo */
   owner: string;
@@ -2025,19 +1458,9 @@ export interface RepoCreateFileRequest {
   /** Add a Signed-off-by trailer by the committer at the end of the commit log message. */
   signoff?: boolean;
 }
-const RepoCreateFileRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<RepoCreateFileRequest>;
-
 /** CreateHookOptionConfig has all config options in it required are "content_type" and "url" Required */
 export type CreateHookOptionConfig = { [key: string]: string | undefined };
-const CreateHookOptionConfig = TeamUnitsMapMap as any as S.Schema<CreateHookOptionConfig>;
-
 export type RepoCreateHookRequestEventsList = Array<string>;
-const RepoCreateHookRequestEventsList =
-  RepositoryTopicsList as any as S.Schema<RepoCreateHookRequestEventsList>;
-
 export type RepoCreateHookRequestType =
   | "forgejo"
   | "dingtalk"
@@ -2050,8 +1473,6 @@ export type RepoCreateHookRequestType =
   | "feishu"
   | "wechatwork"
   | "packagist";
-const RepoCreateHookRequestType = S.String;
-
 export interface RepoCreateHookRequest {
   /** owner of the repo */
   owner: string;
@@ -2064,18 +1485,9 @@ export interface RepoCreateHookRequest {
   events?: RepoCreateHookRequestEventsList;
   type: RepoCreateHookRequestType | (string & {});
 }
-const RepoCreateHookRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<RepoCreateHookRequest>;
-
 /** Deprecated: use Metadata instead */
 export type HookConfigMap = { [key: string]: string | undefined };
-const HookConfigMap = TeamUnitsMapMap as any as S.Schema<HookConfigMap>;
-
 export type HookEventsList = Array<string>;
-const HookEventsList = TeamUnitsList as any as S.Schema<HookEventsList>;
-
 /** Hook a hook is a web hook when one repository changed */
 export interface Hook {
   active: boolean;
@@ -2092,8 +1504,6 @@ export interface Hook {
   updated_at: string;
   url: string;
 }
-const Hook = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<Hook>;
-
 export interface RepoCreateKeyRequest {
   /** owner of the repo */
   owner: string;
@@ -2106,11 +1516,6 @@ export interface RepoCreateKeyRequest {
   /** Title of the key to add */
   title: string;
 }
-const RepoCreateKeyRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<RepoCreateKeyRequest>;
-
 /** DeployKey a deploy key */
 export interface DeployKey {
   created_at?: string;
@@ -2123,18 +1528,8 @@ export interface DeployKey {
   title?: string;
   url?: string;
 }
-const DeployKey = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<DeployKey>;
-
 export type RepoCreatePullRequestRequestAssigneesList = Array<string>;
-const RepoCreatePullRequestRequestAssigneesList =
-  RepositoryTopicsList as any as S.Schema<RepoCreatePullRequestRequestAssigneesList>;
-
 export type RepoCreatePullRequestRequestLabelsList = Array<number>;
-const RepoCreatePullRequestRequestLabelsList = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<RepoCreatePullRequestRequestLabelsList>;
-
 export interface RepoCreatePullRequestRequest {
   /** owner of the repo */
   owner: string;
@@ -2150,17 +1545,7 @@ export interface RepoCreatePullRequestRequest {
   milestone?: number;
   title?: string;
 }
-const RepoCreatePullRequestRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<RepoCreatePullRequestRequest>;
-
 export type PullRequestAssigneesList = Array<User>;
-const PullRequestAssigneesList = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<PullRequestAssigneesList>;
-
 /** PRBranchInfo information about a branch */
 export interface PRBranchInfo {
   label?: string;
@@ -2169,8 +1554,6 @@ export interface PRBranchInfo {
   repo_id?: number;
   sha?: string;
 }
-const PRBranchInfo = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<PRBranchInfo>;
-
 /** Label a label to an issue or a pr */
 export interface Label {
   color: string;
@@ -2181,14 +1564,7 @@ export interface Label {
   name: string;
   url?: string;
 }
-const Label = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<Label>;
-
 export type PullRequestLabelsList = Array<Label>;
-const PullRequestLabelsList = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<PullRequestLabelsList>;
-
 /** Milestone milestone is a collection of issues on one repository */
 export interface Milestone {
   closed_at?: string;
@@ -2202,16 +1578,8 @@ export interface Milestone {
   title?: string;
   updated_at?: string;
 }
-const Milestone = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<Milestone>;
-
 export type PullRequestRequestedReviewersList = Array<User>;
-const PullRequestRequestedReviewersList =
-  PullRequestAssigneesList as any as S.Schema<PullRequestRequestedReviewersList>;
-
 export type PullRequestRequestedReviewersTeamsList = Array<Team>;
-const PullRequestRequestedReviewersTeamsList =
-  RepoTransferTeamsList as any as S.Schema<PullRequestRequestedReviewersTeamsList>;
-
 /** PullRequest represents a pull request */
 export interface PullRequest {
   additions?: number;
@@ -2254,8 +1622,6 @@ export interface PullRequest {
   url?: string;
   user?: User;
 }
-const PullRequest = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<PullRequest>;
-
 /** CreatePullReviewComment represent a review comment for creation api */
 export interface CreatePullReviewComment {
   body?: string;
@@ -2268,17 +1634,7 @@ export interface CreatePullReviewComment {
   /** the tree path */
   path?: string;
 }
-const CreatePullReviewComment = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<CreatePullReviewComment>;
-
 export type RepoCreatePullReviewRequestCommentsList = Array<CreatePullReviewComment>;
-const RepoCreatePullReviewRequestCommentsList = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<RepoCreatePullReviewRequestCommentsList>;
-
 export interface RepoCreatePullReviewRequest {
   /** owner of the repo */
   owner: string;
@@ -2291,11 +1647,6 @@ export interface RepoCreatePullReviewRequest {
   commit_id?: string;
   event?: string;
 }
-const RepoCreatePullReviewRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<RepoCreatePullReviewRequest>;
-
 /** PullReview represents a pull request review */
 export interface PullReview {
   body?: string;
@@ -2313,8 +1664,6 @@ export interface PullReview {
   updated_at?: string;
   user?: User;
 }
-const PullReview = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<PullReview>;
-
 export interface RepoCreatePullReviewCommentRequest {
   /** owner of the repo */
   owner: string;
@@ -2334,11 +1683,6 @@ export interface RepoCreatePullReviewCommentRequest {
   /** the tree path */
   path?: string;
 }
-const RepoCreatePullReviewCommentRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<RepoCreatePullReviewCommentRequest>;
-
 /** PullReviewComment represents a comment on a pull request review */
 export interface PullReviewComment {
   body?: string;
@@ -2359,16 +1703,8 @@ export interface PullReviewComment {
   updated_at?: string;
   user?: User;
 }
-const PullReviewComment = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<PullReviewComment>;
-
 export type RepoCreatePullReviewRequestsRequestReviewersList = Array<string>;
-const RepoCreatePullReviewRequestsRequestReviewersList =
-  RepositoryTopicsList as any as S.Schema<RepoCreatePullReviewRequestsRequestReviewersList>;
-
 export type RepoCreatePullReviewRequestsRequestTeamReviewersList = Array<string>;
-const RepoCreatePullReviewRequestsRequestTeamReviewersList =
-  RepositoryTopicsList as any as S.Schema<RepoCreatePullReviewRequestsRequestTeamReviewersList>;
-
 export interface RepoCreatePullReviewRequestsRequest {
   /** owner of the repo */
   owner: string;
@@ -2379,23 +1715,8 @@ export interface RepoCreatePullReviewRequestsRequest {
   reviewers?: RepoCreatePullReviewRequestsRequestReviewersList;
   team_reviewers?: RepoCreatePullReviewRequestsRequestTeamReviewersList;
 }
-const RepoCreatePullReviewRequestsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<RepoCreatePullReviewRequestsRequest>;
-
 export type RepoCreatePullReviewRequestsResponseBodyList = Array<PullReview>;
-const RepoCreatePullReviewRequestsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<RepoCreatePullReviewRequestsResponseBodyList>;
-
 export type RepoCreatePullReviewRequestsResponse = RepoCreatePullReviewRequestsResponseBodyList;
-const RepoCreatePullReviewRequestsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<RepoCreatePullReviewRequestsResponse>;
-
 export interface RepoCreateReleaseRequest {
   /** owner of the repo */
   owner: string;
@@ -2409,14 +1730,7 @@ export interface RepoCreateReleaseRequest {
   tag_name: string;
   target_commitish?: string;
 }
-const RepoCreateReleaseRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<RepoCreateReleaseRequest>;
-
 export type AttachmentType = "attachment" | "external";
-const AttachmentType = S.String;
-
 /** Attachment a generic attachment */
 export interface Attachment {
   browser_download_url?: string;
@@ -2428,11 +1742,7 @@ export interface Attachment {
   type?: AttachmentType;
   uuid?: string;
 }
-const Attachment = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<Attachment>;
-
 export type ReleaseAssetsList = Array<Attachment>;
-const ReleaseAssetsList = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<ReleaseAssetsList>;
-
 /** Release represents a repository release */
 export interface Release {
   archive_download_count?: TagArchiveDownloadCount;
@@ -2454,8 +1764,6 @@ export interface Release {
   url?: string;
   zipball_url?: string;
 }
-const Release = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<Release>;
-
 export interface RepoCreateReleaseAttachmentRequest {
   /** owner of the repo */
   owner: string;
@@ -2466,11 +1774,6 @@ export interface RepoCreateReleaseAttachmentRequest {
   /** name of the attachment */
   name?: string;
 }
-const RepoCreateReleaseAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<RepoCreateReleaseAttachmentRequest>;
-
 export interface RepoCreateStatusRequest {
   /** owner of the repo */
   owner: string;
@@ -2483,11 +1786,6 @@ export interface RepoCreateStatusRequest {
   state?: string;
   target_url?: string;
 }
-const RepoCreateStatusRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<RepoCreateStatusRequest>;
-
 /** CommitStatus holds a single status of a single Commit */
 export interface CommitStatus {
   context?: string;
@@ -2500,8 +1798,6 @@ export interface CommitStatus {
   updated_at?: string;
   url?: string;
 }
-const CommitStatus = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<CommitStatus>;
-
 export interface RepoCreateTagRequest {
   /** owner of the repo */
   owner: string;
@@ -2511,11 +1807,6 @@ export interface RepoCreateTagRequest {
   tag_name: string;
   target?: string;
 }
-const RepoCreateTagRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<RepoCreateTagRequest>;
-
 /** Tag represents a repository tag */
 export interface Tag {
   archive_download_count?: TagArchiveDownloadCount;
@@ -2526,16 +1817,8 @@ export interface Tag {
   tarball_url?: string;
   zipball_url?: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<Tag>;
-
 export type RepoCreateTagProtectionRequestWhitelistTeamsList = Array<string>;
-const RepoCreateTagProtectionRequestWhitelistTeamsList =
-  RepositoryTopicsList as any as S.Schema<RepoCreateTagProtectionRequestWhitelistTeamsList>;
-
 export type RepoCreateTagProtectionRequestWhitelistUsernamesList = Array<string>;
-const RepoCreateTagProtectionRequestWhitelistUsernamesList =
-  RepositoryTopicsList as any as S.Schema<RepoCreateTagProtectionRequestWhitelistUsernamesList>;
-
 export interface RepoCreateTagProtectionRequest {
   /** owner of the repo */
   owner: string;
@@ -2545,19 +1828,8 @@ export interface RepoCreateTagProtectionRequest {
   whitelist_teams?: RepoCreateTagProtectionRequestWhitelistTeamsList;
   whitelist_usernames?: RepoCreateTagProtectionRequestWhitelistUsernamesList;
 }
-const RepoCreateTagProtectionRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<RepoCreateTagProtectionRequest>;
-
 export type TagProtectionWhitelistTeamsList = Array<string>;
-const TagProtectionWhitelistTeamsList =
-  RepositoryTopicsList as any as S.Schema<TagProtectionWhitelistTeamsList>;
-
 export type TagProtectionWhitelistUsernamesList = Array<string>;
-const TagProtectionWhitelistUsernamesList =
-  RepositoryTopicsList as any as S.Schema<TagProtectionWhitelistUsernamesList>;
-
 /** TagProtection represents a tag protection */
 export interface TagProtection {
   created_at?: string;
@@ -2567,8 +1839,6 @@ export interface TagProtection {
   whitelist_teams?: TagProtectionWhitelistTeamsList;
   whitelist_usernames?: TagProtectionWhitelistUsernamesList;
 }
-const TagProtection = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<TagProtection>;
-
 export interface RepoCreateWikiPageRequest {
   /** owner of the repo */
   owner: string;
@@ -2581,11 +1851,6 @@ export interface RepoCreateWikiPageRequest {
   /** page title. leave empty to keep unchanged */
   title?: string;
 }
-const RepoCreateWikiPageRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<RepoCreateWikiPageRequest>;
-
 /** WikiCommit page commit/revision */
 export interface WikiCommit {
   author?: CommitUser;
@@ -2593,8 +1858,6 @@ export interface WikiCommit {
   message?: string;
   sha?: string;
 }
-const WikiCommit = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<WikiCommit>;
-
 /** WikiPage a wiki page */
 export interface WikiPage {
   commit_count?: number;
@@ -2607,38 +1870,20 @@ export interface WikiPage {
   sub_url?: string;
   title?: string;
 }
-const WikiPage = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<WikiPage>;
-
 export interface RepoDeleteAllFlagsRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoDeleteAllFlagsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<RepoDeleteAllFlagsRequest>;
-
 export interface RepoDeleteAllFlagsResponse {}
-const RepoDeleteAllFlagsResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteAllFlagsResponse>;
-
 export interface RepoDeleteAvatarRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoDeleteAvatarRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<RepoDeleteAvatarRequest>;
-
 export interface RepoDeleteAvatarResponse {}
-const RepoDeleteAvatarResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteAvatarResponse>;
-
 export interface RepoDeleteBranchRequest {
   /** owner of the repo */
   owner: string;
@@ -2647,15 +1892,7 @@ export interface RepoDeleteBranchRequest {
   /** branch to delete */
   branch: string;
 }
-const RepoDeleteBranchRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<RepoDeleteBranchRequest>;
-
 export interface RepoDeleteBranchResponse {}
-const RepoDeleteBranchResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteBranchResponse>;
-
 export interface RepoDeleteBranchProtectionRequest {
   /** owner of the repo */
   owner: string;
@@ -2664,15 +1901,7 @@ export interface RepoDeleteBranchProtectionRequest {
   /** name of protected branch */
   name: string;
 }
-const RepoDeleteBranchProtectionRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<RepoDeleteBranchProtectionRequest>;
-
 export interface RepoDeleteBranchProtectionResponse {}
-const RepoDeleteBranchProtectionResponse =
-  RepoCancelScheduledAutoMergeResponse as any as S.Schema<RepoDeleteBranchProtectionResponse>;
-
 export interface RepoDeleteCollaboratorRequest {
   /** owner of the repo */
   owner: string;
@@ -2681,15 +1910,7 @@ export interface RepoDeleteCollaboratorRequest {
   /** username of the collaborator to delete */
   collaborator: string;
 }
-const RepoDeleteCollaboratorRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<RepoDeleteCollaboratorRequest>;
-
 export interface RepoDeleteCollaboratorResponse {}
-const RepoDeleteCollaboratorResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteCollaboratorResponse>;
-
 export interface RepoDeleteFileRequest {
   /** owner of the repo */
   owner: string;
@@ -2713,19 +1934,12 @@ export interface RepoDeleteFileRequest {
   /** Add a Signed-off-by trailer by the committer at the end of the commit log message. */
   signoff?: boolean;
 }
-const RepoDeleteFileRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<RepoDeleteFileRequest>;
-
 /** FileDeleteResponse contains information about a repo's file that was deleted */
 export interface FileDeleteResponse {
   commit?: FileCommitResponse;
   content?: unknown;
   verification?: PayloadCommitVerification;
 }
-const FileDeleteResponse = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<FileDeleteResponse>;
-
 export interface RepoDeleteFlagRequest {
   /** owner of the repo */
   owner: string;
@@ -2734,15 +1948,7 @@ export interface RepoDeleteFlagRequest {
   /** name of the flag */
   flag: string;
 }
-const RepoDeleteFlagRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<RepoDeleteFlagRequest>;
-
 export interface RepoDeleteFlagResponse {}
-const RepoDeleteFlagResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteFlagResponse>;
-
 export interface RepoDeleteGitHookRequest {
   /** owner of the repo */
   owner: string;
@@ -2751,15 +1957,7 @@ export interface RepoDeleteGitHookRequest {
   /** id of the hook to get */
   id: string;
 }
-const RepoDeleteGitHookRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<RepoDeleteGitHookRequest>;
-
 export interface RepoDeleteGitHookResponse {}
-const RepoDeleteGitHookResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteGitHookResponse>;
-
 export interface RepoDeleteHookRequest {
   /** owner of the repo */
   owner: string;
@@ -2768,15 +1966,7 @@ export interface RepoDeleteHookRequest {
   /** id of the hook to delete */
   id: number;
 }
-const RepoDeleteHookRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<RepoDeleteHookRequest>;
-
 export interface RepoDeleteHookResponse {}
-const RepoDeleteHookResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteHookResponse>;
-
 export interface RepoDeleteKeyRequest {
   /** owner of the repo */
   owner: string;
@@ -2785,14 +1975,7 @@ export interface RepoDeleteKeyRequest {
   /** id of the key to delete */
   id: number;
 }
-const RepoDeleteKeyRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<RepoDeleteKeyRequest>;
-
 export interface RepoDeleteKeyResponse {}
-const RepoDeleteKeyResponse = AcceptRepoTransferResponse as any as S.Schema<RepoDeleteKeyResponse>;
-
 export interface RepoDeletePullReviewRequest {
   /** owner of the repo */
   owner: string;
@@ -2803,15 +1986,7 @@ export interface RepoDeletePullReviewRequest {
   /** id of the review */
   id: number;
 }
-const RepoDeletePullReviewRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<RepoDeletePullReviewRequest>;
-
 export interface RepoDeletePullReviewResponse {}
-const RepoDeletePullReviewResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoDeletePullReviewResponse>;
-
 export interface RepoDeletePullReviewCommentRequest {
   /** owner of the repo */
   owner: string;
@@ -2824,23 +1999,9 @@ export interface RepoDeletePullReviewCommentRequest {
   /** id of the comment */
   comment: number;
 }
-const RepoDeletePullReviewCommentRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<RepoDeletePullReviewCommentRequest>;
-
 export interface RepoDeletePullReviewCommentResponse {}
-const RepoDeletePullReviewCommentResponse =
-  RepoCancelScheduledAutoMergeResponse as any as S.Schema<RepoDeletePullReviewCommentResponse>;
-
 export type RepoDeletePullReviewRequestsRequestReviewersList = Array<string>;
-const RepoDeletePullReviewRequestsRequestReviewersList =
-  RepositoryTopicsList as any as S.Schema<RepoDeletePullReviewRequestsRequestReviewersList>;
-
 export type RepoDeletePullReviewRequestsRequestTeamReviewersList = Array<string>;
-const RepoDeletePullReviewRequestsRequestTeamReviewersList =
-  RepositoryTopicsList as any as S.Schema<RepoDeletePullReviewRequestsRequestTeamReviewersList>;
-
 export interface RepoDeletePullReviewRequestsRequest {
   /** owner of the repo */
   owner: string;
@@ -2851,15 +2012,7 @@ export interface RepoDeletePullReviewRequestsRequest {
   reviewers?: RepoDeletePullReviewRequestsRequestReviewersList;
   team_reviewers?: RepoDeletePullReviewRequestsRequestTeamReviewersList;
 }
-const RepoDeletePullReviewRequestsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<RepoDeletePullReviewRequestsRequest>;
-
 export interface RepoDeletePullReviewRequestsResponse {}
-const RepoDeletePullReviewRequestsResponse =
-  RepoCancelScheduledAutoMergeResponse as any as S.Schema<RepoDeletePullReviewRequestsResponse>;
-
 export interface RepoDeletePushMirrorRequest {
   /** owner of the repo */
   owner: string;
@@ -2868,15 +2021,7 @@ export interface RepoDeletePushMirrorRequest {
   /** remote name of the pushMirror */
   name: string;
 }
-const RepoDeletePushMirrorRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<RepoDeletePushMirrorRequest>;
-
 export interface RepoDeletePushMirrorResponse {}
-const RepoDeletePushMirrorResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoDeletePushMirrorResponse>;
-
 export interface RepoDeleteReleaseRequest {
   /** owner of the repo */
   owner: string;
@@ -2885,15 +2030,7 @@ export interface RepoDeleteReleaseRequest {
   /** id of the release to delete */
   id: number;
 }
-const RepoDeleteReleaseRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<RepoDeleteReleaseRequest>;
-
 export interface RepoDeleteReleaseResponse {}
-const RepoDeleteReleaseResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteReleaseResponse>;
-
 export interface RepoDeleteReleaseAttachmentRequest {
   /** owner of the repo */
   owner: string;
@@ -2904,15 +2041,7 @@ export interface RepoDeleteReleaseAttachmentRequest {
   /** id of the attachment to delete */
   attachment_id: number;
 }
-const RepoDeleteReleaseAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<RepoDeleteReleaseAttachmentRequest>;
-
 export interface RepoDeleteReleaseAttachmentResponse {}
-const RepoDeleteReleaseAttachmentResponse =
-  RepoCancelScheduledAutoMergeResponse as any as S.Schema<RepoDeleteReleaseAttachmentResponse>;
-
 export interface RepoDeleteReleaseByTagRequest {
   /** owner of the repo */
   owner: string;
@@ -2921,15 +2050,7 @@ export interface RepoDeleteReleaseByTagRequest {
   /** tag name of the release to delete */
   tag: string;
 }
-const RepoDeleteReleaseByTagRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<RepoDeleteReleaseByTagRequest>;
-
 export interface RepoDeleteReleaseByTagResponse {}
-const RepoDeleteReleaseByTagResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteReleaseByTagResponse>;
-
 export interface RepoDeleteTagRequest {
   /** owner of the repo */
   owner: string;
@@ -2938,14 +2059,7 @@ export interface RepoDeleteTagRequest {
   /** name of tag to delete */
   tag: string;
 }
-const RepoDeleteTagRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<RepoDeleteTagRequest>;
-
 export interface RepoDeleteTagResponse {}
-const RepoDeleteTagResponse = AcceptRepoTransferResponse as any as S.Schema<RepoDeleteTagResponse>;
-
 export interface RepoDeleteTagProtectionRequest {
   /** owner of the repo */
   owner: string;
@@ -2954,17 +2068,7 @@ export interface RepoDeleteTagProtectionRequest {
   /** id of protected tag */
   id: number;
 }
-const RepoDeleteTagProtectionRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<RepoDeleteTagProtectionRequest>;
-
 export interface RepoDeleteTagProtectionResponse {}
-const RepoDeleteTagProtectionResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<RepoDeleteTagProtectionResponse>;
-
 export interface RepoDeleteTeamRequest {
   /** owner of the repo */
   owner: string;
@@ -2973,15 +2077,7 @@ export interface RepoDeleteTeamRequest {
   /** team name */
   team: string;
 }
-const RepoDeleteTeamRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<RepoDeleteTeamRequest>;
-
 export interface RepoDeleteTeamResponse {}
-const RepoDeleteTeamResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteTeamResponse>;
-
 export interface RepoDeleteTopicRequest {
   /** owner of the repo */
   owner: string;
@@ -2990,15 +2086,7 @@ export interface RepoDeleteTopicRequest {
   /** name of the topic to delete */
   topic: string;
 }
-const RepoDeleteTopicRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<RepoDeleteTopicRequest>;
-
 export interface RepoDeleteTopicResponse {}
-const RepoDeleteTopicResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteTopicResponse>;
-
 export interface RepoDeleteWikiPageRequest {
   /** owner of the repo */
   owner: string;
@@ -3007,18 +2095,8 @@ export interface RepoDeleteWikiPageRequest {
   /** name of the page */
   pageName: string;
 }
-const RepoDeleteWikiPageRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<RepoDeleteWikiPageRequest>;
-
 export interface RepoDeleteWikiPageResponse {}
-const RepoDeleteWikiPageResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoDeleteWikiPageResponse>;
-
 export type RepoDownloadCommitDiffOrPatchRequestDiffType = "diff" | "patch";
-const RepoDownloadCommitDiffOrPatchRequestDiffType = S.String;
-
 export interface RepoDownloadCommitDiffOrPatchRequest {
   /** owner of the repo */
   owner: string;
@@ -3029,20 +2107,8 @@ export interface RepoDownloadCommitDiffOrPatchRequest {
   /** whether the output is diff or patch */
   diffType: RepoDownloadCommitDiffOrPatchRequestDiffType | (string & {});
 }
-const RepoDownloadCommitDiffOrPatchRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<RepoDownloadCommitDiffOrPatchRequest>;
-
 export type RepoDownloadCommitDiffOrPatchResponse = string;
-const RepoDownloadCommitDiffOrPatchResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<RepoDownloadCommitDiffOrPatchResponse>;
-
 export type RepoDownloadPullDiffOrPatchRequestDiffType = "diff" | "patch";
-const RepoDownloadPullDiffOrPatchRequestDiffType = S.String;
-
 export interface RepoDownloadPullDiffOrPatchRequest {
   /** owner of the repo */
   owner: string;
@@ -3055,43 +2121,14 @@ export interface RepoDownloadPullDiffOrPatchRequest {
   /** whether to include binary file changes. if true, the diff is applicable with `git apply` */
   binary?: boolean;
 }
-const RepoDownloadPullDiffOrPatchRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<RepoDownloadPullDiffOrPatchRequest>;
-
 export type RepoDownloadPullDiffOrPatchResponse = string;
-const RepoDownloadPullDiffOrPatchResponse =
-  RepoDownloadCommitDiffOrPatchResponse as any as S.Schema<RepoDownloadPullDiffOrPatchResponse>;
-
 export type RepoEditBranchProtectionRequestApprovalsWhitelistTeamsList = Array<string>;
-const RepoEditBranchProtectionRequestApprovalsWhitelistTeamsList =
-  RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestApprovalsWhitelistTeamsList>;
-
 export type RepoEditBranchProtectionRequestApprovalsWhitelistUsernameList = Array<string>;
-const RepoEditBranchProtectionRequestApprovalsWhitelistUsernameList =
-  RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestApprovalsWhitelistUsernameList>;
-
 export type RepoEditBranchProtectionRequestMergeWhitelistTeamsList = Array<string>;
-const RepoEditBranchProtectionRequestMergeWhitelistTeamsList =
-  RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestMergeWhitelistTeamsList>;
-
 export type RepoEditBranchProtectionRequestMergeWhitelistUsernamesList = Array<string>;
-const RepoEditBranchProtectionRequestMergeWhitelistUsernamesList =
-  RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestMergeWhitelistUsernamesList>;
-
 export type RepoEditBranchProtectionRequestPushWhitelistTeamsList = Array<string>;
-const RepoEditBranchProtectionRequestPushWhitelistTeamsList =
-  RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestPushWhitelistTeamsList>;
-
 export type RepoEditBranchProtectionRequestPushWhitelistUsernamesList = Array<string>;
-const RepoEditBranchProtectionRequestPushWhitelistUsernamesList =
-  RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestPushWhitelistUsernamesList>;
-
 export type RepoEditBranchProtectionRequestStatusCheckContextsList = Array<string>;
-const RepoEditBranchProtectionRequestStatusCheckContextsList =
-  RepositoryTopicsList as any as S.Schema<RepoEditBranchProtectionRequestStatusCheckContextsList>;
-
 export interface RepoEditBranchProtectionRequest {
   /** owner of the repo */
   owner: string;
@@ -3123,11 +2160,6 @@ export interface RepoEditBranchProtectionRequest {
   status_check_contexts?: RepoEditBranchProtectionRequestStatusCheckContextsList;
   unprotected_file_patterns?: string;
 }
-const RepoEditBranchProtectionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<RepoEditBranchProtectionRequest>;
-
 export interface RepoEditGitHookRequest {
   /** owner of the repo */
   owner: string;
@@ -3137,27 +2169,14 @@ export interface RepoEditGitHookRequest {
   id: string;
   content?: string;
 }
-const RepoEditGitHookRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<RepoEditGitHookRequest>;
-
 /** GitHook represents a Git repository hook */
 export interface GitHook {
   content?: string;
   is_active?: boolean;
   name?: string;
 }
-const GitHook = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<GitHook>;
-
 export type RepoEditHookRequestConfigMap = { [key: string]: string | undefined };
-const RepoEditHookRequestConfigMap =
-  TeamUnitsMapMap as any as S.Schema<RepoEditHookRequestConfigMap>;
-
 export type RepoEditHookRequestEventsList = Array<string>;
-const RepoEditHookRequestEventsList =
-  RepositoryTopicsList as any as S.Schema<RepoEditHookRequestEventsList>;
-
 export interface RepoEditHookRequest {
   /** owner of the repo */
   owner: string;
@@ -3171,16 +2190,8 @@ export interface RepoEditHookRequest {
   config?: RepoEditHookRequestConfigMap;
   events?: RepoEditHookRequestEventsList;
 }
-const RepoEditHookRequest = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<RepoEditHookRequest>;
-
 export type RepoEditPullRequestRequestAssigneesList = Array<string>;
-const RepoEditPullRequestRequestAssigneesList =
-  RepositoryTopicsList as any as S.Schema<RepoEditPullRequestRequestAssigneesList>;
-
 export type RepoEditPullRequestRequestLabelsList = Array<number>;
-const RepoEditPullRequestRequestLabelsList =
-  RepoCreatePullRequestRequestLabelsList as any as S.Schema<RepoEditPullRequestRequestLabelsList>;
-
 export interface RepoEditPullRequestRequest {
   /** owner of the repo */
   owner: string;
@@ -3200,11 +2211,6 @@ export interface RepoEditPullRequestRequest {
   title?: string;
   unset_due_date?: boolean;
 }
-const RepoEditPullRequestRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<RepoEditPullRequestRequest>;
-
 export interface RepoEditReleaseRequest {
   /** owner of the repo */
   owner: string;
@@ -3220,11 +2226,6 @@ export interface RepoEditReleaseRequest {
   tag_name?: string;
   target_commitish?: string;
 }
-const RepoEditReleaseRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<RepoEditReleaseRequest>;
-
 export interface RepoEditReleaseAttachmentRequest {
   /** owner of the repo */
   owner: string;
@@ -3238,19 +2239,8 @@ export interface RepoEditReleaseAttachmentRequest {
   browser_download_url?: string;
   name?: string;
 }
-const RepoEditReleaseAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<RepoEditReleaseAttachmentRequest>;
-
 export type RepoEditTagProtectionRequestWhitelistTeamsList = Array<string>;
-const RepoEditTagProtectionRequestWhitelistTeamsList =
-  RepositoryTopicsList as any as S.Schema<RepoEditTagProtectionRequestWhitelistTeamsList>;
-
 export type RepoEditTagProtectionRequestWhitelistUsernamesList = Array<string>;
-const RepoEditTagProtectionRequestWhitelistUsernamesList =
-  RepositoryTopicsList as any as S.Schema<RepoEditTagProtectionRequestWhitelistUsernamesList>;
-
 export interface RepoEditTagProtectionRequest {
   /** owner of the repo */
   owner: string;
@@ -3262,11 +2252,6 @@ export interface RepoEditTagProtectionRequest {
   whitelist_teams?: RepoEditTagProtectionRequestWhitelistTeamsList;
   whitelist_usernames?: RepoEditTagProtectionRequestWhitelistUsernamesList;
 }
-const RepoEditTagProtectionRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<RepoEditTagProtectionRequest>;
-
 export interface RepoEditWikiPageRequest {
   /** owner of the repo */
   owner: string;
@@ -3281,11 +2266,6 @@ export interface RepoEditWikiPageRequest {
   /** page title. leave empty to keep unchanged */
   title?: string;
 }
-const RepoEditWikiPageRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<RepoEditWikiPageRequest>;
-
 export interface RepoGetActionJobLogsRequest {
   /** owner of the repo */
   owner: string;
@@ -3296,15 +2276,7 @@ export interface RepoGetActionJobLogsRequest {
   /** 1-based attempt number matching the value of `attempt` in the job listing; omit to fetch the latest attempt of the job */
   attempt?: number;
 }
-const RepoGetActionJobLogsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<RepoGetActionJobLogsRequest>;
-
 export type RepoGetActionJobLogsResponse = string;
-const RepoGetActionJobLogsResponse =
-  RepoDownloadCommitDiffOrPatchResponse as any as S.Schema<RepoGetActionJobLogsResponse>;
-
 export interface RepoGetActionRunLogsRequest {
   /** owner of the repo */
   owner: string;
@@ -3313,15 +2285,7 @@ export interface RepoGetActionRunLogsRequest {
   /** ID of the workflow run. The ZIP contains the latest attempt of each job in the run, with each entry named `{job-name}-{job-id}-attempt-{N}.log` (the job ID prevents collisions when two jobs share a name; the attempt number records which run the log came from). The run itself has no attempt number -- jobs are re-run independently, so use the per-job logs endpoint with `?attempt` to fetch a specific historical attempt of one job. */
   run_id: number;
 }
-const RepoGetActionRunLogsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<RepoGetActionRunLogsRequest>;
-
 export type RepoGetActionRunLogsResponse = string;
-const RepoGetActionRunLogsResponse =
-  RepoDownloadCommitDiffOrPatchResponse as any as S.Schema<RepoGetActionRunLogsResponse>;
-
 export interface RepoGetAllCommitsRequest {
   /** owner of the repo */
   owner: string;
@@ -3344,21 +2308,8 @@ export interface RepoGetAllCommitsRequest {
   /** commits that match the given specifier will not be listed. */
   not?: string;
 }
-const RepoGetAllCommitsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<RepoGetAllCommitsRequest>;
-
 export type RepoGetAllCommitsResponseBodyList = Array<Commit>;
-const RepoGetAllCommitsResponseBodyList =
-  CompareCommitsList as any as S.Schema<RepoGetAllCommitsResponseBodyList>;
-
 export type RepoGetAllCommitsResponse = RepoGetAllCommitsResponseBodyList;
-const RepoGetAllCommitsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<RepoGetAllCommitsResponse>;
-
 export interface RepoGetArchiveRequest {
   /** owner of the repo */
   owner: string;
@@ -3367,36 +2318,15 @@ export interface RepoGetArchiveRequest {
   /** the git reference for download with attached archive format (e.g. master.zip) */
   archive: string;
 }
-const RepoGetArchiveRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<RepoGetArchiveRequest>;
-
 export interface RepoGetArchiveResponse {}
-const RepoGetArchiveResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoGetArchiveResponse>;
-
 export interface RepoGetAssigneesRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoGetAssigneesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<RepoGetAssigneesRequest>;
-
 export type RepoGetAssigneesResponseBodyList = Array<User>;
-const RepoGetAssigneesResponseBodyList =
-  PullRequestAssigneesList as any as S.Schema<RepoGetAssigneesResponseBodyList>;
-
 export type RepoGetAssigneesResponse = RepoGetAssigneesResponseBodyList;
-const RepoGetAssigneesResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<RepoGetAssigneesResponse>;
-
 export interface RepoGetBranchRequest {
   /** owner of the repo */
   owner: string;
@@ -3405,11 +2335,6 @@ export interface RepoGetBranchRequest {
   /** branch to get */
   branch: string;
 }
-const RepoGetBranchRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<RepoGetBranchRequest>;
-
 export interface RepoGetBranchProtectionRequest {
   /** owner of the repo */
   owner: string;
@@ -3418,17 +2343,10 @@ export interface RepoGetBranchProtectionRequest {
   /** name of protected branch */
   name: string;
 }
-const RepoGetBranchProtectionRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<RepoGetBranchProtectionRequest>;
-
 export interface RepoGetByIDRequest {
   /** id of the repo to get */
   id: number;
 }
-const RepoGetByIDRequest = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<RepoGetByIDRequest>;
-
 export interface RepoGetCombinedStatusByRefRequest {
   /** owner of the repo */
   owner: string;
@@ -3441,17 +2359,7 @@ export interface RepoGetCombinedStatusByRefRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoGetCombinedStatusByRefRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<RepoGetCombinedStatusByRefRequest>;
-
 export type CombinedStatusStatusesList = Array<CommitStatus>;
-const CombinedStatusStatusesList = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<CombinedStatusStatusesList>;
-
 /** CombinedStatus holds the combined state of several statuses for a single commit */
 export interface CombinedStatus {
   commit_url?: string;
@@ -3462,8 +2370,6 @@ export interface CombinedStatus {
   total_count?: number;
   url?: string;
 }
-const CombinedStatus = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<CombinedStatus>;
-
 export interface RepoGetCommitPullRequestRequest {
   /** owner of the repo */
   owner: string;
@@ -3472,11 +2378,6 @@ export interface RepoGetCommitPullRequestRequest {
   /** SHA of the commit to get */
   sha: string;
 }
-const RepoGetCommitPullRequestRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<RepoGetCommitPullRequestRequest>;
-
 export interface RepoGetContentsRequest {
   /** owner of the repo */
   owner: string;
@@ -3487,11 +2388,6 @@ export interface RepoGetContentsRequest {
   /** The name of the commit/branch/tag. Default the repository's default branch (usually master) */
   ref?: string;
 }
-const RepoGetContentsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<RepoGetContentsRequest>;
-
 export interface RepoGetContentsListRequest {
   /** owner of the repo */
   owner: string;
@@ -3500,21 +2396,8 @@ export interface RepoGetContentsListRequest {
   /** The name of the commit/branch/tag. Default the repository's default branch (usually master) */
   ref?: string;
 }
-const RepoGetContentsListRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<RepoGetContentsListRequest>;
-
 export type RepoGetContentsListResponseBodyList = Array<ContentsResponse>;
-const RepoGetContentsListResponseBodyList =
-  FilesResponseFilesList as any as S.Schema<RepoGetContentsListResponseBodyList>;
-
 export type RepoGetContentsListResponse = RepoGetContentsListResponseBodyList;
-const RepoGetContentsListResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<RepoGetContentsListResponse>;
-
 export interface RepoGetEditorConfigRequest {
   /** owner of the repo */
   owner: string;
@@ -3525,21 +2408,8 @@ export interface RepoGetEditorConfigRequest {
   /** The name of the commit/branch/tag. Default the repository's default branch (usually master) */
   ref?: string;
 }
-const RepoGetEditorConfigRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<RepoGetEditorConfigRequest>;
-
 export type RepoGetEditorConfigResponseBodyMap = { [key: string]: string | undefined };
-const RepoGetEditorConfigResponseBodyMap =
-  TeamUnitsMapMap as any as S.Schema<RepoGetEditorConfigResponseBodyMap>;
-
 export type RepoGetEditorConfigResponse = RepoGetEditorConfigResponseBodyMap;
-const RepoGetEditorConfigResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<RepoGetEditorConfigResponse>;
-
 export interface RepoGetGitHookRequest {
   /** owner of the repo */
   owner: string;
@@ -3548,11 +2418,6 @@ export interface RepoGetGitHookRequest {
   /** id of the hook to get */
   id: string;
 }
-const RepoGetGitHookRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<RepoGetGitHookRequest>;
-
 export interface RepoGetHookRequest {
   /** owner of the repo */
   owner: string;
@@ -3561,66 +2426,31 @@ export interface RepoGetHookRequest {
   /** id of the hook to get */
   id: number;
 }
-const RepoGetHookRequest = /*@__PURE__*/ __L.at(__c27, 2) as any as S.Schema<RepoGetHookRequest>;
-
 export interface RepoGetIssueConfigRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoGetIssueConfigRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<RepoGetIssueConfigRequest>;
-
 export interface IssueConfigContactLink {
   about?: string;
   name?: string;
   url?: string;
 }
-const IssueConfigContactLink = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<IssueConfigContactLink>;
-
 export type IssueConfigContactLinksList = Array<IssueConfigContactLink>;
-const IssueConfigContactLinksList = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<IssueConfigContactLinksList>;
-
 export interface IssueConfig {
   blank_issues_enabled?: boolean;
   contact_links?: IssueConfigContactLinksList;
 }
-const IssueConfig = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<IssueConfig>;
-
 export interface RepoGetIssueTemplatesRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoGetIssueTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<RepoGetIssueTemplatesRequest>;
-
 export type IssueFormFieldAttributesMap = { [key: string]: unknown | undefined };
-const IssueFormFieldAttributesMap = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<IssueFormFieldAttributesMap>;
-
 export type IssueFormFieldValidationsMap = { [key: string]: unknown | undefined };
-const IssueFormFieldValidationsMap =
-  IssueFormFieldAttributesMap as any as S.Schema<IssueFormFieldValidationsMap>;
-
 export type IssueFormFieldVisibleList = Array<string>;
-const IssueFormFieldVisibleList =
-  RepositoryTopicsList as any as S.Schema<IssueFormFieldVisibleList>;
-
 /** IssueFormField represents a form field */
 export interface IssueFormField {
   attributes?: IssueFormFieldAttributesMap;
@@ -3629,17 +2459,8 @@ export interface IssueFormField {
   validations?: IssueFormFieldValidationsMap;
   visible?: IssueFormFieldVisibleList;
 }
-const IssueFormField = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<IssueFormField>;
-
 export type IssueTemplateBodyList = Array<IssueFormField>;
-const IssueTemplateBodyList = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<IssueTemplateBodyList>;
-
 export type IssueTemplateLabels = Array<string>;
-const IssueTemplateLabels = RepositoryTopicsList as any as S.Schema<IssueTemplateLabels>;
-
 /** IssueTemplate represents an issue template for a repository */
 export interface IssueTemplate {
   about?: string;
@@ -3651,20 +2472,8 @@ export interface IssueTemplate {
   ref?: string;
   title?: string;
 }
-const IssueTemplate = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<IssueTemplate>;
-
 export type RepoGetIssueTemplatesResponseBodyList = Array<IssueTemplate>;
-const RepoGetIssueTemplatesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<RepoGetIssueTemplatesResponseBodyList>;
-
 export type RepoGetIssueTemplatesResponse = RepoGetIssueTemplatesResponseBodyList;
-const RepoGetIssueTemplatesResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<RepoGetIssueTemplatesResponse>;
-
 export interface RepoGetKeyRequest {
   /** owner of the repo */
   owner: string;
@@ -3673,42 +2482,20 @@ export interface RepoGetKeyRequest {
   /** id of the key to get */
   id: number;
 }
-const RepoGetKeyRequest = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<RepoGetKeyRequest>;
-
 export interface RepoGetLanguagesRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoGetLanguagesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<RepoGetLanguagesRequest>;
-
 export type RepoGetLanguagesResponseBodyMap = { [key: string]: number | undefined };
-const RepoGetLanguagesResponseBodyMap = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<RepoGetLanguagesResponseBodyMap>;
-
 export type RepoGetLanguagesResponse = RepoGetLanguagesResponseBodyMap;
-const RepoGetLanguagesResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<RepoGetLanguagesResponse>;
-
 export interface RepoGetLatestReleaseRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoGetLatestReleaseRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<RepoGetLatestReleaseRequest>;
-
 export interface RepoGetNoteRequest {
   /** owner of the repo */
   owner: string;
@@ -3721,15 +2508,11 @@ export interface RepoGetNoteRequest {
   /** include a list of affected files for every commit (disable for speedup, default 'true') */
   files?: boolean;
 }
-const RepoGetNoteRequest = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<RepoGetNoteRequest>;
-
 /** Note contains information related to a git note */
 export interface Note {
   commit?: Commit;
   message?: string;
 }
-const Note = /*@__PURE__*/ __L.at(__c29, 4) as any as S.Schema<Note>;
-
 export interface RepoGetPullRequestRequest {
   /** owner of the repo */
   owner: string;
@@ -3738,11 +2521,6 @@ export interface RepoGetPullRequestRequest {
   /** index of the pull request to get */
   index: number;
 }
-const RepoGetPullRequestRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<RepoGetPullRequestRequest>;
-
 export interface RepoGetPullRequestByBaseHeadRequest {
   /** owner of the repo */
   owner: string;
@@ -3753,11 +2531,6 @@ export interface RepoGetPullRequestByBaseHeadRequest {
   /** head of the pull request to get */
   head: string;
 }
-const RepoGetPullRequestByBaseHeadRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<RepoGetPullRequestByBaseHeadRequest>;
-
 export interface RepoGetPullRequestCommitsRequest {
   /** owner of the repo */
   owner: string;
@@ -3774,23 +2547,13 @@ export interface RepoGetPullRequestCommitsRequest {
   /** include a list of affected files for every commit (disable for speedup, default 'true') */
   files?: boolean;
 }
-const RepoGetPullRequestCommitsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<RepoGetPullRequestCommitsRequest>;
-
 export type RepoGetPullRequestCommitsResponseBodyList = Array<Commit>;
 export type RepoGetPullRequestCommitsResponse = RepoGetPullRequestCommitsResponseBodyList;
-const RepoGetPullRequestCommitsResponse =
-  RepoGetAllCommitsResponse as any as S.Schema<RepoGetPullRequestCommitsResponse>;
-
 export type RepoGetPullRequestFilesRequestWhitespace =
   | "ignore-all"
   | "ignore-change"
   | "ignore-eol"
   | "show-all";
-const RepoGetPullRequestFilesRequestWhitespace = S.String;
-
 export interface RepoGetPullRequestFilesRequest {
   /** owner of the repo */
   owner: string;
@@ -3807,11 +2570,6 @@ export interface RepoGetPullRequestFilesRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoGetPullRequestFilesRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<RepoGetPullRequestFilesRequest>;
-
 /** ChangedFile store information about files affected by the pull request */
 export interface ChangedFile {
   additions?: number;
@@ -3824,20 +2582,8 @@ export interface ChangedFile {
   raw_url?: string;
   status?: string;
 }
-const ChangedFile = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<ChangedFile>;
-
 export type RepoGetPullRequestFilesResponseBodyList = Array<ChangedFile>;
-const RepoGetPullRequestFilesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<RepoGetPullRequestFilesResponseBodyList>;
-
 export type RepoGetPullRequestFilesResponse = RepoGetPullRequestFilesResponseBodyList;
-const RepoGetPullRequestFilesResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<RepoGetPullRequestFilesResponse>;
-
 export interface RepoGetPullReviewRequest {
   /** owner of the repo */
   owner: string;
@@ -3848,11 +2594,6 @@ export interface RepoGetPullReviewRequest {
   /** id of the review */
   id: number;
 }
-const RepoGetPullReviewRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<RepoGetPullReviewRequest>;
-
 export interface RepoGetPullReviewCommentRequest {
   /** owner of the repo */
   owner: string;
@@ -3865,11 +2606,6 @@ export interface RepoGetPullReviewCommentRequest {
   /** id of the comment */
   comment: number;
 }
-const RepoGetPullReviewCommentRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<RepoGetPullReviewCommentRequest>;
-
 export interface RepoGetPullReviewCommentsRequest {
   /** owner of the repo */
   owner: string;
@@ -3880,23 +2616,8 @@ export interface RepoGetPullReviewCommentsRequest {
   /** id of the review */
   id: number;
 }
-const RepoGetPullReviewCommentsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<RepoGetPullReviewCommentsRequest>;
-
 export type RepoGetPullReviewCommentsResponseBodyList = Array<PullReviewComment>;
-const RepoGetPullReviewCommentsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<RepoGetPullReviewCommentsResponseBodyList>;
-
 export type RepoGetPullReviewCommentsResponse = RepoGetPullReviewCommentsResponseBodyList;
-const RepoGetPullReviewCommentsResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<RepoGetPullReviewCommentsResponse>;
-
 export interface RepoGetPushMirrorByRemoteNameRequest {
   /** owner of the repo */
   owner: string;
@@ -3905,11 +2626,6 @@ export interface RepoGetPushMirrorByRemoteNameRequest {
   /** remote name of push mirror */
   name: string;
 }
-const RepoGetPushMirrorByRemoteNameRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<RepoGetPushMirrorByRemoteNameRequest>;
-
 export interface RepoGetRawFileRequest {
   /** owner of the repo */
   owner: string;
@@ -3920,17 +2636,7 @@ export interface RepoGetRawFileRequest {
   /** The name of the commit/branch/tag. Default the repository's default branch (usually master) */
   ref?: string;
 }
-const RepoGetRawFileRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<RepoGetRawFileRequest>;
-
 export type RepoGetRawFileResponse = unknown;
-const RepoGetRawFileResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<RepoGetRawFileResponse>;
-
 export interface RepoGetRawFileOrLFSRequest {
   /** owner of the repo */
   owner: string;
@@ -3941,17 +2647,7 @@ export interface RepoGetRawFileOrLFSRequest {
   /** The name of the commit/branch/tag. Default the repository's default branch (usually master) */
   ref?: string;
 }
-const RepoGetRawFileOrLFSRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<RepoGetRawFileOrLFSRequest>;
-
 export type RepoGetRawFileOrLFSResponse = unknown;
-const RepoGetRawFileOrLFSResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<RepoGetRawFileOrLFSResponse>;
-
 export interface RepoGetReleaseRequest {
   /** owner of the repo */
   owner: string;
@@ -3960,11 +2656,6 @@ export interface RepoGetReleaseRequest {
   /** id of the release to get */
   id: number;
 }
-const RepoGetReleaseRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<RepoGetReleaseRequest>;
-
 export interface RepoGetReleaseAttachmentRequest {
   /** owner of the repo */
   owner: string;
@@ -3975,11 +2666,6 @@ export interface RepoGetReleaseAttachmentRequest {
   /** id of the attachment to get */
   attachment_id: number;
 }
-const RepoGetReleaseAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<RepoGetReleaseAttachmentRequest>;
-
 export interface RepoGetReleaseByTagRequest {
   /** owner of the repo */
   owner: string;
@@ -3988,27 +2674,14 @@ export interface RepoGetReleaseByTagRequest {
   /** tag name of the release to get */
   tag: string;
 }
-const RepoGetReleaseByTagRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<RepoGetReleaseByTagRequest>;
-
 export interface RepoGetReviewersRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoGetReviewersRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<RepoGetReviewersRequest>;
-
 export type RepoGetReviewersResponseBodyList = Array<User>;
 export type RepoGetReviewersResponse = RepoGetReviewersResponseBodyList;
-const RepoGetReviewersResponse =
-  RepoGetAssigneesResponse as any as S.Schema<RepoGetReviewersResponse>;
-
 export interface RepoGetSingleCommitRequest {
   /** owner of the repo */
   owner: string;
@@ -4023,11 +2696,6 @@ export interface RepoGetSingleCommitRequest {
   /** include a list of affected files for every commit (disable for speedup, default 'true') */
   files?: boolean;
 }
-const RepoGetSingleCommitRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<RepoGetSingleCommitRequest>;
-
 export interface RepoGetTagRequest {
   /** owner of the repo */
   owner: string;
@@ -4036,8 +2704,6 @@ export interface RepoGetTagRequest {
   /** name of tag */
   tag: string;
 }
-const RepoGetTagRequest = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<RepoGetTagRequest>;
-
 export interface RepoGetTagProtectionRequest {
   /** owner of the repo */
   owner: string;
@@ -4046,11 +2712,6 @@ export interface RepoGetTagProtectionRequest {
   /** id of the tag protect to get */
   id: number;
 }
-const RepoGetTagProtectionRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<RepoGetTagProtectionRequest>;
-
 export interface RepoGetWikiPageRequest {
   /** owner of the repo */
   owner: string;
@@ -4059,11 +2720,6 @@ export interface RepoGetWikiPageRequest {
   /** name of the page */
   pageName: string;
 }
-const RepoGetWikiPageRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<RepoGetWikiPageRequest>;
-
 export interface RepoGetWikiPageRevisionsRequest {
   /** owner of the repo */
   owner: string;
@@ -4074,24 +2730,12 @@ export interface RepoGetWikiPageRevisionsRequest {
   /** page number of results to return (1-based) */
   page?: number;
 }
-const RepoGetWikiPageRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<RepoGetWikiPageRevisionsRequest>;
-
 export type WikiCommitListCommitsList = Array<WikiCommit>;
-const WikiCommitListCommitsList = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<WikiCommitListCommitsList>;
-
 /** WikiCommitList commit/revision list */
 export interface WikiCommitList {
   commits?: WikiCommitListCommitsList;
   count?: number;
 }
-const WikiCommitList = /*@__PURE__*/ __L.at(__c33, 0) as any as S.Schema<WikiCommitList>;
-
 export interface RepoGetWikiPagesRequest {
   /** owner of the repo */
   owner: string;
@@ -4102,11 +2746,6 @@ export interface RepoGetWikiPagesRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoGetWikiPagesRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<RepoGetWikiPagesRequest>;
-
 /** WikiPageMetaData wiki page meta information */
 export interface WikiPageMetaData {
   html_url?: string;
@@ -4114,20 +2753,8 @@ export interface WikiPageMetaData {
   sub_url?: string;
   title?: string;
 }
-const WikiPageMetaData = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<WikiPageMetaData>;
-
 export type RepoGetWikiPagesResponseBodyList = Array<WikiPageMetaData>;
-const RepoGetWikiPagesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<RepoGetWikiPagesResponseBodyList>;
-
 export type RepoGetWikiPagesResponse = RepoGetWikiPagesResponseBodyList;
-const RepoGetWikiPagesResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<RepoGetWikiPagesResponse>;
-
 export interface RepoListActionsSecretsRequest {
   /** owner of the repository */
   owner: string;
@@ -4138,31 +2765,14 @@ export interface RepoListActionsSecretsRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoListActionsSecretsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<RepoListActionsSecretsRequest>;
-
 /** Secret represents a secret */
 export interface Secret {
   created_at: string;
   /** the secret's name */
   name: string;
 }
-const Secret = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<Secret>;
-
 export type RepoListActionsSecretsResponseBodyList = Array<Secret>;
-const RepoListActionsSecretsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<RepoListActionsSecretsResponseBodyList>;
-
 export type RepoListActionsSecretsResponse = RepoListActionsSecretsResponseBodyList;
-const RepoListActionsSecretsResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<RepoListActionsSecretsResponse>;
-
 export interface RepoListActivityFeedsRequest {
   /** owner of the repo */
   owner: string;
@@ -4175,15 +2785,8 @@ export interface RepoListActivityFeedsRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoListActivityFeedsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<RepoListActivityFeedsRequest>;
-
 /** The attachments to the comment */
 export type CommentAssetsList = Array<Attachment>;
-const CommentAssetsList = ReleaseAssetsList as any as S.Schema<CommentAssetsList>;
-
 /** Comment represents a comment on a commit or issue */
 export interface Comment {
   /** The attachments to the comment */
@@ -4208,8 +2811,6 @@ export interface Comment {
   updated_at?: string;
   user?: User;
 }
-const Comment = /*@__PURE__*/ __L.at(__c34, 2) as any as S.Schema<Comment>;
-
 /** the type of action */
 export type ActivityOpType =
   | "create_repo"
@@ -4239,8 +2840,6 @@ export type ActivityOpType =
   | "pull_review_dismissed"
   | "pull_request_ready_for_review"
   | "auto_merge_pull_request";
-const ActivityOpType = S.String;
-
 export interface Activity {
   act_user?: User;
   act_user_id?: number;
@@ -4257,51 +2856,22 @@ export interface Activity {
   repo_id?: number;
   user_id?: number;
 }
-const Activity = /*@__PURE__*/ __L.at(__c34, 3) as any as S.Schema<Activity>;
-
 export type RepoListActivityFeedsResponseBodyList = Array<Activity>;
-const RepoListActivityFeedsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<RepoListActivityFeedsResponseBodyList>;
-
 export type RepoListActivityFeedsResponse = RepoListActivityFeedsResponseBodyList;
-const RepoListActivityFeedsResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<RepoListActivityFeedsResponse>;
-
 export interface RepoListAllGitRefsRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoListAllGitRefsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<RepoListAllGitRefsRequest>;
-
 export type GitObject = AnnotatedTagObject;
 export interface Reference {
   object?: AnnotatedTagObject;
   ref?: string;
   url?: string;
 }
-const Reference = /*@__PURE__*/ __L.at(__c34, 7) as any as S.Schema<Reference>;
-
 export type RepoListAllGitRefsResponseBodyList = Array<Reference>;
-const RepoListAllGitRefsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<RepoListAllGitRefsResponseBodyList>;
-
 export type RepoListAllGitRefsResponse = RepoListAllGitRefsResponseBodyList;
-const RepoListAllGitRefsResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<RepoListAllGitRefsResponse>;
-
 export interface RepoListBranchesRequest {
   /** owner of the repo */
   owner: string;
@@ -4312,46 +2882,16 @@ export interface RepoListBranchesRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoListBranchesRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<RepoListBranchesRequest>;
-
 export type RepoListBranchesResponseBodyList = Array<Branch>;
-const RepoListBranchesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<RepoListBranchesResponseBodyList>;
-
 export type RepoListBranchesResponse = RepoListBranchesResponseBodyList;
-const RepoListBranchesResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<RepoListBranchesResponse>;
-
 export interface RepoListBranchProtectionRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoListBranchProtectionRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<RepoListBranchProtectionRequest>;
-
 export type RepoListBranchProtectionResponseBodyList = Array<BranchProtection>;
-const RepoListBranchProtectionResponseBodyList = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<RepoListBranchProtectionResponseBodyList>;
-
 export type RepoListBranchProtectionResponse = RepoListBranchProtectionResponseBodyList;
-const RepoListBranchProtectionResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<RepoListBranchProtectionResponse>;
-
 export interface RepoListCollaboratorsRequest {
   /** owner of the repo */
   owner: string;
@@ -4362,65 +2902,24 @@ export interface RepoListCollaboratorsRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoListCollaboratorsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<RepoListCollaboratorsRequest>;
-
 export type RepoListCollaboratorsResponseBodyList = Array<User>;
-const RepoListCollaboratorsResponseBodyList =
-  PullRequestAssigneesList as any as S.Schema<RepoListCollaboratorsResponseBodyList>;
-
 export type RepoListCollaboratorsResponse = RepoListCollaboratorsResponseBodyList;
-const RepoListCollaboratorsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<RepoListCollaboratorsResponse>;
-
 export interface RepoListFlagsRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoListFlagsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<RepoListFlagsRequest>;
-
 export type RepoListFlagsResponseBodyList = Array<string>;
-const RepoListFlagsResponseBodyList =
-  RepositoryTopicsList as any as S.Schema<RepoListFlagsResponseBodyList>;
-
 export type RepoListFlagsResponse = RepoListFlagsResponseBodyList;
-const RepoListFlagsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<RepoListFlagsResponse>;
-
 export interface RepoListGitHooksRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoListGitHooksRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<RepoListGitHooksRequest>;
-
 export type RepoListGitHooksResponseBodyList = Array<GitHook>;
-const RepoListGitHooksResponseBodyList = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<RepoListGitHooksResponseBodyList>;
-
 export type RepoListGitHooksResponse = RepoListGitHooksResponseBodyList;
-const RepoListGitHooksResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<RepoListGitHooksResponse>;
-
 export interface RepoListGitRefsRequest {
   /** owner of the repo */
   owner: string;
@@ -4429,21 +2928,8 @@ export interface RepoListGitRefsRequest {
   /** part or full name of the ref */
   ref: string;
 }
-const RepoListGitRefsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<RepoListGitRefsRequest>;
-
 export type RepoListGitRefsResponseBodyList = Array<Reference>;
-const RepoListGitRefsResponseBodyList =
-  RepoListAllGitRefsResponseBodyList as any as S.Schema<RepoListGitRefsResponseBodyList>;
-
 export type RepoListGitRefsResponse = RepoListGitRefsResponseBodyList;
-const RepoListGitRefsResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<RepoListGitRefsResponse>;
-
 export interface RepoListHooksRequest {
   /** owner of the repo */
   owner: string;
@@ -4454,23 +2940,8 @@ export interface RepoListHooksRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoListHooksRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<RepoListHooksRequest>;
-
 export type RepoListHooksResponseBodyList = Array<Hook>;
-const RepoListHooksResponseBodyList = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<RepoListHooksResponseBodyList>;
-
 export type RepoListHooksResponse = RepoListHooksResponseBodyList;
-const RepoListHooksResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<RepoListHooksResponse>;
-
 export interface RepoListKeysRequest {
   /** owner of the repo */
   owner: string;
@@ -4485,40 +2956,17 @@ export interface RepoListKeysRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoListKeysRequest = /*@__PURE__*/ __L.at(__c37, 4) as any as S.Schema<RepoListKeysRequest>;
-
 export type RepoListKeysResponseBodyList = Array<DeployKey>;
-const RepoListKeysResponseBodyList = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<RepoListKeysResponseBodyList>;
-
 export type RepoListKeysResponse = RepoListKeysResponseBodyList;
-const RepoListKeysResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<RepoListKeysResponse>;
-
 export interface RepoListPinnedIssuesRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoListPinnedIssuesRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<RepoListPinnedIssuesRequest>;
-
 export type IssueAssetsList = Array<Attachment>;
-const IssueAssetsList = ReleaseAssetsList as any as S.Schema<IssueAssetsList>;
-
 export type IssueAssigneesList = Array<User>;
-const IssueAssigneesList = PullRequestAssigneesList as any as S.Schema<IssueAssigneesList>;
-
 export type IssueLabelsList = Array<Label>;
-const IssueLabelsList = /*@__PURE__*/ __L.at(__c38, 0) as any as S.Schema<IssueLabelsList>;
-
 /** PullRequestMeta PR info if an issue is a PR */
 export interface PullRequestMeta {
   draft?: boolean;
@@ -4526,8 +2974,6 @@ export interface PullRequestMeta {
   merged?: boolean;
   merged_at?: string;
 }
-const PullRequestMeta = /*@__PURE__*/ __L.at(__c38, 1) as any as S.Schema<PullRequestMeta>;
-
 /** RepositoryMeta basic repository information */
 export interface RepositoryMeta {
   full_name?: string;
@@ -4535,8 +2981,6 @@ export interface RepositoryMeta {
   name?: string;
   owner?: string;
 }
-const RepositoryMeta = /*@__PURE__*/ __L.at(__c38, 2) as any as S.Schema<RepositoryMeta>;
-
 /** Issue represents an issue in a repository */
 export interface Issue {
   assets?: IssueAssetsList;
@@ -4565,46 +3009,17 @@ export interface Issue {
   url?: string;
   user?: User;
 }
-const Issue = /*@__PURE__*/ __L.at(__c38, 3) as any as S.Schema<Issue>;
-
 export type RepoListPinnedIssuesResponseBodyList = Array<Issue>;
-const RepoListPinnedIssuesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<RepoListPinnedIssuesResponseBodyList>;
-
 export type RepoListPinnedIssuesResponse = RepoListPinnedIssuesResponseBodyList;
-const RepoListPinnedIssuesResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<RepoListPinnedIssuesResponse>;
-
 export interface RepoListPinnedPullRequestsRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoListPinnedPullRequestsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<RepoListPinnedPullRequestsRequest>;
-
 export type RepoListPinnedPullRequestsResponseBodyList = Array<PullRequest>;
-const RepoListPinnedPullRequestsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<RepoListPinnedPullRequestsResponseBodyList>;
-
 export type RepoListPinnedPullRequestsResponse = RepoListPinnedPullRequestsResponseBodyList;
-const RepoListPinnedPullRequestsResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<RepoListPinnedPullRequestsResponse>;
-
 export type RepoListPullRequestsRequestState = "open" | "closed" | "all";
-const RepoListPullRequestsRequestState = S.String;
-
 export type RepoListPullRequestsRequestSort =
   | "oldest"
   | "recentupdate"
@@ -4613,12 +3028,7 @@ export type RepoListPullRequestsRequestSort =
   | "mostcomment"
   | "leastcomment"
   | "priority";
-const RepoListPullRequestsRequestSort = S.String;
-
 export type RepoListPullRequestsRequestLabelsList = Array<number>;
-const RepoListPullRequestsRequestLabelsList =
-  RepoCreatePullRequestRequestLabelsList as any as S.Schema<RepoListPullRequestsRequestLabelsList>;
-
 export interface RepoListPullRequestsRequest {
   /** Owner of the repo */
   owner: string;
@@ -4643,16 +3053,8 @@ export interface RepoListPullRequestsRequest {
   /** Page size of results */
   limit?: number;
 }
-const RepoListPullRequestsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<RepoListPullRequestsRequest>;
-
 export type RepoListPullRequestsResponseBodyList = Array<PullRequest>;
 export type RepoListPullRequestsResponse = RepoListPullRequestsResponseBodyList;
-const RepoListPullRequestsResponse =
-  RepoListPinnedPullRequestsResponse as any as S.Schema<RepoListPullRequestsResponse>;
-
 export interface RepoListPullReviewsRequest {
   /** owner of the repo */
   owner: string;
@@ -4665,16 +3067,8 @@ export interface RepoListPullReviewsRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoListPullReviewsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<RepoListPullReviewsRequest>;
-
 export type RepoListPullReviewsResponseBodyList = Array<PullReview>;
 export type RepoListPullReviewsResponse = RepoListPullReviewsResponseBodyList;
-const RepoListPullReviewsResponse =
-  RepoCreatePullReviewRequestsResponse as any as S.Schema<RepoListPullReviewsResponse>;
-
 export interface RepoListPushMirrorsRequest {
   /** owner of the repo */
   owner: string;
@@ -4685,23 +3079,8 @@ export interface RepoListPushMirrorsRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoListPushMirrorsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<RepoListPushMirrorsRequest>;
-
 export type RepoListPushMirrorsResponseBodyList = Array<PushMirror>;
-const RepoListPushMirrorsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<RepoListPushMirrorsResponseBodyList>;
-
 export type RepoListPushMirrorsResponse = RepoListPushMirrorsResponseBodyList;
-const RepoListPushMirrorsResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<RepoListPushMirrorsResponse>;
-
 export interface RepoListReleaseAttachmentsRequest {
   /** owner of the repo */
   owner: string;
@@ -4710,21 +3089,8 @@ export interface RepoListReleaseAttachmentsRequest {
   /** id of the release */
   id: number;
 }
-const RepoListReleaseAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<RepoListReleaseAttachmentsRequest>;
-
 export type RepoListReleaseAttachmentsResponseBodyList = Array<Attachment>;
-const RepoListReleaseAttachmentsResponseBodyList =
-  ReleaseAssetsList as any as S.Schema<RepoListReleaseAttachmentsResponseBodyList>;
-
 export type RepoListReleaseAttachmentsResponse = RepoListReleaseAttachmentsResponseBodyList;
-const RepoListReleaseAttachmentsResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<RepoListReleaseAttachmentsResponse>;
-
 export interface RepoListReleasesRequest {
   /** owner of the repo */
   owner: string;
@@ -4741,23 +3107,8 @@ export interface RepoListReleasesRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoListReleasesRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<RepoListReleasesRequest>;
-
 export type RepoListReleasesResponseBodyList = Array<Release>;
-const RepoListReleasesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<RepoListReleasesResponseBodyList>;
-
 export type RepoListReleasesResponse = RepoListReleasesResponseBodyList;
-const RepoListReleasesResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<RepoListReleasesResponse>;
-
 export interface RepoListStargazersRequest {
   /** owner of the repo */
   owner: string;
@@ -4768,27 +3119,15 @@ export interface RepoListStargazersRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoListStargazersRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<RepoListStargazersRequest>;
-
 export type RepoListStargazersResponseBodyList = Array<User>;
 export type RepoListStargazersResponse = RepoListStargazersResponseBodyList;
-const RepoListStargazersResponse =
-  RepoListCollaboratorsResponse as any as S.Schema<RepoListStargazersResponse>;
-
 export type RepoListStatusesRequestSort =
   | "oldest"
   | "recentupdate"
   | "leastupdate"
   | "leastindex"
   | "highestindex";
-const RepoListStatusesRequestSort = S.String;
-
 export type RepoListStatusesRequestState = "pending" | "success" | "error" | "failure" | "warning";
-const RepoListStatusesRequestState = S.String;
-
 export interface RepoListStatusesRequest {
   /** owner of the repo */
   owner: string;
@@ -4805,37 +3144,20 @@ export interface RepoListStatusesRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoListStatusesRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<RepoListStatusesRequest>;
-
 export type RepoListStatusesResponseBodyList = Array<CommitStatus>;
-const RepoListStatusesResponseBodyList =
-  CombinedStatusStatusesList as any as S.Schema<RepoListStatusesResponseBodyList>;
-
 export type RepoListStatusesResponse = RepoListStatusesResponseBodyList;
-const RepoListStatusesResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<RepoListStatusesResponse>;
-
 export type RepoListStatusesByRefRequestSort =
   | "oldest"
   | "recentupdate"
   | "leastupdate"
   | "leastindex"
   | "highestindex";
-const RepoListStatusesByRefRequestSort = S.String;
-
 export type RepoListStatusesByRefRequestState =
   | "pending"
   | "success"
   | "error"
   | "failure"
   | "warning";
-const RepoListStatusesByRefRequestState = S.String;
-
 export interface RepoListStatusesByRefRequest {
   /** owner of the repo */
   owner: string;
@@ -4852,21 +3174,8 @@ export interface RepoListStatusesByRefRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoListStatusesByRefRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<RepoListStatusesByRefRequest>;
-
 export type RepoListStatusesByRefResponseBodyList = Array<CommitStatus>;
-const RepoListStatusesByRefResponseBodyList =
-  CombinedStatusStatusesList as any as S.Schema<RepoListStatusesByRefResponseBodyList>;
-
 export type RepoListStatusesByRefResponse = RepoListStatusesByRefResponseBodyList;
-const RepoListStatusesByRefResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<RepoListStatusesByRefResponse>;
-
 export interface RepoListSubscribersRequest {
   /** owner of the repo */
   owner: string;
@@ -4877,39 +3186,16 @@ export interface RepoListSubscribersRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoListSubscribersRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<RepoListSubscribersRequest>;
-
 export type RepoListSubscribersResponseBodyList = Array<User>;
 export type RepoListSubscribersResponse = RepoListSubscribersResponseBodyList;
-const RepoListSubscribersResponse =
-  RepoListCollaboratorsResponse as any as S.Schema<RepoListSubscribersResponse>;
-
 export interface RepoListTagProtectionRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoListTagProtectionRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<RepoListTagProtectionRequest>;
-
 export type RepoListTagProtectionResponseBodyList = Array<TagProtection>;
-const RepoListTagProtectionResponseBodyList = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<RepoListTagProtectionResponseBodyList>;
-
 export type RepoListTagProtectionResponse = RepoListTagProtectionResponseBodyList;
-const RepoListTagProtectionResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<RepoListTagProtectionResponse>;
-
 export interface RepoListTagsRequest {
   /** owner of the repo */
   owner: string;
@@ -4920,41 +3206,16 @@ export interface RepoListTagsRequest {
   /** page size of results, default maximum page size is 50 */
   limit?: number;
 }
-const RepoListTagsRequest = /*@__PURE__*/ __L.at(__c41, 4) as any as S.Schema<RepoListTagsRequest>;
-
 export type RepoListTagsResponseBodyList = Array<Tag>;
-const RepoListTagsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<RepoListTagsResponseBodyList>;
-
 export type RepoListTagsResponse = RepoListTagsResponseBodyList;
-const RepoListTagsResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<RepoListTagsResponse>;
-
 export interface RepoListTeamsRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoListTeamsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<RepoListTeamsRequest>;
-
 export type RepoListTeamsResponseBodyList = Array<Team>;
-const RepoListTeamsResponseBodyList =
-  RepoTransferTeamsList as any as S.Schema<RepoListTeamsResponseBodyList>;
-
 export type RepoListTeamsResponse = RepoListTeamsResponseBodyList;
-const RepoListTeamsResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<RepoListTeamsResponse>;
-
 export interface RepoListTopicsRequest {
   /** owner of the repo */
   owner: string;
@@ -4965,20 +3226,11 @@ export interface RepoListTopicsRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoListTopicsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<RepoListTopicsRequest>;
-
 export type TopicNameTopicsList = Array<string>;
-const TopicNameTopicsList = RepositoryTopicsList as any as S.Schema<TopicNameTopicsList>;
-
 /** TopicName a list of repo topic names */
 export interface TopicName {
   topics?: TopicNameTopicsList;
 }
-const TopicName = /*@__PURE__*/ __L.at(__c42, 2) as any as S.Schema<TopicName>;
-
 export type RepoMergePullRequestRequestDo =
   | "merge"
   | "rebase"
@@ -4986,8 +3238,6 @@ export type RepoMergePullRequestRequestDo =
   | "squash"
   | "fast-forward-only"
   | "manually-merged";
-const RepoMergePullRequestRequestDo = S.String;
-
 export interface RepoMergePullRequestRequest {
   /** owner of the repo */
   owner: string;
@@ -5004,33 +3254,18 @@ export interface RepoMergePullRequestRequest {
   head_commit_id?: string;
   merge_when_checks_succeed?: boolean;
 }
-const RepoMergePullRequestRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<RepoMergePullRequestRequest>;
-
 export interface RepoMergePullRequestResponse {}
-const RepoMergePullRequestResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoMergePullRequestResponse>;
-
 export interface RepoNewPinAllowedRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoNewPinAllowedRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<RepoNewPinAllowedRequest>;
-
 /** NewIssuePinsAllowed represents an API response that says if new Issue Pins are allowed */
 export interface NewIssuePinsAllowed {
   issues?: boolean;
   pull_requests?: boolean;
 }
-const NewIssuePinsAllowed = /*@__PURE__*/ __L.at(__c42, 5) as any as S.Schema<NewIssuePinsAllowed>;
-
 export interface RepoPullRequestIsMergedRequest {
   /** owner of the repo */
   owner: string;
@@ -5039,15 +3274,7 @@ export interface RepoPullRequestIsMergedRequest {
   /** index of the pull request */
   index: number;
 }
-const RepoPullRequestIsMergedRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<RepoPullRequestIsMergedRequest>;
-
 export interface RepoPullRequestIsMergedResponse {}
-const RepoPullRequestIsMergedResponse =
-  RepoDeleteTagProtectionResponse as any as S.Schema<RepoPullRequestIsMergedResponse>;
-
 export interface RepoRemoveNoteRequest {
   /** owner of the repo */
   owner: string;
@@ -5056,19 +3283,8 @@ export interface RepoRemoveNoteRequest {
   /** a git ref or commit sha */
   sha: string;
 }
-const RepoRemoveNoteRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<RepoRemoveNoteRequest>;
-
 export interface RepoRemoveNoteResponse {}
-const RepoRemoveNoteResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoRemoveNoteResponse>;
-
 export type RepoReplaceAllFlagsRequestFlagsList = Array<string>;
-const RepoReplaceAllFlagsRequestFlagsList =
-  RepositoryTopicsList as any as S.Schema<RepoReplaceAllFlagsRequestFlagsList>;
-
 export interface RepoReplaceAllFlagsRequest {
   /** owner of the repo */
   owner: string;
@@ -5076,15 +3292,7 @@ export interface RepoReplaceAllFlagsRequest {
   repo: string;
   flags?: RepoReplaceAllFlagsRequestFlagsList;
 }
-const RepoReplaceAllFlagsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<RepoReplaceAllFlagsRequest>;
-
 export interface RepoReplaceAllFlagsResponse {}
-const RepoReplaceAllFlagsResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoReplaceAllFlagsResponse>;
-
 export interface RepoSearchRunJobsRequest {
   /** owner of the repo */
   owner: string;
@@ -5093,16 +3301,8 @@ export interface RepoSearchRunJobsRequest {
   /** a comma separated list of run job labels to search for */
   labels?: string;
 }
-const RepoSearchRunJobsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<RepoSearchRunJobsRequest>;
-
 export type RepoSearchRunJobsResponseBodyList = Array<ActionRunJob>;
 export type RepoSearchRunJobsResponse = RepoSearchRunJobsResponseBodyList;
-const RepoSearchRunJobsResponse =
-  ListActionRunJobsResponse as any as S.Schema<RepoSearchRunJobsResponse>;
-
 export interface RepoSetNoteRequest {
   /** owner of the repo */
   owner: string;
@@ -5112,25 +3312,13 @@ export interface RepoSetNoteRequest {
   sha: string;
   message?: string;
 }
-const RepoSetNoteRequest = /*@__PURE__*/ __L.at(__c43, 2) as any as S.Schema<RepoSetNoteRequest>;
-
 export interface RepoSigningKeyRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoSigningKeyRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<RepoSigningKeyRequest>;
-
 export type RepoSigningKeyResponse = string;
-const RepoSigningKeyResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<RepoSigningKeyResponse>;
-
 export interface RepoSubmitPullReviewRequest {
   /** owner of the repo */
   owner: string;
@@ -5143,11 +3331,6 @@ export interface RepoSubmitPullReviewRequest {
   body?: string;
   event?: string;
 }
-const RepoSubmitPullReviewRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<RepoSubmitPullReviewRequest>;
-
 export interface RepoSyncForkBranchRequest {
   /** owner of the repo */
   owner: string;
@@ -5156,15 +3339,7 @@ export interface RepoSyncForkBranchRequest {
   /** The branch */
   branch: string;
 }
-const RepoSyncForkBranchRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<RepoSyncForkBranchRequest>;
-
 export interface RepoSyncForkBranchResponse {}
-const RepoSyncForkBranchResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoSyncForkBranchResponse>;
-
 export interface RepoSyncForkBranchInfoRequest {
   /** owner of the repo */
   owner: string;
@@ -5173,11 +3348,6 @@ export interface RepoSyncForkBranchInfoRequest {
   /** The branch */
   branch: string;
 }
-const RepoSyncForkBranchInfoRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<RepoSyncForkBranchInfoRequest>;
-
 /** SyncForkInfo information about syncing a fork */
 export interface SyncForkInfo {
   allowed?: boolean;
@@ -5185,34 +3355,19 @@ export interface SyncForkInfo {
   commits_behind?: number;
   fork_commit?: string;
 }
-const SyncForkInfo = /*@__PURE__*/ __L.at(__c44, 0) as any as S.Schema<SyncForkInfo>;
-
 export interface RepoSyncForkDefaultRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoSyncForkDefaultRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<RepoSyncForkDefaultRequest>;
-
 export interface RepoSyncForkDefaultResponse {}
-const RepoSyncForkDefaultResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoSyncForkDefaultResponse>;
-
 export interface RepoSyncForkDefaultInfoRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoSyncForkDefaultInfoRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<RepoSyncForkDefaultInfoRequest>;
-
 export interface RepoTestHookRequest {
   /** owner of the repo */
   owner: string;
@@ -5223,11 +3378,7 @@ export interface RepoTestHookRequest {
   /** The name of the commit/branch/tag, indicates which commit will be loaded to the webhook payload. */
   ref?: string;
 }
-const RepoTestHookRequest = /*@__PURE__*/ __L.at(__c44, 3) as any as S.Schema<RepoTestHookRequest>;
-
 export interface RepoTestHookResponse {}
-const RepoTestHookResponse = AcceptRepoTransferResponse as any as S.Schema<RepoTestHookResponse>;
-
 export interface RepoTrackedTimesRequest {
   /** owner of the repo */
   owner: string;
@@ -5244,11 +3395,6 @@ export interface RepoTrackedTimesRequest {
   /** page size of results */
   limit?: number;
 }
-const RepoTrackedTimesRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<RepoTrackedTimesRequest>;
-
 /** TrackedTime worked time for an issue / pr */
 export interface TrackedTime {
   created?: string;
@@ -5262,20 +3408,8 @@ export interface TrackedTime {
   user_id?: number;
   user_name?: string;
 }
-const TrackedTime = /*@__PURE__*/ __L.at(__c44, 5) as any as S.Schema<TrackedTime>;
-
 export type RepoTrackedTimesResponseBodyList = Array<TrackedTime>;
-const RepoTrackedTimesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<RepoTrackedTimesResponseBodyList>;
-
 export type RepoTrackedTimesResponse = RepoTrackedTimesResponseBodyList;
-const RepoTrackedTimesResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<RepoTrackedTimesResponse>;
-
 export interface RepoUpdateAvatarRequest {
   /** owner of the repo */
   owner: string;
@@ -5284,15 +3418,7 @@ export interface RepoUpdateAvatarRequest {
   /** image must be base64 encoded */
   image?: string;
 }
-const RepoUpdateAvatarRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<RepoUpdateAvatarRequest>;
-
 export interface RepoUpdateAvatarResponse {}
-const RepoUpdateAvatarResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoUpdateAvatarResponse>;
-
 export interface RepoUpdateBranchRequest {
   /** owner of the repo */
   owner: string;
@@ -5303,15 +3429,7 @@ export interface RepoUpdateBranchRequest {
   /** New branch name */
   name: string;
 }
-const RepoUpdateBranchRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<RepoUpdateBranchRequest>;
-
 export interface RepoUpdateBranchResponse {}
-const RepoUpdateBranchResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoUpdateBranchResponse>;
-
 export interface RepoUpdateFileRequest {
   /** owner of the repo */
   owner: string;
@@ -5339,14 +3457,7 @@ export interface RepoUpdateFileRequest {
   /** Add a Signed-off-by trailer by the committer at the end of the commit log message. */
   signoff?: boolean;
 }
-const RepoUpdateFileRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<RepoUpdateFileRequest>;
-
 export type RepoUpdatePullRequestRequestStyle = "merge" | "rebase";
-const RepoUpdatePullRequestRequestStyle = S.String;
-
 export interface RepoUpdatePullRequestRequest {
   /** owner of the repo */
   owner: string;
@@ -5357,20 +3468,9 @@ export interface RepoUpdatePullRequestRequest {
   /** how to update pull request */
   style?: RepoUpdatePullRequestRequestStyle | (string & {});
 }
-const RepoUpdatePullRequestRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<RepoUpdatePullRequestRequest>;
-
 export interface RepoUpdatePullRequestResponse {}
-const RepoUpdatePullRequestResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoUpdatePullRequestResponse>;
-
 /** list of topic names */
 export type RepoUpdateTopicsRequestTopicsList = Array<string>;
-const RepoUpdateTopicsRequestTopicsList =
-  RepositoryTopicsList as any as S.Schema<RepoUpdateTopicsRequestTopicsList>;
-
 export interface RepoUpdateTopicsRequest {
   /** owner of the repo */
   owner: string;
@@ -5379,35 +3479,17 @@ export interface RepoUpdateTopicsRequest {
   /** list of topic names */
   topics?: RepoUpdateTopicsRequestTopicsList;
 }
-const RepoUpdateTopicsRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<RepoUpdateTopicsRequest>;
-
 export interface RepoUpdateTopicsResponse {}
-const RepoUpdateTopicsResponse =
-  AcceptRepoTransferResponse as any as S.Schema<RepoUpdateTopicsResponse>;
-
 export interface RepoValidateIssueConfigRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const RepoValidateIssueConfigRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<RepoValidateIssueConfigRequest>;
-
 export interface IssueConfigValidation {
   message?: string;
   valid?: boolean;
 }
-const IssueConfigValidation = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<IssueConfigValidation>;
-
 export interface ReviewRepoDismissPullRequest {
   /** owner of the repo */
   owner: string;
@@ -5420,11 +3502,6 @@ export interface ReviewRepoDismissPullRequest {
   message?: string;
   priors?: boolean;
 }
-const ReviewRepoDismissPullRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<ReviewRepoDismissPullRequest>;
-
 export interface ReviewRepoUnDismissPullRequest {
   /** owner of the repo */
   owner: string;
@@ -5435,11 +3512,6 @@ export interface ReviewRepoUnDismissPullRequest {
   /** id of the review */
   id: number;
 }
-const ReviewRepoUnDismissPullRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  0,
-) as any as S.Schema<ReviewRepoUnDismissPullRequest>;
-
 export type SearchRepoRequestSort =
   | "alpha"
   | "created"
@@ -5450,11 +3522,7 @@ export type SearchRepoRequestSort =
   | "id"
   | "stars"
   | "forks";
-const SearchRepoRequestSort = S.String;
-
 export type SearchRepoRequestOrder = "asc" | "desc";
-const SearchRepoRequestOrder = S.String;
-
 export interface SearchRepoRequest {
   /** keyword */
   q?: string;
@@ -5491,18 +3559,12 @@ export interface SearchRepoRequest {
   /** page size of results */
   limit?: number;
 }
-const SearchRepoRequest = /*@__PURE__*/ __L.at(__c46, 1) as any as S.Schema<SearchRepoRequest>;
-
 export type SearchResultsDataList = Array<Repository>;
-const SearchResultsDataList = ListForksResponseBodyList as any as S.Schema<SearchResultsDataList>;
-
 /** SearchResults results of a successful search */
 export interface SearchResults {
   data?: SearchResultsDataList;
   ok?: boolean;
 }
-const SearchResults = /*@__PURE__*/ __L.at(__c46, 2) as any as S.Schema<SearchResults>;
-
 export interface SearchTopicRequest {
   /** keyword to search for */
   q: string;
@@ -5511,8 +3573,6 @@ export interface SearchTopicRequest {
   /** page size of results */
   limit?: number;
 }
-const SearchTopicRequest = /*@__PURE__*/ __L.at(__c46, 3) as any as S.Schema<SearchTopicRequest>;
-
 /** TopicResponse for returning topics */
 export interface TopicResponse {
   created?: string;
@@ -5521,54 +3581,26 @@ export interface TopicResponse {
   topic_name?: string;
   updated?: string;
 }
-const TopicResponse = /*@__PURE__*/ __L.at(__c46, 4) as any as S.Schema<TopicResponse>;
-
 export type SearchTopicResponseTopicsList = Array<TopicResponse>;
-const SearchTopicResponseTopicsList = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<SearchTopicResponseTopicsList>;
-
 export interface SearchTopicResponse {
   topics?: SearchTopicResponseTopicsList;
 }
-const SearchTopicResponse = /*@__PURE__*/ __L.at(__c46, 6) as any as S.Schema<SearchTopicResponse>;
-
 export interface SyncRepoMirrorRequest {
   /** owner of the repo to sync */
   owner: string;
   /** name of the repo to sync */
   repo: string;
 }
-const SyncRepoMirrorRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<SyncRepoMirrorRequest>;
-
 export interface SyncRepoMirrorResponse {}
-const SyncRepoMirrorResponse =
-  AcceptRepoTransferResponse as any as S.Schema<SyncRepoMirrorResponse>;
-
 export interface SyncRepoPushMirrorRequest {
   /** owner of the repo to sync */
   owner: string;
   /** name of the repo to sync */
   repo: string;
 }
-const SyncRepoPushMirrorRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<SyncRepoPushMirrorRequest>;
-
 export interface SyncRepoPushMirrorResponse {}
-const SyncRepoPushMirrorResponse =
-  AcceptRepoTransferResponse as any as S.Schema<SyncRepoPushMirrorResponse>;
-
 /** ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories. */
 export type TransferRepoRequestTeamIdsList = Array<number>;
-const TransferRepoRequestTeamIdsList =
-  RepoCreatePullRequestRequestLabelsList as any as S.Schema<TransferRepoRequestTeamIdsList>;
-
 export interface TransferRepoRequest {
   /** owner of the repo to transfer */
   owner: string;
@@ -5578,11 +3610,7 @@ export interface TransferRepoRequest {
   /** ID of the team or teams to add to the repository. Teams can only be added to organization-owned repositories. */
   team_ids?: TransferRepoRequestTeamIdsList;
 }
-const TransferRepoRequest = /*@__PURE__*/ __L.at(__c47, 1) as any as S.Schema<TransferRepoRequest>;
-
 export interface TransferRepoResponse {}
-const TransferRepoResponse = AcceptRepoTransferResponse as any as S.Schema<TransferRepoResponse>;
-
 export interface UpdateRepoSecretRequest {
   /** owner of the repository */
   owner: string;
@@ -5593,15 +3621,7 @@ export interface UpdateRepoSecretRequest {
   /** Data of the secret. Special characters will be retained. Line endings will be normalized to LF to match the behaviour of browsers. Encode the data with Base64 if line endings should be retained. */
   data: string;
 }
-const UpdateRepoSecretRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<UpdateRepoSecretRequest>;
-
 export interface UpdateRepoSecretResponse {}
-const UpdateRepoSecretResponse =
-  AcceptRepoTransferResponse as any as S.Schema<UpdateRepoSecretResponse>;
-
 export interface UpdateRepoVariableRequest {
   /** name of the owner */
   owner: string;
@@ -5614,26 +3634,13 @@ export interface UpdateRepoVariableRequest {
   /** Value of the variable to update. Special characters will be retained. Line endings will be normalized to LF to match the behaviour of browsers. Encode the data with Base64 if line endings should be retained. */
   value: string;
 }
-const UpdateRepoVariableRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  3,
-) as any as S.Schema<UpdateRepoVariableRequest>;
-
 export interface UpdateRepoVariableResponse {}
-const UpdateRepoVariableResponse =
-  AcceptRepoTransferResponse as any as S.Schema<UpdateRepoVariableResponse>;
-
 export interface UserCurrentCheckSubscriptionRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const UserCurrentCheckSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<UserCurrentCheckSubscriptionRequest>;
-
 /** WatchInfo represents an API watch status of one repository */
 export interface WatchInfo {
   created_at?: string;
@@ -5643,34 +3650,19 @@ export interface WatchInfo {
   subscribed?: boolean;
   url?: string;
 }
-const WatchInfo = /*@__PURE__*/ __L.at(__c47, 5) as any as S.Schema<WatchInfo>;
-
 export interface UserCurrentDeleteSubscriptionRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const UserCurrentDeleteSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<UserCurrentDeleteSubscriptionRequest>;
-
 export interface UserCurrentDeleteSubscriptionResponse {}
-const UserCurrentDeleteSubscriptionResponse =
-  RepoCancelScheduledAutoMergeResponse as any as S.Schema<UserCurrentDeleteSubscriptionResponse>;
-
 export interface UserCurrentPutSubscriptionRequest {
   /** owner of the repo */
   owner: string;
   /** name of the repo */
   repo: string;
 }
-const UserCurrentPutSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<UserCurrentPutSubscriptionRequest>;
-
 export type AcceptRepoTransferError = Forbidden | NotFound | ForgejoOpError;
 /** Accept a repo transfer */
 export const acceptRepoTransfer: API.OperationMethod<
@@ -5679,8 +3671,8 @@ export const acceptRepoTransfer: API.OperationMethod<
   AcceptRepoTransferError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptRepoTransferRequest,
-  output: AcceptRepoTransferResponse,
+  input: __S(0) as any as S.Schema<AcceptRepoTransferRequest>,
+  output: __S(1) as any as S.Schema<AcceptRepoTransferResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5694,8 +3686,8 @@ export const actionRun2: API.OperationMethod<
   ActionRun2Error,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActionRunRequest,
-  output: ActionRun,
+  input: __S(2) as any as S.Schema<ActionRunRequest>,
+  output: __S(16) as any as S.Schema<ActionRun>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5709,8 +3701,8 @@ export const cancelActionRun: API.OperationMethod<
   CancelActionRunError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelActionRunRequest,
-  output: CancelActionRunResponse,
+  input: __S(17) as any as S.Schema<CancelActionRunRequest>,
+  output: __S(1) as any as S.Schema<CancelActionRunResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5724,8 +3716,8 @@ export const convertRepo: API.OperationMethod<
   ConvertRepoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConvertRepoRequest,
-  output: Repository,
+  input: __S(18) as any as S.Schema<ConvertRepoRequest>,
+  output: __S(15) as any as S.Schema<Repository>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5744,8 +3736,8 @@ export const createCurrentUserRepo: API.OperationMethod<
   CreateCurrentUserRepoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCurrentUserRepoRequest,
-  output: Repository,
+  input: __S(19) as any as S.Schema<CreateCurrentUserRepoRequest>,
+  output: __S(15) as any as S.Schema<Repository>,
   errors: [BadRequest, Forbidden, Conflict, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5764,8 +3756,8 @@ export const createFork: API.OperationMethod<
   CreateForkError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateForkRequest,
-  output: CreateForkResponse,
+  input: __S(20) as any as S.Schema<CreateForkRequest>,
+  output: __S(1) as any as S.Schema<CreateForkResponse>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5779,8 +3771,8 @@ export const createRepoVariable: API.OperationMethod<
   CreateRepoVariableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRepoVariableRequest,
-  output: CreateRepoVariableResponse,
+  input: __S(21) as any as S.Schema<CreateRepoVariableRequest>,
+  output: __S(1) as any as S.Schema<CreateRepoVariableResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5794,8 +3786,8 @@ export const deleteActionArtifact: API.OperationMethod<
   DeleteActionArtifactError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteActionArtifactRequest,
-  output: DeleteActionArtifactResponse,
+  input: __S(22) as any as S.Schema<DeleteActionArtifactRequest>,
+  output: __S(1) as any as S.Schema<DeleteActionArtifactResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5809,8 +3801,8 @@ export const deleteActionRun: API.OperationMethod<
   DeleteActionRunError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteActionRunRequest,
-  output: DeleteActionRunResponse,
+  input: __S(23) as any as S.Schema<DeleteActionRunRequest>,
+  output: __S(1) as any as S.Schema<DeleteActionRunResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5824,8 +3816,8 @@ export const deleteRepo: API.OperationMethod<
   DeleteRepoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRepoRequest,
-  output: DeleteRepoResponse,
+  input: __S(24) as any as S.Schema<DeleteRepoRequest>,
+  output: __S(1) as any as S.Schema<DeleteRepoResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5839,8 +3831,8 @@ export const deleteRepoRunner: API.OperationMethod<
   DeleteRepoRunnerError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRepoRunnerRequest,
-  output: DeleteRepoRunnerResponse,
+  input: __S(25) as any as S.Schema<DeleteRepoRunnerRequest>,
+  output: __S(1) as any as S.Schema<DeleteRepoRunnerResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5854,8 +3846,8 @@ export const deleteRepoSecret: API.OperationMethod<
   DeleteRepoSecretError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRepoSecretRequest,
-  output: DeleteRepoSecretResponse,
+  input: __S(26) as any as S.Schema<DeleteRepoSecretRequest>,
+  output: __S(1) as any as S.Schema<DeleteRepoSecretResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5869,8 +3861,8 @@ export const deleteRepoVariable: API.OperationMethod<
   DeleteRepoVariableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRepoVariableRequest,
-  output: DeleteRepoVariableResponse,
+  input: __S(27) as any as S.Schema<DeleteRepoVariableRequest>,
+  output: __S(1) as any as S.Schema<DeleteRepoVariableResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5884,8 +3876,8 @@ export const dispatchWorkflow: API.OperationMethod<
   DispatchWorkflowError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DispatchWorkflowRequest,
-  output: DispatchWorkflowRun,
+  input: __S(28) as any as S.Schema<DispatchWorkflowRequest>,
+  output: __S(29) as any as S.Schema<DispatchWorkflowRun>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5899,8 +3891,8 @@ export const downloadActionArtifact: API.OperationMethod<
   DownloadActionArtifactError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadActionArtifactRequest,
-  output: DownloadActionArtifactResponse,
+  input: __S(30) as any as S.Schema<DownloadActionArtifactRequest>,
+  output: __S(1) as any as S.Schema<DownloadActionArtifactResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5914,8 +3906,8 @@ export const editRepo: API.OperationMethod<
   EditRepoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EditRepoRequest,
-  output: Repository,
+  input: __S(31) as any as S.Schema<EditRepoRequest>,
+  output: __S(15) as any as S.Schema<Repository>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5934,8 +3926,8 @@ export const generateRepo: API.OperationMethod<
   GenerateRepoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateRepoRequest,
-  output: Repository,
+  input: __S(32) as any as S.Schema<GenerateRepoRequest>,
+  output: __S(15) as any as S.Schema<Repository>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5949,8 +3941,8 @@ export const getActionArtifact: API.OperationMethod<
   GetActionArtifactError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActionArtifactRequest,
-  output: ActionArtifact,
+  input: __S(33) as any as S.Schema<GetActionArtifactRequest>,
+  output: __S(34) as any as S.Schema<ActionArtifact>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5964,8 +3956,8 @@ export const getAnnotatedTag: API.OperationMethod<
   GetAnnotatedTagError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAnnotatedTagRequest,
-  output: AnnotatedTag,
+  input: __S(35) as any as S.Schema<GetAnnotatedTagRequest>,
+  output: __S(41) as any as S.Schema<AnnotatedTag>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -5975,8 +3967,8 @@ export type GetBlobError = BadRequest | NotFound | ForgejoOpError;
 /** Gets the blob of a repository. */
 export const getBlob: API.OperationMethod<GetBlobRequest, GitBlob, GetBlobError, ForgejoOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetBlobRequest,
-    output: GitBlob,
+    input: __S(42) as any as S.Schema<GetBlobRequest>,
+    output: __S(43) as any as S.Schema<GitBlob>,
     errors: [BadRequest, NotFound],
     protocol: ForgejoProtocol,
     retry: Retry.Retry,
@@ -5990,8 +3982,8 @@ export const getBlobs: API.OperationMethod<
   GetBlobsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBlobsRequest,
-  output: GetBlobsResponse,
+  input: __S(44) as any as S.Schema<GetBlobsRequest>,
+  output: __S(46) as any as S.Schema<GetBlobsResponse>,
   errors: [BadRequest],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6005,8 +3997,8 @@ export const getRepo: API.OperationMethod<
   GetRepoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoRequest,
-  output: Repository,
+  input: __S(47) as any as S.Schema<GetRepoRequest>,
+  output: __S(15) as any as S.Schema<Repository>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6020,8 +4012,8 @@ export const getRepoPermissions: API.OperationMethod<
   GetRepoPermissionsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoPermissionsRequest,
-  output: RepoCollaboratorPermission,
+  input: __S(48) as any as S.Schema<GetRepoPermissionsRequest>,
+  output: __S(49) as any as S.Schema<RepoCollaboratorPermission>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6035,8 +4027,8 @@ export const getRepoRunner: API.OperationMethod<
   GetRepoRunnerError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoRunnerRequest,
-  output: ActionRunner,
+  input: __S(50) as any as S.Schema<GetRepoRunnerRequest>,
+  output: __S(51) as any as S.Schema<ActionRunner>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6050,8 +4042,8 @@ export const getRepoRunners: API.OperationMethod<
   GetRepoRunnersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoRunnersRequest,
-  output: GetRepoRunnersResponse,
+  input: __S(52) as any as S.Schema<GetRepoRunnersRequest>,
+  output: __S(54) as any as S.Schema<GetRepoRunnersResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6065,8 +4057,8 @@ export const getRepoVariable: API.OperationMethod<
   GetRepoVariableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoVariableRequest,
-  output: ActionVariable,
+  input: __S(55) as any as S.Schema<GetRepoVariableRequest>,
+  output: __S(56) as any as S.Schema<ActionVariable>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6080,8 +4072,8 @@ export const getRepoVariablesList: API.OperationMethod<
   GetRepoVariablesListError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoVariablesListRequest,
-  output: GetRepoVariablesListResponse,
+  input: __S(57) as any as S.Schema<GetRepoVariablesListRequest>,
+  output: __S(59) as any as S.Schema<GetRepoVariablesListResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6095,8 +4087,8 @@ export const getTree: API.OperationMethod<
   GetTreeError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTreeRequest,
-  output: GitTreeResponse,
+  input: __S(60) as any as S.Schema<GetTreeRequest>,
+  output: __S(63) as any as S.Schema<GitTreeResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6110,8 +4102,8 @@ export const listActionArtifacts: API.OperationMethod<
   ListActionArtifactsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListActionArtifactsRequest,
-  output: ListActionArtifactsResponse,
+  input: __S(64) as any as S.Schema<ListActionArtifactsRequest>,
+  output: __S(66) as any as S.Schema<ListActionArtifactsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6125,8 +4117,8 @@ export const listActionRunArtifacts: API.OperationMethod<
   ListActionRunArtifactsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListActionRunArtifactsRequest,
-  output: ListActionRunArtifactsResponse,
+  input: __S(67) as any as S.Schema<ListActionRunArtifactsRequest>,
+  output: __S(66) as any as S.Schema<ListActionRunArtifactsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6140,8 +4132,8 @@ export const listActionRunJobs: API.OperationMethod<
   ListActionRunJobsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListActionRunJobsRequest,
-  output: ListActionRunJobsResponse,
+  input: __S(68) as any as S.Schema<ListActionRunJobsRequest>,
+  output: __S(71) as any as S.Schema<ListActionRunJobsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6155,8 +4147,8 @@ export const listActionRuns: API.OperationMethod<
   ListActionRunsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListActionRunsRequest,
-  output: ListActionRunResponse,
+  input: __S(73) as any as S.Schema<ListActionRunsRequest>,
+  output: __S(75) as any as S.Schema<ListActionRunResponse>,
   errors: [BadRequest, Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6176,8 +4168,8 @@ export const listActionTasks: API.OperationMethod<
   ListActionTasksError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListActionTasksRequest,
-  output: ActionTaskResponse,
+  input: __S(76) as any as S.Schema<ListActionTasksRequest>,
+  output: __S(79) as any as S.Schema<ActionTaskResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6191,8 +4183,8 @@ export const listForks: API.OperationMethod<
   ListForksError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForksRequest,
-  output: ListForksResponse,
+  input: __S(80) as any as S.Schema<ListForksRequest>,
+  output: __S(82) as any as S.Schema<ListForksResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6206,8 +4198,8 @@ export const migrateRepo: API.OperationMethod<
   MigrateRepoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MigrateRepoRequest,
-  output: Repository,
+  input: __S(83) as any as S.Schema<MigrateRepoRequest>,
+  output: __S(15) as any as S.Schema<Repository>,
   errors: [Forbidden, Conflict, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6221,8 +4213,8 @@ export const registerRepoRunner: API.OperationMethod<
   RegisterRepoRunnerError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterRepoRunnerRequest,
-  output: RegisterRunnerResponse,
+  input: __S(84) as any as S.Schema<RegisterRepoRunnerRequest>,
+  output: __S(85) as any as S.Schema<RegisterRunnerResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6236,8 +4228,8 @@ export const rejectRepoTransfer: API.OperationMethod<
   RejectRepoTransferError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RejectRepoTransferRequest,
-  output: Repository,
+  input: __S(86) as any as S.Schema<RejectRepoTransferRequest>,
+  output: __S(15) as any as S.Schema<Repository>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6251,8 +4243,8 @@ export const repoAddCollaborator: API.OperationMethod<
   RepoAddCollaboratorError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoAddCollaboratorRequest,
-  output: RepoAddCollaboratorResponse,
+  input: __S(87) as any as S.Schema<RepoAddCollaboratorRequest>,
+  output: __S(1) as any as S.Schema<RepoAddCollaboratorResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6266,8 +4258,8 @@ export const repoAddFlag: API.OperationMethod<
   RepoAddFlagError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoAddFlagRequest,
-  output: RepoAddFlagResponse,
+  input: __S(88) as any as S.Schema<RepoAddFlagRequest>,
+  output: __S(1) as any as S.Schema<RepoAddFlagResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6281,8 +4273,8 @@ export const repoAddPushMirror: API.OperationMethod<
   RepoAddPushMirrorError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoAddPushMirrorRequest,
-  output: PushMirror,
+  input: __S(89) as any as S.Schema<RepoAddPushMirrorRequest>,
+  output: __S(90) as any as S.Schema<PushMirror>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6296,8 +4288,8 @@ export const repoAddTeam: API.OperationMethod<
   RepoAddTeamError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoAddTeamRequest,
-  output: RepoAddTeamResponse,
+  input: __S(91) as any as S.Schema<RepoAddTeamRequest>,
+  output: __S(1) as any as S.Schema<RepoAddTeamResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6311,8 +4303,8 @@ export const repoAddTopic: API.OperationMethod<
   RepoAddTopicError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoAddTopicRequest,
-  output: RepoAddTopicResponse,
+  input: __S(92) as any as S.Schema<RepoAddTopicRequest>,
+  output: __S(1) as any as S.Schema<RepoAddTopicResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6326,8 +4318,8 @@ export const repoApplyDiffPatch: API.OperationMethod<
   RepoApplyDiffPatchError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoApplyDiffPatchRequest,
-  output: FileResponse,
+  input: __S(95) as any as S.Schema<RepoApplyDiffPatchRequest>,
+  output: __S(101) as any as S.Schema<FileResponse>,
   errors: [NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6341,8 +4333,8 @@ export const repoCancelScheduledAutoMerge: API.OperationMethod<
   RepoCancelScheduledAutoMergeError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCancelScheduledAutoMergeRequest,
-  output: RepoCancelScheduledAutoMergeResponse,
+  input: __S(102) as any as S.Schema<RepoCancelScheduledAutoMergeRequest>,
+  output: __S(103) as any as S.Schema<RepoCancelScheduledAutoMergeResponse>,
   errors: [Forbidden, NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6362,8 +4354,8 @@ export const repoChangeFiles: API.OperationMethod<
   RepoChangeFilesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoChangeFilesRequest,
-  output: FilesResponse,
+  input: __S(106) as any as S.Schema<RepoChangeFilesRequest>,
+  output: __S(108) as any as S.Schema<FilesResponse>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6377,8 +4369,8 @@ export const repoCheckCollaborator: API.OperationMethod<
   RepoCheckCollaboratorError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCheckCollaboratorRequest,
-  output: RepoCheckCollaboratorResponse,
+  input: __S(109) as any as S.Schema<RepoCheckCollaboratorRequest>,
+  output: __S(1) as any as S.Schema<RepoCheckCollaboratorResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6392,8 +4384,8 @@ export const repoCheckFlag: API.OperationMethod<
   RepoCheckFlagError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCheckFlagRequest,
-  output: RepoCheckFlagResponse,
+  input: __S(110) as any as S.Schema<RepoCheckFlagRequest>,
+  output: __S(1) as any as S.Schema<RepoCheckFlagResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6407,8 +4399,8 @@ export const repoCheckTeam: API.OperationMethod<
   RepoCheckTeamError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCheckTeamRequest,
-  output: Team,
+  input: __S(111) as any as S.Schema<RepoCheckTeamRequest>,
+  output: __S(11) as any as S.Schema<Team>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6422,8 +4414,8 @@ export const repoCompareDiff: API.OperationMethod<
   RepoCompareDiffError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCompareDiffRequest,
-  output: Compare,
+  input: __S(112) as any as S.Schema<RepoCompareDiffRequest>,
+  output: __S(119) as any as S.Schema<Compare>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6437,8 +4429,8 @@ export const repoCreateBranch: API.OperationMethod<
   RepoCreateBranchError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCreateBranchRequest,
-  output: Branch,
+  input: __S(120) as any as S.Schema<RepoCreateBranchRequest>,
+  output: __S(122) as any as S.Schema<Branch>,
   errors: [Forbidden, NotFound, Conflict, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6457,8 +4449,8 @@ export const repoCreateBranchProtection: API.OperationMethod<
   RepoCreateBranchProtectionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCreateBranchProtectionRequest,
-  output: BranchProtection,
+  input: __S(124) as any as S.Schema<RepoCreateBranchProtectionRequest>,
+  output: __S(125) as any as S.Schema<BranchProtection>,
   errors: [Forbidden, NotFound, UnprocessableEntity, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6478,8 +4470,8 @@ export const repoCreateFile: API.OperationMethod<
   RepoCreateFileError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCreateFileRequest,
-  output: FileResponse,
+  input: __S(126) as any as S.Schema<RepoCreateFileRequest>,
+  output: __S(101) as any as S.Schema<FileResponse>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6493,8 +4485,8 @@ export const repoCreateHook: API.OperationMethod<
   RepoCreateHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCreateHookRequest,
-  output: Hook,
+  input: __S(127) as any as S.Schema<RepoCreateHookRequest>,
+  output: __S(128) as any as S.Schema<Hook>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6508,8 +4500,8 @@ export const repoCreateKey: API.OperationMethod<
   RepoCreateKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCreateKeyRequest,
-  output: DeployKey,
+  input: __S(129) as any as S.Schema<RepoCreateKeyRequest>,
+  output: __S(130) as any as S.Schema<DeployKey>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6528,8 +4520,8 @@ export const repoCreatePullRequest: API.OperationMethod<
   RepoCreatePullRequestError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCreatePullRequestRequest,
-  output: PullRequest,
+  input: __S(132) as any as S.Schema<RepoCreatePullRequestRequest>,
+  output: __S(138) as any as S.Schema<PullRequest>,
   errors: [NotFound, Conflict, UnprocessableEntity, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6543,8 +4535,8 @@ export const repoCreatePullReview: API.OperationMethod<
   RepoCreatePullReviewError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCreatePullReviewRequest,
-  output: PullReview,
+  input: __S(141) as any as S.Schema<RepoCreatePullReviewRequest>,
+  output: __S(142) as any as S.Schema<PullReview>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6558,8 +4550,8 @@ export const repoCreatePullReviewComment: API.OperationMethod<
   RepoCreatePullReviewCommentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCreatePullReviewCommentRequest,
-  output: PullReviewComment,
+  input: __S(143) as any as S.Schema<RepoCreatePullReviewCommentRequest>,
+  output: __S(144) as any as S.Schema<PullReviewComment>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6577,8 +4569,8 @@ export const repoCreatePullReviewRequests: API.OperationMethod<
   RepoCreatePullReviewRequestsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCreatePullReviewRequestsRequest,
-  output: RepoCreatePullReviewRequestsResponse,
+  input: __S(145) as any as S.Schema<RepoCreatePullReviewRequestsRequest>,
+  output: __S(147) as any as S.Schema<RepoCreatePullReviewRequestsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6592,8 +4584,8 @@ export const repoCreateRelease: API.OperationMethod<
   RepoCreateReleaseError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCreateReleaseRequest,
-  output: Release,
+  input: __S(148) as any as S.Schema<RepoCreateReleaseRequest>,
+  output: __S(151) as any as S.Schema<Release>,
   errors: [NotFound, Conflict, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6607,8 +4599,8 @@ export const repoCreateReleaseAttachment: API.OperationMethod<
   RepoCreateReleaseAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCreateReleaseAttachmentRequest,
-  output: Attachment,
+  input: __S(152) as any as S.Schema<RepoCreateReleaseAttachmentRequest>,
+  output: __S(149) as any as S.Schema<Attachment>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6622,8 +4614,8 @@ export const repoCreateStatus: API.OperationMethod<
   RepoCreateStatusError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCreateStatusRequest,
-  output: CommitStatus,
+  input: __S(153) as any as S.Schema<RepoCreateStatusRequest>,
+  output: __S(154) as any as S.Schema<CommitStatus>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6642,8 +4634,8 @@ export const repoCreateTag: API.OperationMethod<
   RepoCreateTagError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCreateTagRequest,
-  output: Tag,
+  input: __S(155) as any as S.Schema<RepoCreateTagRequest>,
+  output: __S(156) as any as S.Schema<Tag>,
   errors: [NotFound, Conflict, UnprocessableEntity, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6662,8 +4654,8 @@ export const repoCreateTagProtection: API.OperationMethod<
   RepoCreateTagProtectionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCreateTagProtectionRequest,
-  output: TagProtection,
+  input: __S(157) as any as S.Schema<RepoCreateTagProtectionRequest>,
+  output: __S(158) as any as S.Schema<TagProtection>,
   errors: [Forbidden, NotFound, UnprocessableEntity, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6677,8 +4669,8 @@ export const repoCreateWikiPage: API.OperationMethod<
   RepoCreateWikiPageError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoCreateWikiPageRequest,
-  output: WikiPage,
+  input: __S(159) as any as S.Schema<RepoCreateWikiPageRequest>,
+  output: __S(161) as any as S.Schema<WikiPage>,
   errors: [BadRequest, Forbidden, NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6692,8 +4684,8 @@ export const repoDeleteAllFlags: API.OperationMethod<
   RepoDeleteAllFlagsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteAllFlagsRequest,
-  output: RepoDeleteAllFlagsResponse,
+  input: __S(162) as any as S.Schema<RepoDeleteAllFlagsRequest>,
+  output: __S(1) as any as S.Schema<RepoDeleteAllFlagsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6707,8 +4699,8 @@ export const repoDeleteAvatar: API.OperationMethod<
   RepoDeleteAvatarError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteAvatarRequest,
-  output: RepoDeleteAvatarResponse,
+  input: __S(163) as any as S.Schema<RepoDeleteAvatarRequest>,
+  output: __S(1) as any as S.Schema<RepoDeleteAvatarResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6722,8 +4714,8 @@ export const repoDeleteBranch: API.OperationMethod<
   RepoDeleteBranchError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteBranchRequest,
-  output: RepoDeleteBranchResponse,
+  input: __S(164) as any as S.Schema<RepoDeleteBranchRequest>,
+  output: __S(1) as any as S.Schema<RepoDeleteBranchResponse>,
   errors: [Forbidden, NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6737,8 +4729,8 @@ export const repoDeleteBranchProtection: API.OperationMethod<
   RepoDeleteBranchProtectionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteBranchProtectionRequest,
-  output: RepoDeleteBranchProtectionResponse,
+  input: __S(165) as any as S.Schema<RepoDeleteBranchProtectionRequest>,
+  output: __S(103) as any as S.Schema<RepoDeleteBranchProtectionResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6752,8 +4744,8 @@ export const repoDeleteCollaborator: API.OperationMethod<
   RepoDeleteCollaboratorError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteCollaboratorRequest,
-  output: RepoDeleteCollaboratorResponse,
+  input: __S(166) as any as S.Schema<RepoDeleteCollaboratorRequest>,
+  output: __S(1) as any as S.Schema<RepoDeleteCollaboratorResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6767,8 +4759,8 @@ export const repoDeleteFile: API.OperationMethod<
   RepoDeleteFileError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteFileRequest,
-  output: FileDeleteResponse,
+  input: __S(167) as any as S.Schema<RepoDeleteFileRequest>,
+  output: __S(168) as any as S.Schema<FileDeleteResponse>,
   errors: [BadRequest, Forbidden, NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6782,8 +4774,8 @@ export const repoDeleteFlag: API.OperationMethod<
   RepoDeleteFlagError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteFlagRequest,
-  output: RepoDeleteFlagResponse,
+  input: __S(169) as any as S.Schema<RepoDeleteFlagRequest>,
+  output: __S(1) as any as S.Schema<RepoDeleteFlagResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6797,8 +4789,8 @@ export const repoDeleteGitHook: API.OperationMethod<
   RepoDeleteGitHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteGitHookRequest,
-  output: RepoDeleteGitHookResponse,
+  input: __S(170) as any as S.Schema<RepoDeleteGitHookRequest>,
+  output: __S(1) as any as S.Schema<RepoDeleteGitHookResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6812,8 +4804,8 @@ export const repoDeleteHook: API.OperationMethod<
   RepoDeleteHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteHookRequest,
-  output: RepoDeleteHookResponse,
+  input: __S(171) as any as S.Schema<RepoDeleteHookRequest>,
+  output: __S(1) as any as S.Schema<RepoDeleteHookResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6827,8 +4819,8 @@ export const repoDeleteKey: API.OperationMethod<
   RepoDeleteKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteKeyRequest,
-  output: RepoDeleteKeyResponse,
+  input: __S(172) as any as S.Schema<RepoDeleteKeyRequest>,
+  output: __S(1) as any as S.Schema<RepoDeleteKeyResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6842,8 +4834,8 @@ export const repoDeletePullReview: API.OperationMethod<
   RepoDeletePullReviewError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeletePullReviewRequest,
-  output: RepoDeletePullReviewResponse,
+  input: __S(173) as any as S.Schema<RepoDeletePullReviewRequest>,
+  output: __S(1) as any as S.Schema<RepoDeletePullReviewResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6857,8 +4849,8 @@ export const repoDeletePullReviewComment: API.OperationMethod<
   RepoDeletePullReviewCommentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeletePullReviewCommentRequest,
-  output: RepoDeletePullReviewCommentResponse,
+  input: __S(174) as any as S.Schema<RepoDeletePullReviewCommentRequest>,
+  output: __S(103) as any as S.Schema<RepoDeletePullReviewCommentResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6876,8 +4868,8 @@ export const repoDeletePullReviewRequests: API.OperationMethod<
   RepoDeletePullReviewRequestsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeletePullReviewRequestsRequest,
-  output: RepoDeletePullReviewRequestsResponse,
+  input: __S(175) as any as S.Schema<RepoDeletePullReviewRequestsRequest>,
+  output: __S(103) as any as S.Schema<RepoDeletePullReviewRequestsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6891,8 +4883,8 @@ export const repoDeletePushMirror: API.OperationMethod<
   RepoDeletePushMirrorError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeletePushMirrorRequest,
-  output: RepoDeletePushMirrorResponse,
+  input: __S(176) as any as S.Schema<RepoDeletePushMirrorRequest>,
+  output: __S(1) as any as S.Schema<RepoDeletePushMirrorResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6906,8 +4898,8 @@ export const repoDeleteRelease: API.OperationMethod<
   RepoDeleteReleaseError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteReleaseRequest,
-  output: RepoDeleteReleaseResponse,
+  input: __S(177) as any as S.Schema<RepoDeleteReleaseRequest>,
+  output: __S(1) as any as S.Schema<RepoDeleteReleaseResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6921,8 +4913,8 @@ export const repoDeleteReleaseAttachment: API.OperationMethod<
   RepoDeleteReleaseAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteReleaseAttachmentRequest,
-  output: RepoDeleteReleaseAttachmentResponse,
+  input: __S(178) as any as S.Schema<RepoDeleteReleaseAttachmentRequest>,
+  output: __S(103) as any as S.Schema<RepoDeleteReleaseAttachmentResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6936,8 +4928,8 @@ export const repoDeleteReleaseByTag: API.OperationMethod<
   RepoDeleteReleaseByTagError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteReleaseByTagRequest,
-  output: RepoDeleteReleaseByTagResponse,
+  input: __S(179) as any as S.Schema<RepoDeleteReleaseByTagRequest>,
+  output: __S(1) as any as S.Schema<RepoDeleteReleaseByTagResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6956,8 +4948,8 @@ export const repoDeleteTag: API.OperationMethod<
   RepoDeleteTagError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteTagRequest,
-  output: RepoDeleteTagResponse,
+  input: __S(180) as any as S.Schema<RepoDeleteTagRequest>,
+  output: __S(1) as any as S.Schema<RepoDeleteTagResponse>,
   errors: [NotFound, Conflict, UnprocessableEntity, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6971,8 +4963,8 @@ export const repoDeleteTagProtection: API.OperationMethod<
   RepoDeleteTagProtectionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteTagProtectionRequest,
-  output: RepoDeleteTagProtectionResponse,
+  input: __S(181) as any as S.Schema<RepoDeleteTagProtectionRequest>,
+  output: __S(182) as any as S.Schema<RepoDeleteTagProtectionResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -6986,8 +4978,8 @@ export const repoDeleteTeam: API.OperationMethod<
   RepoDeleteTeamError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteTeamRequest,
-  output: RepoDeleteTeamResponse,
+  input: __S(183) as any as S.Schema<RepoDeleteTeamRequest>,
+  output: __S(1) as any as S.Schema<RepoDeleteTeamResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7001,8 +4993,8 @@ export const repoDeleteTopic: API.OperationMethod<
   RepoDeleteTopicError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteTopicRequest,
-  output: RepoDeleteTopicResponse,
+  input: __S(184) as any as S.Schema<RepoDeleteTopicRequest>,
+  output: __S(1) as any as S.Schema<RepoDeleteTopicResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7016,8 +5008,8 @@ export const repoDeleteWikiPage: API.OperationMethod<
   RepoDeleteWikiPageError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDeleteWikiPageRequest,
-  output: RepoDeleteWikiPageResponse,
+  input: __S(185) as any as S.Schema<RepoDeleteWikiPageRequest>,
+  output: __S(1) as any as S.Schema<RepoDeleteWikiPageResponse>,
   errors: [Forbidden, NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7031,8 +5023,8 @@ export const repoDownloadCommitDiffOrPatch: API.OperationMethod<
   RepoDownloadCommitDiffOrPatchError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDownloadCommitDiffOrPatchRequest,
-  output: RepoDownloadCommitDiffOrPatchResponse,
+  input: __S(186) as any as S.Schema<RepoDownloadCommitDiffOrPatchRequest>,
+  output: __S(187) as any as S.Schema<RepoDownloadCommitDiffOrPatchResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7046,8 +5038,8 @@ export const repoDownloadPullDiffOrPatch: API.OperationMethod<
   RepoDownloadPullDiffOrPatchError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoDownloadPullDiffOrPatchRequest,
-  output: RepoDownloadPullDiffOrPatchResponse,
+  input: __S(188) as any as S.Schema<RepoDownloadPullDiffOrPatchRequest>,
+  output: __S(187) as any as S.Schema<RepoDownloadPullDiffOrPatchResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7065,8 +5057,8 @@ export const repoEditBranchProtection: API.OperationMethod<
   RepoEditBranchProtectionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoEditBranchProtectionRequest,
-  output: BranchProtection,
+  input: __S(189) as any as S.Schema<RepoEditBranchProtectionRequest>,
+  output: __S(125) as any as S.Schema<BranchProtection>,
   errors: [NotFound, UnprocessableEntity, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7080,8 +5072,8 @@ export const repoEditGitHook: API.OperationMethod<
   RepoEditGitHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoEditGitHookRequest,
-  output: GitHook,
+  input: __S(190) as any as S.Schema<RepoEditGitHookRequest>,
+  output: __S(191) as any as S.Schema<GitHook>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7095,8 +5087,8 @@ export const repoEditHook: API.OperationMethod<
   RepoEditHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoEditHookRequest,
-  output: Hook,
+  input: __S(192) as any as S.Schema<RepoEditHookRequest>,
+  output: __S(128) as any as S.Schema<Hook>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7115,8 +5107,8 @@ export const repoEditPullRequest: API.OperationMethod<
   RepoEditPullRequestError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoEditPullRequestRequest,
-  output: PullRequest,
+  input: __S(193) as any as S.Schema<RepoEditPullRequestRequest>,
+  output: __S(138) as any as S.Schema<PullRequest>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7130,8 +5122,8 @@ export const repoEditRelease: API.OperationMethod<
   RepoEditReleaseError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoEditReleaseRequest,
-  output: Release,
+  input: __S(194) as any as S.Schema<RepoEditReleaseRequest>,
+  output: __S(151) as any as S.Schema<Release>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7145,8 +5137,8 @@ export const repoEditReleaseAttachment: API.OperationMethod<
   RepoEditReleaseAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoEditReleaseAttachmentRequest,
-  output: Attachment,
+  input: __S(195) as any as S.Schema<RepoEditReleaseAttachmentRequest>,
+  output: __S(149) as any as S.Schema<Attachment>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7160,8 +5152,8 @@ export const repoEditTagProtection: API.OperationMethod<
   RepoEditTagProtectionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoEditTagProtectionRequest,
-  output: TagProtection,
+  input: __S(196) as any as S.Schema<RepoEditTagProtectionRequest>,
+  output: __S(158) as any as S.Schema<TagProtection>,
   errors: [NotFound, UnprocessableEntity, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7175,8 +5167,8 @@ export const repoEditWikiPage: API.OperationMethod<
   RepoEditWikiPageError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoEditWikiPageRequest,
-  output: WikiPage,
+  input: __S(197) as any as S.Schema<RepoEditWikiPageRequest>,
+  output: __S(161) as any as S.Schema<WikiPage>,
   errors: [BadRequest, Forbidden, NotFound, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7190,8 +5182,8 @@ export const repoGetActionJobLogs: API.OperationMethod<
   RepoGetActionJobLogsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetActionJobLogsRequest,
-  output: RepoGetActionJobLogsResponse,
+  input: __S(198) as any as S.Schema<RepoGetActionJobLogsRequest>,
+  output: __S(187) as any as S.Schema<RepoGetActionJobLogsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7205,8 +5197,8 @@ export const repoGetActionRunLogs: API.OperationMethod<
   RepoGetActionRunLogsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetActionRunLogsRequest,
-  output: RepoGetActionRunLogsResponse,
+  input: __S(199) as any as S.Schema<RepoGetActionRunLogsRequest>,
+  output: __S(187) as any as S.Schema<RepoGetActionRunLogsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7220,8 +5212,8 @@ export const repoGetAllCommits: API.OperationMethod<
   RepoGetAllCommitsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetAllCommitsRequest,
-  output: RepoGetAllCommitsResponse,
+  input: __S(200) as any as S.Schema<RepoGetAllCommitsRequest>,
+  output: __S(201) as any as S.Schema<RepoGetAllCommitsResponse>,
   errors: [NotFound, Conflict],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7235,8 +5227,8 @@ export const repoGetArchive: API.OperationMethod<
   RepoGetArchiveError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetArchiveRequest,
-  output: RepoGetArchiveResponse,
+  input: __S(202) as any as S.Schema<RepoGetArchiveRequest>,
+  output: __S(1) as any as S.Schema<RepoGetArchiveResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7250,8 +5242,8 @@ export const repoGetAssignees: API.OperationMethod<
   RepoGetAssigneesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetAssigneesRequest,
-  output: RepoGetAssigneesResponse,
+  input: __S(203) as any as S.Schema<RepoGetAssigneesRequest>,
+  output: __S(204) as any as S.Schema<RepoGetAssigneesResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7265,8 +5257,8 @@ export const repoGetBranch: API.OperationMethod<
   RepoGetBranchError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetBranchRequest,
-  output: Branch,
+  input: __S(205) as any as S.Schema<RepoGetBranchRequest>,
+  output: __S(122) as any as S.Schema<Branch>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7280,8 +5272,8 @@ export const repoGetBranchProtection: API.OperationMethod<
   RepoGetBranchProtectionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetBranchProtectionRequest,
-  output: BranchProtection,
+  input: __S(206) as any as S.Schema<RepoGetBranchProtectionRequest>,
+  output: __S(125) as any as S.Schema<BranchProtection>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7295,8 +5287,8 @@ export const repoGetByID: API.OperationMethod<
   RepoGetByIDError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetByIDRequest,
-  output: Repository,
+  input: __S(207) as any as S.Schema<RepoGetByIDRequest>,
+  output: __S(15) as any as S.Schema<Repository>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7310,8 +5302,8 @@ export const repoGetCombinedStatusByRef: API.OperationMethod<
   RepoGetCombinedStatusByRefError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetCombinedStatusByRefRequest,
-  output: CombinedStatus,
+  input: __S(208) as any as S.Schema<RepoGetCombinedStatusByRefRequest>,
+  output: __S(210) as any as S.Schema<CombinedStatus>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7325,8 +5317,8 @@ export const repoGetCommitPullRequest: API.OperationMethod<
   RepoGetCommitPullRequestError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetCommitPullRequestRequest,
-  output: PullRequest,
+  input: __S(211) as any as S.Schema<RepoGetCommitPullRequestRequest>,
+  output: __S(138) as any as S.Schema<PullRequest>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7340,8 +5332,8 @@ export const repoGetContents: API.OperationMethod<
   RepoGetContentsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetContentsRequest,
-  output: ContentsResponse,
+  input: __S(212) as any as S.Schema<RepoGetContentsRequest>,
+  output: __S(100) as any as S.Schema<ContentsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7355,8 +5347,8 @@ export const repoGetContentsList: API.OperationMethod<
   RepoGetContentsListError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetContentsListRequest,
-  output: RepoGetContentsListResponse,
+  input: __S(213) as any as S.Schema<RepoGetContentsListRequest>,
+  output: __S(214) as any as S.Schema<RepoGetContentsListResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7370,8 +5362,8 @@ export const repoGetEditorConfig: API.OperationMethod<
   RepoGetEditorConfigError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetEditorConfigRequest,
-  output: RepoGetEditorConfigResponse,
+  input: __S(215) as any as S.Schema<RepoGetEditorConfigRequest>,
+  output: __S(216) as any as S.Schema<RepoGetEditorConfigResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7385,8 +5377,8 @@ export const repoGetGitHook: API.OperationMethod<
   RepoGetGitHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetGitHookRequest,
-  output: GitHook,
+  input: __S(217) as any as S.Schema<RepoGetGitHookRequest>,
+  output: __S(191) as any as S.Schema<GitHook>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7400,8 +5392,8 @@ export const repoGetHook: API.OperationMethod<
   RepoGetHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetHookRequest,
-  output: Hook,
+  input: __S(218) as any as S.Schema<RepoGetHookRequest>,
+  output: __S(128) as any as S.Schema<Hook>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7415,8 +5407,8 @@ export const repoGetIssueConfig: API.OperationMethod<
   RepoGetIssueConfigError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetIssueConfigRequest,
-  output: IssueConfig,
+  input: __S(219) as any as S.Schema<RepoGetIssueConfigRequest>,
+  output: __S(222) as any as S.Schema<IssueConfig>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7430,8 +5422,8 @@ export const repoGetIssueTemplates: API.OperationMethod<
   RepoGetIssueTemplatesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetIssueTemplatesRequest,
-  output: RepoGetIssueTemplatesResponse,
+  input: __S(223) as any as S.Schema<RepoGetIssueTemplatesRequest>,
+  output: __S(229) as any as S.Schema<RepoGetIssueTemplatesResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7445,8 +5437,8 @@ export const repoGetKey: API.OperationMethod<
   RepoGetKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetKeyRequest,
-  output: DeployKey,
+  input: __S(230) as any as S.Schema<RepoGetKeyRequest>,
+  output: __S(130) as any as S.Schema<DeployKey>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7460,8 +5452,8 @@ export const repoGetLanguages: API.OperationMethod<
   RepoGetLanguagesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetLanguagesRequest,
-  output: RepoGetLanguagesResponse,
+  input: __S(231) as any as S.Schema<RepoGetLanguagesRequest>,
+  output: __S(233) as any as S.Schema<RepoGetLanguagesResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7475,8 +5467,8 @@ export const repoGetLatestRelease: API.OperationMethod<
   RepoGetLatestReleaseError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetLatestReleaseRequest,
-  output: Release,
+  input: __S(234) as any as S.Schema<RepoGetLatestReleaseRequest>,
+  output: __S(151) as any as S.Schema<Release>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7490,8 +5482,8 @@ export const repoGetNote: API.OperationMethod<
   RepoGetNoteError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetNoteRequest,
-  output: Note,
+  input: __S(235) as any as S.Schema<RepoGetNoteRequest>,
+  output: __S(236) as any as S.Schema<Note>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7505,8 +5497,8 @@ export const repoGetPullRequest: API.OperationMethod<
   RepoGetPullRequestError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetPullRequestRequest,
-  output: PullRequest,
+  input: __S(237) as any as S.Schema<RepoGetPullRequestRequest>,
+  output: __S(138) as any as S.Schema<PullRequest>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7520,8 +5512,8 @@ export const repoGetPullRequestByBaseHead: API.OperationMethod<
   RepoGetPullRequestByBaseHeadError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetPullRequestByBaseHeadRequest,
-  output: PullRequest,
+  input: __S(238) as any as S.Schema<RepoGetPullRequestByBaseHeadRequest>,
+  output: __S(138) as any as S.Schema<PullRequest>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7535,8 +5527,8 @@ export const repoGetPullRequestCommits: API.OperationMethod<
   RepoGetPullRequestCommitsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetPullRequestCommitsRequest,
-  output: RepoGetPullRequestCommitsResponse,
+  input: __S(239) as any as S.Schema<RepoGetPullRequestCommitsRequest>,
+  output: __S(201) as any as S.Schema<RepoGetPullRequestCommitsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7550,8 +5542,8 @@ export const repoGetPullRequestFiles: API.OperationMethod<
   RepoGetPullRequestFilesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetPullRequestFilesRequest,
-  output: RepoGetPullRequestFilesResponse,
+  input: __S(240) as any as S.Schema<RepoGetPullRequestFilesRequest>,
+  output: __S(243) as any as S.Schema<RepoGetPullRequestFilesResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7565,8 +5557,8 @@ export const repoGetPullReview: API.OperationMethod<
   RepoGetPullReviewError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetPullReviewRequest,
-  output: PullReview,
+  input: __S(244) as any as S.Schema<RepoGetPullReviewRequest>,
+  output: __S(142) as any as S.Schema<PullReview>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7580,8 +5572,8 @@ export const repoGetPullReviewComment: API.OperationMethod<
   RepoGetPullReviewCommentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetPullReviewCommentRequest,
-  output: PullReviewComment,
+  input: __S(245) as any as S.Schema<RepoGetPullReviewCommentRequest>,
+  output: __S(144) as any as S.Schema<PullReviewComment>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7595,8 +5587,8 @@ export const repoGetPullReviewComments: API.OperationMethod<
   RepoGetPullReviewCommentsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetPullReviewCommentsRequest,
-  output: RepoGetPullReviewCommentsResponse,
+  input: __S(246) as any as S.Schema<RepoGetPullReviewCommentsRequest>,
+  output: __S(248) as any as S.Schema<RepoGetPullReviewCommentsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7610,8 +5602,8 @@ export const repoGetPushMirrorByRemoteName: API.OperationMethod<
   RepoGetPushMirrorByRemoteNameError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetPushMirrorByRemoteNameRequest,
-  output: PushMirror,
+  input: __S(249) as any as S.Schema<RepoGetPushMirrorByRemoteNameRequest>,
+  output: __S(90) as any as S.Schema<PushMirror>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7625,8 +5617,8 @@ export const repoGetRawFile: API.OperationMethod<
   RepoGetRawFileError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetRawFileRequest,
-  output: RepoGetRawFileResponse,
+  input: __S(250) as any as S.Schema<RepoGetRawFileRequest>,
+  output: __S(251) as any as S.Schema<RepoGetRawFileResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7640,8 +5632,8 @@ export const repoGetRawFileOrLFS: API.OperationMethod<
   RepoGetRawFileOrLFSError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetRawFileOrLFSRequest,
-  output: RepoGetRawFileOrLFSResponse,
+  input: __S(252) as any as S.Schema<RepoGetRawFileOrLFSRequest>,
+  output: __S(253) as any as S.Schema<RepoGetRawFileOrLFSResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7655,8 +5647,8 @@ export const repoGetRelease: API.OperationMethod<
   RepoGetReleaseError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetReleaseRequest,
-  output: Release,
+  input: __S(254) as any as S.Schema<RepoGetReleaseRequest>,
+  output: __S(151) as any as S.Schema<Release>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7670,8 +5662,8 @@ export const repoGetReleaseAttachment: API.OperationMethod<
   RepoGetReleaseAttachmentError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetReleaseAttachmentRequest,
-  output: Attachment,
+  input: __S(255) as any as S.Schema<RepoGetReleaseAttachmentRequest>,
+  output: __S(149) as any as S.Schema<Attachment>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7685,8 +5677,8 @@ export const repoGetReleaseByTag: API.OperationMethod<
   RepoGetReleaseByTagError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetReleaseByTagRequest,
-  output: Release,
+  input: __S(256) as any as S.Schema<RepoGetReleaseByTagRequest>,
+  output: __S(151) as any as S.Schema<Release>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7700,8 +5692,8 @@ export const repoGetReviewers: API.OperationMethod<
   RepoGetReviewersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetReviewersRequest,
-  output: RepoGetReviewersResponse,
+  input: __S(257) as any as S.Schema<RepoGetReviewersRequest>,
+  output: __S(204) as any as S.Schema<RepoGetReviewersResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7715,8 +5707,8 @@ export const repoGetSingleCommit: API.OperationMethod<
   RepoGetSingleCommitError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetSingleCommitRequest,
-  output: Commit,
+  input: __S(258) as any as S.Schema<RepoGetSingleCommitRequest>,
+  output: __S(117) as any as S.Schema<Commit>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7730,8 +5722,8 @@ export const repoGetTag: API.OperationMethod<
   RepoGetTagError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetTagRequest,
-  output: Tag,
+  input: __S(259) as any as S.Schema<RepoGetTagRequest>,
+  output: __S(156) as any as S.Schema<Tag>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7745,8 +5737,8 @@ export const repoGetTagProtection: API.OperationMethod<
   RepoGetTagProtectionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetTagProtectionRequest,
-  output: TagProtection,
+  input: __S(260) as any as S.Schema<RepoGetTagProtectionRequest>,
+  output: __S(158) as any as S.Schema<TagProtection>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7760,8 +5752,8 @@ export const repoGetWikiPage: API.OperationMethod<
   RepoGetWikiPageError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetWikiPageRequest,
-  output: WikiPage,
+  input: __S(261) as any as S.Schema<RepoGetWikiPageRequest>,
+  output: __S(161) as any as S.Schema<WikiPage>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7775,8 +5767,8 @@ export const repoGetWikiPageRevisions: API.OperationMethod<
   RepoGetWikiPageRevisionsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetWikiPageRevisionsRequest,
-  output: WikiCommitList,
+  input: __S(262) as any as S.Schema<RepoGetWikiPageRevisionsRequest>,
+  output: __S(264) as any as S.Schema<WikiCommitList>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7790,8 +5782,8 @@ export const repoGetWikiPages: API.OperationMethod<
   RepoGetWikiPagesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoGetWikiPagesRequest,
-  output: RepoGetWikiPagesResponse,
+  input: __S(265) as any as S.Schema<RepoGetWikiPagesRequest>,
+  output: __S(268) as any as S.Schema<RepoGetWikiPagesResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7805,8 +5797,8 @@ export const repoListActionsSecrets: API.OperationMethod<
   RepoListActionsSecretsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListActionsSecretsRequest,
-  output: RepoListActionsSecretsResponse,
+  input: __S(269) as any as S.Schema<RepoListActionsSecretsRequest>,
+  output: __S(272) as any as S.Schema<RepoListActionsSecretsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7820,8 +5812,8 @@ export const repoListActivityFeeds: API.OperationMethod<
   RepoListActivityFeedsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListActivityFeedsRequest,
-  output: RepoListActivityFeedsResponse,
+  input: __S(273) as any as S.Schema<RepoListActivityFeedsRequest>,
+  output: __S(277) as any as S.Schema<RepoListActivityFeedsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7835,8 +5827,8 @@ export const repoListAllGitRefs: API.OperationMethod<
   RepoListAllGitRefsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListAllGitRefsRequest,
-  output: RepoListAllGitRefsResponse,
+  input: __S(278) as any as S.Schema<RepoListAllGitRefsRequest>,
+  output: __S(281) as any as S.Schema<RepoListAllGitRefsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7850,8 +5842,8 @@ export const repoListBranches: API.OperationMethod<
   RepoListBranchesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListBranchesRequest,
-  output: RepoListBranchesResponse,
+  input: __S(282) as any as S.Schema<RepoListBranchesRequest>,
+  output: __S(284) as any as S.Schema<RepoListBranchesResponse>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7865,8 +5857,8 @@ export const repoListBranchProtection: API.OperationMethod<
   RepoListBranchProtectionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListBranchProtectionRequest,
-  output: RepoListBranchProtectionResponse,
+  input: __S(285) as any as S.Schema<RepoListBranchProtectionRequest>,
+  output: __S(287) as any as S.Schema<RepoListBranchProtectionResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7880,8 +5872,8 @@ export const repoListCollaborators: API.OperationMethod<
   RepoListCollaboratorsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListCollaboratorsRequest,
-  output: RepoListCollaboratorsResponse,
+  input: __S(288) as any as S.Schema<RepoListCollaboratorsRequest>,
+  output: __S(289) as any as S.Schema<RepoListCollaboratorsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7895,8 +5887,8 @@ export const repoListFlags: API.OperationMethod<
   RepoListFlagsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListFlagsRequest,
-  output: RepoListFlagsResponse,
+  input: __S(290) as any as S.Schema<RepoListFlagsRequest>,
+  output: __S(291) as any as S.Schema<RepoListFlagsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7910,8 +5902,8 @@ export const repoListGitHooks: API.OperationMethod<
   RepoListGitHooksError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListGitHooksRequest,
-  output: RepoListGitHooksResponse,
+  input: __S(292) as any as S.Schema<RepoListGitHooksRequest>,
+  output: __S(294) as any as S.Schema<RepoListGitHooksResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7925,8 +5917,8 @@ export const repoListGitRefs: API.OperationMethod<
   RepoListGitRefsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListGitRefsRequest,
-  output: RepoListGitRefsResponse,
+  input: __S(295) as any as S.Schema<RepoListGitRefsRequest>,
+  output: __S(296) as any as S.Schema<RepoListGitRefsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7940,8 +5932,8 @@ export const repoListHooks: API.OperationMethod<
   RepoListHooksError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListHooksRequest,
-  output: RepoListHooksResponse,
+  input: __S(297) as any as S.Schema<RepoListHooksRequest>,
+  output: __S(299) as any as S.Schema<RepoListHooksResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7955,8 +5947,8 @@ export const repoListKeys: API.OperationMethod<
   RepoListKeysError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListKeysRequest,
-  output: RepoListKeysResponse,
+  input: __S(300) as any as S.Schema<RepoListKeysRequest>,
+  output: __S(302) as any as S.Schema<RepoListKeysResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7970,8 +5962,8 @@ export const repoListPinnedIssues: API.OperationMethod<
   RepoListPinnedIssuesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListPinnedIssuesRequest,
-  output: RepoListPinnedIssuesResponse,
+  input: __S(303) as any as S.Schema<RepoListPinnedIssuesRequest>,
+  output: __S(309) as any as S.Schema<RepoListPinnedIssuesResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -7985,8 +5977,8 @@ export const repoListPinnedPullRequests: API.OperationMethod<
   RepoListPinnedPullRequestsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListPinnedPullRequestsRequest,
-  output: RepoListPinnedPullRequestsResponse,
+  input: __S(310) as any as S.Schema<RepoListPinnedPullRequestsRequest>,
+  output: __S(312) as any as S.Schema<RepoListPinnedPullRequestsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8000,8 +5992,8 @@ export const repoListPullRequests: API.OperationMethod<
   RepoListPullRequestsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListPullRequestsRequest,
-  output: RepoListPullRequestsResponse,
+  input: __S(313) as any as S.Schema<RepoListPullRequestsRequest>,
+  output: __S(312) as any as S.Schema<RepoListPullRequestsResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8015,8 +6007,8 @@ export const repoListPullReviews: API.OperationMethod<
   RepoListPullReviewsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListPullReviewsRequest,
-  output: RepoListPullReviewsResponse,
+  input: __S(314) as any as S.Schema<RepoListPullReviewsRequest>,
+  output: __S(147) as any as S.Schema<RepoListPullReviewsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8030,8 +6022,8 @@ export const repoListPushMirrors: API.OperationMethod<
   RepoListPushMirrorsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListPushMirrorsRequest,
-  output: RepoListPushMirrorsResponse,
+  input: __S(315) as any as S.Schema<RepoListPushMirrorsRequest>,
+  output: __S(317) as any as S.Schema<RepoListPushMirrorsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8045,8 +6037,8 @@ export const repoListReleaseAttachments: API.OperationMethod<
   RepoListReleaseAttachmentsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListReleaseAttachmentsRequest,
-  output: RepoListReleaseAttachmentsResponse,
+  input: __S(318) as any as S.Schema<RepoListReleaseAttachmentsRequest>,
+  output: __S(319) as any as S.Schema<RepoListReleaseAttachmentsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8060,8 +6052,8 @@ export const repoListReleases: API.OperationMethod<
   RepoListReleasesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListReleasesRequest,
-  output: RepoListReleasesResponse,
+  input: __S(320) as any as S.Schema<RepoListReleasesRequest>,
+  output: __S(322) as any as S.Schema<RepoListReleasesResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8075,8 +6067,8 @@ export const repoListStargazers: API.OperationMethod<
   RepoListStargazersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListStargazersRequest,
-  output: RepoListStargazersResponse,
+  input: __S(323) as any as S.Schema<RepoListStargazersRequest>,
+  output: __S(289) as any as S.Schema<RepoListStargazersResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8090,8 +6082,8 @@ export const repoListStatuses: API.OperationMethod<
   RepoListStatusesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListStatusesRequest,
-  output: RepoListStatusesResponse,
+  input: __S(324) as any as S.Schema<RepoListStatusesRequest>,
+  output: __S(325) as any as S.Schema<RepoListStatusesResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8105,8 +6097,8 @@ export const repoListStatusesByRef: API.OperationMethod<
   RepoListStatusesByRefError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListStatusesByRefRequest,
-  output: RepoListStatusesByRefResponse,
+  input: __S(326) as any as S.Schema<RepoListStatusesByRefRequest>,
+  output: __S(327) as any as S.Schema<RepoListStatusesByRefResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8120,8 +6112,8 @@ export const repoListSubscribers: API.OperationMethod<
   RepoListSubscribersError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListSubscribersRequest,
-  output: RepoListSubscribersResponse,
+  input: __S(328) as any as S.Schema<RepoListSubscribersRequest>,
+  output: __S(289) as any as S.Schema<RepoListSubscribersResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8135,8 +6127,8 @@ export const repoListTagProtection: API.OperationMethod<
   RepoListTagProtectionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListTagProtectionRequest,
-  output: RepoListTagProtectionResponse,
+  input: __S(329) as any as S.Schema<RepoListTagProtectionRequest>,
+  output: __S(331) as any as S.Schema<RepoListTagProtectionResponse>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8150,8 +6142,8 @@ export const repoListTags: API.OperationMethod<
   RepoListTagsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListTagsRequest,
-  output: RepoListTagsResponse,
+  input: __S(332) as any as S.Schema<RepoListTagsRequest>,
+  output: __S(334) as any as S.Schema<RepoListTagsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8165,8 +6157,8 @@ export const repoListTeams: API.OperationMethod<
   RepoListTeamsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListTeamsRequest,
-  output: RepoListTeamsResponse,
+  input: __S(335) as any as S.Schema<RepoListTeamsRequest>,
+  output: __S(336) as any as S.Schema<RepoListTeamsResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8180,8 +6172,8 @@ export const repoListTopics: API.OperationMethod<
   RepoListTopicsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoListTopicsRequest,
-  output: TopicName,
+  input: __S(337) as any as S.Schema<RepoListTopicsRequest>,
+  output: __S(338) as any as S.Schema<TopicName>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8195,8 +6187,8 @@ export const repoMergePullRequest: API.OperationMethod<
   RepoMergePullRequestError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoMergePullRequestRequest,
-  output: RepoMergePullRequestResponse,
+  input: __S(339) as any as S.Schema<RepoMergePullRequestRequest>,
+  output: __S(1) as any as S.Schema<RepoMergePullRequestResponse>,
   errors: [NotFound, Conflict, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8210,8 +6202,8 @@ export const repoNewPinAllowed: API.OperationMethod<
   RepoNewPinAllowedError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoNewPinAllowedRequest,
-  output: NewIssuePinsAllowed,
+  input: __S(340) as any as S.Schema<RepoNewPinAllowedRequest>,
+  output: __S(341) as any as S.Schema<NewIssuePinsAllowed>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8225,8 +6217,8 @@ export const repoPullRequestIsMerged: API.OperationMethod<
   RepoPullRequestIsMergedError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoPullRequestIsMergedRequest,
-  output: RepoPullRequestIsMergedResponse,
+  input: __S(342) as any as S.Schema<RepoPullRequestIsMergedRequest>,
+  output: __S(182) as any as S.Schema<RepoPullRequestIsMergedResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8240,8 +6232,8 @@ export const repoRemoveNote: API.OperationMethod<
   RepoRemoveNoteError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoRemoveNoteRequest,
-  output: RepoRemoveNoteResponse,
+  input: __S(343) as any as S.Schema<RepoRemoveNoteRequest>,
+  output: __S(1) as any as S.Schema<RepoRemoveNoteResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8255,8 +6247,8 @@ export const repoReplaceAllFlags: API.OperationMethod<
   RepoReplaceAllFlagsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoReplaceAllFlagsRequest,
-  output: RepoReplaceAllFlagsResponse,
+  input: __S(344) as any as S.Schema<RepoReplaceAllFlagsRequest>,
+  output: __S(1) as any as S.Schema<RepoReplaceAllFlagsResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8270,8 +6262,8 @@ export const repoSearchRunJobs: API.OperationMethod<
   RepoSearchRunJobsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoSearchRunJobsRequest,
-  output: RepoSearchRunJobsResponse,
+  input: __S(345) as any as S.Schema<RepoSearchRunJobsRequest>,
+  output: __S(71) as any as S.Schema<RepoSearchRunJobsResponse>,
   errors: [Forbidden],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8285,8 +6277,8 @@ export const repoSetNote: API.OperationMethod<
   RepoSetNoteError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoSetNoteRequest,
-  output: Note,
+  input: __S(346) as any as S.Schema<RepoSetNoteRequest>,
+  output: __S(236) as any as S.Schema<Note>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8300,8 +6292,8 @@ export const repoSigningKey: API.OperationMethod<
   RepoSigningKeyError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoSigningKeyRequest,
-  output: RepoSigningKeyResponse,
+  input: __S(347) as any as S.Schema<RepoSigningKeyRequest>,
+  output: __S(348) as any as S.Schema<RepoSigningKeyResponse>,
   errors: [],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8315,8 +6307,8 @@ export const repoSubmitPullReview: API.OperationMethod<
   RepoSubmitPullReviewError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoSubmitPullReviewRequest,
-  output: PullReview,
+  input: __S(349) as any as S.Schema<RepoSubmitPullReviewRequest>,
+  output: __S(142) as any as S.Schema<PullReview>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8330,8 +6322,8 @@ export const repoSyncForkBranch: API.OperationMethod<
   RepoSyncForkBranchError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoSyncForkBranchRequest,
-  output: RepoSyncForkBranchResponse,
+  input: __S(350) as any as S.Schema<RepoSyncForkBranchRequest>,
+  output: __S(1) as any as S.Schema<RepoSyncForkBranchResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8345,8 +6337,8 @@ export const repoSyncForkBranchInfo: API.OperationMethod<
   RepoSyncForkBranchInfoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoSyncForkBranchInfoRequest,
-  output: SyncForkInfo,
+  input: __S(351) as any as S.Schema<RepoSyncForkBranchInfoRequest>,
+  output: __S(352) as any as S.Schema<SyncForkInfo>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8360,8 +6352,8 @@ export const repoSyncForkDefault: API.OperationMethod<
   RepoSyncForkDefaultError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoSyncForkDefaultRequest,
-  output: RepoSyncForkDefaultResponse,
+  input: __S(353) as any as S.Schema<RepoSyncForkDefaultRequest>,
+  output: __S(1) as any as S.Schema<RepoSyncForkDefaultResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8375,8 +6367,8 @@ export const repoSyncForkDefaultInfo: API.OperationMethod<
   RepoSyncForkDefaultInfoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoSyncForkDefaultInfoRequest,
-  output: SyncForkInfo,
+  input: __S(354) as any as S.Schema<RepoSyncForkDefaultInfoRequest>,
+  output: __S(352) as any as S.Schema<SyncForkInfo>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8390,8 +6382,8 @@ export const repoTestHook: API.OperationMethod<
   RepoTestHookError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoTestHookRequest,
-  output: RepoTestHookResponse,
+  input: __S(355) as any as S.Schema<RepoTestHookRequest>,
+  output: __S(1) as any as S.Schema<RepoTestHookResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8410,8 +6402,8 @@ export const repoTrackedTimes: API.OperationMethod<
   RepoTrackedTimesError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoTrackedTimesRequest,
-  output: RepoTrackedTimesResponse,
+  input: __S(356) as any as S.Schema<RepoTrackedTimesRequest>,
+  output: __S(359) as any as S.Schema<RepoTrackedTimesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8425,8 +6417,8 @@ export const repoUpdateAvatar: API.OperationMethod<
   RepoUpdateAvatarError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoUpdateAvatarRequest,
-  output: RepoUpdateAvatarResponse,
+  input: __S(360) as any as S.Schema<RepoUpdateAvatarRequest>,
+  output: __S(1) as any as S.Schema<RepoUpdateAvatarResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8440,8 +6432,8 @@ export const repoUpdateBranch: API.OperationMethod<
   RepoUpdateBranchError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoUpdateBranchRequest,
-  output: RepoUpdateBranchResponse,
+  input: __S(361) as any as S.Schema<RepoUpdateBranchRequest>,
+  output: __S(1) as any as S.Schema<RepoUpdateBranchResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8461,8 +6453,8 @@ export const repoUpdateFile: API.OperationMethod<
   RepoUpdateFileError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoUpdateFileRequest,
-  output: FileResponse,
+  input: __S(362) as any as S.Schema<RepoUpdateFileRequest>,
+  output: __S(101) as any as S.Schema<FileResponse>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, Locked],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8481,8 +6473,8 @@ export const repoUpdatePullRequest: API.OperationMethod<
   RepoUpdatePullRequestError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoUpdatePullRequestRequest,
-  output: RepoUpdatePullRequestResponse,
+  input: __S(363) as any as S.Schema<RepoUpdatePullRequestRequest>,
+  output: __S(1) as any as S.Schema<RepoUpdatePullRequestResponse>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8496,8 +6488,8 @@ export const repoUpdateTopics: API.OperationMethod<
   RepoUpdateTopicsError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoUpdateTopicsRequest,
-  output: RepoUpdateTopicsResponse,
+  input: __S(364) as any as S.Schema<RepoUpdateTopicsRequest>,
+  output: __S(1) as any as S.Schema<RepoUpdateTopicsResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8511,8 +6503,8 @@ export const repoValidateIssueConfig: API.OperationMethod<
   RepoValidateIssueConfigError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepoValidateIssueConfigRequest,
-  output: IssueConfigValidation,
+  input: __S(365) as any as S.Schema<RepoValidateIssueConfigRequest>,
+  output: __S(366) as any as S.Schema<IssueConfigValidation>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8530,8 +6522,8 @@ export const reviewRepoDismissPull: API.OperationMethod<
   ReviewRepoDismissPullError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReviewRepoDismissPullRequest,
-  output: PullReview,
+  input: __S(367) as any as S.Schema<ReviewRepoDismissPullRequest>,
+  output: __S(142) as any as S.Schema<PullReview>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8549,8 +6541,8 @@ export const reviewRepoUnDismissPull: API.OperationMethod<
   ReviewRepoUnDismissPullError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReviewRepoUnDismissPullRequest,
-  output: PullReview,
+  input: __S(368) as any as S.Schema<ReviewRepoUnDismissPullRequest>,
+  output: __S(142) as any as S.Schema<PullReview>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8564,8 +6556,8 @@ export const searchRepo: API.OperationMethod<
   SearchRepoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchRepoRequest,
-  output: SearchResults,
+  input: __S(369) as any as S.Schema<SearchRepoRequest>,
+  output: __S(370) as any as S.Schema<SearchResults>,
   errors: [UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8579,8 +6571,8 @@ export const searchTopic: API.OperationMethod<
   SearchTopicError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchTopicRequest,
-  output: SearchTopicResponse,
+  input: __S(371) as any as S.Schema<SearchTopicRequest>,
+  output: __S(374) as any as S.Schema<SearchTopicResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8594,8 +6586,8 @@ export const syncRepoMirror: API.OperationMethod<
   SyncRepoMirrorError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SyncRepoMirrorRequest,
-  output: SyncRepoMirrorResponse,
+  input: __S(375) as any as S.Schema<SyncRepoMirrorRequest>,
+  output: __S(1) as any as S.Schema<SyncRepoMirrorResponse>,
   errors: [Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8609,8 +6601,8 @@ export const syncRepoPushMirror: API.OperationMethod<
   SyncRepoPushMirrorError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SyncRepoPushMirrorRequest,
-  output: SyncRepoPushMirrorResponse,
+  input: __S(376) as any as S.Schema<SyncRepoPushMirrorRequest>,
+  output: __S(1) as any as S.Schema<SyncRepoPushMirrorResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8624,8 +6616,8 @@ export const transferRepo: API.OperationMethod<
   TransferRepoError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransferRepoRequest,
-  output: TransferRepoResponse,
+  input: __S(377) as any as S.Schema<TransferRepoRequest>,
+  output: __S(1) as any as S.Schema<TransferRepoResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8639,8 +6631,8 @@ export const updateRepoSecret: API.OperationMethod<
   UpdateRepoSecretError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRepoSecretRequest,
-  output: UpdateRepoSecretResponse,
+  input: __S(378) as any as S.Schema<UpdateRepoSecretRequest>,
+  output: __S(1) as any as S.Schema<UpdateRepoSecretResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8654,8 +6646,8 @@ export const updateRepoVariable: API.OperationMethod<
   UpdateRepoVariableError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRepoVariableRequest,
-  output: UpdateRepoVariableResponse,
+  input: __S(379) as any as S.Schema<UpdateRepoVariableRequest>,
+  output: __S(1) as any as S.Schema<UpdateRepoVariableResponse>,
   errors: [BadRequest, NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8669,8 +6661,8 @@ export const userCurrentCheckSubscription: API.OperationMethod<
   UserCurrentCheckSubscriptionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserCurrentCheckSubscriptionRequest,
-  output: WatchInfo,
+  input: __S(380) as any as S.Schema<UserCurrentCheckSubscriptionRequest>,
+  output: __S(381) as any as S.Schema<WatchInfo>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8684,8 +6676,8 @@ export const userCurrentDeleteSubscription: API.OperationMethod<
   UserCurrentDeleteSubscriptionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserCurrentDeleteSubscriptionRequest,
-  output: UserCurrentDeleteSubscriptionResponse,
+  input: __S(382) as any as S.Schema<UserCurrentDeleteSubscriptionRequest>,
+  output: __S(103) as any as S.Schema<UserCurrentDeleteSubscriptionResponse>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8699,8 +6691,8 @@ export const userCurrentPutSubscription: API.OperationMethod<
   UserCurrentPutSubscriptionError,
   ForgejoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserCurrentPutSubscriptionRequest,
-  output: WatchInfo,
+  input: __S(383) as any as S.Schema<UserCurrentPutSubscriptionRequest>,
+  output: __S(381) as any as S.Schema<WatchInfo>,
   errors: [NotFound],
   protocol: ForgejoProtocol,
   retry: Retry.Retry,
@@ -8826,20 +6818,20 @@ function __c1(j: number): any {
           id: S.Number,
           includes_all_repositories: S.optional(S.Boolean),
           name: S.String,
-          organization: S.optional(Organization),
-          permission: S.optional(TeamPermission),
-          units: S.optional(TeamUnitsList),
-          units_map: S.optional(TeamUnitsMapMap),
+          organization: S.optional(__S(8)),
+          permission: S.optional(S.String),
+          units: S.optional(__S(9)),
+          units_map: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "Team" });
     case 4:
-      return S.Array(Team);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          doer: S.optional(User),
-          recipient: S.optional(User),
-          teams: S.optional(RepoTransferTeamsList),
+          doer: S.optional(__S(6)),
+          recipient: S.optional(__S(6)),
+          teams: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "RepoTransfer" });
     case 6:
@@ -8865,8 +6857,8 @@ function __c1(j: number): any {
           default_update_style: S.optional(S.String),
           description: S.optional(S.String),
           empty: S.optional(S.Boolean),
-          external_tracker: S.optional(ExternalTracker),
-          external_wiki: S.optional(ExternalWiki),
+          external_tracker: S.optional(__S(3)),
+          external_wiki: S.optional(__S(4)),
           fork: S.optional(S.Boolean),
           forks_count: S.optional(S.Number),
           full_name: S.String,
@@ -8883,7 +6875,7 @@ function __c1(j: number): any {
           id: S.Number,
           ignore_whitespace_conflicts: S.optional(S.Boolean),
           internal: S.optional(S.Boolean),
-          internal_tracker: S.optional(InternalTracker),
+          internal_tracker: S.optional(__S(5)),
           language: S.optional(S.String),
           languages_url: S.optional(S.String),
           link: S.optional(S.String),
@@ -8891,21 +6883,21 @@ function __c1(j: number): any {
           mirror_interval: S.optional(S.String),
           mirror_updated: S.optional(S.String),
           name: S.String,
-          object_format_name: S.optional(RepositoryObjectFormatName),
+          object_format_name: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           open_pr_counter: S.optional(S.Number),
           original_url: S.optional(S.String),
-          owner: User,
-          parent: S.optional(Repository),
-          permissions: S.optional(Permission),
+          owner: __S(6),
+          parent: S.optional(__S(15)),
+          permissions: S.optional(__S(7)),
           private: S.optional(S.Boolean),
           release_counter: S.optional(S.Number),
-          repo_transfer: S.optional(RepoTransfer),
+          repo_transfer: S.optional(__S(13)),
           size: S.optional(S.Number),
           ssh_url: S.String,
           stars_count: S.optional(S.Number),
           template: S.optional(S.Boolean),
-          topics: S.optional(RepositoryTopicsList),
+          topics: S.optional(__S(14)),
           updated_at: S.String,
           url: S.optional(S.String),
           watchers_count: S.optional(S.Number),
@@ -8936,13 +6928,13 @@ function __c2(j: number): any {
           is_ref_deleted: S.optional(S.Boolean),
           need_approval: S.optional(S.Boolean),
           prettyref: S.optional(S.String),
-          repository: S.optional(Repository),
+          repository: S.optional(__S(15)),
           started: S.optional(S.String),
           status: S.optional(S.String),
           stopped: S.optional(S.String),
           title: S.optional(S.String),
           trigger_event: S.optional(S.String),
-          trigger_user: S.optional(User),
+          trigger_user: S.optional(__S(6)),
           updated: S.optional(S.String),
           workflow_id: S.optional(S.String),
         }),
@@ -8978,11 +6970,11 @@ function __c2(j: number): any {
           issue_labels: S.optional(S.String),
           license: S.optional(S.String),
           name: S.String,
-          object_format_name: S.optional(CreateCurrentUserRepoRequestObjectFormatName),
+          object_format_name: S.optional(S.String),
           private: S.optional(S.Boolean),
           readme: S.optional(S.String),
           template: S.optional(S.Boolean),
-          trust_model: S.optional(CreateCurrentUserRepoRequestTrustModel),
+          trust_model: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/user/repos", code: 200 })),
       ).annotate({
         identifier: "CreateCurrentUserRepoRequest",
@@ -9104,7 +7096,7 @@ function __c3(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           workflowfilename: S.String.pipe(T.Label()),
-          inputs: S.optional(DispatchWorkflowRequestInputsMap),
+          inputs: S.optional(__S(10)),
           ref: S.String,
           return_run_info: S.optional(S.Boolean),
         }).pipe(
@@ -9119,7 +7111,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          jobs: S.optional(DispatchWorkflowRunJobsList),
+          jobs: S.optional(__S(14)),
           run_number: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DispatchWorkflowRun" });
@@ -9160,8 +7152,8 @@ function __c3(j: number): any {
           default_update_style: S.optional(S.String),
           description: S.optional(S.String),
           enable_prune: S.optional(S.Boolean),
-          external_tracker: S.optional(ExternalTracker),
-          external_wiki: S.optional(ExternalWiki),
+          external_tracker: S.optional(__S(3)),
+          external_wiki: S.optional(__S(4)),
           globally_editable_wiki: S.optional(S.Boolean),
           has_actions: S.optional(S.Boolean),
           has_issues: S.optional(S.Boolean),
@@ -9171,7 +7163,7 @@ function __c3(j: number): any {
           has_releases: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
           ignore_whitespace_conflicts: S.optional(S.Boolean),
-          internal_tracker: S.optional(InternalTracker),
+          internal_tracker: S.optional(__S(5)),
           mirror_interval: S.optional(S.String),
           name: S.optional(S.String),
           private: S.optional(S.Boolean),
@@ -9286,7 +7278,7 @@ function __c5(j: number): any {
           payload: S.optional(S.String),
           reason: S.optional(S.String),
           signature: S.optional(S.String),
-          signer: S.optional(PayloadUser),
+          signer: S.optional(__S(39)),
           verified: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -9295,14 +7287,14 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          archive_download_count: S.optional(TagArchiveDownloadCount),
+          archive_download_count: S.optional(__S(36)),
           message: S.optional(S.String),
-          object: S.optional(AnnotatedTagObject),
+          object: S.optional(__S(37)),
           sha: S.optional(S.String),
           tag: S.optional(S.String),
-          tagger: S.optional(CommitUser),
+          tagger: S.optional(__S(38)),
           url: S.optional(S.String),
-          verification: S.optional(PayloadCommitVerification),
+          verification: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "AnnotatedTag" });
     case 2:
@@ -9332,9 +7324,9 @@ function __c5(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/git/blobs", code: 200 })),
       ).annotate({ identifier: "GetBlobsRequest" });
     case 5:
-      return S.Array(GitBlob);
+      return S.Array(__S(43));
     case 6:
-      return S.suspend(() => GetBlobsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(45).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetBlobsResponse",
       });
     case 7:
@@ -9369,7 +7361,7 @@ function __c6(j: number): any {
         S.Struct({
           permission: S.optional(S.String),
           role_name: S.optional(S.String),
-          user: S.optional(User),
+          user: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "RepoCollaboratorPermission",
@@ -9394,11 +7386,11 @@ function __c6(j: number): any {
           description: S.optional(S.String),
           ephemeral: S.optional(S.Boolean),
           id: S.optional(S.Number),
-          labels: S.optional(ActionRunnerLabelsList),
+          labels: S.optional(__S(14)),
           name: S.optional(S.String),
           owner_id: S.optional(S.Number),
           repo_id: S.optional(S.Number),
-          status: S.optional(ActionRunnerStatus),
+          status: S.optional(S.String),
           uuid: S.optional(S.String),
           version: S.optional(S.String),
         }),
@@ -9414,9 +7406,9 @@ function __c6(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/actions/runners", code: 200 })),
       ).annotate({ identifier: "GetRepoRunnersRequest" });
     case 5:
-      return S.Array(ActionRunner);
+      return S.Array(__S(51));
     case 6:
-      return S.suspend(() => GetRepoRunnersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(53).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetRepoRunnersResponse",
       });
     case 7:
@@ -9460,11 +7452,9 @@ function __c7(j: number): any {
         identifier: "GetRepoVariablesListRequest",
       });
     case 2:
-      return S.Array(ActionVariable);
+      return S.Array(__S(56));
     case 3:
-      return S.suspend(() =>
-        GetRepoVariablesListResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(58).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetRepoVariablesListResponse",
       });
     case 4:
@@ -9490,14 +7480,14 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "GitEntry" });
     case 6:
-      return S.Array(GitEntry);
+      return S.Array(__S(61));
     case 7:
       return S.suspend(() =>
         S.Struct({
           page: S.optional(S.Number),
           sha: S.optional(S.String),
           total_count: S.optional(S.Number),
-          tree: S.optional(GitTreeResponseTreeList),
+          tree: S.optional(__S(62)),
           truncated: S.optional(S.Boolean),
           url: S.optional(S.String),
         }),
@@ -9521,11 +7511,9 @@ function __c8(j: number): any {
         identifier: "ListActionArtifactsRequest",
       });
     case 1:
-      return S.Array(ActionArtifact);
+      return S.Array(__S(34));
     case 2:
-      return S.suspend(() =>
-        ListActionArtifactsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(65).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListActionArtifactsResponse",
       });
     case 3:
@@ -9568,19 +7556,19 @@ function __c8(j: number): any {
           handle: S.optional(S.String),
           id: S.optional(S.Number),
           name: S.optional(S.String),
-          needs: S.optional(ActionRunJobNeedsList),
+          needs: S.optional(__S(14)),
           owner_id: S.optional(S.Number),
           repo_id: S.optional(S.Number),
           run_id: S.optional(S.Number),
-          runs_on: S.optional(ActionRunJobRunsOnList),
+          runs_on: S.optional(__S(14)),
           status: S.optional(S.String),
           task_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ActionRunJob" });
     case 6:
-      return S.Array(ActionRunJob);
+      return S.Array(__S(69));
     case 7:
-      return S.suspend(() => ListActionRunJobsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(70).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListActionRunJobsResponse",
       });
   }
@@ -9588,7 +7576,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListActionRunsRequestStatusItem);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9596,8 +7584,8 @@ function __c9(j: number): any {
           repo: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          event: S.optional(ListActionRunsRequestEventList.pipe(T.Query())),
-          status: S.optional(ListActionRunsRequestStatusList.pipe(T.Query())),
+          event: S.optional(__S(14).pipe(T.Query())),
+          status: S.optional(__S(72).pipe(T.Query())),
           run_number: S.optional(S.Number.pipe(T.Query())),
           head_sha: S.optional(S.String.pipe(T.Query())),
           ref: S.optional(S.String.pipe(T.Query())),
@@ -9605,12 +7593,12 @@ function __c9(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/actions/runs", code: 200 })),
       ).annotate({ identifier: "ListActionRunsRequest" });
     case 2:
-      return S.Array(ActionRun);
+      return S.Array(__S(16));
     case 3:
       return S.suspend(() =>
         S.Struct({
           total_count: S.optional(S.Number),
-          workflow_runs: S.optional(ListActionRunResponseWorkflowRunsList),
+          workflow_runs: S.optional(__S(74)),
         }),
       ).annotate({ identifier: "ListActionRunResponse" });
     case 4:
@@ -9620,7 +7608,7 @@ function __c9(j: number): any {
           repo: S.String.pipe(T.Label()),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          status: S.optional(ListActionTasksRequestStatusList.pipe(T.Query())),
+          status: S.optional(__S(72).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/actions/tasks", code: 200 })),
       ).annotate({ identifier: "ListActionTasksRequest" });
     case 5:
@@ -9642,12 +7630,12 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "ActionTask" });
     case 6:
-      return S.Array(ActionTask);
+      return S.Array(__S(77));
     case 7:
       return S.suspend(() =>
         S.Struct({
           total_count: S.optional(S.Number),
-          workflow_runs: S.optional(ActionTaskResponseWorkflowRunsList),
+          workflow_runs: S.optional(__S(78)),
         }),
       ).annotate({ identifier: "ActionTaskResponse" });
   }
@@ -9664,9 +7652,9 @@ function __c10(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/forks", code: 200 })),
       ).annotate({ identifier: "ListForksRequest" });
     case 1:
-      return S.Array(Repository);
+      return S.Array(__S(15));
     case 2:
-      return S.suspend(() => ListForksResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(81).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListForksResponse",
       });
     case 3:
@@ -9689,7 +7677,7 @@ function __c10(j: number): any {
           releases: S.optional(S.Boolean),
           repo_name: S.String,
           repo_owner: S.optional(S.String),
-          service: S.optional(MigrateRepoRequestService),
+          service: S.optional(S.String),
           uid: S.optional(S.Number),
           wiki: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/repos/migrate", code: 200 })),
@@ -9733,7 +7721,7 @@ function __c10(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           collaborator: S.String.pipe(T.Label()),
-          permission: S.optional(RepoAddCollaboratorRequestPermission),
+          permission: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9820,11 +7808,11 @@ function __c11(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          author: S.optional(Identity),
+          author: S.optional(__S(93)),
           branch: S.optional(S.String),
-          committer: S.optional(Identity),
+          committer: S.optional(__S(93)),
           content: S.String,
-          dates: S.optional(CommitDateOptions),
+          dates: S.optional(__S(94)),
           force_overwrite_new_branch: S.optional(S.Boolean),
           from_path: S.optional(S.String),
           message: S.optional(S.String),
@@ -9848,18 +7836,18 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "CommitMeta" });
     case 1:
-      return S.Array(CommitMeta);
+      return S.Array(__S(96));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          author: S.optional(CommitUser),
-          committer: S.optional(CommitUser),
+          author: S.optional(__S(38)),
+          committer: S.optional(__S(38)),
           created: S.optional(S.String),
           html_url: S.optional(S.String),
           message: S.optional(S.String),
-          parents: S.optional(FileCommitResponseParentsList),
+          parents: S.optional(__S(97)),
           sha: S.optional(S.String),
-          tree: S.optional(CommitMeta),
+          tree: S.optional(__S(96)),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "FileCommitResponse" });
@@ -9874,7 +7862,7 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          _links: S.optional(FileLinksResponse),
+          _links: S.optional(__S(99)),
           content: S.optional(S.String),
           download_url: S.optional(S.String),
           encoding: S.optional(S.String),
@@ -9895,9 +7883,9 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          commit: S.optional(FileCommitResponse),
-          content: S.optional(ContentsResponse),
-          verification: S.optional(PayloadCommitVerification),
+          commit: S.optional(__S(98)),
+          content: S.optional(__S(100)),
+          verification: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "FileResponse" });
     case 6:
@@ -9925,23 +7913,23 @@ function __c13(j: number): any {
         S.Struct({
           content: S.optional(S.String),
           from_path: S.optional(S.String),
-          operation: ChangeFileOperationOperation,
+          operation: S.String,
           path: S.String,
           sha: S.optional(S.String),
         }),
       ).annotate({ identifier: "ChangeFileOperation" });
     case 1:
-      return S.Array(ChangeFileOperation);
+      return S.Array(__S(104));
     case 2:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          author: S.optional(Identity),
+          author: S.optional(__S(93)),
           branch: S.optional(S.String),
-          committer: S.optional(Identity),
-          dates: S.optional(CommitDateOptions),
-          files: RepoChangeFilesRequestFilesList,
+          committer: S.optional(__S(93)),
+          dates: S.optional(__S(94)),
+          files: __S(105),
           force_overwrite_new_branch: S.optional(S.Boolean),
           message: S.optional(S.String),
           new_branch: S.optional(S.String),
@@ -9949,13 +7937,13 @@ function __c13(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/contents", code: 200 })),
       ).annotate({ identifier: "RepoChangeFilesRequest" });
     case 3:
-      return S.Array(ContentsResponse);
+      return S.Array(__S(100));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          commit: S.optional(FileCommitResponse),
-          files: S.optional(FilesResponseFilesList),
-          verification: S.optional(PayloadCommitVerification),
+          commit: S.optional(__S(98)),
+          files: S.optional(__S(107)),
+          verification: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "FilesResponse" });
     case 5:
@@ -10007,12 +7995,12 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          author: S.optional(CommitUser),
-          committer: S.optional(CommitUser),
+          author: S.optional(__S(38)),
+          committer: S.optional(__S(38)),
           message: S.optional(S.String),
-          tree: S.optional(CommitMeta),
+          tree: S.optional(__S(96)),
           url: S.optional(S.String),
-          verification: S.optional(PayloadCommitVerification),
+          verification: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "RepoCommit" });
     case 2:
@@ -10023,7 +8011,7 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "CommitAffectedFiles" });
     case 3:
-      return S.Array(CommitAffectedFiles);
+      return S.Array(__S(114));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -10035,25 +8023,25 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          author: S.optional(User),
-          commit: S.optional(RepoCommit),
-          committer: S.optional(User),
+          author: S.optional(__S(6)),
+          commit: S.optional(__S(113)),
+          committer: S.optional(__S(6)),
           created: S.optional(S.String),
-          files: S.optional(CommitFilesList),
+          files: S.optional(__S(115)),
           html_url: S.optional(S.String),
-          parents: S.optional(CommitParentsList),
+          parents: S.optional(__S(97)),
           sha: S.optional(S.String),
-          stats: S.optional(CommitStats),
+          stats: S.optional(__S(116)),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "Commit" });
     case 6:
-      return S.Array(Commit);
+      return S.Array(__S(117));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          commits: S.optional(CompareCommitsList),
-          files: S.optional(CompareFilesList),
+          commits: S.optional(__S(118)),
+          files: S.optional(__S(115)),
           total_commits: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Compare" });
@@ -10074,28 +8062,28 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          added: S.optional(PayloadCommitAddedList),
-          author: S.optional(PayloadUser),
-          committer: S.optional(PayloadUser),
+          added: S.optional(__S(14)),
+          author: S.optional(__S(39)),
+          committer: S.optional(__S(39)),
           id: S.optional(S.String),
           message: S.optional(S.String),
-          modified: S.optional(PayloadCommitModifiedList),
-          removed: S.optional(PayloadCommitRemovedList),
+          modified: S.optional(__S(14)),
+          removed: S.optional(__S(14)),
           timestamp: S.optional(S.String),
           url: S.optional(S.String),
-          verification: S.optional(PayloadCommitVerification),
+          verification: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "PayloadCommit" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          commit: S.optional(PayloadCommit),
+          commit: S.optional(__S(121)),
           effective_branch_protection_name: S.optional(S.String),
           enable_status_check: S.optional(S.Boolean),
           name: S.optional(S.String),
           protected: S.optional(S.Boolean),
           required_approvals: S.optional(S.Number),
-          status_check_contexts: S.optional(BranchStatusCheckContextsList),
+          status_check_contexts: S.optional(__S(14)),
           user_can_merge: S.optional(S.Boolean),
           user_can_push: S.optional(S.Boolean),
         }),
@@ -10108,12 +8096,8 @@ function __c15(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           apply_to_admins: S.optional(S.Boolean),
-          approvals_whitelist_teams: S.optional(
-            RepoCreateBranchProtectionRequestApprovalsWhitelistTeamsList,
-          ),
-          approvals_whitelist_username: S.optional(
-            RepoCreateBranchProtectionRequestApprovalsWhitelistUsernameList,
-          ),
+          approvals_whitelist_teams: S.optional(__S(14)),
+          approvals_whitelist_username: S.optional(__S(123)),
           block_on_official_review_requests: S.optional(S.Boolean),
           block_on_outdated_branch: S.optional(S.Boolean),
           block_on_rejected_reviews: S.optional(S.Boolean),
@@ -10125,24 +8109,16 @@ function __c15(j: number): any {
           enable_push_whitelist: S.optional(S.Boolean),
           enable_status_check: S.optional(S.Boolean),
           ignore_stale_approvals: S.optional(S.Boolean),
-          merge_whitelist_teams: S.optional(
-            RepoCreateBranchProtectionRequestMergeWhitelistTeamsList,
-          ),
-          merge_whitelist_usernames: S.optional(
-            RepoCreateBranchProtectionRequestMergeWhitelistUsernamesList,
-          ),
+          merge_whitelist_teams: S.optional(__S(14)),
+          merge_whitelist_usernames: S.optional(__S(14)),
           protected_file_patterns: S.optional(S.String),
           push_whitelist_deploy_keys: S.optional(S.Boolean),
-          push_whitelist_teams: S.optional(RepoCreateBranchProtectionRequestPushWhitelistTeamsList),
-          push_whitelist_usernames: S.optional(
-            RepoCreateBranchProtectionRequestPushWhitelistUsernamesList,
-          ),
+          push_whitelist_teams: S.optional(__S(14)),
+          push_whitelist_usernames: S.optional(__S(14)),
           require_signed_commits: S.optional(S.Boolean),
           required_approvals: S.optional(S.Number),
           rule_name: S.optional(S.String),
-          status_check_contexts: S.optional(
-            RepoCreateBranchProtectionRequestStatusCheckContextsList,
-          ),
+          status_check_contexts: S.optional(__S(14)),
           unprotected_file_patterns: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/branch_protections", code: 200 }),
@@ -10154,8 +8130,8 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           apply_to_admins: S.optional(S.Boolean),
-          approvals_whitelist_teams: S.optional(BranchProtectionApprovalsWhitelistTeamsList),
-          approvals_whitelist_username: S.optional(BranchProtectionApprovalsWhitelistUsernameList),
+          approvals_whitelist_teams: S.optional(__S(14)),
+          approvals_whitelist_username: S.optional(__S(14)),
           block_on_official_review_requests: S.optional(S.Boolean),
           block_on_outdated_branch: S.optional(S.Boolean),
           block_on_rejected_reviews: S.optional(S.Boolean),
@@ -10168,16 +8144,16 @@ function __c15(j: number): any {
           enable_push_whitelist: S.optional(S.Boolean),
           enable_status_check: S.optional(S.Boolean),
           ignore_stale_approvals: S.optional(S.Boolean),
-          merge_whitelist_teams: S.optional(BranchProtectionMergeWhitelistTeamsList),
-          merge_whitelist_usernames: S.optional(BranchProtectionMergeWhitelistUsernamesList),
+          merge_whitelist_teams: S.optional(__S(14)),
+          merge_whitelist_usernames: S.optional(__S(14)),
           protected_file_patterns: S.optional(S.String),
           push_whitelist_deploy_keys: S.optional(S.Boolean),
-          push_whitelist_teams: S.optional(BranchProtectionPushWhitelistTeamsList),
-          push_whitelist_usernames: S.optional(BranchProtectionPushWhitelistUsernamesList),
+          push_whitelist_teams: S.optional(__S(14)),
+          push_whitelist_usernames: S.optional(__S(14)),
           require_signed_commits: S.optional(S.Boolean),
           required_approvals: S.optional(S.Number),
           rule_name: S.String,
-          status_check_contexts: S.optional(BranchProtectionStatusCheckContextsList),
+          status_check_contexts: S.optional(__S(14)),
           unprotected_file_patterns: S.optional(S.String),
           updated_at: S.String,
         }),
@@ -10188,11 +8164,11 @@ function __c15(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           filepath: S.String.pipe(T.Label()),
-          author: S.optional(Identity),
+          author: S.optional(__S(93)),
           branch: S.optional(S.String),
-          committer: S.optional(Identity),
+          committer: S.optional(__S(93)),
           content: S.String,
-          dates: S.optional(CommitDateOptions),
+          dates: S.optional(__S(94)),
           force_overwrite_new_branch: S.optional(S.Boolean),
           message: S.optional(S.String),
           new_branch: S.optional(S.String),
@@ -10209,9 +8185,9 @@ function __c15(j: number): any {
           active: S.optional(S.Boolean),
           authorization_header: S.optional(S.String),
           branch_filter: S.optional(S.String),
-          config: CreateHookOptionConfig,
-          events: S.optional(RepoCreateHookRequestEventsList),
-          type: RepoCreateHookRequestType,
+          config: __S(10),
+          events: S.optional(__S(14)),
+          type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/hooks", code: 200 })),
       ).annotate({ identifier: "RepoCreateHookRequest" });
   }
@@ -10224,10 +8200,10 @@ function __c16(j: number): any {
           active: S.Boolean,
           authorization_header: S.optional(S.String),
           branch_filter: S.optional(S.String),
-          config: S.optional(HookConfigMap),
+          config: S.optional(__S(10)),
           content_type: S.optional(S.String),
           created_at: S.String,
-          events: S.optional(HookEventsList),
+          events: S.optional(__S(9)),
           id: S.Number,
           metadata: S.optional(S.Unknown),
           type: S.String,
@@ -10254,7 +8230,7 @@ function __c16(j: number): any {
           key: S.optional(S.String),
           key_id: S.optional(S.Number),
           read_only: S.optional(S.Boolean),
-          repository: S.optional(Repository),
+          repository: S.optional(__S(15)),
           title: S.optional(S.String),
           url: S.optional(S.String),
         }),
@@ -10267,12 +8243,12 @@ function __c16(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           assignee: S.optional(S.String),
-          assignees: S.optional(RepoCreatePullRequestRequestAssigneesList),
+          assignees: S.optional(__S(14)),
           base: S.optional(S.String),
           body: S.optional(S.String),
           due_date: S.optional(S.String),
           head: S.optional(S.String),
-          labels: S.optional(RepoCreatePullRequestRequestLabelsList),
+          labels: S.optional(__S(131)),
           milestone: S.optional(S.Number),
           title: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/pulls", code: 200 })),
@@ -10280,13 +8256,13 @@ function __c16(j: number): any {
         identifier: "RepoCreatePullRequestRequest",
       });
     case 5:
-      return S.Array(User);
+      return S.Array(__S(6));
     case 6:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
           ref: S.optional(S.String),
-          repo: S.optional(Repository),
+          repo: S.optional(__S(15)),
           repo_id: S.optional(S.Number),
           sha: S.optional(S.String),
         }),
@@ -10308,7 +8284,7 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Label);
+      return S.Array(__S(135));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10329,9 +8305,9 @@ function __c17(j: number): any {
         S.Struct({
           additions: S.optional(S.Number),
           allow_maintainer_edit: S.optional(S.Boolean),
-          assignee: S.optional(User),
-          assignees: S.optional(PullRequestAssigneesList),
-          base: S.optional(PRBranchInfo),
+          assignee: S.optional(__S(6)),
+          assignees: S.optional(__S(133)),
+          base: S.optional(__S(134)),
           body: S.optional(S.String),
           changed_files: S.optional(S.Number),
           closed_at: S.optional(S.String),
@@ -10342,29 +8318,29 @@ function __c17(j: number): any {
           draft: S.optional(S.Boolean),
           due_date: S.optional(S.String),
           flow: S.optional(S.Number),
-          head: S.optional(PRBranchInfo),
+          head: S.optional(__S(134)),
           html_url: S.optional(S.String),
           id: S.optional(S.Number),
           is_locked: S.optional(S.Boolean),
-          labels: S.optional(PullRequestLabelsList),
+          labels: S.optional(__S(136)),
           merge_base: S.optional(S.String),
           merge_commit_sha: S.optional(S.String),
           mergeable: S.optional(S.Boolean),
           merged: S.optional(S.Boolean),
           merged_at: S.optional(S.String),
-          merged_by: S.optional(User),
-          milestone: S.optional(Milestone),
+          merged_by: S.optional(__S(6)),
+          milestone: S.optional(__S(137)),
           number: S.optional(S.Number),
           patch_url: S.optional(S.String),
           pin_order: S.optional(S.Number),
-          requested_reviewers: S.optional(PullRequestRequestedReviewersList),
-          requested_reviewers_teams: S.optional(PullRequestRequestedReviewersTeamsList),
+          requested_reviewers: S.optional(__S(133)),
+          requested_reviewers_teams: S.optional(__S(12)),
           review_comments: S.optional(S.Number),
           state: S.optional(S.String),
           title: S.optional(S.String),
           updated_at: S.optional(S.String),
           url: S.optional(S.String),
-          user: S.optional(User),
+          user: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "PullRequest" });
     case 3:
@@ -10378,7 +8354,7 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "CreatePullReviewComment" });
     case 4:
-      return S.Array(CreatePullReviewComment);
+      return S.Array(__S(139));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -10386,7 +8362,7 @@ function __c17(j: number): any {
           repo: S.String.pipe(T.Label()),
           index: S.Number.pipe(T.Label()),
           body: S.optional(S.String),
-          comments: S.optional(RepoCreatePullReviewRequestCommentsList),
+          comments: S.optional(__S(140)),
           commit_id: S.optional(S.String),
           event: S.optional(S.String),
         }).pipe(
@@ -10409,9 +8385,9 @@ function __c17(j: number): any {
           stale: S.optional(S.Boolean),
           state: S.optional(S.String),
           submitted_at: S.optional(S.String),
-          team: S.optional(Team),
+          team: S.optional(__S(11)),
           updated_at: S.optional(S.String),
-          user: S.optional(User),
+          user: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "PullReview" });
     case 7:
@@ -10456,9 +8432,9 @@ function __c18(j: number): any {
           position: S.optional(S.Number),
           pull_request_review_id: S.optional(S.Number),
           pull_request_url: S.optional(S.String),
-          resolver: S.optional(User),
+          resolver: S.optional(__S(6)),
           updated_at: S.optional(S.String),
-          user: S.optional(User),
+          user: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "PullReviewComment" });
     case 1:
@@ -10467,8 +8443,8 @@ function __c18(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           index: S.Number.pipe(T.Label()),
-          reviewers: S.optional(RepoCreatePullReviewRequestsRequestReviewersList),
-          team_reviewers: S.optional(RepoCreatePullReviewRequestsRequestTeamReviewersList),
+          reviewers: S.optional(__S(14)),
+          team_reviewers: S.optional(__S(14)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10480,11 +8456,9 @@ function __c18(j: number): any {
         identifier: "RepoCreatePullReviewRequestsRequest",
       });
     case 2:
-      return S.Array(PullReview);
+      return S.Array(__S(142));
     case 3:
-      return S.suspend(() =>
-        RepoCreatePullReviewRequestsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(146).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoCreatePullReviewRequestsResponse",
       });
     case 4:
@@ -10510,18 +8484,18 @@ function __c18(j: number): any {
           id: S.optional(S.Number),
           name: S.optional(S.String),
           size: S.optional(S.Number),
-          type: S.optional(AttachmentType),
+          type: S.optional(S.String),
           uuid: S.optional(S.String),
         }),
       ).annotate({ identifier: "Attachment" });
     case 6:
-      return S.Array(Attachment);
+      return S.Array(__S(149));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          archive_download_count: S.optional(TagArchiveDownloadCount),
-          assets: S.optional(ReleaseAssetsList),
-          author: S.optional(User),
+          archive_download_count: S.optional(__S(36)),
+          assets: S.optional(__S(150)),
+          author: S.optional(__S(6)),
           body: S.optional(S.String),
           created_at: S.optional(S.String),
           draft: S.optional(S.Boolean),
@@ -10573,7 +8547,7 @@ function __c19(j: number): any {
         S.Struct({
           context: S.optional(S.String),
           created_at: S.optional(S.String),
-          creator: S.optional(User),
+          creator: S.optional(__S(6)),
           description: S.optional(S.String),
           id: S.optional(S.Number),
           status: S.optional(S.String),
@@ -10595,8 +8569,8 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          archive_download_count: S.optional(TagArchiveDownloadCount),
-          commit: S.optional(CommitMeta),
+          archive_download_count: S.optional(__S(36)),
+          commit: S.optional(__S(96)),
           id: S.optional(S.String),
           message: S.optional(S.String),
           name: S.optional(S.String),
@@ -10610,8 +8584,8 @@ function __c19(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           name_pattern: S.optional(S.String),
-          whitelist_teams: S.optional(RepoCreateTagProtectionRequestWhitelistTeamsList),
-          whitelist_usernames: S.optional(RepoCreateTagProtectionRequestWhitelistUsernamesList),
+          whitelist_teams: S.optional(__S(14)),
+          whitelist_usernames: S.optional(__S(14)),
         }).pipe(
           T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/tag_protections", code: 200 }),
         ),
@@ -10625,8 +8599,8 @@ function __c19(j: number): any {
           id: S.optional(S.Number),
           name_pattern: S.optional(S.String),
           updated_at: S.optional(S.String),
-          whitelist_teams: S.optional(TagProtectionWhitelistTeamsList),
-          whitelist_usernames: S.optional(TagProtectionWhitelistUsernamesList),
+          whitelist_teams: S.optional(__S(14)),
+          whitelist_usernames: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "TagProtection" });
     case 7:
@@ -10648,8 +8622,8 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          author: S.optional(CommitUser),
-          commiter: S.optional(CommitUser),
+          author: S.optional(__S(38)),
+          commiter: S.optional(__S(38)),
           message: S.optional(S.String),
           sha: S.optional(S.String),
         }),
@@ -10661,7 +8635,7 @@ function __c20(j: number): any {
           content_base64: S.optional(S.String),
           footer: S.optional(S.String),
           html_url: S.optional(S.String),
-          last_commit: S.optional(WikiCommit),
+          last_commit: S.optional(__S(160)),
           sidebar: S.optional(S.String),
           sub_url: S.optional(S.String),
           title: S.optional(S.String),
@@ -10731,10 +8705,10 @@ function __c20(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           filepath: S.String.pipe(T.Label()),
-          author: S.optional(Identity),
+          author: S.optional(__S(93)),
           branch: S.optional(S.String),
-          committer: S.optional(Identity),
-          dates: S.optional(CommitDateOptions),
+          committer: S.optional(__S(93)),
+          dates: S.optional(__S(94)),
           force_overwrite_new_branch: S.optional(S.Boolean),
           message: S.optional(S.String),
           new_branch: S.optional(S.String),
@@ -10751,9 +8725,9 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          commit: S.optional(FileCommitResponse),
+          commit: S.optional(__S(98)),
           content: S.optional(S.Unknown),
-          verification: S.optional(PayloadCommitVerification),
+          verification: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "FileDeleteResponse" });
     case 1:
@@ -10831,8 +8805,8 @@ function __c21(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           index: S.Number.pipe(T.Label()),
-          reviewers: S.optional(RepoDeletePullReviewRequestsRequestReviewersList),
-          team_reviewers: S.optional(RepoDeletePullReviewRequestsRequestTeamReviewersList),
+          reviewers: S.optional(__S(14)),
+          team_reviewers: S.optional(__S(14)),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -10970,7 +8944,7 @@ function __c23(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           sha: S.String.pipe(T.Label()),
-          diffType: RepoDownloadCommitDiffOrPatchRequestDiffType.pipe(T.Label()),
+          diffType: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -10991,7 +8965,7 @@ function __c23(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           index: S.Number.pipe(T.Label()),
-          diffType: RepoDownloadPullDiffOrPatchRequestDiffType.pipe(T.Label()),
+          diffType: S.String.pipe(T.Label()),
           binary: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -11010,12 +8984,8 @@ function __c23(j: number): any {
           repo: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           apply_to_admins: S.optional(S.Boolean),
-          approvals_whitelist_teams: S.optional(
-            RepoEditBranchProtectionRequestApprovalsWhitelistTeamsList,
-          ),
-          approvals_whitelist_username: S.optional(
-            RepoEditBranchProtectionRequestApprovalsWhitelistUsernameList,
-          ),
+          approvals_whitelist_teams: S.optional(__S(14)),
+          approvals_whitelist_username: S.optional(__S(14)),
           block_on_official_review_requests: S.optional(S.Boolean),
           block_on_outdated_branch: S.optional(S.Boolean),
           block_on_rejected_reviews: S.optional(S.Boolean),
@@ -11026,19 +8996,15 @@ function __c23(j: number): any {
           enable_push_whitelist: S.optional(S.Boolean),
           enable_status_check: S.optional(S.Boolean),
           ignore_stale_approvals: S.optional(S.Boolean),
-          merge_whitelist_teams: S.optional(RepoEditBranchProtectionRequestMergeWhitelistTeamsList),
-          merge_whitelist_usernames: S.optional(
-            RepoEditBranchProtectionRequestMergeWhitelistUsernamesList,
-          ),
+          merge_whitelist_teams: S.optional(__S(14)),
+          merge_whitelist_usernames: S.optional(__S(14)),
           protected_file_patterns: S.optional(S.String),
           push_whitelist_deploy_keys: S.optional(S.Boolean),
-          push_whitelist_teams: S.optional(RepoEditBranchProtectionRequestPushWhitelistTeamsList),
-          push_whitelist_usernames: S.optional(
-            RepoEditBranchProtectionRequestPushWhitelistUsernamesList,
-          ),
+          push_whitelist_teams: S.optional(__S(14)),
+          push_whitelist_usernames: S.optional(__S(14)),
           require_signed_commits: S.optional(S.Boolean),
           required_approvals: S.optional(S.Number),
-          status_check_contexts: S.optional(RepoEditBranchProtectionRequestStatusCheckContextsList),
+          status_check_contexts: S.optional(__S(14)),
           unprotected_file_patterns: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -11082,8 +9048,8 @@ function __c24(j: number): any {
           active: S.optional(S.Boolean),
           authorization_header: S.optional(S.String),
           branch_filter: S.optional(S.String),
-          config: S.optional(RepoEditHookRequestConfigMap),
-          events: S.optional(RepoEditHookRequestEventsList),
+          config: S.optional(__S(10)),
+          events: S.optional(__S(14)),
         }).pipe(T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/hooks/{id}", code: 200 })),
       ).annotate({ identifier: "RepoEditHookRequest" });
     case 1:
@@ -11094,11 +9060,11 @@ function __c24(j: number): any {
           index: S.Number.pipe(T.Label()),
           allow_maintainer_edit: S.optional(S.Boolean),
           assignee: S.optional(S.String),
-          assignees: S.optional(RepoEditPullRequestRequestAssigneesList),
+          assignees: S.optional(__S(14)),
           base: S.optional(S.String),
           body: S.optional(S.String),
           due_date: S.optional(S.String),
-          labels: S.optional(RepoEditPullRequestRequestLabelsList),
+          labels: S.optional(__S(131)),
           milestone: S.optional(S.Number),
           state: S.optional(S.String),
           title: S.optional(S.String),
@@ -11148,8 +9114,8 @@ function __c24(j: number): any {
           repo: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           name_pattern: S.optional(S.String),
-          whitelist_teams: S.optional(RepoEditTagProtectionRequestWhitelistTeamsList),
-          whitelist_usernames: S.optional(RepoEditTagProtectionRequestWhitelistUsernamesList),
+          whitelist_teams: S.optional(__S(14)),
+          whitelist_usernames: S.optional(__S(14)),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/tag_protections/{id}", code: 200 }),
         ),
@@ -11222,7 +9188,7 @@ function __c25(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/commits", code: 200 })),
       ).annotate({ identifier: "RepoGetAllCommitsRequest" });
     case 1:
-      return S.suspend(() => RepoGetAllCommitsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(118).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoGetAllCommitsResponse",
       });
     case 2:
@@ -11243,7 +9209,7 @@ function __c25(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/assignees", code: 200 })),
       ).annotate({ identifier: "RepoGetAssigneesRequest" });
     case 4:
-      return S.suspend(() => RepoGetAssigneesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(133).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoGetAssigneesResponse",
       });
     case 5:
@@ -11297,15 +9263,15 @@ function __c26(j: number): any {
         identifier: "RepoGetCombinedStatusByRefRequest",
       });
     case 1:
-      return S.Array(CommitStatus);
+      return S.Array(__S(154));
     case 2:
       return S.suspend(() =>
         S.Struct({
           commit_url: S.optional(S.String),
-          repository: S.optional(Repository),
+          repository: S.optional(__S(15)),
           sha: S.optional(S.String),
           state: S.optional(S.String),
-          statuses: S.optional(CombinedStatusStatusesList),
+          statuses: S.optional(__S(209)),
           total_count: S.optional(S.Number),
           url: S.optional(S.String),
         }),
@@ -11344,9 +9310,7 @@ function __c26(j: number): any {
         identifier: "RepoGetContentsListRequest",
       });
     case 6:
-      return S.suspend(() =>
-        RepoGetContentsListResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(107).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoGetContentsListResponse",
       });
     case 7:
@@ -11371,11 +9335,9 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => RepoGetEditorConfigResponseBodyMap.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "RepoGetEditorConfigResponse",
-        },
-      );
+      return S.suspend(() => __S(10).pipe(T.RawResponseRoot())).annotate({
+        identifier: "RepoGetEditorConfigResponse",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11410,12 +9372,12 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "IssueConfigContactLink" });
     case 5:
-      return S.Array(IssueConfigContactLink);
+      return S.Array(__S(220));
     case 6:
       return S.suspend(() =>
         S.Struct({
           blank_issues_enabled: S.optional(S.Boolean),
-          contact_links: S.optional(IssueConfigContactLinksList),
+          contact_links: S.optional(__S(221)),
         }),
       ).annotate({ identifier: "IssueConfig" });
     case 7:
@@ -11436,34 +9398,32 @@ function __c28(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(IssueFormFieldAttributesMap),
+          attributes: S.optional(__S(224)),
           id: S.optional(S.String),
           type: S.optional(S.String),
-          validations: S.optional(IssueFormFieldValidationsMap),
-          visible: S.optional(IssueFormFieldVisibleList),
+          validations: S.optional(__S(224)),
+          visible: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "IssueFormField" });
     case 2:
-      return S.Array(IssueFormField);
+      return S.Array(__S(225));
     case 3:
       return S.suspend(() =>
         S.Struct({
           about: S.optional(S.String),
-          body: S.optional(IssueTemplateBodyList),
+          body: S.optional(__S(226)),
           content: S.optional(S.String),
           file_name: S.optional(S.String),
-          labels: S.optional(IssueTemplateLabels),
+          labels: S.optional(__S(14)),
           name: S.optional(S.String),
           ref: S.optional(S.String),
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "IssueTemplate" });
     case 4:
-      return S.Array(IssueTemplate);
+      return S.Array(__S(227));
     case 5:
-      return S.suspend(() =>
-        RepoGetIssueTemplatesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(228).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoGetIssueTemplatesResponse",
       });
     case 6:
@@ -11488,7 +9448,7 @@ function __c29(j: number): any {
     case 0:
       return S.Record(S.String, S.Number);
     case 1:
-      return S.suspend(() => RepoGetLanguagesResponseBodyMap.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(232).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoGetLanguagesResponse",
       });
     case 2:
@@ -11513,7 +9473,7 @@ function __c29(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          commit: S.optional(Commit),
+          commit: S.optional(__S(117)),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Note" });
@@ -11567,7 +9527,7 @@ function __c30(j: number): any {
           repo: S.String.pipe(T.Label()),
           index: S.Number.pipe(T.Label()),
           skip_to: S.optional(S.String.pipe(T.Query("skip-to"))),
-          whitespace: S.optional(RepoGetPullRequestFilesRequestWhitespace.pipe(T.Query())),
+          whitespace: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -11591,11 +9551,9 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "ChangedFile" });
     case 2:
-      return S.Array(ChangedFile);
+      return S.Array(__S(241));
     case 3:
-      return S.suspend(() =>
-        RepoGetPullRequestFilesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(242).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoGetPullRequestFilesResponse",
       });
     case 4:
@@ -11649,15 +9607,13 @@ function __c30(j: number): any {
         identifier: "RepoGetPullReviewCommentsRequest",
       });
     case 7:
-      return S.Array(PullReviewComment);
+      return S.Array(__S(144));
   }
 }
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        RepoGetPullReviewCommentsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(247).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoGetPullReviewCommentsResponse",
       });
     case 1:
@@ -11813,7 +9769,7 @@ function __c32(j: number): any {
         identifier: "RepoGetWikiPageRevisionsRequest",
       });
     case 7:
-      return S.Array(WikiCommit);
+      return S.Array(__S(160));
   }
 }
 function __c33(j: number): any {
@@ -11821,7 +9777,7 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          commits: S.optional(WikiCommitListCommitsList),
+          commits: S.optional(__S(263)),
           count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WikiCommitList" });
@@ -11838,15 +9794,15 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           html_url: S.optional(S.String),
-          last_commit: S.optional(WikiCommit),
+          last_commit: S.optional(__S(160)),
           sub_url: S.optional(S.String),
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "WikiPageMetaData" });
     case 3:
-      return S.Array(WikiPageMetaData);
+      return S.Array(__S(266));
     case 4:
-      return S.suspend(() => RepoGetWikiPagesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(267).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoGetWikiPagesResponse",
       });
     case 5:
@@ -11868,15 +9824,13 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "Secret" });
     case 7:
-      return S.Array(Secret);
+      return S.Array(__S(270));
   }
 }
 function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        RepoListActionsSecretsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(271).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListActionsSecretsResponse",
       });
     case 1:
@@ -11896,7 +9850,7 @@ function __c34(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          assets: S.optional(CommentAssetsList),
+          assets: S.optional(__S(150)),
           body: S.optional(S.String),
           created_at: S.optional(S.String),
           html_url: S.optional(S.String),
@@ -11906,33 +9860,31 @@ function __c34(j: number): any {
           original_author_id: S.optional(S.Number),
           pull_request_url: S.optional(S.String),
           updated_at: S.optional(S.String),
-          user: S.optional(User),
+          user: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "Comment" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          act_user: S.optional(User),
+          act_user: S.optional(__S(6)),
           act_user_id: S.optional(S.Number),
-          comment: S.optional(Comment),
+          comment: S.optional(__S(274)),
           comment_id: S.optional(S.Number),
           content: S.optional(S.String),
           created: S.optional(S.String),
           id: S.optional(S.Number),
           is_private: S.optional(S.Boolean),
-          op_type: S.optional(ActivityOpType),
+          op_type: S.optional(S.String),
           ref_name: S.optional(S.String),
-          repo: S.optional(Repository),
+          repo: S.optional(__S(15)),
           repo_id: S.optional(S.Number),
           user_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Activity" });
     case 4:
-      return S.Array(Activity);
+      return S.Array(__S(275));
     case 5:
-      return S.suspend(() =>
-        RepoListActivityFeedsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(276).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListActivityFeedsResponse",
       });
     case 6:
@@ -11947,7 +9899,7 @@ function __c34(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          object: S.optional(AnnotatedTagObject),
+          object: S.optional(__S(37)),
           ref: S.optional(S.String),
           url: S.optional(S.String),
         }),
@@ -11957,13 +9909,11 @@ function __c34(j: number): any {
 function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Reference);
+      return S.Array(__S(279));
     case 1:
-      return S.suspend(() => RepoListAllGitRefsResponseBodyList.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "RepoListAllGitRefsResponse",
-        },
-      );
+      return S.suspend(() => __S(280).pipe(T.RawResponseRoot())).annotate({
+        identifier: "RepoListAllGitRefsResponse",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -11974,9 +9924,9 @@ function __c35(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/branches", code: 200 })),
       ).annotate({ identifier: "RepoListBranchesRequest" });
     case 3:
-      return S.Array(Branch);
+      return S.Array(__S(122));
     case 4:
-      return S.suspend(() => RepoListBranchesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(283).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListBranchesResponse",
       });
     case 5:
@@ -11991,11 +9941,9 @@ function __c35(j: number): any {
         identifier: "RepoListBranchProtectionRequest",
       });
     case 6:
-      return S.Array(BranchProtection);
+      return S.Array(__S(125));
     case 7:
-      return S.suspend(() =>
-        RepoListBranchProtectionResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(286).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListBranchProtectionResponse",
       });
   }
@@ -12014,9 +9962,7 @@ function __c36(j: number): any {
         identifier: "RepoListCollaboratorsRequest",
       });
     case 1:
-      return S.suspend(() =>
-        RepoListCollaboratorsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(133).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListCollaboratorsResponse",
       });
     case 2:
@@ -12027,7 +9973,7 @@ function __c36(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/flags", code: 200 })),
       ).annotate({ identifier: "RepoListFlagsRequest" });
     case 3:
-      return S.suspend(() => RepoListFlagsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(14).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListFlagsResponse",
       });
     case 4:
@@ -12038,9 +9984,9 @@ function __c36(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/hooks/git", code: 200 })),
       ).annotate({ identifier: "RepoListGitHooksRequest" });
     case 5:
-      return S.Array(GitHook);
+      return S.Array(__S(191));
     case 6:
-      return S.suspend(() => RepoListGitHooksResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(293).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListGitHooksResponse",
       });
     case 7:
@@ -12056,7 +10002,7 @@ function __c36(j: number): any {
 function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => RepoListGitRefsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(280).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListGitRefsResponse",
       });
     case 1:
@@ -12069,9 +10015,9 @@ function __c37(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/hooks", code: 200 })),
       ).annotate({ identifier: "RepoListHooksRequest" });
     case 2:
-      return S.Array(Hook);
+      return S.Array(__S(128));
     case 3:
-      return S.suspend(() => RepoListHooksResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(298).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListHooksResponse",
       });
     case 4:
@@ -12086,9 +10032,9 @@ function __c37(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/keys", code: 200 })),
       ).annotate({ identifier: "RepoListKeysRequest" });
     case 5:
-      return S.Array(DeployKey);
+      return S.Array(__S(130));
     case 6:
-      return S.suspend(() => RepoListKeysResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(301).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListKeysResponse",
       });
     case 7:
@@ -12105,7 +10051,7 @@ function __c37(j: number): any {
 function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Label);
+      return S.Array(__S(135));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12127,9 +10073,9 @@ function __c38(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          assets: S.optional(IssueAssetsList),
-          assignee: S.optional(User),
-          assignees: S.optional(IssueAssigneesList),
+          assets: S.optional(__S(150)),
+          assignee: S.optional(__S(6)),
+          assignees: S.optional(__S(133)),
           body: S.optional(S.String),
           closed_at: S.optional(S.String),
           comments: S.optional(S.Number),
@@ -12138,28 +10084,26 @@ function __c38(j: number): any {
           html_url: S.optional(S.String),
           id: S.optional(S.Number),
           is_locked: S.optional(S.Boolean),
-          labels: S.optional(IssueLabelsList),
-          milestone: S.optional(Milestone),
+          labels: S.optional(__S(304)),
+          milestone: S.optional(__S(137)),
           number: S.optional(S.Number),
           original_author: S.optional(S.String),
           original_author_id: S.optional(S.Number),
           pin_order: S.optional(S.Number),
-          pull_request: S.optional(PullRequestMeta),
+          pull_request: S.optional(__S(305)),
           ref: S.optional(S.String),
-          repository: S.optional(RepositoryMeta),
+          repository: S.optional(__S(306)),
           state: S.optional(S.String),
           title: S.optional(S.String),
           updated_at: S.optional(S.String),
           url: S.optional(S.String),
-          user: S.optional(User),
+          user: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "Issue" });
     case 4:
-      return S.Array(Issue);
+      return S.Array(__S(307));
     case 5:
-      return S.suspend(() =>
-        RepoListPinnedIssuesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(308).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListPinnedIssuesResponse",
       });
     case 6:
@@ -12172,15 +10116,13 @@ function __c38(j: number): any {
         identifier: "RepoListPinnedPullRequestsRequest",
       });
     case 7:
-      return S.Array(PullRequest);
+      return S.Array(__S(138));
   }
 }
 function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        RepoListPinnedPullRequestsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(311).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListPinnedPullRequestsResponse",
       });
     case 1:
@@ -12188,10 +10130,10 @@ function __c39(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          state: S.optional(RepoListPullRequestsRequestState.pipe(T.Query())),
-          sort: S.optional(RepoListPullRequestsRequestSort.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
           milestone: S.optional(S.Number.pipe(T.Query())),
-          labels: S.optional(RepoListPullRequestsRequestLabelsList.pipe(T.Query())),
+          labels: S.optional(__S(131).pipe(T.Query())),
           poster: S.optional(S.String.pipe(T.Query())),
           base: S.optional(S.String.pipe(T.Query())),
           head: S.optional(S.String.pipe(T.Query())),
@@ -12227,11 +10169,9 @@ function __c39(j: number): any {
         identifier: "RepoListPushMirrorsRequest",
       });
     case 4:
-      return S.Array(PushMirror);
+      return S.Array(__S(90));
     case 5:
-      return S.suspend(() =>
-        RepoListPushMirrorsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(316).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListPushMirrorsResponse",
       });
     case 6:
@@ -12247,9 +10187,7 @@ function __c39(j: number): any {
         identifier: "RepoListReleaseAttachmentsRequest",
       });
     case 7:
-      return S.suspend(() =>
-        RepoListReleaseAttachmentsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(150).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListReleaseAttachmentsResponse",
       });
   }
@@ -12269,9 +10207,9 @@ function __c40(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/releases", code: 200 })),
       ).annotate({ identifier: "RepoListReleasesRequest" });
     case 1:
-      return S.Array(Release);
+      return S.Array(__S(151));
     case 2:
-      return S.suspend(() => RepoListReleasesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(321).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListReleasesResponse",
       });
     case 3:
@@ -12291,14 +10229,14 @@ function __c40(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           sha: S.String.pipe(T.Label()),
-          sort: S.optional(RepoListStatusesRequestSort.pipe(T.Query())),
-          state: S.optional(RepoListStatusesRequestState.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/statuses/{sha}", code: 200 })),
       ).annotate({ identifier: "RepoListStatusesRequest" });
     case 5:
-      return S.suspend(() => RepoListStatusesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(209).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListStatusesResponse",
       });
     case 6:
@@ -12307,8 +10245,8 @@ function __c40(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           ref: S.String.pipe(T.Label()),
-          sort: S.optional(RepoListStatusesByRefRequestSort.pipe(T.Query())),
-          state: S.optional(RepoListStatusesByRefRequestState.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -12318,9 +10256,7 @@ function __c40(j: number): any {
         identifier: "RepoListStatusesByRefRequest",
       });
     case 7:
-      return S.suspend(() =>
-        RepoListStatusesByRefResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(209).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListStatusesByRefResponse",
       });
   }
@@ -12348,11 +10284,9 @@ function __c41(j: number): any {
         identifier: "RepoListTagProtectionRequest",
       });
     case 2:
-      return S.Array(TagProtection);
+      return S.Array(__S(158));
     case 3:
-      return S.suspend(() =>
-        RepoListTagProtectionResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(330).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListTagProtectionResponse",
       });
     case 4:
@@ -12365,9 +10299,9 @@ function __c41(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/repos/{owner}/{repo}/tags", code: 200 })),
       ).annotate({ identifier: "RepoListTagsRequest" });
     case 5:
-      return S.Array(Tag);
+      return S.Array(__S(156));
     case 6:
-      return S.suspend(() => RepoListTagsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(333).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListTagsResponse",
       });
     case 7:
@@ -12382,7 +10316,7 @@ function __c41(j: number): any {
 function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => RepoListTeamsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(12).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoListTeamsResponse",
       });
     case 1:
@@ -12397,7 +10331,7 @@ function __c42(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          topics: S.optional(TopicNameTopicsList),
+          topics: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "TopicName" });
     case 3:
@@ -12406,7 +10340,7 @@ function __c42(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           index: S.Number.pipe(T.Label()),
-          Do: RepoMergePullRequestRequestDo,
+          Do: S.String,
           MergeCommitID: S.optional(S.String),
           MergeMessageField: S.optional(S.String),
           MergeTitleField: S.optional(S.String),
@@ -12465,7 +10399,7 @@ function __c43(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          flags: S.optional(RepoReplaceAllFlagsRequestFlagsList),
+          flags: S.optional(__S(14)),
         }).pipe(T.Http({ method: "PUT", uri: "/repos/{owner}/{repo}/flags", code: 200 })),
       ).annotate({
         identifier: "RepoReplaceAllFlagsRequest",
@@ -12604,7 +10538,7 @@ function __c44(j: number): any {
         S.Struct({
           created: S.optional(S.String),
           id: S.optional(S.Number),
-          issue: S.optional(Issue),
+          issue: S.optional(__S(307)),
           issue_id: S.optional(S.Number),
           time: S.optional(S.Number),
           user_id: S.optional(S.Number),
@@ -12612,9 +10546,9 @@ function __c44(j: number): any {
         }),
       ).annotate({ identifier: "TrackedTime" });
     case 6:
-      return S.Array(TrackedTime);
+      return S.Array(__S(357));
     case 7:
-      return S.suspend(() => RepoTrackedTimesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(358).pipe(T.RawResponseRoot())).annotate({
         identifier: "RepoTrackedTimesResponse",
       });
   }
@@ -12646,11 +10580,11 @@ function __c45(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           filepath: S.String.pipe(T.Label()),
-          author: S.optional(Identity),
+          author: S.optional(__S(93)),
           branch: S.optional(S.String),
-          committer: S.optional(Identity),
+          committer: S.optional(__S(93)),
           content: S.String,
-          dates: S.optional(CommitDateOptions),
+          dates: S.optional(__S(94)),
           force_overwrite_new_branch: S.optional(S.Boolean),
           from_path: S.optional(S.String),
           message: S.optional(S.String),
@@ -12667,7 +10601,7 @@ function __c45(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           index: S.Number.pipe(T.Label()),
-          style: S.optional(RepoUpdatePullRequestRequestStyle.pipe(T.Query())),
+          style: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/pulls/{index}/update", code: 200 }),
         ),
@@ -12679,7 +10613,7 @@ function __c45(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          topics: S.optional(RepoUpdateTopicsRequestTopicsList),
+          topics: S.optional(__S(14)),
         }).pipe(T.Http({ method: "PUT", uri: "/repos/{owner}/{repo}/topics", code: 200 })),
       ).annotate({ identifier: "RepoUpdateTopicsRequest" });
     case 5:
@@ -12756,8 +10690,8 @@ function __c46(j: number): any {
           archived: S.optional(S.Boolean.pipe(T.Query())),
           mode: S.optional(S.String.pipe(T.Query())),
           exclusive: S.optional(S.Boolean.pipe(T.Query())),
-          sort: S.optional(SearchRepoRequestSort.pipe(T.Query())),
-          order: S.optional(SearchRepoRequestOrder.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/repos/search", code: 200 })),
@@ -12765,7 +10699,7 @@ function __c46(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(SearchResultsDataList),
+          data: S.optional(__S(81)),
           ok: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SearchResults" });
@@ -12788,11 +10722,11 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "TopicResponse" });
     case 5:
-      return S.Array(TopicResponse);
+      return S.Array(__S(372));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          topics: S.optional(SearchTopicResponseTopicsList),
+          topics: S.optional(__S(373)),
         }),
       ).annotate({ identifier: "SearchTopicResponse" });
     case 7:
@@ -12823,7 +10757,7 @@ function __c47(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           new_owner: S.String,
-          team_ids: S.optional(TransferRepoRequestTeamIdsList),
+          team_ids: S.optional(__S(131)),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/transfer", code: 200 })),
       ).annotate({ identifier: "TransferRepoRequest" });
     case 2:
@@ -12897,5 +10831,110 @@ function __c47(j: number): any {
       ).annotate({
         identifier: "UserCurrentPutSubscriptionRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
+    case 41:
+      return __c41(i & 7);
+    case 42:
+      return __c42(i & 7);
+    case 43:
+      return __c43(i & 7);
+    case 44:
+      return __c44(i & 7);
+    case 45:
+      return __c45(i & 7);
+    case 46:
+      return __c46(i & 7);
+    case 47:
+      return __c47(i & 7);
   }
 }

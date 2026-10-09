@@ -6,36 +6,21 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Resource tags. */
 export type CreateMonitorRequestTagsMap = { [key: string]: string | undefined };
-const CreateMonitorRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateMonitorRequestTagsMap>;
-
 /** Type of managed service identity (only None, UserAssigned types are allowed). */
 export type ManagedServiceIdentityType = "None" | "UserAssigned";
-const ManagedServiceIdentityType = S.String;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<UserAssignedIdentityInput>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateMonitorRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-const CreateMonitorRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateMonitorRequestIdentityUserAssignedIdentitiesMap>;
-
 /** A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide. */
 export interface CreateMonitorRequestIdentity {
   /** Type of manage identity */
@@ -43,25 +28,13 @@ export interface CreateMonitorRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateMonitorRequestIdentityUserAssignedIdentitiesMap | null;
 }
-const CreateMonitorRequestIdentity = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateMonitorRequestIdentity>;
-
 /** Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET. */
 export type MonitorPropertiesInputRoutingPreference = "Default" | "RouteAll";
-const MonitorPropertiesInputRoutingPreference = S.String;
-
 /** Managed resource group configuration */
 export interface ManagedRGConfiguration {
   /** Managed resource group name */
   name?: string;
 }
-const ManagedRGConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ManagedRGConfiguration>;
-
 /** Describes the properties of a SAP monitor. */
 export interface MonitorPropertiesInput {
   /** The SAP monitor resources will be deployed in the SAP monitoring region. The subnet region should be same as the SAP monitoring region. */
@@ -77,11 +50,6 @@ export interface MonitorPropertiesInput {
   /** The subnet which the SAP monitor will be deployed in */
   monitorSubnet?: string;
 }
-const MonitorPropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<MonitorPropertiesInput>;
-
 export interface CreateMonitorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -98,16 +66,10 @@ export interface CreateMonitorRequest {
   /** SAP monitor properties */
   properties?: MonitorPropertiesInput;
 }
-const CreateMonitorRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateMonitorRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -123,13 +85,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
 export type CreateMonitorResponseTagsMap = { [key: string]: string | undefined };
-const CreateMonitorResponseTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateMonitorResponseTagsMap>;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -137,17 +94,10 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<UserAssignedIdentity>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateMonitorResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | undefined;
 };
-const CreateMonitorResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateMonitorResponseIdentityUserAssignedIdentitiesMap>;
-
 /** A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide. */
 export interface CreateMonitorResponseIdentity {
   /** Type of manage identity */
@@ -155,11 +105,6 @@ export interface CreateMonitorResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateMonitorResponseIdentityUserAssignedIdentitiesMap | null;
 }
-const CreateMonitorResponseIdentity = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateMonitorResponseIdentity>;
-
 /** State of provisioning of the SAP monitor. */
 export type MonitorPropertiesProvisioningState =
   | "Accepted"
@@ -169,18 +114,12 @@ export type MonitorPropertiesProvisioningState =
   | "Succeeded"
   | "Deleting"
   | "Migrating";
-const MonitorPropertiesProvisioningState = S.String;
-
 /** Array of details about specific errors that led to this reported error. */
 export type ErrorDetailsList = Array<Error>;
-const ErrorDetailsList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ErrorDetailsList>;
-
 /** Object containing more specific information than the current object about the error. */
 export interface ErrorInnerError {
   innerError?: Error;
 }
-const ErrorInnerError = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ErrorInnerError>;
-
 /** Standard error object. */
 export interface Error {
   /** Server-defined set of error codes. */
@@ -194,12 +133,8 @@ export interface Error {
   /** Object containing more specific information than the current object about the error. */
   innerError?: ErrorInnerError;
 }
-const Error = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Error>;
-
 /** Sets the routing preference of the SAP monitor. By default only RFC1918 traffic is routed to the customer VNET. */
 export type MonitorPropertiesRoutingPreference = "Default" | "RouteAll";
-const MonitorPropertiesRoutingPreference = S.String;
-
 /** Describes the properties of a SAP monitor. */
 export interface MonitorProperties {
   /** State of provisioning of the SAP monitor. */
@@ -223,8 +158,6 @@ export interface MonitorProperties {
   /** The ARM ID of the Storage account used for SAP monitoring. */
   storageAccountArmId?: string;
 }
-const MonitorProperties = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<MonitorProperties>;
-
 export interface CreateMonitorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -243,20 +176,10 @@ export interface CreateMonitorResponse {
   /** SAP monitor properties */
   properties?: MonitorProperties;
 }
-const CreateMonitorResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateMonitorResponse>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateProviderInstanceRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-const CreateProviderInstanceRequestIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateProviderInstanceRequestIdentityUserAssignedIdentitiesMap>;
-
 /** A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide. */
 export interface CreateProviderInstanceRequestIdentity {
   /** Type of manage identity */
@@ -264,18 +187,8 @@ export interface CreateProviderInstanceRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateProviderInstanceRequestIdentityUserAssignedIdentitiesMap | null;
 }
-const CreateProviderInstanceRequestIdentity = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateProviderInstanceRequestIdentity>;
-
 /** Host file entries (SapNetWeaver). */
 export type ProviderSapHostFileEntriesList = Array<string>;
-const ProviderSapHostFileEntriesList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ProviderSapHostFileEntriesList>;
-
 /** Gets or sets the provider specific properties. */
 export interface ProviderSpecificProperties {
   /** The provider type. For example, the value can be SapHana. */
@@ -327,21 +240,11 @@ export interface ProviderSpecificProperties {
   /** Host file entries (SapNetWeaver). */
   sapHostFileEntries?: ProviderSapHostFileEntriesList;
 }
-const ProviderSpecificProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ProviderSpecificProperties>;
-
 /** Describes the properties of a provider instance. */
 export interface ProviderInstancePropertiesInput {
   /** Defines the provider specific properties. */
   providerSettings?: ProviderSpecificProperties;
 }
-const ProviderInstancePropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ProviderInstancePropertiesInput>;
-
 export interface CreateProviderInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -356,20 +259,10 @@ export interface CreateProviderInstanceRequest {
   /** Provider Instance properties */
   properties?: ProviderInstancePropertiesInput;
 }
-const CreateProviderInstanceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateProviderInstanceRequest>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateProviderInstanceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | undefined;
 };
-const CreateProviderInstanceResponseIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateProviderInstanceResponseIdentityUserAssignedIdentitiesMap>;
-
 /** A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide. */
 export interface CreateProviderInstanceResponseIdentity {
   /** Type of manage identity */
@@ -377,11 +270,6 @@ export interface CreateProviderInstanceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateProviderInstanceResponseIdentityUserAssignedIdentitiesMap | null;
 }
-const CreateProviderInstanceResponseIdentity = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateProviderInstanceResponseIdentity>;
-
 /** State of provisioning of the provider instance */
 export type ProviderInstancePropertiesProvisioningState =
   | "Accepted"
@@ -391,8 +279,6 @@ export type ProviderInstancePropertiesProvisioningState =
   | "Succeeded"
   | "Deleting"
   | "Migrating";
-const ProviderInstancePropertiesProvisioningState = S.String;
-
 /** Describes the properties of a provider instance. */
 export interface ProviderInstanceProperties {
   /** State of provisioning of the provider instance */
@@ -402,11 +288,6 @@ export interface ProviderInstanceProperties {
   /** Defines the provider specific properties. */
   providerSettings?: ProviderSpecificProperties;
 }
-const ProviderInstanceProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ProviderInstanceProperties>;
-
 export interface CreateProviderInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -421,18 +302,10 @@ export interface CreateProviderInstanceResponse {
   /** Provider Instance properties */
   properties?: ProviderInstanceProperties;
 }
-const CreateProviderInstanceResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateProviderInstanceResponse>;
-
 /** Resource tags. */
 export type CreateSapApplicationServerInstanceRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const CreateSapApplicationServerInstanceRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateSapApplicationServerInstanceRequestTagsMap>;
-
 /** Defines the SAP Application Server instance properties. */
 export type SAPApplicationServerPropertiesInput = UserAssignedIdentityInput;
 export interface CreateSapApplicationServerInstanceRequest {
@@ -451,43 +324,24 @@ export interface CreateSapApplicationServerInstanceRequest {
   /** The resource-specific properties for this resource. */
   properties?: UserAssignedIdentityInput;
 }
-const CreateSapApplicationServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateSapApplicationServerInstanceRequest>;
-
 /** Resource tags. */
 export type CreateSapApplicationServerInstanceResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const CreateSapApplicationServerInstanceResponseTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateSapApplicationServerInstanceResponseTagsMap>;
-
 /** The Load Balancer details such as Load Balancer ID. */
 export interface LoadBalancerDetails {
   /** Fully qualified resource ID for the load balancer. */
   id?: string;
 }
-const LoadBalancerDetails = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<LoadBalancerDetails>;
-
 /** Defines the type of application server VM. */
 export type ApplicationServerVirtualMachineType = "Active" | "Standby" | "Unknown";
-const ApplicationServerVirtualMachineType = S.String;
-
 /** Storage details of all the Storage accounts attached to the VM. For e.g. NFS on AFS Shared Storage. */
 export interface StorageInformation {
   /** Fully qualified resource ID for the storage account. */
   id?: string;
 }
-const StorageInformation = LoadBalancerDetails as any as S.Schema<StorageInformation>;
-
 /** Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage. */
 export type ApplicationServerVmDetailsStorageDetailsList = Array<StorageInformation>;
-const ApplicationServerVmDetailsStorageDetailsList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ApplicationServerVmDetailsStorageDetailsList>;
-
 /** The Application Server VM Details. */
 export interface ApplicationServerVmDetails {
   /** Defines the type of application server VM. */
@@ -497,18 +351,8 @@ export interface ApplicationServerVmDetails {
   /** Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage. */
   storageDetails?: ApplicationServerVmDetailsStorageDetailsList;
 }
-const ApplicationServerVmDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ApplicationServerVmDetails>;
-
 /** The list of virtual machines. */
 export type SAPApplicationServerPropertiesVmDetailsList = Array<ApplicationServerVmDetails>;
-const SAPApplicationServerPropertiesVmDetailsList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<SAPApplicationServerPropertiesVmDetailsList>;
-
 /** Defines the SAP Instance status. */
 export type SAPVirtualInstanceStatus =
   | "Starting"
@@ -518,12 +362,8 @@ export type SAPVirtualInstanceStatus =
   | "PartiallyRunning"
   | "Unavailable"
   | "SoftShutdown";
-const SAPVirtualInstanceStatus = S.String;
-
 /** Defines the health of SAP Instances. */
 export type SAPHealthState = "Unknown" | "Healthy" | "Unhealthy" | "Degraded";
-const SAPHealthState = S.String;
-
 /** Defines the provisioning states. */
 export type SapVirtualInstanceProvisioningState =
   | "Succeeded"
@@ -532,15 +372,8 @@ export type SapVirtualInstanceProvisioningState =
   | "Failed"
   | "Deleting"
   | "Canceled";
-const SapVirtualInstanceProvisioningState = S.String;
-
 /** Internal error details. */
 export type ErrorDefinitionDetailsList = Array<ErrorDefinition>;
-const ErrorDefinitionDetailsList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ErrorDefinitionDetailsList>;
-
 /** Error definition. */
 export interface ErrorDefinition {
   /** Service specific error code which serves as the substatus for the HTTP error code. */
@@ -550,18 +383,11 @@ export interface ErrorDefinition {
   /** Internal error details. */
   details?: ErrorDefinitionDetailsList;
 }
-const ErrorDefinition = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ErrorDefinition>;
-
 /** An error response from the Virtual Instance for SAP Workload service. */
 export interface SAPVirtualInstanceError {
   /** The Virtual Instance for SAP error body. */
   properties?: ErrorDefinition;
 }
-const SAPVirtualInstanceError = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<SAPVirtualInstanceError>;
-
 /** Defines the SAP Application Server instance properties. */
 export interface SAPApplicationServerProperties {
   /** Application server Instance Number. */
@@ -597,11 +423,6 @@ export interface SAPApplicationServerProperties {
   /** Defines the Application Instance errors. */
   errors?: SAPVirtualInstanceError;
 }
-const SAPApplicationServerProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<SAPApplicationServerProperties>;
-
 export interface CreateSapApplicationServerInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -618,18 +439,10 @@ export interface CreateSapApplicationServerInstanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SAPApplicationServerProperties;
 }
-const CreateSapApplicationServerInstanceResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateSapApplicationServerInstanceResponse>;
-
 /** Resource tags. */
 export type CreateSAPApplicationServerInstanceRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const CreateSAPApplicationServerInstanceRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateSAPApplicationServerInstanceRequestTagsMap>;
-
 export interface CreateSAPApplicationServerInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -645,24 +458,14 @@ export interface CreateSAPApplicationServerInstanceRequest {
   location: string;
   properties?: UserAssignedIdentityInput;
 }
-const CreateSAPApplicationServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateSAPApplicationServerInstanceRequest>;
-
 /** Resource tags. */
 export type CreateSAPApplicationServerInstanceResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const CreateSAPApplicationServerInstanceResponseTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateSAPApplicationServerInstanceResponseTagsMap>;
-
 /** The Load Balancer details such as Load Balancer ID. */
 export interface LoadBalancerDetails_2 {
   id?: string;
 }
-const LoadBalancerDetails_2 = LoadBalancerDetails as any as S.Schema<LoadBalancerDetails_2>;
-
 /** Storage details of all the Storage accounts attached to the VM. For e.g. NFS on AFS Shared Storage. */
 export type StorageInformation_2 = LoadBalancerDetails_2;
 /** Storage details of all the Storage Accounts attached to the App Virtual Machine. For e.g. NFS on AFS Shared Storage. */
@@ -676,17 +479,10 @@ export interface ApplicationServerVmDetails_2 {
 }
 /** The list of virtual machines. */
 export type SAPApplicationServerPropertiesVmDetailsList_2 = Array<ApplicationServerVmDetails_2>;
-const SAPApplicationServerPropertiesVmDetailsList_2 =
-  SAPApplicationServerPropertiesVmDetailsList as any as S.Schema<SAPApplicationServerPropertiesVmDetailsList_2>;
-
 /** Defines the health of SAP Instances. */
 export type HealthState = "Unknown" | "Healthy" | "Unhealthy" | "Degraded";
-const HealthState = S.String;
-
 /** Defines the provisioning states. */
 export type ProvisioningState = "Succeeded" | "Updating" | "Creating" | "Failed" | "Deleting";
-const ProvisioningState = S.String;
-
 /** Defines the SAP Application Server instance properties. */
 export interface SAPApplicationServerProperties_2 {
   /** Application server Instance Number. */
@@ -717,11 +513,6 @@ export interface SAPApplicationServerProperties_2 {
   /** Defines the Application Instance errors. */
   errors?: SAPVirtualInstanceError;
 }
-const SAPApplicationServerProperties_2 = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<SAPApplicationServerProperties_2>;
-
 export interface CreateSAPApplicationServerInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -737,16 +528,8 @@ export interface CreateSAPApplicationServerInstanceResponse {
   location: string;
   properties?: SAPApplicationServerProperties_2;
 }
-const CreateSAPApplicationServerInstanceResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateSAPApplicationServerInstanceResponse>;
-
 /** Resource tags. */
 export type CreateSAPCentralInstanceRequestTagsMap = { [key: string]: string | undefined };
-const CreateSAPCentralInstanceRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateSAPCentralInstanceRequestTagsMap>;
-
 /** Defines the SAP Message Server properties. */
 export type MessageServerPropertiesInput_2 = UserAssignedIdentityInput;
 /** Defines the SAP Enqueue Server properties. */
@@ -762,11 +545,6 @@ export interface SAPCentralServerPropertiesInput_2 {
   gatewayServerProperties?: UserAssignedIdentityInput;
   enqueueReplicationServerProperties?: UserAssignedIdentityInput;
 }
-const SAPCentralServerPropertiesInput_2 = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<SAPCentralServerPropertiesInput_2>;
-
 export interface CreateSAPCentralInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -782,16 +560,8 @@ export interface CreateSAPCentralInstanceRequest {
   location: string;
   properties?: SAPCentralServerPropertiesInput_2;
 }
-const CreateSAPCentralInstanceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateSAPCentralInstanceRequest>;
-
 /** Resource tags. */
 export type CreateSAPCentralInstanceResponseTagsMap = { [key: string]: string | undefined };
-const CreateSAPCentralInstanceResponseTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateSAPCentralInstanceResponseTagsMap>;
-
 /** Defines the SAP Message Server properties. */
 export interface MessageServerProperties_2 {
   /** Message Server port. */
@@ -808,11 +578,6 @@ export interface MessageServerProperties_2 {
   ipAddress?: string;
   health?: HealthState;
 }
-const MessageServerProperties_2 = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<MessageServerProperties_2>;
-
 /** Defines the SAP Enqueue Server properties. */
 export interface EnqueueServerProperties_2 {
   /** Enqueue Server SAP Hostname. */
@@ -823,26 +588,14 @@ export interface EnqueueServerProperties_2 {
   port?: number | null;
   health?: HealthState;
 }
-const EnqueueServerProperties_2 = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<EnqueueServerProperties_2>;
-
 /** Defines the SAP Gateway Server properties. */
 export interface GatewayServerProperties_2 {
   /** Gateway Port. */
   port?: number | null;
   health?: HealthState;
 }
-const GatewayServerProperties_2 = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GatewayServerProperties_2>;
-
 /** Defines the type of Enqueue Replication Server. */
 export type EnqueueReplicationServerType = "EnqueueReplicator1" | "EnqueueReplicator2";
-const EnqueueReplicationServerType = S.String;
-
 /** Defines the SAP Enqueue Replication Server (ERS) properties. */
 export interface EnqueueReplicationServerProperties_2 {
   ersVersion?: EnqueueReplicationServerType;
@@ -858,11 +611,6 @@ export interface EnqueueReplicationServerProperties_2 {
   ipAddress?: string;
   health?: HealthState;
 }
-const EnqueueReplicationServerProperties_2 = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<EnqueueReplicationServerProperties_2>;
-
 /** Defines the type of central server VM. */
 export type CentralServerVirtualMachineType =
   | "Primary"
@@ -872,13 +620,8 @@ export type CentralServerVirtualMachineType =
   | "ERSInactive"
   | "ERS"
   | "Standby";
-const CentralServerVirtualMachineType = S.String;
-
 /** Storage details of all the Storage Accounts attached to the ASCS Virtual Machine. For e.g. NFS on AFS Shared Storage. */
 export type CentralServerVmDetailsStorageDetailsList_2 = Array<LoadBalancerDetails_2>;
-const CentralServerVmDetailsStorageDetailsList_2 =
-  ApplicationServerVmDetailsStorageDetailsList as any as S.Schema<CentralServerVmDetailsStorageDetailsList_2>;
-
 /** The SAP Central Services Instance VM details. */
 export interface CentralServerVmDetails_2 {
   type?: CentralServerVirtualMachineType;
@@ -886,18 +629,8 @@ export interface CentralServerVmDetails_2 {
   /** Storage details of all the Storage Accounts attached to the ASCS Virtual Machine. For e.g. NFS on AFS Shared Storage. */
   storageDetails?: CentralServerVmDetailsStorageDetailsList_2;
 }
-const CentralServerVmDetails_2 = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CentralServerVmDetails_2>;
-
 /** The list of virtual machines corresponding to the Central Services instance. */
 export type SAPCentralServerPropertiesVmDetailsList_2 = Array<CentralServerVmDetails_2>;
-const SAPCentralServerPropertiesVmDetailsList_2 = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<SAPCentralServerPropertiesVmDetailsList_2>;
-
 /** Defines the SAP Central Services Instance properties. */
 export interface SAPCentralServerProperties_2 {
   /** The central services instance number. */
@@ -922,11 +655,6 @@ export interface SAPCentralServerProperties_2 {
   /** Defines the errors related to SAP Central Services Instance resource. */
   errors?: SAPVirtualInstanceError;
 }
-const SAPCentralServerProperties_2 = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<SAPCentralServerProperties_2>;
-
 export interface CreateSAPCentralInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -942,16 +670,8 @@ export interface CreateSAPCentralInstanceResponse {
   location: string;
   properties?: SAPCentralServerProperties_2;
 }
-const CreateSAPCentralInstanceResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateSAPCentralInstanceResponse>;
-
 /** Resource tags. */
 export type CreateSapCentralServerInstanceRequestTagsMap = { [key: string]: string | undefined };
-const CreateSapCentralServerInstanceRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateSapCentralServerInstanceRequestTagsMap>;
-
 /** Defines the SAP message server properties. */
 export type MessageServerPropertiesInput = UserAssignedIdentityInput;
 /** Defines the SAP Central Services Instance properties. */
@@ -965,9 +685,6 @@ export interface SAPCentralServerPropertiesInput {
   /** Defines the SAP Enqueue Replication Server (ERS) properties. */
   enqueueReplicationServerProperties?: UserAssignedIdentityInput;
 }
-const SAPCentralServerPropertiesInput =
-  SAPCentralServerPropertiesInput_2 as any as S.Schema<SAPCentralServerPropertiesInput>;
-
 export interface CreateSapCentralServerInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -984,16 +701,8 @@ export interface CreateSapCentralServerInstanceRequest {
   /** The resource-specific properties for this resource. */
   properties?: SAPCentralServerPropertiesInput;
 }
-const CreateSapCentralServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreateSapCentralServerInstanceRequest>;
-
 /** Resource tags. */
 export type CreateSapCentralServerInstanceResponseTagsMap = { [key: string]: string | undefined };
-const CreateSapCentralServerInstanceResponseTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateSapCentralServerInstanceResponseTagsMap>;
-
 /** Defines the SAP message server properties. */
 export interface MessageServerProperties {
   /** message server port. */
@@ -1011,11 +720,6 @@ export interface MessageServerProperties {
   /** Defines the health of SAP Instances. */
   health?: SAPHealthState;
 }
-const MessageServerProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<MessageServerProperties>;
-
 /** Defines the SAP Enqueue Server properties. */
 export interface EnqueueServerProperties {
   /** Enqueue Server SAP Hostname. */
@@ -1027,11 +731,6 @@ export interface EnqueueServerProperties {
   /** Defines the health of SAP Instances. */
   health?: SAPHealthState;
 }
-const EnqueueServerProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<EnqueueServerProperties>;
-
 /** Defines the SAP Gateway Server properties. */
 export interface GatewayServerProperties {
   /** Gateway Port. */
@@ -1039,11 +738,6 @@ export interface GatewayServerProperties {
   /** Defines the health of SAP Instances. */
   health?: SAPHealthState;
 }
-const GatewayServerProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GatewayServerProperties>;
-
 /** Defines the SAP Enqueue Replication Server (ERS) properties. */
 export interface EnqueueReplicationServerProperties {
   /** Defines the type of Enqueue Replication Server. */
@@ -1061,9 +755,6 @@ export interface EnqueueReplicationServerProperties {
   /** Defines the health of SAP Instances. */
   health?: SAPHealthState;
 }
-const EnqueueReplicationServerProperties =
-  EnqueueReplicationServerProperties_2 as any as S.Schema<EnqueueReplicationServerProperties>;
-
 /** Storage details of all the Storage Accounts attached to the ASCS Virtual Machine. For e.g. NFS on AFS Shared Storage. */
 export type CentralServerVmDetailsStorageDetailsList = Array<StorageInformation>;
 /** The SAP Central Services Instance VM details. */
@@ -1077,9 +768,6 @@ export interface CentralServerVmDetails {
 }
 /** The list of virtual machines corresponding to the Central Services instance. */
 export type SAPCentralServerPropertiesVmDetailsList = Array<CentralServerVmDetails>;
-const SAPCentralServerPropertiesVmDetailsList =
-  SAPCentralServerPropertiesVmDetailsList_2 as any as S.Schema<SAPCentralServerPropertiesVmDetailsList>;
-
 /** Defines the SAP Central Services Instance properties. */
 export interface SAPCentralServerProperties {
   /** The central services instance number. */
@@ -1111,11 +799,6 @@ export interface SAPCentralServerProperties {
   /** Defines the errors related to SAP Central Services Instance resource. */
   errors?: SAPVirtualInstanceError;
 }
-const SAPCentralServerProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<SAPCentralServerProperties>;
-
 export interface CreateSapCentralServerInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1132,16 +815,8 @@ export interface CreateSapCentralServerInstanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SAPCentralServerProperties;
 }
-const CreateSapCentralServerInstanceResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CreateSapCentralServerInstanceResponse>;
-
 /** Resource tags. */
 export type CreateSapDatabaseInstanceRequestTagsMap = { [key: string]: string | undefined };
-const CreateSapDatabaseInstanceRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateSapDatabaseInstanceRequestTagsMap>;
-
 /** Defines the Database properties. */
 export type SAPDatabasePropertiesInput = UserAssignedIdentityInput;
 export interface CreateSapDatabaseInstanceRequest {
@@ -1160,21 +835,10 @@ export interface CreateSapDatabaseInstanceRequest {
   /** The resource-specific properties for this resource. */
   properties?: UserAssignedIdentityInput;
 }
-const CreateSapDatabaseInstanceRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CreateSapDatabaseInstanceRequest>;
-
 /** Resource tags. */
 export type CreateSapDatabaseInstanceResponseTagsMap = { [key: string]: string | undefined };
-const CreateSapDatabaseInstanceResponseTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateSapDatabaseInstanceResponseTagsMap>;
-
 /** Storage details of all the Storage Accounts attached to the Database Virtual Machine. For e.g. NFS on AFS Shared Storage. */
 export type DatabaseVmDetailsStorageDetailsList = Array<StorageInformation>;
-const DatabaseVmDetailsStorageDetailsList =
-  ApplicationServerVmDetailsStorageDetailsList as any as S.Schema<DatabaseVmDetailsStorageDetailsList>;
-
 /** Database VM details. */
 export interface DatabaseVmDetails {
   /** The virtual machine id. */
@@ -1184,15 +848,8 @@ export interface DatabaseVmDetails {
   /** Storage details of all the Storage Accounts attached to the Database Virtual Machine. For e.g. NFS on AFS Shared Storage. */
   storageDetails?: DatabaseVmDetailsStorageDetailsList;
 }
-const DatabaseVmDetails = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<DatabaseVmDetails>;
-
 /** The list of virtual machines corresponding to the Database resource. */
 export type SAPDatabasePropertiesVmDetailsList = Array<DatabaseVmDetails>;
-const SAPDatabasePropertiesVmDetailsList = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<SAPDatabasePropertiesVmDetailsList>;
-
 /** Defines the Database properties. */
 export interface SAPDatabaseProperties {
   /** Database subnet. */
@@ -1214,11 +871,6 @@ export interface SAPDatabaseProperties {
   /** Defines the errors related to Database resource. */
   errors?: SAPVirtualInstanceError;
 }
-const SAPDatabaseProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<SAPDatabaseProperties>;
-
 export interface CreateSapDatabaseInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1235,16 +887,8 @@ export interface CreateSapDatabaseInstanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SAPDatabaseProperties;
 }
-const CreateSapDatabaseInstanceResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateSapDatabaseInstanceResponse>;
-
 /** Resource tags. */
 export type CreateSAPDatabaseInstanceRequestTagsMap = { [key: string]: string | undefined };
-const CreateSAPDatabaseInstanceRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateSAPDatabaseInstanceRequestTagsMap>;
-
 export interface CreateSAPDatabaseInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1260,16 +904,8 @@ export interface CreateSAPDatabaseInstanceRequest {
   location: string;
   properties?: UserAssignedIdentityInput;
 }
-const CreateSAPDatabaseInstanceRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateSAPDatabaseInstanceRequest>;
-
 /** Resource tags. */
 export type CreateSAPDatabaseInstanceResponseTagsMap = { [key: string]: string | undefined };
-const CreateSAPDatabaseInstanceResponseTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateSAPDatabaseInstanceResponseTagsMap>;
-
 /** Storage details of all the Storage Accounts attached to the Database Virtual Machine. For e.g. NFS on AFS Shared Storage. */
 export type DatabaseVmDetailsStorageDetailsList_2 = Array<LoadBalancerDetails_2>;
 /** Database VM details. */
@@ -1281,9 +917,6 @@ export interface DatabaseVmDetails_2 {
 }
 /** The list of virtual machines corresponding to the Database resource. */
 export type SAPDatabasePropertiesVmDetailsList_2 = Array<DatabaseVmDetails_2>;
-const SAPDatabasePropertiesVmDetailsList_2 =
-  SAPDatabasePropertiesVmDetailsList as any as S.Schema<SAPDatabasePropertiesVmDetailsList_2>;
-
 /** Defines the Database properties. */
 export interface SAPDatabaseProperties_2 {
   /** Database subnet. */
@@ -1303,11 +936,6 @@ export interface SAPDatabaseProperties_2 {
   /** Defines the errors related to Database resource. */
   errors?: SAPVirtualInstanceError;
 }
-const SAPDatabaseProperties_2 = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<SAPDatabaseProperties_2>;
-
 export interface CreateSAPDatabaseInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1323,16 +951,8 @@ export interface CreateSAPDatabaseInstanceResponse {
   location: string;
   properties?: SAPDatabaseProperties_2;
 }
-const CreateSAPDatabaseInstanceResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CreateSAPDatabaseInstanceResponse>;
-
 /** Gets or sets the list of SID's. */
 export type SapLandscapeMonitorSidMappingTopSidList = Array<string>;
-const SapLandscapeMonitorSidMappingTopSidList =
-  ProviderSapHostFileEntriesList as any as S.Schema<SapLandscapeMonitorSidMappingTopSidList>;
-
 /** Gets or sets the mapping for SID to Environment/Applications. */
 export interface SapLandscapeMonitorSidMapping {
   /** Gets or sets the name of the grouping. */
@@ -1340,25 +960,12 @@ export interface SapLandscapeMonitorSidMapping {
   /** Gets or sets the list of SID's. */
   topSid?: SapLandscapeMonitorSidMappingTopSidList;
 }
-const SapLandscapeMonitorSidMapping = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<SapLandscapeMonitorSidMapping>;
-
 /** Gets or sets the list of landscape to SID mappings. */
 export type SapLandscapeMonitorPropertiesInputGroupingLandscapeList =
   Array<SapLandscapeMonitorSidMapping>;
-const SapLandscapeMonitorPropertiesInputGroupingLandscapeList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<SapLandscapeMonitorPropertiesInputGroupingLandscapeList>;
-
 /** Gets or sets the list of Sap Applications to SID mappings. */
 export type SapLandscapeMonitorPropertiesInputGroupingSapApplicationList =
   Array<SapLandscapeMonitorSidMapping>;
-const SapLandscapeMonitorPropertiesInputGroupingSapApplicationList =
-  SapLandscapeMonitorPropertiesInputGroupingLandscapeList as any as S.Schema<SapLandscapeMonitorPropertiesInputGroupingSapApplicationList>;
-
 /** Gets or sets the SID groupings by landscape and Environment. */
 export interface SapLandscapeMonitorPropertiesInputGrouping {
   /** Gets or sets the list of landscape to SID mappings. */
@@ -1366,11 +973,6 @@ export interface SapLandscapeMonitorPropertiesInputGrouping {
   /** Gets or sets the list of Sap Applications to SID mappings. */
   sapApplication?: SapLandscapeMonitorPropertiesInputGroupingSapApplicationList;
 }
-const SapLandscapeMonitorPropertiesInputGrouping = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<SapLandscapeMonitorPropertiesInputGrouping>;
-
 /** Gets or sets the Threshold Values for Top Metrics Health. */
 export interface SapLandscapeMonitorMetricThresholds {
   /** Gets or sets the name of the threshold. */
@@ -1382,19 +984,9 @@ export interface SapLandscapeMonitorMetricThresholds {
   /** Gets or sets the threshold value for Red. */
   red?: number;
 }
-const SapLandscapeMonitorMetricThresholds = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<SapLandscapeMonitorMetricThresholds>;
-
 /** Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard */
 export type SapLandscapeMonitorPropertiesInputTopMetricsThresholdsList =
   Array<SapLandscapeMonitorMetricThresholds>;
-const SapLandscapeMonitorPropertiesInputTopMetricsThresholdsList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<SapLandscapeMonitorPropertiesInputTopMetricsThresholdsList>;
-
 /** Gets or sets the properties for Sap Landscape Monitor Dashboard. */
 export interface SapLandscapeMonitorPropertiesInput {
   /** Gets or sets the SID groupings by landscape and Environment. */
@@ -1402,11 +994,6 @@ export interface SapLandscapeMonitorPropertiesInput {
   /** Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard */
   topMetricsThresholds?: SapLandscapeMonitorPropertiesInputTopMetricsThresholdsList;
 }
-const SapLandscapeMonitorPropertiesInput = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<SapLandscapeMonitorPropertiesInput>;
-
 export interface CreateSapLandscapeMonitorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1417,11 +1004,6 @@ export interface CreateSapLandscapeMonitorRequest {
   /** Sap Landscape Monitor properties */
   properties?: SapLandscapeMonitorPropertiesInput;
 }
-const CreateSapLandscapeMonitorRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateSapLandscapeMonitorRequest>;
-
 /** State of provisioning of the SAP monitor. */
 export type SapLandscapeMonitorPropertiesProvisioningState =
   | "Accepted"
@@ -1429,8 +1011,6 @@ export type SapLandscapeMonitorPropertiesProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Canceled";
-const SapLandscapeMonitorPropertiesProvisioningState = S.String;
-
 /** Gets or sets the list of landscape to SID mappings. */
 export type SapLandscapeMonitorPropertiesGroupingLandscapeList =
   Array<SapLandscapeMonitorSidMapping>;
@@ -1444,15 +1024,9 @@ export interface SapLandscapeMonitorPropertiesGrouping {
   /** Gets or sets the list of Sap Applications to SID mappings. */
   sapApplication?: SapLandscapeMonitorPropertiesGroupingSapApplicationList;
 }
-const SapLandscapeMonitorPropertiesGrouping =
-  SapLandscapeMonitorPropertiesInputGrouping as any as S.Schema<SapLandscapeMonitorPropertiesGrouping>;
-
 /** Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard */
 export type SapLandscapeMonitorPropertiesTopMetricsThresholdsList =
   Array<SapLandscapeMonitorMetricThresholds>;
-const SapLandscapeMonitorPropertiesTopMetricsThresholdsList =
-  SapLandscapeMonitorPropertiesInputTopMetricsThresholdsList as any as S.Schema<SapLandscapeMonitorPropertiesTopMetricsThresholdsList>;
-
 /** Gets or sets the properties for Sap Landscape Monitor Dashboard. */
 export interface SapLandscapeMonitorProperties {
   /** State of provisioning of the SAP monitor. */
@@ -1462,11 +1036,6 @@ export interface SapLandscapeMonitorProperties {
   /** Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard */
   topMetricsThresholds?: SapLandscapeMonitorPropertiesTopMetricsThresholdsList;
 }
-const SapLandscapeMonitorProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<SapLandscapeMonitorProperties>;
-
 export interface CreateSapLandscapeMonitorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1479,39 +1048,21 @@ export interface CreateSapLandscapeMonitorResponse {
   /** Sap Landscape Monitor properties */
   properties?: SapLandscapeMonitorProperties;
 }
-const CreateSapLandscapeMonitorResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<CreateSapLandscapeMonitorResponse>;
-
 /** Resource tags. */
 export type CreateSapVirtualInstanceRequestTagsMap = { [key: string]: string | undefined };
-const CreateSapVirtualInstanceRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateSapVirtualInstanceRequestTagsMap>;
-
 /** Defines the environment type - Production/Non Production. */
 export type SAPEnvironmentType = "NonProd" | "Prod";
-const SAPEnvironmentType = S.String;
-
 /** Defines the SAP Product type. */
 export type SAPProductType = "ECC" | "S4HANA" | "Other";
-const SAPProductType = S.String;
-
 /** Defines the network access type for managed resources. */
 export type ManagedResourcesNetworkAccessType = "Public" | "Private";
-const ManagedResourcesNetworkAccessType = S.String;
-
 /** The configuration Type. */
 export type SAPConfigurationType = "Deployment" | "Discovery" | "DeploymentWithOSConfig";
-const SAPConfigurationType = S.String;
-
 /** The SAP Configuration. */
 export interface SAPConfiguration {
   /** The configuration type. Eg: Deployment/Discovery */
   configurationType: SAPConfigurationType | (string & {});
 }
-const SAPConfiguration = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<SAPConfiguration>;
-
 /** Defines the Virtual Instance for SAP solutions resource properties. */
 export interface SAPVirtualInstancePropertiesInput {
   /** Defines the environment type - Production/Non Production. */
@@ -1525,24 +1076,14 @@ export interface SAPVirtualInstancePropertiesInput {
   /** Managed resource group configuration */
   managedResourceGroupConfiguration?: ManagedRGConfiguration;
 }
-const SAPVirtualInstancePropertiesInput = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<SAPVirtualInstancePropertiesInput>;
-
 /** Type of managed service identity (where only None and UserAssigned types are allowed). */
 export type SAPVirtualInstanceIdentityType = "None" | "UserAssigned";
-const SAPVirtualInstanceIdentityType = S.String;
-
 /** User assigned identity properties */
 export type SAPVirtualInstanceIdentityInputUserAssignedIdentitiesValue = UserAssignedIdentityInput;
 /** The identities assigned to this resource by the user. */
 export type SAPVirtualInstanceIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-const SAPVirtualInstanceIdentityInputUserAssignedIdentitiesMap =
-  CreateMonitorRequestIdentityUserAssignedIdentitiesMap as any as S.Schema<SAPVirtualInstanceIdentityInputUserAssignedIdentitiesMap>;
-
 /** Managed service identity (user assigned identities) */
 export interface SAPVirtualInstanceIdentityInput {
   /** The type of managed identity assigned to this resource. */
@@ -1550,11 +1091,6 @@ export interface SAPVirtualInstanceIdentityInput {
   /** The identities assigned to this resource by the user. */
   userAssignedIdentities?: SAPVirtualInstanceIdentityInputUserAssignedIdentitiesMap;
 }
-const SAPVirtualInstanceIdentityInput = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<SAPVirtualInstanceIdentityInput>;
-
 export interface CreateSapVirtualInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1571,16 +1107,8 @@ export interface CreateSapVirtualInstanceRequest {
   /** The managed service identities assigned to this resource. */
   identity?: SAPVirtualInstanceIdentityInput;
 }
-const CreateSapVirtualInstanceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CreateSapVirtualInstanceRequest>;
-
 /** Resource tags. */
 export type CreateSapVirtualInstanceResponseTagsMap = { [key: string]: string | undefined };
-const CreateSapVirtualInstanceResponseTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateSapVirtualInstanceResponseTagsMap>;
-
 /** Defines the Virtual Instance for SAP state. */
 export type SAPVirtualInstanceState =
   | "InfrastructureDeploymentPending"
@@ -1596,8 +1124,6 @@ export type SAPVirtualInstanceState =
   | "DiscoveryFailed"
   | "RegistrationComplete"
   | "ACSSInstallationBlocked";
-const SAPVirtualInstanceState = S.String;
-
 /** Defines the Virtual Instance for SAP solutions resource properties. */
 export interface SAPVirtualInstanceProperties {
   /** Defines the environment type - Production/Non Production. */
@@ -1621,20 +1147,12 @@ export interface SAPVirtualInstanceProperties {
   /** Indicates any errors on the Virtual Instance for SAP solutions resource. */
   errors?: SAPVirtualInstanceError;
 }
-const SAPVirtualInstanceProperties = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<SAPVirtualInstanceProperties>;
-
 /** User assigned identity properties */
 export type SAPVirtualInstanceIdentityUserAssignedIdentitiesValue = UserAssignedIdentity;
 /** The identities assigned to this resource by the user. */
 export type SAPVirtualInstanceIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | undefined;
 };
-const SAPVirtualInstanceIdentityUserAssignedIdentitiesMap =
-  CreateMonitorResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<SAPVirtualInstanceIdentityUserAssignedIdentitiesMap>;
-
 /** Managed service identity (user assigned identities) */
 export interface SAPVirtualInstanceIdentity {
   /** The type of managed identity assigned to this resource. */
@@ -1642,11 +1160,6 @@ export interface SAPVirtualInstanceIdentity {
   /** The identities assigned to this resource by the user. */
   userAssignedIdentities?: SAPVirtualInstanceIdentityUserAssignedIdentitiesMap;
 }
-const SAPVirtualInstanceIdentity = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<SAPVirtualInstanceIdentity>;
-
 export interface CreateSapVirtualInstanceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1665,16 +1178,8 @@ export interface CreateSapVirtualInstanceResponse {
   /** The managed service identities assigned to this resource. */
   identity?: SAPVirtualInstanceIdentity;
 }
-const CreateSapVirtualInstanceResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<CreateSapVirtualInstanceResponse>;
-
 /** Resource tags. */
 export type CreateSAPVirtualInstanceRequestTagsMap = { [key: string]: string | undefined };
-const CreateSAPVirtualInstanceRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateSAPVirtualInstanceRequestTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateSAPVirtualInstanceRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
@@ -1686,17 +1191,10 @@ export interface CreateSAPVirtualInstanceRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateSAPVirtualInstanceRequestIdentityUserAssignedIdentitiesMap | null;
 }
-const CreateSAPVirtualInstanceRequestIdentity =
-  CreateProviderInstanceRequestIdentity as any as S.Schema<CreateSAPVirtualInstanceRequestIdentity>;
-
 /** Defines the environment type - Production/Non Production. */
 export type EnvironmentType = "NonProd" | "Prod";
-const EnvironmentType = S.String;
-
 /** The configuration Type. */
 export type ConfigurationType = "Deployment" | "Discovery" | "DeploymentWithOSConfig";
-const ConfigurationType = S.String;
-
 /** The SAP Configuration. */
 export interface SAPConfiguration_2 {
   configurationType: ConfigurationType | (string & {});
@@ -1713,8 +1211,6 @@ export interface SAPConfiguration_2 {
   /** OS and SAP configuration (DeploymentWithOSConfig). */
   osSapConfiguration?: unknown;
 }
-const SAPConfiguration_2 = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<SAPConfiguration_2>;
-
 /** Defines the Virtual Instance for SAP solutions resource properties. */
 export interface SAPVirtualInstancePropertiesInput_2 {
   environment: EnvironmentType | (string & {});
@@ -1724,11 +1220,6 @@ export interface SAPVirtualInstancePropertiesInput_2 {
   /** Managed resource group configuration */
   managedResourceGroupConfiguration?: ManagedRGConfiguration;
 }
-const SAPVirtualInstancePropertiesInput_2 = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<SAPVirtualInstancePropertiesInput_2>;
-
 export interface CreateSAPVirtualInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1744,16 +1235,8 @@ export interface CreateSAPVirtualInstanceRequest {
   identity?: CreateSAPVirtualInstanceRequestIdentity;
   properties: SAPVirtualInstancePropertiesInput_2;
 }
-const CreateSAPVirtualInstanceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<CreateSAPVirtualInstanceRequest>;
-
 /** Resource tags. */
 export type CreateSAPVirtualInstanceResponseTagsMap = { [key: string]: string | undefined };
-const CreateSAPVirtualInstanceResponseTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<CreateSAPVirtualInstanceResponseTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type CreateSAPVirtualInstanceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | undefined;
@@ -1765,9 +1248,6 @@ export interface CreateSAPVirtualInstanceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: CreateSAPVirtualInstanceResponseIdentityUserAssignedIdentitiesMap | null;
 }
-const CreateSAPVirtualInstanceResponseIdentity =
-  CreateProviderInstanceResponseIdentity as any as S.Schema<CreateSAPVirtualInstanceResponseIdentity>;
-
 /** Defines the Virtual Instance for SAP state. */
 export type SAPVirtualInstanceState_2 =
   | "InfrastructureDeploymentPending"
@@ -1782,8 +1262,6 @@ export type SAPVirtualInstanceState_2 =
   | "DiscoveryInProgress"
   | "DiscoveryFailed"
   | "RegistrationComplete";
-const SAPVirtualInstanceState_2 = S.String;
-
 /** Defines the Virtual Instance for SAP solutions resource properties. */
 export interface SAPVirtualInstanceProperties_2 {
   environment: EnvironmentType;
@@ -1799,11 +1277,6 @@ export interface SAPVirtualInstanceProperties_2 {
   /** Indicates any errors on the Virtual Instance for SAP solutions resource. */
   errors?: SAPVirtualInstanceError;
 }
-const SAPVirtualInstanceProperties_2 = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<SAPVirtualInstanceProperties_2>;
-
 export interface CreateSAPVirtualInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1821,11 +1294,6 @@ export interface CreateSAPVirtualInstanceResponse {
   identity?: CreateSAPVirtualInstanceResponseIdentity;
   properties: SAPVirtualInstanceProperties_2;
 }
-const CreateSAPVirtualInstanceResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<CreateSAPVirtualInstanceResponse>;
-
 export interface DeleteMonitorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1834,25 +1302,10 @@ export interface DeleteMonitorRequest {
   /** Name of the SAP monitor resource. */
   monitorName: string;
 }
-const DeleteMonitorRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DeleteMonitorRequest>;
-
 /** The operations list. */
 export type OperationStatusResultOperationsList_3 = Array<OperationStatusResult_3>;
-const OperationStatusResultOperationsList_3 = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<OperationStatusResultOperationsList_3>;
-
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-const ErrorDetailDetailsList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ErrorDetailDetailsList>;
-
 /** The resource management error additional info. */
 export interface ErrorAdditionalInfo {
   /** The additional info type. */
@@ -1860,15 +1313,8 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-const ErrorAdditionalInfo = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<ErrorAdditionalInfo>;
-
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-const ErrorDetailAdditionalInfoList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ErrorDetailAdditionalInfoList>;
-
 /** The error detail. */
 export interface ErrorDetail {
   /** The error code. */
@@ -1882,8 +1328,6 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-const ErrorDetail = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<ErrorDetail>;
-
 /** The current status of an async operation. */
 export interface OperationStatusResult_3 {
   /** Fully qualified ID for the async operation. */
@@ -1903,18 +1347,8 @@ export interface OperationStatusResult_3 {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const OperationStatusResult_3 = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<OperationStatusResult_3>;
-
 /** The operations list. */
 export type DeleteMonitorResponseOperationsList = Array<OperationStatusResult_3>;
-const DeleteMonitorResponseOperationsList = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<DeleteMonitorResponseOperationsList>;
-
 export interface DeleteMonitorResponse {
   /** Fully qualified ID for the async operation. */
   id?: string;
@@ -1933,11 +1367,6 @@ export interface DeleteMonitorResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const DeleteMonitorResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<DeleteMonitorResponse>;
-
 export interface DeleteProviderInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1948,16 +1377,8 @@ export interface DeleteProviderInstanceRequest {
   /** Name of the provider instance. */
   providerInstanceName: string;
 }
-const DeleteProviderInstanceRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<DeleteProviderInstanceRequest>;
-
 /** The operations list. */
 export type DeleteProviderInstanceResponseOperationsList = Array<OperationStatusResult_3>;
-const DeleteProviderInstanceResponseOperationsList =
-  DeleteMonitorResponseOperationsList as any as S.Schema<DeleteProviderInstanceResponseOperationsList>;
-
 export interface DeleteProviderInstanceResponse {
   /** Fully qualified ID for the async operation. */
   id?: string;
@@ -1976,11 +1397,6 @@ export interface DeleteProviderInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const DeleteProviderInstanceResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<DeleteProviderInstanceResponse>;
-
 export interface DeleteSapApplicationServerInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1991,17 +1407,7 @@ export interface DeleteSapApplicationServerInstanceRequest {
   /** The name of SAP Application Server instance resource. */
   applicationInstanceName: string;
 }
-const DeleteSapApplicationServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<DeleteSapApplicationServerInstanceRequest>;
-
 export interface DeleteSapApplicationServerInstanceResponse {}
-const DeleteSapApplicationServerInstanceResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<DeleteSapApplicationServerInstanceResponse>;
-
 export interface DeleteSAPApplicationServerInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2012,18 +1418,8 @@ export interface DeleteSAPApplicationServerInstanceRequest {
   /** The name of SAP Application Server instance resource. */
   applicationInstanceName: string;
 }
-const DeleteSAPApplicationServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<DeleteSAPApplicationServerInstanceRequest>;
-
 /** The operations list. */
 export type OperationStatusResultOperationsList_2 = Array<OperationStatusResult_2>;
-const OperationStatusResultOperationsList_2 = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<OperationStatusResultOperationsList_2>;
-
 /** The current status of an async operation. */
 export interface OperationStatusResult_2 {
   /** Fully qualified ID for the async operation. */
@@ -2043,19 +1439,9 @@ export interface OperationStatusResult_2 {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const OperationStatusResult_2 = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<OperationStatusResult_2>;
-
 /** The operations list. */
 export type DeleteSAPApplicationServerInstanceResponseOperationsList =
   Array<OperationStatusResult_2>;
-const DeleteSAPApplicationServerInstanceResponseOperationsList = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<DeleteSAPApplicationServerInstanceResponseOperationsList>;
-
 export interface DeleteSAPApplicationServerInstanceResponse {
   /** Fully qualified ID for the async operation. */
   id?: string;
@@ -2074,11 +1460,6 @@ export interface DeleteSAPApplicationServerInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const DeleteSAPApplicationServerInstanceResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<DeleteSAPApplicationServerInstanceResponse>;
-
 export interface DeleteSAPCentralInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2089,11 +1470,6 @@ export interface DeleteSAPCentralInstanceRequest {
   /** Central Services Instance resource name string modeled as parameter for auto generation to work correctly. */
   centralInstanceName: string;
 }
-const DeleteSAPCentralInstanceRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<DeleteSAPCentralInstanceRequest>;
-
 /** The operations list. */
 export type DeleteSAPCentralInstanceResponseOperationsList = Array<OperationStatusResult_2>;
 export interface DeleteSAPCentralInstanceResponse {
@@ -2114,9 +1490,6 @@ export interface DeleteSAPCentralInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const DeleteSAPCentralInstanceResponse =
-  DeleteSAPApplicationServerInstanceResponse as any as S.Schema<DeleteSAPCentralInstanceResponse>;
-
 export interface DeleteSapCentralServerInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2127,15 +1500,7 @@ export interface DeleteSapCentralServerInstanceRequest {
   /** Central Services Instance resource name string modeled as parameter for auto generation to work correctly. */
   centralInstanceName: string;
 }
-const DeleteSapCentralServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DeleteSapCentralServerInstanceRequest>;
-
 export interface DeleteSapCentralServerInstanceResponse {}
-const DeleteSapCentralServerInstanceResponse =
-  DeleteSapApplicationServerInstanceResponse as any as S.Schema<DeleteSapCentralServerInstanceResponse>;
-
 export interface DeleteSapDatabaseInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2146,15 +1511,7 @@ export interface DeleteSapDatabaseInstanceRequest {
   /** Database resource name string modeled as parameter for auto generation to work correctly. */
   databaseInstanceName: string;
 }
-const DeleteSapDatabaseInstanceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<DeleteSapDatabaseInstanceRequest>;
-
 export interface DeleteSapDatabaseInstanceResponse {}
-const DeleteSapDatabaseInstanceResponse =
-  DeleteSapApplicationServerInstanceResponse as any as S.Schema<DeleteSapDatabaseInstanceResponse>;
-
 export interface DeleteSAPDatabaseInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2165,11 +1522,6 @@ export interface DeleteSAPDatabaseInstanceRequest {
   /** Database resource name string modeled as parameter for auto generation to work correctly. */
   databaseInstanceName: string;
 }
-const DeleteSAPDatabaseInstanceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<DeleteSAPDatabaseInstanceRequest>;
-
 /** The operations list. */
 export type DeleteSAPDatabaseInstanceResponseOperationsList = Array<OperationStatusResult_2>;
 export interface DeleteSAPDatabaseInstanceResponse {
@@ -2190,9 +1542,6 @@ export interface DeleteSAPDatabaseInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const DeleteSAPDatabaseInstanceResponse =
-  DeleteSAPApplicationServerInstanceResponse as any as S.Schema<DeleteSAPDatabaseInstanceResponse>;
-
 export interface DeleteSapLandscapeMonitorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2201,15 +1550,7 @@ export interface DeleteSapLandscapeMonitorRequest {
   /** Name of the SAP monitor resource. */
   monitorName: string;
 }
-const DeleteSapLandscapeMonitorRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<DeleteSapLandscapeMonitorRequest>;
-
 export interface DeleteSapLandscapeMonitorResponse {}
-const DeleteSapLandscapeMonitorResponse =
-  DeleteSapApplicationServerInstanceResponse as any as S.Schema<DeleteSapLandscapeMonitorResponse>;
-
 export interface DeleteSapVirtualInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2218,15 +1559,7 @@ export interface DeleteSapVirtualInstanceRequest {
   /** The name of the Virtual Instances for SAP solutions resource */
   sapVirtualInstanceName: string;
 }
-const DeleteSapVirtualInstanceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<DeleteSapVirtualInstanceRequest>;
-
 export interface DeleteSapVirtualInstanceResponse {}
-const DeleteSapVirtualInstanceResponse =
-  DeleteSapApplicationServerInstanceResponse as any as S.Schema<DeleteSapVirtualInstanceResponse>;
-
 export interface DeleteSAPVirtualInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2235,11 +1568,6 @@ export interface DeleteSAPVirtualInstanceRequest {
   /** The name of the Virtual Instances for SAP solutions resource */
   sapVirtualInstanceName: string;
 }
-const DeleteSAPVirtualInstanceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<DeleteSAPVirtualInstanceRequest>;
-
 /** The operations list. */
 export type DeleteSAPVirtualInstanceResponseOperationsList = Array<OperationStatusResult_2>;
 export interface DeleteSAPVirtualInstanceResponse {
@@ -2260,9 +1588,6 @@ export interface DeleteSAPVirtualInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const DeleteSAPVirtualInstanceResponse =
-  DeleteSAPApplicationServerInstanceResponse as any as S.Schema<DeleteSAPVirtualInstanceResponse>;
-
 export interface GetMonitorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2271,8 +1596,6 @@ export interface GetMonitorRequest {
   /** Name of the SAP monitor resource. */
   monitorName: string;
 }
-const GetMonitorRequest = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<GetMonitorRequest>;
-
 /** Resource tags. */
 export type GetMonitorResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -2304,8 +1627,6 @@ export interface GetMonitorResponse {
   /** SAP monitor properties */
   properties?: MonitorProperties;
 }
-const GetMonitorResponse = CreateMonitorResponse as any as S.Schema<GetMonitorResponse>;
-
 export interface GetProviderInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2316,11 +1637,6 @@ export interface GetProviderInstanceRequest {
   /** Name of the provider instance. */
   providerInstanceName: string;
 }
-const GetProviderInstanceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<GetProviderInstanceRequest>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type GetProviderInstanceResponseIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | undefined;
@@ -2332,9 +1648,6 @@ export interface GetProviderInstanceResponseIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: GetProviderInstanceResponseIdentityUserAssignedIdentitiesMap | null;
 }
-const GetProviderInstanceResponseIdentity =
-  CreateMonitorResponseIdentity as any as S.Schema<GetProviderInstanceResponseIdentity>;
-
 export interface GetProviderInstanceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2349,11 +1662,6 @@ export interface GetProviderInstanceResponse {
   /** Provider Instance properties */
   properties?: ProviderInstanceProperties;
 }
-const GetProviderInstanceResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetProviderInstanceResponse>;
-
 export interface GetSapApplicationServerInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2364,11 +1672,6 @@ export interface GetSapApplicationServerInstanceRequest {
   /** The name of SAP Application Server instance resource. */
   applicationInstanceName: string;
 }
-const GetSapApplicationServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetSapApplicationServerInstanceRequest>;
-
 /** Resource tags. */
 export type GetSapApplicationServerInstanceResponseTagsMap = { [key: string]: string | undefined };
 export interface GetSapApplicationServerInstanceResponse {
@@ -2387,9 +1690,6 @@ export interface GetSapApplicationServerInstanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SAPApplicationServerProperties;
 }
-const GetSapApplicationServerInstanceResponse =
-  CreateSapApplicationServerInstanceResponse as any as S.Schema<GetSapApplicationServerInstanceResponse>;
-
 export interface GetSAPApplicationServerInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2400,11 +1700,6 @@ export interface GetSAPApplicationServerInstanceRequest {
   /** The name of SAP Application Server instance resource. */
   applicationInstanceName: string;
 }
-const GetSAPApplicationServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GetSAPApplicationServerInstanceRequest>;
-
 /** Resource tags. */
 export type GetSAPApplicationServerInstanceResponseTagsMap = { [key: string]: string | undefined };
 export interface GetSAPApplicationServerInstanceResponse {
@@ -2422,9 +1717,6 @@ export interface GetSAPApplicationServerInstanceResponse {
   location: string;
   properties?: SAPApplicationServerProperties_2;
 }
-const GetSAPApplicationServerInstanceResponse =
-  CreateSAPApplicationServerInstanceResponse as any as S.Schema<GetSAPApplicationServerInstanceResponse>;
-
 export interface GetSAPCentralInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2435,11 +1727,6 @@ export interface GetSAPCentralInstanceRequest {
   /** Central Services Instance resource name string modeled as parameter for auto generation to work correctly. */
   centralInstanceName: string;
 }
-const GetSAPCentralInstanceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GetSAPCentralInstanceRequest>;
-
 /** Resource tags. */
 export type GetSAPCentralInstanceResponseTagsMap = { [key: string]: string | undefined };
 export interface GetSAPCentralInstanceResponse {
@@ -2457,9 +1744,6 @@ export interface GetSAPCentralInstanceResponse {
   location: string;
   properties?: SAPCentralServerProperties_2;
 }
-const GetSAPCentralInstanceResponse =
-  CreateSAPCentralInstanceResponse as any as S.Schema<GetSAPCentralInstanceResponse>;
-
 export interface GetSapCentralServerInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2470,11 +1754,6 @@ export interface GetSapCentralServerInstanceRequest {
   /** Central Services Instance resource name string modeled as parameter for auto generation to work correctly. */
   centralInstanceName: string;
 }
-const GetSapCentralServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GetSapCentralServerInstanceRequest>;
-
 /** Resource tags. */
 export type GetSapCentralServerInstanceResponseTagsMap = { [key: string]: string | undefined };
 export interface GetSapCentralServerInstanceResponse {
@@ -2493,9 +1772,6 @@ export interface GetSapCentralServerInstanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SAPCentralServerProperties;
 }
-const GetSapCentralServerInstanceResponse =
-  CreateSapCentralServerInstanceResponse as any as S.Schema<GetSapCentralServerInstanceResponse>;
-
 export interface GetSapDatabaseInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2506,11 +1782,6 @@ export interface GetSapDatabaseInstanceRequest {
   /** Database resource name string modeled as parameter for auto generation to work correctly. */
   databaseInstanceName: string;
 }
-const GetSapDatabaseInstanceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GetSapDatabaseInstanceRequest>;
-
 /** Resource tags. */
 export type GetSapDatabaseInstanceResponseTagsMap = { [key: string]: string | undefined };
 export interface GetSapDatabaseInstanceResponse {
@@ -2529,9 +1800,6 @@ export interface GetSapDatabaseInstanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SAPDatabaseProperties;
 }
-const GetSapDatabaseInstanceResponse =
-  CreateSapDatabaseInstanceResponse as any as S.Schema<GetSapDatabaseInstanceResponse>;
-
 export interface GetSAPDatabaseInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2542,11 +1810,6 @@ export interface GetSAPDatabaseInstanceRequest {
   /** Database resource name string modeled as parameter for auto generation to work correctly. */
   databaseInstanceName: string;
 }
-const GetSAPDatabaseInstanceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<GetSAPDatabaseInstanceRequest>;
-
 /** Resource tags. */
 export type GetSAPDatabaseInstanceResponseTagsMap = { [key: string]: string | undefined };
 export interface GetSAPDatabaseInstanceResponse {
@@ -2564,9 +1827,6 @@ export interface GetSAPDatabaseInstanceResponse {
   location: string;
   properties?: SAPDatabaseProperties_2;
 }
-const GetSAPDatabaseInstanceResponse =
-  CreateSAPDatabaseInstanceResponse as any as S.Schema<GetSAPDatabaseInstanceResponse>;
-
 export interface GetSapLandscapeMonitorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2575,11 +1835,6 @@ export interface GetSapLandscapeMonitorRequest {
   /** Name of the SAP monitor resource. */
   monitorName: string;
 }
-const GetSapLandscapeMonitorRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GetSapLandscapeMonitorRequest>;
-
 export interface GetSapLandscapeMonitorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2592,9 +1847,6 @@ export interface GetSapLandscapeMonitorResponse {
   /** Sap Landscape Monitor properties */
   properties?: SapLandscapeMonitorProperties;
 }
-const GetSapLandscapeMonitorResponse =
-  CreateSapLandscapeMonitorResponse as any as S.Schema<GetSapLandscapeMonitorResponse>;
-
 export interface GetSapVirtualInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2603,11 +1855,6 @@ export interface GetSapVirtualInstanceRequest {
   /** The name of the Virtual Instances for SAP solutions resource */
   sapVirtualInstanceName: string;
 }
-const GetSapVirtualInstanceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<GetSapVirtualInstanceRequest>;
-
 /** Resource tags. */
 export type GetSapVirtualInstanceResponseTagsMap = { [key: string]: string | undefined };
 export interface GetSapVirtualInstanceResponse {
@@ -2628,9 +1875,6 @@ export interface GetSapVirtualInstanceResponse {
   /** The managed service identities assigned to this resource. */
   identity?: SAPVirtualInstanceIdentity;
 }
-const GetSapVirtualInstanceResponse =
-  CreateSapVirtualInstanceResponse as any as S.Schema<GetSapVirtualInstanceResponse>;
-
 export interface GetSAPVirtualInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2639,11 +1883,6 @@ export interface GetSAPVirtualInstanceRequest {
   /** The name of the Virtual Instances for SAP solutions resource */
   sapVirtualInstanceName: string;
 }
-const GetSAPVirtualInstanceRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<GetSAPVirtualInstanceRequest>;
-
 /** Resource tags. */
 export type GetSAPVirtualInstanceResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -2674,13 +1913,8 @@ export interface GetSAPVirtualInstanceResponse {
   identity?: GetSAPVirtualInstanceResponseIdentity;
   properties: SAPVirtualInstanceProperties_2;
 }
-const GetSAPVirtualInstanceResponse =
-  CreateSAPVirtualInstanceResponse as any as S.Schema<GetSAPVirtualInstanceResponse>;
-
 /** Defines the supported SAP Database types. */
 export type SAPDatabaseType = "HANA" | "DB2";
-const SAPDatabaseType = S.String;
-
 export interface InvokeSapVirtualInstanceAvailabilityZoneDetailsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2693,11 +1927,6 @@ export interface InvokeSapVirtualInstanceAvailabilityZoneDetailsRequest {
   /** The database type. Eg: HANA, DB2, etc */
   databaseType: SAPDatabaseType | (string & {});
 }
-const InvokeSapVirtualInstanceAvailabilityZoneDetailsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<InvokeSapVirtualInstanceAvailabilityZoneDetailsRequest>;
-
 /** The SAP Availability Zone Pair. */
 export interface SAPAvailabilityZonePair {
   /** The zone A. */
@@ -2705,33 +1934,16 @@ export interface SAPAvailabilityZonePair {
   /** The zone B. */
   zoneB?: number;
 }
-const SAPAvailabilityZonePair = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<SAPAvailabilityZonePair>;
-
 /** Gets the list of availability zone pairs. */
 export type SAPAvailabilityZoneDetailsResultAvailabilityZonePairsList =
   Array<SAPAvailabilityZonePair>;
-const SAPAvailabilityZoneDetailsResultAvailabilityZonePairsList = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<SAPAvailabilityZoneDetailsResultAvailabilityZonePairsList>;
-
 /** The list of supported availability zone pairs which are part of SAP HA deployment. */
 export interface SAPAvailabilityZoneDetailsResult {
   /** Gets the list of availability zone pairs. */
   availabilityZonePairs?: SAPAvailabilityZoneDetailsResultAvailabilityZonePairsList;
 }
-const SAPAvailabilityZoneDetailsResult = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<SAPAvailabilityZoneDetailsResult>;
-
 /** The type of SAP deployment, single server or Three tier. */
 export type SAPDeploymentType = "SingleServer" | "ThreeTier";
-const SAPDeploymentType = S.String;
-
 export interface InvokeSapVirtualInstanceDiskConfigurationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2750,11 +1962,6 @@ export interface InvokeSapVirtualInstanceDiskConfigurationsRequest {
   /** The VM SKU for database instance. */
   dbVmSku: string;
 }
-const InvokeSapVirtualInstanceDiskConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<InvokeSapVirtualInstanceDiskConfigurationsRequest>;
-
 /** Defines the disk sku name. */
 export type DiskSkuName =
   | "Standard_LRS"
@@ -2764,15 +1971,11 @@ export type DiskSkuName =
   | "Premium_ZRS"
   | "StandardSSD_ZRS"
   | "PremiumV2_LRS";
-const DiskSkuName = S.String;
-
 /** The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS. */
 export interface DiskSku {
   /** Defines the disk sku name. */
   name?: DiskSkuName;
 }
-const DiskSku = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<DiskSku>;
-
 /** The disk configuration required for the selected volume. */
 export interface DiskVolumeConfiguration {
   /** The total number of disks required for the concerned volume. */
@@ -2782,11 +1985,6 @@ export interface DiskVolumeConfiguration {
   /** The disk SKU details. */
   sku?: DiskSku;
 }
-const DiskVolumeConfiguration = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<DiskVolumeConfiguration>;
-
 /** The supported disk size details for a disk type. */
 export interface DiskDetails {
   /** The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS. */
@@ -2804,15 +2002,8 @@ export interface DiskDetails {
   /** The disk tier, e.g. P10, E10. */
   diskTier?: string;
 }
-const DiskDetails = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<DiskDetails>;
-
 /** The list of supported disks for a given VM Sku. */
 export type SAPDiskConfigurationSupportedConfigurationsList = Array<DiskDetails>;
-const SAPDiskConfigurationSupportedConfigurationsList = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<SAPDiskConfigurationSupportedConfigurationsList>;
-
 /** The SAP Disk Configuration contains 'recommended disk' details and list of supported disks detail for a volume type. */
 export interface SAPDiskConfiguration {
   /** The recommended disk details for a given VM Sku. */
@@ -2820,34 +2011,17 @@ export interface SAPDiskConfiguration {
   /** The list of supported disks for a given VM Sku. */
   supportedConfigurations?: SAPDiskConfigurationSupportedConfigurationsList;
 }
-const SAPDiskConfiguration = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<SAPDiskConfiguration>;
-
 /** The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup']. */
 export type SAPDiskConfigurationsResultVolumeConfigurationsMap = {
   [key: string]: SAPDiskConfiguration | undefined;
 };
-const SAPDiskConfigurationsResultVolumeConfigurationsMap = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<SAPDiskConfigurationsResultVolumeConfigurationsMap>;
-
 /** The list of disk configuration for vmSku which are part of SAP deployment. */
 export interface SAPDiskConfigurationsResult {
   /** The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup']. */
   volumeConfigurations?: SAPDiskConfigurationsResultVolumeConfigurationsMap;
 }
-const SAPDiskConfigurationsResult = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<SAPDiskConfigurationsResult>;
-
 /** The high availability type (AvailabilitySet or AvailabilityZone). */
 export type SAPHighAvailabilityType = "AvailabilitySet" | "AvailabilityZone";
-const SAPHighAvailabilityType = S.String;
-
 export interface InvokeSapVirtualInstanceSapSupportedSkuRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2866,11 +2040,6 @@ export interface InvokeSapVirtualInstanceSapSupportedSkuRequest {
   /** The high availability type. */
   highAvailabilityType?: SAPHighAvailabilityType | (string & {});
 }
-const InvokeSapVirtualInstanceSapSupportedSkuRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<InvokeSapVirtualInstanceSapSupportedSkuRequest>;
-
 /** The SAP supported SKU. */
 export interface SAPSupportedSku {
   /** The VM Sku. */
@@ -2880,29 +2049,15 @@ export interface SAPSupportedSku {
   /** True if the Sku is certified for Database server in the SAP system. */
   isDatabaseCertified?: boolean;
 }
-const SAPSupportedSku = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<SAPSupportedSku>;
-
 /** Gets the list of SAP supported SKUs. */
 export type SAPSupportedResourceSkusResultSupportedSkusList = Array<SAPSupportedSku>;
-const SAPSupportedResourceSkusResultSupportedSkusList = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<SAPSupportedResourceSkusResultSupportedSkusList>;
-
 /** The list of supported SKUs for different resources which are part of SAP deployment. */
 export interface SAPSupportedResourceSkusResult {
   /** Gets the list of SAP supported SKUs. */
   supportedSkus?: SAPSupportedResourceSkusResultSupportedSkusList;
 }
-const SAPSupportedResourceSkusResult = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<SAPSupportedResourceSkusResult>;
-
 /** The database scale method. */
 export type SAPDatabaseScaleMethod = "ScaleUp";
-const SAPDatabaseScaleMethod = S.String;
-
 export interface InvokeSapVirtualInstanceSizingRecommendationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2927,43 +2082,23 @@ export interface InvokeSapVirtualInstanceSizingRecommendationsRequest {
   /** The high availability type. */
   highAvailabilityType?: SAPHighAvailabilityType | (string & {});
 }
-const InvokeSapVirtualInstanceSizingRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<InvokeSapVirtualInstanceSizingRecommendationsRequest>;
-
 /** The SAP sizing recommendation result. */
 export interface SAPSizingRecommendationResult {
   /** The deployment type. Eg: SingleServer/ThreeTier */
   deploymentType: SAPDeploymentType;
 }
-const SAPSizingRecommendationResult = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<SAPSizingRecommendationResult>;
-
 export interface ListMonitorByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListMonitorByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListMonitorByResourceGroupRequest>;
-
 /** Resource tags. */
 export type MonitorTagsMap = { [key: string]: string | undefined };
-const MonitorTagsMap = CreateMonitorRequestTagsMap as any as S.Schema<MonitorTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type MonitorIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | undefined;
 };
-const MonitorIdentityUserAssignedIdentitiesMap =
-  CreateMonitorResponseIdentityUserAssignedIdentitiesMap as any as S.Schema<MonitorIdentityUserAssignedIdentitiesMap>;
-
 /** A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide. */
 export interface MonitorIdentity {
   /** Type of manage identity */
@@ -2971,8 +2106,6 @@ export interface MonitorIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: MonitorIdentityUserAssignedIdentitiesMap | null;
 }
-const MonitorIdentity = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<MonitorIdentity>;
-
 /** SAP monitor info on Azure (ARM properties and SAP monitor properties) */
 export interface Monitor {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2992,15 +2125,8 @@ export interface Monitor {
   /** SAP monitor properties */
   properties?: MonitorProperties;
 }
-const Monitor = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<Monitor>;
-
 /** The list of SAP monitors. */
 export type MonitorListResultValueList = Array<Monitor>;
-const MonitorListResultValueList = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<MonitorListResultValueList>;
-
 /** The response from the List SAP monitors operation. */
 export interface MonitorListResult {
   /** The list of SAP monitors. */
@@ -3008,20 +2134,11 @@ export interface MonitorListResult {
   /** The URL to get the next set of SAP monitors. */
   nextLink?: string;
 }
-const MonitorListResult = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<MonitorListResult>;
-
 export interface ListMonitorsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListMonitorsRequest = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<ListMonitorsRequest>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -3033,16 +2150,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -3056,26 +2167,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListProviderInstancesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3084,11 +2183,6 @@ export interface ListProviderInstancesRequest {
   /** Name of the SAP monitor resource. */
   monitorName: string;
 }
-const ListProviderInstancesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ListProviderInstancesRequest>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type ProviderInstanceIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | undefined;
@@ -3100,8 +2194,6 @@ export interface ProviderInstanceIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: ProviderInstanceIdentityUserAssignedIdentitiesMap | null;
 }
-const ProviderInstanceIdentity = MonitorIdentity as any as S.Schema<ProviderInstanceIdentity>;
-
 /** A provider instance associated with SAP monitor. */
 export interface ProviderInstance {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3117,15 +2209,8 @@ export interface ProviderInstance {
   /** Provider Instance properties */
   properties?: ProviderInstanceProperties;
 }
-const ProviderInstance = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<ProviderInstance>;
-
 /** The list of provider instances. */
 export type ProviderInstanceListResultValueList = Array<ProviderInstance>;
-const ProviderInstanceListResultValueList = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ProviderInstanceListResultValueList>;
-
 /** The response from the List provider instances operation. */
 export interface ProviderInstanceListResult {
   /** The list of provider instances. */
@@ -3133,11 +2218,6 @@ export interface ProviderInstanceListResult {
   /** The URL to get the next set of provider instances. */
   nextLink?: string;
 }
-const ProviderInstanceListResult = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ProviderInstanceListResult>;
-
 export interface ListSapApplicationServerInstancesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3146,11 +2226,6 @@ export interface ListSapApplicationServerInstancesRequest {
   /** The name of the Virtual Instances for SAP solutions resource */
   sapVirtualInstanceName: string;
 }
-const ListSapApplicationServerInstancesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<ListSapApplicationServerInstancesRequest>;
-
 /** Resource tags. */
 export type SAPApplicationServerInstanceTagsMap = { [key: string]: string | undefined };
 /** Define the SAP Application Server Instance resource. */
@@ -3170,16 +2245,8 @@ export interface SAPApplicationServerInstance {
   /** The resource-specific properties for this resource. */
   properties?: SAPApplicationServerProperties;
 }
-const SAPApplicationServerInstance =
-  CreateSapApplicationServerInstanceResponse as any as S.Schema<SAPApplicationServerInstance>;
-
 /** The SAPApplicationServerInstance items on this page */
 export type SAPApplicationServerInstanceListResultValueList = Array<SAPApplicationServerInstance>;
-const SAPApplicationServerInstanceListResultValueList = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<SAPApplicationServerInstanceListResultValueList>;
-
 /** The response of a SAPApplicationServerInstance list operation. */
 export interface SAPApplicationServerInstanceListResult {
   /** The SAPApplicationServerInstance items on this page */
@@ -3187,11 +2254,6 @@ export interface SAPApplicationServerInstanceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const SAPApplicationServerInstanceListResult = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<SAPApplicationServerInstanceListResult>;
-
 export interface ListSAPApplicationServerInstancesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3200,11 +2262,6 @@ export interface ListSAPApplicationServerInstancesRequest {
   /** The name of the Virtual Instances for SAP solutions resource */
   sapVirtualInstanceName: string;
 }
-const ListSAPApplicationServerInstancesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ListSAPApplicationServerInstancesRequest>;
-
 /** Define the SAP Application Server Instance resource. */
 export interface SAPApplicationServerInstance_2 {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3221,16 +2278,8 @@ export interface SAPApplicationServerInstance_2 {
   location: string;
   properties?: SAPApplicationServerProperties_2;
 }
-const SAPApplicationServerInstance_2 =
-  CreateSAPApplicationServerInstanceResponse as any as S.Schema<SAPApplicationServerInstance_2>;
-
 /** Gets the list of SAP Application Server instance resources. */
 export type SAPApplicationServerInstanceListValueList = Array<SAPApplicationServerInstance_2>;
-const SAPApplicationServerInstanceListValueList = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<SAPApplicationServerInstanceListValueList>;
-
 /** Defines the collection of SAP Application Server Instance resources. */
 export interface SAPApplicationServerInstanceList {
   /** Gets the list of SAP Application Server instance resources. */
@@ -3238,11 +2287,6 @@ export interface SAPApplicationServerInstanceList {
   /** Gets the value of next link. */
   nextLink?: string;
 }
-const SAPApplicationServerInstanceList = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<SAPApplicationServerInstanceList>;
-
 export interface ListSAPCentralInstancesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3251,16 +2295,8 @@ export interface ListSAPCentralInstancesRequest {
   /** The name of the Virtual Instances for SAP solutions resource */
   sapVirtualInstanceName: string;
 }
-const ListSAPCentralInstancesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<ListSAPCentralInstancesRequest>;
-
 /** Resource tags. */
 export type SAPCentralServerInstanceTagsMap = { [key: string]: string | undefined };
-const SAPCentralServerInstanceTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<SAPCentralServerInstanceTagsMap>;
-
 /** Define the SAP Central Services Instance resource. */
 export interface SAPCentralServerInstance_2 {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3277,16 +2313,8 @@ export interface SAPCentralServerInstance_2 {
   location: string;
   properties?: SAPCentralServerProperties_2;
 }
-const SAPCentralServerInstance_2 =
-  CreateSAPCentralInstanceResponse as any as S.Schema<SAPCentralServerInstance_2>;
-
 /** Gets the list of SAP central services instance resources. */
 export type SAPCentralInstanceListValueList = Array<SAPCentralServerInstance_2>;
-const SAPCentralInstanceListValueList = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<SAPCentralInstanceListValueList>;
-
 /** Defines the collection of SAP Central Services Instance resources. */
 export interface SAPCentralInstanceList {
   /** Gets the list of SAP central services instance resources. */
@@ -3294,11 +2322,6 @@ export interface SAPCentralInstanceList {
   /** Gets the value of next link. */
   nextLink?: string;
 }
-const SAPCentralInstanceList = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<SAPCentralInstanceList>;
-
 export interface ListSapCentralServerInstancesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3307,11 +2330,6 @@ export interface ListSapCentralServerInstancesRequest {
   /** The name of the Virtual Instances for SAP solutions resource */
   sapVirtualInstanceName: string;
 }
-const ListSapCentralServerInstancesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ListSapCentralServerInstancesRequest>;
-
 /** Define the SAP Central Services Instance resource. */
 export interface SAPCentralServerInstance {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3329,18 +2347,8 @@ export interface SAPCentralServerInstance {
   /** The resource-specific properties for this resource. */
   properties?: SAPCentralServerProperties;
 }
-const SAPCentralServerInstance = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<SAPCentralServerInstance>;
-
 /** The SAPCentralServerInstance items on this page */
 export type SAPCentralServerInstanceListResultValueList = Array<SAPCentralServerInstance>;
-const SAPCentralServerInstanceListResultValueList = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<SAPCentralServerInstanceListResultValueList>;
-
 /** The response of a SAPCentralServerInstance list operation. */
 export interface SAPCentralServerInstanceListResult {
   /** The SAPCentralServerInstance items on this page */
@@ -3348,11 +2356,6 @@ export interface SAPCentralServerInstanceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const SAPCentralServerInstanceListResult = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<SAPCentralServerInstanceListResult>;
-
 export interface ListSapDatabaseInstancesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3361,16 +2364,8 @@ export interface ListSapDatabaseInstancesRequest {
   /** The name of the Virtual Instances for SAP solutions resource */
   sapVirtualInstanceName: string;
 }
-const ListSapDatabaseInstancesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<ListSapDatabaseInstancesRequest>;
-
 /** Resource tags. */
 export type SAPDatabaseInstanceTagsMap = { [key: string]: string | undefined };
-const SAPDatabaseInstanceTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<SAPDatabaseInstanceTagsMap>;
-
 /** Define the Database resource. */
 export interface SAPDatabaseInstance {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3388,15 +2383,8 @@ export interface SAPDatabaseInstance {
   /** The resource-specific properties for this resource. */
   properties?: SAPDatabaseProperties;
 }
-const SAPDatabaseInstance = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<SAPDatabaseInstance>;
-
 /** The SAPDatabaseInstance items on this page */
 export type SAPDatabaseInstanceListResultValueList = Array<SAPDatabaseInstance>;
-const SAPDatabaseInstanceListResultValueList = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<SAPDatabaseInstanceListResultValueList>;
-
 /** The response of a SAPDatabaseInstance list operation. */
 export interface SAPDatabaseInstanceListResult {
   /** The SAPDatabaseInstance items on this page */
@@ -3404,11 +2392,6 @@ export interface SAPDatabaseInstanceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const SAPDatabaseInstanceListResult = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<SAPDatabaseInstanceListResult>;
-
 export interface ListSAPDatabaseInstancesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3417,11 +2400,6 @@ export interface ListSAPDatabaseInstancesRequest {
   /** The name of the Virtual Instances for SAP solutions resource */
   sapVirtualInstanceName: string;
 }
-const ListSAPDatabaseInstancesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ListSAPDatabaseInstancesRequest>;
-
 /** Define the Database resource. */
 export interface SAPDatabaseInstance_2 {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3438,18 +2416,8 @@ export interface SAPDatabaseInstance_2 {
   location: string;
   properties?: SAPDatabaseProperties_2;
 }
-const SAPDatabaseInstance_2 = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<SAPDatabaseInstance_2>;
-
 /** Gets the list of SAP Database instances. */
 export type SAPDatabaseInstanceListValueList = Array<SAPDatabaseInstance_2>;
-const SAPDatabaseInstanceListValueList = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<SAPDatabaseInstanceListValueList>;
-
 /** Defines the collection of SAP Database Instances. */
 export interface SAPDatabaseInstanceList {
   /** Gets the list of SAP Database instances. */
@@ -3457,11 +2425,6 @@ export interface SAPDatabaseInstanceList {
   /** Gets the value of next link. */
   nextLink?: string;
 }
-const SAPDatabaseInstanceList = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<SAPDatabaseInstanceList>;
-
 export interface ListSapLandscapeMonitorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3470,11 +2433,6 @@ export interface ListSapLandscapeMonitorRequest {
   /** Name of the SAP monitor resource. */
   monitorName: string;
 }
-const ListSapLandscapeMonitorRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<ListSapLandscapeMonitorRequest>;
-
 /** configuration associated with SAP Landscape Monitor Dashboard. */
 export interface SapLandscapeMonitor {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3488,15 +2446,8 @@ export interface SapLandscapeMonitor {
   /** Sap Landscape Monitor properties */
   properties?: SapLandscapeMonitorProperties;
 }
-const SapLandscapeMonitor = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<SapLandscapeMonitor>;
-
 /** The list of Sap Landscape Monitor configuration. */
 export type SapLandscapeMonitorListResultValueList = Array<SapLandscapeMonitor>;
-const SapLandscapeMonitorListResultValueList = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<SapLandscapeMonitorListResultValueList>;
-
 /** The response from the List SAP Landscape Monitor Dashboard operation. */
 export interface SapLandscapeMonitorListResult {
   /** The list of Sap Landscape Monitor configuration. */
@@ -3504,27 +2455,14 @@ export interface SapLandscapeMonitorListResult {
   /** The URL to get the next set of SAP Landscape Monitor Dashboard. */
   nextLink?: string;
 }
-const SapLandscapeMonitorListResult = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<SapLandscapeMonitorListResult>;
-
 export interface ListSapVirtualInstanceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListSapVirtualInstanceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<ListSapVirtualInstanceByResourceGroupRequest>;
-
 /** Resource tags. */
 export type SAPVirtualInstanceTagsMap = { [key: string]: string | undefined };
-const SAPVirtualInstanceTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<SAPVirtualInstanceTagsMap>;
-
 /** Define the Virtual Instance for SAP solutions resource. */
 export interface SAPVirtualInstance {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3544,15 +2482,8 @@ export interface SAPVirtualInstance {
   /** The managed service identities assigned to this resource. */
   identity?: SAPVirtualInstanceIdentity;
 }
-const SAPVirtualInstance = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<SAPVirtualInstance>;
-
 /** The SAPVirtualInstance items on this page */
 export type SAPVirtualInstanceListResultValueList = Array<SAPVirtualInstance>;
-const SAPVirtualInstanceListResultValueList = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<SAPVirtualInstanceListResultValueList>;
-
 /** The response of a SAPVirtualInstance list operation. */
 export interface SAPVirtualInstanceListResult {
   /** The SAPVirtualInstance items on this page */
@@ -3560,22 +2491,12 @@ export interface SAPVirtualInstanceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const SAPVirtualInstanceListResult = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<SAPVirtualInstanceListResult>;
-
 export interface ListSAPVirtualInstanceByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListSAPVirtualInstanceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ListSAPVirtualInstanceByResourceGroupRequest>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type SAPVirtualInstanceIdentityUserAssignedIdentitiesMap_2 = {
   [key: string]: UserAssignedIdentity | undefined;
@@ -3587,9 +2508,6 @@ export interface SAPVirtualInstanceIdentity_2 {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: SAPVirtualInstanceIdentityUserAssignedIdentitiesMap_2 | null;
 }
-const SAPVirtualInstanceIdentity_2 =
-  CreateMonitorResponseIdentity as any as S.Schema<SAPVirtualInstanceIdentity_2>;
-
 /** Define the Virtual Instance for SAP solutions resource. */
 export interface SAPVirtualInstance_2 {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3608,18 +2526,8 @@ export interface SAPVirtualInstance_2 {
   identity?: SAPVirtualInstanceIdentity_2;
   properties: SAPVirtualInstanceProperties_2;
 }
-const SAPVirtualInstance_2 = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<SAPVirtualInstance_2>;
-
 /** Gets the list of Virtual Instances for SAP solutions resources. */
 export type SAPVirtualInstanceListValueList = Array<SAPVirtualInstance_2>;
-const SAPVirtualInstanceListValueList = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<SAPVirtualInstanceListValueList>;
-
 /** Defines the collection of Virtual Instance for SAP solutions resources. */
 export interface SAPVirtualInstanceList {
   /** Gets the list of Virtual Instances for SAP solutions resources. */
@@ -3627,29 +2535,14 @@ export interface SAPVirtualInstanceList {
   /** Gets the value of next link. */
   nextLink?: string;
 }
-const SAPVirtualInstanceList = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<SAPVirtualInstanceList>;
-
 export interface ListSapVirtualInstanceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListSapVirtualInstanceBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<ListSapVirtualInstanceBySubscriptionRequest>;
-
 export interface ListSAPVirtualInstanceBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListSAPVirtualInstanceBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<ListSAPVirtualInstanceBySubscriptionRequest>;
-
 export interface SAPAvailabilityZoneDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3661,15 +2554,8 @@ export interface SAPAvailabilityZoneDetailsRequest {
   /** The database type. Eg: HANA, DB2, etc */
   databaseType: SAPDatabaseType | (string & {});
 }
-const SAPAvailabilityZoneDetailsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<SAPAvailabilityZoneDetailsRequest>;
-
 /** The type of SAP deployment, single server or Three tier. */
 export type DeploymentType = "SingleServer" | "ThreeTier";
-const DeploymentType = S.String;
-
 export interface SAPDiskConfigurationsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3686,17 +2572,10 @@ export interface SAPDiskConfigurationsRequest {
   /** The VM SKU for database instance. */
   dbVmSku: string;
 }
-const SAPDiskConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<SAPDiskConfigurationsRequest>;
-
 /** The type of disk sku. For example, Standard_LRS, Standard_ZRS, Premium_LRS, Premium_ZRS. */
 export interface DiskSku_2 {
   name?: DiskSkuName;
 }
-const DiskSku_2 = DiskSku as any as S.Schema<DiskSku_2>;
-
 /** The disk configuration required for the selected volume. */
 export interface DiskVolumeConfiguration_2 {
   /** The total number of disks required for the concerned volume. */
@@ -3706,11 +2585,6 @@ export interface DiskVolumeConfiguration_2 {
   /** The disk SKU details. */
   sku?: DiskSku_2;
 }
-const DiskVolumeConfiguration_2 = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<DiskVolumeConfiguration_2>;
-
 /** The supported disk size details for a disk type. */
 export interface DiskDetails_2 {
   sku?: DiskSku_2;
@@ -3729,9 +2603,6 @@ export interface DiskDetails_2 {
 }
 /** The list of supported disks for a given VM Sku. */
 export type SAPDiskConfigurationSupportedConfigurationsList_2 = Array<DiskDetails_2>;
-const SAPDiskConfigurationSupportedConfigurationsList_2 =
-  SAPDiskConfigurationSupportedConfigurationsList as any as S.Schema<SAPDiskConfigurationSupportedConfigurationsList_2>;
-
 /** The SAP Disk Configuration contains 'recommended disk' details and list of supported disks detail for a volume type. */
 export interface SAPDiskConfiguration_2 {
   /** The recommended disk details for a given VM Sku. */
@@ -3739,38 +2610,19 @@ export interface SAPDiskConfiguration_2 {
   /** The list of supported disks for a given VM Sku. */
   supportedConfigurations?: SAPDiskConfigurationSupportedConfigurationsList_2;
 }
-const SAPDiskConfiguration_2 = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<SAPDiskConfiguration_2>;
-
 /** The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup']. */
 export type SAPDiskConfigurationsResultVolumeConfigurationsMap_2 = {
   [key: string]: SAPDiskConfiguration_2 | undefined;
 };
-const SAPDiskConfigurationsResultVolumeConfigurationsMap_2 = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<SAPDiskConfigurationsResultVolumeConfigurationsMap_2>;
-
 /** The list of disk configuration for vmSku which are part of SAP deployment. */
 export interface SAPDiskConfigurationsResult_2 {
   /** The disk configuration for the db volume. For HANA, Required volumes are: ['hana/data', 'hana/log', hana/shared', 'usr/sap', 'os'], Optional volume : ['backup']. */
   volumeConfigurations?: SAPDiskConfigurationsResultVolumeConfigurationsMap_2;
 }
-const SAPDiskConfigurationsResult_2 = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<SAPDiskConfigurationsResult_2>;
-
 /** The database scale method. */
 export type DatabaseScaleMethod = "ScaleUp";
-const DatabaseScaleMethod = S.String;
-
 /** The high availability type (AvailabilitySet or AvailabilityZone). */
 export type HighAvailabilityType = "AvailabilitySet" | "AvailabilityZone";
-const HighAvailabilityType = S.String;
-
 export interface SAPSizingRecommendationsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3793,18 +2645,10 @@ export interface SAPSizingRecommendationsRequest {
   /** The high availability type. */
   highAvailabilityType?: HighAvailabilityType | (string & {});
 }
-const SAPSizingRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<SAPSizingRecommendationsRequest>;
-
 /** The SAP sizing recommendation result. */
 export interface SAPSizingRecommendationResult_2 {
   deploymentType: DeploymentType;
 }
-const SAPSizingRecommendationResult_2 =
-  SAPSizingRecommendationResult as any as S.Schema<SAPSizingRecommendationResult_2>;
-
 export interface SAPSupportedSkuRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3821,11 +2665,6 @@ export interface SAPSupportedSkuRequest {
   /** The high availability type. */
   highAvailabilityType?: HighAvailabilityType | (string & {});
 }
-const SAPSupportedSkuRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<SAPSupportedSkuRequest>;
-
 export interface StartSapApplicationServerInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3838,18 +2677,8 @@ export interface StartSapApplicationServerInstanceRequest {
   /** The boolean value indicates whether to start the virtual machines before starting the SAP instances. */
   startVm?: boolean;
 }
-const StartSapApplicationServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<StartSapApplicationServerInstanceRequest>;
-
 /** The operations list. */
 export type OperationStatusResultOperationsList = Array<OperationStatusResult>;
-const OperationStatusResultOperationsList = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<OperationStatusResultOperationsList>;
-
 /** The current status of an async operation. */
 export interface OperationStatusResult {
   /** Fully qualified ID for the async operation. */
@@ -3871,18 +2700,8 @@ export interface OperationStatusResult {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const OperationStatusResult = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<OperationStatusResult>;
-
 /** The operations list. */
 export type StartSapApplicationServerInstanceResponseOperationsList = Array<OperationStatusResult>;
-const StartSapApplicationServerInstanceResponseOperationsList = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<StartSapApplicationServerInstanceResponseOperationsList>;
-
 export interface StartSapApplicationServerInstanceResponse {
   /** Fully qualified ID for the async operation. */
   id?: string;
@@ -3903,11 +2722,6 @@ export interface StartSapApplicationServerInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const StartSapApplicationServerInstanceResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<StartSapApplicationServerInstanceResponse>;
-
 export interface StartSAPApplicationServerInstanceInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3918,19 +2732,9 @@ export interface StartSAPApplicationServerInstanceInstanceRequest {
   /** The name of SAP Application Server instance resource. */
   applicationInstanceName: string;
 }
-const StartSAPApplicationServerInstanceInstanceRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<StartSAPApplicationServerInstanceInstanceRequest>;
-
 /** The operations list. */
 export type StartSAPApplicationServerInstanceInstanceResponseOperationsList =
   Array<OperationStatusResult_2>;
-const StartSAPApplicationServerInstanceInstanceResponseOperationsList = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<StartSAPApplicationServerInstanceInstanceResponseOperationsList>;
-
 export interface StartSAPApplicationServerInstanceInstanceResponse {
   /** Fully qualified ID for the async operation. */
   id?: string;
@@ -3949,11 +2753,6 @@ export interface StartSAPApplicationServerInstanceInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const StartSAPApplicationServerInstanceInstanceResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<StartSAPApplicationServerInstanceInstanceResponse>;
-
 export interface StartSAPCentralInstanceInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3964,11 +2763,6 @@ export interface StartSAPCentralInstanceInstanceRequest {
   /** Central Services Instance resource name string modeled as parameter for auto generation to work correctly. */
   centralInstanceName: string;
 }
-const StartSAPCentralInstanceInstanceRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<StartSAPCentralInstanceInstanceRequest>;
-
 /** The operations list. */
 export type StartSAPCentralInstanceInstanceResponseOperationsList = Array<OperationStatusResult_2>;
 export interface StartSAPCentralInstanceInstanceResponse {
@@ -3989,9 +2783,6 @@ export interface StartSAPCentralInstanceInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const StartSAPCentralInstanceInstanceResponse =
-  DeleteSAPApplicationServerInstanceResponse as any as S.Schema<StartSAPCentralInstanceInstanceResponse>;
-
 export interface StartSapCentralServerInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4004,11 +2795,6 @@ export interface StartSapCentralServerInstanceRequest {
   /** The boolean value indicates whether to start the virtual machines before starting the SAP instances. */
   startVm?: boolean;
 }
-const StartSapCentralServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<StartSapCentralServerInstanceRequest>;
-
 /** The operations list. */
 export type StartSapCentralServerInstanceResponseOperationsList = Array<OperationStatusResult>;
 export interface StartSapCentralServerInstanceResponse {
@@ -4031,9 +2817,6 @@ export interface StartSapCentralServerInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const StartSapCentralServerInstanceResponse =
-  StartSapApplicationServerInstanceResponse as any as S.Schema<StartSapCentralServerInstanceResponse>;
-
 export interface StartSapDatabaseInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4046,11 +2829,6 @@ export interface StartSapDatabaseInstanceRequest {
   /** The boolean value indicates whether to start the virtual machines before starting the SAP instances. */
   startVm?: boolean;
 }
-const StartSapDatabaseInstanceRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<StartSapDatabaseInstanceRequest>;
-
 /** The operations list. */
 export type StartSapDatabaseInstanceResponseOperationsList = Array<OperationStatusResult>;
 export interface StartSapDatabaseInstanceResponse {
@@ -4073,9 +2851,6 @@ export interface StartSapDatabaseInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const StartSapDatabaseInstanceResponse =
-  StartSapApplicationServerInstanceResponse as any as S.Schema<StartSapDatabaseInstanceResponse>;
-
 export interface StartSAPDatabaseInstanceInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4086,11 +2861,6 @@ export interface StartSAPDatabaseInstanceInstanceRequest {
   /** Database resource name string modeled as parameter for auto generation to work correctly. */
   databaseInstanceName: string;
 }
-const StartSAPDatabaseInstanceInstanceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<StartSAPDatabaseInstanceInstanceRequest>;
-
 /** The operations list. */
 export type StartSAPDatabaseInstanceInstanceResponseOperationsList = Array<OperationStatusResult_2>;
 export interface StartSAPDatabaseInstanceInstanceResponse {
@@ -4111,9 +2881,6 @@ export interface StartSAPDatabaseInstanceInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const StartSAPDatabaseInstanceInstanceResponse =
-  DeleteSAPApplicationServerInstanceResponse as any as S.Schema<StartSAPDatabaseInstanceInstanceResponse>;
-
 export interface StartSapVirtualInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4124,11 +2891,6 @@ export interface StartSapVirtualInstanceRequest {
   /** The boolean value indicates whether to start the virtual machines before starting the SAP instances. */
   startVm?: boolean;
 }
-const StartSapVirtualInstanceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<StartSapVirtualInstanceRequest>;
-
 /** The operations list. */
 export type StartSapVirtualInstanceResponseOperationsList = Array<OperationStatusResult>;
 export interface StartSapVirtualInstanceResponse {
@@ -4151,9 +2913,6 @@ export interface StartSapVirtualInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const StartSapVirtualInstanceResponse =
-  StartSapApplicationServerInstanceResponse as any as S.Schema<StartSapVirtualInstanceResponse>;
-
 export interface StartSAPVirtualInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4162,11 +2921,6 @@ export interface StartSAPVirtualInstanceRequest {
   /** The name of the Virtual Instances for SAP solutions resource */
   sapVirtualInstanceName: string;
 }
-const StartSAPVirtualInstanceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<StartSAPVirtualInstanceRequest>;
-
 /** The operations list. */
 export type StartSAPVirtualInstanceResponseOperationsList = Array<OperationStatusResult_2>;
 export interface StartSAPVirtualInstanceResponse {
@@ -4187,9 +2941,6 @@ export interface StartSAPVirtualInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const StartSAPVirtualInstanceResponse =
-  DeleteSAPApplicationServerInstanceResponse as any as S.Schema<StartSAPVirtualInstanceResponse>;
-
 export interface StopSapApplicationServerInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4204,11 +2955,6 @@ export interface StopSapApplicationServerInstanceRequest {
   /** The boolean value indicates whether to Stop and deallocate the virtual machines along with the SAP instances. */
   deallocateVm?: boolean;
 }
-const StopSapApplicationServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<StopSapApplicationServerInstanceRequest>;
-
 /** The operations list. */
 export type StopSapApplicationServerInstanceResponseOperationsList = Array<OperationStatusResult>;
 export interface StopSapApplicationServerInstanceResponse {
@@ -4231,9 +2977,6 @@ export interface StopSapApplicationServerInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const StopSapApplicationServerInstanceResponse =
-  StartSapApplicationServerInstanceResponse as any as S.Schema<StopSapApplicationServerInstanceResponse>;
-
 export interface StopSAPApplicationServerInstanceInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4246,11 +2989,6 @@ export interface StopSAPApplicationServerInstanceInstanceRequest {
   /** This parameter defines how long (in seconds) the soft shutdown waits until the RFC/HTTP clients no longer consider the server for calls with load balancing. Value 0 means that the kernel does not wait, but goes directly into the next shutdown state, i.e. hard stop. */
   softStopTimeoutSeconds?: number;
 }
-const StopSAPApplicationServerInstanceInstanceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<StopSAPApplicationServerInstanceInstanceRequest>;
-
 /** The operations list. */
 export type StopSAPApplicationServerInstanceInstanceResponseOperationsList =
   Array<OperationStatusResult_2>;
@@ -4272,9 +3010,6 @@ export interface StopSAPApplicationServerInstanceInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const StopSAPApplicationServerInstanceInstanceResponse =
-  DeleteSAPApplicationServerInstanceResponse as any as S.Schema<StopSAPApplicationServerInstanceInstanceResponse>;
-
 export interface StopSAPCentralInstanceInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4287,11 +3022,6 @@ export interface StopSAPCentralInstanceInstanceRequest {
   /** This parameter defines how long (in seconds) the soft shutdown waits until the RFC/HTTP clients no longer consider the server for calls with load balancing. Value 0 means that the kernel does not wait, but goes directly into the next shutdown state, i.e. hard stop. */
   softStopTimeoutSeconds?: number;
 }
-const StopSAPCentralInstanceInstanceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<StopSAPCentralInstanceInstanceRequest>;
-
 /** The operations list. */
 export type StopSAPCentralInstanceInstanceResponseOperationsList = Array<OperationStatusResult_2>;
 export interface StopSAPCentralInstanceInstanceResponse {
@@ -4312,9 +3042,6 @@ export interface StopSAPCentralInstanceInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const StopSAPCentralInstanceInstanceResponse =
-  DeleteSAPApplicationServerInstanceResponse as any as S.Schema<StopSAPCentralInstanceInstanceResponse>;
-
 export interface StopSapCentralServerInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4329,11 +3056,6 @@ export interface StopSapCentralServerInstanceRequest {
   /** The boolean value indicates whether to Stop and deallocate the virtual machines along with the SAP instances. */
   deallocateVm?: boolean;
 }
-const StopSapCentralServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<StopSapCentralServerInstanceRequest>;
-
 /** The operations list. */
 export type StopSapCentralServerInstanceResponseOperationsList = Array<OperationStatusResult>;
 export interface StopSapCentralServerInstanceResponse {
@@ -4356,9 +3078,6 @@ export interface StopSapCentralServerInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const StopSapCentralServerInstanceResponse =
-  StartSapApplicationServerInstanceResponse as any as S.Schema<StopSapCentralServerInstanceResponse>;
-
 export interface StopSapDatabaseInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4373,11 +3092,6 @@ export interface StopSapDatabaseInstanceRequest {
   /** The boolean value indicates whether to Stop and deallocate the virtual machines along with the SAP instances. */
   deallocateVm?: boolean;
 }
-const StopSapDatabaseInstanceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<StopSapDatabaseInstanceRequest>;
-
 /** The operations list. */
 export type StopSapDatabaseInstanceResponseOperationsList = Array<OperationStatusResult>;
 export interface StopSapDatabaseInstanceResponse {
@@ -4400,9 +3114,6 @@ export interface StopSapDatabaseInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const StopSapDatabaseInstanceResponse =
-  StartSapApplicationServerInstanceResponse as any as S.Schema<StopSapDatabaseInstanceResponse>;
-
 export interface StopSAPDatabaseInstanceInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4415,11 +3126,6 @@ export interface StopSAPDatabaseInstanceInstanceRequest {
   /** This parameter defines how long (in seconds) the soft shutdown waits until the RFC/HTTP clients no longer consider the server for calls with load balancing. Value 0 means that the kernel does not wait, but goes directly into the next shutdown state, i.e. hard stop. */
   softStopTimeoutSeconds?: number;
 }
-const StopSAPDatabaseInstanceInstanceRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<StopSAPDatabaseInstanceInstanceRequest>;
-
 /** The operations list. */
 export type StopSAPDatabaseInstanceInstanceResponseOperationsList = Array<OperationStatusResult_2>;
 export interface StopSAPDatabaseInstanceInstanceResponse {
@@ -4440,9 +3146,6 @@ export interface StopSAPDatabaseInstanceInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const StopSAPDatabaseInstanceInstanceResponse =
-  DeleteSAPApplicationServerInstanceResponse as any as S.Schema<StopSAPDatabaseInstanceInstanceResponse>;
-
 export interface StopSapVirtualInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4455,11 +3158,6 @@ export interface StopSapVirtualInstanceRequest {
   /** The boolean value indicates whether to Stop and deallocate the virtual machines along with the SAP instances. */
   deallocateVm?: boolean;
 }
-const StopSapVirtualInstanceRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<StopSapVirtualInstanceRequest>;
-
 /** The operations list. */
 export type StopSapVirtualInstanceResponseOperationsList = Array<OperationStatusResult>;
 export interface StopSapVirtualInstanceResponse {
@@ -4482,9 +3180,6 @@ export interface StopSapVirtualInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const StopSapVirtualInstanceResponse =
-  StartSapApplicationServerInstanceResponse as any as S.Schema<StopSapVirtualInstanceResponse>;
-
 export interface StopSAPVirtualInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4495,11 +3190,6 @@ export interface StopSAPVirtualInstanceRequest {
   /** This parameter defines how long (in seconds) the soft shutdown waits until the RFC/HTTP clients no longer consider the server for calls with load balancing. Value 0 means that the kernel does not wait, but goes directly into the next shutdown state, i.e. hard stop. */
   softStopTimeoutSeconds?: number;
 }
-const StopSAPVirtualInstanceRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<StopSAPVirtualInstanceRequest>;
-
 /** The operations list. */
 export type StopSAPVirtualInstanceResponseOperationsList = Array<OperationStatusResult_2>;
 export interface StopSAPVirtualInstanceResponse {
@@ -4520,14 +3210,8 @@ export interface StopSAPVirtualInstanceResponse {
   /** If present, details of the operation error. */
   error?: ErrorDetail;
 }
-const StopSAPVirtualInstanceResponse =
-  DeleteSAPApplicationServerInstanceResponse as any as S.Schema<StopSAPVirtualInstanceResponse>;
-
 /** Gets or sets the Resource tags. */
 export type UpdateMonitorRequestTagsMap = { [key: string]: string | undefined };
-const UpdateMonitorRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<UpdateMonitorRequestTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateMonitorRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
@@ -4539,9 +3223,6 @@ export interface UpdateMonitorRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateMonitorRequestIdentityUserAssignedIdentitiesMap | null;
 }
-const UpdateMonitorRequestIdentity =
-  CreateMonitorRequestIdentity as any as S.Schema<UpdateMonitorRequestIdentity>;
-
 export interface UpdateMonitorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4554,11 +3235,6 @@ export interface UpdateMonitorRequest {
   /** A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide. */
   identity?: UpdateMonitorRequestIdentity;
 }
-const UpdateMonitorRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<UpdateMonitorRequest>;
-
 /** Resource tags. */
 export type UpdateMonitorResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -4590,15 +3266,10 @@ export interface UpdateMonitorResponse {
   /** SAP monitor properties */
   properties?: MonitorProperties;
 }
-const UpdateMonitorResponse = CreateMonitorResponse as any as S.Schema<UpdateMonitorResponse>;
-
 /** Gets or sets the Resource tags. */
 export type UpdateSapApplicationServerInstanceRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const UpdateSapApplicationServerInstanceRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<UpdateSapApplicationServerInstanceRequestTagsMap>;
-
 export interface UpdateSapApplicationServerInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4611,11 +3282,6 @@ export interface UpdateSapApplicationServerInstanceRequest {
   /** Gets or sets the Resource tags. */
   tags?: UpdateSapApplicationServerInstanceRequestTagsMap;
 }
-const UpdateSapApplicationServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<UpdateSapApplicationServerInstanceRequest>;
-
 /** Resource tags. */
 export type UpdateSapApplicationServerInstanceResponseTagsMap = {
   [key: string]: string | undefined;
@@ -4636,16 +3302,10 @@ export interface UpdateSapApplicationServerInstanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SAPApplicationServerProperties;
 }
-const UpdateSapApplicationServerInstanceResponse =
-  CreateSapApplicationServerInstanceResponse as any as S.Schema<UpdateSapApplicationServerInstanceResponse>;
-
 /** Gets or sets the Resource tags. */
 export type UpdateSAPApplicationServerInstanceRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const UpdateSAPApplicationServerInstanceRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<UpdateSAPApplicationServerInstanceRequestTagsMap>;
-
 export interface UpdateSAPApplicationServerInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4658,11 +3318,6 @@ export interface UpdateSAPApplicationServerInstanceRequest {
   /** Gets or sets the Resource tags. */
   tags?: UpdateSAPApplicationServerInstanceRequestTagsMap;
 }
-const UpdateSAPApplicationServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<UpdateSAPApplicationServerInstanceRequest>;
-
 /** Resource tags. */
 export type UpdateSAPApplicationServerInstanceResponseTagsMap = {
   [key: string]: string | undefined;
@@ -4682,14 +3337,8 @@ export interface UpdateSAPApplicationServerInstanceResponse {
   location: string;
   properties?: SAPApplicationServerProperties_2;
 }
-const UpdateSAPApplicationServerInstanceResponse =
-  CreateSAPApplicationServerInstanceResponse as any as S.Schema<UpdateSAPApplicationServerInstanceResponse>;
-
 /** Gets or sets the Resource tags. */
 export type UpdateSAPCentralInstanceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSAPCentralInstanceRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<UpdateSAPCentralInstanceRequestTagsMap>;
-
 export interface UpdateSAPCentralInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4702,11 +3351,6 @@ export interface UpdateSAPCentralInstanceRequest {
   /** Gets or sets the Resource tags. */
   tags?: UpdateSAPCentralInstanceRequestTagsMap;
 }
-const UpdateSAPCentralInstanceRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<UpdateSAPCentralInstanceRequest>;
-
 /** Resource tags. */
 export type UpdateSAPCentralInstanceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSAPCentralInstanceResponse {
@@ -4724,14 +3368,8 @@ export interface UpdateSAPCentralInstanceResponse {
   location: string;
   properties?: SAPCentralServerProperties_2;
 }
-const UpdateSAPCentralInstanceResponse =
-  CreateSAPCentralInstanceResponse as any as S.Schema<UpdateSAPCentralInstanceResponse>;
-
 /** Gets or sets the Resource tags. */
 export type UpdateSapCentralServerInstanceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSapCentralServerInstanceRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<UpdateSapCentralServerInstanceRequestTagsMap>;
-
 export interface UpdateSapCentralServerInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4744,11 +3382,6 @@ export interface UpdateSapCentralServerInstanceRequest {
   /** Gets or sets the Resource tags. */
   tags?: UpdateSapCentralServerInstanceRequestTagsMap;
 }
-const UpdateSapCentralServerInstanceRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<UpdateSapCentralServerInstanceRequest>;
-
 /** Resource tags. */
 export type UpdateSapCentralServerInstanceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSapCentralServerInstanceResponse {
@@ -4767,14 +3400,8 @@ export interface UpdateSapCentralServerInstanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SAPCentralServerProperties;
 }
-const UpdateSapCentralServerInstanceResponse =
-  CreateSapCentralServerInstanceResponse as any as S.Schema<UpdateSapCentralServerInstanceResponse>;
-
 /** Gets or sets the Resource tags. */
 export type UpdateSapDatabaseInstanceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSapDatabaseInstanceRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<UpdateSapDatabaseInstanceRequestTagsMap>;
-
 export interface UpdateSapDatabaseInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4787,11 +3414,6 @@ export interface UpdateSapDatabaseInstanceRequest {
   /** Gets or sets the Resource tags. */
   tags?: UpdateSapDatabaseInstanceRequestTagsMap;
 }
-const UpdateSapDatabaseInstanceRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<UpdateSapDatabaseInstanceRequest>;
-
 /** Resource tags. */
 export type UpdateSapDatabaseInstanceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSapDatabaseInstanceResponse {
@@ -4810,14 +3432,8 @@ export interface UpdateSapDatabaseInstanceResponse {
   /** The resource-specific properties for this resource. */
   properties?: SAPDatabaseProperties;
 }
-const UpdateSapDatabaseInstanceResponse =
-  CreateSapDatabaseInstanceResponse as any as S.Schema<UpdateSapDatabaseInstanceResponse>;
-
 /** Gets or sets the Resource tags. */
 export type UpdateSAPDatabaseInstanceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSAPDatabaseInstanceRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<UpdateSAPDatabaseInstanceRequestTagsMap>;
-
 export interface UpdateSAPDatabaseInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4830,11 +3446,6 @@ export interface UpdateSAPDatabaseInstanceRequest {
   /** Gets or sets the Resource tags. */
   tags?: UpdateSAPDatabaseInstanceRequestTagsMap;
 }
-const UpdateSAPDatabaseInstanceRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<UpdateSAPDatabaseInstanceRequest>;
-
 /** Resource tags. */
 export type UpdateSAPDatabaseInstanceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSAPDatabaseInstanceResponse {
@@ -4852,9 +3463,6 @@ export interface UpdateSAPDatabaseInstanceResponse {
   location: string;
   properties?: SAPDatabaseProperties_2;
 }
-const UpdateSAPDatabaseInstanceResponse =
-  CreateSAPDatabaseInstanceResponse as any as S.Schema<UpdateSAPDatabaseInstanceResponse>;
-
 export interface UpdateSapLandscapeMonitorRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4865,11 +3473,6 @@ export interface UpdateSapLandscapeMonitorRequest {
   /** Sap Landscape Monitor properties */
   properties?: SapLandscapeMonitorPropertiesInput;
 }
-const UpdateSapLandscapeMonitorRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<UpdateSapLandscapeMonitorRequest>;
-
 export interface UpdateSapLandscapeMonitorResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4882,24 +3485,13 @@ export interface UpdateSapLandscapeMonitorResponse {
   /** Sap Landscape Monitor properties */
   properties?: SapLandscapeMonitorProperties;
 }
-const UpdateSapLandscapeMonitorResponse =
-  CreateSapLandscapeMonitorResponse as any as S.Schema<UpdateSapLandscapeMonitorResponse>;
-
 /** Gets or sets the Resource tags. */
 export type UpdateSapVirtualInstanceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSapVirtualInstanceRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<UpdateSapVirtualInstanceRequestTagsMap>;
-
 /** Defines the update request body properties for updating Virtual Instance for SAP. */
 export interface UpdateSAPVirtualInstanceProperties {
   /** Specifies the network access configuration for the resources that will be deployed in the Managed Resource Group. The options to choose from are Public and Private. If 'Private' is chosen, the Storage Account service tag should be enabled on the subnets in which the SAP VMs exist. This is required for establishing connectivity between VM extensions and the managed resource group storage account. This setting is currently applicable only to Storage Account. Learn more here https://go.microsoft.com/fwlink/?linkid=2247228 */
   managedResourcesNetworkAccessType?: ManagedResourcesNetworkAccessType | (string & {});
 }
-const UpdateSAPVirtualInstanceProperties = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<UpdateSAPVirtualInstanceProperties>;
-
 export interface UpdateSapVirtualInstanceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4914,11 +3506,6 @@ export interface UpdateSapVirtualInstanceRequest {
   /** The update properties. */
   properties?: UpdateSAPVirtualInstanceProperties;
 }
-const UpdateSapVirtualInstanceRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<UpdateSapVirtualInstanceRequest>;
-
 /** Resource tags. */
 export type UpdateSapVirtualInstanceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSapVirtualInstanceResponse {
@@ -4939,14 +3526,8 @@ export interface UpdateSapVirtualInstanceResponse {
   /** The managed service identities assigned to this resource. */
   identity?: SAPVirtualInstanceIdentity;
 }
-const UpdateSapVirtualInstanceResponse =
-  CreateSapVirtualInstanceResponse as any as S.Schema<UpdateSapVirtualInstanceResponse>;
-
 /** Gets or sets the Resource tags. */
 export type UpdateSAPVirtualInstanceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSAPVirtualInstanceRequestTagsMap =
-  CreateMonitorRequestTagsMap as any as S.Schema<UpdateSAPVirtualInstanceRequestTagsMap>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UpdateSAPVirtualInstanceRequestIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
@@ -4958,9 +3539,6 @@ export interface UpdateSAPVirtualInstanceRequestIdentity {
   /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
   userAssignedIdentities?: UpdateSAPVirtualInstanceRequestIdentityUserAssignedIdentitiesMap | null;
 }
-const UpdateSAPVirtualInstanceRequestIdentity =
-  CreateProviderInstanceRequestIdentity as any as S.Schema<UpdateSAPVirtualInstanceRequestIdentity>;
-
 export interface UpdateSAPVirtualInstanceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4973,11 +3551,6 @@ export interface UpdateSAPVirtualInstanceRequest {
   /** A pre-created user assigned identity with appropriate roles assigned. To learn more on identity and roles required, visit the ACSS how-to-guide. */
   identity?: UpdateSAPVirtualInstanceRequestIdentity;
 }
-const UpdateSAPVirtualInstanceRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<UpdateSAPVirtualInstanceRequest>;
-
 /** Resource tags. */
 export type UpdateSAPVirtualInstanceResponseTagsMap = { [key: string]: string | undefined };
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
@@ -5008,9 +3581,6 @@ export interface UpdateSAPVirtualInstanceResponse {
   identity?: UpdateSAPVirtualInstanceResponseIdentity;
   properties: SAPVirtualInstanceProperties_2;
 }
-const UpdateSAPVirtualInstanceResponse =
-  CreateSAPVirtualInstanceResponse as any as S.Schema<UpdateSAPVirtualInstanceResponse>;
-
 export type CreateMonitorError = AzureOpError;
 /** Creates a SAP monitor. Creates a SAP monitor for the specified subscription, resource group, and resource name. */
 export const CreateMonitor: API.OperationMethod<
@@ -5019,8 +3589,8 @@ export const CreateMonitor: API.OperationMethod<
   CreateMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMonitorRequest,
-  output: CreateMonitorResponse,
+  input: __S(6) as any as S.Schema<CreateMonitorRequest>,
+  output: __S(15) as any as S.Schema<CreateMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5034,8 +3604,8 @@ export const CreateProviderInstance: API.OperationMethod<
   CreateProviderInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProviderInstanceRequest,
-  output: CreateProviderInstanceResponse,
+  input: __S(21) as any as S.Schema<CreateProviderInstanceRequest>,
+  output: __S(25) as any as S.Schema<CreateProviderInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5049,8 +3619,8 @@ export const CreateSapApplicationServerInstance: API.OperationMethod<
   CreateSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSapApplicationServerInstanceRequest,
-  output: CreateSapApplicationServerInstanceResponse,
+  input: __S(26) as any as S.Schema<CreateSapApplicationServerInstanceRequest>,
+  output: __S(35) as any as S.Schema<CreateSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5064,8 +3634,8 @@ export const CreateSAPApplicationServerInstance: API.OperationMethod<
   CreateSAPApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSAPApplicationServerInstanceRequest,
-  output: CreateSAPApplicationServerInstanceResponse,
+  input: __S(36) as any as S.Schema<CreateSAPApplicationServerInstanceRequest>,
+  output: __S(38) as any as S.Schema<CreateSAPApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5079,8 +3649,8 @@ export const CreateSAPCentralInstance: API.OperationMethod<
   CreateSAPCentralInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSAPCentralInstanceRequest,
-  output: CreateSAPCentralInstanceResponse,
+  input: __S(40) as any as S.Schema<CreateSAPCentralInstanceRequest>,
+  output: __S(48) as any as S.Schema<CreateSAPCentralInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5094,8 +3664,8 @@ export const CreateSapCentralServerInstance: API.OperationMethod<
   CreateSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSapCentralServerInstanceRequest,
-  output: CreateSapCentralServerInstanceResponse,
+  input: __S(49) as any as S.Schema<CreateSapCentralServerInstanceRequest>,
+  output: __S(54) as any as S.Schema<CreateSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5109,8 +3679,8 @@ export const CreateSapDatabaseInstance: API.OperationMethod<
   CreateSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSapDatabaseInstanceRequest,
-  output: CreateSapDatabaseInstanceResponse,
+  input: __S(55) as any as S.Schema<CreateSapDatabaseInstanceRequest>,
+  output: __S(59) as any as S.Schema<CreateSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5124,8 +3694,8 @@ export const CreateSAPDatabaseInstance: API.OperationMethod<
   CreateSAPDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSAPDatabaseInstanceRequest,
-  output: CreateSAPDatabaseInstanceResponse,
+  input: __S(60) as any as S.Schema<CreateSAPDatabaseInstanceRequest>,
+  output: __S(62) as any as S.Schema<CreateSAPDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5139,8 +3709,8 @@ export const CreateSapLandscapeMonitor: API.OperationMethod<
   CreateSapLandscapeMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSapLandscapeMonitorRequest,
-  output: CreateSapLandscapeMonitorResponse,
+  input: __S(69) as any as S.Schema<CreateSapLandscapeMonitorRequest>,
+  output: __S(71) as any as S.Schema<CreateSapLandscapeMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5154,8 +3724,8 @@ export const CreateSapVirtualInstance: API.OperationMethod<
   CreateSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSapVirtualInstanceRequest,
-  output: CreateSapVirtualInstanceResponse,
+  input: __S(75) as any as S.Schema<CreateSapVirtualInstanceRequest>,
+  output: __S(78) as any as S.Schema<CreateSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5169,8 +3739,8 @@ export const CreateSAPVirtualInstance: API.OperationMethod<
   CreateSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSAPVirtualInstanceRequest,
-  output: CreateSAPVirtualInstanceResponse,
+  input: __S(81) as any as S.Schema<CreateSAPVirtualInstanceRequest>,
+  output: __S(83) as any as S.Schema<CreateSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5184,8 +3754,8 @@ export const DeleteMonitor: API.OperationMethod<
   DeleteMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMonitorRequest,
-  output: DeleteMonitorResponse,
+  input: __S(84) as any as S.Schema<DeleteMonitorRequest>,
+  output: __S(92) as any as S.Schema<DeleteMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5199,8 +3769,8 @@ export const DeleteProviderInstance: API.OperationMethod<
   DeleteProviderInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProviderInstanceRequest,
-  output: DeleteProviderInstanceResponse,
+  input: __S(93) as any as S.Schema<DeleteProviderInstanceRequest>,
+  output: __S(94) as any as S.Schema<DeleteProviderInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5214,8 +3784,8 @@ export const DeleteSapApplicationServerInstance: API.OperationMethod<
   DeleteSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSapApplicationServerInstanceRequest,
-  output: DeleteSapApplicationServerInstanceResponse,
+  input: __S(95) as any as S.Schema<DeleteSapApplicationServerInstanceRequest>,
+  output: __S(96) as any as S.Schema<DeleteSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5229,8 +3799,8 @@ export const DeleteSAPApplicationServerInstance: API.OperationMethod<
   DeleteSAPApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSAPApplicationServerInstanceRequest,
-  output: DeleteSAPApplicationServerInstanceResponse,
+  input: __S(97) as any as S.Schema<DeleteSAPApplicationServerInstanceRequest>,
+  output: __S(101) as any as S.Schema<DeleteSAPApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5244,8 +3814,8 @@ export const DeleteSAPCentralInstance: API.OperationMethod<
   DeleteSAPCentralInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSAPCentralInstanceRequest,
-  output: DeleteSAPCentralInstanceResponse,
+  input: __S(102) as any as S.Schema<DeleteSAPCentralInstanceRequest>,
+  output: __S(101) as any as S.Schema<DeleteSAPCentralInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5259,8 +3829,8 @@ export const DeleteSapCentralServerInstance: API.OperationMethod<
   DeleteSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSapCentralServerInstanceRequest,
-  output: DeleteSapCentralServerInstanceResponse,
+  input: __S(103) as any as S.Schema<DeleteSapCentralServerInstanceRequest>,
+  output: __S(96) as any as S.Schema<DeleteSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5274,8 +3844,8 @@ export const DeleteSapDatabaseInstance: API.OperationMethod<
   DeleteSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSapDatabaseInstanceRequest,
-  output: DeleteSapDatabaseInstanceResponse,
+  input: __S(104) as any as S.Schema<DeleteSapDatabaseInstanceRequest>,
+  output: __S(96) as any as S.Schema<DeleteSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5289,8 +3859,8 @@ export const DeleteSAPDatabaseInstance: API.OperationMethod<
   DeleteSAPDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSAPDatabaseInstanceRequest,
-  output: DeleteSAPDatabaseInstanceResponse,
+  input: __S(105) as any as S.Schema<DeleteSAPDatabaseInstanceRequest>,
+  output: __S(101) as any as S.Schema<DeleteSAPDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5304,8 +3874,8 @@ export const DeleteSapLandscapeMonitor: API.OperationMethod<
   DeleteSapLandscapeMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSapLandscapeMonitorRequest,
-  output: DeleteSapLandscapeMonitorResponse,
+  input: __S(106) as any as S.Schema<DeleteSapLandscapeMonitorRequest>,
+  output: __S(96) as any as S.Schema<DeleteSapLandscapeMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5319,8 +3889,8 @@ export const DeleteSapVirtualInstance: API.OperationMethod<
   DeleteSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSapVirtualInstanceRequest,
-  output: DeleteSapVirtualInstanceResponse,
+  input: __S(107) as any as S.Schema<DeleteSapVirtualInstanceRequest>,
+  output: __S(96) as any as S.Schema<DeleteSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5334,8 +3904,8 @@ export const DeleteSAPVirtualInstance: API.OperationMethod<
   DeleteSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSAPVirtualInstanceRequest,
-  output: DeleteSAPVirtualInstanceResponse,
+  input: __S(108) as any as S.Schema<DeleteSAPVirtualInstanceRequest>,
+  output: __S(101) as any as S.Schema<DeleteSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5349,8 +3919,8 @@ export const GetMonitor: API.OperationMethod<
   GetMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMonitorRequest,
-  output: GetMonitorResponse,
+  input: __S(109) as any as S.Schema<GetMonitorRequest>,
+  output: __S(15) as any as S.Schema<GetMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5364,8 +3934,8 @@ export const GetProviderInstance: API.OperationMethod<
   GetProviderInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProviderInstanceRequest,
-  output: GetProviderInstanceResponse,
+  input: __S(110) as any as S.Schema<GetProviderInstanceRequest>,
+  output: __S(111) as any as S.Schema<GetProviderInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5379,8 +3949,8 @@ export const GetSapApplicationServerInstance: API.OperationMethod<
   GetSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSapApplicationServerInstanceRequest,
-  output: GetSapApplicationServerInstanceResponse,
+  input: __S(112) as any as S.Schema<GetSapApplicationServerInstanceRequest>,
+  output: __S(35) as any as S.Schema<GetSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5394,8 +3964,8 @@ export const GetSAPApplicationServerInstance: API.OperationMethod<
   GetSAPApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSAPApplicationServerInstanceRequest,
-  output: GetSAPApplicationServerInstanceResponse,
+  input: __S(113) as any as S.Schema<GetSAPApplicationServerInstanceRequest>,
+  output: __S(38) as any as S.Schema<GetSAPApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5409,8 +3979,8 @@ export const GetSAPCentralInstance: API.OperationMethod<
   GetSAPCentralInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSAPCentralInstanceRequest,
-  output: GetSAPCentralInstanceResponse,
+  input: __S(114) as any as S.Schema<GetSAPCentralInstanceRequest>,
+  output: __S(48) as any as S.Schema<GetSAPCentralInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5424,8 +3994,8 @@ export const GetSapCentralServerInstance: API.OperationMethod<
   GetSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSapCentralServerInstanceRequest,
-  output: GetSapCentralServerInstanceResponse,
+  input: __S(115) as any as S.Schema<GetSapCentralServerInstanceRequest>,
+  output: __S(54) as any as S.Schema<GetSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5439,8 +4009,8 @@ export const GetSapDatabaseInstance: API.OperationMethod<
   GetSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSapDatabaseInstanceRequest,
-  output: GetSapDatabaseInstanceResponse,
+  input: __S(116) as any as S.Schema<GetSapDatabaseInstanceRequest>,
+  output: __S(59) as any as S.Schema<GetSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5454,8 +4024,8 @@ export const GetSAPDatabaseInstance: API.OperationMethod<
   GetSAPDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSAPDatabaseInstanceRequest,
-  output: GetSAPDatabaseInstanceResponse,
+  input: __S(117) as any as S.Schema<GetSAPDatabaseInstanceRequest>,
+  output: __S(62) as any as S.Schema<GetSAPDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5469,8 +4039,8 @@ export const GetSapLandscapeMonitor: API.OperationMethod<
   GetSapLandscapeMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSapLandscapeMonitorRequest,
-  output: GetSapLandscapeMonitorResponse,
+  input: __S(118) as any as S.Schema<GetSapLandscapeMonitorRequest>,
+  output: __S(71) as any as S.Schema<GetSapLandscapeMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5484,8 +4054,8 @@ export const GetSapVirtualInstance: API.OperationMethod<
   GetSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSapVirtualInstanceRequest,
-  output: GetSapVirtualInstanceResponse,
+  input: __S(119) as any as S.Schema<GetSapVirtualInstanceRequest>,
+  output: __S(78) as any as S.Schema<GetSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5499,8 +4069,8 @@ export const GetSAPVirtualInstance: API.OperationMethod<
   GetSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSAPVirtualInstanceRequest,
-  output: GetSAPVirtualInstanceResponse,
+  input: __S(120) as any as S.Schema<GetSAPVirtualInstanceRequest>,
+  output: __S(83) as any as S.Schema<GetSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5514,8 +4084,8 @@ export const InvokeSapVirtualInstanceAvailabilityZoneDetails: API.OperationMetho
   InvokeSapVirtualInstanceAvailabilityZoneDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvokeSapVirtualInstanceAvailabilityZoneDetailsRequest,
-  output: SAPAvailabilityZoneDetailsResult,
+  input: __S(121) as any as S.Schema<InvokeSapVirtualInstanceAvailabilityZoneDetailsRequest>,
+  output: __S(124) as any as S.Schema<SAPAvailabilityZoneDetailsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5529,8 +4099,8 @@ export const InvokeSapVirtualInstanceDiskConfigurations: API.OperationMethod<
   InvokeSapVirtualInstanceDiskConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvokeSapVirtualInstanceDiskConfigurationsRequest,
-  output: SAPDiskConfigurationsResult,
+  input: __S(125) as any as S.Schema<InvokeSapVirtualInstanceDiskConfigurationsRequest>,
+  output: __S(132) as any as S.Schema<SAPDiskConfigurationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5544,8 +4114,8 @@ export const InvokeSapVirtualInstanceSapSupportedSku: API.OperationMethod<
   InvokeSapVirtualInstanceSapSupportedSkuError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvokeSapVirtualInstanceSapSupportedSkuRequest,
-  output: SAPSupportedResourceSkusResult,
+  input: __S(133) as any as S.Schema<InvokeSapVirtualInstanceSapSupportedSkuRequest>,
+  output: __S(136) as any as S.Schema<SAPSupportedResourceSkusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5559,8 +4129,8 @@ export const InvokeSapVirtualInstanceSizingRecommendations: API.OperationMethod<
   InvokeSapVirtualInstanceSizingRecommendationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvokeSapVirtualInstanceSizingRecommendationsRequest,
-  output: SAPSizingRecommendationResult,
+  input: __S(137) as any as S.Schema<InvokeSapVirtualInstanceSizingRecommendationsRequest>,
+  output: __S(138) as any as S.Schema<SAPSizingRecommendationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5574,8 +4144,8 @@ export const ListMonitorByResourceGroup: API.OperationMethod<
   ListMonitorByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMonitorByResourceGroupRequest,
-  output: MonitorListResult,
+  input: __S(139) as any as S.Schema<ListMonitorByResourceGroupRequest>,
+  output: __S(143) as any as S.Schema<MonitorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5589,8 +4159,8 @@ export const ListMonitors: API.OperationMethod<
   ListMonitorsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMonitorsRequest,
-  output: MonitorListResult,
+  input: __S(144) as any as S.Schema<ListMonitorsRequest>,
+  output: __S(143) as any as S.Schema<MonitorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5604,8 +4174,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(145) as any as S.Schema<ListOperationsRequest>,
+  output: __S(149) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5619,8 +4189,8 @@ export const ListProviderInstances: API.OperationMethod<
   ListProviderInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProviderInstancesRequest,
-  output: ProviderInstanceListResult,
+  input: __S(150) as any as S.Schema<ListProviderInstancesRequest>,
+  output: __S(153) as any as S.Schema<ProviderInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5634,8 +4204,8 @@ export const ListSapApplicationServerInstances: API.OperationMethod<
   ListSapApplicationServerInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSapApplicationServerInstancesRequest,
-  output: SAPApplicationServerInstanceListResult,
+  input: __S(154) as any as S.Schema<ListSapApplicationServerInstancesRequest>,
+  output: __S(156) as any as S.Schema<SAPApplicationServerInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5649,8 +4219,8 @@ export const ListSAPApplicationServerInstances: API.OperationMethod<
   ListSAPApplicationServerInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSAPApplicationServerInstancesRequest,
-  output: SAPApplicationServerInstanceList,
+  input: __S(157) as any as S.Schema<ListSAPApplicationServerInstancesRequest>,
+  output: __S(159) as any as S.Schema<SAPApplicationServerInstanceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5664,8 +4234,8 @@ export const ListSAPCentralInstances: API.OperationMethod<
   ListSAPCentralInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSAPCentralInstancesRequest,
-  output: SAPCentralInstanceList,
+  input: __S(160) as any as S.Schema<ListSAPCentralInstancesRequest>,
+  output: __S(162) as any as S.Schema<SAPCentralInstanceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5679,8 +4249,8 @@ export const ListSapCentralServerInstances: API.OperationMethod<
   ListSapCentralServerInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSapCentralServerInstancesRequest,
-  output: SAPCentralServerInstanceListResult,
+  input: __S(163) as any as S.Schema<ListSapCentralServerInstancesRequest>,
+  output: __S(166) as any as S.Schema<SAPCentralServerInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5694,8 +4264,8 @@ export const ListSapDatabaseInstances: API.OperationMethod<
   ListSapDatabaseInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSapDatabaseInstancesRequest,
-  output: SAPDatabaseInstanceListResult,
+  input: __S(167) as any as S.Schema<ListSapDatabaseInstancesRequest>,
+  output: __S(170) as any as S.Schema<SAPDatabaseInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5709,8 +4279,8 @@ export const ListSAPDatabaseInstances: API.OperationMethod<
   ListSAPDatabaseInstancesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSAPDatabaseInstancesRequest,
-  output: SAPDatabaseInstanceList,
+  input: __S(171) as any as S.Schema<ListSAPDatabaseInstancesRequest>,
+  output: __S(174) as any as S.Schema<SAPDatabaseInstanceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5724,8 +4294,8 @@ export const ListSapLandscapeMonitor: API.OperationMethod<
   ListSapLandscapeMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSapLandscapeMonitorRequest,
-  output: SapLandscapeMonitorListResult,
+  input: __S(175) as any as S.Schema<ListSapLandscapeMonitorRequest>,
+  output: __S(178) as any as S.Schema<SapLandscapeMonitorListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5739,8 +4309,8 @@ export const ListSapVirtualInstanceByResourceGroup: API.OperationMethod<
   ListSapVirtualInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSapVirtualInstanceByResourceGroupRequest,
-  output: SAPVirtualInstanceListResult,
+  input: __S(179) as any as S.Schema<ListSapVirtualInstanceByResourceGroupRequest>,
+  output: __S(182) as any as S.Schema<SAPVirtualInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5754,8 +4324,8 @@ export const ListSAPVirtualInstanceByResourceGroup: API.OperationMethod<
   ListSAPVirtualInstanceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSAPVirtualInstanceByResourceGroupRequest,
-  output: SAPVirtualInstanceList,
+  input: __S(183) as any as S.Schema<ListSAPVirtualInstanceByResourceGroupRequest>,
+  output: __S(186) as any as S.Schema<SAPVirtualInstanceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5769,8 +4339,8 @@ export const ListSapVirtualInstanceBySubscription: API.OperationMethod<
   ListSapVirtualInstanceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSapVirtualInstanceBySubscriptionRequest,
-  output: SAPVirtualInstanceListResult,
+  input: __S(187) as any as S.Schema<ListSapVirtualInstanceBySubscriptionRequest>,
+  output: __S(182) as any as S.Schema<SAPVirtualInstanceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5784,8 +4354,8 @@ export const ListSAPVirtualInstanceBySubscription: API.OperationMethod<
   ListSAPVirtualInstanceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSAPVirtualInstanceBySubscriptionRequest,
-  output: SAPVirtualInstanceList,
+  input: __S(188) as any as S.Schema<ListSAPVirtualInstanceBySubscriptionRequest>,
+  output: __S(186) as any as S.Schema<SAPVirtualInstanceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5799,8 +4369,8 @@ export const SAPAvailabilityZoneDetails: API.OperationMethod<
   SAPAvailabilityZoneDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SAPAvailabilityZoneDetailsRequest,
-  output: SAPAvailabilityZoneDetailsResult,
+  input: __S(189) as any as S.Schema<SAPAvailabilityZoneDetailsRequest>,
+  output: __S(124) as any as S.Schema<SAPAvailabilityZoneDetailsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5814,8 +4384,8 @@ export const SAPDiskConfigurations: API.OperationMethod<
   SAPDiskConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SAPDiskConfigurationsRequest,
-  output: SAPDiskConfigurationsResult_2,
+  input: __S(190) as any as S.Schema<SAPDiskConfigurationsRequest>,
+  output: __S(194) as any as S.Schema<SAPDiskConfigurationsResult_2>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5829,8 +4399,8 @@ export const SAPSizingRecommendations: API.OperationMethod<
   SAPSizingRecommendationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SAPSizingRecommendationsRequest,
-  output: SAPSizingRecommendationResult_2,
+  input: __S(195) as any as S.Schema<SAPSizingRecommendationsRequest>,
+  output: __S(138) as any as S.Schema<SAPSizingRecommendationResult_2>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5844,8 +4414,8 @@ export const SAPSupportedSku2: API.OperationMethod<
   SAPSupportedSku2Error,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SAPSupportedSkuRequest,
-  output: SAPSupportedResourceSkusResult,
+  input: __S(196) as any as S.Schema<SAPSupportedSkuRequest>,
+  output: __S(136) as any as S.Schema<SAPSupportedResourceSkusResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5859,8 +4429,8 @@ export const StartSapApplicationServerInstance: API.OperationMethod<
   StartSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartSapApplicationServerInstanceRequest,
-  output: StartSapApplicationServerInstanceResponse,
+  input: __S(197) as any as S.Schema<StartSapApplicationServerInstanceRequest>,
+  output: __S(201) as any as S.Schema<StartSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5874,8 +4444,8 @@ export const StartSAPApplicationServerInstanceInstance: API.OperationMethod<
   StartSAPApplicationServerInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartSAPApplicationServerInstanceInstanceRequest,
-  output: StartSAPApplicationServerInstanceInstanceResponse,
+  input: __S(202) as any as S.Schema<StartSAPApplicationServerInstanceInstanceRequest>,
+  output: __S(204) as any as S.Schema<StartSAPApplicationServerInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5889,8 +4459,8 @@ export const StartSAPCentralInstanceInstance: API.OperationMethod<
   StartSAPCentralInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartSAPCentralInstanceInstanceRequest,
-  output: StartSAPCentralInstanceInstanceResponse,
+  input: __S(205) as any as S.Schema<StartSAPCentralInstanceInstanceRequest>,
+  output: __S(101) as any as S.Schema<StartSAPCentralInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5904,8 +4474,8 @@ export const StartSapCentralServerInstance: API.OperationMethod<
   StartSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartSapCentralServerInstanceRequest,
-  output: StartSapCentralServerInstanceResponse,
+  input: __S(206) as any as S.Schema<StartSapCentralServerInstanceRequest>,
+  output: __S(201) as any as S.Schema<StartSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5919,8 +4489,8 @@ export const StartSapDatabaseInstance: API.OperationMethod<
   StartSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartSapDatabaseInstanceRequest,
-  output: StartSapDatabaseInstanceResponse,
+  input: __S(207) as any as S.Schema<StartSapDatabaseInstanceRequest>,
+  output: __S(201) as any as S.Schema<StartSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5934,8 +4504,8 @@ export const StartSAPDatabaseInstanceInstance: API.OperationMethod<
   StartSAPDatabaseInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartSAPDatabaseInstanceInstanceRequest,
-  output: StartSAPDatabaseInstanceInstanceResponse,
+  input: __S(208) as any as S.Schema<StartSAPDatabaseInstanceInstanceRequest>,
+  output: __S(101) as any as S.Schema<StartSAPDatabaseInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5949,8 +4519,8 @@ export const StartSapVirtualInstance: API.OperationMethod<
   StartSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartSapVirtualInstanceRequest,
-  output: StartSapVirtualInstanceResponse,
+  input: __S(209) as any as S.Schema<StartSapVirtualInstanceRequest>,
+  output: __S(201) as any as S.Schema<StartSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5964,8 +4534,8 @@ export const StartSAPVirtualInstance: API.OperationMethod<
   StartSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartSAPVirtualInstanceRequest,
-  output: StartSAPVirtualInstanceResponse,
+  input: __S(210) as any as S.Schema<StartSAPVirtualInstanceRequest>,
+  output: __S(101) as any as S.Schema<StartSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5979,8 +4549,8 @@ export const StopSapApplicationServerInstance: API.OperationMethod<
   StopSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopSapApplicationServerInstanceRequest,
-  output: StopSapApplicationServerInstanceResponse,
+  input: __S(211) as any as S.Schema<StopSapApplicationServerInstanceRequest>,
+  output: __S(201) as any as S.Schema<StopSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5994,8 +4564,8 @@ export const StopSAPApplicationServerInstanceInstance: API.OperationMethod<
   StopSAPApplicationServerInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopSAPApplicationServerInstanceInstanceRequest,
-  output: StopSAPApplicationServerInstanceInstanceResponse,
+  input: __S(212) as any as S.Schema<StopSAPApplicationServerInstanceInstanceRequest>,
+  output: __S(101) as any as S.Schema<StopSAPApplicationServerInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6009,8 +4579,8 @@ export const StopSAPCentralInstanceInstance: API.OperationMethod<
   StopSAPCentralInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopSAPCentralInstanceInstanceRequest,
-  output: StopSAPCentralInstanceInstanceResponse,
+  input: __S(213) as any as S.Schema<StopSAPCentralInstanceInstanceRequest>,
+  output: __S(101) as any as S.Schema<StopSAPCentralInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6024,8 +4594,8 @@ export const StopSapCentralServerInstance: API.OperationMethod<
   StopSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopSapCentralServerInstanceRequest,
-  output: StopSapCentralServerInstanceResponse,
+  input: __S(214) as any as S.Schema<StopSapCentralServerInstanceRequest>,
+  output: __S(201) as any as S.Schema<StopSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6039,8 +4609,8 @@ export const StopSapDatabaseInstance: API.OperationMethod<
   StopSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopSapDatabaseInstanceRequest,
-  output: StopSapDatabaseInstanceResponse,
+  input: __S(215) as any as S.Schema<StopSapDatabaseInstanceRequest>,
+  output: __S(201) as any as S.Schema<StopSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6054,8 +4624,8 @@ export const StopSAPDatabaseInstanceInstance: API.OperationMethod<
   StopSAPDatabaseInstanceInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopSAPDatabaseInstanceInstanceRequest,
-  output: StopSAPDatabaseInstanceInstanceResponse,
+  input: __S(216) as any as S.Schema<StopSAPDatabaseInstanceInstanceRequest>,
+  output: __S(101) as any as S.Schema<StopSAPDatabaseInstanceInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6069,8 +4639,8 @@ export const StopSapVirtualInstance: API.OperationMethod<
   StopSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopSapVirtualInstanceRequest,
-  output: StopSapVirtualInstanceResponse,
+  input: __S(217) as any as S.Schema<StopSapVirtualInstanceRequest>,
+  output: __S(201) as any as S.Schema<StopSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6084,8 +4654,8 @@ export const StopSAPVirtualInstance: API.OperationMethod<
   StopSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopSAPVirtualInstanceRequest,
-  output: StopSAPVirtualInstanceResponse,
+  input: __S(218) as any as S.Schema<StopSAPVirtualInstanceRequest>,
+  output: __S(101) as any as S.Schema<StopSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6099,8 +4669,8 @@ export const UpdateMonitor: API.OperationMethod<
   UpdateMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMonitorRequest,
-  output: UpdateMonitorResponse,
+  input: __S(219) as any as S.Schema<UpdateMonitorRequest>,
+  output: __S(15) as any as S.Schema<UpdateMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6114,8 +4684,8 @@ export const UpdateSapApplicationServerInstance: API.OperationMethod<
   UpdateSapApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSapApplicationServerInstanceRequest,
-  output: UpdateSapApplicationServerInstanceResponse,
+  input: __S(220) as any as S.Schema<UpdateSapApplicationServerInstanceRequest>,
+  output: __S(35) as any as S.Schema<UpdateSapApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6129,8 +4699,8 @@ export const UpdateSAPApplicationServerInstance: API.OperationMethod<
   UpdateSAPApplicationServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSAPApplicationServerInstanceRequest,
-  output: UpdateSAPApplicationServerInstanceResponse,
+  input: __S(221) as any as S.Schema<UpdateSAPApplicationServerInstanceRequest>,
+  output: __S(38) as any as S.Schema<UpdateSAPApplicationServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6144,8 +4714,8 @@ export const UpdateSAPCentralInstance: API.OperationMethod<
   UpdateSAPCentralInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSAPCentralInstanceRequest,
-  output: UpdateSAPCentralInstanceResponse,
+  input: __S(222) as any as S.Schema<UpdateSAPCentralInstanceRequest>,
+  output: __S(48) as any as S.Schema<UpdateSAPCentralInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6159,8 +4729,8 @@ export const UpdateSapCentralServerInstance: API.OperationMethod<
   UpdateSapCentralServerInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSapCentralServerInstanceRequest,
-  output: UpdateSapCentralServerInstanceResponse,
+  input: __S(223) as any as S.Schema<UpdateSapCentralServerInstanceRequest>,
+  output: __S(54) as any as S.Schema<UpdateSapCentralServerInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6174,8 +4744,8 @@ export const UpdateSapDatabaseInstance: API.OperationMethod<
   UpdateSapDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSapDatabaseInstanceRequest,
-  output: UpdateSapDatabaseInstanceResponse,
+  input: __S(224) as any as S.Schema<UpdateSapDatabaseInstanceRequest>,
+  output: __S(59) as any as S.Schema<UpdateSapDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6189,8 +4759,8 @@ export const UpdateSAPDatabaseInstance: API.OperationMethod<
   UpdateSAPDatabaseInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSAPDatabaseInstanceRequest,
-  output: UpdateSAPDatabaseInstanceResponse,
+  input: __S(225) as any as S.Schema<UpdateSAPDatabaseInstanceRequest>,
+  output: __S(62) as any as S.Schema<UpdateSAPDatabaseInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6204,8 +4774,8 @@ export const UpdateSapLandscapeMonitor: API.OperationMethod<
   UpdateSapLandscapeMonitorError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSapLandscapeMonitorRequest,
-  output: UpdateSapLandscapeMonitorResponse,
+  input: __S(226) as any as S.Schema<UpdateSapLandscapeMonitorRequest>,
+  output: __S(71) as any as S.Schema<UpdateSapLandscapeMonitorResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6219,8 +4789,8 @@ export const UpdateSapVirtualInstance: API.OperationMethod<
   UpdateSapVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSapVirtualInstanceRequest,
-  output: UpdateSapVirtualInstanceResponse,
+  input: __S(228) as any as S.Schema<UpdateSapVirtualInstanceRequest>,
+  output: __S(78) as any as S.Schema<UpdateSapVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6234,8 +4804,8 @@ export const UpdateSAPVirtualInstance: API.OperationMethod<
   UpdateSAPVirtualInstanceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSAPVirtualInstanceRequest,
-  output: UpdateSAPVirtualInstanceResponse,
+  input: __S(229) as any as S.Schema<UpdateSAPVirtualInstanceRequest>,
+  output: __S(83) as any as S.Schema<UpdateSAPVirtualInstanceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -6251,14 +4821,12 @@ function __c0(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 2:
-      return S.Record(S.String, UserAssignedIdentityInput);
+      return S.Record(S.String, __S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(
-            S.NullOr(CreateMonitorRequestIdentityUserAssignedIdentitiesMap),
-          ),
+          type: S.String,
+          userAssignedIdentities: S.optional(S.NullOr(__S(2))),
         }),
       ).annotate({
         identifier: "CreateMonitorRequestIdentity",
@@ -6273,9 +4841,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           appLocation: S.optional(S.String),
-          routingPreference: S.optional(MonitorPropertiesInputRoutingPreference),
+          routingPreference: S.optional(S.String),
           zoneRedundancyPreference: S.optional(S.String),
-          managedResourceGroupConfiguration: S.optional(ManagedRGConfiguration),
+          managedResourceGroupConfiguration: S.optional(__S(4)),
           logAnalyticsWorkspaceArmId: S.optional(S.String),
           monitorSubnet: S.optional(S.String),
         }),
@@ -6286,10 +4854,10 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateMonitorRequestTagsMap),
+          tags: S.optional(__S(0)),
           location: S.String,
-          identity: S.optional(CreateMonitorRequestIdentity),
-          properties: S.optional(MonitorPropertiesInput),
+          identity: S.optional(__S(3)),
+          properties: S.optional(__S(5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6303,10 +4871,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -6322,24 +4890,22 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 1:
-      return S.Record(S.String, UserAssignedIdentity);
+      return S.Record(S.String, __S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(
-            S.NullOr(CreateMonitorResponseIdentityUserAssignedIdentitiesMap),
-          ),
+          type: S.String,
+          userAssignedIdentities: S.optional(S.NullOr(__S(9))),
         }),
       ).annotate({
         identifier: "CreateMonitorResponseIdentity",
       });
     case 3:
-      return S.Array(/*@__PURE__*/ S.suspend(() => Error));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(13)));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          innerError: S.optional(S.suspend(() => Error)),
+          innerError: S.optional(S.suspend(() => __S(13))),
         }),
       ).annotate({ identifier: "ErrorInnerError" });
     case 5:
@@ -6348,19 +4914,19 @@ function __c1(j: number): any {
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(ErrorDetailsList),
-          innerError: S.optional(ErrorInnerError),
+          details: S.optional(__S(11)),
+          innerError: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "Error" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(MonitorPropertiesProvisioningState),
-          errors: S.optional(Error),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(13)),
           appLocation: S.optional(S.String),
-          routingPreference: S.optional(MonitorPropertiesRoutingPreference),
+          routingPreference: S.optional(S.String),
           zoneRedundancyPreference: S.optional(S.String),
-          managedResourceGroupConfiguration: S.optional(ManagedRGConfiguration),
+          managedResourceGroupConfiguration: S.optional(__S(4)),
           logAnalyticsWorkspaceArmId: S.optional(S.String),
           monitorSubnet: S.optional(S.String),
           msiArmId: S.optional(S.String),
@@ -6373,11 +4939,11 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateMonitorResponseTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
           location: S.String,
-          identity: S.optional(CreateMonitorResponseIdentity),
-          properties: S.optional(MonitorProperties),
+          identity: S.optional(__S(10)),
+          properties: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "CreateMonitorResponse" });
   }
@@ -6385,14 +4951,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, UserAssignedIdentityInput);
+      return S.Record(S.String, __S(1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(
-            S.NullOr(CreateProviderInstanceRequestIdentityUserAssignedIdentitiesMap),
-          ),
+          type: S.String,
+          userAssignedIdentities: S.optional(S.NullOr(__S(16))),
         }),
       ).annotate({
         identifier: "CreateProviderInstanceRequestIdentity",
@@ -6425,7 +4989,7 @@ function __c2(j: number): any {
           clusterName: S.optional(S.String),
           sslCertificateUri: S.optional(S.String),
           sslPreference: S.optional(S.String),
-          sapHostFileEntries: S.optional(ProviderSapHostFileEntriesList),
+          sapHostFileEntries: S.optional(__S(18)),
         }),
       ).annotate({
         identifier: "ProviderSpecificProperties",
@@ -6433,7 +4997,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          providerSettings: S.optional(ProviderSpecificProperties),
+          providerSettings: S.optional(__S(19)),
         }),
       ).annotate({
         identifier: "ProviderInstancePropertiesInput",
@@ -6445,8 +5009,8 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
           providerInstanceName: S.String.pipe(T.Label()),
-          identity: S.optional(CreateProviderInstanceRequestIdentity),
-          properties: S.optional(ProviderInstancePropertiesInput),
+          identity: S.optional(__S(17)),
+          properties: S.optional(__S(20)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6459,14 +5023,12 @@ function __c2(j: number): any {
         identifier: "CreateProviderInstanceRequest",
       });
     case 6:
-      return S.Record(S.String, UserAssignedIdentity);
+      return S.Record(S.String, __S(8));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(
-            S.NullOr(CreateProviderInstanceResponseIdentityUserAssignedIdentitiesMap),
-          ),
+          type: S.String,
+          userAssignedIdentities: S.optional(S.NullOr(__S(22))),
         }),
       ).annotate({
         identifier: "CreateProviderInstanceResponseIdentity",
@@ -6478,9 +5040,9 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProviderInstancePropertiesProvisioningState),
-          errors: S.optional(Error),
-          providerSettings: S.optional(ProviderSpecificProperties),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(13)),
+          providerSettings: S.optional(__S(19)),
         }),
       ).annotate({
         identifier: "ProviderInstanceProperties",
@@ -6491,9 +5053,9 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          identity: S.optional(CreateProviderInstanceResponseIdentity),
-          properties: S.optional(ProviderInstanceProperties),
+          systemData: S.optional(__S(7)),
+          identity: S.optional(__S(23)),
+          properties: S.optional(__S(24)),
         }),
       ).annotate({
         identifier: "CreateProviderInstanceResponse",
@@ -6505,9 +5067,9 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           applicationInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateSapApplicationServerInstanceRequestTagsMap),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(UserAssignedIdentityInput),
+          properties: S.optional(__S(1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6526,21 +5088,21 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "LoadBalancerDetails" });
     case 4:
-      return S.Array(StorageInformation);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ApplicationServerVirtualMachineType),
+          type: S.optional(S.String),
           virtualMachineId: S.optional(S.String),
-          storageDetails: S.optional(ApplicationServerVmDetailsStorageDetailsList),
+          storageDetails: S.optional(__S(28)),
         }),
       ).annotate({
         identifier: "ApplicationServerVmDetails",
       });
     case 6:
-      return S.Array(ApplicationServerVmDetails);
+      return S.Array(__S(29));
     case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => ErrorDefinition));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(32)));
   }
 }
 function __c4(j: number): any {
@@ -6550,13 +5112,13 @@ function __c4(j: number): any {
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
-          details: S.optional(ErrorDefinitionDetailsList),
+          details: S.optional(__S(31)),
         }),
       ).annotate({ identifier: "ErrorDefinition" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(ErrorDefinition),
+          properties: S.optional(__S(32)),
         }),
       ).annotate({ identifier: "SAPVirtualInstanceError" });
     case 2:
@@ -6572,12 +5134,12 @@ function __c4(j: number): any {
           icmHttpPort: S.optional(S.Number),
           icmHttpsPort: S.optional(S.Number),
           dispatcherStatus: S.optional(S.String),
-          loadBalancerDetails: S.optional(LoadBalancerDetails),
-          vmDetails: S.optional(SAPApplicationServerPropertiesVmDetailsList),
-          status: S.optional(SAPVirtualInstanceStatus),
-          health: S.optional(SAPHealthState),
-          provisioningState: S.optional(SapVirtualInstanceProvisioningState),
-          errors: S.optional(SAPVirtualInstanceError),
+          loadBalancerDetails: S.optional(__S(27)),
+          vmDetails: S.optional(__S(30)),
+          status: S.optional(S.String),
+          health: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(33)),
         }),
       ).annotate({
         identifier: "SAPApplicationServerProperties",
@@ -6588,10 +5150,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateSapApplicationServerInstanceResponseTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(SAPApplicationServerProperties),
+          properties: S.optional(__S(34)),
         }),
       ).annotate({
         identifier: "CreateSapApplicationServerInstanceResponse",
@@ -6603,9 +5165,9 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           applicationInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateSAPApplicationServerInstanceRequestTagsMap),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(UserAssignedIdentityInput),
+          properties: S.optional(__S(1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6629,12 +5191,12 @@ function __c4(j: number): any {
           gatewayPort: S.optional(S.NullOr(S.Number)),
           icmHttpPort: S.optional(S.NullOr(S.Number)),
           icmHttpsPort: S.optional(S.NullOr(S.Number)),
-          loadBalancerDetails: S.optional(LoadBalancerDetails_2),
-          vmDetails: S.optional(SAPApplicationServerPropertiesVmDetailsList_2),
-          status: S.optional(SAPVirtualInstanceStatus),
-          health: S.optional(HealthState),
-          provisioningState: S.optional(ProvisioningState),
-          errors: S.optional(SAPVirtualInstanceError),
+          loadBalancerDetails: S.optional(__S(27)),
+          vmDetails: S.optional(__S(30)),
+          status: S.optional(S.String),
+          health: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(33)),
         }),
       ).annotate({
         identifier: "SAPApplicationServerProperties_2",
@@ -6645,10 +5207,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateSAPApplicationServerInstanceResponseTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(SAPApplicationServerProperties_2),
+          properties: S.optional(__S(37)),
         }),
       ).annotate({
         identifier: "CreateSAPApplicationServerInstanceResponse",
@@ -6656,10 +5218,10 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          messageServerProperties: S.optional(UserAssignedIdentityInput),
-          enqueueServerProperties: S.optional(UserAssignedIdentityInput),
-          gatewayServerProperties: S.optional(UserAssignedIdentityInput),
-          enqueueReplicationServerProperties: S.optional(UserAssignedIdentityInput),
+          messageServerProperties: S.optional(__S(1)),
+          enqueueServerProperties: S.optional(__S(1)),
+          gatewayServerProperties: S.optional(__S(1)),
+          enqueueReplicationServerProperties: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "SAPCentralServerPropertiesInput_2",
@@ -6675,9 +5237,9 @@ function __c5(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           centralInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateSAPCentralInstanceRequestTagsMap),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(SAPCentralServerPropertiesInput_2),
+          properties: S.optional(__S(39)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6698,7 +5260,7 @@ function __c5(j: number): any {
           httpsPort: S.optional(S.NullOr(S.Number)),
           hostname: S.optional(S.String),
           ipAddress: S.optional(S.String),
-          health: S.optional(HealthState),
+          health: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MessageServerProperties_2",
@@ -6709,7 +5271,7 @@ function __c5(j: number): any {
           hostname: S.optional(S.String),
           ipAddress: S.optional(S.String),
           port: S.optional(S.NullOr(S.Number)),
-          health: S.optional(HealthState),
+          health: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnqueueServerProperties_2",
@@ -6718,7 +5280,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           port: S.optional(S.NullOr(S.Number)),
-          health: S.optional(HealthState),
+          health: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GatewayServerProperties_2",
@@ -6726,13 +5288,13 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ersVersion: S.optional(EnqueueReplicationServerType),
+          ersVersion: S.optional(S.String),
           instanceNo: S.optional(S.String),
           hostname: S.optional(S.String),
           kernelVersion: S.optional(S.String),
           kernelPatch: S.optional(S.String),
           ipAddress: S.optional(S.String),
-          health: S.optional(HealthState),
+          health: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnqueueReplicationServerProperties_2",
@@ -6740,30 +5302,30 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(CentralServerVirtualMachineType),
+          type: S.optional(S.String),
           virtualMachineId: S.optional(S.String),
-          storageDetails: S.optional(CentralServerVmDetailsStorageDetailsList_2),
+          storageDetails: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "CentralServerVmDetails_2" });
     case 6:
-      return S.Array(CentralServerVmDetails_2);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
         S.Struct({
           instanceNo: S.optional(S.String),
           subnet: S.optional(S.String),
-          messageServerProperties: S.optional(MessageServerProperties_2),
-          enqueueServerProperties: S.optional(EnqueueServerProperties_2),
-          gatewayServerProperties: S.optional(GatewayServerProperties_2),
-          enqueueReplicationServerProperties: S.optional(EnqueueReplicationServerProperties_2),
+          messageServerProperties: S.optional(__S(41)),
+          enqueueServerProperties: S.optional(__S(42)),
+          gatewayServerProperties: S.optional(__S(43)),
+          enqueueReplicationServerProperties: S.optional(__S(44)),
           kernelVersion: S.optional(S.NullOr(S.String)),
           kernelPatch: S.optional(S.NullOr(S.String)),
-          loadBalancerDetails: S.optional(LoadBalancerDetails_2),
-          vmDetails: S.optional(SAPCentralServerPropertiesVmDetailsList_2),
-          status: S.optional(SAPVirtualInstanceStatus),
-          health: S.optional(HealthState),
-          provisioningState: S.optional(ProvisioningState),
-          errors: S.optional(SAPVirtualInstanceError),
+          loadBalancerDetails: S.optional(__S(27)),
+          vmDetails: S.optional(__S(46)),
+          status: S.optional(S.String),
+          health: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(33)),
         }),
       ).annotate({
         identifier: "SAPCentralServerProperties_2",
@@ -6778,10 +5340,10 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateSAPCentralInstanceResponseTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(SAPCentralServerProperties_2),
+          properties: S.optional(__S(47)),
         }),
       ).annotate({
         identifier: "CreateSAPCentralInstanceResponse",
@@ -6793,9 +5355,9 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           centralInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateSapCentralServerInstanceRequestTagsMap),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(SAPCentralServerPropertiesInput),
+          properties: S.optional(__S(39)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6816,7 +5378,7 @@ function __c6(j: number): any {
           httpsPort: S.optional(S.Number),
           hostname: S.optional(S.String),
           ipAddress: S.optional(S.String),
-          health: S.optional(SAPHealthState),
+          health: S.optional(S.String),
         }),
       ).annotate({ identifier: "MessageServerProperties" });
     case 3:
@@ -6825,14 +5387,14 @@ function __c6(j: number): any {
           hostname: S.optional(S.String),
           ipAddress: S.optional(S.String),
           port: S.optional(S.Number),
-          health: S.optional(SAPHealthState),
+          health: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnqueueServerProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           port: S.optional(S.Number),
-          health: S.optional(SAPHealthState),
+          health: S.optional(S.String),
         }),
       ).annotate({ identifier: "GatewayServerProperties" });
     case 5:
@@ -6840,18 +5402,18 @@ function __c6(j: number): any {
         S.Struct({
           instanceNo: S.optional(S.String),
           subnet: S.optional(S.String),
-          messageServerProperties: S.optional(MessageServerProperties),
-          enqueueServerProperties: S.optional(EnqueueServerProperties),
-          gatewayServerProperties: S.optional(GatewayServerProperties),
-          enqueueReplicationServerProperties: S.optional(EnqueueReplicationServerProperties),
+          messageServerProperties: S.optional(__S(50)),
+          enqueueServerProperties: S.optional(__S(51)),
+          gatewayServerProperties: S.optional(__S(52)),
+          enqueueReplicationServerProperties: S.optional(__S(44)),
           kernelVersion: S.optional(S.String),
           kernelPatch: S.optional(S.String),
-          loadBalancerDetails: S.optional(LoadBalancerDetails),
-          vmDetails: S.optional(SAPCentralServerPropertiesVmDetailsList),
-          status: S.optional(SAPVirtualInstanceStatus),
-          health: S.optional(SAPHealthState),
-          provisioningState: S.optional(SapVirtualInstanceProvisioningState),
-          errors: S.optional(SAPVirtualInstanceError),
+          loadBalancerDetails: S.optional(__S(27)),
+          vmDetails: S.optional(__S(46)),
+          status: S.optional(S.String),
+          health: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(33)),
         }),
       ).annotate({
         identifier: "SAPCentralServerProperties",
@@ -6862,10 +5424,10 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateSapCentralServerInstanceResponseTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(SAPCentralServerProperties),
+          properties: S.optional(__S(53)),
         }),
       ).annotate({
         identifier: "CreateSapCentralServerInstanceResponse",
@@ -6877,9 +5439,9 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           databaseInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateSapDatabaseInstanceRequestTagsMap),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(UserAssignedIdentityInput),
+          properties: S.optional(__S(1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6899,12 +5461,12 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           virtualMachineId: S.optional(S.String),
-          status: S.optional(SAPVirtualInstanceStatus),
-          storageDetails: S.optional(DatabaseVmDetailsStorageDetailsList),
+          status: S.optional(S.String),
+          storageDetails: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "DatabaseVmDetails" });
     case 1:
-      return S.Array(DatabaseVmDetails);
+      return S.Array(__S(56));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6912,11 +5474,11 @@ function __c7(j: number): any {
           databaseSid: S.optional(S.String),
           databaseType: S.optional(S.String),
           ipAddress: S.optional(S.String),
-          loadBalancerDetails: S.optional(LoadBalancerDetails),
-          vmDetails: S.optional(SAPDatabasePropertiesVmDetailsList),
-          status: S.optional(SAPVirtualInstanceStatus),
-          provisioningState: S.optional(SapVirtualInstanceProvisioningState),
-          errors: S.optional(SAPVirtualInstanceError),
+          loadBalancerDetails: S.optional(__S(27)),
+          vmDetails: S.optional(__S(57)),
+          status: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "SAPDatabaseProperties" });
     case 3:
@@ -6925,10 +5487,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateSapDatabaseInstanceResponseTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(SAPDatabaseProperties),
+          properties: S.optional(__S(58)),
         }),
       ).annotate({
         identifier: "CreateSapDatabaseInstanceResponse",
@@ -6940,9 +5502,9 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           databaseInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateSAPDatabaseInstanceRequestTagsMap),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(UserAssignedIdentityInput),
+          properties: S.optional(__S(1)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6961,11 +5523,11 @@ function __c7(j: number): any {
           databaseSid: S.optional(S.String),
           databaseType: S.optional(S.String),
           ipAddress: S.optional(S.String),
-          loadBalancerDetails: S.optional(LoadBalancerDetails_2),
-          vmDetails: S.optional(SAPDatabasePropertiesVmDetailsList_2),
-          status: S.optional(SAPVirtualInstanceStatus),
-          provisioningState: S.optional(ProvisioningState),
-          errors: S.optional(SAPVirtualInstanceError),
+          loadBalancerDetails: S.optional(__S(27)),
+          vmDetails: S.optional(__S(57)),
+          status: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "SAPDatabaseProperties_2" });
     case 6:
@@ -6974,10 +5536,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateSAPDatabaseInstanceResponseTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(SAPDatabaseProperties_2),
+          properties: S.optional(__S(61)),
         }),
       ).annotate({
         identifier: "CreateSAPDatabaseInstanceResponse",
@@ -6986,7 +5548,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          topSid: S.optional(SapLandscapeMonitorSidMappingTopSidList),
+          topSid: S.optional(__S(18)),
         }),
       ).annotate({
         identifier: "SapLandscapeMonitorSidMapping",
@@ -6996,12 +5558,12 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SapLandscapeMonitorSidMapping);
+      return S.Array(__S(63));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          landscape: S.optional(SapLandscapeMonitorPropertiesInputGroupingLandscapeList),
-          sapApplication: S.optional(SapLandscapeMonitorPropertiesInputGroupingSapApplicationList),
+          landscape: S.optional(__S(64)),
+          sapApplication: S.optional(__S(64)),
         }),
       ).annotate({
         identifier: "SapLandscapeMonitorPropertiesInputGrouping",
@@ -7018,14 +5580,12 @@ function __c8(j: number): any {
         identifier: "SapLandscapeMonitorMetricThresholds",
       });
     case 3:
-      return S.Array(SapLandscapeMonitorMetricThresholds);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          grouping: S.optional(SapLandscapeMonitorPropertiesInputGrouping),
-          topMetricsThresholds: S.optional(
-            SapLandscapeMonitorPropertiesInputTopMetricsThresholdsList,
-          ),
+          grouping: S.optional(__S(65)),
+          topMetricsThresholds: S.optional(__S(67)),
         }),
       ).annotate({
         identifier: "SapLandscapeMonitorPropertiesInput",
@@ -7036,7 +5596,7 @@ function __c8(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
-          properties: S.optional(SapLandscapeMonitorPropertiesInput),
+          properties: S.optional(__S(68)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7051,9 +5611,9 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(SapLandscapeMonitorPropertiesProvisioningState),
-          grouping: S.optional(SapLandscapeMonitorPropertiesGrouping),
-          topMetricsThresholds: S.optional(SapLandscapeMonitorPropertiesTopMetricsThresholdsList),
+          provisioningState: S.optional(S.String),
+          grouping: S.optional(__S(65)),
+          topMetricsThresholds: S.optional(__S(67)),
         }),
       ).annotate({
         identifier: "SapLandscapeMonitorProperties",
@@ -7064,8 +5624,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(SapLandscapeMonitorProperties),
+          systemData: S.optional(__S(7)),
+          properties: S.optional(__S(70)),
         }),
       ).annotate({
         identifier: "CreateSapLandscapeMonitorResponse",
@@ -7077,17 +5637,17 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          configurationType: SAPConfigurationType,
+          configurationType: S.String,
         }),
       ).annotate({ identifier: "SAPConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          environment: SAPEnvironmentType,
-          sapProduct: SAPProductType,
-          managedResourcesNetworkAccessType: S.optional(ManagedResourcesNetworkAccessType),
-          configuration: SAPConfiguration,
-          managedResourceGroupConfiguration: S.optional(ManagedRGConfiguration),
+          environment: S.String,
+          sapProduct: S.String,
+          managedResourcesNetworkAccessType: S.optional(S.String),
+          configuration: __S(72),
+          managedResourceGroupConfiguration: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "SAPVirtualInstancePropertiesInput",
@@ -7095,10 +5655,8 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: SAPVirtualInstanceIdentityType,
-          userAssignedIdentities: S.optional(
-            SAPVirtualInstanceIdentityInputUserAssignedIdentitiesMap,
-          ),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "SAPVirtualInstanceIdentityInput",
@@ -7109,10 +5667,10 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateSapVirtualInstanceRequestTagsMap),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(SAPVirtualInstancePropertiesInput),
-          identity: S.optional(SAPVirtualInstanceIdentityInput),
+          properties: S.optional(__S(73)),
+          identity: S.optional(__S(74)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7127,16 +5685,16 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          environment: SAPEnvironmentType,
-          sapProduct: SAPProductType,
-          managedResourcesNetworkAccessType: S.optional(ManagedResourcesNetworkAccessType),
-          configuration: SAPConfiguration,
-          managedResourceGroupConfiguration: S.optional(ManagedRGConfiguration),
-          status: S.optional(SAPVirtualInstanceStatus),
-          health: S.optional(SAPHealthState),
-          state: S.optional(SAPVirtualInstanceState),
-          provisioningState: S.optional(SapVirtualInstanceProvisioningState),
-          errors: S.optional(SAPVirtualInstanceError),
+          environment: S.String,
+          sapProduct: S.String,
+          managedResourcesNetworkAccessType: S.optional(S.String),
+          configuration: __S(72),
+          managedResourceGroupConfiguration: S.optional(__S(4)),
+          status: S.optional(S.String),
+          health: S.optional(S.String),
+          state: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(33)),
         }),
       ).annotate({
         identifier: "SAPVirtualInstanceProperties",
@@ -7144,8 +5702,8 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: SAPVirtualInstanceIdentityType,
-          userAssignedIdentities: S.optional(SAPVirtualInstanceIdentityUserAssignedIdentitiesMap),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "SAPVirtualInstanceIdentity",
@@ -7156,11 +5714,11 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateSapVirtualInstanceResponseTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(SAPVirtualInstanceProperties),
-          identity: S.optional(SAPVirtualInstanceIdentity),
+          properties: S.optional(__S(76)),
+          identity: S.optional(__S(77)),
         }),
       ).annotate({
         identifier: "CreateSapVirtualInstanceResponse",
@@ -7168,7 +5726,7 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          configurationType: ConfigurationType,
+          configurationType: S.String,
           appLocation: S.optional(S.String),
           centralServerVmId: S.optional(S.String),
           managedRgStorageAccountName: S.optional(S.String),
@@ -7184,10 +5742,10 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          environment: EnvironmentType,
-          sapProduct: SAPProductType,
-          configuration: SAPConfiguration_2,
-          managedResourceGroupConfiguration: S.optional(ManagedRGConfiguration),
+          environment: S.String,
+          sapProduct: S.String,
+          configuration: __S(79),
+          managedResourceGroupConfiguration: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "SAPVirtualInstancePropertiesInput_2",
@@ -7198,10 +5756,10 @@ function __c10(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateSAPVirtualInstanceRequestTagsMap),
+          tags: S.optional(__S(0)),
           location: S.String,
-          identity: S.optional(CreateSAPVirtualInstanceRequestIdentity),
-          properties: SAPVirtualInstancePropertiesInput_2,
+          identity: S.optional(__S(17)),
+          properties: __S(80),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -7216,15 +5774,15 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          environment: EnvironmentType,
-          sapProduct: SAPProductType,
-          configuration: SAPConfiguration_2,
-          managedResourceGroupConfiguration: S.optional(ManagedRGConfiguration),
-          status: S.optional(SAPVirtualInstanceStatus),
-          health: S.optional(HealthState),
-          state: S.optional(SAPVirtualInstanceState_2),
-          provisioningState: S.optional(ProvisioningState),
-          errors: S.optional(SAPVirtualInstanceError),
+          environment: S.String,
+          sapProduct: S.String,
+          configuration: __S(79),
+          managedResourceGroupConfiguration: S.optional(__S(4)),
+          status: S.optional(S.String),
+          health: S.optional(S.String),
+          state: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          errors: S.optional(__S(33)),
         }),
       ).annotate({
         identifier: "SAPVirtualInstanceProperties_2",
@@ -7235,11 +5793,11 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateSAPVirtualInstanceResponseTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
           location: S.String,
-          identity: S.optional(CreateSAPVirtualInstanceResponseIdentity),
-          properties: SAPVirtualInstanceProperties_2,
+          identity: S.optional(__S(23)),
+          properties: __S(82),
         }),
       ).annotate({
         identifier: "CreateSAPVirtualInstanceResponse",
@@ -7260,9 +5818,9 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "DeleteMonitorRequest" });
     case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => OperationStatusResult_3));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(90)));
     case 6:
-      return S.Array(/*@__PURE__*/ S.suspend(() => ErrorDetail));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(89)));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -7275,15 +5833,15 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ErrorAdditionalInfo);
+      return S.Array(__S(87));
     case 1:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.String),
           message: S.optional(S.String),
           target: S.optional(S.String),
-          details: S.optional(ErrorDetailDetailsList),
-          additionalInfo: S.optional(ErrorDetailAdditionalInfoList),
+          details: S.optional(__S(86)),
+          additionalInfo: S.optional(__S(88)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 2:
@@ -7295,12 +5853,12 @@ function __c11(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(OperationStatusResultOperationsList_3),
-          error: S.optional(ErrorDetail),
+          operations: S.optional(__S(85)),
+          error: S.optional(__S(89)),
         }),
       ).annotate({ identifier: "OperationStatusResult_3" });
     case 3:
-      return S.Array(OperationStatusResult_3);
+      return S.Array(__S(90));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -7310,8 +5868,8 @@ function __c11(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(DeleteMonitorResponseOperationsList),
-          error: S.optional(ErrorDetail),
+          operations: S.optional(__S(91)),
+          error: S.optional(__S(89)),
         }),
       ).annotate({ identifier: "DeleteMonitorResponse" });
     case 5:
@@ -7341,8 +5899,8 @@ function __c11(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(DeleteProviderInstanceResponseOperationsList),
-          error: S.optional(ErrorDetail),
+          operations: S.optional(__S(91)),
+          error: S.optional(__S(89)),
         }),
       ).annotate({
         identifier: "DeleteProviderInstanceResponse",
@@ -7392,7 +5950,7 @@ function __c12(j: number): any {
         identifier: "DeleteSAPApplicationServerInstanceRequest",
       });
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => OperationStatusResult_2));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(99)));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7402,12 +5960,12 @@ function __c12(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(OperationStatusResultOperationsList_2),
-          error: S.optional(ErrorDetail),
+          operations: S.optional(__S(98)),
+          error: S.optional(__S(89)),
         }),
       ).annotate({ identifier: "OperationStatusResult_2" });
     case 4:
-      return S.Array(OperationStatusResult_2);
+      return S.Array(__S(99));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -7417,8 +5975,8 @@ function __c12(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(DeleteSAPApplicationServerInstanceResponseOperationsList),
-          error: S.optional(ErrorDetail),
+          operations: S.optional(__S(100)),
+          error: S.optional(__S(89)),
         }),
       ).annotate({
         identifier: "DeleteSAPApplicationServerInstanceResponse",
@@ -7589,9 +6147,9 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          identity: S.optional(GetProviderInstanceResponseIdentity),
-          properties: S.optional(ProviderInstanceProperties),
+          systemData: S.optional(__S(7)),
+          identity: S.optional(__S(10)),
+          properties: S.optional(__S(24)),
         }),
       ).annotate({
         identifier: "GetProviderInstanceResponse",
@@ -7769,8 +6327,8 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           appLocation: S.String,
-          sapProduct: SAPProductType,
-          databaseType: SAPDatabaseType,
+          sapProduct: S.String,
+          databaseType: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -7790,13 +6348,11 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "SAPAvailabilityZonePair" });
     case 3:
-      return S.Array(SAPAvailabilityZonePair);
+      return S.Array(__S(122));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          availabilityZonePairs: S.optional(
-            SAPAvailabilityZoneDetailsResultAvailabilityZonePairsList,
-          ),
+          availabilityZonePairs: S.optional(__S(123)),
         }),
       ).annotate({
         identifier: "SAPAvailabilityZoneDetailsResult",
@@ -7807,10 +6363,10 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           appLocation: S.String,
-          environment: SAPEnvironmentType,
-          sapProduct: SAPProductType,
-          databaseType: SAPDatabaseType,
-          deploymentType: SAPDeploymentType,
+          environment: S.String,
+          sapProduct: S.String,
+          databaseType: S.String,
+          deploymentType: S.String,
           dbVmSku: S.String,
         }).pipe(
           T.Http({
@@ -7826,7 +6382,7 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(DiskSkuName),
+          name: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiskSku" });
     case 7:
@@ -7834,7 +6390,7 @@ function __c15(j: number): any {
         S.Struct({
           count: S.optional(S.Number),
           sizeGB: S.optional(S.Number),
-          sku: S.optional(DiskSku),
+          sku: S.optional(__S(126)),
         }),
       ).annotate({ identifier: "DiskVolumeConfiguration" });
   }
@@ -7844,7 +6400,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(DiskSku),
+          sku: S.optional(__S(126)),
           sizeGB: S.optional(S.Number),
           minimumSupportedDiskCount: S.optional(S.Number),
           maximumSupportedDiskCount: S.optional(S.Number),
@@ -7854,20 +6410,20 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "DiskDetails" });
     case 1:
-      return S.Array(DiskDetails);
+      return S.Array(__S(128));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          recommendedConfiguration: S.optional(DiskVolumeConfiguration),
-          supportedConfigurations: S.optional(SAPDiskConfigurationSupportedConfigurationsList),
+          recommendedConfiguration: S.optional(__S(127)),
+          supportedConfigurations: S.optional(__S(129)),
         }),
       ).annotate({ identifier: "SAPDiskConfiguration" });
     case 3:
-      return S.Record(S.String, SAPDiskConfiguration);
+      return S.Record(S.String, __S(130));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          volumeConfigurations: S.optional(SAPDiskConfigurationsResultVolumeConfigurationsMap),
+          volumeConfigurations: S.optional(__S(131)),
         }),
       ).annotate({
         identifier: "SAPDiskConfigurationsResult",
@@ -7878,11 +6434,11 @@ function __c16(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           appLocation: S.String,
-          environment: SAPEnvironmentType,
-          sapProduct: SAPProductType,
-          deploymentType: SAPDeploymentType,
-          databaseType: SAPDatabaseType,
-          highAvailabilityType: S.optional(SAPHighAvailabilityType),
+          environment: S.String,
+          sapProduct: S.String,
+          deploymentType: S.String,
+          databaseType: S.String,
+          highAvailabilityType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7903,7 +6459,7 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "SAPSupportedSku" });
     case 7:
-      return S.Array(SAPSupportedSku);
+      return S.Array(__S(134));
   }
 }
 function __c17(j: number): any {
@@ -7911,7 +6467,7 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          supportedSkus: S.optional(SAPSupportedResourceSkusResultSupportedSkusList),
+          supportedSkus: S.optional(__S(135)),
         }),
       ).annotate({
         identifier: "SAPSupportedResourceSkusResult",
@@ -7922,14 +6478,14 @@ function __c17(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           appLocation: S.String,
-          environment: SAPEnvironmentType,
-          sapProduct: SAPProductType,
-          deploymentType: SAPDeploymentType,
+          environment: S.String,
+          sapProduct: S.String,
+          deploymentType: S.String,
           saps: S.Number,
           dbMemory: S.Number,
-          databaseType: SAPDatabaseType,
-          dbScaleMethod: S.optional(SAPDatabaseScaleMethod),
-          highAvailabilityType: S.optional(SAPHighAvailabilityType),
+          databaseType: S.String,
+          dbScaleMethod: S.optional(S.String),
+          highAvailabilityType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7944,7 +6500,7 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          deploymentType: SAPDeploymentType,
+          deploymentType: S.String,
         }),
       ).annotate({
         identifier: "SAPSizingRecommendationResult",
@@ -7968,8 +6524,8 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(S.NullOr(MonitorIdentityUserAssignedIdentitiesMap)),
+          type: S.String,
+          userAssignedIdentities: S.optional(S.NullOr(__S(9))),
         }),
       ).annotate({ identifier: "MonitorIdentity" });
     case 5:
@@ -7978,19 +6534,19 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(MonitorTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
           location: S.String,
-          identity: S.optional(MonitorIdentity),
-          properties: S.optional(MonitorProperties),
+          identity: S.optional(__S(140)),
+          properties: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "Monitor" });
     case 6:
-      return S.Array(Monitor);
+      return S.Array(__S(141));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(MonitorListResultValueList),
+          value: S.optional(__S(142)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MonitorListResult" });
@@ -8036,17 +6592,17 @@ function __c18(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(146)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
-      return S.Array(Operation);
+      return S.Array(__S(147));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(148)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -8073,9 +6629,9 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          identity: S.optional(ProviderInstanceIdentity),
-          properties: S.optional(ProviderInstanceProperties),
+          systemData: S.optional(__S(7)),
+          identity: S.optional(__S(140)),
+          properties: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "ProviderInstance" });
   }
@@ -8083,11 +6639,11 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ProviderInstance);
+      return S.Array(__S(151));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ProviderInstanceListResultValueList),
+          value: S.optional(__S(152)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8111,11 +6667,11 @@ function __c19(j: number): any {
         identifier: "ListSapApplicationServerInstancesRequest",
       });
     case 3:
-      return S.Array(SAPApplicationServerInstance);
+      return S.Array(__S(35));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: SAPApplicationServerInstanceListResultValueList,
+          value: __S(155),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8139,11 +6695,11 @@ function __c19(j: number): any {
         identifier: "ListSAPApplicationServerInstancesRequest",
       });
     case 6:
-      return S.Array(SAPApplicationServerInstance_2);
+      return S.Array(__S(38));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SAPApplicationServerInstanceListValueList),
+          value: S.optional(__S(158)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8171,11 +6727,11 @@ function __c20(j: number): any {
         identifier: "ListSAPCentralInstancesRequest",
       });
     case 1:
-      return S.Array(SAPCentralServerInstance_2);
+      return S.Array(__S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SAPCentralInstanceListValueList),
+          value: S.optional(__S(161)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SAPCentralInstanceList" });
@@ -8202,18 +6758,18 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(SAPCentralServerInstanceTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(SAPCentralServerProperties),
+          properties: S.optional(__S(53)),
         }),
       ).annotate({ identifier: "SAPCentralServerInstance" });
     case 5:
-      return S.Array(SAPCentralServerInstance);
+      return S.Array(__S(164));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: SAPCentralServerInstanceListResultValueList,
+          value: __S(165),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8246,18 +6802,18 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(SAPDatabaseInstanceTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(SAPDatabaseProperties),
+          properties: S.optional(__S(58)),
         }),
       ).annotate({ identifier: "SAPDatabaseInstance" });
     case 1:
-      return S.Array(SAPDatabaseInstance);
+      return S.Array(__S(168));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: SAPDatabaseInstanceListResultValueList,
+          value: __S(169),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8286,18 +6842,18 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(SAPDatabaseInstanceTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(SAPDatabaseProperties_2),
+          properties: S.optional(__S(61)),
         }),
       ).annotate({ identifier: "SAPDatabaseInstance_2" });
     case 5:
-      return S.Array(SAPDatabaseInstance_2);
+      return S.Array(__S(172));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SAPDatabaseInstanceListValueList),
+          value: S.optional(__S(173)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SAPDatabaseInstanceList" });
@@ -8328,16 +6884,16 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(SapLandscapeMonitorProperties),
+          systemData: S.optional(__S(7)),
+          properties: S.optional(__S(70)),
         }),
       ).annotate({ identifier: "SapLandscapeMonitor" });
     case 1:
-      return S.Array(SapLandscapeMonitor);
+      return S.Array(__S(176));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SapLandscapeMonitorListResultValueList),
+          value: S.optional(__S(177)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8365,19 +6921,19 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(SAPVirtualInstanceTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
           location: S.String,
-          properties: S.optional(SAPVirtualInstanceProperties),
-          identity: S.optional(SAPVirtualInstanceIdentity),
+          properties: S.optional(__S(76)),
+          identity: S.optional(__S(77)),
         }),
       ).annotate({ identifier: "SAPVirtualInstance" });
     case 5:
-      return S.Array(SAPVirtualInstance);
+      return S.Array(__S(180));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: SAPVirtualInstanceListResultValueList,
+          value: __S(181),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8409,19 +6965,19 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(SAPVirtualInstanceTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
           location: S.String,
-          identity: S.optional(SAPVirtualInstanceIdentity_2),
-          properties: SAPVirtualInstanceProperties_2,
+          identity: S.optional(__S(10)),
+          properties: __S(82),
         }),
       ).annotate({ identifier: "SAPVirtualInstance_2" });
     case 1:
-      return S.Array(SAPVirtualInstance_2);
+      return S.Array(__S(184));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SAPVirtualInstanceListValueList),
+          value: S.optional(__S(185)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SAPVirtualInstanceList" });
@@ -8461,8 +7017,8 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           appLocation: S.String,
-          sapProduct: SAPProductType,
-          databaseType: SAPDatabaseType,
+          sapProduct: S.String,
+          databaseType: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8480,10 +7036,10 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           appLocation: S.String,
-          environment: EnvironmentType,
-          sapProduct: SAPProductType,
-          databaseType: SAPDatabaseType,
-          deploymentType: DeploymentType,
+          environment: S.String,
+          sapProduct: S.String,
+          databaseType: S.String,
+          deploymentType: S.String,
           dbVmSku: S.String,
         }).pipe(
           T.Http({
@@ -8501,7 +7057,7 @@ function __c23(j: number): any {
         S.Struct({
           count: S.optional(S.Number),
           sizeGB: S.optional(S.Number),
-          sku: S.optional(DiskSku_2),
+          sku: S.optional(__S(126)),
         }),
       ).annotate({
         identifier: "DiskVolumeConfiguration_2",
@@ -8513,16 +7069,16 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          recommendedConfiguration: S.optional(DiskVolumeConfiguration_2),
-          supportedConfigurations: S.optional(SAPDiskConfigurationSupportedConfigurationsList_2),
+          recommendedConfiguration: S.optional(__S(191)),
+          supportedConfigurations: S.optional(__S(129)),
         }),
       ).annotate({ identifier: "SAPDiskConfiguration_2" });
     case 1:
-      return S.Record(S.String, SAPDiskConfiguration_2);
+      return S.Record(S.String, __S(192));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          volumeConfigurations: S.optional(SAPDiskConfigurationsResultVolumeConfigurationsMap_2),
+          volumeConfigurations: S.optional(__S(193)),
         }),
       ).annotate({
         identifier: "SAPDiskConfigurationsResult_2",
@@ -8533,14 +7089,14 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           appLocation: S.String,
-          environment: EnvironmentType,
-          sapProduct: SAPProductType,
-          deploymentType: DeploymentType,
+          environment: S.String,
+          sapProduct: S.String,
+          deploymentType: S.String,
           saps: S.Number,
           dbMemory: S.Number,
-          databaseType: SAPDatabaseType,
-          dbScaleMethod: S.optional(DatabaseScaleMethod),
-          highAvailabilityType: S.optional(HighAvailabilityType),
+          databaseType: S.String,
+          dbScaleMethod: S.optional(S.String),
+          highAvailabilityType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8558,11 +7114,11 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
           appLocation: S.String,
-          environment: EnvironmentType,
-          sapProduct: SAPProductType,
-          deploymentType: DeploymentType,
-          databaseType: SAPDatabaseType,
-          highAvailabilityType: S.optional(HighAvailabilityType),
+          environment: S.String,
+          sapProduct: S.String,
+          deploymentType: S.String,
+          databaseType: S.String,
+          highAvailabilityType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8592,7 +7148,7 @@ function __c24(j: number): any {
         identifier: "StartSapApplicationServerInstanceRequest",
       });
     case 6:
-      return S.Array(/*@__PURE__*/ S.suspend(() => OperationStatusResult));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(199)));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -8603,8 +7159,8 @@ function __c24(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(OperationStatusResultOperationsList),
-          error: S.optional(ErrorDetail),
+          operations: S.optional(__S(198)),
+          error: S.optional(__S(89)),
         }),
       ).annotate({ identifier: "OperationStatusResult" });
   }
@@ -8612,7 +7168,7 @@ function __c24(j: number): any {
 function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OperationStatusResult);
+      return S.Array(__S(199));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8623,8 +7179,8 @@ function __c25(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(StartSapApplicationServerInstanceResponseOperationsList),
-          error: S.optional(ErrorDetail),
+          operations: S.optional(__S(200)),
+          error: S.optional(__S(89)),
         }),
       ).annotate({
         identifier: "StartSapApplicationServerInstanceResponse",
@@ -8648,7 +7204,7 @@ function __c25(j: number): any {
         identifier: "StartSAPApplicationServerInstanceInstanceRequest",
       });
     case 3:
-      return S.Array(OperationStatusResult_2);
+      return S.Array(__S(99));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8658,8 +7214,8 @@ function __c25(j: number): any {
           percentComplete: S.optional(S.Number),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
-          operations: S.optional(StartSAPApplicationServerInstanceInstanceResponseOperationsList),
-          error: S.optional(ErrorDetail),
+          operations: S.optional(__S(203)),
+          error: S.optional(__S(89)),
         }),
       ).annotate({
         identifier: "StartSAPApplicationServerInstanceInstanceResponse",
@@ -8941,8 +7497,8 @@ function __c27(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateMonitorRequestTagsMap),
-          identity: S.optional(UpdateMonitorRequestIdentity),
+          tags: S.optional(__S(0)),
+          identity: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8959,7 +7515,7 @@ function __c27(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           applicationInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSapApplicationServerInstanceRequestTagsMap),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8978,7 +7534,7 @@ function __c27(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           applicationInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSAPApplicationServerInstanceRequestTagsMap),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8997,7 +7553,7 @@ function __c27(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           centralInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSAPCentralInstanceRequestTagsMap),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9016,7 +7572,7 @@ function __c27(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           centralInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSapCentralServerInstanceRequestTagsMap),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9039,7 +7595,7 @@ function __c28(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           databaseInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSapDatabaseInstanceRequestTagsMap),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9058,7 +7614,7 @@ function __c28(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
           databaseInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSAPDatabaseInstanceRequestTagsMap),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9076,7 +7632,7 @@ function __c28(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           monitorName: S.String.pipe(T.Label()),
-          properties: S.optional(SapLandscapeMonitorPropertiesInput),
+          properties: S.optional(__S(68)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9091,7 +7647,7 @@ function __c28(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          managedResourcesNetworkAccessType: S.optional(ManagedResourcesNetworkAccessType),
+          managedResourcesNetworkAccessType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateSAPVirtualInstanceProperties",
@@ -9102,9 +7658,9 @@ function __c28(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSapVirtualInstanceRequestTagsMap),
-          identity: S.optional(SAPVirtualInstanceIdentityInput),
-          properties: S.optional(UpdateSAPVirtualInstanceProperties),
+          tags: S.optional(__S(0)),
+          identity: S.optional(__S(74)),
+          properties: S.optional(__S(227)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9122,8 +7678,8 @@ function __c28(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           sapVirtualInstanceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSAPVirtualInstanceRequestTagsMap),
-          identity: S.optional(UpdateSAPVirtualInstanceRequestIdentity),
+          tags: S.optional(__S(0)),
+          identity: S.optional(__S(17)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -9135,5 +7691,72 @@ function __c28(j: number): any {
       ).annotate({
         identifier: "UpdateSAPVirtualInstanceRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
   }
 }

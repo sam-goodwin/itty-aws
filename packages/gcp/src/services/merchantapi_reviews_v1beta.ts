@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -80,40 +82,21 @@ export interface DeleteAccountsMerchantReviewsRequest {
   /** Required. The ID of the merchant review. Format: accounts/{account}/merchantReviews/{merchantReview} */
   name: string;
 }
-const DeleteAccountsMerchantReviewsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteAccountsMerchantReviewsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Empty>;
-
 export interface DeleteAccountsProductReviewsRequest {
   /** Required. The ID of the Product review. Format: accounts/{account}/productReviews/{productReview} */
   name: string;
 }
-const DeleteAccountsProductReviewsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DeleteAccountsProductReviewsRequest>;
-
 export interface GetAccountsMerchantReviewsRequest {
   /** Required. The ID of the merchant review. Format: accounts/{account}/merchantReviews/{merchantReview} */
   name: string;
 }
-const GetAccountsMerchantReviewsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetAccountsMerchantReviewsRequest>;
-
 export type MerchantReviewAttributesCollectionMethodEnum =
   | "COLLECTION_METHOD_UNSPECIFIED"
   | "MERCHANT_UNSOLICITED"
   | "POINT_OF_SALE"
   | "AFTER_FULFILLMENT";
-const MerchantReviewAttributesCollectionMethodEnum = S.String;
-
 /** Attributes. */
 export interface MerchantReviewAttributes {
   /** Optional. The language of the review defined by BCP-47 language code. */
@@ -149,11 +132,6 @@ export interface MerchantReviewAttributes {
   /** Optional. URL to the landing page that hosts the reviews for this merchant. Do not use a redirect URL. */
   merchantRatingLink?: string;
 }
-const MerchantReviewAttributes = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<MerchantReviewAttributes>;
-
 /** A message that represents custom attributes. Exactly one of `value` or `group_values` must not be empty. */
 export interface CustomAttribute {
   /** The name of the attribute. */
@@ -163,17 +141,11 @@ export interface CustomAttribute {
   /** The value of the attribute. If `value` is not empty, `group_values` must be empty. */
   value?: string;
 }
-const CustomAttribute = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CustomAttribute>;
-
 export type CustomAttributeList = Array<CustomAttribute>;
-const CustomAttributeList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CustomAttributeList>;
-
 export type MerchantReviewItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
   | "DISAPPROVED";
-const MerchantReviewItemLevelIssueSeverityEnum = S.String;
-
 export type MerchantReviewItemLevelIssueReportingContextEnum =
   | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
   | "SHOPPING_ADS"
@@ -196,8 +168,6 @@ export type MerchantReviewItemLevelIssueReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
-const MerchantReviewItemLevelIssueReportingContextEnum = S.String;
-
 /** The ItemLevelIssue of the merchant review status. */
 export interface MerchantReviewItemLevelIssue {
   /** Output only. The attribute's name, if the issue is caused by a single attribute. */
@@ -217,17 +187,7 @@ export interface MerchantReviewItemLevelIssue {
   /** Output only. A short issue description in English. */
   description?: string;
 }
-const MerchantReviewItemLevelIssue = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<MerchantReviewItemLevelIssue>;
-
 export type MerchantReviewItemLevelIssueList = Array<MerchantReviewItemLevelIssue>;
-const MerchantReviewItemLevelIssueList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<MerchantReviewItemLevelIssueList>;
-
 export type MerchantReviewDestinationStatusReportingContextEnum =
   | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
   | "SHOPPING_ADS"
@@ -250,24 +210,12 @@ export type MerchantReviewDestinationStatusReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
-const MerchantReviewDestinationStatusReportingContextEnum = S.String;
-
 /** The destination status of the merchant review status. */
 export interface MerchantReviewDestinationStatus {
   /** Output only. The name of the reporting context. */
   reportingContext?: MerchantReviewDestinationStatusReportingContextEnum | (string & {});
 }
-const MerchantReviewDestinationStatus = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<MerchantReviewDestinationStatus>;
-
 export type MerchantReviewDestinationStatusList = Array<MerchantReviewDestinationStatus>;
-const MerchantReviewDestinationStatusList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<MerchantReviewDestinationStatusList>;
-
 /** The status of a merchant review, data validation issues, that is, information about a merchant review computed asynchronously. */
 export interface MerchantReviewStatus {
   /** Output only. Date on which the item has been last updated, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
@@ -279,8 +227,6 @@ export interface MerchantReviewStatus {
   /** Output only. The intended destinations for the merchant review. */
   destinationStatuses?: MerchantReviewDestinationStatusList;
 }
-const MerchantReviewStatus = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<MerchantReviewStatus>;
-
 /** A review for a merchant. For more information, see [Introduction to Merchant Review Feeds](https://developers.google.com/merchant-review-feeds) */
 export interface MerchantReview {
   /** Optional. A list of merchant review attributes. */
@@ -296,29 +242,16 @@ export interface MerchantReview {
   /** Required. The user provided merchant review ID to uniquely identify the merchant review. */
   merchantReviewId?: string;
 }
-const MerchantReview = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<MerchantReview>;
-
 export interface GetAccountsProductReviewsRequest {
   /** Required. The ID of the merchant review. Format: accounts/{account}/productReviews/{productReview} */
   name: string;
 }
-const GetAccountsProductReviewsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetAccountsProductReviewsRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<StringList>;
-
 export type ProductReviewAttributesCollectionMethodEnum =
   | "COLLECTION_METHOD_UNSPECIFIED"
   | "UNSOLICITED"
   | "POST_FULFILLMENT";
-const ProductReviewAttributesCollectionMethodEnum = S.String;
-
 export type ReviewLinkTypeEnum = "TYPE_UNSPECIFIED" | "SINGLETON" | "GROUP";
-const ReviewLinkTypeEnum = S.String;
-
 /** The URI of the review landing page. */
 export interface ReviewLink {
   /** Optional. The URI of the review landing page. For example: `http://www.example.com/review_5.html`. */
@@ -326,8 +259,6 @@ export interface ReviewLink {
   /** Optional. Type of the review URI. */
   type?: ReviewLinkTypeEnum | (string & {});
 }
-const ReviewLink = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ReviewLink>;
-
 /** Attributes. */
 export interface ProductReviewAttributes {
   /** Optional. Contains ASINs (Amazon Standard Identification Numbers) associated with a product. */
@@ -393,11 +324,6 @@ export interface ProductReviewAttributes {
   /** Optional. Contains MPNs (manufacturer part numbers) associated with a product. */
   mpns?: StringList;
 }
-const ProductReviewAttributes = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ProductReviewAttributes>;
-
 export type ProductReviewDestinationStatusReportingContextEnum =
   | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
   | "SHOPPING_ADS"
@@ -426,15 +352,10 @@ export interface ProductReviewDestinationStatus {
   reportingContext?: ProductReviewDestinationStatusReportingContextEnum | (string & {});
 }
 export type ProductReviewDestinationStatusList = Array<ProductReviewDestinationStatus>;
-const ProductReviewDestinationStatusList =
-  MerchantReviewDestinationStatusList as any as S.Schema<ProductReviewDestinationStatusList>;
-
 export type ProductReviewItemLevelIssueSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "NOT_IMPACTED"
   | "DISAPPROVED";
-const ProductReviewItemLevelIssueSeverityEnum = S.String;
-
 export type ProductReviewItemLevelIssueReportingContextEnum =
   | "REPORTING_CONTEXT_ENUM_UNSPECIFIED"
   | "SHOPPING_ADS"
@@ -457,8 +378,6 @@ export type ProductReviewItemLevelIssueReportingContextEnum =
   | "MERCHANT_REVIEWS"
   | "YOUTUBE_CHECKOUT"
   | "RENTAL_ADS";
-const ProductReviewItemLevelIssueReportingContextEnum = S.String;
-
 /** The ItemLevelIssue of the product review status. */
 export interface ProductReviewItemLevelIssue {
   /** Output only. The URL of a web page to help with resolving this issue. */
@@ -478,17 +397,7 @@ export interface ProductReviewItemLevelIssue {
   /** Output only. The attribute's name, if the issue is caused by a single attribute. */
   attribute?: string;
 }
-const ProductReviewItemLevelIssue = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ProductReviewItemLevelIssue>;
-
 export type ProductReviewItemLevelIssueList = Array<ProductReviewItemLevelIssue>;
-const ProductReviewItemLevelIssueList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ProductReviewItemLevelIssueList>;
-
 /** Product review status. */
 export interface ProductReviewStatus {
   /** Output only. The intended destinations for the product review. */
@@ -500,8 +409,6 @@ export interface ProductReviewStatus {
   /** Output only. Date on which the item has been last updated, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
   lastUpdateTime?: string;
 }
-const ProductReviewStatus = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ProductReviewStatus>;
-
 /** A review for a product. For more information, see [Introduction to Product Review Feeds](https://developers.google.com/product-review-feeds) */
 export interface ProductReview {
   /** Identifier. The name of the product review. Format: `"{productreview.name=accounts/{account}/productReviews/{productReview}}"` */
@@ -517,8 +424,6 @@ export interface ProductReview {
   /** Optional. A list of custom (merchant-provided) attributes. */
   customAttributes?: CustomAttributeList;
 }
-const ProductReview = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ProductReview>;
-
 export interface InsertAccountsMerchantReviewsRequest {
   /** Required. The data source of the [merchantreview](https://support.google.com/merchants/answer/7045996?sjid=5253581244217581976-EU) Format: `accounts/{account}/dataSources/{datasource}`. */
   dataSource?: string;
@@ -527,11 +432,6 @@ export interface InsertAccountsMerchantReviewsRequest {
   /** Request body */
   body?: MerchantReview;
 }
-const InsertAccountsMerchantReviewsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<InsertAccountsMerchantReviewsRequest>;
-
 export interface InsertAccountsProductReviewsRequest {
   /** Required. Format: `accounts/{account}/dataSources/{datasource}`. */
   dataSource?: string;
@@ -540,11 +440,6 @@ export interface InsertAccountsProductReviewsRequest {
   /** Request body */
   body?: ProductReview;
 }
-const InsertAccountsProductReviewsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<InsertAccountsProductReviewsRequest>;
-
 export interface ListAccountsMerchantReviewsRequest {
   /** Optional. A page token, received from a previous `ListMerchantReviews` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMerchantReviews` must match the call that provided the page token. */
   pageToken?: string;
@@ -553,14 +448,7 @@ export interface ListAccountsMerchantReviewsRequest {
   /** Optional. The maximum number of merchant reviews to return. The service can return fewer than this value. The maximum value is 1000; values above 1000 are coerced to 1000. If unspecified, the maximum number of reviews is returned. */
   pageSize?: number;
 }
-const ListAccountsMerchantReviewsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListAccountsMerchantReviewsRequest>;
-
 export type MerchantReviewList = Array<MerchantReview>;
-const MerchantReviewList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<MerchantReviewList>;
-
 /** Response message for the `ListMerchantsReview` method. */
 export interface ListMerchantReviewsResponse {
   /** The merchant review. */
@@ -568,11 +456,6 @@ export interface ListMerchantReviewsResponse {
   /** The token to retrieve the next page of results. */
   nextPageToken?: string;
 }
-const ListMerchantReviewsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListMerchantReviewsResponse>;
-
 export interface ListAccountsProductReviewsRequest {
   /** Optional. A page token, received from a previous `ListProductReviews` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProductReviews` must match the call that provided the page token. */
   pageToken?: string;
@@ -581,14 +464,7 @@ export interface ListAccountsProductReviewsRequest {
   /** Required. The account to list product reviews for. Format: accounts/{account} */
   parent: string;
 }
-const ListAccountsProductReviewsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListAccountsProductReviewsRequest>;
-
 export type ProductReviewList = Array<ProductReview>;
-const ProductReviewList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ProductReviewList>;
-
 /** response message for the ListProductReviews method. */
 export interface ListProductReviewsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -596,11 +472,6 @@ export interface ListProductReviewsResponse {
   /** The product review. */
   productReviews?: ProductReviewList;
 }
-const ListProductReviewsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListProductReviewsResponse>;
-
 export type DeleteAccountsMerchantReviewsError =
   | NotFound
   | Forbidden
@@ -615,8 +486,8 @@ export const deleteAccountsMerchantReviews: API.OperationMethod<
   DeleteAccountsMerchantReviewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsMerchantReviewsRequest,
-  output: Empty,
+  input: __S(0) as any as S.Schema<DeleteAccountsMerchantReviewsRequest>,
+  output: __S(1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -636,8 +507,8 @@ export const deleteAccountsProductReviews: API.OperationMethod<
   DeleteAccountsProductReviewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsProductReviewsRequest,
-  output: Empty,
+  input: __S(2) as any as S.Schema<DeleteAccountsProductReviewsRequest>,
+  output: __S(1) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -655,8 +526,8 @@ export const getAccountsMerchantReviews: API.OperationMethod<
   GetAccountsMerchantReviewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsMerchantReviewsRequest,
-  output: MerchantReview,
+  input: __S(3) as any as S.Schema<GetAccountsMerchantReviewsRequest>,
+  output: __S(12) as any as S.Schema<MerchantReview>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -670,8 +541,8 @@ export const getAccountsProductReviews: API.OperationMethod<
   GetAccountsProductReviewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsProductReviewsRequest,
-  output: ProductReview,
+  input: __S(13) as any as S.Schema<GetAccountsProductReviewsRequest>,
+  output: __S(20) as any as S.Schema<ProductReview>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -691,8 +562,8 @@ export const insertAccountsMerchantReviews: API.OperationMethod<
   InsertAccountsMerchantReviewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertAccountsMerchantReviewsRequest,
-  output: MerchantReview,
+  input: __S(21) as any as S.Schema<InsertAccountsMerchantReviewsRequest>,
+  output: __S(12) as any as S.Schema<MerchantReview>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -712,8 +583,8 @@ export const insertAccountsProductReviews: API.OperationMethod<
   InsertAccountsProductReviewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertAccountsProductReviewsRequest,
-  output: ProductReview,
+  input: __S(22) as any as S.Schema<InsertAccountsProductReviewsRequest>,
+  output: __S(20) as any as S.Schema<ProductReview>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -732,8 +603,8 @@ export const listAccountsMerchantReviews: API.PaginatedOperationMethod<
   GcpOpContext,
   ListMerchantReviewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsMerchantReviewsRequest,
-  output: ListMerchantReviewsResponse,
+  input: __S(23) as any as S.Schema<ListAccountsMerchantReviewsRequest>,
+  output: __S(25) as any as S.Schema<ListMerchantReviewsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -753,8 +624,8 @@ export const listAccountsProductReviews: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProductReviewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsProductReviewsRequest,
-  output: ListProductReviewsResponse,
+  input: __S(26) as any as S.Schema<ListAccountsProductReviewsRequest>,
+  output: __S(28) as any as S.Schema<ListProductReviewsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -815,7 +686,7 @@ function __c0(j: number): any {
         S.Struct({
           reviewLanguage: S.optional(S.String),
           merchantDisplayName: S.optional(S.String),
-          collectionMethod: S.optional(MerchantReviewAttributesCollectionMethodEnum),
+          collectionMethod: S.optional(S.String),
           rating: S.optional(S.Number),
           isAnonymous: S.optional(S.Boolean),
           minRating: S.optional(S.String),
@@ -835,20 +706,20 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          groupValues: S.optional(S.suspend(() => CustomAttributeList)),
+          groupValues: S.optional(S.suspend(() => __S(6))),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomAttribute" });
     case 6:
-      return S.Array(CustomAttribute);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           attribute: S.optional(S.String),
           resolution: S.optional(S.String),
           code: S.optional(S.String),
-          severity: S.optional(MerchantReviewItemLevelIssueSeverityEnum),
-          reportingContext: S.optional(MerchantReviewItemLevelIssueReportingContextEnum),
+          severity: S.optional(S.String),
+          reportingContext: S.optional(S.String),
           documentation: S.optional(S.String),
           detail: S.optional(S.String),
           description: S.optional(S.String),
@@ -861,34 +732,34 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MerchantReviewItemLevelIssue);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          reportingContext: S.optional(MerchantReviewDestinationStatusReportingContextEnum),
+          reportingContext: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MerchantReviewDestinationStatus",
       });
     case 2:
-      return S.Array(MerchantReviewDestinationStatus);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
           lastUpdateTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          itemLevelIssues: S.optional(MerchantReviewItemLevelIssueList),
-          destinationStatuses: S.optional(MerchantReviewDestinationStatusList),
+          itemLevelIssues: S.optional(__S(8)),
+          destinationStatuses: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "MerchantReviewStatus" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          merchantReviewAttributes: S.optional(MerchantReviewAttributes),
+          merchantReviewAttributes: S.optional(__S(4)),
           dataSource: S.optional(S.String),
-          customAttributes: S.optional(CustomAttributeList),
+          customAttributes: S.optional(__S(6)),
           name: S.optional(S.String),
-          merchantReviewStatus: S.optional(MerchantReviewStatus),
+          merchantReviewStatus: S.optional(__S(11)),
           merchantReviewId: S.optional(S.String),
         }),
       ).annotate({ identifier: "MerchantReview" });
@@ -912,7 +783,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           link: S.optional(S.String),
-          type: S.optional(ReviewLinkTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReviewLink" });
   }
@@ -922,37 +793,37 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          asins: S.optional(StringList),
+          asins: S.optional(__S(14)),
           reviewCountry: S.optional(S.String),
-          productNames: S.optional(StringList),
+          productNames: S.optional(__S(14)),
           isSpam: S.optional(S.Boolean),
           publisherName: S.optional(S.String),
           reviewerId: S.optional(S.String),
           maxRating: S.optional(S.String),
-          reviewerImageLinks: S.optional(StringList),
+          reviewerImageLinks: S.optional(__S(14)),
           isVerifiedPurchase: S.optional(S.Boolean),
-          pros: S.optional(StringList),
+          pros: S.optional(__S(14)),
           isIncentivizedReview: S.optional(S.Boolean),
-          gtins: S.optional(StringList),
+          gtins: S.optional(__S(14)),
           transactionId: S.optional(S.String),
           reviewerUsername: S.optional(S.String),
           reviewTime: S.optional(S.String),
-          collectionMethod: S.optional(ProductReviewAttributesCollectionMethodEnum),
+          collectionMethod: S.optional(S.String),
           subclientName: S.optional(S.String),
           rating: S.optional(S.Number),
-          skus: S.optional(StringList),
+          skus: S.optional(__S(14)),
           reviewerIsAnonymous: S.optional(S.Boolean),
-          cons: S.optional(StringList),
+          cons: S.optional(__S(14)),
           publisherFavicon: S.optional(S.String),
           reviewLanguage: S.optional(S.String),
-          productLinks: S.optional(StringList),
+          productLinks: S.optional(__S(14)),
           title: S.optional(S.String),
           minRating: S.optional(S.String),
-          brands: S.optional(StringList),
+          brands: S.optional(__S(14)),
           content: S.optional(S.String),
           aggregatorName: S.optional(S.String),
-          reviewLink: S.optional(ReviewLink),
-          mpns: S.optional(StringList),
+          reviewLink: S.optional(__S(15)),
+          mpns: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "ProductReviewAttributes" });
     case 1:
@@ -962,8 +833,8 @@ function __c2(j: number): any {
           detail: S.optional(S.String),
           resolution: S.optional(S.String),
           description: S.optional(S.String),
-          severity: S.optional(ProductReviewItemLevelIssueSeverityEnum),
-          reportingContext: S.optional(ProductReviewItemLevelIssueReportingContextEnum),
+          severity: S.optional(S.String),
+          reportingContext: S.optional(S.String),
           code: S.optional(S.String),
           attribute: S.optional(S.String),
         }),
@@ -971,12 +842,12 @@ function __c2(j: number): any {
         identifier: "ProductReviewItemLevelIssue",
       });
     case 2:
-      return S.Array(ProductReviewItemLevelIssue);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          destinationStatuses: S.optional(ProductReviewDestinationStatusList),
-          itemLevelIssues: S.optional(ProductReviewItemLevelIssueList),
+          destinationStatuses: S.optional(__S(10)),
+          itemLevelIssues: S.optional(__S(18)),
           createTime: S.optional(S.String),
           lastUpdateTime: S.optional(S.String),
         }),
@@ -987,9 +858,9 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           dataSource: S.optional(S.String),
           productReviewId: S.optional(S.String),
-          productReviewAttributes: S.optional(ProductReviewAttributes),
-          productReviewStatus: S.optional(ProductReviewStatus),
-          customAttributes: S.optional(CustomAttributeList),
+          productReviewAttributes: S.optional(__S(16)),
+          productReviewStatus: S.optional(__S(19)),
+          customAttributes: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "ProductReview" });
     case 5:
@@ -997,7 +868,7 @@ function __c2(j: number): any {
         S.Struct({
           dataSource: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(MerchantReview.pipe(T.HttpBody())),
+          body: S.optional(__S(12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1013,7 +884,7 @@ function __c2(j: number): any {
         S.Struct({
           dataSource: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(ProductReview.pipe(T.HttpBody())),
+          body: S.optional(__S(20).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1045,11 +916,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MerchantReview);
+      return S.Array(__S(12));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          merchantReviews: S.optional(MerchantReviewList),
+          merchantReviews: S.optional(__S(24)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1072,15 +943,32 @@ function __c3(j: number): any {
         identifier: "ListAccountsProductReviewsRequest",
       });
     case 3:
-      return S.Array(ProductReview);
+      return S.Array(__S(20));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          productReviews: S.optional(ProductReviewList),
+          productReviews: S.optional(__S(27)),
         }),
       ).annotate({
         identifier: "ListProductReviewsResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

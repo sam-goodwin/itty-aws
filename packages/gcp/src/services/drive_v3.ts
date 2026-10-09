@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -67,11 +69,6 @@ export interface ApproveApprovalRequest {
   /** Optional. A message to accompany the reviewer response on the approval. This message is included in notifications for the action and in the approval activity log. */
   message?: string;
 }
-const ApproveApprovalRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ApproveApprovalRequest>;
-
 export interface ApproveApprovalsRequest {
   /** Required. The ID of the file that the approval is on. */
   fileId: string;
@@ -80,11 +77,6 @@ export interface ApproveApprovalsRequest {
   /** Request body */
   body?: ApproveApprovalRequest;
 }
-const ApproveApprovalsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ApproveApprovalsRequest>;
-
 /** Information about a Drive user. */
 export interface User {
   /** Output only. A link to the user's profile photo, if available. */
@@ -100,15 +92,11 @@ export interface User {
   /** Output only. The email address of the user. This may not be present in certain contexts if the user has not made their email address visible to the requester. */
   emailAddress?: string;
 }
-const User = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<User>;
-
 export type ReviewerResponseResponseEnum =
   | "RESPONSE_UNSPECIFIED"
   | "NO_RESPONSE"
   | "APPROVED"
   | "DECLINED";
-const ReviewerResponseResponseEnum = S.String;
-
 /** A response on an approval made by a specific reviewer. */
 export interface ReviewerResponse {
   /** This is always drive#reviewerResponse. */
@@ -118,25 +106,17 @@ export interface ReviewerResponse {
   /** A reviewer's response for the approval. */
   response?: ReviewerResponseResponseEnum;
 }
-const ReviewerResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ReviewerResponse>;
-
 export type ReviewerResponseList = Array<ReviewerResponse>;
-const ReviewerResponseList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ReviewerResponseList>;
-
 export type ApprovalStatusEnum =
   | "STATUS_UNSPECIFIED"
   | "IN_PROGRESS"
   | "APPROVED"
   | "CANCELLED"
   | "DECLINED";
-const ApprovalStatusEnum = S.String;
-
 export type ApprovalFileContentChangeBehaviorEnum =
   | "FILE_CONTENT_CHANGE_BEHAVIOR_UNSPECIFIED"
   | "RESET_APPROVAL"
   | "NO_APPROVAL_ACTION";
-const ApprovalFileContentChangeBehaviorEnum = S.String;
-
 /** Metadata for an approval. An approval is a review or approve process for a Drive item. */
 export interface Approval {
   /** Output only. The most recent time the approval was modified. */
@@ -162,15 +142,11 @@ export interface Approval {
   /** The time that the approval is due. */
   dueTime?: string;
 }
-const Approval = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Approval>;
-
 /** Request for cancelling an approval as an initiator. */
 export interface CancelApprovalRequest {
   /** Optional. A message to accompany the cancellation of the approval. This message is included in notifications for the action and in the approval activity log. */
   message?: string;
 }
-const CancelApprovalRequest = ApproveApprovalRequest as any as S.Schema<CancelApprovalRequest>;
-
 export interface CancelApprovalsRequest {
   /** Required. The ID of the approval to cancel. */
   approvalId: string;
@@ -179,18 +155,11 @@ export interface CancelApprovalsRequest {
   /** Request body */
   body?: CancelApprovalRequest;
 }
-const CancelApprovalsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CancelApprovalsRequest>;
-
 /** Request for commenting on an approval. */
 export interface CommentApprovalRequest {
   /** Required. A message to comment on the approval. This message is included in notifications for the action and in the approval activity log. */
   message?: string;
 }
-const CommentApprovalRequest = ApproveApprovalRequest as any as S.Schema<CommentApprovalRequest>;
-
 export interface CommentApprovalsRequest {
   /** Required. The ID of the file that the approval is on. */
   fileId: string;
@@ -199,14 +168,7 @@ export interface CommentApprovalsRequest {
   /** Request body */
   body?: CommentApprovalRequest;
 }
-const CommentApprovalsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CommentApprovalsRequest>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<StringMap>;
-
 /** Representation of the CSE DecryptionMetadata. */
 export interface DecryptionMetadata {
   /** The name of the KACLS (Key ACL Service) used to encrypt the file. */
@@ -224,8 +186,6 @@ export interface DecryptionMetadata {
   /** The signed JSON Web Token (JWT) which can be used to authorize the requesting user with the Key ACL Service (KACLS). The JWT asserts that the requesting user has at least read permissions on the file. */
   jwt?: string;
 }
-const DecryptionMetadata = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DecryptionMetadata>;
-
 /** Details about the client-side encryption applied to the file. */
 export interface ClientEncryptionDetails {
   /** The metadata used for client-side operations. */
@@ -233,14 +193,7 @@ export interface ClientEncryptionDetails {
   /** The encryption state of the file. The values expected here are: - encrypted - unencrypted */
   encryptionState?: string;
 }
-const ClientEncryptionDetails = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ClientEncryptionDetails>;
-
 export type UserList = Array<User>;
-const UserList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<UserList>;
-
 export interface PermissionTeamDrivePermissionDetailsItem {
   /** Deprecated: Output only. Use `permissionDetails/role` instead. */
   role?: string;
@@ -251,18 +204,8 @@ export interface PermissionTeamDrivePermissionDetailsItem {
   /** Deprecated: Output only. Use `permissionDetails/inheritedFrom` instead. */
   inheritedFrom?: string;
 }
-const PermissionTeamDrivePermissionDetailsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<PermissionTeamDrivePermissionDetailsItem>;
-
 export type PermissionTeamDrivePermissionDetailsItemList =
   Array<PermissionTeamDrivePermissionDetailsItem>;
-const PermissionTeamDrivePermissionDetailsItemList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<PermissionTeamDrivePermissionDetailsItemList>;
-
 export interface PermissionPermissionDetailsItem {
   /** Output only. The permission type for this user. Supported values include: * `file` * `member` */
   permissionType?: string;
@@ -273,17 +216,7 @@ export interface PermissionPermissionDetailsItem {
   /** Output only. Whether this permission is inherited. This field is always populated. This is an output-only field. */
   inherited?: boolean;
 }
-const PermissionPermissionDetailsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<PermissionPermissionDetailsItem>;
-
 export type PermissionPermissionDetailsItemList = Array<PermissionPermissionDetailsItem>;
-const PermissionPermissionDetailsItemList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<PermissionPermissionDetailsItemList>;
-
 /** A permission for a file. A permission grants a user, group, domain, or the world access to a file or a folder hierarchy. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). By default, permission requests only return a subset of fields. Permission `kind`, `ID`, `type`, and `role` are always returned. To retrieve specific fields, see [Return specific fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter). Some resource methods (such as `permissions.update`) require a `permissionId`. Use the `permissions.list` method to retrieve the ID for a file, folder, or shared drive. */
 export interface Permission {
   /** Output only. Deprecated: Output only. Use `permissionDetails` instead. */
@@ -319,14 +252,8 @@ export interface Permission {
   /** Output only. Identifies what kind of resource this is. Value: the fixed string `"drive#permission"`. */
   kind?: string;
 }
-const Permission = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Permission>;
-
 export type PermissionList_ = Array<Permission>;
-const PermissionList_ = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PermissionList_>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<StringList>;
-
 /** Representation of field, which is a typed key-value pair. */
 export interface LabelField {
   /** Only present if `valueType` is `text`. */
@@ -346,11 +273,7 @@ export interface LabelField {
   /** The field type. While new values may be supported in the future, the following are currently allowed: * `dateString` * `integer` * `selection` * `text` * `user` */
   valueType?: string;
 }
-const LabelField = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<LabelField>;
-
 export type LabelFieldMap = { [key: string]: LabelField | undefined };
-const LabelFieldMap = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<LabelFieldMap>;
-
 /** Representation of label and label fields. */
 export interface Label {
   /** This is always drive#label */
@@ -362,28 +285,17 @@ export interface Label {
   /** The revision ID of the label. */
   revisionId?: string;
 }
-const Label = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Label>;
-
 export type LabelList_ = Array<Label>;
-const LabelList_ = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<LabelList_>;
-
 export interface FileLabelInfo {
   /** Output only. The set of labels on the file as requested by the label IDs in the `includeLabels` parameter. By default, no labels are returned. */
   labels?: LabelList_;
 }
-const FileLabelInfo = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<FileLabelInfo>;
-
 export interface FileLinkShareMetadata {
   /** Output only. Whether the file is eligible for security update. */
   securityUpdateEligible?: boolean;
   /** Output only. Whether the security update is enabled for this file. */
   securityUpdateEnabled?: boolean;
 }
-const FileLinkShareMetadata = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<FileLinkShareMetadata>;
-
 export interface FileVideoMediaMetadata {
   /** Output only. The duration of the video in milliseconds. */
   durationMillis?: string;
@@ -392,30 +304,18 @@ export interface FileVideoMediaMetadata {
   /** Output only. The height of the video in pixels. */
   height?: number;
 }
-const FileVideoMediaMetadata = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<FileVideoMediaMetadata>;
-
 export interface FileContentHintsThumbnail {
   /** The thumbnail data encoded with URL-safe Base64 ([RFC 4648 section 5](https://datatracker.ietf.org/doc/html/rfc4648#section-5)). */
   image?: string;
   /** The MIME type of the thumbnail. */
   mimeType?: string;
 }
-const FileContentHintsThumbnail = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<FileContentHintsThumbnail>;
-
 export interface FileContentHints {
   /** Text to be indexed for the file to improve fullText queries. This is limited to 128 KB in length and may contain HTML elements. */
   indexableText?: string;
   /** A thumbnail for the file. This will only be used if Google Drive cannot generate a standard thumbnail. */
   thumbnail?: FileContentHintsThumbnail;
 }
-const FileContentHints = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<FileContentHints>;
-
 export interface FileCapabilities {
   /** Output only. Whether there's a content restriction on the file that can be removed by the current user. */
   canRemoveContentRestriction?: boolean;
@@ -510,8 +410,6 @@ export interface FileCapabilities {
   /** Output only. Whether the current user can add a parent for the item without removing an existing parent in the same request. Not populated for shared drive files. */
   canAddMyDriveParent?: boolean;
 }
-const FileCapabilities = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<FileCapabilities>;
-
 /** A restriction for copy and download of the file. */
 export interface DownloadRestriction {
   /** Whether download and copy is restricted for readers. */
@@ -519,8 +417,6 @@ export interface DownloadRestriction {
   /** Whether download and copy is restricted for writers. If true, download is also restricted for readers. */
   restrictedForWriters?: boolean;
 }
-const DownloadRestriction = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DownloadRestriction>;
-
 /** Download restrictions applied to the file. */
 export interface DownloadRestrictionsMetadata {
   /** The download restriction of the file applied directly by the owner or organizer. This doesn't take into account shared drive settings or DLP rules. */
@@ -528,11 +424,6 @@ export interface DownloadRestrictionsMetadata {
   /** Output only. The effective download restriction applied to this file. This considers all restriction settings and DLP rules. */
   effectiveDownloadRestrictionWithContext?: DownloadRestriction;
 }
-const DownloadRestrictionsMetadata = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DownloadRestrictionsMetadata>;
-
 export interface FileShortcutDetails {
   /** The ID of the file that this shortcut points to. Can only be set on `files.create` requests. */
   targetId?: string;
@@ -541,8 +432,6 @@ export interface FileShortcutDetails {
   /** Output only. The MIME type of the file that this shortcut points to. The value of this field is a snapshot of the target's MIME type, captured when the shortcut is created. */
   targetMimeType?: string;
 }
-const FileShortcutDetails = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<FileShortcutDetails>;
-
 export interface FileImageMediaMetadataLocation {
   /** Output only. The altitude stored in the image. */
   altitude?: number;
@@ -551,11 +440,6 @@ export interface FileImageMediaMetadataLocation {
   /** Output only. The latitude stored in the image. */
   latitude?: number;
 }
-const FileImageMediaMetadataLocation = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<FileImageMediaMetadataLocation>;
-
 export interface FileImageMediaMetadata {
   /** Output only. The smallest f-number of the lens at the focal length used to create the photo (APEX value). */
   maxApertureValue?: number;
@@ -600,11 +484,6 @@ export interface FileImageMediaMetadata {
   /** Output only. The height of the image in pixels. */
   height?: number;
 }
-const FileImageMediaMetadata = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<FileImageMediaMetadata>;
-
 /** A restriction for accessing the content of the file. */
 export interface ContentRestriction {
   /** The time at which the content restriction was set (formatted RFC 3339 timestamp). Only populated if readOnly is true. */
@@ -622,14 +501,7 @@ export interface ContentRestriction {
   /** Whether the content of the file is read-only. If a file is read-only, a new revision of the file may not be added, comments may not be added or modified, and the title of the file may not be modified. */
   readOnly?: boolean;
 }
-const ContentRestriction = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ContentRestriction>;
-
 export type ContentRestrictionList = Array<ContentRestriction>;
-const ContentRestrictionList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ContentRestrictionList>;
-
 /** The metadata for a file. Some resource methods (such as `files.update`) require a `fileId`. Use the `files.list` method to retrieve the ID for a file. */
 export interface File {
   /** Whether this file has inherited permissions disabled. Inherited permissions are enabled by default. */
@@ -763,8 +635,6 @@ export interface File {
   /** The time at which the file was shared with the user, if applicable (RFC 3339 date-time). */
   sharedWithMeTime?: string;
 }
-const File = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<File>;
-
 export interface CopyFilesRequest {
   /** Whether to ignore the domain's default visibility settings for the created file. Domain administrators can choose to make all uploaded files visible to the domain by default; this parameter bypasses that behavior for the request. Permissions are still inherited from parent folders. */
   ignoreDefaultVisibility?: boolean;
@@ -789,19 +659,12 @@ export interface CopyFilesRequest {
   /** Request body */
   body?: File;
 }
-const CopyFilesRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<CopyFilesRequest>;
-
 export interface CommentQuotedFileContent {
   /** The MIME type of the quoted content. */
   mimeType?: string;
   /** The quoted content itself. This is interpreted as plain text if set through the API. */
   value?: string;
 }
-const CommentQuotedFileContent = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CommentQuotedFileContent>;
-
 /** A reply to a comment on a file. Some resource methods (such as `replies.update`) require a `replyId`. Use the `replies.list` method to retrieve the ID for a reply. */
 export interface Reply {
   /** Output only. The content of the reply with HTML formatting. */
@@ -827,11 +690,7 @@ export interface Reply {
   /** Output only. The ID of the reply. */
   id?: string;
 }
-const Reply = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Reply>;
-
 export type ReplyList_ = Array<Reply>;
-const ReplyList_ = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ReplyList_>;
-
 /** A comment on a file. Some resource methods (such as `comments.update`) require a `commentId`. Use the `comments.list` method to retrieve the ID for a comment in a file. */
 export interface Comment {
   /** Output only. The content of the comment with HTML formatting. */
@@ -863,19 +722,12 @@ export interface Comment {
   /** Output only. The ID of the comment. */
   id?: string;
 }
-const Comment = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Comment>;
-
 export interface CreateCommentsRequest {
   /** The ID of the file. */
   fileId: string;
   /** Request body */
   body?: Comment;
 }
-const CreateCommentsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CreateCommentsRequest>;
-
 export interface DriveRestrictions {
   /** Whether the options to copy, print, or download files inside this shared drive, should be disabled for readers and commenters. When this restriction is set to `true`, it will override the similarly named field to `true` for any file inside this shared drive. */
   copyRequiresWriterPermission?: boolean;
@@ -890,8 +742,6 @@ export interface DriveRestrictions {
   /** Whether administrative privileges on this shared drive are required to modify restrictions. */
   adminManagedRestrictions?: boolean;
 }
-const DriveRestrictions = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<DriveRestrictions>;
-
 export interface DriveBackgroundImageFile {
   /** The width of the cropped image in the closed range of 0 to 1. This value represents the width of the cropped image divided by the width of the entire image. The height is computed by applying a width to height aspect ratio of 80 to 9. The resulting image must be at least 1280 pixels wide and 144 pixels high. */
   width?: number;
@@ -902,11 +752,6 @@ export interface DriveBackgroundImageFile {
   /** The ID of an image file in Google Drive to use for the background image. */
   id?: string;
 }
-const DriveBackgroundImageFile = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DriveBackgroundImageFile>;
-
 export interface DriveCapabilities {
   /** Output only. Whether the current user can delete children from folders in this shared drive. */
   canDeleteChildren?: boolean;
@@ -951,8 +796,6 @@ export interface DriveCapabilities {
   /** Output only. Whether the current user can copy files in this shared drive. */
   canCopy?: boolean;
 }
-const DriveCapabilities = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<DriveCapabilities>;
-
 /** Representation of a shared drive. Some resource methods (such as `drives.update`) require a `driveId`. Use the `drives.list` method to retrieve the ID for a shared drive. */
 export interface Drive {
   /** Output only. A short-lived link to this shared drive's background image. */
@@ -980,16 +823,12 @@ export interface Drive {
   /** The ID of the theme from which the background image and color will be set. The set of possible `driveThemes` can be retrieved from a `drive.about.get` response. When not specified on a `drive.drives.create` request, a random theme is chosen from which the background image and color are set. This is a write-only field; it can only be set on requests that don't set `colorRgb` or `backgroundImageFile`. */
   themeId?: string;
 }
-const Drive = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<Drive>;
-
 export interface CreateDrivesRequest {
   /** Required. An ID, such as a random UUID, which uniquely identifies this user's request for idempotent creation of a shared drive. A repeated request by the same user and with the same request ID will avoid creating duplicates by attempting to create the same shared drive. If the shared drive already exists a 409 error will be returned. */
   requestId: string;
   /** Request body */
   body?: Drive;
 }
-const CreateDrivesRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<CreateDrivesRequest>;
-
 export interface CreateFilesRequest {
   /** Specifies which additional view's permissions to include in the response. Only `published` is supported. */
   includePermissionsForView?: string;
@@ -1012,8 +851,6 @@ export interface CreateFilesRequest {
   /** Request body */
   body?: File;
 }
-const CreateFilesRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<CreateFilesRequest>;
-
 export interface CreatePermissionsRequest {
   /** Whether the requesting application supports both My Drives and shared drives. */
   supportsAllDrives?: boolean;
@@ -1038,11 +875,6 @@ export interface CreatePermissionsRequest {
   /** Request body */
   body?: Permission;
 }
-const CreatePermissionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreatePermissionsRequest>;
-
 export interface CreateRepliesRequest {
   /** The ID of the file. */
   fileId: string;
@@ -1051,8 +883,6 @@ export interface CreateRepliesRequest {
   /** Request body */
   body?: Reply;
 }
-const CreateRepliesRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<CreateRepliesRequest>;
-
 export interface TeamDriveCapabilities {
   /** Whether the current user can share files or folders in this Team Drive. */
   canShare?: boolean;
@@ -1099,11 +929,6 @@ export interface TeamDriveCapabilities {
   /** Whether the current user can change the background of this Team Drive. */
   canChangeTeamDriveBackground?: boolean;
 }
-const TeamDriveCapabilities = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<TeamDriveCapabilities>;
-
 export interface TeamDriveBackgroundImageFile {
   /** The Y coordinate of the upper left corner of the cropping area in the background image. This is a value in the closed range of 0 to 1. This value represents the vertical distance from the top side of the entire image to the top side of the cropping area divided by the height of the entire image. */
   yCoordinate?: number;
@@ -1114,11 +939,6 @@ export interface TeamDriveBackgroundImageFile {
   /** The ID of an image file in Drive to use for the background image. */
   id?: string;
 }
-const TeamDriveBackgroundImageFile = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<TeamDriveBackgroundImageFile>;
-
 export interface TeamDriveRestrictions {
   /** Whether access to items inside this Team Drive is restricted to members of this Team Drive. */
   teamMembersOnly?: boolean;
@@ -1133,11 +953,6 @@ export interface TeamDriveRestrictions {
   /** Download restrictions applied by shared drive managers. */
   downloadRestriction?: DownloadRestriction;
 }
-const TeamDriveRestrictions = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<TeamDriveRestrictions>;
-
 /** Deprecated: use the drive collection instead. Next ID: 33 */
 export interface TeamDrive {
   /** A short-lived link to this Team Drive's background image. */
@@ -1163,19 +978,12 @@ export interface TeamDrive {
   /** The time at which the Team Drive was created (RFC 3339 date-time). */
   createdTime?: string;
 }
-const TeamDrive = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<TeamDrive>;
-
 export interface CreateTeamdrivesRequest {
   /** Required. An ID, such as a random UUID, which uniquely identifies this user's request for idempotent creation of a Team Drive. A repeated request by the same user and with the same request ID will avoid creating duplicates by attempting to create the same Team Drive. If the Team Drive already exists a 409 error will be returned. */
   requestId: string;
   /** Request body */
   body?: TeamDrive;
 }
-const CreateTeamdrivesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CreateTeamdrivesRequest>;
-
 /** Request for declining an approval as a reviewer. */
 export type DeclineApprovalRequest = ApproveApprovalRequest;
 export interface DeclineApprovalsRequest {
@@ -1186,28 +994,13 @@ export interface DeclineApprovalsRequest {
   /** Request body */
   body?: ApproveApprovalRequest;
 }
-const DeclineApprovalsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<DeclineApprovalsRequest>;
-
 export interface DeleteCommentsRequest {
   /** The ID of the comment. */
   commentId: string;
   /** The ID of the file. */
   fileId: string;
 }
-const DeleteCommentsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<DeleteCommentsRequest>;
-
 export interface DeleteCommentsResponse {}
-const DeleteCommentsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DeleteCommentsResponse>;
-
 export interface DeleteDrivesRequest {
   /** Whether any items inside the shared drive should also be deleted. This option is only supported when `useDomainAdminAccess` is also set to `true`. */
   allowItemDeletion?: boolean;
@@ -1216,11 +1009,7 @@ export interface DeleteDrivesRequest {
   /** Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the shared drive belongs. */
   useDomainAdminAccess?: boolean;
 }
-const DeleteDrivesRequest = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<DeleteDrivesRequest>;
-
 export interface DeleteDrivesResponse {}
-const DeleteDrivesResponse = DeleteCommentsResponse as any as S.Schema<DeleteDrivesResponse>;
-
 export interface DeleteFilesRequest {
   /** Deprecated: Use `supportsAllDrives` instead. */
   supportsTeamDrives?: boolean;
@@ -1231,11 +1020,7 @@ export interface DeleteFilesRequest {
   /** Whether the requesting application supports both My Drives and shared drives. */
   supportsAllDrives?: boolean;
 }
-const DeleteFilesRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<DeleteFilesRequest>;
-
 export interface DeleteFilesResponse {}
-const DeleteFilesResponse = DeleteCommentsResponse as any as S.Schema<DeleteFilesResponse>;
-
 export interface DeletePermissionsRequest {
   /** Issue the request as a domain administrator. If set to `true`, and if the following additional conditions are met, the requester is granted access: 1. The file ID parameter refers to a shared drive. 2. The requester is an administrator of the domain to which the shared drive belongs. For more information, see [Manage shared drives as domain administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators). */
   useDomainAdminAccess?: boolean;
@@ -1250,15 +1035,7 @@ export interface DeletePermissionsRequest {
   /** Whether the requesting application supports both My Drives and shared drives. */
   supportsAllDrives?: boolean;
 }
-const DeletePermissionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<DeletePermissionsRequest>;
-
 export interface DeletePermissionsResponse {}
-const DeletePermissionsResponse =
-  DeleteCommentsResponse as any as S.Schema<DeletePermissionsResponse>;
-
 export interface DeleteRepliesRequest {
   /** The ID of the file. */
   fileId: string;
@@ -1267,38 +1044,19 @@ export interface DeleteRepliesRequest {
   /** The ID of the reply. */
   replyId: string;
 }
-const DeleteRepliesRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<DeleteRepliesRequest>;
-
 export interface DeleteRepliesResponse {}
-const DeleteRepliesResponse = DeleteCommentsResponse as any as S.Schema<DeleteRepliesResponse>;
-
 export interface DeleteRevisionsRequest {
   /** The ID of the file. */
   fileId: string;
   /** The ID of the revision. */
   revisionId: string;
 }
-const DeleteRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DeleteRevisionsRequest>;
-
 export interface DeleteRevisionsResponse {}
-const DeleteRevisionsResponse = DeleteCommentsResponse as any as S.Schema<DeleteRevisionsResponse>;
-
 export interface DeleteTeamdrivesRequest {
   /** The ID of the Team Drive */
   teamDriveId: string;
 }
-const DeleteTeamdrivesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeleteTeamdrivesRequest>;
-
 export interface DeleteTeamdrivesResponse {}
-const DeleteTeamdrivesResponse =
-  DeleteCommentsResponse as any as S.Schema<DeleteTeamdrivesResponse>;
-
 export interface DownloadFilesRequest {
   /** Optional. The MIME type the file should be downloaded as. This field can only be set when downloading Google Workspace documents. For a list of supported MIME types, see [Export MIME types for Google Workspace documents](/workspace/drive/api/guides/ref-export-formats). If not set, a Google Workspace document is downloaded with a default MIME type. The default MIME type might change in the future. */
   mimeType?: string;
@@ -1307,14 +1065,8 @@ export interface DownloadFilesRequest {
   /** Optional. The revision ID of the file to download. This field can only be set when downloading blob files, Google Docs, and Google Sheets. Returns `INVALID_ARGUMENT` if downloading a specific revision on the file is unsupported. */
   revisionId?: string;
 }
-const DownloadFilesRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<DownloadFilesRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -1324,8 +1076,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -1339,44 +1089,26 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<Operation>;
-
 export interface EmptyTrashFilesRequest {
   /** Deprecated: If an item isn't in a shared drive and its last parent is deleted but the item itself isn't, the item will be placed under its owner's root. */
   enforceSingleParent?: boolean;
   /** If set, empties the trash of the provided shared drive. */
   driveId?: string;
 }
-const EmptyTrashFilesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<EmptyTrashFilesRequest>;
-
 export interface EmptyTrashFilesResponse {}
-const EmptyTrashFilesResponse = DeleteCommentsResponse as any as S.Schema<EmptyTrashFilesResponse>;
-
 export interface ExportFilesRequest {
   /** The ID of the file. */
   fileId: string;
   /** Required. The MIME type of the format requested for this export. For a list of supported MIME types, see [Export MIME types for Google Workspace documents](/workspace/drive/api/guides/ref-export-formats). */
   mimeType: string;
 }
-const ExportFilesRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ExportFilesRequest>;
-
 export interface ExportFilesResponse {}
-const ExportFilesResponse = DeleteCommentsResponse as any as S.Schema<ExportFilesResponse>;
-
 export interface GenerateCseTokenFilesRequest {
   /** The ID of the file for which the JWT should be generated. If not provided, an id will be generated. */
   fileId?: string;
   /** The ID of the expected parent of the file. Used when generating a JWT for a new CSE file. If specified, the parent will be fetched, and if the parent is a shared drive item, the shared drive's policy will be used to determine the KACLS that should be used. It is invalid to specify both file_id and parent in a single request. */
   parent?: string;
 }
-const GenerateCseTokenFilesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GenerateCseTokenFilesRequest>;
-
 /** JWT and associated metadata used to generate CSE files. */
 export interface GenerateCseTokenResponse {
   /** The signed JSON Web Token (JWT) for the file. */
@@ -1390,11 +1122,6 @@ export interface GenerateCseTokenResponse {
   /** The current Key ACL Service (KACLS) ID associated with the JWT. */
   currentKaclsId?: string;
 }
-const GenerateCseTokenResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GenerateCseTokenResponse>;
-
 export interface GenerateIdsFilesRequest {
   /** The space in which the IDs can be used to create files. Supported values are `drive` and `appDataFolder`. (Default: `drive`.) For more information, see [File organization](https://developers.google.com/workspace/drive/api/guides/about-files#file-organization). */
   space?: string;
@@ -1403,11 +1130,6 @@ export interface GenerateIdsFilesRequest {
   /** The type of items which the IDs can be used for. Supported values are `files` and `shortcuts`. Note that `shortcuts` are only supported in the `drive` `space`. (Default: `files`.) For more information, see [File organization](https://developers.google.com/workspace/drive/api/guides/about-files#file-organization). */
   type?: string;
 }
-const GenerateIdsFilesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GenerateIdsFilesRequest>;
-
 /** A list of generated file IDs which can be provided in create requests. */
 export interface GeneratedIds {
   /** The type of file that can be created with these IDs. */
@@ -1417,14 +1139,8 @@ export interface GeneratedIds {
   /** The IDs generated for the requesting user in the specified space. */
   ids?: StringList;
 }
-const GeneratedIds = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<GeneratedIds>;
-
 export interface GetAboutRequest {}
-const GetAboutRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<GetAboutRequest>;
-
 export type StringListMap = { [key: string]: StringList | undefined };
-const StringListMap = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<StringListMap>;
-
 export interface AboutTeamDriveThemesItem {
   /** Deprecated: Use `driveThemes/id` instead. */
   id?: string;
@@ -1433,17 +1149,7 @@ export interface AboutTeamDriveThemesItem {
   /** Deprecated: Use `driveThemes/backgroundImageLink` instead. */
   backgroundImageLink?: string;
 }
-const AboutTeamDriveThemesItem = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<AboutTeamDriveThemesItem>;
-
 export type AboutTeamDriveThemesItemList = Array<AboutTeamDriveThemesItem>;
-const AboutTeamDriveThemesItemList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<AboutTeamDriveThemesItemList>;
-
 export interface AboutStorageQuota {
   /** The total usage across all services. For users that are part of an organization with pooled storage, this is the usage across all services for the organization, rather than the individual user. */
   usage?: string;
@@ -1454,8 +1160,6 @@ export interface AboutStorageQuota {
   /** The usage limit, if applicable. This will not be present if the user has unlimited storage. For users that are part of an organization with pooled storage, this is the limit for the organization, rather than the individual user. */
   limit?: string;
 }
-const AboutStorageQuota = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<AboutStorageQuota>;
-
 export interface AboutDriveThemesItem {
   /** A link to this theme's background image. */
   backgroundImageLink?: string;
@@ -1464,17 +1168,7 @@ export interface AboutDriveThemesItem {
   /** The ID of the theme. */
   id?: string;
 }
-const AboutDriveThemesItem = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<AboutDriveThemesItem>;
-
 export type AboutDriveThemesItemList = Array<AboutDriveThemesItem>;
-const AboutDriveThemesItemList = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<AboutDriveThemesItemList>;
-
 /** Information about the user, the user's Drive, and system capabilities. */
 export interface About {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#about"`. */
@@ -1504,19 +1198,12 @@ export interface About {
   /** A list of themes that are supported for shared drives. */
   driveThemes?: AboutDriveThemesItemList;
 }
-const About = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<About>;
-
 export interface GetAccessproposalsRequest {
   /** Required. The ID of the item the request is on. */
   fileId: string;
   /** Required. The ID of the access proposal to resolve. */
   proposalId: string;
 }
-const GetAccessproposalsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GetAccessproposalsRequest>;
-
 /** A wrapper for the role and view of an access proposal. For more information, see [Roles and permissions](https://developers.google.com/workspace/drive/api/guides/ref-roles). */
 export interface AccessProposalRoleAndView {
   /** The role that was proposed by the requester. The supported values are: * `writer` * `commenter` * `reader` */
@@ -1524,17 +1211,7 @@ export interface AccessProposalRoleAndView {
   /** Indicates the view for this access proposal. Only populated for proposals that belong to a view. Only `published` is supported. */
   view?: string;
 }
-const AccessProposalRoleAndView = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<AccessProposalRoleAndView>;
-
 export type AccessProposalRoleAndViewList = Array<AccessProposalRoleAndView>;
-const AccessProposalRoleAndViewList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<AccessProposalRoleAndViewList>;
-
 /** Manage outstanding access proposals on a file. */
 export interface AccessProposal {
   /** The message that the requester added to the proposal. */
@@ -1552,22 +1229,16 @@ export interface AccessProposal {
   /** The creation time. */
   createTime?: string;
 }
-const AccessProposal = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<AccessProposal>;
-
 export interface GetApprovalsRequest {
   /** Required. The ID of the file that the approval is on. */
   fileId: string;
   /** Required. The ID of the approval. */
   approvalId: string;
 }
-const GetApprovalsRequest = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<GetApprovalsRequest>;
-
 export interface GetAppsRequest {
   /** The ID of the app. */
   appId: string;
 }
-const GetAppsRequest = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<GetAppsRequest>;
-
 export interface AppIcons {
   /** Category of the icon. Allowed values are: * `application` - The icon for the application. * `document` - The icon for a file associated with the app. * `documentShared` - The icon for a shared file associated with the app. */
   category?: string;
@@ -1576,11 +1247,7 @@ export interface AppIcons {
   /** URL for the icon. */
   iconUrl?: string;
 }
-const AppIcons = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<AppIcons>;
-
 export type AppIconsList = Array<AppIcons>;
-const AppIconsList = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<AppIconsList>;
-
 /** The `apps` resource provides a list of apps that a user has installed, with information about each app's supported MIME types, file extensions, and other details. Some resource methods (such as `apps.get`) require an `appId`. Use the `apps.list` method to retrieve the ID for an installed application. */
 export interface App {
   /** The ID of the product listing for this app. */
@@ -1632,8 +1299,6 @@ export interface App {
   /** Output only. Identifies what kind of resource this is. Value: the fixed string "drive#app". */
   kind?: string;
 }
-const App = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<App>;
-
 export interface GetCommentsRequest {
   /** The ID of the comment. */
   commentId: string;
@@ -1642,16 +1307,12 @@ export interface GetCommentsRequest {
   /** Whether to return deleted comments. Deleted comments will not include their original content. */
   includeDeleted?: boolean;
 }
-const GetCommentsRequest = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<GetCommentsRequest>;
-
 export interface GetDrivesRequest {
   /** Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the shared drive belongs. */
   useDomainAdminAccess?: boolean;
   /** The ID of the shared drive. */
   driveId: string;
 }
-const GetDrivesRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<GetDrivesRequest>;
-
 export interface GetFilesRequest {
   /** The ID of the file. */
   fileId: string;
@@ -1666,17 +1327,10 @@ export interface GetFilesRequest {
   /** Whether the user is acknowledging the risk of downloading known malware or other abusive files. This is only applicable when the `alt` parameter is set to `media` and the user is the owner of the file or an organizer of the shared drive in which the file resides. */
   acknowledgeAbuse?: boolean;
 }
-const GetFilesRequest = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<GetFilesRequest>;
-
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetOperationsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GetOperationsRequest>;
-
 export interface GetPermissionsRequest {
   /** The ID of the permission. */
   permissionId: string;
@@ -1689,11 +1343,6 @@ export interface GetPermissionsRequest {
   /** Whether the requesting application supports both My Drives and shared drives. */
   supportsAllDrives?: boolean;
 }
-const GetPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GetPermissionsRequest>;
-
 export interface GetRepliesRequest {
   /** The ID of the file. */
   fileId: string;
@@ -1704,8 +1353,6 @@ export interface GetRepliesRequest {
   /** The ID of the comment. */
   commentId: string;
 }
-const GetRepliesRequest = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<GetRepliesRequest>;
-
 export interface GetRevisionsRequest {
   /** The ID of the file. */
   fileId: string;
@@ -1714,8 +1361,6 @@ export interface GetRevisionsRequest {
   /** Whether the user is acknowledging the risk of downloading known malware or other abusive files. This is only applicable when the `alt` parameter is set to `media` and the user is the owner of the file or an organizer of the shared drive in which the file resides. */
   acknowledgeAbuse?: boolean;
 }
-const GetRevisionsRequest = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<GetRevisionsRequest>;
-
 /** The metadata for a revision to a file. Some resource methods (such as `revisions.update`) require a `revisionId`. Use the `revisions.list` method to retrieve the ID for a revision. */
 export interface Revision {
   /** Whether to keep this revision forever, even if it is no longer the head revision. If not set, the revision will be automatically purged 30 days after newer content is uploaded. This can be set on a maximum of 200 revisions for a file. This field is only applicable to files with binary content in Drive. */
@@ -1747,8 +1392,6 @@ export interface Revision {
   /** Whether subsequent revisions will be automatically republished. This is only applicable to Docs Editors files. */
   publishAuto?: boolean;
 }
-const Revision = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<Revision>;
-
 export interface GetStartPageTokenChangesRequest {
   /** Deprecated: Use `driveId` instead. */
   teamDriveId?: string;
@@ -1759,36 +1402,22 @@ export interface GetStartPageTokenChangesRequest {
   /** Deprecated: Use `supportsAllDrives` instead. */
   supportsTeamDrives?: boolean;
 }
-const GetStartPageTokenChangesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GetStartPageTokenChangesRequest>;
-
 export interface StartPageToken {
   /** The starting page token for listing future changes. The page token doesn't expire. */
   startPageToken?: string;
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#startPageToken"`. */
   kind?: string;
 }
-const StartPageToken = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<StartPageToken>;
-
 export interface GetTeamdrivesRequest {
   /** Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the Team Drive belongs. */
   useDomainAdminAccess?: boolean;
   /** The ID of the Team Drive */
   teamDriveId: string;
 }
-const GetTeamdrivesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GetTeamdrivesRequest>;
-
 export interface HideDrivesRequest {
   /** The ID of the shared drive. */
   driveId: string;
 }
-const HideDrivesRequest = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<HideDrivesRequest>;
-
 export interface ListAccessproposalsRequest {
   /** Optional. The number of results per page. */
   pageSize?: number;
@@ -1797,14 +1426,7 @@ export interface ListAccessproposalsRequest {
   /** Optional. The continuation token on the list of access requests. */
   pageToken?: string;
 }
-const ListAccessproposalsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ListAccessproposalsRequest>;
-
 export type AccessProposalList = Array<AccessProposal>;
-const AccessProposalList = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<AccessProposalList>;
-
 /** The response to an access proposal list request. */
 export interface ListAccessProposalsResponse {
   /** The list of access proposals. This field is only populated in Drive API v3. */
@@ -1812,11 +1434,6 @@ export interface ListAccessProposalsResponse {
   /** The continuation token for the next page of results. This will be absent if the end of the results list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. */
   nextPageToken?: string;
 }
-const ListAccessProposalsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ListAccessProposalsResponse>;
-
 export interface ListApprovalsRequest {
   /** The maximum number of approvals to return. When not set, at most 100 approvals are returned. */
   pageSize?: number;
@@ -1825,14 +1442,7 @@ export interface ListApprovalsRequest {
   /** Required. The ID of the file that the approval is on. */
   fileId: string;
 }
-const ListApprovalsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ListApprovalsRequest>;
-
 export type ApprovalList_ = Array<Approval>;
-const ApprovalList_ = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<ApprovalList_>;
-
 /** The response of an approvals list request. */
 export interface ApprovalList {
   /** This is always drive#approvalList */
@@ -1842,8 +1452,6 @@ export interface ApprovalList {
   /** The list of approvals. If `nextPageToken` is populated, then this list may be incomplete and an additional page of results should be fetched. */
   items: ApprovalList_;
 }
-const ApprovalList = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<ApprovalList>;
-
 export interface ListAppsRequest {
   /** A comma-separated list of file extensions to limit returned results. All results within the given app query scope which can open any of the given MIME types will be included in the response. If `appFilterExtensions` are provided as well, the result is a union of the two resulting app lists. */
   appFilterMimeTypes?: string;
@@ -1852,11 +1460,7 @@ export interface ListAppsRequest {
   /** A language or locale code, as defined by BCP 47, with some extensions from Unicode's LDML format (http://www.unicode.org/reports/tr35/). */
   languageCode?: string;
 }
-const ListAppsRequest = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<ListAppsRequest>;
-
 export type AppList_ = Array<App>;
-const AppList_ = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<AppList_>;
-
 /** A list of third-party applications which the user has installed or given access to Google Drive. */
 export interface AppList {
   /** The list of app IDs that the user has specified to use by default. The list is in reverse-priority order (lowest to highest). */
@@ -1868,8 +1472,6 @@ export interface AppList {
   /** The list of apps. */
   items?: AppList_;
 }
-const AppList = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<AppList>;
-
 export interface ListChangesRequest {
   /** Deprecated: Use `includeItemsFromAllDrives` instead. */
   includeTeamDriveItems?: boolean;
@@ -1900,8 +1502,6 @@ export interface ListChangesRequest {
   /** The shared drive from which changes will be returned. If specified the change IDs will be reflective of the shared drive; use the combined drive ID and change ID as an identifier. */
   driveId?: string;
 }
-const ListChangesRequest = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<ListChangesRequest>;
-
 /** A change to a file or shared drive. */
 export interface Change {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#change"`. */
@@ -1927,11 +1527,7 @@ export interface Change {
   /** The updated state of the shared drive. Present if the changeType is drive, the user is still a member of the shared drive, and the shared drive has not been deleted. */
   drive?: Drive;
 }
-const Change = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<Change>;
-
 export type ChangeList_ = Array<Change>;
-const ChangeList_ = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<ChangeList_>;
-
 /** A list of changes for a user. */
 export interface ChangeList {
   /** The starting page token for future changes. This will be present only if the end of the current changes list has been reached. The page token doesn't expire. */
@@ -1943,8 +1539,6 @@ export interface ChangeList {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#changeList"`. */
   kind?: string;
 }
-const ChangeList = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<ChangeList>;
-
 export interface ListCommentsRequest {
   /** The minimum value of 'modifiedTime' for the result comments (RFC 3339 date-time). */
   startModifiedTime?: string;
@@ -1957,11 +1551,7 @@ export interface ListCommentsRequest {
   /** The ID of the file. */
   fileId: string;
 }
-const ListCommentsRequest = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<ListCommentsRequest>;
-
 export type CommentList_ = Array<Comment>;
-const CommentList_ = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<CommentList_>;
-
 /** A list of comments on a file. */
 export interface CommentList {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#commentList"`. */
@@ -1971,8 +1561,6 @@ export interface CommentList {
   /** The page token for the next page of comments. This will be absent if the end of the comments list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. The page token is typically valid for several hours. However, if new items are added or removed, your expected results might differ. */
   nextPageToken?: string;
 }
-const CommentList = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<CommentList>;
-
 export interface ListDrivesRequest {
   /** Issue the request as a domain administrator; if set to true, then all shared drives of the domain in which the requester is an administrator are returned. */
   useDomainAdminAccess?: boolean;
@@ -1983,11 +1571,7 @@ export interface ListDrivesRequest {
   /** Query string for searching shared drives. */
   q?: string;
 }
-const ListDrivesRequest = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<ListDrivesRequest>;
-
 export type DriveList_ = Array<Drive>;
-const DriveList_ = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<DriveList_>;
-
 /** A list of shared drives. */
 export interface DriveList {
   /** The list of shared drives. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched. */
@@ -1997,11 +1581,7 @@ export interface DriveList {
   /** The page token for the next page of shared drives. This will be absent if the end of the list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. The page token is typically valid for several hours. However, if new items are added or removed, your expected results might differ. */
   nextPageToken?: string;
 }
-const DriveList = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<DriveList>;
-
 export type ListFilesCorpusEnum = "domain" | "user";
-const ListFilesCorpusEnum = S.String;
-
 export interface ListFilesRequest {
   /** Whether both My Drive and shared drive items should be included in results. */
   includeItemsFromAllDrives?: boolean;
@@ -2034,11 +1614,7 @@ export interface ListFilesRequest {
   /** The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from the previous response. */
   pageToken?: string;
 }
-const ListFilesRequest = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<ListFilesRequest>;
-
 export type FileList_ = Array<File>;
-const FileList_ = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<FileList_>;
-
 /** A list of files. */
 export interface FileList {
   /** The page token for the next page of files. This will be absent if the end of the files list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. The page token is typically valid for several hours. However, if new items are added or removed, your expected results might differ. */
@@ -2050,8 +1626,6 @@ export interface FileList {
   /** The list of files. If `nextPageToken` is populated, then this list may be incomplete and an additional page of results should be fetched. */
   files?: FileList_;
 }
-const FileList = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<FileList>;
-
 export interface ListLabelsFilesRequest {
   /** The ID for the file. */
   fileId: string;
@@ -2060,11 +1634,6 @@ export interface ListLabelsFilesRequest {
   /** The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from the previous response. */
   pageToken?: string;
 }
-const ListLabelsFilesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ListLabelsFilesRequest>;
-
 /** A list of labels applied to a file. */
 export interface LabelList {
   /** This is always `"drive#labelList"`. */
@@ -2074,8 +1643,6 @@ export interface LabelList {
   /** The list of labels. */
   labels?: LabelList_;
 }
-const LabelList = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<LabelList>;
-
 export interface ListPermissionsRequest {
   /** Specifies which additional view's permissions to include in the response. Only `published` is supported. */
   includePermissionsForView?: string;
@@ -2092,11 +1659,6 @@ export interface ListPermissionsRequest {
   /** Deprecated: Use `supportsAllDrives` instead. */
   supportsTeamDrives?: boolean;
 }
-const ListPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ListPermissionsRequest>;
-
 /** A list of permissions for a file. */
 export interface PermissionList {
   /** The page token for the next page of permissions. This field will be absent if the end of the permissions list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. The page token is typically valid for several hours. However, if new items are added or removed, your expected results might differ. */
@@ -2106,8 +1668,6 @@ export interface PermissionList {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#permissionList"`. */
   kind?: string;
 }
-const PermissionList = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<PermissionList>;
-
 export interface ListRepliesRequest {
   /** The ID of the file. */
   fileId: string;
@@ -2120,8 +1680,6 @@ export interface ListRepliesRequest {
   /** Whether to include deleted replies. Deleted replies don't include their original content. */
   includeDeleted?: boolean;
 }
-const ListRepliesRequest = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<ListRepliesRequest>;
-
 /** A list of replies to a comment on a file. */
 export interface ReplyList {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#replyList"`. */
@@ -2131,8 +1689,6 @@ export interface ReplyList {
   /** The page token for the next page of replies. This will be absent if the end of the replies list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. The page token is typically valid for several hours. However, if new items are added or removed, your expected results might differ. */
   nextPageToken?: string;
 }
-const ReplyList = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<ReplyList>;
-
 export interface ListRevisionsRequest {
   /** The ID of the file. */
   fileId: string;
@@ -2141,14 +1697,7 @@ export interface ListRevisionsRequest {
   /** The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response. */
   pageToken?: string;
 }
-const ListRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ListRevisionsRequest>;
-
 export type RevisionList_ = Array<Revision>;
-const RevisionList_ = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<RevisionList_>;
-
 /** A list of revisions of a file. */
 export interface RevisionList {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#revisionList"`. */
@@ -2158,8 +1707,6 @@ export interface RevisionList {
   /** The list of revisions. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched. */
   revisions?: RevisionList_;
 }
-const RevisionList = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<RevisionList>;
-
 export interface ListTeamdrivesRequest {
   /** Maximum number of Team Drives to return. */
   pageSize?: number;
@@ -2170,14 +1717,7 @@ export interface ListTeamdrivesRequest {
   /** Page token for Team Drives. */
   pageToken?: string;
 }
-const ListTeamdrivesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListTeamdrivesRequest>;
-
 export type TeamDriveList_ = Array<TeamDrive>;
-const TeamDriveList_ = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<TeamDriveList_>;
-
 /** A list of Team Drives. */
 export interface TeamDriveList {
   /** The page token for the next page of Team Drives. This will be absent if the end of the Team Drives list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. The page token is typically valid for several hours. However, if new items are added or removed, your expected results might differ. */
@@ -2187,8 +1727,6 @@ export interface TeamDriveList {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#teamDriveList"`. */
   kind?: string;
 }
-const TeamDriveList = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<TeamDriveList>;
-
 /** A modification to a label's field. */
 export interface LabelFieldModification {
   /** Replaces a `selection` field with these new values. */
@@ -2208,17 +1746,7 @@ export interface LabelFieldModification {
   /** Replaces a `user` field with these new values. The values must be a valid email addresses. */
   setUserValues?: StringList;
 }
-const LabelFieldModification = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<LabelFieldModification>;
-
 export type LabelFieldModificationList = Array<LabelFieldModification>;
-const LabelFieldModificationList = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<LabelFieldModificationList>;
-
 /** A modification to a label on a file. A `LabelModification` can be used to apply a label to a file, update an existing label on a file, or remove a label from a file. */
 export interface LabelModification {
   /** The list of modifications to this label's fields. */
@@ -2230,14 +1758,7 @@ export interface LabelModification {
   /** This is always `"drive#labelModification"`. */
   kind?: string;
 }
-const LabelModification = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<LabelModification>;
-
 export type LabelModificationList = Array<LabelModification>;
-const LabelModificationList = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<LabelModificationList>;
-
 /** A request to modify the set of labels on a file. This request may contain many modifications that will either all succeed or all fail atomically. */
 export interface ModifyLabelsRequest {
   /** The list of modifications to apply to the labels on the file. */
@@ -2245,19 +1766,12 @@ export interface ModifyLabelsRequest {
   /** This is always `"drive#modifyLabelsRequest"`. */
   kind?: string;
 }
-const ModifyLabelsRequest = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<ModifyLabelsRequest>;
-
 export interface ModifyLabelsFilesRequest {
   /** The ID of the file to which the labels belong. */
   fileId: string;
   /** Request body */
   body?: ModifyLabelsRequest;
 }
-const ModifyLabelsFilesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ModifyLabelsFilesRequest>;
-
 /** Response to a `ModifyLabels` request. This contains only those labels which were added or updated by the request. */
 export interface ModifyLabelsResponse {
   /** The list of labels which were added or updated by the request. */
@@ -2265,21 +1779,12 @@ export interface ModifyLabelsResponse {
   /** This is always `"drive#modifyLabelsResponse"`. */
   kind?: string;
 }
-const ModifyLabelsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ModifyLabelsResponse>;
-
 /** Representation of a reviewer addition. */
 export interface AddReviewer {
   /** Required. The email of the reviewer to add. */
   addedReviewerEmail?: string;
 }
-const AddReviewer = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<AddReviewer>;
-
 export type AddReviewerList = Array<AddReviewer>;
-const AddReviewerList = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<AddReviewerList>;
-
 /** Representation of a reviewer replacement. */
 export interface ReplaceReviewer {
   /** Required. The email of the reviewer to remove. */
@@ -2287,11 +1792,7 @@ export interface ReplaceReviewer {
   /** Required. The email of the reviewer to add. */
   addedReviewerEmail?: string;
 }
-const ReplaceReviewer = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<ReplaceReviewer>;
-
 export type ReplaceReviewerList = Array<ReplaceReviewer>;
-const ReplaceReviewerList = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<ReplaceReviewerList>;
-
 /** Request for reassigning an approval. Reviewers can be added or replaced, but not removed. */
 export interface ReassignApprovalRequest {
   /** Optional. The list of reviewers to add. */
@@ -2301,11 +1802,6 @@ export interface ReassignApprovalRequest {
   /** Optional. A message to send to the new reviewers. This message is included in notifications for the action and in the approval activity log. */
   message?: string;
 }
-const ReassignApprovalRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ReassignApprovalRequest>;
-
 export interface ReassignApprovalsRequest {
   /** Required. The ID of the file that the approval is on. */
   fileId: string;
@@ -2314,14 +1810,7 @@ export interface ReassignApprovalsRequest {
   /** Request body */
   body?: ReassignApprovalRequest;
 }
-const ReassignApprovalsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<ReassignApprovalsRequest>;
-
 export type ResolveAccessProposalRequestActionEnum = "ACTION_UNSPECIFIED" | "ACCEPT" | "DENY";
-const ResolveAccessProposalRequestActionEnum = S.String;
-
 /** Request message for resolving an AccessProposal on a file. */
 export interface ResolveAccessProposalRequest {
   /** Optional. Indicates the view for this access proposal. This should only be set when the proposal belongs to a view. Only `published` is supported. */
@@ -2333,11 +1822,6 @@ export interface ResolveAccessProposalRequest {
   /** Optional. The roles that the approver has allowed, if any. For more information, see [Roles and permissions](https://developers.google.com/workspace/drive/api/guides/ref-roles). Note: This field is required for the `ACCEPT` action. */
   role?: StringList;
 }
-const ResolveAccessProposalRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ResolveAccessProposalRequest>;
-
 export interface ResolveAccessproposalsRequest {
   /** Required. The ID of the item the request is on. */
   fileId: string;
@@ -2346,21 +1830,11 @@ export interface ResolveAccessproposalsRequest {
   /** Request body */
   body?: ResolveAccessProposalRequest;
 }
-const ResolveAccessproposalsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ResolveAccessproposalsRequest>;
-
 export interface ResolveAccessproposalsResponse {}
-const ResolveAccessproposalsResponse =
-  DeleteCommentsResponse as any as S.Schema<ResolveAccessproposalsResponse>;
-
 export type StartApprovalRequestFileContentChangeBehaviorEnum =
   | "FILE_CONTENT_CHANGE_BEHAVIOR_UNSPECIFIED"
   | "RESET_APPROVAL"
   | "NO_APPROVAL_ACTION";
-const StartApprovalRequestFileContentChangeBehaviorEnum = S.String;
-
 /** Allows creating an approval on a file. */
 export interface StartApprovalRequest {
   /** Optional. The behavior of the approval when the file content changes. */
@@ -2374,22 +1848,12 @@ export interface StartApprovalRequest {
   /** Optional. Whether to lock the file when starting the approval. */
   lockFile?: boolean;
 }
-const StartApprovalRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<StartApprovalRequest>;
-
 export interface StartApprovalsRequest {
   /** Required. The ID of the file that the approval is created on. */
   fileId: string;
   /** Request body */
   body?: StartApprovalRequest;
 }
-const StartApprovalsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<StartApprovalsRequest>;
-
 /** A notification channel used to watch for resource changes. */
 export interface Channel {
   /** A UUID or similar unique string that identifies this channel. */
@@ -2413,23 +1877,15 @@ export interface Channel {
   /** Additional parameters controlling delivery channel behavior. Optional. */
   params?: StringMap;
 }
-const Channel = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<Channel>;
-
 export interface StopChannelsRequest {
   /** Request body */
   body?: Channel;
 }
-const StopChannelsRequest = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<StopChannelsRequest>;
-
 export interface StopChannelsResponse {}
-const StopChannelsResponse = DeleteCommentsResponse as any as S.Schema<StopChannelsResponse>;
-
 export interface UnhideDrivesRequest {
   /** The ID of the shared drive. */
   driveId: string;
 }
-const UnhideDrivesRequest = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<UnhideDrivesRequest>;
-
 export interface UpdateCommentsRequest {
   /** The ID of the file. */
   fileId: string;
@@ -2438,11 +1894,6 @@ export interface UpdateCommentsRequest {
   /** Request body */
   body?: Comment;
 }
-const UpdateCommentsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<UpdateCommentsRequest>;
-
 export interface UpdateDrivesRequest {
   /** The ID of the shared drive. */
   driveId: string;
@@ -2451,8 +1902,6 @@ export interface UpdateDrivesRequest {
   /** Request body */
   body?: Drive;
 }
-const UpdateDrivesRequest = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<UpdateDrivesRequest>;
-
 export interface UpdateFilesRequest {
   /** A comma-separated list of parent IDs to add. */
   addParents?: string;
@@ -2479,8 +1928,6 @@ export interface UpdateFilesRequest {
   /** Request body */
   body?: File;
 }
-const UpdateFilesRequest = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<UpdateFilesRequest>;
-
 export interface UpdatePermissionsRequest {
   /** The ID of the permission. */
   permissionId: string;
@@ -2501,11 +1948,6 @@ export interface UpdatePermissionsRequest {
   /** Request body */
   body?: Permission;
 }
-const UpdatePermissionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<UpdatePermissionsRequest>;
-
 export interface UpdateRepliesRequest {
   /** The ID of the reply. */
   replyId: string;
@@ -2516,11 +1958,6 @@ export interface UpdateRepliesRequest {
   /** Request body */
   body?: Reply;
 }
-const UpdateRepliesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<UpdateRepliesRequest>;
-
 export interface UpdateRevisionsRequest {
   /** The ID of the file. */
   fileId: string;
@@ -2529,11 +1966,6 @@ export interface UpdateRevisionsRequest {
   /** Request body */
   body?: Revision;
 }
-const UpdateRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<UpdateRevisionsRequest>;
-
 export interface UpdateTeamdrivesRequest {
   /** Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the Team Drive belongs. */
   useDomainAdminAccess?: boolean;
@@ -2542,11 +1974,6 @@ export interface UpdateTeamdrivesRequest {
   /** Request body */
   body?: TeamDrive;
 }
-const UpdateTeamdrivesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<UpdateTeamdrivesRequest>;
-
 export interface WatchChangesRequest {
   /** Deprecated: Use `driveId` instead. */
   teamDriveId?: string;
@@ -2579,8 +2006,6 @@ export interface WatchChangesRequest {
   /** Request body */
   body?: Channel;
 }
-const WatchChangesRequest = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<WatchChangesRequest>;
-
 export interface WatchFilesRequest {
   /** Specifies which additional view's permissions to include in the response. Only `published` is supported. */
   includePermissionsForView?: string;
@@ -2597,8 +2022,6 @@ export interface WatchFilesRequest {
   /** Request body */
   body?: Channel;
 }
-const WatchFilesRequest = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<WatchFilesRequest>;
-
 export type ApproveApprovalsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Approves an approval. For more information, see [Manage approvals](https://developers.google.com/workspace/drive/api/guides/approvals). This is used to update the ReviewerResponse of the requesting user with a Response of `APPROVED`. If this is the last required reviewer response, this also completes the approval and sets the approval Status to `APPROVED`. */
 export const approveApprovals: API.OperationMethod<
@@ -2607,8 +2030,8 @@ export const approveApprovals: API.OperationMethod<
   ApproveApprovalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApproveApprovalsRequest,
-  output: Approval,
+  input: __S(1) as any as S.Schema<ApproveApprovalsRequest>,
+  output: __S(5) as any as S.Schema<Approval>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2622,8 +2045,8 @@ export const cancelApprovals: API.OperationMethod<
   CancelApprovalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelApprovalsRequest,
-  output: Approval,
+  input: __S(6) as any as S.Schema<CancelApprovalsRequest>,
+  output: __S(5) as any as S.Schema<Approval>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2637,8 +2060,8 @@ export const commentApprovals: API.OperationMethod<
   CommentApprovalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommentApprovalsRequest,
-  output: Approval,
+  input: __S(7) as any as S.Schema<CommentApprovalsRequest>,
+  output: __S(5) as any as S.Schema<Approval>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2648,8 +2071,8 @@ export type CopyFilesError = NotFound | Forbidden | BadRequest | Conflict | GcpO
 /** Creates a copy of a file and applies any requested updates with patch semantics. For more information, see [Create and manage files](https://developers.google.com/workspace/drive/api/guides/create-file). */
 export const copyFiles: API.OperationMethod<CopyFilesRequest, File, CopyFilesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: CopyFilesRequest,
-    output: File,
+    input: __S(37) as any as S.Schema<CopyFilesRequest>,
+    output: __S(36) as any as S.Schema<File>,
     errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -2663,8 +2086,8 @@ export const createComments: API.OperationMethod<
   CreateCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCommentsRequest,
-  output: Comment,
+  input: __S(42) as any as S.Schema<CreateCommentsRequest>,
+  output: __S(41) as any as S.Schema<Comment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2678,8 +2101,8 @@ export const createDrives: API.OperationMethod<
   CreateDrivesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDrivesRequest,
-  output: Drive,
+  input: __S(47) as any as S.Schema<CreateDrivesRequest>,
+  output: __S(46) as any as S.Schema<Drive>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2693,8 +2116,8 @@ export const createFiles: API.OperationMethod<
   CreateFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFilesRequest,
-  output: File,
+  input: __S(48) as any as S.Schema<CreateFilesRequest>,
+  output: __S(36) as any as S.Schema<File>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2708,8 +2131,8 @@ export const createPermissions: API.OperationMethod<
   CreatePermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePermissionsRequest,
-  output: Permission,
+  input: __S(49) as any as S.Schema<CreatePermissionsRequest>,
+  output: __S(16) as any as S.Schema<Permission>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2723,8 +2146,8 @@ export const createReplies: API.OperationMethod<
   CreateRepliesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRepliesRequest,
-  output: Reply,
+  input: __S(50) as any as S.Schema<CreateRepliesRequest>,
+  output: __S(39) as any as S.Schema<Reply>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2738,8 +2161,8 @@ export const createTeamdrives: API.OperationMethod<
   CreateTeamdrivesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTeamdrivesRequest,
-  output: TeamDrive,
+  input: __S(55) as any as S.Schema<CreateTeamdrivesRequest>,
+  output: __S(54) as any as S.Schema<TeamDrive>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2753,8 +2176,8 @@ export const declineApprovals: API.OperationMethod<
   DeclineApprovalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeclineApprovalsRequest,
-  output: Approval,
+  input: __S(56) as any as S.Schema<DeclineApprovalsRequest>,
+  output: __S(5) as any as S.Schema<Approval>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2768,8 +2191,8 @@ export const deleteComments: API.OperationMethod<
   DeleteCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCommentsRequest,
-  output: DeleteCommentsResponse,
+  input: __S(57) as any as S.Schema<DeleteCommentsRequest>,
+  output: __S(58) as any as S.Schema<DeleteCommentsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2783,8 +2206,8 @@ export const deleteDrives: API.OperationMethod<
   DeleteDrivesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDrivesRequest,
-  output: DeleteDrivesResponse,
+  input: __S(59) as any as S.Schema<DeleteDrivesRequest>,
+  output: __S(58) as any as S.Schema<DeleteDrivesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2798,8 +2221,8 @@ export const deleteFiles: API.OperationMethod<
   DeleteFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFilesRequest,
-  output: DeleteFilesResponse,
+  input: __S(60) as any as S.Schema<DeleteFilesRequest>,
+  output: __S(58) as any as S.Schema<DeleteFilesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2813,8 +2236,8 @@ export const deletePermissions: API.OperationMethod<
   DeletePermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePermissionsRequest,
-  output: DeletePermissionsResponse,
+  input: __S(61) as any as S.Schema<DeletePermissionsRequest>,
+  output: __S(58) as any as S.Schema<DeletePermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2828,8 +2251,8 @@ export const deleteReplies: API.OperationMethod<
   DeleteRepliesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRepliesRequest,
-  output: DeleteRepliesResponse,
+  input: __S(62) as any as S.Schema<DeleteRepliesRequest>,
+  output: __S(58) as any as S.Schema<DeleteRepliesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2843,8 +2266,8 @@ export const deleteRevisions: API.OperationMethod<
   DeleteRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRevisionsRequest,
-  output: DeleteRevisionsResponse,
+  input: __S(63) as any as S.Schema<DeleteRevisionsRequest>,
+  output: __S(58) as any as S.Schema<DeleteRevisionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2858,8 +2281,8 @@ export const deleteTeamdrives: API.OperationMethod<
   DeleteTeamdrivesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTeamdrivesRequest,
-  output: DeleteTeamdrivesResponse,
+  input: __S(64) as any as S.Schema<DeleteTeamdrivesRequest>,
+  output: __S(58) as any as S.Schema<DeleteTeamdrivesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2873,8 +2296,8 @@ export const downloadFiles: API.OperationMethod<
   DownloadFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadFilesRequest,
-  output: Operation,
+  input: __S(65) as any as S.Schema<DownloadFilesRequest>,
+  output: __S(69) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2888,8 +2311,8 @@ export const emptyTrashFiles: API.OperationMethod<
   EmptyTrashFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EmptyTrashFilesRequest,
-  output: EmptyTrashFilesResponse,
+  input: __S(70) as any as S.Schema<EmptyTrashFilesRequest>,
+  output: __S(58) as any as S.Schema<EmptyTrashFilesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2903,8 +2326,8 @@ export const exportFiles: API.OperationMethod<
   ExportFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportFilesRequest,
-  output: ExportFilesResponse,
+  input: __S(71) as any as S.Schema<ExportFilesRequest>,
+  output: __S(58) as any as S.Schema<ExportFilesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2918,8 +2341,8 @@ export const generateCseTokenFiles: API.OperationMethod<
   GenerateCseTokenFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateCseTokenFilesRequest,
-  output: GenerateCseTokenResponse,
+  input: __S(72) as any as S.Schema<GenerateCseTokenFilesRequest>,
+  output: __S(73) as any as S.Schema<GenerateCseTokenResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2933,8 +2356,8 @@ export const generateIdsFiles: API.OperationMethod<
   GenerateIdsFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateIdsFilesRequest,
-  output: GeneratedIds,
+  input: __S(74) as any as S.Schema<GenerateIdsFilesRequest>,
+  output: __S(75) as any as S.Schema<GeneratedIds>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2944,8 +2367,8 @@ export type GetAboutError = NotFound | Forbidden | GcpOpError;
 /** Gets information about the user, the user's Drive, and system capabilities. For more information, see [Return user info](https://developers.google.com/workspace/drive/api/guides/user-info). Required: The `fields` parameter must be set. To return the exact fields you need, see [Return specific fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter). */
 export const getAbout: API.OperationMethod<GetAboutRequest, About, GetAboutError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetAboutRequest,
-    output: About,
+    input: __S(76) as any as S.Schema<GetAboutRequest>,
+    output: __S(83) as any as S.Schema<About>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -2959,8 +2382,8 @@ export const getAccessproposals: API.OperationMethod<
   GetAccessproposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccessproposalsRequest,
-  output: AccessProposal,
+  input: __S(84) as any as S.Schema<GetAccessproposalsRequest>,
+  output: __S(87) as any as S.Schema<AccessProposal>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2974,8 +2397,8 @@ export const getApprovals: API.OperationMethod<
   GetApprovalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApprovalsRequest,
-  output: Approval,
+  input: __S(88) as any as S.Schema<GetApprovalsRequest>,
+  output: __S(5) as any as S.Schema<Approval>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2985,8 +2408,8 @@ export type GetAppsError = NotFound | Forbidden | GcpOpError;
 /** Gets a specific app. For more information, see [Return user info](https://developers.google.com/workspace/drive/api/guides/user-info). */
 export const getApps: API.OperationMethod<GetAppsRequest, App, GetAppsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetAppsRequest,
-    output: App,
+    input: __S(89) as any as S.Schema<GetAppsRequest>,
+    output: __S(92) as any as S.Schema<App>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -3000,8 +2423,8 @@ export const getComments: API.OperationMethod<
   GetCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommentsRequest,
-  output: Comment,
+  input: __S(93) as any as S.Schema<GetCommentsRequest>,
+  output: __S(41) as any as S.Schema<Comment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3011,8 +2434,8 @@ export type GetDrivesError = NotFound | Forbidden | GcpOpError;
 /** Gets a shared drive's metadata by ID. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives). */
 export const getDrives: API.OperationMethod<GetDrivesRequest, Drive, GetDrivesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetDrivesRequest,
-    output: Drive,
+    input: __S(94) as any as S.Schema<GetDrivesRequest>,
+    output: __S(46) as any as S.Schema<Drive>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -3022,8 +2445,8 @@ export type GetFilesError = NotFound | Forbidden | GcpOpError;
 /** Gets a file's metadata or content by ID. For more information, see [Search for files and folders](https://developers.google.com/workspace/drive/api/guides/search-files). If you provide the URL parameter `alt=media`, then the response includes the file contents in the response body. Downloading content with `alt=media` only works if the file is stored in Drive. To download Google Docs, Sheets, and Slides use [`files.export`](https://developers.google.com/workspace/drive/api/reference/rest/v3/files/export) instead. For more information, see [Download and export files](https://developers.google.com/workspace/drive/api/guides/manage-downloads). */
 export const getFiles: API.OperationMethod<GetFilesRequest, File, GetFilesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetFilesRequest,
-    output: File,
+    input: __S(95) as any as S.Schema<GetFilesRequest>,
+    output: __S(36) as any as S.Schema<File>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -3037,8 +2460,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationsRequest,
-  output: Operation,
+  input: __S(96) as any as S.Schema<GetOperationsRequest>,
+  output: __S(69) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3052,8 +2475,8 @@ export const getPermissions: API.OperationMethod<
   GetPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPermissionsRequest,
-  output: Permission,
+  input: __S(97) as any as S.Schema<GetPermissionsRequest>,
+  output: __S(16) as any as S.Schema<Permission>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3067,8 +2490,8 @@ export const getReplies: API.OperationMethod<
   GetRepliesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepliesRequest,
-  output: Reply,
+  input: __S(98) as any as S.Schema<GetRepliesRequest>,
+  output: __S(39) as any as S.Schema<Reply>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3082,8 +2505,8 @@ export const getRevisions: API.OperationMethod<
   GetRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRevisionsRequest,
-  output: Revision,
+  input: __S(99) as any as S.Schema<GetRevisionsRequest>,
+  output: __S(100) as any as S.Schema<Revision>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3097,8 +2520,8 @@ export const getStartPageTokenChanges: API.OperationMethod<
   GetStartPageTokenChangesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStartPageTokenChangesRequest,
-  output: StartPageToken,
+  input: __S(101) as any as S.Schema<GetStartPageTokenChangesRequest>,
+  output: __S(102) as any as S.Schema<StartPageToken>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3112,8 +2535,8 @@ export const getTeamdrives: API.OperationMethod<
   GetTeamdrivesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTeamdrivesRequest,
-  output: TeamDrive,
+  input: __S(103) as any as S.Schema<GetTeamdrivesRequest>,
+  output: __S(54) as any as S.Schema<TeamDrive>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3127,8 +2550,8 @@ export const hideDrives: API.OperationMethod<
   HideDrivesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HideDrivesRequest,
-  output: Drive,
+  input: __S(104) as any as S.Schema<HideDrivesRequest>,
+  output: __S(46) as any as S.Schema<Drive>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3143,8 +2566,8 @@ export const listAccessproposals: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccessProposalsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccessproposalsRequest,
-  output: ListAccessProposalsResponse,
+  input: __S(105) as any as S.Schema<ListAccessproposalsRequest>,
+  output: __S(107) as any as S.Schema<ListAccessProposalsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3160,8 +2583,8 @@ export const listApprovals: API.PaginatedOperationMethod<
   GcpOpContext,
   Approval
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListApprovalsRequest,
-  output: ApprovalList,
+  input: __S(108) as any as S.Schema<ListApprovalsRequest>,
+  output: __S(110) as any as S.Schema<ApprovalList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3172,8 +2595,8 @@ export type ListAppsError = NotFound | Forbidden | GcpOpError;
 /** Lists a user's installed apps. For more information, see [Return user info](https://developers.google.com/workspace/drive/api/guides/user-info). */
 export const listApps: API.OperationMethod<ListAppsRequest, AppList, ListAppsError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: ListAppsRequest,
-    output: AppList,
+    input: __S(111) as any as S.Schema<ListAppsRequest>,
+    output: __S(113) as any as S.Schema<AppList>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -3188,8 +2611,8 @@ export const listChanges: API.PaginatedOperationMethod<
   GcpOpContext,
   ChangeList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListChangesRequest,
-  output: ChangeList,
+  input: __S(114) as any as S.Schema<ListChangesRequest>,
+  output: __S(117) as any as S.Schema<ChangeList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3205,8 +2628,8 @@ export const listComments: API.PaginatedOperationMethod<
   GcpOpContext,
   CommentList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCommentsRequest,
-  output: CommentList,
+  input: __S(118) as any as S.Schema<ListCommentsRequest>,
+  output: __S(120) as any as S.Schema<CommentList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3222,8 +2645,8 @@ export const listDrives: API.PaginatedOperationMethod<
   GcpOpContext,
   DriveList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDrivesRequest,
-  output: DriveList,
+  input: __S(121) as any as S.Schema<ListDrivesRequest>,
+  output: __S(123) as any as S.Schema<DriveList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3239,8 +2662,8 @@ export const listFiles: API.PaginatedOperationMethod<
   GcpOpContext,
   FileList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFilesRequest,
-  output: FileList,
+  input: __S(124) as any as S.Schema<ListFilesRequest>,
+  output: __S(126) as any as S.Schema<FileList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3256,8 +2679,8 @@ export const listLabelsFiles: API.PaginatedOperationMethod<
   GcpOpContext,
   LabelList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLabelsFilesRequest,
-  output: LabelList,
+  input: __S(127) as any as S.Schema<ListLabelsFilesRequest>,
+  output: __S(128) as any as S.Schema<LabelList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3273,8 +2696,8 @@ export const listPermissions: API.PaginatedOperationMethod<
   GcpOpContext,
   PermissionList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPermissionsRequest,
-  output: PermissionList,
+  input: __S(129) as any as S.Schema<ListPermissionsRequest>,
+  output: __S(130) as any as S.Schema<PermissionList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3290,8 +2713,8 @@ export const listReplies: API.PaginatedOperationMethod<
   GcpOpContext,
   ReplyList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRepliesRequest,
-  output: ReplyList,
+  input: __S(131) as any as S.Schema<ListRepliesRequest>,
+  output: __S(132) as any as S.Schema<ReplyList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3307,8 +2730,8 @@ export const listRevisions: API.PaginatedOperationMethod<
   GcpOpContext,
   RevisionList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRevisionsRequest,
-  output: RevisionList,
+  input: __S(133) as any as S.Schema<ListRevisionsRequest>,
+  output: __S(135) as any as S.Schema<RevisionList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3324,8 +2747,8 @@ export const listTeamdrives: API.PaginatedOperationMethod<
   GcpOpContext,
   TeamDriveList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTeamdrivesRequest,
-  output: TeamDriveList,
+  input: __S(136) as any as S.Schema<ListTeamdrivesRequest>,
+  output: __S(138) as any as S.Schema<TeamDriveList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3340,8 +2763,8 @@ export const modifyLabelsFiles: API.OperationMethod<
   ModifyLabelsFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyLabelsFilesRequest,
-  output: ModifyLabelsResponse,
+  input: __S(144) as any as S.Schema<ModifyLabelsFilesRequest>,
+  output: __S(145) as any as S.Schema<ModifyLabelsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3355,8 +2778,8 @@ export const reassignApprovals: API.OperationMethod<
   ReassignApprovalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReassignApprovalsRequest,
-  output: Approval,
+  input: __S(151) as any as S.Schema<ReassignApprovalsRequest>,
+  output: __S(5) as any as S.Schema<Approval>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3370,8 +2793,8 @@ export const resolveAccessproposals: API.OperationMethod<
   ResolveAccessproposalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResolveAccessproposalsRequest,
-  output: ResolveAccessproposalsResponse,
+  input: __S(153) as any as S.Schema<ResolveAccessproposalsRequest>,
+  output: __S(58) as any as S.Schema<ResolveAccessproposalsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3385,8 +2808,8 @@ export const startApprovals: API.OperationMethod<
   StartApprovalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartApprovalsRequest,
-  output: Approval,
+  input: __S(155) as any as S.Schema<StartApprovalsRequest>,
+  output: __S(5) as any as S.Schema<Approval>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3400,8 +2823,8 @@ export const stopChannels: API.OperationMethod<
   StopChannelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopChannelsRequest,
-  output: StopChannelsResponse,
+  input: __S(157) as any as S.Schema<StopChannelsRequest>,
+  output: __S(58) as any as S.Schema<StopChannelsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3415,8 +2838,8 @@ export const unhideDrives: API.OperationMethod<
   UnhideDrivesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnhideDrivesRequest,
-  output: Drive,
+  input: __S(158) as any as S.Schema<UnhideDrivesRequest>,
+  output: __S(46) as any as S.Schema<Drive>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3430,8 +2853,8 @@ export const updateComments: API.OperationMethod<
   UpdateCommentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCommentsRequest,
-  output: Comment,
+  input: __S(159) as any as S.Schema<UpdateCommentsRequest>,
+  output: __S(41) as any as S.Schema<Comment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3445,8 +2868,8 @@ export const updateDrives: API.OperationMethod<
   UpdateDrivesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDrivesRequest,
-  output: Drive,
+  input: __S(160) as any as S.Schema<UpdateDrivesRequest>,
+  output: __S(46) as any as S.Schema<Drive>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3460,8 +2883,8 @@ export const updateFiles: API.OperationMethod<
   UpdateFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFilesRequest,
-  output: File,
+  input: __S(161) as any as S.Schema<UpdateFilesRequest>,
+  output: __S(36) as any as S.Schema<File>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3475,8 +2898,8 @@ export const updatePermissions: API.OperationMethod<
   UpdatePermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePermissionsRequest,
-  output: Permission,
+  input: __S(162) as any as S.Schema<UpdatePermissionsRequest>,
+  output: __S(16) as any as S.Schema<Permission>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3490,8 +2913,8 @@ export const updateReplies: API.OperationMethod<
   UpdateRepliesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRepliesRequest,
-  output: Reply,
+  input: __S(163) as any as S.Schema<UpdateRepliesRequest>,
+  output: __S(39) as any as S.Schema<Reply>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3505,8 +2928,8 @@ export const updateRevisions: API.OperationMethod<
   UpdateRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRevisionsRequest,
-  output: Revision,
+  input: __S(164) as any as S.Schema<UpdateRevisionsRequest>,
+  output: __S(100) as any as S.Schema<Revision>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3520,8 +2943,8 @@ export const updateTeamdrives: API.OperationMethod<
   UpdateTeamdrivesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTeamdrivesRequest,
-  output: TeamDrive,
+  input: __S(165) as any as S.Schema<UpdateTeamdrivesRequest>,
+  output: __S(54) as any as S.Schema<TeamDrive>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3535,8 +2958,8 @@ export const watchChanges: API.OperationMethod<
   WatchChangesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchChangesRequest,
-  output: Channel,
+  input: __S(166) as any as S.Schema<WatchChangesRequest>,
+  output: __S(156) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3550,8 +2973,8 @@ export const watchFiles: API.OperationMethod<
   WatchFilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatchFilesRequest,
-  output: Channel,
+  input: __S(167) as any as S.Schema<WatchFilesRequest>,
+  output: __S(156) as any as S.Schema<Channel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3571,7 +2994,7 @@ function __c0(j: number): any {
         S.Struct({
           fileId: S.String.pipe(T.Label()),
           approvalId: S.String.pipe(T.Label()),
-          body: S.optional(ApproveApprovalRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3595,25 +3018,25 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          reviewer: S.optional(User),
-          response: S.optional(ReviewerResponseResponseEnum),
+          reviewer: S.optional(__S(2)),
+          response: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReviewerResponse" });
     case 4:
-      return S.Array(ReviewerResponse);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           modifyTime: S.optional(S.String),
           kind: S.optional(S.String),
-          reviewerResponses: S.optional(ReviewerResponseList),
+          reviewerResponses: S.optional(__S(4)),
           targetFileId: S.optional(S.String),
           approvalId: S.optional(S.String),
-          status: S.optional(ApprovalStatusEnum),
-          fileContentChangeBehavior: S.optional(ApprovalFileContentChangeBehaviorEnum),
+          status: S.optional(S.String),
+          fileContentChangeBehavior: S.optional(S.String),
           completeTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          initiator: S.optional(User),
+          initiator: S.optional(__S(2)),
           dueTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Approval" });
@@ -3622,7 +3045,7 @@ function __c0(j: number): any {
         S.Struct({
           approvalId: S.String.pipe(T.Label()),
           fileId: S.String.pipe(T.Label()),
-          body: S.optional(CancelApprovalRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3636,7 +3059,7 @@ function __c0(j: number): any {
         S.Struct({
           fileId: S.String.pipe(T.Label()),
           approvalId: S.String.pipe(T.Label()),
-          body: S.optional(CommentApprovalRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3666,12 +3089,12 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          decryptionMetadata: S.optional(DecryptionMetadata),
+          decryptionMetadata: S.optional(__S(9)),
           encryptionState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClientEncryptionDetails" });
     case 3:
-      return S.Array(User);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3684,7 +3107,7 @@ function __c1(j: number): any {
         identifier: "PermissionTeamDrivePermissionDetailsItem",
       });
     case 5:
-      return S.Array(PermissionTeamDrivePermissionDetailsItem);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3697,7 +3120,7 @@ function __c1(j: number): any {
         identifier: "PermissionPermissionDetailsItem",
       });
     case 7:
-      return S.Array(PermissionPermissionDetailsItem);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -3705,7 +3128,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          teamDrivePermissionDetails: S.optional(PermissionTeamDrivePermissionDetailsItemList),
+          teamDrivePermissionDetails: S.optional(__S(13)),
           pendingOwner: S.optional(S.Boolean),
           view: S.optional(S.String),
           domain: S.optional(S.String),
@@ -3719,44 +3142,44 @@ function __c2(j: number): any {
           displayName: S.optional(S.String),
           role: S.optional(S.String),
           photoLink: S.optional(S.String),
-          permissionDetails: S.optional(PermissionPermissionDetailsItemList),
+          permissionDetails: S.optional(__S(15)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "Permission" });
     case 1:
-      return S.Array(Permission);
+      return S.Array(__S(16));
     case 2:
       return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          text: S.optional(StringList),
-          integer: S.optional(StringList),
+          text: S.optional(__S(18)),
+          integer: S.optional(__S(18)),
           kind: S.optional(S.String),
-          user: S.optional(UserList),
-          dateString: S.optional(StringList),
+          user: S.optional(__S(11)),
+          dateString: S.optional(__S(18)),
           id: S.optional(S.String),
-          selection: S.optional(StringList),
+          selection: S.optional(__S(18)),
           valueType: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabelField" });
     case 4:
-      return S.Record(S.String, LabelField);
+      return S.Record(S.String, __S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          fields: S.optional(LabelFieldMap),
+          fields: S.optional(__S(20)),
           revisionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Label" });
     case 6:
-      return S.Array(Label);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(LabelList_),
+          labels: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "FileLabelInfo" });
   }
@@ -3791,7 +3214,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           indexableText: S.optional(S.String),
-          thumbnail: S.optional(FileContentHintsThumbnail),
+          thumbnail: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "FileContentHints" });
     case 4:
@@ -3855,8 +3278,8 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          itemDownloadRestriction: S.optional(DownloadRestriction),
-          effectiveDownloadRestrictionWithContext: S.optional(DownloadRestriction),
+          itemDownloadRestriction: S.optional(__S(29)),
+          effectiveDownloadRestrictionWithContext: S.optional(__S(29)),
         }),
       ).annotate({
         identifier: "DownloadRestrictionsMetadata",
@@ -3894,7 +3317,7 @@ function __c4(j: number): any {
           colorSpace: S.optional(S.String),
           focalLength: S.optional(S.Number),
           isoSpeed: S.optional(S.Number),
-          location: S.optional(FileImageMediaMetadataLocation),
+          location: S.optional(__S(32)),
           sensor: S.optional(S.String),
           exposureTime: S.optional(S.Number),
           time: S.optional(S.String),
@@ -3914,7 +3337,7 @@ function __c4(j: number): any {
         S.Struct({
           restrictionTime: S.optional(S.String),
           systemRestricted: S.optional(S.Boolean),
-          restrictingUser: S.optional(User),
+          restrictingUser: S.optional(__S(2)),
           reason: S.optional(S.String),
           type: S.optional(S.String),
           ownerRestricted: S.optional(S.Boolean),
@@ -3922,22 +3345,22 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ContentRestriction" });
     case 3:
-      return S.Array(ContentRestriction);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
           inheritedPermissionsDisabled: S.optional(S.Boolean),
-          exportLinks: S.optional(StringMap),
-          clientEncryptionDetails: S.optional(ClientEncryptionDetails),
+          exportLinks: S.optional(__S(8)),
+          clientEncryptionDetails: S.optional(__S(10)),
           modifiedTime: S.optional(S.String),
           mimeType: S.optional(S.String),
           resourceKey: S.optional(S.String),
-          owners: S.optional(UserList),
+          owners: S.optional(__S(11)),
           starred: S.optional(S.Boolean),
           copyRequiresWriterPermission: S.optional(S.Boolean),
-          permissions: S.optional(PermissionList_),
+          permissions: S.optional(__S(17)),
           headRevisionId: S.optional(S.String),
-          labelInfo: S.optional(FileLabelInfo),
+          labelInfo: S.optional(__S(23)),
           sha1Checksum: S.optional(S.String),
           driveId: S.optional(S.String),
           originalFilename: S.optional(S.String),
@@ -3945,51 +3368,51 @@ function __c4(j: number): any {
           webViewLink: S.optional(S.String),
           trashed: S.optional(S.Boolean),
           viewedByMeTime: S.optional(S.String),
-          linkShareMetadata: S.optional(FileLinkShareMetadata),
+          linkShareMetadata: S.optional(__S(24)),
           name: S.optional(S.String),
           folderColorRgb: S.optional(S.String),
-          appProperties: S.optional(StringMap),
+          appProperties: S.optional(__S(8)),
           kind: S.optional(S.String),
           createdTime: S.optional(S.String),
-          lastModifyingUser: S.optional(User),
-          permissionIds: S.optional(StringList),
-          videoMediaMetadata: S.optional(FileVideoMediaMetadata),
+          lastModifyingUser: S.optional(__S(2)),
+          permissionIds: S.optional(__S(18)),
+          videoMediaMetadata: S.optional(__S(25)),
           size: S.optional(S.String),
           version: S.optional(S.String),
           iconLink: S.optional(S.String),
           explicitlyTrashed: S.optional(S.Boolean),
-          spaces: S.optional(StringList),
-          contentHints: S.optional(FileContentHints),
+          spaces: S.optional(__S(18)),
+          contentHints: S.optional(__S(27)),
           thumbnailLink: S.optional(S.String),
           isAppAuthorized: S.optional(S.Boolean),
           hasAugmentedPermissions: S.optional(S.Boolean),
-          properties: S.optional(StringMap),
+          properties: S.optional(__S(8)),
           modifiedByMe: S.optional(S.Boolean),
           fullFileExtension: S.optional(S.String),
-          capabilities: S.optional(FileCapabilities),
+          capabilities: S.optional(__S(28)),
           writersCanShare: S.optional(S.Boolean),
-          downloadRestrictions: S.optional(DownloadRestrictionsMetadata),
+          downloadRestrictions: S.optional(__S(30)),
           viewersCanCopyContent: S.optional(S.Boolean),
           trashedTime: S.optional(S.String),
           teamDriveId: S.optional(S.String),
           modifiedByMeTime: S.optional(S.String),
           md5Checksum: S.optional(S.String),
           id: S.optional(S.String),
-          shortcutDetails: S.optional(FileShortcutDetails),
+          shortcutDetails: S.optional(__S(31)),
           webContentLink: S.optional(S.String),
           thumbnailVersion: S.optional(S.String),
           description: S.optional(S.String),
-          parents: S.optional(StringList),
-          sharingUser: S.optional(User),
+          parents: S.optional(__S(18)),
+          sharingUser: S.optional(__S(2)),
           fileExtension: S.optional(S.String),
           viewedByMe: S.optional(S.Boolean),
-          imageMediaMetadata: S.optional(FileImageMediaMetadata),
+          imageMediaMetadata: S.optional(__S(33)),
           ownedByMe: S.optional(S.Boolean),
           quotaBytesUsed: S.optional(S.String),
           sha256Checksum: S.optional(S.String),
-          contentRestrictions: S.optional(ContentRestrictionList),
+          contentRestrictions: S.optional(__S(35)),
           shared: S.optional(S.Boolean),
-          trashingUser: S.optional(User),
+          trashingUser: S.optional(__S(2)),
           sharedWithMeTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "File" });
@@ -4006,7 +3429,7 @@ function __c4(j: number): any {
           ocrLanguage: S.optional(S.String.pipe(T.Query())),
           keepRevisionForever: S.optional(S.Boolean.pipe(T.Query())),
           enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(File.pipe(T.HttpBody())),
+          body: S.optional(__S(36).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4027,13 +3450,13 @@ function __c4(j: number): any {
         S.Struct({
           htmlContent: S.optional(S.String),
           deleted: S.optional(S.Boolean),
-          mentionedEmailAddresses: S.optional(StringList),
+          mentionedEmailAddresses: S.optional(__S(18)),
           content: S.optional(S.String),
           action: S.optional(S.String),
           assigneeEmailAddress: S.optional(S.String),
           modifiedTime: S.optional(S.String),
           createdTime: S.optional(S.String),
-          author: S.optional(User),
+          author: S.optional(__S(2)),
           kind: S.optional(S.String),
           id: S.optional(S.String),
         }),
@@ -4043,21 +3466,21 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Reply);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
           htmlContent: S.optional(S.String),
           assigneeEmailAddress: S.optional(S.String),
-          mentionedEmailAddresses: S.optional(StringList),
+          mentionedEmailAddresses: S.optional(__S(18)),
           resolved: S.optional(S.Boolean),
           anchor: S.optional(S.String),
           kind: S.optional(S.String),
-          quotedFileContent: S.optional(CommentQuotedFileContent),
+          quotedFileContent: S.optional(__S(38)),
           modifiedTime: S.optional(S.String),
-          replies: S.optional(ReplyList_),
+          replies: S.optional(__S(40)),
           createdTime: S.optional(S.String),
-          author: S.optional(User),
+          author: S.optional(__S(2)),
           content: S.optional(S.String),
           deleted: S.optional(S.Boolean),
           id: S.optional(S.String),
@@ -4067,7 +3490,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
-          body: S.optional(Comment.pipe(T.HttpBody())),
+          body: S.optional(__S(41).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4082,7 +3505,7 @@ function __c5(j: number): any {
           copyRequiresWriterPermission: S.optional(S.Boolean),
           driveMembersOnly: S.optional(S.Boolean),
           domainUsersOnly: S.optional(S.Boolean),
-          downloadRestriction: S.optional(DownloadRestriction),
+          downloadRestriction: S.optional(__S(29)),
           sharingFoldersRequiresOrganizerPermission: S.optional(S.Boolean),
           adminManagedRestrictions: S.optional(S.Boolean),
         }),
@@ -4128,14 +3551,14 @@ function __c5(j: number): any {
           backgroundImageLink: S.optional(S.String),
           orgUnitId: S.optional(S.String),
           hidden: S.optional(S.Boolean),
-          restrictions: S.optional(DriveRestrictions),
+          restrictions: S.optional(__S(43)),
           createdTime: S.optional(S.String),
           kind: S.optional(S.String),
           id: S.optional(S.String),
-          backgroundImageFile: S.optional(DriveBackgroundImageFile),
+          backgroundImageFile: S.optional(__S(44)),
           name: S.optional(S.String),
           colorRgb: S.optional(S.String),
-          capabilities: S.optional(DriveCapabilities),
+          capabilities: S.optional(__S(45)),
           themeId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Drive" });
@@ -4143,7 +3566,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           requestId: S.String.pipe(T.Query()),
-          body: S.optional(Drive.pipe(T.HttpBody())),
+          body: S.optional(__S(46).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4168,7 +3591,7 @@ function __c6(j: number): any {
           supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
           keepRevisionForever: S.optional(S.Boolean.pipe(T.Query())),
           enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(File.pipe(T.HttpBody())),
+          body: S.optional(__S(36).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "files", baseUrl: "https://www.googleapis.com/drive/v3/" }),
         ),
@@ -4186,7 +3609,7 @@ function __c6(j: number): any {
           emailMessage: S.optional(S.String.pipe(T.Query())),
           transferOwnership: S.optional(S.Boolean.pipe(T.Query())),
           supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(Permission.pipe(T.HttpBody())),
+          body: S.optional(__S(16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4200,7 +3623,7 @@ function __c6(j: number): any {
         S.Struct({
           fileId: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          body: S.optional(Reply.pipe(T.HttpBody())),
+          body: S.optional(__S(39).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4255,7 +3678,7 @@ function __c6(j: number): any {
           sharingFoldersRequiresOrganizerPermission: S.optional(S.Boolean),
           domainUsersOnly: S.optional(S.Boolean),
           copyRequiresWriterPermission: S.optional(S.Boolean),
-          downloadRestriction: S.optional(DownloadRestriction),
+          downloadRestriction: S.optional(__S(29)),
         }),
       ).annotate({ identifier: "TeamDriveRestrictions" });
     case 6:
@@ -4264,11 +3687,11 @@ function __c6(j: number): any {
           backgroundImageLink: S.optional(S.String),
           colorRgb: S.optional(S.String),
           name: S.optional(S.String),
-          capabilities: S.optional(TeamDriveCapabilities),
+          capabilities: S.optional(__S(51)),
           kind: S.optional(S.String),
           orgUnitId: S.optional(S.String),
-          backgroundImageFile: S.optional(TeamDriveBackgroundImageFile),
-          restrictions: S.optional(TeamDriveRestrictions),
+          backgroundImageFile: S.optional(__S(52)),
+          restrictions: S.optional(__S(53)),
           themeId: S.optional(S.String),
           id: S.optional(S.String),
           createdTime: S.optional(S.String),
@@ -4278,7 +3701,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           requestId: S.String.pipe(T.Query()),
-          body: S.optional(TeamDrive.pipe(T.HttpBody())),
+          body: S.optional(__S(54).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4296,7 +3719,7 @@ function __c7(j: number): any {
         S.Struct({
           approvalId: S.String.pipe(T.Label()),
           fileId: S.String.pipe(T.Label()),
-          body: S.optional(ApproveApprovalRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4428,23 +3851,23 @@ function __c8(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(67)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(Status),
+          error: S.optional(__S(68)),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          metadata: S.optional(DocumentMap),
-          response: S.optional(DocumentMap),
+          metadata: S.optional(__S(66)),
+          response: S.optional(__S(66)),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
@@ -4521,7 +3944,7 @@ function __c9(j: number): any {
         S.Struct({
           space: S.optional(S.String),
           kind: S.optional(S.String),
-          ids: S.optional(StringList),
+          ids: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "GeneratedIds" });
     case 4:
@@ -4531,7 +3954,7 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "GetAboutRequest" });
     case 5:
-      return S.Record(S.String, StringList);
+      return S.Record(S.String, __S(18));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4541,7 +3964,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "AboutTeamDriveThemesItem" });
     case 7:
-      return S.Array(AboutTeamDriveThemesItem);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
@@ -4564,23 +3987,23 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "AboutDriveThemesItem" });
     case 2:
-      return S.Array(AboutDriveThemesItem);
+      return S.Array(__S(81));
     case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          maxImportSizes: S.optional(StringMap),
+          maxImportSizes: S.optional(__S(8)),
           canCreateTeamDrives: S.optional(S.Boolean),
           maxUploadSize: S.optional(S.String),
-          importFormats: S.optional(StringListMap),
-          exportFormats: S.optional(StringListMap),
+          importFormats: S.optional(__S(77)),
+          exportFormats: S.optional(__S(77)),
           canCreateDrives: S.optional(S.Boolean),
-          user: S.optional(User),
-          teamDriveThemes: S.optional(AboutTeamDriveThemesItemList),
-          folderColorPalette: S.optional(StringList),
-          storageQuota: S.optional(AboutStorageQuota),
+          user: S.optional(__S(2)),
+          teamDriveThemes: S.optional(__S(79)),
+          folderColorPalette: S.optional(__S(18)),
+          storageQuota: S.optional(__S(80)),
           appInstalled: S.optional(S.Boolean),
-          driveThemes: S.optional(AboutDriveThemesItemList),
+          driveThemes: S.optional(__S(82)),
         }),
       ).annotate({ identifier: "About" });
     case 4:
@@ -4608,14 +4031,14 @@ function __c10(j: number): any {
         identifier: "AccessProposalRoleAndView",
       });
     case 6:
-      return S.Array(AccessProposalRoleAndView);
+      return S.Array(__S(85));
     case 7:
       return S.suspend(() =>
         S.Struct({
           requestMessage: S.optional(S.String),
           requesterEmailAddress: S.optional(S.String),
           recipientEmailAddress: S.optional(S.String),
-          rolesAndViews: S.optional(AccessProposalRoleAndViewList),
+          rolesAndViews: S.optional(__S(86)),
           fileId: S.optional(S.String),
           proposalId: S.optional(S.String),
           createTime: S.optional(S.String),
@@ -4659,17 +4082,17 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "AppIcons" });
     case 3:
-      return S.Array(AppIcons);
+      return S.Array(__S(90));
     case 4:
       return S.suspend(() =>
         S.Struct({
           productId: S.optional(S.String),
           hasDriveWideScope: S.optional(S.Boolean),
-          secondaryFileExtensions: S.optional(StringList),
-          secondaryMimeTypes: S.optional(StringList),
-          icons: S.optional(AppIconsList),
+          secondaryFileExtensions: S.optional(__S(18)),
+          secondaryMimeTypes: S.optional(__S(18)),
+          icons: S.optional(__S(91)),
           createUrl: S.optional(S.String),
-          primaryFileExtensions: S.optional(StringList),
+          primaryFileExtensions: S.optional(__S(18)),
           objectType: S.optional(S.String),
           productUrl: S.optional(S.String),
           supportsOfflineCreate: S.optional(S.Boolean),
@@ -4684,7 +4107,7 @@ function __c11(j: number): any {
           useByDefault: S.optional(S.Boolean),
           shortDescription: S.optional(S.String),
           name: S.optional(S.String),
-          primaryMimeTypes: S.optional(StringList),
+          primaryMimeTypes: S.optional(__S(18)),
           installed: S.optional(S.Boolean),
           kind: S.optional(S.String),
         }),
@@ -4805,10 +4228,10 @@ function __c12(j: number): any {
           modifiedTime: S.optional(S.String),
           mimeType: S.optional(S.String),
           kind: S.optional(S.String),
-          exportLinks: S.optional(StringMap),
+          exportLinks: S.optional(__S(8)),
           id: S.optional(S.String),
           originalFilename: S.optional(S.String),
-          lastModifyingUser: S.optional(User),
+          lastModifyingUser: S.optional(__S(2)),
           size: S.optional(S.String),
           publishAuto: S.optional(S.Boolean),
         }),
@@ -4883,11 +4306,11 @@ function __c13(j: number): any {
         identifier: "ListAccessproposalsRequest",
       });
     case 2:
-      return S.Array(AccessProposal);
+      return S.Array(__S(87));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          accessProposals: S.optional(AccessProposalList),
+          accessProposals: S.optional(__S(106)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4908,13 +4331,13 @@ function __c13(j: number): any {
         ),
       ).annotate({ identifier: "ListApprovalsRequest" });
     case 5:
-      return S.Array(Approval);
+      return S.Array(__S(5));
     case 6:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          items: ApprovalList_,
+          items: __S(109),
         }),
       ).annotate({ identifier: "ApprovalList" });
     case 7:
@@ -4932,14 +4355,14 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(App);
+      return S.Array(__S(92));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          defaultAppIds: S.optional(StringList),
+          defaultAppIds: S.optional(__S(18)),
           selfLink: S.optional(S.String),
           kind: S.optional(S.String),
-          items: S.optional(AppList_),
+          items: S.optional(__S(112)),
         }),
       ).annotate({ identifier: "AppList" });
     case 2:
@@ -4973,23 +4396,23 @@ function __c14(j: number): any {
           kind: S.optional(S.String),
           time: S.optional(S.String),
           type: S.optional(S.String),
-          teamDrive: S.optional(TeamDrive),
+          teamDrive: S.optional(__S(54)),
           fileId: S.optional(S.String),
           driveId: S.optional(S.String),
           removed: S.optional(S.Boolean),
           teamDriveId: S.optional(S.String),
-          file: S.optional(File),
+          file: S.optional(__S(36)),
           changeType: S.optional(S.String),
-          drive: S.optional(Drive),
+          drive: S.optional(__S(46)),
         }),
       ).annotate({ identifier: "Change" });
     case 4:
-      return S.Array(Change);
+      return S.Array(__S(115));
     case 5:
       return S.suspend(() =>
         S.Struct({
           newStartPageToken: S.optional(S.String),
-          changes: S.optional(ChangeList_),
+          changes: S.optional(__S(116)),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -5011,7 +4434,7 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListCommentsRequest" });
     case 7:
-      return S.Array(Comment);
+      return S.Array(__S(41));
   }
 }
 function __c15(j: number): any {
@@ -5020,7 +4443,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          comments: S.optional(CommentList_),
+          comments: S.optional(__S(119)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "CommentList" });
@@ -5036,11 +4459,11 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListDrivesRequest" });
     case 2:
-      return S.Array(Drive);
+      return S.Array(__S(46));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          drives: S.optional(DriveList_),
+          drives: S.optional(__S(122)),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
@@ -5057,7 +4480,7 @@ function __c15(j: number): any {
           teamDriveId: S.optional(S.String.pipe(T.Query())),
           includeLabels: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
-          corpus: S.optional(ListFilesCorpusEnum.pipe(T.Query())),
+          corpus: S.optional(S.String.pipe(T.Query())),
           supportsAllDrives: S.optional(S.Boolean.pipe(T.Query())),
           driveId: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5068,14 +4491,14 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListFilesRequest" });
     case 5:
-      return S.Array(File);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           incompleteSearch: S.optional(S.Boolean),
           kind: S.optional(S.String),
-          files: S.optional(FileList_),
+          files: S.optional(__S(125)),
         }),
       ).annotate({ identifier: "FileList" });
     case 7:
@@ -5101,7 +4524,7 @@ function __c16(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          labels: S.optional(LabelList_),
+          labels: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "LabelList" });
     case 1:
@@ -5126,7 +4549,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          permissions: S.optional(PermissionList_),
+          permissions: S.optional(__S(17)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "PermissionList" });
@@ -5150,7 +4573,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          replies: S.optional(ReplyList_),
+          replies: S.optional(__S(40)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplyList" });
@@ -5169,13 +4592,13 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ListRevisionsRequest" });
     case 6:
-      return S.Array(Revision);
+      return S.Array(__S(100));
     case 7:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          revisions: S.optional(RevisionList_),
+          revisions: S.optional(__S(134)),
         }),
       ).annotate({ identifier: "RevisionList" });
   }
@@ -5198,45 +4621,45 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "ListTeamdrivesRequest" });
     case 1:
-      return S.Array(TeamDrive);
+      return S.Array(__S(54));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          teamDrives: S.optional(TeamDriveList_),
+          teamDrives: S.optional(__S(137)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "TeamDriveList" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          setSelectionValues: S.optional(StringList),
+          setSelectionValues: S.optional(__S(18)),
           unsetValues: S.optional(S.Boolean),
-          setDateValues: S.optional(StringList),
+          setDateValues: S.optional(__S(18)),
           kind: S.optional(S.String),
-          setIntegerValues: S.optional(StringList),
-          setTextValues: S.optional(StringList),
+          setIntegerValues: S.optional(__S(18)),
+          setTextValues: S.optional(__S(18)),
           fieldId: S.optional(S.String),
-          setUserValues: S.optional(StringList),
+          setUserValues: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "LabelFieldModification" });
     case 4:
-      return S.Array(LabelFieldModification);
+      return S.Array(__S(139));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          fieldModifications: S.optional(LabelFieldModificationList),
+          fieldModifications: S.optional(__S(140)),
           labelId: S.optional(S.String),
           removeLabel: S.optional(S.Boolean),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "LabelModification" });
     case 6:
-      return S.Array(LabelModification);
+      return S.Array(__S(141));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          labelModifications: S.optional(LabelModificationList),
+          labelModifications: S.optional(__S(142)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ModifyLabelsRequest" });
@@ -5248,7 +4671,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
-          body: S.optional(ModifyLabelsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(143).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5260,7 +4683,7 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          modifiedLabels: S.optional(LabelList_),
+          modifiedLabels: S.optional(__S(22)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "ModifyLabelsResponse" });
@@ -5271,7 +4694,7 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "AddReviewer" });
     case 3:
-      return S.Array(AddReviewer);
+      return S.Array(__S(146));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5280,12 +4703,12 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "ReplaceReviewer" });
     case 5:
-      return S.Array(ReplaceReviewer);
+      return S.Array(__S(148));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          addReviewers: S.optional(AddReviewerList),
-          replaceReviewers: S.optional(ReplaceReviewerList),
+          addReviewers: S.optional(__S(147)),
+          replaceReviewers: S.optional(__S(149)),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReassignApprovalRequest" });
@@ -5294,7 +4717,7 @@ function __c18(j: number): any {
         S.Struct({
           fileId: S.String.pipe(T.Label()),
           approvalId: S.String.pipe(T.Label()),
-          body: S.optional(ReassignApprovalRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(150).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5312,8 +4735,8 @@ function __c19(j: number): any {
         S.Struct({
           view: S.optional(S.String),
           sendNotification: S.optional(S.Boolean),
-          action: S.optional(ResolveAccessProposalRequestActionEnum),
-          role: S.optional(StringList),
+          action: S.optional(S.String),
+          role: S.optional(__S(18)),
         }),
       ).annotate({
         identifier: "ResolveAccessProposalRequest",
@@ -5323,7 +4746,7 @@ function __c19(j: number): any {
         S.Struct({
           fileId: S.String.pipe(T.Label()),
           proposalId: S.String.pipe(T.Label()),
-          body: S.optional(ResolveAccessProposalRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(152).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5337,8 +4760,8 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          fileContentChangeBehavior: S.optional(StartApprovalRequestFileContentChangeBehaviorEnum),
-          reviewerEmails: S.optional(StringList),
+          fileContentChangeBehavior: S.optional(S.String),
+          reviewerEmails: S.optional(__S(18)),
           dueTime: S.optional(S.String),
           message: S.optional(S.String),
           lockFile: S.optional(S.Boolean),
@@ -5348,7 +4771,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fileId: S.String.pipe(T.Label()),
-          body: S.optional(StartApprovalRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(154).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5369,13 +4792,13 @@ function __c19(j: number): any {
           kind: S.optional(S.String),
           expiration: S.optional(S.String),
           resourceId: S.optional(S.String),
-          params: S.optional(StringMap),
+          params: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "Channel" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(Channel.pipe(T.HttpBody())),
+          body: S.optional(__S(156).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5401,7 +4824,7 @@ function __c19(j: number): any {
         S.Struct({
           fileId: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          body: S.optional(Comment.pipe(T.HttpBody())),
+          body: S.optional(__S(41).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5419,7 +4842,7 @@ function __c20(j: number): any {
         S.Struct({
           driveId: S.String.pipe(T.Label()),
           useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(Drive.pipe(T.HttpBody())),
+          body: S.optional(__S(46).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5442,7 +4865,7 @@ function __c20(j: number): any {
           keepRevisionForever: S.optional(S.Boolean.pipe(T.Query())),
           enforceSingleParent: S.optional(S.Boolean.pipe(T.Query())),
           useContentAsIndexableText: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(File.pipe(T.HttpBody())),
+          body: S.optional(__S(36).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5462,7 +4885,7 @@ function __c20(j: number): any {
           transferOwnership: S.optional(S.Boolean.pipe(T.Query())),
           supportsTeamDrives: S.optional(S.Boolean.pipe(T.Query())),
           enforceExpansiveAccess: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(Permission.pipe(T.HttpBody())),
+          body: S.optional(__S(16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5477,7 +4900,7 @@ function __c20(j: number): any {
           replyId: S.String.pipe(T.Label()),
           fileId: S.String.pipe(T.Label()),
           commentId: S.String.pipe(T.Label()),
-          body: S.optional(Reply.pipe(T.HttpBody())),
+          body: S.optional(__S(39).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5491,7 +4914,7 @@ function __c20(j: number): any {
         S.Struct({
           fileId: S.String.pipe(T.Label()),
           revisionId: S.String.pipe(T.Label()),
-          body: S.optional(Revision.pipe(T.HttpBody())),
+          body: S.optional(__S(100).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5505,7 +4928,7 @@ function __c20(j: number): any {
         S.Struct({
           useDomainAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
           teamDriveId: S.String.pipe(T.Label()),
-          body: S.optional(TeamDrive.pipe(T.HttpBody())),
+          body: S.optional(__S(54).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5531,7 +4954,7 @@ function __c20(j: number): any {
           includeLabels: S.optional(S.String.pipe(T.Query())),
           spaces: S.optional(S.String.pipe(T.Query())),
           includeItemsFromAllDrives: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(Channel.pipe(T.HttpBody())),
+          body: S.optional(__S(156).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5549,7 +4972,7 @@ function __c20(j: number): any {
           acknowledgeAbuse: S.optional(S.Boolean.pipe(T.Query())),
           fileId: S.String.pipe(T.Label()),
           includeLabels: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Channel.pipe(T.HttpBody())),
+          body: S.optional(__S(156).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5558,5 +4981,56 @@ function __c20(j: number): any {
           }),
         ),
       ).annotate({ identifier: "WatchFilesRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
   }
 }

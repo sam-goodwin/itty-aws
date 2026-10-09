@@ -7,25 +7,17 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
 /** The Floating IP type. */
 export type CreateFloatingIpRequestType = "ipv4" | "ipv6";
-const CreateFloatingIpRequestType = S.String;
-
 /** Home [Location](#tag/locations) for the [Floating IP](#tag/floating-ips). Either the ID or the name of the [Location](#tag/locations). Only optional if no [Server](#tag/servers) is provided. Routing is optimized for this [Locations](#tag/locations). */
 export type CreateFloatingIpRequestHomeLocation = string | number;
-const CreateFloatingIpRequestHomeLocation =
-  S.Unknown as any as S.Schema<CreateFloatingIpRequestHomeLocation>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateFloatingIpRequestLabelsMap = { [key: string]: string | undefined };
-const CreateFloatingIpRequestLabelsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateFloatingIpRequestLabelsMap>;
-
 export interface CreateFloatingIpRequest {
   /** The Floating IP type. */
   type: CreateFloatingIpRequestType | (string & {});
@@ -40,34 +32,17 @@ export interface CreateFloatingIpRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
   labels?: CreateFloatingIpRequestLabelsMap;
 }
-const CreateFloatingIpRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateFloatingIpRequest>;
-
 /** The Floating IP type. */
 export type CreateFloatingIpResponseFloatingIpType = "ipv4" | "ipv6";
-const CreateFloatingIpResponseFloatingIpType = S.String;
-
 export interface CreateFloatingIpResponseFloatingIpDnsPtrItem {
   /** Single IPv4 or IPv6 address of the record. */
   ip: string;
   /** Domain Name to point to. PTR record content used for reverse DNS. */
   dns_ptr: string;
 }
-const CreateFloatingIpResponseFloatingIpDnsPtrItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateFloatingIpResponseFloatingIpDnsPtrItem>;
-
 /** List of reverse DNS entries for the [Floating IP](#tag/floating-ips). */
 export type CreateFloatingIpResponseFloatingIpDnsPtrList =
   Array<CreateFloatingIpResponseFloatingIpDnsPtrItem>;
-const CreateFloatingIpResponseFloatingIpDnsPtrList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateFloatingIpResponseFloatingIpDnsPtrList>;
-
 /** [Location](#tag/locations) the for the [Floating IP](#tag/floating-ips) is located at. Routing is optimized for this [Location](#tag/locations). */
 export interface CreateFloatingIpResponseFloatingIpHomeLocation {
   /** ID of the [Location](#tag/locations). */
@@ -87,26 +62,13 @@ export interface CreateFloatingIpResponseFloatingIpHomeLocation {
   /** Name of the Network Zone this [Location](#tag/locations) resides in. */
   network_zone: string;
 }
-const CreateFloatingIpResponseFloatingIpHomeLocation = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateFloatingIpResponseFloatingIpHomeLocation>;
-
 /** Protection configuration for the Resource. */
 export interface CreateFloatingIpResponseFloatingIpProtection {
   /** Prevent the Resource from being deleted. */
   delete: boolean;
 }
-const CreateFloatingIpResponseFloatingIpProtection = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateFloatingIpResponseFloatingIpProtection>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateFloatingIpResponseFloatingIpLabelsMap = { [key: string]: string | undefined };
-const CreateFloatingIpResponseFloatingIpLabelsMap =
-  CreateFloatingIpRequestLabelsMap as any as S.Schema<CreateFloatingIpResponseFloatingIpLabelsMap>;
-
 export interface CreateFloatingIpResponseFloatingIp {
   /** ID of the [Floating IP](#tag/floating-ips). */
   id: number;
@@ -133,34 +95,17 @@ export interface CreateFloatingIpResponseFloatingIp {
   /** Point in time when the Resource was created (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format). */
   created: string;
 }
-const CreateFloatingIpResponseFloatingIp = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateFloatingIpResponseFloatingIp>;
-
 /** Status of the Action. */
 export type CreateFloatingIpResponseActionStatus = "running" | "success" | "error";
-const CreateFloatingIpResponseActionStatus = S.String;
-
 export interface CreateFloatingIpResponseActionResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
-const CreateFloatingIpResponseActionResourcesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateFloatingIpResponseActionResourcesItem>;
-
 /** Resources the Action relates to. */
 export type CreateFloatingIpResponseActionResourcesList =
   Array<CreateFloatingIpResponseActionResourcesItem>;
-const CreateFloatingIpResponseActionResourcesList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateFloatingIpResponseActionResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface CreateFloatingIpResponseActionError {
   /** Fixed error code for machines. */
@@ -168,11 +113,6 @@ export interface CreateFloatingIpResponseActionError {
   /** Error message for humans. */
   message: string;
 }
-const CreateFloatingIpResponseActionError = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateFloatingIpResponseActionError>;
-
 /** Action will only be returned if the [Floating IP](#tag/floating-ips) is getting assigned. */
 export interface CreateFloatingIpResponseAction {
   /** ID of the [Action](#description/actions). */
@@ -192,54 +132,27 @@ export interface CreateFloatingIpResponseAction {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreateFloatingIpResponseActionError | null;
 }
-const CreateFloatingIpResponseAction = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateFloatingIpResponseAction>;
-
 export interface CreateFloatingIpResponse {
   floating_ip: CreateFloatingIpResponseFloatingIp;
   /** Action will only be returned if the [Floating IP](#tag/floating-ips) is getting assigned. */
   action?: CreateFloatingIpResponseAction | null;
 }
-const CreateFloatingIpResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateFloatingIpResponse>;
-
 export interface DeleteFloatingIpRequest {
   /** ID of the Floating IP. */
   id: number;
 }
-const DeleteFloatingIpRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteFloatingIpRequest>;
-
 export interface DeleteFloatingIpResponse {}
-const DeleteFloatingIpResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteFloatingIpResponse>;
-
 export interface GetFloatingIpRequest {
   /** ID of the Floating IP. */
   id: number;
 }
-const GetFloatingIpRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetFloatingIpRequest>;
-
 /** The Floating IP type. */
 export type GetFloatingIpResponseFloatingIpType = "ipv4" | "ipv6";
-const GetFloatingIpResponseFloatingIpType = S.String;
-
 export type GetFloatingIpResponseFloatingIpDnsPtrItem =
   CreateFloatingIpResponseFloatingIpDnsPtrItem;
 /** List of reverse DNS entries for the [Floating IP](#tag/floating-ips). */
 export type GetFloatingIpResponseFloatingIpDnsPtrList =
   Array<CreateFloatingIpResponseFloatingIpDnsPtrItem>;
-const GetFloatingIpResponseFloatingIpDnsPtrList =
-  CreateFloatingIpResponseFloatingIpDnsPtrList as any as S.Schema<GetFloatingIpResponseFloatingIpDnsPtrList>;
-
 /** [Location](#tag/locations) the for the [Floating IP](#tag/floating-ips) is located at. Routing is optimized for this [Location](#tag/locations). */
 export type GetFloatingIpResponseFloatingIpHomeLocation =
   CreateFloatingIpResponseFloatingIpHomeLocation;
@@ -248,9 +161,6 @@ export type GetFloatingIpResponseFloatingIpProtection =
   CreateFloatingIpResponseFloatingIpProtection;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetFloatingIpResponseFloatingIpLabelsMap = { [key: string]: string | undefined };
-const GetFloatingIpResponseFloatingIpLabelsMap =
-  CreateFloatingIpRequestLabelsMap as any as S.Schema<GetFloatingIpResponseFloatingIpLabelsMap>;
-
 export interface GetFloatingIpResponseFloatingIp {
   /** ID of the [Floating IP](#tag/floating-ips). */
   id: number;
@@ -277,19 +187,9 @@ export interface GetFloatingIpResponseFloatingIp {
   /** Point in time when the Resource was created (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format). */
   created: string;
 }
-const GetFloatingIpResponseFloatingIp = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetFloatingIpResponseFloatingIp>;
-
 export interface GetFloatingIpResponse {
   floating_ip: GetFloatingIpResponseFloatingIp;
 }
-const GetFloatingIpResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetFloatingIpResponse>;
-
 export type ListFloatingIpsRequestSortItem =
   | "id"
   | "id:asc"
@@ -297,14 +197,7 @@ export type ListFloatingIpsRequestSortItem =
   | "created"
   | "created:asc"
   | "created:desc";
-const ListFloatingIpsRequestSortItem = S.String;
-
 export type ListFloatingIpsRequestSortList = Array<ListFloatingIpsRequestSortItem | (string & {})>;
-const ListFloatingIpsRequestSortList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListFloatingIpsRequestSortList>;
-
 export interface ListFloatingIpsRequest {
   /** Filter resources by their name. The response will only contain the resources matching exactly the specified name. */
   name?: string;
@@ -317,23 +210,13 @@ export interface ListFloatingIpsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListFloatingIpsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListFloatingIpsRequest>;
-
 /** The Floating IP type. */
 export type ListFloatingIpsResponseFloatingIpsItemType = "ipv4" | "ipv6";
-const ListFloatingIpsResponseFloatingIpsItemType = S.String;
-
 export type ListFloatingIpsResponseFloatingIpsItemDnsPtrItem =
   CreateFloatingIpResponseFloatingIpDnsPtrItem;
 /** List of reverse DNS entries for the [Floating IP](#tag/floating-ips). */
 export type ListFloatingIpsResponseFloatingIpsItemDnsPtrList =
   Array<CreateFloatingIpResponseFloatingIpDnsPtrItem>;
-const ListFloatingIpsResponseFloatingIpsItemDnsPtrList =
-  CreateFloatingIpResponseFloatingIpDnsPtrList as any as S.Schema<ListFloatingIpsResponseFloatingIpsItemDnsPtrList>;
-
 /** [Location](#tag/locations) the for the [Floating IP](#tag/floating-ips) is located at. Routing is optimized for this [Location](#tag/locations). */
 export type ListFloatingIpsResponseFloatingIpsItemHomeLocation =
   CreateFloatingIpResponseFloatingIpHomeLocation;
@@ -342,9 +225,6 @@ export type ListFloatingIpsResponseFloatingIpsItemProtection =
   CreateFloatingIpResponseFloatingIpProtection;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListFloatingIpsResponseFloatingIpsItemLabelsMap = { [key: string]: string | undefined };
-const ListFloatingIpsResponseFloatingIpsItemLabelsMap =
-  CreateFloatingIpRequestLabelsMap as any as S.Schema<ListFloatingIpsResponseFloatingIpsItemLabelsMap>;
-
 export interface ListFloatingIpsResponseFloatingIpsItem {
   /** ID of the [Floating IP](#tag/floating-ips). */
   id: number;
@@ -371,17 +251,7 @@ export interface ListFloatingIpsResponseFloatingIpsItem {
   /** Point in time when the Resource was created (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format). */
   created: string;
 }
-const ListFloatingIpsResponseFloatingIpsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListFloatingIpsResponseFloatingIpsItem>;
-
 export type ListFloatingIpsResponseFloatingIpsList = Array<ListFloatingIpsResponseFloatingIpsItem>;
-const ListFloatingIpsResponseFloatingIpsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListFloatingIpsResponseFloatingIpsList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListFloatingIpsResponseMetaPagination {
   /** Current page number. */
@@ -397,34 +267,16 @@ export interface ListFloatingIpsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-const ListFloatingIpsResponseMetaPagination = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListFloatingIpsResponseMetaPagination>;
-
 export interface ListFloatingIpsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListFloatingIpsResponseMetaPagination;
 }
-const ListFloatingIpsResponseMeta = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListFloatingIpsResponseMeta>;
-
 export interface ListFloatingIpsResponse {
   floating_ips: ListFloatingIpsResponseFloatingIpsList;
   meta: ListFloatingIpsResponseMeta;
 }
-const ListFloatingIpsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListFloatingIpsResponse>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateFloatingIpRequestLabelsMap = { [key: string]: string | undefined };
-const UpdateFloatingIpRequestLabelsMap =
-  CreateFloatingIpRequestLabelsMap as any as S.Schema<UpdateFloatingIpRequestLabelsMap>;
-
 export interface UpdateFloatingIpRequest {
   /** ID of the Floating IP. */
   id: number;
@@ -435,23 +287,13 @@ export interface UpdateFloatingIpRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
   labels?: UpdateFloatingIpRequestLabelsMap;
 }
-const UpdateFloatingIpRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<UpdateFloatingIpRequest>;
-
 /** The Floating IP type. */
 export type UpdateFloatingIpResponseFloatingIpType = "ipv4" | "ipv6";
-const UpdateFloatingIpResponseFloatingIpType = S.String;
-
 export type UpdateFloatingIpResponseFloatingIpDnsPtrItem =
   CreateFloatingIpResponseFloatingIpDnsPtrItem;
 /** List of reverse DNS entries for the [Floating IP](#tag/floating-ips). */
 export type UpdateFloatingIpResponseFloatingIpDnsPtrList =
   Array<CreateFloatingIpResponseFloatingIpDnsPtrItem>;
-const UpdateFloatingIpResponseFloatingIpDnsPtrList =
-  CreateFloatingIpResponseFloatingIpDnsPtrList as any as S.Schema<UpdateFloatingIpResponseFloatingIpDnsPtrList>;
-
 /** [Location](#tag/locations) the for the [Floating IP](#tag/floating-ips) is located at. Routing is optimized for this [Location](#tag/locations). */
 export type UpdateFloatingIpResponseFloatingIpHomeLocation =
   CreateFloatingIpResponseFloatingIpHomeLocation;
@@ -460,9 +302,6 @@ export type UpdateFloatingIpResponseFloatingIpProtection =
   CreateFloatingIpResponseFloatingIpProtection;
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateFloatingIpResponseFloatingIpLabelsMap = { [key: string]: string | undefined };
-const UpdateFloatingIpResponseFloatingIpLabelsMap =
-  CreateFloatingIpRequestLabelsMap as any as S.Schema<UpdateFloatingIpResponseFloatingIpLabelsMap>;
-
 export interface UpdateFloatingIpResponseFloatingIp {
   /** ID of the [Floating IP](#tag/floating-ips). */
   id: number;
@@ -489,19 +328,9 @@ export interface UpdateFloatingIpResponseFloatingIp {
   /** Point in time when the Resource was created (in [RFC3339](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) format). */
   created: string;
 }
-const UpdateFloatingIpResponseFloatingIp = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<UpdateFloatingIpResponseFloatingIp>;
-
 export interface UpdateFloatingIpResponse {
   floating_ip: UpdateFloatingIpResponseFloatingIp;
 }
-const UpdateFloatingIpResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<UpdateFloatingIpResponse>;
-
 export type CreateFloatingIpError = HetznerOpError;
 /** Create a Floating IP Create a [Floating IP](#tag/floating-ips). Provide the `server` attribute to assign the [Floating IP](#tag/floating-ips) to that server or provide a `home_location` to locate the [Floating IP](#tag/floating-ips) at. Note that the [Floating IP](#tag/floating-ips) can be assigned to a [Server](#tag/servers) in any [Location](#tag/locations) later on. For optimal routing it is advised to use the [Floating IP](#tag/floating-ips) in the same [Location](#tag/locations) it was created in. */
 export const createFloatingIp: API.OperationMethod<
@@ -510,8 +339,8 @@ export const createFloatingIp: API.OperationMethod<
   CreateFloatingIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFloatingIpRequest,
-  output: CreateFloatingIpResponse,
+  input: __S(1) as any as S.Schema<CreateFloatingIpRequest>,
+  output: __S(11) as any as S.Schema<CreateFloatingIpResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -525,8 +354,8 @@ export const deleteFloatingIp: API.OperationMethod<
   DeleteFloatingIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFloatingIpRequest,
-  output: DeleteFloatingIpResponse,
+  input: __S(12) as any as S.Schema<DeleteFloatingIpRequest>,
+  output: __S(13) as any as S.Schema<DeleteFloatingIpResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -540,8 +369,8 @@ export const getFloatingIp: API.OperationMethod<
   GetFloatingIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFloatingIpRequest,
-  output: GetFloatingIpResponse,
+  input: __S(14) as any as S.Schema<GetFloatingIpRequest>,
+  output: __S(16) as any as S.Schema<GetFloatingIpResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -557,8 +386,8 @@ export const listFloatingIps: API.PaginatedOperationMethod<
   ListFloatingIpsResponseFloatingIpsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListFloatingIpsRequest,
-    output: ListFloatingIpsResponse,
+    input: __S(18) as any as S.Schema<ListFloatingIpsRequest>,
+    output: __S(23) as any as S.Schema<ListFloatingIpsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -581,8 +410,8 @@ export const updateFloatingIp: API.OperationMethod<
   UpdateFloatingIpError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFloatingIpRequest,
-  output: UpdateFloatingIpResponse,
+  input: __S(24) as any as S.Schema<UpdateFloatingIpRequest>,
+  output: __S(26) as any as S.Schema<UpdateFloatingIpResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -596,12 +425,12 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: CreateFloatingIpRequestType,
+          type: S.String,
           server: S.optional(S.NullOr(S.Number)),
-          home_location: S.optional(CreateFloatingIpRequestHomeLocation),
+          home_location: S.optional(S.Unknown),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          labels: S.optional(CreateFloatingIpRequestLabelsMap),
+          labels: S.optional(__S(0)),
         }).pipe(T.Http({ method: "POST", uri: "/floating_ips", code: 200 })),
       ).annotate({ identifier: "CreateFloatingIpRequest" });
     case 2:
@@ -614,7 +443,7 @@ function __c0(j: number): any {
         identifier: "CreateFloatingIpResponseFloatingIpDnsPtrItem",
       });
     case 3:
-      return S.Array(CreateFloatingIpResponseFloatingIpDnsPtrItem);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -645,13 +474,13 @@ function __c0(j: number): any {
           name: S.String,
           description: S.NullOr(S.String),
           ip: S.String,
-          type: CreateFloatingIpResponseFloatingIpType,
+          type: S.String,
           server: S.NullOr(S.Number),
-          dns_ptr: CreateFloatingIpResponseFloatingIpDnsPtrList,
-          home_location: CreateFloatingIpResponseFloatingIpHomeLocation,
+          dns_ptr: __S(3),
+          home_location: __S(4),
           blocked: S.Boolean,
-          protection: CreateFloatingIpResponseFloatingIpProtection,
-          labels: CreateFloatingIpResponseFloatingIpLabelsMap,
+          protection: __S(5),
+          labels: __S(0),
           created: S.String,
         }),
       ).annotate({
@@ -671,7 +500,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateFloatingIpResponseActionResourcesItem);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -686,12 +515,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: CreateFloatingIpResponseActionStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: CreateFloatingIpResponseActionResourcesList,
-          error: S.NullOr(CreateFloatingIpResponseActionError),
+          resources: __S(8),
+          error: S.NullOr(__S(9)),
         }),
       ).annotate({
         identifier: "CreateFloatingIpResponseAction",
@@ -699,8 +528,8 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          floating_ip: CreateFloatingIpResponseFloatingIp,
-          action: S.optional(S.NullOr(CreateFloatingIpResponseAction)),
+          floating_ip: __S(6),
+          action: S.optional(S.NullOr(__S(10))),
         }),
       ).annotate({ identifier: "CreateFloatingIpResponse" });
     case 4:
@@ -726,13 +555,13 @@ function __c1(j: number): any {
           name: S.String,
           description: S.NullOr(S.String),
           ip: S.String,
-          type: GetFloatingIpResponseFloatingIpType,
+          type: S.String,
           server: S.NullOr(S.Number),
-          dns_ptr: GetFloatingIpResponseFloatingIpDnsPtrList,
-          home_location: CreateFloatingIpResponseFloatingIpHomeLocation,
+          dns_ptr: __S(3),
+          home_location: __S(4),
           blocked: S.Boolean,
-          protection: CreateFloatingIpResponseFloatingIpProtection,
-          labels: GetFloatingIpResponseFloatingIpLabelsMap,
+          protection: __S(5),
+          labels: __S(0),
           created: S.String,
         }),
       ).annotate({
@@ -745,17 +574,17 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          floating_ip: GetFloatingIpResponseFloatingIp,
+          floating_ip: __S(15),
         }),
       ).annotate({ identifier: "GetFloatingIpResponse" });
     case 1:
-      return S.Array(ListFloatingIpsRequestSortItem);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(ListFloatingIpsRequestSortList.pipe(T.Query())),
+          sort: S.optional(__S(17).pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/floating_ips", code: 200 })),
@@ -767,20 +596,20 @@ function __c2(j: number): any {
           name: S.String,
           description: S.NullOr(S.String),
           ip: S.String,
-          type: ListFloatingIpsResponseFloatingIpsItemType,
+          type: S.String,
           server: S.NullOr(S.Number),
-          dns_ptr: ListFloatingIpsResponseFloatingIpsItemDnsPtrList,
-          home_location: CreateFloatingIpResponseFloatingIpHomeLocation,
+          dns_ptr: __S(3),
+          home_location: __S(4),
           blocked: S.Boolean,
-          protection: CreateFloatingIpResponseFloatingIpProtection,
-          labels: ListFloatingIpsResponseFloatingIpsItemLabelsMap,
+          protection: __S(5),
+          labels: __S(0),
           created: S.String,
         }),
       ).annotate({
         identifier: "ListFloatingIpsResponseFloatingIpsItem",
       });
     case 4:
-      return S.Array(ListFloatingIpsResponseFloatingIpsItem);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -797,7 +626,7 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          pagination: ListFloatingIpsResponseMetaPagination,
+          pagination: __S(21),
         }),
       ).annotate({
         identifier: "ListFloatingIpsResponseMeta",
@@ -805,8 +634,8 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          floating_ips: ListFloatingIpsResponseFloatingIpsList,
-          meta: ListFloatingIpsResponseMeta,
+          floating_ips: __S(20),
+          meta: __S(22),
         }),
       ).annotate({ identifier: "ListFloatingIpsResponse" });
   }
@@ -819,7 +648,7 @@ function __c3(j: number): any {
           id: S.Number.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          labels: S.optional(UpdateFloatingIpRequestLabelsMap),
+          labels: S.optional(__S(0)),
         }).pipe(T.Http({ method: "PUT", uri: "/floating_ips/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateFloatingIpRequest" });
     case 1:
@@ -829,13 +658,13 @@ function __c3(j: number): any {
           name: S.String,
           description: S.NullOr(S.String),
           ip: S.String,
-          type: UpdateFloatingIpResponseFloatingIpType,
+          type: S.String,
           server: S.NullOr(S.Number),
-          dns_ptr: UpdateFloatingIpResponseFloatingIpDnsPtrList,
-          home_location: CreateFloatingIpResponseFloatingIpHomeLocation,
+          dns_ptr: __S(3),
+          home_location: __S(4),
           blocked: S.Boolean,
-          protection: CreateFloatingIpResponseFloatingIpProtection,
-          labels: UpdateFloatingIpResponseFloatingIpLabelsMap,
+          protection: __S(5),
+          labels: __S(0),
           created: S.String,
         }),
       ).annotate({
@@ -844,8 +673,25 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          floating_ip: UpdateFloatingIpResponseFloatingIp,
+          floating_ip: __S(25),
         }),
       ).annotate({ identifier: "UpdateFloatingIpResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

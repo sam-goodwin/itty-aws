@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -69,26 +71,16 @@ export type GoogleCloudDatapipelinesV1PipelineStateEnum =
   | "STATE_STOPPING"
   | "STATE_ARCHIVED"
   | "STATE_PAUSED";
-const GoogleCloudDatapipelinesV1PipelineStateEnum = S.String;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringMap>;
-
 export type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationEnum =
   | "WORKER_IP_UNSPECIFIED"
   | "WORKER_IP_PUBLIC"
   | "WORKER_IP_PRIVATE";
-const GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationEnum = S.String;
-
 export type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalEnum =
   | "FLEXRS_UNSPECIFIED"
   | "FLEXRS_SPEED_OPTIMIZED"
   | "FLEXRS_COST_OPTIMIZED";
-const GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalEnum = S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringList>;
-
 /** The environment values to be set at runtime for a Flex Template. */
 export interface GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
   /** The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence. */
@@ -128,11 +120,6 @@ export interface GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment {
   /** Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/ */
   kmsKeyName?: string;
 }
-const GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment>;
-
 /** Launch Flex Template parameter. */
 export interface GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
   /** Launch options for this Flex Template job. This is a common set of options across languages and templates. This should not be used to pass job parameters. */
@@ -150,11 +137,6 @@ export interface GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter {
   /** The runtime environment for the Flex Template job. */
   environment?: GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment;
 }
-const GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter>;
-
 /** A request to launch a Dataflow job from a Flex Template. */
 export interface GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest {
   /** Required. Parameter to launch a job from a Flex Template. */
@@ -166,17 +148,10 @@ export interface GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest {
   /** Required. The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. For example, `us-central1`, `us-west1`. */
   location?: string;
 }
-const GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest>;
-
 export type GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationEnum =
   | "WORKER_IP_UNSPECIFIED"
   | "WORKER_IP_PUBLIC"
   | "WORKER_IP_PRIVATE";
-const GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationEnum = S.String;
-
 /** The environment values to set at runtime. */
 export interface GoogleCloudDatapipelinesV1RuntimeEnvironment {
   /** The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region. */
@@ -212,11 +187,6 @@ export interface GoogleCloudDatapipelinesV1RuntimeEnvironment {
   /** Configuration for VM IPs. */
   ipConfiguration?: GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationEnum | (string & {});
 }
-const GoogleCloudDatapipelinesV1RuntimeEnvironment = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GoogleCloudDatapipelinesV1RuntimeEnvironment>;
-
 /** Parameters to provide to the template being launched. */
 export interface GoogleCloudDatapipelinesV1LaunchTemplateParameters {
   /** Map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job. Only applicable when updating a pipeline. */
@@ -230,11 +200,6 @@ export interface GoogleCloudDatapipelinesV1LaunchTemplateParameters {
   /** The runtime parameters to pass to the job. */
   parameters?: StringMap;
 }
-const GoogleCloudDatapipelinesV1LaunchTemplateParameters = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GoogleCloudDatapipelinesV1LaunchTemplateParameters>;
-
 /** A request to launch a template. */
 export interface GoogleCloudDatapipelinesV1LaunchTemplateRequest {
   /** If true, the request is validated but not actually executed. Defaults to false. */
@@ -248,11 +213,6 @@ export interface GoogleCloudDatapipelinesV1LaunchTemplateRequest {
   /** The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. */
   location?: string;
 }
-const GoogleCloudDatapipelinesV1LaunchTemplateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GoogleCloudDatapipelinesV1LaunchTemplateRequest>;
-
 /** Workload details for creating the pipeline jobs. */
 export interface GoogleCloudDatapipelinesV1Workload {
   /** Template information and additional parameters needed to launch a Dataflow job using the flex launch API. */
@@ -260,17 +220,10 @@ export interface GoogleCloudDatapipelinesV1Workload {
   /** Template information and additional parameters needed to launch a Dataflow job using the standard launch API. */
   dataflowLaunchTemplateRequest?: GoogleCloudDatapipelinesV1LaunchTemplateRequest;
 }
-const GoogleCloudDatapipelinesV1Workload = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GoogleCloudDatapipelinesV1Workload>;
-
 export type GoogleCloudDatapipelinesV1PipelineTypeEnum =
   | "PIPELINE_TYPE_UNSPECIFIED"
   | "PIPELINE_TYPE_BATCH"
   | "PIPELINE_TYPE_STREAMING";
-const GoogleCloudDatapipelinesV1PipelineTypeEnum = S.String;
-
 /** Details of the schedule the pipeline runs on. */
 export interface GoogleCloudDatapipelinesV1ScheduleSpec {
   /** Timezone ID. This matches the timezone IDs used by the Cloud Scheduler API. If empty, UTC time is assumed. */
@@ -280,11 +233,6 @@ export interface GoogleCloudDatapipelinesV1ScheduleSpec {
   /** Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler. */
   schedule?: string;
 }
-const GoogleCloudDatapipelinesV1ScheduleSpec = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GoogleCloudDatapipelinesV1ScheduleSpec>;
-
 /** The main pipeline entity and all the necessary metadata for launching and managing linked jobs. */
 export interface GoogleCloudDatapipelinesV1Pipeline {
   /** Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used. */
@@ -310,44 +258,22 @@ export interface GoogleCloudDatapipelinesV1Pipeline {
   /** Internal scheduling information for a pipeline. If this information is provided, periodic jobs will be created per the schedule. If not, users are responsible for creating jobs externally. */
   scheduleInfo?: GoogleCloudDatapipelinesV1ScheduleSpec;
 }
-const GoogleCloudDatapipelinesV1Pipeline = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GoogleCloudDatapipelinesV1Pipeline>;
-
 export interface CreateProjectsLocationsPipelinesRequest {
   /** Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`. */
   parent: string;
   /** Request body */
   body?: GoogleCloudDatapipelinesV1Pipeline;
 }
-const CreateProjectsLocationsPipelinesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateProjectsLocationsPipelinesRequest>;
-
 export interface DeleteProjectsLocationsPipelinesRequest {
   /** Required. The pipeline name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. */
   name: string;
 }
-const DeleteProjectsLocationsPipelinesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsPipelinesRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-const GoogleProtobufEmpty = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GoogleProtobufEmpty>;
-
 export interface GetProjectsLocationsPipelinesRequest {
   /** Required. The pipeline name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. */
   name: string;
 }
-const GetProjectsLocationsPipelinesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetProjectsLocationsPipelinesRequest>;
-
 export interface ListProjectsLocationsPipelinesRequest {
   /** A page token, received from a previous `ListPipelines` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPipelines` must match the call that provided the page token. */
   pageToken?: string;
@@ -358,17 +284,7 @@ export interface ListProjectsLocationsPipelinesRequest {
   /** An expression for filtering the results of the request. If unspecified, all pipelines will be returned. Multiple filters can be applied and must be comma separated. Fields eligible for filtering are: + `type`: The type of the pipeline (streaming or batch). Allowed values are `ALL`, `BATCH`, and `STREAMING`. + `status`: The activity status of the pipeline. Allowed values are `ALL`, `ACTIVE`, `ARCHIVED`, and `PAUSED`. For example, to limit results to active batch processing pipelines: type:BATCH,status:ACTIVE */
   filter?: string;
 }
-const ListProjectsLocationsPipelinesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListProjectsLocationsPipelinesRequest>;
-
 export type GoogleCloudDatapipelinesV1PipelineList = Array<GoogleCloudDatapipelinesV1Pipeline>;
-const GoogleCloudDatapipelinesV1PipelineList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GoogleCloudDatapipelinesV1PipelineList>;
-
 /** Response message for ListPipelines. */
 export interface GoogleCloudDatapipelinesV1ListPipelinesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -376,11 +292,6 @@ export interface GoogleCloudDatapipelinesV1ListPipelinesResponse {
   /** Results that matched the filter criteria and were accessible to the caller. Results are always in descending order of pipeline creation date. */
   pipelines?: GoogleCloudDatapipelinesV1PipelineList;
 }
-const GoogleCloudDatapipelinesV1ListPipelinesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GoogleCloudDatapipelinesV1ListPipelinesResponse>;
-
 export interface ListProjectsLocationsPipelinesJobsRequest {
   /** The maximum number of entities to return. The service may return fewer than this value, even if there are additional pages. If unspecified, the max limit will be determined by the backend implementation. */
   pageSize?: number;
@@ -389,11 +300,6 @@ export interface ListProjectsLocationsPipelinesJobsRequest {
   /** A page token, received from a previous `ListJobs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListJobs` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsPipelinesJobsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListProjectsLocationsPipelinesJobsRequest>;
-
 export type GoogleCloudDatapipelinesV1JobStateEnum =
   | "STATE_UNSPECIFIED"
   | "STATE_PENDING"
@@ -401,14 +307,8 @@ export type GoogleCloudDatapipelinesV1JobStateEnum =
   | "STATE_DONE"
   | "STATE_FAILED"
   | "STATE_CANCELLED";
-const GoogleCloudDatapipelinesV1JobStateEnum = S.String;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -418,16 +318,12 @@ export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const GoogleRpcStatus = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GoogleRpcStatus>;
-
 export type GoogleCloudDatapipelinesV1SdkVersionSdkSupportStatusEnum =
   | "UNKNOWN"
   | "SUPPORTED"
   | "STALE"
   | "DEPRECATED"
   | "UNSUPPORTED";
-const GoogleCloudDatapipelinesV1SdkVersionSdkSupportStatusEnum = S.String;
-
 /** The version of the SDK used to run the job. */
 export interface GoogleCloudDatapipelinesV1SdkVersion {
   /** A readable string describing the version of the SDK. */
@@ -437,14 +333,7 @@ export interface GoogleCloudDatapipelinesV1SdkVersion {
   /** The support status for this SDK version. */
   sdkSupportStatus?: GoogleCloudDatapipelinesV1SdkVersionSdkSupportStatusEnum;
 }
-const GoogleCloudDatapipelinesV1SdkVersion = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GoogleCloudDatapipelinesV1SdkVersion>;
-
 export type DoubleMap = { [key: string]: number | undefined };
-const DoubleMap = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DoubleMap>;
-
 /** Pipeline job details specific to the Dataflow API. This is encapsulated here to allow for more executors to store their specific details separately. */
 export interface GoogleCloudDatapipelinesV1DataflowJobDetails {
   /** Output only. The current number of workers used to run the jobs. Only set to a value if the job is still running. */
@@ -454,11 +343,6 @@ export interface GoogleCloudDatapipelinesV1DataflowJobDetails {
   /** Cached version of all the metrics of interest for the job. This value gets stored here when the job is terminated. As long as the job is running, this field is populated from the Dataflow API. */
   resourceInfo?: DoubleMap;
 }
-const GoogleCloudDatapipelinesV1DataflowJobDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GoogleCloudDatapipelinesV1DataflowJobDetails>;
-
 /** Definition of the job information maintained by the pipeline. Fields in this entity are retrieved from the executor API (e.g. Dataflow API). */
 export interface GoogleCloudDatapipelinesV1Job {
   /** The current state of the job. */
@@ -476,17 +360,7 @@ export interface GoogleCloudDatapipelinesV1Job {
   /** Output only. The internal ID for the job. */
   id?: string;
 }
-const GoogleCloudDatapipelinesV1Job = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GoogleCloudDatapipelinesV1Job>;
-
 export type GoogleCloudDatapipelinesV1JobList = Array<GoogleCloudDatapipelinesV1Job>;
-const GoogleCloudDatapipelinesV1JobList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GoogleCloudDatapipelinesV1JobList>;
-
 /** Response message for ListJobs */
 export interface GoogleCloudDatapipelinesV1ListJobsResponse {
   /** Results that were accessible to the caller. Results are always in descending order of job creation date. */
@@ -494,11 +368,6 @@ export interface GoogleCloudDatapipelinesV1ListJobsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GoogleCloudDatapipelinesV1ListJobsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GoogleCloudDatapipelinesV1ListJobsResponse>;
-
 export interface PatchProjectsLocationsPipelinesRequest {
   /** The pipeline name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), and periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects). * `LOCATION_ID` is the canonical ID for the pipeline's location. The list of available locations can be obtained by calling `google.cloud.location.Locations.ListLocations`. Note that the Data Pipelines service is not available in all regions. It depends on Cloud Scheduler, an App Engine application, so it's only available in [App Engine regions](https://cloud.google.com/about/locations#region). * `PIPELINE_ID` is the ID of the pipeline. Must be unique for the selected project and location. */
   name: string;
@@ -507,39 +376,19 @@ export interface PatchProjectsLocationsPipelinesRequest {
   /** Request body */
   body?: GoogleCloudDatapipelinesV1Pipeline;
 }
-const PatchProjectsLocationsPipelinesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<PatchProjectsLocationsPipelinesRequest>;
-
 /** Request message for RunPipeline */
 export interface GoogleCloudDatapipelinesV1RunPipelineRequest {}
-const GoogleCloudDatapipelinesV1RunPipelineRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GoogleCloudDatapipelinesV1RunPipelineRequest>;
-
 export interface RunProjectsLocationsPipelinesRequest {
   /** Required. The pipeline name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. */
   name: string;
   /** Request body */
   body?: GoogleCloudDatapipelinesV1RunPipelineRequest;
 }
-const RunProjectsLocationsPipelinesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<RunProjectsLocationsPipelinesRequest>;
-
 /** Response message for RunPipeline */
 export interface GoogleCloudDatapipelinesV1RunPipelineResponse {
   /** Job that was created as part of RunPipeline operation. */
   job?: GoogleCloudDatapipelinesV1Job;
 }
-const GoogleCloudDatapipelinesV1RunPipelineResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GoogleCloudDatapipelinesV1RunPipelineResponse>;
-
 /** Request message for StopPipeline. */
 export type GoogleCloudDatapipelinesV1StopPipelineRequest =
   GoogleCloudDatapipelinesV1RunPipelineRequest;
@@ -549,11 +398,6 @@ export interface StopProjectsLocationsPipelinesRequest {
   /** Request body */
   body?: GoogleCloudDatapipelinesV1RunPipelineRequest;
 }
-const StopProjectsLocationsPipelinesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<StopProjectsLocationsPipelinesRequest>;
-
 export type CreateProjectsLocationsPipelinesError =
   | NotFound
   | Forbidden
@@ -567,8 +411,8 @@ export const createProjectsLocationsPipelines: API.OperationMethod<
   CreateProjectsLocationsPipelinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsPipelinesRequest,
-  output: GoogleCloudDatapipelinesV1Pipeline,
+  input: __S(11) as any as S.Schema<CreateProjectsLocationsPipelinesRequest>,
+  output: __S(10) as any as S.Schema<GoogleCloudDatapipelinesV1Pipeline>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -587,8 +431,8 @@ export const deleteProjectsLocationsPipelines: API.OperationMethod<
   DeleteProjectsLocationsPipelinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsPipelinesRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(12) as any as S.Schema<DeleteProjectsLocationsPipelinesRequest>,
+  output: __S(13) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -602,8 +446,8 @@ export const getProjectsLocationsPipelines: API.OperationMethod<
   GetProjectsLocationsPipelinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsPipelinesRequest,
-  output: GoogleCloudDatapipelinesV1Pipeline,
+  input: __S(14) as any as S.Schema<GetProjectsLocationsPipelinesRequest>,
+  output: __S(10) as any as S.Schema<GoogleCloudDatapipelinesV1Pipeline>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -618,8 +462,8 @@ export const listProjectsLocationsPipelines: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDatapipelinesV1ListPipelinesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsPipelinesRequest,
-  output: GoogleCloudDatapipelinesV1ListPipelinesResponse,
+  input: __S(15) as any as S.Schema<ListProjectsLocationsPipelinesRequest>,
+  output: __S(17) as any as S.Schema<GoogleCloudDatapipelinesV1ListPipelinesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -635,8 +479,8 @@ export const listProjectsLocationsPipelinesJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudDatapipelinesV1ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsPipelinesJobsRequest,
-  output: GoogleCloudDatapipelinesV1ListJobsResponse,
+  input: __S(18) as any as S.Schema<ListProjectsLocationsPipelinesJobsRequest>,
+  output: __S(27) as any as S.Schema<GoogleCloudDatapipelinesV1ListJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -656,8 +500,8 @@ export const patchProjectsLocationsPipelines: API.OperationMethod<
   PatchProjectsLocationsPipelinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsPipelinesRequest,
-  output: GoogleCloudDatapipelinesV1Pipeline,
+  input: __S(28) as any as S.Schema<PatchProjectsLocationsPipelinesRequest>,
+  output: __S(10) as any as S.Schema<GoogleCloudDatapipelinesV1Pipeline>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -676,8 +520,8 @@ export const runProjectsLocationsPipelines: API.OperationMethod<
   RunProjectsLocationsPipelinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunProjectsLocationsPipelinesRequest,
-  output: GoogleCloudDatapipelinesV1RunPipelineResponse,
+  input: __S(30) as any as S.Schema<RunProjectsLocationsPipelinesRequest>,
+  output: __S(31) as any as S.Schema<GoogleCloudDatapipelinesV1RunPipelineResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -696,8 +540,8 @@ export const stopProjectsLocationsPipelines: API.OperationMethod<
   StopProjectsLocationsPipelinesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopProjectsLocationsPipelinesRequest,
-  output: GoogleCloudDatapipelinesV1Pipeline,
+  input: __S(32) as any as S.Schema<StopProjectsLocationsPipelinesRequest>,
+  output: __S(10) as any as S.Schema<GoogleCloudDatapipelinesV1Pipeline>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -714,20 +558,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           workerZone: S.optional(S.String),
-          ipConfiguration: S.optional(
-            GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationEnum,
-          ),
+          ipConfiguration: S.optional(S.String),
           subnetwork: S.optional(S.String),
           enableStreamingEngine: S.optional(S.Boolean),
-          flexrsGoal: S.optional(
-            GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalEnum,
-          ),
-          additionalUserLabels: S.optional(StringMap),
+          flexrsGoal: S.optional(S.String),
+          additionalUserLabels: S.optional(__S(0)),
           network: S.optional(S.String),
           maxWorkers: S.optional(S.Number),
           workerRegion: S.optional(S.String),
           tempLocation: S.optional(S.String),
-          additionalExperiments: S.optional(StringList),
+          additionalExperiments: S.optional(__S(1)),
           numWorkers: S.optional(S.Number),
           serviceAccountEmail: S.optional(S.String),
           zone: S.optional(S.String),
@@ -740,13 +580,13 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          launchOptions: S.optional(StringMap),
-          parameters: S.optional(StringMap),
+          launchOptions: S.optional(__S(0)),
+          parameters: S.optional(__S(0)),
           update: S.optional(S.Boolean),
           jobName: S.optional(S.String),
-          transformNameMappings: S.optional(StringMap),
+          transformNameMappings: S.optional(__S(0)),
           containerSpecGcsPath: S.optional(S.String),
-          environment: S.optional(GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment),
+          environment: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter",
@@ -754,7 +594,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          launchParameter: S.optional(GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter),
+          launchParameter: S.optional(__S(3)),
           projectId: S.optional(S.String),
           validateOnly: S.optional(S.Boolean),
           location: S.optional(S.String),
@@ -770,7 +610,7 @@ function __c0(j: number): any {
           maxWorkers: S.optional(S.Number),
           tempLocation: S.optional(S.String),
           machineType: S.optional(S.String),
-          additionalExperiments: S.optional(StringList),
+          additionalExperiments: S.optional(__S(1)),
           serviceAccountEmail: S.optional(S.String),
           kmsKeyName: S.optional(S.String),
           numWorkers: S.optional(S.Number),
@@ -778,11 +618,9 @@ function __c0(j: number): any {
           zone: S.optional(S.String),
           subnetwork: S.optional(S.String),
           enableStreamingEngine: S.optional(S.Boolean),
-          additionalUserLabels: S.optional(StringMap),
+          additionalUserLabels: S.optional(__S(0)),
           workerZone: S.optional(S.String),
-          ipConfiguration: S.optional(
-            GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationEnum,
-          ),
+          ipConfiguration: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDatapipelinesV1RuntimeEnvironment",
@@ -790,11 +628,11 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          transformNameMapping: S.optional(StringMap),
+          transformNameMapping: S.optional(__S(0)),
           update: S.optional(S.Boolean),
           jobName: S.optional(S.String),
-          environment: S.optional(GoogleCloudDatapipelinesV1RuntimeEnvironment),
-          parameters: S.optional(StringMap),
+          environment: S.optional(__S(5)),
+          parameters: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatapipelinesV1LaunchTemplateParameters",
@@ -803,7 +641,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           validateOnly: S.optional(S.Boolean),
-          launchParameters: S.optional(GoogleCloudDatapipelinesV1LaunchTemplateParameters),
+          launchParameters: S.optional(__S(6)),
           projectId: S.optional(S.String),
           gcsPath: S.optional(S.String),
           location: S.optional(S.String),
@@ -818,12 +656,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dataflowFlexTemplateRequest: S.optional(
-            GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest,
-          ),
-          dataflowLaunchTemplateRequest: S.optional(
-            GoogleCloudDatapipelinesV1LaunchTemplateRequest,
-          ),
+          dataflowFlexTemplateRequest: S.optional(__S(4)),
+          dataflowLaunchTemplateRequest: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatapipelinesV1Workload",
@@ -842,16 +676,16 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           schedulerServiceAccountEmail: S.optional(S.String),
-          state: S.optional(GoogleCloudDatapipelinesV1PipelineStateEnum),
+          state: S.optional(S.String),
           lastUpdateTime: S.optional(S.String),
           displayName: S.optional(S.String),
-          pipelineSources: S.optional(StringMap),
+          pipelineSources: S.optional(__S(0)),
           jobCount: S.optional(S.Number),
           name: S.optional(S.String),
-          workload: S.optional(GoogleCloudDatapipelinesV1Workload),
+          workload: S.optional(__S(8)),
           createTime: S.optional(S.String),
-          type: S.optional(GoogleCloudDatapipelinesV1PipelineTypeEnum),
-          scheduleInfo: S.optional(GoogleCloudDatapipelinesV1ScheduleSpec),
+          type: S.optional(S.String),
+          scheduleInfo: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatapipelinesV1Pipeline",
@@ -860,7 +694,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudDatapipelinesV1Pipeline.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -925,12 +759,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudDatapipelinesV1Pipeline);
+      return S.Array(__S(10));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          pipelines: S.optional(GoogleCloudDatapipelinesV1PipelineList),
+          pipelines: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatapipelinesV1ListPipelinesResponse",
@@ -954,13 +788,13 @@ function __c2(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(DocumentMap);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
     case 6:
@@ -968,7 +802,7 @@ function __c2(j: number): any {
         S.Struct({
           versionDisplayName: S.optional(S.String),
           version: S.optional(S.String),
-          sdkSupportStatus: S.optional(GoogleCloudDatapipelinesV1SdkVersionSdkSupportStatusEnum),
+          sdkSupportStatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDatapipelinesV1SdkVersion",
@@ -983,8 +817,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           currentWorkers: S.optional(S.Number),
-          sdkVersion: S.optional(GoogleCloudDatapipelinesV1SdkVersion),
-          resourceInfo: S.optional(DoubleMap),
+          sdkVersion: S.optional(__S(22)),
+          resourceInfo: S.optional(__S(23)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatapipelinesV1DataflowJobDetails",
@@ -992,23 +826,23 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(GoogleCloudDatapipelinesV1JobStateEnum),
+          state: S.optional(S.String),
           createTime: S.optional(S.String),
           endTime: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(GoogleRpcStatus),
-          dataflowJobDetails: S.optional(GoogleCloudDatapipelinesV1DataflowJobDetails),
+          status: S.optional(__S(21)),
+          dataflowJobDetails: S.optional(__S(24)),
           id: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudDatapipelinesV1Job",
       });
     case 2:
-      return S.Array(GoogleCloudDatapipelinesV1Job);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          jobs: S.optional(GoogleCloudDatapipelinesV1JobList),
+          jobs: S.optional(__S(26)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1019,7 +853,7 @@ function __c3(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudDatapipelinesV1Pipeline.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1038,7 +872,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudDatapipelinesV1RunPipelineRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(29).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1052,7 +886,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          job: S.optional(GoogleCloudDatapipelinesV1Job),
+          job: S.optional(__S(25)),
         }),
       ).annotate({
         identifier: "GoogleCloudDatapipelinesV1RunPipelineResponse",
@@ -1065,7 +899,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudDatapipelinesV1RunPipelineRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(29).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1076,5 +910,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "StopProjectsLocationsPipelinesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

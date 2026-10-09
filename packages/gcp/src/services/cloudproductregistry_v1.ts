@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -40,22 +42,13 @@ export interface GetLogicalProductsRequest {
   /** Required. The name of the LogicalProduct to retrieve. Format: logicalProducts/{logical_product} */
   name: string;
 }
-const GetLogicalProductsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetLogicalProductsRequest>;
-
 export type LogicalProductLifecycleStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "LIFECYCLE_STATE_PUBLIC_PREVIEW"
   | "LIFECYCLE_STATE_PRIVATE_GA"
   | "LIFECYCLE_STATE_GA"
   | "LIFECYCLE_STATE_DEPRECATED";
-const LogicalProductLifecycleStateEnum = S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringList>;
-
 /** Represents an independent service offering that can be provisioned by a customer. */
 export interface LogicalProduct {
   /** Display name of the LogicalProduct. */
@@ -73,25 +66,16 @@ export interface LogicalProduct {
   /** Output only. Child variant resource references. Format: logicalProducts/{logical_product}/variants/{variant} */
   variants?: StringList;
 }
-const LogicalProduct = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<LogicalProduct>;
-
 export interface GetLogicalProductsVariantsRequest {
   /** Required. The name of the LogicalProductVariant to retrieve. Format: logicalProducts/{logical_product}/variants/{variant} */
   name: string;
 }
-const GetLogicalProductsVariantsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetLogicalProductsVariantsRequest>;
-
 export type LogicalProductVariantLifecycleStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "LIFECYCLE_STATE_PUBLIC_PREVIEW"
   | "LIFECYCLE_STATE_PRIVATE_GA"
   | "LIFECYCLE_STATE_GA"
   | "LIFECYCLE_STATE_DEPRECATED";
-const LogicalProductVariantLifecycleStateEnum = S.String;
-
 /** Represents a distinct offering derived from a primary product that retains core functionalities but offers specialized features for a specific market segment. */
 export interface LogicalProductVariant {
   /** Identifier. The resource name of the LogicalProductVariant. Format: logicalProducts/{logical_product}/variants/{variant} */
@@ -105,20 +89,10 @@ export interface LogicalProductVariant {
   /** Output only. The resource name of the Logical Entity that the logical product variant is replaced by. This field is only populated when this logical product variant is replaced by some other type. Eg: logicalProducts/{logical_product}, productSuites/{product_suite}, etc. */
   replacement?: string;
 }
-const LogicalProductVariant = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<LogicalProductVariant>;
-
 export interface GetProductSuitesRequest {
   /** Required. The name of the ProductSuite to retrieve. Format: productSuites/{product_suite} */
   name: string;
 }
-const GetProductSuitesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetProductSuitesRequest>;
-
 /** Represents a unified grouping of products sharing a common brand and market positioning. */
 export interface ProductSuite {
   /** Identifier. The resource name of the ProductSuite. Format: productSuites/{product_suite} */
@@ -132,8 +106,6 @@ export interface ProductSuite {
   /** Output only. The resource name of the Logical Entity that the product suite is replaced by. This field is only populated when this product suite is replaced by some other type. Eg: logicalProducts/{logical_product}, logicalProducts/{logical_product}/variants/{variant}, etc. */
   replacement?: string;
 }
-const ProductSuite = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ProductSuite>;
-
 export interface ListLogicalProductsRequest {
   /** Optional. The maximum number of logical products to return. The service may return fewer than this value. If unspecified, at most 100 logical products will be returned. The maximum value is 500; values above 500 will be coerced to 500. */
   pageSize?: number;
@@ -142,14 +114,7 @@ export interface ListLogicalProductsRequest {
   /** Optional. A page token, received from a previous `ListLogicalProducts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListLogicalProducts` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListLogicalProductsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListLogicalProductsRequest>;
-
 export type LogicalProductList = Array<LogicalProduct>;
-const LogicalProductList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<LogicalProductList>;
-
 /** Response message for ListLogicalProducts. */
 export interface ListLogicalProductsResponse {
   /** Matched LogicalProducts */
@@ -157,11 +122,6 @@ export interface ListLogicalProductsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListLogicalProductsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListLogicalProductsResponse>;
-
 export interface ListLogicalProductsVariantsRequest {
   /** Required. Parent logical product id. Format: logicalProducts/{logical_product} */
   parent: string;
@@ -170,17 +130,7 @@ export interface ListLogicalProductsVariantsRequest {
   /** Optional. The maximum number of logical product variants to return. The service may return fewer than this value. If unspecified, at most 100 logical product variants will be returned. The maximum value is 500; values above 500 will be coerced to 500. */
   pageSize?: number;
 }
-const ListLogicalProductsVariantsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListLogicalProductsVariantsRequest>;
-
 export type LogicalProductVariantList = Array<LogicalProductVariant>;
-const LogicalProductVariantList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<LogicalProductVariantList>;
-
 /** Response message for ListLogicalProductVariants. */
 export interface ListLogicalProductVariantsResponse {
   /** Matched LogicalProductVariants */
@@ -188,25 +138,13 @@ export interface ListLogicalProductVariantsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListLogicalProductVariantsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListLogicalProductVariantsResponse>;
-
 export interface ListProductSuitesRequest {
   /** Optional. The maximum number of suites to return. The service may return fewer than this value. If unspecified, at most 100 suites will be returned. The maximum value is 500; values above 500 will be coerced to 500. */
   pageSize?: number;
   /** Optional. A page token, received from a previous `ListProductSuites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProductSuites` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListProductSuitesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListProductSuitesRequest>;
-
 export type ProductSuiteList = Array<ProductSuite>;
-const ProductSuiteList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ProductSuiteList>;
-
 /** Response message for ListProductSuites. */
 export interface ListProductSuitesResponse {
   /** Matched ProductSuites */
@@ -214,20 +152,10 @@ export interface ListProductSuitesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListProductSuitesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListProductSuitesResponse>;
-
 export interface LookupEntityLogicalProductsRequest {
   /** Required. Entity uri to look up. Supported Formats: logicalProducts/{logical_product} logicalProducts/{logical_product}/variants/{variant} productSuites/{product_suite} */
   lookupUri: string;
 }
-const LookupEntityLogicalProductsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<LookupEntityLogicalProductsRequest>;
-
 /** Response message for LookupEntity. */
 export interface LookupEntityResponse {
   /** Matched ProductSuite. */
@@ -237,26 +165,14 @@ export interface LookupEntityResponse {
   /** Matched LogicalProduct. */
   logicalProduct?: LogicalProduct;
 }
-const LookupEntityResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<LookupEntityResponse>;
-
 export interface LookupEntityLogicalProductsVariantsRequest {
   /** Required. Entity uri to look up. Supported Formats: logicalProducts/{logical_product} logicalProducts/{logical_product}/variants/{variant} productSuites/{product_suite} */
   lookupUri: string;
 }
-const LookupEntityLogicalProductsVariantsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<LookupEntityLogicalProductsVariantsRequest>;
-
 export interface LookupEntityProductSuitesRequest {
   /** Required. Entity uri to look up. Supported Formats: logicalProducts/{logical_product} logicalProducts/{logical_product}/variants/{variant} productSuites/{product_suite} */
   lookupUri: string;
 }
-const LookupEntityProductSuitesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<LookupEntityProductSuitesRequest>;
-
 export type GetLogicalProductsError = NotFound | Forbidden | GcpOpError;
 /** Gets details of a LogicalProduct. */
 export const getLogicalProducts: API.OperationMethod<
@@ -265,8 +181,8 @@ export const getLogicalProducts: API.OperationMethod<
   GetLogicalProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLogicalProductsRequest,
-  output: LogicalProduct,
+  input: __S(0) as any as S.Schema<GetLogicalProductsRequest>,
+  output: __S(2) as any as S.Schema<LogicalProduct>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -280,8 +196,8 @@ export const getLogicalProductsVariants: API.OperationMethod<
   GetLogicalProductsVariantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLogicalProductsVariantsRequest,
-  output: LogicalProductVariant,
+  input: __S(3) as any as S.Schema<GetLogicalProductsVariantsRequest>,
+  output: __S(4) as any as S.Schema<LogicalProductVariant>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -295,8 +211,8 @@ export const getProductSuites: API.OperationMethod<
   GetProductSuitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProductSuitesRequest,
-  output: ProductSuite,
+  input: __S(5) as any as S.Schema<GetProductSuitesRequest>,
+  output: __S(6) as any as S.Schema<ProductSuite>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -311,8 +227,8 @@ export const listLogicalProducts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLogicalProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLogicalProductsRequest,
-  output: ListLogicalProductsResponse,
+  input: __S(7) as any as S.Schema<ListLogicalProductsRequest>,
+  output: __S(9) as any as S.Schema<ListLogicalProductsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -328,8 +244,8 @@ export const listLogicalProductsVariants: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLogicalProductVariantsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLogicalProductsVariantsRequest,
-  output: ListLogicalProductVariantsResponse,
+  input: __S(10) as any as S.Schema<ListLogicalProductsVariantsRequest>,
+  output: __S(12) as any as S.Schema<ListLogicalProductVariantsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -345,8 +261,8 @@ export const listProductSuites: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProductSuitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProductSuitesRequest,
-  output: ListProductSuitesResponse,
+  input: __S(13) as any as S.Schema<ListProductSuitesRequest>,
+  output: __S(15) as any as S.Schema<ListProductSuitesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -361,8 +277,8 @@ export const lookupEntityLogicalProducts: API.OperationMethod<
   LookupEntityLogicalProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LookupEntityLogicalProductsRequest,
-  output: LookupEntityResponse,
+  input: __S(16) as any as S.Schema<LookupEntityLogicalProductsRequest>,
+  output: __S(17) as any as S.Schema<LookupEntityResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -376,8 +292,8 @@ export const lookupEntityLogicalProductsVariants: API.OperationMethod<
   LookupEntityLogicalProductsVariantsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LookupEntityLogicalProductsVariantsRequest,
-  output: LookupEntityResponse,
+  input: __S(18) as any as S.Schema<LookupEntityLogicalProductsVariantsRequest>,
+  output: __S(17) as any as S.Schema<LookupEntityResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -391,8 +307,8 @@ export const lookupEntityProductSuites: API.OperationMethod<
   LookupEntityProductSuitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LookupEntityProductSuitesRequest,
-  output: LookupEntityResponse,
+  input: __S(19) as any as S.Schema<LookupEntityProductSuitesRequest>,
+  output: __S(17) as any as S.Schema<LookupEntityResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -423,10 +339,10 @@ function __c0(j: number): any {
           title: S.optional(S.String),
           productSuite: S.optional(S.String),
           replaced: S.optional(S.Boolean),
-          lifecycleState: S.optional(LogicalProductLifecycleStateEnum),
+          lifecycleState: S.optional(S.String),
           replacement: S.optional(S.String),
           name: S.optional(S.String),
-          variants: S.optional(StringList),
+          variants: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "LogicalProduct" });
     case 3:
@@ -447,7 +363,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          lifecycleState: S.optional(LogicalProductVariantLifecycleStateEnum),
+          lifecycleState: S.optional(S.String),
           title: S.optional(S.String),
           replaced: S.optional(S.Boolean),
           replacement: S.optional(S.String),
@@ -471,7 +387,7 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           title: S.optional(S.String),
           replaced: S.optional(S.Boolean),
-          logicalProducts: S.optional(StringList),
+          logicalProducts: S.optional(__S(1)),
           replacement: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductSuite" });
@@ -496,11 +412,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(LogicalProduct);
+      return S.Array(__S(2));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          logicalProducts: S.optional(LogicalProductList),
+          logicalProducts: S.optional(__S(8)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -523,11 +439,11 @@ function __c1(j: number): any {
         identifier: "ListLogicalProductsVariantsRequest",
       });
     case 3:
-      return S.Array(LogicalProductVariant);
+      return S.Array(__S(4));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          logicalProductVariants: S.optional(LogicalProductVariantList),
+          logicalProductVariants: S.optional(__S(11)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -547,11 +463,11 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListProductSuitesRequest" });
     case 6:
-      return S.Array(ProductSuite);
+      return S.Array(__S(6));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          productSuites: S.optional(ProductSuiteList),
+          productSuites: S.optional(__S(14)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -578,9 +494,9 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          productSuite: S.optional(ProductSuite),
-          logicalProductVariant: S.optional(LogicalProductVariant),
-          logicalProduct: S.optional(LogicalProduct),
+          productSuite: S.optional(__S(6)),
+          logicalProductVariant: S.optional(__S(4)),
+          logicalProduct: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "LookupEntityResponse" });
     case 2:
@@ -611,5 +527,20 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "LookupEntityProductSuitesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

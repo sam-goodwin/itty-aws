@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -50,11 +52,6 @@ export interface GetIdentityProfileRequest {
   /** The unique identifier of the identity profile (idpf_xxx). */
   id: string;
 }
-const GetIdentityProfileRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetIdentityProfileRequest>;
-
 /** Registered business address reported by the identity provider. Present on `business` profiles. */
 export interface IdentityProfileBusinessAddress {
   /** The city of the address. */
@@ -70,11 +67,6 @@ export interface IdentityProfileBusinessAddress {
   /** The state of the address. */
   state: string | null;
 }
-const IdentityProfileBusinessAddress = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<IdentityProfileBusinessAddress>;
-
 /** A company is a seller on Whop. Companies own products, manage members, and receive payouts. */
 export interface IdentityProfileLinkedCompaniesItem {
   /** The unique identifier for the company. */
@@ -82,18 +74,8 @@ export interface IdentityProfileLinkedCompaniesItem {
   /** The display name of the company shown to customers. */
   title: string;
 }
-const IdentityProfileLinkedCompaniesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<IdentityProfileLinkedCompaniesItem>;
-
 /** The companies this identity profile is currently linked to. Only populated for direct Whop user sessions; always empty when authenticated via API key, app, or OAuth scope (a single identity can be linked to companies the calling platform is not entitled to see). */
 export type IdentityProfileLinkedCompaniesList = Array<IdentityProfileLinkedCompaniesItem>;
-const IdentityProfileLinkedCompaniesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<IdentityProfileLinkedCompaniesList>;
-
 /** The granular calculated statuses reflecting payout account KYC and payout readiness. */
 export type PayoutAccountCalculatedStatuses =
   | "connected"
@@ -105,8 +87,6 @@ export type PayoutAccountCalculatedStatuses =
   | "denied"
   | "not_started"
   | "blocked_by_parent";
-const PayoutAccountCalculatedStatuses = S.String;
-
 /** Residential address reported by the identity provider. Present on `individual` profiles. */
 export type IdentityProfilePersonalAddress = IdentityProfileBusinessAddress;
 /** Derived verification status for an identity profile. */
@@ -117,8 +97,6 @@ export type IdentityProfileStatuses =
   | "approved"
   | "rejected"
   | "action_required";
-const IdentityProfileStatuses = S.String;
-
 /** An error code for a verification attempt. */
 export type VerificationErrorCodes =
   | "abandoned"
@@ -140,8 +118,6 @@ export type VerificationErrorCodes =
   | "selfie_manipulated"
   | "selfie_unverified_other"
   | "under_supported_age";
-const VerificationErrorCodes = S.String;
-
 /** A status for a verification. */
 export type VerificationStatuses =
   | "requires_input"
@@ -159,8 +135,6 @@ export type VerificationStatuses =
   | "review"
   | "action_required"
   | "manual_review";
-const VerificationStatuses = S.String;
-
 /** An identity verification session used to confirm a person or entity's identity for payout account eligibility. */
 export interface IdentityProfileVerificationsItem {
   /** When the verification record was created. */
@@ -176,18 +150,8 @@ export interface IdentityProfileVerificationsItem {
   /** The current status of this verification session. */
   status: VerificationStatuses;
 }
-const IdentityProfileVerificationsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<IdentityProfileVerificationsItem>;
-
 /** All verification attempts attached to this identity profile, ordered most-recent first. */
 export type IdentityProfileVerificationsList = Array<IdentityProfileVerificationsItem>;
-const IdentityProfileVerificationsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<IdentityProfileVerificationsList>;
-
 /** A consolidated identity or business profile synced from verification provider data. */
 export interface IdentityProfile {
   /** Registered business address reported by the identity provider. Present on `business` profiles. */
@@ -229,12 +193,8 @@ export interface IdentityProfile {
   /** All verification attempts attached to this identity profile, ordered most-recent first. */
   verifications: IdentityProfileVerificationsList;
 }
-const IdentityProfile = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<IdentityProfile>;
-
 /** The kind of identity profile (individual vs business). */
 export type IdentityProfileKinds = "individual" | "business";
-const IdentityProfileKinds = S.String;
-
 export interface ListIdentityProfileRequest {
   after?: string;
   before?: string;
@@ -244,11 +204,6 @@ export interface ListIdentityProfileRequest {
   status?: IdentityProfileStatuses | (string & {});
   account_id?: string;
 }
-const ListIdentityProfileRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListIdentityProfileRequest>;
-
 /** Registered business address reported by the identity provider. Present on `business` profiles. */
 export type IdentityProfileListItemBusinessAddress = IdentityProfileBusinessAddress;
 /** A company is a seller on Whop. Companies own products, manage members, and receive payouts. */
@@ -302,15 +257,8 @@ export interface IdentityProfileListItem {
   /** All verification attempts attached to this identity profile, ordered most-recent first. */
   verifications: IdentityProfileListItemVerificationsList;
 }
-const IdentityProfileListItem = IdentityProfile as any as S.Schema<IdentityProfileListItem>;
-
 /** A list of nodes. */
 export type ListIdentityProfileResponseDataList = Array<IdentityProfileListItem>;
-const ListIdentityProfileResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListIdentityProfileResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -322,19 +270,12 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<PageInfo>;
-
 export interface ListIdentityProfileResponse {
   /** A list of nodes. */
   data: ListIdentityProfileResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListIdentityProfileResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListIdentityProfileResponse>;
-
 export interface ListVerificationsIdentityProfileRequest {
   /** The unique identifier of the identity profile (idpf_xxx). */
   id: string;
@@ -343,40 +284,22 @@ export interface ListVerificationsIdentityProfileRequest {
   first?: number;
   last?: number;
 }
-const ListVerificationsIdentityProfileRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListVerificationsIdentityProfileRequest>;
-
 /** An identity verification session used to confirm a person or entity's identity for payout account eligibility. */
 export type ListVerificationsIdentityProfileResponseDataItem = IdentityProfileVerificationsItem;
 /** A list of nodes. */
 export type ListVerificationsIdentityProfileResponseDataList =
   Array<IdentityProfileVerificationsItem>;
-const ListVerificationsIdentityProfileResponseDataList =
-  IdentityProfileVerificationsList as any as S.Schema<ListVerificationsIdentityProfileResponseDataList>;
-
 export interface ListVerificationsIdentityProfileResponse {
   /** A list of nodes. */
   data: ListVerificationsIdentityProfileResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListVerificationsIdentityProfileResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListVerificationsIdentityProfileResponse>;
-
 export interface UnlinkIdentityProfileRequest {
   /** The ID of the IdentityProfile to unlink. */
   id: string;
   ledger_account_id: string;
 }
-const UnlinkIdentityProfileRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<UnlinkIdentityProfileRequest>;
-
 export type GetIdentityProfileError =
   | BadRequest
   | Forbidden
@@ -390,8 +313,8 @@ export const getIdentityProfile: API.OperationMethod<
   GetIdentityProfileError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIdentityProfileRequest,
-  output: IdentityProfile,
+  input: __S(0) as any as S.Schema<GetIdentityProfileRequest>,
+  output: __S(6) as any as S.Schema<IdentityProfile>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -412,8 +335,8 @@ export const listIdentityProfile: API.PaginatedOperationMethod<
   IdentityProfileListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListIdentityProfileRequest,
-    output: ListIdentityProfileResponse,
+    input: __S(7) as any as S.Schema<ListIdentityProfileRequest>,
+    output: __S(10) as any as S.Schema<ListIdentityProfileResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -444,8 +367,8 @@ export const listVerificationsIdentityProfile: API.PaginatedOperationMethod<
   IdentityProfileVerificationsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListVerificationsIdentityProfileRequest,
-    output: ListVerificationsIdentityProfileResponse,
+    input: __S(11) as any as S.Schema<ListVerificationsIdentityProfileRequest>,
+    output: __S(12) as any as S.Schema<ListVerificationsIdentityProfileResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -474,8 +397,8 @@ export const unlinkIdentityProfile: API.OperationMethod<
   UnlinkIdentityProfileError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnlinkIdentityProfileRequest,
-  output: IdentityProfile,
+  input: __S(13) as any as S.Schema<UnlinkIdentityProfileRequest>,
+  output: __S(6) as any as S.Schema<IdentityProfile>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -515,26 +438,26 @@ function __c0(j: number): any {
         identifier: "IdentityProfileLinkedCompaniesItem",
       });
     case 3:
-      return S.Array(IdentityProfileLinkedCompaniesItem);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
           id: S.String,
-          last_error_code: S.NullOr(VerificationErrorCodes),
+          last_error_code: S.NullOr(S.String),
           last_error_reason: S.NullOr(S.String),
           session_url: S.NullOr(S.String),
-          status: VerificationStatuses,
+          status: S.String,
         }),
       ).annotate({
         identifier: "IdentityProfileVerificationsItem",
       });
     case 5:
-      return S.Array(IdentityProfileVerificationsItem);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          business_address: S.NullOr(IdentityProfileBusinessAddress),
+          business_address: S.NullOr(__S(1)),
           business_name: S.NullOr(S.String),
           business_structure: S.NullOr(S.String),
           country: S.NullOr(S.String),
@@ -544,15 +467,15 @@ function __c0(j: number): any {
           first_name: S.NullOr(S.String),
           id: S.String,
           last_name: S.NullOr(S.String),
-          linked_companies: IdentityProfileLinkedCompaniesList,
-          payout_status: PayoutAccountCalculatedStatuses,
+          linked_companies: __S(3),
+          payout_status: S.String,
           payouts_enabled: S.Boolean,
-          personal_address: S.NullOr(IdentityProfileBusinessAddress),
+          personal_address: S.NullOr(__S(1)),
           phone: S.NullOr(S.String),
           profile_type: S.String,
-          status: IdentityProfileStatuses,
+          status: S.String,
           updated_at: S.String,
-          verifications: IdentityProfileVerificationsList,
+          verifications: __S(5),
         }),
       ).annotate({ identifier: "IdentityProfile" });
     case 7:
@@ -562,8 +485,8 @@ function __c0(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
-          profile_type: S.optional(IdentityProfileKinds.pipe(T.Query())),
-          status: S.optional(IdentityProfileStatuses.pipe(T.Query())),
+          profile_type: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           account_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/identity_profiles", code: 200 })),
       ).annotate({
@@ -574,7 +497,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IdentityProfileListItem);
+      return S.Array(__S(6));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -587,8 +510,8 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: ListIdentityProfileResponseDataList,
-          page_info: PageInfo,
+          data: __S(8),
+          page_info: __S(9),
         }),
       ).annotate({
         identifier: "ListIdentityProfileResponse",
@@ -608,8 +531,8 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: ListVerificationsIdentityProfileResponseDataList,
-          page_info: PageInfo,
+          data: __S(5),
+          page_info: __S(9),
         }),
       ).annotate({
         identifier: "ListVerificationsIdentityProfileResponse",
@@ -623,5 +546,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UnlinkIdentityProfileRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

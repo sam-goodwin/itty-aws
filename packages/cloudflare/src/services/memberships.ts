@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -38,52 +40,28 @@ export interface DeleteMembershipRequest {
   /** Membership identifier tag. */
   membershipId: string;
 }
-const DeleteMembershipRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteMembershipRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteMembershipResponse {
   /** Membership identifier tag. */
   id?: string | null;
 }
-const DeleteMembershipResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteMembershipResponse>;
-
 export interface GetMembershipRequest {
   /** Membership identifier tag. */
   membershipId: string;
 }
-const GetMembershipRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetMembershipRequest>;
-
 export type GetResponseAccountType = "standard" | "enterprise";
-const GetResponseAccountType = S.String;
-
 export interface GetResponseAccountManagedBy {
   /** ID of the parent Organization, if one exists */
   parentOrgId?: string | null;
   /** Name of the parent Organization, if one exists */
   parentOrgName?: string | null;
 }
-const GetResponseAccountManagedBy = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetResponseAccountManagedBy>;
-
 export interface GetResponseAccountSettings {
   /** Sets an abuse contact email to notify for abuse reports. */
   abuseContactEmail?: string | null;
   /** Indicates whether membership in this account requires that Two-Factor Authentication is enabled */
   enforceTwofactor?: boolean | null;
 }
-const GetResponseAccountSettings = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetResponseAccountSettings>;
-
 export interface GetResponseAccount {
   /** Identifier */
   id: string;
@@ -97,17 +75,10 @@ export interface GetResponseAccount {
   /** Account settings */
   settings?: GetResponseAccountSettings | null;
 }
-const GetResponseAccount = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetResponseAccount>;
-
 export interface GetResponsePermissionsAnalytics {
   read?: boolean | null;
   write?: boolean | null;
 }
-const GetResponsePermissionsAnalytics = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetResponsePermissionsAnalytics>;
-
 export type GetResponsePermissionsBilling = GetResponsePermissionsAnalytics;
 export type GetResponsePermissionsCachePurge = GetResponsePermissionsAnalytics;
 export type GetResponsePermissionsDns = GetResponsePermissionsAnalytics;
@@ -133,14 +104,7 @@ export interface GetResponsePermissions {
   zoneSettings?: GetResponsePermissionsAnalytics | null;
   zones?: GetResponsePermissionsAnalytics | null;
 }
-const GetResponsePermissions = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetResponsePermissions>;
-
 export type GetResponsePoliciesItemAccess = "allow" | "deny";
-const GetResponsePoliciesItemAccess = S.String;
-
 export interface GetResponsePoliciesItemPermissionGroupsItemMeta {
   /** A category used to group permission groups. */
   category?: string | null;
@@ -159,11 +123,6 @@ export interface GetResponsePoliciesItemPermissionGroupsItemMeta {
   /** Indicates the permission group's availability or visibility. */
   visibility?: string | null;
 }
-const GetResponsePoliciesItemPermissionGroupsItemMeta = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetResponsePoliciesItemPermissionGroupsItemMeta>;
-
 export interface GetResponsePoliciesItemPermissionGroupsItem {
   /** Identifier of the permission group. */
   id: string;
@@ -172,54 +131,24 @@ export interface GetResponsePoliciesItemPermissionGroupsItem {
   /** Name of the permission group. */
   name?: string | null;
 }
-const GetResponsePoliciesItemPermissionGroupsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetResponsePoliciesItemPermissionGroupsItem>;
-
 export type GetResponsePoliciesItemPermissionGroupsList =
   Array<GetResponsePoliciesItemPermissionGroupsItem>;
-const GetResponsePoliciesItemPermissionGroupsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetResponsePoliciesItemPermissionGroupsList>;
-
 export interface GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem {
   /** This is a combination of pre-defined resource name and identifier (like Zone ID etc.) */
   key: string;
 }
-const GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem>;
-
 export type GetResponsePoliciesItemResourceGroupsItemScopeObjectsList =
   Array<GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem>;
-const GetResponsePoliciesItemResourceGroupsItemScopeObjectsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetResponsePoliciesItemResourceGroupsItemScopeObjectsList>;
-
 export interface GetResponsePoliciesItemResourceGroupsItemScope {
   /** This is a combination of pre-defined resource name and identifier (like Account ID etc.) */
   key: string;
   /** A list of scope objects for additional context. */
   objects: GetResponsePoliciesItemResourceGroupsItemScopeObjectsList;
 }
-const GetResponsePoliciesItemResourceGroupsItemScope = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetResponsePoliciesItemResourceGroupsItemScope>;
-
 export interface GetResponsePoliciesItemResourceGroupsItemMeta {
   key?: string | null;
   value?: string | null;
 }
-const GetResponsePoliciesItemResourceGroupsItemMeta = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetResponsePoliciesItemResourceGroupsItemMeta>;
-
 export interface GetResponsePoliciesItemResourceGroupsItem {
   /** Identifier of the resource group. */
   id: string;
@@ -230,18 +159,8 @@ export interface GetResponsePoliciesItemResourceGroupsItem {
   /** Name of the resource group. */
   name?: string | null;
 }
-const GetResponsePoliciesItemResourceGroupsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetResponsePoliciesItemResourceGroupsItem>;
-
 export type GetResponsePoliciesItemResourceGroupsList =
   Array<GetResponsePoliciesItemResourceGroupsItem>;
-const GetResponsePoliciesItemResourceGroupsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetResponsePoliciesItemResourceGroupsList>;
-
 export interface GetResponsePoliciesItem {
   /** Policy identifier. */
   id?: string | null;
@@ -252,23 +171,9 @@ export interface GetResponsePoliciesItem {
   /** A list of resource groups that the policy applies to. */
   resourceGroups?: GetResponsePoliciesItemResourceGroupsList | null;
 }
-const GetResponsePoliciesItem = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetResponsePoliciesItem>;
-
 export type GetResponsePoliciesList = Array<GetResponsePoliciesItem>;
-const GetResponsePoliciesList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetResponsePoliciesList>;
-
 export type GetResponseRolesList = Array<string>;
-const GetResponseRolesList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetResponseRolesList>;
-
 export type GetResponseStatus = "accepted" | "pending" | "rejected";
-const GetResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetMembershipResponse {
   /** Membership identifier tag. */
@@ -285,26 +190,13 @@ export interface GetMembershipResponse {
   /** Status of this membership. */
   status?: GetResponseStatus | null;
 }
-const GetMembershipResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetMembershipResponse>;
-
 export interface ListRequestAccount {
   /** Account name */
   name?: string;
 }
-const ListRequestAccount = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ListRequestAccount>;
-
 export type ListRequestDirection = "asc" | "desc";
-const ListRequestDirection = S.String;
-
 export type ListRequestOrder = "id" | "account.name" | "status";
-const ListRequestOrder = S.String;
-
 export type ListRequestStatus = "accepted" | "pending" | "rejected";
-const ListRequestStatus = S.String;
-
 export interface ListMembershipsRequest {
   account?: ListRequestAccount;
   /** Direction to order memberships. */
@@ -320,11 +212,6 @@ export interface ListMembershipsRequest {
   /** Status of this membership. */
   status?: ListRequestStatus | (string & {});
 }
-const ListMembershipsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListMembershipsRequest>;
-
 export type ListResultItemAccountType = "standard" | "enterprise";
 export type ListResultItemAccountManagedBy = GetResponseAccountManagedBy;
 export type ListResultItemAccountSettings = GetResponseAccountSettings;
@@ -341,8 +228,6 @@ export interface ListResultItemAccount {
   /** Account settings */
   settings?: GetResponseAccountSettings | null;
 }
-const ListResultItemAccount = GetResponseAccount as any as S.Schema<ListResultItemAccount>;
-
 export type ListResultItemPermissionsAnalytics = GetResponsePermissionsAnalytics;
 export type ListResultItemPermissionsBilling = GetResponsePermissionsAnalytics;
 export type ListResultItemPermissionsCachePurge = GetResponsePermissionsAnalytics;
@@ -357,11 +242,7 @@ export type ListResultItemPermissionsZoneSettings = GetResponsePermissionsAnalyt
 export type ListResultItemPermissionsZones = GetResponsePermissionsAnalytics;
 export type ListResultItemPermissions = GetResponsePermissions;
 export type ListResultItemRolesList = Array<string>;
-const ListResultItemRolesList = GetResponseRolesList as any as S.Schema<ListResultItemRolesList>;
-
 export type ListResultItemStatus = "accepted" | "pending" | "rejected";
-const ListResultItemStatus = S.String;
-
 export interface ListResultItem {
   /** Membership identifier tag. */
   id?: string | null;
@@ -375,33 +256,20 @@ export interface ListResultItem {
   /** Status of this membership. */
   status?: ListResultItemStatus | null;
 }
-const ListResultItem = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListResultItem>;
-
 export type ListResultList = Array<ListResultItem>;
-const ListResultList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListResultList>;
-
 export interface ListMembershipsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListMembershipsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListMembershipsResponse>;
-
 export type UpdateRequestStatus = "accepted" | "rejected";
-const UpdateRequestStatus = S.String;
-
 export interface PutMembershipRequest {
   /** Membership identifier tag. */
   membershipId: string;
   /** Whether to accept or reject this account invitation. */
   status: UpdateRequestStatus | (string & {});
 }
-const PutMembershipRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<PutMembershipRequest>;
-
 export type UpdateResponseAccountType = "standard" | "enterprise";
 export type UpdateResponseAccountManagedBy = GetResponseAccountManagedBy;
 export type UpdateResponseAccountSettings = GetResponseAccountSettings;
@@ -418,8 +286,6 @@ export interface UpdateResponseAccount {
   /** Account settings */
   settings?: GetResponseAccountSettings | null;
 }
-const UpdateResponseAccount = GetResponseAccount as any as S.Schema<UpdateResponseAccount>;
-
 export type UpdateResponsePermissionsAnalytics = GetResponsePermissionsAnalytics;
 export type UpdateResponsePermissionsBilling = GetResponsePermissionsAnalytics;
 export type UpdateResponsePermissionsCachePurge = GetResponsePermissionsAnalytics;
@@ -434,17 +300,12 @@ export type UpdateResponsePermissionsZoneSettings = GetResponsePermissionsAnalyt
 export type UpdateResponsePermissionsZones = GetResponsePermissionsAnalytics;
 export type UpdateResponsePermissions = GetResponsePermissions;
 export type UpdateResponsePoliciesItemAccess = "allow" | "deny";
-const UpdateResponsePoliciesItemAccess = S.String;
-
 export type UpdateResponsePoliciesItemPermissionGroupsItemMeta =
   GetResponsePoliciesItemPermissionGroupsItemMeta;
 export type UpdateResponsePoliciesItemPermissionGroupsItem =
   GetResponsePoliciesItemPermissionGroupsItem;
 export type UpdateResponsePoliciesItemPermissionGroupsList =
   Array<GetResponsePoliciesItemPermissionGroupsItem>;
-const UpdateResponsePoliciesItemPermissionGroupsList =
-  GetResponsePoliciesItemPermissionGroupsList as any as S.Schema<UpdateResponsePoliciesItemPermissionGroupsList>;
-
 export type UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsItem =
   GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem;
 export type UpdateResponsePoliciesItemResourceGroupsItemScopeObjectsList =
@@ -469,9 +330,6 @@ export interface UpdateResponsePoliciesItemResourceGroupsItem {
 }
 export type UpdateResponsePoliciesItemResourceGroupsList =
   Array<UpdateResponsePoliciesItemResourceGroupsItem>;
-const UpdateResponsePoliciesItemResourceGroupsList =
-  GetResponsePoliciesItemResourceGroupsList as any as S.Schema<UpdateResponsePoliciesItemResourceGroupsList>;
-
 export interface UpdateResponsePoliciesItem {
   /** Policy identifier. */
   id?: string | null;
@@ -482,23 +340,9 @@ export interface UpdateResponsePoliciesItem {
   /** A list of resource groups that the policy applies to. */
   resourceGroups?: UpdateResponsePoliciesItemResourceGroupsList | null;
 }
-const UpdateResponsePoliciesItem = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<UpdateResponsePoliciesItem>;
-
 export type UpdateResponsePoliciesList = Array<UpdateResponsePoliciesItem>;
-const UpdateResponsePoliciesList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<UpdateResponsePoliciesList>;
-
 export type UpdateResponseRolesList = Array<string>;
-const UpdateResponseRolesList = GetResponseRolesList as any as S.Schema<UpdateResponseRolesList>;
-
 export type UpdateResponseStatus = "accepted" | "pending" | "rejected";
-const UpdateResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutMembershipResponse {
   /** Membership identifier tag. */
@@ -515,11 +359,6 @@ export interface PutMembershipResponse {
   /** Status of this membership. */
   status?: UpdateResponseStatus | null;
 }
-const PutMembershipResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<PutMembershipResponse>;
-
 export type DeleteMembershipError = CloudflareOpError;
 /** Remove the associated member from an account. */
 export const deleteMembership: API.OperationMethod<
@@ -528,8 +367,8 @@ export const deleteMembership: API.OperationMethod<
   DeleteMembershipError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMembershipRequest,
-  output: DeleteMembershipResponse,
+  input: __S(0) as any as S.Schema<DeleteMembershipRequest>,
+  output: __S(1) as any as S.Schema<DeleteMembershipResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -543,8 +382,8 @@ export const getMembership: API.OperationMethod<
   GetMembershipError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMembershipRequest,
-  output: GetMembershipResponse,
+  input: __S(2) as any as S.Schema<GetMembershipRequest>,
+  output: __S(20) as any as S.Schema<GetMembershipResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -560,8 +399,8 @@ export const listMemberships: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListMembershipsRequest,
-    output: ListMembershipsResponse,
+    input: __S(22) as any as S.Schema<ListMembershipsRequest>,
+    output: __S(25) as any as S.Schema<ListMembershipsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -584,8 +423,8 @@ export const putMembership: API.OperationMethod<
   PutMembershipError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutMembershipRequest,
-  output: PutMembershipResponse,
+  input: __S(26) as any as S.Schema<PutMembershipRequest>,
+  output: __S(29) as any as S.Schema<PutMembershipResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -639,10 +478,10 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          type: GetResponseAccountType,
+          type: S.String,
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          managedBy: S.optional(S.NullOr(GetResponseAccountManagedBy).pipe(T.Body("managed_by"))),
-          settings: S.optional(S.NullOr(GetResponseAccountSettings)),
+          managedBy: S.optional(S.NullOr(__S(3)).pipe(T.Body("managed_by"))),
+          settings: S.optional(S.NullOr(__S(4))),
         }),
       ).annotate({ identifier: "GetResponseAccount" });
     case 6:
@@ -657,24 +496,18 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          analytics: S.optional(S.NullOr(GetResponsePermissionsAnalytics)),
-          billing: S.optional(S.NullOr(GetResponsePermissionsAnalytics)),
-          cachePurge: S.optional(
-            S.NullOr(GetResponsePermissionsAnalytics).pipe(T.Body("cache_purge")),
-          ),
-          dns: S.optional(S.NullOr(GetResponsePermissionsAnalytics)),
-          dnsRecords: S.optional(
-            S.NullOr(GetResponsePermissionsAnalytics).pipe(T.Body("dns_records")),
-          ),
-          lb: S.optional(S.NullOr(GetResponsePermissionsAnalytics)),
-          logs: S.optional(S.NullOr(GetResponsePermissionsAnalytics)),
-          organization: S.optional(S.NullOr(GetResponsePermissionsAnalytics)),
-          ssl: S.optional(S.NullOr(GetResponsePermissionsAnalytics)),
-          waf: S.optional(S.NullOr(GetResponsePermissionsAnalytics)),
-          zoneSettings: S.optional(
-            S.NullOr(GetResponsePermissionsAnalytics).pipe(T.Body("zone_settings")),
-          ),
-          zones: S.optional(S.NullOr(GetResponsePermissionsAnalytics)),
+          analytics: S.optional(S.NullOr(__S(6))),
+          billing: S.optional(S.NullOr(__S(6))),
+          cachePurge: S.optional(S.NullOr(__S(6)).pipe(T.Body("cache_purge"))),
+          dns: S.optional(S.NullOr(__S(6))),
+          dnsRecords: S.optional(S.NullOr(__S(6)).pipe(T.Body("dns_records"))),
+          lb: S.optional(S.NullOr(__S(6))),
+          logs: S.optional(S.NullOr(__S(6))),
+          organization: S.optional(S.NullOr(__S(6))),
+          ssl: S.optional(S.NullOr(__S(6))),
+          waf: S.optional(S.NullOr(__S(6))),
+          zoneSettings: S.optional(S.NullOr(__S(6)).pipe(T.Body("zone_settings"))),
+          zones: S.optional(S.NullOr(__S(6))),
         }),
       ).annotate({ identifier: "GetResponsePermissions" });
   }
@@ -700,14 +533,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          meta: S.optional(S.NullOr(GetResponsePoliciesItemPermissionGroupsItemMeta)),
+          meta: S.optional(S.NullOr(__S(8))),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "GetResponsePoliciesItemPermissionGroupsItem",
       });
     case 2:
-      return S.Array(GetResponsePoliciesItemPermissionGroupsItem);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -717,12 +550,12 @@ function __c1(j: number): any {
         identifier: "GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem",
       });
     case 4:
-      return S.Array(GetResponsePoliciesItemResourceGroupsItemScopeObjectsItem);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          objects: GetResponsePoliciesItemResourceGroupsItemScopeObjectsList,
+          objects: __S(12),
         }),
       ).annotate({
         identifier: "GetResponsePoliciesItemResourceGroupsItemScope",
@@ -740,8 +573,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          scope: GetResponsePoliciesItemResourceGroupsItemScope,
-          meta: S.optional(S.NullOr(GetResponsePoliciesItemResourceGroupsItemMeta)),
+          scope: __S(13),
+          meta: S.optional(S.NullOr(__S(14))),
           name: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -752,34 +585,30 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetResponsePoliciesItemResourceGroupsItem);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          access: S.optional(S.NullOr(GetResponsePoliciesItemAccess)),
-          permissionGroups: S.optional(
-            S.NullOr(GetResponsePoliciesItemPermissionGroupsList).pipe(T.Body("permission_groups")),
-          ),
-          resourceGroups: S.optional(
-            S.NullOr(GetResponsePoliciesItemResourceGroupsList).pipe(T.Body("resource_groups")),
-          ),
+          access: S.optional(S.NullOr(S.String)),
+          permissionGroups: S.optional(S.NullOr(__S(10)).pipe(T.Body("permission_groups"))),
+          resourceGroups: S.optional(S.NullOr(__S(16)).pipe(T.Body("resource_groups"))),
         }),
       ).annotate({ identifier: "GetResponsePoliciesItem" });
     case 2:
-      return S.Array(GetResponsePoliciesItem);
+      return S.Array(__S(17));
     case 3:
       return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          account: S.optional(S.NullOr(GetResponseAccount)),
+          account: S.optional(S.NullOr(__S(5))),
           apiAccessEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("api_access_enabled"))),
-          permissions: S.optional(S.NullOr(GetResponsePermissions)),
-          policies: S.optional(S.NullOr(GetResponsePoliciesList)),
-          roles: S.optional(S.NullOr(GetResponseRolesList)),
-          status: S.optional(S.NullOr(GetResponseStatus)),
+          permissions: S.optional(S.NullOr(__S(7))),
+          policies: S.optional(S.NullOr(__S(18))),
+          roles: S.optional(S.NullOr(__S(19))),
+          status: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetMembershipResponse" });
     case 5:
@@ -791,13 +620,13 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          account: S.optional(ListRequestAccount.pipe(T.DeepQuery("account"))),
-          direction: S.optional(ListRequestDirection.pipe(T.Query())),
+          account: S.optional(__S(21).pipe(T.DeepQuery("account"))),
+          direction: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListRequestOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          status: S.optional(ListRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(T.Http({ method: "GET", uri: "/memberships", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -806,11 +635,11 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          account: S.optional(S.NullOr(ListResultItemAccount)),
+          account: S.optional(S.NullOr(__S(5))),
           apiAccessEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("api_access_enabled"))),
-          permissions: S.optional(S.NullOr(GetResponsePermissions)),
-          roles: S.optional(S.NullOr(ListResultItemRolesList)),
-          status: S.optional(S.NullOr(ListResultItemStatus)),
+          permissions: S.optional(S.NullOr(__S(7))),
+          roles: S.optional(S.NullOr(__S(19))),
+          status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ListResultItem" });
   }
@@ -818,11 +647,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListResultItem);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: ListResultList.pipe(T.EnvelopePayload()),
+          result: __S(24).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListMembershipsResponse" });
@@ -830,7 +659,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           membershipId: S.String.pipe(T.Label("membership_id")),
-          status: UpdateRequestStatus,
+          status: S.String,
         })
           .pipe(T.Http({ method: "PUT", uri: "/memberships/{membership_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -839,32 +668,43 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          access: S.optional(S.NullOr(UpdateResponsePoliciesItemAccess)),
-          permissionGroups: S.optional(
-            S.NullOr(UpdateResponsePoliciesItemPermissionGroupsList).pipe(
-              T.Body("permission_groups"),
-            ),
-          ),
-          resourceGroups: S.optional(
-            S.NullOr(UpdateResponsePoliciesItemResourceGroupsList).pipe(T.Body("resource_groups")),
-          ),
+          access: S.optional(S.NullOr(S.String)),
+          permissionGroups: S.optional(S.NullOr(__S(10)).pipe(T.Body("permission_groups"))),
+          resourceGroups: S.optional(S.NullOr(__S(16)).pipe(T.Body("resource_groups"))),
         }),
       ).annotate({
         identifier: "UpdateResponsePoliciesItem",
       });
     case 4:
-      return S.Array(UpdateResponsePoliciesItem);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          account: S.optional(S.NullOr(UpdateResponseAccount)),
+          account: S.optional(S.NullOr(__S(5))),
           apiAccessEnabled: S.optional(S.NullOr(S.Boolean).pipe(T.Body("api_access_enabled"))),
-          permissions: S.optional(S.NullOr(GetResponsePermissions)),
-          policies: S.optional(S.NullOr(UpdateResponsePoliciesList)),
-          roles: S.optional(S.NullOr(UpdateResponseRolesList)),
-          status: S.optional(S.NullOr(UpdateResponseStatus)),
+          permissions: S.optional(S.NullOr(__S(7))),
+          policies: S.optional(S.NullOr(__S(28))),
+          roles: S.optional(S.NullOr(__S(19))),
+          status: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutMembershipResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

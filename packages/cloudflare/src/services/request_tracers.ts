@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -38,11 +40,6 @@ export interface TracesCreateRequestBody {
   /** Request body as plain text */
   plainText?: string;
 }
-const TracesCreateRequestBody = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<TracesCreateRequestBody>;
-
 export interface TracesCreateRequestContextGeoloc {
   city?: string;
   continent?: string;
@@ -55,11 +52,6 @@ export interface TracesCreateRequestContextGeoloc {
   subdivision_2_iso_code?: string;
   timezone?: string;
 }
-const TracesCreateRequestContextGeoloc = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<TracesCreateRequestContextGeoloc>;
-
 export interface TracesCreateRequestContext {
   /** Bot score used for evaluating tracing request processing */
   botScore?: number;
@@ -70,21 +62,8 @@ export interface TracesCreateRequestContext {
   /** Threat score used for evaluating tracing request processing */
   threatScore?: number;
 }
-const TracesCreateRequestContext = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<TracesCreateRequestContext>;
-
 export type TracesCreateRequestCookiesMap = { [key: string]: string | undefined };
-const TracesCreateRequestCookiesMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<TracesCreateRequestCookiesMap>;
-
 export type TracesCreateRequestHeadersMap = { [key: string]: string | undefined };
-const TracesCreateRequestHeadersMap =
-  TracesCreateRequestCookiesMap as any as S.Schema<TracesCreateRequestHeadersMap>;
-
 export interface CreateTraceRequest {
   /** Identifier. */
   accountId: string;
@@ -104,8 +83,6 @@ export interface CreateTraceRequest {
   /** Skip sending the request to the Origin server after all rules evaluation */
   skipResponse?: boolean;
 }
-const CreateTraceRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateTraceRequest>;
-
 export interface TracesCreateResponseTraceItem {
   /** If step type is rule, then action performed by this rule */
   action?: string | null;
@@ -127,25 +104,13 @@ export interface TracesCreateResponseTraceItem {
   /** Tracing step type */
   type?: string | null;
 }
-const TracesCreateResponseTraceItem = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<TracesCreateResponseTraceItem>;
-
 export type TracesCreateResponseTraceList = Array<TracesCreateResponseTraceItem>;
-const TracesCreateResponseTraceList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<TracesCreateResponseTraceList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateTraceResponse {
   /** HTTP Status code of zone response */
   statusCode?: number | null;
   trace?: TracesCreateResponseTraceList | null;
 }
-const CreateTraceResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateTraceResponse>;
-
 export type CreateTraceError = CloudflareOpError;
 /** Traces a simulated HTTP request through Cloudflare's edge to analyze how rules, settings, and configurations would process the request. Useful for debugging firewall rules, page rules, and other request transformations without sending actual traffic. Supports custom headers, cookies, body content, and geolocation context. */
 export const createTrace: API.OperationMethod<
@@ -154,8 +119,8 @@ export const createTrace: API.OperationMethod<
   CreateTraceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTraceRequest,
-  output: CreateTraceResponse,
+  input: __S(4) as any as S.Schema<CreateTraceRequest>,
+  output: __S(7) as any as S.Schema<CreateTraceResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -193,7 +158,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           botScore: S.optional(S.Number.pipe(T.Body("bot_score"))),
-          geoloc: S.optional(TracesCreateRequestContextGeoloc),
+          geoloc: S.optional(__S(1)),
           skipChallenge: S.optional(S.Boolean.pipe(T.Body("skip_challenge"))),
           threatScore: S.optional(S.Number.pipe(T.Body("threat_score"))),
         }),
@@ -208,10 +173,10 @@ function __c0(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           method: S.String,
           url: S.String,
-          body: S.optional(TracesCreateRequestBody),
-          context: S.optional(TracesCreateRequestContext),
-          cookies: S.optional(TracesCreateRequestCookiesMap),
-          headers: S.optional(TracesCreateRequestHeadersMap),
+          body: S.optional(__S(0)),
+          context: S.optional(__S(2)),
+          cookies: S.optional(__S(3)),
+          headers: S.optional(__S(3)),
           protocol: S.optional(S.String),
           skipResponse: S.optional(S.Boolean.pipe(T.Body("skip_response"))),
         })
@@ -242,13 +207,24 @@ function __c0(j: number): any {
         identifier: "TracesCreateResponseTraceItem",
       });
     case 6:
-      return S.Array(TracesCreateResponseTraceItem);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           statusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("status_code"))),
-          trace: S.optional(S.NullOr(TracesCreateResponseTraceList)),
+          trace: S.optional(S.NullOr(__S(6))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateTraceResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

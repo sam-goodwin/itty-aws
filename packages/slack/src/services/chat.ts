@@ -7,16 +7,13 @@ import { slackPaginate } from "../pagination.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
 /** Array of streaming chunks. */
 export type AppendStreamRequestChunksList = Array<unknown>;
-const AppendStreamRequestChunksList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AppendStreamRequestChunksList>;
-
 export interface AppendStreamRequest {
   /** An encoded ID that represents a channel, private group, or DM */
   channel: string;
@@ -27,20 +24,14 @@ export interface AppendStreamRequest {
   /** Accepts message text formatted in markdown. Limit this field to 12,000 characters. This text is what will be appended to the message received so far. */
   markdown_text?: string;
 }
-const AppendStreamRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AppendStreamRequest>;
-
 export interface AppendStreamResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   channel: string;
   ts: string;
 }
-const AppendStreamResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AppendStreamResponse>;
-
 /** The source of the link to unfurl. The source may either be `composer`, when the link is inside the message composer, or `conversations_history`, when the link has been posted to a conversation. */
 export type ChatUnfurlRequestSource = "composer" | "conversations_history";
-const ChatUnfurlRequestSource = S.String;
-
 export interface ChatUnfurlRequest {
   /** Channel ID of the message. Both `channel` and `ts` must be provided together, *or* `unfurl_id` and `source` must be provided together. Required for public channels. */
   channel?: string;
@@ -61,14 +52,10 @@ export interface ChatUnfurlRequest {
   /** The source of the link to unfurl. The source may either be `composer`, when the link is inside the message composer, or `conversations_history`, when the link has been posted to a conversation. */
   source?: ChatUnfurlRequestSource | (string & {});
 }
-const ChatUnfurlRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ChatUnfurlRequest>;
-
 export interface ChatUnfurlResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const ChatUnfurlResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ChatUnfurlResponse>;
-
 export interface DeleteChatRequest {
   /** (Legacy) Pass true to delete the message as the authed user with `chat:write:user` scope. Bot users in this context are considered authed users. See [legacy `as_user` parameter](#legacy_as_user) below. */
   as_user?: boolean;
@@ -77,16 +64,12 @@ export interface DeleteChatRequest {
   /** Timestamp of the message to be deleted. */
   ts: string;
 }
-const DeleteChatRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteChatRequest>;
-
 export interface DeleteChatResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   channel: string;
   ts: string;
 }
-const DeleteChatResponse = AppendStreamResponse as any as S.Schema<DeleteChatResponse>;
-
 export interface DeleteScheduledMessageRequest {
   /** Pass true to delete the message as the authed user with `chat:write:user` scope. Bot users in this context are considered authed users. If unused or false, the message will be deleted with `chat:write:bot` scope. */
   as_user?: boolean;
@@ -95,36 +78,22 @@ export interface DeleteScheduledMessageRequest {
   /** `scheduled_message_id` returned from call to chat.scheduleMessage */
   scheduled_message_id: string;
 }
-const DeleteScheduledMessageRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteScheduledMessageRequest>;
-
 export interface DeleteScheduledMessageResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const DeleteScheduledMessageResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeleteScheduledMessageResponse>;
-
 export interface GetPermalinkRequest {
   /** The ID of the conversation or channel containing the message */
   channel: string;
   /** A message's `ts` value, uniquely identifying it within a channel */
   message_ts: string;
 }
-const GetPermalinkRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetPermalinkRequest>;
-
 export interface GetPermalinkResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   permalink: string;
   channel: string;
 }
-const GetPermalinkResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetPermalinkResponse>;
-
 export interface ListScheduledMessagesRequest {
   /** The channel of the scheduled messages */
   channel?: string;
@@ -139,11 +108,6 @@ export interface ListScheduledMessagesRequest {
   /** encoded team id to list channels in, required if org token is used */
   team_id?: string;
 }
-const ListScheduledMessagesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListScheduledMessagesRequest>;
-
 export interface ListScheduledMessagesResponseScheduledMessagesItem {
   id: string;
   channel_id: string;
@@ -151,28 +115,13 @@ export interface ListScheduledMessagesResponseScheduledMessagesItem {
   date_created: number;
   text?: string;
 }
-const ListScheduledMessagesResponseScheduledMessagesItem = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListScheduledMessagesResponseScheduledMessagesItem>;
-
 export type ListScheduledMessagesResponseScheduledMessagesList =
   Array<ListScheduledMessagesResponseScheduledMessagesItem>;
-const ListScheduledMessagesResponseScheduledMessagesList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListScheduledMessagesResponseScheduledMessagesList>;
-
 /** Pagination metadata. An empty `next_cursor` means the last page. */
 export interface ListScheduledMessagesResponseResponseMetadata {
   /** Cursor for the next page -- pass as `cursor` on the next call. */
   next_cursor?: string;
 }
-const ListScheduledMessagesResponseResponseMetadata = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListScheduledMessagesResponseResponseMetadata>;
-
 export interface ListScheduledMessagesResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -180,53 +129,28 @@ export interface ListScheduledMessagesResponse {
   /** Pagination metadata. An empty `next_cursor` means the last page. */
   response_metadata?: ListScheduledMessagesResponseResponseMetadata;
 }
-const ListScheduledMessagesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListScheduledMessagesResponse>;
-
 export interface MeMessageRequest {
   /** Channel to send message to. Can be a public channel, private group or IM channel. Can be an encoded ID, or a name. */
   channel: string;
   /** Text of the message to send. */
   text: string;
 }
-const MeMessageRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<MeMessageRequest>;
-
 export interface MeMessageResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   ts?: string;
   channel?: string;
 }
-const MeMessageResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<MeMessageResponse>;
-
 export type PostEphemeralRequestAttachmentsCase1ItemMap = { [key: string]: unknown | undefined };
-const PostEphemeralRequestAttachmentsCase1ItemMap = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<PostEphemeralRequestAttachmentsCase1ItemMap>;
-
 export type PostEphemeralRequestAttachmentsCase1List =
   Array<PostEphemeralRequestAttachmentsCase1ItemMap>;
-const PostEphemeralRequestAttachmentsCase1List = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<PostEphemeralRequestAttachmentsCase1List>;
-
 /** A JSON-based array of structured attachments, presented as a URL-encoded string. */
 export type PostEphemeralRequestAttachments = string | PostEphemeralRequestAttachmentsCase1List;
-const PostEphemeralRequestAttachments = /*@__PURE__*/ __L.at(__c2, 3);
-
 export type PostEphemeralRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
 export type PostEphemeralRequestBlocksCase1List = Array<PostEphemeralRequestBlocksCase1ItemMap>;
 /** A JSON-based array of structured blocks, presented as a URL-encoded string. */
 export type PostEphemeralRequestBlocks = string | PostEphemeralRequestBlocksCase1List;
-const PostEphemeralRequestBlocks = /*@__PURE__*/ __L.at(__c2, 4);
-
 export type PostEphemeralRequestParse = "" | "none" | "full" | "mrkdwn" | "false";
-const PostEphemeralRequestParse = S.String;
-
 export interface PostEphemeralRequest {
   /** (Legacy) Pass true to post the message as the authed user. Defaults to true if the chat:write:bot scope is not included. Otherwise, defaults to false. */
   as_user?: boolean;
@@ -257,31 +181,20 @@ export interface PostEphemeralRequest {
   /** Set your bot's user name. */
   username?: string;
 }
-const PostEphemeralRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<PostEphemeralRequest>;
-
 export interface PostEphemeralResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   message_ts: string;
 }
-const PostEphemeralResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<PostEphemeralResponse>;
-
 export type PostMessageRequestAttachmentsCase1ItemMap = { [key: string]: unknown | undefined };
 export type PostMessageRequestAttachmentsCase1List =
   Array<PostMessageRequestAttachmentsCase1ItemMap>;
 /** A JSON-based array of structured attachments, presented as a URL-encoded string. */
 export type PostMessageRequestAttachments = string | PostMessageRequestAttachmentsCase1List;
-const PostMessageRequestAttachments = /*@__PURE__*/ __L.at(__c2, 7);
-
 export type PostMessageRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
 export type PostMessageRequestBlocksCase1List = Array<PostMessageRequestBlocksCase1ItemMap>;
 /** A JSON-based array of structured blocks, presented as a URL-encoded string. */
 export type PostMessageRequestBlocks = string | PostMessageRequestBlocksCase1List;
-const PostMessageRequestBlocks = /*@__PURE__*/ __L.at(__c3, 0);
-
 export interface PostMessageRequest {
   /** (Legacy) Pass true to post the message as the authed user instead of as a bot. Defaults to false. Can only be used by classic apps. See [legacy `as_user` parameter](#legacy_as_user) below. */
   as_user?: boolean;
@@ -322,8 +235,6 @@ export interface PostMessageRequest {
   /** Pass true to unfurl links from installed apps, or false to prevent app links from unfurling. When omitted, app links follow the `unfurl_links` setting. */
   unfurl_app_links?: boolean;
 }
-const PostMessageRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<PostMessageRequest>;
-
 export interface PostMessageResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -333,25 +244,17 @@ export interface PostMessageResponse {
   /** Pass true if duplicate message is attempted to be sent. */
   is_duplicate?: boolean;
 }
-const PostMessageResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<PostMessageResponse>;
-
 export type ScheduleMessageRequestAttachmentsCase1ItemMap = { [key: string]: unknown | undefined };
 export type ScheduleMessageRequestAttachmentsCase1List =
   Array<ScheduleMessageRequestAttachmentsCase1ItemMap>;
 /** A JSON-based array of structured attachments, presented as a URL-encoded string. */
 export type ScheduleMessageRequestAttachments = string | ScheduleMessageRequestAttachmentsCase1List;
-const ScheduleMessageRequestAttachments = /*@__PURE__*/ __L.at(__c3, 3);
-
 export type ScheduleMessageRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
 export type ScheduleMessageRequestBlocksCase1List = Array<ScheduleMessageRequestBlocksCase1ItemMap>;
 /** A JSON-based array of structured blocks, presented as a URL-encoded string. */
 export type ScheduleMessageRequestBlocks = string | ScheduleMessageRequestBlocksCase1List;
-const ScheduleMessageRequestBlocks = /*@__PURE__*/ __L.at(__c3, 4);
-
 /** Change how messages are treated. See [chat.postMessage](chat.postMessage#formatting). */
 export type ScheduleMessageRequestParse = "none" | "full";
-const ScheduleMessageRequestParse = S.String;
-
 export interface ScheduleMessageRequest {
   /** Set to `true` to post the message as the authed user, instead of as a bot. Defaults to false. Cannot be used by [new Slack apps](/quickstart). See [chat.postMessage](chat.postMessage#authorship). */
   as_user?: boolean;
@@ -382,15 +285,7 @@ export interface ScheduleMessageRequest {
   /** JSON object with event_type and event_payload fields, presented as a URL-encoded string. Metadata you post to Slack is accessible to any app or user who is a member of that workspace. */
   metadata?: string | null;
 }
-const ScheduleMessageRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ScheduleMessageRequest>;
-
 export type ScheduleMessageResponseMessageMap = { [key: string]: unknown | undefined };
-const ScheduleMessageResponseMessageMap =
-  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<ScheduleMessageResponseMessageMap>;
-
 export interface ScheduleMessageResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -399,20 +294,10 @@ export interface ScheduleMessageResponse {
   scheduled_message_id: string;
   message: ScheduleMessageResponseMessageMap;
 }
-const ScheduleMessageResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ScheduleMessageResponse>;
-
 /** Array of streaming chunks. Can include [markdown text chunk](#markdown_text-chunks) objects, [task update chunk](#task_update-chunks) objects, [plan update chunks](#plan_update-chunks), or [blocks chunks](#blocks-chunks). */
 export type StartStreamRequestChunksList = Array<unknown>;
-const StartStreamRequestChunksList =
-  AppendStreamRequestChunksList as any as S.Schema<StartStreamRequestChunksList>;
-
 /** Specifies how tasks are displayed in the message. `timeline` task updates render as individual task cards interleaved with streamed text. `plan` task updates render together in a plan block. */
 export type StartStreamRequestTaskDisplayMode = "timeline" | "plan";
-const StartStreamRequestTaskDisplayMode = S.String;
-
 export interface StartStreamRequest {
   /** An encoded ID that represents a channel, thread, or DM. */
   channel: string;
@@ -435,8 +320,6 @@ export interface StartStreamRequest {
   /** The bot's username to display. */
   username?: string | null;
 }
-const StartStreamRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<StartStreamRequest>;
-
 export interface StartStreamResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -444,12 +327,8 @@ export interface StartStreamResponse {
   /** The timestamp of the streaming message. */
   ts: string;
 }
-const StartStreamResponse = AppendStreamResponse as any as S.Schema<StartStreamResponse>;
-
 /** The session status to set after stopping the stream. */
 export type StopStreamRequestSessionStatus = "active" | "processing" | "suspended" | "closed";
-const StopStreamRequestSessionStatus = S.String;
-
 export interface StopStreamRequest {
   /** An encoded ID that represents a channel, private group, or DM */
   channel: string;
@@ -466,8 +345,6 @@ export interface StopStreamRequest {
   /** The session status to set after stopping the stream. */
   session_status?: StopStreamRequestSessionStatus | (string & {});
 }
-const StopStreamRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<StopStreamRequest>;
-
 export interface StopStreamResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -475,35 +352,20 @@ export interface StopStreamResponse {
   ts: string;
   message: unknown;
 }
-const StopStreamResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<StopStreamResponse>;
-
 /** Pass true to update the message as the authed user. Bot users in this context are considered authed users. */
 export type UpdateChatRequestAsUser = boolean | string;
-const UpdateChatRequestAsUser = /*@__PURE__*/ __L.at(__c4, 2);
-
 export type UpdateChatRequestAttachmentsCase1ItemMap = { [key: string]: unknown | undefined };
 export type UpdateChatRequestAttachmentsCase1List = Array<UpdateChatRequestAttachmentsCase1ItemMap>;
 /** A JSON-based array of structured attachments, presented as a URL-encoded string. */
 export type UpdateChatRequestAttachments = string | UpdateChatRequestAttachmentsCase1List;
-const UpdateChatRequestAttachments = /*@__PURE__*/ __L.at(__c4, 3);
-
 export type UpdateChatRequestBlocksCase1ItemMap = { [key: string]: unknown | undefined };
 export type UpdateChatRequestBlocksCase1List = Array<UpdateChatRequestBlocksCase1ItemMap>;
 /** A JSON-based array of structured blocks, presented as a URL-encoded string. */
 export type UpdateChatRequestBlocks = string | UpdateChatRequestBlocksCase1List;
-const UpdateChatRequestBlocks = /*@__PURE__*/ __L.at(__c4, 4);
-
 /** Find and link channel names and usernames. Defaults to `none`. If you do not specify a value for this field, the original value set for the message will be overwritten with the default, `none`. */
 export type UpdateChatRequestLinkNames = boolean | string;
-const UpdateChatRequestLinkNames = /*@__PURE__*/ __L.at(__c4, 5);
-
 /** Array of new file ids that will be sent with this message. */
 export type UpdateChatRequestFileIdsList = Array<string>;
-const UpdateChatRequestFileIdsList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<UpdateChatRequestFileIdsList>;
-
 export interface UpdateChatRequest {
   /** Pass true to update the message as the authed user. Bot users in this context are considered authed users. */
   as_user?: UpdateChatRequestAsUser | null;
@@ -532,29 +394,16 @@ export interface UpdateChatRequest {
   /** Array of new file ids that will be sent with this message. */
   file_ids?: UpdateChatRequestFileIdsList;
 }
-const UpdateChatRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<UpdateChatRequest>;
-
 export type UpdateChatResponseMessageAttachmentsItemMap = { [key: string]: unknown | undefined };
 export type UpdateChatResponseMessageAttachmentsList =
   Array<UpdateChatResponseMessageAttachmentsItemMap>;
-const UpdateChatResponseMessageAttachmentsList =
-  PostEphemeralRequestAttachmentsCase1List as any as S.Schema<UpdateChatResponseMessageAttachmentsList>;
-
 export type UpdateChatResponseMessageMetadataMap = { [key: string]: unknown | undefined };
-const UpdateChatResponseMessageMetadataMap =
-  PostEphemeralRequestAttachmentsCase1ItemMap as any as S.Schema<UpdateChatResponseMessageMetadataMap>;
-
 export interface UpdateChatResponseMessage {
   text: string;
   blocks?: unknown;
   attachments?: UpdateChatResponseMessageAttachmentsList;
   metadata?: UpdateChatResponseMessageMetadataMap;
 }
-const UpdateChatResponseMessage = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<UpdateChatResponseMessage>;
-
 export interface UpdateChatResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -563,8 +412,6 @@ export interface UpdateChatResponse {
   text: string;
   message: UpdateChatResponseMessage;
 }
-const UpdateChatResponse = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<UpdateChatResponse>;
-
 export type AppendStreamError = SlackOpError;
 /** Appends text to an existing streaming conversation. Required scopes -- bot: `chat:write` Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `message_not_in_streaming_state` -- The message is not in the streaming state. - `messaging_processing_failed` -- Failed to process the message. - `as_user_not_supported` -- The `as_user` parameter does not function with workspace apps. - `channel_not_found` -- Value passed for `channel` was invalid. - `duplicate_channel_not_found` -- Channel associated with `client_msg_id` was invalid. - `duplicate_message_not_found` -- No duplicate message exists associated with `client_msg_id`. - `ekm_access_denied` -- Your message couldn't be sent because your admins have disabled sending messages to this channel. - `invalid_blocks` -- Blocks submitted with this message are not valid. - `invalid_chunks` -- Chunks submitted with this message are not valid. - `invalid_metadata_format` -- Invalid metadata format provided - `invalid_metadata_schema` -- Invalid metadata schema provided - `is_archived` -- Channel has been archived. - `message_limit_exceeded` -- Members on this team are sending too many messages. For more details, see https://slack.com/help/articles/115002422943-Usage-limits-for-free-workspaces - `messages_tab_disabled` -- Messages tab for the app is disabled. - `metadata_must_be_sent_from_app` -- Message metadata can only be posted or updated using an app-level token - `msg_blocks_too_long` -- Blocks submitted with this message are too long. - `msg_blocks_too_many` -- Max blocks exceeded, blocks are limited to 50 per message. - `metadata_too_large` -- Metadata exceeds size limit - `no_text` -- No message text provided - `not_in_channel` -- Cannot post user messages to a channel they are not in. - `rate_limited` -- Application has posted too many messages, [read the Rate Limit documentation](/apis/web-api/rate-limits) for more information - `restricted_action` -- A workspace preference prevents the authenticated user from posting. - `restricted_action_non_threadable_channel` -- Cannot post thread replies into a non_threadable channel. - `restricted_action_read_only_channel` -- Cannot post any message into a read-only channel. - `restricted_action_thread_locked` -- Cannot post replies to a thread that has been locked by admins. - `restricted_action_thread_only_channel` -- Cannot post top-level messages into a thread-only channel. - `slack_connect_canvas_sharing_blocked` -- Admin has disabled Canvas File sharing in all Slack Connect communications - `slack_connect_file_link_sharing_blocked` -- Admin has disabled Slack File sharing in all Slack Connect communications - `slack_connect_lists_sharing_blocked` -- Admin has disabled Lists sharing in all Slack Connect communications - `team_not_found` -- This error occurs if, when using an org-wide token, the `channel_name` is passed instead of the `channel_id`. - `too_many_attachments` -- Too many attachments were provided with this message. A maximum of 100 attachments are allowed on a message. - `too_many_contact_cards` -- Too many contact_cards were provided with this message. A maximum of 10 contact cards are allowed on a message. - `message_not_found` -- Message not found - `channel_type_not_supported` -- Channel type not supported - `stopped_by_user` -- The streaming message was stopped by the user and no further appends are accepted. - `message_not_owned_by_app` -- The message is not owned by the app. - `markdown_text_required` -- Missing required field: 'markdown_text' - `markdown_text_or_chunks_required` -- One of 'markdown_text' or 'chunks' is required - `streaming_mode_mismatch` -- The streaming mode must be the same as the streaming mode used to start the stream. If you started the stream with `markdown_text`, you must append with `markdown_text`. If you started the stream with `chunks`, you must append with `chunks`. - `cannot_provide_both_markdown_text_and_chunks` -- Cannot provide both `markdown_text` and `chunks` in the same request. See https://docs.slack.dev/reference/methods/chat.appendStream */
 export const appendStream: API.OperationMethod<
@@ -573,8 +420,8 @@ export const appendStream: API.OperationMethod<
   AppendStreamError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppendStreamRequest,
-  output: AppendStreamResponse,
+  input: __S(1) as any as S.Schema<AppendStreamRequest>,
+  output: __S(2) as any as S.Schema<AppendStreamResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -588,8 +435,8 @@ export const chatUnfurl: API.OperationMethod<
   ChatUnfurlError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ChatUnfurlRequest,
-  output: ChatUnfurlResponse,
+  input: __S(3) as any as S.Schema<ChatUnfurlRequest>,
+  output: __S(4) as any as S.Schema<ChatUnfurlResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -603,8 +450,8 @@ export const deleteChat: API.OperationMethod<
   DeleteChatError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChatRequest,
-  output: DeleteChatResponse,
+  input: __S(5) as any as S.Schema<DeleteChatRequest>,
+  output: __S(2) as any as S.Schema<DeleteChatResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -618,8 +465,8 @@ export const deleteScheduledMessage: API.OperationMethod<
   DeleteScheduledMessageError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteScheduledMessageRequest,
-  output: DeleteScheduledMessageResponse,
+  input: __S(6) as any as S.Schema<DeleteScheduledMessageRequest>,
+  output: __S(7) as any as S.Schema<DeleteScheduledMessageResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -633,8 +480,8 @@ export const getPermalink: API.OperationMethod<
   GetPermalinkError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPermalinkRequest,
-  output: GetPermalinkResponse,
+  input: __S(8) as any as S.Schema<GetPermalinkRequest>,
+  output: __S(9) as any as S.Schema<GetPermalinkResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -650,8 +497,8 @@ export const listScheduledMessages: API.PaginatedOperationMethod<
   ListScheduledMessagesResponseScheduledMessagesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListScheduledMessagesRequest,
-    output: ListScheduledMessagesResponse,
+    input: __S(10) as any as S.Schema<ListScheduledMessagesRequest>,
+    output: __S(14) as any as S.Schema<ListScheduledMessagesResponse>,
     errors: [SlackError, SlackRateLimited],
     protocol: SlackProtocol,
     retry: Retry.Retry,
@@ -674,8 +521,8 @@ export const meMessage: API.OperationMethod<
   MeMessageError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MeMessageRequest,
-  output: MeMessageResponse,
+  input: __S(15) as any as S.Schema<MeMessageRequest>,
+  output: __S(16) as any as S.Schema<MeMessageResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -689,8 +536,8 @@ export const postEphemeral: API.OperationMethod<
   PostEphemeralError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostEphemeralRequest,
-  output: PostEphemeralResponse,
+  input: __S(21) as any as S.Schema<PostEphemeralRequest>,
+  output: __S(22) as any as S.Schema<PostEphemeralResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -704,8 +551,8 @@ export const postMessage: API.OperationMethod<
   PostMessageError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostMessageRequest,
-  output: PostMessageResponse,
+  input: __S(25) as any as S.Schema<PostMessageRequest>,
+  output: __S(26) as any as S.Schema<PostMessageResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -719,8 +566,8 @@ export const scheduleMessage: API.OperationMethod<
   ScheduleMessageError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScheduleMessageRequest,
-  output: ScheduleMessageResponse,
+  input: __S(29) as any as S.Schema<ScheduleMessageRequest>,
+  output: __S(30) as any as S.Schema<ScheduleMessageResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -734,8 +581,8 @@ export const startStream: API.OperationMethod<
   StartStreamError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartStreamRequest,
-  output: StartStreamResponse,
+  input: __S(31) as any as S.Schema<StartStreamRequest>,
+  output: __S(2) as any as S.Schema<StartStreamResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -749,8 +596,8 @@ export const stopStream: API.OperationMethod<
   StopStreamError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopStreamRequest,
-  output: StopStreamResponse,
+  input: __S(32) as any as S.Schema<StopStreamRequest>,
+  output: __S(33) as any as S.Schema<StopStreamResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -764,8 +611,8 @@ export const updateChat: API.OperationMethod<
   UpdateChatError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateChatRequest,
-  output: UpdateChatResponse,
+  input: __S(39) as any as S.Schema<UpdateChatRequest>,
+  output: __S(41) as any as S.Schema<UpdateChatResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -780,7 +627,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           channel: S.String,
-          chunks: S.optional(AppendStreamRequestChunksList),
+          chunks: S.optional(__S(0)),
           ts: S.String,
           markdown_text: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/chat.appendStream", code: 200 })),
@@ -804,7 +651,7 @@ function __c0(j: number): any {
           user_auth_url: S.optional(S.NullOr(S.String)),
           user_auth_blocks: S.optional(S.Unknown),
           unfurl_id: S.optional(S.String),
-          source: S.optional(ChatUnfurlRequestSource),
+          source: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/chat.unfurl", code: 200 })),
       ).annotate({ identifier: "ChatUnfurlRequest" });
     case 4:
@@ -884,7 +731,7 @@ function __c1(j: number): any {
         identifier: "ListScheduledMessagesResponseScheduledMessagesItem",
       });
     case 4:
-      return S.Array(ListScheduledMessagesResponseScheduledMessagesItem);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -897,8 +744,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          scheduled_messages: ListScheduledMessagesResponseScheduledMessagesList,
-          response_metadata: S.optional(ListScheduledMessagesResponseResponseMetadata),
+          scheduled_messages: __S(12),
+          response_metadata: S.optional(__S(13)),
         }),
       ).annotate({
         identifier: "ListScheduledMessagesResponse",
@@ -925,7 +772,7 @@ function __c2(j: number): any {
     case 1:
       return S.Record(S.String, S.Unknown);
     case 2:
-      return S.Array(PostEphemeralRequestAttachmentsCase1ItemMap);
+      return S.Array(__S(17));
     case 3:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], []]));
     case 4:
@@ -934,15 +781,15 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           as_user: S.optional(S.Boolean),
-          attachments: S.optional(PostEphemeralRequestAttachments),
-          blocks: S.optional(PostEphemeralRequestBlocks),
+          attachments: S.optional(__S(19)),
+          blocks: S.optional(__S(20)),
           channel: S.String,
           icon_emoji: S.optional(S.String),
           icon_url: S.optional(S.String),
           link_names: S.optional(S.Boolean),
           markdown_text: S.optional(S.String),
           metadata: S.optional(S.NullOr(S.String)),
-          parse: S.optional(S.NullOr(PostEphemeralRequestParse)),
+          parse: S.optional(S.NullOr(S.String)),
           text: S.optional(S.NullOr(S.String)),
           thread_ts: S.optional(S.NullOr(S.String)),
           user: S.String,
@@ -968,8 +815,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           as_user: S.optional(S.Boolean),
-          attachments: S.optional(PostMessageRequestAttachments),
-          blocks: S.optional(PostMessageRequestBlocks),
+          attachments: S.optional(__S(23)),
+          blocks: S.optional(__S(24)),
           channel: S.String,
           current_draft_last_updated_ts: S.optional(S.String),
           icon_emoji: S.optional(S.NullOr(S.String)),
@@ -1006,12 +853,12 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           as_user: S.optional(S.Boolean),
-          attachments: S.optional(ScheduleMessageRequestAttachments),
-          blocks: S.optional(ScheduleMessageRequestBlocks),
+          attachments: S.optional(__S(27)),
+          blocks: S.optional(__S(28)),
           channel: S.String,
           link_names: S.optional(S.Boolean),
           markdown_text: S.optional(S.String),
-          parse: S.optional(ScheduleMessageRequestParse),
+          parse: S.optional(S.String),
           post_at: S.Number,
           reply_broadcast: S.optional(S.Boolean),
           text: S.optional(S.String),
@@ -1028,19 +875,19 @@ function __c3(j: number): any {
           channel: S.String,
           post_at: S.Number,
           scheduled_message_id: S.String,
-          message: ScheduleMessageResponseMessageMap,
+          message: __S(17),
         }),
       ).annotate({ identifier: "ScheduleMessageResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           channel: S.String,
-          chunks: S.optional(StartStreamRequestChunksList),
+          chunks: S.optional(__S(0)),
           markdown_text: S.optional(S.String),
           thread_ts: S.optional(S.String),
           recipient_user_id: S.optional(S.String),
           recipient_team_id: S.optional(S.String),
-          task_display_mode: S.optional(StartStreamRequestTaskDisplayMode),
+          task_display_mode: S.optional(S.String),
           icon_emoji: S.optional(S.NullOr(S.String)),
           icon_url: S.optional(S.NullOr(S.String)),
           username: S.optional(S.NullOr(S.String)),
@@ -1059,7 +906,7 @@ function __c4(j: number): any {
           markdown_text: S.optional(S.String),
           blocks: S.optional(S.Unknown),
           metadata: S.optional(S.NullOr(S.String)),
-          session_status: S.optional(StopStreamRequestSessionStatus),
+          session_status: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/chat.stopStream", code: 200 })),
       ).annotate({ identifier: "StopStreamRequest" });
     case 1:
@@ -1084,19 +931,19 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          as_user: S.optional(S.NullOr(UpdateChatRequestAsUser)),
-          attachments: S.optional(UpdateChatRequestAttachments),
+          as_user: S.optional(S.NullOr(__S(34))),
+          attachments: S.optional(__S(35)),
           unfurled_attachments: S.optional(S.NullOr(S.String)),
-          blocks: S.optional(UpdateChatRequestBlocks),
+          blocks: S.optional(__S(36)),
           markdown_text: S.optional(S.String),
           metadata: S.optional(S.NullOr(S.String)),
           channel: S.String,
-          link_names: S.optional(S.NullOr(UpdateChatRequestLinkNames)),
+          link_names: S.optional(S.NullOr(__S(37))),
           parse: S.optional(S.NullOr(S.String)),
           text: S.optional(S.NullOr(S.String)),
           ts: S.String,
           reply_broadcast: S.optional(S.Boolean),
-          file_ids: S.optional(UpdateChatRequestFileIdsList),
+          file_ids: S.optional(__S(38)),
         }).pipe(T.Http({ method: "POST", uri: "/chat.update", code: 200 })),
       ).annotate({ identifier: "UpdateChatRequest" });
   }
@@ -1108,8 +955,8 @@ function __c5(j: number): any {
         S.Struct({
           text: S.String,
           blocks: S.optional(S.Unknown),
-          attachments: S.optional(UpdateChatResponseMessageAttachmentsList),
-          metadata: S.optional(UpdateChatResponseMessageMetadataMap),
+          attachments: S.optional(__S(18)),
+          metadata: S.optional(__S(17)),
         }),
       ).annotate({
         identifier: "UpdateChatResponseMessage",
@@ -1121,8 +968,29 @@ function __c5(j: number): any {
           channel: S.String,
           ts: S.String,
           text: S.String,
-          message: UpdateChatResponseMessage,
+          message: __S(40),
         }),
       ).annotate({ identifier: "UpdateChatResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
   }
 }

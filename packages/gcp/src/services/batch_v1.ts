@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -67,25 +69,14 @@ export interface CancelJobRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const CancelJobRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CancelJobRequest>;
-
 export interface CancelProjectsLocationsJobsRequest {
   /** Required. Job name. */
   name: string;
   /** Request body */
   body?: CancelJobRequest;
 }
-const CancelProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsJobsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -95,8 +86,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -110,33 +99,17 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Operation>;
-
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<StringList>;
-
 /** Carries information about a Google Cloud service account. */
 export interface ServiceAccount {
   /** Email address of the service account. */
@@ -144,17 +117,11 @@ export interface ServiceAccount {
   /** List of scopes to be enabled for this service account. */
   scopes?: StringList;
 }
-const ServiceAccount = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ServiceAccount>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<StringMap>;
-
 export interface LocationPolicy {
   /** A list of location names that are allowed for the job's VMs formatted as URLs. Each location can be a region or a zone, but you can only specify one region or multiple zones in one region per job. For example, `["regions/us-central1"]` allow VMs in any zones in region `us-central1`, and `["zones/us-central1-a", "zones/us-central1-c"]` only allow VMs in zones `us-central1-a` and `us-central1-c`. However, `["regions/us-central1", "zones/us-central1-a", "zones/us-central1-b", "zones/us-west1-a"]` causes an error because it contains multiple regions (`us-central1` and `us-west1`). The specified region or zones must be in the same region in which the job is created starting on the following dates: + For projects that have successfully submitted before July 31, 2026 at least one job that uses the `allowedLocations[]` field with any region or zones outside of the job's location, the changes are starting on _June 30, 2027_. + For all other projects, the changes are starting on _July 31, 2026_. For example, for job `projects/123/locations/us-central1/jobs/jobid`, the specified region or zones must be in `us-central1`. Using a different region (e.g. `regions/us-west1`) or a zone not in `us-central1` (e.g. `zones/us-west1-a`) causes an error. */
   allowedLocations?: StringList;
 }
-const LocationPolicy = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<LocationPolicy>;
-
 /** PlacementPolicy describes a group placement policy for the VMs controlled by this AllocationPolicy. */
 export interface PlacementPolicy {
   /** UNSPECIFIED vs. COLLOCATED (default UNSPECIFIED). Use COLLOCATED when you want VMs to be located close to each other for low network latency between the VMs. No placement policy will be generated when collocation is UNSPECIFIED. */
@@ -162,11 +129,7 @@ export interface PlacementPolicy {
   /** When specified, causes the job to fail if more than max_distance logical switches are required between VMs. Batch uses the most compact possible placement of VMs even when max_distance is not specified. An explicit max_distance makes that level of compactness a strict requirement. Not yet implemented */
   maxDistance?: string;
 }
-const PlacementPolicy = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<PlacementPolicy>;
-
 export type NetworkInterfaceNicTypeEnum = "NIC_TYPE_UNSPECIFIED" | "GVNIC" | "IRDMA" | "MRDMA";
-const NetworkInterfaceNicTypeEnum = S.String;
-
 /** A network interface. */
 export interface NetworkInterface {
   /** The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} * projects/{project}/global/networks/{network} * global/networks/{network} */
@@ -178,18 +141,12 @@ export interface NetworkInterface {
   /** Default is false (with an external IP address). Required if no external public IP address is attached to the VM. If no external public IP address, additional configuration is required to allow the VM to access Google Services. See https://cloud.google.com/vpc/docs/configure-private-google-access and https://cloud.google.com/nat/docs/gce-example#create-nat for more information. */
   noExternalIpAddress?: boolean;
 }
-const NetworkInterface = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<NetworkInterface>;
-
 export type NetworkInterfaceList = Array<NetworkInterface>;
-const NetworkInterfaceList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<NetworkInterfaceList>;
-
 /** NetworkPolicy describes VM instance network configurations. */
 export interface NetworkPolicy {
   /** Network configurations. */
   networkInterfaces?: NetworkInterfaceList;
 }
-const NetworkPolicy = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<NetworkPolicy>;
-
 /** A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. See https://cloud.google.com/compute/docs/disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds. */
 export interface Disk {
   /** Disk size in GB. **Non-Boot Disk**: If the `type` specifies a persistent disk, this field is ignored if `data_source` is set as `image` or `snapshot`. If the `type` specifies a local SSD, this field should be a multiple of 375 GB, otherwise, the final size will be the next greater multiple of 375 GB. **Boot Disk**: Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the `boot_disk_mib` field in task spec's `compute_resource` are defined, Batch will only honor this field. Also, this field should be no smaller than the source disk's size when the `data_source` is set as `snapshot` or `image`. For example, if you set an image as the `data_source` field and the image's default disk size 30 GB, you can only use this field to make the disk larger or equal to 30 GB. */
@@ -203,8 +160,6 @@ export interface Disk {
   /** Disk type as shown in `gcloud compute disk-types list`. For example, local SSD uses type "local-ssd". Persistent disks and boot disks use "pd-balanced", "pd-extreme", "pd-ssd" or "pd-standard". If not specified, "pd-standard" will be used as the default type for non-boot disks, "pd-balanced" will be used as the default type for boot disks. */
   type?: string;
 }
-const Disk = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Disk>;
-
 /** Accelerator describes Compute Engine accelerators to be attached to the VM. */
 export interface Accelerator {
   /** The accelerator type. For example, "nvidia-tesla-t4". See `gcloud compute accelerator-types list`. */
@@ -216,11 +171,7 @@ export interface Accelerator {
   /** The number of accelerators of this type. */
   count?: string;
 }
-const Accelerator = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Accelerator>;
-
 export type AcceleratorList = Array<Accelerator>;
-const AcceleratorList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<AcceleratorList>;
-
 export type InstancePolicyProvisioningModelEnum =
   | "PROVISIONING_MODEL_UNSPECIFIED"
   | "STANDARD"
@@ -228,8 +179,6 @@ export type InstancePolicyProvisioningModelEnum =
   | "PREEMPTIBLE"
   | "RESERVATION_BOUND"
   | "FLEX_START";
-const InstancePolicyProvisioningModelEnum = S.String;
-
 /** A new or an existing persistent disk (PD) or a local ssd attached to a VM instance. */
 export interface AttachedDisk {
   /** Device name that the guest operating system will see. It is used by Runnable.volumes field to mount disks. So please specify the device_name if you want Batch to help mount the disk, and it should match the device_name field in volumes. */
@@ -238,11 +187,7 @@ export interface AttachedDisk {
   existingDisk?: string;
   newDisk?: Disk;
 }
-const AttachedDisk = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<AttachedDisk>;
-
 export type AttachedDiskList = Array<AttachedDisk>;
-const AttachedDiskList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<AttachedDiskList>;
-
 /** InstancePolicy describes an instance type and resources attached to each VM created by this InstancePolicy. */
 export interface InstancePolicy {
   /** Optional. If not specified (default), VMs will consume any applicable reservation. If "NO_RESERVATION" is specified, VMs will not consume any reservation. Otherwise, if specified, VMs will consume only the specified reservation. */
@@ -260,8 +205,6 @@ export interface InstancePolicy {
   /** The Compute Engine machine type. */
   machineType?: string;
 }
-const InstancePolicy = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<InstancePolicy>;
-
 /** InstancePolicyOrTemplate lets you define the type of resources to use for this job either with an InstancePolicy or an instance template. If undefined, Batch picks the type of VM to use and doesn't include optional VM resources such as GPUs and extra disks. */
 export interface InstancePolicyOrTemplate {
   /** Optional. Set this field true if you want Batch to install Ops Agent on your behalf. Default is false. */
@@ -275,17 +218,7 @@ export interface InstancePolicyOrTemplate {
   /** InstancePolicy. */
   policy?: InstancePolicy;
 }
-const InstancePolicyOrTemplate = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<InstancePolicyOrTemplate>;
-
 export type InstancePolicyOrTemplateList = Array<InstancePolicyOrTemplate>;
-const InstancePolicyOrTemplateList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<InstancePolicyOrTemplateList>;
-
 /** A Job's resource allocation policy describes when, where, and how compute resources should be allocated for the Job. */
 export interface AllocationPolicy {
   /** Defines the service account for Batch-created VMs. If omitted, the [default Compute Engine service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. Must match the service account specified in any used instance template configured in the Batch job. Includes the following fields: * email: The service account's email address. If not set, the default Compute Engine service account is used. * scopes: Additional OAuth scopes to grant the service account, beyond the default cloud-platform scope. (list of strings) */
@@ -303,15 +236,11 @@ export interface AllocationPolicy {
   /** Describe instances that can be created by this AllocationPolicy. Only instances[0] is supported now. */
   instances?: InstancePolicyOrTemplateList;
 }
-const AllocationPolicy = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<AllocationPolicy>;
-
 /** This Task Execution field includes detail information for task execution procedures, based on StatusEvent types. */
 export interface TaskExecution {
   /** The exit code of a finished task. If the task succeeded, the exit code will be 0. If the task failed but not due to the following reasons, the exit code will be 50000. Otherwise, it can be from different sources: * Batch known failures: https://cloud.google.com/batch/docs/troubleshooting#reserved-exit-codes. * Batch runnable execution failures; you can rely on Batch logs to further diagnose: https://cloud.google.com/batch/docs/analyze-job-using-logs. If there are multiple runnables failures, Batch only exposes the first error. */
   exitCode?: number;
 }
-const TaskExecution = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<TaskExecution>;
-
 export type StatusEventTaskStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
@@ -320,8 +249,6 @@ export type StatusEventTaskStateEnum =
   | "FAILED"
   | "SUCCEEDED"
   | "UNEXECUTED";
-const StatusEventTaskStateEnum = S.String;
-
 /** Status event. */
 export interface StatusEvent {
   /** The time this event occurred. */
@@ -335,11 +262,7 @@ export interface StatusEvent {
   /** Description of the event. */
   description?: string;
 }
-const StatusEvent = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<StatusEvent>;
-
 export type StatusEventList = Array<StatusEvent>;
-const StatusEventList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<StatusEventList>;
-
 export type JobStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "QUEUED"
@@ -350,8 +273,6 @@ export type JobStatusStateEnum =
   | "DELETION_IN_PROGRESS"
   | "CANCELLATION_IN_PROGRESS"
   | "CANCELLED";
-const JobStatusStateEnum = S.String;
-
 export type InstanceStatusProvisioningModelEnum =
   | "PROVISIONING_MODEL_UNSPECIFIED"
   | "STANDARD"
@@ -359,8 +280,6 @@ export type InstanceStatusProvisioningModelEnum =
   | "PREEMPTIBLE"
   | "RESERVATION_BOUND"
   | "FLEX_START";
-const InstanceStatusProvisioningModelEnum = S.String;
-
 /** VM instance status. */
 export interface InstanceStatus {
   /** The VM instance provisioning model. */
@@ -372,11 +291,7 @@ export interface InstanceStatus {
   /** The max number of tasks can be assigned to this instance type. */
   taskPack?: string;
 }
-const InstanceStatus = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<InstanceStatus>;
-
 export type InstanceStatusList = Array<InstanceStatus>;
-const InstanceStatusList = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<InstanceStatusList>;
-
 /** Aggregated task status for a TaskGroup. */
 export interface TaskGroupStatus {
   /** Status of instances allocated for the TaskGroup. */
@@ -384,11 +299,7 @@ export interface TaskGroupStatus {
   /** Count of task in each state in the TaskGroup. The map key is task state name. */
   counts?: StringMap;
 }
-const TaskGroupStatus = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<TaskGroupStatus>;
-
 export type TaskGroupStatusMap = { [key: string]: TaskGroupStatus | undefined };
-const TaskGroupStatusMap = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<TaskGroupStatusMap>;
-
 /** Job status. */
 export interface JobStatus {
   /** Job status events */
@@ -400,21 +311,13 @@ export interface JobStatus {
   /** Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID. */
   taskGroups?: TaskGroupStatusMap;
 }
-const JobStatus = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<JobStatus>;
-
 export type IntegerList = Array<number>;
-const IntegerList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<IntegerList>;
-
 /** Conditions for actions to deal with task failures. */
 export interface ActionCondition {
   /** Exit codes of a task execution. If there are more than 1 exit codes, when task executes with any of the exit code in the list, the condition is met and the action will be executed. */
   exitCodes?: IntegerList;
 }
-const ActionCondition = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ActionCondition>;
-
 export type LifecyclePolicyActionEnum = "ACTION_UNSPECIFIED" | "RETRY_TASK" | "FAIL_TASK";
-const LifecyclePolicyActionEnum = S.String;
-
 /** LifecyclePolicy describes how to deal with task failures based on different conditions. */
 export interface LifecyclePolicy {
   /** Conditions that decide why a task failure is dealt with a specific action. */
@@ -422,11 +325,7 @@ export interface LifecyclePolicy {
   /** Action to execute when ActionCondition is true. When RETRY_TASK is specified, we will retry failed tasks if we notice any exit code match and fail tasks if no match is found. Likewise, when FAIL_TASK is specified, we will fail tasks if we notice any exit code match and retry tasks if no match is found. */
   action?: LifecyclePolicyActionEnum | (string & {});
 }
-const LifecyclePolicy = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<LifecyclePolicy>;
-
 export type LifecyclePolicyList = Array<LifecyclePolicy>;
-const LifecyclePolicyList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<LifecyclePolicyList>;
-
 /** Compute resource requirements. ComputeResource defines the amount of resources required for each task. Make sure your tasks have enough resources to successfully run. If you also define the types of resources for a job to use with the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure both fields are compatible with each other. */
 export interface ComputeResource {
   /** The milliCPU count. `cpuMilli` defines the amount of CPU resources per task in milliCPU units. For example, `1000` corresponds to 1 vCPU per task. If undefined, the default value is `2000`. If you also define the VM's machine type using the `machineType` in [InstancePolicy](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicy) field or inside the `instanceTemplate` in the [InstancePolicyOrTemplate](https://cloud.google.com/batch/docs/reference/rest/v1/projects.locations.jobs#instancepolicyortemplate) field, make sure the CPU resources for both fields are compatible with each other and with how many tasks you want to allow to run on the same VM at the same time. For example, if you specify the `n2-standard-2` machine type, which has 2 vCPUs each, you are recommended to set `cpuMilli` no more than `2000`, or you are recommended to run two tasks on the same VM if you set `cpuMilli` to `1000` or less. */
@@ -436,8 +335,6 @@ export interface ComputeResource {
   /** Extra boot disk size in MiB for each task. */
   bootDiskMib?: string;
 }
-const ComputeResource = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ComputeResource>;
-
 /** Container runnable. */
 export interface Container {
   /** Optional. If set to true, this container runnable uses Image streaming. Use Image streaming to allow the runnable to initialize without waiting for the entire container image to download, which can significantly reduce startup time for large container images. When `enableImageStreaming` is set to true, the container runtime is [containerd](https://containerd.io/) instead of Docker. Additionally, this container runnable only supports the following `container` subfields: `imageUri`, `commands[]`, `entrypoint`, and `volumes[]`; any other `container` subfields are ignored. For more information about the requirements and limitations for using Image streaming with Batch, see the [`image-streaming` sample on GitHub](https://github.com/GoogleCloudPlatform/batch-samples/tree/main/api-samples/image-streaming). */
@@ -459,23 +356,17 @@ export interface Container {
   /** Required for some container images. Overrides the `ENTRYPOINT` specified in the container. */
   entrypoint?: string;
 }
-const Container = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Container>;
-
 /** A barrier runnable automatically blocks the execution of subsequent runnables until all the tasks in the task group reach the barrier. */
 export interface Barrier {
   /** Barriers are identified by their index in runnable list. Names are not required, but if present should be an identifier. */
   name?: string;
 }
-const Barrier = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Barrier>;
-
 export interface KMSEnvMap {
   /** The name of the KMS key that will be used to decrypt the cipher text. */
   keyName?: string;
   /** The value of the cipherText response from the `encrypt` method. */
   cipherText?: string;
 }
-const KMSEnvMap = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<KMSEnvMap>;
-
 /** An Environment describes a collection of environment variables to set when executing Tasks. */
 export interface Environment {
   /** A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable. */
@@ -485,8 +376,6 @@ export interface Environment {
   /** A map of environment variable names to values. */
   variables?: StringMap;
 }
-const Environment = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Environment>;
-
 /** Script runnable. */
 export interface Script {
   /** The path to a script file that is accessible from the host VM(s). Unless the script file supports the default `#!/bin/sh` shell interpreter, you must specify an interpreter by including a [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix) as the first line of the file. For example, to execute the script using bash, include `#!/bin/bash` as the first line of the file. Alternatively, to execute the script using Python3, include `#!/usr/bin/env python3` as the first line of the file. */
@@ -494,8 +383,6 @@ export interface Script {
   /** The text for a script. Unless the script text supports the default `#!/bin/sh` shell interpreter, you must specify an interpreter by including a [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix) at the beginning of the text. For example, to execute the script using bash, include `#!/bin/bash\n` at the beginning of the text. Alternatively, to execute the script using Python3, include `#!/usr/bin/env python3\n` at the beginning of the text. */
   text?: string;
 }
-const Script = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Script>;
-
 /** Runnable describes instructions for executing a specific script or container as part of a Task. */
 export interface Runnable {
   /** Timeout for this Runnable. */
@@ -519,11 +406,7 @@ export interface Runnable {
   /** By default, after a Runnable fails, no further Runnable are executed. This flag indicates that this Runnable must be run even if the Task has already failed. This is useful for Runnables that copy output files off of the VM or for debugging. The always_run flag does not override the Task's overall max_run_duration. If the max_run_duration has expired then no further Runnables will execute, not even always_run Runnables. */
   alwaysRun?: boolean;
 }
-const Runnable = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Runnable>;
-
 export type RunnableList = Array<Runnable>;
-const RunnableList = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<RunnableList>;
-
 /** Represents an NFS volume. */
 export interface NFS {
   /** The IP address of the NFS. */
@@ -531,15 +414,11 @@ export interface NFS {
   /** Remote source path exported from the NFS, e.g., "/share". */
   remotePath?: string;
 }
-const NFS = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<NFS>;
-
 /** Represents a Google Cloud Storage volume. */
 export interface GCS {
   /** Remote path, either a bucket name or a subdirectory of a bucket, e.g.: bucket_name, bucket_name/subdirectory/ */
   remotePath?: string;
 }
-const GCS = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<GCS>;
-
 /** Volume describes a volume and parameters for it to be mounted to a VM. */
 export interface Volume {
   /** The mount path for the volume, e.g. /mnt/disks/share. */
@@ -553,11 +432,7 @@ export interface Volume {
   /** A Google Cloud Storage (GCS) volume. */
   gcs?: GCS;
 }
-const Volume = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Volume>;
-
 export type VolumeList = Array<Volume>;
-const VolumeList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<VolumeList>;
-
 /** Spec of a task */
 export interface TaskSpec {
   /** Maximum number of retries on failures. The default, 0, which means never retry. The valid value range is [0, 10]. */
@@ -577,17 +452,11 @@ export interface TaskSpec {
   /** Volumes to mount before running Tasks using this TaskSpec. */
   volumes?: VolumeList;
 }
-const TaskSpec = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<TaskSpec>;
-
 export type EnvironmentList = Array<Environment>;
-const EnvironmentList = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<EnvironmentList>;
-
 export type TaskGroupSchedulingPolicyEnum =
   | "SCHEDULING_POLICY_UNSPECIFIED"
   | "AS_SOON_AS_POSSIBLE"
   | "IN_ORDER";
-const TaskGroupSchedulingPolicyEnum = S.String;
-
 /** A TaskGroup defines one or more Tasks that all share the same TaskSpec. */
 export interface TaskGroup {
   /** Optional. If not set or set to false, Batch uses the root user to execute runnables. If set to true, Batch runs the runnables using a non-root user. Currently, the non-root user Batch used is generated by OS Login. For more information, see [About OS Login](https://cloud.google.com/compute/docs/oslogin). */
@@ -611,14 +480,8 @@ export interface TaskGroup {
   /** Max number of tasks that can be run on a VM at the same time. If not specified, the system will decide a value based on available compute resources on a VM and task requirements. */
   taskCountPerNode?: string;
 }
-const TaskGroup = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<TaskGroup>;
-
 export type TaskGroupList = Array<TaskGroup>;
-const TaskGroupList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<TaskGroupList>;
-
 export type MessageTypeEnum = "TYPE_UNSPECIFIED" | "JOB_STATE_CHANGED" | "TASK_STATE_CHANGED";
-const MessageTypeEnum = S.String;
-
 export type MessageNewTaskStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
@@ -627,8 +490,6 @@ export type MessageNewTaskStateEnum =
   | "FAILED"
   | "SUCCEEDED"
   | "UNEXECUTED";
-const MessageNewTaskStateEnum = S.String;
-
 export type MessageNewJobStateEnum =
   | "STATE_UNSPECIFIED"
   | "QUEUED"
@@ -639,8 +500,6 @@ export type MessageNewJobStateEnum =
   | "DELETION_IN_PROGRESS"
   | "CANCELLATION_IN_PROGRESS"
   | "CANCELLED";
-const MessageNewJobStateEnum = S.String;
-
 /** Message details. Describe the conditions under which messages will be sent. If no attribute is defined, no message will be sent by default. One message should specify either the job or the task level attributes, but not both. For example, job level: JOB_STATE_CHANGED and/or a specified new_job_state; task level: TASK_STATE_CHANGED and/or a specified new_task_state. */
 export interface Message {
   /** The message type. */
@@ -650,8 +509,6 @@ export interface Message {
   /** The new job state. */
   newJobState?: MessageNewJobStateEnum | (string & {});
 }
-const Message = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<Message>;
-
 /** Notification configurations. */
 export interface JobNotification {
   /** The Pub/Sub topic where notifications for the job, like state changes, will be published. If undefined, no Pub/Sub notifications are sent for this job. Specify the topic using the following format: `projects/{project}/topics/{topic}`. Notably, if you want to specify a Pub/Sub topic that is in a different project than the job, your administrator must grant your project's Batch service agent permission to publish to that topic. For more information about configuring Pub/Sub notifications for a job, see https://cloud.google.com/batch/docs/enable-notifications. */
@@ -659,21 +516,13 @@ export interface JobNotification {
   /** The attribute requirements of messages to be sent to this Pub/Sub topic. Without this field, no message will be sent. */
   message?: Message;
 }
-const JobNotification = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<JobNotification>;
-
 export type JobNotificationList = Array<JobNotification>;
-const JobNotificationList = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<JobNotificationList>;
-
 export type LogsPolicyDestinationEnum = "DESTINATION_UNSPECIFIED" | "CLOUD_LOGGING" | "PATH";
-const LogsPolicyDestinationEnum = S.String;
-
 /** `CloudLoggingOption` contains additional settings for Cloud Logging logs generated by Batch job. */
 export interface CloudLoggingOption {
   /** Optional. Set this field to `true` to change the [monitored resource type](https://cloud.google.com/monitoring/api/resources) for Cloud Logging logs generated by this Batch job from the [`batch.googleapis.com/Job`](https://cloud.google.com/monitoring/api/resources#tag_batch.googleapis.com/Job) type to the formerly used [`generic_task`](https://cloud.google.com/monitoring/api/resources#tag_generic_task) type. */
   useGenericTaskMonitoredResource?: boolean;
 }
-const CloudLoggingOption = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<CloudLoggingOption>;
-
 /** LogsPolicy describes if and how a job's logs are preserved. Logs include information that is automatically written by the Batch service agent and any information that you configured the job's runnables to write to the `stdout` or `stderr` streams. */
 export interface LogsPolicy {
   /** If and where logs should be saved. */
@@ -683,8 +532,6 @@ export interface LogsPolicy {
   /** When `destination` is set to `PATH`, you must set this field to the path where you want logs to be saved. This path can point to a local directory on the VM or (if congifured) a directory under the mount path of any Cloud Storage bucket, network file system (NFS), or writable persistent disk that is mounted to the job. For example, if the job has a bucket with `mountPath` set to `/mnt/disks/my-bucket`, you can write logs to the root directory of the `remotePath` of that bucket by setting this field to `/mnt/disks/my-bucket/`. */
   logsPath?: string;
 }
-const LogsPolicy = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<LogsPolicy>;
-
 /** The Cloud Batch Job description. */
 export interface Job {
   /** Priority of the Job. The valid value range is [0, 100). Default value is 0. Higher value indicates higher priority. A job with higher priority value is more likely to run earlier if all other requirements are satisfied. */
@@ -710,8 +557,6 @@ export interface Job {
   /** Log preservation policy for the Job. */
   logsPolicy?: LogsPolicy;
 }
-const Job = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<Job>;
-
 export interface CreateProjectsLocationsJobsRequest {
   /** Required. The parent resource name where the Job will be created. Pattern: "projects/{project}/locations/{location}" */
   parent: string;
@@ -722,11 +567,6 @@ export interface CreateProjectsLocationsJobsRequest {
   /** Request body */
   body?: Job;
 }
-const CreateProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateProjectsLocationsJobsRequest>;
-
 export interface DeleteProjectsLocationsJobsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -735,29 +575,14 @@ export interface DeleteProjectsLocationsJobsRequest {
   /** Optional. Reason for this deletion. */
   reason?: string;
 }
-const DeleteProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsJobsRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -771,26 +596,14 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsJobsRequest {
   /** Required. Job name. */
   name: string;
 }
-const GetProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetProjectsLocationsJobsRequest>;
-
 export interface GetProjectsLocationsJobsTaskGroupsTasksRequest {
   /** Required. Task name. */
   name: string;
 }
-const GetProjectsLocationsJobsTaskGroupsTasksRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GetProjectsLocationsJobsTaskGroupsTasksRequest>;
-
 export type TaskStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
@@ -799,8 +612,6 @@ export type TaskStatusStateEnum =
   | "FAILED"
   | "SUCCEEDED"
   | "UNEXECUTED";
-const TaskStatusStateEnum = S.String;
-
 /** Status of a task. */
 export interface TaskStatus {
   /** Detailed info about why the state is reached. */
@@ -808,8 +619,6 @@ export interface TaskStatus {
   /** Task state. */
   state?: TaskStatusStateEnum | (string & {});
 }
-const TaskStatus = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<TaskStatus>;
-
 /** A Cloud Batch task. */
 export interface Task {
   /** Task Status. */
@@ -817,17 +626,10 @@ export interface Task {
   /** Task name. The name is generated from the parent TaskGroup name and 'id' field. For example: "projects/123456/locations/us-west1/jobs/job01/taskGroups/group01/tasks/task01". */
   name?: string;
 }
-const Task = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<Task>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
@@ -840,14 +642,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -855,11 +650,6 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsJobsRequest {
   /** Optional. Sort results. Supported are "name", "name desc", "create_time", and "create_time desc". */
   orderBy?: string;
@@ -872,14 +662,7 @@ export interface ListProjectsLocationsJobsRequest {
   /** Page size. */
   pageSize?: number;
 }
-const ListProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListProjectsLocationsJobsRequest>;
-
 export type JobList = Array<Job>;
-const JobList = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<JobList>;
-
 /** ListJob Response. */
 export interface ListJobsResponse {
   /** Next page token. */
@@ -889,8 +672,6 @@ export interface ListJobsResponse {
   /** Jobs. */
   jobs?: JobList;
 }
-const ListJobsResponse = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ListJobsResponse>;
-
 export interface ListProjectsLocationsJobsTaskGroupsTasksRequest {
   /** Page size. */
   pageSize?: number;
@@ -901,14 +682,7 @@ export interface ListProjectsLocationsJobsTaskGroupsTasksRequest {
   /** Required. Name of a TaskGroup from which Tasks are being requested. Pattern: "projects/{project}/locations/{location}/jobs/{job}/taskGroups/{task_group}" */
   parent: string;
 }
-const ListProjectsLocationsJobsTaskGroupsTasksRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListProjectsLocationsJobsTaskGroupsTasksRequest>;
-
 export type TaskList = Array<Task>;
-const TaskList = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<TaskList>;
-
 /** ListTasks Response. */
 export interface ListTasksResponse {
   /** Locations that could not be reached. */
@@ -918,8 +692,6 @@ export interface ListTasksResponse {
   /** Next page token. */
   nextPageToken?: string;
 }
-const ListTasksResponse = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ListTasksResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -932,14 +704,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -949,11 +714,6 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ListOperationsResponse>;
-
 /** VM Agent Metadata. */
 export interface AgentMetadata {
   /** parsed contents of /etc/os-release */
@@ -977,8 +737,6 @@ export interface AgentMetadata {
   /** GCP instance ID (go/instance-id). */
   instanceId?: string;
 }
-const AgentMetadata = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<AgentMetadata>;
-
 /** VM timing information */
 export interface AgentTimingInfo {
   /** Startup time of the Batch VM script. */
@@ -988,8 +746,6 @@ export interface AgentTimingInfo {
   /** Agent startup time */
   agentStartupTime?: string;
 }
-const AgentTimingInfo = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<AgentTimingInfo>;
-
 /** Task Info */
 export interface AgentTaskInfo {
   /** The highest index of a runnable started by the agent for this task. The runnables are indexed from 1. Value 0 is undefined. */
@@ -999,18 +755,12 @@ export interface AgentTaskInfo {
   /** ID of the Task */
   taskId?: string;
 }
-const AgentTaskInfo = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<AgentTaskInfo>;
-
 export type AgentTaskInfoList = Array<AgentTaskInfo>;
-const AgentTaskInfoList = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<AgentTaskInfoList>;
-
 export type AgentInfoStateEnum =
   | "AGENT_STATE_UNSPECIFIED"
   | "AGENT_STARTING"
   | "AGENT_RUNNING"
   | "AGENT_STOPPED";
-const AgentInfoStateEnum = S.String;
-
 /** VM Agent Info. */
 export interface AgentInfo {
   /** Task Info. */
@@ -1024,8 +774,6 @@ export interface AgentInfo {
   /** Optional. The assigned Job ID */
   jobId?: string;
 }
-const AgentInfo = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<AgentInfo>;
-
 /** Request to report agent's state. The Request itself implies the agent is healthy. */
 export interface ReportAgentStateRequest {
   /** Agent metadata. */
@@ -1035,25 +783,13 @@ export interface ReportAgentStateRequest {
   /** Agent info. */
   agentInfo?: AgentInfo;
 }
-const ReportAgentStateRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ReportAgentStateRequest>;
-
 export interface ReportProjectsLocationsStateRequest {
   /** Required. Format: projects/{project}/locations/{location} {project} should be a project number. */
   parent: string;
   /** Request body */
   body?: ReportAgentStateRequest;
 }
-const ReportProjectsLocationsStateRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ReportProjectsLocationsStateRequest>;
-
 export type AgentTaskTaskSourceEnum = "TASK_SOURCE_UNSPECIFIED" | "BATCH_INTERNAL" | "USER";
-const AgentTaskTaskSourceEnum = S.String;
-
 /** AgentTaskUserAccount contains the information of a POSIX account on the guest os which is used to execute the runnables. */
 export interface AgentTaskUserAccount {
   /** uid is an unique identifier of the POSIX account corresponding to the user account. */
@@ -1061,21 +797,11 @@ export interface AgentTaskUserAccount {
   /** gid id an unique identifier of the POSIX account group corresponding to the user account. */
   gid?: string;
 }
-const AgentTaskUserAccount = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<AgentTaskUserAccount>;
-
 /** AgentTaskLoggingOption contains the options for the logging of the task. */
 export interface AgentTaskLoggingOption {
   /** Labels to be added to the log entry. Now only cloud logging is supported. */
   labels?: StringMap;
 }
-const AgentTaskLoggingOption = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<AgentTaskLoggingOption>;
-
 /** AgentKMSEnvMap contains the encrypted key/value pair to be used in the environment on the Agent side. */
 export type AgentKMSEnvMap = KMSEnvMap;
 /** AgentEnvironment is the Environment representation between Agent and CLH communication. The environment is used in both task level and agent level. */
@@ -1087,8 +813,6 @@ export interface AgentEnvironment {
   /** An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values. */
   encryptedVariables?: KMSEnvMap;
 }
-const AgentEnvironment = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<AgentEnvironment>;
-
 /** Container runnable representation on the agent side. */
 export interface AgentContainer {
   /** Overrides the `CMD` specified in the container. If there is an ENTRYPOINT (either in the container image or with the entrypoint field below) then commands are appended as arguments to the ENTRYPOINT. */
@@ -1102,8 +826,6 @@ export interface AgentContainer {
   /** The URI to pull the container image from. */
   imageUri?: string;
 }
-const AgentContainer = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<AgentContainer>;
-
 /** Script runnable representation on the agent side. */
 export interface AgentScript {
   /** Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first line of the file.(For example, to execute the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by default be executed by `/bin/sh`. */
@@ -1111,8 +833,6 @@ export interface AgentScript {
   /** Shell script text. To specify an interpreter, please add a `#!\n` at the beginning of the text.(For example, to execute the script using bash, `#!/bin/bash\n` should be added. To execute the script using`Python3`, `#!/usr/bin/env python3\n` should be added.) Otherwise, the script will by default be executed by `/bin/sh`. */
   text?: string;
 }
-const AgentScript = Script as any as S.Schema<AgentScript>;
-
 /** AgentTaskRunnable is the Runnable representation between Agent and CLH communication. */
 export interface AgentTaskRunnable {
   /** Environment variables for this Runnable (overrides variables set for the whole Task or TaskGroup). */
@@ -1130,14 +850,7 @@ export interface AgentTaskRunnable {
   /** Script runnable. */
   script?: AgentScript;
 }
-const AgentTaskRunnable = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<AgentTaskRunnable>;
-
 export type AgentTaskRunnableList = Array<AgentTaskRunnable>;
-const AgentTaskRunnableList = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<AgentTaskRunnableList>;
-
 /** AgentTaskSpec is the user's TaskSpec representation between Agent and CLH communication. */
 export interface AgentTaskSpec {
   /** User account on the VM to run the runnables in the agentTaskSpec. If not set, the runnable will be run under root user. */
@@ -1151,15 +864,11 @@ export interface AgentTaskSpec {
   /** AgentTaskRunnable is runanbles that will be executed on the agent. */
   runnables?: AgentTaskRunnableList;
 }
-const AgentTaskSpec = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<AgentTaskSpec>;
-
 export type AgentTaskIntendedStateEnum =
   | "INTENDED_STATE_UNSPECIFIED"
   | "ASSIGNED"
   | "CANCELLED"
   | "DELETED";
-const AgentTaskIntendedStateEnum = S.String;
-
 /** TODO(b/182501497) The message needs to be redefined when the Agent API server updates data in storage per the backend design. */
 export interface AgentTask {
   /** Task Spec. This field will be replaced by agent_task_spec below in future. */
@@ -1177,11 +886,7 @@ export interface AgentTask {
   /** Task name. */
   task?: string;
 }
-const AgentTask = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<AgentTask>;
-
 export type AgentTaskList = Array<AgentTask>;
-const AgentTaskList = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<AgentTaskList>;
-
 /** Response to ReportAgentStateRequest. */
 export interface ReportAgentStateResponse {
   /** Tasks assigned to the agent */
@@ -1193,11 +898,6 @@ export interface ReportAgentStateResponse {
   /** Minimum report interval override */
   minReportInterval?: string;
 }
-const ReportAgentStateResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ReportAgentStateResponse>;
-
 export type CancelProjectsLocationsJobsError =
   | NotFound
   | Forbidden
@@ -1211,8 +911,8 @@ export const cancelProjectsLocationsJobs: API.OperationMethod<
   CancelProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsJobsRequest,
-  output: Operation,
+  input: __S(1) as any as S.Schema<CancelProjectsLocationsJobsRequest>,
+  output: __S(5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1231,8 +931,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(7) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(6) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1251,8 +951,8 @@ export const createProjectsLocationsJobs: API.OperationMethod<
   CreateProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsJobsRequest,
-  output: Job,
+  input: __S(59) as any as S.Schema<CreateProjectsLocationsJobsRequest>,
+  output: __S(58) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1271,8 +971,8 @@ export const deleteProjectsLocationsJobs: API.OperationMethod<
   DeleteProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsJobsRequest,
-  output: Operation,
+  input: __S(60) as any as S.Schema<DeleteProjectsLocationsJobsRequest>,
+  output: __S(5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1291,8 +991,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(61) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(6) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1306,8 +1006,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(62) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(63) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1321,8 +1021,8 @@ export const getProjectsLocationsJobs: API.OperationMethod<
   GetProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsJobsRequest,
-  output: Job,
+  input: __S(64) as any as S.Schema<GetProjectsLocationsJobsRequest>,
+  output: __S(58) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1336,8 +1036,8 @@ export const getProjectsLocationsJobsTaskGroupsTasks: API.OperationMethod<
   GetProjectsLocationsJobsTaskGroupsTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsJobsTaskGroupsTasksRequest,
-  output: Task,
+  input: __S(65) as any as S.Schema<GetProjectsLocationsJobsTaskGroupsTasksRequest>,
+  output: __S(67) as any as S.Schema<Task>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1351,8 +1051,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(68) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1367,8 +1067,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(69) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(71) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1384,8 +1084,8 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsJobsRequest,
-  output: ListJobsResponse,
+  input: __S(72) as any as S.Schema<ListProjectsLocationsJobsRequest>,
+  output: __S(74) as any as S.Schema<ListJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1401,8 +1101,8 @@ export const listProjectsLocationsJobsTaskGroupsTasks: API.PaginatedOperationMet
   GcpOpContext,
   ListTasksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsJobsTaskGroupsTasksRequest,
-  output: ListTasksResponse,
+  input: __S(75) as any as S.Schema<ListProjectsLocationsJobsTaskGroupsTasksRequest>,
+  output: __S(77) as any as S.Schema<ListTasksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1418,8 +1118,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(78) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(80) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1439,8 +1139,8 @@ export const reportProjectsLocationsState: API.OperationMethod<
   ReportProjectsLocationsStateError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReportProjectsLocationsStateRequest,
-  output: ReportAgentStateResponse,
+  input: __S(87) as any as S.Schema<ReportProjectsLocationsStateRequest>,
+  output: __S(97) as any as S.Schema<ReportAgentStateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1459,7 +1159,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1473,12 +1173,12 @@ function __c0(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(3)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
@@ -1486,10 +1186,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          response: S.optional(DocumentMap),
-          error: S.optional(Status),
+          response: S.optional(__S(2)),
+          error: S.optional(__S(4)),
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
@@ -1500,7 +1200,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1521,7 +1221,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
-          scopes: S.optional(StringList),
+          scopes: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "ServiceAccount" });
     case 2:
@@ -1529,7 +1229,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          allowedLocations: S.optional(StringList),
+          allowedLocations: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "LocationPolicy" });
     case 4:
@@ -1543,17 +1243,17 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           network: S.optional(S.String),
-          nicType: S.optional(NetworkInterfaceNicTypeEnum),
+          nicType: S.optional(S.String),
           subnetwork: S.optional(S.String),
           noExternalIpAddress: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "NetworkInterface" });
     case 6:
-      return S.Array(NetworkInterface);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          networkInterfaces: S.optional(NetworkInterfaceList),
+          networkInterfaces: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "NetworkPolicy" });
   }
@@ -1580,26 +1280,26 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "Accelerator" });
     case 2:
-      return S.Array(Accelerator);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
           deviceName: S.optional(S.String),
           existingDisk: S.optional(S.String),
-          newDisk: S.optional(Disk),
+          newDisk: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "AttachedDisk" });
     case 4:
-      return S.Array(AttachedDisk);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
           reservation: S.optional(S.String),
-          bootDisk: S.optional(Disk),
-          accelerators: S.optional(AcceleratorList),
-          provisioningModel: S.optional(InstancePolicyProvisioningModelEnum),
+          bootDisk: S.optional(__S(16)),
+          accelerators: S.optional(__S(18)),
+          provisioningModel: S.optional(S.String),
           minCpuPlatform: S.optional(S.String),
-          disks: S.optional(AttachedDiskList),
+          disks: S.optional(__S(20)),
           machineType: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstancePolicy" });
@@ -1610,11 +1310,11 @@ function __c2(j: number): any {
           blockProjectSshKeys: S.optional(S.Boolean),
           instanceTemplate: S.optional(S.String),
           installGpuDrivers: S.optional(S.Boolean),
-          policy: S.optional(InstancePolicy),
+          policy: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "InstancePolicyOrTemplate" });
     case 7:
-      return S.Array(InstancePolicyOrTemplate);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -1622,13 +1322,13 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          serviceAccount: S.optional(ServiceAccount),
-          labels: S.optional(StringMap),
-          tags: S.optional(StringList),
-          location: S.optional(LocationPolicy),
-          placement: S.optional(PlacementPolicy),
-          network: S.optional(NetworkPolicy),
-          instances: S.optional(InstancePolicyOrTemplateList),
+          serviceAccount: S.optional(__S(9)),
+          labels: S.optional(__S(10)),
+          tags: S.optional(__S(8)),
+          location: S.optional(__S(11)),
+          placement: S.optional(__S(12)),
+          network: S.optional(__S(15)),
+          instances: S.optional(__S(23)),
         }),
       ).annotate({ identifier: "AllocationPolicy" });
     case 1:
@@ -1641,34 +1341,34 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           eventTime: S.optional(S.String),
-          taskExecution: S.optional(TaskExecution),
-          taskState: S.optional(StatusEventTaskStateEnum),
+          taskExecution: S.optional(__S(25)),
+          taskState: S.optional(S.String),
           type: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "StatusEvent" });
     case 3:
-      return S.Array(StatusEvent);
+      return S.Array(__S(26));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningModel: S.optional(InstanceStatusProvisioningModelEnum),
+          provisioningModel: S.optional(S.String),
           machineType: S.optional(S.String),
-          bootDisk: S.optional(Disk),
+          bootDisk: S.optional(__S(16)),
           taskPack: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceStatus" });
     case 5:
-      return S.Array(InstanceStatus);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          instances: S.optional(InstanceStatusList),
-          counts: S.optional(StringMap),
+          instances: S.optional(__S(29)),
+          counts: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "TaskGroupStatus" });
     case 7:
-      return S.Record(S.String, TaskGroupStatus);
+      return S.Record(S.String, __S(30));
   }
 }
 function __c4(j: number): any {
@@ -1676,10 +1376,10 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          statusEvents: S.optional(StatusEventList),
+          statusEvents: S.optional(__S(27)),
           runDuration: S.optional(S.String),
-          state: S.optional(JobStatusStateEnum),
-          taskGroups: S.optional(TaskGroupStatusMap),
+          state: S.optional(S.String),
+          taskGroups: S.optional(__S(31)),
         }),
       ).annotate({ identifier: "JobStatus" });
     case 1:
@@ -1687,18 +1387,18 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          exitCodes: S.optional(IntegerList),
+          exitCodes: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "ActionCondition" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          actionCondition: S.optional(ActionCondition),
-          action: S.optional(LifecyclePolicyActionEnum),
+          actionCondition: S.optional(__S(34)),
+          action: S.optional(S.String),
         }),
       ).annotate({ identifier: "LifecyclePolicy" });
     case 4:
-      return S.Array(LifecyclePolicy);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1713,11 +1413,11 @@ function __c4(j: number): any {
           enableImageStreaming: S.optional(S.Boolean),
           password: S.optional(S.String),
           options: S.optional(S.String),
-          commands: S.optional(StringList),
+          commands: S.optional(__S(8)),
           blockExternalNetwork: S.optional(S.Boolean),
           imageUri: S.optional(S.String),
           username: S.optional(S.String),
-          volumes: S.optional(StringList),
+          volumes: S.optional(__S(8)),
           entrypoint: S.optional(S.String),
         }),
       ).annotate({ identifier: "Container" });
@@ -1741,9 +1441,9 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          secretVariables: S.optional(StringMap),
-          encryptedVariables: S.optional(KMSEnvMap),
-          variables: S.optional(StringMap),
+          secretVariables: S.optional(__S(10)),
+          encryptedVariables: S.optional(__S(40)),
+          variables: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "Environment" });
     case 2:
@@ -1758,18 +1458,18 @@ function __c5(j: number): any {
         S.Struct({
           timeout: S.optional(S.String),
           displayName: S.optional(S.String),
-          container: S.optional(Container),
-          labels: S.optional(StringMap),
-          barrier: S.optional(Barrier),
-          environment: S.optional(Environment),
+          container: S.optional(__S(38)),
+          labels: S.optional(__S(10)),
+          barrier: S.optional(__S(39)),
+          environment: S.optional(__S(41)),
           ignoreExitStatus: S.optional(S.Boolean),
           background: S.optional(S.Boolean),
-          script: S.optional(Script),
+          script: S.optional(__S(42)),
           alwaysRun: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Runnable" });
     case 4:
-      return S.Array(Runnable);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1787,10 +1487,10 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mountPath: S.optional(S.String),
-          mountOptions: S.optional(StringList),
+          mountOptions: S.optional(__S(8)),
           deviceName: S.optional(S.String),
-          nfs: S.optional(NFS),
-          gcs: S.optional(GCS),
+          nfs: S.optional(__S(45)),
+          gcs: S.optional(__S(46)),
         }),
       ).annotate({ identifier: "Volume" });
   }
@@ -1798,30 +1498,30 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Volume);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
         S.Struct({
           maxRetryCount: S.optional(S.Number),
-          environments: S.optional(StringMap),
+          environments: S.optional(__S(10)),
           maxRunDuration: S.optional(S.String),
-          lifecyclePolicies: S.optional(LifecyclePolicyList),
-          computeResource: S.optional(ComputeResource),
-          runnables: S.optional(RunnableList),
-          environment: S.optional(Environment),
-          volumes: S.optional(VolumeList),
+          lifecyclePolicies: S.optional(__S(36)),
+          computeResource: S.optional(__S(37)),
+          runnables: S.optional(__S(44)),
+          environment: S.optional(__S(41)),
+          volumes: S.optional(__S(48)),
         }),
       ).annotate({ identifier: "TaskSpec" });
     case 2:
-      return S.Array(Environment);
+      return S.Array(__S(41));
     case 3:
       return S.suspend(() =>
         S.Struct({
           runAsNonRoot: S.optional(S.Boolean),
-          taskSpec: S.optional(TaskSpec),
-          taskEnvironments: S.optional(EnvironmentList),
+          taskSpec: S.optional(__S(49)),
+          taskEnvironments: S.optional(__S(50)),
           requireHostsFile: S.optional(S.Boolean),
-          schedulingPolicy: S.optional(TaskGroupSchedulingPolicyEnum),
+          schedulingPolicy: S.optional(S.String),
           permissiveSsh: S.optional(S.Boolean),
           name: S.optional(S.String),
           taskCount: S.optional(S.String),
@@ -1830,24 +1530,24 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "TaskGroup" });
     case 4:
-      return S.Array(TaskGroup);
+      return S.Array(__S(51));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(MessageTypeEnum),
-          newTaskState: S.optional(MessageNewTaskStateEnum),
-          newJobState: S.optional(MessageNewJobStateEnum),
+          type: S.optional(S.String),
+          newTaskState: S.optional(S.String),
+          newJobState: S.optional(S.String),
         }),
       ).annotate({ identifier: "Message" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           pubsubTopic: S.optional(S.String),
-          message: S.optional(Message),
+          message: S.optional(__S(53)),
         }),
       ).annotate({ identifier: "JobNotification" });
     case 7:
-      return S.Array(JobNotification);
+      return S.Array(__S(54));
   }
 }
 function __c7(j: number): any {
@@ -1861,8 +1561,8 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          destination: S.optional(LogsPolicyDestinationEnum),
-          cloudLoggingOption: S.optional(CloudLoggingOption),
+          destination: S.optional(S.String),
+          cloudLoggingOption: S.optional(__S(56)),
           logsPath: S.optional(S.String),
         }),
       ).annotate({ identifier: "LogsPolicy" });
@@ -1870,16 +1570,16 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           priority: S.optional(S.String),
-          allocationPolicy: S.optional(AllocationPolicy),
-          labels: S.optional(StringMap),
+          allocationPolicy: S.optional(__S(24)),
+          labels: S.optional(__S(10)),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(JobStatus),
-          taskGroups: S.optional(TaskGroupList),
+          status: S.optional(__S(32)),
+          taskGroups: S.optional(__S(52)),
           uid: S.optional(S.String),
           updateTime: S.optional(S.String),
-          notifications: S.optional(JobNotificationList),
-          logsPolicy: S.optional(LogsPolicy),
+          notifications: S.optional(__S(55)),
+          logsPolicy: S.optional(__S(57)),
         }),
       ).annotate({ identifier: "Job" });
     case 3:
@@ -1888,7 +1588,7 @@ function __c7(j: number): any {
           parent: S.String.pipe(T.Label()),
           jobId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Job.pipe(T.HttpBody())),
+          body: S.optional(__S(58).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1935,9 +1635,9 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(10)),
           locationId: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(2)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
@@ -1968,14 +1668,14 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          statusEvents: S.optional(StatusEventList),
-          state: S.optional(TaskStatusStateEnum),
+          statusEvents: S.optional(__S(27)),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskStatus" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(TaskStatus),
+          status: S.optional(__S(66)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Task" });
@@ -1995,7 +1695,7 @@ function __c8(j: number): any {
           name: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(8).pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -2008,12 +1708,12 @@ function __c8(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 6:
-      return S.Array(Location);
+      return S.Array(__S(63));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(70)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
   }
@@ -2039,13 +1739,13 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsJobsRequest",
       });
     case 1:
-      return S.Array(Job);
+      return S.Array(__S(58));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          jobs: S.optional(JobList),
+          unreachable: S.optional(__S(8)),
+          jobs: S.optional(__S(73)),
         }),
       ).annotate({ identifier: "ListJobsResponse" });
     case 3:
@@ -2066,12 +1766,12 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsJobsTaskGroupsTasksRequest",
       });
     case 4:
-      return S.Array(Task);
+      return S.Array(__S(67));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          tasks: S.optional(TaskList),
+          unreachable: S.optional(__S(8)),
+          tasks: S.optional(__S(76)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListTasksResponse" });
@@ -2094,7 +1794,7 @@ function __c9(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 7:
-      return S.Array(Operation);
+      return S.Array(__S(5));
   }
 }
 function __c10(j: number): any {
@@ -2103,14 +1803,14 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          operations: S.optional(OperationList),
+          unreachable: S.optional(__S(8)),
+          operations: S.optional(__S(79)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          osRelease: S.optional(StringMap),
+          osRelease: S.optional(__S(10)),
           machineType: S.optional(S.String),
           instancePreemptionNoticeReceived: S.optional(S.Boolean),
           imageVersion: S.optional(S.String),
@@ -2134,18 +1834,18 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           runnable: S.optional(S.String),
-          taskStatus: S.optional(TaskStatus),
+          taskStatus: S.optional(__S(66)),
           taskId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentTaskInfo" });
     case 4:
-      return S.Array(AgentTaskInfo);
+      return S.Array(__S(83));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          tasks: S.optional(AgentTaskInfoList),
+          tasks: S.optional(__S(84)),
           taskGroupId: S.optional(S.String),
-          state: S.optional(AgentInfoStateEnum),
+          state: S.optional(S.String),
           reportTime: S.optional(S.String),
           jobId: S.optional(S.String),
         }),
@@ -2153,16 +1853,16 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(AgentMetadata),
-          agentTimingInfo: S.optional(AgentTimingInfo),
-          agentInfo: S.optional(AgentInfo),
+          metadata: S.optional(__S(81)),
+          agentTimingInfo: S.optional(__S(82)),
+          agentInfo: S.optional(__S(85)),
         }),
       ).annotate({ identifier: "ReportAgentStateRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(ReportAgentStateRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(86).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2187,59 +1887,59 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "AgentTaskLoggingOption" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          variables: S.optional(StringMap),
-          secretVariables: S.optional(StringMap),
-          encryptedVariables: S.optional(KMSEnvMap),
+          variables: S.optional(__S(10)),
+          secretVariables: S.optional(__S(10)),
+          encryptedVariables: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "AgentEnvironment" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          commands: S.optional(StringList),
+          commands: S.optional(__S(8)),
           entrypoint: S.optional(S.String),
           options: S.optional(S.String),
-          volumes: S.optional(StringList),
+          volumes: S.optional(__S(8)),
           imageUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentContainer" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          environment: S.optional(AgentEnvironment),
+          environment: S.optional(__S(90)),
           ignoreExitStatus: S.optional(S.Boolean),
           background: S.optional(S.Boolean),
           timeout: S.optional(S.String),
-          container: S.optional(AgentContainer),
+          container: S.optional(__S(91)),
           alwaysRun: S.optional(S.Boolean),
-          script: S.optional(AgentScript),
+          script: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "AgentTaskRunnable" });
     case 5:
-      return S.Array(AgentTaskRunnable);
+      return S.Array(__S(92));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          userAccount: S.optional(AgentTaskUserAccount),
-          loggingOption: S.optional(AgentTaskLoggingOption),
+          userAccount: S.optional(__S(88)),
+          loggingOption: S.optional(__S(89)),
           maxRunDuration: S.optional(S.String),
-          environment: S.optional(AgentEnvironment),
-          runnables: S.optional(AgentTaskRunnableList),
+          environment: S.optional(__S(90)),
+          runnables: S.optional(__S(93)),
         }),
       ).annotate({ identifier: "AgentTaskSpec" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          spec: S.optional(TaskSpec),
-          taskSource: S.optional(AgentTaskTaskSourceEnum),
-          status: S.optional(TaskStatus),
-          agentTaskSpec: S.optional(AgentTaskSpec),
-          intendedState: S.optional(AgentTaskIntendedStateEnum),
+          spec: S.optional(__S(49)),
+          taskSource: S.optional(S.String),
+          status: S.optional(__S(66)),
+          agentTaskSpec: S.optional(__S(94)),
+          intendedState: S.optional(S.String),
           reachedBarrier: S.optional(S.String),
           task: S.optional(S.String),
         }),
@@ -2249,15 +1949,50 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AgentTask);
+      return S.Array(__S(95));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tasks: S.optional(AgentTaskList),
+          tasks: S.optional(__S(96)),
           defaultReportInterval: S.optional(S.String),
           useBatchMonitoredResource: S.optional(S.Boolean),
           minReportInterval: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportAgentStateResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
   }
 }

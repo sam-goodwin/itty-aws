@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -47,37 +49,19 @@ export interface ActivateExperimentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const ActivateExperimentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ActivateExperimentRequest>;
-
 /** Randomization unit -- `user` buckets each user independently, `account` buckets whole accounts (every user of an account gets the same arm). `null` for feature flags. */
 export type ExperimentBucketBy = "user" | "account" | "anonymous";
-const ExperimentBucketBy = S.String;
-
 export type ExperimentResourceReferenceObject = "app" | "app_build" | "product" | "plan";
-const ExperimentResourceReferenceObject = S.String;
-
 export interface ExperimentResourceReference {
   /** Referenced resource tag, belonging to the experiment owner. */
   id: string;
   object: ExperimentResourceReferenceObject | (string & {});
 }
-const ExperimentResourceReference = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ExperimentResourceReference>;
-
 export interface ExperimentControl {
   related_resource?: ExperimentResourceReference | null;
 }
-const ExperimentControl = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ExperimentControl>;
-
 /** Lifecycle state. `draft` -- not yet live; `active` -- currently running; `paused` -- traffic paused; `ended` -- concluded. */
 export type ExperimentStatus = "draft" | "active" | "paused" | "ended";
-const ExperimentStatus = S.String;
-
 /** Comparison to apply. */
 export type ExperimentTargetingRulesItemConditionsItemOperator =
   | "any"
@@ -88,12 +72,8 @@ export type ExperimentTargetingRulesItemConditionsItemOperator =
   | "gte"
   | "lt"
   | "lte";
-const ExperimentTargetingRulesItemConditionsItemOperator = S.String;
-
 /** What the condition matches on: the user ID, the account ID, or a named user property. */
 export type ExperimentTargetingRulesItemConditionsItemType = "user_id" | "account_id" | "property";
-const ExperimentTargetingRulesItemConditionsItemType = S.String;
-
 export interface ExperimentTargetingRulesItemConditionsItem {
   /** Property name to read from the user context. Present when `type` is `property`. */
   field?: string | null;
@@ -104,54 +84,22 @@ export interface ExperimentTargetingRulesItemConditionsItem {
   /** Value or list of values to match against. */
   value: unknown;
 }
-const ExperimentTargetingRulesItemConditionsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ExperimentTargetingRulesItemConditionsItem>;
-
 /** Conditions within this rule, all of which must match. */
 export type ExperimentTargetingRulesItemConditionsList =
   Array<ExperimentTargetingRulesItemConditionsItem>;
-const ExperimentTargetingRulesItemConditionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ExperimentTargetingRulesItemConditionsList>;
-
 /** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. */
 export type ExperimentTargetingRulesItemType = "include" | "exclude";
-const ExperimentTargetingRulesItemType = S.String;
-
 export interface ExperimentTargetingRulesItem {
   /** Conditions within this rule, all of which must match. */
   conditions: ExperimentTargetingRulesItemConditionsList;
   /** `include` -- users matching this rule qualify; `exclude` -- users matching this rule are always excluded, overriding any include rule. */
   type?: ExperimentTargetingRulesItemType;
 }
-const ExperimentTargetingRulesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ExperimentTargetingRulesItem>;
-
 /** Rules gating who is in the experiment at all. Conditions within a rule are AND-ed, rules are OR-ed, and `exclude` rules always win. Empty means everyone qualifies. */
 export type ExperimentTargetingRulesList = Array<ExperimentTargetingRulesItem>;
-const ExperimentTargetingRulesList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ExperimentTargetingRulesList>;
-
 export type ExperimentVariantsItemRangesItemList = Array<number>;
-const ExperimentVariantsItemRangesItemList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ExperimentVariantsItemRangesItemList>;
-
 /** Granted bucket ranges (1% units, end-exclusive) recording this arm's allocation history. Server-managed; ranges are only ever appended, which is what keeps assignments permanent. */
 export type ExperimentVariantsItemRangesList = Array<ExperimentVariantsItemRangesItemList>;
-const ExperimentVariantsItemRangesList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ExperimentVariantsItemRangesList>;
-
 export interface ExperimentVariantsItem {
   /** Treatment identifier. `control` is reserved -- it is the implicit remainder. */
   name: string;
@@ -161,18 +109,8 @@ export interface ExperimentVariantsItem {
   /** Percentage of all users assigned to this treatment, 1-100. All weights together sum to at most 100; the remainder is control. */
   weight: number;
 }
-const ExperimentVariantsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ExperimentVariantsItem>;
-
 /** Treatment arms. Users outside every arm's allocation form the implicit `control` group. Weights only ever grow and arms are never removed, so a user moves from control into a treatment at most once. */
 export type ExperimentVariantsList = Array<ExperimentVariantsItem>;
-const ExperimentVariantsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ExperimentVariantsList>;
-
 export interface Experiment {
   /** Owning account ID, or internal for Whop platform experiments. */
   account_id: string;
@@ -214,12 +152,8 @@ export interface Experiment {
   /** The treatment that won, set when the experiment was ended. Once set, every evaluation returns this arm to every caller regardless of targeting or allocation, and no further exposures are recorded. `null` means control won -- an ended experiment with no winning arm evaluates to `control` for everyone. Always `null` for feature flags, which simply evaluate to disabled once ended. */
   winning_arm?: string | null;
 }
-const Experiment = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Experiment>;
-
 /** Randomization unit, and the only identity the assignment is keyed on -- evaluation fails rather than falling back to another. `user` (default) uses `subject[user_id]` for account experiments and the signed-in user for internal experiments; `account` uses `subject[account_id]`, so every user of an account gets the same arm; `anonymous` uses the anonymous id and survives sign-in. Fixed after creation. */
 export type CreateExperimentRequestBucketBy = "user" | "account" | "anonymous";
-const CreateExperimentRequestBucketBy = S.String;
-
 export type CreateExperimentRequestControl = ExperimentControl;
 /** Comparison to apply: `any`/`none` -- inclusion/exclusion list; `eq`/`neq` -- equality; `gt`/`gte`/`lt`/`lte` -- numeric range. */
 export type CreateExperimentRequestTargetingRulesItemConditionsItemOperator =
@@ -260,9 +194,6 @@ export interface CreateExperimentRequestTargetingRulesItem {
 /** Rules that determine which subjects qualify for the experiment. */
 export type CreateExperimentRequestTargetingRulesList =
   Array<CreateExperimentRequestTargetingRulesItem>;
-const CreateExperimentRequestTargetingRulesList =
-  ExperimentTargetingRulesList as any as S.Schema<CreateExperimentRequestTargetingRulesList>;
-
 export interface CreateExperimentRequestVariantsItem {
   /** Treatment identifier. `control` is reserved for the implicit remainder. */
   name: string;
@@ -270,18 +201,8 @@ export interface CreateExperimentRequestVariantsItem {
   /** Percentage of all subjects assigned to this treatment. The remainder is control. */
   weight: number;
 }
-const CreateExperimentRequestVariantsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateExperimentRequestVariantsItem>;
-
 /** Treatment arms to create. Users outside every arm form the implicit `control` group. Required unless `feature_flag_only` is `true`. */
 export type CreateExperimentRequestVariantsList = Array<CreateExperimentRequestVariantsItem>;
-const CreateExperimentRequestVariantsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateExperimentRequestVariantsList>;
-
 export interface CreateExperimentRequest {
   /** Owning account tag or internal. Required; ownership cannot change. */
   account_id: string;
@@ -304,11 +225,6 @@ export interface CreateExperimentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateExperimentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateExperimentRequest>;
-
 export interface EndExperimentRequest {
   /** The experiment identifier -- the `expt_` id or the flag_key handle. */
   id: string;
@@ -321,18 +237,11 @@ export interface EndExperimentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const EndExperimentRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<EndExperimentRequest>;
-
 export interface EvaluateExperimentExposuresRequestSubject {
   account_id?: string;
   anonymous_id?: string;
   user_id?: string;
 }
-const EvaluateExperimentExposuresRequestSubject = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<EvaluateExperimentExposuresRequestSubject>;
-
 export interface EvaluateExperimentExposuresRequest {
   /** Bucketing subject. Ownership is the top-level account_id. Account experiments accept caller-supplied subject IDs; internal experiments derive the user from the session. */
   subject?: EvaluateExperimentExposuresRequestSubject;
@@ -347,11 +256,6 @@ export interface EvaluateExperimentExposuresRequest {
   /** Set false to evaluate without recording an exposure. Omitted records it. */
   log_exposure?: boolean;
 }
-const EvaluateExperimentExposuresRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<EvaluateExperimentExposuresRequest>;
-
 export interface ExperimentExposure {
   configuration_revision?: number;
   /** Whether the subject receives a treatment or enabled feature flag. */
@@ -369,32 +273,16 @@ export interface ExperimentExposureBatch {
   exposures: ExperimentExposureBatchExposuresMap;
 }
 export type EvaluateExperimentExposuresResponseBody = ExperimentExposure | ExperimentExposureBatch;
-const EvaluateExperimentExposuresResponseBody =
-  S.Unknown as any as S.Schema<EvaluateExperimentExposuresResponseBody>;
-
 export type EvaluateExperimentExposuresResponse = EvaluateExperimentExposuresResponseBody;
-const EvaluateExperimentExposuresResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<EvaluateExperimentExposuresResponse>;
-
 export interface GetExperimentRequest {
   /** The experiment identifier -- the `expt_` id or the flag_key handle. */
   id: string;
   /** Owning account or internal. Required when id is a flag key; optional for an expt_ ID. */
   account_id?: string;
 }
-const GetExperimentRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetExperimentRequest>;
-
 export type ListExperimentsRequestStatus = "draft" | "active" | "paused" | "ended";
-const ListExperimentsRequestStatus = S.String;
-
 export type ListExperimentsRequestOrder = "created_at" | "flag_key";
-const ListExperimentsRequestOrder = S.String;
-
 export type ListExperimentsRequestDirection = "asc" | "desc";
-const ListExperimentsRequestDirection = S.String;
-
 export interface ListExperimentsRequest {
   /** Owning account ID. Omit or pass internal for Whop internal experiments; internal access is required. */
   account_id?: string;
@@ -415,37 +303,17 @@ export interface ListExperimentsRequest {
   /** Sort direction. */
   direction?: ListExperimentsRequestDirection | (string & {});
 }
-const ListExperimentsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListExperimentsRequest>;
-
 export type ListExperimentsResponseDataList = Array<Experiment>;
-const ListExperimentsResponseDataList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListExperimentsResponseDataList>;
-
 export interface ListExperimentsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListExperimentsResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListExperimentsResponsePageInfo>;
-
 export interface ListExperimentsResponse {
   data: ListExperimentsResponseDataList;
   page_info: ListExperimentsResponsePageInfo;
 }
-const ListExperimentsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListExperimentsResponse>;
-
 export interface PauseExperimentRequest {
   /** The experiment identifier -- the `expt_` id or the flag_key handle. */
   id: string;
@@ -454,11 +322,6 @@ export interface PauseExperimentRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const PauseExperimentRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<PauseExperimentRequest>;
-
 export type UpdateExperimentRequestControl = ExperimentControl;
 /** Comparison to apply: `any`/`none` -- inclusion/exclusion list; `eq`/`neq` -- equality; `gt`/`gte`/`lt`/`lte` -- numeric range. */
 export type UpdateExperimentRequestTargetingRulesItemConditionsItemOperator =
@@ -499,9 +362,6 @@ export interface UpdateExperimentRequestTargetingRulesItem {
 /** Replace the targeting rules with this set. Omit to leave unchanged. */
 export type UpdateExperimentRequestTargetingRulesList =
   Array<UpdateExperimentRequestTargetingRulesItem>;
-const UpdateExperimentRequestTargetingRulesList =
-  ExperimentTargetingRulesList as any as S.Schema<UpdateExperimentRequestTargetingRulesList>;
-
 export interface UpdateExperimentRequestVariantsItem {
   /** Treatment name. Pass every existing treatment (weights equal or higher); append new names to add arms. `control` is reserved. */
   name: string;
@@ -509,18 +369,8 @@ export interface UpdateExperimentRequestVariantsItem {
   /** Percentage assigned to treatment; allocation may only grow. */
   weight?: number;
 }
-const UpdateExperimentRequestVariantsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<UpdateExperimentRequestVariantsItem>;
-
 /** Grow treatment allocation. Pass every existing treatment with an equal-or-higher weight; append new names to add arms. Weights never decrease and arms are never removed. Omit to leave unchanged. */
 export type UpdateExperimentRequestVariantsList = Array<UpdateExperimentRequestVariantsItem>;
-const UpdateExperimentRequestVariantsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<UpdateExperimentRequestVariantsList>;
-
 export interface UpdateExperimentRequest {
   /** The experiment identifier -- the `expt_` id or the flag_key handle. */
   id: string;
@@ -535,11 +385,6 @@ export interface UpdateExperimentRequest {
   /** Grow treatment allocation. Pass every existing treatment with an equal-or-higher weight; append new names to add arms. Weights never decrease and arms are never removed. Omit to leave unchanged. */
   variants?: UpdateExperimentRequestVariantsList;
 }
-const UpdateExperimentRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<UpdateExperimentRequest>;
-
 export type ActivateExperimentError = BadRequest | Conflict | WhopOpError;
 /** Activate Experiment Starts (or resumes) an experiment or feature flag so evaluation begins serving it. Activating a draft stamps `started_at`; resuming a paused experiment keeps the original start. Only drafts and paused experiments can be activated. Requires the corresponding experiment permission on the owning account, or Whop internal access for internal experiments. */
 export const activateExperiment: API.OperationMethod<
@@ -548,8 +393,8 @@ export const activateExperiment: API.OperationMethod<
   ActivateExperimentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActivateExperimentRequest,
-  output: Experiment,
+  input: __S(0) as any as S.Schema<ActivateExperimentRequest>,
+  output: __S(11) as any as S.Schema<Experiment>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -563,8 +408,8 @@ export const createExperiment: API.OperationMethod<
   CreateExperimentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExperimentRequest,
-  output: Experiment,
+  input: __S(14) as any as S.Schema<CreateExperimentRequest>,
+  output: __S(11) as any as S.Schema<Experiment>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -578,8 +423,8 @@ export const endExperiment: API.OperationMethod<
   EndExperimentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndExperimentRequest,
-  output: Experiment,
+  input: __S(15) as any as S.Schema<EndExperimentRequest>,
+  output: __S(11) as any as S.Schema<Experiment>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -593,8 +438,8 @@ export const evaluateExperimentExposures: API.OperationMethod<
   EvaluateExperimentExposuresError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EvaluateExperimentExposuresRequest,
-  output: EvaluateExperimentExposuresResponse,
+  input: __S(17) as any as S.Schema<EvaluateExperimentExposuresRequest>,
+  output: __S(18) as any as S.Schema<EvaluateExperimentExposuresResponse>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -608,8 +453,8 @@ export const getExperiment: API.OperationMethod<
   GetExperimentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExperimentRequest,
-  output: Experiment,
+  input: __S(19) as any as S.Schema<GetExperimentRequest>,
+  output: __S(11) as any as S.Schema<Experiment>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -625,8 +470,8 @@ export const listExperiments: API.PaginatedOperationMethod<
   Experiment
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListExperimentsRequest,
-    output: ListExperimentsResponse,
+    input: __S(20) as any as S.Schema<ListExperimentsRequest>,
+    output: __S(23) as any as S.Schema<ListExperimentsResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -650,8 +495,8 @@ export const pauseExperiment: API.OperationMethod<
   PauseExperimentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PauseExperimentRequest,
-  output: Experiment,
+  input: __S(24) as any as S.Schema<PauseExperimentRequest>,
+  output: __S(11) as any as S.Schema<Experiment>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -665,8 +510,8 @@ export const updateExperiment: API.OperationMethod<
   UpdateExperimentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateExperimentRequest,
-  output: Experiment,
+  input: __S(27) as any as S.Schema<UpdateExperimentRequest>,
+  output: __S(11) as any as S.Schema<Experiment>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -690,7 +535,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          object: ExperimentResourceReferenceObject,
+          object: S.String,
         }),
       ).annotate({
         identifier: "ExperimentResourceReference",
@@ -698,33 +543,33 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          related_resource: S.optional(S.NullOr(ExperimentResourceReference)),
+          related_resource: S.optional(S.NullOr(__S(1))),
         }),
       ).annotate({ identifier: "ExperimentControl" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           field: S.optional(S.NullOr(S.String)),
-          operator: ExperimentTargetingRulesItemConditionsItemOperator,
-          type: ExperimentTargetingRulesItemConditionsItemType,
+          operator: S.String,
+          type: S.String,
           value: S.Unknown,
         }),
       ).annotate({
         identifier: "ExperimentTargetingRulesItemConditionsItem",
       });
     case 4:
-      return S.Array(ExperimentTargetingRulesItemConditionsItem);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          conditions: ExperimentTargetingRulesItemConditionsList,
-          type: S.optional(ExperimentTargetingRulesItemType),
+          conditions: __S(4),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ExperimentTargetingRulesItem",
       });
     case 6:
-      return S.Array(ExperimentTargetingRulesItem);
+      return S.Array(__S(5));
     case 7:
       return S.Array(S.Number);
   }
@@ -732,26 +577,26 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ExperimentVariantsItemRangesItemList);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          ranges: S.optional(ExperimentVariantsItemRangesList),
-          related_resource: S.optional(S.NullOr(ExperimentResourceReference)),
+          ranges: S.optional(__S(8)),
+          related_resource: S.optional(S.NullOr(__S(1))),
           weight: S.Number,
         }),
       ).annotate({ identifier: "ExperimentVariantsItem" });
     case 2:
-      return S.Array(ExperimentVariantsItem);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
           assignment_seed: S.String,
-          bucket_by: S.optional(S.NullOr(ExperimentBucketBy)),
+          bucket_by: S.optional(S.NullOr(S.String)),
           configuration_revision: S.Number,
-          control: ExperimentControl,
+          control: __S(2),
           created_at: S.optional(S.NullOr(S.String)),
           created_by: S.optional(S.NullOr(S.String)),
           ended_at: S.optional(S.NullOr(S.String)),
@@ -761,12 +606,12 @@ function __c1(j: number): any {
           hypothesis: S.optional(S.NullOr(S.String)),
           id: S.String,
           name: S.String,
-          related_resource: S.NullOr(ExperimentResourceReference),
+          related_resource: S.NullOr(__S(1)),
           started_at: S.optional(S.NullOr(S.String)),
-          status: ExperimentStatus,
-          targeting_rules: ExperimentTargetingRulesList,
+          status: S.String,
+          targeting_rules: __S(6),
           updated_at: S.NullOr(S.String),
-          variants: ExperimentVariantsList,
+          variants: __S(10),
           winning_arm: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Experiment" });
@@ -774,27 +619,27 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          related_resource: S.optional(S.NullOr(ExperimentResourceReference)),
+          related_resource: S.optional(S.NullOr(__S(1))),
           weight: S.Number,
         }),
       ).annotate({
         identifier: "CreateExperimentRequestVariantsItem",
       });
     case 5:
-      return S.Array(CreateExperimentRequestVariantsItem);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
-          bucket_by: S.optional(CreateExperimentRequestBucketBy),
-          control: S.optional(ExperimentControl),
+          bucket_by: S.optional(S.String),
+          control: S.optional(__S(2)),
           feature_flag_only: S.optional(S.Boolean),
           flag_key: S.String,
           hypothesis: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
-          related_resource: S.optional(S.NullOr(ExperimentResourceReference)),
-          targeting_rules: S.optional(CreateExperimentRequestTargetingRulesList),
-          variants: S.optional(CreateExperimentRequestVariantsList),
+          related_resource: S.optional(S.NullOr(__S(1))),
+          targeting_rules: S.optional(__S(6)),
+          variants: S.optional(__S(13)),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/experiments", code: 200 })),
       ).annotate({ identifier: "CreateExperimentRequest" });
@@ -825,8 +670,8 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          subject: S.optional(EvaluateExperimentExposuresRequestSubject.pipe(T.Query())),
-          related_resource: S.optional(ExperimentResourceReference.pipe(T.Query())),
+          subject: S.optional(__S(16).pipe(T.Query())),
+          related_resource: S.optional(__S(1).pipe(T.Query())),
           flag_key: S.optional(S.String.pipe(T.Query())),
           account_id: S.optional(S.String.pipe(T.Query())),
           properties: S.optional(S.String.pipe(T.Query())),
@@ -836,9 +681,7 @@ function __c2(j: number): any {
         identifier: "EvaluateExperimentExposuresRequest",
       });
     case 2:
-      return S.suspend(() =>
-        EvaluateExperimentExposuresResponseBody.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "EvaluateExperimentExposuresResponse",
       });
     case 3:
@@ -852,18 +695,18 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
-          related_resource: S.optional(ExperimentResourceReference.pipe(T.Query())),
-          status: S.optional(ListExperimentsRequestStatus.pipe(T.Query())),
+          related_resource: S.optional(__S(1).pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListExperimentsRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListExperimentsRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/experiments", code: 200 })),
       ).annotate({ identifier: "ListExperimentsRequest" });
     case 5:
-      return S.Array(Experiment);
+      return S.Array(__S(11));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -878,8 +721,8 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: ListExperimentsResponseDataList,
-          page_info: ListExperimentsResponsePageInfo,
+          data: __S(21),
+          page_info: __S(22),
         }),
       ).annotate({ identifier: "ListExperimentsResponse" });
   }
@@ -898,25 +741,42 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          related_resource: S.optional(S.NullOr(ExperimentResourceReference)),
+          related_resource: S.optional(S.NullOr(__S(1))),
           weight: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "UpdateExperimentRequestVariantsItem",
       });
     case 2:
-      return S.Array(UpdateExperimentRequestVariantsItem);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
           account_id: S.optional(S.String.pipe(T.Query())),
-          control: S.optional(ExperimentControl),
+          control: S.optional(__S(2)),
           hypothesis: S.optional(S.NullOr(S.String)),
-          related_resource: S.optional(S.NullOr(ExperimentResourceReference)),
-          targeting_rules: S.optional(UpdateExperimentRequestTargetingRulesList),
-          variants: S.optional(UpdateExperimentRequestVariantsList),
+          related_resource: S.optional(S.NullOr(__S(1))),
+          targeting_rules: S.optional(__S(6)),
+          variants: S.optional(__S(26)),
         }).pipe(T.Http({ method: "PATCH", uri: "/experiments/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateExperimentRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

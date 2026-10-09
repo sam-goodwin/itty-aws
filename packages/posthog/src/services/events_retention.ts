@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -12,11 +14,6 @@ export interface GetEventsRetentionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetEventsRetentionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetEventsRetentionRequest>;
-
 export interface EventsRetention2 {
   /** How many months of events stay queryable, counted back from today. Null while no retention window applies to the project. */
   retention_months: number | null;
@@ -25,8 +22,6 @@ export interface EventsRetention2 {
   /** Where the events retention policy is documented. */
   docs_url: string;
 }
-const EventsRetention2 = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<EventsRetention2>;
-
 export type GetEventsRetentionError = PosthogOpError;
 /** Get the events retention window for a project Returns how far back events stay queryable for this project. The window comes from the organization's plan and is read-only. Both window fields are null while no retention window applies to the project. */
 export const getEventsRetention: API.OperationMethod<
@@ -35,8 +30,8 @@ export const getEventsRetention: API.OperationMethod<
   GetEventsRetentionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventsRetentionRequest,
-  output: EventsRetention2,
+  input: __S(0) as any as S.Schema<GetEventsRetentionRequest>,
+  output: __S(1) as any as S.Schema<EventsRetention2>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -63,5 +58,16 @@ function __c0(j: number): any {
           docs_url: S.String,
         }),
       ).annotate({ identifier: "EventsRetention2" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 1) {
+    case 0:
+      return __c0(i & 1);
   }
 }

@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -52,62 +54,31 @@ export interface AccountViewsDestroyRequest {
   /** Version returned by the last read. */
   version: number;
 }
-const AccountViewsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AccountViewsDestroyRequest>;
-
 export interface AccountViewsDestroyResponse {}
-const AccountViewsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AccountViewsDestroyResponse>;
-
 /** * `doc` - doc */
 export type AccountViewContentTypeEnum = "doc";
-const AccountViewContentTypeEnum = S.String;
-
 /** * `ph-markdown-notebook` - ph-markdown-notebook */
 export type AccountViewMarkdownNodeTypeEnum = "ph-markdown-notebook";
-const AccountViewMarkdownNodeTypeEnum = S.String;
-
 export interface AccountViewMarkdownAttributes {
   /** Stable identifier for this document. */
   nodeId: string;
   /** Component-only Markdown stored by the account view editor. */
   markdown: string;
 }
-const AccountViewMarkdownAttributes = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AccountViewMarkdownAttributes>;
-
 export interface AccountViewMarkdownNode {
   /** Markdown notebook node type. * `ph-markdown-notebook` - ph-markdown-notebook */
   type: AccountViewMarkdownNodeTypeEnum | (string & {});
   /** Markdown notebook attributes. */
   attrs: AccountViewMarkdownAttributes;
 }
-const AccountViewMarkdownNode = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AccountViewMarkdownNode>;
-
 /** The single Markdown notebook node containing the account view components. */
 export type AccountViewContentContentList = Array<AccountViewMarkdownNode>;
-const AccountViewContentContentList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AccountViewContentContentList>;
-
 export interface AccountViewContent {
   /** Document root type. * `doc` - doc */
   type: AccountViewContentTypeEnum | (string & {});
   /** The single Markdown notebook node containing the account view components. */
   content: AccountViewContentContentList;
 }
-const AccountViewContent = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AccountViewContent>;
-
 export interface CreateAccountViewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -116,15 +87,8 @@ export interface CreateAccountViewRequest {
   /** Initial account view components. */
   content: AccountViewContent;
 }
-const CreateAccountViewRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateAccountViewRequest>;
-
 /** * `private` - Personal * `team` - Team */
 export type AccountViewVisibilityEnum = "private" | "team";
-const AccountViewVisibilityEnum = S.String;
-
 export interface AccountView {
   /** Stable account view identifier. */
   id: string;
@@ -153,39 +117,17 @@ export interface AccountView {
   /** Whether the requesting user can change the view visibility. */
   can_change_visibility: boolean;
 }
-const AccountView = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AccountView>;
-
 export interface GetAccountViewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
-const GetAccountViewRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetAccountViewRequest>;
-
 export interface ListAccountViewsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const ListAccountViewsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListAccountViewsRequest>;
-
 export type ListAccountViewsResponseBodyList = Array<AccountView>;
-const ListAccountViewsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListAccountViewsResponseBodyList>;
-
 export type ListAccountViewsResponse = ListAccountViewsResponseBodyList;
-const ListAccountViewsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListAccountViewsResponse>;
-
 export interface UpdateAccountViewsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -199,11 +141,6 @@ export interface UpdateAccountViewsPartialRequest {
   /** Version returned by the last read. */
   version: number;
 }
-const UpdateAccountViewsPartialRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<UpdateAccountViewsPartialRequest>;
-
 export type AccountViewsDestroyError = Forbidden | NotFound | Conflict | PosthogOpError;
 /** Delete an account view */
 export const accountViewsDestroy: API.OperationMethod<
@@ -212,8 +149,8 @@ export const accountViewsDestroy: API.OperationMethod<
   AccountViewsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AccountViewsDestroyRequest,
-  output: AccountViewsDestroyResponse,
+  input: __S(0) as any as S.Schema<AccountViewsDestroyRequest>,
+  output: __S(1) as any as S.Schema<AccountViewsDestroyResponse>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -227,8 +164,8 @@ export const createAccountView: API.OperationMethod<
   CreateAccountViewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountViewRequest,
-  output: AccountView,
+  input: __S(6) as any as S.Schema<CreateAccountViewRequest>,
+  output: __S(7) as any as S.Schema<AccountView>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -242,8 +179,8 @@ export const getAccountView: API.OperationMethod<
   GetAccountViewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountViewRequest,
-  output: AccountView,
+  input: __S(8) as any as S.Schema<GetAccountViewRequest>,
+  output: __S(7) as any as S.Schema<AccountView>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -257,8 +194,8 @@ export const listAccountViews: API.OperationMethod<
   ListAccountViewsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountViewsRequest,
-  output: ListAccountViewsResponse,
+  input: __S(9) as any as S.Schema<ListAccountViewsRequest>,
+  output: __S(11) as any as S.Schema<ListAccountViewsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -277,8 +214,8 @@ export const updateAccountViewsPartial: API.OperationMethod<
   UpdateAccountViewsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountViewsPartialRequest,
-  output: AccountView,
+  input: __S(12) as any as S.Schema<UpdateAccountViewsPartialRequest>,
+  output: __S(7) as any as S.Schema<AccountView>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -319,17 +256,17 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: AccountViewMarkdownNodeTypeEnum,
-          attrs: AccountViewMarkdownAttributes,
+          type: S.String,
+          attrs: __S(2),
         }),
       ).annotate({ identifier: "AccountViewMarkdownNode" });
     case 4:
-      return S.Array(AccountViewMarkdownNode);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: AccountViewContentTypeEnum,
-          content: AccountViewContentContentList,
+          type: S.String,
+          content: __S(4),
         }),
       ).annotate({ identifier: "AccountViewContent" });
     case 6:
@@ -337,7 +274,7 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           name: S.String,
-          content: AccountViewContent,
+          content: __S(5),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/account_views/", code: 200 }),
         ),
@@ -347,8 +284,8 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          visibility: AccountViewVisibilityEnum,
-          content: AccountViewContent,
+          visibility: S.String,
+          content: __S(5),
           text_content: S.String,
           version: S.Number,
           created_by: S.NullOr(S.Number),
@@ -386,9 +323,9 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListAccountViewsRequest" });
     case 2:
-      return S.Array(AccountView);
+      return S.Array(__S(7));
     case 3:
-      return S.suspend(() => ListAccountViewsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(10).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAccountViewsResponse",
       });
     case 4:
@@ -397,8 +334,8 @@ function __c1(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          content: S.optional(AccountViewContent),
-          visibility: S.optional(AccountViewVisibilityEnum),
+          content: S.optional(__S(5)),
+          visibility: S.optional(S.String),
           version: S.Number,
         }).pipe(
           T.Http({
@@ -410,5 +347,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateAccountViewsPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

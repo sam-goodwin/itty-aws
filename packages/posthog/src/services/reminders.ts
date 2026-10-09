@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -13,9 +15,6 @@ export type RecurrenceIntervalEnum = "daily" | "weekly" | "monthly" | "yearly";
 export type BlankEnum = "";
 /** For a recurring reminder: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
 export type CreateReminderRequestRecurrenceInterval = RecurrenceIntervalEnum | BlankEnum;
-const CreateReminderRequestRecurrenceInterval =
-  S.Unknown as any as S.Schema<CreateReminderRequestRecurrenceInterval>;
-
 export interface CreateReminderRequest {
   /** ID of the organization this reminder belongs to. You must be a member of it. */
   organization: string;
@@ -41,25 +40,11 @@ export interface CreateReminderRequest {
   end_date?: string | null;
   deleted?: boolean;
 }
-const CreateReminderRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateReminderRequest>;
-
 /** For a recurring reminder: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
 export type ReminderRecurrenceInterval = RecurrenceIntervalEnum | BlankEnum;
-const ReminderRecurrenceInterval = S.Unknown as any as S.Schema<ReminderRecurrenceInterval>;
-
 /** * `active` - Active * `completed` - Completed * `errored` - Errored */
 export type ReminderStatusEnum = "active" | "completed" | "errored";
-const ReminderStatusEnum = S.String;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -72,8 +57,6 @@ export type RoleAtOrganizationEnum =
   | "student"
   | "other";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -85,8 +68,6 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserBasic>;
-
 export interface Reminder {
   id: string;
   /** ID of the organization this reminder belongs to. You must be a member of it. */
@@ -119,59 +100,30 @@ export interface Reminder {
   created_at: string;
   updated_at: string | null;
 }
-const Reminder = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Reminder>;
-
 export interface GetReminderRequest {
   /** A UUID string identifying this reminder. */
   id: string;
 }
-const GetReminderRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetReminderRequest>;
-
 export interface ListRemindersRequest {
   /** Number of results to return per page. */
   limit?: number;
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListRemindersRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListRemindersRequest>;
-
 export type PaginatedReminderListResultsList = Array<Reminder>;
-const PaginatedReminderListResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PaginatedReminderListResultsList>;
-
 export interface PaginatedReminderList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedReminderListResultsList;
 }
-const PaginatedReminderList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PaginatedReminderList>;
-
 export interface RemindersDestroyRequest {
   /** A UUID string identifying this reminder. */
   id: string;
 }
-const RemindersDestroyRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<RemindersDestroyRequest>;
-
 export interface RemindersDestroyResponse {}
-const RemindersDestroyResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<RemindersDestroyResponse>;
-
 /** For a recurring reminder: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
 export type UpdateReminderRequestRecurrenceInterval = RecurrenceIntervalEnum | BlankEnum;
-const UpdateReminderRequestRecurrenceInterval =
-  S.Unknown as any as S.Schema<UpdateReminderRequestRecurrenceInterval>;
-
 export interface UpdateReminderRequest {
   /** A UUID string identifying this reminder. */
   id: string;
@@ -199,16 +151,8 @@ export interface UpdateReminderRequest {
   end_date?: string | null;
   deleted?: boolean;
 }
-const UpdateReminderRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<UpdateReminderRequest>;
-
 /** For a recurring reminder: daily, weekly, monthly, or yearly. * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
 export type UpdateRemindersPartialRequestRecurrenceInterval = RecurrenceIntervalEnum | BlankEnum;
-const UpdateRemindersPartialRequestRecurrenceInterval =
-  S.Unknown as any as S.Schema<UpdateRemindersPartialRequestRecurrenceInterval>;
-
 export interface UpdateRemindersPartialRequest {
   /** A UUID string identifying this reminder. */
   id: string;
@@ -236,11 +180,6 @@ export interface UpdateRemindersPartialRequest {
   end_date?: string | null;
   deleted?: boolean;
 }
-const UpdateRemindersPartialRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<UpdateRemindersPartialRequest>;
-
 export type CreateReminderError = PosthogOpError;
 export const createReminder: API.OperationMethod<
   CreateReminderRequest,
@@ -248,8 +187,8 @@ export const createReminder: API.OperationMethod<
   CreateReminderError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateReminderRequest,
-  output: Reminder,
+  input: __S(0) as any as S.Schema<CreateReminderRequest>,
+  output: __S(3) as any as S.Schema<Reminder>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -262,8 +201,8 @@ export const getReminder: API.OperationMethod<
   GetReminderError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReminderRequest,
-  output: Reminder,
+  input: __S(4) as any as S.Schema<GetReminderRequest>,
+  output: __S(3) as any as S.Schema<Reminder>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -276,8 +215,8 @@ export const listReminders: API.OperationMethod<
   ListRemindersError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRemindersRequest,
-  output: PaginatedReminderList,
+  input: __S(5) as any as S.Schema<ListRemindersRequest>,
+  output: __S(7) as any as S.Schema<PaginatedReminderList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -290,8 +229,8 @@ export const remindersDestroy: API.OperationMethod<
   RemindersDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemindersDestroyRequest,
-  output: RemindersDestroyResponse,
+  input: __S(8) as any as S.Schema<RemindersDestroyRequest>,
+  output: __S(9) as any as S.Schema<RemindersDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -304,8 +243,8 @@ export const updateReminder: API.OperationMethod<
   UpdateReminderError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateReminderRequest,
-  output: Reminder,
+  input: __S(10) as any as S.Schema<UpdateReminderRequest>,
+  output: __S(3) as any as S.Schema<Reminder>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -318,8 +257,8 @@ export const updateRemindersPartial: API.OperationMethod<
   UpdateRemindersPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRemindersPartialRequest,
-  output: Reminder,
+  input: __S(11) as any as S.Schema<UpdateRemindersPartialRequest>,
+  output: __S(3) as any as S.Schema<Reminder>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -338,7 +277,7 @@ function __c0(j: number): any {
           resource_type: S.optional(S.NullOr(S.String)),
           resource_id: S.optional(S.NullOr(S.String)),
           scheduled_at: S.optional(S.NullOr(S.String)),
-          recurrence_interval: S.optional(S.NullOr(CreateReminderRequestRecurrenceInterval)),
+          recurrence_interval: S.optional(S.NullOr(S.Unknown)),
           cron_expression: S.optional(S.NullOr(S.String)),
           timezone: S.optional(S.String),
           end_date: S.optional(S.NullOr(S.String)),
@@ -357,8 +296,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(1))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 3:
@@ -372,15 +311,15 @@ function __c0(j: number): any {
           resource_type: S.optional(S.NullOr(S.String)),
           resource_id: S.optional(S.NullOr(S.String)),
           scheduled_at: S.optional(S.NullOr(S.String)),
-          recurrence_interval: S.optional(S.NullOr(ReminderRecurrenceInterval)),
+          recurrence_interval: S.optional(S.NullOr(S.Unknown)),
           cron_expression: S.optional(S.NullOr(S.String)),
           timezone: S.optional(S.String),
           end_date: S.optional(S.NullOr(S.String)),
           next_fire_at: S.NullOr(S.String),
           last_fired_at: S.NullOr(S.String),
-          status: ReminderStatusEnum,
+          status: S.String,
           deleted: S.optional(S.Boolean),
-          created_by: UserBasic,
+          created_by: __S(2),
           created_at: S.String,
           updated_at: S.NullOr(S.String),
         }),
@@ -399,14 +338,14 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/reminders/", code: 200 })),
       ).annotate({ identifier: "ListRemindersRequest" });
     case 6:
-      return S.Array(Reminder);
+      return S.Array(__S(3));
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedReminderListResultsList,
+          results: __S(6),
         }),
       ).annotate({ identifier: "PaginatedReminderList" });
   }
@@ -434,7 +373,7 @@ function __c1(j: number): any {
           resource_type: S.optional(S.NullOr(S.String)),
           resource_id: S.optional(S.NullOr(S.String)),
           scheduled_at: S.optional(S.NullOr(S.String)),
-          recurrence_interval: S.optional(S.NullOr(UpdateReminderRequestRecurrenceInterval)),
+          recurrence_interval: S.optional(S.NullOr(S.Unknown)),
           cron_expression: S.optional(S.NullOr(S.String)),
           timezone: S.optional(S.String),
           end_date: S.optional(S.NullOr(S.String)),
@@ -452,9 +391,7 @@ function __c1(j: number): any {
           resource_type: S.optional(S.NullOr(S.String)),
           resource_id: S.optional(S.NullOr(S.String)),
           scheduled_at: S.optional(S.NullOr(S.String)),
-          recurrence_interval: S.optional(
-            S.NullOr(UpdateRemindersPartialRequestRecurrenceInterval),
-          ),
+          recurrence_interval: S.optional(S.NullOr(S.Unknown)),
           cron_expression: S.optional(S.NullOr(S.String)),
           timezone: S.optional(S.String),
           end_date: S.optional(S.NullOr(S.String)),
@@ -463,5 +400,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateRemindersPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

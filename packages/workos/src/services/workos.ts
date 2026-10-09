@@ -8,6 +8,8 @@ import { UnknownWorkosError } from "../errors.ts";
 import { WorkosProtocol, type WorkosOpError, type WorkosOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WorkosOpError, WorkosOpContext };
 
@@ -60,19 +62,12 @@ export interface AcceptUserlandUserInvitesControllerRequest {
   /** The unique ID of the invitation. */
   id: string;
 }
-const AcceptUserlandUserInvitesControllerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AcceptUserlandUserInvitesControllerRequest>;
-
 /** The state of the invitation. */
 export type AcceptUserlandUserInvitesControllerResponseState =
   | "pending"
   | "accepted"
   | "expired"
   | "revoked";
-const AcceptUserlandUserInvitesControllerResponseState = S.String;
-
 export interface AcceptUserlandUserInvitesControllerResponse {
   /** Distinguishes the invitation object. */
   object: string;
@@ -105,37 +100,19 @@ export interface AcceptUserlandUserInvitesControllerResponse {
   /** The URL where the recipient can accept the invitation. */
   accept_invitation_url: string;
 }
-const AcceptUserlandUserInvitesControllerResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AcceptUserlandUserInvitesControllerResponse>;
-
 export interface AddAuthorizationOrganizationRolePermissionsControllerPermissionRequest {
   /** The ID of the organization. */
   organizationId: string;
   /** The slug of the role. */
   slug: string;
 }
-const AddAuthorizationOrganizationRolePermissionsControllerPermissionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddAuthorizationOrganizationRolePermissionsControllerPermissionRequest>;
-
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AddAuthorizationOrganizationRolePermissionsControllerPermissionResponseType =
   | "EnvironmentRole"
   | "OrganizationRole";
-const AddAuthorizationOrganizationRolePermissionsControllerPermissionResponseType = S.String;
-
 /** The permission slugs assigned to the role. */
 export type AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList =
   Array<string>;
-const AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    3,
-  ) as any as S.Schema<AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList>;
-
 export interface AddAuthorizationOrganizationRolePermissionsControllerPermissionResponse {
   /** A unique slug for the role. */
   slug: string;
@@ -158,33 +135,17 @@ export interface AddAuthorizationOrganizationRolePermissionsControllerPermission
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const AddAuthorizationOrganizationRolePermissionsControllerPermissionResponse =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    4,
-  ) as any as S.Schema<AddAuthorizationOrganizationRolePermissionsControllerPermissionResponse>;
-
 export interface AddAuthorizationRolePermissionsControllerPermissionRequest {
   /** The slug of the environment role. */
   slug: string;
 }
-const AddAuthorizationRolePermissionsControllerPermissionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AddAuthorizationRolePermissionsControllerPermissionRequest>;
-
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type AddAuthorizationRolePermissionsControllerPermissionResponseType =
   | "EnvironmentRole"
   | "OrganizationRole";
-const AddAuthorizationRolePermissionsControllerPermissionResponseType = S.String;
-
 /** The permission slugs assigned to the role. */
 export type AddAuthorizationRolePermissionsControllerPermissionResponsePermissionsList =
   Array<string>;
-const AddAuthorizationRolePermissionsControllerPermissionResponsePermissionsList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<AddAuthorizationRolePermissionsControllerPermissionResponsePermissionsList>;
-
 export interface AddAuthorizationRolePermissionsControllerPermissionResponse {
   /** A unique slug for the role. */
   slug: string;
@@ -207,11 +168,6 @@ export interface AddAuthorizationRolePermissionsControllerPermissionResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const AddAuthorizationRolePermissionsControllerPermissionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AddAuthorizationRolePermissionsControllerPermissionResponse>;
-
 export interface AddGroupMembershipsControllerMemberRequest {
   /** Unique identifier of the Organization. */
   organizationId: string;
@@ -220,11 +176,6 @@ export interface AddGroupMembershipsControllerMemberRequest {
   /** The ID of the Organization Membership to add to the group. */
   organization_membership_id?: string;
 }
-const AddGroupMembershipsControllerMemberRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AddGroupMembershipsControllerMemberRequest>;
-
 export interface Group {
   /** The Group object. */
   object?: string;
@@ -241,8 +192,6 @@ export interface Group {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const Group = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Group>;
-
 /** The user to attach to the claim attempt, identified by email and external ID. */
 export interface AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser {
   /** The email address of the user. */
@@ -250,11 +199,6 @@ export interface AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser {
   /** The external ID of the user. */
   external_id: string;
 }
-const AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser>;
-
 export interface AgentAdminControllerLinkClaimAttemptToExternalUserRequest {
   /** The operation to perform on the claim attempt. Currently only `link_external_user` is supported. */
   type: string;
@@ -265,33 +209,16 @@ export interface AgentAdminControllerLinkClaimAttemptToExternalUserRequest {
   /** The organization to place the agent in. Required when the user belongs to more than one organization. */
   organization_id?: string;
 }
-const AgentAdminControllerLinkClaimAttemptToExternalUserRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AgentAdminControllerLinkClaimAttemptToExternalUserRequest>;
-
 /** Current status of the agent registration. */
 export type ClaimViewResponseStatus = "unverified" | "verified" | "expired" | "revoked";
-const ClaimViewResponseStatus = S.String;
-
 export interface ClaimViewResponseOrganizationsItem {
   /** The organization ID. */
   id: string;
   /** The organization name. */
   name: string;
 }
-const ClaimViewResponseOrganizationsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ClaimViewResponseOrganizationsItem>;
-
 /** Organizations the user belongs to, offered as placement choices. */
 export type ClaimViewResponseOrganizationsList = Array<ClaimViewResponseOrganizationsItem>;
-const ClaimViewResponseOrganizationsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ClaimViewResponseOrganizationsList>;
-
 export interface ClaimViewResponse {
   /** The agent registration ID. */
   id: string;
@@ -302,8 +229,6 @@ export interface ClaimViewResponse {
   /** Organizations the user belongs to, offered as placement choices. */
   organizations: ClaimViewResponseOrganizationsList;
 }
-const ClaimViewResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ClaimViewResponse>;
-
 export interface AgentBlueprintsTokenControllerMintTokenRequestBodyCase0 {
   /** How the session is minted: `user_delegated`, `autonomous`, `agent_delegated`, or `refresh`. */
   type: string;
@@ -342,26 +267,13 @@ export type AgentBlueprintsTokenControllerMintTokenRequestBody =
   | AgentBlueprintsTokenControllerMintTokenRequestBodyCase1
   | AgentBlueprintsTokenControllerMintTokenRequestBodyCase2
   | AgentBlueprintsTokenControllerMintTokenRequestBodyCase3;
-const AgentBlueprintsTokenControllerMintTokenRequestBody =
-  S.Unknown as any as S.Schema<AgentBlueprintsTokenControllerMintTokenRequestBody>;
-
 export interface AgentBlueprintsTokenControllerMintTokenRequest {
   /** The unique ID of the agent blueprint. */
   agent_blueprint_id: string;
   body: AgentBlueprintsTokenControllerMintTokenRequestBody;
 }
-const AgentBlueprintsTokenControllerMintTokenRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<AgentBlueprintsTokenControllerMintTokenRequest>;
-
 /** The effective permission slugs carried by the token. */
 export type AgentTokenPermissionsList = Array<string>;
-const AgentTokenPermissionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<AgentTokenPermissionsList>;
-
 export interface AgentToken {
   /** The agent access token (a JWT) carrying the effective permissions. */
   access_token: string | Redacted.Redacted<string>;
@@ -380,27 +292,18 @@ export interface AgentToken {
   /** The effective permission slugs carried by the token. */
   permissions: AgentTokenPermissionsList;
 }
-const AgentToken = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<AgentToken>;
-
 export interface ApiKeysControllerExpireRequest {
   /** The unique ID of the API key. */
   id: string;
   /** When the API key should expire. If omitted or in the past, the key expires immediately. Use null to clear a scheduled future expiration. */
   expires_at?: string | null;
 }
-const ApiKeysControllerExpireRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ApiKeysControllerExpireRequest>;
-
 export interface ApiKeyOwnerCase0 {
   /** The type of the API Key owner. */
   type: string;
   /** Unique identifier of the API Key owner. */
   id: string;
 }
-const ApiKeyOwnerCase0 = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ApiKeyOwnerCase0>;
-
 export interface ApiKeyOwnerCase1 {
   /** The type of the API Key owner. */
   type: string;
@@ -409,16 +312,10 @@ export interface ApiKeyOwnerCase1 {
   /** Unique identifier of the organization the API Key can access. */
   organization_id: string;
 }
-const ApiKeyOwnerCase1 = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ApiKeyOwnerCase1>;
-
 /** The entity that owns the API Key. */
 export type ApiKeyOwner = ApiKeyOwnerCase0 | ApiKeyOwnerCase1;
-const ApiKeyOwner = S.Unknown as any as S.Schema<ApiKeyOwner>;
-
 /** The permission slugs assigned to the API Key. */
 export type ApiKeyPermissionsList = Array<string>;
-const ApiKeyPermissionsList = AgentTokenPermissionsList as any as S.Schema<ApiKeyPermissionsList>;
-
 export interface ApiKey {
   /** Distinguishes the API Key object. */
   object?: string;
@@ -441,41 +338,21 @@ export interface ApiKey {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const ApiKey = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ApiKey>;
-
 export interface ApplicationsControllerFindRequest {
   /** The application ID or client ID of the Connect Application. */
   id: string;
 }
-const ApplicationsControllerFindRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ApplicationsControllerFindRequest>;
-
 /** The scopes available for this application. */
 export type ApplicationsControllerFindResponseScopesList = Array<string>;
-const ApplicationsControllerFindResponseScopesList =
-  AgentTokenPermissionsList as any as S.Schema<ApplicationsControllerFindResponseScopesList>;
-
 export interface ApplicationsControllerFindResponseRedirectUrisItem {
   /** The redirect URI for the application. */
   uri: string;
   /** Whether this is the default redirect URI. */
   default: boolean;
 }
-const ApplicationsControllerFindResponseRedirectUrisItem = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ApplicationsControllerFindResponseRedirectUrisItem>;
-
 /** The redirect URIs configured for this application. */
 export type ApplicationsControllerFindResponseRedirectUrisList =
   Array<ApplicationsControllerFindResponseRedirectUrisItem>;
-const ApplicationsControllerFindResponseRedirectUrisList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ApplicationsControllerFindResponseRedirectUrisList>;
-
 export interface ApplicationsControllerFindResponse {
   /** Distinguishes the connect application object. */
   object: string;
@@ -506,33 +383,16 @@ export interface ApplicationsControllerFindResponse {
   /** The ID of the organization the application belongs to. */
   organization_id?: string;
 }
-const ApplicationsControllerFindResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ApplicationsControllerFindResponse>;
-
 export interface ApproveWaitlistEntriesControllerRequest {
   /** The unique ID of the waitlist entry. */
   id: string;
 }
-const ApproveWaitlistEntriesControllerRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ApproveWaitlistEntriesControllerRequest>;
-
 /** The state of the waitlist entry. */
 export type ApproveWaitlistEntriesControllerResponseState = "pending" | "approved" | "denied";
-const ApproveWaitlistEntriesControllerResponseState = S.String;
-
 /** Additional fields submitted when the user joined the waitlist. Values are user-provided -- treat them as untrusted input when rendering or exporting. */
 export type ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap = {
   [key: string]: string | undefined;
 };
-const ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap>;
-
 export interface ApproveWaitlistEntriesControllerResponse {
   /** The unique ID of the waitlist entry. */
   id: string;
@@ -553,11 +413,6 @@ export interface ApproveWaitlistEntriesControllerResponse {
   /** Distinguishes the Waitlist Entry object. */
   object: string;
 }
-const ApproveWaitlistEntriesControllerResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ApproveWaitlistEntriesControllerResponse>;
-
 export interface AssignAuthorizationRoleAssignmentsControllerRoleRequest {
   /** The ID of the organization membership. */
   organization_membership_id: string;
@@ -570,18 +425,11 @@ export interface AssignAuthorizationRoleAssignmentsControllerRoleRequest {
   /** The resource type slug. Required with `resource_external_id`. Mutually exclusive with `resource_id`. */
   resource_type_slug?: string;
 }
-const AssignAuthorizationRoleAssignmentsControllerRoleRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<AssignAuthorizationRoleAssignmentsControllerRoleRequest>;
-
 /** The primary role assigned to the user. */
 export interface SlimRole {
   /** The slug of the assigned role. */
   slug?: string;
 }
-const SlimRole = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<SlimRole>;
-
 /** The resource the role is assigned on. */
 export interface UserRoleAssignmentResource {
   /** The unique ID of the Resource. */
@@ -591,24 +439,14 @@ export interface UserRoleAssignmentResource {
   /** The slug of the resource type this resource belongs to. */
   resource_type_slug: string;
 }
-const UserRoleAssignmentResource = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<UserRoleAssignmentResource>;
-
 /** Whether the role was assigned directly or derived from a group. */
 export type UserRoleAssignmentSourceType = "direct" | "group";
-const UserRoleAssignmentSourceType = S.String;
-
 export interface UserRoleAssignmentSourceGroup {
   /** The unique ID of the Group the role was derived from. */
   id: string;
   /** The name of the Group the role was derived from. */
   name: string;
 }
-const UserRoleAssignmentSourceGroup =
-  ClaimViewResponseOrganizationsItem as any as S.Schema<UserRoleAssignmentSourceGroup>;
-
 /** The origin of the role assignment. */
 export interface UserRoleAssignmentSource {
   /** Whether the role was assigned directly or derived from a group. */
@@ -618,11 +456,6 @@ export interface UserRoleAssignmentSource {
   /** The group the role was derived from, or null if direct. */
   group: UserRoleAssignmentSourceGroup | null;
 }
-const UserRoleAssignmentSource = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<UserRoleAssignmentSource>;
-
 export interface UserRoleAssignment {
   /** Distinguishes the role assignment object. */
   object: string;
@@ -641,33 +474,16 @@ export interface UserRoleAssignment {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const UserRoleAssignment = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<UserRoleAssignment>;
-
 /** List of actions to filter against. */
 export type AuditLogExportsControllerExportsRequestActionsList = Array<string>;
-const AuditLogExportsControllerExportsRequestActionsList =
-  AgentTokenPermissionsList as any as S.Schema<AuditLogExportsControllerExportsRequestActionsList>;
-
 /** Deprecated. Use `actor_names` instead. */
 export type AuditLogExportsControllerExportsRequestActorsList = Array<string>;
-const AuditLogExportsControllerExportsRequestActorsList =
-  AgentTokenPermissionsList as any as S.Schema<AuditLogExportsControllerExportsRequestActorsList>;
-
 /** List of actor names to filter against. */
 export type AuditLogExportsControllerExportsRequestActorNamesList = Array<string>;
-const AuditLogExportsControllerExportsRequestActorNamesList =
-  AgentTokenPermissionsList as any as S.Schema<AuditLogExportsControllerExportsRequestActorNamesList>;
-
 /** List of actor IDs to filter against. */
 export type AuditLogExportsControllerExportsRequestActorIdsList = Array<string>;
-const AuditLogExportsControllerExportsRequestActorIdsList =
-  AgentTokenPermissionsList as any as S.Schema<AuditLogExportsControllerExportsRequestActorIdsList>;
-
 /** List of target types to filter against. */
 export type AuditLogExportsControllerExportsRequestTargetsList = Array<string>;
-const AuditLogExportsControllerExportsRequestTargetsList =
-  AgentTokenPermissionsList as any as S.Schema<AuditLogExportsControllerExportsRequestTargetsList>;
-
 export interface AuditLogExportsControllerExportsRequest {
   /** The unique ID of the Organization. */
   organization_id?: string;
@@ -686,15 +502,8 @@ export interface AuditLogExportsControllerExportsRequest {
   /** List of target types to filter against. */
   targets?: AuditLogExportsControllerExportsRequestTargetsList;
 }
-const AuditLogExportsControllerExportsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<AuditLogExportsControllerExportsRequest>;
-
 /** The state of the export. Possible values: pending, ready, error, expired. */
 export type AuditLogExportJsonState = "pending" | "ready" | "error" | "expired";
-const AuditLogExportJsonState = S.String;
-
 export interface AuditLogExportJson {
   /** Distinguishes the Audit Log Export object. */
   object?: string;
@@ -709,29 +518,15 @@ export interface AuditLogExportJson {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const AuditLogExportJson = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<AuditLogExportJson>;
-
 export interface AuditLogsRetentionControllerAuditLogsRetentionRequest {
   /** Unique identifier of the Organization. */
   id: string;
 }
-const AuditLogsRetentionControllerAuditLogsRetentionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<AuditLogsRetentionControllerAuditLogsRetentionRequest>;
-
 export interface AuditLogsRetentionJson {
   /** The number of days Audit Log events will be retained before being permanently deleted. Valid values are 30 through 330 in 30-day increments and 365 through 3650 in 365-day increments. */
   retention_period_in_days?: number | null;
 }
-const AuditLogsRetentionJson = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<AuditLogsRetentionJson>;
-
 export type PaginationOrder = "normal" | "desc" | "asc";
-const PaginationOrder = S.String;
-
 export interface AuditLogValidatorVersionsControllerSchemasRequest {
   /** The name of the Audit Log action. */
   actionName: string;
@@ -744,11 +539,6 @@ export interface AuditLogValidatorVersionsControllerSchemasRequest {
   /** Order the results by the creation time. Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const AuditLogValidatorVersionsControllerSchemasRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<AuditLogValidatorVersionsControllerSchemasRequest>;
-
 /** Pagination cursors for navigating between pages of results. */
 export interface AuditLogValidatorVersionsControllerSchemasResponseListMetadata {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the start of the list. */
@@ -756,56 +546,25 @@ export interface AuditLogValidatorVersionsControllerSchemasResponseListMetadata 
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
   after: string | null;
 }
-const AuditLogValidatorVersionsControllerSchemasResponseListMetadata = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<AuditLogValidatorVersionsControllerSchemasResponseListMetadata>;
-
 /** The JSON Schema definition for actor metadata. */
 export type AuditLogSchemaJsonActorMetadataMap = { [key: string]: unknown | undefined };
-const AuditLogSchemaJsonActorMetadataMap = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<AuditLogSchemaJsonActorMetadataMap>;
-
 /** The metadata schema for the actor. */
 export interface AuditLogSchemaJsonActor {
   /** The JSON Schema definition for actor metadata. */
   metadata: AuditLogSchemaJsonActorMetadataMap;
 }
-const AuditLogSchemaJsonActor = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<AuditLogSchemaJsonActor>;
-
 /** Additional data associated with the event or entity. */
 export type AuditLogSchemaJsonTargetsItemMetadataMap = { [key: string]: unknown | undefined };
-const AuditLogSchemaJsonTargetsItemMetadataMap =
-  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<AuditLogSchemaJsonTargetsItemMetadataMap>;
-
 export interface AuditLogSchemaJsonTargetsItem {
   /** The type of the target resource. */
   type: string;
   /** Additional data associated with the event or entity. */
   metadata?: AuditLogSchemaJsonTargetsItemMetadataMap;
 }
-const AuditLogSchemaJsonTargetsItem = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<AuditLogSchemaJsonTargetsItem>;
-
 /** The list of targets for the schema. */
 export type AuditLogSchemaJsonTargetsList = Array<AuditLogSchemaJsonTargetsItem>;
-const AuditLogSchemaJsonTargetsList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<AuditLogSchemaJsonTargetsList>;
-
 /** Additional data associated with the event or entity. */
 export type AuditLogSchemaJsonMetadataMap = { [key: string]: unknown | undefined };
-const AuditLogSchemaJsonMetadataMap =
-  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<AuditLogSchemaJsonMetadataMap>;
-
 export interface AuditLogSchemaJson {
   /** Distinguishes the Audit Log Schema object. */
   object?: string;
@@ -820,15 +579,8 @@ export interface AuditLogSchemaJson {
   /** The timestamp when the Audit Log Schema was created. */
   created_at?: string;
 }
-const AuditLogSchemaJson = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<AuditLogSchemaJson>;
-
 /** The list of records for the current page. */
 export type AuditLogValidatorVersionsControllerSchemasResponseDataList = Array<AuditLogSchemaJson>;
-const AuditLogValidatorVersionsControllerSchemasResponseDataList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<AuditLogValidatorVersionsControllerSchemasResponseDataList>;
-
 export interface AuditLogValidatorVersionsControllerSchemasResponse {
   /** Indicates this is a list response. */
   object?: string;
@@ -837,22 +589,12 @@ export interface AuditLogValidatorVersionsControllerSchemasResponse {
   /** The list of records for the current page. */
   data?: AuditLogValidatorVersionsControllerSchemasResponseDataList;
 }
-const AuditLogValidatorVersionsControllerSchemasResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<AuditLogValidatorVersionsControllerSchemasResponse>;
-
 export interface AuthenticationFactorsControllerChallengeRequest {
   /** The unique ID of the Authentication Factor to be challenged. */
   id: string;
   /** A custom template for the SMS message. Use the {{code}} placeholder to include the verification code. Must not contain URLs or domain names. */
   sms_template?: string;
 }
-const AuthenticationFactorsControllerChallengeRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<AuthenticationFactorsControllerChallengeRequest>;
-
 export interface AuthenticationChallenge {
   /** Distinguishes the authentication challenge object. */
   object?: string;
@@ -869,20 +611,10 @@ export interface AuthenticationChallenge {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const AuthenticationChallenge = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<AuthenticationChallenge>;
-
 export interface AuthorizationPermissionsControllerFindRequest {
   /** A unique key to reference the permission. Must be lowercase and contain only letters, numbers, hyphens, underscores, colons, periods, and asterisks. */
   slug: string;
 }
-const AuthorizationPermissionsControllerFindRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<AuthorizationPermissionsControllerFindRequest>;
-
 export interface AuthorizationPermission {
   /** Distinguishes the Permission object. */
   object?: string;
@@ -903,20 +635,10 @@ export interface AuthorizationPermission {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const AuthorizationPermission = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<AuthorizationPermission>;
-
 export interface AuthorizationResourcesControllerFindByIdRequest {
   /** The ID of the authorization resource. */
   resource_id: string;
 }
-const AuthorizationResourcesControllerFindByIdRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<AuthorizationResourcesControllerFindByIdRequest>;
-
 export interface AuthorizationResource {
   /** Distinguishes the Resource object. */
   object?: string;
@@ -939,21 +661,10 @@ export interface AuthorizationResource {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const AuthorizationResource = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<AuthorizationResource>;
-
 export type AuthorizeSsoControllerRequestProviderScopesList = Array<string>;
-const AuthorizeSsoControllerRequestProviderScopesList =
-  AgentTokenPermissionsList as any as S.Schema<AuthorizeSsoControllerRequestProviderScopesList>;
-
 export type AuthorizeSsoControllerRequestProviderQueryParamsMap = {
   [key: string]: string | undefined;
 };
-const AuthorizeSsoControllerRequestProviderQueryParamsMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<AuthorizeSsoControllerRequestProviderQueryParamsMap>;
-
 export type AuthorizeSsoControllerRequestProvider =
   | "AppleOAuth"
   | "BitbucketOAuth"
@@ -968,8 +679,6 @@ export type AuthorizeSsoControllerRequestProvider =
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
   | "XeroOAuth";
-const AuthorizeSsoControllerRequestProvider = S.String;
-
 export interface AuthorizeSsoControllerRequest {
   /** Additional scopes to request from the identity provider. Applicable when using OAuth or OpenID Connect connections. */
   provider_scopes?: AuthorizeSsoControllerRequestProviderScopesList;
@@ -1000,33 +709,15 @@ export interface AuthorizeSsoControllerRequest {
   /** If set to `login`, forces re-authentication at the identity provider. For supported SAML providers this sets `ForceAuthn="true"` in the SAML request; providers that don't support it are unaffected. */
   prompt?: string;
 }
-const AuthorizeSsoControllerRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<AuthorizeSsoControllerRequest>;
-
 export interface SsoAuthorizeUrlResponse {
   /** An OAuth 2.0 authorization URL. */
   url?: string;
 }
-const SsoAuthorizeUrlResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<SsoAuthorizeUrlResponse>;
-
 export type AuthorizeUserlandSsoControllerRequestProviderQueryParamsMap = {
   [key: string]: string | undefined;
 };
-const AuthorizeUserlandSsoControllerRequestProviderQueryParamsMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<AuthorizeUserlandSsoControllerRequestProviderQueryParamsMap>;
-
 export type AuthorizeUserlandSsoControllerRequestProviderScopesList = Array<string>;
-const AuthorizeUserlandSsoControllerRequestProviderScopesList =
-  AgentTokenPermissionsList as any as S.Schema<AuthorizeUserlandSsoControllerRequestProviderScopesList>;
-
 export type AuthorizeUserlandSsoControllerRequestScreenHint = "sign-up" | "sign-in";
-const AuthorizeUserlandSsoControllerRequestScreenHint = S.String;
-
 export type AuthorizeUserlandSsoControllerRequestProvider =
   | "authkit"
   | "AppleOAuth"
@@ -1042,8 +733,6 @@ export type AuthorizeUserlandSsoControllerRequestProvider =
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
   | "XeroOAuth";
-const AuthorizeUserlandSsoControllerRequestProvider = S.String;
-
 export interface AuthorizeUserlandSsoControllerRequest {
   /** The only valid PKCE code challenge method is `"S256"`. Required when specifying a `code_challenge`. */
   code_challenge_method?: string;
@@ -1080,17 +769,7 @@ export interface AuthorizeUserlandSsoControllerRequest {
   /** The unique identifier of the WorkOS environment client. */
   client_id: string;
 }
-const AuthorizeUserlandSsoControllerRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<AuthorizeUserlandSsoControllerRequest>;
-
 export interface AuthorizeUserlandSsoControllerResponse {}
-const AuthorizeUserlandSsoControllerResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<AuthorizeUserlandSsoControllerResponse>;
-
 export interface CheckAuthorizationControllerRequest {
   /** The ID of the organization membership to check. */
   organization_membership_id: string;
@@ -1103,42 +782,22 @@ export interface CheckAuthorizationControllerRequest {
   /** The slug of the resource type. Required with `resource_external_id`. Mutually exclusive with `resource_id`. */
   resource_type_slug?: string;
 }
-const CheckAuthorizationControllerRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CheckAuthorizationControllerRequest>;
-
 export interface AuthorizationCheck {
   /** Whether the organization membership has the specified permission on the resource. */
   authorized?: boolean;
 }
-const AuthorizationCheck = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<AuthorizationCheck>;
-
 export interface ClientApiTokenControllerIssueClientApiTokenRequest {
   /** The ID of the organization to scope the Client API token to. */
   organization_id: string;
   /** The ID of the user to issue the Client API token for. */
   user_id: string;
 }
-const ClientApiTokenControllerIssueClientApiTokenRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ClientApiTokenControllerIssueClientApiTokenRequest>;
-
 export interface ClientApiTokenResponse {
   /** The Client API token. */
   token: string;
 }
-const ClientApiTokenResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ClientApiTokenResponse>;
-
 /** A set of key-value pairs to attach to the user. */
 export type UserObjectMetadataMap = { [key: string]: string | undefined };
-const UserObjectMetadataMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UserObjectMetadataMap>;
-
 export interface UserObject {
   /** Your application's user identifier, which will be stored as an [`external_id`](/authkit/metadata/external-identifiers). Used for upserting and deduplication. */
   id?: string;
@@ -1153,26 +812,14 @@ export interface UserObject {
   /** A set of key-value pairs to attach to the user. */
   metadata?: UserObjectMetadataMap;
 }
-const UserObject = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<UserObject>;
-
 export interface UserConsentOptionChoicesItem {
   /** The value of this choice. */
   value?: string;
   /** A human-readable label for this choice. */
   label?: string;
 }
-const UserConsentOptionChoicesItem = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<UserConsentOptionChoicesItem>;
-
 /** The available choices for this consent option. */
 export type UserConsentOptionChoicesList = Array<UserConsentOptionChoicesItem>;
-const UserConsentOptionChoicesList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<UserConsentOptionChoicesList>;
-
 export interface UserConsentOption {
   /** The claim name for this consent option. */
   claim?: string;
@@ -1183,16 +830,9 @@ export interface UserConsentOption {
   /** The available choices for this consent option. */
   choices?: UserConsentOptionChoicesList;
 }
-const UserConsentOption = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<UserConsentOption>;
-
 /** Array of [User Consent Options](/reference/workos-connect/standalone/user-consent-options) to store with the session. */
 export type CompleteExternalAuthControllerLoginRequestUserConsentOptionsList =
   Array<UserConsentOption>;
-const CompleteExternalAuthControllerLoginRequestUserConsentOptionsList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CompleteExternalAuthControllerLoginRequestUserConsentOptionsList>;
-
 export interface CompleteExternalAuthControllerLoginRequest {
   /** Identifier provided when AuthKit redirected to your login page. */
   external_auth_id?: string;
@@ -1201,40 +841,20 @@ export interface CompleteExternalAuthControllerLoginRequest {
   /** Array of [User Consent Options](/reference/workos-connect/standalone/user-consent-options) to store with the session. */
   user_consent_options?: CompleteExternalAuthControllerLoginRequestUserConsentOptionsList;
 }
-const CompleteExternalAuthControllerLoginRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CompleteExternalAuthControllerLoginRequest>;
-
 export interface ExternalAuthCompleteResponse {
   /** URI to redirect the user back to AuthKit to complete the OAuth flow. */
   redirect_uri?: string;
 }
-const ExternalAuthCompleteResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ExternalAuthCompleteResponse>;
-
 export interface ConfirmUserlandUsersControllerEmailChangeRequest {
   /** The unique ID of the user. */
   id: string;
   /** The one-time code used to confirm the email change. */
   code?: string;
 }
-const ConfirmUserlandUsersControllerEmailChangeRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ConfirmUserlandUsersControllerEmailChangeRequest>;
-
 /** Object containing metadata key/value pairs associated with the user. */
 export type ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap = {
   [key: string]: string | undefined;
 };
-const ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap>;
-
 /** The user object. */
 export interface ConfirmUserlandUsersControllerEmailChangeResponseUser {
   /** Distinguishes the user object. */
@@ -1266,31 +886,16 @@ export interface ConfirmUserlandUsersControllerEmailChangeResponseUser {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const ConfirmUserlandUsersControllerEmailChangeResponseUser = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ConfirmUserlandUsersControllerEmailChangeResponseUser>;
-
 export interface ConfirmUserlandUsersControllerEmailChangeResponse {
   /** Distinguishes the email change confirmation object. */
   object: string;
   /** The user object. */
   user: ConfirmUserlandUsersControllerEmailChangeResponseUser;
 }
-const ConfirmUserlandUsersControllerEmailChangeResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ConfirmUserlandUsersControllerEmailChangeResponse>;
-
 export interface ConnectionsControllerFindRequest {
   /** Unique identifier for the Connection. */
   id: string;
 }
-const ConnectionsControllerFindRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ConnectionsControllerFindRequest>;
-
 /** The type of the SSO Connection used to authenticate the user. The Connection type may be used to dynamically generate authorization URLs. */
 export type ConnectionConnectionType =
   | "Pending"
@@ -1343,8 +948,6 @@ export type ConnectionConnectionType =
   | "VercelOAuth"
   | "VMwareSAML"
   | "XeroOAuth";
-const ConnectionConnectionType = S.String;
-
 /** Indicates whether a Connection is able to authenticate users. */
 export type ConnectionState =
   | "requires_type"
@@ -1353,12 +956,8 @@ export type ConnectionState =
   | "validating"
   | "inactive"
   | "deleting";
-const ConnectionState = S.String;
-
 /** Deprecated. Use `state` instead. */
 export type ConnectionStatus = "linked" | "unlinked";
-const ConnectionStatus = S.String;
-
 export interface ConnectionDomainsItem {
   /** Unique identifier for the Connection Domain. */
   id: string;
@@ -1367,18 +966,8 @@ export interface ConnectionDomainsItem {
   /** The domain value. */
   domain: string;
 }
-const ConnectionDomainsItem = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ConnectionDomainsItem>;
-
 /** List of Organization Domains. */
 export type ConnectionDomainsList = Array<ConnectionDomainsItem>;
-const ConnectionDomainsList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ConnectionDomainsList>;
-
 export interface Connection {
   /** Distinguishes the Connection object. */
   object?: string;
@@ -1401,23 +990,12 @@ export interface Connection {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const Connection = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<Connection>;
-
 /** Permission slugs forming the ceiling on what sessions minted from this blueprint may do. Each slug must exist in the environment. */
 export type CreateAgentBlueprintsControllerRequestPermissionsList = Array<string>;
-const CreateAgentBlueprintsControllerRequestPermissionsList =
-  AgentTokenPermissionsList as any as S.Schema<CreateAgentBlueprintsControllerRequestPermissionsList>;
-
 /** Role slugs whose members may mint user-delegated sessions from this blueprint. An empty list allows any member. */
 export type CreateAgentBlueprintsControllerRequestInvocableByRoleSlugsList = Array<string>;
-const CreateAgentBlueprintsControllerRequestInvocableByRoleSlugsList =
-  AgentTokenPermissionsList as any as S.Schema<CreateAgentBlueprintsControllerRequestInvocableByRoleSlugsList>;
-
 /** Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. An empty list allows any organization in the environment. */
 export type CreateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList = Array<string>;
-const CreateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList>;
-
 /** Who may mint sessions from this blueprint. */
 export interface CreateAgentBlueprintsControllerRequestInvocableBy {
   /** Role slugs whose members may mint user-delegated sessions from this blueprint. An empty list allows any member. */
@@ -1425,35 +1003,18 @@ export interface CreateAgentBlueprintsControllerRequestInvocableBy {
   /** Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. An empty list allows any organization in the environment. */
   organization_ids?: CreateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList;
 }
-const CreateAgentBlueprintsControllerRequestInvocableBy = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CreateAgentBlueprintsControllerRequestInvocableBy>;
-
 export type CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem =
   | "delegated"
   | "autonomous";
-const CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem = S.String;
-
 /** Instance types that may be minted from this blueprint: `delegated` (a user-delegated session, minted with a user access token) and/or `autonomous` (a session acting as the agent itself, minted with an agent registration credential). Agent-delegated chaining and refreshes are checked against the type of the presenting instance. Defaults to both. */
 export type CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList = Array<
   CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem | (string & {})
 >;
-const CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList>;
-
 /** How sessions may be minted from this blueprint. */
 export interface CreateAgentBlueprintsControllerRequestInvocableAs {
   /** Instance types that may be minted from this blueprint: `delegated` (a user-delegated session, minted with a user access token) and/or `autonomous` (a session acting as the agent itself, minted with an agent registration credential). Agent-delegated chaining and refreshes are checked against the type of the presenting instance. Defaults to both. */
   instance_types?: CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList;
 }
-const CreateAgentBlueprintsControllerRequestInvocableAs = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<CreateAgentBlueprintsControllerRequestInvocableAs>;
-
 /** Token and session lifetimes for sessions minted from this blueprint. */
 export interface CreateAgentBlueprintsControllerRequestSessionSettings {
   /** Maximum lifetime of a session in seconds; refreshes never extend a session past this. At most 31,536,000 (365 days). */
@@ -1463,11 +1024,6 @@ export interface CreateAgentBlueprintsControllerRequestSessionSettings {
   /** Lifetime of each rotated refresh token in seconds. At most 5,184,000 (60 days). */
   refresh_token_ttl_seconds: number;
 }
-const CreateAgentBlueprintsControllerRequestSessionSettings = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<CreateAgentBlueprintsControllerRequestSessionSettings>;
-
 export interface CreateAgentBlueprintsControllerRequest {
   /** Human-readable name of the agent blueprint. */
   name: string;
@@ -1482,26 +1038,12 @@ export interface CreateAgentBlueprintsControllerRequest {
   /** Token and session lifetimes for sessions minted from this blueprint. */
   session_settings?: CreateAgentBlueprintsControllerRequestSessionSettings;
 }
-const CreateAgentBlueprintsControllerRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<CreateAgentBlueprintsControllerRequest>;
-
 /** Permission slugs forming the ceiling on what sessions minted from this blueprint may do. */
 export type AgentBlueprintPermissionsList = Array<string>;
-const AgentBlueprintPermissionsList =
-  AgentTokenPermissionsList as any as S.Schema<AgentBlueprintPermissionsList>;
-
 /** Role slugs whose members may mint user-delegated sessions from this blueprint. */
 export type AgentBlueprintInvocableByRoleSlugsList = Array<string>;
-const AgentBlueprintInvocableByRoleSlugsList =
-  AgentTokenPermissionsList as any as S.Schema<AgentBlueprintInvocableByRoleSlugsList>;
-
 /** Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. */
 export type AgentBlueprintInvocableByOrganizationIdsList = Array<string>;
-const AgentBlueprintInvocableByOrganizationIdsList =
-  AgentTokenPermissionsList as any as S.Schema<AgentBlueprintInvocableByOrganizationIdsList>;
-
 /** Who may mint sessions from this blueprint. */
 export interface AgentBlueprintInvocableBy {
   /** Role slugs whose members may mint user-delegated sessions from this blueprint. */
@@ -1509,32 +1051,15 @@ export interface AgentBlueprintInvocableBy {
   /** Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. */
   organization_ids: AgentBlueprintInvocableByOrganizationIdsList;
 }
-const AgentBlueprintInvocableBy = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<AgentBlueprintInvocableBy>;
-
 export type AgentBlueprintInvocableAsInstanceTypesItem = "delegated" | "autonomous";
-const AgentBlueprintInvocableAsInstanceTypesItem = S.String;
-
 /** Instance types that may be minted from this blueprint: `delegated` and/or `autonomous`. */
 export type AgentBlueprintInvocableAsInstanceTypesList =
   Array<AgentBlueprintInvocableAsInstanceTypesItem>;
-const AgentBlueprintInvocableAsInstanceTypesList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<AgentBlueprintInvocableAsInstanceTypesList>;
-
 /** How sessions may be minted from this blueprint. */
 export interface AgentBlueprintInvocableAs {
   /** Instance types that may be minted from this blueprint: `delegated` and/or `autonomous`. */
   instance_types: AgentBlueprintInvocableAsInstanceTypesList;
 }
-const AgentBlueprintInvocableAs = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<AgentBlueprintInvocableAs>;
-
 /** Token and session lifetimes for sessions minted from this blueprint. */
 export interface AgentBlueprintSessionSettings {
   /** Maximum lifetime of a session in seconds; refreshes never extend a session past this. */
@@ -1544,9 +1069,6 @@ export interface AgentBlueprintSessionSettings {
   /** Lifetime of each rotated refresh token in seconds. */
   refresh_token_ttl_seconds: number;
 }
-const AgentBlueprintSessionSettings =
-  CreateAgentBlueprintsControllerRequestSessionSettings as any as S.Schema<AgentBlueprintSessionSettings>;
-
 export interface AgentBlueprint {
   /** Distinguishes the agent blueprint object. */
   object: string;
@@ -1569,17 +1091,10 @@ export interface AgentBlueprint {
   /** Timestamp when the agent blueprint was last updated. */
   updated_at: string;
 }
-const AgentBlueprint = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<AgentBlueprint>;
-
 export interface CreateApplicationCredentialsControllerRequest {
   /** The application ID or client ID of the Connect Application. */
   id: string;
 }
-const CreateApplicationCredentialsControllerRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<CreateApplicationCredentialsControllerRequest>;
-
 export interface NewConnectApplicationSecret {
   /** Distinguishes the connect application secret object. */
   object?: string;
@@ -1596,11 +1111,6 @@ export interface NewConnectApplicationSecret {
   /** The plaintext secret value. Only returned at creation time and cannot be retrieved later. */
   secret?: string | Redacted.Redacted<string>;
 }
-const NewConnectApplicationSecret = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<NewConnectApplicationSecret>;
-
 /** The OAuth scopes granted to the application. */
 export type CreateOAuthApplicationDtoScopesList = Array<string>;
 export interface RedirectUriDto {
@@ -1609,15 +1119,8 @@ export interface RedirectUriDto {
   /** Whether this is the default redirect URI. */
   default?: boolean | null;
 }
-const RedirectUriDto = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<RedirectUriDto>;
-
 /** Redirect URIs for the application. */
 export type CreateOAuthApplicationDtoRedirectUrisList = Array<RedirectUriDto>;
-const CreateOAuthApplicationDtoRedirectUrisList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<CreateOAuthApplicationDtoRedirectUrisList>;
-
 export interface CreateOAuthApplicationDto {
   /** The name of the application. */
   name?: string;
@@ -1653,17 +1156,9 @@ export interface CreateM2MApplicationDto {
 export type CreateApplicationsControllerRequestBody =
   | CreateOAuthApplicationDto
   | CreateM2MApplicationDto;
-const CreateApplicationsControllerRequestBody =
-  S.Unknown as any as S.Schema<CreateApplicationsControllerRequestBody>;
-
 export interface CreateApplicationsControllerRequest {
   body: CreateApplicationsControllerRequestBody;
 }
-const CreateApplicationsControllerRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<CreateApplicationsControllerRequest>;
-
 /** The scopes available for this application. */
 export type CreateApplicationsControllerResponseScopesList = Array<string>;
 export type CreateApplicationsControllerResponseRedirectUrisItem =
@@ -1701,9 +1196,6 @@ export interface CreateApplicationsControllerResponse {
   /** The ID of the organization the application belongs to. */
   organization_id?: string;
 }
-const CreateApplicationsControllerResponse =
-  ApplicationsControllerFindResponse as any as S.Schema<CreateApplicationsControllerResponse>;
-
 export interface AuditLogEventActorDto {
   /** Actor identifier. */
   id?: string;
@@ -1714,11 +1206,6 @@ export interface AuditLogEventActorDto {
   /** Additional data associated with the event or entity. */
   metadata?: unknown;
 }
-const AuditLogEventActorDto = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<AuditLogEventActorDto>;
-
 export interface AuditLogEventTargetDto {
   /** Target identifier. */
   id?: string;
@@ -1729,26 +1216,14 @@ export interface AuditLogEventTargetDto {
   /** Additional data associated with the event or entity. */
   metadata?: unknown;
 }
-const AuditLogEventTargetDto = AuditLogEventActorDto as any as S.Schema<AuditLogEventTargetDto>;
-
 /** The resources affected by the action. */
 export type AuditLogEventDtoTargetsList = Array<AuditLogEventTargetDto>;
-const AuditLogEventDtoTargetsList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<AuditLogEventDtoTargetsList>;
-
 export interface AuditLogEventContextDto {
   /** IP Address or some other geolocation identifier. */
   location?: string;
   /** User agent string. */
   user_agent?: string;
 }
-const AuditLogEventContextDto = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<AuditLogEventContextDto>;
-
 export interface AuditLogEventDto {
   /** Identifier of what happened. */
   action?: string;
@@ -1765,56 +1240,29 @@ export interface AuditLogEventDto {
   /** What schema version the event is associated with. */
   version?: number;
 }
-const AuditLogEventDto = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<AuditLogEventDto>;
-
 export interface CreateAuditLogEventsControllerRequest {
   /** The unique ID of the Organization. */
   organization_id?: string;
   /** The audit log event to create. */
   event?: AuditLogEventDto;
 }
-const CreateAuditLogEventsControllerRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<CreateAuditLogEventsControllerRequest>;
-
 export interface AuditLogEventCreateResponse {
   /** Whether the Audit Log event was created successfully. */
   success?: boolean;
 }
-const AuditLogEventCreateResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<AuditLogEventCreateResponse>;
-
 export interface AuditLogSchemaActorDto {
   /** JSON schema for actor metadata. */
   metadata?: unknown;
 }
-const AuditLogSchemaActorDto = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<AuditLogSchemaActorDto>;
-
 export interface AuditLogSchemaTargetDto {
   /** The type of the target resource. */
   type?: string;
   /** Optional JSON schema for target metadata. */
   metadata?: unknown;
 }
-const AuditLogSchemaTargetDto = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<AuditLogSchemaTargetDto>;
-
 /** The list of targets for the schema. */
 export type CreateAuditLogValidatorVersionsControllerRequestTargetsList =
   Array<AuditLogSchemaTargetDto>;
-const CreateAuditLogValidatorVersionsControllerRequestTargetsList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<CreateAuditLogValidatorVersionsControllerRequestTargetsList>;
-
 export interface CreateAuditLogValidatorVersionsControllerRequest {
   /** The name of the Audit Log action. */
   actionName: string;
@@ -1825,15 +1273,8 @@ export interface CreateAuditLogValidatorVersionsControllerRequest {
   /** Optional JSON schema for event metadata. */
   metadata?: unknown;
 }
-const CreateAuditLogValidatorVersionsControllerRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<CreateAuditLogValidatorVersionsControllerRequest>;
-
 /** The type of factor to enroll. */
 export type CreateAuthenticationFactorsControllerRequestType = "generic_otp" | "sms" | "totp";
-const CreateAuthenticationFactorsControllerRequestType = S.String;
-
 export interface CreateAuthenticationFactorsControllerRequest {
   /** The type of factor to enroll. */
   type: CreateAuthenticationFactorsControllerRequestType | (string & {});
@@ -1846,25 +1287,13 @@ export interface CreateAuthenticationFactorsControllerRequest {
   /** The ID of the user to associate the factor with. */
   user_id?: string;
 }
-const CreateAuthenticationFactorsControllerRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<CreateAuthenticationFactorsControllerRequest>;
-
 /** The type of the factor to enroll. */
 export type AuthenticationFactorEnrolledType = "generic_otp" | "sms" | "totp" | "webauthn";
-const AuthenticationFactorEnrolledType = S.String;
-
 /** SMS-based authentication factor details. */
 export interface AuthenticationFactorEnrolledSms {
   /** The user's phone number for SMS-based authentication. */
   phone_number: string;
 }
-const AuthenticationFactorEnrolledSms = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<AuthenticationFactorEnrolledSms>;
-
 /** TOTP-based authentication factor details. Includes enrollment secrets only available at creation time. */
 export interface AuthenticationFactorEnrolledTotp {
   /** Your application or company name displayed in the user's authenticator app. Defaults to your WorkOS team name. */
@@ -1878,11 +1307,6 @@ export interface AuthenticationFactorEnrolledTotp {
   /** The `otpauth` URI that is encoded by the provided `qr_code`. */
   uri: string;
 }
-const AuthenticationFactorEnrolledTotp = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<AuthenticationFactorEnrolledTotp>;
-
 export interface AuthenticationFactorEnrolled {
   /** Distinguishes the authentication factor object. */
   object?: string;
@@ -1901,22 +1325,12 @@ export interface AuthenticationFactorEnrolled {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const AuthenticationFactorEnrolled = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<AuthenticationFactorEnrolled>;
-
 export interface CreateAuthkitOauthResourcesControllerRequest {
   /** The resource URI. May be a wildcard pattern with a single `*`, either in the leftmost hostname label or as the final path segment, where enabled for the environment. */
   uri: string;
   /** Whether the resource being created becomes the environment default, clearing any previous default. Applies at creation only -- this API has no update endpoint yet, so changing the default on an existing resource is done from the dashboard. A wildcard pattern cannot be the default. */
   default?: boolean;
 }
-const CreateAuthkitOauthResourcesControllerRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<CreateAuthkitOauthResourcesControllerRequest>;
-
 export interface AuthkitOauthResource {
   /** The object type. */
   object: string;
@@ -1931,11 +1345,6 @@ export interface AuthkitOauthResource {
   /** The timestamp when the MCP resource indicator was last updated. */
   updated_at: string;
 }
-const AuthkitOauthResource = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<AuthkitOauthResource>;
-
 export interface CreateAuthorizationGroupRoleAssignmentsControllerRequest {
   /** The ID of the group. */
   group_id: string;
@@ -1948,11 +1357,6 @@ export interface CreateAuthorizationGroupRoleAssignmentsControllerRequest {
   /** The resource type slug. */
   resource_type_slug?: string;
 }
-const CreateAuthorizationGroupRoleAssignmentsControllerRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<CreateAuthorizationGroupRoleAssignmentsControllerRequest>;
-
 /** The resource the role is assigned on. */
 export type GroupRoleAssignmentResource = UserRoleAssignmentResource;
 export interface GroupRoleAssignment {
@@ -1971,8 +1375,6 @@ export interface GroupRoleAssignment {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const GroupRoleAssignment = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<GroupRoleAssignment>;
-
 export interface CreateAuthorizationOrganizationRolesControllerRequest {
   /** The ID of the organization. */
   organizationId: string;
@@ -1985,22 +1387,12 @@ export interface CreateAuthorizationOrganizationRolesControllerRequest {
   /** The slug of the resource type the role is scoped to. */
   resource_type_slug?: string;
 }
-const CreateAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<CreateAuthorizationOrganizationRolesControllerRequest>;
-
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type CreateAuthorizationOrganizationRolesControllerResponseType =
   | "EnvironmentRole"
   | "OrganizationRole";
-const CreateAuthorizationOrganizationRolesControllerResponseType = S.String;
-
 /** The permission slugs assigned to the role. */
 export type CreateAuthorizationOrganizationRolesControllerResponsePermissionsList = Array<string>;
-const CreateAuthorizationOrganizationRolesControllerResponsePermissionsList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateAuthorizationOrganizationRolesControllerResponsePermissionsList>;
-
 export interface CreateAuthorizationOrganizationRolesControllerResponse {
   /** A unique slug for the role. */
   slug: string;
@@ -2023,11 +1415,6 @@ export interface CreateAuthorizationOrganizationRolesControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const CreateAuthorizationOrganizationRolesControllerResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<CreateAuthorizationOrganizationRolesControllerResponse>;
-
 export interface CreateAuthorizationPermissionsControllerRequest {
   /** A unique key to reference the permission. Must be lowercase and contain only letters, numbers, hyphens, underscores, colons, periods, and asterisks. */
   slug?: string;
@@ -2038,11 +1425,6 @@ export interface CreateAuthorizationPermissionsControllerRequest {
   /** The slug of the resource type this permission is scoped to. */
   resource_type_slug?: string;
 }
-const CreateAuthorizationPermissionsControllerRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<CreateAuthorizationPermissionsControllerRequest>;
-
 export interface CreateAuthorizationPermissionsControllerResponse {
   /** Distinguishes the Permission object. */
   object: string;
@@ -2063,11 +1445,6 @@ export interface CreateAuthorizationPermissionsControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const CreateAuthorizationPermissionsControllerResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<CreateAuthorizationPermissionsControllerResponse>;
-
 export interface CreateAuthorizationResourcesControllerRequest {
   /** An external identifier for the resource. */
   external_id: string;
@@ -2086,11 +1463,6 @@ export interface CreateAuthorizationResourcesControllerRequest {
   /** The resource type slug of the parent resource. Required with `parent_resource_external_id`. Mutually exclusive with `parent_resource_id`. */
   parent_resource_type_slug?: string;
 }
-const CreateAuthorizationResourcesControllerRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<CreateAuthorizationResourcesControllerRequest>;
-
 export interface CreateAuthorizationResourcesControllerResponse {
   /** Distinguishes the Resource object. */
   object: string;
@@ -2113,11 +1485,6 @@ export interface CreateAuthorizationResourcesControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const CreateAuthorizationResourcesControllerResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<CreateAuthorizationResourcesControllerResponse>;
-
 export interface CreateAuthorizationRolesControllerRequest {
   /** A unique slug for the role. */
   slug?: string;
@@ -2128,20 +1495,10 @@ export interface CreateAuthorizationRolesControllerRequest {
   /** The slug of the resource type the role is scoped to. */
   resource_type_slug?: string;
 }
-const CreateAuthorizationRolesControllerRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<CreateAuthorizationRolesControllerRequest>;
-
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type CreateAuthorizationRolesControllerResponseType = "EnvironmentRole" | "OrganizationRole";
-const CreateAuthorizationRolesControllerResponseType = S.String;
-
 /** The permission slugs assigned to the role. */
 export type CreateAuthorizationRolesControllerResponsePermissionsList = Array<string>;
-const CreateAuthorizationRolesControllerResponsePermissionsList =
-  AgentTokenPermissionsList as any as S.Schema<CreateAuthorizationRolesControllerResponsePermissionsList>;
-
 export interface CreateAuthorizationRolesControllerResponse {
   /** A unique slug for the role. */
   slug: string;
@@ -2164,11 +1521,6 @@ export interface CreateAuthorizationRolesControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const CreateAuthorizationRolesControllerResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<CreateAuthorizationRolesControllerResponse>;
-
 export interface CreateConnectionStandardAttributesDto {
   /** The IdP attribute or claim the profile's `idp_id` is mapped from. When omitted, the default for the connection type is used. */
   idp_id?: string;
@@ -2183,53 +1535,27 @@ export interface CreateConnectionStandardAttributesDto {
   /** The IdP attribute or claim the profile's `name` is mapped from. `null` leaves the mapping unset. */
   name?: string | null;
 }
-const CreateConnectionStandardAttributesDto = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<CreateConnectionStandardAttributesDto>;
-
 /** How IdP attributes or claims map onto custom attributes, keyed by custom attribute name. Custom attributes must already be defined in the WorkOS dashboard. */
 export type CreateConnectionAttributeMapsDtoCustomAttributesMap = {
   [key: string]: string | undefined;
 };
-const CreateConnectionAttributeMapsDtoCustomAttributesMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<CreateConnectionAttributeMapsDtoCustomAttributesMap>;
-
 export interface CreateConnectionAttributeMapsDto {
   /** How IdP attributes or claims map onto the standard WorkOS profile fields. Provided fields override the defaults for the connection type. */
   standard_attributes?: CreateConnectionStandardAttributesDto;
   /** How IdP attributes or claims map onto custom attributes, keyed by custom attribute name. Custom attributes must already be defined in the WorkOS dashboard. */
   custom_attributes?: CreateConnectionAttributeMapsDtoCustomAttributesMap;
 }
-const CreateConnectionAttributeMapsDto = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<CreateConnectionAttributeMapsDto>;
-
 /** The X.509 certificates used to verify signed SAML responses from the Identity Provider. Required when configuring the connection with manual IdP fields. */
 export type CreateConnectionSamlOptionsDtoIdpSigningCertsList = Array<string>;
-const CreateConnectionSamlOptionsDtoIdpSigningCertsList =
-  AgentTokenPermissionsList as any as S.Schema<CreateConnectionSamlOptionsDtoIdpSigningCertsList>;
-
 export interface CreateConnectionKeyPairDto {
   /** The PEM-encoded private key. */
   key: string;
   /** The PEM-encoded X.509 certificate for the key. */
   cert: string;
 }
-const CreateConnectionKeyPairDto = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<CreateConnectionKeyPairDto>;
-
 /** The customer-owned key pairs used to decrypt encrypted SAML responses from the Identity Provider. When omitted, WorkOS generates and manages the encryption key pair. */
 export type CreateConnectionSamlOptionsDtoSpEncryptionKeyPairsList =
   Array<CreateConnectionKeyPairDto>;
-const CreateConnectionSamlOptionsDtoSpEncryptionKeyPairsList = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<CreateConnectionSamlOptionsDtoSpEncryptionKeyPairsList>;
-
 export interface CreateConnectionSamlOptionsDto {
   /** The Identity Provider metadata URL. When provided, the IdP fields and signing certificates are imported from the metadata document. Mutually exclusive with the manual IdP fields. */
   idp_metadata_url?: string;
@@ -2248,18 +1574,11 @@ export interface CreateConnectionSamlOptionsDto {
   /** The customer-owned key pairs used to decrypt encrypted SAML responses from the Identity Provider. When omitted, WorkOS generates and manages the encryption key pair. */
   sp_encryption_key_pairs?: CreateConnectionSamlOptionsDtoSpEncryptionKeyPairsList;
 }
-const CreateConnectionSamlOptionsDto = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<CreateConnectionSamlOptionsDto>;
-
 /** The token-endpoint client authentication method. */
 export type CreateConnectionOidcOptionsDtoTokenAuthenticationMethod =
   | "client_secret_post"
   | "client_secret_basic"
   | "private_key_jwt";
-const CreateConnectionOidcOptionsDtoTokenAuthenticationMethod = S.String;
-
 /** The ID-token signing algorithm. */
 export type CreateConnectionOidcOptionsDtoIdTokenSignatureAlgorithm =
   | "ES256"
@@ -2275,8 +1594,6 @@ export type CreateConnectionOidcOptionsDtoIdTokenSignatureAlgorithm =
   | "RS256"
   | "RS384"
   | "RS512";
-const CreateConnectionOidcOptionsDtoIdTokenSignatureAlgorithm = S.String;
-
 export interface CreateConnectionOidcOptionsDto {
   /** The OIDC discovery endpoint. */
   discovery_endpoint: string;
@@ -2301,11 +1618,6 @@ export interface CreateConnectionOidcOptionsDto {
   /** Whether to fetch additional profile attributes from the userinfo endpoint. */
   fetch_user_info?: boolean;
 }
-const CreateConnectionOidcOptionsDto = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<CreateConnectionOidcOptionsDto>;
-
 export interface CreateConnectionsControllerRequest {
   /** Unique identifier for the Organization in which the Connection resides. */
   organization_id: string;
@@ -2322,20 +1634,10 @@ export interface CreateConnectionsControllerRequest {
   /** Protocol configuration for OIDC connections. Mutually exclusive with `saml_options`. */
   oidc_options?: CreateConnectionOidcOptionsDto;
 }
-const CreateConnectionsControllerRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<CreateConnectionsControllerRequest>;
-
 export interface CreateCorsOriginsControllerCorsOriginRequest {
   /** The origin URL to allow for CORS requests. */
   origin?: string;
 }
-const CreateCorsOriginsControllerCorsOriginRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<CreateCorsOriginsControllerCorsOriginRequest>;
-
 export interface CorsOriginResponse {
   /** Distinguishes the CORS origin object. */
   object?: string;
@@ -2348,14 +1650,10 @@ export interface CorsOriginResponse {
   /** Timestamp when the CORS origin was last updated. */
   updated_at?: string;
 }
-const CorsOriginResponse = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<CorsOriginResponse>;
-
 /** Whose connection to create or rotate. `user` (the default) addresses the connection owned by `user_id`. `organization` addresses the connection shared by every member of `organization_id`; `user_id` then identifies the member performing the request and must be an active member of the organization. */
 export type CreateDataIntegrationsControllerApiKeyConnectionRequestConnectionOwner =
   | "user"
   | "organization";
-const CreateDataIntegrationsControllerApiKeyConnectionRequestConnectionOwner = S.String;
-
 export interface CreateDataIntegrationsControllerApiKeyConnectionRequest {
   /** The identifier of the integration. */
   slug: string;
@@ -2376,54 +1674,27 @@ export interface CreateDataIntegrationsControllerApiKeyConnectionRequest {
   /** Must be `add`: this endpoint only creates another connection. The first connection for an owner shape fills the compatibility slot; later connections are standard. Creating an additional connection is not yet available: until it is, `add` succeeds only when the owner has no connection for this integration and otherwise returns 404 `multiple_connections_unavailable`. */
   connection_intent: string;
 }
-const CreateDataIntegrationsControllerApiKeyConnectionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<CreateDataIntegrationsControllerApiKeyConnectionRequest>;
-
 /** Whether this row is the compatibility connection visible to undeclared clients or a standard peer for plural-aware clients. The role does not indicate preference or creation order. */
 export type ConnectedAccountWriteResponseConnectionRole = "compatibility" | "standard";
-const ConnectedAccountWriteResponseConnectionRole = S.String;
-
 /** The OAuth scopes granted for this connection. */
 export type ConnectedAccountWriteResponseScopesList = Array<string>;
-const ConnectedAccountWriteResponseScopesList =
-  AgentTokenPermissionsList as any as S.Schema<ConnectedAccountWriteResponseScopesList>;
-
 /** The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent. */
 export type ConnectedAccountWriteResponseAuthMethod = "oauth" | "api_key" | "client_credentials";
-const ConnectedAccountWriteResponseAuthMethod = S.String;
-
 /** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
 export type ConnectedAccountWriteResponseConfigMap = { [key: string]: string | undefined };
-const ConnectedAccountWriteResponseConfigMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<ConnectedAccountWriteResponseConfigMap>;
-
 /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
 export type ConnectedAccountWriteResponseState =
   | "connected"
   | "needs_reauthorization"
   | "disconnected";
-const ConnectedAccountWriteResponseState = S.String;
-
 export interface ConnectedAccountWriteResponseWarningsItem {
   code: string;
   /** A human-readable explanation of the non-blocking warning. */
   message: string;
 }
-const ConnectedAccountWriteResponseWarningsItem = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<ConnectedAccountWriteResponseWarningsItem>;
-
 /** Non-blocking warnings about an explicitly supplied label, omitted when no duplicate exists. Reads do not include this field. */
 export type ConnectedAccountWriteResponseWarningsList =
   Array<ConnectedAccountWriteResponseWarningsItem>;
-const ConnectedAccountWriteResponseWarningsList = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ConnectedAccountWriteResponseWarningsList>;
-
 export interface ConnectedAccountWriteResponse {
   /** Distinguishes the connected account object. */
   object: string;
@@ -2460,24 +1731,14 @@ export interface ConnectedAccountWriteResponse {
   /** Non-blocking warnings about an explicitly supplied label, omitted when no duplicate exists. Reads do not include this field. */
   warnings?: ConnectedAccountWriteResponseWarningsList;
 }
-const ConnectedAccountWriteResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ConnectedAccountWriteResponse>;
-
 /** Whose connection to create or rotate. `user` (the default) addresses the connection owned by `user_id`. `organization` addresses the connection shared by every member of `organization_id`; `user_id` then identifies the member performing the request and must be an active member of the organization. */
 export type CreateDataIntegrationsControllerClientCredentialsConnectionRequestConnectionOwner =
   | "user"
   | "organization";
-const CreateDataIntegrationsControllerClientCredentialsConnectionRequestConnectionOwner = S.String;
-
 /** Provider-specific configuration values collected for this installation, keyed by the provider's config field descriptors. */
 export type CreateDataIntegrationsControllerClientCredentialsConnectionRequestConfigMap = {
   [key: string]: string | undefined;
 };
-const CreateDataIntegrationsControllerClientCredentialsConnectionRequestConfigMap =
-  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<CreateDataIntegrationsControllerClientCredentialsConnectionRequestConfigMap>;
-
 export interface CreateDataIntegrationsControllerClientCredentialsConnectionRequest {
   /** The identifier of the integration. */
   slug: string;
@@ -2502,23 +1763,13 @@ export interface CreateDataIntegrationsControllerClientCredentialsConnectionRequ
   /** Must be `add`: this endpoint only creates another connection. The first connection for an owner shape fills the compatibility slot; later connections are standard. Creating an additional connection is not yet available: until it is, `add` succeeds only when the owner has no connection for this integration and otherwise returns 404 `multiple_connections_unavailable`. */
   connection_intent: string;
 }
-const CreateDataIntegrationsControllerClientCredentialsConnectionRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<CreateDataIntegrationsControllerClientCredentialsConnectionRequest>;
-
 /** Who owns the Data Integration. `user` (the default) creates the integration users connect their own accounts to; `organization` creates the root organizations connect to. Ownership is fixed at creation, and one integration of each ownership may exist per provider. Independent of `credentials.type`. */
 export type CreateDataIntegrationsManagementControllerDataIntegrationRequestOwnership =
   | "user"
   | "organization";
-const CreateDataIntegrationsManagementControllerDataIntegrationRequestOwnership = S.String;
-
 /** The OAuth scopes to request for the Data Integration. Defaults to the provider's configured scopes when omitted. */
 export type CreateDataIntegrationsManagementControllerDataIntegrationRequestScopesList =
   Array<string>;
-const CreateDataIntegrationsManagementControllerDataIntegrationRequestScopesList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateDataIntegrationsManagementControllerDataIntegrationRequestScopesList>;
-
 export type CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsItem =
   | "oauth"
   | "api_key"
@@ -2527,20 +1778,12 @@ export type CreateDataIntegrationsManagementControllerDataIntegrationRequestAuth
 export type CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsList = Array<
   CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsItem | (string & {})
 >;
-const CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsList =
-  CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList as any as S.Schema<CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsList>;
-
 /** Provider-specific config values (e.g. a Snowflake `account`), keyed by the config field. Only fields the built-in provider declares are accepted. */
 export type CreateDataIntegrationsManagementControllerDataIntegrationRequestConfigMap = {
   [key: string]: string | undefined;
 };
-const CreateDataIntegrationsManagementControllerDataIntegrationRequestConfigMap =
-  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<CreateDataIntegrationsManagementControllerDataIntegrationRequestConfigMap>;
-
 /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (configured per-organization). */
 export type DataIntegrationCredentialsDtoType = "custom" | "organization";
-const DataIntegrationCredentialsDtoType = S.String;
-
 export interface DataIntegrationCredentialsDto {
   /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (configured per-organization). */
   type: DataIntegrationCredentialsDtoType | (string & {});
@@ -2549,11 +1792,6 @@ export interface DataIntegrationCredentialsDto {
   /** OAuth client secret for the provider app. Required when `type` is `custom`; omit for `organization`. */
   client_secret?: string | Redacted.Redacted<string>;
 }
-const DataIntegrationCredentialsDto = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<DataIntegrationCredentialsDto>;
-
 export interface ApiKeyInstallationDto {
   /** The API key secret to store for the tenant. */
   secret: string | Redacted.Redacted<string>;
@@ -2562,22 +1800,12 @@ export interface ApiKeyInstallationDto {
   /** An Organization identifier to scope the installation to a specific organization. */
   organization_id?: string;
 }
-const ApiKeyInstallationDto = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ApiKeyInstallationDto>;
-
 /** Additional static query parameters appended to the authorization request. */
 export type CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap = {
   [key: string]: string | undefined;
 };
-const CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap =
-  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap>;
-
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type CustomProviderDefinitionDtoAuthenticateVia = "request_body" | "basic_auth_header";
-const CustomProviderDefinitionDtoAuthenticateVia = S.String;
-
 export interface CustomProviderDefinitionDto {
   /** A descriptive name for the custom provider. */
   name: string;
@@ -2602,11 +1830,6 @@ export interface CustomProviderDefinitionDto {
   /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
   authenticate_via?: CustomProviderDefinitionDtoAuthenticateVia | (string & {});
 }
-const CustomProviderDefinitionDto = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<CustomProviderDefinitionDto>;
-
 export interface CreateDataIntegrationsManagementControllerDataIntegrationRequest {
   /** The provider to create a Data Integration for. For a built-in provider use its slug (e.g. `github`, `slack`). For a custom provider, this is the new provider slug and `custom_provider` must be supplied. A custom provider slug cannot shadow an existing global provider slug. */
   provider: string;
@@ -2631,33 +1854,16 @@ export interface CreateDataIntegrationsManagementControllerDataIntegrationReques
   /** The OAuth definition for a custom provider. Supply this to define a custom provider; omit it to create an integration for a built-in provider. */
   custom_provider?: CustomProviderDefinitionDto;
 }
-const CreateDataIntegrationsManagementControllerDataIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<CreateDataIntegrationsManagementControllerDataIntegrationRequest>;
-
 /** Who owns the Data Integration: `user` when users connect their own accounts, `organization` when organizations connect. Fixed at creation. */
 export type DataIntegrationOwnership = "user" | "organization";
-const DataIntegrationOwnership = S.String;
-
 /** The state of the Data Integration. */
 export type DataIntegrationState = "valid" | "invalid" | "requested";
-const DataIntegrationState = S.String;
-
 export type DataIntegrationScopesList = Array<string>;
-const DataIntegrationScopesList =
-  AgentTokenPermissionsList as any as S.Schema<DataIntegrationScopesList>;
-
 export type DataIntegrationAuthMethodsItem = "oauth" | "api_key" | "client_credentials";
 /** How accounts authenticate with the provider for this Data Integration. */
 export type DataIntegrationAuthMethodsList = Array<DataIntegrationAuthMethodsItem>;
-const DataIntegrationAuthMethodsList =
-  AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<DataIntegrationAuthMethodsList>;
-
 /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (so `client_id`/`redacted_client_secret` are null on the integration itself). */
 export type DataIntegrationCredentialsType = "custom" | "organization";
-const DataIntegrationCredentialsType = S.String;
-
 export interface DataIntegrationCredentials {
   /** The credentials type. `custom` uses your own OAuth app credentials; `organization` has each organization supply its own credentials (so `client_id`/`redacted_client_secret` are null on the integration itself). */
   type: DataIntegrationCredentialsType;
@@ -2666,15 +1872,8 @@ export interface DataIntegrationCredentials {
   /** The last four characters of the OAuth client secret. The full secret is never returned. Null for `organization` credentials. */
   redacted_client_secret: string | Redacted.Redacted<string> | null;
 }
-const DataIntegrationCredentials = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<DataIntegrationCredentials>;
-
 /** Whether this is the compatibility connection visible to undeclared clients or a standard connection for plural-aware clients. */
 export type DataIntegrationInstallationConnectionRole = "compatibility" | "standard";
-const DataIntegrationInstallationConnectionRole = S.String;
-
 export interface DataIntegrationInstallation {
   /** Unique identifier of the installation. */
   id: string;
@@ -2691,27 +1890,14 @@ export interface DataIntegrationInstallation {
   /** The last four characters of the stored API key. The full key is never returned. */
   api_key_last_4: string | null;
 }
-const DataIntegrationInstallation = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<DataIntegrationInstallation>;
-
 /** Provider-specific config values set on the Data Integration (e.g. a Snowflake `account`), keyed by config field. Only fields the provider declares are accepted. */
 export type DataIntegrationConfigMap = { [key: string]: string | undefined };
-const DataIntegrationConfigMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<DataIntegrationConfigMap>;
-
 /** Additional static query parameters appended to the authorization request. */
 export type DataIntegrationCustomProviderAdditionalAuthorizationParametersMap = {
   [key: string]: string | undefined;
 };
-const DataIntegrationCustomProviderAdditionalAuthorizationParametersMap =
-  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<DataIntegrationCustomProviderAdditionalAuthorizationParametersMap>;
-
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type DataIntegrationCustomProviderAuthenticateVia = "request_body" | "basic_auth_header";
-const DataIntegrationCustomProviderAuthenticateVia = S.String;
-
 export interface DataIntegrationCustomProvider {
   /** A descriptive name for the custom provider. */
   name: string;
@@ -2736,11 +1922,6 @@ export interface DataIntegrationCustomProvider {
   /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
   authenticate_via: DataIntegrationCustomProviderAuthenticateVia;
 }
-const DataIntegrationCustomProvider = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<DataIntegrationCustomProvider>;
-
 export interface DataIntegration {
   /** Distinguishes the Data Integration object. */
   object: string;
@@ -2777,21 +1958,13 @@ export interface DataIntegration {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const DataIntegration = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<DataIntegration>;
-
 /** The OAuth scopes granted for this connection. */
 export type CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList =
   Array<string>;
-const CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList>;
-
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestState =
   | "connected"
   | "needs_reauthorization";
-const CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestState =
-  S.String;
-
 export interface CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest {
   /** An [Organization](/reference/organization) identifier. */
   organization_id: string;
@@ -2818,24 +1991,13 @@ export interface CreateDataIntegrationsOrganizationControllerOrganizationDataIns
   /** Set to `add` to create another connected account. Omit this field for permanent compatibility behavior. Creating an additional connection is not yet available: until it is, `add` succeeds only when the owner has no connection for this integration, which creates the compatibility connection, and otherwise returns 404 `multiple_connections_unavailable`. */
   connection_intent?: string;
 }
-const CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest =
-  /*@__PURE__*/ __L.at(
-    __c17,
-    1,
-  ) as any as S.Schema<CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest>;
-
 /** The OAuth scopes granted for this connection. */
 export type CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList =
   Array<string>;
-const CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList>;
-
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestState =
   | "connected"
   | "needs_reauthorization";
-const CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestState = S.String;
-
 export interface CreateDataIntegrationsUserManagementControllerUserDataInstallationRequest {
   /** A [User](/reference/authkit/user) identifier. */
   user_id: string;
@@ -2862,27 +2024,13 @@ export interface CreateDataIntegrationsUserManagementControllerUserDataInstallat
   /** Set to `add` to create another connected account. Omit this field for permanent compatibility behavior. Creating an additional connection is not yet available: until it is, `add` succeeds only when the owner has no connection for this integration, which creates the compatibility connection, and otherwise returns 404 `multiple_connections_unavailable`. */
   connection_intent?: string;
 }
-const CreateDataIntegrationsUserManagementControllerUserDataInstallationRequest =
-  /*@__PURE__*/ __L.at(
-    __c17,
-    2,
-  ) as any as S.Schema<CreateDataIntegrationsUserManagementControllerUserDataInstallationRequest>;
-
 export interface CreateFlagTargetsControllerTargetRequest {
   /** The unique slug identifier of the feature flag. */
   slug: string;
   /** The resource ID in format "user_<id>" or "org_<id>". */
   resourceId: string;
 }
-const CreateFlagTargetsControllerTargetRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<CreateFlagTargetsControllerTargetRequest>;
-
 export interface CreateFlagTargetsControllerTargetResponse {}
-const CreateFlagTargetsControllerTargetResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<CreateFlagTargetsControllerTargetResponse>;
-
 export interface CreateGroupsControllerRequest {
   /** The ID of the organization. */
   organizationId: string;
@@ -2891,22 +2039,12 @@ export interface CreateGroupsControllerRequest {
   /** An optional description of the Group. */
   description?: string | null;
 }
-const CreateGroupsControllerRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<CreateGroupsControllerRequest>;
-
 export interface CreateItContactsControllerRequest {
   /** The ID of the organization. */
   organization_id: string;
   /** The email address of the IT contact. */
   email: string;
 }
-const CreateItContactsControllerRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<CreateItContactsControllerRequest>;
-
 export interface ItContact {
   /** The IT Contact object. */
   object: string;
@@ -2919,15 +2057,10 @@ export interface ItContact {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const ItContact = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<ItContact>;
-
 /** Map of values used to determine the encryption key. */
 export type CreateJumpWireWebDataVaultControllerRequestKeyContextMap = {
   [key: string]: string | undefined;
 };
-const CreateJumpWireWebDataVaultControllerRequestKeyContextMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<CreateJumpWireWebDataVaultControllerRequestKeyContextMap>;
-
 export interface CreateJumpWireWebDataVaultControllerRequest {
   /** Map of values used to determine the encryption key. */
   key_context: CreateJumpWireWebDataVaultControllerRequestKeyContextMap;
@@ -2936,16 +2069,8 @@ export interface CreateJumpWireWebDataVaultControllerRequest {
   /** Plaintext data to encrypt and store. */
   value: string;
 }
-const CreateJumpWireWebDataVaultControllerRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<CreateJumpWireWebDataVaultControllerRequest>;
-
 /** Map of values used to determine the encryption key. */
 export type ObjectMetadataContextMap = { [key: string]: string | undefined };
-const ObjectMetadataContextMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<ObjectMetadataContextMap>;
-
 /** The user or API key that performed an action. */
 export interface Actor {
   /** Unique identifier of the actor. */
@@ -2953,8 +2078,6 @@ export interface Actor {
   /** Display name of the actor. */
   name: string;
 }
-const Actor = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<Actor>;
-
 /** Metadata for a stored encrypted object. */
 export interface ObjectMetadata {
   /** Map of values used to determine the encryption key. */
@@ -2971,13 +2094,8 @@ export interface ObjectMetadata {
   /** Current version identifier of the object. */
   version_id?: string | null;
 }
-const ObjectMetadata = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<ObjectMetadata>;
-
 /** The permission slugs to assign to the API key. */
 export type CreateOrganizationApiKeysControllerRequestPermissionsList = Array<string>;
-const CreateOrganizationApiKeysControllerRequestPermissionsList =
-  AgentTokenPermissionsList as any as S.Schema<CreateOrganizationApiKeysControllerRequestPermissionsList>;
-
 export interface CreateOrganizationApiKeysControllerRequest {
   /** Unique identifier of the Organization. */
   organizationId: string;
@@ -2988,18 +2106,10 @@ export interface CreateOrganizationApiKeysControllerRequest {
   /** The timestamp when the API key should expire. Must be a future timestamp. If omitted, the key does not expire. */
   expires_at?: string;
 }
-const CreateOrganizationApiKeysControllerRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<CreateOrganizationApiKeysControllerRequest>;
-
 /** The entity that owns the API Key. */
 export type OrganizationApiKeyWithValueOwner = ApiKeyOwnerCase0;
 /** The permission slugs assigned to the API Key. */
 export type OrganizationApiKeyWithValuePermissionsList = Array<string>;
-const OrganizationApiKeyWithValuePermissionsList =
-  AgentTokenPermissionsList as any as S.Schema<OrganizationApiKeyWithValuePermissionsList>;
-
 export interface OrganizationApiKeyWithValue {
   /** Distinguishes the API Key object. */
   object: string;
@@ -3024,22 +2134,12 @@ export interface OrganizationApiKeyWithValue {
   /** The full API Key value. Only returned once at creation time. */
   value: string;
 }
-const OrganizationApiKeyWithValue = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<OrganizationApiKeyWithValue>;
-
 export interface CreateOrganizationDomainsControllerRequest {
   /** The domain to add to the organization. */
   domain?: string;
   /** The ID of the organization to add the domain to. */
   organization_id?: string;
 }
-const CreateOrganizationDomainsControllerRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<CreateOrganizationDomainsControllerRequest>;
-
 /** Verification state of the domain. */
 export type CreateOrganizationDomainsControllerResponseState =
   | "failed"
@@ -3047,12 +2147,8 @@ export type CreateOrganizationDomainsControllerResponseState =
   | "pending"
   | "unverified"
   | "verified";
-const CreateOrganizationDomainsControllerResponseState = S.String;
-
 /** Strategy used to verify the domain. */
 export type CreateOrganizationDomainsControllerResponseVerificationStrategy = "dns" | "manual";
-const CreateOrganizationDomainsControllerResponseVerificationStrategy = S.String;
-
 export interface CreateOrganizationDomainsControllerResponse {
   /** Distinguishes the organization domain object. */
   object: string;
@@ -3075,43 +2171,20 @@ export interface CreateOrganizationDomainsControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const CreateOrganizationDomainsControllerResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<CreateOrganizationDomainsControllerResponse>;
-
 /** The domains associated with the organization. Deprecated in favor of `domain_data`. */
 export type CreateOrganizationsControllerRequestDomainsList = Array<string>;
-const CreateOrganizationsControllerRequestDomainsList =
-  AgentTokenPermissionsList as any as S.Schema<CreateOrganizationsControllerRequestDomainsList>;
-
 /** The verification state of the domain. */
 export type OrganizationDomainDataDtoState = "pending" | "verified";
-const OrganizationDomainDataDtoState = S.String;
-
 export interface OrganizationDomainDataDto {
   /** The domain value. */
   domain?: string;
   /** The verification state of the domain. */
   state?: OrganizationDomainDataDtoState | (string & {});
 }
-const OrganizationDomainDataDto = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<OrganizationDomainDataDto>;
-
 /** The domains associated with the organization, including verification state. */
 export type CreateOrganizationsControllerRequestDomainDataList = Array<OrganizationDomainDataDto>;
-const CreateOrganizationsControllerRequestDomainDataList = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<CreateOrganizationsControllerRequestDomainDataList>;
-
 /** Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization. */
 export type CreateOrganizationsControllerRequestMetadataMap = { [key: string]: string | undefined };
-const CreateOrganizationsControllerRequestMetadataMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<CreateOrganizationsControllerRequestMetadataMap>;
-
 export interface CreateOrganizationsControllerRequest {
   /** The name of the organization. */
   name?: string;
@@ -3126,11 +2199,6 @@ export interface CreateOrganizationsControllerRequest {
   /** An external identifier for the Organization. */
   external_id?: string | null;
 }
-const CreateOrganizationsControllerRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<CreateOrganizationsControllerRequest>;
-
 /** Verification state of the domain. */
 export type OrganizationDomainsItemState =
   | "failed"
@@ -3138,12 +2206,8 @@ export type OrganizationDomainsItemState =
   | "pending"
   | "unverified"
   | "verified";
-const OrganizationDomainsItemState = S.String;
-
 /** Strategy used to verify the domain. */
 export type OrganizationDomainsItemVerificationStrategy = "dns" | "manual";
-const OrganizationDomainsItemVerificationStrategy = S.String;
-
 export interface OrganizationDomainsItem {
   /** Distinguishes the organization domain object. */
   object: string;
@@ -3166,23 +2230,10 @@ export interface OrganizationDomainsItem {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const OrganizationDomainsItem = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<OrganizationDomainsItem>;
-
 /** List of Organization Domains. */
 export type OrganizationDomainsList = Array<OrganizationDomainsItem>;
-const OrganizationDomainsList = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<OrganizationDomainsList>;
-
 /** Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization. */
 export type OrganizationMetadataMap = { [key: string]: string | undefined };
-const OrganizationMetadataMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<OrganizationMetadataMap>;
-
 export interface Organization {
   /** Distinguishes the Organization object. */
   object?: string;
@@ -3205,8 +2256,6 @@ export interface Organization {
   /** Whether the Organization allows profiles outside of its managed domains. */
   allow_profiles_outside_organization?: boolean;
 }
-const Organization = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<Organization>;
-
 /** The intent of the Admin Portal. - `sso` - Launch Admin Portal for creating SSO connections - `dsync` - Launch Admin Portal for creating Directory Sync connections - `audit_logs` - Launch Admin Portal for viewing Audit Logs - `log_streams` - Launch Admin Portal for creating Log Streams - `domain_verification` - Launch Admin Portal for Domain Verification - `certificate_renewal` - Launch Admin Portal for renewing SAML Certificates - `bring_your_own_key` - Launch Admin Portal for configuring Bring Your Own Key */
 export type CreatePortalSessionsControllerRequestIntent =
   | "sso"
@@ -3216,13 +2265,8 @@ export type CreatePortalSessionsControllerRequestIntent =
   | "domain_verification"
   | "certificate_renewal"
   | "bring_your_own_key";
-const CreatePortalSessionsControllerRequestIntent = S.String;
-
 /** The email addresses of the IT contacts to grant access to the Admin Portal for the given organization. Accepts up to 20 emails. */
 export type CreatePortalSessionsControllerRequestItContactEmailsList = Array<string>;
-const CreatePortalSessionsControllerRequestItContactEmailsList =
-  AgentTokenPermissionsList as any as S.Schema<CreatePortalSessionsControllerRequestItContactEmailsList>;
-
 export interface CreatePortalSessionsControllerRequest {
   /** The URL to go to when an admin clicks on your logo in the Admin Portal. If not specified, the return URL configured on the [Admin Portal](https://dashboard.workos.com/admin-portal) page will be used. */
   return_url?: string;
@@ -3235,26 +2279,14 @@ export interface CreatePortalSessionsControllerRequest {
   /** The email addresses of the IT contacts to grant access to the Admin Portal for the given organization. Accepts up to 20 emails. */
   it_contact_emails?: CreatePortalSessionsControllerRequestItContactEmailsList;
 }
-const CreatePortalSessionsControllerRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<CreatePortalSessionsControllerRequest>;
-
 export interface PortalLinkResponse {
   /** An ephemeral link to initiate the Admin Portal. */
   link?: string;
 }
-const PortalLinkResponse = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<PortalLinkResponse>;
-
 export interface CreateRedirectUrisControllerRequest {
   /** The redirect URI to create. */
   uri?: string;
 }
-const CreateRedirectUrisControllerRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<CreateRedirectUrisControllerRequest>;
-
 export interface RedirectUri {
   /** The object type. */
   object?: string;
@@ -3269,19 +2301,12 @@ export interface RedirectUri {
   /** The timestamp when the redirect URI was last updated. */
   updated_at?: string;
 }
-const RedirectUri = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<RedirectUri>;
-
 export interface CreateSamlIdpSigningCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
   connectionId: string;
   /** The PEM-encoded X.509 certificate. */
   value: string;
 }
-const CreateSamlIdpSigningCertificatesControllerRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<CreateSamlIdpSigningCertificatesControllerRequest>;
-
 export interface SamlIdpSigningCertificate {
   /** Distinguishes the SAML Identity Provider signing certificate object. */
   object: string;
@@ -3296,20 +2321,10 @@ export interface SamlIdpSigningCertificate {
   /** An ISO 8601 timestamp. */
   created_at: string;
 }
-const SamlIdpSigningCertificate = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<SamlIdpSigningCertificate>;
-
 export interface CreateSamlSpEncryptionCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
   connectionId: string;
 }
-const CreateSamlSpEncryptionCertificatesControllerRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<CreateSamlSpEncryptionCertificatesControllerRequest>;
-
 export interface SamlSpEncryptionCertificate {
   /** Distinguishes the SAML Service Provider encryption certificate object. */
   object: string;
@@ -3324,18 +2339,10 @@ export interface SamlSpEncryptionCertificate {
   /** An ISO 8601 timestamp. */
   created_at: string;
 }
-const SamlSpEncryptionCertificate =
-  SamlIdpSigningCertificate as any as S.Schema<SamlSpEncryptionCertificate>;
-
 export interface CreateSamlSpSigningCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
   connectionId: string;
 }
-const CreateSamlSpSigningCertificatesControllerRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<CreateSamlSpSigningCertificatesControllerRequest>;
-
 export interface SamlSpSigningCertificate {
   /** Distinguishes the SAML Service Provider signing certificate object. */
   object: string;
@@ -3350,26 +2357,14 @@ export interface SamlSpSigningCertificate {
   /** An ISO 8601 timestamp. */
   created_at: string;
 }
-const SamlSpSigningCertificate = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<SamlSpSigningCertificate>;
-
 export interface CreateTeamsControllerTeamRequest {
   /** The email address of the person who will administer the team. An invitation is sent to this address. */
   admin_email: string;
   /** Name of the team. */
   name: string;
 }
-const CreateTeamsControllerTeamRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<CreateTeamsControllerTeamRequest>;
-
 /** Whether the team can host production environments. `Active` means billing is set up. `Inactive` means a team admin must add a payment method in the WorkOS Dashboard. `Suspended` and `Deleting` mean the team can't be provisioned into. */
 export type TeamProductionState = "Active" | "Inactive" | "Suspended" | "Deleting";
-const TeamProductionState = S.String;
-
 export interface Team {
   /** Distinguishes the team object. */
   object: string;
@@ -3386,13 +2381,8 @@ export interface Team {
   /** The timestamp when the team was last updated. */
   updated_at: string;
 }
-const Team = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<Team>;
-
 /** The permission slugs to assign to the API key. Each permission must be enabled for user API keys. */
 export type CreateUserApiKeysControllerRequestPermissionsList = Array<string>;
-const CreateUserApiKeysControllerRequestPermissionsList =
-  AgentTokenPermissionsList as any as S.Schema<CreateUserApiKeysControllerRequestPermissionsList>;
-
 export interface CreateUserApiKeysControllerRequest {
   /** Unique identifier of the user. */
   userId: string;
@@ -3405,18 +2395,10 @@ export interface CreateUserApiKeysControllerRequest {
   /** The timestamp when the API key should expire. Must be a future timestamp. If omitted, the key does not expire. */
   expires_at?: string;
 }
-const CreateUserApiKeysControllerRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<CreateUserApiKeysControllerRequest>;
-
 /** The entity that owns the API Key. */
 export type UserApiKeyWithValueOwner = ApiKeyOwnerCase1;
 /** The permission slugs assigned to the API Key. */
 export type UserApiKeyWithValuePermissionsList = Array<string>;
-const UserApiKeyWithValuePermissionsList =
-  AgentTokenPermissionsList as any as S.Schema<UserApiKeyWithValuePermissionsList>;
-
 export interface UserApiKeyWithValue {
   /** Distinguishes the API Key object. */
   object: string;
@@ -3441,8 +2423,6 @@ export interface UserApiKeyWithValue {
   /** The full API Key value. Only returned once at creation time. */
   value: string;
 }
-const UserApiKeyWithValue = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<UserApiKeyWithValue>;
-
 /** The locale to use when rendering the invitation email. See [supported locales](/authkit/hosted-ui/localization). */
 export type CreateUserlandUserInvitesControllerRequestLocale =
   | "af"
@@ -3535,8 +2515,6 @@ export type CreateUserlandUserInvitesControllerRequestLocale =
   | "zh-HK"
   | "zh-TW"
   | "zu";
-const CreateUserlandUserInvitesControllerRequestLocale = S.String;
-
 export interface CreateUserlandUserInvitesControllerRequest {
   /** The email address of the recipient. */
   email?: string;
@@ -3551,15 +2529,8 @@ export interface CreateUserlandUserInvitesControllerRequest {
   /** The locale to use when rendering the invitation email. See [supported locales](/authkit/hosted-ui/localization). */
   locale?: CreateUserlandUserInvitesControllerRequestLocale | (string & {});
 }
-const CreateUserlandUserInvitesControllerRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<CreateUserlandUserInvitesControllerRequest>;
-
 /** The state of the invitation. */
 export type UserlandUserInviteState = "pending" | "accepted" | "expired" | "revoked";
-const UserlandUserInviteState = S.String;
-
 export interface UserlandUserInvite {
   /** Distinguishes the invitation object. */
   object?: string;
@@ -3592,13 +2563,8 @@ export interface UserlandUserInvite {
   /** The URL where the recipient can accept the invitation. */
   accept_invitation_url?: string;
 }
-const UserlandUserInvite = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<UserlandUserInvite>;
-
 /** An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`. */
 export type CreateUserlandUserOrganizationMembershipsControllerRequestRoleSlugsList = Array<string>;
-const CreateUserlandUserOrganizationMembershipsControllerRequestRoleSlugsList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<CreateUserlandUserOrganizationMembershipsControllerRequestRoleSlugsList>;
-
 export interface CreateUserlandUserOrganizationMembershipsControllerRequest {
   /** The ID of the [user](/reference/authkit/user). */
   user_id: string;
@@ -3609,40 +2575,19 @@ export interface CreateUserlandUserOrganizationMembershipsControllerRequest {
   /** An array of role identifiers. Limited to one role when Multiple Roles is disabled. Mutually exclusive with `role_slug`. */
   role_slugs?: CreateUserlandUserOrganizationMembershipsControllerRequestRoleSlugsList;
 }
-const CreateUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<CreateUserlandUserOrganizationMembershipsControllerRequest>;
-
 /** The status of the organization membership. One of `active`, `inactive`, or `pending`. */
 export type CreateUserlandUserOrganizationMembershipsControllerResponseStatus =
   | "active"
   | "inactive"
   | "pending";
-const CreateUserlandUserOrganizationMembershipsControllerResponseStatus = S.String;
-
 /** An object containing IdP-sourced attributes from the linked [Directory User](/reference/directory-sync/directory-user) or [SSO Profile](/reference/sso/profile). Directory User attributes take precedence when both are linked. */
 export type CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap = {
   [key: string]: unknown | undefined;
 };
-const CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    4,
-  ) as any as S.Schema<CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap>;
-
 /** The list of roles assigned to the user within the organization. */
 export type CreateUserlandUserOrganizationMembershipsControllerResponseRolesList = Array<SlimRole>;
-const CreateUserlandUserOrganizationMembershipsControllerResponseRolesList = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<CreateUserlandUserOrganizationMembershipsControllerResponseRolesList>;
-
 /** Object containing metadata key/value pairs associated with the user. */
 export type UserlandUserMetadataMap = { [key: string]: string | undefined };
-const UserlandUserMetadataMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UserlandUserMetadataMap>;
-
 /** The user object. */
 export interface UserlandUser {
   /** Distinguishes the user object. */
@@ -3674,8 +2619,6 @@ export interface UserlandUser {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const UserlandUser = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<UserlandUser>;
-
 export interface CreateUserlandUserOrganizationMembershipsControllerResponse {
   /** Distinguishes the organization membership object. */
   object: string;
@@ -3704,18 +2647,10 @@ export interface CreateUserlandUserOrganizationMembershipsControllerResponse {
   /** The user that belongs to the organization through this membership. */
   user: UserlandUser;
 }
-const CreateUserlandUserOrganizationMembershipsControllerResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<CreateUserlandUserOrganizationMembershipsControllerResponse>;
-
 /** Object containing additional key/value pairs collected with the waitlist entry. Supports up to 50 string pairs, with keys up to 40 characters and values up to 600 characters. Values are user-provided -- treat them as untrusted input when rendering or exporting. */
 export type CreateWaitlistsControllerEntryRequestAdditionalFieldsMap = {
   [key: string]: string | undefined;
 };
-const CreateWaitlistsControllerEntryRequestAdditionalFieldsMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<CreateWaitlistsControllerEntryRequestAdditionalFieldsMap>;
-
 export interface CreateWaitlistsControllerEntryRequest {
   /** The unique ID of the waitlist, or the literal `default` for the environment's default waitlist. Use `default` when adding the first entry -- the default waitlist is created automatically. */
   id: string;
@@ -3726,20 +2661,10 @@ export interface CreateWaitlistsControllerEntryRequest {
   /** Whether to send the waitlist confirmation email to the user. Defaults to `false`. No email is sent when the waitlist confirmation email is disabled in the environment, even if `send_confirmation_email` is `true`. */
   send_confirmation_email?: boolean;
 }
-const CreateWaitlistsControllerEntryRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<CreateWaitlistsControllerEntryRequest>;
-
 /** The state of the waitlist entry. */
 export type WaitlistEntryState = "pending" | "approved" | "denied";
-const WaitlistEntryState = S.String;
-
 /** Additional fields submitted when the user joined the waitlist. Values are user-provided -- treat them as untrusted input when rendering or exporting. */
 export type WaitlistEntryAdditionalFieldsMap = { [key: string]: string | undefined };
-const WaitlistEntryAdditionalFieldsMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<WaitlistEntryAdditionalFieldsMap>;
-
 export interface WaitlistEntry {
   /** The unique ID of the waitlist entry. */
   id: string;
@@ -3760,8 +2685,6 @@ export interface WaitlistEntry {
   /** Distinguishes the Waitlist Entry object. */
   object: string;
 }
-const WaitlistEntry = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<WaitlistEntry>;
-
 export type CreateWebhookEndpointsControllerRequestEventsItem =
   | "agent.blueprint.created"
   | "agent.blueprint.deleted"
@@ -3872,29 +2795,16 @@ export type CreateWebhookEndpointsControllerRequestEventsItem =
 export type CreateWebhookEndpointsControllerRequestEventsList = Array<
   CreateWebhookEndpointsControllerRequestEventsItem | (string & {})
 >;
-const CreateWebhookEndpointsControllerRequestEventsList =
-  AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<CreateWebhookEndpointsControllerRequestEventsList>;
-
 export interface CreateWebhookEndpointsControllerRequest {
   /** The HTTPS URL where webhooks will be sent. */
   endpoint_url?: string;
   /** The events that the Webhook Endpoint is subscribed to. */
   events?: CreateWebhookEndpointsControllerRequestEventsList;
 }
-const CreateWebhookEndpointsControllerRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<CreateWebhookEndpointsControllerRequest>;
-
 /** Whether the Webhook Endpoint is enabled or disabled. */
 export type WebhookEndpointJsonStatus = "enabled" | "disabled";
-const WebhookEndpointJsonStatus = S.String;
-
 /** The events that the Webhook Endpoint is subscribed to. */
 export type WebhookEndpointJsonEventsList = Array<string>;
-const WebhookEndpointJsonEventsList =
-  AgentTokenPermissionsList as any as S.Schema<WebhookEndpointJsonEventsList>;
-
 export interface WebhookEndpointJson {
   /** Distinguishes the Webhook Endpoint object. */
   object?: string;
@@ -3913,8 +2823,6 @@ export interface WebhookEndpointJson {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const WebhookEndpointJson = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<WebhookEndpointJson>;
-
 /** Who will own the connected account. `user` (the default) connects the user's own account. `organization` connects the organization's shared account and requires `organization_id`. */
 export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0ConnectionOwner =
   | "user"
@@ -3997,34 +2905,19 @@ export type DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBody 
   | DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase0
   | DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase1
   | DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBodyCase2;
-const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBody =
-  S.Unknown as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBody>;
-
 export interface DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest {
   /** The slug identifier of the provider (e.g., `github`, `slack`, `notion`). */
   slug: string;
   body: DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBody;
 }
-const DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest>;
-
 export interface DataIntegrationAuthorizeUrlResponse {
   /** The OAuth authorization URL to redirect the user to. */
   url?: string;
 }
-const DataIntegrationAuthorizeUrlResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<DataIntegrationAuthorizeUrlResponse>;
-
 /** Which connection to vend from. `user` (the default) vends the user's own connection and requires `user_id`. `organization` vends the organization's shared connection and requires `organization_id`. */
 export type DataIntegrationsControllerVendCredentialsRequestConnectionOwner =
   | "user"
   | "organization";
-const DataIntegrationsControllerVendCredentialsRequestConnectionOwner = S.String;
-
 export interface DataIntegrationsControllerVendCredentialsRequest {
   /** The identifier of the integration. */
   slug: string;
@@ -4041,11 +2934,6 @@ export interface DataIntegrationsControllerVendCredentialsRequest {
   /** Set to `true` to use the plural connection contract. If no `connected_account_id` is supplied and several connections match, the request returns `account_selection_required`. When omitted or `false`, only the compatibility connection is considered. */
   supports_multiple_connections?: boolean;
 }
-const DataIntegrationsControllerVendCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<DataIntegrationsControllerVendCredentialsRequest>;
-
 /** The scopes granted to the access token. Present for `oauth` and `client_credentials` credentials; absent for `api_key`. */
 export type DataIntegrationVendedCredentialCase0ScopesList = Array<string>;
 /** If the integration has requested scopes that aren't present on the access token, they're listed here. Present for `oauth` and `client_credentials` credentials; absent for `api_key`. */
@@ -4131,44 +3019,23 @@ export interface DataIntegrationCredentialsResponseCase1 {
 export type DataIntegrationCredentialsResponse =
   | DataIntegrationCredentialsResponseCase0
   | DataIntegrationCredentialsResponseCase1;
-const DataIntegrationCredentialsResponse =
-  S.Unknown as any as S.Schema<DataIntegrationCredentialsResponse>;
-
 export type DataIntegrationsControllerVendCredentialsResponse = DataIntegrationCredentialsResponse;
-const DataIntegrationsControllerVendCredentialsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<DataIntegrationsControllerVendCredentialsResponse>;
-
 export interface DeactivateUserlandUserOrganizationMembershipsControllerRequest {
   /** The unique ID of the organization membership. */
   id: string;
 }
-const DeactivateUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<DeactivateUserlandUserOrganizationMembershipsControllerRequest>;
-
 /** The status of the organization membership. One of `active`, `inactive`, or `pending`. */
 export type DeactivateUserlandUserOrganizationMembershipsControllerResponseStatus =
   | "active"
   | "inactive"
   | "pending";
-const DeactivateUserlandUserOrganizationMembershipsControllerResponseStatus = S.String;
-
 /** An object containing IdP-sourced attributes from the linked [Directory User](/reference/directory-sync/directory-user) or [SSO Profile](/reference/sso/profile). Directory User attributes take precedence when both are linked. */
 export type DeactivateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap = {
   [key: string]: unknown | undefined;
 };
-const DeactivateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap =
-  CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap as any as S.Schema<DeactivateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap>;
-
 /** The list of roles assigned to the user within the organization. */
 export type DeactivateUserlandUserOrganizationMembershipsControllerResponseRolesList =
   Array<SlimRole>;
-const DeactivateUserlandUserOrganizationMembershipsControllerResponseRolesList =
-  CreateUserlandUserOrganizationMembershipsControllerResponseRolesList as any as S.Schema<DeactivateUserlandUserOrganizationMembershipsControllerResponseRolesList>;
-
 export interface DeactivateUserlandUserOrganizationMembershipsControllerResponse {
   /** Distinguishes the organization membership object. */
   object: string;
@@ -4197,149 +3064,63 @@ export interface DeactivateUserlandUserOrganizationMembershipsControllerResponse
   /** The user that belongs to the organization through this membership. */
   user: UserlandUser;
 }
-const DeactivateUserlandUserOrganizationMembershipsControllerResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<DeactivateUserlandUserOrganizationMembershipsControllerResponse>;
-
 export interface DecryptJumpWireWebKeyControllerRequest {
   /** Base64-encoded encrypted data key to decrypt. */
   keys: string;
 }
-const DecryptJumpWireWebKeyControllerRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<DecryptJumpWireWebKeyControllerRequest>;
-
 export interface DecryptResponse {
   /** Base64-encoded decrypted data key. */
   data_key: string;
   /** Unique identifier of the decrypted data key. */
   id: string;
 }
-const DecryptResponse = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<DecryptResponse>;
-
 export interface DeleteAgentBlueprintsControllerRequest {
   /** The unique ID of the agent blueprint. */
   agent_blueprint_id: string;
 }
-const DeleteAgentBlueprintsControllerRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<DeleteAgentBlueprintsControllerRequest>;
-
 export interface DeleteAgentBlueprintsControllerResponse {}
-const DeleteAgentBlueprintsControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAgentBlueprintsControllerResponse>;
-
 export interface DeleteAgentInstancesControllerRequest {
   /** The unique ID of the agent instance. */
   agent_instance_id: string;
 }
-const DeleteAgentInstancesControllerRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<DeleteAgentInstancesControllerRequest>;
-
 export interface DeleteAgentInstancesControllerResponse {}
-const DeleteAgentInstancesControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAgentInstancesControllerResponse>;
-
 export interface DeleteApiKeysControllerRequest {
   /** The unique ID of the API key. */
   id: string;
 }
-const DeleteApiKeysControllerRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<DeleteApiKeysControllerRequest>;
-
 export interface DeleteApiKeysControllerResponse {}
-const DeleteApiKeysControllerResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<DeleteApiKeysControllerResponse>;
-
 export interface DeleteApplicationCredentialsControllerRequest {
   /** The unique ID of the client secret. */
   id: string;
 }
-const DeleteApplicationCredentialsControllerRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<DeleteApplicationCredentialsControllerRequest>;
-
 export interface DeleteApplicationCredentialsControllerResponse {}
-const DeleteApplicationCredentialsControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteApplicationCredentialsControllerResponse>;
-
 export interface DeleteApplicationsControllerRequest {
   /** The application ID or client ID of the Connect Application. */
   id: string;
 }
-const DeleteApplicationsControllerRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<DeleteApplicationsControllerRequest>;
-
 export interface DeleteApplicationsControllerResponse {}
-const DeleteApplicationsControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteApplicationsControllerResponse>;
-
 export interface DeleteAuthenticationFactorsControllerRequest {
   /** The unique ID of the Factor. */
   id: string;
 }
-const DeleteAuthenticationFactorsControllerRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<DeleteAuthenticationFactorsControllerRequest>;
-
 export interface DeleteAuthenticationFactorsControllerResponse {}
-const DeleteAuthenticationFactorsControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthenticationFactorsControllerResponse>;
-
 export interface DeleteAuthkitOauthResourcesControllerRequest {
   /** The ID of the MCP resource indicator to delete. */
   id: string;
 }
-const DeleteAuthkitOauthResourcesControllerRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<DeleteAuthkitOauthResourcesControllerRequest>;
-
 export interface DeleteAuthkitOauthResourcesControllerResponse {}
-const DeleteAuthkitOauthResourcesControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthkitOauthResourcesControllerResponse>;
-
 export interface DeleteAuthorizationOrganizationRolesControllerRequest {
   /** The ID of the organization. */
   organizationId: string;
   /** The slug of the role. */
   slug: string;
 }
-const DeleteAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<DeleteAuthorizationOrganizationRolesControllerRequest>;
-
 export interface DeleteAuthorizationOrganizationRolesControllerResponse {}
-const DeleteAuthorizationOrganizationRolesControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthorizationOrganizationRolesControllerResponse>;
-
 export interface DeleteAuthorizationPermissionsControllerRequest {
   /** A unique key to reference the permission. Must be lowercase and contain only letters, numbers, hyphens, underscores, colons, periods, and asterisks. */
   slug: string;
 }
-const DeleteAuthorizationPermissionsControllerRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<DeleteAuthorizationPermissionsControllerRequest>;
-
 export interface DeleteAuthorizationPermissionsControllerResponse {}
-const DeleteAuthorizationPermissionsControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthorizationPermissionsControllerResponse>;
-
 export interface DeleteAuthorizationResourcesByExternalIdControllerByExternalIdRequest {
   /** The ID of the organization that owns the resource. */
   organization_id: string;
@@ -4350,87 +3131,36 @@ export interface DeleteAuthorizationResourcesByExternalIdControllerByExternalIdR
   /** If true, deletes all descendant resources and role assignments. If not set and the resource has children or assignments, the request will fail. */
   cascade_delete?: boolean;
 }
-const DeleteAuthorizationResourcesByExternalIdControllerByExternalIdRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<DeleteAuthorizationResourcesByExternalIdControllerByExternalIdRequest>;
-
 export interface DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse {}
-const DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse>;
-
 export interface DeleteAuthorizationResourcesControllerRequest {
   /** The ID of the authorization resource. */
   resource_id: string;
   /** If true, deletes all descendant resources and role assignments. If not set and the resource has children or assignments, the request will fail. */
   cascade_delete?: boolean;
 }
-const DeleteAuthorizationResourcesControllerRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<DeleteAuthorizationResourcesControllerRequest>;
-
 export interface DeleteAuthorizationResourcesControllerResponse {}
-const DeleteAuthorizationResourcesControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthorizationResourcesControllerResponse>;
-
 export interface DeleteAuthorizedApplicationsControllerRequest {
   /** The ID of the user. */
   user_id: string;
   /** The ID or client ID of the application. */
   application_id: string;
 }
-const DeleteAuthorizedApplicationsControllerRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<DeleteAuthorizedApplicationsControllerRequest>;
-
 export interface DeleteAuthorizedApplicationsControllerResponse {}
-const DeleteAuthorizedApplicationsControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteAuthorizedApplicationsControllerResponse>;
-
 export interface DeleteConnectionsControllerRequest {
   /** Unique identifier for the Connection. */
   id: string;
 }
-const DeleteConnectionsControllerRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<DeleteConnectionsControllerRequest>;
-
 export interface DeleteConnectionsControllerResponse {}
-const DeleteConnectionsControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteConnectionsControllerResponse>;
-
 export interface DeleteDataIntegrationsManagementControllerDataIntegrationRequest {
   /** The slug identifier of the data integration. */
   slug: string;
 }
-const DeleteDataIntegrationsManagementControllerDataIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<DeleteDataIntegrationsManagementControllerDataIntegrationRequest>;
-
 export interface DeleteDataIntegrationsManagementControllerDataIntegrationResponse {}
-const DeleteDataIntegrationsManagementControllerDataIntegrationResponse =
-  DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<DeleteDataIntegrationsManagementControllerDataIntegrationResponse>;
-
 export interface DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationRequest {
   /** The slug identifier of the data integration. */
   slug: string;
 }
-const DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationRequest =
-  /*@__PURE__*/ __L.at(
-    __c25,
-    4,
-  ) as any as S.Schema<DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationRequest>;
-
 export interface DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationResponse {}
-const DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationResponse =
-  DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationResponse>;
-
 export interface DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest {
   /** An [Organization](/reference/organization) identifier. */
   organization_id: string;
@@ -4441,16 +3171,7 @@ export interface DeleteDataIntegrationsOrganizationControllerOrganizationDataIns
   /** A [connected account](/reference/pipes/connected-account) identifier. Use this to select the connection to delete. */
   connected_account_id?: string;
 }
-const DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest =
-  /*@__PURE__*/ __L.at(
-    __c25,
-    5,
-  ) as any as S.Schema<DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest>;
-
 export interface DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationResponse {}
-const DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationResponse =
-  DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationResponse>;
-
 export interface DeleteDataIntegrationsUserManagementControllerUserDataInstallationRequest {
   /** A [User](/reference/authkit/user) identifier. */
   user_id: string;
@@ -4463,232 +3184,100 @@ export interface DeleteDataIntegrationsUserManagementControllerUserDataInstallat
   /** A [connected account](/reference/pipes/connected-account) identifier. Use this to select the connection to delete. */
   connected_account_id?: string;
 }
-const DeleteDataIntegrationsUserManagementControllerUserDataInstallationRequest =
-  /*@__PURE__*/ __L.at(
-    __c25,
-    6,
-  ) as any as S.Schema<DeleteDataIntegrationsUserManagementControllerUserDataInstallationRequest>;
-
 export interface DeleteDataIntegrationsUserManagementControllerUserDataInstallationResponse {}
-const DeleteDataIntegrationsUserManagementControllerUserDataInstallationResponse =
-  DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<DeleteDataIntegrationsUserManagementControllerUserDataInstallationResponse>;
-
 export interface DeleteDirectoriesControllerDirectoryRequest {
   /** Unique identifier for the Directory. */
   id: string;
 }
-const DeleteDirectoriesControllerDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<DeleteDirectoriesControllerDirectoryRequest>;
-
 export interface DeleteDirectoriesControllerDirectoryResponse {}
-const DeleteDirectoriesControllerDirectoryResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteDirectoriesControllerDirectoryResponse>;
-
 export interface DeleteFlagTargetsControllerTargetRequest {
   /** The unique slug identifier of the feature flag. */
   slug: string;
   /** The resource ID in format "user_<id>" or "org_<id>". */
   resourceId: string;
 }
-const DeleteFlagTargetsControllerTargetRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<DeleteFlagTargetsControllerTargetRequest>;
-
 export interface DeleteFlagTargetsControllerTargetResponse {}
-const DeleteFlagTargetsControllerTargetResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteFlagTargetsControllerTargetResponse>;
-
 export interface DeleteGroupsControllerRequest {
   /** The ID of the organization. */
   organizationId: string;
   /** The ID of the group. */
   groupId: string;
 }
-const DeleteGroupsControllerRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<DeleteGroupsControllerRequest>;
-
 export interface DeleteGroupsControllerResponse {}
-const DeleteGroupsControllerResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<DeleteGroupsControllerResponse>;
-
 export interface DeleteItContactsControllerRequest {
   /** The ID of the organization. */
   organization_id: string;
   /** The ID of the IT contact. */
   contact_id: string;
 }
-const DeleteItContactsControllerRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<DeleteItContactsControllerRequest>;
-
 export interface DeleteItContactsControllerResponse {}
-const DeleteItContactsControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteItContactsControllerResponse>;
-
 export interface DeleteJumpWireWebDataVaultControllerRequest {
   /** Unique identifier of the object. */
   id: string;
   /** Expected current version for optimistic locking. */
   version_check?: string;
 }
-const DeleteJumpWireWebDataVaultControllerRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<DeleteJumpWireWebDataVaultControllerRequest>;
-
 export interface DeleteObjectResponse {
   /** Name of the deleted object. */
   name: string;
   /** Whether the deletion succeeded. */
   success: boolean;
 }
-const DeleteObjectResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<DeleteObjectResponse>;
-
 export interface DeleteOrganizationDomainsControllerRequest {
   /** Unique identifier of the organization domain. */
   id: string;
 }
-const DeleteOrganizationDomainsControllerRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<DeleteOrganizationDomainsControllerRequest>;
-
 export interface DeleteOrganizationDomainsControllerResponse {}
-const DeleteOrganizationDomainsControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteOrganizationDomainsControllerResponse>;
-
 export interface DeleteOrganizationsControllerOrganizationRequest {
   /** Unique identifier of the Organization. */
   id: string;
 }
-const DeleteOrganizationsControllerOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<DeleteOrganizationsControllerOrganizationRequest>;
-
 export interface DeleteOrganizationsControllerOrganizationResponse {}
-const DeleteOrganizationsControllerOrganizationResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteOrganizationsControllerOrganizationResponse>;
-
 export interface DeleteRedirectUrisControllerRequest {
   /** The ID of the redirect URI to delete. */
   id: string;
 }
-const DeleteRedirectUrisControllerRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<DeleteRedirectUrisControllerRequest>;
-
 export interface DeleteRedirectUrisControllerResponse {}
-const DeleteRedirectUrisControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteRedirectUrisControllerResponse>;
-
 export interface DeleteSamlIdpSigningCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
   connectionId: string;
   /** Unique identifier for the Identity Provider signing certificate. */
   certificateId: string;
 }
-const DeleteSamlIdpSigningCertificatesControllerRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<DeleteSamlIdpSigningCertificatesControllerRequest>;
-
 export interface DeleteSamlIdpSigningCertificatesControllerResponse {}
-const DeleteSamlIdpSigningCertificatesControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteSamlIdpSigningCertificatesControllerResponse>;
-
 export interface DeleteSamlSpEncryptionCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
   connectionId: string;
   /** Unique identifier for the Service Provider encryption key pair. WorkOS holds the corresponding private key, which is never exposed. */
   certificateId: string;
 }
-const DeleteSamlSpEncryptionCertificatesControllerRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<DeleteSamlSpEncryptionCertificatesControllerRequest>;
-
 export interface DeleteSamlSpEncryptionCertificatesControllerResponse {}
-const DeleteSamlSpEncryptionCertificatesControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteSamlSpEncryptionCertificatesControllerResponse>;
-
 export interface DeleteSamlSpSigningCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
   connectionId: string;
   /** Unique identifier for the Service Provider signing key pair. WorkOS holds the corresponding private key, which is never exposed. */
   certificateId: string;
 }
-const DeleteSamlSpSigningCertificatesControllerRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<DeleteSamlSpSigningCertificatesControllerRequest>;
-
 export interface DeleteSamlSpSigningCertificatesControllerResponse {}
-const DeleteSamlSpSigningCertificatesControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteSamlSpSigningCertificatesControllerResponse>;
-
 export interface DeleteUserlandUserOrganizationMembershipsControllerRequest {
   /** The unique ID of the organization membership. */
   id: string;
 }
-const DeleteUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<DeleteUserlandUserOrganizationMembershipsControllerRequest>;
-
 export interface DeleteUserlandUserOrganizationMembershipsControllerResponse {}
-const DeleteUserlandUserOrganizationMembershipsControllerResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<DeleteUserlandUserOrganizationMembershipsControllerResponse>;
-
 export interface DeleteWaitlistEntriesControllerRequest {
   /** The unique ID of the waitlist entry. */
   id: string;
 }
-const DeleteWaitlistEntriesControllerRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<DeleteWaitlistEntriesControllerRequest>;
-
 export interface DeleteWaitlistEntriesControllerResponse {}
-const DeleteWaitlistEntriesControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteWaitlistEntriesControllerResponse>;
-
 export interface DeleteWebhookEndpointsControllerRequest {
   /** Unique identifier of the Webhook Endpoint. */
   id: string;
 }
-const DeleteWebhookEndpointsControllerRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<DeleteWebhookEndpointsControllerRequest>;
-
 export interface DeleteWebhookEndpointsControllerResponse {}
-const DeleteWebhookEndpointsControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<DeleteWebhookEndpointsControllerResponse>;
-
 export interface DescribeJumpWireWebDataVaultControllerRequest {
   /** Unique identifier of the object. */
   id: string;
 }
-const DescribeJumpWireWebDataVaultControllerRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<DescribeJumpWireWebDataVaultControllerRequest>;
-
 /** An encrypted object's metadata (value excluded). */
 export interface ObjectWithoutValue {
   /** Unique identifier of the object. */
@@ -4697,17 +3286,10 @@ export interface ObjectWithoutValue {
   /** Unique name of the object. */
   name: string;
 }
-const ObjectWithoutValue = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<ObjectWithoutValue>;
-
 export interface DirectoriesControllerFindRequest {
   /** Unique identifier for the Directory. */
   id: string;
 }
-const DirectoriesControllerFindRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<DirectoriesControllerFindRequest>;
-
 /** The type of external Directory Provider integrated with. */
 export type DirectoryType =
   | "azure scim v2.0"
@@ -4731,8 +3313,6 @@ export type DirectoryType =
   | "sftp"
   | "sftp workday"
   | "workday";
-const DirectoryType = S.String;
-
 /** Describes whether the Directory has been successfully connected to an external provider. */
 export type DirectoryState =
   | "linked"
@@ -4740,8 +3320,6 @@ export type DirectoryState =
   | "invalid_credentials"
   | "unlinked"
   | "deleting";
-const DirectoryState = S.String;
-
 /** Counts of active and inactive directory users. */
 export interface DirectoryMetadataUsers {
   /** Count of active directory users. */
@@ -4749,11 +3327,6 @@ export interface DirectoryMetadataUsers {
   /** Count of inactive directory users. */
   inactive: number;
 }
-const DirectoryMetadataUsers = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<DirectoryMetadataUsers>;
-
 /** Aggregate counts of directory users and groups synced from the provider. */
 export interface DirectoryMetadata {
   /** Counts of active and inactive directory users. */
@@ -4761,8 +3334,6 @@ export interface DirectoryMetadata {
   /** Count of directory groups. */
   groups: number;
 }
-const DirectoryMetadata = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<DirectoryMetadata>;
-
 export interface Directory {
   /** Distinguishes the Directory object. */
   object?: string;
@@ -4787,22 +3358,12 @@ export interface Directory {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const Directory = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<Directory>;
-
 export interface DirectoryGroupsControllerFindRequest {
   /** Unique identifier for the Directory Group. */
   id: string;
 }
-const DirectoryGroupsControllerFindRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<DirectoryGroupsControllerFindRequest>;
-
 /** The raw attributes received from the directory provider. */
 export type DirectoryGroupRawAttributesMap = { [key: string]: unknown | undefined };
-const DirectoryGroupRawAttributesMap =
-  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<DirectoryGroupRawAttributesMap>;
-
 export interface DirectoryGroup {
   /** Distinguishes the Directory Group object. */
   object?: string;
@@ -4823,17 +3384,10 @@ export interface DirectoryGroup {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const DirectoryGroup = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<DirectoryGroup>;
-
 export interface DirectoryUsersControllerFindRequest {
   /** Unique identifier for the Directory User. */
   id: string;
 }
-const DirectoryUsersControllerFindRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<DirectoryUsersControllerFindRequest>;
-
 export interface DirectoryUserWithGroupsEmailsItem {
   /** Whether this is the primary email address. */
   primary?: boolean;
@@ -4842,46 +3396,18 @@ export interface DirectoryUserWithGroupsEmailsItem {
   /** The email address value. */
   value?: string | null;
 }
-const DirectoryUserWithGroupsEmailsItem = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<DirectoryUserWithGroupsEmailsItem>;
-
 /** A list of email addresses for the user. */
 export type DirectoryUserWithGroupsEmailsList = Array<DirectoryUserWithGroupsEmailsItem>;
-const DirectoryUserWithGroupsEmailsList = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<DirectoryUserWithGroupsEmailsList>;
-
 /** The state of the user. */
 export type DirectoryUserWithGroupsState = "active" | "suspended" | "inactive";
-const DirectoryUserWithGroupsState = S.String;
-
 /** The raw attributes received from the directory provider. */
 export type DirectoryUserWithGroupsRawAttributesMap = { [key: string]: unknown | undefined };
-const DirectoryUserWithGroupsRawAttributesMap =
-  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<DirectoryUserWithGroupsRawAttributesMap>;
-
 /** An object containing the custom attribute mapping for the Directory Provider. */
 export type DirectoryUserWithGroupsCustomAttributesMap = { [key: string]: unknown | undefined };
-const DirectoryUserWithGroupsCustomAttributesMap =
-  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<DirectoryUserWithGroupsCustomAttributesMap>;
-
 /** All roles assigned to the user. */
 export type DirectoryUserWithGroupsRolesList = Array<SlimRole>;
-const DirectoryUserWithGroupsRolesList = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<DirectoryUserWithGroupsRolesList>;
-
 /** The directory groups the user belongs to. Deprecated: starting May 1, 2026, this field returns an empty array by default for newly created teams. Existing teams currently depending on this field should migrate to the new access pattern for better throughput performance -- the field is unbounded by user, so users with many group memberships produce large, slow response payloads. Use the List Directory Groups endpoint with a `user` filter to fetch a user's group memberships. */
 export type DirectoryUserWithGroupsGroupsList = Array<DirectoryGroup>;
-const DirectoryUserWithGroupsGroupsList = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<DirectoryUserWithGroupsGroupsList>;
-
 export interface DirectoryUserWithGroups {
   /** Distinguishes the Directory User object. */
   object?: string;
@@ -4923,20 +3449,10 @@ export interface DirectoryUserWithGroups {
   /** The directory groups the user belongs to. Deprecated: starting May 1, 2026, this field returns an empty array by default for newly created teams. Existing teams currently depending on this field should migrate to the new access pattern for better throughput performance -- the field is unbounded by user, so users with many group memberships produce large, slow response payloads. Use the List Directory Groups endpoint with a `user` filter to fetch a user's group memberships. */
   groups?: DirectoryUserWithGroupsGroupsList;
 }
-const DirectoryUserWithGroups = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<DirectoryUserWithGroups>;
-
 export interface DisableFeatureFlagsControllerFlagRequest {
   /** A unique key to reference the Feature Flag. */
   slug: string;
 }
-const DisableFeatureFlagsControllerFlagRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<DisableFeatureFlagsControllerFlagRequest>;
-
 export interface DisableFeatureFlagsControllerFlagResponseOwner {
   /** The email address of the flag owner. */
   email: string;
@@ -4945,16 +3461,8 @@ export interface DisableFeatureFlagsControllerFlagResponseOwner {
   /** The last name of the flag owner. */
   last_name: string | null;
 }
-const DisableFeatureFlagsControllerFlagResponseOwner = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<DisableFeatureFlagsControllerFlagResponseOwner>;
-
 /** Labels assigned to the Feature Flag for categorizing and filtering. */
 export type DisableFeatureFlagsControllerFlagResponseTagsList = Array<string>;
-const DisableFeatureFlagsControllerFlagResponseTagsList =
-  AgentTokenPermissionsList as any as S.Schema<DisableFeatureFlagsControllerFlagResponseTagsList>;
-
 export interface DisableFeatureFlagsControllerFlagResponse {
   /** Distinguishes the Feature Flag object. */
   object: string;
@@ -4979,20 +3487,10 @@ export interface DisableFeatureFlagsControllerFlagResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const DisableFeatureFlagsControllerFlagResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<DisableFeatureFlagsControllerFlagResponse>;
-
 export interface EnableFeatureFlagsControllerFlagRequest {
   /** A unique key to reference the Feature Flag. */
   slug: string;
 }
-const EnableFeatureFlagsControllerFlagRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<EnableFeatureFlagsControllerFlagRequest>;
-
 export type EnableFeatureFlagsControllerFlagResponseOwner =
   DisableFeatureFlagsControllerFlagResponseOwner;
 /** Labels assigned to the Feature Flag for categorizing and filtering. */
@@ -5021,32 +3519,17 @@ export interface EnableFeatureFlagsControllerFlagResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const EnableFeatureFlagsControllerFlagResponse =
-  DisableFeatureFlagsControllerFlagResponse as any as S.Schema<EnableFeatureFlagsControllerFlagResponse>;
-
 export interface ExportAuditLogExportsControllerRequest {
   /** The unique ID of the Audit Log Export. */
   auditLogExportId: string;
 }
-const ExportAuditLogExportsControllerRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<ExportAuditLogExportsControllerRequest>;
-
 export interface FeatureFlagsControllerFindBySlugRequest {
   /** A unique key to reference the Feature Flag. */
   slug: string;
 }
-const FeatureFlagsControllerFindBySlugRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<FeatureFlagsControllerFindBySlugRequest>;
-
 export type FlagOwner = DisableFeatureFlagsControllerFlagResponseOwner;
 /** Labels assigned to the Feature Flag for categorizing and filtering. */
 export type FlagTagsList = Array<string>;
-const FlagTagsList = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<FlagTagsList>;
-
 export interface Flag {
   /** Distinguishes the Feature Flag object. */
   object?: string;
@@ -5071,17 +3554,10 @@ export interface Flag {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const Flag = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<Flag>;
-
 export interface GetAgentAdminControllerRegistrationRequest {
   /** The unique ID of the agent registration. */
   id: string;
 }
-const GetAgentAdminControllerRegistrationRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<GetAgentAdminControllerRegistrationRequest>;
-
 /** The agent identity associated with this registration. */
 export interface AgentRegistrationAgentIdentity {
   /** Unique identifier of the agent identity. */
@@ -5093,19 +3569,10 @@ export interface AgentRegistrationAgentIdentity {
   /** The timestamp when the agent identity was last updated. */
   updated_at: string;
 }
-const AgentRegistrationAgentIdentity = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<AgentRegistrationAgentIdentity>;
-
 /** The current verification status of the registration. */
 export type AgentRegistrationStatus = "unverified" | "verified" | "expired" | "revoked";
-const AgentRegistrationStatus = S.String;
-
 /** The kind of agent registration. */
 export type AgentRegistrationKind = "anonymous" | "service_auth" | "identity_assertion";
-const AgentRegistrationKind = S.String;
-
 export interface AgentRegistrationClaimClaimCompletion {
   /** Unique identifier of the claim completion. */
   id: string;
@@ -5118,11 +3585,6 @@ export interface AgentRegistrationClaimClaimCompletion {
   /** The timestamp when the claim was completed. */
   claimed_at: string;
 }
-const AgentRegistrationClaimClaimCompletion = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<AgentRegistrationClaimClaimCompletion>;
-
 export interface AgentRegistrationClaim {
   /** Unique identifier of the claim. */
   id: string;
@@ -5135,11 +3597,6 @@ export interface AgentRegistrationClaim {
   /** The timestamp when the claim expires. */
   expires_at: string;
 }
-const AgentRegistrationClaim = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<AgentRegistrationClaim>;
-
 export interface AgentRegistration {
   /** Unique identifier of the agent registration. */
   id: string;
@@ -5158,30 +3615,16 @@ export interface AgentRegistration {
   /** The timestamp when the registration was last updated. */
   updated_at: string;
 }
-const AgentRegistration = /*@__PURE__*/ __L.at(__c31, 2) as any as S.Schema<AgentRegistration>;
-
 export interface GetAgentBlueprintsControllerRequest {
   /** The unique ID of the agent blueprint. */
   agent_blueprint_id: string;
 }
-const GetAgentBlueprintsControllerRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<GetAgentBlueprintsControllerRequest>;
-
 export interface GetAgentInstancesControllerRequest {
   /** The unique ID of the agent instance. */
   agent_instance_id: string;
 }
-const GetAgentInstancesControllerRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<GetAgentInstancesControllerRequest>;
-
 /** Whether the instance acts on behalf of a specific user (`delegated`) or as itself (`autonomous`). */
 export type AgentInstanceType = "delegated" | "autonomous";
-const AgentInstanceType = S.String;
-
 export interface AgentInstance {
   /** Distinguishes the agent instance object. */
   object: string;
@@ -5200,21 +3643,12 @@ export interface AgentInstance {
   /** Timestamp when the agent instance was last updated. */
   updated_at: string;
 }
-const AgentInstance = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<AgentInstance>;
-
 export interface GetAgentInstanceSessionsControllerRequest {
   /** The unique ID of the agent instance session. */
   agent_instance_session_id: string;
 }
-const GetAgentInstanceSessionsControllerRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<GetAgentInstanceSessionsControllerRequest>;
-
 /** Derived from `revoked_at` and `expires_at` at read time; a revoked session stays `revoked` even after it expires. */
 export type AgentInstanceSessionStatus = "active" | "revoked" | "expired";
-const AgentInstanceSessionStatus = S.String;
-
 export interface AgentInstanceSession {
   /** Distinguishes the agent instance session object. */
   object: string;
@@ -5233,24 +3667,12 @@ export interface AgentInstanceSession {
   /** Timestamp when the session was last updated. */
   updated_at: string;
 }
-const AgentInstanceSession = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<AgentInstanceSession>;
-
 export interface GetAuthenticationFactorsControllerRequest {
   /** The unique ID of the Factor. */
   id: string;
 }
-const GetAuthenticationFactorsControllerRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<GetAuthenticationFactorsControllerRequest>;
-
 /** The type of the factor to enroll. */
 export type AuthenticationFactorType = "generic_otp" | "sms" | "totp" | "webauthn";
-const AuthenticationFactorType = S.String;
-
 /** SMS-based authentication factor details. */
 export type AuthenticationFactorSms = AuthenticationFactorEnrolledSms;
 /** TOTP-based authentication factor details. */
@@ -5260,11 +3682,6 @@ export interface AuthenticationFactorTotp {
   /** The user's account name displayed in their authenticator app. Defaults to the user's email. */
   user: string;
 }
-const AuthenticationFactorTotp = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<AuthenticationFactorTotp>;
-
 export interface AuthenticationFactor {
   /** Distinguishes the authentication factor object. */
   object?: string;
@@ -5283,44 +3700,24 @@ export interface AuthenticationFactor {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const AuthenticationFactor = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<AuthenticationFactor>;
-
 export interface GetAuthorizationGroupRoleAssignmentsControllerRequest {
   /** The ID of the group. */
   group_id: string;
   /** The ID of the group role assignment. */
   role_assignment_id: string;
 }
-const GetAuthorizationGroupRoleAssignmentsControllerRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<GetAuthorizationGroupRoleAssignmentsControllerRequest>;
-
 export interface GetAuthorizationOrganizationRolesControllerRequest {
   /** The ID of the organization. */
   organizationId: string;
   /** The slug of the role. */
   slug: string;
 }
-const GetAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<GetAuthorizationOrganizationRolesControllerRequest>;
-
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type GetAuthorizationOrganizationRolesControllerResponseType =
   | "EnvironmentRole"
   | "OrganizationRole";
-const GetAuthorizationOrganizationRolesControllerResponseType = S.String;
-
 /** The permission slugs assigned to the role. */
 export type GetAuthorizationOrganizationRolesControllerResponsePermissionsList = Array<string>;
-const GetAuthorizationOrganizationRolesControllerResponsePermissionsList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<GetAuthorizationOrganizationRolesControllerResponsePermissionsList>;
-
 export interface GetAuthorizationOrganizationRolesControllerResponse {
   /** A unique slug for the role. */
   slug: string;
@@ -5343,11 +3740,6 @@ export interface GetAuthorizationOrganizationRolesControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const GetAuthorizationOrganizationRolesControllerResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<GetAuthorizationOrganizationRolesControllerResponse>;
-
 export interface GetAuthorizationResourcesByExternalIdControllerByExternalIdRequest {
   /** The ID of the organization that owns the resource. */
   organization_id: string;
@@ -5356,28 +3748,14 @@ export interface GetAuthorizationResourcesByExternalIdControllerByExternalIdRequ
   /** An identifier you provide to reference the resource in your system. */
   external_id: string;
 }
-const GetAuthorizationResourcesByExternalIdControllerByExternalIdRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<GetAuthorizationResourcesByExternalIdControllerByExternalIdRequest>;
-
 export interface GetAuthorizationRolesControllerRequest {
   /** The slug of the environment role. */
   slug: string;
 }
-const GetAuthorizationRolesControllerRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<GetAuthorizationRolesControllerRequest>;
-
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type RoleType = "EnvironmentRole" | "OrganizationRole";
-const RoleType = S.String;
-
 /** The permission slugs assigned to the role. */
 export type RolePermissionsList = Array<string>;
-const RolePermissionsList = AgentTokenPermissionsList as any as S.Schema<RolePermissionsList>;
-
 export interface Role {
   /** A unique slug for the role. */
   slug?: string;
@@ -5400,14 +3778,10 @@ export interface Role {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const Role = /*@__PURE__*/ __L.at(__c33, 0) as any as S.Schema<Role>;
-
 /** Which connection to vend from. `user` (the default) vends the user's own connection and requires `user_id`. `organization` vends the organization's shared connection and requires `organization_id`. */
 export type GetDataIntegrationsControllerUserlandUserTokenRequestConnectionOwner =
   | "user"
   | "organization";
-const GetDataIntegrationsControllerUserlandUserTokenRequestConnectionOwner = S.String;
-
 export interface GetDataIntegrationsControllerUserlandUserTokenRequest {
   /** The identifier of the integration. */
   slug: string;
@@ -5424,11 +3798,6 @@ export interface GetDataIntegrationsControllerUserlandUserTokenRequest {
   /** Set to `true` to use the plural connection contract. If no `connected_account_id` is supplied and several connections match, the request returns `account_selection_required`. When omitted or `false`, only the compatibility connection is considered. */
   supports_multiple_connections?: boolean;
 }
-const GetDataIntegrationsControllerUserlandUserTokenRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<GetDataIntegrationsControllerUserlandUserTokenRequest>;
-
 /** The scopes granted to the access token. */
 export type DataIntegrationAccessTokenResponseCase0AccessTokenScopesList = Array<string>;
 /** If the integration has requested scopes that aren't present on the access token, they're listed here. */
@@ -5465,35 +3834,16 @@ export interface DataIntegrationAccessTokenResponseCase1 {
 export type DataIntegrationAccessTokenResponse =
   | DataIntegrationAccessTokenResponseCase0
   | DataIntegrationAccessTokenResponseCase1;
-const DataIntegrationAccessTokenResponse =
-  S.Unknown as any as S.Schema<DataIntegrationAccessTokenResponse>;
-
 export type GetDataIntegrationsControllerUserlandUserTokenResponse =
   DataIntegrationAccessTokenResponse;
-const GetDataIntegrationsControllerUserlandUserTokenResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<GetDataIntegrationsControllerUserlandUserTokenResponse>;
-
 export interface GetDataIntegrationsManagementControllerDataIntegrationRequest {
   /** The slug identifier of the data integration. */
   slug: string;
 }
-const GetDataIntegrationsManagementControllerDataIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<GetDataIntegrationsManagementControllerDataIntegrationRequest>;
-
 export interface GetDataIntegrationsManagementControllerOrganizationDataIntegrationRequest {
   /** The slug identifier of the data integration. */
   slug: string;
 }
-const GetDataIntegrationsManagementControllerOrganizationDataIntegrationRequest =
-  /*@__PURE__*/ __L.at(
-    __c33,
-    4,
-  ) as any as S.Schema<GetDataIntegrationsManagementControllerOrganizationDataIntegrationRequest>;
-
 export interface GetDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest {
   /** An [Organization](/reference/organization) identifier. */
   organization_id: string;
@@ -5504,34 +3854,16 @@ export interface GetDataIntegrationsOrganizationControllerOrganizationDataInstal
   /** A [connected account](/reference/pipes/connected-account) identifier. Use this to select a specific connection when the organization has several for this provider. */
   connected_account_id?: string;
 }
-const GetDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest =
-  /*@__PURE__*/ __L.at(
-    __c33,
-    5,
-  ) as any as S.Schema<GetDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest>;
-
 /** Whether this row is the compatibility connection visible to undeclared clients or a standard peer for plural-aware clients. The role does not indicate preference or creation order. */
 export type ConnectedAccountConnectionRole = "compatibility" | "standard";
-const ConnectedAccountConnectionRole = S.String;
-
 /** The OAuth scopes granted for this connection. */
 export type ConnectedAccountScopesList = Array<string>;
-const ConnectedAccountScopesList =
-  AgentTokenPermissionsList as any as S.Schema<ConnectedAccountScopesList>;
-
 /** The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent. */
 export type ConnectedAccountAuthMethod = "oauth" | "api_key" | "client_credentials";
-const ConnectedAccountAuthMethod = S.String;
-
 /** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
 export type ConnectedAccountConfigMap = { [key: string]: string | undefined };
-const ConnectedAccountConfigMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<ConnectedAccountConfigMap>;
-
 /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
 export type ConnectedAccountState = "connected" | "needs_reauthorization" | "disconnected";
-const ConnectedAccountState = S.String;
-
 export interface ConnectedAccount {
   /** Distinguishes the connected account object. */
   object?: string;
@@ -5566,24 +3898,13 @@ export interface ConnectedAccount {
   /** The timestamp when the connection was last updated. */
   updated_at?: string;
 }
-const ConnectedAccount = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<ConnectedAccount>;
-
 export interface GetDataIntegrationsOrganizationControllerOrganizationDataIntegrationsRequest {
   /** An [Organization](/reference/organization) identifier to list providers and connected accounts for. */
   organization_id: string;
   /** Set to `true` to use the plural connection contract. When omitted or `false`, only the compatibility connection is considered. */
   supports_multiple_connections?: boolean;
 }
-const GetDataIntegrationsOrganizationControllerOrganizationDataIntegrationsRequest =
-  /*@__PURE__*/ __L.at(
-    __c33,
-    7,
-  ) as any as S.Schema<GetDataIntegrationsOrganizationControllerOrganizationDataIntegrationsRequest>;
-
 export type DataIntegrationsListResponseDataItemScopesList = Array<string>;
-const DataIntegrationsListResponseDataItemScopesList =
-  AgentTokenPermissionsList as any as S.Schema<DataIntegrationsListResponseDataItemScopesList>;
-
 export type DataIntegrationsListResponseDataItemAuthMethodsItem =
   | "oauth"
   | "api_key"
@@ -5591,49 +3912,30 @@ export type DataIntegrationsListResponseDataItemAuthMethodsItem =
 /** The authentication methods supported by this provider (`oauth`, `api_key`, `client_credentials`, or a combination). Defaults to `["oauth"]` if absent. */
 export type DataIntegrationsListResponseDataItemAuthMethodsList =
   Array<DataIntegrationsListResponseDataItemAuthMethodsItem>;
-const DataIntegrationsListResponseDataItemAuthMethodsList =
-  AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<DataIntegrationsListResponseDataItemAuthMethodsList>;
-
 /** Who owns connections made through this provider: `user` for connections owned by individual users, or `organization` for a connection shared by every member of the organization. A provider row can exist before any connected account does. */
 export type DataIntegrationsListResponseDataItemConnectionOwner = "user" | "organization";
-const DataIntegrationsListResponseDataItemConnectionOwner = S.String;
-
 /** Use `connection_owner` instead. Legacy spelling of the same value: `userland_user` corresponds to `connection_owner: "user"` and `organization` to `connection_owner: "organization"`. */
 export type DataIntegrationsListResponseDataItemOwnership = "userland_user" | "organization";
-const DataIntegrationsListResponseDataItemOwnership = S.String;
-
 /** Whether this row is the compatibility connection visible to undeclared clients or a standard peer for plural-aware clients. The role does not indicate preference or creation order. */
 export type DataIntegrationsListResponseDataItemConnectedAccountConnectionRole =
   | "compatibility"
   | "standard";
-const DataIntegrationsListResponseDataItemConnectedAccountConnectionRole = S.String;
-
 /** The OAuth scopes granted for this connection. */
 export type DataIntegrationsListResponseDataItemConnectedAccountScopesList = Array<string>;
-const DataIntegrationsListResponseDataItemConnectedAccountScopesList =
-  AgentTokenPermissionsList as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountScopesList>;
-
 /** The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent. */
 export type DataIntegrationsListResponseDataItemConnectedAccountAuthMethod =
   | "oauth"
   | "api_key"
   | "client_credentials";
-const DataIntegrationsListResponseDataItemConnectedAccountAuthMethod = S.String;
-
 /** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
 export type DataIntegrationsListResponseDataItemConnectedAccountConfigMap = {
   [key: string]: string | undefined;
 };
-const DataIntegrationsListResponseDataItemConnectedAccountConfigMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountConfigMap>;
-
 /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
 export type DataIntegrationsListResponseDataItemConnectedAccountState =
   | "connected"
   | "needs_reauthorization"
   | "disconnected";
-const DataIntegrationsListResponseDataItemConnectedAccountState = S.String;
-
 export interface DataIntegrationsListResponseDataItemConnectedAccount {
   /** Distinguishes the connected account object. */
   object: string;
@@ -5676,43 +3978,26 @@ export interface DataIntegrationsListResponseDataItemConnectedAccount {
   /** Use `updated_at` instead. */
   updatedAt: string;
 }
-const DataIntegrationsListResponseDataItemConnectedAccount = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccount>;
-
 /** Whether this row is the compatibility connection visible to undeclared clients or a standard peer for plural-aware clients. The role does not indicate preference or creation order. */
 export type DataIntegrationsListResponseDataItemConnectedAccountsItemConnectionRole =
   | "compatibility"
   | "standard";
-const DataIntegrationsListResponseDataItemConnectedAccountsItemConnectionRole = S.String;
-
 /** The OAuth scopes granted for this connection. */
 export type DataIntegrationsListResponseDataItemConnectedAccountsItemScopesList = Array<string>;
-const DataIntegrationsListResponseDataItemConnectedAccountsItemScopesList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountsItemScopesList>;
-
 /** The authentication method used for this connection (`oauth`, `api_key`, or `client_credentials`). Defaults to `oauth` if absent. */
 export type DataIntegrationsListResponseDataItemConnectedAccountsItemAuthMethod =
   | "oauth"
   | "api_key"
   | "client_credentials";
-const DataIntegrationsListResponseDataItemConnectedAccountsItemAuthMethod = S.String;
-
 /** The connection-level configuration values stored for this connection -- the fields the provider declares at `installation` scope, excluding secret and undeclared fields. Returned for every authentication method; empty when no stored values can be disclosed. */
 export type DataIntegrationsListResponseDataItemConnectedAccountsItemConfigMap = {
   [key: string]: string | undefined;
 };
-const DataIntegrationsListResponseDataItemConnectedAccountsItemConfigMap =
-  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountsItemConfigMap>;
-
 /** The state of the connected account: - `connected`: The connection is active and tokens are valid. - `needs_reauthorization`: The user needs to reauthorize the connection, typically because required scopes have changed. - `disconnected`: The connection has been disconnected. */
 export type DataIntegrationsListResponseDataItemConnectedAccountsItemState =
   | "connected"
   | "needs_reauthorization"
   | "disconnected";
-const DataIntegrationsListResponseDataItemConnectedAccountsItemState = S.String;
-
 export interface DataIntegrationsListResponseDataItemConnectedAccountsItem {
   /** Distinguishes the connected account object. */
   object: string;
@@ -5755,19 +4040,9 @@ export interface DataIntegrationsListResponseDataItemConnectedAccountsItem {
   /** Use `updated_at` instead. */
   updatedAt: string;
 }
-const DataIntegrationsListResponseDataItemConnectedAccountsItem = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountsItem>;
-
 /** The user's connected accounts for this provider in the requested ownership context. This contains only the compatibility connection unless `supports_multiple_connections` is `true`. */
 export type DataIntegrationsListResponseDataItemConnectedAccountsList =
   Array<DataIntegrationsListResponseDataItemConnectedAccountsItem>;
-const DataIntegrationsListResponseDataItemConnectedAccountsList = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<DataIntegrationsListResponseDataItemConnectedAccountsList>;
-
 export interface DataIntegrationsListResponseDataItem {
   /** Distinguishes the data provider object. */
   object: string;
@@ -5808,29 +4083,14 @@ export interface DataIntegrationsListResponseDataItem {
   /** The user's connected accounts for this provider in the requested ownership context. This contains only the compatibility connection unless `supports_multiple_connections` is `true`. */
   connected_accounts: DataIntegrationsListResponseDataItemConnectedAccountsList;
 }
-const DataIntegrationsListResponseDataItem = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<DataIntegrationsListResponseDataItem>;
-
 /** A list of [providers](/reference/pipes/provider), each including the legacy `connected_account` field and the additive `connected_accounts` collection. */
 export type DataIntegrationsListResponseDataList = Array<DataIntegrationsListResponseDataItem>;
-const DataIntegrationsListResponseDataList = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<DataIntegrationsListResponseDataList>;
-
 export interface DataIntegrationsListResponse {
   /** Indicates this is a list response. */
   object?: string;
   /** A list of [providers](/reference/pipes/provider), each including the legacy `connected_account` field and the additive `connected_accounts` collection. */
   data?: DataIntegrationsListResponseDataList;
 }
-const DataIntegrationsListResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<DataIntegrationsListResponse>;
-
 export interface GetDataIntegrationsUserManagementControllerUserDataInstallationRequest {
   /** A [User](/reference/authkit/user) identifier. */
   user_id: string;
@@ -5843,11 +4103,6 @@ export interface GetDataIntegrationsUserManagementControllerUserDataInstallation
   /** A [connected account](/reference/pipes/connected-account) identifier. Use this to select a specific connection when the user has several for this provider. */
   connected_account_id?: string;
 }
-const GetDataIntegrationsUserManagementControllerUserDataInstallationRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<GetDataIntegrationsUserManagementControllerUserDataInstallationRequest>;
-
 export interface GetDataIntegrationsUserManagementControllerUserDataIntegrationsRequest {
   /** A [User](/reference/authkit/user) identifier to list providers and connected accounts for. */
   user_id: string;
@@ -5856,28 +4111,13 @@ export interface GetDataIntegrationsUserManagementControllerUserDataIntegrations
   /** Set to `true` to use the plural connection contract. When omitted or `false`, only the compatibility connection is considered. */
   supports_multiple_connections?: boolean;
 }
-const GetDataIntegrationsUserManagementControllerUserDataIntegrationsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<GetDataIntegrationsUserManagementControllerUserDataIntegrationsRequest>;
-
 export interface GetGroupsControllerRequest {
   /** The ID of the organization. */
   organizationId: string;
   /** The ID of the group. */
   groupId: string;
 }
-const GetGroupsControllerRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<GetGroupsControllerRequest>;
-
 export interface GetJwtTemplatesControllerJwtTemplateRequest {}
-const GetJwtTemplatesControllerJwtTemplateRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<GetJwtTemplatesControllerJwtTemplateRequest>;
-
 export interface JwtTemplate {
   /** The object type. */
   object: string;
@@ -5888,17 +4128,10 @@ export interface JwtTemplate {
   /** The timestamp when the JWT template was last updated. */
   updated_at: string;
 }
-const JwtTemplate = /*@__PURE__*/ __L.at(__c35, 2) as any as S.Schema<JwtTemplate>;
-
 export interface GetOrganizationDomainsControllerRequest {
   /** Unique identifier of the organization domain. */
   id: string;
 }
-const GetOrganizationDomainsControllerRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<GetOrganizationDomainsControllerRequest>;
-
 /** Verification state of the domain. */
 export type OrganizationDomainStandAloneState =
   | "failed"
@@ -5906,12 +4139,8 @@ export type OrganizationDomainStandAloneState =
   | "pending"
   | "unverified"
   | "verified";
-const OrganizationDomainStandAloneState = S.String;
-
 /** Strategy used to verify the domain. */
 export type OrganizationDomainStandAloneVerificationStrategy = "dns" | "manual";
-const OrganizationDomainStandAloneVerificationStrategy = S.String;
-
 export interface OrganizationDomainStandAlone {
   /** Distinguishes the organization domain object. */
   object?: string;
@@ -5934,24 +4163,12 @@ export interface OrganizationDomainStandAlone {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const OrganizationDomainStandAlone = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<OrganizationDomainStandAlone>;
-
 export interface GetOrganizationsControllerAuditLogConfigurationRequest {
   /** Unique identifier of the Organization. */
   id: string;
 }
-const GetOrganizationsControllerAuditLogConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<GetOrganizationsControllerAuditLogConfigurationRequest>;
-
 /** The current state of the audit log configuration for the organization. */
 export type AuditLogConfigurationState = "active" | "inactive" | "disabled";
-const AuditLogConfigurationState = S.String;
-
 /** The type of the Audit Log Stream destination. */
 export type AuditLogConfigurationLogStreamType =
   | "AzureSentinel"
@@ -5961,12 +4178,8 @@ export type AuditLogConfigurationLogStreamType =
   | "S3"
   | "Snowflake"
   | "Splunk";
-const AuditLogConfigurationLogStreamType = S.String;
-
 /** The current state of the Audit Log Stream. */
 export type AuditLogConfigurationLogStreamState = "active" | "inactive" | "error" | "invalid";
-const AuditLogConfigurationLogStreamState = S.String;
-
 /** The Audit Log Stream currently configured for the organization, if any. */
 export interface AuditLogConfigurationLogStream {
   /** Unique identifier of the Audit Log Stream. */
@@ -5980,11 +4193,6 @@ export interface AuditLogConfigurationLogStream {
   /** An ISO 8601 timestamp. */
   created_at: string;
 }
-const AuditLogConfigurationLogStream = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<AuditLogConfigurationLogStream>;
-
 export interface AuditLogConfiguration {
   /** Unique identifier of the Organization. */
   organization_id?: string;
@@ -5995,29 +4203,14 @@ export interface AuditLogConfiguration {
   /** The Audit Log Stream currently configured for the organization, if any. */
   log_stream?: AuditLogConfigurationLogStream;
 }
-const AuditLogConfiguration = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<AuditLogConfiguration>;
-
 export interface GetOrganizationsControllerByExternalIdRequest {
   /** The external ID of the Organization. */
   external_id: string;
 }
-const GetOrganizationsControllerByExternalIdRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<GetOrganizationsControllerByExternalIdRequest>;
-
 export interface GetPublicRadarChallengesControllerRequest {
   /** The unique ID of the Radar Challenge. */
   id: string;
 }
-const GetPublicRadarChallengesControllerRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<GetPublicRadarChallengesControllerRequest>;
-
 export interface RadarChallenge {
   /** Distinguishes the Radar Challenge object. */
   object: string;
@@ -6038,23 +4231,11 @@ export interface RadarChallenge {
   /** The code used to verify the Radar Challenge. */
   code: string;
 }
-const RadarChallenge = /*@__PURE__*/ __L.at(__c36, 2) as any as S.Schema<RadarChallenge>;
-
 export interface GetSamlSpSigningCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
   connectionId: string;
 }
-const GetSamlSpSigningCertificatesControllerRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<GetSamlSpSigningCertificatesControllerRequest>;
-
 export interface GetSsoControllerProfileRequest {}
-const GetSsoControllerProfileRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<GetSsoControllerProfileRequest>;
-
 /** The type of SSO connection. */
 export type ProfileConnectionType =
   | "Pending"
@@ -6107,25 +4288,13 @@ export type ProfileConnectionType =
   | "VercelOAuth"
   | "VMwareSAML"
   | "XeroOAuth";
-const ProfileConnectionType = S.String;
-
 export type ProfileRolesList = Array<SlimRole>;
-const ProfileRolesList = DirectoryUserWithGroupsRolesList as any as S.Schema<ProfileRolesList>;
-
 /** The groups the user belongs to, as returned by the identity provider. */
 export type ProfileGroupsList = Array<string>;
-const ProfileGroupsList = AgentTokenPermissionsList as any as S.Schema<ProfileGroupsList>;
-
 /** Custom attribute mappings defined for the connection, returned as key-value pairs. */
 export type ProfileCustomAttributesMap = { [key: string]: unknown | undefined };
-const ProfileCustomAttributesMap =
-  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<ProfileCustomAttributesMap>;
-
 /** The complete set of raw attributes returned by the identity provider. */
 export type ProfileRawAttributesMap = { [key: string]: unknown | undefined };
-const ProfileRawAttributesMap =
-  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<ProfileRawAttributesMap>;
-
 export interface Profile {
   /** Distinguishes the profile object. */
   object?: string;
@@ -6158,26 +4327,14 @@ export interface Profile {
   /** The complete set of raw attributes returned by the identity provider. */
   raw_attributes?: ProfileRawAttributesMap;
 }
-const Profile = /*@__PURE__*/ __L.at(__c36, 5) as any as S.Schema<Profile>;
-
 export interface GetTeamsControllerTeamRequest {
   /** The ID of the team. */
   team_id: string;
 }
-const GetTeamsControllerTeamRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<GetTeamsControllerTeamRequest>;
-
 export interface GetUserlandMagicAuthControllerRequest {
   /** The unique ID of the Magic Auth code. */
   id: string;
 }
-const GetUserlandMagicAuthControllerRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<GetUserlandMagicAuthControllerRequest>;
-
 export interface MagicAuth {
   /** Distinguishes the Magic Auth object. */
   object?: string;
@@ -6196,17 +4353,10 @@ export interface MagicAuth {
   /** The code used to verify the Magic Auth code. */
   code?: string;
 }
-const MagicAuth = /*@__PURE__*/ __L.at(__c37, 0) as any as S.Schema<MagicAuth>;
-
 export interface GetUserlandUserIdentitiesControllerRequest {
   /** The unique ID of the user. */
   id: string;
 }
-const GetUserlandUserIdentitiesControllerRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<GetUserlandUserIdentitiesControllerRequest>;
-
 /** The type of OAuth provider for the identity. */
 export type GetUserlandUserIdentitiesControllerResponseBodyItemProvider =
   | "AppleOAuth"
@@ -6222,8 +4372,6 @@ export type GetUserlandUserIdentitiesControllerResponseBodyItemProvider =
   | "VercelMarketplaceOAuth"
   | "VercelOAuth"
   | "XeroOAuth";
-const GetUserlandUserIdentitiesControllerResponseBodyItemProvider = S.String;
-
 export interface GetUserlandUserIdentitiesControllerResponseBodyItem {
   /** The unique ID of the user in the external identity provider. */
   idp_id: string;
@@ -6232,68 +4380,30 @@ export interface GetUserlandUserIdentitiesControllerResponseBodyItem {
   /** The type of OAuth provider for the identity. */
   provider: GetUserlandUserIdentitiesControllerResponseBodyItemProvider;
 }
-const GetUserlandUserIdentitiesControllerResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<GetUserlandUserIdentitiesControllerResponseBodyItem>;
-
 export type GetUserlandUserIdentitiesControllerResponseBodyList =
   Array<GetUserlandUserIdentitiesControllerResponseBodyItem>;
-const GetUserlandUserIdentitiesControllerResponseBodyList = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<GetUserlandUserIdentitiesControllerResponseBodyList>;
-
 export type GetUserlandUserIdentitiesControllerResponse =
   GetUserlandUserIdentitiesControllerResponseBodyList;
-const GetUserlandUserIdentitiesControllerResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<GetUserlandUserIdentitiesControllerResponse>;
-
 export interface GetUserlandUserInvitesControllerRequest {
   /** The unique ID of the invitation. */
   id: string;
 }
-const GetUserlandUserInvitesControllerRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<GetUserlandUserInvitesControllerRequest>;
-
 export interface GetUserlandUserInvitesControllerByTokenRequest {
   /** The token used to accept the invitation. */
   token: string;
 }
-const GetUserlandUserInvitesControllerByTokenRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<GetUserlandUserInvitesControllerByTokenRequest>;
-
 export interface GetUserlandUserOrganizationMembershipsControllerRequest {
   /** The unique ID of the organization membership. */
   id: string;
 }
-const GetUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<GetUserlandUserOrganizationMembershipsControllerRequest>;
-
 /** The status of the organization membership. One of `active`, `inactive`, or `pending`. */
 export type UserlandUserOrganizationMembershipStatus = "active" | "inactive" | "pending";
-const UserlandUserOrganizationMembershipStatus = S.String;
-
 /** An object containing IdP-sourced attributes from the linked [Directory User](/reference/directory-sync/directory-user) or [SSO Profile](/reference/sso/profile). Directory User attributes take precedence when both are linked. */
 export type UserlandUserOrganizationMembershipCustomAttributesMap = {
   [key: string]: unknown | undefined;
 };
-const UserlandUserOrganizationMembershipCustomAttributesMap =
-  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<UserlandUserOrganizationMembershipCustomAttributesMap>;
-
 /** The list of roles assigned to the user within the organization. */
 export type UserlandUserOrganizationMembershipRolesList = Array<SlimRole>;
-const UserlandUserOrganizationMembershipRolesList =
-  DirectoryUserWithGroupsRolesList as any as S.Schema<UserlandUserOrganizationMembershipRolesList>;
-
 export interface UserlandUserOrganizationMembership {
   /** Distinguishes the organization membership object. */
   object?: string;
@@ -6322,29 +4432,14 @@ export interface UserlandUserOrganizationMembership {
   /** The user that belongs to the organization through this membership. */
   user?: UserlandUser;
 }
-const UserlandUserOrganizationMembership = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<UserlandUserOrganizationMembership>;
-
 export interface GetUserlandUsersControllerByExternalIdRequest {
   /** The external ID of the user. */
   external_id: string;
 }
-const GetUserlandUsersControllerByExternalIdRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<GetUserlandUsersControllerByExternalIdRequest>;
-
 export interface GetUserlandUsersControllerEmailVerificationRequest {
   /** The ID of the email verification code. */
   id: string;
 }
-const GetUserlandUsersControllerEmailVerificationRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<GetUserlandUsersControllerEmailVerificationRequest>;
-
 export interface EmailVerification {
   /** Distinguishes the email verification object. */
   object?: string;
@@ -6363,8 +4458,6 @@ export interface EmailVerification {
   /** The code used to verify the email. */
   code?: string;
 }
-const EmailVerification = MagicAuth as any as S.Schema<EmailVerification>;
-
 export type InviteItContactsControllerRequestIntentsItem =
   | "sso"
   | "directory_sync"
@@ -6375,9 +4468,6 @@ export type InviteItContactsControllerRequestIntentsItem =
 export type InviteItContactsControllerRequestIntentsList = Array<
   InviteItContactsControllerRequestIntentsItem | (string & {})
 >;
-const InviteItContactsControllerRequestIntentsList =
-  AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<InviteItContactsControllerRequestIntentsList>;
-
 export interface InviteItContactsControllerRequest {
   /** The ID of the organization. */
   organization_id: string;
@@ -6386,18 +4476,8 @@ export interface InviteItContactsControllerRequest {
   /** The Admin Portal features that the IT contact can configure. */
   intents: InviteItContactsControllerRequestIntentsList;
 }
-const InviteItContactsControllerRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<InviteItContactsControllerRequest>;
-
 export interface InviteItContactsControllerResponse {}
-const InviteItContactsControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<InviteItContactsControllerResponse>;
-
 export type JumpWireWebDataVaultControllerIndexRequestOrder = "asc" | "desc";
-const JumpWireWebDataVaultControllerIndexRequestOrder = S.String;
-
 export interface JumpWireWebDataVaultControllerIndexRequest {
   /** Upper limit on the number of objects to return. */
   limit?: number;
@@ -6412,11 +4492,6 @@ export interface JumpWireWebDataVaultControllerIndexRequest {
   /** ISO 8601 timestamp to filter by last modified time. */
   updatedAfter?: string;
 }
-const JumpWireWebDataVaultControllerIndexRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<JumpWireWebDataVaultControllerIndexRequest>;
-
 /** Summary of an encrypted object returned in list responses. */
 export interface ObjectSummary {
   /** Unique identifier of the object. */
@@ -6426,15 +4501,8 @@ export interface ObjectSummary {
   /** Timestamp of the last update. */
   updated_at?: string | null;
 }
-const ObjectSummary = /*@__PURE__*/ __L.at(__c38, 5) as any as S.Schema<ObjectSummary>;
-
 /** List of object summaries. */
 export type ObjectListResponseDataList = Array<ObjectSummary>;
-const ObjectListResponseDataList = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<ObjectListResponseDataList>;
-
 /** Cursor-based pagination metadata. */
 export interface ListMetadata {
   /** Cursor for the next page of results. */
@@ -6442,24 +4510,15 @@ export interface ListMetadata {
   /** Cursor for the previous page of results. */
   before?: string | null;
 }
-const ListMetadata = /*@__PURE__*/ __L.at(__c38, 7) as any as S.Schema<ListMetadata>;
-
 export interface ObjectListResponse {
   /** List of object summaries. */
   data: ObjectListResponseDataList;
   list_metadata: ListMetadata;
 }
-const ObjectListResponse = /*@__PURE__*/ __L.at(__c39, 0) as any as S.Schema<ObjectListResponse>;
-
 export interface JumpWireWebDataVaultControllerShowByIdRequest {
   /** Unique identifier of the object. */
   id: string;
 }
-const JumpWireWebDataVaultControllerShowByIdRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<JumpWireWebDataVaultControllerShowByIdRequest>;
-
 /** An encrypted object with its decrypted value and metadata. */
 export interface Object {
   /** Unique identifier of the object. */
@@ -6470,26 +4529,14 @@ export interface Object {
   /** Decrypted plaintext value. */
   value: string;
 }
-const Object = /*@__PURE__*/ __L.at(__c39, 2) as any as S.Schema<Object>;
-
 export interface JumpWireWebDataVaultControllerShowByNameRequest {
   /** Unique name of the object. */
   name: string;
 }
-const JumpWireWebDataVaultControllerShowByNameRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<JumpWireWebDataVaultControllerShowByNameRequest>;
-
 export interface JumpWireWebDataVaultControllerVersionsRequest {
   /** Unique identifier of the object. */
   id: string;
 }
-const JumpWireWebDataVaultControllerVersionsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<JumpWireWebDataVaultControllerVersionsRequest>;
-
 /** A static snapshot of an encrypted object. */
 export interface ObjectVersion {
   /** Timestamp when the version was created. */
@@ -6503,43 +4550,23 @@ export interface ObjectVersion {
   /** Number of bytes of stored data. */
   size: number;
 }
-const ObjectVersion = /*@__PURE__*/ __L.at(__c39, 5) as any as S.Schema<ObjectVersion>;
-
 /** List of object versions. */
 export type VersionListResponseDataList = Array<ObjectVersion>;
-const VersionListResponseDataList = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<VersionListResponseDataList>;
-
 export interface VersionListResponse {
   /** List of object versions. */
   data: VersionListResponseDataList;
   list_metadata: ListMetadata;
 }
-const VersionListResponse = /*@__PURE__*/ __L.at(__c39, 7) as any as S.Schema<VersionListResponse>;
-
 /** Map of values used to determine the encryption key. */
 export type JumpWireWebKeyControllerCreateDataKeyRequestContextMap = {
   [key: string]: string | undefined;
 };
-const JumpWireWebKeyControllerCreateDataKeyRequestContextMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<JumpWireWebKeyControllerCreateDataKeyRequestContextMap>;
-
 export interface JumpWireWebKeyControllerCreateDataKeyRequest {
   /** Map of values used to determine the encryption key. */
   context: JumpWireWebKeyControllerCreateDataKeyRequestContextMap;
 }
-const JumpWireWebKeyControllerCreateDataKeyRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<JumpWireWebKeyControllerCreateDataKeyRequest>;
-
 /** Map of values used to determine the encryption key. */
 export type CreateDataKeyResponseContextMap = { [key: string]: string | undefined };
-const CreateDataKeyResponseContextMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<CreateDataKeyResponseContextMap>;
-
 export interface CreateDataKeyResponse {
   /** Map of values used to determine the encryption key. */
   context: CreateDataKeyResponseContextMap;
@@ -6550,27 +4577,14 @@ export interface CreateDataKeyResponse {
   /** Unique identifier for the generated data key. */
   id: string;
 }
-const CreateDataKeyResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<CreateDataKeyResponse>;
-
 /** Map of values used to determine the new encryption key. */
 export type JumpWireWebKeyControllerRekeyRequestContextMap = { [key: string]: string | undefined };
-const JumpWireWebKeyControllerRekeyRequestContextMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<JumpWireWebKeyControllerRekeyRequestContextMap>;
-
 export interface JumpWireWebKeyControllerRekeyRequest {
   /** Map of values used to determine the new encryption key. */
   context: JumpWireWebKeyControllerRekeyRequestContextMap;
   /** Base64-encoded encrypted data key blob to re-encrypt. */
   encrypted_keys: string;
 }
-const JumpWireWebKeyControllerRekeyRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<JumpWireWebKeyControllerRekeyRequest>;
-
 export interface ListAgentBlueprintsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -6581,21 +4595,11 @@ export interface ListAgentBlueprintsControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const ListAgentBlueprintsControllerRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<ListAgentBlueprintsControllerRequest>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type ListAgentBlueprintsControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 /** The list of records for the current page. */
 export type ListAgentBlueprintsControllerResponseDataList = Array<AgentBlueprint>;
-const ListAgentBlueprintsControllerResponseDataList = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<ListAgentBlueprintsControllerResponseDataList>;
-
 export interface ListAgentBlueprintsControllerResponse {
   /** Indicates this is a list response. */
   object?: string;
@@ -6604,11 +4608,6 @@ export interface ListAgentBlueprintsControllerResponse {
   /** The list of records for the current page. */
   data?: ListAgentBlueprintsControllerResponseDataList;
 }
-const ListAgentBlueprintsControllerResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<ListAgentBlueprintsControllerResponse>;
-
 export interface ListAgentInstancesControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -6623,21 +4622,11 @@ export interface ListAgentInstancesControllerRequest {
   /** Only return instances minted from this blueprint. */
   agent_blueprint_id?: string;
 }
-const ListAgentInstancesControllerRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<ListAgentInstancesControllerRequest>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type ListAgentInstancesControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 /** The list of records for the current page. */
 export type ListAgentInstancesControllerResponseDataList = Array<AgentInstance>;
-const ListAgentInstancesControllerResponseDataList = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<ListAgentInstancesControllerResponseDataList>;
-
 export interface ListAgentInstancesControllerResponse {
   /** Indicates this is a list response. */
   object?: string;
@@ -6646,11 +4635,6 @@ export interface ListAgentInstancesControllerResponse {
   /** The list of records for the current page. */
   data?: ListAgentInstancesControllerResponseDataList;
 }
-const ListAgentInstancesControllerResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<ListAgentInstancesControllerResponse>;
-
 export interface ListAgentInstanceSessionsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -6667,21 +4651,11 @@ export interface ListAgentInstanceSessionsControllerRequest {
   /** Only return sessions belonging to this agent instance. */
   agent_instance_id?: string;
 }
-const ListAgentInstanceSessionsControllerRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<ListAgentInstanceSessionsControllerRequest>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type ListAgentInstanceSessionsControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 /** The list of records for the current page. */
 export type ListAgentInstanceSessionsControllerResponseDataList = Array<AgentInstanceSession>;
-const ListAgentInstanceSessionsControllerResponseDataList = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<ListAgentInstanceSessionsControllerResponseDataList>;
-
 export interface ListAgentInstanceSessionsControllerResponse {
   /** Indicates this is a list response. */
   object?: string;
@@ -6690,20 +4664,10 @@ export interface ListAgentInstanceSessionsControllerResponse {
   /** The list of records for the current page. */
   data?: ListAgentInstanceSessionsControllerResponseDataList;
 }
-const ListAgentInstanceSessionsControllerResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<ListAgentInstanceSessionsControllerResponse>;
-
 export interface ListApplicationCredentialsControllerRequest {
   /** The application ID or client ID of the Connect Application. */
   id: string;
 }
-const ListApplicationCredentialsControllerRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<ListApplicationCredentialsControllerRequest>;
-
 export interface ListApplicationCredentialsControllerResponseBodyItem {
   /** Distinguishes the connect application secret object. */
   object: string;
@@ -6718,32 +4682,14 @@ export interface ListApplicationCredentialsControllerResponseBodyItem {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const ListApplicationCredentialsControllerResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<ListApplicationCredentialsControllerResponseBodyItem>;
-
 export type ListApplicationCredentialsControllerResponseBodyList =
   Array<ListApplicationCredentialsControllerResponseBodyItem>;
-const ListApplicationCredentialsControllerResponseBodyList = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<ListApplicationCredentialsControllerResponseBodyList>;
-
 export type ListApplicationCredentialsControllerResponse =
   ListApplicationCredentialsControllerResponseBodyList;
-const ListApplicationCredentialsControllerResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<ListApplicationCredentialsControllerResponse>;
-
 export type ListApplicationsControllerRequestRegistrationTypesItem = "dynamic" | "authenticated";
 export type ListApplicationsControllerRequestRegistrationTypesList = Array<
   ListApplicationsControllerRequestRegistrationTypesItem | (string & {})
 >;
-const ListApplicationsControllerRequestRegistrationTypesList =
-  AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<ListApplicationsControllerRequestRegistrationTypesList>;
-
 export interface ListApplicationsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -6758,23 +4704,12 @@ export interface ListApplicationsControllerRequest {
   /** Filter Connect Applications by organization ID. */
   organization_id?: string;
 }
-const ListApplicationsControllerRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<ListApplicationsControllerRequest>;
-
 /** The scopes available for this application. */
 export type ConnectApplicationScopesList = Array<string>;
-const ConnectApplicationScopesList =
-  AgentTokenPermissionsList as any as S.Schema<ConnectApplicationScopesList>;
-
 export type ConnectApplicationRedirectUrisItem = ApplicationsControllerFindResponseRedirectUrisItem;
 /** The redirect URIs configured for this application. */
 export type ConnectApplicationRedirectUrisList =
   Array<ApplicationsControllerFindResponseRedirectUrisItem>;
-const ConnectApplicationRedirectUrisList =
-  ApplicationsControllerFindResponseRedirectUrisList as any as S.Schema<ConnectApplicationRedirectUrisList>;
-
 export interface ConnectApplication {
   /** Distinguishes the connect application object. */
   object: string;
@@ -6805,15 +4740,8 @@ export interface ConnectApplication {
   /** The ID of the organization the application belongs to. */
   organization_id?: string;
 }
-const ConnectApplication = /*@__PURE__*/ __L.at(__c42, 1) as any as S.Schema<ConnectApplication>;
-
 /** The list of records for the current page. */
 export type ConnectApplicationListDataList = Array<ConnectApplication>;
-const ConnectApplicationListDataList = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<ConnectApplicationListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type ConnectApplicationListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -6825,11 +4753,6 @@ export interface ConnectApplicationList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const ConnectApplicationList = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<ConnectApplicationList>;
-
 export interface ListAuditLogValidatorsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
   before?: string;
@@ -6840,11 +4763,6 @@ export interface ListAuditLogValidatorsControllerRequest {
   /** Order the results by the creation time. Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const ListAuditLogValidatorsControllerRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<ListAuditLogValidatorsControllerRequest>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type ListAuditLogValidatorsControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -6860,15 +4778,8 @@ export interface AuditLogActionJson {
   /** An ISO 8601 timestamp. */
   updated_at?: string;
 }
-const AuditLogActionJson = /*@__PURE__*/ __L.at(__c42, 5) as any as S.Schema<AuditLogActionJson>;
-
 /** The list of records for the current page. */
 export type ListAuditLogValidatorsControllerResponseDataList = Array<AuditLogActionJson>;
-const ListAuditLogValidatorsControllerResponseDataList = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<ListAuditLogValidatorsControllerResponseDataList>;
-
 export interface ListAuditLogValidatorsControllerResponse {
   /** Indicates this is a list response. */
   object?: string;
@@ -6877,11 +4788,6 @@ export interface ListAuditLogValidatorsControllerResponse {
   /** The list of records for the current page. */
   data?: ListAuditLogValidatorsControllerResponseDataList;
 }
-const ListAuditLogValidatorsControllerResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<ListAuditLogValidatorsControllerResponse>;
-
 export interface ListAuthkitOauthResourcesControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -6892,21 +4798,11 @@ export interface ListAuthkitOauthResourcesControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const ListAuthkitOauthResourcesControllerRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<ListAuthkitOauthResourcesControllerRequest>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type ListAuthkitOauthResourcesControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 /** The list of records for the current page. */
 export type ListAuthkitOauthResourcesControllerResponseDataList = Array<AuthkitOauthResource>;
-const ListAuthkitOauthResourcesControllerResponseDataList = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<ListAuthkitOauthResourcesControllerResponseDataList>;
-
 export interface ListAuthkitOauthResourcesControllerResponse {
   /** Indicates this is a list response. */
   object?: string;
@@ -6915,11 +4811,6 @@ export interface ListAuthkitOauthResourcesControllerResponse {
   /** The list of records for the current page. */
   data?: ListAuthkitOauthResourcesControllerResponseDataList;
 }
-const ListAuthkitOauthResourcesControllerResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<ListAuthkitOauthResourcesControllerResponse>;
-
 export interface ListAuthorizationControllerEffectivePermissionsRequest {
   /** The ID of the organization membership. */
   organization_membership_id: string;
@@ -6934,18 +4825,8 @@ export interface ListAuthorizationControllerEffectivePermissionsRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const ListAuthorizationControllerEffectivePermissionsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<ListAuthorizationControllerEffectivePermissionsRequest>;
-
 /** The list of records for the current page. */
 export type AuthorizationPermissionListDataList = Array<AuthorizationPermission>;
-const AuthorizationPermissionListDataList = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<AuthorizationPermissionListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type AuthorizationPermissionListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -6957,11 +4838,6 @@ export interface AuthorizationPermissionList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const AuthorizationPermissionList = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<AuthorizationPermissionList>;
-
 export interface ListAuthorizationControllerEffectivePermissionsByExternalIdRequest {
   /** The ID of the organization membership. */
   organization_membership_id: string;
@@ -6978,11 +4854,6 @@ export interface ListAuthorizationControllerEffectivePermissionsByExternalIdRequ
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const ListAuthorizationControllerEffectivePermissionsByExternalIdRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<ListAuthorizationControllerEffectivePermissionsByExternalIdRequest>;
-
 export interface ListAuthorizationControllerResourcesForMembershipRequest {
   /** The ID of the organization membership. */
   organization_membership_id: string;
@@ -7003,18 +4874,8 @@ export interface ListAuthorizationControllerResourcesForMembershipRequest {
   /** The application-specific external identifier of the parent resource. Must be provided together with `parent_resource_type_slug`. Required with `parent_resource_type_slug`. Mutually exclusive with `parent_resource_id`. */
   parent_resource_external_id?: string;
 }
-const ListAuthorizationControllerResourcesForMembershipRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<ListAuthorizationControllerResourcesForMembershipRequest>;
-
 /** The list of records for the current page. */
 export type AuthorizationResourceListDataList = Array<AuthorizationResource>;
-const AuthorizationResourceListDataList = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<AuthorizationResourceListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type AuthorizationResourceListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -7026,11 +4887,6 @@ export interface AuthorizationResourceList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const AuthorizationResourceList = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<AuthorizationResourceList>;
-
 export interface ListAuthorizationGroupRoleAssignmentsControllerRequest {
   /** The ID of the group. */
   group_id: string;
@@ -7043,18 +4899,8 @@ export interface ListAuthorizationGroupRoleAssignmentsControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const ListAuthorizationGroupRoleAssignmentsControllerRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<ListAuthorizationGroupRoleAssignmentsControllerRequest>;
-
 /** The list of records for the current page. */
 export type GroupRoleAssignmentListDataList = Array<GroupRoleAssignment>;
-const GroupRoleAssignmentListDataList = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<GroupRoleAssignmentListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type GroupRoleAssignmentListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -7066,31 +4912,17 @@ export interface GroupRoleAssignmentList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const GroupRoleAssignmentList = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<GroupRoleAssignmentList>;
-
 export interface ListAuthorizationOrganizationRolesControllerRequest {
   /** The ID of the organization. */
   organizationId: string;
 }
-const ListAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<ListAuthorizationOrganizationRolesControllerRequest>;
-
 /** The list of records for the current page. */
 export type RoleListDataList = Array<Role>;
-const RoleListDataList = /*@__PURE__*/ __L.at(__c44, 6) as any as S.Schema<RoleListDataList>;
-
 export interface RoleList {
   object?: string;
   /** The list of records for the current page. */
   data?: RoleListDataList;
 }
-const RoleList = /*@__PURE__*/ __L.at(__c44, 7) as any as S.Schema<RoleList>;
-
 export interface ListAuthorizationPermissionsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -7101,17 +4933,9 @@ export interface ListAuthorizationPermissionsControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const ListAuthorizationPermissionsControllerRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<ListAuthorizationPermissionsControllerRequest>;
-
 export type ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdRequestAssignment =
   | "direct"
   | "indirect";
-const ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdRequestAssignment =
-  S.String;
-
 export interface ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdRequest {
   /** The ID of the organization that owns the resource. */
   organization_id: string;
@@ -7134,26 +4958,15 @@ export interface ListAuthorizationResourcesByExternalIdControllerOrganizationMem
     | ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdRequestAssignment
     | (string & {});
 }
-const ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdRequest =
-  /*@__PURE__*/ __L.at(
-    __c45,
-    1,
-  ) as any as S.Schema<ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdRequest>;
-
 /** The status of the organization membership. One of `active`, `inactive`, or `pending`. */
 export type UserlandUserOrganizationMembershipBaseWithUserStatus =
   | "active"
   | "inactive"
   | "pending";
-const UserlandUserOrganizationMembershipBaseWithUserStatus = S.String;
-
 /** An object containing IdP-sourced attributes from the linked [Directory User](/reference/directory-sync/directory-user) or [SSO Profile](/reference/sso/profile). Directory User attributes take precedence when both are linked. */
 export type UserlandUserOrganizationMembershipBaseWithUserCustomAttributesMap = {
   [key: string]: unknown | undefined;
 };
-const UserlandUserOrganizationMembershipBaseWithUserCustomAttributesMap =
-  CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap as any as S.Schema<UserlandUserOrganizationMembershipBaseWithUserCustomAttributesMap>;
-
 export interface UserlandUserOrganizationMembershipBaseWithUser {
   /** Distinguishes the organization membership object. */
   object: string;
@@ -7178,19 +4991,9 @@ export interface UserlandUserOrganizationMembershipBaseWithUser {
   /** The user that belongs to the organization through this membership. */
   user: UserlandUser;
 }
-const UserlandUserOrganizationMembershipBaseWithUser = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<UserlandUserOrganizationMembershipBaseWithUser>;
-
 /** The list of records for the current page. */
 export type UserlandUserOrganizationMembershipBaseWithUserListDataList =
   Array<UserlandUserOrganizationMembershipBaseWithUser>;
-const UserlandUserOrganizationMembershipBaseWithUserListDataList = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<UserlandUserOrganizationMembershipBaseWithUserListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type UserlandUserOrganizationMembershipBaseWithUserListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -7202,11 +5005,6 @@ export interface UserlandUserOrganizationMembershipBaseWithUserList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const UserlandUserOrganizationMembershipBaseWithUserList = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<UserlandUserOrganizationMembershipBaseWithUserList>;
-
 export interface ListAuthorizationResourcesControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -7229,17 +5027,9 @@ export interface ListAuthorizationResourcesControllerRequest {
   /** Filter resources by parent external ID. Required with `parent_resource_type_slug`. Mutually exclusive with `parent_resource_id`. */
   parent_external_id?: string;
 }
-const ListAuthorizationResourcesControllerRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<ListAuthorizationResourcesControllerRequest>;
-
 export type ListAuthorizationResourcesControllerOrganizationMembershipsForResourceRequestAssignment =
   | "direct"
   | "indirect";
-const ListAuthorizationResourcesControllerOrganizationMembershipsForResourceRequestAssignment =
-  S.String;
-
 export interface ListAuthorizationResourcesControllerOrganizationMembershipsForResourceRequest {
   /** The ID of the authorization resource. */
   resource_id: string;
@@ -7258,12 +5048,6 @@ export interface ListAuthorizationResourcesControllerOrganizationMembershipsForR
     | ListAuthorizationResourcesControllerOrganizationMembershipsForResourceRequestAssignment
     | (string & {});
 }
-const ListAuthorizationResourcesControllerOrganizationMembershipsForResourceRequest =
-  /*@__PURE__*/ __L.at(
-    __c45,
-    6,
-  ) as any as S.Schema<ListAuthorizationResourcesControllerOrganizationMembershipsForResourceRequest>;
-
 export interface ListAuthorizationRoleAssignmentsControllerRoleAssignmentsRequest {
   /** The ID of the organization membership. */
   organization_membership_id: string;
@@ -7282,18 +5066,8 @@ export interface ListAuthorizationRoleAssignmentsControllerRoleAssignmentsReques
   /** Filter assignments by the slug of the resource type. */
   resource_type_slug?: string;
 }
-const ListAuthorizationRoleAssignmentsControllerRoleAssignmentsRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<ListAuthorizationRoleAssignmentsControllerRoleAssignmentsRequest>;
-
 /** The list of records for the current page. */
 export type UserRoleAssignmentListDataList = Array<UserRoleAssignment>;
-const UserRoleAssignmentListDataList = /*@__PURE__*/ __L.at(
-  __c46,
-  0,
-) as any as S.Schema<UserRoleAssignmentListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type UserRoleAssignmentListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -7305,11 +5079,6 @@ export interface UserRoleAssignmentList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const UserRoleAssignmentList = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<UserRoleAssignmentList>;
-
 export interface ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceRequest {
   /** The ID of the authorization resource. */
   resource_id: string;
@@ -7324,12 +5093,6 @@ export interface ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForRes
   /** Filter assignments by the slug of the role. */
   role_slug?: string;
 }
-const ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceRequest =
-  /*@__PURE__*/ __L.at(
-    __c46,
-    2,
-  ) as any as S.Schema<ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceRequest>;
-
 export interface ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceByExternalIdRequest {
   /** The ID of the organization that owns the resource. */
   organization_id: string;
@@ -7348,18 +5111,7 @@ export interface ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForRes
   /** Filter assignments by the slug of the role. */
   role_slug?: string;
 }
-const ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceByExternalIdRequest =
-  /*@__PURE__*/ __L.at(
-    __c46,
-    3,
-  ) as any as S.Schema<ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceByExternalIdRequest>;
-
 export interface ListAuthorizationRolesControllerRequest {}
-const ListAuthorizationRolesControllerRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<ListAuthorizationRolesControllerRequest>;
-
 export interface ListAuthorizedApplicationsControllerRequest {
   /** The ID of the user. */
   user_id: string;
@@ -7372,16 +5124,8 @@ export interface ListAuthorizedApplicationsControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const ListAuthorizedApplicationsControllerRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<ListAuthorizedApplicationsControllerRequest>;
-
 /** The scopes granted by the user to the application. */
 export type AuthorizedConnectApplicationListDataItemGrantedScopesList = Array<string>;
-const AuthorizedConnectApplicationListDataItemGrantedScopesList =
-  AgentTokenPermissionsList as any as S.Schema<AuthorizedConnectApplicationListDataItemGrantedScopesList>;
-
 export interface AuthorizedConnectApplicationListDataItem {
   /** Distinguishes the authorized connect application object. */
   object: string;
@@ -7393,19 +5137,9 @@ export interface AuthorizedConnectApplicationListDataItem {
   oauth_resource?: string;
   application: ConnectApplication;
 }
-const AuthorizedConnectApplicationListDataItem = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<AuthorizedConnectApplicationListDataItem>;
-
 /** The list of records for the current page. */
 export type AuthorizedConnectApplicationListDataList =
   Array<AuthorizedConnectApplicationListDataItem>;
-const AuthorizedConnectApplicationListDataList = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<AuthorizedConnectApplicationListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type AuthorizedConnectApplicationListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -7417,11 +5151,6 @@ export interface AuthorizedConnectApplicationList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const AuthorizedConnectApplicationList = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<AuthorizedConnectApplicationList>;
-
 export type ListConnectionsControllerRequestConnectionType =
   | "ADFSSAML"
   | "AdpOidc"
@@ -7470,8 +5199,6 @@ export type ListConnectionsControllerRequestConnectionType =
   | "VercelOAuth"
   | "VMwareSAML"
   | "XeroOAuth";
-const ListConnectionsControllerRequestConnectionType = S.String;
-
 export interface ListConnectionsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
   before?: string;
@@ -7490,18 +5217,8 @@ export interface ListConnectionsControllerRequest {
   /** Searchable text to match against Connection names. */
   search?: string;
 }
-const ListConnectionsControllerRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<ListConnectionsControllerRequest>;
-
 /** The list of records for the current page. */
 export type ConnectionListDataList = Array<Connection>;
-const ConnectionListDataList = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<ConnectionListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type ConnectionListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -7513,8 +5230,6 @@ export interface ConnectionList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const ConnectionList = /*@__PURE__*/ __L.at(__c47, 3) as any as S.Schema<ConnectionList>;
-
 export interface ListCorsOriginsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -7525,21 +5240,11 @@ export interface ListCorsOriginsControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const ListCorsOriginsControllerRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<ListCorsOriginsControllerRequest>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type ListCorsOriginsControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 /** The list of records for the current page. */
 export type ListCorsOriginsControllerResponseDataList = Array<CorsOriginResponse>;
-const ListCorsOriginsControllerResponseDataList = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<ListCorsOriginsControllerResponseDataList>;
-
 export interface ListCorsOriginsControllerResponse {
   /** Indicates this is a list response. */
   object?: string;
@@ -7548,16 +5253,9 @@ export interface ListCorsOriginsControllerResponse {
   /** The list of records for the current page. */
   data?: ListCorsOriginsControllerResponseDataList;
 }
-const ListCorsOriginsControllerResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<ListCorsOriginsControllerResponse>;
-
 export type ListDataIntegrationsManagementControllerDataIntegrationsRequestOwnership =
   | "user"
   | "organization";
-const ListDataIntegrationsManagementControllerDataIntegrationsRequestOwnership = S.String;
-
 export interface ListDataIntegrationsManagementControllerDataIntegrationsRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -7572,18 +5270,8 @@ export interface ListDataIntegrationsManagementControllerDataIntegrationsRequest
     | ListDataIntegrationsManagementControllerDataIntegrationsRequestOwnership
     | (string & {});
 }
-const ListDataIntegrationsManagementControllerDataIntegrationsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<ListDataIntegrationsManagementControllerDataIntegrationsRequest>;
-
 /** The list of records for the current page. */
 export type DataIntegrationListDataList = Array<DataIntegration>;
-const DataIntegrationListDataList = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<DataIntegrationListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type DataIntegrationListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -7595,8 +5283,6 @@ export interface DataIntegrationList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const DataIntegrationList = /*@__PURE__*/ __L.at(__c48, 1) as any as S.Schema<DataIntegrationList>;
-
 export interface ListDirectoriesControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
   before?: string;
@@ -7613,18 +5299,8 @@ export interface ListDirectoriesControllerRequest {
   /** Filter Directories by their associated domain. */
   domain?: string;
 }
-const ListDirectoriesControllerRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  2,
-) as any as S.Schema<ListDirectoriesControllerRequest>;
-
 /** The list of records for the current page. */
 export type DirectoryListDataList = Array<Directory>;
-const DirectoryListDataList = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<DirectoryListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type DirectoryListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -7636,8 +5312,6 @@ export interface DirectoryList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const DirectoryList = /*@__PURE__*/ __L.at(__c48, 4) as any as S.Schema<DirectoryList>;
-
 export interface ListDirectoryGroupsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -7652,16 +5326,8 @@ export interface ListDirectoryGroupsControllerRequest {
   /** Unique identifier of the WorkOS Directory User. This value can be obtained from the WorkOS API. */
   user?: string;
 }
-const ListDirectoryGroupsControllerRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<ListDirectoryGroupsControllerRequest>;
-
 /** The list of records for the current page. */
 export type DirectoryGroupListDataList = Array<DirectoryGroup>;
-const DirectoryGroupListDataList =
-  DirectoryUserWithGroupsGroupsList as any as S.Schema<DirectoryGroupListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type DirectoryGroupListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -7673,8 +5339,6 @@ export interface DirectoryGroupList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const DirectoryGroupList = /*@__PURE__*/ __L.at(__c48, 6) as any as S.Schema<DirectoryGroupList>;
-
 export interface ListDirectoryUsersControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -7693,18 +5357,8 @@ export interface ListDirectoryUsersControllerRequest {
   /** Filter Directory Users by their primary email address. Requires the `directory` parameter to also be provided. */
   email?: string;
 }
-const ListDirectoryUsersControllerRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<ListDirectoryUsersControllerRequest>;
-
 /** The list of records for the current page. */
 export type DirectoryUserListDataList = Array<DirectoryUserWithGroups>;
-const DirectoryUserListDataList = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<DirectoryUserListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type DirectoryUserListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -7716,12 +5370,7 @@ export interface DirectoryUserList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const DirectoryUserList = /*@__PURE__*/ __L.at(__c49, 1) as any as S.Schema<DirectoryUserList>;
-
 export type ListEventsControllerRequestEventsList = Array<string>;
-const ListEventsControllerRequestEventsList =
-  AgentTokenPermissionsList as any as S.Schema<ListEventsControllerRequestEventsList>;
-
 export interface ListEventsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -7740,21 +5389,10 @@ export interface ListEventsControllerRequest {
   /** Filter events by the [Organization](/reference/organization) that the event is associated with. */
   organization_id?: string;
 }
-const ListEventsControllerRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  2,
-) as any as S.Schema<ListEventsControllerRequest>;
-
 /** The event payload. */
 export type EventSchemaDataMap = { [key: string]: unknown | undefined };
-const EventSchemaDataMap =
-  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<EventSchemaDataMap>;
-
 /** Additional context about the event. */
 export type EventSchemaContextMap = { [key: string]: unknown | undefined };
-const EventSchemaContextMap =
-  AuditLogSchemaJsonActorMetadataMap as any as S.Schema<EventSchemaContextMap>;
-
 /** An event emitted by WorkOS. */
 export interface EventSchema {
   /** Distinguishes the Event object. */
@@ -7770,22 +5408,13 @@ export interface EventSchema {
   /** Additional context about the event. */
   context?: EventSchemaContextMap;
 }
-const EventSchema = /*@__PURE__*/ __L.at(__c49, 3) as any as S.Schema<EventSchema>;
-
 /** The list of records for the current page. */
 export type EventListDataList = Array<EventSchema>;
-const EventListDataList = /*@__PURE__*/ __L.at(__c49, 4) as any as S.Schema<EventListDataList>;
-
 /** Pagination cursor for navigating to the next page of results. */
 export interface EventListListMetadata {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
   after: string | null;
 }
-const EventListListMetadata = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<EventListListMetadata>;
-
 export interface EventList {
   /** Indicates this is a list response. */
   object?: string;
@@ -7794,8 +5423,6 @@ export interface EventList {
   /** Pagination cursor for navigating to the next page of results. */
   list_metadata?: EventListListMetadata;
 }
-const EventList = /*@__PURE__*/ __L.at(__c49, 6) as any as S.Schema<EventList>;
-
 export interface ListFeatureFlagsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. */
   before?: string;
@@ -7806,15 +5433,8 @@ export interface ListFeatureFlagsControllerRequest {
   /** Order the results by the creation time. Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const ListFeatureFlagsControllerRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<ListFeatureFlagsControllerRequest>;
-
 /** The list of records for the current page. */
 export type FlagListDataList = Array<Flag>;
-const FlagListDataList = /*@__PURE__*/ __L.at(__c50, 0) as any as S.Schema<FlagListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type FlagListListMetadata = AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 export interface FlagList {
@@ -7825,8 +5445,6 @@ export interface FlagList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const FlagList = /*@__PURE__*/ __L.at(__c50, 1) as any as S.Schema<FlagList>;
-
 export interface ListGroupMembershipsControllerMembersRequest {
   /** Unique identifier of the Organization. */
   organizationId: string;
@@ -7841,25 +5459,15 @@ export interface ListGroupMembershipsControllerMembersRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const ListGroupMembershipsControllerMembersRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  2,
-) as any as S.Schema<ListGroupMembershipsControllerMembersRequest>;
-
 /** The status of the organization membership. One of `active`, `inactive`, or `pending`. */
 export type UserlandUserOrganizationMembershipBaseListDataItemStatus =
   | "active"
   | "inactive"
   | "pending";
-const UserlandUserOrganizationMembershipBaseListDataItemStatus = S.String;
-
 /** An object containing IdP-sourced attributes from the linked [Directory User](/reference/directory-sync/directory-user) or [SSO Profile](/reference/sso/profile). Directory User attributes take precedence when both are linked. */
 export type UserlandUserOrganizationMembershipBaseListDataItemCustomAttributesMap = {
   [key: string]: unknown | undefined;
 };
-const UserlandUserOrganizationMembershipBaseListDataItemCustomAttributesMap =
-  CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap as any as S.Schema<UserlandUserOrganizationMembershipBaseListDataItemCustomAttributesMap>;
-
 export interface UserlandUserOrganizationMembershipBaseListDataItem {
   /** Distinguishes the organization membership object. */
   object: string;
@@ -7882,19 +5490,9 @@ export interface UserlandUserOrganizationMembershipBaseListDataItem {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const UserlandUserOrganizationMembershipBaseListDataItem = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<UserlandUserOrganizationMembershipBaseListDataItem>;
-
 /** The list of records for the current page. */
 export type UserlandUserOrganizationMembershipBaseListDataList =
   Array<UserlandUserOrganizationMembershipBaseListDataItem>;
-const UserlandUserOrganizationMembershipBaseListDataList = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<UserlandUserOrganizationMembershipBaseListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type UserlandUserOrganizationMembershipBaseListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -7906,11 +5504,6 @@ export interface UserlandUserOrganizationMembershipBaseList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const UserlandUserOrganizationMembershipBaseList = /*@__PURE__*/ __L.at(
-  __c50,
-  5,
-) as any as S.Schema<UserlandUserOrganizationMembershipBaseList>;
-
 export interface ListGroupsControllerRequest {
   /** The ID of the organization. */
   organizationId: string;
@@ -7925,15 +5518,8 @@ export interface ListGroupsControllerRequest {
   /** Search groups by name or by group ID. */
   search?: string;
 }
-const ListGroupsControllerRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<ListGroupsControllerRequest>;
-
 /** The list of records for the current page. */
 export type GroupListDataList = Array<Group>;
-const GroupListDataList = /*@__PURE__*/ __L.at(__c50, 7) as any as S.Schema<GroupListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type GroupListListMetadata = AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 export interface GroupList {
@@ -7944,24 +5530,12 @@ export interface GroupList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const GroupList = /*@__PURE__*/ __L.at(__c51, 0) as any as S.Schema<GroupList>;
-
 export interface ListItContactsControllerRequest {
   /** The ID of the organization. */
   organization_id: string;
 }
-const ListItContactsControllerRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<ListItContactsControllerRequest>;
-
 /** The list of records for the current page. */
 export type ItContactListDataList = Array<ItContact>;
-const ItContactListDataList = /*@__PURE__*/ __L.at(
-  __c51,
-  2,
-) as any as S.Schema<ItContactListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type ItContactListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -7973,8 +5547,6 @@ export interface ItContactList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const ItContactList = /*@__PURE__*/ __L.at(__c51, 3) as any as S.Schema<ItContactList>;
-
 export interface ListOrganizationApiKeysControllerRequest {
   /** Unique identifier of the Organization. */
   organizationId: string;
@@ -7987,18 +5559,10 @@ export interface ListOrganizationApiKeysControllerRequest {
   /** Order the results by the creation time. Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const ListOrganizationApiKeysControllerRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<ListOrganizationApiKeysControllerRequest>;
-
 /** The entity that owns the API Key. */
 export type OrganizationApiKeyOwner = ApiKeyOwnerCase0;
 /** The permission slugs assigned to the API Key. */
 export type OrganizationApiKeyPermissionsList = Array<string>;
-const OrganizationApiKeyPermissionsList =
-  AgentTokenPermissionsList as any as S.Schema<OrganizationApiKeyPermissionsList>;
-
 export interface OrganizationApiKey {
   /** Distinguishes the API Key object. */
   object: string;
@@ -8021,15 +5585,8 @@ export interface OrganizationApiKey {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const OrganizationApiKey = /*@__PURE__*/ __L.at(__c51, 5) as any as S.Schema<OrganizationApiKey>;
-
 /** The list of records for the current page. */
 export type OrganizationApiKeyListDataList = Array<OrganizationApiKey>;
-const OrganizationApiKeyListDataList = /*@__PURE__*/ __L.at(
-  __c51,
-  6,
-) as any as S.Schema<OrganizationApiKeyListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type OrganizationApiKeyListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -8041,11 +5598,6 @@ export interface OrganizationApiKeyList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const OrganizationApiKeyList = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<OrganizationApiKeyList>;
-
 export interface ListOrganizationAuthorizedApplicationsControllerRequest {
   /** The ID of the organization. */
   organization_id: string;
@@ -8058,16 +5610,8 @@ export interface ListOrganizationAuthorizedApplicationsControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const ListOrganizationAuthorizedApplicationsControllerRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<ListOrganizationAuthorizedApplicationsControllerRequest>;
-
 /** The scopes granted by the user to the application. */
 export type OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList = Array<string>;
-const OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList>;
-
 export interface OrganizationAuthorizedConnectApplicationListDataItem {
   /** Distinguishes the authorized connect application object. */
   object: string;
@@ -8081,19 +5625,9 @@ export interface OrganizationAuthorizedConnectApplicationListDataItem {
   /** The ID of the user who authorized the application. */
   user_id: string;
 }
-const OrganizationAuthorizedConnectApplicationListDataItem = /*@__PURE__*/ __L.at(
-  __c52,
-  1,
-) as any as S.Schema<OrganizationAuthorizedConnectApplicationListDataItem>;
-
 /** The list of records for the current page. */
 export type OrganizationAuthorizedConnectApplicationListDataList =
   Array<OrganizationAuthorizedConnectApplicationListDataItem>;
-const OrganizationAuthorizedConnectApplicationListDataList = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<OrganizationAuthorizedConnectApplicationListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type OrganizationAuthorizedConnectApplicationListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -8105,11 +5639,6 @@ export interface OrganizationAuthorizedConnectApplicationList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const OrganizationAuthorizedConnectApplicationList = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<OrganizationAuthorizedConnectApplicationList>;
-
 export interface ListOrganizationFeatureFlagsControllerRequest {
   /** Unique identifier of the Organization. */
   organizationId: string;
@@ -8122,11 +5651,6 @@ export interface ListOrganizationFeatureFlagsControllerRequest {
   /** Order the results by the creation time. Defaults to `desc`. */
   order?: PaginationOrder | (string & {});
 }
-const ListOrganizationFeatureFlagsControllerRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<ListOrganizationFeatureFlagsControllerRequest>;
-
 export interface ListOrganizationMembershipGroupsControllerGroupsRequest {
   /** Unique identifier of the Organization Membership. */
   omId: string;
@@ -8139,15 +5663,7 @@ export interface ListOrganizationMembershipGroupsControllerGroupsRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const ListOrganizationMembershipGroupsControllerGroupsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<ListOrganizationMembershipGroupsControllerGroupsRequest>;
-
 export type ListOrganizationsControllerRequestDomainsList = Array<string>;
-const ListOrganizationsControllerRequestDomainsList =
-  AgentTokenPermissionsList as any as S.Schema<ListOrganizationsControllerRequestDomainsList>;
-
 export interface ListOrganizationsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -8162,18 +5678,8 @@ export interface ListOrganizationsControllerRequest {
   /** Searchable text for an Organization. Matches against the organization name. */
   search?: string;
 }
-const ListOrganizationsControllerRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<ListOrganizationsControllerRequest>;
-
 /** The list of records for the current page. */
 export type OrganizationListDataList = Array<Organization>;
-const OrganizationListDataList = /*@__PURE__*/ __L.at(
-  __c52,
-  7,
-) as any as S.Schema<OrganizationListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type OrganizationListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -8185,30 +5691,15 @@ export interface OrganizationList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const OrganizationList = /*@__PURE__*/ __L.at(__c53, 0) as any as S.Schema<OrganizationList>;
-
 export interface ListProviderControllerForOrganizationRequest {
   /** An [Organization](/reference/organization) identifier to list provider configurations for. */
   organizationId: string;
 }
-const ListProviderControllerForOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  1,
-) as any as S.Schema<ListProviderControllerForOrganizationRequest>;
-
 export type DataIntegrationConfigurationResponseScopesList = Array<string>;
-const DataIntegrationConfigurationResponseScopesList =
-  AgentTokenPermissionsList as any as S.Schema<DataIntegrationConfigurationResponseScopesList>;
-
 /** The provider-specific config values in effect for this organization, keyed by config field. Reflects the organization override for organization-credential providers, otherwise the provider root. Empty when none are configured. */
 export type DataIntegrationConfigurationResponseConfigMap = { [key: string]: string | undefined };
-const DataIntegrationConfigurationResponseConfigMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<DataIntegrationConfigurationResponseConfigMap>;
-
 /** The credentials type for this integration (e.g., `shared`, `custom`, or `organization`). */
 export type DataIntegrationCredentialsCredentialsType = "shared" | "custom" | "organization";
-const DataIntegrationCredentialsCredentialsType = S.String;
-
 /** Organization-managed OAuth credential configuration. Present only for integrations whose credentials are supplied by the organization; absent otherwise. */
 export interface DataIntegrationCredentials2 {
   /** The credentials type for this integration (e.g., `shared`, `custom`, or `organization`). */
@@ -8222,11 +5713,6 @@ export interface DataIntegrationCredentials2 {
   /** The redirect URI to register with the provider when configuring the organization-managed OAuth application. */
   redirect_uri: string;
 }
-const DataIntegrationCredentials2 = /*@__PURE__*/ __L.at(
-  __c53,
-  2,
-) as any as S.Schema<DataIntegrationCredentials2>;
-
 export interface DataIntegrationConfigurationResponse {
   /** Distinguishes the data integration configuration object. */
   object: string;
@@ -8250,30 +5736,15 @@ export interface DataIntegrationConfigurationResponse {
   updated_at: string;
   credentials?: DataIntegrationCredentials2;
 }
-const DataIntegrationConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<DataIntegrationConfigurationResponse>;
-
 /** A list of data integration configurations for the organization. */
 export type DataIntegrationConfigurationListResponseDataList =
   Array<DataIntegrationConfigurationResponse>;
-const DataIntegrationConfigurationListResponseDataList = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<DataIntegrationConfigurationListResponseDataList>;
-
 export interface DataIntegrationConfigurationListResponse {
   /** Indicates this is a list response. */
   object: string;
   /** A list of data integration configurations for the organization. */
   data: DataIntegrationConfigurationListResponseDataList;
 }
-const DataIntegrationConfigurationListResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<DataIntegrationConfigurationListResponse>;
-
 export interface ListRedirectUrisControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -8284,21 +5755,11 @@ export interface ListRedirectUrisControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const ListRedirectUrisControllerRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<ListRedirectUrisControllerRequest>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type ListRedirectUrisControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 /** The list of records for the current page. */
 export type ListRedirectUrisControllerResponseDataList = Array<RedirectUri>;
-const ListRedirectUrisControllerResponseDataList = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<ListRedirectUrisControllerResponseDataList>;
-
 export interface ListRedirectUrisControllerResponse {
   /** Indicates this is a list response. */
   object?: string;
@@ -8307,46 +5768,21 @@ export interface ListRedirectUrisControllerResponse {
   /** The list of records for the current page. */
   data?: ListRedirectUrisControllerResponseDataList;
 }
-const ListRedirectUrisControllerResponse = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<ListRedirectUrisControllerResponse>;
-
 export interface ListSamlIdpSigningCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
   connectionId: string;
 }
-const ListSamlIdpSigningCertificatesControllerRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  1,
-) as any as S.Schema<ListSamlIdpSigningCertificatesControllerRequest>;
-
 /** Every Identity Provider signing certificate on the Connection, including expired ones, oldest first. */
 export type SamlIdpSigningCertificateListDataList = Array<SamlIdpSigningCertificate>;
-const SamlIdpSigningCertificateListDataList = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-) as any as S.Schema<SamlIdpSigningCertificateListDataList>;
-
 export interface SamlIdpSigningCertificateList {
   object: string;
   /** Every Identity Provider signing certificate on the Connection, including expired ones, oldest first. */
   data: SamlIdpSigningCertificateListDataList;
 }
-const SamlIdpSigningCertificateList = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<SamlIdpSigningCertificateList>;
-
 export interface ListSamlSpEncryptionCertificatesControllerRequest {
   /** Unique identifier for the Connection. */
   connectionId: string;
 }
-const ListSamlSpEncryptionCertificatesControllerRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  4,
-) as any as S.Schema<ListSamlSpEncryptionCertificatesControllerRequest>;
-
 /** Every Service Provider encryption certificate on the Connection, including expired ones. */
 export type SamlSpEncryptionCertificateListDataList = Array<SamlSpEncryptionCertificate>;
 export interface SamlSpEncryptionCertificateList {
@@ -8354,9 +5790,6 @@ export interface SamlSpEncryptionCertificateList {
   /** Every Service Provider encryption certificate on the Connection, including expired ones. */
   data: SamlSpEncryptionCertificateListDataList;
 }
-const SamlSpEncryptionCertificateList =
-  SamlIdpSigningCertificateList as any as S.Schema<SamlSpEncryptionCertificateList>;
-
 export interface ListUserApiKeysControllerRequest {
   /** Unique identifier of the user. */
   userId: string;
@@ -8371,18 +5804,10 @@ export interface ListUserApiKeysControllerRequest {
   /** The ID of the organization to filter user API keys by. When provided, only API keys created against that organization membership are returned. */
   organization_id?: string;
 }
-const ListUserApiKeysControllerRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  5,
-) as any as S.Schema<ListUserApiKeysControllerRequest>;
-
 /** The entity that owns the API Key. */
 export type UserApiKeyOwner = ApiKeyOwnerCase1;
 /** The permission slugs assigned to the API Key. */
 export type UserApiKeyPermissionsList = Array<string>;
-const UserApiKeyPermissionsList =
-  AgentTokenPermissionsList as any as S.Schema<UserApiKeyPermissionsList>;
-
 export interface UserApiKey {
   /** Distinguishes the API Key object. */
   object: string;
@@ -8405,15 +5830,8 @@ export interface UserApiKey {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const UserApiKey = /*@__PURE__*/ __L.at(__c54, 6) as any as S.Schema<UserApiKey>;
-
 /** The list of records for the current page. */
 export type UserApiKeyListDataList = Array<UserApiKey>;
-const UserApiKeyListDataList = /*@__PURE__*/ __L.at(
-  __c54,
-  7,
-) as any as S.Schema<UserApiKeyListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type UserApiKeyListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -8425,8 +5843,6 @@ export interface UserApiKeyList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const UserApiKeyList = /*@__PURE__*/ __L.at(__c55, 0) as any as S.Schema<UserApiKeyList>;
-
 export interface ListUserlandUserFeatureFlagsControllerRequest {
   /** The ID of the user. */
   userId: string;
@@ -8439,11 +5855,6 @@ export interface ListUserlandUserFeatureFlagsControllerRequest {
   /** Order the results by the creation time. Defaults to `desc`. */
   order?: PaginationOrder | (string & {});
 }
-const ListUserlandUserFeatureFlagsControllerRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<ListUserlandUserFeatureFlagsControllerRequest>;
-
 export interface ListUserlandUserInvitesControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -8458,18 +5869,8 @@ export interface ListUserlandUserInvitesControllerRequest {
   /** The email address of the recipient. */
   email?: string;
 }
-const ListUserlandUserInvitesControllerRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  2,
-) as any as S.Schema<ListUserlandUserInvitesControllerRequest>;
-
 /** The list of records for the current page. */
 export type UserlandUserInviteListDataList = Array<UserlandUserInvite>;
-const UserlandUserInviteListDataList = /*@__PURE__*/ __L.at(
-  __c55,
-  3,
-) as any as S.Schema<UserlandUserInviteListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type UserlandUserInviteListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -8481,11 +5882,6 @@ export interface UserlandUserInviteList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const UserlandUserInviteList = /*@__PURE__*/ __L.at(
-  __c55,
-  4,
-) as any as S.Schema<UserlandUserInviteList>;
-
 export type ListUserlandUserOrganizationMembershipsControllerRequestStatusesItem =
   | "active"
   | "inactive"
@@ -8493,9 +5889,6 @@ export type ListUserlandUserOrganizationMembershipsControllerRequestStatusesItem
 export type ListUserlandUserOrganizationMembershipsControllerRequestStatusesList = Array<
   ListUserlandUserOrganizationMembershipsControllerRequestStatusesItem | (string & {})
 >;
-const ListUserlandUserOrganizationMembershipsControllerRequestStatusesList =
-  CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList as any as S.Schema<ListUserlandUserOrganizationMembershipsControllerRequestStatusesList>;
-
 export interface ListUserlandUserOrganizationMembershipsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -8512,19 +5905,9 @@ export interface ListUserlandUserOrganizationMembershipsControllerRequest {
   /** The ID of the [user](/reference/authkit/user). */
   user_id?: string;
 }
-const ListUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  5,
-) as any as S.Schema<ListUserlandUserOrganizationMembershipsControllerRequest>;
-
 /** The list of records for the current page. */
 export type UserlandUserOrganizationMembershipListDataList =
   Array<UserlandUserOrganizationMembership>;
-const UserlandUserOrganizationMembershipListDataList = /*@__PURE__*/ __L.at(
-  __c55,
-  6,
-) as any as S.Schema<UserlandUserOrganizationMembershipListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type UserlandUserOrganizationMembershipListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -8536,11 +5919,6 @@ export interface UserlandUserOrganizationMembershipList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const UserlandUserOrganizationMembershipList = /*@__PURE__*/ __L.at(
-  __c55,
-  7,
-) as any as S.Schema<UserlandUserOrganizationMembershipList>;
-
 export interface ListUserlandUserSessionsControllerRequest {
   /** The ID of the user. */
   id: string;
@@ -8553,11 +5931,6 @@ export interface ListUserlandUserSessionsControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `desc`. */
   order?: PaginationOrder | (string & {});
 }
-const ListUserlandUserSessionsControllerRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  0,
-) as any as S.Schema<ListUserlandUserSessionsControllerRequest>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type ListUserlandUserSessionsControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -8568,11 +5941,6 @@ export interface ListUserlandUserSessionsControllerResponseDataItemImpersonator 
   /** The justification the impersonator gave for impersonating the user. */
   reason: string | null;
 }
-const ListUserlandUserSessionsControllerResponseDataItemImpersonator = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<ListUserlandUserSessionsControllerResponseDataItemImpersonator>;
-
 /** The authentication method used to create this session. */
 export type ListUserlandUserSessionsControllerResponseDataItemAuthMethod =
   | "cross_app_auth"
@@ -8585,15 +5953,11 @@ export type ListUserlandUserSessionsControllerResponseDataItemAuthMethod =
   | "password"
   | "sso"
   | "unknown";
-const ListUserlandUserSessionsControllerResponseDataItemAuthMethod = S.String;
-
 /** The current status of the session. */
 export type ListUserlandUserSessionsControllerResponseDataItemStatus =
   | "active"
   | "expired"
   | "revoked";
-const ListUserlandUserSessionsControllerResponseDataItemStatus = S.String;
-
 export interface ListUserlandUserSessionsControllerResponseDataItem {
   /** Distinguishes the session object. */
   object: string;
@@ -8622,19 +5986,9 @@ export interface ListUserlandUserSessionsControllerResponseDataItem {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const ListUserlandUserSessionsControllerResponseDataItem = /*@__PURE__*/ __L.at(
-  __c56,
-  2,
-) as any as S.Schema<ListUserlandUserSessionsControllerResponseDataItem>;
-
 /** The list of records for the current page. */
 export type ListUserlandUserSessionsControllerResponseDataList =
   Array<ListUserlandUserSessionsControllerResponseDataItem>;
-const ListUserlandUserSessionsControllerResponseDataList = /*@__PURE__*/ __L.at(
-  __c56,
-  3,
-) as any as S.Schema<ListUserlandUserSessionsControllerResponseDataList>;
-
 export interface ListUserlandUserSessionsControllerResponse {
   /** Indicates this is a list response. */
   object?: string;
@@ -8643,17 +5997,7 @@ export interface ListUserlandUserSessionsControllerResponse {
   /** The list of records for the current page. */
   data?: ListUserlandUserSessionsControllerResponseDataList;
 }
-const ListUserlandUserSessionsControllerResponse = /*@__PURE__*/ __L.at(
-  __c56,
-  4,
-) as any as S.Schema<ListUserlandUserSessionsControllerResponse>;
-
 export interface ListWaitlistsControllerRequest {}
-const ListWaitlistsControllerRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  5,
-) as any as S.Schema<ListWaitlistsControllerRequest>;
-
 export interface Waitlist {
   /** Distinguishes the Waitlist object. */
   object: string;
@@ -8664,15 +6008,8 @@ export interface Waitlist {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const Waitlist = /*@__PURE__*/ __L.at(__c56, 6) as any as S.Schema<Waitlist>;
-
 /** The list of records for the current page. */
 export type ListWaitlistsControllerResponseDataList = Array<Waitlist>;
-const ListWaitlistsControllerResponseDataList = /*@__PURE__*/ __L.at(
-  __c56,
-  7,
-) as any as S.Schema<ListWaitlistsControllerResponseDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type ListWaitlistsControllerResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -8684,14 +6021,7 @@ export interface ListWaitlistsControllerResponse {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const ListWaitlistsControllerResponse = /*@__PURE__*/ __L.at(
-  __c57,
-  0,
-) as any as S.Schema<ListWaitlistsControllerResponse>;
-
 export type ListWaitlistsControllerEntriesRequestState = "pending" | "approved" | "denied";
-const ListWaitlistsControllerEntriesRequestState = S.String;
-
 export interface ListWaitlistsControllerEntriesRequest {
   /** The unique ID of the waitlist, or the literal `default` for the environment's default waitlist. The default waitlist is created when its first entry is added, so read requests for `default` return a `404` until then. */
   id: string;
@@ -8708,21 +6038,11 @@ export interface ListWaitlistsControllerEntriesRequest {
   /** Filter waitlist entries by their exact email address. */
   email?: string;
 }
-const ListWaitlistsControllerEntriesRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  1,
-) as any as S.Schema<ListWaitlistsControllerEntriesRequest>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type ListWaitlistsControllerEntriesResponseListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 /** The list of records for the current page. */
 export type ListWaitlistsControllerEntriesResponseDataList = Array<WaitlistEntry>;
-const ListWaitlistsControllerEntriesResponseDataList = /*@__PURE__*/ __L.at(
-  __c57,
-  2,
-) as any as S.Schema<ListWaitlistsControllerEntriesResponseDataList>;
-
 export interface ListWaitlistsControllerEntriesResponse {
   /** Indicates this is a list response. */
   object?: string;
@@ -8731,11 +6051,6 @@ export interface ListWaitlistsControllerEntriesResponse {
   /** The list of records for the current page. */
   data?: ListWaitlistsControllerEntriesResponseDataList;
 }
-const ListWaitlistsControllerEntriesResponse = /*@__PURE__*/ __L.at(
-  __c57,
-  3,
-) as any as S.Schema<ListWaitlistsControllerEntriesResponse>;
-
 export interface ListWebhookEndpointsControllerRequest {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -8746,18 +6061,8 @@ export interface ListWebhookEndpointsControllerRequest {
   /** Order the results by the creation time. Supported values are `"asc"` (ascending), `"desc"` (descending), and `"normal"` (descending with reversed cursor semantics where `before` fetches older records and `after` fetches newer records). Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const ListWebhookEndpointsControllerRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  4,
-) as any as S.Schema<ListWebhookEndpointsControllerRequest>;
-
 /** The list of records for the current page. */
 export type WebhookEndpointListDataList = Array<WebhookEndpointJson>;
-const WebhookEndpointListDataList = /*@__PURE__*/ __L.at(
-  __c57,
-  5,
-) as any as S.Schema<WebhookEndpointListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type WebhookEndpointListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -8769,45 +6074,22 @@ export interface WebhookEndpointList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const WebhookEndpointList = /*@__PURE__*/ __L.at(__c57, 6) as any as S.Schema<WebhookEndpointList>;
-
 export interface LogoutSsoControllerRequest {
   /** The logout token returned from the [Logout Authorize](/reference/sso/logout/authorize) endpoint. */
   token: string;
 }
-const LogoutSsoControllerRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  7,
-) as any as S.Schema<LogoutSsoControllerRequest>;
-
 export interface LogoutSsoControllerResponse {}
-const LogoutSsoControllerResponse =
-  DeleteGroupsControllerResponse as any as S.Schema<LogoutSsoControllerResponse>;
-
 export interface LogoutUserlandSessionsControllerRequest {
   /** The ID of the session. This can be extracted from the `sid` claim of the access token. */
   session_id: string;
   /** The URL to redirect the user to after logout. */
   return_to?: string;
 }
-const LogoutUserlandSessionsControllerRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  0,
-) as any as S.Schema<LogoutUserlandSessionsControllerRequest>;
-
 export interface LogoutUserlandSessionsControllerResponse {}
-const LogoutUserlandSessionsControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<LogoutUserlandSessionsControllerResponse>;
-
 export interface OrganizationsControllerFindRequest {
   /** Unique identifier of the Organization. */
   id: string;
 }
-const OrganizationsControllerFindRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  1,
-) as any as S.Schema<OrganizationsControllerFindRequest>;
-
 export interface PatchConnectionStandardAttributesDto {
   /** The IdP attribute or claim the profile's `idp_id` is mapped from. */
   idp_id?: string;
@@ -8822,29 +6104,16 @@ export interface PatchConnectionStandardAttributesDto {
   /** The IdP attribute or claim the profile's `name` is mapped from. Set to `null` to unset the mapping. */
   name?: string | null;
 }
-const PatchConnectionStandardAttributesDto =
-  CreateConnectionStandardAttributesDto as any as S.Schema<PatchConnectionStandardAttributesDto>;
-
 /** How IdP attributes or claims map onto custom attributes, keyed by custom attribute name. Custom attributes must already be defined in the WorkOS dashboard. Only the provided keys are updated; a `null` value unsets that mapping. */
 export type PatchConnectionAttributeMapsDtoCustomAttributesMap = {
   [key: string]: string | null | undefined;
 };
-const PatchConnectionAttributeMapsDtoCustomAttributesMap = /*@__PURE__*/ __L.at(
-  __c58,
-  2,
-) as any as S.Schema<PatchConnectionAttributeMapsDtoCustomAttributesMap>;
-
 export interface PatchConnectionAttributeMapsDto {
   /** How IdP attributes or claims map onto the standard WorkOS profile fields. Only the provided fields are updated. */
   standard_attributes?: PatchConnectionStandardAttributesDto;
   /** How IdP attributes or claims map onto custom attributes, keyed by custom attribute name. Custom attributes must already be defined in the WorkOS dashboard. Only the provided keys are updated; a `null` value unsets that mapping. */
   custom_attributes?: PatchConnectionAttributeMapsDtoCustomAttributesMap;
 }
-const PatchConnectionAttributeMapsDto = /*@__PURE__*/ __L.at(
-  __c58,
-  3,
-) as any as S.Schema<PatchConnectionAttributeMapsDto>;
-
 export interface PatchConnectionSamlOptionsDto {
   /** The Identity Provider metadata URL. When provided, the IdP fields and signing certificates are re-imported from the metadata document, replacing the current set. Mutually exclusive with the manual IdP fields. Set to `null` to stop tracking a metadata URL. */
   idp_metadata_url?: string | null;
@@ -8857,18 +6126,11 @@ export interface PatchConnectionSamlOptionsDto {
   /** The Identity Provider SSO URL. */
   idp_sso_url?: string;
 }
-const PatchConnectionSamlOptionsDto = /*@__PURE__*/ __L.at(
-  __c58,
-  4,
-) as any as S.Schema<PatchConnectionSamlOptionsDto>;
-
 /** The token-endpoint client authentication method. Moving to `private_key_jwt` generates a signing key pair if the connection has none; its certificate is returned in `oidc_options.jwt_signing_certs` and must be registered at the Identity Provider. */
 export type PatchConnectionOidcOptionsDtoTokenAuthenticationMethod =
   | "client_secret_post"
   | "client_secret_basic"
   | "private_key_jwt";
-const PatchConnectionOidcOptionsDtoTokenAuthenticationMethod = S.String;
-
 /** The ID-token signing algorithm. */
 export type PatchConnectionOidcOptionsDtoIdTokenSignatureAlgorithm =
   | "ES256"
@@ -8884,8 +6146,6 @@ export type PatchConnectionOidcOptionsDtoIdTokenSignatureAlgorithm =
   | "RS256"
   | "RS384"
   | "RS512";
-const PatchConnectionOidcOptionsDtoIdTokenSignatureAlgorithm = S.String;
-
 export interface PatchConnectionOidcOptionsDto {
   /** The OIDC discovery endpoint. */
   discovery_endpoint?: string;
@@ -8908,11 +6168,6 @@ export interface PatchConnectionOidcOptionsDto {
   /** Whether to fetch additional profile attributes from the userinfo endpoint. */
   fetch_user_info?: boolean;
 }
-const PatchConnectionOidcOptionsDto = /*@__PURE__*/ __L.at(
-  __c58,
-  5,
-) as any as S.Schema<PatchConnectionOidcOptionsDto>;
-
 export interface PatchConnectionsControllerRequest {
   /** Unique identifier for the Connection. */
   id: string;
@@ -8929,20 +6184,9 @@ export interface PatchConnectionsControllerRequest {
   /** Protocol configuration for OIDC connections. Only the provided fields are updated. Mutually exclusive with `saml_options`. */
   oidc_options?: PatchConnectionOidcOptionsDto;
 }
-const PatchConnectionsControllerRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  6,
-) as any as S.Schema<PatchConnectionsControllerRequest>;
-
 export type ProviderControllerConfigureRequestScopesList = Array<string>;
-const ProviderControllerConfigureRequestScopesList =
-  AgentTokenPermissionsList as any as S.Schema<ProviderControllerConfigureRequestScopesList>;
-
 /** Provider-specific config values to set for the organization, keyed by config field. Only fields the provider declares are accepted, and each value must match that field's pattern. Accepted only for providers whose credentials are organization-managed; for shared or custom credential providers, config belongs on the integration itself (via the data-integrations API) and supplying it here is rejected. */
 export type ProviderControllerConfigureRequestConfigMap = { [key: string]: string | undefined };
-const ProviderControllerConfigureRequestConfigMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<ProviderControllerConfigureRequestConfigMap>;
-
 export interface ProviderControllerConfigureRequest {
   /** An [Organization](/reference/organization) identifier to configure the provider for. */
   organizationId: string;
@@ -8959,11 +6203,6 @@ export interface ProviderControllerConfigureRequest {
   /** Provider-specific config values to set for the organization, keyed by config field. Only fields the provider declares are accepted, and each value must match that field's pattern. Accepted only for providers whose credentials are organization-managed; for shared or custom credential providers, config belongs on the integration itself (via the data-integrations API) and supplying it here is rejected. */
   config?: ProviderControllerConfigureRequestConfigMap;
 }
-const ProviderControllerConfigureRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  7,
-) as any as S.Schema<ProviderControllerConfigureRequest>;
-
 /** The authentication method being used. */
 export type RadarStandaloneControllerAssessRequestAuthMethod =
   | "Password"
@@ -8974,12 +6213,8 @@ export type RadarStandaloneControllerAssessRequestAuthMethod =
   | "Social"
   | "SSO"
   | "Other";
-const RadarStandaloneControllerAssessRequestAuthMethod = S.String;
-
 /** The action being performed. */
 export type RadarStandaloneControllerAssessRequestAction = "sign-up" | "sign-in";
-const RadarStandaloneControllerAssessRequestAction = S.String;
-
 export interface RadarStandaloneControllerAssessRequest {
   /** The IP address of the request to assess. */
   ip_address: string;
@@ -8994,15 +6229,8 @@ export interface RadarStandaloneControllerAssessRequest {
   /** An optional Radar signals ID for the request. */
   signals_id?: string;
 }
-const RadarStandaloneControllerAssessRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  0,
-) as any as S.Schema<RadarStandaloneControllerAssessRequest>;
-
 /** The verdict of the risk assessment. */
 export type RadarStandaloneResponseVerdict = "allow" | "block" | "challenge";
-const RadarStandaloneResponseVerdict = S.String;
-
 /** The Radar control that triggered the verdict. Only present if the verdict is `block` or `challenge`. */
 export type RadarStandaloneResponseControl =
   | "bot_detection"
@@ -9012,8 +6240,6 @@ export type RadarStandaloneResponseControl =
   | "stale_account"
   | "unrecognized_device"
   | "restriction";
-const RadarStandaloneResponseControl = S.String;
-
 /** The type of blocklist entry that triggered the verdict. Only present if the control is `restriction`. */
 export type RadarStandaloneResponseBlocklistType =
   | "ip_address"
@@ -9023,8 +6249,6 @@ export type RadarStandaloneResponseBlocklistType =
   | "user_agent"
   | "device_fingerprint"
   | "country";
-const RadarStandaloneResponseBlocklistType = S.String;
-
 export interface RadarStandaloneResponse {
   /** The verdict of the risk assessment. */
   verdict?: RadarStandaloneResponseVerdict;
@@ -9037,11 +6261,6 @@ export interface RadarStandaloneResponse {
   /** The type of blocklist entry that triggered the verdict. Only present if the control is `restriction`. */
   blocklist_type?: RadarStandaloneResponseBlocklistType;
 }
-const RadarStandaloneResponse = /*@__PURE__*/ __L.at(
-  __c59,
-  1,
-) as any as S.Schema<RadarStandaloneResponse>;
-
 export type RadarStandaloneControllerDeleteRadarListEntryRequestType =
   | "ip_address"
   | "domain"
@@ -9050,11 +6269,7 @@ export type RadarStandaloneControllerDeleteRadarListEntryRequestType =
   | "user_agent"
   | "device_fingerprint"
   | "country";
-const RadarStandaloneControllerDeleteRadarListEntryRequestType = S.String;
-
 export type RadarStandaloneControllerDeleteRadarListEntryRequestAction = "block" | "allow";
-const RadarStandaloneControllerDeleteRadarListEntryRequestAction = S.String;
-
 export interface RadarStandaloneControllerDeleteRadarListEntryRequest {
   /** The type of the Radar list (e.g. ip_address, domain, email). */
   type: RadarStandaloneControllerDeleteRadarListEntryRequestType | (string & {});
@@ -9063,15 +6278,7 @@ export interface RadarStandaloneControllerDeleteRadarListEntryRequest {
   /** The value to remove from the list. Must match an existing entry. */
   entry: string;
 }
-const RadarStandaloneControllerDeleteRadarListEntryRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  2,
-) as any as S.Schema<RadarStandaloneControllerDeleteRadarListEntryRequest>;
-
 export interface RadarStandaloneControllerDeleteRadarListEntryResponse {}
-const RadarStandaloneControllerDeleteRadarListEntryResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<RadarStandaloneControllerDeleteRadarListEntryResponse>;
-
 export type RadarStandaloneControllerUpdateRadarListRequestType =
   | "ip_address"
   | "domain"
@@ -9080,11 +6287,7 @@ export type RadarStandaloneControllerUpdateRadarListRequestType =
   | "user_agent"
   | "device_fingerprint"
   | "country";
-const RadarStandaloneControllerUpdateRadarListRequestType = S.String;
-
 export type RadarStandaloneControllerUpdateRadarListRequestAction = "block" | "allow";
-const RadarStandaloneControllerUpdateRadarListRequestAction = S.String;
-
 export interface RadarStandaloneControllerUpdateRadarListRequest {
   /** The type of the Radar list (e.g. ip_address, domain, email). */
   type: RadarStandaloneControllerUpdateRadarListRequestType | (string & {});
@@ -9093,36 +6296,17 @@ export interface RadarStandaloneControllerUpdateRadarListRequest {
   /** The value to add to the list. Must match the format of the list type (e.g. a valid IP address for `ip_address`, a valid email for `email`). */
   entry: string;
 }
-const RadarStandaloneControllerUpdateRadarListRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  3,
-) as any as S.Schema<RadarStandaloneControllerUpdateRadarListRequest>;
-
 export interface RadarListEntryAlreadyPresentResponse {
   /** A message indicating the entry already exists. */
   message?: string;
 }
-const RadarListEntryAlreadyPresentResponse = /*@__PURE__*/ __L.at(
-  __c59,
-  4,
-) as any as S.Schema<RadarListEntryAlreadyPresentResponse>;
-
 export interface RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentRequest {
   /** The ID of the group. */
   group_id: string;
   /** The ID of the group role assignment to remove. */
   role_assignment_id: string;
 }
-const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentRequest =
-  /*@__PURE__*/ __L.at(
-    __c59,
-    5,
-  ) as any as S.Schema<RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentRequest>;
-
 export interface RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentResponse {}
-const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentResponse =
-  DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentResponse>;
-
 export interface RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest {
   /** The ID of the group. */
   group_id: string;
@@ -9135,16 +6319,7 @@ export interface RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssig
   /** The resource type slug. */
   resource_type_slug?: string;
 }
-const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest =
-  /*@__PURE__*/ __L.at(
-    __c59,
-    6,
-  ) as any as S.Schema<RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest>;
-
 export interface RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsResponse {}
-const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsResponse =
-  DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsResponse>;
-
 export interface RemoveAuthorizationOrganizationRolePermissionsControllerPermissionRequest {
   /** The ID of the organization. */
   organizationId: string;
@@ -9153,12 +6328,6 @@ export interface RemoveAuthorizationOrganizationRolePermissionsControllerPermiss
   /** The slug of the permission to remove. */
   permissionSlug: string;
 }
-const RemoveAuthorizationOrganizationRolePermissionsControllerPermissionRequest =
-  /*@__PURE__*/ __L.at(
-    __c59,
-    7,
-  ) as any as S.Schema<RemoveAuthorizationOrganizationRolePermissionsControllerPermissionRequest>;
-
 export interface RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaRequest {
   /** The ID of the organization membership. */
   organization_membership_id: string;
@@ -9171,30 +6340,14 @@ export interface RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaReque
   /** The resource type slug. Required with `resource_external_id`. Mutually exclusive with `resource_id`. */
   resource_type_slug?: string;
 }
-const RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  0,
-) as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaRequest>;
-
 export interface RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaResponse {}
-const RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaResponse =
-  DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaResponse>;
-
 export interface RemoveAuthorizationRoleAssignmentsControllerRoleByIdRequest {
   /** The ID of the organization membership. */
   organization_membership_id: string;
   /** The ID of the role assignment to remove. */
   role_assignment_id: string;
 }
-const RemoveAuthorizationRoleAssignmentsControllerRoleByIdRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  1,
-) as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByIdRequest>;
-
 export interface RemoveAuthorizationRoleAssignmentsControllerRoleByIdResponse {}
-const RemoveAuthorizationRoleAssignmentsControllerRoleByIdResponse =
-  DeleteUserlandUserOrganizationMembershipsControllerResponse as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByIdResponse>;
-
 export interface RemoveGroupMembershipsControllerMemberRequest {
   /** Unique identifier of the Organization. */
   organizationId: string;
@@ -9203,15 +6356,7 @@ export interface RemoveGroupMembershipsControllerMemberRequest {
   /** Unique identifier of the Organization Membership. */
   omId: string;
 }
-const RemoveGroupMembershipsControllerMemberRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  2,
-) as any as S.Schema<RemoveGroupMembershipsControllerMemberRequest>;
-
 export interface RemoveGroupMembershipsControllerMemberResponse {}
-const RemoveGroupMembershipsControllerMemberResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<RemoveGroupMembershipsControllerMemberResponse>;
-
 export interface ReplaceGroupRoleAssignmentEntryDto {
   /** The slug of the role to assign to the group. */
   role_slug: string;
@@ -9222,32 +6367,15 @@ export interface ReplaceGroupRoleAssignmentEntryDto {
   /** The resource type slug. */
   resource_type_slug?: string;
 }
-const ReplaceGroupRoleAssignmentEntryDto = /*@__PURE__*/ __L.at(
-  __c60,
-  3,
-) as any as S.Schema<ReplaceGroupRoleAssignmentEntryDto>;
-
 /** The list of role assignments that should exist for the group. All existing assignments will be replaced. */
 export type ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequestRoleAssignmentsList =
   Array<ReplaceGroupRoleAssignmentEntryDto>;
-const ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequestRoleAssignmentsList =
-  /*@__PURE__*/ __L.at(
-    __c60,
-    4,
-  ) as any as S.Schema<ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequestRoleAssignmentsList>;
-
 export interface ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest {
   /** The ID of the group. */
   group_id: string;
   /** The list of role assignments that should exist for the group. All existing assignments will be replaced. */
   role_assignments: ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequestRoleAssignmentsList;
 }
-const ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest =
-  /*@__PURE__*/ __L.at(
-    __c60,
-    5,
-  ) as any as S.Schema<ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest>;
-
 /** The locale to use when rendering the invitation email. See [supported locales](/authkit/hosted-ui/localization). */
 export type ResendUserlandUserInvitesControllerRequestLocale =
   | "af"
@@ -9340,85 +6468,42 @@ export type ResendUserlandUserInvitesControllerRequestLocale =
   | "zh-HK"
   | "zh-TW"
   | "zu";
-const ResendUserlandUserInvitesControllerRequestLocale = S.String;
-
 export interface ResendUserlandUserInvitesControllerRequest {
   /** The unique ID of the invitation. */
   id: string;
   /** The locale to use when rendering the invitation email. See [supported locales](/authkit/hosted-ui/localization). */
   locale?: ResendUserlandUserInvitesControllerRequestLocale | (string & {});
 }
-const ResendUserlandUserInvitesControllerRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  6,
-) as any as S.Schema<ResendUserlandUserInvitesControllerRequest>;
-
 export interface ResetUserlandUsersControllerPassword0Request {
   /** The password reset token. */
   token?: string;
   /** The new password to set for the user. */
   new_password?: string | Redacted.Redacted<string>;
 }
-const ResetUserlandUsersControllerPassword0Request = /*@__PURE__*/ __L.at(
-  __c60,
-  7,
-) as any as S.Schema<ResetUserlandUsersControllerPassword0Request>;
-
 export interface ResetPasswordResponse {
   /** The user whose password was reset. */
   user?: UserlandUser;
 }
-const ResetPasswordResponse = /*@__PURE__*/ __L.at(
-  __c61,
-  0,
-) as any as S.Schema<ResetPasswordResponse>;
-
 export interface RevokeAgentInstanceSessionsControllerRequest {
   /** The unique ID of the agent instance session. */
   agent_instance_session_id: string;
 }
-const RevokeAgentInstanceSessionsControllerRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  1,
-) as any as S.Schema<RevokeAgentInstanceSessionsControllerRequest>;
-
 export interface RevokeItContactsControllerRequest {
   /** The ID of the organization. */
   organization_id: string;
   /** The ID of the IT contact. */
   contact_id: string;
 }
-const RevokeItContactsControllerRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  2,
-) as any as S.Schema<RevokeItContactsControllerRequest>;
-
 export interface RevokeItContactsControllerResponse {}
-const RevokeItContactsControllerResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<RevokeItContactsControllerResponse>;
-
 export interface RevokeUserlandSessionsControllerSessionRequest {
   /** The ID of the session to revoke. This can be extracted from the `sid` claim of the access token. */
   session_id?: string;
 }
-const RevokeUserlandSessionsControllerSessionRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  3,
-) as any as S.Schema<RevokeUserlandSessionsControllerSessionRequest>;
-
 export interface RevokeUserlandSessionsControllerSessionResponse {}
-const RevokeUserlandSessionsControllerSessionResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<RevokeUserlandSessionsControllerSessionResponse>;
-
 export interface RevokeUserlandUserInvitesControllerRequest {
   /** The unique ID of the invitation. */
   id: string;
 }
-const RevokeUserlandUserInvitesControllerRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  4,
-) as any as S.Schema<RevokeUserlandUserInvitesControllerRequest>;
-
 /** The state of the invitation. */
 export type RevokeUserlandUserInvitesControllerResponseState =
   | "pending"
@@ -9457,9 +6542,6 @@ export interface RevokeUserlandUserInvitesControllerResponse {
   /** The URL where the recipient can accept the invitation. */
   accept_invitation_url: string;
 }
-const RevokeUserlandUserInvitesControllerResponse =
-  AcceptUserlandUserInvitesControllerResponse as any as S.Schema<RevokeUserlandUserInvitesControllerResponse>;
-
 export interface SendPublicRadarChallengesControllerRadarSmsChallengeRequest {
   /** The ID of the user to send the SMS challenge to. */
   user_id: string;
@@ -9472,33 +6554,18 @@ export interface SendPublicRadarChallengesControllerRadarSmsChallengeRequest {
   /** The user agent string from the user's request. */
   user_agent?: string;
 }
-const SendPublicRadarChallengesControllerRadarSmsChallengeRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  5,
-) as any as S.Schema<SendPublicRadarChallengesControllerRadarSmsChallengeRequest>;
-
 export interface SendRadarSmsChallengeResponse {
   /** The ID of the SMS verification. Pass this to the authenticate endpoint to verify the code. */
   verification_id: string;
   /** The phone number the verification code was sent to. */
   phone_number: string;
 }
-const SendRadarSmsChallengeResponse = /*@__PURE__*/ __L.at(
-  __c61,
-  6,
-) as any as S.Schema<SendRadarSmsChallengeResponse>;
-
 export interface SendUserlandUsersControllerEmailChangeRequest {
   /** The unique ID of the user. */
   id: string;
   /** The new email address to change to. */
   new_email?: string;
 }
-const SendUserlandUsersControllerEmailChangeRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  7,
-) as any as S.Schema<SendUserlandUsersControllerEmailChangeRequest>;
-
 export interface EmailChange {
   /** Distinguishes the email change object. */
   object?: string;
@@ -9510,32 +6577,17 @@ export interface EmailChange {
   /** The timestamp when the email change challenge was created. */
   created_at?: string;
 }
-const EmailChange = /*@__PURE__*/ __L.at(__c62, 0) as any as S.Schema<EmailChange>;
-
 export interface SendUserlandUsersControllerVerificationEmail0Request {
   /** The ID of the user. */
   id: string;
 }
-const SendUserlandUsersControllerVerificationEmail0Request = /*@__PURE__*/ __L.at(
-  __c62,
-  1,
-) as any as S.Schema<SendUserlandUsersControllerVerificationEmail0Request>;
-
 export interface SendVerificationEmailResponse {
   /** The user to whom the verification email was sent. */
   user?: UserlandUser;
 }
-const SendVerificationEmailResponse = /*@__PURE__*/ __L.at(
-  __c62,
-  2,
-) as any as S.Schema<SendVerificationEmailResponse>;
-
 /** The permission slugs to assign to the role. */
 export type SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequestPermissionsList =
   Array<string>;
-const SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequestPermissionsList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequestPermissionsList>;
-
 export interface SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequest {
   /** The ID of the organization. */
   organizationId: string;
@@ -9544,24 +6596,13 @@ export interface SetAuthorizationOrganizationRolePermissionsControllerPermission
   /** The permission slugs to assign to the role. */
   permissions?: SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequestPermissionsList;
 }
-const SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequest =
-  /*@__PURE__*/ __L.at(
-    __c62,
-    3,
-  ) as any as S.Schema<SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequest>;
-
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponseType =
   | "EnvironmentRole"
   | "OrganizationRole";
-const SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponseType = S.String;
-
 /** The permission slugs assigned to the role. */
 export type SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponsePermissionsList =
   Array<string>;
-const SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponsePermissionsList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponsePermissionsList>;
-
 export interface SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponse {
   /** A unique slug for the role. */
   slug: string;
@@ -9584,41 +6625,22 @@ export interface SetAuthorizationOrganizationRolePermissionsControllerPermission
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponse =
-  /*@__PURE__*/ __L.at(
-    __c62,
-    4,
-  ) as any as S.Schema<SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponse>;
-
 /** The permission slugs to assign to the role. */
 export type SetAuthorizationRolePermissionsControllerPermissionsRequestPermissionsList =
   Array<string>;
-const SetAuthorizationRolePermissionsControllerPermissionsRequestPermissionsList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<SetAuthorizationRolePermissionsControllerPermissionsRequestPermissionsList>;
-
 export interface SetAuthorizationRolePermissionsControllerPermissionsRequest {
   /** The slug of the environment role. */
   slug: string;
   /** The permission slugs to assign to the role. */
   permissions?: SetAuthorizationRolePermissionsControllerPermissionsRequestPermissionsList;
 }
-const SetAuthorizationRolePermissionsControllerPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  5,
-) as any as S.Schema<SetAuthorizationRolePermissionsControllerPermissionsRequest>;
-
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type SetAuthorizationRolePermissionsControllerPermissionsResponseType =
   | "EnvironmentRole"
   | "OrganizationRole";
-const SetAuthorizationRolePermissionsControllerPermissionsResponseType = S.String;
-
 /** The permission slugs assigned to the role. */
 export type SetAuthorizationRolePermissionsControllerPermissionsResponsePermissionsList =
   Array<string>;
-const SetAuthorizationRolePermissionsControllerPermissionsResponsePermissionsList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<SetAuthorizationRolePermissionsControllerPermissionsResponsePermissionsList>;
-
 export interface SetAuthorizationRolePermissionsControllerPermissionsResponse {
   /** A unique slug for the role. */
   slug: string;
@@ -9641,25 +6663,12 @@ export interface SetAuthorizationRolePermissionsControllerPermissionsResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const SetAuthorizationRolePermissionsControllerPermissionsResponse = /*@__PURE__*/ __L.at(
-  __c62,
-  6,
-) as any as S.Schema<SetAuthorizationRolePermissionsControllerPermissionsResponse>;
-
 export interface SsoControllerJsonWebKeySetRequest {
   /** Identifies the application making the request to the WorkOS server. You can obtain your client ID from the [API Keys](https://dashboard.workos.com/api-keys) page in the dashboard. */
   clientId: string;
 }
-const SsoControllerJsonWebKeySetRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  7,
-) as any as S.Schema<SsoControllerJsonWebKeySetRequest>;
-
 /** X.509 certificate chain. */
 export type JwksResponseKeysItemX5cList = Array<string>;
-const JwksResponseKeysItemX5cList =
-  AgentTokenPermissionsList as any as S.Schema<JwksResponseKeysItemX5cList>;
-
 export interface JwksResponseKeysItem {
   /** Algorithm. */
   alg: string;
@@ -9678,49 +6687,25 @@ export interface JwksResponseKeysItem {
   /** X.509 certificate SHA-256 thumbprint. */
   x5t_S256: string;
 }
-const JwksResponseKeysItem = /*@__PURE__*/ __L.at(
-  __c63,
-  0,
-) as any as S.Schema<JwksResponseKeysItem>;
-
 /** The public keys used for verifying access tokens. */
 export type JwksResponseKeysList = Array<JwksResponseKeysItem>;
-const JwksResponseKeysList = /*@__PURE__*/ __L.at(
-  __c63,
-  1,
-) as any as S.Schema<JwksResponseKeysList>;
-
 export interface JwksResponse {
   /** The public keys used for verifying access tokens. */
   keys?: JwksResponseKeysList;
 }
-const JwksResponse = /*@__PURE__*/ __L.at(__c63, 2) as any as S.Schema<JwksResponse>;
-
 export interface SsoControllerLogoutAuthorizeRequest {
   /** The unique ID of the profile to log out. */
   profile_id: string;
 }
-const SsoControllerLogoutAuthorizeRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  3,
-) as any as S.Schema<SsoControllerLogoutAuthorizeRequest>;
-
 export interface SsoLogoutAuthorizeResponse {
   /** The URL to redirect the user to in order to log out ([Logout Redirect](/reference/sso/logout) endpoint ready to use). */
   logout_url?: string;
   /** The logout token to be used in the [Logout Redirect](/reference/sso/logout) endpoint. */
   logout_token?: string;
 }
-const SsoLogoutAuthorizeResponse = /*@__PURE__*/ __L.at(
-  __c63,
-  4,
-) as any as S.Schema<SsoLogoutAuthorizeResponse>;
-
 export type SsoControllerTokenRequestGrantType =
   | "authorization_code"
   | "urn:ietf:params:oauth:grant-type:token-exchange";
-const SsoControllerTokenRequestGrantType = S.String;
-
 export interface SsoControllerTokenRequest {
   /** The client ID of the WorkOS environment. */
   client_id: string;
@@ -9739,16 +6724,8 @@ export interface SsoControllerTokenRequest {
   /** The ID of the organization whose connection the subject token is validated against. Required when `grant_type` is `urn:ietf:params:oauth:grant-type:token-exchange`. Must be sent in the request body. */
   organization_id?: string;
 }
-const SsoControllerTokenRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  5,
-) as any as S.Schema<SsoControllerTokenRequest>;
-
 /** A list of OAuth scopes for which the access token is authorized. */
 export type SsoTokenResponseOauthTokensScopesList = Array<string>;
-const SsoTokenResponseOauthTokensScopesList =
-  AgentTokenPermissionsList as any as S.Schema<SsoTokenResponseOauthTokensScopesList>;
-
 /** OAuth tokens issued by the identity provider, if available. */
 export interface SsoTokenResponseOauthTokens {
   /** The OAuth provider used for authentication. */
@@ -9762,11 +6739,6 @@ export interface SsoTokenResponseOauthTokens {
   /** A list of OAuth scopes for which the access token is authorized. */
   scopes: SsoTokenResponseOauthTokensScopesList;
 }
-const SsoTokenResponseOauthTokens = /*@__PURE__*/ __L.at(
-  __c63,
-  6,
-) as any as S.Schema<SsoTokenResponseOauthTokens>;
-
 export interface SsoTokenResponse {
   /** The type of token issued. */
   token_type?: string;
@@ -9779,26 +6751,13 @@ export interface SsoTokenResponse {
   /** OAuth tokens issued by the identity provider, if available. */
   oauth_tokens?: SsoTokenResponseOauthTokens;
 }
-const SsoTokenResponse = /*@__PURE__*/ __L.at(__c63, 7) as any as S.Schema<SsoTokenResponse>;
-
 export interface SyncDirectoriesControllerDirectoryRequest {
   /** Unique identifier for the Directory. */
   id: string;
 }
-const SyncDirectoriesControllerDirectoryRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  0,
-) as any as S.Schema<SyncDirectoriesControllerDirectoryRequest>;
-
 export interface SyncDirectoriesControllerDirectoryResponse {}
-const SyncDirectoriesControllerDirectoryResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<SyncDirectoriesControllerDirectoryResponse>;
-
 /** Permission slugs forming the ceiling on what sessions minted from this blueprint may do. Each slug must exist in the environment. */
 export type UpdateAgentBlueprintsControllerRequestPermissionsList = Array<string>;
-const UpdateAgentBlueprintsControllerRequestPermissionsList =
-  AgentTokenPermissionsList as any as S.Schema<UpdateAgentBlueprintsControllerRequestPermissionsList>;
-
 /** Role slugs whose members may mint user-delegated sessions from this blueprint. An empty list allows any member. */
 export type UpdateAgentBlueprintsControllerRequestInvocableByRoleSlugsList = Array<string>;
 /** Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. An empty list allows any organization in the environment. */
@@ -9810,9 +6769,6 @@ export interface UpdateAgentBlueprintsControllerRequestInvocableBy {
   /** Organizations in which sessions may be minted from this blueprint, enforced on user-delegated, autonomous, and agent-delegated mints. An empty list allows any organization in the environment. */
   organization_ids?: UpdateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList;
 }
-const UpdateAgentBlueprintsControllerRequestInvocableBy =
-  CreateAgentBlueprintsControllerRequestInvocableBy as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableBy>;
-
 export type UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem =
   | "delegated"
   | "autonomous";
@@ -9825,9 +6781,6 @@ export interface UpdateAgentBlueprintsControllerRequestInvocableAs {
   /** Instance types that may be minted from this blueprint: `delegated` and/or `autonomous`. At least one is required; existing sessions of a removed type are refused at their next refresh. */
   instance_types?: UpdateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList;
 }
-const UpdateAgentBlueprintsControllerRequestInvocableAs =
-  CreateAgentBlueprintsControllerRequestInvocableAs as any as S.Schema<UpdateAgentBlueprintsControllerRequestInvocableAs>;
-
 /** Token and session lifetimes for sessions minted from this blueprint. Omitted fields are left unchanged. */
 export interface UpdateAgentBlueprintsControllerRequestSessionSettings {
   /** Maximum lifetime of a session in seconds; refreshes never extend a session past this. At most 31,536,000 (365 days). */
@@ -9837,11 +6790,6 @@ export interface UpdateAgentBlueprintsControllerRequestSessionSettings {
   /** Lifetime of each rotated refresh token in seconds. At most 5,184,000 (60 days). */
   refresh_token_ttl_seconds?: number;
 }
-const UpdateAgentBlueprintsControllerRequestSessionSettings = /*@__PURE__*/ __L.at(
-  __c64,
-  1,
-) as any as S.Schema<UpdateAgentBlueprintsControllerRequestSessionSettings>;
-
 export interface UpdateAgentBlueprintsControllerRequest {
   /** The unique ID of the agent blueprint. */
   agent_blueprint_id: string;
@@ -9858,21 +6806,10 @@ export interface UpdateAgentBlueprintsControllerRequest {
   /** Token and session lifetimes for sessions minted from this blueprint. Omitted fields are left unchanged. */
   session_settings?: UpdateAgentBlueprintsControllerRequestSessionSettings;
 }
-const UpdateAgentBlueprintsControllerRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  2,
-) as any as S.Schema<UpdateAgentBlueprintsControllerRequest>;
-
 /** The OAuth scopes granted to the application. */
 export type UpdateApplicationsControllerRequestScopesList = Array<string>;
-const UpdateApplicationsControllerRequestScopesList =
-  AgentTokenPermissionsList as any as S.Schema<UpdateApplicationsControllerRequestScopesList>;
-
 /** Updated redirect URIs for the application. OAuth applications only. */
 export type UpdateApplicationsControllerRequestRedirectUrisList = Array<RedirectUriDto>;
-const UpdateApplicationsControllerRequestRedirectUrisList =
-  CreateOAuthApplicationDtoRedirectUrisList as any as S.Schema<UpdateApplicationsControllerRequestRedirectUrisList>;
-
 export interface UpdateApplicationsControllerRequest {
   /** The application ID or client ID of the Connect Application. */
   id: string;
@@ -9885,11 +6822,6 @@ export interface UpdateApplicationsControllerRequest {
   /** Updated redirect URIs for the application. OAuth applications only. */
   redirect_uris?: UpdateApplicationsControllerRequestRedirectUrisList | null;
 }
-const UpdateApplicationsControllerRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  3,
-) as any as S.Schema<UpdateApplicationsControllerRequest>;
-
 /** The scopes available for this application. */
 export type UpdateApplicationsControllerResponseScopesList = Array<string>;
 export type UpdateApplicationsControllerResponseRedirectUrisItem =
@@ -9927,9 +6859,6 @@ export interface UpdateApplicationsControllerResponse {
   /** The ID of the organization the application belongs to. */
   organization_id?: string;
 }
-const UpdateApplicationsControllerResponse =
-  ApplicationsControllerFindResponse as any as S.Schema<UpdateApplicationsControllerResponse>;
-
 /** The period Audit Log events will be retained. Valid values are `1_MONTH` through `11_MONTHS` in one-month increments and `1_YEAR` through `10_YEARS` in one-year increments. Mutually exclusive with `retention_period_in_days`. */
 export type UpdateAuditLogsRetentionDtoCase0RetentionPeriod =
   | "1_MONTH"
@@ -9964,18 +6893,11 @@ export interface UpdateAuditLogsRetentionDtoCase1 {
 export type UpdateAuditLogsRetentionDto =
   | UpdateAuditLogsRetentionDtoCase0
   | UpdateAuditLogsRetentionDtoCase1;
-const UpdateAuditLogsRetentionDto = S.Unknown as any as S.Schema<UpdateAuditLogsRetentionDto>;
-
 export interface UpdateAuditLogsRetentionControllerAuditLogsRetentionRequest {
   /** Unique identifier of the Organization. */
   id: string;
   body: UpdateAuditLogsRetentionDto;
 }
-const UpdateAuditLogsRetentionControllerAuditLogsRetentionRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  4,
-) as any as S.Schema<UpdateAuditLogsRetentionControllerAuditLogsRetentionRequest>;
-
 export interface UpdateAuthorizationOrganizationRolesControllerRequest {
   /** The ID of the organization. */
   organizationId: string;
@@ -9986,22 +6908,12 @@ export interface UpdateAuthorizationOrganizationRolesControllerRequest {
   /** An optional description of the role's purpose. */
   description?: string | null;
 }
-const UpdateAuthorizationOrganizationRolesControllerRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  5,
-) as any as S.Schema<UpdateAuthorizationOrganizationRolesControllerRequest>;
-
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type UpdateAuthorizationOrganizationRolesControllerResponseType =
   | "EnvironmentRole"
   | "OrganizationRole";
-const UpdateAuthorizationOrganizationRolesControllerResponseType = S.String;
-
 /** The permission slugs assigned to the role. */
 export type UpdateAuthorizationOrganizationRolesControllerResponsePermissionsList = Array<string>;
-const UpdateAuthorizationOrganizationRolesControllerResponsePermissionsList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateAuthorizationOrganizationRolesControllerResponsePermissionsList>;
-
 export interface UpdateAuthorizationOrganizationRolesControllerResponse {
   /** A unique slug for the role. */
   slug: string;
@@ -10024,11 +6936,6 @@ export interface UpdateAuthorizationOrganizationRolesControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const UpdateAuthorizationOrganizationRolesControllerResponse = /*@__PURE__*/ __L.at(
-  __c64,
-  6,
-) as any as S.Schema<UpdateAuthorizationOrganizationRolesControllerResponse>;
-
 export interface UpdateAuthorizationPermissionsControllerRequest {
   /** A unique key to reference the permission. Must be lowercase and contain only letters, numbers, hyphens, underscores, colons, periods, and asterisks. */
   slug: string;
@@ -10037,11 +6944,6 @@ export interface UpdateAuthorizationPermissionsControllerRequest {
   /** An optional description of the Permission. */
   description?: string | null;
 }
-const UpdateAuthorizationPermissionsControllerRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  7,
-) as any as S.Schema<UpdateAuthorizationPermissionsControllerRequest>;
-
 export interface UpdateAuthorizationResourcesByExternalIdControllerByExternalIdRequest {
   /** The ID of the organization that owns the resource. */
   organization_id: string;
@@ -10060,11 +6962,6 @@ export interface UpdateAuthorizationResourcesByExternalIdControllerByExternalIdR
   /** The resource type slug of the parent resource. Required with `parent_resource_external_id`. Mutually exclusive with `parent_resource_id`. */
   parent_resource_type_slug?: string;
 }
-const UpdateAuthorizationResourcesByExternalIdControllerByExternalIdRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  0,
-) as any as S.Schema<UpdateAuthorizationResourcesByExternalIdControllerByExternalIdRequest>;
-
 export interface UpdateAuthorizationResourcesByExternalIdControllerByExternalIdResponse {
   /** Distinguishes the Resource object. */
   object: string;
@@ -10087,11 +6984,6 @@ export interface UpdateAuthorizationResourcesByExternalIdControllerByExternalIdR
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const UpdateAuthorizationResourcesByExternalIdControllerByExternalIdResponse = /*@__PURE__*/ __L.at(
-  __c65,
-  1,
-) as any as S.Schema<UpdateAuthorizationResourcesByExternalIdControllerByExternalIdResponse>;
-
 export interface UpdateAuthorizationResourcesControllerRequest {
   /** The ID of the authorization resource. */
   resource_id: string;
@@ -10106,11 +6998,6 @@ export interface UpdateAuthorizationResourcesControllerRequest {
   /** The resource type slug of the parent resource. Required with `parent_resource_external_id`. Mutually exclusive with `parent_resource_id`. */
   parent_resource_type_slug?: string;
 }
-const UpdateAuthorizationResourcesControllerRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  2,
-) as any as S.Schema<UpdateAuthorizationResourcesControllerRequest>;
-
 export interface UpdateAuthorizationResourcesControllerResponse {
   /** Distinguishes the Resource object. */
   object: string;
@@ -10133,9 +7020,6 @@ export interface UpdateAuthorizationResourcesControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const UpdateAuthorizationResourcesControllerResponse =
-  CreateAuthorizationResourcesControllerResponse as any as S.Schema<UpdateAuthorizationResourcesControllerResponse>;
-
 export interface UpdateAuthorizationRolesControllerRequest {
   /** The slug of the environment role. */
   slug: string;
@@ -10144,20 +7028,10 @@ export interface UpdateAuthorizationRolesControllerRequest {
   /** An optional description of the role. */
   description?: string | null;
 }
-const UpdateAuthorizationRolesControllerRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  3,
-) as any as S.Schema<UpdateAuthorizationRolesControllerRequest>;
-
 /** Whether the role is scoped to the environment or an organization (custom role). */
 export type UpdateAuthorizationRolesControllerResponseType = "EnvironmentRole" | "OrganizationRole";
-const UpdateAuthorizationRolesControllerResponseType = S.String;
-
 /** The permission slugs assigned to the role. */
 export type UpdateAuthorizationRolesControllerResponsePermissionsList = Array<string>;
-const UpdateAuthorizationRolesControllerResponsePermissionsList =
-  AgentTokenPermissionsList as any as S.Schema<UpdateAuthorizationRolesControllerResponsePermissionsList>;
-
 export interface UpdateAuthorizationRolesControllerResponse {
   /** A unique slug for the role. */
   slug: string;
@@ -10180,28 +7054,15 @@ export interface UpdateAuthorizationRolesControllerResponse {
   /** An ISO 8601 timestamp. */
   updated_at: string;
 }
-const UpdateAuthorizationRolesControllerResponse = /*@__PURE__*/ __L.at(
-  __c65,
-  4,
-) as any as S.Schema<UpdateAuthorizationRolesControllerResponse>;
-
 /** The OAuth scopes to request for the Data Integration. Pass `null` to reset to the provider's configured scopes. */
 export type UpdateDataIntegrationsManagementControllerDataIntegrationRequestScopesList =
   Array<string>;
-const UpdateDataIntegrationsManagementControllerDataIntegrationRequestScopesList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateDataIntegrationsManagementControllerDataIntegrationRequestScopesList>;
-
 /** Additional static query parameters appended to the authorization request. */
 export type UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap = {
   [key: string]: string | undefined;
 };
-const UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap =
-  ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap as any as S.Schema<UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap>;
-
 /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
 export type UpdateCustomProviderDefinitionDtoAuthenticateVia = "request_body" | "basic_auth_header";
-const UpdateCustomProviderDefinitionDtoAuthenticateVia = S.String;
-
 export interface UpdateCustomProviderDefinitionDto {
   /** A descriptive name for the custom provider. */
   name?: string;
@@ -10226,11 +7087,6 @@ export interface UpdateCustomProviderDefinitionDto {
   /** How client credentials are sent when exchanging authorization codes and refreshing tokens. */
   authenticate_via?: UpdateCustomProviderDefinitionDtoAuthenticateVia | (string & {});
 }
-const UpdateCustomProviderDefinitionDto = /*@__PURE__*/ __L.at(
-  __c65,
-  5,
-) as any as S.Schema<UpdateCustomProviderDefinitionDto>;
-
 export interface UpdateDataIntegrationsManagementControllerDataIntegrationRequest {
   /** The slug identifier of the data integration. */
   slug: string;
@@ -10247,17 +7103,9 @@ export interface UpdateDataIntegrationsManagementControllerDataIntegrationReques
   /** Updates to a custom provider's OAuth definition. Only valid for custom-provider integrations. */
   custom_provider?: UpdateCustomProviderDefinitionDto;
 }
-const UpdateDataIntegrationsManagementControllerDataIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  6,
-) as any as S.Schema<UpdateDataIntegrationsManagementControllerDataIntegrationRequest>;
-
 /** The OAuth scopes to request for the Data Integration. Pass `null` to reset to the provider's configured scopes. */
 export type UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequestScopesList =
   Array<string>;
-const UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequestScopesList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequestScopesList>;
-
 export interface UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequest {
   /** The slug identifier of the data integration. */
   slug: string;
@@ -10274,25 +7122,13 @@ export interface UpdateDataIntegrationsManagementControllerOrganizationDataInteg
   /** Updates to a custom provider's OAuth definition. Only valid for custom-provider integrations. */
   custom_provider?: UpdateCustomProviderDefinitionDto;
 }
-const UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequest =
-  /*@__PURE__*/ __L.at(
-    __c65,
-    7,
-  ) as any as S.Schema<UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequest>;
-
 /** The OAuth scopes granted for this connection. */
 export type UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList =
   Array<string>;
-const UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList>;
-
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestState =
   | "connected"
   | "needs_reauthorization";
-const UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestState =
-  S.String;
-
 export interface UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest {
   /** An [Organization](/reference/organization) identifier. */
   organization_id: string;
@@ -10323,24 +7159,13 @@ export interface UpdateDataIntegrationsOrganizationControllerOrganizationDataIns
   /** The [User](/reference/authkit/user) identifier of the organization member on whose behalf the connected account is being imported or updated. The user must be an active member of the organization. */
   user_id: string;
 }
-const UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest =
-  /*@__PURE__*/ __L.at(
-    __c66,
-    0,
-  ) as any as S.Schema<UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest>;
-
 /** The OAuth scopes granted for this connection. */
 export type UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList =
   Array<string>;
-const UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList =
-  AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList as any as S.Schema<UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList>;
-
 /** Explicitly set the state of the connected account. When omitted, the state is derived from the token combination provided. */
 export type UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestState =
   | "connected"
   | "needs_reauthorization";
-const UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestState = S.String;
-
 export interface UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequest {
   /** A [User](/reference/authkit/user) identifier. */
   user_id: string;
@@ -10371,12 +7196,6 @@ export interface UpdateDataIntegrationsUserManagementControllerUserDataInstallat
     | UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestState
     | (string & {});
 }
-const UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequest =
-  /*@__PURE__*/ __L.at(
-    __c66,
-    1,
-  ) as any as S.Schema<UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequest>;
-
 export interface UpdateGroupsControllerRequest {
   /** The ID of the organization. */
   organizationId: string;
@@ -10387,11 +7206,6 @@ export interface UpdateGroupsControllerRequest {
   /** An optional description of the Group. */
   description?: string | null;
 }
-const UpdateGroupsControllerRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  2,
-) as any as S.Schema<UpdateGroupsControllerRequest>;
-
 export interface UpdateJumpWireWebDataVaultControllerRequest {
   /** Unique identifier of the object. */
   id: string;
@@ -10400,38 +7214,19 @@ export interface UpdateJumpWireWebDataVaultControllerRequest {
   /** ID of the expected current version for optimistic locking. */
   version_check?: string | null;
 }
-const UpdateJumpWireWebDataVaultControllerRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  3,
-) as any as S.Schema<UpdateJumpWireWebDataVaultControllerRequest>;
-
 export interface UpdateJwtTemplatesControllerJwtTemplateRequest {
   /** The JWT template content as a Liquid template string. */
   content?: string;
 }
-const UpdateJwtTemplatesControllerJwtTemplateRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  4,
-) as any as S.Schema<UpdateJwtTemplatesControllerJwtTemplateRequest>;
-
 /** The domains associated with the organization. Deprecated in favor of `domain_data`. */
 export type UpdateOrganizationsControllerOrganizationRequestDomainsList = Array<string>;
-const UpdateOrganizationsControllerOrganizationRequestDomainsList =
-  AgentTokenPermissionsList as any as S.Schema<UpdateOrganizationsControllerOrganizationRequestDomainsList>;
-
 /** The domains associated with the organization, including verification state. */
 export type UpdateOrganizationsControllerOrganizationRequestDomainDataList =
   Array<OrganizationDomainDataDto>;
-const UpdateOrganizationsControllerOrganizationRequestDomainDataList =
-  CreateOrganizationsControllerRequestDomainDataList as any as S.Schema<UpdateOrganizationsControllerOrganizationRequestDomainDataList>;
-
 /** Object containing [metadata](/authkit/metadata) key/value pairs associated with the Organization. */
 export type UpdateOrganizationsControllerOrganizationRequestMetadataMap = {
   [key: string]: string | undefined;
 };
-const UpdateOrganizationsControllerOrganizationRequestMetadataMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UpdateOrganizationsControllerOrganizationRequestMetadataMap>;
-
 export interface UpdateOrganizationsControllerOrganizationRequest {
   /** Unique identifier of the Organization. */
   id: string;
@@ -10450,11 +7245,6 @@ export interface UpdateOrganizationsControllerOrganizationRequest {
   /** An external identifier for the Organization. */
   external_id?: string | null;
 }
-const UpdateOrganizationsControllerOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  5,
-) as any as S.Schema<UpdateOrganizationsControllerOrganizationRequest>;
-
 export interface UpdateRadarStandaloneControllerRadarAttemptRequest {
   /** The unique identifier of the Radar attempt to update. */
   id: string;
@@ -10463,15 +7253,7 @@ export interface UpdateRadarStandaloneControllerRadarAttemptRequest {
   /** Set to `"success"` to mark the authentication attempt as successful. */
   attempt_status?: string;
 }
-const UpdateRadarStandaloneControllerRadarAttemptRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  6,
-) as any as S.Schema<UpdateRadarStandaloneControllerRadarAttemptRequest>;
-
 export interface UpdateRadarStandaloneControllerRadarAttemptResponse {}
-const UpdateRadarStandaloneControllerRadarAttemptResponse =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<UpdateRadarStandaloneControllerRadarAttemptResponse>;
-
 export interface UpdateUserlandUserOrganizationMembershipDtoCase1 {
   /** A single role identifier. Defaults to `member` or the explicit default role. Mutually exclusive with `role_slugs`. */
   role_slug: string;
@@ -10486,23 +7268,13 @@ export type UpdateUserlandUserOrganizationMembershipDto =
   | unknown
   | UpdateUserlandUserOrganizationMembershipDtoCase1
   | UpdateUserlandUserOrganizationMembershipDtoCase2;
-const UpdateUserlandUserOrganizationMembershipDto =
-  S.Unknown as any as S.Schema<UpdateUserlandUserOrganizationMembershipDto>;
-
 export interface UpdateUserlandUserOrganizationMembershipsControllerRequest {
   /** The unique ID of the organization membership. */
   id: string;
   body: UpdateUserlandUserOrganizationMembershipDto;
 }
-const UpdateUserlandUserOrganizationMembershipsControllerRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  7,
-) as any as S.Schema<UpdateUserlandUserOrganizationMembershipsControllerRequest>;
-
 /** Whether the Webhook Endpoint is enabled or disabled. */
 export type UpdateWebhookEndpointsControllerRequestStatus = "enabled" | "disabled";
-const UpdateWebhookEndpointsControllerRequestStatus = S.String;
-
 export type UpdateWebhookEndpointsControllerRequestEventsItem =
   | "agent.blueprint.created"
   | "agent.blueprint.deleted"
@@ -10613,9 +7385,6 @@ export type UpdateWebhookEndpointsControllerRequestEventsItem =
 export type UpdateWebhookEndpointsControllerRequestEventsList = Array<
   UpdateWebhookEndpointsControllerRequestEventsItem | (string & {})
 >;
-const UpdateWebhookEndpointsControllerRequestEventsList =
-  AgentBlueprintInvocableAsInstanceTypesList as any as S.Schema<UpdateWebhookEndpointsControllerRequestEventsList>;
-
 export interface UpdateWebhookEndpointsControllerRequest {
   /** Unique identifier of the Webhook Endpoint. */
   id: string;
@@ -10626,11 +7395,6 @@ export interface UpdateWebhookEndpointsControllerRequest {
   /** The events that the Webhook Endpoint is subscribed to. */
   events?: UpdateWebhookEndpointsControllerRequestEventsList;
 }
-const UpdateWebhookEndpointsControllerRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  0,
-) as any as S.Schema<UpdateWebhookEndpointsControllerRequest>;
-
 /** Whose connection to create or rotate. `user` (the default) addresses the connection owned by `user_id`. `organization` addresses the connection shared by every member of `organization_id`; `user_id` then identifies the member performing the request and must be an active member of the organization. */
 export type UpsertDataIntegrationsControllerApiKeyRequestBodyCase0ConnectionOwner =
   | "user"
@@ -10701,19 +7465,11 @@ export type UpsertDataIntegrationsControllerApiKeyRequestBody =
   | UpsertDataIntegrationsControllerApiKeyRequestBodyCase0
   | UpsertDataIntegrationsControllerApiKeyRequestBodyCase1
   | UpsertDataIntegrationsControllerApiKeyRequestBodyCase2;
-const UpsertDataIntegrationsControllerApiKeyRequestBody =
-  S.Unknown as any as S.Schema<UpsertDataIntegrationsControllerApiKeyRequestBody>;
-
 export interface UpsertDataIntegrationsControllerApiKeyRequest {
   /** The identifier of the integration. */
   slug: string;
   body: UpsertDataIntegrationsControllerApiKeyRequestBody;
 }
-const UpsertDataIntegrationsControllerApiKeyRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  1,
-) as any as S.Schema<UpsertDataIntegrationsControllerApiKeyRequest>;
-
 /** Whose connection to create or rotate. `user` (the default) addresses the connection owned by `user_id`. `organization` addresses the connection shared by every member of `organization_id`; `user_id` then identifies the member performing the request and must be an active member of the organization. */
 export type UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0ConnectionOwner =
   | "user"
@@ -10808,19 +7564,11 @@ export type UpsertDataIntegrationsControllerClientCredentialsRequestBody =
   | UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase0
   | UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase1
   | UpsertDataIntegrationsControllerClientCredentialsRequestBodyCase2;
-const UpsertDataIntegrationsControllerClientCredentialsRequestBody =
-  S.Unknown as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequestBody>;
-
 export interface UpsertDataIntegrationsControllerClientCredentialsRequest {
   /** The identifier of the integration. */
   slug: string;
   body: UpsertDataIntegrationsControllerClientCredentialsRequestBody;
 }
-const UpsertDataIntegrationsControllerClientCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  2,
-) as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequest>;
-
 export interface UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest {
   /** The email address to send the magic code to. */
   email?: string;
@@ -10835,11 +7583,6 @@ export interface UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest {
   /** An optional Radar signals ID to correlate client-side signals with this request. */
   signals_id?: string;
 }
-const UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  3,
-) as any as S.Schema<UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest>;
-
 export interface UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse {
   /** Distinguishes the Magic Auth object. */
   object?: string;
@@ -10860,11 +7603,6 @@ export interface UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse {
   /** The ID of the Radar authentication attempt created for this request when Radar is enabled. Pass this value to the authenticate endpoint to associate the subsequent authentication with this Radar attempt. */
   radar_auth_attempt_id?: string;
 }
-const UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse = /*@__PURE__*/ __L.at(
-  __c67,
-  4,
-) as any as S.Schema<UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse>;
-
 export interface UserlandSessionsControllerAuthenticate0RequestBodyCase0 {
   /** The client ID of the application. */
   client_id: string;
@@ -11084,17 +7822,9 @@ export type UserlandSessionsControllerAuthenticate0RequestBody =
   | UserlandSessionsControllerAuthenticate0RequestBodyCase8
   | UserlandSessionsControllerAuthenticate0RequestBodyCase9
   | UserlandSessionsControllerAuthenticate0RequestBodyCase10;
-const UserlandSessionsControllerAuthenticate0RequestBody =
-  S.Unknown as any as S.Schema<UserlandSessionsControllerAuthenticate0RequestBody>;
-
 export interface UserlandSessionsControllerAuthenticate0Request {
   body: UserlandSessionsControllerAuthenticate0RequestBody;
 }
-const UserlandSessionsControllerAuthenticate0Request = /*@__PURE__*/ __L.at(
-  __c67,
-  5,
-) as any as S.Schema<UserlandSessionsControllerAuthenticate0Request>;
-
 /** The authentication method used to initiate the session. */
 export type UserlandAuthenticateResponseAuthenticationMethod =
   | "SSO"
@@ -11118,8 +7848,6 @@ export type UserlandAuthenticateResponseAuthenticationMethod =
   | "MagicAuth"
   | "Impersonation"
   | "MigratedSession";
-const UserlandAuthenticateResponseAuthenticationMethod = S.String;
-
 /** Information about the impersonator if this session was created via impersonation. */
 export type UserlandAuthenticateResponseImpersonator =
   ListUserlandUserSessionsControllerResponseDataItemImpersonator;
@@ -11138,9 +7866,6 @@ export interface UserlandAuthenticateResponseOauthTokens {
   /** A list of OAuth scopes for which the access token is authorized. */
   scopes: UserlandAuthenticateResponseOauthTokensScopesList;
 }
-const UserlandAuthenticateResponseOauthTokens =
-  SsoTokenResponseOauthTokens as any as S.Schema<UserlandAuthenticateResponseOauthTokens>;
-
 export interface UserlandAuthenticateResponse {
   /** The corresponding [user](/reference/authkit/user) object. */
   user?: UserlandUser;
@@ -11159,20 +7884,10 @@ export interface UserlandAuthenticateResponse {
   /** The OAuth tokens from the identity provider, if applicable. */
   oauth_tokens?: UserlandAuthenticateResponseOauthTokens;
 }
-const UserlandAuthenticateResponse = /*@__PURE__*/ __L.at(
-  __c67,
-  6,
-) as any as S.Schema<UserlandAuthenticateResponse>;
-
 export interface UserlandSsoControllerDeviceAuthorizationRequest {
   /** The WorkOS client ID for your application. */
   client_id: string;
 }
-const UserlandSsoControllerDeviceAuthorizationRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  7,
-) as any as S.Schema<UserlandSsoControllerDeviceAuthorizationRequest>;
-
 export interface DeviceAuthorizationResponse {
   /** The device verification code. */
   device_code?: string;
@@ -11187,11 +7902,6 @@ export interface DeviceAuthorizationResponse {
   /** Minimum polling interval in seconds. */
   interval?: number;
 }
-const DeviceAuthorizationResponse = /*@__PURE__*/ __L.at(
-  __c68,
-  0,
-) as any as S.Schema<DeviceAuthorizationResponse>;
-
 export interface UserlandUserAuthenticationFactorsControllerCreate0Request {
   /** The ID of the [user](/reference/authkit/user). */
   userlandUserId: string;
@@ -11204,22 +7914,12 @@ export interface UserlandUserAuthenticationFactorsControllerCreate0Request {
   /** The Base32-encoded shared secret for TOTP factors. This can be provided when creating the auth factor, otherwise it will be generated. The algorithm used to derive TOTP codes is SHA-1, the code length is 6 digits, and the timestep is 30 seconds - the secret must be compatible with these parameters. */
   totp_secret?: string | Redacted.Redacted<string>;
 }
-const UserlandUserAuthenticationFactorsControllerCreate0Request = /*@__PURE__*/ __L.at(
-  __c68,
-  1,
-) as any as S.Schema<UserlandUserAuthenticationFactorsControllerCreate0Request>;
-
 export interface UserlandUserAuthenticationFactorEnrollResponse {
   /** The [authentication factor](/reference/authkit/mfa/authentication-factor) object that represents the additional authentication method used on top of the existing authentication strategy. */
   authentication_factor?: AuthenticationFactorEnrolled;
   /** The [authentication challenge](/reference/authkit/mfa/authentication-challenge) object that is used to complete the authentication process. */
   authentication_challenge?: AuthenticationChallenge;
 }
-const UserlandUserAuthenticationFactorEnrollResponse = /*@__PURE__*/ __L.at(
-  __c68,
-  2,
-) as any as S.Schema<UserlandUserAuthenticationFactorEnrollResponse>;
-
 export interface UserlandUserAuthenticationFactorsControllerList0Request {
   /** The ID of the [user](/reference/authkit/user). */
   userlandUserId: string;
@@ -11232,18 +7932,8 @@ export interface UserlandUserAuthenticationFactorsControllerList0Request {
   /** Order the results by the creation time. Defaults to `normal`. */
   order?: PaginationOrder | (string & {});
 }
-const UserlandUserAuthenticationFactorsControllerList0Request = /*@__PURE__*/ __L.at(
-  __c68,
-  3,
-) as any as S.Schema<UserlandUserAuthenticationFactorsControllerList0Request>;
-
 /** The list of records for the current page. */
 export type UserlandUserAuthenticationFactorListDataList = Array<AuthenticationFactor>;
-const UserlandUserAuthenticationFactorListDataList = /*@__PURE__*/ __L.at(
-  __c68,
-  4,
-) as any as S.Schema<UserlandUserAuthenticationFactorListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type UserlandUserAuthenticationFactorListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -11255,27 +7945,14 @@ export interface UserlandUserAuthenticationFactorList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const UserlandUserAuthenticationFactorList = /*@__PURE__*/ __L.at(
-  __c68,
-  5,
-) as any as S.Schema<UserlandUserAuthenticationFactorList>;
-
 export interface UserlandUserOrganizationMembershipsControllerReactivateRequest {
   /** The unique ID of the organization membership. */
   id: string;
 }
-const UserlandUserOrganizationMembershipsControllerReactivateRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  6,
-) as any as S.Schema<UserlandUserOrganizationMembershipsControllerReactivateRequest>;
-
 /** Object containing metadata key/value pairs associated with the user. */
 export type UserlandUsersControllerCreate0RequestMetadataMap = {
   [key: string]: string | undefined;
 };
-const UserlandUsersControllerCreate0RequestMetadataMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UserlandUsersControllerCreate0RequestMetadataMap>;
-
 /** The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`. */
 export type UserlandUsersControllerCreate0RequestPasswordHashType =
   | "bcrypt"
@@ -11285,12 +7962,8 @@ export type UserlandUsersControllerCreate0RequestPasswordHashType =
   | "scrypt"
   | "pbkdf2"
   | "argon2";
-const UserlandUsersControllerCreate0RequestPasswordHashType = S.String;
-
 /** The position of the salt relative to the password when the `password_hash` digest was computed: `prefix` for `hash(salt + password)` or `suffix` for `hash(password + salt)`. Only supported with the `ssha256` hash type and only valid when a `password_hash` is provided. Defaults to `suffix`. Mutually exclusive with `password`. */
 export type UserlandUsersControllerCreate0RequestPasswordSaltPosition = "prefix" | "suffix";
-const UserlandUsersControllerCreate0RequestPasswordSaltPosition = S.String;
-
 export interface UserlandUsersControllerCreate0Request {
   /** The email address of the user. WorkOS trims whitespace and converts the address to lowercase before storing it. */
   email: string;
@@ -11323,18 +7996,10 @@ export interface UserlandUsersControllerCreate0Request {
     | UserlandUsersControllerCreate0RequestPasswordSaltPosition
     | (string & {});
 }
-const UserlandUsersControllerCreate0Request = /*@__PURE__*/ __L.at(
-  __c68,
-  7,
-) as any as S.Schema<UserlandUsersControllerCreate0Request>;
-
 /** Object containing metadata key/value pairs associated with the user. */
 export type UserlandUsersControllerCreate0ResponseMetadataMap = {
   [key: string]: string | undefined;
 };
-const UserlandUsersControllerCreate0ResponseMetadataMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UserlandUsersControllerCreate0ResponseMetadataMap>;
-
 export interface UserlandUsersControllerCreate0Response {
   /** Distinguishes the user object. */
   object?: string;
@@ -11367,20 +8032,10 @@ export interface UserlandUsersControllerCreate0Response {
   /** The ID of the Radar authentication attempt created for this request when Radar is enabled. Pass this value to the authenticate endpoint to associate the subsequent authentication with this Radar attempt. */
   radar_auth_attempt_id?: string;
 }
-const UserlandUsersControllerCreate0Response = /*@__PURE__*/ __L.at(
-  __c69,
-  0,
-) as any as S.Schema<UserlandUsersControllerCreate0Response>;
-
 export interface UserlandUsersControllerCreatePasswordResetTokenRequest {
   /** The email address of the user requesting a password reset. */
   email?: string;
 }
-const UserlandUsersControllerCreatePasswordResetTokenRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  1,
-) as any as S.Schema<UserlandUsersControllerCreatePasswordResetTokenRequest>;
-
 export interface PasswordReset {
   /** Distinguishes the password reset object. */
   object?: string;
@@ -11399,56 +8054,29 @@ export interface PasswordReset {
   /** The URL where the user can reset their password. */
   password_reset_url?: string | Redacted.Redacted<string>;
 }
-const PasswordReset = /*@__PURE__*/ __L.at(__c69, 2) as any as S.Schema<PasswordReset>;
-
 export interface UserlandUsersControllerDelete0Request {
   /** The unique ID of the user. */
   id: string;
 }
-const UserlandUsersControllerDelete0Request = /*@__PURE__*/ __L.at(
-  __c69,
-  3,
-) as any as S.Schema<UserlandUsersControllerDelete0Request>;
-
 export interface UserlandUsersControllerDelete0Response {}
-const UserlandUsersControllerDelete0Response =
-  AuthorizeUserlandSsoControllerResponse as any as S.Schema<UserlandUsersControllerDelete0Response>;
-
 export interface UserlandUsersControllerEmailVerification0Request {
   /** The ID of the user. */
   id: string;
   /** The one-time email verification code. */
   code?: string;
 }
-const UserlandUsersControllerEmailVerification0Request = /*@__PURE__*/ __L.at(
-  __c69,
-  4,
-) as any as S.Schema<UserlandUsersControllerEmailVerification0Request>;
-
 export interface VerifyEmailResponse {
   /** The user whose email was verified. */
   user?: UserlandUser;
 }
-const VerifyEmailResponse = ResetPasswordResponse as any as S.Schema<VerifyEmailResponse>;
-
 export interface UserlandUsersControllerGet0Request {
   /** The unique ID of the user. */
   id: string;
 }
-const UserlandUsersControllerGet0Request = /*@__PURE__*/ __L.at(
-  __c69,
-  5,
-) as any as S.Schema<UserlandUsersControllerGet0Request>;
-
 export interface UserlandUsersControllerGetPasswordResetRequest {
   /** The ID of the password reset token. */
   id: string;
 }
-const UserlandUsersControllerGetPasswordResetRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  6,
-) as any as S.Schema<UserlandUsersControllerGetPasswordResetRequest>;
-
 export interface UserlandUsersControllerList0Request {
   /** An object ID that defines your place in the list. When the ID is not present, you are at the end of the list. For example, if you make a list request and receive 100 objects, ending with `"obj_123"`, your subsequent call can include `before="obj_123"` to fetch a new batch of objects before `"obj_123"`. */
   before?: string;
@@ -11465,18 +8093,8 @@ export interface UserlandUsersControllerList0Request {
   /** Filter users by their email address. */
   email?: string;
 }
-const UserlandUsersControllerList0Request = /*@__PURE__*/ __L.at(
-  __c69,
-  7,
-) as any as S.Schema<UserlandUsersControllerList0Request>;
-
 /** The list of records for the current page. */
 export type UserlandUserListDataList = Array<UserlandUser>;
-const UserlandUserListDataList = /*@__PURE__*/ __L.at(
-  __c70,
-  0,
-) as any as S.Schema<UserlandUserListDataList>;
-
 /** Pagination cursors for navigating between pages of results. */
 export type UserlandUserListListMetadata =
   AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
@@ -11488,15 +8106,10 @@ export interface UserlandUserList {
   /** Pagination cursors for navigating between pages of results. */
   list_metadata?: AuditLogValidatorVersionsControllerSchemasResponseListMetadata;
 }
-const UserlandUserList = /*@__PURE__*/ __L.at(__c70, 1) as any as S.Schema<UserlandUserList>;
-
 /** Object containing metadata key/value pairs associated with the user. */
 export type UserlandUsersControllerUpdate0RequestMetadataMap = {
   [key: string]: string | undefined;
 };
-const UserlandUsersControllerUpdate0RequestMetadataMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<UserlandUsersControllerUpdate0RequestMetadataMap>;
-
 /** The algorithm originally used to hash the password, used when providing a `password_hash`. Required with `password_hash`. Mutually exclusive with `password`. */
 export type UserlandUsersControllerUpdate0RequestPasswordHashType =
   | "bcrypt"
@@ -11506,12 +8119,8 @@ export type UserlandUsersControllerUpdate0RequestPasswordHashType =
   | "scrypt"
   | "pbkdf2"
   | "argon2";
-const UserlandUsersControllerUpdate0RequestPasswordHashType = S.String;
-
 /** The position of the salt relative to the password when the `password_hash` digest was computed: `prefix` for `hash(salt + password)` or `suffix` for `hash(password + salt)`. Only supported with the `ssha256` hash type and only valid when a `password_hash` is provided. Defaults to `suffix`. Mutually exclusive with `password`. */
 export type UserlandUsersControllerUpdate0RequestPasswordSaltPosition = "prefix" | "suffix";
-const UserlandUsersControllerUpdate0RequestPasswordSaltPosition = S.String;
-
 export interface UserlandUsersControllerUpdate0Request {
   /** The unique ID of the user. */
   id: string;
@@ -11542,11 +8151,6 @@ export interface UserlandUsersControllerUpdate0Request {
     | UserlandUsersControllerUpdate0RequestPasswordSaltPosition
     | (string & {});
 }
-const UserlandUsersControllerUpdate0Request = /*@__PURE__*/ __L.at(
-  __c70,
-  2,
-) as any as S.Schema<UserlandUsersControllerUpdate0Request>;
-
 export interface ValidateAgentAdminControllerCredentialRequestBodyCase0 {
   /** The kind of credential being validated -- an agent API key or an agent access token. */
   type: string;
@@ -11565,17 +8169,9 @@ export interface ValidateAgentAdminControllerCredentialRequestBodyCase1 {
 export type ValidateAgentAdminControllerCredentialRequestBody =
   | ValidateAgentAdminControllerCredentialRequestBodyCase0
   | ValidateAgentAdminControllerCredentialRequestBodyCase1;
-const ValidateAgentAdminControllerCredentialRequestBody =
-  S.Unknown as any as S.Schema<ValidateAgentAdminControllerCredentialRequestBody>;
-
 export interface ValidateAgentAdminControllerCredentialRequest {
   body: ValidateAgentAdminControllerCredentialRequestBody;
 }
-const ValidateAgentAdminControllerCredentialRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  3,
-) as any as S.Schema<ValidateAgentAdminControllerCredentialRequest>;
-
 export interface AgentCredentialValidation {
   /** Whether the presented credential is valid. */
   valid: boolean;
@@ -11584,27 +8180,14 @@ export interface AgentCredentialValidation {
   /** The timestamp when the credential expires, or `null` when the credential is invalid. */
   expires_at: string | null;
 }
-const AgentCredentialValidation = /*@__PURE__*/ __L.at(
-  __c70,
-  4,
-) as any as S.Schema<AgentCredentialValidation>;
-
 export interface ValidateAgentBlueprintsTokenControllerTokenRequest {
   /** The unique ID of the agent blueprint. */
   agent_blueprint_id: string;
   /** The agent access token (a JWT) to validate. */
   agent_access_token: string;
 }
-const ValidateAgentBlueprintsTokenControllerTokenRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  5,
-) as any as S.Schema<ValidateAgentBlueprintsTokenControllerTokenRequest>;
-
 /** The effective permission slugs carried by the token. */
 export type AgentTokenValidationPermissionsList = Array<string>;
-const AgentTokenValidationPermissionsList =
-  AgentTokenPermissionsList as any as S.Schema<AgentTokenValidationPermissionsList>;
-
 export interface AgentTokenValidation {
   /** Always `true`: an invalid token is reported as an error with a stable code, never as a `200`. */
   valid: boolean;
@@ -11623,81 +8206,41 @@ export interface AgentTokenValidation {
   /** When the backing agent instance session expires. */
   session_expires_at: string;
 }
-const AgentTokenValidation = /*@__PURE__*/ __L.at(
-  __c70,
-  6,
-) as any as S.Schema<AgentTokenValidation>;
-
 export interface ValidateApiKeysControllerApiKeyRequest {
   /** The value for an API key. */
   value?: string;
 }
-const ValidateApiKeysControllerApiKeyRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  7,
-) as any as S.Schema<ValidateApiKeysControllerApiKeyRequest>;
-
 export interface ApiKeyValidationResponse {
   api_key?: ApiKey | null;
   /** The ID of the agent registration this API Key was issued for. Present only when the API Key is assigned to an agent registration. */
   agent_registration_id?: string;
 }
-const ApiKeyValidationResponse = /*@__PURE__*/ __L.at(
-  __c71,
-  0,
-) as any as S.Schema<ApiKeyValidationResponse>;
-
 export interface VerifyAuthenticationChallengesControllerRequest {
   /** The unique ID of the Authentication Challenge. */
   id: string;
   /** The one-time code to verify. */
   code: string;
 }
-const VerifyAuthenticationChallengesControllerRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  1,
-) as any as S.Schema<VerifyAuthenticationChallengesControllerRequest>;
-
 export interface AuthenticationChallengeVerifyResponse {
   /** The authentication challenge object. */
   challenge?: AuthenticationChallenge;
   /** Whether the code was valid. */
   valid?: boolean;
 }
-const AuthenticationChallengeVerifyResponse = /*@__PURE__*/ __L.at(
-  __c71,
-  2,
-) as any as S.Schema<AuthenticationChallengeVerifyResponse>;
-
 export interface VerifyOrganizationDomainsControllerRequest {
   /** Unique identifier of the organization domain. */
   id: string;
 }
-const VerifyOrganizationDomainsControllerRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  3,
-) as any as S.Schema<VerifyOrganizationDomainsControllerRequest>;
-
 export interface WaitlistEntriesControllerDenyRequest {
   /** The unique ID of the waitlist entry. */
   id: string;
 }
-const WaitlistEntriesControllerDenyRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  4,
-) as any as S.Schema<WaitlistEntriesControllerDenyRequest>;
-
 /** The state of the waitlist entry. */
 export type WaitlistEntriesControllerDenyResponseState = "pending" | "approved" | "denied";
-const WaitlistEntriesControllerDenyResponseState = S.String;
-
 /** Additional fields submitted when the user joined the waitlist. Values are user-provided -- treat them as untrusted input when rendering or exporting. */
 export type WaitlistEntriesControllerDenyResponseAdditionalFieldsMap = {
   [key: string]: string | undefined;
 };
-const WaitlistEntriesControllerDenyResponseAdditionalFieldsMap =
-  ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap as any as S.Schema<WaitlistEntriesControllerDenyResponseAdditionalFieldsMap>;
-
 export interface WaitlistEntriesControllerDenyResponse {
   /** The unique ID of the waitlist entry. */
   id: string;
@@ -11718,20 +8261,10 @@ export interface WaitlistEntriesControllerDenyResponse {
   /** Distinguishes the Waitlist Entry object. */
   object: string;
 }
-const WaitlistEntriesControllerDenyResponse = /*@__PURE__*/ __L.at(
-  __c71,
-  5,
-) as any as S.Schema<WaitlistEntriesControllerDenyResponse>;
-
 export interface WaitlistsControllerFindRequest {
   /** The unique ID of the waitlist, or the literal `default` for the environment's default waitlist. The default waitlist is created when its first entry is added, so read requests for `default` return a `404` until then. */
   id: string;
 }
-const WaitlistsControllerFindRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  6,
-) as any as S.Schema<WaitlistsControllerFindRequest>;
-
 export type WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem =
   | "widgets:users-table:manage"
   | "widgets:domain-verification:manage"
@@ -11744,9 +8277,6 @@ export type WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem =
 export type WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList = Array<
   WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesItem | (string & {})
 >;
-const WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList =
-  CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList as any as S.Schema<WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList>;
-
 export interface WidgetsPublicControllerIssueWidgetSessionTokenRequest {
   /** The ID of the organization to scope the widget session to. Required when scopes are provided. Optional when issuing a token for user-only widgets (e.g. `UserProfile`, `UserSecurity`) that do not require organization context. */
   organization_id?: string;
@@ -11755,20 +8285,10 @@ export interface WidgetsPublicControllerIssueWidgetSessionTokenRequest {
   /** The scopes to grant the widget session. */
   scopes?: WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList;
 }
-const WidgetsPublicControllerIssueWidgetSessionTokenRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  7,
-) as any as S.Schema<WidgetsPublicControllerIssueWidgetSessionTokenRequest>;
-
 export interface WidgetSessionTokenResponse {
   /** The widget session token. */
   token?: string;
 }
-const WidgetSessionTokenResponse = /*@__PURE__*/ __L.at(
-  __c72,
-  0,
-) as any as S.Schema<WidgetSessionTokenResponse>;
-
 export type AcceptUserlandUserInvitesControllerError = BadRequest | NotFound | WorkosOpError;
 /** Accept an invitation Accepts an invitation and, if linked to an organization, activates the user's membership in that organization. */
 export const AcceptUserlandUserInvitesController: API.OperationMethod<
@@ -11777,8 +8297,8 @@ export const AcceptUserlandUserInvitesController: API.OperationMethod<
   AcceptUserlandUserInvitesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptUserlandUserInvitesControllerRequest,
-  output: AcceptUserlandUserInvitesControllerResponse,
+  input: __S(0) as any as S.Schema<AcceptUserlandUserInvitesControllerRequest>,
+  output: __S(1) as any as S.Schema<AcceptUserlandUserInvitesControllerResponse>,
   errors: [BadRequest, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -11797,8 +8317,12 @@ export const AddAuthorizationOrganizationRolePermissionsControllerPermission: AP
   AddAuthorizationOrganizationRolePermissionsControllerPermissionError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddAuthorizationOrganizationRolePermissionsControllerPermissionRequest,
-  output: AddAuthorizationOrganizationRolePermissionsControllerPermissionResponse,
+  input: __S(
+    2,
+  ) as any as S.Schema<AddAuthorizationOrganizationRolePermissionsControllerPermissionRequest>,
+  output: __S(
+    4,
+  ) as any as S.Schema<AddAuthorizationOrganizationRolePermissionsControllerPermissionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -11817,8 +8341,8 @@ export const AddAuthorizationRolePermissionsControllerPermission: API.OperationM
   AddAuthorizationRolePermissionsControllerPermissionError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddAuthorizationRolePermissionsControllerPermissionRequest,
-  output: AddAuthorizationRolePermissionsControllerPermissionResponse,
+  input: __S(5) as any as S.Schema<AddAuthorizationRolePermissionsControllerPermissionRequest>,
+  output: __S(6) as any as S.Schema<AddAuthorizationRolePermissionsControllerPermissionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -11837,8 +8361,8 @@ export const AddGroupMembershipsControllerMember: API.OperationMethod<
   AddGroupMembershipsControllerMemberError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddGroupMembershipsControllerMemberRequest,
-  output: Group,
+  input: __S(7) as any as S.Schema<AddGroupMembershipsControllerMemberRequest>,
+  output: __S(8) as any as S.Schema<Group>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -11856,8 +8380,8 @@ export const AgentAdminControllerLinkClaimAttemptToExternalUser: API.OperationMe
   AgentAdminControllerLinkClaimAttemptToExternalUserError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AgentAdminControllerLinkClaimAttemptToExternalUserRequest,
-  output: ClaimViewResponse,
+  input: __S(10) as any as S.Schema<AgentAdminControllerLinkClaimAttemptToExternalUserRequest>,
+  output: __S(13) as any as S.Schema<ClaimViewResponse>,
   errors: [BadRequest, Forbidden, Conflict, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -11875,8 +8399,8 @@ export const AgentBlueprintsTokenControllerMintToken: API.OperationMethod<
   AgentBlueprintsTokenControllerMintTokenError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AgentBlueprintsTokenControllerMintTokenRequest,
-  output: AgentToken,
+  input: __S(14) as any as S.Schema<AgentBlueprintsTokenControllerMintTokenRequest>,
+  output: __S(16) as any as S.Schema<AgentToken>,
   errors: [BadRequest, Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -11894,8 +8418,8 @@ export const ApiKeysControllerExpire: API.OperationMethod<
   ApiKeysControllerExpireError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApiKeysControllerExpireRequest,
-  output: ApiKey,
+  input: __S(17) as any as S.Schema<ApiKeysControllerExpireRequest>,
+  output: __S(20) as any as S.Schema<ApiKey>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -11909,8 +8433,8 @@ export const ApplicationsControllerFind: API.OperationMethod<
   ApplicationsControllerFindError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplicationsControllerFindRequest,
-  output: ApplicationsControllerFindResponse,
+  input: __S(21) as any as S.Schema<ApplicationsControllerFindRequest>,
+  output: __S(24) as any as S.Schema<ApplicationsControllerFindResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -11924,8 +8448,8 @@ export const ApproveWaitlistEntriesController: API.OperationMethod<
   ApproveWaitlistEntriesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApproveWaitlistEntriesControllerRequest,
-  output: ApproveWaitlistEntriesControllerResponse,
+  input: __S(25) as any as S.Schema<ApproveWaitlistEntriesControllerRequest>,
+  output: __S(27) as any as S.Schema<ApproveWaitlistEntriesControllerResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -11943,8 +8467,8 @@ export const AssignAuthorizationRoleAssignmentsControllerRole: API.OperationMeth
   AssignAuthorizationRoleAssignmentsControllerRoleError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssignAuthorizationRoleAssignmentsControllerRoleRequest,
-  output: UserRoleAssignment,
+  input: __S(28) as any as S.Schema<AssignAuthorizationRoleAssignmentsControllerRoleRequest>,
+  output: __S(32) as any as S.Schema<UserRoleAssignment>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -11958,8 +8482,8 @@ export const AuditLogExportsControllerExports: API.OperationMethod<
   AuditLogExportsControllerExportsError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuditLogExportsControllerExportsRequest,
-  output: AuditLogExportJson,
+  input: __S(33) as any as S.Schema<AuditLogExportsControllerExportsRequest>,
+  output: __S(34) as any as S.Schema<AuditLogExportJson>,
   errors: [BadRequest, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -11973,8 +8497,8 @@ export const AuditLogsRetentionControllerAuditLogsRetention: API.OperationMethod
   AuditLogsRetentionControllerAuditLogsRetentionError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuditLogsRetentionControllerAuditLogsRetentionRequest,
-  output: AuditLogsRetentionJson,
+  input: __S(35) as any as S.Schema<AuditLogsRetentionControllerAuditLogsRetentionRequest>,
+  output: __S(36) as any as S.Schema<AuditLogsRetentionJson>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -11991,8 +8515,8 @@ export const AuditLogValidatorVersionsControllerSchemas: API.OperationMethod<
   AuditLogValidatorVersionsControllerSchemasError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuditLogValidatorVersionsControllerSchemasRequest,
-  output: AuditLogValidatorVersionsControllerSchemasResponse,
+  input: __S(37) as any as S.Schema<AuditLogValidatorVersionsControllerSchemasRequest>,
+  output: __S(45) as any as S.Schema<AuditLogValidatorVersionsControllerSchemasResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12009,8 +8533,8 @@ export const AuthenticationFactorsControllerChallenge: API.OperationMethod<
   AuthenticationFactorsControllerChallengeError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuthenticationFactorsControllerChallengeRequest,
-  output: AuthenticationChallenge,
+  input: __S(46) as any as S.Schema<AuthenticationFactorsControllerChallengeRequest>,
+  output: __S(47) as any as S.Schema<AuthenticationChallenge>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12024,8 +8548,8 @@ export const AuthorizationPermissionsControllerFind: API.OperationMethod<
   AuthorizationPermissionsControllerFindError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizationPermissionsControllerFindRequest,
-  output: AuthorizationPermission,
+  input: __S(48) as any as S.Schema<AuthorizationPermissionsControllerFindRequest>,
+  output: __S(49) as any as S.Schema<AuthorizationPermission>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12043,8 +8567,8 @@ export const AuthorizationResourcesControllerFindById: API.OperationMethod<
   AuthorizationResourcesControllerFindByIdError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizationResourcesControllerFindByIdRequest,
-  output: AuthorizationResource,
+  input: __S(50) as any as S.Schema<AuthorizationResourcesControllerFindByIdRequest>,
+  output: __S(51) as any as S.Schema<AuthorizationResource>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12058,8 +8582,8 @@ export const AuthorizeSsoController: API.OperationMethod<
   AuthorizeSsoControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizeSsoControllerRequest,
-  output: SsoAuthorizeUrlResponse,
+  input: __S(52) as any as S.Schema<AuthorizeSsoControllerRequest>,
+  output: __S(53) as any as S.Schema<SsoAuthorizeUrlResponse>,
   errors: [UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12073,8 +8597,8 @@ export const AuthorizeUserlandSsoController: API.OperationMethod<
   AuthorizeUserlandSsoControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuthorizeUserlandSsoControllerRequest,
-  output: AuthorizeUserlandSsoControllerResponse,
+  input: __S(54) as any as S.Schema<AuthorizeUserlandSsoControllerRequest>,
+  output: __S(55) as any as S.Schema<AuthorizeUserlandSsoControllerResponse>,
   errors: [UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12092,8 +8616,8 @@ export const CheckAuthorizationController: API.OperationMethod<
   CheckAuthorizationControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckAuthorizationControllerRequest,
-  output: AuthorizationCheck,
+  input: __S(56) as any as S.Schema<CheckAuthorizationControllerRequest>,
+  output: __S(57) as any as S.Schema<AuthorizationCheck>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12111,8 +8635,8 @@ export const ClientApiTokenControllerIssueClientApiToken: API.OperationMethod<
   ClientApiTokenControllerIssueClientApiTokenError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClientApiTokenControllerIssueClientApiTokenRequest,
-  output: ClientApiTokenResponse,
+  input: __S(58) as any as S.Schema<ClientApiTokenControllerIssueClientApiTokenRequest>,
+  output: __S(59) as any as S.Schema<ClientApiTokenResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12130,8 +8654,8 @@ export const CompleteExternalAuthControllerLogin: API.OperationMethod<
   CompleteExternalAuthControllerLoginError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CompleteExternalAuthControllerLoginRequest,
-  output: ExternalAuthCompleteResponse,
+  input: __S(65) as any as S.Schema<CompleteExternalAuthControllerLoginRequest>,
+  output: __S(66) as any as S.Schema<ExternalAuthCompleteResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12150,8 +8674,8 @@ export const ConfirmUserlandUsersControllerEmailChange: API.OperationMethod<
   ConfirmUserlandUsersControllerEmailChangeError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfirmUserlandUsersControllerEmailChangeRequest,
-  output: ConfirmUserlandUsersControllerEmailChangeResponse,
+  input: __S(67) as any as S.Schema<ConfirmUserlandUsersControllerEmailChangeRequest>,
+  output: __S(70) as any as S.Schema<ConfirmUserlandUsersControllerEmailChangeResponse>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12165,8 +8689,8 @@ export const ConnectionsControllerFind: API.OperationMethod<
   ConnectionsControllerFindError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectionsControllerFindRequest,
-  output: Connection,
+  input: __S(71) as any as S.Schema<ConnectionsControllerFindRequest>,
+  output: __S(74) as any as S.Schema<Connection>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12184,8 +8708,8 @@ export const CreateAgentBlueprintsController: API.OperationMethod<
   CreateAgentBlueprintsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgentBlueprintsControllerRequest,
-  output: AgentBlueprint,
+  input: __S(79) as any as S.Schema<CreateAgentBlueprintsControllerRequest>,
+  output: __S(83) as any as S.Schema<AgentBlueprint>,
   errors: [BadRequest, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12202,8 +8726,8 @@ export const CreateApplicationCredentialsController: API.OperationMethod<
   CreateApplicationCredentialsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateApplicationCredentialsControllerRequest,
-  output: NewConnectApplicationSecret,
+  input: __S(84) as any as S.Schema<CreateApplicationCredentialsControllerRequest>,
+  output: __S(85) as any as S.Schema<NewConnectApplicationSecret>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12217,8 +8741,8 @@ export const CreateApplicationsController: API.OperationMethod<
   CreateApplicationsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateApplicationsControllerRequest,
-  output: CreateApplicationsControllerResponse,
+  input: __S(88) as any as S.Schema<CreateApplicationsControllerRequest>,
+  output: __S(24) as any as S.Schema<CreateApplicationsControllerResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12236,8 +8760,8 @@ export const CreateAuditLogEventsController: API.OperationMethod<
   CreateAuditLogEventsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAuditLogEventsControllerRequest,
-  output: AuditLogEventCreateResponse,
+  input: __S(93) as any as S.Schema<CreateAuditLogEventsControllerRequest>,
+  output: __S(94) as any as S.Schema<AuditLogEventCreateResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12251,8 +8775,8 @@ export const CreateAuditLogValidatorVersionsController: API.OperationMethod<
   CreateAuditLogValidatorVersionsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAuditLogValidatorVersionsControllerRequest,
-  output: AuditLogSchemaJson,
+  input: __S(98) as any as S.Schema<CreateAuditLogValidatorVersionsControllerRequest>,
+  output: __S(43) as any as S.Schema<AuditLogSchemaJson>,
   errors: [UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12266,8 +8790,8 @@ export const CreateAuthenticationFactorsController: API.OperationMethod<
   CreateAuthenticationFactorsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAuthenticationFactorsControllerRequest,
-  output: AuthenticationFactorEnrolled,
+  input: __S(99) as any as S.Schema<CreateAuthenticationFactorsControllerRequest>,
+  output: __S(102) as any as S.Schema<AuthenticationFactorEnrolled>,
   errors: [UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12281,8 +8805,8 @@ export const CreateAuthkitOauthResourcesController: API.OperationMethod<
   CreateAuthkitOauthResourcesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAuthkitOauthResourcesControllerRequest,
-  output: AuthkitOauthResource,
+  input: __S(103) as any as S.Schema<CreateAuthkitOauthResourcesControllerRequest>,
+  output: __S(104) as any as S.Schema<AuthkitOauthResource>,
   errors: [UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12301,8 +8825,8 @@ export const CreateAuthorizationGroupRoleAssignmentsController: API.OperationMet
   CreateAuthorizationGroupRoleAssignmentsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAuthorizationGroupRoleAssignmentsControllerRequest,
-  output: GroupRoleAssignment,
+  input: __S(105) as any as S.Schema<CreateAuthorizationGroupRoleAssignmentsControllerRequest>,
+  output: __S(106) as any as S.Schema<GroupRoleAssignment>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12322,8 +8846,8 @@ export const CreateAuthorizationOrganizationRolesController: API.OperationMethod
   CreateAuthorizationOrganizationRolesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAuthorizationOrganizationRolesControllerRequest,
-  output: CreateAuthorizationOrganizationRolesControllerResponse,
+  input: __S(107) as any as S.Schema<CreateAuthorizationOrganizationRolesControllerRequest>,
+  output: __S(108) as any as S.Schema<CreateAuthorizationOrganizationRolesControllerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12342,8 +8866,8 @@ export const CreateAuthorizationPermissionsController: API.OperationMethod<
   CreateAuthorizationPermissionsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAuthorizationPermissionsControllerRequest,
-  output: CreateAuthorizationPermissionsControllerResponse,
+  input: __S(109) as any as S.Schema<CreateAuthorizationPermissionsControllerRequest>,
+  output: __S(110) as any as S.Schema<CreateAuthorizationPermissionsControllerResponse>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12363,8 +8887,8 @@ export const CreateAuthorizationResourcesController: API.OperationMethod<
   CreateAuthorizationResourcesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAuthorizationResourcesControllerRequest,
-  output: CreateAuthorizationResourcesControllerResponse,
+  input: __S(111) as any as S.Schema<CreateAuthorizationResourcesControllerRequest>,
+  output: __S(112) as any as S.Schema<CreateAuthorizationResourcesControllerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12384,8 +8908,8 @@ export const CreateAuthorizationRolesController: API.OperationMethod<
   CreateAuthorizationRolesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAuthorizationRolesControllerRequest,
-  output: CreateAuthorizationRolesControllerResponse,
+  input: __S(113) as any as S.Schema<CreateAuthorizationRolesControllerRequest>,
+  output: __S(114) as any as S.Schema<CreateAuthorizationRolesControllerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12405,8 +8929,8 @@ export const CreateConnectionsController: API.OperationMethod<
   CreateConnectionsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConnectionsControllerRequest,
-  output: Connection,
+  input: __S(121) as any as S.Schema<CreateConnectionsControllerRequest>,
+  output: __S(74) as any as S.Schema<Connection>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12423,8 +8947,8 @@ export const CreateCorsOriginsControllerCorsOrigin: API.OperationMethod<
   CreateCorsOriginsControllerCorsOriginError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCorsOriginsControllerCorsOriginRequest,
-  output: CorsOriginResponse,
+  input: __S(122) as any as S.Schema<CreateCorsOriginsControllerCorsOriginRequest>,
+  output: __S(123) as any as S.Schema<CorsOriginResponse>,
   errors: [Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12443,8 +8967,8 @@ export const CreateDataIntegrationsControllerApiKeyConnection: API.OperationMeth
   CreateDataIntegrationsControllerApiKeyConnectionError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataIntegrationsControllerApiKeyConnectionRequest,
-  output: ConnectedAccountWriteResponse,
+  input: __S(124) as any as S.Schema<CreateDataIntegrationsControllerApiKeyConnectionRequest>,
+  output: __S(127) as any as S.Schema<ConnectedAccountWriteResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12463,8 +8987,10 @@ export const CreateDataIntegrationsControllerClientCredentialsConnection: API.Op
   CreateDataIntegrationsControllerClientCredentialsConnectionError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataIntegrationsControllerClientCredentialsConnectionRequest,
-  output: ConnectedAccountWriteResponse,
+  input: __S(
+    128,
+  ) as any as S.Schema<CreateDataIntegrationsControllerClientCredentialsConnectionRequest>,
+  output: __S(127) as any as S.Schema<ConnectedAccountWriteResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12484,8 +9010,10 @@ export const CreateDataIntegrationsManagementControllerDataIntegration: API.Oper
   CreateDataIntegrationsManagementControllerDataIntegrationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataIntegrationsManagementControllerDataIntegrationRequest,
-  output: DataIntegration,
+  input: __S(
+    132,
+  ) as any as S.Schema<CreateDataIntegrationsManagementControllerDataIntegrationRequest>,
+  output: __S(136) as any as S.Schema<DataIntegration>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12504,8 +9032,10 @@ export const CreateDataIntegrationsOrganizationControllerOrganizationDataInstall
   CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest,
-  output: ConnectedAccountWriteResponse,
+  input: __S(
+    137,
+  ) as any as S.Schema<CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest>,
+  output: __S(127) as any as S.Schema<ConnectedAccountWriteResponse>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12523,8 +9053,10 @@ export const CreateDataIntegrationsUserManagementControllerUserDataInstallation:
   CreateDataIntegrationsUserManagementControllerUserDataInstallationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataIntegrationsUserManagementControllerUserDataInstallationRequest,
-  output: ConnectedAccountWriteResponse,
+  input: __S(
+    138,
+  ) as any as S.Schema<CreateDataIntegrationsUserManagementControllerUserDataInstallationRequest>,
+  output: __S(127) as any as S.Schema<ConnectedAccountWriteResponse>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12542,8 +9074,8 @@ export const CreateFlagTargetsControllerTarget: API.OperationMethod<
   CreateFlagTargetsControllerTargetError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFlagTargetsControllerTargetRequest,
-  output: CreateFlagTargetsControllerTargetResponse,
+  input: __S(139) as any as S.Schema<CreateFlagTargetsControllerTargetRequest>,
+  output: __S(55) as any as S.Schema<CreateFlagTargetsControllerTargetResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12562,8 +9094,8 @@ export const CreateGroupsController: API.OperationMethod<
   CreateGroupsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGroupsControllerRequest,
-  output: Group,
+  input: __S(140) as any as S.Schema<CreateGroupsControllerRequest>,
+  output: __S(8) as any as S.Schema<Group>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12582,8 +9114,8 @@ export const CreateItContactsController: API.OperationMethod<
   CreateItContactsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateItContactsControllerRequest,
-  output: ItContact,
+  input: __S(141) as any as S.Schema<CreateItContactsControllerRequest>,
+  output: __S(142) as any as S.Schema<ItContact>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12601,8 +9133,8 @@ export const CreateJumpWireWebDataVaultController: API.OperationMethod<
   CreateJumpWireWebDataVaultControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateJumpWireWebDataVaultControllerRequest,
-  output: ObjectMetadata,
+  input: __S(143) as any as S.Schema<CreateJumpWireWebDataVaultControllerRequest>,
+  output: __S(145) as any as S.Schema<ObjectMetadata>,
   errors: [BadRequest, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12619,8 +9151,8 @@ export const CreateOrganizationApiKeysController: API.OperationMethod<
   CreateOrganizationApiKeysControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationApiKeysControllerRequest,
-  output: OrganizationApiKeyWithValue,
+  input: __S(146) as any as S.Schema<CreateOrganizationApiKeysControllerRequest>,
+  output: __S(147) as any as S.Schema<OrganizationApiKeyWithValue>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12634,8 +9166,8 @@ export const CreateOrganizationDomainsController: API.OperationMethod<
   CreateOrganizationDomainsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationDomainsControllerRequest,
-  output: CreateOrganizationDomainsControllerResponse,
+  input: __S(148) as any as S.Schema<CreateOrganizationDomainsControllerRequest>,
+  output: __S(149) as any as S.Schema<CreateOrganizationDomainsControllerResponse>,
   errors: [Conflict, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12653,8 +9185,8 @@ export const CreateOrganizationsController: API.OperationMethod<
   CreateOrganizationsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsControllerRequest,
-  output: Organization,
+  input: __S(152) as any as S.Schema<CreateOrganizationsControllerRequest>,
+  output: __S(155) as any as S.Schema<Organization>,
   errors: [BadRequest, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12673,8 +9205,8 @@ export const CreatePortalSessionsController: API.OperationMethod<
   CreatePortalSessionsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePortalSessionsControllerRequest,
-  output: PortalLinkResponse,
+  input: __S(156) as any as S.Schema<CreatePortalSessionsControllerRequest>,
+  output: __S(157) as any as S.Schema<PortalLinkResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12688,8 +9220,8 @@ export const CreateRedirectUrisController: API.OperationMethod<
   CreateRedirectUrisControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRedirectUrisControllerRequest,
-  output: RedirectUri,
+  input: __S(158) as any as S.Schema<CreateRedirectUrisControllerRequest>,
+  output: __S(159) as any as S.Schema<RedirectUri>,
   errors: [BadRequest, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12708,8 +9240,8 @@ export const CreateSamlIdpSigningCertificatesController: API.OperationMethod<
   CreateSamlIdpSigningCertificatesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSamlIdpSigningCertificatesControllerRequest,
-  output: SamlIdpSigningCertificate,
+  input: __S(160) as any as S.Schema<CreateSamlIdpSigningCertificatesControllerRequest>,
+  output: __S(161) as any as S.Schema<SamlIdpSigningCertificate>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12728,8 +9260,8 @@ export const CreateSamlSpEncryptionCertificatesController: API.OperationMethod<
   CreateSamlSpEncryptionCertificatesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSamlSpEncryptionCertificatesControllerRequest,
-  output: SamlSpEncryptionCertificate,
+  input: __S(162) as any as S.Schema<CreateSamlSpEncryptionCertificatesControllerRequest>,
+  output: __S(161) as any as S.Schema<SamlSpEncryptionCertificate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12748,8 +9280,8 @@ export const CreateSamlSpSigningCertificatesController: API.OperationMethod<
   CreateSamlSpSigningCertificatesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSamlSpSigningCertificatesControllerRequest,
-  output: SamlSpSigningCertificate,
+  input: __S(163) as any as S.Schema<CreateSamlSpSigningCertificatesControllerRequest>,
+  output: __S(164) as any as S.Schema<SamlSpSigningCertificate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12763,8 +9295,8 @@ export const CreateTeamsControllerTeam: API.OperationMethod<
   CreateTeamsControllerTeamError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTeamsControllerTeamRequest,
-  output: Team,
+  input: __S(165) as any as S.Schema<CreateTeamsControllerTeamRequest>,
+  output: __S(166) as any as S.Schema<Team>,
   errors: [Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12782,8 +9314,8 @@ export const CreateUserApiKeysController: API.OperationMethod<
   CreateUserApiKeysControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUserApiKeysControllerRequest,
-  output: UserApiKeyWithValue,
+  input: __S(167) as any as S.Schema<CreateUserApiKeysControllerRequest>,
+  output: __S(168) as any as S.Schema<UserApiKeyWithValue>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12801,8 +9333,8 @@ export const CreateUserlandUserInvitesController: API.OperationMethod<
   CreateUserlandUserInvitesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUserlandUserInvitesControllerRequest,
-  output: UserlandUserInvite,
+  input: __S(169) as any as S.Schema<CreateUserlandUserInvitesControllerRequest>,
+  output: __S(170) as any as S.Schema<UserlandUserInvite>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12820,8 +9352,8 @@ export const CreateUserlandUserOrganizationMembershipsController: API.OperationM
   CreateUserlandUserOrganizationMembershipsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUserlandUserOrganizationMembershipsControllerRequest,
-  output: CreateUserlandUserOrganizationMembershipsControllerResponse,
+  input: __S(171) as any as S.Schema<CreateUserlandUserOrganizationMembershipsControllerRequest>,
+  output: __S(175) as any as S.Schema<CreateUserlandUserOrganizationMembershipsControllerResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12835,8 +9367,8 @@ export const CreateWaitlistsControllerEntry: API.OperationMethod<
   CreateWaitlistsControllerEntryError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWaitlistsControllerEntryRequest,
-  output: WaitlistEntry,
+  input: __S(176) as any as S.Schema<CreateWaitlistsControllerEntryRequest>,
+  output: __S(177) as any as S.Schema<WaitlistEntry>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12850,8 +9382,8 @@ export const CreateWebhookEndpointsController: API.OperationMethod<
   CreateWebhookEndpointsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWebhookEndpointsControllerRequest,
-  output: WebhookEndpointJson,
+  input: __S(178) as any as S.Schema<CreateWebhookEndpointsControllerRequest>,
+  output: __S(179) as any as S.Schema<WebhookEndpointJson>,
   errors: [Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12871,8 +9403,10 @@ export const DataIntegrationsControllerGetDataIntegrationAuthorizeUrl: API.Opera
   DataIntegrationsControllerGetDataIntegrationAuthorizeUrlError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest,
-  output: DataIntegrationAuthorizeUrlResponse,
+  input: __S(
+    180,
+  ) as any as S.Schema<DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest>,
+  output: __S(181) as any as S.Schema<DataIntegrationAuthorizeUrlResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12892,8 +9426,8 @@ export const DataIntegrationsControllerVendCredentials: API.OperationMethod<
   DataIntegrationsControllerVendCredentialsError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataIntegrationsControllerVendCredentialsRequest,
-  output: DataIntegrationsControllerVendCredentialsResponse,
+  input: __S(182) as any as S.Schema<DataIntegrationsControllerVendCredentialsRequest>,
+  output: __S(183) as any as S.Schema<DataIntegrationsControllerVendCredentialsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12911,8 +9445,12 @@ export const DeactivateUserlandUserOrganizationMembershipsController: API.Operat
   DeactivateUserlandUserOrganizationMembershipsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeactivateUserlandUserOrganizationMembershipsControllerRequest,
-  output: DeactivateUserlandUserOrganizationMembershipsControllerResponse,
+  input: __S(
+    184,
+  ) as any as S.Schema<DeactivateUserlandUserOrganizationMembershipsControllerRequest>,
+  output: __S(
+    185,
+  ) as any as S.Schema<DeactivateUserlandUserOrganizationMembershipsControllerResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12926,8 +9464,8 @@ export const DecryptJumpWireWebKeyController: API.OperationMethod<
   DecryptJumpWireWebKeyControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DecryptJumpWireWebKeyControllerRequest,
-  output: DecryptResponse,
+  input: __S(186) as any as S.Schema<DecryptJumpWireWebKeyControllerRequest>,
+  output: __S(187) as any as S.Schema<DecryptResponse>,
   errors: [BadRequest, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12941,8 +9479,8 @@ export const DeleteAgentBlueprintsController: API.OperationMethod<
   DeleteAgentBlueprintsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAgentBlueprintsControllerRequest,
-  output: DeleteAgentBlueprintsControllerResponse,
+  input: __S(188) as any as S.Schema<DeleteAgentBlueprintsControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteAgentBlueprintsControllerResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12956,8 +9494,8 @@ export const DeleteAgentInstancesController: API.OperationMethod<
   DeleteAgentInstancesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAgentInstancesControllerRequest,
-  output: DeleteAgentInstancesControllerResponse,
+  input: __S(189) as any as S.Schema<DeleteAgentInstancesControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteAgentInstancesControllerResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12971,8 +9509,8 @@ export const DeleteApiKeysController: API.OperationMethod<
   DeleteApiKeysControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApiKeysControllerRequest,
-  output: DeleteApiKeysControllerResponse,
+  input: __S(190) as any as S.Schema<DeleteApiKeysControllerRequest>,
+  output: __S(191) as any as S.Schema<DeleteApiKeysControllerResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -12986,8 +9524,8 @@ export const DeleteApplicationCredentialsController: API.OperationMethod<
   DeleteApplicationCredentialsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationCredentialsControllerRequest,
-  output: DeleteApplicationCredentialsControllerResponse,
+  input: __S(192) as any as S.Schema<DeleteApplicationCredentialsControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteApplicationCredentialsControllerResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13001,8 +9539,8 @@ export const DeleteApplicationsController: API.OperationMethod<
   DeleteApplicationsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationsControllerRequest,
-  output: DeleteApplicationsControllerResponse,
+  input: __S(193) as any as S.Schema<DeleteApplicationsControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteApplicationsControllerResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13016,8 +9554,8 @@ export const DeleteAuthenticationFactorsController: API.OperationMethod<
   DeleteAuthenticationFactorsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAuthenticationFactorsControllerRequest,
-  output: DeleteAuthenticationFactorsControllerResponse,
+  input: __S(194) as any as S.Schema<DeleteAuthenticationFactorsControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteAuthenticationFactorsControllerResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13031,8 +9569,8 @@ export const DeleteAuthkitOauthResourcesController: API.OperationMethod<
   DeleteAuthkitOauthResourcesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAuthkitOauthResourcesControllerRequest,
-  output: DeleteAuthkitOauthResourcesControllerResponse,
+  input: __S(195) as any as S.Schema<DeleteAuthkitOauthResourcesControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteAuthkitOauthResourcesControllerResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13051,8 +9589,8 @@ export const DeleteAuthorizationOrganizationRolesController: API.OperationMethod
   DeleteAuthorizationOrganizationRolesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAuthorizationOrganizationRolesControllerRequest,
-  output: DeleteAuthorizationOrganizationRolesControllerResponse,
+  input: __S(196) as any as S.Schema<DeleteAuthorizationOrganizationRolesControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteAuthorizationOrganizationRolesControllerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13066,8 +9604,8 @@ export const DeleteAuthorizationPermissionsController: API.OperationMethod<
   DeleteAuthorizationPermissionsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAuthorizationPermissionsControllerRequest,
-  output: DeleteAuthorizationPermissionsControllerResponse,
+  input: __S(197) as any as S.Schema<DeleteAuthorizationPermissionsControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteAuthorizationPermissionsControllerResponse>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13086,8 +9624,12 @@ export const DeleteAuthorizationResourcesByExternalIdControllerByExternalId: API
   DeleteAuthorizationResourcesByExternalIdControllerByExternalIdError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAuthorizationResourcesByExternalIdControllerByExternalIdRequest,
-  output: DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse,
+  input: __S(
+    198,
+  ) as any as S.Schema<DeleteAuthorizationResourcesByExternalIdControllerByExternalIdRequest>,
+  output: __S(
+    199,
+  ) as any as S.Schema<DeleteAuthorizationResourcesByExternalIdControllerByExternalIdResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13106,8 +9648,8 @@ export const DeleteAuthorizationResourcesController: API.OperationMethod<
   DeleteAuthorizationResourcesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAuthorizationResourcesControllerRequest,
-  output: DeleteAuthorizationResourcesControllerResponse,
+  input: __S(200) as any as S.Schema<DeleteAuthorizationResourcesControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteAuthorizationResourcesControllerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13121,8 +9663,8 @@ export const DeleteAuthorizedApplicationsController: API.OperationMethod<
   DeleteAuthorizedApplicationsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAuthorizedApplicationsControllerRequest,
-  output: DeleteAuthorizedApplicationsControllerResponse,
+  input: __S(201) as any as S.Schema<DeleteAuthorizedApplicationsControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteAuthorizedApplicationsControllerResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13136,8 +9678,8 @@ export const DeleteConnectionsController: API.OperationMethod<
   DeleteConnectionsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConnectionsControllerRequest,
-  output: DeleteConnectionsControllerResponse,
+  input: __S(202) as any as S.Schema<DeleteConnectionsControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteConnectionsControllerResponse>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13153,8 +9695,12 @@ export const DeleteDataIntegrationsManagementControllerDataIntegration: API.Oper
   DeleteDataIntegrationsManagementControllerDataIntegrationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataIntegrationsManagementControllerDataIntegrationRequest,
-  output: DeleteDataIntegrationsManagementControllerDataIntegrationResponse,
+  input: __S(
+    203,
+  ) as any as S.Schema<DeleteDataIntegrationsManagementControllerDataIntegrationRequest>,
+  output: __S(
+    199,
+  ) as any as S.Schema<DeleteDataIntegrationsManagementControllerDataIntegrationResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13170,8 +9716,12 @@ export const DeleteDataIntegrationsManagementControllerOrganizationDataIntegrati
   DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationRequest,
-  output: DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationResponse,
+  input: __S(
+    204,
+  ) as any as S.Schema<DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationRequest>,
+  output: __S(
+    199,
+  ) as any as S.Schema<DeleteDataIntegrationsManagementControllerOrganizationDataIntegrationResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13189,8 +9739,12 @@ export const DeleteDataIntegrationsOrganizationControllerOrganizationDataInstall
   DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest,
-  output: DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationResponse,
+  input: __S(
+    205,
+  ) as any as S.Schema<DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest>,
+  output: __S(
+    199,
+  ) as any as S.Schema<DeleteDataIntegrationsOrganizationControllerOrganizationDataInstallationResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13208,8 +9762,12 @@ export const DeleteDataIntegrationsUserManagementControllerUserDataInstallation:
   DeleteDataIntegrationsUserManagementControllerUserDataInstallationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataIntegrationsUserManagementControllerUserDataInstallationRequest,
-  output: DeleteDataIntegrationsUserManagementControllerUserDataInstallationResponse,
+  input: __S(
+    206,
+  ) as any as S.Schema<DeleteDataIntegrationsUserManagementControllerUserDataInstallationRequest>,
+  output: __S(
+    199,
+  ) as any as S.Schema<DeleteDataIntegrationsUserManagementControllerUserDataInstallationResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13223,8 +9781,8 @@ export const DeleteDirectoriesControllerDirectory: API.OperationMethod<
   DeleteDirectoriesControllerDirectoryError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDirectoriesControllerDirectoryRequest,
-  output: DeleteDirectoriesControllerDirectoryResponse,
+  input: __S(207) as any as S.Schema<DeleteDirectoriesControllerDirectoryRequest>,
+  output: __S(55) as any as S.Schema<DeleteDirectoriesControllerDirectoryResponse>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13242,8 +9800,8 @@ export const DeleteFlagTargetsControllerTarget: API.OperationMethod<
   DeleteFlagTargetsControllerTargetError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFlagTargetsControllerTargetRequest,
-  output: DeleteFlagTargetsControllerTargetResponse,
+  input: __S(208) as any as S.Schema<DeleteFlagTargetsControllerTargetRequest>,
+  output: __S(55) as any as S.Schema<DeleteFlagTargetsControllerTargetResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13257,8 +9815,8 @@ export const DeleteGroupsController: API.OperationMethod<
   DeleteGroupsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGroupsControllerRequest,
-  output: DeleteGroupsControllerResponse,
+  input: __S(209) as any as S.Schema<DeleteGroupsControllerRequest>,
+  output: __S(210) as any as S.Schema<DeleteGroupsControllerResponse>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13272,8 +9830,8 @@ export const DeleteItContactsController: API.OperationMethod<
   DeleteItContactsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteItContactsControllerRequest,
-  output: DeleteItContactsControllerResponse,
+  input: __S(211) as any as S.Schema<DeleteItContactsControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteItContactsControllerResponse>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13287,8 +9845,8 @@ export const DeleteJumpWireWebDataVaultController: API.OperationMethod<
   DeleteJumpWireWebDataVaultControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteJumpWireWebDataVaultControllerRequest,
-  output: DeleteObjectResponse,
+  input: __S(212) as any as S.Schema<DeleteJumpWireWebDataVaultControllerRequest>,
+  output: __S(213) as any as S.Schema<DeleteObjectResponse>,
   errors: [NotFound, Conflict, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13302,8 +9860,8 @@ export const DeleteOrganizationDomainsController: API.OperationMethod<
   DeleteOrganizationDomainsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationDomainsControllerRequest,
-  output: DeleteOrganizationDomainsControllerResponse,
+  input: __S(214) as any as S.Schema<DeleteOrganizationDomainsControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteOrganizationDomainsControllerResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13317,8 +9875,8 @@ export const DeleteOrganizationsControllerOrganization: API.OperationMethod<
   DeleteOrganizationsControllerOrganizationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsControllerOrganizationRequest,
-  output: DeleteOrganizationsControllerOrganizationResponse,
+  input: __S(215) as any as S.Schema<DeleteOrganizationsControllerOrganizationRequest>,
+  output: __S(55) as any as S.Schema<DeleteOrganizationsControllerOrganizationResponse>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13332,8 +9890,8 @@ export const DeleteRedirectUrisController: API.OperationMethod<
   DeleteRedirectUrisControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRedirectUrisControllerRequest,
-  output: DeleteRedirectUrisControllerResponse,
+  input: __S(216) as any as S.Schema<DeleteRedirectUrisControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteRedirectUrisControllerResponse>,
   errors: [NotFound, Conflict, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13351,8 +9909,8 @@ export const DeleteSamlIdpSigningCertificatesController: API.OperationMethod<
   DeleteSamlIdpSigningCertificatesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSamlIdpSigningCertificatesControllerRequest,
-  output: DeleteSamlIdpSigningCertificatesControllerResponse,
+  input: __S(217) as any as S.Schema<DeleteSamlIdpSigningCertificatesControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteSamlIdpSigningCertificatesControllerResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13369,8 +9927,8 @@ export const DeleteSamlSpEncryptionCertificatesController: API.OperationMethod<
   DeleteSamlSpEncryptionCertificatesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSamlSpEncryptionCertificatesControllerRequest,
-  output: DeleteSamlSpEncryptionCertificatesControllerResponse,
+  input: __S(218) as any as S.Schema<DeleteSamlSpEncryptionCertificatesControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteSamlSpEncryptionCertificatesControllerResponse>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13384,8 +9942,8 @@ export const DeleteSamlSpSigningCertificatesController: API.OperationMethod<
   DeleteSamlSpSigningCertificatesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSamlSpSigningCertificatesControllerRequest,
-  output: DeleteSamlSpSigningCertificatesControllerResponse,
+  input: __S(219) as any as S.Schema<DeleteSamlSpSigningCertificatesControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteSamlSpSigningCertificatesControllerResponse>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13402,8 +9960,8 @@ export const DeleteUserlandUserOrganizationMembershipsController: API.OperationM
   DeleteUserlandUserOrganizationMembershipsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserlandUserOrganizationMembershipsControllerRequest,
-  output: DeleteUserlandUserOrganizationMembershipsControllerResponse,
+  input: __S(220) as any as S.Schema<DeleteUserlandUserOrganizationMembershipsControllerRequest>,
+  output: __S(221) as any as S.Schema<DeleteUserlandUserOrganizationMembershipsControllerResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13417,8 +9975,8 @@ export const DeleteWaitlistEntriesController: API.OperationMethod<
   DeleteWaitlistEntriesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWaitlistEntriesControllerRequest,
-  output: DeleteWaitlistEntriesControllerResponse,
+  input: __S(222) as any as S.Schema<DeleteWaitlistEntriesControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteWaitlistEntriesControllerResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13432,8 +9990,8 @@ export const DeleteWebhookEndpointsController: API.OperationMethod<
   DeleteWebhookEndpointsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebhookEndpointsControllerRequest,
-  output: DeleteWebhookEndpointsControllerResponse,
+  input: __S(223) as any as S.Schema<DeleteWebhookEndpointsControllerRequest>,
+  output: __S(55) as any as S.Schema<DeleteWebhookEndpointsControllerResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13447,8 +10005,8 @@ export const DescribeJumpWireWebDataVaultController: API.OperationMethod<
   DescribeJumpWireWebDataVaultControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeJumpWireWebDataVaultControllerRequest,
-  output: ObjectWithoutValue,
+  input: __S(224) as any as S.Schema<DescribeJumpWireWebDataVaultControllerRequest>,
+  output: __S(225) as any as S.Schema<ObjectWithoutValue>,
   errors: [BadRequest, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13462,8 +10020,8 @@ export const DirectoriesControllerFind: API.OperationMethod<
   DirectoriesControllerFindError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DirectoriesControllerFindRequest,
-  output: Directory,
+  input: __S(226) as any as S.Schema<DirectoriesControllerFindRequest>,
+  output: __S(229) as any as S.Schema<Directory>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13477,8 +10035,8 @@ export const DirectoryGroupsControllerFind: API.OperationMethod<
   DirectoryGroupsControllerFindError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DirectoryGroupsControllerFindRequest,
-  output: DirectoryGroup,
+  input: __S(230) as any as S.Schema<DirectoryGroupsControllerFindRequest>,
+  output: __S(231) as any as S.Schema<DirectoryGroup>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13492,8 +10050,8 @@ export const DirectoryUsersControllerFind: API.OperationMethod<
   DirectoryUsersControllerFindError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DirectoryUsersControllerFindRequest,
-  output: DirectoryUserWithGroups,
+  input: __S(232) as any as S.Schema<DirectoryUsersControllerFindRequest>,
+  output: __S(237) as any as S.Schema<DirectoryUserWithGroups>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13507,8 +10065,8 @@ export const DisableFeatureFlagsControllerFlag: API.OperationMethod<
   DisableFeatureFlagsControllerFlagError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableFeatureFlagsControllerFlagRequest,
-  output: DisableFeatureFlagsControllerFlagResponse,
+  input: __S(238) as any as S.Schema<DisableFeatureFlagsControllerFlagRequest>,
+  output: __S(240) as any as S.Schema<DisableFeatureFlagsControllerFlagResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13522,8 +10080,8 @@ export const EnableFeatureFlagsControllerFlag: API.OperationMethod<
   EnableFeatureFlagsControllerFlagError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableFeatureFlagsControllerFlagRequest,
-  output: EnableFeatureFlagsControllerFlagResponse,
+  input: __S(241) as any as S.Schema<EnableFeatureFlagsControllerFlagRequest>,
+  output: __S(240) as any as S.Schema<EnableFeatureFlagsControllerFlagResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13537,8 +10095,8 @@ export const ExportAuditLogExportsController: API.OperationMethod<
   ExportAuditLogExportsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportAuditLogExportsControllerRequest,
-  output: AuditLogExportJson,
+  input: __S(242) as any as S.Schema<ExportAuditLogExportsControllerRequest>,
+  output: __S(34) as any as S.Schema<AuditLogExportJson>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13552,8 +10110,8 @@ export const FeatureFlagsControllerFindBySlug: API.OperationMethod<
   FeatureFlagsControllerFindBySlugError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FeatureFlagsControllerFindBySlugRequest,
-  output: Flag,
+  input: __S(243) as any as S.Schema<FeatureFlagsControllerFindBySlugRequest>,
+  output: __S(245) as any as S.Schema<Flag>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13567,8 +10125,8 @@ export const GetAgentAdminControllerRegistration: API.OperationMethod<
   GetAgentAdminControllerRegistrationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgentAdminControllerRegistrationRequest,
-  output: AgentRegistration,
+  input: __S(246) as any as S.Schema<GetAgentAdminControllerRegistrationRequest>,
+  output: __S(250) as any as S.Schema<AgentRegistration>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13582,8 +10140,8 @@ export const GetAgentBlueprintsController: API.OperationMethod<
   GetAgentBlueprintsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgentBlueprintsControllerRequest,
-  output: AgentBlueprint,
+  input: __S(251) as any as S.Schema<GetAgentBlueprintsControllerRequest>,
+  output: __S(83) as any as S.Schema<AgentBlueprint>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13597,8 +10155,8 @@ export const GetAgentInstancesController: API.OperationMethod<
   GetAgentInstancesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgentInstancesControllerRequest,
-  output: AgentInstance,
+  input: __S(252) as any as S.Schema<GetAgentInstancesControllerRequest>,
+  output: __S(253) as any as S.Schema<AgentInstance>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13612,8 +10170,8 @@ export const GetAgentInstanceSessionsController: API.OperationMethod<
   GetAgentInstanceSessionsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgentInstanceSessionsControllerRequest,
-  output: AgentInstanceSession,
+  input: __S(254) as any as S.Schema<GetAgentInstanceSessionsControllerRequest>,
+  output: __S(255) as any as S.Schema<AgentInstanceSession>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13627,8 +10185,8 @@ export const GetAuthenticationFactorsController: API.OperationMethod<
   GetAuthenticationFactorsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuthenticationFactorsControllerRequest,
-  output: AuthenticationFactor,
+  input: __S(256) as any as S.Schema<GetAuthenticationFactorsControllerRequest>,
+  output: __S(258) as any as S.Schema<AuthenticationFactor>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13645,8 +10203,8 @@ export const GetAuthorizationGroupRoleAssignmentsController: API.OperationMethod
   GetAuthorizationGroupRoleAssignmentsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuthorizationGroupRoleAssignmentsControllerRequest,
-  output: GroupRoleAssignment,
+  input: __S(259) as any as S.Schema<GetAuthorizationGroupRoleAssignmentsControllerRequest>,
+  output: __S(106) as any as S.Schema<GroupRoleAssignment>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13660,8 +10218,8 @@ export const GetAuthorizationOrganizationRolesController: API.OperationMethod<
   GetAuthorizationOrganizationRolesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuthorizationOrganizationRolesControllerRequest,
-  output: GetAuthorizationOrganizationRolesControllerResponse,
+  input: __S(260) as any as S.Schema<GetAuthorizationOrganizationRolesControllerRequest>,
+  output: __S(261) as any as S.Schema<GetAuthorizationOrganizationRolesControllerResponse>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13678,8 +10236,10 @@ export const GetAuthorizationResourcesByExternalIdControllerByExternalId: API.Op
   GetAuthorizationResourcesByExternalIdControllerByExternalIdError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuthorizationResourcesByExternalIdControllerByExternalIdRequest,
-  output: AuthorizationResource,
+  input: __S(
+    262,
+  ) as any as S.Schema<GetAuthorizationResourcesByExternalIdControllerByExternalIdRequest>,
+  output: __S(51) as any as S.Schema<AuthorizationResource>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13693,8 +10253,8 @@ export const GetAuthorizationRolesController: API.OperationMethod<
   GetAuthorizationRolesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuthorizationRolesControllerRequest,
-  output: Role,
+  input: __S(263) as any as S.Schema<GetAuthorizationRolesControllerRequest>,
+  output: __S(264) as any as S.Schema<Role>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13714,8 +10274,8 @@ export const GetDataIntegrationsControllerUserlandUserToken: API.OperationMethod
   GetDataIntegrationsControllerUserlandUserTokenError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataIntegrationsControllerUserlandUserTokenRequest,
-  output: GetDataIntegrationsControllerUserlandUserTokenResponse,
+  input: __S(265) as any as S.Schema<GetDataIntegrationsControllerUserlandUserTokenRequest>,
+  output: __S(266) as any as S.Schema<GetDataIntegrationsControllerUserlandUserTokenResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13729,8 +10289,8 @@ export const GetDataIntegrationsManagementControllerDataIntegration: API.Operati
   GetDataIntegrationsManagementControllerDataIntegrationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataIntegrationsManagementControllerDataIntegrationRequest,
-  output: DataIntegration,
+  input: __S(267) as any as S.Schema<GetDataIntegrationsManagementControllerDataIntegrationRequest>,
+  output: __S(136) as any as S.Schema<DataIntegration>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13746,8 +10306,10 @@ export const GetDataIntegrationsManagementControllerOrganizationDataIntegration:
   GetDataIntegrationsManagementControllerOrganizationDataIntegrationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataIntegrationsManagementControllerOrganizationDataIntegrationRequest,
-  output: DataIntegration,
+  input: __S(
+    268,
+  ) as any as S.Schema<GetDataIntegrationsManagementControllerOrganizationDataIntegrationRequest>,
+  output: __S(136) as any as S.Schema<DataIntegration>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13765,8 +10327,10 @@ export const GetDataIntegrationsOrganizationControllerOrganizationDataInstallati
   GetDataIntegrationsOrganizationControllerOrganizationDataInstallationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest,
-  output: ConnectedAccount,
+  input: __S(
+    269,
+  ) as any as S.Schema<GetDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest>,
+  output: __S(270) as any as S.Schema<ConnectedAccount>,
   errors: [BadRequest, NotFound, Conflict, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13782,8 +10346,10 @@ export const GetDataIntegrationsOrganizationControllerOrganizationDataIntegratio
   GetDataIntegrationsOrganizationControllerOrganizationDataIntegrationsError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataIntegrationsOrganizationControllerOrganizationDataIntegrationsRequest,
-  output: DataIntegrationsListResponse,
+  input: __S(
+    271,
+  ) as any as S.Schema<GetDataIntegrationsOrganizationControllerOrganizationDataIntegrationsRequest>,
+  output: __S(277) as any as S.Schema<DataIntegrationsListResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13801,8 +10367,10 @@ export const GetDataIntegrationsUserManagementControllerUserDataInstallation: AP
   GetDataIntegrationsUserManagementControllerUserDataInstallationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataIntegrationsUserManagementControllerUserDataInstallationRequest,
-  output: ConnectedAccount,
+  input: __S(
+    278,
+  ) as any as S.Schema<GetDataIntegrationsUserManagementControllerUserDataInstallationRequest>,
+  output: __S(270) as any as S.Schema<ConnectedAccount>,
   errors: [BadRequest, NotFound, Conflict, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13818,8 +10386,10 @@ export const GetDataIntegrationsUserManagementControllerUserDataIntegrations: AP
   GetDataIntegrationsUserManagementControllerUserDataIntegrationsError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataIntegrationsUserManagementControllerUserDataIntegrationsRequest,
-  output: DataIntegrationsListResponse,
+  input: __S(
+    279,
+  ) as any as S.Schema<GetDataIntegrationsUserManagementControllerUserDataIntegrationsRequest>,
+  output: __S(277) as any as S.Schema<DataIntegrationsListResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13833,8 +10403,8 @@ export const GetGroupsController: API.OperationMethod<
   GetGroupsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGroupsControllerRequest,
-  output: Group,
+  input: __S(280) as any as S.Schema<GetGroupsControllerRequest>,
+  output: __S(8) as any as S.Schema<Group>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13848,8 +10418,8 @@ export const GetJwtTemplatesControllerJwtTemplate: API.OperationMethod<
   GetJwtTemplatesControllerJwtTemplateError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJwtTemplatesControllerJwtTemplateRequest,
-  output: JwtTemplate,
+  input: __S(281) as any as S.Schema<GetJwtTemplatesControllerJwtTemplateRequest>,
+  output: __S(282) as any as S.Schema<JwtTemplate>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13863,8 +10433,8 @@ export const GetOrganizationDomainsController: API.OperationMethod<
   GetOrganizationDomainsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationDomainsControllerRequest,
-  output: OrganizationDomainStandAlone,
+  input: __S(283) as any as S.Schema<GetOrganizationDomainsControllerRequest>,
+  output: __S(284) as any as S.Schema<OrganizationDomainStandAlone>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13878,8 +10448,8 @@ export const GetOrganizationsControllerAuditLogConfiguration: API.OperationMetho
   GetOrganizationsControllerAuditLogConfigurationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsControllerAuditLogConfigurationRequest,
-  output: AuditLogConfiguration,
+  input: __S(285) as any as S.Schema<GetOrganizationsControllerAuditLogConfigurationRequest>,
+  output: __S(287) as any as S.Schema<AuditLogConfiguration>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13893,8 +10463,8 @@ export const GetOrganizationsControllerByExternalId: API.OperationMethod<
   GetOrganizationsControllerByExternalIdError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsControllerByExternalIdRequest,
-  output: Organization,
+  input: __S(288) as any as S.Schema<GetOrganizationsControllerByExternalIdRequest>,
+  output: __S(155) as any as S.Schema<Organization>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13908,8 +10478,8 @@ export const GetPublicRadarChallengesController: API.OperationMethod<
   GetPublicRadarChallengesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPublicRadarChallengesControllerRequest,
-  output: RadarChallenge,
+  input: __S(289) as any as S.Schema<GetPublicRadarChallengesControllerRequest>,
+  output: __S(290) as any as S.Schema<RadarChallenge>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13927,8 +10497,8 @@ export const GetSamlSpSigningCertificatesController: API.OperationMethod<
   GetSamlSpSigningCertificatesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSamlSpSigningCertificatesControllerRequest,
-  output: SamlSpSigningCertificate,
+  input: __S(291) as any as S.Schema<GetSamlSpSigningCertificatesControllerRequest>,
+  output: __S(164) as any as S.Schema<SamlSpSigningCertificate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13942,8 +10512,8 @@ export const GetSsoControllerProfile: API.OperationMethod<
   GetSsoControllerProfileError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSsoControllerProfileRequest,
-  output: Profile,
+  input: __S(292) as any as S.Schema<GetSsoControllerProfileRequest>,
+  output: __S(293) as any as S.Schema<Profile>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13957,8 +10527,8 @@ export const GetTeamsControllerTeam: API.OperationMethod<
   GetTeamsControllerTeamError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTeamsControllerTeamRequest,
-  output: Team,
+  input: __S(294) as any as S.Schema<GetTeamsControllerTeamRequest>,
+  output: __S(166) as any as S.Schema<Team>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13972,8 +10542,8 @@ export const GetUserlandMagicAuthController: API.OperationMethod<
   GetUserlandMagicAuthControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserlandMagicAuthControllerRequest,
-  output: MagicAuth,
+  input: __S(295) as any as S.Schema<GetUserlandMagicAuthControllerRequest>,
+  output: __S(296) as any as S.Schema<MagicAuth>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -13987,8 +10557,8 @@ export const GetUserlandUserIdentitiesController: API.OperationMethod<
   GetUserlandUserIdentitiesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserlandUserIdentitiesControllerRequest,
-  output: GetUserlandUserIdentitiesControllerResponse,
+  input: __S(297) as any as S.Schema<GetUserlandUserIdentitiesControllerRequest>,
+  output: __S(300) as any as S.Schema<GetUserlandUserIdentitiesControllerResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14002,8 +10572,8 @@ export const GetUserlandUserInvitesController: API.OperationMethod<
   GetUserlandUserInvitesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserlandUserInvitesControllerRequest,
-  output: UserlandUserInvite,
+  input: __S(301) as any as S.Schema<GetUserlandUserInvitesControllerRequest>,
+  output: __S(170) as any as S.Schema<UserlandUserInvite>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14017,8 +10587,8 @@ export const GetUserlandUserInvitesControllerByToken: API.OperationMethod<
   GetUserlandUserInvitesControllerByTokenError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserlandUserInvitesControllerByTokenRequest,
-  output: UserlandUserInvite,
+  input: __S(302) as any as S.Schema<GetUserlandUserInvitesControllerByTokenRequest>,
+  output: __S(170) as any as S.Schema<UserlandUserInvite>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14032,8 +10602,8 @@ export const GetUserlandUserOrganizationMembershipsController: API.OperationMeth
   GetUserlandUserOrganizationMembershipsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserlandUserOrganizationMembershipsControllerRequest,
-  output: UserlandUserOrganizationMembership,
+  input: __S(303) as any as S.Schema<GetUserlandUserOrganizationMembershipsControllerRequest>,
+  output: __S(304) as any as S.Schema<UserlandUserOrganizationMembership>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14047,8 +10617,8 @@ export const GetUserlandUsersControllerByExternalId: API.OperationMethod<
   GetUserlandUsersControllerByExternalIdError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserlandUsersControllerByExternalIdRequest,
-  output: UserlandUser,
+  input: __S(305) as any as S.Schema<GetUserlandUsersControllerByExternalIdRequest>,
+  output: __S(174) as any as S.Schema<UserlandUser>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14062,8 +10632,8 @@ export const GetUserlandUsersControllerEmailVerification: API.OperationMethod<
   GetUserlandUsersControllerEmailVerificationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserlandUsersControllerEmailVerificationRequest,
-  output: EmailVerification,
+  input: __S(306) as any as S.Schema<GetUserlandUsersControllerEmailVerificationRequest>,
+  output: __S(296) as any as S.Schema<EmailVerification>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14082,8 +10652,8 @@ export const InviteItContactsController: API.OperationMethod<
   InviteItContactsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InviteItContactsControllerRequest,
-  output: InviteItContactsControllerResponse,
+  input: __S(307) as any as S.Schema<InviteItContactsControllerRequest>,
+  output: __S(55) as any as S.Schema<InviteItContactsControllerResponse>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14097,8 +10667,8 @@ export const JumpWireWebDataVaultControllerIndex: API.OperationMethod<
   JumpWireWebDataVaultControllerIndexError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JumpWireWebDataVaultControllerIndexRequest,
-  output: ObjectListResponse,
+  input: __S(308) as any as S.Schema<JumpWireWebDataVaultControllerIndexRequest>,
+  output: __S(312) as any as S.Schema<ObjectListResponse>,
   errors: [BadRequest, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14112,8 +10682,8 @@ export const JumpWireWebDataVaultControllerShowById: API.OperationMethod<
   JumpWireWebDataVaultControllerShowByIdError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JumpWireWebDataVaultControllerShowByIdRequest,
-  output: Object,
+  input: __S(313) as any as S.Schema<JumpWireWebDataVaultControllerShowByIdRequest>,
+  output: __S(314) as any as S.Schema<Object>,
   errors: [BadRequest, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14127,8 +10697,8 @@ export const JumpWireWebDataVaultControllerShowByName: API.OperationMethod<
   JumpWireWebDataVaultControllerShowByNameError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JumpWireWebDataVaultControllerShowByNameRequest,
-  output: Object,
+  input: __S(315) as any as S.Schema<JumpWireWebDataVaultControllerShowByNameRequest>,
+  output: __S(314) as any as S.Schema<Object>,
   errors: [BadRequest, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14142,8 +10712,8 @@ export const JumpWireWebDataVaultControllerVersions: API.OperationMethod<
   JumpWireWebDataVaultControllerVersionsError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JumpWireWebDataVaultControllerVersionsRequest,
-  output: VersionListResponse,
+  input: __S(316) as any as S.Schema<JumpWireWebDataVaultControllerVersionsRequest>,
+  output: __S(319) as any as S.Schema<VersionListResponse>,
   errors: [BadRequest, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14160,8 +10730,8 @@ export const JumpWireWebKeyControllerCreateDataKey: API.OperationMethod<
   JumpWireWebKeyControllerCreateDataKeyError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JumpWireWebKeyControllerCreateDataKeyRequest,
-  output: CreateDataKeyResponse,
+  input: __S(320) as any as S.Schema<JumpWireWebKeyControllerCreateDataKeyRequest>,
+  output: __S(321) as any as S.Schema<CreateDataKeyResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14175,8 +10745,8 @@ export const JumpWireWebKeyControllerRekey: API.OperationMethod<
   JumpWireWebKeyControllerRekeyError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JumpWireWebKeyControllerRekeyRequest,
-  output: CreateDataKeyResponse,
+  input: __S(322) as any as S.Schema<JumpWireWebKeyControllerRekeyRequest>,
+  output: __S(321) as any as S.Schema<CreateDataKeyResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14190,8 +10760,8 @@ export const ListAgentBlueprintsController: API.OperationMethod<
   ListAgentBlueprintsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAgentBlueprintsControllerRequest,
-  output: ListAgentBlueprintsControllerResponse,
+  input: __S(323) as any as S.Schema<ListAgentBlueprintsControllerRequest>,
+  output: __S(325) as any as S.Schema<ListAgentBlueprintsControllerResponse>,
   errors: [UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14205,8 +10775,8 @@ export const ListAgentInstancesController: API.OperationMethod<
   ListAgentInstancesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAgentInstancesControllerRequest,
-  output: ListAgentInstancesControllerResponse,
+  input: __S(326) as any as S.Schema<ListAgentInstancesControllerRequest>,
+  output: __S(328) as any as S.Schema<ListAgentInstancesControllerResponse>,
   errors: [UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14220,8 +10790,8 @@ export const ListAgentInstanceSessionsController: API.OperationMethod<
   ListAgentInstanceSessionsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAgentInstanceSessionsControllerRequest,
-  output: ListAgentInstanceSessionsControllerResponse,
+  input: __S(329) as any as S.Schema<ListAgentInstanceSessionsControllerRequest>,
+  output: __S(331) as any as S.Schema<ListAgentInstanceSessionsControllerResponse>,
   errors: [UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14235,8 +10805,8 @@ export const ListApplicationCredentialsController: API.OperationMethod<
   ListApplicationCredentialsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApplicationCredentialsControllerRequest,
-  output: ListApplicationCredentialsControllerResponse,
+  input: __S(332) as any as S.Schema<ListApplicationCredentialsControllerRequest>,
+  output: __S(335) as any as S.Schema<ListApplicationCredentialsControllerResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14250,8 +10820,8 @@ export const ListApplicationsController: API.OperationMethod<
   ListApplicationsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApplicationsControllerRequest,
-  output: ConnectApplicationList,
+  input: __S(336) as any as S.Schema<ListApplicationsControllerRequest>,
+  output: __S(339) as any as S.Schema<ConnectApplicationList>,
   errors: [UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14265,8 +10835,8 @@ export const ListAuditLogValidatorsController: API.OperationMethod<
   ListAuditLogValidatorsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAuditLogValidatorsControllerRequest,
-  output: ListAuditLogValidatorsControllerResponse,
+  input: __S(340) as any as S.Schema<ListAuditLogValidatorsControllerRequest>,
+  output: __S(343) as any as S.Schema<ListAuditLogValidatorsControllerResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14280,8 +10850,8 @@ export const ListAuthkitOauthResourcesController: API.OperationMethod<
   ListAuthkitOauthResourcesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAuthkitOauthResourcesControllerRequest,
-  output: ListAuthkitOauthResourcesControllerResponse,
+  input: __S(344) as any as S.Schema<ListAuthkitOauthResourcesControllerRequest>,
+  output: __S(346) as any as S.Schema<ListAuthkitOauthResourcesControllerResponse>,
   errors: [UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14299,8 +10869,8 @@ export const ListAuthorizationControllerEffectivePermissions: API.OperationMetho
   ListAuthorizationControllerEffectivePermissionsError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAuthorizationControllerEffectivePermissionsRequest,
-  output: AuthorizationPermissionList,
+  input: __S(347) as any as S.Schema<ListAuthorizationControllerEffectivePermissionsRequest>,
+  output: __S(349) as any as S.Schema<AuthorizationPermissionList>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14318,8 +10888,10 @@ export const ListAuthorizationControllerEffectivePermissionsByExternalId: API.Op
   ListAuthorizationControllerEffectivePermissionsByExternalIdError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAuthorizationControllerEffectivePermissionsByExternalIdRequest,
-  output: AuthorizationPermissionList,
+  input: __S(
+    350,
+  ) as any as S.Schema<ListAuthorizationControllerEffectivePermissionsByExternalIdRequest>,
+  output: __S(349) as any as S.Schema<AuthorizationPermissionList>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14338,8 +10910,8 @@ export const ListAuthorizationControllerResourcesForMembership: API.OperationMet
   ListAuthorizationControllerResourcesForMembershipError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAuthorizationControllerResourcesForMembershipRequest,
-  output: AuthorizationResourceList,
+  input: __S(351) as any as S.Schema<ListAuthorizationControllerResourcesForMembershipRequest>,
+  output: __S(353) as any as S.Schema<AuthorizationResourceList>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14356,8 +10928,8 @@ export const ListAuthorizationGroupRoleAssignmentsController: API.OperationMetho
   ListAuthorizationGroupRoleAssignmentsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAuthorizationGroupRoleAssignmentsControllerRequest,
-  output: GroupRoleAssignmentList,
+  input: __S(354) as any as S.Schema<ListAuthorizationGroupRoleAssignmentsControllerRequest>,
+  output: __S(356) as any as S.Schema<GroupRoleAssignmentList>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14374,8 +10946,8 @@ export const ListAuthorizationOrganizationRolesController: API.OperationMethod<
   ListAuthorizationOrganizationRolesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAuthorizationOrganizationRolesControllerRequest,
-  output: RoleList,
+  input: __S(357) as any as S.Schema<ListAuthorizationOrganizationRolesControllerRequest>,
+  output: __S(359) as any as S.Schema<RoleList>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14389,8 +10961,8 @@ export const ListAuthorizationPermissionsController: API.OperationMethod<
   ListAuthorizationPermissionsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAuthorizationPermissionsControllerRequest,
-  output: AuthorizationPermissionList,
+  input: __S(360) as any as S.Schema<ListAuthorizationPermissionsControllerRequest>,
+  output: __S(349) as any as S.Schema<AuthorizationPermissionList>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14409,9 +10981,10 @@ export const ListAuthorizationResourcesByExternalIdControllerOrganizationMembers
   ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdRequest,
-  output: UserlandUserOrganizationMembershipBaseWithUserList,
+  input: __S(
+    361,
+  ) as any as S.Schema<ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdRequest>,
+  output: __S(364) as any as S.Schema<UserlandUserOrganizationMembershipBaseWithUserList>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14429,8 +11002,8 @@ export const ListAuthorizationResourcesController: API.OperationMethod<
   ListAuthorizationResourcesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAuthorizationResourcesControllerRequest,
-  output: AuthorizationResourceList,
+  input: __S(365) as any as S.Schema<ListAuthorizationResourcesControllerRequest>,
+  output: __S(353) as any as S.Schema<AuthorizationResourceList>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14449,8 +11022,10 @@ export const ListAuthorizationResourcesControllerOrganizationMembershipsForResou
   ListAuthorizationResourcesControllerOrganizationMembershipsForResourceError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAuthorizationResourcesControllerOrganizationMembershipsForResourceRequest,
-  output: UserlandUserOrganizationMembershipBaseWithUserList,
+  input: __S(
+    366,
+  ) as any as S.Schema<ListAuthorizationResourcesControllerOrganizationMembershipsForResourceRequest>,
+  output: __S(364) as any as S.Schema<UserlandUserOrganizationMembershipBaseWithUserList>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14467,8 +11042,10 @@ export const ListAuthorizationRoleAssignmentsControllerRoleAssignments: API.Oper
   ListAuthorizationRoleAssignmentsControllerRoleAssignmentsError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAuthorizationRoleAssignmentsControllerRoleAssignmentsRequest,
-  output: UserRoleAssignmentList,
+  input: __S(
+    367,
+  ) as any as S.Schema<ListAuthorizationRoleAssignmentsControllerRoleAssignmentsRequest>,
+  output: __S(369) as any as S.Schema<UserRoleAssignmentList>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14485,8 +11062,10 @@ export const ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourc
   ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceRequest,
-  output: UserRoleAssignmentList,
+  input: __S(
+    370,
+  ) as any as S.Schema<ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceRequest>,
+  output: __S(369) as any as S.Schema<UserRoleAssignmentList>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14503,8 +11082,10 @@ export const ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourc
   ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceByExternalIdError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceByExternalIdRequest,
-  output: UserRoleAssignmentList,
+  input: __S(
+    371,
+  ) as any as S.Schema<ListAuthorizationRoleAssignmentsControllerRoleAssignmentsForResourceByExternalIdRequest>,
+  output: __S(369) as any as S.Schema<UserRoleAssignmentList>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14518,8 +11099,8 @@ export const ListAuthorizationRolesController: API.OperationMethod<
   ListAuthorizationRolesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAuthorizationRolesControllerRequest,
-  output: RoleList,
+  input: __S(372) as any as S.Schema<ListAuthorizationRolesControllerRequest>,
+  output: __S(359) as any as S.Schema<RoleList>,
   errors: [Forbidden, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14536,8 +11117,8 @@ export const ListAuthorizedApplicationsController: API.OperationMethod<
   ListAuthorizedApplicationsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAuthorizedApplicationsControllerRequest,
-  output: AuthorizedConnectApplicationList,
+  input: __S(373) as any as S.Schema<ListAuthorizedApplicationsControllerRequest>,
+  output: __S(376) as any as S.Schema<AuthorizedConnectApplicationList>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14551,8 +11132,8 @@ export const ListConnectionsController: API.OperationMethod<
   ListConnectionsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConnectionsControllerRequest,
-  output: ConnectionList,
+  input: __S(377) as any as S.Schema<ListConnectionsControllerRequest>,
+  output: __S(379) as any as S.Schema<ConnectionList>,
   errors: [Forbidden, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14566,8 +11147,8 @@ export const ListCorsOriginsController: API.OperationMethod<
   ListCorsOriginsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCorsOriginsControllerRequest,
-  output: ListCorsOriginsControllerResponse,
+  input: __S(380) as any as S.Schema<ListCorsOriginsControllerRequest>,
+  output: __S(382) as any as S.Schema<ListCorsOriginsControllerResponse>,
   errors: [UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14584,8 +11165,10 @@ export const ListDataIntegrationsManagementControllerDataIntegrations: API.Opera
   ListDataIntegrationsManagementControllerDataIntegrationsError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataIntegrationsManagementControllerDataIntegrationsRequest,
-  output: DataIntegrationList,
+  input: __S(
+    383,
+  ) as any as S.Schema<ListDataIntegrationsManagementControllerDataIntegrationsRequest>,
+  output: __S(385) as any as S.Schema<DataIntegrationList>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14599,8 +11182,8 @@ export const ListDirectoriesController: API.OperationMethod<
   ListDirectoriesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDirectoriesControllerRequest,
-  output: DirectoryList,
+  input: __S(386) as any as S.Schema<ListDirectoriesControllerRequest>,
+  output: __S(388) as any as S.Schema<DirectoryList>,
   errors: [Forbidden, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14618,8 +11201,8 @@ export const ListDirectoryGroupsController: API.OperationMethod<
   ListDirectoryGroupsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDirectoryGroupsControllerRequest,
-  output: DirectoryGroupList,
+  input: __S(389) as any as S.Schema<ListDirectoryGroupsControllerRequest>,
+  output: __S(390) as any as S.Schema<DirectoryGroupList>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14637,8 +11220,8 @@ export const ListDirectoryUsersController: API.OperationMethod<
   ListDirectoryUsersControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDirectoryUsersControllerRequest,
-  output: DirectoryUserList,
+  input: __S(391) as any as S.Schema<ListDirectoryUsersControllerRequest>,
+  output: __S(393) as any as S.Schema<DirectoryUserList>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14652,8 +11235,8 @@ export const ListEventsController: API.OperationMethod<
   ListEventsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventsControllerRequest,
-  output: EventList,
+  input: __S(394) as any as S.Schema<ListEventsControllerRequest>,
+  output: __S(398) as any as S.Schema<EventList>,
   errors: [BadRequest, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14671,8 +11254,8 @@ export const ListFeatureFlagsController: API.OperationMethod<
   ListFeatureFlagsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFeatureFlagsControllerRequest,
-  output: FlagList,
+  input: __S(399) as any as S.Schema<ListFeatureFlagsControllerRequest>,
+  output: __S(401) as any as S.Schema<FlagList>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14686,8 +11269,8 @@ export const ListGroupMembershipsControllerMembers: API.OperationMethod<
   ListGroupMembershipsControllerMembersError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGroupMembershipsControllerMembersRequest,
-  output: UserlandUserOrganizationMembershipBaseList,
+  input: __S(402) as any as S.Schema<ListGroupMembershipsControllerMembersRequest>,
+  output: __S(405) as any as S.Schema<UserlandUserOrganizationMembershipBaseList>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14701,8 +11284,8 @@ export const ListGroupsController: API.OperationMethod<
   ListGroupsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGroupsControllerRequest,
-  output: GroupList,
+  input: __S(406) as any as S.Schema<ListGroupsControllerRequest>,
+  output: __S(408) as any as S.Schema<GroupList>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14716,8 +11299,8 @@ export const ListItContactsController: API.OperationMethod<
   ListItContactsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListItContactsControllerRequest,
-  output: ItContactList,
+  input: __S(409) as any as S.Schema<ListItContactsControllerRequest>,
+  output: __S(411) as any as S.Schema<ItContactList>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14731,8 +11314,8 @@ export const ListOrganizationApiKeysController: API.OperationMethod<
   ListOrganizationApiKeysControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrganizationApiKeysControllerRequest,
-  output: OrganizationApiKeyList,
+  input: __S(412) as any as S.Schema<ListOrganizationApiKeysControllerRequest>,
+  output: __S(415) as any as S.Schema<OrganizationApiKeyList>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14749,8 +11332,8 @@ export const ListOrganizationAuthorizedApplicationsController: API.OperationMeth
   ListOrganizationAuthorizedApplicationsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrganizationAuthorizedApplicationsControllerRequest,
-  output: OrganizationAuthorizedConnectApplicationList,
+  input: __S(416) as any as S.Schema<ListOrganizationAuthorizedApplicationsControllerRequest>,
+  output: __S(419) as any as S.Schema<OrganizationAuthorizedConnectApplicationList>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14764,8 +11347,8 @@ export const ListOrganizationFeatureFlagsController: API.OperationMethod<
   ListOrganizationFeatureFlagsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrganizationFeatureFlagsControllerRequest,
-  output: FlagList,
+  input: __S(420) as any as S.Schema<ListOrganizationFeatureFlagsControllerRequest>,
+  output: __S(401) as any as S.Schema<FlagList>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14779,8 +11362,8 @@ export const ListOrganizationMembershipGroupsControllerGroups: API.OperationMeth
   ListOrganizationMembershipGroupsControllerGroupsError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrganizationMembershipGroupsControllerGroupsRequest,
-  output: GroupList,
+  input: __S(421) as any as S.Schema<ListOrganizationMembershipGroupsControllerGroupsRequest>,
+  output: __S(408) as any as S.Schema<GroupList>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14794,8 +11377,8 @@ export const ListOrganizationsController: API.OperationMethod<
   ListOrganizationsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrganizationsControllerRequest,
-  output: OrganizationList,
+  input: __S(422) as any as S.Schema<ListOrganizationsControllerRequest>,
+  output: __S(424) as any as S.Schema<OrganizationList>,
   errors: [UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14809,8 +11392,8 @@ export const ListProviderControllerForOrganization: API.OperationMethod<
   ListProviderControllerForOrganizationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProviderControllerForOrganizationRequest,
-  output: DataIntegrationConfigurationListResponse,
+  input: __S(425) as any as S.Schema<ListProviderControllerForOrganizationRequest>,
+  output: __S(429) as any as S.Schema<DataIntegrationConfigurationListResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14824,8 +11407,8 @@ export const ListRedirectUrisController: API.OperationMethod<
   ListRedirectUrisControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRedirectUrisControllerRequest,
-  output: ListRedirectUrisControllerResponse,
+  input: __S(430) as any as S.Schema<ListRedirectUrisControllerRequest>,
+  output: __S(432) as any as S.Schema<ListRedirectUrisControllerResponse>,
   errors: [UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14843,8 +11426,8 @@ export const ListSamlIdpSigningCertificatesController: API.OperationMethod<
   ListSamlIdpSigningCertificatesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSamlIdpSigningCertificatesControllerRequest,
-  output: SamlIdpSigningCertificateList,
+  input: __S(433) as any as S.Schema<ListSamlIdpSigningCertificatesControllerRequest>,
+  output: __S(435) as any as S.Schema<SamlIdpSigningCertificateList>,
   errors: [BadRequest, Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14862,8 +11445,8 @@ export const ListSamlSpEncryptionCertificatesController: API.OperationMethod<
   ListSamlSpEncryptionCertificatesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSamlSpEncryptionCertificatesControllerRequest,
-  output: SamlSpEncryptionCertificateList,
+  input: __S(436) as any as S.Schema<ListSamlSpEncryptionCertificatesControllerRequest>,
+  output: __S(435) as any as S.Schema<SamlSpEncryptionCertificateList>,
   errors: [BadRequest, Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14877,8 +11460,8 @@ export const ListUserApiKeysController: API.OperationMethod<
   ListUserApiKeysControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUserApiKeysControllerRequest,
-  output: UserApiKeyList,
+  input: __S(437) as any as S.Schema<ListUserApiKeysControllerRequest>,
+  output: __S(440) as any as S.Schema<UserApiKeyList>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14892,8 +11475,8 @@ export const ListUserlandUserFeatureFlagsController: API.OperationMethod<
   ListUserlandUserFeatureFlagsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUserlandUserFeatureFlagsControllerRequest,
-  output: FlagList,
+  input: __S(441) as any as S.Schema<ListUserlandUserFeatureFlagsControllerRequest>,
+  output: __S(401) as any as S.Schema<FlagList>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14907,8 +11490,8 @@ export const ListUserlandUserInvitesController: API.OperationMethod<
   ListUserlandUserInvitesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUserlandUserInvitesControllerRequest,
-  output: UserlandUserInviteList,
+  input: __S(442) as any as S.Schema<ListUserlandUserInvitesControllerRequest>,
+  output: __S(444) as any as S.Schema<UserlandUserInviteList>,
   errors: [UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14926,8 +11509,8 @@ export const ListUserlandUserOrganizationMembershipsController: API.OperationMet
   ListUserlandUserOrganizationMembershipsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUserlandUserOrganizationMembershipsControllerRequest,
-  output: UserlandUserOrganizationMembershipList,
+  input: __S(445) as any as S.Schema<ListUserlandUserOrganizationMembershipsControllerRequest>,
+  output: __S(447) as any as S.Schema<UserlandUserOrganizationMembershipList>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14944,8 +11527,8 @@ export const ListUserlandUserSessionsController: API.OperationMethod<
   ListUserlandUserSessionsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUserlandUserSessionsControllerRequest,
-  output: ListUserlandUserSessionsControllerResponse,
+  input: __S(448) as any as S.Schema<ListUserlandUserSessionsControllerRequest>,
+  output: __S(452) as any as S.Schema<ListUserlandUserSessionsControllerResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14959,8 +11542,8 @@ export const ListWaitlistsController: API.OperationMethod<
   ListWaitlistsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWaitlistsControllerRequest,
-  output: ListWaitlistsControllerResponse,
+  input: __S(453) as any as S.Schema<ListWaitlistsControllerRequest>,
+  output: __S(456) as any as S.Schema<ListWaitlistsControllerResponse>,
   errors: [UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14974,8 +11557,8 @@ export const ListWaitlistsControllerEntries: API.OperationMethod<
   ListWaitlistsControllerEntriesError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWaitlistsControllerEntriesRequest,
-  output: ListWaitlistsControllerEntriesResponse,
+  input: __S(457) as any as S.Schema<ListWaitlistsControllerEntriesRequest>,
+  output: __S(459) as any as S.Schema<ListWaitlistsControllerEntriesResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -14989,8 +11572,8 @@ export const ListWebhookEndpointsController: API.OperationMethod<
   ListWebhookEndpointsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebhookEndpointsControllerRequest,
-  output: WebhookEndpointList,
+  input: __S(460) as any as S.Schema<ListWebhookEndpointsControllerRequest>,
+  output: __S(462) as any as S.Schema<WebhookEndpointList>,
   errors: [UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15004,8 +11587,8 @@ export const LogoutSsoController: API.OperationMethod<
   LogoutSsoControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogoutSsoControllerRequest,
-  output: LogoutSsoControllerResponse,
+  input: __S(463) as any as S.Schema<LogoutSsoControllerRequest>,
+  output: __S(210) as any as S.Schema<LogoutSsoControllerResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15019,8 +11602,8 @@ export const LogoutUserlandSessionsController: API.OperationMethod<
   LogoutUserlandSessionsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogoutUserlandSessionsControllerRequest,
-  output: LogoutUserlandSessionsControllerResponse,
+  input: __S(464) as any as S.Schema<LogoutUserlandSessionsControllerRequest>,
+  output: __S(55) as any as S.Schema<LogoutUserlandSessionsControllerResponse>,
   errors: [UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15034,8 +11617,8 @@ export const OrganizationsControllerFind: API.OperationMethod<
   OrganizationsControllerFindError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OrganizationsControllerFindRequest,
-  output: Organization,
+  input: __S(465) as any as S.Schema<OrganizationsControllerFindRequest>,
+  output: __S(155) as any as S.Schema<Organization>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15055,8 +11638,8 @@ export const PatchConnectionsController: API.OperationMethod<
   PatchConnectionsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchConnectionsControllerRequest,
-  output: Connection,
+  input: __S(470) as any as S.Schema<PatchConnectionsControllerRequest>,
+  output: __S(74) as any as S.Schema<Connection>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15074,8 +11657,8 @@ export const ProviderControllerConfigure: API.OperationMethod<
   ProviderControllerConfigureError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProviderControllerConfigureRequest,
-  output: DataIntegrationConfigurationResponse,
+  input: __S(471) as any as S.Schema<ProviderControllerConfigureRequest>,
+  output: __S(427) as any as S.Schema<DataIntegrationConfigurationResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15089,8 +11672,8 @@ export const RadarStandaloneControllerAssess: API.OperationMethod<
   RadarStandaloneControllerAssessError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RadarStandaloneControllerAssessRequest,
-  output: RadarStandaloneResponse,
+  input: __S(472) as any as S.Schema<RadarStandaloneControllerAssessRequest>,
+  output: __S(473) as any as S.Schema<RadarStandaloneResponse>,
   errors: [BadRequest, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15107,8 +11690,8 @@ export const RadarStandaloneControllerDeleteRadarListEntry: API.OperationMethod<
   RadarStandaloneControllerDeleteRadarListEntryError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RadarStandaloneControllerDeleteRadarListEntryRequest,
-  output: RadarStandaloneControllerDeleteRadarListEntryResponse,
+  input: __S(474) as any as S.Schema<RadarStandaloneControllerDeleteRadarListEntryRequest>,
+  output: __S(55) as any as S.Schema<RadarStandaloneControllerDeleteRadarListEntryResponse>,
   errors: [BadRequest, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15122,8 +11705,8 @@ export const RadarStandaloneControllerUpdateRadarList: API.OperationMethod<
   RadarStandaloneControllerUpdateRadarListError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RadarStandaloneControllerUpdateRadarListRequest,
-  output: RadarListEntryAlreadyPresentResponse,
+  input: __S(475) as any as S.Schema<RadarStandaloneControllerUpdateRadarListRequest>,
+  output: __S(476) as any as S.Schema<RadarListEntryAlreadyPresentResponse>,
   errors: [BadRequest, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15140,8 +11723,12 @@ export const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmen
   RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentRequest,
-  output: RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentResponse,
+  input: __S(
+    477,
+  ) as any as S.Schema<RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentRequest>,
+  output: __S(
+    199,
+  ) as any as S.Schema<RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentResponse>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15159,8 +11746,12 @@ export const RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmen
   RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest,
-  output: RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsResponse,
+  input: __S(
+    478,
+  ) as any as S.Schema<RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest>,
+  output: __S(
+    199,
+  ) as any as S.Schema<RemoveAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15177,8 +11768,10 @@ export const RemoveAuthorizationOrganizationRolePermissionsControllerPermission:
   RemoveAuthorizationOrganizationRolePermissionsControllerPermissionError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveAuthorizationOrganizationRolePermissionsControllerPermissionRequest,
-  output: Role,
+  input: __S(
+    479,
+  ) as any as S.Schema<RemoveAuthorizationOrganizationRolePermissionsControllerPermissionRequest>,
+  output: __S(264) as any as S.Schema<Role>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15196,8 +11789,12 @@ export const RemoveAuthorizationRoleAssignmentsControllerRoleByCriteria: API.Ope
   RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaRequest,
-  output: RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaResponse,
+  input: __S(
+    480,
+  ) as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaRequest>,
+  output: __S(
+    199,
+  ) as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByCriteriaResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15214,8 +11811,8 @@ export const RemoveAuthorizationRoleAssignmentsControllerRoleById: API.Operation
   RemoveAuthorizationRoleAssignmentsControllerRoleByIdError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveAuthorizationRoleAssignmentsControllerRoleByIdRequest,
-  output: RemoveAuthorizationRoleAssignmentsControllerRoleByIdResponse,
+  input: __S(481) as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByIdRequest>,
+  output: __S(221) as any as S.Schema<RemoveAuthorizationRoleAssignmentsControllerRoleByIdResponse>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15229,8 +11826,8 @@ export const RemoveGroupMembershipsControllerMember: API.OperationMethod<
   RemoveGroupMembershipsControllerMemberError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveGroupMembershipsControllerMemberRequest,
-  output: RemoveGroupMembershipsControllerMemberResponse,
+  input: __S(482) as any as S.Schema<RemoveGroupMembershipsControllerMemberRequest>,
+  output: __S(55) as any as S.Schema<RemoveGroupMembershipsControllerMemberResponse>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15248,8 +11845,10 @@ export const ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignme
   ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest,
-  output: GroupRoleAssignmentList,
+  input: __S(
+    485,
+  ) as any as S.Schema<ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequest>,
+  output: __S(356) as any as S.Schema<GroupRoleAssignmentList>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15267,8 +11866,8 @@ export const ResendUserlandUserInvitesController: API.OperationMethod<
   ResendUserlandUserInvitesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResendUserlandUserInvitesControllerRequest,
-  output: UserlandUserInvite,
+  input: __S(486) as any as S.Schema<ResendUserlandUserInvitesControllerRequest>,
+  output: __S(170) as any as S.Schema<UserlandUserInvite>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15287,8 +11886,8 @@ export const ResetUserlandUsersControllerPassword0: API.OperationMethod<
   ResetUserlandUsersControllerPassword0Error,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResetUserlandUsersControllerPassword0Request,
-  output: ResetPasswordResponse,
+  input: __S(487) as any as S.Schema<ResetUserlandUsersControllerPassword0Request>,
+  output: __S(488) as any as S.Schema<ResetPasswordResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15302,8 +11901,8 @@ export const RevokeAgentInstanceSessionsController: API.OperationMethod<
   RevokeAgentInstanceSessionsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeAgentInstanceSessionsControllerRequest,
-  output: AgentInstanceSession,
+  input: __S(489) as any as S.Schema<RevokeAgentInstanceSessionsControllerRequest>,
+  output: __S(255) as any as S.Schema<AgentInstanceSession>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15317,8 +11916,8 @@ export const RevokeItContactsController: API.OperationMethod<
   RevokeItContactsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeItContactsControllerRequest,
-  output: RevokeItContactsControllerResponse,
+  input: __S(490) as any as S.Schema<RevokeItContactsControllerRequest>,
+  output: __S(55) as any as S.Schema<RevokeItContactsControllerResponse>,
   errors: [Forbidden, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15332,8 +11931,8 @@ export const RevokeUserlandSessionsControllerSession: API.OperationMethod<
   RevokeUserlandSessionsControllerSessionError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeUserlandSessionsControllerSessionRequest,
-  output: RevokeUserlandSessionsControllerSessionResponse,
+  input: __S(491) as any as S.Schema<RevokeUserlandSessionsControllerSessionRequest>,
+  output: __S(55) as any as S.Schema<RevokeUserlandSessionsControllerSessionResponse>,
   errors: [BadRequest, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15347,8 +11946,8 @@ export const RevokeUserlandUserInvitesController: API.OperationMethod<
   RevokeUserlandUserInvitesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeUserlandUserInvitesControllerRequest,
-  output: RevokeUserlandUserInvitesControllerResponse,
+  input: __S(492) as any as S.Schema<RevokeUserlandUserInvitesControllerRequest>,
+  output: __S(1) as any as S.Schema<RevokeUserlandUserInvitesControllerResponse>,
   errors: [BadRequest, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15362,8 +11961,8 @@ export const SendPublicRadarChallengesControllerRadarSmsChallenge: API.Operation
   SendPublicRadarChallengesControllerRadarSmsChallengeError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendPublicRadarChallengesControllerRadarSmsChallengeRequest,
-  output: SendRadarSmsChallengeResponse,
+  input: __S(493) as any as S.Schema<SendPublicRadarChallengesControllerRadarSmsChallengeRequest>,
+  output: __S(494) as any as S.Schema<SendRadarSmsChallengeResponse>,
   errors: [UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15381,8 +11980,8 @@ export const SendUserlandUsersControllerEmailChange: API.OperationMethod<
   SendUserlandUsersControllerEmailChangeError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendUserlandUsersControllerEmailChangeRequest,
-  output: EmailChange,
+  input: __S(495) as any as S.Schema<SendUserlandUsersControllerEmailChangeRequest>,
+  output: __S(496) as any as S.Schema<EmailChange>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15399,8 +11998,8 @@ export const SendUserlandUsersControllerVerificationEmail0: API.OperationMethod<
   SendUserlandUsersControllerVerificationEmail0Error,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendUserlandUsersControllerVerificationEmail0Request,
-  output: SendVerificationEmailResponse,
+  input: __S(497) as any as S.Schema<SendUserlandUsersControllerVerificationEmail0Request>,
+  output: __S(498) as any as S.Schema<SendVerificationEmailResponse>,
   errors: [BadRequest, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15418,8 +12017,12 @@ export const SetAuthorizationOrganizationRolePermissionsControllerPermissions: A
   SetAuthorizationOrganizationRolePermissionsControllerPermissionsError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequest,
-  output: SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponse,
+  input: __S(
+    499,
+  ) as any as S.Schema<SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequest>,
+  output: __S(
+    500,
+  ) as any as S.Schema<SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15438,8 +12041,8 @@ export const SetAuthorizationRolePermissionsControllerPermissions: API.Operation
   SetAuthorizationRolePermissionsControllerPermissionsError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetAuthorizationRolePermissionsControllerPermissionsRequest,
-  output: SetAuthorizationRolePermissionsControllerPermissionsResponse,
+  input: __S(501) as any as S.Schema<SetAuthorizationRolePermissionsControllerPermissionsRequest>,
+  output: __S(502) as any as S.Schema<SetAuthorizationRolePermissionsControllerPermissionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15453,8 +12056,8 @@ export const SsoControllerJsonWebKeySet: API.OperationMethod<
   SsoControllerJsonWebKeySetError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SsoControllerJsonWebKeySetRequest,
-  output: JwksResponse,
+  input: __S(503) as any as S.Schema<SsoControllerJsonWebKeySetRequest>,
+  output: __S(506) as any as S.Schema<JwksResponse>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15468,8 +12071,8 @@ export const SsoControllerLogoutAuthorize: API.OperationMethod<
   SsoControllerLogoutAuthorizeError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SsoControllerLogoutAuthorizeRequest,
-  output: SsoLogoutAuthorizeResponse,
+  input: __S(507) as any as S.Schema<SsoControllerLogoutAuthorizeRequest>,
+  output: __S(508) as any as S.Schema<SsoLogoutAuthorizeResponse>,
   errors: [BadRequest, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15483,8 +12086,8 @@ export const SsoControllerToken: API.OperationMethod<
   SsoControllerTokenError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SsoControllerTokenRequest,
-  output: SsoTokenResponse,
+  input: __S(509) as any as S.Schema<SsoControllerTokenRequest>,
+  output: __S(511) as any as S.Schema<SsoTokenResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15503,8 +12106,8 @@ export const SyncDirectoriesControllerDirectory: API.OperationMethod<
   SyncDirectoriesControllerDirectoryError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SyncDirectoriesControllerDirectoryRequest,
-  output: SyncDirectoriesControllerDirectoryResponse,
+  input: __S(512) as any as S.Schema<SyncDirectoriesControllerDirectoryRequest>,
+  output: __S(55) as any as S.Schema<SyncDirectoriesControllerDirectoryResponse>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15523,8 +12126,8 @@ export const UpdateAgentBlueprintsController: API.OperationMethod<
   UpdateAgentBlueprintsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAgentBlueprintsControllerRequest,
-  output: AgentBlueprint,
+  input: __S(514) as any as S.Schema<UpdateAgentBlueprintsControllerRequest>,
+  output: __S(83) as any as S.Schema<AgentBlueprint>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15538,8 +12141,8 @@ export const UpdateApplicationsController: API.OperationMethod<
   UpdateApplicationsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationsControllerRequest,
-  output: UpdateApplicationsControllerResponse,
+  input: __S(515) as any as S.Schema<UpdateApplicationsControllerRequest>,
+  output: __S(24) as any as S.Schema<UpdateApplicationsControllerResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15556,8 +12159,8 @@ export const UpdateAuditLogsRetentionControllerAuditLogsRetention: API.Operation
   UpdateAuditLogsRetentionControllerAuditLogsRetentionError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAuditLogsRetentionControllerAuditLogsRetentionRequest,
-  output: AuditLogsRetentionJson,
+  input: __S(516) as any as S.Schema<UpdateAuditLogsRetentionControllerAuditLogsRetentionRequest>,
+  output: __S(36) as any as S.Schema<AuditLogsRetentionJson>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15576,8 +12179,8 @@ export const UpdateAuthorizationOrganizationRolesController: API.OperationMethod
   UpdateAuthorizationOrganizationRolesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAuthorizationOrganizationRolesControllerRequest,
-  output: UpdateAuthorizationOrganizationRolesControllerResponse,
+  input: __S(517) as any as S.Schema<UpdateAuthorizationOrganizationRolesControllerRequest>,
+  output: __S(518) as any as S.Schema<UpdateAuthorizationOrganizationRolesControllerResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15595,8 +12198,8 @@ export const UpdateAuthorizationPermissionsController: API.OperationMethod<
   UpdateAuthorizationPermissionsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAuthorizationPermissionsControllerRequest,
-  output: AuthorizationPermission,
+  input: __S(519) as any as S.Schema<UpdateAuthorizationPermissionsControllerRequest>,
+  output: __S(49) as any as S.Schema<AuthorizationPermission>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15616,8 +12219,12 @@ export const UpdateAuthorizationResourcesByExternalIdControllerByExternalId: API
   UpdateAuthorizationResourcesByExternalIdControllerByExternalIdError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAuthorizationResourcesByExternalIdControllerByExternalIdRequest,
-  output: UpdateAuthorizationResourcesByExternalIdControllerByExternalIdResponse,
+  input: __S(
+    520,
+  ) as any as S.Schema<UpdateAuthorizationResourcesByExternalIdControllerByExternalIdRequest>,
+  output: __S(
+    521,
+  ) as any as S.Schema<UpdateAuthorizationResourcesByExternalIdControllerByExternalIdResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15637,8 +12244,8 @@ export const UpdateAuthorizationResourcesController: API.OperationMethod<
   UpdateAuthorizationResourcesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAuthorizationResourcesControllerRequest,
-  output: UpdateAuthorizationResourcesControllerResponse,
+  input: __S(522) as any as S.Schema<UpdateAuthorizationResourcesControllerRequest>,
+  output: __S(112) as any as S.Schema<UpdateAuthorizationResourcesControllerResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15657,8 +12264,8 @@ export const UpdateAuthorizationRolesController: API.OperationMethod<
   UpdateAuthorizationRolesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAuthorizationRolesControllerRequest,
-  output: UpdateAuthorizationRolesControllerResponse,
+  input: __S(523) as any as S.Schema<UpdateAuthorizationRolesControllerRequest>,
+  output: __S(524) as any as S.Schema<UpdateAuthorizationRolesControllerResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15678,8 +12285,10 @@ export const UpdateDataIntegrationsManagementControllerDataIntegration: API.Oper
   UpdateDataIntegrationsManagementControllerDataIntegrationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataIntegrationsManagementControllerDataIntegrationRequest,
-  output: DataIntegration,
+  input: __S(
+    526,
+  ) as any as S.Schema<UpdateDataIntegrationsManagementControllerDataIntegrationRequest>,
+  output: __S(136) as any as S.Schema<DataIntegration>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15699,8 +12308,10 @@ export const UpdateDataIntegrationsManagementControllerOrganizationDataIntegrati
   UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequest,
-  output: DataIntegration,
+  input: __S(
+    527,
+  ) as any as S.Schema<UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequest>,
+  output: __S(136) as any as S.Schema<DataIntegration>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15720,8 +12331,10 @@ export const UpdateDataIntegrationsOrganizationControllerOrganizationDataInstall
   UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest,
-  output: ConnectedAccountWriteResponse,
+  input: __S(
+    528,
+  ) as any as S.Schema<UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequest>,
+  output: __S(127) as any as S.Schema<ConnectedAccountWriteResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15740,8 +12353,10 @@ export const UpdateDataIntegrationsUserManagementControllerUserDataInstallation:
   UpdateDataIntegrationsUserManagementControllerUserDataInstallationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequest,
-  output: ConnectedAccountWriteResponse,
+  input: __S(
+    529,
+  ) as any as S.Schema<UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequest>,
+  output: __S(127) as any as S.Schema<ConnectedAccountWriteResponse>,
   errors: [BadRequest, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15760,8 +12375,8 @@ export const UpdateGroupsController: API.OperationMethod<
   UpdateGroupsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGroupsControllerRequest,
-  output: Group,
+  input: __S(530) as any as S.Schema<UpdateGroupsControllerRequest>,
+  output: __S(8) as any as S.Schema<Group>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15775,8 +12390,8 @@ export const UpdateJumpWireWebDataVaultController: API.OperationMethod<
   UpdateJumpWireWebDataVaultControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateJumpWireWebDataVaultControllerRequest,
-  output: ObjectWithoutValue,
+  input: __S(531) as any as S.Schema<UpdateJumpWireWebDataVaultControllerRequest>,
+  output: __S(225) as any as S.Schema<ObjectWithoutValue>,
   errors: [BadRequest, Conflict, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15790,8 +12405,8 @@ export const UpdateJwtTemplatesControllerJwtTemplate: API.OperationMethod<
   UpdateJwtTemplatesControllerJwtTemplateError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateJwtTemplatesControllerJwtTemplateRequest,
-  output: JwtTemplate,
+  input: __S(532) as any as S.Schema<UpdateJwtTemplatesControllerJwtTemplateRequest>,
+  output: __S(282) as any as S.Schema<JwtTemplate>,
   errors: [UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15811,8 +12426,8 @@ export const UpdateOrganizationsControllerOrganization: API.OperationMethod<
   UpdateOrganizationsControllerOrganizationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOrganizationsControllerOrganizationRequest,
-  output: Organization,
+  input: __S(533) as any as S.Schema<UpdateOrganizationsControllerOrganizationRequest>,
+  output: __S(155) as any as S.Schema<Organization>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15829,8 +12444,8 @@ export const UpdateRadarStandaloneControllerRadarAttempt: API.OperationMethod<
   UpdateRadarStandaloneControllerRadarAttemptError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRadarStandaloneControllerRadarAttemptRequest,
-  output: UpdateRadarStandaloneControllerRadarAttemptResponse,
+  input: __S(534) as any as S.Schema<UpdateRadarStandaloneControllerRadarAttemptRequest>,
+  output: __S(55) as any as S.Schema<UpdateRadarStandaloneControllerRadarAttemptResponse>,
   errors: [BadRequest, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15847,8 +12462,8 @@ export const UpdateUserlandUserOrganizationMembershipsController: API.OperationM
   UpdateUserlandUserOrganizationMembershipsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserlandUserOrganizationMembershipsControllerRequest,
-  output: UserlandUserOrganizationMembership,
+  input: __S(535) as any as S.Schema<UpdateUserlandUserOrganizationMembershipsControllerRequest>,
+  output: __S(304) as any as S.Schema<UserlandUserOrganizationMembership>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15866,8 +12481,8 @@ export const UpdateWebhookEndpointsController: API.OperationMethod<
   UpdateWebhookEndpointsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebhookEndpointsControllerRequest,
-  output: WebhookEndpointJson,
+  input: __S(536) as any as S.Schema<UpdateWebhookEndpointsControllerRequest>,
+  output: __S(179) as any as S.Schema<WebhookEndpointJson>,
   errors: [NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15887,8 +12502,8 @@ export const UpsertDataIntegrationsControllerApiKey: API.OperationMethod<
   UpsertDataIntegrationsControllerApiKeyError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpsertDataIntegrationsControllerApiKeyRequest,
-  output: ConnectedAccountWriteResponse,
+  input: __S(537) as any as S.Schema<UpsertDataIntegrationsControllerApiKeyRequest>,
+  output: __S(127) as any as S.Schema<ConnectedAccountWriteResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15908,8 +12523,8 @@ export const UpsertDataIntegrationsControllerClientCredentials: API.OperationMet
   UpsertDataIntegrationsControllerClientCredentialsError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpsertDataIntegrationsControllerClientCredentialsRequest,
-  output: ConnectedAccountWriteResponse,
+  input: __S(538) as any as S.Schema<UpsertDataIntegrationsControllerClientCredentialsRequest>,
+  output: __S(127) as any as S.Schema<ConnectedAccountWriteResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15926,8 +12541,10 @@ export const UserlandMagicAuthControllerSendMagicAuthCodeAndReturn: API.Operatio
   UserlandMagicAuthControllerSendMagicAuthCodeAndReturnError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest,
-  output: UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse,
+  input: __S(539) as any as S.Schema<UserlandMagicAuthControllerSendMagicAuthCodeAndReturnRequest>,
+  output: __S(
+    540,
+  ) as any as S.Schema<UserlandMagicAuthControllerSendMagicAuthCodeAndReturnResponse>,
   errors: [BadRequest, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15946,8 +12563,8 @@ export const UserlandSessionsControllerAuthenticate0: API.OperationMethod<
   UserlandSessionsControllerAuthenticate0Error,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserlandSessionsControllerAuthenticate0Request,
-  output: UserlandAuthenticateResponse,
+  input: __S(541) as any as S.Schema<UserlandSessionsControllerAuthenticate0Request>,
+  output: __S(542) as any as S.Schema<UserlandAuthenticateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15961,8 +12578,8 @@ export const UserlandSsoControllerDeviceAuthorization: API.OperationMethod<
   UserlandSsoControllerDeviceAuthorizationError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserlandSsoControllerDeviceAuthorizationRequest,
-  output: DeviceAuthorizationResponse,
+  input: __S(543) as any as S.Schema<UserlandSsoControllerDeviceAuthorizationRequest>,
+  output: __S(544) as any as S.Schema<DeviceAuthorizationResponse>,
   errors: [BadRequest, Forbidden, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15978,8 +12595,8 @@ export const UserlandUserAuthenticationFactorsControllerCreate0: API.OperationMe
   UserlandUserAuthenticationFactorsControllerCreate0Error,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserlandUserAuthenticationFactorsControllerCreate0Request,
-  output: UserlandUserAuthenticationFactorEnrollResponse,
+  input: __S(545) as any as S.Schema<UserlandUserAuthenticationFactorsControllerCreate0Request>,
+  output: __S(546) as any as S.Schema<UserlandUserAuthenticationFactorEnrollResponse>,
   errors: [UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -15995,8 +12612,8 @@ export const UserlandUserAuthenticationFactorsControllerList0: API.OperationMeth
   UserlandUserAuthenticationFactorsControllerList0Error,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserlandUserAuthenticationFactorsControllerList0Request,
-  output: UserlandUserAuthenticationFactorList,
+  input: __S(547) as any as S.Schema<UserlandUserAuthenticationFactorsControllerList0Request>,
+  output: __S(549) as any as S.Schema<UserlandUserAuthenticationFactorList>,
   errors: [UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16014,8 +12631,10 @@ export const UserlandUserOrganizationMembershipsControllerReactivate: API.Operat
   UserlandUserOrganizationMembershipsControllerReactivateError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserlandUserOrganizationMembershipsControllerReactivateRequest,
-  output: UserlandUserOrganizationMembership,
+  input: __S(
+    550,
+  ) as any as S.Schema<UserlandUserOrganizationMembershipsControllerReactivateRequest>,
+  output: __S(304) as any as S.Schema<UserlandUserOrganizationMembership>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16033,8 +12652,8 @@ export const UserlandUsersControllerCreate0: API.OperationMethod<
   UserlandUsersControllerCreate0Error,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserlandUsersControllerCreate0Request,
-  output: UserlandUsersControllerCreate0Response,
+  input: __S(551) as any as S.Schema<UserlandUsersControllerCreate0Request>,
+  output: __S(552) as any as S.Schema<UserlandUsersControllerCreate0Response>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16052,8 +12671,8 @@ export const UserlandUsersControllerCreatePasswordResetToken: API.OperationMetho
   UserlandUsersControllerCreatePasswordResetTokenError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserlandUsersControllerCreatePasswordResetTokenRequest,
-  output: PasswordReset,
+  input: __S(553) as any as S.Schema<UserlandUsersControllerCreatePasswordResetTokenRequest>,
+  output: __S(554) as any as S.Schema<PasswordReset>,
   errors: [Forbidden, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16067,8 +12686,8 @@ export const UserlandUsersControllerDelete0: API.OperationMethod<
   UserlandUsersControllerDelete0Error,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserlandUsersControllerDelete0Request,
-  output: UserlandUsersControllerDelete0Response,
+  input: __S(555) as any as S.Schema<UserlandUsersControllerDelete0Request>,
+  output: __S(55) as any as S.Schema<UserlandUsersControllerDelete0Response>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16086,8 +12705,8 @@ export const UserlandUsersControllerEmailVerification0: API.OperationMethod<
   UserlandUsersControllerEmailVerification0Error,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserlandUsersControllerEmailVerification0Request,
-  output: VerifyEmailResponse,
+  input: __S(556) as any as S.Schema<UserlandUsersControllerEmailVerification0Request>,
+  output: __S(488) as any as S.Schema<VerifyEmailResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16101,8 +12720,8 @@ export const UserlandUsersControllerGet0: API.OperationMethod<
   UserlandUsersControllerGet0Error,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserlandUsersControllerGet0Request,
-  output: UserlandUser,
+  input: __S(557) as any as S.Schema<UserlandUsersControllerGet0Request>,
+  output: __S(174) as any as S.Schema<UserlandUser>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16116,8 +12735,8 @@ export const UserlandUsersControllerGetPasswordReset: API.OperationMethod<
   UserlandUsersControllerGetPasswordResetError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserlandUsersControllerGetPasswordResetRequest,
-  output: PasswordReset,
+  input: __S(558) as any as S.Schema<UserlandUsersControllerGetPasswordResetRequest>,
+  output: __S(554) as any as S.Schema<PasswordReset>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16131,8 +12750,8 @@ export const UserlandUsersControllerList0: API.OperationMethod<
   UserlandUsersControllerList0Error,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserlandUsersControllerList0Request,
-  output: UserlandUserList,
+  input: __S(559) as any as S.Schema<UserlandUsersControllerList0Request>,
+  output: __S(561) as any as S.Schema<UserlandUserList>,
   errors: [UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16146,8 +12765,8 @@ export const UserlandUsersControllerUpdate0: API.OperationMethod<
   UserlandUsersControllerUpdate0Error,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserlandUsersControllerUpdate0Request,
-  output: UserlandUser,
+  input: __S(562) as any as S.Schema<UserlandUsersControllerUpdate0Request>,
+  output: __S(174) as any as S.Schema<UserlandUser>,
   errors: [BadRequest, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16161,8 +12780,8 @@ export const ValidateAgentAdminControllerCredential: API.OperationMethod<
   ValidateAgentAdminControllerCredentialError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateAgentAdminControllerCredentialRequest,
-  output: AgentCredentialValidation,
+  input: __S(563) as any as S.Schema<ValidateAgentAdminControllerCredentialRequest>,
+  output: __S(564) as any as S.Schema<AgentCredentialValidation>,
   errors: [BadRequest, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16179,8 +12798,8 @@ export const ValidateAgentBlueprintsTokenControllerToken: API.OperationMethod<
   ValidateAgentBlueprintsTokenControllerTokenError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateAgentBlueprintsTokenControllerTokenRequest,
-  output: AgentTokenValidation,
+  input: __S(565) as any as S.Schema<ValidateAgentBlueprintsTokenControllerTokenRequest>,
+  output: __S(566) as any as S.Schema<AgentTokenValidation>,
   errors: [BadRequest, NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16194,8 +12813,8 @@ export const ValidateApiKeysControllerApiKey: API.OperationMethod<
   ValidateApiKeysControllerApiKeyError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateApiKeysControllerApiKeyRequest,
-  output: ApiKeyValidationResponse,
+  input: __S(567) as any as S.Schema<ValidateApiKeysControllerApiKeyRequest>,
+  output: __S(568) as any as S.Schema<ApiKeyValidationResponse>,
   errors: [UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16213,8 +12832,8 @@ export const VerifyAuthenticationChallengesController: API.OperationMethod<
   VerifyAuthenticationChallengesControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyAuthenticationChallengesControllerRequest,
-  output: AuthenticationChallengeVerifyResponse,
+  input: __S(569) as any as S.Schema<VerifyAuthenticationChallengesControllerRequest>,
+  output: __S(570) as any as S.Schema<AuthenticationChallengeVerifyResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16228,8 +12847,8 @@ export const VerifyOrganizationDomainsController: API.OperationMethod<
   VerifyOrganizationDomainsControllerError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyOrganizationDomainsControllerRequest,
-  output: OrganizationDomainStandAlone,
+  input: __S(571) as any as S.Schema<VerifyOrganizationDomainsControllerRequest>,
+  output: __S(284) as any as S.Schema<OrganizationDomainStandAlone>,
   errors: [BadRequest, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16243,8 +12862,8 @@ export const WaitlistEntriesControllerDeny: API.OperationMethod<
   WaitlistEntriesControllerDenyError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WaitlistEntriesControllerDenyRequest,
-  output: WaitlistEntriesControllerDenyResponse,
+  input: __S(572) as any as S.Schema<WaitlistEntriesControllerDenyRequest>,
+  output: __S(573) as any as S.Schema<WaitlistEntriesControllerDenyResponse>,
   errors: [NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16258,8 +12877,8 @@ export const WaitlistsControllerFind: API.OperationMethod<
   WaitlistsControllerFindError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WaitlistsControllerFindRequest,
-  output: Waitlist,
+  input: __S(574) as any as S.Schema<WaitlistsControllerFindRequest>,
+  output: __S(454) as any as S.Schema<Waitlist>,
   errors: [NotFound, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16277,8 +12896,8 @@ export const WidgetsPublicControllerIssueWidgetSessionToken: API.OperationMethod
   WidgetsPublicControllerIssueWidgetSessionTokenError,
   WorkosOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WidgetsPublicControllerIssueWidgetSessionTokenRequest,
-  output: WidgetSessionTokenResponse,
+  input: __S(575) as any as S.Schema<WidgetsPublicControllerIssueWidgetSessionTokenRequest>,
+  output: __S(576) as any as S.Schema<WidgetSessionTokenResponse>,
   errors: [BadRequest, NotFound, UnprocessableEntity, UnknownWorkosError],
   protocol: WorkosProtocol,
   retry: Retry.Retry,
@@ -16303,7 +12922,7 @@ function __c0(j: number): any {
           object: S.String,
           id: S.String,
           email: S.String,
-          state: AcceptUserlandUserInvitesControllerResponseState,
+          state: S.String,
           accepted_at: S.NullOr(S.String),
           revoked_at: S.NullOr(S.String),
           expires_at: S.String,
@@ -16344,10 +12963,9 @@ function __c0(j: number): any {
           id: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          type: AddAuthorizationOrganizationRolePermissionsControllerPermissionResponseType,
+          type: S.String,
           resource_type_slug: S.String,
-          permissions:
-            AddAuthorizationOrganizationRolePermissionsControllerPermissionResponsePermissionsList,
+          permissions: __S(3),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -16372,9 +12990,9 @@ function __c0(j: number): any {
           id: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          type: AddAuthorizationRolePermissionsControllerPermissionResponseType,
+          type: S.String,
           resource_type_slug: S.String,
-          permissions: AddAuthorizationRolePermissionsControllerPermissionResponsePermissionsList,
+          permissions: __S(3),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -16427,7 +13045,7 @@ function __c1(j: number): any {
         S.Struct({
           type: S.String,
           claim_attempt_token: S.String,
-          user: AgentAdminControllerLinkClaimAttemptToExternalUserRequestUser,
+          user: __S(9),
           organization_id: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/agents/claims/attempts", code: 200 })),
       ).annotate({
@@ -16443,21 +13061,21 @@ function __c1(j: number): any {
         identifier: "ClaimViewResponseOrganizationsItem",
       });
     case 4:
-      return S.Array(ClaimViewResponseOrganizationsItem);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: ClaimViewResponseStatus,
+          status: S.String,
           user_code: S.String,
-          organizations: ClaimViewResponseOrganizationsList,
+          organizations: __S(12),
         }),
       ).annotate({ identifier: "ClaimViewResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           agent_blueprint_id: S.String.pipe(T.Label()),
-          body: AgentBlueprintsTokenControllerMintTokenRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16484,7 +13102,7 @@ function __c2(j: number): any {
           agent_instance_id: S.String,
           new_instance: S.Boolean,
           agent_instance_session_id: S.String,
-          permissions: AgentTokenPermissionsList,
+          permissions: __S(15),
         }),
       ).annotate({ identifier: "AgentToken" });
     case 1:
@@ -16516,12 +13134,12 @@ function __c2(j: number): any {
         S.Struct({
           object: S.optional(S.String),
           id: S.optional(S.String),
-          owner: S.optional(ApiKeyOwner),
+          owner: S.optional(S.Unknown),
           name: S.optional(S.String),
           obfuscated_value: S.optional(S.String),
           last_used_at: S.optional(S.NullOr(S.String)),
           expires_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(ApiKeyPermissionsList),
+          permissions: S.optional(__S(15)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -16544,7 +13162,7 @@ function __c2(j: number): any {
         identifier: "ApplicationsControllerFindResponseRedirectUrisItem",
       });
     case 7:
-      return S.Array(ApplicationsControllerFindResponseRedirectUrisItem);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -16557,11 +13175,11 @@ function __c3(j: number): any {
           client_id: S.String,
           description: S.NullOr(S.String),
           name: S.String,
-          scopes: ApplicationsControllerFindResponseScopesList,
+          scopes: __S(15),
           created_at: S.String,
           updated_at: S.String,
           application_type: S.optional(S.String),
-          redirect_uris: S.optional(ApplicationsControllerFindResponseRedirectUrisList),
+          redirect_uris: S.optional(__S(23)),
           uses_pkce: S.optional(S.Boolean),
           is_first_party: S.optional(S.Boolean),
           was_dynamically_registered: S.optional(S.Boolean),
@@ -16591,11 +13209,9 @@ function __c3(j: number): any {
         S.Struct({
           id: S.String,
           email: S.String,
-          state: ApproveWaitlistEntriesControllerResponseState,
+          state: S.String,
           approved_at: S.NullOr(S.String),
-          additional_fields: S.optional(
-            ApproveWaitlistEntriesControllerResponseAdditionalFieldsMap,
-          ),
+          additional_fields: S.optional(__S(26)),
           waitlist_id: S.optional(S.NullOr(S.String)),
           created_at: S.String,
           updated_at: S.String,
@@ -16641,9 +13257,9 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: UserRoleAssignmentSourceType,
+          type: S.String,
           group_role_assignment_id: S.NullOr(S.String),
-          group: S.NullOr(UserRoleAssignmentSourceGroup),
+          group: S.NullOr(__S(11)),
         }),
       ).annotate({ identifier: "UserRoleAssignmentSource" });
   }
@@ -16656,9 +13272,9 @@ function __c4(j: number): any {
           object: S.String,
           id: S.String,
           organization_membership_id: S.String,
-          role: SlimRole,
-          resource: UserRoleAssignmentResource,
-          source: UserRoleAssignmentSource,
+          role: __S(29),
+          resource: __S(30),
+          source: __S(31),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -16669,11 +13285,11 @@ function __c4(j: number): any {
           organization_id: S.optional(S.String),
           range_start: S.optional(S.String),
           range_end: S.optional(S.String),
-          actions: S.optional(AuditLogExportsControllerExportsRequestActionsList),
-          actors: S.optional(AuditLogExportsControllerExportsRequestActorsList),
-          actor_names: S.optional(AuditLogExportsControllerExportsRequestActorNamesList),
-          actor_ids: S.optional(AuditLogExportsControllerExportsRequestActorIdsList),
-          targets: S.optional(AuditLogExportsControllerExportsRequestTargetsList),
+          actions: S.optional(__S(15)),
+          actors: S.optional(__S(15)),
+          actor_names: S.optional(__S(15)),
+          actor_ids: S.optional(__S(15)),
+          targets: S.optional(__S(15)),
         }).pipe(T.Http({ method: "POST", uri: "/audit_logs/exports", code: 200 })),
       ).annotate({
         identifier: "AuditLogExportsControllerExportsRequest",
@@ -16683,7 +13299,7 @@ function __c4(j: number): any {
         S.Struct({
           object: S.optional(S.String),
           id: S.optional(S.String),
-          state: S.optional(AuditLogExportJsonState),
+          state: S.optional(S.String),
           url: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
@@ -16712,7 +13328,7 @@ function __c4(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/audit_logs/actions/{actionName}/schemas", code: 200 }),
         ),
@@ -16737,39 +13353,39 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: AuditLogSchemaJsonActorMetadataMap,
+          metadata: __S(39),
         }),
       ).annotate({ identifier: "AuditLogSchemaJsonActor" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          metadata: S.optional(AuditLogSchemaJsonTargetsItemMetadataMap),
+          metadata: S.optional(__S(39)),
         }),
       ).annotate({
         identifier: "AuditLogSchemaJsonTargetsItem",
       });
     case 2:
-      return S.Array(AuditLogSchemaJsonTargetsItem);
+      return S.Array(__S(41));
     case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           version: S.optional(S.Number),
-          actor: S.optional(AuditLogSchemaJsonActor),
-          targets: S.optional(AuditLogSchemaJsonTargetsList),
-          metadata: S.optional(AuditLogSchemaJsonMetadataMap),
+          actor: S.optional(__S(40)),
+          targets: S.optional(__S(42)),
+          metadata: S.optional(__S(39)),
           created_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditLogSchemaJson" });
     case 4:
-      return S.Array(AuditLogSchemaJson);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
-          data: S.optional(AuditLogValidatorVersionsControllerSchemasResponseDataList),
+          list_metadata: S.optional(__S(38)),
+          data: S.optional(__S(44)),
         }),
       ).annotate({
         identifier: "AuditLogValidatorVersionsControllerSchemasResponse",
@@ -16849,15 +13465,11 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provider_scopes: S.optional(
-            AuthorizeSsoControllerRequestProviderScopesList.pipe(T.Query()),
-          ),
-          provider_query_params: S.optional(
-            AuthorizeSsoControllerRequestProviderQueryParamsMap.pipe(T.Query()),
-          ),
+          provider_scopes: S.optional(__S(15).pipe(T.Query())),
+          provider_query_params: S.optional(__S(26).pipe(T.Query())),
           client_id: S.String.pipe(T.Query()),
           domain: S.optional(S.String.pipe(T.Query())),
-          provider: S.optional(AuthorizeSsoControllerRequestProvider.pipe(T.Query())),
+          provider: S.optional(S.String.pipe(T.Query())),
           redirect_uri: S.String.pipe(T.Query()),
           response_type: S.String.pipe(T.Query()),
           state: S.optional(S.String.pipe(T.Query())),
@@ -16884,17 +13496,13 @@ function __c6(j: number): any {
           code_challenge: S.optional(S.String.pipe(T.Query())),
           domain_hint: S.optional(S.String.pipe(T.Query())),
           connection_id: S.optional(S.String.pipe(T.Query())),
-          provider_query_params: S.optional(
-            AuthorizeUserlandSsoControllerRequestProviderQueryParamsMap.pipe(T.Query()),
-          ),
-          provider_scopes: S.optional(
-            AuthorizeUserlandSsoControllerRequestProviderScopesList.pipe(T.Query()),
-          ),
+          provider_query_params: S.optional(__S(26).pipe(T.Query())),
+          provider_scopes: S.optional(__S(15).pipe(T.Query())),
           invitation_token: S.optional(S.String.pipe(T.Query())),
           max_age: S.optional(S.Number.pipe(T.Query())),
-          screen_hint: S.optional(AuthorizeUserlandSsoControllerRequestScreenHint.pipe(T.Query())),
+          screen_hint: S.optional(S.String.pipe(T.Query())),
           login_hint: S.optional(S.String.pipe(T.Query())),
-          provider: S.optional(AuthorizeUserlandSsoControllerRequestProvider.pipe(T.Query())),
+          provider: S.optional(S.String.pipe(T.Query())),
           prompt: S.optional(S.String.pipe(T.Query())),
           state: S.optional(S.String.pipe(T.Query())),
           organization_id: S.optional(S.String.pipe(T.Query())),
@@ -16960,7 +13568,7 @@ function __c7(j: number): any {
           first_name: S.optional(S.String),
           last_name: S.optional(S.String),
           name: S.optional(S.String),
-          metadata: S.optional(UserObjectMetadataMap),
+          metadata: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "UserObject" });
     case 5:
@@ -16973,14 +13581,14 @@ function __c7(j: number): any {
         identifier: "UserConsentOptionChoicesItem",
       });
     case 6:
-      return S.Array(UserConsentOptionChoicesItem);
+      return S.Array(__S(61));
     case 7:
       return S.suspend(() =>
         S.Struct({
           claim: S.optional(S.String),
           type: S.optional(S.String),
           label: S.optional(S.String),
-          choices: S.optional(UserConsentOptionChoicesList),
+          choices: S.optional(__S(62)),
         }),
       ).annotate({ identifier: "UserConsentOption" });
   }
@@ -16988,15 +13596,13 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UserConsentOption);
+      return S.Array(__S(63));
     case 1:
       return S.suspend(() =>
         S.Struct({
           external_auth_id: S.optional(S.String),
-          user: S.optional(UserObject),
-          user_consent_options: S.optional(
-            CompleteExternalAuthControllerLoginRequestUserConsentOptionsList,
-          ),
+          user: S.optional(__S(60)),
+          user_consent_options: S.optional(__S(64)),
         }).pipe(T.Http({ method: "POST", uri: "/authkit/oauth2/complete", code: 200 })),
       ).annotate({
         identifier: "CompleteExternalAuthControllerLoginRequest",
@@ -17038,7 +13644,7 @@ function __c8(j: number): any {
           email: S.String,
           email_verified: S.Boolean,
           external_id: S.NullOr(S.String),
-          metadata: S.optional(ConfirmUserlandUsersControllerEmailChangeResponseUserMetadataMap),
+          metadata: S.optional(__S(68)),
           last_sign_in_at: S.NullOr(S.String),
           locale: S.optional(S.NullOr(S.String)),
           created_at: S.String,
@@ -17051,7 +13657,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          user: ConfirmUserlandUsersControllerEmailChangeResponseUser,
+          user: __S(69),
         }),
       ).annotate({
         identifier: "ConfirmUserlandUsersControllerEmailChangeResponse",
@@ -17077,18 +13683,18 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "ConnectionDomainsItem" });
     case 1:
-      return S.Array(ConnectionDomainsItem);
+      return S.Array(__S(72));
     case 2:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           id: S.optional(S.String),
           organization_id: S.optional(S.String),
-          connection_type: S.optional(ConnectionConnectionType),
+          connection_type: S.optional(S.String),
           name: S.optional(S.String),
-          state: S.optional(ConnectionState),
-          status: S.optional(ConnectionStatus),
-          domains: S.optional(ConnectionDomainsList),
+          state: S.optional(S.String),
+          status: S.optional(S.String),
+          domains: S.optional(__S(73)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -17096,22 +13702,18 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          role_slugs: S.optional(CreateAgentBlueprintsControllerRequestInvocableByRoleSlugsList),
-          organization_ids: S.optional(
-            CreateAgentBlueprintsControllerRequestInvocableByOrganizationIdsList,
-          ),
+          role_slugs: S.optional(__S(15)),
+          organization_ids: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "CreateAgentBlueprintsControllerRequestInvocableBy",
       });
     case 4:
-      return S.Array(CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesItem);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          instance_types: S.optional(
-            CreateAgentBlueprintsControllerRequestInvocableAsInstanceTypesList,
-          ),
+          instance_types: S.optional(__S(76)),
         }),
       ).annotate({
         identifier: "CreateAgentBlueprintsControllerRequestInvocableAs",
@@ -17131,10 +13733,10 @@ function __c9(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          permissions: S.optional(CreateAgentBlueprintsControllerRequestPermissionsList),
-          invocable_by: S.optional(CreateAgentBlueprintsControllerRequestInvocableBy),
-          invocable_as: S.optional(CreateAgentBlueprintsControllerRequestInvocableAs),
-          session_settings: S.optional(CreateAgentBlueprintsControllerRequestSessionSettings),
+          permissions: S.optional(__S(15)),
+          invocable_by: S.optional(__S(75)),
+          invocable_as: S.optional(__S(77)),
+          session_settings: S.optional(__S(78)),
         }).pipe(T.Http({ method: "POST", uri: "/agents/blueprints", code: 200 })),
       ).annotate({
         identifier: "CreateAgentBlueprintsControllerRequest",
@@ -17146,18 +13748,18 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          role_slugs: AgentBlueprintInvocableByRoleSlugsList,
-          organization_ids: AgentBlueprintInvocableByOrganizationIdsList,
+          role_slugs: __S(15),
+          organization_ids: __S(15),
         }),
       ).annotate({
         identifier: "AgentBlueprintInvocableBy",
       });
     case 1:
-      return S.Array(AgentBlueprintInvocableAsInstanceTypesItem);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          instance_types: AgentBlueprintInvocableAsInstanceTypesList,
+          instance_types: __S(81),
         }),
       ).annotate({
         identifier: "AgentBlueprintInvocableAs",
@@ -17169,10 +13771,10 @@ function __c10(j: number): any {
           id: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          permissions: AgentBlueprintPermissionsList,
-          invocable_by: AgentBlueprintInvocableBy,
-          invocable_as: AgentBlueprintInvocableAs,
-          session_settings: AgentBlueprintSessionSettings,
+          permissions: __S(15),
+          invocable_by: __S(80),
+          invocable_as: __S(82),
+          session_settings: __S(78),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -17209,7 +13811,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "RedirectUriDto" });
     case 7:
-      return S.Array(RedirectUriDto);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -17217,7 +13819,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: CreateApplicationsControllerRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/connect/applications", code: 200 })),
       ).annotate({
         identifier: "CreateApplicationsControllerRequest",
@@ -17232,7 +13834,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "AuditLogEventActorDto" });
     case 2:
-      return S.Array(AuditLogEventTargetDto);
+      return S.Array(__S(89));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -17245,9 +13847,9 @@ function __c11(j: number): any {
         S.Struct({
           action: S.optional(S.String),
           occurred_at: S.optional(S.String),
-          actor: S.optional(AuditLogEventActorDto),
-          targets: S.optional(AuditLogEventDtoTargetsList),
-          context: S.optional(AuditLogEventContextDto),
+          actor: S.optional(__S(89)),
+          targets: S.optional(__S(90)),
+          context: S.optional(__S(91)),
           metadata: S.optional(S.Unknown),
           version: S.optional(S.Number),
         }),
@@ -17256,7 +13858,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organization_id: S.optional(S.String),
-          event: S.optional(AuditLogEventDto),
+          event: S.optional(__S(92)),
         }).pipe(T.Http({ method: "POST", uri: "/audit_logs/events", code: 200 })),
       ).annotate({
         identifier: "CreateAuditLogEventsControllerRequest",
@@ -17287,13 +13889,13 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "AuditLogSchemaTargetDto" });
     case 1:
-      return S.Array(AuditLogSchemaTargetDto);
+      return S.Array(__S(96));
     case 2:
       return S.suspend(() =>
         S.Struct({
           actionName: S.String.pipe(T.Label()),
-          actor: S.optional(AuditLogSchemaActorDto),
-          targets: S.optional(CreateAuditLogValidatorVersionsControllerRequestTargetsList),
+          actor: S.optional(__S(95)),
+          targets: S.optional(__S(97)),
           metadata: S.optional(S.Unknown),
         }).pipe(
           T.Http({ method: "POST", uri: "/audit_logs/actions/{actionName}/schemas", code: 200 }),
@@ -17304,7 +13906,7 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: CreateAuthenticationFactorsControllerRequestType,
+          type: S.String,
           phone_number: S.optional(S.String),
           totp_issuer: S.optional(S.String),
           totp_user: S.optional(S.String),
@@ -17338,10 +13940,10 @@ function __c12(j: number): any {
         S.Struct({
           object: S.optional(S.String),
           id: S.optional(S.String),
-          type: S.optional(AuthenticationFactorEnrolledType),
+          type: S.optional(S.String),
           user_id: S.optional(S.String),
-          sms: S.optional(AuthenticationFactorEnrolledSms),
-          totp: S.optional(AuthenticationFactorEnrolledTotp),
+          sms: S.optional(__S(100)),
+          totp: S.optional(__S(101)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -17398,8 +14000,8 @@ function __c13(j: number): any {
           object: S.String,
           id: S.String,
           group_id: S.String,
-          role: SlimRole,
-          resource: UserRoleAssignmentResource,
+          role: __S(29),
+          resource: __S(30),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -17430,9 +14032,9 @@ function __c13(j: number): any {
           id: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          type: CreateAuthorizationOrganizationRolesControllerResponseType,
+          type: S.String,
           resource_type_slug: S.String,
-          permissions: CreateAuthorizationOrganizationRolesControllerResponsePermissionsList,
+          permissions: __S(3),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -17521,9 +14123,9 @@ function __c14(j: number): any {
           id: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          type: CreateAuthorizationRolesControllerResponseType,
+          type: S.String,
           resource_type_slug: S.String,
-          permissions: CreateAuthorizationRolesControllerResponsePermissionsList,
+          permissions: __S(15),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -17546,8 +14148,8 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          standard_attributes: S.optional(CreateConnectionStandardAttributesDto),
-          custom_attributes: S.optional(CreateConnectionAttributeMapsDtoCustomAttributesMap),
+          standard_attributes: S.optional(__S(115)),
+          custom_attributes: S.optional(__S(26)),
         }),
       ).annotate({
         identifier: "CreateConnectionAttributeMapsDto",
@@ -17562,7 +14164,7 @@ function __c14(j: number): any {
         identifier: "CreateConnectionKeyPairDto",
       });
     case 6:
-      return S.Array(CreateConnectionKeyPairDto);
+      return S.Array(__S(117));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -17571,11 +14173,9 @@ function __c14(j: number): any {
           sp_entity_id: S.optional(S.String),
           idp_entity_id: S.optional(S.String),
           idp_sso_url: S.optional(S.String),
-          idp_signing_certs: S.optional(CreateConnectionSamlOptionsDtoIdpSigningCertsList),
-          sp_signing_key_pair: S.optional(CreateConnectionKeyPairDto),
-          sp_encryption_key_pairs: S.optional(
-            CreateConnectionSamlOptionsDtoSpEncryptionKeyPairsList,
-          ),
+          idp_signing_certs: S.optional(__S(15)),
+          sp_signing_key_pair: S.optional(__S(117)),
+          sp_encryption_key_pairs: S.optional(__S(118)),
         }),
       ).annotate({
         identifier: "CreateConnectionSamlOptionsDto",
@@ -17592,13 +14192,9 @@ function __c15(j: number): any {
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           redirect_uri: S.optional(S.String),
           pkce: S.optional(S.Boolean),
-          token_authentication_method: S.optional(
-            CreateConnectionOidcOptionsDtoTokenAuthenticationMethod,
-          ),
-          jwt_signing_key_pair: S.optional(CreateConnectionKeyPairDto),
-          id_token_signature_algorithm: S.optional(
-            CreateConnectionOidcOptionsDtoIdTokenSignatureAlgorithm,
-          ),
+          token_authentication_method: S.optional(S.String),
+          jwt_signing_key_pair: S.optional(__S(117)),
+          id_token_signature_algorithm: S.optional(S.String),
           fetch_user_info: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -17611,9 +14207,9 @@ function __c15(j: number): any {
           name: S.optional(S.String),
           external_id: S.optional(S.String),
           connection_type: S.optional(S.String),
-          attribute_maps: S.optional(CreateConnectionAttributeMapsDto),
-          saml_options: S.optional(CreateConnectionSamlOptionsDto),
-          oidc_options: S.optional(CreateConnectionOidcOptionsDto),
+          attribute_maps: S.optional(__S(116)),
+          saml_options: S.optional(__S(119)),
+          oidc_options: S.optional(__S(120)),
         }).pipe(T.Http({ method: "POST", uri: "/connections", code: 200 })),
       ).annotate({
         identifier: "CreateConnectionsControllerRequest",
@@ -17644,9 +14240,7 @@ function __c15(j: number): any {
           account_identifier: S.optional(S.NullOr(S.String)),
           user_id: S.String,
           organization_id: S.optional(S.String),
-          connection_owner: S.optional(
-            CreateDataIntegrationsControllerApiKeyConnectionRequestConnectionOwner,
-          ),
+          connection_owner: S.optional(S.String),
           secret: S.String.pipe(T.SensitiveValue({})),
           connection_intent: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/data-integrations/{slug}/api-key", code: 200 })),
@@ -17663,27 +14257,27 @@ function __c15(j: number): any {
         identifier: "ConnectedAccountWriteResponseWarningsItem",
       });
     case 6:
-      return S.Array(ConnectedAccountWriteResponseWarningsItem);
+      return S.Array(__S(125));
     case 7:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
           id: S.String,
-          connection_role: ConnectedAccountWriteResponseConnectionRole,
+          connection_role: S.String,
           account_identifier: S.NullOr(S.String),
           account_display_name: S.NullOr(S.String),
           user_id: S.NullOr(S.String),
           organization_id: S.NullOr(S.String),
-          scopes: ConnectedAccountWriteResponseScopesList,
-          auth_method: S.optional(ConnectedAccountWriteResponseAuthMethod),
+          scopes: __S(15),
+          auth_method: S.optional(S.String),
           api_key_last_4: S.optional(S.NullOr(S.String)),
           client_id: S.optional(S.NullOr(S.String)),
           client_secret_last_4: S.optional(S.NullOr(S.String)),
-          config: S.optional(ConnectedAccountWriteResponseConfigMap),
-          state: ConnectedAccountWriteResponseState,
+          config: S.optional(__S(26)),
+          state: S.String,
           created_at: S.String,
           updated_at: S.String,
-          warnings: S.optional(ConnectedAccountWriteResponseWarningsList),
+          warnings: S.optional(__S(126)),
         }),
       ).annotate({
         identifier: "ConnectedAccountWriteResponse",
@@ -17700,14 +14294,10 @@ function __c16(j: number): any {
           account_identifier: S.optional(S.NullOr(S.String)),
           user_id: S.String,
           organization_id: S.optional(S.String),
-          connection_owner: S.optional(
-            CreateDataIntegrationsControllerClientCredentialsConnectionRequestConnectionOwner,
-          ),
+          connection_owner: S.optional(S.String),
           client_id: S.String,
           client_secret: S.String.pipe(T.SensitiveValue({})),
-          config: S.optional(
-            CreateDataIntegrationsControllerClientCredentialsConnectionRequestConfigMap,
-          ),
+          config: S.optional(__S(68)),
           connection_intent: S.String,
         }).pipe(
           T.Http({
@@ -17722,7 +14312,7 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: DataIntegrationCredentialsDtoType,
+          type: S.String,
           client_id: S.optional(S.String),
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
@@ -17748,11 +14338,9 @@ function __c16(j: number): any {
           request_scope_separator: S.optional(S.String),
           scopes_required: S.optional(S.Boolean),
           client_secret_required: S.optional(S.Boolean),
-          additional_authorization_parameters: S.optional(
-            CustomProviderDefinitionDtoAdditionalAuthorizationParametersMap,
-          ),
+          additional_authorization_parameters: S.optional(__S(68)),
           token_body_content_type: S.optional(S.String),
-          authenticate_via: S.optional(CustomProviderDefinitionDtoAuthenticateVia),
+          authenticate_via: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CustomProviderDefinitionDto",
@@ -17761,23 +14349,15 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provider: S.String,
-          ownership: S.optional(
-            CreateDataIntegrationsManagementControllerDataIntegrationRequestOwnership,
-          ),
+          ownership: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.Boolean),
-          scopes: S.optional(
-            S.NullOr(CreateDataIntegrationsManagementControllerDataIntegrationRequestScopesList),
-          ),
-          auth_methods: S.optional(
-            CreateDataIntegrationsManagementControllerDataIntegrationRequestAuthMethodsList,
-          ),
-          config: S.optional(
-            CreateDataIntegrationsManagementControllerDataIntegrationRequestConfigMap,
-          ),
-          credentials: S.optional(DataIntegrationCredentialsDto),
-          api_key: S.optional(ApiKeyInstallationDto),
-          custom_provider: S.optional(CustomProviderDefinitionDto),
+          scopes: S.optional(S.NullOr(__S(3))),
+          auth_methods: S.optional(__S(76)),
+          config: S.optional(__S(68)),
+          credentials: S.optional(__S(129)),
+          api_key: S.optional(__S(130)),
+          custom_provider: S.optional(__S(131)),
         }).pipe(T.Http({ method: "POST", uri: "/data-integrations", code: 200 })),
       ).annotate({
         identifier: "CreateDataIntegrationsManagementControllerDataIntegrationRequest",
@@ -17785,7 +14365,7 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: DataIntegrationCredentialsType,
+          type: S.String,
           client_id: S.NullOr(S.String),
           redacted_client_secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
         }),
@@ -17796,7 +14376,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          connection_role: DataIntegrationInstallationConnectionRole,
+          connection_role: S.String,
           account_identifier: S.NullOr(S.String),
           account_display_name: S.NullOr(S.String),
           user_id: S.NullOr(S.String),
@@ -17817,10 +14397,9 @@ function __c16(j: number): any {
           request_scope_separator: S.String,
           scopes_required: S.Boolean,
           client_secret_required: S.Boolean,
-          additional_authorization_parameters:
-            DataIntegrationCustomProviderAdditionalAuthorizationParametersMap,
+          additional_authorization_parameters: __S(68),
           token_body_content_type: S.String,
-          authenticate_via: DataIntegrationCustomProviderAuthenticateVia,
+          authenticate_via: S.String,
         }),
       ).annotate({
         identifier: "DataIntegrationCustomProvider",
@@ -17836,17 +14415,17 @@ function __c17(j: number): any {
           id: S.String,
           slug: S.String,
           integration_type: S.String,
-          ownership: DataIntegrationOwnership,
+          ownership: S.String,
           description: S.NullOr(S.String),
           enabled: S.Boolean,
-          state: DataIntegrationState,
-          scopes: S.NullOr(DataIntegrationScopesList),
+          state: S.String,
+          scopes: S.NullOr(__S(15)),
           redirect_uri: S.String,
-          auth_methods: DataIntegrationAuthMethodsList,
-          credentials: S.NullOr(DataIntegrationCredentials),
-          installation: S.NullOr(DataIntegrationInstallation),
-          config: DataIntegrationConfigMap,
-          custom_provider: S.NullOr(DataIntegrationCustomProvider),
+          auth_methods: __S(81),
+          credentials: S.NullOr(__S(133)),
+          installation: S.NullOr(__S(134)),
+          config: __S(26),
+          custom_provider: S.NullOr(__S(135)),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -17861,12 +14440,8 @@ function __c17(j: number): any {
           access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
           refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
           expires_at: S.optional(S.String),
-          scopes: S.optional(
-            CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList,
-          ),
-          state: S.optional(
-            CreateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestState,
-          ),
+          scopes: S.optional(__S(3)),
+          state: S.optional(S.String),
           user_id: S.String,
           connection_intent: S.optional(S.String),
         }).pipe(
@@ -17891,12 +14466,8 @@ function __c17(j: number): any {
           access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
           refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
           expires_at: S.optional(S.String),
-          scopes: S.optional(
-            CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList,
-          ),
-          state: S.optional(
-            CreateDataIntegrationsUserManagementControllerUserDataInstallationRequestState,
-          ),
+          scopes: S.optional(__S(3)),
+          state: S.optional(S.String),
           connection_intent: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -17959,7 +14530,7 @@ function __c17(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          key_context: CreateJumpWireWebDataVaultControllerRequestKeyContextMap,
+          key_context: __S(26),
           name: S.String,
           value: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/vault/v1/kv", code: 200 })),
@@ -17980,12 +14551,12 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          context: ObjectMetadataContextMap,
+          context: __S(26),
           environment_id: S.String,
           id: S.String,
           key_id: S.String,
           updated_at: S.String,
-          updated_by: Actor,
+          updated_by: __S(144),
           version_id: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ObjectMetadata" });
@@ -17994,7 +14565,7 @@ function __c18(j: number): any {
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          permissions: S.optional(CreateOrganizationApiKeysControllerRequestPermissionsList),
+          permissions: S.optional(__S(15)),
           expires_at: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/organizations/{organizationId}/api_keys", code: 200 }),
@@ -18007,12 +14578,12 @@ function __c18(j: number): any {
         S.Struct({
           object: S.String,
           id: S.String,
-          owner: ApiKeyOwnerCase0,
+          owner: __S(18),
           name: S.String,
           obfuscated_value: S.String,
           last_used_at: S.NullOr(S.String),
           expires_at: S.NullOr(S.String),
-          permissions: OrganizationApiKeyWithValuePermissionsList,
+          permissions: __S(15),
           created_at: S.String,
           updated_at: S.String,
           value: S.String,
@@ -18036,12 +14607,10 @@ function __c18(j: number): any {
           id: S.String,
           organization_id: S.String,
           domain: S.String,
-          state: S.optional(CreateOrganizationDomainsControllerResponseState),
+          state: S.optional(S.String),
           verification_prefix: S.optional(S.String),
           verification_token: S.optional(S.String),
-          verification_strategy: S.optional(
-            CreateOrganizationDomainsControllerResponseVerificationStrategy,
-          ),
+          verification_strategy: S.optional(S.String),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -18052,13 +14621,13 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
-          state: S.optional(OrganizationDomainDataDtoState),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OrganizationDomainDataDto",
       });
     case 7:
-      return S.Array(OrganizationDomainDataDto);
+      return S.Array(__S(150));
   }
 }
 function __c19(j: number): any {
@@ -18068,9 +14637,9 @@ function __c19(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           allow_profiles_outside_organization: S.optional(S.Boolean),
-          domains: S.optional(CreateOrganizationsControllerRequestDomainsList),
-          domain_data: S.optional(CreateOrganizationsControllerRequestDomainDataList),
-          metadata: S.optional(S.NullOr(CreateOrganizationsControllerRequestMetadataMap)),
+          domains: S.optional(__S(15)),
+          domain_data: S.optional(__S(151)),
+          metadata: S.optional(S.NullOr(__S(26))),
           external_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/organizations", code: 200 })),
       ).annotate({
@@ -18083,24 +14652,24 @@ function __c19(j: number): any {
           id: S.String,
           organization_id: S.String,
           domain: S.String,
-          state: S.optional(OrganizationDomainsItemState),
+          state: S.optional(S.String),
           verification_prefix: S.optional(S.String),
           verification_token: S.optional(S.String),
-          verification_strategy: S.optional(OrganizationDomainsItemVerificationStrategy),
+          verification_strategy: S.optional(S.String),
           created_at: S.String,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "OrganizationDomainsItem" });
     case 2:
-      return S.Array(OrganizationDomainsItem);
+      return S.Array(__S(153));
     case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
           id: S.optional(S.String),
           name: S.optional(S.String),
-          domains: S.optional(OrganizationDomainsList),
-          metadata: S.optional(OrganizationMetadataMap),
+          domains: S.optional(__S(154)),
+          metadata: S.optional(__S(26)),
           external_id: S.optional(S.NullOr(S.String)),
           stripe_customer_id: S.optional(S.String),
           created_at: S.optional(S.String),
@@ -18114,8 +14683,8 @@ function __c19(j: number): any {
           return_url: S.optional(S.String),
           success_url: S.optional(S.String),
           organization: S.optional(S.String),
-          intent: S.optional(CreatePortalSessionsControllerRequestIntent),
-          it_contact_emails: S.optional(CreatePortalSessionsControllerRequestItContactEmailsList),
+          intent: S.optional(S.String),
+          it_contact_emails: S.optional(__S(15)),
         }).pipe(T.Http({ method: "POST", uri: "/portal/generate_link", code: 200 })),
       ).annotate({
         identifier: "CreatePortalSessionsControllerRequest",
@@ -18231,7 +14800,7 @@ function __c20(j: number): any {
           object: S.String,
           id: S.String,
           name: S.String,
-          production_state: TeamProductionState,
+          production_state: S.String,
           production_enabled_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
@@ -18243,7 +14812,7 @@ function __c20(j: number): any {
           userId: S.String.pipe(T.Label()),
           name: S.String,
           organization_id: S.String,
-          permissions: S.optional(CreateUserApiKeysControllerRequestPermissionsList),
+          permissions: S.optional(__S(15)),
           expires_at: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/user_management/users/{userId}/api_keys", code: 200 }),
@@ -18260,12 +14829,12 @@ function __c21(j: number): any {
         S.Struct({
           object: S.String,
           id: S.String,
-          owner: ApiKeyOwnerCase1,
+          owner: __S(19),
           name: S.String,
           obfuscated_value: S.String,
           last_used_at: S.NullOr(S.String),
           expires_at: S.NullOr(S.String),
-          permissions: UserApiKeyWithValuePermissionsList,
+          permissions: __S(15),
           created_at: S.String,
           updated_at: S.String,
           value: S.String,
@@ -18279,7 +14848,7 @@ function __c21(j: number): any {
           role_slug: S.optional(S.String),
           expires_in_days: S.optional(S.Number),
           inviter_user_id: S.optional(S.String),
-          locale: S.optional(CreateUserlandUserInvitesControllerRequestLocale),
+          locale: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/user_management/invitations", code: 200 })),
       ).annotate({
         identifier: "CreateUserlandUserInvitesControllerRequest",
@@ -18290,7 +14859,7 @@ function __c21(j: number): any {
           object: S.optional(S.String),
           id: S.optional(S.String),
           email: S.optional(S.String),
-          state: S.optional(UserlandUserInviteState),
+          state: S.optional(S.String),
           accepted_at: S.optional(S.NullOr(S.String)),
           revoked_at: S.optional(S.NullOr(S.String)),
           expires_at: S.optional(S.String),
@@ -18310,9 +14879,7 @@ function __c21(j: number): any {
           user_id: S.String,
           organization_id: S.String,
           role_slug: S.optional(S.String),
-          role_slugs: S.optional(
-            CreateUserlandUserOrganizationMembershipsControllerRequestRoleSlugsList,
-          ),
+          role_slugs: S.optional(__S(3)),
         }).pipe(
           T.Http({ method: "POST", uri: "/user_management/organization_memberships", code: 200 }),
         ),
@@ -18322,7 +14889,7 @@ function __c21(j: number): any {
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(SlimRole);
+      return S.Array(__S(29));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -18335,7 +14902,7 @@ function __c21(j: number): any {
           email: S.optional(S.String),
           email_verified: S.optional(S.Boolean),
           external_id: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(UserlandUserMetadataMap),
+          metadata: S.optional(__S(26)),
           last_sign_in_at: S.optional(S.NullOr(S.String)),
           locale: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
@@ -18349,17 +14916,15 @@ function __c21(j: number): any {
           id: S.String,
           user_id: S.String,
           organization_id: S.String,
-          status: CreateUserlandUserOrganizationMembershipsControllerResponseStatus,
+          status: S.String,
           directory_managed: S.Boolean,
           organization_name: S.optional(S.String),
-          custom_attributes: S.optional(
-            CreateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap,
-          ),
+          custom_attributes: S.optional(__S(172)),
           created_at: S.String,
           updated_at: S.String,
-          role: SlimRole,
-          roles: CreateUserlandUserOrganizationMembershipsControllerResponseRolesList,
-          user: UserlandUser,
+          role: __S(29),
+          roles: __S(173),
+          user: __S(174),
         }),
       ).annotate({
         identifier: "CreateUserlandUserOrganizationMembershipsControllerResponse",
@@ -18373,7 +14938,7 @@ function __c22(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           email: S.String,
-          additional_fields: S.optional(CreateWaitlistsControllerEntryRequestAdditionalFieldsMap),
+          additional_fields: S.optional(__S(26)),
           send_confirmation_email: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/user_management/waitlists/{id}/entries", code: 200 }),
@@ -18386,9 +14951,9 @@ function __c22(j: number): any {
         S.Struct({
           id: S.String,
           email: S.String,
-          state: WaitlistEntryState,
+          state: S.String,
           approved_at: S.NullOr(S.String),
-          additional_fields: S.optional(WaitlistEntryAdditionalFieldsMap),
+          additional_fields: S.optional(__S(26)),
           waitlist_id: S.optional(S.NullOr(S.String)),
           created_at: S.String,
           updated_at: S.String,
@@ -18399,7 +14964,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpoint_url: S.optional(S.String),
-          events: S.optional(CreateWebhookEndpointsControllerRequestEventsList),
+          events: S.optional(__S(81)),
         }).pipe(T.Http({ method: "POST", uri: "/webhook_endpoints", code: 200 })),
       ).annotate({
         identifier: "CreateWebhookEndpointsControllerRequest",
@@ -18411,8 +14976,8 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           endpoint_url: S.optional(S.String),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          status: S.optional(WebhookEndpointJsonStatus),
-          events: S.optional(WebhookEndpointJsonEventsList),
+          status: S.optional(S.String),
+          events: S.optional(__S(15)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -18421,9 +14986,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
-          body: DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequestBody.pipe(
-            T.HttpBody(),
-          ),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/data-integrations/{slug}/authorize", code: 200 })),
       ).annotate({
         identifier: "DataIntegrationsControllerGetDataIntegrationAuthorizeUrlRequest",
@@ -18443,9 +15006,7 @@ function __c22(j: number): any {
           user_id: S.String,
           organization_id: S.optional(S.String),
           connected_account_id: S.optional(S.String),
-          connection_owner: S.optional(
-            DataIntegrationsControllerVendCredentialsRequestConnectionOwner,
-          ),
+          connection_owner: S.optional(S.String),
           supports_multiple_connections: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/data-integrations/{slug}/credentials", code: 200 }),
@@ -18454,11 +15015,9 @@ function __c22(j: number): any {
         identifier: "DataIntegrationsControllerVendCredentialsRequest",
       });
     case 7:
-      return S.suspend(() => DataIntegrationCredentialsResponse.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "DataIntegrationsControllerVendCredentialsResponse",
-        },
-      );
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "DataIntegrationsControllerVendCredentialsResponse",
+      });
   }
 }
 function __c23(j: number): any {
@@ -18484,17 +15043,15 @@ function __c23(j: number): any {
           id: S.String,
           user_id: S.String,
           organization_id: S.String,
-          status: DeactivateUserlandUserOrganizationMembershipsControllerResponseStatus,
+          status: S.String,
           directory_managed: S.Boolean,
           organization_name: S.optional(S.String),
-          custom_attributes: S.optional(
-            DeactivateUserlandUserOrganizationMembershipsControllerResponseCustomAttributesMap,
-          ),
+          custom_attributes: S.optional(__S(172)),
           created_at: S.String,
           updated_at: S.String,
-          role: SlimRole,
-          roles: DeactivateUserlandUserOrganizationMembershipsControllerResponseRolesList,
-          user: UserlandUser,
+          role: __S(29),
+          roles: __S(173),
+          user: __S(174),
         }),
       ).annotate({
         identifier: "DeactivateUserlandUserOrganizationMembershipsControllerResponse",
@@ -18928,7 +15485,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          metadata: ObjectMetadata,
+          metadata: __S(145),
           name: S.String,
         }),
       ).annotate({ identifier: "ObjectWithoutValue" });
@@ -18950,7 +15507,7 @@ function __c28(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          users: DirectoryMetadataUsers,
+          users: __S(227),
           groups: S.Number,
         }),
       ).annotate({ identifier: "DirectoryMetadata" });
@@ -18961,11 +15518,11 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           organization_id: S.optional(S.String),
           external_key: S.optional(S.String),
-          type: S.optional(DirectoryType),
-          state: S.optional(DirectoryState),
+          type: S.optional(S.String),
+          state: S.optional(S.String),
           name: S.optional(S.String),
           domain: S.optional(S.String),
-          metadata: S.optional(DirectoryMetadata),
+          metadata: S.optional(__S(228)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -18987,7 +15544,7 @@ function __c28(j: number): any {
           directory_id: S.optional(S.String),
           organization_id: S.optional(S.String),
           name: S.optional(S.String),
-          raw_attributes: S.optional(DirectoryGroupRawAttributesMap),
+          raw_attributes: S.optional(__S(39)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -19015,11 +15572,11 @@ function __c29(j: number): any {
         identifier: "DirectoryUserWithGroupsEmailsItem",
       });
     case 2:
-      return S.Array(DirectoryUserWithGroupsEmailsItem);
+      return S.Array(__S(233));
     case 3:
-      return S.Array(SlimRole);
+      return S.Array(__S(29));
     case 4:
-      return S.Array(DirectoryGroup);
+      return S.Array(__S(231));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -19032,17 +15589,17 @@ function __c29(j: number): any {
           first_name: S.optional(S.NullOr(S.String)),
           last_name: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          emails: S.optional(DirectoryUserWithGroupsEmailsList),
+          emails: S.optional(__S(234)),
           job_title: S.optional(S.NullOr(S.String)),
           username: S.optional(S.NullOr(S.String)),
-          state: S.optional(DirectoryUserWithGroupsState),
-          raw_attributes: S.optional(DirectoryUserWithGroupsRawAttributesMap),
-          custom_attributes: S.optional(DirectoryUserWithGroupsCustomAttributesMap),
-          role: S.optional(SlimRole),
-          roles: S.optional(DirectoryUserWithGroupsRolesList),
+          state: S.optional(S.String),
+          raw_attributes: S.optional(__S(39)),
+          custom_attributes: S.optional(__S(39)),
+          role: S.optional(__S(29)),
+          roles: S.optional(__S(235)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          groups: S.optional(DirectoryUserWithGroupsGroupsList),
+          groups: S.optional(__S(236)),
         }),
       ).annotate({ identifier: "DirectoryUserWithGroups" });
     case 6:
@@ -19075,8 +15632,8 @@ function __c30(j: number): any {
           slug: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          owner: S.NullOr(DisableFeatureFlagsControllerFlagResponseOwner),
-          tags: DisableFeatureFlagsControllerFlagResponseTagsList,
+          owner: S.NullOr(__S(239)),
+          tags: __S(15),
           enabled: S.Boolean,
           default_value: S.Boolean,
           created_at: S.String,
@@ -19121,8 +15678,8 @@ function __c30(j: number): any {
           slug: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          owner: S.optional(S.NullOr(DisableFeatureFlagsControllerFlagResponseOwner)),
-          tags: S.optional(FlagTagsList),
+          owner: S.optional(S.NullOr(__S(239))),
+          tags: S.optional(__S(244)),
           enabled: S.optional(S.Boolean),
           default_value: S.optional(S.Boolean),
           created_at: S.optional(S.String),
@@ -19168,7 +15725,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          claim_completion: S.NullOr(AgentRegistrationClaimClaimCompletion),
+          claim_completion: S.NullOr(__S(248)),
           created_at: S.String,
           updated_at: S.String,
           expires_at: S.String,
@@ -19178,11 +15735,11 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          agent_identity: AgentRegistrationAgentIdentity,
+          agent_identity: __S(247),
           organization_id: S.String,
-          status: AgentRegistrationStatus,
-          kind: AgentRegistrationKind,
-          claim: S.NullOr(AgentRegistrationClaim),
+          status: S.String,
+          kind: S.String,
+          claim: S.NullOr(__S(249)),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -19213,7 +15770,7 @@ function __c31(j: number): any {
           agent_blueprint_id: S.String,
           organization_id: S.String,
           organization_membership_id: S.NullOr(S.String),
-          type: AgentInstanceType,
+          type: S.String,
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -19234,7 +15791,7 @@ function __c31(j: number): any {
           object: S.String,
           id: S.String,
           agent_instance_id: S.String,
-          status: AgentInstanceSessionStatus,
+          status: S.String,
           expires_at: S.String,
           revoked_at: S.NullOr(S.String),
           created_at: S.String,
@@ -19265,10 +15822,10 @@ function __c32(j: number): any {
         S.Struct({
           object: S.optional(S.String),
           id: S.optional(S.String),
-          type: S.optional(AuthenticationFactorType),
+          type: S.optional(S.String),
           user_id: S.optional(S.String),
-          sms: S.optional(AuthenticationFactorEnrolledSms),
-          totp: S.optional(AuthenticationFactorTotp),
+          sms: S.optional(__S(100)),
+          totp: S.optional(__S(257)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -19311,9 +15868,9 @@ function __c32(j: number): any {
           id: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          type: GetAuthorizationOrganizationRolesControllerResponseType,
+          type: S.String,
           resource_type_slug: S.String,
-          permissions: GetAuthorizationOrganizationRolesControllerResponsePermissionsList,
+          permissions: __S(3),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -19356,9 +15913,9 @@ function __c33(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          type: S.optional(RoleType),
+          type: S.optional(S.String),
           resource_type_slug: S.optional(S.String),
-          permissions: S.optional(RolePermissionsList),
+          permissions: S.optional(__S(15)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -19370,20 +15927,16 @@ function __c33(j: number): any {
           user_id: S.String,
           organization_id: S.optional(S.String),
           connected_account_id: S.optional(S.String),
-          connection_owner: S.optional(
-            GetDataIntegrationsControllerUserlandUserTokenRequestConnectionOwner,
-          ),
+          connection_owner: S.optional(S.String),
           supports_multiple_connections: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/data-integrations/{slug}/token", code: 200 })),
       ).annotate({
         identifier: "GetDataIntegrationsControllerUserlandUserTokenRequest",
       });
     case 2:
-      return S.suspend(() => DataIntegrationAccessTokenResponse.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "GetDataIntegrationsControllerUserlandUserTokenResponse",
-        },
-      );
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetDataIntegrationsControllerUserlandUserTokenResponse",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -19424,18 +15977,18 @@ function __c33(j: number): any {
         S.Struct({
           object: S.optional(S.String),
           id: S.optional(S.String),
-          connection_role: S.optional(ConnectedAccountConnectionRole),
+          connection_role: S.optional(S.String),
           account_identifier: S.optional(S.NullOr(S.String)),
           account_display_name: S.optional(S.NullOr(S.String)),
           user_id: S.optional(S.NullOr(S.String)),
           organization_id: S.optional(S.NullOr(S.String)),
-          scopes: S.optional(ConnectedAccountScopesList),
-          auth_method: S.optional(ConnectedAccountAuthMethod),
+          scopes: S.optional(__S(15)),
+          auth_method: S.optional(S.String),
           api_key_last_4: S.optional(S.NullOr(S.String)),
           client_id: S.optional(S.NullOr(S.String)),
           client_secret_last_4: S.optional(S.NullOr(S.String)),
-          config: S.optional(ConnectedAccountConfigMap),
-          state: S.optional(ConnectedAccountState),
+          config: S.optional(__S(26)),
+          state: S.optional(S.String),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -19464,18 +16017,18 @@ function __c34(j: number): any {
         S.Struct({
           object: S.String,
           id: S.String,
-          connection_role: DataIntegrationsListResponseDataItemConnectedAccountConnectionRole,
+          connection_role: S.String,
           account_identifier: S.NullOr(S.String),
           account_display_name: S.NullOr(S.String),
           user_id: S.NullOr(S.String),
           organization_id: S.NullOr(S.String),
-          scopes: DataIntegrationsListResponseDataItemConnectedAccountScopesList,
-          auth_method: S.optional(DataIntegrationsListResponseDataItemConnectedAccountAuthMethod),
+          scopes: __S(15),
+          auth_method: S.optional(S.String),
           api_key_last_4: S.optional(S.NullOr(S.String)),
           client_id: S.optional(S.NullOr(S.String)),
           client_secret_last_4: S.optional(S.NullOr(S.String)),
-          config: S.optional(DataIntegrationsListResponseDataItemConnectedAccountConfigMap),
-          state: DataIntegrationsListResponseDataItemConnectedAccountState,
+          config: S.optional(__S(26)),
+          state: S.String,
           created_at: S.String,
           updated_at: S.String,
           userlandUserId: S.NullOr(S.String),
@@ -19491,20 +16044,18 @@ function __c34(j: number): any {
         S.Struct({
           object: S.String,
           id: S.String,
-          connection_role: DataIntegrationsListResponseDataItemConnectedAccountsItemConnectionRole,
+          connection_role: S.String,
           account_identifier: S.NullOr(S.String),
           account_display_name: S.NullOr(S.String),
           user_id: S.NullOr(S.String),
           organization_id: S.NullOr(S.String),
-          scopes: DataIntegrationsListResponseDataItemConnectedAccountsItemScopesList,
-          auth_method: S.optional(
-            DataIntegrationsListResponseDataItemConnectedAccountsItemAuthMethod,
-          ),
+          scopes: __S(3),
+          auth_method: S.optional(S.String),
           api_key_last_4: S.optional(S.NullOr(S.String)),
           client_id: S.optional(S.NullOr(S.String)),
           client_secret_last_4: S.optional(S.NullOr(S.String)),
-          config: S.optional(DataIntegrationsListResponseDataItemConnectedAccountsItemConfigMap),
-          state: DataIntegrationsListResponseDataItemConnectedAccountsItemState,
+          config: S.optional(__S(68)),
+          state: S.String,
           created_at: S.String,
           updated_at: S.String,
           userlandUserId: S.NullOr(S.String),
@@ -19516,7 +16067,7 @@ function __c34(j: number): any {
         identifier: "DataIntegrationsListResponseDataItemConnectedAccountsItem",
       });
     case 2:
-      return S.Array(DataIntegrationsListResponseDataItemConnectedAccountsItem);
+      return S.Array(__S(273));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -19527,29 +16078,29 @@ function __c34(j: number): any {
           slug: S.String,
           integration_type: S.String,
           credentials_type: S.String,
-          scopes: S.NullOr(DataIntegrationsListResponseDataItemScopesList),
-          auth_methods: S.optional(DataIntegrationsListResponseDataItemAuthMethodsList),
-          connection_owner: DataIntegrationsListResponseDataItemConnectionOwner,
-          ownership: DataIntegrationsListResponseDataItemOwnership,
+          scopes: S.NullOr(__S(15)),
+          auth_methods: S.optional(__S(81)),
+          connection_owner: S.String,
+          ownership: S.String,
           created_at: S.String,
           updated_at: S.String,
           integrationType: S.String,
           credentialsType: S.String,
           createdAt: S.String,
           updatedAt: S.String,
-          connected_account: S.NullOr(DataIntegrationsListResponseDataItemConnectedAccount),
-          connected_accounts: DataIntegrationsListResponseDataItemConnectedAccountsList,
+          connected_account: S.NullOr(__S(272)),
+          connected_accounts: __S(274),
         }),
       ).annotate({
         identifier: "DataIntegrationsListResponseDataItem",
       });
     case 4:
-      return S.Array(DataIntegrationsListResponseDataItem);
+      return S.Array(__S(275));
     case 5:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(DataIntegrationsListResponseDataList),
+          data: S.optional(__S(276)),
         }),
       ).annotate({
         identifier: "DataIntegrationsListResponse",
@@ -19639,10 +16190,10 @@ function __c35(j: number): any {
           id: S.optional(S.String),
           organization_id: S.optional(S.String),
           domain: S.optional(S.String),
-          state: S.optional(OrganizationDomainStandAloneState),
+          state: S.optional(S.String),
           verification_prefix: S.optional(S.String),
           verification_token: S.optional(S.String),
-          verification_strategy: S.optional(OrganizationDomainStandAloneVerificationStrategy),
+          verification_strategy: S.optional(S.String),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -19663,8 +16214,8 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: AuditLogConfigurationLogStreamType,
-          state: AuditLogConfigurationLogStreamState,
+          type: S.String,
+          state: S.String,
           last_synced_at: S.NullOr(S.String),
           created_at: S.String,
         }),
@@ -19676,8 +16227,8 @@ function __c35(j: number): any {
         S.Struct({
           organization_id: S.optional(S.String),
           retention_period_in_days: S.optional(S.Number),
-          state: S.optional(AuditLogConfigurationState),
-          log_stream: S.optional(AuditLogConfigurationLogStream),
+          state: S.optional(S.String),
+          log_stream: S.optional(__S(286)),
         }),
       ).annotate({ identifier: "AuditLogConfiguration" });
   }
@@ -19745,17 +16296,17 @@ function __c36(j: number): any {
           id: S.optional(S.String),
           organization_id: S.optional(S.NullOr(S.String)),
           connection_id: S.optional(S.String),
-          connection_type: S.optional(ProfileConnectionType),
+          connection_type: S.optional(S.String),
           idp_id: S.optional(S.String),
           email: S.optional(S.String),
           first_name: S.optional(S.NullOr(S.String)),
           last_name: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          role: S.optional(S.NullOr(SlimRole)),
-          roles: S.optional(S.NullOr(ProfileRolesList)),
-          groups: S.optional(ProfileGroupsList),
-          custom_attributes: S.optional(ProfileCustomAttributesMap),
-          raw_attributes: S.optional(ProfileRawAttributesMap),
+          role: S.optional(S.NullOr(__S(29))),
+          roles: S.optional(S.NullOr(__S(235))),
+          groups: S.optional(__S(15)),
+          custom_attributes: S.optional(__S(39)),
+          raw_attributes: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "Profile" });
     case 6:
@@ -19806,17 +16357,15 @@ function __c37(j: number): any {
         S.Struct({
           idp_id: S.String,
           type: S.String,
-          provider: GetUserlandUserIdentitiesControllerResponseBodyItemProvider,
+          provider: S.String,
         }),
       ).annotate({
         identifier: "GetUserlandUserIdentitiesControllerResponseBodyItem",
       });
     case 3:
-      return S.Array(GetUserlandUserIdentitiesControllerResponseBodyItem);
+      return S.Array(__S(298));
     case 4:
-      return S.suspend(() =>
-        GetUserlandUserIdentitiesControllerResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(299).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetUserlandUserIdentitiesControllerResponse",
       });
     case 5:
@@ -19866,15 +16415,15 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           user_id: S.optional(S.String),
           organization_id: S.optional(S.String),
-          status: S.optional(UserlandUserOrganizationMembershipStatus),
+          status: S.optional(S.String),
           directory_managed: S.optional(S.Boolean),
           organization_name: S.optional(S.String),
-          custom_attributes: S.optional(UserlandUserOrganizationMembershipCustomAttributesMap),
+          custom_attributes: S.optional(__S(39)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
-          role: S.optional(SlimRole),
-          roles: S.optional(UserlandUserOrganizationMembershipRolesList),
-          user: S.optional(UserlandUser),
+          role: S.optional(__S(29)),
+          roles: S.optional(__S(235)),
+          user: S.optional(__S(174)),
         }),
       ).annotate({
         identifier: "UserlandUserOrganizationMembership",
@@ -19908,7 +16457,7 @@ function __c38(j: number): any {
         S.Struct({
           organization_id: S.String.pipe(T.Label()),
           contact_id: S.String.pipe(T.Label()),
-          intents: InviteItContactsControllerRequestIntentsList,
+          intents: __S(81),
         }).pipe(
           T.Http({
             method: "POST",
@@ -19925,7 +16474,7 @@ function __c38(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(JumpWireWebDataVaultControllerIndexRequestOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           updatedAfter: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/vault/v1/kv", code: 200 })),
@@ -19941,7 +16490,7 @@ function __c38(j: number): any {
         }),
       ).annotate({ identifier: "ObjectSummary" });
     case 6:
-      return S.Array(ObjectSummary);
+      return S.Array(__S(309));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -19956,8 +16505,8 @@ function __c39(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: ObjectListResponseDataList,
-          list_metadata: ListMetadata,
+          data: __S(310),
+          list_metadata: __S(311),
         }),
       ).annotate({ identifier: "ObjectListResponse" });
     case 1:
@@ -19972,7 +16521,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          metadata: ObjectMetadata,
+          metadata: __S(145),
           name: S.String,
           value: S.String,
         }),
@@ -20004,12 +16553,12 @@ function __c39(j: number): any {
         }),
       ).annotate({ identifier: "ObjectVersion" });
     case 6:
-      return S.Array(ObjectVersion);
+      return S.Array(__S(317));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: VersionListResponseDataList,
-          list_metadata: ListMetadata,
+          data: __S(318),
+          list_metadata: __S(311),
         }),
       ).annotate({ identifier: "VersionListResponse" });
   }
@@ -20019,7 +16568,7 @@ function __c40(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          context: JumpWireWebKeyControllerCreateDataKeyRequestContextMap,
+          context: __S(26),
         }).pipe(T.Http({ method: "POST", uri: "/vault/v1/keys/data-key", code: 200 })),
       ).annotate({
         identifier: "JumpWireWebKeyControllerCreateDataKeyRequest",
@@ -20027,7 +16576,7 @@ function __c40(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          context: CreateDataKeyResponseContextMap,
+          context: __S(26),
           data_key: S.String,
           encrypted_keys: S.String,
           id: S.String,
@@ -20036,7 +16585,7 @@ function __c40(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          context: JumpWireWebKeyControllerRekeyRequestContextMap,
+          context: __S(26),
           encrypted_keys: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/vault/v1/keys/rekey", code: 200 })),
       ).annotate({
@@ -20048,19 +16597,19 @@ function __c40(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/agents/blueprints", code: 200 })),
       ).annotate({
         identifier: "ListAgentBlueprintsControllerRequest",
       });
     case 4:
-      return S.Array(AgentBlueprint);
+      return S.Array(__S(83));
     case 5:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
-          data: S.optional(ListAgentBlueprintsControllerResponseDataList),
+          list_metadata: S.optional(__S(38)),
+          data: S.optional(__S(324)),
         }),
       ).annotate({
         identifier: "ListAgentBlueprintsControllerResponse",
@@ -20071,7 +16620,7 @@ function __c40(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           organization_id: S.optional(S.String.pipe(T.Query())),
           agent_blueprint_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/agents/instances", code: 200 })),
@@ -20079,7 +16628,7 @@ function __c40(j: number): any {
         identifier: "ListAgentInstancesControllerRequest",
       });
     case 7:
-      return S.Array(AgentInstance);
+      return S.Array(__S(253));
   }
 }
 function __c41(j: number): any {
@@ -20088,8 +16637,8 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
-          data: S.optional(ListAgentInstancesControllerResponseDataList),
+          list_metadata: S.optional(__S(38)),
+          data: S.optional(__S(327)),
         }),
       ).annotate({
         identifier: "ListAgentInstancesControllerResponse",
@@ -20100,7 +16649,7 @@ function __c41(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           organization_id: S.optional(S.String.pipe(T.Query())),
           agent_blueprint_id: S.optional(S.String.pipe(T.Query())),
           agent_instance_id: S.optional(S.String.pipe(T.Query())),
@@ -20109,13 +16658,13 @@ function __c41(j: number): any {
         identifier: "ListAgentInstanceSessionsControllerRequest",
       });
     case 2:
-      return S.Array(AgentInstanceSession);
+      return S.Array(__S(255));
     case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
-          data: S.optional(ListAgentInstanceSessionsControllerResponseDataList),
+          list_metadata: S.optional(__S(38)),
+          data: S.optional(__S(330)),
         }),
       ).annotate({
         identifier: "ListAgentInstanceSessionsControllerResponse",
@@ -20144,11 +16693,9 @@ function __c41(j: number): any {
         identifier: "ListApplicationCredentialsControllerResponseBodyItem",
       });
     case 6:
-      return S.Array(ListApplicationCredentialsControllerResponseBodyItem);
+      return S.Array(__S(333));
     case 7:
-      return S.suspend(() =>
-        ListApplicationCredentialsControllerResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(334).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListApplicationCredentialsControllerResponse",
       });
   }
@@ -20161,10 +16708,8 @@ function __c42(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
-          registration_types: S.optional(
-            ListApplicationsControllerRequestRegistrationTypesList.pipe(T.Query()),
-          ),
+          order: S.optional(S.String.pipe(T.Query())),
+          registration_types: S.optional(__S(81).pipe(T.Query())),
           organization_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/connect/applications", code: 200 })),
       ).annotate({
@@ -20178,11 +16723,11 @@ function __c42(j: number): any {
           client_id: S.String,
           description: S.NullOr(S.String),
           name: S.String,
-          scopes: ConnectApplicationScopesList,
+          scopes: __S(15),
           created_at: S.String,
           updated_at: S.String,
           application_type: S.optional(S.String),
-          redirect_uris: S.optional(ConnectApplicationRedirectUrisList),
+          redirect_uris: S.optional(__S(23)),
           uses_pkce: S.optional(S.Boolean),
           is_first_party: S.optional(S.Boolean),
           was_dynamically_registered: S.optional(S.Boolean),
@@ -20190,13 +16735,13 @@ function __c42(j: number): any {
         }),
       ).annotate({ identifier: "ConnectApplication" });
     case 2:
-      return S.Array(ConnectApplication);
+      return S.Array(__S(337));
     case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(ConnectApplicationListDataList),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
+          data: S.optional(__S(338)),
+          list_metadata: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "ConnectApplicationList" });
     case 4:
@@ -20205,7 +16750,7 @@ function __c42(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/audit_logs/actions", code: 200 })),
       ).annotate({
         identifier: "ListAuditLogValidatorsControllerRequest",
@@ -20215,19 +16760,19 @@ function __c42(j: number): any {
         S.Struct({
           object: S.optional(S.String),
           name: S.optional(S.String),
-          schema: S.optional(AuditLogSchemaJson),
+          schema: S.optional(__S(43)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuditLogActionJson" });
     case 6:
-      return S.Array(AuditLogActionJson);
+      return S.Array(__S(341));
     case 7:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
-          data: S.optional(ListAuditLogValidatorsControllerResponseDataList),
+          list_metadata: S.optional(__S(38)),
+          data: S.optional(__S(342)),
         }),
       ).annotate({
         identifier: "ListAuditLogValidatorsControllerResponse",
@@ -20242,7 +16787,7 @@ function __c43(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/user_management/authkit_oauth_resources", code: 200 }),
         ),
@@ -20250,13 +16795,13 @@ function __c43(j: number): any {
         identifier: "ListAuthkitOauthResourcesControllerRequest",
       });
     case 1:
-      return S.Array(AuthkitOauthResource);
+      return S.Array(__S(104));
     case 2:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
-          data: S.optional(ListAuthkitOauthResourcesControllerResponseDataList),
+          list_metadata: S.optional(__S(38)),
+          data: S.optional(__S(345)),
         }),
       ).annotate({
         identifier: "ListAuthkitOauthResourcesControllerResponse",
@@ -20269,7 +16814,7 @@ function __c43(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20281,13 +16826,13 @@ function __c43(j: number): any {
         identifier: "ListAuthorizationControllerEffectivePermissionsRequest",
       });
     case 4:
-      return S.Array(AuthorizationPermission);
+      return S.Array(__S(49));
     case 5:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(AuthorizationPermissionListDataList),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
+          data: S.optional(__S(348)),
+          list_metadata: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "AuthorizationPermissionList",
@@ -20301,7 +16846,7 @@ function __c43(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20319,7 +16864,7 @@ function __c43(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           permission_slug: S.String.pipe(T.Query()),
           parent_resource_id: S.optional(S.String.pipe(T.Query())),
           parent_resource_type_slug: S.optional(S.String.pipe(T.Query())),
@@ -20339,13 +16884,13 @@ function __c43(j: number): any {
 function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AuthorizationResource);
+      return S.Array(__S(51));
     case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(AuthorizationResourceListDataList),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
+          data: S.optional(__S(352)),
+          list_metadata: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "AuthorizationResourceList",
@@ -20357,7 +16902,7 @@ function __c44(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20369,13 +16914,13 @@ function __c44(j: number): any {
         identifier: "ListAuthorizationGroupRoleAssignmentsControllerRequest",
       });
     case 3:
-      return S.Array(GroupRoleAssignment);
+      return S.Array(__S(106));
     case 4:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          data: GroupRoleAssignmentListDataList,
-          list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata,
+          data: __S(355),
+          list_metadata: __S(38),
         }),
       ).annotate({ identifier: "GroupRoleAssignmentList" });
     case 5:
@@ -20393,12 +16938,12 @@ function __c44(j: number): any {
         identifier: "ListAuthorizationOrganizationRolesControllerRequest",
       });
     case 6:
-      return S.Array(Role);
+      return S.Array(__S(264));
     case 7:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(RoleListDataList),
+          data: S.optional(__S(358)),
         }),
       ).annotate({ identifier: "RoleList" });
   }
@@ -20411,7 +16956,7 @@ function __c45(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/authorization/permissions", code: 200 })),
       ).annotate({
         identifier: "ListAuthorizationPermissionsControllerRequest",
@@ -20425,13 +16970,9 @@ function __c45(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           permission_slug: S.String.pipe(T.Query()),
-          assignment: S.optional(
-            ListAuthorizationResourcesByExternalIdControllerOrganizationMembershipsForResourceByExternalIdRequestAssignment.pipe(
-              T.Query(),
-            ),
-          ),
+          assignment: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20450,27 +16991,25 @@ function __c45(j: number): any {
           id: S.String,
           user_id: S.String,
           organization_id: S.String,
-          status: UserlandUserOrganizationMembershipBaseWithUserStatus,
+          status: S.String,
           directory_managed: S.Boolean,
           organization_name: S.optional(S.String),
-          custom_attributes: S.optional(
-            UserlandUserOrganizationMembershipBaseWithUserCustomAttributesMap,
-          ),
+          custom_attributes: S.optional(__S(172)),
           created_at: S.String,
           updated_at: S.String,
-          user: UserlandUser,
+          user: __S(174),
         }),
       ).annotate({
         identifier: "UserlandUserOrganizationMembershipBaseWithUser",
       });
     case 3:
-      return S.Array(UserlandUserOrganizationMembershipBaseWithUser);
+      return S.Array(__S(362));
     case 4:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          data: UserlandUserOrganizationMembershipBaseWithUserListDataList,
-          list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata,
+          data: __S(363),
+          list_metadata: __S(38),
         }),
       ).annotate({
         identifier: "UserlandUserOrganizationMembershipBaseWithUserList",
@@ -20481,7 +17020,7 @@ function __c45(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           organization_id: S.optional(S.String.pipe(T.Query())),
           resource_type_slug: S.optional(S.String.pipe(T.Query())),
           resource_external_id: S.optional(S.String.pipe(T.Query())),
@@ -20499,13 +17038,9 @@ function __c45(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           permission_slug: S.String.pipe(T.Query()),
-          assignment: S.optional(
-            ListAuthorizationResourcesControllerOrganizationMembershipsForResourceRequestAssignment.pipe(
-              T.Query(),
-            ),
-          ),
+          assignment: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20523,7 +17058,7 @@ function __c45(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           resource_id: S.optional(S.String.pipe(T.Query())),
           resource_external_id: S.optional(S.String.pipe(T.Query())),
           resource_type_slug: S.optional(S.String.pipe(T.Query())),
@@ -20542,13 +17077,13 @@ function __c45(j: number): any {
 function __c46(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UserRoleAssignment);
+      return S.Array(__S(32));
     case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          data: UserRoleAssignmentListDataList,
-          list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata,
+          data: __S(368),
+          list_metadata: __S(38),
         }),
       ).annotate({ identifier: "UserRoleAssignmentList" });
     case 2:
@@ -20558,7 +17093,7 @@ function __c46(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           role_slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -20579,7 +17114,7 @@ function __c46(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           role_slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -20605,7 +17140,7 @@ function __c46(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20621,15 +17156,15 @@ function __c46(j: number): any {
         S.Struct({
           object: S.String,
           id: S.String,
-          granted_scopes: AuthorizedConnectApplicationListDataItemGrantedScopesList,
+          granted_scopes: __S(15),
           oauth_resource: S.optional(S.String),
-          application: ConnectApplication,
+          application: __S(337),
         }),
       ).annotate({
         identifier: "AuthorizedConnectApplicationListDataItem",
       });
     case 7:
-      return S.Array(AuthorizedConnectApplicationListDataItem);
+      return S.Array(__S(374));
   }
 }
 function __c47(j: number): any {
@@ -20638,8 +17173,8 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(AuthorizedConnectApplicationListDataList),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
+          data: S.optional(__S(375)),
+          list_metadata: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "AuthorizedConnectApplicationList",
@@ -20650,10 +17185,8 @@ function __c47(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
-          connection_type: S.optional(
-            ListConnectionsControllerRequestConnectionType.pipe(T.Query()),
-          ),
+          order: S.optional(S.String.pipe(T.Query())),
+          connection_type: S.optional(S.String.pipe(T.Query())),
           domain: S.optional(S.String.pipe(T.Query())),
           organization_id: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
@@ -20662,13 +17195,13 @@ function __c47(j: number): any {
         identifier: "ListConnectionsControllerRequest",
       });
     case 2:
-      return S.Array(Connection);
+      return S.Array(__S(74));
     case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(ConnectionListDataList),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
+          data: S.optional(__S(378)),
+          list_metadata: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "ConnectionList" });
     case 4:
@@ -20677,19 +17210,19 @@ function __c47(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/user_management/cors_origins", code: 200 })),
       ).annotate({
         identifier: "ListCorsOriginsControllerRequest",
       });
     case 5:
-      return S.Array(CorsOriginResponse);
+      return S.Array(__S(123));
     case 6:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
-          data: S.optional(ListCorsOriginsControllerResponseDataList),
+          list_metadata: S.optional(__S(38)),
+          data: S.optional(__S(381)),
         }),
       ).annotate({
         identifier: "ListCorsOriginsControllerResponse",
@@ -20700,12 +17233,8 @@ function __c47(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
-          ownership: S.optional(
-            ListDataIntegrationsManagementControllerDataIntegrationsRequestOwnership.pipe(
-              T.Query(),
-            ),
-          ),
+          order: S.optional(S.String.pipe(T.Query())),
+          ownership: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/data-integrations", code: 200 })),
       ).annotate({
         identifier: "ListDataIntegrationsManagementControllerDataIntegrationsRequest",
@@ -20715,13 +17244,13 @@ function __c47(j: number): any {
 function __c48(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DataIntegration);
+      return S.Array(__S(136));
     case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          data: DataIntegrationListDataList,
-          list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata,
+          data: __S(384),
+          list_metadata: __S(38),
         }),
       ).annotate({ identifier: "DataIntegrationList" });
     case 2:
@@ -20730,7 +17259,7 @@ function __c48(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           organization_id: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
           domain: S.optional(S.String.pipe(T.Query())),
@@ -20739,13 +17268,13 @@ function __c48(j: number): any {
         identifier: "ListDirectoriesControllerRequest",
       });
     case 3:
-      return S.Array(Directory);
+      return S.Array(__S(229));
     case 4:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(DirectoryListDataList),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
+          data: S.optional(__S(387)),
+          list_metadata: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "DirectoryList" });
     case 5:
@@ -20754,7 +17283,7 @@ function __c48(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           directory: S.optional(S.String.pipe(T.Query())),
           user: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/directory_groups", code: 200 })),
@@ -20765,8 +17294,8 @@ function __c48(j: number): any {
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(DirectoryGroupListDataList),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
+          data: S.optional(__S(236)),
+          list_metadata: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "DirectoryGroupList" });
     case 7:
@@ -20775,7 +17304,7 @@ function __c48(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           directory: S.optional(S.String.pipe(T.Query())),
           group: S.optional(S.String.pipe(T.Query())),
           idp_id: S.optional(S.String.pipe(T.Query())),
@@ -20789,13 +17318,13 @@ function __c48(j: number): any {
 function __c49(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DirectoryUserWithGroups);
+      return S.Array(__S(237));
     case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(DirectoryUserListDataList),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
+          data: S.optional(__S(392)),
+          list_metadata: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "DirectoryUserList" });
     case 2:
@@ -20804,8 +17333,8 @@ function __c49(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
-          events: ListEventsControllerRequestEventsList.pipe(T.Query()),
+          order: S.optional(S.String.pipe(T.Query())),
+          events: __S(15).pipe(T.Query()),
           range_start: S.optional(S.String.pipe(T.Query())),
           range_end: S.optional(S.String.pipe(T.Query())),
           organization_id: S.optional(S.String.pipe(T.Query())),
@@ -20819,13 +17348,13 @@ function __c49(j: number): any {
           object: S.String,
           id: S.String,
           event: S.String,
-          data: EventSchemaDataMap,
+          data: __S(39),
           created_at: S.String,
-          context: S.optional(EventSchemaContextMap),
+          context: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "EventSchema" });
     case 4:
-      return S.Array(EventSchema);
+      return S.Array(__S(395));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -20836,8 +17365,8 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(EventListDataList),
-          list_metadata: S.optional(EventListListMetadata),
+          data: S.optional(__S(396)),
+          list_metadata: S.optional(__S(397)),
         }),
       ).annotate({ identifier: "EventList" });
     case 7:
@@ -20846,7 +17375,7 @@ function __c49(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/feature-flags", code: 200 })),
       ).annotate({
         identifier: "ListFeatureFlagsControllerRequest",
@@ -20856,13 +17385,13 @@ function __c49(j: number): any {
 function __c50(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Flag);
+      return S.Array(__S(245));
     case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(FlagListDataList),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
+          data: S.optional(__S(400)),
+          list_metadata: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "FlagList" });
     case 2:
@@ -20873,7 +17402,7 @@ function __c50(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -20891,12 +17420,10 @@ function __c50(j: number): any {
           id: S.String,
           user_id: S.String,
           organization_id: S.String,
-          status: UserlandUserOrganizationMembershipBaseListDataItemStatus,
+          status: S.String,
           directory_managed: S.Boolean,
           organization_name: S.optional(S.String),
-          custom_attributes: S.optional(
-            UserlandUserOrganizationMembershipBaseListDataItemCustomAttributesMap,
-          ),
+          custom_attributes: S.optional(__S(172)),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -20904,13 +17431,13 @@ function __c50(j: number): any {
         identifier: "UserlandUserOrganizationMembershipBaseListDataItem",
       });
     case 4:
-      return S.Array(UserlandUserOrganizationMembershipBaseListDataItem);
+      return S.Array(__S(403));
     case 5:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(UserlandUserOrganizationMembershipBaseListDataList),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
+          data: S.optional(__S(404)),
+          list_metadata: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "UserlandUserOrganizationMembershipBaseList",
@@ -20922,7 +17449,7 @@ function __c50(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/organizations/{organizationId}/groups", code: 200 }),
@@ -20931,7 +17458,7 @@ function __c50(j: number): any {
         identifier: "ListGroupsControllerRequest",
       });
     case 7:
-      return S.Array(Group);
+      return S.Array(__S(8));
   }
 }
 function __c51(j: number): any {
@@ -20940,8 +17467,8 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(GroupListDataList),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
+          data: S.optional(__S(407)),
+          list_metadata: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "GroupList" });
     case 1:
@@ -20955,13 +17482,13 @@ function __c51(j: number): any {
         identifier: "ListItContactsControllerRequest",
       });
     case 2:
-      return S.Array(ItContact);
+      return S.Array(__S(142));
     case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          data: ItContactListDataList,
-          list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata,
+          data: __S(410),
+          list_metadata: __S(38),
         }),
       ).annotate({ identifier: "ItContactList" });
     case 4:
@@ -20971,7 +17498,7 @@ function __c51(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/organizations/{organizationId}/api_keys", code: 200 }),
         ),
@@ -20983,24 +17510,24 @@ function __c51(j: number): any {
         S.Struct({
           object: S.String,
           id: S.String,
-          owner: ApiKeyOwnerCase0,
+          owner: __S(18),
           name: S.String,
           obfuscated_value: S.String,
           last_used_at: S.NullOr(S.String),
           expires_at: S.NullOr(S.String),
-          permissions: OrganizationApiKeyPermissionsList,
+          permissions: __S(15),
           created_at: S.String,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "OrganizationApiKey" });
     case 6:
-      return S.Array(OrganizationApiKey);
+      return S.Array(__S(413));
     case 7:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          data: OrganizationApiKeyListDataList,
-          list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata,
+          data: __S(414),
+          list_metadata: __S(38),
         }),
       ).annotate({ identifier: "OrganizationApiKeyList" });
   }
@@ -21014,7 +17541,7 @@ function __c52(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -21030,22 +17557,22 @@ function __c52(j: number): any {
         S.Struct({
           object: S.String,
           id: S.String,
-          granted_scopes: OrganizationAuthorizedConnectApplicationListDataItemGrantedScopesList,
+          granted_scopes: __S(3),
           oauth_resource: S.optional(S.String),
-          application: ConnectApplication,
+          application: __S(337),
           user_id: S.String,
         }),
       ).annotate({
         identifier: "OrganizationAuthorizedConnectApplicationListDataItem",
       });
     case 2:
-      return S.Array(OrganizationAuthorizedConnectApplicationListDataItem);
+      return S.Array(__S(417));
     case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          data: OrganizationAuthorizedConnectApplicationListDataList,
-          list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata,
+          data: __S(418),
+          list_metadata: __S(38),
         }),
       ).annotate({
         identifier: "OrganizationAuthorizedConnectApplicationList",
@@ -21057,7 +17584,7 @@ function __c52(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -21075,7 +17602,7 @@ function __c52(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -21092,15 +17619,15 @@ function __c52(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
-          domains: S.optional(ListOrganizationsControllerRequestDomainsList.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          domains: S.optional(__S(15).pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/organizations", code: 200 })),
       ).annotate({
         identifier: "ListOrganizationsControllerRequest",
       });
     case 7:
-      return S.Array(Organization);
+      return S.Array(__S(155));
   }
 }
 function __c53(j: number): any {
@@ -21109,8 +17636,8 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(OrganizationListDataList),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
+          data: S.optional(__S(423)),
+          list_metadata: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "OrganizationList" });
     case 1:
@@ -21130,7 +17657,7 @@ function __c53(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          credentials_type: DataIntegrationCredentialsCredentialsType,
+          credentials_type: S.String,
           has_credentials: S.Boolean,
           client_id: S.NullOr(S.String),
           client_secret_last_four: S.NullOr(S.String),
@@ -21148,22 +17675,22 @@ function __c53(j: number): any {
           slug: S.String,
           name: S.String,
           enabled: S.Boolean,
-          scopes: S.NullOr(DataIntegrationConfigurationResponseScopesList),
-          config: DataIntegrationConfigurationResponseConfigMap,
+          scopes: S.NullOr(__S(15)),
+          config: __S(26),
           created_at: S.String,
           updated_at: S.String,
-          credentials: S.optional(DataIntegrationCredentials2),
+          credentials: S.optional(__S(426)),
         }),
       ).annotate({
         identifier: "DataIntegrationConfigurationResponse",
       });
     case 4:
-      return S.Array(DataIntegrationConfigurationResponse);
+      return S.Array(__S(427));
     case 5:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          data: DataIntegrationConfigurationListResponseDataList,
+          data: __S(428),
         }),
       ).annotate({
         identifier: "DataIntegrationConfigurationListResponse",
@@ -21174,13 +17701,13 @@ function __c53(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/user_management/redirect_uris", code: 200 })),
       ).annotate({
         identifier: "ListRedirectUrisControllerRequest",
       });
     case 7:
-      return S.Array(RedirectUri);
+      return S.Array(__S(159));
   }
 }
 function __c54(j: number): any {
@@ -21189,8 +17716,8 @@ function __c54(j: number): any {
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
-          data: S.optional(ListRedirectUrisControllerResponseDataList),
+          list_metadata: S.optional(__S(38)),
+          data: S.optional(__S(431)),
         }),
       ).annotate({
         identifier: "ListRedirectUrisControllerResponse",
@@ -21210,12 +17737,12 @@ function __c54(j: number): any {
         identifier: "ListSamlIdpSigningCertificatesControllerRequest",
       });
     case 2:
-      return S.Array(SamlIdpSigningCertificate);
+      return S.Array(__S(161));
     case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          data: SamlIdpSigningCertificateListDataList,
+          data: __S(434),
         }),
       ).annotate({
         identifier: "SamlIdpSigningCertificateList",
@@ -21241,7 +17768,7 @@ function __c54(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           organization_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/user_management/users/{userId}/api_keys", code: 200 }),
@@ -21254,18 +17781,18 @@ function __c54(j: number): any {
         S.Struct({
           object: S.String,
           id: S.String,
-          owner: ApiKeyOwnerCase1,
+          owner: __S(19),
           name: S.String,
           obfuscated_value: S.String,
           last_used_at: S.NullOr(S.String),
           expires_at: S.NullOr(S.String),
-          permissions: UserApiKeyPermissionsList,
+          permissions: __S(15),
           created_at: S.String,
           updated_at: S.String,
         }),
       ).annotate({ identifier: "UserApiKey" });
     case 7:
-      return S.Array(UserApiKey);
+      return S.Array(__S(438));
   }
 }
 function __c55(j: number): any {
@@ -21274,8 +17801,8 @@ function __c55(j: number): any {
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          data: UserApiKeyListDataList,
-          list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata,
+          data: __S(439),
+          list_metadata: __S(38),
         }),
       ).annotate({ identifier: "UserApiKeyList" });
     case 1:
@@ -21285,7 +17812,7 @@ function __c55(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -21302,7 +17829,7 @@ function __c55(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           organization_id: S.optional(S.String.pipe(T.Query())),
           email: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/user_management/invitations", code: 200 })),
@@ -21310,13 +17837,13 @@ function __c55(j: number): any {
         identifier: "ListUserlandUserInvitesControllerRequest",
       });
     case 3:
-      return S.Array(UserlandUserInvite);
+      return S.Array(__S(170));
     case 4:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          data: UserlandUserInviteListDataList,
-          list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata,
+          data: __S(443),
+          list_metadata: __S(38),
         }),
       ).annotate({ identifier: "UserlandUserInviteList" });
     case 5:
@@ -21325,11 +17852,9 @@ function __c55(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           organization_id: S.optional(S.String.pipe(T.Query())),
-          statuses: S.optional(
-            ListUserlandUserOrganizationMembershipsControllerRequestStatusesList.pipe(T.Query()),
-          ),
+          statuses: S.optional(__S(76).pipe(T.Query())),
           user_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/user_management/organization_memberships", code: 200 }),
@@ -21338,13 +17863,13 @@ function __c55(j: number): any {
         identifier: "ListUserlandUserOrganizationMembershipsControllerRequest",
       });
     case 6:
-      return S.Array(UserlandUserOrganizationMembership);
+      return S.Array(__S(304));
     case 7:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          data: UserlandUserOrganizationMembershipListDataList,
-          list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata,
+          data: __S(446),
+          list_metadata: __S(38),
         }),
       ).annotate({
         identifier: "UserlandUserOrganizationMembershipList",
@@ -21360,7 +17885,7 @@ function __c56(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/user_management/users/{id}/sessions", code: 200 })),
       ).annotate({
         identifier: "ListUserlandUserSessionsControllerRequest",
@@ -21379,13 +17904,13 @@ function __c56(j: number): any {
         S.Struct({
           object: S.String,
           id: S.String,
-          impersonator: S.optional(ListUserlandUserSessionsControllerResponseDataItemImpersonator),
+          impersonator: S.optional(__S(449)),
           ip_address: S.NullOr(S.String),
           organization_id: S.optional(S.String),
           user_agent: S.NullOr(S.String),
           user_id: S.String,
-          auth_method: ListUserlandUserSessionsControllerResponseDataItemAuthMethod,
-          status: ListUserlandUserSessionsControllerResponseDataItemStatus,
+          auth_method: S.String,
+          status: S.String,
           expires_at: S.String,
           ended_at: S.NullOr(S.String),
           created_at: S.String,
@@ -21395,13 +17920,13 @@ function __c56(j: number): any {
         identifier: "ListUserlandUserSessionsControllerResponseDataItem",
       });
     case 3:
-      return S.Array(ListUserlandUserSessionsControllerResponseDataItem);
+      return S.Array(__S(450));
     case 4:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
-          data: S.optional(ListUserlandUserSessionsControllerResponseDataList),
+          list_metadata: S.optional(__S(38)),
+          data: S.optional(__S(451)),
         }),
       ).annotate({
         identifier: "ListUserlandUserSessionsControllerResponse",
@@ -21422,7 +17947,7 @@ function __c56(j: number): any {
         }),
       ).annotate({ identifier: "Waitlist" });
     case 7:
-      return S.Array(Waitlist);
+      return S.Array(__S(454));
   }
 }
 function __c57(j: number): any {
@@ -21431,8 +17956,8 @@ function __c57(j: number): any {
       return S.suspend(() =>
         S.Struct({
           object: S.String,
-          data: ListWaitlistsControllerResponseDataList,
-          list_metadata: AuditLogValidatorVersionsControllerSchemasResponseListMetadata,
+          data: __S(455),
+          list_metadata: __S(38),
         }),
       ).annotate({
         identifier: "ListWaitlistsControllerResponse",
@@ -21444,8 +17969,8 @@ function __c57(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
-          state: S.optional(ListWaitlistsControllerEntriesRequestState.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
           email: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/user_management/waitlists/{id}/entries", code: 200 }),
@@ -21454,13 +17979,13 @@ function __c57(j: number): any {
         identifier: "ListWaitlistsControllerEntriesRequest",
       });
     case 2:
-      return S.Array(WaitlistEntry);
+      return S.Array(__S(177));
     case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
-          data: S.optional(ListWaitlistsControllerEntriesResponseDataList),
+          list_metadata: S.optional(__S(38)),
+          data: S.optional(__S(458)),
         }),
       ).annotate({
         identifier: "ListWaitlistsControllerEntriesResponse",
@@ -21471,19 +17996,19 @@ function __c57(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/webhook_endpoints", code: 200 })),
       ).annotate({
         identifier: "ListWebhookEndpointsControllerRequest",
       });
     case 5:
-      return S.Array(WebhookEndpointJson);
+      return S.Array(__S(179));
     case 6:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(WebhookEndpointListDataList),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
+          data: S.optional(__S(461)),
+          list_metadata: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "WebhookEndpointList" });
     case 7:
@@ -21520,8 +18045,8 @@ function __c58(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          standard_attributes: S.optional(PatchConnectionStandardAttributesDto),
-          custom_attributes: S.optional(PatchConnectionAttributeMapsDtoCustomAttributesMap),
+          standard_attributes: S.optional(__S(115)),
+          custom_attributes: S.optional(__S(466)),
         }),
       ).annotate({
         identifier: "PatchConnectionAttributeMapsDto",
@@ -21546,12 +18071,8 @@ function __c58(j: number): any {
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           redirect_uri: S.optional(S.NullOr(S.String)),
           pkce: S.optional(S.Boolean),
-          token_authentication_method: S.optional(
-            PatchConnectionOidcOptionsDtoTokenAuthenticationMethod,
-          ),
-          id_token_signature_algorithm: S.optional(
-            PatchConnectionOidcOptionsDtoIdTokenSignatureAlgorithm,
-          ),
+          token_authentication_method: S.optional(S.String),
+          id_token_signature_algorithm: S.optional(S.String),
           fetch_user_info: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -21564,9 +18085,9 @@ function __c58(j: number): any {
           name: S.optional(S.String),
           external_id: S.optional(S.NullOr(S.String)),
           connection_type: S.optional(S.String),
-          attribute_maps: S.optional(PatchConnectionAttributeMapsDto),
-          saml_options: S.optional(PatchConnectionSamlOptionsDto),
-          oidc_options: S.optional(PatchConnectionOidcOptionsDto),
+          attribute_maps: S.optional(__S(467)),
+          saml_options: S.optional(__S(468)),
+          oidc_options: S.optional(__S(469)),
         }).pipe(T.Http({ method: "PATCH", uri: "/connections/{id}", code: 200 })),
       ).annotate({
         identifier: "PatchConnectionsControllerRequest",
@@ -21577,10 +18098,10 @@ function __c58(j: number): any {
           organizationId: S.String.pipe(T.Label()),
           slug: S.String.pipe(T.Label()),
           enabled: S.optional(S.Boolean),
-          scopes: S.optional(S.NullOr(ProviderControllerConfigureRequestScopesList)),
+          scopes: S.optional(S.NullOr(__S(15))),
           client_id: S.optional(S.String),
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          config: S.optional(ProviderControllerConfigureRequestConfigMap),
+          config: S.optional(__S(26)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21601,8 +18122,8 @@ function __c59(j: number): any {
           ip_address: S.String,
           user_agent: S.String,
           email: S.String,
-          auth_method: RadarStandaloneControllerAssessRequestAuthMethod,
-          action: RadarStandaloneControllerAssessRequestAction,
+          auth_method: S.String,
+          action: S.String,
           signals_id: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/radar/attempts", code: 200 })),
       ).annotate({
@@ -21611,18 +18132,18 @@ function __c59(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          verdict: S.optional(RadarStandaloneResponseVerdict),
+          verdict: S.optional(S.String),
           reason: S.optional(S.String),
           attempt_id: S.optional(S.String),
-          control: S.optional(RadarStandaloneResponseControl),
-          blocklist_type: S.optional(RadarStandaloneResponseBlocklistType),
+          control: S.optional(S.String),
+          blocklist_type: S.optional(S.String),
         }),
       ).annotate({ identifier: "RadarStandaloneResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: RadarStandaloneControllerDeleteRadarListEntryRequestType.pipe(T.Label()),
-          action: RadarStandaloneControllerDeleteRadarListEntryRequestAction.pipe(T.Label()),
+          type: S.String.pipe(T.Label()),
+          action: S.String.pipe(T.Label()),
           entry: S.String,
         }).pipe(T.Http({ method: "DELETE", uri: "/radar/lists/{type}/{action}", code: 200 })),
       ).annotate({
@@ -21631,8 +18152,8 @@ function __c59(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: RadarStandaloneControllerUpdateRadarListRequestType.pipe(T.Label()),
-          action: RadarStandaloneControllerUpdateRadarListRequestAction.pipe(T.Label()),
+          type: S.String.pipe(T.Label()),
+          action: S.String.pipe(T.Label()),
           entry: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/radar/lists/{type}/{action}", code: 200 })),
       ).annotate({
@@ -21760,13 +18281,12 @@ function __c60(j: number): any {
         identifier: "ReplaceGroupRoleAssignmentEntryDto",
       });
     case 4:
-      return S.Array(ReplaceGroupRoleAssignmentEntryDto);
+      return S.Array(__S(483));
     case 5:
       return S.suspend(() =>
         S.Struct({
           group_id: S.String.pipe(T.Label()),
-          role_assignments:
-            ReplaceAuthorizationGroupRoleAssignmentsControllerGroupRoleAssignmentsRequestRoleAssignmentsList,
+          role_assignments: __S(484),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21781,7 +18301,7 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          locale: S.optional(ResendUserlandUserInvitesControllerRequestLocale),
+          locale: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/user_management/invitations/{id}/resend", code: 200 }),
         ),
@@ -21806,7 +18326,7 @@ function __c61(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          user: S.optional(UserlandUser),
+          user: S.optional(__S(174)),
         }),
       ).annotate({ identifier: "ResetPasswordResponse" });
     case 1:
@@ -21900,7 +18420,7 @@ function __c62(j: number): any {
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          user: S.optional(UserlandUser),
+          user: S.optional(__S(174)),
           new_email: S.optional(S.String),
           expires_at: S.optional(S.String),
           created_at: S.optional(S.String),
@@ -21923,7 +18443,7 @@ function __c62(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          user: S.optional(UserlandUser),
+          user: S.optional(__S(174)),
         }),
       ).annotate({
         identifier: "SendVerificationEmailResponse",
@@ -21933,9 +18453,7 @@ function __c62(j: number): any {
         S.Struct({
           organizationId: S.String.pipe(T.Label()),
           slug: S.String.pipe(T.Label()),
-          permissions: S.optional(
-            SetAuthorizationOrganizationRolePermissionsControllerPermissionsRequestPermissionsList,
-          ),
+          permissions: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -21954,10 +18472,9 @@ function __c62(j: number): any {
           id: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          type: SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponseType,
+          type: S.String,
           resource_type_slug: S.String,
-          permissions:
-            SetAuthorizationOrganizationRolePermissionsControllerPermissionsResponsePermissionsList,
+          permissions: __S(3),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -21968,9 +18485,7 @@ function __c62(j: number): any {
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
-          permissions: S.optional(
-            SetAuthorizationRolePermissionsControllerPermissionsRequestPermissionsList,
-          ),
+          permissions: S.optional(__S(3)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/authorization/roles/{slug}/permissions", code: 200 }),
         ),
@@ -21985,9 +18500,9 @@ function __c62(j: number): any {
           id: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          type: SetAuthorizationRolePermissionsControllerPermissionsResponseType,
+          type: S.String,
           resource_type_slug: S.String,
-          permissions: SetAuthorizationRolePermissionsControllerPermissionsResponsePermissionsList,
+          permissions: __S(3),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -22012,7 +18527,7 @@ function __c63(j: number): any {
           alg: S.String,
           kty: S.String,
           use: S.String,
-          x5c: JwksResponseKeysItemX5cList,
+          x5c: __S(15),
           n: S.String,
           e: S.String,
           kid: S.String,
@@ -22020,11 +18535,11 @@ function __c63(j: number): any {
         }),
       ).annotate({ identifier: "JwksResponseKeysItem" });
     case 1:
-      return S.Array(JwksResponseKeysItem);
+      return S.Array(__S(504));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(JwksResponseKeysList),
+          keys: S.optional(__S(505)),
         }),
       ).annotate({ identifier: "JwksResponse" });
     case 3:
@@ -22050,7 +18565,7 @@ function __c63(j: number): any {
           client_id: S.String.pipe(T.Query()),
           client_secret: S.String.pipe(T.Query()),
           code: S.optional(S.String.pipe(T.Query())),
-          grant_type: SsoControllerTokenRequestGrantType.pipe(T.Query()),
+          grant_type: S.String.pipe(T.Query()),
           code_verifier: S.optional(S.String),
           subject_token: S.optional(S.String),
           subject_token_type: S.optional(S.String),
@@ -22066,7 +18581,7 @@ function __c63(j: number): any {
           refresh_token: S.String.pipe(T.SensitiveValue({})),
           access_token: S.String.pipe(T.SensitiveValue({})),
           expires_at: S.Number,
-          scopes: SsoTokenResponseOauthTokensScopesList,
+          scopes: __S(15),
         }),
       ).annotate({
         identifier: "SsoTokenResponseOauthTokens",
@@ -22077,8 +18592,8 @@ function __c63(j: number): any {
           token_type: S.optional(S.String),
           access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
           expires_in: S.optional(S.Number),
-          profile: S.optional(Profile),
-          oauth_tokens: S.optional(SsoTokenResponseOauthTokens),
+          profile: S.optional(__S(293)),
+          oauth_tokens: S.optional(__S(510)),
         }),
       ).annotate({ identifier: "SsoTokenResponse" });
   }
@@ -22109,10 +18624,10 @@ function __c64(j: number): any {
           agent_blueprint_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(UpdateAgentBlueprintsControllerRequestPermissionsList),
-          invocable_by: S.optional(UpdateAgentBlueprintsControllerRequestInvocableBy),
-          invocable_as: S.optional(UpdateAgentBlueprintsControllerRequestInvocableAs),
-          session_settings: S.optional(UpdateAgentBlueprintsControllerRequestSessionSettings),
+          permissions: S.optional(__S(15)),
+          invocable_by: S.optional(__S(75)),
+          invocable_as: S.optional(__S(77)),
+          session_settings: S.optional(__S(513)),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/agents/blueprints/{agent_blueprint_id}", code: 200 }),
         ),
@@ -22125,8 +18640,8 @@ function __c64(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          scopes: S.optional(S.NullOr(UpdateApplicationsControllerRequestScopesList)),
-          redirect_uris: S.optional(S.NullOr(UpdateApplicationsControllerRequestRedirectUrisList)),
+          scopes: S.optional(S.NullOr(__S(15))),
+          redirect_uris: S.optional(S.NullOr(__S(87))),
         }).pipe(T.Http({ method: "PUT", uri: "/connect/applications/{id}", code: 200 })),
       ).annotate({
         identifier: "UpdateApplicationsControllerRequest",
@@ -22135,7 +18650,7 @@ function __c64(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: UpdateAuditLogsRetentionDto.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "PUT", uri: "/organizations/{id}/audit_logs_retention", code: 200 }),
         ),
@@ -22167,9 +18682,9 @@ function __c64(j: number): any {
           id: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          type: UpdateAuthorizationOrganizationRolesControllerResponseType,
+          type: S.String,
           resource_type_slug: S.String,
-          permissions: UpdateAuthorizationOrganizationRolesControllerResponsePermissionsList,
+          permissions: __S(3),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -22261,9 +18776,9 @@ function __c65(j: number): any {
           id: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          type: UpdateAuthorizationRolesControllerResponseType,
+          type: S.String,
           resource_type_slug: S.String,
-          permissions: UpdateAuthorizationRolesControllerResponsePermissionsList,
+          permissions: __S(15),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -22281,11 +18796,9 @@ function __c65(j: number): any {
           request_scope_separator: S.optional(S.String),
           scopes_required: S.optional(S.Boolean),
           client_secret_required: S.optional(S.Boolean),
-          additional_authorization_parameters: S.optional(
-            UpdateCustomProviderDefinitionDtoAdditionalAuthorizationParametersMap,
-          ),
+          additional_authorization_parameters: S.optional(__S(68)),
           token_body_content_type: S.optional(S.String),
-          authenticate_via: S.optional(UpdateCustomProviderDefinitionDtoAuthenticateVia),
+          authenticate_via: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateCustomProviderDefinitionDto",
@@ -22296,12 +18809,10 @@ function __c65(j: number): any {
           slug: S.String.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.Boolean),
-          scopes: S.optional(
-            S.NullOr(UpdateDataIntegrationsManagementControllerDataIntegrationRequestScopesList),
-          ),
-          credentials: S.optional(DataIntegrationCredentialsDto),
-          api_key: S.optional(ApiKeyInstallationDto),
-          custom_provider: S.optional(UpdateCustomProviderDefinitionDto),
+          scopes: S.optional(S.NullOr(__S(3))),
+          credentials: S.optional(__S(129)),
+          api_key: S.optional(__S(130)),
+          custom_provider: S.optional(__S(525)),
         }).pipe(T.Http({ method: "PUT", uri: "/data-integrations/{slug}", code: 200 })),
       ).annotate({
         identifier: "UpdateDataIntegrationsManagementControllerDataIntegrationRequest",
@@ -22312,14 +18823,10 @@ function __c65(j: number): any {
           slug: S.String.pipe(T.Label()),
           description: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.Boolean),
-          scopes: S.optional(
-            S.NullOr(
-              UpdateDataIntegrationsManagementControllerOrganizationDataIntegrationRequestScopesList,
-            ),
-          ),
-          credentials: S.optional(DataIntegrationCredentialsDto),
-          api_key: S.optional(ApiKeyInstallationDto),
-          custom_provider: S.optional(UpdateCustomProviderDefinitionDto),
+          scopes: S.optional(S.NullOr(__S(3))),
+          credentials: S.optional(__S(129)),
+          api_key: S.optional(__S(130)),
+          custom_provider: S.optional(__S(525)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/data-integrations/{slug}/organization", code: 200 }),
         ),
@@ -22343,12 +18850,8 @@ function __c66(j: number): any {
           access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
           refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
           expires_at: S.optional(S.String),
-          scopes: S.optional(
-            UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestScopesList,
-          ),
-          state: S.optional(
-            UpdateDataIntegrationsOrganizationControllerOrganizationDataInstallationRequestState,
-          ),
+          scopes: S.optional(__S(3)),
+          state: S.optional(S.String),
           user_id: S.String,
         }).pipe(
           T.Http({
@@ -22375,12 +18878,8 @@ function __c66(j: number): any {
           access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
           refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
           expires_at: S.optional(S.String),
-          scopes: S.optional(
-            UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestScopesList,
-          ),
-          state: S.optional(
-            UpdateDataIntegrationsUserManagementControllerUserDataInstallationRequestState,
-          ),
+          scopes: S.optional(__S(3)),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -22432,12 +18931,10 @@ function __c66(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           allow_profiles_outside_organization: S.optional(S.Boolean),
-          domains: S.optional(UpdateOrganizationsControllerOrganizationRequestDomainsList),
-          domain_data: S.optional(UpdateOrganizationsControllerOrganizationRequestDomainDataList),
+          domains: S.optional(__S(15)),
+          domain_data: S.optional(__S(151)),
           stripe_customer_id: S.optional(S.String),
-          metadata: S.optional(
-            S.NullOr(UpdateOrganizationsControllerOrganizationRequestMetadataMap),
-          ),
+          metadata: S.optional(S.NullOr(__S(26))),
           external_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/organizations/{id}", code: 200 })),
       ).annotate({
@@ -22457,7 +18954,7 @@ function __c66(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: UpdateUserlandUserOrganizationMembershipDto.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -22477,8 +18974,8 @@ function __c67(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           endpoint_url: S.optional(S.String),
-          status: S.optional(UpdateWebhookEndpointsControllerRequestStatus),
-          events: S.optional(UpdateWebhookEndpointsControllerRequestEventsList),
+          status: S.optional(S.String),
+          events: S.optional(__S(81)),
         }).pipe(T.Http({ method: "PATCH", uri: "/webhook_endpoints/{id}", code: 200 })),
       ).annotate({
         identifier: "UpdateWebhookEndpointsControllerRequest",
@@ -22487,7 +18984,7 @@ function __c67(j: number): any {
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
-          body: UpsertDataIntegrationsControllerApiKeyRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PUT", uri: "/data-integrations/{slug}/api-key", code: 200 })),
       ).annotate({
         identifier: "UpsertDataIntegrationsControllerApiKeyRequest",
@@ -22496,7 +18993,7 @@ function __c67(j: number): any {
       return S.suspend(() =>
         S.Struct({
           slug: S.String.pipe(T.Label()),
-          body: UpsertDataIntegrationsControllerClientCredentialsRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "PUT", uri: "/data-integrations/{slug}/client-credentials", code: 200 }),
         ),
@@ -22535,7 +19032,7 @@ function __c67(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: UserlandSessionsControllerAuthenticate0RequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/user_management/authenticate", code: 200 })),
       ).annotate({
         identifier: "UserlandSessionsControllerAuthenticate0Request",
@@ -22543,14 +19040,14 @@ function __c67(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          user: S.optional(UserlandUser),
+          user: S.optional(__S(174)),
           organization_id: S.optional(S.String),
           authkit_authorization_code: S.optional(S.String),
           access_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
           refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          authentication_method: S.optional(UserlandAuthenticateResponseAuthenticationMethod),
-          impersonator: S.optional(ListUserlandUserSessionsControllerResponseDataItemImpersonator),
-          oauth_tokens: S.optional(UserlandAuthenticateResponseOauthTokens),
+          authentication_method: S.optional(S.String),
+          impersonator: S.optional(__S(449)),
+          oauth_tokens: S.optional(__S(510)),
         }),
       ).annotate({
         identifier: "UserlandAuthenticateResponse",
@@ -22601,8 +19098,8 @@ function __c68(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          authentication_factor: S.optional(AuthenticationFactorEnrolled),
-          authentication_challenge: S.optional(AuthenticationChallenge),
+          authentication_factor: S.optional(__S(102)),
+          authentication_challenge: S.optional(__S(47)),
         }),
       ).annotate({
         identifier: "UserlandUserAuthenticationFactorEnrollResponse",
@@ -22614,7 +19111,7 @@ function __c68(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -22626,13 +19123,13 @@ function __c68(j: number): any {
         identifier: "UserlandUserAuthenticationFactorsControllerList0Request",
       });
     case 4:
-      return S.Array(AuthenticationFactor);
+      return S.Array(__S(258));
     case 5:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(UserlandUserAuthenticationFactorListDataList),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
+          data: S.optional(__S(548)),
+          list_metadata: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "UserlandUserAuthenticationFactorList",
@@ -22659,17 +19156,15 @@ function __c68(j: number): any {
           last_name: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
           email_verified: S.optional(S.NullOr(S.Boolean)),
-          metadata: S.optional(S.NullOr(UserlandUsersControllerCreate0RequestMetadataMap)),
+          metadata: S.optional(S.NullOr(__S(26))),
           external_id: S.optional(S.NullOr(S.String)),
           ip_address: S.optional(S.NullOr(S.String)),
           user_agent: S.optional(S.NullOr(S.String)),
           signals_id: S.optional(S.String),
           password: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           password_hash: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          password_hash_type: S.optional(UserlandUsersControllerCreate0RequestPasswordHashType),
-          password_salt_position: S.optional(
-            UserlandUsersControllerCreate0RequestPasswordSaltPosition,
-          ),
+          password_hash_type: S.optional(S.String),
+          password_salt_position: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/user_management/users", code: 200 })),
       ).annotate({
         identifier: "UserlandUsersControllerCreate0Request",
@@ -22690,7 +19185,7 @@ function __c69(j: number): any {
           email: S.optional(S.String),
           email_verified: S.optional(S.Boolean),
           external_id: S.optional(S.NullOr(S.String)),
-          metadata: S.optional(UserlandUsersControllerCreate0ResponseMetadataMap),
+          metadata: S.optional(__S(26)),
           last_sign_in_at: S.optional(S.NullOr(S.String)),
           locale: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
@@ -22766,7 +19261,7 @@ function __c69(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          order: S.optional(PaginationOrder.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           organization: S.optional(S.String.pipe(T.Query())),
           organization_id: S.optional(S.String.pipe(T.Query())),
           email: S.optional(S.String.pipe(T.Query())),
@@ -22779,13 +19274,13 @@ function __c69(j: number): any {
 function __c70(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UserlandUser);
+      return S.Array(__S(174));
     case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.optional(S.String),
-          data: S.optional(UserlandUserListDataList),
-          list_metadata: S.optional(AuditLogValidatorVersionsControllerSchemasResponseListMetadata),
+          data: S.optional(__S(560)),
+          list_metadata: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "UserlandUserList" });
     case 2:
@@ -22797,15 +19292,13 @@ function __c70(j: number): any {
           last_name: S.optional(S.String),
           name: S.optional(S.String),
           email_verified: S.optional(S.Boolean),
-          metadata: S.optional(S.NullOr(UserlandUsersControllerUpdate0RequestMetadataMap)),
+          metadata: S.optional(S.NullOr(__S(26))),
           external_id: S.optional(S.NullOr(S.String)),
           locale: S.optional(S.NullOr(S.String)),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           password_hash: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          password_hash_type: S.optional(UserlandUsersControllerUpdate0RequestPasswordHashType),
-          password_salt_position: S.optional(
-            UserlandUsersControllerUpdate0RequestPasswordSaltPosition,
-          ),
+          password_hash_type: S.optional(S.String),
+          password_salt_position: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/user_management/users/{id}", code: 200 })),
       ).annotate({
         identifier: "UserlandUsersControllerUpdate0Request",
@@ -22813,7 +19306,7 @@ function __c70(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: ValidateAgentAdminControllerCredentialRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/agents/credentials/validate", code: 200 })),
       ).annotate({
         identifier: "ValidateAgentAdminControllerCredentialRequest",
@@ -22850,7 +19343,7 @@ function __c70(j: number): any {
           agent_instance_id: S.String,
           agent_instance_session_id: S.String,
           organization_id: S.String,
-          permissions: AgentTokenValidationPermissionsList,
+          permissions: __S(15),
           intent: S.NullOr(S.String),
           acting_user_id: S.NullOr(S.String),
           session_expires_at: S.String,
@@ -22871,7 +19364,7 @@ function __c71(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          api_key: S.optional(S.NullOr(ApiKey)),
+          api_key: S.optional(S.NullOr(__S(20))),
           agent_registration_id: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiKeyValidationResponse" });
@@ -22887,7 +19380,7 @@ function __c71(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          challenge: S.optional(AuthenticationChallenge),
+          challenge: S.optional(__S(47)),
           valid: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -22916,9 +19409,9 @@ function __c71(j: number): any {
         S.Struct({
           id: S.String,
           email: S.String,
-          state: WaitlistEntriesControllerDenyResponseState,
+          state: S.String,
           approved_at: S.NullOr(S.String),
-          additional_fields: S.optional(WaitlistEntriesControllerDenyResponseAdditionalFieldsMap),
+          additional_fields: S.optional(__S(26)),
           waitlist_id: S.optional(S.NullOr(S.String)),
           created_at: S.String,
           updated_at: S.String,
@@ -22940,7 +19433,7 @@ function __c71(j: number): any {
         S.Struct({
           organization_id: S.optional(S.String),
           user_id: S.optional(S.String),
-          scopes: S.optional(WidgetsPublicControllerIssueWidgetSessionTokenRequestScopesList),
+          scopes: S.optional(__S(76)),
         }).pipe(T.Http({ method: "POST", uri: "/widgets/token", code: 200 })),
       ).annotate({
         identifier: "WidgetsPublicControllerIssueWidgetSessionTokenRequest",
@@ -22957,5 +19450,160 @@ function __c72(j: number): any {
       ).annotate({
         identifier: "WidgetSessionTokenResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
+    case 41:
+      return __c41(i & 7);
+    case 42:
+      return __c42(i & 7);
+    case 43:
+      return __c43(i & 7);
+    case 44:
+      return __c44(i & 7);
+    case 45:
+      return __c45(i & 7);
+    case 46:
+      return __c46(i & 7);
+    case 47:
+      return __c47(i & 7);
+    case 48:
+      return __c48(i & 7);
+    case 49:
+      return __c49(i & 7);
+    case 50:
+      return __c50(i & 7);
+    case 51:
+      return __c51(i & 7);
+    case 52:
+      return __c52(i & 7);
+    case 53:
+      return __c53(i & 7);
+    case 54:
+      return __c54(i & 7);
+    case 55:
+      return __c55(i & 7);
+    case 56:
+      return __c56(i & 7);
+    case 57:
+      return __c57(i & 7);
+    case 58:
+      return __c58(i & 7);
+    case 59:
+      return __c59(i & 7);
+    case 60:
+      return __c60(i & 7);
+    case 61:
+      return __c61(i & 7);
+    case 62:
+      return __c62(i & 7);
+    case 63:
+      return __c63(i & 7);
+    case 64:
+      return __c64(i & 7);
+    case 65:
+      return __c65(i & 7);
+    case 66:
+      return __c66(i & 7);
+    case 67:
+      return __c67(i & 7);
+    case 68:
+      return __c68(i & 7);
+    case 69:
+      return __c69(i & 7);
+    case 70:
+      return __c70(i & 7);
+    case 71:
+      return __c71(i & 7);
+    case 72:
+      return __c72(i & 7);
   }
 }

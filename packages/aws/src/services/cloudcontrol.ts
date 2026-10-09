@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "CloudControl",
   serviceShapeName: "CloudApiService",
@@ -290,10 +292,6 @@ export type RequestToken = string;
 export interface CancelResourceRequestInput {
   RequestToken: string;
 }
-const CancelResourceRequestInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelResourceRequestInput>;
 export type TypeName = string;
 export type Identifier = string;
 export type Operation = string;
@@ -314,14 +312,9 @@ export interface ProgressEvent {
   ErrorCode?: string;
   RetryAfter?: Date;
 }
-const ProgressEvent = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ProgressEvent>;
 export interface CancelResourceRequestOutput {
   ProgressEvent?: ProgressEvent;
 }
-const CancelResourceRequestOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CancelResourceRequestOutput>;
 export type TypeVersionId = string;
 export type RoleArn = string;
 export type ClientToken = string;
@@ -332,11 +325,9 @@ export interface CreateResourceInput {
   ClientToken?: string;
   DesiredState: string | redacted.Redacted<string>;
 }
-const CreateResourceInput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateResourceInput>;
 export interface CreateResourceOutput {
   ProgressEvent?: ProgressEvent;
 }
-const CreateResourceOutput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateResourceOutput>;
 export interface DeleteResourceInput {
   TypeName: string;
   TypeVersionId?: string;
@@ -344,35 +335,26 @@ export interface DeleteResourceInput {
   ClientToken?: string;
   Identifier: string;
 }
-const DeleteResourceInput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteResourceInput>;
 export interface DeleteResourceOutput {
   ProgressEvent?: ProgressEvent;
 }
-const DeleteResourceOutput = CreateResourceOutput as any as S.Schema<DeleteResourceOutput>;
 export interface GetResourceInput {
   TypeName: string;
   TypeVersionId?: string;
   RoleArn?: string;
   Identifier: string;
 }
-const GetResourceInput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetResourceInput>;
 export interface ResourceDescription {
   Identifier?: string;
   Properties?: string | redacted.Redacted<string>;
 }
-const ResourceDescription = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ResourceDescription>;
 export interface GetResourceOutput {
   TypeName?: string;
   ResourceDescription?: ResourceDescription;
 }
-const GetResourceOutput = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetResourceOutput>;
 export interface GetResourceRequestStatusInput {
   RequestToken: string;
 }
-const GetResourceRequestStatusInput = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetResourceRequestStatusInput>;
 export type HookTypeArn = string;
 export type HookInvocationPoint = string;
 export type HookStatus = string;
@@ -387,50 +369,29 @@ export interface HookProgressEvent {
   HookStatusMessage?: string;
   FailureMode?: string;
 }
-const HookProgressEvent = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<HookProgressEvent>;
 export type HooksProgressEvent = HookProgressEvent[];
-const HooksProgressEvent = /*@__PURE__*/ __L.at(__c1, 3);
 export interface GetResourceRequestStatusOutput {
   ProgressEvent?: ProgressEvent;
   HooksProgressEvent?: HookProgressEvent[];
 }
-const GetResourceRequestStatusOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetResourceRequestStatusOutput>;
 export type MaxResults = number;
 export type NextToken = string;
 export type Operations = string[];
-const Operations = /*@__PURE__*/ __L.at(__c1, 5);
 export type OperationStatuses = string[];
-const OperationStatuses = Operations as any as S.Schema<OperationStatuses>;
 export interface ResourceRequestStatusFilter {
   Operations?: string[];
   OperationStatuses?: string[];
 }
-const ResourceRequestStatusFilter = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ResourceRequestStatusFilter>;
 export interface ListResourceRequestsInput {
   MaxResults?: number;
   NextToken?: string;
   ResourceRequestStatusFilter?: ResourceRequestStatusFilter;
 }
-const ListResourceRequestsInput = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListResourceRequestsInput>;
 export type ResourceRequestStatusSummaries = ProgressEvent[];
-const ResourceRequestStatusSummaries = /*@__PURE__*/ __L.at(__c2, 0);
 export interface ListResourceRequestsOutput {
   ResourceRequestStatusSummaries?: ProgressEvent[];
   NextToken?: string;
 }
-const ListResourceRequestsOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListResourceRequestsOutput>;
 export type HandlerNextToken = string;
 export interface ListResourcesInput {
   TypeName: string;
@@ -440,15 +401,12 @@ export interface ListResourcesInput {
   MaxResults?: number;
   ResourceModel?: string | redacted.Redacted<string>;
 }
-const ListResourcesInput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListResourcesInput>;
 export type ResourceDescriptions = ResourceDescription[];
-const ResourceDescriptions = /*@__PURE__*/ __L.at(__c2, 3);
 export interface ListResourcesOutput {
   TypeName?: string;
   ResourceDescriptions?: ResourceDescription[];
   NextToken?: string;
 }
-const ListResourcesOutput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ListResourcesOutput>;
 export type PatchDocument = string | redacted.Redacted<string>;
 export interface UpdateResourceInput {
   TypeName: string;
@@ -458,11 +416,9 @@ export interface UpdateResourceInput {
   Identifier: string;
   PatchDocument: string | redacted.Redacted<string>;
 }
-const UpdateResourceInput = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<UpdateResourceInput>;
 export interface UpdateResourceOutput {
   ProgressEvent?: ProgressEvent;
 }
-const UpdateResourceOutput = CreateResourceOutput as any as S.Schema<UpdateResourceOutput>;
 export type ErrorMessage = string;
 export type CancelResourceRequestError =
   | ConcurrentModificationException
@@ -481,8 +437,8 @@ export const cancelResourceRequest: API.OperationMethod<
   CancelResourceRequestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelResourceRequestInput,
-  output: CancelResourceRequestOutput,
+  input: __S(0) as any as S.Schema<CancelResourceRequestInput>,
+  output: __S(2) as any as S.Schema<CancelResourceRequestOutput>,
   errors: [ConcurrentModificationException, RequestTokenNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -524,8 +480,8 @@ export const createResource: API.OperationMethod<
   CreateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateResourceInput,
-  output: CreateResourceOutput,
+  input: __S(3) as any as S.Schema<CreateResourceInput>,
+  output: __S(4) as any as S.Schema<CreateResourceOutput>,
   errors: [
     AlreadyExistsException,
     ClientTokenConflictException,
@@ -587,8 +543,8 @@ export const deleteResource: API.OperationMethod<
   DeleteResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteResourceInput,
-  output: DeleteResourceOutput,
+  input: __S(5) as any as S.Schema<DeleteResourceInput>,
+  output: __S(4) as any as S.Schema<DeleteResourceOutput>,
   errors: [
     AlreadyExistsException,
     ClientTokenConflictException,
@@ -647,8 +603,8 @@ export const getResource: API.OperationMethod<
   GetResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourceInput,
-  output: GetResourceOutput,
+  input: __S(6) as any as S.Schema<GetResourceInput>,
+  output: __S(8) as any as S.Schema<GetResourceOutput>,
   errors: [
     AlreadyExistsException,
     GeneralServiceException,
@@ -685,8 +641,8 @@ export const getResourceRequestStatus: API.OperationMethod<
   GetResourceRequestStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourceRequestStatusInput,
-  output: GetResourceRequestStatusOutput,
+  input: __S(9) as any as S.Schema<GetResourceRequestStatusInput>,
+  output: __S(12) as any as S.Schema<GetResourceRequestStatusOutput>,
   errors: [RequestTokenNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -708,8 +664,8 @@ export const listResourceRequests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProgressEvent
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListResourceRequestsInput,
-  output: ListResourceRequestsOutput,
+  input: __S(15) as any as S.Schema<ListResourceRequestsInput>,
+  output: __S(17) as any as S.Schema<ListResourceRequestsOutput>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -754,8 +710,8 @@ export const listResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListResourcesInput,
-  output: ListResourcesOutput,
+  input: __S(18) as any as S.Schema<ListResourcesInput>,
+  output: __S(20) as any as S.Schema<ListResourcesOutput>,
   errors: [
     AlreadyExistsException,
     GeneralServiceException,
@@ -831,8 +787,8 @@ export const updateResource: API.OperationMethod<
   UpdateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateResourceInput,
-  output: UpdateResourceOutput,
+  input: __S(21) as any as S.Schema<UpdateResourceInput>,
+  output: __S(4) as any as S.Schema<UpdateResourceOutput>,
   errors: [
     AlreadyExistsException,
     ClientTokenConflictException,
@@ -887,7 +843,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ProgressEvent" });
     case 2:
-      return S.suspend(() => S.Struct({ ProgressEvent: S.optional(ProgressEvent) })).annotate({
+      return S.suspend(() => S.Struct({ ProgressEvent: S.optional(__S(1)) })).annotate({
         identifier: "CancelResourceRequestOutput",
       });
     case 3:
@@ -901,7 +857,7 @@ function __c0(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateResourceInput" });
     case 4:
-      return S.suspend(() => S.Struct({ ProgressEvent: S.optional(ProgressEvent) })).annotate({
+      return S.suspend(() => S.Struct({ ProgressEvent: S.optional(__S(1)) })).annotate({
         identifier: "CreateResourceOutput",
       });
     case 5:
@@ -935,7 +891,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TypeName: S.optional(S.String),
-          ResourceDescription: S.optional(ResourceDescription),
+          ResourceDescription: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "GetResourceOutput" });
     case 1:
@@ -960,12 +916,12 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "HookProgressEvent" });
     case 3:
-      return S.Array(HookProgressEvent);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ProgressEvent: S.optional(ProgressEvent),
-          HooksProgressEvent: S.optional(HooksProgressEvent),
+          ProgressEvent: S.optional(__S(1)),
+          HooksProgressEvent: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "GetResourceRequestStatusOutput",
@@ -975,8 +931,8 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Operations: S.optional(Operations),
-          OperationStatuses: S.optional(OperationStatuses),
+          Operations: S.optional(__S(13)),
+          OperationStatuses: S.optional(__S(13)),
         }),
       ).annotate({
         identifier: "ResourceRequestStatusFilter",
@@ -986,7 +942,7 @@ function __c1(j: number): any {
         S.Struct({
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          ResourceRequestStatusFilter: S.optional(ResourceRequestStatusFilter),
+          ResourceRequestStatusFilter: S.optional(__S(14)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ListResourceRequestsInput",
@@ -996,11 +952,11 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ProgressEvent);
+      return S.Array(__S(1));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ResourceRequestStatusSummaries: S.optional(ResourceRequestStatusSummaries),
+          ResourceRequestStatusSummaries: S.optional(__S(16)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1018,12 +974,12 @@ function __c2(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListResourcesInput" });
     case 3:
-      return S.Array(ResourceDescription);
+      return S.Array(__S(7));
     case 4:
       return S.suspend(() =>
         S.Struct({
           TypeName: S.optional(S.String),
-          ResourceDescriptions: S.optional(ResourceDescriptions),
+          ResourceDescriptions: S.optional(__S(19)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListResourcesOutput" });
@@ -1038,5 +994,20 @@ function __c2(j: number): any {
           PatchDocument: SensitiveString,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateResourceInput" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

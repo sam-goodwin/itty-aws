@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -43,15 +45,8 @@ export interface CreateGroupRequest {
   group_key?: string;
   group_properties?: unknown;
 }
-const CreateGroupRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateGroupRequest>;
-
 /** The group's properties. */
 export type GroupGroupPropertiesMap = { [key: string]: unknown | undefined };
-const GroupGroupPropertiesMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GroupGroupPropertiesMap>;
-
 export interface Group {
   group_type_index?: number;
   group_key?: string;
@@ -59,8 +54,6 @@ export interface Group {
   group_properties?: GroupGroupPropertiesMap;
   created_at?: string;
 }
-const Group = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Group>;
-
 export interface GetGroupsActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -69,17 +62,7 @@ export interface GetGroupsActivityRequest {
   /** Specify the id of the user to find groups for */
   id: string;
 }
-const GetGroupsActivityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetGroupsActivityRequest>;
-
 export interface GetGroupsActivityResponse {}
-const GetGroupsActivityResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetGroupsActivityResponse>;
-
 export interface GetGroupsFindRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -90,13 +73,8 @@ export interface GetGroupsFindRequest {
   /** When true, do not lazily create the group's CRM notebook. Use for read-only lookups (e.g. resolving a group's display name) that should not have side effects. */
   skip_create_notebook?: boolean;
 }
-const GetGroupsFindRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetGroupsFindRequest>;
-
 /** The group's properties. */
 export type FindGroupGroupPropertiesMap = { [key: string]: unknown | undefined };
-const FindGroupGroupPropertiesMap =
-  GroupGroupPropertiesMap as any as S.Schema<FindGroupGroupPropertiesMap>;
-
 export interface FindGroup {
   group_type_index: number;
   group_key: string;
@@ -105,21 +83,11 @@ export interface FindGroup {
   created_at: string;
   notebook: string | null;
 }
-const FindGroup = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<FindGroup>;
-
 export interface GetGroupsPropertyValueRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetGroupsPropertyValueRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetGroupsPropertyValueRequest>;
-
 export interface GetGroupsPropertyValueResponse {}
-const GetGroupsPropertyValueResponse =
-  GetGroupsActivityResponse as any as S.Schema<GetGroupsPropertyValueResponse>;
-
 export interface GroupsDeletePropertyCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -130,11 +98,6 @@ export interface GroupsDeletePropertyCreateRequest {
   /** Name of the property to delete. */
   _unset: string;
 }
-const GroupsDeletePropertyCreateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GroupsDeletePropertyCreateRequest>;
-
 export type GroupsUpdatePropertyCreateRequestValueCase4List = Array<unknown>;
 /** Value to set. Any JSON value other than null. */
 export type GroupsUpdatePropertyCreateRequestValue =
@@ -143,9 +106,6 @@ export type GroupsUpdatePropertyCreateRequestValue =
   | boolean
   | unknown
   | GroupsUpdatePropertyCreateRequestValueCase4List;
-const GroupsUpdatePropertyCreateRequestValue =
-  S.Unknown as any as S.Schema<GroupsUpdatePropertyCreateRequestValue>;
-
 export interface GroupsUpdatePropertyCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -158,11 +118,6 @@ export interface GroupsUpdatePropertyCreateRequest {
   /** Value to set. Any JSON value other than null. */
   value: GroupsUpdatePropertyCreateRequestValue;
 }
-const GroupsUpdatePropertyCreateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GroupsUpdatePropertyCreateRequest>;
-
 export interface ListGroupsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -175,17 +130,8 @@ export interface ListGroupsRequest {
   /** Search the group name */
   search?: string;
 }
-const ListGroupsRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ListGroupsRequest>;
-
 export type ListGroupsResponseBodyList = Array<Group>;
-const ListGroupsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListGroupsResponseBodyList>;
-
 export type ListGroupsResponse = ListGroupsResponseBodyList;
-const ListGroupsResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ListGroupsResponse>;
-
 export interface ListGroupsRelatedRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -194,11 +140,6 @@ export interface ListGroupsRelatedRequest {
   /** Specify the id of the user to find groups for */
   id: string;
 }
-const ListGroupsRelatedRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListGroupsRelatedRequest>;
-
 /** The actor's properties. */
 export type SerializedPersonActorPropertiesMap = { [key: string]: unknown | undefined };
 export type SerializedPersonActorMatchedRecordingsItemMap = { [key: string]: unknown | undefined };
@@ -256,20 +197,8 @@ export interface SerializedGroupActor {
   group_type_index: number;
 }
 export type RelatedActor = SerializedPersonActor | SerializedGroupActor;
-const RelatedActor = S.Unknown as any as S.Schema<RelatedActor>;
-
 export type ListGroupsRelatedResponseBodyList = Array<RelatedActor>;
-const ListGroupsRelatedResponseBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListGroupsRelatedResponseBodyList>;
-
 export type ListGroupsRelatedResponse = ListGroupsRelatedResponseBodyList;
-const ListGroupsRelatedResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListGroupsRelatedResponse>;
-
 export type CreateGroupError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createGroup: API.OperationMethod<
   CreateGroupRequest,
@@ -277,8 +206,8 @@ export const createGroup: API.OperationMethod<
   CreateGroupError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGroupRequest,
-  output: Group,
+  input: __S(0) as any as S.Schema<CreateGroupRequest>,
+  output: __S(2) as any as S.Schema<Group>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -291,8 +220,8 @@ export const getGroupsActivity: API.OperationMethod<
   GetGroupsActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGroupsActivityRequest,
-  output: GetGroupsActivityResponse,
+  input: __S(3) as any as S.Schema<GetGroupsActivityRequest>,
+  output: __S(4) as any as S.Schema<GetGroupsActivityResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -305,8 +234,8 @@ export const getGroupsFind: API.OperationMethod<
   GetGroupsFindError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGroupsFindRequest,
-  output: FindGroup,
+  input: __S(5) as any as S.Schema<GetGroupsFindRequest>,
+  output: __S(6) as any as S.Schema<FindGroup>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -319,8 +248,8 @@ export const getGroupsPropertyValue: API.OperationMethod<
   GetGroupsPropertyValueError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGroupsPropertyValueRequest,
-  output: GetGroupsPropertyValueResponse,
+  input: __S(7) as any as S.Schema<GetGroupsPropertyValueRequest>,
+  output: __S(4) as any as S.Schema<GetGroupsPropertyValueResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -333,8 +262,8 @@ export const groupsDeletePropertyCreate: API.OperationMethod<
   GroupsDeletePropertyCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GroupsDeletePropertyCreateRequest,
-  output: Group,
+  input: __S(8) as any as S.Schema<GroupsDeletePropertyCreateRequest>,
+  output: __S(2) as any as S.Schema<Group>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -347,8 +276,8 @@ export const groupsUpdatePropertyCreate: API.OperationMethod<
   GroupsUpdatePropertyCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GroupsUpdatePropertyCreateRequest,
-  output: Group,
+  input: __S(9) as any as S.Schema<GroupsUpdatePropertyCreateRequest>,
+  output: __S(2) as any as S.Schema<Group>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -362,8 +291,8 @@ export const listGroups: API.OperationMethod<
   ListGroupsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGroupsRequest,
-  output: ListGroupsResponse,
+  input: __S(10) as any as S.Schema<ListGroupsRequest>,
+  output: __S(12) as any as S.Schema<ListGroupsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -376,8 +305,8 @@ export const listGroupsRelated: API.OperationMethod<
   ListGroupsRelatedError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGroupsRelatedRequest,
-  output: ListGroupsRelatedResponse,
+  input: __S(13) as any as S.Schema<ListGroupsRelatedRequest>,
+  output: __S(15) as any as S.Schema<ListGroupsRelatedResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -402,7 +331,7 @@ function __c0(j: number): any {
         S.Struct({
           group_type_index: S.optional(S.Number),
           group_key: S.optional(S.String),
-          group_properties: S.optional(GroupGroupPropertiesMap),
+          group_properties: S.optional(__S(1)),
           created_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "Group" });
@@ -436,7 +365,7 @@ function __c0(j: number): any {
         S.Struct({
           group_type_index: S.Number,
           group_key: S.String,
-          group_properties: FindGroupGroupPropertiesMap,
+          group_properties: __S(1),
           created_at: S.String,
           notebook: S.NullOr(S.String),
         }),
@@ -483,7 +412,7 @@ function __c1(j: number): any {
           group_key: S.String.pipe(T.Query()),
           group_type_index: S.Number.pipe(T.Query()),
           key: S.String,
-          value: GroupsUpdatePropertyCreateRequestValue,
+          value: S.Unknown,
         }).pipe(
           T.Http({
             method: "POST",
@@ -505,9 +434,9 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/projects/{project_id}/groups/", code: 200 })),
       ).annotate({ identifier: "ListGroupsRequest" });
     case 3:
-      return S.Array(Group);
+      return S.Array(__S(2));
     case 4:
-      return S.suspend(() => ListGroupsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(11).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGroupsResponse",
       });
     case 5:
@@ -521,10 +450,23 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListGroupsRelatedRequest" });
     case 6:
-      return S.Array(RelatedActor);
+      return S.Array(S.Unknown);
     case 7:
-      return S.suspend(() => ListGroupsRelatedResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(14).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListGroupsRelatedResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

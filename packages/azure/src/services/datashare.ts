@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -15,18 +17,11 @@ export interface ActivateEmailRegistrationEmailRequest {
   /** Activation code for the registration */
   activationCode?: string;
 }
-const ActivateEmailRegistrationEmailRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ActivateEmailRegistrationEmailRequest>;
-
 /** Registration status */
 export type EmailRegistrationRegistrationStatus =
   | "ActivationPending"
   | "Activated"
   | "ActivationAttemptsExhausted";
-const EmailRegistrationRegistrationStatus = S.String;
-
 /** Dto for tenant domain registration */
 export interface EmailRegistration {
   /** Activation code for the registration */
@@ -40,8 +35,6 @@ export interface EmailRegistration {
   /** The tenant to register */
   tenantId?: string;
 }
-const EmailRegistration = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<EmailRegistration>;
-
 export interface CancelShareSubscriptionSynchronizationRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -54,15 +47,8 @@ export interface CancelShareSubscriptionSynchronizationRequest {
   /** Synchronization id */
   synchronizationId: string;
 }
-const CancelShareSubscriptionSynchronizationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CancelShareSubscriptionSynchronizationRequest>;
-
 /** Synchronization Mode */
 export type ShareSubscriptionSynchronizationSynchronizationMode = "Incremental" | "FullSync";
-const ShareSubscriptionSynchronizationSynchronizationMode = S.String;
-
 /** A ShareSubscriptionSynchronization data transfer object. */
 export interface ShareSubscriptionSynchronization {
   /** Synchronization duration */
@@ -80,36 +66,17 @@ export interface ShareSubscriptionSynchronization {
   /** Synchronization Mode */
   synchronizationMode?: ShareSubscriptionSynchronizationSynchronizationMode;
 }
-const ShareSubscriptionSynchronization = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ShareSubscriptionSynchronization>;
-
 /** Tags on the azure resource. */
 export type CreateAccountRequestTagsMap = { [key: string]: string | undefined };
-const CreateAccountRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateAccountRequestTagsMap>;
-
 /** Identity Type */
 export type IdentityInputType = "SystemAssigned";
-const IdentityInputType = S.String;
-
 /** Identity of resource */
 export interface IdentityInput {
   /** Identity Type */
   type?: IdentityInputType | (string & {});
 }
-const IdentityInput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<IdentityInput>;
-
 /** Account property bag. */
 export interface AccountPropertiesInput {}
-const AccountPropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AccountPropertiesInput>;
-
 export interface CreateAccountRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -126,16 +93,10 @@ export interface CreateAccountRequest {
   /** Properties on the account */
   properties?: AccountPropertiesInput;
 }
-const CreateAccountRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateAccountRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The timestamp of resource creation (UTC). */
@@ -151,17 +112,10 @@ export interface SystemData {
   /** The type of identity that last modified the resource. */
   lastModifiedByType?: SystemDataLastModifiedByType;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<SystemData>;
-
 /** Tags on the azure resource. */
 export type CreateAccountResponseTagsMap = { [key: string]: string | undefined };
-const CreateAccountResponseTagsMap =
-  CreateAccountRequestTagsMap as any as S.Schema<CreateAccountResponseTagsMap>;
-
 /** Identity Type */
 export type IdentityType = "SystemAssigned";
-const IdentityType = S.String;
-
 /** Identity of resource */
 export interface Identity {
   /** service principal Id */
@@ -171,8 +125,6 @@ export interface Identity {
   /** Identity Type */
   type?: IdentityType;
 }
-const Identity = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Identity>;
-
 /** Provisioning state of the Account */
 export type AccountPropertiesProvisioningState =
   | "Succeeded"
@@ -180,8 +132,6 @@ export type AccountPropertiesProvisioningState =
   | "Deleting"
   | "Moving"
   | "Failed";
-const AccountPropertiesProvisioningState = S.String;
-
 /** Account property bag. */
 export interface AccountProperties {
   /** Time at which the account was created. */
@@ -193,8 +143,6 @@ export interface AccountProperties {
   /** Name of the user who created the resource */
   userName?: string;
 }
-const AccountProperties = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AccountProperties>;
-
 export interface CreateAccountResponse {
   /** The resource id of the azure resource */
   id?: string;
@@ -213,11 +161,6 @@ export interface CreateAccountResponse {
   /** Properties on the account */
   properties?: AccountProperties;
 }
-const CreateAccountResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateAccountResponse>;
-
 /** Kind of data set. */
 export type CreateDataSetRequestKind =
   | "Blob"
@@ -234,8 +177,6 @@ export type CreateDataSetRequestKind =
   | "SqlDBTable"
   | "SqlDWTable"
   | "SynapseWorkspaceSqlPoolTable";
-const CreateDataSetRequestKind = S.String;
-
 export interface CreateDataSetRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -252,8 +193,6 @@ export interface CreateDataSetRequest {
   /** Kind-specific data set properties (polymorphic on `kind`), e.g. `{ containerName, resourceGroup, storageAccountName, subscriptionId }` for `Container`. */
   properties?: unknown;
 }
-const CreateDataSetRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateDataSetRequest>;
-
 /** Kind of data set. */
 export type CreateDataSetResponseKind =
   | "Blob"
@@ -270,8 +209,6 @@ export type CreateDataSetResponseKind =
   | "SqlDBTable"
   | "SqlDWTable"
   | "SynapseWorkspaceSqlPoolTable";
-const CreateDataSetResponseKind = S.String;
-
 export interface CreateDataSetResponse {
   /** The resource id of the azure resource */
   id?: string;
@@ -286,11 +223,6 @@ export interface CreateDataSetResponse {
   /** Kind-specific data set properties (polymorphic on `kind`), e.g. `{ containerName, resourceGroup, storageAccountName, subscriptionId }` for `Container`. */
   properties?: unknown;
 }
-const CreateDataSetResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateDataSetResponse>;
-
 /** Kind of data set mapping. */
 export type CreateDataSetMappingRequestKind =
   | "Blob"
@@ -305,8 +237,6 @@ export type CreateDataSetMappingRequestKind =
   | "SqlDBTable"
   | "SqlDWTable"
   | "SynapseWorkspaceSqlPoolTable";
-const CreateDataSetMappingRequestKind = S.String;
-
 export interface CreateDataSetMappingRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -323,11 +253,6 @@ export interface CreateDataSetMappingRequest {
   /** Kind-specific data set mapping properties (polymorphic on `kind`), e.g. `{ dataSetId, containerName, resourceGroup, storageAccountName, subscriptionId }` for `Container`. */
   properties?: unknown;
 }
-const CreateDataSetMappingRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateDataSetMappingRequest>;
-
 /** Kind of data set mapping. */
 export type CreateDataSetMappingResponseKind =
   | "Blob"
@@ -342,8 +267,6 @@ export type CreateDataSetMappingResponseKind =
   | "SqlDBTable"
   | "SqlDWTable"
   | "SynapseWorkspaceSqlPoolTable";
-const CreateDataSetMappingResponseKind = S.String;
-
 export interface CreateDataSetMappingResponse {
   /** The resource id of the azure resource */
   id?: string;
@@ -358,11 +281,6 @@ export interface CreateDataSetMappingResponse {
   /** Kind-specific data set mapping properties (polymorphic on `kind`), e.g. `{ dataSetId, containerName, resourceGroup, storageAccountName, subscriptionId }` for `Container`. */
   properties?: unknown;
 }
-const CreateDataSetMappingResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateDataSetMappingResponse>;
-
 /** Invitation property bag. */
 export interface InvitationPropertiesInput {
   /** The expiration date for the invitation and share subscription. */
@@ -374,11 +292,6 @@ export interface InvitationPropertiesInput {
   /** The target user or application Id that invitation is being sent to. Must be specified along TargetActiveDirectoryId. This enables sending invitations to specific users or applications in an AD tenant. */
   targetObjectId?: string;
 }
-const InvitationPropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<InvitationPropertiesInput>;
-
 export interface CreateInvitationRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -393,19 +306,12 @@ export interface CreateInvitationRequest {
   /** Properties on the Invitation */
   properties?: InvitationPropertiesInput;
 }
-const CreateInvitationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateInvitationRequest>;
-
 /** The status of the invitation. */
 export type InvitationPropertiesInvitationStatus =
   | "Pending"
   | "Accepted"
   | "Rejected"
   | "Withdrawn";
-const InvitationPropertiesInvitationStatus = S.String;
-
 /** Invitation property bag. */
 export interface InvitationProperties {
   /** The expiration date for the invitation and share subscription. */
@@ -429,8 +335,6 @@ export interface InvitationProperties {
   /** Name of the user who created the resource */
   userName?: string;
 }
-const InvitationProperties = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<InvitationProperties>;
-
 export interface CreateInvitationResponse {
   /** The resource id of the azure resource */
   id?: string;
@@ -443,15 +347,8 @@ export interface CreateInvitationResponse {
   /** Properties on the Invitation */
   properties?: InvitationProperties;
 }
-const CreateInvitationResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateInvitationResponse>;
-
 /** Share kind. */
 export type SharePropertiesInputShareKind = "CopyBased" | "InPlace";
-const SharePropertiesInputShareKind = S.String;
-
 /** Share property bag. */
 export interface SharePropertiesInput {
   /** Share description. */
@@ -461,8 +358,6 @@ export interface SharePropertiesInput {
   /** Share terms. */
   terms?: string;
 }
-const SharePropertiesInput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SharePropertiesInput>;
-
 export interface CreateShareRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -475,8 +370,6 @@ export interface CreateShareRequest {
   /** Properties on the share */
   properties?: SharePropertiesInput;
 }
-const CreateShareRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CreateShareRequest>;
-
 /** Gets or sets the provisioning state */
 export type SharePropertiesProvisioningState =
   | "Succeeded"
@@ -484,12 +377,8 @@ export type SharePropertiesProvisioningState =
   | "Deleting"
   | "Moving"
   | "Failed";
-const SharePropertiesProvisioningState = S.String;
-
 /** Share kind. */
 export type SharePropertiesShareKind = "CopyBased" | "InPlace";
-const SharePropertiesShareKind = S.String;
-
 /** Share property bag. */
 export interface ShareProperties {
   /** Time at which the share was created. */
@@ -507,8 +396,6 @@ export interface ShareProperties {
   /** Name of the user who created the resource */
   userName?: string;
 }
-const ShareProperties = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ShareProperties>;
-
 export interface CreateShareResponse {
   /** The resource id of the azure resource */
   id?: string;
@@ -521,8 +408,6 @@ export interface CreateShareResponse {
   /** Properties on the share */
   properties?: ShareProperties;
 }
-const CreateShareResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CreateShareResponse>;
-
 /** Share subscription property bag. */
 export interface ShareSubscriptionPropertiesInput {
   /** The expiration date of the share subscription. */
@@ -532,11 +417,6 @@ export interface ShareSubscriptionPropertiesInput {
   /** Source share location. */
   sourceShareLocation: string;
 }
-const ShareSubscriptionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ShareSubscriptionPropertiesInput>;
-
 export interface CreateShareSubscriptionRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -549,11 +429,6 @@ export interface CreateShareSubscriptionRequest {
   /** Properties on the share subscription */
   properties: ShareSubscriptionPropertiesInput;
 }
-const CreateShareSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateShareSubscriptionRequest>;
-
 /** Provisioning state of the share subscription */
 export type ShareSubscriptionPropertiesProvisioningState =
   | "Succeeded"
@@ -561,20 +436,14 @@ export type ShareSubscriptionPropertiesProvisioningState =
   | "Deleting"
   | "Moving"
   | "Failed";
-const ShareSubscriptionPropertiesProvisioningState = S.String;
-
 /** Kind of share */
 export type ShareSubscriptionPropertiesShareKind = "CopyBased" | "InPlace";
-const ShareSubscriptionPropertiesShareKind = S.String;
-
 /** Gets the current status of share subscription. */
 export type ShareSubscriptionPropertiesShareSubscriptionStatus =
   | "Active"
   | "Revoked"
   | "SourceDeleted"
   | "Revoking";
-const ShareSubscriptionPropertiesShareSubscriptionStatus = S.String;
-
 /** Share subscription property bag. */
 export interface ShareSubscriptionProperties {
   /** Time at which the share subscription was created. */
@@ -608,11 +477,6 @@ export interface ShareSubscriptionProperties {
   /** Name of the user who created the resource */
   userName?: string;
 }
-const ShareSubscriptionProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ShareSubscriptionProperties>;
-
 export interface CreateShareSubscriptionResponse {
   /** The resource id of the azure resource */
   id?: string;
@@ -625,15 +489,8 @@ export interface CreateShareSubscriptionResponse {
   /** Properties on the share subscription */
   properties: ShareSubscriptionProperties;
 }
-const CreateShareSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateShareSubscriptionResponse>;
-
 /** Kind of synchronization setting. */
 export type CreateSynchronizationSettingsRequestKind = "ScheduleBased";
-const CreateSynchronizationSettingsRequestKind = S.String;
-
 export interface CreateSynchronizationSettingsRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -650,11 +507,6 @@ export interface CreateSynchronizationSettingsRequest {
   /** Kind-specific synchronization setting properties (polymorphic on `kind`), e.g. `{ recurrenceInterval, synchronizationTime }` for `ScheduleBased`. */
   properties?: unknown;
 }
-const CreateSynchronizationSettingsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateSynchronizationSettingsRequest>;
-
 /** Kind of synchronization setting. */
 export type CreateSynchronizationSettingsResponseKind = "ScheduleBased";
 export interface CreateSynchronizationSettingsResponse {
@@ -671,13 +523,8 @@ export interface CreateSynchronizationSettingsResponse {
   /** Kind-specific synchronization setting properties (polymorphic on `kind`), e.g. `{ recurrenceInterval, synchronizationTime }` for `ScheduleBased`. */
   properties?: unknown;
 }
-const CreateSynchronizationSettingsResponse =
-  CreateDataSetMappingResponse as any as S.Schema<CreateSynchronizationSettingsResponse>;
-
 /** Kind of synchronization on trigger. */
 export type CreateTriggerRequestKind = "ScheduleBased";
-const CreateTriggerRequestKind = S.String;
-
 export interface CreateTriggerRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -694,8 +541,6 @@ export interface CreateTriggerRequest {
   /** Kind-specific trigger properties (polymorphic on `kind`), e.g. `{ recurrenceInterval, synchronizationTime, synchronizationMode }` for `ScheduleBased`. */
   properties?: unknown;
 }
-const CreateTriggerRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CreateTriggerRequest>;
-
 /** Kind of synchronization on trigger. */
 export type CreateTriggerResponseKind = "ScheduleBased";
 export interface CreateTriggerResponse {
@@ -712,8 +557,6 @@ export interface CreateTriggerResponse {
   /** Kind-specific trigger properties (polymorphic on `kind`), e.g. `{ recurrenceInterval, synchronizationTime, synchronizationMode }` for `ScheduleBased`. */
   properties?: unknown;
 }
-const CreateTriggerResponse = CreateDataSetResponse as any as S.Schema<CreateTriggerResponse>;
-
 export interface DeleteAccountRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -722,15 +565,8 @@ export interface DeleteAccountRequest {
   /** The name of the share account. */
   accountName: string;
 }
-const DeleteAccountRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DeleteAccountRequest>;
-
 /** Nested details of the error model */
 export type DataShareErrorInfoDetailsList = Array<DataShareErrorInfo>;
-const DataShareErrorInfoDetailsList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DataShareErrorInfoDetailsList>;
-
 /** The data share error body model. */
 export interface DataShareErrorInfo {
   /** Code of the error */
@@ -742,8 +578,6 @@ export interface DataShareErrorInfo {
   /** Target of the error */
   target?: string;
 }
-const DataShareErrorInfo = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DataShareErrorInfo>;
-
 /** Operation state of the long running operation. */
 export type OperationResponseStatus =
   | "Accepted"
@@ -752,8 +586,6 @@ export type OperationResponseStatus =
   | "Succeeded"
   | "Failed"
   | "Canceled";
-const OperationResponseStatus = S.String;
-
 /** Response for long running operation */
 export interface OperationResponse {
   /** start time */
@@ -765,8 +597,6 @@ export interface OperationResponse {
   /** Operation state of the long running operation. */
   status?: OperationResponseStatus;
 }
-const OperationResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<OperationResponse>;
-
 export interface DeleteDataSetRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -779,11 +609,7 @@ export interface DeleteDataSetRequest {
   /** The name of the dataSet. */
   dataSetName: string;
 }
-const DeleteDataSetRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DeleteDataSetRequest>;
-
 export interface DeleteDataSetResponse {}
-const DeleteDataSetResponse = AccountPropertiesInput as any as S.Schema<DeleteDataSetResponse>;
-
 export interface DeleteDataSetMappingRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -796,15 +622,7 @@ export interface DeleteDataSetMappingRequest {
   /** The name of the dataSetMapping. */
   dataSetMappingName: string;
 }
-const DeleteDataSetMappingRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DeleteDataSetMappingRequest>;
-
 export interface DeleteDataSetMappingResponse {}
-const DeleteDataSetMappingResponse =
-  AccountPropertiesInput as any as S.Schema<DeleteDataSetMappingResponse>;
-
 export interface DeleteInvitationRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -817,15 +635,7 @@ export interface DeleteInvitationRequest {
   /** The name of the invitation. */
   invitationName: string;
 }
-const DeleteInvitationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DeleteInvitationRequest>;
-
 export interface DeleteInvitationResponse {}
-const DeleteInvitationResponse =
-  AccountPropertiesInput as any as S.Schema<DeleteInvitationResponse>;
-
 export interface DeleteShareRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -836,8 +646,6 @@ export interface DeleteShareRequest {
   /** The name of the share. */
   shareName: string;
 }
-const DeleteShareRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<DeleteShareRequest>;
-
 export interface DeleteShareSubscriptionRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -848,11 +656,6 @@ export interface DeleteShareSubscriptionRequest {
   /** The name of the shareSubscription. */
   shareSubscriptionName: string;
 }
-const DeleteShareSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DeleteShareSubscriptionRequest>;
-
 export interface DeleteSynchronizationSettingsRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -865,11 +668,6 @@ export interface DeleteSynchronizationSettingsRequest {
   /** The name of the synchronizationSetting . */
   synchronizationSettingName: string;
 }
-const DeleteSynchronizationSettingsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DeleteSynchronizationSettingsRequest>;
-
 export interface DeleteTriggerRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -882,8 +680,6 @@ export interface DeleteTriggerRequest {
   /** The name of the trigger. */
   triggerName: string;
 }
-const DeleteTriggerRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<DeleteTriggerRequest>;
-
 export interface GetAccountRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -892,8 +688,6 @@ export interface GetAccountRequest {
   /** The name of the share account. */
   accountName: string;
 }
-const GetAccountRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GetAccountRequest>;
-
 /** Tags on the azure resource. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
 export interface GetAccountResponse {
@@ -914,27 +708,18 @@ export interface GetAccountResponse {
   /** Properties on the account */
   properties?: AccountProperties;
 }
-const GetAccountResponse = CreateAccountResponse as any as S.Schema<GetAccountResponse>;
-
 export interface GetConsumerInvitationRequest {
   /** Location of the invitation */
   location: string;
   /** An invitation id */
   invitationId: string;
 }
-const GetConsumerInvitationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetConsumerInvitationRequest>;
-
 /** The status of the invitation. */
 export type ConsumerInvitationPropertiesInvitationStatus =
   | "Pending"
   | "Accepted"
   | "Rejected"
   | "Withdrawn";
-const ConsumerInvitationPropertiesInvitationStatus = S.String;
-
 /** Properties of consumer invitation */
 export interface ConsumerInvitationProperties {
   /** Number of data sets in a share */
@@ -968,11 +753,6 @@ export interface ConsumerInvitationProperties {
   /** Name of the user who created the resource */
   userName?: string;
 }
-const ConsumerInvitationProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ConsumerInvitationProperties>;
-
 export interface GetConsumerInvitationResponse {
   /** The resource id of the azure resource */
   id?: string;
@@ -985,11 +765,6 @@ export interface GetConsumerInvitationResponse {
   /** Properties on the account */
   properties: ConsumerInvitationProperties;
 }
-const GetConsumerInvitationResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetConsumerInvitationResponse>;
-
 export interface GetDataSetRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1002,8 +777,6 @@ export interface GetDataSetRequest {
   /** The name of the dataSet. */
   dataSetName: string;
 }
-const GetDataSetRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<GetDataSetRequest>;
-
 /** Kind of data set. */
 export type GetDataSetResponseKind =
   | "Blob"
@@ -1034,8 +807,6 @@ export interface GetDataSetResponse {
   /** Kind-specific data set properties (polymorphic on `kind`), e.g. `{ containerName, resourceGroup, storageAccountName, subscriptionId }` for `Container`. */
   properties?: unknown;
 }
-const GetDataSetResponse = CreateDataSetResponse as any as S.Schema<GetDataSetResponse>;
-
 export interface GetDataSetMappingRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1048,11 +819,6 @@ export interface GetDataSetMappingRequest {
   /** The name of the dataSetMapping. */
   dataSetMappingName: string;
 }
-const GetDataSetMappingRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetDataSetMappingRequest>;
-
 /** Kind of data set mapping. */
 export type GetDataSetMappingResponseKind =
   | "Blob"
@@ -1081,9 +847,6 @@ export interface GetDataSetMappingResponse {
   /** Kind-specific data set mapping properties (polymorphic on `kind`), e.g. `{ dataSetId, containerName, resourceGroup, storageAccountName, subscriptionId }` for `Container`. */
   properties?: unknown;
 }
-const GetDataSetMappingResponse =
-  CreateDataSetMappingResponse as any as S.Schema<GetDataSetMappingResponse>;
-
 export interface GetInvitationRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1096,8 +859,6 @@ export interface GetInvitationRequest {
   /** The name of the invitation. */
   invitationName: string;
 }
-const GetInvitationRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<GetInvitationRequest>;
-
 export interface GetInvitationResponse {
   /** The resource id of the azure resource */
   id?: string;
@@ -1110,8 +871,6 @@ export interface GetInvitationResponse {
   /** Properties on the Invitation */
   properties?: InvitationProperties;
 }
-const GetInvitationResponse = CreateInvitationResponse as any as S.Schema<GetInvitationResponse>;
-
 export interface GetProviderShareSubscriptionByShareRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1124,19 +883,12 @@ export interface GetProviderShareSubscriptionByShareRequest {
   /** To locate shareSubscription */
   providerShareSubscriptionId: string;
 }
-const GetProviderShareSubscriptionByShareRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetProviderShareSubscriptionByShareRequest>;
-
 /** Gets the status of share subscription */
 export type ProviderShareSubscriptionPropertiesShareSubscriptionStatus =
   | "Active"
   | "Revoked"
   | "SourceDeleted"
   | "Revoking";
-const ProviderShareSubscriptionPropertiesShareSubscriptionStatus = S.String;
-
 /** Provider share subscription properties */
 export interface ProviderShareSubscriptionProperties {
   /** Email of the consumer who created the share subscription */
@@ -1160,11 +912,6 @@ export interface ProviderShareSubscriptionProperties {
   /** Gets the status of share subscription */
   shareSubscriptionStatus?: ProviderShareSubscriptionPropertiesShareSubscriptionStatus;
 }
-const ProviderShareSubscriptionProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ProviderShareSubscriptionProperties>;
-
 export interface GetProviderShareSubscriptionByShareResponse {
   /** The resource id of the azure resource */
   id?: string;
@@ -1177,11 +924,6 @@ export interface GetProviderShareSubscriptionByShareResponse {
   /** properties of providerShareSubscription */
   properties?: ProviderShareSubscriptionProperties;
 }
-const GetProviderShareSubscriptionByShareResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetProviderShareSubscriptionByShareResponse>;
-
 export interface GetShareRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1192,8 +934,6 @@ export interface GetShareRequest {
   /** The name of the share to retrieve. */
   shareName: string;
 }
-const GetShareRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<GetShareRequest>;
-
 export interface GetShareResponse {
   /** The resource id of the azure resource */
   id?: string;
@@ -1206,8 +946,6 @@ export interface GetShareResponse {
   /** Properties on the share */
   properties?: ShareProperties;
 }
-const GetShareResponse = CreateShareResponse as any as S.Schema<GetShareResponse>;
-
 export interface GetShareSubscriptionRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1218,11 +956,6 @@ export interface GetShareSubscriptionRequest {
   /** The name of the shareSubscription. */
   shareSubscriptionName: string;
 }
-const GetShareSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetShareSubscriptionRequest>;
-
 export interface GetShareSubscriptionResponse {
   /** The resource id of the azure resource */
   id?: string;
@@ -1235,9 +968,6 @@ export interface GetShareSubscriptionResponse {
   /** Properties on the share subscription */
   properties: ShareSubscriptionProperties;
 }
-const GetShareSubscriptionResponse =
-  CreateShareSubscriptionResponse as any as S.Schema<GetShareSubscriptionResponse>;
-
 export interface GetSynchronizationSettingsRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1250,11 +980,6 @@ export interface GetSynchronizationSettingsRequest {
   /** The name of the synchronizationSetting. */
   synchronizationSettingName: string;
 }
-const GetSynchronizationSettingsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetSynchronizationSettingsRequest>;
-
 /** Kind of synchronization setting. */
 export type GetSynchronizationSettingsResponseKind = "ScheduleBased";
 export interface GetSynchronizationSettingsResponse {
@@ -1271,9 +996,6 @@ export interface GetSynchronizationSettingsResponse {
   /** Kind-specific synchronization setting properties (polymorphic on `kind`), e.g. `{ recurrenceInterval, synchronizationTime }` for `ScheduleBased`. */
   properties?: unknown;
 }
-const GetSynchronizationSettingsResponse =
-  CreateDataSetMappingResponse as any as S.Schema<GetSynchronizationSettingsResponse>;
-
 export interface GetTriggerRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1286,8 +1008,6 @@ export interface GetTriggerRequest {
   /** The name of the trigger. */
   triggerName: string;
 }
-const GetTriggerRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<GetTriggerRequest>;
-
 /** Kind of synchronization on trigger. */
 export type GetTriggerResponseKind = "ScheduleBased";
 export interface GetTriggerResponse {
@@ -1304,8 +1024,6 @@ export interface GetTriggerResponse {
   /** Kind-specific trigger properties (polymorphic on `kind`), e.g. `{ recurrenceInterval, synchronizationTime, synchronizationMode }` for `ScheduleBased`. */
   properties?: unknown;
 }
-const GetTriggerResponse = CreateDataSetResponse as any as S.Schema<GetTriggerResponse>;
-
 export interface ListAccountByResourceGroupRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1314,11 +1032,6 @@ export interface ListAccountByResourceGroupRequest {
   /** Continuation token */
   _skipToken?: string;
 }
-const ListAccountByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListAccountByResourceGroupRequest>;
-
 /** Tags on the azure resource. */
 export type AccountTagsMap = { [key: string]: string | undefined };
 /** An account data transfer object. */
@@ -1340,12 +1053,8 @@ export interface Account {
   /** Properties on the account */
   properties?: AccountProperties;
 }
-const Account = CreateAccountResponse as any as S.Schema<Account>;
-
 /** Collection of items of type DataTransferObjects. */
 export type AccountListValueList = Array<Account>;
-const AccountListValueList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<AccountListValueList>;
-
 /** List response for get Accounts. */
 export interface AccountList {
   /** The Url of next result page. */
@@ -1353,28 +1062,16 @@ export interface AccountList {
   /** Collection of items of type DataTransferObjects. */
   value: AccountListValueList;
 }
-const AccountList = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<AccountList>;
-
 export interface ListAccountBySubscriptionRequest {
   /** The subscription identifier */
   subscriptionId: string;
   /** Continuation token */
   _skipToken?: string;
 }
-const ListAccountBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListAccountBySubscriptionRequest>;
-
 export interface ListConsumerInvitationInvitationsRequest {
   /** The continuation token */
   _skipToken?: string;
 }
-const ListConsumerInvitationInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListConsumerInvitationInvitationsRequest>;
-
 /** A consumer Invitation data transfer object. */
 export interface ConsumerInvitation {
   /** The resource id of the azure resource */
@@ -1388,15 +1085,8 @@ export interface ConsumerInvitation {
   /** Properties on the account */
   properties: ConsumerInvitationProperties;
 }
-const ConsumerInvitation = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<ConsumerInvitation>;
-
 /** Collection of items of type DataTransferObjects. */
 export type ConsumerInvitationListValueList = Array<ConsumerInvitation>;
-const ConsumerInvitationListValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ConsumerInvitationListValueList>;
-
 /** List response for get InvitationList */
 export interface ConsumerInvitationList {
   /** The Url of next result page. */
@@ -1404,11 +1094,6 @@ export interface ConsumerInvitationList {
   /** Collection of items of type DataTransferObjects. */
   value: ConsumerInvitationListValueList;
 }
-const ConsumerInvitationList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ConsumerInvitationList>;
-
 export interface ListConsumerSourceDataSetByShareSubscriptionRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1421,11 +1106,6 @@ export interface ListConsumerSourceDataSetByShareSubscriptionRequest {
   /** Continuation token */
   _skipToken?: string;
 }
-const ListConsumerSourceDataSetByShareSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListConsumerSourceDataSetByShareSubscriptionRequest>;
-
 /** Type of data set */
 export type ConsumerSourceDataSetPropertiesDataSetType =
   | "Blob"
@@ -1442,8 +1122,6 @@ export type ConsumerSourceDataSetPropertiesDataSetType =
   | "SqlDBTable"
   | "SqlDWTable"
   | "SynapseWorkspaceSqlPoolTable";
-const ConsumerSourceDataSetPropertiesDataSetType = S.String;
-
 /** Properties of consumer source dataSet */
 export interface ConsumerSourceDataSetProperties {
   /** DataSet Id */
@@ -1457,11 +1135,6 @@ export interface ConsumerSourceDataSetProperties {
   /** Type of data set */
   dataSetType?: ConsumerSourceDataSetPropertiesDataSetType;
 }
-const ConsumerSourceDataSetProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ConsumerSourceDataSetProperties>;
-
 /** A consumer side dataSet data transfer object. */
 export interface ConsumerSourceDataSet {
   /** The resource id of the azure resource */
@@ -1475,18 +1148,8 @@ export interface ConsumerSourceDataSet {
   /** source dataSet properties */
   properties?: ConsumerSourceDataSetProperties;
 }
-const ConsumerSourceDataSet = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ConsumerSourceDataSet>;
-
 /** Collection of items of type DataTransferObjects. */
 export type ConsumerSourceDataSetListValueList = Array<ConsumerSourceDataSet>;
-const ConsumerSourceDataSetListValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ConsumerSourceDataSetListValueList>;
-
 /** A consumer side list of source dataSets */
 export interface ConsumerSourceDataSetList {
   /** The Url of next result page. */
@@ -1494,11 +1157,6 @@ export interface ConsumerSourceDataSetList {
   /** Collection of items of type DataTransferObjects. */
   value: ConsumerSourceDataSetListValueList;
 }
-const ConsumerSourceDataSetList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ConsumerSourceDataSetList>;
-
 export interface ListDataSetByShareRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1515,11 +1173,6 @@ export interface ListDataSetByShareRequest {
   /** Sorts the results using OData syntax. */
   _orderby?: string;
 }
-const ListDataSetByShareRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListDataSetByShareRequest>;
-
 /** Kind of data set. */
 export type DataSetKind =
   | "Blob"
@@ -1536,8 +1189,6 @@ export type DataSetKind =
   | "SqlDBTable"
   | "SqlDWTable"
   | "SynapseWorkspaceSqlPoolTable";
-const DataSetKind = S.String;
-
 /** A DataSet data transfer object. */
 export interface DataSet {
   /** The resource id of the azure resource */
@@ -1551,12 +1202,8 @@ export interface DataSet {
   /** Kind of data set. */
   kind: DataSetKind;
 }
-const DataSet = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<DataSet>;
-
 /** Collection of items of type DataTransferObjects. */
 export type DataSetListValueList = Array<DataSet>;
-const DataSetListValueList = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<DataSetListValueList>;
-
 /** List response for get DataSets */
 export interface DataSetList {
   /** The Url of next result page. */
@@ -1564,8 +1211,6 @@ export interface DataSetList {
   /** Collection of items of type DataTransferObjects. */
   value: DataSetListValueList;
 }
-const DataSetList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<DataSetList>;
-
 export interface ListDataSetMappingByShareSubscriptionRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1582,11 +1227,6 @@ export interface ListDataSetMappingByShareSubscriptionRequest {
   /** Sorts the results using OData syntax. */
   _orderby?: string;
 }
-const ListDataSetMappingByShareSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListDataSetMappingByShareSubscriptionRequest>;
-
 /** Kind of data set mapping. */
 export type DataSetMappingKind =
   | "Blob"
@@ -1623,8 +1263,6 @@ export interface DataSetMappingList {
   /** Collection of items of type DataTransferObjects. */
   value: DataSetMappingListValueList;
 }
-const DataSetMappingList = DataSetList as any as S.Schema<DataSetMappingList>;
-
 export interface ListInvitationByShareRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1641,11 +1279,6 @@ export interface ListInvitationByShareRequest {
   /** Sorts the results using OData syntax. */
   _orderby?: string;
 }
-const ListInvitationByShareRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ListInvitationByShareRequest>;
-
 /** A Invitation data transfer object. */
 export interface Invitation {
   /** The resource id of the azure resource */
@@ -1659,15 +1292,8 @@ export interface Invitation {
   /** Properties on the Invitation */
   properties?: InvitationProperties;
 }
-const Invitation = CreateInvitationResponse as any as S.Schema<Invitation>;
-
 /** Collection of items of type DataTransferObjects. */
 export type InvitationListValueList = Array<Invitation>;
-const InvitationListValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<InvitationListValueList>;
-
 /** List response for get InvitationList */
 export interface InvitationList {
   /** The Url of next result page. */
@@ -1675,14 +1301,7 @@ export interface InvitationList {
   /** Collection of items of type DataTransferObjects. */
   value: InvitationListValueList;
 }
-const InvitationList = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<InvitationList>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Properties on operations */
 export interface OperationModelProperties {
   /** Description of the operation for display purposes */
@@ -1694,11 +1313,6 @@ export interface OperationModelProperties {
   /** Name of the resource type for display purposes */
   resource?: string;
 }
-const OperationModelProperties = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<OperationModelProperties>;
-
 /** log specifications for operation api */
 export interface OperationMetaLogSpecification {
   /** blob duration of the log */
@@ -1708,19 +1322,9 @@ export interface OperationMetaLogSpecification {
   /** name of the log category */
   name?: string;
 }
-const OperationMetaLogSpecification = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<OperationMetaLogSpecification>;
-
 /** log specifications for the operation */
 export type OperationMetaServiceSpecificationLogSpecificationsList =
   Array<OperationMetaLogSpecification>;
-const OperationMetaServiceSpecificationLogSpecificationsList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<OperationMetaServiceSpecificationLogSpecificationsList>;
-
 /** properties for dimension */
 export interface DimensionProperties {
   /** localized display name of the dimension to customer */
@@ -1728,27 +1332,12 @@ export interface DimensionProperties {
   /** dimension name */
   name?: string;
 }
-const DimensionProperties = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<DimensionProperties>;
-
 /** properties for dimension */
 export type OperationMetaMetricSpecificationDimensionsList = Array<DimensionProperties>;
-const OperationMetaMetricSpecificationDimensionsList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<OperationMetaMetricSpecificationDimensionsList>;
-
 /** supported aggregation types */
 export type OperationMetaMetricSpecificationSupportedAggregationTypesList = Array<string>;
-const OperationMetaMetricSpecificationSupportedAggregationTypesList = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<OperationMetaMetricSpecificationSupportedAggregationTypesList>;
-
 /** supported time grain types */
 export type OperationMetaMetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-const OperationMetaMetricSpecificationSupportedTimeGrainTypesList =
-  OperationMetaMetricSpecificationSupportedAggregationTypesList as any as S.Schema<OperationMetaMetricSpecificationSupportedTimeGrainTypesList>;
-
 /** metric specifications for the operation */
 export interface OperationMetaMetricSpecification {
   /** aggregation type of metric */
@@ -1776,19 +1365,9 @@ export interface OperationMetaMetricSpecification {
   /** units for the metric */
   unit?: string;
 }
-const OperationMetaMetricSpecification = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<OperationMetaMetricSpecification>;
-
 /** metric specifications for the operation */
 export type OperationMetaServiceSpecificationMetricSpecificationsList =
   Array<OperationMetaMetricSpecification>;
-const OperationMetaServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<OperationMetaServiceSpecificationMetricSpecificationsList>;
-
 /** The operation meta service specification */
 export interface OperationMetaServiceSpecification {
   /** log specifications for the operation */
@@ -1796,21 +1375,11 @@ export interface OperationMetaServiceSpecification {
   /** metric specifications for the operation */
   metricSpecifications?: OperationMetaServiceSpecificationMetricSpecificationsList;
 }
-const OperationMetaServiceSpecification = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<OperationMetaServiceSpecification>;
-
 /** properties on meta info */
 export interface OperationMetaPropertyInfo {
   /** meta service specification */
   serviceSpecification?: OperationMetaServiceSpecification;
 }
-const OperationMetaPropertyInfo = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<OperationMetaPropertyInfo>;
-
 /** The response model for get operations */
 export interface OperationModel {
   /** Properties on the operation */
@@ -1822,15 +1391,8 @@ export interface OperationModel {
   /** properties for the operation meta info */
   properties?: OperationMetaPropertyInfo;
 }
-const OperationModel = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<OperationModel>;
-
 /** Collection of items of type DataTransferObjects. */
 export type OperationListValueList = Array<OperationModel>;
-const OperationListValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<OperationListValueList>;
-
 /** List response for get operations. */
 export interface OperationList {
   /** The Url of next result page. */
@@ -1838,8 +1400,6 @@ export interface OperationList {
   /** Collection of items of type DataTransferObjects. */
   value: OperationListValueList;
 }
-const OperationList = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<OperationList>;
-
 export interface ListProviderShareSubscriptionByShareRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1852,11 +1412,6 @@ export interface ListProviderShareSubscriptionByShareRequest {
   /** Continuation Token */
   _skipToken?: string;
 }
-const ListProviderShareSubscriptionByShareRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListProviderShareSubscriptionByShareRequest>;
-
 /** A provider side share subscription data transfer object. */
 export interface ProviderShareSubscription {
   /** The resource id of the azure resource */
@@ -1870,16 +1425,8 @@ export interface ProviderShareSubscription {
   /** properties of providerShareSubscription */
   properties?: ProviderShareSubscriptionProperties;
 }
-const ProviderShareSubscription =
-  GetProviderShareSubscriptionByShareResponse as any as S.Schema<ProviderShareSubscription>;
-
 /** Collection of items of type DataTransferObjects. */
 export type ProviderShareSubscriptionListValueList = Array<ProviderShareSubscription>;
-const ProviderShareSubscriptionListValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ProviderShareSubscriptionListValueList>;
-
 /** List response for get ShareSubscription. */
 export interface ProviderShareSubscriptionList {
   /** The Url of next result page. */
@@ -1887,11 +1434,6 @@ export interface ProviderShareSubscriptionList {
   /** Collection of items of type DataTransferObjects. */
   value: ProviderShareSubscriptionListValueList;
 }
-const ProviderShareSubscriptionList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ProviderShareSubscriptionList>;
-
 export interface ListShareByAccountRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1906,11 +1448,6 @@ export interface ListShareByAccountRequest {
   /** Sorts the results using OData syntax. */
   _orderby?: string;
 }
-const ListShareByAccountRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ListShareByAccountRequest>;
-
 /** A share data transfer object. */
 export interface Share {
   /** The resource id of the azure resource */
@@ -1924,12 +1461,8 @@ export interface Share {
   /** Properties on the share */
   properties?: ShareProperties;
 }
-const Share = CreateShareResponse as any as S.Schema<Share>;
-
 /** Collection of items of type DataTransferObjects. */
 export type ShareListValueList = Array<Share>;
-const ShareListValueList = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<ShareListValueList>;
-
 /** List response for get Shares. */
 export interface ShareList {
   /** The Url of next result page. */
@@ -1937,8 +1470,6 @@ export interface ShareList {
   /** Collection of items of type DataTransferObjects. */
   value: ShareListValueList;
 }
-const ShareList = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<ShareList>;
-
 export interface ListShareSubscriptionByAccountRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -1953,11 +1484,6 @@ export interface ListShareSubscriptionByAccountRequest {
   /** Sorts the results using OData syntax. */
   _orderby?: string;
 }
-const ListShareSubscriptionByAccountRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ListShareSubscriptionByAccountRequest>;
-
 /** A share subscription data transfer object. */
 export interface ShareSubscription {
   /** The resource id of the azure resource */
@@ -1971,15 +1497,8 @@ export interface ShareSubscription {
   /** Properties on the share subscription */
   properties: ShareSubscriptionProperties;
 }
-const ShareSubscription = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<ShareSubscription>;
-
 /** Collection of items of type DataTransferObjects. */
 export type ShareSubscriptionListValueList = Array<ShareSubscription>;
-const ShareSubscriptionListValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ShareSubscriptionListValueList>;
-
 /** List response for get ShareSubscription. */
 export interface ShareSubscriptionList {
   /** The Url of next result page. */
@@ -1987,11 +1506,6 @@ export interface ShareSubscriptionList {
   /** Collection of items of type DataTransferObjects. */
   value: ShareSubscriptionListValueList;
 }
-const ShareSubscriptionList = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ShareSubscriptionList>;
-
 export interface ListShareSubscriptionSourceShareSynchronizationSettingsRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -2004,33 +1518,16 @@ export interface ListShareSubscriptionSourceShareSynchronizationSettingsRequest 
   /** Continuation token */
   _skipToken?: string;
 }
-const ListShareSubscriptionSourceShareSynchronizationSettingsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListShareSubscriptionSourceShareSynchronizationSettingsRequest>;
-
 /** Kind of synchronization setting on share. */
 export type SourceShareSynchronizationSettingKind = "ScheduleBased";
-const SourceShareSynchronizationSettingKind = S.String;
-
 /** A view of synchronization setting added by the provider */
 export interface SourceShareSynchronizationSetting {
   /** Kind of synchronization setting on share. */
   kind: SourceShareSynchronizationSettingKind;
 }
-const SourceShareSynchronizationSetting = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<SourceShareSynchronizationSetting>;
-
 /** Collection of items of type DataTransferObjects. */
 export type SourceShareSynchronizationSettingListValueList =
   Array<SourceShareSynchronizationSetting>;
-const SourceShareSynchronizationSettingListValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<SourceShareSynchronizationSettingListValueList>;
-
 /** List response for get source share Synchronization settings */
 export interface SourceShareSynchronizationSettingList {
   /** The Url of next result page. */
@@ -2038,11 +1535,6 @@ export interface SourceShareSynchronizationSettingList {
   /** Collection of items of type DataTransferObjects. */
   value: SourceShareSynchronizationSettingListValueList;
 }
-const SourceShareSynchronizationSettingList = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<SourceShareSynchronizationSettingList>;
-
 export interface ListShareSubscriptionSynchronizationDetailsRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -2061,11 +1553,6 @@ export interface ListShareSubscriptionSynchronizationDetailsRequest {
   /** Synchronization id */
   synchronizationId: string;
 }
-const ListShareSubscriptionSynchronizationDetailsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListShareSubscriptionSynchronizationDetailsRequest>;
-
 /** Type of the data set */
 export type SynchronizationDetailsDataSetType =
   | "Blob"
@@ -2082,8 +1569,6 @@ export type SynchronizationDetailsDataSetType =
   | "SqlDBTable"
   | "SqlDWTable"
   | "SynapseWorkspaceSqlPoolTable";
-const SynchronizationDetailsDataSetType = S.String;
-
 /** Synchronization details at data set level */
 export interface SynchronizationDetails {
   /** Id of data set */
@@ -2117,18 +1602,8 @@ export interface SynchronizationDetails {
   /** The vCore units consumed for the data set synchronization */
   vCore?: number;
 }
-const SynchronizationDetails = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<SynchronizationDetails>;
-
 /** Collection of items of type DataTransferObjects. */
 export type SynchronizationDetailsListValueList = Array<SynchronizationDetails>;
-const SynchronizationDetailsListValueList = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<SynchronizationDetailsListValueList>;
-
 /** details of synchronization */
 export interface SynchronizationDetailsList {
   /** The Url of next result page. */
@@ -2136,11 +1611,6 @@ export interface SynchronizationDetailsList {
   /** Collection of items of type DataTransferObjects. */
   value: SynchronizationDetailsListValueList;
 }
-const SynchronizationDetailsList = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<SynchronizationDetailsList>;
-
 export interface ListShareSubscriptionSynchronizationsRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -2157,18 +1627,8 @@ export interface ListShareSubscriptionSynchronizationsRequest {
   /** Sorts the results using OData syntax. */
   _orderby?: string;
 }
-const ListShareSubscriptionSynchronizationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ListShareSubscriptionSynchronizationsRequest>;
-
 /** Collection of items of type DataTransferObjects. */
 export type ShareSubscriptionSynchronizationListValueList = Array<ShareSubscriptionSynchronization>;
-const ShareSubscriptionSynchronizationListValueList = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ShareSubscriptionSynchronizationListValueList>;
-
 /** A consumer side list of share subscription synchronizations */
 export interface ShareSubscriptionSynchronizationList {
   /** The Url of next result page. */
@@ -2176,11 +1636,6 @@ export interface ShareSubscriptionSynchronizationList {
   /** Collection of items of type DataTransferObjects. */
   value: ShareSubscriptionSynchronizationListValueList;
 }
-const ShareSubscriptionSynchronizationList = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ShareSubscriptionSynchronizationList>;
-
 export interface ListShareSynchronizationDetailsRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -2215,11 +1670,6 @@ export interface ListShareSynchronizationDetailsRequest {
   /** Synchronization id */
   synchronizationId?: string;
 }
-const ListShareSynchronizationDetailsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ListShareSynchronizationDetailsRequest>;
-
 export interface ListShareSynchronizationsRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -2236,15 +1686,8 @@ export interface ListShareSynchronizationsRequest {
   /** Sorts the results using OData syntax. */
   _orderby?: string;
 }
-const ListShareSynchronizationsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ListShareSynchronizationsRequest>;
-
 /** Synchronization mode */
 export type ShareSynchronizationSynchronizationMode = "Incremental" | "FullSync";
-const ShareSynchronizationSynchronizationMode = S.String;
-
 /** A ShareSynchronization data transfer object. */
 export interface ShareSynchronization {
   /** Email of the user who created the synchronization */
@@ -2268,18 +1711,8 @@ export interface ShareSynchronization {
   /** Synchronization mode */
   synchronizationMode?: ShareSynchronizationSynchronizationMode;
 }
-const ShareSynchronization = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ShareSynchronization>;
-
 /** Collection of items of type DataTransferObjects. */
 export type ShareSynchronizationListValueList = Array<ShareSynchronization>;
-const ShareSynchronizationListValueList = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<ShareSynchronizationListValueList>;
-
 /** List response for get ShareSynchronization. */
 export interface ShareSynchronizationList {
   /** The Url of next result page. */
@@ -2287,11 +1720,6 @@ export interface ShareSynchronizationList {
   /** Collection of items of type DataTransferObjects. */
   value: ShareSynchronizationListValueList;
 }
-const ShareSynchronizationList = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ShareSynchronizationList>;
-
 export interface ListSynchronizationSettingsByShareRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -2304,11 +1732,6 @@ export interface ListSynchronizationSettingsByShareRequest {
   /** continuation token */
   _skipToken?: string;
 }
-const ListSynchronizationSettingsByShareRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ListSynchronizationSettingsByShareRequest>;
-
 /** Kind of synchronization setting. */
 export type SynchronizationSettingKind = "ScheduleBased";
 /** A Synchronization Setting data transfer object. */
@@ -2326,9 +1749,6 @@ export interface SynchronizationSetting {
 }
 /** Collection of items of type DataTransferObjects. */
 export type SynchronizationSettingListValueList = Array<SynchronizationSetting>;
-const SynchronizationSettingListValueList =
-  DataSetListValueList as any as S.Schema<SynchronizationSettingListValueList>;
-
 /** List response for get Synchronization settings */
 export interface SynchronizationSettingList {
   /** The Url of next result page. */
@@ -2336,11 +1756,6 @@ export interface SynchronizationSettingList {
   /** Collection of items of type DataTransferObjects. */
   value: SynchronizationSettingListValueList;
 }
-const SynchronizationSettingList = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<SynchronizationSettingList>;
-
 export interface ListTriggerByShareSubscriptionRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -2353,11 +1768,6 @@ export interface ListTriggerByShareSubscriptionRequest {
   /** Continuation token */
   _skipToken?: string;
 }
-const ListTriggerByShareSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ListTriggerByShareSubscriptionRequest>;
-
 /** Kind of synchronization on trigger. */
 export type TriggerKind = "ScheduleBased";
 /** A Trigger data transfer object. */
@@ -2382,18 +1792,11 @@ export interface TriggerList {
   /** Collection of items of type DataTransferObjects. */
   value: TriggerListValueList;
 }
-const TriggerList = DataSetList as any as S.Schema<TriggerList>;
-
 /** Provider share subscription properties */
 export interface ProviderShareSubscriptionPropertiesInput {
   /** Expiration date of the share subscription in UTC format */
   expirationDate?: string;
 }
-const ProviderShareSubscriptionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ProviderShareSubscriptionPropertiesInput>;
-
 export interface ProviderShareSubscriptionsAdjustRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -2408,11 +1811,6 @@ export interface ProviderShareSubscriptionsAdjustRequest {
   /** properties of providerShareSubscription */
   properties?: ProviderShareSubscriptionPropertiesInput;
 }
-const ProviderShareSubscriptionsAdjustRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ProviderShareSubscriptionsAdjustRequest>;
-
 export interface ProviderShareSubscriptionsAdjustResponse {
   /** The resource id of the azure resource */
   id?: string;
@@ -2425,9 +1823,6 @@ export interface ProviderShareSubscriptionsAdjustResponse {
   /** properties of providerShareSubscription */
   properties?: ProviderShareSubscriptionProperties;
 }
-const ProviderShareSubscriptionsAdjustResponse =
-  GetProviderShareSubscriptionByShareResponse as any as S.Schema<ProviderShareSubscriptionsAdjustResponse>;
-
 export interface ProviderShareSubscriptionsReinstateRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -2442,11 +1837,6 @@ export interface ProviderShareSubscriptionsReinstateRequest {
   /** properties of providerShareSubscription */
   properties?: ProviderShareSubscriptionPropertiesInput;
 }
-const ProviderShareSubscriptionsReinstateRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ProviderShareSubscriptionsReinstateRequest>;
-
 export interface ProviderShareSubscriptionsReinstateResponse {
   /** The resource id of the azure resource */
   id?: string;
@@ -2459,39 +1849,21 @@ export interface ProviderShareSubscriptionsReinstateResponse {
   /** properties of providerShareSubscription */
   properties?: ProviderShareSubscriptionProperties;
 }
-const ProviderShareSubscriptionsReinstateResponse =
-  GetProviderShareSubscriptionByShareResponse as any as S.Schema<ProviderShareSubscriptionsReinstateResponse>;
-
 export interface RegisterEmailRegistrationEmailRequest {
   /** Location of the registration */
   location: string;
 }
-const RegisterEmailRegistrationEmailRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<RegisterEmailRegistrationEmailRequest>;
-
 /** Properties of consumer invitation */
 export interface ConsumerInvitationPropertiesInput {
   /** Unique id of the invitation. */
   invitationId: string;
 }
-const ConsumerInvitationPropertiesInput = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ConsumerInvitationPropertiesInput>;
-
 export interface RejectConsumerInvitationInvitationRequest {
   /** Location of the invitation */
   location: string;
   /** Properties on the account */
   properties: ConsumerInvitationPropertiesInput;
 }
-const RejectConsumerInvitationInvitationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<RejectConsumerInvitationInvitationRequest>;
-
 export interface RejectConsumerInvitationInvitationResponse {
   /** The resource id of the azure resource */
   id?: string;
@@ -2504,9 +1876,6 @@ export interface RejectConsumerInvitationInvitationResponse {
   /** Properties on the account */
   properties: ConsumerInvitationProperties;
 }
-const RejectConsumerInvitationInvitationResponse =
-  GetConsumerInvitationResponse as any as S.Schema<RejectConsumerInvitationInvitationResponse>;
-
 export interface RevokeProviderShareSubscriptionRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -2519,11 +1888,6 @@ export interface RevokeProviderShareSubscriptionRequest {
   /** To locate shareSubscription */
   providerShareSubscriptionId: string;
 }
-const RevokeProviderShareSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<RevokeProviderShareSubscriptionRequest>;
-
 export interface RevokeProviderShareSubscriptionResponse {
   /** The resource id of the azure resource */
   id?: string;
@@ -2536,13 +1900,8 @@ export interface RevokeProviderShareSubscriptionResponse {
   /** properties of providerShareSubscription */
   properties?: ProviderShareSubscriptionProperties;
 }
-const RevokeProviderShareSubscriptionResponse =
-  GetProviderShareSubscriptionByShareResponse as any as S.Schema<RevokeProviderShareSubscriptionResponse>;
-
 /** Mode of synchronization used in triggers and snapshot sync. Incremental by default */
 export type ShareSubscriptionsSynchronizeRequestSynchronizationMode = "Incremental" | "FullSync";
-const ShareSubscriptionsSynchronizeRequestSynchronizationMode = S.String;
-
 export interface ShareSubscriptionsSynchronizeRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -2555,16 +1914,8 @@ export interface ShareSubscriptionsSynchronizeRequest {
   /** Mode of synchronization used in triggers and snapshot sync. Incremental by default */
   synchronizationMode?: ShareSubscriptionsSynchronizeRequestSynchronizationMode | (string & {});
 }
-const ShareSubscriptionsSynchronizeRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ShareSubscriptionsSynchronizeRequest>;
-
 /** Tags on the azure resource. */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
-const UpdateAccountRequestTagsMap =
-  CreateAccountRequestTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
-
 export interface UpdateAccountRequest {
   /** The subscription identifier */
   subscriptionId: string;
@@ -2575,11 +1926,6 @@ export interface UpdateAccountRequest {
   /** Tags on the azure resource. */
   tags?: UpdateAccountRequestTagsMap;
 }
-const UpdateAccountRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<UpdateAccountRequest>;
-
 /** Tags on the azure resource. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateAccountResponse {
@@ -2600,8 +1946,6 @@ export interface UpdateAccountResponse {
   /** Properties on the account */
   properties?: AccountProperties;
 }
-const UpdateAccountResponse = CreateAccountResponse as any as S.Schema<UpdateAccountResponse>;
-
 export type ActivateEmailRegistrationEmailError = AzureOpError;
 /** Activates the tenant and email combination using email code received. Activate the email registration for the current tenant */
 export const ActivateEmailRegistrationEmail: API.OperationMethod<
@@ -2610,8 +1954,8 @@ export const ActivateEmailRegistrationEmail: API.OperationMethod<
   ActivateEmailRegistrationEmailError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActivateEmailRegistrationEmailRequest,
-  output: EmailRegistration,
+  input: __S(0) as any as S.Schema<ActivateEmailRegistrationEmailRequest>,
+  output: __S(1) as any as S.Schema<EmailRegistration>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2625,8 +1969,8 @@ export const CancelShareSubscriptionSynchronization: API.OperationMethod<
   CancelShareSubscriptionSynchronizationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelShareSubscriptionSynchronizationRequest,
-  output: ShareSubscriptionSynchronization,
+  input: __S(2) as any as S.Schema<CancelShareSubscriptionSynchronizationRequest>,
+  output: __S(3) as any as S.Schema<ShareSubscriptionSynchronization>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2640,8 +1984,8 @@ export const CreateAccount: API.OperationMethod<
   CreateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountRequest,
-  output: CreateAccountResponse,
+  input: __S(7) as any as S.Schema<CreateAccountRequest>,
+  output: __S(11) as any as S.Schema<CreateAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2655,8 +1999,8 @@ export const CreateDataSet: API.OperationMethod<
   CreateDataSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataSetRequest,
-  output: CreateDataSetResponse,
+  input: __S(12) as any as S.Schema<CreateDataSetRequest>,
+  output: __S(13) as any as S.Schema<CreateDataSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2670,8 +2014,8 @@ export const CreateDataSetMapping: API.OperationMethod<
   CreateDataSetMappingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataSetMappingRequest,
-  output: CreateDataSetMappingResponse,
+  input: __S(14) as any as S.Schema<CreateDataSetMappingRequest>,
+  output: __S(15) as any as S.Schema<CreateDataSetMappingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2685,8 +2029,8 @@ export const CreateInvitation: API.OperationMethod<
   CreateInvitationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInvitationRequest,
-  output: CreateInvitationResponse,
+  input: __S(17) as any as S.Schema<CreateInvitationRequest>,
+  output: __S(19) as any as S.Schema<CreateInvitationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2700,8 +2044,8 @@ export const CreateShare: API.OperationMethod<
   CreateShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateShareRequest,
-  output: CreateShareResponse,
+  input: __S(21) as any as S.Schema<CreateShareRequest>,
+  output: __S(23) as any as S.Schema<CreateShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2715,8 +2059,8 @@ export const CreateShareSubscription: API.OperationMethod<
   CreateShareSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateShareSubscriptionRequest,
-  output: CreateShareSubscriptionResponse,
+  input: __S(25) as any as S.Schema<CreateShareSubscriptionRequest>,
+  output: __S(27) as any as S.Schema<CreateShareSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2730,8 +2074,8 @@ export const CreateSynchronizationSettings: API.OperationMethod<
   CreateSynchronizationSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSynchronizationSettingsRequest,
-  output: CreateSynchronizationSettingsResponse,
+  input: __S(28) as any as S.Schema<CreateSynchronizationSettingsRequest>,
+  output: __S(15) as any as S.Schema<CreateSynchronizationSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2745,8 +2089,8 @@ export const CreateTrigger: API.OperationMethod<
   CreateTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTriggerRequest,
-  output: CreateTriggerResponse,
+  input: __S(29) as any as S.Schema<CreateTriggerRequest>,
+  output: __S(13) as any as S.Schema<CreateTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2760,8 +2104,8 @@ export const DeleteAccount: API.OperationMethod<
   DeleteAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountRequest,
-  output: OperationResponse,
+  input: __S(30) as any as S.Schema<DeleteAccountRequest>,
+  output: __S(33) as any as S.Schema<OperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2775,8 +2119,8 @@ export const DeleteDataSet: API.OperationMethod<
   DeleteDataSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataSetRequest,
-  output: DeleteDataSetResponse,
+  input: __S(34) as any as S.Schema<DeleteDataSetRequest>,
+  output: __S(6) as any as S.Schema<DeleteDataSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2790,8 +2134,8 @@ export const DeleteDataSetMapping: API.OperationMethod<
   DeleteDataSetMappingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataSetMappingRequest,
-  output: DeleteDataSetMappingResponse,
+  input: __S(35) as any as S.Schema<DeleteDataSetMappingRequest>,
+  output: __S(6) as any as S.Schema<DeleteDataSetMappingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2805,8 +2149,8 @@ export const DeleteInvitation: API.OperationMethod<
   DeleteInvitationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInvitationRequest,
-  output: DeleteInvitationResponse,
+  input: __S(36) as any as S.Schema<DeleteInvitationRequest>,
+  output: __S(6) as any as S.Schema<DeleteInvitationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2820,8 +2164,8 @@ export const DeleteShare: API.OperationMethod<
   DeleteShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteShareRequest,
-  output: OperationResponse,
+  input: __S(37) as any as S.Schema<DeleteShareRequest>,
+  output: __S(33) as any as S.Schema<OperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2835,8 +2179,8 @@ export const DeleteShareSubscription: API.OperationMethod<
   DeleteShareSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteShareSubscriptionRequest,
-  output: OperationResponse,
+  input: __S(38) as any as S.Schema<DeleteShareSubscriptionRequest>,
+  output: __S(33) as any as S.Schema<OperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2850,8 +2194,8 @@ export const DeleteSynchronizationSettings: API.OperationMethod<
   DeleteSynchronizationSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSynchronizationSettingsRequest,
-  output: OperationResponse,
+  input: __S(39) as any as S.Schema<DeleteSynchronizationSettingsRequest>,
+  output: __S(33) as any as S.Schema<OperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2865,8 +2209,8 @@ export const DeleteTrigger: API.OperationMethod<
   DeleteTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTriggerRequest,
-  output: OperationResponse,
+  input: __S(40) as any as S.Schema<DeleteTriggerRequest>,
+  output: __S(33) as any as S.Schema<OperationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2880,8 +2224,8 @@ export const GetAccount: API.OperationMethod<
   GetAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountRequest,
-  output: GetAccountResponse,
+  input: __S(41) as any as S.Schema<GetAccountRequest>,
+  output: __S(11) as any as S.Schema<GetAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2895,8 +2239,8 @@ export const GetConsumerInvitation: API.OperationMethod<
   GetConsumerInvitationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConsumerInvitationRequest,
-  output: GetConsumerInvitationResponse,
+  input: __S(42) as any as S.Schema<GetConsumerInvitationRequest>,
+  output: __S(44) as any as S.Schema<GetConsumerInvitationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2910,8 +2254,8 @@ export const GetDataSet: API.OperationMethod<
   GetDataSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataSetRequest,
-  output: GetDataSetResponse,
+  input: __S(45) as any as S.Schema<GetDataSetRequest>,
+  output: __S(13) as any as S.Schema<GetDataSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2925,8 +2269,8 @@ export const GetDataSetMapping: API.OperationMethod<
   GetDataSetMappingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataSetMappingRequest,
-  output: GetDataSetMappingResponse,
+  input: __S(46) as any as S.Schema<GetDataSetMappingRequest>,
+  output: __S(15) as any as S.Schema<GetDataSetMappingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2940,8 +2284,8 @@ export const GetInvitation: API.OperationMethod<
   GetInvitationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInvitationRequest,
-  output: GetInvitationResponse,
+  input: __S(47) as any as S.Schema<GetInvitationRequest>,
+  output: __S(19) as any as S.Schema<GetInvitationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2955,8 +2299,8 @@ export const GetProviderShareSubscriptionByShare: API.OperationMethod<
   GetProviderShareSubscriptionByShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProviderShareSubscriptionByShareRequest,
-  output: GetProviderShareSubscriptionByShareResponse,
+  input: __S(48) as any as S.Schema<GetProviderShareSubscriptionByShareRequest>,
+  output: __S(50) as any as S.Schema<GetProviderShareSubscriptionByShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2970,8 +2314,8 @@ export const GetShare: API.OperationMethod<
   GetShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetShareRequest,
-  output: GetShareResponse,
+  input: __S(51) as any as S.Schema<GetShareRequest>,
+  output: __S(23) as any as S.Schema<GetShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2985,8 +2329,8 @@ export const GetShareSubscription: API.OperationMethod<
   GetShareSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetShareSubscriptionRequest,
-  output: GetShareSubscriptionResponse,
+  input: __S(52) as any as S.Schema<GetShareSubscriptionRequest>,
+  output: __S(27) as any as S.Schema<GetShareSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3000,8 +2344,8 @@ export const GetSynchronizationSettings: API.OperationMethod<
   GetSynchronizationSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSynchronizationSettingsRequest,
-  output: GetSynchronizationSettingsResponse,
+  input: __S(53) as any as S.Schema<GetSynchronizationSettingsRequest>,
+  output: __S(15) as any as S.Schema<GetSynchronizationSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3015,8 +2359,8 @@ export const GetTrigger: API.OperationMethod<
   GetTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTriggerRequest,
-  output: GetTriggerResponse,
+  input: __S(54) as any as S.Schema<GetTriggerRequest>,
+  output: __S(13) as any as S.Schema<GetTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3030,8 +2374,8 @@ export const ListAccountByResourceGroup: API.OperationMethod<
   ListAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountByResourceGroupRequest,
-  output: AccountList,
+  input: __S(55) as any as S.Schema<ListAccountByResourceGroupRequest>,
+  output: __S(57) as any as S.Schema<AccountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3045,8 +2389,8 @@ export const ListAccountBySubscription: API.OperationMethod<
   ListAccountBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountBySubscriptionRequest,
-  output: AccountList,
+  input: __S(58) as any as S.Schema<ListAccountBySubscriptionRequest>,
+  output: __S(57) as any as S.Schema<AccountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3060,8 +2404,8 @@ export const ListConsumerInvitationInvitations: API.OperationMethod<
   ListConsumerInvitationInvitationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConsumerInvitationInvitationsRequest,
-  output: ConsumerInvitationList,
+  input: __S(59) as any as S.Schema<ListConsumerInvitationInvitationsRequest>,
+  output: __S(62) as any as S.Schema<ConsumerInvitationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3075,8 +2419,8 @@ export const ListConsumerSourceDataSetByShareSubscription: API.OperationMethod<
   ListConsumerSourceDataSetByShareSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConsumerSourceDataSetByShareSubscriptionRequest,
-  output: ConsumerSourceDataSetList,
+  input: __S(63) as any as S.Schema<ListConsumerSourceDataSetByShareSubscriptionRequest>,
+  output: __S(67) as any as S.Schema<ConsumerSourceDataSetList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3090,8 +2434,8 @@ export const ListDataSetByShare: API.OperationMethod<
   ListDataSetByShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataSetByShareRequest,
-  output: DataSetList,
+  input: __S(68) as any as S.Schema<ListDataSetByShareRequest>,
+  output: __S(71) as any as S.Schema<DataSetList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3105,8 +2449,8 @@ export const ListDataSetMappingByShareSubscription: API.OperationMethod<
   ListDataSetMappingByShareSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataSetMappingByShareSubscriptionRequest,
-  output: DataSetMappingList,
+  input: __S(72) as any as S.Schema<ListDataSetMappingByShareSubscriptionRequest>,
+  output: __S(71) as any as S.Schema<DataSetMappingList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3120,8 +2464,8 @@ export const ListInvitationByShare: API.OperationMethod<
   ListInvitationByShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInvitationByShareRequest,
-  output: InvitationList,
+  input: __S(73) as any as S.Schema<ListInvitationByShareRequest>,
+  output: __S(75) as any as S.Schema<InvitationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3135,8 +2479,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationList,
+  input: __S(76) as any as S.Schema<ListOperationsRequest>,
+  output: __S(89) as any as S.Schema<OperationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3150,8 +2494,8 @@ export const ListProviderShareSubscriptionByShare: API.OperationMethod<
   ListProviderShareSubscriptionByShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProviderShareSubscriptionByShareRequest,
-  output: ProviderShareSubscriptionList,
+  input: __S(90) as any as S.Schema<ListProviderShareSubscriptionByShareRequest>,
+  output: __S(92) as any as S.Schema<ProviderShareSubscriptionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3165,8 +2509,8 @@ export const ListShareByAccount: API.OperationMethod<
   ListShareByAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListShareByAccountRequest,
-  output: ShareList,
+  input: __S(93) as any as S.Schema<ListShareByAccountRequest>,
+  output: __S(95) as any as S.Schema<ShareList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3180,8 +2524,8 @@ export const ListShareSubscriptionByAccount: API.OperationMethod<
   ListShareSubscriptionByAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListShareSubscriptionByAccountRequest,
-  output: ShareSubscriptionList,
+  input: __S(96) as any as S.Schema<ListShareSubscriptionByAccountRequest>,
+  output: __S(99) as any as S.Schema<ShareSubscriptionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3195,8 +2539,10 @@ export const ListShareSubscriptionSourceShareSynchronizationSettings: API.Operat
   ListShareSubscriptionSourceShareSynchronizationSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListShareSubscriptionSourceShareSynchronizationSettingsRequest,
-  output: SourceShareSynchronizationSettingList,
+  input: __S(
+    100,
+  ) as any as S.Schema<ListShareSubscriptionSourceShareSynchronizationSettingsRequest>,
+  output: __S(103) as any as S.Schema<SourceShareSynchronizationSettingList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3210,8 +2556,8 @@ export const ListShareSubscriptionSynchronizationDetails: API.OperationMethod<
   ListShareSubscriptionSynchronizationDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListShareSubscriptionSynchronizationDetailsRequest,
-  output: SynchronizationDetailsList,
+  input: __S(104) as any as S.Schema<ListShareSubscriptionSynchronizationDetailsRequest>,
+  output: __S(107) as any as S.Schema<SynchronizationDetailsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3225,8 +2571,8 @@ export const ListShareSubscriptionSynchronizations: API.OperationMethod<
   ListShareSubscriptionSynchronizationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListShareSubscriptionSynchronizationsRequest,
-  output: ShareSubscriptionSynchronizationList,
+  input: __S(108) as any as S.Schema<ListShareSubscriptionSynchronizationsRequest>,
+  output: __S(110) as any as S.Schema<ShareSubscriptionSynchronizationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3240,8 +2586,8 @@ export const ListShareSynchronizationDetails: API.OperationMethod<
   ListShareSynchronizationDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListShareSynchronizationDetailsRequest,
-  output: SynchronizationDetailsList,
+  input: __S(111) as any as S.Schema<ListShareSynchronizationDetailsRequest>,
+  output: __S(107) as any as S.Schema<SynchronizationDetailsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3255,8 +2601,8 @@ export const ListShareSynchronizations: API.OperationMethod<
   ListShareSynchronizationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListShareSynchronizationsRequest,
-  output: ShareSynchronizationList,
+  input: __S(112) as any as S.Schema<ListShareSynchronizationsRequest>,
+  output: __S(115) as any as S.Schema<ShareSynchronizationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3270,8 +2616,8 @@ export const ListSynchronizationSettingsByShare: API.OperationMethod<
   ListSynchronizationSettingsByShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSynchronizationSettingsByShareRequest,
-  output: SynchronizationSettingList,
+  input: __S(116) as any as S.Schema<ListSynchronizationSettingsByShareRequest>,
+  output: __S(117) as any as S.Schema<SynchronizationSettingList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3285,8 +2631,8 @@ export const ListTriggerByShareSubscription: API.OperationMethod<
   ListTriggerByShareSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTriggerByShareSubscriptionRequest,
-  output: TriggerList,
+  input: __S(118) as any as S.Schema<ListTriggerByShareSubscriptionRequest>,
+  output: __S(71) as any as S.Schema<TriggerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3300,8 +2646,8 @@ export const ProviderShareSubscriptionsAdjust: API.OperationMethod<
   ProviderShareSubscriptionsAdjustError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProviderShareSubscriptionsAdjustRequest,
-  output: ProviderShareSubscriptionsAdjustResponse,
+  input: __S(120) as any as S.Schema<ProviderShareSubscriptionsAdjustRequest>,
+  output: __S(50) as any as S.Schema<ProviderShareSubscriptionsAdjustResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3315,8 +2661,8 @@ export const ProviderShareSubscriptionsReinstate: API.OperationMethod<
   ProviderShareSubscriptionsReinstateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProviderShareSubscriptionsReinstateRequest,
-  output: ProviderShareSubscriptionsReinstateResponse,
+  input: __S(121) as any as S.Schema<ProviderShareSubscriptionsReinstateRequest>,
+  output: __S(50) as any as S.Schema<ProviderShareSubscriptionsReinstateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3330,8 +2676,8 @@ export const RegisterEmailRegistrationEmail: API.OperationMethod<
   RegisterEmailRegistrationEmailError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterEmailRegistrationEmailRequest,
-  output: EmailRegistration,
+  input: __S(122) as any as S.Schema<RegisterEmailRegistrationEmailRequest>,
+  output: __S(1) as any as S.Schema<EmailRegistration>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3345,8 +2691,8 @@ export const RejectConsumerInvitationInvitation: API.OperationMethod<
   RejectConsumerInvitationInvitationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RejectConsumerInvitationInvitationRequest,
-  output: RejectConsumerInvitationInvitationResponse,
+  input: __S(124) as any as S.Schema<RejectConsumerInvitationInvitationRequest>,
+  output: __S(44) as any as S.Schema<RejectConsumerInvitationInvitationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3360,8 +2706,8 @@ export const RevokeProviderShareSubscription: API.OperationMethod<
   RevokeProviderShareSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeProviderShareSubscriptionRequest,
-  output: RevokeProviderShareSubscriptionResponse,
+  input: __S(125) as any as S.Schema<RevokeProviderShareSubscriptionRequest>,
+  output: __S(50) as any as S.Schema<RevokeProviderShareSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3375,8 +2721,8 @@ export const ShareSubscriptionsSynchronize: API.OperationMethod<
   ShareSubscriptionsSynchronizeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ShareSubscriptionsSynchronizeRequest,
-  output: ShareSubscriptionSynchronization,
+  input: __S(126) as any as S.Schema<ShareSubscriptionsSynchronizeRequest>,
+  output: __S(3) as any as S.Schema<ShareSubscriptionSynchronization>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3390,8 +2736,8 @@ export const UpdateAccount: API.OperationMethod<
   UpdateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountRequest,
-  output: UpdateAccountResponse,
+  input: __S(127) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(11) as any as S.Schema<UpdateAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3422,7 +2768,7 @@ function __c0(j: number): any {
           activationCode: S.optional(S.String),
           activationExpirationDate: S.optional(S.String),
           email: S.optional(S.String),
-          registrationStatus: S.optional(EmailRegistrationRegistrationStatus),
+          registrationStatus: S.optional(S.String),
           tenantId: S.optional(S.String),
         }),
       ).annotate({ identifier: "EmailRegistration" });
@@ -3454,7 +2800,7 @@ function __c0(j: number): any {
           startTime: S.optional(S.String),
           status: S.optional(S.String),
           synchronizationId: S.String,
-          synchronizationMode: S.optional(ShareSubscriptionSynchronizationSynchronizationMode),
+          synchronizationMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ShareSubscriptionSynchronization",
@@ -3464,7 +2810,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(IdentityInputType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdentityInput" });
     case 6:
@@ -3478,9 +2824,9 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(CreateAccountRequestTagsMap),
-          identity: IdentityInput,
-          properties: S.optional(AccountPropertiesInput),
+          tags: S.optional(__S(4)),
+          identity: __S(5),
+          properties: S.optional(__S(6)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3499,10 +2845,10 @@ function __c1(j: number): any {
         S.Struct({
           createdAt: S.optional(S.String),
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
     case 1:
@@ -3510,14 +2856,14 @@ function __c1(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(IdentityType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Identity" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
-          provisioningState: S.optional(AccountPropertiesProvisioningState),
+          provisioningState: S.optional(S.String),
           userEmail: S.optional(S.String),
           userName: S.optional(S.String),
         }),
@@ -3527,12 +2873,12 @@ function __c1(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(8)),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(CreateAccountResponseTagsMap),
-          identity: Identity,
-          properties: S.optional(AccountProperties),
+          tags: S.optional(__S(4)),
+          identity: __S(9),
+          properties: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "CreateAccountResponse" });
     case 4:
@@ -3543,7 +2889,7 @@ function __c1(j: number): any {
           accountName: S.String.pipe(T.Label()),
           shareName: S.String.pipe(T.Label()),
           dataSetName: S.String.pipe(T.Label()),
-          kind: CreateDataSetRequestKind,
+          kind: S.String,
           properties: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -3559,9 +2905,9 @@ function __c1(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(8)),
           type: S.optional(S.String),
-          kind: CreateDataSetResponseKind,
+          kind: S.String,
           properties: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "CreateDataSetResponse" });
@@ -3573,7 +2919,7 @@ function __c1(j: number): any {
           accountName: S.String.pipe(T.Label()),
           shareSubscriptionName: S.String.pipe(T.Label()),
           dataSetMappingName: S.String.pipe(T.Label()),
-          kind: CreateDataSetMappingRequestKind,
+          kind: S.String,
           properties: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -3591,9 +2937,9 @@ function __c1(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(8)),
           type: S.optional(S.String),
-          kind: CreateDataSetMappingResponseKind,
+          kind: S.String,
           properties: S.optional(S.Unknown),
         }),
       ).annotate({
@@ -3622,7 +2968,7 @@ function __c2(j: number): any {
           accountName: S.String.pipe(T.Label()),
           shareName: S.String.pipe(T.Label()),
           invitationName: S.String.pipe(T.Label()),
-          properties: S.optional(InvitationPropertiesInput),
+          properties: S.optional(__S(16)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3637,7 +2983,7 @@ function __c2(j: number): any {
         S.Struct({
           expirationDate: S.optional(S.String),
           invitationId: S.optional(S.String),
-          invitationStatus: S.optional(InvitationPropertiesInvitationStatus),
+          invitationStatus: S.optional(S.String),
           respondedAt: S.optional(S.String),
           sentAt: S.optional(S.String),
           targetActiveDirectoryId: S.optional(S.String),
@@ -3652,16 +2998,16 @@ function __c2(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(8)),
           type: S.optional(S.String),
-          properties: S.optional(InvitationProperties),
+          properties: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "CreateInvitationResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          shareKind: S.optional(SharePropertiesInputShareKind),
+          shareKind: S.optional(S.String),
           terms: S.optional(S.String),
         }),
       ).annotate({ identifier: "SharePropertiesInput" });
@@ -3672,7 +3018,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           shareName: S.String.pipe(T.Label()),
-          properties: S.optional(SharePropertiesInput),
+          properties: S.optional(__S(20)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3687,8 +3033,8 @@ function __c2(j: number): any {
         S.Struct({
           createdAt: S.optional(S.String),
           description: S.optional(S.String),
-          provisioningState: S.optional(SharePropertiesProvisioningState),
-          shareKind: S.optional(SharePropertiesShareKind),
+          provisioningState: S.optional(S.String),
+          shareKind: S.optional(S.String),
           terms: S.optional(S.String),
           userEmail: S.optional(S.String),
           userName: S.optional(S.String),
@@ -3699,9 +3045,9 @@ function __c2(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(8)),
           type: S.optional(S.String),
-          properties: S.optional(ShareProperties),
+          properties: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "CreateShareResponse" });
   }
@@ -3725,7 +3071,7 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           shareSubscriptionName: S.String.pipe(T.Label()),
-          properties: ShareSubscriptionPropertiesInput,
+          properties: __S(24),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3746,11 +3092,11 @@ function __c3(j: number): any {
           providerEmail: S.optional(S.String),
           providerName: S.optional(S.String),
           providerTenantName: S.optional(S.String),
-          provisioningState: S.optional(ShareSubscriptionPropertiesProvisioningState),
+          provisioningState: S.optional(S.String),
           shareDescription: S.optional(S.String),
-          shareKind: S.optional(ShareSubscriptionPropertiesShareKind),
+          shareKind: S.optional(S.String),
           shareName: S.optional(S.String),
-          shareSubscriptionStatus: S.optional(ShareSubscriptionPropertiesShareSubscriptionStatus),
+          shareSubscriptionStatus: S.optional(S.String),
           shareTerms: S.optional(S.String),
           sourceShareLocation: S.String,
           userEmail: S.optional(S.String),
@@ -3764,9 +3110,9 @@ function __c3(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(8)),
           type: S.optional(S.String),
-          properties: ShareSubscriptionProperties,
+          properties: __S(26),
         }),
       ).annotate({
         identifier: "CreateShareSubscriptionResponse",
@@ -3779,7 +3125,7 @@ function __c3(j: number): any {
           accountName: S.String.pipe(T.Label()),
           shareName: S.String.pipe(T.Label()),
           synchronizationSettingName: S.String.pipe(T.Label()),
-          kind: CreateSynchronizationSettingsRequestKind,
+          kind: S.String,
           properties: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -3800,7 +3146,7 @@ function __c3(j: number): any {
           accountName: S.String.pipe(T.Label()),
           shareSubscriptionName: S.String.pipe(T.Label()),
           triggerName: S.String.pipe(T.Label()),
-          kind: CreateTriggerRequestKind,
+          kind: S.String,
           properties: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -3827,7 +3173,7 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "DeleteAccountRequest" });
     case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => DataShareErrorInfo));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(32)));
   }
 }
 function __c4(j: number): any {
@@ -3836,7 +3182,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           code: S.String,
-          details: S.optional(DataShareErrorInfoDetailsList),
+          details: S.optional(__S(31)),
           message: S.String,
           target: S.optional(S.String),
         }),
@@ -3845,9 +3191,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
-          error: S.optional(DataShareErrorInfo),
+          error: S.optional(__S(32)),
           startTime: S.optional(S.String),
-          status: S.optional(OperationResponseStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationResponse" });
     case 2:
@@ -4015,7 +3361,7 @@ function __c5(j: number): any {
           description: S.optional(S.String),
           expirationDate: S.optional(S.String),
           invitationId: S.String,
-          invitationStatus: S.optional(ConsumerInvitationPropertiesInvitationStatus),
+          invitationStatus: S.optional(S.String),
           location: S.optional(S.String),
           providerEmail: S.optional(S.String),
           providerName: S.optional(S.String),
@@ -4035,9 +3381,9 @@ function __c5(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(8)),
           type: S.optional(S.String),
-          properties: ConsumerInvitationProperties,
+          properties: __S(43),
         }),
       ).annotate({
         identifier: "GetConsumerInvitationResponse",
@@ -4128,9 +3474,7 @@ function __c6(j: number): any {
           providerName: S.optional(S.String),
           sharedAt: S.optional(S.String),
           shareSubscriptionObjectId: S.optional(S.String),
-          shareSubscriptionStatus: S.optional(
-            ProviderShareSubscriptionPropertiesShareSubscriptionStatus,
-          ),
+          shareSubscriptionStatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ProviderShareSubscriptionProperties",
@@ -4140,9 +3484,9 @@ function __c6(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(8)),
           type: S.optional(S.String),
-          properties: S.optional(ProviderShareSubscriptionProperties),
+          properties: S.optional(__S(49)),
         }),
       ).annotate({
         identifier: "GetProviderShareSubscriptionByShareResponse",
@@ -4239,12 +3583,12 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Account);
+      return S.Array(__S(11));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: AccountListValueList,
+          value: __S(56),
         }),
       ).annotate({ identifier: "AccountList" });
     case 2:
@@ -4283,18 +3627,18 @@ function __c7(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(8)),
           type: S.optional(S.String),
-          properties: ConsumerInvitationProperties,
+          properties: __S(43),
         }),
       ).annotate({ identifier: "ConsumerInvitation" });
     case 5:
-      return S.Array(ConsumerInvitation);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: ConsumerInvitationListValueList,
+          value: __S(61),
         }),
       ).annotate({ identifier: "ConsumerInvitationList" });
     case 7:
@@ -4327,7 +3671,7 @@ function __c8(j: number): any {
           dataSetLocation: S.optional(S.String),
           dataSetName: S.optional(S.String),
           dataSetPath: S.optional(S.String),
-          dataSetType: S.optional(ConsumerSourceDataSetPropertiesDataSetType),
+          dataSetType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConsumerSourceDataSetProperties",
@@ -4337,18 +3681,18 @@ function __c8(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(8)),
           type: S.optional(S.String),
-          properties: S.optional(ConsumerSourceDataSetProperties),
+          properties: S.optional(__S(64)),
         }),
       ).annotate({ identifier: "ConsumerSourceDataSet" });
     case 2:
-      return S.Array(ConsumerSourceDataSet);
+      return S.Array(__S(65));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: ConsumerSourceDataSetListValueList,
+          value: __S(66),
         }),
       ).annotate({
         identifier: "ConsumerSourceDataSetList",
@@ -4379,18 +3723,18 @@ function __c8(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(8)),
           type: S.optional(S.String),
-          kind: DataSetKind,
+          kind: S.String,
         }),
       ).annotate({ identifier: "DataSet" });
     case 6:
-      return S.Array(DataSet);
+      return S.Array(__S(69));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: DataSetListValueList,
+          value: __S(70),
         }),
       ).annotate({ identifier: "DataSetList" });
   }
@@ -4440,12 +3784,12 @@ function __c9(j: number): any {
         identifier: "ListInvitationByShareRequest",
       });
     case 2:
-      return S.Array(Invitation);
+      return S.Array(__S(19));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: InvitationListValueList,
+          value: __S(74),
         }),
       ).annotate({ identifier: "InvitationList" });
     case 4:
@@ -4479,7 +3823,7 @@ function __c9(j: number): any {
         identifier: "OperationMetaLogSpecification",
       });
     case 7:
-      return S.Array(OperationMetaLogSpecification);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
@@ -4492,14 +3836,14 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "DimensionProperties" });
     case 1:
-      return S.Array(DimensionProperties);
+      return S.Array(__S(80));
     case 2:
       return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
           aggregationType: S.optional(S.String),
-          dimensions: S.optional(OperationMetaMetricSpecificationDimensionsList),
+          dimensions: S.optional(__S(81)),
           displayDescription: S.optional(S.String),
           displayName: S.optional(S.String),
           enableRegionalMdmAccount: S.optional(S.String),
@@ -4507,26 +3851,20 @@ function __c10(j: number): any {
           internalMetricName: S.optional(S.String),
           name: S.optional(S.String),
           resourceIdDimensionNameOverride: S.optional(S.String),
-          supportedAggregationTypes: S.optional(
-            OperationMetaMetricSpecificationSupportedAggregationTypesList,
-          ),
-          supportedTimeGrainTypes: S.optional(
-            OperationMetaMetricSpecificationSupportedTimeGrainTypesList,
-          ),
+          supportedAggregationTypes: S.optional(__S(82)),
+          supportedTimeGrainTypes: S.optional(__S(82)),
           unit: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OperationMetaMetricSpecification",
       });
     case 4:
-      return S.Array(OperationMetaMetricSpecification);
+      return S.Array(__S(83));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          logSpecifications: S.optional(OperationMetaServiceSpecificationLogSpecificationsList),
-          metricSpecifications: S.optional(
-            OperationMetaServiceSpecificationMetricSpecificationsList,
-          ),
+          logSpecifications: S.optional(__S(79)),
+          metricSpecifications: S.optional(__S(84)),
         }),
       ).annotate({
         identifier: "OperationMetaServiceSpecification",
@@ -4534,7 +3872,7 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(OperationMetaServiceSpecification),
+          serviceSpecification: S.optional(__S(85)),
         }),
       ).annotate({
         identifier: "OperationMetaPropertyInfo",
@@ -4542,10 +3880,10 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(OperationModelProperties),
+          display: S.optional(__S(77)),
           name: S.optional(S.String),
           origin: S.optional(S.String),
-          properties: S.optional(OperationMetaPropertyInfo),
+          properties: S.optional(__S(86)),
         }),
       ).annotate({ identifier: "OperationModel" });
   }
@@ -4553,12 +3891,12 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OperationModel);
+      return S.Array(__S(87));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: OperationListValueList,
+          value: __S(88),
         }),
       ).annotate({ identifier: "OperationList" });
     case 2:
@@ -4581,12 +3919,12 @@ function __c11(j: number): any {
         identifier: "ListProviderShareSubscriptionByShareRequest",
       });
     case 3:
-      return S.Array(ProviderShareSubscription);
+      return S.Array(__S(50));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: ProviderShareSubscriptionListValueList,
+          value: __S(91),
         }),
       ).annotate({
         identifier: "ProviderShareSubscriptionList",
@@ -4612,12 +3950,12 @@ function __c11(j: number): any {
         identifier: "ListShareByAccountRequest",
       });
     case 6:
-      return S.Array(Share);
+      return S.Array(__S(23));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: ShareListValueList,
+          value: __S(94),
         }),
       ).annotate({ identifier: "ShareList" });
   }
@@ -4649,18 +3987,18 @@ function __c12(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(8)),
           type: S.optional(S.String),
-          properties: ShareSubscriptionProperties,
+          properties: __S(26),
         }),
       ).annotate({ identifier: "ShareSubscription" });
     case 2:
-      return S.Array(ShareSubscription);
+      return S.Array(__S(97));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: ShareSubscriptionListValueList,
+          value: __S(98),
         }),
       ).annotate({ identifier: "ShareSubscriptionList" });
     case 4:
@@ -4685,18 +4023,18 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          kind: SourceShareSynchronizationSettingKind,
+          kind: S.String,
         }),
       ).annotate({
         identifier: "SourceShareSynchronizationSetting",
       });
     case 6:
-      return S.Array(SourceShareSynchronizationSetting);
+      return S.Array(__S(101));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: SourceShareSynchronizationSettingListValueList,
+          value: __S(102),
         }),
       ).annotate({
         identifier: "SourceShareSynchronizationSettingList",
@@ -4731,7 +4069,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dataSetId: S.optional(S.String),
-          dataSetType: S.optional(SynchronizationDetailsDataSetType),
+          dataSetType: S.optional(S.String),
           durationMs: S.optional(S.Number),
           endTime: S.optional(S.String),
           filesRead: S.optional(S.Number),
@@ -4748,12 +4086,12 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "SynchronizationDetails" });
     case 2:
-      return S.Array(SynchronizationDetails);
+      return S.Array(__S(105));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: SynchronizationDetailsListValueList,
+          value: __S(106),
         }),
       ).annotate({
         identifier: "SynchronizationDetailsList",
@@ -4780,12 +4118,12 @@ function __c13(j: number): any {
         identifier: "ListShareSubscriptionSynchronizationsRequest",
       });
     case 5:
-      return S.Array(ShareSubscriptionSynchronization);
+      return S.Array(__S(3));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: ShareSubscriptionSynchronizationListValueList,
+          value: __S(109),
         }),
       ).annotate({
         identifier: "ShareSubscriptionSynchronizationList",
@@ -4857,16 +4195,16 @@ function __c14(j: number): any {
           startTime: S.optional(S.String),
           status: S.optional(S.String),
           synchronizationId: S.optional(S.String),
-          synchronizationMode: S.optional(ShareSynchronizationSynchronizationMode),
+          synchronizationMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShareSynchronization" });
     case 2:
-      return S.Array(ShareSynchronization);
+      return S.Array(__S(113));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: ShareSynchronizationListValueList,
+          value: __S(114),
         }),
       ).annotate({ identifier: "ShareSynchronizationList" });
     case 4:
@@ -4892,7 +4230,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: SynchronizationSettingListValueList,
+          value: __S(70),
         }),
       ).annotate({
         identifier: "SynchronizationSettingList",
@@ -4936,7 +4274,7 @@ function __c15(j: number): any {
           accountName: S.String.pipe(T.Label()),
           shareName: S.String.pipe(T.Label()),
           providerShareSubscriptionId: S.String.pipe(T.Label()),
-          properties: S.optional(ProviderShareSubscriptionPropertiesInput),
+          properties: S.optional(__S(119)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4956,7 +4294,7 @@ function __c15(j: number): any {
           accountName: S.String.pipe(T.Label()),
           shareName: S.String.pipe(T.Label()),
           providerShareSubscriptionId: S.String.pipe(T.Label()),
-          properties: S.optional(ProviderShareSubscriptionPropertiesInput),
+          properties: S.optional(__S(119)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4995,7 +4333,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
-          properties: ConsumerInvitationPropertiesInput,
+          properties: __S(123),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5033,7 +4371,7 @@ function __c15(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           shareSubscriptionName: S.String.pipe(T.Label()),
-          synchronizationMode: S.optional(ShareSubscriptionsSynchronizeRequestSynchronizationMode),
+          synchronizationMode: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5051,7 +4389,7 @@ function __c15(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateAccountRequestTagsMap),
+          tags: S.optional(__S(4)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5061,5 +4399,46 @@ function __c15(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateAccountRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
   }
 }

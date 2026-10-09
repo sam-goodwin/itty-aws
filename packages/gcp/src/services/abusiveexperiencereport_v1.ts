@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -40,14 +42,8 @@ export interface GetSitesRequest {
   /** Required. The name of the site whose summary to get, e.g. `sites/http%3A%2F%2Fwww.google.com%2F`. Format: `sites/{site}` */
   name: string;
 }
-const GetSitesRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetSitesRequest>;
-
 export type SiteSummaryResponseAbusiveStatusEnum = "UNKNOWN" | "PASSING" | "FAILING";
-const SiteSummaryResponseAbusiveStatusEnum = S.String;
-
 export type SiteSummaryResponseFilterStatusEnum = "UNKNOWN" | "ON" | "OFF" | "PAUSED" | "PENDING";
-const SiteSummaryResponseFilterStatusEnum = S.String;
-
 /** Response message for GetSiteSummary. */
 export interface SiteSummaryResponse {
   /** A link to the full Abusive Experience Report for the site. Not set in ViolatingSitesResponse. Note that you must complete the [Search Console verification process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full report. */
@@ -65,30 +61,13 @@ export interface SiteSummaryResponse {
   /** Whether the site is currently under review. */
   underReview?: boolean;
 }
-const SiteSummaryResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SiteSummaryResponse>;
-
 export interface ListViolatingSitesRequest {}
-const ListViolatingSitesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ListViolatingSitesRequest>;
-
 export type SiteSummaryResponseList = Array<SiteSummaryResponse>;
-const SiteSummaryResponseList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<SiteSummaryResponseList>;
-
 /** Response message for ListViolatingSites. */
 export interface ViolatingSitesResponse {
   /** The list of violating sites. */
   violatingSites?: SiteSummaryResponseList;
 }
-const ViolatingSitesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ViolatingSitesResponse>;
-
 export type GetSitesError = NotFound | Forbidden | GcpOpError;
 /** Gets a site's Abusive Experience Report summary. */
 export const getSites: API.OperationMethod<
@@ -97,8 +76,8 @@ export const getSites: API.OperationMethod<
   GetSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSitesRequest,
-  output: SiteSummaryResponse,
+  input: __S(0) as any as S.Schema<GetSitesRequest>,
+  output: __S(1) as any as S.Schema<SiteSummaryResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -112,8 +91,8 @@ export const listViolatingSites: API.OperationMethod<
   ListViolatingSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListViolatingSitesRequest,
-  output: ViolatingSitesResponse,
+  input: __S(2) as any as S.Schema<ListViolatingSitesRequest>,
+  output: __S(4) as any as S.Schema<ViolatingSitesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -140,9 +119,9 @@ function __c0(j: number): any {
           reportUrl: S.optional(S.String),
           enforcementTime: S.optional(S.String),
           lastChangeTime: S.optional(S.String),
-          abusiveStatus: S.optional(SiteSummaryResponseAbusiveStatusEnum),
+          abusiveStatus: S.optional(S.String),
           reviewedSite: S.optional(S.String),
-          filterStatus: S.optional(SiteSummaryResponseFilterStatusEnum),
+          filterStatus: S.optional(S.String),
           underReview: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SiteSummaryResponse" });
@@ -159,12 +138,23 @@ function __c0(j: number): any {
         identifier: "ListViolatingSitesRequest",
       });
     case 3:
-      return S.Array(SiteSummaryResponse);
+      return S.Array(__S(1));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          violatingSites: S.optional(SiteSummaryResponseList),
+          violatingSites: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "ViolatingSitesResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

@@ -6,15 +6,12 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 export interface CarbonServiceQueryCarbonEmissionDataAvailableDateRangeRequest {}
-const CarbonServiceQueryCarbonEmissionDataAvailableDateRangeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CarbonServiceQueryCarbonEmissionDataAvailableDateRangeRequest>;
-
 /** Response for available date range of carbon emission data */
 export interface CarbonEmissionDataAvailableDateRange {
   /** Start date parameter, format is yyyy-MM-dd */
@@ -22,11 +19,6 @@ export interface CarbonEmissionDataAvailableDateRange {
   /** End date parameter, format is yyyy-MM-dd */
   endDate: string;
 }
-const CarbonEmissionDataAvailableDateRange = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CarbonEmissionDataAvailableDateRange>;
-
 /** Enum for Report Type, specifying different report formats for carbon emissions data. Each report type returns different aggregations of carbon emissions across various categories, date range, emissions scope, and other parameters. */
 export type ReportTypeEnum =
   | "OverallSummaryReport"
@@ -34,8 +26,6 @@ export type ReportTypeEnum =
   | "TopItemsSummaryReport"
   | "TopItemsMonthlySummaryReport"
   | "ItemDetailsReport";
-const ReportTypeEnum = S.String;
-
 /** Date range to be used with QueryParameter, it should be within 12 months between start and end date. In certain cases, start and end dates must be the same date. */
 export interface DateRange {
   /** Start date parameter in yyyy-MM-01 format. Only the first day of each month is accepted. */
@@ -43,45 +33,20 @@ export interface DateRange {
   /** End date parameter in yyyy-MM-01 format. Only the first day of each month is accepted. */
   end: string;
 }
-const DateRange = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DateRange>;
-
 /** List of subscription IDs for which carbon emissions data is requested. Required. Each subscription ID should be in lowercase format. The max length of list is 100. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList = Array<string>;
-const CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList>;
-
 /** List of resource group URLs for carbon emissions data. Optional. Each URL must follow the format '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroup}', and should be in all lowercase. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList = Array<string>;
-const CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList =
-  CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList>;
-
 /** List of resource types for carbon emissions data. Optional. Each resource type should be specified in lowercase, following the format 'microsoft.{service}/{resourceType}', e.g., 'microsoft.storage/storageaccounts'. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList = Array<string>;
-const CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList =
-  CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList>;
-
 /** List of locations(Azure Region Display Name) for carbon emissions data, with each location specified in lowercase (e.g., 'east us'). Optional. You can use the command 'az account list-locations -o table' to find Azure Region Display Names. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestLocationListList = Array<string>;
-const CarbonServiceQueryCarbonEmissionReportsRequestLocationListList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestLocationListList>;
-
 /** Supported carbon emission scopes to be used with QueryParameter, as defined by the GHG Protocol. At least one scope must be specified. The output will return a total of all specified scopes. */
 export type EmissionScopeEnum = "Scope1" | "Scope2" | "Scope3";
-const EmissionScopeEnum = S.String;
-
 /** List of carbon emission scopes. Required. Accepts one or more values from EmissionScopeEnum (e.g., Scope1, Scope2, Scope3) in list form. The output will include the total emissions for the specified scopes. */
 export type CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList = Array<
   EmissionScopeEnum | (string & {})
 >;
-const CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList>;
-
 export interface CarbonServiceQueryCarbonEmissionReportsRequest {
   /** The ReportType requested for carbon emissions data. Required. Specifies how data is aggregated and displayed in the output, as explained in the ReportTypeEnum. */
   reportType: ReportTypeEnum | (string & {});
@@ -98,11 +63,6 @@ export interface CarbonServiceQueryCarbonEmissionReportsRequest {
   /** List of carbon emission scopes. Required. Accepts one or more values from EmissionScopeEnum (e.g., Scope1, Scope2, Scope3) in list form. The output will include the total emissions for the specified scopes. */
   carbonScopeList: CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList;
 }
-const CarbonServiceQueryCarbonEmissionReportsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequest>;
-
 /** The response data type of Carbon emission data */
 export type ResponseDataTypeEnum =
   | "OverallSummaryData"
@@ -116,8 +76,6 @@ export type ResponseDataTypeEnum =
   | "ItemDetailsData"
   | "ResourceItemDetailsData"
   | "ResourceGroupItemDetailsData";
-const ResponseDataTypeEnum = S.String;
-
 /** The basic response for different query report, all query report result will have these information */
 export interface CarbonEmissionData {
   /** The data type of the query result, indicating the format of the returned response. */
@@ -131,19 +89,10 @@ export interface CarbonEmissionData {
   /** The change in carbon emissions between the current and previous period, calculated as: latestMonthEmissions - previousMonthEmissions. */
   monthlyEmissionsChangeValue?: number;
 }
-const CarbonEmissionData = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CarbonEmissionData>;
-
 /** The CarbonEmissionData items on this page */
 export type CarbonEmissionDataListResultValueList = Array<CarbonEmissionData>;
-const CarbonEmissionDataListResultValueList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CarbonEmissionDataListResultValueList>;
-
 /** Enum for Access Decision */
 export type AccessDecisionEnum = "Allowed" | "Denied";
-const AccessDecisionEnum = S.String;
-
 /** Access Decision for each Subscription */
 export interface SubscriptionAccessDecision {
   /** Id of Subscription */
@@ -153,19 +102,9 @@ export interface SubscriptionAccessDecision {
   /** The reason why access request got denied */
   denialReason?: string;
 }
-const SubscriptionAccessDecision = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<SubscriptionAccessDecision>;
-
 /** The access decision list for each input subscription */
 export type CarbonEmissionDataListResultSubscriptionAccessDecisionListList =
   Array<SubscriptionAccessDecision>;
-const CarbonEmissionDataListResultSubscriptionAccessDecisionListList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CarbonEmissionDataListResultSubscriptionAccessDecisionListList>;
-
 /** List of carbon emission results */
 export interface CarbonEmissionDataListResult {
   /** The CarbonEmissionData items on this page */
@@ -175,17 +114,7 @@ export interface CarbonEmissionDataListResult {
   /** The access decision list for each input subscription */
   subscriptionAccessDecisionList?: CarbonEmissionDataListResultSubscriptionAccessDecisionListList;
 }
-const CarbonEmissionDataListResult = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CarbonEmissionDataListResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -197,16 +126,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -220,26 +143,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListOperationsResponse>;
-
 export type CarbonServiceQueryCarbonEmissionDataAvailableDateRangeError = AzureOpError;
 /** API for query carbon emission data available date range */
 export const CarbonServiceQueryCarbonEmissionDataAvailableDateRange: API.OperationMethod<
@@ -248,8 +159,8 @@ export const CarbonServiceQueryCarbonEmissionDataAvailableDateRange: API.Operati
   CarbonServiceQueryCarbonEmissionDataAvailableDateRangeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CarbonServiceQueryCarbonEmissionDataAvailableDateRangeRequest,
-  output: CarbonEmissionDataAvailableDateRange,
+  input: __S(0) as any as S.Schema<CarbonServiceQueryCarbonEmissionDataAvailableDateRangeRequest>,
+  output: __S(1) as any as S.Schema<CarbonEmissionDataAvailableDateRange>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -263,8 +174,8 @@ export const CarbonServiceQueryCarbonEmissionReports: API.OperationMethod<
   CarbonServiceQueryCarbonEmissionReportsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CarbonServiceQueryCarbonEmissionReportsRequest,
-  output: CarbonEmissionDataListResult,
+  input: __S(6) as any as S.Schema<CarbonServiceQueryCarbonEmissionReportsRequest>,
+  output: __S(11) as any as S.Schema<CarbonEmissionDataListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -278,8 +189,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(12) as any as S.Schema<ListOperationsRequest>,
+  output: __S(16) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -322,21 +233,17 @@ function __c0(j: number): any {
     case 4:
       return S.Array(S.String);
     case 5:
-      return S.Array(EmissionScopeEnum);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          reportType: ReportTypeEnum,
-          dateRange: DateRange,
-          subscriptionList: CarbonServiceQueryCarbonEmissionReportsRequestSubscriptionListList,
-          resourceGroupUrlList: S.optional(
-            CarbonServiceQueryCarbonEmissionReportsRequestResourceGroupUrlListList,
-          ),
-          resourceTypeList: S.optional(
-            CarbonServiceQueryCarbonEmissionReportsRequestResourceTypeListList,
-          ),
-          locationList: S.optional(CarbonServiceQueryCarbonEmissionReportsRequestLocationListList),
-          carbonScopeList: CarbonServiceQueryCarbonEmissionReportsRequestCarbonScopeListList,
+          reportType: S.String,
+          dateRange: __S(2),
+          subscriptionList: __S(3),
+          resourceGroupUrlList: S.optional(__S(3)),
+          resourceTypeList: S.optional(__S(3)),
+          locationList: S.optional(__S(4)),
+          carbonScopeList: __S(5),
         }).pipe(
           T.Http({
             method: "POST",
@@ -351,7 +258,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dataType: ResponseDataTypeEnum,
+          dataType: S.String,
           latestMonthEmissions: S.Number,
           previousMonthEmissions: S.Number,
           monthOverMonthEmissionsChangeRatio: S.optional(S.Number),
@@ -363,27 +270,25 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CarbonEmissionData);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String,
-          decision: AccessDecisionEnum,
+          decision: S.String,
           denialReason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SubscriptionAccessDecision",
       });
     case 2:
-      return S.Array(SubscriptionAccessDecision);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: CarbonEmissionDataListResultValueList,
+          value: __S(8),
           skipToken: S.optional(S.String),
-          subscriptionAccessDecisionList: S.optional(
-            CarbonEmissionDataListResultSubscriptionAccessDecisionListList,
-          ),
+          subscriptionAccessDecisionList: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "CarbonEmissionDataListResult",
@@ -413,13 +318,13 @@ function __c1(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(13)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 7:
-      return S.Array(Operation);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -427,9 +332,24 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(15)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

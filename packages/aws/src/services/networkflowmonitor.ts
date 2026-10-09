@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "NetworkFlowMonitor",
   serviceShapeName: "NetworkFlowMonitor",
@@ -102,15 +104,11 @@ export type MonitorLocalResourceType =
   | "AWS::Region"
   | "AWS::EKS::Cluster"
   | (string & {});
-const MonitorLocalResourceType = S.String;
-
 export interface MonitorLocalResource {
   type: MonitorLocalResourceType;
   identifier: string;
 }
-const MonitorLocalResource = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<MonitorLocalResource>;
 export type MonitorLocalResources = MonitorLocalResource[];
-const MonitorLocalResources = /*@__PURE__*/ __L.at(__c0, 1);
 export type MonitorRemoteResourceType =
   | "AWS::EC2::VPC"
   | "AWS::AvailabilityZone"
@@ -123,13 +121,11 @@ export interface MonitorRemoteResource {
   identifier: string;
 }
 export type MonitorRemoteResources = MonitorRemoteResource[];
-const MonitorRemoteResources = MonitorLocalResources as any as S.Schema<MonitorRemoteResources>;
 export type Arn = string;
 export type UuidString = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c0, 2);
 export interface CreateMonitorInput {
   monitorName: string;
   localResources: MonitorLocalResource[];
@@ -138,7 +134,6 @@ export interface CreateMonitorInput {
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateMonitorInput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateMonitorInput>;
 export type MonitorArn = string;
 export type MonitorStatus =
   | "PENDING"
@@ -147,8 +142,6 @@ export type MonitorStatus =
   | "ERROR"
   | "DELETING"
   | (string & {});
-const MonitorStatus = S.String;
-
 export type Iso8601Timestamp = Date;
 export interface CreateMonitorOutput {
   monitorArn: string;
@@ -160,32 +153,24 @@ export interface CreateMonitorOutput {
   modifiedAt: Date;
   tags?: { [key: string]: string | undefined };
 }
-const CreateMonitorOutput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateMonitorOutput>;
 export type AccountId = string;
 export type TargetId = { accountId: string };
-const TargetId = /*@__PURE__*/ __L.at(__c0, 5);
 export type TargetType = "ACCOUNT" | (string & {});
-const TargetType = S.String;
-
 export interface TargetIdentifier {
   targetId: TargetId;
   targetType: TargetType;
 }
-const TargetIdentifier = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<TargetIdentifier>;
 export type AwsRegion = string;
 export interface TargetResource {
   targetIdentifier: TargetIdentifier;
   region: string;
 }
-const TargetResource = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<TargetResource>;
 export type TargetResourceList = TargetResource[];
-const TargetResourceList = /*@__PURE__*/ __L.at(__c1, 0);
 export interface CreateScopeInput {
   targets: TargetResource[];
   clientToken?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateScopeInput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CreateScopeInput>;
 export type ScopeId = string;
 export type ScopeStatus =
   | "SUCCEEDED"
@@ -194,31 +179,23 @@ export type ScopeStatus =
   | "DEACTIVATING"
   | "DEACTIVATED"
   | (string & {});
-const ScopeStatus = S.String;
-
 export interface CreateScopeOutput {
   scopeId: string;
   status: ScopeStatus;
   scopeArn: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateScopeOutput = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CreateScopeOutput>;
 export interface DeleteMonitorInput {
   monitorName: string;
 }
-const DeleteMonitorInput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteMonitorInput>;
 export interface DeleteMonitorOutput {}
-const DeleteMonitorOutput = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DeleteMonitorOutput>;
 export interface DeleteScopeInput {
   scopeId: string;
 }
-const DeleteScopeInput = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DeleteScopeInput>;
 export interface DeleteScopeOutput {}
-const DeleteScopeOutput = DeleteMonitorOutput as any as S.Schema<DeleteScopeOutput>;
 export interface GetMonitorInput {
   monitorName: string;
 }
-const GetMonitorInput = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetMonitorInput>;
 export interface GetMonitorOutput {
   monitorArn: string;
   monitorName: string;
@@ -229,17 +206,12 @@ export interface GetMonitorOutput {
   modifiedAt: Date;
   tags?: { [key: string]: string | undefined };
 }
-const GetMonitorOutput = CreateMonitorOutput as any as S.Schema<GetMonitorOutput>;
 export interface GetQueryResultsMonitorTopContributorsInput {
   monitorName: string;
   queryId: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetQueryResultsMonitorTopContributorsInput = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetQueryResultsMonitorTopContributorsInput>;
 export type MetricUnit =
   | "Seconds"
   | "Microseconds"
@@ -269,8 +241,6 @@ export type MetricUnit =
   | "Count/Second"
   | "None"
   | (string & {});
-const MetricUnit = S.String;
-
 export type InstanceId = string;
 export type VpcId = string;
 export type AvailabilityZone = string;
@@ -284,8 +254,6 @@ export type DestinationCategory =
   | "AMAZON_DYNAMODB"
   | "INTER_REGION"
   | (string & {});
-const DestinationCategory = S.String;
-
 export type Component = string;
 export type ComponentType = string;
 export interface TraversedComponent {
@@ -294,9 +262,7 @@ export interface TraversedComponent {
   componentArn?: string;
   serviceName?: string;
 }
-const TraversedComponent = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<TraversedComponent>;
 export type TraversedConstructsList = TraversedComponent[];
-const TraversedConstructsList = /*@__PURE__*/ __L.at(__c2, 1);
 export interface KubernetesMetadata {
   localServiceName?: string;
   localPodName?: string;
@@ -305,7 +271,6 @@ export interface KubernetesMetadata {
   remotePodName?: string;
   remotePodNamespace?: string;
 }
-const KubernetesMetadata = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<KubernetesMetadata>;
 export type InstanceArn = string;
 export type SubnetArn = string;
 export type VpcArn = string;
@@ -336,31 +301,18 @@ export interface MonitorTopContributorsRow {
   remoteSubnetArn?: string;
   remoteVpcArn?: string;
 }
-const MonitorTopContributorsRow = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<MonitorTopContributorsRow>;
 export type MonitorTopContributorsRowList = MonitorTopContributorsRow[];
-const MonitorTopContributorsRowList = /*@__PURE__*/ __L.at(__c2, 4);
 export interface GetQueryResultsMonitorTopContributorsOutput {
   unit?: MetricUnit;
   topContributors?: MonitorTopContributorsRow[];
   nextToken?: string;
 }
-const GetQueryResultsMonitorTopContributorsOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetQueryResultsMonitorTopContributorsOutput>;
 export interface GetQueryResultsWorkloadInsightsTopContributorsInput {
   scopeId: string;
   queryId: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetQueryResultsWorkloadInsightsTopContributorsInput = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetQueryResultsWorkloadInsightsTopContributorsInput>;
 export interface WorkloadInsightsTopContributorsRow {
   accountId?: string;
   localSubnetId?: string;
@@ -372,62 +324,34 @@ export interface WorkloadInsightsTopContributorsRow {
   localSubnetArn?: string;
   localVpcArn?: string;
 }
-const WorkloadInsightsTopContributorsRow = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<WorkloadInsightsTopContributorsRow>;
 export type WorkloadInsightsTopContributorsRowList = WorkloadInsightsTopContributorsRow[];
-const WorkloadInsightsTopContributorsRowList = /*@__PURE__*/ __L.at(__c3, 0);
 export interface GetQueryResultsWorkloadInsightsTopContributorsOutput {
   topContributors?: WorkloadInsightsTopContributorsRow[];
   nextToken?: string;
 }
-const GetQueryResultsWorkloadInsightsTopContributorsOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetQueryResultsWorkloadInsightsTopContributorsOutput>;
 export interface GetQueryResultsWorkloadInsightsTopContributorsDataInput {
   scopeId: string;
   queryId: string;
   nextToken?: string;
   maxResults?: number;
 }
-const GetQueryResultsWorkloadInsightsTopContributorsDataInput = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetQueryResultsWorkloadInsightsTopContributorsDataInput>;
 export type WorkloadInsightsTopContributorsTimestampsList = Date[];
-const WorkloadInsightsTopContributorsTimestampsList = /*@__PURE__*/ __L.at(__c3, 3);
 export type WorkloadInsightsTopContributorsValuesList = number[];
-const WorkloadInsightsTopContributorsValuesList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface WorkloadInsightsTopContributorsDataPoint {
   timestamps: Date[];
   values: number[];
   label: string;
 }
-const WorkloadInsightsTopContributorsDataPoint = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<WorkloadInsightsTopContributorsDataPoint>;
 export type WorkloadInsightsTopContributorsDataPoints = WorkloadInsightsTopContributorsDataPoint[];
-const WorkloadInsightsTopContributorsDataPoints = /*@__PURE__*/ __L.at(__c3, 6);
 export interface GetQueryResultsWorkloadInsightsTopContributorsDataOutput {
   unit: MetricUnit;
   datapoints: WorkloadInsightsTopContributorsDataPoint[];
   nextToken?: string;
 }
-const GetQueryResultsWorkloadInsightsTopContributorsDataOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetQueryResultsWorkloadInsightsTopContributorsDataOutput>;
 export interface GetQueryStatusMonitorTopContributorsInput {
   monitorName: string;
   queryId: string;
 }
-const GetQueryStatusMonitorTopContributorsInput = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetQueryStatusMonitorTopContributorsInput>;
 export type QueryStatus =
   | "QUEUED"
   | "RUNNING"
@@ -435,45 +359,26 @@ export type QueryStatus =
   | "FAILED"
   | "CANCELED"
   | (string & {});
-const QueryStatus = S.String;
-
 export interface GetQueryStatusMonitorTopContributorsOutput {
   status: QueryStatus;
 }
-const GetQueryStatusMonitorTopContributorsOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetQueryStatusMonitorTopContributorsOutput>;
 export interface GetQueryStatusWorkloadInsightsTopContributorsInput {
   scopeId: string;
   queryId: string;
 }
-const GetQueryStatusWorkloadInsightsTopContributorsInput = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetQueryStatusWorkloadInsightsTopContributorsInput>;
 export interface GetQueryStatusWorkloadInsightsTopContributorsOutput {
   status: QueryStatus;
 }
-const GetQueryStatusWorkloadInsightsTopContributorsOutput =
-  GetQueryStatusMonitorTopContributorsOutput as any as S.Schema<GetQueryStatusWorkloadInsightsTopContributorsOutput>;
 export interface GetQueryStatusWorkloadInsightsTopContributorsDataInput {
   scopeId: string;
   queryId: string;
 }
-const GetQueryStatusWorkloadInsightsTopContributorsDataInput = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetQueryStatusWorkloadInsightsTopContributorsDataInput>;
 export interface GetQueryStatusWorkloadInsightsTopContributorsDataOutput {
   status: QueryStatus;
 }
-const GetQueryStatusWorkloadInsightsTopContributorsDataOutput =
-  GetQueryStatusMonitorTopContributorsOutput as any as S.Schema<GetQueryStatusWorkloadInsightsTopContributorsDataOutput>;
 export interface GetScopeInput {
   scopeId: string;
 }
-const GetScopeInput = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetScopeInput>;
 export interface GetScopeOutput {
   scopeId: string;
   status: ScopeStatus;
@@ -481,67 +386,48 @@ export interface GetScopeOutput {
   targets: TargetResource[];
   tags?: { [key: string]: string | undefined };
 }
-const GetScopeOutput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GetScopeOutput>;
 export type MaxResults = number;
 export interface ListMonitorsInput {
   nextToken?: string;
   maxResults?: number;
   monitorStatus?: MonitorStatus;
 }
-const ListMonitorsInput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ListMonitorsInput>;
 export interface MonitorSummary {
   monitorArn: string;
   monitorName: string;
   monitorStatus: MonitorStatus;
 }
-const MonitorSummary = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<MonitorSummary>;
 export type MonitorList = MonitorSummary[];
-const MonitorList = /*@__PURE__*/ __L.at(__c5, 0);
 export interface ListMonitorsOutput {
   monitors: MonitorSummary[];
   nextToken?: string;
 }
-const ListMonitorsOutput = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ListMonitorsOutput>;
 export interface ListScopesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListScopesInput = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ListScopesInput>;
 export interface ScopeSummary {
   scopeId: string;
   status: ScopeStatus;
   scopeArn: string;
 }
-const ScopeSummary = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ScopeSummary>;
 export type ScopeSummaryList = ScopeSummary[];
-const ScopeSummaryList = /*@__PURE__*/ __L.at(__c5, 4);
 export interface ListScopesOutput {
   scopes: ScopeSummary[];
   nextToken?: string;
 }
-const ListScopesOutput = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ListScopesOutput>;
 export interface ListTagsForResourceInput {
   resourceArn: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListTagsForResourceOutput>;
 export type MonitorMetric =
   | "ROUND_TRIP_TIME"
   | "TIMEOUTS"
   | "RETRANSMISSIONS"
   | "DATA_TRANSFERRED"
   | (string & {});
-const MonitorMetric = S.String;
-
 export type Limit = number;
 export interface StartQueryMonitorTopContributorsInput {
   monitorName: string;
@@ -551,24 +437,14 @@ export interface StartQueryMonitorTopContributorsInput {
   destinationCategory: DestinationCategory;
   limit?: number;
 }
-const StartQueryMonitorTopContributorsInput = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<StartQueryMonitorTopContributorsInput>;
 export interface StartQueryMonitorTopContributorsOutput {
   queryId: string;
 }
-const StartQueryMonitorTopContributorsOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<StartQueryMonitorTopContributorsOutput>;
 export type WorkloadInsightsMetric =
   | "TIMEOUTS"
   | "RETRANSMISSIONS"
   | "DATA_TRANSFERRED"
   | (string & {});
-const WorkloadInsightsMetric = S.String;
-
 export interface StartQueryWorkloadInsightsTopContributorsInput {
   scopeId: string;
   startTime: Date;
@@ -577,15 +453,9 @@ export interface StartQueryWorkloadInsightsTopContributorsInput {
   destinationCategory: DestinationCategory;
   limit?: number;
 }
-const StartQueryWorkloadInsightsTopContributorsInput = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<StartQueryWorkloadInsightsTopContributorsInput>;
 export interface StartQueryWorkloadInsightsTopContributorsOutput {
   queryId: string;
 }
-const StartQueryWorkloadInsightsTopContributorsOutput =
-  StartQueryMonitorTopContributorsOutput as any as S.Schema<StartQueryWorkloadInsightsTopContributorsOutput>;
 export interface StartQueryWorkloadInsightsTopContributorsDataInput {
   scopeId: string;
   startTime: Date;
@@ -593,66 +463,35 @@ export interface StartQueryWorkloadInsightsTopContributorsDataInput {
   metricName: WorkloadInsightsMetric;
   destinationCategory: DestinationCategory;
 }
-const StartQueryWorkloadInsightsTopContributorsDataInput = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<StartQueryWorkloadInsightsTopContributorsDataInput>;
 export interface StartQueryWorkloadInsightsTopContributorsDataOutput {
   queryId: string;
 }
-const StartQueryWorkloadInsightsTopContributorsDataOutput =
-  StartQueryMonitorTopContributorsOutput as any as S.Schema<StartQueryWorkloadInsightsTopContributorsDataOutput>;
 export interface StopQueryMonitorTopContributorsInput {
   monitorName: string;
   queryId: string;
 }
-const StopQueryMonitorTopContributorsInput = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<StopQueryMonitorTopContributorsInput>;
 export interface StopQueryMonitorTopContributorsOutput {}
-const StopQueryMonitorTopContributorsOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<StopQueryMonitorTopContributorsOutput>;
 export interface StopQueryWorkloadInsightsTopContributorsInput {
   scopeId: string;
   queryId: string;
 }
-const StopQueryWorkloadInsightsTopContributorsInput = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsInput>;
 export interface StopQueryWorkloadInsightsTopContributorsOutput {}
-const StopQueryWorkloadInsightsTopContributorsOutput =
-  StopQueryMonitorTopContributorsOutput as any as S.Schema<StopQueryWorkloadInsightsTopContributorsOutput>;
 export interface StopQueryWorkloadInsightsTopContributorsDataInput {
   scopeId: string;
   queryId: string;
 }
-const StopQueryWorkloadInsightsTopContributorsDataInput = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsDataInput>;
 export interface StopQueryWorkloadInsightsTopContributorsDataOutput {}
-const StopQueryWorkloadInsightsTopContributorsDataOutput =
-  StopQueryMonitorTopContributorsOutput as any as S.Schema<StopQueryWorkloadInsightsTopContributorsDataOutput>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceInput = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-const TagResourceOutput = DeleteMonitorOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-const TagKeyList = /*@__PURE__*/ __L.at(__c7, 1);
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-const UntagResourceOutput = DeleteMonitorOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateMonitorInput {
   monitorName: string;
   localResourcesToAdd?: MonitorLocalResource[];
@@ -661,7 +500,6 @@ export interface UpdateMonitorInput {
   remoteResourcesToRemove?: MonitorRemoteResource[];
   clientToken?: string;
 }
-const UpdateMonitorInput = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<UpdateMonitorInput>;
 export interface UpdateMonitorOutput {
   monitorArn: string;
   monitorName: string;
@@ -672,20 +510,17 @@ export interface UpdateMonitorOutput {
   modifiedAt: Date;
   tags?: { [key: string]: string | undefined };
 }
-const UpdateMonitorOutput = CreateMonitorOutput as any as S.Schema<UpdateMonitorOutput>;
 export interface UpdateScopeInput {
   scopeId: string;
   resourcesToAdd?: TargetResource[];
   resourcesToDelete?: TargetResource[];
 }
-const UpdateScopeInput = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<UpdateScopeInput>;
 export interface UpdateScopeOutput {
   scopeId: string;
   status: ScopeStatus;
   scopeArn: string;
   tags?: { [key: string]: string | undefined };
 }
-const UpdateScopeOutput = CreateScopeOutput as any as S.Schema<UpdateScopeOutput>;
 export type CreateMonitorError =
   | AccessDeniedException
   | ConflictException
@@ -703,8 +538,8 @@ export const createMonitor: API.OperationMethod<
   CreateMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMonitorInput,
-  output: CreateMonitorOutput,
+  input: __S(3) as any as S.Schema<CreateMonitorInput>,
+  output: __S(4) as any as S.Schema<CreateMonitorOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -745,8 +580,8 @@ export const createScope: API.OperationMethod<
   CreateScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateScopeInput,
-  output: CreateScopeOutput,
+  input: __S(9) as any as S.Schema<CreateScopeInput>,
+  output: __S(10) as any as S.Schema<CreateScopeOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -777,8 +612,8 @@ export const deleteMonitor: API.OperationMethod<
   DeleteMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMonitorInput,
-  output: DeleteMonitorOutput,
+  input: __S(11) as any as S.Schema<DeleteMonitorInput>,
+  output: __S(12) as any as S.Schema<DeleteMonitorOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -810,8 +645,8 @@ export const deleteScope: API.OperationMethod<
   DeleteScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteScopeInput,
-  output: DeleteScopeOutput,
+  input: __S(13) as any as S.Schema<DeleteScopeInput>,
+  output: __S(12) as any as S.Schema<DeleteScopeOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -842,8 +677,8 @@ export const getMonitor: API.OperationMethod<
   GetMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMonitorInput,
-  output: GetMonitorOutput,
+  input: __S(14) as any as S.Schema<GetMonitorInput>,
+  output: __S(4) as any as S.Schema<GetMonitorOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -878,8 +713,8 @@ export const getQueryResultsMonitorTopContributors: API.PaginatedOperationMethod
   Credentials | HttpClient.HttpClient,
   MonitorTopContributorsRow
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetQueryResultsMonitorTopContributorsInput,
-  output: GetQueryResultsMonitorTopContributorsOutput,
+  input: __S(15) as any as S.Schema<GetQueryResultsMonitorTopContributorsInput>,
+  output: __S(21) as any as S.Schema<GetQueryResultsMonitorTopContributorsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -923,8 +758,8 @@ export const getQueryResultsWorkloadInsightsTopContributors: API.PaginatedOperat
   Credentials | HttpClient.HttpClient,
   WorkloadInsightsTopContributorsRow
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetQueryResultsWorkloadInsightsTopContributorsInput,
-  output: GetQueryResultsWorkloadInsightsTopContributorsOutput,
+  input: __S(22) as any as S.Schema<GetQueryResultsWorkloadInsightsTopContributorsInput>,
+  output: __S(25) as any as S.Schema<GetQueryResultsWorkloadInsightsTopContributorsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -970,8 +805,8 @@ export const getQueryResultsWorkloadInsightsTopContributorsData: API.PaginatedOp
   Credentials | HttpClient.HttpClient,
   WorkloadInsightsTopContributorsDataPoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetQueryResultsWorkloadInsightsTopContributorsDataInput,
-  output: GetQueryResultsWorkloadInsightsTopContributorsDataOutput,
+  input: __S(26) as any as S.Schema<GetQueryResultsWorkloadInsightsTopContributorsDataInput>,
+  output: __S(31) as any as S.Schema<GetQueryResultsWorkloadInsightsTopContributorsDataOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1011,8 +846,8 @@ export const getQueryStatusMonitorTopContributors: API.OperationMethod<
   GetQueryStatusMonitorTopContributorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueryStatusMonitorTopContributorsInput,
-  output: GetQueryStatusMonitorTopContributorsOutput,
+  input: __S(32) as any as S.Schema<GetQueryStatusMonitorTopContributorsInput>,
+  output: __S(33) as any as S.Schema<GetQueryStatusMonitorTopContributorsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1045,8 +880,8 @@ export const getQueryStatusWorkloadInsightsTopContributors: API.OperationMethod<
   GetQueryStatusWorkloadInsightsTopContributorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueryStatusWorkloadInsightsTopContributorsInput,
-  output: GetQueryStatusWorkloadInsightsTopContributorsOutput,
+  input: __S(34) as any as S.Schema<GetQueryStatusWorkloadInsightsTopContributorsInput>,
+  output: __S(33) as any as S.Schema<GetQueryStatusWorkloadInsightsTopContributorsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1081,8 +916,8 @@ export const getQueryStatusWorkloadInsightsTopContributorsData: API.OperationMet
   GetQueryStatusWorkloadInsightsTopContributorsDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueryStatusWorkloadInsightsTopContributorsDataInput,
-  output: GetQueryStatusWorkloadInsightsTopContributorsDataOutput,
+  input: __S(35) as any as S.Schema<GetQueryStatusWorkloadInsightsTopContributorsDataInput>,
+  output: __S(33) as any as S.Schema<GetQueryStatusWorkloadInsightsTopContributorsDataOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1112,8 +947,8 @@ export const getScope: API.OperationMethod<
   GetScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetScopeInput,
-  output: GetScopeOutput,
+  input: __S(36) as any as S.Schema<GetScopeInput>,
+  output: __S(37) as any as S.Schema<GetScopeOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1143,8 +978,8 @@ export const listMonitors: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MonitorSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListMonitorsInput,
-  output: ListMonitorsOutput,
+  input: __S(38) as any as S.Schema<ListMonitorsInput>,
+  output: __S(41) as any as S.Schema<ListMonitorsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1179,8 +1014,8 @@ export const listScopes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScopeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListScopesInput,
-  output: ListScopesOutput,
+  input: __S(42) as any as S.Schema<ListScopesInput>,
+  output: __S(45) as any as S.Schema<ListScopesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1216,8 +1051,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceInput,
-  output: ListTagsForResourceOutput,
+  input: __S(46) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(47) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1251,8 +1086,8 @@ export const startQueryMonitorTopContributors: API.OperationMethod<
   StartQueryMonitorTopContributorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartQueryMonitorTopContributorsInput,
-  output: StartQueryMonitorTopContributorsOutput,
+  input: __S(48) as any as S.Schema<StartQueryMonitorTopContributorsInput>,
+  output: __S(49) as any as S.Schema<StartQueryMonitorTopContributorsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1285,8 +1120,8 @@ export const startQueryWorkloadInsightsTopContributors: API.OperationMethod<
   StartQueryWorkloadInsightsTopContributorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartQueryWorkloadInsightsTopContributorsInput,
-  output: StartQueryWorkloadInsightsTopContributorsOutput,
+  input: __S(50) as any as S.Schema<StartQueryWorkloadInsightsTopContributorsInput>,
+  output: __S(49) as any as S.Schema<StartQueryWorkloadInsightsTopContributorsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1319,8 +1154,8 @@ export const startQueryWorkloadInsightsTopContributorsData: API.OperationMethod<
   StartQueryWorkloadInsightsTopContributorsDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartQueryWorkloadInsightsTopContributorsDataInput,
-  output: StartQueryWorkloadInsightsTopContributorsDataOutput,
+  input: __S(51) as any as S.Schema<StartQueryWorkloadInsightsTopContributorsDataInput>,
+  output: __S(49) as any as S.Schema<StartQueryWorkloadInsightsTopContributorsDataOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1351,8 +1186,8 @@ export const stopQueryMonitorTopContributors: API.OperationMethod<
   StopQueryMonitorTopContributorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopQueryMonitorTopContributorsInput,
-  output: StopQueryMonitorTopContributorsOutput,
+  input: __S(52) as any as S.Schema<StopQueryMonitorTopContributorsInput>,
+  output: __S(53) as any as S.Schema<StopQueryMonitorTopContributorsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1383,8 +1218,8 @@ export const stopQueryWorkloadInsightsTopContributors: API.OperationMethod<
   StopQueryWorkloadInsightsTopContributorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopQueryWorkloadInsightsTopContributorsInput,
-  output: StopQueryWorkloadInsightsTopContributorsOutput,
+  input: __S(54) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsInput>,
+  output: __S(53) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1415,8 +1250,8 @@ export const stopQueryWorkloadInsightsTopContributorsData: API.OperationMethod<
   StopQueryWorkloadInsightsTopContributorsDataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopQueryWorkloadInsightsTopContributorsDataInput,
-  output: StopQueryWorkloadInsightsTopContributorsDataOutput,
+  input: __S(55) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsDataInput>,
+  output: __S(53) as any as S.Schema<StopQueryWorkloadInsightsTopContributorsDataOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1446,8 +1281,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceInput,
-  output: TagResourceOutput,
+  input: __S(56) as any as S.Schema<TagResourceInput>,
+  output: __S(12) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1478,8 +1313,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceInput,
-  output: UntagResourceOutput,
+  input: __S(58) as any as S.Schema<UntagResourceInput>,
+  output: __S(12) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1509,8 +1344,8 @@ export const updateMonitor: API.OperationMethod<
   UpdateMonitorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMonitorInput,
-  output: UpdateMonitorOutput,
+  input: __S(59) as any as S.Schema<UpdateMonitorInput>,
+  output: __S(4) as any as S.Schema<UpdateMonitorOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1541,8 +1376,8 @@ export const updateScope: API.OperationMethod<
   UpdateScopeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateScopeInput,
-  output: UpdateScopeOutput,
+  input: __S(60) as any as S.Schema<UpdateScopeInput>,
+  output: __S(10) as any as S.Schema<UpdateScopeOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1561,22 +1396,22 @@ export const updateScope: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ type: MonitorLocalResourceType, identifier: S.String }),
-      ).annotate({ identifier: "MonitorLocalResource" });
+      return S.suspend(() => S.Struct({ type: S.String, identifier: S.String })).annotate({
+        identifier: "MonitorLocalResource",
+      });
     case 1:
-      return S.Array(MonitorLocalResource);
+      return S.Array(__S(0));
     case 2:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
           monitorName: S.String,
-          localResources: MonitorLocalResources,
-          remoteResources: S.optional(MonitorRemoteResources),
+          localResources: __S(1),
+          remoteResources: S.optional(__S(1)),
           scopeArn: S.String,
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(2)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/monitors" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateMonitorInput" });
     case 4:
@@ -1584,45 +1419,45 @@ function __c0(j: number): any {
         S.Struct({
           monitorArn: S.String,
           monitorName: S.String,
-          monitorStatus: MonitorStatus,
-          localResources: MonitorLocalResources,
-          remoteResources: MonitorRemoteResources,
+          monitorStatus: S.String,
+          localResources: __S(1),
+          remoteResources: __S(1),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           modifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "CreateMonitorOutput" });
     case 5:
       return S.Union([/*@__PURE__*/ S.Struct({ accountId: S.String })]);
     case 6:
-      return S.suspend(() => S.Struct({ targetId: TargetId, targetType: TargetType })).annotate({
+      return S.suspend(() => S.Struct({ targetId: __S(5), targetType: S.String })).annotate({
         identifier: "TargetIdentifier",
       });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ targetIdentifier: TargetIdentifier, region: S.String }),
-      ).annotate({ identifier: "TargetResource" });
+      return S.suspend(() => S.Struct({ targetIdentifier: __S(6), region: S.String })).annotate({
+        identifier: "TargetResource",
+      });
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TargetResource);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          targets: TargetResourceList,
+          targets: __S(8),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(2)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/scopes" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateScopeInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           scopeId: S.String,
-          status: ScopeStatus,
+          status: S.String,
           scopeArn: S.String,
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "CreateScopeOutput" });
     case 3:
@@ -1705,7 +1540,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "TraversedComponent" });
     case 1:
-      return S.Array(TraversedComponent);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1728,7 +1563,7 @@ function __c2(j: number): any {
           localAz: S.optional(S.String),
           localSubnetId: S.optional(S.String),
           targetPort: S.optional(S.Number),
-          destinationCategory: S.optional(DestinationCategory),
+          destinationCategory: S.optional(S.String),
           remoteVpcId: S.optional(S.String),
           remoteRegion: S.optional(S.String),
           remoteAz: S.optional(S.String),
@@ -1737,8 +1572,8 @@ function __c2(j: number): any {
           remoteIp: S.optional(S.String),
           dnatIp: S.optional(S.String),
           value: S.optional(S.Number),
-          traversedConstructs: S.optional(TraversedConstructsList),
-          kubernetesMetadata: S.optional(KubernetesMetadata),
+          traversedConstructs: S.optional(__S(17)),
+          kubernetesMetadata: S.optional(__S(18)),
           localInstanceArn: S.optional(S.String),
           localSubnetArn: S.optional(S.String),
           localVpcArn: S.optional(S.String),
@@ -1750,12 +1585,12 @@ function __c2(j: number): any {
         identifier: "MonitorTopContributorsRow",
       });
     case 4:
-      return S.Array(MonitorTopContributorsRow);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          unit: S.optional(MetricUnit),
-          topContributors: S.optional(MonitorTopContributorsRowList),
+          unit: S.optional(S.String),
+          topContributors: S.optional(__S(20)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1805,11 +1640,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(WorkloadInsightsTopContributorsRow);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          topContributors: S.optional(WorkloadInsightsTopContributorsRowList),
+          topContributors: S.optional(__S(24)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1845,20 +1680,20 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          timestamps: WorkloadInsightsTopContributorsTimestampsList,
-          values: WorkloadInsightsTopContributorsValuesList,
+          timestamps: __S(27),
+          values: __S(28),
           label: S.String,
         }),
       ).annotate({
         identifier: "WorkloadInsightsTopContributorsDataPoint",
       });
     case 6:
-      return S.Array(WorkloadInsightsTopContributorsDataPoint);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          unit: MetricUnit,
-          datapoints: WorkloadInsightsTopContributorsDataPoints,
+          unit: S.String,
+          datapoints: __S(30),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1890,7 +1725,7 @@ function __c4(j: number): any {
         identifier: "GetQueryStatusMonitorTopContributorsInput",
       });
     case 1:
-      return S.suspend(() => S.Struct({ status: QueryStatus })).annotate({
+      return S.suspend(() => S.Struct({ status: S.String })).annotate({
         identifier: "GetQueryStatusMonitorTopContributorsOutput",
       });
     case 2:
@@ -1945,10 +1780,10 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scopeId: S.String,
-          status: ScopeStatus,
+          status: S.String,
           scopeArn: S.String,
-          targets: TargetResourceList,
-          tags: S.optional(TagMap),
+          targets: __S(8),
+          tags: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "GetScopeOutput" });
     case 6:
@@ -1956,22 +1791,22 @@ function __c4(j: number): any {
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          monitorStatus: S.optional(MonitorStatus).pipe(T.HttpQuery("monitorStatus")),
+          monitorStatus: S.optional(S.String).pipe(T.HttpQuery("monitorStatus")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/monitors" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListMonitorsInput" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ monitorArn: S.String, monitorName: S.String, monitorStatus: MonitorStatus }),
+        S.Struct({ monitorArn: S.String, monitorName: S.String, monitorStatus: S.String }),
       ).annotate({ identifier: "MonitorSummary" });
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MonitorSummary);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
-        S.Struct({ monitors: MonitorList, nextToken: S.optional(S.String) }),
+        S.Struct({ monitors: __S(40), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListMonitorsOutput" });
     case 2:
       return S.suspend(() =>
@@ -1982,13 +1817,13 @@ function __c5(j: number): any {
       ).annotate({ identifier: "ListScopesInput" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ scopeId: S.String, status: ScopeStatus, scopeArn: S.String }),
+        S.Struct({ scopeId: S.String, status: S.String, scopeArn: S.String }),
       ).annotate({ identifier: "ScopeSummary" });
     case 4:
-      return S.Array(ScopeSummary);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
-        S.Struct({ scopes: ScopeSummaryList, nextToken: S.optional(S.String) }),
+        S.Struct({ scopes: __S(44), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListScopesOutput" });
     case 6:
       return S.suspend(() =>
@@ -2004,7 +1839,7 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 7:
-      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(2)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
   }
@@ -2017,8 +1852,8 @@ function __c6(j: number): any {
           monitorName: S.String.pipe(T.HttpLabel("monitorName")),
           startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          metricName: MonitorMetric,
-          destinationCategory: DestinationCategory,
+          metricName: S.String,
+          destinationCategory: S.String,
           limit: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -2043,8 +1878,8 @@ function __c6(j: number): any {
           scopeId: S.String.pipe(T.HttpLabel("scopeId")),
           startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          metricName: WorkloadInsightsMetric,
-          destinationCategory: DestinationCategory,
+          metricName: S.String,
+          destinationCategory: S.String,
           limit: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -2065,8 +1900,8 @@ function __c6(j: number): any {
           scopeId: S.String.pipe(T.HttpLabel("scopeId")),
           startTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
           endTime: T.DateFromString.pipe(T.TimestampFormat("date-time")),
-          metricName: WorkloadInsightsMetric,
-          destinationCategory: DestinationCategory,
+          metricName: S.String,
+          destinationCategory: S.String,
         }).pipe(
           T.all(
             T.Http({
@@ -2156,7 +1991,7 @@ function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(2) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -2173,7 +2008,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(57).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -2189,10 +2024,10 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           monitorName: S.String.pipe(T.HttpLabel("monitorName")),
-          localResourcesToAdd: S.optional(MonitorLocalResources),
-          localResourcesToRemove: S.optional(MonitorLocalResources),
-          remoteResourcesToAdd: S.optional(MonitorRemoteResources),
-          remoteResourcesToRemove: S.optional(MonitorRemoteResources),
+          localResourcesToAdd: S.optional(__S(1)),
+          localResourcesToRemove: S.optional(__S(1)),
+          remoteResourcesToAdd: S.optional(__S(1)),
+          remoteResourcesToRemove: S.optional(__S(1)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -2209,8 +2044,8 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scopeId: S.String.pipe(T.HttpLabel("scopeId")),
-          resourcesToAdd: S.optional(TargetResourceList),
-          resourcesToDelete: S.optional(TargetResourceList),
+          resourcesToAdd: S.optional(__S(8)),
+          resourcesToDelete: S.optional(__S(8)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/scopes/{scopeId}" }),
@@ -2222,5 +2057,30 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateScopeInput" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
   }
 }

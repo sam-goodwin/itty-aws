@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -38,8 +40,6 @@ export class NotFound
 
 /** Library to add this image to. Omit to upload without joining a library (as dashboard text cards and notebooks do). */
 export type CreateUploadedMediaRequestPurpose = "email" | "canvas";
-const CreateUploadedMediaRequestPurpose = S.String;
-
 export interface CreateUploadedMediaRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -48,26 +48,9 @@ export interface CreateUploadedMediaRequest {
   /** Library to add this image to. Omit to upload without joining a library (as dashboard text cards and notebooks do). */
   purpose?: CreateUploadedMediaRequestPurpose | (string & {});
 }
-const CreateUploadedMediaRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateUploadedMediaRequest>;
-
 export type CreateUploadedMediaResponseBodyMap = { [key: string]: unknown | undefined };
-const CreateUploadedMediaResponseBodyMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateUploadedMediaResponseBodyMap>;
-
 export type CreateUploadedMediaResponse = CreateUploadedMediaResponseBodyMap;
-const CreateUploadedMediaResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateUploadedMediaResponse>;
-
 export type ListUploadedMediaRequestPurpose = "canvas" | "email";
-const ListUploadedMediaRequestPurpose = S.String;
-
 export interface ListUploadedMediaRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -78,11 +61,6 @@ export interface ListUploadedMediaRequest {
   /** The library to list. */
   purpose: ListUploadedMediaRequestPurpose | (string & {});
 }
-const ListUploadedMediaRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ListUploadedMediaRequest>;
-
 export interface UploadedMedia2 {
   id: string;
   /** The file's original name. */
@@ -94,36 +72,19 @@ export interface UploadedMedia2 {
   url: string;
   created_at: string;
 }
-const UploadedMedia2 = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<UploadedMedia2>;
-
 export type PaginatedUploadedMediaListResultsList = Array<UploadedMedia2>;
-const PaginatedUploadedMediaListResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PaginatedUploadedMediaListResultsList>;
-
 export interface PaginatedUploadedMediaList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedUploadedMediaListResultsList;
 }
-const PaginatedUploadedMediaList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PaginatedUploadedMediaList>;
-
 export interface UploadedMediaCompleteUploadCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this uploaded media. */
   id: string;
 }
-const UploadedMediaCompleteUploadCreateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<UploadedMediaCompleteUploadCreateRequest>;
-
 export interface UploadedMediaStartUploadCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -132,18 +93,8 @@ export interface UploadedMediaStartUploadCreateRequest {
   /** Library to add this image to once uploaded, e.g. 'email'. */
   purpose: string;
 }
-const UploadedMediaStartUploadCreateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<UploadedMediaStartUploadCreateRequest>;
-
 /** Extra form fields to send alongside the file in the same POST. */
 export type UploadedMediaUploadStartedFormFieldsMap = { [key: string]: string | undefined };
-const UploadedMediaUploadStartedFormFieldsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<UploadedMediaUploadStartedFormFieldsMap>;
-
 export interface UploadedMediaUploadStarted {
   /** Id of the pending upload -- pass this to complete_upload. */
   id: string;
@@ -154,11 +105,6 @@ export interface UploadedMediaUploadStarted {
   /** Seconds before upload_url expires. */
   expires_in: number;
 }
-const UploadedMediaUploadStarted = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<UploadedMediaUploadStarted>;
-
 export type CreateUploadedMediaError = Forbidden | NotFound | PosthogOpError;
 /** When object storage is available this API allows upload of media which can be used, for example, in text cards on dashboards. Uploaded media must be less than 4MB and decode as a PNG, JPEG, GIF, WebP, AVIF or BMP image -- the formats the download route will serve inline. Pass `purpose` to also add the image to a library, making it visible to `GET ?purpose=...`. */
 export const createUploadedMedia: API.OperationMethod<
@@ -167,8 +113,8 @@ export const createUploadedMedia: API.OperationMethod<
   CreateUploadedMediaError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUploadedMediaRequest,
-  output: CreateUploadedMediaResponse,
+  input: __S(0) as any as S.Schema<CreateUploadedMediaRequest>,
+  output: __S(2) as any as S.Schema<CreateUploadedMediaResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -182,8 +128,8 @@ export const listUploadedMedia: API.OperationMethod<
   ListUploadedMediaError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUploadedMediaRequest,
-  output: PaginatedUploadedMediaList,
+  input: __S(3) as any as S.Schema<ListUploadedMediaRequest>,
+  output: __S(6) as any as S.Schema<PaginatedUploadedMediaList>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -197,8 +143,8 @@ export const uploadedMediaCompleteUploadCreate: API.OperationMethod<
   UploadedMediaCompleteUploadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadedMediaCompleteUploadCreateRequest,
-  output: UploadedMedia2,
+  input: __S(7) as any as S.Schema<UploadedMediaCompleteUploadCreateRequest>,
+  output: __S(4) as any as S.Schema<UploadedMedia2>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -212,8 +158,8 @@ export const uploadedMediaStartUploadCreate: API.OperationMethod<
   UploadedMediaStartUploadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadedMediaStartUploadCreateRequest,
-  output: UploadedMediaUploadStarted,
+  input: __S(8) as any as S.Schema<UploadedMediaStartUploadCreateRequest>,
+  output: __S(10) as any as S.Schema<UploadedMediaUploadStarted>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -227,7 +173,7 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           image: S.String,
-          purpose: S.optional(CreateUploadedMediaRequestPurpose),
+          purpose: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -242,18 +188,16 @@ function __c0(j: number): any {
     case 1:
       return S.Record(S.String, S.Unknown);
     case 2:
-      return S.suspend(() => CreateUploadedMediaResponseBodyMap.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "CreateUploadedMediaResponse",
-        },
-      );
+      return S.suspend(() => __S(1).pipe(T.RawResponseRoot())).annotate({
+        identifier: "CreateUploadedMediaResponse",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          purpose: ListUploadedMediaRequestPurpose.pipe(T.Query()),
+          purpose: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/uploaded_media/", code: 200 }),
         ),
@@ -271,14 +215,14 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "UploadedMedia2" });
     case 5:
-      return S.Array(UploadedMedia2);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedUploadedMediaListResultsList,
+          results: __S(5),
         }),
       ).annotate({
         identifier: "PaginatedUploadedMediaList",
@@ -325,11 +269,24 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           upload_url: S.String,
-          form_fields: UploadedMediaUploadStartedFormFieldsMap,
+          form_fields: __S(9),
           expires_in: S.Number,
         }),
       ).annotate({
         identifier: "UploadedMediaUploadStarted",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

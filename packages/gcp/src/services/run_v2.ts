@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -83,28 +85,14 @@ export interface GoogleCloudRunV2CancelExecutionRequest {
   /** Indicates that the request should be validated without actually cancelling any resources. */
   validateOnly?: boolean;
 }
-const GoogleCloudRunV2CancelExecutionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GoogleCloudRunV2CancelExecutionRequest>;
-
 export interface CancelProjectsLocationsJobsExecutionsRequest {
   /** Required. The name of the Execution to cancel. Format: `projects/{project}/locations/{location}/jobs/{job}/executions/{execution}`, where `{project}` can be project id or number. */
   name: string;
   /** Request body */
   body?: GoogleCloudRunV2CancelExecutionRequest;
 }
-const CancelProjectsLocationsJobsExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsJobsExecutionsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -114,8 +102,6 @@ export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const GoogleRpcStatus = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GoogleRpcStatus>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -129,14 +115,7 @@ export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-const GoogleLongrunningOperation = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GoogleLongrunningOperation>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringList>;
-
 /** Direct VPC egress settings. */
 export interface GoogleCloudRunV2NetworkInterface {
   /** Optional. The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork. */
@@ -146,23 +125,11 @@ export interface GoogleCloudRunV2NetworkInterface {
   /** Optional. Network tags applied to this Cloud Run resource. */
   tags?: StringList;
 }
-const GoogleCloudRunV2NetworkInterface = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GoogleCloudRunV2NetworkInterface>;
-
 export type GoogleCloudRunV2NetworkInterfaceList = Array<GoogleCloudRunV2NetworkInterface>;
-const GoogleCloudRunV2NetworkInterfaceList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GoogleCloudRunV2NetworkInterfaceList>;
-
 export type GoogleCloudRunV2VpcAccessEgressEnum =
   | "VPC_EGRESS_UNSPECIFIED"
   | "ALL_TRAFFIC"
   | "PRIVATE_RANGES_ONLY";
-const GoogleCloudRunV2VpcAccessEgressEnum = S.String;
-
 /** VPC Access settings. For more information on sending traffic to a VPC network, visit https://cloud.google.com/run/docs/configuring/connecting-vpc. */
 export interface GoogleCloudRunV2VpcAccess {
   /** VPC Access connector name. Format: `projects/{project}/locations/{location}/connectors/{connector}`, where `{project}` can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors. */
@@ -172,14 +139,7 @@ export interface GoogleCloudRunV2VpcAccess {
   /** Optional. Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY. */
   egress?: GoogleCloudRunV2VpcAccessEgressEnum | (string & {});
 }
-const GoogleCloudRunV2VpcAccess = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GoogleCloudRunV2VpcAccess>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<StringMap>;
-
 /** VersionToPath maps a specific version of a secret to a relative file to mount to, relative to VolumeMount's mount_path. */
 export interface GoogleCloudRunV2VersionToPath {
   /** Required. The relative path of the secret in the container. */
@@ -189,17 +149,7 @@ export interface GoogleCloudRunV2VersionToPath {
   /** The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version. */
   version?: string;
 }
-const GoogleCloudRunV2VersionToPath = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GoogleCloudRunV2VersionToPath>;
-
 export type GoogleCloudRunV2VersionToPathList = Array<GoogleCloudRunV2VersionToPath>;
-const GoogleCloudRunV2VersionToPathList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GoogleCloudRunV2VersionToPathList>;
-
 /** The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret. */
 export interface GoogleCloudRunV2SecretVolumeSource {
   /** Integer representation of mode bits to use on created files by default. Must be a value between 0000 and 0777 (octal), defaulting to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. This might be in conflict with other options that affect the file mode, like fsGroup, and as a result, other mode bits could be set. */
@@ -209,11 +159,6 @@ export interface GoogleCloudRunV2SecretVolumeSource {
   /** If unspecified, the volume will expose a file whose name is the secret, relative to VolumeMount.mount_path + VolumeMount.sub_path. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a path and a version. */
   items?: GoogleCloudRunV2VersionToPathList;
 }
-const GoogleCloudRunV2SecretVolumeSource = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GoogleCloudRunV2SecretVolumeSource>;
-
 /** Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE. */
 export interface GoogleCloudRunV2GCSVolumeSource {
   /** Cloud Storage Bucket name. */
@@ -223,17 +168,10 @@ export interface GoogleCloudRunV2GCSVolumeSource {
   /** A list of additional flags to pass to the gcsfuse CLI. Options should be specified without the leading "--". */
   mountOptions?: StringList;
 }
-const GoogleCloudRunV2GCSVolumeSource = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GoogleCloudRunV2GCSVolumeSource>;
-
 export type GoogleCloudRunV2EmptyDirVolumeSourceMediumEnum =
   | "MEDIUM_UNSPECIFIED"
   | "MEMORY"
   | "DISK";
-const GoogleCloudRunV2EmptyDirVolumeSourceMediumEnum = S.String;
-
 /** In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs). */
 export interface GoogleCloudRunV2EmptyDirVolumeSource {
   /** Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers. The default is nil which means that the limit is undefined. More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir */
@@ -241,21 +179,11 @@ export interface GoogleCloudRunV2EmptyDirVolumeSource {
   /** The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional */
   medium?: GoogleCloudRunV2EmptyDirVolumeSourceMediumEnum | (string & {});
 }
-const GoogleCloudRunV2EmptyDirVolumeSource = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GoogleCloudRunV2EmptyDirVolumeSource>;
-
 /** Represents a set of Cloud SQL instances. Each one will be available under /cloudsql/[instance]. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. */
 export interface GoogleCloudRunV2CloudSqlInstance {
   /** A list of Cloud SQL instance connection names. Cloud Run uses these to establish connections to the specified Cloud SQL instances. While the SQL instance name itself is unique within a project, the full connection name requires the location for proper routing. Format: `{project}:{location}:{instance}` Example: `my-project:us-central1:my-instance` You can find this value on the instance's **Overview** page in the Google Cloud console or by using the following `gcloud` command: ```sh gcloud sql instances describe INSTANCE_NAME \ --format='value(connectionName)' ``` Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. */
   instances?: StringList;
 }
-const GoogleCloudRunV2CloudSqlInstance = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GoogleCloudRunV2CloudSqlInstance>;
-
 /** Represents an NFS mount. */
 export interface GoogleCloudRunV2NFSVolumeSource {
   /** Hostname or IP address of the NFS server */
@@ -265,11 +193,6 @@ export interface GoogleCloudRunV2NFSVolumeSource {
   /** If true, the volume will be mounted as read only for all mounts. */
   readOnly?: boolean;
 }
-const GoogleCloudRunV2NFSVolumeSource = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GoogleCloudRunV2NFSVolumeSource>;
-
 /** Volume represents a named volume in a container. */
 export interface GoogleCloudRunV2Volume {
   /** Required. Volume's name. */
@@ -285,33 +208,16 @@ export interface GoogleCloudRunV2Volume {
   /** For NFS Voumes, contains the path to the nfs Volume */
   nfs?: GoogleCloudRunV2NFSVolumeSource;
 }
-const GoogleCloudRunV2Volume = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GoogleCloudRunV2Volume>;
-
 export type GoogleCloudRunV2VolumeList = Array<GoogleCloudRunV2Volume>;
-const GoogleCloudRunV2VolumeList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GoogleCloudRunV2VolumeList>;
-
 export type GoogleCloudRunV2InstanceEncryptionKeyRevocationActionEnum =
   | "ENCRYPTION_KEY_REVOCATION_ACTION_UNSPECIFIED"
   | "PREVENT_NEW"
   | "SHUTDOWN";
-const GoogleCloudRunV2InstanceEncryptionKeyRevocationActionEnum = S.String;
-
 /** Hardware constraints configuration. */
 export interface GoogleCloudRunV2NodeSelector {
   /** Required. GPU accelerator type to attach to an instance. */
   accelerator?: string;
 }
-const GoogleCloudRunV2NodeSelector = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GoogleCloudRunV2NodeSelector>;
-
 /** ContainerStatus holds the information of container name and image digest value. */
 export interface GoogleCloudRunV2ContainerStatus {
   /** ImageDigest holds the resolved digest for the image specified and resolved during the creation of Revision. This field holds the digest value regardless of whether a tag or digest was originally specified in the Container object. */
@@ -319,24 +225,12 @@ export interface GoogleCloudRunV2ContainerStatus {
   /** The name of the container, if specified. */
   name?: string;
 }
-const GoogleCloudRunV2ContainerStatus = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GoogleCloudRunV2ContainerStatus>;
-
 export type GoogleCloudRunV2ContainerStatusList = Array<GoogleCloudRunV2ContainerStatus>;
-const GoogleCloudRunV2ContainerStatusList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GoogleCloudRunV2ContainerStatusList>;
-
 export type GoogleCloudRunV2InstanceRestartPolicyEnum =
   | "RESTART_POLICY_UNSPECIFIED"
   | "ALWAYS"
   | "ON_FAILURE"
   | "NEVER";
-const GoogleCloudRunV2InstanceRestartPolicyEnum = S.String;
-
 /** GRPCAction describes an action involving a GRPC port. */
 export interface GoogleCloudRunV2GRPCAction {
   /** Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC. */
@@ -344,21 +238,11 @@ export interface GoogleCloudRunV2GRPCAction {
   /** Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort. */
   port?: number;
 }
-const GoogleCloudRunV2GRPCAction = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GoogleCloudRunV2GRPCAction>;
-
 /** TCPSocketAction describes an action based on opening a socket */
 export interface GoogleCloudRunV2TCPSocketAction {
   /** Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort. */
   port?: number;
 }
-const GoogleCloudRunV2TCPSocketAction = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GoogleCloudRunV2TCPSocketAction>;
-
 /** HTTPHeader describes a custom header to be used in HTTP probes */
 export interface GoogleCloudRunV2HTTPHeader {
   /** Optional. The header field value */
@@ -366,17 +250,7 @@ export interface GoogleCloudRunV2HTTPHeader {
   /** Required. The header field name */
   name?: string;
 }
-const GoogleCloudRunV2HTTPHeader = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GoogleCloudRunV2HTTPHeader>;
-
 export type GoogleCloudRunV2HTTPHeaderList = Array<GoogleCloudRunV2HTTPHeader>;
-const GoogleCloudRunV2HTTPHeaderList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GoogleCloudRunV2HTTPHeaderList>;
-
 /** HTTPGetAction describes an action based on HTTP Get requests. */
 export interface GoogleCloudRunV2HTTPGetAction {
   /** Optional. Path to access on the HTTP server. Defaults to '/'. */
@@ -386,11 +260,6 @@ export interface GoogleCloudRunV2HTTPGetAction {
   /** Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort. */
   port?: number;
 }
-const GoogleCloudRunV2HTTPGetAction = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GoogleCloudRunV2HTTPGetAction>;
-
 /** Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. */
 export interface GoogleCloudRunV2Probe {
   /** Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. */
@@ -408,11 +277,6 @@ export interface GoogleCloudRunV2Probe {
   /** Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds. */
   periodSeconds?: number;
 }
-const GoogleCloudRunV2Probe = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GoogleCloudRunV2Probe>;
-
 /** VolumeMount describes a mounting of a Volume within a container. */
 export interface GoogleCloudRunV2VolumeMount {
   /** Required. This must match the Name of a Volume. */
@@ -422,17 +286,7 @@ export interface GoogleCloudRunV2VolumeMount {
   /** Required. Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be `/cloudsql`. All instances defined in the Volume will be available as `/cloudsql/[instance]`. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run */
   mountPath?: string;
 }
-const GoogleCloudRunV2VolumeMount = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GoogleCloudRunV2VolumeMount>;
-
 export type GoogleCloudRunV2VolumeMountList = Array<GoogleCloudRunV2VolumeMount>;
-const GoogleCloudRunV2VolumeMountList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GoogleCloudRunV2VolumeMountList>;
-
 /** Cloud Storage source. */
 export interface GoogleCloudRunV2CloudStorageSource {
   /** Required. The Cloud Storage object name. */
@@ -442,11 +296,6 @@ export interface GoogleCloudRunV2CloudStorageSource {
   /** Optional. The Cloud Storage object generation. */
   generation?: string;
 }
-const GoogleCloudRunV2CloudStorageSource = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GoogleCloudRunV2CloudStorageSource>;
-
 /** Source file. */
 export interface GoogleCloudRunV2SourceFile {
   /** Required. Input only. Represents the exact, literal, and complete source code of the file. Placeholders like `...` or comments such as `# [rest of code]` should NEVER be used as omission. Every character in this field will be built into the final container. Any omission will result in a broken application. */
@@ -454,27 +303,12 @@ export interface GoogleCloudRunV2SourceFile {
   /** Required. Input only. The file name for the source code. e.g., `"index.js"` or `"node_modules/dependency.js"`. The filename must be less than 255 characters and cannot contain `..`, `./`, `//`, or end with a `/`. Cloud Run will place the files in the container subdirectories, please use relative path to access the file. */
   filename?: string;
 }
-const GoogleCloudRunV2SourceFile = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GoogleCloudRunV2SourceFile>;
-
 export type GoogleCloudRunV2SourceFileList = Array<GoogleCloudRunV2SourceFile>;
-const GoogleCloudRunV2SourceFileList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GoogleCloudRunV2SourceFileList>;
-
 /** Inlined source. */
 export interface GoogleCloudRunV2InlinedSource {
   /** Required. Input only. The source code. */
   sources?: GoogleCloudRunV2SourceFileList;
 }
-const GoogleCloudRunV2InlinedSource = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GoogleCloudRunV2InlinedSource>;
-
 /** Source type for the container. */
 export interface GoogleCloudRunV2SourceCode {
   /** The source is a Cloud Storage bucket. */
@@ -482,11 +316,6 @@ export interface GoogleCloudRunV2SourceCode {
   /** Optional. Input only. Source code inlined in the request. Cloud Run will store the inlined_source to Cloud Storage and replace the field with cloud_storage_source. This field is only supported in Cloud Run Service. */
   inlinedSource?: GoogleCloudRunV2InlinedSource;
 }
-const GoogleCloudRunV2SourceCode = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GoogleCloudRunV2SourceCode>;
-
 /** ContainerPort represents a network port in a single container. */
 export interface GoogleCloudRunV2ContainerPort {
   /** If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c". */
@@ -494,17 +323,7 @@ export interface GoogleCloudRunV2ContainerPort {
   /** Port number the container listens on. This must be a valid TCP port number, 0 < container_port < 65536. */
   containerPort?: number;
 }
-const GoogleCloudRunV2ContainerPort = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GoogleCloudRunV2ContainerPort>;
-
 export type GoogleCloudRunV2ContainerPortList = Array<GoogleCloudRunV2ContainerPort>;
-const GoogleCloudRunV2ContainerPortList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GoogleCloudRunV2ContainerPortList>;
-
 /** SecretEnvVarSource represents a source for the value of an EnvVar. */
 export interface GoogleCloudRunV2SecretKeySelector {
   /** Required. The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project. */
@@ -512,21 +331,11 @@ export interface GoogleCloudRunV2SecretKeySelector {
   /** The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias. */
   version?: string;
 }
-const GoogleCloudRunV2SecretKeySelector = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GoogleCloudRunV2SecretKeySelector>;
-
 /** EnvVarSource represents a source for the value of an EnvVar. */
 export interface GoogleCloudRunV2EnvVarSource {
   /** Selects a secret and a specific version from Cloud Secret Manager. */
   secretKeyRef?: GoogleCloudRunV2SecretKeySelector;
 }
-const GoogleCloudRunV2EnvVarSource = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GoogleCloudRunV2EnvVarSource>;
-
 /** EnvVar represents an environment variable present in a Container. */
 export interface GoogleCloudRunV2EnvVar {
   /** Required. Name of the environment variable. Must not exceed 32768 characters. */
@@ -536,17 +345,7 @@ export interface GoogleCloudRunV2EnvVar {
   /** Source for the environment variable's value. */
   valueSource?: GoogleCloudRunV2EnvVarSource;
 }
-const GoogleCloudRunV2EnvVar = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GoogleCloudRunV2EnvVar>;
-
 export type GoogleCloudRunV2EnvVarList = Array<GoogleCloudRunV2EnvVar>;
-const GoogleCloudRunV2EnvVarList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GoogleCloudRunV2EnvVarList>;
-
 /** ResourceRequirements describes the compute resource requirements. */
 export interface GoogleCloudRunV2ResourceRequirements {
   /** Only `memory`, `cpu` and `nvidia.com/gpu` keys in the map are supported. Notes: * The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported 'memory' values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits * The only supported 'nvidia.com/gpu' value is '1'. */
@@ -556,11 +355,6 @@ export interface GoogleCloudRunV2ResourceRequirements {
   /** Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency. */
   startupCpuBoost?: boolean;
 }
-const GoogleCloudRunV2ResourceRequirements = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GoogleCloudRunV2ResourceRequirements>;
-
 /** Build information of the image. */
 export interface GoogleCloudRunV2BuildInfo {
   /** Output only. Source code location of the image. */
@@ -568,11 +362,6 @@ export interface GoogleCloudRunV2BuildInfo {
   /** Output only. Entry point of the function when the image is a Cloud Run function. */
   functionTarget?: string;
 }
-const GoogleCloudRunV2BuildInfo = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GoogleCloudRunV2BuildInfo>;
-
 /** A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments can be supplied by the system to the container at runtime. */
 export interface GoogleCloudRunV2Container {
   /** Optional. Indicates that this container can act as a sandbox supervisor and launch sandboxes. */
@@ -610,17 +399,7 @@ export interface GoogleCloudRunV2Container {
   /** Arguments to the entrypoint. The docker image's CMD is used if this is not provided. */
   args?: StringList;
 }
-const GoogleCloudRunV2Container = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GoogleCloudRunV2Container>;
-
 export type GoogleCloudRunV2ContainerList = Array<GoogleCloudRunV2Container>;
-const GoogleCloudRunV2ContainerList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GoogleCloudRunV2ContainerList>;
-
 export type GoogleCloudRunV2ConditionExecutionReasonEnum =
   | "EXECUTION_REASON_UNDEFINED"
   | "JOB_STATUS_SERVICE_POLLING_ERROR"
@@ -630,8 +409,6 @@ export type GoogleCloudRunV2ConditionExecutionReasonEnum =
   | "DELETED"
   | "DELAYED_START_PENDING"
   | "DELAYED_EXECUTION_EXCEEDING_DURATION_LIMIT";
-const GoogleCloudRunV2ConditionExecutionReasonEnum = S.String;
-
 export type GoogleCloudRunV2ConditionRevisionReasonEnum =
   | "REVISION_REASON_UNDEFINED"
   | "PENDING"
@@ -646,8 +423,6 @@ export type GoogleCloudRunV2ConditionRevisionReasonEnum =
   | "NO_DEPLOYMENT"
   | "HEALTH_CHECK_SKIPPED"
   | "MIN_INSTANCES_WARMING";
-const GoogleCloudRunV2ConditionRevisionReasonEnum = S.String;
-
 export type GoogleCloudRunV2ConditionReasonEnum =
   | "COMMON_REASON_UNDEFINED"
   | "UNKNOWN"
@@ -665,31 +440,23 @@ export type GoogleCloudRunV2ConditionReasonEnum =
   | "POSTPONED_RETRY"
   | "INTERNAL"
   | "VPC_NETWORK_NOT_FOUND";
-const GoogleCloudRunV2ConditionReasonEnum = S.String;
-
 export type GoogleCloudRunV2ConditionInstanceReasonEnum =
   | "INSTANCE_REASON_UNSPECIFIED"
   | "INSTANCE_DELETED"
   | "INSTANCE_STOPPED"
   | "INSTANCE_STOPPING"
   | "INSTANCE_NON_ZERO_EXIT_CODE";
-const GoogleCloudRunV2ConditionInstanceReasonEnum = S.String;
-
 export type GoogleCloudRunV2ConditionSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
   | "INFO";
-const GoogleCloudRunV2ConditionSeverityEnum = S.String;
-
 export type GoogleCloudRunV2ConditionStateEnum =
   | "STATE_UNSPECIFIED"
   | "CONDITION_PENDING"
   | "CONDITION_RECONCILING"
   | "CONDITION_FAILED"
   | "CONDITION_SUCCEEDED";
-const GoogleCloudRunV2ConditionStateEnum = S.String;
-
 /** Defines a status condition for a resource. */
 export interface GoogleCloudRunV2Condition {
   /** Output only. A reason for the execution condition. */
@@ -711,19 +478,12 @@ export interface GoogleCloudRunV2Condition {
   /** State of the condition. */
   state?: GoogleCloudRunV2ConditionStateEnum | (string & {});
 }
-const GoogleCloudRunV2Condition = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GoogleCloudRunV2Condition>;
-
 export type GoogleCloudRunV2InstanceIngressEnum =
   | "INGRESS_TRAFFIC_UNSPECIFIED"
   | "INGRESS_TRAFFIC_ALL"
   | "INGRESS_TRAFFIC_INTERNAL_ONLY"
   | "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"
   | "INGRESS_TRAFFIC_NONE";
-const GoogleCloudRunV2InstanceIngressEnum = S.String;
-
 /** Settings for Binary Authorization feature. */
 export interface GoogleCloudRunV2BinaryAuthorization {
   /** Optional. If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled. */
@@ -733,17 +493,7 @@ export interface GoogleCloudRunV2BinaryAuthorization {
   /** Optional. The path to a binary authorization policy. Format: `projects/{project}/platforms/cloudRun/{policy-name}` */
   policy?: string;
 }
-const GoogleCloudRunV2BinaryAuthorization = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GoogleCloudRunV2BinaryAuthorization>;
-
 export type GoogleCloudRunV2ConditionList = Array<GoogleCloudRunV2Condition>;
-const GoogleCloudRunV2ConditionList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GoogleCloudRunV2ConditionList>;
-
 export type GoogleCloudRunV2InstanceLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -753,8 +503,6 @@ export type GoogleCloudRunV2InstanceLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-const GoogleCloudRunV2InstanceLaunchStageEnum = S.String;
-
 /** A Cloud Run Instance represents a single group of containers running in a region. */
 export interface GoogleCloudRunV2Instance {
   /** Arbitrary version identifier for the API client. */
@@ -837,11 +585,6 @@ export interface GoogleCloudRunV2Instance {
   /** Arbitrary identifier for the API client. */
   client?: string;
 }
-const GoogleCloudRunV2Instance = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GoogleCloudRunV2Instance>;
-
 export interface CreateProjectsLocationsInstancesRequest {
   /** Required. The location and project in which this Instance should be created. */
   parent: string;
@@ -852,23 +595,14 @@ export interface CreateProjectsLocationsInstancesRequest {
   /** Request body */
   body?: GoogleCloudRunV2Instance;
 }
-const CreateProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateProjectsLocationsInstancesRequest>;
-
 export type GoogleCloudRunV2TaskTemplateExecutionEnvironmentEnum =
   | "EXECUTION_ENVIRONMENT_UNSPECIFIED"
   | "EXECUTION_ENVIRONMENT_GEN1"
   | "EXECUTION_ENVIRONMENT_GEN2";
-const GoogleCloudRunV2TaskTemplateExecutionEnvironmentEnum = S.String;
-
 export type GoogleCloudRunV2WorkloadIdentityConfigIdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"
   | "IDENTITY_TYPE_SERVICE_ACCOUNT"
   | "IDENTITY_TYPE_AGENT_IDENTITY";
-const GoogleCloudRunV2WorkloadIdentityConfigIdentityTypeEnum = S.String;
-
 /** Workload identity settings. */
 export interface GoogleCloudRunV2WorkloadIdentityConfig {
   /** Optional. The Revision's SPIFFE workload identity. Enables provisioning of SPIFFE workload certificates. */
@@ -878,11 +612,6 @@ export interface GoogleCloudRunV2WorkloadIdentityConfig {
   /** Optional. Controls whether an instance receives a MWLID certificate. Corresponds to the intention of the original --[no-]identity-certificate flag. */
   identityCertificateEnabled?: boolean;
 }
-const GoogleCloudRunV2WorkloadIdentityConfig = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GoogleCloudRunV2WorkloadIdentityConfig>;
-
 /** TaskTemplate describes the data a task should have when created from a template. */
 export interface GoogleCloudRunV2TaskTemplate {
   /** A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek */
@@ -908,11 +637,6 @@ export interface GoogleCloudRunV2TaskTemplate {
   /** Optional. The Task's workload identity settings. */
   workloadIdentityConfig?: GoogleCloudRunV2WorkloadIdentityConfig;
 }
-const GoogleCloudRunV2TaskTemplate = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GoogleCloudRunV2TaskTemplate>;
-
 /** ExecutionTemplate describes the data an execution should have when created from a template. */
 export interface GoogleCloudRunV2ExecutionTemplate {
   /** Optional. Arbitrary version identifier for the API client. */
@@ -932,11 +656,6 @@ export interface GoogleCloudRunV2ExecutionTemplate {
   /** Optional. Specifies the maximum desired number of tasks the execution should run at given time. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism. */
   parallelism?: number;
 }
-const GoogleCloudRunV2ExecutionTemplate = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GoogleCloudRunV2ExecutionTemplate>;
-
 export type GoogleCloudRunV2JobLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -946,8 +665,6 @@ export type GoogleCloudRunV2JobLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-const GoogleCloudRunV2JobLaunchStageEnum = S.String;
-
 export type GoogleCloudRunV2ExecutionReferenceCompletionStatusEnum =
   | "COMPLETION_STATUS_UNSPECIFIED"
   | "EXECUTION_SUCCEEDED"
@@ -955,8 +672,6 @@ export type GoogleCloudRunV2ExecutionReferenceCompletionStatusEnum =
   | "EXECUTION_RUNNING"
   | "EXECUTION_PENDING"
   | "EXECUTION_CANCELLED";
-const GoogleCloudRunV2ExecutionReferenceCompletionStatusEnum = S.String;
-
 /** Reference to an Execution. Use /Executions.GetExecution with the given name to get full execution including the latest status. */
 export interface GoogleCloudRunV2ExecutionReference {
   /** Status for the execution completion. */
@@ -970,17 +685,10 @@ export interface GoogleCloudRunV2ExecutionReference {
   /** The deletion time of the execution. It is only populated as a response to a Delete request. */
   deleteTime?: string;
 }
-const GoogleCloudRunV2ExecutionReference = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GoogleCloudRunV2ExecutionReference>;
-
 export type GoogleCloudRunV2JobFunctionalTypeEnum =
   | "FUNCTIONAL_TYPE_UNSPECIFIED"
   | "FUNCTIONAL_TYPE_AGENT"
   | "FUNCTIONAL_TYPE_MCP_SERVER";
-const GoogleCloudRunV2JobFunctionalTypeEnum = S.String;
-
 /** Job represents the configuration of a single job, which references a container image that is run to completion. */
 export interface GoogleCloudRunV2Job {
   /** Arbitrary version identifier for the API client. */
@@ -1038,8 +746,6 @@ export interface GoogleCloudRunV2Job {
   /** Optional. A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates. */
   etag?: string;
 }
-const GoogleCloudRunV2Job = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GoogleCloudRunV2Job>;
-
 export interface CreateProjectsLocationsJobsRequest {
   /** Optional. The unique identifier for the Job. The name of the job becomes {parent}/jobs/{job_id}. If not provided, the server will generate a unique `job_id`. */
   jobId?: string;
@@ -1050,17 +756,10 @@ export interface CreateProjectsLocationsJobsRequest {
   /** Request body */
   body?: GoogleCloudRunV2Job;
 }
-const CreateProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CreateProjectsLocationsJobsRequest>;
-
 export type GoogleCloudRunV2TrafficTargetTypeEnum =
   | "TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED"
   | "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
   | "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION";
-const GoogleCloudRunV2TrafficTargetTypeEnum = S.String;
-
 /** Holds a single traffic routing entry for the Service. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision. */
 export interface GoogleCloudRunV2TrafficTarget {
   /** Specifies percent of the traffic to this Revision. This defaults to zero if unspecified. */
@@ -1072,17 +771,7 @@ export interface GoogleCloudRunV2TrafficTarget {
   /** Revision to which to send this portion of traffic, if traffic allocation is by revision. */
   revision?: string;
 }
-const GoogleCloudRunV2TrafficTarget = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GoogleCloudRunV2TrafficTarget>;
-
 export type GoogleCloudRunV2TrafficTargetList = Array<GoogleCloudRunV2TrafficTarget>;
-const GoogleCloudRunV2TrafficTargetList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GoogleCloudRunV2TrafficTargetList>;
-
 /** Settings for multi-region deployment. */
 export interface GoogleCloudRunV2MultiRegionSettings {
   /** Optional. System-generated unique id for the multi-region Service. */
@@ -1090,17 +779,10 @@ export interface GoogleCloudRunV2MultiRegionSettings {
   /** Required. List of regions to deploy to, including primary region. */
   regions?: StringList;
 }
-const GoogleCloudRunV2MultiRegionSettings = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GoogleCloudRunV2MultiRegionSettings>;
-
 export type GoogleCloudRunV2ServiceScalingScalingModeEnum =
   | "SCALING_MODE_UNSPECIFIED"
   | "AUTOMATIC"
   | "MANUAL";
-const GoogleCloudRunV2ServiceScalingScalingModeEnum = S.String;
-
 /** Scaling settings applied at the service level rather than at the revision level. */
 export interface GoogleCloudRunV2ServiceScaling {
   /** Optional. total max instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. */
@@ -1112,25 +794,16 @@ export interface GoogleCloudRunV2ServiceScaling {
   /** Optional. total min instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. */
   minInstanceCount?: number;
 }
-const GoogleCloudRunV2ServiceScaling = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GoogleCloudRunV2ServiceScaling>;
-
 export type GoogleCloudRunV2ServiceFunctionalTypeEnum =
   | "FUNCTIONAL_TYPE_UNSPECIFIED"
   | "FUNCTIONAL_TYPE_AGENT"
   | "FUNCTIONAL_TYPE_MCP_SERVER";
-const GoogleCloudRunV2ServiceFunctionalTypeEnum = S.String;
-
 export type GoogleCloudRunV2ServiceIngressEnum =
   | "INGRESS_TRAFFIC_UNSPECIFIED"
   | "INGRESS_TRAFFIC_ALL"
   | "INGRESS_TRAFFIC_INTERNAL_ONLY"
   | "INGRESS_TRAFFIC_INTERNAL_LOAD_BALANCER"
   | "INGRESS_TRAFFIC_NONE";
-const GoogleCloudRunV2ServiceIngressEnum = S.String;
-
 /** Settings for revision-level scaling settings. */
 export interface GoogleCloudRunV2RevisionScaling {
   /** Optional. Determines a threshold for concurrency utilization before scaling begins. Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled. */
@@ -1142,33 +815,19 @@ export interface GoogleCloudRunV2RevisionScaling {
   /** Optional. Determines a threshold for CPU utilization before scaling begins. Accepted values are between `0.1` and `0.90` (inclusive) or `0.0` to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled. */
   cpuUtilization?: number;
 }
-const GoogleCloudRunV2RevisionScaling = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GoogleCloudRunV2RevisionScaling>;
-
 /** Settings for Cloud Service Mesh. For more information see https://cloud.google.com/service-mesh/docs/overview. */
 export interface GoogleCloudRunV2ServiceMesh {
   /** The Mesh resource name. Format: `projects/{project}/locations/global/meshes/{mesh}`, where `{project}` can be project id or number. */
   mesh?: string;
 }
-const GoogleCloudRunV2ServiceMesh = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GoogleCloudRunV2ServiceMesh>;
-
 export type GoogleCloudRunV2RevisionTemplateEncryptionKeyRevocationActionEnum =
   | "ENCRYPTION_KEY_REVOCATION_ACTION_UNSPECIFIED"
   | "PREVENT_NEW"
   | "SHUTDOWN";
-const GoogleCloudRunV2RevisionTemplateEncryptionKeyRevocationActionEnum = S.String;
-
 export type GoogleCloudRunV2RevisionTemplateExecutionEnvironmentEnum =
   | "EXECUTION_ENVIRONMENT_UNSPECIFIED"
   | "EXECUTION_ENVIRONMENT_GEN1"
   | "EXECUTION_ENVIRONMENT_GEN2";
-const GoogleCloudRunV2RevisionTemplateExecutionEnvironmentEnum = S.String;
-
 /** RevisionTemplate describes the data a revision should have when created from a template. */
 export interface GoogleCloudRunV2RevisionTemplate {
   /** A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek */
@@ -1218,11 +877,6 @@ export interface GoogleCloudRunV2RevisionTemplate {
   /** Optional. The sandbox environment to host this Revision. */
   executionEnvironment?: GoogleCloudRunV2RevisionTemplateExecutionEnvironmentEnum | (string & {});
 }
-const GoogleCloudRunV2RevisionTemplate = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GoogleCloudRunV2RevisionTemplate>;
-
 /** Describes the Build step of the function that builds a container from the given source. */
 export interface GoogleCloudRunV2BuildConfig {
   /** Optional. Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}` are the project id and region respectively where the worker pool is defined and `{workerPool}` is the short name of the worker pool. */
@@ -1244,11 +898,6 @@ export interface GoogleCloudRunV2BuildConfig {
   /** Optional. Service account to be used for building the container. The format of this field is `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`. */
   serviceAccount?: string;
 }
-const GoogleCloudRunV2BuildConfig = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GoogleCloudRunV2BuildConfig>;
-
 export type GoogleCloudRunV2ServiceLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -1258,14 +907,10 @@ export type GoogleCloudRunV2ServiceLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-const GoogleCloudRunV2ServiceLaunchStageEnum = S.String;
-
 export type GoogleCloudRunV2TrafficTargetStatusTypeEnum =
   | "TRAFFIC_TARGET_ALLOCATION_TYPE_UNSPECIFIED"
   | "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST"
   | "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION";
-const GoogleCloudRunV2TrafficTargetStatusTypeEnum = S.String;
-
 /** Represents the observed state of a single `TrafficTarget` entry. */
 export interface GoogleCloudRunV2TrafficTargetStatus {
   /** Revision to which this traffic is sent. */
@@ -1279,17 +924,7 @@ export interface GoogleCloudRunV2TrafficTargetStatus {
   /** Specifies percent of the traffic to this Revision. */
   percent?: number;
 }
-const GoogleCloudRunV2TrafficTargetStatus = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GoogleCloudRunV2TrafficTargetStatus>;
-
 export type GoogleCloudRunV2TrafficTargetStatusList = Array<GoogleCloudRunV2TrafficTargetStatus>;
-const GoogleCloudRunV2TrafficTargetStatusList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<GoogleCloudRunV2TrafficTargetStatusList>;
-
 /** Service acts as a top-level container that manages a set of configurations and revision templates which implement a network service. Service exists to provide a singular abstraction which can be access controlled, reasoned about, and which encapsulates software lifecycle decisions such as rollout policy and team resource ownership. */
 export interface GoogleCloudRunV2Service {
   /** Output only. The last-modified time. */
@@ -1373,11 +1008,6 @@ export interface GoogleCloudRunV2Service {
   /** Arbitrary version identifier for the API client. */
   clientVersion?: string;
 }
-const GoogleCloudRunV2Service = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GoogleCloudRunV2Service>;
-
 export interface CreateProjectsLocationsServicesRequest {
   /** Required. The location and project in which this service should be created. Format: projects/{project}/locations/{location}, where {project} can be project id or number. Only lowercase characters, digits, and hyphens. */
   parent: string;
@@ -1388,17 +1018,10 @@ export interface CreateProjectsLocationsServicesRequest {
   /** Request body */
   body?: GoogleCloudRunV2Service;
 }
-const CreateProjectsLocationsServicesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateProjectsLocationsServicesRequest>;
-
 export type GoogleCloudRunV2InstanceSplitStatusTypeEnum =
   | "INSTANCE_SPLIT_ALLOCATION_TYPE_UNSPECIFIED"
   | "INSTANCE_SPLIT_ALLOCATION_TYPE_LATEST"
   | "INSTANCE_SPLIT_ALLOCATION_TYPE_REVISION";
-const GoogleCloudRunV2InstanceSplitStatusTypeEnum = S.String;
-
 /** Represents the observed state of a single `InstanceSplit` entry. */
 export interface GoogleCloudRunV2InstanceSplitStatus {
   /** Specifies percent of the instance split to this Revision. */
@@ -1408,33 +1031,16 @@ export interface GoogleCloudRunV2InstanceSplitStatus {
   /** The allocation type for this instance split. */
   type?: GoogleCloudRunV2InstanceSplitStatusTypeEnum | (string & {});
 }
-const GoogleCloudRunV2InstanceSplitStatus = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GoogleCloudRunV2InstanceSplitStatus>;
-
 export type GoogleCloudRunV2InstanceSplitStatusList = Array<GoogleCloudRunV2InstanceSplitStatus>;
-const GoogleCloudRunV2InstanceSplitStatusList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GoogleCloudRunV2InstanceSplitStatusList>;
-
 /** Worker pool scaling settings. */
 export interface GoogleCloudRunV2WorkerPoolScaling {
   /** Optional. The total number of instances in manual scaling mode. */
   manualInstanceCount?: number;
 }
-const GoogleCloudRunV2WorkerPoolScaling = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GoogleCloudRunV2WorkerPoolScaling>;
-
 export type GoogleCloudRunV2WorkerPoolRevisionTemplateEncryptionKeyRevocationActionEnum =
   | "ENCRYPTION_KEY_REVOCATION_ACTION_UNSPECIFIED"
   | "PREVENT_NEW"
   | "SHUTDOWN";
-const GoogleCloudRunV2WorkerPoolRevisionTemplateEncryptionKeyRevocationActionEnum = S.String;
-
 /** WorkerPoolRevisionTemplate describes the data a worker pool revision should have when created from a template. */
 export interface GoogleCloudRunV2WorkerPoolRevisionTemplate {
   /** Optional. The node selector for the revision template. */
@@ -1470,11 +1076,6 @@ export interface GoogleCloudRunV2WorkerPoolRevisionTemplate {
   /** Optional. Arbitrary identifier for the API client. */
   client?: string;
 }
-const GoogleCloudRunV2WorkerPoolRevisionTemplate = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GoogleCloudRunV2WorkerPoolRevisionTemplate>;
-
 export type GoogleCloudRunV2WorkerPoolLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -1484,14 +1085,10 @@ export type GoogleCloudRunV2WorkerPoolLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-const GoogleCloudRunV2WorkerPoolLaunchStageEnum = S.String;
-
 export type GoogleCloudRunV2InstanceSplitTypeEnum =
   | "INSTANCE_SPLIT_ALLOCATION_TYPE_UNSPECIFIED"
   | "INSTANCE_SPLIT_ALLOCATION_TYPE_LATEST"
   | "INSTANCE_SPLIT_ALLOCATION_TYPE_REVISION";
-const GoogleCloudRunV2InstanceSplitTypeEnum = S.String;
-
 /** Holds a single instance split entry for the Worker. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision. */
 export interface GoogleCloudRunV2InstanceSplit {
   /** Specifies percent of the instance split to this Revision. This defaults to zero if unspecified. */
@@ -1501,17 +1098,7 @@ export interface GoogleCloudRunV2InstanceSplit {
   /** Revision to which to assign this portion of instances, if split allocation is by revision. */
   revision?: string;
 }
-const GoogleCloudRunV2InstanceSplit = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GoogleCloudRunV2InstanceSplit>;
-
 export type GoogleCloudRunV2InstanceSplitList = Array<GoogleCloudRunV2InstanceSplit>;
-const GoogleCloudRunV2InstanceSplitList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GoogleCloudRunV2InstanceSplitList>;
-
 /** WorkerPool acts as a top-level container that manages a set of configurations and revision templates which implement a pull-based workload. WorkerPool exists to provide a singular abstraction which can be access controlled, reasoned about, and which encapsulates software lifecycle decisions such as rollout policy and team resource ownership. */
 export interface GoogleCloudRunV2WorkerPool {
   /** Output only. The generation of this WorkerPool currently serving workloads. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a `string` instead of an `integer`. */
@@ -1575,11 +1162,6 @@ export interface GoogleCloudRunV2WorkerPool {
   /** Optional. Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest `Ready` Revision. */
   instanceSplits?: GoogleCloudRunV2InstanceSplitList;
 }
-const GoogleCloudRunV2WorkerPool = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GoogleCloudRunV2WorkerPool>;
-
 export interface CreateProjectsLocationsWorkerPoolsRequest {
   /** Optional. Indicates that the request should be validated and default values populated, without persisting the request or creating any resources. */
   validateOnly?: boolean;
@@ -1590,11 +1172,6 @@ export interface CreateProjectsLocationsWorkerPoolsRequest {
   /** Request body */
   body?: GoogleCloudRunV2WorkerPool;
 }
-const CreateProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<CreateProjectsLocationsWorkerPoolsRequest>;
-
 export interface DeleteProjectsLocationsInstancesRequest {
   /** Required. The name of the Instance to delete. */
   name: string;
@@ -1603,11 +1180,6 @@ export interface DeleteProjectsLocationsInstancesRequest {
   /** Optional. A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates. */
   etag?: string;
 }
-const DeleteProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>;
-
 export interface DeleteProjectsLocationsJobsRequest {
   /** Indicates that the request should be validated without actually deleting any resources. */
   validateOnly?: boolean;
@@ -1616,11 +1188,6 @@ export interface DeleteProjectsLocationsJobsRequest {
   /** Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job}, where {project} can be project id or number. */
   name: string;
 }
-const DeleteProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsJobsRequest>;
-
 export interface DeleteProjectsLocationsJobsExecutionsRequest {
   /** Required. The name of the Execution to delete. Format: `projects/{project}/locations/{location}/jobs/{job}/executions/{execution}`, where `{project}` can be project id or number. */
   name: string;
@@ -1629,24 +1196,12 @@ export interface DeleteProjectsLocationsJobsExecutionsRequest {
   /** Indicates that the request should be validated without actually deleting any resources. */
   validateOnly?: boolean;
 }
-const DeleteProjectsLocationsJobsExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsJobsExecutionsRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-const GoogleProtobufEmpty = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<GoogleProtobufEmpty>;
-
 export interface DeleteProjectsLocationsServicesRequest {
   /** A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates. */
   etag?: string;
@@ -1655,11 +1210,6 @@ export interface DeleteProjectsLocationsServicesRequest {
   /** Required. The full name of the Service. Format: projects/{project}/locations/{location}/services/{service}, where {project} can be project id or number. */
   name: string;
 }
-const DeleteProjectsLocationsServicesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsServicesRequest>;
-
 export interface DeleteProjectsLocationsServicesRevisionsRequest {
   /** A system-generated fingerprint for this version of the resource. This may be used to detect modification conflict during updates. */
   etag?: string;
@@ -1668,11 +1218,6 @@ export interface DeleteProjectsLocationsServicesRevisionsRequest {
   /** Indicates that the request should be validated without actually deleting any resources. */
   validateOnly?: boolean;
 }
-const DeleteProjectsLocationsServicesRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsServicesRevisionsRequest>;
-
 export interface DeleteProjectsLocationsWorkerPoolsRequest {
   /** A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates. */
   etag?: string;
@@ -1681,11 +1226,6 @@ export interface DeleteProjectsLocationsWorkerPoolsRequest {
   /** Optional. Indicates that the request should be validated without actually deleting any resources. */
   validateOnly?: boolean;
 }
-const DeleteProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsWorkerPoolsRequest>;
-
 export interface DeleteProjectsLocationsWorkerPoolsRevisionsRequest {
   /** Required. The name of the Revision to delete. Format: projects/{project}/locations/{location}/services/{service}/revisions/{revision} */
   name: string;
@@ -1694,94 +1234,47 @@ export interface DeleteProjectsLocationsWorkerPoolsRevisionsRequest {
   /** Indicates that the request should be validated without actually deleting any resources. */
   validateOnly?: boolean;
 }
-const DeleteProjectsLocationsWorkerPoolsRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsWorkerPoolsRevisionsRequest>;
-
 export interface ExportImageMetadataProjectsLocationsRequest {
   /** Required. The name of the resource of which image metadata should be exported. Format: `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}` for Revision `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}` for Execution */
   name: string;
 }
-const ExportImageMetadataProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ExportImageMetadataProjectsLocationsRequest>;
-
 /** Metadata represents the JSON encoded generated customer metadata. */
 export interface GoogleCloudRunV2Metadata {
   /** JSON encoded Google-generated Customer Metadata for a given resource/project. */
   metadata?: string;
 }
-const GoogleCloudRunV2Metadata = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GoogleCloudRunV2Metadata>;
-
 /** Request message for exporting Cloud Run image. */
 export interface GoogleCloudRunV2ExportImageRequest {
   /** Required. The export destination url (the Artifact Registry repo). */
   destinationRepo?: string;
 }
-const GoogleCloudRunV2ExportImageRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GoogleCloudRunV2ExportImageRequest>;
-
 export interface ExportImageProjectsLocationsRequest {
   /** Required. The name of the resource of which image metadata should be exported. Format: `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}` for Revision `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}` for Execution */
   name: string;
   /** Request body */
   body?: GoogleCloudRunV2ExportImageRequest;
 }
-const ExportImageProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ExportImageProjectsLocationsRequest>;
-
 /** ExportImageResponse contains an operation Id to track the image export operation. */
 export interface GoogleCloudRunV2ExportImageResponse {
   /** An operation ID used to track the status of image exports tied to the original pod ID in the request. */
   operationId?: string;
 }
-const GoogleCloudRunV2ExportImageResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GoogleCloudRunV2ExportImageResponse>;
-
 export interface ExportMetadataProjectsLocationsRequest {
   /** Required. The name of the resource of which metadata should be exported. Format: `projects/{project_id_or_number}/locations/{location}/services/{service}` for Service `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}` for Revision `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}` for Execution {project_id_or_number} may contains domain-scoped project IDs */
   name: string;
 }
-const ExportMetadataProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ExportMetadataProjectsLocationsRequest>;
-
 export interface ExportProjectMetadataProjectsLocationsRequest {
   /** Required. The name of the project of which metadata should be exported. Format: `projects/{project_id_or_number}/locations/{location}` for Project in a given location. */
   name: string;
 }
-const ExportProjectMetadataProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ExportProjectMetadataProjectsLocationsRequest>;
-
 export interface ExportStatusProjectsLocationsJobsExecutionsRequest {
   /** Required. The name of the resource of which image export operation status has to be fetched. Format: `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}` for Revision `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}` for Execution */
   name: string;
   /** Required. The operation id returned from ExportImage. */
   operationId: string;
 }
-const ExportStatusProjectsLocationsJobsExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ExportStatusProjectsLocationsJobsExecutionsRequest>;
-
 /** This is proto2's version of MessageSet. DEPRECATED: DO NOT USE FOR NEW FIELDS. If you are using editions or proto2, please make your own extendable messages for your use case. If you are using proto3, please use `Any` instead. MessageSet was the implementation of extensions for proto1. When proto2 was introduced, extensions were implemented as a first-class feature. This schema for MessageSet was meant to be a "bridge" solution to migrate MessageSet-bearing messages from proto1 to proto2. This schema has been open-sourced only to facilitate the migration of Google products with MessageSet-bearing messages to open-source environments. */
 export interface Proto2BridgeMessageSet {}
-const Proto2BridgeMessageSet = GoogleProtobufEmpty as any as S.Schema<Proto2BridgeMessageSet>;
-
 /** Wire-format for a Status object */
 export interface UtilStatusProto {
   /** Detail message copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional string message = 3; */
@@ -1795,14 +1288,10 @@ export interface UtilStatusProto {
   /** Numeric code drawn from the space specified below. Often, this is the canonical error space, and code is drawn from google3/util/task/codes.proto copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional int32 code = 1; */
   code?: number;
 }
-const UtilStatusProto = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<UtilStatusProto>;
-
 export type GoogleCloudRunV2ImageExportStatusExportJobStateEnum =
   | "EXPORT_JOB_STATE_UNSPECIFIED"
   | "IN_PROGRESS"
   | "FINISHED";
-const GoogleCloudRunV2ImageExportStatusExportJobStateEnum = S.String;
-
 /** The status of an image export job. */
 export interface GoogleCloudRunV2ImageExportStatus {
   /** The status of the export task if done. */
@@ -1814,23 +1303,11 @@ export interface GoogleCloudRunV2ImageExportStatus {
   /** The image tag as it will appear in Artifact Registry. */
   tag?: string;
 }
-const GoogleCloudRunV2ImageExportStatus = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GoogleCloudRunV2ImageExportStatus>;
-
 export type GoogleCloudRunV2ImageExportStatusList = Array<GoogleCloudRunV2ImageExportStatus>;
-const GoogleCloudRunV2ImageExportStatusList = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GoogleCloudRunV2ImageExportStatusList>;
-
 export type GoogleCloudRunV2ExportStatusResponseOperationStateEnum =
   | "OPERATION_STATE_UNSPECIFIED"
   | "IN_PROGRESS"
   | "FINISHED";
-const GoogleCloudRunV2ExportStatusResponseOperationStateEnum = S.String;
-
 /** ExportStatusResponse contains the status of image export operation, with the status of each image export job. */
 export interface GoogleCloudRunV2ExportStatusResponse {
   /** The status of each image export job. */
@@ -1840,40 +1317,23 @@ export interface GoogleCloudRunV2ExportStatusResponse {
   /** The operation id. */
   operationId?: string;
 }
-const GoogleCloudRunV2ExportStatusResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GoogleCloudRunV2ExportStatusResponse>;
-
 export interface ExportStatusProjectsLocationsServicesRevisionsRequest {
   /** Required. The name of the resource of which image export operation status has to be fetched. Format: `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}` for Revision `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}` for Execution */
   name: string;
   /** Required. The operation id returned from ExportImage. */
   operationId: string;
 }
-const ExportStatusProjectsLocationsServicesRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ExportStatusProjectsLocationsServicesRevisionsRequest>;
-
 export interface GetIamPolicyProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>;
-
 export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
-
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
@@ -1881,17 +1341,7 @@ export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-const GoogleIamV1AuditLogConfig = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GoogleIamV1AuditLogConfig>;
-
 export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
-const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
-
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -1899,17 +1349,7 @@ export interface GoogleIamV1AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: GoogleIamV1AuditLogConfigList;
 }
-const GoogleIamV1AuditConfig = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GoogleIamV1AuditConfig>;
-
 export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
-const GoogleIamV1AuditConfigList = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GoogleIamV1AuditConfigList>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface GoogleTypeExpr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
@@ -1921,8 +1361,6 @@ export interface GoogleTypeExpr {
   /** Textual representation of an expression in Common Expression Language syntax. */
   expression?: string;
 }
-const GoogleTypeExpr = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<GoogleTypeExpr>;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface GoogleIamV1Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -1932,14 +1370,7 @@ export interface GoogleIamV1Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: GoogleTypeExpr;
 }
-const GoogleIamV1Binding = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<GoogleIamV1Binding>;
-
 export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
-const GoogleIamV1BindingList = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GoogleIamV1BindingList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface GoogleIamV1Policy {
   /** Specifies cloud audit logging configuration for this policy. */
@@ -1951,68 +1382,36 @@ export interface GoogleIamV1Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   version?: number;
 }
-const GoogleIamV1Policy = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<GoogleIamV1Policy>;
-
 export interface GetIamPolicyProjectsLocationsJobsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GetIamPolicyProjectsLocationsJobsRequest>;
-
 export interface GetIamPolicyProjectsLocationsServicesRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-const GetIamPolicyProjectsLocationsServicesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GetIamPolicyProjectsLocationsServicesRequest>;
-
 export interface GetIamPolicyProjectsLocationsWorkerPoolsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<GetIamPolicyProjectsLocationsWorkerPoolsRequest>;
-
 export interface GetProjectsLocationsInstancesRequest {
   /** Required. The name of the Instance to retrieve. */
   name: string;
 }
-const GetProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetProjectsLocationsInstancesRequest>;
-
 export interface GetProjectsLocationsJobsRequest {
   /** Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job}, where {project} can be project id or number. */
   name: string;
 }
-const GetProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetProjectsLocationsJobsRequest>;
-
 export interface GetProjectsLocationsJobsExecutionsRequest {
   /** Required. The full name of the Execution. Format: `projects/{project}/locations/{location}/jobs/{job}/executions/{execution}`, where `{project}` can be project id or number. */
   name: string;
 }
-const GetProjectsLocationsJobsExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GetProjectsLocationsJobsExecutionsRequest>;
-
 export type GoogleCloudRunV2ExecutionLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -2022,8 +1421,6 @@ export type GoogleCloudRunV2ExecutionLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-const GoogleCloudRunV2ExecutionLaunchStageEnum = S.String;
-
 /** Execution represents the configuration of a single execution. A execution an immutable resource that references a container image which is run to completion. */
 export interface GoogleCloudRunV2Execution {
   /** Output only. The number of actively running tasks. */
@@ -2087,26 +1484,14 @@ export interface GoogleCloudRunV2Execution {
   /** Output only. The template used to create tasks for this execution. */
   template?: GoogleCloudRunV2TaskTemplate;
 }
-const GoogleCloudRunV2Execution = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GoogleCloudRunV2Execution>;
-
 export interface GetProjectsLocationsJobsExecutionsTasksRequest {
   /** Required. The full name of the Task. Format: projects/{project}/locations/{location}/jobs/{job}/executions/{execution}/tasks/{task} */
   name: string;
 }
-const GetProjectsLocationsJobsExecutionsTasksRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GetProjectsLocationsJobsExecutionsTasksRequest>;
-
 export type GoogleCloudRunV2TaskExecutionEnvironmentEnum =
   | "EXECUTION_ENVIRONMENT_UNSPECIFIED"
   | "EXECUTION_ENVIRONMENT_GEN1"
   | "EXECUTION_ENVIRONMENT_GEN2";
-const GoogleCloudRunV2TaskExecutionEnvironmentEnum = S.String;
-
 /** Result of a task attempt. */
 export interface GoogleCloudRunV2TaskAttemptResult {
   /** Output only. The status of this attempt. If the status code is OK, then the attempt succeeded. */
@@ -2116,11 +1501,6 @@ export interface GoogleCloudRunV2TaskAttemptResult {
   /** Output only. Termination signal of the container. This is set to non-zero if the container is terminated by the system. At most one of exit_code or term_signal will be set. */
   termSignal?: number;
 }
-const GoogleCloudRunV2TaskAttemptResult = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GoogleCloudRunV2TaskAttemptResult>;
-
 /** Task represents a single run of a container to completion. */
 export interface GoogleCloudRunV2Task {
   /** Output only. A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek */
@@ -2192,60 +1572,31 @@ export interface GoogleCloudRunV2Task {
   /** Optional. Output only. True if GPU zonal redundancy is disabled on this task. */
   gpuZonalRedundancyDisabled?: boolean;
 }
-const GoogleCloudRunV2Task = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<GoogleCloudRunV2Task>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsServicesRequest {
   /** Required. The full name of the Service. Format: projects/{project}/locations/{location}/services/{service}, where {project} can be project id or number. */
   name: string;
 }
-const GetProjectsLocationsServicesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<GetProjectsLocationsServicesRequest>;
-
 export interface GetProjectsLocationsServicesRevisionsRequest {
   /** Required. The full name of the Revision. Format: projects/{project}/locations/{location}/services/{service}/revisions/{revision} */
   name: string;
 }
-const GetProjectsLocationsServicesRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<GetProjectsLocationsServicesRevisionsRequest>;
-
 export type GoogleCloudRunV2RevisionExecutionEnvironmentEnum =
   | "EXECUTION_ENVIRONMENT_UNSPECIFIED"
   | "EXECUTION_ENVIRONMENT_GEN1"
   | "EXECUTION_ENVIRONMENT_GEN2";
-const GoogleCloudRunV2RevisionExecutionEnvironmentEnum = S.String;
-
 /** Effective settings for the current revision */
 export interface GoogleCloudRunV2RevisionScalingStatus {
   /** The current number of min instances provisioned for this revision. */
   desiredMinInstanceCount?: number;
 }
-const GoogleCloudRunV2RevisionScalingStatus = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<GoogleCloudRunV2RevisionScalingStatus>;
-
 export type GoogleCloudRunV2RevisionEncryptionKeyRevocationActionEnum =
   | "ENCRYPTION_KEY_REVOCATION_ACTION_UNSPECIFIED"
   | "PREVENT_NEW"
   | "SHUTDOWN";
-const GoogleCloudRunV2RevisionEncryptionKeyRevocationActionEnum = S.String;
-
 export type GoogleCloudRunV2RevisionLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -2255,8 +1606,6 @@ export type GoogleCloudRunV2RevisionLaunchStageEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-const GoogleCloudRunV2RevisionLaunchStageEnum = S.String;
-
 /** A Revision is an immutable snapshot of code and configuration. A Revision references a container image. Revisions are only created by updates to its parent Service. */
 export interface GoogleCloudRunV2Revision {
   /** A list of Volumes to make available to containers. */
@@ -2334,29 +1683,14 @@ export interface GoogleCloudRunV2Revision {
   /** Holds the list which define the units of execution for this Revision. */
   containers?: GoogleCloudRunV2ContainerList;
 }
-const GoogleCloudRunV2Revision = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GoogleCloudRunV2Revision>;
-
 export interface GetProjectsLocationsWorkerPoolsRequest {
   /** Required. The full name of the WorkerPool. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`, where `{project}` can be project id or number. */
   name: string;
 }
-const GetProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<GetProjectsLocationsWorkerPoolsRequest>;
-
 export interface GetProjectsLocationsWorkerPoolsRevisionsRequest {
   /** Required. The full name of the Revision. Format: projects/{project}/locations/{location}/services/{service}/revisions/{revision} */
   name: string;
 }
-const GetProjectsLocationsWorkerPoolsRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GetProjectsLocationsWorkerPoolsRevisionsRequest>;
-
 export interface ListProjectsLocationsInstancesRequest {
   /** Optional. Maximum number of Instances to return in this call. */
   pageSize?: number;
@@ -2367,17 +1701,7 @@ export interface ListProjectsLocationsInstancesRequest {
   /** Optional. A page token received from a previous call to ListInstances. All other parameters must match. */
   pageToken?: string;
 }
-const ListProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<ListProjectsLocationsInstancesRequest>;
-
 export type GoogleCloudRunV2InstanceList = Array<GoogleCloudRunV2Instance>;
-const GoogleCloudRunV2InstanceList = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GoogleCloudRunV2InstanceList>;
-
 /** Response message containing a list of Instances. */
 export interface GoogleCloudRunV2ListInstancesResponse {
   /** A token indicating there are more items than page_size. Use it in the next ListInstances request to continue. */
@@ -2385,11 +1709,6 @@ export interface GoogleCloudRunV2ListInstancesResponse {
   /** The resulting list of Instances. */
   instances?: GoogleCloudRunV2InstanceList;
 }
-const GoogleCloudRunV2ListInstancesResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GoogleCloudRunV2ListInstancesResponse>;
-
 export interface ListProjectsLocationsJobsRequest {
   /** Required. The location and project to list resources on. Format: projects/{project}/locations/{location}, where {project} can be project id or number. */
   parent: string;
@@ -2400,17 +1719,7 @@ export interface ListProjectsLocationsJobsRequest {
   /** Maximum number of Jobs to return in this call. */
   pageSize?: number;
 }
-const ListProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<ListProjectsLocationsJobsRequest>;
-
 export type GoogleCloudRunV2JobList = Array<GoogleCloudRunV2Job>;
-const GoogleCloudRunV2JobList = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GoogleCloudRunV2JobList>;
-
 /** Response message containing a list of Jobs. */
 export interface GoogleCloudRunV2ListJobsResponse {
   /** A token indicating there are more items than page_size. Use it in the next ListJobs request to continue. */
@@ -2418,11 +1727,6 @@ export interface GoogleCloudRunV2ListJobsResponse {
   /** The resulting list of Jobs. */
   jobs?: GoogleCloudRunV2JobList;
 }
-const GoogleCloudRunV2ListJobsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GoogleCloudRunV2ListJobsResponse>;
-
 export interface ListProjectsLocationsJobsExecutionsRequest {
   /** Maximum number of Executions to return in this call. */
   pageSize?: number;
@@ -2433,17 +1737,7 @@ export interface ListProjectsLocationsJobsExecutionsRequest {
   /** Required. The Execution from which the Executions should be listed. To list all Executions across Jobs, use "-" instead of Job name. Format: `projects/{project}/locations/{location}/jobs/{job}`, where `{project}` can be project id or number. */
   parent: string;
 }
-const ListProjectsLocationsJobsExecutionsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ListProjectsLocationsJobsExecutionsRequest>;
-
 export type GoogleCloudRunV2ExecutionList = Array<GoogleCloudRunV2Execution>;
-const GoogleCloudRunV2ExecutionList = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<GoogleCloudRunV2ExecutionList>;
-
 /** Response message containing a list of Executions. */
 export interface GoogleCloudRunV2ListExecutionsResponse {
   /** The resulting list of Executions. */
@@ -2451,11 +1745,6 @@ export interface GoogleCloudRunV2ListExecutionsResponse {
   /** A token indicating there are more items than page_size. Use it in the next ListExecutions request to continue. */
   nextPageToken?: string;
 }
-const GoogleCloudRunV2ListExecutionsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<GoogleCloudRunV2ListExecutionsResponse>;
-
 export interface ListProjectsLocationsJobsExecutionsTasksRequest {
   /** A page token received from a previous call to ListTasks. All other parameters must match. */
   pageToken?: string;
@@ -2466,17 +1755,7 @@ export interface ListProjectsLocationsJobsExecutionsTasksRequest {
   /** Required. The Execution from which the Tasks should be listed. To list all Tasks across Executions of a Job, use "-" instead of Execution name. To list all Tasks across Jobs, use "-" instead of Job name. Format: projects/{project}/locations/{location}/jobs/{job}/executions/{execution} */
   parent: string;
 }
-const ListProjectsLocationsJobsExecutionsTasksRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ListProjectsLocationsJobsExecutionsTasksRequest>;
-
 export type GoogleCloudRunV2TaskList = Array<GoogleCloudRunV2Task>;
-const GoogleCloudRunV2TaskList = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GoogleCloudRunV2TaskList>;
-
 /** Response message containing a list of Tasks. */
 export interface GoogleCloudRunV2ListTasksResponse {
   /** A token indicating there are more items than page_size. Use it in the next ListTasks request to continue. */
@@ -2484,11 +1763,6 @@ export interface GoogleCloudRunV2ListTasksResponse {
   /** The resulting list of Tasks. */
   tasks?: GoogleCloudRunV2TaskList;
 }
-const GoogleCloudRunV2ListTasksResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<GoogleCloudRunV2ListTasksResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** Optional. A filter for matching the completed or in-progress operations. The supported formats of *filter* are: To query for only completed operations: done:true To query for only ongoing operations: done:false Must be empty to query for all of the latest operations for the given parent project. */
   filter?: string;
@@ -2501,17 +1775,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** Required. To query for all of the operations for a project. */
   name: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-const GoogleLongrunningOperationList = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<GoogleLongrunningOperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -2521,11 +1785,6 @@ export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
-
 export interface ListProjectsLocationsServicesRequest {
   /** Required. The location and project to list resources on. Location must be a valid Google Cloud region, and cannot be the "-" wildcard. Format: projects/{project}/locations/{location}, where {project} can be project id or number. */
   parent: string;
@@ -2536,17 +1795,7 @@ export interface ListProjectsLocationsServicesRequest {
   /** A page token received from a previous call to ListServices. All other parameters must match. */
   pageToken?: string;
 }
-const ListProjectsLocationsServicesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ListProjectsLocationsServicesRequest>;
-
 export type GoogleCloudRunV2ServiceList = Array<GoogleCloudRunV2Service>;
-const GoogleCloudRunV2ServiceList = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<GoogleCloudRunV2ServiceList>;
-
 /** Response message containing a list of Services. */
 export interface GoogleCloudRunV2ListServicesResponse {
   /** The resulting list of Services. */
@@ -2556,11 +1805,6 @@ export interface GoogleCloudRunV2ListServicesResponse {
   /** A token indicating there are more items than page_size. Use it in the next ListServices request to continue. */
   nextPageToken?: string;
 }
-const GoogleCloudRunV2ListServicesResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GoogleCloudRunV2ListServicesResponse>;
-
 export interface ListProjectsLocationsServicesRevisionsRequest {
   /** A page token received from a previous call to ListRevisions. All other parameters must match. */
   pageToken?: string;
@@ -2571,17 +1815,7 @@ export interface ListProjectsLocationsServicesRevisionsRequest {
   /** Required. The Service from which the Revisions should be listed. To list all Revisions across Services, use "-" instead of Service name. Format: projects/{project}/locations/{location}/services/{service} */
   parent: string;
 }
-const ListProjectsLocationsServicesRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<ListProjectsLocationsServicesRevisionsRequest>;
-
 export type GoogleCloudRunV2RevisionList = Array<GoogleCloudRunV2Revision>;
-const GoogleCloudRunV2RevisionList = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GoogleCloudRunV2RevisionList>;
-
 /** Response message containing a list of Revisions. */
 export interface GoogleCloudRunV2ListRevisionsResponse {
   /** A token indicating there are more items than page_size. Use it in the next ListRevisions request to continue. */
@@ -2589,11 +1823,6 @@ export interface GoogleCloudRunV2ListRevisionsResponse {
   /** The resulting list of Revisions. */
   revisions?: GoogleCloudRunV2RevisionList;
 }
-const GoogleCloudRunV2ListRevisionsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<GoogleCloudRunV2ListRevisionsResponse>;
-
 export interface ListProjectsLocationsWorkerPoolsRequest {
   /** If true, returns deleted (but unexpired) resources along with active ones. */
   showDeleted?: boolean;
@@ -2604,17 +1833,7 @@ export interface ListProjectsLocationsWorkerPoolsRequest {
   /** A page token received from a previous call to ListWorkerPools. All other parameters must match. */
   pageToken?: string;
 }
-const ListProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<ListProjectsLocationsWorkerPoolsRequest>;
-
 export type GoogleCloudRunV2WorkerPoolList = Array<GoogleCloudRunV2WorkerPool>;
-const GoogleCloudRunV2WorkerPoolList = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<GoogleCloudRunV2WorkerPoolList>;
-
 /** Response message containing a list of WorkerPools. */
 export interface GoogleCloudRunV2ListWorkerPoolsResponse {
   /** The resulting list of WorkerPools. */
@@ -2622,11 +1841,6 @@ export interface GoogleCloudRunV2ListWorkerPoolsResponse {
   /** A token indicating there are more items than page_size. Use it in the next ListWorkerPools request to continue. */
   nextPageToken?: string;
 }
-const GoogleCloudRunV2ListWorkerPoolsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GoogleCloudRunV2ListWorkerPoolsResponse>;
-
 export interface ListProjectsLocationsWorkerPoolsRevisionsRequest {
   /** A page token received from a previous call to ListRevisions. All other parameters must match. */
   pageToken?: string;
@@ -2637,11 +1851,6 @@ export interface ListProjectsLocationsWorkerPoolsRevisionsRequest {
   /** Maximum number of revisions to return in this call. */
   pageSize?: number;
 }
-const ListProjectsLocationsWorkerPoolsRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListProjectsLocationsWorkerPoolsRevisionsRequest>;
-
 export interface PatchProjectsLocationsInstancesRequest {
   /** The fully qualified name of this Instance. In `CreateInstanceRequest`, this field is ignored, and instead composed from `CreateInstanceRequest.parent` and `CreateInstanceRequest.instance_id`. */
   name: string;
@@ -2654,11 +1863,6 @@ export interface PatchProjectsLocationsInstancesRequest {
   /** Request body */
   body?: GoogleCloudRunV2Instance;
 }
-const PatchProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<PatchProjectsLocationsInstancesRequest>;
-
 export interface PatchProjectsLocationsJobsRequest {
   /** The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job} */
   name: string;
@@ -2669,11 +1873,6 @@ export interface PatchProjectsLocationsJobsRequest {
   /** Request body */
   body?: GoogleCloudRunV2Job;
 }
-const PatchProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<PatchProjectsLocationsJobsRequest>;
-
 export interface PatchProjectsLocationsServicesRequest {
   /** Optional. If set to true, a new revision will be created from the template even if the system doesn't detect any changes from the previously deployed revision. This may be useful for cases where the underlying resources need to be recreated or reinitialized. For example if the image is specified by label, but the underlying image digest has changed) or if the container performs deployment initialization work that needs to be performed again. */
   forceNewRevision?: boolean;
@@ -2688,11 +1887,6 @@ export interface PatchProjectsLocationsServicesRequest {
   /** Request body */
   body?: GoogleCloudRunV2Service;
 }
-const PatchProjectsLocationsServicesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<PatchProjectsLocationsServicesRequest>;
-
 export interface PatchProjectsLocationsWorkerPoolsRequest {
   /** Optional. If set to true, and if the WorkerPool does not exist, it will create a new one. The caller must have 'run.workerpools.create' permissions if this is set to true and the WorkerPool does not exist. */
   allowMissing?: boolean;
@@ -2707,11 +1901,6 @@ export interface PatchProjectsLocationsWorkerPoolsRequest {
   /** Request body */
   body?: GoogleCloudRunV2WorkerPool;
 }
-const PatchProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<PatchProjectsLocationsWorkerPoolsRequest>;
-
 /** Per-container override specification. */
 export interface GoogleCloudRunV2ContainerOverride {
   /** Optional. Arguments to the entrypoint. Will replace existing args for override. */
@@ -2723,17 +1912,7 @@ export interface GoogleCloudRunV2ContainerOverride {
   /** The name of the container specified as a DNS_LABEL. */
   name?: string;
 }
-const GoogleCloudRunV2ContainerOverride = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GoogleCloudRunV2ContainerOverride>;
-
 export type GoogleCloudRunV2ContainerOverrideList = Array<GoogleCloudRunV2ContainerOverride>;
-const GoogleCloudRunV2ContainerOverrideList = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GoogleCloudRunV2ContainerOverrideList>;
-
 /** RunJob Overrides that contains Execution fields to be overridden. */
 export interface GoogleCloudRunV2Overrides {
   /** Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. Will replace existing timeout_seconds value. */
@@ -2745,11 +1924,6 @@ export interface GoogleCloudRunV2Overrides {
   /** Optional. The desired number of tasks the execution should run. Will replace existing task_count value. */
   taskCount?: number;
 }
-const GoogleCloudRunV2Overrides = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<GoogleCloudRunV2Overrides>;
-
 /** Request message to create a new Execution of a Job. */
 export interface GoogleCloudRunV2RunJobRequest {
   /** Indicates that the request should be validated without actually deleting any resources. */
@@ -2759,22 +1933,12 @@ export interface GoogleCloudRunV2RunJobRequest {
   /** Overrides specification for a given execution of a job. If provided, overrides will be applied to update the execution or task spec. */
   overrides?: GoogleCloudRunV2Overrides;
 }
-const GoogleCloudRunV2RunJobRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<GoogleCloudRunV2RunJobRequest>;
-
 export interface RunProjectsLocationsJobsRequest {
   /** Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job}, where {project} can be project id or number. */
   name: string;
   /** Request body */
   body?: GoogleCloudRunV2RunJobRequest;
 }
-const RunProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<RunProjectsLocationsJobsRequest>;
-
 /** Request message for `SetIamPolicy` method. */
 export interface GoogleIamV1SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -2782,55 +1946,30 @@ export interface GoogleIamV1SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: GoogleIamV1Policy;
 }
-const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<GoogleIamV1SetIamPolicyRequest>;
-
 export interface SetIamPolicyProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>;
-
 export interface SetIamPolicyProjectsLocationsJobsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<SetIamPolicyProjectsLocationsJobsRequest>;
-
 export interface SetIamPolicyProjectsLocationsServicesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsServicesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<SetIamPolicyProjectsLocationsServicesRequest>;
-
 export interface SetIamPolicyProjectsLocationsWorkerPoolsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<SetIamPolicyProjectsLocationsWorkerPoolsRequest>;
-
 /** Request message for starting an Instance. */
 export interface GoogleCloudRunV2StartInstanceRequest {
   /** Optional. A system-generated fingerprint for this version of the resource. This may be used to detect modification conflict during updates. */
@@ -2838,20 +1977,12 @@ export interface GoogleCloudRunV2StartInstanceRequest {
   /** Optional. Indicates that the request should be validated without actually stopping any resources. */
   validateOnly?: boolean;
 }
-const GoogleCloudRunV2StartInstanceRequest =
-  GoogleCloudRunV2CancelExecutionRequest as any as S.Schema<GoogleCloudRunV2StartInstanceRequest>;
-
 export interface StartProjectsLocationsInstancesRequest {
   /** Required. The name of the Instance to start. */
   name: string;
   /** Request body */
   body?: GoogleCloudRunV2StartInstanceRequest;
 }
-const StartProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<StartProjectsLocationsInstancesRequest>;
-
 /** Request message for deleting an Instance. */
 export type GoogleCloudRunV2StopInstanceRequest = GoogleCloudRunV2StartInstanceRequest;
 export interface StopProjectsLocationsInstancesRequest {
@@ -2860,11 +1991,6 @@ export interface StopProjectsLocationsInstancesRequest {
   /** Request body */
   body?: GoogleCloudRunV2StartInstanceRequest;
 }
-const StopProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<StopProjectsLocationsInstancesRequest>;
-
 /** Build the source using Docker. This means the source has a Dockerfile. */
 export type GoogleCloudRunV2DockerBuild = Proto2BridgeMessageSet;
 /** Location of the source in an archive file in Google Cloud Storage. */
@@ -2876,11 +2002,6 @@ export interface GoogleCloudRunV2StorageSource {
   /** Required. Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build. */
   object?: string;
 }
-const GoogleCloudRunV2StorageSource = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<GoogleCloudRunV2StorageSource>;
-
 /** Build the source using Buildpacks. */
 export interface GoogleCloudRunV2BuildpacksBuild {
   /** Optional. Name of the function target if the source is a function source. Required for function builds. */
@@ -2898,11 +2019,6 @@ export interface GoogleCloudRunV2BuildpacksBuild {
   /** Optional. User-provided build-time environment variables. */
   environmentVariables?: StringMap;
 }
-const GoogleCloudRunV2BuildpacksBuild = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<GoogleCloudRunV2BuildpacksBuild>;
-
 export type GoogleCloudRunV2SubmitBuildRequestReleaseTrackEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "UNIMPLEMENTED"
@@ -2912,8 +2028,6 @@ export type GoogleCloudRunV2SubmitBuildRequestReleaseTrackEnum =
   | "BETA"
   | "GA"
   | "DEPRECATED";
-const GoogleCloudRunV2SubmitBuildRequestReleaseTrackEnum = S.String;
-
 /** Request message for submitting a Build. */
 export interface GoogleCloudRunV2SubmitBuildRequest {
   /** Build the source using Docker. This means the source has a Dockerfile. */
@@ -2937,22 +2051,12 @@ export interface GoogleCloudRunV2SubmitBuildRequest {
   /** Optional. The release track of the client that initiated the build request. */
   releaseTrack?: GoogleCloudRunV2SubmitBuildRequestReleaseTrackEnum | (string & {});
 }
-const GoogleCloudRunV2SubmitBuildRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<GoogleCloudRunV2SubmitBuildRequest>;
-
 export interface SubmitProjectsLocationsBuildsRequest {
   /** Required. The project and location to build in. Location must be a region, e.g., 'us-central1' or 'global' if the global builder is to be used. Format: `projects/{project}/locations/{location}` */
   parent: string;
   /** Request body */
   body?: GoogleCloudRunV2SubmitBuildRequest;
 }
-const SubmitProjectsLocationsBuildsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<SubmitProjectsLocationsBuildsRequest>;
-
 /** Response message for submitting a Build. */
 export interface GoogleCloudRunV2SubmitBuildResponse {
   /** Warning message for the base image. */
@@ -2962,125 +2066,67 @@ export interface GoogleCloudRunV2SubmitBuildResponse {
   /** URI of the base builder image in Artifact Registry being used in the build. Used to opt into automatic base image updates. */
   baseImageUri?: string;
 }
-const GoogleCloudRunV2SubmitBuildResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<GoogleCloudRunV2SubmitBuildResponse>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-const GoogleIamV1TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<GoogleIamV1TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsInstancesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsInstancesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>;
-
 /** Response message for `TestIamPermissions` method. */
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-const GoogleIamV1TestIamPermissionsResponse =
-  GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
-
 export interface TestIamPermissionsProjectsLocationsJobsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsJobsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsServicesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsServicesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsServicesRequest>;
-
 export interface TestIamPermissionsProjectsLocationsWorkerPoolsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsWorkerPoolsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsWorkerPoolsRequest>;
-
 /** The request message for the UploadSource method. */
 export interface GoogleCloudRunV2UploadSourceRequest {
   /** The name of Cloud Run Service upload source archive will be used for. */
   service?: string;
 }
-const GoogleCloudRunV2UploadSourceRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<GoogleCloudRunV2UploadSourceRequest>;
-
 export interface UploadProjectsLocationsSourceUploadsRequest {
   /** Required. The project and location in which the source archive should be uploaded to, specified in the format `projects/*\/locations/*`. */
   parent: string;
   /** Request body */
   body?: GoogleCloudRunV2UploadSourceRequest;
 }
-const UploadProjectsLocationsSourceUploadsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<UploadProjectsLocationsSourceUploadsRequest>;
-
 /** The response message for the UploadSource method. */
 export interface GoogleCloudRunV2UploadSourceResponse {
   /** The Cloud Storage object path the source archive is uploaded to. */
   cloudStorageSource?: GoogleCloudRunV2CloudStorageSource;
 }
-const GoogleCloudRunV2UploadSourceResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<GoogleCloudRunV2UploadSourceResponse>;
-
 /** The request message for Operations.WaitOperation. */
 export interface GoogleLongrunningWaitOperationRequest {
   /** The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. */
   timeout?: string;
 }
-const GoogleLongrunningWaitOperationRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<GoogleLongrunningWaitOperationRequest>;
-
 export interface WaitProjectsLocationsOperationsRequest {
   /** The name of the operation resource to wait on. */
   name: string;
   /** Request body */
   body?: GoogleLongrunningWaitOperationRequest;
 }
-const WaitProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<WaitProjectsLocationsOperationsRequest>;
-
 export type CancelProjectsLocationsJobsExecutionsError =
   | NotFound
   | Forbidden
@@ -3094,8 +2140,8 @@ export const cancelProjectsLocationsJobsExecutions: API.OperationMethod<
   CancelProjectsLocationsJobsExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsJobsExecutionsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(1) as any as S.Schema<CancelProjectsLocationsJobsExecutionsRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3114,8 +2160,8 @@ export const createProjectsLocationsInstances: API.OperationMethod<
   CreateProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsInstancesRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(50) as any as S.Schema<CreateProjectsLocationsInstancesRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3134,8 +2180,8 @@ export const createProjectsLocationsJobs: API.OperationMethod<
   CreateProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsJobsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(56) as any as S.Schema<CreateProjectsLocationsJobsRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3154,8 +2200,8 @@ export const createProjectsLocationsServices: API.OperationMethod<
   CreateProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsServicesRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(68) as any as S.Schema<CreateProjectsLocationsServicesRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3174,8 +2220,8 @@ export const createProjectsLocationsWorkerPools: API.OperationMethod<
   CreateProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsWorkerPoolsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(76) as any as S.Schema<CreateProjectsLocationsWorkerPoolsRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3194,8 +2240,8 @@ export const deleteProjectsLocationsInstances: API.OperationMethod<
   DeleteProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsInstancesRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(77) as any as S.Schema<DeleteProjectsLocationsInstancesRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3214,8 +2260,8 @@ export const deleteProjectsLocationsJobs: API.OperationMethod<
   DeleteProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsJobsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(78) as any as S.Schema<DeleteProjectsLocationsJobsRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3234,8 +2280,8 @@ export const deleteProjectsLocationsJobsExecutions: API.OperationMethod<
   DeleteProjectsLocationsJobsExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsJobsExecutionsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(79) as any as S.Schema<DeleteProjectsLocationsJobsExecutionsRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3254,8 +2300,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(80) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(81) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3274,8 +2320,8 @@ export const deleteProjectsLocationsServices: API.OperationMethod<
   DeleteProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsServicesRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(82) as any as S.Schema<DeleteProjectsLocationsServicesRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3294,8 +2340,8 @@ export const deleteProjectsLocationsServicesRevisions: API.OperationMethod<
   DeleteProjectsLocationsServicesRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsServicesRevisionsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(83) as any as S.Schema<DeleteProjectsLocationsServicesRevisionsRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3314,8 +2360,8 @@ export const deleteProjectsLocationsWorkerPools: API.OperationMethod<
   DeleteProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsWorkerPoolsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(84) as any as S.Schema<DeleteProjectsLocationsWorkerPoolsRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3334,8 +2380,8 @@ export const deleteProjectsLocationsWorkerPoolsRevisions: API.OperationMethod<
   DeleteProjectsLocationsWorkerPoolsRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsWorkerPoolsRevisionsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(85) as any as S.Schema<DeleteProjectsLocationsWorkerPoolsRevisionsRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3349,8 +2395,8 @@ export const exportImageMetadataProjectsLocations: API.OperationMethod<
   ExportImageMetadataProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportImageMetadataProjectsLocationsRequest,
-  output: GoogleCloudRunV2Metadata,
+  input: __S(86) as any as S.Schema<ExportImageMetadataProjectsLocationsRequest>,
+  output: __S(87) as any as S.Schema<GoogleCloudRunV2Metadata>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3369,8 +2415,8 @@ export const exportImageProjectsLocations: API.OperationMethod<
   ExportImageProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportImageProjectsLocationsRequest,
-  output: GoogleCloudRunV2ExportImageResponse,
+  input: __S(89) as any as S.Schema<ExportImageProjectsLocationsRequest>,
+  output: __S(90) as any as S.Schema<GoogleCloudRunV2ExportImageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3384,8 +2430,8 @@ export const exportMetadataProjectsLocations: API.OperationMethod<
   ExportMetadataProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportMetadataProjectsLocationsRequest,
-  output: GoogleCloudRunV2Metadata,
+  input: __S(91) as any as S.Schema<ExportMetadataProjectsLocationsRequest>,
+  output: __S(87) as any as S.Schema<GoogleCloudRunV2Metadata>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3399,8 +2445,8 @@ export const exportProjectMetadataProjectsLocations: API.OperationMethod<
   ExportProjectMetadataProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportProjectMetadataProjectsLocationsRequest,
-  output: GoogleCloudRunV2Metadata,
+  input: __S(92) as any as S.Schema<ExportProjectMetadataProjectsLocationsRequest>,
+  output: __S(87) as any as S.Schema<GoogleCloudRunV2Metadata>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3414,8 +2460,8 @@ export const exportStatusProjectsLocationsJobsExecutions: API.OperationMethod<
   ExportStatusProjectsLocationsJobsExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportStatusProjectsLocationsJobsExecutionsRequest,
-  output: GoogleCloudRunV2ExportStatusResponse,
+  input: __S(93) as any as S.Schema<ExportStatusProjectsLocationsJobsExecutionsRequest>,
+  output: __S(97) as any as S.Schema<GoogleCloudRunV2ExportStatusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3429,8 +2475,8 @@ export const exportStatusProjectsLocationsServicesRevisions: API.OperationMethod
   ExportStatusProjectsLocationsServicesRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportStatusProjectsLocationsServicesRevisionsRequest,
-  output: GoogleCloudRunV2ExportStatusResponse,
+  input: __S(98) as any as S.Schema<ExportStatusProjectsLocationsServicesRevisionsRequest>,
+  output: __S(97) as any as S.Schema<GoogleCloudRunV2ExportStatusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3444,8 +2490,8 @@ export const getIamPolicyProjectsLocationsInstances: API.OperationMethod<
   GetIamPolicyProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsInstancesRequest,
-  output: GoogleIamV1Policy,
+  input: __S(99) as any as S.Schema<GetIamPolicyProjectsLocationsInstancesRequest>,
+  output: __S(107) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3459,8 +2505,8 @@ export const getIamPolicyProjectsLocationsJobs: API.OperationMethod<
   GetIamPolicyProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsJobsRequest,
-  output: GoogleIamV1Policy,
+  input: __S(108) as any as S.Schema<GetIamPolicyProjectsLocationsJobsRequest>,
+  output: __S(107) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3474,8 +2520,8 @@ export const getIamPolicyProjectsLocationsServices: API.OperationMethod<
   GetIamPolicyProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsServicesRequest,
-  output: GoogleIamV1Policy,
+  input: __S(109) as any as S.Schema<GetIamPolicyProjectsLocationsServicesRequest>,
+  output: __S(107) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3489,8 +2535,8 @@ export const getIamPolicyProjectsLocationsWorkerPools: API.OperationMethod<
   GetIamPolicyProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsWorkerPoolsRequest,
-  output: GoogleIamV1Policy,
+  input: __S(110) as any as S.Schema<GetIamPolicyProjectsLocationsWorkerPoolsRequest>,
+  output: __S(107) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3504,8 +2550,8 @@ export const getProjectsLocationsInstances: API.OperationMethod<
   GetProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsInstancesRequest,
-  output: GoogleCloudRunV2Instance,
+  input: __S(111) as any as S.Schema<GetProjectsLocationsInstancesRequest>,
+  output: __S(49) as any as S.Schema<GoogleCloudRunV2Instance>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3519,8 +2565,8 @@ export const getProjectsLocationsJobs: API.OperationMethod<
   GetProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsJobsRequest,
-  output: GoogleCloudRunV2Job,
+  input: __S(112) as any as S.Schema<GetProjectsLocationsJobsRequest>,
+  output: __S(55) as any as S.Schema<GoogleCloudRunV2Job>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3534,8 +2580,8 @@ export const getProjectsLocationsJobsExecutions: API.OperationMethod<
   GetProjectsLocationsJobsExecutionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsJobsExecutionsRequest,
-  output: GoogleCloudRunV2Execution,
+  input: __S(113) as any as S.Schema<GetProjectsLocationsJobsExecutionsRequest>,
+  output: __S(114) as any as S.Schema<GoogleCloudRunV2Execution>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3549,8 +2595,8 @@ export const getProjectsLocationsJobsExecutionsTasks: API.OperationMethod<
   GetProjectsLocationsJobsExecutionsTasksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsJobsExecutionsTasksRequest,
-  output: GoogleCloudRunV2Task,
+  input: __S(115) as any as S.Schema<GetProjectsLocationsJobsExecutionsTasksRequest>,
+  output: __S(117) as any as S.Schema<GoogleCloudRunV2Task>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3564,8 +2610,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(118) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3579,8 +2625,8 @@ export const getProjectsLocationsServices: API.OperationMethod<
   GetProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsServicesRequest,
-  output: GoogleCloudRunV2Service,
+  input: __S(119) as any as S.Schema<GetProjectsLocationsServicesRequest>,
+  output: __S(67) as any as S.Schema<GoogleCloudRunV2Service>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3594,8 +2640,8 @@ export const getProjectsLocationsServicesRevisions: API.OperationMethod<
   GetProjectsLocationsServicesRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsServicesRevisionsRequest,
-  output: GoogleCloudRunV2Revision,
+  input: __S(120) as any as S.Schema<GetProjectsLocationsServicesRevisionsRequest>,
+  output: __S(122) as any as S.Schema<GoogleCloudRunV2Revision>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3609,8 +2655,8 @@ export const getProjectsLocationsWorkerPools: API.OperationMethod<
   GetProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsWorkerPoolsRequest,
-  output: GoogleCloudRunV2WorkerPool,
+  input: __S(123) as any as S.Schema<GetProjectsLocationsWorkerPoolsRequest>,
+  output: __S(75) as any as S.Schema<GoogleCloudRunV2WorkerPool>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3624,8 +2670,8 @@ export const getProjectsLocationsWorkerPoolsRevisions: API.OperationMethod<
   GetProjectsLocationsWorkerPoolsRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsWorkerPoolsRevisionsRequest,
-  output: GoogleCloudRunV2Revision,
+  input: __S(124) as any as S.Schema<GetProjectsLocationsWorkerPoolsRevisionsRequest>,
+  output: __S(122) as any as S.Schema<GoogleCloudRunV2Revision>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3640,8 +2686,8 @@ export const listProjectsLocationsInstances: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRunV2ListInstancesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsInstancesRequest,
-  output: GoogleCloudRunV2ListInstancesResponse,
+  input: __S(125) as any as S.Schema<ListProjectsLocationsInstancesRequest>,
+  output: __S(127) as any as S.Schema<GoogleCloudRunV2ListInstancesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3657,8 +2703,8 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRunV2ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsJobsRequest,
-  output: GoogleCloudRunV2ListJobsResponse,
+  input: __S(128) as any as S.Schema<ListProjectsLocationsJobsRequest>,
+  output: __S(130) as any as S.Schema<GoogleCloudRunV2ListJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3674,8 +2720,8 @@ export const listProjectsLocationsJobsExecutions: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRunV2ListExecutionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsJobsExecutionsRequest,
-  output: GoogleCloudRunV2ListExecutionsResponse,
+  input: __S(131) as any as S.Schema<ListProjectsLocationsJobsExecutionsRequest>,
+  output: __S(133) as any as S.Schema<GoogleCloudRunV2ListExecutionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3691,8 +2737,8 @@ export const listProjectsLocationsJobsExecutionsTasks: API.PaginatedOperationMet
   GcpOpContext,
   GoogleCloudRunV2ListTasksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsJobsExecutionsTasksRequest,
-  output: GoogleCloudRunV2ListTasksResponse,
+  input: __S(134) as any as S.Schema<ListProjectsLocationsJobsExecutionsTasksRequest>,
+  output: __S(136) as any as S.Schema<GoogleCloudRunV2ListTasksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3708,8 +2754,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: GoogleLongrunningListOperationsResponse,
+  input: __S(137) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(139) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3725,8 +2771,8 @@ export const listProjectsLocationsServices: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRunV2ListServicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsServicesRequest,
-  output: GoogleCloudRunV2ListServicesResponse,
+  input: __S(140) as any as S.Schema<ListProjectsLocationsServicesRequest>,
+  output: __S(142) as any as S.Schema<GoogleCloudRunV2ListServicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3742,8 +2788,8 @@ export const listProjectsLocationsServicesRevisions: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleCloudRunV2ListRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsServicesRevisionsRequest,
-  output: GoogleCloudRunV2ListRevisionsResponse,
+  input: __S(143) as any as S.Schema<ListProjectsLocationsServicesRevisionsRequest>,
+  output: __S(145) as any as S.Schema<GoogleCloudRunV2ListRevisionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3763,8 +2809,8 @@ export const listProjectsLocationsWorkerPools: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudRunV2ListWorkerPoolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsWorkerPoolsRequest,
-  output: GoogleCloudRunV2ListWorkerPoolsResponse,
+  input: __S(146) as any as S.Schema<ListProjectsLocationsWorkerPoolsRequest>,
+  output: __S(148) as any as S.Schema<GoogleCloudRunV2ListWorkerPoolsResponse>,
   errors: [NotFound, Forbidden, LocationWildcardUnsupported, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3780,8 +2826,8 @@ export const listProjectsLocationsWorkerPoolsRevisions: API.PaginatedOperationMe
   GcpOpContext,
   GoogleCloudRunV2ListRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsWorkerPoolsRevisionsRequest,
-  output: GoogleCloudRunV2ListRevisionsResponse,
+  input: __S(149) as any as S.Schema<ListProjectsLocationsWorkerPoolsRevisionsRequest>,
+  output: __S(145) as any as S.Schema<GoogleCloudRunV2ListRevisionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3801,8 +2847,8 @@ export const patchProjectsLocationsInstances: API.OperationMethod<
   PatchProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsInstancesRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(150) as any as S.Schema<PatchProjectsLocationsInstancesRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3821,8 +2867,8 @@ export const patchProjectsLocationsJobs: API.OperationMethod<
   PatchProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsJobsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(151) as any as S.Schema<PatchProjectsLocationsJobsRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3841,8 +2887,8 @@ export const patchProjectsLocationsServices: API.OperationMethod<
   PatchProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsServicesRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(152) as any as S.Schema<PatchProjectsLocationsServicesRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3861,8 +2907,8 @@ export const patchProjectsLocationsWorkerPools: API.OperationMethod<
   PatchProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsWorkerPoolsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(153) as any as S.Schema<PatchProjectsLocationsWorkerPoolsRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3881,8 +2927,8 @@ export const runProjectsLocationsJobs: API.OperationMethod<
   RunProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunProjectsLocationsJobsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(158) as any as S.Schema<RunProjectsLocationsJobsRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3901,8 +2947,8 @@ export const setIamPolicyProjectsLocationsInstances: API.OperationMethod<
   SetIamPolicyProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsInstancesRequest,
-  output: GoogleIamV1Policy,
+  input: __S(160) as any as S.Schema<SetIamPolicyProjectsLocationsInstancesRequest>,
+  output: __S(107) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3921,8 +2967,8 @@ export const setIamPolicyProjectsLocationsJobs: API.OperationMethod<
   SetIamPolicyProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsJobsRequest,
-  output: GoogleIamV1Policy,
+  input: __S(161) as any as S.Schema<SetIamPolicyProjectsLocationsJobsRequest>,
+  output: __S(107) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3941,8 +2987,8 @@ export const setIamPolicyProjectsLocationsServices: API.OperationMethod<
   SetIamPolicyProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsServicesRequest,
-  output: GoogleIamV1Policy,
+  input: __S(162) as any as S.Schema<SetIamPolicyProjectsLocationsServicesRequest>,
+  output: __S(107) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3961,8 +3007,8 @@ export const setIamPolicyProjectsLocationsWorkerPools: API.OperationMethod<
   SetIamPolicyProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsWorkerPoolsRequest,
-  output: GoogleIamV1Policy,
+  input: __S(163) as any as S.Schema<SetIamPolicyProjectsLocationsWorkerPoolsRequest>,
+  output: __S(107) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3981,8 +3027,8 @@ export const startProjectsLocationsInstances: API.OperationMethod<
   StartProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartProjectsLocationsInstancesRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(164) as any as S.Schema<StartProjectsLocationsInstancesRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4001,8 +3047,8 @@ export const stopProjectsLocationsInstances: API.OperationMethod<
   StopProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopProjectsLocationsInstancesRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(165) as any as S.Schema<StopProjectsLocationsInstancesRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4021,8 +3067,8 @@ export const submitProjectsLocationsBuilds: API.OperationMethod<
   SubmitProjectsLocationsBuildsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubmitProjectsLocationsBuildsRequest,
-  output: GoogleCloudRunV2SubmitBuildResponse,
+  input: __S(169) as any as S.Schema<SubmitProjectsLocationsBuildsRequest>,
+  output: __S(170) as any as S.Schema<GoogleCloudRunV2SubmitBuildResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4041,8 +3087,8 @@ export const testIamPermissionsProjectsLocationsInstances: API.OperationMethod<
   TestIamPermissionsProjectsLocationsInstancesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsInstancesRequest,
-  output: GoogleIamV1TestIamPermissionsResponse,
+  input: __S(172) as any as S.Schema<TestIamPermissionsProjectsLocationsInstancesRequest>,
+  output: __S(171) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4061,8 +3107,8 @@ export const testIamPermissionsProjectsLocationsJobs: API.OperationMethod<
   TestIamPermissionsProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsJobsRequest,
-  output: GoogleIamV1TestIamPermissionsResponse,
+  input: __S(173) as any as S.Schema<TestIamPermissionsProjectsLocationsJobsRequest>,
+  output: __S(171) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4081,8 +3127,8 @@ export const testIamPermissionsProjectsLocationsServices: API.OperationMethod<
   TestIamPermissionsProjectsLocationsServicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsServicesRequest,
-  output: GoogleIamV1TestIamPermissionsResponse,
+  input: __S(174) as any as S.Schema<TestIamPermissionsProjectsLocationsServicesRequest>,
+  output: __S(171) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4101,8 +3147,8 @@ export const testIamPermissionsProjectsLocationsWorkerPools: API.OperationMethod
   TestIamPermissionsProjectsLocationsWorkerPoolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsWorkerPoolsRequest,
-  output: GoogleIamV1TestIamPermissionsResponse,
+  input: __S(175) as any as S.Schema<TestIamPermissionsProjectsLocationsWorkerPoolsRequest>,
+  output: __S(171) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4121,8 +3167,8 @@ export const uploadProjectsLocationsSourceUploads: API.OperationMethod<
   UploadProjectsLocationsSourceUploadsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadProjectsLocationsSourceUploadsRequest,
-  output: GoogleCloudRunV2UploadSourceResponse,
+  input: __S(177) as any as S.Schema<UploadProjectsLocationsSourceUploadsRequest>,
+  output: __S(178) as any as S.Schema<GoogleCloudRunV2UploadSourceResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4141,8 +3187,8 @@ export const waitProjectsLocationsOperations: API.OperationMethod<
   WaitProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WaitProjectsLocationsOperationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(180) as any as S.Schema<WaitProjectsLocationsOperationsRequest>,
+  output: __S(5) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4164,7 +3210,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRunV2CancelExecutionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4178,13 +3224,13 @@ function __c0(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
     case 5:
@@ -4192,9 +3238,9 @@ function __c0(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          error: S.optional(GoogleRpcStatus),
-          metadata: S.optional(DocumentMap),
-          response: S.optional(DocumentMap),
+          error: S.optional(__S(4)),
+          metadata: S.optional(__S(2)),
+          response: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
@@ -4206,7 +3252,7 @@ function __c0(j: number): any {
         S.Struct({
           network: S.optional(S.String),
           subnetwork: S.optional(S.String),
-          tags: S.optional(StringList),
+          tags: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2NetworkInterface",
@@ -4216,13 +3262,13 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudRunV2NetworkInterface);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           connector: S.optional(S.String),
-          networkInterfaces: S.optional(GoogleCloudRunV2NetworkInterfaceList),
-          egress: S.optional(GoogleCloudRunV2VpcAccessEgressEnum),
+          networkInterfaces: S.optional(__S(8)),
+          egress: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2VpcAccess",
@@ -4240,13 +3286,13 @@ function __c1(j: number): any {
         identifier: "GoogleCloudRunV2VersionToPath",
       });
     case 4:
-      return S.Array(GoogleCloudRunV2VersionToPath);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
           defaultMode: S.optional(S.Number),
           secret: S.optional(S.String),
-          items: S.optional(GoogleCloudRunV2VersionToPathList),
+          items: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2SecretVolumeSource",
@@ -4256,7 +3302,7 @@ function __c1(j: number): any {
         S.Struct({
           bucket: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
-          mountOptions: S.optional(StringList),
+          mountOptions: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2GCSVolumeSource",
@@ -4265,7 +3311,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sizeLimit: S.optional(S.String),
-          medium: S.optional(GoogleCloudRunV2EmptyDirVolumeSourceMediumEnum),
+          medium: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2EmptyDirVolumeSource",
@@ -4277,7 +3323,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          instances: S.optional(StringList),
+          instances: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2CloudSqlInstance",
@@ -4296,15 +3342,15 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          secret: S.optional(GoogleCloudRunV2SecretVolumeSource),
-          gcs: S.optional(GoogleCloudRunV2GCSVolumeSource),
-          emptyDir: S.optional(GoogleCloudRunV2EmptyDirVolumeSource),
-          cloudSqlInstance: S.optional(GoogleCloudRunV2CloudSqlInstance),
-          nfs: S.optional(GoogleCloudRunV2NFSVolumeSource),
+          secret: S.optional(__S(13)),
+          gcs: S.optional(__S(14)),
+          emptyDir: S.optional(__S(15)),
+          cloudSqlInstance: S.optional(__S(16)),
+          nfs: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "GoogleCloudRunV2Volume" });
     case 3:
-      return S.Array(GoogleCloudRunV2Volume);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -4323,7 +3369,7 @@ function __c2(j: number): any {
         identifier: "GoogleCloudRunV2ContainerStatus",
       });
     case 6:
-      return S.Array(GoogleCloudRunV2ContainerStatus);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4355,12 +3401,12 @@ function __c3(j: number): any {
         identifier: "GoogleCloudRunV2HTTPHeader",
       });
     case 2:
-      return S.Array(GoogleCloudRunV2HTTPHeader);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
-          httpHeaders: S.optional(GoogleCloudRunV2HTTPHeaderList),
+          httpHeaders: S.optional(__S(26)),
           port: S.optional(S.Number),
         }),
       ).annotate({
@@ -4371,9 +3417,9 @@ function __c3(j: number): any {
         S.Struct({
           failureThreshold: S.optional(S.Number),
           timeoutSeconds: S.optional(S.Number),
-          grpc: S.optional(GoogleCloudRunV2GRPCAction),
-          tcpSocket: S.optional(GoogleCloudRunV2TCPSocketAction),
-          httpGet: S.optional(GoogleCloudRunV2HTTPGetAction),
+          grpc: S.optional(__S(23)),
+          tcpSocket: S.optional(__S(24)),
+          httpGet: S.optional(__S(27)),
           initialDelaySeconds: S.optional(S.Number),
           periodSeconds: S.optional(S.Number),
         }),
@@ -4389,7 +3435,7 @@ function __c3(j: number): any {
         identifier: "GoogleCloudRunV2VolumeMount",
       });
     case 6:
-      return S.Array(GoogleCloudRunV2VolumeMount);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4414,11 +3460,11 @@ function __c4(j: number): any {
         identifier: "GoogleCloudRunV2SourceFile",
       });
     case 1:
-      return S.Array(GoogleCloudRunV2SourceFile);
+      return S.Array(__S(32));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sources: S.optional(GoogleCloudRunV2SourceFileList),
+          sources: S.optional(__S(33)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2InlinedSource",
@@ -4426,8 +3472,8 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cloudStorageSource: S.optional(GoogleCloudRunV2CloudStorageSource),
-          inlinedSource: S.optional(GoogleCloudRunV2InlinedSource),
+          cloudStorageSource: S.optional(__S(31)),
+          inlinedSource: S.optional(__S(34)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2SourceCode",
@@ -4442,7 +3488,7 @@ function __c4(j: number): any {
         identifier: "GoogleCloudRunV2ContainerPort",
       });
     case 5:
-      return S.Array(GoogleCloudRunV2ContainerPort);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4455,7 +3501,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          secretKeyRef: S.optional(GoogleCloudRunV2SecretKeySelector),
+          secretKeyRef: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2EnvVarSource",
@@ -4469,15 +3515,15 @@ function __c5(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           value: S.optional(S.String),
-          valueSource: S.optional(GoogleCloudRunV2EnvVarSource),
+          valueSource: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "GoogleCloudRunV2EnvVar" });
     case 1:
-      return S.Array(GoogleCloudRunV2EnvVar);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          limits: S.optional(StringMap),
+          limits: S.optional(__S(10)),
           cpuIdle: S.optional(S.Boolean),
           startupCpuBoost: S.optional(S.Boolean),
         }),
@@ -4497,40 +3543,40 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sandboxLauncher: S.optional(S.Boolean),
-          readinessProbe: S.optional(GoogleCloudRunV2Probe),
-          startupProbe: S.optional(GoogleCloudRunV2Probe),
-          volumeMounts: S.optional(GoogleCloudRunV2VolumeMountList),
+          readinessProbe: S.optional(__S(28)),
+          startupProbe: S.optional(__S(28)),
+          volumeMounts: S.optional(__S(30)),
           name: S.optional(S.String),
-          sourceCode: S.optional(GoogleCloudRunV2SourceCode),
-          command: S.optional(StringList),
-          ports: S.optional(GoogleCloudRunV2ContainerPortList),
-          livenessProbe: S.optional(GoogleCloudRunV2Probe),
-          env: S.optional(GoogleCloudRunV2EnvVarList),
+          sourceCode: S.optional(__S(35)),
+          command: S.optional(__S(6)),
+          ports: S.optional(__S(37)),
+          livenessProbe: S.optional(__S(28)),
+          env: S.optional(__S(41)),
           workingDir: S.optional(S.String),
           image: S.optional(S.String),
-          dependsOn: S.optional(StringList),
+          dependsOn: S.optional(__S(6)),
           baseImageUri: S.optional(S.String),
-          resources: S.optional(GoogleCloudRunV2ResourceRequirements),
-          buildInfo: S.optional(GoogleCloudRunV2BuildInfo),
-          args: S.optional(StringList),
+          resources: S.optional(__S(42)),
+          buildInfo: S.optional(__S(43)),
+          args: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2Container",
       });
     case 5:
-      return S.Array(GoogleCloudRunV2Container);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          executionReason: S.optional(GoogleCloudRunV2ConditionExecutionReasonEnum),
-          revisionReason: S.optional(GoogleCloudRunV2ConditionRevisionReasonEnum),
-          reason: S.optional(GoogleCloudRunV2ConditionReasonEnum),
-          instanceReason: S.optional(GoogleCloudRunV2ConditionInstanceReasonEnum),
-          severity: S.optional(GoogleCloudRunV2ConditionSeverityEnum),
+          executionReason: S.optional(S.String),
+          revisionReason: S.optional(S.String),
+          reason: S.optional(S.String),
+          instanceReason: S.optional(S.String),
+          severity: S.optional(S.String),
           message: S.optional(S.String),
           lastTransitionTime: S.optional(S.String),
           type: S.optional(S.String),
-          state: S.optional(GoogleCloudRunV2ConditionStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2Condition",
@@ -4550,51 +3596,49 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudRunV2Condition);
+      return S.Array(__S(46));
     case 1:
       return S.suspend(() =>
         S.Struct({
           clientVersion: S.optional(S.String),
-          vpcAccess: S.optional(GoogleCloudRunV2VpcAccess),
+          vpcAccess: S.optional(__S(9)),
           gpuZonalRedundancyDisabled: S.optional(S.Boolean),
           satisfiesPzs: S.optional(S.Boolean),
           encryptionKeyShutdownDuration: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(10)),
           expireTime: S.optional(S.String),
           creator: S.optional(S.String),
           generation: S.optional(S.String),
-          volumes: S.optional(GoogleCloudRunV2VolumeList),
+          volumes: S.optional(__S(19)),
           iapEnabled: S.optional(S.Boolean),
-          encryptionKeyRevocationAction: S.optional(
-            GoogleCloudRunV2InstanceEncryptionKeyRevocationActionEnum,
-          ),
+          encryptionKeyRevocationAction: S.optional(S.String),
           defaultUriDisabled: S.optional(S.Boolean),
-          nodeSelector: S.optional(GoogleCloudRunV2NodeSelector),
+          nodeSelector: S.optional(__S(20)),
           createTime: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
-          containerStatuses: S.optional(GoogleCloudRunV2ContainerStatusList),
+          containerStatuses: S.optional(__S(22)),
           observedGeneration: S.optional(S.String),
           lastModifier: S.optional(S.String),
           name: S.optional(S.String),
-          annotations: S.optional(StringMap),
+          annotations: S.optional(__S(10)),
           etag: S.optional(S.String),
           logUri: S.optional(S.String),
-          restartPolicy: S.optional(GoogleCloudRunV2InstanceRestartPolicyEnum),
+          restartPolicy: S.optional(S.String),
           sshEnabled: S.optional(S.Boolean),
           encryptionKey: S.optional(S.String),
           invokerIamDisabled: S.optional(S.Boolean),
           uid: S.optional(S.String),
           serviceAccount: S.optional(S.String),
-          containers: S.optional(GoogleCloudRunV2ContainerList),
-          urls: S.optional(StringList),
-          terminalCondition: S.optional(GoogleCloudRunV2Condition),
-          ingress: S.optional(GoogleCloudRunV2InstanceIngressEnum),
-          binaryAuthorization: S.optional(GoogleCloudRunV2BinaryAuthorization),
+          containers: S.optional(__S(45)),
+          urls: S.optional(__S(6)),
+          terminalCondition: S.optional(__S(46)),
+          ingress: S.optional(S.String),
+          binaryAuthorization: S.optional(__S(47)),
           description: S.optional(S.String),
           deleteTime: S.optional(S.String),
-          conditions: S.optional(GoogleCloudRunV2ConditionList),
+          conditions: S.optional(__S(48)),
           updateTime: S.optional(S.String),
-          launchStage: S.optional(GoogleCloudRunV2InstanceLaunchStageEnum),
+          launchStage: S.optional(S.String),
           client: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleCloudRunV2Instance" });
@@ -4604,7 +3648,7 @@ function __c6(j: number): any {
           parent: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           instanceId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudRunV2Instance.pipe(T.HttpBody())),
+          body: S.optional(__S(49).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4619,7 +3663,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           identity: S.optional(S.String),
-          identityType: S.optional(GoogleCloudRunV2WorkloadIdentityConfigIdentityTypeEnum),
+          identityType: S.optional(S.String),
           identityCertificateEnabled: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -4630,15 +3674,15 @@ function __c6(j: number): any {
         S.Struct({
           encryptionKey: S.optional(S.String),
           timeout: S.optional(S.String),
-          containers: S.optional(GoogleCloudRunV2ContainerList),
-          volumes: S.optional(GoogleCloudRunV2VolumeList),
-          vpcAccess: S.optional(GoogleCloudRunV2VpcAccess),
+          containers: S.optional(__S(45)),
+          volumes: S.optional(__S(19)),
+          vpcAccess: S.optional(__S(9)),
           serviceAccount: S.optional(S.String),
-          nodeSelector: S.optional(GoogleCloudRunV2NodeSelector),
+          nodeSelector: S.optional(__S(20)),
           maxRetries: S.optional(S.Number),
-          executionEnvironment: S.optional(GoogleCloudRunV2TaskTemplateExecutionEnvironmentEnum),
+          executionEnvironment: S.optional(S.String),
           gpuZonalRedundancyDisabled: S.optional(S.Boolean),
-          workloadIdentityConfig: S.optional(GoogleCloudRunV2WorkloadIdentityConfig),
+          workloadIdentityConfig: S.optional(__S(51)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2TaskTemplate",
@@ -4647,12 +3691,12 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clientVersion: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(10)),
           taskCount: S.optional(S.Number),
           delayExecution: S.optional(S.Boolean),
           client: S.optional(S.String),
-          annotations: S.optional(StringMap),
-          template: S.optional(GoogleCloudRunV2TaskTemplate),
+          annotations: S.optional(__S(10)),
+          template: S.optional(__S(52)),
           parallelism: S.optional(S.Number),
         }),
       ).annotate({
@@ -4661,7 +3705,7 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          completionStatus: S.optional(GoogleCloudRunV2ExecutionReferenceCompletionStatusEnum),
+          completionStatus: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
           completionTime: S.optional(S.String),
@@ -4677,27 +3721,27 @@ function __c6(j: number): any {
           executionCount: S.optional(S.Number),
           satisfiesPzs: S.optional(S.Boolean),
           startExecutionToken: S.optional(S.String),
-          terminalCondition: S.optional(GoogleCloudRunV2Condition),
-          template: S.optional(GoogleCloudRunV2ExecutionTemplate),
-          labels: S.optional(StringMap),
+          terminalCondition: S.optional(__S(46)),
+          template: S.optional(__S(53)),
+          labels: S.optional(__S(10)),
           lastModifier: S.optional(S.String),
-          launchStage: S.optional(GoogleCloudRunV2JobLaunchStageEnum),
+          launchStage: S.optional(S.String),
           expireTime: S.optional(S.String),
           creator: S.optional(S.String),
           createTime: S.optional(S.String),
           observedGeneration: S.optional(S.String),
           generation: S.optional(S.String),
           updateTime: S.optional(S.String),
-          binaryAuthorization: S.optional(GoogleCloudRunV2BinaryAuthorization),
+          binaryAuthorization: S.optional(__S(47)),
           reconciling: S.optional(S.Boolean),
           deleteTime: S.optional(S.String),
           runExecutionToken: S.optional(S.String),
-          conditions: S.optional(GoogleCloudRunV2ConditionList),
-          latestCreatedExecution: S.optional(GoogleCloudRunV2ExecutionReference),
-          functionalType: S.optional(GoogleCloudRunV2JobFunctionalTypeEnum),
+          conditions: S.optional(__S(48)),
+          latestCreatedExecution: S.optional(__S(54)),
+          functionalType: S.optional(S.String),
           uid: S.optional(S.String),
           client: S.optional(S.String),
-          annotations: S.optional(StringMap),
+          annotations: S.optional(__S(10)),
           name: S.optional(S.String),
           etag: S.optional(S.String),
         }),
@@ -4712,7 +3756,7 @@ function __c7(j: number): any {
           jobId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRunV2Job.pipe(T.HttpBody())),
+          body: S.optional(__S(55).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4728,19 +3772,19 @@ function __c7(j: number): any {
         S.Struct({
           percent: S.optional(S.Number),
           tag: S.optional(S.String),
-          type: S.optional(GoogleCloudRunV2TrafficTargetTypeEnum),
+          type: S.optional(S.String),
           revision: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2TrafficTarget",
       });
     case 2:
-      return S.Array(GoogleCloudRunV2TrafficTarget);
+      return S.Array(__S(57));
     case 3:
       return S.suspend(() =>
         S.Struct({
           multiRegionId: S.optional(S.String),
-          regions: S.optional(StringList),
+          regions: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2MultiRegionSettings",
@@ -4750,7 +3794,7 @@ function __c7(j: number): any {
         S.Struct({
           maxInstanceCount: S.optional(S.Number),
           manualInstanceCount: S.optional(S.Number),
-          scalingMode: S.optional(GoogleCloudRunV2ServiceScalingScalingModeEnum),
+          scalingMode: S.optional(S.String),
           minInstanceCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -4782,28 +3826,24 @@ function __c7(j: number): any {
           clientVersion: S.optional(S.String),
           healthCheckDisabled: S.optional(S.Boolean),
           encryptionKeyShutdownDuration: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(10)),
           timeout: S.optional(S.String),
           maxInstanceRequestConcurrency: S.optional(S.Number),
-          scaling: S.optional(GoogleCloudRunV2RevisionScaling),
+          scaling: S.optional(__S(61)),
           revision: S.optional(S.String),
-          serviceMesh: S.optional(GoogleCloudRunV2ServiceMesh),
-          encryptionKeyRevocationAction: S.optional(
-            GoogleCloudRunV2RevisionTemplateEncryptionKeyRevocationActionEnum,
-          ),
-          containers: S.optional(GoogleCloudRunV2ContainerList),
-          workloadIdentityConfig: S.optional(GoogleCloudRunV2WorkloadIdentityConfig),
+          serviceMesh: S.optional(__S(62)),
+          encryptionKeyRevocationAction: S.optional(S.String),
+          containers: S.optional(__S(45)),
+          workloadIdentityConfig: S.optional(__S(51)),
           client: S.optional(S.String),
           gpuZonalRedundancyDisabled: S.optional(S.Boolean),
-          nodeSelector: S.optional(GoogleCloudRunV2NodeSelector),
+          nodeSelector: S.optional(__S(20)),
           sessionAffinity: S.optional(S.Boolean),
-          vpcAccess: S.optional(GoogleCloudRunV2VpcAccess),
-          annotations: S.optional(StringMap),
+          vpcAccess: S.optional(__S(9)),
+          annotations: S.optional(__S(10)),
           serviceAccount: S.optional(S.String),
-          volumes: S.optional(GoogleCloudRunV2VolumeList),
-          executionEnvironment: S.optional(
-            GoogleCloudRunV2RevisionTemplateExecutionEnvironmentEnum,
-          ),
+          volumes: S.optional(__S(19)),
+          executionEnvironment: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2RevisionTemplate",
@@ -4817,7 +3857,7 @@ function __c8(j: number): any {
         S.Struct({
           workerPool: S.optional(S.String),
           enableAutomaticUpdates: S.optional(S.Boolean),
-          environmentVariables: S.optional(StringMap),
+          environmentVariables: S.optional(__S(10)),
           imageUri: S.optional(S.String),
           functionTarget: S.optional(S.String),
           name: S.optional(S.String),
@@ -4833,7 +3873,7 @@ function __c8(j: number): any {
         S.Struct({
           revision: S.optional(S.String),
           tag: S.optional(S.String),
-          type: S.optional(GoogleCloudRunV2TrafficTargetStatusTypeEnum),
+          type: S.optional(S.String),
           uri: S.optional(S.String),
           percent: S.optional(S.Number),
         }),
@@ -4841,48 +3881,48 @@ function __c8(j: number): any {
         identifier: "GoogleCloudRunV2TrafficTargetStatus",
       });
     case 2:
-      return S.Array(GoogleCloudRunV2TrafficTargetStatus);
+      return S.Array(__S(65));
     case 3:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          traffic: S.optional(GoogleCloudRunV2TrafficTargetList),
+          traffic: S.optional(__S(58)),
           deleteTime: S.optional(S.String),
-          conditions: S.optional(GoogleCloudRunV2ConditionList),
-          multiRegionSettings: S.optional(GoogleCloudRunV2MultiRegionSettings),
-          scaling: S.optional(GoogleCloudRunV2ServiceScaling),
-          customAudiences: S.optional(StringList),
-          annotations: S.optional(StringMap),
-          urls: S.optional(StringList),
+          conditions: S.optional(__S(48)),
+          multiRegionSettings: S.optional(__S(59)),
+          scaling: S.optional(__S(60)),
+          customAudiences: S.optional(__S(6)),
+          annotations: S.optional(__S(10)),
+          urls: S.optional(__S(6)),
           uid: S.optional(S.String),
           observedGeneration: S.optional(S.String),
           satisfiesPzs: S.optional(S.Boolean),
-          functionalType: S.optional(GoogleCloudRunV2ServiceFunctionalTypeEnum),
+          functionalType: S.optional(S.String),
           defaultUriDisabled: S.optional(S.Boolean),
-          ingress: S.optional(GoogleCloudRunV2ServiceIngressEnum),
-          labels: S.optional(StringMap),
-          template: S.optional(GoogleCloudRunV2RevisionTemplate),
+          ingress: S.optional(S.String),
+          labels: S.optional(__S(10)),
+          template: S.optional(__S(63)),
           reconciling: S.optional(S.Boolean),
           sshEnabled: S.optional(S.Boolean),
           latestReadyRevision: S.optional(S.String),
           threatDetectionEnabled: S.optional(S.Boolean),
           lastModifier: S.optional(S.String),
-          buildConfig: S.optional(GoogleCloudRunV2BuildConfig),
-          launchStage: S.optional(GoogleCloudRunV2ServiceLaunchStageEnum),
+          buildConfig: S.optional(__S(64)),
+          launchStage: S.optional(S.String),
           latestCreatedRevision: S.optional(S.String),
           description: S.optional(S.String),
-          binaryAuthorization: S.optional(GoogleCloudRunV2BinaryAuthorization),
+          binaryAuthorization: S.optional(__S(47)),
           client: S.optional(S.String),
           expireTime: S.optional(S.String),
           name: S.optional(S.String),
-          trafficStatuses: S.optional(GoogleCloudRunV2TrafficTargetStatusList),
+          trafficStatuses: S.optional(__S(66)),
           etag: S.optional(S.String),
           uri: S.optional(S.String),
           createTime: S.optional(S.String),
           iapEnabled: S.optional(S.Boolean),
           creator: S.optional(S.String),
           invokerIamDisabled: S.optional(S.Boolean),
-          terminalCondition: S.optional(GoogleCloudRunV2Condition),
+          terminalCondition: S.optional(__S(46)),
           generation: S.optional(S.String),
           clientVersion: S.optional(S.String),
         }),
@@ -4893,7 +3933,7 @@ function __c8(j: number): any {
           parent: S.String.pipe(T.Label()),
           serviceId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(GoogleCloudRunV2Service.pipe(T.HttpBody())),
+          body: S.optional(__S(67).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4909,13 +3949,13 @@ function __c8(j: number): any {
         S.Struct({
           percent: S.optional(S.Number),
           revision: S.optional(S.String),
-          type: S.optional(GoogleCloudRunV2InstanceSplitStatusTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2InstanceSplitStatus",
       });
     case 6:
-      return S.Array(GoogleCloudRunV2InstanceSplitStatus);
+      return S.Array(__S(69));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -4931,21 +3971,19 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          nodeSelector: S.optional(GoogleCloudRunV2NodeSelector),
-          vpcAccess: S.optional(GoogleCloudRunV2VpcAccess),
-          labels: S.optional(StringMap),
+          nodeSelector: S.optional(__S(20)),
+          vpcAccess: S.optional(__S(9)),
+          labels: S.optional(__S(10)),
           encryptionKey: S.optional(S.String),
           clientVersion: S.optional(S.String),
-          encryptionKeyRevocationAction: S.optional(
-            GoogleCloudRunV2WorkerPoolRevisionTemplateEncryptionKeyRevocationActionEnum,
-          ),
+          encryptionKeyRevocationAction: S.optional(S.String),
           gpuZonalRedundancyDisabled: S.optional(S.Boolean),
           revision: S.optional(S.String),
-          serviceMesh: S.optional(GoogleCloudRunV2ServiceMesh),
+          serviceMesh: S.optional(__S(62)),
           encryptionKeyShutdownDuration: S.optional(S.String),
-          annotations: S.optional(StringMap),
-          volumes: S.optional(GoogleCloudRunV2VolumeList),
-          containers: S.optional(GoogleCloudRunV2ContainerList),
+          annotations: S.optional(__S(10)),
+          volumes: S.optional(__S(19)),
+          containers: S.optional(__S(45)),
           serviceAccount: S.optional(S.String),
           client: S.optional(S.String),
         }),
@@ -4956,31 +3994,31 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           percent: S.optional(S.Number),
-          type: S.optional(GoogleCloudRunV2InstanceSplitTypeEnum),
+          type: S.optional(S.String),
           revision: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2InstanceSplit",
       });
     case 2:
-      return S.Array(GoogleCloudRunV2InstanceSplit);
+      return S.Array(__S(73));
     case 3:
       return S.suspend(() =>
         S.Struct({
           observedGeneration: S.optional(S.String),
-          instanceSplitStatuses: S.optional(GoogleCloudRunV2InstanceSplitStatusList),
-          binaryAuthorization: S.optional(GoogleCloudRunV2BinaryAuthorization),
-          terminalCondition: S.optional(GoogleCloudRunV2Condition),
+          instanceSplitStatuses: S.optional(__S(70)),
+          binaryAuthorization: S.optional(__S(47)),
+          terminalCondition: S.optional(__S(46)),
           latestCreatedRevision: S.optional(S.String),
           expireTime: S.optional(S.String),
           generation: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
           createTime: S.optional(S.String),
-          scaling: S.optional(GoogleCloudRunV2WorkerPoolScaling),
-          annotations: S.optional(StringMap),
-          template: S.optional(GoogleCloudRunV2WorkerPoolRevisionTemplate),
+          scaling: S.optional(__S(71)),
+          annotations: S.optional(__S(10)),
+          template: S.optional(__S(72)),
           clientVersion: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(10)),
           uid: S.optional(S.String),
           client: S.optional(S.String),
           threatDetectionEnabled: S.optional(S.Boolean),
@@ -4989,14 +4027,14 @@ function __c9(j: number): any {
           latestReadyRevision: S.optional(S.String),
           description: S.optional(S.String),
           deleteTime: S.optional(S.String),
-          customAudiences: S.optional(StringList),
-          conditions: S.optional(GoogleCloudRunV2ConditionList),
+          customAudiences: S.optional(__S(6)),
+          conditions: S.optional(__S(48)),
           updateTime: S.optional(S.String),
-          launchStage: S.optional(GoogleCloudRunV2WorkerPoolLaunchStageEnum),
+          launchStage: S.optional(S.String),
           name: S.optional(S.String),
           etag: S.optional(S.String),
           lastModifier: S.optional(S.String),
-          instanceSplits: S.optional(GoogleCloudRunV2InstanceSplitList),
+          instanceSplits: S.optional(__S(74)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2WorkerPool",
@@ -5007,7 +4045,7 @@ function __c9(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           workerPoolId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRunV2WorkerPool.pipe(T.HttpBody())),
+          body: S.optional(__S(75).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5156,7 +4194,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRunV2ExportImageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(88).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5223,7 +4261,7 @@ function __c11(j: number): any {
         S.Struct({
           message: S.optional(S.String),
           canonicalCode: S.optional(S.Number),
-          messageSet: S.optional(Proto2BridgeMessageSet),
+          messageSet: S.optional(__S(81)),
           space: S.optional(S.String),
           code: S.optional(S.Number),
         }),
@@ -5231,9 +4269,9 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(UtilStatusProto),
+          status: S.optional(__S(94)),
           exportedImageDigest: S.optional(S.String),
-          exportJobState: S.optional(GoogleCloudRunV2ImageExportStatusExportJobStateEnum),
+          exportJobState: S.optional(S.String),
           tag: S.optional(S.String),
         }),
       ).annotate({
@@ -5244,12 +4282,12 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudRunV2ImageExportStatus);
+      return S.Array(__S(95));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          imageExportStatuses: S.optional(GoogleCloudRunV2ImageExportStatusList),
-          operationState: S.optional(GoogleCloudRunV2ExportStatusResponseOperationStateEnum),
+          imageExportStatuses: S.optional(__S(96)),
+          operationState: S.optional(S.String),
           operationId: S.optional(S.String),
         }),
       ).annotate({
@@ -5288,23 +4326,23 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(GoogleIamV1AuditLogConfigLogTypeEnum),
-          exemptedMembers: S.optional(StringList),
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "GoogleIamV1AuditLogConfig",
       });
     case 5:
-      return S.Array(GoogleIamV1AuditLogConfig);
+      return S.Array(__S(100));
     case 6:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(GoogleIamV1AuditLogConfigList),
+          auditLogConfigs: S.optional(__S(101)),
         }),
       ).annotate({ identifier: "GoogleIamV1AuditConfig" });
     case 7:
-      return S.Array(GoogleIamV1AuditConfig);
+      return S.Array(__S(102));
   }
 }
 function __c13(j: number): any {
@@ -5322,18 +4360,18 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          members: S.optional(StringList),
-          condition: S.optional(GoogleTypeExpr),
+          members: S.optional(__S(6)),
+          condition: S.optional(__S(104)),
         }),
       ).annotate({ identifier: "GoogleIamV1Binding" });
     case 2:
-      return S.Array(GoogleIamV1Binding);
+      return S.Array(__S(105));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          auditConfigs: S.optional(GoogleIamV1AuditConfigList),
+          auditConfigs: S.optional(__S(103)),
           etag: S.optional(S.String),
-          bindings: S.optional(GoogleIamV1BindingList),
+          bindings: S.optional(__S(106)),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleIamV1Policy" });
@@ -5428,11 +4466,11 @@ function __c14(j: number): any {
           reconciling: S.optional(S.Boolean),
           parallelism: S.optional(S.Number),
           observedGeneration: S.optional(S.String),
-          annotations: S.optional(StringMap),
+          annotations: S.optional(__S(10)),
           completionTime: S.optional(S.String),
           deleteTime: S.optional(S.String),
-          labels: S.optional(StringMap),
-          conditions: S.optional(GoogleCloudRunV2ConditionList),
+          labels: S.optional(__S(10)),
+          conditions: S.optional(__S(48)),
           retriedCount: S.optional(S.Number),
           updateTime: S.optional(S.String),
           generation: S.optional(S.String),
@@ -5445,10 +4483,10 @@ function __c14(j: number): any {
           etag: S.optional(S.String),
           uid: S.optional(S.String),
           name: S.optional(S.String),
-          launchStage: S.optional(GoogleCloudRunV2ExecutionLaunchStageEnum),
+          launchStage: S.optional(S.String),
           cancelledCount: S.optional(S.Number),
           satisfiesPzs: S.optional(S.Boolean),
-          template: S.optional(GoogleCloudRunV2TaskTemplate),
+          template: S.optional(__S(52)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2Execution",
@@ -5466,7 +4504,7 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(GoogleRpcStatus),
+          status: S.optional(__S(4)),
           exitCode: S.optional(S.Number),
           termSignal: S.optional(S.Number),
         }),
@@ -5484,30 +4522,30 @@ function __c14(j: number): any {
           createTime: S.optional(S.String),
           job: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
-          executionEnvironment: S.optional(GoogleCloudRunV2TaskExecutionEnvironmentEnum),
-          nodeSelector: S.optional(GoogleCloudRunV2NodeSelector),
+          executionEnvironment: S.optional(S.String),
+          nodeSelector: S.optional(__S(20)),
           expireTime: S.optional(S.String),
           retried: S.optional(S.Number),
-          lastAttemptResult: S.optional(GoogleCloudRunV2TaskAttemptResult),
-          annotations: S.optional(StringMap),
+          lastAttemptResult: S.optional(__S(116)),
+          annotations: S.optional(__S(10)),
           maxRetries: S.optional(S.Number),
           observedGeneration: S.optional(S.String),
           index: S.optional(S.Number),
-          vpcAccess: S.optional(GoogleCloudRunV2VpcAccess),
-          workloadIdentityConfig: S.optional(GoogleCloudRunV2WorkloadIdentityConfig),
-          containers: S.optional(GoogleCloudRunV2ContainerList),
+          vpcAccess: S.optional(__S(9)),
+          workloadIdentityConfig: S.optional(__S(51)),
+          containers: S.optional(__S(45)),
           startTime: S.optional(S.String),
           scheduledTime: S.optional(S.String),
           execution: S.optional(S.String),
           logUri: S.optional(S.String),
           timeout: S.optional(S.String),
           serviceAccount: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(10)),
           completionTime: S.optional(S.String),
-          volumes: S.optional(GoogleCloudRunV2VolumeList),
+          volumes: S.optional(__S(19)),
           deleteTime: S.optional(S.String),
           uid: S.optional(S.String),
-          conditions: S.optional(GoogleCloudRunV2ConditionList),
+          conditions: S.optional(__S(48)),
           updateTime: S.optional(S.String),
           gpuZonalRedundancyDisabled: S.optional(S.Boolean),
         }),
@@ -5557,45 +4595,43 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          volumes: S.optional(GoogleCloudRunV2VolumeList),
+          volumes: S.optional(__S(19)),
           logUri: S.optional(S.String),
           encryptionKeyShutdownDuration: S.optional(S.String),
-          executionEnvironment: S.optional(GoogleCloudRunV2RevisionExecutionEnvironmentEnum),
+          executionEnvironment: S.optional(S.String),
           maxInstanceRequestConcurrency: S.optional(S.Number),
-          scalingStatus: S.optional(GoogleCloudRunV2RevisionScalingStatus),
+          scalingStatus: S.optional(__S(121)),
           gpuZonalRedundancyDisabled: S.optional(S.Boolean),
           creator: S.optional(S.String),
-          encryptionKeyRevocationAction: S.optional(
-            GoogleCloudRunV2RevisionEncryptionKeyRevocationActionEnum,
-          ),
+          encryptionKeyRevocationAction: S.optional(S.String),
           sessionAffinity: S.optional(S.Boolean),
           expireTime: S.optional(S.String),
-          launchStage: S.optional(GoogleCloudRunV2RevisionLaunchStageEnum),
+          launchStage: S.optional(S.String),
           timeout: S.optional(S.String),
           clientVersion: S.optional(S.String),
           createTime: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(10)),
           generation: S.optional(S.String),
           serviceAccount: S.optional(S.String),
           updateTime: S.optional(S.String),
           deleteTime: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
-          conditions: S.optional(GoogleCloudRunV2ConditionList),
+          conditions: S.optional(__S(48)),
           client: S.optional(S.String),
           name: S.optional(S.String),
           etag: S.optional(S.String),
-          serviceMesh: S.optional(GoogleCloudRunV2ServiceMesh),
-          workloadIdentityConfig: S.optional(GoogleCloudRunV2WorkloadIdentityConfig),
-          vpcAccess: S.optional(GoogleCloudRunV2VpcAccess),
-          scaling: S.optional(GoogleCloudRunV2RevisionScaling),
+          serviceMesh: S.optional(__S(62)),
+          workloadIdentityConfig: S.optional(__S(51)),
+          vpcAccess: S.optional(__S(9)),
+          scaling: S.optional(__S(61)),
           satisfiesPzs: S.optional(S.Boolean),
           encryptionKey: S.optional(S.String),
           uid: S.optional(S.String),
-          annotations: S.optional(StringMap),
+          annotations: S.optional(__S(10)),
           observedGeneration: S.optional(S.String),
           service: S.optional(S.String),
-          nodeSelector: S.optional(GoogleCloudRunV2NodeSelector),
-          containers: S.optional(GoogleCloudRunV2ContainerList),
+          nodeSelector: S.optional(__S(20)),
+          containers: S.optional(__S(45)),
         }),
       ).annotate({ identifier: "GoogleCloudRunV2Revision" });
     case 3:
@@ -5636,12 +4672,12 @@ function __c15(j: number): any {
         identifier: "ListProjectsLocationsInstancesRequest",
       });
     case 6:
-      return S.Array(GoogleCloudRunV2Instance);
+      return S.Array(__S(49));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          instances: S.optional(GoogleCloudRunV2InstanceList),
+          instances: S.optional(__S(126)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2ListInstancesResponse",
@@ -5668,12 +4704,12 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsJobsRequest",
       });
     case 1:
-      return S.Array(GoogleCloudRunV2Job);
+      return S.Array(__S(55));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          jobs: S.optional(GoogleCloudRunV2JobList),
+          jobs: S.optional(__S(129)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2ListJobsResponse",
@@ -5696,11 +4732,11 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsJobsExecutionsRequest",
       });
     case 4:
-      return S.Array(GoogleCloudRunV2Execution);
+      return S.Array(__S(114));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          executions: S.optional(GoogleCloudRunV2ExecutionList),
+          executions: S.optional(__S(132)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5724,7 +4760,7 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsJobsExecutionsTasksRequest",
       });
     case 7:
-      return S.Array(GoogleCloudRunV2Task);
+      return S.Array(__S(117));
   }
 }
 function __c17(j: number): any {
@@ -5733,7 +4769,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          tasks: S.optional(GoogleCloudRunV2TaskList),
+          tasks: S.optional(__S(135)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2ListTasksResponse",
@@ -5757,13 +4793,13 @@ function __c17(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 2:
-      return S.Array(GoogleLongrunningOperation);
+      return S.Array(__S(5));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(GoogleLongrunningOperationList),
+          operations: S.optional(__S(138)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
@@ -5786,12 +4822,12 @@ function __c17(j: number): any {
         identifier: "ListProjectsLocationsServicesRequest",
       });
     case 5:
-      return S.Array(GoogleCloudRunV2Service);
+      return S.Array(__S(67));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          services: S.optional(GoogleCloudRunV2ServiceList),
-          unreachable: S.optional(StringList),
+          services: S.optional(__S(141)),
+          unreachable: S.optional(__S(6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5819,12 +4855,12 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudRunV2Revision);
+      return S.Array(__S(122));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          revisions: S.optional(GoogleCloudRunV2RevisionList),
+          revisions: S.optional(__S(144)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2ListRevisionsResponse",
@@ -5847,11 +4883,11 @@ function __c18(j: number): any {
         identifier: "ListProjectsLocationsWorkerPoolsRequest",
       });
     case 3:
-      return S.Array(GoogleCloudRunV2WorkerPool);
+      return S.Array(__S(75));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          workerPools: S.optional(GoogleCloudRunV2WorkerPoolList),
+          workerPools: S.optional(__S(147)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5881,7 +4917,7 @@ function __c18(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudRunV2Instance.pipe(T.HttpBody())),
+          body: S.optional(__S(49).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://run.googleapis.com/" }),
         ),
@@ -5894,7 +4930,7 @@ function __c18(j: number): any {
           name: S.String.pipe(T.Label()),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(GoogleCloudRunV2Job.pipe(T.HttpBody())),
+          body: S.optional(__S(55).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://run.googleapis.com/" }),
         ),
@@ -5913,7 +4949,7 @@ function __c19(j: number): any {
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(GoogleCloudRunV2Service.pipe(T.HttpBody())),
+          body: S.optional(__S(67).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://run.googleapis.com/" }),
         ),
@@ -5928,7 +4964,7 @@ function __c19(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           forceNewRevision: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(GoogleCloudRunV2WorkerPool.pipe(T.HttpBody())),
+          body: S.optional(__S(75).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v2/{+name}", baseUrl: "https://run.googleapis.com/" }),
         ),
@@ -5938,8 +4974,8 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          args: S.optional(StringList),
-          env: S.optional(GoogleCloudRunV2EnvVarList),
+          args: S.optional(__S(6)),
+          env: S.optional(__S(41)),
           clearArgs: S.optional(S.Boolean),
           name: S.optional(S.String),
         }),
@@ -5947,12 +4983,12 @@ function __c19(j: number): any {
         identifier: "GoogleCloudRunV2ContainerOverride",
       });
     case 3:
-      return S.Array(GoogleCloudRunV2ContainerOverride);
+      return S.Array(__S(154));
     case 4:
       return S.suspend(() =>
         S.Struct({
           timeout: S.optional(S.String),
-          containerOverrides: S.optional(GoogleCloudRunV2ContainerOverrideList),
+          containerOverrides: S.optional(__S(155)),
           delayExecution: S.optional(S.Boolean),
           taskCount: S.optional(S.Number),
         }),
@@ -5964,7 +5000,7 @@ function __c19(j: number): any {
         S.Struct({
           validateOnly: S.optional(S.Boolean),
           etag: S.optional(S.String),
-          overrides: S.optional(GoogleCloudRunV2Overrides),
+          overrides: S.optional(__S(156)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2RunJobRequest",
@@ -5973,7 +5009,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRunV2RunJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(157).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v2/{+name}:run", baseUrl: "https://run.googleapis.com/" }),
         ),
@@ -5984,7 +5020,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          policy: S.optional(GoogleIamV1Policy),
+          policy: S.optional(__S(107)),
         }),
       ).annotate({
         identifier: "GoogleIamV1SetIamPolicyRequest",
@@ -5997,7 +5033,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(159).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6012,7 +5048,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(159).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6027,7 +5063,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(159).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6042,7 +5078,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(159).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6057,7 +5093,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRunV2StartInstanceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6072,7 +5108,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRunV2StartInstanceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6102,7 +5138,7 @@ function __c20(j: number): any {
           enableAutomaticUpdates: S.optional(S.Boolean),
           runtime: S.optional(S.String),
           projectDescriptor: S.optional(S.String),
-          environmentVariables: S.optional(StringMap),
+          environmentVariables: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2BuildpacksBuild",
@@ -6114,16 +5150,16 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dockerBuild: S.optional(Proto2BridgeMessageSet),
-          tags: S.optional(StringList),
+          dockerBuild: S.optional(__S(81)),
+          tags: S.optional(__S(6)),
           client: S.optional(S.String),
           imageUri: S.optional(S.String),
           serviceAccount: S.optional(S.String),
-          storageSource: S.optional(GoogleCloudRunV2StorageSource),
+          storageSource: S.optional(__S(166)),
           workerPool: S.optional(S.String),
           machineType: S.optional(S.String),
-          buildpackBuild: S.optional(GoogleCloudRunV2BuildpacksBuild),
-          releaseTrack: S.optional(GoogleCloudRunV2SubmitBuildRequestReleaseTrackEnum),
+          buildpackBuild: S.optional(__S(167)),
+          releaseTrack: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2SubmitBuildRequest",
@@ -6132,7 +5168,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRunV2SubmitBuildRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(168).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6147,7 +5183,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           baseImageWarning: S.optional(S.String),
-          buildOperation: S.optional(GoogleLongrunningOperation),
+          buildOperation: S.optional(__S(5)),
           baseImageUri: S.optional(S.String),
         }),
       ).annotate({
@@ -6156,7 +5192,7 @@ function __c21(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "GoogleIamV1TestIamPermissionsRequest",
@@ -6165,7 +5201,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(171).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6180,7 +5216,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(171).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6195,7 +5231,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(171).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6210,7 +5246,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(171).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6237,7 +5273,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudRunV2UploadSourceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(176).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6251,7 +5287,7 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cloudStorageSource: S.optional(GoogleCloudRunV2CloudStorageSource),
+          cloudStorageSource: S.optional(__S(31)),
         }),
       ).annotate({
         identifier: "GoogleCloudRunV2UploadSourceResponse",
@@ -6268,7 +5304,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleLongrunningWaitOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(179).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6279,5 +5315,60 @@ function __c22(j: number): any {
       ).annotate({
         identifier: "WaitProjectsLocationsOperationsRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
   }
 }

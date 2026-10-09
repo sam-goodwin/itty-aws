@@ -6,6 +6,8 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -15,14 +17,10 @@ export interface DialogOpenRequest {
   /** Exchange a trigger to post to the user. */
   trigger_id: string;
 }
-const DialogOpenRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DialogOpenRequest>;
-
 export interface DialogOpenResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const DialogOpenResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DialogOpenResponse>;
-
 export type DialogOpenError = SlackOpError;
 /** Open a dialog with a user Rate limit tier: 4 Method-specific errors (the `error` slug on the SlackError): - `app_missing_action_url` -- The app associated with the used token doesn't have a Action URL configured in its interactive components settings. - `cannot_create_dialog` -- Something exceptional occurred and the dialog could not be created. - `failed_sending_dialog` -- Something exceptional occurred and the dialog could not be sent. - `invalid_trigger` -- The provided `trigger_id` is invalid or cannot be used by this token. - `missing_dialog` -- No `dialog` argument was presented. - `missing_trigger` -- No `trigger_id` argument was presented. - `trigger_exchanged` -- The provided `trigger_id` has already been exchanged. - `trigger_expired` -- The provided `trigger_id` was presented after the 3 second limit. - `validation_errors` -- The provided `dialog` could not be validated. See https://docs.slack.dev/reference/methods/dialog.open */
 export const dialogOpen: API.OperationMethod<
@@ -31,8 +29,8 @@ export const dialogOpen: API.OperationMethod<
   DialogOpenError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DialogOpenRequest,
-  output: DialogOpenResponse,
+  input: __S(0) as any as S.Schema<DialogOpenRequest>,
+  output: __S(1) as any as S.Schema<DialogOpenResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -54,5 +52,16 @@ function __c0(j: number): any {
           ok: S.Boolean,
         }),
       ).annotate({ identifier: "DialogOpenResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 1) {
+    case 0:
+      return __c0(i & 1);
   }
 }

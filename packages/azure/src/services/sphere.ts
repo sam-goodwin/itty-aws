@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,34 +19,14 @@ export interface CatalogsCountDevicesRequest {
   /** Name of catalog */
   catalogName: string;
 }
-const CatalogsCountDevicesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CatalogsCountDevicesRequest>;
-
 export interface CatalogsCountDevicesResponse {
   /** Number of children resources in parent resource. */
   value: number;
 }
-const CatalogsCountDevicesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CatalogsCountDevicesResponse>;
-
 /** Resource tags. */
 export type CatalogsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const CatalogsCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CatalogsCreateOrUpdateRequestTagsMap>;
-
 /** Catalog properties */
 export interface CatalogPropertiesInput {}
-const CatalogPropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CatalogPropertiesInput>;
-
 export interface CatalogsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -59,19 +41,10 @@ export interface CatalogsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: CatalogPropertiesInput;
 }
-const CatalogsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CatalogsCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -87,13 +60,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SystemData>;
-
 /** Resource tags. */
 export type CatalogsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const CatalogsCreateOrUpdateResponseTagsMap =
-  CatalogsCreateOrUpdateRequestTagsMap as any as S.Schema<CatalogsCreateOrUpdateResponseTagsMap>;
-
 /** Provisioning state of resource. */
 export type ProvisioningState =
   | "Succeeded"
@@ -103,8 +71,6 @@ export type ProvisioningState =
   | "Updating"
   | "Deleting"
   | "Accepted";
-const ProvisioningState = S.String;
-
 /** Catalog properties */
 export interface CatalogProperties {
   /** The Azure Sphere tenant ID associated with the catalog. */
@@ -112,8 +78,6 @@ export interface CatalogProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-const CatalogProperties = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CatalogProperties>;
-
 export interface CatalogsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -130,18 +94,8 @@ export interface CatalogsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: CatalogProperties;
 }
-const CatalogsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CatalogsCreateOrUpdateResponse>;
-
 /** Device identifiers of the devices to be claimed. */
 export type ClaimDeviceGroupDevicesRequestDeviceIdentifiersList = Array<string>;
-const ClaimDeviceGroupDevicesRequestDeviceIdentifiersList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ClaimDeviceGroupDevicesRequestDeviceIdentifiersList>;
-
 export interface ClaimDeviceGroupDevicesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -156,17 +110,7 @@ export interface ClaimDeviceGroupDevicesRequest {
   /** Device identifiers of the devices to be claimed. */
   deviceIdentifiers: ClaimDeviceGroupDevicesRequestDeviceIdentifiersList;
 }
-const ClaimDeviceGroupDevicesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ClaimDeviceGroupDevicesRequest>;
-
 export interface ClaimDeviceGroupDevicesResponse {}
-const ClaimDeviceGroupDevicesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ClaimDeviceGroupDevicesResponse>;
-
 export interface DeleteCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -175,11 +119,7 @@ export interface DeleteCatalogRequest {
   /** Name of catalog */
   catalogName: string;
 }
-const DeleteCatalogRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteCatalogRequest>;
-
 export interface DeleteCatalogResponse {}
-const DeleteCatalogResponse = CatalogPropertiesInput as any as S.Schema<DeleteCatalogResponse>;
-
 export interface DeleteDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -194,15 +134,7 @@ export interface DeleteDeploymentRequest {
   /** Deployment name. Use .default for deployment creation and to get the current deployment for the associated device group. */
   deploymentName: string;
 }
-const DeleteDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteDeploymentRequest>;
-
 export interface DeleteDeploymentResponse {}
-const DeleteDeploymentResponse =
-  CatalogPropertiesInput as any as S.Schema<DeleteDeploymentResponse>;
-
 export interface DeleteDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -217,11 +149,7 @@ export interface DeleteDeviceRequest {
   /** Device name */
   deviceName: string;
 }
-const DeleteDeviceRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DeleteDeviceRequest>;
-
 export interface DeleteDeviceResponse {}
-const DeleteDeviceResponse = CatalogPropertiesInput as any as S.Schema<DeleteDeviceResponse>;
-
 export interface DeleteDeviceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -234,15 +162,7 @@ export interface DeleteDeviceGroupRequest {
   /** Name of device group. */
   deviceGroupName: string;
 }
-const DeleteDeviceGroupRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteDeviceGroupRequest>;
-
 export interface DeleteDeviceGroupResponse {}
-const DeleteDeviceGroupResponse =
-  CatalogPropertiesInput as any as S.Schema<DeleteDeviceGroupResponse>;
-
 export interface DeleteImageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -253,11 +173,7 @@ export interface DeleteImageRequest {
   /** Image name. Use an image GUID for GA versions of the API. */
   imageName: string;
 }
-const DeleteImageRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteImageRequest>;
-
 export interface DeleteImageResponse {}
-const DeleteImageResponse = CatalogPropertiesInput as any as S.Schema<DeleteImageResponse>;
-
 export interface DeleteProductRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -268,15 +184,9 @@ export interface DeleteProductRequest {
   /** Name of product. */
   productName: string;
 }
-const DeleteProductRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteProductRequest>;
-
 export interface DeleteProductResponse {}
-const DeleteProductResponse = CatalogPropertiesInput as any as S.Schema<DeleteProductResponse>;
-
 /** Regional data boundary values. */
 export type RegionalDataBoundary = "None" | "EU";
-const RegionalDataBoundary = S.String;
-
 /** The properties of image */
 export interface ImagePropertiesInput {
   /** Image as a UTF-8 encoded base 64 string on image create. This field contains the image URI on image reads. */
@@ -286,22 +196,13 @@ export interface ImagePropertiesInput {
   /** Regional data boundary for an image */
   regionalDataBoundary?: RegionalDataBoundary | (string & {});
 }
-const ImagePropertiesInput = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ImagePropertiesInput>;
-
 /** An image resource belonging to a catalog resource. */
 export interface ImageInput {
   /** The resource-specific properties for this resource. */
   properties?: ImagePropertiesInput;
 }
-const ImageInput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ImageInput>;
-
 /** Images deployed */
 export type DeploymentPropertiesInputDeployedImagesList = Array<ImageInput>;
-const DeploymentPropertiesInputDeployedImagesList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeploymentPropertiesInputDeployedImagesList>;
-
 /** The properties of deployment */
 export interface DeploymentPropertiesInput {
   /** Deployment ID */
@@ -309,11 +210,6 @@ export interface DeploymentPropertiesInput {
   /** Images deployed */
   deployedImages?: DeploymentPropertiesInputDeployedImagesList;
 }
-const DeploymentPropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeploymentPropertiesInput>;
-
 export interface DeploymentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -330,11 +226,6 @@ export interface DeploymentsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DeploymentPropertiesInput;
 }
-const DeploymentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeploymentsCreateOrUpdateRequest>;
-
 /** Image type values. */
 export type ImageType =
   | "InvalidImageType"
@@ -361,8 +252,6 @@ export type ImageType =
   | "RecoveryManifest"
   | "ManifestSet"
   | "Other";
-const ImageType = S.String;
-
 /** The properties of image */
 export interface ImageProperties {
   /** Image as a UTF-8 encoded base 64 string on image create. This field contains the image URI on image reads. */
@@ -384,8 +273,6 @@ export interface ImageProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-const ImageProperties = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ImageProperties>;
-
 /** An image resource belonging to a catalog resource. */
 export interface Image {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -399,15 +286,8 @@ export interface Image {
   /** The resource-specific properties for this resource. */
   properties?: ImageProperties;
 }
-const Image = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Image>;
-
 /** Images deployed */
 export type DeploymentPropertiesDeployedImagesList = Array<Image>;
-const DeploymentPropertiesDeployedImagesList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DeploymentPropertiesDeployedImagesList>;
-
 /** The properties of deployment */
 export interface DeploymentProperties {
   /** Deployment ID */
@@ -419,8 +299,6 @@ export interface DeploymentProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-const DeploymentProperties = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DeploymentProperties>;
-
 export interface DeploymentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -433,11 +311,6 @@ export interface DeploymentsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeploymentProperties;
 }
-const DeploymentsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeploymentsCreateOrUpdateResponse>;
-
 export interface DeviceGroupsCountDevicesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -450,30 +323,16 @@ export interface DeviceGroupsCountDevicesRequest {
   /** Name of device group. */
   deviceGroupName: string;
 }
-const DeviceGroupsCountDevicesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeviceGroupsCountDevicesRequest>;
-
 export interface DeviceGroupsCountDevicesResponse {
   /** Number of children resources in parent resource. */
   value: number;
 }
-const DeviceGroupsCountDevicesResponse =
-  CatalogsCountDevicesResponse as any as S.Schema<DeviceGroupsCountDevicesResponse>;
-
 /** OS feed type values. */
 export type OSFeedType = "Retail" | "RetailEval";
-const OSFeedType = S.String;
-
 /** Update policy values. */
 export type UpdatePolicy = "UpdateAll" | "No3rdPartyAppUpdates";
-const UpdatePolicy = S.String;
-
 /** Allow crash dumps values. */
 export type AllowCrashDumpCollection = "Enabled" | "Disabled";
-const AllowCrashDumpCollection = S.String;
-
 /** The properties of deviceGroup */
 export interface DeviceGroupPropertiesInput {
   /** Description of the device group. */
@@ -487,11 +346,6 @@ export interface DeviceGroupPropertiesInput {
   /** Regional data boundary for the device group. */
   regionalDataBoundary?: RegionalDataBoundary | (string & {});
 }
-const DeviceGroupPropertiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DeviceGroupPropertiesInput>;
-
 export interface DeviceGroupsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -506,11 +360,6 @@ export interface DeviceGroupsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DeviceGroupPropertiesInput;
 }
-const DeviceGroupsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeviceGroupsCreateOrUpdateRequest>;
-
 /** The properties of deviceGroup */
 export interface DeviceGroupProperties {
   /** Description of the device group. */
@@ -528,11 +377,6 @@ export interface DeviceGroupProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-const DeviceGroupProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeviceGroupProperties>;
-
 export interface DeviceGroupsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -545,21 +389,11 @@ export interface DeviceGroupsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeviceGroupProperties;
 }
-const DeviceGroupsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DeviceGroupsCreateOrUpdateResponse>;
-
 /** The properties of device */
 export interface DevicePropertiesInput {
   /** Device ID */
   deviceId?: string;
 }
-const DevicePropertiesInput = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DevicePropertiesInput>;
-
 export interface DevicesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -576,11 +410,6 @@ export interface DevicesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: DevicePropertiesInput;
 }
-const DevicesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DevicesCreateOrUpdateRequest>;
-
 /** The properties of device */
 export interface DeviceProperties {
   /** Device ID */
@@ -598,8 +427,6 @@ export interface DeviceProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-const DeviceProperties = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DeviceProperties>;
-
 export interface DevicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -612,24 +439,12 @@ export interface DevicesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeviceProperties;
 }
-const DevicesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DevicesCreateOrUpdateResponse>;
-
 /** Capability image type */
 export type CapabilityType = "ApplicationDevelopment" | "FieldServicing";
-const CapabilityType = S.String;
-
 /** List of capabilities to create */
 export type GenerateDeviceCapabilityImageRequestCapabilitiesList = Array<
   CapabilityType | (string & {})
 >;
-const GenerateDeviceCapabilityImageRequestCapabilitiesList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GenerateDeviceCapabilityImageRequestCapabilitiesList>;
-
 export interface GenerateDeviceCapabilityImageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -646,21 +461,11 @@ export interface GenerateDeviceCapabilityImageRequest {
   /** List of capabilities to create */
   capabilities: GenerateDeviceCapabilityImageRequestCapabilitiesList;
 }
-const GenerateDeviceCapabilityImageRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GenerateDeviceCapabilityImageRequest>;
-
 /** Signed device capability image response */
 export interface SignedCapabilityImageResponse {
   /** The signed device capability image as a UTF-8 encoded base 64 string. */
   image?: string;
 }
-const SignedCapabilityImageResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<SignedCapabilityImageResponse>;
-
 export interface GenerateProductDefaultDeviceGroupsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -671,11 +476,6 @@ export interface GenerateProductDefaultDeviceGroupsRequest {
   /** Name of product. */
   productName: string;
 }
-const GenerateProductDefaultDeviceGroupsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GenerateProductDefaultDeviceGroupsRequest>;
-
 /** An device group resource belonging to a product resource. */
 export interface DeviceGroup {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -689,15 +489,8 @@ export interface DeviceGroup {
   /** The resource-specific properties for this resource. */
   properties?: DeviceGroupProperties;
 }
-const DeviceGroup = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<DeviceGroup>;
-
 /** The DeviceGroup items on this page */
 export type DeviceGroupListResultValueList = Array<DeviceGroup>;
-const DeviceGroupListResultValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DeviceGroupListResultValueList>;
-
 /** The response of a DeviceGroup list operation. */
 export interface DeviceGroupListResult {
   /** The DeviceGroup items on this page */
@@ -705,11 +498,6 @@ export interface DeviceGroupListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DeviceGroupListResult = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DeviceGroupListResult>;
-
 export interface GetCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -718,13 +506,8 @@ export interface GetCatalogRequest {
   /** Name of catalog */
   catalogName: string;
 }
-const GetCatalogRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetCatalogRequest>;
-
 /** Resource tags. */
 export type GetCatalogResponseTagsMap = { [key: string]: string | undefined };
-const GetCatalogResponseTagsMap =
-  CatalogsCreateOrUpdateRequestTagsMap as any as S.Schema<GetCatalogResponseTagsMap>;
-
 export interface GetCatalogResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -741,8 +524,6 @@ export interface GetCatalogResponse {
   /** The resource-specific properties for this resource. */
   properties?: CatalogProperties;
 }
-const GetCatalogResponse = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GetCatalogResponse>;
-
 export interface GetCertificateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -753,15 +534,8 @@ export interface GetCertificateRequest {
   /** Serial number of the certificate. Use '.default' to get current active certificate. */
   serialNumber: string;
 }
-const GetCertificateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetCertificateRequest>;
-
 /** Certificate status values. */
 export type CertificateStatus = "Active" | "Inactive" | "Expired" | "Revoked";
-const CertificateStatus = S.String;
-
 /** The properties of certificate */
 export interface CertificateProperties {
   /** The certificate as a UTF-8 encoded base 64 string. */
@@ -779,11 +553,6 @@ export interface CertificateProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-const CertificateProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CertificateProperties>;
-
 export interface GetCertificateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -796,11 +565,6 @@ export interface GetCertificateResponse {
   /** The resource-specific properties for this resource. */
   properties?: CertificateProperties;
 }
-const GetCertificateResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetCertificateResponse>;
-
 export interface GetCertificateCertChainRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -811,21 +575,11 @@ export interface GetCertificateCertChainRequest {
   /** Serial number of the certificate. Use '.default' to get current active certificate. */
   serialNumber: string;
 }
-const GetCertificateCertChainRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetCertificateCertChainRequest>;
-
 /** The certificate chain response. */
 export interface CertificateChainResponse {
   /** The certificate chain. */
   certificateChain?: string;
 }
-const CertificateChainResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CertificateChainResponse>;
-
 export interface GetCertificateProofOfPossessionNonceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -838,11 +592,6 @@ export interface GetCertificateProofOfPossessionNonceRequest {
   /** The proof of possession nonce */
   proofOfPossessionNonce: string;
 }
-const GetCertificateProofOfPossessionNonceRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetCertificateProofOfPossessionNonceRequest>;
-
 export interface GetCertificateProofOfPossessionNonceResponse {
   /** The certificate as a UTF-8 encoded base 64 string. */
   certificate?: string;
@@ -859,11 +608,6 @@ export interface GetCertificateProofOfPossessionNonceResponse {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState;
 }
-const GetCertificateProofOfPossessionNonceResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetCertificateProofOfPossessionNonceResponse>;
-
 export interface GetDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -878,8 +622,6 @@ export interface GetDeploymentRequest {
   /** Deployment name. Use .default for deployment creation and to get the current deployment for the associated device group. */
   deploymentName: string;
 }
-const GetDeploymentRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<GetDeploymentRequest>;
-
 export interface GetDeploymentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -892,11 +634,6 @@ export interface GetDeploymentResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeploymentProperties;
 }
-const GetDeploymentResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetDeploymentResponse>;
-
 export interface GetDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -911,8 +648,6 @@ export interface GetDeviceRequest {
   /** Device name */
   deviceName: string;
 }
-const GetDeviceRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<GetDeviceRequest>;
-
 export interface GetDeviceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -925,8 +660,6 @@ export interface GetDeviceResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeviceProperties;
 }
-const GetDeviceResponse = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetDeviceResponse>;
-
 export interface GetDeviceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -939,11 +672,6 @@ export interface GetDeviceGroupRequest {
   /** Name of device group. */
   deviceGroupName: string;
 }
-const GetDeviceGroupRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetDeviceGroupRequest>;
-
 export interface GetDeviceGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -956,8 +684,6 @@ export interface GetDeviceGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeviceGroupProperties;
 }
-const GetDeviceGroupResponse = DeviceGroup as any as S.Schema<GetDeviceGroupResponse>;
-
 export interface GetImageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -968,8 +694,6 @@ export interface GetImageRequest {
   /** Image name. Use an image GUID for GA versions of the API. */
   imageName: string;
 }
-const GetImageRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<GetImageRequest>;
-
 export interface GetImageResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -982,8 +706,6 @@ export interface GetImageResponse {
   /** The resource-specific properties for this resource. */
   properties?: ImageProperties;
 }
-const GetImageResponse = Image as any as S.Schema<GetImageResponse>;
-
 export interface GetProductRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -994,8 +716,6 @@ export interface GetProductRequest {
   /** Name of product. */
   productName: string;
 }
-const GetProductRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<GetProductRequest>;
-
 /** The properties of product */
 export interface ProductProperties {
   /** Description of the product */
@@ -1003,8 +723,6 @@ export interface ProductProperties {
   /** The status of the last operation. */
   provisioningState?: ProvisioningState | (string & {});
 }
-const ProductProperties = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ProductProperties>;
-
 export interface GetProductResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1017,8 +735,6 @@ export interface GetProductResponse {
   /** The resource-specific properties for this resource. */
   properties?: ProductProperties;
 }
-const GetProductResponse = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<GetProductResponse>;
-
 export interface ImagesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1031,11 +747,6 @@ export interface ImagesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ImagePropertiesInput;
 }
-const ImagesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ImagesCreateOrUpdateRequest>;
-
 export interface ImagesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1048,22 +759,12 @@ export interface ImagesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ImageProperties;
 }
-const ImagesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ImagesCreateOrUpdateResponse>;
-
 export interface ListCatalogByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListCatalogByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListCatalogByResourceGroupRequest>;
-
 /** Resource tags. */
 export type CatalogTagsMap = { [key: string]: string | undefined };
 /** An Azure Sphere catalog */
@@ -1083,15 +784,8 @@ export interface Catalog {
   /** The resource-specific properties for this resource. */
   properties?: CatalogProperties;
 }
-const Catalog = GetCatalogResponse as any as S.Schema<Catalog>;
-
 /** The Catalog items on this page */
 export type CatalogListResultValueList = Array<Catalog>;
-const CatalogListResultValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CatalogListResultValueList>;
-
 /** The response of a Catalog list operation. */
 export interface CatalogListResult {
   /** The Catalog items on this page */
@@ -1099,17 +793,10 @@ export interface CatalogListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const CatalogListResult = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<CatalogListResult>;
-
 export interface ListCatalogBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListCatalogBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListCatalogBySubscriptionRequest>;
-
 export interface ListCatalogDeploymentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1126,11 +813,6 @@ export interface ListCatalogDeploymentsRequest {
   /** The maximum number of result items per page. */
   _maxpagesize?: number;
 }
-const ListCatalogDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListCatalogDeploymentsRequest>;
-
 /** An deployment resource belonging to a device group resource. */
 export interface Deployment {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1144,15 +826,8 @@ export interface Deployment {
   /** The resource-specific properties for this resource. */
   properties?: DeploymentProperties;
 }
-const Deployment = GetDeploymentResponse as any as S.Schema<Deployment>;
-
 /** The Deployment items on this page */
 export type DeploymentListResultValueList = Array<Deployment>;
-const DeploymentListResultValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeploymentListResultValueList>;
-
 /** The response of a Deployment list operation. */
 export interface DeploymentListResult {
   /** The Deployment items on this page */
@@ -1160,8 +835,6 @@ export interface DeploymentListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DeploymentListResult = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<DeploymentListResult>;
-
 export interface ListCatalogDeviceGroupsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1180,11 +853,6 @@ export interface ListCatalogDeviceGroupsRequest {
   /** Device Group name. */
   deviceGroupName?: string;
 }
-const ListCatalogDeviceGroupsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListCatalogDeviceGroupsRequest>;
-
 export interface ListCatalogDeviceInsightsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1201,11 +869,6 @@ export interface ListCatalogDeviceInsightsRequest {
   /** The maximum number of result items per page. */
   _maxpagesize?: number;
 }
-const ListCatalogDeviceInsightsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListCatalogDeviceInsightsRequest>;
-
 /** Device insight report. */
 export interface DeviceInsight {
   /** Device ID */
@@ -1225,15 +888,8 @@ export interface DeviceInsight {
   /** Event count */
   eventCount: number;
 }
-const DeviceInsight = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<DeviceInsight>;
-
 /** The DeviceInsight items on this page */
 export type PagedDeviceInsightValueList = Array<DeviceInsight>;
-const PagedDeviceInsightValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<PagedDeviceInsightValueList>;
-
 /** Paged collection of DeviceInsight items */
 export interface PagedDeviceInsight {
   /** The DeviceInsight items on this page */
@@ -1241,8 +897,6 @@ export interface PagedDeviceInsight {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PagedDeviceInsight = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<PagedDeviceInsight>;
-
 export interface ListCatalogDevicesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1259,11 +913,6 @@ export interface ListCatalogDevicesRequest {
   /** The maximum number of result items per page. */
   _maxpagesize?: number;
 }
-const ListCatalogDevicesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListCatalogDevicesRequest>;
-
 /** An device resource belonging to a device group resource. */
 export interface Device {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1277,15 +926,8 @@ export interface Device {
   /** The resource-specific properties for this resource. */
   properties?: DeviceProperties;
 }
-const Device = GetDeviceResponse as any as S.Schema<Device>;
-
 /** The Device items on this page */
 export type DeviceListResultValueList = Array<Device>;
-const DeviceListResultValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeviceListResultValueList>;
-
 /** The response of a Device list operation. */
 export interface DeviceListResult {
   /** The Device items on this page */
@@ -1293,8 +935,6 @@ export interface DeviceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DeviceListResult = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<DeviceListResult>;
-
 export interface ListCertificateByCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1311,11 +951,6 @@ export interface ListCertificateByCatalogRequest {
   /** The maximum number of result items per page. */
   _maxpagesize?: number;
 }
-const ListCertificateByCatalogRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ListCertificateByCatalogRequest>;
-
 /** An certificate resource belonging to a catalog resource. */
 export interface Certificate {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1329,15 +964,8 @@ export interface Certificate {
   /** The resource-specific properties for this resource. */
   properties?: CertificateProperties;
 }
-const Certificate = GetCertificateResponse as any as S.Schema<Certificate>;
-
 /** The Certificate items on this page */
 export type CertificateListResultValueList = Array<Certificate>;
-const CertificateListResultValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<CertificateListResultValueList>;
-
 /** The response of a Certificate list operation. */
 export interface CertificateListResult {
   /** The Certificate items on this page */
@@ -1345,11 +973,6 @@ export interface CertificateListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const CertificateListResult = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<CertificateListResult>;
-
 export interface ListDeploymentByDeviceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1370,11 +993,6 @@ export interface ListDeploymentByDeviceGroupRequest {
   /** The maximum number of result items per page. */
   _maxpagesize?: number;
 }
-const ListDeploymentByDeviceGroupRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ListDeploymentByDeviceGroupRequest>;
-
 export interface ListDeviceByDeviceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1387,11 +1005,6 @@ export interface ListDeviceByDeviceGroupRequest {
   /** Name of device group. */
   deviceGroupName: string;
 }
-const ListDeviceByDeviceGroupRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListDeviceByDeviceGroupRequest>;
-
 export interface ListDeviceGroupByProductRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1410,11 +1023,6 @@ export interface ListDeviceGroupByProductRequest {
   /** The maximum number of result items per page. */
   _maxpagesize?: number;
 }
-const ListDeviceGroupByProductRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ListDeviceGroupByProductRequest>;
-
 export interface ListImageByCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1431,16 +1039,8 @@ export interface ListImageByCatalogRequest {
   /** The maximum number of result items per page. */
   _maxpagesize?: number;
 }
-const ListImageByCatalogRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListImageByCatalogRequest>;
-
 /** The Image items on this page */
 export type ImageListResultValueList = Array<Image>;
-const ImageListResultValueList =
-  DeploymentPropertiesDeployedImagesList as any as S.Schema<ImageListResultValueList>;
-
 /** The response of a Image list operation. */
 export interface ImageListResult {
   /** The Image items on this page */
@@ -1448,14 +1048,7 @@ export interface ImageListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ImageListResult = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<ImageListResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -1467,16 +1060,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -1490,26 +1077,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListProductByCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1518,11 +1093,6 @@ export interface ListProductByCatalogRequest {
   /** Name of catalog */
   catalogName: string;
 }
-const ListProductByCatalogRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListProductByCatalogRequest>;
-
 /** An product resource belonging to a catalog resource. */
 export interface Product {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1536,15 +1106,8 @@ export interface Product {
   /** The resource-specific properties for this resource. */
   properties?: ProductProperties;
 }
-const Product = GetProductResponse as any as S.Schema<Product>;
-
 /** The Product items on this page */
 export type ProductListResultValueList = Array<Product>;
-const ProductListResultValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ProductListResultValueList>;
-
 /** The response of a Product list operation. */
 export interface ProductListResult {
   /** The Product items on this page */
@@ -1552,8 +1115,6 @@ export interface ProductListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ProductListResult = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<ProductListResult>;
-
 export interface ProductsCountDevicesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1564,18 +1125,10 @@ export interface ProductsCountDevicesRequest {
   /** Name of product. */
   productName: string;
 }
-const ProductsCountDevicesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ProductsCountDevicesRequest>;
-
 export interface ProductsCountDevicesResponse {
   /** Number of children resources in parent resource. */
   value: number;
 }
-const ProductsCountDevicesResponse =
-  CatalogsCountDevicesResponse as any as S.Schema<ProductsCountDevicesResponse>;
-
 export interface ProductsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1588,11 +1141,6 @@ export interface ProductsCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: ProductProperties;
 }
-const ProductsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ProductsCreateOrUpdateRequest>;
-
 export interface ProductsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1605,16 +1153,8 @@ export interface ProductsCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: ProductProperties;
 }
-const ProductsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ProductsCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type UpdateCatalogRequestTagsMap = { [key: string]: string | undefined };
-const UpdateCatalogRequestTagsMap =
-  CatalogsCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateCatalogRequestTagsMap>;
-
 export interface UpdateCatalogRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1625,11 +1165,6 @@ export interface UpdateCatalogRequest {
   /** Resource tags. */
   tags?: UpdateCatalogRequestTagsMap;
 }
-const UpdateCatalogRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<UpdateCatalogRequest>;
-
 /** Resource tags. */
 export type UpdateCatalogResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateCatalogResponse {
@@ -1648,18 +1183,11 @@ export interface UpdateCatalogResponse {
   /** The resource-specific properties for this resource. */
   properties?: CatalogProperties;
 }
-const UpdateCatalogResponse = GetCatalogResponse as any as S.Schema<UpdateCatalogResponse>;
-
 /** The updatable properties of the Device. */
 export interface DeviceUpdateProperties {
   /** Device group id */
   deviceGroupId?: string;
 }
-const DeviceUpdateProperties = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<DeviceUpdateProperties>;
-
 export interface UpdateDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1676,8 +1204,6 @@ export interface UpdateDeviceRequest {
   /** The updatable properties of the Device. */
   properties?: DeviceUpdateProperties;
 }
-const UpdateDeviceRequest = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<UpdateDeviceRequest>;
-
 export interface UpdateDeviceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1690,8 +1216,6 @@ export interface UpdateDeviceResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeviceProperties;
 }
-const UpdateDeviceResponse = GetDeviceResponse as any as S.Schema<UpdateDeviceResponse>;
-
 /** The updatable properties of the DeviceGroup. */
 export type DeviceGroupUpdateProperties = DeviceGroupPropertiesInput;
 export interface UpdateDeviceGroupRequest {
@@ -1708,11 +1232,6 @@ export interface UpdateDeviceGroupRequest {
   /** The updatable properties of the DeviceGroup. */
   properties?: DeviceGroupPropertiesInput;
 }
-const UpdateDeviceGroupRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<UpdateDeviceGroupRequest>;
-
 export interface UpdateDeviceGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1725,19 +1244,11 @@ export interface UpdateDeviceGroupResponse {
   /** The resource-specific properties for this resource. */
   properties?: DeviceGroupProperties;
 }
-const UpdateDeviceGroupResponse =
-  DeviceGroupsCreateOrUpdateResponse as any as S.Schema<UpdateDeviceGroupResponse>;
-
 /** The updatable properties of the Product. */
 export interface ProductUpdateProperties {
   /** Description of the product */
   description?: string;
 }
-const ProductUpdateProperties = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ProductUpdateProperties>;
-
 export interface UpdateProductRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1750,11 +1261,6 @@ export interface UpdateProductRequest {
   /** The updatable properties of the Product. */
   properties?: ProductUpdateProperties;
 }
-const UpdateProductRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<UpdateProductRequest>;
-
 export interface UpdateProductResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1767,8 +1273,6 @@ export interface UpdateProductResponse {
   /** The resource-specific properties for this resource. */
   properties?: ProductProperties;
 }
-const UpdateProductResponse = GetProductResponse as any as S.Schema<UpdateProductResponse>;
-
 export interface UploadCatalogImageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1779,15 +1283,7 @@ export interface UploadCatalogImageRequest {
   /** The resource-specific properties for this resource. */
   properties?: ImagePropertiesInput;
 }
-const UploadCatalogImageRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<UploadCatalogImageRequest>;
-
 export interface UploadCatalogImageResponse {}
-const UploadCatalogImageResponse =
-  CatalogPropertiesInput as any as S.Schema<UploadCatalogImageResponse>;
-
 export type CatalogsCountDevicesError = AzureOpError;
 /** Counts devices in catalog. */
 export const CatalogsCountDevices: API.OperationMethod<
@@ -1796,8 +1292,8 @@ export const CatalogsCountDevices: API.OperationMethod<
   CatalogsCountDevicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CatalogsCountDevicesRequest,
-  output: CatalogsCountDevicesResponse,
+  input: __S(0) as any as S.Schema<CatalogsCountDevicesRequest>,
+  output: __S(1) as any as S.Schema<CatalogsCountDevicesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1811,8 +1307,8 @@ export const CatalogsCreateOrUpdate: API.OperationMethod<
   CatalogsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CatalogsCreateOrUpdateRequest,
-  output: CatalogsCreateOrUpdateResponse,
+  input: __S(4) as any as S.Schema<CatalogsCreateOrUpdateRequest>,
+  output: __S(7) as any as S.Schema<CatalogsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1826,8 +1322,8 @@ export const ClaimDeviceGroupDevices: API.OperationMethod<
   ClaimDeviceGroupDevicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClaimDeviceGroupDevicesRequest,
-  output: ClaimDeviceGroupDevicesResponse,
+  input: __S(9) as any as S.Schema<ClaimDeviceGroupDevicesRequest>,
+  output: __S(10) as any as S.Schema<ClaimDeviceGroupDevicesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1841,8 +1337,8 @@ export const DeleteCatalog: API.OperationMethod<
   DeleteCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCatalogRequest,
-  output: DeleteCatalogResponse,
+  input: __S(11) as any as S.Schema<DeleteCatalogRequest>,
+  output: __S(3) as any as S.Schema<DeleteCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1856,8 +1352,8 @@ export const DeleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeploymentRequest,
-  output: DeleteDeploymentResponse,
+  input: __S(12) as any as S.Schema<DeleteDeploymentRequest>,
+  output: __S(3) as any as S.Schema<DeleteDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1871,8 +1367,8 @@ export const DeleteDevice: API.OperationMethod<
   DeleteDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeviceRequest,
-  output: DeleteDeviceResponse,
+  input: __S(13) as any as S.Schema<DeleteDeviceRequest>,
+  output: __S(3) as any as S.Schema<DeleteDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1886,8 +1382,8 @@ export const DeleteDeviceGroup: API.OperationMethod<
   DeleteDeviceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeviceGroupRequest,
-  output: DeleteDeviceGroupResponse,
+  input: __S(14) as any as S.Schema<DeleteDeviceGroupRequest>,
+  output: __S(3) as any as S.Schema<DeleteDeviceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1901,8 +1397,8 @@ export const DeleteImage: API.OperationMethod<
   DeleteImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteImageRequest,
-  output: DeleteImageResponse,
+  input: __S(15) as any as S.Schema<DeleteImageRequest>,
+  output: __S(3) as any as S.Schema<DeleteImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1916,8 +1412,8 @@ export const DeleteProduct: API.OperationMethod<
   DeleteProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProductRequest,
-  output: DeleteProductResponse,
+  input: __S(16) as any as S.Schema<DeleteProductRequest>,
+  output: __S(3) as any as S.Schema<DeleteProductResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1931,8 +1427,8 @@ export const DeploymentsCreateOrUpdate: API.OperationMethod<
   DeploymentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeploymentsCreateOrUpdateRequest,
-  output: DeploymentsCreateOrUpdateResponse,
+  input: __S(21) as any as S.Schema<DeploymentsCreateOrUpdateRequest>,
+  output: __S(26) as any as S.Schema<DeploymentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1946,8 +1442,8 @@ export const DeviceGroupsCountDevices: API.OperationMethod<
   DeviceGroupsCountDevicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeviceGroupsCountDevicesRequest,
-  output: DeviceGroupsCountDevicesResponse,
+  input: __S(27) as any as S.Schema<DeviceGroupsCountDevicesRequest>,
+  output: __S(1) as any as S.Schema<DeviceGroupsCountDevicesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1961,8 +1457,8 @@ export const DeviceGroupsCreateOrUpdate: API.OperationMethod<
   DeviceGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeviceGroupsCreateOrUpdateRequest,
-  output: DeviceGroupsCreateOrUpdateResponse,
+  input: __S(29) as any as S.Schema<DeviceGroupsCreateOrUpdateRequest>,
+  output: __S(31) as any as S.Schema<DeviceGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1976,8 +1472,8 @@ export const DevicesCreateOrUpdate: API.OperationMethod<
   DevicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DevicesCreateOrUpdateRequest,
-  output: DevicesCreateOrUpdateResponse,
+  input: __S(33) as any as S.Schema<DevicesCreateOrUpdateRequest>,
+  output: __S(35) as any as S.Schema<DevicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1991,8 +1487,8 @@ export const GenerateDeviceCapabilityImage: API.OperationMethod<
   GenerateDeviceCapabilityImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateDeviceCapabilityImageRequest,
-  output: SignedCapabilityImageResponse,
+  input: __S(37) as any as S.Schema<GenerateDeviceCapabilityImageRequest>,
+  output: __S(38) as any as S.Schema<SignedCapabilityImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2006,8 +1502,8 @@ export const GenerateProductDefaultDeviceGroups: API.OperationMethod<
   GenerateProductDefaultDeviceGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateProductDefaultDeviceGroupsRequest,
-  output: DeviceGroupListResult,
+  input: __S(39) as any as S.Schema<GenerateProductDefaultDeviceGroupsRequest>,
+  output: __S(42) as any as S.Schema<DeviceGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2021,8 +1517,8 @@ export const GetCatalog: API.OperationMethod<
   GetCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCatalogRequest,
-  output: GetCatalogResponse,
+  input: __S(43) as any as S.Schema<GetCatalogRequest>,
+  output: __S(44) as any as S.Schema<GetCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2036,8 +1532,8 @@ export const GetCertificate: API.OperationMethod<
   GetCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCertificateRequest,
-  output: GetCertificateResponse,
+  input: __S(45) as any as S.Schema<GetCertificateRequest>,
+  output: __S(47) as any as S.Schema<GetCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2051,8 +1547,8 @@ export const GetCertificateCertChain: API.OperationMethod<
   GetCertificateCertChainError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCertificateCertChainRequest,
-  output: CertificateChainResponse,
+  input: __S(48) as any as S.Schema<GetCertificateCertChainRequest>,
+  output: __S(49) as any as S.Schema<CertificateChainResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2066,8 +1562,8 @@ export const GetCertificateProofOfPossessionNonce: API.OperationMethod<
   GetCertificateProofOfPossessionNonceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCertificateProofOfPossessionNonceRequest,
-  output: GetCertificateProofOfPossessionNonceResponse,
+  input: __S(50) as any as S.Schema<GetCertificateProofOfPossessionNonceRequest>,
+  output: __S(51) as any as S.Schema<GetCertificateProofOfPossessionNonceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2081,8 +1577,8 @@ export const GetDeployment: API.OperationMethod<
   GetDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeploymentRequest,
-  output: GetDeploymentResponse,
+  input: __S(52) as any as S.Schema<GetDeploymentRequest>,
+  output: __S(53) as any as S.Schema<GetDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2096,8 +1592,8 @@ export const GetDevice: API.OperationMethod<
   GetDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeviceRequest,
-  output: GetDeviceResponse,
+  input: __S(54) as any as S.Schema<GetDeviceRequest>,
+  output: __S(55) as any as S.Schema<GetDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2111,8 +1607,8 @@ export const GetDeviceGroup: API.OperationMethod<
   GetDeviceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeviceGroupRequest,
-  output: GetDeviceGroupResponse,
+  input: __S(56) as any as S.Schema<GetDeviceGroupRequest>,
+  output: __S(40) as any as S.Schema<GetDeviceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2126,8 +1622,8 @@ export const GetImage: API.OperationMethod<
   GetImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetImageRequest,
-  output: GetImageResponse,
+  input: __S(57) as any as S.Schema<GetImageRequest>,
+  output: __S(23) as any as S.Schema<GetImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2141,8 +1637,8 @@ export const GetProduct: API.OperationMethod<
   GetProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProductRequest,
-  output: GetProductResponse,
+  input: __S(58) as any as S.Schema<GetProductRequest>,
+  output: __S(60) as any as S.Schema<GetProductResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2156,8 +1652,8 @@ export const ImagesCreateOrUpdate: API.OperationMethod<
   ImagesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImagesCreateOrUpdateRequest,
-  output: ImagesCreateOrUpdateResponse,
+  input: __S(61) as any as S.Schema<ImagesCreateOrUpdateRequest>,
+  output: __S(62) as any as S.Schema<ImagesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2171,8 +1667,8 @@ export const ListCatalogByResourceGroup: API.OperationMethod<
   ListCatalogByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCatalogByResourceGroupRequest,
-  output: CatalogListResult,
+  input: __S(63) as any as S.Schema<ListCatalogByResourceGroupRequest>,
+  output: __S(65) as any as S.Schema<CatalogListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2186,8 +1682,8 @@ export const ListCatalogBySubscription: API.OperationMethod<
   ListCatalogBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCatalogBySubscriptionRequest,
-  output: CatalogListResult,
+  input: __S(66) as any as S.Schema<ListCatalogBySubscriptionRequest>,
+  output: __S(65) as any as S.Schema<CatalogListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2201,8 +1697,8 @@ export const ListCatalogDeployments: API.OperationMethod<
   ListCatalogDeploymentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCatalogDeploymentsRequest,
-  output: DeploymentListResult,
+  input: __S(67) as any as S.Schema<ListCatalogDeploymentsRequest>,
+  output: __S(69) as any as S.Schema<DeploymentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2216,8 +1712,8 @@ export const ListCatalogDeviceGroups: API.OperationMethod<
   ListCatalogDeviceGroupsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCatalogDeviceGroupsRequest,
-  output: DeviceGroupListResult,
+  input: __S(70) as any as S.Schema<ListCatalogDeviceGroupsRequest>,
+  output: __S(42) as any as S.Schema<DeviceGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2231,8 +1727,8 @@ export const ListCatalogDeviceInsights: API.OperationMethod<
   ListCatalogDeviceInsightsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCatalogDeviceInsightsRequest,
-  output: PagedDeviceInsight,
+  input: __S(71) as any as S.Schema<ListCatalogDeviceInsightsRequest>,
+  output: __S(74) as any as S.Schema<PagedDeviceInsight>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2246,8 +1742,8 @@ export const ListCatalogDevices: API.OperationMethod<
   ListCatalogDevicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCatalogDevicesRequest,
-  output: DeviceListResult,
+  input: __S(75) as any as S.Schema<ListCatalogDevicesRequest>,
+  output: __S(77) as any as S.Schema<DeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2261,8 +1757,8 @@ export const ListCertificateByCatalog: API.OperationMethod<
   ListCertificateByCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCertificateByCatalogRequest,
-  output: CertificateListResult,
+  input: __S(78) as any as S.Schema<ListCertificateByCatalogRequest>,
+  output: __S(80) as any as S.Schema<CertificateListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2276,8 +1772,8 @@ export const ListDeploymentByDeviceGroup: API.OperationMethod<
   ListDeploymentByDeviceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeploymentByDeviceGroupRequest,
-  output: DeploymentListResult,
+  input: __S(81) as any as S.Schema<ListDeploymentByDeviceGroupRequest>,
+  output: __S(69) as any as S.Schema<DeploymentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2291,8 +1787,8 @@ export const ListDeviceByDeviceGroup: API.OperationMethod<
   ListDeviceByDeviceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeviceByDeviceGroupRequest,
-  output: DeviceListResult,
+  input: __S(82) as any as S.Schema<ListDeviceByDeviceGroupRequest>,
+  output: __S(77) as any as S.Schema<DeviceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2306,8 +1802,8 @@ export const ListDeviceGroupByProduct: API.OperationMethod<
   ListDeviceGroupByProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeviceGroupByProductRequest,
-  output: DeviceGroupListResult,
+  input: __S(83) as any as S.Schema<ListDeviceGroupByProductRequest>,
+  output: __S(42) as any as S.Schema<DeviceGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2321,8 +1817,8 @@ export const ListImageByCatalog: API.OperationMethod<
   ListImageByCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListImageByCatalogRequest,
-  output: ImageListResult,
+  input: __S(84) as any as S.Schema<ListImageByCatalogRequest>,
+  output: __S(85) as any as S.Schema<ImageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2336,8 +1832,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(86) as any as S.Schema<ListOperationsRequest>,
+  output: __S(90) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2351,8 +1847,8 @@ export const ListProductByCatalog: API.OperationMethod<
   ListProductByCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProductByCatalogRequest,
-  output: ProductListResult,
+  input: __S(91) as any as S.Schema<ListProductByCatalogRequest>,
+  output: __S(93) as any as S.Schema<ProductListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2366,8 +1862,8 @@ export const ProductsCountDevices: API.OperationMethod<
   ProductsCountDevicesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProductsCountDevicesRequest,
-  output: ProductsCountDevicesResponse,
+  input: __S(94) as any as S.Schema<ProductsCountDevicesRequest>,
+  output: __S(1) as any as S.Schema<ProductsCountDevicesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2381,8 +1877,8 @@ export const ProductsCreateOrUpdate: API.OperationMethod<
   ProductsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProductsCreateOrUpdateRequest,
-  output: ProductsCreateOrUpdateResponse,
+  input: __S(95) as any as S.Schema<ProductsCreateOrUpdateRequest>,
+  output: __S(96) as any as S.Schema<ProductsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2396,8 +1892,8 @@ export const UpdateCatalog: API.OperationMethod<
   UpdateCatalogError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCatalogRequest,
-  output: UpdateCatalogResponse,
+  input: __S(97) as any as S.Schema<UpdateCatalogRequest>,
+  output: __S(44) as any as S.Schema<UpdateCatalogResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2411,8 +1907,8 @@ export const UpdateDevice: API.OperationMethod<
   UpdateDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDeviceRequest,
-  output: UpdateDeviceResponse,
+  input: __S(99) as any as S.Schema<UpdateDeviceRequest>,
+  output: __S(55) as any as S.Schema<UpdateDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2426,8 +1922,8 @@ export const UpdateDeviceGroup: API.OperationMethod<
   UpdateDeviceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDeviceGroupRequest,
-  output: UpdateDeviceGroupResponse,
+  input: __S(100) as any as S.Schema<UpdateDeviceGroupRequest>,
+  output: __S(31) as any as S.Schema<UpdateDeviceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2441,8 +1937,8 @@ export const UpdateProduct: API.OperationMethod<
   UpdateProductError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProductRequest,
-  output: UpdateProductResponse,
+  input: __S(102) as any as S.Schema<UpdateProductRequest>,
+  output: __S(60) as any as S.Schema<UpdateProductResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2456,8 +1952,8 @@ export const UploadCatalogImage: API.OperationMethod<
   UploadCatalogImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadCatalogImageRequest,
-  output: UploadCatalogImageResponse,
+  input: __S(103) as any as S.Schema<UploadCatalogImageRequest>,
+  output: __S(3) as any as S.Schema<UploadCatalogImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2503,9 +1999,9 @@ function __c0(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          tags: S.optional(CatalogsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(CatalogPropertiesInput),
+          properties: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2521,10 +2017,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -2532,7 +2028,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CatalogProperties" });
     case 7:
@@ -2541,10 +2037,10 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CatalogsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(5)),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(CatalogProperties),
+          properties: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "CatalogsCreateOrUpdateResponse",
@@ -2563,7 +2059,7 @@ function __c1(j: number): any {
           catalogName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
-          deviceIdentifiers: ClaimDeviceGroupDevicesRequestDeviceIdentifiersList,
+          deviceIdentifiers: __S(8),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2688,22 +2184,22 @@ function __c2(j: number): any {
         S.Struct({
           image: S.optional(S.String),
           imageId: S.optional(S.String),
-          regionalDataBoundary: S.optional(RegionalDataBoundary),
+          regionalDataBoundary: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImagePropertiesInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(ImagePropertiesInput),
+          properties: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "ImageInput" });
     case 3:
-      return S.Array(ImageInput);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.optional(S.String),
-          deployedImages: S.optional(DeploymentPropertiesInputDeployedImagesList),
+          deployedImages: S.optional(__S(19)),
         }),
       ).annotate({
         identifier: "DeploymentPropertiesInput",
@@ -2717,7 +2213,7 @@ function __c2(j: number): any {
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
           deploymentName: S.String.pipe(T.Label()),
-          properties: S.optional(DeploymentPropertiesInput),
+          properties: S.optional(__S(20)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2735,12 +2231,12 @@ function __c2(j: number): any {
           image: S.optional(S.String),
           imageId: S.optional(S.String),
           imageName: S.optional(S.String),
-          regionalDataBoundary: S.optional(RegionalDataBoundary),
+          regionalDataBoundary: S.optional(S.String),
           uri: S.optional(S.String),
           description: S.optional(S.String),
           componentId: S.optional(S.String),
-          imageType: S.optional(ImageType),
-          provisioningState: S.optional(ProvisioningState),
+          imageType: S.optional(S.String),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageProperties" });
     case 7:
@@ -2749,8 +2245,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ImageProperties),
+          systemData: S.optional(__S(5)),
+          properties: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "Image" });
   }
@@ -2758,14 +2254,14 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Image);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
           deploymentId: S.optional(S.String),
-          deployedImages: S.optional(DeploymentPropertiesDeployedImagesList),
+          deployedImages: S.optional(__S(24)),
           deploymentDateUtc: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentProperties" });
     case 2:
@@ -2774,8 +2270,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeploymentProperties),
+          systemData: S.optional(__S(5)),
+          properties: S.optional(__S(25)),
         }),
       ).annotate({
         identifier: "DeploymentsCreateOrUpdateResponse",
@@ -2803,10 +2299,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          osFeedType: S.optional(OSFeedType),
-          updatePolicy: S.optional(UpdatePolicy),
-          allowCrashDumpsCollection: S.optional(AllowCrashDumpCollection),
-          regionalDataBoundary: S.optional(RegionalDataBoundary),
+          osFeedType: S.optional(S.String),
+          updatePolicy: S.optional(S.String),
+          allowCrashDumpsCollection: S.optional(S.String),
+          regionalDataBoundary: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DeviceGroupPropertiesInput",
@@ -2819,7 +2315,7 @@ function __c3(j: number): any {
           catalogName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(DeviceGroupPropertiesInput),
+          properties: S.optional(__S(28)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2835,12 +2331,12 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          osFeedType: S.optional(OSFeedType),
-          updatePolicy: S.optional(UpdatePolicy),
-          allowCrashDumpsCollection: S.optional(AllowCrashDumpCollection),
-          regionalDataBoundary: S.optional(RegionalDataBoundary),
+          osFeedType: S.optional(S.String),
+          updatePolicy: S.optional(S.String),
+          allowCrashDumpsCollection: S.optional(S.String),
+          regionalDataBoundary: S.optional(S.String),
           hasDeployment: S.optional(S.Boolean),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceGroupProperties" });
     case 7:
@@ -2849,8 +2345,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeviceGroupProperties),
+          systemData: S.optional(__S(5)),
+          properties: S.optional(__S(30)),
         }),
       ).annotate({
         identifier: "DeviceGroupsCreateOrUpdateResponse",
@@ -2874,7 +2370,7 @@ function __c4(j: number): any {
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: S.optional(DevicePropertiesInput),
+          properties: S.optional(__S(32)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2895,7 +2391,7 @@ function __c4(j: number): any {
           lastInstalledOsVersion: S.optional(S.String),
           lastOsUpdateUtc: S.optional(S.String),
           lastUpdateRequestUtc: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceProperties" });
     case 3:
@@ -2904,14 +2400,14 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeviceProperties),
+          systemData: S.optional(__S(5)),
+          properties: S.optional(__S(34)),
         }),
       ).annotate({
         identifier: "DevicesCreateOrUpdateResponse",
       });
     case 4:
-      return S.Array(CapabilityType);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2921,7 +2417,7 @@ function __c4(j: number): any {
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          capabilities: GenerateDeviceCapabilityImageRequestCapabilitiesList,
+          capabilities: __S(36),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2969,16 +2465,16 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeviceGroupProperties),
+          systemData: S.optional(__S(5)),
+          properties: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "DeviceGroup" });
     case 1:
-      return S.Array(DeviceGroup);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: DeviceGroupListResultValueList,
+          value: __S(41),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceGroupListResult" });
@@ -3003,10 +2499,10 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetCatalogResponseTagsMap),
+          systemData: S.optional(__S(5)),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(CatalogProperties),
+          properties: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "GetCatalogResponse" });
     case 5:
@@ -3029,12 +2525,12 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           certificate: S.optional(S.String),
-          status: S.optional(CertificateStatus),
+          status: S.optional(S.String),
           subject: S.optional(S.String),
           thumbprint: S.optional(S.String),
           expiryUtc: S.optional(S.String),
           notBeforeUtc: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateProperties" });
     case 7:
@@ -3043,8 +2539,8 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(CertificateProperties),
+          systemData: S.optional(__S(5)),
+          properties: S.optional(__S(46)),
         }),
       ).annotate({ identifier: "GetCertificateResponse" });
   }
@@ -3098,12 +2594,12 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           certificate: S.optional(S.String),
-          status: S.optional(CertificateStatus),
+          status: S.optional(S.String),
           subject: S.optional(S.String),
           thumbprint: S.optional(S.String),
           expiryUtc: S.optional(S.String),
           notBeforeUtc: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetCertificateProofOfPossessionNonceResponse",
@@ -3132,8 +2628,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeploymentProperties),
+          systemData: S.optional(__S(5)),
+          properties: S.optional(__S(25)),
         }),
       ).annotate({ identifier: "GetDeploymentResponse" });
     case 6:
@@ -3160,8 +2656,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeviceProperties),
+          systemData: S.optional(__S(5)),
+          properties: S.optional(__S(34)),
         }),
       ).annotate({ identifier: "GetDeviceResponse" });
   }
@@ -3221,7 +2717,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductProperties" });
     case 4:
@@ -3230,8 +2726,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ProductProperties),
+          systemData: S.optional(__S(5)),
+          properties: S.optional(__S(59)),
         }),
       ).annotate({ identifier: "GetProductResponse" });
     case 5:
@@ -3241,7 +2737,7 @@ function __c7(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
           imageName: S.String.pipe(T.Label()),
-          properties: S.optional(ImagePropertiesInput),
+          properties: S.optional(__S(17)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3259,8 +2755,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ImageProperties),
+          systemData: S.optional(__S(5)),
+          properties: S.optional(__S(22)),
         }),
       ).annotate({
         identifier: "ImagesCreateOrUpdateResponse",
@@ -3286,11 +2782,11 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Catalog);
+      return S.Array(__S(44));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: CatalogListResultValueList,
+          value: __S(64),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CatalogListResult" });
@@ -3331,11 +2827,11 @@ function __c8(j: number): any {
         identifier: "ListCatalogDeploymentsRequest",
       });
     case 4:
-      return S.Array(Deployment);
+      return S.Array(__S(53));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: DeploymentListResultValueList,
+          value: __S(68),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeploymentListResult" });
@@ -3400,11 +2896,11 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "DeviceInsight" });
     case 1:
-      return S.Array(DeviceInsight);
+      return S.Array(__S(72));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: PagedDeviceInsightValueList,
+          value: __S(73),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "PagedDeviceInsight" });
@@ -3430,11 +2926,11 @@ function __c9(j: number): any {
         identifier: "ListCatalogDevicesRequest",
       });
     case 4:
-      return S.Array(Device);
+      return S.Array(__S(55));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: DeviceListResultValueList,
+          value: __S(76),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceListResult" });
@@ -3460,7 +2956,7 @@ function __c9(j: number): any {
         identifier: "ListCertificateByCatalogRequest",
       });
     case 7:
-      return S.Array(Certificate);
+      return S.Array(__S(47));
   }
 }
 function __c10(j: number): any {
@@ -3468,7 +2964,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: CertificateListResultValueList,
+          value: __S(79),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CertificateListResult" });
@@ -3560,7 +3056,7 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: ImageListResultValueList,
+          value: __S(24),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ImageListResult" });
@@ -3593,17 +3089,17 @@ function __c11(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(87)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(Operation);
+      return S.Array(__S(88));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(89)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -3625,11 +3121,11 @@ function __c11(j: number): any {
         identifier: "ListProductByCatalogRequest",
       });
     case 4:
-      return S.Array(Product);
+      return S.Array(__S(60));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: ProductListResultValueList,
+          value: __S(92),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductListResult" });
@@ -3658,7 +3154,7 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
-          properties: S.optional(ProductProperties),
+          properties: S.optional(__S(59)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3680,8 +3176,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ProductProperties),
+          systemData: S.optional(__S(5)),
+          properties: S.optional(__S(59)),
         }),
       ).annotate({
         identifier: "ProductsCreateOrUpdateResponse",
@@ -3692,7 +3188,7 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateCatalogRequestTagsMap),
+          tags: S.optional(__S(2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3717,7 +3213,7 @@ function __c12(j: number): any {
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: S.optional(DeviceUpdateProperties),
+          properties: S.optional(__S(98)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3735,7 +3231,7 @@ function __c12(j: number): any {
           catalogName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
           deviceGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(DeviceGroupPropertiesInput),
+          properties: S.optional(__S(28)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3758,7 +3254,7 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
           productName: S.String.pipe(T.Label()),
-          properties: S.optional(ProductUpdateProperties),
+          properties: S.optional(__S(101)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3774,7 +3270,7 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           catalogName: S.String.pipe(T.Label()),
-          properties: S.optional(ImagePropertiesInput),
+          properties: S.optional(__S(17)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3786,5 +3282,40 @@ function __c12(j: number): any {
       ).annotate({
         identifier: "UploadCatalogImageRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
   }
 }

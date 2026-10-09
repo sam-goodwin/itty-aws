@@ -7,6 +7,8 @@ import * as Redacted from "effect/Redacted";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -48,23 +50,11 @@ export class NotFound
 
 /** * `http` - http * `sse` - sse */
 export type ImportedMcpServerTypeEnum = "http" | "sse";
-const ImportedMcpServerTypeEnum = S.String;
-
 export interface ImportedMcpServerHeader {
   name: string;
   value: string;
 }
-const ImportedMcpServerHeader = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ImportedMcpServerHeader>;
-
 export type ImportedMcpServerHeadersList = Array<ImportedMcpServerHeader>;
-const ImportedMcpServerHeadersList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ImportedMcpServerHeadersList>;
-
 /** One client-imported MCP server, in the agent server's --mcpServers entry shape. */
 export interface ImportedMcpServer {
   type: ImportedMcpServerTypeEnum | (string & {});
@@ -72,52 +62,26 @@ export interface ImportedMcpServer {
   url: string;
   headers?: ImportedMcpServerHeadersList;
 }
-const ImportedMcpServer = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ImportedMcpServer>;
-
 /** Local url-based MCP servers from the creating client (PostHog Desktop) to make available inside the cloud sandbox. Header values are treated as credentials: stored encrypted and never returned by the API. */
 export type CreateTasksRunRequestImportedMcpServersList = Array<ImportedMcpServer>;
-const CreateTasksRunRequestImportedMcpServersList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateTasksRunRequestImportedMcpServersList>;
-
 /** One desktop-only MCP server relayed into the run -- a name only, never configuration. */
 export interface RelayedMcpServer {
   name: string;
 }
-const RelayedMcpServer = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<RelayedMcpServer>;
-
 /** Names of desktop-only MCP servers the creating client (PostHog Desktop) relays into the cloud sandbox over the durable event/command channel. Names only -- the server configuration (command, env, URL, headers) never crosses the wire. */
 export type CreateTasksRunRequestRelayedMcpServersList = Array<RelayedMcpServer>;
-const CreateTasksRunRequestRelayedMcpServersList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateTasksRunRequestRelayedMcpServersList>;
-
 /** * `posthog-gateway` - posthog-gateway * `own-subscription` - own-subscription */
 export type ModelAccessEnum = "posthog-gateway" | "own-subscription";
-const ModelAccessEnum = S.String;
-
 /** * `local` - local * `cloud` - cloud */
 export type RunEnvironmentEnum = "local" | "cloud";
-const RunEnvironmentEnum = S.String;
-
 /** * `interactive` - interactive * `background` - background */
 export type TaskExecutionModeEnum = "interactive" | "background";
-const TaskExecutionModeEnum = S.String;
-
 /** * `user` - user * `bot` - bot */
 export type PrAuthorshipModeEnum = "user" | "bot";
-const PrAuthorshipModeEnum = S.String;
-
 /** * `manual` - manual * `signal_report` - signal_report */
 export type TaskBootstrapRunSourceEnum = "manual" | "signal_report";
-const TaskBootstrapRunSourceEnum = S.String;
-
 /** * `claude` - claude * `codex` - codex */
 export type RuntimeAdapterEnum = "claude" | "codex";
-const RuntimeAdapterEnum = S.String;
-
 /** * `off` - off * `minimal` - minimal * `low` - low * `medium` - medium * `high` - high * `xhigh` - xhigh * `max` - max * `ultracode` - ultracode */
 export type TaskRunReasoningEffortEnum =
   | "off"
@@ -128,12 +92,8 @@ export type TaskRunReasoningEffortEnum =
   | "xhigh"
   | "max"
   | "ultracode";
-const TaskRunReasoningEffortEnum = S.String;
-
 /** * `200k` - 200k * `1m` - 1m */
 export type ContextWindowEnum = "200k" | "1m";
-const ContextWindowEnum = S.String;
-
 /** * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
 export type TaskRunBootstrapCreateRequestInitialPermissionModeEnum =
   | "default"
@@ -143,8 +103,6 @@ export type TaskRunBootstrapCreateRequestInitialPermissionModeEnum =
   | "auto"
   | "read-only"
   | "full-access";
-const TaskRunBootstrapCreateRequestInitialPermissionModeEnum = S.String;
-
 export interface CreateTasksRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -194,40 +152,16 @@ export interface CreateTasksRunRequest {
   /** Initial permission mode for the agent session. Claude runtimes accept PostHog permission presets like 'plan'. Codex runtimes accept native Codex modes like 'plan', 'auto', and 'read-only'. * `default` - default * `acceptEdits` - acceptEdits * `plan` - plan * `bypassPermissions` - bypassPermissions * `auto` - auto * `read-only` - read-only * `full-access` - full-access */
   initial_permission_mode?: TaskRunBootstrapCreateRequestInitialPermissionModeEnum | (string & {});
 }
-const CreateTasksRunRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateTasksRunRequest>;
-
 /** * `anthropic` - anthropic * `openai` - openai */
 export type TaskRunDetailDTOProviderEnum = "anthropic" | "openai";
-const TaskRunDetailDTOProviderEnum = S.String;
-
 export type TaskRunDetailDTOOutputMap = { [key: string]: unknown | undefined };
-const TaskRunDetailDTOOutputMap = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<TaskRunDetailDTOOutputMap>;
-
 /** Latest slug tags for this task, including tags inherited from an earlier run. */
 export type TaskRunDetailDTOTaskTagsList = Array<string>;
-const TaskRunDetailDTOTaskTagsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<TaskRunDetailDTOTaskTagsList>;
-
 export type TaskRunDetailDTOStateMap = { [key: string]: unknown | undefined };
-const TaskRunDetailDTOStateMap =
-  TaskRunDetailDTOOutputMap as any as S.Schema<TaskRunDetailDTOStateMap>;
-
 /** * `user` - user * `repo` - repo * `marketplace` - marketplace * `codex` - codex */
 export type SkillSourceEnum = "user" | "repo" | "marketplace" | "codex";
-const SkillSourceEnum = S.String;
-
 /** * `zip` - zip */
 export type BundleFormatEnum = "zip";
-const BundleFormatEnum = S.String;
-
 export interface TaskRunSkillBundleMetadata {
   /** Name of the local skill included in a skill_bundle artifact. */
   skill_name: string;
@@ -240,11 +174,6 @@ export interface TaskRunSkillBundleMetadata {
   /** Version of the local skill bundle metadata schema. */
   schema_version: number;
 }
-const TaskRunSkillBundleMetadata = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<TaskRunSkillBundleMetadata>;
-
 /** * `posthog_object` - posthog_object */
 export type ReferenceTypeEnum = "posthog_object";
 /** * `insight` - insight * `hogql` - hogql * `dashboard` - dashboard * `error` - error * `replay` - replay * `flag` - flag * `experiment` - experiment * `survey` - survey * `ticket` - ticket * `report` - report * `trace` - trace * `eval` - eval * `event` - event * `cohort` - cohort * `action` - action * `person` - person */
@@ -265,8 +194,6 @@ export type ObjectKindEnum =
   | "cohort"
   | "action"
   | "person";
-const ObjectKindEnum = S.String;
-
 /** Completed assistant message identifiers that referenced the object. */
 export type TaskRunPostHogReferenceMetadataSourceMessageIdsList = Array<string>;
 export interface TaskRunPostHogReferenceMetadata {
@@ -282,12 +209,8 @@ export interface TaskRunPostHogReferenceMetadata {
   occurrence_count: number;
 }
 export type TaskRunArtifactMetadata = TaskRunSkillBundleMetadata | TaskRunPostHogReferenceMetadata;
-const TaskRunArtifactMetadata = S.Unknown as any as S.Schema<TaskRunArtifactMetadata>;
-
 /** * `agent` - agent * `user` - user */
 export type UploadedByEnum = "agent" | "user";
-const UploadedByEnum = S.String;
-
 export interface TaskRunArtifactResponse {
   /** Stable identifier for the artifact within this run */
   id?: string;
@@ -316,17 +239,7 @@ export interface TaskRunArtifactResponse {
   /** Stable download URL for the artifact. Populated on the finalize-upload response so the caller can link to the file; it redirects to a fresh presigned URL on each request and is not persisted on the manifest. */
   url?: string;
 }
-const TaskRunArtifactResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<TaskRunArtifactResponse>;
-
 export type TaskRunDetailDTOArtifactsList = Array<TaskRunArtifactResponse>;
-const TaskRunDetailDTOArtifactsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<TaskRunDetailDTOArtifactsList>;
-
 /** Detail response for a task run. Reads from a frozen ``TaskRunDetailDTO`` produced by the facade mapper (which computes the presigned ``log_url`` and parses ``runtime_adapter`` / ``provider`` / ``model`` / ``reasoning_effort`` off the run state). ``task`` is the parent task id. Reused as the nested ``latest_run`` shape by the task detail response. */
 export interface TaskRunDetailDTO {
   id: string;
@@ -362,8 +275,6 @@ export interface TaskRunDetailDTO {
   /** True when this run's sandbox serves a dev stack preview, so clients can offer the preview link. Open it through the run's `preview/` endpoint, which mints a fresh access token on every request. */
   preview_available?: boolean;
 }
-const TaskRunDetailDTO = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<TaskRunDetailDTO>;
-
 /** * `orient` - orient * `explore` - explore * `gather` - gather * `produce` - produce * `verify` - verify * `setup_env` - setup_env * `ship` - ship * `wait` - wait * `operate` - operate * `deliver` - deliver */
 export type TaskAnalysisGoalKindEnum =
   | "orient"
@@ -376,12 +287,8 @@ export type TaskAnalysisGoalKindEnum =
   | "wait"
   | "operate"
   | "deliver";
-const TaskAnalysisGoalKindEnum = S.String;
-
 /** * `worked` - worked * `failed` - failed * `abandoned` - abandoned * `unknown` - unknown */
 export type TaskAnalysisOutcomeEnum = "worked" | "failed" | "abandoned" | "unknown";
-const TaskAnalysisOutcomeEnum = S.String;
-
 /** * `missing_binary` - missing_binary * `missing_package` - missing_package * `service_down` - service_down * `missing_build_artifact` - missing_build_artifact * `missing_credential` - missing_credential * `memory_limit` - memory_limit * `network` - network * `shallow_git` - shallow_git * `tool_error` - tool_error * `tool_syntax` - tool_syntax * `api_error` - api_error * `missing_flag` - missing_flag * `unclear_instructions` - unclear_instructions * `user_redirect` - user_redirect */
 export type TaskAnalysisBlockerKindEnum =
   | "missing_binary"
@@ -398,18 +305,10 @@ export type TaskAnalysisBlockerKindEnum =
   | "missing_flag"
   | "unclear_instructions"
   | "user_redirect";
-const TaskAnalysisBlockerKindEnum = S.String;
-
 /** Command heads run in the activity, in order, adjacent duplicates removed. */
 export type CreateTasksRunsAnalysisActivityRequestCommandsList = Array<string>;
-const CreateTasksRunsAnalysisActivityRequestCommandsList =
-  TaskRunDetailDTOTaskTagsList as any as S.Schema<CreateTasksRunsAnalysisActivityRequestCommandsList>;
-
 /** Skills, AGENTS.md files, templates, and wiki pages the agent read in the activity. */
 export type CreateTasksRunsAnalysisActivityRequestGuidanceReadList = Array<string>;
-const CreateTasksRunsAnalysisActivityRequestGuidanceReadList =
-  TaskRunDetailDTOTaskTagsList as any as S.Schema<CreateTasksRunsAnalysisActivityRequestGuidanceReadList>;
-
 export interface CreateTasksRunsAnalysisActivityRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -446,54 +345,26 @@ export interface CreateTasksRunsAnalysisActivityRequest {
   /** Skills, AGENTS.md files, templates, and wiki pages the agent read in the activity. */
   guidance_read?: CreateTasksRunsAnalysisActivityRequestGuidanceReadList;
 }
-const CreateTasksRunsAnalysisActivityRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateTasksRunsAnalysisActivityRequest>;
-
 export interface TaskRunAnalysisActivityResponse {
   /** Zero-based position of the stored activity on the run. */
   activity_index: number;
 }
-const TaskRunAnalysisActivityResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<TaskRunAnalysisActivityResponse>;
-
 export interface CreateTasksRunsAnalyzeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   task_id: string;
   id: string;
 }
-const CreateTasksRunsAnalyzeRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateTasksRunsAnalyzeRequest>;
-
 export interface TaskRunAnalyzeResponse {
   /** Id of the analysis task to navigate to. */
   analysis_task_id: string;
   /** True when a new analysis task was created; false when an existing analysis for this run was returned. */
   created: boolean;
 }
-const TaskRunAnalyzeResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<TaskRunAnalyzeResponse>;
-
 export type CreateTasksRunsAppendLogRequestEntriesItemMap = { [key: string]: unknown | undefined };
-const CreateTasksRunsAppendLogRequestEntriesItemMap =
-  TaskRunDetailDTOOutputMap as any as S.Schema<CreateTasksRunsAppendLogRequestEntriesItemMap>;
-
 /** Array of log entry dictionaries to append */
 export type CreateTasksRunsAppendLogRequestEntriesList =
   Array<CreateTasksRunsAppendLogRequestEntriesItemMap>;
-const CreateTasksRunsAppendLogRequestEntriesList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateTasksRunsAppendLogRequestEntriesList>;
-
 export interface CreateTasksRunsAppendLogRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -502,11 +373,6 @@ export interface CreateTasksRunsAppendLogRequest {
   /** Array of log entry dictionaries to append */
   entries?: CreateTasksRunsAppendLogRequestEntriesList;
 }
-const CreateTasksRunsAppendLogRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateTasksRunsAppendLogRequest>;
-
 /** * `plan` - plan * `context` - context * `reference` - reference * `output` - output * `artifact` - artifact * `tree_snapshot` - tree_snapshot * `user_attachment` - user_attachment * `skill_bundle` - skill_bundle */
 export type TaskRunArtifactTypeEnum =
   | "plan"
@@ -517,12 +383,8 @@ export type TaskRunArtifactTypeEnum =
   | "tree_snapshot"
   | "user_attachment"
   | "skill_bundle";
-const TaskRunArtifactTypeEnum = S.String;
-
 /** * `utf-8` - utf-8 * `base64` - base64 */
 export type ContentEncodingEnum = "utf-8" | "base64";
-const ContentEncodingEnum = S.String;
-
 export interface TaskRunArtifactUpload {
   /** File name to associate with the artifact */
   name?: string;
@@ -539,18 +401,8 @@ export interface TaskRunArtifactUpload {
   /** Skill bundle metadata, required when the artifact type is skill_bundle. */
   metadata?: TaskRunSkillBundleMetadata;
 }
-const TaskRunArtifactUpload = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<TaskRunArtifactUpload>;
-
 /** Array of artifacts to upload */
 export type CreateTasksRunsArtifactRequestArtifactsList = Array<TaskRunArtifactUpload>;
-const CreateTasksRunsArtifactRequestArtifactsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateTasksRunsArtifactRequestArtifactsList>;
-
 export interface CreateTasksRunsArtifactRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -559,30 +411,14 @@ export interface CreateTasksRunsArtifactRequest {
   /** Array of artifacts to upload */
   artifacts?: CreateTasksRunsArtifactRequestArtifactsList;
 }
-const CreateTasksRunsArtifactRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateTasksRunsArtifactRequest>;
-
 /** Updated list of artifacts on the run */
 export type TaskRunArtifactsUploadResponseArtifactsList = Array<TaskRunArtifactResponse>;
-const TaskRunArtifactsUploadResponseArtifactsList =
-  TaskRunDetailDTOArtifactsList as any as S.Schema<TaskRunArtifactsUploadResponseArtifactsList>;
-
 export interface TaskRunArtifactsUploadResponse {
   /** Updated list of artifacts on the run */
   artifacts?: TaskRunArtifactsUploadResponseArtifactsList;
 }
-const TaskRunArtifactsUploadResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<TaskRunArtifactsUploadResponse>;
-
 /** Manifest ids of the artifacts to update. Pass every version of a file together so the whole file is dismissed rather than a single upload of it. */
 export type CreateTasksRunsArtifactsDismissRequestArtifactIdsList = Array<string>;
-const CreateTasksRunsArtifactsDismissRequestArtifactIdsList =
-  TaskRunDetailDTOTaskTagsList as any as S.Schema<CreateTasksRunsArtifactsDismissRequestArtifactIdsList>;
-
 export interface CreateTasksRunsArtifactsDismissRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -593,25 +429,12 @@ export interface CreateTasksRunsArtifactsDismissRequest {
   /** True to hide the artifacts from clients, false to show them again. */
   dismissed?: boolean;
 }
-const CreateTasksRunsArtifactsDismissRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateTasksRunsArtifactsDismissRequest>;
-
 /** Updated list of artifacts on the run */
 export type TaskRunArtifactsDismissResponseArtifactsList = Array<TaskRunArtifactResponse>;
-const TaskRunArtifactsDismissResponseArtifactsList =
-  TaskRunDetailDTOArtifactsList as any as S.Schema<TaskRunArtifactsDismissResponseArtifactsList>;
-
 export interface TaskRunArtifactsDismissResponse {
   /** Updated list of artifacts on the run */
   artifacts: TaskRunArtifactsDismissResponseArtifactsList;
 }
-const TaskRunArtifactsDismissResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<TaskRunArtifactsDismissResponse>;
-
 export interface CreateTasksRunsArtifactsPresignRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -620,22 +443,12 @@ export interface CreateTasksRunsArtifactsPresignRequest {
   /** S3 storage path returned in the artifact manifest */
   storage_path?: string;
 }
-const CreateTasksRunsArtifactsPresignRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateTasksRunsArtifactsPresignRequest>;
-
 export interface TaskRunArtifactPresignResponse {
   /** Presigned URL for downloading the artifact */
   url?: string;
   /** URL expiry in seconds */
   expires_in?: number;
 }
-const TaskRunArtifactPresignResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<TaskRunArtifactPresignResponse>;
-
 export interface TaskRunPostHogReference {
   /** Fallback display name for the referenced object. */
   name: string;
@@ -646,18 +459,8 @@ export interface TaskRunPostHogReference {
   /** Stable identifier of the completed assistant message containing the reference. */
   source_message_id: string;
 }
-const TaskRunPostHogReference = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<TaskRunPostHogReference>;
-
 /** PostHog object references extracted from one completed assistant message. */
 export type CreateTasksRunsArtifactsReferenceRequestReferencesList = Array<TaskRunPostHogReference>;
-const CreateTasksRunsArtifactsReferenceRequestReferencesList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateTasksRunsArtifactsReferenceRequestReferencesList>;
-
 export interface CreateTasksRunsArtifactsReferenceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -666,35 +469,20 @@ export interface CreateTasksRunsArtifactsReferenceRequest {
   /** PostHog object references extracted from one completed assistant message. */
   references: CreateTasksRunsArtifactsReferenceRequestReferencesList;
 }
-const CreateTasksRunsArtifactsReferenceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateTasksRunsArtifactsReferenceRequest>;
-
 /** Updated list of artifacts on the run. */
 export type TaskRunPostHogReferencesResponseArtifactsList = Array<TaskRunArtifactResponse>;
 export interface TaskRunPostHogReferencesResponse {
   /** Updated list of artifacts on the run. */
   artifacts: TaskRunPostHogReferencesResponseArtifactsList;
 }
-const TaskRunPostHogReferencesResponse =
-  TaskRunArtifactsDismissResponse as any as S.Schema<TaskRunPostHogReferencesResponse>;
-
 export interface CreateTasksRunsClearConversationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   task_id: string;
   id: string;
 }
-const CreateTasksRunsClearConversationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateTasksRunsClearConversationRequest>;
-
 /** * `2.0` - 2.0 */
 export type JsonrpcEnum = "2.0";
-const JsonrpcEnum = S.String;
-
 /** * `user_message` - user_message * `cancel` - cancel * `close` - close * `permission_response` - permission_response * `set_config_option` - set_config_option * `mcp_response` - mcp_response * `credential_response` - credential_response * `pi/rpc` - pi/rpc * `queue_get` - queue_get * `queue_clear` - queue_clear * `side_question` - side_question */
 export type TaskRunCommandRequestMethodEnum =
   | "user_message"
@@ -708,13 +496,8 @@ export type TaskRunCommandRequestMethodEnum =
   | "queue_get"
   | "queue_clear"
   | "side_question";
-const TaskRunCommandRequestMethodEnum = S.String;
-
 /** Parameters for the command */
 export type CreateTasksRunsCommandRequestParamsMap = { [key: string]: unknown | undefined };
-const CreateTasksRunsCommandRequestParamsMap =
-  TaskRunDetailDTOOutputMap as any as S.Schema<CreateTasksRunsCommandRequestParamsMap>;
-
 export interface CreateTasksRunsCommandRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -727,16 +510,8 @@ export interface CreateTasksRunsCommandRequest {
   /** Parameters for the command */
   params?: CreateTasksRunsCommandRequestParamsMap;
 }
-const CreateTasksRunsCommandRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateTasksRunsCommandRequest>;
-
 /** JSON-RPC error details, including failures returned with HTTP 200 */
 export type TaskRunCommandResponseErrorMap = { [key: string]: unknown | undefined };
-const TaskRunCommandResponseErrorMap =
-  TaskRunDetailDTOOutputMap as any as S.Schema<TaskRunCommandResponseErrorMap>;
-
 /** Response from the agent server command endpoint. */
 export interface TaskRunCommandResponse {
   /** JSON-RPC version */
@@ -748,16 +523,8 @@ export interface TaskRunCommandResponse {
   /** JSON-RPC error details, including failures returned with HTTP 200 */
   error?: TaskRunCommandResponseErrorMap;
 }
-const TaskRunCommandResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<TaskRunCommandResponse>;
-
 /** Manifest ids of artifacts on the SENDING run to share (max 10). Each is copied into the target run's own artifact storage; the receiver gets an immutable snapshot. */
 export type CreateTasksRunsPeersMessageRequestArtifactIdsList = Array<string>;
-const CreateTasksRunsPeersMessageRequestArtifactIdsList =
-  TaskRunDetailDTOTaskTagsList as any as S.Schema<CreateTasksRunsPeersMessageRequestArtifactIdsList>;
-
 export interface CreateTasksRunsPeersMessageRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -769,15 +536,8 @@ export interface CreateTasksRunsPeersMessageRequest {
   /** Manifest ids of artifacts on the SENDING run to share (max 10). Each is copied into the target run's own artifact storage; the receiver gets an immutable snapshot. */
   artifact_ids?: CreateTasksRunsPeersMessageRequestArtifactIdsList;
 }
-const CreateTasksRunsPeersMessageRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateTasksRunsPeersMessageRequest>;
-
 /** * `accepted` - accepted * `target_finished` - target_finished * `rejected` - rejected */
 export type ResultEnum = "accepted" | "target_finished" | "rejected";
-const ResultEnum = S.String;
-
 export interface TaskRunPeerMessageResponse {
   /** Send outcome: 'accepted' (queued for delivery -- not a delivery confirmation), 'target_finished' (the peer's workflow is gone), or 'rejected' (throttled or invalid). * `accepted` - accepted * `target_finished` - target_finished * `rejected` - rejected */
   result: ResultEnum;
@@ -786,16 +546,8 @@ export interface TaskRunPeerMessageResponse {
   /** Id of the recorded peer message, when one was created for this send. */
   message_id?: string | null;
 }
-const TaskRunPeerMessageResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<TaskRunPeerMessageResponse>;
-
 /** Ordered assistant text blocks. When present, the last non-empty entry is posted instead of text. */
 export type CreateTasksRunsRelayMessageRequestTextPartsList = Array<string>;
-const CreateTasksRunsRelayMessageRequestTextPartsList =
-  TaskRunDetailDTOTaskTagsList as any as S.Schema<CreateTasksRunsRelayMessageRequestTextPartsList>;
-
 export interface CreateTasksRunsRelayMessageRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -810,22 +562,12 @@ export interface CreateTasksRunsRelayMessageRequest {
   /** AI observability trace id of the turn that wrote this answer, when the sandbox reported one. */
   trace_id?: string | null;
 }
-const CreateTasksRunsRelayMessageRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateTasksRunsRelayMessageRequest>;
-
 export interface TaskRunRelayMessageResponse {
   /** Relay status: 'accepted' or 'skipped' */
   status?: string;
   /** Relay workflow ID when accepted */
   relay_id?: string;
 }
-const TaskRunRelayMessageResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<TaskRunRelayMessageResponse>;
-
 export interface CreateTasksRunsSubscriptionTokenRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -834,11 +576,6 @@ export interface CreateTasksRunsSubscriptionTokenRequest {
   /** SHA-256 hex digest of the access token Codex rejected. The server refreshes only when this names its current token; otherwise it returns the newer token it already holds. */
   rejected_access_token_sha256?: string | null;
 }
-const CreateTasksRunsSubscriptionTokenRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateTasksRunsSubscriptionTokenRequest>;
-
 export interface TaskRunSubscriptionTokenResponse {
   /** ChatGPT access token for the Codex app-server. It can stay valid for several days. */
   access_token: string | Redacted.Redacted<string>;
@@ -849,90 +586,48 @@ export interface TaskRunSubscriptionTokenResponse {
   /** When the access token expires. Request a new one before this time. */
   expires_at: string;
 }
-const TaskRunSubscriptionTokenResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<TaskRunSubscriptionTokenResponse>;
-
 export interface CreateTasksRunsTaskSessionSyncRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   task_id: string;
   id: string;
 }
-const CreateTasksRunsTaskSessionSyncRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateTasksRunsTaskSessionSyncRequest>;
-
 export interface TaskSessionSyncResponse {
   /** Task session identifier */
   id: string;
   /** SHA-256 digest of the uploaded session content */
   content_sha256: string;
 }
-const TaskSessionSyncResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<TaskSessionSyncResponse>;
-
 export interface GetTasksRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   task_id: string;
   id: string;
 }
-const GetTasksRunRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GetTasksRunRequest>;
-
 export interface GetTasksRunsConnectionTokenRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   task_id: string;
   id: string;
 }
-const GetTasksRunsConnectionTokenRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetTasksRunsConnectionTokenRequest>;
-
 /** Response containing a JWT token for direct sandbox connection */
 export interface ConnectionTokenResponse {
   /** JWT token for authenticating with the sandbox */
   token?: string;
 }
-const ConnectionTokenResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ConnectionTokenResponse>;
-
 export interface GetTasksRunsLogRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   task_id: string;
   id: string;
 }
-const GetTasksRunsLogRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetTasksRunsLogRequest>;
-
 export interface GetTasksRunsLogResponse {}
-const GetTasksRunsLogResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetTasksRunsLogResponse>;
-
 export interface GetTasksRunsPeerRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   task_id: string;
   id: string;
 }
-const GetTasksRunsPeerRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetTasksRunsPeerRequest>;
-
 /** One peer agent run visible to the requesting run (agent peer messaging). */
 export interface TaskRunPeer {
   /** The peer run's id -- the address send_agent_message targets. */
@@ -958,36 +653,19 @@ export interface TaskRunPeer {
   /** ISO-8601 timestamp of the peer run's last update. */
   updated_at: string | null;
 }
-const TaskRunPeer = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<TaskRunPeer>;
-
 /** Active agent runs the requesting run may message, most recently updated first. */
 export type TaskRunPeersResponsePeersList = Array<TaskRunPeer>;
-const TaskRunPeersResponsePeersList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<TaskRunPeersResponsePeersList>;
-
 export interface TaskRunPeersResponse {
   /** Active agent runs the requesting run may message, most recently updated first. */
   peers: TaskRunPeersResponsePeersList;
 }
-const TaskRunPeersResponse = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<TaskRunPeersResponse>;
-
 export interface GetTasksRunsPreviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   task_id: string;
   id: string;
 }
-const GetTasksRunsPreviewRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetTasksRunsPreviewRequest>;
-
 export interface GetTasksRunsPreviewResponse {}
-const GetTasksRunsPreviewResponse =
-  GetTasksRunsLogResponse as any as S.Schema<GetTasksRunsPreviewResponse>;
-
 export interface GetTasksRunsSessionLogRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1004,15 +682,7 @@ export interface GetTasksRunsSessionLogRequest {
   /** Zero-based offset into the filtered log entries */
   offset?: number;
 }
-const GetTasksRunsSessionLogRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetTasksRunsSessionLogRequest>;
-
 export interface GetTasksRunsSessionLogResponse {}
-const GetTasksRunsSessionLogResponse =
-  GetTasksRunsLogResponse as any as S.Schema<GetTasksRunsSessionLogResponse>;
-
 export interface GetTasksRunsStreamRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1021,15 +691,7 @@ export interface GetTasksRunsStreamRequest {
   /** Set to `latest` to skip the event backlog and only receive events published after connecting. */
   start?: string;
 }
-const GetTasksRunsStreamRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetTasksRunsStreamRequest>;
-
 export interface GetTasksRunsStreamResponse {}
-const GetTasksRunsStreamResponse =
-  GetTasksRunsLogResponse as any as S.Schema<GetTasksRunsStreamResponse>;
-
 export interface GetTasksRunsStreamTokenRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1038,11 +700,6 @@ export interface GetTasksRunsStreamTokenRequest {
   /** Set to true when the client can rebuild the run from its durable log after the agent-proxy reports a trimmed stream cursor. Without it, runs that keep only a short live tail in Redis are read from the Django endpoint, which replays the durable backlog itself. */
   resync?: boolean;
 }
-const GetTasksRunsStreamTokenRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetTasksRunsStreamTokenRequest>;
-
 /** Response containing a JWT token (and resolved base URL) for reading a task run's live event stream */
 export interface StreamReadTokenResponse {
   /** Run-scoped JWT the browser presents to the agent-proxy to read this run's live event stream */
@@ -1050,22 +707,12 @@ export interface StreamReadTokenResponse {
   /** Base URL of the agent-proxy to read the stream from when routing via the proxy is enabled for this user. Null means read from the Django endpoint directly (same-origin). The client appends the run's stream path and sends the token as a Bearer header when this is set. */
   stream_base_url: string | null;
 }
-const StreamReadTokenResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<StreamReadTokenResponse>;
-
 export interface GetTasksRunsTaskSessionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   task_id: string;
   id: string;
 }
-const GetTasksRunsTaskSessionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetTasksRunsTaskSessionRequest>;
-
 export interface TaskSessionResponse {
   /** Task session identifier */
   id: string;
@@ -1074,8 +721,6 @@ export interface TaskSessionResponse {
   /** SHA-256 digest of the current session content */
   content_sha256: string | null;
 }
-const TaskSessionResponse = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<TaskSessionResponse>;
-
 export interface ListTasksRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1085,25 +730,13 @@ export interface ListTasksRunsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListTasksRunsRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ListTasksRunsRequest>;
-
 export type PaginatedTaskRunDetailDTOListResultsList = Array<TaskRunDetailDTO>;
-const PaginatedTaskRunDetailDTOListResultsList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<PaginatedTaskRunDetailDTOListResultsList>;
-
 export interface PaginatedTaskRunDetailDTOList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedTaskRunDetailDTOListResultsList;
 }
-const PaginatedTaskRunDetailDTOList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<PaginatedTaskRunDetailDTOList>;
-
 export interface TasksRunsArtifactsDownloadCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1112,17 +745,7 @@ export interface TasksRunsArtifactsDownloadCreateRequest {
   /** S3 storage path returned in the artifact manifest */
   storage_path?: string;
 }
-const TasksRunsArtifactsDownloadCreateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<TasksRunsArtifactsDownloadCreateRequest>;
-
 export interface TasksRunsArtifactsDownloadCreateResponse {}
-const TasksRunsArtifactsDownloadCreateResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<TasksRunsArtifactsDownloadCreateResponse>;
-
 export interface TasksRunsArtifactsDownloadRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1131,15 +754,7 @@ export interface TasksRunsArtifactsDownloadRetrieveRequest {
   /** Manifest id of the artifact to download */
   artifact_id: string;
 }
-const TasksRunsArtifactsDownloadRetrieveRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<TasksRunsArtifactsDownloadRetrieveRequest>;
-
 export interface TasksRunsArtifactsDownloadRetrieveResponse {}
-const TasksRunsArtifactsDownloadRetrieveResponse =
-  TasksRunsArtifactsDownloadCreateResponse as any as S.Schema<TasksRunsArtifactsDownloadRetrieveResponse>;
-
 export interface TaskRunArtifactFinalizeUpload {
   /** Stable identifier returned by the prepare upload endpoint */
   id?: string;
@@ -1156,19 +771,9 @@ export interface TaskRunArtifactFinalizeUpload {
   /** Skill bundle metadata, required when the artifact type is skill_bundle. */
   metadata?: TaskRunSkillBundleMetadata;
 }
-const TaskRunArtifactFinalizeUpload = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<TaskRunArtifactFinalizeUpload>;
-
 /** Array of uploaded artifacts to finalize */
 export type TasksRunsArtifactsFinalizeUploadCreateRequestArtifactsList =
   Array<TaskRunArtifactFinalizeUpload>;
-const TasksRunsArtifactsFinalizeUploadCreateRequestArtifactsList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<TasksRunsArtifactsFinalizeUploadCreateRequestArtifactsList>;
-
 export interface TasksRunsArtifactsFinalizeUploadCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1177,20 +782,12 @@ export interface TasksRunsArtifactsFinalizeUploadCreateRequest {
   /** Array of uploaded artifacts to finalize */
   artifacts?: TasksRunsArtifactsFinalizeUploadCreateRequestArtifactsList;
 }
-const TasksRunsArtifactsFinalizeUploadCreateRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<TasksRunsArtifactsFinalizeUploadCreateRequest>;
-
 /** Updated list of artifacts on the run */
 export type TaskRunArtifactsFinalizeUploadResponseArtifactsList = Array<TaskRunArtifactResponse>;
 export interface TaskRunArtifactsFinalizeUploadResponse {
   /** Updated list of artifacts on the run */
   artifacts?: TaskRunArtifactsFinalizeUploadResponseArtifactsList;
 }
-const TaskRunArtifactsFinalizeUploadResponse =
-  TaskRunArtifactsUploadResponse as any as S.Schema<TaskRunArtifactsFinalizeUploadResponse>;
-
 export interface TaskRunArtifactPrepareUpload {
   /** File name to associate with the artifact */
   name?: string;
@@ -1205,19 +802,9 @@ export interface TaskRunArtifactPrepareUpload {
   /** Skill bundle metadata, required when the artifact type is skill_bundle. */
   metadata?: TaskRunSkillBundleMetadata;
 }
-const TaskRunArtifactPrepareUpload = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<TaskRunArtifactPrepareUpload>;
-
 /** Array of artifacts to prepare */
 export type TasksRunsArtifactsPrepareUploadCreateRequestArtifactsList =
   Array<TaskRunArtifactPrepareUpload>;
-const TasksRunsArtifactsPrepareUploadCreateRequestArtifactsList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<TasksRunsArtifactsPrepareUploadCreateRequestArtifactsList>;
-
 export interface TasksRunsArtifactsPrepareUploadCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1226,26 +813,14 @@ export interface TasksRunsArtifactsPrepareUploadCreateRequest {
   /** Array of artifacts to prepare */
   artifacts?: TasksRunsArtifactsPrepareUploadCreateRequestArtifactsList;
 }
-const TasksRunsArtifactsPrepareUploadCreateRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<TasksRunsArtifactsPrepareUploadCreateRequest>;
-
 /** Form fields that must be submitted verbatim with the file upload */
 export type S3PresignedPostFieldsMap = { [key: string]: string | undefined };
-const S3PresignedPostFieldsMap = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<S3PresignedPostFieldsMap>;
-
 export interface S3PresignedPost {
   /** Presigned S3 POST URL */
   url?: string;
   /** Form fields that must be submitted verbatim with the file upload */
   fields?: S3PresignedPostFieldsMap;
 }
-const S3PresignedPost = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<S3PresignedPost>;
-
 export interface TaskRunArtifactPrepareUploadResponse {
   /** Stable identifier for the prepared artifact within this run */
   id?: string;
@@ -1268,28 +843,13 @@ export interface TaskRunArtifactPrepareUploadResponse {
   /** Presigned S3 POST configuration for uploading the file */
   presigned_post?: S3PresignedPost;
 }
-const TaskRunArtifactPrepareUploadResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<TaskRunArtifactPrepareUploadResponse>;
-
 /** Prepared uploads for the requested artifacts */
 export type TaskRunArtifactsPrepareUploadResponseArtifactsList =
   Array<TaskRunArtifactPrepareUploadResponse>;
-const TaskRunArtifactsPrepareUploadResponseArtifactsList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<TaskRunArtifactsPrepareUploadResponseArtifactsList>;
-
 export interface TaskRunArtifactsPrepareUploadResponse {
   /** Prepared uploads for the requested artifacts */
   artifacts?: TaskRunArtifactsPrepareUploadResponseArtifactsList;
 }
-const TaskRunArtifactsPrepareUploadResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<TaskRunArtifactsPrepareUploadResponse>;
-
 export interface TasksRunsCancelCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1300,27 +860,14 @@ export interface TasksRunsCancelCreateRequest {
   /** Cancel only while the run is still a warm sandbox awaiting its first message. A run that has since received one is left alone and returned unchanged. Set this when handing a warm sandbox back, so a release that races a submit cannot stop the run that submit started. */
   only_if_awaiting_first_message?: boolean;
 }
-const TasksRunsCancelCreateRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<TasksRunsCancelCreateRequest>;
-
 export interface TasksRunsResumeInCloudCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   task_id: string;
   id: string;
 }
-const TasksRunsResumeInCloudCreateRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<TasksRunsResumeInCloudCreateRequest>;
-
 /** Identifiers for run artifacts that should be attached to the next user message delivered to the sandbox. */
 export type TasksRunsStartCreateRequestPendingUserArtifactIdsList = Array<string>;
-const TasksRunsStartCreateRequestPendingUserArtifactIdsList =
-  TaskRunDetailDTOTaskTagsList as any as S.Schema<TasksRunsStartCreateRequestPendingUserArtifactIdsList>;
-
 export interface TasksRunsStartCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1331,27 +878,11 @@ export interface TasksRunsStartCreateRequest {
   /** Identifiers for run artifacts that should be attached to the next user message delivered to the sandbox. */
   pending_user_artifact_ids?: TasksRunsStartCreateRequestPendingUserArtifactIdsList;
 }
-const TasksRunsStartCreateRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<TasksRunsStartCreateRequest>;
-
 /** * `acp` - ACP * `pi` - Pi */
 export type TaskRuntimeEnum = "acp" | "pi";
-const TaskRuntimeEnum = S.String;
-
 export type TaskDetailDTORepositoriesList = Array<string>;
-const TaskDetailDTORepositoriesList =
-  TaskRunDetailDTOTaskTagsList as any as S.Schema<TaskDetailDTORepositoriesList>;
-
 export type TaskDetailDTOJsonSchemaMap = { [key: string]: unknown | undefined };
-const TaskDetailDTOJsonSchemaMap =
-  TaskRunDetailDTOOutputMap as any as S.Schema<TaskDetailDTOJsonSchemaMap>;
-
 export type TaskUserBasicInfoHedgehogConfigMap = { [key: string]: unknown | undefined };
-const TaskUserBasicInfoHedgehogConfigMap =
-  TaskRunDetailDTOOutputMap as any as S.Schema<TaskUserBasicInfoHedgehogConfigMap>;
-
 /** Response shape for a task creator, mirroring core ``UserBasicSerializer`` output. */
 export interface TaskUserBasicInfo {
   id: number;
@@ -1364,24 +895,12 @@ export interface TaskUserBasicInfo {
   hedgehog_config?: TaskUserBasicInfoHedgehogConfigMap | null;
   role_at_organization?: string | null;
 }
-const TaskUserBasicInfo = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<TaskUserBasicInfo>;
-
 export interface SlackThreadReferenceDTO {
   url: string;
   channel: string;
   created_at?: string | null;
 }
-const SlackThreadReferenceDTO = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<SlackThreadReferenceDTO>;
-
 export type TaskDetailDTOSlackThreadReferencesList = Array<SlackThreadReferenceDTO>;
-const TaskDetailDTOSlackThreadReferencesList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<TaskDetailDTOSlackThreadReferencesList>;
-
 /** Detail response for a task. Reads from a frozen ``TaskDetailDTO`` produced by the facade. ``github_integration`` / ``github_user_integration`` are integration ids, ``signal_report`` is the report id, and ``latest_run`` nests the run-detail shape. ``created_by`` mirrors core ``UserBasicSerializer``. */
 export interface TaskDetailDTO {
   id: string;
@@ -1414,8 +933,6 @@ export interface TaskDetailDTO {
   /** Stable key of the server-side flow that created this task, e.g. `desktop_onboarding_session:<user_id>`. Null for tasks people create themselves. */
   origin_key?: string | null;
 }
-const TaskDetailDTO = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<TaskDetailDTO>;
-
 /** * `not_started` - not_started * `queued` - queued * `in_progress` - in_progress * `completed` - completed * `failed` - failed * `cancelled` - cancelled */
 export type RunStatusEnum =
   | "not_started"
@@ -1424,23 +941,12 @@ export type RunStatusEnum =
   | "completed"
   | "failed"
   | "cancelled";
-const RunStatusEnum = S.String;
-
 /** State of the run */
 export type UpdateTasksRunsPartialRequestStateMap = { [key: string]: unknown | undefined };
-const UpdateTasksRunsPartialRequestStateMap =
-  TaskRunDetailDTOOutputMap as any as S.Schema<UpdateTasksRunsPartialRequestStateMap>;
-
 /** State keys to remove atomically before applying any state updates. */
 export type UpdateTasksRunsPartialRequestStateRemoveKeysList = Array<string>;
-const UpdateTasksRunsPartialRequestStateRemoveKeysList =
-  TaskRunDetailDTOTaskTagsList as any as S.Schema<UpdateTasksRunsPartialRequestStateRemoveKeysList>;
-
 /** State keys whose value to append to the list stored at that key, atomically under the row lock. Use instead of sending the whole list back through `state`, which loses concurrent appends to a read-modify-write race. */
 export type UpdateTasksRunsPartialRequestStateAppendMap = { [key: string]: unknown | undefined };
-const UpdateTasksRunsPartialRequestStateAppendMap =
-  TaskRunDetailDTOOutputMap as any as S.Schema<UpdateTasksRunsPartialRequestStateAppendMap>;
-
 export interface UpdateTasksRunsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1463,11 +969,6 @@ export interface UpdateTasksRunsPartialRequest {
   /** Error message if execution failed */
   error_message?: string | null;
 }
-const UpdateTasksRunsPartialRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<UpdateTasksRunsPartialRequest>;
-
 export interface UpdateTasksRunsSetOutputPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1476,16 +977,8 @@ export interface UpdateTasksRunsSetOutputPartialRequest {
   /** Output data from the run. Validated against the task's json_schema if one is set. */
   output?: unknown;
 }
-const UpdateTasksRunsSetOutputPartialRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<UpdateTasksRunsSetOutputPartialRequest>;
-
 /** Complete set of slug tags that replaces the prior tags. The agent chooses the tags. Omit the field to keep the current tags. Send an empty list to remove them. */
 export type UpdateTasksRunsSetSummaryPartialRequestTagsList = Array<string>;
-const UpdateTasksRunsSetSummaryPartialRequestTagsList =
-  TaskRunDetailDTOTaskTagsList as any as S.Schema<UpdateTasksRunsSetSummaryPartialRequestTagsList>;
-
 export interface UpdateTasksRunsSetSummaryPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1496,11 +989,6 @@ export interface UpdateTasksRunsSetSummaryPartialRequest {
   /** Complete set of slug tags that replaces the prior tags. The agent chooses the tags. Omit the field to keep the current tags. Send an empty list to remove them. */
   tags?: UpdateTasksRunsSetSummaryPartialRequestTagsList;
 }
-const UpdateTasksRunsSetSummaryPartialRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<UpdateTasksRunsSetSummaryPartialRequest>;
-
 export type CreateTasksRunError = BadRequest | Forbidden | NotFound | PosthogOpError;
 /** Create task run Create a new run for a specific task without starting execution. */
 export const createTasksRun: API.OperationMethod<
@@ -1509,8 +997,8 @@ export const createTasksRun: API.OperationMethod<
   CreateTasksRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTasksRunRequest,
-  output: TaskRunDetailDTO,
+  input: __S(6) as any as S.Schema<CreateTasksRunRequest>,
+  output: __S(12) as any as S.Schema<TaskRunDetailDTO>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1528,8 +1016,8 @@ export const createTasksRunsAnalysisActivity: API.OperationMethod<
   CreateTasksRunsAnalysisActivityError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTasksRunsAnalysisActivityRequest,
-  output: TaskRunAnalysisActivityResponse,
+  input: __S(13) as any as S.Schema<CreateTasksRunsAnalysisActivityRequest>,
+  output: __S(14) as any as S.Schema<TaskRunAnalysisActivityResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1543,8 +1031,8 @@ export const createTasksRunsAnalyze: API.OperationMethod<
   CreateTasksRunsAnalyzeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTasksRunsAnalyzeRequest,
-  output: TaskRunAnalyzeResponse,
+  input: __S(15) as any as S.Schema<CreateTasksRunsAnalyzeRequest>,
+  output: __S(16) as any as S.Schema<TaskRunAnalyzeResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1558,8 +1046,8 @@ export const createTasksRunsAppendLog: API.OperationMethod<
   CreateTasksRunsAppendLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTasksRunsAppendLogRequest,
-  output: TaskRunDetailDTO,
+  input: __S(18) as any as S.Schema<CreateTasksRunsAppendLogRequest>,
+  output: __S(12) as any as S.Schema<TaskRunDetailDTO>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1573,8 +1061,8 @@ export const createTasksRunsArtifact: API.OperationMethod<
   CreateTasksRunsArtifactError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTasksRunsArtifactRequest,
-  output: TaskRunArtifactsUploadResponse,
+  input: __S(21) as any as S.Schema<CreateTasksRunsArtifactRequest>,
+  output: __S(22) as any as S.Schema<TaskRunArtifactsUploadResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1588,8 +1076,8 @@ export const createTasksRunsArtifactsDismiss: API.OperationMethod<
   CreateTasksRunsArtifactsDismissError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTasksRunsArtifactsDismissRequest,
-  output: TaskRunArtifactsDismissResponse,
+  input: __S(23) as any as S.Schema<CreateTasksRunsArtifactsDismissRequest>,
+  output: __S(24) as any as S.Schema<TaskRunArtifactsDismissResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1607,8 +1095,8 @@ export const createTasksRunsArtifactsPresign: API.OperationMethod<
   CreateTasksRunsArtifactsPresignError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTasksRunsArtifactsPresignRequest,
-  output: TaskRunArtifactPresignResponse,
+  input: __S(25) as any as S.Schema<CreateTasksRunsArtifactsPresignRequest>,
+  output: __S(26) as any as S.Schema<TaskRunArtifactPresignResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1622,8 +1110,8 @@ export const createTasksRunsArtifactsReference: API.OperationMethod<
   CreateTasksRunsArtifactsReferenceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTasksRunsArtifactsReferenceRequest,
-  output: TaskRunPostHogReferencesResponse,
+  input: __S(29) as any as S.Schema<CreateTasksRunsArtifactsReferenceRequest>,
+  output: __S(24) as any as S.Schema<TaskRunPostHogReferencesResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1637,8 +1125,8 @@ export const createTasksRunsClearConversation: API.OperationMethod<
   CreateTasksRunsClearConversationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTasksRunsClearConversationRequest,
-  output: TaskRunDetailDTO,
+  input: __S(30) as any as S.Schema<CreateTasksRunsClearConversationRequest>,
+  output: __S(12) as any as S.Schema<TaskRunDetailDTO>,
   errors: [NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1657,8 +1145,8 @@ export const createTasksRunsCommand: API.OperationMethod<
   CreateTasksRunsCommandError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTasksRunsCommandRequest,
-  output: TaskRunCommandResponse,
+  input: __S(31) as any as S.Schema<CreateTasksRunsCommandRequest>,
+  output: __S(32) as any as S.Schema<TaskRunCommandResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1672,8 +1160,8 @@ export const createTasksRunsPeersMessage: API.OperationMethod<
   CreateTasksRunsPeersMessageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTasksRunsPeersMessageRequest,
-  output: TaskRunPeerMessageResponse,
+  input: __S(33) as any as S.Schema<CreateTasksRunsPeersMessageRequest>,
+  output: __S(34) as any as S.Schema<TaskRunPeerMessageResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1687,8 +1175,8 @@ export const createTasksRunsRelayMessage: API.OperationMethod<
   CreateTasksRunsRelayMessageError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTasksRunsRelayMessageRequest,
-  output: TaskRunRelayMessageResponse,
+  input: __S(35) as any as S.Schema<CreateTasksRunsRelayMessageRequest>,
+  output: __S(36) as any as S.Schema<TaskRunRelayMessageResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1707,8 +1195,8 @@ export const createTasksRunsSubscriptionToken: API.OperationMethod<
   CreateTasksRunsSubscriptionTokenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTasksRunsSubscriptionTokenRequest,
-  output: TaskRunSubscriptionTokenResponse,
+  input: __S(37) as any as S.Schema<CreateTasksRunsSubscriptionTokenRequest>,
+  output: __S(38) as any as S.Schema<TaskRunSubscriptionTokenResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1727,8 +1215,8 @@ export const createTasksRunsTaskSessionSync: API.OperationMethod<
   CreateTasksRunsTaskSessionSyncError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTasksRunsTaskSessionSyncRequest,
-  output: TaskSessionSyncResponse,
+  input: __S(39) as any as S.Schema<CreateTasksRunsTaskSessionSyncRequest>,
+  output: __S(40) as any as S.Schema<TaskSessionSyncResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1742,8 +1230,8 @@ export const getTasksRun: API.OperationMethod<
   GetTasksRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTasksRunRequest,
-  output: TaskRunDetailDTO,
+  input: __S(41) as any as S.Schema<GetTasksRunRequest>,
+  output: __S(12) as any as S.Schema<TaskRunDetailDTO>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1757,8 +1245,8 @@ export const getTasksRunsConnectionToken: API.OperationMethod<
   GetTasksRunsConnectionTokenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTasksRunsConnectionTokenRequest,
-  output: ConnectionTokenResponse,
+  input: __S(42) as any as S.Schema<GetTasksRunsConnectionTokenRequest>,
+  output: __S(43) as any as S.Schema<ConnectionTokenResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1772,8 +1260,8 @@ export const getTasksRunsLog: API.OperationMethod<
   GetTasksRunsLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTasksRunsLogRequest,
-  output: GetTasksRunsLogResponse,
+  input: __S(44) as any as S.Schema<GetTasksRunsLogRequest>,
+  output: __S(45) as any as S.Schema<GetTasksRunsLogResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1787,8 +1275,8 @@ export const getTasksRunsPeer: API.OperationMethod<
   GetTasksRunsPeerError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTasksRunsPeerRequest,
-  output: TaskRunPeersResponse,
+  input: __S(46) as any as S.Schema<GetTasksRunsPeerRequest>,
+  output: __S(49) as any as S.Schema<TaskRunPeersResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1802,8 +1290,8 @@ export const getTasksRunsPreview: API.OperationMethod<
   GetTasksRunsPreviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTasksRunsPreviewRequest,
-  output: GetTasksRunsPreviewResponse,
+  input: __S(50) as any as S.Schema<GetTasksRunsPreviewRequest>,
+  output: __S(45) as any as S.Schema<GetTasksRunsPreviewResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1817,8 +1305,8 @@ export const getTasksRunsSessionLog: API.OperationMethod<
   GetTasksRunsSessionLogError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTasksRunsSessionLogRequest,
-  output: GetTasksRunsSessionLogResponse,
+  input: __S(51) as any as S.Schema<GetTasksRunsSessionLogRequest>,
+  output: __S(45) as any as S.Schema<GetTasksRunsSessionLogResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1832,8 +1320,8 @@ export const getTasksRunsStream: API.OperationMethod<
   GetTasksRunsStreamError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTasksRunsStreamRequest,
-  output: GetTasksRunsStreamResponse,
+  input: __S(52) as any as S.Schema<GetTasksRunsStreamRequest>,
+  output: __S(45) as any as S.Schema<GetTasksRunsStreamResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1847,8 +1335,8 @@ export const getTasksRunsStreamToken: API.OperationMethod<
   GetTasksRunsStreamTokenError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTasksRunsStreamTokenRequest,
-  output: StreamReadTokenResponse,
+  input: __S(53) as any as S.Schema<GetTasksRunsStreamTokenRequest>,
+  output: __S(54) as any as S.Schema<StreamReadTokenResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1862,8 +1350,8 @@ export const getTasksRunsTaskSession: API.OperationMethod<
   GetTasksRunsTaskSessionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTasksRunsTaskSessionRequest,
-  output: TaskSessionResponse,
+  input: __S(55) as any as S.Schema<GetTasksRunsTaskSessionRequest>,
+  output: __S(56) as any as S.Schema<TaskSessionResponse>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1877,8 +1365,8 @@ export const listTasksRuns: API.OperationMethod<
   ListTasksRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTasksRunsRequest,
-  output: PaginatedTaskRunDetailDTOList,
+  input: __S(57) as any as S.Schema<ListTasksRunsRequest>,
+  output: __S(59) as any as S.Schema<PaginatedTaskRunDetailDTOList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1896,8 +1384,8 @@ export const tasksRunsArtifactsDownloadCreate: API.OperationMethod<
   TasksRunsArtifactsDownloadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TasksRunsArtifactsDownloadCreateRequest,
-  output: TasksRunsArtifactsDownloadCreateResponse,
+  input: __S(60) as any as S.Schema<TasksRunsArtifactsDownloadCreateRequest>,
+  output: __S(61) as any as S.Schema<TasksRunsArtifactsDownloadCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1911,8 +1399,8 @@ export const tasksRunsArtifactsDownloadRetrieve: API.OperationMethod<
   TasksRunsArtifactsDownloadRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TasksRunsArtifactsDownloadRetrieveRequest,
-  output: TasksRunsArtifactsDownloadRetrieveResponse,
+  input: __S(62) as any as S.Schema<TasksRunsArtifactsDownloadRetrieveRequest>,
+  output: __S(61) as any as S.Schema<TasksRunsArtifactsDownloadRetrieveResponse>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1930,8 +1418,8 @@ export const tasksRunsArtifactsFinalizeUploadCreate: API.OperationMethod<
   TasksRunsArtifactsFinalizeUploadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TasksRunsArtifactsFinalizeUploadCreateRequest,
-  output: TaskRunArtifactsFinalizeUploadResponse,
+  input: __S(65) as any as S.Schema<TasksRunsArtifactsFinalizeUploadCreateRequest>,
+  output: __S(22) as any as S.Schema<TaskRunArtifactsFinalizeUploadResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1949,8 +1437,8 @@ export const tasksRunsArtifactsPrepareUploadCreate: API.OperationMethod<
   TasksRunsArtifactsPrepareUploadCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TasksRunsArtifactsPrepareUploadCreateRequest,
-  output: TaskRunArtifactsPrepareUploadResponse,
+  input: __S(68) as any as S.Schema<TasksRunsArtifactsPrepareUploadCreateRequest>,
+  output: __S(73) as any as S.Schema<TaskRunArtifactsPrepareUploadResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1964,8 +1452,8 @@ export const tasksRunsCancelCreate: API.OperationMethod<
   TasksRunsCancelCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TasksRunsCancelCreateRequest,
-  output: TaskRunDetailDTO,
+  input: __S(74) as any as S.Schema<TasksRunsCancelCreateRequest>,
+  output: __S(12) as any as S.Schema<TaskRunDetailDTO>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1979,8 +1467,8 @@ export const tasksRunsResumeInCloudCreate: API.OperationMethod<
   TasksRunsResumeInCloudCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TasksRunsResumeInCloudCreateRequest,
-  output: TaskRunDetailDTO,
+  input: __S(75) as any as S.Schema<TasksRunsResumeInCloudCreateRequest>,
+  output: __S(12) as any as S.Schema<TaskRunDetailDTO>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1994,8 +1482,8 @@ export const tasksRunsStartCreate: API.OperationMethod<
   TasksRunsStartCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TasksRunsStartCreateRequest,
-  output: TaskDetailDTO,
+  input: __S(76) as any as S.Schema<TasksRunsStartCreateRequest>,
+  output: __S(80) as any as S.Schema<TaskDetailDTO>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2009,8 +1497,8 @@ export const updateTasksRunsPartial: API.OperationMethod<
   UpdateTasksRunsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTasksRunsPartialRequest,
-  output: TaskRunDetailDTO,
+  input: __S(81) as any as S.Schema<UpdateTasksRunsPartialRequest>,
+  output: __S(12) as any as S.Schema<TaskRunDetailDTO>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2028,8 +1516,8 @@ export const updateTasksRunsSetOutputPartial: API.OperationMethod<
   UpdateTasksRunsSetOutputPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTasksRunsSetOutputPartialRequest,
-  output: TaskRunDetailDTO,
+  input: __S(82) as any as S.Schema<UpdateTasksRunsSetOutputPartialRequest>,
+  output: __S(12) as any as S.Schema<TaskRunDetailDTO>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2043,8 +1531,8 @@ export const updateTasksRunsSetSummaryPartial: API.OperationMethod<
   UpdateTasksRunsSetSummaryPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTasksRunsSetSummaryPartialRequest,
-  output: TaskRunDetailDTO,
+  input: __S(83) as any as S.Schema<UpdateTasksRunsSetSummaryPartialRequest>,
+  output: __S(12) as any as S.Schema<TaskRunDetailDTO>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -2061,18 +1549,18 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ImportedMcpServerHeader" });
     case 1:
-      return S.Array(ImportedMcpServerHeader);
+      return S.Array(__S(0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: ImportedMcpServerTypeEnum,
+          type: S.String,
           name: S.String,
           url: S.String,
-          headers: S.optional(ImportedMcpServerHeadersList),
+          headers: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "ImportedMcpServer" });
     case 3:
-      return S.Array(ImportedMcpServer);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2080,36 +1568,34 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "RelayedMcpServer" });
     case 5:
-      return S.Array(RelayedMcpServer);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           task_id: S.String.pipe(T.Label()),
-          imported_mcp_servers: S.optional(S.NullOr(CreateTasksRunRequestImportedMcpServersList)),
-          relayed_mcp_servers: S.optional(S.NullOr(CreateTasksRunRequestRelayedMcpServersList)),
+          imported_mcp_servers: S.optional(S.NullOr(__S(3))),
+          relayed_mcp_servers: S.optional(S.NullOr(__S(5))),
           rtk_enabled: S.optional(S.NullOr(S.Boolean)),
           benjamin_enabled: S.optional(S.NullOr(S.Boolean)),
-          claude_model_access: S.optional(S.NullOr(ModelAccessEnum)),
-          codex_model_access: S.optional(S.NullOr(ModelAccessEnum)),
-          environment: S.optional(RunEnvironmentEnum),
-          mode: S.optional(TaskExecutionModeEnum),
+          claude_model_access: S.optional(S.NullOr(S.String)),
+          codex_model_access: S.optional(S.NullOr(S.String)),
+          environment: S.optional(S.String),
+          mode: S.optional(S.String),
           branch: S.optional(S.NullOr(S.String)),
           sandbox_environment_id: S.optional(S.String),
           custom_image_id: S.optional(S.String),
-          pr_authorship_mode: S.optional(PrAuthorshipModeEnum),
+          pr_authorship_mode: S.optional(S.String),
           auto_publish: S.optional(S.NullOr(S.Boolean)),
-          run_source: S.optional(TaskBootstrapRunSourceEnum),
+          run_source: S.optional(S.String),
           signal_report_id: S.optional(S.String),
-          runtime_adapter: S.optional(RuntimeAdapterEnum),
+          runtime_adapter: S.optional(S.String),
           model: S.optional(S.String),
-          reasoning_effort: S.optional(TaskRunReasoningEffortEnum),
-          context_window: S.optional(ContextWindowEnum),
+          reasoning_effort: S.optional(S.String),
+          context_window: S.optional(S.String),
           fast_mode: S.optional(S.NullOr(S.Boolean)),
           github_user_token: S.optional(S.String),
-          initial_permission_mode: S.optional(
-            TaskRunBootstrapCreateRequestInitialPermissionModeEnum,
-          ),
+          initial_permission_mode: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2130,9 +1616,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           skill_name: S.String,
-          skill_source: SkillSourceEnum,
+          skill_source: S.String,
           content_sha256: S.String,
-          bundle_format: BundleFormatEnum,
+          bundle_format: S.String,
           schema_version: S.Number,
         }),
       ).annotate({
@@ -2147,17 +1633,17 @@ function __c1(j: number): any {
           source: S.optional(S.String),
           size: S.optional(S.Number),
           content_type: S.optional(S.String),
-          metadata: S.optional(TaskRunArtifactMetadata),
+          metadata: S.optional(S.Unknown),
           storage_path: S.optional(S.String),
           uploaded_at: S.optional(S.String),
-          uploaded_by: S.optional(UploadedByEnum),
+          uploaded_by: S.optional(S.String),
           uploaded_by_user_id: S.optional(S.Number),
           dismissed_at: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskRunArtifactResponse" });
     case 3:
-      return S.Array(TaskRunArtifactResponse);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2167,17 +1653,17 @@ function __c1(j: number): any {
           branch: S.NullOr(S.String),
           status: S.String,
           environment: S.String,
-          runtime_adapter: S.optional(S.NullOr(RuntimeAdapterEnum)),
-          provider: S.optional(S.NullOr(TaskRunDetailDTOProviderEnum)),
+          runtime_adapter: S.optional(S.NullOr(S.String)),
+          provider: S.optional(S.NullOr(S.String)),
           model: S.optional(S.NullOr(S.String)),
-          reasoning_effort: S.optional(S.NullOr(TaskRunReasoningEffortEnum)),
+          reasoning_effort: S.optional(S.NullOr(S.String)),
           log_url: S.optional(S.NullOr(S.String)),
           error_message: S.NullOr(S.String),
-          output: S.NullOr(TaskRunDetailDTOOutputMap),
+          output: S.NullOr(__S(7)),
           task_summary: S.NullOr(S.String),
-          task_tags: TaskRunDetailDTOTaskTagsList,
-          state: TaskRunDetailDTOStateMap,
-          artifacts: TaskRunDetailDTOArtifactsList,
+          task_tags: __S(8),
+          state: __S(7),
+          artifacts: __S(11),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
           completed_at: S.optional(S.NullOr(S.String)),
@@ -2191,10 +1677,10 @@ function __c1(j: number): any {
           project_id: S.String.pipe(T.Label()),
           task_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          goal_kind: TaskAnalysisGoalKindEnum,
+          goal_kind: S.String,
           goal: S.String,
-          outcome: TaskAnalysisOutcomeEnum,
-          blocker_kind: S.optional(S.NullOr(TaskAnalysisBlockerKindEnum)),
+          outcome: S.String,
+          blocker_kind: S.optional(S.NullOr(S.String)),
           blocker_name: S.optional(S.NullOr(S.String)),
           repair: S.optional(S.NullOr(S.String)),
           evidence: S.String,
@@ -2204,8 +1690,8 @@ function __c1(j: number): any {
           failed_calls: S.Number,
           seconds: S.Number,
           idle_seconds: S.Number,
-          commands: S.optional(CreateTasksRunsAnalysisActivityRequestCommandsList),
-          guidance_read: S.optional(CreateTasksRunsAnalysisActivityRequestGuidanceReadList),
+          commands: S.optional(__S(8)),
+          guidance_read: S.optional(__S(8)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2252,14 +1738,14 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "TaskRunAnalyzeResponse" });
     case 1:
-      return S.Array(CreateTasksRunsAppendLogRequestEntriesItemMap);
+      return S.Array(__S(7));
     case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           task_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          entries: S.optional(CreateTasksRunsAppendLogRequestEntriesList),
+          entries: S.optional(__S(17)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2274,23 +1760,23 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(TaskRunArtifactTypeEnum),
+          type: S.optional(S.String),
           source: S.optional(S.String),
           content: S.optional(S.String),
-          content_encoding: S.optional(ContentEncodingEnum),
+          content_encoding: S.optional(S.String),
           content_type: S.optional(S.String),
-          metadata: S.optional(TaskRunSkillBundleMetadata),
+          metadata: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "TaskRunArtifactUpload" });
     case 4:
-      return S.Array(TaskRunArtifactUpload);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           task_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          artifacts: S.optional(CreateTasksRunsArtifactRequestArtifactsList),
+          artifacts: S.optional(__S(20)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2304,7 +1790,7 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          artifacts: S.optional(TaskRunArtifactsUploadResponseArtifactsList),
+          artifacts: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "TaskRunArtifactsUploadResponse",
@@ -2315,7 +1801,7 @@ function __c2(j: number): any {
           project_id: S.String.pipe(T.Label()),
           task_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          artifact_ids: CreateTasksRunsArtifactsDismissRequestArtifactIdsList,
+          artifact_ids: __S(8),
           dismissed: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -2334,7 +1820,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          artifacts: TaskRunArtifactsDismissResponseArtifactsList,
+          artifacts: __S(11),
         }),
       ).annotate({
         identifier: "TaskRunArtifactsDismissResponse",
@@ -2369,20 +1855,20 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          object_kind: ObjectKindEnum,
+          object_kind: S.String,
           object_id: S.String,
           source_message_id: S.String,
         }),
       ).annotate({ identifier: "TaskRunPostHogReference" });
     case 4:
-      return S.Array(TaskRunPostHogReference);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           task_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          references: CreateTasksRunsArtifactsReferenceRequestReferencesList,
+          references: __S(28),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2415,9 +1901,9 @@ function __c3(j: number): any {
           project_id: S.String.pipe(T.Label()),
           task_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          jsonrpc: S.optional(JsonrpcEnum),
-          method: S.optional(TaskRunCommandRequestMethodEnum),
-          params: S.optional(CreateTasksRunsCommandRequestParamsMap),
+          jsonrpc: S.optional(S.String),
+          method: S.optional(S.String),
+          params: S.optional(__S(7)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2438,7 +1924,7 @@ function __c4(j: number): any {
           jsonrpc: S.optional(S.String),
           id: S.optional(S.Unknown),
           result: S.optional(S.Unknown),
-          error: S.optional(TaskRunCommandResponseErrorMap),
+          error: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "TaskRunCommandResponse" });
     case 1:
@@ -2449,7 +1935,7 @@ function __c4(j: number): any {
           id: S.String.pipe(T.Label()),
           target_run_id: S.String.pipe(T.Label()),
           content: S.String,
-          artifact_ids: S.optional(CreateTasksRunsPeersMessageRequestArtifactIdsList),
+          artifact_ids: S.optional(__S(8)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2463,7 +1949,7 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: ResultEnum,
+          result: S.String,
           detail: S.String,
           message_id: S.optional(S.NullOr(S.String)),
         }),
@@ -2478,7 +1964,7 @@ function __c4(j: number): any {
           id: S.String.pipe(T.Label()),
           text: S.optional(S.String),
           message_id: S.optional(S.NullOr(S.String)),
-          text_parts: S.optional(CreateTasksRunsRelayMessageRequestTextPartsList),
+          text_parts: S.optional(__S(8)),
           trace_id: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -2643,11 +2129,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TaskRunPeer);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          peers: TaskRunPeersResponsePeersList,
+          peers: __S(48),
         }),
       ).annotate({ identifier: "TaskRunPeersResponse" });
     case 2:
@@ -2772,14 +2258,14 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "ListTasksRunsRequest" });
     case 2:
-      return S.Array(TaskRunDetailDTO);
+      return S.Array(__S(12));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedTaskRunDetailDTOListResultsList,
+          results: __S(58),
         }),
       ).annotate({
         identifier: "PaginatedTaskRunDetailDTOList",
@@ -2827,11 +2313,11 @@ function __c7(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(TaskRunArtifactTypeEnum),
+          type: S.optional(S.String),
           source: S.optional(S.String),
           storage_path: S.optional(S.String),
           content_type: S.optional(S.String),
-          metadata: S.optional(TaskRunSkillBundleMetadata),
+          metadata: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "TaskRunArtifactFinalizeUpload",
@@ -2841,14 +2327,14 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TaskRunArtifactFinalizeUpload);
+      return S.Array(__S(63));
     case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           task_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          artifacts: S.optional(TasksRunsArtifactsFinalizeUploadCreateRequestArtifactsList),
+          artifacts: S.optional(__S(64)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2863,24 +2349,24 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(TaskRunArtifactTypeEnum),
+          type: S.optional(S.String),
           source: S.optional(S.String),
           size: S.optional(S.Number),
           content_type: S.optional(S.String),
-          metadata: S.optional(TaskRunSkillBundleMetadata),
+          metadata: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "TaskRunArtifactPrepareUpload",
       });
     case 3:
-      return S.Array(TaskRunArtifactPrepareUpload);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           task_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          artifacts: S.optional(TasksRunsArtifactsPrepareUploadCreateRequestArtifactsList),
+          artifacts: S.optional(__S(67)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2897,7 +2383,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.optional(S.String),
-          fields: S.optional(S3PresignedPostFieldsMap),
+          fields: S.optional(__S(69)),
         }),
       ).annotate({ identifier: "S3PresignedPost" });
     case 7:
@@ -2909,10 +2395,10 @@ function __c8(j: number): any {
           source: S.optional(S.String),
           size: S.optional(S.Number),
           content_type: S.optional(S.String),
-          metadata: S.optional(TaskRunSkillBundleMetadata),
+          metadata: S.optional(__S(9)),
           storage_path: S.optional(S.String),
           expires_in: S.optional(S.Number),
-          presigned_post: S.optional(S3PresignedPost),
+          presigned_post: S.optional(__S(70)),
         }),
       ).annotate({
         identifier: "TaskRunArtifactPrepareUploadResponse",
@@ -2922,11 +2408,11 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TaskRunArtifactPrepareUploadResponse);
+      return S.Array(__S(71));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          artifacts: S.optional(TaskRunArtifactsPrepareUploadResponseArtifactsList),
+          artifacts: S.optional(__S(72)),
         }),
       ).annotate({
         identifier: "TaskRunArtifactsPrepareUploadResponse",
@@ -2972,9 +2458,7 @@ function __c9(j: number): any {
           task_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           pending_user_message: S.optional(S.String),
-          pending_user_artifact_ids: S.optional(
-            TasksRunsStartCreateRequestPendingUserArtifactIdsList,
-          ),
+          pending_user_artifact_ids: S.optional(__S(8)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2995,7 +2479,7 @@ function __c9(j: number): any {
           last_name: S.String,
           email: S.String,
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(TaskUserBasicInfoHedgehogConfigMap)),
+          hedgehog_config: S.optional(S.NullOr(__S(7))),
           role_at_organization: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TaskUserBasicInfo" });
@@ -3008,7 +2492,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "SlackThreadReferenceDTO" });
     case 7:
-      return S.Array(SlackThreadReferenceDTO);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
@@ -3023,24 +2507,24 @@ function __c10(j: number): any {
           title_manually_set: S.Boolean,
           description: S.String,
           origin_product: S.String,
-          runtime: TaskRuntimeEnum,
+          runtime: S.String,
           repository: S.NullOr(S.String),
-          repositories: TaskDetailDTORepositoriesList,
+          repositories: __S(8),
           github_integration: S.NullOr(S.Number),
           github_user_integration: S.NullOr(S.String),
           signal_report: S.NullOr(S.String),
-          json_schema: S.NullOr(TaskDetailDTOJsonSchemaMap),
+          json_schema: S.NullOr(__S(7)),
           internal: S.Boolean,
           archived: S.Boolean,
           archived_at: S.NullOr(S.String),
-          latest_run: S.optional(S.NullOr(TaskRunDetailDTO)),
+          latest_run: S.optional(S.NullOr(__S(12))),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
           last_activity_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(TaskUserBasicInfo)),
+          created_by: S.optional(S.NullOr(__S(77))),
           ci_prompt: S.NullOr(S.String),
           channel: S.optional(S.NullOr(S.String)),
-          slack_thread_references: TaskDetailDTOSlackThreadReferencesList,
+          slack_thread_references: __S(79),
           origin_key: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "TaskDetailDTO" });
@@ -3050,13 +2534,13 @@ function __c10(j: number): any {
           project_id: S.String.pipe(T.Label()),
           task_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          status: S.optional(RunStatusEnum),
+          status: S.optional(S.String),
           branch: S.optional(S.NullOr(S.String)),
           stage: S.optional(S.NullOr(S.String)),
           output: S.optional(S.Unknown),
-          state: S.optional(UpdateTasksRunsPartialRequestStateMap),
-          state_remove_keys: S.optional(UpdateTasksRunsPartialRequestStateRemoveKeysList),
-          state_append: S.optional(UpdateTasksRunsPartialRequestStateAppendMap),
+          state: S.optional(__S(7)),
+          state_remove_keys: S.optional(__S(8)),
+          state_append: S.optional(__S(7)),
           error_message: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -3092,7 +2576,7 @@ function __c10(j: number): any {
           task_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           summary: S.optional(S.String),
-          tags: S.optional(UpdateTasksRunsSetSummaryPartialRequestTagsList),
+          tags: S.optional(__S(8)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3103,5 +2587,36 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateTasksRunsSetSummaryPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
   }
 }

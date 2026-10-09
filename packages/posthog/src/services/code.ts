@@ -5,15 +5,12 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 export interface ListCodeSandboxPricingRequest {}
-const ListCodeSandboxPricingRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ListCodeSandboxPricingRequest>;
-
 export interface ComputeRateCard {
   /** Stable identifier for this rate card. */
   version: string;
@@ -26,26 +23,14 @@ export interface ComputeRateCard {
   /** USD charged per GiB-second of memory as an exact decimal string. */
   memory_gib_second_usd: string;
 }
-const ComputeRateCard = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ComputeRateCard>;
-
 /** Expired sandbox compute rate cards, newest first. */
 export type SandboxComputePricingHistoryList = Array<ComputeRateCard>;
-const SandboxComputePricingHistoryList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<SandboxComputePricingHistoryList>;
-
 export interface SandboxComputePricing {
   /** Currently effective sandbox compute rate card, or null before pricing is published. */
   current: ComputeRateCard | null;
   /** Expired sandbox compute rate cards, newest first. */
   history: SandboxComputePricingHistoryList;
 }
-const SandboxComputePricing = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<SandboxComputePricing>;
-
 export type ListCodeSandboxPricingError = PosthogOpError;
 /** Get sandbox compute pricing Get the current sandbox compute rate card and expired rate-card history. */
 export const listCodeSandboxPricing: API.OperationMethod<
@@ -54,8 +39,8 @@ export const listCodeSandboxPricing: API.OperationMethod<
   ListCodeSandboxPricingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCodeSandboxPricingRequest,
-  output: SandboxComputePricing,
+  input: __S(0) as any as S.Schema<ListCodeSandboxPricingRequest>,
+  output: __S(3) as any as S.Schema<SandboxComputePricing>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -81,13 +66,24 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ComputeRateCard" });
     case 2:
-      return S.Array(ComputeRateCard);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          current: S.NullOr(ComputeRateCard),
-          history: SandboxComputePricingHistoryList,
+          current: S.NullOr(__S(1)),
+          history: __S(2),
         }),
       ).annotate({ identifier: "SandboxComputePricing" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 2) {
+    case 0:
+      return __c0(i & 3);
   }
 }

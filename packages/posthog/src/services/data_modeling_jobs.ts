@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -14,11 +16,6 @@ export interface GetDataModelingJobRequest {
   /** A UUID string identifying this data modeling job. */
   id: string;
 }
-const GetDataModelingJobRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetDataModelingJobRequest>;
-
 /** * `Cancelled` - Cancelled * `Completed` - Completed * `Failed` - Failed * `Running` - Running * `Skipped` - Skipped */
 export type DataModelingJobStatusEnum =
   | "Cancelled"
@@ -26,12 +23,8 @@ export type DataModelingJobStatusEnum =
   | "Failed"
   | "Running"
   | "Skipped";
-const DataModelingJobStatusEnum = S.String;
-
 /** * `full_refresh` - Full refresh * `incremental` - Incremental */
 export type DataModelingJobRunModeEnum = "full_refresh" | "incremental";
-const DataModelingJobRunModeEnum = S.String;
-
 export interface DataModelingJob {
   id: string;
   saved_query_id: string | null;
@@ -51,34 +44,20 @@ export interface DataModelingJob {
   /** Total rows expected to be materialized */
   rows_expected: number | null;
 }
-const DataModelingJob = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DataModelingJob>;
-
 export interface GetDataModelingJobsRecentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetDataModelingJobsRecentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetDataModelingJobsRecentRequest>;
-
 export interface GetDataModelingJobsRunningRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetDataModelingJobsRunningRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetDataModelingJobsRunningRequest>;
-
 export type ListDataModelingJobsRequestStatus =
   | "Cancelled"
   | "Completed"
   | "Failed"
   | "Running"
   | "Skipped";
-const ListDataModelingJobsRequestStatus = S.String;
-
 export interface ListDataModelingJobsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -90,28 +69,13 @@ export interface ListDataModelingJobsRequest {
   /** * `Cancelled` - Cancelled * `Completed` - Completed * `Failed` - Failed * `Running` - Running * `Skipped` - Skipped */
   status?: ListDataModelingJobsRequestStatus | (string & {});
 }
-const ListDataModelingJobsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListDataModelingJobsRequest>;
-
 export type PaginatedDataModelingJobListResultsList = Array<DataModelingJob>;
-const PaginatedDataModelingJobListResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PaginatedDataModelingJobListResultsList>;
-
 export interface PaginatedDataModelingJobList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedDataModelingJobListResultsList;
 }
-const PaginatedDataModelingJobList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PaginatedDataModelingJobList>;
-
 export type GetDataModelingJobError = PosthogOpError;
 /** List data modeling jobs which are "runs" for our saved queries. */
 export const getDataModelingJob: API.OperationMethod<
@@ -120,8 +84,8 @@ export const getDataModelingJob: API.OperationMethod<
   GetDataModelingJobError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataModelingJobRequest,
-  output: DataModelingJob,
+  input: __S(0) as any as S.Schema<GetDataModelingJobRequest>,
+  output: __S(1) as any as S.Schema<DataModelingJob>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -135,8 +99,8 @@ export const getDataModelingJobsRecent: API.OperationMethod<
   GetDataModelingJobsRecentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataModelingJobsRecentRequest,
-  output: DataModelingJob,
+  input: __S(2) as any as S.Schema<GetDataModelingJobsRecentRequest>,
+  output: __S(1) as any as S.Schema<DataModelingJob>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -150,8 +114,8 @@ export const getDataModelingJobsRunning: API.OperationMethod<
   GetDataModelingJobsRunningError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataModelingJobsRunningRequest,
-  output: DataModelingJob,
+  input: __S(3) as any as S.Schema<GetDataModelingJobsRunningRequest>,
+  output: __S(1) as any as S.Schema<DataModelingJob>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -165,8 +129,8 @@ export const listDataModelingJobs: API.OperationMethod<
   ListDataModelingJobsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataModelingJobsRequest,
-  output: PaginatedDataModelingJobList,
+  input: __S(4) as any as S.Schema<ListDataModelingJobsRequest>,
+  output: __S(6) as any as S.Schema<PaginatedDataModelingJobList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -195,8 +159,8 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           saved_query_id: S.NullOr(S.String),
-          status: DataModelingJobStatusEnum,
-          run_mode: S.NullOr(DataModelingJobRunModeEnum),
+          status: S.String,
+          run_mode: S.NullOr(S.String),
           full_refresh_reason: S.NullOr(S.String),
           rows_materialized: S.Number,
           error: S.NullOr(S.String),
@@ -243,7 +207,7 @@ function __c0(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           saved_query_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListDataModelingJobsRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -255,17 +219,28 @@ function __c0(j: number): any {
         identifier: "ListDataModelingJobsRequest",
       });
     case 5:
-      return S.Array(DataModelingJob);
+      return S.Array(__S(1));
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedDataModelingJobListResultsList,
+          results: __S(5),
         }),
       ).annotate({
         identifier: "PaginatedDataModelingJobList",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

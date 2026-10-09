@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Personalize",
   serviceShapeName: "AmazonPersonalize",
@@ -133,67 +135,38 @@ export interface S3DataConfig {
   path: string;
   kmsKeyArn?: string;
 }
-const S3DataConfig = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<S3DataConfig>;
 export interface BatchInferenceJobInput {
   s3DataSource: S3DataConfig;
 }
-const BatchInferenceJobInput = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<BatchInferenceJobInput>;
 export interface BatchInferenceJobOutput {
   s3DataDestination: S3DataConfig;
 }
-const BatchInferenceJobOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BatchInferenceJobOutput>;
 export type RoleArn = string;
 export type ParameterName = string;
 export type ParameterValue = string;
 export type HyperParameters = { [key: string]: string | undefined };
-const HyperParameters = /*@__PURE__*/ __L.at(__c0, 3);
 export type RankingInfluenceType = "POPULARITY" | "FRESHNESS" | (string & {});
-const RankingInfluenceType = S.String;
-
 export type RankingInfluenceWeight = number;
 export type RankingInfluence = { [key in RankingInfluenceType]?: number };
-const RankingInfluence = /*@__PURE__*/ __L.at(__c0, 4);
 export interface BatchInferenceJobConfig {
   itemExplorationConfig?: { [key: string]: string | undefined };
   rankingInfluence?: { [key: string]: number | undefined };
 }
-const BatchInferenceJobConfig = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<BatchInferenceJobConfig>;
 export type TagKey = string | redacted.Redacted<string>;
 export type TagValue = string | redacted.Redacted<string>;
 export interface Tag {
   tagKey: string | redacted.Redacted<string>;
   tagValue: string | redacted.Redacted<string>;
 }
-const Tag = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Tag>;
 export type Tags = Tag[];
-const Tags = /*@__PURE__*/ __L.at(__c0, 7);
 export type BatchInferenceJobMode = "BATCH_INFERENCE" | "THEME_GENERATION" | (string & {});
-const BatchInferenceJobMode = S.String;
-
 export type ColumnName = string;
 export interface FieldsForThemeGeneration {
   itemName: string;
 }
-const FieldsForThemeGeneration = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<FieldsForThemeGeneration>;
 export interface ThemeGenerationConfig {
   fieldsForThemeGeneration: FieldsForThemeGeneration;
 }
-const ThemeGenerationConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ThemeGenerationConfig>;
 export interface CreateBatchInferenceJobRequest {
   jobName: string;
   solutionVersionArn: string;
@@ -207,25 +180,15 @@ export interface CreateBatchInferenceJobRequest {
   batchInferenceJobMode?: BatchInferenceJobMode;
   themeGenerationConfig?: ThemeGenerationConfig;
 }
-const CreateBatchInferenceJobRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateBatchInferenceJobRequest>;
 export interface CreateBatchInferenceJobResponse {
   batchInferenceJobArn?: string;
 }
-const CreateBatchInferenceJobResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateBatchInferenceJobResponse>;
 export interface BatchSegmentJobInput {
   s3DataSource: S3DataConfig;
 }
-const BatchSegmentJobInput = BatchInferenceJobInput as any as S.Schema<BatchSegmentJobInput>;
 export interface BatchSegmentJobOutput {
   s3DataDestination: S3DataConfig;
 }
-const BatchSegmentJobOutput = BatchInferenceJobOutput as any as S.Schema<BatchSegmentJobOutput>;
 export interface CreateBatchSegmentJobRequest {
   jobName: string;
   solutionVersionArn: string;
@@ -236,17 +199,9 @@ export interface CreateBatchSegmentJobRequest {
   roleArn: string;
   tags?: Tag[];
 }
-const CreateBatchSegmentJobRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateBatchSegmentJobRequest>;
 export interface CreateBatchSegmentJobResponse {
   batchSegmentJobArn?: string;
 }
-const CreateBatchSegmentJobResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateBatchSegmentJobResponse>;
 export type TransactionsPerSecond = number;
 export interface CampaignConfig {
   itemExplorationConfig?: { [key: string]: string | undefined };
@@ -254,7 +209,6 @@ export interface CampaignConfig {
   syncWithLatestSolutionVersion?: boolean;
   rankingInfluence?: { [key: string]: number | undefined };
 }
-const CampaignConfig = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CampaignConfig>;
 export interface CreateCampaignRequest {
   name: string;
   solutionVersionArn: string;
@@ -262,21 +216,12 @@ export interface CreateCampaignRequest {
   campaignConfig?: CampaignConfig;
   tags?: Tag[];
 }
-const CreateCampaignRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateCampaignRequest>;
 export interface CreateCampaignResponse {
   campaignArn?: string;
 }
-const CreateCampaignResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateCampaignResponse>;
 export interface DataSource {
   dataLocation?: string;
 }
-const DataSource = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DataSource>;
 export interface CreateDataDeletionJobRequest {
   jobName: string;
   datasetGroupArn: string;
@@ -284,17 +229,9 @@ export interface CreateDataDeletionJobRequest {
   roleArn: string;
   tags?: Tag[];
 }
-const CreateDataDeletionJobRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateDataDeletionJobRequest>;
 export interface CreateDataDeletionJobResponse {
   dataDeletionJobArn?: string;
 }
-const CreateDataDeletionJobResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateDataDeletionJobResponse>;
 export type DatasetType = string;
 export interface CreateDatasetRequest {
   name: string;
@@ -303,21 +240,13 @@ export interface CreateDatasetRequest {
   datasetType: string;
   tags?: Tag[];
 }
-const CreateDatasetRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateDatasetRequest>;
 export interface CreateDatasetResponse {
   datasetArn?: string;
 }
-const CreateDatasetResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateDatasetResponse>;
 export type IngestionMode = "BULK" | "PUT" | "ALL" | (string & {});
-const IngestionMode = S.String;
-
 export interface DatasetExportJobOutput {
   s3DataDestination: S3DataConfig;
 }
-const DatasetExportJobOutput = BatchInferenceJobOutput as any as S.Schema<DatasetExportJobOutput>;
 export interface CreateDatasetExportJobRequest {
   jobName: string;
   datasetArn: string;
@@ -326,20 +255,10 @@ export interface CreateDatasetExportJobRequest {
   jobOutput: DatasetExportJobOutput;
   tags?: Tag[];
 }
-const CreateDatasetExportJobRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateDatasetExportJobRequest>;
 export interface CreateDatasetExportJobResponse {
   datasetExportJobArn?: string;
 }
-const CreateDatasetExportJobResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateDatasetExportJobResponse>;
 export type Domain = "ECOMMERCE" | "VIDEO_ON_DEMAND" | (string & {});
-const Domain = S.String;
-
 export interface CreateDatasetGroupRequest {
   name: string;
   roleArn?: string;
@@ -347,21 +266,11 @@ export interface CreateDatasetGroupRequest {
   domain?: Domain;
   tags?: Tag[];
 }
-const CreateDatasetGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateDatasetGroupRequest>;
 export interface CreateDatasetGroupResponse {
   datasetGroupArn?: string;
   domain?: Domain;
 }
-const CreateDatasetGroupResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateDatasetGroupResponse>;
 export type ImportMode = "FULL" | "INCREMENTAL" | (string & {});
-const ImportMode = S.String;
-
 export interface CreateDatasetImportJobRequest {
   jobName: string;
   datasetArn: string;
@@ -371,35 +280,19 @@ export interface CreateDatasetImportJobRequest {
   importMode?: ImportMode;
   publishAttributionMetricsToS3?: boolean;
 }
-const CreateDatasetImportJobRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateDatasetImportJobRequest>;
 export interface CreateDatasetImportJobResponse {
   datasetImportJobArn?: string;
 }
-const CreateDatasetImportJobResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateDatasetImportJobResponse>;
 export interface CreateEventTrackerRequest {
   name: string;
   datasetGroupArn: string;
   tags?: Tag[];
 }
-const CreateEventTrackerRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateEventTrackerRequest>;
 export type TrackingId = string;
 export interface CreateEventTrackerResponse {
   eventTrackerArn?: string;
   trackingId?: string;
 }
-const CreateEventTrackerResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateEventTrackerResponse>;
 export type FilterExpression = string | redacted.Redacted<string>;
 export interface CreateFilterRequest {
   name: string;
@@ -407,11 +300,9 @@ export interface CreateFilterRequest {
   filterExpression: string | redacted.Redacted<string>;
   tags?: Tag[];
 }
-const CreateFilterRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CreateFilterRequest>;
 export interface CreateFilterResponse {
   filterArn?: string;
 }
-const CreateFilterResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<CreateFilterResponse>;
 export type EventType = string;
 export type MetricName = string;
 export type MetricExpression = string;
@@ -420,52 +311,33 @@ export interface MetricAttribute {
   metricName: string;
   expression: string;
 }
-const MetricAttribute = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<MetricAttribute>;
 export type MetricAttributes = MetricAttribute[];
-const MetricAttributes = /*@__PURE__*/ __L.at(__c4, 1);
 export interface MetricAttributionOutput {
   s3DataDestination?: S3DataConfig;
   roleArn: string;
 }
-const MetricAttributionOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<MetricAttributionOutput>;
 export interface CreateMetricAttributionRequest {
   name: string;
   datasetGroupArn: string;
   metrics: MetricAttribute[];
   metricsOutputConfig: MetricAttributionOutput;
 }
-const CreateMetricAttributionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateMetricAttributionRequest>;
 export interface CreateMetricAttributionResponse {
   metricAttributionArn?: string;
 }
-const CreateMetricAttributionResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateMetricAttributionResponse>;
 export type ColumnNamesList = string[];
-const ColumnNamesList = /*@__PURE__*/ __L.at(__c4, 5);
 export type ExcludedDatasetColumns = { [key: string]: string[] | undefined };
-const ExcludedDatasetColumns = /*@__PURE__*/ __L.at(__c4, 6);
 export type IncludedDatasetColumns = { [key: string]: string[] | undefined };
-const IncludedDatasetColumns = ExcludedDatasetColumns as any as S.Schema<IncludedDatasetColumns>;
 export interface TrainingDataConfig {
   excludedDatasetColumns?: { [key: string]: string[] | undefined };
   includedDatasetColumns?: { [key: string]: string[] | undefined };
 }
-const TrainingDataConfig = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<TrainingDataConfig>;
 export interface RecommenderConfig {
   itemExplorationConfig?: { [key: string]: string | undefined };
   minRecommendationRequestsPerSecond?: number;
   trainingDataConfig?: TrainingDataConfig;
   enableMetadataWithRecommendations?: boolean;
 }
-const RecommenderConfig = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<RecommenderConfig>;
 export interface CreateRecommenderRequest {
   name: string;
   datasetGroupArn: string;
@@ -473,28 +345,18 @@ export interface CreateRecommenderRequest {
   recommenderConfig?: RecommenderConfig;
   tags?: Tag[];
 }
-const CreateRecommenderRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateRecommenderRequest>;
 export interface CreateRecommenderResponse {
   recommenderArn?: string;
 }
-const CreateRecommenderResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CreateRecommenderResponse>;
 export type AvroSchema = string;
 export interface CreateSchemaRequest {
   name: string;
   schema: string;
   domain?: Domain;
 }
-const CreateSchemaRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<CreateSchemaRequest>;
 export interface CreateSchemaResponse {
   schemaArn?: string;
 }
-const CreateSchemaResponse = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<CreateSchemaResponse>;
 export type PerformAutoML = boolean;
 export type PerformAutoTraining = boolean;
 export type PerformIncrementalUpdate = boolean;
@@ -506,13 +368,11 @@ export interface HPOObjective {
   metricName?: string;
   metricRegex?: string;
 }
-const HPOObjective = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<HPOObjective>;
 export type HPOResource = string;
 export interface HPOResourceConfig {
   maxNumberOfTrainingJobs?: string;
   maxParallelTrainingJobs?: string;
 }
-const HPOResourceConfig = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<HPOResourceConfig>;
 export type IntegerMinValue = number;
 export type IntegerMaxValue = number;
 export interface IntegerHyperParameterRange {
@@ -520,12 +380,7 @@ export interface IntegerHyperParameterRange {
   minValue?: number;
   maxValue?: number;
 }
-const IntegerHyperParameterRange = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<IntegerHyperParameterRange>;
 export type IntegerHyperParameterRanges = IntegerHyperParameterRange[];
-const IntegerHyperParameterRanges = /*@__PURE__*/ __L.at(__c6, 0);
 export type ContinuousMinValue = number;
 export type ContinuousMaxValue = number;
 export interface ContinuousHyperParameterRange {
@@ -534,43 +389,29 @@ export interface ContinuousHyperParameterRange {
   maxValue?: number;
 }
 export type ContinuousHyperParameterRanges = ContinuousHyperParameterRange[];
-const ContinuousHyperParameterRanges =
-  IntegerHyperParameterRanges as any as S.Schema<ContinuousHyperParameterRanges>;
 export type CategoricalValue = string;
 export type CategoricalValues = string[];
-const CategoricalValues = ColumnNamesList as any as S.Schema<CategoricalValues>;
 export interface CategoricalHyperParameterRange {
   name?: string;
   values?: string[];
 }
-const CategoricalHyperParameterRange = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CategoricalHyperParameterRange>;
 export type CategoricalHyperParameterRanges = CategoricalHyperParameterRange[];
-const CategoricalHyperParameterRanges = /*@__PURE__*/ __L.at(__c6, 2);
 export interface HyperParameterRanges {
   integerHyperParameterRanges?: IntegerHyperParameterRange[];
   continuousHyperParameterRanges?: ContinuousHyperParameterRange[];
   categoricalHyperParameterRanges?: CategoricalHyperParameterRange[];
 }
-const HyperParameterRanges = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<HyperParameterRanges>;
 export interface HPOConfig {
   hpoObjective?: HPOObjective;
   hpoResourceConfig?: HPOResourceConfig;
   algorithmHyperParameterRanges?: HyperParameterRanges;
 }
-const HPOConfig = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<HPOConfig>;
 export type FeatureTransformationParameters = { [key: string]: string | undefined };
-const FeatureTransformationParameters =
-  HyperParameters as any as S.Schema<FeatureTransformationParameters>;
 export type ArnList = string[];
-const ArnList = ColumnNamesList as any as S.Schema<ArnList>;
 export interface AutoMLConfig {
   metricName?: string;
   recipeList?: string[];
 }
-const AutoMLConfig = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<AutoMLConfig>;
 export type EventTypeThresholdValue = number;
 export type EventTypeWeight = number;
 export interface EventParameters {
@@ -578,30 +419,20 @@ export interface EventParameters {
   eventValueThreshold?: number;
   weight?: number;
 }
-const EventParameters = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<EventParameters>;
 export type EventParametersList = EventParameters[];
-const EventParametersList = /*@__PURE__*/ __L.at(__c6, 7);
 export interface EventsConfig {
   eventParametersList?: EventParameters[];
 }
-const EventsConfig = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<EventsConfig>;
 export type ItemAttribute = string;
 export type ObjectiveSensitivity = "LOW" | "MEDIUM" | "HIGH" | "OFF" | (string & {});
-const ObjectiveSensitivity = S.String;
-
 export interface OptimizationObjective {
   itemAttribute?: string;
   objectiveSensitivity?: ObjectiveSensitivity;
 }
-const OptimizationObjective = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<OptimizationObjective>;
 export type SchedulingExpression = string;
 export interface AutoTrainingConfig {
   schedulingExpression?: string;
 }
-const AutoTrainingConfig = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<AutoTrainingConfig>;
 export interface SolutionConfig {
   eventValueThreshold?: string;
   hpoConfig?: HPOConfig;
@@ -613,7 +444,6 @@ export interface SolutionConfig {
   trainingDataConfig?: TrainingDataConfig;
   autoTrainingConfig?: AutoTrainingConfig;
 }
-const SolutionConfig = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<SolutionConfig>;
 export interface CreateSolutionRequest {
   name: string;
   performHPO?: boolean;
@@ -626,131 +456,63 @@ export interface CreateSolutionRequest {
   solutionConfig?: SolutionConfig;
   tags?: Tag[];
 }
-const CreateSolutionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateSolutionRequest>;
 export interface CreateSolutionResponse {
   solutionArn?: string;
 }
-const CreateSolutionResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateSolutionResponse>;
 export type TrainingMode = "FULL" | "UPDATE" | "AUTOTRAIN" | (string & {});
-const TrainingMode = S.String;
-
 export interface CreateSolutionVersionRequest {
   name?: string;
   solutionArn: string;
   trainingMode?: TrainingMode;
   tags?: Tag[];
 }
-const CreateSolutionVersionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CreateSolutionVersionRequest>;
 export interface CreateSolutionVersionResponse {
   solutionVersionArn?: string;
 }
-const CreateSolutionVersionResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<CreateSolutionVersionResponse>;
 export interface DeleteCampaignRequest {
   campaignArn: string;
 }
-const DeleteCampaignRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeleteCampaignRequest>;
 export interface DeleteCampaignResponse {}
-const DeleteCampaignResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeleteCampaignResponse>;
 export interface DeleteDatasetRequest {
   datasetArn: string;
 }
-const DeleteDatasetRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<DeleteDatasetRequest>;
 export interface DeleteDatasetResponse {}
-const DeleteDatasetResponse = DeleteCampaignResponse as any as S.Schema<DeleteDatasetResponse>;
 export interface DeleteDatasetGroupRequest {
   datasetGroupArn: string;
 }
-const DeleteDatasetGroupRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DeleteDatasetGroupRequest>;
 export interface DeleteDatasetGroupResponse {}
-const DeleteDatasetGroupResponse =
-  DeleteCampaignResponse as any as S.Schema<DeleteDatasetGroupResponse>;
 export interface DeleteEventTrackerRequest {
   eventTrackerArn: string;
 }
-const DeleteEventTrackerRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeleteEventTrackerRequest>;
 export interface DeleteEventTrackerResponse {}
-const DeleteEventTrackerResponse =
-  DeleteCampaignResponse as any as S.Schema<DeleteEventTrackerResponse>;
 export interface DeleteFilterRequest {
   filterArn: string;
 }
-const DeleteFilterRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<DeleteFilterRequest>;
 export interface DeleteFilterResponse {}
-const DeleteFilterResponse = DeleteCampaignResponse as any as S.Schema<DeleteFilterResponse>;
 export interface DeleteMetricAttributionRequest {
   metricAttributionArn: string;
 }
-const DeleteMetricAttributionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DeleteMetricAttributionRequest>;
 export interface DeleteMetricAttributionResponse {}
-const DeleteMetricAttributionResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DeleteMetricAttributionResponse>;
 export interface DeleteRecommenderRequest {
   recommenderArn: string;
 }
-const DeleteRecommenderRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DeleteRecommenderRequest>;
 export interface DeleteRecommenderResponse {}
-const DeleteRecommenderResponse =
-  DeleteCampaignResponse as any as S.Schema<DeleteRecommenderResponse>;
 export interface DeleteSchemaRequest {
   schemaArn: string;
 }
-const DeleteSchemaRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<DeleteSchemaRequest>;
 export interface DeleteSchemaResponse {}
-const DeleteSchemaResponse = DeleteCampaignResponse as any as S.Schema<DeleteSchemaResponse>;
 export interface DeleteSolutionRequest {
   solutionArn: string;
 }
-const DeleteSolutionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DeleteSolutionRequest>;
 export interface DeleteSolutionResponse {}
-const DeleteSolutionResponse = DeleteCampaignResponse as any as S.Schema<DeleteSolutionResponse>;
 export interface DescribeAlgorithmRequest {
   algorithmArn: string;
 }
-const DescribeAlgorithmRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DescribeAlgorithmRequest>;
 export type DockerURI = string;
 export interface AlgorithmImage {
   name?: string;
   dockerURI: string;
 }
-const AlgorithmImage = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<AlgorithmImage>;
 export type Tunable = boolean;
 export interface DefaultIntegerHyperParameterRange {
   name?: string;
@@ -758,12 +520,7 @@ export interface DefaultIntegerHyperParameterRange {
   maxValue?: number;
   isTunable?: boolean;
 }
-const DefaultIntegerHyperParameterRange = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DefaultIntegerHyperParameterRange>;
 export type DefaultIntegerHyperParameterRanges = DefaultIntegerHyperParameterRange[];
-const DefaultIntegerHyperParameterRanges = /*@__PURE__*/ __L.at(__c9, 6);
 export interface DefaultContinuousHyperParameterRange {
   name?: string;
   minValue?: number;
@@ -771,30 +528,18 @@ export interface DefaultContinuousHyperParameterRange {
   isTunable?: boolean;
 }
 export type DefaultContinuousHyperParameterRanges = DefaultContinuousHyperParameterRange[];
-const DefaultContinuousHyperParameterRanges =
-  DefaultIntegerHyperParameterRanges as any as S.Schema<DefaultContinuousHyperParameterRanges>;
 export interface DefaultCategoricalHyperParameterRange {
   name?: string;
   values?: string[];
   isTunable?: boolean;
 }
-const DefaultCategoricalHyperParameterRange = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DefaultCategoricalHyperParameterRange>;
 export type DefaultCategoricalHyperParameterRanges = DefaultCategoricalHyperParameterRange[];
-const DefaultCategoricalHyperParameterRanges = /*@__PURE__*/ __L.at(__c10, 0);
 export interface DefaultHyperParameterRanges {
   integerHyperParameterRanges?: DefaultIntegerHyperParameterRange[];
   continuousHyperParameterRanges?: DefaultContinuousHyperParameterRange[];
   categoricalHyperParameterRanges?: DefaultCategoricalHyperParameterRange[];
 }
-const DefaultHyperParameterRanges = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<DefaultHyperParameterRanges>;
 export type ResourceConfig = { [key: string]: string | undefined };
-const ResourceConfig = HyperParameters as any as S.Schema<ResourceConfig>;
 export type TrainingInputMode = string;
 export interface Algorithm {
   name?: string;
@@ -808,21 +553,12 @@ export interface Algorithm {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const Algorithm = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<Algorithm>;
 export interface DescribeAlgorithmResponse {
   algorithm?: Algorithm;
 }
-const DescribeAlgorithmResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DescribeAlgorithmResponse>;
 export interface DescribeBatchInferenceJobRequest {
   batchInferenceJobArn: string;
 }
-const DescribeBatchInferenceJobRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DescribeBatchInferenceJobRequest>;
 export type FailureReason = string;
 export type Status = string;
 export interface BatchInferenceJob {
@@ -842,21 +578,12 @@ export interface BatchInferenceJob {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const BatchInferenceJob = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<BatchInferenceJob>;
 export interface DescribeBatchInferenceJobResponse {
   batchInferenceJob?: BatchInferenceJob;
 }
-const DescribeBatchInferenceJobResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DescribeBatchInferenceJobResponse>;
 export interface DescribeBatchSegmentJobRequest {
   batchSegmentJobArn: string;
 }
-const DescribeBatchSegmentJobRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<DescribeBatchSegmentJobRequest>;
 export interface BatchSegmentJob {
   jobName?: string;
   batchSegmentJobArn?: string;
@@ -871,21 +598,12 @@ export interface BatchSegmentJob {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const BatchSegmentJob = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<BatchSegmentJob>;
 export interface DescribeBatchSegmentJobResponse {
   batchSegmentJob?: BatchSegmentJob;
 }
-const DescribeBatchSegmentJobResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<DescribeBatchSegmentJobResponse>;
 export interface DescribeCampaignRequest {
   campaignArn: string;
 }
-const DescribeCampaignRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<DescribeCampaignRequest>;
 export interface CampaignUpdateSummary {
   solutionVersionArn?: string;
   minProvisionedTPS?: number;
@@ -895,10 +613,6 @@ export interface CampaignUpdateSummary {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const CampaignUpdateSummary = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<CampaignUpdateSummary>;
 export interface Campaign {
   name?: string;
   campaignArn?: string;
@@ -911,21 +625,12 @@ export interface Campaign {
   lastUpdatedDateTime?: Date;
   latestCampaignUpdate?: CampaignUpdateSummary;
 }
-const Campaign = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<Campaign>;
 export interface DescribeCampaignResponse {
   campaign?: Campaign;
 }
-const DescribeCampaignResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<DescribeCampaignResponse>;
 export interface DescribeDataDeletionJobRequest {
   dataDeletionJobArn: string;
 }
-const DescribeDataDeletionJobRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<DescribeDataDeletionJobRequest>;
 export interface DataDeletionJob {
   jobName?: string;
   dataDeletionJobArn?: string;
@@ -938,21 +643,12 @@ export interface DataDeletionJob {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const DataDeletionJob = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<DataDeletionJob>;
 export interface DescribeDataDeletionJobResponse {
   dataDeletionJob?: DataDeletionJob;
 }
-const DescribeDataDeletionJobResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<DescribeDataDeletionJobResponse>;
 export interface DescribeDatasetRequest {
   datasetArn: string;
 }
-const DescribeDatasetRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<DescribeDatasetRequest>;
 export interface DatasetUpdateSummary {
   schemaArn?: string;
   status?: string;
@@ -960,10 +656,6 @@ export interface DatasetUpdateSummary {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const DatasetUpdateSummary = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<DatasetUpdateSummary>;
 export interface Dataset {
   name?: string;
   datasetArn?: string;
@@ -976,21 +668,12 @@ export interface Dataset {
   latestDatasetUpdate?: DatasetUpdateSummary;
   trackingId?: string;
 }
-const Dataset = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<Dataset>;
 export interface DescribeDatasetResponse {
   dataset?: Dataset;
 }
-const DescribeDatasetResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<DescribeDatasetResponse>;
 export interface DescribeDatasetExportJobRequest {
   datasetExportJobArn: string;
 }
-const DescribeDatasetExportJobRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<DescribeDatasetExportJobRequest>;
 export interface DatasetExportJob {
   jobName?: string;
   datasetExportJobArn?: string;
@@ -1003,21 +686,12 @@ export interface DatasetExportJob {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const DatasetExportJob = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<DatasetExportJob>;
 export interface DescribeDatasetExportJobResponse {
   datasetExportJob?: DatasetExportJob;
 }
-const DescribeDatasetExportJobResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DescribeDatasetExportJobResponse>;
 export interface DescribeDatasetGroupRequest {
   datasetGroupArn: string;
 }
-const DescribeDatasetGroupRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<DescribeDatasetGroupRequest>;
 export interface DatasetGroup {
   name?: string;
   datasetGroupArn?: string;
@@ -1029,21 +703,12 @@ export interface DatasetGroup {
   failureReason?: string;
   domain?: Domain;
 }
-const DatasetGroup = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<DatasetGroup>;
 export interface DescribeDatasetGroupResponse {
   datasetGroup?: DatasetGroup;
 }
-const DescribeDatasetGroupResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<DescribeDatasetGroupResponse>;
 export interface DescribeDatasetImportJobRequest {
   datasetImportJobArn: string;
 }
-const DescribeDatasetImportJobRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<DescribeDatasetImportJobRequest>;
 export interface DatasetImportJob {
   jobName?: string;
   datasetImportJobArn?: string;
@@ -1057,21 +722,12 @@ export interface DatasetImportJob {
   importMode?: ImportMode;
   publishAttributionMetricsToS3?: boolean;
 }
-const DatasetImportJob = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<DatasetImportJob>;
 export interface DescribeDatasetImportJobResponse {
   datasetImportJob?: DatasetImportJob;
 }
-const DescribeDatasetImportJobResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<DescribeDatasetImportJobResponse>;
 export interface DescribeEventTrackerRequest {
   eventTrackerArn: string;
 }
-const DescribeEventTrackerRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<DescribeEventTrackerRequest>;
 export type AccountId = string;
 export interface EventTracker {
   name?: string;
@@ -1083,23 +739,13 @@ export interface EventTracker {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const EventTracker = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<EventTracker>;
 export interface DescribeEventTrackerResponse {
   eventTracker?: EventTracker;
 }
-const DescribeEventTrackerResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<DescribeEventTrackerResponse>;
 export interface DescribeFeatureTransformationRequest {
   featureTransformationArn: string;
 }
-const DescribeFeatureTransformationRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<DescribeFeatureTransformationRequest>;
 export type FeaturizationParameters = { [key: string]: string | undefined };
-const FeaturizationParameters = HyperParameters as any as S.Schema<FeaturizationParameters>;
 export interface FeatureTransformation {
   name?: string;
   featureTransformationArn?: string;
@@ -1108,24 +754,12 @@ export interface FeatureTransformation {
   lastUpdatedDateTime?: Date;
   status?: string;
 }
-const FeatureTransformation = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<FeatureTransformation>;
 export interface DescribeFeatureTransformationResponse {
   featureTransformation?: FeatureTransformation;
 }
-const DescribeFeatureTransformationResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<DescribeFeatureTransformationResponse>;
 export interface DescribeFilterRequest {
   filterArn: string;
 }
-const DescribeFilterRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<DescribeFilterRequest>;
 export interface Filter {
   name?: string;
   filterArn?: string;
@@ -1136,21 +770,12 @@ export interface Filter {
   filterExpression?: string | redacted.Redacted<string>;
   status?: string;
 }
-const Filter = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<Filter>;
 export interface DescribeFilterResponse {
   filter?: Filter;
 }
-const DescribeFilterResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<DescribeFilterResponse>;
 export interface DescribeMetricAttributionRequest {
   metricAttributionArn: string;
 }
-const DescribeMetricAttributionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<DescribeMetricAttributionRequest>;
 export interface MetricAttribution {
   name?: string;
   metricAttributionArn?: string;
@@ -1161,21 +786,12 @@ export interface MetricAttribution {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const MetricAttribution = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<MetricAttribution>;
 export interface DescribeMetricAttributionResponse {
   metricAttribution?: MetricAttribution;
 }
-const DescribeMetricAttributionResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<DescribeMetricAttributionResponse>;
 export interface DescribeRecipeRequest {
   recipeArn: string;
 }
-const DescribeRecipeRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<DescribeRecipeRequest>;
 export type Description = string;
 export type RecipeType = string;
 export interface Recipe {
@@ -1189,21 +805,12 @@ export interface Recipe {
   recipeType?: string;
   lastUpdatedDateTime?: Date;
 }
-const Recipe = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<Recipe>;
 export interface DescribeRecipeResponse {
   recipe?: Recipe;
 }
-const DescribeRecipeResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<DescribeRecipeResponse>;
 export interface DescribeRecommenderRequest {
   recommenderArn: string;
 }
-const DescribeRecommenderRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<DescribeRecommenderRequest>;
 export interface RecommenderUpdateSummary {
   recommenderConfig?: RecommenderConfig;
   creationDateTime?: Date;
@@ -1211,13 +818,8 @@ export interface RecommenderUpdateSummary {
   status?: string;
   failureReason?: string;
 }
-const RecommenderUpdateSummary = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<RecommenderUpdateSummary>;
 export type MetricValue = number;
 export type Metrics = { [key: string]: number | undefined };
-const Metrics = /*@__PURE__*/ __L.at(__c15, 7);
 export interface Recommender {
   recommenderArn?: string;
   datasetGroupArn?: string;
@@ -1231,21 +833,12 @@ export interface Recommender {
   latestRecommenderUpdate?: RecommenderUpdateSummary;
   modelMetrics?: { [key: string]: number | undefined };
 }
-const Recommender = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<Recommender>;
 export interface DescribeRecommenderResponse {
   recommender?: Recommender;
 }
-const DescribeRecommenderResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<DescribeRecommenderResponse>;
 export interface DescribeSchemaRequest {
   schemaArn: string;
 }
-const DescribeSchemaRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<DescribeSchemaRequest>;
 export interface DatasetSchema {
   name?: string;
   schemaArn?: string;
@@ -1254,29 +847,17 @@ export interface DatasetSchema {
   lastUpdatedDateTime?: Date;
   domain?: Domain;
 }
-const DatasetSchema = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<DatasetSchema>;
 export interface DescribeSchemaResponse {
   schema?: DatasetSchema;
 }
-const DescribeSchemaResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<DescribeSchemaResponse>;
 export interface DescribeSolutionRequest {
   solutionArn: string;
 }
-const DescribeSolutionRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<DescribeSolutionRequest>;
 export type PerformHPO = boolean;
 export interface AutoMLResult {
   bestRecipeArn?: string;
 }
-const AutoMLResult = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<AutoMLResult>;
 export type TrainingType = "AUTOMATIC" | "MANUAL" | (string & {});
-const TrainingType = S.String;
-
 export interface SolutionVersionSummary {
   solutionVersionArn?: string;
   status?: string;
@@ -1286,18 +867,10 @@ export interface SolutionVersionSummary {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const SolutionVersionSummary = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<SolutionVersionSummary>;
 export interface SolutionUpdateConfig {
   autoTrainingConfig?: AutoTrainingConfig;
   eventsConfig?: EventsConfig;
 }
-const SolutionUpdateConfig = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<SolutionUpdateConfig>;
 export interface SolutionUpdateSummary {
   solutionUpdateConfig?: SolutionUpdateConfig;
   status?: string;
@@ -1307,10 +880,6 @@ export interface SolutionUpdateSummary {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const SolutionUpdateSummary = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<SolutionUpdateSummary>;
 export interface Solution {
   name?: string;
   solutionArn?: string;
@@ -1329,26 +898,16 @@ export interface Solution {
   latestSolutionVersion?: SolutionVersionSummary;
   latestSolutionUpdate?: SolutionUpdateSummary;
 }
-const Solution = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<Solution>;
 export interface DescribeSolutionResponse {
   solution?: Solution;
 }
-const DescribeSolutionResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<DescribeSolutionResponse>;
 export interface DescribeSolutionVersionRequest {
   solutionVersionArn: string;
 }
-const DescribeSolutionVersionRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<DescribeSolutionVersionRequest>;
 export type TrainingHours = number;
 export interface TunedHPOParams {
   algorithmHyperParameters?: { [key: string]: string | undefined };
 }
-const TunedHPOParams = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<TunedHPOParams>;
 export interface SolutionVersion {
   name?: string;
   solutionVersionArn?: string;
@@ -1369,29 +928,16 @@ export interface SolutionVersion {
   lastUpdatedDateTime?: Date;
   trainingType?: TrainingType;
 }
-const SolutionVersion = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<SolutionVersion>;
 export interface DescribeSolutionVersionResponse {
   solutionVersion?: SolutionVersion;
 }
-const DescribeSolutionVersionResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<DescribeSolutionVersionResponse>;
 export interface GetSolutionMetricsRequest {
   solutionVersionArn: string;
 }
-const GetSolutionMetricsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GetSolutionMetricsRequest>;
 export interface GetSolutionMetricsResponse {
   solutionVersionArn?: string;
   metrics?: { [key: string]: number | undefined };
 }
-const GetSolutionMetricsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<GetSolutionMetricsResponse>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListBatchInferenceJobsRequest {
@@ -1399,10 +945,6 @@ export interface ListBatchInferenceJobsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListBatchInferenceJobsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<ListBatchInferenceJobsRequest>;
 export interface BatchInferenceJobSummary {
   batchInferenceJobArn?: string;
   jobName?: string;
@@ -1413,29 +955,16 @@ export interface BatchInferenceJobSummary {
   solutionVersionArn?: string;
   batchInferenceJobMode?: BatchInferenceJobMode;
 }
-const BatchInferenceJobSummary = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<BatchInferenceJobSummary>;
 export type BatchInferenceJobs = BatchInferenceJobSummary[];
-const BatchInferenceJobs = /*@__PURE__*/ __L.at(__c18, 4);
 export interface ListBatchInferenceJobsResponse {
   batchInferenceJobs?: BatchInferenceJobSummary[];
   nextToken?: string;
 }
-const ListBatchInferenceJobsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListBatchInferenceJobsResponse>;
 export interface ListBatchSegmentJobsRequest {
   solutionVersionArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListBatchSegmentJobsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ListBatchSegmentJobsRequest>;
 export interface BatchSegmentJobSummary {
   batchSegmentJobArn?: string;
   jobName?: string;
@@ -1445,29 +974,16 @@ export interface BatchSegmentJobSummary {
   failureReason?: string;
   solutionVersionArn?: string;
 }
-const BatchSegmentJobSummary = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<BatchSegmentJobSummary>;
 export type BatchSegmentJobs = BatchSegmentJobSummary[];
-const BatchSegmentJobs = /*@__PURE__*/ __L.at(__c19, 0);
 export interface ListBatchSegmentJobsResponse {
   batchSegmentJobs?: BatchSegmentJobSummary[];
   nextToken?: string;
 }
-const ListBatchSegmentJobsResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ListBatchSegmentJobsResponse>;
 export interface ListCampaignsRequest {
   solutionArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListCampaignsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<ListCampaignsRequest>;
 export interface CampaignSummary {
   name?: string;
   campaignArn?: string;
@@ -1476,26 +992,16 @@ export interface CampaignSummary {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const CampaignSummary = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<CampaignSummary>;
 export type Campaigns = CampaignSummary[];
-const Campaigns = /*@__PURE__*/ __L.at(__c19, 4);
 export interface ListCampaignsResponse {
   campaigns?: CampaignSummary[];
   nextToken?: string;
 }
-const ListCampaignsResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ListCampaignsResponse>;
 export interface ListDataDeletionJobsRequest {
   datasetGroupArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListDataDeletionJobsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ListDataDeletionJobsRequest>;
 export interface DataDeletionJobSummary {
   dataDeletionJobArn?: string;
   datasetGroupArn?: string;
@@ -1505,29 +1011,16 @@ export interface DataDeletionJobSummary {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const DataDeletionJobSummary = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<DataDeletionJobSummary>;
 export type DataDeletionJobs = DataDeletionJobSummary[];
-const DataDeletionJobs = /*@__PURE__*/ __L.at(__c20, 0);
 export interface ListDataDeletionJobsResponse {
   dataDeletionJobs?: DataDeletionJobSummary[];
   nextToken?: string;
 }
-const ListDataDeletionJobsResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<ListDataDeletionJobsResponse>;
 export interface ListDatasetExportJobsRequest {
   datasetArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListDatasetExportJobsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListDatasetExportJobsRequest>;
 export interface DatasetExportJobSummary {
   datasetExportJobArn?: string;
   jobName?: string;
@@ -1536,28 +1029,15 @@ export interface DatasetExportJobSummary {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const DatasetExportJobSummary = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<DatasetExportJobSummary>;
 export type DatasetExportJobs = DatasetExportJobSummary[];
-const DatasetExportJobs = /*@__PURE__*/ __L.at(__c20, 4);
 export interface ListDatasetExportJobsResponse {
   datasetExportJobs?: DatasetExportJobSummary[];
   nextToken?: string;
 }
-const ListDatasetExportJobsResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListDatasetExportJobsResponse>;
 export interface ListDatasetGroupsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListDatasetGroupsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<ListDatasetGroupsRequest>;
 export interface DatasetGroupSummary {
   name?: string;
   datasetGroupArn?: string;
@@ -1567,26 +1047,16 @@ export interface DatasetGroupSummary {
   failureReason?: string;
   domain?: Domain;
 }
-const DatasetGroupSummary = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<DatasetGroupSummary>;
 export type DatasetGroups = DatasetGroupSummary[];
-const DatasetGroups = /*@__PURE__*/ __L.at(__c21, 0);
 export interface ListDatasetGroupsResponse {
   datasetGroups?: DatasetGroupSummary[];
   nextToken?: string;
 }
-const ListDatasetGroupsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ListDatasetGroupsResponse>;
 export interface ListDatasetImportJobsRequest {
   datasetArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListDatasetImportJobsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ListDatasetImportJobsRequest>;
 export interface DatasetImportJobSummary {
   datasetImportJobArn?: string;
   jobName?: string;
@@ -1596,26 +1066,16 @@ export interface DatasetImportJobSummary {
   failureReason?: string;
   importMode?: ImportMode;
 }
-const DatasetImportJobSummary = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<DatasetImportJobSummary>;
 export type DatasetImportJobs = DatasetImportJobSummary[];
-const DatasetImportJobs = /*@__PURE__*/ __L.at(__c21, 4);
 export interface ListDatasetImportJobsResponse {
   datasetImportJobs?: DatasetImportJobSummary[];
   nextToken?: string;
 }
-const ListDatasetImportJobsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<ListDatasetImportJobsResponse>;
 export interface ListDatasetsRequest {
   datasetGroupArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListDatasetsRequest = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<ListDatasetsRequest>;
 export interface DatasetSummary {
   name?: string;
   datasetArn?: string;
@@ -1624,26 +1084,16 @@ export interface DatasetSummary {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const DatasetSummary = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<DatasetSummary>;
 export type Datasets = DatasetSummary[];
-const Datasets = /*@__PURE__*/ __L.at(__c22, 0);
 export interface ListDatasetsResponse {
   datasets?: DatasetSummary[];
   nextToken?: string;
 }
-const ListDatasetsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<ListDatasetsResponse>;
 export interface ListEventTrackersRequest {
   datasetGroupArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListEventTrackersRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<ListEventTrackersRequest>;
 export interface EventTrackerSummary {
   name?: string;
   eventTrackerArn?: string;
@@ -1651,23 +1101,16 @@ export interface EventTrackerSummary {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const EventTrackerSummary = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<EventTrackerSummary>;
 export type EventTrackers = EventTrackerSummary[];
-const EventTrackers = /*@__PURE__*/ __L.at(__c22, 4);
 export interface ListEventTrackersResponse {
   eventTrackers?: EventTrackerSummary[];
   nextToken?: string;
 }
-const ListEventTrackersResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<ListEventTrackersResponse>;
 export interface ListFiltersRequest {
   datasetGroupArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListFiltersRequest = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<ListFiltersRequest>;
 export interface FilterSummary {
   name?: string;
   filterArn?: string;
@@ -1677,40 +1120,25 @@ export interface FilterSummary {
   failureReason?: string;
   status?: string;
 }
-const FilterSummary = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<FilterSummary>;
 export type Filters = FilterSummary[];
-const Filters = /*@__PURE__*/ __L.at(__c23, 0);
 export interface ListFiltersResponse {
   Filters?: FilterSummary[];
   nextToken?: string;
 }
-const ListFiltersResponse = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<ListFiltersResponse>;
 export interface ListMetricAttributionMetricsRequest {
   metricAttributionArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListMetricAttributionMetricsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ListMetricAttributionMetricsRequest>;
 export interface ListMetricAttributionMetricsResponse {
   metrics?: MetricAttribute[];
   nextToken?: string;
 }
-const ListMetricAttributionMetricsResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<ListMetricAttributionMetricsResponse>;
 export interface ListMetricAttributionsRequest {
   datasetGroupArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListMetricAttributionsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<ListMetricAttributionsRequest>;
 export interface MetricAttributionSummary {
   name?: string;
   metricAttributionArn?: string;
@@ -1719,30 +1147,18 @@ export interface MetricAttributionSummary {
   lastUpdatedDateTime?: Date;
   failureReason?: string;
 }
-const MetricAttributionSummary = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<MetricAttributionSummary>;
 export type MetricAttributions = MetricAttributionSummary[];
-const MetricAttributions = /*@__PURE__*/ __L.at(__c23, 6);
 export interface ListMetricAttributionsResponse {
   metricAttributions?: MetricAttributionSummary[];
   nextToken?: string;
 }
-const ListMetricAttributionsResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<ListMetricAttributionsResponse>;
 export type RecipeProvider = "SERVICE" | (string & {});
-const RecipeProvider = S.String;
-
 export interface ListRecipesRequest {
   recipeProvider?: RecipeProvider;
   nextToken?: string;
   maxResults?: number;
   domain?: Domain;
 }
-const ListRecipesRequest = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<ListRecipesRequest>;
 export interface RecipeSummary {
   name?: string;
   recipeArn?: string;
@@ -1751,23 +1167,16 @@ export interface RecipeSummary {
   lastUpdatedDateTime?: Date;
   domain?: Domain;
 }
-const RecipeSummary = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<RecipeSummary>;
 export type Recipes = RecipeSummary[];
-const Recipes = /*@__PURE__*/ __L.at(__c24, 2);
 export interface ListRecipesResponse {
   recipes?: RecipeSummary[];
   nextToken?: string;
 }
-const ListRecipesResponse = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<ListRecipesResponse>;
 export interface ListRecommendersRequest {
   datasetGroupArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListRecommendersRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ListRecommendersRequest>;
 export interface RecommenderSummary {
   name?: string;
   recommenderArn?: string;
@@ -1778,22 +1187,15 @@ export interface RecommenderSummary {
   creationDateTime?: Date;
   lastUpdatedDateTime?: Date;
 }
-const RecommenderSummary = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<RecommenderSummary>;
 export type Recommenders = RecommenderSummary[];
-const Recommenders = /*@__PURE__*/ __L.at(__c24, 6);
 export interface ListRecommendersResponse {
   recommenders?: RecommenderSummary[];
   nextToken?: string;
 }
-const ListRecommendersResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<ListRecommendersResponse>;
 export interface ListSchemasRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListSchemasRequest = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<ListSchemasRequest>;
 export interface DatasetSchemaSummary {
   name?: string;
   schemaArn?: string;
@@ -1801,26 +1203,16 @@ export interface DatasetSchemaSummary {
   lastUpdatedDateTime?: Date;
   domain?: Domain;
 }
-const DatasetSchemaSummary = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<DatasetSchemaSummary>;
 export type Schemas = DatasetSchemaSummary[];
-const Schemas = /*@__PURE__*/ __L.at(__c25, 2);
 export interface ListSchemasResponse {
   schemas?: DatasetSchemaSummary[];
   nextToken?: string;
 }
-const ListSchemasResponse = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<ListSchemasResponse>;
 export interface ListSolutionsRequest {
   datasetGroupArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListSolutionsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<ListSolutionsRequest>;
 export interface SolutionSummary {
   name?: string;
   solutionArn?: string;
@@ -1829,177 +1221,96 @@ export interface SolutionSummary {
   lastUpdatedDateTime?: Date;
   recipeArn?: string;
 }
-const SolutionSummary = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<SolutionSummary>;
 export type Solutions = SolutionSummary[];
-const Solutions = /*@__PURE__*/ __L.at(__c25, 6);
 export interface ListSolutionsResponse {
   solutions?: SolutionSummary[];
   nextToken?: string;
 }
-const ListSolutionsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<ListSolutionsResponse>;
 export interface ListSolutionVersionsRequest {
   solutionArn?: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListSolutionVersionsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<ListSolutionVersionsRequest>;
 export type SolutionVersions = SolutionVersionSummary[];
-const SolutionVersions = /*@__PURE__*/ __L.at(__c26, 1);
 export interface ListSolutionVersionsResponse {
   solutionVersions?: SolutionVersionSummary[];
   nextToken?: string;
 }
-const ListSolutionVersionsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ListSolutionVersionsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface StartRecommenderRequest {
   recommenderArn: string;
 }
-const StartRecommenderRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<StartRecommenderRequest>;
 export interface StartRecommenderResponse {
   recommenderArn?: string;
 }
-const StartRecommenderResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<StartRecommenderResponse>;
 export interface StopRecommenderRequest {
   recommenderArn: string;
 }
-const StopRecommenderRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<StopRecommenderRequest>;
 export interface StopRecommenderResponse {
   recommenderArn?: string;
 }
-const StopRecommenderResponse =
-  StartRecommenderResponse as any as S.Schema<StopRecommenderResponse>;
 export interface StopSolutionVersionCreationRequest {
   solutionVersionArn: string;
 }
-const StopSolutionVersionCreationRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<StopSolutionVersionCreationRequest>;
 export interface StopSolutionVersionCreationResponse {}
-const StopSolutionVersionCreationResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<StopSolutionVersionCreationResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c27, 2) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteCampaignResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeys = (string | redacted.Redacted<string>)[];
-const TagKeys = /*@__PURE__*/ __L.at(__c27, 3);
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: (string | redacted.Redacted<string>)[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = DeleteCampaignResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateCampaignRequest {
   campaignArn: string;
   solutionVersionArn?: string;
   minProvisionedTPS?: number;
   campaignConfig?: CampaignConfig;
 }
-const UpdateCampaignRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<UpdateCampaignRequest>;
 export interface UpdateCampaignResponse {
   campaignArn?: string;
 }
-const UpdateCampaignResponse = CreateCampaignResponse as any as S.Schema<UpdateCampaignResponse>;
 export interface UpdateDatasetRequest {
   datasetArn: string;
   schemaArn: string;
 }
-const UpdateDatasetRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<UpdateDatasetRequest>;
 export interface UpdateDatasetResponse {
   datasetArn?: string;
 }
-const UpdateDatasetResponse = CreateDatasetResponse as any as S.Schema<UpdateDatasetResponse>;
 export type MetricAttributesNamesList = string[];
-const MetricAttributesNamesList = ColumnNamesList as any as S.Schema<MetricAttributesNamesList>;
 export interface UpdateMetricAttributionRequest {
   addMetrics?: MetricAttribute[];
   removeMetrics?: string[];
   metricsOutputConfig?: MetricAttributionOutput;
   metricAttributionArn?: string;
 }
-const UpdateMetricAttributionRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<UpdateMetricAttributionRequest>;
 export interface UpdateMetricAttributionResponse {
   metricAttributionArn?: string;
 }
-const UpdateMetricAttributionResponse =
-  CreateMetricAttributionResponse as any as S.Schema<UpdateMetricAttributionResponse>;
 export interface UpdateRecommenderRequest {
   recommenderArn: string;
   recommenderConfig: RecommenderConfig;
 }
-const UpdateRecommenderRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<UpdateRecommenderRequest>;
 export interface UpdateRecommenderResponse {
   recommenderArn?: string;
 }
-const UpdateRecommenderResponse =
-  CreateRecommenderResponse as any as S.Schema<UpdateRecommenderResponse>;
 export interface UpdateSolutionRequest {
   solutionArn: string;
   performAutoTraining?: boolean;
   performIncrementalUpdate?: boolean;
   solutionUpdateConfig?: SolutionUpdateConfig;
 }
-const UpdateSolutionRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<UpdateSolutionRequest>;
 export interface UpdateSolutionResponse {
   solutionArn?: string;
 }
-const UpdateSolutionResponse = CreateSolutionResponse as any as S.Schema<UpdateSolutionResponse>;
 export type ErrorMessage = string;
 export type CreateBatchInferenceJobError =
   | InvalidInputException
@@ -2037,8 +1348,8 @@ export const createBatchInferenceJob: API.OperationMethod<
   CreateBatchInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBatchInferenceJobRequest,
-  output: CreateBatchInferenceJobResponse,
+  input: __S(10) as any as S.Schema<CreateBatchInferenceJobRequest>,
+  output: __S(11) as any as S.Schema<CreateBatchInferenceJobResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2071,8 +1382,8 @@ export const createBatchSegmentJob: API.OperationMethod<
   CreateBatchSegmentJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBatchSegmentJobRequest,
-  output: CreateBatchSegmentJobResponse,
+  input: __S(12) as any as S.Schema<CreateBatchSegmentJobRequest>,
+  output: __S(13) as any as S.Schema<CreateBatchSegmentJobResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2157,8 +1468,8 @@ export const createCampaign: API.OperationMethod<
   CreateCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCampaignRequest,
-  output: CreateCampaignResponse,
+  input: __S(15) as any as S.Schema<CreateCampaignRequest>,
+  output: __S(16) as any as S.Schema<CreateCampaignResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2223,8 +1534,8 @@ export const createDataDeletionJob: API.OperationMethod<
   CreateDataDeletionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataDeletionJobRequest,
-  output: CreateDataDeletionJobResponse,
+  input: __S(18) as any as S.Schema<CreateDataDeletionJobRequest>,
+  output: __S(19) as any as S.Schema<CreateDataDeletionJobResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2292,8 +1603,8 @@ export const createDataset: API.OperationMethod<
   CreateDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetRequest,
-  output: CreateDatasetResponse,
+  input: __S(20) as any as S.Schema<CreateDatasetRequest>,
+  output: __S(21) as any as S.Schema<CreateDatasetResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2340,8 +1651,8 @@ export const createDatasetExportJob: API.OperationMethod<
   CreateDatasetExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetExportJobRequest,
-  output: CreateDatasetExportJobResponse,
+  input: __S(22) as any as S.Schema<CreateDatasetExportJobRequest>,
+  output: __S(23) as any as S.Schema<CreateDatasetExportJobResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2424,8 +1735,8 @@ export const createDatasetGroup: API.OperationMethod<
   CreateDatasetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetGroupRequest,
-  output: CreateDatasetGroupResponse,
+  input: __S(24) as any as S.Schema<CreateDatasetGroupRequest>,
+  output: __S(25) as any as S.Schema<CreateDatasetGroupResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2491,8 +1802,8 @@ export const createDatasetImportJob: API.OperationMethod<
   CreateDatasetImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetImportJobRequest,
-  output: CreateDatasetImportJobResponse,
+  input: __S(26) as any as S.Schema<CreateDatasetImportJobRequest>,
+  output: __S(27) as any as S.Schema<CreateDatasetImportJobResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2552,8 +1863,8 @@ export const createEventTracker: API.OperationMethod<
   CreateEventTrackerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEventTrackerRequest,
-  output: CreateEventTrackerResponse,
+  input: __S(28) as any as S.Schema<CreateEventTrackerRequest>,
+  output: __S(29) as any as S.Schema<CreateEventTrackerResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2583,8 +1894,8 @@ export const createFilter: API.OperationMethod<
   CreateFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFilterRequest,
-  output: CreateFilterResponse,
+  input: __S(30) as any as S.Schema<CreateFilterRequest>,
+  output: __S(31) as any as S.Schema<CreateFilterResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2615,8 +1926,8 @@ export const createMetricAttribution: API.OperationMethod<
   CreateMetricAttributionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMetricAttributionRequest,
-  output: CreateMetricAttributionResponse,
+  input: __S(35) as any as S.Schema<CreateMetricAttributionRequest>,
+  output: __S(36) as any as S.Schema<CreateMetricAttributionResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2699,8 +2010,8 @@ export const createRecommender: API.OperationMethod<
   CreateRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRecommenderRequest,
-  output: CreateRecommenderResponse,
+  input: __S(41) as any as S.Schema<CreateRecommenderRequest>,
+  output: __S(42) as any as S.Schema<CreateRecommenderResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2742,8 +2053,8 @@ export const createSchema: API.OperationMethod<
   CreateSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSchemaRequest,
-  output: CreateSchemaResponse,
+  input: __S(43) as any as S.Schema<CreateSchemaRequest>,
+  output: __S(44) as any as S.Schema<CreateSchemaResponse>,
   errors: [InvalidInputException, LimitExceededException, ResourceAlreadyExistsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2823,8 +2134,8 @@ export const createSolution: API.OperationMethod<
   CreateSolutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSolutionRequest,
-  output: CreateSolutionResponse,
+  input: __S(60) as any as S.Schema<CreateSolutionRequest>,
+  output: __S(61) as any as S.Schema<CreateSolutionResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2894,8 +2205,8 @@ export const createSolutionVersion: API.OperationMethod<
   CreateSolutionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSolutionVersionRequest,
-  output: CreateSolutionVersionResponse,
+  input: __S(62) as any as S.Schema<CreateSolutionVersionRequest>,
+  output: __S(63) as any as S.Schema<CreateSolutionVersionResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -2928,8 +2239,8 @@ export const deleteCampaign: API.OperationMethod<
   DeleteCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCampaignRequest,
-  output: DeleteCampaignResponse,
+  input: __S(64) as any as S.Schema<DeleteCampaignRequest>,
+  output: __S(65) as any as S.Schema<DeleteCampaignResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2953,8 +2264,8 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatasetRequest,
-  output: DeleteDatasetResponse,
+  input: __S(66) as any as S.Schema<DeleteDatasetRequest>,
+  output: __S(65) as any as S.Schema<DeleteDatasetResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2982,8 +2293,8 @@ export const deleteDatasetGroup: API.OperationMethod<
   DeleteDatasetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatasetGroupRequest,
-  output: DeleteDatasetGroupResponse,
+  input: __S(67) as any as S.Schema<DeleteDatasetGroupRequest>,
+  output: __S(65) as any as S.Schema<DeleteDatasetGroupResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3006,8 +2317,8 @@ export const deleteEventTracker: API.OperationMethod<
   DeleteEventTrackerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEventTrackerRequest,
-  output: DeleteEventTrackerResponse,
+  input: __S(68) as any as S.Schema<DeleteEventTrackerRequest>,
+  output: __S(65) as any as S.Schema<DeleteEventTrackerResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3028,8 +2339,8 @@ export const deleteFilter: API.OperationMethod<
   DeleteFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFilterRequest,
-  output: DeleteFilterResponse,
+  input: __S(69) as any as S.Schema<DeleteFilterRequest>,
+  output: __S(65) as any as S.Schema<DeleteFilterResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3050,8 +2361,8 @@ export const deleteMetricAttribution: API.OperationMethod<
   DeleteMetricAttributionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMetricAttributionRequest,
-  output: DeleteMetricAttributionResponse,
+  input: __S(70) as any as S.Schema<DeleteMetricAttributionRequest>,
+  output: __S(71) as any as S.Schema<DeleteMetricAttributionResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3073,8 +2384,8 @@ export const deleteRecommender: API.OperationMethod<
   DeleteRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRecommenderRequest,
-  output: DeleteRecommenderResponse,
+  input: __S(72) as any as S.Schema<DeleteRecommenderRequest>,
+  output: __S(65) as any as S.Schema<DeleteRecommenderResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3097,8 +2408,8 @@ export const deleteSchema: API.OperationMethod<
   DeleteSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSchemaRequest,
-  output: DeleteSchemaResponse,
+  input: __S(73) as any as S.Schema<DeleteSchemaRequest>,
+  output: __S(65) as any as S.Schema<DeleteSchemaResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3125,8 +2436,8 @@ export const deleteSolution: API.OperationMethod<
   DeleteSolutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSolutionRequest,
-  output: DeleteSolutionResponse,
+  input: __S(74) as any as S.Schema<DeleteSolutionRequest>,
+  output: __S(65) as any as S.Schema<DeleteSolutionResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3146,8 +2457,8 @@ export const describeAlgorithm: API.OperationMethod<
   DescribeAlgorithmError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeAlgorithmRequest,
-  output: DescribeAlgorithmResponse,
+  input: __S(75) as any as S.Schema<DescribeAlgorithmRequest>,
+  output: __S(83) as any as S.Schema<DescribeAlgorithmResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3169,8 +2480,8 @@ export const describeBatchInferenceJob: API.OperationMethod<
   DescribeBatchInferenceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeBatchInferenceJobRequest,
-  output: DescribeBatchInferenceJobResponse,
+  input: __S(84) as any as S.Schema<DescribeBatchInferenceJobRequest>,
+  output: __S(86) as any as S.Schema<DescribeBatchInferenceJobResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3192,8 +2503,8 @@ export const describeBatchSegmentJob: API.OperationMethod<
   DescribeBatchSegmentJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeBatchSegmentJobRequest,
-  output: DescribeBatchSegmentJobResponse,
+  input: __S(87) as any as S.Schema<DescribeBatchSegmentJobRequest>,
+  output: __S(89) as any as S.Schema<DescribeBatchSegmentJobResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3224,8 +2535,8 @@ export const describeCampaign: API.OperationMethod<
   DescribeCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeCampaignRequest,
-  output: DescribeCampaignResponse,
+  input: __S(90) as any as S.Schema<DescribeCampaignRequest>,
+  output: __S(93) as any as S.Schema<DescribeCampaignResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3245,8 +2556,8 @@ export const describeDataDeletionJob: API.OperationMethod<
   DescribeDataDeletionJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeDataDeletionJobRequest,
-  output: DescribeDataDeletionJobResponse,
+  input: __S(94) as any as S.Schema<DescribeDataDeletionJobRequest>,
+  output: __S(96) as any as S.Schema<DescribeDataDeletionJobResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3264,8 +2575,8 @@ export const describeDataset: API.OperationMethod<
   DescribeDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeDatasetRequest,
-  output: DescribeDatasetResponse,
+  input: __S(97) as any as S.Schema<DescribeDatasetRequest>,
+  output: __S(100) as any as S.Schema<DescribeDatasetResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3285,8 +2596,8 @@ export const describeDatasetExportJob: API.OperationMethod<
   DescribeDatasetExportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeDatasetExportJobRequest,
-  output: DescribeDatasetExportJobResponse,
+  input: __S(101) as any as S.Schema<DescribeDatasetExportJobRequest>,
+  output: __S(103) as any as S.Schema<DescribeDatasetExportJobResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3307,8 +2618,8 @@ export const describeDatasetGroup: API.OperationMethod<
   DescribeDatasetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeDatasetGroupRequest,
-  output: DescribeDatasetGroupResponse,
+  input: __S(104) as any as S.Schema<DescribeDatasetGroupRequest>,
+  output: __S(106) as any as S.Schema<DescribeDatasetGroupResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3328,8 +2639,8 @@ export const describeDatasetImportJob: API.OperationMethod<
   DescribeDatasetImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeDatasetImportJobRequest,
-  output: DescribeDatasetImportJobResponse,
+  input: __S(107) as any as S.Schema<DescribeDatasetImportJobRequest>,
+  output: __S(109) as any as S.Schema<DescribeDatasetImportJobResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3351,8 +2662,8 @@ export const describeEventTracker: API.OperationMethod<
   DescribeEventTrackerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeEventTrackerRequest,
-  output: DescribeEventTrackerResponse,
+  input: __S(110) as any as S.Schema<DescribeEventTrackerRequest>,
+  output: __S(112) as any as S.Schema<DescribeEventTrackerResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3372,8 +2683,8 @@ export const describeFeatureTransformation: API.OperationMethod<
   DescribeFeatureTransformationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeFeatureTransformationRequest,
-  output: DescribeFeatureTransformationResponse,
+  input: __S(113) as any as S.Schema<DescribeFeatureTransformationRequest>,
+  output: __S(115) as any as S.Schema<DescribeFeatureTransformationResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3390,8 +2701,8 @@ export const describeFilter: API.OperationMethod<
   DescribeFilterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeFilterRequest,
-  output: DescribeFilterResponse,
+  input: __S(116) as any as S.Schema<DescribeFilterRequest>,
+  output: __S(118) as any as S.Schema<DescribeFilterResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3411,8 +2722,8 @@ export const describeMetricAttribution: API.OperationMethod<
   DescribeMetricAttributionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeMetricAttributionRequest,
-  output: DescribeMetricAttributionResponse,
+  input: __S(119) as any as S.Schema<DescribeMetricAttributionRequest>,
+  output: __S(121) as any as S.Schema<DescribeMetricAttributionResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3444,8 +2755,8 @@ export const describeRecipe: API.OperationMethod<
   DescribeRecipeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeRecipeRequest,
-  output: DescribeRecipeResponse,
+  input: __S(122) as any as S.Schema<DescribeRecipeRequest>,
+  output: __S(124) as any as S.Schema<DescribeRecipeResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3481,8 +2792,8 @@ export const describeRecommender: API.OperationMethod<
   DescribeRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeRecommenderRequest,
-  output: DescribeRecommenderResponse,
+  input: __S(125) as any as S.Schema<DescribeRecommenderRequest>,
+  output: __S(129) as any as S.Schema<DescribeRecommenderResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3500,8 +2811,8 @@ export const describeSchema: API.OperationMethod<
   DescribeSchemaError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeSchemaRequest,
-  output: DescribeSchemaResponse,
+  input: __S(130) as any as S.Schema<DescribeSchemaRequest>,
+  output: __S(132) as any as S.Schema<DescribeSchemaResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3522,8 +2833,8 @@ export const describeSolution: API.OperationMethod<
   DescribeSolutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeSolutionRequest,
-  output: DescribeSolutionResponse,
+  input: __S(133) as any as S.Schema<DescribeSolutionRequest>,
+  output: __S(139) as any as S.Schema<DescribeSolutionResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3543,8 +2854,8 @@ export const describeSolutionVersion: API.OperationMethod<
   DescribeSolutionVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeSolutionVersionRequest,
-  output: DescribeSolutionVersionResponse,
+  input: __S(140) as any as S.Schema<DescribeSolutionVersionRequest>,
+  output: __S(143) as any as S.Schema<DescribeSolutionVersionResponse>,
   errors: [InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3565,8 +2876,8 @@ export const getSolutionMetrics: API.OperationMethod<
   GetSolutionMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSolutionMetricsRequest,
-  output: GetSolutionMetricsResponse,
+  input: __S(144) as any as S.Schema<GetSolutionMetricsRequest>,
+  output: __S(145) as any as S.Schema<GetSolutionMetricsResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3588,8 +2899,8 @@ export const listBatchInferenceJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BatchInferenceJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBatchInferenceJobsRequest,
-  output: ListBatchInferenceJobsResponse,
+  input: __S(146) as any as S.Schema<ListBatchInferenceJobsRequest>,
+  output: __S(149) as any as S.Schema<ListBatchInferenceJobsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3617,8 +2928,8 @@ export const listBatchSegmentJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BatchSegmentJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBatchSegmentJobsRequest,
-  output: ListBatchSegmentJobsResponse,
+  input: __S(150) as any as S.Schema<ListBatchSegmentJobsRequest>,
+  output: __S(153) as any as S.Schema<ListBatchSegmentJobsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3645,8 +2956,8 @@ export const listCampaigns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CampaignSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCampaignsRequest,
-  output: ListCampaignsResponse,
+  input: __S(154) as any as S.Schema<ListCampaignsRequest>,
+  output: __S(157) as any as S.Schema<ListCampaignsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3678,8 +2989,8 @@ export const listDataDeletionJobs: API.OperationMethod<
   ListDataDeletionJobsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataDeletionJobsRequest,
-  output: ListDataDeletionJobsResponse,
+  input: __S(158) as any as S.Schema<ListDataDeletionJobsRequest>,
+  output: __S(161) as any as S.Schema<ListDataDeletionJobsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3705,8 +3016,8 @@ export const listDatasetExportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DatasetExportJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDatasetExportJobsRequest,
-  output: ListDatasetExportJobsResponse,
+  input: __S(162) as any as S.Schema<ListDatasetExportJobsRequest>,
+  output: __S(165) as any as S.Schema<ListDatasetExportJobsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3732,8 +3043,8 @@ export const listDatasetGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DatasetGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDatasetGroupsRequest,
-  output: ListDatasetGroupsResponse,
+  input: __S(166) as any as S.Schema<ListDatasetGroupsRequest>,
+  output: __S(169) as any as S.Schema<ListDatasetGroupsResponse>,
   errors: [InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3765,8 +3076,8 @@ export const listDatasetImportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DatasetImportJobSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDatasetImportJobsRequest,
-  output: ListDatasetImportJobsResponse,
+  input: __S(170) as any as S.Schema<ListDatasetImportJobsRequest>,
+  output: __S(173) as any as S.Schema<ListDatasetImportJobsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3792,8 +3103,8 @@ export const listDatasets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DatasetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDatasetsRequest,
-  output: ListDatasetsResponse,
+  input: __S(174) as any as S.Schema<ListDatasetsRequest>,
+  output: __S(177) as any as S.Schema<ListDatasetsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3823,8 +3134,8 @@ export const listEventTrackers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EventTrackerSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEventTrackersRequest,
-  output: ListEventTrackersResponse,
+  input: __S(178) as any as S.Schema<ListEventTrackersRequest>,
+  output: __S(181) as any as S.Schema<ListEventTrackersResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3848,8 +3159,8 @@ export const listFilters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FilterSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFiltersRequest,
-  output: ListFiltersResponse,
+  input: __S(182) as any as S.Schema<ListFiltersRequest>,
+  output: __S(185) as any as S.Schema<ListFiltersResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3876,8 +3187,8 @@ export const listMetricAttributionMetrics: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MetricAttribute
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListMetricAttributionMetricsRequest,
-  output: ListMetricAttributionMetricsResponse,
+  input: __S(186) as any as S.Schema<ListMetricAttributionMetricsRequest>,
+  output: __S(187) as any as S.Schema<ListMetricAttributionMetricsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3904,8 +3215,8 @@ export const listMetricAttributions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   MetricAttributionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListMetricAttributionsRequest,
-  output: ListMetricAttributionsResponse,
+  input: __S(188) as any as S.Schema<ListMetricAttributionsRequest>,
+  output: __S(191) as any as S.Schema<ListMetricAttributionsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3930,8 +3241,8 @@ export const listRecipes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecipeSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRecipesRequest,
-  output: ListRecipesResponse,
+  input: __S(192) as any as S.Schema<ListRecipesRequest>,
+  output: __S(195) as any as S.Schema<ListRecipesResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3961,8 +3272,8 @@ export const listRecommenders: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommenderSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRecommendersRequest,
-  output: ListRecommendersResponse,
+  input: __S(196) as any as S.Schema<ListRecommendersRequest>,
+  output: __S(199) as any as S.Schema<ListRecommendersResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3988,8 +3299,8 @@ export const listSchemas: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DatasetSchemaSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSchemasRequest,
-  output: ListSchemasResponse,
+  input: __S(200) as any as S.Schema<ListSchemasRequest>,
+  output: __S(203) as any as S.Schema<ListSchemasResponse>,
   errors: [InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4016,8 +3327,8 @@ export const listSolutions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SolutionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSolutionsRequest,
-  output: ListSolutionsResponse,
+  input: __S(204) as any as S.Schema<ListSolutionsRequest>,
+  output: __S(207) as any as S.Schema<ListSolutionsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4047,8 +3358,8 @@ export const listSolutionVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SolutionVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSolutionVersionsRequest,
-  output: ListSolutionVersionsResponse,
+  input: __S(208) as any as S.Schema<ListSolutionVersionsRequest>,
+  output: __S(210) as any as S.Schema<ListSolutionVersionsResponse>,
   errors: [InvalidInputException, InvalidNextTokenException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4075,8 +3386,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(211) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(212) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4098,8 +3409,8 @@ export const startRecommender: API.OperationMethod<
   StartRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartRecommenderRequest,
-  output: StartRecommenderResponse,
+  input: __S(213) as any as S.Schema<StartRecommenderRequest>,
+  output: __S(214) as any as S.Schema<StartRecommenderResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4120,8 +3431,8 @@ export const stopRecommender: API.OperationMethod<
   StopRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopRecommenderRequest,
-  output: StopRecommenderResponse,
+  input: __S(215) as any as S.Schema<StopRecommenderRequest>,
+  output: __S(214) as any as S.Schema<StopRecommenderResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4153,8 +3464,8 @@ export const stopSolutionVersionCreation: API.OperationMethod<
   StopSolutionVersionCreationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopSolutionVersionCreationRequest,
-  output: StopSolutionVersionCreationResponse,
+  input: __S(216) as any as S.Schema<StopSolutionVersionCreationRequest>,
+  output: __S(217) as any as S.Schema<StopSolutionVersionCreationResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4177,8 +3488,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(218) as any as S.Schema<TagResourceRequest>,
+  output: __S(65) as any as S.Schema<TagResourceResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -4206,8 +3517,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(220) as any as S.Schema<UntagResourceRequest>,
+  output: __S(65) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InvalidInputException,
     ResourceInUseException,
@@ -4250,8 +3561,8 @@ export const updateCampaign: API.OperationMethod<
   UpdateCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCampaignRequest,
-  output: UpdateCampaignResponse,
+  input: __S(221) as any as S.Schema<UpdateCampaignRequest>,
+  output: __S(16) as any as S.Schema<UpdateCampaignResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4272,8 +3583,8 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDatasetRequest,
-  output: UpdateDatasetResponse,
+  input: __S(222) as any as S.Schema<UpdateDatasetRequest>,
+  output: __S(21) as any as S.Schema<UpdateDatasetResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4295,8 +3606,8 @@ export const updateMetricAttribution: API.OperationMethod<
   UpdateMetricAttributionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMetricAttributionRequest,
-  output: UpdateMetricAttributionResponse,
+  input: __S(223) as any as S.Schema<UpdateMetricAttributionRequest>,
+  output: __S(36) as any as S.Schema<UpdateMetricAttributionResponse>,
   errors: [
     InvalidInputException,
     ResourceAlreadyExistsException,
@@ -4328,8 +3639,8 @@ export const updateRecommender: API.OperationMethod<
   UpdateRecommenderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRecommenderRequest,
-  output: UpdateRecommenderResponse,
+  input: __S(224) as any as S.Schema<UpdateRecommenderRequest>,
+  output: __S(42) as any as S.Schema<UpdateRecommenderResponse>,
   errors: [InvalidInputException, ResourceInUseException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4363,8 +3674,8 @@ export const updateSolution: API.OperationMethod<
   UpdateSolutionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSolutionRequest,
-  output: UpdateSolutionResponse,
+  input: __S(225) as any as S.Schema<UpdateSolutionRequest>,
+  output: __S(61) as any as S.Schema<UpdateSolutionResponse>,
   errors: [
     InvalidInputException,
     LimitExceededException,
@@ -4384,22 +3695,22 @@ function __c0(j: number): any {
         S.Struct({ path: S.String, kmsKeyArn: S.optional(S.String) }),
       ).annotate({ identifier: "S3DataConfig" });
     case 1:
-      return S.suspend(() => S.Struct({ s3DataSource: S3DataConfig })).annotate({
+      return S.suspend(() => S.Struct({ s3DataSource: __S(0) })).annotate({
         identifier: "BatchInferenceJobInput",
       });
     case 2:
-      return S.suspend(() => S.Struct({ s3DataDestination: S3DataConfig })).annotate({
+      return S.suspend(() => S.Struct({ s3DataDestination: __S(0) })).annotate({
         identifier: "BatchInferenceJobOutput",
       });
     case 3:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 4:
-      return S.Record(RankingInfluenceType, /*@__PURE__*/ S.Number.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ S.Number.pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          itemExplorationConfig: S.optional(HyperParameters),
-          rankingInfluence: S.optional(RankingInfluence),
+          itemExplorationConfig: S.optional(__S(3)),
+          rankingInfluence: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "BatchInferenceJobConfig" });
     case 6:
@@ -4407,7 +3718,7 @@ function __c0(j: number): any {
         S.Struct({ tagKey: SensitiveString, tagValue: SensitiveString }),
       ).annotate({ identifier: "Tag" });
     case 7:
-      return S.Array(Tag);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -4417,9 +3728,9 @@ function __c1(j: number): any {
         identifier: "FieldsForThemeGeneration",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ fieldsForThemeGeneration: FieldsForThemeGeneration }),
-      ).annotate({ identifier: "ThemeGenerationConfig" });
+      return S.suspend(() => S.Struct({ fieldsForThemeGeneration: __S(8) })).annotate({
+        identifier: "ThemeGenerationConfig",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4427,13 +3738,13 @@ function __c1(j: number): any {
           solutionVersionArn: S.String,
           filterArn: S.optional(S.String),
           numResults: S.optional(S.Number),
-          jobInput: BatchInferenceJobInput,
-          jobOutput: BatchInferenceJobOutput,
+          jobInput: __S(1),
+          jobOutput: __S(2),
           roleArn: S.String,
-          batchInferenceJobConfig: S.optional(BatchInferenceJobConfig),
-          tags: S.optional(Tags),
-          batchInferenceJobMode: S.optional(BatchInferenceJobMode),
-          themeGenerationConfig: S.optional(ThemeGenerationConfig),
+          batchInferenceJobConfig: S.optional(__S(5)),
+          tags: S.optional(__S(7)),
+          batchInferenceJobMode: S.optional(S.String),
+          themeGenerationConfig: S.optional(__S(9)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateBatchInferenceJobRequest",
@@ -4449,10 +3760,10 @@ function __c1(j: number): any {
           solutionVersionArn: S.String,
           filterArn: S.optional(S.String),
           numResults: S.optional(S.Number),
-          jobInput: BatchSegmentJobInput,
-          jobOutput: BatchSegmentJobOutput,
+          jobInput: __S(1),
+          jobOutput: __S(2),
           roleArn: S.String,
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateBatchSegmentJobRequest",
@@ -4464,10 +3775,10 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          itemExplorationConfig: S.optional(HyperParameters),
+          itemExplorationConfig: S.optional(__S(3)),
           enableMetadataWithRecommendations: S.optional(S.Boolean),
           syncWithLatestSolutionVersion: S.optional(S.Boolean),
-          rankingInfluence: S.optional(RankingInfluence),
+          rankingInfluence: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "CampaignConfig" });
     case 7:
@@ -4476,8 +3787,8 @@ function __c1(j: number): any {
           name: S.String,
           solutionVersionArn: S.String,
           minProvisionedTPS: S.optional(S.Number),
-          campaignConfig: S.optional(CampaignConfig),
-          tags: S.optional(Tags),
+          campaignConfig: S.optional(__S(14)),
+          tags: S.optional(__S(7)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateCampaignRequest" });
   }
@@ -4497,9 +3808,9 @@ function __c2(j: number): any {
         S.Struct({
           jobName: S.String,
           datasetGroupArn: S.String,
-          dataSource: DataSource,
+          dataSource: __S(17),
           roleArn: S.String,
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDataDeletionJobRequest",
@@ -4515,7 +3826,7 @@ function __c2(j: number): any {
           schemaArn: S.String,
           datasetGroupArn: S.String,
           datasetType: S.String,
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateDatasetRequest" });
     case 5:
@@ -4527,10 +3838,10 @@ function __c2(j: number): any {
         S.Struct({
           jobName: S.String,
           datasetArn: S.String,
-          ingestionMode: S.optional(IngestionMode),
+          ingestionMode: S.optional(S.String),
           roleArn: S.String,
-          jobOutput: DatasetExportJobOutput,
-          tags: S.optional(Tags),
+          jobOutput: __S(2),
+          tags: S.optional(__S(7)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDatasetExportJobRequest",
@@ -4549,15 +3860,15 @@ function __c3(j: number): any {
           name: S.String,
           roleArn: S.optional(S.String),
           kmsKeyArn: S.optional(S.String),
-          domain: S.optional(Domain),
-          tags: S.optional(Tags),
+          domain: S.optional(S.String),
+          tags: S.optional(__S(7)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateDatasetGroupRequest",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ datasetGroupArn: S.optional(S.String), domain: S.optional(Domain) }),
+        S.Struct({ datasetGroupArn: S.optional(S.String), domain: S.optional(S.String) }),
       ).annotate({
         identifier: "CreateDatasetGroupResponse",
       });
@@ -4566,10 +3877,10 @@ function __c3(j: number): any {
         S.Struct({
           jobName: S.String,
           datasetArn: S.String,
-          dataSource: DataSource,
+          dataSource: __S(17),
           roleArn: S.optional(S.String),
-          tags: S.optional(Tags),
-          importMode: S.optional(ImportMode),
+          tags: S.optional(__S(7)),
+          importMode: S.optional(S.String),
           publishAttributionMetricsToS3: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4581,7 +3892,7 @@ function __c3(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ name: S.String, datasetGroupArn: S.String, tags: S.optional(Tags) }).pipe(
+        S.Struct({ name: S.String, datasetGroupArn: S.String, tags: S.optional(__S(7)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4599,7 +3910,7 @@ function __c3(j: number): any {
           name: S.String,
           datasetGroupArn: S.String,
           filterExpression: SensitiveString,
-          tags: S.optional(Tags),
+          tags: S.optional(__S(7)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateFilterRequest" });
     case 7:
@@ -4615,18 +3926,18 @@ function __c4(j: number): any {
         S.Struct({ eventType: S.String, metricName: S.String, expression: S.String }),
       ).annotate({ identifier: "MetricAttribute" });
     case 1:
-      return S.Array(MetricAttribute);
+      return S.Array(__S(32));
     case 2:
       return S.suspend(() =>
-        S.Struct({ s3DataDestination: S.optional(S3DataConfig), roleArn: S.String }),
+        S.Struct({ s3DataDestination: S.optional(__S(0)), roleArn: S.String }),
       ).annotate({ identifier: "MetricAttributionOutput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           datasetGroupArn: S.String,
-          metrics: MetricAttributes,
-          metricsOutputConfig: MetricAttributionOutput,
+          metrics: __S(33),
+          metricsOutputConfig: __S(34),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateMetricAttributionRequest",
@@ -4638,12 +3949,12 @@ function __c4(j: number): any {
     case 5:
       return S.Array(S.String);
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ ColumnNamesList.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(37).pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          excludedDatasetColumns: S.optional(ExcludedDatasetColumns),
-          includedDatasetColumns: S.optional(IncludedDatasetColumns),
+          excludedDatasetColumns: S.optional(__S(38)),
+          includedDatasetColumns: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "TrainingDataConfig" });
   }
@@ -4653,9 +3964,9 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          itemExplorationConfig: S.optional(HyperParameters),
+          itemExplorationConfig: S.optional(__S(3)),
           minRecommendationRequestsPerSecond: S.optional(S.Number),
-          trainingDataConfig: S.optional(TrainingDataConfig),
+          trainingDataConfig: S.optional(__S(39)),
           enableMetadataWithRecommendations: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "RecommenderConfig" });
@@ -4665,8 +3976,8 @@ function __c5(j: number): any {
           name: S.String,
           datasetGroupArn: S.String,
           recipeArn: S.String,
-          recommenderConfig: S.optional(RecommenderConfig),
-          tags: S.optional(Tags),
+          recommenderConfig: S.optional(__S(40)),
+          tags: S.optional(__S(7)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRecommenderRequest" });
     case 2:
@@ -4675,7 +3986,7 @@ function __c5(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ name: S.String, schema: S.String, domain: S.optional(Domain) }).pipe(
+        S.Struct({ name: S.String, schema: S.String, domain: S.optional(S.String) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateSchemaRequest" });
@@ -4713,34 +4024,34 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IntegerHyperParameterRange);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
-        S.Struct({ name: S.optional(S.String), values: S.optional(CategoricalValues) }),
+        S.Struct({ name: S.optional(S.String), values: S.optional(__S(37)) }),
       ).annotate({
         identifier: "CategoricalHyperParameterRange",
       });
     case 2:
-      return S.Array(CategoricalHyperParameterRange);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          integerHyperParameterRanges: S.optional(IntegerHyperParameterRanges),
-          continuousHyperParameterRanges: S.optional(ContinuousHyperParameterRanges),
-          categoricalHyperParameterRanges: S.optional(CategoricalHyperParameterRanges),
+          integerHyperParameterRanges: S.optional(__S(48)),
+          continuousHyperParameterRanges: S.optional(__S(48)),
+          categoricalHyperParameterRanges: S.optional(__S(50)),
         }),
       ).annotate({ identifier: "HyperParameterRanges" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          hpoObjective: S.optional(HPOObjective),
-          hpoResourceConfig: S.optional(HPOResourceConfig),
-          algorithmHyperParameterRanges: S.optional(HyperParameterRanges),
+          hpoObjective: S.optional(__S(45)),
+          hpoResourceConfig: S.optional(__S(46)),
+          algorithmHyperParameterRanges: S.optional(__S(51)),
         }),
       ).annotate({ identifier: "HPOConfig" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ metricName: S.optional(S.String), recipeList: S.optional(ArnList) }),
+        S.Struct({ metricName: S.optional(S.String), recipeList: S.optional(__S(37)) }),
       ).annotate({ identifier: "AutoMLConfig" });
     case 6:
       return S.suspend(() =>
@@ -4751,20 +4062,20 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "EventParameters" });
     case 7:
-      return S.Array(EventParameters);
+      return S.Array(__S(54));
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ eventParametersList: S.optional(EventParametersList) }),
-      ).annotate({ identifier: "EventsConfig" });
+      return S.suspend(() => S.Struct({ eventParametersList: S.optional(__S(55)) })).annotate({
+        identifier: "EventsConfig",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
           itemAttribute: S.optional(S.String),
-          objectiveSensitivity: S.optional(ObjectiveSensitivity),
+          objectiveSensitivity: S.optional(S.String),
         }),
       ).annotate({ identifier: "OptimizationObjective" });
     case 2:
@@ -4775,14 +4086,14 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           eventValueThreshold: S.optional(S.String),
-          hpoConfig: S.optional(HPOConfig),
-          algorithmHyperParameters: S.optional(HyperParameters),
-          featureTransformationParameters: S.optional(FeatureTransformationParameters),
-          autoMLConfig: S.optional(AutoMLConfig),
-          eventsConfig: S.optional(EventsConfig),
-          optimizationObjective: S.optional(OptimizationObjective),
-          trainingDataConfig: S.optional(TrainingDataConfig),
-          autoTrainingConfig: S.optional(AutoTrainingConfig),
+          hpoConfig: S.optional(__S(52)),
+          algorithmHyperParameters: S.optional(__S(3)),
+          featureTransformationParameters: S.optional(__S(3)),
+          autoMLConfig: S.optional(__S(53)),
+          eventsConfig: S.optional(__S(56)),
+          optimizationObjective: S.optional(__S(57)),
+          trainingDataConfig: S.optional(__S(39)),
+          autoTrainingConfig: S.optional(__S(58)),
         }),
       ).annotate({ identifier: "SolutionConfig" });
     case 4:
@@ -4796,8 +4107,8 @@ function __c7(j: number): any {
           recipeArn: S.optional(S.String),
           datasetGroupArn: S.String,
           eventType: S.optional(S.String),
-          solutionConfig: S.optional(SolutionConfig),
-          tags: S.optional(Tags),
+          solutionConfig: S.optional(__S(59)),
+          tags: S.optional(__S(7)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateSolutionRequest" });
     case 5:
@@ -4809,8 +4120,8 @@ function __c7(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           solutionArn: S.String,
-          trainingMode: S.optional(TrainingMode),
-          tags: S.optional(Tags),
+          trainingMode: S.optional(S.String),
+          tags: S.optional(__S(7)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateSolutionVersionRequest",
@@ -4917,12 +4228,12 @@ function __c9(j: number): any {
         identifier: "DefaultIntegerHyperParameterRange",
       });
     case 6:
-      return S.Array(DefaultIntegerHyperParameterRange);
+      return S.Array(__S(77));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          values: S.optional(CategoricalValues),
+          values: S.optional(__S(37)),
           isTunable: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -4933,13 +4244,13 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DefaultCategoricalHyperParameterRange);
+      return S.Array(__S(79));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          integerHyperParameterRanges: S.optional(DefaultIntegerHyperParameterRanges),
-          continuousHyperParameterRanges: S.optional(DefaultContinuousHyperParameterRanges),
-          categoricalHyperParameterRanges: S.optional(DefaultCategoricalHyperParameterRanges),
+          integerHyperParameterRanges: S.optional(__S(78)),
+          continuousHyperParameterRanges: S.optional(__S(78)),
+          categoricalHyperParameterRanges: S.optional(__S(80)),
         }),
       ).annotate({
         identifier: "DefaultHyperParameterRanges",
@@ -4949,10 +4260,10 @@ function __c10(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           algorithmArn: S.optional(S.String),
-          algorithmImage: S.optional(AlgorithmImage),
-          defaultHyperParameters: S.optional(HyperParameters),
-          defaultHyperParameterRanges: S.optional(DefaultHyperParameterRanges),
-          defaultResourceConfig: S.optional(ResourceConfig),
+          algorithmImage: S.optional(__S(76)),
+          defaultHyperParameters: S.optional(__S(3)),
+          defaultHyperParameterRanges: S.optional(__S(81)),
+          defaultResourceConfig: S.optional(__S(3)),
           trainingInputMode: S.optional(S.String),
           roleArn: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4960,7 +4271,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "Algorithm" });
     case 3:
-      return S.suspend(() => S.Struct({ algorithm: S.optional(Algorithm) })).annotate({
+      return S.suspend(() => S.Struct({ algorithm: S.optional(__S(82)) })).annotate({
         identifier: "DescribeAlgorithmResponse",
       });
     case 4:
@@ -4980,21 +4291,19 @@ function __c10(j: number): any {
           failureReason: S.optional(S.String),
           solutionVersionArn: S.optional(S.String),
           numResults: S.optional(S.Number),
-          jobInput: S.optional(BatchInferenceJobInput),
-          jobOutput: S.optional(BatchInferenceJobOutput),
-          batchInferenceJobConfig: S.optional(BatchInferenceJobConfig),
+          jobInput: S.optional(__S(1)),
+          jobOutput: S.optional(__S(2)),
+          batchInferenceJobConfig: S.optional(__S(5)),
           roleArn: S.optional(S.String),
-          batchInferenceJobMode: S.optional(BatchInferenceJobMode),
-          themeGenerationConfig: S.optional(ThemeGenerationConfig),
+          batchInferenceJobMode: S.optional(S.String),
+          themeGenerationConfig: S.optional(__S(9)),
           status: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "BatchInferenceJob" });
     case 6:
-      return S.suspend(() =>
-        S.Struct({ batchInferenceJob: S.optional(BatchInferenceJob) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ batchInferenceJob: S.optional(__S(85)) })).annotate({
         identifier: "DescribeBatchInferenceJobResponse",
       });
     case 7:
@@ -5018,8 +4327,8 @@ function __c11(j: number): any {
           failureReason: S.optional(S.String),
           solutionVersionArn: S.optional(S.String),
           numResults: S.optional(S.Number),
-          jobInput: S.optional(BatchSegmentJobInput),
-          jobOutput: S.optional(BatchSegmentJobOutput),
+          jobInput: S.optional(__S(1)),
+          jobOutput: S.optional(__S(2)),
           roleArn: S.optional(S.String),
           status: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5027,7 +4336,7 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "BatchSegmentJob" });
     case 1:
-      return S.suspend(() => S.Struct({ batchSegmentJob: S.optional(BatchSegmentJob) })).annotate({
+      return S.suspend(() => S.Struct({ batchSegmentJob: S.optional(__S(88)) })).annotate({
         identifier: "DescribeBatchSegmentJobResponse",
       });
     case 2:
@@ -5041,7 +4350,7 @@ function __c11(j: number): any {
         S.Struct({
           solutionVersionArn: S.optional(S.String),
           minProvisionedTPS: S.optional(S.Number),
-          campaignConfig: S.optional(CampaignConfig),
+          campaignConfig: S.optional(__S(14)),
           status: S.optional(S.String),
           failureReason: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5055,16 +4364,16 @@ function __c11(j: number): any {
           campaignArn: S.optional(S.String),
           solutionVersionArn: S.optional(S.String),
           minProvisionedTPS: S.optional(S.Number),
-          campaignConfig: S.optional(CampaignConfig),
+          campaignConfig: S.optional(__S(14)),
           status: S.optional(S.String),
           failureReason: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          latestCampaignUpdate: S.optional(CampaignUpdateSummary),
+          latestCampaignUpdate: S.optional(__S(91)),
         }),
       ).annotate({ identifier: "Campaign" });
     case 5:
-      return S.suspend(() => S.Struct({ campaign: S.optional(Campaign) })).annotate({
+      return S.suspend(() => S.Struct({ campaign: S.optional(__S(92)) })).annotate({
         identifier: "DescribeCampaignResponse",
       });
     case 6:
@@ -5081,7 +4390,7 @@ function __c11(j: number): any {
           jobName: S.optional(S.String),
           dataDeletionJobArn: S.optional(S.String),
           datasetGroupArn: S.optional(S.String),
-          dataSource: S.optional(DataSource),
+          dataSource: S.optional(__S(17)),
           roleArn: S.optional(S.String),
           status: S.optional(S.String),
           numDeleted: S.optional(S.Number),
@@ -5095,7 +4404,7 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ dataDeletionJob: S.optional(DataDeletionJob) })).annotate({
+      return S.suspend(() => S.Struct({ dataDeletionJob: S.optional(__S(95)) })).annotate({
         identifier: "DescribeDataDeletionJobResponse",
       });
     case 1:
@@ -5125,12 +4434,12 @@ function __c12(j: number): any {
           status: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          latestDatasetUpdate: S.optional(DatasetUpdateSummary),
+          latestDatasetUpdate: S.optional(__S(98)),
           trackingId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Dataset" });
     case 4:
-      return S.suspend(() => S.Struct({ dataset: S.optional(Dataset) })).annotate({
+      return S.suspend(() => S.Struct({ dataset: S.optional(__S(99)) })).annotate({
         identifier: "DescribeDatasetResponse",
       });
     case 5:
@@ -5147,21 +4456,19 @@ function __c12(j: number): any {
           jobName: S.optional(S.String),
           datasetExportJobArn: S.optional(S.String),
           datasetArn: S.optional(S.String),
-          ingestionMode: S.optional(IngestionMode),
+          ingestionMode: S.optional(S.String),
           roleArn: S.optional(S.String),
           status: S.optional(S.String),
-          jobOutput: S.optional(DatasetExportJobOutput),
+          jobOutput: S.optional(__S(2)),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           failureReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatasetExportJob" });
     case 7:
-      return S.suspend(() => S.Struct({ datasetExportJob: S.optional(DatasetExportJob) })).annotate(
-        {
-          identifier: "DescribeDatasetExportJobResponse",
-        },
-      );
+      return S.suspend(() => S.Struct({ datasetExportJob: S.optional(__S(102)) })).annotate({
+        identifier: "DescribeDatasetExportJobResponse",
+      });
   }
 }
 function __c13(j: number): any {
@@ -5185,11 +4492,11 @@ function __c13(j: number): any {
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           failureReason: S.optional(S.String),
-          domain: S.optional(Domain),
+          domain: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatasetGroup" });
     case 2:
-      return S.suspend(() => S.Struct({ datasetGroup: S.optional(DatasetGroup) })).annotate({
+      return S.suspend(() => S.Struct({ datasetGroup: S.optional(__S(105)) })).annotate({
         identifier: "DescribeDatasetGroupResponse",
       });
     case 3:
@@ -5206,22 +4513,20 @@ function __c13(j: number): any {
           jobName: S.optional(S.String),
           datasetImportJobArn: S.optional(S.String),
           datasetArn: S.optional(S.String),
-          dataSource: S.optional(DataSource),
+          dataSource: S.optional(__S(17)),
           roleArn: S.optional(S.String),
           status: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           failureReason: S.optional(S.String),
-          importMode: S.optional(ImportMode),
+          importMode: S.optional(S.String),
           publishAttributionMetricsToS3: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DatasetImportJob" });
     case 5:
-      return S.suspend(() => S.Struct({ datasetImportJob: S.optional(DatasetImportJob) })).annotate(
-        {
-          identifier: "DescribeDatasetImportJobResponse",
-        },
-      );
+      return S.suspend(() => S.Struct({ datasetImportJob: S.optional(__S(108)) })).annotate({
+        identifier: "DescribeDatasetImportJobResponse",
+      });
     case 6:
       return S.suspend(() =>
         S.Struct({ eventTrackerArn: S.String }).pipe(
@@ -5248,7 +4553,7 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ eventTracker: S.optional(EventTracker) })).annotate({
+      return S.suspend(() => S.Struct({ eventTracker: S.optional(__S(111)) })).annotate({
         identifier: "DescribeEventTrackerResponse",
       });
     case 1:
@@ -5264,16 +4569,14 @@ function __c14(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           featureTransformationArn: S.optional(S.String),
-          defaultParameters: S.optional(FeaturizationParameters),
+          defaultParameters: S.optional(__S(3)),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
         }),
       ).annotate({ identifier: "FeatureTransformation" });
     case 3:
-      return S.suspend(() =>
-        S.Struct({ featureTransformation: S.optional(FeatureTransformation) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ featureTransformation: S.optional(__S(114)) })).annotate({
         identifier: "DescribeFeatureTransformationResponse",
       });
     case 4:
@@ -5296,7 +4599,7 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "Filter" });
     case 6:
-      return S.suspend(() => S.Struct({ filter: S.optional(Filter) })).annotate({
+      return S.suspend(() => S.Struct({ filter: S.optional(__S(117)) })).annotate({
         identifier: "DescribeFilterResponse",
       });
     case 7:
@@ -5317,7 +4620,7 @@ function __c15(j: number): any {
           name: S.optional(S.String),
           metricAttributionArn: S.optional(S.String),
           datasetGroupArn: S.optional(S.String),
-          metricsOutputConfig: S.optional(MetricAttributionOutput),
+          metricsOutputConfig: S.optional(__S(34)),
           status: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5325,9 +4628,7 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "MetricAttribution" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ metricAttribution: S.optional(MetricAttribution) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ metricAttribution: S.optional(__S(120)) })).annotate({
         identifier: "DescribeMetricAttributionResponse",
       });
     case 2:
@@ -5351,7 +4652,7 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "Recipe" });
     case 4:
-      return S.suspend(() => S.Struct({ recipe: S.optional(Recipe) })).annotate({
+      return S.suspend(() => S.Struct({ recipe: S.optional(__S(123)) })).annotate({
         identifier: "DescribeRecipeResponse",
       });
     case 5:
@@ -5365,7 +4666,7 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          recommenderConfig: S.optional(RecommenderConfig),
+          recommenderConfig: S.optional(__S(40)),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
@@ -5385,17 +4686,17 @@ function __c16(j: number): any {
           datasetGroupArn: S.optional(S.String),
           name: S.optional(S.String),
           recipeArn: S.optional(S.String),
-          recommenderConfig: S.optional(RecommenderConfig),
+          recommenderConfig: S.optional(__S(40)),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           status: S.optional(S.String),
           failureReason: S.optional(S.String),
-          latestRecommenderUpdate: S.optional(RecommenderUpdateSummary),
-          modelMetrics: S.optional(Metrics),
+          latestRecommenderUpdate: S.optional(__S(126)),
+          modelMetrics: S.optional(__S(127)),
         }),
       ).annotate({ identifier: "Recommender" });
     case 1:
-      return S.suspend(() => S.Struct({ recommender: S.optional(Recommender) })).annotate({
+      return S.suspend(() => S.Struct({ recommender: S.optional(__S(128)) })).annotate({
         identifier: "DescribeRecommenderResponse",
       });
     case 2:
@@ -5412,11 +4713,11 @@ function __c16(j: number): any {
           schema: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          domain: S.optional(Domain),
+          domain: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatasetSchema" });
     case 4:
-      return S.suspend(() => S.Struct({ schema: S.optional(DatasetSchema) })).annotate({
+      return S.suspend(() => S.Struct({ schema: S.optional(__S(131)) })).annotate({
         identifier: "DescribeSchemaResponse",
       });
     case 5:
@@ -5434,8 +4735,8 @@ function __c16(j: number): any {
         S.Struct({
           solutionVersionArn: S.optional(S.String),
           status: S.optional(S.String),
-          trainingMode: S.optional(TrainingMode),
-          trainingType: S.optional(TrainingType),
+          trainingMode: S.optional(S.String),
+          trainingType: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           failureReason: S.optional(S.String),
@@ -5448,14 +4749,14 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          autoTrainingConfig: S.optional(AutoTrainingConfig),
-          eventsConfig: S.optional(EventsConfig),
+          autoTrainingConfig: S.optional(__S(58)),
+          eventsConfig: S.optional(__S(56)),
         }),
       ).annotate({ identifier: "SolutionUpdateConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          solutionUpdateConfig: S.optional(SolutionUpdateConfig),
+          solutionUpdateConfig: S.optional(__S(136)),
           status: S.optional(S.String),
           performAutoTraining: S.optional(S.Boolean),
           performIncrementalUpdate: S.optional(S.Boolean),
@@ -5476,17 +4777,17 @@ function __c17(j: number): any {
           recipeArn: S.optional(S.String),
           datasetGroupArn: S.optional(S.String),
           eventType: S.optional(S.String),
-          solutionConfig: S.optional(SolutionConfig),
-          autoMLResult: S.optional(AutoMLResult),
+          solutionConfig: S.optional(__S(59)),
+          autoMLResult: S.optional(__S(134)),
           status: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          latestSolutionVersion: S.optional(SolutionVersionSummary),
-          latestSolutionUpdate: S.optional(SolutionUpdateSummary),
+          latestSolutionVersion: S.optional(__S(135)),
+          latestSolutionUpdate: S.optional(__S(137)),
         }),
       ).annotate({ identifier: "Solution" });
     case 3:
-      return S.suspend(() => S.Struct({ solution: S.optional(Solution) })).annotate({
+      return S.suspend(() => S.Struct({ solution: S.optional(__S(138)) })).annotate({
         identifier: "DescribeSolutionResponse",
       });
     case 4:
@@ -5498,9 +4799,9 @@ function __c17(j: number): any {
         identifier: "DescribeSolutionVersionRequest",
       });
     case 5:
-      return S.suspend(() =>
-        S.Struct({ algorithmHyperParameters: S.optional(HyperParameters) }),
-      ).annotate({ identifier: "TunedHPOParams" });
+      return S.suspend(() => S.Struct({ algorithmHyperParameters: S.optional(__S(3)) })).annotate({
+        identifier: "TunedHPOParams",
+      });
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5513,19 +4814,19 @@ function __c17(j: number): any {
           recipeArn: S.optional(S.String),
           eventType: S.optional(S.String),
           datasetGroupArn: S.optional(S.String),
-          solutionConfig: S.optional(SolutionConfig),
+          solutionConfig: S.optional(__S(59)),
           trainingHours: S.optional(S.Number),
-          trainingMode: S.optional(TrainingMode),
-          tunedHPOParams: S.optional(TunedHPOParams),
+          trainingMode: S.optional(S.String),
+          tunedHPOParams: S.optional(__S(141)),
           status: S.optional(S.String),
           failureReason: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          trainingType: S.optional(TrainingType),
+          trainingType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolutionVersion" });
     case 7:
-      return S.suspend(() => S.Struct({ solutionVersion: S.optional(SolutionVersion) })).annotate({
+      return S.suspend(() => S.Struct({ solutionVersion: S.optional(__S(142)) })).annotate({
         identifier: "DescribeSolutionVersionResponse",
       });
   }
@@ -5542,7 +4843,7 @@ function __c18(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ solutionVersionArn: S.optional(S.String), metrics: S.optional(Metrics) }),
+        S.Struct({ solutionVersionArn: S.optional(S.String), metrics: S.optional(__S(127)) }),
       ).annotate({
         identifier: "GetSolutionMetricsResponse",
       });
@@ -5566,15 +4867,15 @@ function __c18(j: number): any {
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           failureReason: S.optional(S.String),
           solutionVersionArn: S.optional(S.String),
-          batchInferenceJobMode: S.optional(BatchInferenceJobMode),
+          batchInferenceJobMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchInferenceJobSummary" });
     case 4:
-      return S.Array(BatchInferenceJobSummary);
+      return S.Array(__S(147));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          batchInferenceJobs: S.optional(BatchInferenceJobs),
+          batchInferenceJobs: S.optional(__S(148)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5607,11 +4908,11 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BatchSegmentJobSummary);
+      return S.Array(__S(151));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          batchSegmentJobs: S.optional(BatchSegmentJobs),
+          batchSegmentJobs: S.optional(__S(152)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5637,10 +4938,10 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "CampaignSummary" });
     case 4:
-      return S.Array(CampaignSummary);
+      return S.Array(__S(155));
     case 5:
       return S.suspend(() =>
-        S.Struct({ campaigns: S.optional(Campaigns), nextToken: S.optional(S.String) }),
+        S.Struct({ campaigns: S.optional(__S(156)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListCampaignsResponse" });
     case 6:
       return S.suspend(() =>
@@ -5669,11 +4970,11 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DataDeletionJobSummary);
+      return S.Array(__S(159));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dataDeletionJobs: S.optional(DataDeletionJobs),
+          dataDeletionJobs: S.optional(__S(160)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5701,11 +5002,11 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "DatasetExportJobSummary" });
     case 4:
-      return S.Array(DatasetExportJobSummary);
+      return S.Array(__S(163));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          datasetExportJobs: S.optional(DatasetExportJobs),
+          datasetExportJobs: S.optional(__S(164)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5726,7 +5027,7 @@ function __c20(j: number): any {
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           failureReason: S.optional(S.String),
-          domain: S.optional(Domain),
+          domain: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatasetGroupSummary" });
   }
@@ -5734,10 +5035,10 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DatasetGroupSummary);
+      return S.Array(__S(167));
     case 1:
       return S.suspend(() =>
-        S.Struct({ datasetGroups: S.optional(DatasetGroups), nextToken: S.optional(S.String) }),
+        S.Struct({ datasetGroups: S.optional(__S(168)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDatasetGroupsResponse",
       });
@@ -5760,15 +5061,15 @@ function __c21(j: number): any {
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           failureReason: S.optional(S.String),
-          importMode: S.optional(ImportMode),
+          importMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatasetImportJobSummary" });
     case 4:
-      return S.Array(DatasetImportJobSummary);
+      return S.Array(__S(171));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          datasetImportJobs: S.optional(DatasetImportJobs),
+          datasetImportJobs: S.optional(__S(172)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5798,10 +5099,10 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DatasetSummary);
+      return S.Array(__S(175));
     case 1:
       return S.suspend(() =>
-        S.Struct({ datasets: S.optional(Datasets), nextToken: S.optional(S.String) }),
+        S.Struct({ datasets: S.optional(__S(176)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDatasetsResponse" });
     case 2:
       return S.suspend(() =>
@@ -5822,10 +5123,10 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "EventTrackerSummary" });
     case 4:
-      return S.Array(EventTrackerSummary);
+      return S.Array(__S(179));
     case 5:
       return S.suspend(() =>
-        S.Struct({ eventTrackers: S.optional(EventTrackers), nextToken: S.optional(S.String) }),
+        S.Struct({ eventTrackers: S.optional(__S(180)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListEventTrackersResponse",
       });
@@ -5854,10 +5155,10 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(FilterSummary);
+      return S.Array(__S(183));
     case 1:
       return S.suspend(() =>
-        S.Struct({ Filters: S.optional(Filters), nextToken: S.optional(S.String) }),
+        S.Struct({ Filters: S.optional(__S(184)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListFiltersResponse" });
     case 2:
       return S.suspend(() =>
@@ -5871,7 +5172,7 @@ function __c23(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ metrics: S.optional(MetricAttributes), nextToken: S.optional(S.String) }),
+        S.Struct({ metrics: S.optional(__S(33)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListMetricAttributionMetricsResponse",
       });
@@ -5897,11 +5198,11 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "MetricAttributionSummary" });
     case 6:
-      return S.Array(MetricAttributionSummary);
+      return S.Array(__S(189));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metricAttributions: S.optional(MetricAttributions),
+          metricAttributions: S.optional(__S(190)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5914,10 +5215,10 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          recipeProvider: S.optional(RecipeProvider),
+          recipeProvider: S.optional(S.String),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          domain: S.optional(Domain),
+          domain: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListRecipesRequest" });
     case 1:
@@ -5928,14 +5229,14 @@ function __c24(j: number): any {
           status: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          domain: S.optional(Domain),
+          domain: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecipeSummary" });
     case 2:
-      return S.Array(RecipeSummary);
+      return S.Array(__S(193));
     case 3:
       return S.suspend(() =>
-        S.Struct({ recipes: S.optional(Recipes), nextToken: S.optional(S.String) }),
+        S.Struct({ recipes: S.optional(__S(194)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRecipesResponse" });
     case 4:
       return S.suspend(() =>
@@ -5952,17 +5253,17 @@ function __c24(j: number): any {
           recommenderArn: S.optional(S.String),
           datasetGroupArn: S.optional(S.String),
           recipeArn: S.optional(S.String),
-          recommenderConfig: S.optional(RecommenderConfig),
+          recommenderConfig: S.optional(__S(40)),
           status: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "RecommenderSummary" });
     case 6:
-      return S.Array(RecommenderSummary);
+      return S.Array(__S(197));
     case 7:
       return S.suspend(() =>
-        S.Struct({ recommenders: S.optional(Recommenders), nextToken: S.optional(S.String) }),
+        S.Struct({ recommenders: S.optional(__S(198)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListRecommendersResponse" });
   }
 }
@@ -5981,14 +5282,14 @@ function __c25(j: number): any {
           schemaArn: S.optional(S.String),
           creationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          domain: S.optional(Domain),
+          domain: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatasetSchemaSummary" });
     case 2:
-      return S.Array(DatasetSchemaSummary);
+      return S.Array(__S(201));
     case 3:
       return S.suspend(() =>
-        S.Struct({ schemas: S.optional(Schemas), nextToken: S.optional(S.String) }),
+        S.Struct({ schemas: S.optional(__S(202)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSchemasResponse" });
     case 4:
       return S.suspend(() =>
@@ -6010,10 +5311,10 @@ function __c25(j: number): any {
         }),
       ).annotate({ identifier: "SolutionSummary" });
     case 6:
-      return S.Array(SolutionSummary);
+      return S.Array(__S(205));
     case 7:
       return S.suspend(() =>
-        S.Struct({ solutions: S.optional(Solutions), nextToken: S.optional(S.String) }),
+        S.Struct({ solutions: S.optional(__S(206)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSolutionsResponse" });
   }
 }
@@ -6030,11 +5331,11 @@ function __c26(j: number): any {
         identifier: "ListSolutionVersionsRequest",
       });
     case 1:
-      return S.Array(SolutionVersionSummary);
+      return S.Array(__S(135));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          solutionVersions: S.optional(SolutionVersions),
+          solutionVersions: S.optional(__S(209)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6049,7 +5350,7 @@ function __c26(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ tags: S.optional(Tags) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(7)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 5:
@@ -6086,7 +5387,7 @@ function __c27(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tags: Tags }).pipe(
+        S.Struct({ resourceArn: S.String, tags: __S(7) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -6094,7 +5395,7 @@ function __c27(j: number): any {
       return S.Array(SensitiveString);
     case 4:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String, tagKeys: TagKeys }).pipe(
+        S.Struct({ resourceArn: S.String, tagKeys: __S(219) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
@@ -6104,7 +5405,7 @@ function __c27(j: number): any {
           campaignArn: S.String,
           solutionVersionArn: S.optional(S.String),
           minProvisionedTPS: S.optional(S.Number),
-          campaignConfig: S.optional(CampaignConfig),
+          campaignConfig: S.optional(__S(14)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateCampaignRequest" });
     case 6:
@@ -6116,9 +5417,9 @@ function __c27(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          addMetrics: S.optional(MetricAttributes),
-          removeMetrics: S.optional(MetricAttributesNamesList),
-          metricsOutputConfig: S.optional(MetricAttributionOutput),
+          addMetrics: S.optional(__S(33)),
+          removeMetrics: S.optional(__S(37)),
+          metricsOutputConfig: S.optional(__S(34)),
           metricAttributionArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -6130,7 +5431,7 @@ function __c28(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ recommenderArn: S.String, recommenderConfig: RecommenderConfig }).pipe(
+        S.Struct({ recommenderArn: S.String, recommenderConfig: __S(40) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateRecommenderRequest" });
@@ -6140,8 +5441,75 @@ function __c28(j: number): any {
           solutionArn: S.String,
           performAutoTraining: S.optional(S.Boolean),
           performIncrementalUpdate: S.optional(S.Boolean),
-          solutionUpdateConfig: S.optional(SolutionUpdateConfig),
+          solutionUpdateConfig: S.optional(__S(136)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateSolutionRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
   }
 }

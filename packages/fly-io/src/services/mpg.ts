@@ -7,6 +7,8 @@ import { Conflict, Forbidden, NotFound } from "../errors.ts";
 import { FlyApiProtocol, type FlyIoOpError, type FlyIoOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { FlyIoOpError, FlyIoOpContext };
 
@@ -14,39 +16,20 @@ export interface CreateAttachmentRequest {
   id: string;
   app_name: string;
 }
-const CreateAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateAttachmentRequest>;
-
 export interface CreateAttachmentResponseData {
   id?: number;
   app_id?: number;
   managed_service_id?: number;
   attached_at?: string;
 }
-const CreateAttachmentResponseData = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateAttachmentResponseData>;
-
 export interface CreateAttachmentResponse {
   data?: CreateAttachmentResponseData;
 }
-const CreateAttachmentResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateAttachmentResponse>;
-
 export interface CreateBackupRequest {
   id: string;
   type?: string;
 }
-const CreateBackupRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateBackupRequest>;
-
 export interface CreateBackupResponse {}
-const CreateBackupResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateBackupResponse>;
-
 export interface CreateClusterRequest {
   org_slug: string;
   name: string;
@@ -56,31 +39,18 @@ export interface CreateClusterRequest {
   storage_in_gb?: number;
   postgis_enabled?: boolean;
 }
-const CreateClusterRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateClusterRequest>;
-
 export interface Organization {
   id?: string;
   name?: string;
   slug?: string;
   raw_slug?: string;
 }
-const Organization = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Organization>;
-
 export type IpAssignments = { [key: string]: string | undefined };
-const IpAssignments = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<IpAssignments>;
-
 export interface AttachedApp {
   name?: string;
   id?: string;
 }
-const AttachedApp = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AttachedApp>;
-
 export type ManagedClusterAttachedAppsList = Array<AttachedApp>;
-const ManagedClusterAttachedAppsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ManagedClusterAttachedAppsList>;
-
 export interface ManagedCluster {
   id?: string;
   name?: string;
@@ -97,118 +67,58 @@ export interface ManagedCluster {
   postgis_enabled?: boolean;
   environment?: string;
 }
-const ManagedCluster = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ManagedCluster>;
-
 export type CreateClusterResponseErrorsMap = { [key: string]: unknown | undefined };
-const CreateClusterResponseErrorsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateClusterResponseErrorsMap>;
-
 export interface CreateClusterResponse {
   ok?: boolean;
   data?: ManagedCluster;
   errors?: CreateClusterResponseErrorsMap;
 }
-const CreateClusterResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateClusterResponse>;
-
 export interface CreateDatabaseRequest {
   id: string;
   name: string;
 }
-const CreateDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateDatabaseRequest>;
-
 export interface CreateDatabaseResponse {}
-const CreateDatabaseResponse = CreateBackupResponse as any as S.Schema<CreateDatabaseResponse>;
-
 export type CreateUserRequestRole = "schema_admin" | "writer" | "reader";
-const CreateUserRequestRole = S.String;
-
 export interface CreateUserRequest {
   id: string;
   username: string;
   role: CreateUserRequestRole | (string & {});
 }
-const CreateUserRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CreateUserRequest>;
-
 export interface User {
   name?: string;
   username?: string;
   role?: string;
 }
-const User = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<User>;
-
 export interface CreateUserResponse {
   data?: User;
 }
-const CreateUserResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CreateUserResponse>;
-
 export interface DeleteAttachmentRequest {
   id: string;
   app_name: string;
 }
-const DeleteAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteAttachmentRequest>;
-
 export interface DeleteAttachmentResponseData {
   message?: string;
 }
-const DeleteAttachmentResponseData = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteAttachmentResponseData>;
-
 export interface DeleteAttachmentResponse {
   data?: DeleteAttachmentResponseData;
 }
-const DeleteAttachmentResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteAttachmentResponse>;
-
 export interface DeleteUserRequest {
   id: string;
   username: string;
 }
-const DeleteUserRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DeleteUserRequest>;
-
 export interface DeleteUserResponse {}
-const DeleteUserResponse = CreateBackupResponse as any as S.Schema<DeleteUserResponse>;
-
 export interface DestroyClusterRequest {
   org_slug: string;
   id: string;
 }
-const DestroyClusterRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DestroyClusterRequest>;
-
 export interface DestroyClusterResponse {}
-const DestroyClusterResponse = CreateBackupResponse as any as S.Schema<DestroyClusterResponse>;
-
 export interface DisableExtensionRequest {
   id: string;
   database: string;
   name: string;
   force?: boolean;
 }
-const DisableExtensionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DisableExtensionRequest>;
-
 export interface DisableExtensionResponse {}
-const DisableExtensionResponse = CreateBackupResponse as any as S.Schema<DisableExtensionResponse>;
-
 export interface EnableExtensionRequest {
   id: string;
   database: string;
@@ -216,20 +126,11 @@ export interface EnableExtensionRequest {
   schema?: string;
   create_schema_if_needed?: boolean;
 }
-const EnableExtensionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<EnableExtensionRequest>;
-
 export interface EnableExtensionResponse {}
-const EnableExtensionResponse = CreateBackupResponse as any as S.Schema<EnableExtensionResponse>;
-
 export interface GetClusterRequest {
   org_slug: string;
   id: string;
 }
-const GetClusterRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetClusterRequest>;
-
 export interface ClusterCredentials {
   status?: string;
   user?: string;
@@ -237,54 +138,28 @@ export interface ClusterCredentials {
   dbname?: string;
   pgbouncer_uri?: string | Redacted.Redacted<string>;
 }
-const ClusterCredentials = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ClusterCredentials>;
-
 export interface GetClusterResponse {
   data?: ManagedCluster;
   credentials?: ClusterCredentials;
 }
-const GetClusterResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<GetClusterResponse>;
-
 export interface GetClusterByIdRequest {
   id: string;
 }
-const GetClusterByIdRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetClusterByIdRequest>;
-
 export interface GetUserCredentialsRequest {
   id: string;
   username: string;
 }
-const GetUserCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetUserCredentialsRequest>;
-
 export interface GetUserCredentialsResponseData {
   username?: string;
   user?: string;
   password?: string | Redacted.Redacted<string>;
 }
-const GetUserCredentialsResponseData = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetUserCredentialsResponseData>;
-
 export interface GetUserCredentialsResponse {
   data?: GetUserCredentialsResponseData;
 }
-const GetUserCredentialsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetUserCredentialsResponse>;
-
 export interface ListBackupsRequest {
   id: string;
 }
-const ListBackupsRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ListBackupsRequest>;
-
 export interface ClusterBackup {
   id?: string;
   status?: string;
@@ -292,74 +167,35 @@ export interface ClusterBackup {
   start?: string;
   stop?: string;
 }
-const ClusterBackup = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ClusterBackup>;
-
 export type ListBackupsResponseDataList = Array<ClusterBackup>;
-const ListBackupsResponseDataList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListBackupsResponseDataList>;
-
 export interface ListBackupsResponse {
   data?: ListBackupsResponseDataList;
 }
-const ListBackupsResponse = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ListBackupsResponse>;
-
 export interface ListClustersRequest {
   org_slug: string;
 }
-const ListClustersRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ListClustersRequest>;
-
 export type ListClustersResponseDataList = Array<ManagedCluster>;
-const ListClustersResponseDataList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListClustersResponseDataList>;
-
 export interface ListClustersResponse {
   data?: ListClustersResponseDataList;
 }
-const ListClustersResponse = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ListClustersResponse>;
-
 export interface ListDatabasesRequest {
   id: string;
 }
-const ListDatabasesRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ListDatabasesRequest>;
-
 export interface Database {
   name?: string;
 }
-const Database = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Database>;
-
 export type ListDatabasesResponseDataList = Array<Database>;
-const ListDatabasesResponseDataList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListDatabasesResponseDataList>;
-
 export interface ListDatabasesResponse {
   data?: ListDatabasesResponseDataList;
 }
-const ListDatabasesResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListDatabasesResponse>;
-
 export interface ListExtensionsRequest {
   id: string;
   database: string;
 }
-const ListExtensionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ListExtensionsRequest>;
-
 export interface InstalledExtension {
   version?: string;
   schema?: string;
 }
-const InstalledExtension = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<InstalledExtension>;
-
 export interface Extension {
   name?: string;
   description?: string;
@@ -368,92 +204,44 @@ export interface Extension {
   is_system?: boolean;
   installed?: InstalledExtension;
 }
-const Extension = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<Extension>;
-
 export type ListExtensionsResponseDataList = Array<Extension>;
-const ListExtensionsResponseDataList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListExtensionsResponseDataList>;
-
 export interface ListExtensionsResponse {
   data?: ListExtensionsResponseDataList;
 }
-const ListExtensionsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListExtensionsResponse>;
-
 export interface ListRegionsRequest {
   org_slug: string;
 }
-const ListRegionsRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ListRegionsRequest>;
-
 export interface Region {
   code?: string;
   available?: boolean;
 }
-const Region = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Region>;
-
 export type ListRegionsResponseDataList = Array<Region>;
-const ListRegionsResponseDataList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListRegionsResponseDataList>;
-
 export interface ListRegionsResponse {
   data?: ListRegionsResponseDataList;
 }
-const ListRegionsResponse = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ListRegionsResponse>;
-
 export interface ListUsersRequest {
   id: string;
 }
-const ListUsersRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ListUsersRequest>;
-
 export type ListUsersResponseDataList = Array<User>;
-const ListUsersResponseDataList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListUsersResponseDataList>;
-
 export interface ListUsersResponse {
   data?: ListUsersResponseDataList;
 }
-const ListUsersResponse = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ListUsersResponse>;
-
 export interface RestoreBackupRequest {
   id: string;
   backup_id?: string;
   name?: string;
   pitr_time?: string;
 }
-const RestoreBackupRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<RestoreBackupRequest>;
-
 export interface RestoreBackupResponse {
   data?: ManagedCluster;
 }
-const RestoreBackupResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<RestoreBackupResponse>;
-
 export type UpdateUserRoleRequestRole = "schema_admin" | "writer" | "reader";
-const UpdateUserRoleRequestRole = S.String;
-
 export interface UpdateUserRoleRequest {
   id: string;
   username: string;
   role: UpdateUserRoleRequestRole | (string & {});
 }
-const UpdateUserRoleRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<UpdateUserRoleRequest>;
-
 export interface UpdateUserRoleResponse {}
-const UpdateUserRoleResponse = CreateBackupResponse as any as S.Schema<UpdateUserRoleResponse>;
-
 export type CreateAttachmentError = NotFound | Conflict | FlyIoOpError;
 /** Attach a cluster to a Machines app */
 export const createAttachment: API.OperationMethod<
@@ -462,8 +250,8 @@ export const createAttachment: API.OperationMethod<
   CreateAttachmentError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAttachmentRequest,
-  output: CreateAttachmentResponse,
+  input: __S(0) as any as S.Schema<CreateAttachmentRequest>,
+  output: __S(2) as any as S.Schema<CreateAttachmentResponse>,
   errors: [NotFound, Conflict],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -477,8 +265,8 @@ export const createBackup: API.OperationMethod<
   CreateBackupError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBackupRequest,
-  output: CreateBackupResponse,
+  input: __S(3) as any as S.Schema<CreateBackupRequest>,
+  output: __S(4) as any as S.Schema<CreateBackupResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -492,8 +280,8 @@ export const createCluster: API.OperationMethod<
   CreateClusterError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateClusterRequest,
-  output: CreateClusterResponse,
+  input: __S(5) as any as S.Schema<CreateClusterRequest>,
+  output: __S(12) as any as S.Schema<CreateClusterResponse>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -507,8 +295,8 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatabaseRequest,
-  output: CreateDatabaseResponse,
+  input: __S(13) as any as S.Schema<CreateDatabaseRequest>,
+  output: __S(4) as any as S.Schema<CreateDatabaseResponse>,
   errors: [NotFound, Conflict],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -522,8 +310,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUserRequest,
-  output: CreateUserResponse,
+  input: __S(14) as any as S.Schema<CreateUserRequest>,
+  output: __S(16) as any as S.Schema<CreateUserResponse>,
   errors: [NotFound, Conflict],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -537,8 +325,8 @@ export const deleteAttachment: API.OperationMethod<
   DeleteAttachmentError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAttachmentRequest,
-  output: DeleteAttachmentResponse,
+  input: __S(17) as any as S.Schema<DeleteAttachmentRequest>,
+  output: __S(19) as any as S.Schema<DeleteAttachmentResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -552,8 +340,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserRequest,
-  output: DeleteUserResponse,
+  input: __S(20) as any as S.Schema<DeleteUserRequest>,
+  output: __S(4) as any as S.Schema<DeleteUserResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -567,8 +355,8 @@ export const destroyCluster: API.OperationMethod<
   DestroyClusterError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DestroyClusterRequest,
-  output: DestroyClusterResponse,
+  input: __S(21) as any as S.Schema<DestroyClusterRequest>,
+  output: __S(4) as any as S.Schema<DestroyClusterResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -582,8 +370,8 @@ export const disableExtension: API.OperationMethod<
   DisableExtensionError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableExtensionRequest,
-  output: DisableExtensionResponse,
+  input: __S(22) as any as S.Schema<DisableExtensionRequest>,
+  output: __S(4) as any as S.Schema<DisableExtensionResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -597,8 +385,8 @@ export const enableExtension: API.OperationMethod<
   EnableExtensionError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableExtensionRequest,
-  output: EnableExtensionResponse,
+  input: __S(23) as any as S.Schema<EnableExtensionRequest>,
+  output: __S(4) as any as S.Schema<EnableExtensionResponse>,
   errors: [NotFound, Conflict],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -612,8 +400,8 @@ export const getCluster: API.OperationMethod<
   GetClusterError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClusterRequest,
-  output: GetClusterResponse,
+  input: __S(24) as any as S.Schema<GetClusterRequest>,
+  output: __S(26) as any as S.Schema<GetClusterResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -627,8 +415,8 @@ export const getClusterById: API.OperationMethod<
   GetClusterByIdError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClusterByIdRequest,
-  output: GetClusterResponse,
+  input: __S(27) as any as S.Schema<GetClusterByIdRequest>,
+  output: __S(26) as any as S.Schema<GetClusterResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -642,8 +430,8 @@ export const getUserCredentials: API.OperationMethod<
   GetUserCredentialsError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserCredentialsRequest,
-  output: GetUserCredentialsResponse,
+  input: __S(28) as any as S.Schema<GetUserCredentialsRequest>,
+  output: __S(30) as any as S.Schema<GetUserCredentialsResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -657,8 +445,8 @@ export const listBackups: API.OperationMethod<
   ListBackupsError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBackupsRequest,
-  output: ListBackupsResponse,
+  input: __S(31) as any as S.Schema<ListBackupsRequest>,
+  output: __S(34) as any as S.Schema<ListBackupsResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -672,8 +460,8 @@ export const listClusters: API.OperationMethod<
   ListClustersError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListClustersRequest,
-  output: ListClustersResponse,
+  input: __S(35) as any as S.Schema<ListClustersRequest>,
+  output: __S(37) as any as S.Schema<ListClustersResponse>,
   errors: [Forbidden, NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -687,8 +475,8 @@ export const listDatabases: API.OperationMethod<
   ListDatabasesError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDatabasesRequest,
-  output: ListDatabasesResponse,
+  input: __S(38) as any as S.Schema<ListDatabasesRequest>,
+  output: __S(41) as any as S.Schema<ListDatabasesResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -702,8 +490,8 @@ export const listExtensions: API.OperationMethod<
   ListExtensionsError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListExtensionsRequest,
-  output: ListExtensionsResponse,
+  input: __S(42) as any as S.Schema<ListExtensionsRequest>,
+  output: __S(46) as any as S.Schema<ListExtensionsResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -717,8 +505,8 @@ export const listRegions: API.OperationMethod<
   ListRegionsError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegionsRequest,
-  output: ListRegionsResponse,
+  input: __S(47) as any as S.Schema<ListRegionsRequest>,
+  output: __S(50) as any as S.Schema<ListRegionsResponse>,
   errors: [],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -732,8 +520,8 @@ export const listUsers: API.OperationMethod<
   ListUsersError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsersRequest,
-  output: ListUsersResponse,
+  input: __S(51) as any as S.Schema<ListUsersRequest>,
+  output: __S(53) as any as S.Schema<ListUsersResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -747,8 +535,8 @@ export const restoreBackup: API.OperationMethod<
   RestoreBackupError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreBackupRequest,
-  output: RestoreBackupResponse,
+  input: __S(54) as any as S.Schema<RestoreBackupRequest>,
+  output: __S(55) as any as S.Schema<RestoreBackupResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -762,8 +550,8 @@ export const updateUserRole: API.OperationMethod<
   UpdateUserRoleError,
   FlyIoOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserRoleRequest,
-  output: UpdateUserRoleResponse,
+  input: __S(56) as any as S.Schema<UpdateUserRoleRequest>,
+  output: __S(4) as any as S.Schema<UpdateUserRoleResponse>,
   errors: [NotFound],
   protocol: FlyApiProtocol,
   retry: Retry.Retry,
@@ -793,7 +581,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(CreateAttachmentResponseData),
+          data: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "CreateAttachmentResponse" });
     case 3:
@@ -844,7 +632,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "AttachedApp" });
     case 1:
-      return S.Array(AttachedApp);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -854,12 +642,12 @@ function __c1(j: number): any {
           engine: S.optional(S.String),
           plan: S.optional(S.String),
           region: S.optional(S.String),
-          organization: S.optional(Organization),
+          organization: S.optional(__S(6)),
           mpgd_cluster_id: S.optional(S.String),
           disk: S.optional(S.Number),
           replicas: S.optional(S.Number),
-          ip_assignments: S.optional(IpAssignments),
-          attached_apps: S.optional(ManagedClusterAttachedAppsList),
+          ip_assignments: S.optional(__S(7)),
+          attached_apps: S.optional(__S(9)),
           postgis_enabled: S.optional(S.Boolean),
           environment: S.optional(S.String),
         }),
@@ -870,8 +658,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.optional(S.Boolean),
-          data: S.optional(ManagedCluster),
-          errors: S.optional(CreateClusterResponseErrorsMap),
+          data: S.optional(__S(10)),
+          errors: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "CreateClusterResponse" });
     case 5:
@@ -886,7 +674,7 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           username: S.String,
-          role: CreateUserRequestRole,
+          role: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/v1/postgresv2/{id}/users", code: 200 })),
       ).annotate({ identifier: "CreateUserRequest" });
     case 7:
@@ -904,7 +692,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(User),
+          data: S.optional(__S(15)),
         }),
       ).annotate({ identifier: "CreateUserResponse" });
     case 1:
@@ -931,7 +719,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(DeleteAttachmentResponseData),
+          data: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "DeleteAttachmentResponse" });
     case 4:
@@ -1017,8 +805,8 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(ManagedCluster),
-          credentials: S.optional(ClusterCredentials),
+          data: S.optional(__S(10)),
+          credentials: S.optional(__S(25)),
         }),
       ).annotate({ identifier: "GetClusterResponse" });
     case 3:
@@ -1055,7 +843,7 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(GetUserCredentialsResponseData),
+          data: S.optional(__S(29)),
         }),
       ).annotate({
         identifier: "GetUserCredentialsResponse",
@@ -1081,11 +869,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ClusterBackup" });
     case 1:
-      return S.Array(ClusterBackup);
+      return S.Array(__S(32));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(ListBackupsResponseDataList),
+          data: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "ListBackupsResponse" });
     case 3:
@@ -1097,11 +885,11 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListClustersRequest" });
     case 4:
-      return S.Array(ManagedCluster);
+      return S.Array(__S(10));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(ListClustersResponseDataList),
+          data: S.optional(__S(36)),
         }),
       ).annotate({ identifier: "ListClustersResponse" });
     case 6:
@@ -1121,11 +909,11 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Database);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(ListDatabasesResponseDataList),
+          data: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "ListDatabasesResponse" });
     case 2:
@@ -1156,15 +944,15 @@ function __c5(j: number): any {
           docs_url: S.optional(S.String),
           default_version: S.optional(S.String),
           is_system: S.optional(S.Boolean),
-          installed: S.optional(InstalledExtension),
+          installed: S.optional(__S(43)),
         }),
       ).annotate({ identifier: "Extension" });
     case 5:
-      return S.Array(Extension);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(ListExtensionsResponseDataList),
+          data: S.optional(__S(45)),
         }),
       ).annotate({ identifier: "ListExtensionsResponse" });
     case 7:
@@ -1191,11 +979,11 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "Region" });
     case 1:
-      return S.Array(Region);
+      return S.Array(__S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(ListRegionsResponseDataList),
+          data: S.optional(__S(49)),
         }),
       ).annotate({ identifier: "ListRegionsResponse" });
     case 3:
@@ -1205,11 +993,11 @@ function __c6(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/api/v1/postgresv2/{id}/users", code: 200 })),
       ).annotate({ identifier: "ListUsersRequest" });
     case 4:
-      return S.Array(User);
+      return S.Array(__S(15));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(ListUsersResponseDataList),
+          data: S.optional(__S(52)),
         }),
       ).annotate({ identifier: "ListUsersResponse" });
     case 6:
@@ -1224,7 +1012,7 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(ManagedCluster),
+          data: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "RestoreBackupResponse" });
   }
@@ -1236,10 +1024,35 @@ function __c7(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           username: S.String.pipe(T.Label()),
-          role: UpdateUserRoleRequestRole,
+          role: S.String,
         }).pipe(
           T.Http({ method: "PATCH", uri: "/api/v1/postgresv2/{id}/users/{username}", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateUserRoleRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
   }
 }

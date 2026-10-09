@@ -8,6 +8,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -46,16 +48,12 @@ export interface CreateACLRequest {
   /** The given IP/IP Range that is permitted to access. */
   cidr: string;
 }
-const CreateACLRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateACLRequest>;
-
 export interface ACL {
   /** The given IP/IP Range that is permitted to access. */
   cidr: string;
   /** A auto generated unique id which identifies the acl. */
   id: string;
 }
-const ACL = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ACL>;
-
 export interface CreateApproleRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -69,8 +67,6 @@ export interface CreateApproleRequest {
   /** Is true if the approle has write access to the secrets engine. Is false for a read-only approle. */
   write?: boolean;
 }
-const CreateApproleRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateApproleRequest>;
-
 export interface Approle {
   /** A user chosen description to differentiate between multiple approles. */
   description: string;
@@ -82,8 +78,6 @@ export interface Approle {
   /** Is true if the approle has write access to the secrets engine. Is false for a read-only approle. */
   write: boolean;
 }
-const Approle = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Approle>;
-
 export interface CreateApproleSecretIdRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -94,11 +88,6 @@ export interface CreateApproleSecretIdRequest {
   /** A user chosen description to differentiate between multiple approle secrets. */
   description?: string;
 }
-const CreateApproleSecretIdRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateApproleSecretIdRequest>;
-
 export interface ApproleSecret {
   /** A user chosen description to differentiate between multiple approle secrets. */
   description: string;
@@ -110,8 +99,6 @@ export interface ApproleSecret {
   /** Accessor used for handling secrets */
   version: number;
 }
-const ApproleSecret = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ApproleSecret>;
-
 /** The key for secret encryption and decryption. */
 export interface KmsKeyPayload {
   /** The key UUID. */
@@ -123,8 +110,6 @@ export interface KmsKeyPayload {
   /** The Service account email that will consume the key. Must be in the same project as the Secrets Manager instance. */
   serviceAccountEmail: string;
 }
-const KmsKeyPayload = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<KmsKeyPayload>;
-
 export interface CreateInstanceRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -132,11 +117,6 @@ export interface CreateInstanceRequest {
   /** A user chosen name to distinguish multiple secrets manager instances. */
   name: string;
 }
-const CreateInstanceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateInstanceRequest>;
-
 export interface Instance {
   /** The API endpoint for connecting to the secrets engine. */
   apiUrl: string;
@@ -158,8 +138,6 @@ export interface Instance {
   updateFinishedDate?: string;
   updateStartDate?: string;
 }
-const Instance = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Instance>;
-
 export interface CreateUserRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -170,8 +148,6 @@ export interface CreateUserRequest {
   /** Is true if the user has write access to the secrets engine. Is false for a read-only user. */
   write: boolean;
 }
-const CreateUserRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CreateUserRequest>;
-
 export interface User {
   /** A user chosen description to differentiate between multiple users. */
   description: string;
@@ -184,8 +160,6 @@ export interface User {
   /** Is true if the user has write access to the secrets engine. Is false for a read-only user. */
   write: boolean;
 }
-const User = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<User>;
-
 export interface DeleteACLRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -194,11 +168,7 @@ export interface DeleteACLRequest {
   /** The acl UUID of the Secrets Manager instance. */
   aclId: string;
 }
-const DeleteACLRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteACLRequest>;
-
 export interface DeleteACLResponse {}
-const DeleteACLResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DeleteACLResponse>;
-
 export interface DeleteApproleRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -207,11 +177,7 @@ export interface DeleteApproleRequest {
   /** The approle with permissions on the Secrets Manager instance. */
   roleId: string;
 }
-const DeleteApproleRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DeleteApproleRequest>;
-
 export interface DeleteApproleResponse {}
-const DeleteApproleResponse = DeleteACLResponse as any as S.Schema<DeleteApproleResponse>;
-
 export interface DeleteApproleSecretIdRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -222,29 +188,14 @@ export interface DeleteApproleSecretIdRequest {
   /** The version of the secret id. */
   secretIdVersion: number;
 }
-const DeleteApproleSecretIdRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteApproleSecretIdRequest>;
-
 export interface DeleteApproleSecretIdResponse {}
-const DeleteApproleSecretIdResponse =
-  DeleteACLResponse as any as S.Schema<DeleteApproleSecretIdResponse>;
-
 export interface DeleteInstanceRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
   /** The Secrets Manager instance UUID. */
   instanceId: string;
 }
-const DeleteInstanceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteInstanceRequest>;
-
 export interface DeleteInstanceResponse {}
-const DeleteInstanceResponse = DeleteACLResponse as any as S.Schema<DeleteInstanceResponse>;
-
 export interface DeleteUserRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -253,11 +204,7 @@ export interface DeleteUserRequest {
   /** The user UUID with permissions on the Secrets Manager instance. */
   userId: string;
 }
-const DeleteUserRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteUserRequest>;
-
 export interface DeleteUserResponse {}
-const DeleteUserResponse = DeleteACLResponse as any as S.Schema<DeleteUserResponse>;
-
 export interface GetACLRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -266,8 +213,6 @@ export interface GetACLRequest {
   /** The acl UUID of the Secrets Manager instance. */
   aclId: string;
 }
-const GetACLRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetACLRequest>;
-
 export interface GetApproleRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -276,27 +221,16 @@ export interface GetApproleRequest {
   /** The approle with permissions on the Secrets Manager instance. */
   roleId: string;
 }
-const GetApproleRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetApproleRequest>;
-
 export interface GetApprolesRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
   /** The Secrets Manager instance UUID. */
   instanceId: string;
 }
-const GetApprolesRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetApprolesRequest>;
-
 export type ApproleListApprolesList = Array<Approle>;
-const ApproleListApprolesList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ApproleListApprolesList>;
-
 export interface ApproleList {
   approles: ApproleListApprolesList;
 }
-const ApproleList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ApproleList>;
-
 export interface GetApproleSecretIdRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -307,19 +241,12 @@ export interface GetApproleSecretIdRequest {
   /** The version of the secret id. */
   secretIdVersion: number;
 }
-const GetApproleSecretIdRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetApproleSecretIdRequest>;
-
 export interface GetInstanceRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
   /** The Secrets Manager instance UUID. */
   instanceId: string;
 }
-const GetInstanceRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetInstanceRequest>;
-
 export interface GetUserRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -328,27 +255,16 @@ export interface GetUserRequest {
   /** The user UUID with permissions on the Secrets Manager instance. */
   userId: string;
 }
-const GetUserRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetUserRequest>;
-
 export interface ListACLsRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
   /** The Secrets Manager instance UUID. */
   instanceId: string;
 }
-const ListACLsRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListACLsRequest>;
-
 export type ListACLsResponseAclsList = Array<ACL>;
-const ListACLsResponseAclsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListACLsResponseAclsList>;
-
 export interface ListACLsResponse {
   acls: ListACLsResponseAclsList;
 }
-const ListACLsResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListACLsResponse>;
-
 export interface ListApproleSecretIdsRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -357,61 +273,28 @@ export interface ListApproleSecretIdsRequest {
   /** The approle with permissions on the Secrets Manager instance. */
   roleId: string;
 }
-const ListApproleSecretIdsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListApproleSecretIdsRequest>;
-
 export type ApproleSecretListSecretIdsList = Array<ApproleSecret>;
-const ApproleSecretListSecretIdsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ApproleSecretListSecretIdsList>;
-
 export interface ApproleSecretList {
   secretIds: ApproleSecretListSecretIdsList;
 }
-const ApproleSecretList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ApproleSecretList>;
-
 export interface ListInstancesRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
 }
-const ListInstancesRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ListInstancesRequest>;
-
 export type ListInstancesResponseInstancesList = Array<Instance>;
-const ListInstancesResponseInstancesList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListInstancesResponseInstancesList>;
-
 export interface ListInstancesResponse {
   instances: ListInstancesResponseInstancesList;
 }
-const ListInstancesResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListInstancesResponse>;
-
 export interface ListUsersRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
   /** The Secrets Manager instance UUID. */
   instanceId: string;
 }
-const ListUsersRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ListUsersRequest>;
-
 export type ListUsersResponseUsersList = Array<User>;
-const ListUsersResponseUsersList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListUsersResponseUsersList>;
-
 export interface ListUsersResponse {
   users: ListUsersResponseUsersList;
 }
-const ListUsersResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ListUsersResponse>;
-
 export interface UpdateACLRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -422,23 +305,12 @@ export interface UpdateACLRequest {
   /** The given IP/IP Range that is permitted to access. */
   cidr: string;
 }
-const UpdateACLRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<UpdateACLRequest>;
-
 export interface UpdateACLResponse {}
-const UpdateACLResponse = DeleteACLResponse as any as S.Schema<UpdateACLResponse>;
-
 export interface UpdateACLPayload {
   /** The given IP/IP Range that is permitted to access. */
   cidr: string;
 }
-const UpdateACLPayload = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<UpdateACLPayload>;
-
 export type UpdateACLsRequestCidrsList = Array<UpdateACLPayload>;
-const UpdateACLsRequestCidrsList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<UpdateACLsRequestCidrsList>;
-
 export interface UpdateACLsRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -446,11 +318,7 @@ export interface UpdateACLsRequest {
   instanceId: string;
   cidrs?: UpdateACLsRequestCidrsList;
 }
-const UpdateACLsRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<UpdateACLsRequest>;
-
 export interface UpdateACLsResponse {}
-const UpdateACLsResponse = DeleteACLResponse as any as S.Schema<UpdateACLsResponse>;
-
 export interface UpdateApproleRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -466,8 +334,6 @@ export interface UpdateApproleRequest {
   /** Is true if the approle has write access to the secrets engine. Is false for a read-only approle. */
   write?: boolean;
 }
-const UpdateApproleRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<UpdateApproleRequest>;
-
 export interface UpdateApproleSecretIdRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -480,11 +346,6 @@ export interface UpdateApproleSecretIdRequest {
   /** A user chosen description to differentiate between multiple approle secrets. */
   description?: string;
 }
-const UpdateApproleSecretIdRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<UpdateApproleSecretIdRequest>;
-
 export interface UpdateInstanceRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -494,14 +355,7 @@ export interface UpdateInstanceRequest {
   /** A user chosen name to distinguish multiple secrets manager instances. */
   name: string;
 }
-const UpdateInstanceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<UpdateInstanceRequest>;
-
 export interface UpdateInstanceResponse {}
-const UpdateInstanceResponse = DeleteACLResponse as any as S.Schema<UpdateInstanceResponse>;
-
 export interface UpdateUserRequest {
   /** The STACKIT portal project UUID the Secrets Manager instance is part of. */
   projectId: string;
@@ -514,11 +368,7 @@ export interface UpdateUserRequest {
   /** Is true if the user has write access to the secrets engine. Is false for a read-only user. */
   write?: boolean;
 }
-const UpdateUserRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<UpdateUserRequest>;
-
 export interface UpdateUserResponse {}
-const UpdateUserResponse = DeleteACLResponse as any as S.Schema<UpdateUserResponse>;
-
 export type CreateACLError = BadRequest | NotFound | Conflict | StackitOpError;
 /** Creates a new Secrets Manager acl within the project. */
 export const createACL: API.OperationMethod<
@@ -527,8 +377,8 @@ export const createACL: API.OperationMethod<
   CreateACLError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateACLRequest,
-  output: ACL,
+  input: __S(0) as any as S.Schema<CreateACLRequest>,
+  output: __S(1) as any as S.Schema<ACL>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -542,8 +392,8 @@ export const createApprole: API.OperationMethod<
   CreateApproleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateApproleRequest,
-  output: Approle,
+  input: __S(2) as any as S.Schema<CreateApproleRequest>,
+  output: __S(3) as any as S.Schema<Approle>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -557,8 +407,8 @@ export const createApproleSecretId: API.OperationMethod<
   CreateApproleSecretIdError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateApproleSecretIdRequest,
-  output: ApproleSecret,
+  input: __S(4) as any as S.Schema<CreateApproleSecretIdRequest>,
+  output: __S(5) as any as S.Schema<ApproleSecret>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -572,8 +422,8 @@ export const createInstance: API.OperationMethod<
   CreateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInstanceRequest,
-  output: Instance,
+  input: __S(7) as any as S.Schema<CreateInstanceRequest>,
+  output: __S(8) as any as S.Schema<Instance>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -587,8 +437,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUserRequest,
-  output: User,
+  input: __S(9) as any as S.Schema<CreateUserRequest>,
+  output: __S(10) as any as S.Schema<User>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -602,8 +452,8 @@ export const deleteACL: API.OperationMethod<
   DeleteACLError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteACLRequest,
-  output: DeleteACLResponse,
+  input: __S(11) as any as S.Schema<DeleteACLRequest>,
+  output: __S(12) as any as S.Schema<DeleteACLResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -617,8 +467,8 @@ export const deleteApprole: API.OperationMethod<
   DeleteApproleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApproleRequest,
-  output: DeleteApproleResponse,
+  input: __S(13) as any as S.Schema<DeleteApproleRequest>,
+  output: __S(12) as any as S.Schema<DeleteApproleResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -632,8 +482,8 @@ export const deleteApproleSecretId: API.OperationMethod<
   DeleteApproleSecretIdError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApproleSecretIdRequest,
-  output: DeleteApproleSecretIdResponse,
+  input: __S(14) as any as S.Schema<DeleteApproleSecretIdRequest>,
+  output: __S(12) as any as S.Schema<DeleteApproleSecretIdResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -647,8 +497,8 @@ export const deleteInstance: API.OperationMethod<
   DeleteInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInstanceRequest,
-  output: DeleteInstanceResponse,
+  input: __S(15) as any as S.Schema<DeleteInstanceRequest>,
+  output: __S(12) as any as S.Schema<DeleteInstanceResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -662,8 +512,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserRequest,
-  output: DeleteUserResponse,
+  input: __S(16) as any as S.Schema<DeleteUserRequest>,
+  output: __S(12) as any as S.Schema<DeleteUserResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -673,8 +523,8 @@ export type GetACLError = BadRequest | NotFound | StackitOpError;
 /** Returns the details for the given acl. */
 export const getACL: API.OperationMethod<GetACLRequest, ACL, GetACLError, StackitOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetACLRequest,
-    output: ACL,
+    input: __S(17) as any as S.Schema<GetACLRequest>,
+    output: __S(1) as any as S.Schema<ACL>,
     errors: [BadRequest, NotFound, UnknownStackitError],
     protocol: StackitProtocol,
     retry: Retry.Retry,
@@ -688,8 +538,8 @@ export const getApprole: API.OperationMethod<
   GetApproleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApproleRequest,
-  output: Approle,
+  input: __S(18) as any as S.Schema<GetApproleRequest>,
+  output: __S(3) as any as S.Schema<Approle>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -703,8 +553,8 @@ export const getApproles: API.OperationMethod<
   GetApprolesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApprolesRequest,
-  output: ApproleList,
+  input: __S(19) as any as S.Schema<GetApprolesRequest>,
+  output: __S(21) as any as S.Schema<ApproleList>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -718,8 +568,8 @@ export const getApproleSecretId: API.OperationMethod<
   GetApproleSecretIdError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApproleSecretIdRequest,
-  output: ApproleSecret,
+  input: __S(22) as any as S.Schema<GetApproleSecretIdRequest>,
+  output: __S(5) as any as S.Schema<ApproleSecret>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -733,8 +583,8 @@ export const getInstance: API.OperationMethod<
   GetInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInstanceRequest,
-  output: Instance,
+  input: __S(23) as any as S.Schema<GetInstanceRequest>,
+  output: __S(8) as any as S.Schema<Instance>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -744,8 +594,8 @@ export type GetUserError = BadRequest | NotFound | StackitOpError;
 /** Returns the details for the given user. */
 export const getUser: API.OperationMethod<GetUserRequest, User, GetUserError, StackitOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetUserRequest,
-    output: User,
+    input: __S(24) as any as S.Schema<GetUserRequest>,
+    output: __S(10) as any as S.Schema<User>,
     errors: [BadRequest, NotFound, UnknownStackitError],
     protocol: StackitProtocol,
     retry: Retry.Retry,
@@ -759,8 +609,8 @@ export const listACLs: API.OperationMethod<
   ListACLsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListACLsRequest,
-  output: ListACLsResponse,
+  input: __S(25) as any as S.Schema<ListACLsRequest>,
+  output: __S(27) as any as S.Schema<ListACLsResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -774,8 +624,8 @@ export const listApproleSecretIds: API.OperationMethod<
   ListApproleSecretIdsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApproleSecretIdsRequest,
-  output: ApproleSecretList,
+  input: __S(28) as any as S.Schema<ListApproleSecretIdsRequest>,
+  output: __S(30) as any as S.Schema<ApproleSecretList>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -789,8 +639,8 @@ export const listInstances: API.OperationMethod<
   ListInstancesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInstancesRequest,
-  output: ListInstancesResponse,
+  input: __S(31) as any as S.Schema<ListInstancesRequest>,
+  output: __S(33) as any as S.Schema<ListInstancesResponse>,
   errors: [BadRequest, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -804,8 +654,8 @@ export const listUsers: API.OperationMethod<
   ListUsersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsersRequest,
-  output: ListUsersResponse,
+  input: __S(34) as any as S.Schema<ListUsersRequest>,
+  output: __S(36) as any as S.Schema<ListUsersResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -819,8 +669,8 @@ export const updateACL: API.OperationMethod<
   UpdateACLError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateACLRequest,
-  output: UpdateACLResponse,
+  input: __S(37) as any as S.Schema<UpdateACLRequest>,
+  output: __S(12) as any as S.Schema<UpdateACLResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -834,8 +684,8 @@ export const updateACLs: API.OperationMethod<
   UpdateACLsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateACLsRequest,
-  output: UpdateACLsResponse,
+  input: __S(40) as any as S.Schema<UpdateACLsRequest>,
+  output: __S(12) as any as S.Schema<UpdateACLsResponse>,
   errors: [BadRequest, NotFound, Conflict, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -849,8 +699,8 @@ export const updateApprole: API.OperationMethod<
   UpdateApproleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApproleRequest,
-  output: Approle,
+  input: __S(41) as any as S.Schema<UpdateApproleRequest>,
+  output: __S(3) as any as S.Schema<Approle>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -864,8 +714,8 @@ export const updateApproleSecretId: API.OperationMethod<
   UpdateApproleSecretIdError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApproleSecretIdRequest,
-  output: ApproleSecret,
+  input: __S(42) as any as S.Schema<UpdateApproleSecretIdRequest>,
+  output: __S(5) as any as S.Schema<ApproleSecret>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -879,8 +729,8 @@ export const updateInstance: API.OperationMethod<
   UpdateInstanceError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInstanceRequest,
-  output: UpdateInstanceResponse,
+  input: __S(43) as any as S.Schema<UpdateInstanceRequest>,
+  output: __S(12) as any as S.Schema<UpdateInstanceResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -894,8 +744,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserRequest,
-  output: UpdateUserResponse,
+  input: __S(44) as any as S.Schema<UpdateUserRequest>,
+  output: __S(12) as any as S.Schema<UpdateUserResponse>,
   errors: [BadRequest, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -995,7 +845,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          kmsKey: S.optional(KmsKeyPayload),
+          kmsKey: S.optional(__S(6)),
           name: S.String,
         }).pipe(
           T.Http({
@@ -1017,7 +867,7 @@ function __c1(j: number): any {
           creationFinishedDate: S.optional(S.String),
           creationStartDate: S.String,
           id: S.String,
-          kmsKey: S.optional(KmsKeyPayload),
+          kmsKey: S.optional(__S(6)),
           name: S.String,
           secretCount: S.Number,
           secretsEngine: S.String,
@@ -1182,11 +1032,11 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "GetApprolesRequest" });
     case 4:
-      return S.Array(Approle);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          approles: ApproleListApprolesList,
+          approles: __S(20),
         }),
       ).annotate({ identifier: "ApproleList" });
     case 6:
@@ -1255,11 +1105,11 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListACLsRequest" });
     case 2:
-      return S.Array(ACL);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          acls: ListACLsResponseAclsList,
+          acls: __S(26),
         }),
       ).annotate({ identifier: "ListACLsResponse" });
     case 4:
@@ -1280,11 +1130,11 @@ function __c3(j: number): any {
         identifier: "ListApproleSecretIdsRequest",
       });
     case 5:
-      return S.Array(ApproleSecret);
+      return S.Array(__S(5));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          secretIds: ApproleSecretListSecretIdsList,
+          secretIds: __S(29),
         }),
       ).annotate({ identifier: "ApproleSecretList" });
     case 7:
@@ -1305,11 +1155,11 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Instance);
+      return S.Array(__S(8));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          instances: ListInstancesResponseInstancesList,
+          instances: __S(32),
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
     case 2:
@@ -1327,11 +1177,11 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListUsersRequest" });
     case 3:
-      return S.Array(User);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          users: ListUsersResponseUsersList,
+          users: __S(35),
         }),
       ).annotate({ identifier: "ListUsersResponse" });
     case 5:
@@ -1357,7 +1207,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "UpdateACLPayload" });
     case 7:
-      return S.Array(UpdateACLPayload);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
@@ -1367,7 +1217,7 @@ function __c5(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          cidrs: S.optional(UpdateACLsRequestCidrsList),
+          cidrs: S.optional(__S(39)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1420,7 +1270,7 @@ function __c5(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           instanceId: S.String.pipe(T.Label()),
-          kmsKey: S.optional(KmsKeyPayload),
+          kmsKey: S.optional(__S(6)),
           name: S.String,
         }).pipe(
           T.Http({
@@ -1448,5 +1298,26 @@ function __c5(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateUserRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
   }
 }

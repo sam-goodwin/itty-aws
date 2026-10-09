@@ -6,6 +6,8 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -16,8 +18,6 @@ export type ServiceTerminationFutureUseEnum =
   | "SUBSCRIBE_AN_OTHER_SERVICE"
   | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR"
   | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR";
-const ServiceTerminationFutureUseEnum = S.String;
-
 /** All reasons you can provide for a service termination */
 export type ServiceTerminationReasonEnum =
   | "FEATURES_DONT_SUIT_ME"
@@ -34,8 +34,6 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
-const ServiceTerminationReasonEnum = S.String;
-
 export interface ConfirmVrackTerminationRequest {
   /** The internal name of your vrack */
   serviceName: string;
@@ -48,17 +46,7 @@ export interface ConfirmVrackTerminationRequest {
   /** The termination token sent by email to the admin contact */
   token: string;
 }
-const ConfirmVrackTerminationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ConfirmVrackTerminationRequest>;
-
 export type ConfirmVrackTerminationResponse = string;
-const ConfirmVrackTerminationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ConfirmVrackTerminationResponse>;
-
 export interface CreateVrackChangeContactRequest {
   /** The internal name of your vrack */
   serviceName: string;
@@ -69,38 +57,16 @@ export interface CreateVrackChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-const CreateVrackChangeContactRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateVrackChangeContactRequest>;
-
 export type CreateVrackChangeContactResponseBodyList = Array<number>;
-const CreateVrackChangeContactResponseBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateVrackChangeContactResponseBodyList>;
-
 export type CreateVrackChangeContactResponse = CreateVrackChangeContactResponseBodyList;
-const CreateVrackChangeContactResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateVrackChangeContactResponse>;
-
 export interface CreateVrackCloudProjectRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** publicCloud project to add */
   project: string;
 }
-const CreateVrackCloudProjectRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateVrackCloudProjectRequest>;
-
 /** All states a vRack Task can be in */
 export type VrackTaskStatusEnum = "cancelled" | "doing" | "done" | "init" | "todo";
-const VrackTaskStatusEnum = S.String;
-
 /** vrack tasks */
 export interface VrackTask {
   function?: string;
@@ -113,18 +79,11 @@ export interface VrackTask {
   targetDomain?: string | null;
   todoDate?: string | null;
 }
-const VrackTask = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<VrackTask>;
-
 export interface CreateVrackDedicatedCloudRequest {
   /** The internal name of your vrack */
   serviceName: string;
   dedicatedCloud: string;
 }
-const CreateVrackDedicatedCloudRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateVrackDedicatedCloudRequest>;
-
 export interface CreateVrackDedicatedConnectRequest {
   /** The internal name of your vrack */
   serviceName: string;
@@ -135,33 +94,18 @@ export interface CreateVrackDedicatedConnectRequest {
   /** Vlan id of the dedicated link on OVH's G5 router */
   vlanId: number;
 }
-const CreateVrackDedicatedConnectRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateVrackDedicatedConnectRequest>;
-
 export interface CreateVrackDedicatedServerRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** Dedicated server to add */
   dedicatedServer: string;
 }
-const CreateVrackDedicatedServerRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateVrackDedicatedServerRequest>;
-
 export interface CreateVrackDedicatedServerInterfaceRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** Dedicated server interface to add */
   dedicatedServerInterface: string;
 }
-const CreateVrackDedicatedServerInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateVrackDedicatedServerInterfaceRequest>;
-
 export interface CreateVrackIpRequest {
   /** The internal name of your vrack */
   serviceName: string;
@@ -170,30 +114,18 @@ export interface CreateVrackIpRequest {
   /** Choose the region in which to route the block */
   region?: string;
 }
-const CreateVrackIpRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateVrackIpRequest>;
-
 export interface CreateVrackIpLoadbalancingRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** Your ipLoadbalancing */
   ipLoadbalancing: string;
 }
-const CreateVrackIpLoadbalancingRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateVrackIpLoadbalancingRequest>;
-
 export interface CreateVrackIpv6Request {
   /** The internal name of your vrack */
   serviceName: string;
   /** Your IP v6 block */
   block: string;
 }
-const CreateVrackIpv6Request = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateVrackIpv6Request>;
-
 export interface CreateVrackIpv6RoutedSubrangeRequest {
   /** The internal name of your vrack */
   serviceName: string;
@@ -204,139 +136,77 @@ export interface CreateVrackIpv6RoutedSubrangeRequest {
   /** subrange to route into your vrack */
   routedSubrange: string;
 }
-const CreateVrackIpv6RoutedSubrangeRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateVrackIpv6RoutedSubrangeRequest>;
-
 export interface CreateVrackLegacyVrackRequest {
   /** The internal name of your vrack */
   serviceName: string;
   legacyVrack: string;
 }
-const CreateVrackLegacyVrackRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateVrackLegacyVrackRequest>;
-
 export interface CreateVrackOvhCloudConnectRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** ovhCloudConnect service name */
   ovhCloudConnect: string;
 }
-const CreateVrackOvhCloudConnectRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateVrackOvhCloudConnectRequest>;
-
 export interface CreateVrackVmwareCloudDirectorVirtualDataCenterRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** vmwareCloudDirectorVirtualDataCenter service name */
   vmwareCloudDirectorVirtualDataCenter: string;
 }
-const CreateVrackVmwareCloudDirectorVirtualDataCenterRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateVrackVmwareCloudDirectorVirtualDataCenterRequest>;
-
 export interface CreateVrackVrackServiceRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** vrackServices service name */
   vrackServices: string;
 }
-const CreateVrackVrackServiceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateVrackVrackServiceRequest>;
-
 export interface DeleteVrackCloudProjectRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** publicCloud project */
   project: string;
 }
-const DeleteVrackCloudProjectRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteVrackCloudProjectRequest>;
-
 export interface DeleteVrackDedicatedCloudRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** your dedicated cloud service */
   dedicatedCloud: string;
 }
-const DeleteVrackDedicatedCloudRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteVrackDedicatedCloudRequest>;
-
 export interface DeleteVrackDedicatedConnectRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** A name for your dedicatedConnect link */
   name: string;
 }
-const DeleteVrackDedicatedConnectRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteVrackDedicatedConnectRequest>;
-
 export interface DeleteVrackDedicatedServerRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** Dedicated Server */
   dedicatedServer: string;
 }
-const DeleteVrackDedicatedServerRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteVrackDedicatedServerRequest>;
-
 export interface DeleteVrackDedicatedServerInterfaceRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** Dedicated Server Interface */
   dedicatedServerInterface: string;
 }
-const DeleteVrackDedicatedServerInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DeleteVrackDedicatedServerInterfaceRequest>;
-
 export interface DeleteVrackIpRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** Your IP block */
   ip: string;
 }
-const DeleteVrackIpRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DeleteVrackIpRequest>;
-
 export interface DeleteVrackIpLoadbalancingRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** Your ipLoadbalancing */
   ipLoadbalancing: string;
 }
-const DeleteVrackIpLoadbalancingRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteVrackIpLoadbalancingRequest>;
-
 export interface DeleteVrackIpv6Request {
   /** The internal name of your vrack */
   serviceName: string;
   /** Your IP v6 block */
   ipv6: string;
 }
-const DeleteVrackIpv6Request = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeleteVrackIpv6Request>;
-
 export interface DeleteVrackIpv6RoutedSubrangeRequest {
   /** The internal name of your vrack */
   serviceName: string;
@@ -345,68 +215,36 @@ export interface DeleteVrackIpv6RoutedSubrangeRequest {
   /** subrange routed into your vrack */
   routedSubrange: string;
 }
-const DeleteVrackIpv6RoutedSubrangeRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteVrackIpv6RoutedSubrangeRequest>;
-
 export interface DeleteVrackLegacyVrackRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** your legacy vrack service */
   legacyVrack: string;
 }
-const DeleteVrackLegacyVrackRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DeleteVrackLegacyVrackRequest>;
-
 export interface DeleteVrackOvhCloudConnectRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** ovhCloudConnect service name */
   ovhCloudConnect: string;
 }
-const DeleteVrackOvhCloudConnectRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeleteVrackOvhCloudConnectRequest>;
-
 export interface DeleteVrackVmwareCloudDirectorVirtualDataCenterRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** vmwareCloudDirectorVirtualDataCenter service name */
   vmwareCloudDirectorVirtualDataCenter: string;
 }
-const DeleteVrackVmwareCloudDirectorVirtualDataCenterRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeleteVrackVmwareCloudDirectorVirtualDataCenterRequest>;
-
 export interface DeleteVrackVrackServiceRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** vrackServices service name */
   vrackServices: string;
 }
-const DeleteVrackVrackServiceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DeleteVrackVrackServiceRequest>;
-
 export interface GetVrackRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const GetVrackRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetVrackRequest>;
-
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-const IamResourceMetadataTagsMap = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<IamResourceMetadataTagsMap>;
-
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
   /** Resource display name */
@@ -418,8 +256,6 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-const IamResourceMetadata = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<IamResourceMetadata>;
-
 /** vrack */
 export interface VrackVrackWithIAM {
   /** Description of the vRack */
@@ -431,19 +267,12 @@ export interface VrackVrackWithIAM {
   /** Service name of your vRack on OVHcloud */
   serviceName?: string;
 }
-const VrackVrackWithIAM = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<VrackVrackWithIAM>;
-
 export interface GetVrackCloudProjectRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** publicCloud project */
   project: string;
 }
-const GetVrackCloudProjectRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetVrackCloudProjectRequest>;
-
 /** PublicCloud project in vrack */
 export interface VrackCloudProject {
   /** publicCloud project */
@@ -451,19 +280,12 @@ export interface VrackCloudProject {
   /** vrack name */
   vrack?: string;
 }
-const VrackCloudProject = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<VrackCloudProject>;
-
 export interface GetVrackDedicatedCloudRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** your dedicated cloud service */
   dedicatedCloud: string;
 }
-const GetVrackDedicatedCloudRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetVrackDedicatedCloudRequest>;
-
 /** VMware on OVHcloud vRack link */
 export interface VrackDedicatedCloud {
   /** your dedicated cloud service */
@@ -473,19 +295,12 @@ export interface VrackDedicatedCloud {
   /** vrack name */
   vrack?: string;
 }
-const VrackDedicatedCloud = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<VrackDedicatedCloud>;
-
 export interface GetVrackDedicatedCloudDatacenterRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** Your dedicatedCloud datacenter name */
   datacenter: string;
 }
-const GetVrackDedicatedCloudDatacenterRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetVrackDedicatedCloudDatacenterRequest>;
-
 /** vrack datacenter interface */
 export interface VrackPccDatacenter {
   /** Your dedicatedCloud datacenter name */
@@ -495,40 +310,23 @@ export interface VrackPccDatacenter {
   /** vrack name */
   vrack?: string;
 }
-const VrackPccDatacenter = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<VrackPccDatacenter>;
-
 export interface GetVrackDedicatedConnectRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** A name for your dedicatedConnect link */
   name: string;
 }
-const GetVrackDedicatedConnectRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetVrackDedicatedConnectRequest>;
-
 /** vrack dedicated connect interface */
 export interface VrackDedicatedConnect {
   /** A name for your dedicatedConnect link */
   name?: string;
 }
-const VrackDedicatedConnect = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<VrackDedicatedConnect>;
-
 export interface GetVrackDedicatedServerRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** Dedicated Server */
   dedicatedServer: string;
 }
-const GetVrackDedicatedServerRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetVrackDedicatedServerRequest>;
-
 /** vrack dedicated server interfaces (LEGACY) */
 export interface VrackDedicatedServer {
   /** Dedicated Server */
@@ -536,19 +334,12 @@ export interface VrackDedicatedServer {
   /** vrack name */
   vrack?: string;
 }
-const VrackDedicatedServer = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<VrackDedicatedServer>;
-
 export interface GetVrackDedicatedServerInterfaceRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** Dedicated Server Interface */
   dedicatedServerInterface: string;
 }
-const GetVrackDedicatedServerInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetVrackDedicatedServerInterfaceRequest>;
-
 /** vrack dedicated server interfaces */
 export interface VrackDedicatedServerInterface {
   /** Dedicated Server Interface */
@@ -556,19 +347,12 @@ export interface VrackDedicatedServerInterface {
   /** vrack name */
   vrack?: string;
 }
-const VrackDedicatedServerInterface = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<VrackDedicatedServerInterface>;
-
 export interface GetVrackIpRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** Your IP block */
   ip: string;
 }
-const GetVrackIpRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GetVrackIpRequest>;
-
 /** Possible values for vrack zone */
 export type VrackVrackZoneEnum =
   | "bhs"
@@ -585,8 +369,6 @@ export type VrackVrackZoneEnum =
   | "was1"
   | "waw"
   | "yyz";
-const VrackVrackZoneEnum = S.String;
-
 /** IP block in vrack */
 export interface VrackIp {
   /** Your gateway */
@@ -598,19 +380,12 @@ export interface VrackIp {
   /** Where you want your block announced on the network */
   zone?: VrackVrackZoneEnum | null;
 }
-const VrackIp = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<VrackIp>;
-
 export interface GetVrackIpLoadbalancingRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** Your ipLoadbalancing */
   ipLoadbalancing: string;
 }
-const GetVrackIpLoadbalancingRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetVrackIpLoadbalancingRequest>;
-
 /** ipLoadbalancing in vrack */
 export interface VrackIplb {
   /** Your ipLoadbalancing */
@@ -618,16 +393,12 @@ export interface VrackIplb {
   /** vrack name */
   vrack?: string;
 }
-const VrackIplb = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<VrackIplb>;
-
 export interface GetVrackIpv6Request {
   /** The internal name of your vrack */
   serviceName: string;
   /** Your IP v6 block */
   ipv6: string;
 }
-const GetVrackIpv6Request = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<GetVrackIpv6Request>;
-
 /** IP v6 block in vrack */
 export interface VrackIpv6 {
   /** Your IP v6 block */
@@ -635,8 +406,6 @@ export interface VrackIpv6 {
   /** Where you want your block announced on the network */
   region?: string | null;
 }
-const VrackIpv6 = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<VrackIpv6>;
-
 export interface GetVrackIpv6BridgedSubrangeRequest {
   /** The internal name of your vrack */
   serviceName: string;
@@ -645,15 +414,8 @@ export interface GetVrackIpv6BridgedSubrangeRequest {
   /** subrange bridged into your vrack */
   bridgedSubrange: string;
 }
-const GetVrackIpv6BridgedSubrangeRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetVrackIpv6BridgedSubrangeRequest>;
-
 /** Possible values for slaac */
 export type VrackSlaacEnum = "disabled" | "enabled";
-const VrackSlaacEnum = S.String;
-
 /** Bridged subrange within your IP v6 block */
 export interface VrackBridgedSubrange {
   /** subrange bridged into your vrack */
@@ -663,8 +425,6 @@ export interface VrackBridgedSubrange {
   /** Slaac status */
   slaac?: VrackSlaacEnum;
 }
-const VrackBridgedSubrange = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<VrackBridgedSubrange>;
-
 export interface GetVrackIpv6RoutedSubrangeRequest {
   /** The internal name of your vrack */
   serviceName: string;
@@ -673,11 +433,6 @@ export interface GetVrackIpv6RoutedSubrangeRequest {
   /** subrange routed into your vrack */
   routedSubrange: string;
 }
-const GetVrackIpv6RoutedSubrangeRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetVrackIpv6RoutedSubrangeRequest>;
-
 /** Routed subranges within your IP v6 block */
 export interface VrackRoutedSubrange {
   /** nexthop used as a gateway for your routed subrange */
@@ -685,19 +440,12 @@ export interface VrackRoutedSubrange {
   /** subrange routed into your vrack */
   routedSubrange?: string;
 }
-const VrackRoutedSubrange = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<VrackRoutedSubrange>;
-
 export interface GetVrackLegacyVrackRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** your legacy vrack service */
   legacyVrack: string;
 }
-const GetVrackLegacyVrackRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetVrackLegacyVrackRequest>;
-
 /** interface between legacy vrack (vrackXXXX) and vrack (pn-XXXX) */
 export interface VrackLegacyVrack {
   /** your legacy vrack service */
@@ -705,19 +453,12 @@ export interface VrackLegacyVrack {
   /** vlan to set on legacy vrack equipments */
   vlanId?: number;
 }
-const VrackLegacyVrack = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<VrackLegacyVrack>;
-
 export interface GetVrackOvhCloudConnectRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** ovhCloudConnect service name */
   ovhCloudConnect: string;
 }
-const GetVrackOvhCloudConnectRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetVrackOvhCloudConnectRequest>;
-
 /** ovhCloudConnect in vrack */
 export interface VrackOvhCloudConnect {
   /** ovhCloudConnect service name */
@@ -725,36 +466,19 @@ export interface VrackOvhCloudConnect {
   /** vrack name */
   vrack?: string;
 }
-const VrackOvhCloudConnect = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<VrackOvhCloudConnect>;
-
 export interface GetVrackPublicRoutingOptionRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const GetVrackPublicRoutingOptionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GetVrackPublicRoutingOptionRequest>;
-
 /** A structure describing the public routing option */
 export interface VrackPublicRoutingOption {
   /** Global bandwidth for blocks in your vrack (in Mbps) */
   bandwidth?: number | null;
 }
-const VrackPublicRoutingOption = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<VrackPublicRoutingOption>;
-
 export interface GetVrackServiceInfosRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const GetVrackServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetVrackServiceInfosRequest>;
-
 export type ServiceStateEnum =
   | "autorenewInProgress"
   | "expired"
@@ -762,8 +486,6 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-const ServiceStateEnum = S.String;
-
 /** Details about a non-expiring Service */
 export interface ServicesNonExpiringService {
   contactAdmin?: string;
@@ -774,29 +496,17 @@ export interface ServicesNonExpiringService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-const ServicesNonExpiringService = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ServicesNonExpiringService>;
-
 export interface GetVrackTaskRequest {
   /** The internal name of your vrack */
   serviceName: string;
   taskId: number;
 }
-const GetVrackTaskRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GetVrackTaskRequest>;
-
 export interface GetVrackVmwareCloudDirectorVirtualDataCenterRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** vmwareCloudDirectorVirtualDataCenter service name */
   vmwareCloudDirectorVirtualDataCenter: string;
 }
-const GetVrackVmwareCloudDirectorVirtualDataCenterRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GetVrackVmwareCloudDirectorVirtualDataCenterRequest>;
-
 /** vmwareCloudDirector virtualDataCenter in vrack */
 export interface VrackVmwareCloudDirectorVirtualDataCenter {
   /** vmwareCloudDirectorVirtualDataCenter service name */
@@ -804,22 +514,12 @@ export interface VrackVmwareCloudDirectorVirtualDataCenter {
   /** vrack name */
   vrack?: string;
 }
-const VrackVmwareCloudDirectorVirtualDataCenter = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<VrackVmwareCloudDirectorVirtualDataCenter>;
-
 export interface GetVrackVrackServiceRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** vrackServices service name */
   vrackServices: string;
 }
-const GetVrackVrackServiceRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GetVrackVrackServiceRequest>;
-
 /** vrackServices in vrack */
 export interface VrackVrackServices {
   /** vrack name */
@@ -827,44 +527,18 @@ export interface VrackVrackServices {
   /** vrackServices service name */
   vrackServices?: string;
 }
-const VrackVrackServices = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<VrackVrackServices>;
-
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-const IamResourceTagFilterInput = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<IamResourceTagFilterInput>;
-
 export type ListVrackRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-const ListVrackRequestIamTagsValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListVrackRequestIamTagsValueList>;
-
 export type ListVrackRequestIamTagsMap = {
   [key: string]: ListVrackRequestIamTagsValueList | undefined;
 };
-const ListVrackRequestIamTagsMap = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ListVrackRequestIamTagsMap>;
-
 export interface ListVrackRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListVrackRequestIamTagsMap;
 }
-const ListVrackRequest = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ListVrackRequest>;
-
 export type ListVrackResponseBodyList = Array<string>;
-const ListVrackResponseBodyList = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListVrackResponseBodyList>;
-
 export type ListVrackResponse = ListVrackResponseBodyList;
-const ListVrackResponse = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<ListVrackResponse>;
-
 /** Possible values for vrack allowed service */
 export type VrackAllowedServiceEnum =
   | "cloudProject"
@@ -880,44 +554,22 @@ export type VrackAllowedServiceEnum =
   | "ovhCloudConnect"
   | "vmwareCloudDirectorVirtualDataCenter"
   | "vrackServices";
-const VrackAllowedServiceEnum = S.String;
-
 export interface ListVrackAllowedServicesRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** Filter on a specific service family */
   serviceFamily?: VrackAllowedServiceEnum | (string & {});
 }
-const ListVrackAllowedServicesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListVrackAllowedServicesRequest>;
-
 /** list of publicCloud projects allowed to be connected to vrack */
 export type VrackAllowedServicesCloudProjectList = Array<string>;
-const VrackAllowedServicesCloudProjectList =
-  ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesCloudProjectList>;
-
 /** list of dedicated cloud allowed to be connected to vrack */
 export type VrackAllowedServicesDedicatedCloudList = Array<string>;
-const VrackAllowedServicesDedicatedCloudList =
-  ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesDedicatedCloudList>;
-
 /** list of dedicated cloud datacenters allowed to be connected to vrack */
 export type VrackAllowedServicesDedicatedCloudDatacenterList = Array<string>;
-const VrackAllowedServicesDedicatedCloudDatacenterList =
-  ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesDedicatedCloudDatacenterList>;
-
 /** list of dedicated connect links allowed to be connected to vrack */
 export type VrackAllowedServicesDedicatedConnectList = Array<string>;
-const VrackAllowedServicesDedicatedConnectList =
-  ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesDedicatedConnectList>;
-
 /** list of dedicated servers allowed to be connected to vrack */
 export type VrackAllowedServicesDedicatedServerList = Array<string>;
-const VrackAllowedServicesDedicatedServerList =
-  ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesDedicatedServerList>;
-
 /** A structure giving all dedicated server interfaces allowed for this vrack */
 export interface VrackAllowedDedicatedServerInterfaces {
   /** the name of dedicatedServer */
@@ -927,54 +579,23 @@ export interface VrackAllowedDedicatedServerInterfaces {
   /** the name of dedicatedServerInterface */
   name?: string;
 }
-const VrackAllowedDedicatedServerInterfaces = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<VrackAllowedDedicatedServerInterfaces>;
-
 /** list of dedicated server interfaces allowed to be connected to vrack */
 export type VrackAllowedServicesDedicatedServerInterfaceList =
   Array<VrackAllowedDedicatedServerInterfaces>;
-const VrackAllowedServicesDedicatedServerInterfaceList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<VrackAllowedServicesDedicatedServerInterfaceList>;
-
 /** list of blocks allowed to be connected to vrack */
 export type VrackAllowedServicesIpList = Array<string>;
-const VrackAllowedServicesIpList =
-  ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesIpList>;
-
 /** list of ipLoadbalancing allowed to be connected to vrack */
 export type VrackAllowedServicesIpLoadbalancingList = Array<string>;
-const VrackAllowedServicesIpLoadbalancingList =
-  ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesIpLoadbalancingList>;
-
 /** list of ipv6 blocks allowed to be connected to vrack */
 export type VrackAllowedServicesIpv6List = Array<string>;
-const VrackAllowedServicesIpv6List =
-  ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesIpv6List>;
-
 /** list of legacy vrack (1.0) allowed to be connected to vrack */
 export type VrackAllowedServicesLegacyVrackList = Array<string>;
-const VrackAllowedServicesLegacyVrackList =
-  ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesLegacyVrackList>;
-
 /** List of the ovhCloudConnect services allowed to be connected to vrack */
 export type VrackAllowedServicesOvhCloudConnectList = Array<string>;
-const VrackAllowedServicesOvhCloudConnectList =
-  ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesOvhCloudConnectList>;
-
 /** List of the vmwareCloudDirectorVirtualDataCenter allowed to be connected to vrack */
 export type VrackAllowedServicesVmwareCloudDirectorVirtualDataCenterList = Array<string>;
-const VrackAllowedServicesVmwareCloudDirectorVirtualDataCenterList =
-  ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesVmwareCloudDirectorVirtualDataCenterList>;
-
 /** List of the vrackServices allowed to be connected to vrack */
 export type VrackAllowedServicesVrackServicesList = Array<string>;
-const VrackAllowedServicesVrackServicesList =
-  ListVrackResponseBodyList as any as S.Schema<VrackAllowedServicesVrackServicesList>;
-
 /** A structure given all service allowed for this vrack */
 export interface VrackAllowedServices {
   /** list of publicCloud projects allowed to be connected to vrack */
@@ -1004,154 +625,67 @@ export interface VrackAllowedServices {
   /** List of the vrackServices allowed to be connected to vrack */
   vrackServices?: VrackAllowedServicesVrackServicesList | null;
 }
-const VrackAllowedServices = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<VrackAllowedServices>;
-
 export interface ListVrackCloudProjectRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const ListVrackCloudProjectRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ListVrackCloudProjectRequest>;
-
 export type ListVrackCloudProjectResponseBodyList = Array<string>;
-const ListVrackCloudProjectResponseBodyList =
-  ListVrackResponseBodyList as any as S.Schema<ListVrackCloudProjectResponseBodyList>;
-
 export type ListVrackCloudProjectResponse = ListVrackCloudProjectResponseBodyList;
-const ListVrackCloudProjectResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListVrackCloudProjectResponse>;
-
 export interface ListVrackDedicatedCloudRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const ListVrackDedicatedCloudRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ListVrackDedicatedCloudRequest>;
-
 export type ListVrackDedicatedCloudResponseBodyList = Array<string>;
 export type ListVrackDedicatedCloudResponse = ListVrackDedicatedCloudResponseBodyList;
-const ListVrackDedicatedCloudResponse =
-  ListVrackCloudProjectResponse as any as S.Schema<ListVrackDedicatedCloudResponse>;
-
 export interface ListVrackDedicatedCloudDatacenterRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const ListVrackDedicatedCloudDatacenterRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListVrackDedicatedCloudDatacenterRequest>;
-
 export type ListVrackDedicatedCloudDatacenterResponseBodyList = Array<string>;
 export type ListVrackDedicatedCloudDatacenterResponse =
   ListVrackDedicatedCloudDatacenterResponseBodyList;
-const ListVrackDedicatedCloudDatacenterResponse =
-  ListVrackCloudProjectResponse as any as S.Schema<ListVrackDedicatedCloudDatacenterResponse>;
-
 export interface ListVrackDedicatedCloudDatacenterAllowedVrackRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** Your dedicatedCloud datacenter name */
   datacenter: string;
 }
-const ListVrackDedicatedCloudDatacenterAllowedVrackRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListVrackDedicatedCloudDatacenterAllowedVrackRequest>;
-
 export type ListVrackDedicatedCloudDatacenterAllowedVrackResponseBodyList = Array<string>;
 export type ListVrackDedicatedCloudDatacenterAllowedVrackResponse =
   ListVrackDedicatedCloudDatacenterAllowedVrackResponseBodyList;
-const ListVrackDedicatedCloudDatacenterAllowedVrackResponse =
-  ListVrackCloudProjectResponse as any as S.Schema<ListVrackDedicatedCloudDatacenterAllowedVrackResponse>;
-
 export interface ListVrackDedicatedConnectRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const ListVrackDedicatedConnectRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListVrackDedicatedConnectRequest>;
-
 export type ListVrackDedicatedConnectResponseBodyList = Array<string>;
 export type ListVrackDedicatedConnectResponse = ListVrackDedicatedConnectResponseBodyList;
-const ListVrackDedicatedConnectResponse =
-  ListVrackCloudProjectResponse as any as S.Schema<ListVrackDedicatedConnectResponse>;
-
 export interface ListVrackDedicatedServerRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const ListVrackDedicatedServerRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListVrackDedicatedServerRequest>;
-
 export type ListVrackDedicatedServerResponseBodyList = Array<string>;
 export type ListVrackDedicatedServerResponse = ListVrackDedicatedServerResponseBodyList;
-const ListVrackDedicatedServerResponse =
-  ListVrackCloudProjectResponse as any as S.Schema<ListVrackDedicatedServerResponse>;
-
 export interface ListVrackDedicatedServerInterfaceRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const ListVrackDedicatedServerInterfaceRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListVrackDedicatedServerInterfaceRequest>;
-
 export type ListVrackDedicatedServerInterfaceResponseBodyList = Array<string>;
 export type ListVrackDedicatedServerInterfaceResponse =
   ListVrackDedicatedServerInterfaceResponseBodyList;
-const ListVrackDedicatedServerInterfaceResponse =
-  ListVrackCloudProjectResponse as any as S.Schema<ListVrackDedicatedServerInterfaceResponse>;
-
 export interface ListVrackDedicatedServerInterfaceDetailsRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const ListVrackDedicatedServerInterfaceDetailsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListVrackDedicatedServerInterfaceDetailsRequest>;
-
 export type ListVrackDedicatedServerInterfaceDetailsResponseBodyList =
   Array<VrackAllowedDedicatedServerInterfaces>;
-const ListVrackDedicatedServerInterfaceDetailsResponseBodyList =
-  VrackAllowedServicesDedicatedServerInterfaceList as any as S.Schema<ListVrackDedicatedServerInterfaceDetailsResponseBodyList>;
-
 export type ListVrackDedicatedServerInterfaceDetailsResponse =
   ListVrackDedicatedServerInterfaceDetailsResponseBodyList;
-const ListVrackDedicatedServerInterfaceDetailsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListVrackDedicatedServerInterfaceDetailsResponse>;
-
 export interface ListVrackEligibleServicesRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const ListVrackEligibleServicesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListVrackEligibleServicesRequest>;
-
 /** List of services where an error has been encountered */
 export type VrackEligibleServicesResponseErrorsList = Array<string>;
-const VrackEligibleServicesResponseErrorsList =
-  ListVrackResponseBodyList as any as S.Schema<VrackEligibleServicesResponseErrorsList>;
-
 /** List of publicCloud projects allowed to be connected to this vRack */
 export type VrackEligibleServicesCloudProjectList = Array<string>;
 /** List of dedicated cloud allowed to be connected to this vRack */
@@ -1217,8 +751,6 @@ export interface VrackEligibleServices {
   /** List of the vrackServices allowed to be connected to this vRack */
   vrackServices?: VrackEligibleServicesVrackServicesList | null;
 }
-const VrackEligibleServices = VrackAllowedServices as any as S.Schema<VrackEligibleServices>;
-
 /** Eligible services call response */
 export interface VrackEligibleServicesResponse {
   /** Creation date of the call */
@@ -1230,156 +762,71 @@ export interface VrackEligibleServicesResponse {
   /** Status of the call */
   status?: string;
 }
-const VrackEligibleServicesResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<VrackEligibleServicesResponse>;
-
 export interface ListVrackIpRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const ListVrackIpRequest = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<ListVrackIpRequest>;
-
 export type ListVrackIpResponseBodyList = Array<string>;
 export type ListVrackIpResponse = ListVrackIpResponseBodyList;
-const ListVrackIpResponse = ListVrackResponse as any as S.Schema<ListVrackIpResponse>;
-
 export interface ListVrackIpLoadbalancingRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const ListVrackIpLoadbalancingRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ListVrackIpLoadbalancingRequest>;
-
 export type ListVrackIpLoadbalancingResponseBodyList = Array<string>;
 export type ListVrackIpLoadbalancingResponse = ListVrackIpLoadbalancingResponseBodyList;
-const ListVrackIpLoadbalancingResponse =
-  ListVrackCloudProjectResponse as any as S.Schema<ListVrackIpLoadbalancingResponse>;
-
 export interface ListVrackIpv6Request {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const ListVrackIpv6Request = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ListVrackIpv6Request>;
-
 export type ListVrackIpv6ResponseBodyList = Array<string>;
 export type ListVrackIpv6Response = ListVrackIpv6ResponseBodyList;
-const ListVrackIpv6Response = ListVrackResponse as any as S.Schema<ListVrackIpv6Response>;
-
 export interface ListVrackIpv6BridgedSubrangeRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** Your IP v6 block */
   ipv6: string;
 }
-const ListVrackIpv6BridgedSubrangeRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ListVrackIpv6BridgedSubrangeRequest>;
-
 export type ListVrackIpv6BridgedSubrangeResponseBodyList = Array<string>;
 export type ListVrackIpv6BridgedSubrangeResponse = ListVrackIpv6BridgedSubrangeResponseBodyList;
-const ListVrackIpv6BridgedSubrangeResponse =
-  ListVrackCloudProjectResponse as any as S.Schema<ListVrackIpv6BridgedSubrangeResponse>;
-
 export interface ListVrackIpv6RoutedSubrangeRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** Your IP v6 block */
   ipv6: string;
 }
-const ListVrackIpv6RoutedSubrangeRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ListVrackIpv6RoutedSubrangeRequest>;
-
 export type ListVrackIpv6RoutedSubrangeResponseBodyList = Array<string>;
 export type ListVrackIpv6RoutedSubrangeResponse = ListVrackIpv6RoutedSubrangeResponseBodyList;
-const ListVrackIpv6RoutedSubrangeResponse =
-  ListVrackCloudProjectResponse as any as S.Schema<ListVrackIpv6RoutedSubrangeResponse>;
-
 export interface ListVrackLegacyVrackRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const ListVrackLegacyVrackRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ListVrackLegacyVrackRequest>;
-
 export type ListVrackLegacyVrackResponseBodyList = Array<string>;
 export type ListVrackLegacyVrackResponse = ListVrackLegacyVrackResponseBodyList;
-const ListVrackLegacyVrackResponse =
-  ListVrackCloudProjectResponse as any as S.Schema<ListVrackLegacyVrackResponse>;
-
 export interface ListVrackOvhCloudConnectRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const ListVrackOvhCloudConnectRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListVrackOvhCloudConnectRequest>;
-
 export type ListVrackOvhCloudConnectResponseBodyList = Array<string>;
 export type ListVrackOvhCloudConnectResponse = ListVrackOvhCloudConnectResponseBodyList;
-const ListVrackOvhCloudConnectResponse =
-  ListVrackCloudProjectResponse as any as S.Schema<ListVrackOvhCloudConnectResponse>;
-
 export interface ListVrackTaskRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const ListVrackTaskRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListVrackTaskRequest>;
-
 export type ListVrackTaskResponseBodyList = Array<number>;
-const ListVrackTaskResponseBodyList =
-  CreateVrackChangeContactResponseBodyList as any as S.Schema<ListVrackTaskResponseBodyList>;
-
 export type ListVrackTaskResponse = ListVrackTaskResponseBodyList;
-const ListVrackTaskResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ListVrackTaskResponse>;
-
 export interface ListVrackVmwareCloudDirectorVirtualDataCenterRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const ListVrackVmwareCloudDirectorVirtualDataCenterRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ListVrackVmwareCloudDirectorVirtualDataCenterRequest>;
-
 export type ListVrackVmwareCloudDirectorVirtualDataCenterResponseBodyList = Array<string>;
 export type ListVrackVmwareCloudDirectorVirtualDataCenterResponse =
   ListVrackVmwareCloudDirectorVirtualDataCenterResponseBodyList;
-const ListVrackVmwareCloudDirectorVirtualDataCenterResponse =
-  ListVrackCloudProjectResponse as any as S.Schema<ListVrackVmwareCloudDirectorVirtualDataCenterResponse>;
-
 export interface ListVrackVrackServicesRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const ListVrackVrackServicesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListVrackVrackServicesRequest>;
-
 export type ListVrackVrackServicesResponseBodyList = Array<string>;
 export type ListVrackVrackServicesResponse = ListVrackVrackServicesResponseBodyList;
-const ListVrackVrackServicesResponse =
-  ListVrackCloudProjectResponse as any as S.Schema<ListVrackVrackServicesResponse>;
-
 export interface MoveVrackDedicatedCloudDatacenterRequest {
   /** The internal name of your vrack */
   serviceName: string;
@@ -1388,11 +835,6 @@ export interface MoveVrackDedicatedCloudDatacenterRequest {
   /** The internal name of your target vrack */
   targetServiceName: string;
 }
-const MoveVrackDedicatedCloudDatacenterRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<MoveVrackDedicatedCloudDatacenterRequest>;
-
 export interface PutVrackRequest {
   /** The internal name of your vrack */
   serviceName: string;
@@ -1401,28 +843,14 @@ export interface PutVrackRequest {
   /** Name of the vRack */
   name?: string;
 }
-const PutVrackRequest = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<PutVrackRequest>;
-
 export interface PutVrackResponse {}
-const PutVrackResponse = IamResourceTagFilterInput as any as S.Schema<PutVrackResponse>;
-
 export interface PutVrackDedicatedConnectRequest {
   /** The internal name of your vrack */
   serviceName: string;
   /** A name for your dedicatedConnect link */
   name: string;
 }
-const PutVrackDedicatedConnectRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<PutVrackDedicatedConnectRequest>;
-
 export interface PutVrackDedicatedConnectResponse {}
-const PutVrackDedicatedConnectResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<PutVrackDedicatedConnectResponse>;
-
 export interface PutVrackIpv6BridgedSubrangeRequest {
   /** The internal name of your vrack */
   serviceName: string;
@@ -1433,26 +861,11 @@ export interface PutVrackIpv6BridgedSubrangeRequest {
   /** Slaac status */
   slaac?: VrackSlaacEnum | (string & {});
 }
-const PutVrackIpv6BridgedSubrangeRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<PutVrackIpv6BridgedSubrangeRequest>;
-
 export interface TerminateVrackRequest {
   /** The internal name of your vrack */
   serviceName: string;
 }
-const TerminateVrackRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<TerminateVrackRequest>;
-
 export type TerminateVrackResponse = string;
-const TerminateVrackResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<TerminateVrackResponse>;
-
 export type ConfirmVrackTerminationError = OvhOpError;
 /** Confirm service termination */
 export const confirmVrackTermination: API.OperationMethod<
@@ -1461,8 +874,8 @@ export const confirmVrackTermination: API.OperationMethod<
   ConfirmVrackTerminationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfirmVrackTerminationRequest,
-  output: ConfirmVrackTerminationResponse,
+  input: __S(0) as any as S.Schema<ConfirmVrackTerminationRequest>,
+  output: __S(1) as any as S.Schema<ConfirmVrackTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1476,8 +889,8 @@ export const createVrackChangeContact: API.OperationMethod<
   CreateVrackChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVrackChangeContactRequest,
-  output: CreateVrackChangeContactResponse,
+  input: __S(2) as any as S.Schema<CreateVrackChangeContactRequest>,
+  output: __S(4) as any as S.Schema<CreateVrackChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1491,8 +904,8 @@ export const createVrackCloudProject: API.OperationMethod<
   CreateVrackCloudProjectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVrackCloudProjectRequest,
-  output: VrackTask,
+  input: __S(5) as any as S.Schema<CreateVrackCloudProjectRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1506,8 +919,8 @@ export const createVrackDedicatedCloud: API.OperationMethod<
   CreateVrackDedicatedCloudError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVrackDedicatedCloudRequest,
-  output: VrackTask,
+  input: __S(7) as any as S.Schema<CreateVrackDedicatedCloudRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1521,8 +934,8 @@ export const createVrackDedicatedConnect: API.OperationMethod<
   CreateVrackDedicatedConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVrackDedicatedConnectRequest,
-  output: VrackTask,
+  input: __S(8) as any as S.Schema<CreateVrackDedicatedConnectRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1536,8 +949,8 @@ export const createVrackDedicatedServer: API.OperationMethod<
   CreateVrackDedicatedServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVrackDedicatedServerRequest,
-  output: VrackTask,
+  input: __S(9) as any as S.Schema<CreateVrackDedicatedServerRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1551,8 +964,8 @@ export const createVrackDedicatedServerInterface: API.OperationMethod<
   CreateVrackDedicatedServerInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVrackDedicatedServerInterfaceRequest,
-  output: VrackTask,
+  input: __S(10) as any as S.Schema<CreateVrackDedicatedServerInterfaceRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1566,8 +979,8 @@ export const createVrackIp: API.OperationMethod<
   CreateVrackIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVrackIpRequest,
-  output: VrackTask,
+  input: __S(11) as any as S.Schema<CreateVrackIpRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1581,8 +994,8 @@ export const createVrackIpLoadbalancing: API.OperationMethod<
   CreateVrackIpLoadbalancingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVrackIpLoadbalancingRequest,
-  output: VrackTask,
+  input: __S(12) as any as S.Schema<CreateVrackIpLoadbalancingRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1596,8 +1009,8 @@ export const createVrackIpv6: API.OperationMethod<
   CreateVrackIpv6Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVrackIpv6Request,
-  output: VrackTask,
+  input: __S(13) as any as S.Schema<CreateVrackIpv6Request>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1611,8 +1024,8 @@ export const createVrackIpv6RoutedSubrange: API.OperationMethod<
   CreateVrackIpv6RoutedSubrangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVrackIpv6RoutedSubrangeRequest,
-  output: VrackTask,
+  input: __S(14) as any as S.Schema<CreateVrackIpv6RoutedSubrangeRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1626,8 +1039,8 @@ export const createVrackLegacyVrack: API.OperationMethod<
   CreateVrackLegacyVrackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVrackLegacyVrackRequest,
-  output: VrackTask,
+  input: __S(15) as any as S.Schema<CreateVrackLegacyVrackRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1641,8 +1054,8 @@ export const createVrackOvhCloudConnect: API.OperationMethod<
   CreateVrackOvhCloudConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVrackOvhCloudConnectRequest,
-  output: VrackTask,
+  input: __S(16) as any as S.Schema<CreateVrackOvhCloudConnectRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1656,8 +1069,8 @@ export const createVrackVmwareCloudDirectorVirtualDataCenter: API.OperationMetho
   CreateVrackVmwareCloudDirectorVirtualDataCenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVrackVmwareCloudDirectorVirtualDataCenterRequest,
-  output: VrackTask,
+  input: __S(17) as any as S.Schema<CreateVrackVmwareCloudDirectorVirtualDataCenterRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1671,8 +1084,8 @@ export const createVrackVrackService: API.OperationMethod<
   CreateVrackVrackServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVrackVrackServiceRequest,
-  output: VrackTask,
+  input: __S(18) as any as S.Schema<CreateVrackVrackServiceRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1686,8 +1099,8 @@ export const deleteVrackCloudProject: API.OperationMethod<
   DeleteVrackCloudProjectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVrackCloudProjectRequest,
-  output: VrackTask,
+  input: __S(19) as any as S.Schema<DeleteVrackCloudProjectRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1701,8 +1114,8 @@ export const deleteVrackDedicatedCloud: API.OperationMethod<
   DeleteVrackDedicatedCloudError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVrackDedicatedCloudRequest,
-  output: VrackTask,
+  input: __S(20) as any as S.Schema<DeleteVrackDedicatedCloudRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1716,8 +1129,8 @@ export const deleteVrackDedicatedConnect: API.OperationMethod<
   DeleteVrackDedicatedConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVrackDedicatedConnectRequest,
-  output: VrackTask,
+  input: __S(21) as any as S.Schema<DeleteVrackDedicatedConnectRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1731,8 +1144,8 @@ export const deleteVrackDedicatedServer: API.OperationMethod<
   DeleteVrackDedicatedServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVrackDedicatedServerRequest,
-  output: VrackTask,
+  input: __S(22) as any as S.Schema<DeleteVrackDedicatedServerRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1746,8 +1159,8 @@ export const deleteVrackDedicatedServerInterface: API.OperationMethod<
   DeleteVrackDedicatedServerInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVrackDedicatedServerInterfaceRequest,
-  output: VrackTask,
+  input: __S(23) as any as S.Schema<DeleteVrackDedicatedServerInterfaceRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1761,8 +1174,8 @@ export const deleteVrackIp: API.OperationMethod<
   DeleteVrackIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVrackIpRequest,
-  output: VrackTask,
+  input: __S(24) as any as S.Schema<DeleteVrackIpRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1776,8 +1189,8 @@ export const deleteVrackIpLoadbalancing: API.OperationMethod<
   DeleteVrackIpLoadbalancingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVrackIpLoadbalancingRequest,
-  output: VrackTask,
+  input: __S(25) as any as S.Schema<DeleteVrackIpLoadbalancingRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1791,8 +1204,8 @@ export const deleteVrackIpv6: API.OperationMethod<
   DeleteVrackIpv6Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVrackIpv6Request,
-  output: VrackTask,
+  input: __S(26) as any as S.Schema<DeleteVrackIpv6Request>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1806,8 +1219,8 @@ export const deleteVrackIpv6RoutedSubrange: API.OperationMethod<
   DeleteVrackIpv6RoutedSubrangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVrackIpv6RoutedSubrangeRequest,
-  output: VrackTask,
+  input: __S(27) as any as S.Schema<DeleteVrackIpv6RoutedSubrangeRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1821,8 +1234,8 @@ export const deleteVrackLegacyVrack: API.OperationMethod<
   DeleteVrackLegacyVrackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVrackLegacyVrackRequest,
-  output: VrackTask,
+  input: __S(28) as any as S.Schema<DeleteVrackLegacyVrackRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1836,8 +1249,8 @@ export const deleteVrackOvhCloudConnect: API.OperationMethod<
   DeleteVrackOvhCloudConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVrackOvhCloudConnectRequest,
-  output: VrackTask,
+  input: __S(29) as any as S.Schema<DeleteVrackOvhCloudConnectRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1851,8 +1264,8 @@ export const deleteVrackVmwareCloudDirectorVirtualDataCenter: API.OperationMetho
   DeleteVrackVmwareCloudDirectorVirtualDataCenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVrackVmwareCloudDirectorVirtualDataCenterRequest,
-  output: VrackTask,
+  input: __S(30) as any as S.Schema<DeleteVrackVmwareCloudDirectorVirtualDataCenterRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1866,8 +1279,8 @@ export const deleteVrackVrackService: API.OperationMethod<
   DeleteVrackVrackServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVrackVrackServiceRequest,
-  output: VrackTask,
+  input: __S(31) as any as S.Schema<DeleteVrackVrackServiceRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1881,8 +1294,8 @@ export const getVrack: API.OperationMethod<
   GetVrackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackRequest,
-  output: VrackVrackWithIAM,
+  input: __S(32) as any as S.Schema<GetVrackRequest>,
+  output: __S(35) as any as S.Schema<VrackVrackWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1896,8 +1309,8 @@ export const getVrackCloudProject: API.OperationMethod<
   GetVrackCloudProjectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackCloudProjectRequest,
-  output: VrackCloudProject,
+  input: __S(36) as any as S.Schema<GetVrackCloudProjectRequest>,
+  output: __S(37) as any as S.Schema<VrackCloudProject>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1911,8 +1324,8 @@ export const getVrackDedicatedCloud: API.OperationMethod<
   GetVrackDedicatedCloudError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackDedicatedCloudRequest,
-  output: VrackDedicatedCloud,
+  input: __S(38) as any as S.Schema<GetVrackDedicatedCloudRequest>,
+  output: __S(39) as any as S.Schema<VrackDedicatedCloud>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1926,8 +1339,8 @@ export const getVrackDedicatedCloudDatacenter: API.OperationMethod<
   GetVrackDedicatedCloudDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackDedicatedCloudDatacenterRequest,
-  output: VrackPccDatacenter,
+  input: __S(40) as any as S.Schema<GetVrackDedicatedCloudDatacenterRequest>,
+  output: __S(41) as any as S.Schema<VrackPccDatacenter>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1941,8 +1354,8 @@ export const getVrackDedicatedConnect: API.OperationMethod<
   GetVrackDedicatedConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackDedicatedConnectRequest,
-  output: VrackDedicatedConnect,
+  input: __S(42) as any as S.Schema<GetVrackDedicatedConnectRequest>,
+  output: __S(43) as any as S.Schema<VrackDedicatedConnect>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1956,8 +1369,8 @@ export const getVrackDedicatedServer: API.OperationMethod<
   GetVrackDedicatedServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackDedicatedServerRequest,
-  output: VrackDedicatedServer,
+  input: __S(44) as any as S.Schema<GetVrackDedicatedServerRequest>,
+  output: __S(45) as any as S.Schema<VrackDedicatedServer>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1971,8 +1384,8 @@ export const getVrackDedicatedServerInterface: API.OperationMethod<
   GetVrackDedicatedServerInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackDedicatedServerInterfaceRequest,
-  output: VrackDedicatedServerInterface,
+  input: __S(46) as any as S.Schema<GetVrackDedicatedServerInterfaceRequest>,
+  output: __S(47) as any as S.Schema<VrackDedicatedServerInterface>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -1986,8 +1399,8 @@ export const getVrackIp: API.OperationMethod<
   GetVrackIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackIpRequest,
-  output: VrackIp,
+  input: __S(48) as any as S.Schema<GetVrackIpRequest>,
+  output: __S(49) as any as S.Schema<VrackIp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2001,8 +1414,8 @@ export const getVrackIpLoadbalancing: API.OperationMethod<
   GetVrackIpLoadbalancingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackIpLoadbalancingRequest,
-  output: VrackIplb,
+  input: __S(50) as any as S.Schema<GetVrackIpLoadbalancingRequest>,
+  output: __S(51) as any as S.Schema<VrackIplb>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2016,8 +1429,8 @@ export const getVrackIpv6: API.OperationMethod<
   GetVrackIpv6Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackIpv6Request,
-  output: VrackIpv6,
+  input: __S(52) as any as S.Schema<GetVrackIpv6Request>,
+  output: __S(53) as any as S.Schema<VrackIpv6>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2031,8 +1444,8 @@ export const getVrackIpv6BridgedSubrange: API.OperationMethod<
   GetVrackIpv6BridgedSubrangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackIpv6BridgedSubrangeRequest,
-  output: VrackBridgedSubrange,
+  input: __S(54) as any as S.Schema<GetVrackIpv6BridgedSubrangeRequest>,
+  output: __S(55) as any as S.Schema<VrackBridgedSubrange>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2046,8 +1459,8 @@ export const getVrackIpv6RoutedSubrange: API.OperationMethod<
   GetVrackIpv6RoutedSubrangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackIpv6RoutedSubrangeRequest,
-  output: VrackRoutedSubrange,
+  input: __S(56) as any as S.Schema<GetVrackIpv6RoutedSubrangeRequest>,
+  output: __S(57) as any as S.Schema<VrackRoutedSubrange>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2061,8 +1474,8 @@ export const getVrackLegacyVrack: API.OperationMethod<
   GetVrackLegacyVrackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackLegacyVrackRequest,
-  output: VrackLegacyVrack,
+  input: __S(58) as any as S.Schema<GetVrackLegacyVrackRequest>,
+  output: __S(59) as any as S.Schema<VrackLegacyVrack>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2076,8 +1489,8 @@ export const getVrackOvhCloudConnect: API.OperationMethod<
   GetVrackOvhCloudConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackOvhCloudConnectRequest,
-  output: VrackOvhCloudConnect,
+  input: __S(60) as any as S.Schema<GetVrackOvhCloudConnectRequest>,
+  output: __S(61) as any as S.Schema<VrackOvhCloudConnect>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2091,8 +1504,8 @@ export const getVrackPublicRoutingOption: API.OperationMethod<
   GetVrackPublicRoutingOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackPublicRoutingOptionRequest,
-  output: VrackPublicRoutingOption,
+  input: __S(62) as any as S.Schema<GetVrackPublicRoutingOptionRequest>,
+  output: __S(63) as any as S.Schema<VrackPublicRoutingOption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2106,8 +1519,8 @@ export const getVrackServiceInfos: API.OperationMethod<
   GetVrackServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackServiceInfosRequest,
-  output: ServicesNonExpiringService,
+  input: __S(64) as any as S.Schema<GetVrackServiceInfosRequest>,
+  output: __S(65) as any as S.Schema<ServicesNonExpiringService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2121,8 +1534,8 @@ export const getVrackTask: API.OperationMethod<
   GetVrackTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackTaskRequest,
-  output: VrackTask,
+  input: __S(66) as any as S.Schema<GetVrackTaskRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2136,8 +1549,8 @@ export const getVrackVmwareCloudDirectorVirtualDataCenter: API.OperationMethod<
   GetVrackVmwareCloudDirectorVirtualDataCenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackVmwareCloudDirectorVirtualDataCenterRequest,
-  output: VrackVmwareCloudDirectorVirtualDataCenter,
+  input: __S(67) as any as S.Schema<GetVrackVmwareCloudDirectorVirtualDataCenterRequest>,
+  output: __S(68) as any as S.Schema<VrackVmwareCloudDirectorVirtualDataCenter>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2151,8 +1564,8 @@ export const getVrackVrackService: API.OperationMethod<
   GetVrackVrackServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVrackVrackServiceRequest,
-  output: VrackVrackServices,
+  input: __S(69) as any as S.Schema<GetVrackVrackServiceRequest>,
+  output: __S(70) as any as S.Schema<VrackVrackServices>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2166,8 +1579,8 @@ export const listVrack: API.OperationMethod<
   ListVrackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackRequest,
-  output: ListVrackResponse,
+  input: __S(74) as any as S.Schema<ListVrackRequest>,
+  output: __S(76) as any as S.Schema<ListVrackResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2181,8 +1594,8 @@ export const listVrackAllowedServices: API.OperationMethod<
   ListVrackAllowedServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackAllowedServicesRequest,
-  output: VrackAllowedServices,
+  input: __S(77) as any as S.Schema<ListVrackAllowedServicesRequest>,
+  output: __S(80) as any as S.Schema<VrackAllowedServices>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2196,8 +1609,8 @@ export const listVrackCloudProject: API.OperationMethod<
   ListVrackCloudProjectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackCloudProjectRequest,
-  output: ListVrackCloudProjectResponse,
+  input: __S(81) as any as S.Schema<ListVrackCloudProjectRequest>,
+  output: __S(82) as any as S.Schema<ListVrackCloudProjectResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2211,8 +1624,8 @@ export const listVrackDedicatedCloud: API.OperationMethod<
   ListVrackDedicatedCloudError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackDedicatedCloudRequest,
-  output: ListVrackDedicatedCloudResponse,
+  input: __S(83) as any as S.Schema<ListVrackDedicatedCloudRequest>,
+  output: __S(82) as any as S.Schema<ListVrackDedicatedCloudResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2226,8 +1639,8 @@ export const listVrackDedicatedCloudDatacenter: API.OperationMethod<
   ListVrackDedicatedCloudDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackDedicatedCloudDatacenterRequest,
-  output: ListVrackDedicatedCloudDatacenterResponse,
+  input: __S(84) as any as S.Schema<ListVrackDedicatedCloudDatacenterRequest>,
+  output: __S(82) as any as S.Schema<ListVrackDedicatedCloudDatacenterResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2241,8 +1654,8 @@ export const listVrackDedicatedCloudDatacenterAllowedVrack: API.OperationMethod<
   ListVrackDedicatedCloudDatacenterAllowedVrackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackDedicatedCloudDatacenterAllowedVrackRequest,
-  output: ListVrackDedicatedCloudDatacenterAllowedVrackResponse,
+  input: __S(85) as any as S.Schema<ListVrackDedicatedCloudDatacenterAllowedVrackRequest>,
+  output: __S(82) as any as S.Schema<ListVrackDedicatedCloudDatacenterAllowedVrackResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2256,8 +1669,8 @@ export const listVrackDedicatedConnect: API.OperationMethod<
   ListVrackDedicatedConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackDedicatedConnectRequest,
-  output: ListVrackDedicatedConnectResponse,
+  input: __S(86) as any as S.Schema<ListVrackDedicatedConnectRequest>,
+  output: __S(82) as any as S.Schema<ListVrackDedicatedConnectResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2271,8 +1684,8 @@ export const listVrackDedicatedServer: API.OperationMethod<
   ListVrackDedicatedServerError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackDedicatedServerRequest,
-  output: ListVrackDedicatedServerResponse,
+  input: __S(87) as any as S.Schema<ListVrackDedicatedServerRequest>,
+  output: __S(82) as any as S.Schema<ListVrackDedicatedServerResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2286,8 +1699,8 @@ export const listVrackDedicatedServerInterface: API.OperationMethod<
   ListVrackDedicatedServerInterfaceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackDedicatedServerInterfaceRequest,
-  output: ListVrackDedicatedServerInterfaceResponse,
+  input: __S(88) as any as S.Schema<ListVrackDedicatedServerInterfaceRequest>,
+  output: __S(82) as any as S.Schema<ListVrackDedicatedServerInterfaceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2301,8 +1714,8 @@ export const listVrackDedicatedServerInterfaceDetails: API.OperationMethod<
   ListVrackDedicatedServerInterfaceDetailsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackDedicatedServerInterfaceDetailsRequest,
-  output: ListVrackDedicatedServerInterfaceDetailsResponse,
+  input: __S(89) as any as S.Schema<ListVrackDedicatedServerInterfaceDetailsRequest>,
+  output: __S(90) as any as S.Schema<ListVrackDedicatedServerInterfaceDetailsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2316,8 +1729,8 @@ export const listVrackEligibleServices: API.OperationMethod<
   ListVrackEligibleServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackEligibleServicesRequest,
-  output: VrackEligibleServicesResponse,
+  input: __S(91) as any as S.Schema<ListVrackEligibleServicesRequest>,
+  output: __S(92) as any as S.Schema<VrackEligibleServicesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2331,8 +1744,8 @@ export const listVrackIp: API.OperationMethod<
   ListVrackIpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackIpRequest,
-  output: ListVrackIpResponse,
+  input: __S(93) as any as S.Schema<ListVrackIpRequest>,
+  output: __S(76) as any as S.Schema<ListVrackIpResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2346,8 +1759,8 @@ export const listVrackIpLoadbalancing: API.OperationMethod<
   ListVrackIpLoadbalancingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackIpLoadbalancingRequest,
-  output: ListVrackIpLoadbalancingResponse,
+  input: __S(94) as any as S.Schema<ListVrackIpLoadbalancingRequest>,
+  output: __S(82) as any as S.Schema<ListVrackIpLoadbalancingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2361,8 +1774,8 @@ export const listVrackIpv6: API.OperationMethod<
   ListVrackIpv6Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackIpv6Request,
-  output: ListVrackIpv6Response,
+  input: __S(95) as any as S.Schema<ListVrackIpv6Request>,
+  output: __S(76) as any as S.Schema<ListVrackIpv6Response>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2376,8 +1789,8 @@ export const listVrackIpv6BridgedSubrange: API.OperationMethod<
   ListVrackIpv6BridgedSubrangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackIpv6BridgedSubrangeRequest,
-  output: ListVrackIpv6BridgedSubrangeResponse,
+  input: __S(96) as any as S.Schema<ListVrackIpv6BridgedSubrangeRequest>,
+  output: __S(82) as any as S.Schema<ListVrackIpv6BridgedSubrangeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2391,8 +1804,8 @@ export const listVrackIpv6RoutedSubrange: API.OperationMethod<
   ListVrackIpv6RoutedSubrangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackIpv6RoutedSubrangeRequest,
-  output: ListVrackIpv6RoutedSubrangeResponse,
+  input: __S(97) as any as S.Schema<ListVrackIpv6RoutedSubrangeRequest>,
+  output: __S(82) as any as S.Schema<ListVrackIpv6RoutedSubrangeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2406,8 +1819,8 @@ export const listVrackLegacyVrack: API.OperationMethod<
   ListVrackLegacyVrackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackLegacyVrackRequest,
-  output: ListVrackLegacyVrackResponse,
+  input: __S(98) as any as S.Schema<ListVrackLegacyVrackRequest>,
+  output: __S(82) as any as S.Schema<ListVrackLegacyVrackResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2421,8 +1834,8 @@ export const listVrackOvhCloudConnect: API.OperationMethod<
   ListVrackOvhCloudConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackOvhCloudConnectRequest,
-  output: ListVrackOvhCloudConnectResponse,
+  input: __S(99) as any as S.Schema<ListVrackOvhCloudConnectRequest>,
+  output: __S(82) as any as S.Schema<ListVrackOvhCloudConnectResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2436,8 +1849,8 @@ export const listVrackTask: API.OperationMethod<
   ListVrackTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackTaskRequest,
-  output: ListVrackTaskResponse,
+  input: __S(100) as any as S.Schema<ListVrackTaskRequest>,
+  output: __S(101) as any as S.Schema<ListVrackTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2451,8 +1864,8 @@ export const listVrackVmwareCloudDirectorVirtualDataCenter: API.OperationMethod<
   ListVrackVmwareCloudDirectorVirtualDataCenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackVmwareCloudDirectorVirtualDataCenterRequest,
-  output: ListVrackVmwareCloudDirectorVirtualDataCenterResponse,
+  input: __S(102) as any as S.Schema<ListVrackVmwareCloudDirectorVirtualDataCenterRequest>,
+  output: __S(82) as any as S.Schema<ListVrackVmwareCloudDirectorVirtualDataCenterResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2466,8 +1879,8 @@ export const listVrackVrackServices: API.OperationMethod<
   ListVrackVrackServicesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVrackVrackServicesRequest,
-  output: ListVrackVrackServicesResponse,
+  input: __S(103) as any as S.Schema<ListVrackVrackServicesRequest>,
+  output: __S(82) as any as S.Schema<ListVrackVrackServicesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2481,8 +1894,8 @@ export const moveVrackDedicatedCloudDatacenter: API.OperationMethod<
   MoveVrackDedicatedCloudDatacenterError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveVrackDedicatedCloudDatacenterRequest,
-  output: VrackTask,
+  input: __S(104) as any as S.Schema<MoveVrackDedicatedCloudDatacenterRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2496,8 +1909,8 @@ export const putVrack: API.OperationMethod<
   PutVrackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutVrackRequest,
-  output: PutVrackResponse,
+  input: __S(105) as any as S.Schema<PutVrackRequest>,
+  output: __S(71) as any as S.Schema<PutVrackResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2511,8 +1924,8 @@ export const putVrackDedicatedConnect: API.OperationMethod<
   PutVrackDedicatedConnectError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutVrackDedicatedConnectRequest,
-  output: PutVrackDedicatedConnectResponse,
+  input: __S(106) as any as S.Schema<PutVrackDedicatedConnectRequest>,
+  output: __S(107) as any as S.Schema<PutVrackDedicatedConnectResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2526,8 +1939,8 @@ export const putVrackIpv6BridgedSubrange: API.OperationMethod<
   PutVrackIpv6BridgedSubrangeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutVrackIpv6BridgedSubrangeRequest,
-  output: VrackTask,
+  input: __S(108) as any as S.Schema<PutVrackIpv6BridgedSubrangeRequest>,
+  output: __S(6) as any as S.Schema<VrackTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2541,8 +1954,8 @@ export const terminateVrack: API.OperationMethod<
   TerminateVrackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TerminateVrackRequest,
-  output: TerminateVrackResponse,
+  input: __S(109) as any as S.Schema<TerminateVrackRequest>,
+  output: __S(110) as any as S.Schema<TerminateVrackResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2556,8 +1969,8 @@ function __c0(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           commentary: S.optional(S.String),
-          futureUse: S.optional(ServiceTerminationFutureUseEnum),
-          reason: S.optional(ServiceTerminationReasonEnum),
+          futureUse: S.optional(S.String),
+          reason: S.optional(S.String),
           token: S.String,
         }).pipe(
           T.Http({ method: "POST", uri: "/vrack/{serviceName}/confirmTermination", code: 200 }),
@@ -2583,9 +1996,7 @@ function __c0(j: number): any {
     case 3:
       return S.Array(S.Number);
     case 4:
-      return S.suspend(() =>
-        CreateVrackChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(3).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateVrackChangeContactResponse",
       });
     case 5:
@@ -2605,7 +2016,7 @@ function __c0(j: number): any {
           lastUpdate: S.optional(S.NullOr(S.String)),
           orderId: S.optional(S.NullOr(S.Number)),
           serviceName: S.optional(S.NullOr(S.String)),
-          status: S.optional(VrackTaskStatusEnum),
+          status: S.optional(S.String),
           targetDomain: S.optional(S.NullOr(S.String)),
           todoDate: S.optional(S.NullOr(S.String)),
         }),
@@ -2948,7 +2359,7 @@ function __c4(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(IamResourceMetadataTagsMap)),
+          tags: S.optional(S.NullOr(__S(33))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
@@ -2956,7 +2367,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          iam: S.optional(S.NullOr(IamResourceMetadata)),
+          iam: S.optional(S.NullOr(__S(34))),
           name: S.optional(S.String),
           serviceName: S.optional(S.String),
         }),
@@ -3109,7 +2520,7 @@ function __c6(j: number): any {
           gateway: S.optional(S.NullOr(S.String)),
           ip: S.optional(S.String),
           region: S.optional(S.NullOr(S.String)),
-          zone: S.optional(S.NullOr(VrackVrackZoneEnum)),
+          zone: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "VrackIp" });
     case 2:
@@ -3169,7 +2580,7 @@ function __c6(j: number): any {
         S.Struct({
           bridgedSubrange: S.optional(S.String),
           gateway: S.optional(S.String),
-          slaac: S.optional(VrackSlaacEnum),
+          slaac: S.optional(S.String),
         }),
       ).annotate({ identifier: "VrackBridgedSubrange" });
   }
@@ -3280,7 +2691,7 @@ function __c8(j: number): any {
           creation: S.optional(S.String),
           domain: S.optional(S.String),
           serviceId: S.optional(S.Number),
-          status: S.optional(ServiceStateEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServicesNonExpiringService",
@@ -3347,26 +2758,26 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IamResourceTagFilterInput);
+      return S.Array(__S(71));
     case 1:
-      return S.Record(S.String, ListVrackRequestIamTagsValueList);
+      return S.Record(S.String, __S(72));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(ListVrackRequestIamTagsMap.pipe(T.Query())),
+          iamTags: S.optional(__S(73).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/vrack", code: 200 })),
       ).annotate({ identifier: "ListVrackRequest" });
     case 3:
       return S.Array(S.String);
     case 4:
-      return S.suspend(() => ListVrackResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(75).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVrackResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          serviceFamily: S.optional(VrackAllowedServiceEnum.pipe(T.Query())),
+          serviceFamily: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}/allowedServices", code: 200 })),
       ).annotate({
         identifier: "ListVrackAllowedServicesRequest",
@@ -3382,7 +2793,7 @@ function __c9(j: number): any {
         identifier: "VrackAllowedDedicatedServerInterfaces",
       });
     case 7:
-      return S.Array(VrackAllowedDedicatedServerInterfaces);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
@@ -3390,25 +2801,19 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          cloudProject: S.optional(S.NullOr(VrackAllowedServicesCloudProjectList)),
-          dedicatedCloud: S.optional(S.NullOr(VrackAllowedServicesDedicatedCloudList)),
-          dedicatedCloudDatacenter: S.optional(
-            S.NullOr(VrackAllowedServicesDedicatedCloudDatacenterList),
-          ),
-          dedicatedConnect: S.optional(S.NullOr(VrackAllowedServicesDedicatedConnectList)),
-          dedicatedServer: S.optional(S.NullOr(VrackAllowedServicesDedicatedServerList)),
-          dedicatedServerInterface: S.optional(
-            S.NullOr(VrackAllowedServicesDedicatedServerInterfaceList),
-          ),
-          ip: S.optional(S.NullOr(VrackAllowedServicesIpList)),
-          ipLoadbalancing: S.optional(S.NullOr(VrackAllowedServicesIpLoadbalancingList)),
-          ipv6: S.optional(S.NullOr(VrackAllowedServicesIpv6List)),
-          legacyVrack: S.optional(S.NullOr(VrackAllowedServicesLegacyVrackList)),
-          ovhCloudConnect: S.optional(S.NullOr(VrackAllowedServicesOvhCloudConnectList)),
-          vmwareCloudDirectorVirtualDataCenter: S.optional(
-            S.NullOr(VrackAllowedServicesVmwareCloudDirectorVirtualDataCenterList),
-          ),
-          vrackServices: S.optional(S.NullOr(VrackAllowedServicesVrackServicesList)),
+          cloudProject: S.optional(S.NullOr(__S(75))),
+          dedicatedCloud: S.optional(S.NullOr(__S(75))),
+          dedicatedCloudDatacenter: S.optional(S.NullOr(__S(75))),
+          dedicatedConnect: S.optional(S.NullOr(__S(75))),
+          dedicatedServer: S.optional(S.NullOr(__S(75))),
+          dedicatedServerInterface: S.optional(S.NullOr(__S(79))),
+          ip: S.optional(S.NullOr(__S(75))),
+          ipLoadbalancing: S.optional(S.NullOr(__S(75))),
+          ipv6: S.optional(S.NullOr(__S(75))),
+          legacyVrack: S.optional(S.NullOr(__S(75))),
+          ovhCloudConnect: S.optional(S.NullOr(__S(75))),
+          vmwareCloudDirectorVirtualDataCenter: S.optional(S.NullOr(__S(75))),
+          vrackServices: S.optional(S.NullOr(__S(75))),
         }),
       ).annotate({ identifier: "VrackAllowedServices" });
     case 1:
@@ -3420,9 +2825,7 @@ function __c10(j: number): any {
         identifier: "ListVrackCloudProjectRequest",
       });
     case 2:
-      return S.suspend(() =>
-        ListVrackCloudProjectResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(75).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVrackCloudProjectResponse",
       });
     case 3:
@@ -3511,9 +2914,7 @@ function __c11(j: number): any {
         identifier: "ListVrackDedicatedServerInterfaceDetailsRequest",
       });
     case 2:
-      return S.suspend(() =>
-        ListVrackDedicatedServerInterfaceDetailsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(79).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVrackDedicatedServerInterfaceDetailsResponse",
       });
     case 3:
@@ -3528,8 +2929,8 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
-          errors: S.optional(VrackEligibleServicesResponseErrorsList),
-          result: S.optional(VrackEligibleServices),
+          errors: S.optional(__S(75)),
+          result: S.optional(__S(80)),
           status: S.optional(S.String),
         }),
       ).annotate({
@@ -3612,7 +3013,7 @@ function __c12(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/vrack/{serviceName}/task", code: 200 })),
       ).annotate({ identifier: "ListVrackTaskRequest" });
     case 5:
-      return S.suspend(() => ListVrackTaskResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListVrackTaskResponse",
       });
     case 6:
@@ -3686,7 +3087,7 @@ function __c13(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           ipv6: S.String.pipe(T.Label()),
           bridgedSubrange: S.String.pipe(T.Label()),
-          slaac: S.optional(VrackSlaacEnum),
+          slaac: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3707,5 +3108,42 @@ function __c13(j: number): any {
       return S.suspend(() => S.String.pipe(T.RawResponseRoot())).annotate({
         identifier: "TerminateVrackResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
   }
 }

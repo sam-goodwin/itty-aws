@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -25,17 +27,7 @@ export interface AddSelectedRepoToOrgSecretRequest {
   secret_name: string;
   repository_id: number;
 }
-const AddSelectedRepoToOrgSecretRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddSelectedRepoToOrgSecretRequest>;
-
 export interface AddSelectedRepoToOrgSecretResponse {}
-const AddSelectedRepoToOrgSecretResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddSelectedRepoToOrgSecretResponse>;
-
 export interface AddSelectedRepoToOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -43,26 +35,11 @@ export interface AddSelectedRepoToOrgVariableRequest {
   name: string;
   repository_id: number;
 }
-const AddSelectedRepoToOrgVariableRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddSelectedRepoToOrgVariableRequest>;
-
 export interface AddSelectedRepoToOrgVariableResponse {}
-const AddSelectedRepoToOrgVariableResponse =
-  AddSelectedRepoToOrgSecretResponse as any as S.Schema<AddSelectedRepoToOrgVariableResponse>;
-
 /** The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable. */
 export type CreateOrgVariableRequestVisibility = "all" | "private" | "selected";
-const CreateOrgVariableRequestVisibility = S.String;
-
 /** An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`. */
 export type CreateOrgVariableRequestSelectedRepositoryIdsList = Array<number>;
-const CreateOrgVariableRequestSelectedRepositoryIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateOrgVariableRequestSelectedRepositoryIdsList>;
-
 export interface CreateOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -75,26 +52,11 @@ export interface CreateOrgVariableRequest {
   /** An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`. */
   selected_repository_ids?: CreateOrgVariableRequestSelectedRepositoryIdsList;
 }
-const CreateOrgVariableRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateOrgVariableRequest>;
-
 export type CreateOrgVariableResponse = unknown;
-const CreateOrgVariableResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateOrgVariableResponse>;
-
 /** Which type of organization repositories have access to the organization secret. `selected` means only the repositories specified by `selected_repository_ids` can access the secret. */
 export type CreateOrUpdateOrgSecretRequestVisibility = "all" | "private" | "selected";
-const CreateOrUpdateOrgSecretRequestVisibility = S.String;
-
 /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/agents/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/agents/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/agents/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
 export type CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList = Array<number>;
-const CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList =
-  CreateOrgVariableRequestSelectedRepositoryIdsList as any as S.Schema<CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList>;
-
 export interface CreateOrUpdateOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -109,15 +71,7 @@ export interface CreateOrUpdateOrgSecretRequest {
   /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can manage the list of selected repositories using the [List selected repositories for an organization secret](https://docs.github.com/rest/agents/secrets#list-selected-repositories-for-an-organization-secret), [Set selected repositories for an organization secret](https://docs.github.com/rest/agents/secrets#set-selected-repositories-for-an-organization-secret), and [Remove selected repository from an organization secret](https://docs.github.com/rest/agents/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
   selected_repository_ids?: CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList;
 }
-const CreateOrUpdateOrgSecretRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateOrUpdateOrgSecretRequest>;
-
 export type CreateOrUpdateOrgSecretResponse = unknown;
-const CreateOrUpdateOrgSecretResponse =
-  CreateOrgVariableResponse as any as S.Schema<CreateOrUpdateOrgSecretResponse>;
-
 export interface CreateOrUpdateRepoSecretRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -130,15 +84,7 @@ export interface CreateOrUpdateRepoSecretRequest {
   /** ID of the key you used to encrypt the secret. */
   key_id: string;
 }
-const CreateOrUpdateRepoSecretRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateOrUpdateRepoSecretRequest>;
-
 export type CreateOrUpdateRepoSecretResponse = unknown;
-const CreateOrUpdateRepoSecretResponse =
-  CreateOrgVariableResponse as any as S.Schema<CreateOrUpdateRepoSecretResponse>;
-
 export interface CreateRepoVariableRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -149,47 +95,21 @@ export interface CreateRepoVariableRequest {
   /** The value of the variable. */
   value: string;
 }
-const CreateRepoVariableRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateRepoVariableRequest>;
-
 export type CreateRepoVariableResponse = unknown;
-const CreateRepoVariableResponse =
-  CreateOrgVariableResponse as any as S.Schema<CreateRepoVariableResponse>;
-
 export interface DeleteOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The name of the secret. */
   secret_name: string;
 }
-const DeleteOrgSecretRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteOrgSecretRequest>;
-
 export interface DeleteOrgSecretResponse {}
-const DeleteOrgSecretResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeleteOrgSecretResponse>;
-
 export interface DeleteOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The name of the variable. */
   name: string;
 }
-const DeleteOrgVariableRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteOrgVariableRequest>;
-
 export interface DeleteOrgVariableResponse {}
-const DeleteOrgVariableResponse =
-  DeleteOrgSecretResponse as any as S.Schema<DeleteOrgVariableResponse>;
-
 export interface DeleteRepoSecretRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -198,15 +118,7 @@ export interface DeleteRepoSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-const DeleteRepoSecretRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteRepoSecretRequest>;
-
 export interface DeleteRepoSecretResponse {}
-const DeleteRepoSecretResponse =
-  DeleteOrgSecretResponse as any as S.Schema<DeleteRepoSecretResponse>;
-
 export interface DeleteRepoVariableRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -215,24 +127,11 @@ export interface DeleteRepoVariableRequest {
   /** The name of the variable. */
   name: string;
 }
-const DeleteRepoVariableRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteRepoVariableRequest>;
-
 export interface DeleteRepoVariableResponse {}
-const DeleteRepoVariableResponse =
-  DeleteOrgSecretResponse as any as S.Schema<DeleteRepoVariableResponse>;
-
 export interface GetOrgPublicKeyRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const GetOrgPublicKeyRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetOrgPublicKeyRequest>;
-
 /** The public key used for setting Actions Secrets. */
 export interface ActionsPublicKey {
   /** The identifier for the key. */
@@ -244,20 +143,14 @@ export interface ActionsPublicKey {
   title?: string;
   created_at?: string;
 }
-const ActionsPublicKey = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ActionsPublicKey>;
-
 export interface GetOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The name of the secret. */
   secret_name: string;
 }
-const GetOrgSecretRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetOrgSecretRequest>;
-
 /** Visibility of a secret */
 export type OrganizationActionsSecretVisibility = "all" | "private" | "selected";
-const OrganizationActionsSecretVisibility = S.String;
-
 /** Secrets for GitHub Actions for an organization. */
 export interface OrganizationActionsSecret {
   /** The name of the secret. */
@@ -268,26 +161,14 @@ export interface OrganizationActionsSecret {
   visibility: OrganizationActionsSecretVisibility;
   selected_repositories_url?: string;
 }
-const OrganizationActionsSecret = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<OrganizationActionsSecret>;
-
 export interface GetOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The name of the variable. */
   name: string;
 }
-const GetOrgVariableRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetOrgVariableRequest>;
-
 /** Visibility of a variable */
 export type OrganizationActionsVariableVisibility = "all" | "private" | "selected";
-const OrganizationActionsVariableVisibility = S.String;
-
 /** Organization variable for GitHub Actions. */
 export interface OrganizationActionsVariable {
   /** The name of the variable. */
@@ -302,22 +183,12 @@ export interface OrganizationActionsVariable {
   visibility: OrganizationActionsVariableVisibility;
   selected_repositories_url?: string;
 }
-const OrganizationActionsVariable = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<OrganizationActionsVariable>;
-
 export interface GetRepoPublicKeyRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetRepoPublicKeyRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetRepoPublicKeyRequest>;
-
 export interface GetRepoSecretRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -326,8 +197,6 @@ export interface GetRepoSecretRequest {
   /** The name of the secret. */
   secret_name: string;
 }
-const GetRepoSecretRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GetRepoSecretRequest>;
-
 /** Set secrets for GitHub Actions. */
 export interface ActionsSecret {
   /** The name of the secret. */
@@ -335,8 +204,6 @@ export interface ActionsSecret {
   created_at: string;
   updated_at: string;
 }
-const ActionsSecret = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ActionsSecret>;
-
 export interface GetRepoVariableRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -345,11 +212,6 @@ export interface GetRepoVariableRequest {
   /** The name of the variable. */
   name: string;
 }
-const GetRepoVariableRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetRepoVariableRequest>;
-
 export interface ActionsVariable {
   /** The name of the variable. */
   name: string;
@@ -360,8 +222,6 @@ export interface ActionsVariable {
   /** The date and time at which the variable was last updated, in ISO 8601 format':' YYYY-MM-DDTHH:MM:SSZ. */
   updated_at: string;
 }
-const ActionsVariable = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ActionsVariable>;
-
 export interface ListOrgSecretsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -370,26 +230,11 @@ export interface ListOrgSecretsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListOrgSecretsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListOrgSecretsRequest>;
-
 export type ListOrgSecretsResponseSecretsList = Array<OrganizationActionsSecret>;
-const ListOrgSecretsResponseSecretsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListOrgSecretsResponseSecretsList>;
-
 export interface ListOrgSecretsResponse {
   total_count: number;
   secrets: ListOrgSecretsResponseSecretsList;
 }
-const ListOrgSecretsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListOrgSecretsResponse>;
-
 export interface ListOrgVariablesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -398,26 +243,11 @@ export interface ListOrgVariablesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListOrgVariablesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListOrgVariablesRequest>;
-
 export type ListOrgVariablesResponseVariablesList = Array<OrganizationActionsVariable>;
-const ListOrgVariablesResponseVariablesList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListOrgVariablesResponseVariablesList>;
-
 export interface ListOrgVariablesResponse {
   total_count: number;
   variables: ListOrgVariablesResponseVariablesList;
 }
-const ListOrgVariablesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListOrgVariablesResponse>;
-
 export interface ListRepoOrganizationSecretsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -428,26 +258,11 @@ export interface ListRepoOrganizationSecretsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListRepoOrganizationSecretsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListRepoOrganizationSecretsRequest>;
-
 export type ListRepoOrganizationSecretsResponseSecretsList = Array<ActionsSecret>;
-const ListRepoOrganizationSecretsResponseSecretsList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListRepoOrganizationSecretsResponseSecretsList>;
-
 export interface ListRepoOrganizationSecretsResponse {
   total_count: number;
   secrets: ListRepoOrganizationSecretsResponseSecretsList;
 }
-const ListRepoOrganizationSecretsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListRepoOrganizationSecretsResponse>;
-
 export interface ListRepoOrganizationVariablesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -458,26 +273,11 @@ export interface ListRepoOrganizationVariablesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListRepoOrganizationVariablesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListRepoOrganizationVariablesRequest>;
-
 export type ListRepoOrganizationVariablesResponseVariablesList = Array<ActionsVariable>;
-const ListRepoOrganizationVariablesResponseVariablesList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListRepoOrganizationVariablesResponseVariablesList>;
-
 export interface ListRepoOrganizationVariablesResponse {
   total_count: number;
   variables: ListRepoOrganizationVariablesResponseVariablesList;
 }
-const ListRepoOrganizationVariablesResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListRepoOrganizationVariablesResponse>;
-
 export interface ListRepoSecretsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -488,24 +288,11 @@ export interface ListRepoSecretsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListRepoSecretsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListRepoSecretsRequest>;
-
 export type ListRepoSecretsResponseSecretsList = Array<ActionsSecret>;
-const ListRepoSecretsResponseSecretsList =
-  ListRepoOrganizationSecretsResponseSecretsList as any as S.Schema<ListRepoSecretsResponseSecretsList>;
-
 export interface ListRepoSecretsResponse {
   total_count: number;
   secrets: ListRepoSecretsResponseSecretsList;
 }
-const ListRepoSecretsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListRepoSecretsResponse>;
-
 export interface ListRepoVariablesRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -516,19 +303,11 @@ export interface ListRepoVariablesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListRepoVariablesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListRepoVariablesRequest>;
-
 export type ListRepoVariablesResponseVariablesList = Array<ActionsVariable>;
 export interface ListRepoVariablesResponse {
   total_count: number;
   variables: ListRepoVariablesResponseVariablesList;
 }
-const ListRepoVariablesResponse =
-  ListRepoOrganizationVariablesResponse as any as S.Schema<ListRepoVariablesResponse>;
-
 export interface ListSelectedReposForOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -539,11 +318,6 @@ export interface ListSelectedReposForOrgSecretRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-const ListSelectedReposForOrgSecretRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListSelectedReposForOrgSecretRequest>;
-
 /** A GitHub user. */
 export interface SimpleUser {
   name?: string | null;
@@ -569,18 +343,9 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-const SimpleUser = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<SimpleUser>;
-
 export type MinimalRepositoryTopicsList = Array<string>;
-const MinimalRepositoryTopicsList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<MinimalRepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-const MinimalRepositoryPullRequestCreationPolicy = S.String;
-
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
   maintain?: boolean;
@@ -588,11 +353,6 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-const MinimalRepositoryPermissions = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<MinimalRepositoryPermissions>;
-
 /** Code Of Conduct */
 export interface CodeOfConduct {
   key: string;
@@ -601,8 +361,6 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-const CodeOfConduct = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<CodeOfConduct>;
-
 export interface MinimalRepositoryLicense {
   key?: string;
   name?: string;
@@ -610,30 +368,15 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-const MinimalRepositoryLicense = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<MinimalRepositoryLicense>;
-
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
-
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
-
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-const SecurityAndAnalysisCodeSecurity =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
-
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
 /** Enable or disable Dependabot security updates for the repository. */
@@ -641,67 +384,38 @@ export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-const SecurityAndAnalysisDependabotSecurityUpdates =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
-
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-const SecurityAndAnalysisSecretScanning =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
-
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-const SecurityAndAnalysisSecretScanningPushProtection =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
-
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-const SecurityAndAnalysisSecretScanningNonProviderPatterns =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
-
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-const SecurityAndAnalysisSecretScanningAiDetection =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
-
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
-
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypass =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
-
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
-
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
   reviewer_id: number;
@@ -710,28 +424,13 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptions>;
-
 export interface SecurityAndAnalysis {
   /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
   advanced_security?: SecurityAndAnalysisAdvancedSecurity;
@@ -746,15 +445,8 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-const SecurityAndAnalysis = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<SecurityAndAnalysis>;
-
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
-
 /** Minimal Repository */
 export interface MinimalRepository {
   id: number;
@@ -851,23 +543,11 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-const MinimalRepository = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<MinimalRepository>;
-
 export type ListSelectedReposForOrgSecretResponseRepositoriesList = Array<MinimalRepository>;
-const ListSelectedReposForOrgSecretResponseRepositoriesList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListSelectedReposForOrgSecretResponseRepositoriesList>;
-
 export interface ListSelectedReposForOrgSecretResponse {
   total_count: number;
   repositories: ListSelectedReposForOrgSecretResponseRepositoriesList;
 }
-const ListSelectedReposForOrgSecretResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListSelectedReposForOrgSecretResponse>;
-
 export interface ListSelectedReposForOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -878,19 +558,11 @@ export interface ListSelectedReposForOrgVariableRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-const ListSelectedReposForOrgVariableRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListSelectedReposForOrgVariableRequest>;
-
 export type ListSelectedReposForOrgVariableResponseRepositoriesList = Array<MinimalRepository>;
 export interface ListSelectedReposForOrgVariableResponse {
   total_count: number;
   repositories: ListSelectedReposForOrgVariableResponseRepositoriesList;
 }
-const ListSelectedReposForOrgVariableResponse =
-  ListSelectedReposForOrgSecretResponse as any as S.Schema<ListSelectedReposForOrgVariableResponse>;
-
 export interface RemoveSelectedRepoFromOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -898,15 +570,7 @@ export interface RemoveSelectedRepoFromOrgSecretRequest {
   secret_name: string;
   repository_id: number;
 }
-const RemoveSelectedRepoFromOrgSecretRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<RemoveSelectedRepoFromOrgSecretRequest>;
-
 export interface RemoveSelectedRepoFromOrgSecretResponse {}
-const RemoveSelectedRepoFromOrgSecretResponse =
-  AddSelectedRepoToOrgSecretResponse as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>;
-
 export interface RemoveSelectedRepoFromOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -914,20 +578,9 @@ export interface RemoveSelectedRepoFromOrgVariableRequest {
   name: string;
   repository_id: number;
 }
-const RemoveSelectedRepoFromOrgVariableRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<RemoveSelectedRepoFromOrgVariableRequest>;
-
 export interface RemoveSelectedRepoFromOrgVariableResponse {}
-const RemoveSelectedRepoFromOrgVariableResponse =
-  AddSelectedRepoToOrgSecretResponse as any as S.Schema<RemoveSelectedRepoFromOrgVariableResponse>;
-
 /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/rest/agents/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/agents/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
 export type SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList = Array<number>;
-const SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList =
-  CreateOrgVariableRequestSelectedRepositoryIdsList as any as S.Schema<SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList>;
-
 export interface SetSelectedReposForOrgSecretRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -936,20 +589,9 @@ export interface SetSelectedReposForOrgSecretRequest {
   /** An array of repository ids that can access the organization secret. You can only provide a list of repository ids when the `visibility` is set to `selected`. You can add and remove individual repositories using the [Add selected repository to an organization secret](https://docs.github.com/rest/agents/secrets#add-selected-repository-to-an-organization-secret) and [Remove selected repository from an organization secret](https://docs.github.com/rest/agents/secrets#remove-selected-repository-from-an-organization-secret) endpoints. */
   selected_repository_ids: SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList;
 }
-const SetSelectedReposForOrgSecretRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<SetSelectedReposForOrgSecretRequest>;
-
 export interface SetSelectedReposForOrgSecretResponse {}
-const SetSelectedReposForOrgSecretResponse =
-  AddSelectedRepoToOrgSecretResponse as any as S.Schema<SetSelectedReposForOrgSecretResponse>;
-
 /** The IDs of the repositories that can access the organization variable. */
 export type SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList = Array<number>;
-const SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList =
-  CreateOrgVariableRequestSelectedRepositoryIdsList as any as S.Schema<SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList>;
-
 export interface SetSelectedReposForOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -958,24 +600,11 @@ export interface SetSelectedReposForOrgVariableRequest {
   /** The IDs of the repositories that can access the organization variable. */
   selected_repository_ids: SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList;
 }
-const SetSelectedReposForOrgVariableRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<SetSelectedReposForOrgVariableRequest>;
-
 export interface SetSelectedReposForOrgVariableResponse {}
-const SetSelectedReposForOrgVariableResponse =
-  AddSelectedRepoToOrgSecretResponse as any as S.Schema<SetSelectedReposForOrgVariableResponse>;
-
 /** The type of repositories in the organization that can access the variable. `selected` means only the repositories specified by `selected_repository_ids` can access the variable. */
 export type UpdateOrgVariableRequestVisibility = "all" | "private" | "selected";
-const UpdateOrgVariableRequestVisibility = S.String;
-
 /** An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`. */
 export type UpdateOrgVariableRequestSelectedRepositoryIdsList = Array<number>;
-const UpdateOrgVariableRequestSelectedRepositoryIdsList =
-  CreateOrgVariableRequestSelectedRepositoryIdsList as any as S.Schema<UpdateOrgVariableRequestSelectedRepositoryIdsList>;
-
 export interface UpdateOrgVariableRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -988,15 +617,7 @@ export interface UpdateOrgVariableRequest {
   /** An array of repository ids that can access the organization variable. You can only provide a list of repository ids when the `visibility` is set to `selected`. */
   selected_repository_ids?: UpdateOrgVariableRequestSelectedRepositoryIdsList;
 }
-const UpdateOrgVariableRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<UpdateOrgVariableRequest>;
-
 export interface UpdateOrgVariableResponse {}
-const UpdateOrgVariableResponse =
-  DeleteOrgSecretResponse as any as S.Schema<UpdateOrgVariableResponse>;
-
 export interface UpdateRepoVariableRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -1007,15 +628,7 @@ export interface UpdateRepoVariableRequest {
   /** The value of the variable. */
   value?: string;
 }
-const UpdateRepoVariableRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<UpdateRepoVariableRequest>;
-
 export interface UpdateRepoVariableResponse {}
-const UpdateRepoVariableResponse =
-  DeleteOrgSecretResponse as any as S.Schema<UpdateRepoVariableResponse>;
-
 export type AddSelectedRepoToOrgSecretError = Conflict | GithubOpError;
 /** Add selected repository to an organization secret Adds a repository to an organization secret when the `visibility` for repository access is set to `selected`. For more information about setting the visibility, see [Create or update an organization secret](https://docs.github.com/rest/agents/secrets#create-or-update-an-organization-secret). Authenticated users must have collaborator access to a repository to create, update, or read secrets. OAuth tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. If the repository is private, OAuth tokens and personal access tokens (classic) need the `repo` scope to use this endpoint. */
 export const addSelectedRepoToOrgSecret: API.OperationMethod<
@@ -1024,8 +637,8 @@ export const addSelectedRepoToOrgSecret: API.OperationMethod<
   AddSelectedRepoToOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddSelectedRepoToOrgSecretRequest,
-  output: AddSelectedRepoToOrgSecretResponse,
+  input: __S(0) as any as S.Schema<AddSelectedRepoToOrgSecretRequest>,
+  output: __S(1) as any as S.Schema<AddSelectedRepoToOrgSecretResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1039,8 +652,8 @@ export const addSelectedRepoToOrgVariable: API.OperationMethod<
   AddSelectedRepoToOrgVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddSelectedRepoToOrgVariableRequest,
-  output: AddSelectedRepoToOrgVariableResponse,
+  input: __S(2) as any as S.Schema<AddSelectedRepoToOrgVariableRequest>,
+  output: __S(1) as any as S.Schema<AddSelectedRepoToOrgVariableResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1054,8 +667,8 @@ export const createOrgVariable: API.OperationMethod<
   CreateOrgVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrgVariableRequest,
-  output: CreateOrgVariableResponse,
+  input: __S(4) as any as S.Schema<CreateOrgVariableRequest>,
+  output: __S(5) as any as S.Schema<CreateOrgVariableResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1069,8 +682,8 @@ export const createOrUpdateOrgSecret: API.OperationMethod<
   CreateOrUpdateOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrUpdateOrgSecretRequest,
-  output: CreateOrUpdateOrgSecretResponse,
+  input: __S(6) as any as S.Schema<CreateOrUpdateOrgSecretRequest>,
+  output: __S(5) as any as S.Schema<CreateOrUpdateOrgSecretResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1084,8 +697,8 @@ export const createOrUpdateRepoSecret: API.OperationMethod<
   CreateOrUpdateRepoSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrUpdateRepoSecretRequest,
-  output: CreateOrUpdateRepoSecretResponse,
+  input: __S(7) as any as S.Schema<CreateOrUpdateRepoSecretRequest>,
+  output: __S(5) as any as S.Schema<CreateOrUpdateRepoSecretResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1099,8 +712,8 @@ export const createRepoVariable: API.OperationMethod<
   CreateRepoVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRepoVariableRequest,
-  output: CreateRepoVariableResponse,
+  input: __S(8) as any as S.Schema<CreateRepoVariableRequest>,
+  output: __S(5) as any as S.Schema<CreateRepoVariableResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1114,8 +727,8 @@ export const deleteOrgSecret: API.OperationMethod<
   DeleteOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrgSecretRequest,
-  output: DeleteOrgSecretResponse,
+  input: __S(9) as any as S.Schema<DeleteOrgSecretRequest>,
+  output: __S(10) as any as S.Schema<DeleteOrgSecretResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1129,8 +742,8 @@ export const deleteOrgVariable: API.OperationMethod<
   DeleteOrgVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrgVariableRequest,
-  output: DeleteOrgVariableResponse,
+  input: __S(11) as any as S.Schema<DeleteOrgVariableRequest>,
+  output: __S(10) as any as S.Schema<DeleteOrgVariableResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1144,8 +757,8 @@ export const deleteRepoSecret: API.OperationMethod<
   DeleteRepoSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRepoSecretRequest,
-  output: DeleteRepoSecretResponse,
+  input: __S(12) as any as S.Schema<DeleteRepoSecretRequest>,
+  output: __S(10) as any as S.Schema<DeleteRepoSecretResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1159,8 +772,8 @@ export const deleteRepoVariable: API.OperationMethod<
   DeleteRepoVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRepoVariableRequest,
-  output: DeleteRepoVariableResponse,
+  input: __S(13) as any as S.Schema<DeleteRepoVariableRequest>,
+  output: __S(10) as any as S.Schema<DeleteRepoVariableResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1174,8 +787,8 @@ export const getOrgPublicKey: API.OperationMethod<
   GetOrgPublicKeyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgPublicKeyRequest,
-  output: ActionsPublicKey,
+  input: __S(14) as any as S.Schema<GetOrgPublicKeyRequest>,
+  output: __S(15) as any as S.Schema<ActionsPublicKey>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1189,8 +802,8 @@ export const getOrgSecret: API.OperationMethod<
   GetOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgSecretRequest,
-  output: OrganizationActionsSecret,
+  input: __S(16) as any as S.Schema<GetOrgSecretRequest>,
+  output: __S(17) as any as S.Schema<OrganizationActionsSecret>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1204,8 +817,8 @@ export const getOrgVariable: API.OperationMethod<
   GetOrgVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgVariableRequest,
-  output: OrganizationActionsVariable,
+  input: __S(18) as any as S.Schema<GetOrgVariableRequest>,
+  output: __S(19) as any as S.Schema<OrganizationActionsVariable>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1219,8 +832,8 @@ export const getRepoPublicKey: API.OperationMethod<
   GetRepoPublicKeyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoPublicKeyRequest,
-  output: ActionsPublicKey,
+  input: __S(20) as any as S.Schema<GetRepoPublicKeyRequest>,
+  output: __S(15) as any as S.Schema<ActionsPublicKey>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1234,8 +847,8 @@ export const getRepoSecret: API.OperationMethod<
   GetRepoSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoSecretRequest,
-  output: ActionsSecret,
+  input: __S(21) as any as S.Schema<GetRepoSecretRequest>,
+  output: __S(22) as any as S.Schema<ActionsSecret>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1249,8 +862,8 @@ export const getRepoVariable: API.OperationMethod<
   GetRepoVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepoVariableRequest,
-  output: ActionsVariable,
+  input: __S(23) as any as S.Schema<GetRepoVariableRequest>,
+  output: __S(24) as any as S.Schema<ActionsVariable>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1264,8 +877,8 @@ export const listOrgSecrets: API.OperationMethod<
   ListOrgSecretsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrgSecretsRequest,
-  output: ListOrgSecretsResponse,
+  input: __S(25) as any as S.Schema<ListOrgSecretsRequest>,
+  output: __S(27) as any as S.Schema<ListOrgSecretsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1279,8 +892,8 @@ export const listOrgVariables: API.OperationMethod<
   ListOrgVariablesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrgVariablesRequest,
-  output: ListOrgVariablesResponse,
+  input: __S(28) as any as S.Schema<ListOrgVariablesRequest>,
+  output: __S(30) as any as S.Schema<ListOrgVariablesResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1294,8 +907,8 @@ export const listRepoOrganizationSecrets: API.OperationMethod<
   ListRepoOrganizationSecretsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRepoOrganizationSecretsRequest,
-  output: ListRepoOrganizationSecretsResponse,
+  input: __S(31) as any as S.Schema<ListRepoOrganizationSecretsRequest>,
+  output: __S(33) as any as S.Schema<ListRepoOrganizationSecretsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1309,8 +922,8 @@ export const listRepoOrganizationVariables: API.OperationMethod<
   ListRepoOrganizationVariablesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRepoOrganizationVariablesRequest,
-  output: ListRepoOrganizationVariablesResponse,
+  input: __S(34) as any as S.Schema<ListRepoOrganizationVariablesRequest>,
+  output: __S(36) as any as S.Schema<ListRepoOrganizationVariablesResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1324,8 +937,8 @@ export const listRepoSecrets: API.OperationMethod<
   ListRepoSecretsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRepoSecretsRequest,
-  output: ListRepoSecretsResponse,
+  input: __S(37) as any as S.Schema<ListRepoSecretsRequest>,
+  output: __S(38) as any as S.Schema<ListRepoSecretsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1339,8 +952,8 @@ export const listRepoVariables: API.OperationMethod<
   ListRepoVariablesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRepoVariablesRequest,
-  output: ListRepoVariablesResponse,
+  input: __S(39) as any as S.Schema<ListRepoVariablesRequest>,
+  output: __S(36) as any as S.Schema<ListRepoVariablesResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1354,8 +967,8 @@ export const listSelectedReposForOrgSecret: API.OperationMethod<
   ListSelectedReposForOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSelectedReposForOrgSecretRequest,
-  output: ListSelectedReposForOrgSecretResponse,
+  input: __S(40) as any as S.Schema<ListSelectedReposForOrgSecretRequest>,
+  output: __S(55) as any as S.Schema<ListSelectedReposForOrgSecretResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1369,8 +982,8 @@ export const listSelectedReposForOrgVariable: API.OperationMethod<
   ListSelectedReposForOrgVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSelectedReposForOrgVariableRequest,
-  output: ListSelectedReposForOrgVariableResponse,
+  input: __S(56) as any as S.Schema<ListSelectedReposForOrgVariableRequest>,
+  output: __S(55) as any as S.Schema<ListSelectedReposForOrgVariableResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1384,8 +997,8 @@ export const removeSelectedRepoFromOrgSecret: API.OperationMethod<
   RemoveSelectedRepoFromOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveSelectedRepoFromOrgSecretRequest,
-  output: RemoveSelectedRepoFromOrgSecretResponse,
+  input: __S(57) as any as S.Schema<RemoveSelectedRepoFromOrgSecretRequest>,
+  output: __S(1) as any as S.Schema<RemoveSelectedRepoFromOrgSecretResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1399,8 +1012,8 @@ export const removeSelectedRepoFromOrgVariable: API.OperationMethod<
   RemoveSelectedRepoFromOrgVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveSelectedRepoFromOrgVariableRequest,
-  output: RemoveSelectedRepoFromOrgVariableResponse,
+  input: __S(58) as any as S.Schema<RemoveSelectedRepoFromOrgVariableRequest>,
+  output: __S(1) as any as S.Schema<RemoveSelectedRepoFromOrgVariableResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1414,8 +1027,8 @@ export const setSelectedReposForOrgSecret: API.OperationMethod<
   SetSelectedReposForOrgSecretError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetSelectedReposForOrgSecretRequest,
-  output: SetSelectedReposForOrgSecretResponse,
+  input: __S(59) as any as S.Schema<SetSelectedReposForOrgSecretRequest>,
+  output: __S(1) as any as S.Schema<SetSelectedReposForOrgSecretResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1429,8 +1042,8 @@ export const setSelectedReposForOrgVariable: API.OperationMethod<
   SetSelectedReposForOrgVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetSelectedReposForOrgVariableRequest,
-  output: SetSelectedReposForOrgVariableResponse,
+  input: __S(60) as any as S.Schema<SetSelectedReposForOrgVariableRequest>,
+  output: __S(1) as any as S.Schema<SetSelectedReposForOrgVariableResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1444,8 +1057,8 @@ export const updateOrgVariable: API.OperationMethod<
   UpdateOrgVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOrgVariableRequest,
-  output: UpdateOrgVariableResponse,
+  input: __S(61) as any as S.Schema<UpdateOrgVariableRequest>,
+  output: __S(10) as any as S.Schema<UpdateOrgVariableResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1459,8 +1072,8 @@ export const updateRepoVariable: API.OperationMethod<
   UpdateRepoVariableError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRepoVariableRequest,
-  output: UpdateRepoVariableResponse,
+  input: __S(62) as any as S.Schema<UpdateRepoVariableRequest>,
+  output: __S(10) as any as S.Schema<UpdateRepoVariableResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1513,8 +1126,8 @@ function __c0(j: number): any {
           org: S.String.pipe(T.Label()),
           name: S.String,
           value: S.String,
-          visibility: CreateOrgVariableRequestVisibility,
-          selected_repository_ids: S.optional(CreateOrgVariableRequestSelectedRepositoryIdsList),
+          visibility: S.String,
+          selected_repository_ids: S.optional(__S(3)),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/agents/variables", code: 200 })),
       ).annotate({ identifier: "CreateOrgVariableRequest" });
     case 5:
@@ -1528,10 +1141,8 @@ function __c0(j: number): any {
           secret_name: S.String.pipe(T.Label()),
           encrypted_value: S.String,
           key_id: S.String,
-          visibility: CreateOrUpdateOrgSecretRequestVisibility,
-          selected_repository_ids: S.optional(
-            CreateOrUpdateOrgSecretRequestSelectedRepositoryIdsList,
-          ),
+          visibility: S.String,
+          selected_repository_ids: S.optional(__S(3)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/orgs/{org}/agents/secrets/{secret_name}", code: 200 }),
         ),
@@ -1661,7 +1272,7 @@ function __c2(j: number): any {
           name: S.String,
           created_at: S.String,
           updated_at: S.String,
-          visibility: OrganizationActionsSecretVisibility,
+          visibility: S.String,
           selected_repositories_url: S.optional(S.String),
         }),
       ).annotate({
@@ -1681,7 +1292,7 @@ function __c2(j: number): any {
           value: S.String,
           created_at: S.String,
           updated_at: S.String,
-          visibility: OrganizationActionsVariableVisibility,
+          visibility: S.String,
           selected_repositories_url: S.optional(S.String),
         }),
       ).annotate({
@@ -1758,12 +1369,12 @@ function __c3(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/agents/secrets", code: 200 })),
       ).annotate({ identifier: "ListOrgSecretsRequest" });
     case 2:
-      return S.Array(OrganizationActionsSecret);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          secrets: ListOrgSecretsResponseSecretsList,
+          secrets: __S(26),
         }),
       ).annotate({ identifier: "ListOrgSecretsResponse" });
     case 4:
@@ -1775,12 +1386,12 @@ function __c3(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/agents/variables", code: 200 })),
       ).annotate({ identifier: "ListOrgVariablesRequest" });
     case 5:
-      return S.Array(OrganizationActionsVariable);
+      return S.Array(__S(19));
     case 6:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          variables: ListOrgVariablesResponseVariablesList,
+          variables: __S(29),
         }),
       ).annotate({ identifier: "ListOrgVariablesResponse" });
     case 7:
@@ -1805,12 +1416,12 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ActionsSecret);
+      return S.Array(__S(22));
     case 1:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          secrets: ListRepoOrganizationSecretsResponseSecretsList,
+          secrets: __S(32),
         }),
       ).annotate({
         identifier: "ListRepoOrganizationSecretsResponse",
@@ -1833,12 +1444,12 @@ function __c4(j: number): any {
         identifier: "ListRepoOrganizationVariablesRequest",
       });
     case 3:
-      return S.Array(ActionsVariable);
+      return S.Array(__S(24));
     case 4:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          variables: ListRepoOrganizationVariablesResponseVariablesList,
+          variables: __S(35),
         }),
       ).annotate({
         identifier: "ListRepoOrganizationVariablesResponse",
@@ -1856,7 +1467,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          secrets: ListRepoSecretsResponseSecretsList,
+          secrets: __S(32),
         }),
       ).annotate({ identifier: "ListRepoSecretsResponse" });
     case 7:
@@ -1955,7 +1566,7 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
@@ -1963,7 +1574,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
@@ -1976,23 +1587,18 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
-          reviewer_type:
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType,
-          mode: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode,
-          ),
+          reviewer_type: S.String,
+          mode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
     case 1:
-      return S.Array(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem);
+      return S.Array(__S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList,
-          ),
+          reviewers: S.optional(__S(49)),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
@@ -2000,26 +1606,16 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
-          code_security: S.optional(SecurityAndAnalysisCodeSecurity),
-          dependabot_security_updates: S.optional(SecurityAndAnalysisDependabotSecurityUpdates),
-          secret_scanning: S.optional(SecurityAndAnalysisSecretScanning),
-          secret_scanning_push_protection: S.optional(
-            SecurityAndAnalysisSecretScanningPushProtection,
-          ),
-          secret_scanning_non_provider_patterns: S.optional(
-            SecurityAndAnalysisSecretScanningNonProviderPatterns,
-          ),
-          secret_scanning_ai_detection: S.optional(SecurityAndAnalysisSecretScanningAiDetection),
-          secret_scanning_delegated_alert_dismissal: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedAlertDismissal,
-          ),
-          secret_scanning_delegated_bypass: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypass,
-          ),
-          secret_scanning_delegated_bypass_options: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptions,
-          ),
+          advanced_security: S.optional(__S(46)),
+          code_security: S.optional(__S(46)),
+          dependabot_security_updates: S.optional(__S(46)),
+          secret_scanning: S.optional(__S(46)),
+          secret_scanning_push_protection: S.optional(__S(46)),
+          secret_scanning_non_provider_patterns: S.optional(__S(46)),
+          secret_scanning_ai_detection: S.optional(__S(46)),
+          secret_scanning_delegated_alert_dismissal: S.optional(__S(47)),
+          secret_scanning_delegated_bypass: S.optional(__S(46)),
+          secret_scanning_delegated_bypass_options: S.optional(__S(50)),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
     case 4:
@@ -2031,7 +1627,7 @@ function __c6(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: SimpleUser,
+          owner: __S(41),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -2087,7 +1683,7 @@ function __c6(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(MinimalRepositoryTopicsList),
+          topics: S.optional(__S(42)),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -2095,37 +1691,37 @@ function __c6(j: number): any {
           has_downloads: S.optional(S.Boolean),
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(MinimalRepositoryPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.optional(S.Boolean),
           disabled: S.optional(S.Boolean),
           visibility: S.optional(S.String),
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(MinimalRepositoryPermissions),
+          permissions: S.optional(__S(43)),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(CodeOfConduct),
-          license: S.optional(S.NullOr(MinimalRepositoryLicense)),
+          code_of_conduct: S.optional(__S(44)),
+          license: S.optional(S.NullOr(__S(45))),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(SecurityAndAnalysis)),
-          custom_properties: S.optional(MinimalRepositoryCustomPropertiesMap),
+          security_and_analysis: S.optional(S.NullOr(__S(51))),
+          custom_properties: S.optional(__S(52)),
         }),
       ).annotate({ identifier: "MinimalRepository" });
     case 6:
-      return S.Array(MinimalRepository);
+      return S.Array(__S(53));
     case 7:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          repositories: ListSelectedReposForOrgSecretResponseRepositoriesList,
+          repositories: __S(54),
         }),
       ).annotate({
         identifier: "ListSelectedReposForOrgSecretResponse",
@@ -2188,7 +1784,7 @@ function __c7(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           secret_name: S.String.pipe(T.Label()),
-          selected_repository_ids: SetSelectedReposForOrgSecretRequestSelectedRepositoryIdsList,
+          selected_repository_ids: __S(3),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2204,7 +1800,7 @@ function __c7(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          selected_repository_ids: SetSelectedReposForOrgVariableRequestSelectedRepositoryIdsList,
+          selected_repository_ids: __S(3),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2221,8 +1817,8 @@ function __c7(j: number): any {
           org: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           value: S.optional(S.String),
-          visibility: S.optional(UpdateOrgVariableRequestVisibility),
-          selected_repository_ids: S.optional(UpdateOrgVariableRequestSelectedRepositoryIdsList),
+          visibility: S.optional(S.String),
+          selected_repository_ids: S.optional(__S(3)),
         }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}/agents/variables/{name}", code: 200 })),
       ).annotate({ identifier: "UpdateOrgVariableRequest" });
     case 6:
@@ -2242,5 +1838,30 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateRepoVariableRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
   }
 }

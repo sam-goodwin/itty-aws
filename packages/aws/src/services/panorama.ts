@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Panorama",
   serviceShapeName: "OmniCloudServiceLambda",
@@ -89,7 +91,7 @@ export class ConflictException
       ResourceType: S.String,
       ErrorId: /*@__PURE__*/ S.optional(S.String),
       ErrorArguments: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ConflictExceptionErrorArgumentList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(117)).annotate({
           identifier: "ConflictExceptionErrorArgumentList",
         }),
       ),
@@ -137,12 +139,12 @@ export class ValidationException
       Reason: /*@__PURE__*/ S.optional(S.String),
       ErrorId: /*@__PURE__*/ S.optional(S.String),
       ErrorArguments: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionErrorArgumentList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(117)).annotate({
           identifier: "ValidationExceptionErrorArgumentList",
         }),
       ),
       Fields: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(119)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -153,17 +155,14 @@ export type ApplicationInstanceName = string;
 export type Description = string;
 export type ManifestPayloadData = string;
 export type ManifestPayload = { PayloadData: string };
-const ManifestPayload = /*@__PURE__*/ __L.at(__c0, 0);
 export type ManifestOverridesPayloadData = string;
 export type ManifestOverridesPayload = { PayloadData: string };
-const ManifestOverridesPayload = ManifestPayload as any as S.Schema<ManifestOverridesPayload>;
 export type ApplicationInstanceId = string;
 export type RuntimeRoleArn = string;
 export type DefaultRuntimeContextDevice = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c0, 1);
 export interface CreateApplicationInstanceRequest {
   Name?: string;
   Description?: string;
@@ -174,55 +173,34 @@ export interface CreateApplicationInstanceRequest {
   DefaultRuntimeContextDevice: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateApplicationInstanceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateApplicationInstanceRequest>;
 export interface CreateApplicationInstanceResponse {
   ApplicationInstanceId: string;
 }
-const CreateApplicationInstanceResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateApplicationInstanceResponse>;
 export type DeviceId = string;
 export type DeviceIdList = string[];
-const DeviceIdList = /*@__PURE__*/ __L.at(__c0, 4);
 export type ImageVersion = string;
 export interface OTAJobConfig {
   ImageVersion: string;
   AllowMajorVersionUpdate?: boolean;
 }
-const OTAJobConfig = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<OTAJobConfig>;
 export interface DeviceJobConfig {
   OTAJobConfig?: OTAJobConfig;
 }
-const DeviceJobConfig = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeviceJobConfig>;
 export type JobType = string;
 export interface CreateJobForDevicesRequest {
   DeviceIds: string[];
   DeviceJobConfig?: DeviceJobConfig;
   JobType: string;
 }
-const CreateJobForDevicesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateJobForDevicesRequest>;
 export type JobId = string;
 export interface Job {
   JobId?: string;
   DeviceId?: string;
 }
-const Job = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Job>;
 export type JobList = Job[];
-const JobList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface CreateJobForDevicesResponse {
   Jobs: Job[];
 }
-const CreateJobForDevicesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateJobForDevicesResponse>;
 export type TemplateType = string;
 export type NodePackageName = string;
 export type NodePackageVersion = string;
@@ -232,15 +210,12 @@ export type TemplateValue = string | redacted.Redacted<string>;
 export type TemplateParametersMap = {
   [key: string]: string | redacted.Redacted<string> | undefined;
 };
-const TemplateParametersMap = /*@__PURE__*/ __L.at(__c1, 3);
 export type JobResourceType = string;
 export interface JobResourceTags {
   ResourceType: string;
   Tags: { [key: string]: string | undefined };
 }
-const JobResourceTags = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<JobResourceTags>;
 export type JobTagsList = JobResourceTags[];
-const JobTagsList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface CreateNodeFromTemplateJobRequest {
   TemplateType: string;
   OutputPackageName: string;
@@ -252,22 +227,13 @@ export interface CreateNodeFromTemplateJobRequest {
   };
   JobTags?: JobResourceTags[];
 }
-const CreateNodeFromTemplateJobRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateNodeFromTemplateJobRequest>;
 export interface CreateNodeFromTemplateJobResponse {
   JobId: string;
 }
-const CreateNodeFromTemplateJobResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateNodeFromTemplateJobResponse>;
 export interface CreatePackageRequest {
   PackageName: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreatePackageRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CreatePackageRequest>;
 export type NodePackageId = string;
 export type NodePackageArn = string;
 export type Bucket = string;
@@ -278,16 +244,11 @@ export interface StorageLocation {
   BinaryPrefixLocation: string;
   ManifestPrefixLocation: string;
 }
-const StorageLocation = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<StorageLocation>;
 export interface CreatePackageResponse {
   PackageId?: string;
   Arn?: string;
   StorageLocation: StorageLocation;
 }
-const CreatePackageResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreatePackageResponse>;
 export type PackageImportJobType = string;
 export type Region = string;
 export type BucketName = string;
@@ -297,38 +258,21 @@ export interface S3Location {
   BucketName: string;
   ObjectKey: string;
 }
-const S3Location = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<S3Location>;
 export interface PackageVersionInputConfig {
   S3Location: S3Location;
 }
-const PackageVersionInputConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<PackageVersionInputConfig>;
 export interface PackageImportJobInputConfig {
   PackageVersionInputConfig?: PackageVersionInputConfig;
 }
-const PackageImportJobInputConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<PackageImportJobInputConfig>;
 export type MarkLatestPatch = boolean;
 export interface PackageVersionOutputConfig {
   PackageName: string;
   PackageVersion: string;
   MarkLatest?: boolean;
 }
-const PackageVersionOutputConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<PackageVersionOutputConfig>;
 export interface PackageImportJobOutputConfig {
   PackageVersionOutputConfig?: PackageVersionOutputConfig;
 }
-const PackageImportJobOutputConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<PackageImportJobOutputConfig>;
 export type ClientToken = string;
 export interface CreatePackageImportJobRequest {
   JobType: string;
@@ -337,33 +281,20 @@ export interface CreatePackageImportJobRequest {
   ClientToken: string;
   JobTags?: JobResourceTags[];
 }
-const CreatePackageImportJobRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreatePackageImportJobRequest>;
 export interface CreatePackageImportJobResponse {
   JobId: string;
 }
-const CreatePackageImportJobResponse =
-  CreateNodeFromTemplateJobResponse as any as S.Schema<CreatePackageImportJobResponse>;
 export interface DeleteDeviceRequest {
   DeviceId: string;
 }
-const DeleteDeviceRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DeleteDeviceRequest>;
 export interface DeleteDeviceResponse {
   DeviceId?: string;
 }
-const DeleteDeviceResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DeleteDeviceResponse>;
 export interface DeletePackageRequest {
   PackageId: string;
   ForceDelete?: boolean;
 }
-const DeletePackageRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DeletePackageRequest>;
 export interface DeletePackageResponse {}
-const DeletePackageResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DeletePackageResponse>;
 export type PackageOwnerAccount = string;
 export type NodePackagePatchVersion = string;
 export interface DeregisterPackageVersionRequest {
@@ -373,22 +304,10 @@ export interface DeregisterPackageVersionRequest {
   PatchVersion: string;
   UpdatedLatestPatchVersion?: string;
 }
-const DeregisterPackageVersionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeregisterPackageVersionRequest>;
 export interface DeregisterPackageVersionResponse {}
-const DeregisterPackageVersionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeregisterPackageVersionResponse>;
 export interface DescribeApplicationInstanceRequest {
   ApplicationInstanceId: string;
 }
-const DescribeApplicationInstanceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DescribeApplicationInstanceRequest>;
 export type DeviceName = string;
 export type ApplicationInstanceStatus = string;
 export type ApplicationInstanceHealthStatus = string;
@@ -403,12 +322,7 @@ export interface ReportedRuntimeContextState {
   DeviceReportedStatus: string;
   DeviceReportedTime: Date;
 }
-const ReportedRuntimeContextState = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ReportedRuntimeContextState>;
 export type ReportedRuntimeContextStates = ReportedRuntimeContextState[];
-const ReportedRuntimeContextStates = /*@__PURE__*/ __L.at(__c4, 1);
 export interface DescribeApplicationInstanceResponse {
   Name?: string;
   Description?: string;
@@ -426,17 +340,9 @@ export interface DescribeApplicationInstanceResponse {
   Tags?: { [key: string]: string | undefined };
   RuntimeContextStates?: ReportedRuntimeContextState[];
 }
-const DescribeApplicationInstanceResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DescribeApplicationInstanceResponse>;
 export interface DescribeApplicationInstanceDetailsRequest {
   ApplicationInstanceId: string;
 }
-const DescribeApplicationInstanceDetailsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DescribeApplicationInstanceDetailsRequest>;
 export interface DescribeApplicationInstanceDetailsResponse {
   Name?: string;
   Description?: string;
@@ -447,17 +353,9 @@ export interface DescribeApplicationInstanceDetailsResponse {
   CreatedTime?: Date;
   ApplicationInstanceId?: string;
 }
-const DescribeApplicationInstanceDetailsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DescribeApplicationInstanceDetailsResponse>;
 export interface DescribeDeviceRequest {
   DeviceId: string;
 }
-const DescribeDeviceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DescribeDeviceRequest>;
 export type DeviceArn = string;
 export type DeviceType = string;
 export type DeviceConnectionStatus = string;
@@ -471,7 +369,6 @@ export type IpAddress = string;
 export type Mask = string;
 export type Dns = string;
 export type DnsList = string[];
-const DnsList = DeviceIdList as any as S.Schema<DnsList>;
 export type DefaultGateway = string;
 export interface StaticIpConnectionInfo {
   IpAddress: string;
@@ -479,28 +376,20 @@ export interface StaticIpConnectionInfo {
   Dns: string[];
   DefaultGateway: string;
 }
-const StaticIpConnectionInfo = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<StaticIpConnectionInfo>;
 export interface EthernetPayload {
   ConnectionType: string;
   StaticIpConnectionInfo?: StaticIpConnectionInfo;
 }
-const EthernetPayload = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<EthernetPayload>;
 export type IpAddressOrServerName = string;
 export type NtpServerList = string[];
-const NtpServerList = DeviceIdList as any as S.Schema<NtpServerList>;
 export interface NtpPayload {
   NtpServers: string[];
 }
-const NtpPayload = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<NtpPayload>;
 export interface NetworkPayload {
   Ethernet0?: EthernetPayload;
   Ethernet1?: EthernetPayload;
   Ntp?: NtpPayload;
 }
-const NetworkPayload = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<NetworkPayload>;
 export type NetworkConnectionStatus = string;
 export type HwAddress = string;
 export interface EthernetStatus {
@@ -508,14 +397,12 @@ export interface EthernetStatus {
   ConnectionStatus?: string;
   HwAddress?: string;
 }
-const EthernetStatus = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<EthernetStatus>;
 export type NtpServerName = string;
 export interface NtpStatus {
   ConnectionStatus?: string;
   IpAddress?: string;
   NtpServerName?: string;
 }
-const NtpStatus = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<NtpStatus>;
 export type LastUpdatedTime = Date;
 export interface NetworkStatus {
   Ethernet0Status?: EthernetStatus;
@@ -523,18 +410,12 @@ export interface NetworkStatus {
   NtpStatus?: NtpStatus;
   LastUpdatedTime?: Date;
 }
-const NetworkStatus = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<NetworkStatus>;
 export type LeaseExpirationTime = Date;
 export type Version = string;
 export interface AlternateSoftwareMetadata {
   Version?: string;
 }
-const AlternateSoftwareMetadata = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<AlternateSoftwareMetadata>;
 export type AlternateSoftwares = AlternateSoftwareMetadata[];
-const AlternateSoftwares = /*@__PURE__*/ __L.at(__c5, 6);
 export type LatestAlternateSoftware = string;
 export type DeviceBrand = string;
 export type UpdateProgress = string;
@@ -543,7 +424,6 @@ export interface LatestDeviceJob {
   Status?: string;
   JobType?: string;
 }
-const LatestDeviceJob = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<LatestDeviceJob>;
 export type DeviceAggregatedStatus = string;
 export interface DescribeDeviceResponse {
   DeviceId?: string;
@@ -567,17 +447,9 @@ export interface DescribeDeviceResponse {
   LatestDeviceJob?: LatestDeviceJob;
   DeviceAggregatedStatus?: string;
 }
-const DescribeDeviceResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DescribeDeviceResponse>;
 export interface DescribeDeviceJobRequest {
   JobId: string;
 }
-const DescribeDeviceJobRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DescribeDeviceJobRequest>;
 export type UpdateCreatedTime = Date;
 export interface DescribeDeviceJobResponse {
   JobId?: string;
@@ -590,16 +462,11 @@ export interface DescribeDeviceJobResponse {
   CreatedTime?: Date;
   JobType?: string;
 }
-const DescribeDeviceJobResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DescribeDeviceJobResponse>;
 export type NodeId = string;
 export interface DescribeNodeRequest {
   NodeId: string;
   OwnerAccount?: string;
 }
-const DescribeNodeRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<DescribeNodeRequest>;
 export type NodeCategory = string;
 export type PortName = string;
 export type PortType = string;
@@ -612,22 +479,17 @@ export interface NodeInputPort {
   DefaultValue?: string;
   MaxConnections?: number;
 }
-const NodeInputPort = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<NodeInputPort>;
 export type InputPortList = NodeInputPort[];
-const InputPortList = /*@__PURE__*/ __L.at(__c6, 5);
 export interface NodeOutputPort {
   Name?: string;
   Description?: string;
   Type?: string;
 }
-const NodeOutputPort = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<NodeOutputPort>;
 export type OutputPortList = NodeOutputPort[];
-const OutputPortList = /*@__PURE__*/ __L.at(__c6, 7);
 export interface NodeInterface {
   Inputs: NodeInputPort[];
   Outputs: NodeOutputPort[];
 }
-const NodeInterface = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<NodeInterface>;
 export type NodeAssetName = string;
 export interface DescribeNodeResponse {
   NodeId: string;
@@ -645,14 +507,9 @@ export interface DescribeNodeResponse {
   CreatedTime: Date;
   LastUpdatedTime: Date;
 }
-const DescribeNodeResponse = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<DescribeNodeResponse>;
 export interface DescribeNodeFromTemplateJobRequest {
   JobId: string;
 }
-const DescribeNodeFromTemplateJobRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DescribeNodeFromTemplateJobRequest>;
 export type NodeFromTemplateJobStatus = string;
 export type NodeFromTemplateJobStatusMessage = string;
 export interface DescribeNodeFromTemplateJobResponse {
@@ -671,20 +528,11 @@ export interface DescribeNodeFromTemplateJobResponse {
   };
   JobTags?: JobResourceTags[];
 }
-const DescribeNodeFromTemplateJobResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DescribeNodeFromTemplateJobResponse>;
 export interface DescribePackageRequest {
   PackageId: string;
 }
-const DescribePackageRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<DescribePackageRequest>;
 export type PrincipalArn = string;
 export type PrincipalArnsList = string[];
-const PrincipalArnsList = DeviceIdList as any as S.Schema<PrincipalArnsList>;
 export interface DescribePackageResponse {
   PackageId: string;
   PackageName: string;
@@ -695,32 +543,19 @@ export interface DescribePackageResponse {
   CreatedTime: Date;
   Tags: { [key: string]: string | undefined };
 }
-const DescribePackageResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<DescribePackageResponse>;
 export interface DescribePackageImportJobRequest {
   JobId: string;
 }
-const DescribePackageImportJobRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DescribePackageImportJobRequest>;
 export interface OutPutS3Location {
   BucketName: string;
   ObjectKey: string;
 }
-const OutPutS3Location = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<OutPutS3Location>;
 export interface PackageImportJobOutput {
   PackageId: string;
   PackageVersion: string;
   PatchVersion: string;
   OutputS3Location: OutPutS3Location;
 }
-const PackageImportJobOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<PackageImportJobOutput>;
 export type PackageImportJobStatus = string;
 export type PackageImportJobStatusMessage = string;
 export interface DescribePackageImportJobResponse {
@@ -736,20 +571,12 @@ export interface DescribePackageImportJobResponse {
   StatusMessage: string;
   JobTags?: JobResourceTags[];
 }
-const DescribePackageImportJobResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DescribePackageImportJobResponse>;
 export interface DescribePackageVersionRequest {
   OwnerAccount?: string;
   PackageId: string;
   PackageVersion: string;
   PatchVersion?: string;
 }
-const DescribePackageVersionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DescribePackageVersionRequest>;
 export type PackageVersionStatus = string;
 export type PackageVersionStatusDescription = string;
 export interface DescribePackageVersionResponse {
@@ -764,10 +591,6 @@ export interface DescribePackageVersionResponse {
   StatusDescription?: string;
   RegisteredTime?: Date;
 }
-const DescribePackageVersionResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DescribePackageVersionResponse>;
 export type MaxSize25 = number;
 export type NextToken = string;
 export interface ListApplicationInstanceDependenciesRequest {
@@ -775,35 +598,21 @@ export interface ListApplicationInstanceDependenciesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListApplicationInstanceDependenciesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListApplicationInstanceDependenciesRequest>;
 export interface PackageObject {
   Name: string;
   PackageVersion: string;
   PatchVersion: string;
 }
-const PackageObject = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<PackageObject>;
 export type PackageObjects = PackageObject[];
-const PackageObjects = /*@__PURE__*/ __L.at(__c8, 6);
 export interface ListApplicationInstanceDependenciesResponse {
   PackageObjects?: PackageObject[];
   NextToken?: string;
 }
-const ListApplicationInstanceDependenciesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListApplicationInstanceDependenciesResponse>;
 export interface ListApplicationInstanceNodeInstancesRequest {
   ApplicationInstanceId: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListApplicationInstanceNodeInstancesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListApplicationInstanceNodeInstancesRequest>;
 export type NodeInstanceId = string;
 export type NodeInstanceStatus = string;
 export interface NodeInstance {
@@ -815,17 +624,11 @@ export interface NodeInstance {
   NodeName?: string;
   CurrentStatus: string;
 }
-const NodeInstance = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<NodeInstance>;
 export type NodeInstances = NodeInstance[];
-const NodeInstances = /*@__PURE__*/ __L.at(__c9, 2);
 export interface ListApplicationInstanceNodeInstancesResponse {
   NodeInstances?: NodeInstance[];
   NextToken?: string;
 }
-const ListApplicationInstanceNodeInstancesResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListApplicationInstanceNodeInstancesResponse>;
 export type StatusFilter = string;
 export interface ListApplicationInstancesRequest {
   DeviceId?: string;
@@ -833,10 +636,6 @@ export interface ListApplicationInstancesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListApplicationInstancesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListApplicationInstancesRequest>;
 export interface ApplicationInstance {
   Name?: string;
   ApplicationInstanceId?: string;
@@ -851,17 +650,11 @@ export interface ApplicationInstance {
   Tags?: { [key: string]: string | undefined };
   RuntimeContextStates?: ReportedRuntimeContextState[];
 }
-const ApplicationInstance = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ApplicationInstance>;
 export type ApplicationInstances = ApplicationInstance[];
-const ApplicationInstances = /*@__PURE__*/ __L.at(__c9, 6);
 export interface ListApplicationInstancesResponse {
   ApplicationInstances?: ApplicationInstance[];
   NextToken?: string;
 }
-const ListApplicationInstancesResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListApplicationInstancesResponse>;
 export type ListDevicesSortBy = string;
 export type SortOrder = string;
 export type NameFilter = string;
@@ -873,7 +666,6 @@ export interface ListDevicesRequest {
   NameFilter?: string;
   DeviceAggregatedStatusFilter?: string;
 }
-const ListDevicesRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ListDevicesRequest>;
 export interface Device {
   DeviceId?: string;
   Name?: string;
@@ -889,23 +681,16 @@ export interface Device {
   LatestDeviceJob?: LatestDeviceJob;
   DeviceAggregatedStatus?: string;
 }
-const Device = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<Device>;
 export type DeviceList = Device[];
-const DeviceList = /*@__PURE__*/ __L.at(__c10, 2);
 export interface ListDevicesResponse {
   Devices: Device[];
   NextToken?: string;
 }
-const ListDevicesResponse = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<ListDevicesResponse>;
 export interface ListDevicesJobsRequest {
   DeviceId?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListDevicesJobsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListDevicesJobsRequest>;
 export interface DeviceJob {
   DeviceName?: string;
   DeviceId?: string;
@@ -913,25 +698,15 @@ export interface DeviceJob {
   CreatedTime?: Date;
   JobType?: string;
 }
-const DeviceJob = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<DeviceJob>;
 export type DeviceJobList = DeviceJob[];
-const DeviceJobList = /*@__PURE__*/ __L.at(__c10, 6);
 export interface ListDevicesJobsResponse {
   DeviceJobs?: DeviceJob[];
   NextToken?: string;
 }
-const ListDevicesJobsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListDevicesJobsResponse>;
 export interface ListNodeFromTemplateJobsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListNodeFromTemplateJobsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListNodeFromTemplateJobsRequest>;
 export interface NodeFromTemplateJob {
   JobId?: string;
   TemplateType?: string;
@@ -940,17 +715,11 @@ export interface NodeFromTemplateJob {
   CreatedTime?: Date;
   NodeName?: string;
 }
-const NodeFromTemplateJob = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<NodeFromTemplateJob>;
 export type NodeFromTemplateJobList = NodeFromTemplateJob[];
-const NodeFromTemplateJobList = /*@__PURE__*/ __L.at(__c11, 2);
 export interface ListNodeFromTemplateJobsResponse {
   NodeFromTemplateJobs: NodeFromTemplateJob[];
   NextToken?: string;
 }
-const ListNodeFromTemplateJobsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListNodeFromTemplateJobsResponse>;
 export type Token = string;
 export interface ListNodesRequest {
   Category?: string;
@@ -961,7 +730,6 @@ export interface ListNodesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListNodesRequest = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<ListNodesRequest>;
 export interface Node {
   NodeId: string;
   Name: string;
@@ -975,22 +743,15 @@ export interface Node {
   Description?: string;
   CreatedTime: Date;
 }
-const Node = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<Node>;
 export type NodesList = Node[];
-const NodesList = /*@__PURE__*/ __L.at(__c11, 6);
 export interface ListNodesResponse {
   Nodes?: Node[];
   NextToken?: string;
 }
-const ListNodesResponse = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<ListNodesResponse>;
 export interface ListPackageImportJobsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListPackageImportJobsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ListPackageImportJobsRequest>;
 export interface PackageImportJob {
   JobId?: string;
   JobType?: string;
@@ -999,22 +760,15 @@ export interface PackageImportJob {
   CreatedTime?: Date;
   LastUpdatedTime?: Date;
 }
-const PackageImportJob = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<PackageImportJob>;
 export type PackageImportJobList = PackageImportJob[];
-const PackageImportJobList = /*@__PURE__*/ __L.at(__c12, 2);
 export interface ListPackageImportJobsResponse {
   PackageImportJobs: PackageImportJob[];
   NextToken?: string;
 }
-const ListPackageImportJobsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListPackageImportJobsResponse>;
 export interface ListPackagesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListPackagesRequest = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<ListPackagesRequest>;
 export interface PackageListItem {
   PackageId?: string;
   PackageName?: string;
@@ -1022,42 +776,24 @@ export interface PackageListItem {
   CreatedTime?: Date;
   Tags?: { [key: string]: string | undefined };
 }
-const PackageListItem = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<PackageListItem>;
 export type PackageList = PackageListItem[];
-const PackageList = /*@__PURE__*/ __L.at(__c12, 6);
 export interface ListPackagesResponse {
   Packages?: PackageListItem[];
   NextToken?: string;
 }
-const ListPackagesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListPackagesResponse>;
 export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ProvisionDeviceRequest {
   Name: string;
   Description?: string;
   Tags?: { [key: string]: string | undefined };
   NetworkingConfiguration?: NetworkPayload;
 }
-const ProvisionDeviceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ProvisionDeviceRequest>;
 export type Certificates = Uint8Array;
 export type IotThingName = string;
 export interface ProvisionDeviceResponse {
@@ -1067,10 +803,6 @@ export interface ProvisionDeviceResponse {
   Certificates?: Uint8Array;
   IotThingName?: string;
 }
-const ProvisionDeviceResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<ProvisionDeviceResponse>;
 export interface RegisterPackageVersionRequest {
   OwnerAccount?: string;
   PackageId: string;
@@ -1078,105 +810,59 @@ export interface RegisterPackageVersionRequest {
   PatchVersion: string;
   MarkLatest?: boolean;
 }
-const RegisterPackageVersionRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<RegisterPackageVersionRequest>;
 export interface RegisterPackageVersionResponse {}
-const RegisterPackageVersionResponse =
-  DeletePackageResponse as any as S.Schema<RegisterPackageVersionResponse>;
 export interface RemoveApplicationInstanceRequest {
   ApplicationInstanceId: string;
 }
-const RemoveApplicationInstanceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<RemoveApplicationInstanceRequest>;
 export interface RemoveApplicationInstanceResponse {}
-const RemoveApplicationInstanceResponse =
-  DeregisterPackageVersionResponse as any as S.Schema<RemoveApplicationInstanceResponse>;
 export type NodeSignalValue = string;
 export interface NodeSignal {
   NodeInstanceId: string;
   Signal: string;
 }
-const NodeSignal = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<NodeSignal>;
 export type NodeSignalList = NodeSignal[];
-const NodeSignalList = /*@__PURE__*/ __L.at(__c13, 7);
 export interface SignalApplicationInstanceNodeInstancesRequest {
   ApplicationInstanceId: string;
   NodeSignals: NodeSignal[];
 }
-const SignalApplicationInstanceNodeInstancesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<SignalApplicationInstanceNodeInstancesRequest>;
 export interface SignalApplicationInstanceNodeInstancesResponse {
   ApplicationInstanceId: string;
 }
-const SignalApplicationInstanceNodeInstancesResponse =
-  CreateApplicationInstanceResponse as any as S.Schema<SignalApplicationInstanceNodeInstancesResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeletePackageResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = DeviceIdList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = DeletePackageResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDeviceMetadataRequest {
   DeviceId: string;
   Description?: string;
 }
-const UpdateDeviceMetadataRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<UpdateDeviceMetadataRequest>;
 export interface UpdateDeviceMetadataResponse {
   DeviceId?: string;
 }
-const UpdateDeviceMetadataResponse =
-  DeleteDeviceResponse as any as S.Schema<UpdateDeviceMetadataResponse>;
 export type RetryAfterSeconds = number;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionErrorArgument {
   Name: string;
   Value: string;
 }
-const ValidationExceptionErrorArgument = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ValidationExceptionErrorArgument>;
 export type ValidationExceptionErrorArgumentList = ValidationExceptionErrorArgument[];
-const ValidationExceptionErrorArgumentList = /*@__PURE__*/ __L.at(__c14, 5);
 export interface ValidationExceptionField {
   Name: string;
   Message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c14, 7);
 export interface ConflictExceptionErrorArgument {
   Name: string;
   Value: string;
 }
 export type ConflictExceptionErrorArgumentList = ConflictExceptionErrorArgument[];
-const ConflictExceptionErrorArgumentList =
-  ValidationExceptionErrorArgumentList as any as S.Schema<ConflictExceptionErrorArgumentList>;
 export type CreateApplicationInstanceError =
   | AccessDeniedException
   | InternalServerException
@@ -1192,8 +878,8 @@ export const createApplicationInstance: API.OperationMethod<
   CreateApplicationInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateApplicationInstanceRequest,
-  output: CreateApplicationInstanceResponse,
+  input: __S(2) as any as S.Schema<CreateApplicationInstanceRequest>,
+  output: __S(3) as any as S.Schema<CreateApplicationInstanceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1221,8 +907,8 @@ export const createJobForDevices: API.OperationMethod<
   CreateJobForDevicesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateJobForDevicesRequest,
-  output: CreateJobForDevicesResponse,
+  input: __S(7) as any as S.Schema<CreateJobForDevicesRequest>,
+  output: __S(10) as any as S.Schema<CreateJobForDevicesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1250,8 +936,8 @@ export const createNodeFromTemplateJob: API.OperationMethod<
   CreateNodeFromTemplateJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNodeFromTemplateJobRequest,
-  output: CreateNodeFromTemplateJobResponse,
+  input: __S(14) as any as S.Schema<CreateNodeFromTemplateJobRequest>,
+  output: __S(15) as any as S.Schema<CreateNodeFromTemplateJobResponse>,
   errors: [AccessDeniedException, ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1273,8 +959,8 @@ export const createPackage: API.OperationMethod<
   CreatePackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePackageRequest,
-  output: CreatePackageResponse,
+  input: __S(16) as any as S.Schema<CreatePackageRequest>,
+  output: __S(18) as any as S.Schema<CreatePackageResponse>,
   errors: [AccessDeniedException, ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1296,8 +982,8 @@ export const createPackageImportJob: API.OperationMethod<
   CreatePackageImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePackageImportJobRequest,
-  output: CreatePackageImportJobResponse,
+  input: __S(24) as any as S.Schema<CreatePackageImportJobRequest>,
+  output: __S(15) as any as S.Schema<CreatePackageImportJobResponse>,
   errors: [AccessDeniedException, ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1320,8 +1006,8 @@ export const deleteDevice: API.OperationMethod<
   DeleteDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeviceRequest,
-  output: DeleteDeviceResponse,
+  input: __S(25) as any as S.Schema<DeleteDeviceRequest>,
+  output: __S(26) as any as S.Schema<DeleteDeviceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1353,8 +1039,8 @@ export const deletePackage: API.OperationMethod<
   DeletePackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePackageRequest,
-  output: DeletePackageResponse,
+  input: __S(27) as any as S.Schema<DeletePackageRequest>,
+  output: __S(28) as any as S.Schema<DeletePackageResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1383,8 +1069,8 @@ export const deregisterPackageVersion: API.OperationMethod<
   DeregisterPackageVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeregisterPackageVersionRequest,
-  output: DeregisterPackageVersionResponse,
+  input: __S(29) as any as S.Schema<DeregisterPackageVersionRequest>,
+  output: __S(30) as any as S.Schema<DeregisterPackageVersionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1413,8 +1099,8 @@ export const describeApplicationInstance: API.OperationMethod<
   DescribeApplicationInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeApplicationInstanceRequest,
-  output: DescribeApplicationInstanceResponse,
+  input: __S(31) as any as S.Schema<DescribeApplicationInstanceRequest>,
+  output: __S(34) as any as S.Schema<DescribeApplicationInstanceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1443,8 +1129,8 @@ export const describeApplicationInstanceDetails: API.OperationMethod<
   DescribeApplicationInstanceDetailsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeApplicationInstanceDetailsRequest,
-  output: DescribeApplicationInstanceDetailsResponse,
+  input: __S(35) as any as S.Schema<DescribeApplicationInstanceDetailsRequest>,
+  output: __S(36) as any as S.Schema<DescribeApplicationInstanceDetailsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1472,8 +1158,8 @@ export const describeDevice: API.OperationMethod<
   DescribeDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeDeviceRequest,
-  output: DescribeDeviceResponse,
+  input: __S(37) as any as S.Schema<DescribeDeviceRequest>,
+  output: __S(48) as any as S.Schema<DescribeDeviceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1501,8 +1187,8 @@ export const describeDeviceJob: API.OperationMethod<
   DescribeDeviceJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeDeviceJobRequest,
-  output: DescribeDeviceJobResponse,
+  input: __S(49) as any as S.Schema<DescribeDeviceJobRequest>,
+  output: __S(50) as any as S.Schema<DescribeDeviceJobResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1531,8 +1217,8 @@ export const describeNode: API.OperationMethod<
   DescribeNodeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeNodeRequest,
-  output: DescribeNodeResponse,
+  input: __S(51) as any as S.Schema<DescribeNodeRequest>,
+  output: __S(57) as any as S.Schema<DescribeNodeResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1560,8 +1246,8 @@ export const describeNodeFromTemplateJob: API.OperationMethod<
   DescribeNodeFromTemplateJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeNodeFromTemplateJobRequest,
-  output: DescribeNodeFromTemplateJobResponse,
+  input: __S(58) as any as S.Schema<DescribeNodeFromTemplateJobRequest>,
+  output: __S(59) as any as S.Schema<DescribeNodeFromTemplateJobResponse>,
   errors: [AccessDeniedException, ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1584,8 +1270,8 @@ export const describePackage: API.OperationMethod<
   DescribePackageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribePackageRequest,
-  output: DescribePackageResponse,
+  input: __S(60) as any as S.Schema<DescribePackageRequest>,
+  output: __S(61) as any as S.Schema<DescribePackageResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1613,8 +1299,8 @@ export const describePackageImportJob: API.OperationMethod<
   DescribePackageImportJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribePackageImportJobRequest,
-  output: DescribePackageImportJobResponse,
+  input: __S(62) as any as S.Schema<DescribePackageImportJobRequest>,
+  output: __S(65) as any as S.Schema<DescribePackageImportJobResponse>,
   errors: [AccessDeniedException, ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1637,8 +1323,8 @@ export const describePackageVersion: API.OperationMethod<
   DescribePackageVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribePackageVersionRequest,
-  output: DescribePackageVersionResponse,
+  input: __S(66) as any as S.Schema<DescribePackageVersionRequest>,
+  output: __S(67) as any as S.Schema<DescribePackageVersionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1665,8 +1351,8 @@ export const listApplicationInstanceDependencies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListApplicationInstanceDependenciesRequest,
-  output: ListApplicationInstanceDependenciesResponse,
+  input: __S(68) as any as S.Schema<ListApplicationInstanceDependenciesRequest>,
+  output: __S(71) as any as S.Schema<ListApplicationInstanceDependenciesResponse>,
   errors: [AccessDeniedException, InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1692,8 +1378,8 @@ export const listApplicationInstanceNodeInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListApplicationInstanceNodeInstancesRequest,
-  output: ListApplicationInstanceNodeInstancesResponse,
+  input: __S(72) as any as S.Schema<ListApplicationInstanceNodeInstancesRequest>,
+  output: __S(75) as any as S.Schema<ListApplicationInstanceNodeInstancesResponse>,
   errors: [AccessDeniedException, InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1719,8 +1405,8 @@ export const listApplicationInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListApplicationInstancesRequest,
-  output: ListApplicationInstancesResponse,
+  input: __S(76) as any as S.Schema<ListApplicationInstancesRequest>,
+  output: __S(79) as any as S.Schema<ListApplicationInstancesResponse>,
   errors: [AccessDeniedException, InternalServerException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1748,8 +1434,8 @@ export const listDevices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDevicesRequest,
-  output: ListDevicesResponse,
+  input: __S(80) as any as S.Schema<ListDevicesRequest>,
+  output: __S(83) as any as S.Schema<ListDevicesResponse>,
   errors: [AccessDeniedException, ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1778,8 +1464,8 @@ export const listDevicesJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDevicesJobsRequest,
-  output: ListDevicesJobsResponse,
+  input: __S(84) as any as S.Schema<ListDevicesJobsRequest>,
+  output: __S(87) as any as S.Schema<ListDevicesJobsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1813,8 +1499,8 @@ export const listNodeFromTemplateJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListNodeFromTemplateJobsRequest,
-  output: ListNodeFromTemplateJobsResponse,
+  input: __S(88) as any as S.Schema<ListNodeFromTemplateJobsRequest>,
+  output: __S(91) as any as S.Schema<ListNodeFromTemplateJobsResponse>,
   errors: [AccessDeniedException, ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1841,8 +1527,8 @@ export const listNodes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListNodesRequest,
-  output: ListNodesResponse,
+  input: __S(92) as any as S.Schema<ListNodesRequest>,
+  output: __S(95) as any as S.Schema<ListNodesResponse>,
   errors: [ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1870,8 +1556,8 @@ export const listPackageImportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPackageImportJobsRequest,
-  output: ListPackageImportJobsResponse,
+  input: __S(96) as any as S.Schema<ListPackageImportJobsRequest>,
+  output: __S(99) as any as S.Schema<ListPackageImportJobsResponse>,
   errors: [AccessDeniedException, ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1900,8 +1586,8 @@ export const listPackages: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPackagesRequest,
-  output: ListPackagesResponse,
+  input: __S(100) as any as S.Schema<ListPackagesRequest>,
+  output: __S(103) as any as S.Schema<ListPackagesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1933,8 +1619,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(104) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(105) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1960,8 +1646,8 @@ export const provisionDevice: API.OperationMethod<
   ProvisionDeviceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProvisionDeviceRequest,
-  output: ProvisionDeviceResponse,
+  input: __S(106) as any as S.Schema<ProvisionDeviceRequest>,
+  output: __S(107) as any as S.Schema<ProvisionDeviceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1989,8 +1675,8 @@ export const registerPackageVersion: API.OperationMethod<
   RegisterPackageVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterPackageVersionRequest,
-  output: RegisterPackageVersionResponse,
+  input: __S(108) as any as S.Schema<RegisterPackageVersionRequest>,
+  output: __S(28) as any as S.Schema<RegisterPackageVersionResponse>,
   errors: [AccessDeniedException, ConflictException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2013,8 +1699,8 @@ export const removeApplicationInstance: API.OperationMethod<
   RemoveApplicationInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveApplicationInstanceRequest,
-  output: RemoveApplicationInstanceResponse,
+  input: __S(109) as any as S.Schema<RemoveApplicationInstanceRequest>,
+  output: __S(30) as any as S.Schema<RemoveApplicationInstanceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2042,8 +1728,8 @@ export const signalApplicationInstanceNodeInstances: API.OperationMethod<
   SignalApplicationInstanceNodeInstancesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SignalApplicationInstanceNodeInstancesRequest,
-  output: SignalApplicationInstanceNodeInstancesResponse,
+  input: __S(112) as any as S.Schema<SignalApplicationInstanceNodeInstancesRequest>,
+  output: __S(3) as any as S.Schema<SignalApplicationInstanceNodeInstancesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2069,8 +1755,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(113) as any as S.Schema<TagResourceRequest>,
+  output: __S(28) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2091,8 +1777,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(114) as any as S.Schema<UntagResourceRequest>,
+  output: __S(28) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2115,8 +1801,8 @@ export const updateDeviceMetadata: API.OperationMethod<
   UpdateDeviceMetadataError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDeviceMetadataRequest,
-  output: UpdateDeviceMetadataResponse,
+  input: __S(115) as any as S.Schema<UpdateDeviceMetadataRequest>,
+  output: __S(26) as any as S.Schema<UpdateDeviceMetadataResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2141,12 +1827,12 @@ function __c0(j: number): any {
         S.Struct({
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          ManifestPayload: ManifestPayload,
-          ManifestOverridesPayload: S.optional(ManifestOverridesPayload),
+          ManifestPayload: __S(0),
+          ManifestOverridesPayload: S.optional(__S(0)),
           ApplicationInstanceIdToReplace: S.optional(S.String),
           RuntimeRoleArn: S.optional(S.String),
           DefaultRuntimeContextDevice: S.String,
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/application-instances" }),
@@ -2174,14 +1860,14 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "OTAJobConfig" });
     case 6:
-      return S.suspend(() => S.Struct({ OTAJobConfig: S.optional(OTAJobConfig) })).annotate({
+      return S.suspend(() => S.Struct({ OTAJobConfig: S.optional(__S(5)) })).annotate({
         identifier: "DeviceJobConfig",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          DeviceIds: DeviceIdList,
-          DeviceJobConfig: S.optional(DeviceJobConfig),
+          DeviceIds: __S(4),
+          DeviceJobConfig: S.optional(__S(6)),
           JobType: S.String,
         }).pipe(T.all(T.Http({ method: "POST", uri: "/jobs" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -2196,19 +1882,19 @@ function __c1(j: number): any {
         S.Struct({ JobId: S.optional(S.String), DeviceId: S.optional(S.String) }),
       ).annotate({ identifier: "Job" });
     case 1:
-      return S.Array(Job);
+      return S.Array(__S(8));
     case 2:
-      return S.suspend(() => S.Struct({ Jobs: JobList })).annotate({
+      return S.suspend(() => S.Struct({ Jobs: __S(9) })).annotate({
         identifier: "CreateJobForDevicesResponse",
       });
     case 3:
       return S.Record(S.String, /*@__PURE__*/ SensitiveString.pipe(S.optional));
     case 4:
-      return S.suspend(() => S.Struct({ ResourceType: S.String, Tags: TagMap })).annotate({
+      return S.suspend(() => S.Struct({ ResourceType: S.String, Tags: __S(1) })).annotate({
         identifier: "JobResourceTags",
       });
     case 5:
-      return S.Array(JobResourceTags);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2217,8 +1903,8 @@ function __c1(j: number): any {
           OutputPackageVersion: S.String,
           NodeName: S.String,
           NodeDescription: S.optional(S.String),
-          TemplateParameters: TemplateParametersMap,
-          JobTags: S.optional(JobTagsList),
+          TemplateParameters: __S(11),
+          JobTags: S.optional(__S(13)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/packages/template-job" }),
@@ -2242,7 +1928,7 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ PackageName: S.String, Tags: S.optional(TagMap) }).pipe(
+        S.Struct({ PackageName: S.String, Tags: S.optional(__S(1)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/packages" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -2265,7 +1951,7 @@ function __c2(j: number): any {
         S.Struct({
           PackageId: S.optional(S.String),
           Arn: S.optional(S.String),
-          StorageLocation: StorageLocation,
+          StorageLocation: __S(17),
         }),
       ).annotate({
         identifier: "CreatePackageResponse",
@@ -2279,13 +1965,13 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "S3Location" });
     case 4:
-      return S.suspend(() => S.Struct({ S3Location: S3Location })).annotate({
+      return S.suspend(() => S.Struct({ S3Location: __S(19) })).annotate({
         identifier: "PackageVersionInputConfig",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          PackageVersionInputConfig: S.optional(PackageVersionInputConfig),
+          PackageVersionInputConfig: S.optional(__S(20)),
         }),
       ).annotate({
         identifier: "PackageImportJobInputConfig",
@@ -2303,7 +1989,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          PackageVersionOutputConfig: S.optional(PackageVersionOutputConfig),
+          PackageVersionOutputConfig: S.optional(__S(22)),
         }),
       ).annotate({
         identifier: "PackageImportJobOutputConfig",
@@ -2316,10 +2002,10 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           JobType: S.String,
-          InputConfig: PackageImportJobInputConfig,
-          OutputConfig: PackageImportJobOutputConfig,
+          InputConfig: __S(21),
+          OutputConfig: __S(23),
           ClientToken: S.String,
-          JobTags: S.optional(JobTagsList),
+          JobTags: S.optional(__S(13)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/packages/import-jobs" }),
@@ -2440,7 +2126,7 @@ function __c4(j: number): any {
         identifier: "ReportedRuntimeContextState",
       });
     case 1:
-      return S.Array(ReportedRuntimeContextState);
+      return S.Array(__S(32));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2457,8 +2143,8 @@ function __c4(j: number): any {
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ApplicationInstanceId: S.optional(S.String),
           Arn: S.optional(S.String),
-          Tags: S.optional(TagMap),
-          RuntimeContextStates: S.optional(ReportedRuntimeContextStates),
+          Tags: S.optional(__S(1)),
+          RuntimeContextStates: S.optional(__S(33)),
         }),
       ).annotate({
         identifier: "DescribeApplicationInstanceResponse",
@@ -2489,8 +2175,8 @@ function __c4(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           DefaultRuntimeContextDevice: S.optional(S.String),
-          ManifestPayload: S.optional(ManifestPayload),
-          ManifestOverridesPayload: S.optional(ManifestOverridesPayload),
+          ManifestPayload: S.optional(__S(0)),
+          ManifestOverridesPayload: S.optional(__S(0)),
           ApplicationInstanceIdToReplace: S.optional(S.String),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ApplicationInstanceId: S.optional(S.String),
@@ -2518,7 +2204,7 @@ function __c4(j: number): any {
         S.Struct({
           IpAddress: S.String,
           Mask: S.String,
-          Dns: DnsList,
+          Dns: __S(4),
           DefaultGateway: S.String,
         }),
       ).annotate({
@@ -2528,7 +2214,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConnectionType: S.String,
-          StaticIpConnectionInfo: S.optional(StaticIpConnectionInfo),
+          StaticIpConnectionInfo: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "EthernetPayload",
@@ -2538,15 +2224,15 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ NtpServers: NtpServerList })).annotate({
+      return S.suspend(() => S.Struct({ NtpServers: __S(4) })).annotate({
         identifier: "NtpPayload",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Ethernet0: S.optional(EthernetPayload),
-          Ethernet1: S.optional(EthernetPayload),
-          Ntp: S.optional(NtpPayload),
+          Ethernet0: S.optional(__S(39)),
+          Ethernet1: S.optional(__S(39)),
+          Ntp: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "NetworkPayload" });
     case 2:
@@ -2568,9 +2254,9 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Ethernet0Status: S.optional(EthernetStatus),
-          Ethernet1Status: S.optional(EthernetStatus),
-          NtpStatus: S.optional(NtpStatus),
+          Ethernet0Status: S.optional(__S(42)),
+          Ethernet1Status: S.optional(__S(42)),
+          NtpStatus: S.optional(__S(43)),
           LastUpdatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "NetworkStatus" });
@@ -2579,7 +2265,7 @@ function __c5(j: number): any {
         identifier: "AlternateSoftwareMetadata",
       });
     case 6:
-      return S.Array(AlternateSoftwareMetadata);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2608,14 +2294,14 @@ function __c6(j: number): any {
           LatestSoftware: S.optional(S.String),
           CurrentSoftware: S.optional(S.String),
           SerialNumber: S.optional(S.String),
-          Tags: S.optional(TagMap),
-          NetworkingConfiguration: S.optional(NetworkPayload),
-          CurrentNetworkingStatus: S.optional(NetworkStatus),
+          Tags: S.optional(__S(1)),
+          NetworkingConfiguration: S.optional(__S(41)),
+          CurrentNetworkingStatus: S.optional(__S(44)),
           LeaseExpirationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AlternateSoftwares: S.optional(AlternateSoftwares),
+          AlternateSoftwares: S.optional(__S(46)),
           LatestAlternateSoftware: S.optional(S.String),
           Brand: S.optional(S.String),
-          LatestDeviceJob: S.optional(LatestDeviceJob),
+          LatestDeviceJob: S.optional(__S(47)),
           DeviceAggregatedStatus: S.optional(S.String),
         }),
       ).annotate({
@@ -2667,7 +2353,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "NodeInputPort" });
     case 5:
-      return S.Array(NodeInputPort);
+      return S.Array(__S(52));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2677,15 +2363,15 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "NodeOutputPort" });
     case 7:
-      return S.Array(NodeOutputPort);
+      return S.Array(__S(54));
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Inputs: InputPortList, Outputs: OutputPortList })).annotate(
-        { identifier: "NodeInterface" },
-      );
+      return S.suspend(() => S.Struct({ Inputs: __S(53), Outputs: __S(55) })).annotate({
+        identifier: "NodeInterface",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2698,7 +2384,7 @@ function __c7(j: number): any {
           PackageArn: S.optional(S.String),
           PackageVersion: S.String,
           PatchVersion: S.String,
-          NodeInterface: NodeInterface,
+          NodeInterface: __S(56),
           AssetName: S.optional(S.String),
           Description: S.String,
           CreatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -2735,8 +2421,8 @@ function __c7(j: number): any {
           NodeName: S.String,
           NodeDescription: S.optional(S.String),
           TemplateType: S.String,
-          TemplateParameters: TemplateParametersMap,
-          JobTags: S.optional(JobTagsList),
+          TemplateParameters: __S(11),
+          JobTags: S.optional(__S(13)),
         }),
       ).annotate({
         identifier: "DescribeNodeFromTemplateJobResponse",
@@ -2762,11 +2448,11 @@ function __c7(j: number): any {
           PackageId: S.String,
           PackageName: S.String,
           Arn: S.String,
-          StorageLocation: StorageLocation,
-          ReadAccessPrincipalArns: S.optional(PrincipalArnsList),
-          WriteAccessPrincipalArns: S.optional(PrincipalArnsList),
+          StorageLocation: __S(17),
+          ReadAccessPrincipalArns: S.optional(__S(4)),
+          WriteAccessPrincipalArns: S.optional(__S(4)),
           CreatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          Tags: TagMap,
+          Tags: __S(1),
         }),
       ).annotate({
         identifier: "DescribePackageResponse",
@@ -2800,7 +2486,7 @@ function __c8(j: number): any {
           PackageId: S.String,
           PackageVersion: S.String,
           PatchVersion: S.String,
-          OutputS3Location: OutPutS3Location,
+          OutputS3Location: __S(63),
         }),
       ).annotate({
         identifier: "PackageImportJobOutput",
@@ -2811,14 +2497,14 @@ function __c8(j: number): any {
           JobId: S.String,
           ClientToken: S.optional(S.String),
           JobType: S.String,
-          InputConfig: PackageImportJobInputConfig,
-          OutputConfig: PackageImportJobOutputConfig,
-          Output: PackageImportJobOutput,
+          InputConfig: __S(21),
+          OutputConfig: __S(23),
+          Output: __S(64),
           CreatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           LastUpdatedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           Status: S.String,
           StatusMessage: S.String,
-          JobTags: S.optional(JobTagsList),
+          JobTags: S.optional(__S(13)),
         }),
       ).annotate({
         identifier: "DescribePackageImportJobResponse",
@@ -2894,11 +2580,11 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "PackageObject" });
     case 6:
-      return S.Array(PackageObject);
+      return S.Array(__S(69));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          PackageObjects: S.optional(PackageObjects),
+          PackageObjects: S.optional(__S(70)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2943,11 +2629,11 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "NodeInstance" });
     case 2:
-      return S.Array(NodeInstance);
+      return S.Array(__S(73));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          NodeInstances: S.optional(NodeInstances),
+          NodeInstances: S.optional(__S(74)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2986,18 +2672,18 @@ function __c9(j: number): any {
           StatusDescription: S.optional(S.String),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Arn: S.optional(S.String),
-          Tags: S.optional(TagMap),
-          RuntimeContextStates: S.optional(ReportedRuntimeContextStates),
+          Tags: S.optional(__S(1)),
+          RuntimeContextStates: S.optional(__S(33)),
         }),
       ).annotate({
         identifier: "ApplicationInstance",
       });
     case 6:
-      return S.Array(ApplicationInstance);
+      return S.Array(__S(77));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ApplicationInstances: S.optional(ApplicationInstances),
+          ApplicationInstances: S.optional(__S(78)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3034,17 +2720,17 @@ function __c10(j: number): any {
           Brand: S.optional(S.String),
           CurrentSoftware: S.optional(S.String),
           Description: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(1)),
           Type: S.optional(S.String),
-          LatestDeviceJob: S.optional(LatestDeviceJob),
+          LatestDeviceJob: S.optional(__S(47)),
           DeviceAggregatedStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "Device" });
     case 2:
-      return S.Array(Device);
+      return S.Array(__S(81));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Devices: DeviceList, NextToken: S.optional(S.String) }),
+        S.Struct({ Devices: __S(82), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDevicesResponse",
       });
@@ -3069,11 +2755,11 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "DeviceJob" });
     case 6:
-      return S.Array(DeviceJob);
+      return S.Array(__S(85));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          DeviceJobs: S.optional(DeviceJobList),
+          DeviceJobs: S.optional(__S(86)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3115,11 +2801,11 @@ function __c11(j: number): any {
         identifier: "NodeFromTemplateJob",
       });
     case 2:
-      return S.Array(NodeFromTemplateJob);
+      return S.Array(__S(89));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          NodeFromTemplateJobs: NodeFromTemplateJobList,
+          NodeFromTemplateJobs: __S(90),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3156,10 +2842,10 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "Node" });
     case 6:
-      return S.Array(Node);
+      return S.Array(__S(93));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Nodes: S.optional(NodesList), NextToken: S.optional(S.String) }),
+        S.Struct({ Nodes: S.optional(__S(94)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListNodesResponse",
       });
@@ -3199,11 +2885,11 @@ function __c12(j: number): any {
         identifier: "PackageImportJob",
       });
     case 2:
-      return S.Array(PackageImportJob);
+      return S.Array(__S(97));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          PackageImportJobs: PackageImportJobList,
+          PackageImportJobs: __S(98),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3225,17 +2911,17 @@ function __c12(j: number): any {
           PackageName: S.optional(S.String),
           Arn: S.optional(S.String),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "PackageListItem",
       });
     case 6:
-      return S.Array(PackageListItem);
+      return S.Array(__S(101));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Packages: S.optional(PackageList),
+          Packages: S.optional(__S(102)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3261,7 +2947,7 @@ function __c13(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagMap) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(1)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 2:
@@ -3269,8 +2955,8 @@ function __c13(j: number): any {
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          Tags: S.optional(TagMap),
-          NetworkingConfiguration: S.optional(NetworkPayload),
+          Tags: S.optional(__S(1)),
+          NetworkingConfiguration: S.optional(__S(41)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/devices" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ProvisionDeviceRequest",
@@ -3336,7 +3022,7 @@ function __c13(j: number): any {
         identifier: "NodeSignal",
       });
     case 7:
-      return S.Array(NodeSignal);
+      return S.Array(__S(110));
   }
 }
 function __c14(j: number): any {
@@ -3345,7 +3031,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ApplicationInstanceId: S.String.pipe(T.HttpLabel("ApplicationInstanceId")),
-          NodeSignals: NodeSignalList,
+          NodeSignals: __S(111),
         }).pipe(
           T.all(
             T.Http({
@@ -3366,7 +3052,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: TagMap,
+          Tags: __S(1),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -3384,7 +3070,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(4).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -3421,12 +3107,51 @@ function __c14(j: number): any {
         identifier: "ValidationExceptionErrorArgument",
       });
     case 5:
-      return S.Array(ValidationExceptionErrorArgument);
+      return S.Array(__S(116));
     case 6:
       return S.suspend(() => S.Struct({ Name: S.String, Message: S.String })).annotate({
         identifier: "ValidationExceptionField",
       });
     case 7:
-      return S.Array(ValidationExceptionField);
+      return S.Array(__S(118));
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
   }
 }

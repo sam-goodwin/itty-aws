@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://dynamodb.amazonaws.com/doc/2012-08-10/");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "DynamoDB",
@@ -388,7 +390,7 @@ export class ConditionalCheckFailedException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       Item: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => AttributeMap).annotate({ identifier: "AttributeMap" }),
+        /*@__PURE__*/ S.suspend(() => __S(9)).annotate({ identifier: "AttributeMap" }),
       ),
     },
   ).pipe(C.withConflictError) {}
@@ -479,7 +481,7 @@ export class ProvisionedThroughputExceededException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       ThrottlingReasons: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ThrottlingReasonList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(287)).annotate({
           identifier: "ThrottlingReasonList",
         }),
       ),
@@ -504,7 +506,7 @@ export class RequestLimitExceeded
   extends /*@__PURE__*/ S.TaggedError<RequestLimitExceeded>()("RequestLimitExceeded", {
     message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     ThrottlingReasons: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => ThrottlingReasonList).annotate({
+      /*@__PURE__*/ S.suspend(() => __S(287)).annotate({
         identifier: "ThrottlingReasonList",
       }),
     ),
@@ -536,7 +538,7 @@ export class ThrottlingException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       throttlingReasons: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ThrottlingReasonList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(287)).annotate({
           identifier: "ThrottlingReasonList",
         }),
       ),
@@ -552,7 +554,7 @@ export class TransactionCanceledException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       CancellationReasons: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => CancellationReasonList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(289)).annotate({
           identifier: "CancellationReasonList",
         }),
       ),
@@ -573,16 +575,11 @@ export type StringAttributeValue = string;
 export type NumberAttributeValue = string;
 export type BinaryAttributeValue = Uint8Array;
 export type StringSetAttributeValue = string[];
-const StringSetAttributeValue = /*@__PURE__*/ __L.at(__c0, 0);
 export type NumberSetAttributeValue = string[];
-const NumberSetAttributeValue = StringSetAttributeValue as any as S.Schema<NumberSetAttributeValue>;
 export type BinarySetAttributeValue = Uint8Array[];
-const BinarySetAttributeValue = /*@__PURE__*/ __L.at(__c0, 1);
 export type AttributeName = string;
 export type MapAttributeValue = { [key: string]: AttributeValue | undefined };
-const MapAttributeValue = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<MapAttributeValue>;
 export type ListAttributeValue = AttributeValue[];
-const ListAttributeValue = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ListAttributeValue>;
 export type NullAttributeValue = boolean;
 export type BooleanAttributeValue = boolean;
 export type AttributeValue =
@@ -706,36 +703,21 @@ export type AttributeValue =
       NULL?: never;
       BOOL: boolean;
     };
-const AttributeValue = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AttributeValue>;
 export type PreparedStatementParameters = AttributeValue[];
-const PreparedStatementParameters = /*@__PURE__*/ __L.at(__c0, 5);
 export type ConsistentRead = boolean;
 export type ReturnValuesOnConditionCheckFailure = "ALL_OLD" | "NONE" | (string & {});
-const ReturnValuesOnConditionCheckFailure = S.String;
-
 export interface BatchStatementRequest {
   Statement: string;
   Parameters?: AttributeValue[];
   ConsistentRead?: boolean;
   ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
-const BatchStatementRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<BatchStatementRequest>;
 export type PartiQLBatchRequest = BatchStatementRequest[];
-const PartiQLBatchRequest = /*@__PURE__*/ __L.at(__c0, 7);
 export type ReturnConsumedCapacity = "INDEXES" | "TOTAL" | "NONE" | (string & {});
-const ReturnConsumedCapacity = S.String;
-
 export interface BatchExecuteStatementInput {
   Statements: BatchStatementRequest[];
   ReturnConsumedCapacity?: ReturnConsumedCapacity;
 }
-const BatchExecuteStatementInput = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<BatchExecuteStatementInput>;
 export type BatchStatementErrorCodeEnum =
   | "ConditionalCheckFailed"
   | "ItemCollectionSizeLimitExceeded"
@@ -749,28 +731,19 @@ export type BatchStatementErrorCodeEnum =
   | "AccessDenied"
   | "DuplicateItem"
   | (string & {});
-const BatchStatementErrorCodeEnum = S.String;
-
 export type AttributeMap = { [key: string]: AttributeValue | undefined };
-const AttributeMap = /*@__PURE__*/ __L.at(__c1, 1);
 export interface BatchStatementError {
   Code?: BatchStatementErrorCodeEnum;
   Message?: string;
   Item?: { [key: string]: AttributeValue | undefined };
 }
-const BatchStatementError = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<BatchStatementError>;
 export type TableName = string;
 export interface BatchStatementResponse {
   Error?: BatchStatementError;
   TableName?: string;
   Item?: { [key: string]: AttributeValue | undefined };
 }
-const BatchStatementResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<BatchStatementResponse>;
 export type PartiQLBatchResponse = BatchStatementResponse[];
-const PartiQLBatchResponse = /*@__PURE__*/ __L.at(__c1, 4);
 export type TableArn = string;
 export type ConsumedCapacityUnits = number;
 export interface Capacity {
@@ -778,17 +751,13 @@ export interface Capacity {
   WriteCapacityUnits?: number;
   CapacityUnits?: number;
 }
-const Capacity = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Capacity>;
 export type IndexName = string;
 export type SecondaryIndexesCapacityMap = { [key: string]: Capacity | undefined };
-const SecondaryIndexesCapacityMap = /*@__PURE__*/ __L.at(__c1, 6);
 export interface VectorCapacity {
   VectorSearchRequestBytes?: number;
   VectorWriteRequestBytes?: number;
 }
-const VectorCapacity = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<VectorCapacity>;
 export type VectorIndexesCapacityMap = { [key: string]: VectorCapacity | undefined };
-const VectorIndexesCapacityMap = /*@__PURE__*/ __L.at(__c2, 0);
 export interface ConsumedCapacity {
   TableName?: string;
   CapacityUnits?: number;
@@ -799,27 +768,17 @@ export interface ConsumedCapacity {
   GlobalSecondaryIndexes?: { [key: string]: Capacity | undefined };
   VectorIndexes?: { [key: string]: VectorCapacity | undefined };
 }
-const ConsumedCapacity = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ConsumedCapacity>;
 export type ConsumedCapacityMultiple = ConsumedCapacity[];
-const ConsumedCapacityMultiple = /*@__PURE__*/ __L.at(__c2, 2);
 export interface BatchExecuteStatementOutput {
   Responses?: BatchStatementResponse[];
   ConsumedCapacity?: ConsumedCapacity[];
 }
-const BatchExecuteStatementOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<BatchExecuteStatementOutput>;
 export type Key = { [key: string]: AttributeValue | undefined };
-const Key = AttributeMap as any as S.Schema<Key>;
 export type KeyList = { [key: string]: AttributeValue | undefined }[];
-const KeyList = /*@__PURE__*/ __L.at(__c2, 4);
 export type AttributeNameList = string[];
-const AttributeNameList = StringSetAttributeValue as any as S.Schema<AttributeNameList>;
 export type ProjectionExpression = string;
 export type ExpressionAttributeNameVariable = string;
 export type ExpressionAttributeNameMap = { [key: string]: string | undefined };
-const ExpressionAttributeNameMap = /*@__PURE__*/ __L.at(__c2, 5);
 export interface KeysAndAttributes {
   Keys: { [key: string]: AttributeValue | undefined }[];
   AttributesToGet?: string[];
@@ -827,92 +786,62 @@ export interface KeysAndAttributes {
   ProjectionExpression?: string;
   ExpressionAttributeNames?: { [key: string]: string | undefined };
 }
-const KeysAndAttributes = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<KeysAndAttributes>;
 export type BatchGetRequestMap = { [key: string]: KeysAndAttributes | undefined };
-const BatchGetRequestMap = /*@__PURE__*/ __L.at(__c2, 7);
 export interface BatchGetItemInput {
   RequestItems: { [key: string]: KeysAndAttributes | undefined };
   ReturnConsumedCapacity?: ReturnConsumedCapacity;
 }
-const BatchGetItemInput = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<BatchGetItemInput>;
 export type ItemList = { [key: string]: AttributeValue | undefined }[];
-const ItemList = KeyList as any as S.Schema<ItemList>;
 export type BatchGetResponseMap = {
   [key: string]: { [key: string]: AttributeValue | undefined }[] | undefined;
 };
-const BatchGetResponseMap = /*@__PURE__*/ __L.at(__c3, 1);
 export interface BatchGetItemOutput {
   Responses?: { [key: string]: { [key: string]: AttributeValue | undefined }[] | undefined };
   UnprocessedKeys?: { [key: string]: KeysAndAttributes | undefined };
   ConsumedCapacity?: ConsumedCapacity[];
 }
-const BatchGetItemOutput = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<BatchGetItemOutput>;
 export type PutItemInputAttributeMap = { [key: string]: AttributeValue | undefined };
-const PutItemInputAttributeMap = AttributeMap as any as S.Schema<PutItemInputAttributeMap>;
 export interface PutRequest {
   Item: { [key: string]: AttributeValue | undefined };
 }
-const PutRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<PutRequest>;
 export interface DeleteRequest {
   Key: { [key: string]: AttributeValue | undefined };
 }
-const DeleteRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DeleteRequest>;
 export interface WriteRequest {
   PutRequest?: PutRequest;
   DeleteRequest?: DeleteRequest;
 }
-const WriteRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<WriteRequest>;
 export type WriteRequests = WriteRequest[];
-const WriteRequests = /*@__PURE__*/ __L.at(__c3, 6);
 export type BatchWriteItemRequestMap = { [key: string]: WriteRequest[] | undefined };
-const BatchWriteItemRequestMap = /*@__PURE__*/ __L.at(__c3, 7);
 export type ReturnItemCollectionMetrics = "SIZE" | "NONE" | (string & {});
-const ReturnItemCollectionMetrics = S.String;
-
 export interface BatchWriteItemInput {
   RequestItems: { [key: string]: WriteRequest[] | undefined };
   ReturnConsumedCapacity?: ReturnConsumedCapacity;
   ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics;
 }
-const BatchWriteItemInput = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<BatchWriteItemInput>;
 export type ItemCollectionKeyAttributeMap = { [key: string]: AttributeValue | undefined };
-const ItemCollectionKeyAttributeMap =
-  AttributeMap as any as S.Schema<ItemCollectionKeyAttributeMap>;
 export type ItemCollectionSizeEstimateBound = number;
 export type ItemCollectionSizeEstimateRange = number[];
-const ItemCollectionSizeEstimateRange = /*@__PURE__*/ __L.at(__c4, 1);
 export interface ItemCollectionMetrics {
   ItemCollectionKey?: { [key: string]: AttributeValue | undefined };
   SizeEstimateRangeGB?: number[];
 }
-const ItemCollectionMetrics = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ItemCollectionMetrics>;
 export type ItemCollectionMetricsMultiple = ItemCollectionMetrics[];
-const ItemCollectionMetricsMultiple = /*@__PURE__*/ __L.at(__c4, 3);
 export type ItemCollectionMetricsPerTable = { [key: string]: ItemCollectionMetrics[] | undefined };
-const ItemCollectionMetricsPerTable = /*@__PURE__*/ __L.at(__c4, 4);
 export interface BatchWriteItemOutput {
   UnprocessedItems?: { [key: string]: WriteRequest[] | undefined };
   ItemCollectionMetrics?: { [key: string]: ItemCollectionMetrics[] | undefined };
   ConsumedCapacity?: ConsumedCapacity[];
 }
-const BatchWriteItemOutput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<BatchWriteItemOutput>;
 export type BackupName = string;
 export interface CreateBackupInput {
   TableName: string;
   BackupName: string;
 }
-const CreateBackupInput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<CreateBackupInput>;
 export type BackupArn = string;
 export type BackupSizeBytes = number;
 export type BackupStatus = "CREATING" | "DELETED" | "AVAILABLE" | (string & {});
-const BackupStatus = S.String;
-
 export type BackupType = "USER" | "SYSTEM" | "AWS_BACKUP" | (string & {});
-const BackupType = S.String;
-
 export type BackupCreationDateTime = Date;
 export interface BackupDetails {
   BackupArn: string;
@@ -923,26 +852,18 @@ export interface BackupDetails {
   BackupCreationDateTime: Date;
   BackupExpiryDateTime?: Date;
 }
-const BackupDetails = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<BackupDetails>;
 export interface CreateBackupOutput {
   BackupDetails?: BackupDetails;
 }
-const CreateBackupOutput = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<CreateBackupOutput>;
 export type RegionName = string;
 export interface Replica {
   RegionName?: string;
 }
-const Replica = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Replica>;
 export type ReplicaList = Replica[];
-const ReplicaList = /*@__PURE__*/ __L.at(__c5, 2);
 export interface CreateGlobalTableInput {
   GlobalTableName: string;
   ReplicationGroup: Replica[];
 }
-const CreateGlobalTableInput = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CreateGlobalTableInput>;
 export type ReplicaStatus =
   | "CREATING"
   | "CREATION_FAILED"
@@ -955,8 +876,6 @@ export type ReplicaStatus =
   | "ARCHIVED"
   | "REPLICATION_NOT_AUTHORIZED"
   | (string & {});
-const ReplicaStatus = S.String;
-
 export type ReplicaStatusDescription = string;
 export type ReplicaStatusPercentProgress = string;
 export type KMSMasterKeyId = string;
@@ -964,18 +883,10 @@ export type PositiveLongObject = number;
 export interface ProvisionedThroughputOverride {
   ReadCapacityUnits?: number;
 }
-const ProvisionedThroughputOverride = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ProvisionedThroughputOverride>;
 export type LongObject = number;
 export interface OnDemandThroughputOverride {
   MaxReadRequestUnits?: number;
 }
-const OnDemandThroughputOverride = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<OnDemandThroughputOverride>;
 export type TableStatus =
   | "CREATING"
   | "UPDATING"
@@ -986,54 +897,34 @@ export type TableStatus =
   | "ARCHIVED"
   | "REPLICATION_NOT_AUTHORIZED"
   | (string & {});
-const TableStatus = S.String;
-
 export interface TableWarmThroughputDescription {
   ReadUnitsPerSecond?: number;
   WriteUnitsPerSecond?: number;
   Status?: TableStatus;
 }
-const TableWarmThroughputDescription = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<TableWarmThroughputDescription>;
 export type IndexStatus = "CREATING" | "UPDATING" | "DELETING" | "ACTIVE" | (string & {});
-const IndexStatus = S.String;
-
 export interface GlobalSecondaryIndexWarmThroughputDescription {
   ReadUnitsPerSecond?: number;
   WriteUnitsPerSecond?: number;
   Status?: IndexStatus;
 }
-const GlobalSecondaryIndexWarmThroughputDescription =
-  TableWarmThroughputDescription as any as S.Schema<GlobalSecondaryIndexWarmThroughputDescription>;
 export interface ReplicaGlobalSecondaryIndexDescription {
   IndexName?: string;
   ProvisionedThroughputOverride?: ProvisionedThroughputOverride;
   OnDemandThroughputOverride?: OnDemandThroughputOverride;
   WarmThroughput?: GlobalSecondaryIndexWarmThroughputDescription;
 }
-const ReplicaGlobalSecondaryIndexDescription = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ReplicaGlobalSecondaryIndexDescription>;
 export type ReplicaGlobalSecondaryIndexDescriptionList = ReplicaGlobalSecondaryIndexDescription[];
-const ReplicaGlobalSecondaryIndexDescriptionList = /*@__PURE__*/ __L.at(__c6, 0);
 export type TableClass = "STANDARD" | "STANDARD_INFREQUENT_ACCESS" | (string & {});
-const TableClass = S.String;
-
 export interface TableClassSummary {
   TableClass?: TableClass;
   LastUpdateDateTime?: Date;
 }
-const TableClassSummary = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<TableClassSummary>;
 export type GlobalTableSettingsReplicationMode =
   | "ENABLED"
   | "DISABLED"
   | "ENABLED_WITH_OVERRIDES"
   | (string & {});
-const GlobalTableSettingsReplicationMode = S.String;
-
 export interface ReplicaDescription {
   RegionName?: string;
   ReplicaStatus?: ReplicaStatus;
@@ -1049,13 +940,9 @@ export interface ReplicaDescription {
   ReplicaTableClassSummary?: TableClassSummary;
   GlobalTableSettingsReplicationMode?: GlobalTableSettingsReplicationMode;
 }
-const ReplicaDescription = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ReplicaDescription>;
 export type ReplicaDescriptionList = ReplicaDescription[];
-const ReplicaDescriptionList = /*@__PURE__*/ __L.at(__c6, 3);
 export type GlobalTableArnString = string;
 export type GlobalTableStatus = "CREATING" | "ACTIVE" | "DELETING" | "UPDATING" | (string & {});
-const GlobalTableStatus = S.String;
-
 export interface GlobalTableDescription {
   ReplicationGroup?: ReplicaDescription[];
   GlobalTableArn?: string;
@@ -1063,75 +950,47 @@ export interface GlobalTableDescription {
   GlobalTableStatus?: GlobalTableStatus;
   GlobalTableName?: string;
 }
-const GlobalTableDescription = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GlobalTableDescription>;
 export interface CreateGlobalTableOutput {
   GlobalTableDescription?: GlobalTableDescription;
 }
-const CreateGlobalTableOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CreateGlobalTableOutput>;
 export type KeySchemaAttributeName = string;
 export type ScalarAttributeType = "S" | "N" | "B" | (string & {});
-const ScalarAttributeType = S.String;
-
 export interface AttributeDefinition {
   AttributeName: string;
   AttributeType: ScalarAttributeType;
 }
-const AttributeDefinition = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<AttributeDefinition>;
 export type AttributeDefinitions = AttributeDefinition[];
-const AttributeDefinitions = /*@__PURE__*/ __L.at(__c6, 7);
 export type KeyType = "HASH" | "RANGE" | (string & {});
-const KeyType = S.String;
-
 export interface KeySchemaElement {
   AttributeName: string;
   KeyType: KeyType;
 }
-const KeySchemaElement = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<KeySchemaElement>;
 export type KeySchema = KeySchemaElement[];
-const KeySchema = /*@__PURE__*/ __L.at(__c7, 1);
 export type ProjectionType = "ALL" | "KEYS_ONLY" | "INCLUDE" | (string & {});
-const ProjectionType = S.String;
-
 export type NonKeyAttributeName = string;
 export type NonKeyAttributeNameList = string[];
-const NonKeyAttributeNameList = StringSetAttributeValue as any as S.Schema<NonKeyAttributeNameList>;
 export interface Projection {
   ProjectionType?: ProjectionType;
   NonKeyAttributes?: string[];
 }
-const Projection = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<Projection>;
 export interface LocalSecondaryIndex {
   IndexName: string;
   KeySchema: KeySchemaElement[];
   Projection: Projection;
 }
-const LocalSecondaryIndex = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<LocalSecondaryIndex>;
 export type LocalSecondaryIndexList = LocalSecondaryIndex[];
-const LocalSecondaryIndexList = /*@__PURE__*/ __L.at(__c7, 4);
 export interface ProvisionedThroughput {
   ReadCapacityUnits: number;
   WriteCapacityUnits: number;
 }
-const ProvisionedThroughput = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ProvisionedThroughput>;
 export interface OnDemandThroughput {
   MaxReadRequestUnits?: number;
   MaxWriteRequestUnits?: number;
 }
-const OnDemandThroughput = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<OnDemandThroughput>;
 export interface WarmThroughput {
   ReadUnitsPerSecond?: number;
   WriteUnitsPerSecond?: number;
 }
-const WarmThroughput = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<WarmThroughput>;
 export interface GlobalSecondaryIndex {
   IndexName: string;
   KeySchema: KeySchemaElement[];
@@ -1140,12 +999,8 @@ export interface GlobalSecondaryIndex {
   OnDemandThroughput?: OnDemandThroughput;
   WarmThroughput?: WarmThroughput;
 }
-const GlobalSecondaryIndex = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<GlobalSecondaryIndex>;
 export type GlobalSecondaryIndexList = GlobalSecondaryIndex[];
-const GlobalSecondaryIndexList = /*@__PURE__*/ __L.at(__c8, 1);
 export type BillingMode = "PROVISIONED" | "PAY_PER_REQUEST" | (string & {});
-const BillingMode = S.String;
-
 export type StreamEnabled = boolean;
 export type StreamViewType =
   | "NEW_IMAGE"
@@ -1153,55 +1008,37 @@ export type StreamViewType =
   | "NEW_AND_OLD_IMAGES"
   | "KEYS_ONLY"
   | (string & {});
-const StreamViewType = S.String;
-
 export interface StreamSpecification {
   StreamEnabled: boolean;
   StreamViewType?: StreamViewType;
 }
-const StreamSpecification = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<StreamSpecification>;
 export type SSEEnabled = boolean;
 export type SSEType = "AES256" | "KMS" | (string & {});
-const SSEType = S.String;
-
 export interface SSESpecification {
   Enabled?: boolean;
   SSEType?: SSEType;
   KMSMasterKeyId?: string;
 }
-const SSESpecification = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<SSESpecification>;
 export type TagKeyString = string;
 export type TagValueString = string;
 export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c8, 5);
 export type DeletionProtectionEnabled = boolean;
 export type ResourcePolicy = string;
 export type VectorAttributeName = string;
 export interface VectorAttributeDefinition {
   AttributeName: string;
 }
-const VectorAttributeDefinition = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<VectorAttributeDefinition>;
 export type SearchSchemaElementType = "HASH" | "INLINE_FILTER" | (string & {});
-const SearchSchemaElementType = S.String;
-
 export interface SearchSchemaElement {
   AttributeName: string;
   SearchSchemaElementType: SearchSchemaElementType;
 }
-const SearchSchemaElement = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<SearchSchemaElement>;
 export type SearchSchema = SearchSchemaElement[];
-const SearchSchema = /*@__PURE__*/ __L.at(__c9, 0);
 export type VectorDistanceFunction = "COSINE" | "DOT_PRODUCT" | "EUCLIDEAN" | (string & {});
-const VectorDistanceFunction = S.String;
-
 export interface VectorIndex {
   IndexName: string;
   VectorAttribute: VectorAttributeDefinition;
@@ -1210,9 +1047,7 @@ export interface VectorIndex {
   Dimensions: number;
   DistanceFunction: VectorDistanceFunction;
 }
-const VectorIndex = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<VectorIndex>;
 export type VectorIndexList = VectorIndex[];
-const VectorIndexList = /*@__PURE__*/ __L.at(__c9, 2);
 export interface CreateTableInput {
   AttributeDefinitions?: AttributeDefinition[];
   TableName: string;
@@ -1233,7 +1068,6 @@ export interface CreateTableInput {
   GlobalTableSettingsReplicationMode?: GlobalTableSettingsReplicationMode;
   VectorIndexes?: VectorIndex[];
 }
-const CreateTableInput = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<CreateTableInput>;
 export type NonNegativeLongObject = number;
 export interface ProvisionedThroughputDescription {
   LastIncreaseDateTime?: Date;
@@ -1242,16 +1076,11 @@ export interface ProvisionedThroughputDescription {
   ReadCapacityUnits?: number;
   WriteCapacityUnits?: number;
 }
-const ProvisionedThroughputDescription = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ProvisionedThroughputDescription>;
 export type TableId = string;
 export interface BillingModeSummary {
   BillingMode?: BillingMode;
   LastUpdateToPayPerRequestDateTime?: Date;
 }
-const BillingModeSummary = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<BillingModeSummary>;
 export interface LocalSecondaryIndexDescription {
   IndexName?: string;
   KeySchema?: KeySchemaElement[];
@@ -1260,12 +1089,7 @@ export interface LocalSecondaryIndexDescription {
   ItemCount?: number;
   IndexArn?: string;
 }
-const LocalSecondaryIndexDescription = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<LocalSecondaryIndexDescription>;
 export type LocalSecondaryIndexDescriptionList = LocalSecondaryIndexDescription[];
-const LocalSecondaryIndexDescriptionList = /*@__PURE__*/ __L.at(__c9, 7);
 export type Backfilling = boolean;
 export interface GlobalSecondaryIndexDescription {
   IndexName?: string;
@@ -1280,26 +1104,14 @@ export interface GlobalSecondaryIndexDescription {
   OnDemandThroughput?: OnDemandThroughput;
   WarmThroughput?: GlobalSecondaryIndexWarmThroughputDescription;
 }
-const GlobalSecondaryIndexDescription = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GlobalSecondaryIndexDescription>;
 export type GlobalSecondaryIndexDescriptionList = GlobalSecondaryIndexDescription[];
-const GlobalSecondaryIndexDescriptionList = /*@__PURE__*/ __L.at(__c10, 1);
 export type StreamArn = string;
 export type WitnessStatus = "CREATING" | "DELETING" | "ACTIVE" | (string & {});
-const WitnessStatus = S.String;
-
 export interface GlobalTableWitnessDescription {
   RegionName?: string;
   WitnessStatus?: WitnessStatus;
 }
-const GlobalTableWitnessDescription = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GlobalTableWitnessDescription>;
 export type GlobalTableWitnessDescriptionList = GlobalTableWitnessDescription[];
-const GlobalTableWitnessDescriptionList = /*@__PURE__*/ __L.at(__c10, 3);
 export type RestoreInProgress = boolean;
 export interface RestoreSummary {
   SourceBackupArn?: string;
@@ -1307,7 +1119,6 @@ export interface RestoreSummary {
   RestoreDateTime: Date;
   RestoreInProgress: boolean;
 }
-const RestoreSummary = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<RestoreSummary>;
 export type SSEStatus =
   | "ENABLING"
   | "ENABLED"
@@ -1315,8 +1126,6 @@ export type SSEStatus =
   | "DISABLED"
   | "UPDATING"
   | (string & {});
-const SSEStatus = S.String;
-
 export type KMSMasterKeyArn = string;
 export interface SSEDescription {
   Status?: SSEStatus;
@@ -1324,17 +1133,13 @@ export interface SSEDescription {
   KMSMasterKeyArn?: string;
   InaccessibleEncryptionDateTime?: Date;
 }
-const SSEDescription = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<SSEDescription>;
 export type ArchivalReason = string;
 export interface ArchivalSummary {
   ArchivalDateTime?: Date;
   ArchivalReason?: string;
   ArchivalBackupArn?: string;
 }
-const ArchivalSummary = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ArchivalSummary>;
 export type MultiRegionConsistency = "EVENTUAL" | "STRONG" | (string & {});
-const MultiRegionConsistency = S.String;
-
 export interface VectorIndexDescription {
   IndexName?: string;
   SearchSchema?: SearchSchemaElement[];
@@ -1348,12 +1153,7 @@ export interface VectorIndexDescription {
   ItemCount?: number;
   IndexArn?: string;
 }
-const VectorIndexDescription = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<VectorIndexDescription>;
 export type VectorIndexDescriptionList = VectorIndexDescription[];
-const VectorIndexDescriptionList = /*@__PURE__*/ __L.at(__c11, 0);
 export interface TableDescription {
   AttributeDefinitions?: AttributeDefinition[];
   TableName?: string;
@@ -1385,15 +1185,12 @@ export interface TableDescription {
   MultiRegionConsistency?: MultiRegionConsistency;
   VectorIndexes?: VectorIndexDescription[];
 }
-const TableDescription = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<TableDescription>;
 export interface CreateTableOutput {
   TableDescription?: TableDescription;
 }
-const CreateTableOutput = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<CreateTableOutput>;
 export interface DeleteBackupInput {
   BackupArn: string;
 }
-const DeleteBackupInput = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<DeleteBackupInput>;
 export type TableCreationDateTime = Date;
 export type ItemCount = number;
 export interface SourceTableDetails {
@@ -1408,18 +1205,12 @@ export interface SourceTableDetails {
   ItemCount?: number;
   BillingMode?: BillingMode;
 }
-const SourceTableDetails = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<SourceTableDetails>;
 export interface LocalSecondaryIndexInfo {
   IndexName?: string;
   KeySchema?: KeySchemaElement[];
   Projection?: Projection;
 }
-const LocalSecondaryIndexInfo = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<LocalSecondaryIndexInfo>;
 export type LocalSecondaryIndexes = LocalSecondaryIndexInfo[];
-const LocalSecondaryIndexes = /*@__PURE__*/ __L.at(__c11, 6);
 export interface GlobalSecondaryIndexInfo {
   IndexName?: string;
   KeySchema?: KeySchemaElement[];
@@ -1427,24 +1218,13 @@ export interface GlobalSecondaryIndexInfo {
   ProvisionedThroughput?: ProvisionedThroughput;
   OnDemandThroughput?: OnDemandThroughput;
 }
-const GlobalSecondaryIndexInfo = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GlobalSecondaryIndexInfo>;
 export type GlobalSecondaryIndexes = GlobalSecondaryIndexInfo[];
-const GlobalSecondaryIndexes = /*@__PURE__*/ __L.at(__c12, 0);
 export type TimeToLiveStatus = "ENABLING" | "DISABLING" | "ENABLED" | "DISABLED" | (string & {});
-const TimeToLiveStatus = S.String;
-
 export type TimeToLiveAttributeName = string;
 export interface TimeToLiveDescription {
   TimeToLiveStatus?: TimeToLiveStatus;
   AttributeName?: string;
 }
-const TimeToLiveDescription = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<TimeToLiveDescription>;
 export interface VectorIndexInfo {
   IndexName?: string;
   VectorAttribute?: VectorAttributeDefinition;
@@ -1453,9 +1233,7 @@ export interface VectorIndexInfo {
   Dimensions?: number;
   DistanceFunction?: VectorDistanceFunction;
 }
-const VectorIndexInfo = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<VectorIndexInfo>;
 export type VectorIndexes = VectorIndexInfo[];
-const VectorIndexes = /*@__PURE__*/ __L.at(__c12, 3);
 export interface SourceTableFeatureDetails {
   LocalSecondaryIndexes?: LocalSecondaryIndexInfo[];
   GlobalSecondaryIndexes?: GlobalSecondaryIndexInfo[];
@@ -1464,20 +1242,14 @@ export interface SourceTableFeatureDetails {
   SSEDescription?: SSEDescription;
   VectorIndexes?: VectorIndexInfo[];
 }
-const SourceTableFeatureDetails = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<SourceTableFeatureDetails>;
 export interface BackupDescription {
   BackupDetails?: BackupDetails;
   SourceTableDetails?: SourceTableDetails;
   SourceTableFeatureDetails?: SourceTableFeatureDetails;
 }
-const BackupDescription = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<BackupDescription>;
 export interface DeleteBackupOutput {
   BackupDescription?: BackupDescription;
 }
-const DeleteBackupOutput = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<DeleteBackupOutput>;
 export type ComparisonOperator =
   | "EQ"
   | "NE"
@@ -1493,25 +1265,15 @@ export type ComparisonOperator =
   | "NOT_CONTAINS"
   | "BEGINS_WITH"
   | (string & {});
-const ComparisonOperator = S.String;
-
 export type AttributeValueList = AttributeValue[];
-const AttributeValueList = PreparedStatementParameters as any as S.Schema<AttributeValueList>;
 export interface ExpectedAttributeValue {
   Value?: AttributeValue;
   Exists?: boolean;
   ComparisonOperator?: ComparisonOperator;
   AttributeValueList?: AttributeValue[];
 }
-const ExpectedAttributeValue = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ExpectedAttributeValue>;
 export type ExpectedAttributeMap = { [key: string]: ExpectedAttributeValue | undefined };
-const ExpectedAttributeMap = /*@__PURE__*/ __L.at(__c13, 0);
 export type ConditionalOperator = "AND" | "OR" | (string & {});
-const ConditionalOperator = S.String;
-
 export type ReturnValue =
   | "NONE"
   | "ALL_OLD"
@@ -1519,12 +1281,9 @@ export type ReturnValue =
   | "ALL_NEW"
   | "UPDATED_NEW"
   | (string & {});
-const ReturnValue = S.String;
-
 export type ConditionExpression = string;
 export type ExpressionAttributeValueVariable = string;
 export type ExpressionAttributeValueMap = { [key: string]: AttributeValue | undefined };
-const ExpressionAttributeValueMap = AttributeMap as any as S.Schema<ExpressionAttributeValueMap>;
 export interface DeleteItemInput {
   TableName: string;
   Key: { [key: string]: AttributeValue | undefined };
@@ -1538,59 +1297,37 @@ export interface DeleteItemInput {
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
   ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
-const DeleteItemInput = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<DeleteItemInput>;
 export interface DeleteItemOutput {
   Attributes?: { [key: string]: AttributeValue | undefined };
   ConsumedCapacity?: ConsumedCapacity;
   ItemCollectionMetrics?: ItemCollectionMetrics;
 }
-const DeleteItemOutput = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<DeleteItemOutput>;
 export type ResourceArnString = string;
 export type PolicyRevisionId = string;
 export interface DeleteResourcePolicyInput {
   ResourceArn: string;
   ExpectedRevisionId?: string;
 }
-const DeleteResourcePolicyInput = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<DeleteResourcePolicyInput>;
 export interface DeleteResourcePolicyOutput {
   RevisionId?: string;
 }
-const DeleteResourcePolicyOutput = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<DeleteResourcePolicyOutput>;
 export interface DeleteTableInput {
   TableName: string;
 }
-const DeleteTableInput = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<DeleteTableInput>;
 export interface DeleteTableOutput {
   TableDescription?: TableDescription;
 }
-const DeleteTableOutput = CreateTableOutput as any as S.Schema<DeleteTableOutput>;
 export interface DescribeBackupInput {
   BackupArn: string;
 }
-const DescribeBackupInput = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<DescribeBackupInput>;
 export interface DescribeBackupOutput {
   BackupDescription?: BackupDescription;
 }
-const DescribeBackupOutput = DeleteBackupOutput as any as S.Schema<DescribeBackupOutput>;
 export interface DescribeContinuousBackupsInput {
   TableName: string;
 }
-const DescribeContinuousBackupsInput = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<DescribeContinuousBackupsInput>;
 export type ContinuousBackupsStatus = "ENABLED" | "DISABLED" | (string & {});
-const ContinuousBackupsStatus = S.String;
-
 export type PointInTimeRecoveryStatus = "ENABLED" | "DISABLED" | (string & {});
-const PointInTimeRecoveryStatus = S.String;
-
 export type RecoveryPeriodInDays = number;
 export interface PointInTimeRecoveryDescription {
   PointInTimeRecoveryStatus?: PointInTimeRecoveryStatus;
@@ -1598,37 +1335,19 @@ export interface PointInTimeRecoveryDescription {
   EarliestRestorableDateTime?: Date;
   LatestRestorableDateTime?: Date;
 }
-const PointInTimeRecoveryDescription = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<PointInTimeRecoveryDescription>;
 export interface ContinuousBackupsDescription {
   ContinuousBackupsStatus: ContinuousBackupsStatus;
   PointInTimeRecoveryDescription?: PointInTimeRecoveryDescription;
 }
-const ContinuousBackupsDescription = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ContinuousBackupsDescription>;
 export interface DescribeContinuousBackupsOutput {
   ContinuousBackupsDescription?: ContinuousBackupsDescription;
 }
-const DescribeContinuousBackupsOutput = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<DescribeContinuousBackupsOutput>;
 export interface DescribeContributorInsightsInput {
   TableName: string;
   IndexName?: string;
 }
-const DescribeContributorInsightsInput = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<DescribeContributorInsightsInput>;
 export type ContributorInsightsRule = string;
 export type ContributorInsightsRuleList = string[];
-const ContributorInsightsRuleList =
-  StringSetAttributeValue as any as S.Schema<ContributorInsightsRuleList>;
 export type ContributorInsightsStatus =
   | "ENABLING"
   | "ENABLED"
@@ -1636,8 +1355,6 @@ export type ContributorInsightsStatus =
   | "DISABLED"
   | "FAILED"
   | (string & {});
-const ContributorInsightsStatus = S.String;
-
 export type LastUpdateDateTime = Date;
 export type ExceptionName = string;
 export type ExceptionDescription = string;
@@ -1645,13 +1362,10 @@ export interface FailureException {
   ExceptionName?: string;
   ExceptionDescription?: string;
 }
-const FailureException = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<FailureException>;
 export type ContributorInsightsMode =
   | "ACCESSED_AND_THROTTLED_KEYS"
   | "THROTTLED_KEYS"
   | (string & {});
-const ContributorInsightsMode = S.String;
-
 export interface DescribeContributorInsightsOutput {
   TableName?: string;
   IndexName?: string;
@@ -1661,37 +1375,21 @@ export interface DescribeContributorInsightsOutput {
   FailureException?: FailureException;
   ContributorInsightsMode?: ContributorInsightsMode;
 }
-const DescribeContributorInsightsOutput = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<DescribeContributorInsightsOutput>;
 export interface DescribeEndpointsRequest {}
-const DescribeEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<DescribeEndpointsRequest>;
 export interface Endpoint {
   Address: string;
   CachePeriodInMinutes: number;
 }
 const Endpoint = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<Endpoint>;
 export type Endpoints = Endpoint[];
-const Endpoints = /*@__PURE__*/ __L.at(__c15, 0);
 export interface DescribeEndpointsResponse {
   Endpoints: Endpoint[];
 }
-const DescribeEndpointsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<DescribeEndpointsResponse>;
 export type ExportArn = string;
 export interface DescribeExportInput {
   ExportArn: string;
 }
-const DescribeExportInput = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<DescribeExportInput>;
 export type ExportStatus = "IN_PROGRESS" | "COMPLETED" | "FAILED" | (string & {});
-const ExportStatus = S.String;
-
 export type ExportStartTime = Date;
 export type ExportEndTime = Date;
 export type ExportManifest = string;
@@ -1701,32 +1399,20 @@ export type S3Bucket = string;
 export type S3BucketOwner = string;
 export type S3Prefix = string;
 export type S3SseAlgorithm = "AES256" | "KMS" | (string & {});
-const S3SseAlgorithm = S.String;
-
 export type S3SseKmsKeyId = string;
 export type FailureCode = string;
 export type FailureMessage = string;
 export type ExportFormat = "DYNAMODB_JSON" | "ION" | (string & {});
-const ExportFormat = S.String;
-
 export type BilledSizeBytes = number;
 export type ExportType = "FULL_EXPORT" | "INCREMENTAL_EXPORT" | (string & {});
-const ExportType = S.String;
-
 export type ExportFromTime = Date;
 export type ExportToTime = Date;
 export type ExportViewType = "NEW_IMAGE" | "NEW_AND_OLD_IMAGES" | (string & {});
-const ExportViewType = S.String;
-
 export interface IncrementalExportSpecification {
   ExportFromTime?: Date;
   ExportToTime?: Date;
   ExportViewType?: ExportViewType;
 }
-const IncrementalExportSpecification = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<IncrementalExportSpecification>;
 export type KeyExpression = string;
 export interface FilterSpecification {
   FilterExpression?: string;
@@ -1735,7 +1421,6 @@ export interface FilterSpecification {
   ExpressionAttributeNames?: { [key: string]: string | undefined };
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
 }
-const FilterSpecification = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<FilterSpecification>;
 export interface ExportDescription {
   ExportArn?: string;
   ExportStatus?: ExportStatus;
@@ -1760,35 +1445,18 @@ export interface ExportDescription {
   IncrementalExportSpecification?: IncrementalExportSpecification;
   FilterSpecification?: FilterSpecification;
 }
-const ExportDescription = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<ExportDescription>;
 export interface DescribeExportOutput {
   ExportDescription?: ExportDescription;
 }
-const DescribeExportOutput = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<DescribeExportOutput>;
 export interface DescribeGlobalTableInput {
   GlobalTableName: string;
 }
-const DescribeGlobalTableInput = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<DescribeGlobalTableInput>;
 export interface DescribeGlobalTableOutput {
   GlobalTableDescription?: GlobalTableDescription;
 }
-const DescribeGlobalTableOutput = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<DescribeGlobalTableOutput>;
 export interface DescribeGlobalTableSettingsInput {
   GlobalTableName: string;
 }
-const DescribeGlobalTableSettingsInput = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<DescribeGlobalTableSettingsInput>;
 export type AutoScalingPolicyName = string;
 export type IntegerObject = number;
 export type DoubleObject = number;
@@ -1798,20 +1466,11 @@ export interface AutoScalingTargetTrackingScalingPolicyConfigurationDescription 
   ScaleOutCooldown?: number;
   TargetValue: number;
 }
-const AutoScalingTargetTrackingScalingPolicyConfigurationDescription = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<AutoScalingTargetTrackingScalingPolicyConfigurationDescription>;
 export interface AutoScalingPolicyDescription {
   PolicyName?: string;
   TargetTrackingScalingPolicyConfiguration?: AutoScalingTargetTrackingScalingPolicyConfigurationDescription;
 }
-const AutoScalingPolicyDescription = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<AutoScalingPolicyDescription>;
 export type AutoScalingPolicyDescriptionList = AutoScalingPolicyDescription[];
-const AutoScalingPolicyDescriptionList = /*@__PURE__*/ __L.at(__c16, 4);
 export interface AutoScalingSettingsDescription {
   MinimumUnits?: number;
   MaximumUnits?: number;
@@ -1819,10 +1478,6 @@ export interface AutoScalingSettingsDescription {
   AutoScalingRoleArn?: string;
   ScalingPolicies?: AutoScalingPolicyDescription[];
 }
-const AutoScalingSettingsDescription = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<AutoScalingSettingsDescription>;
 export interface ReplicaGlobalSecondaryIndexSettingsDescription {
   IndexName: string;
   IndexStatus?: IndexStatus;
@@ -1831,13 +1486,8 @@ export interface ReplicaGlobalSecondaryIndexSettingsDescription {
   ProvisionedWriteCapacityUnits?: number;
   ProvisionedWriteCapacityAutoScalingSettings?: AutoScalingSettingsDescription;
 }
-const ReplicaGlobalSecondaryIndexSettingsDescription = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ReplicaGlobalSecondaryIndexSettingsDescription>;
 export type ReplicaGlobalSecondaryIndexSettingsDescriptionList =
   ReplicaGlobalSecondaryIndexSettingsDescription[];
-const ReplicaGlobalSecondaryIndexSettingsDescriptionList = /*@__PURE__*/ __L.at(__c16, 7);
 export interface ReplicaSettingsDescription {
   RegionName: string;
   ReplicaStatus?: ReplicaStatus;
@@ -1849,25 +1499,15 @@ export interface ReplicaSettingsDescription {
   ReplicaGlobalSecondaryIndexSettings?: ReplicaGlobalSecondaryIndexSettingsDescription[];
   ReplicaTableClassSummary?: TableClassSummary;
 }
-const ReplicaSettingsDescription = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ReplicaSettingsDescription>;
 export type ReplicaSettingsDescriptionList = ReplicaSettingsDescription[];
-const ReplicaSettingsDescriptionList = /*@__PURE__*/ __L.at(__c17, 1);
 export interface DescribeGlobalTableSettingsOutput {
   GlobalTableName?: string;
   ReplicaSettings?: ReplicaSettingsDescription[];
 }
-const DescribeGlobalTableSettingsOutput = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<DescribeGlobalTableSettingsOutput>;
 export type ImportArn = string;
 export interface DescribeImportInput {
   ImportArn: string;
 }
-const DescribeImportInput = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<DescribeImportInput>;
 export type ImportStatus =
   | "IN_PROGRESS"
   | "COMPLETED"
@@ -1875,35 +1515,25 @@ export type ImportStatus =
   | "CANCELLED"
   | "FAILED"
   | (string & {});
-const ImportStatus = S.String;
-
 export interface S3BucketSource {
   S3BucketOwner?: string;
   S3Bucket: string;
   S3KeyPrefix?: string;
 }
-const S3BucketSource = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<S3BucketSource>;
 export type ErrorCount = number;
 export type CloudWatchLogGroupArn = string;
 export type InputFormat = "DYNAMODB_JSON" | "ION" | "CSV" | (string & {});
-const InputFormat = S.String;
-
 export type CsvDelimiter = string;
 export type CsvHeader = string;
 export type CsvHeaderList = string[];
-const CsvHeaderList = StringSetAttributeValue as any as S.Schema<CsvHeaderList>;
 export interface CsvOptions {
   Delimiter?: string;
   HeaderList?: string[];
 }
-const CsvOptions = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<CsvOptions>;
 export interface InputFormatOptions {
   Csv?: CsvOptions;
 }
-const InputFormatOptions = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<InputFormatOptions>;
 export type InputCompressionType = "GZIP" | "ZSTD" | "NONE" | (string & {});
-const InputCompressionType = S.String;
-
 export interface TableCreationParameters {
   TableName: string;
   AttributeDefinitions: AttributeDefinition[];
@@ -1915,10 +1545,6 @@ export interface TableCreationParameters {
   GlobalSecondaryIndexes?: GlobalSecondaryIndex[];
   VectorIndexes?: VectorIndex[];
 }
-const TableCreationParameters = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<TableCreationParameters>;
 export type ImportStartTime = Date;
 export type ImportEndTime = Date;
 export type ProcessedItemCount = number;
@@ -1944,24 +1570,12 @@ export interface ImportTableDescription {
   FailureCode?: string;
   FailureMessage?: string;
 }
-const ImportTableDescription = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ImportTableDescription>;
 export interface DescribeImportOutput {
   ImportTableDescription: ImportTableDescription;
 }
-const DescribeImportOutput = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<DescribeImportOutput>;
 export interface DescribeKinesisStreamingDestinationInput {
   TableName: string;
 }
-const DescribeKinesisStreamingDestinationInput = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<DescribeKinesisStreamingDestinationInput>;
 export type DestinationStatus =
   | "ENABLING"
   | "ACTIVE"
@@ -1970,71 +1584,42 @@ export type DestinationStatus =
   | "ENABLE_FAILED"
   | "UPDATING"
   | (string & {});
-const DestinationStatus = S.String;
-
 export type ApproximateCreationDateTimePrecision = "MILLISECOND" | "MICROSECOND" | (string & {});
-const ApproximateCreationDateTimePrecision = S.String;
-
 export interface KinesisDataStreamDestination {
   StreamArn?: string;
   DestinationStatus?: DestinationStatus;
   DestinationStatusDescription?: string;
   ApproximateCreationDateTimePrecision?: ApproximateCreationDateTimePrecision;
 }
-const KinesisDataStreamDestination = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<KinesisDataStreamDestination>;
 export type KinesisDataStreamDestinations = KinesisDataStreamDestination[];
-const KinesisDataStreamDestinations = /*@__PURE__*/ __L.at(__c18, 4);
 export interface DescribeKinesisStreamingDestinationOutput {
   TableName?: string;
   KinesisDataStreamDestinations?: KinesisDataStreamDestination[];
 }
-const DescribeKinesisStreamingDestinationOutput = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<DescribeKinesisStreamingDestinationOutput>;
 export interface DescribeLimitsInput {}
-const DescribeLimitsInput = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<DescribeLimitsInput>;
 export interface DescribeLimitsOutput {
   AccountMaxReadCapacityUnits?: number;
   AccountMaxWriteCapacityUnits?: number;
   TableMaxReadCapacityUnits?: number;
   TableMaxWriteCapacityUnits?: number;
 }
-const DescribeLimitsOutput = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<DescribeLimitsOutput>;
 export interface DescribeTableInput {
   TableName: string;
 }
-const DescribeTableInput = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<DescribeTableInput>;
 export interface DescribeTableOutput {
   Table?: TableDescription;
 }
-const DescribeTableOutput = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<DescribeTableOutput>;
 export interface DescribeTableReplicaAutoScalingInput {
   TableName: string;
 }
-const DescribeTableReplicaAutoScalingInput = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<DescribeTableReplicaAutoScalingInput>;
 export interface ReplicaGlobalSecondaryIndexAutoScalingDescription {
   IndexName?: string;
   IndexStatus?: IndexStatus;
   ProvisionedReadCapacityAutoScalingSettings?: AutoScalingSettingsDescription;
   ProvisionedWriteCapacityAutoScalingSettings?: AutoScalingSettingsDescription;
 }
-const ReplicaGlobalSecondaryIndexAutoScalingDescription = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ReplicaGlobalSecondaryIndexAutoScalingDescription>;
 export type ReplicaGlobalSecondaryIndexAutoScalingDescriptionList =
   ReplicaGlobalSecondaryIndexAutoScalingDescription[];
-const ReplicaGlobalSecondaryIndexAutoScalingDescriptionList = /*@__PURE__*/ __L.at(__c19, 4);
 export interface ReplicaAutoScalingDescription {
   RegionName?: string;
   GlobalSecondaryIndexes?: ReplicaGlobalSecondaryIndexAutoScalingDescription[];
@@ -2042,68 +1627,35 @@ export interface ReplicaAutoScalingDescription {
   ReplicaProvisionedWriteCapacityAutoScalingSettings?: AutoScalingSettingsDescription;
   ReplicaStatus?: ReplicaStatus;
 }
-const ReplicaAutoScalingDescription = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ReplicaAutoScalingDescription>;
 export type ReplicaAutoScalingDescriptionList = ReplicaAutoScalingDescription[];
-const ReplicaAutoScalingDescriptionList = /*@__PURE__*/ __L.at(__c19, 6);
 export interface TableAutoScalingDescription {
   TableName?: string;
   TableStatus?: TableStatus;
   Replicas?: ReplicaAutoScalingDescription[];
 }
-const TableAutoScalingDescription = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<TableAutoScalingDescription>;
 export interface DescribeTableReplicaAutoScalingOutput {
   TableAutoScalingDescription?: TableAutoScalingDescription;
 }
-const DescribeTableReplicaAutoScalingOutput = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<DescribeTableReplicaAutoScalingOutput>;
 export interface DescribeTimeToLiveInput {
   TableName: string;
 }
-const DescribeTimeToLiveInput = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<DescribeTimeToLiveInput>;
 export interface DescribeTimeToLiveOutput {
   TimeToLiveDescription?: TimeToLiveDescription;
 }
-const DescribeTimeToLiveOutput = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<DescribeTimeToLiveOutput>;
 export interface EnableKinesisStreamingConfiguration {
   ApproximateCreationDateTimePrecision?: ApproximateCreationDateTimePrecision;
 }
-const EnableKinesisStreamingConfiguration = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<EnableKinesisStreamingConfiguration>;
 export interface KinesisStreamingDestinationInput {
   TableName: string;
   StreamArn: string;
   EnableKinesisStreamingConfiguration?: EnableKinesisStreamingConfiguration;
 }
-const KinesisStreamingDestinationInput = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<KinesisStreamingDestinationInput>;
 export interface KinesisStreamingDestinationOutput {
   TableName?: string;
   StreamArn?: string;
   DestinationStatus?: DestinationStatus;
   EnableKinesisStreamingConfiguration?: EnableKinesisStreamingConfiguration;
 }
-const KinesisStreamingDestinationOutput = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<KinesisStreamingDestinationOutput>;
 export type PartiQLNextToken = string;
 export type PositiveIntegerObject = number;
 export interface ExecuteStatementInput {
@@ -2115,55 +1667,32 @@ export interface ExecuteStatementInput {
   Limit?: number;
   ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
-const ExecuteStatementInput = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<ExecuteStatementInput>;
 export interface ExecuteStatementOutput {
   Items?: { [key: string]: AttributeValue | undefined }[];
   NextToken?: string;
   ConsumedCapacity?: ConsumedCapacity;
   LastEvaluatedKey?: { [key: string]: AttributeValue | undefined };
 }
-const ExecuteStatementOutput = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<ExecuteStatementOutput>;
 export interface ParameterizedStatement {
   Statement: string;
   Parameters?: AttributeValue[];
   ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
-const ParameterizedStatement = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<ParameterizedStatement>;
 export type ParameterizedStatements = ParameterizedStatement[];
-const ParameterizedStatements = /*@__PURE__*/ __L.at(__c21, 1);
 export type ClientRequestToken = string;
 export interface ExecuteTransactionInput {
   TransactStatements: ParameterizedStatement[];
   ClientRequestToken?: string;
   ReturnConsumedCapacity?: ReturnConsumedCapacity;
 }
-const ExecuteTransactionInput = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ExecuteTransactionInput>;
 export interface ItemResponse {
   Item?: { [key: string]: AttributeValue | undefined };
 }
-const ItemResponse = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<ItemResponse>;
 export type ItemResponseList = ItemResponse[];
-const ItemResponseList = /*@__PURE__*/ __L.at(__c21, 4);
 export interface ExecuteTransactionOutput {
   Responses?: ItemResponse[];
   ConsumedCapacity?: ConsumedCapacity[];
 }
-const ExecuteTransactionOutput = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<ExecuteTransactionOutput>;
 export interface ExportTableToPointInTimeInput {
   TableArn: string;
   ExportTime?: Date;
@@ -2178,17 +1707,9 @@ export interface ExportTableToPointInTimeInput {
   IncrementalExportSpecification?: IncrementalExportSpecification;
   FilterSpecification?: FilterSpecification;
 }
-const ExportTableToPointInTimeInput = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<ExportTableToPointInTimeInput>;
 export interface ExportTableToPointInTimeOutput {
   ExportDescription?: ExportDescription;
 }
-const ExportTableToPointInTimeOutput = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<ExportTableToPointInTimeOutput>;
 export interface GetItemInput {
   TableName: string;
   Key: { [key: string]: AttributeValue | undefined };
@@ -2198,27 +1719,17 @@ export interface GetItemInput {
   ProjectionExpression?: string;
   ExpressionAttributeNames?: { [key: string]: string | undefined };
 }
-const GetItemInput = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<GetItemInput>;
 export interface GetItemOutput {
   Item?: { [key: string]: AttributeValue | undefined };
   ConsumedCapacity?: ConsumedCapacity;
 }
-const GetItemOutput = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<GetItemOutput>;
 export interface GetResourcePolicyInput {
   ResourceArn: string;
 }
-const GetResourcePolicyInput = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<GetResourcePolicyInput>;
 export interface GetResourcePolicyOutput {
   Policy?: string;
   RevisionId?: string;
 }
-const GetResourcePolicyOutput = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<GetResourcePolicyOutput>;
 export interface ImportTableInput {
   ClientToken?: string;
   S3BucketSource: S3BucketSource;
@@ -2227,17 +1738,13 @@ export interface ImportTableInput {
   InputCompressionType?: InputCompressionType;
   TableCreationParameters: TableCreationParameters;
 }
-const ImportTableInput = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<ImportTableInput>;
 export interface ImportTableOutput {
   ImportTableDescription: ImportTableDescription;
 }
-const ImportTableOutput = DescribeImportOutput as any as S.Schema<ImportTableOutput>;
 export type BackupsInputLimit = number;
 export type TimeRangeLowerBound = Date;
 export type TimeRangeUpperBound = Date;
 export type BackupTypeFilter = "USER" | "SYSTEM" | "AWS_BACKUP" | "ALL" | (string & {});
-const BackupTypeFilter = S.String;
-
 export interface ListBackupsInput {
   TableName?: string;
   Limit?: number;
@@ -2246,7 +1753,6 @@ export interface ListBackupsInput {
   ExclusiveStartBackupArn?: string;
   BackupType?: BackupTypeFilter;
 }
-const ListBackupsInput = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<ListBackupsInput>;
 export interface BackupSummary {
   TableName?: string;
   TableId?: string;
@@ -2259,14 +1765,11 @@ export interface BackupSummary {
   BackupType?: BackupType;
   BackupSizeBytes?: number;
 }
-const BackupSummary = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<BackupSummary>;
 export type BackupSummaries = BackupSummary[];
-const BackupSummaries = /*@__PURE__*/ __L.at(__c22, 7);
 export interface ListBackupsOutput {
   BackupSummaries?: BackupSummary[];
   LastEvaluatedBackupArn?: string;
 }
-const ListBackupsOutput = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<ListBackupsOutput>;
 export type NextTokenString = string;
 export type ListContributorInsightsLimit = number;
 export interface ListContributorInsightsInput {
@@ -2274,30 +1777,17 @@ export interface ListContributorInsightsInput {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListContributorInsightsInput = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<ListContributorInsightsInput>;
 export interface ContributorInsightsSummary {
   TableName?: string;
   IndexName?: string;
   ContributorInsightsStatus?: ContributorInsightsStatus;
   ContributorInsightsMode?: ContributorInsightsMode;
 }
-const ContributorInsightsSummary = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ContributorInsightsSummary>;
 export type ContributorInsightsSummaries = ContributorInsightsSummary[];
-const ContributorInsightsSummaries = /*@__PURE__*/ __L.at(__c23, 3);
 export interface ListContributorInsightsOutput {
   ContributorInsightsSummaries?: ContributorInsightsSummary[];
   NextToken?: string;
 }
-const ListContributorInsightsOutput = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<ListContributorInsightsOutput>;
 export type ListExportsMaxLimit = number;
 export type ExportNextToken = string;
 export interface ListExportsInput {
@@ -2305,44 +1795,30 @@ export interface ListExportsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListExportsInput = /*@__PURE__*/ __L.at(__c23, 5) as any as S.Schema<ListExportsInput>;
 export interface ExportSummary {
   ExportArn?: string;
   ExportStatus?: ExportStatus;
   ExportType?: ExportType;
 }
-const ExportSummary = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<ExportSummary>;
 export type ExportSummaries = ExportSummary[];
-const ExportSummaries = /*@__PURE__*/ __L.at(__c23, 7);
 export interface ListExportsOutput {
   ExportSummaries?: ExportSummary[];
   NextToken?: string;
 }
-const ListExportsOutput = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<ListExportsOutput>;
 export interface ListGlobalTablesInput {
   ExclusiveStartGlobalTableName?: string;
   Limit?: number;
   RegionName?: string;
 }
-const ListGlobalTablesInput = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<ListGlobalTablesInput>;
 export interface GlobalTable {
   GlobalTableName?: string;
   ReplicationGroup?: Replica[];
 }
-const GlobalTable = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<GlobalTable>;
 export type GlobalTableList = GlobalTable[];
-const GlobalTableList = /*@__PURE__*/ __L.at(__c24, 3);
 export interface ListGlobalTablesOutput {
   GlobalTables?: GlobalTable[];
   LastEvaluatedGlobalTableName?: string;
 }
-const ListGlobalTablesOutput = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ListGlobalTablesOutput>;
 export type ListImportsMaxLimit = number;
 export type ImportNextToken = string;
 export interface ListImportsInput {
@@ -2350,7 +1826,6 @@ export interface ListImportsInput {
   PageSize?: number;
   NextToken?: string;
 }
-const ListImportsInput = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<ListImportsInput>;
 export interface ImportSummary {
   ImportArn?: string;
   ImportStatus?: ImportStatus;
@@ -2361,43 +1836,29 @@ export interface ImportSummary {
   StartTime?: Date;
   EndTime?: Date;
 }
-const ImportSummary = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<ImportSummary>;
 export type ImportSummaryList = ImportSummary[];
-const ImportSummaryList = /*@__PURE__*/ __L.at(__c24, 7);
 export interface ListImportsOutput {
   ImportSummaryList?: ImportSummary[];
   NextToken?: string;
 }
-const ListImportsOutput = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<ListImportsOutput>;
 export type ListTablesInputLimit = number;
 export interface ListTablesInput {
   ExclusiveStartTableName?: string;
   Limit?: number;
 }
-const ListTablesInput = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<ListTablesInput>;
 export type TableNameList = string[];
-const TableNameList = StringSetAttributeValue as any as S.Schema<TableNameList>;
 export interface ListTablesOutput {
   TableNames?: string[];
   LastEvaluatedTableName?: string;
 }
-const ListTablesOutput = /*@__PURE__*/ __L.at(__c25, 2) as any as S.Schema<ListTablesOutput>;
 export interface ListTagsOfResourceInput {
   ResourceArn: string;
   NextToken?: string;
 }
-const ListTagsOfResourceInput = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<ListTagsOfResourceInput>;
 export interface ListTagsOfResourceOutput {
   Tags?: Tag[];
   NextToken?: string;
 }
-const ListTagsOfResourceOutput = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<ListTagsOfResourceOutput>;
 export interface PutItemInput {
   TableName: string;
   Item: { [key: string]: AttributeValue | undefined };
@@ -2411,13 +1872,11 @@ export interface PutItemInput {
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
   ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
-const PutItemInput = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<PutItemInput>;
 export interface PutItemOutput {
   Attributes?: { [key: string]: AttributeValue | undefined };
   ConsumedCapacity?: ConsumedCapacity;
   ItemCollectionMetrics?: ItemCollectionMetrics;
 }
-const PutItemOutput = DeleteItemOutput as any as S.Schema<PutItemOutput>;
 export type ConfirmRemoveSelfResourceAccess = boolean;
 export interface PutResourcePolicyInput {
   ResourceArn: string;
@@ -2425,34 +1884,21 @@ export interface PutResourcePolicyInput {
   ExpectedRevisionId?: string;
   ConfirmRemoveSelfResourceAccess?: boolean;
 }
-const PutResourcePolicyInput = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<PutResourcePolicyInput>;
 export interface PutResourcePolicyOutput {
   RevisionId?: string;
 }
-const PutResourcePolicyOutput = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<PutResourcePolicyOutput>;
 export type Select =
   | "ALL_ATTRIBUTES"
   | "ALL_PROJECTED_ATTRIBUTES"
   | "SPECIFIC_ATTRIBUTES"
   | "COUNT"
   | (string & {});
-const Select = S.String;
-
 export interface Condition {
   AttributeValueList?: AttributeValue[];
   ComparisonOperator: ComparisonOperator;
 }
-const Condition = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<Condition>;
 export type KeyConditions = { [key: string]: Condition | undefined };
-const KeyConditions = /*@__PURE__*/ __L.at(__c26, 1);
 export type FilterConditionMap = { [key: string]: Condition | undefined };
-const FilterConditionMap = KeyConditions as any as S.Schema<FilterConditionMap>;
 export interface QueryInput {
   TableName: string;
   IndexName?: string;
@@ -2472,7 +1918,6 @@ export interface QueryInput {
   ExpressionAttributeNames?: { [key: string]: string | undefined };
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
 }
-const QueryInput = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<QueryInput>;
 export interface QueryOutput {
   Items?: { [key: string]: AttributeValue | undefined }[];
   Count?: number;
@@ -2480,7 +1925,6 @@ export interface QueryOutput {
   LastEvaluatedKey?: { [key: string]: AttributeValue | undefined };
   ConsumedCapacity?: ConsumedCapacity;
 }
-const QueryOutput = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<QueryOutput>;
 export interface RestoreTableFromBackupInput {
   TargetTableName: string;
   BackupArn: string;
@@ -2492,17 +1936,9 @@ export interface RestoreTableFromBackupInput {
   SSESpecificationOverride?: SSESpecification;
   VectorIndexOverride?: VectorIndex[];
 }
-const RestoreTableFromBackupInput = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<RestoreTableFromBackupInput>;
 export interface RestoreTableFromBackupOutput {
   TableDescription?: TableDescription;
 }
-const RestoreTableFromBackupOutput = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<RestoreTableFromBackupOutput>;
 export interface RestoreTableToPointInTimeInput {
   SourceTableArn?: string;
   SourceTableName?: string;
@@ -2517,15 +1953,9 @@ export interface RestoreTableToPointInTimeInput {
   SSESpecificationOverride?: SSESpecification;
   VectorIndexOverride?: VectorIndex[];
 }
-const RestoreTableToPointInTimeInput = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<RestoreTableToPointInTimeInput>;
 export interface RestoreTableToPointInTimeOutput {
   TableDescription?: TableDescription;
 }
-const RestoreTableToPointInTimeOutput =
-  RestoreTableFromBackupOutput as any as S.Schema<RestoreTableToPointInTimeOutput>;
 export type ScanTotalSegments = number;
 export type ScanSegment = number;
 export interface ScanInput {
@@ -2546,7 +1976,6 @@ export interface ScanInput {
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
   ConsistentRead?: boolean;
 }
-const ScanInput = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<ScanInput>;
 export interface ScanOutput {
   Items?: { [key: string]: AttributeValue | undefined }[];
   Count?: number;
@@ -2554,9 +1983,7 @@ export interface ScanOutput {
   LastEvaluatedKey?: { [key: string]: AttributeValue | undefined };
   ConsumedCapacity?: ConsumedCapacity;
 }
-const ScanOutput = QueryOutput as any as S.Schema<ScanOutput>;
 export type SearchVectorList = AttributeValue[];
-const SearchVectorList = PreparedStatementParameters as any as S.Schema<SearchVectorList>;
 export type TopKInteger = number;
 export interface SearchVectorsInput {
   TableName: string;
@@ -2569,56 +1996,39 @@ export interface SearchVectorsInput {
   SearchConditionExpression?: string;
   TopK: number;
 }
-const SearchVectorsInput = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<SearchVectorsInput>;
 export type ScoreNumber = number;
 export interface SearchResultItem {
   Item?: { [key: string]: AttributeValue | undefined };
   Score?: number;
 }
-const SearchResultItem = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<SearchResultItem>;
 export type SearchResultList = SearchResultItem[];
-const SearchResultList = /*@__PURE__*/ __L.at(__c27, 2);
 export interface SearchVectorsOutput {
   ConsumedCapacity?: VectorCapacity;
   SearchResults?: SearchResultItem[];
 }
-const SearchVectorsOutput = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<SearchVectorsOutput>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: Tag[];
 }
-const TagResourceInput = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<TagResourceInput>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<TagResourceResponse>;
 export interface Get {
   Key: { [key: string]: AttributeValue | undefined };
   TableName: string;
   ProjectionExpression?: string;
   ExpressionAttributeNames?: { [key: string]: string | undefined };
 }
-const Get = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<Get>;
 export interface TransactGetItem {
   Get: Get;
 }
-const TransactGetItem = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<TransactGetItem>;
 export type TransactGetItemList = TransactGetItem[];
-const TransactGetItemList = /*@__PURE__*/ __L.at(__c28, 0);
 export interface TransactGetItemsInput {
   TransactItems: TransactGetItem[];
   ReturnConsumedCapacity?: ReturnConsumedCapacity;
 }
-const TransactGetItemsInput = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<TransactGetItemsInput>;
 export interface TransactGetItemsOutput {
   ConsumedCapacity?: ConsumedCapacity[];
   Responses?: ItemResponse[];
 }
-const TransactGetItemsOutput = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<TransactGetItemsOutput>;
 export interface ConditionCheck {
   Key: { [key: string]: AttributeValue | undefined };
   TableName: string;
@@ -2627,7 +2037,6 @@ export interface ConditionCheck {
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
   ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
-const ConditionCheck = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<ConditionCheck>;
 export interface Put {
   Item: { [key: string]: AttributeValue | undefined };
   TableName: string;
@@ -2636,7 +2045,6 @@ export interface Put {
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
   ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
-const Put = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<Put>;
 export interface Delete {
   Key: { [key: string]: AttributeValue | undefined };
   TableName: string;
@@ -2645,7 +2053,6 @@ export interface Delete {
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
   ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
-const Delete = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<Delete>;
 export type UpdateExpression = string;
 export interface Update {
   Key: { [key: string]: AttributeValue | undefined };
@@ -2656,114 +2063,71 @@ export interface Update {
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
   ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
-const Update = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<Update>;
 export interface TransactWriteItem {
   ConditionCheck?: ConditionCheck;
   Put?: Put;
   Delete?: Delete;
   Update?: Update;
 }
-const TransactWriteItem = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<TransactWriteItem>;
 export type TransactWriteItemList = TransactWriteItem[];
-const TransactWriteItemList = /*@__PURE__*/ __L.at(__c29, 0);
 export interface TransactWriteItemsInput {
   TransactItems: TransactWriteItem[];
   ReturnConsumedCapacity?: ReturnConsumedCapacity;
   ReturnItemCollectionMetrics?: ReturnItemCollectionMetrics;
   ClientRequestToken?: string;
 }
-const TransactWriteItemsInput = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<TransactWriteItemsInput>;
 export interface TransactWriteItemsOutput {
   ConsumedCapacity?: ConsumedCapacity[];
   ItemCollectionMetrics?: { [key: string]: ItemCollectionMetrics[] | undefined };
 }
-const TransactWriteItemsOutput = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<TransactWriteItemsOutput>;
 export type TagKeyList = string[];
-const TagKeyList = StringSetAttributeValue as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface PointInTimeRecoverySpecification {
   PointInTimeRecoveryEnabled: boolean;
   RecoveryPeriodInDays?: number;
 }
-const PointInTimeRecoverySpecification = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<PointInTimeRecoverySpecification>;
 export interface UpdateContinuousBackupsInput {
   TableName: string;
   PointInTimeRecoverySpecification: PointInTimeRecoverySpecification;
 }
-const UpdateContinuousBackupsInput = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<UpdateContinuousBackupsInput>;
 export interface UpdateContinuousBackupsOutput {
   ContinuousBackupsDescription?: ContinuousBackupsDescription;
 }
-const UpdateContinuousBackupsOutput =
-  DescribeContinuousBackupsOutput as any as S.Schema<UpdateContinuousBackupsOutput>;
 export type ContributorInsightsAction = "ENABLE" | "DISABLE" | (string & {});
-const ContributorInsightsAction = S.String;
-
 export interface UpdateContributorInsightsInput {
   TableName: string;
   IndexName?: string;
   ContributorInsightsAction: ContributorInsightsAction;
   ContributorInsightsMode?: ContributorInsightsMode;
 }
-const UpdateContributorInsightsInput = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<UpdateContributorInsightsInput>;
 export interface UpdateContributorInsightsOutput {
   TableName?: string;
   IndexName?: string;
   ContributorInsightsStatus?: ContributorInsightsStatus;
   ContributorInsightsMode?: ContributorInsightsMode;
 }
-const UpdateContributorInsightsOutput = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<UpdateContributorInsightsOutput>;
 export interface CreateReplicaAction {
   RegionName: string;
 }
-const CreateReplicaAction = /*@__PURE__*/ __L.at(__c30, 0) as any as S.Schema<CreateReplicaAction>;
 export interface DeleteReplicaAction {
   RegionName: string;
 }
-const DeleteReplicaAction = CreateReplicaAction as any as S.Schema<DeleteReplicaAction>;
 export interface ReplicaUpdate {
   Create?: CreateReplicaAction;
   Delete?: DeleteReplicaAction;
 }
-const ReplicaUpdate = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<ReplicaUpdate>;
 export type ReplicaUpdateList = ReplicaUpdate[];
-const ReplicaUpdateList = /*@__PURE__*/ __L.at(__c30, 2);
 export interface UpdateGlobalTableInput {
   GlobalTableName: string;
   ReplicaUpdates: ReplicaUpdate[];
 }
-const UpdateGlobalTableInput = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<UpdateGlobalTableInput>;
 export interface UpdateGlobalTableOutput {
   GlobalTableDescription?: GlobalTableDescription;
 }
-const UpdateGlobalTableOutput = CreateGlobalTableOutput as any as S.Schema<UpdateGlobalTableOutput>;
 export type AutoScalingRoleArn = string;
 export interface AutoScalingTargetTrackingScalingPolicyConfigurationUpdate {
   DisableScaleIn?: boolean;
@@ -2771,18 +2135,10 @@ export interface AutoScalingTargetTrackingScalingPolicyConfigurationUpdate {
   ScaleOutCooldown?: number;
   TargetValue: number;
 }
-const AutoScalingTargetTrackingScalingPolicyConfigurationUpdate = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<AutoScalingTargetTrackingScalingPolicyConfigurationUpdate>;
 export interface AutoScalingPolicyUpdate {
   PolicyName?: string;
   TargetTrackingScalingPolicyConfiguration: AutoScalingTargetTrackingScalingPolicyConfigurationUpdate;
 }
-const AutoScalingPolicyUpdate = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<AutoScalingPolicyUpdate>;
 export interface AutoScalingSettingsUpdate {
   MinimumUnits?: number;
   MaximumUnits?: number;
@@ -2790,34 +2146,20 @@ export interface AutoScalingSettingsUpdate {
   AutoScalingRoleArn?: string;
   ScalingPolicyUpdate?: AutoScalingPolicyUpdate;
 }
-const AutoScalingSettingsUpdate = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<AutoScalingSettingsUpdate>;
 export interface GlobalTableGlobalSecondaryIndexSettingsUpdate {
   IndexName: string;
   ProvisionedWriteCapacityUnits?: number;
   ProvisionedWriteCapacityAutoScalingSettingsUpdate?: AutoScalingSettingsUpdate;
 }
-const GlobalTableGlobalSecondaryIndexSettingsUpdate = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<GlobalTableGlobalSecondaryIndexSettingsUpdate>;
 export type GlobalTableGlobalSecondaryIndexSettingsUpdateList =
   GlobalTableGlobalSecondaryIndexSettingsUpdate[];
-const GlobalTableGlobalSecondaryIndexSettingsUpdateList = /*@__PURE__*/ __L.at(__c31, 0);
 export interface ReplicaGlobalSecondaryIndexSettingsUpdate {
   IndexName: string;
   ProvisionedReadCapacityUnits?: number;
   ProvisionedReadCapacityAutoScalingSettingsUpdate?: AutoScalingSettingsUpdate;
 }
-const ReplicaGlobalSecondaryIndexSettingsUpdate = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<ReplicaGlobalSecondaryIndexSettingsUpdate>;
 export type ReplicaGlobalSecondaryIndexSettingsUpdateList =
   ReplicaGlobalSecondaryIndexSettingsUpdate[];
-const ReplicaGlobalSecondaryIndexSettingsUpdateList = /*@__PURE__*/ __L.at(__c31, 2);
 export interface ReplicaSettingsUpdate {
   RegionName: string;
   ReplicaProvisionedReadCapacityUnits?: number;
@@ -2825,12 +2167,7 @@ export interface ReplicaSettingsUpdate {
   ReplicaGlobalSecondaryIndexSettingsUpdate?: ReplicaGlobalSecondaryIndexSettingsUpdate[];
   ReplicaTableClass?: TableClass;
 }
-const ReplicaSettingsUpdate = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<ReplicaSettingsUpdate>;
 export type ReplicaSettingsUpdateList = ReplicaSettingsUpdate[];
-const ReplicaSettingsUpdateList = /*@__PURE__*/ __L.at(__c31, 4);
 export interface UpdateGlobalTableSettingsInput {
   GlobalTableName: string;
   GlobalTableBillingMode?: BillingMode;
@@ -2839,29 +2176,16 @@ export interface UpdateGlobalTableSettingsInput {
   GlobalTableGlobalSecondaryIndexSettingsUpdate?: GlobalTableGlobalSecondaryIndexSettingsUpdate[];
   ReplicaSettingsUpdate?: ReplicaSettingsUpdate[];
 }
-const UpdateGlobalTableSettingsInput = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<UpdateGlobalTableSettingsInput>;
 export interface UpdateGlobalTableSettingsOutput {
   GlobalTableName?: string;
   ReplicaSettings?: ReplicaSettingsDescription[];
 }
-const UpdateGlobalTableSettingsOutput =
-  DescribeGlobalTableSettingsOutput as any as S.Schema<UpdateGlobalTableSettingsOutput>;
 export type AttributeAction = "ADD" | "PUT" | "DELETE" | (string & {});
-const AttributeAction = S.String;
-
 export interface AttributeValueUpdate {
   Value?: AttributeValue;
   Action?: AttributeAction;
 }
-const AttributeValueUpdate = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<AttributeValueUpdate>;
 export type AttributeUpdates = { [key: string]: AttributeValueUpdate | undefined };
-const AttributeUpdates = /*@__PURE__*/ __L.at(__c31, 7);
 export interface UpdateItemInput {
   TableName: string;
   Key: { [key: string]: AttributeValue | undefined };
@@ -2877,47 +2201,31 @@ export interface UpdateItemInput {
   ExpressionAttributeValues?: { [key: string]: AttributeValue | undefined };
   ReturnValuesOnConditionCheckFailure?: ReturnValuesOnConditionCheckFailure;
 }
-const UpdateItemInput = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<UpdateItemInput>;
 export interface UpdateItemOutput {
   Attributes?: { [key: string]: AttributeValue | undefined };
   ConsumedCapacity?: ConsumedCapacity;
   ItemCollectionMetrics?: ItemCollectionMetrics;
 }
-const UpdateItemOutput = DeleteItemOutput as any as S.Schema<UpdateItemOutput>;
 export interface UpdateKinesisStreamingConfiguration {
   ApproximateCreationDateTimePrecision?: ApproximateCreationDateTimePrecision;
 }
-const UpdateKinesisStreamingConfiguration =
-  EnableKinesisStreamingConfiguration as any as S.Schema<UpdateKinesisStreamingConfiguration>;
 export interface UpdateKinesisStreamingDestinationInput {
   TableName: string;
   StreamArn: string;
   UpdateKinesisStreamingConfiguration?: UpdateKinesisStreamingConfiguration;
 }
-const UpdateKinesisStreamingDestinationInput = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<UpdateKinesisStreamingDestinationInput>;
 export interface UpdateKinesisStreamingDestinationOutput {
   TableName?: string;
   StreamArn?: string;
   DestinationStatus?: DestinationStatus;
   UpdateKinesisStreamingConfiguration?: UpdateKinesisStreamingConfiguration;
 }
-const UpdateKinesisStreamingDestinationOutput = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<UpdateKinesisStreamingDestinationOutput>;
 export interface UpdateGlobalSecondaryIndexAction {
   IndexName: string;
   ProvisionedThroughput?: ProvisionedThroughput;
   OnDemandThroughput?: OnDemandThroughput;
   WarmThroughput?: WarmThroughput;
 }
-const UpdateGlobalSecondaryIndexAction = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<UpdateGlobalSecondaryIndexAction>;
 export interface CreateGlobalSecondaryIndexAction {
   IndexName: string;
   KeySchema: KeySchemaElement[];
@@ -2926,39 +2234,21 @@ export interface CreateGlobalSecondaryIndexAction {
   OnDemandThroughput?: OnDemandThroughput;
   WarmThroughput?: WarmThroughput;
 }
-const CreateGlobalSecondaryIndexAction = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<CreateGlobalSecondaryIndexAction>;
 export interface DeleteGlobalSecondaryIndexAction {
   IndexName: string;
 }
-const DeleteGlobalSecondaryIndexAction = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<DeleteGlobalSecondaryIndexAction>;
 export interface GlobalSecondaryIndexUpdate {
   Update?: UpdateGlobalSecondaryIndexAction;
   Create?: CreateGlobalSecondaryIndexAction;
   Delete?: DeleteGlobalSecondaryIndexAction;
 }
-const GlobalSecondaryIndexUpdate = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<GlobalSecondaryIndexUpdate>;
 export type GlobalSecondaryIndexUpdateList = GlobalSecondaryIndexUpdate[];
-const GlobalSecondaryIndexUpdateList = /*@__PURE__*/ __L.at(__c32, 7);
 export interface ReplicaGlobalSecondaryIndex {
   IndexName: string;
   ProvisionedThroughputOverride?: ProvisionedThroughputOverride;
   OnDemandThroughputOverride?: OnDemandThroughputOverride;
 }
-const ReplicaGlobalSecondaryIndex = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<ReplicaGlobalSecondaryIndex>;
 export type ReplicaGlobalSecondaryIndexList = ReplicaGlobalSecondaryIndex[];
-const ReplicaGlobalSecondaryIndexList = /*@__PURE__*/ __L.at(__c33, 1);
 export interface CreateReplicationGroupMemberAction {
   RegionName: string;
   KMSMasterKeyId?: string;
@@ -2967,10 +2257,6 @@ export interface CreateReplicationGroupMemberAction {
   GlobalSecondaryIndexes?: ReplicaGlobalSecondaryIndex[];
   TableClassOverride?: TableClass;
 }
-const CreateReplicationGroupMemberAction = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<CreateReplicationGroupMemberAction>;
 export interface UpdateReplicationGroupMemberAction {
   RegionName: string;
   KMSMasterKeyId?: string;
@@ -2979,46 +2265,26 @@ export interface UpdateReplicationGroupMemberAction {
   GlobalSecondaryIndexes?: ReplicaGlobalSecondaryIndex[];
   TableClassOverride?: TableClass;
 }
-const UpdateReplicationGroupMemberAction =
-  CreateReplicationGroupMemberAction as any as S.Schema<UpdateReplicationGroupMemberAction>;
 export interface DeleteReplicationGroupMemberAction {
   RegionName: string;
 }
-const DeleteReplicationGroupMemberAction = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<DeleteReplicationGroupMemberAction>;
 export interface ReplicationGroupUpdate {
   Create?: CreateReplicationGroupMemberAction;
   Update?: UpdateReplicationGroupMemberAction;
   Delete?: DeleteReplicationGroupMemberAction;
 }
-const ReplicationGroupUpdate = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<ReplicationGroupUpdate>;
 export type ReplicationGroupUpdateList = ReplicationGroupUpdate[];
-const ReplicationGroupUpdateList = /*@__PURE__*/ __L.at(__c33, 5);
 export interface CreateGlobalTableWitnessGroupMemberAction {
   RegionName: string;
 }
-const CreateGlobalTableWitnessGroupMemberAction =
-  DeleteReplicationGroupMemberAction as any as S.Schema<CreateGlobalTableWitnessGroupMemberAction>;
 export interface DeleteGlobalTableWitnessGroupMemberAction {
   RegionName: string;
 }
-const DeleteGlobalTableWitnessGroupMemberAction =
-  DeleteReplicationGroupMemberAction as any as S.Schema<DeleteGlobalTableWitnessGroupMemberAction>;
 export interface GlobalTableWitnessGroupUpdate {
   Create?: CreateGlobalTableWitnessGroupMemberAction;
   Delete?: DeleteGlobalTableWitnessGroupMemberAction;
 }
-const GlobalTableWitnessGroupUpdate = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<GlobalTableWitnessGroupUpdate>;
 export type GlobalTableWitnessGroupUpdateList = GlobalTableWitnessGroupUpdate[];
-const GlobalTableWitnessGroupUpdateList = /*@__PURE__*/ __L.at(__c33, 7);
 export interface CreateVectorIndexAction {
   IndexName: string;
   VectorAttribute: VectorAttributeDefinition;
@@ -3027,21 +2293,14 @@ export interface CreateVectorIndexAction {
   Dimensions: number;
   DistanceFunction: VectorDistanceFunction;
 }
-const CreateVectorIndexAction = VectorIndex as any as S.Schema<CreateVectorIndexAction>;
 export interface DeleteVectorIndexAction {
   IndexName: string;
 }
-const DeleteVectorIndexAction = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<DeleteVectorIndexAction>;
 export interface VectorIndexUpdate {
   Create?: CreateVectorIndexAction;
   Delete?: DeleteVectorIndexAction;
 }
-const VectorIndexUpdate = /*@__PURE__*/ __L.at(__c34, 1) as any as S.Schema<VectorIndexUpdate>;
 export type VectorIndexUpdateList = VectorIndexUpdate[];
-const VectorIndexUpdateList = /*@__PURE__*/ __L.at(__c34, 2);
 export interface UpdateTableInput {
   AttributeDefinitions?: AttributeDefinition[];
   TableName: string;
@@ -3060,82 +2319,47 @@ export interface UpdateTableInput {
   GlobalTableSettingsReplicationMode?: GlobalTableSettingsReplicationMode;
   VectorIndexUpdates?: VectorIndexUpdate[];
 }
-const UpdateTableInput = /*@__PURE__*/ __L.at(__c34, 3) as any as S.Schema<UpdateTableInput>;
 export interface UpdateTableOutput {
   TableDescription?: TableDescription;
 }
-const UpdateTableOutput = CreateTableOutput as any as S.Schema<UpdateTableOutput>;
 export interface GlobalSecondaryIndexAutoScalingUpdate {
   IndexName?: string;
   ProvisionedWriteCapacityAutoScalingUpdate?: AutoScalingSettingsUpdate;
 }
-const GlobalSecondaryIndexAutoScalingUpdate = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<GlobalSecondaryIndexAutoScalingUpdate>;
 export type GlobalSecondaryIndexAutoScalingUpdateList = GlobalSecondaryIndexAutoScalingUpdate[];
-const GlobalSecondaryIndexAutoScalingUpdateList = /*@__PURE__*/ __L.at(__c34, 5);
 export interface ReplicaGlobalSecondaryIndexAutoScalingUpdate {
   IndexName?: string;
   ProvisionedReadCapacityAutoScalingUpdate?: AutoScalingSettingsUpdate;
 }
-const ReplicaGlobalSecondaryIndexAutoScalingUpdate = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<ReplicaGlobalSecondaryIndexAutoScalingUpdate>;
 export type ReplicaGlobalSecondaryIndexAutoScalingUpdateList =
   ReplicaGlobalSecondaryIndexAutoScalingUpdate[];
-const ReplicaGlobalSecondaryIndexAutoScalingUpdateList = /*@__PURE__*/ __L.at(__c34, 7);
 export interface ReplicaAutoScalingUpdate {
   RegionName: string;
   ReplicaGlobalSecondaryIndexUpdates?: ReplicaGlobalSecondaryIndexAutoScalingUpdate[];
   ReplicaProvisionedReadCapacityAutoScalingUpdate?: AutoScalingSettingsUpdate;
 }
-const ReplicaAutoScalingUpdate = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<ReplicaAutoScalingUpdate>;
 export type ReplicaAutoScalingUpdateList = ReplicaAutoScalingUpdate[];
-const ReplicaAutoScalingUpdateList = /*@__PURE__*/ __L.at(__c35, 1);
 export interface UpdateTableReplicaAutoScalingInput {
   GlobalSecondaryIndexUpdates?: GlobalSecondaryIndexAutoScalingUpdate[];
   TableName: string;
   ProvisionedWriteCapacityAutoScalingUpdate?: AutoScalingSettingsUpdate;
   ReplicaUpdates?: ReplicaAutoScalingUpdate[];
 }
-const UpdateTableReplicaAutoScalingInput = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<UpdateTableReplicaAutoScalingInput>;
 export interface UpdateTableReplicaAutoScalingOutput {
   TableAutoScalingDescription?: TableAutoScalingDescription;
 }
-const UpdateTableReplicaAutoScalingOutput =
-  DescribeTableReplicaAutoScalingOutput as any as S.Schema<UpdateTableReplicaAutoScalingOutput>;
 export type TimeToLiveEnabled = boolean;
 export interface TimeToLiveSpecification {
   Enabled: boolean;
   AttributeName: string;
 }
-const TimeToLiveSpecification = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<TimeToLiveSpecification>;
 export interface UpdateTimeToLiveInput {
   TableName: string;
   TimeToLiveSpecification: TimeToLiveSpecification;
 }
-const UpdateTimeToLiveInput = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<UpdateTimeToLiveInput>;
 export interface UpdateTimeToLiveOutput {
   TimeToLiveSpecification?: TimeToLiveSpecification;
 }
-const UpdateTimeToLiveOutput = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<UpdateTimeToLiveOutput>;
 export type ErrorMessage = string;
 export type Reason = string;
 export type Resource = string;
@@ -3143,9 +2367,7 @@ export interface ThrottlingReason {
   reason?: string;
   resource?: string;
 }
-const ThrottlingReason = /*@__PURE__*/ __L.at(__c35, 6) as any as S.Schema<ThrottlingReason>;
 export type ThrottlingReasonList = ThrottlingReason[];
-const ThrottlingReasonList = /*@__PURE__*/ __L.at(__c35, 7);
 export type AvailabilityErrorMessage = string;
 export type Code = string;
 export interface CancellationReason {
@@ -3153,9 +2375,7 @@ export interface CancellationReason {
   Code?: string;
   Message?: string;
 }
-const CancellationReason = /*@__PURE__*/ __L.at(__c36, 0) as any as S.Schema<CancellationReason>;
 export type CancellationReasonList = CancellationReason[];
-const CancellationReasonList = /*@__PURE__*/ __L.at(__c36, 1);
 export type BatchExecuteStatementError =
   | InternalServerError
   | RequestLimitExceeded
@@ -3180,8 +2400,8 @@ export const batchExecuteStatement: API.OperationMethod<
   BatchExecuteStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchExecuteStatementInput,
-  output: BatchExecuteStatementOutput,
+  input: __S(8) as any as S.Schema<BatchExecuteStatementInput>,
+  output: __S(19) as any as S.Schema<BatchExecuteStatementOutput>,
   errors: [InternalServerError, RequestLimitExceeded, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3260,8 +2480,8 @@ export const batchGetItem: API.OperationMethod<
   BatchGetItemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetItemInput,
-  output: BatchGetItemOutput,
+  input: __S(24) as any as S.Schema<BatchGetItemInput>,
+  output: __S(26) as any as S.Schema<BatchGetItemOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -3376,8 +2596,8 @@ export const batchWriteItem: API.OperationMethod<
   BatchWriteItemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchWriteItemInput,
-  output: BatchWriteItemOutput,
+  input: __S(32) as any as S.Schema<BatchWriteItemInput>,
+  output: __S(37) as any as S.Schema<BatchWriteItemOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -3440,8 +2660,8 @@ export const createBackup: API.OperationMethod<
   CreateBackupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBackupInput,
-  output: CreateBackupOutput,
+  input: __S(38) as any as S.Schema<CreateBackupInput>,
+  output: __S(40) as any as S.Schema<CreateBackupOutput>,
   errors: [
     BackupInUseException,
     ContinuousBackupsUnavailableException,
@@ -3515,8 +2735,8 @@ export const createGlobalTable: API.OperationMethod<
   CreateGlobalTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGlobalTableInput,
-  output: CreateGlobalTableOutput,
+  input: __S(43) as any as S.Schema<CreateGlobalTableInput>,
+  output: __S(53) as any as S.Schema<CreateGlobalTableOutput>,
   errors: [
     GlobalTableAlreadyExistsException,
     InternalServerError,
@@ -3558,8 +2778,8 @@ export const createTable: API.OperationMethod<
   CreateTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTableInput,
-  output: CreateTableOutput,
+  input: __S(75) as any as S.Schema<CreateTableInput>,
+  output: __S(90) as any as S.Schema<CreateTableOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -3590,8 +2810,8 @@ export const deleteBackup: API.OperationMethod<
   DeleteBackupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBackupInput,
-  output: DeleteBackupOutput,
+  input: __S(91) as any as S.Schema<DeleteBackupInput>,
+  output: __S(102) as any as S.Schema<DeleteBackupOutput>,
   errors: [
     BackupInUseException,
     BackupNotFoundException,
@@ -3638,8 +2858,8 @@ export const deleteItem: API.OperationMethod<
   DeleteItemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteItemInput,
-  output: DeleteItemOutput,
+  input: __S(105) as any as S.Schema<DeleteItemInput>,
+  output: __S(106) as any as S.Schema<DeleteItemOutput>,
   errors: [
     ConditionalCheckFailedException,
     InternalServerError,
@@ -3692,8 +2912,8 @@ export const deleteResourcePolicy: API.OperationMethod<
   DeleteResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteResourcePolicyInput,
-  output: DeleteResourcePolicyOutput,
+  input: __S(107) as any as S.Schema<DeleteResourcePolicyInput>,
+  output: __S(108) as any as S.Schema<DeleteResourcePolicyOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -3743,8 +2963,8 @@ export const deleteTable: API.OperationMethod<
   DeleteTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTableInput,
-  output: DeleteTableOutput,
+  input: __S(109) as any as S.Schema<DeleteTableInput>,
+  output: __S(90) as any as S.Schema<DeleteTableOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -3774,8 +2994,8 @@ export const describeBackup: API.OperationMethod<
   DescribeBackupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeBackupInput,
-  output: DescribeBackupOutput,
+  input: __S(110) as any as S.Schema<DescribeBackupInput>,
+  output: __S(102) as any as S.Schema<DescribeBackupOutput>,
   errors: [BackupNotFoundException, InternalServerError, InvalidEndpointException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3810,8 +3030,8 @@ export const describeContinuousBackups: API.OperationMethod<
   DescribeContinuousBackupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeContinuousBackupsInput,
-  output: DescribeContinuousBackupsOutput,
+  input: __S(111) as any as S.Schema<DescribeContinuousBackupsInput>,
+  output: __S(114) as any as S.Schema<DescribeContinuousBackupsOutput>,
   errors: [InternalServerError, InvalidEndpointException, TableNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3832,8 +3052,8 @@ export const describeContributorInsights: API.OperationMethod<
   DescribeContributorInsightsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeContributorInsightsInput,
-  output: DescribeContributorInsightsOutput,
+  input: __S(115) as any as S.Schema<DescribeContributorInsightsInput>,
+  output: __S(117) as any as S.Schema<DescribeContributorInsightsOutput>,
   errors: [InternalServerError, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3851,8 +3071,8 @@ export const describeEndpoints: API.OperationMethod<
   DescribeEndpointsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeEndpointsRequest,
-  output: DescribeEndpointsResponse,
+  input: __S(118) as any as S.Schema<DescribeEndpointsRequest>,
+  output: __S(121) as any as S.Schema<DescribeEndpointsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3873,8 +3093,8 @@ export const describeExport: API.OperationMethod<
   DescribeExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeExportInput,
-  output: DescribeExportOutput,
+  input: __S(122) as any as S.Schema<DescribeExportInput>,
+  output: __S(126) as any as S.Schema<DescribeExportOutput>,
   errors: [ExportNotFoundException, InternalServerError, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3899,8 +3119,8 @@ export const describeGlobalTable: API.OperationMethod<
   DescribeGlobalTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeGlobalTableInput,
-  output: DescribeGlobalTableOutput,
+  input: __S(127) as any as S.Schema<DescribeGlobalTableInput>,
+  output: __S(128) as any as S.Schema<DescribeGlobalTableOutput>,
   errors: [GlobalTableNotFoundException, InternalServerError, InvalidEndpointException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3925,8 +3145,8 @@ export const describeGlobalTableSettings: API.OperationMethod<
   DescribeGlobalTableSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeGlobalTableSettingsInput,
-  output: DescribeGlobalTableSettingsOutput,
+  input: __S(129) as any as S.Schema<DescribeGlobalTableSettingsInput>,
+  output: __S(138) as any as S.Schema<DescribeGlobalTableSettingsOutput>,
   errors: [GlobalTableNotFoundException, InternalServerError, InvalidEndpointException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3943,8 +3163,8 @@ export const describeImport: API.OperationMethod<
   DescribeImportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeImportInput,
-  output: DescribeImportOutput,
+  input: __S(139) as any as S.Schema<DescribeImportInput>,
+  output: __S(145) as any as S.Schema<DescribeImportOutput>,
   errors: [ImportNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3965,8 +3185,8 @@ export const describeKinesisStreamingDestination: API.OperationMethod<
   DescribeKinesisStreamingDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeKinesisStreamingDestinationInput,
-  output: DescribeKinesisStreamingDestinationOutput,
+  input: __S(146) as any as S.Schema<DescribeKinesisStreamingDestinationInput>,
+  output: __S(149) as any as S.Schema<DescribeKinesisStreamingDestinationOutput>,
   errors: [InternalServerError, InvalidEndpointException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4045,8 +3265,8 @@ export const describeLimits: API.OperationMethod<
   DescribeLimitsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeLimitsInput,
-  output: DescribeLimitsOutput,
+  input: __S(150) as any as S.Schema<DescribeLimitsInput>,
+  output: __S(151) as any as S.Schema<DescribeLimitsOutput>,
   errors: [InternalServerError, InvalidEndpointException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4075,8 +3295,8 @@ export const describeTable: API.OperationMethod<
   DescribeTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeTableInput,
-  output: DescribeTableOutput,
+  input: __S(152) as any as S.Schema<DescribeTableInput>,
+  output: __S(153) as any as S.Schema<DescribeTableOutput>,
   errors: [InternalServerError, InvalidEndpointException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4096,8 +3316,8 @@ export const describeTableReplicaAutoScaling: API.OperationMethod<
   DescribeTableReplicaAutoScalingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeTableReplicaAutoScalingInput,
-  output: DescribeTableReplicaAutoScalingOutput,
+  input: __S(154) as any as S.Schema<DescribeTableReplicaAutoScalingInput>,
+  output: __S(160) as any as S.Schema<DescribeTableReplicaAutoScalingOutput>,
   errors: [InternalServerError, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4118,8 +3338,8 @@ export const describeTimeToLive: API.OperationMethod<
   DescribeTimeToLiveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeTimeToLiveInput,
-  output: DescribeTimeToLiveOutput,
+  input: __S(161) as any as S.Schema<DescribeTimeToLiveInput>,
+  output: __S(162) as any as S.Schema<DescribeTimeToLiveOutput>,
   errors: [InternalServerError, InvalidEndpointException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4143,8 +3363,8 @@ export const disableKinesisStreamingDestination: API.OperationMethod<
   DisableKinesisStreamingDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: KinesisStreamingDestinationInput,
-  output: KinesisStreamingDestinationOutput,
+  input: __S(164) as any as S.Schema<KinesisStreamingDestinationInput>,
+  output: __S(165) as any as S.Schema<KinesisStreamingDestinationOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -4176,8 +3396,8 @@ export const enableKinesisStreamingDestination: API.OperationMethod<
   EnableKinesisStreamingDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: KinesisStreamingDestinationInput,
-  output: KinesisStreamingDestinationOutput,
+  input: __S(164) as any as S.Schema<KinesisStreamingDestinationInput>,
+  output: __S(165) as any as S.Schema<KinesisStreamingDestinationOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -4224,8 +3444,8 @@ export const executeStatement: API.OperationMethod<
   ExecuteStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteStatementInput,
-  output: ExecuteStatementOutput,
+  input: __S(166) as any as S.Schema<ExecuteStatementInput>,
+  output: __S(167) as any as S.Schema<ExecuteStatementOutput>,
   errors: [
     ConditionalCheckFailedException,
     DuplicateItemException,
@@ -4267,8 +3487,8 @@ export const executeTransaction: API.OperationMethod<
   ExecuteTransactionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteTransactionInput,
-  output: ExecuteTransactionOutput,
+  input: __S(170) as any as S.Schema<ExecuteTransactionInput>,
+  output: __S(173) as any as S.Schema<ExecuteTransactionOutput>,
   errors: [
     IdempotentParameterMismatchException,
     InternalServerError,
@@ -4303,8 +3523,8 @@ export const exportTableToPointInTime: API.OperationMethod<
   ExportTableToPointInTimeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportTableToPointInTimeInput,
-  output: ExportTableToPointInTimeOutput,
+  input: __S(174) as any as S.Schema<ExportTableToPointInTimeInput>,
+  output: __S(175) as any as S.Schema<ExportTableToPointInTimeOutput>,
   errors: [
     ExportConflictException,
     InternalServerError,
@@ -4342,8 +3562,8 @@ export const getItem: API.OperationMethod<
   GetItemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetItemInput,
-  output: GetItemOutput,
+  input: __S(176) as any as S.Schema<GetItemInput>,
+  output: __S(177) as any as S.Schema<GetItemOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -4404,8 +3624,8 @@ export const getResourcePolicy: API.OperationMethod<
   GetResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourcePolicyInput,
-  output: GetResourcePolicyOutput,
+  input: __S(178) as any as S.Schema<GetResourcePolicyInput>,
+  output: __S(179) as any as S.Schema<GetResourcePolicyOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -4431,8 +3651,8 @@ export const importTable: API.OperationMethod<
   ImportTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportTableInput,
-  output: ImportTableOutput,
+  input: __S(180) as any as S.Schema<ImportTableInput>,
+  output: __S(145) as any as S.Schema<ImportTableOutput>,
   errors: [ImportConflictException, LimitExceededException, ResourceInUseException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4462,8 +3682,8 @@ export const listBackups: API.OperationMethod<
   ListBackupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBackupsInput,
-  output: ListBackupsOutput,
+  input: __S(181) as any as S.Schema<ListBackupsInput>,
+  output: __S(184) as any as S.Schema<ListBackupsOutput>,
   errors: [InternalServerError, InvalidEndpointException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4485,8 +3705,8 @@ export const listContributorInsights: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListContributorInsightsInput,
-  output: ListContributorInsightsOutput,
+  input: __S(185) as any as S.Schema<ListContributorInsightsInput>,
+  output: __S(188) as any as S.Schema<ListContributorInsightsOutput>,
   errors: [InternalServerError, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4509,8 +3729,8 @@ export const listExports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListExportsInput,
-  output: ListExportsOutput,
+  input: __S(189) as any as S.Schema<ListExportsInput>,
+  output: __S(192) as any as S.Schema<ListExportsOutput>,
   errors: [InternalServerError, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4536,8 +3756,8 @@ export const listGlobalTables: API.OperationMethod<
   ListGlobalTablesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGlobalTablesInput,
-  output: ListGlobalTablesOutput,
+  input: __S(193) as any as S.Schema<ListGlobalTablesInput>,
+  output: __S(196) as any as S.Schema<ListGlobalTablesOutput>,
   errors: [InternalServerError, InvalidEndpointException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4555,8 +3775,8 @@ export const listImports: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListImportsInput,
-  output: ListImportsOutput,
+  input: __S(197) as any as S.Schema<ListImportsInput>,
+  output: __S(200) as any as S.Schema<ListImportsOutput>,
   errors: [LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4577,8 +3797,8 @@ export const listTables: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TableName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTablesInput,
-  output: ListTablesOutput,
+  input: __S(201) as any as S.Schema<ListTablesInput>,
+  output: __S(202) as any as S.Schema<ListTablesOutput>,
   errors: [InternalServerError, InvalidEndpointException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4609,8 +3829,8 @@ export const listTagsOfResource: API.OperationMethod<
   ListTagsOfResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsOfResourceInput,
-  output: ListTagsOfResourceOutput,
+  input: __S(203) as any as S.Schema<ListTagsOfResourceInput>,
+  output: __S(204) as any as S.Schema<ListTagsOfResourceOutput>,
   errors: [InternalServerError, InvalidEndpointException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4665,8 +3885,8 @@ export const putItem: API.OperationMethod<
   PutItemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutItemInput,
-  output: PutItemOutput,
+  input: __S(205) as any as S.Schema<PutItemInput>,
+  output: __S(106) as any as S.Schema<PutItemOutput>,
   errors: [
     ConditionalCheckFailedException,
     InternalServerError,
@@ -4720,8 +3940,8 @@ export const putResourcePolicy: API.OperationMethod<
   PutResourcePolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutResourcePolicyInput,
-  output: PutResourcePolicyOutput,
+  input: __S(206) as any as S.Schema<PutResourcePolicyInput>,
+  output: __S(207) as any as S.Schema<PutResourcePolicyOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -4804,8 +4024,8 @@ export const query: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   { [key: string]: AttributeValue | undefined }
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: QueryInput,
-  output: QueryOutput,
+  input: __S(210) as any as S.Schema<QueryInput>,
+  output: __S(211) as any as S.Schema<QueryOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -4861,8 +4081,8 @@ export const restoreTableFromBackup: API.OperationMethod<
   RestoreTableFromBackupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreTableFromBackupInput,
-  output: RestoreTableFromBackupOutput,
+  input: __S(212) as any as S.Schema<RestoreTableFromBackupInput>,
+  output: __S(213) as any as S.Schema<RestoreTableFromBackupOutput>,
   errors: [
     BackupInUseException,
     BackupNotFoundException,
@@ -4933,8 +4153,8 @@ export const restoreTableToPointInTime: API.OperationMethod<
   RestoreTableToPointInTimeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreTableToPointInTimeInput,
-  output: RestoreTableToPointInTimeOutput,
+  input: __S(214) as any as S.Schema<RestoreTableToPointInTimeInput>,
+  output: __S(213) as any as S.Schema<RestoreTableToPointInTimeOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -5010,8 +4230,8 @@ export const scan: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   { [key: string]: AttributeValue | undefined }
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ScanInput,
-  output: ScanOutput,
+  input: __S(215) as any as S.Schema<ScanInput>,
+  output: __S(211) as any as S.Schema<ScanOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -5061,8 +4281,8 @@ export const searchVectors: API.OperationMethod<
   SearchVectorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchVectorsInput,
-  output: SearchVectorsOutput,
+  input: __S(216) as any as S.Schema<SearchVectorsInput>,
+  output: __S(219) as any as S.Schema<SearchVectorsOutput>,
   errors: [
     InternalServerError,
     RequestLimitExceeded,
@@ -5109,8 +4329,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceInput,
-  output: TagResourceResponse,
+  input: __S(220) as any as S.Schema<TagResourceInput>,
+  output: __S(221) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -5161,8 +4381,8 @@ export const transactGetItems: API.OperationMethod<
   TransactGetItemsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransactGetItemsInput,
-  output: TransactGetItemsOutput,
+  input: __S(225) as any as S.Schema<TransactGetItemsInput>,
+  output: __S(226) as any as S.Schema<TransactGetItemsOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -5252,8 +4472,8 @@ export const transactWriteItems: API.OperationMethod<
   TransactWriteItemsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransactWriteItemsInput,
-  output: TransactWriteItemsOutput,
+  input: __S(233) as any as S.Schema<TransactWriteItemsInput>,
+  output: __S(234) as any as S.Schema<TransactWriteItemsOutput>,
   errors: [
     IdempotentParameterMismatchException,
     InternalServerError,
@@ -5303,8 +4523,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceInput,
-  output: UntagResourceResponse,
+  input: __S(235) as any as S.Schema<UntagResourceInput>,
+  output: __S(221) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -5344,8 +4564,8 @@ export const updateContinuousBackups: API.OperationMethod<
   UpdateContinuousBackupsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateContinuousBackupsInput,
-  output: UpdateContinuousBackupsOutput,
+  input: __S(237) as any as S.Schema<UpdateContinuousBackupsInput>,
+  output: __S(114) as any as S.Schema<UpdateContinuousBackupsOutput>,
   errors: [
     ContinuousBackupsUnavailableException,
     InternalServerError,
@@ -5376,8 +4596,8 @@ export const updateContributorInsights: API.OperationMethod<
   UpdateContributorInsightsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateContributorInsightsInput,
-  output: UpdateContributorInsightsOutput,
+  input: __S(238) as any as S.Schema<UpdateContributorInsightsInput>,
+  output: __S(239) as any as S.Schema<UpdateContributorInsightsOutput>,
   errors: [InternalServerError, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -5426,8 +4646,8 @@ export const updateGlobalTable: API.OperationMethod<
   UpdateGlobalTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGlobalTableInput,
-  output: UpdateGlobalTableOutput,
+  input: __S(243) as any as S.Schema<UpdateGlobalTableInput>,
+  output: __S(53) as any as S.Schema<UpdateGlobalTableOutput>,
   errors: [
     GlobalTableNotFoundException,
     InternalServerError,
@@ -5463,8 +4683,8 @@ export const updateGlobalTableSettings: API.OperationMethod<
   UpdateGlobalTableSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGlobalTableSettingsInput,
-  output: UpdateGlobalTableSettingsOutput,
+  input: __S(253) as any as S.Schema<UpdateGlobalTableSettingsInput>,
+  output: __S(138) as any as S.Schema<UpdateGlobalTableSettingsOutput>,
   errors: [
     GlobalTableNotFoundException,
     IndexNotFoundException,
@@ -5507,8 +4727,8 @@ export const updateItem: API.OperationMethod<
   UpdateItemError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateItemInput,
-  output: UpdateItemOutput,
+  input: __S(256) as any as S.Schema<UpdateItemInput>,
+  output: __S(106) as any as S.Schema<UpdateItemOutput>,
   errors: [
     ConditionalCheckFailedException,
     InternalServerError,
@@ -5542,8 +4762,8 @@ export const updateKinesisStreamingDestination: API.OperationMethod<
   UpdateKinesisStreamingDestinationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateKinesisStreamingDestinationInput,
-  output: UpdateKinesisStreamingDestinationOutput,
+  input: __S(257) as any as S.Schema<UpdateKinesisStreamingDestinationInput>,
+  output: __S(258) as any as S.Schema<UpdateKinesisStreamingDestinationOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -5589,8 +4809,8 @@ export const updateTable: API.OperationMethod<
   UpdateTableError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTableInput,
-  output: UpdateTableOutput,
+  input: __S(275) as any as S.Schema<UpdateTableInput>,
+  output: __S(90) as any as S.Schema<UpdateTableOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -5618,8 +4838,8 @@ export const updateTableReplicaAutoScaling: API.OperationMethod<
   UpdateTableReplicaAutoScalingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTableReplicaAutoScalingInput,
-  output: UpdateTableReplicaAutoScalingOutput,
+  input: __S(282) as any as S.Schema<UpdateTableReplicaAutoScalingInput>,
+  output: __S(160) as any as S.Schema<UpdateTableReplicaAutoScalingOutput>,
   errors: [
     InternalServerError,
     LimitExceededException,
@@ -5673,8 +4893,8 @@ export const updateTimeToLive: API.OperationMethod<
   UpdateTimeToLiveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTimeToLiveInput,
-  output: UpdateTimeToLiveOutput,
+  input: __S(284) as any as S.Schema<UpdateTimeToLiveInput>,
+  output: __S(285) as any as S.Schema<UpdateTimeToLiveOutput>,
   errors: [
     InternalServerError,
     InvalidEndpointException,
@@ -5697,29 +4917,29 @@ function __c0(j: number): any {
     case 2:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend(() => AttributeValue)
+        /*@__PURE__*/ S.suspend(() => __S(4))
           .annotate({ identifier: "AttributeValue" })
           .pipe(S.optional),
       );
     case 3:
       return S.Array(
-        /*@__PURE__*/ S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
+        /*@__PURE__*/ S.suspend(() => __S(4)).annotate({ identifier: "AttributeValue" }),
       );
     case 4:
       return S.Union([
         /*@__PURE__*/ S.Struct({ S: S.String }),
         /*@__PURE__*/ S.Struct({ N: S.String }),
         /*@__PURE__*/ S.Struct({ B: T.Blob }),
-        /*@__PURE__*/ S.Struct({ SS: StringSetAttributeValue }),
-        /*@__PURE__*/ S.Struct({ NS: NumberSetAttributeValue }),
-        /*@__PURE__*/ S.Struct({ BS: BinarySetAttributeValue }),
+        /*@__PURE__*/ S.Struct({ SS: __S(0) }),
+        /*@__PURE__*/ S.Struct({ NS: __S(0) }),
+        /*@__PURE__*/ S.Struct({ BS: __S(1) }),
         /*@__PURE__*/ S.Struct({
-          M: /*@__PURE__*/ S.suspend(() => MapAttributeValue).annotate({
+          M: /*@__PURE__*/ S.suspend(() => __S(2)).annotate({
             identifier: "MapAttributeValue",
           }),
         }),
         /*@__PURE__*/ S.Struct({
-          L: /*@__PURE__*/ S.suspend(() => ListAttributeValue).annotate({
+          L: /*@__PURE__*/ S.suspend(() => __S(3)).annotate({
             identifier: "ListAttributeValue",
           }),
         }),
@@ -5728,19 +4948,19 @@ function __c0(j: number): any {
       ]);
     case 5:
       return S.Array(
-        /*@__PURE__*/ S.suspend(() => AttributeValue).annotate({ identifier: "AttributeValue" }),
+        /*@__PURE__*/ S.suspend(() => __S(4)).annotate({ identifier: "AttributeValue" }),
       );
     case 6:
       return S.suspend(() =>
         S.Struct({
           Statement: S.String,
-          Parameters: S.optional(PreparedStatementParameters),
+          Parameters: S.optional(__S(5)),
           ConsistentRead: S.optional(S.Boolean),
-          ReturnValuesOnConditionCheckFailure: S.optional(ReturnValuesOnConditionCheckFailure),
+          ReturnValuesOnConditionCheckFailure: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchStatementRequest" });
     case 7:
-      return S.Array(BatchStatementRequest);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -5748,8 +4968,8 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Statements: PartiQLBatchRequest,
-          ReturnConsumedCapacity: S.optional(ReturnConsumedCapacity),
+          Statements: __S(7),
+          ReturnConsumedCapacity: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "BatchExecuteStatementInput",
@@ -5757,28 +4977,28 @@ function __c1(j: number): any {
     case 1:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend(() => AttributeValue)
+        /*@__PURE__*/ S.suspend(() => __S(4))
           .annotate({ identifier: "AttributeValue" })
           .pipe(S.optional),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Code: S.optional(BatchStatementErrorCodeEnum),
+          Code: S.optional(S.String),
           Message: S.optional(S.String),
-          Item: S.optional(AttributeMap),
+          Item: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "BatchStatementError" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Error: S.optional(BatchStatementError),
+          Error: S.optional(__S(10)),
           TableName: S.optional(S.String),
-          Item: S.optional(AttributeMap),
+          Item: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "BatchStatementResponse" });
     case 4:
-      return S.Array(BatchStatementResponse);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5788,7 +5008,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Capacity" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ Capacity.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(13).pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -5801,7 +5021,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ VectorCapacity.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(15).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5809,39 +5029,39 @@ function __c2(j: number): any {
           CapacityUnits: S.optional(S.Number),
           ReadCapacityUnits: S.optional(S.Number),
           WriteCapacityUnits: S.optional(S.Number),
-          Table: S.optional(Capacity),
-          LocalSecondaryIndexes: S.optional(SecondaryIndexesCapacityMap),
-          GlobalSecondaryIndexes: S.optional(SecondaryIndexesCapacityMap),
-          VectorIndexes: S.optional(VectorIndexesCapacityMap),
+          Table: S.optional(__S(13)),
+          LocalSecondaryIndexes: S.optional(__S(14)),
+          GlobalSecondaryIndexes: S.optional(__S(14)),
+          VectorIndexes: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "ConsumedCapacity" });
     case 2:
-      return S.Array(ConsumedCapacity);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Responses: S.optional(PartiQLBatchResponse),
-          ConsumedCapacity: S.optional(ConsumedCapacityMultiple),
+          Responses: S.optional(__S(12)),
+          ConsumedCapacity: S.optional(__S(18)),
         }).pipe(ns),
       ).annotate({
         identifier: "BatchExecuteStatementOutput",
       });
     case 4:
-      return S.Array(Key);
+      return S.Array(__S(9));
     case 5:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Keys: KeyList,
-          AttributesToGet: S.optional(AttributeNameList),
+          Keys: __S(20),
+          AttributesToGet: S.optional(__S(0)),
           ConsistentRead: S.optional(S.Boolean),
           ProjectionExpression: S.optional(S.String),
-          ExpressionAttributeNames: S.optional(ExpressionAttributeNameMap),
+          ExpressionAttributeNames: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "KeysAndAttributes" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ KeysAndAttributes.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(22).pipe(S.optional));
   }
 }
 function __c3(j: number): any {
@@ -5849,36 +5069,36 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          RequestItems: BatchGetRequestMap,
-          ReturnConsumedCapacity: S.optional(ReturnConsumedCapacity),
+          RequestItems: __S(23),
+          ReturnConsumedCapacity: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "BatchGetItemInput" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ ItemList.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(20).pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Responses: S.optional(BatchGetResponseMap),
-          UnprocessedKeys: S.optional(BatchGetRequestMap),
-          ConsumedCapacity: S.optional(ConsumedCapacityMultiple),
+          Responses: S.optional(__S(25)),
+          UnprocessedKeys: S.optional(__S(23)),
+          ConsumedCapacity: S.optional(__S(18)),
         }).pipe(ns),
       ).annotate({ identifier: "BatchGetItemOutput" });
     case 3:
-      return S.suspend(() => S.Struct({ Item: PutItemInputAttributeMap })).annotate({
+      return S.suspend(() => S.Struct({ Item: __S(9) })).annotate({
         identifier: "PutRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ Key: Key })).annotate({
+      return S.suspend(() => S.Struct({ Key: __S(9) })).annotate({
         identifier: "DeleteRequest",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ PutRequest: S.optional(PutRequest), DeleteRequest: S.optional(DeleteRequest) }),
+        S.Struct({ PutRequest: S.optional(__S(27)), DeleteRequest: S.optional(__S(28)) }),
       ).annotate({ identifier: "WriteRequest" });
     case 6:
-      return S.Array(WriteRequest);
+      return S.Array(__S(29));
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ WriteRequests.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(30).pipe(S.optional));
   }
 }
 function __c4(j: number): any {
@@ -5886,9 +5106,9 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          RequestItems: BatchWriteItemRequestMap,
-          ReturnConsumedCapacity: S.optional(ReturnConsumedCapacity),
-          ReturnItemCollectionMetrics: S.optional(ReturnItemCollectionMetrics),
+          RequestItems: __S(31),
+          ReturnConsumedCapacity: S.optional(S.String),
+          ReturnItemCollectionMetrics: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "BatchWriteItemInput" });
     case 1:
@@ -5896,20 +5116,20 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ItemCollectionKey: S.optional(ItemCollectionKeyAttributeMap),
-          SizeEstimateRangeGB: S.optional(ItemCollectionSizeEstimateRange),
+          ItemCollectionKey: S.optional(__S(9)),
+          SizeEstimateRangeGB: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "ItemCollectionMetrics" });
     case 3:
-      return S.Array(ItemCollectionMetrics);
+      return S.Array(__S(34));
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ ItemCollectionMetricsMultiple.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(35).pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          UnprocessedItems: S.optional(BatchWriteItemRequestMap),
-          ItemCollectionMetrics: S.optional(ItemCollectionMetricsPerTable),
-          ConsumedCapacity: S.optional(ConsumedCapacityMultiple),
+          UnprocessedItems: S.optional(__S(31)),
+          ItemCollectionMetrics: S.optional(__S(36)),
+          ConsumedCapacity: S.optional(__S(18)),
         }).pipe(ns),
       ).annotate({ identifier: "BatchWriteItemOutput" });
     case 6:
@@ -5925,8 +5145,8 @@ function __c4(j: number): any {
           BackupArn: S.String,
           BackupName: S.String,
           BackupSizeBytes: S.optional(S.Number),
-          BackupStatus: BackupStatus,
-          BackupType: BackupType,
+          BackupStatus: S.String,
+          BackupType: S.String,
           BackupCreationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           BackupExpiryDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -5936,20 +5156,20 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ BackupDetails: S.optional(BackupDetails) }).pipe(ns),
-      ).annotate({ identifier: "CreateBackupOutput" });
+      return S.suspend(() => S.Struct({ BackupDetails: S.optional(__S(39)) }).pipe(ns)).annotate({
+        identifier: "CreateBackupOutput",
+      });
     case 1:
       return S.suspend(() => S.Struct({ RegionName: S.optional(S.String) })).annotate({
         identifier: "Replica",
       });
     case 2:
-      return S.Array(Replica);
+      return S.Array(__S(41));
     case 3:
       return S.suspend(() =>
         S.Struct({
           GlobalTableName: S.String.pipe(T.ContextParam("ResourceArn")),
-          ReplicationGroup: ReplicaList,
+          ReplicationGroup: __S(42),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateGlobalTableInput" });
     case 4:
@@ -5965,7 +5185,7 @@ function __c5(j: number): any {
         S.Struct({
           ReadUnitsPerSecond: S.optional(S.Number),
           WriteUnitsPerSecond: S.optional(S.Number),
-          Status: S.optional(TableStatus),
+          Status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TableWarmThroughputDescription",
@@ -5974,9 +5194,9 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IndexName: S.optional(S.String),
-          ProvisionedThroughputOverride: S.optional(ProvisionedThroughputOverride),
-          OnDemandThroughputOverride: S.optional(OnDemandThroughputOverride),
-          WarmThroughput: S.optional(GlobalSecondaryIndexWarmThroughputDescription),
+          ProvisionedThroughputOverride: S.optional(__S(44)),
+          OnDemandThroughputOverride: S.optional(__S(45)),
+          WarmThroughput: S.optional(__S(46)),
         }),
       ).annotate({
         identifier: "ReplicaGlobalSecondaryIndexDescription",
@@ -5986,11 +5206,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ReplicaGlobalSecondaryIndexDescription);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          TableClass: S.optional(TableClass),
+          TableClass: S.optional(S.String),
           LastUpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "TableClassSummary" });
@@ -5998,65 +5218,65 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RegionName: S.optional(S.String),
-          ReplicaStatus: S.optional(ReplicaStatus),
+          ReplicaStatus: S.optional(S.String),
           ReplicaArn: S.optional(S.String),
           ReplicaStatusDescription: S.optional(S.String),
           ReplicaStatusPercentProgress: S.optional(S.String),
           KMSMasterKeyId: S.optional(S.String),
-          ProvisionedThroughputOverride: S.optional(ProvisionedThroughputOverride),
-          OnDemandThroughputOverride: S.optional(OnDemandThroughputOverride),
-          WarmThroughput: S.optional(TableWarmThroughputDescription),
-          GlobalSecondaryIndexes: S.optional(ReplicaGlobalSecondaryIndexDescriptionList),
+          ProvisionedThroughputOverride: S.optional(__S(44)),
+          OnDemandThroughputOverride: S.optional(__S(45)),
+          WarmThroughput: S.optional(__S(46)),
+          GlobalSecondaryIndexes: S.optional(__S(48)),
           ReplicaInaccessibleDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ReplicaTableClassSummary: S.optional(TableClassSummary),
-          GlobalTableSettingsReplicationMode: S.optional(GlobalTableSettingsReplicationMode),
+          ReplicaTableClassSummary: S.optional(__S(49)),
+          GlobalTableSettingsReplicationMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicaDescription" });
     case 3:
-      return S.Array(ReplicaDescription);
+      return S.Array(__S(50));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ReplicationGroup: S.optional(ReplicaDescriptionList),
+          ReplicationGroup: S.optional(__S(51)),
           GlobalTableArn: S.optional(S.String),
           CreationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          GlobalTableStatus: S.optional(GlobalTableStatus),
+          GlobalTableStatus: S.optional(S.String),
           GlobalTableName: S.optional(S.String),
         }),
       ).annotate({ identifier: "GlobalTableDescription" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ GlobalTableDescription: S.optional(GlobalTableDescription) }).pipe(ns),
+        S.Struct({ GlobalTableDescription: S.optional(__S(52)) }).pipe(ns),
       ).annotate({ identifier: "CreateGlobalTableOutput" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ AttributeName: S.String, AttributeType: ScalarAttributeType }),
+        S.Struct({ AttributeName: S.String, AttributeType: S.String }),
       ).annotate({ identifier: "AttributeDefinition" });
     case 7:
-      return S.Array(AttributeDefinition);
+      return S.Array(__S(54));
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ AttributeName: S.String, KeyType: KeyType })).annotate({
+      return S.suspend(() => S.Struct({ AttributeName: S.String, KeyType: S.String })).annotate({
         identifier: "KeySchemaElement",
       });
     case 1:
-      return S.Array(KeySchemaElement);
+      return S.Array(__S(56));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ProjectionType: S.optional(ProjectionType),
-          NonKeyAttributes: S.optional(NonKeyAttributeNameList),
+          ProjectionType: S.optional(S.String),
+          NonKeyAttributes: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "Projection" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ IndexName: S.String, KeySchema: KeySchema, Projection: Projection }),
+        S.Struct({ IndexName: S.String, KeySchema: __S(57), Projection: __S(58) }),
       ).annotate({ identifier: "LocalSecondaryIndex" });
     case 4:
-      return S.Array(LocalSecondaryIndex);
+      return S.Array(__S(59));
     case 5:
       return S.suspend(() =>
         S.Struct({ ReadCapacityUnits: S.Number, WriteCapacityUnits: S.Number }),
@@ -6083,24 +5303,24 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IndexName: S.String,
-          KeySchema: KeySchema,
-          Projection: Projection,
-          ProvisionedThroughput: S.optional(ProvisionedThroughput),
-          OnDemandThroughput: S.optional(OnDemandThroughput),
-          WarmThroughput: S.optional(WarmThroughput),
+          KeySchema: __S(57),
+          Projection: __S(58),
+          ProvisionedThroughput: S.optional(__S(61)),
+          OnDemandThroughput: S.optional(__S(62)),
+          WarmThroughput: S.optional(__S(63)),
         }),
       ).annotate({ identifier: "GlobalSecondaryIndex" });
     case 1:
-      return S.Array(GlobalSecondaryIndex);
+      return S.Array(__S(64));
     case 2:
       return S.suspend(() =>
-        S.Struct({ StreamEnabled: S.Boolean, StreamViewType: S.optional(StreamViewType) }),
+        S.Struct({ StreamEnabled: S.Boolean, StreamViewType: S.optional(S.String) }),
       ).annotate({ identifier: "StreamSpecification" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           Enabled: S.optional(S.Boolean),
-          SSEType: S.optional(SSEType),
+          SSEType: S.optional(S.String),
           KMSMasterKeyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SSESpecification" });
@@ -6109,55 +5329,55 @@ function __c8(j: number): any {
         identifier: "Tag",
       });
     case 5:
-      return S.Array(Tag);
+      return S.Array(__S(68));
     case 6:
       return S.suspend(() => S.Struct({ AttributeName: S.String })).annotate({
         identifier: "VectorAttributeDefinition",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ AttributeName: S.String, SearchSchemaElementType: SearchSchemaElementType }),
+        S.Struct({ AttributeName: S.String, SearchSchemaElementType: S.String }),
       ).annotate({ identifier: "SearchSchemaElement" });
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SearchSchemaElement);
+      return S.Array(__S(71));
     case 1:
       return S.suspend(() =>
         S.Struct({
           IndexName: S.String,
-          VectorAttribute: VectorAttributeDefinition,
-          SearchSchema: S.optional(SearchSchema),
-          Projection: Projection,
+          VectorAttribute: __S(70),
+          SearchSchema: S.optional(__S(72)),
+          Projection: __S(58),
           Dimensions: S.Number,
-          DistanceFunction: VectorDistanceFunction,
+          DistanceFunction: S.String,
         }),
       ).annotate({ identifier: "VectorIndex" });
     case 2:
-      return S.Array(VectorIndex);
+      return S.Array(__S(73));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AttributeDefinitions: S.optional(AttributeDefinitions),
+          AttributeDefinitions: S.optional(__S(55)),
           TableName: S.String.pipe(T.ContextParam("ResourceArn")),
-          KeySchema: S.optional(KeySchema),
-          LocalSecondaryIndexes: S.optional(LocalSecondaryIndexList),
-          GlobalSecondaryIndexes: S.optional(GlobalSecondaryIndexList),
-          BillingMode: S.optional(BillingMode),
-          ProvisionedThroughput: S.optional(ProvisionedThroughput),
-          StreamSpecification: S.optional(StreamSpecification),
-          SSESpecification: S.optional(SSESpecification),
-          Tags: S.optional(TagList),
-          TableClass: S.optional(TableClass),
+          KeySchema: S.optional(__S(57)),
+          LocalSecondaryIndexes: S.optional(__S(60)),
+          GlobalSecondaryIndexes: S.optional(__S(65)),
+          BillingMode: S.optional(S.String),
+          ProvisionedThroughput: S.optional(__S(61)),
+          StreamSpecification: S.optional(__S(66)),
+          SSESpecification: S.optional(__S(67)),
+          Tags: S.optional(__S(69)),
+          TableClass: S.optional(S.String),
           DeletionProtectionEnabled: S.optional(S.Boolean),
-          WarmThroughput: S.optional(WarmThroughput),
+          WarmThroughput: S.optional(__S(63)),
           ResourcePolicy: S.optional(S.String),
-          OnDemandThroughput: S.optional(OnDemandThroughput),
+          OnDemandThroughput: S.optional(__S(62)),
           GlobalTableSourceArn: S.optional(S.String),
-          GlobalTableSettingsReplicationMode: S.optional(GlobalTableSettingsReplicationMode),
-          VectorIndexes: S.optional(VectorIndexList),
+          GlobalTableSettingsReplicationMode: S.optional(S.String),
+          VectorIndexes: S.optional(__S(74)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateTableInput" });
     case 4:
@@ -6175,7 +5395,7 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          BillingMode: S.optional(BillingMode),
+          BillingMode: S.optional(S.String),
           LastUpdateToPayPerRequestDateTime: S.optional(
             S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           ),
@@ -6185,8 +5405,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IndexName: S.optional(S.String),
-          KeySchema: S.optional(KeySchema),
-          Projection: S.optional(Projection),
+          KeySchema: S.optional(__S(57)),
+          Projection: S.optional(__S(58)),
           IndexSizeBytes: S.optional(S.Number),
           ItemCount: S.optional(S.Number),
           IndexArn: S.optional(S.String),
@@ -6195,7 +5415,7 @@ function __c9(j: number): any {
         identifier: "LocalSecondaryIndexDescription",
       });
     case 7:
-      return S.Array(LocalSecondaryIndexDescription);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
@@ -6204,30 +5424,30 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IndexName: S.optional(S.String),
-          KeySchema: S.optional(KeySchema),
-          Projection: S.optional(Projection),
-          IndexStatus: S.optional(IndexStatus),
+          KeySchema: S.optional(__S(57)),
+          Projection: S.optional(__S(58)),
+          IndexStatus: S.optional(S.String),
           Backfilling: S.optional(S.Boolean),
-          ProvisionedThroughput: S.optional(ProvisionedThroughputDescription),
+          ProvisionedThroughput: S.optional(__S(76)),
           IndexSizeBytes: S.optional(S.Number),
           ItemCount: S.optional(S.Number),
           IndexArn: S.optional(S.String),
-          OnDemandThroughput: S.optional(OnDemandThroughput),
-          WarmThroughput: S.optional(GlobalSecondaryIndexWarmThroughputDescription),
+          OnDemandThroughput: S.optional(__S(62)),
+          WarmThroughput: S.optional(__S(46)),
         }),
       ).annotate({
         identifier: "GlobalSecondaryIndexDescription",
       });
     case 1:
-      return S.Array(GlobalSecondaryIndexDescription);
+      return S.Array(__S(80));
     case 2:
       return S.suspend(() =>
-        S.Struct({ RegionName: S.optional(S.String), WitnessStatus: S.optional(WitnessStatus) }),
+        S.Struct({ RegionName: S.optional(S.String), WitnessStatus: S.optional(S.String) }),
       ).annotate({
         identifier: "GlobalTableWitnessDescription",
       });
     case 3:
-      return S.Array(GlobalTableWitnessDescription);
+      return S.Array(__S(82));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -6240,8 +5460,8 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(SSEStatus),
-          SSEType: S.optional(SSEType),
+          Status: S.optional(S.String),
+          SSEType: S.optional(S.String),
           KMSMasterKeyArn: S.optional(S.String),
           InaccessibleEncryptionDateTime: S.optional(
             S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -6260,12 +5480,12 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IndexName: S.optional(S.String),
-          SearchSchema: S.optional(SearchSchema),
-          Projection: S.optional(Projection),
-          VectorAttribute: S.optional(VectorAttributeDefinition),
+          SearchSchema: S.optional(__S(72)),
+          Projection: S.optional(__S(58)),
+          VectorAttribute: S.optional(__S(70)),
           Dimensions: S.optional(S.Number),
-          DistanceFunction: S.optional(VectorDistanceFunction),
-          IndexStatus: S.optional(IndexStatus),
+          DistanceFunction: S.optional(S.String),
+          IndexStatus: S.optional(S.String),
           Backfilling: S.optional(S.Boolean),
           IndexSizeBytes: S.optional(S.Number),
           ItemCount: S.optional(S.Number),
@@ -6277,45 +5497,45 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(VectorIndexDescription);
+      return S.Array(__S(87));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AttributeDefinitions: S.optional(AttributeDefinitions),
+          AttributeDefinitions: S.optional(__S(55)),
           TableName: S.optional(S.String),
-          KeySchema: S.optional(KeySchema),
-          TableStatus: S.optional(TableStatus),
+          KeySchema: S.optional(__S(57)),
+          TableStatus: S.optional(S.String),
           CreationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ProvisionedThroughput: S.optional(ProvisionedThroughputDescription),
+          ProvisionedThroughput: S.optional(__S(76)),
           TableSizeBytes: S.optional(S.Number),
           ItemCount: S.optional(S.Number),
           TableArn: S.optional(S.String),
           TableId: S.optional(S.String),
-          BillingModeSummary: S.optional(BillingModeSummary),
-          LocalSecondaryIndexes: S.optional(LocalSecondaryIndexDescriptionList),
-          GlobalSecondaryIndexes: S.optional(GlobalSecondaryIndexDescriptionList),
-          StreamSpecification: S.optional(StreamSpecification),
+          BillingModeSummary: S.optional(__S(77)),
+          LocalSecondaryIndexes: S.optional(__S(79)),
+          GlobalSecondaryIndexes: S.optional(__S(81)),
+          StreamSpecification: S.optional(__S(66)),
           LatestStreamLabel: S.optional(S.String),
           LatestStreamArn: S.optional(S.String),
           GlobalTableVersion: S.optional(S.String),
-          Replicas: S.optional(ReplicaDescriptionList),
-          GlobalTableWitnesses: S.optional(GlobalTableWitnessDescriptionList),
-          GlobalTableSettingsReplicationMode: S.optional(GlobalTableSettingsReplicationMode),
-          RestoreSummary: S.optional(RestoreSummary),
-          SSEDescription: S.optional(SSEDescription),
-          ArchivalSummary: S.optional(ArchivalSummary),
-          TableClassSummary: S.optional(TableClassSummary),
+          Replicas: S.optional(__S(51)),
+          GlobalTableWitnesses: S.optional(__S(83)),
+          GlobalTableSettingsReplicationMode: S.optional(S.String),
+          RestoreSummary: S.optional(__S(84)),
+          SSEDescription: S.optional(__S(85)),
+          ArchivalSummary: S.optional(__S(86)),
+          TableClassSummary: S.optional(__S(49)),
           DeletionProtectionEnabled: S.optional(S.Boolean),
-          OnDemandThroughput: S.optional(OnDemandThroughput),
-          WarmThroughput: S.optional(TableWarmThroughputDescription),
-          MultiRegionConsistency: S.optional(MultiRegionConsistency),
-          VectorIndexes: S.optional(VectorIndexDescriptionList),
+          OnDemandThroughput: S.optional(__S(62)),
+          WarmThroughput: S.optional(__S(46)),
+          MultiRegionConsistency: S.optional(S.String),
+          VectorIndexes: S.optional(__S(88)),
         }),
       ).annotate({ identifier: "TableDescription" });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ TableDescription: S.optional(TableDescription) }).pipe(ns),
-      ).annotate({ identifier: "CreateTableOutput" });
+      return S.suspend(() => S.Struct({ TableDescription: S.optional(__S(89)) }).pipe(ns)).annotate(
+        { identifier: "CreateTableOutput" },
+      );
     case 3:
       return S.suspend(() =>
         S.Struct({ BackupArn: S.String.pipe(T.ContextParam("ResourceArn")) }).pipe(
@@ -6329,32 +5549,32 @@ function __c11(j: number): any {
           TableId: S.String,
           TableArn: S.optional(S.String),
           TableSizeBytes: S.optional(S.Number),
-          KeySchema: KeySchema,
+          KeySchema: __S(57),
           TableCreationDateTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          ProvisionedThroughput: ProvisionedThroughput,
-          OnDemandThroughput: S.optional(OnDemandThroughput),
+          ProvisionedThroughput: __S(61),
+          OnDemandThroughput: S.optional(__S(62)),
           ItemCount: S.optional(S.Number),
-          BillingMode: S.optional(BillingMode),
+          BillingMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "SourceTableDetails" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           IndexName: S.optional(S.String),
-          KeySchema: S.optional(KeySchema),
-          Projection: S.optional(Projection),
+          KeySchema: S.optional(__S(57)),
+          Projection: S.optional(__S(58)),
         }),
       ).annotate({ identifier: "LocalSecondaryIndexInfo" });
     case 6:
-      return S.Array(LocalSecondaryIndexInfo);
+      return S.Array(__S(93));
     case 7:
       return S.suspend(() =>
         S.Struct({
           IndexName: S.optional(S.String),
-          KeySchema: S.optional(KeySchema),
-          Projection: S.optional(Projection),
-          ProvisionedThroughput: S.optional(ProvisionedThroughput),
-          OnDemandThroughput: S.optional(OnDemandThroughput),
+          KeySchema: S.optional(__S(57)),
+          Projection: S.optional(__S(58)),
+          ProvisionedThroughput: S.optional(__S(61)),
+          OnDemandThroughput: S.optional(__S(62)),
         }),
       ).annotate({ identifier: "GlobalSecondaryIndexInfo" });
   }
@@ -6362,11 +5582,11 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GlobalSecondaryIndexInfo);
+      return S.Array(__S(95));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          TimeToLiveStatus: S.optional(TimeToLiveStatus),
+          TimeToLiveStatus: S.optional(S.String),
           AttributeName: S.optional(S.String),
         }),
       ).annotate({ identifier: "TimeToLiveDescription" });
@@ -6374,24 +5594,24 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IndexName: S.optional(S.String),
-          VectorAttribute: S.optional(VectorAttributeDefinition),
-          SearchSchema: S.optional(SearchSchema),
-          Projection: S.optional(Projection),
+          VectorAttribute: S.optional(__S(70)),
+          SearchSchema: S.optional(__S(72)),
+          Projection: S.optional(__S(58)),
           Dimensions: S.optional(S.Number),
-          DistanceFunction: S.optional(VectorDistanceFunction),
+          DistanceFunction: S.optional(S.String),
         }),
       ).annotate({ identifier: "VectorIndexInfo" });
     case 3:
-      return S.Array(VectorIndexInfo);
+      return S.Array(__S(98));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          LocalSecondaryIndexes: S.optional(LocalSecondaryIndexes),
-          GlobalSecondaryIndexes: S.optional(GlobalSecondaryIndexes),
-          StreamDescription: S.optional(StreamSpecification),
-          TimeToLiveDescription: S.optional(TimeToLiveDescription),
-          SSEDescription: S.optional(SSEDescription),
-          VectorIndexes: S.optional(VectorIndexes),
+          LocalSecondaryIndexes: S.optional(__S(94)),
+          GlobalSecondaryIndexes: S.optional(__S(96)),
+          StreamDescription: S.optional(__S(66)),
+          TimeToLiveDescription: S.optional(__S(97)),
+          SSEDescription: S.optional(__S(85)),
+          VectorIndexes: S.optional(__S(99)),
         }),
       ).annotate({
         identifier: "SourceTableFeatureDetails",
@@ -6399,22 +5619,22 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          BackupDetails: S.optional(BackupDetails),
-          SourceTableDetails: S.optional(SourceTableDetails),
-          SourceTableFeatureDetails: S.optional(SourceTableFeatureDetails),
+          BackupDetails: S.optional(__S(39)),
+          SourceTableDetails: S.optional(__S(92)),
+          SourceTableFeatureDetails: S.optional(__S(100)),
         }),
       ).annotate({ identifier: "BackupDescription" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ BackupDescription: S.optional(BackupDescription) }).pipe(ns),
+        S.Struct({ BackupDescription: S.optional(__S(101)) }).pipe(ns),
       ).annotate({ identifier: "DeleteBackupOutput" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Value: S.optional(AttributeValue),
+          Value: S.optional(__S(4)),
           Exists: S.optional(S.Boolean),
-          ComparisonOperator: S.optional(ComparisonOperator),
-          AttributeValueList: S.optional(AttributeValueList),
+          ComparisonOperator: S.optional(S.String),
+          AttributeValueList: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "ExpectedAttributeValue" });
   }
@@ -6422,29 +5642,29 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ ExpectedAttributeValue.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(103).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
           TableName: S.String.pipe(T.ContextParam("ResourceArn")),
-          Key: Key,
-          Expected: S.optional(ExpectedAttributeMap),
-          ConditionalOperator: S.optional(ConditionalOperator),
-          ReturnValues: S.optional(ReturnValue),
-          ReturnConsumedCapacity: S.optional(ReturnConsumedCapacity),
-          ReturnItemCollectionMetrics: S.optional(ReturnItemCollectionMetrics),
+          Key: __S(9),
+          Expected: S.optional(__S(104)),
+          ConditionalOperator: S.optional(S.String),
+          ReturnValues: S.optional(S.String),
+          ReturnConsumedCapacity: S.optional(S.String),
+          ReturnItemCollectionMetrics: S.optional(S.String),
           ConditionExpression: S.optional(S.String),
-          ExpressionAttributeNames: S.optional(ExpressionAttributeNameMap),
-          ExpressionAttributeValues: S.optional(ExpressionAttributeValueMap),
-          ReturnValuesOnConditionCheckFailure: S.optional(ReturnValuesOnConditionCheckFailure),
+          ExpressionAttributeNames: S.optional(__S(21)),
+          ExpressionAttributeValues: S.optional(__S(9)),
+          ReturnValuesOnConditionCheckFailure: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DeleteItemInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Attributes: S.optional(AttributeMap),
-          ConsumedCapacity: S.optional(ConsumedCapacity),
-          ItemCollectionMetrics: S.optional(ItemCollectionMetrics),
+          Attributes: S.optional(__S(9)),
+          ConsumedCapacity: S.optional(__S(17)),
+          ItemCollectionMetrics: S.optional(__S(34)),
         }).pipe(ns),
       ).annotate({ identifier: "DeleteItemOutput" });
     case 3:
@@ -6487,7 +5707,7 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          PointInTimeRecoveryStatus: S.optional(PointInTimeRecoveryStatus),
+          PointInTimeRecoveryStatus: S.optional(S.String),
           RecoveryPeriodInDays: S.optional(S.Number),
           EarliestRestorableDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LatestRestorableDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -6498,17 +5718,15 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ContinuousBackupsStatus: ContinuousBackupsStatus,
-          PointInTimeRecoveryDescription: S.optional(PointInTimeRecoveryDescription),
+          ContinuousBackupsStatus: S.String,
+          PointInTimeRecoveryDescription: S.optional(__S(112)),
         }),
       ).annotate({
         identifier: "ContinuousBackupsDescription",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ContinuousBackupsDescription: S.optional(ContinuousBackupsDescription) }).pipe(
-          ns,
-        ),
+        S.Struct({ ContinuousBackupsDescription: S.optional(__S(113)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeContinuousBackupsOutput",
       });
@@ -6533,11 +5751,11 @@ function __c14(j: number): any {
         S.Struct({
           TableName: S.optional(S.String),
           IndexName: S.optional(S.String),
-          ContributorInsightsRuleList: S.optional(ContributorInsightsRuleList),
-          ContributorInsightsStatus: S.optional(ContributorInsightsStatus),
+          ContributorInsightsRuleList: S.optional(__S(0)),
+          ContributorInsightsStatus: S.optional(S.String),
           LastUpdateDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FailureException: S.optional(FailureException),
-          ContributorInsightsMode: S.optional(ContributorInsightsMode),
+          FailureException: S.optional(__S(116)),
+          ContributorInsightsMode: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeContributorInsightsOutput",
@@ -6559,7 +5777,7 @@ function __c15(j: number): any {
     case 0:
       return S.Array(Endpoint);
     case 1:
-      return S.suspend(() => S.Struct({ Endpoints: Endpoints }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Endpoints: __S(120) }).pipe(ns)).annotate({
         identifier: "DescribeEndpointsResponse",
       });
     case 2:
@@ -6573,7 +5791,7 @@ function __c15(j: number): any {
         S.Struct({
           ExportFromTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExportToTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          ExportViewType: S.optional(ExportViewType),
+          ExportViewType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "IncrementalExportSpecification",
@@ -6584,15 +5802,15 @@ function __c15(j: number): any {
           FilterExpression: S.optional(S.String),
           ProjectionExpression: S.optional(S.String),
           KeyConditionExpression: S.optional(S.String),
-          ExpressionAttributeNames: S.optional(ExpressionAttributeNameMap),
-          ExpressionAttributeValues: S.optional(ExpressionAttributeValueMap),
+          ExpressionAttributeNames: S.optional(__S(21)),
+          ExpressionAttributeValues: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "FilterSpecification" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           ExportArn: S.optional(S.String),
-          ExportStatus: S.optional(ExportStatus),
+          ExportStatus: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExportManifest: S.optional(S.String),
@@ -6603,21 +5821,21 @@ function __c15(j: number): any {
           S3Bucket: S.optional(S.String),
           S3BucketOwner: S.optional(S.String),
           S3Prefix: S.optional(S.String),
-          S3SseAlgorithm: S.optional(S3SseAlgorithm),
+          S3SseAlgorithm: S.optional(S.String),
           S3SseKmsKeyId: S.optional(S.String),
           FailureCode: S.optional(S.String),
           FailureMessage: S.optional(S.String),
-          ExportFormat: S.optional(ExportFormat),
+          ExportFormat: S.optional(S.String),
           BilledSizeBytes: S.optional(S.Number),
           ItemCount: S.optional(S.Number),
-          ExportType: S.optional(ExportType),
-          IncrementalExportSpecification: S.optional(IncrementalExportSpecification),
-          FilterSpecification: S.optional(FilterSpecification),
+          ExportType: S.optional(S.String),
+          IncrementalExportSpecification: S.optional(__S(123)),
+          FilterSpecification: S.optional(__S(124)),
         }),
       ).annotate({ identifier: "ExportDescription" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ExportDescription: S.optional(ExportDescription) }).pipe(ns),
+        S.Struct({ ExportDescription: S.optional(__S(125)) }).pipe(ns),
       ).annotate({ identifier: "DescribeExportOutput" });
     case 7:
       return S.suspend(() =>
@@ -6631,7 +5849,7 @@ function __c16(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ GlobalTableDescription: S.optional(GlobalTableDescription) }).pipe(ns),
+        S.Struct({ GlobalTableDescription: S.optional(__S(52)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeGlobalTableOutput",
       });
@@ -6658,15 +5876,13 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           PolicyName: S.optional(S.String),
-          TargetTrackingScalingPolicyConfiguration: S.optional(
-            AutoScalingTargetTrackingScalingPolicyConfigurationDescription,
-          ),
+          TargetTrackingScalingPolicyConfiguration: S.optional(__S(130)),
         }),
       ).annotate({
         identifier: "AutoScalingPolicyDescription",
       });
     case 4:
-      return S.Array(AutoScalingPolicyDescription);
+      return S.Array(__S(131));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -6674,7 +5890,7 @@ function __c16(j: number): any {
           MaximumUnits: S.optional(S.Number),
           AutoScalingDisabled: S.optional(S.Boolean),
           AutoScalingRoleArn: S.optional(S.String),
-          ScalingPolicies: S.optional(AutoScalingPolicyDescriptionList),
+          ScalingPolicies: S.optional(__S(132)),
         }),
       ).annotate({
         identifier: "AutoScalingSettingsDescription",
@@ -6683,17 +5899,17 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IndexName: S.String,
-          IndexStatus: S.optional(IndexStatus),
+          IndexStatus: S.optional(S.String),
           ProvisionedReadCapacityUnits: S.optional(S.Number),
-          ProvisionedReadCapacityAutoScalingSettings: S.optional(AutoScalingSettingsDescription),
+          ProvisionedReadCapacityAutoScalingSettings: S.optional(__S(133)),
           ProvisionedWriteCapacityUnits: S.optional(S.Number),
-          ProvisionedWriteCapacityAutoScalingSettings: S.optional(AutoScalingSettingsDescription),
+          ProvisionedWriteCapacityAutoScalingSettings: S.optional(__S(133)),
         }),
       ).annotate({
         identifier: "ReplicaGlobalSecondaryIndexSettingsDescription",
       });
     case 7:
-      return S.Array(ReplicaGlobalSecondaryIndexSettingsDescription);
+      return S.Array(__S(134));
   }
 }
 function __c17(j: number): any {
@@ -6702,31 +5918,25 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RegionName: S.String,
-          ReplicaStatus: S.optional(ReplicaStatus),
-          ReplicaBillingModeSummary: S.optional(BillingModeSummary),
+          ReplicaStatus: S.optional(S.String),
+          ReplicaBillingModeSummary: S.optional(__S(77)),
           ReplicaProvisionedReadCapacityUnits: S.optional(S.Number),
-          ReplicaProvisionedReadCapacityAutoScalingSettings: S.optional(
-            AutoScalingSettingsDescription,
-          ),
+          ReplicaProvisionedReadCapacityAutoScalingSettings: S.optional(__S(133)),
           ReplicaProvisionedWriteCapacityUnits: S.optional(S.Number),
-          ReplicaProvisionedWriteCapacityAutoScalingSettings: S.optional(
-            AutoScalingSettingsDescription,
-          ),
-          ReplicaGlobalSecondaryIndexSettings: S.optional(
-            ReplicaGlobalSecondaryIndexSettingsDescriptionList,
-          ),
-          ReplicaTableClassSummary: S.optional(TableClassSummary),
+          ReplicaProvisionedWriteCapacityAutoScalingSettings: S.optional(__S(133)),
+          ReplicaGlobalSecondaryIndexSettings: S.optional(__S(135)),
+          ReplicaTableClassSummary: S.optional(__S(49)),
         }),
       ).annotate({
         identifier: "ReplicaSettingsDescription",
       });
     case 1:
-      return S.Array(ReplicaSettingsDescription);
+      return S.Array(__S(136));
     case 2:
       return S.suspend(() =>
         S.Struct({
           GlobalTableName: S.optional(S.String),
-          ReplicaSettings: S.optional(ReplicaSettingsDescriptionList),
+          ReplicaSettings: S.optional(__S(137)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeGlobalTableSettingsOutput",
@@ -6747,24 +5957,24 @@ function __c17(j: number): any {
       ).annotate({ identifier: "S3BucketSource" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Delimiter: S.optional(S.String), HeaderList: S.optional(CsvHeaderList) }),
+        S.Struct({ Delimiter: S.optional(S.String), HeaderList: S.optional(__S(0)) }),
       ).annotate({ identifier: "CsvOptions" });
     case 6:
-      return S.suspend(() => S.Struct({ Csv: S.optional(CsvOptions) })).annotate({
+      return S.suspend(() => S.Struct({ Csv: S.optional(__S(141)) })).annotate({
         identifier: "InputFormatOptions",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           TableName: S.String,
-          AttributeDefinitions: AttributeDefinitions,
-          KeySchema: KeySchema,
-          BillingMode: S.optional(BillingMode),
-          ProvisionedThroughput: S.optional(ProvisionedThroughput),
-          OnDemandThroughput: S.optional(OnDemandThroughput),
-          SSESpecification: S.optional(SSESpecification),
-          GlobalSecondaryIndexes: S.optional(GlobalSecondaryIndexList),
-          VectorIndexes: S.optional(VectorIndexList),
+          AttributeDefinitions: __S(55),
+          KeySchema: __S(57),
+          BillingMode: S.optional(S.String),
+          ProvisionedThroughput: S.optional(__S(61)),
+          OnDemandThroughput: S.optional(__S(62)),
+          SSESpecification: S.optional(__S(67)),
+          GlobalSecondaryIndexes: S.optional(__S(65)),
+          VectorIndexes: S.optional(__S(74)),
         }),
       ).annotate({ identifier: "TableCreationParameters" });
   }
@@ -6775,17 +5985,17 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ImportArn: S.optional(S.String),
-          ImportStatus: S.optional(ImportStatus),
+          ImportStatus: S.optional(S.String),
           TableArn: S.optional(S.String),
           TableId: S.optional(S.String),
           ClientToken: S.optional(S.String),
-          S3BucketSource: S.optional(S3BucketSource),
+          S3BucketSource: S.optional(__S(140)),
           ErrorCount: S.optional(S.Number),
           CloudWatchLogGroupArn: S.optional(S.String),
-          InputFormat: S.optional(InputFormat),
-          InputFormatOptions: S.optional(InputFormatOptions),
-          InputCompressionType: S.optional(InputCompressionType),
-          TableCreationParameters: S.optional(TableCreationParameters),
+          InputFormat: S.optional(S.String),
+          InputFormatOptions: S.optional(__S(142)),
+          InputCompressionType: S.optional(S.String),
+          TableCreationParameters: S.optional(__S(143)),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ProcessedSizeBytes: S.optional(S.Number),
@@ -6796,9 +6006,9 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "ImportTableDescription" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ ImportTableDescription: ImportTableDescription }).pipe(ns),
-      ).annotate({ identifier: "DescribeImportOutput" });
+      return S.suspend(() => S.Struct({ ImportTableDescription: __S(144) }).pipe(ns)).annotate({
+        identifier: "DescribeImportOutput",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({ TableName: S.String.pipe(T.ContextParam("ResourceArn")) }).pipe(
@@ -6811,20 +6021,20 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           StreamArn: S.optional(S.String),
-          DestinationStatus: S.optional(DestinationStatus),
+          DestinationStatus: S.optional(S.String),
           DestinationStatusDescription: S.optional(S.String),
-          ApproximateCreationDateTimePrecision: S.optional(ApproximateCreationDateTimePrecision),
+          ApproximateCreationDateTimePrecision: S.optional(S.String),
         }),
       ).annotate({
         identifier: "KinesisDataStreamDestination",
       });
     case 4:
-      return S.Array(KinesisDataStreamDestination);
+      return S.Array(__S(147));
     case 5:
       return S.suspend(() =>
         S.Struct({
           TableName: S.optional(S.String),
-          KinesisDataStreamDestinations: S.optional(KinesisDataStreamDestinations),
+          KinesisDataStreamDestinations: S.optional(__S(148)),
         }).pipe(ns),
       ).annotate({
         identifier: "DescribeKinesisStreamingDestinationOutput",
@@ -6855,7 +6065,7 @@ function __c19(j: number): any {
         ),
       ).annotate({ identifier: "DescribeTableInput" });
     case 1:
-      return S.suspend(() => S.Struct({ Table: S.optional(TableDescription) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Table: S.optional(__S(89)) }).pipe(ns)).annotate({
         identifier: "DescribeTableOutput",
       });
     case 2:
@@ -6870,39 +6080,35 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IndexName: S.optional(S.String),
-          IndexStatus: S.optional(IndexStatus),
-          ProvisionedReadCapacityAutoScalingSettings: S.optional(AutoScalingSettingsDescription),
-          ProvisionedWriteCapacityAutoScalingSettings: S.optional(AutoScalingSettingsDescription),
+          IndexStatus: S.optional(S.String),
+          ProvisionedReadCapacityAutoScalingSettings: S.optional(__S(133)),
+          ProvisionedWriteCapacityAutoScalingSettings: S.optional(__S(133)),
         }),
       ).annotate({
         identifier: "ReplicaGlobalSecondaryIndexAutoScalingDescription",
       });
     case 4:
-      return S.Array(ReplicaGlobalSecondaryIndexAutoScalingDescription);
+      return S.Array(__S(155));
     case 5:
       return S.suspend(() =>
         S.Struct({
           RegionName: S.optional(S.String),
-          GlobalSecondaryIndexes: S.optional(ReplicaGlobalSecondaryIndexAutoScalingDescriptionList),
-          ReplicaProvisionedReadCapacityAutoScalingSettings: S.optional(
-            AutoScalingSettingsDescription,
-          ),
-          ReplicaProvisionedWriteCapacityAutoScalingSettings: S.optional(
-            AutoScalingSettingsDescription,
-          ),
-          ReplicaStatus: S.optional(ReplicaStatus),
+          GlobalSecondaryIndexes: S.optional(__S(156)),
+          ReplicaProvisionedReadCapacityAutoScalingSettings: S.optional(__S(133)),
+          ReplicaProvisionedWriteCapacityAutoScalingSettings: S.optional(__S(133)),
+          ReplicaStatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ReplicaAutoScalingDescription",
       });
     case 6:
-      return S.Array(ReplicaAutoScalingDescription);
+      return S.Array(__S(157));
     case 7:
       return S.suspend(() =>
         S.Struct({
           TableName: S.optional(S.String),
-          TableStatus: S.optional(TableStatus),
-          Replicas: S.optional(ReplicaAutoScalingDescriptionList),
+          TableStatus: S.optional(S.String),
+          Replicas: S.optional(__S(158)),
         }),
       ).annotate({
         identifier: "TableAutoScalingDescription",
@@ -6913,7 +6119,7 @@ function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ TableAutoScalingDescription: S.optional(TableAutoScalingDescription) }).pipe(ns),
+        S.Struct({ TableAutoScalingDescription: S.optional(__S(159)) }).pipe(ns),
       ).annotate({
         identifier: "DescribeTableReplicaAutoScalingOutput",
       });
@@ -6925,12 +6131,12 @@ function __c20(j: number): any {
       ).annotate({ identifier: "DescribeTimeToLiveInput" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ TimeToLiveDescription: S.optional(TimeToLiveDescription) }).pipe(ns),
+        S.Struct({ TimeToLiveDescription: S.optional(__S(97)) }).pipe(ns),
       ).annotate({ identifier: "DescribeTimeToLiveOutput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ApproximateCreationDateTimePrecision: S.optional(ApproximateCreationDateTimePrecision),
+          ApproximateCreationDateTimePrecision: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnableKinesisStreamingConfiguration",
@@ -6940,7 +6146,7 @@ function __c20(j: number): any {
         S.Struct({
           TableName: S.String.pipe(T.ContextParam("ResourceArn")),
           StreamArn: S.String,
-          EnableKinesisStreamingConfiguration: S.optional(EnableKinesisStreamingConfiguration),
+          EnableKinesisStreamingConfiguration: S.optional(__S(163)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "KinesisStreamingDestinationInput",
@@ -6950,8 +6156,8 @@ function __c20(j: number): any {
         S.Struct({
           TableName: S.optional(S.String),
           StreamArn: S.optional(S.String),
-          DestinationStatus: S.optional(DestinationStatus),
-          EnableKinesisStreamingConfiguration: S.optional(EnableKinesisStreamingConfiguration),
+          DestinationStatus: S.optional(S.String),
+          EnableKinesisStreamingConfiguration: S.optional(__S(163)),
         }).pipe(ns),
       ).annotate({
         identifier: "KinesisStreamingDestinationOutput",
@@ -6960,21 +6166,21 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Statement: S.String,
-          Parameters: S.optional(PreparedStatementParameters),
+          Parameters: S.optional(__S(5)),
           ConsistentRead: S.optional(S.Boolean),
           NextToken: S.optional(S.String),
-          ReturnConsumedCapacity: S.optional(ReturnConsumedCapacity),
+          ReturnConsumedCapacity: S.optional(S.String),
           Limit: S.optional(S.Number),
-          ReturnValuesOnConditionCheckFailure: S.optional(ReturnValuesOnConditionCheckFailure),
+          ReturnValuesOnConditionCheckFailure: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ExecuteStatementInput" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Items: S.optional(ItemList),
+          Items: S.optional(__S(20)),
           NextToken: S.optional(S.String),
-          ConsumedCapacity: S.optional(ConsumedCapacity),
-          LastEvaluatedKey: S.optional(Key),
+          ConsumedCapacity: S.optional(__S(17)),
+          LastEvaluatedKey: S.optional(__S(9)),
         }).pipe(ns),
       ).annotate({ identifier: "ExecuteStatementOutput" });
   }
@@ -6985,31 +6191,31 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Statement: S.String,
-          Parameters: S.optional(PreparedStatementParameters),
-          ReturnValuesOnConditionCheckFailure: S.optional(ReturnValuesOnConditionCheckFailure),
+          Parameters: S.optional(__S(5)),
+          ReturnValuesOnConditionCheckFailure: S.optional(S.String),
         }),
       ).annotate({ identifier: "ParameterizedStatement" });
     case 1:
-      return S.Array(ParameterizedStatement);
+      return S.Array(__S(168));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TransactStatements: ParameterizedStatements,
+          TransactStatements: __S(169),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          ReturnConsumedCapacity: S.optional(ReturnConsumedCapacity),
+          ReturnConsumedCapacity: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ExecuteTransactionInput" });
     case 3:
-      return S.suspend(() => S.Struct({ Item: S.optional(AttributeMap) })).annotate({
+      return S.suspend(() => S.Struct({ Item: S.optional(__S(9)) })).annotate({
         identifier: "ItemResponse",
       });
     case 4:
-      return S.Array(ItemResponse);
+      return S.Array(__S(171));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Responses: S.optional(ItemResponseList),
-          ConsumedCapacity: S.optional(ConsumedCapacityMultiple),
+          Responses: S.optional(__S(172)),
+          ConsumedCapacity: S.optional(__S(18)),
         }).pipe(ns),
       ).annotate({ identifier: "ExecuteTransactionOutput" });
     case 6:
@@ -7021,19 +6227,19 @@ function __c21(j: number): any {
           S3Bucket: S.String,
           S3BucketOwner: S.optional(S.String),
           S3Prefix: S.optional(S.String),
-          S3SseAlgorithm: S.optional(S3SseAlgorithm),
+          S3SseAlgorithm: S.optional(S.String),
           S3SseKmsKeyId: S.optional(S.String),
-          ExportFormat: S.optional(ExportFormat),
-          ExportType: S.optional(ExportType),
-          IncrementalExportSpecification: S.optional(IncrementalExportSpecification),
-          FilterSpecification: S.optional(FilterSpecification),
+          ExportFormat: S.optional(S.String),
+          ExportType: S.optional(S.String),
+          IncrementalExportSpecification: S.optional(__S(123)),
+          FilterSpecification: S.optional(__S(124)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ExportTableToPointInTimeInput",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ExportDescription: S.optional(ExportDescription) }).pipe(ns),
+        S.Struct({ ExportDescription: S.optional(__S(125)) }).pipe(ns),
       ).annotate({
         identifier: "ExportTableToPointInTimeOutput",
       });
@@ -7045,19 +6251,19 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TableName: S.String.pipe(T.ContextParam("ResourceArn")),
-          Key: Key,
-          AttributesToGet: S.optional(AttributeNameList),
+          Key: __S(9),
+          AttributesToGet: S.optional(__S(0)),
           ConsistentRead: S.optional(S.Boolean),
-          ReturnConsumedCapacity: S.optional(ReturnConsumedCapacity),
+          ReturnConsumedCapacity: S.optional(S.String),
           ProjectionExpression: S.optional(S.String),
-          ExpressionAttributeNames: S.optional(ExpressionAttributeNameMap),
+          ExpressionAttributeNames: S.optional(__S(21)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetItemInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Item: S.optional(AttributeMap),
-          ConsumedCapacity: S.optional(ConsumedCapacity),
+          Item: S.optional(__S(9)),
+          ConsumedCapacity: S.optional(__S(17)),
         }).pipe(ns),
       ).annotate({ identifier: "GetItemOutput" });
     case 2:
@@ -7074,11 +6280,11 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          S3BucketSource: S3BucketSource,
-          InputFormat: InputFormat,
-          InputFormatOptions: S.optional(InputFormatOptions),
-          InputCompressionType: S.optional(InputCompressionType),
-          TableCreationParameters: TableCreationParameters,
+          S3BucketSource: __S(140),
+          InputFormat: S.String,
+          InputFormatOptions: S.optional(__S(142)),
+          InputCompressionType: S.optional(S.String),
+          TableCreationParameters: __S(143),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ImportTableInput" });
     case 5:
@@ -7089,7 +6295,7 @@ function __c22(j: number): any {
           TimeRangeLowerBound: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           TimeRangeUpperBound: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExclusiveStartBackupArn: S.optional(S.String),
-          BackupType: S.optional(BackupTypeFilter),
+          BackupType: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListBackupsInput" });
     case 6:
@@ -7102,13 +6308,13 @@ function __c22(j: number): any {
           BackupName: S.optional(S.String),
           BackupCreationDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           BackupExpiryDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          BackupStatus: S.optional(BackupStatus),
-          BackupType: S.optional(BackupType),
+          BackupStatus: S.optional(S.String),
+          BackupType: S.optional(S.String),
           BackupSizeBytes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BackupSummary" });
     case 7:
-      return S.Array(BackupSummary);
+      return S.Array(__S(182));
   }
 }
 function __c23(j: number): any {
@@ -7116,7 +6322,7 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          BackupSummaries: S.optional(BackupSummaries),
+          BackupSummaries: S.optional(__S(183)),
           LastEvaluatedBackupArn: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListBackupsOutput" });
@@ -7135,18 +6341,18 @@ function __c23(j: number): any {
         S.Struct({
           TableName: S.optional(S.String),
           IndexName: S.optional(S.String),
-          ContributorInsightsStatus: S.optional(ContributorInsightsStatus),
-          ContributorInsightsMode: S.optional(ContributorInsightsMode),
+          ContributorInsightsStatus: S.optional(S.String),
+          ContributorInsightsMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ContributorInsightsSummary",
       });
     case 3:
-      return S.Array(ContributorInsightsSummary);
+      return S.Array(__S(186));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ContributorInsightsSummaries: S.optional(ContributorInsightsSummaries),
+          ContributorInsightsSummaries: S.optional(__S(187)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
@@ -7164,12 +6370,12 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ExportArn: S.optional(S.String),
-          ExportStatus: S.optional(ExportStatus),
-          ExportType: S.optional(ExportType),
+          ExportStatus: S.optional(S.String),
+          ExportType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExportSummary" });
     case 7:
-      return S.Array(ExportSummary);
+      return S.Array(__S(190));
   }
 }
 function __c24(j: number): any {
@@ -7177,7 +6383,7 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ExportSummaries: S.optional(ExportSummaries),
+          ExportSummaries: S.optional(__S(191)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListExportsOutput" });
@@ -7193,15 +6399,15 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           GlobalTableName: S.optional(S.String),
-          ReplicationGroup: S.optional(ReplicaList),
+          ReplicationGroup: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "GlobalTable" });
     case 3:
-      return S.Array(GlobalTable);
+      return S.Array(__S(194));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          GlobalTables: S.optional(GlobalTableList),
+          GlobalTables: S.optional(__S(195)),
           LastEvaluatedGlobalTableName: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListGlobalTablesOutput" });
@@ -7217,17 +6423,17 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ImportArn: S.optional(S.String),
-          ImportStatus: S.optional(ImportStatus),
+          ImportStatus: S.optional(S.String),
           TableArn: S.optional(S.String),
-          S3BucketSource: S.optional(S3BucketSource),
+          S3BucketSource: S.optional(__S(140)),
           CloudWatchLogGroupArn: S.optional(S.String),
-          InputFormat: S.optional(InputFormat),
+          InputFormat: S.optional(S.String),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ImportSummary" });
     case 7:
-      return S.Array(ImportSummary);
+      return S.Array(__S(198));
   }
 }
 function __c25(j: number): any {
@@ -7235,7 +6441,7 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ImportSummaryList: S.optional(ImportSummaryList),
+          ImportSummaryList: S.optional(__S(199)),
           NextToken: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListImportsOutput" });
@@ -7249,7 +6455,7 @@ function __c25(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          TableNames: S.optional(TableNameList),
+          TableNames: S.optional(__S(0)),
           LastEvaluatedTableName: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListTablesOutput" });
@@ -7262,22 +6468,22 @@ function __c25(j: number): any {
       ).annotate({ identifier: "ListTagsOfResourceInput" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Tags: S.optional(TagList), NextToken: S.optional(S.String) }).pipe(ns),
+        S.Struct({ Tags: S.optional(__S(69)), NextToken: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListTagsOfResourceOutput" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           TableName: S.String.pipe(T.ContextParam("ResourceArn")),
-          Item: PutItemInputAttributeMap,
-          Expected: S.optional(ExpectedAttributeMap),
-          ReturnValues: S.optional(ReturnValue),
-          ReturnConsumedCapacity: S.optional(ReturnConsumedCapacity),
-          ReturnItemCollectionMetrics: S.optional(ReturnItemCollectionMetrics),
-          ConditionalOperator: S.optional(ConditionalOperator),
+          Item: __S(9),
+          Expected: S.optional(__S(104)),
+          ReturnValues: S.optional(S.String),
+          ReturnConsumedCapacity: S.optional(S.String),
+          ReturnItemCollectionMetrics: S.optional(S.String),
+          ConditionalOperator: S.optional(S.String),
           ConditionExpression: S.optional(S.String),
-          ExpressionAttributeNames: S.optional(ExpressionAttributeNameMap),
-          ExpressionAttributeValues: S.optional(ExpressionAttributeValueMap),
-          ReturnValuesOnConditionCheckFailure: S.optional(ReturnValuesOnConditionCheckFailure),
+          ExpressionAttributeNames: S.optional(__S(21)),
+          ExpressionAttributeValues: S.optional(__S(9)),
+          ReturnValuesOnConditionCheckFailure: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "PutItemInput" });
     case 6:
@@ -7302,42 +6508,42 @@ function __c26(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AttributeValueList: S.optional(AttributeValueList),
-          ComparisonOperator: ComparisonOperator,
+          AttributeValueList: S.optional(__S(5)),
+          ComparisonOperator: S.String,
         }),
       ).annotate({ identifier: "Condition" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ Condition.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(208).pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
           TableName: S.String.pipe(T.ContextParam("ResourceArn")),
           IndexName: S.optional(S.String),
-          Select: S.optional(Select),
-          AttributesToGet: S.optional(AttributeNameList),
+          Select: S.optional(S.String),
+          AttributesToGet: S.optional(__S(0)),
           Limit: S.optional(S.Number),
           ConsistentRead: S.optional(S.Boolean),
-          KeyConditions: S.optional(KeyConditions),
-          QueryFilter: S.optional(FilterConditionMap),
-          ConditionalOperator: S.optional(ConditionalOperator),
+          KeyConditions: S.optional(__S(209)),
+          QueryFilter: S.optional(__S(209)),
+          ConditionalOperator: S.optional(S.String),
           ScanIndexForward: S.optional(S.Boolean),
-          ExclusiveStartKey: S.optional(Key),
-          ReturnConsumedCapacity: S.optional(ReturnConsumedCapacity),
+          ExclusiveStartKey: S.optional(__S(9)),
+          ReturnConsumedCapacity: S.optional(S.String),
           ProjectionExpression: S.optional(S.String),
           FilterExpression: S.optional(S.String),
           KeyConditionExpression: S.optional(S.String),
-          ExpressionAttributeNames: S.optional(ExpressionAttributeNameMap),
-          ExpressionAttributeValues: S.optional(ExpressionAttributeValueMap),
+          ExpressionAttributeNames: S.optional(__S(21)),
+          ExpressionAttributeValues: S.optional(__S(9)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "QueryInput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Items: S.optional(ItemList),
+          Items: S.optional(__S(20)),
           Count: S.optional(S.Number),
           ScannedCount: S.optional(S.Number),
-          LastEvaluatedKey: S.optional(Key),
-          ConsumedCapacity: S.optional(ConsumedCapacity),
+          LastEvaluatedKey: S.optional(__S(9)),
+          ConsumedCapacity: S.optional(__S(17)),
         }).pipe(ns),
       ).annotate({ identifier: "QueryOutput" });
     case 4:
@@ -7345,23 +6551,23 @@ function __c26(j: number): any {
         S.Struct({
           TargetTableName: S.String.pipe(T.ContextParam("ResourceArn")),
           BackupArn: S.String,
-          BillingModeOverride: S.optional(BillingMode),
-          GlobalSecondaryIndexOverride: S.optional(GlobalSecondaryIndexList),
-          LocalSecondaryIndexOverride: S.optional(LocalSecondaryIndexList),
-          ProvisionedThroughputOverride: S.optional(ProvisionedThroughput),
-          OnDemandThroughputOverride: S.optional(OnDemandThroughput),
-          SSESpecificationOverride: S.optional(SSESpecification),
-          VectorIndexOverride: S.optional(VectorIndexList),
+          BillingModeOverride: S.optional(S.String),
+          GlobalSecondaryIndexOverride: S.optional(__S(65)),
+          LocalSecondaryIndexOverride: S.optional(__S(60)),
+          ProvisionedThroughputOverride: S.optional(__S(61)),
+          OnDemandThroughputOverride: S.optional(__S(62)),
+          SSESpecificationOverride: S.optional(__S(67)),
+          VectorIndexOverride: S.optional(__S(74)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RestoreTableFromBackupInput",
       });
     case 5:
-      return S.suspend(() =>
-        S.Struct({ TableDescription: S.optional(TableDescription) }).pipe(ns),
-      ).annotate({
-        identifier: "RestoreTableFromBackupOutput",
-      });
+      return S.suspend(() => S.Struct({ TableDescription: S.optional(__S(89)) }).pipe(ns)).annotate(
+        {
+          identifier: "RestoreTableFromBackupOutput",
+        },
+      );
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7370,13 +6576,13 @@ function __c26(j: number): any {
           TargetTableName: S.String.pipe(T.ContextParam("ResourceArn")),
           UseLatestRestorableTime: S.optional(S.Boolean),
           RestoreDateTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          BillingModeOverride: S.optional(BillingMode),
-          GlobalSecondaryIndexOverride: S.optional(GlobalSecondaryIndexList),
-          LocalSecondaryIndexOverride: S.optional(LocalSecondaryIndexList),
-          ProvisionedThroughputOverride: S.optional(ProvisionedThroughput),
-          OnDemandThroughputOverride: S.optional(OnDemandThroughput),
-          SSESpecificationOverride: S.optional(SSESpecification),
-          VectorIndexOverride: S.optional(VectorIndexList),
+          BillingModeOverride: S.optional(S.String),
+          GlobalSecondaryIndexOverride: S.optional(__S(65)),
+          LocalSecondaryIndexOverride: S.optional(__S(60)),
+          ProvisionedThroughputOverride: S.optional(__S(61)),
+          OnDemandThroughputOverride: S.optional(__S(62)),
+          SSESpecificationOverride: S.optional(__S(67)),
+          VectorIndexOverride: S.optional(__S(74)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "RestoreTableToPointInTimeInput",
@@ -7386,19 +6592,19 @@ function __c26(j: number): any {
         S.Struct({
           TableName: S.String.pipe(T.ContextParam("ResourceArn")),
           IndexName: S.optional(S.String),
-          AttributesToGet: S.optional(AttributeNameList),
+          AttributesToGet: S.optional(__S(0)),
           Limit: S.optional(S.Number),
-          Select: S.optional(Select),
-          ScanFilter: S.optional(FilterConditionMap),
-          ConditionalOperator: S.optional(ConditionalOperator),
-          ExclusiveStartKey: S.optional(Key),
-          ReturnConsumedCapacity: S.optional(ReturnConsumedCapacity),
+          Select: S.optional(S.String),
+          ScanFilter: S.optional(__S(209)),
+          ConditionalOperator: S.optional(S.String),
+          ExclusiveStartKey: S.optional(__S(9)),
+          ReturnConsumedCapacity: S.optional(S.String),
           TotalSegments: S.optional(S.Number),
           Segment: S.optional(S.Number),
           ProjectionExpression: S.optional(S.String),
           FilterExpression: S.optional(S.String),
-          ExpressionAttributeNames: S.optional(ExpressionAttributeNameMap),
-          ExpressionAttributeValues: S.optional(ExpressionAttributeValueMap),
+          ExpressionAttributeNames: S.optional(__S(21)),
+          ExpressionAttributeValues: S.optional(__S(9)),
           ConsistentRead: S.optional(S.Boolean),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ScanInput" });
@@ -7411,11 +6617,11 @@ function __c27(j: number): any {
         S.Struct({
           TableName: S.String.pipe(T.ContextParam("ResourceArn")),
           IndexName: S.String,
-          ReturnConsumedCapacity: S.optional(ReturnConsumedCapacity),
-          ExpressionAttributeNames: S.optional(ExpressionAttributeNameMap),
-          ExpressionAttributeValues: S.optional(ExpressionAttributeValueMap),
+          ReturnConsumedCapacity: S.optional(S.String),
+          ExpressionAttributeNames: S.optional(__S(21)),
+          ExpressionAttributeValues: S.optional(__S(9)),
           ProjectionExpression: S.optional(S.String),
-          SearchVector: SearchVectorList,
+          SearchVector: __S(5),
           SearchConditionExpression: S.optional(S.String),
           TopK: S.Number,
         }).pipe(
@@ -7433,20 +6639,20 @@ function __c27(j: number): any {
       ).annotate({ identifier: "SearchVectorsInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Item: S.optional(AttributeMap), Score: S.optional(S.Number) }),
+        S.Struct({ Item: S.optional(__S(9)), Score: S.optional(S.Number) }),
       ).annotate({ identifier: "SearchResultItem" });
     case 2:
-      return S.Array(SearchResultItem);
+      return S.Array(__S(217));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ConsumedCapacity: S.optional(VectorCapacity),
-          SearchResults: S.optional(SearchResultList),
+          ConsumedCapacity: S.optional(__S(15)),
+          SearchResults: S.optional(__S(218)),
         }).pipe(ns),
       ).annotate({ identifier: "SearchVectorsOutput" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.ContextParam("ResourceArn")), Tags: TagList }).pipe(
+        S.Struct({ ResourceArn: S.String.pipe(T.ContextParam("ResourceArn")), Tags: __S(69) }).pipe(
           T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceInput" });
@@ -7457,14 +6663,14 @@ function __c27(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Key: Key,
+          Key: __S(9),
           TableName: S.String,
           ProjectionExpression: S.optional(S.String),
-          ExpressionAttributeNames: S.optional(ExpressionAttributeNameMap),
+          ExpressionAttributeNames: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "Get" });
     case 7:
-      return S.suspend(() => S.Struct({ Get: Get })).annotate({
+      return S.suspend(() => S.Struct({ Get: __S(222) })).annotate({
         identifier: "TransactGetItem",
       });
   }
@@ -7472,73 +6678,73 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TransactGetItem);
+      return S.Array(__S(223));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          TransactItems: TransactGetItemList,
-          ReturnConsumedCapacity: S.optional(ReturnConsumedCapacity),
+          TransactItems: __S(224),
+          ReturnConsumedCapacity: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "TransactGetItemsInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ConsumedCapacity: S.optional(ConsumedCapacityMultiple),
-          Responses: S.optional(ItemResponseList),
+          ConsumedCapacity: S.optional(__S(18)),
+          Responses: S.optional(__S(172)),
         }).pipe(ns),
       ).annotate({ identifier: "TransactGetItemsOutput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Key: Key,
+          Key: __S(9),
           TableName: S.String,
           ConditionExpression: S.String,
-          ExpressionAttributeNames: S.optional(ExpressionAttributeNameMap),
-          ExpressionAttributeValues: S.optional(ExpressionAttributeValueMap),
-          ReturnValuesOnConditionCheckFailure: S.optional(ReturnValuesOnConditionCheckFailure),
+          ExpressionAttributeNames: S.optional(__S(21)),
+          ExpressionAttributeValues: S.optional(__S(9)),
+          ReturnValuesOnConditionCheckFailure: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConditionCheck" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Item: PutItemInputAttributeMap,
+          Item: __S(9),
           TableName: S.String,
           ConditionExpression: S.optional(S.String),
-          ExpressionAttributeNames: S.optional(ExpressionAttributeNameMap),
-          ExpressionAttributeValues: S.optional(ExpressionAttributeValueMap),
-          ReturnValuesOnConditionCheckFailure: S.optional(ReturnValuesOnConditionCheckFailure),
+          ExpressionAttributeNames: S.optional(__S(21)),
+          ExpressionAttributeValues: S.optional(__S(9)),
+          ReturnValuesOnConditionCheckFailure: S.optional(S.String),
         }),
       ).annotate({ identifier: "Put" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Key: Key,
+          Key: __S(9),
           TableName: S.String,
           ConditionExpression: S.optional(S.String),
-          ExpressionAttributeNames: S.optional(ExpressionAttributeNameMap),
-          ExpressionAttributeValues: S.optional(ExpressionAttributeValueMap),
-          ReturnValuesOnConditionCheckFailure: S.optional(ReturnValuesOnConditionCheckFailure),
+          ExpressionAttributeNames: S.optional(__S(21)),
+          ExpressionAttributeValues: S.optional(__S(9)),
+          ReturnValuesOnConditionCheckFailure: S.optional(S.String),
         }),
       ).annotate({ identifier: "Delete" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Key: Key,
+          Key: __S(9),
           UpdateExpression: S.String,
           TableName: S.String,
           ConditionExpression: S.optional(S.String),
-          ExpressionAttributeNames: S.optional(ExpressionAttributeNameMap),
-          ExpressionAttributeValues: S.optional(ExpressionAttributeValueMap),
-          ReturnValuesOnConditionCheckFailure: S.optional(ReturnValuesOnConditionCheckFailure),
+          ExpressionAttributeNames: S.optional(__S(21)),
+          ExpressionAttributeValues: S.optional(__S(9)),
+          ReturnValuesOnConditionCheckFailure: S.optional(S.String),
         }),
       ).annotate({ identifier: "Update" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ConditionCheck: S.optional(ConditionCheck),
-          Put: S.optional(Put),
-          Delete: S.optional(Delete),
-          Update: S.optional(Update),
+          ConditionCheck: S.optional(__S(227)),
+          Put: S.optional(__S(228)),
+          Delete: S.optional(__S(229)),
+          Update: S.optional(__S(230)),
         }),
       ).annotate({ identifier: "TransactWriteItem" });
   }
@@ -7546,28 +6752,28 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TransactWriteItem);
+      return S.Array(__S(231));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          TransactItems: TransactWriteItemList,
-          ReturnConsumedCapacity: S.optional(ReturnConsumedCapacity),
-          ReturnItemCollectionMetrics: S.optional(ReturnItemCollectionMetrics),
+          TransactItems: __S(232),
+          ReturnConsumedCapacity: S.optional(S.String),
+          ReturnItemCollectionMetrics: S.optional(S.String),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "TransactWriteItemsInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ConsumedCapacity: S.optional(ConsumedCapacityMultiple),
-          ItemCollectionMetrics: S.optional(ItemCollectionMetricsPerTable),
+          ConsumedCapacity: S.optional(__S(18)),
+          ItemCollectionMetrics: S.optional(__S(36)),
         }).pipe(ns),
       ).annotate({ identifier: "TransactWriteItemsOutput" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.ContextParam("ResourceArn")),
-          TagKeys: TagKeyList,
+          TagKeys: __S(0),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UntagResourceInput" });
     case 4:
@@ -7583,7 +6789,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TableName: S.String.pipe(T.ContextParam("ResourceArn")),
-          PointInTimeRecoverySpecification: PointInTimeRecoverySpecification,
+          PointInTimeRecoverySpecification: __S(236),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateContinuousBackupsInput",
@@ -7593,8 +6799,8 @@ function __c29(j: number): any {
         S.Struct({
           TableName: S.String.pipe(T.ContextParam("ResourceArn")),
           IndexName: S.optional(S.String),
-          ContributorInsightsAction: ContributorInsightsAction,
-          ContributorInsightsMode: S.optional(ContributorInsightsMode),
+          ContributorInsightsAction: S.String,
+          ContributorInsightsMode: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateContributorInsightsInput",
@@ -7604,8 +6810,8 @@ function __c29(j: number): any {
         S.Struct({
           TableName: S.optional(S.String),
           IndexName: S.optional(S.String),
-          ContributorInsightsStatus: S.optional(ContributorInsightsStatus),
-          ContributorInsightsMode: S.optional(ContributorInsightsMode),
+          ContributorInsightsStatus: S.optional(S.String),
+          ContributorInsightsMode: S.optional(S.String),
         }).pipe(ns),
       ).annotate({
         identifier: "UpdateContributorInsightsOutput",
@@ -7621,17 +6827,17 @@ function __c30(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Create: S.optional(CreateReplicaAction),
-          Delete: S.optional(DeleteReplicaAction),
+          Create: S.optional(__S(240)),
+          Delete: S.optional(__S(240)),
         }),
       ).annotate({ identifier: "ReplicaUpdate" });
     case 2:
-      return S.Array(ReplicaUpdate);
+      return S.Array(__S(241));
     case 3:
       return S.suspend(() =>
         S.Struct({
           GlobalTableName: S.String.pipe(T.ContextParam("ResourceArn")),
-          ReplicaUpdates: ReplicaUpdateList,
+          ReplicaUpdates: __S(242),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateGlobalTableInput" });
     case 4:
@@ -7649,8 +6855,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           PolicyName: S.optional(S.String),
-          TargetTrackingScalingPolicyConfiguration:
-            AutoScalingTargetTrackingScalingPolicyConfigurationUpdate,
+          TargetTrackingScalingPolicyConfiguration: __S(244),
         }),
       ).annotate({ identifier: "AutoScalingPolicyUpdate" });
     case 6:
@@ -7660,7 +6865,7 @@ function __c30(j: number): any {
           MaximumUnits: S.optional(S.Number),
           AutoScalingDisabled: S.optional(S.Boolean),
           AutoScalingRoleArn: S.optional(S.String),
-          ScalingPolicyUpdate: S.optional(AutoScalingPolicyUpdate),
+          ScalingPolicyUpdate: S.optional(__S(245)),
         }),
       ).annotate({
         identifier: "AutoScalingSettingsUpdate",
@@ -7670,7 +6875,7 @@ function __c30(j: number): any {
         S.Struct({
           IndexName: S.String,
           ProvisionedWriteCapacityUnits: S.optional(S.Number),
-          ProvisionedWriteCapacityAutoScalingSettingsUpdate: S.optional(AutoScalingSettingsUpdate),
+          ProvisionedWriteCapacityAutoScalingSettingsUpdate: S.optional(__S(246)),
         }),
       ).annotate({
         identifier: "GlobalTableGlobalSecondaryIndexSettingsUpdate",
@@ -7680,56 +6885,50 @@ function __c30(j: number): any {
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GlobalTableGlobalSecondaryIndexSettingsUpdate);
+      return S.Array(__S(247));
     case 1:
       return S.suspend(() =>
         S.Struct({
           IndexName: S.String,
           ProvisionedReadCapacityUnits: S.optional(S.Number),
-          ProvisionedReadCapacityAutoScalingSettingsUpdate: S.optional(AutoScalingSettingsUpdate),
+          ProvisionedReadCapacityAutoScalingSettingsUpdate: S.optional(__S(246)),
         }),
       ).annotate({
         identifier: "ReplicaGlobalSecondaryIndexSettingsUpdate",
       });
     case 2:
-      return S.Array(ReplicaGlobalSecondaryIndexSettingsUpdate);
+      return S.Array(__S(249));
     case 3:
       return S.suspend(() =>
         S.Struct({
           RegionName: S.String,
           ReplicaProvisionedReadCapacityUnits: S.optional(S.Number),
-          ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate:
-            S.optional(AutoScalingSettingsUpdate),
-          ReplicaGlobalSecondaryIndexSettingsUpdate: S.optional(
-            ReplicaGlobalSecondaryIndexSettingsUpdateList,
-          ),
-          ReplicaTableClass: S.optional(TableClass),
+          ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate: S.optional(__S(246)),
+          ReplicaGlobalSecondaryIndexSettingsUpdate: S.optional(__S(250)),
+          ReplicaTableClass: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicaSettingsUpdate" });
     case 4:
-      return S.Array(ReplicaSettingsUpdate);
+      return S.Array(__S(251));
     case 5:
       return S.suspend(() =>
         S.Struct({
           GlobalTableName: S.String.pipe(T.ContextParam("ResourceArn")),
-          GlobalTableBillingMode: S.optional(BillingMode),
+          GlobalTableBillingMode: S.optional(S.String),
           GlobalTableProvisionedWriteCapacityUnits: S.optional(S.Number),
-          GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate:
-            S.optional(AutoScalingSettingsUpdate),
-          GlobalTableGlobalSecondaryIndexSettingsUpdate: S.optional(
-            GlobalTableGlobalSecondaryIndexSettingsUpdateList,
-          ),
-          ReplicaSettingsUpdate: S.optional(ReplicaSettingsUpdateList),
+          GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate: S.optional(__S(246)),
+          GlobalTableGlobalSecondaryIndexSettingsUpdate: S.optional(__S(248)),
+          ReplicaSettingsUpdate: S.optional(__S(252)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateGlobalTableSettingsInput",
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Value: S.optional(AttributeValue), Action: S.optional(AttributeAction) }),
+        S.Struct({ Value: S.optional(__S(4)), Action: S.optional(S.String) }),
       ).annotate({ identifier: "AttributeValueUpdate" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ AttributeValueUpdate.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(254).pipe(S.optional));
   }
 }
 function __c32(j: number): any {
@@ -7738,18 +6937,18 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TableName: S.String.pipe(T.ContextParam("ResourceArn")),
-          Key: Key,
-          AttributeUpdates: S.optional(AttributeUpdates),
-          Expected: S.optional(ExpectedAttributeMap),
-          ConditionalOperator: S.optional(ConditionalOperator),
-          ReturnValues: S.optional(ReturnValue),
-          ReturnConsumedCapacity: S.optional(ReturnConsumedCapacity),
-          ReturnItemCollectionMetrics: S.optional(ReturnItemCollectionMetrics),
+          Key: __S(9),
+          AttributeUpdates: S.optional(__S(255)),
+          Expected: S.optional(__S(104)),
+          ConditionalOperator: S.optional(S.String),
+          ReturnValues: S.optional(S.String),
+          ReturnConsumedCapacity: S.optional(S.String),
+          ReturnItemCollectionMetrics: S.optional(S.String),
           UpdateExpression: S.optional(S.String),
           ConditionExpression: S.optional(S.String),
-          ExpressionAttributeNames: S.optional(ExpressionAttributeNameMap),
-          ExpressionAttributeValues: S.optional(ExpressionAttributeValueMap),
-          ReturnValuesOnConditionCheckFailure: S.optional(ReturnValuesOnConditionCheckFailure),
+          ExpressionAttributeNames: S.optional(__S(21)),
+          ExpressionAttributeValues: S.optional(__S(9)),
+          ReturnValuesOnConditionCheckFailure: S.optional(S.String),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateItemInput" });
     case 1:
@@ -7757,7 +6956,7 @@ function __c32(j: number): any {
         S.Struct({
           TableName: S.String.pipe(T.ContextParam("ResourceArn")),
           StreamArn: S.String,
-          UpdateKinesisStreamingConfiguration: S.optional(UpdateKinesisStreamingConfiguration),
+          UpdateKinesisStreamingConfiguration: S.optional(__S(163)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateKinesisStreamingDestinationInput",
@@ -7767,8 +6966,8 @@ function __c32(j: number): any {
         S.Struct({
           TableName: S.optional(S.String),
           StreamArn: S.optional(S.String),
-          DestinationStatus: S.optional(DestinationStatus),
-          UpdateKinesisStreamingConfiguration: S.optional(UpdateKinesisStreamingConfiguration),
+          DestinationStatus: S.optional(S.String),
+          UpdateKinesisStreamingConfiguration: S.optional(__S(163)),
         }).pipe(ns),
       ).annotate({
         identifier: "UpdateKinesisStreamingDestinationOutput",
@@ -7777,9 +6976,9 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IndexName: S.String,
-          ProvisionedThroughput: S.optional(ProvisionedThroughput),
-          OnDemandThroughput: S.optional(OnDemandThroughput),
-          WarmThroughput: S.optional(WarmThroughput),
+          ProvisionedThroughput: S.optional(__S(61)),
+          OnDemandThroughput: S.optional(__S(62)),
+          WarmThroughput: S.optional(__S(63)),
         }),
       ).annotate({
         identifier: "UpdateGlobalSecondaryIndexAction",
@@ -7788,11 +6987,11 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IndexName: S.String,
-          KeySchema: KeySchema,
-          Projection: Projection,
-          ProvisionedThroughput: S.optional(ProvisionedThroughput),
-          OnDemandThroughput: S.optional(OnDemandThroughput),
-          WarmThroughput: S.optional(WarmThroughput),
+          KeySchema: __S(57),
+          Projection: __S(58),
+          ProvisionedThroughput: S.optional(__S(61)),
+          OnDemandThroughput: S.optional(__S(62)),
+          WarmThroughput: S.optional(__S(63)),
         }),
       ).annotate({
         identifier: "CreateGlobalSecondaryIndexAction",
@@ -7804,15 +7003,15 @@ function __c32(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Update: S.optional(UpdateGlobalSecondaryIndexAction),
-          Create: S.optional(CreateGlobalSecondaryIndexAction),
-          Delete: S.optional(DeleteGlobalSecondaryIndexAction),
+          Update: S.optional(__S(259)),
+          Create: S.optional(__S(260)),
+          Delete: S.optional(__S(261)),
         }),
       ).annotate({
         identifier: "GlobalSecondaryIndexUpdate",
       });
     case 7:
-      return S.Array(GlobalSecondaryIndexUpdate);
+      return S.Array(__S(262));
   }
 }
 function __c33(j: number): any {
@@ -7821,23 +7020,23 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IndexName: S.String,
-          ProvisionedThroughputOverride: S.optional(ProvisionedThroughputOverride),
-          OnDemandThroughputOverride: S.optional(OnDemandThroughputOverride),
+          ProvisionedThroughputOverride: S.optional(__S(44)),
+          OnDemandThroughputOverride: S.optional(__S(45)),
         }),
       ).annotate({
         identifier: "ReplicaGlobalSecondaryIndex",
       });
     case 1:
-      return S.Array(ReplicaGlobalSecondaryIndex);
+      return S.Array(__S(264));
     case 2:
       return S.suspend(() =>
         S.Struct({
           RegionName: S.String,
           KMSMasterKeyId: S.optional(S.String),
-          ProvisionedThroughputOverride: S.optional(ProvisionedThroughputOverride),
-          OnDemandThroughputOverride: S.optional(OnDemandThroughputOverride),
-          GlobalSecondaryIndexes: S.optional(ReplicaGlobalSecondaryIndexList),
-          TableClassOverride: S.optional(TableClass),
+          ProvisionedThroughputOverride: S.optional(__S(44)),
+          OnDemandThroughputOverride: S.optional(__S(45)),
+          GlobalSecondaryIndexes: S.optional(__S(265)),
+          TableClassOverride: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateReplicationGroupMemberAction",
@@ -7849,24 +7048,24 @@ function __c33(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Create: S.optional(CreateReplicationGroupMemberAction),
-          Update: S.optional(UpdateReplicationGroupMemberAction),
-          Delete: S.optional(DeleteReplicationGroupMemberAction),
+          Create: S.optional(__S(266)),
+          Update: S.optional(__S(266)),
+          Delete: S.optional(__S(267)),
         }),
       ).annotate({ identifier: "ReplicationGroupUpdate" });
     case 5:
-      return S.Array(ReplicationGroupUpdate);
+      return S.Array(__S(268));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Create: S.optional(CreateGlobalTableWitnessGroupMemberAction),
-          Delete: S.optional(DeleteGlobalTableWitnessGroupMemberAction),
+          Create: S.optional(__S(267)),
+          Delete: S.optional(__S(267)),
         }),
       ).annotate({
         identifier: "GlobalTableWitnessGroupUpdate",
       });
     case 7:
-      return S.Array(GlobalTableWitnessGroupUpdate);
+      return S.Array(__S(270));
   }
 }
 function __c34(j: number): any {
@@ -7878,55 +7077,55 @@ function __c34(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Create: S.optional(CreateVectorIndexAction),
-          Delete: S.optional(DeleteVectorIndexAction),
+          Create: S.optional(__S(73)),
+          Delete: S.optional(__S(272)),
         }),
       ).annotate({ identifier: "VectorIndexUpdate" });
     case 2:
-      return S.Array(VectorIndexUpdate);
+      return S.Array(__S(273));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AttributeDefinitions: S.optional(AttributeDefinitions),
+          AttributeDefinitions: S.optional(__S(55)),
           TableName: S.String.pipe(T.ContextParam("ResourceArn")),
-          BillingMode: S.optional(BillingMode),
-          ProvisionedThroughput: S.optional(ProvisionedThroughput),
-          GlobalSecondaryIndexUpdates: S.optional(GlobalSecondaryIndexUpdateList),
-          StreamSpecification: S.optional(StreamSpecification),
-          SSESpecification: S.optional(SSESpecification),
-          ReplicaUpdates: S.optional(ReplicationGroupUpdateList),
-          TableClass: S.optional(TableClass),
+          BillingMode: S.optional(S.String),
+          ProvisionedThroughput: S.optional(__S(61)),
+          GlobalSecondaryIndexUpdates: S.optional(__S(263)),
+          StreamSpecification: S.optional(__S(66)),
+          SSESpecification: S.optional(__S(67)),
+          ReplicaUpdates: S.optional(__S(269)),
+          TableClass: S.optional(S.String),
           DeletionProtectionEnabled: S.optional(S.Boolean),
-          MultiRegionConsistency: S.optional(MultiRegionConsistency),
-          GlobalTableWitnessUpdates: S.optional(GlobalTableWitnessGroupUpdateList),
-          OnDemandThroughput: S.optional(OnDemandThroughput),
-          WarmThroughput: S.optional(WarmThroughput),
-          GlobalTableSettingsReplicationMode: S.optional(GlobalTableSettingsReplicationMode),
-          VectorIndexUpdates: S.optional(VectorIndexUpdateList),
+          MultiRegionConsistency: S.optional(S.String),
+          GlobalTableWitnessUpdates: S.optional(__S(271)),
+          OnDemandThroughput: S.optional(__S(62)),
+          WarmThroughput: S.optional(__S(63)),
+          GlobalTableSettingsReplicationMode: S.optional(S.String),
+          VectorIndexUpdates: S.optional(__S(274)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateTableInput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           IndexName: S.optional(S.String),
-          ProvisionedWriteCapacityAutoScalingUpdate: S.optional(AutoScalingSettingsUpdate),
+          ProvisionedWriteCapacityAutoScalingUpdate: S.optional(__S(246)),
         }),
       ).annotate({
         identifier: "GlobalSecondaryIndexAutoScalingUpdate",
       });
     case 5:
-      return S.Array(GlobalSecondaryIndexAutoScalingUpdate);
+      return S.Array(__S(276));
     case 6:
       return S.suspend(() =>
         S.Struct({
           IndexName: S.optional(S.String),
-          ProvisionedReadCapacityAutoScalingUpdate: S.optional(AutoScalingSettingsUpdate),
+          ProvisionedReadCapacityAutoScalingUpdate: S.optional(__S(246)),
         }),
       ).annotate({
         identifier: "ReplicaGlobalSecondaryIndexAutoScalingUpdate",
       });
     case 7:
-      return S.Array(ReplicaGlobalSecondaryIndexAutoScalingUpdate);
+      return S.Array(__S(278));
   }
 }
 function __c35(j: number): any {
@@ -7935,21 +7134,19 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RegionName: S.String,
-          ReplicaGlobalSecondaryIndexUpdates: S.optional(
-            ReplicaGlobalSecondaryIndexAutoScalingUpdateList,
-          ),
-          ReplicaProvisionedReadCapacityAutoScalingUpdate: S.optional(AutoScalingSettingsUpdate),
+          ReplicaGlobalSecondaryIndexUpdates: S.optional(__S(279)),
+          ReplicaProvisionedReadCapacityAutoScalingUpdate: S.optional(__S(246)),
         }),
       ).annotate({ identifier: "ReplicaAutoScalingUpdate" });
     case 1:
-      return S.Array(ReplicaAutoScalingUpdate);
+      return S.Array(__S(280));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          GlobalSecondaryIndexUpdates: S.optional(GlobalSecondaryIndexAutoScalingUpdateList),
+          GlobalSecondaryIndexUpdates: S.optional(__S(277)),
           TableName: S.String.pipe(T.ContextParam("ResourceArn")),
-          ProvisionedWriteCapacityAutoScalingUpdate: S.optional(AutoScalingSettingsUpdate),
-          ReplicaUpdates: S.optional(ReplicaAutoScalingUpdateList),
+          ProvisionedWriteCapacityAutoScalingUpdate: S.optional(__S(246)),
+          ReplicaUpdates: S.optional(__S(281)),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateTableReplicaAutoScalingInput",
@@ -7962,19 +7159,19 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TableName: S.String.pipe(T.ContextParam("ResourceArn")),
-          TimeToLiveSpecification: TimeToLiveSpecification,
+          TimeToLiveSpecification: __S(283),
         }).pipe(T.all(ns, T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateTimeToLiveInput" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ TimeToLiveSpecification: S.optional(TimeToLiveSpecification) }).pipe(ns),
+        S.Struct({ TimeToLiveSpecification: S.optional(__S(283)) }).pipe(ns),
       ).annotate({ identifier: "UpdateTimeToLiveOutput" });
     case 6:
       return S.suspend(() =>
         S.Struct({ reason: S.optional(S.String), resource: S.optional(S.String) }),
       ).annotate({ identifier: "ThrottlingReason" });
     case 7:
-      return S.Array(ThrottlingReason);
+      return S.Array(__S(286));
   }
 }
 function __c36(j: number): any {
@@ -7982,12 +7179,95 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Item: S.optional(AttributeMap),
+          Item: S.optional(__S(9)),
           Code: S.optional(S.String),
           Message: S.optional(S.String),
         }),
       ).annotate({ identifier: "CancellationReason" });
     case 1:
-      return S.Array(CancellationReason);
+      return S.Array(__S(288));
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
   }
 }

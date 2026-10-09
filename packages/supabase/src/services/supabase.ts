@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { SupabaseProtocol, type SupabaseOpError, type SupabaseOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SupabaseOpError, SupabaseOpContext };
 
@@ -42,85 +44,40 @@ export interface V1AcceptInviteExternalJitAccessRequest {
   email: string;
   token: string;
 }
-const V1AcceptInviteExternalJitAccessRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<V1AcceptInviteExternalJitAccessRequest>;
-
 export interface JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem {
   cidr: string;
 }
-const JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
-
 export type JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
-const JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList>;
-
 export type JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6Item =
   JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem;
 export type JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
-const JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List =
-  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List>;
-
 export interface JitAccessResponseOutputUserRolesItemAllowedNetworks {
   allowed_cidrs?: JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList;
   allowed_cidrs_v6?: JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List;
 }
-const JitAccessResponseOutputUserRolesItemAllowedNetworks = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<JitAccessResponseOutputUserRolesItemAllowedNetworks>;
-
 export interface JitAccessResponseOutputUserRolesItem {
   role: string;
   expires_at?: number;
   allowed_networks?: JitAccessResponseOutputUserRolesItemAllowedNetworks;
   branches_only?: boolean;
 }
-const JitAccessResponseOutputUserRolesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<JitAccessResponseOutputUserRolesItem>;
-
 export type JitAccessResponseOutputUserRolesList = Array<JitAccessResponseOutputUserRolesItem>;
-const JitAccessResponseOutputUserRolesList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<JitAccessResponseOutputUserRolesList>;
-
 export interface JitAccessResponseOutput {
   user_id?: string;
   user_roles: JitAccessResponseOutputUserRolesList;
 }
-const JitAccessResponseOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<JitAccessResponseOutput>;
-
 export interface V1ActivateCustomHostnameRequest {
   /** Project ref */
   ref: string;
 }
-const V1ActivateCustomHostnameRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<V1ActivateCustomHostnameRequest>;
-
 export type UpdateCustomHostnameResponseOutputStatus =
   | "1_not_started"
   | "2_initiated"
   | "3_challenge_verified"
   | "4_origin_setup_completed"
   | "5_services_reconfigured";
-const UpdateCustomHostnameResponseOutputStatus = S.String;
-
 export type JsonValueOutputCase0 = string | number | boolean;
 export type JsonValueOutputCase1List = Array<JsonValueOutput>;
 export type JsonValueOutputCase2Map = { [key: string]: JsonValueOutput | undefined };
@@ -129,75 +86,30 @@ export type JsonValueOutput =
   | JsonValueOutputCase0
   | JsonValueOutputCase1List
   | JsonValueOutputCase2Map;
-const JsonValueOutput = /*@__PURE__*/ __L.at(__c1, 0);
-
 export type UpdateCustomHostnameResponseOutputDataErrorsList = Array<JsonValueOutput>;
-const UpdateCustomHostnameResponseOutputDataErrorsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<UpdateCustomHostnameResponseOutputDataErrorsList>;
-
 export type UpdateCustomHostnameResponseOutputDataMessagesList = Array<JsonValueOutput>;
-const UpdateCustomHostnameResponseOutputDataMessagesList =
-  UpdateCustomHostnameResponseOutputDataErrorsList as any as S.Schema<UpdateCustomHostnameResponseOutputDataMessagesList>;
-
 export interface UpdateCustomHostnameResponseOutputDataResultSslValidationRecordsItem {
   txt_name?: string;
   txt_value?: string;
 }
-const UpdateCustomHostnameResponseOutputDataResultSslValidationRecordsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<UpdateCustomHostnameResponseOutputDataResultSslValidationRecordsItem>;
-
 export type UpdateCustomHostnameResponseOutputDataResultSslValidationRecordsList =
   Array<UpdateCustomHostnameResponseOutputDataResultSslValidationRecordsItem>;
-const UpdateCustomHostnameResponseOutputDataResultSslValidationRecordsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<UpdateCustomHostnameResponseOutputDataResultSslValidationRecordsList>;
-
 export interface UpdateCustomHostnameResponseOutputDataResultSslValidationErrorsItem {
   message: string;
 }
-const UpdateCustomHostnameResponseOutputDataResultSslValidationErrorsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<UpdateCustomHostnameResponseOutputDataResultSslValidationErrorsItem>;
-
 export type UpdateCustomHostnameResponseOutputDataResultSslValidationErrorsList =
   Array<UpdateCustomHostnameResponseOutputDataResultSslValidationErrorsItem>;
-const UpdateCustomHostnameResponseOutputDataResultSslValidationErrorsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<UpdateCustomHostnameResponseOutputDataResultSslValidationErrorsList>;
-
 export interface UpdateCustomHostnameResponseOutputDataResultSsl {
   status?: string;
   validation_records?: UpdateCustomHostnameResponseOutputDataResultSslValidationRecordsList;
   validation_errors?: UpdateCustomHostnameResponseOutputDataResultSslValidationErrorsList;
 }
-const UpdateCustomHostnameResponseOutputDataResultSsl = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<UpdateCustomHostnameResponseOutputDataResultSsl>;
-
 export interface UpdateCustomHostnameResponseOutputDataResultOwnershipVerification {
   type?: string;
   name?: string;
   value?: string;
 }
-const UpdateCustomHostnameResponseOutputDataResultOwnershipVerification = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<UpdateCustomHostnameResponseOutputDataResultOwnershipVerification>;
-
 export type UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList = Array<string>;
-const UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList>;
-
 export interface UpdateCustomHostnameResponseOutputDataResult {
   id: string;
   hostname: string;
@@ -207,50 +119,25 @@ export interface UpdateCustomHostnameResponseOutputDataResult {
   verification_errors?: UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList;
   status?: string;
 }
-const UpdateCustomHostnameResponseOutputDataResult = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<UpdateCustomHostnameResponseOutputDataResult>;
-
 export interface UpdateCustomHostnameResponseOutputData {
   success: boolean;
   errors: UpdateCustomHostnameResponseOutputDataErrorsList;
   messages: UpdateCustomHostnameResponseOutputDataMessagesList;
   result: UpdateCustomHostnameResponseOutputDataResult;
 }
-const UpdateCustomHostnameResponseOutputData = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<UpdateCustomHostnameResponseOutputData>;
-
 export interface UpdateCustomHostnameResponseOutput {
   status: UpdateCustomHostnameResponseOutputStatus;
   custom_hostname?: string;
   data: UpdateCustomHostnameResponseOutputData;
 }
-const UpdateCustomHostnameResponseOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<UpdateCustomHostnameResponseOutput>;
-
 export interface V1ActivateVanitySubdomainConfigRequest {
   /** Project ref */
   ref: string;
   vanity_subdomain: string;
 }
-const V1ActivateVanitySubdomainConfigRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<V1ActivateVanitySubdomainConfigRequest>;
-
 export interface ActivateVanitySubdomainResponseOutput {
   custom_domain: string;
 }
-const ActivateVanitySubdomainResponseOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ActivateVanitySubdomainResponseOutput>;
-
 export interface V1ApplyAMigrationRequest {
   /** Project ref */
   ref: string;
@@ -258,17 +145,7 @@ export interface V1ApplyAMigrationRequest {
   name?: string;
   rollback?: string;
 }
-const V1ApplyAMigrationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<V1ApplyAMigrationRequest>;
-
 export interface V1ApplyAMigrationResponse {}
-const V1ApplyAMigrationResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<V1ApplyAMigrationResponse>;
-
 export type V1ApplyProjectAddonRequestAddonVariantCase0 =
   | "ci_micro"
   | "ci_small"
@@ -300,8 +177,6 @@ export type V1ApplyProjectAddonRequestAddonVariant =
   | (string & {})
   | V1ApplyProjectAddonRequestAddonVariantCase3
   | (string & {});
-const V1ApplyProjectAddonRequestAddonVariant = /*@__PURE__*/ __L.at(__c3, 0);
-
 export type V1ApplyProjectAddonRequestAddonType =
   | "custom_domain"
   | "compute_instance"
@@ -311,84 +186,44 @@ export type V1ApplyProjectAddonRequestAddonType =
   | "auth_mfa_web_authn"
   | "log_drain"
   | "etl_pipeline";
-const V1ApplyProjectAddonRequestAddonType = S.String;
-
 export interface V1ApplyProjectAddonRequest {
   /** Project ref */
   ref: string;
   addon_variant: V1ApplyProjectAddonRequestAddonVariant;
   addon_type: V1ApplyProjectAddonRequestAddonType | (string & {});
 }
-const V1ApplyProjectAddonRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<V1ApplyProjectAddonRequest>;
-
 export interface V1ApplyProjectAddonResponse {}
-const V1ApplyProjectAddonResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1ApplyProjectAddonResponse>;
-
 export interface V1AuthorizeJitAccessRequest {
   /** Project ref */
   ref: string;
   role: string;
   rhost: string;
 }
-const V1AuthorizeJitAccessRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<V1AuthorizeJitAccessRequest>;
-
 export type JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsItem =
   JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem;
 export type JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsList =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
-const JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsList =
-  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsList>;
-
 export type JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsV6Item =
   JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem;
 export type JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsV6List =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
-const JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsV6List =
-  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsV6List>;
-
 export interface JitAuthorizeAccessResponseOutputUserRoleAllowedNetworks {
   allowed_cidrs?: JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsList;
   allowed_cidrs_v6?: JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsV6List;
 }
-const JitAuthorizeAccessResponseOutputUserRoleAllowedNetworks = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<JitAuthorizeAccessResponseOutputUserRoleAllowedNetworks>;
-
 export interface JitAuthorizeAccessResponseOutputUserRole {
   role: string;
   expires_at?: number;
   allowed_networks?: JitAuthorizeAccessResponseOutputUserRoleAllowedNetworks;
   branches_only?: boolean;
 }
-const JitAuthorizeAccessResponseOutputUserRole = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<JitAuthorizeAccessResponseOutputUserRole>;
-
 export interface JitAuthorizeAccessResponseOutput {
   user_id?: string;
   act?: string;
   user_role: JitAuthorizeAccessResponseOutputUserRole;
 }
-const JitAuthorizeAccessResponseOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<JitAuthorizeAccessResponseOutput>;
-
 export type V1AuthorizeUserRequestResponseType = "code" | "token" | "id_token token";
-const V1AuthorizeUserRequestResponseType = S.String;
-
 export type V1AuthorizeUserRequestCodeChallengeMethod = "plain" | "sha256" | "S256";
-const V1AuthorizeUserRequestCodeChallengeMethod = S.String;
-
 export interface V1AuthorizeUserRequest {
   client_id: string;
   response_type: V1AuthorizeUserRequestResponseType | (string & {});
@@ -404,59 +239,27 @@ export interface V1AuthorizeUserRequest {
   /** Resource indicator for MCP (Model Context Protocol) clients */
   resource?: string;
 }
-const V1AuthorizeUserRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<V1AuthorizeUserRequest>;
-
 export interface V1AuthorizeUserResponse {}
-const V1AuthorizeUserResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1AuthorizeUserResponse>;
-
 export interface CreateSecretBodyItem {
   /** Secret name must not start with the SUPABASE_ prefix. */
   name: string;
   value: string;
 }
-const CreateSecretBodyItem = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<CreateSecretBodyItem>;
-
 export type CreateSecretBody = Array<CreateSecretBodyItem>;
-const CreateSecretBody = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<CreateSecretBody>;
-
 export interface V1BulkCreateSecretsRequest {
   /** Project ref */
   ref: string;
   body: CreateSecretBody;
 }
-const V1BulkCreateSecretsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<V1BulkCreateSecretsRequest>;
-
 export interface V1BulkCreateSecretsResponse {}
-const V1BulkCreateSecretsResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1BulkCreateSecretsResponse>;
-
 export type DeleteSecretsBody = Array<string>;
-const DeleteSecretsBody = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DeleteSecretsBody>;
-
 export interface V1BulkDeleteSecretsRequest {
   /** Project ref */
   ref: string;
   body: DeleteSecretsBody;
 }
-const V1BulkDeleteSecretsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<V1BulkDeleteSecretsRequest>;
-
 export interface V1BulkDeleteSecretsResponse {}
-const V1BulkDeleteSecretsResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1BulkDeleteSecretsResponse>;
-
 export type BulkUpdateFunctionBodyItemStatus = "ACTIVE" | "REMOVED" | "THROTTLED";
-const BulkUpdateFunctionBodyItemStatus = S.String;
-
 export interface BulkUpdateFunctionBodyItem {
   id: string;
   slug: string;
@@ -470,33 +273,16 @@ export interface BulkUpdateFunctionBodyItem {
   import_map_path?: string;
   ezbr_sha256?: string;
 }
-const BulkUpdateFunctionBodyItem = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<BulkUpdateFunctionBodyItem>;
-
 export type BulkUpdateFunctionBody = Array<BulkUpdateFunctionBodyItem>;
-const BulkUpdateFunctionBody = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<BulkUpdateFunctionBody>;
-
 export interface V1BulkUpdateFunctionsRequest {
   /** Project ref */
   ref: string;
   body: BulkUpdateFunctionBody;
 }
-const V1BulkUpdateFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<V1BulkUpdateFunctionsRequest>;
-
 export type BulkUpdateFunctionResponseOutputFunctionsItemStatus =
   | "ACTIVE"
   | "REMOVED"
   | "THROTTLED";
-const BulkUpdateFunctionResponseOutputFunctionsItemStatus = S.String;
-
 export interface BulkUpdateFunctionResponseOutputFunctionsItem {
   id: string;
   slug: string;
@@ -511,73 +297,30 @@ export interface BulkUpdateFunctionResponseOutputFunctionsItem {
   import_map_path?: string;
   ezbr_sha256?: string;
 }
-const BulkUpdateFunctionResponseOutputFunctionsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<BulkUpdateFunctionResponseOutputFunctionsItem>;
-
 export type BulkUpdateFunctionResponseOutputFunctionsList =
   Array<BulkUpdateFunctionResponseOutputFunctionsItem>;
-const BulkUpdateFunctionResponseOutputFunctionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<BulkUpdateFunctionResponseOutputFunctionsList>;
-
 export interface BulkUpdateFunctionResponseOutput {
   functions: BulkUpdateFunctionResponseOutputFunctionsList;
 }
-const BulkUpdateFunctionResponseOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<BulkUpdateFunctionResponseOutput>;
-
 export interface V1CancelAProjectRestorationRequest {
   /** Project ref */
   ref: string;
 }
-const V1CancelAProjectRestorationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<V1CancelAProjectRestorationRequest>;
-
 export interface V1CancelAProjectRestorationResponse {}
-const V1CancelAProjectRestorationResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<V1CancelAProjectRestorationResponse>;
-
 export interface V1CheckVanitySubdomainAvailabilityRequest {
   /** Project ref */
   ref: string;
   vanity_subdomain: string;
 }
-const V1CheckVanitySubdomainAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<V1CheckVanitySubdomainAvailabilityRequest>;
-
 export interface SubdomainAvailabilityResponseOutput {
   available: boolean;
 }
-const SubdomainAvailabilityResponseOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<SubdomainAvailabilityResponseOutput>;
-
 export interface V1ClaimProjectForOrganizationRequest {
   /** Organization slug */
   slug: string;
   token: string;
 }
-const V1ClaimProjectForOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<V1ClaimProjectForOrganizationRequest>;
-
 export interface V1ClaimProjectForOrganizationResponse {}
-const V1ClaimProjectForOrganizationResponse =
-  V1CancelAProjectRestorationResponse as any as S.Schema<V1ClaimProjectForOrganizationResponse>;
-
 export type V1CreateABranchRequestDesiredInstanceSize =
   | "pico"
   | "nano"
@@ -599,8 +342,6 @@ export type V1CreateABranchRequestDesiredInstanceSize =
   | "48xlarge_optimized_memory"
   | "48xlarge_optimized_cpu"
   | "48xlarge_high_memory";
-const V1CreateABranchRequestDesiredInstanceSize = S.String;
-
 /** Release channel. If not provided, GA will be used. */
 export type V1CreateABranchRequestReleaseChannel =
   | "internal"
@@ -609,18 +350,9 @@ export type V1CreateABranchRequestReleaseChannel =
   | "ga"
   | "withdrawn"
   | "preview";
-const V1CreateABranchRequestReleaseChannel = S.String;
-
 /** Postgres engine version. If not provided, the latest version will be used. */
 export type V1CreateABranchRequestPostgresEngine = "15" | "17" | "17-oriole";
-const V1CreateABranchRequestPostgresEngine = S.String;
-
 export type V1CreateABranchRequestSecretsMap = { [key: string]: string | undefined };
-const V1CreateABranchRequestSecretsMap = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<V1CreateABranchRequestSecretsMap>;
-
 export interface V1CreateABranchRequest {
   /** Project ref */
   ref: string;
@@ -639,11 +371,6 @@ export interface V1CreateABranchRequest {
   /** HTTP endpoint to receive branch status updates. */
   notify_url?: string;
 }
-const V1CreateABranchRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<V1CreateABranchRequest>;
-
 /** This field is deprecated. List action runs to get branch status instead. */
 export type BranchResponseOutputStatus =
   | "CREATING_PROJECT"
@@ -652,8 +379,6 @@ export type BranchResponseOutputStatus =
   | "MIGRATIONS_FAILED"
   | "FUNCTIONS_DEPLOYED"
   | "FUNCTIONS_FAILED";
-const BranchResponseOutputStatus = S.String;
-
 export type BranchResponseOutputPreviewProjectStatus =
   | "INACTIVE"
   | "ACTIVE_HEALTHY"
@@ -670,8 +395,6 @@ export type BranchResponseOutputPreviewProjectStatus =
   | "RESTARTING"
   | "PAUSE_FAILED"
   | "RESIZING";
-const BranchResponseOutputPreviewProjectStatus = S.String;
-
 export interface BranchResponseOutput {
   id: string;
   name: string;
@@ -693,16 +416,9 @@ export interface BranchResponseOutput {
   deletion_scheduled_at?: string;
   preview_project_status?: BranchResponseOutputPreviewProjectStatus;
 }
-const BranchResponseOutput = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<BranchResponseOutput>;
-
 export interface V1CreateAnOrganizationRequest {
   name: string;
 }
-const V1CreateAnOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<V1CreateAnOrganizationRequest>;
-
 export interface OrganizationResponseV1Output {
   /** Deprecated: Use `slug` instead. */
   id: string;
@@ -710,15 +426,8 @@ export interface OrganizationResponseV1Output {
   slug: string;
   name: string;
 }
-const OrganizationResponseV1Output = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<OrganizationResponseV1Output>;
-
 /** Subscription Plan is now set on organization level and is ignored in this request */
 export type V1CreateAProjectRequestPlan = "free" | "pro";
-const V1CreateAProjectRequestPlan = S.String;
-
 /** Region you want your server to reside in. Use region_selection instead. */
 export type V1CreateAProjectRequestRegion =
   | "us-east-1"
@@ -739,8 +448,6 @@ export type V1CreateAProjectRequestRegion =
   | "ca-central-1"
   | "ap-south-1"
   | "sa-east-1";
-const V1CreateAProjectRequestRegion = S.String;
-
 export type V1CreateAProjectRequestRegionSelectionCase0Type = "specific";
 /** Specific region code. The codes supported are not a stable API, and should be retrieved from the /available-regions endpoint. */
 export type V1CreateAProjectRequestRegionSelectionCase0Code =
@@ -779,8 +486,6 @@ export interface V1CreateAProjectRequestRegionSelectionCase1 {
 export type V1CreateAProjectRequestRegionSelection =
   | V1CreateAProjectRequestRegionSelectionCase0
   | V1CreateAProjectRequestRegionSelectionCase1;
-const V1CreateAProjectRequestRegionSelection = /*@__PURE__*/ __L.at(__c6, 4);
-
 /** Desired instance size. Omit this field to always default to the smallest possible size. */
 export type V1CreateAProjectRequestDesiredInstanceSize =
   | "nano"
@@ -802,8 +507,6 @@ export type V1CreateAProjectRequestDesiredInstanceSize =
   | "48xlarge_optimized_memory"
   | "48xlarge_optimized_cpu"
   | "48xlarge_high_memory";
-const V1CreateAProjectRequestDesiredInstanceSize = S.String;
-
 export interface V1CreateAProjectRequest {
   /** Database password */
   db_pass: string;
@@ -830,11 +533,6 @@ export interface V1CreateAProjectRequest {
   /** [Experimental] Whether to enable high availability for the project. */
   high_availability?: boolean;
 }
-const V1CreateAProjectRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<V1CreateAProjectRequest>;
-
 export type V1ProjectResponseOutputStatus =
   | "INACTIVE"
   | "ACTIVE_HEALTHY"
@@ -851,8 +549,6 @@ export type V1ProjectResponseOutputStatus =
   | "RESTARTING"
   | "PAUSE_FAILED"
   | "RESIZING";
-const V1ProjectResponseOutputStatus = S.String;
-
 export interface V1ProjectResponseOutput {
   /** Deprecated: Use `ref` instead. */
   id: string;
@@ -870,64 +566,32 @@ export interface V1ProjectResponseOutput {
   created_at: string;
   status: V1ProjectResponseOutputStatus;
 }
-const V1ProjectResponseOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<V1ProjectResponseOutput>;
-
 /** What type of provider will be created */
 export type V1CreateASsoProviderRequestType = "saml";
-const V1CreateASsoProviderRequestType = S.String;
-
 export type V1CreateASsoProviderRequestDomainsList = Array<string>;
-const V1CreateASsoProviderRequestDomainsList =
-  DeleteSecretsBody as any as S.Schema<V1CreateASsoProviderRequestDomainsList>;
-
 export type V1CreateASsoProviderRequestAttributeMappingKeysValueNamesList = Array<string>;
-const V1CreateASsoProviderRequestAttributeMappingKeysValueNamesList =
-  DeleteSecretsBody as any as S.Schema<V1CreateASsoProviderRequestAttributeMappingKeysValueNamesList>;
-
 export type V1CreateASsoProviderRequestAttributeMappingKeysValueDefault =
   | unknown
   | number
   | string
   | boolean;
-const V1CreateASsoProviderRequestAttributeMappingKeysValueDefault = /*@__PURE__*/ __L.at(__c6, 7);
-
 export interface V1CreateASsoProviderRequestAttributeMappingKeysValue {
   name?: string;
   names?: V1CreateASsoProviderRequestAttributeMappingKeysValueNamesList;
   array?: boolean;
   default?: V1CreateASsoProviderRequestAttributeMappingKeysValueDefault;
 }
-const V1CreateASsoProviderRequestAttributeMappingKeysValue = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<V1CreateASsoProviderRequestAttributeMappingKeysValue>;
-
 export type V1CreateASsoProviderRequestAttributeMappingKeysMap = {
   [key: string]: V1CreateASsoProviderRequestAttributeMappingKeysValue | undefined;
 };
-const V1CreateASsoProviderRequestAttributeMappingKeysMap = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<V1CreateASsoProviderRequestAttributeMappingKeysMap>;
-
 export interface V1CreateASsoProviderRequestAttributeMapping {
   keys: V1CreateASsoProviderRequestAttributeMappingKeysMap;
 }
-const V1CreateASsoProviderRequestAttributeMapping = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<V1CreateASsoProviderRequestAttributeMapping>;
-
 export type V1CreateASsoProviderRequestNameIdFormat =
   | "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
   | "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
   | "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
   | "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent";
-const V1CreateASsoProviderRequestNameIdFormat = S.String;
-
 export interface V1CreateASsoProviderRequest {
   /** Project ref */
   ref: string;
@@ -939,59 +603,29 @@ export interface V1CreateASsoProviderRequest {
   attribute_mapping?: V1CreateASsoProviderRequestAttributeMapping;
   name_id_format?: V1CreateASsoProviderRequestNameIdFormat | (string & {});
 }
-const V1CreateASsoProviderRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<V1CreateASsoProviderRequest>;
-
 export type CreateProviderResponseOutputSamlAttributeMappingKeysValueNamesList = Array<string>;
-const CreateProviderResponseOutputSamlAttributeMappingKeysValueNamesList =
-  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<CreateProviderResponseOutputSamlAttributeMappingKeysValueNamesList>;
-
 export type CreateProviderResponseOutputSamlAttributeMappingKeysValueDefault =
   | unknown
   | number
   | string
   | boolean;
-const CreateProviderResponseOutputSamlAttributeMappingKeysValueDefault = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-);
-
 export interface CreateProviderResponseOutputSamlAttributeMappingKeysValue {
   name?: string;
   names?: CreateProviderResponseOutputSamlAttributeMappingKeysValueNamesList;
   array?: boolean;
   default?: CreateProviderResponseOutputSamlAttributeMappingKeysValueDefault;
 }
-const CreateProviderResponseOutputSamlAttributeMappingKeysValue = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateProviderResponseOutputSamlAttributeMappingKeysValue>;
-
 export type CreateProviderResponseOutputSamlAttributeMappingKeysMap = {
   [key: string]: CreateProviderResponseOutputSamlAttributeMappingKeysValue | undefined;
 };
-const CreateProviderResponseOutputSamlAttributeMappingKeysMap = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CreateProviderResponseOutputSamlAttributeMappingKeysMap>;
-
 export interface CreateProviderResponseOutputSamlAttributeMapping {
   keys: CreateProviderResponseOutputSamlAttributeMappingKeysMap;
 }
-const CreateProviderResponseOutputSamlAttributeMapping = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<CreateProviderResponseOutputSamlAttributeMapping>;
-
 export type CreateProviderResponseOutputSamlNameIdFormat =
   | "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
   | "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
   | "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
   | "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent";
-const CreateProviderResponseOutputSamlNameIdFormat = S.String;
-
 export interface CreateProviderResponseOutputSaml {
   entity_id: string;
   metadata_url?: string;
@@ -999,28 +633,13 @@ export interface CreateProviderResponseOutputSaml {
   attribute_mapping?: CreateProviderResponseOutputSamlAttributeMapping;
   name_id_format?: CreateProviderResponseOutputSamlNameIdFormat;
 }
-const CreateProviderResponseOutputSaml = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CreateProviderResponseOutputSaml>;
-
 export interface CreateProviderResponseOutputDomainsItem {
   domain?: string;
   created_at?: string;
   updated_at?: string;
 }
-const CreateProviderResponseOutputDomainsItem = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CreateProviderResponseOutputDomainsItem>;
-
 export type CreateProviderResponseOutputDomainsList =
   Array<CreateProviderResponseOutputDomainsItem>;
-const CreateProviderResponseOutputDomainsList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CreateProviderResponseOutputDomainsList>;
-
 export interface CreateProviderResponseOutput {
   id: string;
   saml?: CreateProviderResponseOutputSaml;
@@ -1028,26 +647,12 @@ export interface CreateProviderResponseOutput {
   created_at?: string;
   updated_at?: string;
 }
-const CreateProviderResponseOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<CreateProviderResponseOutput>;
-
 export interface V1CreateLegacySigningKeyRequest {
   /** Project ref */
   ref: string;
 }
-const V1CreateLegacySigningKeyRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<V1CreateLegacySigningKeyRequest>;
-
 export type SigningKeyResponseOutputAlgorithm = "EdDSA" | "ES256" | "RS256" | "HS256";
-const SigningKeyResponseOutputAlgorithm = S.String;
-
 export type SigningKeyResponseOutputStatus = "in_use" | "previously_used" | "revoked" | "standby";
-const SigningKeyResponseOutputStatus = S.String;
-
 export interface SigningKeyResponseOutput {
   id: string;
   algorithm: SigningKeyResponseOutputAlgorithm;
@@ -1056,42 +661,20 @@ export interface SigningKeyResponseOutput {
   created_at: string;
   updated_at: string;
 }
-const SigningKeyResponseOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<SigningKeyResponseOutput>;
-
 export interface V1CreateLoginRoleRequest {
   /** Project ref */
   ref: string;
   read_only: boolean;
 }
-const V1CreateLoginRoleRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<V1CreateLoginRoleRequest>;
-
 export interface CreateRoleResponseOutput {
   role: string;
   password: T.Sensitive;
   ttl_seconds: number;
 }
-const CreateRoleResponseOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<CreateRoleResponseOutput>;
-
 export type V1CreateProjectApiKeyRequestType = "publishable" | "secret";
-const V1CreateProjectApiKeyRequestType = S.String;
-
 export type V1CreateProjectApiKeyRequestSecretJwtTemplateMap = {
   [key: string]: unknown | undefined;
 };
-const V1CreateProjectApiKeyRequestSecretJwtTemplateMap = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<V1CreateProjectApiKeyRequestSecretJwtTemplateMap>;
-
 export interface V1CreateProjectApiKeyRequest {
   /** Project ref */
   ref: string;
@@ -1102,18 +685,8 @@ export interface V1CreateProjectApiKeyRequest {
   description?: string | null;
   secret_jwt_template?: V1CreateProjectApiKeyRequestSecretJwtTemplateMap | null;
 }
-const V1CreateProjectApiKeyRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<V1CreateProjectApiKeyRequest>;
-
 export type ApiKeyResponseOutputType = "legacy" | "publishable" | "secret";
-const ApiKeyResponseOutputType = S.String;
-
 export type ApiKeyResponseOutputSecretJwtTemplateMap = { [key: string]: unknown | undefined };
-const ApiKeyResponseOutputSecretJwtTemplateMap =
-  V1CreateProjectApiKeyRequestSecretJwtTemplateMap as any as S.Schema<ApiKeyResponseOutputSecretJwtTemplateMap>;
-
 export interface ApiKeyResponseOutput {
   api_key?: T.Sensitive | null;
   id?: string | null;
@@ -1126,17 +699,10 @@ export interface ApiKeyResponseOutput {
   inserted_at?: string | null;
   updated_at?: string | null;
 }
-const ApiKeyResponseOutput = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ApiKeyResponseOutput>;
-
 export interface V1CreateProjectClaimTokenRequest {
   /** Project ref */
   ref: string;
 }
-const V1CreateProjectClaimTokenRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<V1CreateProjectClaimTokenRequest>;
-
 export interface CreateProjectClaimTokenResponseOutput {
   token: string;
   token_alias: string;
@@ -1144,29 +710,13 @@ export interface CreateProjectClaimTokenResponseOutput {
   created_at: string;
   created_by: string;
 }
-const CreateProjectClaimTokenResponseOutput = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<CreateProjectClaimTokenResponseOutput>;
-
 export type V1CreateProjectSigningKeyRequestAlgorithm = "EdDSA" | "ES256" | "RS256" | "HS256";
-const V1CreateProjectSigningKeyRequestAlgorithm = S.String;
-
 export type V1CreateProjectSigningKeyRequestStatus = "in_use" | "standby";
-const V1CreateProjectSigningKeyRequestStatus = S.String;
-
 export type V1CreateProjectSigningKeyRequestPrivateJwkCase0Use = "sig";
 export type V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsItem = "sign" | "verify";
-const V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsItem = S.String;
-
 export type V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList = Array<
   V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsItem | (string & {})
 >;
-const V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList>;
-
 export type V1CreateProjectSigningKeyRequestPrivateJwkCase0Kty = "RSA";
 export type V1CreateProjectSigningKeyRequestPrivateJwkCase0Alg = "RS256";
 export type V1CreateProjectSigningKeyRequestPrivateJwkCase0E = "AQAB";
@@ -1246,8 +796,6 @@ export type V1CreateProjectSigningKeyRequestPrivateJwk =
   | V1CreateProjectSigningKeyRequestPrivateJwkCase1
   | V1CreateProjectSigningKeyRequestPrivateJwkCase2
   | V1CreateProjectSigningKeyRequestPrivateJwkCase3;
-const V1CreateProjectSigningKeyRequestPrivateJwk = /*@__PURE__*/ __L.at(__c9, 6);
-
 export interface V1CreateProjectSigningKeyRequest {
   /** Project ref */
   ref: string;
@@ -1255,11 +803,6 @@ export interface V1CreateProjectSigningKeyRequest {
   status?: V1CreateProjectSigningKeyRequestStatus | (string & {});
   private_jwk?: V1CreateProjectSigningKeyRequestPrivateJwk;
 }
-const V1CreateProjectSigningKeyRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<V1CreateProjectSigningKeyRequest>;
-
 export interface V1CreateProjectTpaIntegrationRequest {
   /** Project ref */
   ref: string;
@@ -1267,11 +810,6 @@ export interface V1CreateProjectTpaIntegrationRequest {
   jwks_url?: string;
   custom_jwks?: unknown;
 }
-const V1CreateProjectTpaIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<V1CreateProjectTpaIntegrationRequest>;
-
 export interface ThirdPartyAuthOutput {
   id: string;
   type: string;
@@ -1283,161 +821,76 @@ export interface ThirdPartyAuthOutput {
   updated_at: string;
   resolved_at?: string | null;
 }
-const ThirdPartyAuthOutput = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ThirdPartyAuthOutput>;
-
 export interface V1CreateRestorePointRequest {
   /** Project ref */
   ref: string;
   name: string;
 }
-const V1CreateRestorePointRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<V1CreateRestorePointRequest>;
-
 export type V1RestorePointResponseStatus = "AVAILABLE" | "PENDING" | "REMOVED" | "FAILED";
-const V1RestorePointResponseStatus = S.String;
-
 export interface V1RestorePointResponse {
   name: string;
   status: V1RestorePointResponseStatus;
   completed_on: string | null;
 }
-const V1RestorePointResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<V1RestorePointResponse>;
-
 export interface V1DeactivateVanitySubdomainConfigRequest {
   /** Project ref */
   ref: string;
 }
-const V1DeactivateVanitySubdomainConfigRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<V1DeactivateVanitySubdomainConfigRequest>;
-
 export interface V1DeactivateVanitySubdomainConfigResponse {}
-const V1DeactivateVanitySubdomainConfigResponse =
-  V1CancelAProjectRestorationResponse as any as S.Schema<V1DeactivateVanitySubdomainConfigResponse>;
-
 export interface V1DeleteABranchRequest {
   /** Branch ref or deprecated branch ID */
   branch_id_or_ref: string;
   /** If set to false, schedule deletion with 1-hour grace period (only when soft deletion is enabled). */
   force?: string;
 }
-const V1DeleteABranchRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<V1DeleteABranchRequest>;
-
 export type BranchDeleteResponseOutputMessage = "ok";
-const BranchDeleteResponseOutputMessage = S.String;
-
 export interface BranchDeleteResponseOutput {
   message: BranchDeleteResponseOutputMessage;
 }
-const BranchDeleteResponseOutput = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<BranchDeleteResponseOutput>;
-
 export interface V1DeleteAFunctionRequest {
   /** Project ref */
   ref: string;
   /** Function slug */
   function_slug: string;
 }
-const V1DeleteAFunctionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<V1DeleteAFunctionRequest>;
-
 export interface V1DeleteAFunctionResponse {}
-const V1DeleteAFunctionResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1DeleteAFunctionResponse>;
-
 export interface V1DeleteAProjectRequest {
   /** Project ref */
   ref: string;
 }
-const V1DeleteAProjectRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<V1DeleteAProjectRequest>;
-
 export interface V1ProjectRefResponseOutput {
   id: number;
   ref: string;
   name: string;
 }
-const V1ProjectRefResponseOutput = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<V1ProjectRefResponseOutput>;
-
 export interface V1DeleteASsoProviderRequest {
   /** Project ref */
   ref: string;
   provider_id: string;
 }
-const V1DeleteASsoProviderRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<V1DeleteASsoProviderRequest>;
-
 export type DeleteProviderResponseOutputSamlAttributeMappingKeysValueNamesList = Array<string>;
-const DeleteProviderResponseOutputSamlAttributeMappingKeysValueNamesList =
-  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<DeleteProviderResponseOutputSamlAttributeMappingKeysValueNamesList>;
-
 export type DeleteProviderResponseOutputSamlAttributeMappingKeysValueDefault =
   | unknown
   | number
   | string
   | boolean;
-const DeleteProviderResponseOutputSamlAttributeMappingKeysValueDefault = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-);
-
 export interface DeleteProviderResponseOutputSamlAttributeMappingKeysValue {
   name?: string;
   names?: DeleteProviderResponseOutputSamlAttributeMappingKeysValueNamesList;
   array?: boolean;
   default?: DeleteProviderResponseOutputSamlAttributeMappingKeysValueDefault;
 }
-const DeleteProviderResponseOutputSamlAttributeMappingKeysValue = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<DeleteProviderResponseOutputSamlAttributeMappingKeysValue>;
-
 export type DeleteProviderResponseOutputSamlAttributeMappingKeysMap = {
   [key: string]: DeleteProviderResponseOutputSamlAttributeMappingKeysValue | undefined;
 };
-const DeleteProviderResponseOutputSamlAttributeMappingKeysMap = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<DeleteProviderResponseOutputSamlAttributeMappingKeysMap>;
-
 export interface DeleteProviderResponseOutputSamlAttributeMapping {
   keys: DeleteProviderResponseOutputSamlAttributeMappingKeysMap;
 }
-const DeleteProviderResponseOutputSamlAttributeMapping = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<DeleteProviderResponseOutputSamlAttributeMapping>;
-
 export type DeleteProviderResponseOutputSamlNameIdFormat =
   | "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
   | "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
   | "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
   | "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent";
-const DeleteProviderResponseOutputSamlNameIdFormat = S.String;
-
 export interface DeleteProviderResponseOutputSaml {
   entity_id: string;
   metadata_url?: string;
@@ -1445,17 +898,9 @@ export interface DeleteProviderResponseOutputSaml {
   attribute_mapping?: DeleteProviderResponseOutputSamlAttributeMapping;
   name_id_format?: DeleteProviderResponseOutputSamlNameIdFormat;
 }
-const DeleteProviderResponseOutputSaml = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<DeleteProviderResponseOutputSaml>;
-
 export type DeleteProviderResponseOutputDomainsItem = CreateProviderResponseOutputDomainsItem;
 export type DeleteProviderResponseOutputDomainsList =
   Array<CreateProviderResponseOutputDomainsItem>;
-const DeleteProviderResponseOutputDomainsList =
-  CreateProviderResponseOutputDomainsList as any as S.Schema<DeleteProviderResponseOutputDomainsList>;
-
 export interface DeleteProviderResponseOutput {
   id: string;
   saml?: DeleteProviderResponseOutputSaml;
@@ -1463,75 +908,35 @@ export interface DeleteProviderResponseOutput {
   created_at?: string;
   updated_at?: string;
 }
-const DeleteProviderResponseOutput = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<DeleteProviderResponseOutput>;
-
 export interface V1DeleteHostnameConfigRequest {
   /** Project ref */
   ref: string;
   /** If true, also removes the custom domain add-on from the project subscription. */
   remove_addon?: string;
 }
-const V1DeleteHostnameConfigRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<V1DeleteHostnameConfigRequest>;
-
 export interface V1DeleteHostnameConfigResponse {}
-const V1DeleteHostnameConfigResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1DeleteHostnameConfigResponse>;
-
 export interface V1DeleteInviteExternalJitAccessRequest {
   /** Project ref */
   ref: string;
   invite_id: string;
 }
-const V1DeleteInviteExternalJitAccessRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<V1DeleteInviteExternalJitAccessRequest>;
-
 export interface V1DeleteInviteExternalJitAccessResponse {}
-const V1DeleteInviteExternalJitAccessResponse =
-  V1CancelAProjectRestorationResponse as any as S.Schema<V1DeleteInviteExternalJitAccessResponse>;
-
 export interface V1DeleteJitAccessRequest {
   /** Project ref */
   ref: string;
   user_id: string;
 }
-const V1DeleteJitAccessRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<V1DeleteJitAccessRequest>;
-
 export interface V1DeleteJitAccessResponse {}
-const V1DeleteJitAccessResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1DeleteJitAccessResponse>;
-
 export interface V1DeleteLoginRolesRequest {
   /** Project ref */
   ref: string;
 }
-const V1DeleteLoginRolesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<V1DeleteLoginRolesRequest>;
-
 export type DeleteRolesResponseOutputMessage = "ok";
 export interface DeleteRolesResponseOutput {
   message: DeleteRolesResponseOutputMessage;
 }
-const DeleteRolesResponseOutput =
-  BranchDeleteResponseOutput as any as S.Schema<DeleteRolesResponseOutput>;
-
 /** List of IP addresses to unban. */
 export type V1DeleteNetworkBansRequestIpv4AddressesList = Array<string>;
-const V1DeleteNetworkBansRequestIpv4AddressesList =
-  DeleteSecretsBody as any as S.Schema<V1DeleteNetworkBansRequestIpv4AddressesList>;
-
 export interface V1DeleteNetworkBansRequest {
   /** Project ref */
   ref: string;
@@ -1541,15 +946,7 @@ export interface V1DeleteNetworkBansRequest {
   requester_ip?: boolean;
   identifier?: string;
 }
-const V1DeleteNetworkBansRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<V1DeleteNetworkBansRequest>;
-
 export interface V1DeleteNetworkBansResponse {}
-const V1DeleteNetworkBansResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1DeleteNetworkBansResponse>;
-
 export interface V1DeleteProjectApiKeyRequest {
   /** Project ref */
   ref: string;
@@ -1560,42 +957,18 @@ export interface V1DeleteProjectApiKeyRequest {
   was_compromised?: string;
   reason?: string;
 }
-const V1DeleteProjectApiKeyRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<V1DeleteProjectApiKeyRequest>;
-
 export interface V1DeleteProjectClaimTokenRequest {
   /** Project ref */
   ref: string;
 }
-const V1DeleteProjectClaimTokenRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<V1DeleteProjectClaimTokenRequest>;
-
 export interface V1DeleteProjectClaimTokenResponse {}
-const V1DeleteProjectClaimTokenResponse =
-  V1CancelAProjectRestorationResponse as any as S.Schema<V1DeleteProjectClaimTokenResponse>;
-
 export interface V1DeleteProjectTpaIntegrationRequest {
   /** Project ref */
   ref: string;
   tpa_id: string;
 }
-const V1DeleteProjectTpaIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<V1DeleteProjectTpaIntegrationRequest>;
-
 export type V1DeployAFunctionRequestFileList = Array<string>;
-const V1DeployAFunctionRequestFileList =
-  DeleteSecretsBody as any as S.Schema<V1DeployAFunctionRequestFileList>;
-
 export type V1DeployAFunctionRequestMetadataStaticPatternsList = Array<string>;
-const V1DeployAFunctionRequestMetadataStaticPatternsList =
-  DeleteSecretsBody as any as S.Schema<V1DeployAFunctionRequestMetadataStaticPatternsList>;
-
 export interface V1DeployAFunctionRequestMetadata {
   entrypoint_path: string;
   import_map_path?: string;
@@ -1603,11 +976,6 @@ export interface V1DeployAFunctionRequestMetadata {
   verify_jwt?: boolean;
   name?: string;
 }
-const V1DeployAFunctionRequestMetadata = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<V1DeployAFunctionRequestMetadata>;
-
 export interface V1DeployAFunctionRequest {
   /** Project ref */
   ref: string;
@@ -1616,14 +984,7 @@ export interface V1DeployAFunctionRequest {
   file: V1DeployAFunctionRequestFileList;
   metadata: V1DeployAFunctionRequestMetadata;
 }
-const V1DeployAFunctionRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<V1DeployAFunctionRequest>;
-
 export type DeployFunctionResponseOutputStatus = "ACTIVE" | "REMOVED" | "THROTTLED";
-const DeployFunctionResponseOutputStatus = S.String;
-
 export interface DeployFunctionResponseOutput {
   id: string;
   slug: string;
@@ -1638,11 +999,6 @@ export interface DeployFunctionResponseOutput {
   import_map_path?: string;
   ezbr_sha256?: string;
 }
-const DeployFunctionResponseOutput = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<DeployFunctionResponseOutput>;
-
 export interface V1DiffABranchRequest {
   /** Branch ref or deprecated branch ID */
   branch_id_or_ref: string;
@@ -1650,61 +1006,26 @@ export interface V1DiffABranchRequest {
   /** Use pg-delta instead of Migra for diffing when true. Boolean string. Truthy values: `true`, `1`, `yes`, `on`, `y`, `enabled` Falsy values: `false`, `0`, `no`, `off`, `n`, `disabled` */
   pgdelta?: string;
 }
-const V1DiffABranchRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<V1DiffABranchRequest>;
-
 export interface V1DiffABranchResponse {}
-const V1DiffABranchResponse = V1ApplyAMigrationResponse as any as S.Schema<V1DiffABranchResponse>;
-
 export interface V1DisablePreviewBranchingRequest {
   /** Project ref */
   ref: string;
 }
-const V1DisablePreviewBranchingRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<V1DisablePreviewBranchingRequest>;
-
 export interface V1DisablePreviewBranchingResponse {}
-const V1DisablePreviewBranchingResponse =
-  V1CancelAProjectRestorationResponse as any as S.Schema<V1DisablePreviewBranchingResponse>;
-
 export interface V1DisableReadonlyModeTemporarilyRequest {
   /** Project ref */
   ref: string;
 }
-const V1DisableReadonlyModeTemporarilyRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<V1DisableReadonlyModeTemporarilyRequest>;
-
 export interface V1DisableReadonlyModeTemporarilyResponse {}
-const V1DisableReadonlyModeTemporarilyResponse =
-  V1CancelAProjectRestorationResponse as any as S.Schema<V1DisableReadonlyModeTemporarilyResponse>;
-
 export interface V1EnableDatabaseWebhookRequest {
   /** Project ref */
   ref: string;
 }
-const V1EnableDatabaseWebhookRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<V1EnableDatabaseWebhookRequest>;
-
 export interface V1EnableDatabaseWebhookResponse {}
-const V1EnableDatabaseWebhookResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<V1EnableDatabaseWebhookResponse>;
-
 export type V1ExchangeOauthTokenRequestGrantType =
   | "authorization_code"
   | "refresh_token"
   | "urn:ietf:params:oauth:grant-type:jwt-bearer";
-const V1ExchangeOauthTokenRequestGrantType = S.String;
-
 export interface V1ExchangeOauthTokenRequest {
   grant_type?: V1ExchangeOauthTokenRequestGrantType | (string & {});
   client_id?: string;
@@ -1719,14 +1040,7 @@ export interface V1ExchangeOauthTokenRequest {
   resource?: string;
   scope?: string;
 }
-const V1ExchangeOauthTokenRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<V1ExchangeOauthTokenRequest>;
-
 export type OAuthTokenResponseOutputTokenType = "Bearer";
-const OAuthTokenResponseOutputTokenType = S.String;
-
 export interface OAuthTokenResponseOutput {
   access_token: T.Sensitive;
   /** The `urn:ietf:params:oauth:grant-type:jwt-bearer` grant type issues access tokens only, no refresh token is returned and the token cannot be revoked via `/v1/oauth/revoke`. */
@@ -1734,45 +1048,23 @@ export interface OAuthTokenResponseOutput {
   expires_in: number;
   token_type: OAuthTokenResponseOutputTokenType;
 }
-const OAuthTokenResponseOutput = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<OAuthTokenResponseOutput>;
-
 export interface V1GenerateTypescriptTypesRequest {
   /** Project ref */
   ref: string;
   included_schemas?: string;
 }
-const V1GenerateTypescriptTypesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<V1GenerateTypescriptTypesRequest>;
-
 export interface TypescriptResponseOutput {
   types: string;
 }
-const TypescriptResponseOutput = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<TypescriptResponseOutput>;
-
 export interface V1GetABranchRequest {
   /** Project ref */
   ref: string;
   name: string;
 }
-const V1GetABranchRequest = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<V1GetABranchRequest>;
-
 export interface V1GetABranchConfigRequest {
   /** Branch ref or deprecated branch ID */
   branch_id_or_ref: string;
 }
-const V1GetABranchConfigRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<V1GetABranchConfigRequest>;
-
 export type BranchDetailResponseOutputStatus =
   | "INACTIVE"
   | "ACTIVE_HEALTHY"
@@ -1789,8 +1081,6 @@ export type BranchDetailResponseOutputStatus =
   | "RESTARTING"
   | "PAUSE_FAILED"
   | "RESIZING";
-const BranchDetailResponseOutputStatus = S.String;
-
 export interface BranchDetailResponseOutput {
   ref: string;
   postgres_version: string;
@@ -1803,22 +1093,12 @@ export interface BranchDetailResponseOutput {
   db_pass?: string;
   jwt_secret?: T.Sensitive;
 }
-const BranchDetailResponseOutput = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<BranchDetailResponseOutput>;
-
 export interface V1GetActionRunRequest {
   /** Project ref */
   ref: string;
   /** Action Run ID */
   run_id: string;
 }
-const V1GetActionRunRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<V1GetActionRunRequest>;
-
 export type ActionRunResponseOutputRunStepsItemName =
   | "clone"
   | "pull"
@@ -1827,8 +1107,6 @@ export type ActionRunResponseOutputRunStepsItemName =
   | "migrate"
   | "seed"
   | "deploy";
-const ActionRunResponseOutputRunStepsItemName = S.String;
-
 export type ActionRunResponseOutputRunStepsItemStatus =
   | "CREATED"
   | "DEAD"
@@ -1837,25 +1115,13 @@ export type ActionRunResponseOutputRunStepsItemStatus =
   | "REMOVING"
   | "RESTARTING"
   | "RUNNING";
-const ActionRunResponseOutputRunStepsItemStatus = S.String;
-
 export interface ActionRunResponseOutputRunStepsItem {
   name: ActionRunResponseOutputRunStepsItemName;
   status: ActionRunResponseOutputRunStepsItemStatus;
   created_at: string;
   updated_at: string;
 }
-const ActionRunResponseOutputRunStepsItem = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ActionRunResponseOutputRunStepsItem>;
-
 export type ActionRunResponseOutputRunStepsList = Array<ActionRunResponseOutputRunStepsItem>;
-const ActionRunResponseOutputRunStepsList = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<ActionRunResponseOutputRunStepsList>;
-
 export interface ActionRunResponseOutput {
   id: string;
   branch_id: string;
@@ -1866,37 +1132,19 @@ export interface ActionRunResponseOutput {
   created_at: string;
   updated_at: string;
 }
-const ActionRunResponseOutput = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ActionRunResponseOutput>;
-
 export interface V1GetActionRunLogsRequest {
   /** Project ref */
   ref: string;
   /** Action Run ID */
   run_id: string;
 }
-const V1GetActionRunLogsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<V1GetActionRunLogsRequest>;
-
 export interface V1GetActionRunLogsResponse {}
-const V1GetActionRunLogsResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1GetActionRunLogsResponse>;
-
 export interface V1GetAFunctionRequest {
   /** Project ref */
   ref: string;
   /** Function slug */
   function_slug: string;
 }
-const V1GetAFunctionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<V1GetAFunctionRequest>;
-
 export type FunctionSlugResponseOutputStatus = "ACTIVE" | "REMOVED" | "THROTTLED";
 export interface FunctionSlugResponseOutput {
   id: string;
@@ -1912,33 +1160,18 @@ export interface FunctionSlugResponseOutput {
   import_map_path?: string;
   ezbr_sha256?: string;
 }
-const FunctionSlugResponseOutput =
-  BulkUpdateFunctionResponseOutputFunctionsItem as any as S.Schema<FunctionSlugResponseOutput>;
-
 export interface V1GetAFunctionBodyRequest {
   /** Project ref */
   ref: string;
   /** Function slug */
   function_slug: string;
 }
-const V1GetAFunctionBodyRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<V1GetAFunctionBodyRequest>;
-
 export type V1GetAFunctionBodyResponse = unknown;
-const V1GetAFunctionBodyResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<V1GetAFunctionBodyResponse>;
-
 export type V1GetAllProjectsForOrganizationRequestSort =
   | "name_asc"
   | "name_desc"
   | "created_asc"
   | "created_desc";
-const V1GetAllProjectsForOrganizationRequestSort = S.String;
-
 export interface V1GetAllProjectsForOrganizationRequest {
   /** Organization slug */
   slug: string;
@@ -1953,11 +1186,6 @@ export interface V1GetAllProjectsForOrganizationRequest {
   /** A comma-separated list of project statuses to filter by. The following values are supported: `ACTIVE_HEALTHY`, `INACTIVE`. */
   statuses?: string;
 }
-const V1GetAllProjectsForOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<V1GetAllProjectsForOrganizationRequest>;
-
 export type OrganizationProjectsResponseOutputProjectsItemStatus =
   | "INACTIVE"
   | "ACTIVE_HEALTHY"
@@ -1974,8 +1202,6 @@ export type OrganizationProjectsResponseOutputProjectsItemStatus =
   | "RESTARTING"
   | "PAUSE_FAILED"
   | "RESIZING";
-const OrganizationProjectsResponseOutputProjectsItemStatus = S.String;
-
 export type OrganizationProjectsResponseOutputProjectsItemDatabasesItemInfraComputeSize =
   | "pico"
   | "nano"
@@ -1997,8 +1223,6 @@ export type OrganizationProjectsResponseOutputProjectsItemDatabasesItemInfraComp
   | "48xlarge_optimized_memory"
   | "48xlarge_optimized_cpu"
   | "48xlarge_high_memory";
-const OrganizationProjectsResponseOutputProjectsItemDatabasesItemInfraComputeSize = S.String;
-
 export type OrganizationProjectsResponseOutputProjectsItemDatabasesItemStatus =
   | "ACTIVE_HEALTHY"
   | "ACTIVE_UNHEALTHY"
@@ -2012,16 +1236,10 @@ export type OrganizationProjectsResponseOutputProjectsItemDatabasesItemStatus =
   | "INIT_READ_REPLICA_FAILED"
   | "RESTARTING"
   | "RESIZING";
-const OrganizationProjectsResponseOutputProjectsItemDatabasesItemStatus = S.String;
-
 export type OrganizationProjectsResponseOutputProjectsItemDatabasesItemType =
   | "PRIMARY"
   | "READ_REPLICA";
-const OrganizationProjectsResponseOutputProjectsItemDatabasesItemType = S.String;
-
 export type OrganizationProjectsResponseOutputProjectsItemDatabasesItemDiskType = "gp3" | "io2";
-const OrganizationProjectsResponseOutputProjectsItemDatabasesItemDiskType = S.String;
-
 export interface OrganizationProjectsResponseOutputProjectsItemDatabasesItem {
   infra_compute_size?: OrganizationProjectsResponseOutputProjectsItemDatabasesItemInfraComputeSize;
   region: string;
@@ -2034,18 +1252,8 @@ export interface OrganizationProjectsResponseOutputProjectsItemDatabasesItem {
   disk_throughput_mbps?: number;
   disk_last_modified_at?: string;
 }
-const OrganizationProjectsResponseOutputProjectsItemDatabasesItem = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<OrganizationProjectsResponseOutputProjectsItemDatabasesItem>;
-
 export type OrganizationProjectsResponseOutputProjectsItemDatabasesList =
   Array<OrganizationProjectsResponseOutputProjectsItemDatabasesItem>;
-const OrganizationProjectsResponseOutputProjectsItemDatabasesList = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<OrganizationProjectsResponseOutputProjectsItemDatabasesList>;
-
 export interface OrganizationProjectsResponseOutputProjectsItem {
   ref: string;
   name: string;
@@ -2056,18 +1264,8 @@ export interface OrganizationProjectsResponseOutputProjectsItem {
   inserted_at: string;
   databases: OrganizationProjectsResponseOutputProjectsItemDatabasesList;
 }
-const OrganizationProjectsResponseOutputProjectsItem = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<OrganizationProjectsResponseOutputProjectsItem>;
-
 export type OrganizationProjectsResponseOutputProjectsList =
   Array<OrganizationProjectsResponseOutputProjectsItem>;
-const OrganizationProjectsResponseOutputProjectsList = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<OrganizationProjectsResponseOutputProjectsList>;
-
 export interface OrganizationProjectsResponseOutputPagination {
   /** Total number of projects. Use this to calculate the total number of pages. */
   count: number;
@@ -2076,38 +1274,17 @@ export interface OrganizationProjectsResponseOutputPagination {
   /** Number of projects skipped in this response */
   offset: number;
 }
-const OrganizationProjectsResponseOutputPagination = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<OrganizationProjectsResponseOutputPagination>;
-
 export interface OrganizationProjectsResponseOutput {
   projects: OrganizationProjectsResponseOutputProjectsList;
   pagination: OrganizationProjectsResponseOutputPagination;
 }
-const OrganizationProjectsResponseOutput = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<OrganizationProjectsResponseOutput>;
-
 export interface V1GetAMigrationRequest {
   /** Project ref */
   ref: string;
   version: string;
 }
-const V1GetAMigrationRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<V1GetAMigrationRequest>;
-
 export type V1GetMigrationResponseOutputStatementsList = Array<string>;
-const V1GetMigrationResponseOutputStatementsList =
-  DeleteSecretsBody as any as S.Schema<V1GetMigrationResponseOutputStatementsList>;
-
 export type V1GetMigrationResponseOutputRollbackList = Array<string>;
-const V1GetMigrationResponseOutputRollbackList =
-  DeleteSecretsBody as any as S.Schema<V1GetMigrationResponseOutputRollbackList>;
-
 export interface V1GetMigrationResponseOutput {
   version: string;
   name?: string;
@@ -2116,37 +1293,22 @@ export interface V1GetMigrationResponseOutput {
   created_by?: string;
   idempotency_key?: string;
 }
-const V1GetMigrationResponseOutput = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<V1GetMigrationResponseOutput>;
-
 export interface V1GetAnOrganizationRequest {
   /** Organization slug */
   slug: string;
 }
-const V1GetAnOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<V1GetAnOrganizationRequest>;
-
 export type V1OrganizationSlugResponseOutputPlan =
   | "free"
   | "pro"
   | "team"
   | "enterprise"
   | "platform";
-const V1OrganizationSlugResponseOutputPlan = S.String;
-
 export type V1OrganizationSlugResponseOutputOptInTagsItem =
   | "AI_SQL_GENERATOR_OPT_IN"
   | "AI_DATA_GENERATOR_OPT_IN"
   | "AI_LOG_GENERATOR_OPT_IN";
 export type V1OrganizationSlugResponseOutputOptInTagsList =
   Array<V1OrganizationSlugResponseOutputOptInTagsItem>;
-const V1OrganizationSlugResponseOutputOptInTagsList =
-  V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList as any as S.Schema<V1OrganizationSlugResponseOutputOptInTagsList>;
-
 export type V1OrganizationSlugResponseOutputAllowedReleaseChannelsItem =
   | "internal"
   | "alpha"
@@ -2156,9 +1318,6 @@ export type V1OrganizationSlugResponseOutputAllowedReleaseChannelsItem =
   | "preview";
 export type V1OrganizationSlugResponseOutputAllowedReleaseChannelsList =
   Array<V1OrganizationSlugResponseOutputAllowedReleaseChannelsItem>;
-const V1OrganizationSlugResponseOutputAllowedReleaseChannelsList =
-  V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList as any as S.Schema<V1OrganizationSlugResponseOutputAllowedReleaseChannelsList>;
-
 export interface V1OrganizationSlugResponseOutput {
   id: string;
   name: string;
@@ -2166,43 +1325,19 @@ export interface V1OrganizationSlugResponseOutput {
   opt_in_tags: V1OrganizationSlugResponseOutputOptInTagsList;
   allowed_release_channels: V1OrganizationSlugResponseOutputAllowedReleaseChannelsList;
 }
-const V1OrganizationSlugResponseOutput = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<V1OrganizationSlugResponseOutput>;
-
 export interface V1GetASnippetRequest {
   id: string;
 }
-const V1GetASnippetRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<V1GetASnippetRequest>;
-
 export type SnippetResponseOutputType = "sql";
-const SnippetResponseOutputType = S.String;
-
 export type SnippetResponseOutputVisibility = "user" | "project" | "org" | "public";
-const SnippetResponseOutputVisibility = S.String;
-
 export interface SnippetResponseOutputProject {
   id: number;
   name: string;
 }
-const SnippetResponseOutputProject = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<SnippetResponseOutputProject>;
-
 export interface SnippetResponseOutputOwner {
   id: number;
   username: string;
 }
-const SnippetResponseOutputOwner = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<SnippetResponseOutputOwner>;
-
 export type SnippetResponseOutputUpdatedBy = SnippetResponseOutputOwner;
 export interface SnippetResponseOutputContent {
   /** Deprecated: Rely on root-level favorite property instead. */
@@ -2210,11 +1345,6 @@ export interface SnippetResponseOutputContent {
   schema_version?: string;
   sql: string;
 }
-const SnippetResponseOutputContent = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<SnippetResponseOutputContent>;
-
 export interface SnippetResponseOutput {
   id: string;
   inserted_at: string;
@@ -2229,69 +1359,34 @@ export interface SnippetResponseOutput {
   favorite: boolean;
   content: SnippetResponseOutputContent;
 }
-const SnippetResponseOutput = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<SnippetResponseOutput>;
-
 export interface V1GetASsoProviderRequest {
   /** Project ref */
   ref: string;
   provider_id: string;
 }
-const V1GetASsoProviderRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<V1GetASsoProviderRequest>;
-
 export type GetProviderResponseOutputSamlAttributeMappingKeysValueNamesList = Array<string>;
-const GetProviderResponseOutputSamlAttributeMappingKeysValueNamesList =
-  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<GetProviderResponseOutputSamlAttributeMappingKeysValueNamesList>;
-
 export type GetProviderResponseOutputSamlAttributeMappingKeysValueDefault =
   | unknown
   | number
   | string
   | boolean;
-const GetProviderResponseOutputSamlAttributeMappingKeysValueDefault = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-);
-
 export interface GetProviderResponseOutputSamlAttributeMappingKeysValue {
   name?: string;
   names?: GetProviderResponseOutputSamlAttributeMappingKeysValueNamesList;
   array?: boolean;
   default?: GetProviderResponseOutputSamlAttributeMappingKeysValueDefault;
 }
-const GetProviderResponseOutputSamlAttributeMappingKeysValue = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GetProviderResponseOutputSamlAttributeMappingKeysValue>;
-
 export type GetProviderResponseOutputSamlAttributeMappingKeysMap = {
   [key: string]: GetProviderResponseOutputSamlAttributeMappingKeysValue | undefined;
 };
-const GetProviderResponseOutputSamlAttributeMappingKeysMap = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<GetProviderResponseOutputSamlAttributeMappingKeysMap>;
-
 export interface GetProviderResponseOutputSamlAttributeMapping {
   keys: GetProviderResponseOutputSamlAttributeMappingKeysMap;
 }
-const GetProviderResponseOutputSamlAttributeMapping = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GetProviderResponseOutputSamlAttributeMapping>;
-
 export type GetProviderResponseOutputSamlNameIdFormat =
   | "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
   | "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
   | "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
   | "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent";
-const GetProviderResponseOutputSamlNameIdFormat = S.String;
-
 export interface GetProviderResponseOutputSaml {
   entity_id: string;
   metadata_url?: string;
@@ -2299,16 +1394,8 @@ export interface GetProviderResponseOutputSaml {
   attribute_mapping?: GetProviderResponseOutputSamlAttributeMapping;
   name_id_format?: GetProviderResponseOutputSamlNameIdFormat;
 }
-const GetProviderResponseOutputSaml = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GetProviderResponseOutputSaml>;
-
 export type GetProviderResponseOutputDomainsItem = CreateProviderResponseOutputDomainsItem;
 export type GetProviderResponseOutputDomainsList = Array<CreateProviderResponseOutputDomainsItem>;
-const GetProviderResponseOutputDomainsList =
-  CreateProviderResponseOutputDomainsList as any as S.Schema<GetProviderResponseOutputDomainsList>;
-
 export interface GetProviderResponseOutput {
   id: string;
   saml?: GetProviderResponseOutputSaml;
@@ -2316,41 +1403,23 @@ export interface GetProviderResponseOutput {
   created_at?: string;
   updated_at?: string;
 }
-const GetProviderResponseOutput = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<GetProviderResponseOutput>;
-
 export interface V1GetAuthServiceConfigRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetAuthServiceConfigRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<V1GetAuthServiceConfigRequest>;
-
 export type AuthConfigResponseOutputDbMaxPoolSizeUnit = "connections" | "percent";
-const AuthConfigResponseOutputDbMaxPoolSizeUnit = S.String;
-
 export type AuthConfigResponseOutputPasswordRequiredCharacters =
   | "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ:0123456789"
   | "abcdefghijklmnopqrstuvwxyz:ABCDEFGHIJKLMNOPQRSTUVWXYZ:0123456789"
   | "abcdefghijklmnopqrstuvwxyz:ABCDEFGHIJKLMNOPQRSTUVWXYZ:0123456789:!@#$%^&*()_+-=[]{};'\\\\:\"|<>?,./`~"
   | "";
-const AuthConfigResponseOutputPasswordRequiredCharacters = S.String;
-
 export type AuthConfigResponseOutputSecurityCaptchaProvider = "turnstile" | "hcaptcha";
-const AuthConfigResponseOutputSecurityCaptchaProvider = S.String;
-
 export type AuthConfigResponseOutputSmsProvider =
   | "messagebird"
   | "textlocal"
   | "twilio"
   | "twilio_verify"
   | "vonage";
-const AuthConfigResponseOutputSmsProvider = S.String;
-
 export interface AuthConfigResponseOutput {
   api_max_request_duration: number | null;
   db_max_pool_size: number | null;
@@ -2591,14 +1660,7 @@ export interface AuthConfigResponseOutput {
   custom_oauth_enabled: boolean;
   custom_oauth_max_providers: number;
 }
-const AuthConfigResponseOutput = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<AuthConfigResponseOutput>;
-
 export type V1GetAvailableRegionsRequestContinent = "NA" | "SA" | "EU" | "AF" | "AS" | "OC" | "AN";
-const V1GetAvailableRegionsRequestContinent = S.String;
-
 export type V1GetAvailableRegionsRequestDesiredInstanceSize =
   | "nano"
   | "micro"
@@ -2619,8 +1681,6 @@ export type V1GetAvailableRegionsRequestDesiredInstanceSize =
   | "48xlarge_optimized_memory"
   | "48xlarge_optimized_cpu"
   | "48xlarge_high_memory";
-const V1GetAvailableRegionsRequestDesiredInstanceSize = S.String;
-
 export interface V1GetAvailableRegionsRequest {
   /** Slug of your organization */
   organization_slug: string;
@@ -2629,27 +1689,13 @@ export interface V1GetAvailableRegionsRequest {
   /** Desired instance size. Omit this field to always default to the smallest possible size. */
   desired_instance_size?: V1GetAvailableRegionsRequestDesiredInstanceSize | (string & {});
 }
-const V1GetAvailableRegionsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<V1GetAvailableRegionsRequest>;
-
 export type RegionsInfoOutputRecommendationsSmartGroupCode = "americas" | "emea" | "apac";
-const RegionsInfoOutputRecommendationsSmartGroupCode = S.String;
-
 export type RegionsInfoOutputRecommendationsSmartGroupType = "smartGroup";
-const RegionsInfoOutputRecommendationsSmartGroupType = S.String;
-
 export interface RegionsInfoOutputRecommendationsSmartGroup {
   name: string;
   code: RegionsInfoOutputRecommendationsSmartGroupCode;
   type: RegionsInfoOutputRecommendationsSmartGroupType;
 }
-const RegionsInfoOutputRecommendationsSmartGroup = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<RegionsInfoOutputRecommendationsSmartGroup>;
-
 export type RegionsInfoOutputRecommendationsSpecificItemCode =
   | "us-east-1"
   | "us-east-2"
@@ -2669,17 +1715,9 @@ export type RegionsInfoOutputRecommendationsSpecificItemCode =
   | "ca-central-1"
   | "ap-south-1"
   | "sa-east-1";
-const RegionsInfoOutputRecommendationsSpecificItemCode = S.String;
-
 export type RegionsInfoOutputRecommendationsSpecificItemType = "specific";
-const RegionsInfoOutputRecommendationsSpecificItemType = S.String;
-
 export type RegionsInfoOutputRecommendationsSpecificItemProvider = "AWS" | "AWS_K8S" | "AWS_NIMBUS";
-const RegionsInfoOutputRecommendationsSpecificItemProvider = S.String;
-
 export type RegionsInfoOutputRecommendationsSpecificItemStatus = "capacity" | "other";
-const RegionsInfoOutputRecommendationsSpecificItemStatus = S.String;
-
 export interface RegionsInfoOutputRecommendationsSpecificItem {
   name: string;
   code: RegionsInfoOutputRecommendationsSpecificItemCode;
@@ -2687,27 +1725,12 @@ export interface RegionsInfoOutputRecommendationsSpecificItem {
   provider: RegionsInfoOutputRecommendationsSpecificItemProvider;
   status?: RegionsInfoOutputRecommendationsSpecificItemStatus;
 }
-const RegionsInfoOutputRecommendationsSpecificItem = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<RegionsInfoOutputRecommendationsSpecificItem>;
-
 export type RegionsInfoOutputRecommendationsSpecificList =
   Array<RegionsInfoOutputRecommendationsSpecificItem>;
-const RegionsInfoOutputRecommendationsSpecificList = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<RegionsInfoOutputRecommendationsSpecificList>;
-
 export interface RegionsInfoOutputRecommendations {
   smartGroup: RegionsInfoOutputRecommendationsSmartGroup;
   specific: RegionsInfoOutputRecommendationsSpecificList;
 }
-const RegionsInfoOutputRecommendations = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<RegionsInfoOutputRecommendations>;
-
 export type RegionsInfoOutputAllSmartGroupItemCode = "americas" | "emea" | "apac";
 export type RegionsInfoOutputAllSmartGroupItemType = "smartGroup";
 export interface RegionsInfoOutputAllSmartGroupItem {
@@ -2715,15 +1738,7 @@ export interface RegionsInfoOutputAllSmartGroupItem {
   code: RegionsInfoOutputAllSmartGroupItemCode;
   type: RegionsInfoOutputAllSmartGroupItemType;
 }
-const RegionsInfoOutputAllSmartGroupItem =
-  RegionsInfoOutputRecommendationsSmartGroup as any as S.Schema<RegionsInfoOutputAllSmartGroupItem>;
-
 export type RegionsInfoOutputAllSmartGroupList = Array<RegionsInfoOutputAllSmartGroupItem>;
-const RegionsInfoOutputAllSmartGroupList = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<RegionsInfoOutputAllSmartGroupList>;
-
 export type RegionsInfoOutputAllSpecificItemCode =
   | "us-east-1"
   | "us-east-2"
@@ -2754,53 +1769,28 @@ export interface RegionsInfoOutputAllSpecificItem {
   status?: RegionsInfoOutputAllSpecificItemStatus;
 }
 export type RegionsInfoOutputAllSpecificList = Array<RegionsInfoOutputAllSpecificItem>;
-const RegionsInfoOutputAllSpecificList =
-  RegionsInfoOutputRecommendationsSpecificList as any as S.Schema<RegionsInfoOutputAllSpecificList>;
-
 export interface RegionsInfoOutputAll {
   smartGroup: RegionsInfoOutputAllSmartGroupList;
   specific: RegionsInfoOutputAllSpecificList;
 }
-const RegionsInfoOutputAll = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<RegionsInfoOutputAll>;
-
 export interface RegionsInfoOutput {
   recommendations: RegionsInfoOutputRecommendations;
   all: RegionsInfoOutputAll;
 }
-const RegionsInfoOutput = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<RegionsInfoOutput>;
-
 export interface V1GetBackupScheduleRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetBackupScheduleRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<V1GetBackupScheduleRequest>;
-
 export interface V1BackupScheduleResponseOutput {
   /** Time of day to schedule daily backups, in UTC. Format: HH:MM:SS. */
   schedule_for: string;
   /** Timestamp of when the backup schedule was last updated. */
   updated_at: string;
 }
-const V1BackupScheduleResponseOutput = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<V1BackupScheduleResponseOutput>;
-
 export interface V1GetDatabaseDiskRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetDatabaseDiskRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<V1GetDatabaseDiskRequest>;
-
 export type DiskResponseOutputAttributesCase0Type = "gp3";
 export interface DiskResponseOutputAttributesCase0 {
   iops: number;
@@ -2817,132 +1807,60 @@ export interface DiskResponseOutputAttributesCase1 {
 export type DiskResponseOutputAttributes =
   | DiskResponseOutputAttributesCase0
   | DiskResponseOutputAttributesCase1;
-const DiskResponseOutputAttributes = /*@__PURE__*/ __L.at(__c20, 4);
-
 export interface DiskResponseOutput {
   attributes: DiskResponseOutputAttributes;
   last_modified_at?: string;
 }
-const DiskResponseOutput = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<DiskResponseOutput>;
-
 export interface V1GetDatabaseMetadataRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetDatabaseMetadataRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<V1GetDatabaseMetadataRequest>;
-
 export interface GetProjectDbMetadataResponseOutputDatabasesItemSchemasItem {
   name: string;
 }
-const GetProjectDbMetadataResponseOutputDatabasesItemSchemasItem = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<GetProjectDbMetadataResponseOutputDatabasesItemSchemasItem>;
-
 export type GetProjectDbMetadataResponseOutputDatabasesItemSchemasList =
   Array<GetProjectDbMetadataResponseOutputDatabasesItemSchemasItem>;
-const GetProjectDbMetadataResponseOutputDatabasesItemSchemasList = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<GetProjectDbMetadataResponseOutputDatabasesItemSchemasList>;
-
 export interface GetProjectDbMetadataResponseOutputDatabasesItem {
   name: string;
   schemas: GetProjectDbMetadataResponseOutputDatabasesItemSchemasList;
 }
-const GetProjectDbMetadataResponseOutputDatabasesItem = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<GetProjectDbMetadataResponseOutputDatabasesItem>;
-
 export type GetProjectDbMetadataResponseOutputDatabasesList =
   Array<GetProjectDbMetadataResponseOutputDatabasesItem>;
-const GetProjectDbMetadataResponseOutputDatabasesList = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<GetProjectDbMetadataResponseOutputDatabasesList>;
-
 export interface GetProjectDbMetadataResponseOutput {
   databases: GetProjectDbMetadataResponseOutputDatabasesList;
 }
-const GetProjectDbMetadataResponseOutput = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<GetProjectDbMetadataResponseOutput>;
-
 export interface V1GetDatabaseOpenapiRequest {
   /** Project ref */
   ref: string;
   /** The database schema to generate the OpenAPI spec for */
   schema?: string;
 }
-const V1GetDatabaseOpenapiRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<V1GetDatabaseOpenapiRequest>;
-
 export type V1GetDatabaseOpenapiResponse = unknown;
-const V1GetDatabaseOpenapiResponse =
-  V1GetAFunctionBodyResponse as any as S.Schema<V1GetDatabaseOpenapiResponse>;
-
 export interface V1GetDiskUtilizationRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetDiskUtilizationRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<V1GetDiskUtilizationRequest>;
-
 export interface DiskUtilMetricsResponseOutputMetrics {
   fs_size_bytes: number;
   fs_avail_bytes: number;
   fs_used_bytes: number;
 }
-const DiskUtilMetricsResponseOutputMetrics = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<DiskUtilMetricsResponseOutputMetrics>;
-
 export interface DiskUtilMetricsResponseOutput {
   timestamp: string;
   metrics: DiskUtilMetricsResponseOutputMetrics;
 }
-const DiskUtilMetricsResponseOutput = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<DiskUtilMetricsResponseOutput>;
-
 export interface V1GetHostnameConfigRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetHostnameConfigRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<V1GetHostnameConfigRequest>;
-
 export interface V1GetJitAccessRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetJitAccessRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<V1GetJitAccessRequest>;
-
 export interface V1GetJitAccessConfigRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetJitAccessConfigRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<V1GetJitAccessConfigRequest>;
-
 export type V1GetJitAccessConfigResponseBodyCase0State = "enabled" | "disabled";
 export interface V1GetJitAccessConfigResponseBodyCase0 {
   state: V1GetJitAccessConfigResponseBodyCase0State;
@@ -2960,53 +1878,23 @@ export interface V1GetJitAccessConfigResponseBodyCase1 {
 export type V1GetJitAccessConfigResponseBody =
   | V1GetJitAccessConfigResponseBodyCase0
   | V1GetJitAccessConfigResponseBodyCase1;
-const V1GetJitAccessConfigResponseBody = /*@__PURE__*/ __L.at(__c22, 3);
-
 export type V1GetJitAccessConfigResponse = V1GetJitAccessConfigResponseBody;
-const V1GetJitAccessConfigResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<V1GetJitAccessConfigResponse>;
-
 export interface V1GetLegacySigningKeyRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetLegacySigningKeyRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<V1GetLegacySigningKeyRequest>;
-
 export interface V1GetNetworkRestrictionsRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetNetworkRestrictionsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<V1GetNetworkRestrictionsRequest>;
-
 export type NetworkRestrictionsResponseOutputEntitlement = "disallowed" | "allowed";
-const NetworkRestrictionsResponseOutputEntitlement = S.String;
-
 export type NetworkRestrictionsResponseOutputConfigDbAllowedCidrsList = Array<string>;
-const NetworkRestrictionsResponseOutputConfigDbAllowedCidrsList =
-  DeleteSecretsBody as any as S.Schema<NetworkRestrictionsResponseOutputConfigDbAllowedCidrsList>;
-
 export type NetworkRestrictionsResponseOutputConfigDbAllowedCidrsV6List = Array<string>;
-const NetworkRestrictionsResponseOutputConfigDbAllowedCidrsV6List =
-  DeleteSecretsBody as any as S.Schema<NetworkRestrictionsResponseOutputConfigDbAllowedCidrsV6List>;
-
 /** At any given point in time, this is the config that the user has requested be applied to their project. The `status` field indicates if it has been applied to the project, or is pending. When an updated config is received, the applied config is moved to `old_config`. */
 export interface NetworkRestrictionsResponseOutputConfig {
   dbAllowedCidrs?: NetworkRestrictionsResponseOutputConfigDbAllowedCidrsList;
   dbAllowedCidrsV6?: NetworkRestrictionsResponseOutputConfigDbAllowedCidrsV6List;
 }
-const NetworkRestrictionsResponseOutputConfig = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<NetworkRestrictionsResponseOutputConfig>;
-
 export type NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsList = Array<string>;
 export type NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsV6List = Array<string>;
 /** Populated when a new config has been received, but not registered as successfully applied to a project. */
@@ -3014,12 +1902,7 @@ export interface NetworkRestrictionsResponseOutputOldConfig {
   dbAllowedCidrs?: NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsList;
   dbAllowedCidrsV6?: NetworkRestrictionsResponseOutputOldConfigDbAllowedCidrsV6List;
 }
-const NetworkRestrictionsResponseOutputOldConfig =
-  NetworkRestrictionsResponseOutputConfig as any as S.Schema<NetworkRestrictionsResponseOutputOldConfig>;
-
 export type NetworkRestrictionsResponseOutputStatus = "stored" | "applied";
-const NetworkRestrictionsResponseOutputStatus = S.String;
-
 export interface NetworkRestrictionsResponseOutput {
   entitlement: NetworkRestrictionsResponseOutputEntitlement;
   /** At any given point in time, this is the config that the user has requested be applied to their project. The `status` field indicates if it has been applied to the project, or is pending. When an updated config is received, the applied config is moved to `old_config`. */
@@ -3030,20 +1913,10 @@ export interface NetworkRestrictionsResponseOutput {
   updated_at?: string;
   applied_at?: string;
 }
-const NetworkRestrictionsResponseOutput = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<NetworkRestrictionsResponseOutput>;
-
 export interface V1GetOrganizationEntitlementsRequest {
   /** Organization slug */
   slug: string;
 }
-const V1GetOrganizationEntitlementsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<V1GetOrganizationEntitlementsRequest>;
-
 export type V1ListEntitlementsResponseOutputEntitlementsItemFeatureKey =
   | "instances.compute_update_available_sizes"
   | "instances.read_replicas"
@@ -3109,34 +1982,18 @@ export type V1ListEntitlementsResponseOutputEntitlementsItemFeatureKey =
   | "observability.dashboard_advanced_metrics"
   | "api.members.invitations"
   | "api.members.roles";
-const V1ListEntitlementsResponseOutputEntitlementsItemFeatureKey = S.String;
-
 export type V1ListEntitlementsResponseOutputEntitlementsItemFeatureType =
   | "boolean"
   | "numeric"
   | "set";
-const V1ListEntitlementsResponseOutputEntitlementsItemFeatureType = S.String;
-
 export interface V1ListEntitlementsResponseOutputEntitlementsItemFeature {
   key: V1ListEntitlementsResponseOutputEntitlementsItemFeatureKey;
   type: V1ListEntitlementsResponseOutputEntitlementsItemFeatureType;
 }
-const V1ListEntitlementsResponseOutputEntitlementsItemFeature = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<V1ListEntitlementsResponseOutputEntitlementsItemFeature>;
-
 export type V1ListEntitlementsResponseOutputEntitlementsItemType = "boolean" | "numeric" | "set";
-const V1ListEntitlementsResponseOutputEntitlementsItemType = S.String;
-
 export interface V1ListEntitlementsResponseOutputEntitlementsItemConfigCase0 {
   enabled: boolean;
 }
-const V1ListEntitlementsResponseOutputEntitlementsItemConfigCase0 = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<V1ListEntitlementsResponseOutputEntitlementsItemConfigCase0>;
-
 export interface V1ListEntitlementsResponseOutputEntitlementsItemConfigCase1 {
   enabled: boolean;
   value: number;
@@ -3152,117 +2009,58 @@ export type V1ListEntitlementsResponseOutputEntitlementsItemConfig =
   | V1ListEntitlementsResponseOutputEntitlementsItemConfigCase0
   | V1ListEntitlementsResponseOutputEntitlementsItemConfigCase1
   | V1ListEntitlementsResponseOutputEntitlementsItemConfigCase2;
-const V1ListEntitlementsResponseOutputEntitlementsItemConfig = /*@__PURE__*/ __L.at(__c23, 4);
-
 export interface V1ListEntitlementsResponseOutputEntitlementsItem {
   feature: V1ListEntitlementsResponseOutputEntitlementsItemFeature;
   hasAccess: boolean;
   type: V1ListEntitlementsResponseOutputEntitlementsItemType;
   config: V1ListEntitlementsResponseOutputEntitlementsItemConfig;
 }
-const V1ListEntitlementsResponseOutputEntitlementsItem = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<V1ListEntitlementsResponseOutputEntitlementsItem>;
-
 export type V1ListEntitlementsResponseOutputEntitlementsList =
   Array<V1ListEntitlementsResponseOutputEntitlementsItem>;
-const V1ListEntitlementsResponseOutputEntitlementsList = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<V1ListEntitlementsResponseOutputEntitlementsList>;
-
 export interface V1ListEntitlementsResponseOutput {
   entitlements: V1ListEntitlementsResponseOutputEntitlementsList;
 }
-const V1ListEntitlementsResponseOutput = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<V1ListEntitlementsResponseOutput>;
-
 export interface V1GetOrganizationProjectClaimRequest {
   /** Organization slug */
   slug: string;
   token: string;
 }
-const V1GetOrganizationProjectClaimRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<V1GetOrganizationProjectClaimRequest>;
-
 export interface OrganizationProjectClaimResponseOutputProject {
   ref: string;
   name: string;
 }
-const OrganizationProjectClaimResponseOutputProject = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<OrganizationProjectClaimResponseOutputProject>;
-
 export interface OrganizationProjectClaimResponseOutputPreviewWarningsItem {
   key: string;
   message: string;
 }
-const OrganizationProjectClaimResponseOutputPreviewWarningsItem = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<OrganizationProjectClaimResponseOutputPreviewWarningsItem>;
-
 export type OrganizationProjectClaimResponseOutputPreviewWarningsList =
   Array<OrganizationProjectClaimResponseOutputPreviewWarningsItem>;
-const OrganizationProjectClaimResponseOutputPreviewWarningsList = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<OrganizationProjectClaimResponseOutputPreviewWarningsList>;
-
 export type OrganizationProjectClaimResponseOutputPreviewErrorsItem =
   OrganizationProjectClaimResponseOutputPreviewWarningsItem;
 export type OrganizationProjectClaimResponseOutputPreviewErrorsList =
   Array<OrganizationProjectClaimResponseOutputPreviewWarningsItem>;
-const OrganizationProjectClaimResponseOutputPreviewErrorsList =
-  OrganizationProjectClaimResponseOutputPreviewWarningsList as any as S.Schema<OrganizationProjectClaimResponseOutputPreviewErrorsList>;
-
 export type OrganizationProjectClaimResponseOutputPreviewInfoItem =
   OrganizationProjectClaimResponseOutputPreviewWarningsItem;
 export type OrganizationProjectClaimResponseOutputPreviewInfoList =
   Array<OrganizationProjectClaimResponseOutputPreviewWarningsItem>;
-const OrganizationProjectClaimResponseOutputPreviewInfoList =
-  OrganizationProjectClaimResponseOutputPreviewWarningsList as any as S.Schema<OrganizationProjectClaimResponseOutputPreviewInfoList>;
-
 export interface OrganizationProjectClaimResponseOutputPreviewMembersExceedingFreeProjectLimitItem {
   name: string;
   limit: number;
 }
-const OrganizationProjectClaimResponseOutputPreviewMembersExceedingFreeProjectLimitItem =
-  /*@__PURE__*/ __L.at(
-    __c24,
-    4,
-  ) as any as S.Schema<OrganizationProjectClaimResponseOutputPreviewMembersExceedingFreeProjectLimitItem>;
-
 export type OrganizationProjectClaimResponseOutputPreviewMembersExceedingFreeProjectLimitList =
   Array<OrganizationProjectClaimResponseOutputPreviewMembersExceedingFreeProjectLimitItem>;
-const OrganizationProjectClaimResponseOutputPreviewMembersExceedingFreeProjectLimitList =
-  /*@__PURE__*/ __L.at(
-    __c24,
-    5,
-  ) as any as S.Schema<OrganizationProjectClaimResponseOutputPreviewMembersExceedingFreeProjectLimitList>;
-
 export type OrganizationProjectClaimResponseOutputPreviewSourceSubscriptionPlan =
   | "free"
   | "pro"
   | "team"
   | "enterprise"
   | "platform";
-const OrganizationProjectClaimResponseOutputPreviewSourceSubscriptionPlan = S.String;
-
 export type OrganizationProjectClaimResponseOutputPreviewTargetSubscriptionPlan =
   | "free"
   | "pro"
   | "team"
   | "enterprise"
   | "platform";
-const OrganizationProjectClaimResponseOutputPreviewTargetSubscriptionPlan = S.String;
-
 export interface OrganizationProjectClaimResponseOutputPreview {
   valid: boolean;
   warnings: OrganizationProjectClaimResponseOutputPreviewWarningsList;
@@ -3272,11 +2070,6 @@ export interface OrganizationProjectClaimResponseOutputPreview {
   source_subscription_plan: OrganizationProjectClaimResponseOutputPreviewSourceSubscriptionPlan;
   target_subscription_plan: OrganizationProjectClaimResponseOutputPreviewTargetSubscriptionPlan | null;
 }
-const OrganizationProjectClaimResponseOutputPreview = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<OrganizationProjectClaimResponseOutputPreview>;
-
 export interface OrganizationProjectClaimResponseOutput {
   project: OrganizationProjectClaimResponseOutputProject;
   preview: OrganizationProjectClaimResponseOutputPreview;
@@ -3284,20 +2077,10 @@ export interface OrganizationProjectClaimResponseOutput {
   created_at: string;
   created_by: string;
 }
-const OrganizationProjectClaimResponseOutput = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<OrganizationProjectClaimResponseOutput>;
-
 export interface V1GetPerformanceAdvisorsRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetPerformanceAdvisorsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<V1GetPerformanceAdvisorsRequest>;
-
 export type V1ProjectAdvisorsResponseOutputLintsItemName =
   | "unindexed_foreign_keys"
   | "auth_users_exposed"
@@ -3341,23 +2124,14 @@ export type V1ProjectAdvisorsResponseOutputLintsItemName =
   | "log_edge_function_error_rate_high"
   | "project_not_active"
   | "advisor_check_unavailable";
-const V1ProjectAdvisorsResponseOutputLintsItemName = S.String;
-
 export type V1ProjectAdvisorsResponseOutputLintsItemLevel = "ERROR" | "WARN" | "INFO";
-const V1ProjectAdvisorsResponseOutputLintsItemLevel = S.String;
-
 export type V1ProjectAdvisorsResponseOutputLintsItemFacing = "EXTERNAL";
-const V1ProjectAdvisorsResponseOutputLintsItemFacing = S.String;
-
 export type V1ProjectAdvisorsResponseOutputLintsItemCategoriesItem =
   | "PERFORMANCE"
   | "SECURITY"
   | "HEALTH";
 export type V1ProjectAdvisorsResponseOutputLintsItemCategoriesList =
   Array<V1ProjectAdvisorsResponseOutputLintsItemCategoriesItem>;
-const V1ProjectAdvisorsResponseOutputLintsItemCategoriesList =
-  V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsList as any as S.Schema<V1ProjectAdvisorsResponseOutputLintsItemCategoriesList>;
-
 export type V1ProjectAdvisorsResponseOutputLintsItemMetadataType =
   | "table"
   | "view"
@@ -3368,14 +2142,7 @@ export type V1ProjectAdvisorsResponseOutputLintsItemMetadataType =
   | "extension"
   | "compliance"
   | "health";
-const V1ProjectAdvisorsResponseOutputLintsItemMetadataType = S.String;
-
 export type V1ProjectAdvisorsResponseOutputLintsItemMetadataFkeyColumnsList = Array<number>;
-const V1ProjectAdvisorsResponseOutputLintsItemMetadataFkeyColumnsList = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<V1ProjectAdvisorsResponseOutputLintsItemMetadataFkeyColumnsList>;
-
 export interface V1ProjectAdvisorsResponseOutputLintsItemMetadata {
   schema?: string;
   name?: string;
@@ -3384,11 +2151,6 @@ export interface V1ProjectAdvisorsResponseOutputLintsItemMetadata {
   fkey_name?: string;
   fkey_columns?: V1ProjectAdvisorsResponseOutputLintsItemMetadataFkeyColumnsList;
 }
-const V1ProjectAdvisorsResponseOutputLintsItemMetadata = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<V1ProjectAdvisorsResponseOutputLintsItemMetadata>;
-
 export interface V1ProjectAdvisorsResponseOutputLintsItem {
   name: V1ProjectAdvisorsResponseOutputLintsItemName;
   title: string;
@@ -3402,59 +2164,25 @@ export interface V1ProjectAdvisorsResponseOutputLintsItem {
   cache_key: string;
   observed_at?: string;
 }
-const V1ProjectAdvisorsResponseOutputLintsItem = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<V1ProjectAdvisorsResponseOutputLintsItem>;
-
 export type V1ProjectAdvisorsResponseOutputLintsList =
   Array<V1ProjectAdvisorsResponseOutputLintsItem>;
-const V1ProjectAdvisorsResponseOutputLintsList = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<V1ProjectAdvisorsResponseOutputLintsList>;
-
 export interface V1ProjectAdvisorsResponseOutput {
   lints: V1ProjectAdvisorsResponseOutputLintsList;
 }
-const V1ProjectAdvisorsResponseOutput = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<V1ProjectAdvisorsResponseOutput>;
-
 export interface V1GetPgsodiumConfigRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetPgsodiumConfigRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<V1GetPgsodiumConfigRequest>;
-
 export interface PgsodiumConfigResponseOutput {
   /** The pgsodium root key: 32 bytes, hex-encoded (64 characters). */
   root_key: string;
 }
-const PgsodiumConfigResponseOutput = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<PgsodiumConfigResponseOutput>;
-
 export interface V1GetPoolerConfigRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetPoolerConfigRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<V1GetPoolerConfigRequest>;
-
 export type SupavisorConfigResponseOutputDatabaseType = "PRIMARY" | "READ_REPLICA";
-const SupavisorConfigResponseOutputDatabaseType = S.String;
-
 export type SupavisorConfigResponseOutputPoolMode = "transaction" | "session";
-const SupavisorConfigResponseOutputPoolMode = S.String;
-
 export interface SupavisorConfigResponseOutput {
   identifier: string;
   database_type: SupavisorConfigResponseOutputDatabaseType;
@@ -3470,35 +2198,13 @@ export interface SupavisorConfigResponseOutput {
   max_client_conn: number | null;
   pool_mode: SupavisorConfigResponseOutputPoolMode;
 }
-const SupavisorConfigResponseOutput = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<SupavisorConfigResponseOutput>;
-
 export type V1GetPoolerConfigResponseBodyList = Array<SupavisorConfigResponseOutput>;
-const V1GetPoolerConfigResponseBodyList = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<V1GetPoolerConfigResponseBodyList>;
-
 export type V1GetPoolerConfigResponse = V1GetPoolerConfigResponseBodyList;
-const V1GetPoolerConfigResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<V1GetPoolerConfigResponse>;
-
 export interface V1GetPostgresConfigRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetPostgresConfigRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<V1GetPostgresConfigRequest>;
-
 export type PostgresConfigResponseOutputSessionReplicationRole = "origin" | "replica" | "local";
-const PostgresConfigResponseOutputSessionReplicationRole = S.String;
-
 export interface PostgresConfigResponseOutput {
   effective_cache_size?: string;
   logical_decoding_work_mem?: string;
@@ -3544,20 +2250,10 @@ export interface PostgresConfigResponseOutput {
   checkpoint_timeout?: string;
   hot_standby_feedback?: boolean;
 }
-const PostgresConfigResponseOutput = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<PostgresConfigResponseOutput>;
-
 export interface V1GetPostgrestServiceConfigRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetPostgrestServiceConfigRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<V1GetPostgrestServiceConfigRequest>;
-
 export interface PostgrestConfigWithJWTSecretResponseOutput {
   db_schema: string;
   max_rows: number;
@@ -3568,20 +2264,10 @@ export interface PostgrestConfigWithJWTSecretResponseOutput {
   db_pool_acquisition_timeout: number | null;
   jwt_secret?: T.Sensitive;
 }
-const PostgrestConfigWithJWTSecretResponseOutput = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<PostgrestConfigWithJWTSecretResponseOutput>;
-
 export interface V1GetPostgresUpgradeEligibilityRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetPostgresUpgradeEligibilityRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<V1GetPostgresUpgradeEligibilityRequest>;
-
 export type ProjectUpgradeEligibilityResponseOutputCurrentAppVersionReleaseChannel =
   | "internal"
   | "alpha"
@@ -3589,16 +2275,12 @@ export type ProjectUpgradeEligibilityResponseOutputCurrentAppVersionReleaseChann
   | "ga"
   | "withdrawn"
   | "preview";
-const ProjectUpgradeEligibilityResponseOutputCurrentAppVersionReleaseChannel = S.String;
-
 export type ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsItemPostgresVersion =
   | "13"
   | "14"
   | "15"
   | "17"
   | "17-oriole";
-const ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsItemPostgresVersion = S.String;
-
 export type ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsItemReleaseChannel =
   | "internal"
   | "alpha"
@@ -3606,45 +2288,21 @@ export type ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsItemRele
   | "ga"
   | "withdrawn"
   | "preview";
-const ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsItemReleaseChannel = S.String;
-
 export interface ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsItem {
   postgres_version: ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsItemPostgresVersion;
   release_channel: ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsItemReleaseChannel;
   app_version: string;
 }
-const ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsItem = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsItem>;
-
 export type ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsList =
   Array<ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsItem>;
-const ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsList = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsList>;
-
 export type ProjectUpgradeEligibilityResponseOutputLegacyAuthCustomRolesList = Array<string>;
-const ProjectUpgradeEligibilityResponseOutputLegacyAuthCustomRolesList =
-  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<ProjectUpgradeEligibilityResponseOutputLegacyAuthCustomRolesList>;
-
 /** Use validation_errors instead. */
 export type ProjectUpgradeEligibilityResponseOutputObjectsToBeDroppedList = Array<string>;
-const ProjectUpgradeEligibilityResponseOutputObjectsToBeDroppedList =
-  DeleteSecretsBody as any as S.Schema<ProjectUpgradeEligibilityResponseOutputObjectsToBeDroppedList>;
-
 /** Use validation_errors instead. */
 export type ProjectUpgradeEligibilityResponseOutputUnsupportedExtensionsList = Array<string>;
-const ProjectUpgradeEligibilityResponseOutputUnsupportedExtensionsList =
-  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<ProjectUpgradeEligibilityResponseOutputUnsupportedExtensionsList>;
-
 /** Use validation_errors instead. */
 export type ProjectUpgradeEligibilityResponseOutputUserDefinedObjectsInInternalSchemasList =
   Array<string>;
-const ProjectUpgradeEligibilityResponseOutputUserDefinedObjectsInInternalSchemasList =
-  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<ProjectUpgradeEligibilityResponseOutputUserDefinedObjectsInInternalSchemasList>;
-
 export type ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase0Type =
   "objects_depending_on_pg_cron";
 export type ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase0DependentsList =
@@ -3731,15 +2389,8 @@ export type ProjectUpgradeEligibilityResponseOutputValidationErrorsItem =
   | ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase7
   | ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase8
   | ProjectUpgradeEligibilityResponseOutputValidationErrorsItemCase9;
-const ProjectUpgradeEligibilityResponseOutputValidationErrorsItem = /*@__PURE__*/ __L.at(__c27, 3);
-
 export type ProjectUpgradeEligibilityResponseOutputValidationErrorsList =
   Array<ProjectUpgradeEligibilityResponseOutputValidationErrorsItem>;
-const ProjectUpgradeEligibilityResponseOutputValidationErrorsList = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<ProjectUpgradeEligibilityResponseOutputValidationErrorsList>;
-
 export type ProjectUpgradeEligibilityResponseOutputWarningsItemCase0Type =
   "pg_graphql_introspection_change";
 export interface ProjectUpgradeEligibilityResponseOutputWarningsItemCase0 {
@@ -3763,15 +2414,8 @@ export type ProjectUpgradeEligibilityResponseOutputWarningsItem =
   | ProjectUpgradeEligibilityResponseOutputWarningsItemCase1
   | ProjectUpgradeEligibilityResponseOutputWarningsItemCase2
   | ProjectUpgradeEligibilityResponseOutputWarningsItemCase3;
-const ProjectUpgradeEligibilityResponseOutputWarningsItem = /*@__PURE__*/ __L.at(__c27, 5);
-
 export type ProjectUpgradeEligibilityResponseOutputWarningsList =
   Array<ProjectUpgradeEligibilityResponseOutputWarningsItem>;
-const ProjectUpgradeEligibilityResponseOutputWarningsList = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<ProjectUpgradeEligibilityResponseOutputWarningsList>;
-
 export interface ProjectUpgradeEligibilityResponseOutput {
   eligible: boolean;
   current_app_version: string;
@@ -3789,21 +2433,11 @@ export interface ProjectUpgradeEligibilityResponseOutput {
   validation_errors: ProjectUpgradeEligibilityResponseOutputValidationErrorsList;
   warnings: ProjectUpgradeEligibilityResponseOutputWarningsList;
 }
-const ProjectUpgradeEligibilityResponseOutput = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<ProjectUpgradeEligibilityResponseOutput>;
-
 export interface V1GetPostgresUpgradeStatusRequest {
   /** Project ref */
   ref: string;
   tracking_id?: string;
 }
-const V1GetPostgresUpgradeStatusRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<V1GetPostgresUpgradeStatusRequest>;
-
 export type DatabaseUpgradeStatusResponseOutputDatabaseUpgradeStatusError =
   | "1_upgraded_instance_launch_failed"
   | "2_volume_detachchment_from_upgraded_instance_failed"
@@ -3814,8 +2448,6 @@ export type DatabaseUpgradeStatusResponseOutputDatabaseUpgradeStatusError =
   | "7_volume_attachment_to_upgraded_instance_failed"
   | "8_upgrade_completion_failed"
   | "9_post_physical_backup_failed";
-const DatabaseUpgradeStatusResponseOutputDatabaseUpgradeStatusError = S.String;
-
 export type DatabaseUpgradeStatusResponseOutputDatabaseUpgradeStatusProgress =
   | "0_requested"
   | "1_started"
@@ -3828,8 +2460,6 @@ export type DatabaseUpgradeStatusResponseOutputDatabaseUpgradeStatusProgress =
   | "8_attached_volume_to_upgraded_instance"
   | "9_completed_upgrade"
   | "10_completed_post_physical_backup";
-const DatabaseUpgradeStatusResponseOutputDatabaseUpgradeStatusProgress = S.String;
-
 export interface DatabaseUpgradeStatusResponseOutputDatabaseUpgradeStatus {
   initiated_at: string;
   latest_status_at: string;
@@ -3838,38 +2468,19 @@ export interface DatabaseUpgradeStatusResponseOutputDatabaseUpgradeStatus {
   progress?: DatabaseUpgradeStatusResponseOutputDatabaseUpgradeStatusProgress;
   status: number;
 }
-const DatabaseUpgradeStatusResponseOutputDatabaseUpgradeStatus = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<DatabaseUpgradeStatusResponseOutputDatabaseUpgradeStatus>;
-
 export interface DatabaseUpgradeStatusResponseOutput {
   databaseUpgradeStatus: DatabaseUpgradeStatusResponseOutputDatabaseUpgradeStatus | null;
 }
-const DatabaseUpgradeStatusResponseOutput = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<DatabaseUpgradeStatusResponseOutput>;
-
 export interface V1GetProfileRequest {}
-const V1GetProfileRequest = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<V1GetProfileRequest>;
-
 export interface V1ProfileResponseOutput {
   gotrue_id: string;
   primary_email: string;
   username: string;
 }
-const V1ProfileResponseOutput = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<V1ProfileResponseOutput>;
-
 export interface V1GetProjectRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetProjectRequest = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<V1GetProjectRequest>;
-
 export type V1ProjectWithDatabaseResponseOutputStatus =
   | "INACTIVE"
   | "ACTIVE_HEALTHY"
@@ -3886,8 +2497,6 @@ export type V1ProjectWithDatabaseResponseOutputStatus =
   | "RESTARTING"
   | "PAUSE_FAILED"
   | "RESIZING";
-const V1ProjectWithDatabaseResponseOutputStatus = S.String;
-
 export interface V1ProjectWithDatabaseResponseOutputDatabase {
   /** Database host */
   host: string;
@@ -3898,11 +2507,6 @@ export interface V1ProjectWithDatabaseResponseOutputDatabase {
   /** Release channel */
   release_channel: string;
 }
-const V1ProjectWithDatabaseResponseOutputDatabase = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<V1ProjectWithDatabaseResponseOutputDatabase>;
-
 export interface V1ProjectWithDatabaseResponseOutput {
   /** Deprecated: Use `ref` instead. */
   id: string;
@@ -3921,11 +2525,6 @@ export interface V1ProjectWithDatabaseResponseOutput {
   status: V1ProjectWithDatabaseResponseOutputStatus;
   database: V1ProjectWithDatabaseResponseOutputDatabase;
 }
-const V1ProjectWithDatabaseResponseOutput = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<V1ProjectWithDatabaseResponseOutput>;
-
 export interface V1GetProjectApiKeyRequest {
   /** Project ref */
   ref: string;
@@ -3933,63 +2532,28 @@ export interface V1GetProjectApiKeyRequest {
   /** Boolean string. Truthy values: `true`, `1`, `yes`, `on`, `y`, `enabled` Falsy values: `false`, `0`, `no`, `off`, `n`, `disabled` */
   reveal?: string;
 }
-const V1GetProjectApiKeyRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<V1GetProjectApiKeyRequest>;
-
 export interface V1GetProjectApiKeysRequest {
   /** Project ref */
   ref: string;
   /** Boolean string. Truthy values: `true`, `1`, `yes`, `on`, `y`, `enabled` Falsy values: `false`, `0`, `no`, `off`, `n`, `disabled` */
   reveal?: string;
 }
-const V1GetProjectApiKeysRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<V1GetProjectApiKeysRequest>;
-
 export type V1GetProjectApiKeysResponseBodyList = Array<ApiKeyResponseOutput>;
-const V1GetProjectApiKeysResponseBodyList = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<V1GetProjectApiKeysResponseBodyList>;
-
 export type V1GetProjectApiKeysResponse = V1GetProjectApiKeysResponseBodyList;
-const V1GetProjectApiKeysResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<V1GetProjectApiKeysResponse>;
-
 export interface V1GetProjectClaimTokenRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetProjectClaimTokenRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<V1GetProjectClaimTokenRequest>;
-
 export interface ProjectClaimTokenResponseOutput {
   token_alias: string;
   expires_at: string;
   created_at: string;
   created_by: string;
 }
-const ProjectClaimTokenResponseOutput = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<ProjectClaimTokenResponseOutput>;
-
 export interface V1GetProjectDiskAutoscaleConfigRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetProjectDiskAutoscaleConfigRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<V1GetProjectDiskAutoscaleConfigRequest>;
-
 export interface DiskAutoscaleConfigOutput {
   /** Growth percentage for disk autoscaling */
   growth_percent: number | null;
@@ -3998,31 +2562,14 @@ export interface DiskAutoscaleConfigOutput {
   /** Maximum limit the disk size will grow to in GB */
   max_size_gb: number | null;
 }
-const DiskAutoscaleConfigOutput = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<DiskAutoscaleConfigOutput>;
-
 export type V1GetProjectFunctionCombinedStatsRequestInterval = "15min" | "1hr" | "3hr" | "1day";
-const V1GetProjectFunctionCombinedStatsRequestInterval = S.String;
-
 export interface V1GetProjectFunctionCombinedStatsRequest {
   /** Project ref */
   ref: string;
   interval: V1GetProjectFunctionCombinedStatsRequestInterval | (string & {});
   function_id: string;
 }
-const V1GetProjectFunctionCombinedStatsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<V1GetProjectFunctionCombinedStatsRequest>;
-
 export type AnalyticsResponseOutputResultList = Array<unknown>;
-const AnalyticsResponseOutputResultList = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<AnalyticsResponseOutputResultList>;
-
 export interface AnalyticsResponseOutputErrorCase1ErrorsItem {
   domain: string;
   location: string;
@@ -4039,34 +2586,17 @@ export interface AnalyticsResponseOutputErrorCase1 {
   status: string;
 }
 export type AnalyticsResponseOutputError = string | AnalyticsResponseOutputErrorCase1;
-const AnalyticsResponseOutputError = /*@__PURE__*/ __L.at(__c30, 2);
-
 export interface AnalyticsResponseOutput {
   result?: AnalyticsResponseOutputResultList;
   error?: AnalyticsResponseOutputError;
 }
-const AnalyticsResponseOutput = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<AnalyticsResponseOutput>;
-
 export interface V1GetProjectLegacyApiKeysRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetProjectLegacyApiKeysRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<V1GetProjectLegacyApiKeysRequest>;
-
 export interface LegacyApiKeysResponseOutput {
   enabled: boolean;
 }
-const LegacyApiKeysResponseOutput = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<LegacyApiKeysResponseOutput>;
-
 export interface V1GetProjectLogsRequest {
   /** Project ref */
   ref: string;
@@ -4075,23 +2605,11 @@ export interface V1GetProjectLogsRequest {
   iso_timestamp_start?: string;
   iso_timestamp_end?: string;
 }
-const V1GetProjectLogsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<V1GetProjectLogsRequest>;
-
 export interface V1GetProjectPgbouncerConfigRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetProjectPgbouncerConfigRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<V1GetProjectPgbouncerConfigRequest>;
-
 export type V1PgbouncerConfigResponseOutputPoolMode = "transaction" | "session" | "statement";
-const V1PgbouncerConfigResponseOutputPoolMode = S.String;
-
 export interface V1PgbouncerConfigResponseOutput {
   default_pool_size?: number;
   ignore_startup_parameters?: string;
@@ -4103,40 +2621,21 @@ export interface V1PgbouncerConfigResponseOutput {
   query_wait_timeout?: number;
   reserve_pool_size?: number;
 }
-const V1PgbouncerConfigResponseOutput = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<V1PgbouncerConfigResponseOutput>;
-
 export interface V1GetProjectSigningKeyRequest {
   /** Project ref */
   ref: string;
   id: string;
 }
-const V1GetProjectSigningKeyRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<V1GetProjectSigningKeyRequest>;
-
 export interface V1GetProjectSigningKeysRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetProjectSigningKeysRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<V1GetProjectSigningKeysRequest>;
-
 export type SigningKeysResponseOutputKeysItemAlgorithm = "EdDSA" | "ES256" | "RS256" | "HS256";
-const SigningKeysResponseOutputKeysItemAlgorithm = S.String;
-
 export type SigningKeysResponseOutputKeysItemStatus =
   | "in_use"
   | "previously_used"
   | "revoked"
   | "standby";
-const SigningKeysResponseOutputKeysItemStatus = S.String;
-
 export interface SigningKeysResponseOutputKeysItem {
   id: string;
   algorithm: SigningKeysResponseOutputKeysItemAlgorithm;
@@ -4145,35 +2644,15 @@ export interface SigningKeysResponseOutputKeysItem {
   created_at: string;
   updated_at: string;
 }
-const SigningKeysResponseOutputKeysItem = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<SigningKeysResponseOutputKeysItem>;
-
 export type SigningKeysResponseOutputKeysList = Array<SigningKeysResponseOutputKeysItem>;
-const SigningKeysResponseOutputKeysList = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<SigningKeysResponseOutputKeysList>;
-
 export interface SigningKeysResponseOutput {
   keys: SigningKeysResponseOutputKeysList;
 }
-const SigningKeysResponseOutput = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<SigningKeysResponseOutput>;
-
 export interface V1GetProjectTpaIntegrationRequest {
   /** Project ref */
   ref: string;
   tpa_id: string;
 }
-const V1GetProjectTpaIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<V1GetProjectTpaIntegrationRequest>;
-
 export type V1GetProjectUsageApiCountRequestInterval =
   | "15min"
   | "30min"
@@ -4182,18 +2661,11 @@ export type V1GetProjectUsageApiCountRequestInterval =
   | "1day"
   | "3day"
   | "7day";
-const V1GetProjectUsageApiCountRequestInterval = S.String;
-
 export interface V1GetProjectUsageApiCountRequest {
   /** Project ref */
   ref: string;
   interval?: V1GetProjectUsageApiCountRequestInterval | (string & {});
 }
-const V1GetProjectUsageApiCountRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<V1GetProjectUsageApiCountRequest>;
-
 export interface V1GetUsageApiCountResponseOutputResultItem {
   timestamp: string;
   total_auth_requests: number;
@@ -4201,18 +2673,8 @@ export interface V1GetUsageApiCountResponseOutputResultItem {
   total_rest_requests: number;
   total_storage_requests: number;
 }
-const V1GetUsageApiCountResponseOutputResultItem = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<V1GetUsageApiCountResponseOutputResultItem>;
-
 export type V1GetUsageApiCountResponseOutputResultList =
   Array<V1GetUsageApiCountResponseOutputResultItem>;
-const V1GetUsageApiCountResponseOutputResultList = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<V1GetUsageApiCountResponseOutputResultList>;
-
 export type V1GetUsageApiCountResponseOutputErrorCase1ErrorsItem =
   AnalyticsResponseOutputErrorCase1ErrorsItem;
 export type V1GetUsageApiCountResponseOutputErrorCase1ErrorsList =
@@ -4226,41 +2688,19 @@ export interface V1GetUsageApiCountResponseOutputErrorCase1 {
 export type V1GetUsageApiCountResponseOutputError =
   | string
   | V1GetUsageApiCountResponseOutputErrorCase1;
-const V1GetUsageApiCountResponseOutputError = /*@__PURE__*/ __L.at(__c32, 2);
-
 export interface V1GetUsageApiCountResponseOutput {
   result?: V1GetUsageApiCountResponseOutputResultList;
   error?: V1GetUsageApiCountResponseOutputError;
 }
-const V1GetUsageApiCountResponseOutput = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<V1GetUsageApiCountResponseOutput>;
-
 export interface V1GetProjectUsageRequestCountRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetProjectUsageRequestCountRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<V1GetProjectUsageRequestCountRequest>;
-
 export interface V1GetUsageApiRequestsCountResponseOutputResultItem {
   count: number;
 }
-const V1GetUsageApiRequestsCountResponseOutputResultItem = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<V1GetUsageApiRequestsCountResponseOutputResultItem>;
-
 export type V1GetUsageApiRequestsCountResponseOutputResultList =
   Array<V1GetUsageApiRequestsCountResponseOutputResultItem>;
-const V1GetUsageApiRequestsCountResponseOutputResultList = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<V1GetUsageApiRequestsCountResponseOutputResultList>;
-
 export type V1GetUsageApiRequestsCountResponseOutputErrorCase1ErrorsItem =
   AnalyticsResponseOutputErrorCase1ErrorsItem;
 export type V1GetUsageApiRequestsCountResponseOutputErrorCase1ErrorsList =
@@ -4274,45 +2714,23 @@ export interface V1GetUsageApiRequestsCountResponseOutputErrorCase1 {
 export type V1GetUsageApiRequestsCountResponseOutputError =
   | string
   | V1GetUsageApiRequestsCountResponseOutputErrorCase1;
-const V1GetUsageApiRequestsCountResponseOutputError = /*@__PURE__*/ __L.at(__c32, 7);
-
 export interface V1GetUsageApiRequestsCountResponseOutput {
   result?: V1GetUsageApiRequestsCountResponseOutputResultList;
   error?: V1GetUsageApiRequestsCountResponseOutputError;
 }
-const V1GetUsageApiRequestsCountResponseOutput = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<V1GetUsageApiRequestsCountResponseOutput>;
-
 export interface V1GetReadonlyModeStatusRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetReadonlyModeStatusRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<V1GetReadonlyModeStatusRequest>;
-
 export interface ReadOnlyStatusResponseOutput {
   enabled: boolean;
   override_enabled: boolean;
   override_active_until: string;
 }
-const ReadOnlyStatusResponseOutput = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<ReadOnlyStatusResponseOutput>;
-
 export interface V1GetRealtimeConfigRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetRealtimeConfigRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<V1GetRealtimeConfigRequest>;
-
 export interface RealtimeConfigResponseOutput {
   /** Whether to only allow private channels */
   private_only: boolean | null;
@@ -4341,34 +2759,17 @@ export interface RealtimeConfigResponseOutput {
   /** If set, the Realtime service has been suspended by an admin. */
   admin_suspended_at: string | null;
 }
-const RealtimeConfigResponseOutput = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<RealtimeConfigResponseOutput>;
-
 export interface V1GetRestorePointRequest {
   /** Project ref */
   ref: string;
   name?: string;
 }
-const V1GetRestorePointRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<V1GetRestorePointRequest>;
-
 export type V1GetSecurityAdvisorsRequestLintType = "sql";
-const V1GetSecurityAdvisorsRequestLintType = S.String;
-
 export interface V1GetSecurityAdvisorsRequest {
   /** Project ref */
   ref: string;
   lint_type?: V1GetSecurityAdvisorsRequestLintType | (string & {});
 }
-const V1GetSecurityAdvisorsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<V1GetSecurityAdvisorsRequest>;
-
 export type V1GetServicesHealthRequestServicesCase1Item =
   | "auth"
   | "db"
@@ -4385,8 +2786,6 @@ export type V1GetServicesHealthRequestServicesCase1List = Array<
 export type V1GetServicesHealthRequestServices =
   | string
   | V1GetServicesHealthRequestServicesCase1List;
-const V1GetServicesHealthRequestServices = /*@__PURE__*/ __L.at(__c33, 7);
-
 export interface V1GetServicesHealthRequest {
   /** Project ref */
   ref: string;
@@ -4394,11 +2793,6 @@ export interface V1GetServicesHealthRequest {
   services: V1GetServicesHealthRequestServices;
   timeout_ms?: number;
 }
-const V1GetServicesHealthRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<V1GetServicesHealthRequest>;
-
 export type V1ServiceHealthResponseOutputName =
   | "auth"
   | "db"
@@ -4408,11 +2802,7 @@ export type V1ServiceHealthResponseOutputName =
   | "rest"
   | "storage"
   | "pg_bouncer";
-const V1ServiceHealthResponseOutputName = S.String;
-
 export type V1ServiceHealthResponseOutputStatus = "COMING_UP" | "ACTIVE_HEALTHY" | "UNHEALTHY";
-const V1ServiceHealthResponseOutputStatus = S.String;
-
 export type V1ServiceHealthResponseOutputInfoCase0Name = "GoTrue";
 export interface V1ServiceHealthResponseOutputInfoCase0 {
   name: V1ServiceHealthResponseOutputInfoCase0Name;
@@ -4433,8 +2823,6 @@ export type V1ServiceHealthResponseOutputInfo =
   | V1ServiceHealthResponseOutputInfoCase0
   | V1ServiceHealthResponseOutputInfoCase1
   | V1ServiceHealthResponseOutputInfoCase2;
-const V1ServiceHealthResponseOutputInfo = /*@__PURE__*/ __L.at(__c34, 1);
-
 export interface V1ServiceHealthResponseOutput {
   name: V1ServiceHealthResponseOutputName;
   /** Deprecated. Use `status` instead. */
@@ -4443,58 +2831,23 @@ export interface V1ServiceHealthResponseOutput {
   info?: V1ServiceHealthResponseOutputInfo;
   error?: string;
 }
-const V1ServiceHealthResponseOutput = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<V1ServiceHealthResponseOutput>;
-
 export type V1GetServicesHealthResponseBodyList = Array<V1ServiceHealthResponseOutput>;
-const V1GetServicesHealthResponseBodyList = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<V1GetServicesHealthResponseBodyList>;
-
 export type V1GetServicesHealthResponse = V1GetServicesHealthResponseBodyList;
-const V1GetServicesHealthResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<V1GetServicesHealthResponse>;
-
 export interface V1GetSslEnforcementConfigRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetSslEnforcementConfigRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<V1GetSslEnforcementConfigRequest>;
-
 export interface SslEnforcementResponseOutputCurrentConfig {
   database: boolean;
 }
-const SslEnforcementResponseOutputCurrentConfig = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<SslEnforcementResponseOutputCurrentConfig>;
-
 export interface SslEnforcementResponseOutput {
   currentConfig: SslEnforcementResponseOutputCurrentConfig;
   appliedSuccessfully: boolean;
 }
-const SslEnforcementResponseOutput = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<SslEnforcementResponseOutput>;
-
 export interface V1GetStorageConfigRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetStorageConfigRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<V1GetStorageConfigRequest>;
-
 export type StorageConfigResponseOutputFeaturesImageTransformation =
   V1ListEntitlementsResponseOutputEntitlementsItemConfigCase0;
 export type StorageConfigResponseOutputFeaturesS3Protocol =
@@ -4507,21 +2860,11 @@ export interface StorageConfigResponseOutputFeaturesIcebergCatalog {
   maxTables: number;
   maxCatalogs: number;
 }
-const StorageConfigResponseOutputFeaturesIcebergCatalog = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<StorageConfigResponseOutputFeaturesIcebergCatalog>;
-
 export interface StorageConfigResponseOutputFeaturesVectorBuckets {
   enabled: boolean;
   maxBuckets: number;
   maxIndexes: number;
 }
-const StorageConfigResponseOutputFeaturesVectorBuckets = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<StorageConfigResponseOutputFeaturesVectorBuckets>;
-
 export interface StorageConfigResponseOutputFeatures {
   imageTransformation: V1ListEntitlementsResponseOutputEntitlementsItemConfigCase0;
   s3Protocol: V1ListEntitlementsResponseOutputEntitlementsItemConfigCase0;
@@ -4529,32 +2872,15 @@ export interface StorageConfigResponseOutputFeatures {
   icebergCatalog: StorageConfigResponseOutputFeaturesIcebergCatalog;
   vectorBuckets: StorageConfigResponseOutputFeaturesVectorBuckets;
 }
-const StorageConfigResponseOutputFeatures = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<StorageConfigResponseOutputFeatures>;
-
 export interface StorageConfigResponseOutputCapabilities {
   list_v2: boolean;
   iceberg_catalog: boolean;
   object_versioning: boolean;
 }
-const StorageConfigResponseOutputCapabilities = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<StorageConfigResponseOutputCapabilities>;
-
 export type StorageConfigResponseOutputExternalUpstreamTarget = "main" | "canary";
-const StorageConfigResponseOutputExternalUpstreamTarget = S.String;
-
 export interface StorageConfigResponseOutputExternal {
   upstreamTarget: StorageConfigResponseOutputExternalUpstreamTarget;
 }
-const StorageConfigResponseOutputExternal = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<StorageConfigResponseOutputExternal>;
-
 export interface StorageConfigResponseOutput {
   fileSizeLimit: number;
   features: StorageConfigResponseOutputFeatures;
@@ -4562,149 +2888,75 @@ export interface StorageConfigResponseOutput {
   external: StorageConfigResponseOutputExternal;
   migrationVersion: string | null;
 }
-const StorageConfigResponseOutput = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<StorageConfigResponseOutput>;
-
 export interface V1GetVanitySubdomainConfigRequest {
   /** Project ref */
   ref: string;
 }
-const V1GetVanitySubdomainConfigRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<V1GetVanitySubdomainConfigRequest>;
-
 export type VanitySubdomainConfigResponseOutputStatus =
   | "not-used"
   | "custom-domain-used"
   | "active";
-const VanitySubdomainConfigResponseOutputStatus = S.String;
-
 export interface VanitySubdomainConfigResponseOutput {
   status: VanitySubdomainConfigResponseOutputStatus;
   custom_domain?: string;
 }
-const VanitySubdomainConfigResponseOutput = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<VanitySubdomainConfigResponseOutput>;
-
 export type V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsItem =
   JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem;
 export type V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
-const V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList =
-  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList>;
-
 export type V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6Item =
   JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem;
 export type V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
-const V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List =
-  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List>;
-
 export interface V1InviteExternalJitAccessRequestRolesItemAllowedNetworks {
   allowed_cidrs?: V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList;
   allowed_cidrs_v6?: V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List;
 }
-const V1InviteExternalJitAccessRequestRolesItemAllowedNetworks = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<V1InviteExternalJitAccessRequestRolesItemAllowedNetworks>;
-
 export interface V1InviteExternalJitAccessRequestRolesItem {
   role: string;
   expires_at?: number;
   allowed_networks?: V1InviteExternalJitAccessRequestRolesItemAllowedNetworks;
   branches_only?: boolean;
 }
-const V1InviteExternalJitAccessRequestRolesItem = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<V1InviteExternalJitAccessRequestRolesItem>;
-
 export type V1InviteExternalJitAccessRequestRolesList =
   Array<V1InviteExternalJitAccessRequestRolesItem>;
-const V1InviteExternalJitAccessRequestRolesList = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<V1InviteExternalJitAccessRequestRolesList>;
-
 export interface V1InviteExternalJitAccessRequest {
   /** Project ref */
   ref: string;
   email: string;
   roles: V1InviteExternalJitAccessRequestRolesList;
 }
-const V1InviteExternalJitAccessRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<V1InviteExternalJitAccessRequest>;
-
 export type InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem =
   JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem;
 export type InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
-const InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList =
-  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList>;
-
 export type InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6Item =
   JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem;
 export type InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List =
   Array<JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem>;
-const InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List =
-  JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList as any as S.Schema<InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List>;
-
 export interface InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworks {
   allowed_cidrs?: InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList;
   allowed_cidrs_v6?: InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List;
 }
-const InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworks = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworks>;
-
 export interface InviteExternalUserJitResponseOutputUserRolesItem {
   role: string;
   expires_at?: number;
   allowed_networks?: InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworks;
   branches_only?: boolean;
 }
-const InviteExternalUserJitResponseOutputUserRolesItem = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<InviteExternalUserJitResponseOutputUserRolesItem>;
-
 export type InviteExternalUserJitResponseOutputUserRolesList =
   Array<InviteExternalUserJitResponseOutputUserRolesItem>;
-const InviteExternalUserJitResponseOutputUserRolesList = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<InviteExternalUserJitResponseOutputUserRolesList>;
-
 export interface InviteExternalUserJitResponseOutput {
   email: string;
   invite_id: string;
   user_roles: InviteExternalUserJitResponseOutputUserRolesList;
 }
-const InviteExternalUserJitResponseOutput = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<InviteExternalUserJitResponseOutput>;
-
 export interface V1ListActionRunsRequest {
   /** Project ref */
   ref: string;
   offset?: number;
   limit?: number;
 }
-const V1ListActionRunsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<V1ListActionRunsRequest>;
-
 export type ListActionRunResponseOutputItemRunStepsItemName =
   | "clone"
   | "pull"
@@ -4729,9 +2981,6 @@ export interface ListActionRunResponseOutputItemRunStepsItem {
 }
 export type ListActionRunResponseOutputItemRunStepsList =
   Array<ListActionRunResponseOutputItemRunStepsItem>;
-const ListActionRunResponseOutputItemRunStepsList =
-  ActionRunResponseOutputRunStepsList as any as S.Schema<ListActionRunResponseOutputItemRunStepsList>;
-
 export interface ListActionRunResponseOutputItem {
   id: string;
   branch_id: string;
@@ -4742,32 +2991,12 @@ export interface ListActionRunResponseOutputItem {
   created_at: string;
   updated_at: string;
 }
-const ListActionRunResponseOutputItem = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<ListActionRunResponseOutputItem>;
-
 export type ListActionRunResponseOutput = Array<ListActionRunResponseOutputItem>;
-const ListActionRunResponseOutput = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<ListActionRunResponseOutput>;
-
 export type V1ListActionRunsResponse = ListActionRunResponseOutput;
-const V1ListActionRunsResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<V1ListActionRunsResponse>;
-
 export interface V1ListAllBackupsRequest {
   /** Project ref */
   ref: string;
 }
-const V1ListAllBackupsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<V1ListAllBackupsRequest>;
-
 export type V1BackupsResponseOutputBackupsItemStatus =
   | "COMPLETED"
   | "FAILED"
@@ -4775,34 +3004,17 @@ export type V1BackupsResponseOutputBackupsItemStatus =
   | "REMOVED"
   | "ARCHIVED"
   | "CANCELLED";
-const V1BackupsResponseOutputBackupsItemStatus = S.String;
-
 export interface V1BackupsResponseOutputBackupsItem {
   id: number;
   is_physical_backup: boolean;
   status: V1BackupsResponseOutputBackupsItemStatus;
   inserted_at: string;
 }
-const V1BackupsResponseOutputBackupsItem = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<V1BackupsResponseOutputBackupsItem>;
-
 export type V1BackupsResponseOutputBackupsList = Array<V1BackupsResponseOutputBackupsItem>;
-const V1BackupsResponseOutputBackupsList = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<V1BackupsResponseOutputBackupsList>;
-
 export interface V1BackupsResponseOutputPhysicalBackupData {
   earliest_physical_backup_date_unix?: number;
   latest_physical_backup_date_unix?: number;
 }
-const V1BackupsResponseOutputPhysicalBackupData = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<V1BackupsResponseOutputPhysicalBackupData>;
-
 export interface V1BackupsResponseOutput {
   region: string;
   walg_enabled: boolean;
@@ -4810,41 +3022,16 @@ export interface V1BackupsResponseOutput {
   backups: V1BackupsResponseOutputBackupsList;
   physical_backup_data: V1BackupsResponseOutputPhysicalBackupData;
 }
-const V1BackupsResponseOutput = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<V1BackupsResponseOutput>;
-
 export interface V1ListAllBranchesRequest {
   /** Project ref */
   ref: string;
 }
-const V1ListAllBranchesRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<V1ListAllBranchesRequest>;
-
 export type V1ListAllBranchesResponseBodyList = Array<BranchResponseOutput>;
-const V1ListAllBranchesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<V1ListAllBranchesResponseBodyList>;
-
 export type V1ListAllBranchesResponse = V1ListAllBranchesResponseBodyList;
-const V1ListAllBranchesResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<V1ListAllBranchesResponse>;
-
 export interface V1ListAllBucketsRequest {
   /** Project ref */
   ref: string;
 }
-const V1ListAllBucketsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<V1ListAllBucketsRequest>;
-
 export interface V1StorageBucketResponseOutput {
   id: string;
   name: string;
@@ -4853,35 +3040,13 @@ export interface V1StorageBucketResponseOutput {
   updated_at: string;
   public: boolean;
 }
-const V1StorageBucketResponseOutput = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<V1StorageBucketResponseOutput>;
-
 export type V1ListAllBucketsResponseBodyList = Array<V1StorageBucketResponseOutput>;
-const V1ListAllBucketsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<V1ListAllBucketsResponseBodyList>;
-
 export type V1ListAllBucketsResponse = V1ListAllBucketsResponseBodyList;
-const V1ListAllBucketsResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<V1ListAllBucketsResponse>;
-
 export interface V1ListAllFunctionsRequest {
   /** Project ref */
   ref: string;
 }
-const V1ListAllFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<V1ListAllFunctionsRequest>;
-
 export type FunctionResponseOutputStatus = "ACTIVE" | "REMOVED" | "THROTTLED";
-const FunctionResponseOutputStatus = S.String;
-
 export interface FunctionResponseOutput {
   id: string;
   slug: string;
@@ -4896,151 +3061,49 @@ export interface FunctionResponseOutput {
   import_map_path?: string;
   ezbr_sha256?: string;
 }
-const FunctionResponseOutput = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<FunctionResponseOutput>;
-
 export type V1ListAllFunctionsResponseBodyList = Array<FunctionResponseOutput>;
-const V1ListAllFunctionsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<V1ListAllFunctionsResponseBodyList>;
-
 export type V1ListAllFunctionsResponse = V1ListAllFunctionsResponseBodyList;
-const V1ListAllFunctionsResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<V1ListAllFunctionsResponse>;
-
 export interface V1ListAllNetworkBansRequest {
   /** Project ref */
   ref: string;
 }
-const V1ListAllNetworkBansRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<V1ListAllNetworkBansRequest>;
-
 export type NetworkBanResponseOutputBannedIpv4AddressesList = Array<string>;
-const NetworkBanResponseOutputBannedIpv4AddressesList =
-  DeleteSecretsBody as any as S.Schema<NetworkBanResponseOutputBannedIpv4AddressesList>;
-
 export interface NetworkBanResponseOutput {
   banned_ipv4_addresses: NetworkBanResponseOutputBannedIpv4AddressesList;
 }
-const NetworkBanResponseOutput = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<NetworkBanResponseOutput>;
-
 export interface V1ListAllNetworkBansEnrichedRequest {
   /** Project ref */
   ref: string;
 }
-const V1ListAllNetworkBansEnrichedRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<V1ListAllNetworkBansEnrichedRequest>;
-
 export interface NetworkBanResponseEnrichedOutputBannedIpv4AddressesItem {
   banned_address: string;
   identifier: string;
   type: string;
 }
-const NetworkBanResponseEnrichedOutputBannedIpv4AddressesItem = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<NetworkBanResponseEnrichedOutputBannedIpv4AddressesItem>;
-
 export type NetworkBanResponseEnrichedOutputBannedIpv4AddressesList =
   Array<NetworkBanResponseEnrichedOutputBannedIpv4AddressesItem>;
-const NetworkBanResponseEnrichedOutputBannedIpv4AddressesList = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<NetworkBanResponseEnrichedOutputBannedIpv4AddressesList>;
-
 export interface NetworkBanResponseEnrichedOutput {
   banned_ipv4_addresses: NetworkBanResponseEnrichedOutputBannedIpv4AddressesList;
 }
-const NetworkBanResponseEnrichedOutput = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<NetworkBanResponseEnrichedOutput>;
-
 export interface V1ListAllOrganizationsRequest {}
-const V1ListAllOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<V1ListAllOrganizationsRequest>;
-
 export type V1ListAllOrganizationsResponseBodyList = Array<OrganizationResponseV1Output>;
-const V1ListAllOrganizationsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<V1ListAllOrganizationsResponseBodyList>;
-
 export type V1ListAllOrganizationsResponse = V1ListAllOrganizationsResponseBodyList;
-const V1ListAllOrganizationsResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<V1ListAllOrganizationsResponse>;
-
 export interface V1ListAllProjectsRequest {}
-const V1ListAllProjectsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<V1ListAllProjectsRequest>;
-
 export type V1ListAllProjectsResponseBodyList = Array<V1ProjectWithDatabaseResponseOutput>;
-const V1ListAllProjectsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<V1ListAllProjectsResponseBodyList>;
-
 export type V1ListAllProjectsResponse = V1ListAllProjectsResponseBodyList;
-const V1ListAllProjectsResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<V1ListAllProjectsResponse>;
-
 export interface V1ListAllSecretsRequest {
   /** Project ref */
   ref: string;
 }
-const V1ListAllSecretsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<V1ListAllSecretsRequest>;
-
 export interface SecretResponseOutput {
   name: string;
   value: string;
   updated_at?: string;
 }
-const SecretResponseOutput = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<SecretResponseOutput>;
-
 export type V1ListAllSecretsResponseBodyList = Array<SecretResponseOutput>;
-const V1ListAllSecretsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<V1ListAllSecretsResponseBodyList>;
-
 export type V1ListAllSecretsResponse = V1ListAllSecretsResponseBodyList;
-const V1ListAllSecretsResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<V1ListAllSecretsResponse>;
-
 export type V1ListAllSnippetsRequestSortBy = "name" | "inserted_at";
-const V1ListAllSnippetsRequestSortBy = S.String;
-
 export type V1ListAllSnippetsRequestSortOrder = "asc" | "desc";
-const V1ListAllSnippetsRequestSortOrder = S.String;
-
 export interface V1ListAllSnippetsRequest {
   /** Project ref */
   project_ref?: string;
@@ -5049,17 +3112,8 @@ export interface V1ListAllSnippetsRequest {
   sort_by?: V1ListAllSnippetsRequestSortBy | (string & {});
   sort_order?: V1ListAllSnippetsRequestSortOrder | (string & {});
 }
-const V1ListAllSnippetsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<V1ListAllSnippetsRequest>;
-
 export type SnippetListOutputDataItemType = "sql";
-const SnippetListOutputDataItemType = S.String;
-
 export type SnippetListOutputDataItemVisibility = "user" | "project" | "org" | "public";
-const SnippetListOutputDataItemVisibility = S.String;
-
 export type SnippetListOutputDataItemProject = SnippetResponseOutputProject;
 export type SnippetListOutputDataItemOwner = SnippetResponseOutputOwner;
 export type SnippetListOutputDataItemUpdatedBy = SnippetResponseOutputOwner;
@@ -5076,79 +3130,39 @@ export interface SnippetListOutputDataItem {
   updated_by: SnippetResponseOutputOwner;
   favorite: boolean;
 }
-const SnippetListOutputDataItem = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<SnippetListOutputDataItem>;
-
 export type SnippetListOutputDataList = Array<SnippetListOutputDataItem>;
-const SnippetListOutputDataList = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<SnippetListOutputDataList>;
-
 export interface SnippetListOutput {
   data: SnippetListOutputDataList;
   cursor?: string;
 }
-const SnippetListOutput = /*@__PURE__*/ __L.at(__c42, 0) as any as S.Schema<SnippetListOutput>;
-
 export interface V1ListAllSsoProviderRequest {
   /** Project ref */
   ref: string;
 }
-const V1ListAllSsoProviderRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<V1ListAllSsoProviderRequest>;
-
 export type ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValueNamesList =
   Array<string>;
-const ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValueNamesList =
-  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValueNamesList>;
-
 export type ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValueDefault =
   | unknown
   | number
   | string
   | boolean;
-const ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValueDefault =
-  /*@__PURE__*/ __L.at(__c42, 2);
-
 export interface ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValue {
   name?: string;
   names?: ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValueNamesList;
   array?: boolean;
   default?: ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValueDefault;
 }
-const ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValue = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValue>;
-
 export type ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysMap = {
   [key: string]: ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValue | undefined;
 };
-const ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysMap = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysMap>;
-
 export interface ListProvidersResponseOutputItemsItemSamlAttributeMapping {
   keys: ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysMap;
 }
-const ListProvidersResponseOutputItemsItemSamlAttributeMapping = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<ListProvidersResponseOutputItemsItemSamlAttributeMapping>;
-
 export type ListProvidersResponseOutputItemsItemSamlNameIdFormat =
   | "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
   | "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
   | "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
   | "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent";
-const ListProvidersResponseOutputItemsItemSamlNameIdFormat = S.String;
-
 export interface ListProvidersResponseOutputItemsItemSaml {
   entity_id: string;
   metadata_url?: string;
@@ -5156,18 +3170,10 @@ export interface ListProvidersResponseOutputItemsItemSaml {
   attribute_mapping?: ListProvidersResponseOutputItemsItemSamlAttributeMapping;
   name_id_format?: ListProvidersResponseOutputItemsItemSamlNameIdFormat;
 }
-const ListProvidersResponseOutputItemsItemSaml = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<ListProvidersResponseOutputItemsItemSaml>;
-
 export type ListProvidersResponseOutputItemsItemDomainsItem =
   CreateProviderResponseOutputDomainsItem;
 export type ListProvidersResponseOutputItemsItemDomainsList =
   Array<CreateProviderResponseOutputDomainsItem>;
-const ListProvidersResponseOutputItemsItemDomainsList =
-  CreateProviderResponseOutputDomainsList as any as S.Schema<ListProvidersResponseOutputItemsItemDomainsList>;
-
 export interface ListProvidersResponseOutputItemsItem {
   id: string;
   saml?: ListProvidersResponseOutputItemsItemSaml;
@@ -5175,34 +3181,14 @@ export interface ListProvidersResponseOutputItemsItem {
   created_at?: string;
   updated_at?: string;
 }
-const ListProvidersResponseOutputItemsItem = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<ListProvidersResponseOutputItemsItem>;
-
 export type ListProvidersResponseOutputItemsList = Array<ListProvidersResponseOutputItemsItem>;
-const ListProvidersResponseOutputItemsList = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<ListProvidersResponseOutputItemsList>;
-
 export interface ListProvidersResponseOutput {
   items: ListProvidersResponseOutputItemsList;
 }
-const ListProvidersResponseOutput = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<ListProvidersResponseOutput>;
-
 export interface V1ListAvailableRestoreVersionsRequest {
   /** Project ref */
   ref: string;
 }
-const V1ListAvailableRestoreVersionsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<V1ListAvailableRestoreVersionsRequest>;
-
 export type GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsItemReleaseChannel =
   | "internal"
   | "alpha"
@@ -5210,52 +3196,26 @@ export type GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsIte
   | "ga"
   | "withdrawn"
   | "preview";
-const GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsItemReleaseChannel =
-  S.String;
-
 export type GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsItemPostgresEngine =
   | "13"
   | "14"
   | "15"
   | "17"
   | "17-oriole";
-const GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsItemPostgresEngine =
-  S.String;
-
 export interface GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsItem {
   version: string;
   release_channel: GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsItemReleaseChannel;
   postgres_engine: GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsItemPostgresEngine;
 }
-const GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsItem = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsItem>;
-
 export type GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsList =
   Array<GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsItem>;
-const GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsList = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsList>;
-
 export interface GetProjectAvailableRestoreVersionsResponseOutput {
   available_versions: GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsList;
 }
-const GetProjectAvailableRestoreVersionsResponseOutput = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<GetProjectAvailableRestoreVersionsResponseOutput>;
-
 export interface V1ListJitAccessRequest {
   /** Project ref */
   ref: string;
 }
-const V1ListJitAccessRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<V1ListJitAccessRequest>;
-
 export type JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsItem =
   JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem;
 export type JitListAccessResponseOutputItemsItemCase0UserRolesItemAllowedNetworksAllowedCidrsList =
@@ -5313,61 +3273,24 @@ export interface JitListAccessResponseOutputItemsItemCase1 {
 export type JitListAccessResponseOutputItemsItem =
   | JitListAccessResponseOutputItemsItemCase0
   | JitListAccessResponseOutputItemsItemCase1;
-const JitListAccessResponseOutputItemsItem = /*@__PURE__*/ __L.at(__c43, 7);
-
 export type JitListAccessResponseOutputItemsList = Array<JitListAccessResponseOutputItemsItem>;
-const JitListAccessResponseOutputItemsList = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<JitListAccessResponseOutputItemsList>;
-
 export interface JitListAccessResponseOutput {
   items: JitListAccessResponseOutputItemsList;
 }
-const JitListAccessResponseOutput = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<JitListAccessResponseOutput>;
-
 export interface V1ListMigrationHistoryRequest {
   /** Project ref */
   ref: string;
 }
-const V1ListMigrationHistoryRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<V1ListMigrationHistoryRequest>;
-
 export interface V1ListMigrationsResponseOutputItem {
   version: string;
   name?: string;
 }
-const V1ListMigrationsResponseOutputItem = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<V1ListMigrationsResponseOutputItem>;
-
 export type V1ListMigrationsResponseOutput = Array<V1ListMigrationsResponseOutputItem>;
-const V1ListMigrationsResponseOutput = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<V1ListMigrationsResponseOutput>;
-
 export type V1ListMigrationHistoryResponse = V1ListMigrationsResponseOutput;
-const V1ListMigrationHistoryResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<V1ListMigrationHistoryResponse>;
-
 export interface V1ListOrganizationMembersRequest {
   /** Organization slug */
   slug: string;
 }
-const V1ListOrganizationMembersRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<V1ListOrganizationMembersRequest>;
-
 export interface V1OrganizationMemberResponseOutput {
   user_id: string;
   user_name: string;
@@ -5376,32 +3299,12 @@ export interface V1OrganizationMemberResponseOutput {
   mfa_enabled: boolean;
   avatar_url: string | null;
 }
-const V1OrganizationMemberResponseOutput = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<V1OrganizationMemberResponseOutput>;
-
 export type V1ListOrganizationMembersResponseBodyList = Array<V1OrganizationMemberResponseOutput>;
-const V1ListOrganizationMembersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<V1ListOrganizationMembersResponseBodyList>;
-
 export type V1ListOrganizationMembersResponse = V1ListOrganizationMembersResponseBodyList;
-const V1ListOrganizationMembersResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<V1ListOrganizationMembersResponse>;
-
 export interface V1ListProjectAddonsRequest {
   /** Project ref */
   ref: string;
 }
-const V1ListProjectAddonsRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<V1ListProjectAddonsRequest>;
-
 export type ListProjectAddonsResponseOutputSelectedAddonsItemType =
   | "custom_domain"
   | "compute_instance"
@@ -5411,8 +3314,6 @@ export type ListProjectAddonsResponseOutputSelectedAddonsItemType =
   | "auth_mfa_web_authn"
   | "log_drain"
   | "etl_pipeline";
-const ListProjectAddonsResponseOutputSelectedAddonsItemType = S.String;
-
 export type ListProjectAddonsResponseOutputSelectedAddonsItemVariantIdCase0 =
   | "ci_micro"
   | "ci_small"
@@ -5454,54 +3355,28 @@ export type ListProjectAddonsResponseOutputSelectedAddonsItemVariantId =
   | ListProjectAddonsResponseOutputSelectedAddonsItemVariantIdCase5
   | ListProjectAddonsResponseOutputSelectedAddonsItemVariantIdCase6
   | ListProjectAddonsResponseOutputSelectedAddonsItemVariantIdCase7;
-const ListProjectAddonsResponseOutputSelectedAddonsItemVariantId = /*@__PURE__*/ __L.at(__c45, 3);
-
 export type ListProjectAddonsResponseOutputSelectedAddonsItemVariantPriceType = "fixed" | "usage";
-const ListProjectAddonsResponseOutputSelectedAddonsItemVariantPriceType = S.String;
-
 export type ListProjectAddonsResponseOutputSelectedAddonsItemVariantPriceInterval =
   | "monthly"
   | "hourly";
-const ListProjectAddonsResponseOutputSelectedAddonsItemVariantPriceInterval = S.String;
-
 export interface ListProjectAddonsResponseOutputSelectedAddonsItemVariantPrice {
   description: string;
   type: ListProjectAddonsResponseOutputSelectedAddonsItemVariantPriceType;
   interval: ListProjectAddonsResponseOutputSelectedAddonsItemVariantPriceInterval;
   amount: number;
 }
-const ListProjectAddonsResponseOutputSelectedAddonsItemVariantPrice = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<ListProjectAddonsResponseOutputSelectedAddonsItemVariantPrice>;
-
 export interface ListProjectAddonsResponseOutputSelectedAddonsItemVariant {
   id: ListProjectAddonsResponseOutputSelectedAddonsItemVariantId;
   name: string;
   price: ListProjectAddonsResponseOutputSelectedAddonsItemVariantPrice;
   meta?: JsonValueOutput;
 }
-const ListProjectAddonsResponseOutputSelectedAddonsItemVariant = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<ListProjectAddonsResponseOutputSelectedAddonsItemVariant>;
-
 export interface ListProjectAddonsResponseOutputSelectedAddonsItem {
   type: ListProjectAddonsResponseOutputSelectedAddonsItemType;
   variant: ListProjectAddonsResponseOutputSelectedAddonsItemVariant;
 }
-const ListProjectAddonsResponseOutputSelectedAddonsItem = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<ListProjectAddonsResponseOutputSelectedAddonsItem>;
-
 export type ListProjectAddonsResponseOutputSelectedAddonsList =
   Array<ListProjectAddonsResponseOutputSelectedAddonsItem>;
-const ListProjectAddonsResponseOutputSelectedAddonsList = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<ListProjectAddonsResponseOutputSelectedAddonsList>;
-
 export type ListProjectAddonsResponseOutputAvailableAddonsItemType =
   | "custom_domain"
   | "compute_instance"
@@ -5511,8 +3386,6 @@ export type ListProjectAddonsResponseOutputAvailableAddonsItemType =
   | "auth_mfa_web_authn"
   | "log_drain"
   | "etl_pipeline";
-const ListProjectAddonsResponseOutputAvailableAddonsItemType = S.String;
-
 export type ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemIdCase0 =
   | "ci_micro"
   | "ci_small"
@@ -5555,11 +3428,6 @@ export type ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemId =
   | ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemIdCase5
   | ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemIdCase6
   | ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemIdCase7;
-const ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemId = /*@__PURE__*/ __L.at(
-  __c46,
-  0,
-);
-
 export type ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemPriceType =
   | "fixed"
   | "usage";
@@ -5572,96 +3440,41 @@ export interface ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemP
   interval: ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemPriceInterval;
   amount: number;
 }
-const ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemPrice =
-  ListProjectAddonsResponseOutputSelectedAddonsItemVariantPrice as any as S.Schema<ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemPrice>;
-
 export interface ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItem {
   id: ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemId;
   name: string;
   price: ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemPrice;
   meta?: JsonValueOutput;
 }
-const ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItem = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItem>;
-
 export type ListProjectAddonsResponseOutputAvailableAddonsItemVariantsList =
   Array<ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItem>;
-const ListProjectAddonsResponseOutputAvailableAddonsItemVariantsList = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<ListProjectAddonsResponseOutputAvailableAddonsItemVariantsList>;
-
 export interface ListProjectAddonsResponseOutputAvailableAddonsItem {
   type: ListProjectAddonsResponseOutputAvailableAddonsItemType;
   name: string;
   variants: ListProjectAddonsResponseOutputAvailableAddonsItemVariantsList;
 }
-const ListProjectAddonsResponseOutputAvailableAddonsItem = /*@__PURE__*/ __L.at(
-  __c46,
-  3,
-) as any as S.Schema<ListProjectAddonsResponseOutputAvailableAddonsItem>;
-
 export type ListProjectAddonsResponseOutputAvailableAddonsList =
   Array<ListProjectAddonsResponseOutputAvailableAddonsItem>;
-const ListProjectAddonsResponseOutputAvailableAddonsList = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<ListProjectAddonsResponseOutputAvailableAddonsList>;
-
 export interface ListProjectAddonsResponseOutput {
   selected_addons: ListProjectAddonsResponseOutputSelectedAddonsList;
   available_addons: ListProjectAddonsResponseOutputAvailableAddonsList;
 }
-const ListProjectAddonsResponseOutput = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<ListProjectAddonsResponseOutput>;
-
 export interface V1ListProjectTpaIntegrationsRequest {
   /** Project ref */
   ref: string;
 }
-const V1ListProjectTpaIntegrationsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<V1ListProjectTpaIntegrationsRequest>;
-
 export type V1ListProjectTpaIntegrationsResponseBodyList = Array<ThirdPartyAuthOutput>;
-const V1ListProjectTpaIntegrationsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<V1ListProjectTpaIntegrationsResponseBodyList>;
-
 export type V1ListProjectTpaIntegrationsResponse = V1ListProjectTpaIntegrationsResponseBodyList;
-const V1ListProjectTpaIntegrationsResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<V1ListProjectTpaIntegrationsResponse>;
-
 export interface V1MergeABranchRequest {
   /** Branch ref or deprecated branch ID */
   branch_id_or_ref: string;
   migration_version?: string;
 }
-const V1MergeABranchRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<V1MergeABranchRequest>;
-
 export type BranchUpdateResponseOutputMessage = "ok";
-const BranchUpdateResponseOutputMessage = S.String;
-
 export interface BranchUpdateResponseOutput {
   workflow_run_id: string;
   message: BranchUpdateResponseOutputMessage;
 }
-const BranchUpdateResponseOutput = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<BranchUpdateResponseOutput>;
-
 export type V1ModifyDatabaseDiskRequestAttributesCase0Type = "gp3";
 export interface V1ModifyDatabaseDiskRequestAttributesCase0 {
   iops: number;
@@ -5678,28 +3491,14 @@ export interface V1ModifyDatabaseDiskRequestAttributesCase1 {
 export type V1ModifyDatabaseDiskRequestAttributes =
   | V1ModifyDatabaseDiskRequestAttributesCase0
   | V1ModifyDatabaseDiskRequestAttributesCase1;
-const V1ModifyDatabaseDiskRequestAttributes = /*@__PURE__*/ __L.at(__c47, 3);
-
 export interface V1ModifyDatabaseDiskRequest {
   /** Project ref */
   ref: string;
   attributes: V1ModifyDatabaseDiskRequestAttributes;
 }
-const V1ModifyDatabaseDiskRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<V1ModifyDatabaseDiskRequest>;
-
 export interface V1ModifyDatabaseDiskResponse {}
-const V1ModifyDatabaseDiskResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1ModifyDatabaseDiskResponse>;
-
 export type V1OauthAuthorizeProjectClaimRequestResponseType = "code" | "token" | "id_token token";
-const V1OauthAuthorizeProjectClaimRequestResponseType = S.String;
-
 export type V1OauthAuthorizeProjectClaimRequestCodeChallengeMethod = "plain" | "sha256" | "S256";
-const V1OauthAuthorizeProjectClaimRequestCodeChallengeMethod = S.String;
-
 export interface V1OauthAuthorizeProjectClaimRequest {
   /** Project ref */
   project_ref: string;
@@ -5711,15 +3510,7 @@ export interface V1OauthAuthorizeProjectClaimRequest {
   code_challenge?: string;
   code_challenge_method?: V1OauthAuthorizeProjectClaimRequestCodeChallengeMethod | (string & {});
 }
-const V1OauthAuthorizeProjectClaimRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<V1OauthAuthorizeProjectClaimRequest>;
-
 export interface V1OauthAuthorizeProjectClaimResponse {}
-const V1OauthAuthorizeProjectClaimResponse =
-  V1CancelAProjectRestorationResponse as any as S.Schema<V1OauthAuthorizeProjectClaimResponse>;
-
 export interface V1PatchAMigrationRequest {
   /** Project ref */
   ref: string;
@@ -5727,106 +3518,49 @@ export interface V1PatchAMigrationRequest {
   name?: string;
   rollback?: string;
 }
-const V1PatchAMigrationRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<V1PatchAMigrationRequest>;
-
 export interface V1PatchAMigrationResponse {}
-const V1PatchAMigrationResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1PatchAMigrationResponse>;
-
 export type V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsList = Array<string>;
 export type V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsV6List = Array<string>;
 export interface V1PatchNetworkRestrictionsRequestAdd {
   dbAllowedCidrs?: V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsList;
   dbAllowedCidrsV6?: V1PatchNetworkRestrictionsRequestAddDbAllowedCidrsV6List;
 }
-const V1PatchNetworkRestrictionsRequestAdd =
-  NetworkRestrictionsResponseOutputConfig as any as S.Schema<V1PatchNetworkRestrictionsRequestAdd>;
-
 export type V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsList = Array<string>;
 export type V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsV6List = Array<string>;
 export interface V1PatchNetworkRestrictionsRequestRemove {
   dbAllowedCidrs?: V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsList;
   dbAllowedCidrsV6?: V1PatchNetworkRestrictionsRequestRemoveDbAllowedCidrsV6List;
 }
-const V1PatchNetworkRestrictionsRequestRemove =
-  NetworkRestrictionsResponseOutputConfig as any as S.Schema<V1PatchNetworkRestrictionsRequestRemove>;
-
 export interface V1PatchNetworkRestrictionsRequest {
   /** Project ref */
   ref: string;
   add?: V1PatchNetworkRestrictionsRequestAdd;
   remove?: V1PatchNetworkRestrictionsRequestRemove;
 }
-const V1PatchNetworkRestrictionsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<V1PatchNetworkRestrictionsRequest>;
-
 export type NetworkRestrictionsV2ResponseOutputEntitlement = "disallowed" | "allowed";
-const NetworkRestrictionsV2ResponseOutputEntitlement = S.String;
-
 export type NetworkRestrictionsV2ResponseOutputConfigDbAllowedCidrsItemType = "v4" | "v6";
-const NetworkRestrictionsV2ResponseOutputConfigDbAllowedCidrsItemType = S.String;
-
 export interface NetworkRestrictionsV2ResponseOutputConfigDbAllowedCidrsItem {
   address: string;
   type: NetworkRestrictionsV2ResponseOutputConfigDbAllowedCidrsItemType;
 }
-const NetworkRestrictionsV2ResponseOutputConfigDbAllowedCidrsItem = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<NetworkRestrictionsV2ResponseOutputConfigDbAllowedCidrsItem>;
-
 export type NetworkRestrictionsV2ResponseOutputConfigDbAllowedCidrsList =
   Array<NetworkRestrictionsV2ResponseOutputConfigDbAllowedCidrsItem>;
-const NetworkRestrictionsV2ResponseOutputConfigDbAllowedCidrsList = /*@__PURE__*/ __L.at(
-  __c48,
-  1,
-) as any as S.Schema<NetworkRestrictionsV2ResponseOutputConfigDbAllowedCidrsList>;
-
 /** At any given point in time, this is the config that the user has requested be applied to their project. The `status` field indicates if it has been applied to the project, or is pending. When an updated config is received, the applied config is moved to `old_config`. */
 export interface NetworkRestrictionsV2ResponseOutputConfig {
   dbAllowedCidrs?: NetworkRestrictionsV2ResponseOutputConfigDbAllowedCidrsList;
 }
-const NetworkRestrictionsV2ResponseOutputConfig = /*@__PURE__*/ __L.at(
-  __c48,
-  2,
-) as any as S.Schema<NetworkRestrictionsV2ResponseOutputConfig>;
-
 export type NetworkRestrictionsV2ResponseOutputOldConfigDbAllowedCidrsItemType = "v4" | "v6";
-const NetworkRestrictionsV2ResponseOutputOldConfigDbAllowedCidrsItemType = S.String;
-
 export interface NetworkRestrictionsV2ResponseOutputOldConfigDbAllowedCidrsItem {
   address: string;
   type: NetworkRestrictionsV2ResponseOutputOldConfigDbAllowedCidrsItemType;
 }
-const NetworkRestrictionsV2ResponseOutputOldConfigDbAllowedCidrsItem = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<NetworkRestrictionsV2ResponseOutputOldConfigDbAllowedCidrsItem>;
-
 export type NetworkRestrictionsV2ResponseOutputOldConfigDbAllowedCidrsList =
   Array<NetworkRestrictionsV2ResponseOutputOldConfigDbAllowedCidrsItem>;
-const NetworkRestrictionsV2ResponseOutputOldConfigDbAllowedCidrsList = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<NetworkRestrictionsV2ResponseOutputOldConfigDbAllowedCidrsList>;
-
 /** Populated when a new config has been received, but not registered as successfully applied to a project. */
 export interface NetworkRestrictionsV2ResponseOutputOldConfig {
   dbAllowedCidrs?: NetworkRestrictionsV2ResponseOutputOldConfigDbAllowedCidrsList;
 }
-const NetworkRestrictionsV2ResponseOutputOldConfig = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<NetworkRestrictionsV2ResponseOutputOldConfig>;
-
 export type NetworkRestrictionsV2ResponseOutputStatus = "stored" | "applied";
-const NetworkRestrictionsV2ResponseOutputStatus = S.String;
-
 export interface NetworkRestrictionsV2ResponseOutput {
   entitlement: NetworkRestrictionsV2ResponseOutputEntitlement;
   /** At any given point in time, this is the config that the user has requested be applied to their project. The `status` field indicates if it has been applied to the project, or is pending. When an updated config is received, the applied config is moved to `old_config`. */
@@ -5837,203 +3571,90 @@ export interface NetworkRestrictionsV2ResponseOutput {
   applied_at?: string;
   status: NetworkRestrictionsV2ResponseOutputStatus;
 }
-const NetworkRestrictionsV2ResponseOutput = /*@__PURE__*/ __L.at(
-  __c48,
-  6,
-) as any as S.Schema<NetworkRestrictionsV2ResponseOutput>;
-
 export interface V1PauseAProjectRequest {
   /** Project ref */
   ref: string;
 }
-const V1PauseAProjectRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<V1PauseAProjectRequest>;
-
 export interface V1PauseAProjectResponse {}
-const V1PauseAProjectResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1PauseAProjectResponse>;
-
 export interface V1PushABranchRequest {
   /** Branch ref or deprecated branch ID */
   branch_id_or_ref: string;
   migration_version?: string;
 }
-const V1PushABranchRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<V1PushABranchRequest>;
-
 export type V1ReadOnlyQueryRequestParametersList = Array<unknown>;
-const V1ReadOnlyQueryRequestParametersList =
-  AnalyticsResponseOutputResultList as any as S.Schema<V1ReadOnlyQueryRequestParametersList>;
-
 export interface V1ReadOnlyQueryRequest {
   /** Project ref */
   ref: string;
   query: string;
   parameters?: V1ReadOnlyQueryRequestParametersList;
 }
-const V1ReadOnlyQueryRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<V1ReadOnlyQueryRequest>;
-
 export interface V1ReadOnlyQueryResponse {}
-const V1ReadOnlyQueryResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1ReadOnlyQueryResponse>;
-
 export interface V1RemoveAReadReplicaRequest {
   /** Project ref */
   ref: string;
   database_identifier: string;
 }
-const V1RemoveAReadReplicaRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  2,
-) as any as S.Schema<V1RemoveAReadReplicaRequest>;
-
 export interface V1RemoveAReadReplicaResponse {}
-const V1RemoveAReadReplicaResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1RemoveAReadReplicaResponse>;
-
 export interface V1RemoveProjectAddonRequest {
   /** Project ref */
   ref: string;
   addon_variant: string;
 }
-const V1RemoveProjectAddonRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  3,
-) as any as S.Schema<V1RemoveProjectAddonRequest>;
-
 export interface V1RemoveProjectAddonResponse {}
-const V1RemoveProjectAddonResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1RemoveProjectAddonResponse>;
-
 export interface V1RemoveProjectSigningKeyRequest {
   /** Project ref */
   ref: string;
   id: string;
 }
-const V1RemoveProjectSigningKeyRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<V1RemoveProjectSigningKeyRequest>;
-
 export interface V1ResetABranchRequest {
   /** Branch ref or deprecated branch ID */
   branch_id_or_ref: string;
   migration_version?: string;
 }
-const V1ResetABranchRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<V1ResetABranchRequest>;
-
 export interface V1RestartAProjectRequest {
   /** Project ref */
   ref: string;
 }
-const V1RestartAProjectRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<V1RestartAProjectRequest>;
-
 export interface V1RestartAProjectResponse {}
-const V1RestartAProjectResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1RestartAProjectResponse>;
-
 export interface V1RestoreABranchRequest {
   /** Branch ref or deprecated branch ID */
   branch_id_or_ref: string;
 }
-const V1RestoreABranchRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<V1RestoreABranchRequest>;
-
 export type BranchRestoreResponseOutputMessage = "Branch restoration initiated";
 export interface BranchRestoreResponseOutput {
   message: BranchRestoreResponseOutputMessage;
 }
-const BranchRestoreResponseOutput =
-  BranchDeleteResponseOutput as any as S.Schema<BranchRestoreResponseOutput>;
-
 export interface V1RestoreAProjectRequest {
   /** Project ref */
   ref: string;
 }
-const V1RestoreAProjectRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  0,
-) as any as S.Schema<V1RestoreAProjectRequest>;
-
 export interface V1RestoreAProjectResponse {}
-const V1RestoreAProjectResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1RestoreAProjectResponse>;
-
 export interface V1RestorePhysicalBackupRequest {
   /** Project ref */
   ref: string;
   id: number;
 }
-const V1RestorePhysicalBackupRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<V1RestorePhysicalBackupRequest>;
-
 export interface V1RestorePhysicalBackupResponse {}
-const V1RestorePhysicalBackupResponse =
-  V1EnableDatabaseWebhookResponse as any as S.Schema<V1RestorePhysicalBackupResponse>;
-
 export interface V1RestorePitrBackupRequest {
   /** Project ref */
   ref: string;
   recovery_time_target_unix: number;
 }
-const V1RestorePitrBackupRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  2,
-) as any as S.Schema<V1RestorePitrBackupRequest>;
-
 export interface V1RestorePitrBackupResponse {}
-const V1RestorePitrBackupResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1RestorePitrBackupResponse>;
-
 export interface V1RevokeTokenRequest {
   client_id: string;
   client_secret: T.Sensitive;
   refresh_token: T.Sensitive;
 }
-const V1RevokeTokenRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<V1RevokeTokenRequest>;
-
 export interface V1RevokeTokenResponse {}
-const V1RevokeTokenResponse = V1ApplyAMigrationResponse as any as S.Schema<V1RevokeTokenResponse>;
-
 export interface V1RollbackMigrationsRequest {
   /** Project ref */
   ref: string;
   /** Rollback migrations greater or equal to this version */
   gte: string;
 }
-const V1RollbackMigrationsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<V1RollbackMigrationsRequest>;
-
 export interface V1RollbackMigrationsResponse {}
-const V1RollbackMigrationsResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1RollbackMigrationsResponse>;
-
 export type V1RunAQueryRequestParametersList = Array<unknown>;
-const V1RunAQueryRequestParametersList =
-  AnalyticsResponseOutputResultList as any as S.Schema<V1RunAQueryRequestParametersList>;
-
 export interface V1RunAQueryRequest {
   /** Project ref */
   ref: string;
@@ -6041,24 +3662,12 @@ export interface V1RunAQueryRequest {
   parameters?: V1RunAQueryRequestParametersList;
   read_only?: boolean;
 }
-const V1RunAQueryRequest = /*@__PURE__*/ __L.at(__c50, 5) as any as S.Schema<V1RunAQueryRequest>;
-
 export interface V1RunAQueryResponse {}
-const V1RunAQueryResponse = V1ApplyAMigrationResponse as any as S.Schema<V1RunAQueryResponse>;
-
 export interface V1ScrapeProjectMetricsRequest {
   /** Project ref */
   ref: string;
 }
-const V1ScrapeProjectMetricsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<V1ScrapeProjectMetricsRequest>;
-
 export interface V1ScrapeProjectMetricsResponse {}
-const V1ScrapeProjectMetricsResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1ScrapeProjectMetricsResponse>;
-
 /** Region you want your read replica to reside in */
 export type V1SetupAReadReplicaRequestReadReplicaRegion =
   | "us-east-1"
@@ -6079,46 +3688,24 @@ export type V1SetupAReadReplicaRequestReadReplicaRegion =
   | "ca-central-1"
   | "ap-south-1"
   | "sa-east-1";
-const V1SetupAReadReplicaRequestReadReplicaRegion = S.String;
-
 export interface V1SetupAReadReplicaRequest {
   /** Project ref */
   ref: string;
   /** Region you want your read replica to reside in */
   read_replica_region: V1SetupAReadReplicaRequestReadReplicaRegion | (string & {});
 }
-const V1SetupAReadReplicaRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<V1SetupAReadReplicaRequest>;
-
 export interface V1SetupAReadReplicaResponse {}
-const V1SetupAReadReplicaResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1SetupAReadReplicaResponse>;
-
 export interface V1ShutdownRealtimeRequest {
   /** Project ref */
   ref: string;
 }
-const V1ShutdownRealtimeRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<V1ShutdownRealtimeRequest>;
-
 export interface V1ShutdownRealtimeResponse {}
-const V1ShutdownRealtimeResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1ShutdownRealtimeResponse>;
-
 export interface V1UndoRequest {
   /** Project ref */
   ref: string;
   name: string;
 }
-const V1UndoRequest = /*@__PURE__*/ __L.at(__c51, 1) as any as S.Schema<V1UndoRequest>;
-
 export interface V1UndoResponse {}
-const V1UndoResponse = V1ApplyAMigrationResponse as any as S.Schema<V1UndoResponse>;
-
 export type V1UpdateABranchConfigRequestStatus =
   | "CREATING_PROJECT"
   | "RUNNING_MIGRATIONS"
@@ -6126,8 +3713,6 @@ export type V1UpdateABranchConfigRequestStatus =
   | "MIGRATIONS_FAILED"
   | "FUNCTIONS_DEPLOYED"
   | "FUNCTIONS_FAILED";
-const V1UpdateABranchConfigRequestStatus = S.String;
-
 export interface V1UpdateABranchConfigRequest {
   /** Branch ref or deprecated branch ID */
   branch_id_or_ref: string;
@@ -6141,11 +3726,6 @@ export interface V1UpdateABranchConfigRequest {
   /** HTTP endpoint to receive branch status updates. */
   notify_url?: string;
 }
-const V1UpdateABranchConfigRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  2,
-) as any as S.Schema<V1UpdateABranchConfigRequest>;
-
 export type V1UpdateActionRunStatusRequestClone =
   | "CREATED"
   | "DEAD"
@@ -6154,8 +3734,6 @@ export type V1UpdateActionRunStatusRequestClone =
   | "REMOVING"
   | "RESTARTING"
   | "RUNNING";
-const V1UpdateActionRunStatusRequestClone = S.String;
-
 export type V1UpdateActionRunStatusRequestPull =
   | "CREATED"
   | "DEAD"
@@ -6164,8 +3742,6 @@ export type V1UpdateActionRunStatusRequestPull =
   | "REMOVING"
   | "RESTARTING"
   | "RUNNING";
-const V1UpdateActionRunStatusRequestPull = S.String;
-
 export type V1UpdateActionRunStatusRequestHealth =
   | "CREATED"
   | "DEAD"
@@ -6174,8 +3750,6 @@ export type V1UpdateActionRunStatusRequestHealth =
   | "REMOVING"
   | "RESTARTING"
   | "RUNNING";
-const V1UpdateActionRunStatusRequestHealth = S.String;
-
 export type V1UpdateActionRunStatusRequestConfigure =
   | "CREATED"
   | "DEAD"
@@ -6184,8 +3758,6 @@ export type V1UpdateActionRunStatusRequestConfigure =
   | "REMOVING"
   | "RESTARTING"
   | "RUNNING";
-const V1UpdateActionRunStatusRequestConfigure = S.String;
-
 export type V1UpdateActionRunStatusRequestMigrate =
   | "CREATED"
   | "DEAD"
@@ -6194,8 +3766,6 @@ export type V1UpdateActionRunStatusRequestMigrate =
   | "REMOVING"
   | "RESTARTING"
   | "RUNNING";
-const V1UpdateActionRunStatusRequestMigrate = S.String;
-
 export type V1UpdateActionRunStatusRequestSeed =
   | "CREATED"
   | "DEAD"
@@ -6204,8 +3774,6 @@ export type V1UpdateActionRunStatusRequestSeed =
   | "REMOVING"
   | "RESTARTING"
   | "RUNNING";
-const V1UpdateActionRunStatusRequestSeed = S.String;
-
 export type V1UpdateActionRunStatusRequestDeploy =
   | "CREATED"
   | "DEAD"
@@ -6214,8 +3782,6 @@ export type V1UpdateActionRunStatusRequestDeploy =
   | "REMOVING"
   | "RESTARTING"
   | "RUNNING";
-const V1UpdateActionRunStatusRequestDeploy = S.String;
-
 export interface V1UpdateActionRunStatusRequest {
   /** Project ref */
   ref: string;
@@ -6229,18 +3795,10 @@ export interface V1UpdateActionRunStatusRequest {
   seed?: V1UpdateActionRunStatusRequestSeed | (string & {});
   deploy?: V1UpdateActionRunStatusRequestDeploy | (string & {});
 }
-const V1UpdateActionRunStatusRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  3,
-) as any as S.Schema<V1UpdateActionRunStatusRequest>;
-
 export type UpdateRunStatusResponseOutputMessage = "ok";
 export interface UpdateRunStatusResponseOutput {
   message: UpdateRunStatusResponseOutputMessage;
 }
-const UpdateRunStatusResponseOutput =
-  BranchDeleteResponseOutput as any as S.Schema<UpdateRunStatusResponseOutput>;
-
 export interface V1UpdateAFunctionRequest {
   /** Project ref */
   ref: string;
@@ -6255,70 +3813,35 @@ export interface V1UpdateAFunctionRequest {
   ezbr_sha256?: string;
   body?: string;
 }
-const V1UpdateAFunctionRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<V1UpdateAFunctionRequest>;
-
 export interface V1UpdateAProjectRequest {
   /** Project ref */
   ref: string;
   name: string;
 }
-const V1UpdateAProjectRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<V1UpdateAProjectRequest>;
-
 export type V1UpdateASsoProviderRequestDomainsList = Array<string>;
-const V1UpdateASsoProviderRequestDomainsList =
-  DeleteSecretsBody as any as S.Schema<V1UpdateASsoProviderRequestDomainsList>;
-
 export type V1UpdateASsoProviderRequestAttributeMappingKeysValueNamesList = Array<string>;
-const V1UpdateASsoProviderRequestAttributeMappingKeysValueNamesList =
-  DeleteSecretsBody as any as S.Schema<V1UpdateASsoProviderRequestAttributeMappingKeysValueNamesList>;
-
 export type V1UpdateASsoProviderRequestAttributeMappingKeysValueDefault =
   | unknown
   | number
   | string
   | boolean;
-const V1UpdateASsoProviderRequestAttributeMappingKeysValueDefault = /*@__PURE__*/ __L.at(__c51, 6);
-
 export interface V1UpdateASsoProviderRequestAttributeMappingKeysValue {
   name?: string;
   names?: V1UpdateASsoProviderRequestAttributeMappingKeysValueNamesList;
   array?: boolean;
   default?: V1UpdateASsoProviderRequestAttributeMappingKeysValueDefault;
 }
-const V1UpdateASsoProviderRequestAttributeMappingKeysValue = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<V1UpdateASsoProviderRequestAttributeMappingKeysValue>;
-
 export type V1UpdateASsoProviderRequestAttributeMappingKeysMap = {
   [key: string]: V1UpdateASsoProviderRequestAttributeMappingKeysValue | undefined;
 };
-const V1UpdateASsoProviderRequestAttributeMappingKeysMap = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<V1UpdateASsoProviderRequestAttributeMappingKeysMap>;
-
 export interface V1UpdateASsoProviderRequestAttributeMapping {
   keys: V1UpdateASsoProviderRequestAttributeMappingKeysMap;
 }
-const V1UpdateASsoProviderRequestAttributeMapping = /*@__PURE__*/ __L.at(
-  __c52,
-  1,
-) as any as S.Schema<V1UpdateASsoProviderRequestAttributeMapping>;
-
 export type V1UpdateASsoProviderRequestNameIdFormat =
   | "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
   | "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
   | "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
   | "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent";
-const V1UpdateASsoProviderRequestNameIdFormat = S.String;
-
 export interface V1UpdateASsoProviderRequest {
   /** Project ref */
   ref: string;
@@ -6329,59 +3852,29 @@ export interface V1UpdateASsoProviderRequest {
   attribute_mapping?: V1UpdateASsoProviderRequestAttributeMapping;
   name_id_format?: V1UpdateASsoProviderRequestNameIdFormat | (string & {});
 }
-const V1UpdateASsoProviderRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<V1UpdateASsoProviderRequest>;
-
 export type UpdateProviderResponseOutputSamlAttributeMappingKeysValueNamesList = Array<string>;
-const UpdateProviderResponseOutputSamlAttributeMappingKeysValueNamesList =
-  UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList as any as S.Schema<UpdateProviderResponseOutputSamlAttributeMappingKeysValueNamesList>;
-
 export type UpdateProviderResponseOutputSamlAttributeMappingKeysValueDefault =
   | unknown
   | number
   | string
   | boolean;
-const UpdateProviderResponseOutputSamlAttributeMappingKeysValueDefault = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-);
-
 export interface UpdateProviderResponseOutputSamlAttributeMappingKeysValue {
   name?: string;
   names?: UpdateProviderResponseOutputSamlAttributeMappingKeysValueNamesList;
   array?: boolean;
   default?: UpdateProviderResponseOutputSamlAttributeMappingKeysValueDefault;
 }
-const UpdateProviderResponseOutputSamlAttributeMappingKeysValue = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<UpdateProviderResponseOutputSamlAttributeMappingKeysValue>;
-
 export type UpdateProviderResponseOutputSamlAttributeMappingKeysMap = {
   [key: string]: UpdateProviderResponseOutputSamlAttributeMappingKeysValue | undefined;
 };
-const UpdateProviderResponseOutputSamlAttributeMappingKeysMap = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<UpdateProviderResponseOutputSamlAttributeMappingKeysMap>;
-
 export interface UpdateProviderResponseOutputSamlAttributeMapping {
   keys: UpdateProviderResponseOutputSamlAttributeMappingKeysMap;
 }
-const UpdateProviderResponseOutputSamlAttributeMapping = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<UpdateProviderResponseOutputSamlAttributeMapping>;
-
 export type UpdateProviderResponseOutputSamlNameIdFormat =
   | "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
   | "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
   | "urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress"
   | "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent";
-const UpdateProviderResponseOutputSamlNameIdFormat = S.String;
-
 export interface UpdateProviderResponseOutputSaml {
   entity_id: string;
   metadata_url?: string;
@@ -6389,17 +3882,9 @@ export interface UpdateProviderResponseOutputSaml {
   attribute_mapping?: UpdateProviderResponseOutputSamlAttributeMapping;
   name_id_format?: UpdateProviderResponseOutputSamlNameIdFormat;
 }
-const UpdateProviderResponseOutputSaml = /*@__PURE__*/ __L.at(
-  __c52,
-  7,
-) as any as S.Schema<UpdateProviderResponseOutputSaml>;
-
 export type UpdateProviderResponseOutputDomainsItem = CreateProviderResponseOutputDomainsItem;
 export type UpdateProviderResponseOutputDomainsList =
   Array<CreateProviderResponseOutputDomainsItem>;
-const UpdateProviderResponseOutputDomainsList =
-  CreateProviderResponseOutputDomainsList as any as S.Schema<UpdateProviderResponseOutputDomainsList>;
-
 export interface UpdateProviderResponseOutput {
   id: string;
   saml?: UpdateProviderResponseOutputSaml;
@@ -6407,32 +3892,19 @@ export interface UpdateProviderResponseOutput {
   created_at?: string;
   updated_at?: string;
 }
-const UpdateProviderResponseOutput = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<UpdateProviderResponseOutput>;
-
 export type V1UpdateAuthServiceConfigRequestSecurityCaptchaProvider = "turnstile" | "hcaptcha";
-const V1UpdateAuthServiceConfigRequestSecurityCaptchaProvider = S.String;
-
 export type V1UpdateAuthServiceConfigRequestPasswordRequiredCharacters =
   | "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ:0123456789"
   | "abcdefghijklmnopqrstuvwxyz:ABCDEFGHIJKLMNOPQRSTUVWXYZ:0123456789"
   | "abcdefghijklmnopqrstuvwxyz:ABCDEFGHIJKLMNOPQRSTUVWXYZ:0123456789:!@#$%^&*()_+-=[]{};'\\\\:\"|<>?,./`~"
   | "";
-const V1UpdateAuthServiceConfigRequestPasswordRequiredCharacters = S.String;
-
 export type V1UpdateAuthServiceConfigRequestSmsProvider =
   | "messagebird"
   | "textlocal"
   | "twilio"
   | "twilio_verify"
   | "vonage";
-const V1UpdateAuthServiceConfigRequestSmsProvider = S.String;
-
 export type V1UpdateAuthServiceConfigRequestDbMaxPoolSizeUnit = "connections" | "percent";
-const V1UpdateAuthServiceConfigRequestDbMaxPoolSizeUnit = S.String;
-
 export interface V1UpdateAuthServiceConfigRequest {
   /** Project ref */
   ref: string;
@@ -6682,50 +4154,25 @@ export interface V1UpdateAuthServiceConfigRequest {
   oauth_server_authorization_path?: string | null;
   custom_oauth_enabled?: boolean;
 }
-const V1UpdateAuthServiceConfigRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  1,
-) as any as S.Schema<V1UpdateAuthServiceConfigRequest>;
-
 export interface V1UpdateBackupScheduleRequest {
   /** Project ref */
   ref: string;
   /** Time of day to schedule daily backups, in UTC. Format: HH:MM:SS. */
   schedule_for: string;
 }
-const V1UpdateBackupScheduleRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  2,
-) as any as S.Schema<V1UpdateBackupScheduleRequest>;
-
 export interface V1UpdateDatabasePasswordRequest {
   /** Project ref */
   ref: string;
   password: T.Sensitive;
 }
-const V1UpdateDatabasePasswordRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<V1UpdateDatabasePasswordRequest>;
-
 export interface V1UpdatePasswordResponseOutput {
   message: string;
 }
-const V1UpdatePasswordResponseOutput = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<V1UpdatePasswordResponseOutput>;
-
 export interface V1UpdateHostnameConfigRequest {
   /** Project ref */
   ref: string;
   custom_hostname: string;
 }
-const V1UpdateHostnameConfigRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<V1UpdateHostnameConfigRequest>;
-
 export type V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsItem =
   JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem;
 export type V1UpdateJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList =
@@ -6745,33 +4192,18 @@ export interface V1UpdateJitAccessRequestRolesItem {
   branches_only?: boolean;
 }
 export type V1UpdateJitAccessRequestRolesList = Array<V1UpdateJitAccessRequestRolesItem>;
-const V1UpdateJitAccessRequestRolesList =
-  JitAccessResponseOutputUserRolesList as any as S.Schema<V1UpdateJitAccessRequestRolesList>;
-
 export interface V1UpdateJitAccessRequest {
   /** Project ref */
   ref: string;
   user_id: string;
   roles: V1UpdateJitAccessRequestRolesList;
 }
-const V1UpdateJitAccessRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<V1UpdateJitAccessRequest>;
-
 export type V1UpdateJitAccessConfigRequestState = "enabled" | "disabled";
-const V1UpdateJitAccessConfigRequestState = S.String;
-
 export interface V1UpdateJitAccessConfigRequest {
   /** Project ref */
   ref: string;
   state: V1UpdateJitAccessConfigRequestState | (string & {});
 }
-const V1UpdateJitAccessConfigRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<V1UpdateJitAccessConfigRequest>;
-
 export type V1UpdateJitAccessConfigResponseBodyCase0State = "enabled" | "disabled";
 export interface V1UpdateJitAccessConfigResponseBodyCase0 {
   state: V1UpdateJitAccessConfigResponseBodyCase0State;
@@ -6789,48 +4221,23 @@ export interface V1UpdateJitAccessConfigResponseBodyCase1 {
 export type V1UpdateJitAccessConfigResponseBody =
   | V1UpdateJitAccessConfigResponseBodyCase0
   | V1UpdateJitAccessConfigResponseBodyCase1;
-const V1UpdateJitAccessConfigResponseBody = /*@__PURE__*/ __L.at(__c54, 0);
-
 export type V1UpdateJitAccessConfigResponse = V1UpdateJitAccessConfigResponseBody;
-const V1UpdateJitAccessConfigResponse = /*@__PURE__*/ __L.at(
-  __c54,
-  1,
-) as any as S.Schema<V1UpdateJitAccessConfigResponse>;
-
 export type V1UpdateNetworkRestrictionsRequestDbAllowedCidrsList = Array<string>;
-const V1UpdateNetworkRestrictionsRequestDbAllowedCidrsList =
-  DeleteSecretsBody as any as S.Schema<V1UpdateNetworkRestrictionsRequestDbAllowedCidrsList>;
-
 export type V1UpdateNetworkRestrictionsRequestDbAllowedCidrsV6List = Array<string>;
-const V1UpdateNetworkRestrictionsRequestDbAllowedCidrsV6List =
-  DeleteSecretsBody as any as S.Schema<V1UpdateNetworkRestrictionsRequestDbAllowedCidrsV6List>;
-
 export interface V1UpdateNetworkRestrictionsRequest {
   /** Project ref */
   ref: string;
   dbAllowedCidrs?: V1UpdateNetworkRestrictionsRequestDbAllowedCidrsList;
   dbAllowedCidrsV6?: V1UpdateNetworkRestrictionsRequestDbAllowedCidrsV6List;
 }
-const V1UpdateNetworkRestrictionsRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-) as any as S.Schema<V1UpdateNetworkRestrictionsRequest>;
-
 export interface V1UpdatePgsodiumConfigRequest {
   /** Project ref */
   ref: string;
   /** The pgsodium root key: 32 bytes, hex-encoded (64 characters). */
   root_key: string;
 }
-const V1UpdatePgsodiumConfigRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<V1UpdatePgsodiumConfigRequest>;
-
 /** Dedicated pooler mode for the project */
 export type V1UpdatePoolerConfigRequestPoolMode = "transaction" | "session";
-const V1UpdatePoolerConfigRequestPoolMode = S.String;
-
 export interface V1UpdatePoolerConfigRequest {
   /** Project ref */
   ref: string;
@@ -6838,23 +4245,11 @@ export interface V1UpdatePoolerConfigRequest {
   /** Dedicated pooler mode for the project */
   pool_mode?: V1UpdatePoolerConfigRequestPoolMode | (string & {});
 }
-const V1UpdatePoolerConfigRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  4,
-) as any as S.Schema<V1UpdatePoolerConfigRequest>;
-
 export interface UpdateSupavisorConfigResponseOutput {
   default_pool_size: number | null;
   pool_mode: string;
 }
-const UpdateSupavisorConfigResponseOutput = /*@__PURE__*/ __L.at(
-  __c54,
-  5,
-) as any as S.Schema<UpdateSupavisorConfigResponseOutput>;
-
 export type V1UpdatePostgresConfigRequestSessionReplicationRole = "origin" | "replica" | "local";
-const V1UpdatePostgresConfigRequestSessionReplicationRole = S.String;
-
 export interface V1UpdatePostgresConfigRequest {
   /** Project ref */
   ref: string;
@@ -6903,11 +4298,6 @@ export interface V1UpdatePostgresConfigRequest {
   hot_standby_feedback?: boolean;
   restart_database?: boolean;
 }
-const V1UpdatePostgresConfigRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<V1UpdatePostgresConfigRequest>;
-
 export interface V1UpdatePostgrestServiceConfigRequest {
   /** Project ref */
   ref: string;
@@ -6917,11 +4307,6 @@ export interface V1UpdatePostgrestServiceConfigRequest {
   db_pool?: number;
   db_pool_acquisition_timeout?: number;
 }
-const V1UpdatePostgrestServiceConfigRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  7,
-) as any as S.Schema<V1UpdatePostgrestServiceConfigRequest>;
-
 export interface V1PostgrestConfigResponseOutput {
   db_schema: string;
   max_rows: number;
@@ -6931,17 +4316,9 @@ export interface V1PostgrestConfigResponseOutput {
   /** If `null`, the value is automatically configured to 10. */
   db_pool_acquisition_timeout: number | null;
 }
-const V1PostgrestConfigResponseOutput = /*@__PURE__*/ __L.at(
-  __c55,
-  0,
-) as any as S.Schema<V1PostgrestConfigResponseOutput>;
-
 export type V1UpdateProjectApiKeyRequestSecretJwtTemplateMap = {
   [key: string]: unknown | undefined;
 };
-const V1UpdateProjectApiKeyRequestSecretJwtTemplateMap =
-  V1CreateProjectApiKeyRequestSecretJwtTemplateMap as any as S.Schema<V1UpdateProjectApiKeyRequestSecretJwtTemplateMap>;
-
 export interface V1UpdateProjectApiKeyRequest {
   /** Project ref */
   ref: string;
@@ -6952,40 +4329,23 @@ export interface V1UpdateProjectApiKeyRequest {
   description?: string | null;
   secret_jwt_template?: V1UpdateProjectApiKeyRequestSecretJwtTemplateMap | null;
 }
-const V1UpdateProjectApiKeyRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<V1UpdateProjectApiKeyRequest>;
-
 export interface V1UpdateProjectLegacyApiKeysRequest {
   /** Project ref */
   ref: string;
   /** Boolean string. Truthy values: `true`, `1`, `yes`, `on`, `y`, `enabled` Falsy values: `false`, `0`, `no`, `off`, `n`, `disabled` */
   enabled: string;
 }
-const V1UpdateProjectLegacyApiKeysRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  2,
-) as any as S.Schema<V1UpdateProjectLegacyApiKeysRequest>;
-
 export type V1UpdateProjectSigningKeyRequestStatus =
   | "in_use"
   | "previously_used"
   | "revoked"
   | "standby";
-const V1UpdateProjectSigningKeyRequestStatus = S.String;
-
 export interface V1UpdateProjectSigningKeyRequest {
   /** Project ref */
   ref: string;
   id: string;
   status: V1UpdateProjectSigningKeyRequestStatus | (string & {});
 }
-const V1UpdateProjectSigningKeyRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  3,
-) as any as S.Schema<V1UpdateProjectSigningKeyRequest>;
-
 export interface V1UpdateRealtimeConfigRequest {
   /** Project ref */
   ref: string;
@@ -7014,15 +4374,7 @@ export interface V1UpdateRealtimeConfigRequest {
   /** Whether to enable presence */
   presence_enabled?: boolean;
 }
-const V1UpdateRealtimeConfigRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  4,
-) as any as S.Schema<V1UpdateRealtimeConfigRequest>;
-
 export interface V1UpdateRealtimeConfigResponse {}
-const V1UpdateRealtimeConfigResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1UpdateRealtimeConfigResponse>;
-
 export type V1UpdateSslEnforcementConfigRequestRequestedConfig =
   SslEnforcementResponseOutputCurrentConfig;
 export interface V1UpdateSslEnforcementConfigRequest {
@@ -7030,11 +4382,6 @@ export interface V1UpdateSslEnforcementConfigRequest {
   ref: string;
   requestedConfig: SslEnforcementResponseOutputCurrentConfig;
 }
-const V1UpdateSslEnforcementConfigRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  5,
-) as any as S.Schema<V1UpdateSslEnforcementConfigRequest>;
-
 export type V1UpdateStorageConfigRequestFeaturesImageTransformation =
   V1ListEntitlementsResponseOutputEntitlementsItemConfigCase0;
 export type V1UpdateStorageConfigRequestFeaturesS3Protocol =
@@ -7052,18 +4399,10 @@ export interface V1UpdateStorageConfigRequestFeatures {
   icebergCatalog?: StorageConfigResponseOutputFeaturesIcebergCatalog;
   vectorBuckets?: StorageConfigResponseOutputFeaturesVectorBuckets;
 }
-const V1UpdateStorageConfigRequestFeatures = /*@__PURE__*/ __L.at(
-  __c55,
-  6,
-) as any as S.Schema<V1UpdateStorageConfigRequestFeatures>;
-
 export type V1UpdateStorageConfigRequestExternalUpstreamTarget = "main" | "canary";
 export interface V1UpdateStorageConfigRequestExternal {
   upstreamTarget: V1UpdateStorageConfigRequestExternalUpstreamTarget | (string & {});
 }
-const V1UpdateStorageConfigRequestExternal =
-  StorageConfigResponseOutputExternal as any as S.Schema<V1UpdateStorageConfigRequestExternal>;
-
 export interface V1UpdateStorageConfigRequest {
   /** Project ref */
   ref: string;
@@ -7071,15 +4410,7 @@ export interface V1UpdateStorageConfigRequest {
   features?: V1UpdateStorageConfigRequestFeatures;
   external?: V1UpdateStorageConfigRequestExternal;
 }
-const V1UpdateStorageConfigRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  7,
-) as any as S.Schema<V1UpdateStorageConfigRequest>;
-
 export interface V1UpdateStorageConfigResponse {}
-const V1UpdateStorageConfigResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1UpdateStorageConfigResponse>;
-
 export type V1UpgradePostgresVersionRequestReleaseChannel =
   | "internal"
   | "alpha"
@@ -7087,27 +4418,15 @@ export type V1UpgradePostgresVersionRequestReleaseChannel =
   | "ga"
   | "withdrawn"
   | "preview";
-const V1UpgradePostgresVersionRequestReleaseChannel = S.String;
-
 export interface V1UpgradePostgresVersionRequest {
   /** Project ref */
   ref: string;
   target_version: string;
   release_channel?: V1UpgradePostgresVersionRequestReleaseChannel | (string & {});
 }
-const V1UpgradePostgresVersionRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  0,
-) as any as S.Schema<V1UpgradePostgresVersionRequest>;
-
 export interface ProjectUpgradeInitiateResponseOutput {
   tracking_id: string;
 }
-const ProjectUpgradeInitiateResponseOutput = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<ProjectUpgradeInitiateResponseOutput>;
-
 export interface V1UpsertAMigrationRequest {
   /** Project ref */
   ref: string;
@@ -7115,24 +4434,11 @@ export interface V1UpsertAMigrationRequest {
   name?: string;
   rollback?: string;
 }
-const V1UpsertAMigrationRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  2,
-) as any as S.Schema<V1UpsertAMigrationRequest>;
-
 export interface V1UpsertAMigrationResponse {}
-const V1UpsertAMigrationResponse =
-  V1ApplyAMigrationResponse as any as S.Schema<V1UpsertAMigrationResponse>;
-
 export interface V1VerifyDnsConfigRequest {
   /** Project ref */
   ref: string;
 }
-const V1VerifyDnsConfigRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  3,
-) as any as S.Schema<V1VerifyDnsConfigRequest>;
-
 export type V1AcceptInviteExternalJitAccessError = SupabaseOpError;
 /** Accepts invitation for JIT database access Accepts the invitation to JIT database access */
 export const v1AcceptInviteExternalJitAccess: API.OperationMethod<
@@ -7141,8 +4447,8 @@ export const v1AcceptInviteExternalJitAccess: API.OperationMethod<
   V1AcceptInviteExternalJitAccessError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1AcceptInviteExternalJitAccessRequest,
-  output: JitAccessResponseOutput,
+  input: __S(0) as any as S.Schema<V1AcceptInviteExternalJitAccessRequest>,
+  output: __S(6) as any as S.Schema<JitAccessResponseOutput>,
   errors: [],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7156,8 +4462,8 @@ export const v1ActivateCustomHostname: API.OperationMethod<
   V1ActivateCustomHostnameError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ActivateCustomHostnameRequest,
-  output: UpdateCustomHostnameResponseOutput,
+  input: __S(7) as any as S.Schema<V1ActivateCustomHostnameRequest>,
+  output: __S(19) as any as S.Schema<UpdateCustomHostnameResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7171,8 +4477,8 @@ export const v1ActivateVanitySubdomainConfig: API.OperationMethod<
   V1ActivateVanitySubdomainConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ActivateVanitySubdomainConfigRequest,
-  output: ActivateVanitySubdomainResponseOutput,
+  input: __S(20) as any as S.Schema<V1ActivateVanitySubdomainConfigRequest>,
+  output: __S(21) as any as S.Schema<ActivateVanitySubdomainResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7186,8 +4492,8 @@ export const v1ApplyAMigration: API.OperationMethod<
   V1ApplyAMigrationError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ApplyAMigrationRequest,
-  output: V1ApplyAMigrationResponse,
+  input: __S(22) as any as S.Schema<V1ApplyAMigrationRequest>,
+  output: __S(23) as any as S.Schema<V1ApplyAMigrationResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7201,8 +4507,8 @@ export const v1ApplyProjectAddon: API.OperationMethod<
   V1ApplyProjectAddonError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ApplyProjectAddonRequest,
-  output: V1ApplyProjectAddonResponse,
+  input: __S(25) as any as S.Schema<V1ApplyProjectAddonRequest>,
+  output: __S(23) as any as S.Schema<V1ApplyProjectAddonResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7216,8 +4522,8 @@ export const v1AuthorizeJitAccess: API.OperationMethod<
   V1AuthorizeJitAccessError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1AuthorizeJitAccessRequest,
-  output: JitAuthorizeAccessResponseOutput,
+  input: __S(26) as any as S.Schema<V1AuthorizeJitAccessRequest>,
+  output: __S(29) as any as S.Schema<JitAuthorizeAccessResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7231,8 +4537,8 @@ export const v1AuthorizeUser: API.OperationMethod<
   V1AuthorizeUserError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1AuthorizeUserRequest,
-  output: V1AuthorizeUserResponse,
+  input: __S(30) as any as S.Schema<V1AuthorizeUserRequest>,
+  output: __S(23) as any as S.Schema<V1AuthorizeUserResponse>,
   errors: [Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7246,8 +4552,8 @@ export const v1BulkCreateSecrets: API.OperationMethod<
   V1BulkCreateSecretsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1BulkCreateSecretsRequest,
-  output: V1BulkCreateSecretsResponse,
+  input: __S(33) as any as S.Schema<V1BulkCreateSecretsRequest>,
+  output: __S(23) as any as S.Schema<V1BulkCreateSecretsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7261,8 +4567,8 @@ export const v1BulkDeleteSecrets: API.OperationMethod<
   V1BulkDeleteSecretsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1BulkDeleteSecretsRequest,
-  output: V1BulkDeleteSecretsResponse,
+  input: __S(35) as any as S.Schema<V1BulkDeleteSecretsRequest>,
+  output: __S(23) as any as S.Schema<V1BulkDeleteSecretsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7276,8 +4582,8 @@ export const v1BulkUpdateFunctions: API.OperationMethod<
   V1BulkUpdateFunctionsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1BulkUpdateFunctionsRequest,
-  output: BulkUpdateFunctionResponseOutput,
+  input: __S(38) as any as S.Schema<V1BulkUpdateFunctionsRequest>,
+  output: __S(41) as any as S.Schema<BulkUpdateFunctionResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7291,8 +4597,8 @@ export const v1CancelAProjectRestoration: API.OperationMethod<
   V1CancelAProjectRestorationError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1CancelAProjectRestorationRequest,
-  output: V1CancelAProjectRestorationResponse,
+  input: __S(42) as any as S.Schema<V1CancelAProjectRestorationRequest>,
+  output: __S(43) as any as S.Schema<V1CancelAProjectRestorationResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7306,8 +4612,8 @@ export const v1CheckVanitySubdomainAvailability: API.OperationMethod<
   V1CheckVanitySubdomainAvailabilityError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1CheckVanitySubdomainAvailabilityRequest,
-  output: SubdomainAvailabilityResponseOutput,
+  input: __S(44) as any as S.Schema<V1CheckVanitySubdomainAvailabilityRequest>,
+  output: __S(45) as any as S.Schema<SubdomainAvailabilityResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7325,8 +4631,8 @@ export const v1ClaimProjectForOrganization: API.OperationMethod<
   V1ClaimProjectForOrganizationError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ClaimProjectForOrganizationRequest,
-  output: V1ClaimProjectForOrganizationResponse,
+  input: __S(46) as any as S.Schema<V1ClaimProjectForOrganizationRequest>,
+  output: __S(43) as any as S.Schema<V1ClaimProjectForOrganizationResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7340,8 +4646,8 @@ export const v1CreateABranch: API.OperationMethod<
   V1CreateABranchError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1CreateABranchRequest,
-  output: BranchResponseOutput,
+  input: __S(48) as any as S.Schema<V1CreateABranchRequest>,
+  output: __S(49) as any as S.Schema<BranchResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7355,8 +4661,8 @@ export const v1CreateAnOrganization: API.OperationMethod<
   V1CreateAnOrganizationError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1CreateAnOrganizationRequest,
-  output: OrganizationResponseV1Output,
+  input: __S(50) as any as S.Schema<V1CreateAnOrganizationRequest>,
+  output: __S(51) as any as S.Schema<OrganizationResponseV1Output>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7370,8 +4676,8 @@ export const v1CreateAProject: API.OperationMethod<
   V1CreateAProjectError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1CreateAProjectRequest,
-  output: V1ProjectResponseOutput,
+  input: __S(53) as any as S.Schema<V1CreateAProjectRequest>,
+  output: __S(54) as any as S.Schema<V1ProjectResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7385,8 +4691,8 @@ export const v1CreateASsoProvider: API.OperationMethod<
   V1CreateASsoProviderError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1CreateASsoProviderRequest,
-  output: CreateProviderResponseOutput,
+  input: __S(59) as any as S.Schema<V1CreateASsoProviderRequest>,
+  output: __S(67) as any as S.Schema<CreateProviderResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7400,8 +4706,8 @@ export const v1CreateLegacySigningKey: API.OperationMethod<
   V1CreateLegacySigningKeyError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1CreateLegacySigningKeyRequest,
-  output: SigningKeyResponseOutput,
+  input: __S(68) as any as S.Schema<V1CreateLegacySigningKeyRequest>,
+  output: __S(69) as any as S.Schema<SigningKeyResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7415,8 +4721,8 @@ export const v1CreateLoginRole: API.OperationMethod<
   V1CreateLoginRoleError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1CreateLoginRoleRequest,
-  output: CreateRoleResponseOutput,
+  input: __S(70) as any as S.Schema<V1CreateLoginRoleRequest>,
+  output: __S(71) as any as S.Schema<CreateRoleResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7430,8 +4736,8 @@ export const v1CreateProjectApiKey: API.OperationMethod<
   V1CreateProjectApiKeyError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1CreateProjectApiKeyRequest,
-  output: ApiKeyResponseOutput,
+  input: __S(73) as any as S.Schema<V1CreateProjectApiKeyRequest>,
+  output: __S(74) as any as S.Schema<ApiKeyResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7445,8 +4751,8 @@ export const v1CreateProjectClaimToken: API.OperationMethod<
   V1CreateProjectClaimTokenError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1CreateProjectClaimTokenRequest,
-  output: CreateProjectClaimTokenResponseOutput,
+  input: __S(75) as any as S.Schema<V1CreateProjectClaimTokenRequest>,
+  output: __S(76) as any as S.Schema<CreateProjectClaimTokenResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7460,8 +4766,8 @@ export const v1CreateProjectSigningKey: API.OperationMethod<
   V1CreateProjectSigningKeyError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1CreateProjectSigningKeyRequest,
-  output: SigningKeyResponseOutput,
+  input: __S(79) as any as S.Schema<V1CreateProjectSigningKeyRequest>,
+  output: __S(69) as any as S.Schema<SigningKeyResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7475,8 +4781,8 @@ export const v1CreateProjectTpaIntegration: API.OperationMethod<
   V1CreateProjectTpaIntegrationError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1CreateProjectTpaIntegrationRequest,
-  output: ThirdPartyAuthOutput,
+  input: __S(80) as any as S.Schema<V1CreateProjectTpaIntegrationRequest>,
+  output: __S(81) as any as S.Schema<ThirdPartyAuthOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7490,8 +4796,8 @@ export const v1CreateRestorePoint: API.OperationMethod<
   V1CreateRestorePointError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1CreateRestorePointRequest,
-  output: V1RestorePointResponse,
+  input: __S(82) as any as S.Schema<V1CreateRestorePointRequest>,
+  output: __S(83) as any as S.Schema<V1RestorePointResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7505,8 +4811,8 @@ export const v1DeactivateVanitySubdomainConfig: API.OperationMethod<
   V1DeactivateVanitySubdomainConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DeactivateVanitySubdomainConfigRequest,
-  output: V1DeactivateVanitySubdomainConfigResponse,
+  input: __S(84) as any as S.Schema<V1DeactivateVanitySubdomainConfigRequest>,
+  output: __S(43) as any as S.Schema<V1DeactivateVanitySubdomainConfigResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7520,8 +4826,8 @@ export const v1DeleteABranch: API.OperationMethod<
   V1DeleteABranchError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DeleteABranchRequest,
-  output: BranchDeleteResponseOutput,
+  input: __S(85) as any as S.Schema<V1DeleteABranchRequest>,
+  output: __S(86) as any as S.Schema<BranchDeleteResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7535,8 +4841,8 @@ export const v1DeleteAFunction: API.OperationMethod<
   V1DeleteAFunctionError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DeleteAFunctionRequest,
-  output: V1DeleteAFunctionResponse,
+  input: __S(87) as any as S.Schema<V1DeleteAFunctionRequest>,
+  output: __S(23) as any as S.Schema<V1DeleteAFunctionResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7550,8 +4856,8 @@ export const v1DeleteAProject: API.OperationMethod<
   V1DeleteAProjectError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DeleteAProjectRequest,
-  output: V1ProjectRefResponseOutput,
+  input: __S(88) as any as S.Schema<V1DeleteAProjectRequest>,
+  output: __S(89) as any as S.Schema<V1ProjectRefResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7565,8 +4871,8 @@ export const v1DeleteASsoProvider: API.OperationMethod<
   V1DeleteASsoProviderError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DeleteASsoProviderRequest,
-  output: DeleteProviderResponseOutput,
+  input: __S(90) as any as S.Schema<V1DeleteASsoProviderRequest>,
+  output: __S(96) as any as S.Schema<DeleteProviderResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7580,8 +4886,8 @@ export const v1DeleteHostnameConfig: API.OperationMethod<
   V1DeleteHostnameConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DeleteHostnameConfigRequest,
-  output: V1DeleteHostnameConfigResponse,
+  input: __S(97) as any as S.Schema<V1DeleteHostnameConfigRequest>,
+  output: __S(23) as any as S.Schema<V1DeleteHostnameConfigResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7595,8 +4901,8 @@ export const v1DeleteInviteExternalJitAccess: API.OperationMethod<
   V1DeleteInviteExternalJitAccessError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DeleteInviteExternalJitAccessRequest,
-  output: V1DeleteInviteExternalJitAccessResponse,
+  input: __S(98) as any as S.Schema<V1DeleteInviteExternalJitAccessRequest>,
+  output: __S(43) as any as S.Schema<V1DeleteInviteExternalJitAccessResponse>,
   errors: [Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7610,8 +4916,8 @@ export const v1DeleteJitAccess: API.OperationMethod<
   V1DeleteJitAccessError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DeleteJitAccessRequest,
-  output: V1DeleteJitAccessResponse,
+  input: __S(99) as any as S.Schema<V1DeleteJitAccessRequest>,
+  output: __S(23) as any as S.Schema<V1DeleteJitAccessResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7625,8 +4931,8 @@ export const v1DeleteLoginRoles: API.OperationMethod<
   V1DeleteLoginRolesError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DeleteLoginRolesRequest,
-  output: DeleteRolesResponseOutput,
+  input: __S(100) as any as S.Schema<V1DeleteLoginRolesRequest>,
+  output: __S(86) as any as S.Schema<DeleteRolesResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7640,8 +4946,8 @@ export const v1DeleteNetworkBans: API.OperationMethod<
   V1DeleteNetworkBansError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DeleteNetworkBansRequest,
-  output: V1DeleteNetworkBansResponse,
+  input: __S(101) as any as S.Schema<V1DeleteNetworkBansRequest>,
+  output: __S(23) as any as S.Schema<V1DeleteNetworkBansResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7655,8 +4961,8 @@ export const v1DeleteProjectApiKey: API.OperationMethod<
   V1DeleteProjectApiKeyError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DeleteProjectApiKeyRequest,
-  output: ApiKeyResponseOutput,
+  input: __S(102) as any as S.Schema<V1DeleteProjectApiKeyRequest>,
+  output: __S(74) as any as S.Schema<ApiKeyResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7670,8 +4976,8 @@ export const v1DeleteProjectClaimToken: API.OperationMethod<
   V1DeleteProjectClaimTokenError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DeleteProjectClaimTokenRequest,
-  output: V1DeleteProjectClaimTokenResponse,
+  input: __S(103) as any as S.Schema<V1DeleteProjectClaimTokenRequest>,
+  output: __S(43) as any as S.Schema<V1DeleteProjectClaimTokenResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7689,8 +4995,8 @@ export const v1DeleteProjectTpaIntegration: API.OperationMethod<
   V1DeleteProjectTpaIntegrationError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DeleteProjectTpaIntegrationRequest,
-  output: ThirdPartyAuthOutput,
+  input: __S(104) as any as S.Schema<V1DeleteProjectTpaIntegrationRequest>,
+  output: __S(81) as any as S.Schema<ThirdPartyAuthOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7704,8 +5010,8 @@ export const v1DeployAFunction: API.OperationMethod<
   V1DeployAFunctionError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DeployAFunctionRequest,
-  output: DeployFunctionResponseOutput,
+  input: __S(106) as any as S.Schema<V1DeployAFunctionRequest>,
+  output: __S(107) as any as S.Schema<DeployFunctionResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7719,8 +5025,8 @@ export const v1DiffABranch: API.OperationMethod<
   V1DiffABranchError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DiffABranchRequest,
-  output: V1DiffABranchResponse,
+  input: __S(108) as any as S.Schema<V1DiffABranchRequest>,
+  output: __S(23) as any as S.Schema<V1DiffABranchResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7734,8 +5040,8 @@ export const v1DisablePreviewBranching: API.OperationMethod<
   V1DisablePreviewBranchingError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DisablePreviewBranchingRequest,
-  output: V1DisablePreviewBranchingResponse,
+  input: __S(109) as any as S.Schema<V1DisablePreviewBranchingRequest>,
+  output: __S(43) as any as S.Schema<V1DisablePreviewBranchingResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7749,8 +5055,8 @@ export const v1DisableReadonlyModeTemporarily: API.OperationMethod<
   V1DisableReadonlyModeTemporarilyError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1DisableReadonlyModeTemporarilyRequest,
-  output: V1DisableReadonlyModeTemporarilyResponse,
+  input: __S(110) as any as S.Schema<V1DisableReadonlyModeTemporarilyRequest>,
+  output: __S(43) as any as S.Schema<V1DisableReadonlyModeTemporarilyResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7764,8 +5070,8 @@ export const v1EnableDatabaseWebhook: API.OperationMethod<
   V1EnableDatabaseWebhookError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1EnableDatabaseWebhookRequest,
-  output: V1EnableDatabaseWebhookResponse,
+  input: __S(111) as any as S.Schema<V1EnableDatabaseWebhookRequest>,
+  output: __S(112) as any as S.Schema<V1EnableDatabaseWebhookResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7779,8 +5085,8 @@ export const v1ExchangeOauthToken: API.OperationMethod<
   V1ExchangeOauthTokenError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ExchangeOauthTokenRequest,
-  output: OAuthTokenResponseOutput,
+  input: __S(113) as any as S.Schema<V1ExchangeOauthTokenRequest>,
+  output: __S(114) as any as S.Schema<OAuthTokenResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7794,8 +5100,8 @@ export const v1GenerateTypescriptTypes: API.OperationMethod<
   V1GenerateTypescriptTypesError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GenerateTypescriptTypesRequest,
-  output: TypescriptResponseOutput,
+  input: __S(115) as any as S.Schema<V1GenerateTypescriptTypesRequest>,
+  output: __S(116) as any as S.Schema<TypescriptResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7809,8 +5115,8 @@ export const v1GetABranch: API.OperationMethod<
   V1GetABranchError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetABranchRequest,
-  output: BranchResponseOutput,
+  input: __S(117) as any as S.Schema<V1GetABranchRequest>,
+  output: __S(49) as any as S.Schema<BranchResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7824,8 +5130,8 @@ export const v1GetABranchConfig: API.OperationMethod<
   V1GetABranchConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetABranchConfigRequest,
-  output: BranchDetailResponseOutput,
+  input: __S(118) as any as S.Schema<V1GetABranchConfigRequest>,
+  output: __S(119) as any as S.Schema<BranchDetailResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7839,8 +5145,8 @@ export const v1GetActionRun: API.OperationMethod<
   V1GetActionRunError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetActionRunRequest,
-  output: ActionRunResponseOutput,
+  input: __S(120) as any as S.Schema<V1GetActionRunRequest>,
+  output: __S(123) as any as S.Schema<ActionRunResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7854,8 +5160,8 @@ export const v1GetActionRunLogs: API.OperationMethod<
   V1GetActionRunLogsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetActionRunLogsRequest,
-  output: V1GetActionRunLogsResponse,
+  input: __S(124) as any as S.Schema<V1GetActionRunLogsRequest>,
+  output: __S(23) as any as S.Schema<V1GetActionRunLogsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7869,8 +5175,8 @@ export const v1GetAFunction: API.OperationMethod<
   V1GetAFunctionError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetAFunctionRequest,
-  output: FunctionSlugResponseOutput,
+  input: __S(125) as any as S.Schema<V1GetAFunctionRequest>,
+  output: __S(39) as any as S.Schema<FunctionSlugResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7884,8 +5190,8 @@ export const v1GetAFunctionBody: API.OperationMethod<
   V1GetAFunctionBodyError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetAFunctionBodyRequest,
-  output: V1GetAFunctionBodyResponse,
+  input: __S(126) as any as S.Schema<V1GetAFunctionBodyRequest>,
+  output: __S(127) as any as S.Schema<V1GetAFunctionBodyResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7903,8 +5209,8 @@ export const v1GetAllProjectsForOrganization: API.OperationMethod<
   V1GetAllProjectsForOrganizationError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetAllProjectsForOrganizationRequest,
-  output: OrganizationProjectsResponseOutput,
+  input: __S(128) as any as S.Schema<V1GetAllProjectsForOrganizationRequest>,
+  output: __S(134) as any as S.Schema<OrganizationProjectsResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7918,8 +5224,8 @@ export const v1GetAMigration: API.OperationMethod<
   V1GetAMigrationError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetAMigrationRequest,
-  output: V1GetMigrationResponseOutput,
+  input: __S(135) as any as S.Schema<V1GetAMigrationRequest>,
+  output: __S(136) as any as S.Schema<V1GetMigrationResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7933,8 +5239,8 @@ export const v1GetAnOrganization: API.OperationMethod<
   V1GetAnOrganizationError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetAnOrganizationRequest,
-  output: V1OrganizationSlugResponseOutput,
+  input: __S(137) as any as S.Schema<V1GetAnOrganizationRequest>,
+  output: __S(138) as any as S.Schema<V1OrganizationSlugResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7948,8 +5254,8 @@ export const v1GetASnippet: API.OperationMethod<
   V1GetASnippetError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetASnippetRequest,
-  output: SnippetResponseOutput,
+  input: __S(139) as any as S.Schema<V1GetASnippetRequest>,
+  output: __S(143) as any as S.Schema<SnippetResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7963,8 +5269,8 @@ export const v1GetASsoProvider: API.OperationMethod<
   V1GetASsoProviderError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetASsoProviderRequest,
-  output: GetProviderResponseOutput,
+  input: __S(144) as any as S.Schema<V1GetASsoProviderRequest>,
+  output: __S(150) as any as S.Schema<GetProviderResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7978,8 +5284,8 @@ export const v1GetAuthServiceConfig: API.OperationMethod<
   V1GetAuthServiceConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetAuthServiceConfigRequest,
-  output: AuthConfigResponseOutput,
+  input: __S(151) as any as S.Schema<V1GetAuthServiceConfigRequest>,
+  output: __S(152) as any as S.Schema<AuthConfigResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -7993,8 +5299,8 @@ export const v1GetAvailableRegions: API.OperationMethod<
   V1GetAvailableRegionsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetAvailableRegionsRequest,
-  output: RegionsInfoOutput,
+  input: __S(153) as any as S.Schema<V1GetAvailableRegionsRequest>,
+  output: __S(160) as any as S.Schema<RegionsInfoOutput>,
   errors: [Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8008,8 +5314,8 @@ export const v1GetBackupSchedule: API.OperationMethod<
   V1GetBackupScheduleError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetBackupScheduleRequest,
-  output: V1BackupScheduleResponseOutput,
+  input: __S(161) as any as S.Schema<V1GetBackupScheduleRequest>,
+  output: __S(162) as any as S.Schema<V1BackupScheduleResponseOutput>,
   errors: [Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8023,8 +5329,8 @@ export const v1GetDatabaseDisk: API.OperationMethod<
   V1GetDatabaseDiskError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetDatabaseDiskRequest,
-  output: DiskResponseOutput,
+  input: __S(163) as any as S.Schema<V1GetDatabaseDiskRequest>,
+  output: __S(165) as any as S.Schema<DiskResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8038,8 +5344,8 @@ export const v1GetDatabaseMetadata: API.OperationMethod<
   V1GetDatabaseMetadataError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetDatabaseMetadataRequest,
-  output: GetProjectDbMetadataResponseOutput,
+  input: __S(166) as any as S.Schema<V1GetDatabaseMetadataRequest>,
+  output: __S(171) as any as S.Schema<GetProjectDbMetadataResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8053,8 +5359,8 @@ export const v1GetDatabaseOpenapi: API.OperationMethod<
   V1GetDatabaseOpenapiError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetDatabaseOpenapiRequest,
-  output: V1GetDatabaseOpenapiResponse,
+  input: __S(172) as any as S.Schema<V1GetDatabaseOpenapiRequest>,
+  output: __S(127) as any as S.Schema<V1GetDatabaseOpenapiResponse>,
   errors: [Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8068,8 +5374,8 @@ export const v1GetDiskUtilization: API.OperationMethod<
   V1GetDiskUtilizationError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetDiskUtilizationRequest,
-  output: DiskUtilMetricsResponseOutput,
+  input: __S(173) as any as S.Schema<V1GetDiskUtilizationRequest>,
+  output: __S(175) as any as S.Schema<DiskUtilMetricsResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8083,8 +5389,8 @@ export const v1GetHostnameConfig: API.OperationMethod<
   V1GetHostnameConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetHostnameConfigRequest,
-  output: UpdateCustomHostnameResponseOutput,
+  input: __S(176) as any as S.Schema<V1GetHostnameConfigRequest>,
+  output: __S(19) as any as S.Schema<UpdateCustomHostnameResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8098,8 +5404,8 @@ export const v1GetJitAccess: API.OperationMethod<
   V1GetJitAccessError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetJitAccessRequest,
-  output: JitAccessResponseOutput,
+  input: __S(177) as any as S.Schema<V1GetJitAccessRequest>,
+  output: __S(6) as any as S.Schema<JitAccessResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8113,8 +5419,8 @@ export const v1GetJitAccessConfig: API.OperationMethod<
   V1GetJitAccessConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetJitAccessConfigRequest,
-  output: V1GetJitAccessConfigResponse,
+  input: __S(178) as any as S.Schema<V1GetJitAccessConfigRequest>,
+  output: __S(180) as any as S.Schema<V1GetJitAccessConfigResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8128,8 +5434,8 @@ export const v1GetLegacySigningKey: API.OperationMethod<
   V1GetLegacySigningKeyError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetLegacySigningKeyRequest,
-  output: SigningKeyResponseOutput,
+  input: __S(181) as any as S.Schema<V1GetLegacySigningKeyRequest>,
+  output: __S(69) as any as S.Schema<SigningKeyResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8143,8 +5449,8 @@ export const v1GetNetworkRestrictions: API.OperationMethod<
   V1GetNetworkRestrictionsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetNetworkRestrictionsRequest,
-  output: NetworkRestrictionsResponseOutput,
+  input: __S(182) as any as S.Schema<V1GetNetworkRestrictionsRequest>,
+  output: __S(184) as any as S.Schema<NetworkRestrictionsResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8158,8 +5464,8 @@ export const v1GetOrganizationEntitlements: API.OperationMethod<
   V1GetOrganizationEntitlementsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetOrganizationEntitlementsRequest,
-  output: V1ListEntitlementsResponseOutput,
+  input: __S(185) as any as S.Schema<V1GetOrganizationEntitlementsRequest>,
+  output: __S(191) as any as S.Schema<V1ListEntitlementsResponseOutput>,
   errors: [Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8177,8 +5483,8 @@ export const v1GetOrganizationProjectClaim: API.OperationMethod<
   V1GetOrganizationProjectClaimError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetOrganizationProjectClaimRequest,
-  output: OrganizationProjectClaimResponseOutput,
+  input: __S(192) as any as S.Schema<V1GetOrganizationProjectClaimRequest>,
+  output: __S(199) as any as S.Schema<OrganizationProjectClaimResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8192,8 +5498,8 @@ export const v1GetPerformanceAdvisors: API.OperationMethod<
   V1GetPerformanceAdvisorsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetPerformanceAdvisorsRequest,
-  output: V1ProjectAdvisorsResponseOutput,
+  input: __S(200) as any as S.Schema<V1GetPerformanceAdvisorsRequest>,
+  output: __S(205) as any as S.Schema<V1ProjectAdvisorsResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8207,8 +5513,8 @@ export const v1GetPgsodiumConfig: API.OperationMethod<
   V1GetPgsodiumConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetPgsodiumConfigRequest,
-  output: PgsodiumConfigResponseOutput,
+  input: __S(206) as any as S.Schema<V1GetPgsodiumConfigRequest>,
+  output: __S(207) as any as S.Schema<PgsodiumConfigResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8222,8 +5528,8 @@ export const v1GetPoolerConfig: API.OperationMethod<
   V1GetPoolerConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetPoolerConfigRequest,
-  output: V1GetPoolerConfigResponse,
+  input: __S(208) as any as S.Schema<V1GetPoolerConfigRequest>,
+  output: __S(211) as any as S.Schema<V1GetPoolerConfigResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8237,8 +5543,8 @@ export const v1GetPostgresConfig: API.OperationMethod<
   V1GetPostgresConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetPostgresConfigRequest,
-  output: PostgresConfigResponseOutput,
+  input: __S(212) as any as S.Schema<V1GetPostgresConfigRequest>,
+  output: __S(213) as any as S.Schema<PostgresConfigResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8252,8 +5558,8 @@ export const v1GetPostgrestServiceConfig: API.OperationMethod<
   V1GetPostgrestServiceConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetPostgrestServiceConfigRequest,
-  output: PostgrestConfigWithJWTSecretResponseOutput,
+  input: __S(214) as any as S.Schema<V1GetPostgrestServiceConfigRequest>,
+  output: __S(215) as any as S.Schema<PostgrestConfigWithJWTSecretResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8267,8 +5573,8 @@ export const v1GetPostgresUpgradeEligibility: API.OperationMethod<
   V1GetPostgresUpgradeEligibilityError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetPostgresUpgradeEligibilityRequest,
-  output: ProjectUpgradeEligibilityResponseOutput,
+  input: __S(216) as any as S.Schema<V1GetPostgresUpgradeEligibilityRequest>,
+  output: __S(223) as any as S.Schema<ProjectUpgradeEligibilityResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8282,8 +5588,8 @@ export const v1GetPostgresUpgradeStatus: API.OperationMethod<
   V1GetPostgresUpgradeStatusError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetPostgresUpgradeStatusRequest,
-  output: DatabaseUpgradeStatusResponseOutput,
+  input: __S(224) as any as S.Schema<V1GetPostgresUpgradeStatusRequest>,
+  output: __S(226) as any as S.Schema<DatabaseUpgradeStatusResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8297,8 +5603,8 @@ export const v1GetProfile: API.OperationMethod<
   V1GetProfileError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetProfileRequest,
-  output: V1ProfileResponseOutput,
+  input: __S(227) as any as S.Schema<V1GetProfileRequest>,
+  output: __S(228) as any as S.Schema<V1ProfileResponseOutput>,
   errors: [],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8312,8 +5618,8 @@ export const v1GetProject: API.OperationMethod<
   V1GetProjectError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetProjectRequest,
-  output: V1ProjectWithDatabaseResponseOutput,
+  input: __S(229) as any as S.Schema<V1GetProjectRequest>,
+  output: __S(231) as any as S.Schema<V1ProjectWithDatabaseResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8327,8 +5633,8 @@ export const v1GetProjectApiKey: API.OperationMethod<
   V1GetProjectApiKeyError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetProjectApiKeyRequest,
-  output: ApiKeyResponseOutput,
+  input: __S(232) as any as S.Schema<V1GetProjectApiKeyRequest>,
+  output: __S(74) as any as S.Schema<ApiKeyResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8342,8 +5648,8 @@ export const v1GetProjectApiKeys: API.OperationMethod<
   V1GetProjectApiKeysError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetProjectApiKeysRequest,
-  output: V1GetProjectApiKeysResponse,
+  input: __S(233) as any as S.Schema<V1GetProjectApiKeysRequest>,
+  output: __S(235) as any as S.Schema<V1GetProjectApiKeysResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8357,8 +5663,8 @@ export const v1GetProjectClaimToken: API.OperationMethod<
   V1GetProjectClaimTokenError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetProjectClaimTokenRequest,
-  output: ProjectClaimTokenResponseOutput,
+  input: __S(236) as any as S.Schema<V1GetProjectClaimTokenRequest>,
+  output: __S(237) as any as S.Schema<ProjectClaimTokenResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8372,8 +5678,8 @@ export const v1GetProjectDiskAutoscaleConfig: API.OperationMethod<
   V1GetProjectDiskAutoscaleConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetProjectDiskAutoscaleConfigRequest,
-  output: DiskAutoscaleConfigOutput,
+  input: __S(238) as any as S.Schema<V1GetProjectDiskAutoscaleConfigRequest>,
+  output: __S(239) as any as S.Schema<DiskAutoscaleConfigOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8387,8 +5693,8 @@ export const v1GetProjectFunctionCombinedStats: API.OperationMethod<
   V1GetProjectFunctionCombinedStatsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetProjectFunctionCombinedStatsRequest,
-  output: AnalyticsResponseOutput,
+  input: __S(240) as any as S.Schema<V1GetProjectFunctionCombinedStatsRequest>,
+  output: __S(243) as any as S.Schema<AnalyticsResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8402,8 +5708,8 @@ export const v1GetProjectLegacyApiKeys: API.OperationMethod<
   V1GetProjectLegacyApiKeysError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetProjectLegacyApiKeysRequest,
-  output: LegacyApiKeysResponseOutput,
+  input: __S(244) as any as S.Schema<V1GetProjectLegacyApiKeysRequest>,
+  output: __S(245) as any as S.Schema<LegacyApiKeysResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8417,8 +5723,8 @@ export const v1GetProjectLogs: API.OperationMethod<
   V1GetProjectLogsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetProjectLogsRequest,
-  output: AnalyticsResponseOutput,
+  input: __S(246) as any as S.Schema<V1GetProjectLogsRequest>,
+  output: __S(243) as any as S.Schema<AnalyticsResponseOutput>,
   errors: [Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8432,8 +5738,8 @@ export const v1GetProjectPgbouncerConfig: API.OperationMethod<
   V1GetProjectPgbouncerConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetProjectPgbouncerConfigRequest,
-  output: V1PgbouncerConfigResponseOutput,
+  input: __S(247) as any as S.Schema<V1GetProjectPgbouncerConfigRequest>,
+  output: __S(248) as any as S.Schema<V1PgbouncerConfigResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8447,8 +5753,8 @@ export const v1GetProjectSigningKey: API.OperationMethod<
   V1GetProjectSigningKeyError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetProjectSigningKeyRequest,
-  output: SigningKeyResponseOutput,
+  input: __S(249) as any as S.Schema<V1GetProjectSigningKeyRequest>,
+  output: __S(69) as any as S.Schema<SigningKeyResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8462,8 +5768,8 @@ export const v1GetProjectSigningKeys: API.OperationMethod<
   V1GetProjectSigningKeysError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetProjectSigningKeysRequest,
-  output: SigningKeysResponseOutput,
+  input: __S(250) as any as S.Schema<V1GetProjectSigningKeysRequest>,
+  output: __S(253) as any as S.Schema<SigningKeysResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8477,8 +5783,8 @@ export const v1GetProjectTpaIntegration: API.OperationMethod<
   V1GetProjectTpaIntegrationError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetProjectTpaIntegrationRequest,
-  output: ThirdPartyAuthOutput,
+  input: __S(254) as any as S.Schema<V1GetProjectTpaIntegrationRequest>,
+  output: __S(81) as any as S.Schema<ThirdPartyAuthOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8492,8 +5798,8 @@ export const v1GetProjectUsageApiCount: API.OperationMethod<
   V1GetProjectUsageApiCountError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetProjectUsageApiCountRequest,
-  output: V1GetUsageApiCountResponseOutput,
+  input: __S(255) as any as S.Schema<V1GetProjectUsageApiCountRequest>,
+  output: __S(259) as any as S.Schema<V1GetUsageApiCountResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8507,8 +5813,8 @@ export const v1GetProjectUsageRequestCount: API.OperationMethod<
   V1GetProjectUsageRequestCountError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetProjectUsageRequestCountRequest,
-  output: V1GetUsageApiRequestsCountResponseOutput,
+  input: __S(260) as any as S.Schema<V1GetProjectUsageRequestCountRequest>,
+  output: __S(264) as any as S.Schema<V1GetUsageApiRequestsCountResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8522,8 +5828,8 @@ export const v1GetReadonlyModeStatus: API.OperationMethod<
   V1GetReadonlyModeStatusError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetReadonlyModeStatusRequest,
-  output: ReadOnlyStatusResponseOutput,
+  input: __S(265) as any as S.Schema<V1GetReadonlyModeStatusRequest>,
+  output: __S(266) as any as S.Schema<ReadOnlyStatusResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8537,8 +5843,8 @@ export const v1GetRealtimeConfig: API.OperationMethod<
   V1GetRealtimeConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetRealtimeConfigRequest,
-  output: RealtimeConfigResponseOutput,
+  input: __S(267) as any as S.Schema<V1GetRealtimeConfigRequest>,
+  output: __S(268) as any as S.Schema<RealtimeConfigResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8552,8 +5858,8 @@ export const v1GetRestorePoint: API.OperationMethod<
   V1GetRestorePointError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetRestorePointRequest,
-  output: V1RestorePointResponse,
+  input: __S(269) as any as S.Schema<V1GetRestorePointRequest>,
+  output: __S(83) as any as S.Schema<V1RestorePointResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8567,8 +5873,8 @@ export const v1GetSecurityAdvisors: API.OperationMethod<
   V1GetSecurityAdvisorsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetSecurityAdvisorsRequest,
-  output: V1ProjectAdvisorsResponseOutput,
+  input: __S(270) as any as S.Schema<V1GetSecurityAdvisorsRequest>,
+  output: __S(205) as any as S.Schema<V1ProjectAdvisorsResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8582,8 +5888,8 @@ export const v1GetServicesHealth: API.OperationMethod<
   V1GetServicesHealthError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetServicesHealthRequest,
-  output: V1GetServicesHealthResponse,
+  input: __S(272) as any as S.Schema<V1GetServicesHealthRequest>,
+  output: __S(276) as any as S.Schema<V1GetServicesHealthResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8597,8 +5903,8 @@ export const v1GetSslEnforcementConfig: API.OperationMethod<
   V1GetSslEnforcementConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetSslEnforcementConfigRequest,
-  output: SslEnforcementResponseOutput,
+  input: __S(277) as any as S.Schema<V1GetSslEnforcementConfigRequest>,
+  output: __S(279) as any as S.Schema<SslEnforcementResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8612,8 +5918,8 @@ export const v1GetStorageConfig: API.OperationMethod<
   V1GetStorageConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetStorageConfigRequest,
-  output: StorageConfigResponseOutput,
+  input: __S(280) as any as S.Schema<V1GetStorageConfigRequest>,
+  output: __S(286) as any as S.Schema<StorageConfigResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8627,8 +5933,8 @@ export const v1GetVanitySubdomainConfig: API.OperationMethod<
   V1GetVanitySubdomainConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1GetVanitySubdomainConfigRequest,
-  output: VanitySubdomainConfigResponseOutput,
+  input: __S(287) as any as S.Schema<V1GetVanitySubdomainConfigRequest>,
+  output: __S(288) as any as S.Schema<VanitySubdomainConfigResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8642,8 +5948,8 @@ export const v1InviteExternalJitAccess: API.OperationMethod<
   V1InviteExternalJitAccessError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1InviteExternalJitAccessRequest,
-  output: InviteExternalUserJitResponseOutput,
+  input: __S(292) as any as S.Schema<V1InviteExternalJitAccessRequest>,
+  output: __S(296) as any as S.Schema<InviteExternalUserJitResponseOutput>,
   errors: [Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8657,8 +5963,8 @@ export const v1ListActionRuns: API.OperationMethod<
   V1ListActionRunsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListActionRunsRequest,
-  output: V1ListActionRunsResponse,
+  input: __S(297) as any as S.Schema<V1ListActionRunsRequest>,
+  output: __S(300) as any as S.Schema<V1ListActionRunsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8672,8 +5978,8 @@ export const v1ListAllBackups: API.OperationMethod<
   V1ListAllBackupsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListAllBackupsRequest,
-  output: V1BackupsResponseOutput,
+  input: __S(301) as any as S.Schema<V1ListAllBackupsRequest>,
+  output: __S(305) as any as S.Schema<V1BackupsResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8687,8 +5993,8 @@ export const v1ListAllBranches: API.OperationMethod<
   V1ListAllBranchesError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListAllBranchesRequest,
-  output: V1ListAllBranchesResponse,
+  input: __S(306) as any as S.Schema<V1ListAllBranchesRequest>,
+  output: __S(308) as any as S.Schema<V1ListAllBranchesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8702,8 +6008,8 @@ export const v1ListAllBuckets: API.OperationMethod<
   V1ListAllBucketsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListAllBucketsRequest,
-  output: V1ListAllBucketsResponse,
+  input: __S(309) as any as S.Schema<V1ListAllBucketsRequest>,
+  output: __S(312) as any as S.Schema<V1ListAllBucketsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8717,8 +6023,8 @@ export const v1ListAllFunctions: API.OperationMethod<
   V1ListAllFunctionsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListAllFunctionsRequest,
-  output: V1ListAllFunctionsResponse,
+  input: __S(313) as any as S.Schema<V1ListAllFunctionsRequest>,
+  output: __S(316) as any as S.Schema<V1ListAllFunctionsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8732,8 +6038,8 @@ export const v1ListAllNetworkBans: API.OperationMethod<
   V1ListAllNetworkBansError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListAllNetworkBansRequest,
-  output: NetworkBanResponseOutput,
+  input: __S(317) as any as S.Schema<V1ListAllNetworkBansRequest>,
+  output: __S(318) as any as S.Schema<NetworkBanResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8747,8 +6053,8 @@ export const v1ListAllNetworkBansEnriched: API.OperationMethod<
   V1ListAllNetworkBansEnrichedError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListAllNetworkBansEnrichedRequest,
-  output: NetworkBanResponseEnrichedOutput,
+  input: __S(319) as any as S.Schema<V1ListAllNetworkBansEnrichedRequest>,
+  output: __S(322) as any as S.Schema<NetworkBanResponseEnrichedOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8762,8 +6068,8 @@ export const v1ListAllOrganizations: API.OperationMethod<
   V1ListAllOrganizationsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListAllOrganizationsRequest,
-  output: V1ListAllOrganizationsResponse,
+  input: __S(323) as any as S.Schema<V1ListAllOrganizationsRequest>,
+  output: __S(325) as any as S.Schema<V1ListAllOrganizationsResponse>,
   errors: [Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8777,8 +6083,8 @@ export const v1ListAllProjects: API.OperationMethod<
   V1ListAllProjectsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListAllProjectsRequest,
-  output: V1ListAllProjectsResponse,
+  input: __S(326) as any as S.Schema<V1ListAllProjectsRequest>,
+  output: __S(328) as any as S.Schema<V1ListAllProjectsResponse>,
   errors: [Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8792,8 +6098,8 @@ export const v1ListAllSecrets: API.OperationMethod<
   V1ListAllSecretsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListAllSecretsRequest,
-  output: V1ListAllSecretsResponse,
+  input: __S(329) as any as S.Schema<V1ListAllSecretsRequest>,
+  output: __S(332) as any as S.Schema<V1ListAllSecretsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8807,8 +6113,8 @@ export const v1ListAllSnippets: API.OperationMethod<
   V1ListAllSnippetsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListAllSnippetsRequest,
-  output: SnippetListOutput,
+  input: __S(333) as any as S.Schema<V1ListAllSnippetsRequest>,
+  output: __S(336) as any as S.Schema<SnippetListOutput>,
   errors: [Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8822,8 +6128,8 @@ export const v1ListAllSsoProvider: API.OperationMethod<
   V1ListAllSsoProviderError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListAllSsoProviderRequest,
-  output: ListProvidersResponseOutput,
+  input: __S(337) as any as S.Schema<V1ListAllSsoProviderRequest>,
+  output: __S(345) as any as S.Schema<ListProvidersResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8837,8 +6143,8 @@ export const v1ListAvailableRestoreVersions: API.OperationMethod<
   V1ListAvailableRestoreVersionsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListAvailableRestoreVersionsRequest,
-  output: GetProjectAvailableRestoreVersionsResponseOutput,
+  input: __S(346) as any as S.Schema<V1ListAvailableRestoreVersionsRequest>,
+  output: __S(349) as any as S.Schema<GetProjectAvailableRestoreVersionsResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8852,8 +6158,8 @@ export const v1ListJitAccess: API.OperationMethod<
   V1ListJitAccessError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListJitAccessRequest,
-  output: JitListAccessResponseOutput,
+  input: __S(350) as any as S.Schema<V1ListJitAccessRequest>,
+  output: __S(353) as any as S.Schema<JitListAccessResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8867,8 +6173,8 @@ export const v1ListMigrationHistory: API.OperationMethod<
   V1ListMigrationHistoryError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListMigrationHistoryRequest,
-  output: V1ListMigrationHistoryResponse,
+  input: __S(354) as any as S.Schema<V1ListMigrationHistoryRequest>,
+  output: __S(357) as any as S.Schema<V1ListMigrationHistoryResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8882,8 +6188,8 @@ export const v1ListOrganizationMembers: API.OperationMethod<
   V1ListOrganizationMembersError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListOrganizationMembersRequest,
-  output: V1ListOrganizationMembersResponse,
+  input: __S(358) as any as S.Schema<V1ListOrganizationMembersRequest>,
+  output: __S(361) as any as S.Schema<V1ListOrganizationMembersResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8897,8 +6203,8 @@ export const v1ListProjectAddons: API.OperationMethod<
   V1ListProjectAddonsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListProjectAddonsRequest,
-  output: ListProjectAddonsResponseOutput,
+  input: __S(362) as any as S.Schema<V1ListProjectAddonsRequest>,
+  output: __S(373) as any as S.Schema<ListProjectAddonsResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8912,8 +6218,8 @@ export const v1ListProjectTpaIntegrations: API.OperationMethod<
   V1ListProjectTpaIntegrationsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ListProjectTpaIntegrationsRequest,
-  output: V1ListProjectTpaIntegrationsResponse,
+  input: __S(374) as any as S.Schema<V1ListProjectTpaIntegrationsRequest>,
+  output: __S(376) as any as S.Schema<V1ListProjectTpaIntegrationsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8927,8 +6233,8 @@ export const v1MergeABranch: API.OperationMethod<
   V1MergeABranchError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1MergeABranchRequest,
-  output: BranchUpdateResponseOutput,
+  input: __S(377) as any as S.Schema<V1MergeABranchRequest>,
+  output: __S(378) as any as S.Schema<BranchUpdateResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8942,8 +6248,8 @@ export const v1ModifyDatabaseDisk: API.OperationMethod<
   V1ModifyDatabaseDiskError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ModifyDatabaseDiskRequest,
-  output: V1ModifyDatabaseDiskResponse,
+  input: __S(380) as any as S.Schema<V1ModifyDatabaseDiskRequest>,
+  output: __S(23) as any as S.Schema<V1ModifyDatabaseDiskResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8957,8 +6263,8 @@ export const v1OauthAuthorizeProjectClaim: API.OperationMethod<
   V1OauthAuthorizeProjectClaimError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1OauthAuthorizeProjectClaimRequest,
-  output: V1OauthAuthorizeProjectClaimResponse,
+  input: __S(381) as any as S.Schema<V1OauthAuthorizeProjectClaimRequest>,
+  output: __S(43) as any as S.Schema<V1OauthAuthorizeProjectClaimResponse>,
   errors: [Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8972,8 +6278,8 @@ export const v1PatchAMigration: API.OperationMethod<
   V1PatchAMigrationError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1PatchAMigrationRequest,
-  output: V1PatchAMigrationResponse,
+  input: __S(382) as any as S.Schema<V1PatchAMigrationRequest>,
+  output: __S(23) as any as S.Schema<V1PatchAMigrationResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -8987,8 +6293,8 @@ export const v1PatchNetworkRestrictions: API.OperationMethod<
   V1PatchNetworkRestrictionsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1PatchNetworkRestrictionsRequest,
-  output: NetworkRestrictionsV2ResponseOutput,
+  input: __S(383) as any as S.Schema<V1PatchNetworkRestrictionsRequest>,
+  output: __S(390) as any as S.Schema<NetworkRestrictionsV2ResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9002,8 +6308,8 @@ export const v1PauseAProject: API.OperationMethod<
   V1PauseAProjectError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1PauseAProjectRequest,
-  output: V1PauseAProjectResponse,
+  input: __S(391) as any as S.Schema<V1PauseAProjectRequest>,
+  output: __S(23) as any as S.Schema<V1PauseAProjectResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9017,8 +6323,8 @@ export const v1PushABranch: API.OperationMethod<
   V1PushABranchError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1PushABranchRequest,
-  output: BranchUpdateResponseOutput,
+  input: __S(392) as any as S.Schema<V1PushABranchRequest>,
+  output: __S(378) as any as S.Schema<BranchUpdateResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9032,8 +6338,8 @@ export const v1ReadOnlyQuery: API.OperationMethod<
   V1ReadOnlyQueryError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ReadOnlyQueryRequest,
-  output: V1ReadOnlyQueryResponse,
+  input: __S(393) as any as S.Schema<V1ReadOnlyQueryRequest>,
+  output: __S(23) as any as S.Schema<V1ReadOnlyQueryResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9047,8 +6353,8 @@ export const v1RemoveAReadReplica: API.OperationMethod<
   V1RemoveAReadReplicaError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1RemoveAReadReplicaRequest,
-  output: V1RemoveAReadReplicaResponse,
+  input: __S(394) as any as S.Schema<V1RemoveAReadReplicaRequest>,
+  output: __S(23) as any as S.Schema<V1RemoveAReadReplicaResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9062,8 +6368,8 @@ export const v1RemoveProjectAddon: API.OperationMethod<
   V1RemoveProjectAddonError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1RemoveProjectAddonRequest,
-  output: V1RemoveProjectAddonResponse,
+  input: __S(395) as any as S.Schema<V1RemoveProjectAddonRequest>,
+  output: __S(23) as any as S.Schema<V1RemoveProjectAddonResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9077,8 +6383,8 @@ export const v1RemoveProjectSigningKey: API.OperationMethod<
   V1RemoveProjectSigningKeyError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1RemoveProjectSigningKeyRequest,
-  output: SigningKeyResponseOutput,
+  input: __S(396) as any as S.Schema<V1RemoveProjectSigningKeyRequest>,
+  output: __S(69) as any as S.Schema<SigningKeyResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9092,8 +6398,8 @@ export const v1ResetABranch: API.OperationMethod<
   V1ResetABranchError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ResetABranchRequest,
-  output: BranchUpdateResponseOutput,
+  input: __S(397) as any as S.Schema<V1ResetABranchRequest>,
+  output: __S(378) as any as S.Schema<BranchUpdateResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9107,8 +6413,8 @@ export const v1RestartAProject: API.OperationMethod<
   V1RestartAProjectError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1RestartAProjectRequest,
-  output: V1RestartAProjectResponse,
+  input: __S(398) as any as S.Schema<V1RestartAProjectRequest>,
+  output: __S(23) as any as S.Schema<V1RestartAProjectResponse>,
   errors: [Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9122,8 +6428,8 @@ export const v1RestoreABranch: API.OperationMethod<
   V1RestoreABranchError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1RestoreABranchRequest,
-  output: BranchRestoreResponseOutput,
+  input: __S(399) as any as S.Schema<V1RestoreABranchRequest>,
+  output: __S(86) as any as S.Schema<BranchRestoreResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9137,8 +6443,8 @@ export const v1RestoreAProject: API.OperationMethod<
   V1RestoreAProjectError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1RestoreAProjectRequest,
-  output: V1RestoreAProjectResponse,
+  input: __S(400) as any as S.Schema<V1RestoreAProjectRequest>,
+  output: __S(23) as any as S.Schema<V1RestoreAProjectResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9152,8 +6458,8 @@ export const v1RestorePhysicalBackup: API.OperationMethod<
   V1RestorePhysicalBackupError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1RestorePhysicalBackupRequest,
-  output: V1RestorePhysicalBackupResponse,
+  input: __S(401) as any as S.Schema<V1RestorePhysicalBackupRequest>,
+  output: __S(112) as any as S.Schema<V1RestorePhysicalBackupResponse>,
   errors: [Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9167,8 +6473,8 @@ export const v1RestorePitrBackup: API.OperationMethod<
   V1RestorePitrBackupError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1RestorePitrBackupRequest,
-  output: V1RestorePitrBackupResponse,
+  input: __S(402) as any as S.Schema<V1RestorePitrBackupRequest>,
+  output: __S(23) as any as S.Schema<V1RestorePitrBackupResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9182,8 +6488,8 @@ export const v1RevokeToken: API.OperationMethod<
   V1RevokeTokenError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1RevokeTokenRequest,
-  output: V1RevokeTokenResponse,
+  input: __S(403) as any as S.Schema<V1RevokeTokenRequest>,
+  output: __S(23) as any as S.Schema<V1RevokeTokenResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9197,8 +6503,8 @@ export const v1RollbackMigrations: API.OperationMethod<
   V1RollbackMigrationsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1RollbackMigrationsRequest,
-  output: V1RollbackMigrationsResponse,
+  input: __S(404) as any as S.Schema<V1RollbackMigrationsRequest>,
+  output: __S(23) as any as S.Schema<V1RollbackMigrationsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9212,8 +6518,8 @@ export const v1RunAQuery: API.OperationMethod<
   V1RunAQueryError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1RunAQueryRequest,
-  output: V1RunAQueryResponse,
+  input: __S(405) as any as S.Schema<V1RunAQueryRequest>,
+  output: __S(23) as any as S.Schema<V1RunAQueryResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9227,8 +6533,8 @@ export const v1ScrapeProjectMetrics: API.OperationMethod<
   V1ScrapeProjectMetricsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ScrapeProjectMetricsRequest,
-  output: V1ScrapeProjectMetricsResponse,
+  input: __S(406) as any as S.Schema<V1ScrapeProjectMetricsRequest>,
+  output: __S(23) as any as S.Schema<V1ScrapeProjectMetricsResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9242,8 +6548,8 @@ export const v1SetupAReadReplica: API.OperationMethod<
   V1SetupAReadReplicaError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1SetupAReadReplicaRequest,
-  output: V1SetupAReadReplicaResponse,
+  input: __S(407) as any as S.Schema<V1SetupAReadReplicaRequest>,
+  output: __S(23) as any as S.Schema<V1SetupAReadReplicaResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9257,8 +6563,8 @@ export const v1ShutdownRealtime: API.OperationMethod<
   V1ShutdownRealtimeError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1ShutdownRealtimeRequest,
-  output: V1ShutdownRealtimeResponse,
+  input: __S(408) as any as S.Schema<V1ShutdownRealtimeRequest>,
+  output: __S(23) as any as S.Schema<V1ShutdownRealtimeResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9272,8 +6578,8 @@ export const v1Undo: API.OperationMethod<
   V1UndoError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UndoRequest,
-  output: V1UndoResponse,
+  input: __S(409) as any as S.Schema<V1UndoRequest>,
+  output: __S(23) as any as S.Schema<V1UndoResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9287,8 +6593,8 @@ export const v1UpdateABranchConfig: API.OperationMethod<
   V1UpdateABranchConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateABranchConfigRequest,
-  output: BranchResponseOutput,
+  input: __S(410) as any as S.Schema<V1UpdateABranchConfigRequest>,
+  output: __S(49) as any as S.Schema<BranchResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9302,8 +6608,8 @@ export const v1UpdateActionRunStatus: API.OperationMethod<
   V1UpdateActionRunStatusError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateActionRunStatusRequest,
-  output: UpdateRunStatusResponseOutput,
+  input: __S(411) as any as S.Schema<V1UpdateActionRunStatusRequest>,
+  output: __S(86) as any as S.Schema<UpdateRunStatusResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9317,8 +6623,8 @@ export const v1UpdateAFunction: API.OperationMethod<
   V1UpdateAFunctionError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateAFunctionRequest,
-  output: FunctionSlugResponseOutput,
+  input: __S(412) as any as S.Schema<V1UpdateAFunctionRequest>,
+  output: __S(39) as any as S.Schema<FunctionSlugResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9332,8 +6638,8 @@ export const v1UpdateAProject: API.OperationMethod<
   V1UpdateAProjectError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateAProjectRequest,
-  output: V1ProjectRefResponseOutput,
+  input: __S(413) as any as S.Schema<V1UpdateAProjectRequest>,
+  output: __S(89) as any as S.Schema<V1ProjectRefResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9347,8 +6653,8 @@ export const v1UpdateASsoProvider: API.OperationMethod<
   V1UpdateASsoProviderError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateASsoProviderRequest,
-  output: UpdateProviderResponseOutput,
+  input: __S(418) as any as S.Schema<V1UpdateASsoProviderRequest>,
+  output: __S(424) as any as S.Schema<UpdateProviderResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9362,8 +6668,8 @@ export const v1UpdateAuthServiceConfig: API.OperationMethod<
   V1UpdateAuthServiceConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateAuthServiceConfigRequest,
-  output: AuthConfigResponseOutput,
+  input: __S(425) as any as S.Schema<V1UpdateAuthServiceConfigRequest>,
+  output: __S(152) as any as S.Schema<AuthConfigResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9377,8 +6683,8 @@ export const v1UpdateBackupSchedule: API.OperationMethod<
   V1UpdateBackupScheduleError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateBackupScheduleRequest,
-  output: V1BackupScheduleResponseOutput,
+  input: __S(426) as any as S.Schema<V1UpdateBackupScheduleRequest>,
+  output: __S(162) as any as S.Schema<V1BackupScheduleResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9392,8 +6698,8 @@ export const v1UpdateDatabasePassword: API.OperationMethod<
   V1UpdateDatabasePasswordError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateDatabasePasswordRequest,
-  output: V1UpdatePasswordResponseOutput,
+  input: __S(427) as any as S.Schema<V1UpdateDatabasePasswordRequest>,
+  output: __S(428) as any as S.Schema<V1UpdatePasswordResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9407,8 +6713,8 @@ export const v1UpdateHostnameConfig: API.OperationMethod<
   V1UpdateHostnameConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateHostnameConfigRequest,
-  output: UpdateCustomHostnameResponseOutput,
+  input: __S(429) as any as S.Schema<V1UpdateHostnameConfigRequest>,
+  output: __S(19) as any as S.Schema<UpdateCustomHostnameResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9422,8 +6728,8 @@ export const v1UpdateJitAccess: API.OperationMethod<
   V1UpdateJitAccessError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateJitAccessRequest,
-  output: JitAccessResponseOutput,
+  input: __S(430) as any as S.Schema<V1UpdateJitAccessRequest>,
+  output: __S(6) as any as S.Schema<JitAccessResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9437,8 +6743,8 @@ export const v1UpdateJitAccessConfig: API.OperationMethod<
   V1UpdateJitAccessConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateJitAccessConfigRequest,
-  output: V1UpdateJitAccessConfigResponse,
+  input: __S(431) as any as S.Schema<V1UpdateJitAccessConfigRequest>,
+  output: __S(433) as any as S.Schema<V1UpdateJitAccessConfigResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9452,8 +6758,8 @@ export const v1UpdateNetworkRestrictions: API.OperationMethod<
   V1UpdateNetworkRestrictionsError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateNetworkRestrictionsRequest,
-  output: NetworkRestrictionsResponseOutput,
+  input: __S(434) as any as S.Schema<V1UpdateNetworkRestrictionsRequest>,
+  output: __S(184) as any as S.Schema<NetworkRestrictionsResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9467,8 +6773,8 @@ export const v1UpdatePgsodiumConfig: API.OperationMethod<
   V1UpdatePgsodiumConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdatePgsodiumConfigRequest,
-  output: PgsodiumConfigResponseOutput,
+  input: __S(435) as any as S.Schema<V1UpdatePgsodiumConfigRequest>,
+  output: __S(207) as any as S.Schema<PgsodiumConfigResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9482,8 +6788,8 @@ export const v1UpdatePoolerConfig: API.OperationMethod<
   V1UpdatePoolerConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdatePoolerConfigRequest,
-  output: UpdateSupavisorConfigResponseOutput,
+  input: __S(436) as any as S.Schema<V1UpdatePoolerConfigRequest>,
+  output: __S(437) as any as S.Schema<UpdateSupavisorConfigResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9497,8 +6803,8 @@ export const v1UpdatePostgresConfig: API.OperationMethod<
   V1UpdatePostgresConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdatePostgresConfigRequest,
-  output: PostgresConfigResponseOutput,
+  input: __S(438) as any as S.Schema<V1UpdatePostgresConfigRequest>,
+  output: __S(213) as any as S.Schema<PostgresConfigResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9512,8 +6818,8 @@ export const v1UpdatePostgrestServiceConfig: API.OperationMethod<
   V1UpdatePostgrestServiceConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdatePostgrestServiceConfigRequest,
-  output: V1PostgrestConfigResponseOutput,
+  input: __S(439) as any as S.Schema<V1UpdatePostgrestServiceConfigRequest>,
+  output: __S(440) as any as S.Schema<V1PostgrestConfigResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9527,8 +6833,8 @@ export const v1UpdateProjectApiKey: API.OperationMethod<
   V1UpdateProjectApiKeyError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateProjectApiKeyRequest,
-  output: ApiKeyResponseOutput,
+  input: __S(441) as any as S.Schema<V1UpdateProjectApiKeyRequest>,
+  output: __S(74) as any as S.Schema<ApiKeyResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9542,8 +6848,8 @@ export const v1UpdateProjectLegacyApiKeys: API.OperationMethod<
   V1UpdateProjectLegacyApiKeysError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateProjectLegacyApiKeysRequest,
-  output: LegacyApiKeysResponseOutput,
+  input: __S(442) as any as S.Schema<V1UpdateProjectLegacyApiKeysRequest>,
+  output: __S(245) as any as S.Schema<LegacyApiKeysResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9557,8 +6863,8 @@ export const v1UpdateProjectSigningKey: API.OperationMethod<
   V1UpdateProjectSigningKeyError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateProjectSigningKeyRequest,
-  output: SigningKeyResponseOutput,
+  input: __S(443) as any as S.Schema<V1UpdateProjectSigningKeyRequest>,
+  output: __S(69) as any as S.Schema<SigningKeyResponseOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9572,8 +6878,8 @@ export const v1UpdateRealtimeConfig: API.OperationMethod<
   V1UpdateRealtimeConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateRealtimeConfigRequest,
-  output: V1UpdateRealtimeConfigResponse,
+  input: __S(444) as any as S.Schema<V1UpdateRealtimeConfigRequest>,
+  output: __S(23) as any as S.Schema<V1UpdateRealtimeConfigResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9587,8 +6893,8 @@ export const v1UpdateSslEnforcementConfig: API.OperationMethod<
   V1UpdateSslEnforcementConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateSslEnforcementConfigRequest,
-  output: SslEnforcementResponseOutput,
+  input: __S(445) as any as S.Schema<V1UpdateSslEnforcementConfigRequest>,
+  output: __S(279) as any as S.Schema<SslEnforcementResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9602,8 +6908,8 @@ export const v1UpdateStorageConfig: API.OperationMethod<
   V1UpdateStorageConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpdateStorageConfigRequest,
-  output: V1UpdateStorageConfigResponse,
+  input: __S(447) as any as S.Schema<V1UpdateStorageConfigRequest>,
+  output: __S(23) as any as S.Schema<V1UpdateStorageConfigResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9617,8 +6923,8 @@ export const v1UpgradePostgresVersion: API.OperationMethod<
   V1UpgradePostgresVersionError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpgradePostgresVersionRequest,
-  output: ProjectUpgradeInitiateResponseOutput,
+  input: __S(448) as any as S.Schema<V1UpgradePostgresVersionRequest>,
+  output: __S(449) as any as S.Schema<ProjectUpgradeInitiateResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9632,8 +6938,8 @@ export const v1UpsertAMigration: API.OperationMethod<
   V1UpsertAMigrationError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1UpsertAMigrationRequest,
-  output: V1UpsertAMigrationResponse,
+  input: __S(450) as any as S.Schema<V1UpsertAMigrationRequest>,
+  output: __S(23) as any as S.Schema<V1UpsertAMigrationResponse>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9647,8 +6953,8 @@ export const v1VerifyDnsConfig: API.OperationMethod<
   V1VerifyDnsConfigError,
   SupabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V1VerifyDnsConfigRequest,
-  output: UpdateCustomHostnameResponseOutput,
+  input: __S(451) as any as S.Schema<V1VerifyDnsConfigRequest>,
+  output: __S(19) as any as S.Schema<UpdateCustomHostnameResponseOutput>,
   errors: [BadRequest, Forbidden],
   protocol: SupabaseProtocol,
   retry: Retry.Retry,
@@ -9682,16 +6988,12 @@ function __c0(j: number): any {
         identifier: "JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem",
       });
     case 2:
-      return S.Array(JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsItem);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          allowed_cidrs: S.optional(
-            JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList,
-          ),
-          allowed_cidrs_v6: S.optional(
-            JitAccessResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List,
-          ),
+          allowed_cidrs: S.optional(__S(2)),
+          allowed_cidrs_v6: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "JitAccessResponseOutputUserRolesItemAllowedNetworks",
@@ -9701,19 +7003,19 @@ function __c0(j: number): any {
         S.Struct({
           role: S.String,
           expires_at: S.optional(S.Number),
-          allowed_networks: S.optional(JitAccessResponseOutputUserRolesItemAllowedNetworks),
+          allowed_networks: S.optional(__S(3)),
           branches_only: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "JitAccessResponseOutputUserRolesItem",
       });
     case 5:
-      return S.Array(JitAccessResponseOutputUserRolesItem);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           user_id: S.optional(S.String),
-          user_roles: JitAccessResponseOutputUserRolesList,
+          user_roles: __S(5),
         }),
       ).annotate({ identifier: "JitAccessResponseOutput" });
     case 7:
@@ -9733,7 +7035,7 @@ function __c1(j: number): any {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 1:
-      return S.Array(JsonValueOutput);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9744,7 +7046,7 @@ function __c1(j: number): any {
         identifier: "UpdateCustomHostnameResponseOutputDataResultSslValidationRecordsItem",
       });
     case 3:
-      return S.Array(UpdateCustomHostnameResponseOutputDataResultSslValidationRecordsItem);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -9754,17 +7056,13 @@ function __c1(j: number): any {
         identifier: "UpdateCustomHostnameResponseOutputDataResultSslValidationErrorsItem",
       });
     case 5:
-      return S.Array(UpdateCustomHostnameResponseOutputDataResultSslValidationErrorsItem);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
-          validation_records: S.optional(
-            UpdateCustomHostnameResponseOutputDataResultSslValidationRecordsList,
-          ),
-          validation_errors: S.optional(
-            UpdateCustomHostnameResponseOutputDataResultSslValidationErrorsList,
-          ),
+          validation_records: S.optional(__S(11)),
+          validation_errors: S.optional(__S(13)),
         }),
       ).annotate({
         identifier: "UpdateCustomHostnameResponseOutputDataResultSsl",
@@ -9790,14 +7088,10 @@ function __c2(j: number): any {
         S.Struct({
           id: S.String,
           hostname: S.String,
-          ssl: S.optional(UpdateCustomHostnameResponseOutputDataResultSsl),
-          ownership_verification: S.optional(
-            UpdateCustomHostnameResponseOutputDataResultOwnershipVerification,
-          ),
+          ssl: S.optional(__S(14)),
+          ownership_verification: S.optional(__S(15)),
           custom_origin_server: S.optional(S.String),
-          verification_errors: S.optional(
-            UpdateCustomHostnameResponseOutputDataResultVerificationErrorsList,
-          ),
+          verification_errors: S.optional(__S(16)),
           status: S.optional(S.String),
         }),
       ).annotate({
@@ -9807,9 +7101,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           success: S.Boolean,
-          errors: UpdateCustomHostnameResponseOutputDataErrorsList,
-          messages: UpdateCustomHostnameResponseOutputDataMessagesList,
-          result: UpdateCustomHostnameResponseOutputDataResult,
+          errors: __S(9),
+          messages: __S(9),
+          result: __S(17),
         }),
       ).annotate({
         identifier: "UpdateCustomHostnameResponseOutputData",
@@ -9817,9 +7111,9 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: UpdateCustomHostnameResponseOutputStatus,
+          status: S.String,
           custom_hostname: S.optional(S.String),
-          data: UpdateCustomHostnameResponseOutputData,
+          data: __S(18),
         }),
       ).annotate({
         identifier: "UpdateCustomHostnameResponseOutput",
@@ -9872,8 +7166,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          addon_variant: V1ApplyProjectAddonRequestAddonVariant,
-          addon_type: V1ApplyProjectAddonRequestAddonType,
+          addon_variant: __S(24),
+          addon_type: S.String,
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/projects/{ref}/billing/addons", code: 200 })),
       ).annotate({
         identifier: "V1ApplyProjectAddonRequest",
@@ -9891,12 +7185,8 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          allowed_cidrs: S.optional(
-            JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsList,
-          ),
-          allowed_cidrs_v6: S.optional(
-            JitAuthorizeAccessResponseOutputUserRoleAllowedNetworksAllowedCidrsV6List,
-          ),
+          allowed_cidrs: S.optional(__S(2)),
+          allowed_cidrs_v6: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "JitAuthorizeAccessResponseOutputUserRoleAllowedNetworks",
@@ -9906,7 +7196,7 @@ function __c3(j: number): any {
         S.Struct({
           role: S.String,
           expires_at: S.optional(S.Number),
-          allowed_networks: S.optional(JitAuthorizeAccessResponseOutputUserRoleAllowedNetworks),
+          allowed_networks: S.optional(__S(27)),
           branches_only: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -9917,7 +7207,7 @@ function __c3(j: number): any {
         S.Struct({
           user_id: S.optional(S.String),
           act: S.optional(S.String),
-          user_role: JitAuthorizeAccessResponseOutputUserRole,
+          user_role: __S(28),
         }),
       ).annotate({
         identifier: "JitAuthorizeAccessResponseOutput",
@@ -9926,15 +7216,13 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           client_id: S.String.pipe(T.Query()),
-          response_type: V1AuthorizeUserRequestResponseType.pipe(T.Query()),
+          response_type: S.String.pipe(T.Query()),
           redirect_uri: S.String.pipe(T.Query()),
           scope: S.optional(S.String.pipe(T.Query())),
           state: S.optional(S.String.pipe(T.Query())),
           response_mode: S.optional(S.String.pipe(T.Query())),
           code_challenge: S.optional(S.String.pipe(T.Query())),
-          code_challenge_method: S.optional(
-            V1AuthorizeUserRequestCodeChallengeMethod.pipe(T.Query()),
-          ),
+          code_challenge_method: S.optional(S.String.pipe(T.Query())),
           organization_slug: S.optional(S.String.pipe(T.Query())),
           target_flow: S.optional(S.String.pipe(T.Query())),
           resource: S.optional(S.String.pipe(T.Query())),
@@ -9952,12 +7240,12 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateSecretBodyItem);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          body: CreateSecretBody.pipe(T.HttpBody()),
+          body: __S(32).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v1/projects/{ref}/secrets", code: 200 })),
       ).annotate({
         identifier: "V1BulkCreateSecretsRequest",
@@ -9968,7 +7256,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          body: DeleteSecretsBody.pipe(T.HttpBody()),
+          body: __S(34).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/projects/{ref}/secrets", code: 200 })),
       ).annotate({
         identifier: "V1BulkDeleteSecretsRequest",
@@ -9979,7 +7267,7 @@ function __c4(j: number): any {
           id: S.String,
           slug: S.String,
           name: S.String,
-          status: BulkUpdateFunctionBodyItemStatus,
+          status: S.String,
           version: S.Number,
           created_at: S.optional(S.Number),
           verify_jwt: S.optional(S.Boolean),
@@ -9992,12 +7280,12 @@ function __c4(j: number): any {
         identifier: "BulkUpdateFunctionBodyItem",
       });
     case 5:
-      return S.Array(BulkUpdateFunctionBodyItem);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          body: BulkUpdateFunctionBody.pipe(T.HttpBody()),
+          body: __S(37).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/projects/{ref}/functions", code: 200 })),
       ).annotate({
         identifier: "V1BulkUpdateFunctionsRequest",
@@ -10008,7 +7296,7 @@ function __c4(j: number): any {
           id: S.String,
           slug: S.String,
           name: S.String,
-          status: BulkUpdateFunctionResponseOutputFunctionsItemStatus,
+          status: S.String,
           version: S.Number,
           created_at: S.Number,
           updated_at: S.Number,
@@ -10026,11 +7314,11 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BulkUpdateFunctionResponseOutputFunctionsItem);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          functions: BulkUpdateFunctionResponseOutputFunctionsList,
+          functions: __S(40),
         }),
       ).annotate({
         identifier: "BulkUpdateFunctionResponseOutput",
@@ -10100,10 +7388,10 @@ function __c6(j: number): any {
           is_default: S.optional(S.Boolean),
           persistent: S.optional(S.Boolean),
           region: S.optional(S.String),
-          desired_instance_size: S.optional(V1CreateABranchRequestDesiredInstanceSize),
-          release_channel: S.optional(V1CreateABranchRequestReleaseChannel),
-          postgres_engine: S.optional(V1CreateABranchRequestPostgresEngine),
-          secrets: S.optional(V1CreateABranchRequestSecretsMap),
+          desired_instance_size: S.optional(S.String),
+          release_channel: S.optional(S.String),
+          postgres_engine: S.optional(S.String),
+          secrets: S.optional(__S(47)),
           with_data: S.optional(S.Boolean),
           notify_url: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/projects/{ref}/branches", code: 200 })),
@@ -10120,14 +7408,14 @@ function __c6(j: number): any {
           pr_number: S.optional(S.Number),
           latest_check_run_id: S.optional(S.Number),
           persistent: S.Boolean,
-          status: BranchResponseOutputStatus,
+          status: S.String,
           created_at: S.String,
           updated_at: S.String,
           review_requested_at: S.optional(S.String),
           with_data: S.Boolean,
           notify_url: S.optional(S.String),
           deletion_scheduled_at: S.optional(S.String),
-          preview_project_status: S.optional(BranchResponseOutputPreviewProjectStatus),
+          preview_project_status: S.optional(S.String),
         }),
       ).annotate({ identifier: "BranchResponseOutput" });
     case 2:
@@ -10165,11 +7453,11 @@ function __c6(j: number): any {
           name: S.String,
           organization_id: S.optional(S.String),
           organization_slug: S.String,
-          plan: S.optional(V1CreateAProjectRequestPlan),
-          region: S.optional(V1CreateAProjectRequestRegion),
-          region_selection: S.optional(V1CreateAProjectRequestRegionSelection),
+          plan: S.optional(S.String),
+          region: S.optional(S.String),
+          region_selection: S.optional(__S(52)),
           kps_enabled: S.optional(S.Boolean),
-          desired_instance_size: S.optional(V1CreateAProjectRequestDesiredInstanceSize),
+          desired_instance_size: S.optional(S.String),
           template_url: S.optional(S.String),
           release_channel: S.optional(S.NullOr(S.Unknown)),
           postgres_engine: S.optional(S.NullOr(S.Unknown)),
@@ -10186,7 +7474,7 @@ function __c6(j: number): any {
           name: S.String,
           region: S.String,
           created_at: S.String,
-          status: V1ProjectResponseOutputStatus,
+          status: S.String,
         }),
       ).annotate({ identifier: "V1ProjectResponseOutput" });
     case 7:
@@ -10199,19 +7487,19 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          names: S.optional(V1CreateASsoProviderRequestAttributeMappingKeysValueNamesList),
+          names: S.optional(__S(34)),
           array: S.optional(S.Boolean),
-          default: S.optional(V1CreateASsoProviderRequestAttributeMappingKeysValueDefault),
+          default: S.optional(__S(55)),
         }),
       ).annotate({
         identifier: "V1CreateASsoProviderRequestAttributeMappingKeysValue",
       });
     case 1:
-      return S.Record(S.String, V1CreateASsoProviderRequestAttributeMappingKeysValue);
+      return S.Record(S.String, __S(56));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          keys: V1CreateASsoProviderRequestAttributeMappingKeysMap,
+          keys: __S(57),
         }),
       ).annotate({
         identifier: "V1CreateASsoProviderRequestAttributeMapping",
@@ -10220,12 +7508,12 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          type: V1CreateASsoProviderRequestType,
+          type: S.String,
           metadata_xml: S.optional(S.String),
           metadata_url: S.optional(S.String),
-          domains: S.optional(V1CreateASsoProviderRequestDomainsList),
-          attribute_mapping: S.optional(V1CreateASsoProviderRequestAttributeMapping),
-          name_id_format: S.optional(V1CreateASsoProviderRequestNameIdFormat),
+          domains: S.optional(__S(34)),
+          attribute_mapping: S.optional(__S(58)),
+          name_id_format: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10242,19 +7530,19 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          names: S.optional(CreateProviderResponseOutputSamlAttributeMappingKeysValueNamesList),
+          names: S.optional(__S(16)),
           array: S.optional(S.Boolean),
-          default: S.optional(CreateProviderResponseOutputSamlAttributeMappingKeysValueDefault),
+          default: S.optional(__S(60)),
         }),
       ).annotate({
         identifier: "CreateProviderResponseOutputSamlAttributeMappingKeysValue",
       });
     case 6:
-      return S.Record(S.String, CreateProviderResponseOutputSamlAttributeMappingKeysValue);
+      return S.Record(S.String, __S(61));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          keys: CreateProviderResponseOutputSamlAttributeMappingKeysMap,
+          keys: __S(62),
         }),
       ).annotate({
         identifier: "CreateProviderResponseOutputSamlAttributeMapping",
@@ -10269,8 +7557,8 @@ function __c8(j: number): any {
           entity_id: S.String,
           metadata_url: S.optional(S.String),
           metadata_xml: S.optional(S.String),
-          attribute_mapping: S.optional(CreateProviderResponseOutputSamlAttributeMapping),
-          name_id_format: S.optional(CreateProviderResponseOutputSamlNameIdFormat),
+          attribute_mapping: S.optional(__S(63)),
+          name_id_format: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateProviderResponseOutputSaml",
@@ -10286,13 +7574,13 @@ function __c8(j: number): any {
         identifier: "CreateProviderResponseOutputDomainsItem",
       });
     case 2:
-      return S.Array(CreateProviderResponseOutputDomainsItem);
+      return S.Array(__S(65));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          saml: S.optional(CreateProviderResponseOutputSaml),
-          domains: S.optional(CreateProviderResponseOutputDomainsList),
+          saml: S.optional(__S(64)),
+          domains: S.optional(__S(66)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -10317,8 +7605,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          algorithm: SigningKeyResponseOutputAlgorithm,
-          status: SigningKeyResponseOutputStatus,
+          algorithm: S.String,
+          status: S.String,
           public_jwk: S.NullOr(S.Unknown),
           created_at: S.String,
           updated_at: S.String,
@@ -10350,12 +7638,10 @@ function __c9(j: number): any {
         S.Struct({
           ref: S.String.pipe(T.Label()),
           reveal: S.optional(S.String.pipe(T.Query())),
-          type: V1CreateProjectApiKeyRequestType,
+          type: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
-          secret_jwt_template: S.optional(
-            S.NullOr(V1CreateProjectApiKeyRequestSecretJwtTemplateMap),
-          ),
+          secret_jwt_template: S.optional(S.NullOr(__S(72))),
         }).pipe(T.Http({ method: "POST", uri: "/v1/projects/{ref}/api-keys", code: 200 })),
       ).annotate({
         identifier: "V1CreateProjectApiKeyRequest",
@@ -10365,12 +7651,12 @@ function __c9(j: number): any {
         S.Struct({
           api_key: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           id: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(ApiKeyResponseOutputType)),
+          type: S.optional(S.NullOr(S.String)),
           prefix: S.optional(S.NullOr(S.String)),
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
           hash: S.optional(S.NullOr(S.String)),
-          secret_jwt_template: S.optional(S.NullOr(ApiKeyResponseOutputSecretJwtTemplateMap)),
+          secret_jwt_template: S.optional(S.NullOr(__S(72))),
           inserted_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
         }),
@@ -10396,7 +7682,7 @@ function __c9(j: number): any {
         identifier: "CreateProjectClaimTokenResponseOutput",
       });
     case 5:
-      return S.Array(V1CreateProjectSigningKeyRequestPrivateJwkCase0KeyOpsItem);
+      return S.Array(S.String);
     case 6:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -10428,9 +7714,9 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          algorithm: V1CreateProjectSigningKeyRequestAlgorithm,
-          status: S.optional(V1CreateProjectSigningKeyRequestStatus),
-          private_jwk: S.optional(V1CreateProjectSigningKeyRequestPrivateJwk),
+          algorithm: S.String,
+          status: S.optional(S.String),
+          private_jwk: S.optional(__S(78)),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/projects/{ref}/config/auth/signing-keys", code: 200 }),
         ),
@@ -10491,7 +7777,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          status: V1RestorePointResponseStatus,
+          status: S.String,
           completed_on: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "V1RestorePointResponse" });
@@ -10515,7 +7801,7 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          message: BranchDeleteResponseOutputMessage,
+          message: S.String,
         }),
       ).annotate({
         identifier: "BranchDeleteResponseOutput",
@@ -10574,19 +7860,19 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          names: S.optional(DeleteProviderResponseOutputSamlAttributeMappingKeysValueNamesList),
+          names: S.optional(__S(16)),
           array: S.optional(S.Boolean),
-          default: S.optional(DeleteProviderResponseOutputSamlAttributeMappingKeysValueDefault),
+          default: S.optional(__S(91)),
         }),
       ).annotate({
         identifier: "DeleteProviderResponseOutputSamlAttributeMappingKeysValue",
       });
     case 5:
-      return S.Record(S.String, DeleteProviderResponseOutputSamlAttributeMappingKeysValue);
+      return S.Record(S.String, __S(92));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          keys: DeleteProviderResponseOutputSamlAttributeMappingKeysMap,
+          keys: __S(93),
         }),
       ).annotate({
         identifier: "DeleteProviderResponseOutputSamlAttributeMapping",
@@ -10597,8 +7883,8 @@ function __c11(j: number): any {
           entity_id: S.String,
           metadata_url: S.optional(S.String),
           metadata_xml: S.optional(S.String),
-          attribute_mapping: S.optional(DeleteProviderResponseOutputSamlAttributeMapping),
-          name_id_format: S.optional(DeleteProviderResponseOutputSamlNameIdFormat),
+          attribute_mapping: S.optional(__S(94)),
+          name_id_format: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DeleteProviderResponseOutputSaml",
@@ -10611,8 +7897,8 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          saml: S.optional(DeleteProviderResponseOutputSaml),
-          domains: S.optional(DeleteProviderResponseOutputDomainsList),
+          saml: S.optional(__S(95)),
+          domains: S.optional(__S(66)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -10664,7 +7950,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          ipv4_addresses: V1DeleteNetworkBansRequestIpv4AddressesList,
+          ipv4_addresses: __S(34),
           requester_ip: S.optional(S.Boolean),
           identifier: S.optional(S.String),
         }).pipe(T.Http({ method: "DELETE", uri: "/v1/projects/{ref}/network-bans", code: 200 })),
@@ -10715,7 +8001,7 @@ function __c13(j: number): any {
         S.Struct({
           entrypoint_path: S.String,
           import_map_path: S.optional(S.String),
-          static_patterns: S.optional(V1DeployAFunctionRequestMetadataStaticPatternsList),
+          static_patterns: S.optional(__S(34)),
           verify_jwt: S.optional(S.Boolean),
           name: S.optional(S.String),
         }),
@@ -10728,8 +8014,8 @@ function __c13(j: number): any {
           ref: S.String.pipe(T.Label()),
           slug: S.optional(S.String.pipe(T.Query())),
           bundleOnly: S.optional(S.String.pipe(T.Query())),
-          file: V1DeployAFunctionRequestFileList,
-          metadata: V1DeployAFunctionRequestMetadata,
+          file: __S(34),
+          metadata: __S(105),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10745,7 +8031,7 @@ function __c13(j: number): any {
           id: S.String,
           slug: S.String,
           name: S.String,
-          status: DeployFunctionResponseOutputStatus,
+          status: S.String,
           version: S.Number,
           created_at: S.optional(S.Number),
           updated_at: S.optional(S.Number),
@@ -10809,7 +8095,7 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          grant_type: S.optional(V1ExchangeOauthTokenRequestGrantType),
+          grant_type: S.optional(S.String),
           client_id: S.optional(S.String),
           client_secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
           code: S.optional(S.String),
@@ -10836,7 +8122,7 @@ function __c14(j: number): any {
           access_token: S.String.pipe(T.SensitiveValue({})),
           refresh_token: S.optional(S.String.pipe(T.SensitiveValue({}))),
           expires_in: S.Number,
-          token_type: OAuthTokenResponseOutputTokenType,
+          token_type: S.String,
         }),
       ).annotate({ identifier: "OAuthTokenResponseOutput" });
     case 3:
@@ -10876,7 +8162,7 @@ function __c14(j: number): any {
           postgres_version: S.String,
           postgres_engine: S.String,
           release_channel: S.String,
-          status: BranchDetailResponseOutputStatus,
+          status: S.String,
           db_host: S.String,
           db_port: S.Number,
           db_user: S.optional(S.String),
@@ -10900,8 +8186,8 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: ActionRunResponseOutputRunStepsItemName,
-          status: ActionRunResponseOutputRunStepsItemStatus,
+          name: S.String,
+          status: S.String,
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -10909,13 +8195,13 @@ function __c15(j: number): any {
         identifier: "ActionRunResponseOutputRunStepsItem",
       });
     case 2:
-      return S.Array(ActionRunResponseOutputRunStepsItem);
+      return S.Array(__S(121));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           branch_id: S.String,
-          run_steps: ActionRunResponseOutputRunStepsList,
+          run_steps: __S(122),
           git_config: S.optional(S.NullOr(S.Unknown)),
           workdir: S.NullOr(S.String),
           check_run_id: S.NullOr(S.Number),
@@ -10973,7 +8259,7 @@ function __c16(j: number): any {
           offset: S.optional(S.Number.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(V1GetAllProjectsForOrganizationRequestSort.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
           statuses: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/organizations/{slug}/projects", code: 200 })),
       ).annotate({
@@ -10982,18 +8268,14 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          infra_compute_size: S.optional(
-            OrganizationProjectsResponseOutputProjectsItemDatabasesItemInfraComputeSize,
-          ),
+          infra_compute_size: S.optional(S.String),
           region: S.String,
-          status: OrganizationProjectsResponseOutputProjectsItemDatabasesItemStatus,
+          status: S.String,
           cloud_provider: S.String,
           identifier: S.String,
-          type: OrganizationProjectsResponseOutputProjectsItemDatabasesItemType,
+          type: S.String,
           disk_volume_size_gb: S.optional(S.Number),
-          disk_type: S.optional(
-            OrganizationProjectsResponseOutputProjectsItemDatabasesItemDiskType,
-          ),
+          disk_type: S.optional(S.String),
           disk_throughput_mbps: S.optional(S.Number),
           disk_last_modified_at: S.optional(S.String),
         }),
@@ -11001,7 +8283,7 @@ function __c16(j: number): any {
         identifier: "OrganizationProjectsResponseOutputProjectsItemDatabasesItem",
       });
     case 2:
-      return S.Array(OrganizationProjectsResponseOutputProjectsItemDatabasesItem);
+      return S.Array(__S(129));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -11010,15 +8292,15 @@ function __c16(j: number): any {
           cloud_provider: S.String,
           region: S.String,
           is_branch: S.Boolean,
-          status: OrganizationProjectsResponseOutputProjectsItemStatus,
+          status: S.String,
           inserted_at: S.String,
-          databases: OrganizationProjectsResponseOutputProjectsItemDatabasesList,
+          databases: __S(130),
         }),
       ).annotate({
         identifier: "OrganizationProjectsResponseOutputProjectsItem",
       });
     case 4:
-      return S.Array(OrganizationProjectsResponseOutputProjectsItem);
+      return S.Array(__S(131));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -11032,8 +8314,8 @@ function __c16(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          projects: OrganizationProjectsResponseOutputProjectsList,
-          pagination: OrganizationProjectsResponseOutputPagination,
+          projects: __S(132),
+          pagination: __S(133),
         }),
       ).annotate({
         identifier: "OrganizationProjectsResponseOutput",
@@ -11060,8 +8342,8 @@ function __c17(j: number): any {
         S.Struct({
           version: S.String,
           name: S.optional(S.String),
-          statements: S.optional(V1GetMigrationResponseOutputStatementsList),
-          rollback: S.optional(V1GetMigrationResponseOutputRollbackList),
+          statements: S.optional(__S(34)),
+          rollback: S.optional(__S(34)),
           created_by: S.optional(S.String),
           idempotency_key: S.optional(S.String),
         }),
@@ -11081,9 +8363,9 @@ function __c17(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          plan: S.optional(V1OrganizationSlugResponseOutputPlan),
-          opt_in_tags: V1OrganizationSlugResponseOutputOptInTagsList,
-          allowed_release_channels: V1OrganizationSlugResponseOutputAllowedReleaseChannelsList,
+          plan: S.optional(S.String),
+          opt_in_tags: __S(77),
+          allowed_release_channels: __S(77),
         }),
       ).annotate({
         identifier: "V1OrganizationSlugResponseOutput",
@@ -11128,15 +8410,15 @@ function __c17(j: number): any {
           id: S.String,
           inserted_at: S.String,
           updated_at: S.String,
-          type: SnippetResponseOutputType,
-          visibility: SnippetResponseOutputVisibility,
+          type: S.String,
+          visibility: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          project: SnippetResponseOutputProject,
-          owner: SnippetResponseOutputOwner,
-          updated_by: SnippetResponseOutputOwner,
+          project: __S(140),
+          owner: __S(141),
+          updated_by: __S(141),
           favorite: S.Boolean,
-          content: SnippetResponseOutputContent,
+          content: __S(142),
         }),
       ).annotate({ identifier: "SnippetResponseOutput" });
   }
@@ -11162,19 +8444,19 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          names: S.optional(GetProviderResponseOutputSamlAttributeMappingKeysValueNamesList),
+          names: S.optional(__S(16)),
           array: S.optional(S.Boolean),
-          default: S.optional(GetProviderResponseOutputSamlAttributeMappingKeysValueDefault),
+          default: S.optional(__S(145)),
         }),
       ).annotate({
         identifier: "GetProviderResponseOutputSamlAttributeMappingKeysValue",
       });
     case 3:
-      return S.Record(S.String, GetProviderResponseOutputSamlAttributeMappingKeysValue);
+      return S.Record(S.String, __S(146));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          keys: GetProviderResponseOutputSamlAttributeMappingKeysMap,
+          keys: __S(147),
         }),
       ).annotate({
         identifier: "GetProviderResponseOutputSamlAttributeMapping",
@@ -11185,8 +8467,8 @@ function __c18(j: number): any {
           entity_id: S.String,
           metadata_url: S.optional(S.String),
           metadata_xml: S.optional(S.String),
-          attribute_mapping: S.optional(GetProviderResponseOutputSamlAttributeMapping),
-          name_id_format: S.optional(GetProviderResponseOutputSamlNameIdFormat),
+          attribute_mapping: S.optional(__S(148)),
+          name_id_format: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetProviderResponseOutputSaml",
@@ -11195,8 +8477,8 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          saml: S.optional(GetProviderResponseOutputSaml),
-          domains: S.optional(GetProviderResponseOutputDomainsList),
+          saml: S.optional(__S(149)),
+          domains: S.optional(__S(66)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -11220,7 +8502,7 @@ function __c19(j: number): any {
         S.Struct({
           api_max_request_duration: S.NullOr(S.Number),
           db_max_pool_size: S.NullOr(S.Number),
-          db_max_pool_size_unit: S.NullOr(AuthConfigResponseOutputDbMaxPoolSizeUnit),
+          db_max_pool_size_unit: S.NullOr(S.String),
           disable_signup: S.NullOr(S.Boolean),
           external_anonymous_users_enabled: S.NullOr(S.Boolean),
           external_apple_additional_client_ids: S.NullOr(S.String),
@@ -11400,9 +8682,7 @@ function __c19(j: number): any {
           nimbus_oauth_client_secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
           password_hibp_enabled: S.NullOr(S.Boolean),
           password_min_length: S.NullOr(S.Number),
-          password_required_characters: S.NullOr(
-            AuthConfigResponseOutputPasswordRequiredCharacters,
-          ),
+          password_required_characters: S.NullOr(S.String),
           rate_limit_anonymous_users: S.NullOr(S.Number),
           rate_limit_email_sent: S.NullOr(S.Number),
           rate_limit_sms_sent: S.NullOr(S.Number),
@@ -11416,7 +8696,7 @@ function __c19(j: number): any {
           saml_allow_encrypted_assertions: S.NullOr(S.Boolean),
           security_sb_forwarded_for_enabled: S.NullOr(S.Boolean),
           security_captcha_enabled: S.NullOr(S.Boolean),
-          security_captcha_provider: S.NullOr(AuthConfigResponseOutputSecurityCaptchaProvider),
+          security_captcha_provider: S.NullOr(S.String),
           security_captcha_secret: S.NullOr(S.String).pipe(T.SensitiveValue({})),
           security_manual_linking_enabled: S.NullOr(S.Boolean),
           security_refresh_token_reuse_interval: S.NullOr(S.Number),
@@ -11433,7 +8713,7 @@ function __c19(j: number): any {
           sms_messagebird_originator: S.NullOr(S.String),
           sms_otp_exp: S.NullOr(S.Number),
           sms_otp_length: S.Number,
-          sms_provider: S.NullOr(AuthConfigResponseOutputSmsProvider),
+          sms_provider: S.NullOr(S.String),
           sms_template: S.NullOr(S.String),
           sms_test_otp: S.NullOr(S.String),
           sms_test_otp_valid_until: S.NullOr(S.String),
@@ -11468,10 +8748,8 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           organization_slug: S.String.pipe(T.Query()),
-          continent: S.optional(V1GetAvailableRegionsRequestContinent.pipe(T.Query())),
-          desired_instance_size: S.optional(
-            V1GetAvailableRegionsRequestDesiredInstanceSize.pipe(T.Query()),
-          ),
+          continent: S.optional(S.String.pipe(T.Query())),
+          desired_instance_size: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/projects/available-regions", code: 200 })),
       ).annotate({
         identifier: "V1GetAvailableRegionsRequest",
@@ -11480,8 +8758,8 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          code: RegionsInfoOutputRecommendationsSmartGroupCode,
-          type: RegionsInfoOutputRecommendationsSmartGroupType,
+          code: S.String,
+          type: S.String,
         }),
       ).annotate({
         identifier: "RegionsInfoOutputRecommendationsSmartGroup",
@@ -11490,32 +8768,32 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          code: RegionsInfoOutputRecommendationsSpecificItemCode,
-          type: RegionsInfoOutputRecommendationsSpecificItemType,
-          provider: RegionsInfoOutputRecommendationsSpecificItemProvider,
-          status: S.optional(RegionsInfoOutputRecommendationsSpecificItemStatus),
+          code: S.String,
+          type: S.String,
+          provider: S.String,
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RegionsInfoOutputRecommendationsSpecificItem",
       });
     case 4:
-      return S.Array(RegionsInfoOutputRecommendationsSpecificItem);
+      return S.Array(__S(155));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          smartGroup: RegionsInfoOutputRecommendationsSmartGroup,
-          specific: RegionsInfoOutputRecommendationsSpecificList,
+          smartGroup: __S(154),
+          specific: __S(156),
         }),
       ).annotate({
         identifier: "RegionsInfoOutputRecommendations",
       });
     case 6:
-      return S.Array(RegionsInfoOutputAllSmartGroupItem);
+      return S.Array(__S(154));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          smartGroup: RegionsInfoOutputAllSmartGroupList,
-          specific: RegionsInfoOutputAllSpecificList,
+          smartGroup: __S(158),
+          specific: __S(156),
         }),
       ).annotate({ identifier: "RegionsInfoOutputAll" });
   }
@@ -11525,8 +8803,8 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          recommendations: RegionsInfoOutputRecommendations,
-          all: RegionsInfoOutputAll,
+          recommendations: __S(157),
+          all: __S(159),
         }),
       ).annotate({ identifier: "RegionsInfoOutput" });
     case 1:
@@ -11567,7 +8845,7 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          attributes: DiskResponseOutputAttributes,
+          attributes: __S(164),
           last_modified_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "DiskResponseOutput" });
@@ -11592,22 +8870,22 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetProjectDbMetadataResponseOutputDatabasesItemSchemasItem);
+      return S.Array(__S(167));
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          schemas: GetProjectDbMetadataResponseOutputDatabasesItemSchemasList,
+          schemas: __S(168),
         }),
       ).annotate({
         identifier: "GetProjectDbMetadataResponseOutputDatabasesItem",
       });
     case 2:
-      return S.Array(GetProjectDbMetadataResponseOutputDatabasesItem);
+      return S.Array(__S(169));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          databases: GetProjectDbMetadataResponseOutputDatabasesList,
+          databases: __S(170),
         }),
       ).annotate({
         identifier: "GetProjectDbMetadataResponseOutput",
@@ -11643,7 +8921,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           timestamp: S.String,
-          metrics: DiskUtilMetricsResponseOutputMetrics,
+          metrics: __S(174),
         }),
       ).annotate({
         identifier: "DiskUtilMetricsResponseOutput",
@@ -11682,7 +8960,7 @@ function __c22(j: number): any {
         ]),
       );
     case 4:
-      return S.suspend(() => V1GetJitAccessConfigResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(179).pipe(T.RawResponseRoot())).annotate({
         identifier: "V1GetJitAccessConfigResponse",
       });
     case 5:
@@ -11712,8 +8990,8 @@ function __c22(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dbAllowedCidrs: S.optional(NetworkRestrictionsResponseOutputConfigDbAllowedCidrsList),
-          dbAllowedCidrsV6: S.optional(NetworkRestrictionsResponseOutputConfigDbAllowedCidrsV6List),
+          dbAllowedCidrs: S.optional(__S(34)),
+          dbAllowedCidrsV6: S.optional(__S(34)),
         }),
       ).annotate({
         identifier: "NetworkRestrictionsResponseOutputConfig",
@@ -11725,10 +9003,10 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entitlement: NetworkRestrictionsResponseOutputEntitlement,
-          config: NetworkRestrictionsResponseOutputConfig,
-          old_config: S.optional(NetworkRestrictionsResponseOutputOldConfig),
-          status: NetworkRestrictionsResponseOutputStatus,
+          entitlement: S.String,
+          config: __S(183),
+          old_config: S.optional(__S(183)),
+          status: S.String,
           updated_at: S.optional(S.String),
           applied_at: S.optional(S.String),
         }),
@@ -11746,8 +9024,8 @@ function __c23(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          key: V1ListEntitlementsResponseOutputEntitlementsItemFeatureKey,
-          type: V1ListEntitlementsResponseOutputEntitlementsItemFeatureType,
+          key: S.String,
+          type: S.String,
         }),
       ).annotate({
         identifier: "V1ListEntitlementsResponseOutputEntitlementsItemFeature",
@@ -11771,20 +9049,20 @@ function __c23(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          feature: V1ListEntitlementsResponseOutputEntitlementsItemFeature,
+          feature: __S(186),
           hasAccess: S.Boolean,
-          type: V1ListEntitlementsResponseOutputEntitlementsItemType,
-          config: V1ListEntitlementsResponseOutputEntitlementsItemConfig,
+          type: S.String,
+          config: __S(188),
         }),
       ).annotate({
         identifier: "V1ListEntitlementsResponseOutputEntitlementsItem",
       });
     case 6:
-      return S.Array(V1ListEntitlementsResponseOutputEntitlementsItem);
+      return S.Array(__S(189));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entitlements: V1ListEntitlementsResponseOutputEntitlementsList,
+          entitlements: __S(190),
         }),
       ).annotate({
         identifier: "V1ListEntitlementsResponseOutput",
@@ -11827,7 +9105,7 @@ function __c24(j: number): any {
         identifier: "OrganizationProjectClaimResponseOutputPreviewWarningsItem",
       });
     case 3:
-      return S.Array(OrganizationProjectClaimResponseOutputPreviewWarningsItem);
+      return S.Array(__S(194));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -11839,23 +9117,17 @@ function __c24(j: number): any {
           "OrganizationProjectClaimResponseOutputPreviewMembersExceedingFreeProjectLimitItem",
       });
     case 5:
-      return S.Array(
-        OrganizationProjectClaimResponseOutputPreviewMembersExceedingFreeProjectLimitItem,
-      );
+      return S.Array(__S(196));
     case 6:
       return S.suspend(() =>
         S.Struct({
           valid: S.Boolean,
-          warnings: OrganizationProjectClaimResponseOutputPreviewWarningsList,
-          errors: OrganizationProjectClaimResponseOutputPreviewErrorsList,
-          info: OrganizationProjectClaimResponseOutputPreviewInfoList,
-          members_exceeding_free_project_limit:
-            OrganizationProjectClaimResponseOutputPreviewMembersExceedingFreeProjectLimitList,
-          source_subscription_plan:
-            OrganizationProjectClaimResponseOutputPreviewSourceSubscriptionPlan,
-          target_subscription_plan: S.NullOr(
-            OrganizationProjectClaimResponseOutputPreviewTargetSubscriptionPlan,
-          ),
+          warnings: __S(195),
+          errors: __S(195),
+          info: __S(195),
+          members_exceeding_free_project_limit: __S(197),
+          source_subscription_plan: S.String,
+          target_subscription_plan: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "OrganizationProjectClaimResponseOutputPreview",
@@ -11863,8 +9135,8 @@ function __c24(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          project: OrganizationProjectClaimResponseOutputProject,
-          preview: OrganizationProjectClaimResponseOutputPreview,
+          project: __S(193),
+          preview: __S(198),
           expires_at: S.String,
           created_at: S.String,
           created_by: S.String,
@@ -11894,9 +9166,9 @@ function __c25(j: number): any {
           schema: S.optional(S.String),
           name: S.optional(S.String),
           entity: S.optional(S.String),
-          type: S.optional(V1ProjectAdvisorsResponseOutputLintsItemMetadataType),
+          type: S.optional(S.String),
           fkey_name: S.optional(S.String),
-          fkey_columns: S.optional(V1ProjectAdvisorsResponseOutputLintsItemMetadataFkeyColumnsList),
+          fkey_columns: S.optional(__S(201)),
         }),
       ).annotate({
         identifier: "V1ProjectAdvisorsResponseOutputLintsItemMetadata",
@@ -11904,15 +9176,15 @@ function __c25(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: V1ProjectAdvisorsResponseOutputLintsItemName,
+          name: S.String,
           title: S.String,
-          level: V1ProjectAdvisorsResponseOutputLintsItemLevel,
-          facing: V1ProjectAdvisorsResponseOutputLintsItemFacing,
-          categories: V1ProjectAdvisorsResponseOutputLintsItemCategoriesList,
+          level: S.String,
+          facing: S.String,
+          categories: __S(77),
           description: S.String,
           detail: S.String,
           remediation: S.String,
-          metadata: S.optional(V1ProjectAdvisorsResponseOutputLintsItemMetadata),
+          metadata: S.optional(__S(202)),
           cache_key: S.String,
           observed_at: S.optional(S.String),
         }),
@@ -11920,11 +9192,11 @@ function __c25(j: number): any {
         identifier: "V1ProjectAdvisorsResponseOutputLintsItem",
       });
     case 4:
-      return S.Array(V1ProjectAdvisorsResponseOutputLintsItem);
+      return S.Array(__S(203));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          lints: V1ProjectAdvisorsResponseOutputLintsList,
+          lints: __S(204),
         }),
       ).annotate({
         identifier: "V1ProjectAdvisorsResponseOutput",
@@ -11961,7 +9233,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           identifier: S.String,
-          database_type: SupavisorConfigResponseOutputDatabaseType,
+          database_type: S.String,
           is_using_scram_auth: S.Boolean,
           db_user: S.String,
           db_host: S.String,
@@ -11971,15 +9243,15 @@ function __c26(j: number): any {
           connectionString: S.String.pipe(T.SensitiveValue({})),
           default_pool_size: S.NullOr(S.Number),
           max_client_conn: S.NullOr(S.Number),
-          pool_mode: SupavisorConfigResponseOutputPoolMode,
+          pool_mode: S.String,
         }),
       ).annotate({
         identifier: "SupavisorConfigResponseOutput",
       });
     case 2:
-      return S.Array(SupavisorConfigResponseOutput);
+      return S.Array(__S(209));
     case 3:
-      return S.suspend(() => V1GetPoolerConfigResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(210).pipe(T.RawResponseRoot())).annotate({
         identifier: "V1GetPoolerConfigResponse",
       });
     case 4:
@@ -12024,7 +9296,7 @@ function __c26(j: number): any {
           max_wal_size: S.optional(S.String),
           max_wal_senders: S.optional(S.Number),
           max_worker_processes: S.optional(S.Number),
-          session_replication_role: S.optional(PostgresConfigResponseOutputSessionReplicationRole),
+          session_replication_role: S.optional(S.String),
           shared_buffers: S.optional(S.String),
           statement_timeout: S.optional(S.String),
           track_commit_timestamp: S.optional(S.Boolean),
@@ -12075,17 +9347,15 @@ function __c27(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          postgres_version:
-            ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsItemPostgresVersion,
-          release_channel:
-            ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsItemReleaseChannel,
+          postgres_version: S.String,
+          release_channel: S.String,
           app_version: S.String,
         }),
       ).annotate({
         identifier: "ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsItem",
       });
     case 2:
-      return S.Array(ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsItem);
+      return S.Array(__S(217));
     case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -12119,7 +9389,7 @@ function __c27(j: number): any {
         ),
       );
     case 4:
-      return S.Array(ProjectUpgradeEligibilityResponseOutputValidationErrorsItem);
+      return S.Array(__S(219));
     case 5:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([["type"], ["type"], ["type"], ["type"]], {
@@ -12133,25 +9403,22 @@ function __c27(j: number): any {
         }),
       );
     case 6:
-      return S.Array(ProjectUpgradeEligibilityResponseOutputWarningsItem);
+      return S.Array(__S(221));
     case 7:
       return S.suspend(() =>
         S.Struct({
           eligible: S.Boolean,
           current_app_version: S.String,
-          current_app_version_release_channel:
-            ProjectUpgradeEligibilityResponseOutputCurrentAppVersionReleaseChannel,
+          current_app_version_release_channel: S.String,
           latest_app_version: S.String,
-          target_upgrade_versions: ProjectUpgradeEligibilityResponseOutputTargetUpgradeVersionsList,
+          target_upgrade_versions: __S(218),
           duration_estimate_hours: S.Number,
-          legacy_auth_custom_roles:
-            ProjectUpgradeEligibilityResponseOutputLegacyAuthCustomRolesList,
-          objects_to_be_dropped: ProjectUpgradeEligibilityResponseOutputObjectsToBeDroppedList,
-          unsupported_extensions: ProjectUpgradeEligibilityResponseOutputUnsupportedExtensionsList,
-          user_defined_objects_in_internal_schemas:
-            ProjectUpgradeEligibilityResponseOutputUserDefinedObjectsInInternalSchemasList,
-          validation_errors: ProjectUpgradeEligibilityResponseOutputValidationErrorsList,
-          warnings: ProjectUpgradeEligibilityResponseOutputWarningsList,
+          legacy_auth_custom_roles: __S(16),
+          objects_to_be_dropped: __S(34),
+          unsupported_extensions: __S(16),
+          user_defined_objects_in_internal_schemas: __S(16),
+          validation_errors: __S(220),
+          warnings: __S(222),
         }),
       ).annotate({
         identifier: "ProjectUpgradeEligibilityResponseOutput",
@@ -12175,8 +9442,8 @@ function __c28(j: number): any {
           initiated_at: S.String,
           latest_status_at: S.String,
           target_version: S.String,
-          error: S.optional(DatabaseUpgradeStatusResponseOutputDatabaseUpgradeStatusError),
-          progress: S.optional(DatabaseUpgradeStatusResponseOutputDatabaseUpgradeStatusProgress),
+          error: S.optional(S.String),
+          progress: S.optional(S.String),
           status: S.Number,
         }),
       ).annotate({
@@ -12185,7 +9452,7 @@ function __c28(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          databaseUpgradeStatus: S.NullOr(DatabaseUpgradeStatusResponseOutputDatabaseUpgradeStatus),
+          databaseUpgradeStatus: S.NullOr(__S(225)),
         }),
       ).annotate({
         identifier: "DatabaseUpgradeStatusResponseOutput",
@@ -12229,8 +9496,8 @@ function __c28(j: number): any {
           name: S.String,
           region: S.String,
           created_at: S.String,
-          status: V1ProjectWithDatabaseResponseOutputStatus,
-          database: V1ProjectWithDatabaseResponseOutputDatabase,
+          status: S.String,
+          database: __S(230),
         }),
       ).annotate({
         identifier: "V1ProjectWithDatabaseResponseOutput",
@@ -12259,11 +9526,9 @@ function __c29(j: number): any {
         identifier: "V1GetProjectApiKeysRequest",
       });
     case 2:
-      return S.Array(ApiKeyResponseOutput);
+      return S.Array(__S(74));
     case 3:
-      return S.suspend(() =>
-        V1GetProjectApiKeysResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(234).pipe(T.RawResponseRoot())).annotate({
         identifier: "V1GetProjectApiKeysResponse",
       });
     case 4:
@@ -12313,7 +9578,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          interval: V1GetProjectFunctionCombinedStatsRequestInterval.pipe(T.Query()),
+          interval: S.String.pipe(T.Query()),
           function_id: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
@@ -12334,8 +9599,8 @@ function __c30(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(AnalyticsResponseOutputResultList),
-          error: S.optional(AnalyticsResponseOutputError),
+          result: S.optional(__S(241)),
+          error: S.optional(__S(242)),
         }),
       ).annotate({ identifier: "AnalyticsResponseOutput" });
     case 4:
@@ -12385,7 +9650,7 @@ function __c31(j: number): any {
           default_pool_size: S.optional(S.Number),
           ignore_startup_parameters: S.optional(S.String),
           max_client_conn: S.optional(S.Number),
-          pool_mode: S.optional(V1PgbouncerConfigResponseOutputPoolMode),
+          pool_mode: S.optional(S.String),
           connection_string: S.optional(S.String.pipe(T.SensitiveValue({}))),
           server_idle_timeout: S.optional(S.Number),
           server_lifetime: S.optional(S.Number),
@@ -12424,8 +9689,8 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          algorithm: SigningKeysResponseOutputKeysItemAlgorithm,
-          status: SigningKeysResponseOutputKeysItemStatus,
+          algorithm: S.String,
+          status: S.String,
           public_jwk: S.NullOr(S.Unknown),
           created_at: S.String,
           updated_at: S.String,
@@ -12434,11 +9699,11 @@ function __c31(j: number): any {
         identifier: "SigningKeysResponseOutputKeysItem",
       });
     case 4:
-      return S.Array(SigningKeysResponseOutputKeysItem);
+      return S.Array(__S(251));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          keys: SigningKeysResponseOutputKeysList,
+          keys: __S(252),
         }),
       ).annotate({
         identifier: "SigningKeysResponseOutput",
@@ -12462,7 +9727,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          interval: S.optional(V1GetProjectUsageApiCountRequestInterval.pipe(T.Query())),
+          interval: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -12490,7 +9755,7 @@ function __c32(j: number): any {
         identifier: "V1GetUsageApiCountResponseOutputResultItem",
       });
     case 1:
-      return S.Array(V1GetUsageApiCountResponseOutputResultItem);
+      return S.Array(__S(256));
     case 2:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([[], ["code", "errors", "message", "status"]]),
@@ -12498,8 +9763,8 @@ function __c32(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(V1GetUsageApiCountResponseOutputResultList),
-          error: S.optional(V1GetUsageApiCountResponseOutputError),
+          result: S.optional(__S(257)),
+          error: S.optional(__S(258)),
         }),
       ).annotate({
         identifier: "V1GetUsageApiCountResponseOutput",
@@ -12527,7 +9792,7 @@ function __c32(j: number): any {
         identifier: "V1GetUsageApiRequestsCountResponseOutputResultItem",
       });
     case 6:
-      return S.Array(V1GetUsageApiRequestsCountResponseOutputResultItem);
+      return S.Array(__S(261));
     case 7:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([[], ["code", "errors", "message", "status"]]),
@@ -12539,8 +9804,8 @@ function __c33(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(V1GetUsageApiRequestsCountResponseOutputResultList),
-          error: S.optional(V1GetUsageApiRequestsCountResponseOutputError),
+          result: S.optional(__S(262)),
+          error: S.optional(__S(263)),
         }),
       ).annotate({
         identifier: "V1GetUsageApiRequestsCountResponseOutput",
@@ -12608,7 +9873,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          lint_type: S.optional(V1GetSecurityAdvisorsRequestLintType.pipe(T.Query())),
+          lint_type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/projects/{ref}/advisors/security", code: 200 })),
       ).annotate({
         identifier: "V1GetSecurityAdvisorsRequest",
@@ -12623,7 +9888,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          services: V1GetServicesHealthRequestServices.pipe(T.Query()),
+          services: __S(271).pipe(T.Query()),
           timeout_ms: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/projects/{ref}/health", code: 200 })),
       ).annotate({
@@ -12640,21 +9905,19 @@ function __c34(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: V1ServiceHealthResponseOutputName,
+          name: S.String,
           healthy: S.Boolean,
-          status: V1ServiceHealthResponseOutputStatus,
-          info: S.optional(V1ServiceHealthResponseOutputInfo),
+          status: S.String,
+          info: S.optional(__S(273)),
           error: S.optional(S.String),
         }),
       ).annotate({
         identifier: "V1ServiceHealthResponseOutput",
       });
     case 3:
-      return S.Array(V1ServiceHealthResponseOutput);
+      return S.Array(__S(274));
     case 4:
-      return S.suspend(() =>
-        V1GetServicesHealthResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(275).pipe(T.RawResponseRoot())).annotate({
         identifier: "V1GetServicesHealthResponse",
       });
     case 5:
@@ -12676,7 +9939,7 @@ function __c34(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          currentConfig: SslEnforcementResponseOutputCurrentConfig,
+          currentConfig: __S(278),
           appliedSuccessfully: S.Boolean,
         }),
       ).annotate({
@@ -12718,11 +9981,11 @@ function __c35(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          imageTransformation: V1ListEntitlementsResponseOutputEntitlementsItemConfigCase0,
-          s3Protocol: V1ListEntitlementsResponseOutputEntitlementsItemConfigCase0,
-          purgeCache: V1ListEntitlementsResponseOutputEntitlementsItemConfigCase0,
-          icebergCatalog: StorageConfigResponseOutputFeaturesIcebergCatalog,
-          vectorBuckets: StorageConfigResponseOutputFeaturesVectorBuckets,
+          imageTransformation: __S(187),
+          s3Protocol: __S(187),
+          purgeCache: __S(187),
+          icebergCatalog: __S(281),
+          vectorBuckets: __S(282),
         }),
       ).annotate({
         identifier: "StorageConfigResponseOutputFeatures",
@@ -12740,7 +10003,7 @@ function __c35(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          upstreamTarget: StorageConfigResponseOutputExternalUpstreamTarget,
+          upstreamTarget: S.String,
         }),
       ).annotate({
         identifier: "StorageConfigResponseOutputExternal",
@@ -12749,9 +10012,9 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fileSizeLimit: S.Number,
-          features: StorageConfigResponseOutputFeatures,
-          capabilities: StorageConfigResponseOutputCapabilities,
-          external: StorageConfigResponseOutputExternal,
+          features: __S(283),
+          capabilities: __S(284),
+          external: __S(285),
           migrationVersion: S.NullOr(S.String),
         }),
       ).annotate({
@@ -12772,7 +10035,7 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: VanitySubdomainConfigResponseOutputStatus,
+          status: S.String,
           custom_domain: S.optional(S.String),
         }),
       ).annotate({
@@ -12781,12 +10044,8 @@ function __c36(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          allowed_cidrs: S.optional(
-            V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsList,
-          ),
-          allowed_cidrs_v6: S.optional(
-            V1InviteExternalJitAccessRequestRolesItemAllowedNetworksAllowedCidrsV6List,
-          ),
+          allowed_cidrs: S.optional(__S(2)),
+          allowed_cidrs_v6: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "V1InviteExternalJitAccessRequestRolesItemAllowedNetworks",
@@ -12796,20 +10055,20 @@ function __c36(j: number): any {
         S.Struct({
           role: S.String,
           expires_at: S.optional(S.Number),
-          allowed_networks: S.optional(V1InviteExternalJitAccessRequestRolesItemAllowedNetworks),
+          allowed_networks: S.optional(__S(289)),
           branches_only: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "V1InviteExternalJitAccessRequestRolesItem",
       });
     case 3:
-      return S.Array(V1InviteExternalJitAccessRequestRolesItem);
+      return S.Array(__S(290));
     case 4:
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
           email: S.String,
-          roles: V1InviteExternalJitAccessRequestRolesList,
+          roles: __S(291),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/projects/{ref}/database/jit/invite", code: 200 }),
         ),
@@ -12819,12 +10078,8 @@ function __c36(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          allowed_cidrs: S.optional(
-            InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsList,
-          ),
-          allowed_cidrs_v6: S.optional(
-            InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworksAllowedCidrsV6List,
-          ),
+          allowed_cidrs: S.optional(__S(2)),
+          allowed_cidrs_v6: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworks",
@@ -12834,16 +10089,14 @@ function __c36(j: number): any {
         S.Struct({
           role: S.String,
           expires_at: S.optional(S.Number),
-          allowed_networks: S.optional(
-            InviteExternalUserJitResponseOutputUserRolesItemAllowedNetworks,
-          ),
+          allowed_networks: S.optional(__S(293)),
           branches_only: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "InviteExternalUserJitResponseOutputUserRolesItem",
       });
     case 7:
-      return S.Array(InviteExternalUserJitResponseOutputUserRolesItem);
+      return S.Array(__S(294));
   }
 }
 function __c37(j: number): any {
@@ -12853,7 +10106,7 @@ function __c37(j: number): any {
         S.Struct({
           email: S.String,
           invite_id: S.String,
-          user_roles: InviteExternalUserJitResponseOutputUserRolesList,
+          user_roles: __S(295),
         }),
       ).annotate({
         identifier: "InviteExternalUserJitResponseOutput",
@@ -12871,7 +10124,7 @@ function __c37(j: number): any {
         S.Struct({
           id: S.String,
           branch_id: S.String,
-          run_steps: ListActionRunResponseOutputItemRunStepsList,
+          run_steps: __S(122),
           git_config: S.optional(S.NullOr(S.Unknown)),
           workdir: S.NullOr(S.String),
           check_run_id: S.NullOr(S.Number),
@@ -12882,9 +10135,9 @@ function __c37(j: number): any {
         identifier: "ListActionRunResponseOutputItem",
       });
     case 3:
-      return S.Array(ListActionRunResponseOutputItem);
+      return S.Array(__S(298));
     case 4:
-      return S.suspend(() => ListActionRunResponseOutput.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(299).pipe(T.RawResponseRoot())).annotate({
         identifier: "V1ListActionRunsResponse",
       });
     case 5:
@@ -12898,14 +10151,14 @@ function __c37(j: number): any {
         S.Struct({
           id: S.Number,
           is_physical_backup: S.Boolean,
-          status: V1BackupsResponseOutputBackupsItemStatus,
+          status: S.String,
           inserted_at: S.String,
         }),
       ).annotate({
         identifier: "V1BackupsResponseOutputBackupsItem",
       });
     case 7:
-      return S.Array(V1BackupsResponseOutputBackupsItem);
+      return S.Array(__S(302));
   }
 }
 function __c38(j: number): any {
@@ -12925,8 +10178,8 @@ function __c38(j: number): any {
           region: S.String,
           walg_enabled: S.Boolean,
           pitr_enabled: S.Boolean,
-          backups: V1BackupsResponseOutputBackupsList,
-          physical_backup_data: V1BackupsResponseOutputPhysicalBackupData,
+          backups: __S(303),
+          physical_backup_data: __S(304),
         }),
       ).annotate({ identifier: "V1BackupsResponseOutput" });
     case 2:
@@ -12936,9 +10189,9 @@ function __c38(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/projects/{ref}/branches", code: 200 })),
       ).annotate({ identifier: "V1ListAllBranchesRequest" });
     case 3:
-      return S.Array(BranchResponseOutput);
+      return S.Array(__S(49));
     case 4:
-      return S.suspend(() => V1ListAllBranchesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(307).pipe(T.RawResponseRoot())).annotate({
         identifier: "V1ListAllBranchesResponse",
       });
     case 5:
@@ -12961,13 +10214,13 @@ function __c38(j: number): any {
         identifier: "V1StorageBucketResponseOutput",
       });
     case 7:
-      return S.Array(V1StorageBucketResponseOutput);
+      return S.Array(__S(310));
   }
 }
 function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => V1ListAllBucketsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(311).pipe(T.RawResponseRoot())).annotate({
         identifier: "V1ListAllBucketsResponse",
       });
     case 1:
@@ -12984,7 +10237,7 @@ function __c39(j: number): any {
           id: S.String,
           slug: S.String,
           name: S.String,
-          status: FunctionResponseOutputStatus,
+          status: S.String,
           version: S.Number,
           created_at: S.Number,
           updated_at: S.Number,
@@ -12996,13 +10249,11 @@ function __c39(j: number): any {
         }),
       ).annotate({ identifier: "FunctionResponseOutput" });
     case 3:
-      return S.Array(FunctionResponseOutput);
+      return S.Array(__S(314));
     case 4:
-      return S.suspend(() => V1ListAllFunctionsResponseBodyList.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "V1ListAllFunctionsResponse",
-        },
-      );
+      return S.suspend(() => __S(315).pipe(T.RawResponseRoot())).annotate({
+        identifier: "V1ListAllFunctionsResponse",
+      });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -13016,7 +10267,7 @@ function __c39(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          banned_ipv4_addresses: NetworkBanResponseOutputBannedIpv4AddressesList,
+          banned_ipv4_addresses: __S(34),
         }),
       ).annotate({ identifier: "NetworkBanResponseOutput" });
     case 7:
@@ -13048,11 +10299,11 @@ function __c40(j: number): any {
         identifier: "NetworkBanResponseEnrichedOutputBannedIpv4AddressesItem",
       });
     case 1:
-      return S.Array(NetworkBanResponseEnrichedOutputBannedIpv4AddressesItem);
+      return S.Array(__S(320));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          banned_ipv4_addresses: NetworkBanResponseEnrichedOutputBannedIpv4AddressesList,
+          banned_ipv4_addresses: __S(321),
         }),
       ).annotate({
         identifier: "NetworkBanResponseEnrichedOutput",
@@ -13064,11 +10315,9 @@ function __c40(j: number): any {
         identifier: "V1ListAllOrganizationsRequest",
       });
     case 4:
-      return S.Array(OrganizationResponseV1Output);
+      return S.Array(__S(51));
     case 5:
-      return S.suspend(() =>
-        V1ListAllOrganizationsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(324).pipe(T.RawResponseRoot())).annotate({
         identifier: "V1ListAllOrganizationsResponse",
       });
     case 6:
@@ -13076,13 +10325,13 @@ function __c40(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/v1/projects", code: 200 })),
       ).annotate({ identifier: "V1ListAllProjectsRequest" });
     case 7:
-      return S.Array(V1ProjectWithDatabaseResponseOutput);
+      return S.Array(__S(231));
   }
 }
 function __c41(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => V1ListAllProjectsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(327).pipe(T.RawResponseRoot())).annotate({
         identifier: "V1ListAllProjectsResponse",
       });
     case 1:
@@ -13100,9 +10349,9 @@ function __c41(j: number): any {
         }),
       ).annotate({ identifier: "SecretResponseOutput" });
     case 3:
-      return S.Array(SecretResponseOutput);
+      return S.Array(__S(330));
     case 4:
-      return S.suspend(() => V1ListAllSecretsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(331).pipe(T.RawResponseRoot())).annotate({
         identifier: "V1ListAllSecretsResponse",
       });
     case 5:
@@ -13111,8 +10360,8 @@ function __c41(j: number): any {
           project_ref: S.optional(S.String.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.String.pipe(T.Query())),
-          sort_by: S.optional(V1ListAllSnippetsRequestSortBy.pipe(T.Query())),
-          sort_order: S.optional(V1ListAllSnippetsRequestSortOrder.pipe(T.Query())),
+          sort_by: S.optional(S.String.pipe(T.Query())),
+          sort_order: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/snippets", code: 200 })),
       ).annotate({ identifier: "V1ListAllSnippetsRequest" });
     case 6:
@@ -13121,20 +10370,20 @@ function __c41(j: number): any {
           id: S.String,
           inserted_at: S.String,
           updated_at: S.String,
-          type: SnippetListOutputDataItemType,
-          visibility: SnippetListOutputDataItemVisibility,
+          type: S.String,
+          visibility: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          project: SnippetResponseOutputProject,
-          owner: SnippetResponseOutputOwner,
-          updated_by: SnippetResponseOutputOwner,
+          project: __S(140),
+          owner: __S(141),
+          updated_by: __S(141),
           favorite: S.Boolean,
         }),
       ).annotate({
         identifier: "SnippetListOutputDataItem",
       });
     case 7:
-      return S.Array(SnippetListOutputDataItem);
+      return S.Array(__S(334));
   }
 }
 function __c42(j: number): any {
@@ -13142,7 +10391,7 @@ function __c42(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: SnippetListOutputDataList,
+          data: __S(335),
           cursor: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnippetListOutput" });
@@ -13162,23 +10411,19 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          names: S.optional(
-            ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValueNamesList,
-          ),
+          names: S.optional(__S(16)),
           array: S.optional(S.Boolean),
-          default: S.optional(
-            ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValueDefault,
-          ),
+          default: S.optional(__S(338)),
         }),
       ).annotate({
         identifier: "ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValue",
       });
     case 4:
-      return S.Record(S.String, ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysValue);
+      return S.Record(S.String, __S(339));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          keys: ListProvidersResponseOutputItemsItemSamlAttributeMappingKeysMap,
+          keys: __S(340),
         }),
       ).annotate({
         identifier: "ListProvidersResponseOutputItemsItemSamlAttributeMapping",
@@ -13189,8 +10434,8 @@ function __c42(j: number): any {
           entity_id: S.String,
           metadata_url: S.optional(S.String),
           metadata_xml: S.optional(S.String),
-          attribute_mapping: S.optional(ListProvidersResponseOutputItemsItemSamlAttributeMapping),
-          name_id_format: S.optional(ListProvidersResponseOutputItemsItemSamlNameIdFormat),
+          attribute_mapping: S.optional(__S(341)),
+          name_id_format: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListProvidersResponseOutputItemsItemSaml",
@@ -13199,8 +10444,8 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          saml: S.optional(ListProvidersResponseOutputItemsItemSaml),
-          domains: S.optional(ListProvidersResponseOutputItemsItemDomainsList),
+          saml: S.optional(__S(342)),
+          domains: S.optional(__S(66)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -13212,11 +10457,11 @@ function __c42(j: number): any {
 function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListProvidersResponseOutputItemsItem);
+      return S.Array(__S(343));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: ListProvidersResponseOutputItemsList,
+          items: __S(344),
         }),
       ).annotate({
         identifier: "ListProvidersResponseOutput",
@@ -13233,20 +10478,18 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           version: S.String,
-          release_channel:
-            GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsItemReleaseChannel,
-          postgres_engine:
-            GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsItemPostgresEngine,
+          release_channel: S.String,
+          postgres_engine: S.String,
         }),
       ).annotate({
         identifier: "GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsItem",
       });
     case 4:
-      return S.Array(GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsItem);
+      return S.Array(__S(347));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          available_versions: GetProjectAvailableRestoreVersionsResponseOutputAvailableVersionsList,
+          available_versions: __S(348),
         }),
       ).annotate({
         identifier: "GetProjectAvailableRestoreVersionsResponseOutput",
@@ -13269,11 +10512,11 @@ function __c43(j: number): any {
 function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(JitListAccessResponseOutputItemsItem);
+      return S.Array(__S(351));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: JitListAccessResponseOutputItemsList,
+          items: __S(352),
         }),
       ).annotate({
         identifier: "JitListAccessResponseOutput",
@@ -13298,9 +10541,9 @@ function __c44(j: number): any {
         identifier: "V1ListMigrationsResponseOutputItem",
       });
     case 4:
-      return S.Array(V1ListMigrationsResponseOutputItem);
+      return S.Array(__S(355));
     case 5:
-      return S.suspend(() => V1ListMigrationsResponseOutput.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(356).pipe(T.RawResponseRoot())).annotate({
         identifier: "V1ListMigrationHistoryResponse",
       });
     case 6:
@@ -13329,11 +10572,9 @@ function __c44(j: number): any {
 function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(V1OrganizationMemberResponseOutput);
+      return S.Array(__S(359));
     case 1:
-      return S.suspend(() =>
-        V1ListOrganizationMembersResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(360).pipe(T.RawResponseRoot())).annotate({
         identifier: "V1ListOrganizationMembersResponse",
       });
     case 2:
@@ -13350,8 +10591,8 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.String,
-          type: ListProjectAddonsResponseOutputSelectedAddonsItemVariantPriceType,
-          interval: ListProjectAddonsResponseOutputSelectedAddonsItemVariantPriceInterval,
+          type: S.String,
+          interval: S.String,
           amount: S.Number,
         }),
       ).annotate({
@@ -13360,10 +10601,10 @@ function __c45(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          id: ListProjectAddonsResponseOutputSelectedAddonsItemVariantId,
+          id: __S(363),
           name: S.String,
-          price: ListProjectAddonsResponseOutputSelectedAddonsItemVariantPrice,
-          meta: S.optional(JsonValueOutput),
+          price: __S(364),
+          meta: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "ListProjectAddonsResponseOutputSelectedAddonsItemVariant",
@@ -13371,14 +10612,14 @@ function __c45(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: ListProjectAddonsResponseOutputSelectedAddonsItemType,
-          variant: ListProjectAddonsResponseOutputSelectedAddonsItemVariant,
+          type: S.String,
+          variant: __S(365),
         }),
       ).annotate({
         identifier: "ListProjectAddonsResponseOutputSelectedAddonsItem",
       });
     case 7:
-      return S.Array(ListProjectAddonsResponseOutputSelectedAddonsItem);
+      return S.Array(__S(366));
   }
 }
 function __c46(j: number): any {
@@ -13388,33 +10629,33 @@ function __c46(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          id: ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemId,
+          id: __S(368),
           name: S.String,
-          price: ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItemPrice,
-          meta: S.optional(JsonValueOutput),
+          price: __S(364),
+          meta: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItem",
       });
     case 2:
-      return S.Array(ListProjectAddonsResponseOutputAvailableAddonsItemVariantsItem);
+      return S.Array(__S(369));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: ListProjectAddonsResponseOutputAvailableAddonsItemType,
+          type: S.String,
           name: S.String,
-          variants: ListProjectAddonsResponseOutputAvailableAddonsItemVariantsList,
+          variants: __S(370),
         }),
       ).annotate({
         identifier: "ListProjectAddonsResponseOutputAvailableAddonsItem",
       });
     case 4:
-      return S.Array(ListProjectAddonsResponseOutputAvailableAddonsItem);
+      return S.Array(__S(371));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          selected_addons: ListProjectAddonsResponseOutputSelectedAddonsList,
-          available_addons: ListProjectAddonsResponseOutputAvailableAddonsList,
+          selected_addons: __S(367),
+          available_addons: __S(372),
         }),
       ).annotate({
         identifier: "ListProjectAddonsResponseOutput",
@@ -13434,15 +10675,13 @@ function __c46(j: number): any {
         identifier: "V1ListProjectTpaIntegrationsRequest",
       });
     case 7:
-      return S.Array(ThirdPartyAuthOutput);
+      return S.Array(__S(81));
   }
 }
 function __c47(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        V1ListProjectTpaIntegrationsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(375).pipe(T.RawResponseRoot())).annotate({
         identifier: "V1ListProjectTpaIntegrationsResponse",
       });
     case 1:
@@ -13458,7 +10697,7 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           workflow_run_id: S.String,
-          message: BranchUpdateResponseOutputMessage,
+          message: S.String,
         }),
       ).annotate({
         identifier: "BranchUpdateResponseOutput",
@@ -13477,7 +10716,7 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          attributes: V1ModifyDatabaseDiskRequestAttributes,
+          attributes: __S(379),
         }).pipe(T.Http({ method: "POST", uri: "/v1/projects/{ref}/config/disk", code: 200 })),
       ).annotate({
         identifier: "V1ModifyDatabaseDiskRequest",
@@ -13487,14 +10726,12 @@ function __c47(j: number): any {
         S.Struct({
           project_ref: S.String.pipe(T.Query()),
           client_id: S.String.pipe(T.Query()),
-          response_type: V1OauthAuthorizeProjectClaimRequestResponseType.pipe(T.Query()),
+          response_type: S.String.pipe(T.Query()),
           redirect_uri: S.String.pipe(T.Query()),
           state: S.optional(S.String.pipe(T.Query())),
           response_mode: S.optional(S.String.pipe(T.Query())),
           code_challenge: S.optional(S.String.pipe(T.Query())),
-          code_challenge_method: S.optional(
-            V1OauthAuthorizeProjectClaimRequestCodeChallengeMethod.pipe(T.Query()),
-          ),
+          code_challenge_method: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/oauth/authorize/project-claim", code: 200 })),
       ).annotate({
         identifier: "V1OauthAuthorizeProjectClaimRequest",
@@ -13518,8 +10755,8 @@ function __c47(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          add: S.optional(V1PatchNetworkRestrictionsRequestAdd),
-          remove: S.optional(V1PatchNetworkRestrictionsRequestRemove),
+          add: S.optional(__S(183)),
+          remove: S.optional(__S(183)),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/v1/projects/{ref}/network-restrictions", code: 200 }),
         ),
@@ -13534,17 +10771,17 @@ function __c48(j: number): any {
       return S.suspend(() =>
         S.Struct({
           address: S.String,
-          type: NetworkRestrictionsV2ResponseOutputConfigDbAllowedCidrsItemType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "NetworkRestrictionsV2ResponseOutputConfigDbAllowedCidrsItem",
       });
     case 1:
-      return S.Array(NetworkRestrictionsV2ResponseOutputConfigDbAllowedCidrsItem);
+      return S.Array(__S(384));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dbAllowedCidrs: S.optional(NetworkRestrictionsV2ResponseOutputConfigDbAllowedCidrsList),
+          dbAllowedCidrs: S.optional(__S(385)),
         }),
       ).annotate({
         identifier: "NetworkRestrictionsV2ResponseOutputConfig",
@@ -13553,19 +10790,17 @@ function __c48(j: number): any {
       return S.suspend(() =>
         S.Struct({
           address: S.String,
-          type: NetworkRestrictionsV2ResponseOutputOldConfigDbAllowedCidrsItemType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "NetworkRestrictionsV2ResponseOutputOldConfigDbAllowedCidrsItem",
       });
     case 4:
-      return S.Array(NetworkRestrictionsV2ResponseOutputOldConfigDbAllowedCidrsItem);
+      return S.Array(__S(387));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dbAllowedCidrs: S.optional(
-            NetworkRestrictionsV2ResponseOutputOldConfigDbAllowedCidrsList,
-          ),
+          dbAllowedCidrs: S.optional(__S(388)),
         }),
       ).annotate({
         identifier: "NetworkRestrictionsV2ResponseOutputOldConfig",
@@ -13573,12 +10808,12 @@ function __c48(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          entitlement: NetworkRestrictionsV2ResponseOutputEntitlement,
-          config: NetworkRestrictionsV2ResponseOutputConfig,
-          old_config: S.optional(NetworkRestrictionsV2ResponseOutputOldConfig),
+          entitlement: S.String,
+          config: __S(386),
+          old_config: S.optional(__S(389)),
           updated_at: S.optional(S.String),
           applied_at: S.optional(S.String),
-          status: NetworkRestrictionsV2ResponseOutputStatus,
+          status: S.String,
         }),
       ).annotate({
         identifier: "NetworkRestrictionsV2ResponseOutput",
@@ -13605,7 +10840,7 @@ function __c49(j: number): any {
         S.Struct({
           ref: S.String.pipe(T.Label()),
           query: S.String,
-          parameters: S.optional(V1ReadOnlyQueryRequestParametersList),
+          parameters: S.optional(__S(241)),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/projects/{ref}/database/query/read-only", code: 200 }),
         ),
@@ -13734,7 +10969,7 @@ function __c50(j: number): any {
         S.Struct({
           ref: S.String.pipe(T.Label()),
           query: S.String,
-          parameters: S.optional(V1RunAQueryRequestParametersList),
+          parameters: S.optional(__S(241)),
           read_only: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/v1/projects/{ref}/database/query", code: 200 })),
       ).annotate({ identifier: "V1RunAQueryRequest" });
@@ -13756,7 +10991,7 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          read_replica_region: V1SetupAReadReplicaRequestReadReplicaRegion,
+          read_replica_region: S.String,
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/projects/{ref}/read-replicas/setup", code: 200 }),
         ),
@@ -13794,7 +11029,7 @@ function __c51(j: number): any {
           git_branch: S.optional(S.String),
           reset_on_push: S.optional(S.Boolean),
           persistent: S.optional(S.Boolean),
-          status: S.optional(V1UpdateABranchConfigRequestStatus),
+          status: S.optional(S.String),
           request_review: S.optional(S.Boolean),
           notify_url: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/branches/{branch_id_or_ref}", code: 200 })),
@@ -13806,13 +11041,13 @@ function __c51(j: number): any {
         S.Struct({
           ref: S.String.pipe(T.Label()),
           run_id: S.String.pipe(T.Label()),
-          clone: S.optional(V1UpdateActionRunStatusRequestClone),
-          pull: S.optional(V1UpdateActionRunStatusRequestPull),
-          health: S.optional(V1UpdateActionRunStatusRequestHealth),
-          configure: S.optional(V1UpdateActionRunStatusRequestConfigure),
-          migrate: S.optional(V1UpdateActionRunStatusRequestMigrate),
-          seed: S.optional(V1UpdateActionRunStatusRequestSeed),
-          deploy: S.optional(V1UpdateActionRunStatusRequestDeploy),
+          clone: S.optional(S.String),
+          pull: S.optional(S.String),
+          health: S.optional(S.String),
+          configure: S.optional(S.String),
+          migrate: S.optional(S.String),
+          seed: S.optional(S.String),
+          deploy: S.optional(S.String),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/v1/projects/{ref}/actions/{run_id}/status", code: 200 }),
         ),
@@ -13853,9 +11088,9 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          names: S.optional(V1UpdateASsoProviderRequestAttributeMappingKeysValueNamesList),
+          names: S.optional(__S(34)),
           array: S.optional(S.Boolean),
-          default: S.optional(V1UpdateASsoProviderRequestAttributeMappingKeysValueDefault),
+          default: S.optional(__S(414)),
         }),
       ).annotate({
         identifier: "V1UpdateASsoProviderRequestAttributeMappingKeysValue",
@@ -13865,11 +11100,11 @@ function __c51(j: number): any {
 function __c52(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, V1UpdateASsoProviderRequestAttributeMappingKeysValue);
+      return S.Record(S.String, __S(415));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          keys: V1UpdateASsoProviderRequestAttributeMappingKeysMap,
+          keys: __S(416),
         }),
       ).annotate({
         identifier: "V1UpdateASsoProviderRequestAttributeMapping",
@@ -13881,9 +11116,9 @@ function __c52(j: number): any {
           provider_id: S.String.pipe(T.Label()),
           metadata_xml: S.optional(S.String),
           metadata_url: S.optional(S.String),
-          domains: S.optional(V1UpdateASsoProviderRequestDomainsList),
-          attribute_mapping: S.optional(V1UpdateASsoProviderRequestAttributeMapping),
-          name_id_format: S.optional(V1UpdateASsoProviderRequestNameIdFormat),
+          domains: S.optional(__S(34)),
+          attribute_mapping: S.optional(__S(417)),
+          name_id_format: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -13900,19 +11135,19 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          names: S.optional(UpdateProviderResponseOutputSamlAttributeMappingKeysValueNamesList),
+          names: S.optional(__S(16)),
           array: S.optional(S.Boolean),
-          default: S.optional(UpdateProviderResponseOutputSamlAttributeMappingKeysValueDefault),
+          default: S.optional(__S(419)),
         }),
       ).annotate({
         identifier: "UpdateProviderResponseOutputSamlAttributeMappingKeysValue",
       });
     case 5:
-      return S.Record(S.String, UpdateProviderResponseOutputSamlAttributeMappingKeysValue);
+      return S.Record(S.String, __S(420));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          keys: UpdateProviderResponseOutputSamlAttributeMappingKeysMap,
+          keys: __S(421),
         }),
       ).annotate({
         identifier: "UpdateProviderResponseOutputSamlAttributeMapping",
@@ -13923,8 +11158,8 @@ function __c52(j: number): any {
           entity_id: S.String,
           metadata_url: S.optional(S.String),
           metadata_xml: S.optional(S.String),
-          attribute_mapping: S.optional(UpdateProviderResponseOutputSamlAttributeMapping),
-          name_id_format: S.optional(UpdateProviderResponseOutputSamlNameIdFormat),
+          attribute_mapping: S.optional(__S(422)),
+          name_id_format: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateProviderResponseOutputSaml",
@@ -13937,8 +11172,8 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          saml: S.optional(UpdateProviderResponseOutputSaml),
-          domains: S.optional(UpdateProviderResponseOutputDomainsList),
+          saml: S.optional(__S(423)),
+          domains: S.optional(__S(66)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -14009,9 +11244,7 @@ function __c53(j: number): any {
           saml_external_url: S.optional(S.NullOr(S.String)),
           security_sb_forwarded_for_enabled: S.optional(S.NullOr(S.Boolean)),
           security_captcha_enabled: S.optional(S.NullOr(S.Boolean)),
-          security_captcha_provider: S.optional(
-            S.NullOr(V1UpdateAuthServiceConfigRequestSecurityCaptchaProvider),
-          ),
+          security_captcha_provider: S.optional(S.NullOr(S.String)),
           security_captcha_secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           sessions_timebox: S.optional(S.NullOr(S.Number)),
           sessions_inactivity_timeout: S.optional(S.NullOr(S.Number)),
@@ -14028,9 +11261,7 @@ function __c53(j: number): any {
           refresh_token_rotation_enabled: S.optional(S.NullOr(S.Boolean)),
           password_hibp_enabled: S.optional(S.NullOr(S.Boolean)),
           password_min_length: S.optional(S.NullOr(S.Number)),
-          password_required_characters: S.optional(
-            S.NullOr(V1UpdateAuthServiceConfigRequestPasswordRequiredCharacters),
-          ),
+          password_required_characters: S.optional(S.NullOr(S.String)),
           security_manual_linking_enabled: S.optional(S.NullOr(S.Boolean)),
           security_update_password_require_reauthentication: S.optional(S.NullOr(S.Boolean)),
           security_update_password_require_current_password: S.optional(S.NullOr(S.Boolean)),
@@ -14041,7 +11272,7 @@ function __c53(j: number): any {
           sms_max_frequency: S.optional(S.NullOr(S.Number)),
           sms_otp_exp: S.optional(S.NullOr(S.Number)),
           sms_otp_length: S.optional(S.Number),
-          sms_provider: S.optional(S.NullOr(V1UpdateAuthServiceConfigRequestSmsProvider)),
+          sms_provider: S.optional(S.NullOr(S.String)),
           sms_messagebird_access_key: S.optional(S.NullOr(S.String)),
           sms_messagebird_originator: S.optional(S.NullOr(S.String)),
           sms_test_otp: S.optional(S.NullOr(S.String)),
@@ -14177,9 +11408,7 @@ function __c53(j: number): any {
           external_zoom_email_optional: S.optional(S.NullOr(S.Boolean)),
           external_zoom_secret: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           db_max_pool_size: S.optional(S.NullOr(S.Number)),
-          db_max_pool_size_unit: S.optional(
-            S.NullOr(V1UpdateAuthServiceConfigRequestDbMaxPoolSizeUnit),
-          ),
+          db_max_pool_size_unit: S.optional(S.NullOr(S.String)),
           api_max_request_duration: S.optional(S.NullOr(S.Number)),
           mfa_totp_enroll_enabled: S.optional(S.NullOr(S.Boolean)),
           mfa_totp_verify_enabled: S.optional(S.NullOr(S.Boolean)),
@@ -14258,14 +11487,14 @@ function __c53(j: number): any {
         S.Struct({
           ref: S.String.pipe(T.Label()),
           user_id: S.String,
-          roles: V1UpdateJitAccessRequestRolesList,
+          roles: __S(5),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/projects/{ref}/database/jit", code: 200 })),
       ).annotate({ identifier: "V1UpdateJitAccessRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          state: V1UpdateJitAccessConfigRequestState,
+          state: S.String,
         }).pipe(T.Http({ method: "PUT", uri: "/v1/projects/{ref}/jit-access", code: 200 })),
       ).annotate({
         identifier: "V1UpdateJitAccessConfigRequest",
@@ -14282,17 +11511,15 @@ function __c54(j: number): any {
         ]),
       );
     case 1:
-      return S.suspend(() =>
-        V1UpdateJitAccessConfigResponseBody.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(432).pipe(T.RawResponseRoot())).annotate({
         identifier: "V1UpdateJitAccessConfigResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          dbAllowedCidrs: S.optional(V1UpdateNetworkRestrictionsRequestDbAllowedCidrsList),
-          dbAllowedCidrsV6: S.optional(V1UpdateNetworkRestrictionsRequestDbAllowedCidrsV6List),
+          dbAllowedCidrs: S.optional(__S(34)),
+          dbAllowedCidrsV6: S.optional(__S(34)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14317,7 +11544,7 @@ function __c54(j: number): any {
         S.Struct({
           ref: S.String.pipe(T.Label()),
           default_pool_size: S.optional(S.NullOr(S.Number)),
-          pool_mode: S.optional(V1UpdatePoolerConfigRequestPoolMode),
+          pool_mode: S.optional(S.String),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/v1/projects/{ref}/config/database/pooler", code: 200 }),
         ),
@@ -14366,7 +11593,7 @@ function __c54(j: number): any {
           max_wal_size: S.optional(S.String),
           max_wal_senders: S.optional(S.Number),
           max_worker_processes: S.optional(S.Number),
-          session_replication_role: S.optional(V1UpdatePostgresConfigRequestSessionReplicationRole),
+          session_replication_role: S.optional(S.String),
           shared_buffers: S.optional(S.String),
           statement_timeout: S.optional(S.String),
           track_commit_timestamp: S.optional(S.Boolean),
@@ -14419,9 +11646,7 @@ function __c55(j: number): any {
           reveal: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          secret_jwt_template: S.optional(
-            S.NullOr(V1UpdateProjectApiKeyRequestSecretJwtTemplateMap),
-          ),
+          secret_jwt_template: S.optional(S.NullOr(__S(72))),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/projects/{ref}/api-keys/{id}", code: 200 })),
       ).annotate({
         identifier: "V1UpdateProjectApiKeyRequest",
@@ -14440,7 +11665,7 @@ function __c55(j: number): any {
         S.Struct({
           ref: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          status: V1UpdateProjectSigningKeyRequestStatus,
+          status: S.String,
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14475,7 +11700,7 @@ function __c55(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ref: S.String.pipe(T.Label()),
-          requestedConfig: SslEnforcementResponseOutputCurrentConfig,
+          requestedConfig: __S(278),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/projects/{ref}/ssl-enforcement", code: 200 })),
       ).annotate({
         identifier: "V1UpdateSslEnforcementConfigRequest",
@@ -14483,13 +11708,11 @@ function __c55(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          imageTransformation: S.optional(
-            V1ListEntitlementsResponseOutputEntitlementsItemConfigCase0,
-          ),
-          s3Protocol: S.optional(V1ListEntitlementsResponseOutputEntitlementsItemConfigCase0),
-          purgeCache: S.optional(V1ListEntitlementsResponseOutputEntitlementsItemConfigCase0),
-          icebergCatalog: S.optional(StorageConfigResponseOutputFeaturesIcebergCatalog),
-          vectorBuckets: S.optional(StorageConfigResponseOutputFeaturesVectorBuckets),
+          imageTransformation: S.optional(__S(187)),
+          s3Protocol: S.optional(__S(187)),
+          purgeCache: S.optional(__S(187)),
+          icebergCatalog: S.optional(__S(281)),
+          vectorBuckets: S.optional(__S(282)),
         }),
       ).annotate({
         identifier: "V1UpdateStorageConfigRequestFeatures",
@@ -14499,8 +11722,8 @@ function __c55(j: number): any {
         S.Struct({
           ref: S.String.pipe(T.Label()),
           fileSizeLimit: S.optional(S.Number),
-          features: S.optional(V1UpdateStorageConfigRequestFeatures),
-          external: S.optional(V1UpdateStorageConfigRequestExternal),
+          features: S.optional(__S(446)),
+          external: S.optional(__S(285)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/projects/{ref}/config/storage", code: 200 })),
       ).annotate({
         identifier: "V1UpdateStorageConfigRequest",
@@ -14514,7 +11737,7 @@ function __c56(j: number): any {
         S.Struct({
           ref: S.String.pipe(T.Label()),
           target_version: S.String,
-          release_channel: S.optional(V1UpgradePostgresVersionRequestReleaseChannel),
+          release_channel: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v1/projects/{ref}/upgrade", code: 200 })),
       ).annotate({
         identifier: "V1UpgradePostgresVersionRequest",
@@ -14548,5 +11771,128 @@ function __c56(j: number): any {
           T.Http({ method: "POST", uri: "/v1/projects/{ref}/custom-hostname/reverify", code: 200 }),
         ),
       ).annotate({ identifier: "V1VerifyDnsConfigRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
+    case 41:
+      return __c41(i & 7);
+    case 42:
+      return __c42(i & 7);
+    case 43:
+      return __c43(i & 7);
+    case 44:
+      return __c44(i & 7);
+    case 45:
+      return __c45(i & 7);
+    case 46:
+      return __c46(i & 7);
+    case 47:
+      return __c47(i & 7);
+    case 48:
+      return __c48(i & 7);
+    case 49:
+      return __c49(i & 7);
+    case 50:
+      return __c50(i & 7);
+    case 51:
+      return __c51(i & 7);
+    case 52:
+      return __c52(i & 7);
+    case 53:
+      return __c53(i & 7);
+    case 54:
+      return __c54(i & 7);
+    case 55:
+      return __c55(i & 7);
+    case 56:
+      return __c56(i & 7);
   }
 }

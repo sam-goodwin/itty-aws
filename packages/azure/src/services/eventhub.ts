@@ -6,13 +6,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Application Group Policy types */
 export type ApplicationGroupPolicyType = "ThrottlingPolicy";
-const ApplicationGroupPolicyType = S.String;
-
 /** Properties of the Application Group policy */
 export interface ApplicationGroupPolicy {
   /** The Name of this policy */
@@ -24,18 +24,8 @@ export interface ApplicationGroupPolicy {
   /** ThrottlingPolicy: metric to throttle on (IncomingBytes, OutgoingBytes, IncomingMessages, OutgoingMessages). */
   metricId?: string;
 }
-const ApplicationGroupPolicy = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ApplicationGroupPolicy>;
-
 /** List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic. */
 export type ApplicationGroupPropertiesPoliciesList = Array<ApplicationGroupPolicy>;
-const ApplicationGroupPropertiesPoliciesList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ApplicationGroupPropertiesPoliciesList>;
-
 export interface ApplicationGroupProperties {
   /** Determines if Application Group is allowed to create connection with namespace or not. Once the isEnabled is set to false, all the existing connections of application group gets dropped and no new connections will be allowed */
   isEnabled?: boolean;
@@ -44,11 +34,6 @@ export interface ApplicationGroupProperties {
   /** List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic. */
   policies?: ApplicationGroupPropertiesPoliciesList;
 }
-const ApplicationGroupProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ApplicationGroupProperties>;
-
 export interface ApplicationGroupCreateOrUpdateApplicationGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -60,19 +45,10 @@ export interface ApplicationGroupCreateOrUpdateApplicationGroupRequest {
   applicationGroupName: string;
   properties?: ApplicationGroupProperties;
 }
-const ApplicationGroupCreateOrUpdateApplicationGroupRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ApplicationGroupCreateOrUpdateApplicationGroupRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -88,8 +64,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<SystemData>;
-
 export interface ApplicationGroupCreateOrUpdateApplicationGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -103,11 +77,6 @@ export interface ApplicationGroupCreateOrUpdateApplicationGroupResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ApplicationGroupCreateOrUpdateApplicationGroupResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ApplicationGroupCreateOrUpdateApplicationGroupResponse>;
-
 export interface CheckDisasterRecoveryConfigNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -118,11 +87,6 @@ export interface CheckDisasterRecoveryConfigNameAvailabilityRequest {
   /** Name to check the namespace name availability */
   name: string;
 }
-const CheckDisasterRecoveryConfigNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CheckDisasterRecoveryConfigNameAvailabilityRequest>;
-
 /** Specifies the reason for the unavailability of the service. */
 export type UnavailableReason =
   | "None"
@@ -131,8 +95,6 @@ export type UnavailableReason =
   | "NameInUse"
   | "NameInLockdown"
   | "TooManyNamespaceInCurrentSubscription";
-const UnavailableReason = S.String;
-
 /** The Result of the CheckNameAvailability operation */
 export interface CheckNameAvailabilityResult {
   /** The detailed info regarding the reason associated with the Namespace. */
@@ -142,37 +104,21 @@ export interface CheckNameAvailabilityResult {
   /** The reason for unavailability of a Namespace. */
   reason?: UnavailableReason;
 }
-const CheckNameAvailabilityResult = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CheckNameAvailabilityResult>;
-
 export interface CheckNamespaceNameAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Name to check the namespace name availability */
   name: string;
 }
-const CheckNamespaceNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CheckNamespaceNameAvailabilityRequest>;
-
 /** Setting to Enable or Disable Confidential Compute */
 export type Mode = "Disabled" | "Enabled";
-const Mode = S.String;
-
 export interface ConfidentialCompute {
   /** Setting to Enable or Disable Confidential Compute */
   mode?: Mode | (string & {});
 }
-const ConfidentialCompute = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ConfidentialCompute>;
-
 export interface PlatformCapabilities {
   confidentialCompute?: ConfidentialCompute;
 }
-const PlatformCapabilities = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PlatformCapabilities>;
-
 /** Event Hubs Cluster properties supplied in responses in List or Get operations. */
 export interface ClusterPropertiesInput {
   /** A value that indicates whether Scaling is Supported. */
@@ -181,15 +127,8 @@ export interface ClusterPropertiesInput {
   /** A value that indicates whether the cluster is zone redundant. */
   zoneRedundant?: boolean;
 }
-const ClusterPropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ClusterPropertiesInput>;
-
 /** Name of this SKU. */
 export type ClusterSkuName = "Dedicated";
-const ClusterSkuName = S.String;
-
 /** SKU parameters particular to a cluster instance. */
 export interface ClusterSku {
   /** Name of this SKU. */
@@ -197,15 +136,8 @@ export interface ClusterSku {
   /** The quantity of Event Hubs Cluster Capacity Units contained in this cluster. */
   capacity?: number;
 }
-const ClusterSku = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ClusterSku>;
-
 /** Resource tags. */
 export type ClustersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ClustersCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ClustersCreateOrUpdateRequestTagsMap>;
-
 export interface ClustersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -222,11 +154,6 @@ export interface ClustersCreateOrUpdateRequest {
   /** Resource tags. */
   tags?: ClustersCreateOrUpdateRequestTagsMap;
 }
-const ClustersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ClustersCreateOrUpdateRequest>;
-
 /** Provisioning state of the Cluster. */
 export type ProvisioningState =
   | "Unknown"
@@ -237,8 +164,6 @@ export type ProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Canceled";
-const ProvisioningState = S.String;
-
 /** Event Hubs Cluster properties supplied in responses in List or Get operations. */
 export interface ClusterProperties {
   /** The UTC time when the Event Hubs Cluster was created. */
@@ -257,13 +182,8 @@ export interface ClusterProperties {
   /** A value that indicates whether the cluster is zone redundant. */
   zoneRedundant?: boolean;
 }
-const ClusterProperties = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ClusterProperties>;
-
 /** Resource tags. */
 export type ClustersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ClustersCreateOrUpdateResponseTagsMap =
-  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<ClustersCreateOrUpdateResponseTagsMap>;
-
 export interface ClustersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -282,21 +202,11 @@ export interface ClustersCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: ClustersCreateOrUpdateResponseTagsMap;
 }
-const ClustersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ClustersCreateOrUpdateResponse>;
-
 /** Single item in List or Get Consumer group operation */
 export interface ConsumerGroupPropertiesInput {
   /** User Metadata is a placeholder to store user-defined string data with maximum length 1024. e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored. */
   userMetadata?: string;
 }
-const ConsumerGroupPropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ConsumerGroupPropertiesInput>;
-
 export interface ConsumerGroupsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -311,11 +221,6 @@ export interface ConsumerGroupsCreateOrUpdateRequest {
   /** Single item in List or Get Consumer group operation */
   properties?: ConsumerGroupPropertiesInput;
 }
-const ConsumerGroupsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ConsumerGroupsCreateOrUpdateRequest>;
-
 /** Single item in List or Get Consumer group operation */
 export interface ConsumerGroupProperties {
   /** Exact time the message was created. */
@@ -325,11 +230,6 @@ export interface ConsumerGroupProperties {
   /** User Metadata is a placeholder to store user-defined string data with maximum length 1024. e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored. */
   userMetadata?: string;
 }
-const ConsumerGroupProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ConsumerGroupProperties>;
-
 export interface ConsumerGroupsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -344,11 +244,6 @@ export interface ConsumerGroupsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ConsumerGroupsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ConsumerGroupsCreateOrUpdateResponse>;
-
 export interface DeleteApplicationGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -359,17 +254,7 @@ export interface DeleteApplicationGroupRequest {
   /** The Application Group name */
   applicationGroupName: string;
 }
-const DeleteApplicationGroupRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteApplicationGroupRequest>;
-
 export interface DeleteApplicationGroupResponse {}
-const DeleteApplicationGroupResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteApplicationGroupResponse>;
-
 export interface DeleteClusterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -378,12 +263,7 @@ export interface DeleteClusterRequest {
   /** The name of the Event Hubs Cluster. */
   clusterName: string;
 }
-const DeleteClusterRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DeleteClusterRequest>;
-
 export interface DeleteClusterResponse {}
-const DeleteClusterResponse =
-  DeleteApplicationGroupResponse as any as S.Schema<DeleteClusterResponse>;
-
 export interface DeleteConsumerGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -396,15 +276,7 @@ export interface DeleteConsumerGroupRequest {
   /** The consumer group name */
   consumerGroupName: string;
 }
-const DeleteConsumerGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DeleteConsumerGroupRequest>;
-
 export interface DeleteConsumerGroupResponse {}
-const DeleteConsumerGroupResponse =
-  DeleteApplicationGroupResponse as any as S.Schema<DeleteConsumerGroupResponse>;
-
 export interface DeleteDisasterRecoveryConfigRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -415,17 +287,7 @@ export interface DeleteDisasterRecoveryConfigRequest {
   /** The Disaster Recovery configuration name */
   alias: string;
 }
-const DeleteDisasterRecoveryConfigRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteDisasterRecoveryConfigRequest>;
-
 export interface DeleteDisasterRecoveryConfigResponse {}
-const DeleteDisasterRecoveryConfigResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeleteDisasterRecoveryConfigResponse>;
-
 export interface DeleteEventHubRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -436,15 +298,7 @@ export interface DeleteEventHubRequest {
   /** The Event Hub name */
   eventHubName: string;
 }
-const DeleteEventHubRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteEventHubRequest>;
-
 export interface DeleteEventHubResponse {}
-const DeleteEventHubResponse =
-  DeleteApplicationGroupResponse as any as S.Schema<DeleteEventHubResponse>;
-
 export interface DeleteEventHubAuthorizationRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -457,15 +311,7 @@ export interface DeleteEventHubAuthorizationRuleRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
-const DeleteEventHubAuthorizationRuleRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DeleteEventHubAuthorizationRuleRequest>;
-
 export interface DeleteEventHubAuthorizationRuleResponse {}
-const DeleteEventHubAuthorizationRuleResponse =
-  DeleteDisasterRecoveryConfigResponse as any as S.Schema<DeleteEventHubAuthorizationRuleResponse>;
-
 export interface DeleteNamespaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -474,15 +320,7 @@ export interface DeleteNamespaceRequest {
   /** The Namespace name */
   namespaceName: string;
 }
-const DeleteNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeleteNamespaceRequest>;
-
 export interface DeleteNamespaceResponse {}
-const DeleteNamespaceResponse =
-  DeleteApplicationGroupResponse as any as S.Schema<DeleteNamespaceResponse>;
-
 export interface DeleteNamespaceAuthorizationRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -493,15 +331,7 @@ export interface DeleteNamespaceAuthorizationRuleRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
-const DeleteNamespaceAuthorizationRuleRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeleteNamespaceAuthorizationRuleRequest>;
-
 export interface DeleteNamespaceAuthorizationRuleResponse {}
-const DeleteNamespaceAuthorizationRuleResponse =
-  DeleteDisasterRecoveryConfigResponse as any as S.Schema<DeleteNamespaceAuthorizationRuleResponse>;
-
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -512,15 +342,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The PrivateEndpointConnection name */
   privateEndpointConnectionName: string;
 }
-const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
-
 export interface DeletePrivateEndpointConnectionResponse {}
-const DeletePrivateEndpointConnectionResponse =
-  DeleteDisasterRecoveryConfigResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
-
 export interface DeleteSchemaRegistryRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -531,15 +353,7 @@ export interface DeleteSchemaRegistryRequest {
   /** The Schema Group name */
   schemaGroupName: string;
 }
-const DeleteSchemaRegistryRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DeleteSchemaRegistryRequest>;
-
 export interface DeleteSchemaRegistryResponse {}
-const DeleteSchemaRegistryResponse =
-  DeleteApplicationGroupResponse as any as S.Schema<DeleteSchemaRegistryResponse>;
-
 export interface DisasterRecoveryConfigsBreakPairingRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -550,15 +364,7 @@ export interface DisasterRecoveryConfigsBreakPairingRequest {
   /** The Disaster Recovery configuration name */
   alias: string;
 }
-const DisasterRecoveryConfigsBreakPairingRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DisasterRecoveryConfigsBreakPairingRequest>;
-
 export interface DisasterRecoveryConfigsBreakPairingResponse {}
-const DisasterRecoveryConfigsBreakPairingResponse =
-  DeleteDisasterRecoveryConfigResponse as any as S.Schema<DisasterRecoveryConfigsBreakPairingResponse>;
-
 /** Properties required to the Create Or Update Alias(Disaster Recovery configurations) */
 export interface ArmDisasterRecoveryPropertiesInput {
   /** ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing */
@@ -566,11 +372,6 @@ export interface ArmDisasterRecoveryPropertiesInput {
   /** Alternate name specified when alias and namespace names are same. */
   alternateName?: string;
 }
-const ArmDisasterRecoveryPropertiesInput = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ArmDisasterRecoveryPropertiesInput>;
-
 export interface DisasterRecoveryConfigsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -583,19 +384,10 @@ export interface DisasterRecoveryConfigsCreateOrUpdateRequest {
   /** Properties required to the Create Or Update Alias(Disaster Recovery configurations) */
   properties?: ArmDisasterRecoveryPropertiesInput;
 }
-const DisasterRecoveryConfigsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DisasterRecoveryConfigsCreateOrUpdateRequest>;
-
 /** Provisioning state of the Alias(Disaster Recovery configuration) - possible values 'Accepted' or 'Succeeded' or 'Failed' */
 export type ProvisioningStateDR = "Accepted" | "Succeeded" | "Failed";
-const ProvisioningStateDR = S.String;
-
 /** role of namespace in GEO DR - possible values 'Primary' or 'PrimaryNotReplicating' or 'Secondary' */
 export type RoleDisasterRecovery = "Primary" | "PrimaryNotReplicating" | "Secondary";
-const RoleDisasterRecovery = S.String;
-
 /** Properties required to the Create Or Update Alias(Disaster Recovery configurations) */
 export interface ArmDisasterRecoveryProperties {
   /** Provisioning state of the Alias(Disaster Recovery configuration) - possible values 'Accepted' or 'Succeeded' or 'Failed' */
@@ -609,11 +401,6 @@ export interface ArmDisasterRecoveryProperties {
   /** Number of entities pending to be replicated. */
   pendingReplicationOperationsCount?: number;
 }
-const ArmDisasterRecoveryProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ArmDisasterRecoveryProperties>;
-
 export interface DisasterRecoveryConfigsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -628,11 +415,6 @@ export interface DisasterRecoveryConfigsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const DisasterRecoveryConfigsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DisasterRecoveryConfigsCreateOrUpdateResponse>;
-
 export interface DisasterRecoveryConfigsFailOverRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -643,15 +425,7 @@ export interface DisasterRecoveryConfigsFailOverRequest {
   /** The Disaster Recovery configuration name */
   alias: string;
 }
-const DisasterRecoveryConfigsFailOverRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DisasterRecoveryConfigsFailOverRequest>;
-
 export interface DisasterRecoveryConfigsFailOverResponse {}
-const DisasterRecoveryConfigsFailOverResponse =
-  DeleteDisasterRecoveryConfigResponse as any as S.Schema<DisasterRecoveryConfigsFailOverResponse>;
-
 /** Enumerates the possible values for the status of the Event Hub. */
 export type EntityStatus =
   | "Active"
@@ -663,16 +437,10 @@ export type EntityStatus =
   | "Deleting"
   | "Renaming"
   | "Unknown";
-const EntityStatus = S.String;
-
 /** Enumerates the possible values for the encoding format of capture description. Note: 'AvroDeflate' will be deprecated in New API Version */
 export type EncodingCaptureDescription = "Avro" | "AvroDeflate";
-const EncodingCaptureDescription = S.String;
-
 /** Type of Azure Active Directory Managed Identity. */
 export type CaptureIdentityType = "SystemAssigned" | "UserAssigned";
-const CaptureIdentityType = S.String;
-
 /** A value that indicates whether capture description is enabled. */
 export interface CaptureIdentity {
   /** Type of Azure Active Directory Managed Identity. */
@@ -680,8 +448,6 @@ export interface CaptureIdentity {
   /** ARM ID of Managed User Identity. This property is required is the type is UserAssignedIdentity. If type is SystemAssigned, then the System Assigned Identity Associated with the namespace will be used. */
   userAssignedIdentity?: string;
 }
-const CaptureIdentity = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<CaptureIdentity>;
-
 /** Properties describing the storage account, blob container and archive name format for capture destination */
 export interface DestinationProperties {
   /** Resource id of the storage account to be used to create the blobs */
@@ -697,11 +463,6 @@ export interface DestinationProperties {
   /** The destination folder path for the captured events */
   dataLakeFolderPath?: string;
 }
-const DestinationProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<DestinationProperties>;
-
 /** Capture storage details for capture description */
 export interface Destination {
   /** Name for capture destination */
@@ -711,8 +472,6 @@ export interface Destination {
   /** Properties describing the storage account, blob container and archive name format for capture destination */
   properties?: DestinationProperties;
 }
-const Destination = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Destination>;
-
 /** Properties to configure capture description for eventhub */
 export interface CaptureDescription {
   /** A value that indicates whether capture description is enabled. */
@@ -728,12 +487,8 @@ export interface CaptureDescription {
   /** A value that indicates whether to Skip Empty Archives */
   skipEmptyArchives?: boolean;
 }
-const CaptureDescription = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<CaptureDescription>;
-
 /** Enumerates the possible values for cleanup policy */
 export type CleanupPolicyRetentionDescription = "Delete" | "Compact" | "DeleteOrCompact";
-const CleanupPolicyRetentionDescription = S.String;
-
 /** Properties to configure retention settings for the eventhub */
 export interface RetentionDescription {
   /** Enumerates the possible values for cleanup policy */
@@ -745,22 +500,13 @@ export interface RetentionDescription {
   /** Number of hours to retain the tombstone markers of a compacted Event Hub. This value is used when cleanupPolicy is Compact or DeleteOrCompact. Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub */
   tombstoneRetentionTimeInHours?: number;
 }
-const RetentionDescription = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<RetentionDescription>;
-
 /** Denotes the type of timestamp the message will hold.Two types of timestamp types - "AppendTime" and "CreateTime". AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime and its behavior remains the same. */
 export type TimestampType = "LogAppend" | "Create";
-const TimestampType = S.String;
-
 /** Properties of MessageTimestamp Description */
 export interface MessageTimestampDescription {
   /** Denotes the type of timestamp the message will hold.Two types of timestamp types - "AppendTime" and "CreateTime". AppendTime refers the time in which message got appended inside broker log. CreateTime refers to the time in which the message was generated on source side and producers can set this timestamp while sending the message. Default value is AppendTime. If you are using AMQP protocol, CreateTime equals AppendTime and its behavior remains the same. */
   timestampType?: TimestampType | (string & {});
 }
-const MessageTimestampDescription = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<MessageTimestampDescription>;
-
 /** Properties supplied to the Create Or Update Event Hub operation. */
 export interface EventhubPropertiesInput {
   /** Number of days to retain the events for this Event Hub, value should be 1 to 7 days */
@@ -778,11 +524,6 @@ export interface EventhubPropertiesInput {
   /** Gets and Sets Metadata of User. */
   userMetadata?: string;
 }
-const EventhubPropertiesInput = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<EventhubPropertiesInput>;
-
 export interface EventHubsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -795,18 +536,8 @@ export interface EventHubsCreateOrUpdateRequest {
   /** Properties supplied to the Create Or Update Event Hub operation. */
   properties?: EventhubPropertiesInput;
 }
-const EventHubsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<EventHubsCreateOrUpdateRequest>;
-
 /** Current number of shards on the Event Hub. */
 export type EventhubPropertiesPartitionIdsList = Array<string>;
-const EventhubPropertiesPartitionIdsList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<EventhubPropertiesPartitionIdsList>;
-
 /** Properties supplied to the Create Or Update Event Hub operation. */
 export interface EventhubProperties {
   /** Current number of shards on the Event Hub. */
@@ -832,8 +563,6 @@ export interface EventhubProperties {
   /** Gets and Sets Metadata of User. */
   userMetadata?: string;
 }
-const EventhubProperties = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<EventhubProperties>;
-
 export interface EventHubsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -848,31 +577,14 @@ export interface EventHubsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const EventHubsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<EventHubsCreateOrUpdateResponse>;
-
 export type AccessRights = "Manage" | "Send" | "Listen";
-const AccessRights = S.String;
-
 /** The rights associated with the rule. */
 export type AuthorizationRulePropertiesRightsList = Array<AccessRights | (string & {})>;
-const AuthorizationRulePropertiesRightsList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<AuthorizationRulePropertiesRightsList>;
-
 /** Properties supplied to create or update AuthorizationRule */
 export interface AuthorizationRuleProperties {
   /** The rights associated with the rule. */
   rights: AuthorizationRulePropertiesRightsList;
 }
-const AuthorizationRuleProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<AuthorizationRuleProperties>;
-
 export interface EventHubsCreateOrUpdateAuthorizationRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -887,11 +599,6 @@ export interface EventHubsCreateOrUpdateAuthorizationRuleRequest {
   /** Properties supplied to create or update AuthorizationRule */
   properties?: AuthorizationRuleProperties;
 }
-const EventHubsCreateOrUpdateAuthorizationRuleRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<EventHubsCreateOrUpdateAuthorizationRuleRequest>;
-
 export interface EventHubsCreateOrUpdateAuthorizationRuleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -906,11 +613,6 @@ export interface EventHubsCreateOrUpdateAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const EventHubsCreateOrUpdateAuthorizationRuleResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<EventHubsCreateOrUpdateAuthorizationRuleResponse>;
-
 export interface GetApplicationGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -921,11 +623,6 @@ export interface GetApplicationGroupRequest {
   /** The Application Group name */
   applicationGroupName: string;
 }
-const GetApplicationGroupRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetApplicationGroupRequest>;
-
 export interface GetApplicationGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -939,9 +636,6 @@ export interface GetApplicationGroupResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetApplicationGroupResponse =
-  ApplicationGroupCreateOrUpdateApplicationGroupResponse as any as S.Schema<GetApplicationGroupResponse>;
-
 export interface GetClusterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -950,13 +644,8 @@ export interface GetClusterRequest {
   /** The name of the Event Hubs Cluster. */
   clusterName: string;
 }
-const GetClusterRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetClusterRequest>;
-
 /** Resource tags. */
 export type GetClusterResponseTagsMap = { [key: string]: string | undefined };
-const GetClusterResponseTagsMap =
-  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<GetClusterResponseTagsMap>;
-
 export interface GetClusterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -975,8 +664,6 @@ export interface GetClusterResponse {
   /** Resource tags. */
   tags?: GetClusterResponseTagsMap;
 }
-const GetClusterResponse = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<GetClusterResponse>;
-
 export interface GetConfigurationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -985,26 +672,13 @@ export interface GetConfigurationRequest {
   /** The name of the Event Hubs Cluster. */
   clusterName: string;
 }
-const GetConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetConfigurationRequest>;
-
 /** All possible Cluster settings - a collection of key/value paired settings which apply to quotas and configurations imposed on the cluster. */
 export type ClusterQuotaConfigurationPropertiesSettingsMap = { [key: string]: string | undefined };
-const ClusterQuotaConfigurationPropertiesSettingsMap =
-  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<ClusterQuotaConfigurationPropertiesSettingsMap>;
-
 /** Contains all settings for the cluster. */
 export interface ClusterQuotaConfigurationProperties {
   /** All possible Cluster settings - a collection of key/value paired settings which apply to quotas and configurations imposed on the cluster. */
   settings?: ClusterQuotaConfigurationPropertiesSettingsMap;
 }
-const ClusterQuotaConfigurationProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ClusterQuotaConfigurationProperties>;
-
 export interface GetConsumerGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1017,11 +691,6 @@ export interface GetConsumerGroupRequest {
   /** The consumer group name */
   consumerGroupName: string;
 }
-const GetConsumerGroupRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetConsumerGroupRequest>;
-
 export interface GetConsumerGroupResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1036,11 +705,6 @@ export interface GetConsumerGroupResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetConsumerGroupResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetConsumerGroupResponse>;
-
 export interface GetDisasterRecoveryConfigRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1051,11 +715,6 @@ export interface GetDisasterRecoveryConfigRequest {
   /** The Disaster Recovery configuration name */
   alias: string;
 }
-const GetDisasterRecoveryConfigRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GetDisasterRecoveryConfigRequest>;
-
 export interface GetDisasterRecoveryConfigResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1070,9 +729,6 @@ export interface GetDisasterRecoveryConfigResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetDisasterRecoveryConfigResponse =
-  DisasterRecoveryConfigsCreateOrUpdateResponse as any as S.Schema<GetDisasterRecoveryConfigResponse>;
-
 export interface GetDisasterRecoveryConfigAuthorizationRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1085,11 +741,6 @@ export interface GetDisasterRecoveryConfigAuthorizationRuleRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
-const GetDisasterRecoveryConfigAuthorizationRuleRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GetDisasterRecoveryConfigAuthorizationRuleRequest>;
-
 export interface GetDisasterRecoveryConfigAuthorizationRuleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1104,9 +755,6 @@ export interface GetDisasterRecoveryConfigAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetDisasterRecoveryConfigAuthorizationRuleResponse =
-  EventHubsCreateOrUpdateAuthorizationRuleResponse as any as S.Schema<GetDisasterRecoveryConfigAuthorizationRuleResponse>;
-
 export interface GetEventHubRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1117,8 +765,6 @@ export interface GetEventHubRequest {
   /** The Event Hub name */
   eventHubName: string;
 }
-const GetEventHubRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<GetEventHubRequest>;
-
 export interface GetEventHubResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1133,8 +779,6 @@ export interface GetEventHubResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetEventHubResponse = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<GetEventHubResponse>;
-
 export interface GetEventHubAuthorizationRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1147,11 +791,6 @@ export interface GetEventHubAuthorizationRuleRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
-const GetEventHubAuthorizationRuleRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GetEventHubAuthorizationRuleRequest>;
-
 export interface GetEventHubAuthorizationRuleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1166,9 +805,6 @@ export interface GetEventHubAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetEventHubAuthorizationRuleResponse =
-  EventHubsCreateOrUpdateAuthorizationRuleResponse as any as S.Schema<GetEventHubAuthorizationRuleResponse>;
-
 export interface GetNamespaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1177,28 +813,17 @@ export interface GetNamespaceRequest {
   /** The Namespace name */
   namespaceName: string;
 }
-const GetNamespaceRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GetNamespaceRequest>;
-
 /** The minimum TLS version for the cluster to support, e.g. '1.2' */
 export type TlsVersion = "1.0" | "1.1" | "1.2" | "1.3";
-const TlsVersion = S.String;
-
 /** This determines if traffic is allowed over public network. By default it is enabled. */
 export type EHNamespacePropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
   | "SecuredByPerimeter";
-const EHNamespacePropertiesPublicNetworkAccess = S.String;
-
 export interface UserAssignedIdentityProperties {
   /** ARM ID of user Identity selected for encryption */
   userAssignedIdentity?: string;
 }
-const UserAssignedIdentityProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<UserAssignedIdentityProperties>;
-
 /** Properties to configure keyVault Properties */
 export interface KeyVaultProperties {
   /** Name of the Key from KeyVault */
@@ -1209,19 +834,10 @@ export interface KeyVaultProperties {
   keyVersion?: string;
   identity?: UserAssignedIdentityProperties;
 }
-const KeyVaultProperties = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<KeyVaultProperties>;
-
 /** Properties of KeyVault */
 export type EncryptionKeyVaultPropertiesList = Array<KeyVaultProperties>;
-const EncryptionKeyVaultPropertiesList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<EncryptionKeyVaultPropertiesList>;
-
 /** Enumerates the possible value of keySource for Encryption */
 export type EncryptionKeySource = "Microsoft.KeyVault";
-const EncryptionKeySource = S.String;
-
 /** Properties to configure Encryption */
 export interface Encryption {
   /** Properties of KeyVault */
@@ -1231,19 +847,13 @@ export interface Encryption {
   /** Enable Infrastructure Encryption (Double Encryption) */
   requireInfrastructureEncryption?: boolean;
 }
-const Encryption = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<Encryption>;
-
 /** PrivateEndpoint information. */
 export interface PrivateEndpoint {
   /** The ARM identifier for Private Endpoint. */
   id?: string;
 }
-const PrivateEndpoint = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<PrivateEndpoint>;
-
 /** Status of the connection. */
 export type PrivateLinkConnectionStatus = "Pending" | "Approved" | "Rejected" | "Disconnected";
-const PrivateLinkConnectionStatus = S.String;
-
 /** ConnectionState information. */
 export interface ConnectionState {
   /** Status of the connection. */
@@ -1251,8 +861,6 @@ export interface ConnectionState {
   /** Description of the connection state. */
   description?: string;
 }
-const ConnectionState = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ConnectionState>;
-
 /** Provisioning state of the Private Endpoint Connection. */
 export type EndPointProvisioningState =
   | "Creating"
@@ -1261,8 +869,6 @@ export type EndPointProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "Failed";
-const EndPointProvisioningState = S.String;
-
 /** Properties of the private endpoint connection resource. */
 export interface PrivateEndpointConnectionProperties {
   /** The Private Endpoint resource for this Connection. */
@@ -1272,11 +878,6 @@ export interface PrivateEndpointConnectionProperties {
   /** Provisioning state of the Private Endpoint Connection. */
   provisioningState?: EndPointProvisioningState | (string & {});
 }
-const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<PrivateEndpointConnectionProperties>;
-
 /** Properties of the PrivateEndpointConnection. */
 export interface PrivateEndpointConnection {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1292,22 +893,10 @@ export interface PrivateEndpointConnection {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const PrivateEndpointConnection = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<PrivateEndpointConnection>;
-
 /** List of private endpoint connections. */
 export type EHNamespacePropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-const EHNamespacePropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<EHNamespacePropertiesPrivateEndpointConnectionsList>;
-
 /** GeoDR Role Types */
 export type GeoDRRoleType = "Primary" | "Secondary";
-const GeoDRRoleType = S.String;
-
 /** Namespace replication properties */
 export interface NamespaceReplicaLocation {
   /** Azure regions where a replica of the namespace is maintained */
@@ -1319,18 +908,8 @@ export interface NamespaceReplicaLocation {
   /** Optional property that denotes the ARM ID of the Cluster. This is required, if a namespace replica should be placed in a Dedicated Event Hub Cluster */
   clusterArmId?: string;
 }
-const NamespaceReplicaLocation = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<NamespaceReplicaLocation>;
-
 /** A list of regions where replicas of the namespace are maintained. */
 export type GeoDataReplicationPropertiesLocationsList = Array<NamespaceReplicaLocation>;
-const GeoDataReplicationPropertiesLocationsList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<GeoDataReplicationPropertiesLocationsList>;
-
 /** GeoDR Replication properties */
 export interface GeoDataReplicationProperties {
   /** The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas. When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day. */
@@ -1338,15 +917,8 @@ export interface GeoDataReplicationProperties {
   /** A list of regions where replicas of the namespace are maintained. */
   locations?: GeoDataReplicationPropertiesLocationsList;
 }
-const GeoDataReplicationProperties = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GeoDataReplicationProperties>;
-
 /** The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack). */
 export type IpAddressType = "IPv4" | "DualStack";
-const IpAddressType = S.String;
-
 /** Namespace properties supplied for create namespace operation. */
 export interface EHNamespaceProperties {
   /** The minimum TLS version for the cluster to support, e.g. '1.2' */
@@ -1389,19 +961,10 @@ export interface EHNamespaceProperties {
   /** The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack). */
   ipAddressType?: IpAddressType;
 }
-const EHNamespaceProperties = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<EHNamespaceProperties>;
-
 /** Name of this SKU. */
 export type SkuName = "Basic" | "Standard" | "Premium";
-const SkuName = S.String;
-
 /** The billing tier of this particular SKU. */
 export type SkuTier = "Basic" | "Standard" | "Premium";
-const SkuTier = S.String;
-
 /** SKU parameters supplied to the create namespace operation */
 export interface Sku {
   /** Name of this SKU. */
@@ -1411,16 +974,12 @@ export interface Sku {
   /** The Event Hubs throughput units for Basic or Standard tiers, where value should be 0 to 20 throughput units. The Event Hubs premium units for Premium tier, where value should be 0 to 10 premium units. */
   capacity?: number;
 }
-const Sku = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<Sku>;
-
 /** Type of managed service identity. */
 export type ManagedServiceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
-const ManagedServiceIdentityType = S.String;
-
 /** Recognized Dictionary value. */
 export interface UserAssignedIdentity {
   /** Principal Id of user assigned identity */
@@ -1428,18 +987,8 @@ export interface UserAssignedIdentity {
   /** Client Id of user assigned identity */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<UserAssignedIdentity>;
-
 /** Properties for User Assigned Identities */
 export type IdentityUserAssignedIdentitiesMap = { [key: string]: UserAssignedIdentity | undefined };
-const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<IdentityUserAssignedIdentitiesMap>;
-
 /** Properties to configure Identity for Bring your Own Keys */
 export interface Identity {
   /** ObjectId from the KeyVault */
@@ -1451,13 +1000,8 @@ export interface Identity {
   /** Properties for User Assigned Identities */
   userAssignedIdentities?: IdentityUserAssignedIdentitiesMap;
 }
-const Identity = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<Identity>;
-
 /** Resource tags. */
 export type GetNamespaceResponseTagsMap = { [key: string]: string | undefined };
-const GetNamespaceResponseTagsMap =
-  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<GetNamespaceResponseTagsMap>;
-
 export interface GetNamespaceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1478,11 +1022,6 @@ export interface GetNamespaceResponse {
   /** Resource tags. */
   tags?: GetNamespaceResponseTagsMap;
 }
-const GetNamespaceResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GetNamespaceResponse>;
-
 export interface GetNamespaceAuthorizationRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1493,11 +1032,6 @@ export interface GetNamespaceAuthorizationRuleRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
-const GetNamespaceAuthorizationRuleRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GetNamespaceAuthorizationRuleRequest>;
-
 export interface GetNamespaceAuthorizationRuleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1512,9 +1046,6 @@ export interface GetNamespaceAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetNamespaceAuthorizationRuleResponse =
-  EventHubsCreateOrUpdateAuthorizationRuleResponse as any as S.Schema<GetNamespaceAuthorizationRuleResponse>;
-
 export interface GetNamespaceNetworkRuleSetRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1523,22 +1054,13 @@ export interface GetNamespaceNetworkRuleSetRequest {
   /** The Namespace name */
   namespaceName: string;
 }
-const GetNamespaceNetworkRuleSetRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetNamespaceNetworkRuleSetRequest>;
-
 /** Default Action for Network Rule Set */
 export type DefaultAction = "Allow" | "Deny";
-const DefaultAction = S.String;
-
 /** Properties supplied for Subnet */
 export interface Subnet {
   /** Resource ID of Virtual Network Subnet */
   id?: string;
 }
-const Subnet = PrivateEndpoint as any as S.Schema<Subnet>;
-
 /** The response from the List namespace operation. */
 export interface NWRuleSetVirtualNetworkRules {
   /** Subnet properties */
@@ -1546,22 +1068,10 @@ export interface NWRuleSetVirtualNetworkRules {
   /** Value that indicates whether to ignore missing Vnet Service Endpoint */
   ignoreMissingVnetServiceEndpoint?: boolean;
 }
-const NWRuleSetVirtualNetworkRules = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<NWRuleSetVirtualNetworkRules>;
-
 /** List VirtualNetwork Rules */
 export type NetworkRuleSetPropertiesVirtualNetworkRulesList = Array<NWRuleSetVirtualNetworkRules>;
-const NetworkRuleSetPropertiesVirtualNetworkRulesList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<NetworkRuleSetPropertiesVirtualNetworkRulesList>;
-
 /** The IP Filter Action */
 export type NetworkRuleIPAction = "Allow";
-const NetworkRuleIPAction = S.String;
-
 /** The response from the List namespace operation. */
 export interface NWRuleSetIpRules {
   /** IP Mask */
@@ -1569,22 +1079,13 @@ export interface NWRuleSetIpRules {
   /** The IP Filter Action */
   action?: NetworkRuleIPAction | (string & {});
 }
-const NWRuleSetIpRules = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<NWRuleSetIpRules>;
-
 /** List of IpRules */
 export type NetworkRuleSetPropertiesIpRulesList = Array<NWRuleSetIpRules>;
-const NetworkRuleSetPropertiesIpRulesList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<NetworkRuleSetPropertiesIpRulesList>;
-
 /** This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules. */
 export type NetworkRuleSetPropertiesPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
   | "SecuredByPerimeter";
-const NetworkRuleSetPropertiesPublicNetworkAccess = S.String;
-
 /** NetworkRuleSet properties */
 export interface NetworkRuleSetProperties {
   /** Value that indicates whether Trusted Service Access is Enabled or not. */
@@ -1598,11 +1099,6 @@ export interface NetworkRuleSetProperties {
   /** This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules. */
   publicNetworkAccess?: NetworkRuleSetPropertiesPublicNetworkAccess | (string & {});
 }
-const NetworkRuleSetProperties = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<NetworkRuleSetProperties>;
-
 export interface GetNamespaceNetworkRuleSetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1617,11 +1113,6 @@ export interface GetNamespaceNetworkRuleSetResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetNamespaceNetworkRuleSetResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GetNamespaceNetworkRuleSetResponse>;
-
 export interface GetNetworkSecurityPerimeterConfigurationResourceAssociationNameRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1632,11 +1123,6 @@ export interface GetNetworkSecurityPerimeterConfigurationResourceAssociationName
   /** The ResourceAssociation Name */
   resourceAssociationName: string;
 }
-const GetNetworkSecurityPerimeterConfigurationResourceAssociationNameRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationResourceAssociationNameRequest>;
-
 /** Provisioning state of NetworkSecurityPerimeter configuration propagation */
 export type NetworkSecurityPerimeterConfigurationProvisioningState =
   | "Unknown"
@@ -1650,8 +1136,6 @@ export type NetworkSecurityPerimeterConfigurationProvisioningState =
   | "Deleting"
   | "Deleted"
   | "Canceled";
-const NetworkSecurityPerimeterConfigurationProvisioningState = S.String;
-
 /** Properties of Provisioning Issue */
 export interface ProvisioningIssueProperties {
   /** Type of Issue */
@@ -1659,11 +1143,6 @@ export interface ProvisioningIssueProperties {
   /** Description of the issue */
   description?: string;
 }
-const ProvisioningIssueProperties = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ProvisioningIssueProperties>;
-
 /** Describes Provisioning issue for given NetworkSecurityPerimeterConfiguration */
 export interface ProvisioningIssue {
   /** Name of the issue */
@@ -1671,16 +1150,9 @@ export interface ProvisioningIssue {
   /** Properties of Provisioning Issue */
   properties?: ProvisioningIssueProperties;
 }
-const ProvisioningIssue = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<ProvisioningIssue>;
-
 /** List of Provisioning Issues if any */
 export type NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
   Array<ProvisioningIssue>;
-const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList>;
-
 /** NetworkSecurityPerimeter related information */
 export interface NetworkSecurityPerimeter {
   /** Fully qualified identifier of the resource */
@@ -1690,11 +1162,6 @@ export interface NetworkSecurityPerimeter {
   /** Location of the resource */
   location?: string;
 }
-const NetworkSecurityPerimeter = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<NetworkSecurityPerimeter>;
-
 /** Access Mode of the resource association */
 export type ResourceAssociationAccessMode =
   | "NoAssociationMode"
@@ -1702,8 +1169,6 @@ export type ResourceAssociationAccessMode =
   | "LearningMode"
   | "AuditMode"
   | "UnspecifiedMode";
-const ResourceAssociationAccessMode = S.String;
-
 /** Information about resource association */
 export interface NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation {
   /** Name of the resource association */
@@ -1711,50 +1176,22 @@ export interface NetworkSecurityPerimeterConfigurationPropertiesResourceAssociat
   /** Access Mode of the resource association */
   accessMode?: ResourceAssociationAccessMode;
 }
-const NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation>;
-
 /** Direction of Access Rule */
 export type NspAccessRuleDirection = "Inbound" | "Outbound";
-const NspAccessRuleDirection = S.String;
-
 /** Address prefixes in the CIDR format for inbound rules */
 export type NspAccessRulePropertiesAddressPrefixesList = Array<string>;
-const NspAccessRulePropertiesAddressPrefixesList =
-  EventhubPropertiesPartitionIdsList as any as S.Schema<NspAccessRulePropertiesAddressPrefixesList>;
-
 /** Subscription for inbound rule */
 export interface NspAccessRulePropertiesSubscriptionsItem {
   /** Fully qualified identifier of subscription */
   id?: string;
 }
-const NspAccessRulePropertiesSubscriptionsItem = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<NspAccessRulePropertiesSubscriptionsItem>;
-
 /** Subscriptions for inbound rules */
 export type NspAccessRulePropertiesSubscriptionsList =
   Array<NspAccessRulePropertiesSubscriptionsItem>;
-const NspAccessRulePropertiesSubscriptionsList = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<NspAccessRulePropertiesSubscriptionsList>;
-
 /** NetworkSecurityPerimeters for inbound rules */
 export type NspAccessRulePropertiesNetworkSecurityPerimetersList = Array<NetworkSecurityPerimeter>;
-const NspAccessRulePropertiesNetworkSecurityPerimetersList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<NspAccessRulePropertiesNetworkSecurityPerimetersList>;
-
 /** FQDN for outbound rules */
 export type NspAccessRulePropertiesFullyQualifiedDomainNamesList = Array<string>;
-const NspAccessRulePropertiesFullyQualifiedDomainNamesList =
-  EventhubPropertiesPartitionIdsList as any as S.Schema<NspAccessRulePropertiesFullyQualifiedDomainNamesList>;
-
 /** Properties of Access Rule */
 export interface NspAccessRuleProperties {
   /** Direction of Access Rule */
@@ -1768,11 +1205,6 @@ export interface NspAccessRuleProperties {
   /** FQDN for outbound rules */
   fullyQualifiedDomainNames?: NspAccessRulePropertiesFullyQualifiedDomainNamesList;
 }
-const NspAccessRuleProperties = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<NspAccessRuleProperties>;
-
 /** Information of Access Rule in Network Profile */
 export interface NspAccessRule {
   /** Fully qualified identifier of the resource */
@@ -1784,16 +1216,9 @@ export interface NspAccessRule {
   /** Properties of Access Rule */
   properties?: NspAccessRuleProperties;
 }
-const NspAccessRule = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<NspAccessRule>;
-
 /** List of Access Rules */
 export type NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList =
   Array<NspAccessRule>;
-const NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList>;
-
 /** Information about current network profile */
 export interface NetworkSecurityPerimeterConfigurationPropertiesProfile {
   /** Name of the resource */
@@ -1803,18 +1228,8 @@ export interface NetworkSecurityPerimeterConfigurationPropertiesProfile {
   /** List of Access Rules */
   accessRules?: NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList;
 }
-const NetworkSecurityPerimeterConfigurationPropertiesProfile = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProfile>;
-
 /** Indicates that the NSP controls related to backing association are only applicable to a specific feature in backing resource's data plane. */
 export type NetworkSecurityPerimeterConfigurationPropertiesApplicableFeaturesList = Array<string>;
-const NetworkSecurityPerimeterConfigurationPropertiesApplicableFeaturesList = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesApplicableFeaturesList>;
-
 /** Properties of NetworkSecurityPerimeterConfiguration */
 export interface NetworkSecurityPerimeterConfigurationProperties {
   /** Provisioning state of NetworkSecurityPerimeter configuration propagation */
@@ -1836,11 +1251,6 @@ export interface NetworkSecurityPerimeterConfigurationProperties {
   /** ARM Id of source resource */
   sourceResourceId?: string;
 }
-const NetworkSecurityPerimeterConfigurationProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<NetworkSecurityPerimeterConfigurationProperties>;
-
 export interface GetNetworkSecurityPerimeterConfigurationResourceAssociationNameResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1855,12 +1265,6 @@ export interface GetNetworkSecurityPerimeterConfigurationResourceAssociationName
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetNetworkSecurityPerimeterConfigurationResourceAssociationNameResponse =
-  /*@__PURE__*/ __L.at(
-    __c13,
-    4,
-  ) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationResourceAssociationNameResponse>;
-
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1871,11 +1275,6 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The PrivateEndpointConnection name */
   privateEndpointConnectionName: string;
 }
-const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
-
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1890,9 +1289,6 @@ export interface GetPrivateEndpointConnectionResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetPrivateEndpointConnectionResponse =
-  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
-
 export interface GetPrivateLinkResourceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1901,21 +1297,10 @@ export interface GetPrivateLinkResourceRequest {
   /** The Namespace name */
   namespaceName: string;
 }
-const GetPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<GetPrivateLinkResourceRequest>;
-
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredMembersList =
-  EventhubPropertiesPartitionIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  EventhubPropertiesPartitionIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Properties of PrivateLinkResource */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -1925,11 +1310,6 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource Private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<PrivateLinkResourceProperties>;
-
 /** Information of the private link resource. */
 export interface PrivateLinkResource {
   /** Properties of the private link resource. */
@@ -1941,15 +1321,8 @@ export interface PrivateLinkResource {
   /** Type of the resource */
   type?: string;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<PrivateLinkResource>;
-
 /** The PrivateLinkResource items on this page */
 export type PrivateLinkResourcesListResultValueList = Array<PrivateLinkResource>;
-const PrivateLinkResourcesListResultValueList = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<PrivateLinkResourcesListResultValueList>;
-
 /** Paged collection of PrivateLinkResource items */
 export interface PrivateLinkResourcesListResult {
   /** The PrivateLinkResource items on this page */
@@ -1957,11 +1330,6 @@ export interface PrivateLinkResourcesListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PrivateLinkResourcesListResult = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<PrivateLinkResourcesListResult>;
-
 export interface GetSchemaRegistryRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1972,22 +1340,10 @@ export interface GetSchemaRegistryRequest {
   /** The Schema Group name */
   schemaGroupName: string;
 }
-const GetSchemaRegistryRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GetSchemaRegistryRequest>;
-
 /** dictionary object for SchemaGroup group properties */
 export type SchemaGroupPropertiesGroupPropertiesMap = { [key: string]: string | undefined };
-const SchemaGroupPropertiesGroupPropertiesMap =
-  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<SchemaGroupPropertiesGroupPropertiesMap>;
-
 export type SchemaCompatibility = "None" | "Backward" | "Forward";
-const SchemaCompatibility = S.String;
-
 export type SchemaType = "Unknown" | "Avro" | "ProtoBuf" | "Json";
-const SchemaType = S.String;
-
 export interface SchemaGroupProperties {
   /** Exact time the Schema Group was updated */
   updatedAtUtc?: string;
@@ -2000,11 +1356,6 @@ export interface SchemaGroupProperties {
   schemaCompatibility?: SchemaCompatibility;
   schemaType?: SchemaType;
 }
-const SchemaGroupProperties = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<SchemaGroupProperties>;
-
 export interface GetSchemaRegistryResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2018,11 +1369,6 @@ export interface GetSchemaRegistryResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetSchemaRegistryResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<GetSchemaRegistryResponse>;
-
 export interface ListApplicationGroupByNamespaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2031,11 +1377,6 @@ export interface ListApplicationGroupByNamespaceRequest {
   /** The Namespace name */
   namespaceName: string;
 }
-const ListApplicationGroupByNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ListApplicationGroupByNamespaceRequest>;
-
 /** The Application Group object */
 export interface ApplicationGroup {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2050,15 +1391,8 @@ export interface ApplicationGroup {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ApplicationGroup = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<ApplicationGroup>;
-
 /** The ApplicationGroup items on this page */
 export type ApplicationGroupListResultValueList = Array<ApplicationGroup>;
-const ApplicationGroupListResultValueList = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ApplicationGroupListResultValueList>;
-
 /** The response of a ApplicationGroup list operation. */
 export interface ApplicationGroupListResult {
   /** The ApplicationGroup items on this page */
@@ -2066,55 +1400,28 @@ export interface ApplicationGroupListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ApplicationGroupListResult = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ApplicationGroupListResult>;
-
 export interface ListClusterAvailableClusterRegionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListClusterAvailableClusterRegionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<ListClusterAvailableClusterRegionRequest>;
-
 /** Pre-provisioned and readily available Event Hubs Cluster count per region. */
 export interface AvailableCluster {
   /** Location fo the Available Cluster */
   location?: string;
 }
-const AvailableCluster = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<AvailableCluster>;
-
 /** The count of readily available and pre-provisioned Event Hubs Clusters per region. */
 export type AvailableClustersListValueList = Array<AvailableCluster>;
-const AvailableClustersListValueList = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<AvailableClustersListValueList>;
-
 /** The response of the List Available Clusters operation. */
 export interface AvailableClustersList {
   /** The count of readily available and pre-provisioned Event Hubs Clusters per region. */
   value?: AvailableClustersListValueList;
 }
-const AvailableClustersList = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<AvailableClustersList>;
-
 export interface ListClusterByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListClusterByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ListClusterByResourceGroupRequest>;
-
 /** Resource tags. */
 export type ClusterTagsMap = { [key: string]: string | undefined };
 /** Single Event Hubs Cluster resource in List or Get operations. */
@@ -2136,15 +1443,8 @@ export interface Cluster {
   /** Resource tags. */
   tags?: ClusterTagsMap;
 }
-const Cluster = GetClusterResponse as any as S.Schema<Cluster>;
-
 /** The Cluster items on this page */
 export type ClusterListResultValueList = Array<Cluster>;
-const ClusterListResultValueList = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ClusterListResultValueList>;
-
 /** The response of a Cluster list operation. */
 export interface ClusterListResult {
   /** The Cluster items on this page */
@@ -2152,17 +1452,10 @@ export interface ClusterListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ClusterListResult = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<ClusterListResult>;
-
 export interface ListClusterBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListClusterBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ListClusterBySubscriptionRequest>;
-
 export interface ListClusterNamespacesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2171,35 +1464,18 @@ export interface ListClusterNamespacesRequest {
   /** The name of the Event Hubs Cluster. */
   clusterName: string;
 }
-const ListClusterNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ListClusterNamespacesRequest>;
-
 /** The full ARM ID of an Event Hubs Namespace */
 export interface EHNamespaceIdContainer {
   /** id parameter */
   id?: string;
 }
-const EHNamespaceIdContainer = PrivateEndpoint as any as S.Schema<EHNamespaceIdContainer>;
-
 /** Result of the List Namespace IDs operation */
 export type EHNamespaceIdListResultValueList = Array<EHNamespaceIdContainer>;
-const EHNamespaceIdListResultValueList = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<EHNamespaceIdListResultValueList>;
-
 /** The response of the List Namespace IDs operation */
 export interface EHNamespaceIdListResult {
   /** Result of the List Namespace IDs operation */
   value?: EHNamespaceIdListResultValueList;
 }
-const EHNamespaceIdListResult = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<EHNamespaceIdListResult>;
-
 export interface ListConsumerGroupByEventHubRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2214,11 +1490,6 @@ export interface ListConsumerGroupByEventHubRequest {
   /** May be used to limit the number of results to the most recent N usageDetails. */
   _top?: number;
 }
-const ListConsumerGroupByEventHubRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ListConsumerGroupByEventHubRequest>;
-
 /** Single item in List or Get Consumer group operation */
 export interface ConsumerGroup {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2234,15 +1505,8 @@ export interface ConsumerGroup {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ConsumerGroup = GetConsumerGroupResponse as any as S.Schema<ConsumerGroup>;
-
 /** The ConsumerGroup items on this page */
 export type ConsumerGroupListResultValueList = Array<ConsumerGroup>;
-const ConsumerGroupListResultValueList = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ConsumerGroupListResultValueList>;
-
 /** The response of a ConsumerGroup list operation. */
 export interface ConsumerGroupListResult {
   /** The ConsumerGroup items on this page */
@@ -2250,11 +1514,6 @@ export interface ConsumerGroupListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ConsumerGroupListResult = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ConsumerGroupListResult>;
-
 export interface ListDisasterRecoveryConfigAuthorizationRulesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2265,11 +1524,6 @@ export interface ListDisasterRecoveryConfigAuthorizationRulesRequest {
   /** The Disaster Recovery configuration name */
   alias: string;
 }
-const ListDisasterRecoveryConfigAuthorizationRulesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListDisasterRecoveryConfigAuthorizationRulesRequest>;
-
 /** Single item in a List or Get AuthorizationRule operation */
 export interface AuthorizationRule {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2285,15 +1539,8 @@ export interface AuthorizationRule {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const AuthorizationRule = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<AuthorizationRule>;
-
 /** The AuthorizationRule items on this page */
 export type AuthorizationRuleListResultValueList = Array<AuthorizationRule>;
-const AuthorizationRuleListResultValueList = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<AuthorizationRuleListResultValueList>;
-
 /** The response of a AuthorizationRule list operation. */
 export interface AuthorizationRuleListResult {
   /** The AuthorizationRule items on this page */
@@ -2301,11 +1548,6 @@ export interface AuthorizationRuleListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const AuthorizationRuleListResult = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<AuthorizationRuleListResult>;
-
 export interface ListDisasterRecoveryConfigKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2318,11 +1560,6 @@ export interface ListDisasterRecoveryConfigKeysRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
-const ListDisasterRecoveryConfigKeysRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ListDisasterRecoveryConfigKeysRequest>;
-
 /** Namespace/EventHub Connection String */
 export interface AccessKeys {
   /** Primary connection string of the created namespace AuthorizationRule. */
@@ -2340,8 +1577,6 @@ export interface AccessKeys {
   /** A string that describes the AuthorizationRule. */
   keyName?: string;
 }
-const AccessKeys = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<AccessKeys>;
-
 export interface ListDisasterRecoveryConfigsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2350,11 +1585,6 @@ export interface ListDisasterRecoveryConfigsRequest {
   /** The Namespace name */
   namespaceName: string;
 }
-const ListDisasterRecoveryConfigsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ListDisasterRecoveryConfigsRequest>;
-
 /** Single item in List or Get Alias(Disaster Recovery configuration) operation */
 export interface ArmDisasterRecovery {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2370,15 +1600,8 @@ export interface ArmDisasterRecovery {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ArmDisasterRecovery = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<ArmDisasterRecovery>;
-
 /** The ArmDisasterRecovery items on this page */
 export type ArmDisasterRecoveryListResultValueList = Array<ArmDisasterRecovery>;
-const ArmDisasterRecoveryListResultValueList = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ArmDisasterRecoveryListResultValueList>;
-
 /** The response of a ArmDisasterRecovery list operation. */
 export interface ArmDisasterRecoveryListResult {
   /** The ArmDisasterRecovery items on this page */
@@ -2386,11 +1609,6 @@ export interface ArmDisasterRecoveryListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ArmDisasterRecoveryListResult = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ArmDisasterRecoveryListResult>;
-
 export interface ListEventHubAuthorizationRulesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2401,11 +1619,6 @@ export interface ListEventHubAuthorizationRulesRequest {
   /** The Event Hub name */
   eventHubName: string;
 }
-const ListEventHubAuthorizationRulesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<ListEventHubAuthorizationRulesRequest>;
-
 export interface ListEventHubByNamespaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2418,11 +1631,6 @@ export interface ListEventHubByNamespaceRequest {
   /** May be used to limit the number of results to the most recent N usageDetails. */
   _top?: number;
 }
-const ListEventHubByNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<ListEventHubByNamespaceRequest>;
-
 /** Single item in List or Get Event Hub operation */
 export interface Eventhub2 {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2438,15 +1646,8 @@ export interface Eventhub2 {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const Eventhub2 = GetEventHubResponse as any as S.Schema<Eventhub2>;
-
 /** The Eventhub items on this page */
 export type EventHubListResultValueList = Array<Eventhub2>;
-const EventHubListResultValueList = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<EventHubListResultValueList>;
-
 /** Paged collection of Eventhub items */
 export interface EventHubListResult {
   /** The Eventhub items on this page */
@@ -2454,8 +1655,6 @@ export interface EventHubListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const EventHubListResult = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<EventHubListResult>;
-
 export interface ListEventHubKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2468,11 +1667,6 @@ export interface ListEventHubKeysRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
-const ListEventHubKeysRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ListEventHubKeysRequest>;
-
 export interface ListNamespaceAuthorizationRulesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2481,22 +1675,12 @@ export interface ListNamespaceAuthorizationRulesRequest {
   /** The Namespace name */
   namespaceName: string;
 }
-const ListNamespaceAuthorizationRulesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<ListNamespaceAuthorizationRulesRequest>;
-
 export interface ListNamespaceByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListNamespaceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ListNamespaceByResourceGroupRequest>;
-
 /** Resource tags. */
 export type EHNamespaceTagsMap = { [key: string]: string | undefined };
 /** Single Namespace item in List or Get Operation */
@@ -2520,15 +1704,8 @@ export interface EHNamespace {
   /** Resource tags. */
   tags?: EHNamespaceTagsMap;
 }
-const EHNamespace = GetNamespaceResponse as any as S.Schema<EHNamespace>;
-
 /** The EHNamespace items on this page */
 export type EHNamespaceListResultValueList = Array<EHNamespace>;
-const EHNamespaceListResultValueList = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<EHNamespaceListResultValueList>;
-
 /** The response of a EHNamespace list operation. */
 export interface EHNamespaceListResult {
   /** The EHNamespace items on this page */
@@ -2536,11 +1713,6 @@ export interface EHNamespaceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const EHNamespaceListResult = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<EHNamespaceListResult>;
-
 export interface ListNamespaceKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2551,11 +1723,6 @@ export interface ListNamespaceKeysRequest {
   /** The authorization rule name. */
   authorizationRuleName: string;
 }
-const ListNamespaceKeysRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ListNamespaceKeysRequest>;
-
 export interface ListNamespaceNetworkRuleSetRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2564,11 +1731,6 @@ export interface ListNamespaceNetworkRuleSetRequest {
   /** The Namespace name */
   namespaceName: string;
 }
-const ListNamespaceNetworkRuleSetRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ListNamespaceNetworkRuleSetRequest>;
-
 /** Description of topic resource. */
 export interface NetworkRuleSet {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2584,15 +1746,8 @@ export interface NetworkRuleSet {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const NetworkRuleSet = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<NetworkRuleSet>;
-
 /** The NetworkRuleSet items on this page */
 export type NetworkRuleSetListResultValueList = Array<NetworkRuleSet>;
-const NetworkRuleSetListResultValueList = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<NetworkRuleSetListResultValueList>;
-
 /** Paged collection of NetworkRuleSet items */
 export interface NetworkRuleSetListResult {
   /** The NetworkRuleSet items on this page */
@@ -2600,20 +1755,10 @@ export interface NetworkRuleSetListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NetworkRuleSetListResult = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<NetworkRuleSetListResult>;
-
 export interface ListNamespacesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<ListNamespacesRequest>;
-
 export interface ListNetworkSecurityPerimeterConfigurationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2622,11 +1767,6 @@ export interface ListNetworkSecurityPerimeterConfigurationRequest {
   /** The Namespace name */
   namespaceName: string;
 }
-const ListNetworkSecurityPerimeterConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationRequest>;
-
 /** Network Security Perimeter related configurations of a given namespace */
 export interface NetworkSecurityPerimeterConfiguration {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2642,35 +1782,15 @@ export interface NetworkSecurityPerimeterConfiguration {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const NetworkSecurityPerimeterConfiguration = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<NetworkSecurityPerimeterConfiguration>;
-
 /** A collection of NetworkSecurityPerimeterConfigurations */
 export type NetworkSecurityPerimeterConfigurationListValueList =
   Array<NetworkSecurityPerimeterConfiguration>;
-const NetworkSecurityPerimeterConfigurationListValueList = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<NetworkSecurityPerimeterConfigurationListValueList>;
-
 /** Result of the List NetworkSecurityPerimeterConfiguration operation. */
 export interface NetworkSecurityPerimeterConfigurationList {
   /** A collection of NetworkSecurityPerimeterConfigurations */
   value?: NetworkSecurityPerimeterConfigurationListValueList;
 }
-const NetworkSecurityPerimeterConfigurationList = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<NetworkSecurityPerimeterConfigurationList>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Operation display payload */
 export interface OperationDisplay {
   /** Resource provider of the operation */
@@ -2682,8 +1802,6 @@ export interface OperationDisplay {
   /** Localized friendly description for the operation */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<OperationDisplay>;
-
 /** A Event Hub REST API operation */
 export interface Operation {
   /** Operation name: {provider}/{resource}/{operation} */
@@ -2697,15 +1815,8 @@ export interface Operation {
   /** Properties of the operation */
   properties?: unknown;
 }
-const Operation = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<Operation>;
-
 /** The Operation items on this page */
 export type OperationListResultValueList = Array<Operation>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** Paged collection of Operation items */
 export interface OperationListResult {
   /** The Operation items on this page */
@@ -2713,8 +1824,6 @@ export interface OperationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<OperationListResult>;
-
 export interface ListPrivateEndpointConnectionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2723,16 +1832,8 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** The Namespace name */
   namespaceName: string;
 }
-const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ListPrivateEndpointConnectionsRequest>;
-
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-const PrivateEndpointConnectionListResultValueList =
-  EHNamespacePropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
-
 /** The response of a PrivateEndpointConnection list operation. */
 export interface PrivateEndpointConnectionListResult {
   /** The PrivateEndpointConnection items on this page */
@@ -2740,11 +1841,6 @@ export interface PrivateEndpointConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<PrivateEndpointConnectionListResult>;
-
 export interface ListSchemaRegistryByNamespaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2757,11 +1853,6 @@ export interface ListSchemaRegistryByNamespaceRequest {
   /** May be used to limit the number of results to the most recent N usageDetails. */
   _top?: number;
 }
-const ListSchemaRegistryByNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ListSchemaRegistryByNamespaceRequest>;
-
 /** Single item in List or Get Schema Group operation */
 export interface SchemaGroup {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2776,15 +1867,8 @@ export interface SchemaGroup {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const SchemaGroup = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<SchemaGroup>;
-
 /** The SchemaGroup items on this page */
 export type SchemaGroupListResultValueList = Array<SchemaGroup>;
-const SchemaGroupListResultValueList = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<SchemaGroupListResultValueList>;
-
 /** The response of a SchemaGroup list operation. */
 export interface SchemaGroupListResult {
   /** The SchemaGroup items on this page */
@@ -2792,36 +1876,19 @@ export interface SchemaGroupListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const SchemaGroupListResult = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<SchemaGroupListResult>;
-
 /** This determines if traffic is allowed over public network. By default it is enabled. */
 export type EHNamespacePropertiesInputPublicNetworkAccess =
   | "Enabled"
   | "Disabled"
   | "SecuredByPerimeter";
-const EHNamespacePropertiesInputPublicNetworkAccess = S.String;
-
 /** Properties of the PrivateEndpointConnection. */
 export interface PrivateEndpointConnectionInput {
   /** Properties of the PrivateEndpointConnection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const PrivateEndpointConnectionInput = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<PrivateEndpointConnectionInput>;
-
 /** List of private endpoint connections. */
 export type EHNamespacePropertiesInputPrivateEndpointConnectionsList =
   Array<PrivateEndpointConnectionInput>;
-const EHNamespacePropertiesInputPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<EHNamespacePropertiesInputPrivateEndpointConnectionsList>;
-
 /** Namespace replication properties */
 export interface NamespaceReplicaLocationInput {
   /** Azure regions where a replica of the namespace is maintained */
@@ -2831,18 +1898,8 @@ export interface NamespaceReplicaLocationInput {
   /** Optional property that denotes the ARM ID of the Cluster. This is required, if a namespace replica should be placed in a Dedicated Event Hub Cluster */
   clusterArmId?: string;
 }
-const NamespaceReplicaLocationInput = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<NamespaceReplicaLocationInput>;
-
 /** A list of regions where replicas of the namespace are maintained. */
 export type GeoDataReplicationPropertiesInputLocationsList = Array<NamespaceReplicaLocationInput>;
-const GeoDataReplicationPropertiesInputLocationsList = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<GeoDataReplicationPropertiesInputLocationsList>;
-
 /** GeoDR Replication properties */
 export interface GeoDataReplicationPropertiesInput {
   /** The maximum acceptable lag for data replication operations from the primary replica to a quorum of secondary replicas. When the lag exceeds the configured amount, operations on the primary replica will be failed. The allowed values are 0 and 5 minutes to 1 day. */
@@ -2850,11 +1907,6 @@ export interface GeoDataReplicationPropertiesInput {
   /** A list of regions where replicas of the namespace are maintained. */
   locations?: GeoDataReplicationPropertiesInputLocationsList;
 }
-const GeoDataReplicationPropertiesInput = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<GeoDataReplicationPropertiesInput>;
-
 /** Namespace properties supplied for create namespace operation. */
 export interface EHNamespacePropertiesInput {
   /** The minimum TLS version for the cluster to support, e.g. '1.2' */
@@ -2885,25 +1937,12 @@ export interface EHNamespacePropertiesInput {
   /** The IP address type for the namespace. Determines whether the namespace supports IPv4 only or both IPv4 and IPv6 (dual stack). */
   ipAddressType?: IpAddressType | (string & {});
 }
-const EHNamespacePropertiesInput = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<EHNamespacePropertiesInput>;
-
 /** Recognized Dictionary value. */
 export interface UserAssignedIdentityInput {}
-const UserAssignedIdentityInput =
-  DeleteApplicationGroupResponse as any as S.Schema<UserAssignedIdentityInput>;
-
 /** Properties for User Assigned Identities */
 export type IdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
-
 /** Properties to configure Identity for Bring your Own Keys */
 export interface IdentityInput {
   /** Type of managed service identity. */
@@ -2911,13 +1950,8 @@ export interface IdentityInput {
   /** Properties for User Assigned Identities */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
-const IdentityInput = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<IdentityInput>;
-
 /** Resource tags. */
 export type NamespacesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const NamespacesCreateOrUpdateRequestTagsMap =
-  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<NamespacesCreateOrUpdateRequestTagsMap>;
-
 export interface NamespacesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2936,16 +1970,8 @@ export interface NamespacesCreateOrUpdateRequest {
   /** Resource tags. */
   tags?: NamespacesCreateOrUpdateRequestTagsMap;
 }
-const NamespacesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<NamespacesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type NamespacesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const NamespacesCreateOrUpdateResponseTagsMap =
-  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<NamespacesCreateOrUpdateResponseTagsMap>;
-
 export interface NamespacesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2966,11 +1992,6 @@ export interface NamespacesCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: NamespacesCreateOrUpdateResponseTagsMap;
 }
-const NamespacesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<NamespacesCreateOrUpdateResponse>;
-
 export interface NamespacesCreateOrUpdateAuthorizationRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2983,11 +2004,6 @@ export interface NamespacesCreateOrUpdateAuthorizationRuleRequest {
   /** Properties supplied to create or update AuthorizationRule */
   properties?: AuthorizationRuleProperties;
 }
-const NamespacesCreateOrUpdateAuthorizationRuleRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleRequest>;
-
 export interface NamespacesCreateOrUpdateAuthorizationRuleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3002,9 +2018,6 @@ export interface NamespacesCreateOrUpdateAuthorizationRuleResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const NamespacesCreateOrUpdateAuthorizationRuleResponse =
-  EventHubsCreateOrUpdateAuthorizationRuleResponse as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>;
-
 export interface NamespacesCreateOrUpdateNetworkRuleSetRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3015,11 +2028,6 @@ export interface NamespacesCreateOrUpdateNetworkRuleSetRequest {
   /** NetworkRuleSet properties */
   properties?: NetworkRuleSetProperties;
 }
-const NamespacesCreateOrUpdateNetworkRuleSetRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetRequest>;
-
 export interface NamespacesCreateOrUpdateNetworkRuleSetResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3034,17 +2042,12 @@ export interface NamespacesCreateOrUpdateNetworkRuleSetResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const NamespacesCreateOrUpdateNetworkRuleSetResponse =
-  GetNamespaceNetworkRuleSetResponse as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetResponse>;
-
 export interface FailOverProperties {
   /** Query parameter for the new primary location after failover. */
   primaryLocation?: string;
   /** If Force is false then graceful failover is attempted after ensuring no data loss. If Force flag is set to true, Forced failover is attempted with possible data loss. */
   force?: boolean;
 }
-const FailOverProperties = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<FailOverProperties>;
-
 export interface NamespacesFailoverRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3054,15 +2057,7 @@ export interface NamespacesFailoverRequest {
   namespaceName: string;
   properties?: FailOverProperties;
 }
-const NamespacesFailoverRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<NamespacesFailoverRequest>;
-
 export interface NamespacesFailoverResponse {}
-const NamespacesFailoverResponse =
-  DeleteApplicationGroupResponse as any as S.Schema<NamespacesFailoverResponse>;
-
 export interface NetworkSecurityPerimeterConfigurationsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3073,22 +2068,9 @@ export interface NetworkSecurityPerimeterConfigurationsCreateOrUpdateRequest {
   /** The ResourceAssociation Name */
   resourceAssociationName: string;
 }
-const NetworkSecurityPerimeterConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<NetworkSecurityPerimeterConfigurationsCreateOrUpdateRequest>;
-
 export interface NetworkSecurityPerimeterConfigurationsCreateOrUpdateResponse {}
-const NetworkSecurityPerimeterConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<NetworkSecurityPerimeterConfigurationsCreateOrUpdateResponse>;
-
 /** All possible Cluster settings - a collection of key/value paired settings which apply to quotas and configurations imposed on the cluster. */
 export type PatchConfigurationRequestSettingsMap = { [key: string]: string | undefined };
-const PatchConfigurationRequestSettingsMap =
-  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<PatchConfigurationRequestSettingsMap>;
-
 export interface PatchConfigurationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3099,11 +2081,6 @@ export interface PatchConfigurationRequest {
   /** All possible Cluster settings - a collection of key/value paired settings which apply to quotas and configurations imposed on the cluster. */
   settings?: PatchConfigurationRequestSettingsMap;
 }
-const PatchConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<PatchConfigurationRequest>;
-
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3116,11 +2093,6 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** Properties of the PrivateEndpointConnection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
-
 export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3135,13 +2107,8 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const PrivateEndpointConnectionsCreateOrUpdateResponse =
-  PrivateEndpointConnection as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
-
 /** The access key to regenerate. */
 export type KeyType = "PrimaryKey" | "SecondaryKey";
-const KeyType = S.String;
-
 export interface RegenerateEventHubKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3158,11 +2125,6 @@ export interface RegenerateEventHubKeysRequest {
   /** Optional, if the key value provided, is set for KeyType or autogenerated Key value set for keyType */
   key?: string;
 }
-const RegenerateEventHubKeysRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<RegenerateEventHubKeysRequest>;
-
 export interface RegenerateNamespaceKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3177,27 +2139,14 @@ export interface RegenerateNamespaceKeysRequest {
   /** Optional, if the key value provided, is set for KeyType or autogenerated Key value set for keyType */
   key?: string;
 }
-const RegenerateNamespaceKeysRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<RegenerateNamespaceKeysRequest>;
-
 /** dictionary object for SchemaGroup group properties */
 export type SchemaGroupPropertiesInputGroupPropertiesMap = { [key: string]: string | undefined };
-const SchemaGroupPropertiesInputGroupPropertiesMap =
-  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<SchemaGroupPropertiesInputGroupPropertiesMap>;
-
 export interface SchemaGroupPropertiesInput {
   /** dictionary object for SchemaGroup group properties */
   groupProperties?: SchemaGroupPropertiesInputGroupPropertiesMap;
   schemaCompatibility?: SchemaCompatibility | (string & {});
   schemaType?: SchemaType | (string & {});
 }
-const SchemaGroupPropertiesInput = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<SchemaGroupPropertiesInput>;
-
 export interface SchemaRegistryCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3209,11 +2158,6 @@ export interface SchemaRegistryCreateOrUpdateRequest {
   schemaGroupName: string;
   properties?: SchemaGroupPropertiesInput;
 }
-const SchemaRegistryCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<SchemaRegistryCreateOrUpdateRequest>;
-
 export interface SchemaRegistryCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3227,14 +2171,8 @@ export interface SchemaRegistryCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const SchemaRegistryCreateOrUpdateResponse =
-  GetSchemaRegistryResponse as any as S.Schema<SchemaRegistryCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type UpdateClusterRequestTagsMap = { [key: string]: string | undefined };
-const UpdateClusterRequestTagsMap =
-  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateClusterRequestTagsMap>;
-
 export interface UpdateClusterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3251,11 +2189,6 @@ export interface UpdateClusterRequest {
   /** Resource tags. */
   tags?: UpdateClusterRequestTagsMap;
 }
-const UpdateClusterRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<UpdateClusterRequest>;
-
 /** Resource tags. */
 export type UpdateClusterResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateClusterResponse {
@@ -3276,13 +2209,8 @@ export interface UpdateClusterResponse {
   /** Resource tags. */
   tags?: UpdateClusterResponseTagsMap;
 }
-const UpdateClusterResponse = GetClusterResponse as any as S.Schema<UpdateClusterResponse>;
-
 /** Resource tags. */
 export type UpdateNamespaceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateNamespaceRequestTagsMap =
-  ClustersCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateNamespaceRequestTagsMap>;
-
 export interface UpdateNamespaceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3301,11 +2229,6 @@ export interface UpdateNamespaceRequest {
   /** Resource tags. */
   tags?: UpdateNamespaceRequestTagsMap;
 }
-const UpdateNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<UpdateNamespaceRequest>;
-
 /** Resource tags. */
 export type UpdateNamespaceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateNamespaceResponse {
@@ -3328,8 +2251,6 @@ export interface UpdateNamespaceResponse {
   /** Resource tags. */
   tags?: UpdateNamespaceResponseTagsMap;
 }
-const UpdateNamespaceResponse = GetNamespaceResponse as any as S.Schema<UpdateNamespaceResponse>;
-
 export type ApplicationGroupCreateOrUpdateApplicationGroupError = AzureOpError;
 /** Creates or updates an ApplicationGroup for a Namespace. */
 export const ApplicationGroupCreateOrUpdateApplicationGroup: API.OperationMethod<
@@ -3338,8 +2259,8 @@ export const ApplicationGroupCreateOrUpdateApplicationGroup: API.OperationMethod
   ApplicationGroupCreateOrUpdateApplicationGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplicationGroupCreateOrUpdateApplicationGroupRequest,
-  output: ApplicationGroupCreateOrUpdateApplicationGroupResponse,
+  input: __S(3) as any as S.Schema<ApplicationGroupCreateOrUpdateApplicationGroupRequest>,
+  output: __S(5) as any as S.Schema<ApplicationGroupCreateOrUpdateApplicationGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3353,8 +2274,8 @@ export const CheckDisasterRecoveryConfigNameAvailability: API.OperationMethod<
   CheckDisasterRecoveryConfigNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckDisasterRecoveryConfigNameAvailabilityRequest,
-  output: CheckNameAvailabilityResult,
+  input: __S(6) as any as S.Schema<CheckDisasterRecoveryConfigNameAvailabilityRequest>,
+  output: __S(7) as any as S.Schema<CheckNameAvailabilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3368,8 +2289,8 @@ export const CheckNamespaceNameAvailability: API.OperationMethod<
   CheckNamespaceNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckNamespaceNameAvailabilityRequest,
-  output: CheckNameAvailabilityResult,
+  input: __S(8) as any as S.Schema<CheckNamespaceNameAvailabilityRequest>,
+  output: __S(7) as any as S.Schema<CheckNameAvailabilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3383,8 +2304,8 @@ export const ClustersCreateOrUpdate: API.OperationMethod<
   ClustersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClustersCreateOrUpdateRequest,
-  output: ClustersCreateOrUpdateResponse,
+  input: __S(14) as any as S.Schema<ClustersCreateOrUpdateRequest>,
+  output: __S(16) as any as S.Schema<ClustersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3398,8 +2319,8 @@ export const ConsumerGroupsCreateOrUpdate: API.OperationMethod<
   ConsumerGroupsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConsumerGroupsCreateOrUpdateRequest,
-  output: ConsumerGroupsCreateOrUpdateResponse,
+  input: __S(18) as any as S.Schema<ConsumerGroupsCreateOrUpdateRequest>,
+  output: __S(20) as any as S.Schema<ConsumerGroupsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3413,8 +2334,8 @@ export const DeleteApplicationGroup: API.OperationMethod<
   DeleteApplicationGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationGroupRequest,
-  output: DeleteApplicationGroupResponse,
+  input: __S(21) as any as S.Schema<DeleteApplicationGroupRequest>,
+  output: __S(22) as any as S.Schema<DeleteApplicationGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3428,8 +2349,8 @@ export const DeleteCluster: API.OperationMethod<
   DeleteClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteClusterRequest,
-  output: DeleteClusterResponse,
+  input: __S(23) as any as S.Schema<DeleteClusterRequest>,
+  output: __S(22) as any as S.Schema<DeleteClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3443,8 +2364,8 @@ export const DeleteConsumerGroup: API.OperationMethod<
   DeleteConsumerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConsumerGroupRequest,
-  output: DeleteConsumerGroupResponse,
+  input: __S(24) as any as S.Schema<DeleteConsumerGroupRequest>,
+  output: __S(22) as any as S.Schema<DeleteConsumerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3458,8 +2379,8 @@ export const DeleteDisasterRecoveryConfig: API.OperationMethod<
   DeleteDisasterRecoveryConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDisasterRecoveryConfigRequest,
-  output: DeleteDisasterRecoveryConfigResponse,
+  input: __S(25) as any as S.Schema<DeleteDisasterRecoveryConfigRequest>,
+  output: __S(26) as any as S.Schema<DeleteDisasterRecoveryConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3473,8 +2394,8 @@ export const DeleteEventHub: API.OperationMethod<
   DeleteEventHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEventHubRequest,
-  output: DeleteEventHubResponse,
+  input: __S(27) as any as S.Schema<DeleteEventHubRequest>,
+  output: __S(22) as any as S.Schema<DeleteEventHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3488,8 +2409,8 @@ export const DeleteEventHubAuthorizationRule: API.OperationMethod<
   DeleteEventHubAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEventHubAuthorizationRuleRequest,
-  output: DeleteEventHubAuthorizationRuleResponse,
+  input: __S(28) as any as S.Schema<DeleteEventHubAuthorizationRuleRequest>,
+  output: __S(26) as any as S.Schema<DeleteEventHubAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3503,8 +2424,8 @@ export const DeleteNamespace: API.OperationMethod<
   DeleteNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNamespaceRequest,
-  output: DeleteNamespaceResponse,
+  input: __S(29) as any as S.Schema<DeleteNamespaceRequest>,
+  output: __S(22) as any as S.Schema<DeleteNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3518,8 +2439,8 @@ export const DeleteNamespaceAuthorizationRule: API.OperationMethod<
   DeleteNamespaceAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNamespaceAuthorizationRuleRequest,
-  output: DeleteNamespaceAuthorizationRuleResponse,
+  input: __S(30) as any as S.Schema<DeleteNamespaceAuthorizationRuleRequest>,
+  output: __S(26) as any as S.Schema<DeleteNamespaceAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3533,8 +2454,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateEndpointConnectionRequest,
-  output: DeletePrivateEndpointConnectionResponse,
+  input: __S(31) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(26) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3548,8 +2469,8 @@ export const DeleteSchemaRegistry: API.OperationMethod<
   DeleteSchemaRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSchemaRegistryRequest,
-  output: DeleteSchemaRegistryResponse,
+  input: __S(32) as any as S.Schema<DeleteSchemaRegistryRequest>,
+  output: __S(22) as any as S.Schema<DeleteSchemaRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3563,8 +2484,8 @@ export const DisasterRecoveryConfigsBreakPairing: API.OperationMethod<
   DisasterRecoveryConfigsBreakPairingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisasterRecoveryConfigsBreakPairingRequest,
-  output: DisasterRecoveryConfigsBreakPairingResponse,
+  input: __S(33) as any as S.Schema<DisasterRecoveryConfigsBreakPairingRequest>,
+  output: __S(26) as any as S.Schema<DisasterRecoveryConfigsBreakPairingResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3578,8 +2499,8 @@ export const DisasterRecoveryConfigsCreateOrUpdate: API.OperationMethod<
   DisasterRecoveryConfigsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisasterRecoveryConfigsCreateOrUpdateRequest,
-  output: DisasterRecoveryConfigsCreateOrUpdateResponse,
+  input: __S(35) as any as S.Schema<DisasterRecoveryConfigsCreateOrUpdateRequest>,
+  output: __S(37) as any as S.Schema<DisasterRecoveryConfigsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3593,8 +2514,8 @@ export const DisasterRecoveryConfigsFailOver: API.OperationMethod<
   DisasterRecoveryConfigsFailOverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisasterRecoveryConfigsFailOverRequest,
-  output: DisasterRecoveryConfigsFailOverResponse,
+  input: __S(38) as any as S.Schema<DisasterRecoveryConfigsFailOverRequest>,
+  output: __S(26) as any as S.Schema<DisasterRecoveryConfigsFailOverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3608,8 +2529,8 @@ export const EventHubsCreateOrUpdate: API.OperationMethod<
   EventHubsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventHubsCreateOrUpdateRequest,
-  output: EventHubsCreateOrUpdateResponse,
+  input: __S(46) as any as S.Schema<EventHubsCreateOrUpdateRequest>,
+  output: __S(49) as any as S.Schema<EventHubsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3623,8 +2544,8 @@ export const EventHubsCreateOrUpdateAuthorizationRule: API.OperationMethod<
   EventHubsCreateOrUpdateAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EventHubsCreateOrUpdateAuthorizationRuleRequest,
-  output: EventHubsCreateOrUpdateAuthorizationRuleResponse,
+  input: __S(52) as any as S.Schema<EventHubsCreateOrUpdateAuthorizationRuleRequest>,
+  output: __S(53) as any as S.Schema<EventHubsCreateOrUpdateAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3638,8 +2559,8 @@ export const GetApplicationGroup: API.OperationMethod<
   GetApplicationGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationGroupRequest,
-  output: GetApplicationGroupResponse,
+  input: __S(54) as any as S.Schema<GetApplicationGroupRequest>,
+  output: __S(5) as any as S.Schema<GetApplicationGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3653,8 +2574,8 @@ export const GetCluster: API.OperationMethod<
   GetClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClusterRequest,
-  output: GetClusterResponse,
+  input: __S(55) as any as S.Schema<GetClusterRequest>,
+  output: __S(56) as any as S.Schema<GetClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3668,8 +2589,8 @@ export const GetConfiguration: API.OperationMethod<
   GetConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationRequest,
-  output: ClusterQuotaConfigurationProperties,
+  input: __S(57) as any as S.Schema<GetConfigurationRequest>,
+  output: __S(58) as any as S.Schema<ClusterQuotaConfigurationProperties>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3683,8 +2604,8 @@ export const GetConsumerGroup: API.OperationMethod<
   GetConsumerGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConsumerGroupRequest,
-  output: GetConsumerGroupResponse,
+  input: __S(59) as any as S.Schema<GetConsumerGroupRequest>,
+  output: __S(60) as any as S.Schema<GetConsumerGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3698,8 +2619,8 @@ export const GetDisasterRecoveryConfig: API.OperationMethod<
   GetDisasterRecoveryConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDisasterRecoveryConfigRequest,
-  output: GetDisasterRecoveryConfigResponse,
+  input: __S(61) as any as S.Schema<GetDisasterRecoveryConfigRequest>,
+  output: __S(37) as any as S.Schema<GetDisasterRecoveryConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3713,8 +2634,8 @@ export const GetDisasterRecoveryConfigAuthorizationRule: API.OperationMethod<
   GetDisasterRecoveryConfigAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDisasterRecoveryConfigAuthorizationRuleRequest,
-  output: GetDisasterRecoveryConfigAuthorizationRuleResponse,
+  input: __S(62) as any as S.Schema<GetDisasterRecoveryConfigAuthorizationRuleRequest>,
+  output: __S(53) as any as S.Schema<GetDisasterRecoveryConfigAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3728,8 +2649,8 @@ export const GetEventHub: API.OperationMethod<
   GetEventHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventHubRequest,
-  output: GetEventHubResponse,
+  input: __S(63) as any as S.Schema<GetEventHubRequest>,
+  output: __S(64) as any as S.Schema<GetEventHubResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3743,8 +2664,8 @@ export const GetEventHubAuthorizationRule: API.OperationMethod<
   GetEventHubAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventHubAuthorizationRuleRequest,
-  output: GetEventHubAuthorizationRuleResponse,
+  input: __S(65) as any as S.Schema<GetEventHubAuthorizationRuleRequest>,
+  output: __S(53) as any as S.Schema<GetEventHubAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3758,8 +2679,8 @@ export const GetNamespace: API.OperationMethod<
   GetNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNamespaceRequest,
-  output: GetNamespaceResponse,
+  input: __S(66) as any as S.Schema<GetNamespaceRequest>,
+  output: __S(84) as any as S.Schema<GetNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3773,8 +2694,8 @@ export const GetNamespaceAuthorizationRule: API.OperationMethod<
   GetNamespaceAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNamespaceAuthorizationRuleRequest,
-  output: GetNamespaceAuthorizationRuleResponse,
+  input: __S(85) as any as S.Schema<GetNamespaceAuthorizationRuleRequest>,
+  output: __S(53) as any as S.Schema<GetNamespaceAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3788,8 +2709,8 @@ export const GetNamespaceNetworkRuleSet: API.OperationMethod<
   GetNamespaceNetworkRuleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNamespaceNetworkRuleSetRequest,
-  output: GetNamespaceNetworkRuleSetResponse,
+  input: __S(86) as any as S.Schema<GetNamespaceNetworkRuleSetRequest>,
+  output: __S(92) as any as S.Schema<GetNamespaceNetworkRuleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3803,8 +2724,12 @@ export const GetNetworkSecurityPerimeterConfigurationResourceAssociationName: AP
   GetNetworkSecurityPerimeterConfigurationResourceAssociationNameError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkSecurityPerimeterConfigurationResourceAssociationNameRequest,
-  output: GetNetworkSecurityPerimeterConfigurationResourceAssociationNameResponse,
+  input: __S(
+    93,
+  ) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationResourceAssociationNameRequest>,
+  output: __S(
+    108,
+  ) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationResourceAssociationNameResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3818,8 +2743,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateEndpointConnectionRequest,
-  output: GetPrivateEndpointConnectionResponse,
+  input: __S(109) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(74) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3833,8 +2758,8 @@ export const GetPrivateLinkResource: API.OperationMethod<
   GetPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateLinkResourceRequest,
-  output: PrivateLinkResourcesListResult,
+  input: __S(110) as any as S.Schema<GetPrivateLinkResourceRequest>,
+  output: __S(114) as any as S.Schema<PrivateLinkResourcesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3848,8 +2773,8 @@ export const GetSchemaRegistry: API.OperationMethod<
   GetSchemaRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSchemaRegistryRequest,
-  output: GetSchemaRegistryResponse,
+  input: __S(115) as any as S.Schema<GetSchemaRegistryRequest>,
+  output: __S(117) as any as S.Schema<GetSchemaRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3863,8 +2788,8 @@ export const ListApplicationGroupByNamespace: API.OperationMethod<
   ListApplicationGroupByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApplicationGroupByNamespaceRequest,
-  output: ApplicationGroupListResult,
+  input: __S(118) as any as S.Schema<ListApplicationGroupByNamespaceRequest>,
+  output: __S(121) as any as S.Schema<ApplicationGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3878,8 +2803,8 @@ export const ListClusterAvailableClusterRegion: API.OperationMethod<
   ListClusterAvailableClusterRegionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListClusterAvailableClusterRegionRequest,
-  output: AvailableClustersList,
+  input: __S(122) as any as S.Schema<ListClusterAvailableClusterRegionRequest>,
+  output: __S(125) as any as S.Schema<AvailableClustersList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3893,8 +2818,8 @@ export const ListClusterByResourceGroup: API.OperationMethod<
   ListClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListClusterByResourceGroupRequest,
-  output: ClusterListResult,
+  input: __S(126) as any as S.Schema<ListClusterByResourceGroupRequest>,
+  output: __S(128) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3908,8 +2833,8 @@ export const ListClusterBySubscription: API.OperationMethod<
   ListClusterBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListClusterBySubscriptionRequest,
-  output: ClusterListResult,
+  input: __S(129) as any as S.Schema<ListClusterBySubscriptionRequest>,
+  output: __S(128) as any as S.Schema<ClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3923,8 +2848,8 @@ export const ListClusterNamespaces: API.OperationMethod<
   ListClusterNamespacesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListClusterNamespacesRequest,
-  output: EHNamespaceIdListResult,
+  input: __S(130) as any as S.Schema<ListClusterNamespacesRequest>,
+  output: __S(132) as any as S.Schema<EHNamespaceIdListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3938,8 +2863,8 @@ export const ListConsumerGroupByEventHub: API.OperationMethod<
   ListConsumerGroupByEventHubError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConsumerGroupByEventHubRequest,
-  output: ConsumerGroupListResult,
+  input: __S(133) as any as S.Schema<ListConsumerGroupByEventHubRequest>,
+  output: __S(135) as any as S.Schema<ConsumerGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3953,8 +2878,8 @@ export const ListDisasterRecoveryConfigAuthorizationRules: API.OperationMethod<
   ListDisasterRecoveryConfigAuthorizationRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDisasterRecoveryConfigAuthorizationRulesRequest,
-  output: AuthorizationRuleListResult,
+  input: __S(136) as any as S.Schema<ListDisasterRecoveryConfigAuthorizationRulesRequest>,
+  output: __S(139) as any as S.Schema<AuthorizationRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3968,8 +2893,8 @@ export const ListDisasterRecoveryConfigKeys: API.OperationMethod<
   ListDisasterRecoveryConfigKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDisasterRecoveryConfigKeysRequest,
-  output: AccessKeys,
+  input: __S(140) as any as S.Schema<ListDisasterRecoveryConfigKeysRequest>,
+  output: __S(141) as any as S.Schema<AccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3983,8 +2908,8 @@ export const ListDisasterRecoveryConfigs: API.OperationMethod<
   ListDisasterRecoveryConfigsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDisasterRecoveryConfigsRequest,
-  output: ArmDisasterRecoveryListResult,
+  input: __S(142) as any as S.Schema<ListDisasterRecoveryConfigsRequest>,
+  output: __S(145) as any as S.Schema<ArmDisasterRecoveryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3998,8 +2923,8 @@ export const ListEventHubAuthorizationRules: API.OperationMethod<
   ListEventHubAuthorizationRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventHubAuthorizationRulesRequest,
-  output: AuthorizationRuleListResult,
+  input: __S(146) as any as S.Schema<ListEventHubAuthorizationRulesRequest>,
+  output: __S(139) as any as S.Schema<AuthorizationRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4013,8 +2938,8 @@ export const ListEventHubByNamespace: API.OperationMethod<
   ListEventHubByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventHubByNamespaceRequest,
-  output: EventHubListResult,
+  input: __S(147) as any as S.Schema<ListEventHubByNamespaceRequest>,
+  output: __S(149) as any as S.Schema<EventHubListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4028,8 +2953,8 @@ export const ListEventHubKeys: API.OperationMethod<
   ListEventHubKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEventHubKeysRequest,
-  output: AccessKeys,
+  input: __S(150) as any as S.Schema<ListEventHubKeysRequest>,
+  output: __S(141) as any as S.Schema<AccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4043,8 +2968,8 @@ export const ListNamespaceAuthorizationRules: API.OperationMethod<
   ListNamespaceAuthorizationRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNamespaceAuthorizationRulesRequest,
-  output: AuthorizationRuleListResult,
+  input: __S(151) as any as S.Schema<ListNamespaceAuthorizationRulesRequest>,
+  output: __S(139) as any as S.Schema<AuthorizationRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4058,8 +2983,8 @@ export const ListNamespaceByResourceGroup: API.OperationMethod<
   ListNamespaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNamespaceByResourceGroupRequest,
-  output: EHNamespaceListResult,
+  input: __S(152) as any as S.Schema<ListNamespaceByResourceGroupRequest>,
+  output: __S(154) as any as S.Schema<EHNamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4073,8 +2998,8 @@ export const ListNamespaceKeys: API.OperationMethod<
   ListNamespaceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNamespaceKeysRequest,
-  output: AccessKeys,
+  input: __S(155) as any as S.Schema<ListNamespaceKeysRequest>,
+  output: __S(141) as any as S.Schema<AccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4088,8 +3013,8 @@ export const ListNamespaceNetworkRuleSet: API.OperationMethod<
   ListNamespaceNetworkRuleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNamespaceNetworkRuleSetRequest,
-  output: NetworkRuleSetListResult,
+  input: __S(156) as any as S.Schema<ListNamespaceNetworkRuleSetRequest>,
+  output: __S(159) as any as S.Schema<NetworkRuleSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4103,8 +3028,8 @@ export const ListNamespaces: API.OperationMethod<
   ListNamespacesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNamespacesRequest,
-  output: EHNamespaceListResult,
+  input: __S(160) as any as S.Schema<ListNamespacesRequest>,
+  output: __S(154) as any as S.Schema<EHNamespaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4118,8 +3043,8 @@ export const ListNetworkSecurityPerimeterConfiguration: API.OperationMethod<
   ListNetworkSecurityPerimeterConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkSecurityPerimeterConfigurationRequest,
-  output: NetworkSecurityPerimeterConfigurationList,
+  input: __S(161) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationRequest>,
+  output: __S(164) as any as S.Schema<NetworkSecurityPerimeterConfigurationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4133,8 +3058,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(165) as any as S.Schema<ListOperationsRequest>,
+  output: __S(169) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4148,8 +3073,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateEndpointConnectionsRequest,
-  output: PrivateEndpointConnectionListResult,
+  input: __S(170) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(171) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4163,8 +3088,8 @@ export const ListSchemaRegistryByNamespace: API.OperationMethod<
   ListSchemaRegistryByNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSchemaRegistryByNamespaceRequest,
-  output: SchemaGroupListResult,
+  input: __S(172) as any as S.Schema<ListSchemaRegistryByNamespaceRequest>,
+  output: __S(175) as any as S.Schema<SchemaGroupListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4178,8 +3103,8 @@ export const NamespacesCreateOrUpdate: API.OperationMethod<
   NamespacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NamespacesCreateOrUpdateRequest,
-  output: NamespacesCreateOrUpdateResponse,
+  input: __S(184) as any as S.Schema<NamespacesCreateOrUpdateRequest>,
+  output: __S(185) as any as S.Schema<NamespacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4193,8 +3118,8 @@ export const NamespacesCreateOrUpdateAuthorizationRule: API.OperationMethod<
   NamespacesCreateOrUpdateAuthorizationRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NamespacesCreateOrUpdateAuthorizationRuleRequest,
-  output: NamespacesCreateOrUpdateAuthorizationRuleResponse,
+  input: __S(186) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleRequest>,
+  output: __S(53) as any as S.Schema<NamespacesCreateOrUpdateAuthorizationRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4208,8 +3133,8 @@ export const NamespacesCreateOrUpdateNetworkRuleSet: API.OperationMethod<
   NamespacesCreateOrUpdateNetworkRuleSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NamespacesCreateOrUpdateNetworkRuleSetRequest,
-  output: NamespacesCreateOrUpdateNetworkRuleSetResponse,
+  input: __S(187) as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetRequest>,
+  output: __S(92) as any as S.Schema<NamespacesCreateOrUpdateNetworkRuleSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4223,8 +3148,8 @@ export const NamespacesFailover: API.OperationMethod<
   NamespacesFailoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NamespacesFailoverRequest,
-  output: NamespacesFailoverResponse,
+  input: __S(189) as any as S.Schema<NamespacesFailoverRequest>,
+  output: __S(22) as any as S.Schema<NamespacesFailoverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4238,8 +3163,8 @@ export const NetworkSecurityPerimeterConfigurationsCreateOrUpdate: API.Operation
   NetworkSecurityPerimeterConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NetworkSecurityPerimeterConfigurationsCreateOrUpdateRequest,
-  output: NetworkSecurityPerimeterConfigurationsCreateOrUpdateResponse,
+  input: __S(190) as any as S.Schema<NetworkSecurityPerimeterConfigurationsCreateOrUpdateRequest>,
+  output: __S(191) as any as S.Schema<NetworkSecurityPerimeterConfigurationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4253,8 +3178,8 @@ export const PatchConfiguration: API.OperationMethod<
   PatchConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchConfigurationRequest,
-  output: ClusterQuotaConfigurationProperties,
+  input: __S(192) as any as S.Schema<PatchConfigurationRequest>,
+  output: __S(58) as any as S.Schema<ClusterQuotaConfigurationProperties>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4268,8 +3193,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsCreateOrUpdateRequest,
-  output: PrivateEndpointConnectionsCreateOrUpdateResponse,
+  input: __S(193) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  output: __S(74) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4283,8 +3208,8 @@ export const RegenerateEventHubKeys: API.OperationMethod<
   RegenerateEventHubKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegenerateEventHubKeysRequest,
-  output: AccessKeys,
+  input: __S(194) as any as S.Schema<RegenerateEventHubKeysRequest>,
+  output: __S(141) as any as S.Schema<AccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4298,8 +3223,8 @@ export const RegenerateNamespaceKeys: API.OperationMethod<
   RegenerateNamespaceKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegenerateNamespaceKeysRequest,
-  output: AccessKeys,
+  input: __S(195) as any as S.Schema<RegenerateNamespaceKeysRequest>,
+  output: __S(141) as any as S.Schema<AccessKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4313,8 +3238,8 @@ export const SchemaRegistryCreateOrUpdate: API.OperationMethod<
   SchemaRegistryCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SchemaRegistryCreateOrUpdateRequest,
-  output: SchemaRegistryCreateOrUpdateResponse,
+  input: __S(197) as any as S.Schema<SchemaRegistryCreateOrUpdateRequest>,
+  output: __S(117) as any as S.Schema<SchemaRegistryCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4328,8 +3253,8 @@ export const UpdateCluster: API.OperationMethod<
   UpdateClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateClusterRequest,
-  output: UpdateClusterResponse,
+  input: __S(198) as any as S.Schema<UpdateClusterRequest>,
+  output: __S(56) as any as S.Schema<UpdateClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4343,8 +3268,8 @@ export const UpdateNamespace: API.OperationMethod<
   UpdateNamespaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNamespaceRequest,
-  output: UpdateNamespaceResponse,
+  input: __S(199) as any as S.Schema<UpdateNamespaceRequest>,
+  output: __S(84) as any as S.Schema<UpdateNamespaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4357,19 +3282,19 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: ApplicationGroupPolicyType,
+          type: S.String,
           rateLimitThreshold: S.optional(S.Number),
           metricId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationGroupPolicy" });
     case 1:
-      return S.Array(ApplicationGroupPolicy);
+      return S.Array(__S(0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           isEnabled: S.optional(S.Boolean),
           clientAppGroupIdentifier: S.String,
-          policies: S.optional(ApplicationGroupPropertiesPoliciesList),
+          policies: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "ApplicationGroupProperties",
@@ -4381,7 +3306,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           applicationGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(ApplicationGroupProperties),
+          properties: S.optional(__S(2)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4397,10 +3322,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -4410,8 +3335,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApplicationGroupProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(2)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -4440,7 +3365,7 @@ function __c0(j: number): any {
         S.Struct({
           message: S.optional(S.String),
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(UnavailableReason),
+          reason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CheckNameAvailabilityResult",
@@ -4468,27 +3393,27 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(Mode),
+          mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfidentialCompute" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          confidentialCompute: S.optional(ConfidentialCompute),
+          confidentialCompute: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "PlatformCapabilities" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           supportsScaling: S.optional(S.Boolean),
-          platformCapabilities: S.optional(PlatformCapabilities),
+          platformCapabilities: S.optional(__S(10)),
           zoneRedundant: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ClusterPropertiesInput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          name: ClusterSkuName,
+          name: S.String,
           capacity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ClusterSku" });
@@ -4500,10 +3425,10 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          properties: S.optional(ClusterPropertiesInput),
-          sku: S.optional(ClusterSku),
+          properties: S.optional(__S(11)),
+          sku: S.optional(__S(12)),
           location: S.optional(S.String),
-          tags: S.optional(ClustersCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(13)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4519,12 +3444,12 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           updatedAt: S.optional(S.String),
           metricId: S.optional(S.String),
           status: S.optional(S.String),
           supportsScaling: S.optional(S.Boolean),
-          platformCapabilities: S.optional(PlatformCapabilities),
+          platformCapabilities: S.optional(__S(10)),
           zoneRedundant: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ClusterProperties" });
@@ -4538,11 +3463,11 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ClusterProperties),
-          sku: S.optional(ClusterSku),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(15)),
+          sku: S.optional(__S(12)),
           location: S.optional(S.String),
-          tags: S.optional(ClustersCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(13)),
         }),
       ).annotate({
         identifier: "ClustersCreateOrUpdateResponse",
@@ -4563,7 +3488,7 @@ function __c2(j: number): any {
           namespaceName: S.String.pipe(T.Label()),
           eventHubName: S.String.pipe(T.Label()),
           consumerGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(ConsumerGroupPropertiesInput),
+          properties: S.optional(__S(17)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4589,8 +3514,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ConsumerGroupProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(19)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -4820,7 +3745,7 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           alias: S.String.pipe(T.Label()),
-          properties: S.optional(ArmDisasterRecoveryPropertiesInput),
+          properties: S.optional(__S(34)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4835,10 +3760,10 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningStateDR),
+          provisioningState: S.optional(S.String),
           partnerNamespace: S.optional(S.String),
           alternateName: S.optional(S.String),
-          role: S.optional(RoleDisasterRecovery),
+          role: S.optional(S.String),
           pendingReplicationOperationsCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -4850,8 +3775,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ArmDisasterRecoveryProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(36)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -4878,7 +3803,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(CaptureIdentityType),
+          type: S.optional(S.String),
           userAssignedIdentity: S.optional(S.String),
         }),
       ).annotate({ identifier: "CaptureIdentity" });
@@ -4901,25 +3826,25 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          identity: S.optional(CaptureIdentity),
-          properties: S.optional(DestinationProperties),
+          identity: S.optional(__S(39)),
+          properties: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "Destination" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          encoding: S.optional(EncodingCaptureDescription),
+          encoding: S.optional(S.String),
           intervalInSeconds: S.optional(S.Number),
           sizeLimitInBytes: S.optional(S.Number),
-          destination: S.optional(Destination),
+          destination: S.optional(__S(41)),
           skipEmptyArchives: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CaptureDescription" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cleanupPolicy: S.optional(CleanupPolicyRetentionDescription),
+          cleanupPolicy: S.optional(S.String),
           retentionTimeInHours: S.optional(S.Number),
           minCompactionLagTimeInMinutes: S.optional(S.Number),
           tombstoneRetentionTimeInHours: S.optional(S.Number),
@@ -4928,7 +3853,7 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          timestampType: S.optional(TimestampType),
+          timestampType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MessageTimestampDescription",
@@ -4938,10 +3863,10 @@ function __c5(j: number): any {
         S.Struct({
           messageRetentionInDays: S.optional(S.Number),
           partitionCount: S.optional(S.Number),
-          status: S.optional(EntityStatus),
-          captureDescription: S.optional(CaptureDescription),
-          retentionDescription: S.optional(RetentionDescription),
-          messageTimestampDescription: S.optional(MessageTimestampDescription),
+          status: S.optional(S.String),
+          captureDescription: S.optional(__S(42)),
+          retentionDescription: S.optional(__S(43)),
+          messageTimestampDescription: S.optional(__S(44)),
           userMetadata: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventhubPropertiesInput" });
@@ -4952,7 +3877,7 @@ function __c5(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           eventHubName: S.String.pipe(T.Label()),
-          properties: S.optional(EventhubPropertiesInput),
+          properties: S.optional(__S(45)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4973,15 +3898,15 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          partitionIds: S.optional(EventhubPropertiesPartitionIdsList),
+          partitionIds: S.optional(__S(47)),
           createdAt: S.optional(S.String),
           updatedAt: S.optional(S.String),
           messageRetentionInDays: S.optional(S.Number),
           partitionCount: S.optional(S.Number),
-          status: S.optional(EntityStatus),
-          captureDescription: S.optional(CaptureDescription),
-          retentionDescription: S.optional(RetentionDescription),
-          messageTimestampDescription: S.optional(MessageTimestampDescription),
+          status: S.optional(S.String),
+          captureDescription: S.optional(__S(42)),
+          retentionDescription: S.optional(__S(43)),
+          messageTimestampDescription: S.optional(__S(44)),
           identifier: S.optional(S.String),
           userMetadata: S.optional(S.String),
         }),
@@ -4992,19 +3917,19 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EventhubProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(48)),
           location: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EventHubsCreateOrUpdateResponse",
       });
     case 2:
-      return S.Array(AccessRights);
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          rights: AuthorizationRulePropertiesRightsList,
+          rights: __S(50),
         }),
       ).annotate({
         identifier: "AuthorizationRuleProperties",
@@ -5017,7 +3942,7 @@ function __c6(j: number): any {
           namespaceName: S.String.pipe(T.Label()),
           eventHubName: S.String.pipe(T.Label()),
           authorizationRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(AuthorizationRuleProperties),
+          properties: S.optional(__S(51)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5035,8 +3960,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(AuthorizationRuleProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(51)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -5085,11 +4010,11 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ClusterProperties),
-          sku: S.optional(ClusterSku),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(15)),
+          sku: S.optional(__S(12)),
           location: S.optional(S.String),
-          tags: S.optional(GetClusterResponseTagsMap),
+          tags: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "GetClusterResponse" });
     case 1:
@@ -5110,7 +4035,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          settings: S.optional(ClusterQuotaConfigurationPropertiesSettingsMap),
+          settings: S.optional(__S(13)),
         }),
       ).annotate({
         identifier: "ClusterQuotaConfigurationProperties",
@@ -5138,8 +4063,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ConsumerGroupProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(19)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetConsumerGroupResponse" });
@@ -5206,8 +4131,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EventhubProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(48)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetEventHubResponse" });
@@ -5259,16 +4184,16 @@ function __c8(j: number): any {
           keyName: S.optional(S.String),
           keyVaultUri: S.optional(S.String),
           keyVersion: S.optional(S.String),
-          identity: S.optional(UserAssignedIdentityProperties),
+          identity: S.optional(__S(67)),
         }),
       ).annotate({ identifier: "KeyVaultProperties" });
     case 5:
-      return S.Array(KeyVaultProperties);
+      return S.Array(__S(68));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: S.optional(EncryptionKeyVaultPropertiesList),
-          keySource: S.optional(EncryptionKeySource),
+          keyVaultProperties: S.optional(__S(69)),
+          keySource: S.optional(S.String),
           requireInfrastructureEncryption: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Encryption" });
@@ -5285,16 +4210,16 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(PrivateLinkConnectionStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectionState" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: S.optional(ConnectionState),
-          provisioningState: S.optional(EndPointProvisioningState),
+          privateEndpoint: S.optional(__S(71)),
+          privateLinkServiceConnectionState: S.optional(__S(72)),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -5305,31 +4230,31 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateEndpointConnectionProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(73)),
           location: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnection",
       });
     case 3:
-      return S.Array(PrivateEndpointConnection);
+      return S.Array(__S(74));
     case 4:
       return S.suspend(() =>
         S.Struct({
           locationName: S.optional(S.String),
-          roleType: S.optional(GeoDRRoleType),
+          roleType: S.optional(S.String),
           replicaState: S.optional(S.String),
           clusterArmId: S.optional(S.String),
         }),
       ).annotate({ identifier: "NamespaceReplicaLocation" });
     case 5:
-      return S.Array(NamespaceReplicaLocation);
+      return S.Array(__S(76));
     case 6:
       return S.suspend(() =>
         S.Struct({
           maxReplicationLagDurationInSeconds: S.optional(S.Number),
-          locations: S.optional(GeoDataReplicationPropertiesLocationsList),
+          locations: S.optional(__S(77)),
         }),
       ).annotate({
         identifier: "GeoDataReplicationProperties",
@@ -5337,7 +4262,7 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          minimumTlsVersion: S.optional(TlsVersion),
+          minimumTlsVersion: S.optional(S.String),
           provisioningState: S.optional(S.String),
           status: S.optional(S.String),
           createdAt: S.optional(S.String),
@@ -5346,19 +4271,17 @@ function __c9(j: number): any {
           clusterArmId: S.optional(S.String),
           metricId: S.optional(S.String),
           isAutoInflateEnabled: S.optional(S.Boolean),
-          publicNetworkAccess: S.optional(EHNamespacePropertiesPublicNetworkAccess),
+          publicNetworkAccess: S.optional(S.String),
           maximumThroughputUnits: S.optional(S.Number),
           kafkaEnabled: S.optional(S.Boolean),
           zoneRedundant: S.optional(S.Boolean),
-          encryption: S.optional(Encryption),
-          privateEndpointConnections: S.optional(
-            EHNamespacePropertiesPrivateEndpointConnectionsList,
-          ),
+          encryption: S.optional(__S(70)),
+          privateEndpointConnections: S.optional(__S(75)),
           disableLocalAuth: S.optional(S.Boolean),
           alternateName: S.optional(S.String),
-          platformCapabilities: S.optional(PlatformCapabilities),
-          geoDataReplication: S.optional(GeoDataReplicationProperties),
-          ipAddressType: S.optional(IpAddressType),
+          platformCapabilities: S.optional(__S(10)),
+          geoDataReplication: S.optional(__S(78)),
+          ipAddressType: S.optional(S.String),
         }),
       ).annotate({ identifier: "EHNamespaceProperties" });
   }
@@ -5368,8 +4291,8 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: SkuName,
-          tier: S.optional(SkuTier),
+          name: S.String,
+          tier: S.optional(S.String),
           capacity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Sku" });
@@ -5381,14 +4304,14 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 2:
-      return S.Record(S.String, UserAssignedIdentity);
+      return S.Record(S.String, __S(81));
     case 3:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(ManagedServiceIdentityType),
-          userAssignedIdentities: S.optional(IdentityUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(82)),
         }),
       ).annotate({ identifier: "Identity" });
     case 4:
@@ -5397,12 +4320,12 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EHNamespaceProperties),
-          sku: S.optional(Sku),
-          identity: S.optional(Identity),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(79)),
+          sku: S.optional(__S(80)),
+          identity: S.optional(__S(83)),
           location: S.optional(S.String),
-          tags: S.optional(GetNamespaceResponseTagsMap),
+          tags: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "GetNamespaceResponse" });
     case 5:
@@ -5443,7 +4366,7 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          subnet: S.optional(Subnet),
+          subnet: S.optional(__S(71)),
           ignoreMissingVnetServiceEndpoint: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -5454,24 +4377,24 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(NWRuleSetVirtualNetworkRules);
+      return S.Array(__S(87));
     case 1:
       return S.suspend(() =>
         S.Struct({
           ipMask: S.optional(S.String),
-          action: S.optional(NetworkRuleIPAction),
+          action: S.optional(S.String),
         }),
       ).annotate({ identifier: "NWRuleSetIpRules" });
     case 2:
-      return S.Array(NWRuleSetIpRules);
+      return S.Array(__S(89));
     case 3:
       return S.suspend(() =>
         S.Struct({
           trustedServiceAccessEnabled: S.optional(S.Boolean),
-          defaultAction: S.optional(DefaultAction),
-          virtualNetworkRules: S.optional(NetworkRuleSetPropertiesVirtualNetworkRulesList),
-          ipRules: S.optional(NetworkRuleSetPropertiesIpRulesList),
-          publicNetworkAccess: S.optional(NetworkRuleSetPropertiesPublicNetworkAccess),
+          defaultAction: S.optional(S.String),
+          virtualNetworkRules: S.optional(__S(88)),
+          ipRules: S.optional(__S(90)),
+          publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkRuleSetProperties" });
     case 4:
@@ -5480,8 +4403,8 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(NetworkRuleSetProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(91)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -5518,7 +4441,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(ProvisioningIssueProperties),
+          properties: S.optional(__S(94)),
         }),
       ).annotate({ identifier: "ProvisioningIssue" });
   }
@@ -5526,7 +4449,7 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ProvisioningIssue);
+      return S.Array(__S(95));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5539,7 +4462,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          accessMode: S.optional(ResourceAssociationAccessMode),
+          accessMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation",
@@ -5553,21 +4476,17 @@ function __c12(j: number): any {
         identifier: "NspAccessRulePropertiesSubscriptionsItem",
       });
     case 4:
-      return S.Array(NspAccessRulePropertiesSubscriptionsItem);
+      return S.Array(__S(99));
     case 5:
-      return S.Array(NetworkSecurityPerimeter);
+      return S.Array(__S(97));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          direction: S.optional(NspAccessRuleDirection),
-          addressPrefixes: S.optional(NspAccessRulePropertiesAddressPrefixesList),
-          subscriptions: S.optional(NspAccessRulePropertiesSubscriptionsList),
-          networkSecurityPerimeters: S.optional(
-            NspAccessRulePropertiesNetworkSecurityPerimetersList,
-          ),
-          fullyQualifiedDomainNames: S.optional(
-            NspAccessRulePropertiesFullyQualifiedDomainNamesList,
-          ),
+          direction: S.optional(S.String),
+          addressPrefixes: S.optional(__S(47)),
+          subscriptions: S.optional(__S(100)),
+          networkSecurityPerimeters: S.optional(__S(101)),
+          fullyQualifiedDomainNames: S.optional(__S(47)),
         }),
       ).annotate({ identifier: "NspAccessRuleProperties" });
     case 7:
@@ -5576,7 +4495,7 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(NspAccessRuleProperties),
+          properties: S.optional(__S(102)),
         }),
       ).annotate({ identifier: "NspAccessRule" });
   }
@@ -5584,15 +4503,13 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(NspAccessRule);
+      return S.Array(__S(103));
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           accessRulesVersion: S.optional(S.String),
-          accessRules: S.optional(
-            NetworkSecurityPerimeterConfigurationPropertiesProfileAccessRulesList,
-          ),
+          accessRules: S.optional(__S(104)),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterConfigurationPropertiesProfile",
@@ -5602,19 +4519,13 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(NetworkSecurityPerimeterConfigurationProvisioningState),
-          provisioningIssues: S.optional(
-            NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList,
-          ),
-          networkSecurityPerimeter: S.optional(NetworkSecurityPerimeter),
-          resourceAssociation: S.optional(
-            NetworkSecurityPerimeterConfigurationPropertiesResourceAssociation,
-          ),
-          profile: S.optional(NetworkSecurityPerimeterConfigurationPropertiesProfile),
+          provisioningState: S.optional(S.String),
+          provisioningIssues: S.optional(__S(96)),
+          networkSecurityPerimeter: S.optional(__S(97)),
+          resourceAssociation: S.optional(__S(98)),
+          profile: S.optional(__S(105)),
           isBackingResource: S.optional(S.Boolean),
-          applicableFeatures: S.optional(
-            NetworkSecurityPerimeterConfigurationPropertiesApplicableFeaturesList,
-          ),
+          applicableFeatures: S.optional(__S(106)),
           parentAssociationName: S.optional(S.String),
           sourceResourceId: S.optional(S.String),
         }),
@@ -5627,8 +4538,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(NetworkSecurityPerimeterConfigurationProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(107)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -5673,8 +4584,8 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
+          requiredMembers: S.optional(__S(47)),
+          requiredZoneNames: S.optional(__S(47)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -5686,18 +4597,18 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(PrivateLinkResourceProperties),
+          properties: S.optional(__S(111)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 1:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(112));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: PrivateLinkResourcesListResultValueList,
+          value: __S(113),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -5725,9 +4636,9 @@ function __c14(j: number): any {
           updatedAtUtc: S.optional(S.String),
           createdAtUtc: S.optional(S.String),
           eTag: S.optional(S.String),
-          groupProperties: S.optional(SchemaGroupPropertiesGroupPropertiesMap),
-          schemaCompatibility: S.optional(SchemaCompatibility),
-          schemaType: S.optional(SchemaType),
+          groupProperties: S.optional(__S(13)),
+          schemaCompatibility: S.optional(S.String),
+          schemaType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchemaGroupProperties" });
     case 5:
@@ -5736,8 +4647,8 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(SchemaGroupProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(116)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -5766,8 +4677,8 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApplicationGroupProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(2)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationGroup" });
@@ -5776,11 +4687,11 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ApplicationGroup);
+      return S.Array(__S(119));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: ApplicationGroupListResultValueList,
+          value: __S(120),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -5808,11 +4719,11 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "AvailableCluster" });
     case 4:
-      return S.Array(AvailableCluster);
+      return S.Array(__S(123));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(AvailableClustersListValueList),
+          value: S.optional(__S(124)),
         }),
       ).annotate({ identifier: "AvailableClustersList" });
     case 6:
@@ -5832,7 +4743,7 @@ function __c15(j: number): any {
         identifier: "ListClusterByResourceGroupRequest",
       });
     case 7:
-      return S.Array(Cluster);
+      return S.Array(__S(56));
   }
 }
 function __c16(j: number): any {
@@ -5840,7 +4751,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: ClusterListResultValueList,
+          value: __S(127),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterListResult" });
@@ -5877,11 +4788,11 @@ function __c16(j: number): any {
         identifier: "ListClusterNamespacesRequest",
       });
     case 3:
-      return S.Array(EHNamespaceIdContainer);
+      return S.Array(__S(71));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(EHNamespaceIdListResultValueList),
+          value: S.optional(__S(131)),
         }),
       ).annotate({ identifier: "EHNamespaceIdListResult" });
     case 5:
@@ -5905,11 +4816,11 @@ function __c16(j: number): any {
         identifier: "ListConsumerGroupByEventHubRequest",
       });
     case 6:
-      return S.Array(ConsumerGroup);
+      return S.Array(__S(60));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: ConsumerGroupListResultValueList,
+          value: __S(134),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConsumerGroupListResult" });
@@ -5941,17 +4852,17 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(AuthorizationRuleProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(51)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthorizationRule" });
     case 2:
-      return S.Array(AuthorizationRule);
+      return S.Array(__S(137));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: AuthorizationRuleListResultValueList,
+          value: __S(138),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6011,8 +4922,8 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ArmDisasterRecoveryProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(36)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "ArmDisasterRecovery" });
@@ -6021,11 +4932,11 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ArmDisasterRecovery);
+      return S.Array(__S(143));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: ArmDisasterRecoveryListResultValueList,
+          value: __S(144),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6069,11 +4980,11 @@ function __c18(j: number): any {
         identifier: "ListEventHubByNamespaceRequest",
       });
     case 4:
-      return S.Array(Eventhub2);
+      return S.Array(__S(64));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: EventHubListResultValueList,
+          value: __S(148),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventHubListResult" });
@@ -6132,11 +5043,11 @@ function __c19(j: number): any {
         identifier: "ListNamespaceByResourceGroupRequest",
       });
     case 1:
-      return S.Array(EHNamespace);
+      return S.Array(__S(84));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: EHNamespaceListResultValueList,
+          value: __S(153),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EHNamespaceListResult" });
@@ -6179,17 +5090,17 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(NetworkRuleSetProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(91)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkRuleSet" });
     case 6:
-      return S.Array(NetworkRuleSet);
+      return S.Array(__S(157));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: NetworkRuleSetListResultValueList,
+          value: __S(158),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NetworkRuleSetListResult" });
@@ -6233,19 +5144,19 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(NetworkSecurityPerimeterConfigurationProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(107)),
           location: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterConfiguration",
       });
     case 3:
-      return S.Array(NetworkSecurityPerimeterConfiguration);
+      return S.Array(__S(162));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(NetworkSecurityPerimeterConfigurationListValueList),
+          value: S.optional(__S(163)),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterConfigurationList",
@@ -6275,7 +5186,7 @@ function __c20(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
+          display: S.optional(__S(166)),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
         }),
@@ -6285,11 +5196,11 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Operation);
+      return S.Array(__S(167));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: OperationListResultValueList,
+          value: __S(168),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -6313,7 +5224,7 @@ function __c21(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: PrivateEndpointConnectionListResultValueList,
+          value: __S(75),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6344,17 +5255,17 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(SchemaGroupProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(116)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchemaGroup" });
     case 6:
-      return S.Array(SchemaGroup);
+      return S.Array(__S(173));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: SchemaGroupListResultValueList,
+          value: __S(174),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchemaGroupListResult" });
@@ -6365,30 +5276,30 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(PrivateEndpointConnectionProperties),
+          properties: S.optional(__S(73)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionInput",
       });
     case 1:
-      return S.Array(PrivateEndpointConnectionInput);
+      return S.Array(__S(176));
     case 2:
       return S.suspend(() =>
         S.Struct({
           locationName: S.optional(S.String),
-          roleType: S.optional(GeoDRRoleType),
+          roleType: S.optional(S.String),
           clusterArmId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "NamespaceReplicaLocationInput",
       });
     case 3:
-      return S.Array(NamespaceReplicaLocationInput);
+      return S.Array(__S(178));
     case 4:
       return S.suspend(() =>
         S.Struct({
           maxReplicationLagDurationInSeconds: S.optional(S.Number),
-          locations: S.optional(GeoDataReplicationPropertiesInputLocationsList),
+          locations: S.optional(__S(179)),
         }),
       ).annotate({
         identifier: "GeoDataReplicationPropertiesInput",
@@ -6396,33 +5307,31 @@ function __c22(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          minimumTlsVersion: S.optional(TlsVersion),
+          minimumTlsVersion: S.optional(S.String),
           clusterArmId: S.optional(S.String),
           isAutoInflateEnabled: S.optional(S.Boolean),
-          publicNetworkAccess: S.optional(EHNamespacePropertiesInputPublicNetworkAccess),
+          publicNetworkAccess: S.optional(S.String),
           maximumThroughputUnits: S.optional(S.Number),
           kafkaEnabled: S.optional(S.Boolean),
           zoneRedundant: S.optional(S.Boolean),
-          encryption: S.optional(Encryption),
-          privateEndpointConnections: S.optional(
-            EHNamespacePropertiesInputPrivateEndpointConnectionsList,
-          ),
+          encryption: S.optional(__S(70)),
+          privateEndpointConnections: S.optional(__S(177)),
           disableLocalAuth: S.optional(S.Boolean),
           alternateName: S.optional(S.String),
-          platformCapabilities: S.optional(PlatformCapabilities),
-          geoDataReplication: S.optional(GeoDataReplicationPropertiesInput),
-          ipAddressType: S.optional(IpAddressType),
+          platformCapabilities: S.optional(__S(10)),
+          geoDataReplication: S.optional(__S(180)),
+          ipAddressType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EHNamespacePropertiesInput",
       });
     case 6:
-      return S.Record(S.String, UserAssignedIdentityInput);
+      return S.Record(S.String, __S(22));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ManagedServiceIdentityType),
-          userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(182)),
         }),
       ).annotate({ identifier: "IdentityInput" });
   }
@@ -6435,11 +5344,11 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
-          properties: S.optional(EHNamespacePropertiesInput),
-          sku: S.optional(Sku),
-          identity: S.optional(IdentityInput),
+          properties: S.optional(__S(181)),
+          sku: S.optional(__S(80)),
+          identity: S.optional(__S(183)),
           location: S.optional(S.String),
-          tags: S.optional(NamespacesCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(13)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6457,12 +5366,12 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EHNamespaceProperties),
-          sku: S.optional(Sku),
-          identity: S.optional(Identity),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(79)),
+          sku: S.optional(__S(80)),
+          identity: S.optional(__S(83)),
           location: S.optional(S.String),
-          tags: S.optional(NamespacesCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(13)),
         }),
       ).annotate({
         identifier: "NamespacesCreateOrUpdateResponse",
@@ -6474,7 +5383,7 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           authorizationRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(AuthorizationRuleProperties),
+          properties: S.optional(__S(51)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6492,7 +5401,7 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
-          properties: S.optional(NetworkRuleSetProperties),
+          properties: S.optional(__S(91)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6517,7 +5426,7 @@ function __c23(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
-          properties: S.optional(FailOverProperties),
+          properties: S.optional(__S(188)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6561,7 +5470,7 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          settings: S.optional(PatchConfigurationRequestSettingsMap),
+          settings: S.optional(__S(13)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6580,7 +5489,7 @@ function __c24(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(PrivateEndpointConnectionProperties),
+          properties: S.optional(__S(73)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6600,7 +5509,7 @@ function __c24(j: number): any {
           namespaceName: S.String.pipe(T.Label()),
           eventHubName: S.String.pipe(T.Label()),
           authorizationRuleName: S.String.pipe(T.Label()),
-          keyType: KeyType,
+          keyType: S.String,
           key: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -6620,7 +5529,7 @@ function __c24(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           authorizationRuleName: S.String.pipe(T.Label()),
-          keyType: KeyType,
+          keyType: S.String,
           key: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -6636,9 +5545,9 @@ function __c24(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          groupProperties: S.optional(SchemaGroupPropertiesInputGroupPropertiesMap),
-          schemaCompatibility: S.optional(SchemaCompatibility),
-          schemaType: S.optional(SchemaType),
+          groupProperties: S.optional(__S(13)),
+          schemaCompatibility: S.optional(S.String),
+          schemaType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SchemaGroupPropertiesInput",
@@ -6650,7 +5559,7 @@ function __c24(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
           schemaGroupName: S.String.pipe(T.Label()),
-          properties: S.optional(SchemaGroupPropertiesInput),
+          properties: S.optional(__S(196)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6668,10 +5577,10 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          properties: S.optional(ClusterPropertiesInput),
-          sku: S.optional(ClusterSku),
+          properties: S.optional(__S(11)),
+          sku: S.optional(__S(12)),
           location: S.optional(S.String),
-          tags: S.optional(UpdateClusterRequestTagsMap),
+          tags: S.optional(__S(13)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6687,11 +5596,11 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           namespaceName: S.String.pipe(T.Label()),
-          properties: S.optional(EHNamespacePropertiesInput),
-          sku: S.optional(Sku),
-          identity: S.optional(IdentityInput),
+          properties: S.optional(__S(181)),
+          sku: S.optional(__S(80)),
+          identity: S.optional(__S(183)),
           location: S.optional(S.String),
-          tags: S.optional(UpdateNamespaceRequestTagsMap),
+          tags: S.optional(__S(13)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -6701,5 +5610,64 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateNamespaceRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
   }
 }

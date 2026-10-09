@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -62,11 +64,6 @@ export interface ClaimDomainOwnershipRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ClaimDomainOwnershipRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ClaimDomainOwnershipRequest>;
-
 /** An object containing information of the domain creator, including the user's id, username, and email. */
 export interface ClaimDomainOwnershipResponseDomainCreator {
   customerId?: string | null;
@@ -75,36 +72,16 @@ export interface ClaimDomainOwnershipResponseDomainCreator {
   isDomainReseller?: boolean;
   username: string;
 }
-const ClaimDomainOwnershipResponseDomainCreator = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ClaimDomainOwnershipResponseDomainCreator>;
-
 /** A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel. */
 export type ClaimDomainOwnershipResponseDomainCustomNameserversList = Array<string>;
-const ClaimDomainOwnershipResponseDomainCustomNameserversList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ClaimDomainOwnershipResponseDomainCustomNameserversList>;
-
 /** Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment. */
 export type ClaimDomainOwnershipResponseDomainEchMode = "auto" | "disabled" | "enabled";
-const ClaimDomainOwnershipResponseDomainEchMode = S.String;
-
 /** A list of the intended nameservers for the domain to point to Vercel DNS. */
 export type ClaimDomainOwnershipResponseDomainIntendedNameserversList = Array<string>;
-const ClaimDomainOwnershipResponseDomainIntendedNameserversList =
-  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<ClaimDomainOwnershipResponseDomainIntendedNameserversList>;
-
 /** A list of the current nameservers of the domain. */
 export type ClaimDomainOwnershipResponseDomainNameserversList = Array<string>;
-const ClaimDomainOwnershipResponseDomainNameserversList =
-  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<ClaimDomainOwnershipResponseDomainNameserversList>;
-
 /** The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available. */
 export type ClaimDomainOwnershipResponseDomainServiceType = "external" | "na" | "zeit.world";
-const ClaimDomainOwnershipResponseDomainServiceType = S.String;
-
 export interface ClaimDomainOwnershipResponseDomain {
   /** If it was purchased through Vercel, the timestamp in milliseconds when it was purchased. */
   boughtAt: number | null;
@@ -139,19 +116,9 @@ export interface ClaimDomainOwnershipResponseDomain {
   /** If the domain has the ownership verified. */
   verified: boolean;
 }
-const ClaimDomainOwnershipResponseDomain = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ClaimDomainOwnershipResponseDomain>;
-
 export interface ClaimDomainOwnershipResponse {
   domain: ClaimDomainOwnershipResponseDomain;
 }
-const ClaimDomainOwnershipResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ClaimDomainOwnershipResponse>;
-
 export interface CreateOrTransferDomainRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -160,36 +127,18 @@ export interface CreateOrTransferDomainRequest {
   /** The domain operation to perform. It can be either `add` or `move-in`. */
   method?: string;
 }
-const CreateOrTransferDomainRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateOrTransferDomainRequest>;
-
 /** An object containing information of the domain creator, including the user's id, username, and email. */
 export type CreateOrTransferDomainResponseDomainCreator = ClaimDomainOwnershipResponseDomainCreator;
 /** A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel. */
 export type CreateOrTransferDomainResponseDomainCustomNameserversList = Array<string>;
-const CreateOrTransferDomainResponseDomainCustomNameserversList =
-  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<CreateOrTransferDomainResponseDomainCustomNameserversList>;
-
 /** Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment. */
 export type CreateOrTransferDomainResponseDomainEchMode = "auto" | "disabled" | "enabled";
-const CreateOrTransferDomainResponseDomainEchMode = S.String;
-
 /** A list of the intended nameservers for the domain to point to Vercel DNS. */
 export type CreateOrTransferDomainResponseDomainIntendedNameserversList = Array<string>;
-const CreateOrTransferDomainResponseDomainIntendedNameserversList =
-  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<CreateOrTransferDomainResponseDomainIntendedNameserversList>;
-
 /** A list of the current nameservers of the domain. */
 export type CreateOrTransferDomainResponseDomainNameserversList = Array<string>;
-const CreateOrTransferDomainResponseDomainNameserversList =
-  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<CreateOrTransferDomainResponseDomainNameserversList>;
-
 /** The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available. */
 export type CreateOrTransferDomainResponseDomainServiceType = "external" | "na" | "zeit.world";
-const CreateOrTransferDomainResponseDomainServiceType = S.String;
-
 export interface CreateOrTransferDomainResponseDomain {
   /** If it was purchased through Vercel, the timestamp in milliseconds when it was purchased. */
   boughtAt: number | null;
@@ -224,19 +173,9 @@ export interface CreateOrTransferDomainResponseDomain {
   /** If the domain has the ownership verified. */
   verified: boolean;
 }
-const CreateOrTransferDomainResponseDomain = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateOrTransferDomainResponseDomain>;
-
 export interface CreateOrTransferDomainResponse {
   domain: CreateOrTransferDomainResponseDomain;
 }
-const CreateOrTransferDomainResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateOrTransferDomainResponse>;
-
 export interface DeleteDomainRequest {
   /** The name of the domain. */
   domain: string;
@@ -245,13 +184,9 @@ export interface DeleteDomainRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const DeleteDomainRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeleteDomainRequest>;
-
 export interface DeleteDomainResponse {
   uid: string;
 }
-const DeleteDomainResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DeleteDomainResponse>;
-
 export interface GetDomainRequest {
   /** The name of the domain. */
   domain: string;
@@ -260,33 +195,18 @@ export interface GetDomainRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetDomainRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetDomainRequest>;
-
 /** An object containing information of the domain creator, including the user's id, username, and email. */
 export type GetDomainResponseDomainCreator = ClaimDomainOwnershipResponseDomainCreator;
 /** A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel. */
 export type GetDomainResponseDomainCustomNameserversList = Array<string>;
-const GetDomainResponseDomainCustomNameserversList =
-  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<GetDomainResponseDomainCustomNameserversList>;
-
 /** Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment. */
 export type GetDomainResponseDomainEchMode = "auto" | "disabled" | "enabled";
-const GetDomainResponseDomainEchMode = S.String;
-
 /** A list of the intended nameservers for the domain to point to Vercel DNS. */
 export type GetDomainResponseDomainIntendedNameserversList = Array<string>;
-const GetDomainResponseDomainIntendedNameserversList =
-  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<GetDomainResponseDomainIntendedNameserversList>;
-
 /** A list of the current nameservers of the domain. */
 export type GetDomainResponseDomainNameserversList = Array<string>;
-const GetDomainResponseDomainNameserversList =
-  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<GetDomainResponseDomainNameserversList>;
-
 /** The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available. */
 export type GetDomainResponseDomainServiceType = "external" | "na" | "zeit.world";
-const GetDomainResponseDomainServiceType = S.String;
-
 export interface GetDomainResponseDomain {
   /** If it was purchased through Vercel, the timestamp in milliseconds when it was purchased. */
   boughtAt: number | null;
@@ -322,16 +242,9 @@ export interface GetDomainResponseDomain {
   /** If the domain has the ownership verified. */
   verified: boolean;
 }
-const GetDomainResponseDomain = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetDomainResponseDomain>;
-
 export interface GetDomainResponse {
   domain: GetDomainResponseDomain;
 }
-const GetDomainResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetDomainResponse>;
-
 export interface GetDomainConfigRequest {
   /** The name of the domain. */
   domain: string;
@@ -344,67 +257,30 @@ export interface GetDomainConfigRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetDomainConfigRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetDomainConfigRequest>;
-
 /** Which challenge types the domain can use for issuing certs. */
 export type GetDomainConfigResponseAcceptedChallengesItem = "dns-01" | "http-01";
-const GetDomainConfigResponseAcceptedChallengesItem = S.String;
-
 /** Which challenge types the domain can use for issuing certs. */
 export type GetDomainConfigResponseAcceptedChallengesList =
   Array<GetDomainConfigResponseAcceptedChallengesItem>;
-const GetDomainConfigResponseAcceptedChallengesList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetDomainConfigResponseAcceptedChallengesList>;
-
 /** How we see the domain's configuration. - `CNAME`: Domain has a CNAME pointing to Vercel. - `A`: Domain's A record is resolving to Vercel. - `http`: Domain is resolving to Vercel but may be behind a Proxy. - `dns-01`: Domain is not resolving to Vercel but dns-01 challenge is enabled. - `null`: Domain is not resolving to Vercel. */
 export type GetDomainConfigResponseConfiguredBy = "A" | "CNAME" | "dns-01" | "http";
-const GetDomainConfigResponseConfiguredBy = S.String;
-
 /** Recommended CNAMEs for the domain. rank=1 is the preferred value to use. */
 export interface GetDomainConfigResponseRecommendedCNAMEItem {
   rank: number;
   value: string;
 }
-const GetDomainConfigResponseRecommendedCNAMEItem = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetDomainConfigResponseRecommendedCNAMEItem>;
-
 /** Recommended CNAMEs for the domain. rank=1 is the preferred value to use. */
 export type GetDomainConfigResponseRecommendedCNAMEList =
   Array<GetDomainConfigResponseRecommendedCNAMEItem>;
-const GetDomainConfigResponseRecommendedCNAMEList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetDomainConfigResponseRecommendedCNAMEList>;
-
 export type GetDomainConfigResponseRecommendedIPv4ItemValueList = Array<string>;
-const GetDomainConfigResponseRecommendedIPv4ItemValueList =
-  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<GetDomainConfigResponseRecommendedIPv4ItemValueList>;
-
 /** Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable. */
 export interface GetDomainConfigResponseRecommendedIPv4Item {
   rank: number;
   value: GetDomainConfigResponseRecommendedIPv4ItemValueList;
 }
-const GetDomainConfigResponseRecommendedIPv4Item = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetDomainConfigResponseRecommendedIPv4Item>;
-
 /** Recommended IPv4s for the domain. rank=1 is the preferred value(s) to use. Only using 1 ip value is acceptable. */
 export type GetDomainConfigResponseRecommendedIPv4List =
   Array<GetDomainConfigResponseRecommendedIPv4Item>;
-const GetDomainConfigResponseRecommendedIPv4List = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetDomainConfigResponseRecommendedIPv4List>;
-
 export interface GetDomainConfigResponse {
   /** Which challenge types the domain can use for issuing certs. */
   acceptedChallenges: GetDomainConfigResponseAcceptedChallengesList;
@@ -417,11 +293,6 @@ export interface GetDomainConfigResponse {
   /** Whether or not the domain is configured AND we can automatically generate a TLS certificate. */
   misconfigured: boolean;
 }
-const GetDomainConfigResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetDomainConfigResponse>;
-
 export interface GetDomainProjectDomainsRequest {
   /** The apex domain name. */
   domain: string;
@@ -436,11 +307,6 @@ export interface GetDomainProjectDomainsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetDomainProjectDomainsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetDomainProjectDomainsRequest>;
-
 /** This object contains information related to the pagination of the current request, including the necessary parameters to get the next or previous page of data. */
 export interface Pagination {
   /** Amount of items in the current page. */
@@ -450,15 +316,11 @@ export interface Pagination {
   /** Timestamp that must be used to request the previous page. */
   prev: number | null;
 }
-const Pagination = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Pagination>;
-
 export type GetDomainProjectDomainsResponseProjectDomainsItemRedirectStatusCode =
   | 301
   | 302
   | 307
   | 308;
-const GetDomainProjectDomainsResponseProjectDomainsItemRedirectStatusCode = S.Number;
-
 /** A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`. */
 export interface GetDomainProjectDomainsResponseProjectDomainsItemVerificationItem {
   domain: string;
@@ -466,19 +328,9 @@ export interface GetDomainProjectDomainsResponseProjectDomainsItemVerificationIt
   type: string;
   value: string;
 }
-const GetDomainProjectDomainsResponseProjectDomainsItemVerificationItem = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetDomainProjectDomainsResponseProjectDomainsItemVerificationItem>;
-
 /** A list of verification challenges, one of which must be completed to verify the domain for use on the project. After the challenge is complete `POST /projects/:idOrName/domains/:domain/verify` to verify the domain. Possible challenges: - If `verification.type = TXT` the `verification.domain` will be checked for a TXT record matching `verification.value`. */
 export type GetDomainProjectDomainsResponseProjectDomainsItemVerificationList =
   Array<GetDomainProjectDomainsResponseProjectDomainsItemVerificationItem>;
-const GetDomainProjectDomainsResponseProjectDomainsItemVerificationList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetDomainProjectDomainsResponseProjectDomainsItemVerificationList>;
-
 export interface GetDomainProjectDomainsResponseProjectDomainsItem {
   apexName: string;
   createdAt?: number;
@@ -494,27 +346,12 @@ export interface GetDomainProjectDomainsResponseProjectDomainsItem {
   /** `true` if the domain is verified for use with the project. If `false` it will not be used as an alias on this project until the challenge in `verification` is completed. */
   verified: boolean;
 }
-const GetDomainProjectDomainsResponseProjectDomainsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetDomainProjectDomainsResponseProjectDomainsItem>;
-
 export type GetDomainProjectDomainsResponseProjectDomainsList =
   Array<GetDomainProjectDomainsResponseProjectDomainsItem>;
-const GetDomainProjectDomainsResponseProjectDomainsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetDomainProjectDomainsResponseProjectDomainsList>;
-
 export interface GetDomainProjectDomainsResponse {
   pagination: Pagination;
   projectDomains: GetDomainProjectDomainsResponseProjectDomainsList;
 }
-const GetDomainProjectDomainsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetDomainProjectDomainsResponse>;
-
 export interface GetDomainsRequest {
   /** Maximum number of domains to list from a request. */
   limit?: number;
@@ -527,33 +364,18 @@ export interface GetDomainsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetDomainsRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetDomainsRequest>;
-
 /** An object containing information of the domain creator, including the user's id, username, and email. */
 export type GetDomainsResponseDomainsItemCreator = ClaimDomainOwnershipResponseDomainCreator;
 /** A list of custom nameservers for the domain to point to. Only applies to domains purchased with Vercel. */
 export type GetDomainsResponseDomainsItemCustomNameserversList = Array<string>;
-const GetDomainsResponseDomainsItemCustomNameserversList =
-  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<GetDomainsResponseDomainsItemCustomNameserversList>;
-
 /** Whether the domain is enrolled in Encrypted Client Hello. `auto` leaves the decision to Vercel, `enabled` always enrolls, and `disabled` never enrolls and opts out of automatic enrollment. */
 export type GetDomainsResponseDomainsItemEchMode = "auto" | "disabled" | "enabled";
-const GetDomainsResponseDomainsItemEchMode = S.String;
-
 /** A list of the intended nameservers for the domain to point to Vercel DNS. */
 export type GetDomainsResponseDomainsItemIntendedNameserversList = Array<string>;
-const GetDomainsResponseDomainsItemIntendedNameserversList =
-  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<GetDomainsResponseDomainsItemIntendedNameserversList>;
-
 /** A list of the current nameservers of the domain. */
 export type GetDomainsResponseDomainsItemNameserversList = Array<string>;
-const GetDomainsResponseDomainsItemNameserversList =
-  ClaimDomainOwnershipResponseDomainCustomNameserversList as any as S.Schema<GetDomainsResponseDomainsItemNameserversList>;
-
 /** The type of service the domain is handled by. `external` if the DNS is externally handled, `zeit.world` if handled with Vercel, or `na` if the service is not available. */
 export type GetDomainsResponseDomainsItemServiceType = "external" | "na" | "zeit.world";
-const GetDomainsResponseDomainsItemServiceType = S.String;
-
 export interface GetDomainsResponseDomainsItem {
   /** If it was purchased through Vercel, the timestamp in milliseconds when it was purchased. */
   boughtAt: number | null;
@@ -588,23 +410,11 @@ export interface GetDomainsResponseDomainsItem {
   /** If the domain has the ownership verified. */
   verified: boolean;
 }
-const GetDomainsResponseDomainsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetDomainsResponseDomainsItem>;
-
 export type GetDomainsResponseDomainsList = Array<GetDomainsResponseDomainsItem>;
-const GetDomainsResponseDomainsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetDomainsResponseDomainsList>;
-
 export interface GetDomainsResponse {
   domains: GetDomainsResponseDomainsList;
   pagination: Pagination;
 }
-const GetDomainsResponse = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetDomainsResponse>;
-
 export interface GetDomainVerificationRecordRequest {
   /** The domain name to get the verification record for */
   domain: string;
@@ -613,20 +423,10 @@ export interface GetDomainVerificationRecordRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const GetDomainVerificationRecordRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetDomainVerificationRecordRequest>;
-
 export interface GetDomainVerificationRecordResponse {
   txtRecord: string;
   verificationDomain: string;
 }
-const GetDomainVerificationRecordResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetDomainVerificationRecordResponse>;
-
 /** This field is deprecated. Please use PATCH /v1/registrar/domains/{domainName}/nameservers instead. */
 export type UpdateDomainRequestBodyCase0CustomNameserversList = Array<string>;
 /** Encrypted Client Hello enrollment. 'auto' leaves it to Vercel, 'disabled' never enrolls and opts out of automatic enrollment. */
@@ -650,8 +450,6 @@ export interface UpdateDomainRequestBodyCase1 {
   destination?: string;
 }
 export type UpdateDomainRequestBody = UpdateDomainRequestBodyCase0 | UpdateDomainRequestBodyCase1;
-const UpdateDomainRequestBody = S.Unknown as any as S.Schema<UpdateDomainRequestBody>;
-
 export interface UpdateDomainRequest {
   domain: string;
   /** The Team identifier to perform the request on behalf of. */
@@ -660,8 +458,6 @@ export interface UpdateDomainRequest {
   slug?: string;
   body: UpdateDomainRequestBody;
 }
-const UpdateDomainRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<UpdateDomainRequest>;
-
 export interface UpdateDomainResponseBodyCase0 {
   moved: boolean;
 }
@@ -681,11 +477,7 @@ export type UpdateDomainResponseBody =
   | UpdateDomainResponseBodyCase0
   | UpdateDomainResponseBodyCase1
   | UpdateDomainResponseBodyCase2;
-const UpdateDomainResponseBody = S.Unknown as any as S.Schema<UpdateDomainResponseBody>;
-
 export type UpdateDomainResponse = UpdateDomainResponseBody;
-const UpdateDomainResponse = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<UpdateDomainResponse>;
-
 export type ClaimDomainOwnershipError = BadRequest | Forbidden | NotFound | VercelOpError;
 /** Claim Domain Ownership Claim ownership of a domain for the authenticated team by verifying a TXT record. The caller must first add a TXT record to `_vercel.{domain}` (obtained from GET /domains/:domain/verification), then call this endpoint to complete the ownership transfer. If the TXT record is verified, the domain ownership will be transferred to the caller's team, even if the domain is currently owned by another user or team. */
 export const claimDomainOwnership: API.OperationMethod<
@@ -694,8 +486,8 @@ export const claimDomainOwnership: API.OperationMethod<
   ClaimDomainOwnershipError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClaimDomainOwnershipRequest,
-  output: ClaimDomainOwnershipResponse,
+  input: __S(0) as any as S.Schema<ClaimDomainOwnershipRequest>,
+  output: __S(4) as any as S.Schema<ClaimDomainOwnershipResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -715,8 +507,8 @@ export const createOrTransferDomain: API.OperationMethod<
   CreateOrTransferDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrTransferDomainRequest,
-  output: CreateOrTransferDomainResponse,
+  input: __S(5) as any as S.Schema<CreateOrTransferDomainRequest>,
+  output: __S(7) as any as S.Schema<CreateOrTransferDomainResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -730,8 +522,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDomainRequest,
-  output: DeleteDomainResponse,
+  input: __S(8) as any as S.Schema<DeleteDomainRequest>,
+  output: __S(9) as any as S.Schema<DeleteDomainResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -745,8 +537,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainRequest,
-  output: GetDomainResponse,
+  input: __S(10) as any as S.Schema<GetDomainRequest>,
+  output: __S(12) as any as S.Schema<GetDomainResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -760,8 +552,8 @@ export const getDomainConfig: API.OperationMethod<
   GetDomainConfigError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainConfigRequest,
-  output: GetDomainConfigResponse,
+  input: __S(13) as any as S.Schema<GetDomainConfigRequest>,
+  output: __S(19) as any as S.Schema<GetDomainConfigResponse>,
   errors: [BadRequest, Forbidden],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -775,8 +567,8 @@ export const getDomainProjectDomains: API.OperationMethod<
   GetDomainProjectDomainsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainProjectDomainsRequest,
-  output: GetDomainProjectDomainsResponse,
+  input: __S(20) as any as S.Schema<GetDomainProjectDomainsRequest>,
+  output: __S(26) as any as S.Schema<GetDomainProjectDomainsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -790,8 +582,8 @@ export const getDomains: API.OperationMethod<
   GetDomainsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainsRequest,
-  output: GetDomainsResponse,
+  input: __S(27) as any as S.Schema<GetDomainsRequest>,
+  output: __S(30) as any as S.Schema<GetDomainsResponse>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -805,8 +597,8 @@ export const getDomainVerificationRecord: API.OperationMethod<
   GetDomainVerificationRecordError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainVerificationRecordRequest,
-  output: GetDomainVerificationRecordResponse,
+  input: __S(31) as any as S.Schema<GetDomainVerificationRecordRequest>,
+  output: __S(32) as any as S.Schema<GetDomainVerificationRecordResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -820,8 +612,8 @@ export const updateDomain: API.OperationMethod<
   UpdateDomainError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDomainRequest,
-  output: UpdateDomainResponse,
+  input: __S(33) as any as S.Schema<UpdateDomainRequest>,
+  output: __S(34) as any as S.Schema<UpdateDomainResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -859,16 +651,16 @@ function __c0(j: number): any {
         S.Struct({
           boughtAt: S.NullOr(S.Number),
           createdAt: S.Number,
-          creator: ClaimDomainOwnershipResponseDomainCreator,
-          customNameservers: S.optional(ClaimDomainOwnershipResponseDomainCustomNameserversList),
-          echMode: ClaimDomainOwnershipResponseDomainEchMode,
+          creator: __S(1),
+          customNameservers: S.optional(__S(2)),
+          echMode: S.String,
           expiresAt: S.NullOr(S.Number),
           id: S.String,
-          intendedNameservers: ClaimDomainOwnershipResponseDomainIntendedNameserversList,
+          intendedNameservers: __S(2),
           name: S.String,
-          nameservers: ClaimDomainOwnershipResponseDomainNameserversList,
+          nameservers: __S(2),
           renew: S.optional(S.Boolean),
-          serviceType: ClaimDomainOwnershipResponseDomainServiceType,
+          serviceType: S.String,
           teamId: S.NullOr(S.String),
           transferredAt: S.optional(S.NullOr(S.Number)),
           transferStartedAt: S.optional(S.Number),
@@ -881,7 +673,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          domain: ClaimDomainOwnershipResponseDomain,
+          domain: __S(3),
         }),
       ).annotate({
         identifier: "ClaimDomainOwnershipResponse",
@@ -901,16 +693,16 @@ function __c0(j: number): any {
         S.Struct({
           boughtAt: S.NullOr(S.Number),
           createdAt: S.Number,
-          creator: ClaimDomainOwnershipResponseDomainCreator,
-          customNameservers: S.optional(CreateOrTransferDomainResponseDomainCustomNameserversList),
-          echMode: CreateOrTransferDomainResponseDomainEchMode,
+          creator: __S(1),
+          customNameservers: S.optional(__S(2)),
+          echMode: S.String,
           expiresAt: S.NullOr(S.Number),
           id: S.String,
-          intendedNameservers: CreateOrTransferDomainResponseDomainIntendedNameserversList,
+          intendedNameservers: __S(2),
           name: S.String,
-          nameservers: CreateOrTransferDomainResponseDomainNameserversList,
+          nameservers: __S(2),
           renew: S.optional(S.Boolean),
-          serviceType: CreateOrTransferDomainResponseDomainServiceType,
+          serviceType: S.String,
           teamId: S.NullOr(S.String),
           transferredAt: S.optional(S.NullOr(S.Number)),
           transferStartedAt: S.optional(S.Number),
@@ -923,7 +715,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          domain: CreateOrTransferDomainResponseDomain,
+          domain: __S(6),
         }),
       ).annotate({
         identifier: "CreateOrTransferDomainResponse",
@@ -959,16 +751,16 @@ function __c1(j: number): any {
         S.Struct({
           boughtAt: S.NullOr(S.Number),
           createdAt: S.Number,
-          creator: ClaimDomainOwnershipResponseDomainCreator,
-          customNameservers: S.optional(GetDomainResponseDomainCustomNameserversList),
-          echMode: GetDomainResponseDomainEchMode,
+          creator: __S(1),
+          customNameservers: S.optional(__S(2)),
+          echMode: S.String,
           expiresAt: S.NullOr(S.Number),
           id: S.String,
-          intendedNameservers: GetDomainResponseDomainIntendedNameserversList,
+          intendedNameservers: __S(2),
           name: S.String,
-          nameservers: GetDomainResponseDomainNameserversList,
+          nameservers: __S(2),
           renew: S.optional(S.Boolean),
-          serviceType: GetDomainResponseDomainServiceType,
+          serviceType: S.String,
           suffix: S.Boolean,
           teamId: S.NullOr(S.String),
           transferredAt: S.optional(S.NullOr(S.Number)),
@@ -980,7 +772,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          domain: GetDomainResponseDomain,
+          domain: __S(11),
         }),
       ).annotate({ identifier: "GetDomainResponse" });
     case 5:
@@ -994,7 +786,7 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v6/domains/{domain}/config", code: 200 })),
       ).annotate({ identifier: "GetDomainConfigRequest" });
     case 6:
-      return S.Array(GetDomainConfigResponseAcceptedChallengesItem);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1009,25 +801,25 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetDomainConfigResponseRecommendedCNAMEItem);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
           rank: S.Number,
-          value: GetDomainConfigResponseRecommendedIPv4ItemValueList,
+          value: __S(2),
         }),
       ).annotate({
         identifier: "GetDomainConfigResponseRecommendedIPv4Item",
       });
     case 2:
-      return S.Array(GetDomainConfigResponseRecommendedIPv4Item);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          acceptedChallenges: GetDomainConfigResponseAcceptedChallengesList,
-          configuredBy: S.NullOr(GetDomainConfigResponseConfiguredBy),
-          recommendedCNAME: GetDomainConfigResponseRecommendedCNAMEList,
-          recommendedIPv4: GetDomainConfigResponseRecommendedIPv4List,
+          acceptedChallenges: __S(14),
+          configuredBy: S.NullOr(S.String),
+          recommendedCNAME: __S(16),
+          recommendedIPv4: __S(18),
           misconfigured: S.Boolean,
         }),
       ).annotate({ identifier: "GetDomainConfigResponse" });
@@ -1064,7 +856,7 @@ function __c2(j: number): any {
         identifier: "GetDomainProjectDomainsResponseProjectDomainsItemVerificationItem",
       });
     case 7:
-      return S.Array(GetDomainProjectDomainsResponseProjectDomainsItemVerificationItem);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -1079,25 +871,21 @@ function __c3(j: number): any {
           name: S.String,
           projectId: S.String,
           redirect: S.optional(S.NullOr(S.String)),
-          redirectStatusCode: S.optional(
-            S.NullOr(GetDomainProjectDomainsResponseProjectDomainsItemRedirectStatusCode),
-          ),
+          redirectStatusCode: S.optional(S.NullOr(S.Number)),
           updatedAt: S.optional(S.Number),
-          verification: S.optional(
-            GetDomainProjectDomainsResponseProjectDomainsItemVerificationList,
-          ),
+          verification: S.optional(__S(23)),
           verified: S.Boolean,
         }),
       ).annotate({
         identifier: "GetDomainProjectDomainsResponseProjectDomainsItem",
       });
     case 1:
-      return S.Array(GetDomainProjectDomainsResponseProjectDomainsItem);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          pagination: Pagination,
-          projectDomains: GetDomainProjectDomainsResponseProjectDomainsList,
+          pagination: __S(21),
+          projectDomains: __S(25),
         }),
       ).annotate({
         identifier: "GetDomainProjectDomainsResponse",
@@ -1117,16 +905,16 @@ function __c3(j: number): any {
         S.Struct({
           boughtAt: S.NullOr(S.Number),
           createdAt: S.Number,
-          creator: ClaimDomainOwnershipResponseDomainCreator,
-          customNameservers: S.optional(GetDomainsResponseDomainsItemCustomNameserversList),
-          echMode: GetDomainsResponseDomainsItemEchMode,
+          creator: __S(1),
+          customNameservers: S.optional(__S(2)),
+          echMode: S.String,
           expiresAt: S.NullOr(S.Number),
           id: S.String,
-          intendedNameservers: GetDomainsResponseDomainsItemIntendedNameserversList,
+          intendedNameservers: __S(2),
           name: S.String,
-          nameservers: GetDomainsResponseDomainsItemNameserversList,
+          nameservers: __S(2),
           renew: S.optional(S.Boolean),
-          serviceType: GetDomainsResponseDomainsItemServiceType,
+          serviceType: S.String,
           teamId: S.NullOr(S.String),
           transferredAt: S.optional(S.NullOr(S.Number)),
           transferStartedAt: S.optional(S.Number),
@@ -1137,12 +925,12 @@ function __c3(j: number): any {
         identifier: "GetDomainsResponseDomainsItem",
       });
     case 5:
-      return S.Array(GetDomainsResponseDomainsItem);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          domains: GetDomainsResponseDomainsList,
-          pagination: Pagination,
+          domains: __S(29),
+          pagination: __S(21),
         }),
       ).annotate({ identifier: "GetDomainsResponse" });
     case 7:
@@ -1174,12 +962,31 @@ function __c4(j: number): any {
           domain: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          body: UpdateDomainRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/v3/domains/{domain}", code: 200 })),
       ).annotate({ identifier: "UpdateDomainRequest" });
     case 2:
-      return S.suspend(() => UpdateDomainResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateDomainResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

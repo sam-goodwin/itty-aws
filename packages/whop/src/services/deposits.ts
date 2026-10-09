@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -35,24 +37,15 @@ export interface CreateDepositRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateDepositRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateDepositRequest>;
-
 export type CreateDepositResponseMethodsBankCurrenciesItemRailsItem =
   | "ach"
   | "wire"
   | "sepa"
   | "fps"
   | "chaps";
-const CreateDepositResponseMethodsBankCurrenciesItemRailsItem = S.String;
-
 /** Active deposit rails for this currency. */
 export type CreateDepositResponseMethodsBankCurrenciesItemRailsList =
   Array<CreateDepositResponseMethodsBankCurrenciesItemRailsItem>;
-const CreateDepositResponseMethodsBankCurrenciesItemRailsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateDepositResponseMethodsBankCurrenciesItemRailsList>;
-
 export interface CreateDepositResponseMethodsBankCurrenciesItem {
   /** Bank account number for deposits in this currency. */
   account_number: string | null;
@@ -73,29 +66,14 @@ export interface CreateDepositResponseMethodsBankCurrenciesItem {
   /** SWIFT/BIC code for international wires, when available. */
   swift_bic: string | null;
 }
-const CreateDepositResponseMethodsBankCurrenciesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateDepositResponseMethodsBankCurrenciesItem>;
-
 /** Bank transfer currencies available for this deposit. */
 export type CreateDepositResponseMethodsBankCurrenciesList =
   Array<CreateDepositResponseMethodsBankCurrenciesItem>;
-const CreateDepositResponseMethodsBankCurrenciesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateDepositResponseMethodsBankCurrenciesList>;
-
 /** Bank deposit details. Only present when bank deposits are active for the destination account. */
 export interface CreateDepositResponseMethodsBank {
   /** Bank transfer currencies available for this deposit. */
   currencies: CreateDepositResponseMethodsBankCurrenciesList;
 }
-const CreateDepositResponseMethodsBank = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateDepositResponseMethodsBank>;
-
 /** Network display name. */
 export type CreateDepositResponseMethodsCryptoItemName =
   | "Ethereum"
@@ -109,8 +87,6 @@ export type CreateDepositResponseMethodsCryptoItemName =
   | "Polygon"
   | "Plasma"
   | "Arbitrum";
-const CreateDepositResponseMethodsCryptoItemName = S.String;
-
 /** Token symbol. */
 export type CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItemName =
   | "ARB"
@@ -133,27 +109,15 @@ export type CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItemName =
   | "XPL"
   | "pUSD"
   | "wETH";
-const CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItemName = S.String;
-
 export interface CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItem {
   /** Token icon URL. Null when no icon is available. */
   icon_url: string | null;
   /** Token symbol. */
   name: CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItemName;
 }
-const CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItem>;
-
 /** Tokens accepted for deposit on this network. */
 export type CreateDepositResponseMethodsCryptoItemSupportedCurrenciesList =
   Array<CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItem>;
-const CreateDepositResponseMethodsCryptoItemSupportedCurrenciesList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateDepositResponseMethodsCryptoItemSupportedCurrenciesList>;
-
 export interface CreateDepositResponseMethodsCryptoItem {
   /** Address to send funds to on this network. Null when the provider has not issued one yet. */
   deposit_address: string | null;
@@ -164,18 +128,8 @@ export interface CreateDepositResponseMethodsCryptoItem {
   /** Tokens accepted for deposit on this network. */
   supported_currencies: CreateDepositResponseMethodsCryptoItemSupportedCurrenciesList;
 }
-const CreateDepositResponseMethodsCryptoItem = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateDepositResponseMethodsCryptoItem>;
-
 /** Crypto networks available for this deposit, each with its on-chain deposit address and the tokens accepted on that network. Crypto deposits require a $10 minimum. */
 export type CreateDepositResponseMethodsCryptoList = Array<CreateDepositResponseMethodsCryptoItem>;
-const CreateDepositResponseMethodsCryptoList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateDepositResponseMethodsCryptoList>;
-
 /** Available deposit methods for destination. */
 export interface CreateDepositResponseMethods {
   /** Bank deposit details. Only present when bank deposits are active for the destination account. */
@@ -183,14 +137,7 @@ export interface CreateDepositResponseMethods {
   /** Crypto networks available for this deposit, each with its on-chain deposit address and the tokens accepted on that network. Crypto deposits require a $10 minimum. */
   crypto: CreateDepositResponseMethodsCryptoList;
 }
-const CreateDepositResponseMethods = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateDepositResponseMethods>;
-
 export type CreateDepositResponseObject = "deposit";
-const CreateDepositResponseObject = S.String;
-
 export interface CreateDepositResponse {
   /** Account ID of the destination owner. */
   account_id: string | null;
@@ -202,11 +149,6 @@ export interface CreateDepositResponse {
   methods: CreateDepositResponseMethods;
   object: CreateDepositResponseObject;
 }
-const CreateDepositResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateDepositResponse>;
-
 export type CreateDepositError = BadRequest | Conflict | WhopOpError;
 /** Create Deposit Retrieve the deposit methods for an account, including crypto and bank transfer. Bitcoin deposits are converted by Relay directly to USDT on Plasma in the destination account's wallet. Crypto deposits require a $10 minimum. */
 export const createDeposit: API.OperationMethod<
@@ -215,8 +157,8 @@ export const createDeposit: API.OperationMethod<
   CreateDepositError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDepositRequest,
-  output: CreateDepositResponse,
+  input: __S(0) as any as S.Schema<CreateDepositRequest>,
+  output: __S(10) as any as S.Schema<CreateDepositResponse>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -234,7 +176,7 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/deposits", code: 200 })),
       ).annotate({ identifier: "CreateDepositRequest" });
     case 1:
-      return S.Array(CreateDepositResponseMethodsBankCurrenciesItemRailsItem);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -244,7 +186,7 @@ function __c0(j: number): any {
           deposit_bank_name: S.NullOr(S.String),
           deposit_beneficiary_name: S.NullOr(S.String),
           deposit_reference: S.NullOr(S.String),
-          rails: CreateDepositResponseMethodsBankCurrenciesItemRailsList,
+          rails: __S(1),
           routing_number: S.NullOr(S.String),
           swift_bic: S.NullOr(S.String),
         }),
@@ -252,11 +194,11 @@ function __c0(j: number): any {
         identifier: "CreateDepositResponseMethodsBankCurrenciesItem",
       });
     case 3:
-      return S.Array(CreateDepositResponseMethodsBankCurrenciesItem);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          currencies: CreateDepositResponseMethodsBankCurrenciesList,
+          currencies: __S(3),
         }),
       ).annotate({
         identifier: "CreateDepositResponseMethodsBank",
@@ -265,20 +207,20 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           icon_url: S.NullOr(S.String),
-          name: CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItemName,
+          name: S.String,
         }),
       ).annotate({
         identifier: "CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItem",
       });
     case 6:
-      return S.Array(CreateDepositResponseMethodsCryptoItemSupportedCurrenciesItem);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           deposit_address: S.NullOr(S.String),
           icon_url: S.NullOr(S.String),
-          name: CreateDepositResponseMethodsCryptoItemName,
-          supported_currencies: CreateDepositResponseMethodsCryptoItemSupportedCurrenciesList,
+          name: S.String,
+          supported_currencies: __S(6),
         }),
       ).annotate({
         identifier: "CreateDepositResponseMethodsCryptoItem",
@@ -288,12 +230,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateDepositResponseMethodsCryptoItem);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          bank: S.NullOr(CreateDepositResponseMethodsBank),
-          crypto: CreateDepositResponseMethodsCryptoList,
+          bank: S.NullOr(__S(4)),
+          crypto: __S(8),
         }),
       ).annotate({
         identifier: "CreateDepositResponseMethods",
@@ -304,9 +246,22 @@ function __c1(j: number): any {
           account_id: S.NullOr(S.String),
           amount: S.optional(S.String),
           hosted_url: S.NullOr(S.String),
-          methods: CreateDepositResponseMethods,
-          object: CreateDepositResponseObject,
+          methods: __S(9),
+          object: S.String,
         }),
       ).annotate({ identifier: "CreateDepositResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

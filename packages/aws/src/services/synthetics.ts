@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "synthetics", serviceShapeName: "Synthetics" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "synthetics" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2017-10-11");
@@ -143,30 +145,17 @@ export interface AssociateResourceRequest {
   GroupIdentifier: string;
   ResourceArn: string;
 }
-const AssociateResourceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AssociateResourceRequest>;
 export interface AssociateResourceResponse {}
-const AssociateResourceResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AssociateResourceResponse>;
 export type CanaryName = string;
 export type CodeHandler = string;
 export type BlueprintType = string;
 export type BlueprintTypes = string[];
-const BlueprintTypes = /*@__PURE__*/ __L.at(__c0, 2);
 export type DependencyType = "LambdaLayer" | (string & {});
-const DependencyType = S.String;
-
 export interface Dependency {
   Type?: DependencyType;
   Reference: string;
 }
-const Dependency = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Dependency>;
 export type Dependencies = Dependency[];
-const Dependencies = /*@__PURE__*/ __L.at(__c0, 4);
 export interface CanaryCodeInput {
   S3Bucket?: string;
   S3Key?: string;
@@ -176,26 +165,22 @@ export interface CanaryCodeInput {
   BlueprintTypes?: string[];
   Dependencies?: Dependency[];
 }
-const CanaryCodeInput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CanaryCodeInput>;
 export type RoleArn = string;
 export type MaxOneYearInSeconds = number;
 export type MaxRetries = number;
 export interface RetryConfigInput {
   MaxRetries: number;
 }
-const RetryConfigInput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<RetryConfigInput>;
 export interface CanaryScheduleInput {
   Expression: string;
   DurationInSeconds?: number;
   RetryConfig?: RetryConfigInput;
 }
-const CanaryScheduleInput = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CanaryScheduleInput>;
 export type MaxFifteenMinutesInSeconds = number;
 export type MaxSize3008 = number;
 export type EnvironmentVariableName = string;
 export type EnvironmentVariableValue = string;
 export type EnvironmentVariablesMap = { [key: string]: string | undefined };
-const EnvironmentVariablesMap = /*@__PURE__*/ __L.at(__c1, 0);
 export type EphemeralStorageSize = number;
 export interface CanaryRunConfigInput {
   TimeoutInSeconds?: number;
@@ -204,37 +189,24 @@ export interface CanaryRunConfigInput {
   EnvironmentVariables?: { [key: string]: string | undefined };
   EphemeralStorage?: number;
 }
-const CanaryRunConfigInput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CanaryRunConfigInput>;
 export type MaxSize1024 = number;
 export type SubnetId = string;
 export type SubnetIds = string[];
-const SubnetIds = BlueprintTypes as any as S.Schema<SubnetIds>;
 export type SecurityGroupId = string;
 export type SecurityGroupIds = string[];
-const SecurityGroupIds = BlueprintTypes as any as S.Schema<SecurityGroupIds>;
 export interface VpcConfigInput {
   SubnetIds?: string[];
   SecurityGroupIds?: string[];
   Ipv6AllowedForDualStack?: boolean;
 }
-const VpcConfigInput = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<VpcConfigInput>;
 export type ResourceToTag = "lambda-function" | (string & {});
-const ResourceToTag = S.String;
-
 export type ResourceList = ResourceToTag[];
-const ResourceList = /*@__PURE__*/ __L.at(__c1, 3);
 export type ProvisionedResourceCleanupSetting = "AUTOMATIC" | "OFF" | (string & {});
-const ProvisionedResourceCleanupSetting = S.String;
-
 export type BrowserType = "CHROME" | "FIREFOX" | (string & {});
-const BrowserType = S.String;
-
 export interface BrowserConfig {
   BrowserType?: BrowserType;
 }
-const BrowserConfig = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<BrowserConfig>;
 export type BrowserConfigs = BrowserConfig[];
-const BrowserConfigs = /*@__PURE__*/ __L.at(__c1, 5);
 export type Location = string;
 export type KmsKeyArn = string;
 export interface AddReplicaLocationInput {
@@ -242,28 +214,18 @@ export interface AddReplicaLocationInput {
   VpcConfig?: VpcConfigInput;
   KmsKeyArn?: string;
 }
-const AddReplicaLocationInput = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<AddReplicaLocationInput>;
 export type AddReplicaLocations = AddReplicaLocationInput[];
-const AddReplicaLocations = /*@__PURE__*/ __L.at(__c1, 7);
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c2, 0);
 export type EncryptionMode = "SSE_S3" | "SSE_KMS" | (string & {});
-const EncryptionMode = S.String;
-
 export interface S3EncryptionConfig {
   EncryptionMode?: EncryptionMode;
   KmsKeyArn?: string;
 }
-const S3EncryptionConfig = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<S3EncryptionConfig>;
 export interface ArtifactConfigInput {
   S3Encryption?: S3EncryptionConfig;
 }
-const ArtifactConfigInput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ArtifactConfigInput>;
 export interface CreateCanaryRequest {
   Name: string;
   Code: CanaryCodeInput;
@@ -283,7 +245,6 @@ export interface CreateCanaryRequest {
   ArtifactConfig?: ArtifactConfigInput;
   KmsKeyArn?: string;
 }
-const CreateCanaryRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CreateCanaryRequest>;
 export type UUID = string;
 export interface CanaryCodeOutput {
   SourceLocationArn?: string;
@@ -291,27 +252,20 @@ export interface CanaryCodeOutput {
   BlueprintTypes?: string[];
   Dependencies?: Dependency[];
 }
-const CanaryCodeOutput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CanaryCodeOutput>;
 export interface RetryConfigOutput {
   MaxRetries?: number;
 }
-const RetryConfigOutput = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<RetryConfigOutput>;
 export interface CanaryScheduleOutput {
   Expression?: string;
   DurationInSeconds?: number;
   RetryConfig?: RetryConfigOutput;
 }
-const CanaryScheduleOutput = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CanaryScheduleOutput>;
 export interface CanaryRunConfigOutput {
   TimeoutInSeconds?: number;
   MemoryInMB?: number;
   ActiveTracing?: boolean;
   EphemeralStorage?: number;
 }
-const CanaryRunConfigOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CanaryRunConfigOutput>;
 export type CanaryState =
   | "CREATING"
   | "READY"
@@ -323,8 +277,6 @@ export type CanaryState =
   | "ERROR"
   | "DELETING"
   | (string & {});
-const CanaryState = S.String;
-
 export type CanaryStateReasonCode =
   | "INVALID_PERMISSIONS"
   | "CREATE_PENDING"
@@ -339,21 +291,17 @@ export type CanaryStateReasonCode =
   | "DELETE_FAILED"
   | "SYNC_DELETE_IN_PROGRESS"
   | (string & {});
-const CanaryStateReasonCode = S.String;
-
 export interface CanaryStatus {
   State?: CanaryState;
   StateReason?: string;
   StateReasonCode?: CanaryStateReasonCode;
 }
-const CanaryStatus = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<CanaryStatus>;
 export interface CanaryTimeline {
   Created?: Date;
   LastModified?: Date;
   LastStarted?: Date;
   LastStopped?: Date;
 }
-const CanaryTimeline = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<CanaryTimeline>;
 export type FunctionArn = string;
 export type VpcId = string;
 export interface VpcConfigOutput {
@@ -362,48 +310,31 @@ export interface VpcConfigOutput {
   SecurityGroupIds?: string[];
   Ipv6AllowedForDualStack?: boolean;
 }
-const VpcConfigOutput = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<VpcConfigOutput>;
 export type BaseScreenshotConfigIgnoreCoordinate = string;
 export type BaseScreenshotIgnoreCoordinates = string[];
-const BaseScreenshotIgnoreCoordinates =
-  BlueprintTypes as any as S.Schema<BaseScreenshotIgnoreCoordinates>;
 export interface BaseScreenshot {
   ScreenshotName: string;
   IgnoreCoordinates?: string[];
 }
-const BaseScreenshot = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<BaseScreenshot>;
 export type BaseScreenshots = BaseScreenshot[];
-const BaseScreenshots = /*@__PURE__*/ __L.at(__c3, 4);
 export interface VisualReferenceOutput {
   BaseScreenshots?: BaseScreenshot[];
   BaseCanaryRunId?: string;
   BrowserType?: BrowserType;
 }
-const VisualReferenceOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<VisualReferenceOutput>;
 export interface EngineConfig {
   EngineArn?: string;
   BrowserType?: BrowserType;
 }
-const EngineConfig = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<EngineConfig>;
 export type EngineConfigs = EngineConfig[];
-const EngineConfigs = /*@__PURE__*/ __L.at(__c3, 7);
 export type VisualReferencesOutput = VisualReferenceOutput[];
-const VisualReferencesOutput = /*@__PURE__*/ __L.at(__c4, 0);
 export type LocationType = "Primary" | "Replica" | (string & {});
-const LocationType = S.String;
-
 export type ReplicationState = "InProgress" | "InSync" | "Inconsistent" | (string & {});
-const ReplicationState = S.String;
-
 export interface ReplicationStatus {
   State?: ReplicationState;
   StateReason?: string;
   StateReasonCode?: string;
 }
-const ReplicationStatus = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ReplicationStatus>;
 export interface Replica {
   Location?: string;
   ReplicationStatus?: ReplicationStatus;
@@ -411,25 +342,20 @@ export interface Replica {
   LastModified?: Date;
   VpcConfig?: VpcConfigOutput;
 }
-const Replica = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<Replica>;
 export type Replicas = Replica[];
-const Replicas = /*@__PURE__*/ __L.at(__c4, 3);
 export interface MultiLocationConfig {
   LocationType?: LocationType;
   PrimaryLocation?: string;
   Replicas?: Replica[];
   ReplicationState?: ReplicationState;
 }
-const MultiLocationConfig = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<MultiLocationConfig>;
 export interface ArtifactConfigOutput {
   S3Encryption?: S3EncryptionConfig;
 }
-const ArtifactConfigOutput = ArtifactConfigInput as any as S.Schema<ArtifactConfigOutput>;
 export interface DryRunConfigOutput {
   DryRunId?: string;
   LastDryRunExecutionStatus?: string;
 }
-const DryRunConfigOutput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<DryRunConfigOutput>;
 export interface Canary {
   Id?: string;
   Name?: string;
@@ -456,17 +382,14 @@ export interface Canary {
   KmsKeyArn?: string;
   DryRunConfig?: DryRunConfigOutput;
 }
-const Canary = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<Canary>;
 export interface CreateCanaryResponse {
   Canary?: Canary;
 }
-const CreateCanaryResponse = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<CreateCanaryResponse>;
 export type GroupName = string;
 export interface CreateGroupRequest {
   Name: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateGroupRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<CreateGroupRequest>;
 export type GroupArn = string;
 export interface Group {
   Id?: string;
@@ -476,91 +399,57 @@ export interface Group {
   CreatedTime?: Date;
   LastModifiedTime?: Date;
 }
-const Group = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Group>;
 export interface CreateGroupResponse {
   Group?: Group;
 }
-const CreateGroupResponse = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<CreateGroupResponse>;
 export interface DeleteCanaryRequest {
   Name: string;
   DeleteLambda?: boolean;
 }
-const DeleteCanaryRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<DeleteCanaryRequest>;
 export interface DeleteCanaryResponse {}
-const DeleteCanaryResponse = AssociateResourceResponse as any as S.Schema<DeleteCanaryResponse>;
 export interface DeleteGroupRequest {
   GroupIdentifier: string;
 }
-const DeleteGroupRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DeleteGroupRequest>;
 export interface DeleteGroupResponse {}
-const DeleteGroupResponse = AssociateResourceResponse as any as S.Schema<DeleteGroupResponse>;
 export type Token = string;
 export type MaxCanaryResults = number;
 export type DescribeCanariesNameFilter = string[];
-const DescribeCanariesNameFilter = BlueprintTypes as any as S.Schema<DescribeCanariesNameFilter>;
 export interface DescribeCanariesRequest {
   NextToken?: string;
   MaxResults?: number;
   Names?: string[];
 }
-const DescribeCanariesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<DescribeCanariesRequest>;
 export type Canaries = Canary[];
-const Canaries = /*@__PURE__*/ __L.at(__c5, 6);
 export interface DescribeCanariesResponse {
   Canaries?: Canary[];
   NextToken?: string;
 }
-const DescribeCanariesResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DescribeCanariesResponse>;
 export type MaxSize100 = number;
 export type DescribeCanariesLastRunNameFilter = string[];
-const DescribeCanariesLastRunNameFilter =
-  BlueprintTypes as any as S.Schema<DescribeCanariesLastRunNameFilter>;
 export interface DescribeCanariesLastRunRequest {
   NextToken?: string;
   MaxResults?: number;
   Names?: string[];
   BrowserType?: BrowserType;
 }
-const DescribeCanariesLastRunRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DescribeCanariesLastRunRequest>;
 export type RetryAttempt = number;
 export type CanaryRunState = "RUNNING" | "PASSED" | "FAILED" | (string & {});
-const CanaryRunState = S.String;
-
 export type CanaryRunStateReasonCode = "CANARY_FAILURE" | "EXECUTION_FAILURE" | (string & {});
-const CanaryRunStateReasonCode = S.String;
-
 export type CanaryRunTestResult = "PASSED" | "FAILED" | "UNKNOWN" | (string & {});
-const CanaryRunTestResult = S.String;
-
 export interface CanaryRunStatus {
   State?: CanaryRunState;
   StateReason?: string;
   StateReasonCode?: CanaryRunStateReasonCode;
   TestResult?: CanaryRunTestResult;
 }
-const CanaryRunStatus = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<CanaryRunStatus>;
 export interface CanaryRunTimeline {
   Started?: Date;
   Completed?: Date;
   MetricTimestampForRunAndRetries?: Date;
 }
-const CanaryRunTimeline = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<CanaryRunTimeline>;
 export interface CanaryDryRunConfigOutput {
   DryRunId?: string;
 }
-const CanaryDryRunConfigOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CanaryDryRunConfigOutput>;
 export interface CanaryRun {
   Id?: string;
   ScheduledRunId?: string;
@@ -573,70 +462,43 @@ export interface CanaryRun {
   BrowserType?: BrowserType;
   Location?: string;
 }
-const CanaryRun = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<CanaryRun>;
 export interface CanaryLastRun {
   CanaryName?: string;
   LastRun?: CanaryRun;
 }
-const CanaryLastRun = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<CanaryLastRun>;
 export type CanariesLastRun = CanaryLastRun[];
-const CanariesLastRun = /*@__PURE__*/ __L.at(__c6, 6);
 export interface DescribeCanariesLastRunResponse {
   CanariesLastRun?: CanaryLastRun[];
   NextToken?: string;
 }
-const DescribeCanariesLastRunResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<DescribeCanariesLastRunResponse>;
 export interface DescribeRuntimeVersionsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const DescribeRuntimeVersionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<DescribeRuntimeVersionsRequest>;
 export interface RuntimeVersion {
   VersionName?: string;
   Description?: string;
   ReleaseDate?: Date;
   DeprecationDate?: Date;
 }
-const RuntimeVersion = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<RuntimeVersion>;
 export type RuntimeVersionList = RuntimeVersion[];
-const RuntimeVersionList = /*@__PURE__*/ __L.at(__c7, 2);
 export interface DescribeRuntimeVersionsResponse {
   RuntimeVersions?: RuntimeVersion[];
   NextToken?: string;
 }
-const DescribeRuntimeVersionsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DescribeRuntimeVersionsResponse>;
 export interface DisassociateResourceRequest {
   GroupIdentifier: string;
   ResourceArn: string;
 }
-const DisassociateResourceRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<DisassociateResourceRequest>;
 export interface DisassociateResourceResponse {}
-const DisassociateResourceResponse =
-  AssociateResourceResponse as any as S.Schema<DisassociateResourceResponse>;
 export interface GetCanaryRequest {
   Name: string;
   DryRunId?: string;
 }
-const GetCanaryRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GetCanaryRequest>;
 export interface GetCanaryResponse {
   Canary?: Canary;
 }
-const GetCanaryResponse = CreateCanaryResponse as any as S.Schema<GetCanaryResponse>;
 export type RunType = "CANARY_RUN" | "DRY_RUN" | (string & {});
-const RunType = S.String;
-
 export interface GetCanaryRunsRequest {
   Name: string;
   NextToken?: string;
@@ -644,25 +506,17 @@ export interface GetCanaryRunsRequest {
   DryRunId?: string;
   RunType?: RunType;
 }
-const GetCanaryRunsRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<GetCanaryRunsRequest>;
 export type CanaryRuns = CanaryRun[];
-const CanaryRuns = /*@__PURE__*/ __L.at(__c7, 7);
 export interface GetCanaryRunsResponse {
   CanaryRuns?: CanaryRun[];
   NextToken?: string;
 }
-const GetCanaryRunsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetCanaryRunsResponse>;
 export interface GetGroupRequest {
   GroupIdentifier: string;
 }
-const GetGroupRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<GetGroupRequest>;
 export interface GetGroupResponse {
   Group?: Group;
 }
-const GetGroupResponse = CreateGroupResponse as any as S.Schema<GetGroupResponse>;
 export type PaginationToken = string;
 export type MaxGroupResults = number;
 export interface ListAssociatedGroupsRequest {
@@ -670,84 +524,51 @@ export interface ListAssociatedGroupsRequest {
   MaxResults?: number;
   ResourceArn: string;
 }
-const ListAssociatedGroupsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListAssociatedGroupsRequest>;
 export interface GroupSummary {
   Id?: string;
   Name?: string;
   Arn?: string;
 }
-const GroupSummary = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<GroupSummary>;
 export type GroupSummaryList = GroupSummary[];
-const GroupSummaryList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface ListAssociatedGroupsResponse {
   Groups?: GroupSummary[];
   NextToken?: string;
 }
-const ListAssociatedGroupsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ListAssociatedGroupsResponse>;
 export interface ListGroupResourcesRequest {
   NextToken?: string;
   MaxResults?: number;
   GroupIdentifier: string;
 }
-const ListGroupResourcesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListGroupResourcesRequest>;
 export type StringList = string[];
-const StringList = BlueprintTypes as any as S.Schema<StringList>;
 export interface ListGroupResourcesResponse {
   Resources?: string[];
   NextToken?: string;
 }
-const ListGroupResourcesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListGroupResourcesResponse>;
 export interface ListGroupsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListGroupsRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ListGroupsRequest>;
 export interface ListGroupsResponse {
   Groups?: GroupSummary[];
   NextToken?: string;
 }
-const ListGroupsResponse = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ListGroupsResponse>;
 export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface StartCanaryRequest {
   Name: string;
 }
-const StartCanaryRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<StartCanaryRequest>;
 export interface StartCanaryResponse {}
-const StartCanaryResponse = AssociateResourceResponse as any as S.Schema<StartCanaryResponse>;
 export interface VisualReferenceInput {
   BaseScreenshots?: BaseScreenshot[];
   BaseCanaryRunId: string;
   BrowserType?: BrowserType;
 }
-const VisualReferenceInput = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<VisualReferenceInput>;
 export type VisualReferences = VisualReferenceInput[];
-const VisualReferences = /*@__PURE__*/ __L.at(__c9, 6);
 export interface StartCanaryDryRunRequest {
   Name: string;
   Code?: CanaryCodeInput;
@@ -764,44 +585,25 @@ export interface StartCanaryDryRunRequest {
   BrowserConfigs?: BrowserConfig[];
   VisualReferences?: VisualReferenceInput[];
 }
-const StartCanaryDryRunRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<StartCanaryDryRunRequest>;
 export interface StartCanaryDryRunResponse {
   DryRunConfig?: DryRunConfigOutput;
 }
-const StartCanaryDryRunResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<StartCanaryDryRunResponse>;
 export interface StopCanaryRequest {
   Name: string;
 }
-const StopCanaryRequest = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<StopCanaryRequest>;
 export interface StopCanaryResponse {}
-const StopCanaryResponse = AssociateResourceResponse as any as S.Schema<StopCanaryResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = AssociateResourceResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = BlueprintTypes as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = AssociateResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type RemoveReplicaLocations = string[];
-const RemoveReplicaLocations = BlueprintTypes as any as S.Schema<RemoveReplicaLocations>;
 export interface UpdateCanaryRequest {
   Name: string;
   Code?: CanaryCodeInput;
@@ -823,9 +625,7 @@ export interface UpdateCanaryRequest {
   RemoveReplicaLocations?: string[];
   KmsKeyArn?: string;
 }
-const UpdateCanaryRequest = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<UpdateCanaryRequest>;
 export interface UpdateCanaryResponse {}
-const UpdateCanaryResponse = AssociateResourceResponse as any as S.Schema<UpdateCanaryResponse>;
 export type ErrorMessage = string;
 export type AssociateResourceError =
   | ConflictException
@@ -847,8 +647,8 @@ export const associateResource: API.OperationMethod<
   AssociateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateResourceRequest,
-  output: AssociateResourceResponse,
+  input: __S(0) as any as S.Schema<AssociateResourceRequest>,
+  output: __S(1) as any as S.Schema<AssociateResourceResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -891,8 +691,8 @@ export const createCanary: API.OperationMethod<
   CreateCanaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCanaryRequest,
-  output: CreateCanaryResponse,
+  input: __S(19) as any as S.Schema<CreateCanaryRequest>,
+  output: __S(39) as any as S.Schema<CreateCanaryResponse>,
   errors: [InternalServerException, RequestEntityTooLargeException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -929,8 +729,8 @@ export const createGroup: API.OperationMethod<
   CreateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGroupRequest,
-  output: CreateGroupResponse,
+  input: __S(40) as any as S.Schema<CreateGroupRequest>,
+  output: __S(42) as any as S.Schema<CreateGroupResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -982,8 +782,8 @@ export const deleteCanary: API.OperationMethod<
   DeleteCanaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCanaryRequest,
-  output: DeleteCanaryResponse,
+  input: __S(43) as any as S.Schema<DeleteCanaryRequest>,
+  output: __S(1) as any as S.Schema<DeleteCanaryResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1014,8 +814,8 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGroupRequest,
-  output: DeleteGroupResponse,
+  input: __S(44) as any as S.Schema<DeleteGroupRequest>,
+  output: __S(1) as any as S.Schema<DeleteGroupResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1049,8 +849,8 @@ export const describeCanaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeCanariesRequest,
-  output: DescribeCanariesResponse,
+  input: __S(45) as any as S.Schema<DescribeCanariesRequest>,
+  output: __S(47) as any as S.Schema<DescribeCanariesResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1086,8 +886,8 @@ export const describeCanariesLastRun: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeCanariesLastRunRequest,
-  output: DescribeCanariesLastRunResponse,
+  input: __S(48) as any as S.Schema<DescribeCanariesLastRunRequest>,
+  output: __S(55) as any as S.Schema<DescribeCanariesLastRunResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1115,8 +915,8 @@ export const describeRuntimeVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeRuntimeVersionsRequest,
-  output: DescribeRuntimeVersionsResponse,
+  input: __S(56) as any as S.Schema<DescribeRuntimeVersionsRequest>,
+  output: __S(59) as any as S.Schema<DescribeRuntimeVersionsResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1143,8 +943,8 @@ export const disassociateResource: API.OperationMethod<
   DisassociateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateResourceRequest,
-  output: DisassociateResourceResponse,
+  input: __S(60) as any as S.Schema<DisassociateResourceRequest>,
+  output: __S(1) as any as S.Schema<DisassociateResourceResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1172,8 +972,8 @@ export const getCanary: API.OperationMethod<
   GetCanaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCanaryRequest,
-  output: GetCanaryResponse,
+  input: __S(61) as any as S.Schema<GetCanaryRequest>,
+  output: __S(39) as any as S.Schema<GetCanaryResponse>,
   errors: [InternalServerException, ValidationException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1195,8 +995,8 @@ export const getCanaryRuns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetCanaryRunsRequest,
-  output: GetCanaryRunsResponse,
+  input: __S(62) as any as S.Schema<GetCanaryRunsRequest>,
+  output: __S(64) as any as S.Schema<GetCanaryRunsResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1224,8 +1024,8 @@ export const getGroup: API.OperationMethod<
   GetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGroupRequest,
-  output: GetGroupResponse,
+  input: __S(65) as any as S.Schema<GetGroupRequest>,
+  output: __S(42) as any as S.Schema<GetGroupResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1253,8 +1053,8 @@ export const listAssociatedGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAssociatedGroupsRequest,
-  output: ListAssociatedGroupsResponse,
+  input: __S(66) as any as S.Schema<ListAssociatedGroupsRequest>,
+  output: __S(69) as any as S.Schema<ListAssociatedGroupsResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1282,8 +1082,8 @@ export const listGroupResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListGroupResourcesRequest,
-  output: ListGroupResourcesResponse,
+  input: __S(70) as any as S.Schema<ListGroupResourcesRequest>,
+  output: __S(71) as any as S.Schema<ListGroupResourcesResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1312,8 +1112,8 @@ export const listGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListGroupsRequest,
-  output: ListGroupsResponse,
+  input: __S(72) as any as S.Schema<ListGroupsRequest>,
+  output: __S(73) as any as S.Schema<ListGroupsResponse>,
   errors: [InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1341,8 +1141,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(74) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(75) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1372,8 +1172,8 @@ export const startCanary: API.OperationMethod<
   StartCanaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartCanaryRequest,
-  output: StartCanaryResponse,
+  input: __S(76) as any as S.Schema<StartCanaryRequest>,
+  output: __S(1) as any as S.Schema<StartCanaryResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1401,8 +1201,8 @@ export const startCanaryDryRun: API.OperationMethod<
   StartCanaryDryRunError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartCanaryDryRunRequest,
-  output: StartCanaryDryRunResponse,
+  input: __S(79) as any as S.Schema<StartCanaryDryRunRequest>,
+  output: __S(80) as any as S.Schema<StartCanaryDryRunResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1435,8 +1235,8 @@ export const stopCanary: API.OperationMethod<
   StopCanaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopCanaryRequest,
-  output: StopCanaryResponse,
+  input: __S(81) as any as S.Schema<StopCanaryRequest>,
+  output: __S(1) as any as S.Schema<StopCanaryResponse>,
   errors: [
     ConflictException,
     InternalServerException,
@@ -1479,8 +1279,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(82) as any as S.Schema<TagResourceRequest>,
+  output: __S(1) as any as S.Schema<TagResourceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1509,8 +1309,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(83) as any as S.Schema<UntagResourceRequest>,
+  output: __S(1) as any as S.Schema<UntagResourceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1551,8 +1351,8 @@ export const updateCanary: API.OperationMethod<
   UpdateCanaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCanaryRequest,
-  output: UpdateCanaryResponse,
+  input: __S(84) as any as S.Schema<UpdateCanaryRequest>,
+  output: __S(1) as any as S.Schema<UpdateCanaryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1593,10 +1393,10 @@ function __c0(j: number): any {
       return S.Array(S.String);
     case 3:
       return S.suspend(() =>
-        S.Struct({ Type: S.optional(DependencyType), Reference: S.String }),
+        S.Struct({ Type: S.optional(S.String), Reference: S.String }),
       ).annotate({ identifier: "Dependency" });
     case 4:
-      return S.Array(Dependency);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1605,8 +1405,8 @@ function __c0(j: number): any {
           S3Version: S.optional(S.String),
           ZipFile: S.optional(T.Blob),
           Handler: S.optional(S.String),
-          BlueprintTypes: S.optional(BlueprintTypes),
-          Dependencies: S.optional(Dependencies),
+          BlueprintTypes: S.optional(__S(2)),
+          Dependencies: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "CanaryCodeInput" });
     case 6:
@@ -1618,7 +1418,7 @@ function __c0(j: number): any {
         S.Struct({
           Expression: S.String,
           DurationInSeconds: S.optional(S.Number),
-          RetryConfig: S.optional(RetryConfigInput),
+          RetryConfig: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "CanaryScheduleInput" });
   }
@@ -1633,36 +1433,36 @@ function __c1(j: number): any {
           TimeoutInSeconds: S.optional(S.Number),
           MemoryInMB: S.optional(S.Number),
           ActiveTracing: S.optional(S.Boolean),
-          EnvironmentVariables: S.optional(EnvironmentVariablesMap),
+          EnvironmentVariables: S.optional(__S(8)),
           EphemeralStorage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CanaryRunConfigInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          SubnetIds: S.optional(SubnetIds),
-          SecurityGroupIds: S.optional(SecurityGroupIds),
+          SubnetIds: S.optional(__S(2)),
+          SecurityGroupIds: S.optional(__S(2)),
           Ipv6AllowedForDualStack: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "VpcConfigInput" });
     case 3:
-      return S.Array(ResourceToTag);
+      return S.Array(S.String);
     case 4:
-      return S.suspend(() => S.Struct({ BrowserType: S.optional(BrowserType) })).annotate({
+      return S.suspend(() => S.Struct({ BrowserType: S.optional(S.String) })).annotate({
         identifier: "BrowserConfig",
       });
     case 5:
-      return S.Array(BrowserConfig);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           Location: S.String,
-          VpcConfig: S.optional(VpcConfigInput),
+          VpcConfig: S.optional(__S(10)),
           KmsKeyArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddReplicaLocationInput" });
     case 7:
-      return S.Array(AddReplicaLocationInput);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -1671,31 +1471,31 @@ function __c2(j: number): any {
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 1:
       return S.suspend(() =>
-        S.Struct({ EncryptionMode: S.optional(EncryptionMode), KmsKeyArn: S.optional(S.String) }),
+        S.Struct({ EncryptionMode: S.optional(S.String), KmsKeyArn: S.optional(S.String) }),
       ).annotate({ identifier: "S3EncryptionConfig" });
     case 2:
-      return S.suspend(() => S.Struct({ S3Encryption: S.optional(S3EncryptionConfig) })).annotate({
+      return S.suspend(() => S.Struct({ S3Encryption: S.optional(__S(17)) })).annotate({
         identifier: "ArtifactConfigInput",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
-          Code: CanaryCodeInput,
+          Code: __S(5),
           ArtifactS3Location: S.String,
           ExecutionRoleArn: S.String,
-          Schedule: CanaryScheduleInput,
-          RunConfig: S.optional(CanaryRunConfigInput),
+          Schedule: __S(7),
+          RunConfig: S.optional(__S(9)),
           SuccessRetentionPeriodInDays: S.optional(S.Number),
           FailureRetentionPeriodInDays: S.optional(S.Number),
           RuntimeVersion: S.String,
-          VpcConfig: S.optional(VpcConfigInput),
-          ResourcesToReplicateTags: S.optional(ResourceList),
-          ProvisionedResourceCleanup: S.optional(ProvisionedResourceCleanupSetting),
-          BrowserConfigs: S.optional(BrowserConfigs),
-          AddReplicaLocations: S.optional(AddReplicaLocations),
-          Tags: S.optional(TagMap),
-          ArtifactConfig: S.optional(ArtifactConfigInput),
+          VpcConfig: S.optional(__S(10)),
+          ResourcesToReplicateTags: S.optional(__S(11)),
+          ProvisionedResourceCleanup: S.optional(S.String),
+          BrowserConfigs: S.optional(__S(13)),
+          AddReplicaLocations: S.optional(__S(15)),
+          Tags: S.optional(__S(16)),
+          ArtifactConfig: S.optional(__S(18)),
           KmsKeyArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/canary" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateCanaryRequest" });
@@ -1704,8 +1504,8 @@ function __c2(j: number): any {
         S.Struct({
           SourceLocationArn: S.optional(S.String),
           Handler: S.optional(S.String),
-          BlueprintTypes: S.optional(BlueprintTypes),
-          Dependencies: S.optional(Dependencies),
+          BlueprintTypes: S.optional(__S(2)),
+          Dependencies: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "CanaryCodeOutput" });
     case 5:
@@ -1717,7 +1517,7 @@ function __c2(j: number): any {
         S.Struct({
           Expression: S.optional(S.String),
           DurationInSeconds: S.optional(S.Number),
-          RetryConfig: S.optional(RetryConfigOutput),
+          RetryConfig: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "CanaryScheduleOutput" });
     case 7:
@@ -1736,9 +1536,9 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          State: S.optional(CanaryState),
+          State: S.optional(S.String),
           StateReason: S.optional(S.String),
-          StateReasonCode: S.optional(CanaryStateReasonCode),
+          StateReasonCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "CanaryStatus" });
     case 1:
@@ -1754,8 +1554,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           VpcId: S.optional(S.String),
-          SubnetIds: S.optional(SubnetIds),
-          SecurityGroupIds: S.optional(SecurityGroupIds),
+          SubnetIds: S.optional(__S(2)),
+          SecurityGroupIds: S.optional(__S(2)),
           Ipv6AllowedForDualStack: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "VpcConfigOutput" });
@@ -1763,35 +1563,35 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ScreenshotName: S.String,
-          IgnoreCoordinates: S.optional(BaseScreenshotIgnoreCoordinates),
+          IgnoreCoordinates: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "BaseScreenshot" });
     case 4:
-      return S.Array(BaseScreenshot);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          BaseScreenshots: S.optional(BaseScreenshots),
+          BaseScreenshots: S.optional(__S(28)),
           BaseCanaryRunId: S.optional(S.String),
-          BrowserType: S.optional(BrowserType),
+          BrowserType: S.optional(S.String),
         }),
       ).annotate({ identifier: "VisualReferenceOutput" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ EngineArn: S.optional(S.String), BrowserType: S.optional(BrowserType) }),
+        S.Struct({ EngineArn: S.optional(S.String), BrowserType: S.optional(S.String) }),
       ).annotate({ identifier: "EngineConfig" });
     case 7:
-      return S.Array(EngineConfig);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(VisualReferenceOutput);
+      return S.Array(__S(29));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          State: S.optional(ReplicationState),
+          State: S.optional(S.String),
           StateReason: S.optional(S.String),
           StateReasonCode: S.optional(S.String),
         }),
@@ -1800,21 +1600,21 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Location: S.optional(S.String),
-          ReplicationStatus: S.optional(ReplicationStatus),
-          CanaryState: S.optional(CanaryState),
+          ReplicationStatus: S.optional(__S(33)),
+          CanaryState: S.optional(S.String),
           LastModified: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          VpcConfig: S.optional(VpcConfigOutput),
+          VpcConfig: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "Replica" });
     case 3:
-      return S.Array(Replica);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          LocationType: S.optional(LocationType),
+          LocationType: S.optional(S.String),
           PrimaryLocation: S.optional(S.String),
-          Replicas: S.optional(Replicas),
-          ReplicationState: S.optional(ReplicationState),
+          Replicas: S.optional(__S(35)),
+          ReplicationState: S.optional(S.String),
         }),
       ).annotate({ identifier: "MultiLocationConfig" });
     case 5:
@@ -1829,32 +1629,32 @@ function __c4(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           Name: S.optional(S.String),
-          Code: S.optional(CanaryCodeOutput),
+          Code: S.optional(__S(20)),
           ExecutionRoleArn: S.optional(S.String),
-          Schedule: S.optional(CanaryScheduleOutput),
-          RunConfig: S.optional(CanaryRunConfigOutput),
+          Schedule: S.optional(__S(22)),
+          RunConfig: S.optional(__S(23)),
           SuccessRetentionPeriodInDays: S.optional(S.Number),
           FailureRetentionPeriodInDays: S.optional(S.Number),
-          Status: S.optional(CanaryStatus),
-          Timeline: S.optional(CanaryTimeline),
+          Status: S.optional(__S(24)),
+          Timeline: S.optional(__S(25)),
           ArtifactS3Location: S.optional(S.String),
           EngineArn: S.optional(S.String),
           RuntimeVersion: S.optional(S.String),
-          VpcConfig: S.optional(VpcConfigOutput),
-          VisualReference: S.optional(VisualReferenceOutput),
-          ProvisionedResourceCleanup: S.optional(ProvisionedResourceCleanupSetting),
-          BrowserConfigs: S.optional(BrowserConfigs),
-          EngineConfigs: S.optional(EngineConfigs),
-          VisualReferences: S.optional(VisualReferencesOutput),
-          MultiLocationConfig: S.optional(MultiLocationConfig),
-          Tags: S.optional(TagMap),
-          ArtifactConfig: S.optional(ArtifactConfigOutput),
+          VpcConfig: S.optional(__S(26)),
+          VisualReference: S.optional(__S(29)),
+          ProvisionedResourceCleanup: S.optional(S.String),
+          BrowserConfigs: S.optional(__S(13)),
+          EngineConfigs: S.optional(__S(31)),
+          VisualReferences: S.optional(__S(32)),
+          MultiLocationConfig: S.optional(__S(36)),
+          Tags: S.optional(__S(16)),
+          ArtifactConfig: S.optional(__S(18)),
           KmsKeyArn: S.optional(S.String),
-          DryRunConfig: S.optional(DryRunConfigOutput),
+          DryRunConfig: S.optional(__S(37)),
         }),
       ).annotate({ identifier: "Canary" });
     case 7:
-      return S.suspend(() => S.Struct({ Canary: S.optional(Canary) })).annotate({
+      return S.suspend(() => S.Struct({ Canary: S.optional(__S(38)) })).annotate({
         identifier: "CreateCanaryResponse",
       });
   }
@@ -1863,7 +1663,7 @@ function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Name: S.String, Tags: S.optional(TagMap) }).pipe(
+        S.Struct({ Name: S.String, Tags: S.optional(__S(16)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/group" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateGroupRequest" });
@@ -1873,13 +1673,13 @@ function __c5(j: number): any {
           Id: S.optional(S.String),
           Name: S.optional(S.String),
           Arn: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(16)),
           CreatedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "Group" });
     case 2:
-      return S.suspend(() => S.Struct({ Group: S.optional(Group) })).annotate({
+      return S.suspend(() => S.Struct({ Group: S.optional(__S(41)) })).annotate({
         identifier: "CreateGroupResponse",
       });
     case 3:
@@ -1909,14 +1709,14 @@ function __c5(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Names: S.optional(DescribeCanariesNameFilter),
+          Names: S.optional(__S(2)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/canaries" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeCanariesRequest" });
     case 6:
-      return S.Array(Canary);
+      return S.Array(__S(38));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Canaries: S.optional(Canaries), NextToken: S.optional(S.String) }),
+        S.Struct({ Canaries: S.optional(__S(46)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "DescribeCanariesResponse" });
   }
 }
@@ -1927,8 +1727,8 @@ function __c6(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Names: S.optional(DescribeCanariesLastRunNameFilter),
-          BrowserType: S.optional(BrowserType),
+          Names: S.optional(__S(2)),
+          BrowserType: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/canaries/last-run" }),
@@ -1945,10 +1745,10 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          State: S.optional(CanaryRunState),
+          State: S.optional(S.String),
           StateReason: S.optional(S.String),
-          StateReasonCode: S.optional(CanaryRunStateReasonCode),
-          TestResult: S.optional(CanaryRunTestResult),
+          StateReasonCode: S.optional(S.String),
+          TestResult: S.optional(S.String),
         }),
       ).annotate({ identifier: "CanaryRunStatus" });
     case 2:
@@ -1972,23 +1772,23 @@ function __c6(j: number): any {
           ScheduledRunId: S.optional(S.String),
           RetryAttempt: S.optional(S.Number),
           Name: S.optional(S.String),
-          Status: S.optional(CanaryRunStatus),
-          Timeline: S.optional(CanaryRunTimeline),
+          Status: S.optional(__S(49)),
+          Timeline: S.optional(__S(50)),
           ArtifactS3Location: S.optional(S.String),
-          DryRunConfig: S.optional(CanaryDryRunConfigOutput),
-          BrowserType: S.optional(BrowserType),
+          DryRunConfig: S.optional(__S(51)),
+          BrowserType: S.optional(S.String),
           Location: S.optional(S.String),
         }),
       ).annotate({ identifier: "CanaryRun" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ CanaryName: S.optional(S.String), LastRun: S.optional(CanaryRun) }),
+        S.Struct({ CanaryName: S.optional(S.String), LastRun: S.optional(__S(52)) }),
       ).annotate({ identifier: "CanaryLastRun" });
     case 6:
-      return S.Array(CanaryLastRun);
+      return S.Array(__S(53));
     case 7:
       return S.suspend(() =>
-        S.Struct({ CanariesLastRun: S.optional(CanariesLastRun), NextToken: S.optional(S.String) }),
+        S.Struct({ CanariesLastRun: S.optional(__S(54)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeCanariesLastRunResponse",
       });
@@ -2014,11 +1814,11 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "RuntimeVersion" });
     case 2:
-      return S.Array(RuntimeVersion);
+      return S.Array(__S(57));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          RuntimeVersions: S.optional(RuntimeVersionList),
+          RuntimeVersions: S.optional(__S(58)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2058,7 +1858,7 @@ function __c7(j: number): any {
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           DryRunId: S.optional(S.String),
-          RunType: S.optional(RunType),
+          RunType: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/canary/{Name}/runs" }),
@@ -2071,14 +1871,14 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "GetCanaryRunsRequest" });
     case 7:
-      return S.Array(CanaryRun);
+      return S.Array(__S(52));
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ CanaryRuns: S.optional(CanaryRuns), NextToken: S.optional(S.String) }),
+        S.Struct({ CanaryRuns: S.optional(__S(63)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetCanaryRunsResponse" });
     case 1:
       return S.suspend(() =>
@@ -2121,10 +1921,10 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "GroupSummary" });
     case 4:
-      return S.Array(GroupSummary);
+      return S.Array(__S(67));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Groups: S.optional(GroupSummaryList), NextToken: S.optional(S.String) }),
+        S.Struct({ Groups: S.optional(__S(68)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAssociatedGroupsResponse",
       });
@@ -2149,7 +1949,7 @@ function __c8(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Resources: S.optional(StringList), NextToken: S.optional(S.String) }),
+        S.Struct({ Resources: S.optional(__S(2)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListGroupResourcesResponse",
       });
@@ -2165,7 +1965,7 @@ function __c9(j: number): any {
       ).annotate({ identifier: "ListGroupsRequest" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Groups: S.optional(GroupSummaryList), NextToken: S.optional(S.String) }),
+        S.Struct({ Groups: S.optional(__S(68)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListGroupsResponse" });
     case 2:
       return S.suspend(() =>
@@ -2183,7 +1983,7 @@ function __c9(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagMap) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(16)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 4:
@@ -2202,30 +2002,30 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          BaseScreenshots: S.optional(BaseScreenshots),
+          BaseScreenshots: S.optional(__S(28)),
           BaseCanaryRunId: S.String,
-          BrowserType: S.optional(BrowserType),
+          BrowserType: S.optional(S.String),
         }),
       ).annotate({ identifier: "VisualReferenceInput" });
     case 6:
-      return S.Array(VisualReferenceInput);
+      return S.Array(__S(77));
     case 7:
       return S.suspend(() =>
         S.Struct({
           Name: S.String.pipe(T.HttpLabel("Name")),
-          Code: S.optional(CanaryCodeInput),
+          Code: S.optional(__S(5)),
           RuntimeVersion: S.optional(S.String),
-          RunConfig: S.optional(CanaryRunConfigInput),
-          VpcConfig: S.optional(VpcConfigInput),
+          RunConfig: S.optional(__S(9)),
+          VpcConfig: S.optional(__S(10)),
           ExecutionRoleArn: S.optional(S.String),
           SuccessRetentionPeriodInDays: S.optional(S.Number),
           FailureRetentionPeriodInDays: S.optional(S.Number),
-          VisualReference: S.optional(VisualReferenceInput),
+          VisualReference: S.optional(__S(77)),
           ArtifactS3Location: S.optional(S.String),
-          ArtifactConfig: S.optional(ArtifactConfigInput),
-          ProvisionedResourceCleanup: S.optional(ProvisionedResourceCleanupSetting),
-          BrowserConfigs: S.optional(BrowserConfigs),
-          VisualReferences: S.optional(VisualReferences),
+          ArtifactConfig: S.optional(__S(18)),
+          ProvisionedResourceCleanup: S.optional(S.String),
+          BrowserConfigs: S.optional(__S(13)),
+          VisualReferences: S.optional(__S(78)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/canary/{Name}/dry-run/start" }),
@@ -2242,7 +2042,7 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ DryRunConfig: S.optional(DryRunConfigOutput) })).annotate({
+      return S.suspend(() => S.Struct({ DryRunConfig: S.optional(__S(37)) })).annotate({
         identifier: "StartCanaryDryRunResponse",
       });
     case 1:
@@ -2260,7 +2060,7 @@ function __c10(j: number): any {
       ).annotate({ identifier: "StopCanaryRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: TagMap }).pipe(
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: __S(16) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
             svc,
@@ -2275,7 +2075,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(2).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -2291,27 +2091,58 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.String.pipe(T.HttpLabel("Name")),
-          Code: S.optional(CanaryCodeInput),
+          Code: S.optional(__S(5)),
           ExecutionRoleArn: S.optional(S.String),
           RuntimeVersion: S.optional(S.String),
-          Schedule: S.optional(CanaryScheduleInput),
-          RunConfig: S.optional(CanaryRunConfigInput),
+          Schedule: S.optional(__S(7)),
+          RunConfig: S.optional(__S(9)),
           SuccessRetentionPeriodInDays: S.optional(S.Number),
           FailureRetentionPeriodInDays: S.optional(S.Number),
-          VpcConfig: S.optional(VpcConfigInput),
-          VisualReference: S.optional(VisualReferenceInput),
+          VpcConfig: S.optional(__S(10)),
+          VisualReference: S.optional(__S(77)),
           ArtifactS3Location: S.optional(S.String),
-          ArtifactConfig: S.optional(ArtifactConfigInput),
-          ProvisionedResourceCleanup: S.optional(ProvisionedResourceCleanupSetting),
+          ArtifactConfig: S.optional(__S(18)),
+          ProvisionedResourceCleanup: S.optional(S.String),
           DryRunId: S.optional(S.String),
-          VisualReferences: S.optional(VisualReferences),
-          BrowserConfigs: S.optional(BrowserConfigs),
-          AddReplicaLocations: S.optional(AddReplicaLocations),
-          RemoveReplicaLocations: S.optional(RemoveReplicaLocations),
+          VisualReferences: S.optional(__S(78)),
+          BrowserConfigs: S.optional(__S(13)),
+          AddReplicaLocations: S.optional(__S(15)),
+          RemoveReplicaLocations: S.optional(__S(2)),
           KmsKeyArn: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "PATCH", uri: "/canary/{Name}" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateCanaryRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
   }
 }

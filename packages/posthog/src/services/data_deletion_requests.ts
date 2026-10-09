@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -24,20 +26,10 @@ export interface CreateDataDeletionRequestRequestVariablesValue {
   value?: unknown;
   variableId: string;
 }
-const CreateDataDeletionRequestRequestVariablesValue = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDataDeletionRequestRequestVariablesValue>;
-
 /** Variables referenced by the HogQL query. */
 export type CreateDataDeletionRequestRequestVariablesMap = {
   [key: string]: CreateDataDeletionRequestRequestVariablesValue | undefined;
 };
-const CreateDataDeletionRequestRequestVariablesMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateDataDeletionRequestRequestVariablesMap>;
-
 export interface CreateDataDeletionRequestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -48,11 +40,6 @@ export interface CreateDataDeletionRequestRequest {
   /** Client-generated identifier that makes request submission idempotent. */
   submission_id: string;
 }
-const CreateDataDeletionRequestRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateDataDeletionRequestRequest>;
-
 /** * `draft` - Draft * `pending` - Pending * `approved` - Approved * `in_progress` - In Progress * `queued` - Queued * `completed` - Completed * `failed` - Failed */
 export type RequestStatusEnum =
   | "draft"
@@ -62,16 +49,11 @@ export type RequestStatusEnum =
   | "queued"
   | "completed"
   | "failed";
-const RequestStatusEnum = S.String;
-
 export type DataDeletionRequestVariablesValue = CreateDataDeletionRequestRequestVariablesValue;
 /** Submitted HogQL variable snapshot. */
 export type DataDeletionRequestVariablesMap = {
   [key: string]: CreateDataDeletionRequestRequestVariablesValue | undefined;
 };
-const DataDeletionRequestVariablesMap =
-  CreateDataDeletionRequestRequestVariablesMap as any as S.Schema<DataDeletionRequestVariablesMap>;
-
 export interface DataDeletionRequest {
   /** Deletion request identifier. */
   id: string;
@@ -98,17 +80,12 @@ export interface DataDeletionRequest {
   /** Time when selection statistics were calculated, if available. */
   stats_calculated_at: string | null;
 }
-const DataDeletionRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DataDeletionRequest>;
-
 export type CreateDataDeletionRequestsPreviewRequestVariablesValue =
   CreateDataDeletionRequestRequestVariablesValue;
 /** Variables referenced by the HogQL query. */
 export type CreateDataDeletionRequestsPreviewRequestVariablesMap = {
   [key: string]: CreateDataDeletionRequestRequestVariablesValue | undefined;
 };
-const CreateDataDeletionRequestsPreviewRequestVariablesMap =
-  CreateDataDeletionRequestRequestVariablesMap as any as S.Schema<CreateDataDeletionRequestsPreviewRequestVariablesMap>;
-
 export interface CreateDataDeletionRequestsPreviewRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -117,28 +94,16 @@ export interface CreateDataDeletionRequestsPreviewRequest {
   /** Variables referenced by the HogQL query. */
   variables?: CreateDataDeletionRequestsPreviewRequestVariablesMap;
 }
-const CreateDataDeletionRequestsPreviewRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateDataDeletionRequestsPreviewRequest>;
-
 export interface DataDeletionPreview {
   /** Number of event UUIDs selected when the preview ran. */
   count: number;
 }
-const DataDeletionPreview = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DataDeletionPreview>;
-
 export interface GetDataDeletionRequestRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data deletion request. */
   id: string;
 }
-const GetDataDeletionRequestRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetDataDeletionRequestRequest>;
-
 export interface ListDataDeletionRequestsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -147,28 +112,13 @@ export interface ListDataDeletionRequestsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListDataDeletionRequestsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListDataDeletionRequestsRequest>;
-
 export type PaginatedDataDeletionRequestListResultsList = Array<DataDeletionRequest>;
-const PaginatedDataDeletionRequestListResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<PaginatedDataDeletionRequestListResultsList>;
-
 export interface PaginatedDataDeletionRequestList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedDataDeletionRequestListResultsList;
 }
-const PaginatedDataDeletionRequestList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PaginatedDataDeletionRequestList>;
-
 export type CreateDataDeletionRequestError = Conflict | PosthogOpError;
 /** Submit a one-column HogQL query for event deletion. */
 export const createDataDeletionRequest: API.OperationMethod<
@@ -177,8 +127,8 @@ export const createDataDeletionRequest: API.OperationMethod<
   CreateDataDeletionRequestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataDeletionRequestRequest,
-  output: DataDeletionRequest,
+  input: __S(2) as any as S.Schema<CreateDataDeletionRequestRequest>,
+  output: __S(3) as any as S.Schema<DataDeletionRequest>,
   errors: [Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -192,8 +142,8 @@ export const createDataDeletionRequestsPreview: API.OperationMethod<
   CreateDataDeletionRequestsPreviewError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataDeletionRequestsPreviewRequest,
-  output: DataDeletionPreview,
+  input: __S(4) as any as S.Schema<CreateDataDeletionRequestsPreviewRequest>,
+  output: __S(5) as any as S.Schema<DataDeletionPreview>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -207,8 +157,8 @@ export const getDataDeletionRequest: API.OperationMethod<
   GetDataDeletionRequestError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataDeletionRequestRequest,
-  output: DataDeletionRequest,
+  input: __S(6) as any as S.Schema<GetDataDeletionRequestRequest>,
+  output: __S(3) as any as S.Schema<DataDeletionRequest>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -222,8 +172,8 @@ export const listDataDeletionRequests: API.OperationMethod<
   ListDataDeletionRequestsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataDeletionRequestsRequest,
-  output: PaginatedDataDeletionRequestList,
+  input: __S(7) as any as S.Schema<ListDataDeletionRequestsRequest>,
+  output: __S(9) as any as S.Schema<PaginatedDataDeletionRequestList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -244,13 +194,13 @@ function __c0(j: number): any {
         identifier: "CreateDataDeletionRequestRequestVariablesValue",
       });
     case 1:
-      return S.Record(S.String, CreateDataDeletionRequestRequestVariablesValue);
+      return S.Record(S.String, __S(0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           query: S.String,
-          variables: S.optional(CreateDataDeletionRequestRequestVariablesMap),
+          variables: S.optional(__S(1)),
           submission_id: S.String,
         }).pipe(
           T.Http({
@@ -266,9 +216,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: RequestStatusEnum,
+          status: S.String,
           query: S.String,
-          variables: DataDeletionRequestVariablesMap,
+          variables: __S(1),
           submission_id: S.NullOr(S.String),
           count: S.NullOr(S.Number),
           created_by_id: S.NullOr(S.Number),
@@ -284,7 +234,7 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           query: S.String,
-          variables: S.optional(CreateDataDeletionRequestsPreviewRequestVariablesMap),
+          variables: S.optional(__S(1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -337,17 +287,30 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DataDeletionRequest);
+      return S.Array(__S(3));
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedDataDeletionRequestListResultsList,
+          results: __S(8),
         }),
       ).annotate({
         identifier: "PaginatedDataDeletionRequestList",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

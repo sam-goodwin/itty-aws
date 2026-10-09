@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -37,11 +39,7 @@ export class UnprocessableEntity
   ) {}
 
 export type CodeRequestSort = "indexed";
-const CodeRequestSort = S.String;
-
 export type CodeRequestOrder = "desc" | "asc";
-const CodeRequestOrder = S.String;
-
 export interface CodeRequest {
   /** The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching code](https://docs.github.com/search-github/searching-on-github/searching-code)" for a detailed list of qualifiers. */
   q: string;
@@ -54,8 +52,6 @@ export interface CodeRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const CodeRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CodeRequest>;
-
 /** A GitHub user. */
 export interface SimpleUser {
   name?: string | null;
@@ -81,18 +77,9 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-const SimpleUser = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SimpleUser>;
-
 export type MinimalRepositoryTopicsList = Array<string>;
-const MinimalRepositoryTopicsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<MinimalRepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-const MinimalRepositoryPullRequestCreationPolicy = S.String;
-
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
   maintain?: boolean;
@@ -100,11 +87,6 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-const MinimalRepositoryPermissions = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<MinimalRepositoryPermissions>;
-
 /** Code Of Conduct */
 export interface CodeOfConduct {
   key: string;
@@ -113,8 +95,6 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-const CodeOfConduct = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CodeOfConduct>;
-
 export interface MinimalRepositoryLicense {
   key?: string;
   name?: string;
@@ -122,30 +102,15 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-const MinimalRepositoryLicense = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<MinimalRepositoryLicense>;
-
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
-
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
-
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-const SecurityAndAnalysisCodeSecurity =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
-
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
 /** Enable or disable Dependabot security updates for the repository. */
@@ -153,67 +118,38 @@ export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-const SecurityAndAnalysisDependabotSecurityUpdates =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
-
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-const SecurityAndAnalysisSecretScanning =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
-
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-const SecurityAndAnalysisSecretScanningPushProtection =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
-
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-const SecurityAndAnalysisSecretScanningNonProviderPatterns =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
-
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-const SecurityAndAnalysisSecretScanningAiDetection =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
-
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
-
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypass =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
-
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
-
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
   reviewer_id: number;
@@ -222,28 +158,13 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptions>;
-
 export interface SecurityAndAnalysis {
   /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
   advanced_security?: SecurityAndAnalysisAdvancedSecurity;
@@ -258,15 +179,8 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-const SecurityAndAnalysis = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SecurityAndAnalysis>;
-
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
-
 /** Minimal Repository */
 export interface MinimalRepository {
   id: number;
@@ -363,33 +277,13 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-const MinimalRepository = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<MinimalRepository>;
-
 export type CodeSearchResultItemLineNumbersList = Array<string>;
-const CodeSearchResultItemLineNumbersList =
-  MinimalRepositoryTopicsList as any as S.Schema<CodeSearchResultItemLineNumbersList>;
-
 export type SearchResultTextMatchesItemMatchesItemIndicesList = Array<number>;
-const SearchResultTextMatchesItemMatchesItemIndicesList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<SearchResultTextMatchesItemMatchesItemIndicesList>;
-
 export interface SearchResultTextMatchesItemMatchesItem {
   text?: string;
   indices?: SearchResultTextMatchesItemMatchesItemIndicesList;
 }
-const SearchResultTextMatchesItemMatchesItem = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<SearchResultTextMatchesItemMatchesItem>;
-
 export type SearchResultTextMatchesItemMatchesList = Array<SearchResultTextMatchesItemMatchesItem>;
-const SearchResultTextMatchesItemMatchesList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<SearchResultTextMatchesItemMatchesList>;
-
 export interface SearchResultTextMatchesItem {
   object_url?: string;
   object_type?: string | null;
@@ -397,17 +291,7 @@ export interface SearchResultTextMatchesItem {
   fragment?: string;
   matches?: SearchResultTextMatchesItemMatchesList;
 }
-const SearchResultTextMatchesItem = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<SearchResultTextMatchesItem>;
-
 export type SearchResultTextMatches = Array<SearchResultTextMatchesItem>;
-const SearchResultTextMatches = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<SearchResultTextMatches>;
-
 /** Code Search Result Item */
 export interface CodeSearchResultItem {
   name: string;
@@ -424,27 +308,14 @@ export interface CodeSearchResultItem {
   line_numbers?: CodeSearchResultItemLineNumbersList;
   text_matches?: SearchResultTextMatches;
 }
-const CodeSearchResultItem = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CodeSearchResultItem>;
-
 export type CodeResponseItemsList = Array<CodeSearchResultItem>;
-const CodeResponseItemsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CodeResponseItemsList>;
-
 export interface CodeResponse {
   total_count: number;
   incomplete_results: boolean;
   items: CodeResponseItemsList;
 }
-const CodeResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CodeResponse>;
-
 export type CommitsRequestSort = "author-date" | "committer-date";
-const CommitsRequestSort = S.String;
-
 export type CommitsRequestOrder = "desc" | "asc";
-const CommitsRequestOrder = S.String;
-
 export interface CommitsRequest {
   /** The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching commits](https://docs.github.com/search-github/searching-on-github/searching-commits)" for a detailed list of qualifiers. */
   q: string;
@@ -457,35 +328,21 @@ export interface CommitsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const CommitsRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CommitsRequest>;
-
 export interface CommitSearchResultItemCommitAuthor {
   name: string;
   email: string;
   date: string;
 }
-const CommitSearchResultItemCommitAuthor = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CommitSearchResultItemCommitAuthor>;
-
 /** Metaproperties for Git author/committer information. */
 export interface NullableGitUser {
   name?: string;
   email?: string;
   date?: string;
 }
-const NullableGitUser = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<NullableGitUser>;
-
 export interface CommitSearchResultItemCommitTree {
   sha: string;
   url: string;
 }
-const CommitSearchResultItemCommitTree = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CommitSearchResultItemCommitTree>;
-
 export interface Verification {
   verified: boolean;
   reason: string;
@@ -493,8 +350,6 @@ export interface Verification {
   signature: string | null;
   verified_at: string | null;
 }
-const Verification = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Verification>;
-
 export interface CommitSearchResultItemCommit {
   author: CommitSearchResultItemCommitAuthor;
   committer: NullableGitUser | null;
@@ -504,11 +359,6 @@ export interface CommitSearchResultItemCommit {
   url: string;
   verification?: Verification;
 }
-const CommitSearchResultItemCommit = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CommitSearchResultItemCommit>;
-
 /** A GitHub user. */
 export type NullableSimpleUser = SimpleUser;
 export interface CommitSearchResultItemParentsItem {
@@ -516,17 +366,7 @@ export interface CommitSearchResultItemParentsItem {
   html_url?: string;
   sha?: string;
 }
-const CommitSearchResultItemParentsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CommitSearchResultItemParentsItem>;
-
 export type CommitSearchResultItemParentsList = Array<CommitSearchResultItemParentsItem>;
-const CommitSearchResultItemParentsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CommitSearchResultItemParentsList>;
-
 /** Commit Search Result Item */
 export interface CommitSearchResultItem {
   url: string;
@@ -542,24 +382,12 @@ export interface CommitSearchResultItem {
   node_id: string;
   text_matches?: SearchResultTextMatches;
 }
-const CommitSearchResultItem = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CommitSearchResultItem>;
-
 export type CommitsResponseItemsList = Array<CommitSearchResultItem>;
-const CommitsResponseItemsList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CommitsResponseItemsList>;
-
 export interface CommitsResponse {
   total_count: number;
   incomplete_results: boolean;
   items: CommitsResponseItemsList;
 }
-const CommitsResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<CommitsResponse>;
-
 export type IssuesAndPullRequestsRequestSort =
   | "comments"
   | "reactions"
@@ -572,14 +400,8 @@ export type IssuesAndPullRequestsRequestSort =
   | "interactions"
   | "created"
   | "updated";
-const IssuesAndPullRequestsRequestSort = S.String;
-
 export type IssuesAndPullRequestsRequestOrder = "desc" | "asc";
-const IssuesAndPullRequestsRequestOrder = S.String;
-
 export type IssuesAndPullRequestsRequestSearchType = "semantic" | "hybrid";
-const IssuesAndPullRequestsRequestSearchType = S.String;
-
 export interface IssuesAndPullRequestsRequest {
   /** The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching issues and pull requests](https://docs.github.com/search-github/searching-on-github/searching-issues-and-pull-requests)" for a detailed list of qualifiers. */
   q: string;
@@ -596,17 +418,7 @@ export interface IssuesAndPullRequestsRequest {
   /** The type of search to perform on issues. When not specified, the default is lexical search. - `semantic` -- performs a pure semantic (vector) search using embedding-based understanding. - `hybrid` -- combines semantic search with lexical search for best results. Semantic and hybrid search require authentication and are rate limited to 10 requests per minute. Only applies to issue searches (`/search/issues`). */
   search_type?: IssuesAndPullRequestsRequestSearchType | (string & {});
 }
-const IssuesAndPullRequestsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<IssuesAndPullRequestsRequest>;
-
 export type IssueSearchResultItemAssigneesList = Array<SimpleUser>;
-const IssueSearchResultItemAssigneesList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<IssueSearchResultItemAssigneesList>;
-
 export interface IssueSearchResultItemLabelsItem {
   id?: number;
   node_id?: string;
@@ -620,43 +432,22 @@ export interface IssueSearchResultItemLabelsItem {
   /** The user who archived the label, or `null` if it has not been archived. */
   archived_by?: SimpleUser | null;
 }
-const IssueSearchResultItemLabelsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<IssueSearchResultItemLabelsItem>;
-
 export type IssueSearchResultItemLabelsList = Array<IssueSearchResultItemLabelsItem>;
-const IssueSearchResultItemLabelsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<IssueSearchResultItemLabelsList>;
-
 export interface SubIssuesSummary {
   total: number;
   completed: number;
   percent_completed: number;
 }
-const SubIssuesSummary = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SubIssuesSummary>;
-
 export interface IssueDependenciesSummary {
   blocked_by: number;
   blocking: number;
   total_blocked_by: number;
   total_blocking: number;
 }
-const IssueDependenciesSummary = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<IssueDependenciesSummary>;
-
 /** The data type of the issue field */
 export type IssueFieldValueDataType = "text" | "single_select" | "multi_select" | "number" | "date";
-const IssueFieldValueDataType = S.String;
-
 /** The value of the issue field */
 export type IssueFieldValueValue = string | number | number;
-const IssueFieldValueValue = S.Unknown as any as S.Schema<IssueFieldValueValue>;
-
 /** Details about the selected option (only present for single_select fields) */
 export interface IssueFieldValueSingleSelectOption {
   /** Unique identifier for the option. */
@@ -666,19 +457,9 @@ export interface IssueFieldValueSingleSelectOption {
   /** The color of the option */
   color: string;
 }
-const IssueFieldValueSingleSelectOption = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<IssueFieldValueSingleSelectOption>;
-
 export type IssueFieldValueMultiSelectOptionsItem = IssueFieldValueSingleSelectOption;
 /** Details about the selected options */
 export type IssueFieldValueMultiSelectOptionsList = Array<IssueFieldValueSingleSelectOption>;
-const IssueFieldValueMultiSelectOptionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<IssueFieldValueMultiSelectOptionsList>;
-
 /** A value assigned to an issue field */
 export interface IssueFieldValue {
   /** Unique identifier for the issue field. */
@@ -695,18 +476,9 @@ export interface IssueFieldValue {
   /** Details about the selected options */
   multi_select_options?: IssueFieldValueMultiSelectOptionsList | null;
 }
-const IssueFieldValue = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<IssueFieldValue>;
-
 export type IssueSearchResultItemIssueFieldValuesList = Array<IssueFieldValue>;
-const IssueSearchResultItemIssueFieldValuesList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<IssueSearchResultItemIssueFieldValuesList>;
-
 /** The state of the milestone. */
 export type NullableMilestoneState = "open" | "closed";
-const NullableMilestoneState = S.String;
-
 /** A collection of related issues and pull requests. */
 export interface NullableMilestone {
   url: string;
@@ -729,8 +501,6 @@ export interface NullableMilestone {
   closed_at: string | null;
   due_on: string | null;
 }
-const NullableMilestone = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<NullableMilestone>;
-
 export interface IssueSearchResultItemPullRequest {
   merged_at?: string | null;
   diff_url: string | null;
@@ -738,11 +508,6 @@ export interface IssueSearchResultItemPullRequest {
   patch_url: string | null;
   url: string | null;
 }
-const IssueSearchResultItemPullRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<IssueSearchResultItemPullRequest>;
-
 /** How the author is associated with the repository. */
 export type AuthorAssociation =
   | "COLLABORATOR"
@@ -753,8 +518,6 @@ export type AuthorAssociation =
   | "MEMBER"
   | "NONE"
   | "OWNER";
-const AuthorAssociation = S.String;
-
 /** License Simple */
 export interface NullableLicenseSimple {
   key: string;
@@ -764,11 +527,6 @@ export interface NullableLicenseSimple {
   node_id: string;
   html_url?: string;
 }
-const NullableLicenseSimple = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<NullableLicenseSimple>;
-
 export interface RepositoryPermissions {
   admin: boolean;
   pull: boolean;
@@ -776,44 +534,22 @@ export interface RepositoryPermissions {
   push: boolean;
   maintain?: boolean;
 }
-const RepositoryPermissions = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<RepositoryPermissions>;
-
 export type RepositoryTopicsList = Array<string>;
-const RepositoryTopicsList = MinimalRepositoryTopicsList as any as S.Schema<RepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-const RepositoryPullRequestCreationPolicy = S.String;
-
 /** The default value for a squash merge commit title: - `PR_TITLE` - default to the pull request's title. - `COMMIT_OR_PR_TITLE` - default to the commit's title (if only one commit) or the pull request's title (when more than one commit). */
 export type RepositorySquashMergeCommitTitle = "PR_TITLE" | "COMMIT_OR_PR_TITLE";
-const RepositorySquashMergeCommitTitle = S.String;
-
 /** The default value for a squash merge commit message: - `PR_BODY` - default to the pull request's body. - `COMMIT_MESSAGES` - default to the branch's commit messages. - `BLANK` - default to a blank commit message. */
 export type RepositorySquashMergeCommitMessage = "PR_BODY" | "COMMIT_MESSAGES" | "BLANK";
-const RepositorySquashMergeCommitMessage = S.String;
-
 /** The default value for a merge commit title. - `PR_TITLE` - default to the pull request's title. - `MERGE_MESSAGE` - default to the classic title for a merge message (e.g., Merge pull request #123 from branch-name). */
 export type RepositoryMergeCommitTitle = "PR_TITLE" | "MERGE_MESSAGE";
-const RepositoryMergeCommitTitle = S.String;
-
 /** The default value for a merge commit message. - `PR_TITLE` - default to the pull request's title. - `PR_BODY` - default to the pull request's body. - `BLANK` - default to a blank commit message. */
 export type RepositoryMergeCommitMessage = "PR_BODY" | "PR_TITLE" | "BLANK";
-const RepositoryMergeCommitMessage = S.String;
-
 /** The status of the code search index for this repository */
 export interface RepositoryCodeSearchIndexStatus {
   lexical_search_ok?: boolean;
   lexical_commit_sha?: string;
 }
-const RepositoryCodeSearchIndexStatus = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<RepositoryCodeSearchIndexStatus>;
-
 /** A repository on GitHub. */
 export interface Repository {
   /** Unique identifier of the repository */
@@ -946,8 +682,6 @@ export interface Repository {
   /** The status of the code search index for this repository */
   code_search_index_status?: RepositoryCodeSearchIndexStatus;
 }
-const Repository = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Repository>;
-
 /** The color of the issue type. */
 export type IssueTypeColor =
   | "gray"
@@ -958,8 +692,6 @@ export type IssueTypeColor =
   | "red"
   | "pink"
   | "purple";
-const IssueTypeColor = S.String;
-
 /** The type assigned to the issue. This is only present for issues in repositories where issue types are supported. */
 export interface IssueType {
   /** The unique identifier of the issue type. */
@@ -979,8 +711,6 @@ export interface IssueType {
   /** The enabled state of the issue type. */
   is_enabled?: boolean;
 }
-const IssueType = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<IssueType>;
-
 /** An enterprise on GitHub. */
 export interface Enterprise {
   /** A short description of the enterprise. */
@@ -1000,8 +730,6 @@ export interface Enterprise {
   avatar_url: string;
 }
 export type NullableIntegrationOwner = SimpleUser | Enterprise;
-const NullableIntegrationOwner = S.Unknown as any as S.Schema<NullableIntegrationOwner>;
-
 /** The set of permissions for the GitHub app */
 export interface NullableIntegrationPermissions {
   issues?: string;
@@ -1010,16 +738,8 @@ export interface NullableIntegrationPermissions {
   contents?: string;
   deployments?: string;
 }
-const NullableIntegrationPermissions = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<NullableIntegrationPermissions>;
-
 /** The list of events for the GitHub app. Note that the `installation_target`, `security_advisory`, and `meta` events are not included because they are global events and not specific to an installation. */
 export type NullableIntegrationEventsList = Array<string>;
-const NullableIntegrationEventsList =
-  MinimalRepositoryTopicsList as any as S.Schema<NullableIntegrationEventsList>;
-
 /** GitHub apps are a new way to extend GitHub. They can be installed directly on organizations and user accounts and granted access to specific repositories. They come with granular permissions and built-in webhooks. GitHub apps are first class actors within GitHub. */
 export interface NullableIntegration {
   /** Unique identifier of the GitHub app */
@@ -1043,8 +763,6 @@ export interface NullableIntegration {
   /** The number of installations associated with the GitHub app. Only returned when the integration is requesting details about itself. */
   installations_count?: number;
 }
-const NullableIntegration = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<NullableIntegration>;
-
 export interface ReactionRollup {
   url: string;
   total_count: number;
@@ -1057,28 +775,16 @@ export interface ReactionRollup {
   eyes: number;
   rocket: number;
 }
-const ReactionRollup = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ReactionRollup>;
-
 /** Context around who pinned an issue comment and when it was pinned. */
 export interface NullablePinnedIssueComment {
   pinned_at: string;
   pinned_by: SimpleUser | null;
 }
-const NullablePinnedIssueComment = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<NullablePinnedIssueComment>;
-
 /** Details about why an issue comment was minimized. */
 export interface NullableIssueCommentMinimized {
   /** The reason the comment was minimized. */
   reason: string | null;
 }
-const NullableIssueCommentMinimized = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<NullableIssueCommentMinimized>;
-
 /** Comments provide a way for people to collaborate on an issue. */
 export interface NullableIssueComment {
   /** Unique identifier of the issue comment */
@@ -1101,8 +807,6 @@ export interface NullableIssueComment {
   pin?: NullablePinnedIssueComment | null;
   minimized?: NullableIssueCommentMinimized | null;
 }
-const NullableIssueComment = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<NullableIssueComment>;
-
 /** Issue Search Result Item */
 export interface IssueSearchResultItem {
   url: string;
@@ -1146,21 +850,9 @@ export interface IssueSearchResultItem {
   pinned_comment?: NullableIssueComment | null;
   reactions?: ReactionRollup;
 }
-const IssueSearchResultItem = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<IssueSearchResultItem>;
-
 export type IssuesAndPullRequestsResponseItemsList = Array<IssueSearchResultItem>;
-const IssuesAndPullRequestsResponseItemsList = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<IssuesAndPullRequestsResponseItemsList>;
-
 /** The type of search that was performed. Possible values are `lexical`, `semantic`, or `hybrid`. */
 export type IssuesAndPullRequestsResponseSearchType = "lexical" | "semantic" | "hybrid";
-const IssuesAndPullRequestsResponseSearchType = S.String;
-
 export type IssuesAndPullRequestsResponseLexicalFallbackReasonItem =
   | "no_text_terms"
   | "quoted_text"
@@ -1170,16 +862,9 @@ export type IssuesAndPullRequestsResponseLexicalFallbackReasonItem =
   | "server_error"
   | "only_non_semantic_fields_requested"
   | "service_unavailable";
-const IssuesAndPullRequestsResponseLexicalFallbackReasonItem = S.String;
-
 /** When a semantic or hybrid search falls back to lexical search, this field contains the reasons for the fallback. Only present when a fallback occurred. */
 export type IssuesAndPullRequestsResponseLexicalFallbackReasonList =
   Array<IssuesAndPullRequestsResponseLexicalFallbackReasonItem>;
-const IssuesAndPullRequestsResponseLexicalFallbackReasonList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<IssuesAndPullRequestsResponseLexicalFallbackReasonList>;
-
 export interface IssuesAndPullRequestsResponse {
   total_count: number;
   incomplete_results: boolean;
@@ -1189,17 +874,8 @@ export interface IssuesAndPullRequestsResponse {
   /** When a semantic or hybrid search falls back to lexical search, this field contains the reasons for the fallback. Only present when a fallback occurred. */
   lexical_fallback_reason?: IssuesAndPullRequestsResponseLexicalFallbackReasonList;
 }
-const IssuesAndPullRequestsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<IssuesAndPullRequestsResponse>;
-
 export type LabelsRequestSort = "created" | "updated";
-const LabelsRequestSort = S.String;
-
 export type LabelsRequestOrder = "desc" | "asc";
-const LabelsRequestOrder = S.String;
-
 export interface LabelsRequest {
   /** The id of the repository. */
   repository_id: number;
@@ -1214,8 +890,6 @@ export interface LabelsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const LabelsRequest = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<LabelsRequest>;
-
 /** Label Search Result Item */
 export interface LabelSearchResultItem {
   id: number;
@@ -1232,30 +906,14 @@ export interface LabelSearchResultItem {
   score: number;
   text_matches?: SearchResultTextMatches;
 }
-const LabelSearchResultItem = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<LabelSearchResultItem>;
-
 export type LabelsResponseItemsList = Array<LabelSearchResultItem>;
-const LabelsResponseItemsList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<LabelsResponseItemsList>;
-
 export interface LabelsResponse {
   total_count: number;
   incomplete_results: boolean;
   items: LabelsResponseItemsList;
 }
-const LabelsResponse = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<LabelsResponse>;
-
 export type ReposRequestSort = "stars" | "forks" | "help-wanted-issues" | "updated";
-const ReposRequestSort = S.String;
-
 export type ReposRequestOrder = "desc" | "asc";
-const ReposRequestOrder = S.String;
-
 export interface ReposRequest {
   /** The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching for repositories](https://docs.github.com/articles/searching-for-repositories/)" for a detailed list of qualifiers. */
   q: string;
@@ -1268,16 +926,9 @@ export interface ReposRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ReposRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ReposRequest>;
-
 export type RepoSearchResultItemTopicsList = Array<string>;
-const RepoSearchResultItemTopicsList =
-  MinimalRepositoryTopicsList as any as S.Schema<RepoSearchResultItemTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type RepoSearchResultItemPullRequestCreationPolicy = "all" | "collaborators_only";
-const RepoSearchResultItemPullRequestCreationPolicy = S.String;
-
 export interface RepoSearchResultItemPermissions {
   admin: boolean;
   maintain?: boolean;
@@ -1285,11 +936,6 @@ export interface RepoSearchResultItemPermissions {
   triage?: boolean;
   pull: boolean;
 }
-const RepoSearchResultItemPermissions = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<RepoSearchResultItemPermissions>;
-
 /** Repo Search Result Item */
 export interface RepoSearchResultItem {
   id: number;
@@ -1387,21 +1033,12 @@ export interface RepoSearchResultItem {
   is_template?: boolean;
   web_commit_signoff_required?: boolean;
 }
-const RepoSearchResultItem = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<RepoSearchResultItem>;
-
 export type ReposResponseItemsList = Array<RepoSearchResultItem>;
-const ReposResponseItemsList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ReposResponseItemsList>;
-
 export interface ReposResponse {
   total_count: number;
   incomplete_results: boolean;
   items: ReposResponseItemsList;
 }
-const ReposResponse = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ReposResponse>;
-
 export interface TopicsRequest {
   /** The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). */
   q: string;
@@ -1410,40 +1047,20 @@ export interface TopicsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const TopicsRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<TopicsRequest>;
-
 export interface TopicSearchResultItemRelatedItemTopicRelation {
   id?: number;
   name?: string;
   topic_id?: number;
   relation_type?: string;
 }
-const TopicSearchResultItemRelatedItemTopicRelation = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<TopicSearchResultItemRelatedItemTopicRelation>;
-
 export interface TopicSearchResultItemRelatedItem {
   topic_relation?: TopicSearchResultItemRelatedItemTopicRelation;
 }
-const TopicSearchResultItemRelatedItem = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<TopicSearchResultItemRelatedItem>;
-
 export type TopicSearchResultItemRelatedList = Array<TopicSearchResultItemRelatedItem>;
-const TopicSearchResultItemRelatedList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<TopicSearchResultItemRelatedList>;
-
 export type TopicSearchResultItemAliasesItemTopicRelation =
   TopicSearchResultItemRelatedItemTopicRelation;
 export type TopicSearchResultItemAliasesItem = TopicSearchResultItemRelatedItem;
 export type TopicSearchResultItemAliasesList = Array<TopicSearchResultItemRelatedItem>;
-const TopicSearchResultItemAliasesList =
-  TopicSearchResultItemRelatedList as any as S.Schema<TopicSearchResultItemAliasesList>;
-
 /** Topic Search Result Item */
 export interface TopicSearchResultItem {
   name: string;
@@ -1463,30 +1080,14 @@ export interface TopicSearchResultItem {
   related?: TopicSearchResultItemRelatedList | null;
   aliases?: TopicSearchResultItemAliasesList | null;
 }
-const TopicSearchResultItem = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<TopicSearchResultItem>;
-
 export type TopicsResponseItemsList = Array<TopicSearchResultItem>;
-const TopicsResponseItemsList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<TopicsResponseItemsList>;
-
 export interface TopicsResponse {
   total_count: number;
   incomplete_results: boolean;
   items: TopicsResponseItemsList;
 }
-const TopicsResponse = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<TopicsResponse>;
-
 export type UsersRequestSort = "followers" | "repositories" | "joined";
-const UsersRequestSort = S.String;
-
 export type UsersRequestOrder = "desc" | "asc";
-const UsersRequestOrder = S.String;
-
 export interface UsersRequest {
   /** The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching users](https://docs.github.com/search-github/searching-on-github/searching-users)" for a detailed list of qualifiers. */
   q: string;
@@ -1499,8 +1100,6 @@ export interface UsersRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const UsersRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<UsersRequest>;
-
 /** User Search Result Item */
 export interface UserSearchResultItem {
   login: string;
@@ -1539,27 +1138,18 @@ export interface UserSearchResultItem {
   suspended_at?: string | null;
   user_view_type?: string;
 }
-const UserSearchResultItem = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<UserSearchResultItem>;
-
 export type UsersResponseItemsList = Array<UserSearchResultItem>;
-const UsersResponseItemsList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<UsersResponseItemsList>;
-
 export interface UsersResponse {
   total_count: number;
   incomplete_results: boolean;
   items: UsersResponseItemsList;
 }
-const UsersResponse = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<UsersResponse>;
-
 export type CodeError = Forbidden | UnprocessableEntity | GithubOpError;
 /** Search code Searches for query terms inside of a file. This method returns up to 100 results [per page](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api). When searching for code, you can get text match metadata for the file **content** and file **path** fields when you pass the `text-match` media type. For more details about how to receive highlighted search results, see [Text match metadata](https://docs.github.com/rest/search/search#text-match-metadata). For example, if you want to find the definition of the `addClass` function inside [jQuery](https://github.com/jquery/jquery) repository, your query would look something like this: `q=addClass+in:file+language:js+repo:jquery/jquery` This query searches for the keyword `addClass` within a file's contents. The query limits the search to files where the language is JavaScript in the `jquery/jquery` repository. Considerations for code search: Due to the complexity of searching code, there are a few restrictions on how searches are performed: * Only the _default branch_ is considered. In most cases, this will be the `master` branch. * Only files smaller than 384 KB are searchable. * You must always include at least one search term when searching source code. For example, searching for [`language:go`](https://github.com/search?utf8=%E2%9C%93&q=language%3Ago&type=Code) is not valid, while [`amazing language:go`](https://github.com/search?utf8=%E2%9C%93&q=amazing+language%3Ago&type=Code) is. This endpoint requires you to authenticate and limits you to 10 requests per minute. */
 export const code: API.OperationMethod<CodeRequest, CodeResponse, CodeError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: CodeRequest,
-    output: CodeResponse,
+    input: __S(0) as any as S.Schema<CodeRequest>,
+    output: __S(21) as any as S.Schema<CodeResponse>,
     errors: [Forbidden, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -1573,8 +1163,8 @@ export const commits: API.OperationMethod<
   CommitsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitsRequest,
-  output: CommitsResponse,
+  input: __S(22) as any as S.Schema<CommitsRequest>,
+  output: __S(32) as any as S.Schema<CommitsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1588,8 +1178,8 @@ export const issuesAndPullRequests: API.OperationMethod<
   IssuesAndPullRequestsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IssuesAndPullRequestsRequest,
-  output: IssuesAndPullRequestsResponse,
+  input: __S(33) as any as S.Schema<IssuesAndPullRequestsRequest>,
+  output: __S(59) as any as S.Schema<IssuesAndPullRequestsResponse>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1603,8 +1193,8 @@ export const labels: API.OperationMethod<
   LabelsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LabelsRequest,
-  output: LabelsResponse,
+  input: __S(60) as any as S.Schema<LabelsRequest>,
+  output: __S(63) as any as S.Schema<LabelsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1614,8 +1204,8 @@ export type ReposError = UnprocessableEntity | GithubOpError;
 /** Search repositories Find repositories via various criteria. This method returns up to 100 results [per page](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api). When searching for repositories, you can get text match metadata for the **name** and **description** fields when you pass the `text-match` media type. For more details about how to receive highlighted search results, see [Text match metadata](https://docs.github.com/rest/search/search#text-match-metadata). For example, if you want to search for popular Tetris repositories written in assembly code, your query might look like this: `q=tetris+language:assembly&sort=stars&order=desc` This query searches for repositories with the word `tetris` in the name, the description, or the README. The results are limited to repositories where the primary language is assembly. The results are sorted by stars in descending order, so that the most popular repositories appear first in the search results. */
 export const repos: API.OperationMethod<ReposRequest, ReposResponse, ReposError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: ReposRequest,
-    output: ReposResponse,
+    input: __S(64) as any as S.Schema<ReposRequest>,
+    output: __S(68) as any as S.Schema<ReposResponse>,
     errors: [UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -1629,8 +1219,8 @@ export const topics: API.OperationMethod<
   TopicsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TopicsRequest,
-  output: TopicsResponse,
+  input: __S(69) as any as S.Schema<TopicsRequest>,
+  output: __S(75) as any as S.Schema<TopicsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -1640,8 +1230,8 @@ export type UsersError = UnprocessableEntity | GithubOpError;
 /** Search users Find users via various criteria. This method returns up to 100 results [per page](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api). When searching for users, you can get text match metadata for the issue **login**, public **email**, and **name** fields when you pass the `text-match` media type. For more details about highlighting search results, see [Text match metadata](https://docs.github.com/rest/search/search#text-match-metadata). For more details about how to receive highlighted search results, see [Text match metadata](https://docs.github.com/rest/search/search#text-match-metadata). For example, if you're looking for a list of popular users, you might try this query: `q=tom+repos:%3E42+followers:%3E1000` This query searches for users with the name `tom`. The results are restricted to users with more than 42 repositories and over 1,000 followers. This endpoint does not accept authentication and will only include publicly visible users. As an alternative, you can use the GraphQL API. The GraphQL API requires authentication and will return private users, including Enterprise Managed Users (EMUs), that you are authorized to view. For more information, see "[GraphQL Queries](https://docs.github.com/graphql/reference/queries#search)." */
 export const users: API.OperationMethod<UsersRequest, UsersResponse, UsersError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: UsersRequest,
-    output: UsersResponse,
+    input: __S(76) as any as S.Schema<UsersRequest>,
+    output: __S(79) as any as S.Schema<UsersResponse>,
     errors: [UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -1654,8 +1244,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           q: S.String.pipe(T.Query()),
-          sort: S.optional(CodeRequestSort.pipe(T.Query())),
-          order: S.optional(CodeRequestOrder.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/search/code", code: 200 })),
@@ -1724,7 +1314,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
@@ -1732,7 +1322,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
@@ -1745,23 +1335,18 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
-          reviewer_type:
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType,
-          mode: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode,
-          ),
+          reviewer_type: S.String,
+          mode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
     case 1:
-      return S.Array(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList,
-          ),
+          reviewers: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
@@ -1769,26 +1354,16 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
-          code_security: S.optional(SecurityAndAnalysisCodeSecurity),
-          dependabot_security_updates: S.optional(SecurityAndAnalysisDependabotSecurityUpdates),
-          secret_scanning: S.optional(SecurityAndAnalysisSecretScanning),
-          secret_scanning_push_protection: S.optional(
-            SecurityAndAnalysisSecretScanningPushProtection,
-          ),
-          secret_scanning_non_provider_patterns: S.optional(
-            SecurityAndAnalysisSecretScanningNonProviderPatterns,
-          ),
-          secret_scanning_ai_detection: S.optional(SecurityAndAnalysisSecretScanningAiDetection),
-          secret_scanning_delegated_alert_dismissal: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedAlertDismissal,
-          ),
-          secret_scanning_delegated_bypass: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypass,
-          ),
-          secret_scanning_delegated_bypass_options: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptions,
-          ),
+          advanced_security: S.optional(__S(6)),
+          code_security: S.optional(__S(6)),
+          dependabot_security_updates: S.optional(__S(6)),
+          secret_scanning: S.optional(__S(6)),
+          secret_scanning_push_protection: S.optional(__S(6)),
+          secret_scanning_non_provider_patterns: S.optional(__S(6)),
+          secret_scanning_ai_detection: S.optional(__S(6)),
+          secret_scanning_delegated_alert_dismissal: S.optional(__S(7)),
+          secret_scanning_delegated_bypass: S.optional(__S(6)),
+          secret_scanning_delegated_bypass_options: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
     case 4:
@@ -1800,7 +1375,7 @@ function __c1(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: SimpleUser,
+          owner: __S(1),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -1856,7 +1431,7 @@ function __c1(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(MinimalRepositoryTopicsList),
+          topics: S.optional(__S(2)),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -1864,28 +1439,28 @@ function __c1(j: number): any {
           has_downloads: S.optional(S.Boolean),
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(MinimalRepositoryPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.optional(S.Boolean),
           disabled: S.optional(S.Boolean),
           visibility: S.optional(S.String),
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(MinimalRepositoryPermissions),
+          permissions: S.optional(__S(3)),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(CodeOfConduct),
-          license: S.optional(S.NullOr(MinimalRepositoryLicense)),
+          code_of_conduct: S.optional(__S(4)),
+          license: S.optional(S.NullOr(__S(5))),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(SecurityAndAnalysis)),
-          custom_properties: S.optional(MinimalRepositoryCustomPropertiesMap),
+          security_and_analysis: S.optional(S.NullOr(__S(11))),
+          custom_properties: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "MinimalRepository" });
     case 6:
@@ -1894,7 +1469,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
-          indices: S.optional(SearchResultTextMatchesItemMatchesItemIndicesList),
+          indices: S.optional(__S(14)),
         }),
       ).annotate({
         identifier: "SearchResultTextMatchesItemMatchesItem",
@@ -1904,7 +1479,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SearchResultTextMatchesItemMatchesItem);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1912,13 +1487,13 @@ function __c2(j: number): any {
           object_type: S.optional(S.NullOr(S.String)),
           property: S.optional(S.String),
           fragment: S.optional(S.String),
-          matches: S.optional(SearchResultTextMatchesItemMatchesList),
+          matches: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "SearchResultTextMatchesItem",
       });
     case 2:
-      return S.Array(SearchResultTextMatchesItem);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1928,31 +1503,31 @@ function __c2(j: number): any {
           url: S.String,
           git_url: S.String,
           html_url: S.String,
-          repository: MinimalRepository,
+          repository: __S(13),
           score: S.Number,
           file_size: S.optional(S.Number),
           language: S.optional(S.NullOr(S.String)),
           last_modified_at: S.optional(S.String),
-          line_numbers: S.optional(CodeSearchResultItemLineNumbersList),
-          text_matches: S.optional(SearchResultTextMatches),
+          line_numbers: S.optional(__S(2)),
+          text_matches: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "CodeSearchResultItem" });
     case 4:
-      return S.Array(CodeSearchResultItem);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
           incomplete_results: S.Boolean,
-          items: CodeResponseItemsList,
+          items: __S(20),
         }),
       ).annotate({ identifier: "CodeResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           q: S.String.pipe(T.Query()),
-          sort: S.optional(CommitsRequestSort.pipe(T.Query())),
-          order: S.optional(CommitsRequestOrder.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/search/commits", code: 200 })),
@@ -2001,13 +1576,13 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          author: CommitSearchResultItemCommitAuthor,
-          committer: S.NullOr(NullableGitUser),
+          author: __S(23),
+          committer: S.NullOr(__S(24)),
           comment_count: S.Number,
           message: S.String,
-          tree: CommitSearchResultItemCommitTree,
+          tree: __S(25),
           url: S.String,
-          verification: S.optional(Verification),
+          verification: S.optional(__S(26)),
         }),
       ).annotate({
         identifier: "CommitSearchResultItemCommit",
@@ -2023,7 +1598,7 @@ function __c3(j: number): any {
         identifier: "CommitSearchResultItemParentsItem",
       });
     case 5:
-      return S.Array(CommitSearchResultItemParentsItem);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2031,18 +1606,18 @@ function __c3(j: number): any {
           sha: S.String,
           html_url: S.String,
           comments_url: S.String,
-          commit: CommitSearchResultItemCommit,
-          author: S.NullOr(SimpleUser),
-          committer: S.NullOr(NullableGitUser),
-          parents: CommitSearchResultItemParentsList,
-          repository: MinimalRepository,
+          commit: __S(27),
+          author: S.NullOr(__S(1)),
+          committer: S.NullOr(__S(24)),
+          parents: __S(29),
+          repository: __S(13),
           score: S.Number,
           node_id: S.String,
-          text_matches: S.optional(SearchResultTextMatches),
+          text_matches: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "CommitSearchResultItem" });
     case 7:
-      return S.Array(CommitSearchResultItem);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
@@ -2052,25 +1627,25 @@ function __c4(j: number): any {
         S.Struct({
           total_count: S.Number,
           incomplete_results: S.Boolean,
-          items: CommitsResponseItemsList,
+          items: __S(31),
         }),
       ).annotate({ identifier: "CommitsResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           q: S.String.pipe(T.Query()),
-          sort: S.optional(IssuesAndPullRequestsRequestSort.pipe(T.Query())),
-          order: S.optional(IssuesAndPullRequestsRequestOrder.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           advanced_search: S.optional(S.String.pipe(T.Query())),
-          search_type: S.optional(IssuesAndPullRequestsRequestSearchType.pipe(T.Query())),
+          search_type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/search/issues", code: 200 })),
       ).annotate({
         identifier: "IssuesAndPullRequestsRequest",
       });
     case 2:
-      return S.Array(SimpleUser);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2082,13 +1657,13 @@ function __c4(j: number): any {
           default: S.optional(S.Boolean),
           description: S.optional(S.NullOr(S.String)),
           archived_at: S.optional(S.NullOr(S.String)),
-          archived_by: S.optional(S.NullOr(SimpleUser)),
+          archived_by: S.optional(S.NullOr(__S(1))),
         }),
       ).annotate({
         identifier: "IssueSearchResultItemLabelsItem",
       });
     case 4:
-      return S.Array(IssueSearchResultItemLabelsItem);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2121,21 +1696,21 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IssueFieldValueSingleSelectOption);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
           issue_field_id: S.Number,
           issue_field_name: S.optional(S.String),
           node_id: S.String,
-          data_type: IssueFieldValueDataType,
-          value: S.NullOr(IssueFieldValueValue),
-          single_select_option: S.optional(S.NullOr(IssueFieldValueSingleSelectOption)),
-          multi_select_options: S.optional(S.NullOr(IssueFieldValueMultiSelectOptionsList)),
+          data_type: S.String,
+          value: S.NullOr(S.Unknown),
+          single_select_option: S.optional(S.NullOr(__S(39))),
+          multi_select_options: S.optional(S.NullOr(__S(40))),
         }),
       ).annotate({ identifier: "IssueFieldValue" });
     case 2:
-      return S.Array(IssueFieldValue);
+      return S.Array(__S(41));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2145,10 +1720,10 @@ function __c5(j: number): any {
           id: S.Number,
           node_id: S.String,
           number: S.Number,
-          state: NullableMilestoneState,
+          state: S.String,
           title: S.String,
           description: S.NullOr(S.String),
-          creator: S.NullOr(SimpleUser),
+          creator: S.NullOr(__S(1)),
           open_issues: S.Number,
           closed_issues: S.Number,
           created_at: S.String,
@@ -2210,10 +1785,10 @@ function __c6(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          license: S.NullOr(NullableLicenseSimple),
+          license: S.NullOr(__S(45)),
           forks: S.Number,
-          permissions: S.optional(RepositoryPermissions),
-          owner: SimpleUser,
+          permissions: S.optional(__S(46)),
+          owner: __S(1),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -2269,7 +1844,7 @@ function __c6(j: number): any {
           default_branch: S.String,
           open_issues_count: S.Number,
           is_template: S.optional(S.Boolean),
-          topics: S.optional(RepositoryTopicsList),
+          topics: S.optional(__S(2)),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
           has_wiki: S.Boolean,
@@ -2277,7 +1852,7 @@ function __c6(j: number): any {
           has_downloads: S.Boolean,
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(RepositoryPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
@@ -2291,10 +1866,10 @@ function __c6(j: number): any {
           delete_branch_on_merge: S.optional(S.Boolean),
           allow_update_branch: S.optional(S.Boolean),
           use_squash_pr_title_as_default: S.optional(S.Boolean),
-          squash_merge_commit_title: S.optional(RepositorySquashMergeCommitTitle),
-          squash_merge_commit_message: S.optional(RepositorySquashMergeCommitMessage),
-          merge_commit_title: S.optional(RepositoryMergeCommitTitle),
-          merge_commit_message: S.optional(RepositoryMergeCommitMessage),
+          squash_merge_commit_title: S.optional(S.String),
+          squash_merge_commit_message: S.optional(S.String),
+          merge_commit_title: S.optional(S.String),
+          merge_commit_message: S.optional(S.String),
           allow_merge_commit: S.optional(S.Boolean),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
@@ -2303,7 +1878,7 @@ function __c6(j: number): any {
           master_branch: S.optional(S.String),
           starred_at: S.optional(S.String),
           anonymous_access_enabled: S.optional(S.Boolean),
-          code_search_index_status: S.optional(RepositoryCodeSearchIndexStatus),
+          code_search_index_status: S.optional(__S(47)),
         }),
       ).annotate({ identifier: "Repository" });
     case 1:
@@ -2313,7 +1888,7 @@ function __c6(j: number): any {
           node_id: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          color: S.optional(S.NullOr(IssueTypeColor)),
+          color: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           is_enabled: S.optional(S.Boolean),
@@ -2338,15 +1913,15 @@ function __c6(j: number): any {
           slug: S.optional(S.String),
           node_id: S.String,
           client_id: S.optional(S.String),
-          owner: NullableIntegrationOwner,
+          owner: S.Unknown,
           name: S.String,
           description: S.NullOr(S.String),
           external_url: S.String,
           html_url: S.String,
           created_at: S.String,
           updated_at: S.String,
-          permissions: NullableIntegrationPermissions,
-          events: NullableIntegrationEventsList,
+          permissions: __S(50),
+          events: __S(2),
           installations_count: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NullableIntegration" });
@@ -2369,7 +1944,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pinned_at: S.String,
-          pinned_by: S.NullOr(SimpleUser),
+          pinned_by: S.NullOr(__S(1)),
         }),
       ).annotate({
         identifier: "NullablePinnedIssueComment",
@@ -2392,15 +1967,15 @@ function __c6(j: number): any {
           body_text: S.optional(S.String),
           body_html: S.optional(S.String),
           html_url: S.String,
-          user: S.NullOr(SimpleUser),
+          user: S.NullOr(__S(1)),
           created_at: S.String,
           updated_at: S.String,
           issue_url: S.String,
-          author_association: S.optional(AuthorAssociation),
-          performed_via_github_app: S.optional(S.NullOr(NullableIntegration)),
-          reactions: S.optional(ReactionRollup),
-          pin: S.optional(S.NullOr(NullablePinnedIssueComment)),
-          minimized: S.optional(S.NullOr(NullableIssueCommentMinimized)),
+          author_association: S.optional(S.String),
+          performed_via_github_app: S.optional(S.NullOr(__S(51))),
+          reactions: S.optional(__S(52)),
+          pin: S.optional(S.NullOr(__S(53))),
+          minimized: S.optional(S.NullOr(__S(54))),
         }),
       ).annotate({ identifier: "NullableIssueComment" });
   }
@@ -2422,50 +1997,48 @@ function __c7(j: number): any {
           title: S.String,
           locked: S.Boolean,
           active_lock_reason: S.optional(S.NullOr(S.String)),
-          assignees: S.optional(S.NullOr(IssueSearchResultItemAssigneesList)),
-          user: S.NullOr(SimpleUser),
-          labels: IssueSearchResultItemLabelsList,
-          sub_issues_summary: S.optional(SubIssuesSummary),
-          issue_dependencies_summary: S.optional(IssueDependenciesSummary),
-          issue_field_values: S.optional(IssueSearchResultItemIssueFieldValuesList),
+          assignees: S.optional(S.NullOr(__S(34))),
+          user: S.NullOr(__S(1)),
+          labels: __S(36),
+          sub_issues_summary: S.optional(__S(37)),
+          issue_dependencies_summary: S.optional(__S(38)),
+          issue_field_values: S.optional(__S(42)),
           state: S.String,
           state_reason: S.optional(S.NullOr(S.String)),
-          assignee: S.NullOr(SimpleUser),
-          milestone: S.NullOr(NullableMilestone),
+          assignee: S.NullOr(__S(1)),
+          milestone: S.NullOr(__S(43)),
           comments: S.Number,
           created_at: S.String,
           updated_at: S.String,
           closed_at: S.NullOr(S.String),
-          text_matches: S.optional(SearchResultTextMatches),
-          pull_request: S.optional(IssueSearchResultItemPullRequest),
+          text_matches: S.optional(__S(18)),
+          pull_request: S.optional(__S(44)),
           body: S.optional(S.String),
           score: S.Number,
-          author_association: AuthorAssociation,
+          author_association: S.String,
           draft: S.optional(S.Boolean),
-          repository: S.optional(Repository),
+          repository: S.optional(__S(48)),
           body_html: S.optional(S.String),
           body_text: S.optional(S.String),
           timeline_url: S.optional(S.String),
-          type: S.optional(S.NullOr(IssueType)),
-          performed_via_github_app: S.optional(S.NullOr(NullableIntegration)),
-          pinned_comment: S.optional(S.NullOr(NullableIssueComment)),
-          reactions: S.optional(ReactionRollup),
+          type: S.optional(S.NullOr(__S(49))),
+          performed_via_github_app: S.optional(S.NullOr(__S(51))),
+          pinned_comment: S.optional(S.NullOr(__S(55))),
+          reactions: S.optional(__S(52)),
         }),
       ).annotate({ identifier: "IssueSearchResultItem" });
     case 1:
-      return S.Array(IssueSearchResultItem);
+      return S.Array(__S(56));
     case 2:
-      return S.Array(IssuesAndPullRequestsResponseLexicalFallbackReasonItem);
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
           incomplete_results: S.Boolean,
-          items: IssuesAndPullRequestsResponseItemsList,
-          search_type: IssuesAndPullRequestsResponseSearchType,
-          lexical_fallback_reason: S.optional(
-            IssuesAndPullRequestsResponseLexicalFallbackReasonList,
-          ),
+          items: __S(57),
+          search_type: S.String,
+          lexical_fallback_reason: S.optional(__S(58)),
         }),
       ).annotate({
         identifier: "IssuesAndPullRequestsResponse",
@@ -2475,8 +2048,8 @@ function __c7(j: number): any {
         S.Struct({
           repository_id: S.Number.pipe(T.Query()),
           q: S.String.pipe(T.Query()),
-          sort: S.optional(LabelsRequestSort.pipe(T.Query())),
-          order: S.optional(LabelsRequestOrder.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/search/labels", code: 200 })),
@@ -2492,19 +2065,19 @@ function __c7(j: number): any {
           default: S.Boolean,
           description: S.NullOr(S.String),
           archived_at: S.NullOr(S.String),
-          archived_by: S.NullOr(SimpleUser),
+          archived_by: S.NullOr(__S(1)),
           score: S.Number,
-          text_matches: S.optional(SearchResultTextMatches),
+          text_matches: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "LabelSearchResultItem" });
     case 6:
-      return S.Array(LabelSearchResultItem);
+      return S.Array(__S(61));
     case 7:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
           incomplete_results: S.Boolean,
-          items: LabelsResponseItemsList,
+          items: __S(62),
         }),
       ).annotate({ identifier: "LabelsResponse" });
   }
@@ -2515,8 +2088,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           q: S.String.pipe(T.Query()),
-          sort: S.optional(ReposRequestSort.pipe(T.Query())),
-          order: S.optional(ReposRequestOrder.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/search/repositories", code: 200 })),
@@ -2540,7 +2113,7 @@ function __c8(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: S.NullOr(SimpleUser),
+          owner: S.NullOr(__S(1)),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -2602,7 +2175,7 @@ function __c8(j: number): any {
           forks: S.Number,
           open_issues: S.Number,
           watchers: S.Number,
-          topics: S.optional(RepoSearchResultItemTopicsList),
+          topics: S.optional(__S(2)),
           mirror_url: S.NullOr(S.String),
           has_issues: S.Boolean,
           has_projects: S.Boolean,
@@ -2611,13 +2184,13 @@ function __c8(j: number): any {
           has_downloads: S.Boolean,
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(RepoSearchResultItemPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.Boolean,
           disabled: S.Boolean,
           visibility: S.optional(S.String),
-          license: S.NullOr(NullableLicenseSimple),
-          permissions: S.optional(RepoSearchResultItemPermissions),
-          text_matches: S.optional(SearchResultTextMatches),
+          license: S.NullOr(__S(45)),
+          permissions: S.optional(__S(65)),
+          text_matches: S.optional(__S(18)),
           temp_clone_token: S.optional(S.String),
           allow_merge_commit: S.optional(S.Boolean),
           allow_squash_merge: S.optional(S.Boolean),
@@ -2630,13 +2203,13 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "RepoSearchResultItem" });
     case 3:
-      return S.Array(RepoSearchResultItem);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
           incomplete_results: S.Boolean,
-          items: ReposResponseItemsList,
+          items: __S(67),
         }),
       ).annotate({ identifier: "ReposResponse" });
     case 5:
@@ -2661,7 +2234,7 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          topic_relation: S.optional(TopicSearchResultItemRelatedItemTopicRelation),
+          topic_relation: S.optional(__S(70)),
         }),
       ).annotate({
         identifier: "TopicSearchResultItemRelatedItem",
@@ -2671,7 +2244,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TopicSearchResultItemRelatedItem);
+      return S.Array(__S(71));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2688,27 +2261,27 @@ function __c9(j: number): any {
           score: S.Number,
           repository_count: S.optional(S.NullOr(S.Number)),
           logo_url: S.optional(S.NullOr(S.String)),
-          text_matches: S.optional(SearchResultTextMatches),
-          related: S.optional(S.NullOr(TopicSearchResultItemRelatedList)),
-          aliases: S.optional(S.NullOr(TopicSearchResultItemAliasesList)),
+          text_matches: S.optional(__S(18)),
+          related: S.optional(S.NullOr(__S(72))),
+          aliases: S.optional(S.NullOr(__S(72))),
         }),
       ).annotate({ identifier: "TopicSearchResultItem" });
     case 2:
-      return S.Array(TopicSearchResultItem);
+      return S.Array(__S(73));
     case 3:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
           incomplete_results: S.Boolean,
-          items: TopicsResponseItemsList,
+          items: __S(74),
         }),
       ).annotate({ identifier: "TopicsResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           q: S.String.pipe(T.Query()),
-          sort: S.optional(UsersRequestSort.pipe(T.Query())),
-          order: S.optional(UsersRequestOrder.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/search/users", code: 200 })),
@@ -2746,7 +2319,7 @@ function __c9(j: number): any {
           location: S.optional(S.NullOr(S.String)),
           site_admin: S.Boolean,
           hireable: S.optional(S.NullOr(S.Boolean)),
-          text_matches: S.optional(SearchResultTextMatches),
+          text_matches: S.optional(__S(18)),
           blog: S.optional(S.NullOr(S.String)),
           company: S.optional(S.NullOr(S.String)),
           suspended_at: S.optional(S.NullOr(S.String)),
@@ -2754,14 +2327,43 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "UserSearchResultItem" });
     case 6:
-      return S.Array(UserSearchResultItem);
+      return S.Array(__S(77));
     case 7:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
           incomplete_results: S.Boolean,
-          items: UsersResponseItemsList,
+          items: __S(78),
         }),
       ).annotate({ identifier: "UsersResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
   }
 }

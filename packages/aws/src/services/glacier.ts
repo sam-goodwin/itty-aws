@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://glacier.amazonaws.com/doc/2012-06-01/");
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Glacier", serviceShapeName: "Glacier" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "glacier" });
@@ -168,37 +170,21 @@ export interface AbortMultipartUploadInput {
   vaultName: string;
   uploadId: string;
 }
-const AbortMultipartUploadInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AbortMultipartUploadInput>;
 export interface AbortMultipartUploadResponse {}
-const AbortMultipartUploadResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AbortMultipartUploadResponse>;
 export interface AbortVaultLockInput {
   accountId: string;
   vaultName: string;
 }
-const AbortVaultLockInput = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AbortVaultLockInput>;
 export interface AbortVaultLockResponse {}
-const AbortVaultLockResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AbortVaultLockResponse>;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c0, 4);
 export interface AddTagsToVaultInput {
   accountId: string;
   vaultName: string;
   Tags?: { [key: string]: string | undefined };
 }
-const AddTagsToVaultInput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AddTagsToVaultInput>;
 export interface AddTagsToVaultResponse {}
-const AddTagsToVaultResponse = AbortVaultLockResponse as any as S.Schema<AddTagsToVaultResponse>;
 export interface CompleteMultipartUploadInput {
   accountId: string;
   vaultName: string;
@@ -206,92 +192,52 @@ export interface CompleteMultipartUploadInput {
   archiveSize?: string;
   checksum?: string;
 }
-const CompleteMultipartUploadInput = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CompleteMultipartUploadInput>;
 export interface ArchiveCreationOutput {
   location?: string;
   checksum?: string;
   archiveId?: string;
 }
-const ArchiveCreationOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ArchiveCreationOutput>;
 export interface CompleteVaultLockInput {
   accountId: string;
   vaultName: string;
   lockId: string;
 }
-const CompleteVaultLockInput = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CompleteVaultLockInput>;
 export interface CompleteVaultLockResponse {}
-const CompleteVaultLockResponse =
-  AbortMultipartUploadResponse as any as S.Schema<CompleteVaultLockResponse>;
 export interface CreateVaultInput {
   accountId: string;
   vaultName: string;
 }
-const CreateVaultInput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CreateVaultInput>;
 export interface CreateVaultOutput {
   location?: string;
 }
-const CreateVaultOutput = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CreateVaultOutput>;
 export interface DeleteArchiveInput {
   accountId: string;
   vaultName: string;
   archiveId: string;
 }
-const DeleteArchiveInput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteArchiveInput>;
 export interface DeleteArchiveResponse {}
-const DeleteArchiveResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteArchiveResponse>;
 export interface DeleteVaultInput {
   accountId: string;
   vaultName: string;
 }
-const DeleteVaultInput = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DeleteVaultInput>;
 export interface DeleteVaultResponse {}
-const DeleteVaultResponse = DeleteArchiveResponse as any as S.Schema<DeleteVaultResponse>;
 export interface DeleteVaultAccessPolicyInput {
   accountId: string;
   vaultName: string;
 }
-const DeleteVaultAccessPolicyInput = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteVaultAccessPolicyInput>;
 export interface DeleteVaultAccessPolicyResponse {}
-const DeleteVaultAccessPolicyResponse =
-  AbortMultipartUploadResponse as any as S.Schema<DeleteVaultAccessPolicyResponse>;
 export interface DeleteVaultNotificationsInput {
   accountId: string;
   vaultName: string;
 }
-const DeleteVaultNotificationsInput = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteVaultNotificationsInput>;
 export interface DeleteVaultNotificationsResponse {}
-const DeleteVaultNotificationsResponse =
-  AbortMultipartUploadResponse as any as S.Schema<DeleteVaultNotificationsResponse>;
 export interface DescribeJobInput {
   accountId: string;
   vaultName: string;
   jobId: string;
 }
-const DescribeJobInput = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DescribeJobInput>;
 export type ActionCode = "ArchiveRetrieval" | "InventoryRetrieval" | "Select" | (string & {});
-const ActionCode = S.String;
-
 export type StatusCode = "InProgress" | "Succeeded" | "Failed" | (string & {});
-const StatusCode = S.String;
-
 export type Size = number;
 export interface InventoryRetrievalJobDescription {
   Format?: string;
@@ -300,13 +246,7 @@ export interface InventoryRetrievalJobDescription {
   Limit?: string;
   Marker?: string;
 }
-const InventoryRetrievalJobDescription = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<InventoryRetrievalJobDescription>;
 export type FileHeaderInfo = "USE" | "IGNORE" | "NONE" | (string & {});
-const FileHeaderInfo = S.String;
-
 export interface CSVInput {
   FileHeaderInfo?: FileHeaderInfo;
   Comments?: string;
@@ -315,17 +255,11 @@ export interface CSVInput {
   FieldDelimiter?: string;
   QuoteCharacter?: string;
 }
-const CSVInput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CSVInput>;
 export interface InputSerialization {
   csv?: CSVInput;
 }
-const InputSerialization = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<InputSerialization>;
 export type ExpressionType = "SQL" | (string & {});
-const ExpressionType = S.String;
-
 export type QuoteFields = "ALWAYS" | "ASNEEDED" | (string & {});
-const QuoteFields = S.String;
-
 export interface CSVOutput {
   QuoteFields?: QuoteFields;
   QuoteEscapeCharacter?: string;
@@ -333,27 +267,21 @@ export interface CSVOutput {
   FieldDelimiter?: string;
   QuoteCharacter?: string;
 }
-const CSVOutput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CSVOutput>;
 export interface OutputSerialization {
   csv?: CSVOutput;
 }
-const OutputSerialization = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<OutputSerialization>;
 export interface SelectParameters {
   InputSerialization?: InputSerialization;
   ExpressionType?: ExpressionType;
   Expression?: string;
   OutputSerialization?: OutputSerialization;
 }
-const SelectParameters = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<SelectParameters>;
 export type EncryptionType = "aws:kms" | "AES256" | (string & {});
-const EncryptionType = S.String;
-
 export interface Encryption {
   EncryptionType?: EncryptionType;
   KMSKeyId?: string;
   KMSContext?: string;
 }
-const Encryption = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Encryption>;
 export type CannedACL =
   | "private"
   | "public-read"
@@ -363,11 +291,7 @@ export type CannedACL =
   | "bucket-owner-read"
   | "bucket-owner-full-control"
   | (string & {});
-const CannedACL = S.String;
-
 export type Type = "AmazonCustomerByEmail" | "CanonicalUser" | "Group" | (string & {});
-const Type = S.String;
-
 export interface Grantee {
   Type: Type;
   DisplayName?: string;
@@ -375,7 +299,6 @@ export interface Grantee {
   ID?: string;
   EmailAddress?: string;
 }
-const Grantee = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Grantee>;
 export type Permission =
   | "FULL_CONTROL"
   | "WRITE"
@@ -383,20 +306,13 @@ export type Permission =
   | "READ"
   | "READ_ACP"
   | (string & {});
-const Permission = S.String;
-
 export interface Grant {
   Grantee?: Grantee;
   Permission?: Permission;
 }
-const Grant = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Grant>;
 export type AccessControlPolicyList = Grant[];
-const AccessControlPolicyList = /*@__PURE__*/ __L.at(__c3, 2);
 export type Hashmap = { [key: string]: string | undefined };
-const Hashmap = TagMap as any as S.Schema<Hashmap>;
 export type StorageClass = "STANDARD" | "REDUCED_REDUNDANCY" | "STANDARD_IA" | (string & {});
-const StorageClass = S.String;
-
 export interface S3Location {
   BucketName?: string;
   Prefix?: string;
@@ -407,11 +323,9 @@ export interface S3Location {
   UserMetadata?: { [key: string]: string | undefined };
   StorageClass?: StorageClass;
 }
-const S3Location = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<S3Location>;
 export interface OutputLocation {
   S3?: S3Location;
 }
-const OutputLocation = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<OutputLocation>;
 export interface GlacierJobDescription {
   JobId?: string;
   JobDescription?: string;
@@ -435,15 +349,10 @@ export interface GlacierJobDescription {
   SelectParameters?: SelectParameters;
   OutputLocation?: OutputLocation;
 }
-const GlacierJobDescription = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GlacierJobDescription>;
 export interface DescribeVaultInput {
   accountId: string;
   vaultName: string;
 }
-const DescribeVaultInput = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DescribeVaultInput>;
 export interface DescribeVaultOutput {
   VaultARN?: string;
   VaultName?: string;
@@ -452,39 +361,26 @@ export interface DescribeVaultOutput {
   NumberOfArchives?: number;
   SizeInBytes?: number;
 }
-const DescribeVaultOutput = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<DescribeVaultOutput>;
 export interface GetDataRetrievalPolicyInput {
   accountId: string;
 }
-const GetDataRetrievalPolicyInput = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetDataRetrievalPolicyInput>;
 export interface DataRetrievalRule {
   Strategy?: string;
   BytesPerHour?: number;
 }
-const DataRetrievalRule = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DataRetrievalRule>;
 export type DataRetrievalRulesList = DataRetrievalRule[];
-const DataRetrievalRulesList = /*@__PURE__*/ __L.at(__c4, 2);
 export interface DataRetrievalPolicy {
   Rules?: DataRetrievalRule[];
 }
-const DataRetrievalPolicy = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<DataRetrievalPolicy>;
 export interface GetDataRetrievalPolicyOutput {
   Policy?: DataRetrievalPolicy;
 }
-const GetDataRetrievalPolicyOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetDataRetrievalPolicyOutput>;
 export interface GetJobOutputInput {
   accountId: string;
   vaultName: string;
   jobId: string;
   range?: string;
 }
-const GetJobOutputInput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GetJobOutputInput>;
 export type Httpstatus = number;
 export interface GetJobOutputOutput {
   body?: T.StreamingOutputBody;
@@ -495,73 +391,44 @@ export interface GetJobOutputOutput {
   contentType?: string;
   archiveDescription?: string;
 }
-const GetJobOutputOutput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GetJobOutputOutput>;
 export interface GetVaultAccessPolicyInput {
   accountId: string;
   vaultName: string;
 }
-const GetVaultAccessPolicyInput = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetVaultAccessPolicyInput>;
 export interface VaultAccessPolicy {
   Policy?: string;
 }
-const VaultAccessPolicy = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<VaultAccessPolicy>;
 export interface GetVaultAccessPolicyOutput {
   policy?: VaultAccessPolicy;
 }
-const GetVaultAccessPolicyOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetVaultAccessPolicyOutput>;
 export interface GetVaultLockInput {
   accountId: string;
   vaultName: string;
 }
-const GetVaultLockInput = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GetVaultLockInput>;
 export interface GetVaultLockOutput {
   Policy?: string;
   State?: string;
   ExpirationDate?: string;
   CreationDate?: string;
 }
-const GetVaultLockOutput = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetVaultLockOutput>;
 export interface GetVaultNotificationsInput {
   accountId: string;
   vaultName: string;
 }
-const GetVaultNotificationsInput = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetVaultNotificationsInput>;
 export type NotificationEventList = string[];
-const NotificationEventList = /*@__PURE__*/ __L.at(__c5, 5);
 export interface VaultNotificationConfig {
   SNSTopic?: string;
   Events?: string[];
 }
-const VaultNotificationConfig = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<VaultNotificationConfig>;
 export interface GetVaultNotificationsOutput {
   vaultNotificationConfig?: VaultNotificationConfig;
 }
-const GetVaultNotificationsOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetVaultNotificationsOutput>;
 export interface InventoryRetrievalJobInput {
   StartDate?: string;
   EndDate?: string;
   Limit?: string;
   Marker?: string;
 }
-const InventoryRetrievalJobInput = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<InventoryRetrievalJobInput>;
 export interface JobParameters {
   Format?: string;
   Type?: string;
@@ -574,57 +441,37 @@ export interface JobParameters {
   SelectParameters?: SelectParameters;
   OutputLocation?: OutputLocation;
 }
-const JobParameters = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<JobParameters>;
 export interface InitiateJobInput {
   accountId: string;
   vaultName: string;
   jobParameters?: JobParameters;
 }
-const InitiateJobInput = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<InitiateJobInput>;
 export interface InitiateJobOutput {
   location?: string;
   jobId?: string;
   jobOutputPath?: string;
 }
-const InitiateJobOutput = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<InitiateJobOutput>;
 export interface InitiateMultipartUploadInput {
   accountId: string;
   vaultName: string;
   archiveDescription?: string;
   partSize?: string;
 }
-const InitiateMultipartUploadInput = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<InitiateMultipartUploadInput>;
 export interface InitiateMultipartUploadOutput {
   location?: string;
   uploadId?: string;
 }
-const InitiateMultipartUploadOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<InitiateMultipartUploadOutput>;
 export interface VaultLockPolicy {
   Policy?: string;
 }
-const VaultLockPolicy = VaultAccessPolicy as any as S.Schema<VaultLockPolicy>;
 export interface InitiateVaultLockInput {
   accountId: string;
   vaultName: string;
   policy?: VaultLockPolicy;
 }
-const InitiateVaultLockInput = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<InitiateVaultLockInput>;
 export interface InitiateVaultLockOutput {
   lockId?: string;
 }
-const InitiateVaultLockOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<InitiateVaultLockOutput>;
 export interface ListJobsInput {
   accountId: string;
   vaultName: string;
@@ -633,24 +480,17 @@ export interface ListJobsInput {
   statuscode?: string;
   completed?: string;
 }
-const ListJobsInput = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ListJobsInput>;
 export type JobList = GlacierJobDescription[];
-const JobList = /*@__PURE__*/ __L.at(__c7, 1);
 export interface ListJobsOutput {
   JobList?: GlacierJobDescription[];
   Marker?: string;
 }
-const ListJobsOutput = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ListJobsOutput>;
 export interface ListMultipartUploadsInput {
   accountId: string;
   vaultName: string;
   limit?: number;
   marker?: string;
 }
-const ListMultipartUploadsInput = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListMultipartUploadsInput>;
 export interface UploadListElement {
   MultipartUploadId?: string;
   VaultARN?: string;
@@ -658,17 +498,11 @@ export interface UploadListElement {
   PartSizeInBytes?: number;
   CreationDate?: string;
 }
-const UploadListElement = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<UploadListElement>;
 export type UploadsList = UploadListElement[];
-const UploadsList = /*@__PURE__*/ __L.at(__c7, 5);
 export interface ListMultipartUploadsOutput {
   UploadsList?: UploadListElement[];
   Marker?: string;
 }
-const ListMultipartUploadsOutput = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListMultipartUploadsOutput>;
 export interface ListPartsInput {
   accountId: string;
   vaultName: string;
@@ -676,14 +510,11 @@ export interface ListPartsInput {
   marker?: string;
   limit?: number;
 }
-const ListPartsInput = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ListPartsInput>;
 export interface PartListElement {
   RangeInBytes?: string;
   SHA256TreeHash?: string;
 }
-const PartListElement = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<PartListElement>;
 export type PartList = PartListElement[];
-const PartList = /*@__PURE__*/ __L.at(__c8, 1);
 export interface ListPartsOutput {
   MultipartUploadId?: string;
   VaultARN?: string;
@@ -693,123 +524,65 @@ export interface ListPartsOutput {
   Parts?: PartListElement[];
   Marker?: string;
 }
-const ListPartsOutput = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ListPartsOutput>;
 export interface ListProvisionedCapacityInput {
   accountId: string;
 }
-const ListProvisionedCapacityInput = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListProvisionedCapacityInput>;
 export interface ProvisionedCapacityDescription {
   CapacityId?: string;
   StartDate?: string;
   ExpirationDate?: string;
 }
-const ProvisionedCapacityDescription = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ProvisionedCapacityDescription>;
 export type ProvisionedCapacityList = ProvisionedCapacityDescription[];
-const ProvisionedCapacityList = /*@__PURE__*/ __L.at(__c8, 5);
 export interface ListProvisionedCapacityOutput {
   ProvisionedCapacityList?: ProvisionedCapacityDescription[];
 }
-const ListProvisionedCapacityOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListProvisionedCapacityOutput>;
 export interface ListTagsForVaultInput {
   accountId: string;
   vaultName: string;
 }
-const ListTagsForVaultInput = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListTagsForVaultInput>;
 export interface ListTagsForVaultOutput {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForVaultOutput = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListTagsForVaultOutput>;
 export interface ListVaultsInput {
   accountId: string;
   marker?: string;
   limit?: number;
 }
-const ListVaultsInput = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ListVaultsInput>;
 export type VaultList = DescribeVaultOutput[];
-const VaultList = /*@__PURE__*/ __L.at(__c9, 2);
 export interface ListVaultsOutput {
   VaultList?: DescribeVaultOutput[];
   Marker?: string;
 }
-const ListVaultsOutput = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ListVaultsOutput>;
 export interface PurchaseProvisionedCapacityInput {
   accountId: string;
 }
-const PurchaseProvisionedCapacityInput = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<PurchaseProvisionedCapacityInput>;
 export interface PurchaseProvisionedCapacityOutput {
   capacityId?: string;
 }
-const PurchaseProvisionedCapacityOutput = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<PurchaseProvisionedCapacityOutput>;
 export type TagKeyList = string[];
-const TagKeyList = NotificationEventList as any as S.Schema<TagKeyList>;
 export interface RemoveTagsFromVaultInput {
   accountId: string;
   vaultName: string;
   TagKeys?: string[];
 }
-const RemoveTagsFromVaultInput = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<RemoveTagsFromVaultInput>;
 export interface RemoveTagsFromVaultResponse {}
-const RemoveTagsFromVaultResponse =
-  AbortMultipartUploadResponse as any as S.Schema<RemoveTagsFromVaultResponse>;
 export interface SetDataRetrievalPolicyInput {
   accountId: string;
   Policy?: DataRetrievalPolicy;
 }
-const SetDataRetrievalPolicyInput = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<SetDataRetrievalPolicyInput>;
 export interface SetDataRetrievalPolicyResponse {}
-const SetDataRetrievalPolicyResponse =
-  AbortMultipartUploadResponse as any as S.Schema<SetDataRetrievalPolicyResponse>;
 export interface SetVaultAccessPolicyInput {
   accountId: string;
   vaultName: string;
   policy?: VaultAccessPolicy;
 }
-const SetVaultAccessPolicyInput = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<SetVaultAccessPolicyInput>;
 export interface SetVaultAccessPolicyResponse {}
-const SetVaultAccessPolicyResponse =
-  AbortMultipartUploadResponse as any as S.Schema<SetVaultAccessPolicyResponse>;
 export interface SetVaultNotificationsInput {
   accountId: string;
   vaultName: string;
   vaultNotificationConfig?: VaultNotificationConfig;
 }
-const SetVaultNotificationsInput = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<SetVaultNotificationsInput>;
 export interface SetVaultNotificationsResponse {}
-const SetVaultNotificationsResponse =
-  AbortMultipartUploadResponse as any as S.Schema<SetVaultNotificationsResponse>;
 export interface UploadArchiveInput {
   vaultName: string;
   accountId: string;
@@ -817,7 +590,6 @@ export interface UploadArchiveInput {
   checksum?: string;
   body?: T.StreamingInputBody;
 }
-const UploadArchiveInput = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<UploadArchiveInput>;
 export interface UploadMultipartPartInput {
   accountId: string;
   vaultName: string;
@@ -826,17 +598,9 @@ export interface UploadMultipartPartInput {
   range?: string;
   body?: T.StreamingInputBody;
 }
-const UploadMultipartPartInput = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<UploadMultipartPartInput>;
 export interface UploadMultipartPartOutput {
   checksum?: string;
 }
-const UploadMultipartPartOutput = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<UploadMultipartPartOutput>;
 export type AbortMultipartUploadError =
   | InvalidParameterValueException
   | MissingParameterValueException
@@ -870,8 +634,8 @@ export const abortMultipartUpload: API.OperationMethod<
   AbortMultipartUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AbortMultipartUploadInput,
-  output: AbortMultipartUploadResponse,
+  input: __S(0) as any as S.Schema<AbortMultipartUploadInput>,
+  output: __S(1) as any as S.Schema<AbortMultipartUploadResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -915,8 +679,8 @@ export const abortVaultLock: API.OperationMethod<
   AbortVaultLockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AbortVaultLockInput,
-  output: AbortVaultLockResponse,
+  input: __S(2) as any as S.Schema<AbortVaultLockInput>,
+  output: __S(3) as any as S.Schema<AbortVaultLockResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -950,8 +714,8 @@ export const addTagsToVault: API.OperationMethod<
   AddTagsToVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddTagsToVaultInput,
-  output: AddTagsToVaultResponse,
+  input: __S(5) as any as S.Schema<AddTagsToVaultInput>,
+  output: __S(3) as any as S.Schema<AddTagsToVaultResponse>,
   errors: [
     InvalidParameterValueException,
     LimitExceededException,
@@ -1019,8 +783,8 @@ export const completeMultipartUpload: API.OperationMethod<
   CompleteMultipartUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CompleteMultipartUploadInput,
-  output: ArchiveCreationOutput,
+  input: __S(6) as any as S.Schema<CompleteMultipartUploadInput>,
+  output: __S(7) as any as S.Schema<ArchiveCreationOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1064,8 +828,8 @@ export const completeVaultLock: API.OperationMethod<
   CompleteVaultLockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CompleteVaultLockInput,
-  output: CompleteVaultLockResponse,
+  input: __S(8) as any as S.Schema<CompleteVaultLockInput>,
+  output: __S(1) as any as S.Schema<CompleteVaultLockResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1115,8 +879,8 @@ export const createVault: API.OperationMethod<
   CreateVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVaultInput,
-  output: CreateVaultOutput,
+  input: __S(9) as any as S.Schema<CreateVaultInput>,
+  output: __S(10) as any as S.Schema<CreateVaultOutput>,
   errors: [
     InvalidParameterValueException,
     LimitExceededException,
@@ -1168,8 +932,8 @@ export const deleteArchive: API.OperationMethod<
   DeleteArchiveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteArchiveInput,
-  output: DeleteArchiveResponse,
+  input: __S(11) as any as S.Schema<DeleteArchiveInput>,
+  output: __S(12) as any as S.Schema<DeleteArchiveResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1218,8 +982,8 @@ export const deleteVault: API.OperationMethod<
   DeleteVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVaultInput,
-  output: DeleteVaultResponse,
+  input: __S(13) as any as S.Schema<DeleteVaultInput>,
+  output: __S(12) as any as S.Schema<DeleteVaultResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1255,8 +1019,8 @@ export const deleteVaultAccessPolicy: API.OperationMethod<
   DeleteVaultAccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVaultAccessPolicyInput,
-  output: DeleteVaultAccessPolicyResponse,
+  input: __S(14) as any as S.Schema<DeleteVaultAccessPolicyInput>,
+  output: __S(1) as any as S.Schema<DeleteVaultAccessPolicyResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1298,8 +1062,8 @@ export const deleteVaultNotifications: API.OperationMethod<
   DeleteVaultNotificationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVaultNotificationsInput,
-  output: DeleteVaultNotificationsResponse,
+  input: __S(15) as any as S.Schema<DeleteVaultNotificationsInput>,
+  output: __S(1) as any as S.Schema<DeleteVaultNotificationsResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1349,8 +1113,8 @@ export const describeJob: API.OperationMethod<
   DescribeJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeJobInput,
-  output: GlacierJobDescription,
+  input: __S(16) as any as S.Schema<DescribeJobInput>,
+  output: __S(29) as any as S.Schema<GlacierJobDescription>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1397,8 +1161,8 @@ export const describeVault: API.OperationMethod<
   DescribeVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeVaultInput,
-  output: DescribeVaultOutput,
+  input: __S(30) as any as S.Schema<DescribeVaultInput>,
+  output: __S(31) as any as S.Schema<DescribeVaultOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1428,8 +1192,8 @@ export const getDataRetrievalPolicy: API.OperationMethod<
   GetDataRetrievalPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataRetrievalPolicyInput,
-  output: GetDataRetrievalPolicyOutput,
+  input: __S(32) as any as S.Schema<GetDataRetrievalPolicyInput>,
+  output: __S(36) as any as S.Schema<GetDataRetrievalPolicyOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1496,8 +1260,8 @@ export const getJobOutput: API.OperationMethod<
   GetJobOutputError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJobOutputInput,
-  output: GetJobOutputOutput,
+  input: __S(37) as any as S.Schema<GetJobOutputInput>,
+  output: __S(38) as any as S.Schema<GetJobOutputOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1531,8 +1295,8 @@ export const getVaultAccessPolicy: API.OperationMethod<
   GetVaultAccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVaultAccessPolicyInput,
-  output: GetVaultAccessPolicyOutput,
+  input: __S(39) as any as S.Schema<GetVaultAccessPolicyInput>,
+  output: __S(41) as any as S.Schema<GetVaultAccessPolicyOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1583,8 +1347,8 @@ export const getVaultLock: API.OperationMethod<
   GetVaultLockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVaultLockInput,
-  output: GetVaultLockOutput,
+  input: __S(42) as any as S.Schema<GetVaultLockInput>,
+  output: __S(43) as any as S.Schema<GetVaultLockOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1629,8 +1393,8 @@ export const getVaultNotifications: API.OperationMethod<
   GetVaultNotificationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVaultNotificationsInput,
-  output: GetVaultNotificationsOutput,
+  input: __S(44) as any as S.Schema<GetVaultNotificationsInput>,
+  output: __S(47) as any as S.Schema<GetVaultNotificationsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1664,8 +1428,8 @@ export const initiateJob: API.OperationMethod<
   InitiateJobError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: InitiateJobInput,
-  output: InitiateJobOutput,
+  input: __S(50) as any as S.Schema<InitiateJobInput>,
+  output: __S(51) as any as S.Schema<InitiateJobOutput>,
   errors: [
     InsufficientCapacityException,
     InvalidParameterValueException,
@@ -1728,8 +1492,8 @@ export const initiateMultipartUpload: API.OperationMethod<
   InitiateMultipartUploadError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: InitiateMultipartUploadInput,
-  output: InitiateMultipartUploadOutput,
+  input: __S(52) as any as S.Schema<InitiateMultipartUploadInput>,
+  output: __S(53) as any as S.Schema<InitiateMultipartUploadOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1789,8 +1553,8 @@ export const initiateVaultLock: API.OperationMethod<
   InitiateVaultLockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: InitiateVaultLockInput,
-  output: InitiateVaultLockOutput,
+  input: __S(54) as any as S.Schema<InitiateVaultLockInput>,
+  output: __S(55) as any as S.Schema<InitiateVaultLockOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1853,8 +1617,8 @@ export const listJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GlacierJobDescription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListJobsInput,
-  output: ListJobsOutput,
+  input: __S(56) as any as S.Schema<ListJobsInput>,
+  output: __S(58) as any as S.Schema<ListJobsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1915,8 +1679,8 @@ export const listMultipartUploads: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UploadListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListMultipartUploadsInput,
-  output: ListMultipartUploadsOutput,
+  input: __S(59) as any as S.Schema<ListMultipartUploadsInput>,
+  output: __S(62) as any as S.Schema<ListMultipartUploadsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -1974,8 +1738,8 @@ export const listParts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PartListElement
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPartsInput,
-  output: ListPartsOutput,
+  input: __S(63) as any as S.Schema<ListPartsInput>,
+  output: __S(66) as any as S.Schema<ListPartsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2010,8 +1774,8 @@ export const listProvisionedCapacity: API.OperationMethod<
   ListProvisionedCapacityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProvisionedCapacityInput,
-  output: ListProvisionedCapacityOutput,
+  input: __S(67) as any as S.Schema<ListProvisionedCapacityInput>,
+  output: __S(70) as any as S.Schema<ListProvisionedCapacityOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2041,8 +1805,8 @@ export const listTagsForVault: API.OperationMethod<
   ListTagsForVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForVaultInput,
-  output: ListTagsForVaultOutput,
+  input: __S(71) as any as S.Schema<ListTagsForVaultInput>,
+  output: __S(72) as any as S.Schema<ListTagsForVaultOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2091,8 +1855,8 @@ export const listVaults: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DescribeVaultOutput
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListVaultsInput,
-  output: ListVaultsOutput,
+  input: __S(73) as any as S.Schema<ListVaultsInput>,
+  output: __S(75) as any as S.Schema<ListVaultsOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2127,8 +1891,8 @@ export const purchaseProvisionedCapacity: API.OperationMethod<
   PurchaseProvisionedCapacityError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurchaseProvisionedCapacityInput,
-  output: PurchaseProvisionedCapacityOutput,
+  input: __S(76) as any as S.Schema<PurchaseProvisionedCapacityInput>,
+  output: __S(77) as any as S.Schema<PurchaseProvisionedCapacityOutput>,
   errors: [
     InvalidParameterValueException,
     LimitExceededException,
@@ -2160,8 +1924,8 @@ export const removeTagsFromVault: API.OperationMethod<
   RemoveTagsFromVaultError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveTagsFromVaultInput,
-  output: RemoveTagsFromVaultResponse,
+  input: __S(78) as any as S.Schema<RemoveTagsFromVaultInput>,
+  output: __S(1) as any as S.Schema<RemoveTagsFromVaultResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2195,8 +1959,8 @@ export const setDataRetrievalPolicy: API.OperationMethod<
   SetDataRetrievalPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetDataRetrievalPolicyInput,
-  output: SetDataRetrievalPolicyResponse,
+  input: __S(79) as any as S.Schema<SetDataRetrievalPolicyInput>,
+  output: __S(1) as any as S.Schema<SetDataRetrievalPolicyResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2229,8 +1993,8 @@ export const setVaultAccessPolicy: API.OperationMethod<
   SetVaultAccessPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetVaultAccessPolicyInput,
-  output: SetVaultAccessPolicyResponse,
+  input: __S(80) as any as S.Schema<SetVaultAccessPolicyInput>,
+  output: __S(1) as any as S.Schema<SetVaultAccessPolicyResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2289,8 +2053,8 @@ export const setVaultNotifications: API.OperationMethod<
   SetVaultNotificationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetVaultNotificationsInput,
-  output: SetVaultNotificationsResponse,
+  input: __S(81) as any as S.Schema<SetVaultNotificationsInput>,
+  output: __S(1) as any as S.Schema<SetVaultNotificationsResponse>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2352,8 +2116,8 @@ export const uploadArchive: API.OperationMethod<
   UploadArchiveError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadArchiveInput,
-  output: ArchiveCreationOutput,
+  input: __S(82) as any as S.Schema<UploadArchiveInput>,
+  output: __S(7) as any as S.Schema<ArchiveCreationOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2425,8 +2189,8 @@ export const uploadMultipartPart: API.OperationMethod<
   UploadMultipartPartError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadMultipartPartInput,
-  output: UploadMultipartPartOutput,
+  input: __S(83) as any as S.Schema<UploadMultipartPartInput>,
+  output: __S(84) as any as S.Schema<UploadMultipartPartOutput>,
   errors: [
     InvalidParameterValueException,
     MissingParameterValueException,
@@ -2498,7 +2262,7 @@ function __c0(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.HttpLabel("accountId")),
           vaultName: S.String.pipe(T.HttpLabel("vaultName")),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(4)),
         }).pipe(
           T.all(
             ns,
@@ -2707,7 +2471,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          FileHeaderInfo: S.optional(FileHeaderInfo),
+          FileHeaderInfo: S.optional(S.String),
           Comments: S.optional(S.String),
           QuoteEscapeCharacter: S.optional(S.String),
           RecordDelimiter: S.optional(S.String),
@@ -2716,13 +2480,13 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "CSVInput" });
     case 3:
-      return S.suspend(() => S.Struct({ csv: S.optional(CSVInput) })).annotate({
+      return S.suspend(() => S.Struct({ csv: S.optional(__S(18)) })).annotate({
         identifier: "InputSerialization",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          QuoteFields: S.optional(QuoteFields),
+          QuoteFields: S.optional(S.String),
           QuoteEscapeCharacter: S.optional(S.String),
           RecordDelimiter: S.optional(S.String),
           FieldDelimiter: S.optional(S.String),
@@ -2730,22 +2494,22 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "CSVOutput" });
     case 5:
-      return S.suspend(() => S.Struct({ csv: S.optional(CSVOutput) })).annotate({
+      return S.suspend(() => S.Struct({ csv: S.optional(__S(20)) })).annotate({
         identifier: "OutputSerialization",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          InputSerialization: S.optional(InputSerialization),
-          ExpressionType: S.optional(ExpressionType),
+          InputSerialization: S.optional(__S(19)),
+          ExpressionType: S.optional(S.String),
           Expression: S.optional(S.String),
-          OutputSerialization: S.optional(OutputSerialization),
+          OutputSerialization: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "SelectParameters" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          EncryptionType: S.optional(EncryptionType),
+          EncryptionType: S.optional(S.String),
           KMSKeyId: S.optional(S.String),
           KMSContext: S.optional(S.String),
         }),
@@ -2757,7 +2521,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Type: Type,
+          Type: S.String,
           DisplayName: S.optional(S.String),
           URI: S.optional(S.String),
           ID: S.optional(S.String),
@@ -2766,25 +2530,25 @@ function __c3(j: number): any {
       ).annotate({ identifier: "Grantee" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Grantee: S.optional(Grantee), Permission: S.optional(Permission) }),
+        S.Struct({ Grantee: S.optional(__S(24)), Permission: S.optional(S.String) }),
       ).annotate({ identifier: "Grant" });
     case 2:
-      return S.Array(Grant);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
           BucketName: S.optional(S.String),
           Prefix: S.optional(S.String),
-          Encryption: S.optional(Encryption),
-          CannedACL: S.optional(CannedACL),
-          AccessControlList: S.optional(AccessControlPolicyList),
-          Tagging: S.optional(Hashmap),
-          UserMetadata: S.optional(Hashmap),
-          StorageClass: S.optional(StorageClass),
+          Encryption: S.optional(__S(23)),
+          CannedACL: S.optional(S.String),
+          AccessControlList: S.optional(__S(26)),
+          Tagging: S.optional(__S(4)),
+          UserMetadata: S.optional(__S(4)),
+          StorageClass: S.optional(S.String),
         }),
       ).annotate({ identifier: "S3Location" });
     case 4:
-      return S.suspend(() => S.Struct({ S3: S.optional(S3Location) })).annotate({
+      return S.suspend(() => S.Struct({ S3: S.optional(__S(27)) })).annotate({
         identifier: "OutputLocation",
       });
     case 5:
@@ -2792,12 +2556,12 @@ function __c3(j: number): any {
         S.Struct({
           JobId: S.optional(S.String),
           JobDescription: S.optional(S.String),
-          Action: S.optional(ActionCode),
+          Action: S.optional(S.String),
           ArchiveId: S.optional(S.String),
           VaultARN: S.optional(S.String),
           CreationDate: S.optional(S.String),
           Completed: S.optional(S.Boolean),
-          StatusCode: S.optional(StatusCode),
+          StatusCode: S.optional(S.String),
           StatusMessage: S.optional(S.String),
           ArchiveSizeInBytes: S.optional(S.Number),
           InventorySizeInBytes: S.optional(S.Number),
@@ -2807,10 +2571,10 @@ function __c3(j: number): any {
           ArchiveSHA256TreeHash: S.optional(S.String),
           RetrievalByteRange: S.optional(S.String),
           Tier: S.optional(S.String),
-          InventoryRetrievalParameters: S.optional(InventoryRetrievalJobDescription),
+          InventoryRetrievalParameters: S.optional(__S(17)),
           JobOutputPath: S.optional(S.String),
-          SelectParameters: S.optional(SelectParameters),
-          OutputLocation: S.optional(OutputLocation),
+          SelectParameters: S.optional(__S(22)),
+          OutputLocation: S.optional(__S(28)),
         }).pipe(ns),
       ).annotate({ identifier: "GlacierJobDescription" });
     case 6:
@@ -2866,15 +2630,13 @@ function __c4(j: number): any {
         S.Struct({ Strategy: S.optional(S.String), BytesPerHour: S.optional(S.Number) }),
       ).annotate({ identifier: "DataRetrievalRule" });
     case 2:
-      return S.Array(DataRetrievalRule);
+      return S.Array(__S(33));
     case 3:
-      return S.suspend(() => S.Struct({ Rules: S.optional(DataRetrievalRulesList) })).annotate({
+      return S.suspend(() => S.Struct({ Rules: S.optional(__S(34)) })).annotate({
         identifier: "DataRetrievalPolicy",
       });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ Policy: S.optional(DataRetrievalPolicy) }).pipe(ns),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Policy: S.optional(__S(35)) }).pipe(ns)).annotate({
         identifier: "GetDataRetrievalPolicyOutput",
       });
     case 5:
@@ -2938,7 +2700,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(VaultAccessPolicy)
+          policy: S.optional(__S(40))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VaultAccessPolicy" }),
         }).pipe(ns),
@@ -2997,12 +2759,12 @@ function __c5(j: number): any {
       return S.Array(S.String);
     case 6:
       return S.suspend(() =>
-        S.Struct({ SNSTopic: S.optional(S.String), Events: S.optional(NotificationEventList) }),
+        S.Struct({ SNSTopic: S.optional(S.String), Events: S.optional(__S(45)) }),
       ).annotate({ identifier: "VaultNotificationConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          vaultNotificationConfig: S.optional(VaultNotificationConfig)
+          vaultNotificationConfig: S.optional(__S(46))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VaultNotificationConfig" }),
         }).pipe(ns),
@@ -3034,9 +2796,9 @@ function __c6(j: number): any {
           SNSTopic: S.optional(S.String),
           RetrievalByteRange: S.optional(S.String),
           Tier: S.optional(S.String),
-          InventoryRetrievalParameters: S.optional(InventoryRetrievalJobInput),
-          SelectParameters: S.optional(SelectParameters),
-          OutputLocation: S.optional(OutputLocation),
+          InventoryRetrievalParameters: S.optional(__S(48)),
+          SelectParameters: S.optional(__S(22)),
+          OutputLocation: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "JobParameters" });
     case 2:
@@ -3044,7 +2806,7 @@ function __c6(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.HttpLabel("accountId")),
           vaultName: S.String.pipe(T.HttpLabel("vaultName")),
-          jobParameters: S.optional(JobParameters)
+          jobParameters: S.optional(__S(49))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "JobParameters" }),
         }).pipe(
@@ -3102,7 +2864,7 @@ function __c6(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.HttpLabel("accountId")),
           vaultName: S.String.pipe(T.HttpLabel("vaultName")),
-          policy: S.optional(VaultLockPolicy)
+          policy: S.optional(__S(40))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VaultLockPolicy" }),
         }).pipe(
@@ -3147,10 +2909,10 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "ListJobsInput" });
     case 1:
-      return S.Array(GlacierJobDescription);
+      return S.Array(__S(29));
     case 2:
       return S.suspend(() =>
-        S.Struct({ JobList: S.optional(JobList), Marker: S.optional(S.String) }).pipe(ns),
+        S.Struct({ JobList: S.optional(__S(57)), Marker: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListJobsOutput" });
     case 3:
       return S.suspend(() =>
@@ -3184,10 +2946,10 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "UploadListElement" });
     case 5:
-      return S.Array(UploadListElement);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
-        S.Struct({ UploadsList: S.optional(UploadsList), Marker: S.optional(S.String) }).pipe(ns),
+        S.Struct({ UploadsList: S.optional(__S(61)), Marker: S.optional(S.String) }).pipe(ns),
       ).annotate({
         identifier: "ListMultipartUploadsOutput",
       });
@@ -3223,7 +2985,7 @@ function __c8(j: number): any {
         S.Struct({ RangeInBytes: S.optional(S.String), SHA256TreeHash: S.optional(S.String) }),
       ).annotate({ identifier: "PartListElement" });
     case 1:
-      return S.Array(PartListElement);
+      return S.Array(__S(64));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3232,7 +2994,7 @@ function __c8(j: number): any {
           ArchiveDescription: S.optional(S.String),
           PartSizeInBytes: S.optional(S.Number),
           CreationDate: S.optional(S.String),
-          Parts: S.optional(PartList),
+          Parts: S.optional(__S(65)),
           Marker: S.optional(S.String),
         }).pipe(ns),
       ).annotate({ identifier: "ListPartsOutput" });
@@ -3263,10 +3025,10 @@ function __c8(j: number): any {
         identifier: "ProvisionedCapacityDescription",
       });
     case 5:
-      return S.Array(ProvisionedCapacityDescription);
+      return S.Array(__S(68));
     case 6:
       return S.suspend(() =>
-        S.Struct({ ProvisionedCapacityList: S.optional(ProvisionedCapacityList) }).pipe(ns),
+        S.Struct({ ProvisionedCapacityList: S.optional(__S(69)) }).pipe(ns),
       ).annotate({
         identifier: "ListProvisionedCapacityOutput",
       });
@@ -3292,7 +3054,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagMap) }).pipe(ns)).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(4)) }).pipe(ns)).annotate({
         identifier: "ListTagsForVaultOutput",
       });
     case 1:
@@ -3314,10 +3076,10 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "ListVaultsInput" });
     case 2:
-      return S.Array(DescribeVaultOutput);
+      return S.Array(__S(31));
     case 3:
       return S.suspend(() =>
-        S.Struct({ VaultList: S.optional(VaultList), Marker: S.optional(S.String) }).pipe(ns),
+        S.Struct({ VaultList: S.optional(__S(74)), Marker: S.optional(S.String) }).pipe(ns),
       ).annotate({ identifier: "ListVaultsOutput" });
     case 4:
       return S.suspend(() =>
@@ -3348,7 +3110,7 @@ function __c9(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.HttpLabel("accountId")),
           vaultName: S.String.pipe(T.HttpLabel("vaultName")),
-          TagKeys: S.optional(TagKeyList),
+          TagKeys: S.optional(__S(45)),
         }).pipe(
           T.all(
             ns,
@@ -3368,7 +3130,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.HttpLabel("accountId")),
-          Policy: S.optional(DataRetrievalPolicy),
+          Policy: S.optional(__S(35)),
         }).pipe(
           T.all(
             ns,
@@ -3392,7 +3154,7 @@ function __c10(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.HttpLabel("accountId")),
           vaultName: S.String.pipe(T.HttpLabel("vaultName")),
-          policy: S.optional(VaultAccessPolicy)
+          policy: S.optional(__S(40))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VaultAccessPolicy" }),
         }).pipe(
@@ -3414,7 +3176,7 @@ function __c10(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.HttpLabel("accountId")),
           vaultName: S.String.pipe(T.HttpLabel("vaultName")),
-          vaultNotificationConfig: S.optional(VaultNotificationConfig)
+          vaultNotificationConfig: S.optional(__S(46))
             .pipe(T.HttpPayload())
             .annotate({ identifier: "VaultNotificationConfig" }),
         }).pipe(
@@ -3486,5 +3248,36 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UploadMultipartPartOutput",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
   }
 }

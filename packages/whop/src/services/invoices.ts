@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -161,8 +163,6 @@ export type TaxIdentifierTypes =
   | "zw_tin"
   | "sr_fin"
   | "xi_vat";
-const TaxIdentifierTypes = S.String;
-
 /** Inline billing address to create a new mailing address for this invoice. Cannot be used together with mailing_address_id. */
 export interface CreateInvoiceRequestBodyCase0BillingAddress {
   /** The city of the address. */
@@ -186,15 +186,8 @@ export interface CreateInvoiceRequestBodyCase0BillingAddress {
   /** The value of the tax identifier. */
   tax_id_value?: string | null;
 }
-const CreateInvoiceRequestBodyCase0BillingAddress = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateInvoiceRequestBodyCase0BillingAddress>;
-
 /** The method of collection for an invoice. */
 export type InvoiceCollectionMethods = "send_invoice" | "charge_automatically";
-const InvoiceCollectionMethods = S.String;
-
 /** A single line item to include on the invoice, with a label, quantity, and unit price. */
 export interface CreateInvoiceRequestBodyCase0LineItemsItem {
   /** The label or description for this line item. */
@@ -204,19 +197,9 @@ export interface CreateInvoiceRequestBodyCase0LineItemsItem {
   /** The unit price for this line item. Provided as a number in the specified currency. Eg: 10.43 for $10.43. Negative values represent a credit or deduction, as long as the line items still total a chargeable amount. */
   unit_price: number;
 }
-const CreateInvoiceRequestBodyCase0LineItemsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateInvoiceRequestBodyCase0LineItemsItem>;
-
 /** Optional line items that break down the invoice total. When provided, the sum of (quantity * unit_price) for all items must equal the plan price. Individual items may be negative to represent a credit, as long as the sum is not negative and clears the currency's minimum charge. */
 export type CreateInvoiceRequestBodyCase0LineItemsList =
   Array<CreateInvoiceRequestBodyCase0LineItemsItem>;
-const CreateInvoiceRequestBodyCase0LineItemsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateInvoiceRequestBodyCase0LineItemsList>;
-
 /** The available currencies on the platform */
 export type LegacyCurrencies =
   | "usd"
@@ -309,8 +292,6 @@ export type LegacyCurrencies =
   | "awg"
   | "whop_usd"
   | "xau";
-const LegacyCurrencies = S.String;
-
 export interface CreateInvoiceRequestBodyCase0PlanCustomFieldsItem {
   /** The type of the custom field. */
   field_type: string;
@@ -325,19 +306,9 @@ export interface CreateInvoiceRequestBodyCase0PlanCustomFieldsItem {
   /** Whether or not the field is required. */
   required?: boolean | null;
 }
-const CreateInvoiceRequestBodyCase0PlanCustomFieldsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateInvoiceRequestBodyCase0PlanCustomFieldsItem>;
-
 /** An array of custom field objects. */
 export type CreateInvoiceRequestBodyCase0PlanCustomFieldsList =
   Array<CreateInvoiceRequestBodyCase0PlanCustomFieldsItem>;
-const CreateInvoiceRequestBodyCase0PlanCustomFieldsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateInvoiceRequestBodyCase0PlanCustomFieldsList>;
-
 /** The different types of payment methods that can be used. */
 export type LegacyPaymentMethodTypes =
   | "acss_debit"
@@ -488,16 +459,10 @@ export interface CreateInvoiceRequestBodyCase0PlanPaymentMethodConfiguration {
 }
 /** The type of plan that can be attached to a product */
 export type PlanTypes = "renewal" | "one_time";
-const PlanTypes = S.String;
-
 /** The methods of how a plan can be released. */
 export type ReleaseMethod = "buy_now" | "waitlist";
-const ReleaseMethod = S.String;
-
 /** Visibility of a resource */
 export type Visibility = "visible" | "hidden" | "archived" | "quick_link";
-const Visibility = S.String;
-
 /** The plan attributes defining the price, currency, and billing interval for this invoice. */
 export interface CreateInvoiceRequestBodyCase0Plan {
   /** Whether this plan accepts local currency payments via adaptive pricing. */
@@ -687,20 +652,14 @@ export interface CreateInvoiceRequestBodyCase1 {
 export type CreateInvoiceRequestBody =
   | CreateInvoiceRequestBodyCase0
   | CreateInvoiceRequestBodyCase1;
-const CreateInvoiceRequestBody = S.Unknown as any as S.Schema<CreateInvoiceRequestBody>;
-
 export interface CreateInvoiceRequest {
   body: CreateInvoiceRequestBody;
 }
-const CreateInvoiceRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateInvoiceRequest>;
-
 /** The company that issued this invoice. */
 export interface InvoiceCompany {
   /** The unique identifier for the company. */
   id: string;
 }
-const InvoiceCompany = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<InvoiceCompany>;
-
 /** The plan that this invoice charges for. */
 export interface InvoiceCurrentPlan {
   /** The currency used for all prices on this plan (e.g., 'usd', 'eur'). All monetary amounts on the plan are denominated in this currency. */
@@ -712,8 +671,6 @@ export interface InvoiceCurrentPlan {
   /** The unique identifier for the plan. */
   id: string;
 }
-const InvoiceCurrentPlan = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<InvoiceCurrentPlan>;
-
 /** A line item on an invoice, representing a single charge with a label, quantity, and unit price. */
 export interface InvoiceLineItemsItem {
   /** The label or description for this line item. */
@@ -727,12 +684,8 @@ export interface InvoiceLineItemsItem {
   /** The unit price for this line item. Negative for a credit or deduction. */
   unit_price: number;
 }
-const InvoiceLineItemsItem = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<InvoiceLineItemsItem>;
-
 /** Optional line items that break down the invoice total into individual charges. */
 export type InvoiceLineItemsList = Array<InvoiceLineItemsItem>;
-const InvoiceLineItemsList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<InvoiceLineItemsList>;
-
 /** The billing/mailing address associated with this invoice, if one was provided at creation time. */
 export interface InvoiceMailingAddress {
   /** The city of the address. */
@@ -752,25 +705,16 @@ export interface InvoiceMailingAddress {
   /** The state of the address. */
   state: string | null;
 }
-const InvoiceMailingAddress = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<InvoiceMailingAddress>;
-
 /** The member that the invoice was created for. Null when the invoice is addressed to an email address with no member record behind it. */
 export interface InvoiceMember {
   /** The unique identifier for the company member. */
   id: string;
 }
-const InvoiceMember = InvoiceCompany as any as S.Schema<InvoiceMember>;
-
 /** The payment that settled this invoice. Null while the invoice is unpaid, when the invoice was marked paid manually, and on a subscription renewal invoice, where the settling payment cannot yet be identified. */
 export interface InvoicePayment {
   /** The unique identifier for the payment. */
   id: string;
 }
-const InvoicePayment = InvoiceCompany as any as S.Schema<InvoicePayment>;
-
 /** The product that this invoice was generated for. */
 export interface InvoiceProduct {
   /** The unique identifier for the product. */
@@ -778,12 +722,8 @@ export interface InvoiceProduct {
   /** The display name of the product shown to customers on the product page and in search results. */
   title: string;
 }
-const InvoiceProduct = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<InvoiceProduct>;
-
 /** The different statuses an invoice can be in */
 export type InvoiceStatuses = "draft" | "open" | "paid" | "past_due" | "uncollectible" | "void";
-const InvoiceStatuses = S.String;
-
 /** The user this invoice is addressed to. Null if the user account has been removed. */
 export interface InvoiceUser {
   /** The user's email address. Requires the member:email:read permission to access. Null if not authorized. */
@@ -795,8 +735,6 @@ export interface InvoiceUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-const InvoiceUser = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<InvoiceUser>;
-
 /** An invoice represents an itemized bill sent by a company to a customer for a specific product and plan, tracking the amount owed, due date, and payment status. */
 export interface Invoice {
   /** The date and time when the invoice will be automatically finalized. For charge_automatically, triggers an automatic charge. For send_invoice, sends the invoice email at the specified time. */
@@ -846,55 +784,27 @@ export interface Invoice {
   /** The user this invoice is addressed to. Null if the user account has been removed. */
   user: InvoiceUser | null;
 }
-const Invoice = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Invoice>;
-
 export interface DeleteInvoiceRequest {
   /** The unique identifier of the draft invoice to delete. */
   id: string;
 }
-const DeleteInvoiceRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DeleteInvoiceRequest>;
-
 export type DeleteInvoiceResponse = boolean;
-const DeleteInvoiceResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteInvoiceResponse>;
-
 export interface GetInvoiceRequest {
   /** The unique identifier of the invoice, or a secure token. */
   id: string;
 }
-const GetInvoiceRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetInvoiceRequest>;
-
 /** The direction of the sort. */
 export type Direction = "asc" | "desc";
-const Direction = S.String;
-
 /** Filter invoices to only those associated with these specific product identifiers. */
 export type ListInvoiceRequestProductIdsList = Array<string>;
-const ListInvoiceRequestProductIdsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListInvoiceRequestProductIdsList>;
-
 /** Filter invoices by their collection method. */
 export type ListInvoiceRequestCollectionMethodsList = Array<
   InvoiceCollectionMethods | (string & {})
 >;
-const ListInvoiceRequestCollectionMethodsList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListInvoiceRequestCollectionMethodsList>;
-
 /** Filter invoices by their current status. */
 export type ListInvoiceRequestStatusesList = Array<InvoiceStatuses | (string & {})>;
-const ListInvoiceRequestStatusesList =
-  ListInvoiceRequestCollectionMethodsList as any as S.Schema<ListInvoiceRequestStatusesList>;
-
 /** Which columns can be used to sort. */
 export type InvoicesSortableColumns = "id" | "created_at" | "due_date";
-const InvoicesSortableColumns = S.String;
-
 export interface ListInvoiceRequest {
   after?: string;
   before?: string;
@@ -909,8 +819,6 @@ export interface ListInvoiceRequest {
   created_after?: string;
   account_id?: string;
 }
-const ListInvoiceRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListInvoiceRequest>;
-
 /** The plan that this invoice charges for. */
 export interface InvoiceListItemCurrentPlan {
   /** The currency used for all prices on this plan (e.g., 'usd', 'eur'). All monetary amounts on the plan are denominated in this currency. */
@@ -920,18 +828,10 @@ export interface InvoiceListItemCurrentPlan {
   /** The unique identifier for the plan. */
   id: string;
 }
-const InvoiceListItemCurrentPlan = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<InvoiceListItemCurrentPlan>;
-
 /** A line item on an invoice, representing a single charge with a label, quantity, and unit price. */
 export type InvoiceListItemLineItemsItem = InvoiceLineItemsItem;
 /** Optional line items that break down the invoice total into individual charges. */
 export type InvoiceListItemLineItemsList = Array<InvoiceLineItemsItem>;
-const InvoiceListItemLineItemsList =
-  InvoiceLineItemsList as any as S.Schema<InvoiceListItemLineItemsList>;
-
 /** The user this invoice is addressed to. Null if the user account has been removed. */
 export interface InvoiceListItemUser {
   /** The unique identifier for the user. */
@@ -941,8 +841,6 @@ export interface InvoiceListItemUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-const InvoiceListItemUser = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<InvoiceListItemUser>;
-
 /** An invoice represents an itemized bill sent by a company to a customer for a specific product and plan, tracking the amount owed, due date, and payment status. */
 export interface InvoiceListItem {
   /** The datetime the invoice was created. */
@@ -968,15 +866,8 @@ export interface InvoiceListItem {
   /** The user this invoice is addressed to. Null if the user account has been removed. */
   user: InvoiceListItemUser | null;
 }
-const InvoiceListItem = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<InvoiceListItem>;
-
 /** A list of nodes. */
 export type ListInvoiceResponseDataList = Array<InvoiceListItem>;
-const ListInvoiceResponseDataList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListInvoiceResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -988,83 +879,46 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<PageInfo>;
-
 export interface ListInvoiceResponse {
   /** A list of nodes. */
   data: ListInvoiceResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListInvoiceResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListInvoiceResponse>;
-
 export interface MarkPaidInvoiceRequest {
   /** The unique identifier of the invoice to mark as paid. */
   id: string;
 }
-const MarkPaidInvoiceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<MarkPaidInvoiceRequest>;
-
 export type MarkPaidInvoiceResponse = boolean;
-const MarkPaidInvoiceResponse = DeleteInvoiceResponse as any as S.Schema<MarkPaidInvoiceResponse>;
-
 export interface MarkUncollectibleInvoiceRequest {
   /** The unique identifier of the invoice to mark as uncollectible. */
   id: string;
 }
-const MarkUncollectibleInvoiceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<MarkUncollectibleInvoiceRequest>;
-
 export type MarkUncollectibleInvoiceResponse = boolean;
-const MarkUncollectibleInvoiceResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<MarkUncollectibleInvoiceResponse>;
-
 export interface ResendInvoiceRequest {
   /** The unique identifier of the invoice to resend. */
   id: string;
 }
-const ResendInvoiceRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ResendInvoiceRequest>;
-
 export type ResendInvoiceResponse = boolean;
-const ResendInvoiceResponse = DeleteInvoiceResponse as any as S.Schema<ResendInvoiceResponse>;
-
 /** Inline billing address to create or update a mailing address for this invoice. */
 export type UpdateInvoiceRequestBillingAddress = CreateInvoiceRequestBodyCase0BillingAddress;
 /** A single line item to include on the invoice, with a label, quantity, and unit price. */
 export type UpdateInvoiceRequestLineItemsItem = CreateInvoiceRequestBodyCase0LineItemsItem;
 /** Line items that break down the invoice total. When provided, the sum of (quantity * unit_price) for all items must equal the plan price. Individual items may be negative to represent a credit, as long as the sum is not negative and clears the currency's minimum charge. Pass an empty list to remove the breakdown. */
 export type UpdateInvoiceRequestLineItemsList = Array<CreateInvoiceRequestBodyCase0LineItemsItem>;
-const UpdateInvoiceRequestLineItemsList =
-  CreateInvoiceRequestBodyCase0LineItemsList as any as S.Schema<UpdateInvoiceRequestLineItemsList>;
-
 export type UpdateInvoiceRequestPlanCustomFieldsItem =
   CreateInvoiceRequestBodyCase0PlanCustomFieldsItem;
 /** An array of custom field objects. */
 export type UpdateInvoiceRequestPlanCustomFieldsList =
   Array<CreateInvoiceRequestBodyCase0PlanCustomFieldsItem>;
-const UpdateInvoiceRequestPlanCustomFieldsList =
-  CreateInvoiceRequestBodyCase0PlanCustomFieldsList as any as S.Schema<UpdateInvoiceRequestPlanCustomFieldsList>;
-
 /** An array of payment method identifiers that are explicitly disabled. Only applies if the include_platform_defaults is true. */
 export type UpdateInvoiceRequestPlanPaymentMethodConfigurationDisabledList = Array<
   LegacyPaymentMethodTypes | (string & {})
 >;
-const UpdateInvoiceRequestPlanPaymentMethodConfigurationDisabledList =
-  ListInvoiceRequestCollectionMethodsList as any as S.Schema<UpdateInvoiceRequestPlanPaymentMethodConfigurationDisabledList>;
-
 /** An array of payment method identifiers that are explicitly enabled. This means these payment methods will be shown on checkout. Example use case is to only enable a specific payment method like cashapp, or extending the platform defaults with additional methods. */
 export type UpdateInvoiceRequestPlanPaymentMethodConfigurationEnabledList = Array<
   LegacyPaymentMethodTypes | (string & {})
 >;
-const UpdateInvoiceRequestPlanPaymentMethodConfigurationEnabledList =
-  UpdateInvoiceRequestPlanPaymentMethodConfigurationDisabledList as any as S.Schema<UpdateInvoiceRequestPlanPaymentMethodConfigurationEnabledList>;
-
 /** The explicit payment method configuration for the plan. If not provided, the platform or company's defaults will apply. */
 export interface UpdateInvoiceRequestPlanPaymentMethodConfiguration {
   /** An array of payment method identifiers that are explicitly disabled. Only applies if the include_platform_defaults is true. */
@@ -1074,11 +928,6 @@ export interface UpdateInvoiceRequestPlanPaymentMethodConfiguration {
   /** Whether Whop's platform default payment method enablement settings are included in this configuration. The full list of default payment methods can be found in the documentation at docs.whop.com/payments. */
   include_platform_defaults?: boolean | null;
 }
-const UpdateInvoiceRequestPlanPaymentMethodConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<UpdateInvoiceRequestPlanPaymentMethodConfiguration>;
-
 /** Updated plan attributes. */
 export interface UpdateInvoiceRequestPlan {
   /** Whether this plan accepts local currency payments via adaptive pricing. */
@@ -1116,11 +965,6 @@ export interface UpdateInvoiceRequestPlan {
   /** Shows or hides the plan from public/business view. */
   visibility?: Visibility | (string & {}) | null;
 }
-const UpdateInvoiceRequestPlan = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<UpdateInvoiceRequestPlan>;
-
 export interface UpdateInvoiceRequest {
   /** The unique identifier of the invoice to update. */
   id: string;
@@ -1153,17 +997,11 @@ export interface UpdateInvoiceRequest {
   /** The date that defines when the subscription billing cycle should start. */
   subscription_billing_anchor_at?: string | null;
 }
-const UpdateInvoiceRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<UpdateInvoiceRequest>;
-
 export interface VoidInvoiceRequest {
   /** The unique identifier of the invoice to void. */
   id: string;
 }
-const VoidInvoiceRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<VoidInvoiceRequest>;
-
 export type VoidInvoiceResponse = boolean;
-const VoidInvoiceResponse = DeleteInvoiceResponse as any as S.Schema<VoidInvoiceResponse>;
-
 export type CreateInvoiceError =
   | BadRequest
   | Forbidden
@@ -1177,8 +1015,8 @@ export const createInvoice: API.OperationMethod<
   CreateInvoiceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInvoiceRequest,
-  output: Invoice,
+  input: __S(5) as any as S.Schema<CreateInvoiceRequest>,
+  output: __S(13) as any as S.Schema<Invoice>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1197,8 +1035,8 @@ export const deleteInvoice: API.OperationMethod<
   DeleteInvoiceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInvoiceRequest,
-  output: DeleteInvoiceResponse,
+  input: __S(14) as any as S.Schema<DeleteInvoiceRequest>,
+  output: __S(15) as any as S.Schema<DeleteInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1212,8 +1050,8 @@ export const getInvoice: API.OperationMethod<
   GetInvoiceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInvoiceRequest,
-  output: Invoice,
+  input: __S(16) as any as S.Schema<GetInvoiceRequest>,
+  output: __S(13) as any as S.Schema<Invoice>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1234,8 +1072,8 @@ export const listInvoice: API.PaginatedOperationMethod<
   InvoiceListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListInvoiceRequest,
-    output: ListInvoiceResponse,
+    input: __S(19) as any as S.Schema<ListInvoiceRequest>,
+    output: __S(25) as any as S.Schema<ListInvoiceResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -1264,8 +1102,8 @@ export const markPaidInvoice: API.OperationMethod<
   MarkPaidInvoiceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MarkPaidInvoiceRequest,
-  output: MarkPaidInvoiceResponse,
+  input: __S(26) as any as S.Schema<MarkPaidInvoiceRequest>,
+  output: __S(15) as any as S.Schema<MarkPaidInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1284,8 +1122,8 @@ export const markUncollectibleInvoice: API.OperationMethod<
   MarkUncollectibleInvoiceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MarkUncollectibleInvoiceRequest,
-  output: MarkUncollectibleInvoiceResponse,
+  input: __S(27) as any as S.Schema<MarkUncollectibleInvoiceRequest>,
+  output: __S(28) as any as S.Schema<MarkUncollectibleInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1304,8 +1142,8 @@ export const resendInvoice: API.OperationMethod<
   ResendInvoiceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResendInvoiceRequest,
-  output: ResendInvoiceResponse,
+  input: __S(29) as any as S.Schema<ResendInvoiceRequest>,
+  output: __S(15) as any as S.Schema<ResendInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1324,8 +1162,8 @@ export const updateInvoice: API.OperationMethod<
   UpdateInvoiceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInvoiceRequest,
-  output: Invoice,
+  input: __S(32) as any as S.Schema<UpdateInvoiceRequest>,
+  output: __S(13) as any as S.Schema<Invoice>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1344,8 +1182,8 @@ export const voidInvoice: API.OperationMethod<
   VoidInvoiceError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VoidInvoiceRequest,
-  output: VoidInvoiceResponse,
+  input: __S(33) as any as S.Schema<VoidInvoiceRequest>,
+  output: __S(15) as any as S.Schema<VoidInvoiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -1365,7 +1203,7 @@ function __c0(j: number): any {
           phone: S.optional(S.NullOr(S.String)),
           postal_code: S.optional(S.NullOr(S.String)),
           state: S.optional(S.NullOr(S.String)),
-          tax_id_type: S.optional(S.NullOr(TaxIdentifierTypes)),
+          tax_id_type: S.optional(S.NullOr(S.String)),
           tax_id_value: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -1382,7 +1220,7 @@ function __c0(j: number): any {
         identifier: "CreateInvoiceRequestBodyCase0LineItemsItem",
       });
     case 2:
-      return S.Array(CreateInvoiceRequestBodyCase0LineItemsItem);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1397,11 +1235,11 @@ function __c0(j: number): any {
         identifier: "CreateInvoiceRequestBodyCase0PlanCustomFieldsItem",
       });
     case 4:
-      return S.Array(CreateInvoiceRequestBodyCase0PlanCustomFieldsItem);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: CreateInvoiceRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/invoices", code: 200 })),
       ).annotate({ identifier: "CreateInvoiceRequest" });
     case 6:
@@ -1413,7 +1251,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          currency: LegacyCurrencies,
+          currency: S.String,
           description: S.NullOr(S.String),
           formatted_price: S.String,
           id: S.String,
@@ -1434,7 +1272,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "InvoiceLineItemsItem" });
     case 1:
-      return S.Array(InvoiceLineItemsItem);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1469,27 +1307,27 @@ function __c1(j: number): any {
         S.Struct({
           automatically_finalizes_at: S.NullOr(S.String),
           charge_buyer_fee: S.Boolean,
-          collection_method: InvoiceCollectionMethods,
-          company: InvoiceCompany,
+          collection_method: S.String,
+          company: __S(6),
           created_at: S.String,
-          current_plan: InvoiceCurrentPlan,
+          current_plan: __S(7),
           customer_name: S.NullOr(S.String),
           due_date: S.NullOr(S.String),
           email_address: S.NullOr(S.String),
           fetch_invoice_token: S.String,
           id: S.String,
-          line_items: InvoiceLineItemsList,
-          mailing_address: S.NullOr(InvoiceMailingAddress),
-          member: S.NullOr(InvoiceMember),
+          line_items: __S(9),
+          mailing_address: S.NullOr(__S(10)),
+          member: S.NullOr(__S(6)),
           number: S.String,
           pay_online_url: S.NullOr(S.String),
-          payment: S.NullOr(InvoicePayment),
+          payment: S.NullOr(__S(6)),
           payment_processing: S.Boolean,
-          product: InvoiceProduct,
-          status: InvoiceStatuses,
+          product: __S(11),
+          status: S.String,
           subscription_billing_anchor_at: S.NullOr(S.String),
           updated_at: S.String,
-          user: S.NullOr(InvoiceUser),
+          user: S.NullOr(__S(12)),
         }),
       ).annotate({ identifier: "Invoice" });
     case 6:
@@ -1515,7 +1353,7 @@ function __c2(j: number): any {
     case 1:
       return S.Array(S.String);
     case 2:
-      return S.Array(InvoiceCollectionMethods);
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1523,11 +1361,11 @@ function __c2(j: number): any {
           before: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
-          direction: S.optional(Direction.pipe(T.Query())),
-          product_ids: S.optional(ListInvoiceRequestProductIdsList.pipe(T.Query())),
-          collection_methods: S.optional(ListInvoiceRequestCollectionMethodsList.pipe(T.Query())),
-          statuses: S.optional(ListInvoiceRequestStatusesList.pipe(T.Query())),
-          order: S.optional(InvoicesSortableColumns.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          product_ids: S.optional(__S(17).pipe(T.Query())),
+          collection_methods: S.optional(__S(18).pipe(T.Query())),
+          statuses: S.optional(__S(18).pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           account_id: S.optional(S.String.pipe(T.Query())),
@@ -1536,7 +1374,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          currency: LegacyCurrencies,
+          currency: S.String,
           formatted_price: S.String,
           id: S.String,
         }),
@@ -1555,20 +1393,20 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           created_at: S.String,
-          current_plan: InvoiceListItemCurrentPlan,
+          current_plan: __S(20),
           due_date: S.NullOr(S.String),
           email_address: S.NullOr(S.String),
           fetch_invoice_token: S.String,
           id: S.String,
-          line_items: InvoiceListItemLineItemsList,
+          line_items: __S(9),
           number: S.String,
           payment_processing: S.Boolean,
-          status: InvoiceStatuses,
-          user: S.NullOr(InvoiceListItemUser),
+          status: S.String,
+          user: S.NullOr(__S(21)),
         }),
       ).annotate({ identifier: "InvoiceListItem" });
     case 7:
-      return S.Array(InvoiceListItem);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -1585,8 +1423,8 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: ListInvoiceResponseDataList,
-          page_info: PageInfo,
+          data: __S(23),
+          page_info: __S(24),
         }),
       ).annotate({ identifier: "ListInvoiceResponse" });
     case 2:
@@ -1616,8 +1454,8 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          disabled: UpdateInvoiceRequestPlanPaymentMethodConfigurationDisabledList,
-          enabled: UpdateInvoiceRequestPlanPaymentMethodConfigurationEnabledList,
+          disabled: __S(18),
+          enabled: __S(18),
           include_platform_defaults: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -1628,23 +1466,21 @@ function __c3(j: number): any {
         S.Struct({
           adaptive_pricing_enabled: S.optional(S.NullOr(S.Boolean)),
           billing_period: S.optional(S.NullOr(S.Number)),
-          currency: S.optional(S.NullOr(LegacyCurrencies)),
-          custom_fields: S.optional(S.NullOr(UpdateInvoiceRequestPlanCustomFieldsList)),
+          currency: S.optional(S.NullOr(S.String)),
+          custom_fields: S.optional(S.NullOr(__S(4))),
           description: S.optional(S.NullOr(S.String)),
           expiration_days: S.optional(S.NullOr(S.Number)),
           initial_price: S.optional(S.NullOr(S.Number)),
           internal_notes: S.optional(S.NullOr(S.String)),
           legacy_payment_method_controls: S.optional(S.NullOr(S.Boolean)),
-          payment_method_configuration: S.optional(
-            S.NullOr(UpdateInvoiceRequestPlanPaymentMethodConfiguration),
-          ),
-          plan_type: S.optional(S.NullOr(PlanTypes)),
-          release_method: S.optional(S.NullOr(ReleaseMethod)),
+          payment_method_configuration: S.optional(S.NullOr(__S(30))),
+          plan_type: S.optional(S.NullOr(S.String)),
+          release_method: S.optional(S.NullOr(S.String)),
           renewal_price: S.optional(S.NullOr(S.Number)),
           stock: S.optional(S.NullOr(S.Number)),
           trial_period_days: S.optional(S.NullOr(S.Number)),
           unlimited_stock: S.optional(S.NullOr(S.Boolean)),
-          visibility: S.optional(S.NullOr(Visibility)),
+          visibility: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "UpdateInvoiceRequestPlan" });
   }
@@ -1656,17 +1492,17 @@ function __c4(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           automatically_finalizes_at: S.optional(S.NullOr(S.String)),
-          billing_address: S.optional(S.NullOr(CreateInvoiceRequestBodyCase0BillingAddress)),
+          billing_address: S.optional(S.NullOr(__S(0))),
           charge_buyer_fee: S.optional(S.NullOr(S.Boolean)),
-          collection_method: S.optional(S.NullOr(InvoiceCollectionMethods)),
+          collection_method: S.optional(S.NullOr(S.String)),
           customer_name: S.optional(S.NullOr(S.String)),
           due_date: S.optional(S.NullOr(S.String)),
           email_address: S.optional(S.NullOr(S.String)),
-          line_items: S.optional(S.NullOr(UpdateInvoiceRequestLineItemsList)),
+          line_items: S.optional(S.NullOr(__S(2))),
           mailing_address_id: S.optional(S.NullOr(S.String)),
           member_id: S.optional(S.NullOr(S.String)),
           payment_method_id: S.optional(S.NullOr(S.String)),
-          plan: S.optional(S.NullOr(UpdateInvoiceRequestPlan)),
+          plan: S.optional(S.NullOr(__S(31))),
           product_id: S.optional(S.NullOr(S.String)),
           subscription_billing_anchor_at: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/invoices/{id}", code: 200 })),
@@ -1677,5 +1513,24 @@ function __c4(j: number): any {
           id: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/invoices/{id}/void", code: 200 })),
       ).annotate({ identifier: "VoidInvoiceRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

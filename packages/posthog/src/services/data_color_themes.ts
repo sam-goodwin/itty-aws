@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -42,17 +44,7 @@ export interface CreateDataColorThemeRequest {
   name?: string;
   colors?: unknown;
 }
-const CreateDataColorThemeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDataColorThemeRequest>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -66,8 +58,6 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -79,8 +69,6 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserBasic>;
-
 export interface DataColorTheme {
   id?: number;
   name?: string;
@@ -89,36 +77,19 @@ export interface DataColorTheme {
   created_at?: string | null;
   created_by?: UserBasic | null;
 }
-const DataColorTheme = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DataColorTheme>;
-
 export interface DataColorThemesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this data color theme. */
   id: number;
 }
-const DataColorThemesDestroyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DataColorThemesDestroyRequest>;
-
 export interface DataColorThemesDestroyResponse {}
-const DataColorThemesDestroyResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DataColorThemesDestroyResponse>;
-
 export interface GetDataColorThemeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this data color theme. */
   id: number;
 }
-const GetDataColorThemeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetDataColorThemeRequest>;
-
 export interface ListDataColorThemesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -127,28 +98,13 @@ export interface ListDataColorThemesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListDataColorThemesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListDataColorThemesRequest>;
-
 export type PaginatedDataColorThemeListResultsList = Array<DataColorTheme>;
-const PaginatedDataColorThemeListResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<PaginatedDataColorThemeListResultsList>;
-
 export interface PaginatedDataColorThemeList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedDataColorThemeListResultsList;
 }
-const PaginatedDataColorThemeList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PaginatedDataColorThemeList>;
-
 export interface UpdateDataColorThemeRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -157,11 +113,6 @@ export interface UpdateDataColorThemeRequest {
   name?: string;
   colors?: unknown;
 }
-const UpdateDataColorThemeRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<UpdateDataColorThemeRequest>;
-
 export interface UpdateDataColorThemesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -170,11 +121,6 @@ export interface UpdateDataColorThemesPartialRequest {
   name?: string;
   colors?: unknown;
 }
-const UpdateDataColorThemesPartialRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<UpdateDataColorThemesPartialRequest>;
-
 export type CreateDataColorThemeError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createDataColorTheme: API.OperationMethod<
   CreateDataColorThemeRequest,
@@ -182,8 +128,8 @@ export const createDataColorTheme: API.OperationMethod<
   CreateDataColorThemeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataColorThemeRequest,
-  output: DataColorTheme,
+  input: __S(0) as any as S.Schema<CreateDataColorThemeRequest>,
+  output: __S(3) as any as S.Schema<DataColorTheme>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -196,8 +142,8 @@ export const dataColorThemesDestroy: API.OperationMethod<
   DataColorThemesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataColorThemesDestroyRequest,
-  output: DataColorThemesDestroyResponse,
+  input: __S(4) as any as S.Schema<DataColorThemesDestroyRequest>,
+  output: __S(5) as any as S.Schema<DataColorThemesDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -210,8 +156,8 @@ export const getDataColorTheme: API.OperationMethod<
   GetDataColorThemeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataColorThemeRequest,
-  output: DataColorTheme,
+  input: __S(6) as any as S.Schema<GetDataColorThemeRequest>,
+  output: __S(3) as any as S.Schema<DataColorTheme>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -224,8 +170,8 @@ export const listDataColorThemes: API.OperationMethod<
   ListDataColorThemesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataColorThemesRequest,
-  output: PaginatedDataColorThemeList,
+  input: __S(7) as any as S.Schema<ListDataColorThemesRequest>,
+  output: __S(9) as any as S.Schema<PaginatedDataColorThemeList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -238,8 +184,8 @@ export const updateDataColorTheme: API.OperationMethod<
   UpdateDataColorThemeError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataColorThemeRequest,
-  output: DataColorTheme,
+  input: __S(10) as any as S.Schema<UpdateDataColorThemeRequest>,
+  output: __S(3) as any as S.Schema<DataColorTheme>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -252,8 +198,8 @@ export const updateDataColorThemesPartial: API.OperationMethod<
   UpdateDataColorThemesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataColorThemesPartialRequest,
-  output: DataColorTheme,
+  input: __S(11) as any as S.Schema<UpdateDataColorThemesPartialRequest>,
+  output: __S(3) as any as S.Schema<DataColorTheme>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -290,8 +236,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(1))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 3:
@@ -302,7 +248,7 @@ function __c0(j: number): any {
           colors: S.optional(S.Unknown),
           is_global: S.optional(S.Boolean),
           created_at: S.optional(S.NullOr(S.String)),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(2))),
         }),
       ).annotate({ identifier: "DataColorTheme" });
     case 4:
@@ -358,14 +304,14 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DataColorTheme);
+      return S.Array(__S(3));
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedDataColorThemeListResultsList),
+          results: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "PaginatedDataColorThemeList",
@@ -404,5 +350,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateDataColorThemesPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

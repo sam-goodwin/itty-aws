@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -17,14 +19,7 @@ export interface CacheReserveClearStatusRequest {
   /** Identifier. */
   zoneId: string;
 }
-const CacheReserveClearStatusRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CacheReserveClearStatusRequest>;
-
 export type CacheReserveClearStatusResponseState = "In-progress" | "Completed";
-const CacheReserveClearStatusResponseState = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CacheReserveClearStatusResponse {
   /** ID of the zone setting. */
@@ -38,20 +33,10 @@ export interface CacheReserveClearStatusResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const CacheReserveClearStatusResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CacheReserveClearStatusResponse>;
-
 export interface ClearCacheReserveClearRequest {
   /** Identifier. */
   zoneId: string;
 }
-const ClearCacheReserveClearRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ClearCacheReserveClearRequest>;
-
 export type ClearCacheReserveClearResponseState = "In-progress" | "Completed";
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ClearCacheReserveClearResponse {
@@ -66,9 +51,6 @@ export interface ClearCacheReserveClearResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string | null;
 }
-const ClearCacheReserveClearResponse =
-  CacheReserveClearStatusResponse as any as S.Schema<ClearCacheReserveClearResponse>;
-
 export type CreateHealthCheckRequestCheckRegionsItem =
   | "WNAM"
   | "ENAM"
@@ -84,37 +66,15 @@ export type CreateHealthCheckRequestCheckRegionsItem =
   | "SEAS"
   | "NEAS"
   | "ALL_REGIONS";
-const CreateHealthCheckRequestCheckRegionsItem = S.String;
-
 export type CreateHealthCheckRequestCheckRegionsList = Array<
   CreateHealthCheckRequestCheckRegionsItem | (string & {})
 >;
-const CreateHealthCheckRequestCheckRegionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateHealthCheckRequestCheckRegionsList>;
-
 export type CreateHealthCheckRequestHttpConfigExpectedCodesList = Array<string>;
-const CreateHealthCheckRequestHttpConfigExpectedCodesList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateHealthCheckRequestHttpConfigExpectedCodesList>;
-
 export type CreateHealthCheckRequestHttpConfigHeaderValueList = Array<string>;
-const CreateHealthCheckRequestHttpConfigHeaderValueList =
-  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<CreateHealthCheckRequestHttpConfigHeaderValueList>;
-
 export type CreateHealthCheckRequestHttpConfigHeaderMap = {
   [key: string]: CreateHealthCheckRequestHttpConfigHeaderValueList | undefined;
 };
-const CreateHealthCheckRequestHttpConfigHeaderMap = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateHealthCheckRequestHttpConfigHeaderMap>;
-
 export type CreateHealthCheckRequestHttpConfigMethod = "GET" | "HEAD";
-const CreateHealthCheckRequestHttpConfigMethod = S.String;
-
 export interface CreateHealthCheckRequestHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean;
@@ -133,25 +93,13 @@ export interface CreateHealthCheckRequestHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
-const CreateHealthCheckRequestHttpConfig = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateHealthCheckRequestHttpConfig>;
-
 export type CreateHealthCheckRequestTcpConfigMethod = "connection_established";
-const CreateHealthCheckRequestTcpConfigMethod = S.String;
-
 export interface CreateHealthCheckRequestTcpConfig {
   /** The TCP connection method to use for the health check. */
   method?: CreateHealthCheckRequestTcpConfigMethod | (string & {});
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
-const CreateHealthCheckRequestTcpConfig = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateHealthCheckRequestTcpConfig>;
-
 export interface CreateHealthCheckRequest {
   /** Identifier. */
   zoneId: string;
@@ -182,11 +130,6 @@ export interface CreateHealthCheckRequest {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-const CreateHealthCheckRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateHealthCheckRequest>;
-
 export type CreateHealthCheckResponseCheckRegionsItem =
   | "WNAM"
   | "ENAM"
@@ -204,23 +147,12 @@ export type CreateHealthCheckResponseCheckRegionsItem =
   | "ALL_REGIONS";
 export type CreateHealthCheckResponseCheckRegionsList =
   Array<CreateHealthCheckResponseCheckRegionsItem>;
-const CreateHealthCheckResponseCheckRegionsList =
-  CreateHealthCheckRequestCheckRegionsList as any as S.Schema<CreateHealthCheckResponseCheckRegionsList>;
-
 export type CreateHealthCheckResponseHttpConfigExpectedCodesList = Array<string>;
-const CreateHealthCheckResponseHttpConfigExpectedCodesList =
-  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<CreateHealthCheckResponseHttpConfigExpectedCodesList>;
-
 export type CreateHealthCheckResponseHttpConfigHeaderValueList = Array<string>;
 export type CreateHealthCheckResponseHttpConfigHeaderMap = {
   [key: string]: CreateHealthCheckResponseHttpConfigHeaderValueList | undefined;
 };
-const CreateHealthCheckResponseHttpConfigHeaderMap =
-  CreateHealthCheckRequestHttpConfigHeaderMap as any as S.Schema<CreateHealthCheckResponseHttpConfigHeaderMap>;
-
 export type CreateHealthCheckResponseHttpConfigMethod = "GET" | "HEAD";
-const CreateHealthCheckResponseHttpConfigMethod = S.String;
-
 export interface CreateHealthCheckResponseHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean | null;
@@ -239,28 +171,14 @@ export interface CreateHealthCheckResponseHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
 }
-const CreateHealthCheckResponseHttpConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateHealthCheckResponseHttpConfig>;
-
 export type CreateHealthCheckResponseStatus = "unknown" | "healthy" | "unhealthy" | "suspended";
-const CreateHealthCheckResponseStatus = S.String;
-
 export type CreateHealthCheckResponseTcpConfigMethod = "connection_established";
-const CreateHealthCheckResponseTcpConfigMethod = S.String;
-
 export interface CreateHealthCheckResponseTcpConfig {
   /** The TCP connection method to use for the health check. */
   method?: CreateHealthCheckResponseTcpConfigMethod | null;
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-const CreateHealthCheckResponseTcpConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateHealthCheckResponseTcpConfig>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateHealthCheckResponse {
   /** Identifier. */
@@ -298,32 +216,17 @@ export interface CreateHealthCheckResponse {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string | null;
 }
-const CreateHealthCheckResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateHealthCheckResponse>;
-
 export interface DeleteHealthCheckRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
   healthcheckId: string;
 }
-const DeleteHealthCheckRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteHealthCheckRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteHealthCheckResponse {
   /** Identifier. */
   id?: string | null;
 }
-const DeleteHealthCheckResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteHealthCheckResponse>;
-
 export type EditHealthCheckRequestCheckRegionsItem =
   | "WNAM"
   | "ENAM"
@@ -342,23 +245,12 @@ export type EditHealthCheckRequestCheckRegionsItem =
 export type EditHealthCheckRequestCheckRegionsList = Array<
   EditHealthCheckRequestCheckRegionsItem | (string & {})
 >;
-const EditHealthCheckRequestCheckRegionsList =
-  CreateHealthCheckRequestCheckRegionsList as any as S.Schema<EditHealthCheckRequestCheckRegionsList>;
-
 export type EditHealthCheckRequestHttpConfigExpectedCodesList = Array<string>;
-const EditHealthCheckRequestHttpConfigExpectedCodesList =
-  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<EditHealthCheckRequestHttpConfigExpectedCodesList>;
-
 export type EditHealthCheckRequestHttpConfigHeaderValueList = Array<string>;
 export type EditHealthCheckRequestHttpConfigHeaderMap = {
   [key: string]: EditHealthCheckRequestHttpConfigHeaderValueList | undefined;
 };
-const EditHealthCheckRequestHttpConfigHeaderMap =
-  CreateHealthCheckRequestHttpConfigHeaderMap as any as S.Schema<EditHealthCheckRequestHttpConfigHeaderMap>;
-
 export type EditHealthCheckRequestHttpConfigMethod = "GET" | "HEAD";
-const EditHealthCheckRequestHttpConfigMethod = S.String;
-
 export interface EditHealthCheckRequestHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean;
@@ -377,11 +269,6 @@ export interface EditHealthCheckRequestHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
-const EditHealthCheckRequestHttpConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<EditHealthCheckRequestHttpConfig>;
-
 export type EditHealthCheckRequestTcpConfigMethod = "connection_established";
 export interface EditHealthCheckRequestTcpConfig {
   /** The TCP connection method to use for the health check. */
@@ -389,9 +276,6 @@ export interface EditHealthCheckRequestTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
-const EditHealthCheckRequestTcpConfig =
-  CreateHealthCheckRequestTcpConfig as any as S.Schema<EditHealthCheckRequestTcpConfig>;
-
 export interface EditHealthCheckRequest {
   /** Identifier. */
   zoneId: string;
@@ -424,11 +308,6 @@ export interface EditHealthCheckRequest {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-const EditHealthCheckRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<EditHealthCheckRequest>;
-
 export type EditHealthCheckResponseCheckRegionsItem =
   | "WNAM"
   | "ENAM"
@@ -446,23 +325,12 @@ export type EditHealthCheckResponseCheckRegionsItem =
   | "ALL_REGIONS";
 export type EditHealthCheckResponseCheckRegionsList =
   Array<EditHealthCheckResponseCheckRegionsItem>;
-const EditHealthCheckResponseCheckRegionsList =
-  CreateHealthCheckRequestCheckRegionsList as any as S.Schema<EditHealthCheckResponseCheckRegionsList>;
-
 export type EditHealthCheckResponseHttpConfigExpectedCodesList = Array<string>;
-const EditHealthCheckResponseHttpConfigExpectedCodesList =
-  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<EditHealthCheckResponseHttpConfigExpectedCodesList>;
-
 export type EditHealthCheckResponseHttpConfigHeaderValueList = Array<string>;
 export type EditHealthCheckResponseHttpConfigHeaderMap = {
   [key: string]: EditHealthCheckResponseHttpConfigHeaderValueList | undefined;
 };
-const EditHealthCheckResponseHttpConfigHeaderMap =
-  CreateHealthCheckRequestHttpConfigHeaderMap as any as S.Schema<EditHealthCheckResponseHttpConfigHeaderMap>;
-
 export type EditHealthCheckResponseHttpConfigMethod = "GET" | "HEAD";
-const EditHealthCheckResponseHttpConfigMethod = S.String;
-
 export interface EditHealthCheckResponseHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean | null;
@@ -481,14 +349,7 @@ export interface EditHealthCheckResponseHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
 }
-const EditHealthCheckResponseHttpConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<EditHealthCheckResponseHttpConfig>;
-
 export type EditHealthCheckResponseStatus = "unknown" | "healthy" | "unhealthy" | "suspended";
-const EditHealthCheckResponseStatus = S.String;
-
 export type EditHealthCheckResponseTcpConfigMethod = "connection_established";
 export interface EditHealthCheckResponseTcpConfig {
   /** The TCP connection method to use for the health check. */
@@ -496,9 +357,6 @@ export interface EditHealthCheckResponseTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-const EditHealthCheckResponseTcpConfig =
-  CreateHealthCheckResponseTcpConfig as any as S.Schema<EditHealthCheckResponseTcpConfig>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditHealthCheckResponse {
   /** Identifier. */
@@ -536,20 +394,11 @@ export interface EditHealthCheckResponse {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string | null;
 }
-const EditHealthCheckResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<EditHealthCheckResponse>;
-
 export interface GetRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetRequest>;
-
 export type GetResponseCacheReserveValue = "on" | "off";
-const GetResponseCacheReserveValue = S.String;
-
 export interface GetResponseCacheReserve {
   /** The id of the Cache Reserve setting. */
   id?: string | null;
@@ -558,14 +407,7 @@ export interface GetResponseCacheReserve {
   /** Specifies the enablement value of Cache Reserve. */
   value?: GetResponseCacheReserveValue | null;
 }
-const GetResponseCacheReserve = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetResponseCacheReserve>;
-
 export type GetResponseRegionalTieredCacheValue = "on" | "off";
-const GetResponseRegionalTieredCacheValue = S.String;
-
 export interface GetResponseRegionalTieredCache {
   /** The id of the Regional Tiered Cache setting. */
   id?: string | null;
@@ -574,11 +416,6 @@ export interface GetResponseRegionalTieredCache {
   /** Specifies the enablement value of Cache Reserve. */
   value?: GetResponseRegionalTieredCacheValue | null;
 }
-const GetResponseRegionalTieredCache = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetResponseRegionalTieredCache>;
-
 export type GetResponseSmartRoutingValue = "on" | "off";
 export interface GetResponseSmartRouting {
   /** The id of the Smart Routing setting. */
@@ -588,11 +425,7 @@ export interface GetResponseSmartRouting {
   /** Specifies the enablement value of Argo Smart Routing. */
   value?: GetResponseSmartRoutingValue | null;
 }
-const GetResponseSmartRouting = GetResponseCacheReserve as any as S.Schema<GetResponseSmartRouting>;
-
 export type GetResponseSmartTieredCacheValue = "on" | "off";
-const GetResponseSmartTieredCacheValue = S.String;
-
 export interface GetResponseSmartTieredCache {
   /** The id of the Smart Tiered Cache setting. */
   id?: string | null;
@@ -603,11 +436,6 @@ export interface GetResponseSmartTieredCache {
   /** Specifies the enablement value of Tiered Cache. */
   value?: GetResponseSmartTieredCacheValue | null;
 }
-const GetResponseSmartTieredCache = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetResponseSmartTieredCache>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetResponse {
   cacheReserve: GetResponseCacheReserve;
@@ -617,19 +445,12 @@ export interface GetResponse {
   smartRouting: GetResponseSmartRouting;
   smartTieredCache: GetResponseSmartTieredCache;
 }
-const GetResponse = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetResponse>;
-
 export interface GetHealthCheckRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
   healthcheckId: string;
 }
-const GetHealthCheckRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetHealthCheckRequest>;
-
 export type GetHealthCheckResponseCheckRegionsItem =
   | "WNAM"
   | "ENAM"
@@ -646,23 +467,12 @@ export type GetHealthCheckResponseCheckRegionsItem =
   | "NEAS"
   | "ALL_REGIONS";
 export type GetHealthCheckResponseCheckRegionsList = Array<GetHealthCheckResponseCheckRegionsItem>;
-const GetHealthCheckResponseCheckRegionsList =
-  CreateHealthCheckRequestCheckRegionsList as any as S.Schema<GetHealthCheckResponseCheckRegionsList>;
-
 export type GetHealthCheckResponseHttpConfigExpectedCodesList = Array<string>;
-const GetHealthCheckResponseHttpConfigExpectedCodesList =
-  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<GetHealthCheckResponseHttpConfigExpectedCodesList>;
-
 export type GetHealthCheckResponseHttpConfigHeaderValueList = Array<string>;
 export type GetHealthCheckResponseHttpConfigHeaderMap = {
   [key: string]: GetHealthCheckResponseHttpConfigHeaderValueList | undefined;
 };
-const GetHealthCheckResponseHttpConfigHeaderMap =
-  CreateHealthCheckRequestHttpConfigHeaderMap as any as S.Schema<GetHealthCheckResponseHttpConfigHeaderMap>;
-
 export type GetHealthCheckResponseHttpConfigMethod = "GET" | "HEAD";
-const GetHealthCheckResponseHttpConfigMethod = S.String;
-
 export interface GetHealthCheckResponseHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean | null;
@@ -681,14 +491,7 @@ export interface GetHealthCheckResponseHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
 }
-const GetHealthCheckResponseHttpConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetHealthCheckResponseHttpConfig>;
-
 export type GetHealthCheckResponseStatus = "unknown" | "healthy" | "unhealthy" | "suspended";
-const GetHealthCheckResponseStatus = S.String;
-
 export type GetHealthCheckResponseTcpConfigMethod = "connection_established";
 export interface GetHealthCheckResponseTcpConfig {
   /** The TCP connection method to use for the health check. */
@@ -696,9 +499,6 @@ export interface GetHealthCheckResponseTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-const GetHealthCheckResponseTcpConfig =
-  CreateHealthCheckResponseTcpConfig as any as S.Schema<GetHealthCheckResponseTcpConfig>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetHealthCheckResponse {
   /** Identifier. */
@@ -736,11 +536,6 @@ export interface GetHealthCheckResponse {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string | null;
 }
-const GetHealthCheckResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetHealthCheckResponse>;
-
 export interface ListHealthChecksRequest {
   /** Identifier. */
   zoneId: string;
@@ -749,11 +544,6 @@ export interface ListHealthChecksRequest {
   /** Maximum number of results per page. Must be a multiple of 5. */
   perPage?: number;
 }
-const ListHealthChecksRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListHealthChecksRequest>;
-
 export type ListHealthChecksResultItemCheckRegionsItem =
   | "WNAM"
   | "ENAM"
@@ -771,23 +561,12 @@ export type ListHealthChecksResultItemCheckRegionsItem =
   | "ALL_REGIONS";
 export type ListHealthChecksResultItemCheckRegionsList =
   Array<ListHealthChecksResultItemCheckRegionsItem>;
-const ListHealthChecksResultItemCheckRegionsList =
-  CreateHealthCheckRequestCheckRegionsList as any as S.Schema<ListHealthChecksResultItemCheckRegionsList>;
-
 export type ListHealthChecksResultItemHttpConfigExpectedCodesList = Array<string>;
-const ListHealthChecksResultItemHttpConfigExpectedCodesList =
-  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<ListHealthChecksResultItemHttpConfigExpectedCodesList>;
-
 export type ListHealthChecksResultItemHttpConfigHeaderValueList = Array<string>;
 export type ListHealthChecksResultItemHttpConfigHeaderMap = {
   [key: string]: ListHealthChecksResultItemHttpConfigHeaderValueList | undefined;
 };
-const ListHealthChecksResultItemHttpConfigHeaderMap =
-  CreateHealthCheckRequestHttpConfigHeaderMap as any as S.Schema<ListHealthChecksResultItemHttpConfigHeaderMap>;
-
 export type ListHealthChecksResultItemHttpConfigMethod = "GET" | "HEAD";
-const ListHealthChecksResultItemHttpConfigMethod = S.String;
-
 export interface ListHealthChecksResultItemHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean | null;
@@ -806,14 +585,7 @@ export interface ListHealthChecksResultItemHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
 }
-const ListHealthChecksResultItemHttpConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListHealthChecksResultItemHttpConfig>;
-
 export type ListHealthChecksResultItemStatus = "unknown" | "healthy" | "unhealthy" | "suspended";
-const ListHealthChecksResultItemStatus = S.String;
-
 export type ListHealthChecksResultItemTcpConfigMethod = "connection_established";
 export interface ListHealthChecksResultItemTcpConfig {
   /** The TCP connection method to use for the health check. */
@@ -821,9 +593,6 @@ export interface ListHealthChecksResultItemTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-const ListHealthChecksResultItemTcpConfig =
-  CreateHealthCheckResponseTcpConfig as any as S.Schema<ListHealthChecksResultItemTcpConfig>;
-
 export interface ListHealthChecksResultItem {
   /** Identifier. */
   id?: string | null;
@@ -860,59 +629,28 @@ export interface ListHealthChecksResultItem {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string | null;
 }
-const ListHealthChecksResultItem = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListHealthChecksResultItem>;
-
 export type ListHealthChecksResultList = Array<ListHealthChecksResultItem>;
-const ListHealthChecksResultList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListHealthChecksResultList>;
-
 export type ListHealthChecksResponse = ListHealthChecksResultList;
-const ListHealthChecksResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListHealthChecksResponse>;
-
 export type UpdateRequestCacheReserveValue = "on" | "off";
-const UpdateRequestCacheReserveValue = S.String;
-
 export interface UpdateRequestCacheReserve {
   /** Specifies the enablement value of Cache Reserve. */
   value?: UpdateRequestCacheReserveValue | (string & {});
 }
-const UpdateRequestCacheReserve = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<UpdateRequestCacheReserve>;
-
 export type UpdateRequestRegionalTieredCacheValue = "on" | "off";
 export interface UpdateRequestRegionalTieredCache {
   /** Specifies the enablement value of Regional Tiered Cache. */
   value?: UpdateRequestRegionalTieredCacheValue | (string & {});
 }
-const UpdateRequestRegionalTieredCache =
-  UpdateRequestCacheReserve as any as S.Schema<UpdateRequestRegionalTieredCache>;
-
 export type UpdateRequestSmartRoutingValue = "on" | "off";
 export interface UpdateRequestSmartRouting {
   /** Specifies the enablement value of Smart Routing. */
   value?: UpdateRequestSmartRoutingValue | (string & {});
 }
-const UpdateRequestSmartRouting =
-  UpdateRequestCacheReserve as any as S.Schema<UpdateRequestSmartRouting>;
-
 export type UpdateRequestSmartTieredCacheValue = "on" | "off";
 export interface UpdateRequestSmartTieredCache {
   /** Specifies the enablement value of Smart Tiered Cache. */
   value?: UpdateRequestSmartTieredCacheValue | (string & {});
 }
-const UpdateRequestSmartTieredCache =
-  UpdateRequestCacheReserve as any as S.Schema<UpdateRequestSmartTieredCache>;
-
 export interface UpdateRequest {
   /** Identifier. */
   zoneId: string;
@@ -921,8 +659,6 @@ export interface UpdateRequest {
   smartRouting?: UpdateRequestSmartRouting;
   smartTieredCache?: UpdateRequestSmartTieredCache;
 }
-const UpdateRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<UpdateRequest>;
-
 export type UpdateResponseSmartTieredCacheValue = "on" | "off";
 export interface UpdateResponseSmartTieredCache {
   /** The id of the Smart Tiered Cache setting. */
@@ -934,46 +670,23 @@ export interface UpdateResponseSmartTieredCache {
   /** Specifies the enablement value of Tiered Cache. */
   value?: UpdateResponseSmartTieredCacheValue | null;
 }
-const UpdateResponseSmartTieredCache =
-  GetResponseSmartTieredCache as any as S.Schema<UpdateResponseSmartTieredCache>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateResponse {
   smartTieredCache: UpdateResponseSmartTieredCache;
 }
-const UpdateResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<UpdateResponse>;
-
 export interface UpdateHealthCheckRequestErrorsItemSource {
   pointer?: string;
 }
-const UpdateHealthCheckRequestErrorsItemSource = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<UpdateHealthCheckRequestErrorsItemSource>;
-
 export interface UpdateHealthCheckRequestErrorsItem {
   code: number;
   message: string;
   documentationUrl?: string;
   source?: UpdateHealthCheckRequestErrorsItemSource;
 }
-const UpdateHealthCheckRequestErrorsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<UpdateHealthCheckRequestErrorsItem>;
-
 export type UpdateHealthCheckRequestErrorsList = Array<UpdateHealthCheckRequestErrorsItem>;
-const UpdateHealthCheckRequestErrorsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<UpdateHealthCheckRequestErrorsList>;
-
 export type UpdateHealthCheckRequestMessagesItemSource = UpdateHealthCheckRequestErrorsItemSource;
 export type UpdateHealthCheckRequestMessagesItem = UpdateHealthCheckRequestErrorsItem;
 export type UpdateHealthCheckRequestMessagesList = Array<UpdateHealthCheckRequestErrorsItem>;
-const UpdateHealthCheckRequestMessagesList =
-  UpdateHealthCheckRequestErrorsList as any as S.Schema<UpdateHealthCheckRequestMessagesList>;
-
 export type UpdateHealthCheckRequestResultCheckRegionsItem =
   | "WNAM"
   | "ENAM"
@@ -992,23 +705,12 @@ export type UpdateHealthCheckRequestResultCheckRegionsItem =
 export type UpdateHealthCheckRequestResultCheckRegionsList = Array<
   UpdateHealthCheckRequestResultCheckRegionsItem | (string & {})
 >;
-const UpdateHealthCheckRequestResultCheckRegionsList =
-  CreateHealthCheckRequestCheckRegionsList as any as S.Schema<UpdateHealthCheckRequestResultCheckRegionsList>;
-
 export type UpdateHealthCheckRequestResultHttpConfigExpectedCodesList = Array<string>;
-const UpdateHealthCheckRequestResultHttpConfigExpectedCodesList =
-  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<UpdateHealthCheckRequestResultHttpConfigExpectedCodesList>;
-
 export type UpdateHealthCheckRequestResultHttpConfigHeaderValueList = Array<string>;
 export type UpdateHealthCheckRequestResultHttpConfigHeaderMap = {
   [key: string]: UpdateHealthCheckRequestResultHttpConfigHeaderValueList | undefined;
 };
-const UpdateHealthCheckRequestResultHttpConfigHeaderMap =
-  CreateHealthCheckRequestHttpConfigHeaderMap as any as S.Schema<UpdateHealthCheckRequestResultHttpConfigHeaderMap>;
-
 export type UpdateHealthCheckRequestResultHttpConfigMethod = "GET" | "HEAD";
-const UpdateHealthCheckRequestResultHttpConfigMethod = S.String;
-
 export interface UpdateHealthCheckRequestResultHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean;
@@ -1027,18 +729,11 @@ export interface UpdateHealthCheckRequestResultHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
-const UpdateHealthCheckRequestResultHttpConfig = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<UpdateHealthCheckRequestResultHttpConfig>;
-
 export type UpdateHealthCheckRequestResultStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
   | "suspended";
-const UpdateHealthCheckRequestResultStatus = S.String;
-
 export type UpdateHealthCheckRequestResultTcpConfigMethod = "connection_established";
 export interface UpdateHealthCheckRequestResultTcpConfig {
   /** The TCP connection method to use for the health check. */
@@ -1046,9 +741,6 @@ export interface UpdateHealthCheckRequestResultTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
-const UpdateHealthCheckRequestResultTcpConfig =
-  CreateHealthCheckRequestTcpConfig as any as S.Schema<UpdateHealthCheckRequestResultTcpConfig>;
-
 export interface UpdateHealthCheckRequestResult {
   /** Identifier. */
   id?: string;
@@ -1085,11 +777,6 @@ export interface UpdateHealthCheckRequestResult {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-const UpdateHealthCheckRequestResult = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<UpdateHealthCheckRequestResult>;
-
 export interface UpdateHealthCheckRequest {
   /** Identifier. */
   zoneId: string;
@@ -1101,11 +788,6 @@ export interface UpdateHealthCheckRequest {
   /** Whether the API call was successful. */
   success: boolean;
 }
-const UpdateHealthCheckRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<UpdateHealthCheckRequest>;
-
 export type UpdateHealthCheckResponseCheckRegionsItem =
   | "WNAM"
   | "ENAM"
@@ -1123,23 +805,12 @@ export type UpdateHealthCheckResponseCheckRegionsItem =
   | "ALL_REGIONS";
 export type UpdateHealthCheckResponseCheckRegionsList =
   Array<UpdateHealthCheckResponseCheckRegionsItem>;
-const UpdateHealthCheckResponseCheckRegionsList =
-  CreateHealthCheckRequestCheckRegionsList as any as S.Schema<UpdateHealthCheckResponseCheckRegionsList>;
-
 export type UpdateHealthCheckResponseHttpConfigExpectedCodesList = Array<string>;
-const UpdateHealthCheckResponseHttpConfigExpectedCodesList =
-  CreateHealthCheckRequestHttpConfigExpectedCodesList as any as S.Schema<UpdateHealthCheckResponseHttpConfigExpectedCodesList>;
-
 export type UpdateHealthCheckResponseHttpConfigHeaderValueList = Array<string>;
 export type UpdateHealthCheckResponseHttpConfigHeaderMap = {
   [key: string]: UpdateHealthCheckResponseHttpConfigHeaderValueList | undefined;
 };
-const UpdateHealthCheckResponseHttpConfigHeaderMap =
-  CreateHealthCheckRequestHttpConfigHeaderMap as any as S.Schema<UpdateHealthCheckResponseHttpConfigHeaderMap>;
-
 export type UpdateHealthCheckResponseHttpConfigMethod = "GET" | "HEAD";
-const UpdateHealthCheckResponseHttpConfigMethod = S.String;
-
 export interface UpdateHealthCheckResponseHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean | null;
@@ -1158,14 +829,7 @@ export interface UpdateHealthCheckResponseHttpConfig {
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number | null;
 }
-const UpdateHealthCheckResponseHttpConfig = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<UpdateHealthCheckResponseHttpConfig>;
-
 export type UpdateHealthCheckResponseStatus = "unknown" | "healthy" | "unhealthy" | "suspended";
-const UpdateHealthCheckResponseStatus = S.String;
-
 export type UpdateHealthCheckResponseTcpConfigMethod = "connection_established";
 export interface UpdateHealthCheckResponseTcpConfig {
   /** The TCP connection method to use for the health check. */
@@ -1173,9 +837,6 @@ export interface UpdateHealthCheckResponseTcpConfig {
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number | null;
 }
-const UpdateHealthCheckResponseTcpConfig =
-  CreateHealthCheckResponseTcpConfig as any as S.Schema<UpdateHealthCheckResponseTcpConfig>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateHealthCheckResponse {
   /** Identifier. */
@@ -1213,11 +874,6 @@ export interface UpdateHealthCheckResponse {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string | null;
 }
-const UpdateHealthCheckResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<UpdateHealthCheckResponse>;
-
 export type CacheReserveClearStatusError = CloudflareOpError;
 /** You can use Cache Reserve Clear to clear your Cache Reserve, but you must first disable Cache Reserve. In most cases, this will be accomplished within 24 hours. You cannot re-enable Cache Reserve while this process is ongoing. Keep in mind that you cannot undo or cancel this operation. */
 export const cacheReserveClearStatus: API.OperationMethod<
@@ -1226,8 +882,8 @@ export const cacheReserveClearStatus: API.OperationMethod<
   CacheReserveClearStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CacheReserveClearStatusRequest,
-  output: CacheReserveClearStatusResponse,
+  input: __S(0) as any as S.Schema<CacheReserveClearStatusRequest>,
+  output: __S(1) as any as S.Schema<CacheReserveClearStatusResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1241,8 +897,8 @@ export const clearCacheReserveClear: API.OperationMethod<
   ClearCacheReserveClearError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClearCacheReserveClearRequest,
-  output: ClearCacheReserveClearResponse,
+  input: __S(2) as any as S.Schema<ClearCacheReserveClearRequest>,
+  output: __S(1) as any as S.Schema<ClearCacheReserveClearResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1256,8 +912,8 @@ export const createHealthCheck: API.OperationMethod<
   CreateHealthCheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHealthCheckRequest,
-  output: CreateHealthCheckResponse,
+  input: __S(8) as any as S.Schema<CreateHealthCheckRequest>,
+  output: __S(11) as any as S.Schema<CreateHealthCheckResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1271,8 +927,8 @@ export const deleteHealthCheck: API.OperationMethod<
   DeleteHealthCheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHealthCheckRequest,
-  output: DeleteHealthCheckResponse,
+  input: __S(12) as any as S.Schema<DeleteHealthCheckRequest>,
+  output: __S(13) as any as S.Schema<DeleteHealthCheckResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1286,8 +942,8 @@ export const editHealthCheck: API.OperationMethod<
   EditHealthCheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EditHealthCheckRequest,
-  output: EditHealthCheckResponse,
+  input: __S(15) as any as S.Schema<EditHealthCheckRequest>,
+  output: __S(17) as any as S.Schema<EditHealthCheckResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1297,8 +953,8 @@ export type GetError = CloudflareOpError;
 /** Retrieve Smart Shield Settings. */
 export const get: API.OperationMethod<GetRequest, GetResponse, GetError, CloudflareOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetRequest,
-    output: GetResponse,
+    input: __S(18) as any as S.Schema<GetRequest>,
+    output: __S(22) as any as S.Schema<GetResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflareProtocol,
     retry: Retry.Retry,
@@ -1312,8 +968,8 @@ export const getHealthCheck: API.OperationMethod<
   GetHealthCheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHealthCheckRequest,
-  output: GetHealthCheckResponse,
+  input: __S(23) as any as S.Schema<GetHealthCheckRequest>,
+  output: __S(25) as any as S.Schema<GetHealthCheckResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1327,8 +983,8 @@ export const listHealthChecks: API.OperationMethod<
   ListHealthChecksError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHealthChecksRequest,
-  output: ListHealthChecksResponse,
+  input: __S(26) as any as S.Schema<ListHealthChecksRequest>,
+  output: __S(30) as any as S.Schema<ListHealthChecksResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1342,8 +998,8 @@ export const update: API.OperationMethod<
   UpdateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
+  input: __S(32) as any as S.Schema<UpdateRequest>,
+  output: __S(33) as any as S.Schema<UpdateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1357,8 +1013,8 @@ export const updateHealthCheck: API.OperationMethod<
   UpdateHealthCheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateHealthCheckRequest,
-  output: UpdateHealthCheckResponse,
+  input: __S(39) as any as S.Schema<UpdateHealthCheckRequest>,
+  output: __S(41) as any as S.Schema<UpdateHealthCheckResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1386,7 +1042,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Unknown,
           startTs: S.String.pipe(T.Body("start_ts")),
-          state: CacheReserveClearStatusResponseState,
+          state: S.String,
           endTs: S.optional(S.NullOr(S.String).pipe(T.Body("end_ts"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
         }),
@@ -1408,22 +1064,20 @@ function __c0(j: number): any {
         identifier: "ClearCacheReserveClearRequest",
       });
     case 3:
-      return S.Array(CreateHealthCheckRequestCheckRegionsItem);
+      return S.Array(S.String);
     case 4:
       return S.Array(S.String);
     case 5:
-      return S.Record(S.String, CreateHealthCheckRequestHttpConfigHeaderValueList);
+      return S.Record(S.String, __S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
           expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(
-            CreateHealthCheckRequestHttpConfigExpectedCodesList.pipe(T.Body("expected_codes")),
-          ),
+          expectedCodes: S.optional(__S(4).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-          header: S.optional(CreateHealthCheckRequestHttpConfigHeaderMap),
-          method: S.optional(CreateHealthCheckRequestHttpConfigMethod),
+          header: S.optional(__S(5)),
+          method: S.optional(S.String),
           path: S.optional(S.String),
           port: S.optional(S.Number),
         }),
@@ -1433,7 +1087,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          method: S.optional(CreateHealthCheckRequestTcpConfigMethod),
+          method: S.optional(S.String),
           port: S.optional(S.Number),
         }),
       ).annotate({
@@ -1449,17 +1103,15 @@ function __c1(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           address: S.String,
           name: S.String,
-          checkRegions: S.optional(
-            CreateHealthCheckRequestCheckRegionsList.pipe(T.Body("check_regions")),
-          ),
+          checkRegions: S.optional(__S(3).pipe(T.Body("check_regions"))),
           consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
           consecutiveSuccesses: S.optional(S.Number.pipe(T.Body("consecutive_successes"))),
           description: S.optional(S.String),
-          httpConfig: S.optional(CreateHealthCheckRequestHttpConfig.pipe(T.Body("http_config"))),
+          httpConfig: S.optional(__S(6).pipe(T.Body("http_config"))),
           interval: S.optional(S.Number),
           retries: S.optional(S.Number),
           suspended: S.optional(S.Boolean),
-          tcpConfig: S.optional(CreateHealthCheckRequestTcpConfig.pipe(T.Body("tcp_config"))),
+          tcpConfig: S.optional(__S(7).pipe(T.Body("tcp_config"))),
           timeout: S.optional(S.Number),
           type: S.optional(S.String),
         }).pipe(
@@ -1471,14 +1123,10 @@ function __c1(j: number): any {
         S.Struct({
           allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
           expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(
-            S.NullOr(CreateHealthCheckResponseHttpConfigExpectedCodesList).pipe(
-              T.Body("expected_codes"),
-            ),
-          ),
+          expectedCodes: S.optional(S.NullOr(__S(4)).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(CreateHealthCheckResponseHttpConfigHeaderMap)),
-          method: S.optional(S.NullOr(CreateHealthCheckResponseHttpConfigMethod)),
+          header: S.optional(S.NullOr(__S(5))),
+          method: S.optional(S.NullOr(S.String)),
           path: S.optional(S.NullOr(S.String)),
           port: S.optional(S.NullOr(S.Number)),
         }),
@@ -1488,7 +1136,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          method: S.optional(S.NullOr(CreateHealthCheckResponseTcpConfigMethod)),
+          method: S.optional(S.NullOr(S.String)),
           port: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
@@ -1499,9 +1147,7 @@ function __c1(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           address: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(
-            S.NullOr(CreateHealthCheckResponseCheckRegionsList).pipe(T.Body("check_regions")),
-          ),
+          checkRegions: S.optional(S.NullOr(__S(3)).pipe(T.Body("check_regions"))),
           consecutiveFails: S.optional(S.NullOr(S.Number).pipe(T.Body("consecutive_fails"))),
           consecutiveSuccesses: S.optional(
             S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
@@ -1509,18 +1155,14 @@ function __c1(j: number): any {
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
           failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
-          httpConfig: S.optional(
-            S.NullOr(CreateHealthCheckResponseHttpConfig).pipe(T.Body("http_config")),
-          ),
+          httpConfig: S.optional(S.NullOr(__S(9)).pipe(T.Body("http_config"))),
           interval: S.optional(S.NullOr(S.Number)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           retries: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(CreateHealthCheckResponseStatus)),
+          status: S.optional(S.NullOr(S.String)),
           suspended: S.optional(S.NullOr(S.Boolean)),
-          tcpConfig: S.optional(
-            S.NullOr(CreateHealthCheckResponseTcpConfig).pipe(T.Body("tcp_config")),
-          ),
+          tcpConfig: S.optional(S.NullOr(__S(10)).pipe(T.Body("tcp_config"))),
           timeout: S.optional(S.NullOr(S.Number)),
           type: S.optional(S.NullOr(S.String)),
         }),
@@ -1553,12 +1195,10 @@ function __c1(j: number): any {
         S.Struct({
           allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
           expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(
-            EditHealthCheckRequestHttpConfigExpectedCodesList.pipe(T.Body("expected_codes")),
-          ),
+          expectedCodes: S.optional(__S(4).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-          header: S.optional(EditHealthCheckRequestHttpConfigHeaderMap),
-          method: S.optional(EditHealthCheckRequestHttpConfigMethod),
+          header: S.optional(__S(5)),
+          method: S.optional(S.String),
           path: S.optional(S.String),
           port: S.optional(S.Number),
         }),
@@ -1572,17 +1212,15 @@ function __c1(j: number): any {
           healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
           address: S.String,
           name: S.String,
-          checkRegions: S.optional(
-            EditHealthCheckRequestCheckRegionsList.pipe(T.Body("check_regions")),
-          ),
+          checkRegions: S.optional(__S(3).pipe(T.Body("check_regions"))),
           consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
           consecutiveSuccesses: S.optional(S.Number.pipe(T.Body("consecutive_successes"))),
           description: S.optional(S.String),
-          httpConfig: S.optional(EditHealthCheckRequestHttpConfig.pipe(T.Body("http_config"))),
+          httpConfig: S.optional(__S(14).pipe(T.Body("http_config"))),
           interval: S.optional(S.Number),
           retries: S.optional(S.Number),
           suspended: S.optional(S.Boolean),
-          tcpConfig: S.optional(EditHealthCheckRequestTcpConfig.pipe(T.Body("tcp_config"))),
+          tcpConfig: S.optional(__S(7).pipe(T.Body("tcp_config"))),
           timeout: S.optional(S.Number),
           type: S.optional(S.String),
         }).pipe(
@@ -1602,14 +1240,10 @@ function __c2(j: number): any {
         S.Struct({
           allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
           expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(
-            S.NullOr(EditHealthCheckResponseHttpConfigExpectedCodesList).pipe(
-              T.Body("expected_codes"),
-            ),
-          ),
+          expectedCodes: S.optional(S.NullOr(__S(4)).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(EditHealthCheckResponseHttpConfigHeaderMap)),
-          method: S.optional(S.NullOr(EditHealthCheckResponseHttpConfigMethod)),
+          header: S.optional(S.NullOr(__S(5))),
+          method: S.optional(S.NullOr(S.String)),
           path: S.optional(S.NullOr(S.String)),
           port: S.optional(S.NullOr(S.Number)),
         }),
@@ -1621,9 +1255,7 @@ function __c2(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           address: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(
-            S.NullOr(EditHealthCheckResponseCheckRegionsList).pipe(T.Body("check_regions")),
-          ),
+          checkRegions: S.optional(S.NullOr(__S(3)).pipe(T.Body("check_regions"))),
           consecutiveFails: S.optional(S.NullOr(S.Number).pipe(T.Body("consecutive_fails"))),
           consecutiveSuccesses: S.optional(
             S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
@@ -1631,18 +1263,14 @@ function __c2(j: number): any {
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
           failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
-          httpConfig: S.optional(
-            S.NullOr(EditHealthCheckResponseHttpConfig).pipe(T.Body("http_config")),
-          ),
+          httpConfig: S.optional(S.NullOr(__S(16)).pipe(T.Body("http_config"))),
           interval: S.optional(S.NullOr(S.Number)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           retries: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(EditHealthCheckResponseStatus)),
+          status: S.optional(S.NullOr(S.String)),
           suspended: S.optional(S.NullOr(S.Boolean)),
-          tcpConfig: S.optional(
-            S.NullOr(EditHealthCheckResponseTcpConfig).pipe(T.Body("tcp_config")),
-          ),
+          tcpConfig: S.optional(S.NullOr(__S(10)).pipe(T.Body("tcp_config"))),
           timeout: S.optional(S.NullOr(S.Number)),
           type: S.optional(S.NullOr(S.String)),
         }),
@@ -1658,7 +1286,7 @@ function __c2(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           editable: S.optional(S.NullOr(S.Boolean)),
-          value: S.optional(S.NullOr(GetResponseCacheReserveValue)),
+          value: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "GetResponseCacheReserve" });
     case 4:
@@ -1666,7 +1294,7 @@ function __c2(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           editable: S.optional(S.NullOr(S.Boolean)),
-          value: S.optional(S.NullOr(GetResponseRegionalTieredCacheValue)),
+          value: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "GetResponseRegionalTieredCache",
@@ -1677,7 +1305,7 @@ function __c2(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           editable: S.optional(S.NullOr(S.Boolean)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          value: S.optional(S.NullOr(GetResponseSmartTieredCacheValue)),
+          value: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "GetResponseSmartTieredCache",
@@ -1685,11 +1313,11 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          cacheReserve: GetResponseCacheReserve.pipe(T.Body("cache_reserve")),
+          cacheReserve: __S(19).pipe(T.Body("cache_reserve")),
           healthchecksCount: S.Number.pipe(T.Body("healthchecks_count")),
-          regionalTieredCache: GetResponseRegionalTieredCache.pipe(T.Body("regional_tiered_cache")),
-          smartRouting: GetResponseSmartRouting.pipe(T.Body("smart_routing")),
-          smartTieredCache: GetResponseSmartTieredCache.pipe(T.Body("smart_tiered_cache")),
+          regionalTieredCache: __S(20).pipe(T.Body("regional_tiered_cache")),
+          smartRouting: __S(19).pipe(T.Body("smart_routing")),
+          smartTieredCache: __S(21).pipe(T.Body("smart_tiered_cache")),
         }),
       ).annotate({ identifier: "GetResponse" });
     case 7:
@@ -1714,14 +1342,10 @@ function __c3(j: number): any {
         S.Struct({
           allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
           expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(
-            S.NullOr(GetHealthCheckResponseHttpConfigExpectedCodesList).pipe(
-              T.Body("expected_codes"),
-            ),
-          ),
+          expectedCodes: S.optional(S.NullOr(__S(4)).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(GetHealthCheckResponseHttpConfigHeaderMap)),
-          method: S.optional(S.NullOr(GetHealthCheckResponseHttpConfigMethod)),
+          header: S.optional(S.NullOr(__S(5))),
+          method: S.optional(S.NullOr(S.String)),
           path: S.optional(S.NullOr(S.String)),
           port: S.optional(S.NullOr(S.Number)),
         }),
@@ -1733,9 +1357,7 @@ function __c3(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           address: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(
-            S.NullOr(GetHealthCheckResponseCheckRegionsList).pipe(T.Body("check_regions")),
-          ),
+          checkRegions: S.optional(S.NullOr(__S(3)).pipe(T.Body("check_regions"))),
           consecutiveFails: S.optional(S.NullOr(S.Number).pipe(T.Body("consecutive_fails"))),
           consecutiveSuccesses: S.optional(
             S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
@@ -1743,18 +1365,14 @@ function __c3(j: number): any {
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
           failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
-          httpConfig: S.optional(
-            S.NullOr(GetHealthCheckResponseHttpConfig).pipe(T.Body("http_config")),
-          ),
+          httpConfig: S.optional(S.NullOr(__S(24)).pipe(T.Body("http_config"))),
           interval: S.optional(S.NullOr(S.Number)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           retries: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(GetHealthCheckResponseStatus)),
+          status: S.optional(S.NullOr(S.String)),
           suspended: S.optional(S.NullOr(S.Boolean)),
-          tcpConfig: S.optional(
-            S.NullOr(GetHealthCheckResponseTcpConfig).pipe(T.Body("tcp_config")),
-          ),
+          tcpConfig: S.optional(S.NullOr(__S(10)).pipe(T.Body("tcp_config"))),
           timeout: S.optional(S.NullOr(S.Number)),
           type: S.optional(S.NullOr(S.String)),
         }),
@@ -1774,14 +1392,10 @@ function __c3(j: number): any {
         S.Struct({
           allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
           expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(
-            S.NullOr(ListHealthChecksResultItemHttpConfigExpectedCodesList).pipe(
-              T.Body("expected_codes"),
-            ),
-          ),
+          expectedCodes: S.optional(S.NullOr(__S(4)).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(ListHealthChecksResultItemHttpConfigHeaderMap)),
-          method: S.optional(S.NullOr(ListHealthChecksResultItemHttpConfigMethod)),
+          header: S.optional(S.NullOr(__S(5))),
+          method: S.optional(S.NullOr(S.String)),
           path: S.optional(S.NullOr(S.String)),
           port: S.optional(S.NullOr(S.Number)),
         }),
@@ -1793,9 +1407,7 @@ function __c3(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           address: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(
-            S.NullOr(ListHealthChecksResultItemCheckRegionsList).pipe(T.Body("check_regions")),
-          ),
+          checkRegions: S.optional(S.NullOr(__S(3)).pipe(T.Body("check_regions"))),
           consecutiveFails: S.optional(S.NullOr(S.Number).pipe(T.Body("consecutive_fails"))),
           consecutiveSuccesses: S.optional(
             S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
@@ -1803,18 +1415,14 @@ function __c3(j: number): any {
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
           failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
-          httpConfig: S.optional(
-            S.NullOr(ListHealthChecksResultItemHttpConfig).pipe(T.Body("http_config")),
-          ),
+          httpConfig: S.optional(S.NullOr(__S(27)).pipe(T.Body("http_config"))),
           interval: S.optional(S.NullOr(S.Number)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           retries: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(ListHealthChecksResultItemStatus)),
+          status: S.optional(S.NullOr(S.String)),
           suspended: S.optional(S.NullOr(S.Boolean)),
-          tcpConfig: S.optional(
-            S.NullOr(ListHealthChecksResultItemTcpConfig).pipe(T.Body("tcp_config")),
-          ),
+          tcpConfig: S.optional(S.NullOr(__S(10)).pipe(T.Body("tcp_config"))),
           timeout: S.optional(S.NullOr(S.Number)),
           type: S.optional(S.NullOr(S.String)),
         }),
@@ -1822,15 +1430,15 @@ function __c3(j: number): any {
         identifier: "ListHealthChecksResultItem",
       });
     case 5:
-      return S.Array(ListHealthChecksResultItem);
+      return S.Array(__S(28));
     case 6:
-      return S.suspend(() => ListHealthChecksResultList.pipe(T.EnvelopePayloadRoot())).annotate({
+      return S.suspend(() => __S(29).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "ListHealthChecksResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(UpdateRequestCacheReserveValue),
+          value: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateRequestCacheReserve",
@@ -1843,20 +1451,16 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          cacheReserve: S.optional(UpdateRequestCacheReserve.pipe(T.Body("cache_reserve"))),
-          regionalTieredCache: S.optional(
-            UpdateRequestRegionalTieredCache.pipe(T.Body("regional_tiered_cache")),
-          ),
-          smartRouting: S.optional(UpdateRequestSmartRouting.pipe(T.Body("smart_routing"))),
-          smartTieredCache: S.optional(
-            UpdateRequestSmartTieredCache.pipe(T.Body("smart_tiered_cache")),
-          ),
+          cacheReserve: S.optional(__S(31).pipe(T.Body("cache_reserve"))),
+          regionalTieredCache: S.optional(__S(31).pipe(T.Body("regional_tiered_cache"))),
+          smartRouting: S.optional(__S(31).pipe(T.Body("smart_routing"))),
+          smartTieredCache: S.optional(__S(31).pipe(T.Body("smart_tiered_cache"))),
         }).pipe(T.Http({ method: "PATCH", uri: "/zones/{zone_id}/smart_shield", code: 200 })),
       ).annotate({ identifier: "UpdateRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          smartTieredCache: UpdateResponseSmartTieredCache.pipe(T.Body("smart_tiered_cache")),
+          smartTieredCache: __S(21).pipe(T.Body("smart_tiered_cache")),
         }),
       ).annotate({ identifier: "UpdateResponse" });
     case 2:
@@ -1873,26 +1477,22 @@ function __c4(j: number): any {
           code: S.Number,
           message: S.String,
           documentationUrl: S.optional(S.String.pipe(T.Body("documentation_url"))),
-          source: S.optional(UpdateHealthCheckRequestErrorsItemSource),
+          source: S.optional(__S(34)),
         }),
       ).annotate({
         identifier: "UpdateHealthCheckRequestErrorsItem",
       });
     case 4:
-      return S.Array(UpdateHealthCheckRequestErrorsItem);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
           allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
           expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(
-            UpdateHealthCheckRequestResultHttpConfigExpectedCodesList.pipe(
-              T.Body("expected_codes"),
-            ),
-          ),
+          expectedCodes: S.optional(__S(4).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-          header: S.optional(UpdateHealthCheckRequestResultHttpConfigHeaderMap),
-          method: S.optional(UpdateHealthCheckRequestResultHttpConfigMethod),
+          header: S.optional(__S(5)),
+          method: S.optional(S.String),
           path: S.optional(S.String),
           port: S.optional(S.Number),
         }),
@@ -1904,24 +1504,20 @@ function __c4(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           address: S.optional(S.String),
-          checkRegions: S.optional(
-            UpdateHealthCheckRequestResultCheckRegionsList.pipe(T.Body("check_regions")),
-          ),
+          checkRegions: S.optional(__S(3).pipe(T.Body("check_regions"))),
           consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
           consecutiveSuccesses: S.optional(S.Number.pipe(T.Body("consecutive_successes"))),
           createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
           description: S.optional(S.String),
           failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
-          httpConfig: S.optional(
-            UpdateHealthCheckRequestResultHttpConfig.pipe(T.Body("http_config")),
-          ),
+          httpConfig: S.optional(__S(37).pipe(T.Body("http_config"))),
           interval: S.optional(S.Number),
           modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
           name: S.optional(S.String),
           retries: S.optional(S.Number),
-          status: S.optional(UpdateHealthCheckRequestResultStatus),
+          status: S.optional(S.String),
           suspended: S.optional(S.Boolean),
-          tcpConfig: S.optional(UpdateHealthCheckRequestResultTcpConfig.pipe(T.Body("tcp_config"))),
+          tcpConfig: S.optional(__S(7).pipe(T.Body("tcp_config"))),
           timeout: S.optional(S.Number),
           type: S.optional(S.String),
         }),
@@ -1933,9 +1529,9 @@ function __c4(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
-          errors: UpdateHealthCheckRequestErrorsList,
-          messages: UpdateHealthCheckRequestMessagesList,
-          result: UpdateHealthCheckRequestResult,
+          errors: __S(36),
+          messages: __S(36),
+          result: __S(38),
           success: S.Boolean,
         }).pipe(
           T.Http({
@@ -1954,14 +1550,10 @@ function __c5(j: number): any {
         S.Struct({
           allowInsecure: S.optional(S.NullOr(S.Boolean).pipe(T.Body("allow_insecure"))),
           expectedBody: S.optional(S.NullOr(S.String).pipe(T.Body("expected_body"))),
-          expectedCodes: S.optional(
-            S.NullOr(UpdateHealthCheckResponseHttpConfigExpectedCodesList).pipe(
-              T.Body("expected_codes"),
-            ),
-          ),
+          expectedCodes: S.optional(S.NullOr(__S(4)).pipe(T.Body("expected_codes"))),
           followRedirects: S.optional(S.NullOr(S.Boolean).pipe(T.Body("follow_redirects"))),
-          header: S.optional(S.NullOr(UpdateHealthCheckResponseHttpConfigHeaderMap)),
-          method: S.optional(S.NullOr(UpdateHealthCheckResponseHttpConfigMethod)),
+          header: S.optional(S.NullOr(__S(5))),
+          method: S.optional(S.NullOr(S.String)),
           path: S.optional(S.NullOr(S.String)),
           port: S.optional(S.NullOr(S.Number)),
         }),
@@ -1973,9 +1565,7 @@ function __c5(j: number): any {
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
           address: S.optional(S.NullOr(S.String)),
-          checkRegions: S.optional(
-            S.NullOr(UpdateHealthCheckResponseCheckRegionsList).pipe(T.Body("check_regions")),
-          ),
+          checkRegions: S.optional(S.NullOr(__S(3)).pipe(T.Body("check_regions"))),
           consecutiveFails: S.optional(S.NullOr(S.Number).pipe(T.Body("consecutive_fails"))),
           consecutiveSuccesses: S.optional(
             S.NullOr(S.Number).pipe(T.Body("consecutive_successes")),
@@ -1983,23 +1573,40 @@ function __c5(j: number): any {
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           description: S.optional(S.NullOr(S.String)),
           failureReason: S.optional(S.NullOr(S.String).pipe(T.Body("failure_reason"))),
-          httpConfig: S.optional(
-            S.NullOr(UpdateHealthCheckResponseHttpConfig).pipe(T.Body("http_config")),
-          ),
+          httpConfig: S.optional(S.NullOr(__S(40)).pipe(T.Body("http_config"))),
           interval: S.optional(S.NullOr(S.Number)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           retries: S.optional(S.NullOr(S.Number)),
-          status: S.optional(S.NullOr(UpdateHealthCheckResponseStatus)),
+          status: S.optional(S.NullOr(S.String)),
           suspended: S.optional(S.NullOr(S.Boolean)),
-          tcpConfig: S.optional(
-            S.NullOr(UpdateHealthCheckResponseTcpConfig).pipe(T.Body("tcp_config")),
-          ),
+          tcpConfig: S.optional(S.NullOr(__S(10)).pipe(T.Body("tcp_config"))),
           timeout: S.optional(S.NullOr(S.Number)),
           type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "UpdateHealthCheckResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
   }
 }

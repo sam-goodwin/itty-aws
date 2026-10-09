@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SSO OIDC",
   serviceShapeName: "AWSSSOOIDCService",
@@ -81,7 +83,7 @@ export class AccessDeniedException
     {
       error: /*@__PURE__*/ S.optional(S.String),
       reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => AccessDeniedExceptionReason).annotate({
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({
           identifier: "AccessDeniedExceptionReason",
         }),
       ),
@@ -166,7 +168,7 @@ export class InvalidRequestException
     {
       error: /*@__PURE__*/ S.optional(S.String),
       reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => InvalidRequestExceptionReason).annotate({
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({
           identifier: "InvalidRequestExceptionReason",
         }),
       ),
@@ -235,7 +237,6 @@ export type AuthCode = string;
 export type RefreshToken = string | redacted.Redacted<string>;
 export type Scope = string;
 export type Scopes = string[];
-const Scopes = /*@__PURE__*/ __L.at(__c0, 0);
 export type URI = string;
 export type CodeVerifier = string | redacted.Redacted<string>;
 export interface CreateTokenRequest {
@@ -249,7 +250,6 @@ export interface CreateTokenRequest {
   redirectUri?: string;
   codeVerifier?: string | redacted.Redacted<string>;
 }
-const CreateTokenRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateTokenRequest>;
 export type AccessToken = string | redacted.Redacted<string>;
 export type TokenType = string;
 export type ExpirationInSeconds = number;
@@ -261,7 +261,6 @@ export interface CreateTokenResponse {
   refreshToken?: string | redacted.Redacted<string>;
   idToken?: string | redacted.Redacted<string>;
 }
-const CreateTokenResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateTokenResponse>;
 export type Assertion = string | redacted.Redacted<string>;
 export type SubjectToken = string | redacted.Redacted<string>;
 export type TokenTypeURI = string;
@@ -278,15 +277,10 @@ export interface CreateTokenWithIAMRequest {
   requestedTokenType?: string;
   codeVerifier?: string | redacted.Redacted<string>;
 }
-const CreateTokenWithIAMRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateTokenWithIAMRequest>;
 export type IdentityContext = string;
 export interface AwsAdditionalDetails {
   identityContext?: string;
 }
-const AwsAdditionalDetails = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AwsAdditionalDetails>;
 export interface CreateTokenWithIAMResponse {
   accessToken?: string | redacted.Redacted<string>;
   tokenType?: string;
@@ -297,16 +291,10 @@ export interface CreateTokenWithIAMResponse {
   scope?: string[];
   awsAdditionalDetails?: AwsAdditionalDetails;
 }
-const CreateTokenWithIAMResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateTokenWithIAMResponse>;
 export type ClientName = string;
 export type ClientType = string;
 export type RedirectUris = string[];
-const RedirectUris = Scopes as any as S.Schema<RedirectUris>;
 export type GrantTypes = string[];
-const GrantTypes = Scopes as any as S.Schema<GrantTypes>;
 export type ArnType = string;
 export interface RegisterClientRequest {
   clientName: string;
@@ -317,10 +305,6 @@ export interface RegisterClientRequest {
   issuerUrl?: string;
   entitledApplicationArn?: string;
 }
-const RegisterClientRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<RegisterClientRequest>;
 export type LongTimeStampType = number;
 export interface RegisterClientResponse {
   clientId?: string;
@@ -330,19 +314,11 @@ export interface RegisterClientResponse {
   authorizationEndpoint?: string;
   tokenEndpoint?: string;
 }
-const RegisterClientResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<RegisterClientResponse>;
 export interface StartDeviceAuthorizationRequest {
   clientId: string;
   clientSecret: string | redacted.Redacted<string>;
   startUrl: string;
 }
-const StartDeviceAuthorizationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<StartDeviceAuthorizationRequest>;
 export type UserCode = string;
 export type IntervalInSeconds = number;
 export interface StartDeviceAuthorizationResponse {
@@ -353,13 +329,7 @@ export interface StartDeviceAuthorizationResponse {
   expiresIn?: number;
   interval?: number;
 }
-const StartDeviceAuthorizationResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<StartDeviceAuthorizationResponse>;
 export type AccessDeniedExceptionReason = "KMS_AccessDeniedException" | (string & {});
-const AccessDeniedExceptionReason = S.String;
-
 export type ErrorDescription = string;
 export type InvalidRequestExceptionReason =
   | "KMS_NotFoundException"
@@ -367,8 +337,6 @@ export type InvalidRequestExceptionReason =
   | "KMS_InvalidStateException"
   | "KMS_DisabledException"
   | (string & {});
-const InvalidRequestExceptionReason = S.String;
-
 export type Location = string;
 export type Region = string;
 export type CreateTokenError =
@@ -395,8 +363,8 @@ export const createToken: API.OperationMethod<
   CreateTokenError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTokenRequest,
-  output: CreateTokenResponse,
+  input: __S(1) as any as S.Schema<CreateTokenRequest>,
+  output: __S(2) as any as S.Schema<CreateTokenResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationPendingException,
@@ -444,8 +412,8 @@ export const createTokenWithIAM: API.OperationMethod<
   CreateTokenWithIAMError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTokenWithIAMRequest,
-  output: CreateTokenWithIAMResponse,
+  input: __S(3) as any as S.Schema<CreateTokenWithIAMRequest>,
+  output: __S(5) as any as S.Schema<CreateTokenWithIAMResponse>,
   errors: [
     AccessDeniedException,
     AuthorizationPendingException,
@@ -485,8 +453,8 @@ export const registerClient: API.OperationMethod<
   RegisterClientError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterClientRequest,
-  output: RegisterClientResponse,
+  input: __S(6) as any as S.Schema<RegisterClientRequest>,
+  output: __S(7) as any as S.Schema<RegisterClientResponse>,
   errors: [
     InternalServerException,
     InvalidClientMetadataException,
@@ -518,8 +486,8 @@ export const startDeviceAuthorization: API.OperationMethod<
   StartDeviceAuthorizationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartDeviceAuthorizationRequest,
-  output: StartDeviceAuthorizationResponse,
+  input: __S(8) as any as S.Schema<StartDeviceAuthorizationRequest>,
+  output: __S(9) as any as S.Schema<StartDeviceAuthorizationResponse>,
   errors: [
     InternalServerException,
     InvalidClientException,
@@ -546,7 +514,7 @@ function __c0(j: number): any {
           deviceCode: S.optional(S.String),
           code: S.optional(S.String),
           refreshToken: S.optional(SensitiveString),
-          scope: S.optional(Scopes),
+          scope: S.optional(__S(0)),
           redirectUri: S.optional(S.String),
           codeVerifier: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/token" }), svc, auth, proto, ver, rules)),
@@ -569,7 +537,7 @@ function __c0(j: number): any {
           code: S.optional(S.String),
           refreshToken: S.optional(SensitiveString),
           assertion: S.optional(SensitiveString),
-          scope: S.optional(Scopes),
+          scope: S.optional(__S(0)),
           redirectUri: S.optional(S.String),
           subjectToken: S.optional(SensitiveString),
           subjectTokenType: S.optional(S.String),
@@ -594,8 +562,8 @@ function __c0(j: number): any {
           refreshToken: S.optional(SensitiveString),
           idToken: S.optional(SensitiveString),
           issuedTokenType: S.optional(S.String),
-          scope: S.optional(Scopes),
-          awsAdditionalDetails: S.optional(AwsAdditionalDetails),
+          scope: S.optional(__S(0)),
+          awsAdditionalDetails: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "CreateTokenWithIAMResponse",
@@ -605,9 +573,9 @@ function __c0(j: number): any {
         S.Struct({
           clientName: S.String,
           clientType: S.String,
-          scopes: S.optional(Scopes),
-          redirectUris: S.optional(RedirectUris),
-          grantTypes: S.optional(GrantTypes),
+          scopes: S.optional(__S(0)),
+          redirectUris: S.optional(__S(0)),
+          grantTypes: S.optional(__S(0)),
           issuerUrl: S.optional(S.String),
           entitledApplicationArn: S.optional(S.String),
         }).pipe(
@@ -657,5 +625,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "StartDeviceAuthorizationResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

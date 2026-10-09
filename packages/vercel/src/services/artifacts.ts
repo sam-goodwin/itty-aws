@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -53,24 +55,9 @@ export interface ArtifactExistsRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ArtifactExistsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ArtifactExistsRequest>;
-
 export interface ArtifactExistsResponse {}
-const ArtifactExistsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ArtifactExistsResponse>;
-
 /** artifact hashes */
 export type ArtifactQueryRequestHashesList = Array<string>;
-const ArtifactQueryRequestHashesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ArtifactQueryRequestHashesList>;
-
 export interface ArtifactQueryRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -79,8 +66,6 @@ export interface ArtifactQueryRequest {
   /** artifact hashes */
   hashes: ArtifactQueryRequestHashesList;
 }
-const ArtifactQueryRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ArtifactQueryRequest>;
-
 export interface ArtifactQueryResponseBodyValueCase0 {
   dirtyHash?: string;
   sha?: string;
@@ -97,41 +82,19 @@ export interface ArtifactQueryResponseBodyValueCase1 {
 export type ArtifactQueryResponseBodyValue =
   | ArtifactQueryResponseBodyValueCase0
   | ArtifactQueryResponseBodyValueCase1;
-const ArtifactQueryResponseBodyValue = S.Unknown as any as S.Schema<ArtifactQueryResponseBodyValue>;
-
 export type ArtifactQueryResponseBodyMap = {
   [key: string]: ArtifactQueryResponseBodyValue | null | undefined;
 };
-const ArtifactQueryResponseBodyMap = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ArtifactQueryResponseBodyMap>;
-
 export type ArtifactQueryResponse = ArtifactQueryResponseBodyMap;
-const ArtifactQueryResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ArtifactQueryResponse>;
-
 export interface DeleteAllArtifactsRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const DeleteAllArtifactsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteAllArtifactsRequest>;
-
 export interface DeleteAllArtifactsResponse {
   deletedCount: number;
 }
-const DeleteAllArtifactsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeleteAllArtifactsResponse>;
-
 export interface DownloadArtifactRequest {
   /** The artifact hash */
   hash: string;
@@ -144,25 +107,11 @@ export interface DownloadArtifactRequest {
   /** 1 if the client is an interactive shell. Otherwise 0 */
   xArtifactClientInteractive?: number;
 }
-const DownloadArtifactRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DownloadArtifactRequest>;
-
 export type DownloadArtifactResponse = string;
-const DownloadArtifactResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DownloadArtifactResponse>;
-
 /** One of `LOCAL` or `REMOTE`. `LOCAL` specifies that the cache event was from the user's filesystem cache. `REMOTE` specifies that the cache event is from a remote cache. */
 export type RecordEventsRequestBodyItemSource = "LOCAL" | "REMOTE";
-const RecordEventsRequestBodyItemSource = S.String;
-
 /** One of `HIT` or `MISS`. `HIT` specifies that a cached artifact for `hash` was found in the cache. `MISS` specifies that a cached artifact with `hash` was not found. */
 export type RecordEventsRequestBodyItemEvent = "HIT" | "MISS";
-const RecordEventsRequestBodyItemEvent = S.String;
-
 export interface RecordEventsRequestBodyItem {
   /** A UUID (universally unique identifer) for the session that generated this event. */
   sessionId: string;
@@ -175,17 +124,7 @@ export interface RecordEventsRequestBodyItem {
   /** The time taken to generate the artifact. This should be sent as a body parameter on `HIT` events. */
   duration?: number;
 }
-const RecordEventsRequestBodyItem = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<RecordEventsRequestBodyItem>;
-
 export type RecordEventsRequestBodyList = Array<RecordEventsRequestBodyItem>;
-const RecordEventsRequestBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<RecordEventsRequestBodyList>;
-
 export interface RecordEventsRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
@@ -197,19 +136,13 @@ export interface RecordEventsRequest {
   xArtifactClientInteractive?: number;
   body: RecordEventsRequestBodyList;
 }
-const RecordEventsRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<RecordEventsRequest>;
-
 export interface RecordEventsResponse {}
-const RecordEventsResponse = ArtifactExistsResponse as any as S.Schema<RecordEventsResponse>;
-
 export interface StatusRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const StatusRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<StatusRequest>;
-
 export interface StatusResponseBodyCase0 {
   status: string;
 }
@@ -218,11 +151,7 @@ export interface StatusResponseBodyCase1 {
   status: StatusResponseBodyCase1Status;
 }
 export type StatusResponseBody = StatusResponseBodyCase0 | StatusResponseBodyCase1;
-const StatusResponseBody = S.Unknown as any as S.Schema<StatusResponseBody>;
-
 export type StatusResponse = StatusResponseBody;
-const StatusResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<StatusResponse>;
-
 export interface UploadArtifactRequest {
   /** The artifact hash */
   hash: string;
@@ -245,25 +174,12 @@ export interface UploadArtifactRequest {
   /** A hash representing uncommitted changes in the working directory when this artifact was generated. */
   xArtifactDirtyHash?: string;
 }
-const UploadArtifactRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<UploadArtifactRequest>;
-
 /** Array of URLs where the artifact was updated */
 export type UploadArtifactResponseUrlsList = Array<string>;
-const UploadArtifactResponseUrlsList =
-  ArtifactQueryRequestHashesList as any as S.Schema<UploadArtifactResponseUrlsList>;
-
 export interface UploadArtifactResponse {
   /** Array of URLs where the artifact was updated */
   urls: UploadArtifactResponseUrlsList;
 }
-const UploadArtifactResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<UploadArtifactResponse>;
-
 export type ArtifactExistsError =
   | BadRequest
   | PaymentRequired
@@ -277,8 +193,8 @@ export const artifactExists: API.OperationMethod<
   ArtifactExistsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ArtifactExistsRequest,
-  output: ArtifactExistsResponse,
+  input: __S(0) as any as S.Schema<ArtifactExistsRequest>,
+  output: __S(1) as any as S.Schema<ArtifactExistsResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -297,8 +213,8 @@ export const artifactQuery: API.OperationMethod<
   ArtifactQueryError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ArtifactQueryRequest,
-  output: ArtifactQueryResponse,
+  input: __S(3) as any as S.Schema<ArtifactQueryRequest>,
+  output: __S(5) as any as S.Schema<ArtifactQueryResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -312,8 +228,8 @@ export const deleteAllArtifacts: API.OperationMethod<
   DeleteAllArtifactsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAllArtifactsRequest,
-  output: DeleteAllArtifactsResponse,
+  input: __S(6) as any as S.Schema<DeleteAllArtifactsRequest>,
+  output: __S(7) as any as S.Schema<DeleteAllArtifactsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -332,8 +248,8 @@ export const downloadArtifact: API.OperationMethod<
   DownloadArtifactError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadArtifactRequest,
-  output: DownloadArtifactResponse,
+  input: __S(8) as any as S.Schema<DownloadArtifactRequest>,
+  output: __S(9) as any as S.Schema<DownloadArtifactResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -347,8 +263,8 @@ export const recordEvents: API.OperationMethod<
   RecordEventsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RecordEventsRequest,
-  output: RecordEventsResponse,
+  input: __S(12) as any as S.Schema<RecordEventsRequest>,
+  output: __S(1) as any as S.Schema<RecordEventsResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -362,8 +278,8 @@ export const status: API.OperationMethod<
   StatusError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StatusRequest,
-  output: StatusResponse,
+  input: __S(13) as any as S.Schema<StatusRequest>,
+  output: __S(14) as any as S.Schema<StatusResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -382,8 +298,8 @@ export const uploadArtifact: API.OperationMethod<
   UploadArtifactError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadArtifactRequest,
-  output: UploadArtifactResponse,
+  input: __S(15) as any as S.Schema<UploadArtifactRequest>,
+  output: __S(16) as any as S.Schema<UploadArtifactResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -411,13 +327,13 @@ function __c0(j: number): any {
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          hashes: ArtifactQueryRequestHashesList,
+          hashes: __S(2),
         }).pipe(T.Http({ method: "POST", uri: "/v8/artifacts", code: 200 })),
       ).annotate({ identifier: "ArtifactQueryRequest" });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(ArtifactQueryResponseBodyValue));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 5:
-      return S.suspend(() => ArtifactQueryResponseBodyMap.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ArtifactQueryResponse",
       });
     case 6:
@@ -461,8 +377,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sessionId: S.String,
-          source: RecordEventsRequestBodyItemSource,
-          event: RecordEventsRequestBodyItemEvent,
+          source: S.String,
+          event: S.String,
           hash: S.String,
           duration: S.optional(S.Number),
         }),
@@ -470,7 +386,7 @@ function __c1(j: number): any {
         identifier: "RecordEventsRequestBodyItem",
       });
     case 3:
-      return S.Array(RecordEventsRequestBodyItem);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -480,7 +396,7 @@ function __c1(j: number): any {
           xArtifactClientInteractive: S.optional(
             S.Number.pipe(T.Header("x-artifact-client-interactive")),
           ),
-          body: RecordEventsRequestBodyList.pipe(T.HttpBody()),
+          body: __S(11).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v8/artifacts/events", code: 200 })),
       ).annotate({ identifier: "RecordEventsRequest" });
     case 5:
@@ -491,7 +407,7 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v8/artifacts/status", code: 200 })),
       ).annotate({ identifier: "StatusRequest" });
     case 6:
-      return S.suspend(() => StatusResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "StatusResponse",
       });
     case 7:
@@ -518,8 +434,23 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          urls: UploadArtifactResponseUrlsList,
+          urls: __S(2),
         }),
       ).annotate({ identifier: "UploadArtifactResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

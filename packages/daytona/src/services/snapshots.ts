@@ -6,6 +6,8 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
@@ -15,11 +17,6 @@ export interface ActivateSnapshotRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-const ActivateSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ActivateSnapshotRequest>;
-
 export type SnapshotState =
   | "building"
   | "pending"
@@ -30,14 +27,7 @@ export type SnapshotState =
   | "error"
   | "build_failed"
   | "removing";
-const SnapshotState = S.String;
-
 export type SnapshotDtoEntrypointList = Array<string>;
-const SnapshotDtoEntrypointList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<SnapshotDtoEntrypointList>;
-
 export type GpuType =
   | "H100"
   | "H200"
@@ -46,13 +36,8 @@ export type GpuType =
   | "RTX-4090"
   | "RTX-5090"
   | "MI355X";
-const GpuType = S.String;
-
 /** The context hashes used for the build */
 export type BuildInfoContextHashesList = Array<string>;
-const BuildInfoContextHashesList =
-  SnapshotDtoEntrypointList as any as S.Schema<BuildInfoContextHashesList>;
-
 export interface BuildInfo {
   /** The Dockerfile content used for the build */
   dockerfileContent?: string;
@@ -65,17 +50,10 @@ export interface BuildInfo {
   /** The snapshot reference */
   snapshotRef: string;
 }
-const BuildInfo = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<BuildInfo>;
-
 /** IDs of regions where the snapshot is available */
 export type SnapshotDtoRegionIdsList = Array<string>;
-const SnapshotDtoRegionIdsList =
-  SnapshotDtoEntrypointList as any as S.Schema<SnapshotDtoRegionIdsList>;
-
 /** The sandbox class of the snapshot */
 export type SnapshotDtoSandboxClass = "linux-vm" | "container" | "windows";
-const SnapshotDtoSandboxClass = S.String;
-
 export interface SnapshotDto {
   id: string;
   organizationId?: string;
@@ -108,36 +86,19 @@ export interface SnapshotDto {
   /** The sandbox class of the snapshot */
   sandboxClass?: SnapshotDtoSandboxClass;
 }
-const SnapshotDto = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SnapshotDto>;
-
 /** The entrypoint command for the snapshot */
 export type CreateSnapshotRequestEntrypointList = Array<string>;
-const CreateSnapshotRequestEntrypointList =
-  SnapshotDtoEntrypointList as any as S.Schema<CreateSnapshotRequestEntrypointList>;
-
 /** Preferred GPU type for the resulting sandbox. */
 export type CreateSnapshotRequestGpuTypeList = Array<GpuType | (string & {})>;
-const CreateSnapshotRequestGpuTypeList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateSnapshotRequestGpuTypeList>;
-
 /** The context hashes used for the build */
 export type CreateBuildInfoContextHashesList = Array<string>;
-const CreateBuildInfoContextHashesList =
-  SnapshotDtoEntrypointList as any as S.Schema<CreateBuildInfoContextHashesList>;
-
 export interface CreateBuildInfo {
   /** The Dockerfile content used for the build */
   dockerfileContent: string;
   /** The context hashes used for the build */
   contextHashes?: CreateBuildInfoContextHashesList;
 }
-const CreateBuildInfo = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateBuildInfo>;
-
 export type SandboxClass = "linux-vm" | "container" | "windows";
-const SandboxClass = S.String;
-
 export interface CreateSnapshotRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
@@ -164,34 +125,15 @@ export interface CreateSnapshotRequest {
   /** Target sandbox class. Determines which runners can host sandboxes created from this snapshot. */
   sandboxClass?: SandboxClass | (string & {});
 }
-const CreateSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateSnapshotRequest>;
-
 export interface DeactivateSnapshotRequest {
   /** Snapshot ID */
   id: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-const DeactivateSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeactivateSnapshotRequest>;
-
 export interface DeactivateSnapshotResponse {}
-const DeactivateSnapshotResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeactivateSnapshotResponse>;
-
 export type GetAllSnapshotsRequestSort = "name" | "state" | "lastUsedAt" | "createdAt";
-const GetAllSnapshotsRequestSort = S.String;
-
 export type GetAllSnapshotsRequestOrder = "asc" | "desc";
-const GetAllSnapshotsRequestOrder = S.String;
-
 export interface GetAllSnapshotsRequest {
   /** Page number of the results */
   page?: number;
@@ -208,65 +150,36 @@ export interface GetAllSnapshotsRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-const GetAllSnapshotsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetAllSnapshotsRequest>;
-
 export type PaginatedSnapshotsItemsList = Array<SnapshotDto>;
-const PaginatedSnapshotsItemsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PaginatedSnapshotsItemsList>;
-
 export interface PaginatedSnapshots {
   items: PaginatedSnapshotsItemsList;
   total: number;
   page: number;
   totalPages: number;
 }
-const PaginatedSnapshots = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PaginatedSnapshots>;
-
 export interface GetSnapshotRequest {
   /** Snapshot ID or name */
   id: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-const GetSnapshotRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetSnapshotRequest>;
-
 export interface GetSnapshotBuildLogsUrlRequest {
   /** Snapshot ID */
   id: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-const GetSnapshotBuildLogsUrlRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetSnapshotBuildLogsUrlRequest>;
-
 export interface Url {
   /** URL response */
   url: string;
 }
-const Url = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Url>;
-
 export interface RemoveSnapshotRequest {
   /** Snapshot ID */
   id: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-const RemoveSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<RemoveSnapshotRequest>;
-
 export interface RemoveSnapshotResponse {}
-const RemoveSnapshotResponse =
-  DeactivateSnapshotResponse as any as S.Schema<RemoveSnapshotResponse>;
-
 export type ActivateSnapshotError = DaytonaOpError;
 /** Activate a snapshot */
 export const activateSnapshot: API.OperationMethod<
@@ -275,8 +188,8 @@ export const activateSnapshot: API.OperationMethod<
   ActivateSnapshotError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActivateSnapshotRequest,
-  output: SnapshotDto,
+  input: __S(0) as any as S.Schema<ActivateSnapshotRequest>,
+  output: __S(3) as any as S.Schema<SnapshotDto>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -290,8 +203,8 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSnapshotRequest,
-  output: SnapshotDto,
+  input: __S(6) as any as S.Schema<CreateSnapshotRequest>,
+  output: __S(3) as any as S.Schema<SnapshotDto>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -305,8 +218,8 @@ export const deactivateSnapshot: API.OperationMethod<
   DeactivateSnapshotError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeactivateSnapshotRequest,
-  output: DeactivateSnapshotResponse,
+  input: __S(7) as any as S.Schema<DeactivateSnapshotRequest>,
+  output: __S(8) as any as S.Schema<DeactivateSnapshotResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -320,8 +233,8 @@ export const getAllSnapshots: API.OperationMethod<
   GetAllSnapshotsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllSnapshotsRequest,
-  output: PaginatedSnapshots,
+  input: __S(9) as any as S.Schema<GetAllSnapshotsRequest>,
+  output: __S(11) as any as S.Schema<PaginatedSnapshots>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -335,8 +248,8 @@ export const getSnapshot: API.OperationMethod<
   GetSnapshotError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSnapshotRequest,
-  output: SnapshotDto,
+  input: __S(12) as any as S.Schema<GetSnapshotRequest>,
+  output: __S(3) as any as S.Schema<SnapshotDto>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -350,8 +263,8 @@ export const getSnapshotBuildLogsUrl: API.OperationMethod<
   GetSnapshotBuildLogsUrlError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSnapshotBuildLogsUrlRequest,
-  output: Url,
+  input: __S(13) as any as S.Schema<GetSnapshotBuildLogsUrlRequest>,
+  output: __S(14) as any as S.Schema<Url>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -365,8 +278,8 @@ export const removeSnapshot: API.OperationMethod<
   RemoveSnapshotError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveSnapshotRequest,
-  output: RemoveSnapshotResponse,
+  input: __S(15) as any as S.Schema<RemoveSnapshotRequest>,
+  output: __S(8) as any as S.Schema<RemoveSnapshotResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -388,7 +301,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dockerfileContent: S.optional(S.String),
-          contextHashes: S.optional(BuildInfoContextHashesList),
+          contextHashes: S.optional(__S(1)),
           createdAt: S.String,
           updatedAt: S.String,
           snapshotRef: S.String,
@@ -402,33 +315,33 @@ function __c0(j: number): any {
           general: S.Boolean,
           name: S.String,
           imageName: S.optional(S.String),
-          state: SnapshotState,
+          state: S.String,
           size: S.NullOr(S.Number),
-          entrypoint: S.NullOr(SnapshotDtoEntrypointList),
+          entrypoint: S.NullOr(__S(1)),
           cpu: S.Number,
           gpu: S.Number,
-          gpuType: S.optional(GpuType),
+          gpuType: S.optional(S.String),
           mem: S.Number,
           disk: S.Number,
           errorReason: S.NullOr(S.String),
           createdAt: S.String,
           updatedAt: S.String,
           lastUsedAt: S.NullOr(S.String),
-          buildInfo: S.optional(BuildInfo),
-          regionIds: S.optional(SnapshotDtoRegionIdsList),
+          buildInfo: S.optional(__S(2)),
+          regionIds: S.optional(__S(1)),
           initialRunnerId: S.optional(S.String),
           ref: S.optional(S.String),
           sourceSandboxId: S.NullOr(S.String),
-          sandboxClass: S.optional(SnapshotDtoSandboxClass),
+          sandboxClass: S.optional(S.String),
         }),
       ).annotate({ identifier: "SnapshotDto" });
     case 4:
-      return S.Array(GpuType);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
           dockerfileContent: S.String,
-          contextHashes: S.optional(CreateBuildInfoContextHashesList),
+          contextHashes: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "CreateBuildInfo" });
     case 6:
@@ -437,15 +350,15 @@ function __c0(j: number): any {
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
           name: S.String,
           imageName: S.optional(S.String),
-          entrypoint: S.optional(CreateSnapshotRequestEntrypointList),
+          entrypoint: S.optional(__S(1)),
           cpu: S.optional(S.Number),
           gpu: S.optional(S.Number),
-          gpuType: S.optional(CreateSnapshotRequestGpuTypeList),
+          gpuType: S.optional(__S(4)),
           memory: S.optional(S.Number),
           disk: S.optional(S.Number),
-          buildInfo: S.optional(CreateBuildInfo),
+          buildInfo: S.optional(__S(5)),
           regionId: S.optional(S.String),
-          sandboxClass: S.optional(SandboxClass),
+          sandboxClass: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/snapshots", code: 200 })),
       ).annotate({ identifier: "CreateSnapshotRequest" });
     case 7:
@@ -472,17 +385,17 @@ function __c1(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           sourceSandboxId: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(GetAllSnapshotsRequestSort.pipe(T.Query())),
-          order: S.optional(GetAllSnapshotsRequestOrder.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "GET", uri: "/snapshots", code: 200 })),
       ).annotate({ identifier: "GetAllSnapshotsRequest" });
     case 2:
-      return S.Array(SnapshotDto);
+      return S.Array(__S(3));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: PaginatedSnapshotsItemsList,
+          items: __S(10),
           total: S.Number,
           page: S.Number,
           totalPages: S.Number,
@@ -517,5 +430,18 @@ function __c1(j: number): any {
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "DELETE", uri: "/snapshots/{id}", code: 200 })),
       ).annotate({ identifier: "RemoveSnapshotRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

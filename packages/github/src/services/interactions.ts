@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -51,11 +53,6 @@ export interface GetPullRequestBypassListForRepoRequest {
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetPullRequestBypassListForRepoRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetPullRequestBypassListForRepoRequest>;
-
 /** A GitHub user. */
 export interface SimpleUser {
   name?: string | null;
@@ -81,30 +78,13 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-const SimpleUser = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SimpleUser>;
-
 export type GetPullRequestBypassListForRepoResponseBodyList = Array<SimpleUser>;
-const GetPullRequestBypassListForRepoResponseBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetPullRequestBypassListForRepoResponseBodyList>;
-
 export type GetPullRequestBypassListForRepoResponse =
   GetPullRequestBypassListForRepoResponseBodyList;
-const GetPullRequestBypassListForRepoResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetPullRequestBypassListForRepoResponse>;
-
 export interface GetPullRequestCreationCapForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const GetPullRequestCreationCapForOrgRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetPullRequestCreationCapForOrgRequest>;
-
 export interface GetPullRequestCreationCapForOrgResponse {
   /** Whether the pull request creation cap is enabled */
   enabled: boolean;
@@ -113,22 +93,12 @@ export interface GetPullRequestCreationCapForOrgResponse {
   /** Whether draft pull requests count toward the pull request creation cap */
   include_drafts?: boolean;
 }
-const GetPullRequestCreationCapForOrgResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetPullRequestCreationCapForOrgResponse>;
-
 export interface GetPullRequestCreationCapForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetPullRequestCreationCapForRepoRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetPullRequestCreationCapForRepoRequest>;
-
 export interface GetPullRequestCreationCapForRepoResponse {
   /** Whether the pull request creation cap is enabled */
   enabled: boolean;
@@ -137,88 +107,34 @@ export interface GetPullRequestCreationCapForRepoResponse {
   /** Whether draft pull requests count toward the pull request creation cap */
   include_drafts?: boolean;
 }
-const GetPullRequestCreationCapForRepoResponse =
-  GetPullRequestCreationCapForOrgResponse as any as S.Schema<GetPullRequestCreationCapForRepoResponse>;
-
 export interface GetRestrictionsForAuthenticatedUserRequest {}
-const GetRestrictionsForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetRestrictionsForAuthenticatedUserRequest>;
-
 /** The type of GitHub user that can comment, open issues, or create pull requests while the interaction limit is in effect. */
 export type InteractionGroup = "existing_users" | "contributors_only" | "collaborators_only";
-const InteractionGroup = S.String;
-
 /** Interaction limit settings. */
 export interface InteractionLimitResponse {
   limit: InteractionGroup;
   origin: string;
   expires_at: string;
 }
-const InteractionLimitResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<InteractionLimitResponse>;
-
 export type GetRestrictionsForAuthenticatedUserResponseBody = InteractionLimitResponse | unknown;
-const GetRestrictionsForAuthenticatedUserResponseBody =
-  S.Unknown as any as S.Schema<GetRestrictionsForAuthenticatedUserResponseBody>;
-
 export type GetRestrictionsForAuthenticatedUserResponse =
   GetRestrictionsForAuthenticatedUserResponseBody;
-const GetRestrictionsForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetRestrictionsForAuthenticatedUserResponse>;
-
 export interface GetRestrictionsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const GetRestrictionsForOrgRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetRestrictionsForOrgRequest>;
-
 export type GetRestrictionsForOrgResponseBody = InteractionLimitResponse | unknown;
-const GetRestrictionsForOrgResponseBody =
-  S.Unknown as any as S.Schema<GetRestrictionsForOrgResponseBody>;
-
 export type GetRestrictionsForOrgResponse = GetRestrictionsForOrgResponseBody;
-const GetRestrictionsForOrgResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetRestrictionsForOrgResponse>;
-
 export interface GetRestrictionsForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const GetRestrictionsForRepoRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetRestrictionsForRepoRequest>;
-
 export type GetRestrictionsForRepoResponseBody = InteractionLimitResponse | unknown;
-const GetRestrictionsForRepoResponseBody =
-  S.Unknown as any as S.Schema<GetRestrictionsForRepoResponseBody>;
-
 export type GetRestrictionsForRepoResponse = GetRestrictionsForRepoResponseBody;
-const GetRestrictionsForRepoResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetRestrictionsForRepoResponse>;
-
 /** A list of user logins to add or remove from the bypass list. */
 export type RemovePullRequestBypassListForRepoRequestUsersList = Array<string>;
-const RemovePullRequestBypassListForRepoRequestUsersList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<RemovePullRequestBypassListForRepoRequestUsersList>;
-
 export interface RemovePullRequestBypassListForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -227,60 +143,23 @@ export interface RemovePullRequestBypassListForRepoRequest {
   /** A list of user logins to add or remove from the bypass list. */
   users: RemovePullRequestBypassListForRepoRequestUsersList;
 }
-const RemovePullRequestBypassListForRepoRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<RemovePullRequestBypassListForRepoRequest>;
-
 export interface RemovePullRequestBypassListForRepoResponse {}
-const RemovePullRequestBypassListForRepoResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<RemovePullRequestBypassListForRepoResponse>;
-
 export interface RemoveRestrictionsForAuthenticatedUserRequest {}
-const RemoveRestrictionsForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<RemoveRestrictionsForAuthenticatedUserRequest>;
-
 export interface RemoveRestrictionsForAuthenticatedUserResponse {}
-const RemoveRestrictionsForAuthenticatedUserResponse =
-  RemovePullRequestBypassListForRepoResponse as any as S.Schema<RemoveRestrictionsForAuthenticatedUserResponse>;
-
 export interface RemoveRestrictionsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const RemoveRestrictionsForOrgRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<RemoveRestrictionsForOrgRequest>;
-
 export interface RemoveRestrictionsForOrgResponse {}
-const RemoveRestrictionsForOrgResponse =
-  RemovePullRequestBypassListForRepoResponse as any as S.Schema<RemoveRestrictionsForOrgResponse>;
-
 export interface RemoveRestrictionsForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
   /** The name of the repository without the `.git` extension. The name is not case sensitive. */
   repo: string;
 }
-const RemoveRestrictionsForRepoRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<RemoveRestrictionsForRepoRequest>;
-
 export interface RemoveRestrictionsForRepoResponse {}
-const RemoveRestrictionsForRepoResponse =
-  RemovePullRequestBypassListForRepoResponse as any as S.Schema<RemoveRestrictionsForRepoResponse>;
-
 /** A list of user logins to add or remove from the bypass list. */
 export type SetPullRequestBypassListForRepoRequestUsersList = Array<string>;
-const SetPullRequestBypassListForRepoRequestUsersList =
-  RemovePullRequestBypassListForRepoRequestUsersList as any as S.Schema<SetPullRequestBypassListForRepoRequestUsersList>;
-
 export interface SetPullRequestBypassListForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -289,39 +168,19 @@ export interface SetPullRequestBypassListForRepoRequest {
   /** A list of user logins to add or remove from the bypass list. */
   users: SetPullRequestBypassListForRepoRequestUsersList;
 }
-const SetPullRequestBypassListForRepoRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<SetPullRequestBypassListForRepoRequest>;
-
 export interface SetPullRequestBypassListForRepoResponse {}
-const SetPullRequestBypassListForRepoResponse =
-  RemovePullRequestBypassListForRepoResponse as any as S.Schema<SetPullRequestBypassListForRepoResponse>;
-
 /** The duration of the interaction restriction. Default: `one_day`. */
 export type InteractionExpiry = "one_day" | "three_days" | "one_week" | "one_month" | "six_months";
-const InteractionExpiry = S.String;
-
 export interface SetRestrictionsForAuthenticatedUserRequest {
   limit: InteractionGroup | (string & {});
   expiry?: InteractionExpiry | (string & {});
 }
-const SetRestrictionsForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<SetRestrictionsForAuthenticatedUserRequest>;
-
 export interface SetRestrictionsForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   limit: InteractionGroup | (string & {});
   expiry?: InteractionExpiry | (string & {});
 }
-const SetRestrictionsForOrgRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<SetRestrictionsForOrgRequest>;
-
 export interface SetRestrictionsForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -330,11 +189,6 @@ export interface SetRestrictionsForRepoRequest {
   limit: InteractionGroup | (string & {});
   expiry?: InteractionExpiry | (string & {});
 }
-const SetRestrictionsForRepoRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<SetRestrictionsForRepoRequest>;
-
 export interface UpdatePullRequestCreationCapForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -345,11 +199,6 @@ export interface UpdatePullRequestCreationCapForOrgRequest {
   /** Whether draft pull requests count toward the pull request creation cap */
   include_drafts?: boolean;
 }
-const UpdatePullRequestCreationCapForOrgRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<UpdatePullRequestCreationCapForOrgRequest>;
-
 export interface UpdatePullRequestCreationCapForOrgResponse {
   /** Whether the pull request creation cap is enabled */
   enabled: boolean;
@@ -358,9 +207,6 @@ export interface UpdatePullRequestCreationCapForOrgResponse {
   /** Whether draft pull requests count toward the pull request creation cap */
   include_drafts?: boolean;
 }
-const UpdatePullRequestCreationCapForOrgResponse =
-  GetPullRequestCreationCapForOrgResponse as any as S.Schema<UpdatePullRequestCreationCapForOrgResponse>;
-
 export interface UpdatePullRequestCreationCapForRepoRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -373,11 +219,6 @@ export interface UpdatePullRequestCreationCapForRepoRequest {
   /** Whether draft pull requests count toward the pull request creation cap */
   include_drafts?: boolean;
 }
-const UpdatePullRequestCreationCapForRepoRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<UpdatePullRequestCreationCapForRepoRequest>;
-
 export interface UpdatePullRequestCreationCapForRepoResponse {
   /** Whether the pull request creation cap is enabled */
   enabled: boolean;
@@ -386,9 +227,6 @@ export interface UpdatePullRequestCreationCapForRepoResponse {
   /** Whether draft pull requests count toward the pull request creation cap */
   include_drafts?: boolean;
 }
-const UpdatePullRequestCreationCapForRepoResponse =
-  GetPullRequestCreationCapForOrgResponse as any as S.Schema<UpdatePullRequestCreationCapForRepoResponse>;
-
 export type GetPullRequestBypassListForRepoError = Forbidden | NotFound | GithubOpError;
 /** Get pull request creation cap bypass list for a repository Lists the users that are on the pull request creation cap bypass list for a repository. Users on this list can create pull requests regardless of any configured pull request creation cap. Only users with maintainer permissions can view the bypass list. */
 export const getPullRequestBypassListForRepo: API.OperationMethod<
@@ -397,8 +235,8 @@ export const getPullRequestBypassListForRepo: API.OperationMethod<
   GetPullRequestBypassListForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPullRequestBypassListForRepoRequest,
-  output: GetPullRequestBypassListForRepoResponse,
+  input: __S(0) as any as S.Schema<GetPullRequestBypassListForRepoRequest>,
+  output: __S(3) as any as S.Schema<GetPullRequestBypassListForRepoResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -412,8 +250,8 @@ export const getPullRequestCreationCapForOrg: API.OperationMethod<
   GetPullRequestCreationCapForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPullRequestCreationCapForOrgRequest,
-  output: GetPullRequestCreationCapForOrgResponse,
+  input: __S(4) as any as S.Schema<GetPullRequestCreationCapForOrgRequest>,
+  output: __S(5) as any as S.Schema<GetPullRequestCreationCapForOrgResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -427,8 +265,8 @@ export const getPullRequestCreationCapForRepo: API.OperationMethod<
   GetPullRequestCreationCapForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPullRequestCreationCapForRepoRequest,
-  output: GetPullRequestCreationCapForRepoResponse,
+  input: __S(6) as any as S.Schema<GetPullRequestCreationCapForRepoRequest>,
+  output: __S(5) as any as S.Schema<GetPullRequestCreationCapForRepoResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -442,8 +280,8 @@ export const getRestrictionsForAuthenticatedUser: API.OperationMethod<
   GetRestrictionsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRestrictionsForAuthenticatedUserRequest,
-  output: GetRestrictionsForAuthenticatedUserResponse,
+  input: __S(7) as any as S.Schema<GetRestrictionsForAuthenticatedUserRequest>,
+  output: __S(9) as any as S.Schema<GetRestrictionsForAuthenticatedUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -457,8 +295,8 @@ export const getRestrictionsForOrg: API.OperationMethod<
   GetRestrictionsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRestrictionsForOrgRequest,
-  output: GetRestrictionsForOrgResponse,
+  input: __S(10) as any as S.Schema<GetRestrictionsForOrgRequest>,
+  output: __S(11) as any as S.Schema<GetRestrictionsForOrgResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -472,8 +310,8 @@ export const getRestrictionsForRepo: API.OperationMethod<
   GetRestrictionsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRestrictionsForRepoRequest,
-  output: GetRestrictionsForRepoResponse,
+  input: __S(12) as any as S.Schema<GetRestrictionsForRepoRequest>,
+  output: __S(13) as any as S.Schema<GetRestrictionsForRepoResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -491,8 +329,8 @@ export const removePullRequestBypassListForRepo: API.OperationMethod<
   RemovePullRequestBypassListForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemovePullRequestBypassListForRepoRequest,
-  output: RemovePullRequestBypassListForRepoResponse,
+  input: __S(15) as any as S.Schema<RemovePullRequestBypassListForRepoRequest>,
+  output: __S(16) as any as S.Schema<RemovePullRequestBypassListForRepoResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -506,8 +344,8 @@ export const removeRestrictionsForAuthenticatedUser: API.OperationMethod<
   RemoveRestrictionsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveRestrictionsForAuthenticatedUserRequest,
-  output: RemoveRestrictionsForAuthenticatedUserResponse,
+  input: __S(17) as any as S.Schema<RemoveRestrictionsForAuthenticatedUserRequest>,
+  output: __S(16) as any as S.Schema<RemoveRestrictionsForAuthenticatedUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -521,8 +359,8 @@ export const removeRestrictionsForOrg: API.OperationMethod<
   RemoveRestrictionsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveRestrictionsForOrgRequest,
-  output: RemoveRestrictionsForOrgResponse,
+  input: __S(18) as any as S.Schema<RemoveRestrictionsForOrgRequest>,
+  output: __S(16) as any as S.Schema<RemoveRestrictionsForOrgResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -536,8 +374,8 @@ export const removeRestrictionsForRepo: API.OperationMethod<
   RemoveRestrictionsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveRestrictionsForRepoRequest,
-  output: RemoveRestrictionsForRepoResponse,
+  input: __S(19) as any as S.Schema<RemoveRestrictionsForRepoRequest>,
+  output: __S(16) as any as S.Schema<RemoveRestrictionsForRepoResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -555,8 +393,8 @@ export const setPullRequestBypassListForRepo: API.OperationMethod<
   SetPullRequestBypassListForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetPullRequestBypassListForRepoRequest,
-  output: SetPullRequestBypassListForRepoResponse,
+  input: __S(20) as any as S.Schema<SetPullRequestBypassListForRepoRequest>,
+  output: __S(16) as any as S.Schema<SetPullRequestBypassListForRepoResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -570,8 +408,8 @@ export const setRestrictionsForAuthenticatedUser: API.OperationMethod<
   SetRestrictionsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetRestrictionsForAuthenticatedUserRequest,
-  output: InteractionLimitResponse,
+  input: __S(21) as any as S.Schema<SetRestrictionsForAuthenticatedUserRequest>,
+  output: __S(8) as any as S.Schema<InteractionLimitResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -585,8 +423,8 @@ export const setRestrictionsForOrg: API.OperationMethod<
   SetRestrictionsForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetRestrictionsForOrgRequest,
-  output: InteractionLimitResponse,
+  input: __S(22) as any as S.Schema<SetRestrictionsForOrgRequest>,
+  output: __S(8) as any as S.Schema<InteractionLimitResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -600,8 +438,8 @@ export const setRestrictionsForRepo: API.OperationMethod<
   SetRestrictionsForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetRestrictionsForRepoRequest,
-  output: InteractionLimitResponse,
+  input: __S(23) as any as S.Schema<SetRestrictionsForRepoRequest>,
+  output: __S(8) as any as S.Schema<InteractionLimitResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -619,8 +457,8 @@ export const updatePullRequestCreationCapForOrg: API.OperationMethod<
   UpdatePullRequestCreationCapForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePullRequestCreationCapForOrgRequest,
-  output: UpdatePullRequestCreationCapForOrgResponse,
+  input: __S(24) as any as S.Schema<UpdatePullRequestCreationCapForOrgRequest>,
+  output: __S(5) as any as S.Schema<UpdatePullRequestCreationCapForOrgResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -638,8 +476,8 @@ export const updatePullRequestCreationCapForRepo: API.OperationMethod<
   UpdatePullRequestCreationCapForRepoError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePullRequestCreationCapForRepoRequest,
-  output: UpdatePullRequestCreationCapForRepoResponse,
+  input: __S(25) as any as S.Schema<UpdatePullRequestCreationCapForRepoRequest>,
+  output: __S(5) as any as S.Schema<UpdatePullRequestCreationCapForRepoResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -691,11 +529,9 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "SimpleUser" });
     case 2:
-      return S.Array(SimpleUser);
+      return S.Array(__S(1));
     case 3:
-      return S.suspend(() =>
-        GetPullRequestBypassListForRepoResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(2).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetPullRequestBypassListForRepoResponse",
       });
     case 4:
@@ -750,15 +586,13 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          limit: InteractionGroup,
+          limit: S.String,
           origin: S.String,
           expires_at: S.String,
         }),
       ).annotate({ identifier: "InteractionLimitResponse" });
     case 1:
-      return S.suspend(() =>
-        GetRestrictionsForAuthenticatedUserResponseBody.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetRestrictionsForAuthenticatedUserResponse",
       });
     case 2:
@@ -770,7 +604,7 @@ function __c1(j: number): any {
         identifier: "GetRestrictionsForOrgRequest",
       });
     case 3:
-      return S.suspend(() => GetRestrictionsForOrgResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetRestrictionsForOrgResponse",
       });
     case 4:
@@ -785,11 +619,9 @@ function __c1(j: number): any {
         identifier: "GetRestrictionsForRepoRequest",
       });
     case 5:
-      return S.suspend(() => GetRestrictionsForRepoResponseBody.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "GetRestrictionsForRepoResponse",
-        },
-      );
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
+        identifier: "GetRestrictionsForRepoResponse",
+      });
     case 6:
       return S.Array(S.String);
     case 7:
@@ -797,7 +629,7 @@ function __c1(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          users: RemovePullRequestBypassListForRepoRequestUsersList,
+          users: __S(14),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -846,7 +678,7 @@ function __c2(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          users: SetPullRequestBypassListForRepoRequestUsersList,
+          users: __S(14),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -860,8 +692,8 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          limit: InteractionGroup,
-          expiry: S.optional(InteractionExpiry),
+          limit: S.String,
+          expiry: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/user/interaction-limits", code: 200 })),
       ).annotate({
         identifier: "SetRestrictionsForAuthenticatedUserRequest",
@@ -870,8 +702,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          limit: InteractionGroup,
-          expiry: S.optional(InteractionExpiry),
+          limit: S.String,
+          expiry: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org}/interaction-limits", code: 200 })),
       ).annotate({
         identifier: "SetRestrictionsForOrgRequest",
@@ -881,8 +713,8 @@ function __c2(j: number): any {
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          limit: InteractionGroup,
-          expiry: S.optional(InteractionExpiry),
+          limit: S.String,
+          expiry: S.optional(S.String),
         }).pipe(
           T.Http({ method: "PUT", uri: "/repos/{owner}/{repo}/interaction-limits", code: 200 }),
         ),
@@ -928,5 +760,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdatePullRequestCreationCapForRepoRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

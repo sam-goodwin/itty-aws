@@ -7,6 +7,8 @@ import * as Redacted from "effect/Redacted";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -45,11 +47,6 @@ export interface CreateSessionRecordingsSharingPasswordRequest {
   settings?: unknown;
   password_required?: boolean;
 }
-const CreateSessionRecordingsSharingPasswordRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateSessionRecordingsSharingPasswordRequest>;
-
 export interface SharePassword {
   id?: number;
   created_at?: string;
@@ -57,14 +54,7 @@ export interface SharePassword {
   created_by_email?: string;
   is_active?: boolean;
 }
-const SharePassword = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SharePassword>;
-
 export type SharingConfigurationSharePasswordsList = Array<SharePassword>;
-const SharingConfigurationSharePasswordsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<SharingConfigurationSharePasswordsList>;
-
 /** Mixin for serializers to add user access control fields */
 export interface SharingConfiguration {
   created_at?: string;
@@ -76,47 +66,20 @@ export interface SharingConfiguration {
   /** The effective access level the user has for this object */
   user_access_level?: string | null;
 }
-const SharingConfiguration = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SharingConfiguration>;
-
 export interface ListSessionRecordingsSharingRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   recording_id: string;
 }
-const ListSessionRecordingsSharingRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListSessionRecordingsSharingRequest>;
-
 export type ListSessionRecordingsSharingResponseBodyList = Array<SharingConfiguration>;
-const ListSessionRecordingsSharingResponseBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListSessionRecordingsSharingResponseBodyList>;
-
 export type ListSessionRecordingsSharingResponse = ListSessionRecordingsSharingResponseBodyList;
-const ListSessionRecordingsSharingResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ListSessionRecordingsSharingResponse>;
-
 export interface SessionRecordingsSharingPasswordsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   recording_id: string;
   password_id: string;
 }
-const SessionRecordingsSharingPasswordsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<SessionRecordingsSharingPasswordsDestroyRequest>;
-
 export interface SessionRecordingsSharingPasswordsDestroyResponse {}
-const SessionRecordingsSharingPasswordsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<SessionRecordingsSharingPasswordsDestroyResponse>;
-
 export interface SessionRecordingsSharingRefreshCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -125,11 +88,6 @@ export interface SessionRecordingsSharingRefreshCreateRequest {
   settings?: unknown;
   password_required?: boolean;
 }
-const SessionRecordingsSharingRefreshCreateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<SessionRecordingsSharingRefreshCreateRequest>;
-
 export type CreateSessionRecordingsSharingPasswordError =
   | BadRequest
   | Forbidden
@@ -142,8 +100,8 @@ export const createSessionRecordingsSharingPassword: API.OperationMethod<
   CreateSessionRecordingsSharingPasswordError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSessionRecordingsSharingPasswordRequest,
-  output: SharingConfiguration,
+  input: __S(0) as any as S.Schema<CreateSessionRecordingsSharingPasswordRequest>,
+  output: __S(3) as any as S.Schema<SharingConfiguration>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -156,8 +114,8 @@ export const listSessionRecordingsSharing: API.OperationMethod<
   ListSessionRecordingsSharingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSessionRecordingsSharingRequest,
-  output: ListSessionRecordingsSharingResponse,
+  input: __S(4) as any as S.Schema<ListSessionRecordingsSharingRequest>,
+  output: __S(6) as any as S.Schema<ListSessionRecordingsSharingResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -171,8 +129,8 @@ export const sessionRecordingsSharingPasswordsDestroy: API.OperationMethod<
   SessionRecordingsSharingPasswordsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SessionRecordingsSharingPasswordsDestroyRequest,
-  output: SessionRecordingsSharingPasswordsDestroyResponse,
+  input: __S(7) as any as S.Schema<SessionRecordingsSharingPasswordsDestroyRequest>,
+  output: __S(8) as any as S.Schema<SessionRecordingsSharingPasswordsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -189,8 +147,8 @@ export const sessionRecordingsSharingRefreshCreate: API.OperationMethod<
   SessionRecordingsSharingRefreshCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SessionRecordingsSharingRefreshCreateRequest,
-  output: SharingConfiguration,
+  input: __S(9) as any as S.Schema<SessionRecordingsSharingRefreshCreateRequest>,
+  output: __S(3) as any as S.Schema<SharingConfiguration>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -228,7 +186,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "SharePassword" });
     case 2:
-      return S.Array(SharePassword);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -237,7 +195,7 @@ function __c0(j: number): any {
           access_token: S.optional(S.NullOr(S.String).pipe(T.SensitiveValue({}))),
           settings: S.optional(S.Unknown),
           password_required: S.optional(S.Boolean),
-          share_passwords: S.optional(SharingConfigurationSharePasswordsList),
+          share_passwords: S.optional(__S(2)),
           user_access_level: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SharingConfiguration" });
@@ -257,11 +215,9 @@ function __c0(j: number): any {
         identifier: "ListSessionRecordingsSharingRequest",
       });
     case 5:
-      return S.Array(SharingConfiguration);
+      return S.Array(__S(3));
     case 6:
-      return S.suspend(() =>
-        ListSessionRecordingsSharingResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(5).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSessionRecordingsSharingResponse",
       });
     case 7:
@@ -306,5 +262,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "SessionRecordingsSharingRefreshCreateRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

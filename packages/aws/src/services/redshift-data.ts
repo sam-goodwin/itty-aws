@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Redshift Data",
   serviceShapeName: "RedshiftData",
@@ -136,7 +138,6 @@ export class ValidationException
   ).pipe(C.withBadRequestError) {}
 export type StatementString = string;
 export type SqlList = string[];
-const SqlList = /*@__PURE__*/ __L.at(__c0, 0);
 export type ClusterIdentifierString = string;
 export type SecretArn = string;
 export type StatementNameString = string;
@@ -146,9 +147,7 @@ export interface SqlParameter {
   name: string;
   value: string;
 }
-const SqlParameter = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SqlParameter>;
 export type SqlParametersList = SqlParameter[];
-const SqlParametersList = /*@__PURE__*/ __L.at(__c0, 2);
 export type WorkgroupNameString = string;
 export type ClientToken = string;
 export type ResultFormatString = string;
@@ -173,12 +172,7 @@ export interface BatchExecuteStatementInput {
   ExecutionMode?: string;
   WaitTimeSeconds?: number;
 }
-const BatchExecuteStatementInput = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<BatchExecuteStatementInput>;
 export type DbGroupList = string[];
-const DbGroupList = SqlList as any as S.Schema<DbGroupList>;
 export type StatementStatusString = string;
 export type BoxedLong = number;
 export type BoxedBoolean = boolean;
@@ -196,32 +190,16 @@ export interface BatchExecuteStatementOutput {
   RedshiftPid?: number;
   HasResultSet?: boolean;
 }
-const BatchExecuteStatementOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<BatchExecuteStatementOutput>;
 export interface CancelStatementRequest {
   Id: string;
 }
-const CancelStatementRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CancelStatementRequest>;
 export interface CancelStatementResponse {
   Status?: boolean;
 }
-const CancelStatementResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CancelStatementResponse>;
 export interface DescribeStatementRequest {
   Id: string;
   WaitTimeSeconds?: number;
 }
-const DescribeStatementRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DescribeStatementRequest>;
 export type StatusString = string;
 export interface SubStatementData {
   Id: string;
@@ -236,9 +214,7 @@ export interface SubStatementData {
   RedshiftQueryId?: number;
   HasResultSet?: boolean;
 }
-const SubStatementData = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<SubStatementData>;
 export type SubStatementList = SubStatementData[];
-const SubStatementList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface DescribeStatementResponse {
   Id: string;
   SecretArn?: string;
@@ -263,10 +239,6 @@ export interface DescribeStatementResponse {
   SessionId?: string;
   ExecutionMode?: string;
 }
-const DescribeStatementResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DescribeStatementResponse>;
 export type PageSize = number;
 export interface DescribeTableRequest {
   ClusterIdentifier?: string;
@@ -280,7 +252,6 @@ export interface DescribeTableRequest {
   MaxResults?: number;
   WorkgroupName?: string;
 }
-const DescribeTableRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DescribeTableRequest>;
 export interface ColumnMetadata {
   isCaseSensitive?: boolean;
   isCurrency?: boolean;
@@ -296,18 +267,12 @@ export interface ColumnMetadata {
   length?: number;
   columnDefault?: string;
 }
-const ColumnMetadata = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ColumnMetadata>;
 export type ColumnList = ColumnMetadata[];
-const ColumnList = /*@__PURE__*/ __L.at(__c1, 5);
 export interface DescribeTableResponse {
   TableName?: string;
   ColumnList?: ColumnMetadata[];
   NextToken?: string;
 }
-const DescribeTableResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DescribeTableResponse>;
 export interface ExecuteStatementInput {
   Sql: string;
   ClusterIdentifier?: string;
@@ -324,10 +289,6 @@ export interface ExecuteStatementInput {
   SessionId?: string;
   WaitTimeSeconds?: number;
 }
-const ExecuteStatementInput = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ExecuteStatementInput>;
 export interface ExecuteStatementOutput {
   Id?: string;
   CreatedAt?: Date;
@@ -342,19 +303,11 @@ export interface ExecuteStatementOutput {
   RedshiftPid?: number;
   HasResultSet?: boolean;
 }
-const ExecuteStatementOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ExecuteStatementOutput>;
 export interface GetStatementResultRequest {
   Id: string;
   NextToken?: string;
   WaitTimeSeconds?: number;
 }
-const GetStatementResultRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetStatementResultRequest>;
 export type BoxedDouble = number;
 export type Field =
   | {
@@ -405,36 +358,22 @@ export type Field =
       stringValue?: never;
       blobValue: Uint8Array;
     };
-const Field = /*@__PURE__*/ __L.at(__c2, 2);
 export type FieldList = Field[];
-const FieldList = /*@__PURE__*/ __L.at(__c2, 3);
 export type SqlRecords = Field[][];
-const SqlRecords = /*@__PURE__*/ __L.at(__c2, 4);
 export type ColumnMetadataList = ColumnMetadata[];
-const ColumnMetadataList = ColumnList as any as S.Schema<ColumnMetadataList>;
 export interface GetStatementResultResponse {
   Records: Field[][];
   ColumnMetadata?: ColumnMetadata[];
   TotalNumRows?: number;
   NextToken?: string;
 }
-const GetStatementResultResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetStatementResultResponse>;
 export interface GetStatementResultV2Request {
   Id: string;
   NextToken?: string;
   WaitTimeSeconds?: number;
 }
-const GetStatementResultV2Request = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetStatementResultV2Request>;
 export type QueryRecords = { CSVRecords: string };
-const QueryRecords = /*@__PURE__*/ __L.at(__c2, 7);
 export type FormattedSqlRecords = QueryRecords[];
-const FormattedSqlRecords = /*@__PURE__*/ __L.at(__c3, 0);
 export interface GetStatementResultV2Response {
   Records: QueryRecords[];
   ColumnMetadata?: ColumnMetadata[];
@@ -442,10 +381,6 @@ export interface GetStatementResultV2Response {
   ResultFormat?: string;
   NextToken?: string;
 }
-const GetStatementResultV2Response = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetStatementResultV2Response>;
 export interface ListDatabasesRequest {
   ClusterIdentifier?: string;
   Database?: string;
@@ -455,17 +390,11 @@ export interface ListDatabasesRequest {
   MaxResults?: number;
   WorkgroupName?: string;
 }
-const ListDatabasesRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<ListDatabasesRequest>;
 export type DatabaseList = string[];
-const DatabaseList = SqlList as any as S.Schema<DatabaseList>;
 export interface ListDatabasesResponse {
   Databases?: string[];
   NextToken?: string;
 }
-const ListDatabasesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListDatabasesResponse>;
 export interface ListSchemasRequest {
   ClusterIdentifier?: string;
   SecretArn?: string;
@@ -477,14 +406,11 @@ export interface ListSchemasRequest {
   MaxResults?: number;
   WorkgroupName?: string;
 }
-const ListSchemasRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListSchemasRequest>;
 export type SchemaList = string[];
-const SchemaList = SqlList as any as S.Schema<SchemaList>;
 export interface ListSchemasResponse {
   Schemas?: string[];
   NextToken?: string;
 }
-const ListSchemasResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ListSchemasResponse>;
 export type ListStatementsLimit = number;
 export type SessionStatusString = string;
 export interface ListSessionsRequest {
@@ -497,7 +423,6 @@ export interface ListSessionsRequest {
   WorkgroupName?: string;
   Database?: string;
 }
-const ListSessionsRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ListSessionsRequest>;
 export interface SessionData {
   SessionId: string;
   Status: string;
@@ -511,14 +436,11 @@ export interface SessionData {
   SessionTtl?: Date;
   CurrentStatementId?: string;
 }
-const SessionData = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<SessionData>;
 export type SessionList = SessionData[];
-const SessionList = /*@__PURE__*/ __L.at(__c4, 0);
 export interface ListSessionsResponse {
   Sessions: SessionData[];
   NextToken?: string;
 }
-const ListSessionsResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ListSessionsResponse>;
 export interface ListStatementsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -529,12 +451,7 @@ export interface ListStatementsRequest {
   ClusterIdentifier?: string;
   WorkgroupName?: string;
 }
-const ListStatementsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListStatementsRequest>;
 export type StatementStringList = string[];
-const StatementStringList = SqlList as any as S.Schema<StatementStringList>;
 export interface StatementData {
   Id: string;
   QueryString?: string;
@@ -549,17 +466,11 @@ export interface StatementData {
   ResultFormat?: string;
   SessionId?: string;
 }
-const StatementData = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<StatementData>;
 export type StatementList = StatementData[];
-const StatementList = /*@__PURE__*/ __L.at(__c4, 4);
 export interface ListStatementsResponse {
   Statements: StatementData[];
   NextToken?: string;
 }
-const ListStatementsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListStatementsResponse>;
 export interface ListTablesRequest {
   ClusterIdentifier?: string;
   SecretArn?: string;
@@ -572,20 +483,16 @@ export interface ListTablesRequest {
   MaxResults?: number;
   WorkgroupName?: string;
 }
-const ListTablesRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ListTablesRequest>;
 export interface TableMember {
   name?: string;
   type?: string;
   schema?: string;
 }
-const TableMember = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<TableMember>;
 export type TableList = TableMember[];
-const TableList = /*@__PURE__*/ __L.at(__c5, 0);
 export interface ListTablesResponse {
   Tables?: TableMember[];
   NextToken?: string;
 }
-const ListTablesResponse = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ListTablesResponse>;
 export type BatchExecuteStatementError =
   | ActiveSessionsExceededException
   | ActiveStatementsExceededException
@@ -615,8 +522,8 @@ export const batchExecuteStatement: API.OperationMethod<
   BatchExecuteStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchExecuteStatementInput,
-  output: BatchExecuteStatementOutput,
+  input: __S(3) as any as S.Schema<BatchExecuteStatementInput>,
+  output: __S(4) as any as S.Schema<BatchExecuteStatementOutput>,
   errors: [
     ActiveSessionsExceededException,
     ActiveStatementsExceededException,
@@ -648,8 +555,8 @@ export const cancelStatement: API.OperationMethod<
   CancelStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelStatementRequest,
-  output: CancelStatementResponse,
+  input: __S(5) as any as S.Schema<CancelStatementRequest>,
+  output: __S(6) as any as S.Schema<CancelStatementResponse>,
   errors: [
     DatabaseConnectionException,
     InternalServerException,
@@ -679,8 +586,8 @@ export const describeStatement: API.OperationMethod<
   DescribeStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeStatementRequest,
-  output: DescribeStatementResponse,
+  input: __S(7) as any as S.Schema<DescribeStatementRequest>,
+  output: __S(10) as any as S.Schema<DescribeStatementResponse>,
   errors: [
     ActiveWaitingRequestsExceededException,
     InternalServerException,
@@ -721,8 +628,8 @@ export const describeTable: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ColumnMetadata
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeTableRequest,
-  output: DescribeTableResponse,
+  input: __S(11) as any as S.Schema<DescribeTableRequest>,
+  output: __S(14) as any as S.Schema<DescribeTableResponse>,
   errors: [
     DatabaseConnectionException,
     InternalServerException,
@@ -770,8 +677,8 @@ export const executeStatement: API.OperationMethod<
   ExecuteStatementError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteStatementInput,
-  output: ExecuteStatementOutput,
+  input: __S(15) as any as S.Schema<ExecuteStatementInput>,
+  output: __S(16) as any as S.Schema<ExecuteStatementOutput>,
   errors: [
     ActiveSessionsExceededException,
     ActiveStatementsExceededException,
@@ -803,8 +710,8 @@ export const getStatementResult: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Field[]
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetStatementResultRequest,
-  output: GetStatementResultResponse,
+  input: __S(17) as any as S.Schema<GetStatementResultRequest>,
+  output: __S(21) as any as S.Schema<GetStatementResultResponse>,
   errors: [
     ActiveWaitingRequestsExceededException,
     InternalServerException,
@@ -835,8 +742,8 @@ export const getStatementResultV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   QueryRecords
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetStatementResultV2Request,
-  output: GetStatementResultV2Response,
+  input: __S(22) as any as S.Schema<GetStatementResultV2Request>,
+  output: __S(25) as any as S.Schema<GetStatementResultV2Response>,
   errors: [
     ActiveWaitingRequestsExceededException,
     InternalServerException,
@@ -878,8 +785,8 @@ export const listDatabases: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDatabasesRequest,
-  output: ListDatabasesResponse,
+  input: __S(26) as any as S.Schema<ListDatabasesRequest>,
+  output: __S(27) as any as S.Schema<ListDatabasesResponse>,
   errors: [
     DatabaseConnectionException,
     InternalServerException,
@@ -927,8 +834,8 @@ export const listSchemas: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   string
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSchemasRequest,
-  output: ListSchemasResponse,
+  input: __S(28) as any as S.Schema<ListSchemasRequest>,
+  output: __S(29) as any as S.Schema<ListSchemasResponse>,
   errors: [
     DatabaseConnectionException,
     InternalServerException,
@@ -964,8 +871,8 @@ export const listSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SessionData
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSessionsRequest,
-  output: ListSessionsResponse,
+  input: __S(30) as any as S.Schema<ListSessionsRequest>,
+  output: __S(33) as any as S.Schema<ListSessionsResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -997,8 +904,8 @@ export const listStatements: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StatementData
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListStatementsRequest,
-  output: ListStatementsResponse,
+  input: __S(34) as any as S.Schema<ListStatementsRequest>,
+  output: __S(37) as any as S.Schema<ListStatementsResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1040,8 +947,8 @@ export const listTables: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TableMember
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTablesRequest,
-  output: ListTablesResponse,
+  input: __S(38) as any as S.Schema<ListTablesRequest>,
+  output: __S(41) as any as S.Schema<ListTablesResponse>,
   errors: [
     DatabaseConnectionException,
     InternalServerException,
@@ -1070,18 +977,18 @@ function __c0(j: number): any {
         identifier: "SqlParameter",
       });
     case 2:
-      return S.Array(SqlParameter);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Sqls: SqlList,
+          Sqls: __S(0),
           ClusterIdentifier: S.optional(S.String),
           SecretArn: S.optional(S.String),
           DbUser: S.optional(S.String),
           Database: S.optional(S.String),
           WithEvent: S.optional(S.Boolean),
           StatementName: S.optional(S.String),
-          Parameters: S.optional(SqlParametersList),
+          Parameters: S.optional(__S(2)),
           WorkgroupName: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           ResultFormat: S.optional(S.String),
@@ -1100,7 +1007,7 @@ function __c0(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ClusterIdentifier: S.optional(S.String),
           DbUser: S.optional(S.String),
-          DbGroups: S.optional(DbGroupList),
+          DbGroups: S.optional(__S(0)),
           Database: S.optional(S.String),
           SecretArn: S.optional(S.String),
           WorkgroupName: S.optional(S.String),
@@ -1149,7 +1056,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "SubStatementData" });
     case 1:
-      return S.Array(SubStatementData);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1169,8 +1076,8 @@ function __c1(j: number): any {
           ResultRows: S.optional(S.Number),
           ResultSize: S.optional(S.Number),
           RedshiftQueryId: S.optional(S.Number),
-          QueryParameters: S.optional(SqlParametersList),
-          SubStatements: S.optional(SubStatementList),
+          QueryParameters: S.optional(__S(2)),
+          SubStatements: S.optional(__S(9)),
           WorkgroupName: S.optional(S.String),
           ResultFormat: S.optional(S.String),
           SessionId: S.optional(S.String),
@@ -1213,12 +1120,12 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ColumnMetadata" });
     case 5:
-      return S.Array(ColumnMetadata);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           TableName: S.optional(S.String),
-          ColumnList: S.optional(ColumnList),
+          ColumnList: S.optional(__S(13)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribeTableResponse" });
@@ -1232,7 +1139,7 @@ function __c1(j: number): any {
           Database: S.optional(S.String),
           WithEvent: S.optional(S.Boolean),
           StatementName: S.optional(S.String),
-          Parameters: S.optional(SqlParametersList),
+          Parameters: S.optional(__S(2)),
           WorkgroupName: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           ResultFormat: S.optional(S.String),
@@ -1252,7 +1159,7 @@ function __c2(j: number): any {
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ClusterIdentifier: S.optional(S.String),
           DbUser: S.optional(S.String),
-          DbGroups: S.optional(DbGroupList),
+          DbGroups: S.optional(__S(0)),
           Database: S.optional(S.String),
           SecretArn: S.optional(S.String),
           WorkgroupName: S.optional(S.String),
@@ -1282,14 +1189,14 @@ function __c2(j: number): any {
         /*@__PURE__*/ S.Struct({ blobValue: T.Blob }),
       ]);
     case 3:
-      return S.Array(Field);
+      return S.Array(__S(18));
     case 4:
-      return S.Array(FieldList);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Records: SqlRecords,
-          ColumnMetadata: S.optional(ColumnMetadataList),
+          Records: __S(20),
+          ColumnMetadata: S.optional(__S(13)),
           TotalNumRows: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }),
@@ -1313,12 +1220,12 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(QueryRecords);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Records: FormattedSqlRecords,
-          ColumnMetadata: S.optional(ColumnMetadataList),
+          Records: __S(24),
+          ColumnMetadata: S.optional(__S(13)),
           TotalNumRows: S.optional(S.Number),
           ResultFormat: S.optional(S.String),
           NextToken: S.optional(S.String),
@@ -1340,7 +1247,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "ListDatabasesRequest" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Databases: S.optional(DatabaseList), NextToken: S.optional(S.String) }),
+        S.Struct({ Databases: S.optional(__S(0)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListDatabasesResponse" });
     case 4:
       return S.suspend(() =>
@@ -1358,7 +1265,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "ListSchemasRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Schemas: S.optional(SchemaList), NextToken: S.optional(S.String) }),
+        S.Struct({ Schemas: S.optional(__S(0)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSchemasResponse" });
     case 6:
       return S.suspend(() =>
@@ -1394,10 +1301,10 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SessionData);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() =>
-        S.Struct({ Sessions: SessionList, NextToken: S.optional(S.String) }),
+        S.Struct({ Sessions: __S(32), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSessionsResponse" });
     case 2:
       return S.suspend(() =>
@@ -1417,23 +1324,23 @@ function __c4(j: number): any {
         S.Struct({
           Id: S.String,
           QueryString: S.optional(S.String),
-          QueryStrings: S.optional(StatementStringList),
+          QueryStrings: S.optional(__S(0)),
           SecretArn: S.optional(S.String),
           Status: S.optional(S.String),
           StatementName: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          QueryParameters: S.optional(SqlParametersList),
+          QueryParameters: S.optional(__S(2)),
           IsBatchStatement: S.optional(S.Boolean),
           ResultFormat: S.optional(S.String),
           SessionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "StatementData" });
     case 4:
-      return S.Array(StatementData);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Statements: StatementList, NextToken: S.optional(S.String) }),
+        S.Struct({ Statements: __S(36), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListStatementsResponse" });
     case 6:
       return S.suspend(() =>
@@ -1463,10 +1370,31 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TableMember);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
-        S.Struct({ Tables: S.optional(TableList), NextToken: S.optional(S.String) }),
+        S.Struct({ Tables: S.optional(__S(40)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTablesResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
   }
 }

@@ -11,6 +11,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString, SensitiveBlob } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SageMaker Runtime",
   serviceShapeName: "AmazonSageMakerRuntime",
@@ -162,7 +164,6 @@ export interface InvokeEndpointInput {
   SessionId?: string;
   PrefixAwareId?: string;
 }
-const InvokeEndpointInput = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<InvokeEndpointInput>;
 export type NewSessionResponseHeader = string;
 export type SessionIdHeader = string;
 export interface InvokeEndpointOutput {
@@ -173,7 +174,6 @@ export interface InvokeEndpointOutput {
   NewSessionId?: string;
   ClosedSessionId?: string;
 }
-const InvokeEndpointOutput = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<InvokeEndpointOutput>;
 export type InputLocationHeader = string;
 export type S3OutputPathExtensionHeader = string;
 export type FilenameHeader = string;
@@ -192,19 +192,11 @@ export interface InvokeEndpointAsyncInput {
   InvocationTimeoutSeconds?: number;
   Body?: T.StreamingInputBody;
 }
-const InvokeEndpointAsyncInput = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<InvokeEndpointAsyncInput>;
 export interface InvokeEndpointAsyncOutput {
   InferenceId?: string;
   OutputLocation?: string;
   FailureLocation?: string;
 }
-const InvokeEndpointAsyncOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<InvokeEndpointAsyncOutput>;
 export interface InvokeEndpointWithResponseStreamInput {
   EndpointName: string;
   Body?: T.StreamingInputBody;
@@ -218,34 +210,22 @@ export interface InvokeEndpointWithResponseStreamInput {
   SessionId?: string;
   PrefixAwareId?: string;
 }
-const InvokeEndpointWithResponseStreamInput = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<InvokeEndpointWithResponseStreamInput>;
 export type PartBlob = Uint8Array | redacted.Redacted<Uint8Array>;
 export interface PayloadPart {
   Bytes?: Uint8Array | redacted.Redacted<Uint8Array>;
 }
-const PayloadPart = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PayloadPart>;
 export type Message = string;
 export type ErrorCode = string;
 export type ResponseStream =
   | { PayloadPart: PayloadPart; ModelStreamError?: never; InternalStreamFailure?: never }
   | { PayloadPart?: never; ModelStreamError: ModelStreamError; InternalStreamFailure?: never }
   | { PayloadPart?: never; ModelStreamError?: never; InternalStreamFailure: InternalStreamFailure };
-const ResponseStream = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<
-  stream.Stream<ResponseStream, Error, never>
->;
 export interface InvokeEndpointWithResponseStreamOutput {
   Body: stream.Stream<ResponseStream, Error, never>;
   ContentType?: string;
   InvokedProductionVariant?: string;
   CustomAttributes?: string | redacted.Redacted<string>;
 }
-const InvokeEndpointWithResponseStreamOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<InvokeEndpointWithResponseStreamOutput>;
 export type StatusCode = number;
 export type LogStreamArn = string;
 export type InvokeEndpointError =
@@ -286,8 +266,8 @@ export const invokeEndpoint: API.OperationMethod<
   InvokeEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvokeEndpointInput,
-  output: InvokeEndpointOutput,
+  input: __S(0) as any as S.Schema<InvokeEndpointInput>,
+  output: __S(1) as any as S.Schema<InvokeEndpointOutput>,
   errors: [
     InternalDependencyException,
     InternalFailure,
@@ -329,8 +309,8 @@ export const invokeEndpointAsync: API.OperationMethod<
   InvokeEndpointAsyncError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvokeEndpointAsyncInput,
-  output: InvokeEndpointAsyncOutput,
+  input: __S(2) as any as S.Schema<InvokeEndpointAsyncInput>,
+  output: __S(3) as any as S.Schema<InvokeEndpointAsyncOutput>,
   errors: [InternalFailure, ServiceUnavailable, ValidationError],
   protocol: AwsProtocol,
   retry: Retry,
@@ -377,8 +357,8 @@ export const invokeEndpointWithResponseStream: API.OperationMethod<
   InvokeEndpointWithResponseStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvokeEndpointWithResponseStreamInput,
-  output: InvokeEndpointWithResponseStreamOutput,
+  input: __S(4) as any as S.Schema<InvokeEndpointWithResponseStreamInput>,
+  output: __S(7) as any as S.Schema<InvokeEndpointWithResponseStreamOutput>,
   errors: [
     InternalFailure,
     InternalStreamFailure,
@@ -541,7 +521,7 @@ function __c0(j: number): any {
     case 6:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ PayloadPart: PayloadPart }),
+          /*@__PURE__*/ S.Struct({ PayloadPart: __S(5) }),
           /*@__PURE__*/ S.Struct({
             ModelStreamError: /*@__PURE__*/ S.suspend(() => ModelStreamError).annotate({
               identifier: "ModelStreamError",
@@ -557,7 +537,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Body: ResponseStream.pipe(T.HttpPayload()),
+          Body: __S(6).pipe(T.HttpPayload()),
           ContentType: S.optional(S.String).pipe(T.HttpHeader("X-Amzn-SageMaker-Content-Type")),
           InvokedProductionVariant: S.optional(S.String).pipe(
             T.HttpHeader("x-Amzn-Invoked-Production-Variant"),
@@ -569,5 +549,16 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "InvokeEndpointWithResponseStreamOutput",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

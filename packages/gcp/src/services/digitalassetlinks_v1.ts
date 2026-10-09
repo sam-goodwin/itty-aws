@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -67,15 +69,11 @@ export interface WebAsset {
   /** Web assets are identified by a URL that contains only the scheme, hostname and port parts. The format is http[s]://[:] Hostnames must be fully qualified: they must end in a single period ("`.`"). Only the schemes "http" and "https" are currently allowed. Port numbers are given as a decimal number, and they must be omitted if the standard port numbers are used: 80 for http and 443 for https. We call this limited URL the "site". All URLs that share the same scheme, hostname and port are considered to be a part of the site and thus belong to the web asset. Example: the asset with the site `https://www.google.com` contains all these URLs: * `https://www.google.com/` * `https://www.google.com:443/` * `https://www.google.com/foo` * `https://www.google.com/foo?bar` * `https://www.google.com/foo#bar` * `https://user@password:www.google.com/` But it does not contain these URLs: * `http://www.google.com/` (wrong scheme) * `https://google.com/` (hostname does not match) * `https://www.google.com:444/` (port does not match) REQUIRED */
   site?: string;
 }
-const WebAsset = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<WebAsset>;
-
 /** Describes an X509 certificate. */
 export interface CertificateInfo {
   /** The uppercase SHA-265 fingerprint of the certificate. From the PEM certificate, it can be acquired like this: $ keytool -printcert -file $CERTFILE | grep SHA256: SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \ 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 or like this: $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256 SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \ 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 In this example, the contents of this field would be `14:6D:E9:83:C5:73: 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`. If these tools are not available to you, you can convert the PEM certificate into the DER format, compute the SHA-256 hash of that string and represent the result as a hexstring (that is, uppercase hexadecimal representations of each octet, separated by colons). */
   sha256Fingerprint?: string;
 }
-const CertificateInfo = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CertificateInfo>;
-
 /** Describes an android app asset. */
 export interface AndroidAppAsset {
   /** Android App assets are naturally identified by their Java package name. For example, the Google Maps app uses the package name `com.google.android.apps.maps`. REQUIRED */
@@ -83,8 +81,6 @@ export interface AndroidAppAsset {
   /** Because there is no global enforcement of package name uniqueness, we also require a signing certificate, which in combination with the package name uniquely identifies an app. Some apps' signing keys are rotated, so they may be signed by different keys over time. We treat these as distinct assets, since we use (package name, cert) as the unique ID. This should not normally pose any problems as both versions of the app will make the same or similar statements. Other assets making statements about the app will have to be updated when a key is rotated, however. (Note that the syntaxes for publishing and querying for statements contain syntactic sugar to easily let you specify apps that are known by multiple certificates.) REQUIRED */
   certificate?: CertificateInfo;
 }
-const AndroidAppAsset = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AndroidAppAsset>;
-
 /** Uniquely identifies an asset. A digital asset is an identifiable and addressable online entity that typically provides some service or content. Examples of assets are websites, Android apps, Twitter feeds, and Plus Pages. */
 export interface Asset {
   /** Set if this is a web asset. */
@@ -92,8 +88,6 @@ export interface Asset {
   /** Set if this is an Android App asset. */
   androidApp?: AndroidAppAsset;
 }
-const Asset = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Asset>;
-
 /** A single statement to check in a bulk call using BulkCheck. See CheckRequest for details about each field. */
 export interface StatementTemplate {
   /** The source asset that is asserting the statement. If omitted, you must specify a BulkCheckRequest.default_source value to use here. */
@@ -103,14 +97,7 @@ export interface StatementTemplate {
   /** The target that the source is declaring the relationship with. If omitted, you must specify a BulkCheckRequest.default_target to use here. */
   target?: Asset;
 }
-const StatementTemplate = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<StatementTemplate>;
-
 export type StatementTemplateList = Array<StatementTemplate>;
-const StatementTemplateList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<StatementTemplateList>;
-
 /** Message used to check for the existence of multiple digital asset links within a single RPC. */
 export interface BulkCheckRequest {
   /** List of statements to check. For each statement, you can omit a field if the corresponding default_* field below was supplied. Minimum 1 statement; maximum 1,000 statements. Any additional statements will be ignored. */
@@ -124,17 +111,10 @@ export interface BulkCheckRequest {
   /** If specified, will be used in any given template statement that doesn't specify a relation. */
   defaultRelation?: string;
 }
-const BulkCheckRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<BulkCheckRequest>;
-
 export interface BulkCheckAssetlinksRequest {
   /** Request body */
   body?: BulkCheckRequest;
 }
-const BulkCheckAssetlinksRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BulkCheckAssetlinksRequest>;
-
 export type BulkCheckResponseBulkErrorCodeEnum =
   | "ERROR_CODE_UNSPECIFIED"
   | "ERROR_CODE_INVALID_QUERY"
@@ -147,14 +127,8 @@ export type BulkCheckResponseBulkErrorCodeEnum =
   | "ERROR_CODE_MALFORMED_CONTENT"
   | "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE"
   | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED";
-const BulkCheckResponseBulkErrorCodeEnum = S.String;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DocumentMapList>;
-
 export type CheckResponseErrorCodeItemEnum =
   | "ERROR_CODE_UNSPECIFIED"
   | "ERROR_CODE_INVALID_QUERY"
@@ -167,14 +141,7 @@ export type CheckResponseErrorCodeItemEnum =
   | "ERROR_CODE_MALFORMED_CONTENT"
   | "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE"
   | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED";
-const CheckResponseErrorCodeItemEnum = S.String;
-
 export type CheckResponseErrorCodeItemEnumList = Array<CheckResponseErrorCodeItemEnum>;
-const CheckResponseErrorCodeItemEnumList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CheckResponseErrorCodeItemEnumList>;
-
 /** Response message for the CheckAssetLinks call. */
 export interface CheckResponse {
   /** Set to true if the assets specified in the request are linked by the relation specified in the request. */
@@ -188,11 +155,7 @@ export interface CheckResponse {
   /** Error codes that describe the result of the Check operation. NOTE: Error codes may be populated even when `linked` is true. The error codes do not necessarily imply that the request failed, but rather, specify any errors encountered in the statements file(s) which may or may not impact whether the server determines the requested source and target to be linked. */
   errorCode?: CheckResponseErrorCodeItemEnumList;
 }
-const CheckResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CheckResponse>;
-
 export type CheckResponseList = Array<CheckResponse>;
-const CheckResponseList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CheckResponseList>;
-
 /** Response for BulkCheck call. Results are sent in a list in the same order in which they were sent. Individual check errors are described in the appropriate check_results entry. If the entire call fails, the response will include a bulk_error_code field describing the error. */
 export interface BulkCheckResponse {
   /** Error code for the entire request. Present only if the entire request failed. Individual check errors will not trigger the presence of this field. */
@@ -200,8 +163,6 @@ export interface BulkCheckResponse {
   /** List of results for each check request. Results are returned in the same order in which they were sent in the request. */
   checkResults?: CheckResponseList;
 }
-const BulkCheckResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<BulkCheckResponse>;
-
 export interface CheckAssetlinksRequest {
   /** Web assets are identified by a URL that contains only the scheme, hostname and port parts. The format is http[s]://[:] Hostnames must be fully qualified: they must end in a single period ("`.`"). Only the schemes "http" and "https" are currently allowed. Port numbers are given as a decimal number, and they must be omitted if the standard port numbers are used: 80 for http and 443 for https. We call this limited URL the "site". All URLs that share the same scheme, hostname and port are considered to be a part of the site and thus belong to the web asset. Example: the asset with the site `https://www.google.com` contains all these URLs: * `https://www.google.com/` * `https://www.google.com:443/` * `https://www.google.com/foo` * `https://www.google.com/foo?bar` * `https://www.google.com/foo#bar` * `https://user@password:www.google.com/` But it does not contain these URLs: * `http://www.google.com/` (wrong scheme) * `https://google.com/` (hostname does not match) * `https://www.google.com:444/` (port does not match) REQUIRED */
   "source.web.site"?: string;
@@ -220,11 +181,6 @@ export interface CheckAssetlinksRequest {
   /** Query string for the relation. We identify relations with strings of the format `/`, where `` must be one of a set of pre-defined purpose categories, and `` is a free-form lowercase alphanumeric string that describes the specific use case of the statement. Refer to [our API documentation](/digital-asset-links/v1/relation-strings) for the current list of supported relations. For a query to match an asset link, both the query's and the asset link's relation strings must match exactly. Example: A query with relation `delegate_permission/common.handle_all_urls` matches an asset link with relation `delegate_permission/common.handle_all_urls`. */
   relation?: string;
 }
-const CheckAssetlinksRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CheckAssetlinksRequest>;
-
 export interface ListStatementsRequest {
   /** Whether to return any relation_extensions payloads specified in the source digital asset links statements. If this is set to `false` (default), relation_extensions specified will not be returned, even if they are specified in the DAL statement file. If set to `true`, the API will propagate relation_extensions associated with each statement's relation type, if specified in the DAL statement file. */
   returnRelationExtensions?: boolean;
@@ -237,11 +193,6 @@ export interface ListStatementsRequest {
   /** Use only associations that match the specified relation. See the [`Statement`](#Statement) message for a detailed definition of relation strings. For a query to match a statement, one of the following must be true: * both the query's and the statement's relation strings match exactly, or * the query's relation string is empty or missing. Example: A query with relation `delegate_permission/common.handle_all_urls` matches an asset link with relation `delegate_permission/common.handle_all_urls`. */
   relation?: string;
 }
-const ListStatementsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListStatementsRequest>;
-
 export type ListResponseErrorCodeItemEnum =
   | "ERROR_CODE_UNSPECIFIED"
   | "ERROR_CODE_INVALID_QUERY"
@@ -255,9 +206,6 @@ export type ListResponseErrorCodeItemEnum =
   | "ERROR_CODE_SECURE_ASSET_INCLUDES_INSECURE"
   | "ERROR_CODE_FETCH_BUDGET_EXHAUSTED";
 export type ListResponseErrorCodeItemEnumList = Array<ListResponseErrorCodeItemEnum>;
-const ListResponseErrorCodeItemEnumList =
-  CheckResponseErrorCodeItemEnumList as any as S.Schema<ListResponseErrorCodeItemEnumList>;
-
 /** Describes a reliable statement that has been made about the relationship between a source asset and a target asset. Statements are always made by the source asset, either directly or by delegating to a statement list that is stored elsewhere. For more detailed definitions of statements and assets, please refer to our [API documentation landing page](/digital-asset-links/v1/getting-started). */
 export interface Statement {
   /** Every statement has a target asset. REQUIRED */
@@ -269,11 +217,7 @@ export interface Statement {
   /** Every statement has a source asset. REQUIRED */
   source?: Asset;
 }
-const Statement = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Statement>;
-
 export type StatementList = Array<Statement>;
-const StatementList = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<StatementList>;
-
 /** Response message for the List call. */
 export interface ListResponse {
   /** Error codes that describe the result of the List operation. */
@@ -285,8 +229,6 @@ export interface ListResponse {
   /** From serving time, how much longer the response should be considered valid barring further updates. REQUIRED */
   maxAge?: string;
 }
-const ListResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListResponse>;
-
 export type BulkCheckAssetlinksError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Send a bundle of statement checks in a single RPC to minimize latency and service load. Statements need not be all for the same source and/or target. We recommend using this method when you need to check more than one statement in a short period of time. */
 export const bulkCheckAssetlinks: API.OperationMethod<
@@ -295,8 +237,8 @@ export const bulkCheckAssetlinks: API.OperationMethod<
   BulkCheckAssetlinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkCheckAssetlinksRequest,
-  output: BulkCheckResponse,
+  input: __S(7) as any as S.Schema<BulkCheckAssetlinksRequest>,
+  output: __S(13) as any as S.Schema<BulkCheckResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -310,8 +252,8 @@ export const checkAssetlinks: API.OperationMethod<
   CheckAssetlinksError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckAssetlinksRequest,
-  output: CheckResponse,
+  input: __S(14) as any as S.Schema<CheckAssetlinksRequest>,
+  output: __S(11) as any as S.Schema<CheckResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -325,8 +267,8 @@ export const listStatements: API.OperationMethod<
   ListStatementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStatementsRequest,
-  output: ListResponse,
+  input: __S(15) as any as S.Schema<ListStatementsRequest>,
+  output: __S(18) as any as S.Schema<ListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -351,40 +293,40 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           packageName: S.optional(S.String),
-          certificate: S.optional(CertificateInfo),
+          certificate: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "AndroidAppAsset" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          web: S.optional(WebAsset),
-          androidApp: S.optional(AndroidAppAsset),
+          web: S.optional(__S(0)),
+          androidApp: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "Asset" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(Asset),
+          source: S.optional(__S(3)),
           relation: S.optional(S.String),
-          target: S.optional(Asset),
+          target: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "StatementTemplate" });
     case 5:
-      return S.Array(StatementTemplate);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          statements: S.optional(StatementTemplateList),
+          statements: S.optional(__S(5)),
           returnRelationExtensions: S.optional(S.Boolean),
-          defaultTarget: S.optional(Asset),
-          defaultSource: S.optional(Asset),
+          defaultTarget: S.optional(__S(3)),
+          defaultSource: S.optional(__S(3)),
           defaultRelation: S.optional(S.String),
         }),
       ).annotate({ identifier: "BulkCheckRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(BulkCheckRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -402,26 +344,26 @@ function __c1(j: number): any {
     case 0:
       return S.Record(S.String, S.Unknown);
     case 1:
-      return S.Array(DocumentMap);
+      return S.Array(__S(8));
     case 2:
-      return S.Array(CheckResponseErrorCodeItemEnum);
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
           linked: S.optional(S.Boolean),
           debugString: S.optional(S.String),
           maxAge: S.optional(S.String),
-          relationExtensions: S.optional(DocumentMapList),
-          errorCode: S.optional(CheckResponseErrorCodeItemEnumList),
+          relationExtensions: S.optional(__S(9)),
+          errorCode: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "CheckResponse" });
     case 4:
-      return S.Array(CheckResponse);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bulkErrorCode: S.optional(BulkCheckResponseBulkErrorCodeEnum),
-          checkResults: S.optional(CheckResponseList),
+          bulkErrorCode: S.optional(S.String),
+          checkResults: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "BulkCheckResponse" });
     case 6:
@@ -466,22 +408,37 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          target: S.optional(Asset),
+          target: S.optional(__S(3)),
           relation: S.optional(S.String),
-          relationExtensions: S.optional(DocumentMap),
-          source: S.optional(Asset),
+          relationExtensions: S.optional(__S(8)),
+          source: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "Statement" });
     case 1:
-      return S.Array(Statement);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          errorCode: S.optional(ListResponseErrorCodeItemEnumList),
+          errorCode: S.optional(__S(10)),
           debugString: S.optional(S.String),
-          statements: S.optional(StatementList),
+          statements: S.optional(__S(17)),
           maxAge: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SimSpaceWeaver",
   serviceShapeName: "SimSpaceWeaver",
@@ -125,67 +127,45 @@ export interface S3Destination {
   BucketName: string;
   ObjectKeyPrefix?: string;
 }
-const S3Destination = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<S3Destination>;
 export interface CreateSnapshotInput {
   Simulation: string;
   Destination: S3Destination;
 }
-const CreateSnapshotInput = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateSnapshotInput>;
 export interface CreateSnapshotOutput {}
-const CreateSnapshotOutput = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateSnapshotOutput>;
 export interface DeleteAppInput {
   Simulation: string;
   Domain: string;
   App: string;
 }
-const DeleteAppInput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteAppInput>;
 export interface DeleteAppOutput {}
-const DeleteAppOutput = CreateSnapshotOutput as any as S.Schema<DeleteAppOutput>;
 export interface DeleteSimulationInput {
   Simulation: string;
 }
-const DeleteSimulationInput = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeleteSimulationInput>;
 export interface DeleteSimulationOutput {}
-const DeleteSimulationOutput = CreateSnapshotOutput as any as S.Schema<DeleteSimulationOutput>;
 export type SimSpaceWeaverLongResourceName = string;
 export interface DescribeAppInput {
   Simulation: string;
   Domain: string;
   App: string;
 }
-const DescribeAppInput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DescribeAppInput>;
 export type SimulationAppStatus = string;
 export type SimulationAppTargetStatus = string;
 export type NonEmptyString = string;
 export type LaunchCommandList = string[];
-const LaunchCommandList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface LaunchOverrides {
   LaunchCommands?: string[];
 }
-const LaunchOverrides = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<LaunchOverrides>;
 export type Description = string;
 export type PortNumber = number;
 export interface SimulationAppPortMapping {
   Declared?: number;
   Actual?: number;
 }
-const SimulationAppPortMapping = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<SimulationAppPortMapping>;
 export type AppPortMappings = SimulationAppPortMapping[];
-const AppPortMappings = /*@__PURE__*/ __L.at(__c1, 1);
 export interface SimulationAppEndpointInfo {
   Address?: string;
   IngressPortMappings?: SimulationAppPortMapping[];
 }
-const SimulationAppEndpointInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<SimulationAppEndpointInfo>;
 export interface DescribeAppOutput {
   Name?: string;
   Simulation?: string;
@@ -196,14 +176,9 @@ export interface DescribeAppOutput {
   Description?: string;
   EndpointInfo?: SimulationAppEndpointInfo;
 }
-const DescribeAppOutput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DescribeAppOutput>;
 export interface DescribeSimulationInput {
   Simulation: string;
 }
-const DescribeSimulationInput = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DescribeSimulationInput>;
 export type UUID = string;
 export type SimSpaceWeaverArn = string;
 export type RoleArn = string;
@@ -214,48 +189,35 @@ export interface S3Location {
   BucketName: string;
   ObjectKey: string;
 }
-const S3Location = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<S3Location>;
 export type OptionalString = string;
 export type LogGroupArn = string;
 export interface CloudWatchLogsLogGroup {
   LogGroupArn?: string;
 }
-const CloudWatchLogsLogGroup = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CloudWatchLogsLogGroup>;
 export interface LogDestination {
   CloudWatchLogsLogGroup?: CloudWatchLogsLogGroup;
 }
-const LogDestination = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<LogDestination>;
 export type LogDestinations = LogDestination[];
-const LogDestinations = /*@__PURE__*/ __L.at(__c2, 0);
 export interface LoggingConfiguration {
   Destinations?: LogDestination[];
 }
-const LoggingConfiguration = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<LoggingConfiguration>;
 export type LifecycleManagementStrategy = string;
 export interface Domain {
   Name?: string;
   Lifecycle?: string;
 }
-const Domain = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Domain>;
 export type DomainList = Domain[];
-const DomainList = /*@__PURE__*/ __L.at(__c2, 3);
 export type ClockStatus = string;
 export type ClockTargetStatus = string;
 export interface SimulationClock {
   Status?: string;
   TargetStatus?: string;
 }
-const SimulationClock = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<SimulationClock>;
 export type SimulationClockList = SimulationClock[];
-const SimulationClockList = /*@__PURE__*/ __L.at(__c2, 5);
 export interface LiveSimulationState {
   Domains?: Domain[];
   Clocks?: SimulationClock[];
 }
-const LiveSimulationState = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<LiveSimulationState>;
 export type TimeToLiveString = string;
 export interface DescribeSimulationOutput {
   Name?: string;
@@ -274,10 +236,6 @@ export interface DescribeSimulationOutput {
   SnapshotS3Location?: S3Location;
   StartError?: string;
 }
-const DescribeSimulationOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DescribeSimulationOutput>;
 export type PositiveInteger = number;
 export interface ListAppsInput {
   Simulation: string;
@@ -285,7 +243,6 @@ export interface ListAppsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListAppsInput = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListAppsInput>;
 export interface SimulationAppMetadata {
   Name?: string;
   Simulation?: string;
@@ -293,22 +250,15 @@ export interface SimulationAppMetadata {
   Status?: string;
   TargetStatus?: string;
 }
-const SimulationAppMetadata = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<SimulationAppMetadata>;
 export type SimulationAppList = SimulationAppMetadata[];
-const SimulationAppList = /*@__PURE__*/ __L.at(__c3, 2);
 export interface ListAppsOutput {
   Apps?: SimulationAppMetadata[];
   NextToken?: string;
 }
-const ListAppsOutput = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListAppsOutput>;
 export interface ListSimulationsInput {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListSimulationsInput = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListSimulationsInput>;
 export interface SimulationMetadata {
   Name?: string;
   Arn?: string;
@@ -316,35 +266,20 @@ export interface SimulationMetadata {
   Status?: string;
   TargetStatus?: string;
 }
-const SimulationMetadata = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<SimulationMetadata>;
 export type SimulationList = SimulationMetadata[];
-const SimulationList = /*@__PURE__*/ __L.at(__c3, 6);
 export interface ListSimulationsOutput {
   Simulations?: SimulationMetadata[];
   NextToken?: string;
 }
-const ListSimulationsOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListSimulationsOutput>;
 export interface ListTagsForResourceInput {
   ResourceArn: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListTagsForResourceInput>;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c4, 1);
 export interface ListTagsForResourceOutput {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListTagsForResourceOutput>;
 export type ClientToken = string | redacted.Redacted<string>;
 export interface StartAppInput {
   ClientToken?: string | redacted.Redacted<string>;
@@ -354,19 +289,15 @@ export interface StartAppInput {
   Description?: string;
   LaunchOverrides?: LaunchOverrides;
 }
-const StartAppInput = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<StartAppInput>;
 export interface StartAppOutput {
   Name?: string;
   Domain?: string;
   Simulation?: string;
 }
-const StartAppOutput = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<StartAppOutput>;
 export interface StartClockInput {
   Simulation: string;
 }
-const StartClockInput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<StartClockInput>;
 export interface StartClockOutput {}
-const StartClockOutput = CreateSnapshotOutput as any as S.Schema<StartClockOutput>;
 export interface StartSimulationInput {
   ClientToken?: string | redacted.Redacted<string>;
   Name: string;
@@ -377,52 +308,36 @@ export interface StartSimulationInput {
   Tags?: { [key: string]: string | undefined };
   SnapshotS3Location?: S3Location;
 }
-const StartSimulationInput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<StartSimulationInput>;
 export interface StartSimulationOutput {
   Arn?: string;
   ExecutionId?: string;
   CreationTime?: Date;
 }
-const StartSimulationOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<StartSimulationOutput>;
 export interface StopAppInput {
   Simulation: string;
   Domain: string;
   App: string;
 }
-const StopAppInput = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<StopAppInput>;
 export interface StopAppOutput {}
-const StopAppOutput = CreateSnapshotOutput as any as S.Schema<StopAppOutput>;
 export interface StopClockInput {
   Simulation: string;
 }
-const StopClockInput = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<StopClockInput>;
 export interface StopClockOutput {}
-const StopClockOutput = CreateSnapshotOutput as any as S.Schema<StopClockOutput>;
 export interface StopSimulationInput {
   Simulation: string;
 }
-const StopSimulationInput = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<StopSimulationInput>;
 export interface StopSimulationOutput {}
-const StopSimulationOutput = CreateSnapshotOutput as any as S.Schema<StopSimulationOutput>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceInput = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-const TagResourceOutput = CreateSnapshotOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-const TagKeyList = LaunchCommandList as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-const UntagResourceOutput = CreateSnapshotOutput as any as S.Schema<UntagResourceOutput>;
 export type CreateSnapshotError =
   | AccessDeniedException
   | ConflictException
@@ -480,8 +395,8 @@ export const createSnapshot: API.OperationMethod<
   CreateSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSnapshotInput,
-  output: CreateSnapshotOutput,
+  input: __S(1) as any as S.Schema<CreateSnapshotInput>,
+  output: __S(2) as any as S.Schema<CreateSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -510,8 +425,8 @@ export const deleteApp: API.OperationMethod<
   DeleteAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAppInput,
-  output: DeleteAppOutput,
+  input: __S(3) as any as S.Schema<DeleteAppInput>,
+  output: __S(2) as any as S.Schema<DeleteAppOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -543,8 +458,8 @@ export const deleteSimulation: API.OperationMethod<
   DeleteSimulationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSimulationInput,
-  output: DeleteSimulationOutput,
+  input: __S(4) as any as S.Schema<DeleteSimulationInput>,
+  output: __S(2) as any as S.Schema<DeleteSimulationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -572,8 +487,8 @@ export const describeApp: API.OperationMethod<
   DescribeAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeAppInput,
-  output: DescribeAppOutput,
+  input: __S(5) as any as S.Schema<DescribeAppInput>,
+  output: __S(11) as any as S.Schema<DescribeAppOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -600,8 +515,8 @@ export const describeSimulation: API.OperationMethod<
   DescribeSimulationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeSimulationInput,
-  output: DescribeSimulationOutput,
+  input: __S(12) as any as S.Schema<DescribeSimulationInput>,
+  output: __S(23) as any as S.Schema<DescribeSimulationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -629,8 +544,8 @@ export const listApps: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAppsInput,
-  output: ListAppsOutput,
+  input: __S(24) as any as S.Schema<ListAppsInput>,
+  output: __S(27) as any as S.Schema<ListAppsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -662,8 +577,8 @@ export const listSimulations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSimulationsInput,
-  output: ListSimulationsOutput,
+  input: __S(28) as any as S.Schema<ListSimulationsInput>,
+  output: __S(31) as any as S.Schema<ListSimulationsOutput>,
   errors: [AccessDeniedException, InternalServerException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -688,8 +603,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceInput,
-  output: ListTagsForResourceOutput,
+  input: __S(32) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(34) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -712,8 +627,8 @@ export const startApp: API.OperationMethod<
   StartAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartAppInput,
-  output: StartAppOutput,
+  input: __S(35) as any as S.Schema<StartAppInput>,
+  output: __S(36) as any as S.Schema<StartAppOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -742,8 +657,8 @@ export const startClock: API.OperationMethod<
   StartClockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartClockInput,
-  output: StartClockOutput,
+  input: __S(37) as any as S.Schema<StartClockInput>,
+  output: __S(2) as any as S.Schema<StartClockOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -777,8 +692,8 @@ export const startSimulation: API.OperationMethod<
   StartSimulationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartSimulationInput,
-  output: StartSimulationOutput,
+  input: __S(38) as any as S.Schema<StartSimulationInput>,
+  output: __S(39) as any as S.Schema<StartSimulationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -807,8 +722,8 @@ export const stopApp: API.OperationMethod<
   StopAppError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopAppInput,
-  output: StopAppOutput,
+  input: __S(40) as any as S.Schema<StopAppInput>,
+  output: __S(2) as any as S.Schema<StopAppOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -837,8 +752,8 @@ export const stopClock: API.OperationMethod<
   StopClockError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopClockInput,
-  output: StopClockOutput,
+  input: __S(41) as any as S.Schema<StopClockInput>,
+  output: __S(2) as any as S.Schema<StopClockOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -870,8 +785,8 @@ export const stopSimulation: API.OperationMethod<
   StopSimulationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopSimulationInput,
-  output: StopSimulationOutput,
+  input: __S(42) as any as S.Schema<StopSimulationInput>,
+  output: __S(2) as any as S.Schema<StopSimulationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -899,8 +814,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceInput,
-  output: TagResourceOutput,
+  input: __S(43) as any as S.Schema<TagResourceInput>,
+  output: __S(2) as any as S.Schema<TagResourceOutput>,
   errors: [ResourceNotFoundException, TooManyTagsException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -918,8 +833,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceInput,
-  output: UntagResourceOutput,
+  input: __S(44) as any as S.Schema<UntagResourceInput>,
+  output: __S(2) as any as S.Schema<UntagResourceOutput>,
   errors: [ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -935,7 +850,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "S3Destination" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Simulation: S.String, Destination: S3Destination }).pipe(
+        S.Struct({ Simulation: S.String, Destination: __S(0) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/createsnapshot" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -985,7 +900,7 @@ function __c0(j: number): any {
     case 6:
       return S.Array(S.String);
     case 7:
-      return S.suspend(() => S.Struct({ LaunchCommands: S.optional(LaunchCommandList) })).annotate({
+      return S.suspend(() => S.Struct({ LaunchCommands: S.optional(__S(6)) })).annotate({
         identifier: "LaunchOverrides",
       });
   }
@@ -999,12 +914,12 @@ function __c1(j: number): any {
         identifier: "SimulationAppPortMapping",
       });
     case 1:
-      return S.Array(SimulationAppPortMapping);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
           Address: S.optional(S.String),
-          IngressPortMappings: S.optional(AppPortMappings),
+          IngressPortMappings: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "SimulationAppEndpointInfo",
@@ -1017,9 +932,9 @@ function __c1(j: number): any {
           Domain: S.optional(S.String),
           Status: S.optional(S.String),
           TargetStatus: S.optional(S.String),
-          LaunchOverrides: S.optional(LaunchOverrides),
+          LaunchOverrides: S.optional(__S(7)),
           Description: S.optional(S.String),
-          EndpointInfo: S.optional(SimulationAppEndpointInfo),
+          EndpointInfo: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "DescribeAppOutput",
@@ -1048,17 +963,17 @@ function __c1(j: number): any {
         identifier: "CloudWatchLogsLogGroup",
       });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ CloudWatchLogsLogGroup: S.optional(CloudWatchLogsLogGroup) }),
-      ).annotate({ identifier: "LogDestination" });
+      return S.suspend(() => S.Struct({ CloudWatchLogsLogGroup: S.optional(__S(14)) })).annotate({
+        identifier: "LogDestination",
+      });
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(LogDestination);
+      return S.Array(__S(15));
     case 1:
-      return S.suspend(() => S.Struct({ Destinations: S.optional(LogDestinations) })).annotate({
+      return S.suspend(() => S.Struct({ Destinations: S.optional(__S(16)) })).annotate({
         identifier: "LoggingConfiguration",
       });
     case 2:
@@ -1066,7 +981,7 @@ function __c2(j: number): any {
         S.Struct({ Name: S.optional(S.String), Lifecycle: S.optional(S.String) }),
       ).annotate({ identifier: "Domain" });
     case 3:
-      return S.Array(Domain);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1077,12 +992,12 @@ function __c2(j: number): any {
         identifier: "SimulationClock",
       });
     case 5:
-      return S.Array(SimulationClock);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Domains: S.optional(DomainList),
-          Clocks: S.optional(SimulationClockList),
+          Domains: S.optional(__S(19)),
+          Clocks: S.optional(__S(21)),
         }),
       ).annotate({
         identifier: "LiveSimulationState",
@@ -1098,12 +1013,12 @@ function __c2(j: number): any {
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           Status: S.optional(S.String),
           TargetStatus: S.optional(S.String),
-          SchemaS3Location: S.optional(S3Location),
+          SchemaS3Location: S.optional(__S(13)),
           SchemaError: S.optional(S.String),
-          LoggingConfiguration: S.optional(LoggingConfiguration),
-          LiveSimulationState: S.optional(LiveSimulationState),
+          LoggingConfiguration: S.optional(__S(17)),
+          LiveSimulationState: S.optional(__S(22)),
           MaximumDuration: S.optional(S.String),
-          SnapshotS3Location: S.optional(S3Location),
+          SnapshotS3Location: S.optional(__S(13)),
           StartError: S.optional(S.String),
         }),
       ).annotate({
@@ -1135,11 +1050,11 @@ function __c3(j: number): any {
         identifier: "SimulationAppMetadata",
       });
     case 2:
-      return S.Array(SimulationAppMetadata);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Apps: S.optional(SimulationAppList),
+          Apps: S.optional(__S(26)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAppsOutput" });
@@ -1167,11 +1082,11 @@ function __c3(j: number): any {
         identifier: "SimulationMetadata",
       });
     case 6:
-      return S.Array(SimulationMetadata);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Simulations: S.optional(SimulationList),
+          Simulations: S.optional(__S(30)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1199,7 +1114,7 @@ function __c4(j: number): any {
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 2:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagMap) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(33)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
     case 3:
@@ -1210,7 +1125,7 @@ function __c4(j: number): any {
           Domain: S.String,
           Name: S.String,
           Description: S.optional(S.String),
-          LaunchOverrides: S.optional(LaunchOverrides),
+          LaunchOverrides: S.optional(__S(7)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/startapp" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "StartAppInput" });
     case 4:
@@ -1236,10 +1151,10 @@ function __c4(j: number): any {
           Name: S.String,
           Description: S.optional(S.String),
           RoleArn: S.String,
-          SchemaS3Location: S.optional(S3Location),
+          SchemaS3Location: S.optional(__S(13)),
           MaximumDuration: S.optional(S.String),
-          Tags: S.optional(TagMap),
-          SnapshotS3Location: S.optional(S3Location),
+          Tags: S.optional(__S(33)),
+          SnapshotS3Location: S.optional(__S(13)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/startsimulation" }), svc, auth, proto, ver, rules),
         ),
@@ -1284,7 +1199,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: TagMap,
+          Tags: __S(33),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -1302,7 +1217,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(6).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -1316,5 +1231,26 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UntagResourceInput",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
   }
 }

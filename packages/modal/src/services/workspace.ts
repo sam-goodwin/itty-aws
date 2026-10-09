@@ -6,45 +6,28 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
 export interface GetWorkspaceDashboardUrlRequest {
   environmentName?: string;
 }
-const GetWorkspaceDashboardUrlRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetWorkspaceDashboardUrlRequest>;
-
 export interface GetWorkspaceDashboardUrlResponse {
   url?: string;
 }
-const GetWorkspaceDashboardUrlResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetWorkspaceDashboardUrlResponse>;
-
 export interface ListWorkspaceMembersRequest {}
-const ListWorkspaceMembersRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ListWorkspaceMembersRequest>;
-
 export type MemberRole =
   | "MEMBER_ROLE_UNSPECIFIED"
   | "MEMBER_ROLE_USER"
   | "MEMBER_ROLE_MANAGER"
   | "MEMBER_ROLE_OWNER";
-const MemberRole = S.String;
-
 export type IdentityProviderType =
   | "IDENTITY_PROVIDER_TYPE_UNSPECIFIED"
   | "IDENTITY_PROVIDER_TYPE_GITHUB"
   | "IDENTITY_PROVIDER_TYPE_SAML"
   | "IDENTITY_PROVIDER_TYPE_GOOGLE_OAUTH";
-const IdentityProviderType = S.String;
-
 export interface WorkspaceMembersListItem {
   memberId?: string;
   memberDisplayname?: string;
@@ -58,49 +41,17 @@ export interface WorkspaceMembersListItem {
   avatarUrl?: string;
   idpExternalId?: string;
 }
-const WorkspaceMembersListItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<WorkspaceMembersListItem>;
-
 export type WorkspaceMembersListItemList = Array<WorkspaceMembersListItem>;
-const WorkspaceMembersListItemList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<WorkspaceMembersListItemList>;
-
 export interface ListWorkspaceMembersResponse {
   members?: WorkspaceMembersListItemList;
 }
-const ListWorkspaceMembersResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListWorkspaceMembersResponse>;
-
 export interface LookupWorkspaceNameRequest {}
-const LookupWorkspaceNameRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<LookupWorkspaceNameRequest>;
-
 export interface LookupWorkspaceNameResponse {
   workspaceName?: string;
   username?: string;
 }
-const LookupWorkspaceNameResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<LookupWorkspaceNameResponse>;
-
 export interface WorkspaceBillingRatesRequest {}
-const WorkspaceBillingRatesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<WorkspaceBillingRatesRequest>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<StringMap>;
-
 export interface WorkspaceBillingRatesResponse {
   /** compute rates are per unit per hour, storage rate is per GiB-month */
   rates?: StringMap;
@@ -108,20 +59,10 @@ export interface WorkspaceBillingRatesResponse {
   deprecationErrors?: StringMap;
   formatted?: string;
 }
-const WorkspaceBillingRatesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<WorkspaceBillingRatesResponse>;
-
 export interface WorkspaceBillingSummaryRequest {
   /** all query intervals are implicitly one month long (to line up with billing cycles) */
   startTimestamp?: string;
 }
-const WorkspaceBillingSummaryRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<WorkspaceBillingSummaryRequest>;
-
 export interface WorkspaceBillingSummaryResponse {
   startTimestamp?: string;
   endTimestamp?: string;
@@ -132,42 +73,20 @@ export interface WorkspaceBillingSummaryResponse {
   /** keyed by plan, credits, reservations, storage, network egress allowance */
   adjustments?: StringMap;
 }
-const WorkspaceBillingSummaryResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<WorkspaceBillingSummaryResponse>;
-
 export interface WorkspaceSetDefaultEnvironmentRequest {
   environmentName?: string;
 }
-const WorkspaceSetDefaultEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<WorkspaceSetDefaultEnvironmentRequest>;
-
 export interface WorkspaceSetDefaultEnvironmentResponse {}
-const WorkspaceSetDefaultEnvironmentResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<WorkspaceSetDefaultEnvironmentResponse>;
-
 /** Partial-update signal for EnvironmentUpdateRequest. Omitted means no-op. INHERIT clears the environment override so the workspace default applies. */
 export type EnvironmentBlockUnauthenticatedResources =
   | "ENVIRONMENT_BLOCK_UNAUTHENTICATED_RESOURCES_UNSPECIFIED"
   | "ENVIRONMENT_BLOCK_UNAUTHENTICATED_RESOURCES_INHERIT"
   | "ENVIRONMENT_BLOCK_UNAUTHENTICATED_RESOURCES_BLOCK"
   | "ENVIRONMENT_BLOCK_UNAUTHENTICATED_RESOURCES_ALLOW";
-const EnvironmentBlockUnauthenticatedResources = S.String;
-
 export interface WorkspaceSetDefaultEnvironmentSettingsRequest {
   /** Omitted = no-op. INHERIT clears the workspace default so environments with no override have no block. Rejects UNSPECIFIED. */
   blockUnauthenticatedResources?: EnvironmentBlockUnauthenticatedResources | (string & {});
 }
-const WorkspaceSetDefaultEnvironmentSettingsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<WorkspaceSetDefaultEnvironmentSettingsRequest>;
-
 /** Environment-scoped settings, with workspace-level defaults. Note that we use MergeFrom to combine workspace / environment settings, which will *append* any `repeated` fields! */
 export interface EnvironmentSettings {
   imageBuilderVersion?: string;
@@ -177,47 +96,20 @@ export interface EnvironmentSettings {
   /** When true, new unauthenticated web functions, Servers, tunnels, and Endpoints in this environment are rejected. Unset inherits the workspace default. */
   blockUnauthenticatedResources?: boolean;
 }
-const EnvironmentSettings = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<EnvironmentSettings>;
-
 export interface WorkspaceSetDefaultEnvironmentSettingsResponse {
   defaultEnvironmentSettings?: EnvironmentSettings;
 }
-const WorkspaceSetDefaultEnvironmentSettingsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<WorkspaceSetDefaultEnvironmentSettingsResponse>;
-
 export interface WorkspaceSetImageBuilderVersionRequest {
   newImageBuilderVersion?: string;
 }
-const WorkspaceSetImageBuilderVersionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<WorkspaceSetImageBuilderVersionRequest>;
-
 export interface WorkspaceSetImageBuilderVersionResponse {
   imageBuilderVersion?: string;
 }
-const WorkspaceSetImageBuilderVersionResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<WorkspaceSetImageBuilderVersionResponse>;
-
 export interface WorkspaceSettingsRequest {}
-const WorkspaceSettingsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<WorkspaceSettingsRequest>;
-
 export interface WorkspaceSettingsResponse {
   defaultEnvironmentName?: string;
   imageBuilderVersion?: string;
 }
-const WorkspaceSettingsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<WorkspaceSettingsResponse>;
-
 export type GetWorkspaceDashboardUrlError = ModalOpError;
 export const getWorkspaceDashboardUrl: API.OperationMethod<
   GetWorkspaceDashboardUrlRequest,
@@ -225,8 +117,8 @@ export const getWorkspaceDashboardUrl: API.OperationMethod<
   GetWorkspaceDashboardUrlError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWorkspaceDashboardUrlRequest,
-  output: GetWorkspaceDashboardUrlResponse,
+  input: __S(0) as any as S.Schema<GetWorkspaceDashboardUrlRequest>,
+  output: __S(1) as any as S.Schema<GetWorkspaceDashboardUrlResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -239,8 +131,8 @@ export const listWorkspaceMembers: API.OperationMethod<
   ListWorkspaceMembersError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWorkspaceMembersRequest,
-  output: ListWorkspaceMembersResponse,
+  input: __S(2) as any as S.Schema<ListWorkspaceMembersRequest>,
+  output: __S(5) as any as S.Schema<ListWorkspaceMembersResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -253,8 +145,8 @@ export const lookupWorkspaceName: API.OperationMethod<
   LookupWorkspaceNameError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LookupWorkspaceNameRequest,
-  output: LookupWorkspaceNameResponse,
+  input: __S(6) as any as S.Schema<LookupWorkspaceNameRequest>,
+  output: __S(7) as any as S.Schema<LookupWorkspaceNameResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -268,8 +160,8 @@ export const workspaceBillingRates: API.OperationMethod<
   WorkspaceBillingRatesError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkspaceBillingRatesRequest,
-  output: WorkspaceBillingRatesResponse,
+  input: __S(8) as any as S.Schema<WorkspaceBillingRatesRequest>,
+  output: __S(10) as any as S.Schema<WorkspaceBillingRatesResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -282,8 +174,8 @@ export const workspaceBillingSummary: API.OperationMethod<
   WorkspaceBillingSummaryError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkspaceBillingSummaryRequest,
-  output: WorkspaceBillingSummaryResponse,
+  input: __S(11) as any as S.Schema<WorkspaceBillingSummaryRequest>,
+  output: __S(12) as any as S.Schema<WorkspaceBillingSummaryResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -296,8 +188,8 @@ export const workspaceSetDefaultEnvironment: API.OperationMethod<
   WorkspaceSetDefaultEnvironmentError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkspaceSetDefaultEnvironmentRequest,
-  output: WorkspaceSetDefaultEnvironmentResponse,
+  input: __S(13) as any as S.Schema<WorkspaceSetDefaultEnvironmentRequest>,
+  output: __S(14) as any as S.Schema<WorkspaceSetDefaultEnvironmentResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -310,8 +202,8 @@ export const workspaceSetDefaultEnvironmentSettings: API.OperationMethod<
   WorkspaceSetDefaultEnvironmentSettingsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkspaceSetDefaultEnvironmentSettingsRequest,
-  output: WorkspaceSetDefaultEnvironmentSettingsResponse,
+  input: __S(15) as any as S.Schema<WorkspaceSetDefaultEnvironmentSettingsRequest>,
+  output: __S(17) as any as S.Schema<WorkspaceSetDefaultEnvironmentSettingsResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -324,8 +216,8 @@ export const workspaceSetImageBuilderVersion: API.OperationMethod<
   WorkspaceSetImageBuilderVersionError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkspaceSetImageBuilderVersionRequest,
-  output: WorkspaceSetImageBuilderVersionResponse,
+  input: __S(18) as any as S.Schema<WorkspaceSetImageBuilderVersionRequest>,
+  output: __S(19) as any as S.Schema<WorkspaceSetImageBuilderVersionResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -338,8 +230,8 @@ export const workspaceSettings: API.OperationMethod<
   WorkspaceSettingsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkspaceSettingsRequest,
-  output: WorkspaceSettingsResponse,
+  input: __S(20) as any as S.Schema<WorkspaceSettingsRequest>,
+  output: __S(21) as any as S.Schema<WorkspaceSettingsResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -387,23 +279,23 @@ function __c0(j: number): any {
         S.Struct({
           memberId: S.optional(S.String),
           memberDisplayname: S.optional(S.String),
-          memberRole: S.optional(MemberRole),
+          memberRole: S.optional(S.String),
           joinedAt: S.optional(S.Number),
           lastActiveAt: S.optional(S.Number),
           deletedAt: S.optional(S.Number),
           userId: S.optional(S.String),
-          identityProviderType: S.optional(IdentityProviderType),
+          identityProviderType: S.optional(S.String),
           email: S.optional(S.String),
           avatarUrl: S.optional(S.String),
           idpExternalId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkspaceMembersListItem" });
     case 4:
-      return S.Array(WorkspaceMembersListItem);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(WorkspaceMembersListItemList),
+          members: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "ListWorkspaceMembersResponse",
@@ -450,9 +342,9 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rates: S.optional(StringMap),
-          deprecationWarnings: S.optional(StringMap),
-          deprecationErrors: S.optional(StringMap),
+          rates: S.optional(__S(9)),
+          deprecationWarnings: S.optional(__S(9)),
+          deprecationErrors: S.optional(__S(9)),
           formatted: S.optional(S.String),
         }),
       ).annotate({
@@ -479,8 +371,8 @@ function __c1(j: number): any {
           endTimestamp: S.optional(S.String),
           meteredCost: S.optional(S.String),
           billedCost: S.optional(S.String),
-          meteredCostBreakdown: S.optional(StringMap),
-          adjustments: S.optional(StringMap),
+          meteredCostBreakdown: S.optional(__S(9)),
+          adjustments: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "WorkspaceBillingSummaryResponse",
@@ -506,7 +398,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          blockUnauthenticatedResources: S.optional(EnvironmentBlockUnauthenticatedResources),
+          blockUnauthenticatedResources: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -534,7 +426,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          defaultEnvironmentSettings: S.optional(EnvironmentSettings),
+          defaultEnvironmentSettings: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "WorkspaceSetDefaultEnvironmentSettingsResponse",
@@ -576,5 +468,20 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "WorkspaceSettingsResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

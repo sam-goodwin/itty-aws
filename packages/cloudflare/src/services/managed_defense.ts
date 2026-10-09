@@ -10,6 +10,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -19,11 +21,6 @@ export interface CreateVulnerabilityDiscoveryRepositoryRequest {
   name: string;
   workerScriptName?: string;
 }
-const CreateVulnerabilityDiscoveryRepositoryRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateVulnerabilityDiscoveryRepositoryRequest>;
-
 export type CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryReadiness =
   | "awaiting_source"
   | "processing"
@@ -32,21 +29,12 @@ export type CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryReadiness
 export type CreateVulnerabilityDiscoveryRepositoryResultCase0RepositorySource = "upload" | "worker";
 export type CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryImportErrorCode =
   "worker_import_failed";
-const CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryImportErrorCode = S.String;
-
 export type CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryImportErrorMessage =
   "Worker import failed.";
-const CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryImportErrorMessage = S.String;
-
 export interface CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryImportError {
   code: CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryImportErrorCode;
   message: CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryImportErrorMessage;
 }
-const CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryImportError = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryImportError>;
-
 export interface CreateVulnerabilityDiscoveryRepositoryResultCase0Repository {
   id: string;
   name: string;
@@ -93,42 +81,17 @@ export interface CreateVulnerabilityDiscoveryRepositoryResultRepository {
 export type CreateVulnerabilityDiscoveryRepositoryResult =
   | CreateVulnerabilityDiscoveryRepositoryResultCase0
   | CreateVulnerabilityDiscoveryRepositoryResultRepository;
-const CreateVulnerabilityDiscoveryRepositoryResult = /*@__PURE__*/ __L.at(__c0, 2);
-
 export type CreateVulnerabilityDiscoveryRepositoryResponse =
   CreateVulnerabilityDiscoveryRepositoryResult;
-const CreateVulnerabilityDiscoveryRepositoryResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateVulnerabilityDiscoveryRepositoryResponse>;
-
 export type CreateVulnerabilityDiscoveryScanRequestReposList = Array<string>;
-const CreateVulnerabilityDiscoveryScanRequestReposList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateVulnerabilityDiscoveryScanRequestReposList>;
-
 export type CreateVulnerabilityDiscoveryScanRequestRepoHostsValueList = Array<string>;
-const CreateVulnerabilityDiscoveryScanRequestRepoHostsValueList =
-  CreateVulnerabilityDiscoveryScanRequestReposList as any as S.Schema<CreateVulnerabilityDiscoveryScanRequestRepoHostsValueList>;
-
 export type CreateVulnerabilityDiscoveryScanRequestRepoHostsMap = {
   [key: string]: CreateVulnerabilityDiscoveryScanRequestRepoHostsValueList | undefined;
 };
-const CreateVulnerabilityDiscoveryScanRequestRepoHostsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateVulnerabilityDiscoveryScanRequestRepoHostsMap>;
-
 export interface CreateVulnerabilityDiscoveryScanRequestTelemetryWindow {
   end: string;
   start: string;
 }
-const CreateVulnerabilityDiscoveryScanRequestTelemetryWindow = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateVulnerabilityDiscoveryScanRequestTelemetryWindow>;
-
 export interface CreateVulnerabilityDiscoveryScanRequest {
   accountId: string;
   idempotencyKey?: string;
@@ -138,34 +101,23 @@ export interface CreateVulnerabilityDiscoveryScanRequest {
   /** UTC ISO-8601 interval. Start is inclusive, end is exclusive, and the interval must be positive and at most seven days. */
   telemetryWindow?: CreateVulnerabilityDiscoveryScanRequestTelemetryWindow;
 }
-const CreateVulnerabilityDiscoveryScanRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateVulnerabilityDiscoveryScanRequest>;
-
 export type CreateVulnerabilityDiscoveryScanResponsePhase =
   | "provisioning"
   | "indexing"
   | "analyzing"
   | "reporting"
   | "finalizing";
-const CreateVulnerabilityDiscoveryScanResponsePhase = S.String;
-
 export type CreateVulnerabilityDiscoveryScanResponseRepositoriesItemPhase =
   | "provisioning"
   | "indexing"
   | "analyzing"
   | "reporting"
   | "finalizing";
-const CreateVulnerabilityDiscoveryScanResponseRepositoriesItemPhase = S.String;
-
 export type CreateVulnerabilityDiscoveryScanResponseRepositoriesItemReportStatus =
   | "not_ready"
   | "pending_review"
   | "published"
   | "withdrawn";
-const CreateVulnerabilityDiscoveryScanResponseRepositoriesItemReportStatus = S.String;
-
 export type CreateVulnerabilityDiscoveryScanResponseRepositoriesItemStatus =
   | "requested"
   | "accepted"
@@ -174,8 +126,6 @@ export type CreateVulnerabilityDiscoveryScanResponseRepositoriesItemStatus =
   | "failed"
   | "rejected"
   | "cancelled";
-const CreateVulnerabilityDiscoveryScanResponseRepositoriesItemStatus = S.String;
-
 export interface CreateVulnerabilityDiscoveryScanResponseRepositoriesItem {
   id: string;
   name: string;
@@ -183,18 +133,8 @@ export interface CreateVulnerabilityDiscoveryScanResponseRepositoriesItem {
   reportStatus: CreateVulnerabilityDiscoveryScanResponseRepositoriesItemReportStatus;
   status: CreateVulnerabilityDiscoveryScanResponseRepositoriesItemStatus;
 }
-const CreateVulnerabilityDiscoveryScanResponseRepositoriesItem = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateVulnerabilityDiscoveryScanResponseRepositoriesItem>;
-
 export type CreateVulnerabilityDiscoveryScanResponseRepositoriesList =
   Array<CreateVulnerabilityDiscoveryScanResponseRepositoriesItem>;
-const CreateVulnerabilityDiscoveryScanResponseRepositoriesList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateVulnerabilityDiscoveryScanResponseRepositoriesList>;
-
 export type CreateVulnerabilityDiscoveryScanResponseStatus =
   | "requested"
   | "accepted"
@@ -203,8 +143,6 @@ export type CreateVulnerabilityDiscoveryScanResponseStatus =
   | "failed"
   | "rejected"
   | "cancelled";
-const CreateVulnerabilityDiscoveryScanResponseStatus = S.String;
-
 export type CreateVulnerabilityDiscoveryScanResponseTelemetryWindow =
   CreateVulnerabilityDiscoveryScanRequestTelemetryWindow;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -220,136 +158,67 @@ export interface CreateVulnerabilityDiscoveryScanResponse {
   /** UTC ISO-8601 interval. Start is inclusive, end is exclusive, and the interval must be positive and at most seven days. */
   telemetryWindow?: CreateVulnerabilityDiscoveryScanRequestTelemetryWindow | null;
 }
-const CreateVulnerabilityDiscoveryScanResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateVulnerabilityDiscoveryScanResponse>;
-
 export interface GetVulnerabilityDiscoveryReportRequest {
   accountId: string;
   repoId: string;
   scanId: string;
 }
-const GetVulnerabilityDiscoveryReportRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportRequest>;
-
 export interface GetVulnerabilityDiscoveryReportResponsePublication {
   publishedAt: string;
   revisionId: string;
   version: number;
 }
-const GetVulnerabilityDiscoveryReportResponsePublication = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponsePublication>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList = Array<string>;
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    5,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportFindingsItemLocation {
   file: string;
   line: number;
   route: string;
 }
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemLocation = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItemLocation>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportFindingsItemReachabilityItem {
   consumer: string;
   reachable: boolean;
   via: string;
 }
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemReachabilityItem =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    7,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItemReachabilityItem>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemReachabilityList =
   Array<GetVulnerabilityDiscoveryReportResponseReportFindingsItemReachabilityItem>;
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemReachabilityList =
-  /*@__PURE__*/ __L.at(
-    __c2,
-    0,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItemReachabilityList>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportFindingsItemRemediation {
   codeChanges: string;
   strategy: string;
 }
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemRemediation = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItemRemediation>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemSeverity =
   | "critical"
   | "high"
   | "medium"
   | "low"
   | "info";
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemSeverity = S.String;
-
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetryReferencesList =
   Array<string>;
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetryReferencesList =
-  GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetryReferencesList>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetryState =
   | "no_route"
   | "no_telemetry"
   | "no_match"
   | "matched";
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetryState = S.String;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetry {
   references: GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetryReferencesList;
   state: GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetryState;
 }
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetry = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetry>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportFindingsItemTraceItem {
   line: number;
   path: string;
   scope: string;
   why: string;
 }
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemTraceItem = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItemTraceItem>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemTraceList =
   Array<GetVulnerabilityDiscoveryReportResponseReportFindingsItemTraceItem>;
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemTraceList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItemTraceList>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesBroadAction =
   | "block"
   | "managed_challenge"
   | "js_challenge"
   | "log";
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesBroadAction = S.String;
-
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesBroadConfidence =
   | "low"
   | "medium"
   | "high";
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesBroadConfidence = S.String;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesBroad {
   action: GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesBroadAction;
   confidence: GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesBroadConfidence;
@@ -359,25 +228,15 @@ export interface GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRul
   name: string;
   rationale: string;
 }
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesBroad = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesBroad>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesTargetedAction =
   | "block"
   | "managed_challenge"
   | "js_challenge"
   | "log";
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesTargetedAction = S.String;
-
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesTargetedConfidence =
   | "low"
   | "medium"
   | "high";
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesTargetedConfidence =
-  S.String;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesTargeted {
   action: GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesTargetedAction;
   confidence: GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesTargetedConfidence;
@@ -387,62 +246,33 @@ export interface GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRul
   name: string;
   rationale: string;
 }
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesTargeted =
-  /*@__PURE__*/ __L.at(
-    __c2,
-    6,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesTargeted>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRules {
   broad: GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesBroad;
   targeted: GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesTargeted;
 }
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRules = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRules>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemAttackerPosition =
   | "external"
   | "authenticated"
   | "internal"
   | "post_compromise";
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemAttackerPosition = S.String;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem {
   title: string;
   url: string;
 }
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    0,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksList =
   Array<GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem>;
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksList =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    1,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksList>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemProofMethod =
   | "structural"
   | "experimental"
   | "acquired_source"
   | "public_knowledge"
   | "team_question";
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemProofMethod = S.String;
-
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsItemProofState =
   | "closed"
   | "pending_source"
   | "pending_public"
   | "pending_experiment"
   | "pending_team";
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItemProofState = S.String;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportFindingsItem {
   id: string;
   conditions: GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList;
@@ -469,26 +299,14 @@ export interface GetVulnerabilityDiscoveryReportResponseReportFindingsItem {
   /** Current proof lifecycle state. Optional on legacy report revisions. */
   proofState?: GetVulnerabilityDiscoveryReportResponseReportFindingsItemProofState | null;
 }
-const GetVulnerabilityDiscoveryReportResponseReportFindingsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsItem>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportFindingsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportFindingsItem>;
-const GetVulnerabilityDiscoveryReportResponseReportFindingsList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportFindingsList>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportOverallSeverity =
   | "critical"
   | "high"
   | "medium"
   | "low"
   | "info";
-const GetVulnerabilityDiscoveryReportResponseReportOverallSeverity = S.String;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsItem {
   id: string;
   hits: number;
@@ -496,20 +314,8 @@ export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttp
   path: string;
   status: number;
 }
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsItem =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    4,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsItem>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsItem>;
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsList =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    5,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsList>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsItem {
   id: string;
   hits: number;
@@ -517,40 +323,18 @@ export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttp
   path: string;
   topStatus: number;
 }
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsItem =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    6,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsItem>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsItem>;
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsList =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    7,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsList>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttp {
   errorPaths: GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsList;
   hotPaths: GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsList;
   requestVolume: number;
 }
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttp = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttp>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportTrafficContextTargetHostsList =
   Array<string>;
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextTargetHostsList =
-  GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextTargetHostsList>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportTrafficContextTargetKind =
   | "worker"
   | "origin";
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextTargetKind = S.String;
-
 export type GetVulnerabilityDiscoveryReportResponseReportTrafficContextTargetTelemetryWindow =
   CreateVulnerabilityDiscoveryScanRequestTelemetryWindow;
 export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextTarget {
@@ -559,31 +343,14 @@ export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextTarg
   /** UTC ISO-8601 interval. Start is inclusive, end is exclusive, and the interval must be positive and at most seven days. */
   telemetryWindow?: CreateVulnerabilityDiscoveryScanRequestTelemetryWindow | null;
 }
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextTarget = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextTarget>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItemPathsItem {
   id: string;
   hitVolume: number;
   host: string;
   path: string;
 }
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItemPathsItem =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    2,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItemPathsItem>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItemPathsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItemPathsItem>;
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItemPathsList =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    3,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItemPathsList>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItem {
   id: string;
   hitVolume: number;
@@ -591,58 +358,23 @@ export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafR
   ruleId: string;
   ruleVersion: number;
 }
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItem =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    4,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItem>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItem>;
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesList =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    5,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesList>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextWaf {
   hitVolume: number;
   rules: GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesList;
 }
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextWaf = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWaf>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemRiskLabelsItem {
   description: string;
   name: string;
 }
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemRiskLabelsItem =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    7,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemRiskLabelsItem>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemRiskLabelsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemRiskLabelsItem>;
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemRiskLabelsList =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    0,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemRiskLabelsList>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemPerformance {
   avgOriginLatencyMs: number;
   errorRate: number;
   estimatedRequests: number;
 }
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemPerformance =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    1,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemPerformance>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItem {
   id: string;
   endpoint: string;
@@ -651,20 +383,8 @@ export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebA
   riskLabels: GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemRiskLabelsList;
   performance?: GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemPerformance | null;
 }
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItem =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    2,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItem>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItem>;
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsList =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    3,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsList>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsItem {
   id: string;
   avgOriginLatencyMs: number;
@@ -673,73 +393,31 @@ export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebA
   host: string;
   path: string;
 }
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsItem =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    4,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsItem>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsItem>;
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsList =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    5,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsList>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesItem {
   description: string;
   name: string;
   operationCount: number;
 }
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesItem =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    6,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesItem>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesItem>;
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesList =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    7,
-  ) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesList>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssets {
   operations: GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsList;
   paths: GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsList;
   riskTypes: GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesList;
 }
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssets = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssets>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReportTrafficContext {
   http: GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttp;
   target: GetVulnerabilityDiscoveryReportResponseReportTrafficContextTarget;
   waf: GetVulnerabilityDiscoveryReportResponseReportTrafficContextWaf;
   webAssets: GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssets;
 }
-const GetVulnerabilityDiscoveryReportResponseReportTrafficContext = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportTrafficContext>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportExternalLinksItem =
   GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem;
 export type GetVulnerabilityDiscoveryReportResponseReportExternalLinksList =
   Array<GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem>;
-const GetVulnerabilityDiscoveryReportResponseReportExternalLinksList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportExternalLinksList>;
-
 export type GetVulnerabilityDiscoveryReportResponseReportLimitationsList = Array<string>;
-const GetVulnerabilityDiscoveryReportResponseReportLimitationsList =
-  CreateVulnerabilityDiscoveryScanRequestReposList as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReportLimitationsList>;
-
 export interface GetVulnerabilityDiscoveryReportResponseReport {
   findings: GetVulnerabilityDiscoveryReportResponseReportFindingsList;
   overallSeverity: GetVulnerabilityDiscoveryReportResponseReportOverallSeverity;
@@ -750,11 +428,6 @@ export interface GetVulnerabilityDiscoveryReportResponseReport {
   externalLinks?: GetVulnerabilityDiscoveryReportResponseReportExternalLinksList | null;
   limitations?: GetVulnerabilityDiscoveryReportResponseReportLimitationsList | null;
 }
-const GetVulnerabilityDiscoveryReportResponseReport = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponseReport>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetVulnerabilityDiscoveryReportResponse {
   publication: GetVulnerabilityDiscoveryReportResponsePublication;
@@ -762,32 +435,18 @@ export interface GetVulnerabilityDiscoveryReportResponse {
   repositoryId: string;
   scanId: string;
 }
-const GetVulnerabilityDiscoveryReportResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetVulnerabilityDiscoveryReportResponse>;
-
 export interface GetVulnerabilityDiscoveryRepositoryRequest {
   accountId: string;
   repoId: string;
   scanCursor?: string;
   scanLimit?: number;
 }
-const GetVulnerabilityDiscoveryRepositoryRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetVulnerabilityDiscoveryRepositoryRequest>;
-
 export type GetVulnerabilityDiscoveryRepositoryResponseRepositoryReadiness =
   | "awaiting_source"
   | "processing"
   | "ready"
   | "failed";
-const GetVulnerabilityDiscoveryRepositoryResponseRepositoryReadiness = S.String;
-
 export type GetVulnerabilityDiscoveryRepositoryResponseRepositorySource = "upload" | "worker";
-const GetVulnerabilityDiscoveryRepositoryResponseRepositorySource = S.String;
-
 export type GetVulnerabilityDiscoveryRepositoryResponseRepositoryImportErrorCode =
   "worker_import_failed";
 export type GetVulnerabilityDiscoveryRepositoryResponseRepositoryImportErrorMessage =
@@ -796,9 +455,6 @@ export interface GetVulnerabilityDiscoveryRepositoryResponseRepositoryImportErro
   code: GetVulnerabilityDiscoveryRepositoryResponseRepositoryImportErrorCode;
   message: GetVulnerabilityDiscoveryRepositoryResponseRepositoryImportErrorMessage;
 }
-const GetVulnerabilityDiscoveryRepositoryResponseRepositoryImportError =
-  CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryImportError as any as S.Schema<GetVulnerabilityDiscoveryRepositoryResponseRepositoryImportError>;
-
 export interface GetVulnerabilityDiscoveryRepositoryResponseRepository {
   id: string;
   createdAt: string;
@@ -807,34 +463,23 @@ export interface GetVulnerabilityDiscoveryRepositoryResponseRepository {
   source: GetVulnerabilityDiscoveryRepositoryResponseRepositorySource;
   importError?: GetVulnerabilityDiscoveryRepositoryResponseRepositoryImportError | null;
 }
-const GetVulnerabilityDiscoveryRepositoryResponseRepository = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetVulnerabilityDiscoveryRepositoryResponseRepository>;
-
 export type GetVulnerabilityDiscoveryRepositoryResponseScansItemPhase =
   | "provisioning"
   | "indexing"
   | "analyzing"
   | "reporting"
   | "finalizing";
-const GetVulnerabilityDiscoveryRepositoryResponseScansItemPhase = S.String;
-
 export type GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItemPhase =
   | "provisioning"
   | "indexing"
   | "analyzing"
   | "reporting"
   | "finalizing";
-const GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItemPhase = S.String;
-
 export type GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItemReportStatus =
   | "not_ready"
   | "pending_review"
   | "published"
   | "withdrawn";
-const GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItemReportStatus = S.String;
-
 export type GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItemStatus =
   | "requested"
   | "accepted"
@@ -843,8 +488,6 @@ export type GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItem
   | "failed"
   | "rejected"
   | "cancelled";
-const GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItemStatus = S.String;
-
 export interface GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItem {
   id: string;
   name: string;
@@ -852,18 +495,8 @@ export interface GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositorie
   reportStatus: GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItemReportStatus;
   status: GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItemStatus;
 }
-const GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItem = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItem>;
-
 export type GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesList =
   Array<GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItem>;
-const GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesList>;
-
 export type GetVulnerabilityDiscoveryRepositoryResponseScansItemStatus =
   | "requested"
   | "accepted"
@@ -872,8 +505,6 @@ export type GetVulnerabilityDiscoveryRepositoryResponseScansItemStatus =
   | "failed"
   | "rejected"
   | "cancelled";
-const GetVulnerabilityDiscoveryRepositoryResponseScansItemStatus = S.String;
-
 export type GetVulnerabilityDiscoveryRepositoryResponseScansItemTelemetryWindow =
   CreateVulnerabilityDiscoveryScanRequestTelemetryWindow;
 export interface GetVulnerabilityDiscoveryRepositoryResponseScansItem {
@@ -888,60 +519,34 @@ export interface GetVulnerabilityDiscoveryRepositoryResponseScansItem {
   /** UTC ISO-8601 interval. Start is inclusive, end is exclusive, and the interval must be positive and at most seven days. */
   telemetryWindow?: CreateVulnerabilityDiscoveryScanRequestTelemetryWindow | null;
 }
-const GetVulnerabilityDiscoveryRepositoryResponseScansItem = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetVulnerabilityDiscoveryRepositoryResponseScansItem>;
-
 export type GetVulnerabilityDiscoveryRepositoryResponseScansList =
   Array<GetVulnerabilityDiscoveryRepositoryResponseScansItem>;
-const GetVulnerabilityDiscoveryRepositoryResponseScansList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetVulnerabilityDiscoveryRepositoryResponseScansList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetVulnerabilityDiscoveryRepositoryResponse {
   repository: GetVulnerabilityDiscoveryRepositoryResponseRepository;
   scans: GetVulnerabilityDiscoveryRepositoryResponseScansList;
 }
-const GetVulnerabilityDiscoveryRepositoryResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetVulnerabilityDiscoveryRepositoryResponse>;
-
 export interface GetVulnerabilityDiscoveryScanRequest {
   accountId: string;
   scanId: string;
 }
-const GetVulnerabilityDiscoveryScanRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetVulnerabilityDiscoveryScanRequest>;
-
 export type GetVulnerabilityDiscoveryScanResponsePhase =
   | "provisioning"
   | "indexing"
   | "analyzing"
   | "reporting"
   | "finalizing";
-const GetVulnerabilityDiscoveryScanResponsePhase = S.String;
-
 export type GetVulnerabilityDiscoveryScanResponseRepositoriesItemPhase =
   | "provisioning"
   | "indexing"
   | "analyzing"
   | "reporting"
   | "finalizing";
-const GetVulnerabilityDiscoveryScanResponseRepositoriesItemPhase = S.String;
-
 export type GetVulnerabilityDiscoveryScanResponseRepositoriesItemReportStatus =
   | "not_ready"
   | "pending_review"
   | "published"
   | "withdrawn";
-const GetVulnerabilityDiscoveryScanResponseRepositoriesItemReportStatus = S.String;
-
 export type GetVulnerabilityDiscoveryScanResponseRepositoriesItemStatus =
   | "requested"
   | "accepted"
@@ -950,8 +555,6 @@ export type GetVulnerabilityDiscoveryScanResponseRepositoriesItemStatus =
   | "failed"
   | "rejected"
   | "cancelled";
-const GetVulnerabilityDiscoveryScanResponseRepositoriesItemStatus = S.String;
-
 export interface GetVulnerabilityDiscoveryScanResponseRepositoriesItem {
   id: string;
   name: string;
@@ -959,18 +562,8 @@ export interface GetVulnerabilityDiscoveryScanResponseRepositoriesItem {
   reportStatus: GetVulnerabilityDiscoveryScanResponseRepositoriesItemReportStatus;
   status: GetVulnerabilityDiscoveryScanResponseRepositoriesItemStatus;
 }
-const GetVulnerabilityDiscoveryScanResponseRepositoriesItem = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GetVulnerabilityDiscoveryScanResponseRepositoriesItem>;
-
 export type GetVulnerabilityDiscoveryScanResponseRepositoriesList =
   Array<GetVulnerabilityDiscoveryScanResponseRepositoriesItem>;
-const GetVulnerabilityDiscoveryScanResponseRepositoriesList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GetVulnerabilityDiscoveryScanResponseRepositoriesList>;
-
 export type GetVulnerabilityDiscoveryScanResponseStatus =
   | "requested"
   | "accepted"
@@ -979,8 +572,6 @@ export type GetVulnerabilityDiscoveryScanResponseStatus =
   | "failed"
   | "rejected"
   | "cancelled";
-const GetVulnerabilityDiscoveryScanResponseStatus = S.String;
-
 export type GetVulnerabilityDiscoveryScanResponseTelemetryWindow =
   CreateVulnerabilityDiscoveryScanRequestTelemetryWindow;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -996,48 +587,25 @@ export interface GetVulnerabilityDiscoveryScanResponse {
   /** UTC ISO-8601 interval. Start is inclusive, end is exclusive, and the interval must be positive and at most seven days. */
   telemetryWindow?: CreateVulnerabilityDiscoveryScanRequestTelemetryWindow | null;
 }
-const GetVulnerabilityDiscoveryScanResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GetVulnerabilityDiscoveryScanResponse>;
-
 export interface ListVulnerabilityDiscoveryRepositoriesRequest {
   accountId: string;
   cursor?: string;
   limit?: number;
 }
-const ListVulnerabilityDiscoveryRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListVulnerabilityDiscoveryRepositoriesRequest>;
-
 export type ListVulnerabilityDiscoveryRepositoriesResultItemReadiness =
   | "awaiting_source"
   | "processing"
   | "ready"
   | "failed";
-const ListVulnerabilityDiscoveryRepositoriesResultItemReadiness = S.String;
-
 export type ListVulnerabilityDiscoveryRepositoriesResultItemSource = "upload" | "worker";
-const ListVulnerabilityDiscoveryRepositoriesResultItemSource = S.String;
-
 export type ListVulnerabilityDiscoveryRepositoriesResultItemImportErrorCode =
   "worker_import_failed";
-const ListVulnerabilityDiscoveryRepositoriesResultItemImportErrorCode = S.String;
-
 export type ListVulnerabilityDiscoveryRepositoriesResultItemImportErrorMessage =
   "Worker import failed.";
-const ListVulnerabilityDiscoveryRepositoriesResultItemImportErrorMessage = S.String;
-
 export interface ListVulnerabilityDiscoveryRepositoriesResultItemImportError {
   code: ListVulnerabilityDiscoveryRepositoriesResultItemImportErrorCode;
   message: ListVulnerabilityDiscoveryRepositoriesResultItemImportErrorMessage;
 }
-const ListVulnerabilityDiscoveryRepositoriesResultItemImportError = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ListVulnerabilityDiscoveryRepositoriesResultItemImportError>;
-
 export interface ListVulnerabilityDiscoveryRepositoriesResultItem {
   id: string;
   createdAt: string;
@@ -1046,25 +614,10 @@ export interface ListVulnerabilityDiscoveryRepositoriesResultItem {
   source: ListVulnerabilityDiscoveryRepositoriesResultItemSource;
   importError?: ListVulnerabilityDiscoveryRepositoriesResultItemImportError | null;
 }
-const ListVulnerabilityDiscoveryRepositoriesResultItem = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListVulnerabilityDiscoveryRepositoriesResultItem>;
-
 export type ListVulnerabilityDiscoveryRepositoriesResultList =
   Array<ListVulnerabilityDiscoveryRepositoriesResultItem>;
-const ListVulnerabilityDiscoveryRepositoriesResultList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListVulnerabilityDiscoveryRepositoriesResultList>;
-
 export type ListVulnerabilityDiscoveryRepositoriesResponse =
   ListVulnerabilityDiscoveryRepositoriesResultList;
-const ListVulnerabilityDiscoveryRepositoriesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListVulnerabilityDiscoveryRepositoriesResponse>;
-
 export type ListVulnerabilityDiscoveryScansRequestStatusCase0 =
   | "requested"
   | "accepted"
@@ -1088,8 +641,6 @@ export type ListVulnerabilityDiscoveryScansRequestStatus =
   | ListVulnerabilityDiscoveryScansRequestStatusCase0
   | (string & {})
   | ListVulnerabilityDiscoveryScansRequestStatusCase1List;
-const ListVulnerabilityDiscoveryScansRequestStatus = /*@__PURE__*/ __L.at(__c8, 5);
-
 export interface ListVulnerabilityDiscoveryScansRequest {
   accountId: string;
   cursor?: string;
@@ -1098,11 +649,6 @@ export interface ListVulnerabilityDiscoveryScansRequest {
   /** Repeat parameter or provide comma-separated values. */
   status?: ListVulnerabilityDiscoveryScansRequestStatus;
 }
-const ListVulnerabilityDiscoveryScansRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListVulnerabilityDiscoveryScansRequest>;
-
 export type ListVulnerabilityDiscoveryScansResultItemPhase =
   | "provisioning"
   | "indexing"
@@ -1159,31 +705,13 @@ export interface ListVulnerabilityDiscoveryScansResultItem {
   /** UTC ISO-8601 interval. Start is inclusive, end is exclusive, and the interval must be positive and at most seven days. */
   telemetryWindow?: CreateVulnerabilityDiscoveryScanRequestTelemetryWindow | null;
 }
-const ListVulnerabilityDiscoveryScansResultItem =
-  CreateVulnerabilityDiscoveryScanResponse as any as S.Schema<ListVulnerabilityDiscoveryScansResultItem>;
-
 export type ListVulnerabilityDiscoveryScansResultList =
   Array<ListVulnerabilityDiscoveryScansResultItem>;
-const ListVulnerabilityDiscoveryScansResultList = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListVulnerabilityDiscoveryScansResultList>;
-
 export type ListVulnerabilityDiscoveryScansResponse = ListVulnerabilityDiscoveryScansResultList;
-const ListVulnerabilityDiscoveryScansResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListVulnerabilityDiscoveryScansResponse>;
-
 export interface VulnerabilityDiscoveryScansGetReportRequest {
   accountId: string;
   scanId: string;
 }
-const VulnerabilityDiscoveryScansGetReportRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<VulnerabilityDiscoveryScansGetReportRequest>;
-
 export type VulnerabilityDiscoveryScansGetReportResponsePublication =
   GetVulnerabilityDiscoveryReportResponsePublication;
 export type VulnerabilityDiscoveryScansGetReportResponseReportOverallSeverity =
@@ -1192,22 +720,14 @@ export type VulnerabilityDiscoveryScansGetReportResponseReportOverallSeverity =
   | "medium"
   | "low"
   | "info";
-const VulnerabilityDiscoveryScansGetReportResponseReportOverallSeverity = S.String;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemConditionsList =
   Array<string>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemConditionsList =
-  GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemConditionsList>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemLocation =
   GetVulnerabilityDiscoveryReportResponseReportFindingsItemLocation;
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemReachabilityItem =
   GetVulnerabilityDiscoveryReportResponseReportFindingsItemReachabilityItem;
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemReachabilityList =
   Array<GetVulnerabilityDiscoveryReportResponseReportFindingsItemReachabilityItem>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemReachabilityList =
-  GetVulnerabilityDiscoveryReportResponseReportFindingsItemReachabilityList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemReachabilityList>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemRemediation =
   GetVulnerabilityDiscoveryReportResponseReportFindingsItemRemediation;
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemSeverity =
@@ -1216,54 +736,30 @@ export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFi
   | "medium"
   | "low"
   | "info";
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemSeverity =
-  S.String;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetryReferencesList =
   Array<string>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetryReferencesList =
-  GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetryReferencesList>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetryState =
   | "no_route"
   | "no_telemetry"
   | "no_match"
   | "matched";
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetryState =
-  S.String;
-
 export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetry {
   references: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetryReferencesList;
   state: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetryState;
 }
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetry =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    2,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetry>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTraceItem =
   GetVulnerabilityDiscoveryReportResponseReportFindingsItemTraceItem;
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTraceList =
   Array<GetVulnerabilityDiscoveryReportResponseReportFindingsItemTraceItem>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTraceList =
-  GetVulnerabilityDiscoveryReportResponseReportFindingsItemTraceList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTraceList>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesBroadAction =
   | "block"
   | "managed_challenge"
   | "js_challenge"
   | "log";
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesBroadAction =
-  S.String;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesBroadConfidence =
   | "low"
   | "medium"
   | "high";
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesBroadConfidence =
-  S.String;
-
 export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesBroad {
   action: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesBroadAction;
   confidence: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesBroadConfidence;
@@ -1273,12 +769,6 @@ export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesI
   name: string;
   rationale: string;
 }
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesBroad =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    3,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesBroad>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesTargetedAction =
   | "block"
   | "managed_challenge"
@@ -1297,52 +787,31 @@ export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesI
   name: string;
   rationale: string;
 }
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesTargeted =
-  VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesBroad as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesTargeted>;
-
 export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRules {
   broad: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesBroad;
   targeted: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesTargeted;
 }
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRules =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    4,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRules>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemAttackerPosition =
   | "external"
   | "authenticated"
   | "internal"
   | "post_compromise";
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemAttackerPosition =
-  S.String;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemExternalLinksItem =
   GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem;
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemExternalLinksList =
   Array<GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemExternalLinksList =
-  GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemExternalLinksList>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemProofMethod =
   | "structural"
   | "experimental"
   | "acquired_source"
   | "public_knowledge"
   | "team_question";
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemProofMethod =
-  S.String;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemProofState =
   | "closed"
   | "pending_source"
   | "pending_public"
   | "pending_experiment"
   | "pending_team";
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemProofState =
-  S.String;
-
 export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItem {
   id: string;
   conditions: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemConditionsList;
@@ -1369,64 +838,32 @@ export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesI
   /** Current proof lifecycle state. Optional on legacy report revisions. */
   proofState?: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemProofState | null;
 }
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItem =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    5,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItem>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsList =
   Array<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItem>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsList =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    6,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsList>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemOverallSeverity =
   | "critical"
   | "high"
   | "medium"
   | "low"
   | "info";
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemOverallSeverity = S.String;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpErrorPathsItem =
   GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsItem;
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpErrorPathsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsItem>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpErrorPathsList =
-  GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpErrorPathsList>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpHotPathsItem =
   GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsItem;
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpHotPathsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsItem>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpHotPathsList =
-  GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpHotPathsList>;
-
 export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttp {
   errorPaths: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpErrorPathsList;
   hotPaths: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpHotPathsList;
   requestVolume: number;
 }
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttp =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    7,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttp>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTargetHostsList =
   Array<string>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTargetHostsList =
-  GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTargetHostsList>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTargetKind =
   | "worker"
   | "origin";
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTargetKind =
-  S.String;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTargetTelemetryWindow =
   CreateVulnerabilityDiscoveryScanRequestTelemetryWindow;
 export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTarget {
@@ -1435,19 +872,10 @@ export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesI
   /** UTC ISO-8601 interval. Start is inclusive, end is exclusive, and the interval must be positive and at most seven days. */
   telemetryWindow?: CreateVulnerabilityDiscoveryScanRequestTelemetryWindow | null;
 }
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTarget =
-  /*@__PURE__*/ __L.at(
-    __c10,
-    0,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTarget>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesItemPathsItem =
   GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItemPathsItem;
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesItemPathsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItemPathsItem>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesItemPathsList =
-  GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItemPathsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesItemPathsList>;
-
 export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesItem {
   id: string;
   hitVolume: number;
@@ -1455,30 +883,12 @@ export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesI
   ruleId: string;
   ruleVersion: number;
 }
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesItem =
-  /*@__PURE__*/ __L.at(
-    __c10,
-    1,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesItem>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesList =
   Array<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesItem>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesList =
-  /*@__PURE__*/ __L.at(
-    __c10,
-    2,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesList>;
-
 export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWaf {
   hitVolume: number;
   rules: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesList;
 }
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWaf =
-  /*@__PURE__*/ __L.at(
-    __c10,
-    3,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWaf>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsItemRiskLabelsItem =
   GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemRiskLabelsItem;
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsItemRiskLabelsList =
@@ -1495,58 +905,31 @@ export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesI
 }
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsList =
   Array<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsItem>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsList =
-  GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsList>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsPathsItem =
   GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsItem;
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsPathsList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsItem>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsPathsList =
-  GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsPathsList>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsRiskTypesItem =
   GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesItem;
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsRiskTypesList =
   Array<GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesItem>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsRiskTypesList =
-  GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsRiskTypesList>;
-
 export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssets {
   operations: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsList;
   paths: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsPathsList;
   riskTypes: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsRiskTypesList;
 }
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssets =
-  /*@__PURE__*/ __L.at(
-    __c10,
-    4,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssets>;
-
 export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContext {
   http: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttp;
   target: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTarget;
   waf: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWaf;
   webAssets: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssets;
 }
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContext =
-  /*@__PURE__*/ __L.at(
-    __c10,
-    5,
-  ) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContext>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemExternalLinksItem =
   GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem;
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemExternalLinksList =
   Array<GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemExternalLinksList =
-  GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemExternalLinksList>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemLimitationsList =
   Array<string>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemLimitationsList =
-  GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemLimitationsList>;
-
 export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItem {
   findings: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsList;
   overallSeverity: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemOverallSeverity;
@@ -1557,21 +940,9 @@ export interface VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesI
   externalLinks?: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemExternalLinksList | null;
   limitations?: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemLimitationsList | null;
 }
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItem = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItem>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesList =
   Array<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItem>;
-const VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesList>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseReportSchemaVersion = 2;
-const VulnerabilityDiscoveryScansGetReportResponseReportSchemaVersion = S.Number;
-
 export interface VulnerabilityDiscoveryScansGetReportResponseReport {
   executiveSummary: string;
   /** Revision requests must echo the existing generation timestamp unchanged. */
@@ -1581,18 +952,11 @@ export interface VulnerabilityDiscoveryScansGetReportResponseReport {
   schemaVersion: VulnerabilityDiscoveryScansGetReportResponseReportSchemaVersion;
   title: string;
 }
-const VulnerabilityDiscoveryScansGetReportResponseReport = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseReport>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseRepositoriesItemReportStatus =
   | "not_ready"
   | "pending_review"
   | "published"
   | "withdrawn";
-const VulnerabilityDiscoveryScansGetReportResponseRepositoriesItemReportStatus = S.String;
-
 export type VulnerabilityDiscoveryScansGetReportResponseRepositoriesItemScanStatus =
   | "requested"
   | "accepted"
@@ -1601,26 +965,14 @@ export type VulnerabilityDiscoveryScansGetReportResponseRepositoriesItemScanStat
   | "failed"
   | "rejected"
   | "cancelled";
-const VulnerabilityDiscoveryScansGetReportResponseRepositoriesItemScanStatus = S.String;
-
 export interface VulnerabilityDiscoveryScansGetReportResponseRepositoriesItem {
   id: string;
   name: string;
   reportStatus: VulnerabilityDiscoveryScansGetReportResponseRepositoriesItemReportStatus;
   scanStatus: VulnerabilityDiscoveryScansGetReportResponseRepositoriesItemScanStatus;
 }
-const VulnerabilityDiscoveryScansGetReportResponseRepositoriesItem = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseRepositoriesItem>;
-
 export type VulnerabilityDiscoveryScansGetReportResponseRepositoriesList =
   Array<VulnerabilityDiscoveryScansGetReportResponseRepositoriesItem>;
-const VulnerabilityDiscoveryScansGetReportResponseRepositoriesList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponseRepositoriesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface VulnerabilityDiscoveryScansGetReportResponse {
   publication: GetVulnerabilityDiscoveryReportResponsePublication;
@@ -1628,11 +980,6 @@ export interface VulnerabilityDiscoveryScansGetReportResponse {
   repositories: VulnerabilityDiscoveryScansGetReportResponseRepositoriesList;
   scanId: string;
 }
-const VulnerabilityDiscoveryScansGetReportResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponse>;
-
 export type CreateVulnerabilityDiscoveryRepositoryError = CloudflareOpError;
 /** Creates an upload repository or reserves an asynchronous deployed Worker import by name. Worker imports require Idempotency-Key. */
 export const createVulnerabilityDiscoveryRepository: API.OperationMethod<
@@ -1641,8 +988,8 @@ export const createVulnerabilityDiscoveryRepository: API.OperationMethod<
   CreateVulnerabilityDiscoveryRepositoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVulnerabilityDiscoveryRepositoryRequest,
-  output: CreateVulnerabilityDiscoveryRepositoryResponse,
+  input: __S(0) as any as S.Schema<CreateVulnerabilityDiscoveryRepositoryRequest>,
+  output: __S(3) as any as S.Schema<CreateVulnerabilityDiscoveryRepositoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1656,8 +1003,8 @@ export const createVulnerabilityDiscoveryScan: API.OperationMethod<
   CreateVulnerabilityDiscoveryScanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVulnerabilityDiscoveryScanRequest,
-  output: CreateVulnerabilityDiscoveryScanResponse,
+  input: __S(7) as any as S.Schema<CreateVulnerabilityDiscoveryScanRequest>,
+  output: __S(10) as any as S.Schema<CreateVulnerabilityDiscoveryScanResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1671,8 +1018,8 @@ export const getVulnerabilityDiscoveryReport: API.OperationMethod<
   GetVulnerabilityDiscoveryReportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVulnerabilityDiscoveryReportRequest,
-  output: GetVulnerabilityDiscoveryReportResponse,
+  input: __S(11) as any as S.Schema<GetVulnerabilityDiscoveryReportRequest>,
+  output: __S(52) as any as S.Schema<GetVulnerabilityDiscoveryReportResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1686,8 +1033,8 @@ export const getVulnerabilityDiscoveryRepository: API.OperationMethod<
   GetVulnerabilityDiscoveryRepositoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVulnerabilityDiscoveryRepositoryRequest,
-  output: GetVulnerabilityDiscoveryRepositoryResponse,
+  input: __S(53) as any as S.Schema<GetVulnerabilityDiscoveryRepositoryRequest>,
+  output: __S(59) as any as S.Schema<GetVulnerabilityDiscoveryRepositoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1701,8 +1048,8 @@ export const getVulnerabilityDiscoveryScan: API.OperationMethod<
   GetVulnerabilityDiscoveryScanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVulnerabilityDiscoveryScanRequest,
-  output: GetVulnerabilityDiscoveryScanResponse,
+  input: __S(60) as any as S.Schema<GetVulnerabilityDiscoveryScanRequest>,
+  output: __S(63) as any as S.Schema<GetVulnerabilityDiscoveryScanResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1716,8 +1063,8 @@ export const listVulnerabilityDiscoveryRepositories: API.OperationMethod<
   ListVulnerabilityDiscoveryRepositoriesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVulnerabilityDiscoveryRepositoriesRequest,
-  output: ListVulnerabilityDiscoveryRepositoriesResponse,
+  input: __S(64) as any as S.Schema<ListVulnerabilityDiscoveryRepositoriesRequest>,
+  output: __S(68) as any as S.Schema<ListVulnerabilityDiscoveryRepositoriesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1731,8 +1078,8 @@ export const listVulnerabilityDiscoveryScans: API.OperationMethod<
   ListVulnerabilityDiscoveryScansError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVulnerabilityDiscoveryScansRequest,
-  output: ListVulnerabilityDiscoveryScansResponse,
+  input: __S(70) as any as S.Schema<ListVulnerabilityDiscoveryScansRequest>,
+  output: __S(72) as any as S.Schema<ListVulnerabilityDiscoveryScansResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1746,8 +1093,8 @@ export const vulnerabilityDiscoveryScansGetReport: API.OperationMethod<
   VulnerabilityDiscoveryScansGetReportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VulnerabilityDiscoveryScansGetReportRequest,
-  output: VulnerabilityDiscoveryScansGetReportResponse,
+  input: __S(73) as any as S.Schema<VulnerabilityDiscoveryScansGetReportRequest>,
+  output: __S(91) as any as S.Schema<VulnerabilityDiscoveryScansGetReportResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1776,8 +1123,8 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          code: CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryImportErrorCode,
-          message: CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryImportErrorMessage,
+          code: S.String,
+          message: S.String,
         }),
       ).annotate({
         identifier: "CreateVulnerabilityDiscoveryRepositoryResultCase0RepositoryImportError",
@@ -1785,15 +1132,13 @@ function __c0(j: number): any {
     case 2:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([["repository", "upload"], ["repository"]]));
     case 3:
-      return S.suspend(() =>
-        CreateVulnerabilityDiscoveryRepositoryResult.pipe(T.EnvelopePayloadRoot()),
-      ).annotate({
+      return S.suspend(() => __S(2).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "CreateVulnerabilityDiscoveryRepositoryResponse",
       });
     case 4:
       return S.Array(S.String);
     case 5:
-      return S.Record(S.String, CreateVulnerabilityDiscoveryScanRequestRepoHostsValueList);
+      return S.Record(S.String, __S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1808,13 +1153,9 @@ function __c0(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           idempotencyKey: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
-          repos: CreateVulnerabilityDiscoveryScanRequestReposList,
-          repoHosts: S.optional(
-            CreateVulnerabilityDiscoveryScanRequestRepoHostsMap.pipe(T.Body("repo_hosts")),
-          ),
-          telemetryWindow: S.optional(
-            CreateVulnerabilityDiscoveryScanRequestTelemetryWindow.pipe(T.Body("telemetry_window")),
-          ),
+          repos: __S(4),
+          repoHosts: S.optional(__S(5).pipe(T.Body("repo_hosts"))),
+          telemetryWindow: S.optional(__S(6).pipe(T.Body("telemetry_window"))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1834,33 +1175,27 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          phase: CreateVulnerabilityDiscoveryScanResponseRepositoriesItemPhase,
-          reportStatus: CreateVulnerabilityDiscoveryScanResponseRepositoriesItemReportStatus.pipe(
-            T.Body("report_status"),
-          ),
-          status: CreateVulnerabilityDiscoveryScanResponseRepositoriesItemStatus,
+          phase: S.String,
+          reportStatus: S.String.pipe(T.Body("report_status")),
+          status: S.String,
         }),
       ).annotate({
         identifier: "CreateVulnerabilityDiscoveryScanResponseRepositoriesItem",
       });
     case 1:
-      return S.Array(CreateVulnerabilityDiscoveryScanResponseRepositoriesItem);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           completedAt: S.String.pipe(T.Body("completed_at")),
           message: S.String,
-          phase: CreateVulnerabilityDiscoveryScanResponsePhase,
-          repositories: CreateVulnerabilityDiscoveryScanResponseRepositoriesList,
+          phase: S.String,
+          repositories: __S(9),
           startedAt: S.String.pipe(T.Body("started_at")),
-          status: CreateVulnerabilityDiscoveryScanResponseStatus,
+          status: S.String,
           submittedAt: S.String.pipe(T.Body("submitted_at")),
-          telemetryWindow: S.optional(
-            S.NullOr(CreateVulnerabilityDiscoveryScanRequestTelemetryWindow).pipe(
-              T.Body("telemetry_window"),
-            ),
-          ),
+          telemetryWindow: S.optional(S.NullOr(__S(6)).pipe(T.Body("telemetry_window"))),
         }),
       ).annotate({
         identifier: "CreateVulnerabilityDiscoveryScanResponse",
@@ -1918,7 +1253,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetVulnerabilityDiscoveryReportResponseReportFindingsItemReachabilityItem);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1931,9 +1266,8 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          references:
-            GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetryReferencesList,
-          state: GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetryState,
+          references: __S(13),
+          state: S.String,
         }),
       ).annotate({
         identifier: "GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetry",
@@ -1950,13 +1284,12 @@ function __c2(j: number): any {
         identifier: "GetVulnerabilityDiscoveryReportResponseReportFindingsItemTraceItem",
       });
     case 4:
-      return S.Array(GetVulnerabilityDiscoveryReportResponseReportFindingsItemTraceItem);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesBroadAction,
-          confidence:
-            GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesBroadConfidence,
+          action: S.String,
+          confidence: S.String,
           description: S.String,
           expression: S.String,
           falsePositiveRisk: S.String.pipe(T.Body("false_positive_risk")),
@@ -1969,9 +1302,8 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesTargetedAction,
-          confidence:
-            GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesTargetedConfidence,
+          action: S.String,
+          confidence: S.String,
           description: S.String,
           expression: S.String,
           falsePositiveRisk: S.String.pipe(T.Body("false_positive_risk")),
@@ -1984,8 +1316,8 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          broad: GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesBroad,
-          targeted: GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRulesTargeted,
+          broad: __S(21),
+          targeted: __S(22),
         }),
       ).annotate({
         identifier: "GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRules",
@@ -2004,54 +1336,36 @@ function __c3(j: number): any {
         identifier: "GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem",
       });
     case 1:
-      return S.Array(GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          conditions: GetVulnerabilityDiscoveryReportResponseReportFindingsItemConditionsList,
+          conditions: __S(13),
           cwe: S.String,
           impact: S.String,
-          location: GetVulnerabilityDiscoveryReportResponseReportFindingsItemLocation,
-          reachability: GetVulnerabilityDiscoveryReportResponseReportFindingsItemReachabilityList,
-          remediation: GetVulnerabilityDiscoveryReportResponseReportFindingsItemRemediation,
+          location: __S(14),
+          reachability: __S(16),
+          remediation: __S(17),
           rootCause: S.String.pipe(T.Body("root_cause")),
-          severity: GetVulnerabilityDiscoveryReportResponseReportFindingsItemSeverity,
+          severity: S.String,
           severityBasis: S.String.pipe(T.Body("severity_basis")),
           summary: S.String,
-          telemetry: GetVulnerabilityDiscoveryReportResponseReportFindingsItemTelemetry,
+          telemetry: __S(18),
           title: S.String,
-          trace: GetVulnerabilityDiscoveryReportResponseReportFindingsItemTraceList,
-          wafRules: GetVulnerabilityDiscoveryReportResponseReportFindingsItemWafRules.pipe(
-            T.Body("waf_rules"),
-          ),
-          attackerPosition: S.optional(
-            S.NullOr(
-              GetVulnerabilityDiscoveryReportResponseReportFindingsItemAttackerPosition,
-            ).pipe(T.Body("attacker_position")),
-          ),
-          externalLinks: S.optional(
-            S.NullOr(
-              GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksList,
-            ).pipe(T.Body("external_links")),
-          ),
+          trace: __S(20),
+          wafRules: __S(23).pipe(T.Body("waf_rules")),
+          attackerPosition: S.optional(S.NullOr(S.String).pipe(T.Body("attacker_position"))),
+          externalLinks: S.optional(S.NullOr(__S(25)).pipe(T.Body("external_links"))),
           openQuestion: S.optional(S.NullOr(S.String).pipe(T.Body("open_question"))),
-          proofMethod: S.optional(
-            S.NullOr(GetVulnerabilityDiscoveryReportResponseReportFindingsItemProofMethod).pipe(
-              T.Body("proof_method"),
-            ),
-          ),
-          proofState: S.optional(
-            S.NullOr(GetVulnerabilityDiscoveryReportResponseReportFindingsItemProofState).pipe(
-              T.Body("proof_state"),
-            ),
-          ),
+          proofMethod: S.optional(S.NullOr(S.String).pipe(T.Body("proof_method"))),
+          proofState: S.optional(S.NullOr(S.String).pipe(T.Body("proof_state"))),
         }),
       ).annotate({
         identifier: "GetVulnerabilityDiscoveryReportResponseReportFindingsItem",
       });
     case 3:
-      return S.Array(GetVulnerabilityDiscoveryReportResponseReportFindingsItem);
+      return S.Array(__S(26));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2065,7 +1379,7 @@ function __c3(j: number): any {
         identifier: "GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsItem",
       });
     case 5:
-      return S.Array(GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsItem);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2079,7 +1393,7 @@ function __c3(j: number): any {
         identifier: "GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsItem",
       });
     case 7:
-      return S.Array(GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsItem);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
@@ -2087,14 +1401,8 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          errorPaths:
-            GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpErrorPathsList.pipe(
-              T.Body("error_paths"),
-            ),
-          hotPaths:
-            GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttpHotPathsList.pipe(
-              T.Body("hot_paths"),
-            ),
+          errorPaths: __S(29).pipe(T.Body("error_paths")),
+          hotPaths: __S(31).pipe(T.Body("hot_paths")),
           requestVolume: S.Number.pipe(T.Body("request_volume")),
         }),
       ).annotate({
@@ -2103,13 +1411,9 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          hosts: GetVulnerabilityDiscoveryReportResponseReportTrafficContextTargetHostsList,
-          kind: GetVulnerabilityDiscoveryReportResponseReportTrafficContextTargetKind,
-          telemetryWindow: S.optional(
-            S.NullOr(CreateVulnerabilityDiscoveryScanRequestTelemetryWindow).pipe(
-              T.Body("telemetry_window"),
-            ),
-          ),
+          hosts: __S(13),
+          kind: S.String,
+          telemetryWindow: S.optional(S.NullOr(__S(6)).pipe(T.Body("telemetry_window"))),
         }),
       ).annotate({
         identifier: "GetVulnerabilityDiscoveryReportResponseReportTrafficContextTarget",
@@ -2127,15 +1431,13 @@ function __c4(j: number): any {
           "GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItemPathsItem",
       });
     case 3:
-      return S.Array(
-        GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItemPathsItem,
-      );
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           hitVolume: S.Number.pipe(T.Body("hit_volume")),
-          paths: GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItemPathsList,
+          paths: __S(35),
           ruleId: S.String.pipe(T.Body("rule_id")),
           ruleVersion: S.Number.pipe(T.Body("rule_version")),
         }),
@@ -2143,12 +1445,12 @@ function __c4(j: number): any {
         identifier: "GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItem",
       });
     case 5:
-      return S.Array(GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesItem);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
           hitVolume: S.Number.pipe(T.Body("hit_volume")),
-          rules: GetVulnerabilityDiscoveryReportResponseReportTrafficContextWafRulesList,
+          rules: __S(37),
         }),
       ).annotate({
         identifier: "GetVulnerabilityDiscoveryReportResponseReportTrafficContextWaf",
@@ -2168,9 +1470,7 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(
-        GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemRiskLabelsItem,
-      );
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2189,24 +1489,15 @@ function __c5(j: number): any {
           endpoint: S.String,
           host: S.String,
           method: S.String,
-          riskLabels:
-            GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemRiskLabelsList.pipe(
-              T.Body("risk_labels"),
-            ),
-          performance: S.optional(
-            S.NullOr(
-              GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItemPerformance,
-            ),
-          ),
+          riskLabels: __S(40).pipe(T.Body("risk_labels")),
+          performance: S.optional(S.NullOr(__S(41))),
         }),
       ).annotate({
         identifier:
           "GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItem",
       });
     case 3:
-      return S.Array(
-        GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsItem,
-      );
+      return S.Array(__S(42));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2221,7 +1512,7 @@ function __c5(j: number): any {
         identifier: "GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsItem",
       });
     case 5:
-      return S.Array(GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsItem);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2234,9 +1525,7 @@ function __c5(j: number): any {
           "GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesItem",
       });
     case 7:
-      return S.Array(
-        GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesItem,
-      );
+      return S.Array(__S(46));
   }
 }
 function __c6(j: number): any {
@@ -2244,13 +1533,9 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          operations:
-            GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsOperationsList,
-          paths: GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsPathsList,
-          riskTypes:
-            GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssetsRiskTypesList.pipe(
-              T.Body("risk_types"),
-            ),
+          operations: __S(43),
+          paths: __S(45),
+          riskTypes: __S(47).pipe(T.Body("risk_types")),
         }),
       ).annotate({
         identifier: "GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssets",
@@ -2258,39 +1543,27 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          http: GetVulnerabilityDiscoveryReportResponseReportTrafficContextHttp,
-          target: GetVulnerabilityDiscoveryReportResponseReportTrafficContextTarget,
-          waf: GetVulnerabilityDiscoveryReportResponseReportTrafficContextWaf,
-          webAssets: GetVulnerabilityDiscoveryReportResponseReportTrafficContextWebAssets.pipe(
-            T.Body("web_assets"),
-          ),
+          http: __S(32),
+          target: __S(33),
+          waf: __S(38),
+          webAssets: __S(48).pipe(T.Body("web_assets")),
         }),
       ).annotate({
         identifier: "GetVulnerabilityDiscoveryReportResponseReportTrafficContext",
       });
     case 2:
-      return S.Array(GetVulnerabilityDiscoveryReportResponseReportFindingsItemExternalLinksItem);
+      return S.Array(__S(24));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          findings: GetVulnerabilityDiscoveryReportResponseReportFindingsList,
-          overallSeverity: GetVulnerabilityDiscoveryReportResponseReportOverallSeverity.pipe(
-            T.Body("overall_severity"),
-          ),
+          findings: __S(27),
+          overallSeverity: S.String.pipe(T.Body("overall_severity")),
           repositoryId: S.String.pipe(T.Body("repository_id")),
           repositoryName: S.String.pipe(T.Body("repository_name")),
           summary: S.String,
-          trafficContext: GetVulnerabilityDiscoveryReportResponseReportTrafficContext.pipe(
-            T.Body("traffic_context"),
-          ),
-          externalLinks: S.optional(
-            S.NullOr(GetVulnerabilityDiscoveryReportResponseReportExternalLinksList).pipe(
-              T.Body("external_links"),
-            ),
-          ),
-          limitations: S.optional(
-            S.NullOr(GetVulnerabilityDiscoveryReportResponseReportLimitationsList),
-          ),
+          trafficContext: __S(49).pipe(T.Body("traffic_context")),
+          externalLinks: S.optional(S.NullOr(__S(50)).pipe(T.Body("external_links"))),
+          limitations: S.optional(S.NullOr(__S(4))),
         }),
       ).annotate({
         identifier: "GetVulnerabilityDiscoveryReportResponseReport",
@@ -2298,8 +1571,8 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          publication: GetVulnerabilityDiscoveryReportResponsePublication,
-          report: GetVulnerabilityDiscoveryReportResponseReport,
+          publication: __S(12),
+          report: __S(51),
           repositoryId: S.String.pipe(T.Body("repository_id")),
           scanId: S.String.pipe(T.Body("scan_id")),
         }),
@@ -2329,13 +1602,9 @@ function __c6(j: number): any {
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           name: S.String,
-          readiness: GetVulnerabilityDiscoveryRepositoryResponseRepositoryReadiness,
-          source: GetVulnerabilityDiscoveryRepositoryResponseRepositorySource,
-          importError: S.optional(
-            S.NullOr(GetVulnerabilityDiscoveryRepositoryResponseRepositoryImportError).pipe(
-              T.Body("import_error"),
-            ),
-          ),
+          readiness: S.String,
+          source: S.String,
+          importError: S.optional(S.NullOr(__S(1)).pipe(T.Body("import_error"))),
         }),
       ).annotate({
         identifier: "GetVulnerabilityDiscoveryRepositoryResponseRepository",
@@ -2345,12 +1614,9 @@ function __c6(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          phase: GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItemPhase,
-          reportStatus:
-            GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItemReportStatus.pipe(
-              T.Body("report_status"),
-            ),
-          status: GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItemStatus,
+          phase: S.String,
+          reportStatus: S.String.pipe(T.Body("report_status")),
+          status: S.String,
         }),
       ).annotate({
         identifier: "GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItem",
@@ -2360,34 +1626,30 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesItem);
+      return S.Array(__S(55));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           completedAt: S.String.pipe(T.Body("completed_at")),
           message: S.String,
-          phase: GetVulnerabilityDiscoveryRepositoryResponseScansItemPhase,
-          repositories: GetVulnerabilityDiscoveryRepositoryResponseScansItemRepositoriesList,
+          phase: S.String,
+          repositories: __S(56),
           startedAt: S.String.pipe(T.Body("started_at")),
-          status: GetVulnerabilityDiscoveryRepositoryResponseScansItemStatus,
+          status: S.String,
           submittedAt: S.String.pipe(T.Body("submitted_at")),
-          telemetryWindow: S.optional(
-            S.NullOr(CreateVulnerabilityDiscoveryScanRequestTelemetryWindow).pipe(
-              T.Body("telemetry_window"),
-            ),
-          ),
+          telemetryWindow: S.optional(S.NullOr(__S(6)).pipe(T.Body("telemetry_window"))),
         }),
       ).annotate({
         identifier: "GetVulnerabilityDiscoveryRepositoryResponseScansItem",
       });
     case 2:
-      return S.Array(GetVulnerabilityDiscoveryRepositoryResponseScansItem);
+      return S.Array(__S(57));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          repository: GetVulnerabilityDiscoveryRepositoryResponseRepository,
-          scans: GetVulnerabilityDiscoveryRepositoryResponseScansList,
+          repository: __S(54),
+          scans: __S(58),
         }),
       ).annotate({
         identifier: "GetVulnerabilityDiscoveryRepositoryResponse",
@@ -2412,33 +1674,27 @@ function __c7(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          phase: GetVulnerabilityDiscoveryScanResponseRepositoriesItemPhase,
-          reportStatus: GetVulnerabilityDiscoveryScanResponseRepositoriesItemReportStatus.pipe(
-            T.Body("report_status"),
-          ),
-          status: GetVulnerabilityDiscoveryScanResponseRepositoriesItemStatus,
+          phase: S.String,
+          reportStatus: S.String.pipe(T.Body("report_status")),
+          status: S.String,
         }),
       ).annotate({
         identifier: "GetVulnerabilityDiscoveryScanResponseRepositoriesItem",
       });
     case 6:
-      return S.Array(GetVulnerabilityDiscoveryScanResponseRepositoriesItem);
+      return S.Array(__S(61));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           completedAt: S.String.pipe(T.Body("completed_at")),
           message: S.String,
-          phase: GetVulnerabilityDiscoveryScanResponsePhase,
-          repositories: GetVulnerabilityDiscoveryScanResponseRepositoriesList,
+          phase: S.String,
+          repositories: __S(62),
           startedAt: S.String.pipe(T.Body("started_at")),
-          status: GetVulnerabilityDiscoveryScanResponseStatus,
+          status: S.String,
           submittedAt: S.String.pipe(T.Body("submitted_at")),
-          telemetryWindow: S.optional(
-            S.NullOr(CreateVulnerabilityDiscoveryScanRequestTelemetryWindow).pipe(
-              T.Body("telemetry_window"),
-            ),
-          ),
+          telemetryWindow: S.optional(S.NullOr(__S(6)).pipe(T.Body("telemetry_window"))),
         }),
       ).annotate({
         identifier: "GetVulnerabilityDiscoveryScanResponse",
@@ -2466,8 +1722,8 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          code: ListVulnerabilityDiscoveryRepositoriesResultItemImportErrorCode,
-          message: ListVulnerabilityDiscoveryRepositoriesResultItemImportErrorMessage,
+          code: S.String,
+          message: S.String,
         }),
       ).annotate({
         identifier: "ListVulnerabilityDiscoveryRepositoriesResultItemImportError",
@@ -2478,23 +1734,17 @@ function __c8(j: number): any {
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           name: S.String,
-          readiness: ListVulnerabilityDiscoveryRepositoriesResultItemReadiness,
-          source: ListVulnerabilityDiscoveryRepositoriesResultItemSource,
-          importError: S.optional(
-            S.NullOr(ListVulnerabilityDiscoveryRepositoriesResultItemImportError).pipe(
-              T.Body("import_error"),
-            ),
-          ),
+          readiness: S.String,
+          source: S.String,
+          importError: S.optional(S.NullOr(__S(65)).pipe(T.Body("import_error"))),
         }),
       ).annotate({
         identifier: "ListVulnerabilityDiscoveryRepositoriesResultItem",
       });
     case 3:
-      return S.Array(ListVulnerabilityDiscoveryRepositoriesResultItem);
+      return S.Array(__S(66));
     case 4:
-      return S.suspend(() =>
-        ListVulnerabilityDiscoveryRepositoriesResultList.pipe(T.EnvelopePayloadRoot()),
-      ).annotate({
+      return S.suspend(() => __S(67).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "ListVulnerabilityDiscoveryRepositoriesResponse",
       });
     case 5:
@@ -2506,7 +1756,7 @@ function __c8(j: number): any {
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           repo: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListVulnerabilityDiscoveryScansRequestStatus.pipe(T.Query())),
+          status: S.optional(__S(69).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2518,15 +1768,13 @@ function __c8(j: number): any {
         identifier: "ListVulnerabilityDiscoveryScansRequest",
       });
     case 7:
-      return S.Array(ListVulnerabilityDiscoveryScansResultItem);
+      return S.Array(__S(10));
   }
 }
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListVulnerabilityDiscoveryScansResultList.pipe(T.EnvelopePayloadRoot()),
-      ).annotate({
+      return S.suspend(() => __S(71).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "ListVulnerabilityDiscoveryScansResponse",
       });
     case 1:
@@ -2547,10 +1795,8 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          references:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetryReferencesList,
-          state:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetryState,
+          references: __S(13),
+          state: S.String,
         }),
       ).annotate({
         identifier:
@@ -2559,10 +1805,8 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          action:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesBroadAction,
-          confidence:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesBroadConfidence,
+          action: S.String,
+          confidence: S.String,
           description: S.String,
           expression: S.String,
           falsePositiveRisk: S.String.pipe(T.Body("false_positive_risk")),
@@ -2576,10 +1820,8 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          broad:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesBroad,
-          targeted:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRulesTargeted,
+          broad: __S(75),
+          targeted: __S(75),
         }),
       ).annotate({
         identifier:
@@ -2589,69 +1831,37 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          conditions:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemConditionsList,
+          conditions: __S(13),
           cwe: S.String,
           impact: S.String,
-          location: GetVulnerabilityDiscoveryReportResponseReportFindingsItemLocation,
-          reachability:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemReachabilityList,
-          remediation: GetVulnerabilityDiscoveryReportResponseReportFindingsItemRemediation,
+          location: __S(14),
+          reachability: __S(16),
+          remediation: __S(17),
           rootCause: S.String.pipe(T.Body("root_cause")),
-          severity:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemSeverity,
+          severity: S.String,
           severityBasis: S.String.pipe(T.Body("severity_basis")),
           summary: S.String,
-          telemetry:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTelemetry,
+          telemetry: __S(74),
           title: S.String,
-          trace:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemTraceList,
-          wafRules:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemWafRules.pipe(
-              T.Body("waf_rules"),
-            ),
-          attackerPosition: S.optional(
-            S.NullOr(
-              VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemAttackerPosition,
-            ).pipe(T.Body("attacker_position")),
-          ),
-          externalLinks: S.optional(
-            S.NullOr(
-              VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemExternalLinksList,
-            ).pipe(T.Body("external_links")),
-          ),
+          trace: __S(20),
+          wafRules: __S(76).pipe(T.Body("waf_rules")),
+          attackerPosition: S.optional(S.NullOr(S.String).pipe(T.Body("attacker_position"))),
+          externalLinks: S.optional(S.NullOr(__S(25)).pipe(T.Body("external_links"))),
           openQuestion: S.optional(S.NullOr(S.String).pipe(T.Body("open_question"))),
-          proofMethod: S.optional(
-            S.NullOr(
-              VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemProofMethod,
-            ).pipe(T.Body("proof_method")),
-          ),
-          proofState: S.optional(
-            S.NullOr(
-              VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItemProofState,
-            ).pipe(T.Body("proof_state")),
-          ),
+          proofMethod: S.optional(S.NullOr(S.String).pipe(T.Body("proof_method"))),
+          proofState: S.optional(S.NullOr(S.String).pipe(T.Body("proof_state"))),
         }),
       ).annotate({
         identifier:
           "VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItem",
       });
     case 6:
-      return S.Array(
-        VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsItem,
-      );
+      return S.Array(__S(77));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          errorPaths:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpErrorPathsList.pipe(
-              T.Body("error_paths"),
-            ),
-          hotPaths:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttpHotPathsList.pipe(
-              T.Body("hot_paths"),
-            ),
+          errorPaths: __S(29).pipe(T.Body("error_paths")),
+          hotPaths: __S(31).pipe(T.Body("hot_paths")),
           requestVolume: S.Number.pipe(T.Body("request_volume")),
         }),
       ).annotate({
@@ -2665,14 +1875,9 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          hosts:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTargetHostsList,
-          kind: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTargetKind,
-          telemetryWindow: S.optional(
-            S.NullOr(CreateVulnerabilityDiscoveryScanRequestTelemetryWindow).pipe(
-              T.Body("telemetry_window"),
-            ),
-          ),
+          hosts: __S(13),
+          kind: S.String,
+          telemetryWindow: S.optional(S.NullOr(__S(6)).pipe(T.Body("telemetry_window"))),
         }),
       ).annotate({
         identifier:
@@ -2683,8 +1888,7 @@ function __c10(j: number): any {
         S.Struct({
           id: S.String,
           hitVolume: S.Number.pipe(T.Body("hit_volume")),
-          paths:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesItemPathsList,
+          paths: __S(35),
           ruleId: S.String.pipe(T.Body("rule_id")),
           ruleVersion: S.Number.pipe(T.Body("rule_version")),
         }),
@@ -2693,15 +1897,12 @@ function __c10(j: number): any {
           "VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesItem",
       });
     case 2:
-      return S.Array(
-        VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesItem,
-      );
+      return S.Array(__S(81));
     case 3:
       return S.suspend(() =>
         S.Struct({
           hitVolume: S.Number.pipe(T.Body("hit_volume")),
-          rules:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWafRulesList,
+          rules: __S(82),
         }),
       ).annotate({
         identifier:
@@ -2710,14 +1911,9 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          operations:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsOperationsList,
-          paths:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsPathsList,
-          riskTypes:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssetsRiskTypesList.pipe(
-              T.Body("risk_types"),
-            ),
+          operations: __S(43),
+          paths: __S(45),
+          riskTypes: __S(47).pipe(T.Body("risk_types")),
         }),
       ).annotate({
         identifier:
@@ -2726,14 +1922,10 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          http: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextHttp,
-          target:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextTarget,
-          waf: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWaf,
-          webAssets:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContextWebAssets.pipe(
-              T.Body("web_assets"),
-            ),
+          http: __S(79),
+          target: __S(80),
+          waf: __S(83),
+          webAssets: __S(84).pipe(T.Body("web_assets")),
         }),
       ).annotate({
         identifier:
@@ -2742,34 +1934,20 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          findings: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemFindingsList,
-          overallSeverity:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemOverallSeverity.pipe(
-              T.Body("overall_severity"),
-            ),
+          findings: __S(78),
+          overallSeverity: S.String.pipe(T.Body("overall_severity")),
           repositoryId: S.String.pipe(T.Body("repository_id")),
           repositoryName: S.String.pipe(T.Body("repository_name")),
           summary: S.String,
-          trafficContext:
-            VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemTrafficContext.pipe(
-              T.Body("traffic_context"),
-            ),
-          externalLinks: S.optional(
-            S.NullOr(
-              VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemExternalLinksList,
-            ).pipe(T.Body("external_links")),
-          ),
-          limitations: S.optional(
-            S.NullOr(
-              VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItemLimitationsList,
-            ),
-          ),
+          trafficContext: __S(85).pipe(T.Body("traffic_context")),
+          externalLinks: S.optional(S.NullOr(__S(25)).pipe(T.Body("external_links"))),
+          limitations: S.optional(S.NullOr(__S(13))),
         }),
       ).annotate({
         identifier: "VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItem",
       });
     case 7:
-      return S.Array(VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesItem);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -2779,13 +1957,9 @@ function __c11(j: number): any {
         S.Struct({
           executiveSummary: S.String.pipe(T.Body("executive_summary")),
           generatedAt: S.String.pipe(T.Body("generated_at")),
-          overallSeverity: VulnerabilityDiscoveryScansGetReportResponseReportOverallSeverity.pipe(
-            T.Body("overall_severity"),
-          ),
-          repositories: VulnerabilityDiscoveryScansGetReportResponseReportRepositoriesList,
-          schemaVersion: VulnerabilityDiscoveryScansGetReportResponseReportSchemaVersion.pipe(
-            T.Body("schema_version"),
-          ),
+          overallSeverity: S.String.pipe(T.Body("overall_severity")),
+          repositories: __S(87),
+          schemaVersion: S.Number.pipe(T.Body("schema_version")),
           title: S.String,
         }),
       ).annotate({
@@ -2796,29 +1970,57 @@ function __c11(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          reportStatus:
-            VulnerabilityDiscoveryScansGetReportResponseRepositoriesItemReportStatus.pipe(
-              T.Body("report_status"),
-            ),
-          scanStatus: VulnerabilityDiscoveryScansGetReportResponseRepositoriesItemScanStatus.pipe(
-            T.Body("scan_status"),
-          ),
+          reportStatus: S.String.pipe(T.Body("report_status")),
+          scanStatus: S.String.pipe(T.Body("scan_status")),
         }),
       ).annotate({
         identifier: "VulnerabilityDiscoveryScansGetReportResponseRepositoriesItem",
       });
     case 2:
-      return S.Array(VulnerabilityDiscoveryScansGetReportResponseRepositoriesItem);
+      return S.Array(__S(89));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          publication: GetVulnerabilityDiscoveryReportResponsePublication,
-          report: VulnerabilityDiscoveryScansGetReportResponseReport,
-          repositories: VulnerabilityDiscoveryScansGetReportResponseRepositoriesList,
+          publication: __S(12),
+          report: __S(88),
+          repositories: __S(90),
           scanId: S.String.pipe(T.Body("scan_id")),
         }),
       ).annotate({
         identifier: "VulnerabilityDiscoveryScansGetReportResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
   }
 }

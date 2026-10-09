@@ -10,19 +10,14 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
 export type DataSecurityContentFindingsTopNRequestFiltersItemValuesItem = string | number | boolean;
-const DataSecurityContentFindingsTopNRequestFiltersItemValuesItem = /*@__PURE__*/ __L.at(__c0, 0);
-
 export type DataSecurityContentFindingsTopNRequestFiltersItemValuesList =
   Array<DataSecurityContentFindingsTopNRequestFiltersItemValuesItem>;
-const DataSecurityContentFindingsTopNRequestFiltersItemValuesList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DataSecurityContentFindingsTopNRequestFiltersItemValuesList>;
-
 export interface DataSecurityContentFindingsTopNRequestFiltersItem {
   /** Specifies the column name to filter on. Requires a valid column for the target dataset (e.g. `country`, `allowed`, `appId`). */
   name: string;
@@ -31,18 +26,8 @@ export interface DataSecurityContentFindingsTopNRequestFiltersItem {
   /** Values to match against. Type depends on the column. */
   values: DataSecurityContentFindingsTopNRequestFiltersItemValuesList;
 }
-const DataSecurityContentFindingsTopNRequestFiltersItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DataSecurityContentFindingsTopNRequestFiltersItem>;
-
 export type DataSecurityContentFindingsTopNRequestFiltersList =
   Array<DataSecurityContentFindingsTopNRequestFiltersItem>;
-const DataSecurityContentFindingsTopNRequestFiltersList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DataSecurityContentFindingsTopNRequestFiltersList>;
-
 export interface DataSecurityContentFindingsTopNRequest {
   accountId: string;
   /** Filters to apply. `findingType = content` is applied automatically for CASB data. */
@@ -54,40 +39,13 @@ export interface DataSecurityContentFindingsTopNRequest {
   /** End of the query time range (exclusive). RFC3339. */
   to: string;
 }
-const DataSecurityContentFindingsTopNRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DataSecurityContentFindingsTopNRequest>;
-
 export type DataSecurityContentFindingsTopNResultItemMap = { [key: string]: unknown | undefined };
-const DataSecurityContentFindingsTopNResultItemMap = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DataSecurityContentFindingsTopNResultItemMap>;
-
 export type DataSecurityContentFindingsTopNResultList =
   Array<DataSecurityContentFindingsTopNResultItemMap>;
-const DataSecurityContentFindingsTopNResultList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DataSecurityContentFindingsTopNResultList>;
-
 export type DataSecurityContentFindingsTopNResponse = DataSecurityContentFindingsTopNResultList;
-const DataSecurityContentFindingsTopNResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DataSecurityContentFindingsTopNResponse>;
-
 export type DataSecurityFindingsSummaryRequestFiltersItemValuesItem = string | number | boolean;
-const DataSecurityFindingsSummaryRequestFiltersItemValuesItem = /*@__PURE__*/ __L.at(__c1, 0);
-
 export type DataSecurityFindingsSummaryRequestFiltersItemValuesList =
   Array<DataSecurityFindingsSummaryRequestFiltersItemValuesItem>;
-const DataSecurityFindingsSummaryRequestFiltersItemValuesList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DataSecurityFindingsSummaryRequestFiltersItemValuesList>;
-
 export interface DataSecurityFindingsSummaryRequestFiltersItem {
   /** Specifies the column name to filter on. Requires a valid column for the target dataset (e.g. `country`, `allowed`, `appId`). */
   name: string;
@@ -96,18 +54,8 @@ export interface DataSecurityFindingsSummaryRequestFiltersItem {
   /** Values to match against. Type depends on the column. */
   values: DataSecurityFindingsSummaryRequestFiltersItemValuesList;
 }
-const DataSecurityFindingsSummaryRequestFiltersItem = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DataSecurityFindingsSummaryRequestFiltersItem>;
-
 export type DataSecurityFindingsSummaryRequestFiltersList =
   Array<DataSecurityFindingsSummaryRequestFiltersItem>;
-const DataSecurityFindingsSummaryRequestFiltersList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DataSecurityFindingsSummaryRequestFiltersList>;
-
 export interface DataSecurityFindingsSummaryRequest {
   accountId: string;
   /** Filters to apply. */
@@ -117,27 +65,16 @@ export interface DataSecurityFindingsSummaryRequest {
   /** End of the query time range (exclusive). RFC3339. */
   to: string;
 }
-const DataSecurityFindingsSummaryRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DataSecurityFindingsSummaryRequest>;
-
 export type DataSecurityFindingsSummaryResponseCurrentTotalItemMap = {
   [key: string]: unknown | undefined;
 };
 export type DataSecurityFindingsSummaryResponseCurrentTotalList =
   Array<DataSecurityFindingsSummaryResponseCurrentTotalItemMap>;
-const DataSecurityFindingsSummaryResponseCurrentTotalList =
-  DataSecurityContentFindingsTopNResultList as any as S.Schema<DataSecurityFindingsSummaryResponseCurrentTotalList>;
-
 export type DataSecurityFindingsSummaryResponsePreviousTotalItemMap = {
   [key: string]: unknown | undefined;
 };
 export type DataSecurityFindingsSummaryResponsePreviousTotalList =
   Array<DataSecurityFindingsSummaryResponsePreviousTotalItemMap>;
-const DataSecurityFindingsSummaryResponsePreviousTotalList =
-  DataSecurityContentFindingsTopNResultList as any as S.Schema<DataSecurityFindingsSummaryResponsePreviousTotalList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DataSecurityFindingsSummaryResponse {
   /** Aggregated stats for the requested time range. */
@@ -145,21 +82,9 @@ export interface DataSecurityFindingsSummaryResponse {
   /** Aggregated stats for the equivalent preceding time range, for trend comparison. */
   previousTotal: DataSecurityFindingsSummaryResponsePreviousTotalList;
 }
-const DataSecurityFindingsSummaryResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DataSecurityFindingsSummaryResponse>;
-
 export type DataSecurityFindingsTimeseriesRequestFiltersItemValuesItem = string | number | boolean;
-const DataSecurityFindingsTimeseriesRequestFiltersItemValuesItem = /*@__PURE__*/ __L.at(__c1, 6);
-
 export type DataSecurityFindingsTimeseriesRequestFiltersItemValuesList =
   Array<DataSecurityFindingsTimeseriesRequestFiltersItemValuesItem>;
-const DataSecurityFindingsTimeseriesRequestFiltersItemValuesList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DataSecurityFindingsTimeseriesRequestFiltersItemValuesList>;
-
 export interface DataSecurityFindingsTimeseriesRequestFiltersItem {
   /** Specifies the column name to filter on. Requires a valid column for the target dataset (e.g. `country`, `allowed`, `appId`). */
   name: string;
@@ -168,18 +93,8 @@ export interface DataSecurityFindingsTimeseriesRequestFiltersItem {
   /** Values to match against. Type depends on the column. */
   values: DataSecurityFindingsTimeseriesRequestFiltersItemValuesList;
 }
-const DataSecurityFindingsTimeseriesRequestFiltersItem = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DataSecurityFindingsTimeseriesRequestFiltersItem>;
-
 export type DataSecurityFindingsTimeseriesRequestFiltersList =
   Array<DataSecurityFindingsTimeseriesRequestFiltersItem>;
-const DataSecurityFindingsTimeseriesRequestFiltersList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DataSecurityFindingsTimeseriesRequestFiltersList>;
-
 export interface DataSecurityFindingsTimeseriesRequest {
   accountId: string;
   /** Filters to apply. */
@@ -189,19 +104,11 @@ export interface DataSecurityFindingsTimeseriesRequest {
   /** End of the query time range (exclusive). RFC3339. */
   to: string;
 }
-const DataSecurityFindingsTimeseriesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DataSecurityFindingsTimeseriesRequest>;
-
 export type DataSecurityFindingsTimeseriesResponseSlotsItemMap = {
   [key: string]: unknown | undefined;
 };
 export type DataSecurityFindingsTimeseriesResponseSlotsList =
   Array<DataSecurityFindingsTimeseriesResponseSlotsItemMap>;
-const DataSecurityFindingsTimeseriesResponseSlotsList =
-  DataSecurityContentFindingsTopNResultList as any as S.Schema<DataSecurityFindingsTimeseriesResponseSlotsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DataSecurityFindingsTimeseriesResponse {
   /** Contains time-bucketed result rows. Each slot includes a `timestamp` plus `content` and `posture` maps with `cloud` and `saas` keys. */
@@ -209,20 +116,8 @@ export interface DataSecurityFindingsTimeseriesResponse {
   /** Always null for this endpoint. */
   resolution?: string | null;
 }
-const DataSecurityFindingsTimeseriesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DataSecurityFindingsTimeseriesResponse>;
-
 export type SummaryRequestFiltersItemValuesItem = string | number | boolean;
-const SummaryRequestFiltersItemValuesItem = /*@__PURE__*/ __L.at(__c2, 4);
-
 export type SummaryRequestFiltersItemValuesList = Array<SummaryRequestFiltersItemValuesItem>;
-const SummaryRequestFiltersItemValuesList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<SummaryRequestFiltersItemValuesList>;
-
 export interface SummaryRequestFiltersItem {
   /** Specifies the column name to filter on. Requires a valid column for the target dataset (e.g. `country`, `allowed`, `appId`). */
   name: string;
@@ -231,27 +126,9 @@ export interface SummaryRequestFiltersItem {
   /** Values to match against. Type depends on the column. */
   values: SummaryRequestFiltersItemValuesList;
 }
-const SummaryRequestFiltersItem = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<SummaryRequestFiltersItem>;
-
 export type SummaryRequestFiltersList = Array<SummaryRequestFiltersItem>;
-const SummaryRequestFiltersList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<SummaryRequestFiltersList>;
-
 export type SummaryRequestGroupByList = Array<string>;
-const SummaryRequestGroupByList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<SummaryRequestGroupByList>;
-
 export type SummaryRequestStatsList = Array<string>;
-const SummaryRequestStatsList =
-  SummaryRequestGroupByList as any as S.Schema<SummaryRequestStatsList>;
-
 export interface SummaryRequest {
   accountId: string;
   dataset: string;
@@ -266,18 +143,10 @@ export interface SummaryRequest {
   /** Specifies the end of the query time range (exclusive). Requires RFC3339 format with timezone. */
   to: string;
 }
-const SummaryRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<SummaryRequest>;
-
 export type SummaryResponseCurrentTotalItemMap = { [key: string]: unknown | undefined };
 export type SummaryResponseCurrentTotalList = Array<SummaryResponseCurrentTotalItemMap>;
-const SummaryResponseCurrentTotalList =
-  DataSecurityContentFindingsTopNResultList as any as S.Schema<SummaryResponseCurrentTotalList>;
-
 export type SummaryResponsePreviousTotalItemMap = { [key: string]: unknown | undefined };
 export type SummaryResponsePreviousTotalList = Array<SummaryResponsePreviousTotalItemMap>;
-const SummaryResponsePreviousTotalList =
-  DataSecurityContentFindingsTopNResultList as any as S.Schema<SummaryResponsePreviousTotalList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SummaryResponse {
   /** Aggregated stats for the requested time range. */
@@ -285,17 +154,8 @@ export interface SummaryResponse {
   /** Aggregated stats for the equivalent preceding time range, for trend comparison. */
   previousTotal: SummaryResponsePreviousTotalList;
 }
-const SummaryResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<SummaryResponse>;
-
 export type TimeseriesRequestFiltersItemValuesItem = string | number | boolean;
-const TimeseriesRequestFiltersItemValuesItem = /*@__PURE__*/ __L.at(__c3, 3);
-
 export type TimeseriesRequestFiltersItemValuesList = Array<TimeseriesRequestFiltersItemValuesItem>;
-const TimeseriesRequestFiltersItemValuesList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<TimeseriesRequestFiltersItemValuesList>;
-
 export interface TimeseriesRequestFiltersItem {
   /** Specifies the column name to filter on. Requires a valid column for the target dataset (e.g. `country`, `allowed`, `appId`). */
   name: string;
@@ -304,25 +164,9 @@ export interface TimeseriesRequestFiltersItem {
   /** Values to match against. Type depends on the column. */
   values: TimeseriesRequestFiltersItemValuesList;
 }
-const TimeseriesRequestFiltersItem = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<TimeseriesRequestFiltersItem>;
-
 export type TimeseriesRequestFiltersList = Array<TimeseriesRequestFiltersItem>;
-const TimeseriesRequestFiltersList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<TimeseriesRequestFiltersList>;
-
 export type TimeseriesRequestGroupByList = Array<string>;
-const TimeseriesRequestGroupByList =
-  SummaryRequestGroupByList as any as S.Schema<TimeseriesRequestGroupByList>;
-
 export type TimeseriesRequestStatsList = Array<string>;
-const TimeseriesRequestStatsList =
-  SummaryRequestGroupByList as any as S.Schema<TimeseriesRequestStatsList>;
-
 export interface TimeseriesRequest {
   accountId: string;
   dataset: string;
@@ -339,13 +183,8 @@ export interface TimeseriesRequest {
   /** Specifies the end of the query time range (exclusive). Requires RFC3339 format with timezone. */
   to: string;
 }
-const TimeseriesRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<TimeseriesRequest>;
-
 export type TimeseriesResponseSlotsItemMap = { [key: string]: unknown | undefined };
 export type TimeseriesResponseSlotsList = Array<TimeseriesResponseSlotsItemMap>;
-const TimeseriesResponseSlotsList =
-  DataSecurityContentFindingsTopNResultList as any as S.Schema<TimeseriesResponseSlotsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TimeseriesResponse {
   /** The resolution used for time bucketing. */
@@ -353,17 +192,8 @@ export interface TimeseriesResponse {
   /** Time-bucketed result rows. Each slot contains a `time_bucket` field plus the requested stats and group-by dimensions. */
   slots: TimeseriesResponseSlotsList;
 }
-const TimeseriesResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<TimeseriesResponse>;
-
 export type TopNRequestFiltersItemValuesItem = string | number | boolean;
-const TopNRequestFiltersItemValuesItem = /*@__PURE__*/ __L.at(__c4, 1);
-
 export type TopNRequestFiltersItemValuesList = Array<TopNRequestFiltersItemValuesItem>;
-const TopNRequestFiltersItemValuesList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<TopNRequestFiltersItemValuesList>;
-
 export interface TopNRequestFiltersItem {
   /** Specifies the column name to filter on. Requires a valid column for the target dataset (e.g. `country`, `allowed`, `appId`). */
   name: string;
@@ -372,23 +202,9 @@ export interface TopNRequestFiltersItem {
   /** Values to match against. Type depends on the column. */
   values: TopNRequestFiltersItemValuesList;
 }
-const TopNRequestFiltersItem = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<TopNRequestFiltersItem>;
-
 export type TopNRequestFiltersList = Array<TopNRequestFiltersItem>;
-const TopNRequestFiltersList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<TopNRequestFiltersList>;
-
 export type TopNRequestGroupByList = Array<string>;
-const TopNRequestGroupByList = SummaryRequestGroupByList as any as S.Schema<TopNRequestGroupByList>;
-
 export type TopNRequestStatsList = Array<string>;
-const TopNRequestStatsList = SummaryRequestGroupByList as any as S.Schema<TopNRequestStatsList>;
-
 export interface TopNRequest {
   accountId: string;
   dataset: string;
@@ -407,15 +223,9 @@ export interface TopNRequest {
   /** Specifies the end of the query time range (exclusive). Requires RFC3339 format with timezone. */
   to: string;
 }
-const TopNRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<TopNRequest>;
-
 export type TopNResultItemMap = { [key: string]: unknown | undefined };
 export type TopNResultList = Array<TopNResultItemMap>;
-const TopNResultList = DataSecurityContentFindingsTopNResultList as any as S.Schema<TopNResultList>;
-
 export type TopNResponse = TopNResultList;
-const TopNResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<TopNResponse>;
-
 export type DataSecurityContentFindingsTopNError = CloudflareOpError;
 /** Returns the top N integrations ranked by total content findings. */
 export const dataSecurityContentFindingsTopN: API.OperationMethod<
@@ -424,8 +234,8 @@ export const dataSecurityContentFindingsTopN: API.OperationMethod<
   DataSecurityContentFindingsTopNError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataSecurityContentFindingsTopNRequest,
-  output: DataSecurityContentFindingsTopNResponse,
+  input: __S(4) as any as S.Schema<DataSecurityContentFindingsTopNRequest>,
+  output: __S(7) as any as S.Schema<DataSecurityContentFindingsTopNResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -439,8 +249,8 @@ export const dataSecurityFindingsSummary: API.OperationMethod<
   DataSecurityFindingsSummaryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataSecurityFindingsSummaryRequest,
-  output: DataSecurityFindingsSummaryResponse,
+  input: __S(12) as any as S.Schema<DataSecurityFindingsSummaryRequest>,
+  output: __S(13) as any as S.Schema<DataSecurityFindingsSummaryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -454,8 +264,8 @@ export const dataSecurityFindingsTimeseries: API.OperationMethod<
   DataSecurityFindingsTimeseriesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataSecurityFindingsTimeseriesRequest,
-  output: DataSecurityFindingsTimeseriesResponse,
+  input: __S(18) as any as S.Schema<DataSecurityFindingsTimeseriesRequest>,
+  output: __S(19) as any as S.Schema<DataSecurityFindingsTimeseriesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -469,8 +279,8 @@ export const summary: API.OperationMethod<
   SummaryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SummaryRequest,
-  output: SummaryResponse,
+  input: __S(25) as any as S.Schema<SummaryRequest>,
+  output: __S(26) as any as S.Schema<SummaryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -484,8 +294,8 @@ export const timeseries: API.OperationMethod<
   TimeseriesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TimeseriesRequest,
-  output: TimeseriesResponse,
+  input: __S(31) as any as S.Schema<TimeseriesRequest>,
+  output: __S(32) as any as S.Schema<TimeseriesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -495,8 +305,8 @@ export type TopNError = CloudflareOpError;
 /** Returns the top N results for a dataset by a specified stat. Includes an array of result rows, each containing the requested stats and group-by dimensions. */
 export const topN: API.OperationMethod<TopNRequest, TopNResponse, TopNError, CloudflareOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: TopNRequest,
-    output: TopNResponse,
+    input: __S(37) as any as S.Schema<TopNRequest>,
+    output: __S(38) as any as S.Schema<TopNResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflareProtocol,
     retry: Retry.Retry,
@@ -508,24 +318,24 @@ function __c0(j: number): any {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 1:
-      return S.Array(DataSecurityContentFindingsTopNRequestFiltersItemValuesItem);
+      return S.Array(__S(0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           op: S.String,
-          values: DataSecurityContentFindingsTopNRequestFiltersItemValuesList,
+          values: __S(1),
         }),
       ).annotate({
         identifier: "DataSecurityContentFindingsTopNRequestFiltersItem",
       });
     case 3:
-      return S.Array(DataSecurityContentFindingsTopNRequestFiltersItem);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          filters: DataSecurityContentFindingsTopNRequestFiltersList,
+          filters: __S(3),
           from: S.String,
           n: S.Number,
           to: S.String,
@@ -542,11 +352,9 @@ function __c0(j: number): any {
     case 5:
       return S.Record(S.String, S.Unknown);
     case 6:
-      return S.Array(DataSecurityContentFindingsTopNResultItemMap);
+      return S.Array(__S(5));
     case 7:
-      return S.suspend(() =>
-        DataSecurityContentFindingsTopNResultList.pipe(T.EnvelopePayloadRoot()),
-      ).annotate({
+      return S.suspend(() => __S(6).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "DataSecurityContentFindingsTopNResponse",
       });
   }
@@ -556,24 +364,24 @@ function __c1(j: number): any {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 1:
-      return S.Array(DataSecurityFindingsSummaryRequestFiltersItemValuesItem);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           op: S.String,
-          values: DataSecurityFindingsSummaryRequestFiltersItemValuesList,
+          values: __S(9),
         }),
       ).annotate({
         identifier: "DataSecurityFindingsSummaryRequestFiltersItem",
       });
     case 3:
-      return S.Array(DataSecurityFindingsSummaryRequestFiltersItem);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          filters: DataSecurityFindingsSummaryRequestFiltersList,
+          filters: __S(11),
           from: S.String,
           to: S.String,
         }).pipe(
@@ -589,8 +397,8 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          currentTotal: DataSecurityFindingsSummaryResponseCurrentTotalList,
-          previousTotal: DataSecurityFindingsSummaryResponsePreviousTotalList,
+          currentTotal: __S(6),
+          previousTotal: __S(6),
         }),
       ).annotate({
         identifier: "DataSecurityFindingsSummaryResponse",
@@ -598,7 +406,7 @@ function __c1(j: number): any {
     case 6:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 7:
-      return S.Array(DataSecurityFindingsTimeseriesRequestFiltersItemValuesItem);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -608,18 +416,18 @@ function __c2(j: number): any {
         S.Struct({
           name: S.String,
           op: S.String,
-          values: DataSecurityFindingsTimeseriesRequestFiltersItemValuesList,
+          values: __S(15),
         }),
       ).annotate({
         identifier: "DataSecurityFindingsTimeseriesRequestFiltersItem",
       });
     case 1:
-      return S.Array(DataSecurityFindingsTimeseriesRequestFiltersItem);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          filters: DataSecurityFindingsTimeseriesRequestFiltersList,
+          filters: __S(17),
           from: S.String,
           to: S.String,
         }).pipe(
@@ -635,7 +443,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          slots: DataSecurityFindingsTimeseriesResponseSlotsList,
+          slots: __S(6),
           resolution: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -644,19 +452,19 @@ function __c2(j: number): any {
     case 4:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 5:
-      return S.Array(SummaryRequestFiltersItemValuesItem);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           op: S.String,
-          values: SummaryRequestFiltersItemValuesList,
+          values: __S(21),
         }),
       ).annotate({
         identifier: "SummaryRequestFiltersItem",
       });
     case 7:
-      return S.Array(SummaryRequestFiltersItem);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -668,10 +476,10 @@ function __c3(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           dataset: S.String.pipe(T.Label()),
-          filters: SummaryRequestFiltersList,
+          filters: __S(23),
           from: S.String,
-          groupBy: SummaryRequestGroupByList,
-          stats: SummaryRequestStatsList,
+          groupBy: __S(24),
+          stats: __S(24),
           to: S.String,
         }).pipe(
           T.Http({
@@ -684,36 +492,36 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          currentTotal: SummaryResponseCurrentTotalList,
-          previousTotal: SummaryResponsePreviousTotalList,
+          currentTotal: __S(6),
+          previousTotal: __S(6),
         }),
       ).annotate({ identifier: "SummaryResponse" });
     case 3:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 4:
-      return S.Array(TimeseriesRequestFiltersItemValuesItem);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           op: S.String,
-          values: TimeseriesRequestFiltersItemValuesList,
+          values: __S(28),
         }),
       ).annotate({
         identifier: "TimeseriesRequestFiltersItem",
       });
     case 6:
-      return S.Array(TimeseriesRequestFiltersItem);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           dataset: S.String.pipe(T.Label()),
-          filters: TimeseriesRequestFiltersList,
+          filters: __S(30),
           from: S.String,
-          groupBy: TimeseriesRequestGroupByList,
+          groupBy: __S(24),
           resolution: S.String,
-          stats: TimeseriesRequestStatsList,
+          stats: __S(24),
           to: S.String,
         }).pipe(
           T.Http({
@@ -731,34 +539,34 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resolution: S.String,
-          slots: TimeseriesResponseSlotsList,
+          slots: __S(6),
         }),
       ).annotate({ identifier: "TimeseriesResponse" });
     case 1:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 2:
-      return S.Array(TopNRequestFiltersItemValuesItem);
+      return S.Array(__S(33));
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           op: S.String,
-          values: TopNRequestFiltersItemValuesList,
+          values: __S(34),
         }),
       ).annotate({ identifier: "TopNRequestFiltersItem" });
     case 4:
-      return S.Array(TopNRequestFiltersItem);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           dataset: S.String.pipe(T.Label()),
-          filters: TopNRequestFiltersList,
+          filters: __S(36),
           from: S.String,
-          groupBy: TopNRequestGroupByList,
+          groupBy: __S(24),
           n: S.Number,
           orderBy: S.String,
-          stats: TopNRequestStatsList,
+          stats: __S(24),
           to: S.String,
         }).pipe(
           T.Http({
@@ -769,8 +577,27 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "TopNRequest" });
     case 6:
-      return S.suspend(() => TopNResultList.pipe(T.EnvelopePayloadRoot())).annotate({
+      return S.suspend(() => __S(6).pipe(T.EnvelopePayloadRoot())).annotate({
         identifier: "TopNResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

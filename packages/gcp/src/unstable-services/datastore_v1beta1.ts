@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,11 +65,7 @@ export class NotFound
   ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringMap>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringList>;
-
 /** Identifies a subset of entities in a project. This is specified as combinations of kinds and namespaces (either or both of which may be all, as described in the following examples). Example usage: Entire project: kinds=[], namespace_ids=[] Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[] Kinds Foo and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=[''] Kinds Foo and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz'] The entire Baz namespace: kinds=[], namespace_ids=['Baz'] */
 export interface GoogleDatastoreAdminV1beta1EntityFilter {
   /** An empty list represents all namespaces. This is the preferred usage for projects that don't use namespaces. An empty string element represents the default namespace. This should be used if the project has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique. */
@@ -75,11 +73,6 @@ export interface GoogleDatastoreAdminV1beta1EntityFilter {
   /** If empty, then this represents all kinds. */
   kinds?: StringList;
 }
-const GoogleDatastoreAdminV1beta1EntityFilter = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GoogleDatastoreAdminV1beta1EntityFilter>;
-
 /** The request for google.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities. */
 export interface GoogleDatastoreAdminV1beta1ExportEntitiesRequest {
   /** Client-assigned labels. */
@@ -89,28 +82,14 @@ export interface GoogleDatastoreAdminV1beta1ExportEntitiesRequest {
   /** Location for the export metadata and data files. The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported. So output_url_prefix should be of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the name of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud Datastore namespace). For more information about Cloud Storage namespace paths, see [Object name considerations](https://cloud.google.com/storage/docs/naming#object-considerations). The resulting files will be nested deeper than the specified URL prefix. The final output URL will be provided in the google.datastore.admin.v1beta1.ExportEntitiesResponse.output_url field. That value should be used for subsequent ImportEntities operations. By nesting the data files deeper, the same Cloud Storage bucket can be used in multiple ExportEntities operations without conflict. */
   outputUrlPrefix?: string;
 }
-const GoogleDatastoreAdminV1beta1ExportEntitiesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GoogleDatastoreAdminV1beta1ExportEntitiesRequest>;
-
 export interface ExportProjectsRequest {
   /** Project ID against which to make the request. */
   projectId: string;
   /** Request body */
   body?: GoogleDatastoreAdminV1beta1ExportEntitiesRequest;
 }
-const ExportProjectsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ExportProjectsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -120,8 +99,6 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -135,11 +112,6 @@ export interface GoogleLongrunningOperation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-const GoogleLongrunningOperation = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GoogleLongrunningOperation>;
-
 /** The request for google.datastore.admin.v1beta1.DatastoreAdmin.ImportEntities. */
 export interface GoogleDatastoreAdminV1beta1ImportEntitiesRequest {
   /** Optionally specify which kinds/namespaces are to be imported. If provided, the list must be a subset of the EntityFilter used in creating the export, otherwise a FAILED_PRECONDITION error will be returned. If no filter is specified then all entities from the export are imported. */
@@ -149,22 +121,12 @@ export interface GoogleDatastoreAdminV1beta1ImportEntitiesRequest {
   /** Client-assigned labels. */
   labels?: StringMap;
 }
-const GoogleDatastoreAdminV1beta1ImportEntitiesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GoogleDatastoreAdminV1beta1ImportEntitiesRequest>;
-
 export interface ImportProjectsRequest {
   /** Project ID against which to make the request. */
   projectId: string;
   /** Request body */
   body?: GoogleDatastoreAdminV1beta1ImportEntitiesRequest;
 }
-const ImportProjectsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ImportProjectsRequest>;
-
 export type ExportProjectsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage system, such as Google Cloud Storage. Recent updates to entities may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage. */
 export const exportProjects: API.OperationMethod<
@@ -173,8 +135,8 @@ export const exportProjects: API.OperationMethod<
   ExportProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportProjectsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(4) as any as S.Schema<ExportProjectsRequest>,
+  output: __S(8) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -188,8 +150,8 @@ export const importProjects: API.OperationMethod<
   ImportProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportProjectsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(10) as any as S.Schema<ImportProjectsRequest>,
+  output: __S(8) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -205,8 +167,8 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          namespaceIds: S.optional(StringList),
-          kinds: S.optional(StringList),
+          namespaceIds: S.optional(__S(1)),
+          kinds: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "GoogleDatastoreAdminV1beta1EntityFilter",
@@ -214,8 +176,8 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
-          entityFilter: S.optional(GoogleDatastoreAdminV1beta1EntityFilter),
+          labels: S.optional(__S(0)),
+          entityFilter: S.optional(__S(2)),
           outputUrlPrefix: S.optional(S.String),
         }),
       ).annotate({
@@ -225,7 +187,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(GoogleDatastoreAdminV1beta1ExportEntitiesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -237,11 +199,11 @@ function __c0(j: number): any {
     case 5:
       return S.Record(S.String, S.Unknown);
     case 6:
-      return S.Array(DocumentMap);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(6)),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -253,11 +215,11 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(5)),
           name: S.optional(S.String),
-          response: S.optional(DocumentMap),
+          response: S.optional(__S(5)),
           done: S.optional(S.Boolean),
-          error: S.optional(Status),
+          error: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
@@ -265,9 +227,9 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          entityFilter: S.optional(GoogleDatastoreAdminV1beta1EntityFilter),
+          entityFilter: S.optional(__S(2)),
           inputUrl: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "GoogleDatastoreAdminV1beta1ImportEntitiesRequest",
@@ -276,7 +238,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           projectId: S.String.pipe(T.Label()),
-          body: S.optional(GoogleDatastoreAdminV1beta1ImportEntitiesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -285,5 +247,18 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ImportProjectsRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

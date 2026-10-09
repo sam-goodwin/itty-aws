@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SecurityLake",
   serviceShapeName: "SecurityLake",
@@ -139,10 +141,8 @@ export class UnauthorizedException
   }).pipe(C.withAuthError) {}
 export type AwsAccountId = string;
 export type AccountList = string[];
-const AccountList = /*@__PURE__*/ __L.at(__c0, 0);
 export type Region = string;
 export type RegionList = string[];
-const RegionList = AccountList as any as S.Schema<RegionList>;
 export type AwsLogSourceName =
   | "ROUTE53"
   | "VPC_FLOW"
@@ -153,8 +153,6 @@ export type AwsLogSourceName =
   | "EKS_AUDIT"
   | "WAF"
   | (string & {});
-const AwsLogSourceName = S.String;
-
 export type AwsLogSourceVersion = string;
 export interface AwsLogSourceConfiguration {
   accounts?: string[];
@@ -162,189 +160,107 @@ export interface AwsLogSourceConfiguration {
   sourceName: AwsLogSourceName;
   sourceVersion?: string;
 }
-const AwsLogSourceConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AwsLogSourceConfiguration>;
 export type AwsLogSourceConfigurationList = AwsLogSourceConfiguration[];
-const AwsLogSourceConfigurationList = /*@__PURE__*/ __L.at(__c0, 2);
 export interface CreateAwsLogSourceRequest {
   sources: AwsLogSourceConfiguration[];
 }
-const CreateAwsLogSourceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateAwsLogSourceRequest>;
 export interface CreateAwsLogSourceResponse {
   failed?: string[];
 }
-const CreateAwsLogSourceResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateAwsLogSourceResponse>;
 export type CustomLogSourceName = string;
 export type CustomLogSourceVersion = string;
 export type OcsfEventClass = string;
 export type OcsfEventClassList = string[];
-const OcsfEventClassList = AccountList as any as S.Schema<OcsfEventClassList>;
 export type RoleArn = string;
 export interface CustomLogSourceCrawlerConfiguration {
   roleArn: string;
 }
-const CustomLogSourceCrawlerConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CustomLogSourceCrawlerConfiguration>;
 export type AwsPrincipal = string;
 export type ExternalId = string;
 export interface AwsIdentity {
   principal: string;
   externalId: string;
 }
-const AwsIdentity = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AwsIdentity>;
 export interface CustomLogSourceConfiguration {
   crawlerConfiguration: CustomLogSourceCrawlerConfiguration;
   providerIdentity: AwsIdentity;
 }
-const CustomLogSourceConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CustomLogSourceConfiguration>;
 export interface CreateCustomLogSourceRequest {
   sourceName: string;
   sourceVersion?: string;
   eventClasses?: string[];
   configuration: CustomLogSourceConfiguration;
 }
-const CreateCustomLogSourceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateCustomLogSourceRequest>;
 export type S3URI = string;
 export interface CustomLogSourceProvider {
   roleArn?: string;
   location?: string;
 }
-const CustomLogSourceProvider = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CustomLogSourceProvider>;
 export type AmazonResourceName = string;
 export interface CustomLogSourceAttributes {
   crawlerArn?: string;
   databaseArn?: string;
   tableArn?: string;
 }
-const CustomLogSourceAttributes = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CustomLogSourceAttributes>;
 export interface CustomLogSourceResource {
   sourceName?: string;
   sourceVersion?: string;
   provider?: CustomLogSourceProvider;
   attributes?: CustomLogSourceAttributes;
 }
-const CustomLogSourceResource = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CustomLogSourceResource>;
 export interface CreateCustomLogSourceResponse {
   source?: CustomLogSourceResource;
 }
-const CreateCustomLogSourceResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateCustomLogSourceResponse>;
 export interface DataLakeEncryptionConfiguration {
   kmsKeyId?: string;
 }
-const DataLakeEncryptionConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DataLakeEncryptionConfiguration>;
 export interface DataLakeLifecycleExpiration {
   days?: number;
 }
-const DataLakeLifecycleExpiration = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DataLakeLifecycleExpiration>;
 export type DataLakeStorageClass = string;
 export interface DataLakeLifecycleTransition {
   storageClass?: string;
   days?: number;
 }
-const DataLakeLifecycleTransition = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DataLakeLifecycleTransition>;
 export type DataLakeLifecycleTransitionList = DataLakeLifecycleTransition[];
-const DataLakeLifecycleTransitionList = /*@__PURE__*/ __L.at(__c2, 0);
 export interface DataLakeLifecycleConfiguration {
   expiration?: DataLakeLifecycleExpiration;
   transitions?: DataLakeLifecycleTransition[];
 }
-const DataLakeLifecycleConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DataLakeLifecycleConfiguration>;
 export interface DataLakeReplicationConfiguration {
   regions?: string[];
   roleArn?: string;
 }
-const DataLakeReplicationConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DataLakeReplicationConfiguration>;
 export interface DataLakeConfiguration {
   region: string;
   encryptionConfiguration?: DataLakeEncryptionConfiguration;
   lifecycleConfiguration?: DataLakeLifecycleConfiguration;
   replicationConfiguration?: DataLakeReplicationConfiguration;
 }
-const DataLakeConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DataLakeConfiguration>;
 export type DataLakeConfigurationList = DataLakeConfiguration[];
-const DataLakeConfigurationList = /*@__PURE__*/ __L.at(__c2, 4);
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c2, 6);
 export interface CreateDataLakeRequest {
   configurations: DataLakeConfiguration[];
   metaStoreManagerRoleArn: string;
   tags?: Tag[];
 }
-const CreateDataLakeRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateDataLakeRequest>;
 export type S3BucketArn = string;
 export type DataLakeStatus = "INITIALIZED" | "PENDING" | "COMPLETED" | "FAILED" | (string & {});
-const DataLakeStatus = S.String;
-
 export interface DataLakeUpdateException {
   reason?: string;
   code?: string;
 }
-const DataLakeUpdateException = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DataLakeUpdateException>;
 export interface DataLakeUpdateStatus {
   requestId?: string;
   status?: DataLakeStatus;
   exception?: DataLakeUpdateException;
 }
-const DataLakeUpdateStatus = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DataLakeUpdateStatus>;
 export interface DataLakeResource {
   dataLakeArn: string;
   region: string;
@@ -355,16 +271,10 @@ export interface DataLakeResource {
   createStatus?: DataLakeStatus;
   updateStatus?: DataLakeUpdateStatus;
 }
-const DataLakeResource = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DataLakeResource>;
 export type DataLakeResourceList = DataLakeResource[];
-const DataLakeResourceList = /*@__PURE__*/ __L.at(__c3, 3);
 export interface CreateDataLakeResponse {
   dataLakes?: DataLakeResource[];
 }
-const CreateDataLakeResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateDataLakeResponse>;
 export type SubscriptionProtocol = string;
 export type SafeString = string;
 export interface CreateDataLakeExceptionSubscriptionRequest {
@@ -372,55 +282,29 @@ export interface CreateDataLakeExceptionSubscriptionRequest {
   notificationEndpoint: string;
   exceptionTimeToLive?: number;
 }
-const CreateDataLakeExceptionSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateDataLakeExceptionSubscriptionRequest>;
 export interface CreateDataLakeExceptionSubscriptionResponse {}
-const CreateDataLakeExceptionSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateDataLakeExceptionSubscriptionResponse>;
 export interface AwsLogSourceResource {
   sourceName?: AwsLogSourceName;
   sourceVersion?: string;
 }
-const AwsLogSourceResource = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<AwsLogSourceResource>;
 export type AwsLogSourceResourceList = AwsLogSourceResource[];
-const AwsLogSourceResourceList = /*@__PURE__*/ __L.at(__c4, 0);
 export interface DataLakeAutoEnableNewAccountConfiguration {
   region: string;
   sources: AwsLogSourceResource[];
 }
-const DataLakeAutoEnableNewAccountConfiguration = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DataLakeAutoEnableNewAccountConfiguration>;
 export type DataLakeAutoEnableNewAccountConfigurationList =
   DataLakeAutoEnableNewAccountConfiguration[];
-const DataLakeAutoEnableNewAccountConfigurationList = /*@__PURE__*/ __L.at(__c4, 2);
 export interface CreateDataLakeOrganizationConfigurationRequest {
   autoEnableNewAccount?: DataLakeAutoEnableNewAccountConfiguration[];
 }
-const CreateDataLakeOrganizationConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateDataLakeOrganizationConfigurationRequest>;
 export interface CreateDataLakeOrganizationConfigurationResponse {}
-const CreateDataLakeOrganizationConfigurationResponse =
-  CreateDataLakeExceptionSubscriptionResponse as any as S.Schema<CreateDataLakeOrganizationConfigurationResponse>;
 export type DescriptionString = string;
 export type LogSourceResource =
   | { awsLogSource: AwsLogSourceResource; customLogSource?: never }
   | { awsLogSource?: never; customLogSource: CustomLogSourceResource };
-const LogSourceResource = /*@__PURE__*/ __L.at(__c4, 4);
 export type LogSourceResourceList = LogSourceResource[];
-const LogSourceResourceList = /*@__PURE__*/ __L.at(__c4, 5);
 export type AccessType = "LAKEFORMATION" | "S3" | (string & {});
-const AccessType = S.String;
-
 export type AccessTypeList = AccessType[];
-const AccessTypeList = /*@__PURE__*/ __L.at(__c4, 6);
 export interface CreateSubscriberRequest {
   subscriberIdentity: AwsIdentity;
   subscriberName: string;
@@ -429,14 +313,8 @@ export interface CreateSubscriberRequest {
   accessTypes?: AccessType[];
   tags?: Tag[];
 }
-const CreateSubscriberRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateSubscriberRequest>;
 export type UUID = string;
 export type SubscriberStatus = "ACTIVE" | "DEACTIVATED" | "PENDING" | "READY" | (string & {});
-const SubscriberStatus = S.String;
-
 export type ResourceShareArn = string;
 export type ResourceShareName = string;
 export interface SubscriberResource {
@@ -456,22 +334,11 @@ export interface SubscriberResource {
   createdAt?: Date;
   updatedAt?: Date;
 }
-const SubscriberResource = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<SubscriberResource>;
 export interface CreateSubscriberResponse {
   subscriber?: SubscriberResource;
 }
-const CreateSubscriberResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateSubscriberResponse>;
 export interface SqsNotificationConfiguration {}
-const SqsNotificationConfiguration = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<SqsNotificationConfiguration>;
 export type HttpMethod = "POST" | "PUT" | (string & {});
-const HttpMethod = S.String;
-
 export interface HttpsNotificationConfiguration {
   endpoint: string;
   authorizationApiKeyName?: string;
@@ -479,10 +346,6 @@ export interface HttpsNotificationConfiguration {
   httpMethod?: HttpMethod;
   targetRoleArn: string;
 }
-const HttpsNotificationConfiguration = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<HttpsNotificationConfiguration>;
 export type NotificationConfiguration =
   | {
       sqsNotificationConfiguration: SqsNotificationConfiguration;
@@ -492,127 +355,54 @@ export type NotificationConfiguration =
       sqsNotificationConfiguration?: never;
       httpsNotificationConfiguration: HttpsNotificationConfiguration;
     };
-const NotificationConfiguration = /*@__PURE__*/ __L.at(__c5, 4);
 export interface CreateSubscriberNotificationRequest {
   subscriberId: string;
   configuration: NotificationConfiguration;
 }
-const CreateSubscriberNotificationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CreateSubscriberNotificationRequest>;
 export interface CreateSubscriberNotificationResponse {
   subscriberEndpoint?: string;
 }
-const CreateSubscriberNotificationResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateSubscriberNotificationResponse>;
 export interface DeleteAwsLogSourceRequest {
   sources: AwsLogSourceConfiguration[];
 }
-const DeleteAwsLogSourceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DeleteAwsLogSourceRequest>;
 export interface DeleteAwsLogSourceResponse {
   failed?: string[];
 }
-const DeleteAwsLogSourceResponse =
-  CreateAwsLogSourceResponse as any as S.Schema<DeleteAwsLogSourceResponse>;
 export interface DeleteCustomLogSourceRequest {
   sourceName: string;
   sourceVersion?: string;
 }
-const DeleteCustomLogSourceRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DeleteCustomLogSourceRequest>;
 export interface DeleteCustomLogSourceResponse {}
-const DeleteCustomLogSourceResponse =
-  SqsNotificationConfiguration as any as S.Schema<DeleteCustomLogSourceResponse>;
 export interface DeleteDataLakeRequest {
   regions: string[];
 }
-const DeleteDataLakeRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DeleteDataLakeRequest>;
 export interface DeleteDataLakeResponse {}
-const DeleteDataLakeResponse =
-  SqsNotificationConfiguration as any as S.Schema<DeleteDataLakeResponse>;
 export interface DeleteDataLakeExceptionSubscriptionRequest {}
-const DeleteDataLakeExceptionSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DeleteDataLakeExceptionSubscriptionRequest>;
 export interface DeleteDataLakeExceptionSubscriptionResponse {}
-const DeleteDataLakeExceptionSubscriptionResponse =
-  CreateDataLakeExceptionSubscriptionResponse as any as S.Schema<DeleteDataLakeExceptionSubscriptionResponse>;
 export interface DeleteDataLakeOrganizationConfigurationRequest {
   autoEnableNewAccount?: DataLakeAutoEnableNewAccountConfiguration[];
 }
-const DeleteDataLakeOrganizationConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DeleteDataLakeOrganizationConfigurationRequest>;
 export interface DeleteDataLakeOrganizationConfigurationResponse {}
-const DeleteDataLakeOrganizationConfigurationResponse =
-  CreateDataLakeExceptionSubscriptionResponse as any as S.Schema<DeleteDataLakeOrganizationConfigurationResponse>;
 export interface DeleteSubscriberRequest {
   subscriberId: string;
 }
-const DeleteSubscriberRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DeleteSubscriberRequest>;
 export interface DeleteSubscriberResponse {}
-const DeleteSubscriberResponse =
-  SqsNotificationConfiguration as any as S.Schema<DeleteSubscriberResponse>;
 export interface DeleteSubscriberNotificationRequest {
   subscriberId: string;
 }
-const DeleteSubscriberNotificationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<DeleteSubscriberNotificationRequest>;
 export interface DeleteSubscriberNotificationResponse {}
-const DeleteSubscriberNotificationResponse =
-  CreateDataLakeExceptionSubscriptionResponse as any as S.Schema<DeleteSubscriberNotificationResponse>;
 export interface DeregisterDataLakeDelegatedAdministratorRequest {}
-const DeregisterDataLakeDelegatedAdministratorRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<DeregisterDataLakeDelegatedAdministratorRequest>;
 export interface DeregisterDataLakeDelegatedAdministratorResponse {}
-const DeregisterDataLakeDelegatedAdministratorResponse =
-  CreateDataLakeExceptionSubscriptionResponse as any as S.Schema<DeregisterDataLakeDelegatedAdministratorResponse>;
 export interface GetDataLakeExceptionSubscriptionRequest {}
-const GetDataLakeExceptionSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetDataLakeExceptionSubscriptionRequest>;
 export interface GetDataLakeExceptionSubscriptionResponse {
   subscriptionProtocol?: string;
   notificationEndpoint?: string;
   exceptionTimeToLive?: number;
 }
-const GetDataLakeExceptionSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GetDataLakeExceptionSubscriptionResponse>;
 export interface GetDataLakeOrganizationConfigurationRequest {}
-const GetDataLakeOrganizationConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetDataLakeOrganizationConfigurationRequest>;
 export interface GetDataLakeOrganizationConfigurationResponse {
   autoEnableNewAccount?: DataLakeAutoEnableNewAccountConfiguration[];
 }
-const GetDataLakeOrganizationConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetDataLakeOrganizationConfigurationResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface GetDataLakeSourcesRequest {
@@ -620,84 +410,56 @@ export interface GetDataLakeSourcesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const GetDataLakeSourcesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetDataLakeSourcesRequest>;
 export type SourceCollectionStatus =
   | "COLLECTING"
   | "MISCONFIGURED"
   | "NOT_COLLECTING"
   | (string & {});
-const SourceCollectionStatus = S.String;
-
 export interface DataLakeSourceStatus {
   resource?: string;
   status?: SourceCollectionStatus;
 }
-const DataLakeSourceStatus = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<DataLakeSourceStatus>;
 export type DataLakeSourceStatusList = DataLakeSourceStatus[];
-const DataLakeSourceStatusList = /*@__PURE__*/ __L.at(__c7, 5);
 export interface DataLakeSource {
   account?: string;
   sourceName?: string;
   eventClasses?: string[];
   sourceStatuses?: DataLakeSourceStatus[];
 }
-const DataLakeSource = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<DataLakeSource>;
 export type DataLakeSourceList = DataLakeSource[];
-const DataLakeSourceList = /*@__PURE__*/ __L.at(__c7, 7);
 export interface GetDataLakeSourcesResponse {
   dataLakeArn?: string;
   dataLakeSources?: DataLakeSource[];
   nextToken?: string;
 }
-const GetDataLakeSourcesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetDataLakeSourcesResponse>;
 export interface GetSubscriberRequest {
   subscriberId: string;
 }
-const GetSubscriberRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<GetSubscriberRequest>;
 export interface GetSubscriberResponse {
   subscriber?: SubscriberResource;
 }
-const GetSubscriberResponse = CreateSubscriberResponse as any as S.Schema<GetSubscriberResponse>;
 export interface ListDataLakeExceptionsRequest {
   regions?: string[];
   maxResults?: number;
   nextToken?: string;
 }
-const ListDataLakeExceptionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListDataLakeExceptionsRequest>;
 export interface DataLakeException {
   region?: string;
   exception?: string;
   remediation?: string;
   timestamp?: Date;
 }
-const DataLakeException = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<DataLakeException>;
 export type DataLakeExceptionList = DataLakeException[];
-const DataLakeExceptionList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface ListDataLakeExceptionsResponse {
   exceptions?: DataLakeException[];
   nextToken?: string;
 }
-const ListDataLakeExceptionsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ListDataLakeExceptionsResponse>;
 export interface ListDataLakesRequest {
   regions?: string[];
 }
-const ListDataLakesRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ListDataLakesRequest>;
 export interface ListDataLakesResponse {
   dataLakes?: DataLakeResource[];
 }
-const ListDataLakesResponse = CreateDataLakeResponse as any as S.Schema<ListDataLakesResponse>;
 export interface ListLogSourcesRequest {
   accounts?: string[];
   regions?: string[];
@@ -705,112 +467,59 @@ export interface ListLogSourcesRequest {
   maxResults?: number;
   nextToken?: string;
 }
-const ListLogSourcesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListLogSourcesRequest>;
 export interface LogSource {
   account?: string;
   region?: string;
   sources?: LogSourceResource[];
 }
-const LogSource = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<LogSource>;
 export type LogSourceList = LogSource[];
-const LogSourceList = /*@__PURE__*/ __L.at(__c9, 1);
 export interface ListLogSourcesResponse {
   sources?: LogSource[];
   nextToken?: string;
 }
-const ListLogSourcesResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListLogSourcesResponse>;
 export interface ListSubscribersRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListSubscribersRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ListSubscribersRequest>;
 export type SubscriberResourceList = SubscriberResource[];
-const SubscriberResourceList = /*@__PURE__*/ __L.at(__c9, 4);
 export interface ListSubscribersResponse {
   subscribers?: SubscriberResource[];
   nextToken?: string;
 }
-const ListSubscribersResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListSubscribersResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RegisterDataLakeDelegatedAdministratorRequest {
   accountId: string;
 }
-const RegisterDataLakeDelegatedAdministratorRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<RegisterDataLakeDelegatedAdministratorRequest>;
 export interface RegisterDataLakeDelegatedAdministratorResponse {}
-const RegisterDataLakeDelegatedAdministratorResponse =
-  CreateDataLakeExceptionSubscriptionResponse as any as S.Schema<RegisterDataLakeDelegatedAdministratorResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = SqsNotificationConfiguration as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = AccountList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse =
-  SqsNotificationConfiguration as any as S.Schema<UntagResourceResponse>;
 export interface UpdateDataLakeRequest {
   configurations: DataLakeConfiguration[];
   metaStoreManagerRoleArn?: string;
 }
-const UpdateDataLakeRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<UpdateDataLakeRequest>;
 export interface UpdateDataLakeResponse {
   dataLakes?: DataLakeResource[];
 }
-const UpdateDataLakeResponse = CreateDataLakeResponse as any as S.Schema<UpdateDataLakeResponse>;
 export interface UpdateDataLakeExceptionSubscriptionRequest {
   subscriptionProtocol: string;
   notificationEndpoint: string;
   exceptionTimeToLive?: number;
 }
-const UpdateDataLakeExceptionSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<UpdateDataLakeExceptionSubscriptionRequest>;
 export interface UpdateDataLakeExceptionSubscriptionResponse {}
-const UpdateDataLakeExceptionSubscriptionResponse =
-  CreateDataLakeExceptionSubscriptionResponse as any as S.Schema<UpdateDataLakeExceptionSubscriptionResponse>;
 export interface UpdateSubscriberRequest {
   subscriberId: string;
   subscriberIdentity?: AwsIdentity;
@@ -818,28 +527,16 @@ export interface UpdateSubscriberRequest {
   subscriberDescription?: string;
   sources?: LogSourceResource[];
 }
-const UpdateSubscriberRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<UpdateSubscriberRequest>;
 export interface UpdateSubscriberResponse {
   subscriber?: SubscriberResource;
 }
-const UpdateSubscriberResponse =
-  CreateSubscriberResponse as any as S.Schema<UpdateSubscriberResponse>;
 export interface UpdateSubscriberNotificationRequest {
   subscriberId: string;
   configuration: NotificationConfiguration;
 }
-const UpdateSubscriberNotificationRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<UpdateSubscriberNotificationRequest>;
 export interface UpdateSubscriberNotificationResponse {
   subscriberEndpoint?: string;
 }
-const UpdateSubscriberNotificationResponse =
-  CreateSubscriberNotificationResponse as any as S.Schema<UpdateSubscriberNotificationResponse>;
 export type CreateAwsLogSourceError =
   | AccessDeniedException
   | BadRequestException
@@ -865,8 +562,8 @@ export const createAwsLogSource: API.OperationMethod<
   CreateAwsLogSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAwsLogSourceRequest,
-  output: CreateAwsLogSourceResponse,
+  input: __S(3) as any as S.Schema<CreateAwsLogSourceRequest>,
+  output: __S(4) as any as S.Schema<CreateAwsLogSourceResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -905,8 +602,8 @@ export const createCustomLogSource: API.OperationMethod<
   CreateCustomLogSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCustomLogSourceRequest,
-  output: CreateCustomLogSourceResponse,
+  input: __S(8) as any as S.Schema<CreateCustomLogSourceRequest>,
+  output: __S(12) as any as S.Schema<CreateCustomLogSourceResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -953,8 +650,8 @@ export const createDataLake: API.OperationMethod<
   CreateDataLakeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataLakeRequest,
-  output: CreateDataLakeResponse,
+  input: __S(23) as any as S.Schema<CreateDataLakeRequest>,
+  output: __S(28) as any as S.Schema<CreateDataLakeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -988,8 +685,8 @@ export const createDataLakeExceptionSubscription: API.OperationMethod<
   CreateDataLakeExceptionSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataLakeExceptionSubscriptionRequest,
-  output: CreateDataLakeExceptionSubscriptionResponse,
+  input: __S(29) as any as S.Schema<CreateDataLakeExceptionSubscriptionRequest>,
+  output: __S(30) as any as S.Schema<CreateDataLakeExceptionSubscriptionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1025,8 +722,8 @@ export const createDataLakeOrganizationConfiguration: API.OperationMethod<
   CreateDataLakeOrganizationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataLakeOrganizationConfigurationRequest,
-  output: CreateDataLakeOrganizationConfigurationResponse,
+  input: __S(35) as any as S.Schema<CreateDataLakeOrganizationConfigurationRequest>,
+  output: __S(30) as any as S.Schema<CreateDataLakeOrganizationConfigurationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1059,8 +756,8 @@ export const createSubscriber: API.OperationMethod<
   CreateSubscriberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSubscriberRequest,
-  output: CreateSubscriberResponse,
+  input: __S(39) as any as S.Schema<CreateSubscriberRequest>,
+  output: __S(41) as any as S.Schema<CreateSubscriberResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1095,8 +792,8 @@ export const createSubscriberNotification: API.OperationMethod<
   CreateSubscriberNotificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSubscriberNotificationRequest,
-  output: CreateSubscriberNotificationResponse,
+  input: __S(45) as any as S.Schema<CreateSubscriberNotificationRequest>,
+  output: __S(46) as any as S.Schema<CreateSubscriberNotificationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1136,8 +833,8 @@ export const deleteAwsLogSource: API.OperationMethod<
   DeleteAwsLogSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAwsLogSourceRequest,
-  output: DeleteAwsLogSourceResponse,
+  input: __S(47) as any as S.Schema<DeleteAwsLogSourceRequest>,
+  output: __S(4) as any as S.Schema<DeleteAwsLogSourceResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1171,8 +868,8 @@ export const deleteCustomLogSource: API.OperationMethod<
   DeleteCustomLogSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCustomLogSourceRequest,
-  output: DeleteCustomLogSourceResponse,
+  input: __S(48) as any as S.Schema<DeleteCustomLogSourceRequest>,
+  output: __S(42) as any as S.Schema<DeleteCustomLogSourceResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1213,8 +910,8 @@ export const deleteDataLake: API.OperationMethod<
   DeleteDataLakeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataLakeRequest,
-  output: DeleteDataLakeResponse,
+  input: __S(49) as any as S.Schema<DeleteDataLakeRequest>,
+  output: __S(42) as any as S.Schema<DeleteDataLakeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1248,8 +945,8 @@ export const deleteDataLakeExceptionSubscription: API.OperationMethod<
   DeleteDataLakeExceptionSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataLakeExceptionSubscriptionRequest,
-  output: DeleteDataLakeExceptionSubscriptionResponse,
+  input: __S(50) as any as S.Schema<DeleteDataLakeExceptionSubscriptionRequest>,
+  output: __S(30) as any as S.Schema<DeleteDataLakeExceptionSubscriptionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1283,8 +980,8 @@ export const deleteDataLakeOrganizationConfiguration: API.OperationMethod<
   DeleteDataLakeOrganizationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataLakeOrganizationConfigurationRequest,
-  output: DeleteDataLakeOrganizationConfigurationResponse,
+  input: __S(51) as any as S.Schema<DeleteDataLakeOrganizationConfigurationRequest>,
+  output: __S(30) as any as S.Schema<DeleteDataLakeOrganizationConfigurationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1319,8 +1016,8 @@ export const deleteSubscriber: API.OperationMethod<
   DeleteSubscriberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSubscriberRequest,
-  output: DeleteSubscriberResponse,
+  input: __S(52) as any as S.Schema<DeleteSubscriberRequest>,
+  output: __S(42) as any as S.Schema<DeleteSubscriberResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1354,8 +1051,8 @@ export const deleteSubscriberNotification: API.OperationMethod<
   DeleteSubscriberNotificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSubscriberNotificationRequest,
-  output: DeleteSubscriberNotificationResponse,
+  input: __S(53) as any as S.Schema<DeleteSubscriberNotificationRequest>,
+  output: __S(30) as any as S.Schema<DeleteSubscriberNotificationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1389,8 +1086,8 @@ export const deregisterDataLakeDelegatedAdministrator: API.OperationMethod<
   DeregisterDataLakeDelegatedAdministratorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeregisterDataLakeDelegatedAdministratorRequest,
-  output: DeregisterDataLakeDelegatedAdministratorResponse,
+  input: __S(54) as any as S.Schema<DeregisterDataLakeDelegatedAdministratorRequest>,
+  output: __S(30) as any as S.Schema<DeregisterDataLakeDelegatedAdministratorResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1422,8 +1119,8 @@ export const getDataLakeExceptionSubscription: API.OperationMethod<
   GetDataLakeExceptionSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataLakeExceptionSubscriptionRequest,
-  output: GetDataLakeExceptionSubscriptionResponse,
+  input: __S(55) as any as S.Schema<GetDataLakeExceptionSubscriptionRequest>,
+  output: __S(56) as any as S.Schema<GetDataLakeExceptionSubscriptionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1457,8 +1154,8 @@ export const getDataLakeOrganizationConfiguration: API.OperationMethod<
   GetDataLakeOrganizationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataLakeOrganizationConfigurationRequest,
-  output: GetDataLakeOrganizationConfigurationResponse,
+  input: __S(57) as any as S.Schema<GetDataLakeOrganizationConfigurationRequest>,
+  output: __S(58) as any as S.Schema<GetDataLakeOrganizationConfigurationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1492,8 +1189,8 @@ export const getDataLakeSources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataLakeSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetDataLakeSourcesRequest,
-  output: GetDataLakeSourcesResponse,
+  input: __S(59) as any as S.Schema<GetDataLakeSourcesRequest>,
+  output: __S(64) as any as S.Schema<GetDataLakeSourcesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1533,8 +1230,8 @@ export const getSubscriber: API.OperationMethod<
   GetSubscriberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriberRequest,
-  output: GetSubscriberResponse,
+  input: __S(65) as any as S.Schema<GetSubscriberRequest>,
+  output: __S(41) as any as S.Schema<GetSubscriberResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1569,8 +1266,8 @@ export const listDataLakeExceptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DataLakeException
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDataLakeExceptionsRequest,
-  output: ListDataLakeExceptionsResponse,
+  input: __S(66) as any as S.Schema<ListDataLakeExceptionsRequest>,
+  output: __S(69) as any as S.Schema<ListDataLakeExceptionsResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1610,8 +1307,8 @@ export const listDataLakes: API.OperationMethod<
   ListDataLakesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataLakesRequest,
-  output: ListDataLakesResponse,
+  input: __S(70) as any as S.Schema<ListDataLakesRequest>,
+  output: __S(28) as any as S.Schema<ListDataLakesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1645,8 +1342,8 @@ export const listLogSources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LogSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLogSourcesRequest,
-  output: ListLogSourcesResponse,
+  input: __S(71) as any as S.Schema<ListLogSourcesRequest>,
+  output: __S(74) as any as S.Schema<ListLogSourcesResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1687,8 +1384,8 @@ export const listSubscribers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SubscriberResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSubscribersRequest,
-  output: ListSubscribersResponse,
+  input: __S(75) as any as S.Schema<ListSubscribersRequest>,
+  output: __S(77) as any as S.Schema<ListSubscribersResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1728,8 +1425,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(78) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(79) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1763,8 +1460,8 @@ export const registerDataLakeDelegatedAdministrator: API.OperationMethod<
   RegisterDataLakeDelegatedAdministratorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterDataLakeDelegatedAdministratorRequest,
-  output: RegisterDataLakeDelegatedAdministratorResponse,
+  input: __S(80) as any as S.Schema<RegisterDataLakeDelegatedAdministratorRequest>,
+  output: __S(30) as any as S.Schema<RegisterDataLakeDelegatedAdministratorResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1803,8 +1500,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(81) as any as S.Schema<TagResourceRequest>,
+  output: __S(42) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1838,8 +1535,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(82) as any as S.Schema<UntagResourceRequest>,
+  output: __S(42) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1884,8 +1581,8 @@ export const updateDataLake: API.OperationMethod<
   UpdateDataLakeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataLakeRequest,
-  output: UpdateDataLakeResponse,
+  input: __S(83) as any as S.Schema<UpdateDataLakeRequest>,
+  output: __S(28) as any as S.Schema<UpdateDataLakeResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1919,8 +1616,8 @@ export const updateDataLakeExceptionSubscription: API.OperationMethod<
   UpdateDataLakeExceptionSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataLakeExceptionSubscriptionRequest,
-  output: UpdateDataLakeExceptionSubscriptionResponse,
+  input: __S(84) as any as S.Schema<UpdateDataLakeExceptionSubscriptionRequest>,
+  output: __S(30) as any as S.Schema<UpdateDataLakeExceptionSubscriptionResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1954,8 +1651,8 @@ export const updateSubscriber: API.OperationMethod<
   UpdateSubscriberError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSubscriberRequest,
-  output: UpdateSubscriberResponse,
+  input: __S(85) as any as S.Schema<UpdateSubscriberRequest>,
+  output: __S(41) as any as S.Schema<UpdateSubscriberResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -1989,8 +1686,8 @@ export const updateSubscriberNotification: API.OperationMethod<
   UpdateSubscriberNotificationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSubscriberNotificationRequest,
-  output: UpdateSubscriberNotificationResponse,
+  input: __S(86) as any as S.Schema<UpdateSubscriberNotificationRequest>,
+  output: __S(46) as any as S.Schema<UpdateSubscriberNotificationResponse>,
   errors: [
     AccessDeniedException,
     BadRequestException,
@@ -2013,19 +1710,19 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(AccountList),
-          regions: RegionList,
-          sourceName: AwsLogSourceName,
+          accounts: S.optional(__S(0)),
+          regions: __S(0),
+          sourceName: S.String,
           sourceVersion: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AwsLogSourceConfiguration",
       });
     case 2:
-      return S.Array(AwsLogSourceConfiguration);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
-        S.Struct({ sources: AwsLogSourceConfigurationList }).pipe(
+        S.Struct({ sources: __S(2) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/datalake/logsources/aws" }),
             svc,
@@ -2039,7 +1736,7 @@ function __c0(j: number): any {
         identifier: "CreateAwsLogSourceRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ failed: S.optional(AccountList) })).annotate({
+      return S.suspend(() => S.Struct({ failed: S.optional(__S(0)) })).annotate({
         identifier: "CreateAwsLogSourceResponse",
       });
     case 5:
@@ -2053,8 +1750,8 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          crawlerConfiguration: CustomLogSourceCrawlerConfiguration,
-          providerIdentity: AwsIdentity,
+          crawlerConfiguration: __S(5),
+          providerIdentity: __S(6),
         }),
       ).annotate({
         identifier: "CustomLogSourceConfiguration",
@@ -2068,8 +1765,8 @@ function __c1(j: number): any {
         S.Struct({
           sourceName: S.String,
           sourceVersion: S.optional(S.String),
-          eventClasses: S.optional(OcsfEventClassList),
-          configuration: CustomLogSourceConfiguration,
+          eventClasses: S.optional(__S(0)),
+          configuration: __S(7),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/datalake/logsources/custom" }),
@@ -2102,12 +1799,12 @@ function __c1(j: number): any {
         S.Struct({
           sourceName: S.optional(S.String),
           sourceVersion: S.optional(S.String),
-          provider: S.optional(CustomLogSourceProvider),
-          attributes: S.optional(CustomLogSourceAttributes),
+          provider: S.optional(__S(9)),
+          attributes: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "CustomLogSourceResource" });
     case 4:
-      return S.suspend(() => S.Struct({ source: S.optional(CustomLogSourceResource) })).annotate({
+      return S.suspend(() => S.Struct({ source: S.optional(__S(11)) })).annotate({
         identifier: "CreateCustomLogSourceResponse",
       });
     case 5:
@@ -2129,19 +1826,19 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DataLakeLifecycleTransition);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          expiration: S.optional(DataLakeLifecycleExpiration),
-          transitions: S.optional(DataLakeLifecycleTransitionList),
+          expiration: S.optional(__S(14)),
+          transitions: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "DataLakeLifecycleConfiguration",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ regions: S.optional(RegionList), roleArn: S.optional(S.String) }),
+        S.Struct({ regions: S.optional(__S(0)), roleArn: S.optional(S.String) }),
       ).annotate({
         identifier: "DataLakeReplicationConfiguration",
       });
@@ -2149,25 +1846,25 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           region: S.String,
-          encryptionConfiguration: S.optional(DataLakeEncryptionConfiguration),
-          lifecycleConfiguration: S.optional(DataLakeLifecycleConfiguration),
-          replicationConfiguration: S.optional(DataLakeReplicationConfiguration),
+          encryptionConfiguration: S.optional(__S(13)),
+          lifecycleConfiguration: S.optional(__S(17)),
+          replicationConfiguration: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "DataLakeConfiguration" });
     case 4:
-      return S.Array(DataLakeConfiguration);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() => S.Struct({ key: S.String, value: S.String })).annotate({
         identifier: "Tag",
       });
     case 6:
-      return S.Array(Tag);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          configurations: DataLakeConfigurationList,
+          configurations: __S(20),
           metaStoreManagerRoleArn: S.String,
-          tags: S.optional(TagList),
+          tags: S.optional(__S(22)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/datalake" }), svc, auth, proto, ver, rules),
         ),
@@ -2184,8 +1881,8 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          status: S.optional(DataLakeStatus),
-          exception: S.optional(DataLakeUpdateException),
+          status: S.optional(S.String),
+          exception: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "DataLakeUpdateStatus" });
     case 2:
@@ -2194,17 +1891,17 @@ function __c3(j: number): any {
           dataLakeArn: S.String,
           region: S.String,
           s3BucketArn: S.optional(S.String),
-          encryptionConfiguration: S.optional(DataLakeEncryptionConfiguration),
-          lifecycleConfiguration: S.optional(DataLakeLifecycleConfiguration),
-          replicationConfiguration: S.optional(DataLakeReplicationConfiguration),
-          createStatus: S.optional(DataLakeStatus),
-          updateStatus: S.optional(DataLakeUpdateStatus),
+          encryptionConfiguration: S.optional(__S(13)),
+          lifecycleConfiguration: S.optional(__S(17)),
+          replicationConfiguration: S.optional(__S(18)),
+          createStatus: S.optional(S.String),
+          updateStatus: S.optional(__S(25)),
         }),
       ).annotate({ identifier: "DataLakeResource" });
     case 3:
-      return S.Array(DataLakeResource);
+      return S.Array(__S(26));
     case 4:
-      return S.suspend(() => S.Struct({ dataLakes: S.optional(DataLakeResourceList) })).annotate({
+      return S.suspend(() => S.Struct({ dataLakes: S.optional(__S(27)) })).annotate({
         identifier: "CreateDataLakeResponse",
       });
     case 5:
@@ -2232,26 +1929,24 @@ function __c3(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ sourceName: S.optional(AwsLogSourceName), sourceVersion: S.optional(S.String) }),
+        S.Struct({ sourceName: S.optional(S.String), sourceVersion: S.optional(S.String) }),
       ).annotate({ identifier: "AwsLogSourceResource" });
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsLogSourceResource);
+      return S.Array(__S(31));
     case 1:
-      return S.suspend(() =>
-        S.Struct({ region: S.String, sources: AwsLogSourceResourceList }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ region: S.String, sources: __S(32) })).annotate({
         identifier: "DataLakeAutoEnableNewAccountConfiguration",
       });
     case 2:
-      return S.Array(DataLakeAutoEnableNewAccountConfiguration);
+      return S.Array(__S(33));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          autoEnableNewAccount: S.optional(DataLakeAutoEnableNewAccountConfigurationList),
+          autoEnableNewAccount: S.optional(__S(34)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/datalake/organization/configuration" }),
@@ -2267,22 +1962,22 @@ function __c4(j: number): any {
       });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ awsLogSource: AwsLogSourceResource }),
-        /*@__PURE__*/ S.Struct({ customLogSource: CustomLogSourceResource }),
+        /*@__PURE__*/ S.Struct({ awsLogSource: __S(31) }),
+        /*@__PURE__*/ S.Struct({ customLogSource: __S(11) }),
       ]);
     case 5:
-      return S.Array(LogSourceResource);
+      return S.Array(__S(36));
     case 6:
-      return S.Array(AccessType);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          subscriberIdentity: AwsIdentity,
+          subscriberIdentity: __S(6),
           subscriberName: S.String,
           subscriberDescription: S.optional(S.String),
-          sources: LogSourceResourceList,
-          accessTypes: S.optional(AccessTypeList),
-          tags: S.optional(TagList),
+          sources: __S(37),
+          accessTypes: S.optional(__S(38)),
+          tags: S.optional(__S(22)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/v1/subscribers" }), svc, auth, proto, ver, rules),
         ),
@@ -2296,15 +1991,15 @@ function __c5(j: number): any {
         S.Struct({
           subscriberId: S.String,
           subscriberArn: S.String,
-          subscriberIdentity: AwsIdentity,
+          subscriberIdentity: __S(6),
           subscriberName: S.String,
           subscriberDescription: S.optional(S.String),
-          sources: LogSourceResourceList,
-          accessTypes: S.optional(AccessTypeList),
+          sources: __S(37),
+          accessTypes: S.optional(__S(38)),
           roleArn: S.optional(S.String),
           s3BucketArn: S.optional(S.String),
           subscriberEndpoint: S.optional(S.String),
-          subscriberStatus: S.optional(SubscriberStatus),
+          subscriberStatus: S.optional(S.String),
           resourceShareArn: S.optional(S.String),
           resourceShareName: S.optional(S.String),
           createdAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
@@ -2312,7 +2007,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "SubscriberResource" });
     case 1:
-      return S.suspend(() => S.Struct({ subscriber: S.optional(SubscriberResource) })).annotate({
+      return S.suspend(() => S.Struct({ subscriber: S.optional(__S(40)) })).annotate({
         identifier: "CreateSubscriberResponse",
       });
     case 2:
@@ -2325,7 +2020,7 @@ function __c5(j: number): any {
           endpoint: S.String,
           authorizationApiKeyName: S.optional(S.String),
           authorizationApiKeyValue: S.optional(SensitiveString),
-          httpMethod: S.optional(HttpMethod),
+          httpMethod: S.optional(S.String),
           targetRoleArn: S.String,
         }),
       ).annotate({
@@ -2333,14 +2028,14 @@ function __c5(j: number): any {
       });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ sqsNotificationConfiguration: SqsNotificationConfiguration }),
-        /*@__PURE__*/ S.Struct({ httpsNotificationConfiguration: HttpsNotificationConfiguration }),
+        /*@__PURE__*/ S.Struct({ sqsNotificationConfiguration: __S(42) }),
+        /*@__PURE__*/ S.Struct({ httpsNotificationConfiguration: __S(43) }),
       ]);
     case 5:
       return S.suspend(() =>
         S.Struct({
           subscriberId: S.String.pipe(T.HttpLabel("subscriberId")),
-          configuration: NotificationConfiguration,
+          configuration: __S(44),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/subscribers/{subscriberId}/notification" }),
@@ -2360,7 +2055,7 @@ function __c5(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ sources: AwsLogSourceConfigurationList }).pipe(
+        S.Struct({ sources: __S(2) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/datalake/logsources/aws/delete" }),
             svc,
@@ -2397,7 +2092,7 @@ function __c6(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ regions: RegionList }).pipe(
+        S.Struct({ regions: __S(0) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/datalake/delete" }),
             svc,
@@ -2426,7 +2121,7 @@ function __c6(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          autoEnableNewAccount: S.optional(DataLakeAutoEnableNewAccountConfigurationList),
+          autoEnableNewAccount: S.optional(__S(34)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/datalake/organization/configuration/delete" }),
@@ -2530,7 +2225,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          autoEnableNewAccount: S.optional(DataLakeAutoEnableNewAccountConfigurationList),
+          autoEnableNewAccount: S.optional(__S(34)),
         }),
       ).annotate({
         identifier: "GetDataLakeOrganizationConfigurationResponse",
@@ -2538,7 +2233,7 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(AccountList),
+          accounts: S.optional(__S(0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -2556,21 +2251,21 @@ function __c7(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ resource: S.optional(S.String), status: S.optional(SourceCollectionStatus) }),
+        S.Struct({ resource: S.optional(S.String), status: S.optional(S.String) }),
       ).annotate({ identifier: "DataLakeSourceStatus" });
     case 5:
-      return S.Array(DataLakeSourceStatus);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
         S.Struct({
           account: S.optional(S.String),
           sourceName: S.optional(S.String),
-          eventClasses: S.optional(OcsfEventClassList),
-          sourceStatuses: S.optional(DataLakeSourceStatusList),
+          eventClasses: S.optional(__S(0)),
+          sourceStatuses: S.optional(__S(61)),
         }),
       ).annotate({ identifier: "DataLakeSource" });
     case 7:
-      return S.Array(DataLakeSource);
+      return S.Array(__S(62));
   }
 }
 function __c8(j: number): any {
@@ -2579,7 +2274,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dataLakeArn: S.optional(S.String),
-          dataLakeSources: S.optional(DataLakeSourceList),
+          dataLakeSources: S.optional(__S(63)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2601,7 +2296,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          regions: S.optional(RegionList),
+          regions: S.optional(__S(0)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -2627,11 +2322,11 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "DataLakeException" });
     case 4:
-      return S.Array(DataLakeException);
+      return S.Array(__S(67));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          exceptions: S.optional(DataLakeExceptionList),
+          exceptions: S.optional(__S(68)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -2639,16 +2334,16 @@ function __c8(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ regions: S.optional(RegionList).pipe(T.HttpQuery("regions")) }).pipe(
+        S.Struct({ regions: S.optional(__S(0)).pipe(T.HttpQuery("regions")) }).pipe(
           T.all(T.Http({ method: "GET", uri: "/v1/datalakes" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "ListDataLakesRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(AccountList),
-          regions: S.optional(RegionList),
-          sources: S.optional(LogSourceResourceList),
+          accounts: S.optional(__S(0)),
+          regions: S.optional(__S(0)),
+          sources: S.optional(__S(37)),
           maxResults: S.optional(S.Number),
           nextToken: S.optional(S.String),
         }).pipe(
@@ -2671,14 +2366,14 @@ function __c9(j: number): any {
         S.Struct({
           account: S.optional(S.String),
           region: S.optional(S.String),
-          sources: S.optional(LogSourceResourceList),
+          sources: S.optional(__S(37)),
         }),
       ).annotate({ identifier: "LogSource" });
     case 1:
-      return S.Array(LogSource);
+      return S.Array(__S(72));
     case 2:
       return S.suspend(() =>
-        S.Struct({ sources: S.optional(LogSourceList), nextToken: S.optional(S.String) }),
+        S.Struct({ sources: S.optional(__S(73)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListLogSourcesResponse" });
     case 3:
       return S.suspend(() =>
@@ -2690,11 +2385,11 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "ListSubscribersRequest" });
     case 4:
-      return S.Array(SubscriberResource);
+      return S.Array(__S(40));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          subscribers: S.optional(SubscriberResourceList),
+          subscribers: S.optional(__S(76)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSubscribersResponse" });
@@ -2714,7 +2409,7 @@ function __c9(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ tags: S.optional(TagList) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(22)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
   }
@@ -2738,7 +2433,7 @@ function __c10(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagList }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(22) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/v1/tags/{resourceArn}" }),
             svc,
@@ -2753,7 +2448,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/v1/tags/{resourceArn}" }),
@@ -2768,7 +2463,7 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          configurations: DataLakeConfigurationList,
+          configurations: __S(20),
           metaStoreManagerRoleArn: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/v1/datalake" }), svc, auth, proto, ver, rules),
@@ -2797,10 +2492,10 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriberId: S.String.pipe(T.HttpLabel("subscriberId")),
-          subscriberIdentity: S.optional(AwsIdentity),
+          subscriberIdentity: S.optional(__S(6)),
           subscriberName: S.optional(S.String),
           subscriberDescription: S.optional(S.String),
-          sources: S.optional(LogSourceResourceList),
+          sources: S.optional(__S(37)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/v1/subscribers/{subscriberId}" }),
@@ -2816,7 +2511,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriberId: S.String.pipe(T.HttpLabel("subscriberId")),
-          configuration: NotificationConfiguration,
+          configuration: __S(44),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/v1/subscribers/{subscriberId}/notification" }),
@@ -2830,5 +2525,36 @@ function __c10(j: number): any {
       ).annotate({
         identifier: "UpdateSubscriberNotificationRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
   }
 }

@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,26 +66,15 @@ export class NotFound
 
 /** Request definition for the account close rpc. */
 export interface CloseAccountRequest {}
-const CloseAccountRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CloseAccountRequest>;
-
 export interface ClosePlatformsAccountsRequest {
   /** Required. Account to close. Format: platforms/{platform}/accounts/{account_id} */
   name: string;
   /** Request body */
   body?: CloseAccountRequest;
 }
-const ClosePlatformsAccountsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ClosePlatformsAccountsRequest>;
-
 /** Response definition for the account close rpc. */
 export interface CloseAccountResponse {}
-const CloseAccountResponse = CloseAccountRequest as any as S.Schema<CloseAccountResponse>;
-
 export type AccountStateEnum = "STATE_UNSPECIFIED" | "UNCHECKED" | "APPROVED" | "DISAPPROVED";
-const AccountStateEnum = S.String;
-
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -91,8 +82,6 @@ export interface TimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
   version?: string;
 }
-const TimeZone = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<TimeZone>;
-
 /** Representation of an Account. */
 export interface Account {
   /** Required. Input only. CLDR region code of the country/region of the address. Set this to country code of the child account if known, otherwise to your own country code. */
@@ -110,19 +99,12 @@ export interface Account {
   /** Required. The IANA TZ timezone code of this account. For more information, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones. This field is used for reporting. It is recommended to set it to the same value for all child accounts. */
   timeZone?: TimeZone;
 }
-const Account = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Account>;
-
 export interface CreatePlatformsAccountsRequest {
   /** Required. Platform to create an account for. Format: platforms/{platform} */
   parent: string;
   /** Request body */
   body?: Account;
 }
-const CreatePlatformsAccountsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreatePlatformsAccountsRequest>;
-
 /** Address data. */
 export interface Address {
   /** Second line of address. Max length 64 bytes or 30 characters. */
@@ -146,8 +128,6 @@ export interface Address {
   /** Zip/post code. Max length 10 bytes or 10 characters. */
   zip?: string;
 }
-const Address = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Address>;
-
 /** Private information for partner recorded events (PII). */
 export interface EventInfo {
   /** Required. The email address that is associated with the publisher when performing the event. */
@@ -155,14 +135,10 @@ export interface EventInfo {
   /** The billing address of the publisher associated with this event, if available. */
   billingAddress?: Address;
 }
-const EventInfo = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<EventInfo>;
-
 export type EventEventTypeEnum =
   | "EVENT_TYPE_UNSPECIFIED"
   | "LOG_IN_VIA_PLATFORM"
   | "SIGN_UP_VIA_PLATFORM";
-const EventEventTypeEnum = S.String;
-
 /** A platform sub-account event to record spam signals. */
 export interface Event {
   /** Required. Information associated with the event. */
@@ -172,27 +148,18 @@ export interface Event {
   /** Required. Event timestamp. */
   eventTime?: string;
 }
-const Event = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Event>;
-
 export interface CreatePlatformsAccountsEventsRequest {
   /** Required. Account to log events about. Format: platforms/{platform}/accounts/{account} */
   parent: string;
   /** Request body */
   body?: Event;
 }
-const CreatePlatformsAccountsEventsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreatePlatformsAccountsEventsRequest>;
-
 export type SiteStateEnum =
   | "STATE_UNSPECIFIED"
   | "REQUIRES_REVIEW"
   | "GETTING_READY"
   | "READY"
   | "NEEDS_ATTENTION";
-const SiteStateEnum = S.String;
-
 /** Representation of a Site. */
 export interface Site {
   /** Domain/sub-domain of the site. Must be a valid domain complying with [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) and formatted as punycode [RFC 3492](https://www.ietf.org/rfc/rfc3492.txt) in case the domain contains unicode characters. */
@@ -202,41 +169,22 @@ export interface Site {
   /** Output only. Resource name of a site. Format: platforms/{platform}/accounts/{account}/sites/{site} */
   name?: string;
 }
-const Site = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Site>;
-
 export interface CreatePlatformsAccountsSitesRequest {
   /** Required. Account to create site. Format: platforms/{platform}/accounts/{account_id} */
   parent: string;
   /** Request body */
   body?: Site;
 }
-const CreatePlatformsAccountsSitesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreatePlatformsAccountsSitesRequest>;
-
 export interface DeletePlatformsAccountsSitesRequest {
   /** Required. The name of the site to delete. Format: platforms/{platform}/accounts/{account}/sites/{site} */
   name: string;
 }
-const DeletePlatformsAccountsSitesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeletePlatformsAccountsSitesRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CloseAccountRequest as any as S.Schema<Empty>;
-
 export interface GetAccountsPlatformsRequest {
   /** Required. The name of the platform to retrieve. Format: accounts/{account}/platforms/{platform} */
   name: string;
 }
-const GetAccountsPlatformsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetAccountsPlatformsRequest>;
-
 /** Representation of a Transparent Platform. */
 export interface Platform {
   /** Output only. Description of the platform. */
@@ -246,17 +194,10 @@ export interface Platform {
   /** Identifier. Resource name of a platform. Format: accounts/{account}/platforms/{platform} */
   name?: string;
 }
-const Platform = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Platform>;
-
 export interface GetAccountsPlatformsChildAccountsSitesRequest {
   /** Required. The name of the platform child site to retrieve. Format: accounts/{account}/platforms/{platform}/childAccounts/{child_account}/sites/{platform_child_site} */
   name: string;
 }
-const GetAccountsPlatformsChildAccountsSitesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetAccountsPlatformsChildAccountsSitesRequest>;
-
 /** Representation of a Transparent Platform Child Site. */
 export interface PlatformChildSite {
   /** Output only. Domain URL of the Platform Child Site. Part of the PlatformChildSite name. */
@@ -266,24 +207,15 @@ export interface PlatformChildSite {
   /** Resource name of the Platform Group of the Platform Child Site. */
   platformGroup?: string;
 }
-const PlatformChildSite = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<PlatformChildSite>;
-
 export interface GetAccountsPlatformsGroupsRequest {
   /** Required. The name of the platform group to retrieve. Format: accounts/{account}/platforms/{platform}/groups/{group} */
   name: string;
 }
-const GetAccountsPlatformsGroupsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetAccountsPlatformsGroupsRequest>;
-
 /** A representation of a decimal value, such as 2.5. Clients may convert values into language-native decimal formats, such as Java's [BigDecimal](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html) or Python's [decimal.Decimal](https://docs.python.org/3/library/decimal.html). */
 export interface Decimal {
   /** The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. An empty string **should** be interpreted as `0`. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to upper-case, with explicit sign (`2.5e8` -> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5E-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range. */
   value?: string;
 }
-const Decimal = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Decimal>;
-
 /** Representation of a Transparent Platform Group. */
 export interface PlatformGroup {
   /** Identifier. Format: accounts/{account}/platforms/{platform}/groups/{platform_group} */
@@ -293,26 +225,14 @@ export interface PlatformGroup {
   /** Required. Description of the PlatformGroup. */
   description?: string;
 }
-const PlatformGroup = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<PlatformGroup>;
-
 export interface GetPlatformsAccountsRequest {
   /** Required. Account to get information about. Format: platforms/{platform}/accounts/{account_id} */
   name: string;
 }
-const GetPlatformsAccountsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetPlatformsAccountsRequest>;
-
 export interface GetPlatformsAccountsSitesRequest {
   /** Required. The name of the site to retrieve. Format: platforms/{platform}/accounts/{account}/sites/{site} */
   name: string;
 }
-const GetPlatformsAccountsSitesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetPlatformsAccountsSitesRequest>;
-
 export interface ListAccountsPlatformsRequest {
   /** Optional. The maximum number of platforms to include in the response, used for paging. If unspecified, at most 10000 platforms will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
@@ -321,14 +241,7 @@ export interface ListAccountsPlatformsRequest {
   /** Optional. A page token, received from a previous `ListPlatforms` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPlatforms` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListAccountsPlatformsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListAccountsPlatformsRequest>;
-
 export type PlatformList = Array<Platform>;
-const PlatformList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<PlatformList>;
-
 /** Response definition for the platform list rpc. */
 export interface ListPlatformsResponse {
   /** The platforms returned in this list response. */
@@ -336,11 +249,6 @@ export interface ListPlatformsResponse {
   /** Continuation token used to page through platforms. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
-const ListPlatformsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListPlatformsResponse>;
-
 export interface ListAccountsPlatformsChildAccountsSitesRequest {
   /** Optional. A page token, received from a previous `ListPlatformChildSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPlatformChildSites` must match the call that provided the page token. */
   pageToken?: string;
@@ -349,17 +257,7 @@ export interface ListAccountsPlatformsChildAccountsSitesRequest {
   /** Optional. The maximum number of children to include in the response, used for paging. If unspecified, at most 10000 platforms will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
 }
-const ListAccountsPlatformsChildAccountsSitesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListAccountsPlatformsChildAccountsSitesRequest>;
-
 export type PlatformChildSiteList = Array<PlatformChildSite>;
-const PlatformChildSiteList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<PlatformChildSiteList>;
-
 /** Response definition for the list platform child sites rpc. */
 export interface ListPlatformChildSitesResponse {
   /** Continuation token used to page through platforms. To retrieve the next page of the results, set the next request's "page_token" value to this. */
@@ -367,11 +265,6 @@ export interface ListPlatformChildSitesResponse {
   /** The platform child sites returned in this list response. */
   platformChildSites?: PlatformChildSiteList;
 }
-const ListPlatformChildSitesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListPlatformChildSitesResponse>;
-
 export interface ListAccountsPlatformsGroupsRequest {
   /** Optional. The maximum number of groups to include in the response, used for paging. If unspecified, at most 10000 groups will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
@@ -380,14 +273,7 @@ export interface ListAccountsPlatformsGroupsRequest {
   /** Optional. A page token, received from a previous `ListPlatformGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPlatformGroups` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListAccountsPlatformsGroupsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListAccountsPlatformsGroupsRequest>;
-
 export type PlatformGroupList = Array<PlatformGroup>;
-const PlatformGroupList = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<PlatformGroupList>;
-
 /** Response definition for the platform groups list rpc. */
 export interface ListPlatformGroupsResponse {
   /** The platform groups returned in this list response. */
@@ -395,11 +281,6 @@ export interface ListPlatformGroupsResponse {
   /** Continuation token used to page through platforms. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
-const ListPlatformGroupsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListPlatformGroupsResponse>;
-
 export interface ListPlatformsAccountsRequest {
   /** Optional. The maximum number of accounts to include in the response, used for paging. If unspecified, at most 10000 accounts will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. */
   pageSize?: number;
@@ -408,14 +289,7 @@ export interface ListPlatformsAccountsRequest {
   /** Required. Platform who parents the accounts. Format: platforms/{platform} */
   parent: string;
 }
-const ListPlatformsAccountsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListPlatformsAccountsRequest>;
-
 export type AccountList = Array<Account>;
-const AccountList = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<AccountList>;
-
 /** Response definition for the list accounts rpc. */
 export interface ListAccountsResponse {
   /** The Accounts returned in the list response. Represented by a partial view of the Account resource, populating `name` and `creation_request_id`. */
@@ -423,8 +297,6 @@ export interface ListAccountsResponse {
   /** Continuation token used to page through accounts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
-const ListAccountsResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListAccountsResponse>;
-
 export interface ListPlatformsAccountsSitesRequest {
   /** A page token, received from a previous `ListSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSites` must match the call that provided the page token. */
   pageToken?: string;
@@ -433,14 +305,7 @@ export interface ListPlatformsAccountsSitesRequest {
   /** Required. The account which owns the sites. Format: platforms/{platform}/accounts/{account} */
   parent: string;
 }
-const ListPlatformsAccountsSitesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListPlatformsAccountsSitesRequest>;
-
 export type SiteList = Array<Site>;
-const SiteList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<SiteList>;
-
 /** Response definition for the site list rpc. */
 export interface ListSitesResponse {
   /** The sites returned in this list response. */
@@ -448,29 +313,17 @@ export interface ListSitesResponse {
   /** Continuation token used to page through sites. To retrieve the next page of the results, set the next request's "page_token" value to this. */
   nextPageToken?: string;
 }
-const ListSitesResponse = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ListSitesResponse>;
-
 export interface LookupPlatformsAccountsRequest {
   /** Optional. The creation_request_id provided when calling createAccount. */
   creationRequestId?: string;
   /** Required. Platform who parents the account. Format: platforms/{platform} */
   parent: string;
 }
-const LookupPlatformsAccountsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<LookupPlatformsAccountsRequest>;
-
 /** Response definition for the lookup account rpc. */
 export interface LookupAccountResponse {
   /** The name of the Account Format: platforms/{platform}/accounts/{account_id} */
   name?: string;
 }
-const LookupAccountResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<LookupAccountResponse>;
-
 export interface PatchAccountsPlatformsChildAccountsSitesRequest {
   /** Optional. The list of fields to update - currently only supports updating the `platform_group` field. */
   updateMask?: string;
@@ -479,11 +332,6 @@ export interface PatchAccountsPlatformsChildAccountsSitesRequest {
   /** Request body */
   body?: PlatformChildSite;
 }
-const PatchAccountsPlatformsChildAccountsSitesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<PatchAccountsPlatformsChildAccountsSitesRequest>;
-
 export interface PatchAccountsPlatformsGroupsRequest {
   /** Optional. The list of fields to update - currently only supports updating the `description` field. */
   updateMask?: string;
@@ -492,24 +340,12 @@ export interface PatchAccountsPlatformsGroupsRequest {
   /** Request body */
   body?: PlatformGroup;
 }
-const PatchAccountsPlatformsGroupsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<PatchAccountsPlatformsGroupsRequest>;
-
 export interface RequestReviewPlatformsAccountsSitesRequest {
   /** Required. The name of the site to submit for review. Format: platforms/{platform}/accounts/{account}/sites/{site} */
   name: string;
 }
-const RequestReviewPlatformsAccountsSitesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<RequestReviewPlatformsAccountsSitesRequest>;
-
 /** Response definition for the site request review rpc. */
 export interface RequestSiteReviewResponse {}
-const RequestSiteReviewResponse = CloseAccountRequest as any as S.Schema<RequestSiteReviewResponse>;
-
 export type ClosePlatformsAccountsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Closes a sub-account. */
 export const closePlatformsAccounts: API.OperationMethod<
@@ -518,8 +354,8 @@ export const closePlatformsAccounts: API.OperationMethod<
   ClosePlatformsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClosePlatformsAccountsRequest,
-  output: CloseAccountResponse,
+  input: __S(1) as any as S.Schema<ClosePlatformsAccountsRequest>,
+  output: __S(0) as any as S.Schema<CloseAccountResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -538,8 +374,8 @@ export const createPlatformsAccounts: API.OperationMethod<
   CreatePlatformsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePlatformsAccountsRequest,
-  output: Account,
+  input: __S(4) as any as S.Schema<CreatePlatformsAccountsRequest>,
+  output: __S(3) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -558,8 +394,8 @@ export const createPlatformsAccountsEvents: API.OperationMethod<
   CreatePlatformsAccountsEventsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePlatformsAccountsEventsRequest,
-  output: Event,
+  input: __S(8) as any as S.Schema<CreatePlatformsAccountsEventsRequest>,
+  output: __S(7) as any as S.Schema<Event>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -578,8 +414,8 @@ export const createPlatformsAccountsSites: API.OperationMethod<
   CreatePlatformsAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePlatformsAccountsSitesRequest,
-  output: Site,
+  input: __S(10) as any as S.Schema<CreatePlatformsAccountsSitesRequest>,
+  output: __S(9) as any as S.Schema<Site>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -598,8 +434,8 @@ export const deletePlatformsAccountsSites: API.OperationMethod<
   DeletePlatformsAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePlatformsAccountsSitesRequest,
-  output: Empty,
+  input: __S(11) as any as S.Schema<DeletePlatformsAccountsSitesRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -613,8 +449,8 @@ export const getAccountsPlatforms: API.OperationMethod<
   GetAccountsPlatformsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsPlatformsRequest,
-  output: Platform,
+  input: __S(12) as any as S.Schema<GetAccountsPlatformsRequest>,
+  output: __S(13) as any as S.Schema<Platform>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -628,8 +464,8 @@ export const getAccountsPlatformsChildAccountsSites: API.OperationMethod<
   GetAccountsPlatformsChildAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsPlatformsChildAccountsSitesRequest,
-  output: PlatformChildSite,
+  input: __S(14) as any as S.Schema<GetAccountsPlatformsChildAccountsSitesRequest>,
+  output: __S(15) as any as S.Schema<PlatformChildSite>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -643,8 +479,8 @@ export const getAccountsPlatformsGroups: API.OperationMethod<
   GetAccountsPlatformsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsPlatformsGroupsRequest,
-  output: PlatformGroup,
+  input: __S(16) as any as S.Schema<GetAccountsPlatformsGroupsRequest>,
+  output: __S(18) as any as S.Schema<PlatformGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -658,8 +494,8 @@ export const getPlatformsAccounts: API.OperationMethod<
   GetPlatformsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPlatformsAccountsRequest,
-  output: Account,
+  input: __S(19) as any as S.Schema<GetPlatformsAccountsRequest>,
+  output: __S(3) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -673,8 +509,8 @@ export const getPlatformsAccountsSites: API.OperationMethod<
   GetPlatformsAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPlatformsAccountsSitesRequest,
-  output: Site,
+  input: __S(20) as any as S.Schema<GetPlatformsAccountsSitesRequest>,
+  output: __S(9) as any as S.Schema<Site>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -689,8 +525,8 @@ export const listAccountsPlatforms: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPlatformsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsPlatformsRequest,
-  output: ListPlatformsResponse,
+  input: __S(21) as any as S.Schema<ListAccountsPlatformsRequest>,
+  output: __S(23) as any as S.Schema<ListPlatformsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -706,8 +542,8 @@ export const listAccountsPlatformsChildAccountsSites: API.PaginatedOperationMeth
   GcpOpContext,
   ListPlatformChildSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsPlatformsChildAccountsSitesRequest,
-  output: ListPlatformChildSitesResponse,
+  input: __S(24) as any as S.Schema<ListAccountsPlatformsChildAccountsSitesRequest>,
+  output: __S(26) as any as S.Schema<ListPlatformChildSitesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -723,8 +559,8 @@ export const listAccountsPlatformsGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPlatformGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsPlatformsGroupsRequest,
-  output: ListPlatformGroupsResponse,
+  input: __S(27) as any as S.Schema<ListAccountsPlatformsGroupsRequest>,
+  output: __S(29) as any as S.Schema<ListPlatformGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -740,8 +576,8 @@ export const listPlatformsAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPlatformsAccountsRequest,
-  output: ListAccountsResponse,
+  input: __S(30) as any as S.Schema<ListPlatformsAccountsRequest>,
+  output: __S(32) as any as S.Schema<ListAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -757,8 +593,8 @@ export const listPlatformsAccountsSites: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSitesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPlatformsAccountsSitesRequest,
-  output: ListSitesResponse,
+  input: __S(33) as any as S.Schema<ListPlatformsAccountsSitesRequest>,
+  output: __S(35) as any as S.Schema<ListSitesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -773,8 +609,8 @@ export const lookupPlatformsAccounts: API.OperationMethod<
   LookupPlatformsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LookupPlatformsAccountsRequest,
-  output: LookupAccountResponse,
+  input: __S(36) as any as S.Schema<LookupPlatformsAccountsRequest>,
+  output: __S(37) as any as S.Schema<LookupAccountResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -793,8 +629,8 @@ export const patchAccountsPlatformsChildAccountsSites: API.OperationMethod<
   PatchAccountsPlatformsChildAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAccountsPlatformsChildAccountsSitesRequest,
-  output: PlatformChildSite,
+  input: __S(38) as any as S.Schema<PatchAccountsPlatformsChildAccountsSitesRequest>,
+  output: __S(15) as any as S.Schema<PlatformChildSite>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -813,8 +649,8 @@ export const patchAccountsPlatformsGroups: API.OperationMethod<
   PatchAccountsPlatformsGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAccountsPlatformsGroupsRequest,
-  output: PlatformGroup,
+  input: __S(39) as any as S.Schema<PatchAccountsPlatformsGroupsRequest>,
+  output: __S(18) as any as S.Schema<PlatformGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -833,8 +669,8 @@ export const requestReviewPlatformsAccountsSites: API.OperationMethod<
   RequestReviewPlatformsAccountsSitesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RequestReviewPlatformsAccountsSitesRequest,
-  output: RequestSiteReviewResponse,
+  input: __S(40) as any as S.Schema<RequestReviewPlatformsAccountsSitesRequest>,
+  output: __S(0) as any as S.Schema<RequestSiteReviewResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -851,7 +687,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CloseAccountRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -874,18 +710,18 @@ function __c0(j: number): any {
         S.Struct({
           regionCode: S.optional(S.String),
           creationRequestId: S.optional(S.String),
-          state: S.optional(AccountStateEnum),
+          state: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
           displayName: S.optional(S.String),
-          timeZone: S.optional(TimeZone),
+          timeZone: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "Account" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Account.pipe(T.HttpBody())),
+          body: S.optional(__S(3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -915,14 +751,14 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           email: S.optional(S.String),
-          billingAddress: S.optional(Address),
+          billingAddress: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "EventInfo" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          eventInfo: S.optional(EventInfo),
-          eventType: S.optional(EventEventTypeEnum),
+          eventInfo: S.optional(__S(6)),
+          eventType: S.optional(S.String),
           eventTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Event" });
@@ -934,7 +770,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Event.pipe(T.HttpBody())),
+          body: S.optional(__S(7).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -949,7 +785,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
-          state: S.optional(SiteStateEnum),
+          state: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Site" });
@@ -957,7 +793,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Site.pipe(T.HttpBody())),
+          body: S.optional(__S(9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1054,7 +890,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          revshareMillipercent: S.optional(Decimal),
+          revshareMillipercent: S.optional(__S(17)),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlatformGroup" });
@@ -1103,11 +939,11 @@ function __c2(j: number): any {
         identifier: "ListAccountsPlatformsRequest",
       });
     case 6:
-      return S.Array(Platform);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          platforms: S.optional(PlatformList),
+          platforms: S.optional(__S(22)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListPlatformsResponse" });
@@ -1132,12 +968,12 @@ function __c3(j: number): any {
         identifier: "ListAccountsPlatformsChildAccountsSitesRequest",
       });
     case 1:
-      return S.Array(PlatformChildSite);
+      return S.Array(__S(15));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          platformChildSites: S.optional(PlatformChildSiteList),
+          platformChildSites: S.optional(__S(25)),
         }),
       ).annotate({
         identifier: "ListPlatformChildSitesResponse",
@@ -1159,11 +995,11 @@ function __c3(j: number): any {
         identifier: "ListAccountsPlatformsGroupsRequest",
       });
     case 4:
-      return S.Array(PlatformGroup);
+      return S.Array(__S(18));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          platformGroups: S.optional(PlatformGroupList),
+          platformGroups: S.optional(__S(28)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1186,7 +1022,7 @@ function __c3(j: number): any {
         identifier: "ListPlatformsAccountsRequest",
       });
     case 7:
-      return S.Array(Account);
+      return S.Array(__S(3));
   }
 }
 function __c4(j: number): any {
@@ -1194,7 +1030,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(AccountList),
+          accounts: S.optional(__S(31)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAccountsResponse" });
@@ -1215,11 +1051,11 @@ function __c4(j: number): any {
         identifier: "ListPlatformsAccountsSitesRequest",
       });
     case 2:
-      return S.Array(Site);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sites: S.optional(SiteList),
+          sites: S.optional(__S(34)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSitesResponse" });
@@ -1249,7 +1085,7 @@ function __c4(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(PlatformChildSite.pipe(T.HttpBody())),
+          body: S.optional(__S(15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1265,7 +1101,7 @@ function __c4(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(PlatformGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(18).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1294,5 +1130,26 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "RequestReviewPlatformsAccountsSitesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
   }
 }

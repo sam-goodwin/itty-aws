@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -92,35 +94,19 @@ export class QaScorecardPreconditionFailed
 
 /** The message to appeal an assessment. */
 export interface GoogleCloudContactcenterinsightsV1AppealAssessmentRequest {}
-const GoogleCloudContactcenterinsightsV1AppealAssessmentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AppealAssessmentRequest>;
-
 export interface AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest {
   /** Required. The name of the assessment to appeal. */
   name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-const AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    1,
-  ) as any as S.Schema<AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoAgentTypeEnum =
   | "ROLE_UNSPECIFIED"
   | "HUMAN_AGENT"
   | "AUTOMATED_AGENT"
   | "END_USER"
   | "ANY_AGENT";
-const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoAgentTypeEnum =
-  S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringList>;
-
 /** Information about an agent involved in the conversation. */
 export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo {
   /** The agent's location. */
@@ -152,19 +138,12 @@ export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAg
   /** A user-specified string representing the agent's team. Deprecated in favor of the `teams` field. */
   team?: string;
 }
-const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo>;
-
 export type GoogleCloudContactcenterinsightsV1AssessmentStateEnum =
   | "STATE_UNSPECIFIED"
   | "DRAFT"
   | "PUBLISHED"
   | "APPEALED"
   | "FINALIZED";
-const GoogleCloudContactcenterinsightsV1AssessmentStateEnum = S.String;
-
 /** The assessment resource. */
 export interface GoogleCloudContactcenterinsightsV1Assessment {
   /** Identifier. The resource name of the assessment. Format: projects/{project}/locations/{location}/conversations/{conversation}/assessments/{assessment} */
@@ -178,29 +157,16 @@ export interface GoogleCloudContactcenterinsightsV1Assessment {
   /** Output only. The state of the assessment. */
   state?: GoogleCloudContactcenterinsightsV1AssessmentStateEnum | (string & {});
 }
-const GoogleCloudContactcenterinsightsV1Assessment = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1Assessment>;
-
 export interface AppealProjectsLocationsConversationsAssessmentsRequest {
   /** Required. The name of the assessment to appeal. */
   name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-const AppealProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AppealProjectsLocationsConversationsAssessmentsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelEnum =
   | "SUMMARIZATION_MODEL_UNSPECIFIED"
   | "BASELINE_MODEL"
   | "BASELINE_MODEL_V2_0";
-const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelEnum =
-  S.String;
-
 /** Configuration for summarization. */
 export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig {
   /** Default summarization model to be used. */
@@ -212,32 +178,16 @@ export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizatio
   /** Resource name of the Dialogflow conversation profile. Format: projects/{project}/locations/{location}/conversationProfiles/{conversation_profile} */
   conversationProfile?: string;
 }
-const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig>;
-
 /** Container for a list of scorecards. */
 export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList {
   /** List of QaScorecardRevisions. */
   qaScorecardRevisions?: StringList;
 }
-const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    7,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList>;
-
 /** Configuration for the QA feature. */
 export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig {
   /** A manual list of scorecards to score. */
   scorecardList?: GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList;
 }
-const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig>;
-
 /** Selector of all available annotators and phrase matchers to run. */
 export interface GoogleCloudContactcenterinsightsV1AnnotatorSelector {
   /** Whether to run the active phrase matcher annotator(s). */
@@ -269,11 +219,6 @@ export interface GoogleCloudContactcenterinsightsV1AnnotatorSelector {
   /** Whether to run the issue model annotator. A model should have already been deployed for this to take effect. */
   runIssueModelAnnotator?: boolean;
 }
-const GoogleCloudContactcenterinsightsV1AnnotatorSelector = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelector>;
-
 /** The request to analyze conversations in bulk. */
 export interface GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest {
   /** Required. Percentage of selected conversation to analyze, between [0, 100]. */
@@ -287,28 +232,14 @@ export interface GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsReque
   /** Required. The parent resource to create analyses in. */
   parent?: string;
 }
-const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest>;
-
 export interface BulkAnalyzeProjectsLocationsConversationsRequest {
   /** Required. The parent resource to create analyses in. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest;
 }
-const BulkAnalyzeProjectsLocationsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<BulkAnalyzeProjectsLocationsConversationsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -318,8 +249,6 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const GoogleRpcStatus = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GoogleRpcStatus>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface GoogleLongrunningOperation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -333,22 +262,12 @@ export interface GoogleLongrunningOperation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: GoogleRpcStatus;
 }
-const GoogleLongrunningOperation = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GoogleLongrunningOperation>;
-
 export interface BulkAnalyzeProjectsLocationsConversationsSegmentsRequest {
   /** Required. The parent resource to create analyses in. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest;
 }
-const BulkAnalyzeProjectsLocationsConversationsSegmentsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<BulkAnalyzeProjectsLocationsConversationsSegmentsRequest>;
-
 /** Request for the BulkDeleteFeedbackLabels endpoint. */
 export interface GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest {
   /** Required. The parent resource for new feedback labels. */
@@ -356,33 +275,18 @@ export interface GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsReque
   /** Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
   filter?: string;
 }
-const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest>;
-
 export interface BulkDeleteFeedbackLabelsProjectsLocationsRequest {
   /** Required. The parent resource for new feedback labels. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest;
 }
-const BulkDeleteFeedbackLabelsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<BulkDeleteFeedbackLabelsProjectsLocationsRequest>;
-
 export interface BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest {
   /** Required. The parent resource for new feedback labels. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest;
 }
-const BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest>;
-
 /** The request to delete conversations in bulk. */
 export interface GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest {
   /** Maximum number of conversations to delete. */
@@ -394,33 +298,18 @@ export interface GoogleCloudContactcenterinsightsV1BulkDeleteConversationsReques
   /** Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} */
   parent?: string;
 }
-const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest>;
-
 export interface BulkDeleteProjectsLocationsConversationsRequest {
   /** Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest;
 }
-const BulkDeleteProjectsLocationsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<BulkDeleteProjectsLocationsConversationsRequest>;
-
 export interface BulkDeleteProjectsLocationsDatasetsConversationsRequest {
   /** Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest;
 }
-const BulkDeleteProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<BulkDeleteProjectsLocationsDatasetsConversationsRequest>;
-
 /** Google Sheets document details to write the feedback labels to. */
 export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination {
   /** Required. The Google Sheets document to write the feedback labels to. Retrieved from Google Sheets URI. E.g. `https://docs.google.com/spreadsheets/d/1234567890` The spreadsheet must be shared with the Insights P4SA. The spreadsheet ID written to will be returned as `file_names` in the BulkDownloadFeedbackLabelsMetadata. */
@@ -428,27 +317,15 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsReq
   /** Optional. The title of the new sheet to write the feedback labels to. */
   sheetTitle?: string;
 }
-const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination =
-  /*@__PURE__*/ __L.at(
-    __c2,
-    7,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination>;
-
 export type GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestFeedbackLabelTypeEnum =
   | "FEEDBACK_LABEL_TYPE_UNSPECIFIED"
   | "QUALITY_AI"
   | "TOPIC_MODELING"
   | "AGENT_ASSIST_SUMMARY";
-const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestFeedbackLabelTypeEnum =
-  S.String;
-
 export type GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestinationFormatEnum =
   | "FORMAT_UNSPECIFIED"
   | "CSV"
   | "JSON";
-const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestinationFormatEnum =
-  S.String;
-
 /** Google Cloud Storage Object details to write the feedback labels to. */
 export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination {
   /** Optional. The number of records per file. Applicable for either format. */
@@ -464,12 +341,6 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsReq
   /** Required. The Google Cloud Storage URI to write the feedback labels to. The file name will be used as a prefix for the files written to the bucket if the output needs to be split across multiple files, otherwise it will be used as is. The file extension will be appended to the file name based on the format selected. E.g. `gs://bucket_name/object_uri_prefix` */
   objectUri?: string;
 }
-const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    0,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination>;
-
 /** Request for the BulkDownloadFeedbackLabel endpoint. */
 export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest {
   /** Optional. If set, a template for labeling conversations and scorecard questions will be created from the conversation_filter and the questions under the scorecard(s). The feedback label `filter` will be ignored. */
@@ -491,51 +362,27 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsReq
   /** A cloud storage bucket destination. */
   gcsDestination?: GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination;
 }
-const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest>;
-
 export interface BulkDownloadFeedbackLabelsProjectsLocationsRequest {
   /** Required. The parent resource for new feedback labels. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest;
 }
-const BulkDownloadFeedbackLabelsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<BulkDownloadFeedbackLabelsProjectsLocationsRequest>;
-
 export interface BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest {
   /** Required. The parent resource for new feedback labels. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest;
 }
-const BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest>;
-
 /** Google Sheets document details to get the feedback label file from. */
 export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource {
   /** Required. The Google Sheets document to write the feedback labels to. Retrieved from Google Sheets URI. E.g. `https://docs.google.com/spreadsheets/d/1234567890` The spreadsheet must be shared with the Insights P4SA. */
   spreadsheetUri?: string;
 }
-const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    4,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource>;
-
 export type GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSourceFormatEnum =
   | "FORMAT_UNSPECIFIED"
   | "CSV"
   | "JSON";
-const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSourceFormatEnum =
-  S.String;
-
 /** Google Cloud Storage Object details to get the feedback label file from. */
 export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource {
   /** Required. The Google Cloud Storage URI of the file to import. Format: `gs://bucket_name/object_name` */
@@ -545,12 +392,6 @@ export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsReque
     | GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSourceFormatEnum
     | (string & {});
 }
-const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    5,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource>;
-
 /** The request for bulk uploading feedback labels. */
 export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest {
   /** A sheets document source. */
@@ -560,42 +401,22 @@ export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsReque
   /** Optional. If set, upload will not happen and the labels will be validated. If not set, then default behavior will be to upload the labels after validation is complete. */
   validateOnly?: boolean;
 }
-const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest>;
-
 export interface BulkUploadFeedbackLabelsProjectsLocationsRequest {
   /** Required. The parent resource for new feedback labels. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest;
 }
-const BulkUploadFeedbackLabelsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<BulkUploadFeedbackLabelsProjectsLocationsRequest>;
-
 export interface BulkUploadFeedbackLabelsProjectsLocationsDatasetsRequest {
   /** Required. The parent resource for new feedback labels. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest;
 }
-const BulkUploadFeedbackLabelsProjectsLocationsDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<BulkUploadFeedbackLabelsProjectsLocationsDatasetsRequest>;
-
 export interface CalculateIssueModelStatsProjectsLocationsIssueModelsRequest {
   /** Required. The resource name of the issue model to query against. */
   issueModel: string;
 }
-const CalculateIssueModelStatsProjectsLocationsIssueModelsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CalculateIssueModelStatsProjectsLocationsIssueModelsRequest>;
-
 /** Aggregated statistics about an issue. */
 export interface GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats {
   /** Display name of the issue. */
@@ -605,19 +426,9 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStat
   /** Number of conversations attached to the issue at this point in time. */
   labeledConversationsCount?: string;
 }
-const GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats>;
-
 export type GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap = {
   [key: string]: GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats | undefined;
 };
-const GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap>;
-
 /** Aggregated statistics about an issue model. */
 export interface GoogleCloudContactcenterinsightsV1IssueModelLabelStats {
   /** Number of analyzed conversations for which no issue was applicable at this point in time. */
@@ -627,36 +438,18 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelLabelStats {
   /** Number of conversations the issue model has analyzed at this point in time. */
   analyzedConversationsCount?: string;
 }
-const GoogleCloudContactcenterinsightsV1IssueModelLabelStats = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModelLabelStats>;
-
 /** Response of querying an issue model's statistics. */
 export interface GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse {
   /** The latest label statistics for the queried issue model. Includes results on both training data and data labeled after deployment. */
   currentStats?: GoogleCloudContactcenterinsightsV1IssueModelLabelStats;
 }
-const GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse>;
-
 export interface CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest {
   /** A filter to reduce results to a specific subset. This field is useful for getting statistics about conversations with specific properties. */
   filter?: string;
   /** Required. The location of the conversations. */
   location: string;
 }
-const CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
-  /*@__PURE__*/ __L.at(
-    __c4,
-    6,
-  ) as any as S.Schema<CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
-
 export type IntegerMap = { [key: string]: number | undefined };
-const IntegerMap = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<IntegerMap>;
-
 /** A single interval in a time series. */
 export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval {
   /** The start time of this interval. */
@@ -664,20 +457,8 @@ export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSer
   /** The number of conversations created in this interval. */
   conversationCount?: number;
 }
-const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    0,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval>;
-
 export type GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesIntervalList =
   Array<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval>;
-const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesIntervalList =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    1,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesIntervalList>;
-
 /** A time series representing conversations over time. */
 export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries {
   /** An ordered list of intervals from earliest to latest, where each interval represents the number of conversations that transpired during the time window. */
@@ -685,11 +466,6 @@ export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSer
   /** The duration of each interval. */
   intervalDuration?: string;
 }
-const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries>;
-
 /** The response for calculating conversation statistics. */
 export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
   /** The average duration of all conversations. The average is calculated using only conversations that have a time duration. */
@@ -709,66 +485,33 @@ export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
   /** A map associating each issue resource name with its respective number of matches in the set of conversations. Key has the format: `projects//locations//issueModels//issues/` */
   issueMatchesStats?: GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap;
 }
-const GoogleCloudContactcenterinsightsV1CalculateStatsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponse>;
-
 export interface CalculateStatsProjectsLocationsConversationsRequest {
   /** A filter to reduce results to a specific subset. This field is useful for getting statistics about conversations with specific properties. */
   filter?: string;
   /** Required. The location of the conversations. */
   location: string;
 }
-const CalculateStatsProjectsLocationsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CalculateStatsProjectsLocationsConversationsRequest>;
-
 /** The request for calculating conversation statistics. */
 export interface GoogleCloudContactcenterinsightsV1CalculateStatsRequest {
   /** A filter to reduce results to a specific subset. This field is useful for getting statistics about conversations with specific properties. */
   filter?: string;
 }
-const GoogleCloudContactcenterinsightsV1CalculateStatsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsRequest>;
-
 export interface CalculateStatsProjectsLocationsDatasetsConversationsRequest {
   /** Required. The location of the conversations. */
   location: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1CalculateStatsRequest;
 }
-const CalculateStatsProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CalculateStatsProjectsLocationsDatasetsConversationsRequest>;
-
 export interface CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-const CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    7,
-  ) as any as S.Schema<CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-const GoogleProtobufEmpty = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GoogleProtobufEmpty>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** The CCAI Insights project wide analysis rule. This rule will be applied to all conversations that match the filter defined in the rule. For a conversation matches the filter, the annotators specified in the rule will be run. If a conversation matches multiple rules, a union of all the annotators will be run. One project can have multiple analysis rules. */
 export interface GoogleCloudContactcenterinsightsV1AnalysisRule {
   /** Display Name of the analysis rule. */
@@ -792,22 +535,12 @@ export interface GoogleCloudContactcenterinsightsV1AnalysisRule {
   /** Selector of annotators to run and the phrase matchers to use for conversations that matches the conversation_filter. If not specified, NO annotators will be run. */
   annotatorSelector?: GoogleCloudContactcenterinsightsV1AnnotatorSelector;
 }
-const GoogleCloudContactcenterinsightsV1AnalysisRule = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnalysisRule>;
-
 export interface CreateProjectsLocationsAnalysisRulesRequest {
   /** Required. The parent resource of the analysis rule. Required. The location to create a analysis rule for. Format: `projects//locations/` or `projects//locations/` */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AnalysisRule;
 }
-const CreateProjectsLocationsAnalysisRulesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CreateProjectsLocationsAnalysisRulesRequest>;
-
 /** Message for schedule info. */
 export interface GoogleCloudContactcenterinsightsV1ScheduleInfo {
   /** End time of the schedule. If not specified, will keep scheduling new pipelines for execution util the schedule is no longer active or deleted. */
@@ -819,11 +552,6 @@ export interface GoogleCloudContactcenterinsightsV1ScheduleInfo {
   /** The timezone to use for the groc expression. If not specified, defaults to UTC. */
   timeZone?: string;
 }
-const GoogleCloudContactcenterinsightsV1ScheduleInfo = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ScheduleInfo>;
-
 /** Message for sampling conversations. */
 export interface GoogleCloudContactcenterinsightsV1SampleRule {
   /** To specify the filter for the conversions that should apply this sample rule. An empty filter means this sample rule applies to all conversations. */
@@ -835,11 +563,6 @@ export interface GoogleCloudContactcenterinsightsV1SampleRule {
   /** Optional. Group by dimension to sample the conversation. If no dimension is provided, the sampling will be applied to the project level. Current supported dimensions is 'quality_metadata.agent_info.agent_id'. */
   dimension?: string;
 }
-const GoogleCloudContactcenterinsightsV1SampleRule = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1SampleRule>;
-
 /** The CCAI Insights project wide assessment rule. This assessment rule will be applied to all conversations from the previous sampling cycle that match the sample rule defined in the assessment rule. One project can have multiple assessment rules. */
 export interface GoogleCloudContactcenterinsightsV1AssessmentRule {
   /** Schedule info for the assessment rule. */
@@ -861,11 +584,6 @@ export interface GoogleCloudContactcenterinsightsV1AssessmentRule {
   /** Output only. The most recent time at which this assessment rule was updated. */
   updateTime?: string;
 }
-const GoogleCloudContactcenterinsightsV1AssessmentRule = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssessmentRule>;
-
 export interface CreateProjectsLocationsAssessmentRulesRequest {
   /** Required. The parent resource of the assessment rule. Required. The location to create a assessment rule for. Format: `projects//locations/` or `projects//locations/` */
   parent: string;
@@ -874,40 +592,21 @@ export interface CreateProjectsLocationsAssessmentRulesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AssessmentRule;
 }
-const CreateProjectsLocationsAssessmentRulesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CreateProjectsLocationsAssessmentRulesRequest>;
-
 export type GoogleCloudContactcenterinsightsV1AssistantSessionStateEnum =
   | "STATE_UNSPECIFIED"
   | "PROCESSING"
   | "IDLE";
-const GoogleCloudContactcenterinsightsV1AssistantSessionStateEnum = S.String;
-
 export type GoogleCloudContactcenterinsightsV1AssistantMessageRoleEnum =
   | "ROLE_UNSPECIFIED"
   | "USER"
   | "MODEL";
-const GoogleCloudContactcenterinsightsV1AssistantMessageRoleEnum = S.String;
-
 /** A chunk of data in an assistant message. */
 export interface GoogleCloudContactcenterinsightsV1AssistantChunk {
   /** Optional. Text data. */
   text?: string;
 }
-const GoogleCloudContactcenterinsightsV1AssistantChunk = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantChunk>;
-
 export type GoogleCloudContactcenterinsightsV1AssistantChunkList =
   Array<GoogleCloudContactcenterinsightsV1AssistantChunk>;
-const GoogleCloudContactcenterinsightsV1AssistantChunkList = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantChunkList>;
-
 /** A message in an assistant session. */
 export interface GoogleCloudContactcenterinsightsV1AssistantMessage {
   /** Required. Role within the conversation. */
@@ -917,18 +616,8 @@ export interface GoogleCloudContactcenterinsightsV1AssistantMessage {
   /** Required. Content of the message. */
   chunks?: GoogleCloudContactcenterinsightsV1AssistantChunkList;
 }
-const GoogleCloudContactcenterinsightsV1AssistantMessage = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantMessage>;
-
 export type GoogleCloudContactcenterinsightsV1AssistantMessageList =
   Array<GoogleCloudContactcenterinsightsV1AssistantMessage>;
-const GoogleCloudContactcenterinsightsV1AssistantMessageList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantMessageList>;
-
 /** Represents a conversation session with the Assistant Agent. */
 export interface GoogleCloudContactcenterinsightsV1AssistantSession {
   /** Output only. The user who initiated the session. */
@@ -946,11 +635,6 @@ export interface GoogleCloudContactcenterinsightsV1AssistantSession {
   /** Optional. The display name of the session. */
   displayName?: string;
 }
-const GoogleCloudContactcenterinsightsV1AssistantSession = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantSession>;
-
 export interface CreateProjectsLocationsAssistantSessionsRequest {
   /** Optional. The ID to use for the assistant session, which will become the final component of the assistant session's resource name. If not provided, a random UUID will be generated by the server. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. */
   assistantSessionId?: string;
@@ -959,11 +643,6 @@ export interface CreateProjectsLocationsAssistantSessionsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AssistantSession;
 }
-const CreateProjectsLocationsAssistantSessionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateProjectsLocationsAssistantSessionsRequest>;
-
 /** An AuthorizedViewSet contains a set of AuthorizedView resources. */
 export interface GoogleCloudContactcenterinsightsV1AuthorizedViewSet {
   /** Identifier. The resource name of the AuthorizedViewSet. Format: projects/{project}/locations/{location}/authorizedViewSets/{authorized_view_set} */
@@ -979,11 +658,6 @@ export interface GoogleCloudContactcenterinsightsV1AuthorizedViewSet {
   /** Output only. Whether this resource is zone separated. */
   satisfiesPzs?: boolean;
 }
-const GoogleCloudContactcenterinsightsV1AuthorizedViewSet = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AuthorizedViewSet>;
-
 export interface CreateProjectsLocationsAuthorizedViewSetsRequest {
   /** Required. The parent resource of the AuthorizedViewSet. */
   parent: string;
@@ -992,11 +666,6 @@ export interface CreateProjectsLocationsAuthorizedViewSetsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AuthorizedViewSet;
 }
-const CreateProjectsLocationsAuthorizedViewSetsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<CreateProjectsLocationsAuthorizedViewSetsRequest>;
-
 /** An AuthorizedView represents a view of accessible Insights resources (for example, Conversation and Scorecard). Who have read access to the AuthorizedView resource will have access to these Insight resources as well. */
 export interface GoogleCloudContactcenterinsightsV1AuthorizedView {
   /** Output only. Whether this resource is zone isolated. */
@@ -1014,11 +683,6 @@ export interface GoogleCloudContactcenterinsightsV1AuthorizedView {
   /** A filter to reduce conversation results to a specific subset. The AuthorizedView's assigned permission (read/write) could be applied to the subset of conversations. If conversation_filter is empty, there is no restriction on the conversations that the AuthorizedView can access. Having *authorizedViews.get* access to the AuthorizedView means having the same read/write access to the Conversations (as well as metadata/annotations linked to the conversation) that this AuthorizedView has. */
   conversationFilter?: string;
 }
-const GoogleCloudContactcenterinsightsV1AuthorizedView = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AuthorizedView>;
-
 export interface CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
   /** Required. The parent resource of the AuthorizedView. */
   parent: string;
@@ -1027,43 +691,22 @@ export interface CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AuthorizedView;
 }
-const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
-
 export interface CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest {
   /** Required. The parent resource of the assessment. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Assessment;
 }
-const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
-  /*@__PURE__*/ __L.at(
-    __c8,
-    2,
-  ) as any as S.Schema<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
-
 /** A note about a QA question. */
 export interface GoogleCloudContactcenterinsightsV1NoteQaQuestionNote {
   /** The question resource that the note is associated with. */
   qaQuestion?: string;
 }
-const GoogleCloudContactcenterinsightsV1NoteQaQuestionNote = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1NoteQaQuestionNote>;
-
 /** A note about a conversation turn. */
 export interface GoogleCloudContactcenterinsightsV1NoteConversationTurnNote {
   /** The conversation turn index that the note is associated with. */
   turnIndex?: number;
 }
-const GoogleCloudContactcenterinsightsV1NoteConversationTurnNote = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1NoteConversationTurnNote>;
-
 /** A note about the entire parent assessment. */
 export type GoogleCloudContactcenterinsightsV1NoteAssessmentNote =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
@@ -1072,11 +715,6 @@ export interface GoogleCloudContactcenterinsightsV1UserInfo {
   /** The user's username. */
   username?: string;
 }
-const GoogleCloudContactcenterinsightsV1UserInfo = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1UserInfo>;
-
 /** The conversation assessment note resource. */
 export interface GoogleCloudContactcenterinsightsV1Note {
   /** The note is associated with a QA question in one of the conversation's scorecard results. */
@@ -1096,23 +734,12 @@ export interface GoogleCloudContactcenterinsightsV1Note {
   /** Output only. The time at which the note was last updated. */
   updateTime?: string;
 }
-const GoogleCloudContactcenterinsightsV1Note = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1Note>;
-
 export interface CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest {
   /** Required. The parent resource of the note. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Note;
 }
-const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest =
-  /*@__PURE__*/ __L.at(
-    __c8,
-    7,
-  ) as any as S.Schema<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
-
 /** Message for holding the value of a QaAnswer. QaQuestion.AnswerChoice defines the possible answer values for a question. */
 export interface GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
   /** String value. */
@@ -1134,11 +761,6 @@ export interface GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
   /** A value of "Not Applicable (N/A)". Should only ever be `true`. */
   naValue?: boolean;
 }
-const GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue>;
-
 /** Represents a conversation, resource, and label provided by the user. Can take the form of a string label or a QaAnswer label. QaAnswer labels are used for Quality AI example conversations. String labels are used for Topic Modeling. AgentAssistSummary labels are used for Agent Assist Summarization. */
 export interface GoogleCloudContactcenterinsightsV1FeedbackLabel {
   /** Output only. Create time of the label. */
@@ -1158,11 +780,6 @@ export interface GoogleCloudContactcenterinsightsV1FeedbackLabel {
   /** Output only. Whether this resource is zone separated. */
   satisfiesPzs?: boolean;
 }
-const GoogleCloudContactcenterinsightsV1FeedbackLabel = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
-
 export interface CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest {
   /** Optional. The ID of the feedback label to create. If one is not specified it will be generated by the server. */
   feedbackLabelId?: string;
@@ -1171,17 +788,9 @@ export interface CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConvers
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1FeedbackLabel;
 }
-const CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    2,
-  ) as any as S.Schema<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelKeyTypeEnum =
   | "LABEL_KEY_TYPE_UNSPECIFIED"
   | "LABEL_KEY_TYPE_CUSTOM";
-const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelKeyTypeEnum = S.String;
-
 /** Condition for auto-labeling conversations. */
 export interface GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition {
   /** A optional CEL expression to be evaluated as a boolean value. Once evaluated as true, then we will proceed with the value evaluation. An empty condition will be auto evaluated as true. */
@@ -1189,19 +798,8 @@ export interface GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondi
   /** CEL expression to be evaluated as the value. */
   value?: string;
 }
-const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition>;
-
 export type GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingConditionList =
   Array<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition>;
-const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingConditionList =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    4,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingConditionList>;
-
 /** Rule for auto-labeling conversations. */
 export interface GoogleCloudContactcenterinsightsV1AutoLabelingRule {
   /** The description of the rule. */
@@ -1223,11 +821,6 @@ export interface GoogleCloudContactcenterinsightsV1AutoLabelingRule {
   /** The label key. This is also the {auto_labeling_rule} in the resource name. Only settable if label_key_type is LABEL_KEY_TYPE_CUSTOM. */
   labelKey?: string;
 }
-const GoogleCloudContactcenterinsightsV1AutoLabelingRule = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRule>;
-
 export interface CreateProjectsLocationsAutoLabelingRulesRequest {
   /** Required. The project and location to create the auto labeling rule in. Format: projects/{project}/locations/{location} */
   parent: string;
@@ -1236,11 +829,6 @@ export interface CreateProjectsLocationsAutoLabelingRulesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AutoLabelingRule;
 }
-const CreateProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<CreateProjectsLocationsAutoLabelingRulesRequest>;
-
 /** Call-specific metadata. */
 export interface GoogleCloudContactcenterinsightsV1ConversationCallMetadata {
   /** The audio channel that contains the customer. */
@@ -1248,26 +836,10 @@ export interface GoogleCloudContactcenterinsightsV1ConversationCallMetadata {
   /** The audio channel that contains the agent. */
   agentChannel?: number;
 }
-const GoogleCloudContactcenterinsightsV1ConversationCallMetadata = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationCallMetadata>;
-
 export type GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList =
   Array<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo>;
-const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList =
-  /*@__PURE__*/ __L.at(
-    __c10,
-    0,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList>;
-
 export type GoogleCloudContactcenterinsightsV1FeedbackLabelList =
   Array<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
-const GoogleCloudContactcenterinsightsV1FeedbackLabelList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabelList>;
-
 /** Conversation metadata related to quality management. */
 export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
   /** Information about agents involved in the call. */
@@ -1281,11 +853,6 @@ export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
   /** An arbitrary string value specifying the menu path the customer took. */
   menuPath?: string;
 }
-const GoogleCloudContactcenterinsightsV1ConversationQualityMetadata = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadata>;
-
 /** Tags and their corresponding results. */
 export interface GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult {
   /** The potential score the tag applies to. */
@@ -1297,24 +864,12 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult 
   /** The normalized score the tag applies to. */
   normalizedScore?: number;
 }
-const GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>;
-
 export type GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList =
   Array<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>;
-const GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList>;
-
 export type GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceSourceTypeEnum =
   | "SOURCE_TYPE_UNSPECIFIED"
   | "SYSTEM_GENERATED_ONLY"
   | "INCLUDES_MANUAL_EDITS";
-const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceSourceTypeEnum = S.String;
-
 /** A scorecard result may have multiple sets of scores from varying sources, one of which becomes the "main" answer above. A ScoreSource represents each individual set of scores. */
 export interface GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource {
   /** The overall numerical score of the result. */
@@ -1330,24 +885,12 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource 
   /** The normalized score, which is the score divided by the potential score. */
   normalizedScore?: number;
 }
-const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource>;
-
 export type GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList =
   Array<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource>;
-const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList>;
-
 export type GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceSourceTypeEnum =
   | "SOURCE_TYPE_UNSPECIFIED"
   | "SYSTEM_GENERATED"
   | "MANUAL_EDIT";
-const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceSourceTypeEnum = S.String;
-
 /** A question may have multiple answers from varying sources, one of which becomes the "main" answer above. AnswerSource represents each individual answer. */
 export interface GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource {
   /** What created the answer. */
@@ -1355,18 +898,8 @@ export interface GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource {
   /** The answer value from this source. This field is populated by default, unless the question has a selection strategy configured to return multiple answer values, in which case `answer_values` will be populated instead. */
   answerValue?: GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue;
 }
-const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource>;
-
 export type GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList =
   Array<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource>;
-const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList>;
-
 /** An answer to a QaQuestion. */
 export interface GoogleCloudContactcenterinsightsV1QaAnswer {
   /** User-defined list of arbitrary tags. Matches the value from QaScorecard.ScorecardQuestion.tags. Used for grouping/organization and for weighting the score of each answer. */
@@ -1382,18 +915,8 @@ export interface GoogleCloudContactcenterinsightsV1QaAnswer {
   /** Lists all answer sources containing one or more answer values of a specific source type, e.g., all system-generated answer sources, or all manual edit answer sources. */
   answerSources?: GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList;
 }
-const GoogleCloudContactcenterinsightsV1QaAnswer = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaAnswer>;
-
 export type GoogleCloudContactcenterinsightsV1QaAnswerList =
   Array<GoogleCloudContactcenterinsightsV1QaAnswer>;
-const GoogleCloudContactcenterinsightsV1QaAnswerList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaAnswerList>;
-
 /** The results of scoring a single conversation against a QaScorecard. Contains a collection of QaAnswers and aggregate score. */
 export interface GoogleCloudContactcenterinsightsV1QaScorecardResult {
   /** The QaScorecardRevision scored by this result. */
@@ -1419,18 +942,8 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardResult {
   /** Set of QaAnswers represented in the result. */
   qaAnswers?: GoogleCloudContactcenterinsightsV1QaAnswerList;
 }
-const GoogleCloudContactcenterinsightsV1QaScorecardResult = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResult>;
-
 export type GoogleCloudContactcenterinsightsV1QaScorecardResultList =
   Array<GoogleCloudContactcenterinsightsV1QaScorecardResult>;
-const GoogleCloudContactcenterinsightsV1QaScorecardResultList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultList>;
-
 /** Conversation-level silence data. */
 export interface GoogleCloudContactcenterinsightsV1ConversationLevelSilence {
   /** Amount of time calculated to be in silence. */
@@ -1438,11 +951,6 @@ export interface GoogleCloudContactcenterinsightsV1ConversationLevelSilence {
   /** Percentage of the total conversation spent in silence. */
   silencePercentage?: number;
 }
-const GoogleCloudContactcenterinsightsV1ConversationLevelSilence = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSilence>;
-
 /** The data for a matched phrase matcher. Represents information identifying a phrase matcher for a given match. */
 export interface GoogleCloudContactcenterinsightsV1PhraseMatchData {
   /** The unique identifier (the resource name) of the phrase matcher. */
@@ -1450,19 +958,9 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchData {
   /** The human-readable name of the phrase matcher. */
   displayName?: string;
 }
-const GoogleCloudContactcenterinsightsV1PhraseMatchData = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchData>;
-
 export type GoogleCloudContactcenterinsightsV1PhraseMatchDataMap = {
   [key: string]: GoogleCloudContactcenterinsightsV1PhraseMatchData | undefined;
 };
-const GoogleCloudContactcenterinsightsV1PhraseMatchDataMap = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchDataMap>;
-
 /** The data for a sentiment annotation. */
 export interface GoogleCloudContactcenterinsightsV1SentimentData {
   /** The sentiment score between -1.0 (negative) and 1.0 (positive). */
@@ -1470,11 +968,6 @@ export interface GoogleCloudContactcenterinsightsV1SentimentData {
   /** A non-negative number from 0 to infinity which represents the absolute magnitude of sentiment regardless of score. */
   magnitude?: number;
 }
-const GoogleCloudContactcenterinsightsV1SentimentData = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1SentimentData>;
-
 /** One channel of conversation-level sentiment data. */
 export interface GoogleCloudContactcenterinsightsV1ConversationLevelSentiment {
   /** The channel of the audio that the data applies to. */
@@ -1482,18 +975,8 @@ export interface GoogleCloudContactcenterinsightsV1ConversationLevelSentiment {
   /** Data specifying sentiment. */
   sentimentData?: GoogleCloudContactcenterinsightsV1SentimentData;
 }
-const GoogleCloudContactcenterinsightsV1ConversationLevelSentiment = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment>;
-
 export type GoogleCloudContactcenterinsightsV1ConversationLevelSentimentList =
   Array<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment>;
-const GoogleCloudContactcenterinsightsV1ConversationLevelSentimentList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSentimentList>;
-
 /** Information about the issue. */
 export interface GoogleCloudContactcenterinsightsV1IssueAssignment {
   /** Immutable. Display name of the assigned issue. This field is set at time of analysis and immutable since then. */
@@ -1503,18 +986,8 @@ export interface GoogleCloudContactcenterinsightsV1IssueAssignment {
   /** Score indicating the likelihood of the issue assignment. currently bounded on [0,1]. */
   score?: number;
 }
-const GoogleCloudContactcenterinsightsV1IssueAssignment = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueAssignment>;
-
 export type GoogleCloudContactcenterinsightsV1IssueAssignmentList =
   Array<GoogleCloudContactcenterinsightsV1IssueAssignment>;
-const GoogleCloudContactcenterinsightsV1IssueAssignmentList = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueAssignmentList>;
-
 /** Issue Modeling result on a conversation. */
 export interface GoogleCloudContactcenterinsightsV1IssueModelResult {
   /** All the matched issues. */
@@ -1522,14 +995,7 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelResult {
   /** Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
   issueModel?: string;
 }
-const GoogleCloudContactcenterinsightsV1IssueModelResult = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModelResult>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<StringMap>;
-
 export type GoogleCloudContactcenterinsightsV1EntityTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "PERSON"
@@ -1544,8 +1010,6 @@ export type GoogleCloudContactcenterinsightsV1EntityTypeEnum =
   | "DATE"
   | "NUMBER"
   | "PRICE";
-const GoogleCloudContactcenterinsightsV1EntityTypeEnum = S.String;
-
 /** The data for an entity annotation. Represents a phrase in the conversation that is a known entity, such as a person, an organization, or location. */
 export interface GoogleCloudContactcenterinsightsV1Entity {
   /** Metadata associated with the entity. For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are available. For the metadata associated with other entity types, see the Type table below. */
@@ -1559,19 +1023,9 @@ export interface GoogleCloudContactcenterinsightsV1Entity {
   /** The representative name for the entity. */
   displayName?: string;
 }
-const GoogleCloudContactcenterinsightsV1Entity = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1Entity>;
-
 export type GoogleCloudContactcenterinsightsV1EntityMap = {
   [key: string]: GoogleCloudContactcenterinsightsV1Entity | undefined;
 };
-const GoogleCloudContactcenterinsightsV1EntityMap = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1EntityMap>;
-
 /** A point in a conversation that marks the start or the end of an annotation. */
 export interface GoogleCloudContactcenterinsightsV1AnnotationBoundary {
   /** The index in the sequence of transcribed pieces of the conversation where the boundary is located. This index starts at zero. */
@@ -1579,11 +1033,6 @@ export interface GoogleCloudContactcenterinsightsV1AnnotationBoundary {
   /** The word index of this boundary with respect to the first word in the transcript piece. This index starts at zero. */
   wordIndex?: number;
 }
-const GoogleCloudContactcenterinsightsV1AnnotationBoundary = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnnotationBoundary>;
-
 /** The data for an interruption annotation. */
 export type GoogleCloudContactcenterinsightsV1InterruptionData =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
@@ -1592,11 +1041,6 @@ export interface GoogleCloudContactcenterinsightsV1IntentMatchData {
   /** The id of the matched intent. Can be used to retrieve the corresponding intent information. */
   intentUniqueId?: string;
 }
-const GoogleCloudContactcenterinsightsV1IntentMatchData = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1IntentMatchData>;
-
 /** The data for a silence annotation. */
 export type GoogleCloudContactcenterinsightsV1SilenceData =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
@@ -1608,17 +1052,10 @@ export interface GoogleCloudContactcenterinsightsV1IssueMatchData {
   /** Information about the issue's assignment. */
   issueAssignment?: GoogleCloudContactcenterinsightsV1IssueAssignment;
 }
-const GoogleCloudContactcenterinsightsV1IssueMatchData = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueMatchData>;
-
 export type GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum =
   | "MENTION_TYPE_UNSPECIFIED"
   | "PROPER"
   | "COMMON";
-const GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum = S.String;
-
 /** The data for an entity mention annotation. This represents a mention of an `Entity` in the conversation. */
 export interface GoogleCloudContactcenterinsightsV1EntityMentionData {
   /** The key of this entity in conversation entities. Can be used to retrieve the exact `Entity` this mention is attached to. */
@@ -1628,11 +1065,6 @@ export interface GoogleCloudContactcenterinsightsV1EntityMentionData {
   /** The type of the entity mention. */
   type?: GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum | (string & {});
 }
-const GoogleCloudContactcenterinsightsV1EntityMentionData = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1EntityMentionData>;
-
 /** A piece of metadata that applies to a window of a call. */
 export interface GoogleCloudContactcenterinsightsV1CallAnnotation {
   /** The boundary in the conversation where the annotation ends, inclusive. */
@@ -1658,18 +1090,8 @@ export interface GoogleCloudContactcenterinsightsV1CallAnnotation {
   /** Data specifying an entity mention. */
   entityMentionData?: GoogleCloudContactcenterinsightsV1EntityMentionData;
 }
-const GoogleCloudContactcenterinsightsV1CallAnnotation = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1CallAnnotation>;
-
 export type GoogleCloudContactcenterinsightsV1CallAnnotationList =
   Array<GoogleCloudContactcenterinsightsV1CallAnnotation>;
-const GoogleCloudContactcenterinsightsV1CallAnnotationList = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1CallAnnotationList>;
-
 /** The data for an intent. Represents a detected intent in the conversation, for example MAKES_PROMISE. */
 export interface GoogleCloudContactcenterinsightsV1Intent {
   /** The human-readable name of the intent. */
@@ -1677,19 +1099,9 @@ export interface GoogleCloudContactcenterinsightsV1Intent {
   /** The unique identifier of the intent. */
   id?: string;
 }
-const GoogleCloudContactcenterinsightsV1Intent = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1Intent>;
-
 export type GoogleCloudContactcenterinsightsV1IntentMap = {
   [key: string]: GoogleCloudContactcenterinsightsV1Intent | undefined;
 };
-const GoogleCloudContactcenterinsightsV1IntentMap = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1IntentMap>;
-
 /** Call-specific metadata created during analysis. */
 export interface GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
   /** Results of scoring QaScorecards. */
@@ -1709,11 +1121,6 @@ export interface GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMet
   /** All the matched intents in the call. */
   intents?: GoogleCloudContactcenterinsightsV1IntentMap;
 }
-const GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata>;
-
 /** The result of an analysis. */
 export interface GoogleCloudContactcenterinsightsV1AnalysisResult {
   /** The time at which the analysis ended. */
@@ -1721,11 +1128,6 @@ export interface GoogleCloudContactcenterinsightsV1AnalysisResult {
   /** Call-specific metadata created by the analysis. */
   callAnalysisMetadata?: GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata;
 }
-const GoogleCloudContactcenterinsightsV1AnalysisResult = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnalysisResult>;
-
 /** The analysis resource. */
 export interface GoogleCloudContactcenterinsightsV1Analysis {
   /** Output only. Whether this resource is zone separated. */
@@ -1743,37 +1145,21 @@ export interface GoogleCloudContactcenterinsightsV1Analysis {
   /** To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run. */
   annotatorSelector?: GoogleCloudContactcenterinsightsV1AnnotatorSelector;
 }
-const GoogleCloudContactcenterinsightsV1Analysis = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1Analysis>;
-
 export type GoogleCloudContactcenterinsightsV1ConversationMediumEnum =
   | "MEDIUM_UNSPECIFIED"
   | "PHONE_CALL"
   | "CHAT";
-const GoogleCloudContactcenterinsightsV1ConversationMediumEnum = S.String;
-
 export type GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum =
   | "CORRELATION_TYPE_UNSPECIFIED"
   | "SEGMENT"
   | "PARTIAL"
   | "FULL"
   | "SYNTHETIC";
-const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum =
-  S.String;
-
 export type GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList =
   Array<
     | GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum
     | (string & {})
   >;
-const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList =
-  /*@__PURE__*/ __L.at(
-    __c14,
-    4,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList>;
-
 /** Info for correlating across conversations. */
 export interface GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo {
   /** Output only. The full conversation correlation id this conversation is a segment of. */
@@ -1783,29 +1169,14 @@ export interface GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo {
   /** Output only. The correlation types of this conversation. A single conversation can have multiple correlation types. For example a conversation that only has a single segment is both a SEGMENT and a FULL_CONVERSATION. */
   correlationTypes?: GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList;
 }
-const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo>;
-
 /** The data for a Dialogflow intent. Represents a detected intent in the conversation, e.g. MAKES_PROMISE. */
 export interface GoogleCloudContactcenterinsightsV1DialogflowIntent {
   /** The human-readable name of the intent. */
   displayName?: string;
 }
-const GoogleCloudContactcenterinsightsV1DialogflowIntent = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1DialogflowIntent>;
-
 export type GoogleCloudContactcenterinsightsV1DialogflowIntentMap = {
   [key: string]: GoogleCloudContactcenterinsightsV1DialogflowIntent | undefined;
 };
-const GoogleCloudContactcenterinsightsV1DialogflowIntentMap = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1DialogflowIntentMap>;
-
 /** Represents a blob input or output in the conversation. */
 export interface GoogleCloudCesV1mainBlob {
   /** Required. The IANA standard MIME type of the source data. */
@@ -1813,11 +1184,6 @@ export interface GoogleCloudCesV1mainBlob {
   /** Required. Raw bytes of the blob. */
   data?: string;
 }
-const GoogleCloudCesV1mainBlob = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<GoogleCloudCesV1mainBlob>;
-
 /** Represents an event indicating the transfer of a conversation to a different agent. */
 export interface GoogleCloudCesV1mainAgentTransfer {
   /** Output only. Display name of the agent. */
@@ -1825,11 +1191,6 @@ export interface GoogleCloudCesV1mainAgentTransfer {
   /** Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
   targetAgent?: string;
 }
-const GoogleCloudCesV1mainAgentTransfer = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<GoogleCloudCesV1mainAgentTransfer>;
-
 /** Represents an image input or output in the conversation. */
 export interface GoogleCloudCesV1mainImage {
   /** Optional. The alternative text for the image. */
@@ -1839,11 +1200,6 @@ export interface GoogleCloudCesV1mainImage {
   /** Required. Raw bytes of the image. */
   data?: string;
 }
-const GoogleCloudCesV1mainImage = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GoogleCloudCesV1mainImage>;
-
 /** A tool that is created from a toolset. */
 export interface GoogleCloudCesV1mainToolsetTool {
   /** Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}` */
@@ -1851,11 +1207,6 @@ export interface GoogleCloudCesV1mainToolsetTool {
   /** Optional. The tool ID to filter the tools to retrieve the schema for. */
   toolId?: string;
 }
-const GoogleCloudCesV1mainToolsetTool = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<GoogleCloudCesV1mainToolsetTool>;
-
 /** Request for the client or the agent to execute the specified tool. */
 export interface GoogleCloudCesV1mainToolCall {
   /** Output only. Human-readable name of the agent that issued this call, e.g. "Contract Architect". Empty when the root agent issued it. */
@@ -1873,11 +1224,6 @@ export interface GoogleCloudCesV1mainToolCall {
   /** Output only. Display name of the tool. */
   displayName?: string;
 }
-const GoogleCloudCesV1mainToolCall = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GoogleCloudCesV1mainToolCall>;
-
 /** The execution result of a specific tool from the client or the agent. */
 export interface GoogleCloudCesV1mainToolResponse {
   /** Output only. Display name of the tool. */
@@ -1895,11 +1241,6 @@ export interface GoogleCloudCesV1mainToolResponse {
   /** Output only. The id of the tool call that caused this one, when it was issued by a sub-agent working on behalf of a parent call. Empty for top-level calls. Lets a client group a sub-agent's work under the call that started it instead of rendering every step as a sibling. */
   parentToolCallId?: string;
 }
-const GoogleCloudCesV1mainToolResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GoogleCloudCesV1mainToolResponse>;
-
 /** A chunk of content within a message. */
 export interface GoogleCloudCesV1mainChunk {
   /** Optional. Blob data. */
@@ -1923,17 +1264,7 @@ export interface GoogleCloudCesV1mainChunk {
   /** Optional. Tool execution response. */
   toolResponse?: GoogleCloudCesV1mainToolResponse;
 }
-const GoogleCloudCesV1mainChunk = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GoogleCloudCesV1mainChunk>;
-
 export type GoogleCloudCesV1mainChunkList = Array<GoogleCloudCesV1mainChunk>;
-const GoogleCloudCesV1mainChunkList = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GoogleCloudCesV1mainChunkList>;
-
 /** A message within a conversation. */
 export interface GoogleCloudCesV1mainMessage {
   /** Optional. Content of the message as a series of chunks. */
@@ -1943,23 +1274,8 @@ export interface GoogleCloudCesV1mainMessage {
   /** Optional. The role within the conversation, e.g., user, agent. */
   role?: string;
 }
-const GoogleCloudCesV1mainMessage = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<GoogleCloudCesV1mainMessage>;
-
 export type GoogleCloudCesV1mainMessageList = Array<GoogleCloudCesV1mainMessage>;
-const GoogleCloudCesV1mainMessageList = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GoogleCloudCesV1mainMessageList>;
-
 export type GoogleCloudCesV1mainSpanList = Array<GoogleCloudCesV1mainSpan>;
-const GoogleCloudCesV1mainSpanList = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GoogleCloudCesV1mainSpanList>;
-
 /** A span is a unit of work or a single operation during the request processing. */
 export interface GoogleCloudCesV1mainSpan {
   /** Output only. The duration of the span. */
@@ -1975,11 +1291,6 @@ export interface GoogleCloudCesV1mainSpan {
   /** Output only. The name of the span. */
   name?: string;
 }
-const GoogleCloudCesV1mainSpan = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<GoogleCloudCesV1mainSpan>;
-
 /** The CES diagnostic information. */
 export interface GoogleCloudContactcenterinsightsV1CesTurnAnnotation {
   /** The messages in the turn. */
@@ -1987,18 +1298,11 @@ export interface GoogleCloudContactcenterinsightsV1CesTurnAnnotation {
   /** The root span of the action processing. */
   rootSpan?: GoogleCloudCesV1mainSpan;
 }
-const GoogleCloudContactcenterinsightsV1CesTurnAnnotation = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1CesTurnAnnotation>;
-
 export type GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum =
   | "CORRECTNESS_LEVEL_UNSPECIFIED"
   | "NOT_CORRECT"
   | "PARTIALLY_CORRECT"
   | "FULLY_CORRECT";
-const GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum = S.String;
-
 /** The feedback that the customer has about a certain answer in the conversation. */
 export interface GoogleCloudContactcenterinsightsV1AnswerFeedback {
   /** The correctness level of an answer. */
@@ -2010,37 +1314,20 @@ export interface GoogleCloudContactcenterinsightsV1AnswerFeedback {
   /** Indicates whether an answer or item was clicked by the human agent. */
   clicked?: boolean;
 }
-const GoogleCloudContactcenterinsightsV1AnswerFeedback = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnswerFeedback>;
-
 /** Indicates the session has terminated, due to either successful completion (e.g. user says "Good bye!" ) or an agent escalation. The agent will not process any further inputs after session is terminated and the client should half-close and disconnect after receiving all remaining responses from the agent. */
 export interface GoogleCloudCesV1mainEndSession {
   /** Optional. Provides additional information about the end session signal, such as the reason for ending the session. */
   metadata?: DocumentMap;
 }
-const GoogleCloudCesV1mainEndSession = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<GoogleCloudCesV1mainEndSession>;
-
 /** The CES end session annotation. */
 export interface GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation {
   /** End session signal from CES. */
   endSession?: GoogleCloudCesV1mainEndSession;
 }
-const GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation>;
-
 export type GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum =
   | "QUERY_SOURCE_UNSPECIFIED"
   | "AGENT_QUERY"
   | "SUGGESTED_QUERY";
-const GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum = S.String;
-
 /** Explicit input used for generating the answer */
 export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput {
   /** The resource name of associated generator. Format: `projects//locations//generators/` */
@@ -2052,11 +1339,6 @@ export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput {
     | GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum
     | (string & {});
 }
-const GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput>;
-
 /** Agent Assist Article Suggestion data. */
 export interface GoogleCloudContactcenterinsightsV1ArticleSuggestionData {
   /** Map that contains metadata about the Article Suggestion and the document that it originates from. */
@@ -2072,11 +1354,6 @@ export interface GoogleCloudContactcenterinsightsV1ArticleSuggestionData {
   /** The system's confidence score that this article is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
   confidenceScore?: number;
 }
-const GoogleCloudContactcenterinsightsV1ArticleSuggestionData = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ArticleSuggestionData>;
-
 /** Dialogflow interaction data. */
 export interface GoogleCloudContactcenterinsightsV1DialogflowInteractionData {
   /** The confidence of the match ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
@@ -2084,11 +1361,6 @@ export interface GoogleCloudContactcenterinsightsV1DialogflowInteractionData {
   /** The Dialogflow intent resource path. Format: projects/{project}/agent/{agent}/intents/{intent} */
   dialogflowIntentId?: string;
 }
-const GoogleCloudContactcenterinsightsV1DialogflowInteractionData = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1DialogflowInteractionData>;
-
 /** Agent Assist Smart Reply data. */
 export interface GoogleCloudContactcenterinsightsV1SmartReplyData {
   /** The system's confidence score that this reply is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
@@ -2100,11 +1372,6 @@ export interface GoogleCloudContactcenterinsightsV1SmartReplyData {
   /** The content of the reply. */
   reply?: string;
 }
-const GoogleCloudContactcenterinsightsV1SmartReplyData = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1SmartReplyData>;
-
 /** Agent Assist Smart Compose suggestion data. */
 export interface GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData {
   /** The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record} */
@@ -2116,11 +1383,6 @@ export interface GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData {
   /** The system's confidence score that this suggestion is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
   confidenceScore?: number;
 }
-const GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData>;
-
 /** Conversation summarization suggestion data. */
 export interface GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData {
   /** The summarization content that is concatenated into one string. */
@@ -2138,12 +1400,6 @@ export interface GoogleCloudContactcenterinsightsV1ConversationSummarizationSugg
   /** Agent Assist generator ID. */
   generatorId?: string;
 }
-const GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData =
-  /*@__PURE__*/ __L.at(
-    __c17,
-    5,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData>;
-
 /** Agent Assist frequently-asked-question answer data. */
 export interface GoogleCloudContactcenterinsightsV1FaqAnswerData {
   /** The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record} */
@@ -2159,11 +1415,6 @@ export interface GoogleCloudContactcenterinsightsV1FaqAnswerData {
   /** The corresponding FAQ question. */
   question?: string;
 }
-const GoogleCloudContactcenterinsightsV1FaqAnswerData = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1FaqAnswerData>;
-
 /** An annotation that was generated during the customer and agent interaction. */
 export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
   /** The time at which this annotation was created. */
@@ -2195,18 +1446,8 @@ export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
   /** Agent Assist FAQ answer data. */
   faqAnswer?: GoogleCloudContactcenterinsightsV1FaqAnswerData;
 }
-const GoogleCloudContactcenterinsightsV1RuntimeAnnotation = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1RuntimeAnnotation>;
-
 export type GoogleCloudContactcenterinsightsV1RuntimeAnnotationList =
   Array<GoogleCloudContactcenterinsightsV1RuntimeAnnotation>;
-const GoogleCloudContactcenterinsightsV1RuntimeAnnotationList = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1RuntimeAnnotationList>;
-
 /** Word-level info for words in a transcript. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo {
   /** Time offset of the start of this word relative to the beginning of the total conversation. */
@@ -2218,39 +1459,18 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Time offset of the end of this word relative to the beginning of the total conversation. */
   endOffset?: string;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo =
-  /*@__PURE__*/ __L.at(
-    __c18,
-    1,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>;
-
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList =
   Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>;
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList =
-  /*@__PURE__*/ __L.at(
-    __c18,
-    2,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList>;
-
 /** A text part. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart {
   /** Optional. The text content. */
   text?: string;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart =
-  /*@__PURE__*/ __L.at(
-    __c18,
-    3,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart>;
-
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPartListTypeEnum =
   | "LIST_TYPE_UNSPECIFIED"
   | "UNORDERED"
   | "ORDERED_NUMBER"
   | "ORDERED_ALPHA";
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPartListTypeEnum =
-  S.String;
-
 /** An item in a list. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem {
   /** Optional. Nested sub-items. */
@@ -2258,20 +1478,8 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. The text of the list item. */
   text?: string;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem =
-  /*@__PURE__*/ __L.at(
-    __c18,
-    4,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem>;
-
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList =
   Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem>;
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList =
-  /*@__PURE__*/ __L.at(
-    __c18,
-    5,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList>;
-
 /** A list part. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart {
   /** Optional. The type of list. */
@@ -2281,12 +1489,6 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. List items. */
   items?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart =
-  /*@__PURE__*/ __L.at(
-    __c18,
-    6,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart>;
-
 /** A citation part. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart {
   /** Optional. The cited source title. */
@@ -2296,31 +1498,13 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. The cited source URI. */
   sourceUri?: string;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart =
-  /*@__PURE__*/ __L.at(
-    __c18,
-    7,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart>;
-
 /** A row in a table. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow {
   /** Optional. The cell values in the row. */
   cells?: StringList;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    0,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow>;
-
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRowList =
   Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow>;
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRowList =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    1,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRowList>;
-
 /** A table part. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart {
   /** Optional. Table column headers. */
@@ -2330,12 +1514,6 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. Optional title for the table. */
   title?: string;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    2,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart>;
-
 /** Represents an amount of money with its currency type. */
 export interface GoogleTypeMoney {
   /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
@@ -2345,8 +1523,6 @@ export interface GoogleTypeMoney {
   /** The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar. */
   units?: string;
 }
-const GoogleTypeMoney = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<GoogleTypeMoney>;
-
 /** A product in a product collection. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct {
   /** Optional. Product display name. */
@@ -2362,31 +1538,13 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. Product price. */
   price?: GoogleTypeMoney;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    4,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct>;
-
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductList =
   Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct>;
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductList =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    5,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductList>;
-
 /** A product collection part. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart {
   /** Optional. List of products. */
   products?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductList;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    6,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart>;
-
 /** A custom payload part. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart {
   /** Optional. Arbitrary structured payload. */
@@ -2394,12 +1552,6 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. Type identifier for the payload. */
   payloadType?: string;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart =
-  /*@__PURE__*/ __L.at(
-    __c19,
-    7,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart>;
-
 /** A suggestion chip. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip {
   /** Optional. Optional action or destination URI triggered by the chip. */
@@ -2407,31 +1559,13 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. The chip label or text. */
   text?: string;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    0,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip>;
-
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChipList =
   Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip>;
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChipList =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    1,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChipList>;
-
 /** A suggestion chips part. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart {
   /** Optional. List of suggestion chips. */
   chips?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChipList;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    2,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart>;
-
 /** A link part. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart {
   /** Optional. Target URI. */
@@ -2439,12 +1573,6 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. Anchor or display text. */
   text?: string;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    3,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart>;
-
 /** A media part. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart {
   /** Optional. Alternative text description. */
@@ -2452,20 +1580,11 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. URI or URL to the media. */
   uri?: string;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    4,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart>;
-
 /** A thought part. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart {
   /** Optional. The thought or reasoning text. */
   text?: string;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart =
-  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart>;
-
 /** A structured component/part of a transcript segment. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart {
   /** Optional. Plain text content. */
@@ -2491,20 +1610,8 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** Optional. Model thought or internal reasoning. */
   thought?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    5,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart>;
-
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartList =
   Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart>;
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartList =
-  /*@__PURE__*/ __L.at(
-    __c20,
-    6,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartList>;
-
 /** A wrapper for holding the audio for any given turn. */
 export interface GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio {
   /** The duration of the audio. */
@@ -2512,19 +1619,12 @@ export interface GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLev
   /** The Cloud Storage URI of the audio for any given turn. */
   audioGcsUri?: string;
 }
-const GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>;
-
 export type GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum =
   | "ROLE_UNSPECIFIED"
   | "HUMAN_AGENT"
   | "AUTOMATED_AGENT"
   | "END_USER"
   | "ANY_AGENT";
-const GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum = S.String;
-
 /** The call participant speaking for a given utterance. */
 export interface GoogleCloudContactcenterinsightsV1ConversationParticipant {
   /** The name of the participant provided by Dialogflow. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant} */
@@ -2538,22 +1638,11 @@ export interface GoogleCloudContactcenterinsightsV1ConversationParticipant {
   /** Obfuscated user ID from Dialogflow. */
   obfuscatedExternalUserId?: string;
 }
-const GoogleCloudContactcenterinsightsV1ConversationParticipant = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationParticipant>;
-
 /** Metadata from Dialogflow relating to the current transcript segment. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata {
   /** Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist. */
   smartReplyAllowlistCovered?: boolean;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    1,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata>;
-
 /** A segment of a full transcript. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment {
   /** A list of the word-specific information for each word in the segment. */
@@ -2579,30 +1668,13 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   /** The sentiment for this transcript segment. */
   sentiment?: GoogleCloudContactcenterinsightsV1SentimentData;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    2,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>;
-
 export type GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList =
   Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>;
-const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    3,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList>;
-
 /** A message representing the transcript of a conversation. */
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscript {
   /** A list of sequential transcript segments that comprise the conversation. */
   transcriptSegments?: GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList;
 }
-const GoogleCloudContactcenterinsightsV1ConversationTranscript = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscript>;
-
 /** A Dialogflow source of conversation data. */
 export interface GoogleCloudContactcenterinsightsV1DialogflowSource {
   /** Cloud Storage URI that points to a file that contains the conversation audio. */
@@ -2610,11 +1682,6 @@ export interface GoogleCloudContactcenterinsightsV1DialogflowSource {
   /** Output only. The name of the Dialogflow conversation that this conversation resource is derived from. Format: projects/{project}/locations/{location}/conversations/{conversation} */
   dialogflowConversation?: string;
 }
-const GoogleCloudContactcenterinsightsV1DialogflowSource = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1DialogflowSource>;
-
 /** A Cloud Storage source of conversation data. */
 export interface GoogleCloudContactcenterinsightsV1GcsSource {
   /** Immutable. Cloud Storage URIs that point to files that contain the conversation audio. Supports both single audio files and multi-leg session recordings (e.g., call transfers, rolling recording buffers). */
@@ -2624,19 +1691,8 @@ export interface GoogleCloudContactcenterinsightsV1GcsSource {
   /** Immutable. Cloud Storage URI that points to a file that contains the conversation transcript. */
   transcriptUri?: string;
 }
-const GoogleCloudContactcenterinsightsV1GcsSource = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1GcsSource>;
-
 export type GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList =
   Array<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>;
-const GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList =
-  /*@__PURE__*/ __L.at(
-    __c21,
-    7,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList>;
-
 /** The conversation source, which is a combination of transcript and audio. */
 export interface GoogleCloudContactcenterinsightsV1ConversationDataSource {
   /** The source when the conversation comes from Dialogflow. */
@@ -2648,11 +1704,6 @@ export interface GoogleCloudContactcenterinsightsV1ConversationDataSource {
   /** Cloud Storage URIs that points to files that contain the conversation audio for each turn. Assume the order of the URIs is the same as the order of the transcript turns. */
   turnLevelAudios?: GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList;
 }
-const GoogleCloudContactcenterinsightsV1ConversationDataSource = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSource>;
-
 /** The conversation resource. */
 export interface GoogleCloudContactcenterinsightsV1Conversation {
   /** Call-specific metadata. */
@@ -2706,11 +1757,6 @@ export interface GoogleCloudContactcenterinsightsV1Conversation {
   /** A map for the user to specify any custom fields. A maximum of 100 labels per conversation is allowed, with a maximum of 256 characters per entry. */
   labels?: StringMap;
 }
-const GoogleCloudContactcenterinsightsV1Conversation = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1Conversation>;
-
 export interface CreateProjectsLocationsConversationsRequest {
   /** Required. The parent resource of the conversation. */
   parent: string;
@@ -2719,44 +1765,24 @@ export interface CreateProjectsLocationsConversationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Conversation;
 }
-const CreateProjectsLocationsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<CreateProjectsLocationsConversationsRequest>;
-
 export interface CreateProjectsLocationsConversationsAnalysesRequest {
   /** Required. The parent resource of the analysis. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Analysis;
 }
-const CreateProjectsLocationsConversationsAnalysesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<CreateProjectsLocationsConversationsAnalysesRequest>;
-
 export interface CreateProjectsLocationsConversationsAssessmentsRequest {
   /** Required. The parent resource of the assessment. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Assessment;
 }
-const CreateProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<CreateProjectsLocationsConversationsAssessmentsRequest>;
-
 export interface CreateProjectsLocationsConversationsAssessmentsNotesRequest {
   /** Required. The parent resource of the note. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Note;
 }
-const CreateProjectsLocationsConversationsAssessmentsNotesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<CreateProjectsLocationsConversationsAssessmentsNotesRequest>;
-
 export interface CreateProjectsLocationsConversationsFeedbackLabelsRequest {
   /** Required. The parent resource of the feedback label. */
   parent: string;
@@ -2765,11 +1791,6 @@ export interface CreateProjectsLocationsConversationsFeedbackLabelsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1FeedbackLabel;
 }
-const CreateProjectsLocationsConversationsFeedbackLabelsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<CreateProjectsLocationsConversationsFeedbackLabelsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRangeUnitEnum =
   | "TIME_UNIT_UNSPECIFIED"
   | "DAY"
@@ -2777,8 +1798,6 @@ export type GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRangeUn
   | "MONTH"
   | "QUARTER"
   | "YEAR";
-const GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRangeUnitEnum = S.String;
-
 /** Relative date range configuration. */
 export interface GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange {
   /** Required. The unit of time. */
@@ -2786,11 +1805,6 @@ export interface GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRa
   /** Required. The quantity of units in the past. */
   quantity?: string;
 }
-const GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange>;
-
 /** A time window for querying conversations. */
 export interface GoogleCloudContactcenterinsightsV1QueryInterval {
   /** Required. The end time of the time window. */
@@ -2798,11 +1812,6 @@ export interface GoogleCloudContactcenterinsightsV1QueryInterval {
   /** Required. The start time of the time window. */
   startTime?: string;
 }
-const GoogleCloudContactcenterinsightsV1QueryInterval = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QueryInterval>;
-
 /** Date range configuration for dashboard charts. */
 export interface GoogleCloudContactcenterinsightsV1DateRangeConfig {
   /** A relative date range. */
@@ -2810,20 +1819,10 @@ export interface GoogleCloudContactcenterinsightsV1DateRangeConfig {
   /** An absolute date range. */
   absoluteDateRange?: GoogleCloudContactcenterinsightsV1QueryInterval;
 }
-const GoogleCloudContactcenterinsightsV1DateRangeConfig = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1DateRangeConfig>;
-
 /** Request data that use the existing QueryMetrics. */
 export interface GoogleCloudContactcenterinsightsV1QueryMetrics {
   request?: DocumentMap;
 }
-const GoogleCloudContactcenterinsightsV1QueryMetrics = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QueryMetrics>;
-
 /** The current chart checkpoint state. */
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint {
   /** The revision id of the chart. */
@@ -2831,27 +1830,16 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckp
   /** The session id of the chart. */
   sessionId?: string;
 }
-const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint>;
-
 /** The user message. */
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage {
   /** A message from the user that is interacting with the system. */
   text?: string;
 }
-const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage =
-  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage>;
-
 export type GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutputTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "THOUGHT"
   | "FINAL_RESPONSE"
   | "PROGRESS";
-const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutputTypeEnum =
-  S.String;
-
 /** A text output message from the system. */
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput {
   /** The type of the text message. */
@@ -2861,12 +1849,6 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   /** The parts of the message. */
   texts?: StringList;
 }
-const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput =
-  /*@__PURE__*/ __L.at(
-    __c23,
-    4,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput>;
-
 /** A message from the system in response to the user. This message can also be a message from the user as historical context for multiturn conversations with the system. */
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage {
   /** Raw SQL from LLM, before templatization */
@@ -2876,12 +1858,6 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   /** A direct natural language response to the user message. */
   textOutput?: GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput;
 }
-const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage =
-  /*@__PURE__*/ __L.at(
-    __c23,
-    5,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage>;
-
 /** The message in the conversation. */
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage {
   /** A message from the user that is interacting with the system. */
@@ -2893,20 +1869,8 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   /** A message from the system in response to the user. */
   systemMessage?: GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage;
 }
-const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage =
-  /*@__PURE__*/ __L.at(
-    __c23,
-    6,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage>;
-
 export type GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageList =
   Array<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage>;
-const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageList =
-  /*@__PURE__*/ __L.at(
-    __c23,
-    7,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageList>;
-
 /** The conversation used to generate the chart. */
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation {
   /** The create time of the conversation. */
@@ -2918,19 +1882,8 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   /** Ordered list of messages, including user inputs and system responses. */
   messages?: GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageList;
 }
-const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation>;
-
 export type GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationList =
   Array<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation>;
-const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationList =
-  /*@__PURE__*/ __L.at(
-    __c24,
-    1,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationList>;
-
 /** Request that use natural language query to generate the chart. */
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsights {
   /** Optional. For charts with comparison, this key will determine the metric that will be compared between the current and another dataset. */
@@ -2945,11 +1898,6 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsights {
   /** Chart spec for the chart. */
   chartSpec?: DocumentMap;
 }
-const GoogleCloudContactcenterinsightsV1GenerativeInsights = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsights>;
-
 /** The request data for visualizing the dataset in the chart. */
 export interface GoogleCloudContactcenterinsightsV1ChartDataSource {
   /** Use the existing QueryMetrics to generate the chart. */
@@ -2957,11 +1905,6 @@ export interface GoogleCloudContactcenterinsightsV1ChartDataSource {
   /** Use natural language query to generate the chart. */
   generativeInsights?: GoogleCloudContactcenterinsightsV1GenerativeInsights;
 }
-const GoogleCloudContactcenterinsightsV1ChartDataSource = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ChartDataSource>;
-
 export type GoogleCloudContactcenterinsightsV1ChartChartVisualizationTypeEnum =
   | "CHART_VISUALIZATION_TYPE_UNSPECIFIED"
   | "BAR"
@@ -2974,14 +1917,10 @@ export type GoogleCloudContactcenterinsightsV1ChartChartVisualizationTypeEnum =
   | "SUNBURST"
   | "GAUGE"
   | "SANKEY";
-const GoogleCloudContactcenterinsightsV1ChartChartVisualizationTypeEnum = S.String;
-
 export type GoogleCloudContactcenterinsightsV1ChartChartTypeEnum =
   | "CHART_TYPE_UNSPECIFIED"
   | "SYSTEM_DEFINED"
   | "USER_DEFINED";
-const GoogleCloudContactcenterinsightsV1ChartChartTypeEnum = S.String;
-
 /** The redirect action to be taken when the chart is clicked. */
 export interface GoogleCloudContactcenterinsightsV1RedirectAction {
   /** The query params to be added to the redirect path. */
@@ -2989,11 +1928,6 @@ export interface GoogleCloudContactcenterinsightsV1RedirectAction {
   /** The relative path to redirect to. */
   relativePath?: string;
 }
-const GoogleCloudContactcenterinsightsV1RedirectAction = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1RedirectAction>;
-
 /** The action to be taken when the chart is clicked. */
 export interface GoogleCloudContactcenterinsightsV1ChartAction {
   /** The conversation filter string. */
@@ -3001,11 +1935,6 @@ export interface GoogleCloudContactcenterinsightsV1ChartAction {
   /** Redirect action. */
   redirectAction?: GoogleCloudContactcenterinsightsV1RedirectAction;
 }
-const GoogleCloudContactcenterinsightsV1ChartAction = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ChartAction>;
-
 /** Configurable dashboard's widget that displays data as a chart. */
 export interface GoogleCloudContactcenterinsightsV1Chart {
   /** Date range config applied to the chart. */
@@ -3036,11 +1965,6 @@ export interface GoogleCloudContactcenterinsightsV1Chart {
   /** Chart description */
   description?: string;
 }
-const GoogleCloudContactcenterinsightsV1Chart = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1Chart>;
-
 /** Represents a dashboard element, could be a nested Container or Chart. */
 export interface GoogleCloudContactcenterinsightsV1Widget {
   /** A container widget. */
@@ -3052,18 +1976,8 @@ export interface GoogleCloudContactcenterinsightsV1Widget {
   /** A reference to a chart widget. Format: projects/{project}/locations/{location}/dashboards/{dashboard}/charts/{chart} */
   chartReference?: string;
 }
-const GoogleCloudContactcenterinsightsV1Widget = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1Widget>;
-
 export type GoogleCloudContactcenterinsightsV1WidgetList =
   Array<GoogleCloudContactcenterinsightsV1Widget>;
-const GoogleCloudContactcenterinsightsV1WidgetList = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1WidgetList>;
-
 /** Configurable dashboard's container. Container can contain multiple widgets. */
 export interface GoogleCloudContactcenterinsightsV1Container {
   /** Filter applied to all charts in the container. Should support scope later. */
@@ -3083,11 +1997,6 @@ export interface GoogleCloudContactcenterinsightsV1Container {
   /** Container description */
   description?: string;
 }
-const GoogleCloudContactcenterinsightsV1Container = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1Container>;
-
 /** Configurable dashboard */
 export interface GoogleCloudContactcenterinsightsV1Dashboard {
   /** Dashboard description */
@@ -3109,11 +2018,6 @@ export interface GoogleCloudContactcenterinsightsV1Dashboard {
   /** Output only. Dashboard last update time. */
   updateTime?: string;
 }
-const GoogleCloudContactcenterinsightsV1Dashboard = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1Dashboard>;
-
 export interface CreateProjectsLocationsDashboardsRequest {
   /** Required. The parent resource of the dashboard. */
   parent: string;
@@ -3122,11 +2026,6 @@ export interface CreateProjectsLocationsDashboardsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Dashboard;
 }
-const CreateProjectsLocationsDashboardsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<CreateProjectsLocationsDashboardsRequest>;
-
 export interface CreateProjectsLocationsDashboardsChartsRequest {
   /** Optional. A unique ID for the new Chart. This ID will become the final component of the Chart's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. */
   chartId?: string;
@@ -3135,17 +2034,10 @@ export interface CreateProjectsLocationsDashboardsChartsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Chart;
 }
-const CreateProjectsLocationsDashboardsChartsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<CreateProjectsLocationsDashboardsChartsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1DatasetTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EVAL"
   | "LIVE";
-const GoogleCloudContactcenterinsightsV1DatasetTypeEnum = S.String;
-
 /** Dataset resource represents a collection of conversations that may be bounded (Static Dataset, e.g. golden dataset for training), or unbounded (Dynamic Dataset, e.g. live traffic, or agent training traffic) */
 export interface GoogleCloudContactcenterinsightsV1Dataset {
   /** Output only. Dataset create time. */
@@ -3167,11 +2059,6 @@ export interface GoogleCloudContactcenterinsightsV1Dataset {
   /** Optional. Option TTL for the dataset. */
   ttl?: string;
 }
-const GoogleCloudContactcenterinsightsV1Dataset = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1Dataset>;
-
 export interface CreateProjectsLocationsDatasetsRequest {
   /** Required. The parent resource of the dataset. */
   parent: string;
@@ -3180,11 +2067,6 @@ export interface CreateProjectsLocationsDatasetsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Dataset;
 }
-const CreateProjectsLocationsDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<CreateProjectsLocationsDatasetsRequest>;
-
 export interface CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest {
   /** Required. The parent resource of the feedback label. */
   parent: string;
@@ -3193,17 +2075,10 @@ export interface CreateProjectsLocationsDatasetsConversationsFeedbackLabelsReque
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1FeedbackLabel;
 }
-const CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1IssueModelModelTypeEnum =
   | "MODEL_TYPE_UNSPECIFIED"
   | "TYPE_V1"
   | "TYPE_V2";
-const GoogleCloudContactcenterinsightsV1IssueModelModelTypeEnum = S.String;
-
 export type GoogleCloudContactcenterinsightsV1IssueModelStateEnum =
   | "STATE_UNSPECIFIED"
   | "UNDEPLOYED"
@@ -3211,14 +2086,10 @@ export type GoogleCloudContactcenterinsightsV1IssueModelStateEnum =
   | "DEPLOYED"
   | "UNDEPLOYING"
   | "DELETING";
-const GoogleCloudContactcenterinsightsV1IssueModelStateEnum = S.String;
-
 export type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum =
   | "MEDIUM_UNSPECIFIED"
   | "PHONE_CALL"
   | "CHAT";
-const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum = S.String;
-
 /** Configs for the input data used to create the issue model. */
 export interface GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
   /** A filter to reduce the conversations used for training the model to a specific subset. Refer to https://cloud.google.com/contact-center/insights/docs/filtering for details. */
@@ -3228,11 +2099,6 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
   /** Output only. Number of conversations used in training. Output only. */
   trainingConversationsCount?: string;
 }
-const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig>;
-
 /** The issue model resource. */
 export interface GoogleCloudContactcenterinsightsV1IssueModel {
   /** Language of the model. */
@@ -3256,22 +2122,12 @@ export interface GoogleCloudContactcenterinsightsV1IssueModel {
   /** Configs for the input data that used to create the issue model. */
   inputDataConfig?: GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig;
 }
-const GoogleCloudContactcenterinsightsV1IssueModel = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModel>;
-
 export interface CreateProjectsLocationsIssueModelsRequest {
   /** Required. The parent resource of the issue model. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1IssueModel;
 }
-const CreateProjectsLocationsIssueModelsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<CreateProjectsLocationsIssueModelsRequest>;
-
 /** The issue resource. */
 export interface GoogleCloudContactcenterinsightsV1Issue {
   /** Output only. Resource names of the sample representative utterances that match to this issue. */
@@ -3287,44 +2143,25 @@ export interface GoogleCloudContactcenterinsightsV1Issue {
   /** The representative name for the issue. */
   displayName?: string;
 }
-const GoogleCloudContactcenterinsightsV1Issue = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1Issue>;
-
 export interface CreateProjectsLocationsIssueModelsIssuesRequest {
   /** Required. The parent resource of the issue. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Issue;
 }
-const CreateProjectsLocationsIssueModelsIssuesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<CreateProjectsLocationsIssueModelsIssuesRequest>;
-
 export type GoogleCloudContactcenterinsightsV1PhraseMatcherTypeEnum =
   | "PHRASE_MATCHER_TYPE_UNSPECIFIED"
   | "ALL_OF"
   | "ANY_OF";
-const GoogleCloudContactcenterinsightsV1PhraseMatcherTypeEnum = S.String;
-
 export type GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeEnum =
   | "PHRASE_MATCH_RULE_GROUP_TYPE_UNSPECIFIED"
   | "ALL_OF"
   | "ANY_OF";
-const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeEnum = S.String;
-
 /** Exact match configuration. */
 export interface GoogleCloudContactcenterinsightsV1ExactMatchConfig {
   /** Whether to consider case sensitivity when performing an exact match. */
   caseSensitive?: boolean;
 }
-const GoogleCloudContactcenterinsightsV1ExactMatchConfig = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ExactMatchConfig>;
-
 /** Regex match configuration. */
 export type GoogleCloudContactcenterinsightsV1RegexMatchConfig =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
@@ -3335,11 +2172,6 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig {
   /** The configuration for the regex match rule. */
   regexMatchConfig?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-const GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig>;
-
 /** The data for a phrase match rule. */
 export interface GoogleCloudContactcenterinsightsV1PhraseMatchRule {
   /** Specifies whether the phrase must be missing from the transcript segment or present in the transcript segment. */
@@ -3349,18 +2181,8 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchRule {
   /** Required. The phrase to be matched. */
   query?: string;
 }
-const GoogleCloudContactcenterinsightsV1PhraseMatchRule = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRule>;
-
 export type GoogleCloudContactcenterinsightsV1PhraseMatchRuleList =
   Array<GoogleCloudContactcenterinsightsV1PhraseMatchRule>;
-const GoogleCloudContactcenterinsightsV1PhraseMatchRuleList = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRuleList>;
-
 /** A message representing a rule in the phrase matcher. */
 export interface GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup {
   /** Required. The type of this phrase match rule group. */
@@ -3368,26 +2190,14 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup {
   /** A list of phrase match rules that are included in this group. */
   phraseMatchRules?: GoogleCloudContactcenterinsightsV1PhraseMatchRuleList;
 }
-const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>;
-
 export type GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupList =
   Array<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>;
-const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupList = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupList>;
-
 export type GoogleCloudContactcenterinsightsV1PhraseMatcherRoleMatchEnum =
   | "ROLE_UNSPECIFIED"
   | "HUMAN_AGENT"
   | "AUTOMATED_AGENT"
   | "END_USER"
   | "ANY_AGENT";
-const GoogleCloudContactcenterinsightsV1PhraseMatcherRoleMatchEnum = S.String;
-
 /** The phrase matcher resource. */
 export interface GoogleCloudContactcenterinsightsV1PhraseMatcher {
   /** Output only. The timestamp of when the revision was created. It is also the create time when a new matcher is added. */
@@ -3413,22 +2223,12 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatcher {
   /** The role whose utterances the phrase matcher should be matched against. If the role is ROLE_UNSPECIFIED it will be matched against any utterances in the transcript. */
   roleMatch?: GoogleCloudContactcenterinsightsV1PhraseMatcherRoleMatchEnum | (string & {});
 }
-const GoogleCloudContactcenterinsightsV1PhraseMatcher = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatcher>;
-
 export interface CreateProjectsLocationsPhraseMatchersRequest {
   /** Required. The parent resource of the phrase matcher. Required. The location to create a phrase matcher for. Format: `projects//locations/` or `projects//locations/` */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1PhraseMatcher;
 }
-const CreateProjectsLocationsPhraseMatchersRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<CreateProjectsLocationsPhraseMatchersRequest>;
-
 /** A tag is a resource which aims to categorize a set of questions across multiple scorecards, e.g., "Customer Satisfaction","Billing", etc. */
 export interface GoogleCloudContactcenterinsightsV1QaQuestionTag {
   /** Required. A user-specified display name for the tag. */
@@ -3446,11 +2246,6 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionTag {
   /** Output only. Whether this resource is zone separated. */
   satisfiesPzs?: boolean;
 }
-const GoogleCloudContactcenterinsightsV1QaQuestionTag = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTag>;
-
 export interface CreateProjectsLocationsQaQuestionTagsRequest {
   /** Optional. A unique ID for the new QaQuestionTag. This ID will become the final component of the QaQuestionTag's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`. */
   qaQuestionTagId?: string;
@@ -3459,18 +2254,11 @@ export interface CreateProjectsLocationsQaQuestionTagsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QaQuestionTag;
 }
-const CreateProjectsLocationsQaQuestionTagsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<CreateProjectsLocationsQaQuestionTagsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1QaScorecardSourceEnum =
   | "QA_SCORECARD_SOURCE_UNSPECIFIED"
   | "QA_SCORECARD_SOURCE_CUSTOMER_DEFINED"
   | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE"
   | "QA_SCORECARD_SOURCE_INTENT_TAXONOMY";
-const GoogleCloudContactcenterinsightsV1QaScorecardSourceEnum = S.String;
-
 /** A QaScorecard represents a collection of questions to be scored during analysis. */
 export interface GoogleCloudContactcenterinsightsV1QaScorecard {
   /** Output only. The source of the scorecard. */
@@ -3492,11 +2280,6 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecard {
   /** Identifier. The scorecard name. Format: projects/{project}/locations/{location}/qaScorecards/{qa_scorecard} */
   name?: string;
 }
-const GoogleCloudContactcenterinsightsV1QaScorecard = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecard>;
-
 export interface CreateProjectsLocationsQaScorecardsRequest {
   /** Required. The parent resource of the QaScorecard. */
   parent: string;
@@ -3505,11 +2288,6 @@ export interface CreateProjectsLocationsQaScorecardsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QaScorecard;
 }
-const CreateProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<CreateProjectsLocationsQaScorecardsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1QaScorecardRevisionStateEnum =
   | "STATE_UNSPECIFIED"
   | "EDITABLE"
@@ -3518,8 +2296,6 @@ export type GoogleCloudContactcenterinsightsV1QaScorecardRevisionStateEnum =
   | "READY"
   | "DELETING"
   | "TRAINING_CANCELLED";
-const GoogleCloudContactcenterinsightsV1QaScorecardRevisionStateEnum = S.String;
-
 /** A revision of a QaScorecard. Modifying published scorecard fields would invalidate existing scorecard results -- the questions may have changed, or the score weighting will make existing scores impossible to understand. So changes must create a new revision, rather than modifying the existing resource. */
 export interface GoogleCloudContactcenterinsightsV1QaScorecardRevision {
   /** Output only. The timestamp that the revision was created. */
@@ -3537,11 +2313,6 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardRevision {
   /** Output only. State of the scorecard revision, indicating whether it's ready to be used in analysis. */
   state?: GoogleCloudContactcenterinsightsV1QaScorecardRevisionStateEnum | (string & {});
 }
-const GoogleCloudContactcenterinsightsV1QaScorecardRevision = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardRevision>;
-
 export interface CreateProjectsLocationsQaScorecardsRevisionsRequest {
   /** Required. The parent resource of the QaScorecardRevision. */
   parent: string;
@@ -3550,37 +2321,20 @@ export interface CreateProjectsLocationsQaScorecardsRevisionsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QaScorecardRevision;
 }
-const CreateProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<CreateProjectsLocationsQaScorecardsRevisionsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1QaQuestionQuestionTypeEnum =
   | "QA_QUESTION_TYPE_UNSPECIFIED"
   | "CUSTOMIZABLE"
   | "PREDEFINED";
-const GoogleCloudContactcenterinsightsV1QaQuestionQuestionTypeEnum = S.String;
-
 /** Options for configuring what metadata is included in the conversation data used in QAI and Discovery Engine. */
 export interface GoogleCloudContactcenterinsightsV1ConversationDataOptions {
   /** Whether to include the per turn Dialogflow interaction data in conversation transcript. */
   includeDialogflowInteractionData?: boolean;
 }
-const GoogleCloudContactcenterinsightsV1ConversationDataOptions = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationDataOptions>;
-
 /** Options for configuring the data used to generate the QA question. */
 export interface GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions {
   /** Options for configuring the conversation data used to generate the QA question. */
   conversationDataOptions?: GoogleCloudContactcenterinsightsV1ConversationDataOptions;
 }
-const GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions>;
-
 /** Message representing a possible answer to the question. */
 export interface GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice {
   /** Boolean value. */
@@ -3596,25 +2350,13 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice {
   /** A value of "Not Applicable (N/A)". If provided, this field may only be set to `true`. If a question receives this answer, it will be excluded from any score calculations. */
   naValue?: boolean;
 }
-const GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice>;
-
 export type GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoiceList =
   Array<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice>;
-const GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoiceList = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoiceList>;
-
 export type GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfigTypeEnum =
   | "PREDEFINED_QUESTION_TYPE_UNSPECIFIED"
   | "CONVERSATION_OUTCOME"
   | "CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE"
   | "CONVERSATION_OUTCOME_AI_AVERSION";
-const GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfigTypeEnum = S.String;
-
 /** Configuration for a predefined question. This field will only be set if the Question Type is predefined. */
 export interface GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig {
   /** The type of the predefined question. */
@@ -3622,21 +2364,11 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionC
     | GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfigTypeEnum
     | (string & {});
 }
-const GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig>;
-
 /** A wrapper representing metrics calculated against a test-set on a LLM that was fine tuned for this question. */
 export interface GoogleCloudContactcenterinsightsV1QaQuestionMetrics {
   /** Output only. Accuracy of the model. Measures the percentage of correct answers the model gave on the test set. */
   accuracy?: number;
 }
-const GoogleCloudContactcenterinsightsV1QaQuestionMetrics = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionMetrics>;
-
 export type GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum =
   | "DATASET_VALIDATION_WARNING_UNSPECIFIED"
   | "TOO_MANY_INVALID_FEEDBACK_LABELS"
@@ -3648,9 +2380,6 @@ export type GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetVal
     | GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnum
     | (string & {})
   >;
-const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList =
-  GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList>;
-
 /** Metadata about the tuning operation for the question. Will only be set if a scorecard containing this question has been tuned. */
 export interface GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata {
   /** Total number of valid labels provided for the question at the time of tuining. */
@@ -3660,11 +2389,6 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata {
   /** A list of any applicable data validation warnings about the question's feedback labels. */
   datasetValidationWarnings?: GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList;
 }
-const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata>;
-
 /** A single question to be scored by the Insights QA feature. */
 export interface GoogleCloudContactcenterinsightsV1QaQuestion {
   /** Output only. The time at which this question was created. */
@@ -3700,11 +2424,6 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestion {
   /** Instructions describing how to determine the answer. */
   answerInstructions?: string;
 }
-const GoogleCloudContactcenterinsightsV1QaQuestion = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestion>;
-
 export interface CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest {
   /** Optional. A unique ID for the new question. This ID will become the final component of the question's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`. */
   qaQuestionId?: string;
@@ -3713,11 +2432,6 @@ export interface CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest 
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QaQuestion;
 }
-const CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
-
 /** The View resource. */
 export interface GoogleCloudContactcenterinsightsV1View {
   /** The human-readable display name of the view. */
@@ -3731,306 +2445,147 @@ export interface GoogleCloudContactcenterinsightsV1View {
   /** Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view} */
   name?: string;
 }
-const GoogleCloudContactcenterinsightsV1View = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1View>;
-
 export interface CreateProjectsLocationsViewsRequest {
   /** Required. The parent resource of the view. Required. The location to create a view for. Format: `projects//locations/` or `projects//locations/` */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1View;
 }
-const CreateProjectsLocationsViewsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<CreateProjectsLocationsViewsRequest>;
-
 export interface DeleteProjectsLocationsAnalysisRulesRequest {
   /** Required. The name of the analysis rule to delete. */
   name: string;
 }
-const DeleteProjectsLocationsAnalysisRulesRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsAnalysisRulesRequest>;
-
 export interface DeleteProjectsLocationsAssessmentRulesRequest {
   /** Required. The name of the assessment rule to delete. */
   name: string;
 }
-const DeleteProjectsLocationsAssessmentRulesRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsAssessmentRulesRequest>;
-
 export interface DeleteProjectsLocationsAuthorizedViewSetsRequest {
   /** Required. The name of the AuthorizedViewSet to delete. */
   name: string;
   /** Optional. If set to true, all of this AuthorizedViewSet's child resources will also be deleted. Otherwise, the request will only succeed if it has none. */
   force?: boolean;
 }
-const DeleteProjectsLocationsAuthorizedViewSetsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsAuthorizedViewSetsRequest>;
-
 export interface DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
   /** Required. The name of the AuthorizedView to delete. */
   name: string;
 }
-const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
-
 export interface DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest {
   /** If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses. */
   force?: boolean;
   /** Required. The name of the conversation to delete. */
   name: string;
 }
-const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
-  /*@__PURE__*/ __L.at(
-    __c30,
-    2,
-  ) as any as S.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
-
 export interface DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest {
   /** Required. The name of the assessment to delete. */
   name: string;
   /** Optional. If set to true, all of this assessment's notes will also be deleted. Otherwise, the request will only succeed if it has no notes. */
   force?: boolean;
 }
-const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
-  /*@__PURE__*/ __L.at(
-    __c30,
-    3,
-  ) as any as S.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
-
 export interface DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest {
   /** Required. The name of the note to delete. */
   name: string;
 }
-const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest =
-  /*@__PURE__*/ __L.at(
-    __c30,
-    4,
-  ) as any as S.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
-
 export interface DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest {
   /** Required. The name of the feedback label to delete. */
   name: string;
 }
-const DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
-  /*@__PURE__*/ __L.at(
-    __c30,
-    5,
-  ) as any as S.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
-
 export interface DeleteProjectsLocationsAutoLabelingRulesRequest {
   /** Required. The name of the auto labeling rule to delete. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} */
   name: string;
 }
-const DeleteProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsAutoLabelingRulesRequest>;
-
 export interface DeleteProjectsLocationsConversationsRequest {
   /** If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses. */
   force?: boolean;
   /** Required. The name of the conversation to delete. */
   name: string;
 }
-const DeleteProjectsLocationsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsConversationsRequest>;
-
 export interface DeleteProjectsLocationsConversationsAnalysesRequest {
   /** Required. The name of the analysis to delete. */
   name: string;
 }
-const DeleteProjectsLocationsConversationsAnalysesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsConversationsAnalysesRequest>;
-
 export interface DeleteProjectsLocationsConversationsAssessmentsRequest {
   /** Optional. If set to true, all of this assessment's notes will also be deleted. Otherwise, the request will only succeed if it has no notes. */
   force?: boolean;
   /** Required. The name of the assessment to delete. */
   name: string;
 }
-const DeleteProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsConversationsAssessmentsRequest>;
-
 export interface DeleteProjectsLocationsConversationsAssessmentsNotesRequest {
   /** Required. The name of the note to delete. */
   name: string;
 }
-const DeleteProjectsLocationsConversationsAssessmentsNotesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsConversationsAssessmentsNotesRequest>;
-
 export interface DeleteProjectsLocationsConversationsFeedbackLabelsRequest {
   /** Required. The name of the feedback label to delete. */
   name: string;
 }
-const DeleteProjectsLocationsConversationsFeedbackLabelsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsConversationsFeedbackLabelsRequest>;
-
 export interface DeleteProjectsLocationsDashboardsRequest {
   /** Required. The name of the dashboard to delete. */
   name: string;
 }
-const DeleteProjectsLocationsDashboardsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsDashboardsRequest>;
-
 export interface DeleteProjectsLocationsDashboardsChartsRequest {
   /** Required. The name of the chart to delete. */
   name: string;
 }
-const DeleteProjectsLocationsDashboardsChartsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsDashboardsChartsRequest>;
-
 export interface DeleteProjectsLocationsDatasetsRequest {
   /** Required. The name of the dataset to delete. */
   name: string;
 }
-const DeleteProjectsLocationsDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsDatasetsRequest>;
-
 export interface DeleteProjectsLocationsDatasetsConversationsRequest {
   /** Required. The name of the conversation to delete. */
   name: string;
   /** If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses. */
   force?: boolean;
 }
-const DeleteProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsDatasetsConversationsRequest>;
-
 export interface DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest {
   /** Required. The name of the feedback label to delete. */
   name: string;
 }
-const DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
-
 export interface DeleteProjectsLocationsIssueModelsRequest {
   /** Required. The name of the issue model to delete. */
   name: string;
 }
-const DeleteProjectsLocationsIssueModelsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsIssueModelsRequest>;
-
 export interface DeleteProjectsLocationsIssueModelsIssuesRequest {
   /** Required. The name of the issue to delete. */
   name: string;
 }
-const DeleteProjectsLocationsIssueModelsIssuesRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsIssueModelsIssuesRequest>;
-
 export interface DeleteProjectsLocationsPhraseMatchersRequest {
   /** Required. The name of the phrase matcher to delete. */
   name: string;
 }
-const DeleteProjectsLocationsPhraseMatchersRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsPhraseMatchersRequest>;
-
 export interface DeleteProjectsLocationsQaQuestionTagsRequest {
   /** Required. The name of the QaQuestionTag to delete. */
   name: string;
 }
-const DeleteProjectsLocationsQaQuestionTagsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsQaQuestionTagsRequest>;
-
 export interface DeleteProjectsLocationsQaScorecardsRequest {
   /** Optional. If set to true, all of this QaScorecard's child resources will also be deleted. Otherwise, the request will only succeed if it has none. */
   force?: boolean;
   /** Required. The name of the QaScorecard to delete. */
   name: string;
 }
-const DeleteProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsQaScorecardsRequest>;
-
 export interface DeleteProjectsLocationsQaScorecardsRevisionsRequest {
   /** Optional. If set to true, all of this QaScorecardRevision's child resources will also be deleted. Otherwise, the request will only succeed if it has none. */
   force?: boolean;
   /** Required. The name of the QaScorecardRevision to delete. */
   name: string;
 }
-const DeleteProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsQaScorecardsRevisionsRequest>;
-
 export interface DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest {
   /** Required. The name of the QaQuestion to delete. */
   name: string;
 }
-const DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
-
 export interface DeleteProjectsLocationsViewsRequest {
   /** Required. The name of the view to delete. */
   name: string;
 }
-const DeleteProjectsLocationsViewsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsViewsRequest>;
-
 /** The request to deploy an issue model. */
 export interface GoogleCloudContactcenterinsightsV1DeployIssueModelRequest {
   /** Required. The issue model to deploy. */
   name?: string;
 }
-const GoogleCloudContactcenterinsightsV1DeployIssueModelRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1DeployIssueModelRequest>;
-
 export interface DeployProjectsLocationsIssueModelsRequest {
   /** Required. The issue model to deploy. */
   name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1DeployIssueModelRequest;
 }
-const DeployProjectsLocationsIssueModelsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<DeployProjectsLocationsIssueModelsRequest>;
-
 /** The request to deploy a QaScorecardRevision */
 export type GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
@@ -4040,11 +2595,6 @@ export interface DeployProjectsLocationsQaScorecardsRevisionsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-const DeployProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<DeployProjectsLocationsQaScorecardsRevisionsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestExportSchemaVersionEnum =
   | "EXPORT_SCHEMA_VERSION_UNSPECIFIED"
   | "EXPORT_V1"
@@ -4065,8 +2615,6 @@ export type GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestExportSch
   | "EXPORT_V16"
   | "EXPORT_V17"
   | "EXPORT_VERSION_LATEST_AVAILABLE";
-const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestExportSchemaVersionEnum = S.String;
-
 /** A BigQuery Table Reference. */
 export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination {
   /** Required. The name of the BigQuery dataset that the snapshot result should be exported to. If this dataset does not exist, the export call returns an INVALID_ARGUMENT error. */
@@ -4076,18 +2624,10 @@ export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQ
   /** The BigQuery table name to which the insights data should be written. If this table does not exist, the export call returns an INVALID_ARGUMENT error. */
   table?: string;
 }
-const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination =
-  /*@__PURE__*/ __L.at(
-    __c33,
-    4,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination>;
-
 export type GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum =
   | "WRITE_DISPOSITION_UNSPECIFIED"
   | "WRITE_TRUNCATE"
   | "WRITE_APPEND";
-const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum = S.String;
-
 /** The request to export insights. */
 export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
   /** Required. The parent resource to export data from. */
@@ -4107,44 +2647,23 @@ export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
     | GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum
     | (string & {});
 }
-const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest>;
-
 export interface ExportProjectsLocationsDatasetsInsightsdataRequest {
   /** Required. The parent resource to export data from. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest;
 }
-const ExportProjectsLocationsDatasetsInsightsdataRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<ExportProjectsLocationsDatasetsInsightsdataRequest>;
-
 export interface ExportProjectsLocationsInsightsdataRequest {
   /** Required. The parent resource to export data from. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest;
 }
-const ExportProjectsLocationsInsightsdataRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<ExportProjectsLocationsInsightsdataRequest>;
-
 /** Google Cloud Storage Object URI to save the issue model to. */
 export interface GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination {
   /** Required. Format: `gs:///` */
   objectUri?: string;
 }
-const GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination =
-  /*@__PURE__*/ __L.at(
-    __c34,
-    0,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination>;
-
 /** Request to export an issue model. */
 export interface GoogleCloudContactcenterinsightsV1ExportIssueModelRequest {
   /** Google Cloud Storage URI to export the issue model to. */
@@ -4152,22 +2671,12 @@ export interface GoogleCloudContactcenterinsightsV1ExportIssueModelRequest {
   /** Required. The issue model to export. */
   name?: string;
 }
-const GoogleCloudContactcenterinsightsV1ExportIssueModelRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ExportIssueModelRequest>;
-
 export interface ExportProjectsLocationsIssueModelsRequest {
   /** Required. The issue model to export. */
   name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1ExportIssueModelRequest;
 }
-const ExportProjectsLocationsIssueModelsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<ExportProjectsLocationsIssueModelsRequest>;
-
 /** The message to finalize an assessment. Finalizing makes an assessment and its notes immutable. */
 export type GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
@@ -4177,33 +2686,16 @@ export interface FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConve
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-const FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
-  /*@__PURE__*/ __L.at(
-    __c34,
-    3,
-  ) as any as S.Schema<FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
-
 export interface FinalizeProjectsLocationsConversationsAssessmentsRequest {
   /** Required. The name of the assessment to finalize. */
   name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-const FinalizeProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<FinalizeProjectsLocationsConversationsAssessmentsRequest>;
-
 export interface GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest {
   /** Required. The name of the conversation to sign. */
   name: string;
 }
-const GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
-  /*@__PURE__*/ __L.at(
-    __c34,
-    5,
-  ) as any as S.Schema<GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
-
 /** Signed audio URIs for a conversation. */
 export interface GoogleCloudContactcenterinsightsV1SignedAudioUris {
   /** The signed URI for the audio from the Cloud Storage conversation source. */
@@ -4215,40 +2707,19 @@ export interface GoogleCloudContactcenterinsightsV1SignedAudioUris {
   /** The signed URI for the audio corresponding to each turn in the conversation. */
   signedTurnLevelAudios?: GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList;
 }
-const GoogleCloudContactcenterinsightsV1SignedAudioUris = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1SignedAudioUris>;
-
 /** The response from a GenerateConversationSignedAudio request. */
 export interface GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse {
   /** The signed uris for the audio. */
   signedAudioUris?: GoogleCloudContactcenterinsightsV1SignedAudioUris;
 }
-const GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse =
-  /*@__PURE__*/ __L.at(
-    __c34,
-    7,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse>;
-
 export interface GenerateSignedAudioProjectsLocationsConversationsRequest {
   /** Required. The name of the conversation to sign. */
   name: string;
 }
-const GenerateSignedAudioProjectsLocationsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<GenerateSignedAudioProjectsLocationsConversationsRequest>;
-
 export interface GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest {
   /** Required. The name of the conversation to sign. */
   name: string;
 }
-const GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest>;
-
 /** The request for generative insights. */
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest {
   /** The natural language query specified by the user. If this field is specified, `sql_query` will be ignored. */
@@ -4270,43 +2741,22 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest {
   /** Optional. For charts with comparison, this key will determine the metric that will be compared between the current and another dataset. */
   sqlComparisonKey?: string;
 }
-const GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest>;
-
 export interface GenerativeInsightsProjectsLocationsRequest {
   /** Required. The location of the data. "projects/{project}/locations/{location}" */
   location: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest;
 }
-const GenerativeInsightsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<GenerativeInsightsProjectsLocationsRequest>;
-
 export interface GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
   /** Required. The location of the data. "projects/{project}/locations/{location}" */
   location: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest;
 }
-const GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
-  /*@__PURE__*/ __L.at(
-    __c35,
-    4,
-  ) as any as S.Schema<GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
-
 export interface GetCorrelationConfigProjectsLocationsRequest {
   /** Required. The name of the correlation config resource to get. Format: projects/{project}/locations/{location}/correlationConfig */
   name: string;
 }
-const GetCorrelationConfigProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<GetCorrelationConfigProjectsLocationsRequest>;
-
 /** A correlation rule that defines how to join conversations for a given correlation type. */
 export interface GoogleCloudContactcenterinsightsV1CorrelationRule {
   /** Optional. A cel expression (go/cel) to be evaluated as a string value. This string value will be used as the join key for the correlation. */
@@ -4318,28 +2768,13 @@ export interface GoogleCloudContactcenterinsightsV1CorrelationRule {
   /** Optional. A cel expression (go/cel) to be evaluated as a boolean value. Two variables conversation_a and conversation_b will be available for evaluation. This expression should evaluate to true if conversation_a and conversation_b should be joined. This is used as an extra constraint on top of the join_key_expression to further refine the group of conversations that are joined together and will be evaluated in both directions. for two conversations c1 and c2 and the result will be OR'd. We will evaluate: f(c1, c2) OR f(c2, c1) */
   constraintExpression?: string;
 }
-const GoogleCloudContactcenterinsightsV1CorrelationRule = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1CorrelationRule>;
-
 export type GoogleCloudContactcenterinsightsV1CorrelationRuleList =
   Array<GoogleCloudContactcenterinsightsV1CorrelationRule>;
-const GoogleCloudContactcenterinsightsV1CorrelationRuleList = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1CorrelationRuleList>;
-
 /** A list of correlation rules for a given correlation type. */
 export interface GoogleCloudContactcenterinsightsV1CorrelationTypeConfig {
   /** A list of correlation rules to be evaluated for correlation. */
   correlationRules?: GoogleCloudContactcenterinsightsV1CorrelationRuleList;
 }
-const GoogleCloudContactcenterinsightsV1CorrelationTypeConfig = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1CorrelationTypeConfig>;
-
 /** A configuration that defines how to correlate conversations for a given a given project. */
 export interface GoogleCloudContactcenterinsightsV1CorrelationConfig {
   /** Output only. The time at which the correlation config was last updated. */
@@ -4351,20 +2786,10 @@ export interface GoogleCloudContactcenterinsightsV1CorrelationConfig {
   /** The correlation type config for full conversations. */
   fullConversationConfig?: GoogleCloudContactcenterinsightsV1CorrelationTypeConfig;
 }
-const GoogleCloudContactcenterinsightsV1CorrelationConfig = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1CorrelationConfig>;
-
 export interface GetEncryptionSpecProjectsLocationsRequest {
   /** Required. The name of the encryption spec resource to get. */
   name: string;
 }
-const GetEncryptionSpecProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<GetEncryptionSpecProjectsLocationsRequest>;
-
 /** A customer-managed encryption key specification that can be applied to all created resources (e.g. `Conversation`). */
 export interface GoogleCloudContactcenterinsightsV1EncryptionSpec {
   /** Immutable. The resource name of the encryption key specification resource. Format: projects/{project}/locations/{location}/encryptionSpec */
@@ -4376,22 +2801,12 @@ export interface GoogleCloudContactcenterinsightsV1EncryptionSpec {
   /** Required. The name of customer-managed encryption key that is used to secure a resource and its sub-resources. If empty, the resource is secured by our default encryption key. Only the key in the same location as this resource is allowed to be used for encryption. Format: `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}` */
   kmsKey?: string;
 }
-const GoogleCloudContactcenterinsightsV1EncryptionSpec = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1EncryptionSpec>;
-
 export interface GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface GoogleTypeExpr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -4403,8 +2818,6 @@ export interface GoogleTypeExpr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-const GoogleTypeExpr = /*@__PURE__*/ __L.at(__c36, 5) as any as S.Schema<GoogleTypeExpr>;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface GoogleIamV1Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -4414,21 +2827,12 @@ export interface GoogleIamV1Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: GoogleTypeExpr;
 }
-const GoogleIamV1Binding = /*@__PURE__*/ __L.at(__c36, 6) as any as S.Schema<GoogleIamV1Binding>;
-
 export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
-const GoogleIamV1BindingList = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<GoogleIamV1BindingList>;
-
 export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
-
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
@@ -4436,17 +2840,7 @@ export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
   logType?: GoogleIamV1AuditLogConfigLogTypeEnum | (string & {});
 }
-const GoogleIamV1AuditLogConfig = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<GoogleIamV1AuditLogConfig>;
-
 export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
-const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
-
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -4454,17 +2848,7 @@ export interface GoogleIamV1AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: GoogleIamV1AuditLogConfigList;
 }
-const GoogleIamV1AuditConfig = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<GoogleIamV1AuditConfig>;
-
 export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
-const GoogleIamV1AuditConfigList = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<GoogleIamV1AuditConfigList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface GoogleIamV1Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -4476,299 +2860,143 @@ export interface GoogleIamV1Policy {
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: GoogleIamV1AuditConfigList;
 }
-const GoogleIamV1Policy = /*@__PURE__*/ __L.at(__c37, 4) as any as S.Schema<GoogleIamV1Policy>;
-
 export interface GetProjectsLocationsAnalysisRulesRequest {
   /** Required. The name of the AnalysisRule to get. */
   name: string;
 }
-const GetProjectsLocationsAnalysisRulesRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<GetProjectsLocationsAnalysisRulesRequest>;
-
 export interface GetProjectsLocationsAssessmentRulesRequest {
   /** Required. The name of the assessment rule to get. */
   name: string;
 }
-const GetProjectsLocationsAssessmentRulesRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<GetProjectsLocationsAssessmentRulesRequest>;
-
 export interface GetProjectsLocationsAssistantSessionsRequest {
   /** Required. The name of the assistant session to retrieve. Format: `projects/{project}/locations/{location}/assistantSessions/{assistant_session}` */
   name: string;
 }
-const GetProjectsLocationsAssistantSessionsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<GetProjectsLocationsAssistantSessionsRequest>;
-
 export interface GetProjectsLocationsAuthorizedViewSetsRequest {
   /** Required. The name of the AuthorizedViewSet to get. */
   name: string;
 }
-const GetProjectsLocationsAuthorizedViewSetsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<GetProjectsLocationsAuthorizedViewSetsRequest>;
-
 export interface GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
   /** Required. The name of the AuthorizedView to get. */
   name: string;
 }
-const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
-
 export type GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum =
   | "CONVERSATION_VIEW_UNSPECIFIED"
   | "FULL"
   | "BASIC"
   | "FULL_WITH_STRUCTURED_TRANSCRIPT";
-const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum = S.String;
-
 export interface GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest {
   /** Required. The name of the conversation to get. */
   name: string;
   /** The level of details of the conversation. Default is `FULL`. */
   view?: GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum | (string & {});
 }
-const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
-  /*@__PURE__*/ __L.at(
-    __c38,
-    2,
-  ) as any as S.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
-
 export interface GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest {
   /** Required. The name of the assessment to get. */
   name: string;
 }
-const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
-  /*@__PURE__*/ __L.at(
-    __c38,
-    3,
-  ) as any as S.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
-
 export interface GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest {
   /** Required. The name of the feedback label to get. */
   name: string;
 }
-const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
-  /*@__PURE__*/ __L.at(
-    __c38,
-    4,
-  ) as any as S.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
-
 export interface GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>;
-
 export interface GetProjectsLocationsAutoLabelingRulesRequest {
   /** Required. The name of the auto labeling rule to get. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} */
   name: string;
 }
-const GetProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<GetProjectsLocationsAutoLabelingRulesRequest>;
-
 export type GetProjectsLocationsConversationsViewEnum =
   | "CONVERSATION_VIEW_UNSPECIFIED"
   | "FULL"
   | "BASIC"
   | "FULL_WITH_STRUCTURED_TRANSCRIPT";
-const GetProjectsLocationsConversationsViewEnum = S.String;
-
 export interface GetProjectsLocationsConversationsRequest {
   /** Required. The name of the conversation to get. */
   name: string;
   /** The level of details of the conversation. Default is `FULL`. */
   view?: GetProjectsLocationsConversationsViewEnum | (string & {});
 }
-const GetProjectsLocationsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<GetProjectsLocationsConversationsRequest>;
-
 export interface GetProjectsLocationsConversationsAnalysesRequest {
   /** Required. The name of the analysis to get. */
   name: string;
 }
-const GetProjectsLocationsConversationsAnalysesRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<GetProjectsLocationsConversationsAnalysesRequest>;
-
 export interface GetProjectsLocationsConversationsAssessmentsRequest {
   /** Required. The name of the assessment to get. */
   name: string;
 }
-const GetProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<GetProjectsLocationsConversationsAssessmentsRequest>;
-
 export interface GetProjectsLocationsConversationsFeedbackLabelsRequest {
   /** Required. The name of the feedback label to get. */
   name: string;
 }
-const GetProjectsLocationsConversationsFeedbackLabelsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<GetProjectsLocationsConversationsFeedbackLabelsRequest>;
-
 export interface GetProjectsLocationsDashboardsRequest {
   /** Required. The name of the dashboard to get. */
   name: string;
 }
-const GetProjectsLocationsDashboardsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<GetProjectsLocationsDashboardsRequest>;
-
 export interface GetProjectsLocationsDashboardsChartsRequest {
   /** Required. The name of the chart to get. */
   name: string;
 }
-const GetProjectsLocationsDashboardsChartsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<GetProjectsLocationsDashboardsChartsRequest>;
-
 export interface GetProjectsLocationsDatasetsRequest {
   /** Required. The name of the dataset to get. */
   name: string;
 }
-const GetProjectsLocationsDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<GetProjectsLocationsDatasetsRequest>;
-
 export type GetProjectsLocationsDatasetsConversationsViewEnum =
   | "CONVERSATION_VIEW_UNSPECIFIED"
   | "FULL"
   | "BASIC"
   | "FULL_WITH_STRUCTURED_TRANSCRIPT";
-const GetProjectsLocationsDatasetsConversationsViewEnum = S.String;
-
 export interface GetProjectsLocationsDatasetsConversationsRequest {
   /** Required. The name of the conversation to get. */
   name: string;
   /** The level of details of the conversation. Default is `FULL`. */
   view?: GetProjectsLocationsDatasetsConversationsViewEnum | (string & {});
 }
-const GetProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<GetProjectsLocationsDatasetsConversationsRequest>;
-
 export interface GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest {
   /** Required. The name of the feedback label to get. */
   name: string;
 }
-const GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
-
 export interface GetProjectsLocationsIssueModelsRequest {
   /** Required. The name of the issue model to get. */
   name: string;
 }
-const GetProjectsLocationsIssueModelsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<GetProjectsLocationsIssueModelsRequest>;
-
 export interface GetProjectsLocationsIssueModelsIssuesRequest {
   /** Required. The name of the issue to get. */
   name: string;
 }
-const GetProjectsLocationsIssueModelsIssuesRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<GetProjectsLocationsIssueModelsIssuesRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsPhraseMatchersRequest {
   /** Required. The name of the phrase matcher to get. */
   name: string;
 }
-const GetProjectsLocationsPhraseMatchersRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<GetProjectsLocationsPhraseMatchersRequest>;
-
 export interface GetProjectsLocationsQaQuestionTagsRequest {
   /** Required. The name of the QaQuestionTag to get. */
   name: string;
 }
-const GetProjectsLocationsQaQuestionTagsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<GetProjectsLocationsQaQuestionTagsRequest>;
-
 export interface GetProjectsLocationsQaScorecardsRequest {
   /** Required. The name of the QaScorecard to get. */
   name: string;
 }
-const GetProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<GetProjectsLocationsQaScorecardsRequest>;
-
 export interface GetProjectsLocationsQaScorecardsRevisionsRequest {
   /** Required. The name of the QaScorecardRevision to get. */
   name: string;
 }
-const GetProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<GetProjectsLocationsQaScorecardsRevisionsRequest>;
-
 export interface GetProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest {
   /** Required. The name of the QaQuestion to get. */
   name: string;
 }
-const GetProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<GetProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
-
 export interface GetProjectsLocationsViewsRequest {
   /** Required. The name of the view to get. */
   name: string;
 }
-const GetProjectsLocationsViewsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<GetProjectsLocationsViewsRequest>;
-
 export interface GetSettingsProjectsLocationsRequest {
   /** Required. The name of the settings resource to get. */
   name: string;
 }
-const GetSettingsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<GetSettingsProjectsLocationsRequest>;
-
 /** DLP resources used for redaction while ingesting conversations. DLP settings are applied to conversations ingested from the `UploadConversation` and `IngestConversations` endpoints, including conversation coming from CCAI Platform. They are not applied to conversations ingested from the `CreateConversation` endpoint or the Dialogflow / Agent Assist runtime integrations. When using Dialogflow / Agent Assist runtime integrations, redaction should be performed in Dialogflow / Agent Assist. */
 export interface GoogleCloudContactcenterinsightsV1RedactionConfig {
   /** The fully-qualified DLP deidentify template resource name. Format: `projects/{project}/deidentifyTemplates/{template}` */
@@ -4776,11 +3004,6 @@ export interface GoogleCloudContactcenterinsightsV1RedactionConfig {
   /** The fully-qualified DLP inspect template resource name. Format: `projects/{project}/locations/{location}/inspectTemplates/{template}` */
   inspectTemplate?: string;
 }
-const GoogleCloudContactcenterinsightsV1RedactionConfig = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1RedactionConfig>;
-
 /** Speech-to-Text configuration. Speech-to-Text settings are applied to conversations ingested from the `UploadConversation` and `IngestConversations` endpoints, including conversation coming from CCAI Platform. They are not applied to conversations ingested from the `CreateConversation` endpoint. */
 export interface GoogleCloudContactcenterinsightsV1SpeechConfig {
   /** Whether to disable word time offsets. If true, the `enable_word_time_offsets` field in the recognition config will be set to false. */
@@ -4788,11 +3011,6 @@ export interface GoogleCloudContactcenterinsightsV1SpeechConfig {
   /** The fully-qualified Speech Recognizer resource name. Format: `projects/{project_id}/locations/{location}/recognizer/{recognizer}` */
   speechRecognizer?: string;
 }
-const GoogleCloudContactcenterinsightsV1SpeechConfig = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1SpeechConfig>;
-
 /** A definition for a metric to be calculated during analysis. */
 export interface GoogleCloudContactcenterinsightsV1MetricDefinition {
   /** Output only. The user-visible name of the metric (e.g., "Containment Rate"). */
@@ -4800,29 +3018,14 @@ export interface GoogleCloudContactcenterinsightsV1MetricDefinition {
   /** Output only. The resource name of the underlying Insights primitive (e.g., Tag or QaQuestion) used to calculate this metric. */
   sourceId?: string;
 }
-const GoogleCloudContactcenterinsightsV1MetricDefinition = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1MetricDefinition>;
-
 export type GoogleCloudContactcenterinsightsV1MetricDefinitionMap = {
   [key: string]: GoogleCloudContactcenterinsightsV1MetricDefinition | undefined;
 };
-const GoogleCloudContactcenterinsightsV1MetricDefinitionMap = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1MetricDefinitionMap>;
-
 /** Configuration for diagnostic metrics. */
 export interface GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig {
   /** Optional. A map of diagnostic metrics. The key is a unique identifier for the metric (e.g., "containment"). */
   metrics?: GoogleCloudContactcenterinsightsV1MetricDefinitionMap;
 }
-const GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig>;
-
 /** Default configuration when creating Analyses in Insights. */
 export interface GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
   /** To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run. */
@@ -4832,11 +3035,6 @@ export interface GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
   /** Percentage of conversations created using the UploadConversation endpoint to analyze automatically, between [0, 100]. */
   uploadConversationAnalysisPercentage?: number;
 }
-const GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig>;
-
 /** The CCAI Insights project wide settings. Use these settings to configure the behavior of Insights. View these settings with [`getsettings`](https://cloud.google.com/contact-center/insights/docs/reference/rest/v1/projects.locations/getSettings) and change the settings with [`updateSettings`](https://cloud.google.com/contact-center/insights/docs/reference/rest/v1/projects.locations/updateSettings). */
 export interface GoogleCloudContactcenterinsightsV1Settings {
   /** A map that maps a notification trigger to a Pub/Sub topic. Each time a specified trigger occurs, Insights will notify the corresponding Pub/Sub topic. Keys are notification triggers. Supported keys are: * "all-triggers": Notify each time any of the supported triggers occurs. * "create-analysis": Notify each time an analysis is created. * "create-conversation": Notify each time a conversation is created. * "export-insights-data": Notify each time an export is complete. * "ingest-conversations": Notify each time an IngestConversations LRO is complete. * "update-conversation": Notify each time a conversation is updated via UpdateConversation. * "upload-conversation": Notify when an UploadConversation LRO is complete. * "update-or-analyze-conversation": Notify when an analysis for a conversation is completed or when the conversation is updated. The message will contain the conversation with transcript, analysis and other metadata. Values are Pub/Sub topics. The format of each Pub/Sub topic is: projects/{project}/topics/{topic} */
@@ -4868,11 +3066,6 @@ export interface GoogleCloudContactcenterinsightsV1Settings {
   /** Optional. The time zone applied to the project. This is a string representation of the time zone, for example, "America/New_York". This field follows the IANA TZ database format. See https://www.iana.org/time-zones for a list of valid values. If no value is set the user time zone will be used. */
   timeZone?: string;
 }
-const GoogleCloudContactcenterinsightsV1Settings = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1Settings>;
-
 /** Google Cloud Storage Object URI to get the issue model file from. */
 export type GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource =
   GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination;
@@ -4885,29 +3078,16 @@ export interface GoogleCloudContactcenterinsightsV1ImportIssueModelRequest {
   /** Google Cloud Storage source message. */
   gcsSource?: GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination;
 }
-const GoogleCloudContactcenterinsightsV1ImportIssueModelRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ImportIssueModelRequest>;
-
 export interface ImportProjectsLocationsIssueModelsRequest {
   /** Required. The parent resource of the issue model. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1ImportIssueModelRequest;
 }
-const ImportProjectsLocationsIssueModelsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<ImportProjectsLocationsIssueModelsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfigMediumEnum =
   | "MEDIUM_UNSPECIFIED"
   | "PHONE_CALL"
   | "CHAT";
-const GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfigMediumEnum =
-  S.String;
-
 /** Configuration for processing transcript objects. */
 export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig {
   /** Required. The medium transcript objects represent. */
@@ -4915,19 +3095,10 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestTra
     | GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfigMediumEnum
     | (string & {});
 }
-const GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig =
-  /*@__PURE__*/ __L.at(
-    __c42,
-    3,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig>;
-
 export type GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSourceBucketObjectTypeEnum =
   | "BUCKET_OBJECT_TYPE_UNSPECIFIED"
   | "TRANSCRIPT"
   | "AUDIO";
-const GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSourceBucketObjectTypeEnum =
-  S.String;
-
 /** Configuration for Cloud Storage bucket sources. */
 export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource {
   /** Optional. Custom keys to extract as conversation labels from metadata files in `metadata_bucket_uri`. Keys not included in this field will be ignored. Note that there is a limit of 100 labels per conversation. */
@@ -4945,11 +3116,6 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcs
   /** Optional. The Cloud Storage path to the conversation audio file. Note that: [1] Audio files will be transcribed if not already. [2] Audio files and transcript files must be in separate buckets / folders. [3] A source file and its corresponding audio file must share the same name to be properly ingested, E.g. `gs://bucket/transcript/conversation1.json` and `gs://bucket/audio/conversation1.mp3`. */
   audioBucketUri?: string;
 }
-const GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource>;
-
 /** Configuration that applies to all conversations. */
 export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig {
   /** Optional. Indicates which of the channels, 1 or 2, contains the agent. Note that this must be set for conversations to be properly displayed and analyzed. */
@@ -4959,12 +3125,6 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestCon
   /** Optional. Indicates which of the channels, 1 or 2, contains the agent. Note that this must be set for conversations to be properly displayed and analyzed. */
   customerChannel?: number;
 }
-const GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig =
-  /*@__PURE__*/ __L.at(
-    __c42,
-    5,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig>;
-
 /** The request to ingest conversations. */
 export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
   /** Optional. DLP settings for transcript redaction. Optional, will default to the config specified in Settings. */
@@ -4982,54 +3142,29 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
   /** Configuration that applies to all conversations. */
   conversationConfig?: GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig;
 }
-const GoogleCloudContactcenterinsightsV1IngestConversationsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequest>;
-
 export interface IngestProjectsLocationsConversationsRequest {
   /** Required. The parent resource for new conversations. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1IngestConversationsRequest;
 }
-const IngestProjectsLocationsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<IngestProjectsLocationsConversationsRequest>;
-
 export interface IngestProjectsLocationsDatasetsConversationsRequest {
   /** Required. The parent resource for new conversations. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1IngestConversationsRequest;
 }
-const IngestProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<IngestProjectsLocationsDatasetsConversationsRequest>;
-
 /** The request to initialize a location-level encryption specification. */
 export interface GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest {
   /** Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same region as the endpoint. The same key will be used for all provisioned resources, if encryption is available. If the `kms_key_name` field is left empty, no encryption will be enforced. */
   encryptionSpec?: GoogleCloudContactcenterinsightsV1EncryptionSpec;
 }
-const GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest>;
-
 export interface InitializeProjectsLocationsEncryptionSpecRequest {
   /** Immutable. The resource name of the encryption key specification resource. Format: projects/{project}/locations/{location}/encryptionSpec */
   name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest;
 }
-const InitializeProjectsLocationsEncryptionSpecRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<InitializeProjectsLocationsEncryptionSpecRequest>;
-
 export interface ListAllFeedbackLabelsProjectsLocationsRequest {
   /** Optional. A filter to reduce results to a specific subset in the entire project. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
   filter?: string;
@@ -5040,11 +3175,6 @@ export interface ListAllFeedbackLabelsProjectsLocationsRequest {
   /** Required. The parent resource of all feedback labels per project. */
   parent: string;
 }
-const ListAllFeedbackLabelsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<ListAllFeedbackLabelsProjectsLocationsRequest>;
-
 /** The response for listing all feedback labels. */
 export interface GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -5052,11 +3182,6 @@ export interface GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse
   /** The feedback labels that match the request. */
   feedbackLabels?: GoogleCloudContactcenterinsightsV1FeedbackLabelList;
 }
-const GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse>;
-
 export interface ListAllFeedbackLabelsProjectsLocationsDatasetsRequest {
   /** Optional. A filter to reduce results to a specific subset in the entire project. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
   filter?: string;
@@ -5067,11 +3192,6 @@ export interface ListAllFeedbackLabelsProjectsLocationsDatasetsRequest {
   /** Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
   pageSize?: number;
 }
-const ListAllFeedbackLabelsProjectsLocationsDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<ListAllFeedbackLabelsProjectsLocationsDatasetsRequest>;
-
 export interface ListProjectsLocationsAnalysisRulesRequest {
   /** Optional. The maximum number of analysis rule to return in the response. If this value is zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
@@ -5080,18 +3200,8 @@ export interface ListProjectsLocationsAnalysisRulesRequest {
   /** Required. The parent resource of the analysis rules. */
   parent: string;
 }
-const ListProjectsLocationsAnalysisRulesRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<ListProjectsLocationsAnalysisRulesRequest>;
-
 export type GoogleCloudContactcenterinsightsV1AnalysisRuleList =
   Array<GoogleCloudContactcenterinsightsV1AnalysisRule>;
-const GoogleCloudContactcenterinsightsV1AnalysisRuleList = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnalysisRuleList>;
-
 /** The response of listing views. */
 export interface GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse {
   /** The analysis_rule that match the request. */
@@ -5099,11 +3209,6 @@ export interface GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse>;
-
 export interface ListProjectsLocationsAssessmentRulesRequest {
   /** Optional. The value returned by the last `ListAssessmentRulesResponse`; indicates that this is a continuation of a prior `ListAssessmentRules` call and the system should return the next page of data. */
   pageToken?: string;
@@ -5112,18 +3217,8 @@ export interface ListProjectsLocationsAssessmentRulesRequest {
   /** Optional. The maximum number of assessment rule to return in the response. If this value is zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
 }
-const ListProjectsLocationsAssessmentRulesRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<ListProjectsLocationsAssessmentRulesRequest>;
-
 export type GoogleCloudContactcenterinsightsV1AssessmentRuleList =
   Array<GoogleCloudContactcenterinsightsV1AssessmentRule>;
-const GoogleCloudContactcenterinsightsV1AssessmentRuleList = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssessmentRuleList>;
-
 /** The response of listing assessment rules. */
 export interface GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse {
   /** The assessment rules that match the request. */
@@ -5131,11 +3226,6 @@ export interface GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse>;
-
 export interface ListProjectsLocationsAssistantSessionsRequest {
   /** Optional. The maximum number of assistant sessions to return in a single response. If unspecified, at most 100 assistant sessions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -5146,18 +3236,8 @@ export interface ListProjectsLocationsAssistantSessionsRequest {
   /** Required. The parent resource, which owns this collection of assistant sessions. Format: `projects/{project}/locations/{location}` */
   parent: string;
 }
-const ListProjectsLocationsAssistantSessionsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<ListProjectsLocationsAssistantSessionsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1AssistantSessionList =
   Array<GoogleCloudContactcenterinsightsV1AssistantSession>;
-const GoogleCloudContactcenterinsightsV1AssistantSessionList = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantSessionList>;
-
 /** Response to list assistant sessions. */
 export interface GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse {
   /** The assistant sessions. */
@@ -5165,11 +3245,6 @@ export interface GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse
   /** A token, which can be sent as `page_token` to retrieve the next page. */
   nextPageToken?: string;
 }
-const GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse>;
-
 export interface ListProjectsLocationsAuthorizedViewSetsRequest {
   /** Optional. The value returned by the last `ListAuthorizedViewSetsResponse`. This value indicates that this is a continuation of a prior `ListAuthorizedViewSets` call and that the system should return the next page of data. */
   pageToken?: string;
@@ -5182,18 +3257,8 @@ export interface ListProjectsLocationsAuthorizedViewSetsRequest {
   /** Optional. The order by expression to order authorized view sets listed in the response. */
   orderBy?: string;
 }
-const ListProjectsLocationsAuthorizedViewSetsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1AuthorizedViewSetList =
   Array<GoogleCloudContactcenterinsightsV1AuthorizedViewSet>;
-const GoogleCloudContactcenterinsightsV1AuthorizedViewSetList = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AuthorizedViewSetList>;
-
 /** The response from a ListAuthorizedViewSet request. */
 export interface GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse {
   /** The AuthorizedViewSets under the parent. */
@@ -5201,11 +3266,6 @@ export interface GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsRespons
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse>;
-
 export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
   /** Optional. The filter expression to filter authorized views listed in the response. */
   filter?: string;
@@ -5218,18 +3278,8 @@ export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
   /** Optional. The maximum number of view to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
 }
-const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1AuthorizedViewList =
   Array<GoogleCloudContactcenterinsightsV1AuthorizedView>;
-const GoogleCloudContactcenterinsightsV1AuthorizedViewList = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AuthorizedViewList>;
-
 /** The response from a ListAuthorizedViews request. */
 export interface GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse {
   /** The AuthorizedViews under the parent. */
@@ -5237,18 +3287,11 @@ export interface GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse>;
-
 export type ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum =
   | "CONVERSATION_VIEW_UNSPECIFIED"
   | "FULL"
   | "BASIC"
   | "FULL_WITH_STRUCTURED_TRANSCRIPT";
-const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum = S.String;
-
 export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest {
   /** A filter to reduce results to a specific subset. Useful for querying conversations with specific properties. */
   filter?: string;
@@ -5265,19 +3308,8 @@ export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversat
   /** Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering). */
   orderBy?: string;
 }
-const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest =
-  /*@__PURE__*/ __L.at(
-    __c45,
-    5,
-  ) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1ConversationList =
   Array<GoogleCloudContactcenterinsightsV1Conversation>;
-const GoogleCloudContactcenterinsightsV1ConversationList = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ConversationList>;
-
 /** The response of listing conversations. */
 export interface GoogleCloudContactcenterinsightsV1ListConversationsResponse {
   /** A token which can be sent as `page_token` to retrieve the next page. If this field is set, it means there is another page available. If it is not set, it means no other pages are available. */
@@ -5285,11 +3317,6 @@ export interface GoogleCloudContactcenterinsightsV1ListConversationsResponse {
   /** The conversations that match the request. */
   conversations?: GoogleCloudContactcenterinsightsV1ConversationList;
 }
-const GoogleCloudContactcenterinsightsV1ListConversationsResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListConversationsResponse>;
-
 export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest {
   /** Optional. A filter to reduce results to a specific subset. Supported filters include: * `state` - The state of the assessment * `agent_info.agent_id` - The ID of the agent the assessment is for */
   filter?: string;
@@ -5300,19 +3327,8 @@ export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversat
   /** Required. The parent resource of the assessments. To list all assessments in a location, substitute the conversation ID with a '-' character. */
   parent: string;
 }
-const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
-  /*@__PURE__*/ __L.at(
-    __c46,
-    0,
-  ) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1AssessmentList =
   Array<GoogleCloudContactcenterinsightsV1Assessment>;
-const GoogleCloudContactcenterinsightsV1AssessmentList = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssessmentList>;
-
 /** The response of listing assessments. */
 export interface GoogleCloudContactcenterinsightsV1ListAssessmentsResponse {
   /** The assessments that match the request. */
@@ -5320,11 +3336,6 @@ export interface GoogleCloudContactcenterinsightsV1ListAssessmentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GoogleCloudContactcenterinsightsV1ListAssessmentsResponse = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAssessmentsResponse>;
-
 export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest {
   /** Optional. The value returned by the last `ListNotesResponse`. This value indicates that this is a continuation of a prior `ListNotes` call and that the system should return the next page of data. */
   pageToken?: string;
@@ -5333,19 +3344,8 @@ export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversat
   /** Optional. The maximum number of notes to return in the response. If zero the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
 }
-const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest =
-  /*@__PURE__*/ __L.at(
-    __c46,
-    3,
-  ) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
-
 export type GoogleCloudContactcenterinsightsV1NoteList =
   Array<GoogleCloudContactcenterinsightsV1Note>;
-const GoogleCloudContactcenterinsightsV1NoteList = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1NoteList>;
-
 /** The response of listing notes. */
 export interface GoogleCloudContactcenterinsightsV1ListNotesResponse {
   /** The notes that match the request. */
@@ -5353,11 +3353,6 @@ export interface GoogleCloudContactcenterinsightsV1ListNotesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GoogleCloudContactcenterinsightsV1ListNotesResponse = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListNotesResponse>;
-
 export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest {
   /** Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
   pageSize?: number;
@@ -5368,12 +3363,6 @@ export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversat
   /** Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
   filter?: string;
 }
-const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
-  /*@__PURE__*/ __L.at(
-    __c46,
-    6,
-  ) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
-
 /** The response for listing feedback labels. */
 export interface GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse {
   /** The feedback labels that match the request. */
@@ -5381,11 +3370,6 @@ export interface GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse {
   /** The next page token. */
   nextPageToken?: string;
 }
-const GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse>;
-
 export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
@@ -5398,18 +3382,7 @@ export interface ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperation
   /** The name of the operation's parent resource. */
   name: string;
 }
-const ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest =
-  /*@__PURE__*/ __L.at(
-    __c47,
-    0,
-  ) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>;
-
 export type GoogleLongrunningOperationList = Array<GoogleLongrunningOperation>;
-const GoogleLongrunningOperationList = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<GoogleLongrunningOperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -5419,11 +3392,6 @@ export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-const GoogleLongrunningListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<GoogleLongrunningListOperationsResponse>;
-
 export interface ListProjectsLocationsAutoLabelingRulesRequest {
   /** Optional. The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
@@ -5432,18 +3400,8 @@ export interface ListProjectsLocationsAutoLabelingRulesRequest {
   /** Optional. The maximum number of auto labeling rules to return in a single response. If unspecified, at most 100 rules will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-const ListProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  3,
-) as any as S.Schema<ListProjectsLocationsAutoLabelingRulesRequest>;
-
 export type GoogleCloudContactcenterinsightsV1AutoLabelingRuleList =
   Array<GoogleCloudContactcenterinsightsV1AutoLabelingRule>;
-const GoogleCloudContactcenterinsightsV1AutoLabelingRuleList = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRuleList>;
-
 /** The response message for listing auto labeling rules. */
 export interface GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -5451,18 +3409,11 @@ export interface GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse
   /** The auto labeling rules. */
   autoLabelingRules?: GoogleCloudContactcenterinsightsV1AutoLabelingRuleList;
 }
-const GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse>;
-
 export type ListProjectsLocationsConversationsViewEnum =
   | "CONVERSATION_VIEW_UNSPECIFIED"
   | "FULL"
   | "BASIC"
   | "FULL_WITH_STRUCTURED_TRANSCRIPT";
-const ListProjectsLocationsConversationsViewEnum = S.String;
-
 export interface ListProjectsLocationsConversationsRequest {
   /** Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering). */
   orderBy?: string;
@@ -5477,11 +3428,6 @@ export interface ListProjectsLocationsConversationsRequest {
   /** Required. The parent resource of the conversation. */
   parent: string;
 }
-const ListProjectsLocationsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<ListProjectsLocationsConversationsRequest>;
-
 export interface ListProjectsLocationsConversationsAnalysesRequest {
   /** Required. The parent resource of the analyses. */
   parent: string;
@@ -5492,18 +3438,8 @@ export interface ListProjectsLocationsConversationsAnalysesRequest {
   /** The value returned by the last `ListAnalysesResponse`; indicates that this is a continuation of a prior `ListAnalyses` call and the system should return the next page of data. */
   pageToken?: string;
 }
-const ListProjectsLocationsConversationsAnalysesRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<ListProjectsLocationsConversationsAnalysesRequest>;
-
 export type GoogleCloudContactcenterinsightsV1AnalysisList =
   Array<GoogleCloudContactcenterinsightsV1Analysis>;
-const GoogleCloudContactcenterinsightsV1AnalysisList = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnalysisList>;
-
 /** The response to list analyses. */
 export interface GoogleCloudContactcenterinsightsV1ListAnalysesResponse {
   /** The analyses that match the request. */
@@ -5511,11 +3447,6 @@ export interface GoogleCloudContactcenterinsightsV1ListAnalysesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GoogleCloudContactcenterinsightsV1ListAnalysesResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAnalysesResponse>;
-
 export interface ListProjectsLocationsConversationsAssessmentsRequest {
   /** Optional. A filter to reduce results to a specific subset. Supported filters include: * `state` - The state of the assessment * `agent_info.agent_id` - The ID of the agent the assessment is for */
   filter?: string;
@@ -5526,11 +3457,6 @@ export interface ListProjectsLocationsConversationsAssessmentsRequest {
   /** The maximum number of assessments to list. If zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
 }
-const ListProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  2,
-) as any as S.Schema<ListProjectsLocationsConversationsAssessmentsRequest>;
-
 export interface ListProjectsLocationsConversationsAssessmentsNotesRequest {
   /** Optional. The value returned by the last `ListNotesResponse`. This value indicates that this is a continuation of a prior `ListNotes` call and that the system should return the next page of data. */
   pageToken?: string;
@@ -5539,11 +3465,6 @@ export interface ListProjectsLocationsConversationsAssessmentsNotesRequest {
   /** Required. The parent resource of the notes. */
   parent: string;
 }
-const ListProjectsLocationsConversationsAssessmentsNotesRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<ListProjectsLocationsConversationsAssessmentsNotesRequest>;
-
 export interface ListProjectsLocationsConversationsFeedbackLabelsRequest {
   /** Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
   filter?: string;
@@ -5554,11 +3475,6 @@ export interface ListProjectsLocationsConversationsFeedbackLabelsRequest {
   /** Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
   pageSize?: number;
 }
-const ListProjectsLocationsConversationsFeedbackLabelsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<ListProjectsLocationsConversationsFeedbackLabelsRequest>;
-
 export interface ListProjectsLocationsDashboardsRequest {
   /** Required. The parent resource of the dashboards. */
   parent: string;
@@ -5571,18 +3487,8 @@ export interface ListProjectsLocationsDashboardsRequest {
   /** Optional. The value returned by the last `ListDashboardsResponse`. This value indicates that this is a continuation of a prior `ListDashboards` call and that the system should return the next page of data. */
   pageToken?: string;
 }
-const ListProjectsLocationsDashboardsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<ListProjectsLocationsDashboardsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1DashboardList =
   Array<GoogleCloudContactcenterinsightsV1Dashboard>;
-const GoogleCloudContactcenterinsightsV1DashboardList = /*@__PURE__*/ __L.at(
-  __c48,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1DashboardList>;
-
 /** The response of listing dashboards. */
 export interface GoogleCloudContactcenterinsightsV1ListDashboardsResponse {
   /** The dashboards under the parent. */
@@ -5590,27 +3496,12 @@ export interface GoogleCloudContactcenterinsightsV1ListDashboardsResponse {
   /** The value returned by the last `ListDashboardsResponse`. This value indicates that this is a continuation of a prior `ListDashboards` call and that the system should return the next page of data. */
   nextPageToken?: string;
 }
-const GoogleCloudContactcenterinsightsV1ListDashboardsResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListDashboardsResponse>;
-
 export interface ListProjectsLocationsDashboardsChartsRequest {
   /** Required. The parent resource of the charts. */
   parent: string;
 }
-const ListProjectsLocationsDashboardsChartsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<ListProjectsLocationsDashboardsChartsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1ChartList =
   Array<GoogleCloudContactcenterinsightsV1Chart>;
-const GoogleCloudContactcenterinsightsV1ChartList = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ChartList>;
-
 /** The response of listing charts. */
 export interface GoogleCloudContactcenterinsightsV1ListChartsResponse {
   /** The charts under the parent. */
@@ -5618,11 +3509,6 @@ export interface GoogleCloudContactcenterinsightsV1ListChartsResponse {
   /** The value returned by the last `ListChartsResponse`. This value indicates that this is a continuation of a prior `ListCharts` call and that the system should return the next page of data. */
   nextPageToken?: string;
 }
-const GoogleCloudContactcenterinsightsV1ListChartsResponse = /*@__PURE__*/ __L.at(
-  __c49,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListChartsResponse>;
-
 export interface ListProjectsLocationsDatasetsRequest {
   /** Required. The parent resource of the dataset. */
   parent: string;
@@ -5633,18 +3519,8 @@ export interface ListProjectsLocationsDatasetsRequest {
   /** Optional. The maximum number of datasets to return in the response. If this value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
 }
-const ListProjectsLocationsDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  3,
-) as any as S.Schema<ListProjectsLocationsDatasetsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1DatasetList =
   Array<GoogleCloudContactcenterinsightsV1Dataset>;
-const GoogleCloudContactcenterinsightsV1DatasetList = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1DatasetList>;
-
 /** The response to list datasets. */
 export interface GoogleCloudContactcenterinsightsV1ListDatasetsResponse {
   /** The datasets that match the request. */
@@ -5652,18 +3528,11 @@ export interface GoogleCloudContactcenterinsightsV1ListDatasetsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GoogleCloudContactcenterinsightsV1ListDatasetsResponse = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListDatasetsResponse>;
-
 export type ListProjectsLocationsDatasetsConversationsViewEnum =
   | "CONVERSATION_VIEW_UNSPECIFIED"
   | "FULL"
   | "BASIC"
   | "FULL_WITH_STRUCTURED_TRANSCRIPT";
-const ListProjectsLocationsDatasetsConversationsViewEnum = S.String;
-
 export interface ListProjectsLocationsDatasetsConversationsRequest {
   /** The maximum number of conversations to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
   pageSize?: number;
@@ -5678,11 +3547,6 @@ export interface ListProjectsLocationsDatasetsConversationsRequest {
   /** Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering). */
   orderBy?: string;
 }
-const ListProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<ListProjectsLocationsDatasetsConversationsRequest>;
-
 export interface ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest {
   /** Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size. */
   pageSize?: number;
@@ -5693,63 +3557,28 @@ export interface ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest
   /** Required. The parent resource of the feedback labels. */
   parent: string;
 }
-const ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
-
 export interface ListProjectsLocationsIssueModelsRequest {
   /** Required. The parent resource of the issue model. */
   parent: string;
 }
-const ListProjectsLocationsIssueModelsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  0,
-) as any as S.Schema<ListProjectsLocationsIssueModelsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1IssueModelList =
   Array<GoogleCloudContactcenterinsightsV1IssueModel>;
-const GoogleCloudContactcenterinsightsV1IssueModelList = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModelList>;
-
 /** The response of listing issue models. */
 export interface GoogleCloudContactcenterinsightsV1ListIssueModelsResponse {
   /** The issue models that match the request. */
   issueModels?: GoogleCloudContactcenterinsightsV1IssueModelList;
 }
-const GoogleCloudContactcenterinsightsV1ListIssueModelsResponse = /*@__PURE__*/ __L.at(
-  __c50,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListIssueModelsResponse>;
-
 export interface ListProjectsLocationsIssueModelsIssuesRequest {
   /** Required. The parent resource of the issue. */
   parent: string;
 }
-const ListProjectsLocationsIssueModelsIssuesRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<ListProjectsLocationsIssueModelsIssuesRequest>;
-
 export type GoogleCloudContactcenterinsightsV1IssueList =
   Array<GoogleCloudContactcenterinsightsV1Issue>;
-const GoogleCloudContactcenterinsightsV1IssueList = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueList>;
-
 /** The response of listing issues. */
 export interface GoogleCloudContactcenterinsightsV1ListIssuesResponse {
   /** The issues that match the request. */
   issues?: GoogleCloudContactcenterinsightsV1IssueList;
 }
-const GoogleCloudContactcenterinsightsV1ListIssuesResponse = /*@__PURE__*/ __L.at(
-  __c50,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListIssuesResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
@@ -5762,11 +3591,6 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export interface ListProjectsLocationsPhraseMatchersRequest {
   /** A filter to reduce results to a specific subset. Useful for querying phrase matchers with specific properties. */
   filter?: string;
@@ -5777,18 +3601,8 @@ export interface ListProjectsLocationsPhraseMatchersRequest {
   /** Required. The parent resource of the phrase matcher. */
   parent: string;
 }
-const ListProjectsLocationsPhraseMatchersRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<ListProjectsLocationsPhraseMatchersRequest>;
-
 export type GoogleCloudContactcenterinsightsV1PhraseMatcherList =
   Array<GoogleCloudContactcenterinsightsV1PhraseMatcher>;
-const GoogleCloudContactcenterinsightsV1PhraseMatcherList = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatcherList>;
-
 /** The response of listing phrase matchers. */
 export interface GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse {
   /** The phrase matchers that match the request. */
@@ -5796,29 +3610,14 @@ export interface GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse>;
-
 export interface ListProjectsLocationsQaQuestionTagsRequest {
   /** Optional. A filter to reduce results to a specific subset. Supports conjunctions (ie. AND operators). Supported fields include the following: * `project_id` - id of the project to list tags for * `qa_scorecard_id` - id of the scorecard to list tags for * `revision_id` - id of the scorecard revision to list tags for` * `qa_question_id - id of the question to list tags for` */
   filter?: string;
   /** Required. The parent resource of the QaQuestionTags. */
   parent: string;
 }
-const ListProjectsLocationsQaQuestionTagsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  2,
-) as any as S.Schema<ListProjectsLocationsQaQuestionTagsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1QaQuestionTagList =
   Array<GoogleCloudContactcenterinsightsV1QaQuestionTag>;
-const GoogleCloudContactcenterinsightsV1QaQuestionTagList = /*@__PURE__*/ __L.at(
-  __c51,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTagList>;
-
 /** The response from a ListQaQuestionTags request. */
 export interface GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse {
   /** The parent resource of the questions. */
@@ -5826,26 +3625,14 @@ export interface GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse>;
-
 export type ListProjectsLocationsQaScorecardsQaScorecardSourcesEnum =
   | "QA_SCORECARD_SOURCE_UNSPECIFIED"
   | "QA_SCORECARD_SOURCE_CUSTOMER_DEFINED"
   | "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE"
   | "QA_SCORECARD_SOURCE_INTENT_TAXONOMY";
-const ListProjectsLocationsQaScorecardsQaScorecardSourcesEnum = S.String;
-
 export type ListProjectsLocationsQaScorecardsQaScorecardSourcesEnumList = Array<
   ListProjectsLocationsQaScorecardsQaScorecardSourcesEnum | (string & {})
 >;
-const ListProjectsLocationsQaScorecardsQaScorecardSourcesEnumList = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<ListProjectsLocationsQaScorecardsQaScorecardSourcesEnumList>;
-
 export interface ListProjectsLocationsQaScorecardsRequest {
   /** Optional. The maximum number of scorecards to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
@@ -5856,18 +3643,8 @@ export interface ListProjectsLocationsQaScorecardsRequest {
   /** Optional. The source of scorecards are based on how those Scorecards were created, e.g., a customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve Scorecards of one or more sources. */
   qaScorecardSources?: ListProjectsLocationsQaScorecardsQaScorecardSourcesEnumList;
 }
-const ListProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  6,
-) as any as S.Schema<ListProjectsLocationsQaScorecardsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1QaScorecardList =
   Array<GoogleCloudContactcenterinsightsV1QaScorecard>;
-const GoogleCloudContactcenterinsightsV1QaScorecardList = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardList>;
-
 /** The response from a ListQaScorecards request. */
 export interface GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -5875,11 +3652,6 @@ export interface GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse {
   /** The QaScorecards under the parent. */
   qaScorecards?: GoogleCloudContactcenterinsightsV1QaScorecardList;
 }
-const GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse>;
-
 export type ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnum =
   | "QA_SCORECARD_SOURCE_UNSPECIFIED"
   | "QA_SCORECARD_SOURCE_CUSTOMER_DEFINED"
@@ -5888,9 +3660,6 @@ export type ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnum =
 export type ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList = Array<
   ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnum | (string & {})
 >;
-const ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList =
-  GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList as any as S.Schema<ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList>;
-
 export interface ListProjectsLocationsQaScorecardsRevisionsRequest {
   /** Optional. The source of scorecards are based on how those Scorecards were created, e.g., a customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve Scorecards Revisions from Scorecards of one or more sources. */
   qaScorecardSources?: ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList;
@@ -5903,18 +3672,8 @@ export interface ListProjectsLocationsQaScorecardsRevisionsRequest {
   /** Optional. The maximum number of scorecard revisions to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
 }
-const ListProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  1,
-) as any as S.Schema<ListProjectsLocationsQaScorecardsRevisionsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1QaScorecardRevisionList =
   Array<GoogleCloudContactcenterinsightsV1QaScorecardRevision>;
-const GoogleCloudContactcenterinsightsV1QaScorecardRevisionList = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardRevisionList>;
-
 /** The response from a ListQaScorecardRevisions request. */
 export interface GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -5922,11 +3681,6 @@ export interface GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsRespo
   /** The QaScorecards under the parent. */
   qaScorecardRevisions?: GoogleCloudContactcenterinsightsV1QaScorecardRevisionList;
 }
-const GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse>;
-
 export interface ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest {
   /** Optional. The maximum number of questions to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
@@ -5935,18 +3689,8 @@ export interface ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest {
   /** Required. The parent resource of the questions. */
   parent: string;
 }
-const ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1QaQuestionList =
   Array<GoogleCloudContactcenterinsightsV1QaQuestion>;
-const GoogleCloudContactcenterinsightsV1QaQuestionList = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionList>;
-
 /** The response from a ListQaQuestions request. */
 export interface GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -5954,11 +3698,6 @@ export interface GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse {
   /** The QaQuestions under the parent. */
   qaQuestions?: GoogleCloudContactcenterinsightsV1QaQuestionList;
 }
-const GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse>;
-
 export interface ListProjectsLocationsViewsRequest {
   /** The maximum number of views to return in the response. If this value is zero, the service will select a default size. A call may return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
@@ -5967,18 +3706,8 @@ export interface ListProjectsLocationsViewsRequest {
   /** The value returned by the last `ListViewsResponse`; indicates that this is a continuation of a prior `ListViews` call and the system should return the next page of data. */
   pageToken?: string;
 }
-const ListProjectsLocationsViewsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  7,
-) as any as S.Schema<ListProjectsLocationsViewsRequest>;
-
 export type GoogleCloudContactcenterinsightsV1ViewList =
   Array<GoogleCloudContactcenterinsightsV1View>;
-const GoogleCloudContactcenterinsightsV1ViewList = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ViewList>;
-
 /** The response of listing views. */
 export interface GoogleCloudContactcenterinsightsV1ListViewsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -5986,11 +3715,6 @@ export interface GoogleCloudContactcenterinsightsV1ListViewsResponse {
   /** The views that match the request. */
   views?: GoogleCloudContactcenterinsightsV1ViewList;
 }
-const GoogleCloudContactcenterinsightsV1ListViewsResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListViewsResponse>;
-
 export interface PatchProjectsLocationsAnalysisRulesRequest {
   /** Identifier. The resource name of the analysis rule. Format: projects/{project}/locations/{location}/analysisRules/{analysis_rule} */
   name: string;
@@ -5999,11 +3723,6 @@ export interface PatchProjectsLocationsAnalysisRulesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AnalysisRule;
 }
-const PatchProjectsLocationsAnalysisRulesRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  2,
-) as any as S.Schema<PatchProjectsLocationsAnalysisRulesRequest>;
-
 export interface PatchProjectsLocationsAssessmentRulesRequest {
   /** Identifier. The resource name of the assessment rule. Format: projects/{project}/locations/{location}/assessmentRules/{assessment_rule} */
   name: string;
@@ -6012,11 +3731,6 @@ export interface PatchProjectsLocationsAssessmentRulesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AssessmentRule;
 }
-const PatchProjectsLocationsAssessmentRulesRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<PatchProjectsLocationsAssessmentRulesRequest>;
-
 export interface PatchProjectsLocationsAuthorizedViewSetsRequest {
   /** Optional. The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `display_name` */
   updateMask?: string;
@@ -6025,11 +3739,6 @@ export interface PatchProjectsLocationsAuthorizedViewSetsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AuthorizedViewSet;
 }
-const PatchProjectsLocationsAuthorizedViewSetsRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<PatchProjectsLocationsAuthorizedViewSetsRequest>;
-
 export interface PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
   /** Optional. The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `conversation_filter` * `display_name` */
   updateMask?: string;
@@ -6038,11 +3747,6 @@ export interface PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest 
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AuthorizedView;
 }
-const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
-
 export interface PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest {
   /** Optional. The list of fields to be updated. If the update_mask is empty, all updateable fields will be updated. Acceptable fields include: * `content` */
   updateMask?: string;
@@ -6051,12 +3755,6 @@ export interface PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversa
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Note;
 }
-const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest =
-  /*@__PURE__*/ __L.at(
-    __c53,
-    6,
-  ) as any as S.Schema<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>;
-
 export interface PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest {
   /** Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} */
   name: string;
@@ -6065,12 +3763,6 @@ export interface PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversa
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1FeedbackLabel;
 }
-const PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest =
-  /*@__PURE__*/ __L.at(
-    __c53,
-    7,
-  ) as any as S.Schema<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>;
-
 export interface PatchProjectsLocationsAutoLabelingRulesRequest {
   /** Identifier. The resource name of the auto-labeling rule. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} */
   name: string;
@@ -6079,11 +3771,6 @@ export interface PatchProjectsLocationsAutoLabelingRulesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AutoLabelingRule;
 }
-const PatchProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<PatchProjectsLocationsAutoLabelingRulesRequest>;
-
 export interface PatchProjectsLocationsConversationsRequest {
   /** Optional. Defaults to false. If set to true, and the conversation is not found, a new conversation will be created. In this situation, `update_mask` is ignored. */
   allowMissing?: boolean;
@@ -6096,11 +3783,6 @@ export interface PatchProjectsLocationsConversationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Conversation;
 }
-const PatchProjectsLocationsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  1,
-) as any as S.Schema<PatchProjectsLocationsConversationsRequest>;
-
 export interface PatchProjectsLocationsConversationsAssessmentsNotesRequest {
   /** Optional. The list of fields to be updated. If the update_mask is empty, all updateable fields will be updated. Acceptable fields include: * `content` */
   updateMask?: string;
@@ -6109,11 +3791,6 @@ export interface PatchProjectsLocationsConversationsAssessmentsNotesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Note;
 }
-const PatchProjectsLocationsConversationsAssessmentsNotesRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-) as any as S.Schema<PatchProjectsLocationsConversationsAssessmentsNotesRequest>;
-
 export interface PatchProjectsLocationsConversationsFeedbackLabelsRequest {
   /** Required. The list of fields to be updated. */
   updateMask?: string;
@@ -6122,11 +3799,6 @@ export interface PatchProjectsLocationsConversationsFeedbackLabelsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1FeedbackLabel;
 }
-const PatchProjectsLocationsConversationsFeedbackLabelsRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<PatchProjectsLocationsConversationsFeedbackLabelsRequest>;
-
 export interface PatchProjectsLocationsDashboardsRequest {
   /** Identifier. Dashboard resource name. Format: projects/{project}/locations/{location}/dashboards/{dashboard} */
   name: string;
@@ -6135,11 +3807,6 @@ export interface PatchProjectsLocationsDashboardsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Dashboard;
 }
-const PatchProjectsLocationsDashboardsRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  4,
-) as any as S.Schema<PatchProjectsLocationsDashboardsRequest>;
-
 export interface PatchProjectsLocationsDashboardsChartsRequest {
   /** Optional. List of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `display_name` */
   updateMask?: string;
@@ -6148,11 +3815,6 @@ export interface PatchProjectsLocationsDashboardsChartsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Chart;
 }
-const PatchProjectsLocationsDashboardsChartsRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  5,
-) as any as S.Schema<PatchProjectsLocationsDashboardsChartsRequest>;
-
 export interface PatchProjectsLocationsDatasetsRequest {
   /** Optional. The list of fields to update. */
   updateMask?: string;
@@ -6161,11 +3823,6 @@ export interface PatchProjectsLocationsDatasetsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Dataset;
 }
-const PatchProjectsLocationsDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<PatchProjectsLocationsDatasetsRequest>;
-
 export interface PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest {
   /** Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} */
   name: string;
@@ -6174,11 +3831,6 @@ export interface PatchProjectsLocationsDatasetsConversationsFeedbackLabelsReques
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1FeedbackLabel;
 }
-const PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  7,
-) as any as S.Schema<PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>;
-
 export interface PatchProjectsLocationsIssueModelsRequest {
   /** Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
   name: string;
@@ -6187,11 +3839,6 @@ export interface PatchProjectsLocationsIssueModelsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1IssueModel;
 }
-const PatchProjectsLocationsIssueModelsRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  0,
-) as any as S.Schema<PatchProjectsLocationsIssueModelsRequest>;
-
 export interface PatchProjectsLocationsIssueModelsIssuesRequest {
   /** Immutable. The resource name of the issue. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue} */
   name: string;
@@ -6200,11 +3847,6 @@ export interface PatchProjectsLocationsIssueModelsIssuesRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Issue;
 }
-const PatchProjectsLocationsIssueModelsIssuesRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<PatchProjectsLocationsIssueModelsIssuesRequest>;
-
 export interface PatchProjectsLocationsPhraseMatchersRequest {
   /** The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher} */
   name: string;
@@ -6213,11 +3855,6 @@ export interface PatchProjectsLocationsPhraseMatchersRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1PhraseMatcher;
 }
-const PatchProjectsLocationsPhraseMatchersRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  2,
-) as any as S.Schema<PatchProjectsLocationsPhraseMatchersRequest>;
-
 export interface PatchProjectsLocationsQaQuestionTagsRequest {
   /** Identifier. Resource name for the QaQuestionTag Format projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag} In the above format, the last segment, i.e., qa_question_tag, is a server-generated ID corresponding to the tag resource. */
   name: string;
@@ -6226,11 +3863,6 @@ export interface PatchProjectsLocationsQaQuestionTagsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QaQuestionTag;
 }
-const PatchProjectsLocationsQaQuestionTagsRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  3,
-) as any as S.Schema<PatchProjectsLocationsQaQuestionTagsRequest>;
-
 export interface PatchProjectsLocationsQaScorecardsRequest {
   /** Required. The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `description` * `display_name` */
   updateMask?: string;
@@ -6239,11 +3871,6 @@ export interface PatchProjectsLocationsQaScorecardsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QaScorecard;
 }
-const PatchProjectsLocationsQaScorecardsRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  4,
-) as any as S.Schema<PatchProjectsLocationsQaScorecardsRequest>;
-
 export interface PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest {
   /** Identifier. The resource name of the question. Format: projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}/qaQuestions/{qa_question} */
   name: string;
@@ -6252,11 +3879,6 @@ export interface PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QaQuestion;
 }
-const PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  5,
-) as any as S.Schema<PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>;
-
 export interface PatchProjectsLocationsViewsRequest {
   /** The list of fields to be updated. */
   updateMask?: string;
@@ -6265,11 +3887,6 @@ export interface PatchProjectsLocationsViewsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1View;
 }
-const PatchProjectsLocationsViewsRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  6,
-) as any as S.Schema<PatchProjectsLocationsViewsRequest>;
-
 /** The message to publish an assessment. Draft and appealed assessments can be published. Publishing simply changes the state of the assessment to published, allowing the console and authorized views to filter on the state. */
 export type GoogleCloudContactcenterinsightsV1PublishAssessmentRequest =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
@@ -6279,23 +3896,12 @@ export interface PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConver
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-const PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest =
-  /*@__PURE__*/ __L.at(
-    __c55,
-    7,
-  ) as any as S.Schema<PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>;
-
 export interface PublishProjectsLocationsConversationsAssessmentsRequest {
   /** Required. The name of the assessment to publish. */
   name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-const PublishProjectsLocationsConversationsAssessmentsRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  0,
-) as any as S.Schema<PublishProjectsLocationsConversationsAssessmentsRequest>;
-
 /** Metadata about conversation labels. */
 export interface GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata {
   /** Optional. The label value. */
@@ -6303,11 +3909,6 @@ export interface GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetada
   /** Optional. The label key. */
   labelKey?: string;
 }
-const GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata>;
-
 /** Metadata about the Conversational Agents tool dimension. */
 export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata {
   /** Optional. The dialogflow tool ID. */
@@ -6315,12 +3916,6 @@ export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgents
   /** Optional. The dialogflow tool display name. */
   toolDisplayName?: string;
 }
-const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata =
-  /*@__PURE__*/ __L.at(
-    __c56,
-    2,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata>;
-
 /** Metadata about the issue dimension. */
 export interface GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata {
   /** The issue display name. */
@@ -6330,11 +3925,6 @@ export interface GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetada
   /** The issue ID. */
   issueId?: string;
 }
-const GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata = /*@__PURE__*/ __L.at(
-  __c56,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata>;
-
 /** Metadata about the QA question-answer dimension. This is useful for showing the answer distribution for questions for a given scorecard. */
 export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata {
   /** Optional. The full body of the question. */
@@ -6346,34 +3936,16 @@ export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDime
   /** Optional. The QA question ID. */
   qaQuestionId?: string;
 }
-const GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata =
-  /*@__PURE__*/ __L.at(
-    __c56,
-    4,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata>;
-
 /** Metadata about the conversation profile dimension. */
 export interface GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata {
   /** Optional. The conversation profile ID. */
   conversationProfileId?: string;
 }
-const GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata =
-  /*@__PURE__*/ __L.at(
-    __c56,
-    5,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata>;
-
 /** Metadata about the QA scorecard dimension. */
 export interface GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata {
   /** Optional. The QA scorecard ID. */
   qaScorecardId?: string;
 }
-const GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata =
-  /*@__PURE__*/ __L.at(
-    __c56,
-    6,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata>;
-
 /** Metadata about the QA question dimension. */
 export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata {
   /** Optional. The QA question ID. */
@@ -6383,11 +3955,6 @@ export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionM
   /** Optional. The QA scorecard ID. */
   qaScorecardId?: string;
 }
-const GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata = /*@__PURE__*/ __L.at(
-  __c56,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata>;
-
 /** Metadata about the Conversational Agents playbook dimension. */
 export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata {
   /** Optional. The dialogflow playbook display name. */
@@ -6395,12 +3962,6 @@ export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgents
   /** Optional. The dialogflow playbook ID. */
   playbookId?: string;
 }
-const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata =
-  /*@__PURE__*/ __L.at(
-    __c57,
-    0,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata>;
-
 /** Metadata about the agent dimension. */
 export interface GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata {
   /** Optional. The agent's deployment ID. Only applicable to automated agents. This will be populated for AGENT and AGENT_DEPLOYMENT_ID dimensions. */
@@ -6418,11 +3979,6 @@ export interface GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetada
   /** Optional. A user-specified string representing the agent's team. */
   agentTeam?: string;
 }
-const GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata = /*@__PURE__*/ __L.at(
-  __c57,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata>;
-
 export type GoogleCloudContactcenterinsightsV1DimensionDimensionKeyEnum =
   | "DIMENSION_KEY_UNSPECIFIED"
   | "ISSUE"
@@ -6446,29 +4002,16 @@ export type GoogleCloudContactcenterinsightsV1DimensionDimensionKeyEnum =
   | "LABEL_VALUE"
   | "LABEL_KEY_AND_VALUE"
   | "LAST_TRANSFER_SUB_AGENT_NAME";
-const GoogleCloudContactcenterinsightsV1DimensionDimensionKeyEnum = S.String;
-
 /** Metadata about the client sentiment category dimension. */
 export interface GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata {
   /** Optional. The client sentiment category. */
   sentimentCategory?: string;
 }
-const GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata =
-  /*@__PURE__*/ __L.at(
-    __c57,
-    2,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata>;
-
 /** Metadata about the conversation medium dimension. */
 export interface GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata {
   /** Optional. The conversation medium. Currently supports : PHONE_CALL, CHAT. */
   medium?: string;
 }
-const GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata = /*@__PURE__*/ __L.at(
-  __c57,
-  3,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata>;
-
 /** A dimension determines the grouping key for the query. In SQL terms, these would be part of both the "SELECT" and "GROUP BY" clauses. */
 export interface GoogleCloudContactcenterinsightsV1Dimension {
   /** Output only. Metadata about conversation labels. */
@@ -6496,18 +4039,8 @@ export interface GoogleCloudContactcenterinsightsV1Dimension {
   /** Output only. Metadata about the conversation medium dimension. */
   mediumDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata;
 }
-const GoogleCloudContactcenterinsightsV1Dimension = /*@__PURE__*/ __L.at(
-  __c57,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1Dimension>;
-
 export type GoogleCloudContactcenterinsightsV1DimensionList =
   Array<GoogleCloudContactcenterinsightsV1Dimension>;
-const GoogleCloudContactcenterinsightsV1DimensionList = /*@__PURE__*/ __L.at(
-  __c57,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1DimensionList>;
-
 export type GoogleCloudContactcenterinsightsV1QueryMetricsRequestTimeGranularityEnum =
   | "TIME_GRANULARITY_UNSPECIFIED"
   | "NONE"
@@ -6516,8 +4049,6 @@ export type GoogleCloudContactcenterinsightsV1QueryMetricsRequestTimeGranularity
   | "PER_MINUTE"
   | "PER_5_MINUTES"
   | "MONTHLY";
-const GoogleCloudContactcenterinsightsV1QueryMetricsRequestTimeGranularityEnum = S.String;
-
 /** The request for querying metrics. */
 export interface GoogleCloudContactcenterinsightsV1QueryMetricsRequest {
   /** The dimensions that determine the grouping key for the query. Defaults to no dimension if this field is unspecified. If a dimension is specified, its key must also be specified. Each dimension's key must be unique. If a time granularity is also specified, metric values in the dimension will be bucketed by this granularity. Up to one dimension is supported for now. */
@@ -6531,44 +4062,23 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsRequest {
   /** Measures to return. Defaults to all measures if this field is unspecified. A valid mask should traverse from the `measure` field from the response. For example, a path from a measure mask to get the conversation count is "conversation_measure.count". */
   measureMask?: string;
 }
-const GoogleCloudContactcenterinsightsV1QueryMetricsRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsRequest>;
-
 export interface QueryMetricsProjectsLocationsRequest {
   /** Required. The location of the data. "projects/{project}/locations/{location}" */
   location: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QueryMetricsRequest;
 }
-const QueryMetricsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  7,
-) as any as S.Schema<QueryMetricsProjectsLocationsRequest>;
-
 export interface QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
   /** Required. The location of the data. "projects/{project}/locations/{location}" */
   location: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QueryMetricsRequest;
 }
-const QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  0,
-) as any as S.Schema<QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
-
 /** The entity whose performance is being queried is a single agent. */
 export interface GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource {
   /** Required. Agent id to query performance overview for. */
   agentId?: string;
 }
-const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource =
-  /*@__PURE__*/ __L.at(
-    __c58,
-    1,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource>;
-
 /** The request for summarizing performance according to different metrics for conversations over a specified time window. */
 export interface GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest {
   /** Conversations are from a single agent. */
@@ -6580,34 +4090,18 @@ export interface GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewReque
   /** The time window of the conversations to compare the performance to. */
   comparisonQueryInterval?: GoogleCloudContactcenterinsightsV1QueryInterval;
 }
-const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  2,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest>;
-
 export interface QueryPerformanceOverviewProjectsLocationsRequest {
   /** Required. The parent resource of the conversations to derive performance stats from. "projects/{project}/locations/{location}" */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest;
 }
-const QueryPerformanceOverviewProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  3,
-) as any as S.Schema<QueryPerformanceOverviewProjectsLocationsRequest>;
-
 export interface QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
   /** Required. The parent resource of the conversations to derive performance stats from. "projects/{project}/locations/{location}" */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest;
 }
-const QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
-  /*@__PURE__*/ __L.at(
-    __c58,
-    4,
-  ) as any as S.Schema<QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
-
 /** The request to sample conversations to a dataset. */
 export interface GoogleCloudContactcenterinsightsV1SampleConversationsRequest {
   /** The dataset resource to copy the sampled conversations to. */
@@ -6617,33 +4111,18 @@ export interface GoogleCloudContactcenterinsightsV1SampleConversationsRequest {
   /** Required. The parent resource of the dataset. */
   parent?: string;
 }
-const GoogleCloudContactcenterinsightsV1SampleConversationsRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1SampleConversationsRequest>;
-
 export interface SampleProjectsLocationsConversationsRequest {
   /** Required. The parent resource of the dataset. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1SampleConversationsRequest;
 }
-const SampleProjectsLocationsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  6,
-) as any as S.Schema<SampleProjectsLocationsConversationsRequest>;
-
 export interface SampleProjectsLocationsDatasetsConversationsRequest {
   /** Required. The parent resource of the dataset. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1SampleConversationsRequest;
 }
-const SampleProjectsLocationsDatasetsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  7,
-) as any as S.Schema<SampleProjectsLocationsDatasetsConversationsRequest>;
-
 export interface SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
   /** Optional. The maximum number of view to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available. */
   pageSize?: number;
@@ -6656,11 +4135,6 @@ export interface SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest
   /** Required. The parent resource of the AuthorizedViews. If the parent is set to `-`, all AuthorizedViews under the location will be returned. */
   parent: string;
 }
-const SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  0,
-) as any as S.Schema<SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
-
 /** The response from a ListAuthorizedViews request. */
 export interface GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -6668,11 +4142,6 @@ export interface GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse
   /** The AuthorizedViews under the parent. */
   authorizedViews?: GoogleCloudContactcenterinsightsV1AuthorizedViewList;
 }
-const GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse = /*@__PURE__*/ __L.at(
-  __c59,
-  1,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse>;
-
 /** Request message for `SetIamPolicy` method. */
 export interface GoogleIamV1SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -6680,43 +4149,23 @@ export interface GoogleIamV1SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: GoogleIamV1Policy;
 }
-const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  2,
-) as any as S.Schema<GoogleIamV1SetIamPolicyRequest>;
-
 export interface SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  3,
-) as any as S.Schema<SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
-
 /** Request to stream chat. */
 export interface GoogleCloudContactcenterinsightsV1StreamChatRequest {
   /** Required. The message to send to the assistant. */
   message?: string;
 }
-const GoogleCloudContactcenterinsightsV1StreamChatRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1StreamChatRequest>;
-
 export interface StreamChatProjectsLocationsAssistantSessionsRequest {
   /** Required. The name of the assistant session to stream chat. Format: `projects/{project}/locations/{location}/assistantSessions/{assistant_session}` */
   name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1StreamChatRequest;
 }
-const StreamChatProjectsLocationsAssistantSessionsRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  5,
-) as any as S.Schema<StreamChatProjectsLocationsAssistantSessionsRequest>;
-
 /** Response from streaming chat. */
 export interface GoogleCloudContactcenterinsightsV1StreamChatResponse {
   /** The time when the event occurred. */
@@ -6728,22 +4177,11 @@ export interface GoogleCloudContactcenterinsightsV1StreamChatResponse {
   /** The unique ID of the event. */
   eventId?: string;
 }
-const GoogleCloudContactcenterinsightsV1StreamChatResponse = /*@__PURE__*/ __L.at(
-  __c59,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1StreamChatResponse>;
-
 /** Wrapper for a list of conversations. */
 export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations {
   /** Optional. The conversations. */
   conversations?: GoogleCloudContactcenterinsightsV1ConversationList;
 }
-const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations =
-  /*@__PURE__*/ __L.at(
-    __c59,
-    7,
-  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations>;
-
 /** The request to test correlation config. */
 export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest {
   /** Optional. A list of conversations to test against. */
@@ -6755,52 +4193,28 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest 
   /** Optional. Filter to select conversations to test correlation against. Conversations matching this filter will be sampled based on start time. The most recent `max_sample_count` conversations will be selected. If no conversations match the filter, the request will fail with an `INVALID_ARGUMENT` error. */
   filter?: string;
 }
-const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  0,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest>;
-
 export interface TestCorrelationConfigProjectsLocationsRequest {
   /** Required. The location to test correlation config. Format: projects/{project}/locations/{location} */
   location: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest;
 }
-const TestCorrelationConfigProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  1,
-) as any as S.Schema<TestCorrelationConfigProjectsLocationsRequest>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-const GoogleIamV1TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  2,
-) as any as S.Schema<GoogleIamV1TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest =
-  /*@__PURE__*/ __L.at(
-    __c60,
-    3,
-  ) as any as S.Schema<TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>;
-
 /** Response message for `TestIamPermissions` method. */
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-const GoogleIamV1TestIamPermissionsResponse =
-  GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
-
 /** The request message for testing auto labeling rules. */
 export interface GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest {
   /** Required. Conversation data to test rules against. */
@@ -6808,32 +4222,17 @@ export interface GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest {
   /** Required. The auto labeling rule to test. */
   autoLabelingRule?: GoogleCloudContactcenterinsightsV1AutoLabelingRule;
 }
-const GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  4,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest>;
-
 export interface TestProjectsLocationsAutoLabelingRulesRequest {
   /** Required. The parent project and location. Format: projects/{project}/locations/{location} */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest;
 }
-const TestProjectsLocationsAutoLabelingRulesRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  5,
-) as any as S.Schema<TestProjectsLocationsAutoLabelingRulesRequest>;
-
 /** The response message for testing auto labeling rules. */
 export interface GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse {
   /** The result of the test auto labeling rule. */
   labelResult?: string;
 }
-const GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse = /*@__PURE__*/ __L.at(
-  __c60,
-  6,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse>;
-
 /** Request for TuneQaScorecardRevision endpoint. */
 export interface GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest {
   /** Optional. Run in validate only mode, no fine tuning will actually run. Data quality validations like training data distributions will run. Even when set to false, the data quality validations will still run but once the validations complete we will proceed with the fine tune, if applicable. */
@@ -6841,41 +4240,23 @@ export interface GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionReques
   /** Required. Filter for selecting the feedback labels that needs to be used for training. This filter can be used to limit the feedback labels used for tuning to a feedback labels created or updated for a specific time-window etc. */
   filter?: string;
 }
-const GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  7,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest>;
-
 export interface TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsRequest {
   /** Required. The parent resource for new fine tuning job instance. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest;
 }
-const TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  0,
-) as any as S.Schema<TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsRequest>;
-
 /** The request to undeploy an issue model. */
 export interface GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest {
   /** Required. The issue model to undeploy. */
   name?: string;
 }
-const GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest =
-  GoogleCloudContactcenterinsightsV1DeployIssueModelRequest as any as S.Schema<GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest>;
-
 export interface UndeployProjectsLocationsIssueModelsRequest {
   /** Required. The issue model to undeploy. */
   name: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest;
 }
-const UndeployProjectsLocationsIssueModelsRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  1,
-) as any as S.Schema<UndeployProjectsLocationsIssueModelsRequest>;
-
 /** The request to undeploy a QaScorecardRevision */
 export type GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest =
   GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
@@ -6885,11 +4266,6 @@ export interface UndeployProjectsLocationsQaScorecardsRevisionsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1AppealAssessmentRequest;
 }
-const UndeployProjectsLocationsQaScorecardsRevisionsRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  2,
-) as any as S.Schema<UndeployProjectsLocationsQaScorecardsRevisionsRequest>;
-
 export interface UpdateCorrelationConfigProjectsLocationsRequest {
   /** Optional. The list of fields to be updated. */
   updateMask?: string;
@@ -6898,11 +4274,6 @@ export interface UpdateCorrelationConfigProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1CorrelationConfig;
 }
-const UpdateCorrelationConfigProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  3,
-) as any as S.Schema<UpdateCorrelationConfigProjectsLocationsRequest>;
-
 export interface UpdateSettingsProjectsLocationsRequest {
   /** Immutable. The resource name of the settings resource. Format: projects/{project}/locations/{location}/settings */
   name: string;
@@ -6911,11 +4282,6 @@ export interface UpdateSettingsProjectsLocationsRequest {
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1Settings;
 }
-const UpdateSettingsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  4,
-) as any as S.Schema<UpdateSettingsProjectsLocationsRequest>;
-
 /** Request to upload a conversation. */
 export interface GoogleCloudContactcenterinsightsV1UploadConversationRequest {
   /** Required. The parent resource of the conversation. */
@@ -6929,22 +4295,12 @@ export interface GoogleCloudContactcenterinsightsV1UploadConversationRequest {
   /** Optional. Speech-to-Text configuration. Will default to the config specified in Settings. */
   speechConfig?: GoogleCloudContactcenterinsightsV1SpeechConfig;
 }
-const GoogleCloudContactcenterinsightsV1UploadConversationRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  5,
-) as any as S.Schema<GoogleCloudContactcenterinsightsV1UploadConversationRequest>;
-
 export interface UploadProjectsLocationsConversationsRequest {
   /** Required. The parent resource of the conversation. */
   parent: string;
   /** Request body */
   body?: GoogleCloudContactcenterinsightsV1UploadConversationRequest;
 }
-const UploadProjectsLocationsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  6,
-) as any as S.Schema<UploadProjectsLocationsConversationsRequest>;
-
 export type AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError =
   | NotFound
   | Forbidden
@@ -6958,8 +4314,10 @@ export const appealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest,
-  output: GoogleCloudContactcenterinsightsV1Assessment,
+  input: __S(
+    1,
+  ) as any as S.Schema<AppealProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>,
+  output: __S(4) as any as S.Schema<GoogleCloudContactcenterinsightsV1Assessment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6978,8 +4336,8 @@ export const appealProjectsLocationsConversationsAssessments: API.OperationMetho
   AppealProjectsLocationsConversationsAssessmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppealProjectsLocationsConversationsAssessmentsRequest,
-  output: GoogleCloudContactcenterinsightsV1Assessment,
+  input: __S(5) as any as S.Schema<AppealProjectsLocationsConversationsAssessmentsRequest>,
+  output: __S(4) as any as S.Schema<GoogleCloudContactcenterinsightsV1Assessment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6998,8 +4356,8 @@ export const bulkAnalyzeProjectsLocationsConversations: API.OperationMethod<
   BulkAnalyzeProjectsLocationsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkAnalyzeProjectsLocationsConversationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(11) as any as S.Schema<BulkAnalyzeProjectsLocationsConversationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7018,8 +4376,8 @@ export const bulkAnalyzeProjectsLocationsConversationsSegments: API.OperationMet
   BulkAnalyzeProjectsLocationsConversationsSegmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkAnalyzeProjectsLocationsConversationsSegmentsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(16) as any as S.Schema<BulkAnalyzeProjectsLocationsConversationsSegmentsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7038,8 +4396,8 @@ export const bulkDeleteFeedbackLabelsProjectsLocations: API.OperationMethod<
   BulkDeleteFeedbackLabelsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteFeedbackLabelsProjectsLocationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(18) as any as S.Schema<BulkDeleteFeedbackLabelsProjectsLocationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7058,8 +4416,8 @@ export const bulkDeleteFeedbackLabelsProjectsLocationsDatasets: API.OperationMet
   BulkDeleteFeedbackLabelsProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(19) as any as S.Schema<BulkDeleteFeedbackLabelsProjectsLocationsDatasetsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7078,8 +4436,8 @@ export const bulkDeleteProjectsLocationsConversations: API.OperationMethod<
   BulkDeleteProjectsLocationsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteProjectsLocationsConversationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(21) as any as S.Schema<BulkDeleteProjectsLocationsConversationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7098,8 +4456,8 @@ export const bulkDeleteProjectsLocationsDatasetsConversations: API.OperationMeth
   BulkDeleteProjectsLocationsDatasetsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkDeleteProjectsLocationsDatasetsConversationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(22) as any as S.Schema<BulkDeleteProjectsLocationsDatasetsConversationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7118,8 +4476,8 @@ export const bulkDownloadFeedbackLabelsProjectsLocations: API.OperationMethod<
   BulkDownloadFeedbackLabelsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkDownloadFeedbackLabelsProjectsLocationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(26) as any as S.Schema<BulkDownloadFeedbackLabelsProjectsLocationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7138,8 +4496,8 @@ export const bulkDownloadFeedbackLabelsProjectsLocationsDatasets: API.OperationM
   BulkDownloadFeedbackLabelsProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(27) as any as S.Schema<BulkDownloadFeedbackLabelsProjectsLocationsDatasetsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7158,8 +4516,8 @@ export const bulkUploadFeedbackLabelsProjectsLocations: API.OperationMethod<
   BulkUploadFeedbackLabelsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkUploadFeedbackLabelsProjectsLocationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(31) as any as S.Schema<BulkUploadFeedbackLabelsProjectsLocationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7178,8 +4536,8 @@ export const bulkUploadFeedbackLabelsProjectsLocationsDatasets: API.OperationMet
   BulkUploadFeedbackLabelsProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkUploadFeedbackLabelsProjectsLocationsDatasetsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(32) as any as S.Schema<BulkUploadFeedbackLabelsProjectsLocationsDatasetsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7196,8 +4554,10 @@ export const calculateIssueModelStatsProjectsLocationsIssueModels: API.Operation
   CalculateIssueModelStatsProjectsLocationsIssueModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CalculateIssueModelStatsProjectsLocationsIssueModelsRequest,
-  output: GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse,
+  input: __S(33) as any as S.Schema<CalculateIssueModelStatsProjectsLocationsIssueModelsRequest>,
+  output: __S(
+    37,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7214,8 +4574,10 @@ export const calculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsCon
   CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest,
-  output: GoogleCloudContactcenterinsightsV1CalculateStatsResponse,
+  input: __S(
+    38,
+  ) as any as S.Schema<CalculateStatsProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>,
+  output: __S(43) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7229,8 +4591,8 @@ export const calculateStatsProjectsLocationsConversations: API.OperationMethod<
   CalculateStatsProjectsLocationsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CalculateStatsProjectsLocationsConversationsRequest,
-  output: GoogleCloudContactcenterinsightsV1CalculateStatsResponse,
+  input: __S(44) as any as S.Schema<CalculateStatsProjectsLocationsConversationsRequest>,
+  output: __S(43) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7249,8 +4611,8 @@ export const calculateStatsProjectsLocationsDatasetsConversations: API.Operation
   CalculateStatsProjectsLocationsDatasetsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CalculateStatsProjectsLocationsDatasetsConversationsRequest,
-  output: GoogleCloudContactcenterinsightsV1CalculateStatsResponse,
+  input: __S(46) as any as S.Schema<CalculateStatsProjectsLocationsDatasetsConversationsRequest>,
+  output: __S(43) as any as S.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7269,8 +4631,10 @@ export const cancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperations:
   CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(
+    47,
+  ) as any as S.Schema<CancelProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7289,8 +4653,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(49) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7309,8 +4673,8 @@ export const createProjectsLocationsAnalysisRules: API.OperationMethod<
   CreateProjectsLocationsAnalysisRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAnalysisRulesRequest,
-  output: GoogleCloudContactcenterinsightsV1AnalysisRule,
+  input: __S(51) as any as S.Schema<CreateProjectsLocationsAnalysisRulesRequest>,
+  output: __S(50) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnalysisRule>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7329,8 +4693,8 @@ export const createProjectsLocationsAssessmentRules: API.OperationMethod<
   CreateProjectsLocationsAssessmentRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAssessmentRulesRequest,
-  output: GoogleCloudContactcenterinsightsV1AssessmentRule,
+  input: __S(55) as any as S.Schema<CreateProjectsLocationsAssessmentRulesRequest>,
+  output: __S(54) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssessmentRule>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7349,8 +4713,8 @@ export const createProjectsLocationsAssistantSessions: API.OperationMethod<
   CreateProjectsLocationsAssistantSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAssistantSessionsRequest,
-  output: GoogleCloudContactcenterinsightsV1AssistantSession,
+  input: __S(61) as any as S.Schema<CreateProjectsLocationsAssistantSessionsRequest>,
+  output: __S(60) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantSession>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7369,8 +4733,8 @@ export const createProjectsLocationsAuthorizedViewSets: API.OperationMethod<
   CreateProjectsLocationsAuthorizedViewSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAuthorizedViewSetsRequest,
-  output: GoogleCloudContactcenterinsightsV1AuthorizedViewSet,
+  input: __S(63) as any as S.Schema<CreateProjectsLocationsAuthorizedViewSetsRequest>,
+  output: __S(62) as any as S.Schema<GoogleCloudContactcenterinsightsV1AuthorizedViewSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7389,8 +4753,10 @@ export const createProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.Opera
   CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
-  output: GoogleCloudContactcenterinsightsV1AuthorizedView,
+  input: __S(
+    65,
+  ) as any as S.Schema<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>,
+  output: __S(64) as any as S.Schema<GoogleCloudContactcenterinsightsV1AuthorizedView>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7409,8 +4775,10 @@ export const createProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest,
-  output: GoogleCloudContactcenterinsightsV1Assessment,
+  input: __S(
+    66,
+  ) as any as S.Schema<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>,
+  output: __S(4) as any as S.Schema<GoogleCloudContactcenterinsightsV1Assessment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7429,9 +4797,10 @@ export const createProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest,
-  output: GoogleCloudContactcenterinsightsV1Note,
+  input: __S(
+    71,
+  ) as any as S.Schema<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>,
+  output: __S(70) as any as S.Schema<GoogleCloudContactcenterinsightsV1Note>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7450,8 +4819,10 @@ export const createProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest,
-  output: GoogleCloudContactcenterinsightsV1FeedbackLabel,
+  input: __S(
+    74,
+  ) as any as S.Schema<CreateProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>,
+  output: __S(73) as any as S.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7470,8 +4841,8 @@ export const createProjectsLocationsAutoLabelingRules: API.OperationMethod<
   CreateProjectsLocationsAutoLabelingRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAutoLabelingRulesRequest,
-  output: GoogleCloudContactcenterinsightsV1AutoLabelingRule,
+  input: __S(78) as any as S.Schema<CreateProjectsLocationsAutoLabelingRulesRequest>,
+  output: __S(77) as any as S.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRule>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7490,8 +4861,8 @@ export const createProjectsLocationsConversations: API.OperationMethod<
   CreateProjectsLocationsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsConversationsRequest,
-  output: GoogleCloudContactcenterinsightsV1Conversation,
+  input: __S(178) as any as S.Schema<CreateProjectsLocationsConversationsRequest>,
+  output: __S(177) as any as S.Schema<GoogleCloudContactcenterinsightsV1Conversation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7510,8 +4881,8 @@ export const createProjectsLocationsConversationsAnalyses: API.OperationMethod<
   CreateProjectsLocationsConversationsAnalysesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsConversationsAnalysesRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(179) as any as S.Schema<CreateProjectsLocationsConversationsAnalysesRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7530,8 +4901,8 @@ export const createProjectsLocationsConversationsAssessments: API.OperationMetho
   CreateProjectsLocationsConversationsAssessmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsConversationsAssessmentsRequest,
-  output: GoogleCloudContactcenterinsightsV1Assessment,
+  input: __S(180) as any as S.Schema<CreateProjectsLocationsConversationsAssessmentsRequest>,
+  output: __S(4) as any as S.Schema<GoogleCloudContactcenterinsightsV1Assessment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7550,8 +4921,8 @@ export const createProjectsLocationsConversationsAssessmentsNotes: API.Operation
   CreateProjectsLocationsConversationsAssessmentsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsConversationsAssessmentsNotesRequest,
-  output: GoogleCloudContactcenterinsightsV1Note,
+  input: __S(181) as any as S.Schema<CreateProjectsLocationsConversationsAssessmentsNotesRequest>,
+  output: __S(70) as any as S.Schema<GoogleCloudContactcenterinsightsV1Note>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7570,8 +4941,8 @@ export const createProjectsLocationsConversationsFeedbackLabels: API.OperationMe
   CreateProjectsLocationsConversationsFeedbackLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsConversationsFeedbackLabelsRequest,
-  output: GoogleCloudContactcenterinsightsV1FeedbackLabel,
+  input: __S(182) as any as S.Schema<CreateProjectsLocationsConversationsFeedbackLabelsRequest>,
+  output: __S(73) as any as S.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7590,8 +4961,8 @@ export const createProjectsLocationsDashboards: API.OperationMethod<
   CreateProjectsLocationsDashboardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsDashboardsRequest,
-  output: GoogleCloudContactcenterinsightsV1Dashboard,
+  input: __S(203) as any as S.Schema<CreateProjectsLocationsDashboardsRequest>,
+  output: __S(202) as any as S.Schema<GoogleCloudContactcenterinsightsV1Dashboard>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7610,8 +4981,8 @@ export const createProjectsLocationsDashboardsCharts: API.OperationMethod<
   CreateProjectsLocationsDashboardsChartsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsDashboardsChartsRequest,
-  output: GoogleCloudContactcenterinsightsV1Chart,
+  input: __S(204) as any as S.Schema<CreateProjectsLocationsDashboardsChartsRequest>,
+  output: __S(198) as any as S.Schema<GoogleCloudContactcenterinsightsV1Chart>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7630,8 +5001,8 @@ export const createProjectsLocationsDatasets: API.OperationMethod<
   CreateProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsDatasetsRequest,
-  output: GoogleCloudContactcenterinsightsV1Dataset,
+  input: __S(206) as any as S.Schema<CreateProjectsLocationsDatasetsRequest>,
+  output: __S(205) as any as S.Schema<GoogleCloudContactcenterinsightsV1Dataset>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7650,8 +5021,10 @@ export const createProjectsLocationsDatasetsConversationsFeedbackLabels: API.Ope
   CreateProjectsLocationsDatasetsConversationsFeedbackLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest,
-  output: GoogleCloudContactcenterinsightsV1FeedbackLabel,
+  input: __S(
+    207,
+  ) as any as S.Schema<CreateProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>,
+  output: __S(73) as any as S.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7670,8 +5043,8 @@ export const createProjectsLocationsIssueModels: API.OperationMethod<
   CreateProjectsLocationsIssueModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsIssueModelsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(210) as any as S.Schema<CreateProjectsLocationsIssueModelsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7690,8 +5063,8 @@ export const createProjectsLocationsIssueModelsIssues: API.OperationMethod<
   CreateProjectsLocationsIssueModelsIssuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsIssueModelsIssuesRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(212) as any as S.Schema<CreateProjectsLocationsIssueModelsIssuesRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7710,8 +5083,8 @@ export const createProjectsLocationsPhraseMatchers: API.OperationMethod<
   CreateProjectsLocationsPhraseMatchersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsPhraseMatchersRequest,
-  output: GoogleCloudContactcenterinsightsV1PhraseMatcher,
+  input: __S(220) as any as S.Schema<CreateProjectsLocationsPhraseMatchersRequest>,
+  output: __S(219) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatcher>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7730,8 +5103,8 @@ export const createProjectsLocationsQaQuestionTags: API.OperationMethod<
   CreateProjectsLocationsQaQuestionTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsQaQuestionTagsRequest,
-  output: GoogleCloudContactcenterinsightsV1QaQuestionTag,
+  input: __S(222) as any as S.Schema<CreateProjectsLocationsQaQuestionTagsRequest>,
+  output: __S(221) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTag>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7750,8 +5123,8 @@ export const createProjectsLocationsQaScorecards: API.OperationMethod<
   CreateProjectsLocationsQaScorecardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsQaScorecardsRequest,
-  output: GoogleCloudContactcenterinsightsV1QaScorecard,
+  input: __S(224) as any as S.Schema<CreateProjectsLocationsQaScorecardsRequest>,
+  output: __S(223) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecard>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7771,8 +5144,8 @@ export const createProjectsLocationsQaScorecardsRevisions: API.OperationMethod<
   CreateProjectsLocationsQaScorecardsRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsQaScorecardsRevisionsRequest,
-  output: GoogleCloudContactcenterinsightsV1QaScorecardRevision,
+  input: __S(226) as any as S.Schema<CreateProjectsLocationsQaScorecardsRevisionsRequest>,
+  output: __S(225) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardRevision>,
   errors: [
     NotFound,
     Forbidden,
@@ -7799,8 +5172,10 @@ export const createProjectsLocationsQaScorecardsRevisionsQaQuestions: API.Operat
   CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest,
-  output: GoogleCloudContactcenterinsightsV1QaQuestion,
+  input: __S(
+    235,
+  ) as any as S.Schema<CreateProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>,
+  output: __S(234) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestion>,
   errors: [
     NotFound,
     Forbidden,
@@ -7826,8 +5201,8 @@ export const createProjectsLocationsViews: API.OperationMethod<
   CreateProjectsLocationsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsViewsRequest,
-  output: GoogleCloudContactcenterinsightsV1View,
+  input: __S(237) as any as S.Schema<CreateProjectsLocationsViewsRequest>,
+  output: __S(236) as any as S.Schema<GoogleCloudContactcenterinsightsV1View>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7846,8 +5221,8 @@ export const deleteProjectsLocationsAnalysisRules: API.OperationMethod<
   DeleteProjectsLocationsAnalysisRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAnalysisRulesRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(238) as any as S.Schema<DeleteProjectsLocationsAnalysisRulesRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7866,8 +5241,8 @@ export const deleteProjectsLocationsAssessmentRules: API.OperationMethod<
   DeleteProjectsLocationsAssessmentRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAssessmentRulesRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(239) as any as S.Schema<DeleteProjectsLocationsAssessmentRulesRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7886,8 +5261,8 @@ export const deleteProjectsLocationsAuthorizedViewSets: API.OperationMethod<
   DeleteProjectsLocationsAuthorizedViewSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAuthorizedViewSetsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(240) as any as S.Schema<DeleteProjectsLocationsAuthorizedViewSetsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7906,8 +5281,10 @@ export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.Opera
   DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(
+    241,
+  ) as any as S.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7926,8 +5303,10 @@ export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(
+    242,
+  ) as any as S.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7946,8 +5325,10 @@ export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(
+    243,
+  ) as any as S.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7966,9 +5347,10 @@ export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(
+    244,
+  ) as any as S.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7987,8 +5369,10 @@ export const deleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversatio
   DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(
+    245,
+  ) as any as S.Schema<DeleteProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8007,8 +5391,8 @@ export const deleteProjectsLocationsAutoLabelingRules: API.OperationMethod<
   DeleteProjectsLocationsAutoLabelingRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAutoLabelingRulesRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(246) as any as S.Schema<DeleteProjectsLocationsAutoLabelingRulesRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8027,8 +5411,8 @@ export const deleteProjectsLocationsConversations: API.OperationMethod<
   DeleteProjectsLocationsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsConversationsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(247) as any as S.Schema<DeleteProjectsLocationsConversationsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8047,8 +5431,8 @@ export const deleteProjectsLocationsConversationsAnalyses: API.OperationMethod<
   DeleteProjectsLocationsConversationsAnalysesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsConversationsAnalysesRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(248) as any as S.Schema<DeleteProjectsLocationsConversationsAnalysesRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8067,8 +5451,8 @@ export const deleteProjectsLocationsConversationsAssessments: API.OperationMetho
   DeleteProjectsLocationsConversationsAssessmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsConversationsAssessmentsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(249) as any as S.Schema<DeleteProjectsLocationsConversationsAssessmentsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8087,8 +5471,8 @@ export const deleteProjectsLocationsConversationsAssessmentsNotes: API.Operation
   DeleteProjectsLocationsConversationsAssessmentsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsConversationsAssessmentsNotesRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(250) as any as S.Schema<DeleteProjectsLocationsConversationsAssessmentsNotesRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8107,8 +5491,8 @@ export const deleteProjectsLocationsConversationsFeedbackLabels: API.OperationMe
   DeleteProjectsLocationsConversationsFeedbackLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsConversationsFeedbackLabelsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(251) as any as S.Schema<DeleteProjectsLocationsConversationsFeedbackLabelsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8127,8 +5511,8 @@ export const deleteProjectsLocationsDashboards: API.OperationMethod<
   DeleteProjectsLocationsDashboardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsDashboardsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(252) as any as S.Schema<DeleteProjectsLocationsDashboardsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8147,8 +5531,8 @@ export const deleteProjectsLocationsDashboardsCharts: API.OperationMethod<
   DeleteProjectsLocationsDashboardsChartsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsDashboardsChartsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(253) as any as S.Schema<DeleteProjectsLocationsDashboardsChartsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8167,8 +5551,8 @@ export const deleteProjectsLocationsDatasets: API.OperationMethod<
   DeleteProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsDatasetsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(254) as any as S.Schema<DeleteProjectsLocationsDatasetsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8187,8 +5571,8 @@ export const deleteProjectsLocationsDatasetsConversations: API.OperationMethod<
   DeleteProjectsLocationsDatasetsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsDatasetsConversationsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(255) as any as S.Schema<DeleteProjectsLocationsDatasetsConversationsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8207,8 +5591,10 @@ export const deleteProjectsLocationsDatasetsConversationsFeedbackLabels: API.Ope
   DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(
+    256,
+  ) as any as S.Schema<DeleteProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8227,8 +5613,8 @@ export const deleteProjectsLocationsIssueModels: API.OperationMethod<
   DeleteProjectsLocationsIssueModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsIssueModelsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(257) as any as S.Schema<DeleteProjectsLocationsIssueModelsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8247,8 +5633,8 @@ export const deleteProjectsLocationsIssueModelsIssues: API.OperationMethod<
   DeleteProjectsLocationsIssueModelsIssuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsIssueModelsIssuesRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(258) as any as S.Schema<DeleteProjectsLocationsIssueModelsIssuesRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8267,8 +5653,8 @@ export const deleteProjectsLocationsPhraseMatchers: API.OperationMethod<
   DeleteProjectsLocationsPhraseMatchersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsPhraseMatchersRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(259) as any as S.Schema<DeleteProjectsLocationsPhraseMatchersRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8287,8 +5673,8 @@ export const deleteProjectsLocationsQaQuestionTags: API.OperationMethod<
   DeleteProjectsLocationsQaQuestionTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsQaQuestionTagsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(260) as any as S.Schema<DeleteProjectsLocationsQaQuestionTagsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8307,8 +5693,8 @@ export const deleteProjectsLocationsQaScorecards: API.OperationMethod<
   DeleteProjectsLocationsQaScorecardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsQaScorecardsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(261) as any as S.Schema<DeleteProjectsLocationsQaScorecardsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8328,8 +5714,8 @@ export const deleteProjectsLocationsQaScorecardsRevisions: API.OperationMethod<
   DeleteProjectsLocationsQaScorecardsRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsQaScorecardsRevisionsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(262) as any as S.Schema<DeleteProjectsLocationsQaScorecardsRevisionsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, QaScorecardOnlyRevision, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8348,8 +5734,10 @@ export const deleteProjectsLocationsQaScorecardsRevisionsQaQuestions: API.Operat
   DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(
+    263,
+  ) as any as S.Schema<DeleteProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8368,8 +5756,8 @@ export const deleteProjectsLocationsViews: API.OperationMethod<
   DeleteProjectsLocationsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsViewsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(264) as any as S.Schema<DeleteProjectsLocationsViewsRequest>,
+  output: __S(48) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8388,8 +5776,8 @@ export const deployProjectsLocationsIssueModels: API.OperationMethod<
   DeployProjectsLocationsIssueModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeployProjectsLocationsIssueModelsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(266) as any as S.Schema<DeployProjectsLocationsIssueModelsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8408,8 +5796,8 @@ export const deployProjectsLocationsQaScorecardsRevisions: API.OperationMethod<
   DeployProjectsLocationsQaScorecardsRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeployProjectsLocationsQaScorecardsRevisionsRequest,
-  output: GoogleCloudContactcenterinsightsV1QaScorecardRevision,
+  input: __S(267) as any as S.Schema<DeployProjectsLocationsQaScorecardsRevisionsRequest>,
+  output: __S(225) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardRevision>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8428,8 +5816,8 @@ export const exportProjectsLocationsDatasetsInsightsdata: API.OperationMethod<
   ExportProjectsLocationsDatasetsInsightsdataError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportProjectsLocationsDatasetsInsightsdataRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(270) as any as S.Schema<ExportProjectsLocationsDatasetsInsightsdataRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8448,8 +5836,8 @@ export const exportProjectsLocationsInsightsdata: API.OperationMethod<
   ExportProjectsLocationsInsightsdataError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportProjectsLocationsInsightsdataRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(271) as any as S.Schema<ExportProjectsLocationsInsightsdataRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8468,8 +5856,8 @@ export const exportProjectsLocationsIssueModels: API.OperationMethod<
   ExportProjectsLocationsIssueModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportProjectsLocationsIssueModelsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(274) as any as S.Schema<ExportProjectsLocationsIssueModelsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8488,8 +5876,10 @@ export const finalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversat
   FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest,
-  output: GoogleCloudContactcenterinsightsV1Assessment,
+  input: __S(
+    275,
+  ) as any as S.Schema<FinalizeProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>,
+  output: __S(4) as any as S.Schema<GoogleCloudContactcenterinsightsV1Assessment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8508,8 +5898,8 @@ export const finalizeProjectsLocationsConversationsAssessments: API.OperationMet
   FinalizeProjectsLocationsConversationsAssessmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FinalizeProjectsLocationsConversationsAssessmentsRequest,
-  output: GoogleCloudContactcenterinsightsV1Assessment,
+  input: __S(276) as any as S.Schema<FinalizeProjectsLocationsConversationsAssessmentsRequest>,
+  output: __S(4) as any as S.Schema<GoogleCloudContactcenterinsightsV1Assessment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8526,8 +5916,12 @@ export const generateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedVie
   GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest,
-  output: GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse,
+  input: __S(
+    277,
+  ) as any as S.Schema<GenerateSignedAudioProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>,
+  output: __S(
+    279,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8544,8 +5938,10 @@ export const generateSignedAudioProjectsLocationsConversations: API.OperationMet
   GenerateSignedAudioProjectsLocationsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateSignedAudioProjectsLocationsConversationsRequest,
-  output: GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse,
+  input: __S(280) as any as S.Schema<GenerateSignedAudioProjectsLocationsConversationsRequest>,
+  output: __S(
+    279,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8562,8 +5958,12 @@ export const generateSignedAudioProjectsLocationsDatasetsConversations: API.Oper
   GenerateSignedAudioProjectsLocationsDatasetsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest,
-  output: GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse,
+  input: __S(
+    281,
+  ) as any as S.Schema<GenerateSignedAudioProjectsLocationsDatasetsConversationsRequest>,
+  output: __S(
+    279,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8582,8 +5982,8 @@ export const generativeInsightsProjectsLocations: API.OperationMethod<
   GenerativeInsightsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerativeInsightsProjectsLocationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(283) as any as S.Schema<GenerativeInsightsProjectsLocationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8602,8 +6002,10 @@ export const generativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedView
   GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    284,
+  ) as any as S.Schema<GenerativeInsightsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8617,8 +6019,8 @@ export const getCorrelationConfigProjectsLocations: API.OperationMethod<
   GetCorrelationConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCorrelationConfigProjectsLocationsRequest,
-  output: GoogleCloudContactcenterinsightsV1CorrelationConfig,
+  input: __S(285) as any as S.Schema<GetCorrelationConfigProjectsLocationsRequest>,
+  output: __S(289) as any as S.Schema<GoogleCloudContactcenterinsightsV1CorrelationConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8632,8 +6034,8 @@ export const getEncryptionSpecProjectsLocations: API.OperationMethod<
   GetEncryptionSpecProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEncryptionSpecProjectsLocationsRequest,
-  output: GoogleCloudContactcenterinsightsV1EncryptionSpec,
+  input: __S(290) as any as S.Schema<GetEncryptionSpecProjectsLocationsRequest>,
+  output: __S(291) as any as S.Schema<GoogleCloudContactcenterinsightsV1EncryptionSpec>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8650,8 +6052,10 @@ export const getIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViews: API
   GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
-  output: GoogleIamV1Policy,
+  input: __S(
+    292,
+  ) as any as S.Schema<GetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>,
+  output: __S(300) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8665,8 +6069,8 @@ export const getProjectsLocationsAnalysisRules: API.OperationMethod<
   GetProjectsLocationsAnalysisRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAnalysisRulesRequest,
-  output: GoogleCloudContactcenterinsightsV1AnalysisRule,
+  input: __S(301) as any as S.Schema<GetProjectsLocationsAnalysisRulesRequest>,
+  output: __S(50) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnalysisRule>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8680,8 +6084,8 @@ export const getProjectsLocationsAssessmentRules: API.OperationMethod<
   GetProjectsLocationsAssessmentRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAssessmentRulesRequest,
-  output: GoogleCloudContactcenterinsightsV1AssessmentRule,
+  input: __S(302) as any as S.Schema<GetProjectsLocationsAssessmentRulesRequest>,
+  output: __S(54) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssessmentRule>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8695,8 +6099,8 @@ export const getProjectsLocationsAssistantSessions: API.OperationMethod<
   GetProjectsLocationsAssistantSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAssistantSessionsRequest,
-  output: GoogleCloudContactcenterinsightsV1AssistantSession,
+  input: __S(303) as any as S.Schema<GetProjectsLocationsAssistantSessionsRequest>,
+  output: __S(60) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssistantSession>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8710,8 +6114,8 @@ export const getProjectsLocationsAuthorizedViewSets: API.OperationMethod<
   GetProjectsLocationsAuthorizedViewSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAuthorizedViewSetsRequest,
-  output: GoogleCloudContactcenterinsightsV1AuthorizedViewSet,
+  input: __S(304) as any as S.Schema<GetProjectsLocationsAuthorizedViewSetsRequest>,
+  output: __S(62) as any as S.Schema<GoogleCloudContactcenterinsightsV1AuthorizedViewSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8728,8 +6132,8 @@ export const getProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.Operatio
   GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
-  output: GoogleCloudContactcenterinsightsV1AuthorizedView,
+  input: __S(305) as any as S.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>,
+  output: __S(64) as any as S.Schema<GoogleCloudContactcenterinsightsV1AuthorizedView>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8746,8 +6150,10 @@ export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations:
   GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest,
-  output: GoogleCloudContactcenterinsightsV1Conversation,
+  input: __S(
+    306,
+  ) as any as S.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>,
+  output: __S(177) as any as S.Schema<GoogleCloudContactcenterinsightsV1Conversation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8764,8 +6170,10 @@ export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsA
   GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest,
-  output: GoogleCloudContactcenterinsightsV1Assessment,
+  input: __S(
+    307,
+  ) as any as S.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>,
+  output: __S(4) as any as S.Schema<GoogleCloudContactcenterinsightsV1Assessment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8782,8 +6190,10 @@ export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsF
   GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest,
-  output: GoogleCloudContactcenterinsightsV1FeedbackLabel,
+  input: __S(
+    308,
+  ) as any as S.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>,
+  output: __S(73) as any as S.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabel>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8800,8 +6210,10 @@ export const getProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperations: AP
   GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    309,
+  ) as any as S.Schema<GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8815,8 +6227,8 @@ export const getProjectsLocationsAutoLabelingRules: API.OperationMethod<
   GetProjectsLocationsAutoLabelingRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAutoLabelingRulesRequest,
-  output: GoogleCloudContactcenterinsightsV1AutoLabelingRule,
+  input: __S(310) as any as S.Schema<GetProjectsLocationsAutoLabelingRulesRequest>,
+  output: __S(77) as any as S.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRule>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8830,8 +6242,8 @@ export const getProjectsLocationsConversations: API.OperationMethod<
   GetProjectsLocationsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConversationsRequest,
-  output: GoogleCloudContactcenterinsightsV1Conversation,
+  input: __S(311) as any as S.Schema<GetProjectsLocationsConversationsRequest>,
+  output: __S(177) as any as S.Schema<GoogleCloudContactcenterinsightsV1Conversation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8845,8 +6257,8 @@ export const getProjectsLocationsConversationsAnalyses: API.OperationMethod<
   GetProjectsLocationsConversationsAnalysesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConversationsAnalysesRequest,
-  output: GoogleCloudContactcenterinsightsV1Analysis,
+  input: __S(312) as any as S.Schema<GetProjectsLocationsConversationsAnalysesRequest>,
+  output: __S(115) as any as S.Schema<GoogleCloudContactcenterinsightsV1Analysis>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8860,8 +6272,8 @@ export const getProjectsLocationsConversationsAssessments: API.OperationMethod<
   GetProjectsLocationsConversationsAssessmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConversationsAssessmentsRequest,
-  output: GoogleCloudContactcenterinsightsV1Assessment,
+  input: __S(313) as any as S.Schema<GetProjectsLocationsConversationsAssessmentsRequest>,
+  output: __S(4) as any as S.Schema<GoogleCloudContactcenterinsightsV1Assessment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8878,8 +6290,8 @@ export const getProjectsLocationsConversationsFeedbackLabels: API.OperationMetho
   GetProjectsLocationsConversationsFeedbackLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConversationsFeedbackLabelsRequest,
-  output: GoogleCloudContactcenterinsightsV1FeedbackLabel,
+  input: __S(314) as any as S.Schema<GetProjectsLocationsConversationsFeedbackLabelsRequest>,
+  output: __S(73) as any as S.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabel>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8893,8 +6305,8 @@ export const getProjectsLocationsDashboards: API.OperationMethod<
   GetProjectsLocationsDashboardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsDashboardsRequest,
-  output: GoogleCloudContactcenterinsightsV1Dashboard,
+  input: __S(315) as any as S.Schema<GetProjectsLocationsDashboardsRequest>,
+  output: __S(202) as any as S.Schema<GoogleCloudContactcenterinsightsV1Dashboard>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8908,8 +6320,8 @@ export const getProjectsLocationsDashboardsCharts: API.OperationMethod<
   GetProjectsLocationsDashboardsChartsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsDashboardsChartsRequest,
-  output: GoogleCloudContactcenterinsightsV1Chart,
+  input: __S(316) as any as S.Schema<GetProjectsLocationsDashboardsChartsRequest>,
+  output: __S(198) as any as S.Schema<GoogleCloudContactcenterinsightsV1Chart>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8923,8 +6335,8 @@ export const getProjectsLocationsDatasets: API.OperationMethod<
   GetProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsDatasetsRequest,
-  output: GoogleCloudContactcenterinsightsV1Dataset,
+  input: __S(317) as any as S.Schema<GetProjectsLocationsDatasetsRequest>,
+  output: __S(205) as any as S.Schema<GoogleCloudContactcenterinsightsV1Dataset>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8938,8 +6350,8 @@ export const getProjectsLocationsDatasetsConversations: API.OperationMethod<
   GetProjectsLocationsDatasetsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsDatasetsConversationsRequest,
-  output: GoogleCloudContactcenterinsightsV1Conversation,
+  input: __S(318) as any as S.Schema<GetProjectsLocationsDatasetsConversationsRequest>,
+  output: __S(177) as any as S.Schema<GoogleCloudContactcenterinsightsV1Conversation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8956,8 +6368,10 @@ export const getProjectsLocationsDatasetsConversationsFeedbackLabels: API.Operat
   GetProjectsLocationsDatasetsConversationsFeedbackLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest,
-  output: GoogleCloudContactcenterinsightsV1FeedbackLabel,
+  input: __S(
+    319,
+  ) as any as S.Schema<GetProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>,
+  output: __S(73) as any as S.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabel>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8971,8 +6385,8 @@ export const getProjectsLocationsIssueModels: API.OperationMethod<
   GetProjectsLocationsIssueModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsIssueModelsRequest,
-  output: GoogleCloudContactcenterinsightsV1IssueModel,
+  input: __S(320) as any as S.Schema<GetProjectsLocationsIssueModelsRequest>,
+  output: __S(209) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModel>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8986,8 +6400,8 @@ export const getProjectsLocationsIssueModelsIssues: API.OperationMethod<
   GetProjectsLocationsIssueModelsIssuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsIssueModelsIssuesRequest,
-  output: GoogleCloudContactcenterinsightsV1Issue,
+  input: __S(321) as any as S.Schema<GetProjectsLocationsIssueModelsIssuesRequest>,
+  output: __S(211) as any as S.Schema<GoogleCloudContactcenterinsightsV1Issue>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9001,8 +6415,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(322) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9016,8 +6430,8 @@ export const getProjectsLocationsPhraseMatchers: API.OperationMethod<
   GetProjectsLocationsPhraseMatchersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsPhraseMatchersRequest,
-  output: GoogleCloudContactcenterinsightsV1PhraseMatcher,
+  input: __S(323) as any as S.Schema<GetProjectsLocationsPhraseMatchersRequest>,
+  output: __S(219) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatcher>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9031,8 +6445,8 @@ export const getProjectsLocationsQaQuestionTags: API.OperationMethod<
   GetProjectsLocationsQaQuestionTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsQaQuestionTagsRequest,
-  output: GoogleCloudContactcenterinsightsV1QaQuestionTag,
+  input: __S(324) as any as S.Schema<GetProjectsLocationsQaQuestionTagsRequest>,
+  output: __S(221) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTag>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9046,8 +6460,8 @@ export const getProjectsLocationsQaScorecards: API.OperationMethod<
   GetProjectsLocationsQaScorecardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsQaScorecardsRequest,
-  output: GoogleCloudContactcenterinsightsV1QaScorecard,
+  input: __S(325) as any as S.Schema<GetProjectsLocationsQaScorecardsRequest>,
+  output: __S(223) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecard>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9061,8 +6475,8 @@ export const getProjectsLocationsQaScorecardsRevisions: API.OperationMethod<
   GetProjectsLocationsQaScorecardsRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsQaScorecardsRevisionsRequest,
-  output: GoogleCloudContactcenterinsightsV1QaScorecardRevision,
+  input: __S(326) as any as S.Schema<GetProjectsLocationsQaScorecardsRevisionsRequest>,
+  output: __S(225) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardRevision>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9079,8 +6493,8 @@ export const getProjectsLocationsQaScorecardsRevisionsQaQuestions: API.Operation
   GetProjectsLocationsQaScorecardsRevisionsQaQuestionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest,
-  output: GoogleCloudContactcenterinsightsV1QaQuestion,
+  input: __S(327) as any as S.Schema<GetProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>,
+  output: __S(234) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9094,8 +6508,8 @@ export const getProjectsLocationsViews: API.OperationMethod<
   GetProjectsLocationsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsViewsRequest,
-  output: GoogleCloudContactcenterinsightsV1View,
+  input: __S(328) as any as S.Schema<GetProjectsLocationsViewsRequest>,
+  output: __S(236) as any as S.Schema<GoogleCloudContactcenterinsightsV1View>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9109,8 +6523,8 @@ export const getSettingsProjectsLocations: API.OperationMethod<
   GetSettingsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingsProjectsLocationsRequest,
-  output: GoogleCloudContactcenterinsightsV1Settings,
+  input: __S(329) as any as S.Schema<GetSettingsProjectsLocationsRequest>,
+  output: __S(336) as any as S.Schema<GoogleCloudContactcenterinsightsV1Settings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9129,8 +6543,8 @@ export const importProjectsLocationsIssueModels: API.OperationMethod<
   ImportProjectsLocationsIssueModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportProjectsLocationsIssueModelsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(338) as any as S.Schema<ImportProjectsLocationsIssueModelsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9149,8 +6563,8 @@ export const ingestProjectsLocationsConversations: API.OperationMethod<
   IngestProjectsLocationsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IngestProjectsLocationsConversationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(343) as any as S.Schema<IngestProjectsLocationsConversationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9169,8 +6583,8 @@ export const ingestProjectsLocationsDatasetsConversations: API.OperationMethod<
   IngestProjectsLocationsDatasetsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IngestProjectsLocationsDatasetsConversationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(344) as any as S.Schema<IngestProjectsLocationsDatasetsConversationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9189,8 +6603,8 @@ export const initializeProjectsLocationsEncryptionSpec: API.OperationMethod<
   InitializeProjectsLocationsEncryptionSpecError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InitializeProjectsLocationsEncryptionSpecRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(346) as any as S.Schema<InitializeProjectsLocationsEncryptionSpecRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9205,8 +6619,10 @@ export const listAllFeedbackLabelsProjectsLocations: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAllFeedbackLabelsProjectsLocationsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse,
+  input: __S(347) as any as S.Schema<ListAllFeedbackLabelsProjectsLocationsRequest>,
+  output: __S(
+    348,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9222,8 +6638,10 @@ export const listAllFeedbackLabelsProjectsLocationsDatasets: API.PaginatedOperat
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAllFeedbackLabelsProjectsLocationsDatasetsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse,
+  input: __S(349) as any as S.Schema<ListAllFeedbackLabelsProjectsLocationsDatasetsRequest>,
+  output: __S(
+    348,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9239,8 +6657,8 @@ export const listProjectsLocationsAnalysisRules: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAnalysisRulesRequest,
-  output: GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse,
+  input: __S(350) as any as S.Schema<ListProjectsLocationsAnalysisRulesRequest>,
+  output: __S(352) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9256,8 +6674,10 @@ export const listProjectsLocationsAssessmentRules: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAssessmentRulesRequest,
-  output: GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse,
+  input: __S(353) as any as S.Schema<ListProjectsLocationsAssessmentRulesRequest>,
+  output: __S(
+    355,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9273,8 +6693,10 @@ export const listProjectsLocationsAssistantSessions: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAssistantSessionsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse,
+  input: __S(356) as any as S.Schema<ListProjectsLocationsAssistantSessionsRequest>,
+  output: __S(
+    358,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAssistantSessionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9290,8 +6712,10 @@ export const listProjectsLocationsAuthorizedViewSets: API.PaginatedOperationMeth
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAuthorizedViewSetsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse,
+  input: __S(359) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsRequest>,
+  output: __S(
+    361,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9310,8 +6734,10 @@ export const listProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.Paginat
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse,
+  input: __S(362) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>,
+  output: __S(
+    364,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9330,8 +6756,10 @@ export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListConversationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListConversationsResponse,
+  input: __S(
+    365,
+  ) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest>,
+  output: __S(367) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListConversationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9350,8 +6778,10 @@ export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListAssessmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListAssessmentsResponse,
+  input: __S(
+    368,
+  ) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>,
+  output: __S(370) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAssessmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9370,8 +6800,10 @@ export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListNotesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest,
-  output: GoogleCloudContactcenterinsightsV1ListNotesResponse,
+  input: __S(
+    371,
+  ) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>,
+  output: __S(373) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListNotesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9390,8 +6822,10 @@ export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversations
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse,
+  input: __S(
+    374,
+  ) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>,
+  output: __S(375) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9410,8 +6844,10 @@ export const listProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperations: A
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest,
-  output: GoogleLongrunningListOperationsResponse,
+  input: __S(
+    376,
+  ) as any as S.Schema<ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest>,
+  output: __S(378) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9427,8 +6863,10 @@ export const listProjectsLocationsAutoLabelingRules: API.PaginatedOperationMetho
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAutoLabelingRulesRequest,
-  output: GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse,
+  input: __S(379) as any as S.Schema<ListProjectsLocationsAutoLabelingRulesRequest>,
+  output: __S(
+    381,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9444,8 +6882,8 @@ export const listProjectsLocationsConversations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListConversationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConversationsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListConversationsResponse,
+  input: __S(382) as any as S.Schema<ListProjectsLocationsConversationsRequest>,
+  output: __S(367) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListConversationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9461,8 +6899,8 @@ export const listProjectsLocationsConversationsAnalyses: API.PaginatedOperationM
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListAnalysesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConversationsAnalysesRequest,
-  output: GoogleCloudContactcenterinsightsV1ListAnalysesResponse,
+  input: __S(383) as any as S.Schema<ListProjectsLocationsConversationsAnalysesRequest>,
+  output: __S(385) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAnalysesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9478,8 +6916,8 @@ export const listProjectsLocationsConversationsAssessments: API.PaginatedOperati
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListAssessmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConversationsAssessmentsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListAssessmentsResponse,
+  input: __S(386) as any as S.Schema<ListProjectsLocationsConversationsAssessmentsRequest>,
+  output: __S(370) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListAssessmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9498,8 +6936,8 @@ export const listProjectsLocationsConversationsAssessmentsNotes: API.PaginatedOp
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListNotesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConversationsAssessmentsNotesRequest,
-  output: GoogleCloudContactcenterinsightsV1ListNotesResponse,
+  input: __S(387) as any as S.Schema<ListProjectsLocationsConversationsAssessmentsNotesRequest>,
+  output: __S(373) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListNotesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9518,8 +6956,8 @@ export const listProjectsLocationsConversationsFeedbackLabels: API.PaginatedOper
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConversationsFeedbackLabelsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse,
+  input: __S(388) as any as S.Schema<ListProjectsLocationsConversationsFeedbackLabelsRequest>,
+  output: __S(375) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9535,8 +6973,8 @@ export const listProjectsLocationsDashboards: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListDashboardsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsDashboardsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListDashboardsResponse,
+  input: __S(389) as any as S.Schema<ListProjectsLocationsDashboardsRequest>,
+  output: __S(391) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListDashboardsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9551,8 +6989,8 @@ export const listProjectsLocationsDashboardsCharts: API.OperationMethod<
   ListProjectsLocationsDashboardsChartsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsDashboardsChartsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListChartsResponse,
+  input: __S(392) as any as S.Schema<ListProjectsLocationsDashboardsChartsRequest>,
+  output: __S(394) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListChartsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9567,8 +7005,8 @@ export const listProjectsLocationsDatasets: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListDatasetsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsDatasetsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListDatasetsResponse,
+  input: __S(395) as any as S.Schema<ListProjectsLocationsDatasetsRequest>,
+  output: __S(397) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListDatasetsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9584,8 +7022,8 @@ export const listProjectsLocationsDatasetsConversations: API.PaginatedOperationM
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListConversationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsDatasetsConversationsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListConversationsResponse,
+  input: __S(398) as any as S.Schema<ListProjectsLocationsDatasetsConversationsRequest>,
+  output: __S(367) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListConversationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9604,8 +7042,10 @@ export const listProjectsLocationsDatasetsConversationsFeedbackLabels: API.Pagin
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse,
+  input: __S(
+    399,
+  ) as any as S.Schema<ListProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>,
+  output: __S(375) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9620,8 +7060,8 @@ export const listProjectsLocationsIssueModels: API.OperationMethod<
   ListProjectsLocationsIssueModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsIssueModelsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListIssueModelsResponse,
+  input: __S(400) as any as S.Schema<ListProjectsLocationsIssueModelsRequest>,
+  output: __S(402) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListIssueModelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9635,8 +7075,8 @@ export const listProjectsLocationsIssueModelsIssues: API.OperationMethod<
   ListProjectsLocationsIssueModelsIssuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsIssueModelsIssuesRequest,
-  output: GoogleCloudContactcenterinsightsV1ListIssuesResponse,
+  input: __S(403) as any as S.Schema<ListProjectsLocationsIssueModelsIssuesRequest>,
+  output: __S(405) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListIssuesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9651,8 +7091,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleLongrunningListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: GoogleLongrunningListOperationsResponse,
+  input: __S(406) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(378) as any as S.Schema<GoogleLongrunningListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9668,8 +7108,8 @@ export const listProjectsLocationsPhraseMatchers: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsPhraseMatchersRequest,
-  output: GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse,
+  input: __S(407) as any as S.Schema<ListProjectsLocationsPhraseMatchersRequest>,
+  output: __S(409) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9684,8 +7124,8 @@ export const listProjectsLocationsQaQuestionTags: API.OperationMethod<
   ListProjectsLocationsQaQuestionTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsQaQuestionTagsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse,
+  input: __S(410) as any as S.Schema<ListProjectsLocationsQaQuestionTagsRequest>,
+  output: __S(412) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9700,8 +7140,8 @@ export const listProjectsLocationsQaScorecards: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsQaScorecardsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse,
+  input: __S(414) as any as S.Schema<ListProjectsLocationsQaScorecardsRequest>,
+  output: __S(416) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9717,8 +7157,10 @@ export const listProjectsLocationsQaScorecardsRevisions: API.PaginatedOperationM
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsQaScorecardsRevisionsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse,
+  input: __S(417) as any as S.Schema<ListProjectsLocationsQaScorecardsRevisionsRequest>,
+  output: __S(
+    419,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9737,8 +7179,8 @@ export const listProjectsLocationsQaScorecardsRevisionsQaQuestions: API.Paginate
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse,
+  input: __S(420) as any as S.Schema<ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>,
+  output: __S(422) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9754,8 +7196,8 @@ export const listProjectsLocationsViews: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1ListViewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsViewsRequest,
-  output: GoogleCloudContactcenterinsightsV1ListViewsResponse,
+  input: __S(423) as any as S.Schema<ListProjectsLocationsViewsRequest>,
+  output: __S(425) as any as S.Schema<GoogleCloudContactcenterinsightsV1ListViewsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9775,8 +7217,8 @@ export const patchProjectsLocationsAnalysisRules: API.OperationMethod<
   PatchProjectsLocationsAnalysisRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsAnalysisRulesRequest,
-  output: GoogleCloudContactcenterinsightsV1AnalysisRule,
+  input: __S(426) as any as S.Schema<PatchProjectsLocationsAnalysisRulesRequest>,
+  output: __S(50) as any as S.Schema<GoogleCloudContactcenterinsightsV1AnalysisRule>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9795,8 +7237,8 @@ export const patchProjectsLocationsAssessmentRules: API.OperationMethod<
   PatchProjectsLocationsAssessmentRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsAssessmentRulesRequest,
-  output: GoogleCloudContactcenterinsightsV1AssessmentRule,
+  input: __S(427) as any as S.Schema<PatchProjectsLocationsAssessmentRulesRequest>,
+  output: __S(54) as any as S.Schema<GoogleCloudContactcenterinsightsV1AssessmentRule>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9815,8 +7257,8 @@ export const patchProjectsLocationsAuthorizedViewSets: API.OperationMethod<
   PatchProjectsLocationsAuthorizedViewSetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsAuthorizedViewSetsRequest,
-  output: GoogleCloudContactcenterinsightsV1AuthorizedViewSet,
+  input: __S(428) as any as S.Schema<PatchProjectsLocationsAuthorizedViewSetsRequest>,
+  output: __S(62) as any as S.Schema<GoogleCloudContactcenterinsightsV1AuthorizedViewSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9835,8 +7277,10 @@ export const patchProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.Operat
   PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
-  output: GoogleCloudContactcenterinsightsV1AuthorizedView,
+  input: __S(
+    429,
+  ) as any as S.Schema<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>,
+  output: __S(64) as any as S.Schema<GoogleCloudContactcenterinsightsV1AuthorizedView>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9855,9 +7299,10 @@ export const patchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversation
   PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input:
-    PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest,
-  output: GoogleCloudContactcenterinsightsV1Note,
+  input: __S(
+    430,
+  ) as any as S.Schema<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest>,
+  output: __S(70) as any as S.Schema<GoogleCloudContactcenterinsightsV1Note>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9876,8 +7321,10 @@ export const patchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversation
   PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest,
-  output: GoogleCloudContactcenterinsightsV1FeedbackLabel,
+  input: __S(
+    431,
+  ) as any as S.Schema<PatchProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsFeedbackLabelsRequest>,
+  output: __S(73) as any as S.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9896,8 +7343,8 @@ export const patchProjectsLocationsAutoLabelingRules: API.OperationMethod<
   PatchProjectsLocationsAutoLabelingRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsAutoLabelingRulesRequest,
-  output: GoogleCloudContactcenterinsightsV1AutoLabelingRule,
+  input: __S(432) as any as S.Schema<PatchProjectsLocationsAutoLabelingRulesRequest>,
+  output: __S(77) as any as S.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRule>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9916,8 +7363,8 @@ export const patchProjectsLocationsConversations: API.OperationMethod<
   PatchProjectsLocationsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsConversationsRequest,
-  output: GoogleCloudContactcenterinsightsV1Conversation,
+  input: __S(433) as any as S.Schema<PatchProjectsLocationsConversationsRequest>,
+  output: __S(177) as any as S.Schema<GoogleCloudContactcenterinsightsV1Conversation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9936,8 +7383,8 @@ export const patchProjectsLocationsConversationsAssessmentsNotes: API.OperationM
   PatchProjectsLocationsConversationsAssessmentsNotesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsConversationsAssessmentsNotesRequest,
-  output: GoogleCloudContactcenterinsightsV1Note,
+  input: __S(434) as any as S.Schema<PatchProjectsLocationsConversationsAssessmentsNotesRequest>,
+  output: __S(70) as any as S.Schema<GoogleCloudContactcenterinsightsV1Note>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9956,8 +7403,8 @@ export const patchProjectsLocationsConversationsFeedbackLabels: API.OperationMet
   PatchProjectsLocationsConversationsFeedbackLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsConversationsFeedbackLabelsRequest,
-  output: GoogleCloudContactcenterinsightsV1FeedbackLabel,
+  input: __S(435) as any as S.Schema<PatchProjectsLocationsConversationsFeedbackLabelsRequest>,
+  output: __S(73) as any as S.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9976,8 +7423,8 @@ export const patchProjectsLocationsDashboards: API.OperationMethod<
   PatchProjectsLocationsDashboardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsDashboardsRequest,
-  output: GoogleCloudContactcenterinsightsV1Dashboard,
+  input: __S(436) as any as S.Schema<PatchProjectsLocationsDashboardsRequest>,
+  output: __S(202) as any as S.Schema<GoogleCloudContactcenterinsightsV1Dashboard>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9996,8 +7443,8 @@ export const patchProjectsLocationsDashboardsCharts: API.OperationMethod<
   PatchProjectsLocationsDashboardsChartsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsDashboardsChartsRequest,
-  output: GoogleCloudContactcenterinsightsV1Chart,
+  input: __S(437) as any as S.Schema<PatchProjectsLocationsDashboardsChartsRequest>,
+  output: __S(198) as any as S.Schema<GoogleCloudContactcenterinsightsV1Chart>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10016,8 +7463,8 @@ export const patchProjectsLocationsDatasets: API.OperationMethod<
   PatchProjectsLocationsDatasetsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsDatasetsRequest,
-  output: GoogleCloudContactcenterinsightsV1Dataset,
+  input: __S(438) as any as S.Schema<PatchProjectsLocationsDatasetsRequest>,
+  output: __S(205) as any as S.Schema<GoogleCloudContactcenterinsightsV1Dataset>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10036,8 +7483,10 @@ export const patchProjectsLocationsDatasetsConversationsFeedbackLabels: API.Oper
   PatchProjectsLocationsDatasetsConversationsFeedbackLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest,
-  output: GoogleCloudContactcenterinsightsV1FeedbackLabel,
+  input: __S(
+    439,
+  ) as any as S.Schema<PatchProjectsLocationsDatasetsConversationsFeedbackLabelsRequest>,
+  output: __S(73) as any as S.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10056,8 +7505,8 @@ export const patchProjectsLocationsIssueModels: API.OperationMethod<
   PatchProjectsLocationsIssueModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsIssueModelsRequest,
-  output: GoogleCloudContactcenterinsightsV1IssueModel,
+  input: __S(440) as any as S.Schema<PatchProjectsLocationsIssueModelsRequest>,
+  output: __S(209) as any as S.Schema<GoogleCloudContactcenterinsightsV1IssueModel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10076,8 +7525,8 @@ export const patchProjectsLocationsIssueModelsIssues: API.OperationMethod<
   PatchProjectsLocationsIssueModelsIssuesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsIssueModelsIssuesRequest,
-  output: GoogleCloudContactcenterinsightsV1Issue,
+  input: __S(441) as any as S.Schema<PatchProjectsLocationsIssueModelsIssuesRequest>,
+  output: __S(211) as any as S.Schema<GoogleCloudContactcenterinsightsV1Issue>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10096,8 +7545,8 @@ export const patchProjectsLocationsPhraseMatchers: API.OperationMethod<
   PatchProjectsLocationsPhraseMatchersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsPhraseMatchersRequest,
-  output: GoogleCloudContactcenterinsightsV1PhraseMatcher,
+  input: __S(442) as any as S.Schema<PatchProjectsLocationsPhraseMatchersRequest>,
+  output: __S(219) as any as S.Schema<GoogleCloudContactcenterinsightsV1PhraseMatcher>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10116,8 +7565,8 @@ export const patchProjectsLocationsQaQuestionTags: API.OperationMethod<
   PatchProjectsLocationsQaQuestionTagsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsQaQuestionTagsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(443) as any as S.Schema<PatchProjectsLocationsQaQuestionTagsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10136,8 +7585,8 @@ export const patchProjectsLocationsQaScorecards: API.OperationMethod<
   PatchProjectsLocationsQaScorecardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsQaScorecardsRequest,
-  output: GoogleCloudContactcenterinsightsV1QaScorecard,
+  input: __S(444) as any as S.Schema<PatchProjectsLocationsQaScorecardsRequest>,
+  output: __S(223) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecard>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10156,8 +7605,8 @@ export const patchProjectsLocationsQaScorecardsRevisionsQaQuestions: API.Operati
   PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest,
-  output: GoogleCloudContactcenterinsightsV1QaQuestion,
+  input: __S(445) as any as S.Schema<PatchProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest>,
+  output: __S(234) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaQuestion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10176,8 +7625,8 @@ export const patchProjectsLocationsViews: API.OperationMethod<
   PatchProjectsLocationsViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsViewsRequest,
-  output: GoogleCloudContactcenterinsightsV1View,
+  input: __S(446) as any as S.Schema<PatchProjectsLocationsViewsRequest>,
+  output: __S(236) as any as S.Schema<GoogleCloudContactcenterinsightsV1View>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10196,8 +7645,10 @@ export const publishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversati
   PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest,
-  output: GoogleCloudContactcenterinsightsV1Assessment,
+  input: __S(
+    447,
+  ) as any as S.Schema<PublishProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest>,
+  output: __S(4) as any as S.Schema<GoogleCloudContactcenterinsightsV1Assessment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10216,8 +7667,8 @@ export const publishProjectsLocationsConversationsAssessments: API.OperationMeth
   PublishProjectsLocationsConversationsAssessmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishProjectsLocationsConversationsAssessmentsRequest,
-  output: GoogleCloudContactcenterinsightsV1Assessment,
+  input: __S(448) as any as S.Schema<PublishProjectsLocationsConversationsAssessmentsRequest>,
+  output: __S(4) as any as S.Schema<GoogleCloudContactcenterinsightsV1Assessment>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10236,8 +7687,8 @@ export const queryMetricsProjectsLocations: API.OperationMethod<
   QueryMetricsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryMetricsProjectsLocationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(463) as any as S.Schema<QueryMetricsProjectsLocationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10256,8 +7707,10 @@ export const queryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViews: API
   QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    464,
+  ) as any as S.Schema<QueryMetricsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10276,8 +7729,8 @@ export const queryPerformanceOverviewProjectsLocations: API.OperationMethod<
   QueryPerformanceOverviewProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryPerformanceOverviewProjectsLocationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(467) as any as S.Schema<QueryPerformanceOverviewProjectsLocationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10296,8 +7749,10 @@ export const queryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthoriz
   QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    468,
+  ) as any as S.Schema<QueryPerformanceOverviewProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10316,8 +7771,8 @@ export const sampleProjectsLocationsConversations: API.OperationMethod<
   SampleProjectsLocationsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SampleProjectsLocationsConversationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(470) as any as S.Schema<SampleProjectsLocationsConversationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10336,8 +7791,8 @@ export const sampleProjectsLocationsDatasetsConversations: API.OperationMethod<
   SampleProjectsLocationsDatasetsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SampleProjectsLocationsDatasetsConversationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(471) as any as S.Schema<SampleProjectsLocationsDatasetsConversationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10355,8 +7810,12 @@ export const searchProjectsLocationsAuthorizedViewSetsAuthorizedViews: API.Pagin
   GcpOpContext,
   GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
-  output: GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse,
+  input: __S(
+    472,
+  ) as any as S.Schema<SearchProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>,
+  output: __S(
+    473,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10376,8 +7835,10 @@ export const setIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViews: API
   SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
-  output: GoogleIamV1Policy,
+  input: __S(
+    475,
+  ) as any as S.Schema<SetIamPolicyProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>,
+  output: __S(300) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10396,8 +7857,8 @@ export const streamChatProjectsLocationsAssistantSessions: API.OperationMethod<
   StreamChatProjectsLocationsAssistantSessionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamChatProjectsLocationsAssistantSessionsRequest,
-  output: GoogleCloudContactcenterinsightsV1StreamChatResponse,
+  input: __S(477) as any as S.Schema<StreamChatProjectsLocationsAssistantSessionsRequest>,
+  output: __S(478) as any as S.Schema<GoogleCloudContactcenterinsightsV1StreamChatResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10416,8 +7877,8 @@ export const testCorrelationConfigProjectsLocations: API.OperationMethod<
   TestCorrelationConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestCorrelationConfigProjectsLocationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(481) as any as S.Schema<TestCorrelationConfigProjectsLocationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10436,8 +7897,10 @@ export const testIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedView
   TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViewsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest,
-  output: GoogleIamV1TestIamPermissionsResponse,
+  input: __S(
+    483,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest>,
+  output: __S(482) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10456,8 +7919,10 @@ export const testProjectsLocationsAutoLabelingRules: API.OperationMethod<
   TestProjectsLocationsAutoLabelingRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestProjectsLocationsAutoLabelingRulesRequest,
-  output: GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse,
+  input: __S(485) as any as S.Schema<TestProjectsLocationsAutoLabelingRulesRequest>,
+  output: __S(
+    486,
+  ) as any as S.Schema<GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10476,8 +7941,10 @@ export const tuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisions: API.
   TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(
+    488,
+  ) as any as S.Schema<TuneQaScorecardRevisionProjectsLocationsQaScorecardsRevisionsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10496,8 +7963,8 @@ export const undeployProjectsLocationsIssueModels: API.OperationMethod<
   UndeployProjectsLocationsIssueModelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeployProjectsLocationsIssueModelsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(489) as any as S.Schema<UndeployProjectsLocationsIssueModelsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10516,8 +7983,8 @@ export const undeployProjectsLocationsQaScorecardsRevisions: API.OperationMethod
   UndeployProjectsLocationsQaScorecardsRevisionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeployProjectsLocationsQaScorecardsRevisionsRequest,
-  output: GoogleCloudContactcenterinsightsV1QaScorecardRevision,
+  input: __S(490) as any as S.Schema<UndeployProjectsLocationsQaScorecardsRevisionsRequest>,
+  output: __S(225) as any as S.Schema<GoogleCloudContactcenterinsightsV1QaScorecardRevision>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10536,8 +8003,8 @@ export const updateCorrelationConfigProjectsLocations: API.OperationMethod<
   UpdateCorrelationConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCorrelationConfigProjectsLocationsRequest,
-  output: GoogleCloudContactcenterinsightsV1CorrelationConfig,
+  input: __S(491) as any as S.Schema<UpdateCorrelationConfigProjectsLocationsRequest>,
+  output: __S(289) as any as S.Schema<GoogleCloudContactcenterinsightsV1CorrelationConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10556,8 +8023,8 @@ export const updateSettingsProjectsLocations: API.OperationMethod<
   UpdateSettingsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSettingsProjectsLocationsRequest,
-  output: GoogleCloudContactcenterinsightsV1Settings,
+  input: __S(492) as any as S.Schema<UpdateSettingsProjectsLocationsRequest>,
+  output: __S(336) as any as S.Schema<GoogleCloudContactcenterinsightsV1Settings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10576,8 +8043,8 @@ export const uploadProjectsLocationsConversations: API.OperationMethod<
   UploadProjectsLocationsConversationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadProjectsLocationsConversationsRequest,
-  output: GoogleLongrunningOperation,
+  input: __S(494) as any as S.Schema<UploadProjectsLocationsConversationsRequest>,
+  output: __S(15) as any as S.Schema<GoogleLongrunningOperation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -10594,9 +8061,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10616,14 +8081,12 @@ function __c0(j: number): any {
           location: S.optional(S.String),
           entrySubagentId: S.optional(S.String),
           deploymentId: S.optional(S.String),
-          agentType: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoAgentTypeEnum,
-          ),
+          agentType: S.optional(S.String),
           agentId: S.optional(S.String),
           versionDisplayName: S.optional(S.String),
           displayName: S.optional(S.String),
           deploymentDisplayName: S.optional(S.String),
-          teams: S.optional(StringList),
+          teams: S.optional(__S(2)),
           versionId: S.optional(S.String),
           dispositionCode: S.optional(S.String),
           entrySubagentDisplayName: S.optional(S.String),
@@ -10638,10 +8101,8 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          agentInfo: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo,
-          ),
-          state: S.optional(GoogleCloudContactcenterinsightsV1AssessmentStateEnum),
+          agentInfo: S.optional(__S(3)),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1Assessment",
@@ -10650,9 +8111,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10666,9 +8125,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          summarizationModel: S.optional(
-            GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfigSummarizationModelEnum,
-          ),
+          summarizationModel: S.optional(S.String),
           generator: S.optional(S.String),
           conversationProfile: S.optional(S.String),
         }),
@@ -10678,7 +8135,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          qaScorecardRevisions: S.optional(StringList),
+          qaScorecardRevisions: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList",
@@ -10690,9 +8147,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          scorecardList: S.optional(
-            GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList,
-          ),
+          scorecardList: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig",
@@ -10701,20 +8156,18 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           runPhraseMatcherAnnotator: S.optional(S.Boolean),
-          phraseMatchers: S.optional(StringList),
+          phraseMatchers: S.optional(__S(2)),
           runSentimentAnnotator: S.optional(S.Boolean),
           runAutoLabelingAnnotator: S.optional(S.Boolean),
           runIntentAnnotator: S.optional(S.Boolean),
           runSummarizationAnnotator: S.optional(S.Boolean),
           runInterruptionAnnotator: S.optional(S.Boolean),
           runSilenceAnnotator: S.optional(S.Boolean),
-          summarizationConfig: S.optional(
-            GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig,
-          ),
-          qaConfig: S.optional(GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig),
+          summarizationConfig: S.optional(__S(6)),
+          qaConfig: S.optional(__S(8)),
           runQaAnnotator: S.optional(S.Boolean),
           runEntityAnnotator: S.optional(S.Boolean),
-          issueModels: S.optional(StringList),
+          issueModels: S.optional(__S(2)),
           runIssueModelAnnotator: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -10725,7 +8178,7 @@ function __c1(j: number): any {
         S.Struct({
           analysisPercentage: S.optional(S.Number),
           relabel: S.optional(S.Boolean),
-          annotatorSelector: S.optional(GoogleCloudContactcenterinsightsV1AnnotatorSelector),
+          annotatorSelector: S.optional(__S(9)),
           filter: S.optional(S.String),
           parent: S.optional(S.String),
         }),
@@ -10736,9 +8189,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10752,12 +8203,12 @@ function __c1(j: number): any {
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(DocumentMap);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(13)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GoogleRpcStatus" });
@@ -10765,10 +8216,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          response: S.optional(DocumentMap),
-          metadata: S.optional(DocumentMap),
+          response: S.optional(__S(12)),
+          metadata: S.optional(__S(12)),
           name: S.optional(S.String),
-          error: S.optional(GoogleRpcStatus),
+          error: S.optional(__S(14)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningOperation",
@@ -10781,9 +8232,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10807,9 +8256,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(17).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10824,9 +8271,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(17).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10852,9 +8297,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(20).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10869,9 +8312,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(20).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10901,9 +8342,7 @@ function __c3(j: number): any {
         S.Struct({
           recordsPerFileCount: S.optional(S.String),
           alwaysPrintEmptyFields: S.optional(S.Boolean),
-          format: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestinationFormatEnum,
-          ),
+          format: S.optional(S.String),
           addWhitespace: S.optional(S.Boolean),
           objectUri: S.optional(S.String),
         }),
@@ -10914,20 +8353,14 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          templateQaScorecardId: S.optional(StringList),
+          templateQaScorecardId: S.optional(__S(2)),
           parent: S.optional(S.String),
           filter: S.optional(S.String),
-          sheetsDestination: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination,
-          ),
+          sheetsDestination: S.optional(__S(23)),
           maxDownloadCount: S.optional(S.Number),
           conversationFilter: S.optional(S.String),
-          feedbackLabelType: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestFeedbackLabelTypeEnum,
-          ),
-          gcsDestination: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination,
-          ),
+          feedbackLabelType: S.optional(S.String),
+          gcsDestination: S.optional(__S(24)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest",
@@ -10936,9 +8369,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(25).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10953,9 +8384,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(25).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10978,9 +8407,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           objectUri: S.optional(S.String),
-          format: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSourceFormatEnum,
-          ),
+          format: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource",
@@ -10988,12 +8415,8 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sheetsSource: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource,
-          ),
-          gcsSource: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource,
-          ),
+          sheetsSource: S.optional(__S(28)),
+          gcsSource: S.optional(__S(29)),
           validateOnly: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -11003,9 +8426,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(30).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11024,9 +8445,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(30).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11062,14 +8481,12 @@ function __c4(j: number): any {
         identifier: "GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats",
       });
     case 3:
-      return S.Record(S.String, GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats);
+      return S.Record(S.String, __S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
           unclassifiedConversationsCount: S.optional(S.String),
-          issueStats: S.optional(
-            GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap,
-          ),
+          issueStats: S.optional(__S(35)),
           analyzedConversationsCount: S.optional(S.String),
         }),
       ).annotate({
@@ -11078,7 +8495,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          currentStats: S.optional(GoogleCloudContactcenterinsightsV1IssueModelLabelStats),
+          currentStats: S.optional(__S(36)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse",
@@ -11115,13 +8532,11 @@ function __c5(j: number): any {
         identifier: "GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval",
       });
     case 1:
-      return S.Array(GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          points: S.optional(
-            GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesIntervalList,
-          ),
+          points: S.optional(__S(41)),
           intervalDuration: S.optional(S.String),
         }),
       ).annotate({
@@ -11132,16 +8547,12 @@ function __c5(j: number): any {
         S.Struct({
           averageDuration: S.optional(S.String),
           conversationCount: S.optional(S.Number),
-          issueMatches: S.optional(IntegerMap),
-          customHighlighterMatches: S.optional(IntegerMap),
+          issueMatches: S.optional(__S(39)),
+          customHighlighterMatches: S.optional(__S(39)),
           averageTurnCount: S.optional(S.Number),
-          conversationCountTimeSeries: S.optional(
-            GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries,
-          ),
-          smartHighlighterMatches: S.optional(IntegerMap),
-          issueMatchesStats: S.optional(
-            GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStatsMap,
-          ),
+          conversationCountTimeSeries: S.optional(__S(42)),
+          smartHighlighterMatches: S.optional(__S(39)),
+          issueMatchesStats: S.optional(__S(35)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1CalculateStatsResponse",
@@ -11173,9 +8584,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1CalculateStatsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(45).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11234,7 +8643,7 @@ function __c6(j: number): any {
           satisfiesPzi: S.optional(S.Boolean),
           active: S.optional(S.Boolean),
           createTime: S.optional(S.String),
-          annotatorSelector: S.optional(GoogleCloudContactcenterinsightsV1AnnotatorSelector),
+          annotatorSelector: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1AnalysisRule",
@@ -11243,7 +8652,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1AnalysisRule.pipe(T.HttpBody())),
+          body: S.optional(__S(50).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11279,10 +8688,10 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          scheduleInfo: S.optional(GoogleCloudContactcenterinsightsV1ScheduleInfo),
+          scheduleInfo: S.optional(__S(52)),
           displayName: S.optional(S.String),
           createTime: S.optional(S.String),
-          sampleRule: S.optional(GoogleCloudContactcenterinsightsV1SampleRule),
+          sampleRule: S.optional(__S(53)),
           active: S.optional(S.Boolean),
           satisfiesPzs: S.optional(S.Boolean),
           name: S.optional(S.String),
@@ -11297,7 +8706,7 @@ function __c6(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           assessmentRuleId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1AssessmentRule.pipe(T.HttpBody())),
+          body: S.optional(__S(54).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11321,26 +8730,26 @@ function __c7(j: number): any {
         identifier: "GoogleCloudContactcenterinsightsV1AssistantChunk",
       });
     case 1:
-      return S.Array(GoogleCloudContactcenterinsightsV1AssistantChunk);
+      return S.Array(__S(56));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          role: S.optional(GoogleCloudContactcenterinsightsV1AssistantMessageRoleEnum),
+          role: S.optional(S.String),
           eventTime: S.optional(S.String),
-          chunks: S.optional(GoogleCloudContactcenterinsightsV1AssistantChunkList),
+          chunks: S.optional(__S(57)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1AssistantMessage",
       });
     case 3:
-      return S.Array(GoogleCloudContactcenterinsightsV1AssistantMessage);
+      return S.Array(__S(58));
     case 4:
       return S.suspend(() =>
         S.Struct({
           requester: S.optional(S.String),
           createTime: S.optional(S.String),
-          state: S.optional(GoogleCloudContactcenterinsightsV1AssistantSessionStateEnum),
-          messages: S.optional(GoogleCloudContactcenterinsightsV1AssistantMessageList),
+          state: S.optional(S.String),
+          messages: S.optional(__S(59)),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -11353,7 +8762,7 @@ function __c7(j: number): any {
         S.Struct({
           assistantSessionId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1AssistantSession.pipe(T.HttpBody())),
+          body: S.optional(__S(60).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11382,7 +8791,7 @@ function __c7(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           authorizedViewSetId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1AuthorizedViewSet.pipe(T.HttpBody())),
+          body: S.optional(__S(62).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11416,7 +8825,7 @@ function __c8(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           authorizedViewId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1AuthorizedView.pipe(T.HttpBody())),
+          body: S.optional(__S(64).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11431,7 +8840,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Assessment.pipe(T.HttpBody())),
+          body: S.optional(__S(4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11470,13 +8879,11 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          qaQuestionNote: S.optional(GoogleCloudContactcenterinsightsV1NoteQaQuestionNote),
-          conversationTurnNote: S.optional(
-            GoogleCloudContactcenterinsightsV1NoteConversationTurnNote,
-          ),
+          qaQuestionNote: S.optional(__S(67)),
+          conversationTurnNote: S.optional(__S(68)),
           content: S.optional(S.String),
-          assessmentNote: S.optional(GoogleCloudContactcenterinsightsV1AppealAssessmentRequest),
-          noteCreator: S.optional(GoogleCloudContactcenterinsightsV1UserInfo),
+          assessmentNote: S.optional(__S(0)),
+          noteCreator: S.optional(__S(69)),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
@@ -11488,7 +8895,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Note.pipe(T.HttpBody())),
+          body: S.optional(__S(70).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11528,7 +8935,7 @@ function __c9(j: number): any {
           label: S.optional(S.String),
           updateTime: S.optional(S.String),
           satisfiesPzi: S.optional(S.Boolean),
-          qaAnswerLabel: S.optional(GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue),
+          qaAnswerLabel: S.optional(__S(72)),
           labeledResource: S.optional(S.String),
           satisfiesPzs: S.optional(S.Boolean),
         }),
@@ -11540,7 +8947,7 @@ function __c9(j: number): any {
         S.Struct({
           feedbackLabelId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabel.pipe(T.HttpBody())),
+          body: S.optional(__S(73).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11562,20 +8969,16 @@ function __c9(j: number): any {
         identifier: "GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition",
       });
     case 4:
-      return S.Array(GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition);
+      return S.Array(__S(75));
     case 5:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
           createTime: S.optional(S.String),
-          labelKeyType: S.optional(
-            GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelKeyTypeEnum,
-          ),
+          labelKeyType: S.optional(S.String),
           active: S.optional(S.Boolean),
           name: S.optional(S.String),
-          conditions: S.optional(
-            GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingConditionList,
-          ),
+          conditions: S.optional(__S(76)),
           displayName: S.optional(S.String),
           updateTime: S.optional(S.String),
           labelKey: S.optional(S.String),
@@ -11588,7 +8991,7 @@ function __c9(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           autoLabelingRuleId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1AutoLabelingRule.pipe(T.HttpBody())),
+          body: S.optional(__S(77).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11613,17 +9016,15 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo);
+      return S.Array(__S(3));
     case 1:
-      return S.Array(GoogleCloudContactcenterinsightsV1FeedbackLabel);
+      return S.Array(__S(73));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          agentInfo: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfoList,
-          ),
+          agentInfo: S.optional(__S(80)),
           waitDuration: S.optional(S.String),
-          feedbackLabels: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabelList),
+          feedbackLabels: S.optional(__S(81)),
           customerSatisfactionRating: S.optional(S.Number),
           menuPath: S.optional(S.String),
         }),
@@ -11642,17 +9043,13 @@ function __c10(j: number): any {
         identifier: "GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult",
       });
     case 4:
-      return S.Array(GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult);
+      return S.Array(__S(83));
     case 5:
       return S.suspend(() =>
         S.Struct({
           score: S.optional(S.Number),
-          qaTagResults: S.optional(
-            GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList,
-          ),
-          sourceType: S.optional(
-            GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceSourceTypeEnum,
-          ),
+          qaTagResults: S.optional(__S(84)),
+          sourceType: S.optional(S.String),
           potentialScore: S.optional(S.Number),
           normalizedScore: S.optional(S.Number),
         }),
@@ -11660,14 +9057,12 @@ function __c10(j: number): any {
         identifier: "GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource",
       });
     case 6:
-      return S.Array(GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource);
+      return S.Array(__S(85));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sourceType: S.optional(
-            GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceSourceTypeEnum,
-          ),
-          answerValue: S.optional(GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue),
+          sourceType: S.optional(S.String),
+          answerValue: S.optional(__S(72)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource",
@@ -11677,32 +9072,28 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource);
+      return S.Array(__S(87));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(StringList),
+          tags: S.optional(__S(2)),
           qaQuestion: S.optional(S.String),
-          answerValue: S.optional(GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue),
+          answerValue: S.optional(__S(72)),
           questionBody: S.optional(S.String),
           conversation: S.optional(S.String),
-          answerSources: S.optional(GoogleCloudContactcenterinsightsV1QaAnswerAnswerSourceList),
+          answerSources: S.optional(__S(88)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1QaAnswer",
       });
     case 2:
-      return S.Array(GoogleCloudContactcenterinsightsV1QaAnswer);
+      return S.Array(__S(89));
     case 3:
       return S.suspend(() =>
         S.Struct({
           qaScorecardRevision: S.optional(S.String),
-          scoreSources: S.optional(
-            GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSourceList,
-          ),
-          qaTagResults: S.optional(
-            GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResultList,
-          ),
+          scoreSources: S.optional(__S(86)),
+          qaTagResults: S.optional(__S(84)),
           createTime: S.optional(S.String),
           conversation: S.optional(S.String),
           score: S.optional(S.Number),
@@ -11710,13 +9101,13 @@ function __c11(j: number): any {
           potentialScore: S.optional(S.Number),
           agentId: S.optional(S.String),
           name: S.optional(S.String),
-          qaAnswers: S.optional(GoogleCloudContactcenterinsightsV1QaAnswerList),
+          qaAnswers: S.optional(__S(90)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1QaScorecardResult",
       });
     case 4:
-      return S.Array(GoogleCloudContactcenterinsightsV1QaScorecardResult);
+      return S.Array(__S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -11736,7 +9127,7 @@ function __c11(j: number): any {
         identifier: "GoogleCloudContactcenterinsightsV1PhraseMatchData",
       });
     case 7:
-      return S.Record(S.String, GoogleCloudContactcenterinsightsV1PhraseMatchData);
+      return S.Record(S.String, __S(94));
   }
 }
 function __c12(j: number): any {
@@ -11754,13 +9145,13 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           channelTag: S.optional(S.Number),
-          sentimentData: S.optional(GoogleCloudContactcenterinsightsV1SentimentData),
+          sentimentData: S.optional(__S(96)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ConversationLevelSentiment",
       });
     case 2:
-      return S.Array(GoogleCloudContactcenterinsightsV1ConversationLevelSentiment);
+      return S.Array(__S(97));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -11772,11 +9163,11 @@ function __c12(j: number): any {
         identifier: "GoogleCloudContactcenterinsightsV1IssueAssignment",
       });
     case 4:
-      return S.Array(GoogleCloudContactcenterinsightsV1IssueAssignment);
+      return S.Array(__S(99));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          issues: S.optional(GoogleCloudContactcenterinsightsV1IssueAssignmentList),
+          issues: S.optional(__S(100)),
           issueModel: S.optional(S.String),
         }),
       ).annotate({
@@ -11787,10 +9178,10 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(StringMap),
+          metadata: S.optional(__S(102)),
           salience: S.optional(S.Number),
-          type: S.optional(GoogleCloudContactcenterinsightsV1EntityTypeEnum),
-          sentiment: S.optional(GoogleCloudContactcenterinsightsV1SentimentData),
+          type: S.optional(S.String),
+          sentiment: S.optional(__S(96)),
           displayName: S.optional(S.String),
         }),
       ).annotate({
@@ -11801,7 +9192,7 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, GoogleCloudContactcenterinsightsV1Entity);
+      return S.Record(S.String, __S(103));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11822,7 +9213,7 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          issueAssignment: S.optional(GoogleCloudContactcenterinsightsV1IssueAssignment),
+          issueAssignment: S.optional(__S(99)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1IssueMatchData",
@@ -11831,8 +9222,8 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           entityUniqueId: S.optional(S.String),
-          sentiment: S.optional(GoogleCloudContactcenterinsightsV1SentimentData),
-          type: S.optional(GoogleCloudContactcenterinsightsV1EntityMentionDataTypeEnum),
+          sentiment: S.optional(__S(96)),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1EntityMentionData",
@@ -11840,23 +9231,23 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          annotationEndBoundary: S.optional(GoogleCloudContactcenterinsightsV1AnnotationBoundary),
-          interruptionData: S.optional(GoogleCloudContactcenterinsightsV1AppealAssessmentRequest),
-          intentMatchData: S.optional(GoogleCloudContactcenterinsightsV1IntentMatchData),
-          phraseMatchData: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatchData),
-          silenceData: S.optional(GoogleCloudContactcenterinsightsV1AppealAssessmentRequest),
-          holdData: S.optional(GoogleCloudContactcenterinsightsV1AppealAssessmentRequest),
-          issueMatchData: S.optional(GoogleCloudContactcenterinsightsV1IssueMatchData),
-          annotationStartBoundary: S.optional(GoogleCloudContactcenterinsightsV1AnnotationBoundary),
-          sentimentData: S.optional(GoogleCloudContactcenterinsightsV1SentimentData),
+          annotationEndBoundary: S.optional(__S(105)),
+          interruptionData: S.optional(__S(0)),
+          intentMatchData: S.optional(__S(106)),
+          phraseMatchData: S.optional(__S(94)),
+          silenceData: S.optional(__S(0)),
+          holdData: S.optional(__S(0)),
+          issueMatchData: S.optional(__S(107)),
+          annotationStartBoundary: S.optional(__S(105)),
+          sentimentData: S.optional(__S(96)),
           channelTag: S.optional(S.Number),
-          entityMentionData: S.optional(GoogleCloudContactcenterinsightsV1EntityMentionData),
+          entityMentionData: S.optional(__S(108)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1CallAnnotation",
       });
     case 6:
-      return S.Array(GoogleCloudContactcenterinsightsV1CallAnnotation);
+      return S.Array(__S(109));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -11871,18 +9262,18 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, GoogleCloudContactcenterinsightsV1Intent);
+      return S.Record(S.String, __S(111));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          qaScorecardResults: S.optional(GoogleCloudContactcenterinsightsV1QaScorecardResultList),
-          silence: S.optional(GoogleCloudContactcenterinsightsV1ConversationLevelSilence),
-          phraseMatchers: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatchDataMap),
-          sentiments: S.optional(GoogleCloudContactcenterinsightsV1ConversationLevelSentimentList),
-          issueModelResult: S.optional(GoogleCloudContactcenterinsightsV1IssueModelResult),
-          entities: S.optional(GoogleCloudContactcenterinsightsV1EntityMap),
-          annotations: S.optional(GoogleCloudContactcenterinsightsV1CallAnnotationList),
-          intents: S.optional(GoogleCloudContactcenterinsightsV1IntentMap),
+          qaScorecardResults: S.optional(__S(92)),
+          silence: S.optional(__S(93)),
+          phraseMatchers: S.optional(__S(95)),
+          sentiments: S.optional(__S(98)),
+          issueModelResult: S.optional(__S(101)),
+          entities: S.optional(__S(104)),
+          annotations: S.optional(__S(110)),
+          intents: S.optional(__S(112)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata",
@@ -11891,9 +9282,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
-          callAnalysisMetadata: S.optional(
-            GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata,
-          ),
+          callAnalysisMetadata: S.optional(__S(113)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1AnalysisResult",
@@ -11903,27 +9292,23 @@ function __c14(j: number): any {
         S.Struct({
           satisfiesPzs: S.optional(S.Boolean),
           name: S.optional(S.String),
-          analysisResult: S.optional(GoogleCloudContactcenterinsightsV1AnalysisResult),
+          analysisResult: S.optional(__S(114)),
           requestTime: S.optional(S.String),
           satisfiesPzi: S.optional(S.Boolean),
           createTime: S.optional(S.String),
-          annotatorSelector: S.optional(GoogleCloudContactcenterinsightsV1AnnotatorSelector),
+          annotatorSelector: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1Analysis",
       });
     case 4:
-      return S.Array(
-        GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnum,
-      );
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
           fullConversationCorrelationId: S.optional(S.String),
           mergedFullConversationCorrelationId: S.optional(S.String),
-          correlationTypes: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationCorrelationInfoCorrelationTypesItemEnumList,
-          ),
+          correlationTypes: S.optional(__S(116)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo",
@@ -11937,7 +9322,7 @@ function __c14(j: number): any {
         identifier: "GoogleCloudContactcenterinsightsV1DialogflowIntent",
       });
     case 7:
-      return S.Record(S.String, GoogleCloudContactcenterinsightsV1DialogflowIntent);
+      return S.Record(S.String, __S(118));
   }
 }
 function __c15(j: number): any {
@@ -11981,9 +9366,9 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           agentName: S.optional(S.String),
-          toolsetTool: S.optional(GoogleCloudCesV1mainToolsetTool),
+          toolsetTool: S.optional(__S(123)),
           tool: S.optional(S.String),
-          args: S.optional(DocumentMap),
+          args: S.optional(__S(12)),
           id: S.optional(S.String),
           parentToolCallId: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -11997,8 +9382,8 @@ function __c15(j: number): any {
           displayName: S.optional(S.String),
           agentName: S.optional(S.String),
           tool: S.optional(S.String),
-          response: S.optional(DocumentMap),
-          toolsetTool: S.optional(GoogleCloudCesV1mainToolsetTool),
+          response: S.optional(__S(12)),
+          toolsetTool: S.optional(__S(123)),
           id: S.optional(S.String),
           parentToolCallId: S.optional(S.String),
         }),
@@ -12008,22 +9393,22 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          blob: S.optional(GoogleCloudCesV1mainBlob),
-          agentTransfer: S.optional(GoogleCloudCesV1mainAgentTransfer),
-          updatedVariables: S.optional(DocumentMap),
-          defaultVariables: S.optional(DocumentMap),
+          blob: S.optional(__S(120)),
+          agentTransfer: S.optional(__S(121)),
+          updatedVariables: S.optional(__S(12)),
+          defaultVariables: S.optional(__S(12)),
           transcript: S.optional(S.String),
           text: S.optional(S.String),
-          image: S.optional(GoogleCloudCesV1mainImage),
-          payload: S.optional(DocumentMap),
-          toolCall: S.optional(GoogleCloudCesV1mainToolCall),
-          toolResponse: S.optional(GoogleCloudCesV1mainToolResponse),
+          image: S.optional(__S(122)),
+          payload: S.optional(__S(12)),
+          toolCall: S.optional(__S(124)),
+          toolResponse: S.optional(__S(125)),
         }),
       ).annotate({
         identifier: "GoogleCloudCesV1mainChunk",
       });
     case 7:
-      return S.Array(GoogleCloudCesV1mainChunk);
+      return S.Array(__S(126));
   }
 }
 function __c16(j: number): any {
@@ -12031,7 +9416,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          chunks: S.optional(GoogleCloudCesV1mainChunkList),
+          chunks: S.optional(__S(127)),
           eventTime: S.optional(S.String),
           role: S.optional(S.String),
         }),
@@ -12039,16 +9424,16 @@ function __c16(j: number): any {
         identifier: "GoogleCloudCesV1mainMessage",
       });
     case 1:
-      return S.Array(GoogleCloudCesV1mainMessage);
+      return S.Array(__S(128));
     case 2:
-      return S.Array(/*@__PURE__*/ S.suspend(() => GoogleCloudCesV1mainSpan));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(131)));
     case 3:
       return S.suspend(() =>
         S.Struct({
           duration: S.optional(S.String),
-          childSpans: S.optional(GoogleCloudCesV1mainSpanList),
+          childSpans: S.optional(__S(130)),
           endTime: S.optional(S.String),
-          attributes: S.optional(DocumentMap),
+          attributes: S.optional(__S(12)),
           startTime: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -12056,8 +9441,8 @@ function __c16(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(GoogleCloudCesV1mainMessageList),
-          rootSpan: S.optional(GoogleCloudCesV1mainSpan),
+          messages: S.optional(__S(129)),
+          rootSpan: S.optional(__S(131)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1CesTurnAnnotation",
@@ -12065,9 +9450,7 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          correctnessLevel: S.optional(
-            GoogleCloudContactcenterinsightsV1AnswerFeedbackCorrectnessLevelEnum,
-          ),
+          correctnessLevel: S.optional(S.String),
           displayed: S.optional(S.Boolean),
           clicked: S.optional(S.Boolean),
         }),
@@ -12077,7 +9460,7 @@ function __c16(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "GoogleCloudCesV1mainEndSession",
@@ -12085,7 +9468,7 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          endSession: S.optional(GoogleCloudCesV1mainEndSession),
+          endSession: S.optional(__S(134)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation",
@@ -12099,9 +9482,7 @@ function __c17(j: number): any {
         S.Struct({
           generatorName: S.optional(S.String),
           query: S.optional(S.String),
-          querySource: S.optional(
-            GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInputQuerySourceEnum,
-          ),
+          querySource: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput",
@@ -12109,7 +9490,7 @@ function __c17(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(StringMap),
+          metadata: S.optional(__S(102)),
           uri: S.optional(S.String),
           queryRecord: S.optional(S.String),
           source: S.optional(S.String),
@@ -12133,7 +9514,7 @@ function __c17(j: number): any {
         S.Struct({
           confidenceScore: S.optional(S.Number),
           queryRecord: S.optional(S.String),
-          metadata: S.optional(StringMap),
+          metadata: S.optional(__S(102)),
           reply: S.optional(S.String),
         }),
       ).annotate({
@@ -12143,7 +9524,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           queryRecord: S.optional(S.String),
-          metadata: S.optional(StringMap),
+          metadata: S.optional(__S(102)),
           suggestion: S.optional(S.String),
           confidenceScore: S.optional(S.Number),
         }),
@@ -12155,10 +9536,10 @@ function __c17(j: number): any {
         S.Struct({
           text: S.optional(S.String),
           conversationModel: S.optional(S.String),
-          textSections: S.optional(StringMap),
+          textSections: S.optional(__S(102)),
           confidence: S.optional(S.Number),
           answerRecord: S.optional(S.String),
-          metadata: S.optional(StringMap),
+          metadata: S.optional(__S(102)),
           generatorId: S.optional(S.String),
         }),
       ).annotate({
@@ -12168,7 +9549,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           queryRecord: S.optional(S.String),
-          metadata: S.optional(StringMap),
+          metadata: S.optional(__S(102)),
           answer: S.optional(S.String),
           confidenceScore: S.optional(S.Number),
           source: S.optional(S.String),
@@ -12181,27 +9562,19 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          endBoundary: S.optional(GoogleCloudContactcenterinsightsV1AnnotationBoundary),
-          cesTurnAnnotation: S.optional(GoogleCloudContactcenterinsightsV1CesTurnAnnotation),
-          answerFeedback: S.optional(GoogleCloudContactcenterinsightsV1AnswerFeedback),
-          cesEndSessionAnnotation: S.optional(
-            GoogleCloudContactcenterinsightsV1CesEndSessionAnnotation,
-          ),
-          userInput: S.optional(GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput),
-          articleSuggestion: S.optional(GoogleCloudContactcenterinsightsV1ArticleSuggestionData),
+          endBoundary: S.optional(__S(105)),
+          cesTurnAnnotation: S.optional(__S(132)),
+          answerFeedback: S.optional(__S(133)),
+          cesEndSessionAnnotation: S.optional(__S(135)),
+          userInput: S.optional(__S(136)),
+          articleSuggestion: S.optional(__S(137)),
           annotationId: S.optional(S.String),
-          dialogflowInteraction: S.optional(
-            GoogleCloudContactcenterinsightsV1DialogflowInteractionData,
-          ),
-          smartReply: S.optional(GoogleCloudContactcenterinsightsV1SmartReplyData),
-          smartComposeSuggestion: S.optional(
-            GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData,
-          ),
-          startBoundary: S.optional(GoogleCloudContactcenterinsightsV1AnnotationBoundary),
-          conversationSummarizationSuggestion: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData,
-          ),
-          faqAnswer: S.optional(GoogleCloudContactcenterinsightsV1FaqAnswerData),
+          dialogflowInteraction: S.optional(__S(138)),
+          smartReply: S.optional(__S(139)),
+          smartComposeSuggestion: S.optional(__S(140)),
+          startBoundary: S.optional(__S(105)),
+          conversationSummarizationSuggestion: S.optional(__S(141)),
+          faqAnswer: S.optional(__S(142)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1RuntimeAnnotation",
@@ -12211,7 +9584,7 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudContactcenterinsightsV1RuntimeAnnotation);
+      return S.Array(__S(143));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12225,9 +9598,7 @@ function __c18(j: number): any {
           "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo",
       });
     case 2:
-      return S.Array(
-        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo,
-      );
+      return S.Array(__S(145));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -12240,12 +9611,7 @@ function __c18(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          subItems: S.optional(
-            S.suspend(
-              () =>
-                GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList,
-            ),
-          ),
+          subItems: S.optional(S.suspend(() => __S(149))),
           text: S.optional(S.String),
         }),
       ).annotate({
@@ -12253,18 +9619,12 @@ function __c18(j: number): any {
           "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem",
       });
     case 5:
-      return S.Array(
-        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItem,
-      );
+      return S.Array(__S(148));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          listType: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPartListTypeEnum,
-          ),
-          items: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListItemList,
-          ),
+          listType: S.optional(S.String),
+          items: S.optional(__S(149)),
         }),
       ).annotate({
         identifier:
@@ -12288,23 +9648,19 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          cells: S.optional(StringList),
+          cells: S.optional(__S(2)),
         }),
       ).annotate({
         identifier:
           "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow",
       });
     case 1:
-      return S.Array(
-        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRow,
-      );
+      return S.Array(__S(152));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(StringList),
-          rows: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTableRowList,
-          ),
+          headers: S.optional(__S(2)),
+          rows: S.optional(__S(153)),
           title: S.optional(S.String),
         }),
       ).annotate({
@@ -12324,25 +9680,21 @@ function __c19(j: number): any {
         S.Struct({
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          imageUris: S.optional(StringList),
+          imageUris: S.optional(__S(2)),
           id: S.optional(S.String),
           uri: S.optional(S.String),
-          price: S.optional(GoogleTypeMoney),
+          price: S.optional(__S(155)),
         }),
       ).annotate({
         identifier:
           "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct",
       });
     case 5:
-      return S.Array(
-        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProduct,
-      );
+      return S.Array(__S(156));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          products: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductList,
-          ),
+          products: S.optional(__S(157)),
         }),
       ).annotate({
         identifier:
@@ -12351,7 +9703,7 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          payload: S.optional(DocumentMap),
+          payload: S.optional(__S(12)),
           payloadType: S.optional(S.String),
         }),
       ).annotate({
@@ -12373,15 +9725,11 @@ function __c20(j: number): any {
           "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip",
       });
     case 1:
-      return S.Array(
-        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChip,
-      );
+      return S.Array(__S(160));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          chips: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartChipList,
-          ),
+          chips: S.optional(__S(161)),
         }),
       ).annotate({
         identifier:
@@ -12410,48 +9758,24 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          text: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTextPart,
-          ),
-          list: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartListPart,
-          ),
-          citation: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCitationPart,
-          ),
-          table: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartTablePart,
-          ),
-          productCollection: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartProductCollectionPart,
-          ),
-          customPayload: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartCustomPayloadPart,
-          ),
-          suggestionChips: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartSuggestionChipsPart,
-          ),
-          link: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartLinkPart,
-          ),
-          image: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart,
-          ),
-          video: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartMediaPart,
-          ),
-          thought: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartThoughtPart,
-          ),
+          text: S.optional(__S(147)),
+          list: S.optional(__S(150)),
+          citation: S.optional(__S(151)),
+          table: S.optional(__S(154)),
+          productCollection: S.optional(__S(158)),
+          customPayload: S.optional(__S(159)),
+          suggestionChips: S.optional(__S(162)),
+          link: S.optional(__S(163)),
+          image: S.optional(__S(164)),
+          video: S.optional(__S(164)),
+          thought: S.optional(__S(147)),
         }),
       ).annotate({
         identifier:
           "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart",
       });
     case 6:
-      return S.Array(
-        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPart,
-      );
+      return S.Array(__S(165));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -12471,7 +9795,7 @@ function __c21(j: number): any {
           dialogflowParticipantName: S.optional(S.String),
           dialogflowParticipant: S.optional(S.String),
           userId: S.optional(S.String),
-          role: S.optional(GoogleCloudContactcenterinsightsV1ConversationParticipantRoleEnum),
+          role: S.optional(S.String),
           obfuscatedExternalUserId: S.optional(S.String),
         }),
       ).annotate({
@@ -12489,37 +9813,27 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          words: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoList,
-          ),
-          parts: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentTranscriptPartList,
-          ),
-          turnLevelAudio: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio,
-          ),
+          words: S.optional(__S(146)),
+          parts: S.optional(__S(166)),
+          turnLevelAudio: S.optional(__S(167)),
           channelTag: S.optional(S.Number),
           confidence: S.optional(S.Number),
-          segmentParticipant: S.optional(GoogleCloudContactcenterinsightsV1ConversationParticipant),
+          segmentParticipant: S.optional(__S(168)),
           languageCode: S.optional(S.String),
-          dialogflowSegmentMetadata: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata,
-          ),
+          dialogflowSegmentMetadata: S.optional(__S(169)),
           messageTime: S.optional(S.String),
           text: S.optional(S.String),
-          sentiment: S.optional(GoogleCloudContactcenterinsightsV1SentimentData),
+          sentiment: S.optional(__S(96)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment",
       });
     case 3:
-      return S.Array(GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment);
+      return S.Array(__S(170));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          transcriptSegments: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentList,
-          ),
+          transcriptSegments: S.optional(__S(171)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ConversationTranscript",
@@ -12536,7 +9850,7 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          audioUris: S.optional(StringList),
+          audioUris: S.optional(__S(2)),
           audioUri: S.optional(S.String),
           transcriptUri: S.optional(S.String),
         }),
@@ -12544,7 +9858,7 @@ function __c21(j: number): any {
         identifier: "GoogleCloudContactcenterinsightsV1GcsSource",
       });
     case 7:
-      return S.Array(GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio);
+      return S.Array(__S(167));
   }
 }
 function __c22(j: number): any {
@@ -12552,12 +9866,10 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dialogflowSource: S.optional(GoogleCloudContactcenterinsightsV1DialogflowSource),
-          gcsSource: S.optional(GoogleCloudContactcenterinsightsV1GcsSource),
+          dialogflowSource: S.optional(__S(173)),
+          gcsSource: S.optional(__S(174)),
           metadataUri: S.optional(S.String),
-          turnLevelAudios: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList,
-          ),
+          turnLevelAudios: S.optional(__S(175)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ConversationDataSource",
@@ -12565,37 +9877,31 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          callMetadata: S.optional(GoogleCloudContactcenterinsightsV1ConversationCallMetadata),
-          qualityMetadata: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationQualityMetadata,
-          ),
-          latestAnalysis: S.optional(GoogleCloudContactcenterinsightsV1Analysis),
+          callMetadata: S.optional(__S(79)),
+          qualityMetadata: S.optional(__S(82)),
+          latestAnalysis: S.optional(__S(115)),
           satisfiesPzi: S.optional(S.Boolean),
           languageCode: S.optional(S.String),
-          medium: S.optional(GoogleCloudContactcenterinsightsV1ConversationMediumEnum),
+          medium: S.optional(S.String),
           agentId: S.optional(S.String),
-          correlationInfo: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo,
-          ),
+          correlationInfo: S.optional(__S(117)),
           satisfiesPzs: S.optional(S.Boolean),
           updateTime: S.optional(S.String),
           turnCount: S.optional(S.Number),
           name: S.optional(S.String),
-          dialogflowIntents: S.optional(GoogleCloudContactcenterinsightsV1DialogflowIntentMap),
+          dialogflowIntents: S.optional(__S(119)),
           metadataJson: S.optional(S.String),
           expireTime: S.optional(S.String),
           createTime: S.optional(S.String),
           obfuscatedUserId: S.optional(S.String),
           ttl: S.optional(S.String),
           duration: S.optional(S.String),
-          runtimeAnnotations: S.optional(GoogleCloudContactcenterinsightsV1RuntimeAnnotationList),
-          transcript: S.optional(GoogleCloudContactcenterinsightsV1ConversationTranscript),
+          runtimeAnnotations: S.optional(__S(144)),
+          transcript: S.optional(__S(172)),
           startTime: S.optional(S.String),
-          dataSource: S.optional(GoogleCloudContactcenterinsightsV1ConversationDataSource),
-          latestSummary: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData,
-          ),
-          labels: S.optional(StringMap),
+          dataSource: S.optional(__S(176)),
+          latestSummary: S.optional(__S(141)),
+          labels: S.optional(__S(102)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1Conversation",
@@ -12605,7 +9911,7 @@ function __c22(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           conversationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Conversation.pipe(T.HttpBody())),
+          body: S.optional(__S(177).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12620,7 +9926,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Analysis.pipe(T.HttpBody())),
+          body: S.optional(__S(115).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12635,7 +9941,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Assessment.pipe(T.HttpBody())),
+          body: S.optional(__S(4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12650,7 +9956,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Note.pipe(T.HttpBody())),
+          body: S.optional(__S(70).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12666,7 +9972,7 @@ function __c22(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           feedbackLabelId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabel.pipe(T.HttpBody())),
+          body: S.optional(__S(73).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12680,9 +9986,7 @@ function __c22(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          unit: S.optional(
-            GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRangeUnitEnum,
-          ),
+          unit: S.optional(S.String),
           quantity: S.optional(S.String),
         }),
       ).annotate({
@@ -12704,10 +10008,8 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          relativeDateRange: S.optional(
-            GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange,
-          ),
-          absoluteDateRange: S.optional(GoogleCloudContactcenterinsightsV1QueryInterval),
+          relativeDateRange: S.optional(__S(183)),
+          absoluteDateRange: S.optional(__S(184)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1DateRangeConfig",
@@ -12715,7 +10017,7 @@ function __c23(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          request: S.optional(DocumentMap),
+          request: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1QueryMetrics",
@@ -12732,10 +10034,8 @@ function __c23(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(
-            GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutputTypeEnum,
-          ),
-          texts: S.optional(StringList),
+          type: S.optional(S.String),
+          texts: S.optional(__S(2)),
         }),
       ).annotate({
         identifier:
@@ -12745,10 +10045,8 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           generatedSqlQuery: S.optional(S.String),
-          chartSpec: S.optional(DocumentMap),
-          textOutput: S.optional(
-            GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput,
-          ),
+          chartSpec: S.optional(__S(12)),
+          textOutput: S.optional(__S(188)),
         }),
       ).annotate({
         identifier:
@@ -12757,20 +10055,16 @@ function __c23(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          userMessage: S.optional(
-            GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage,
-          ),
+          userMessage: S.optional(__S(147)),
           messageId: S.optional(S.String),
           createTime: S.optional(S.String),
-          systemMessage: S.optional(
-            GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage,
-          ),
+          systemMessage: S.optional(__S(189)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage",
       });
     case 7:
-      return S.Array(GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage);
+      return S.Array(__S(190));
   }
 }
 function __c24(j: number): any {
@@ -12781,28 +10075,22 @@ function __c24(j: number): any {
           createTime: S.optional(S.String),
           conversationId: S.optional(S.String),
           updateTime: S.optional(S.String),
-          messages: S.optional(
-            GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageList,
-          ),
+          messages: S.optional(__S(191)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation",
       });
     case 1:
-      return S.Array(GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation);
+      return S.Array(__S(192));
     case 2:
       return S.suspend(() =>
         S.Struct({
           sqlComparisonKey: S.optional(S.String),
-          request: S.optional(DocumentMap),
-          chartCheckpoint: S.optional(
-            GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint,
-          ),
+          request: S.optional(__S(12)),
+          chartCheckpoint: S.optional(__S(187)),
           sqlQuery: S.optional(S.String),
-          chartConversations: S.optional(
-            GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationList,
-          ),
-          chartSpec: S.optional(DocumentMap),
+          chartConversations: S.optional(__S(193)),
+          chartSpec: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1GenerativeInsights",
@@ -12810,8 +10098,8 @@ function __c24(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          queryMetrics: S.optional(GoogleCloudContactcenterinsightsV1QueryMetrics),
-          generativeInsights: S.optional(GoogleCloudContactcenterinsightsV1GenerativeInsights),
+          queryMetrics: S.optional(__S(186)),
+          generativeInsights: S.optional(__S(194)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ChartDataSource",
@@ -12819,7 +10107,7 @@ function __c24(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          queryParams: S.optional(StringMap),
+          queryParams: S.optional(__S(102)),
           relativePath: S.optional(S.String),
         }),
       ).annotate({
@@ -12829,7 +10117,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           conversationFilter: S.optional(S.String),
-          redirectAction: S.optional(GoogleCloudContactcenterinsightsV1RedirectAction),
+          redirectAction: S.optional(__S(196)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ChartAction",
@@ -12837,19 +10125,17 @@ function __c24(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dateRangeConfig: S.optional(GoogleCloudContactcenterinsightsV1DateRangeConfig),
-          dataSource: S.optional(GoogleCloudContactcenterinsightsV1ChartDataSource),
+          dateRangeConfig: S.optional(__S(185)),
+          dataSource: S.optional(__S(195)),
           displayName: S.optional(S.String),
-          chartVisualizationType: S.optional(
-            GoogleCloudContactcenterinsightsV1ChartChartVisualizationTypeEnum,
-          ),
+          chartVisualizationType: S.optional(S.String),
           updateTime: S.optional(S.String),
           width: S.optional(S.Number),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
           height: S.optional(S.Number),
-          chartType: S.optional(GoogleCloudContactcenterinsightsV1ChartChartTypeEnum),
-          action: S.optional(GoogleCloudContactcenterinsightsV1ChartAction),
+          chartType: S.optional(S.String),
+          action: S.optional(__S(197)),
           filter: S.optional(S.String),
           description: S.optional(S.String),
         }),
@@ -12859,8 +10145,8 @@ function __c24(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          container: S.optional(S.suspend(() => GoogleCloudContactcenterinsightsV1Container)),
-          chart: S.optional(GoogleCloudContactcenterinsightsV1Chart),
+          container: S.optional(S.suspend(() => __S(201))),
+          chart: S.optional(__S(198)),
           filter: S.optional(S.String),
           chartReference: S.optional(S.String),
         }),
@@ -12872,7 +10158,7 @@ function __c24(j: number): any {
 function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudContactcenterinsightsV1Widget);
+      return S.Array(__S(199));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12880,8 +10166,8 @@ function __c25(j: number): any {
           containerId: S.optional(S.String),
           width: S.optional(S.Number),
           height: S.optional(S.Number),
-          dateRangeConfig: S.optional(GoogleCloudContactcenterinsightsV1DateRangeConfig),
-          widgets: S.optional(GoogleCloudContactcenterinsightsV1WidgetList),
+          dateRangeConfig: S.optional(__S(185)),
+          widgets: S.optional(__S(200)),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
         }),
@@ -12893,8 +10179,8 @@ function __c25(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           createTime: S.optional(S.String),
-          dateRangeConfig: S.optional(GoogleCloudContactcenterinsightsV1DateRangeConfig),
-          rootContainer: S.optional(GoogleCloudContactcenterinsightsV1Container),
+          dateRangeConfig: S.optional(__S(185)),
+          rootContainer: S.optional(__S(201)),
           filter: S.optional(S.String),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -12909,7 +10195,7 @@ function __c25(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           dashboardId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Dashboard.pipe(T.HttpBody())),
+          body: S.optional(__S(202).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12925,7 +10211,7 @@ function __c25(j: number): any {
         S.Struct({
           chartId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Chart.pipe(T.HttpBody())),
+          body: S.optional(__S(198).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12941,7 +10227,7 @@ function __c25(j: number): any {
         S.Struct({
           createTime: S.optional(S.String),
           displayName: S.optional(S.String),
-          type: S.optional(GoogleCloudContactcenterinsightsV1DatasetTypeEnum),
+          type: S.optional(S.String),
           name: S.optional(S.String),
           satisfiesPzs: S.optional(S.Boolean),
           satisfiesPzi: S.optional(S.Boolean),
@@ -12957,7 +10243,7 @@ function __c25(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           datasetId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Dataset.pipe(T.HttpBody())),
+          body: S.optional(__S(205).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12973,7 +10259,7 @@ function __c25(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           feedbackLabelId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabel.pipe(T.HttpBody())),
+          body: S.optional(__S(73).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12992,7 +10278,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          medium: S.optional(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumEnum),
+          medium: S.optional(S.String),
           trainingConversationsCount: S.optional(S.String),
         }),
       ).annotate({
@@ -13004,13 +10290,13 @@ function __c26(j: number): any {
           languageCode: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          modelType: S.optional(GoogleCloudContactcenterinsightsV1IssueModelModelTypeEnum),
+          modelType: S.optional(S.String),
           updateTime: S.optional(S.String),
-          state: S.optional(GoogleCloudContactcenterinsightsV1IssueModelStateEnum),
+          state: S.optional(S.String),
           issueCount: S.optional(S.String),
-          trainingStats: S.optional(GoogleCloudContactcenterinsightsV1IssueModelLabelStats),
+          trainingStats: S.optional(__S(36)),
           displayName: S.optional(S.String),
-          inputDataConfig: S.optional(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig),
+          inputDataConfig: S.optional(__S(208)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1IssueModel",
@@ -13019,7 +10305,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1IssueModel.pipe(T.HttpBody())),
+          body: S.optional(__S(209).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13033,7 +10319,7 @@ function __c26(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sampleUtterances: S.optional(StringList),
+          sampleUtterances: S.optional(__S(2)),
           displayDescription: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
@@ -13047,7 +10333,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Issue.pipe(T.HttpBody())),
+          body: S.optional(__S(211).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13069,8 +10355,8 @@ function __c26(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          exactMatchConfig: S.optional(GoogleCloudContactcenterinsightsV1ExactMatchConfig),
-          regexMatchConfig: S.optional(GoogleCloudContactcenterinsightsV1AppealAssessmentRequest),
+          exactMatchConfig: S.optional(__S(213)),
+          regexMatchConfig: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig",
@@ -13079,7 +10365,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           negated: S.optional(S.Boolean),
-          config: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig),
+          config: S.optional(__S(214)),
           query: S.optional(S.String),
         }),
       ).annotate({
@@ -13090,34 +10376,32 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudContactcenterinsightsV1PhraseMatchRule);
+      return S.Array(__S(215));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeEnum),
-          phraseMatchRules: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatchRuleList),
+          type: S.optional(S.String),
+          phraseMatchRules: S.optional(__S(216)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup",
       });
     case 2:
-      return S.Array(GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup);
+      return S.Array(__S(217));
     case 3:
       return S.suspend(() =>
         S.Struct({
           revisionCreateTime: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatcherTypeEnum),
-          phraseMatchRuleGroups: S.optional(
-            GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupList,
-          ),
+          type: S.optional(S.String),
+          phraseMatchRuleGroups: S.optional(__S(218)),
           versionTag: S.optional(S.String),
           displayName: S.optional(S.String),
           revisionId: S.optional(S.String),
           updateTime: S.optional(S.String),
           activationUpdateTime: S.optional(S.String),
           active: S.optional(S.Boolean),
-          roleMatch: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatcherRoleMatchEnum),
+          roleMatch: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1PhraseMatcher",
@@ -13126,7 +10410,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatcher.pipe(T.HttpBody())),
+          body: S.optional(__S(219).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13143,7 +10427,7 @@ function __c27(j: number): any {
           displayName: S.optional(S.String),
           updateTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          qaQuestionIds: S.optional(StringList),
+          qaQuestionIds: S.optional(__S(2)),
           satisfiesPzi: S.optional(S.Boolean),
           name: S.optional(S.String),
           satisfiesPzs: S.optional(S.Boolean),
@@ -13156,7 +10440,7 @@ function __c27(j: number): any {
         S.Struct({
           qaQuestionTagId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionTag.pipe(T.HttpBody())),
+          body: S.optional(__S(221).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13170,7 +10454,7 @@ function __c27(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(GoogleCloudContactcenterinsightsV1QaScorecardSourceEnum),
+          source: S.optional(S.String),
           displayName: S.optional(S.String),
           isDefault: S.optional(S.Boolean),
           createTime: S.optional(S.String),
@@ -13192,7 +10476,7 @@ function __c28(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           qaScorecardId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1QaScorecard.pipe(T.HttpBody())),
+          body: S.optional(__S(223).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13207,12 +10491,12 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          alternateIds: S.optional(StringList),
+          alternateIds: S.optional(__S(2)),
           satisfiesPzs: S.optional(S.Boolean),
-          snapshot: S.optional(GoogleCloudContactcenterinsightsV1QaScorecard),
+          snapshot: S.optional(__S(223)),
           name: S.optional(S.String),
           satisfiesPzi: S.optional(S.Boolean),
-          state: S.optional(GoogleCloudContactcenterinsightsV1QaScorecardRevisionStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1QaScorecardRevision",
@@ -13222,9 +10506,7 @@ function __c28(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           qaScorecardRevisionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1QaScorecardRevision.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(225).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13246,9 +10528,7 @@ function __c28(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          conversationDataOptions: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationDataOptions,
-          ),
+          conversationDataOptions: S.optional(__S(227)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions",
@@ -13267,13 +10547,11 @@ function __c28(j: number): any {
         identifier: "GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice",
       });
     case 6:
-      return S.Array(GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice);
+      return S.Array(__S(229));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(
-            GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfigTypeEnum,
-          ),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig",
@@ -13295,9 +10573,7 @@ function __c29(j: number): any {
         S.Struct({
           totalValidLabelCount: S.optional(S.String),
           tuningError: S.optional(S.String),
-          datasetValidationWarnings: S.optional(
-            GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadataDatasetValidationWarningsItemEnumList,
-          ),
+          datasetValidationWarnings: S.optional(__S(116)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata",
@@ -13306,22 +10582,18 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          questionType: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionQuestionTypeEnum),
+          questionType: S.optional(S.String),
           name: S.optional(S.String),
           questionBody: S.optional(S.String),
-          qaQuestionDataOptions: S.optional(
-            GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions,
-          ),
+          qaQuestionDataOptions: S.optional(__S(228)),
           updateTime: S.optional(S.String),
-          tags: S.optional(StringList),
+          tags: S.optional(__S(2)),
           satisfiesPzs: S.optional(S.Boolean),
-          answerChoices: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoiceList),
+          answerChoices: S.optional(__S(230)),
           satisfiesPzi: S.optional(S.Boolean),
-          predefinedQuestionConfig: S.optional(
-            GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig,
-          ),
-          metrics: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionMetrics),
-          tuningMetadata: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata),
+          predefinedQuestionConfig: S.optional(__S(231)),
+          metrics: S.optional(__S(232)),
+          tuningMetadata: S.optional(__S(233)),
           abbreviation: S.optional(S.String),
           order: S.optional(S.Number),
           answerInstructions: S.optional(S.String),
@@ -13334,7 +10606,7 @@ function __c29(j: number): any {
         S.Struct({
           qaQuestionId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1QaQuestion.pipe(T.HttpBody())),
+          body: S.optional(__S(234).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13361,7 +10633,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1View.pipe(T.HttpBody())),
+          body: S.optional(__S(236).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13789,9 +11061,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1DeployIssueModelRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(265).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13806,9 +11076,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13835,16 +11103,10 @@ function __c33(j: number): any {
         S.Struct({
           parent: S.optional(S.String),
           filter: S.optional(S.String),
-          exportSchemaVersion: S.optional(
-            GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestExportSchemaVersionEnum,
-          ),
-          bigQueryDestination: S.optional(
-            GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination,
-          ),
+          exportSchemaVersion: S.optional(S.String),
+          bigQueryDestination: S.optional(__S(268)),
           kmsKey: S.optional(S.String),
-          writeDisposition: S.optional(
-            GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestWriteDispositionEnum,
-          ),
+          writeDisposition: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest",
@@ -13853,9 +11115,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(269).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13870,9 +11130,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(269).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13898,9 +11156,7 @@ function __c34(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          gcsDestination: S.optional(
-            GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination,
-          ),
+          gcsDestination: S.optional(__S(272)),
           name: S.optional(S.String),
         }),
       ).annotate({
@@ -13910,9 +11166,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1ExportIssueModelRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(273).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13927,9 +11181,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13945,9 +11197,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13978,10 +11228,8 @@ function __c34(j: number): any {
         S.Struct({
           signedGcsAudioUri: S.optional(S.String),
           signedDialogflowAudioUri: S.optional(S.String),
-          signedGcsAudioUris: S.optional(StringList),
-          signedTurnLevelAudios: S.optional(
-            GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudioList,
-          ),
+          signedGcsAudioUris: S.optional(__S(2)),
+          signedTurnLevelAudios: S.optional(__S(175)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1SignedAudioUris",
@@ -13989,7 +11237,7 @@ function __c34(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          signedAudioUris: S.optional(GoogleCloudContactcenterinsightsV1SignedAudioUris),
+          signedAudioUris: S.optional(__S(278)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse",
@@ -14032,7 +11280,7 @@ function __c35(j: number): any {
           naturalLanguageQuery: S.optional(S.String),
           filter: S.optional(S.String),
           revisionId: S.optional(S.String),
-          userProvidedChartSpec: S.optional(DocumentMap),
+          userProvidedChartSpec: S.optional(__S(12)),
           sessionId: S.optional(S.String),
           sqlQuery: S.optional(S.String),
           comparisonFilter: S.optional(S.String),
@@ -14046,9 +11294,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(282).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14063,9 +11309,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(282).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14102,7 +11346,7 @@ function __c35(j: number): any {
         identifier: "GoogleCloudContactcenterinsightsV1CorrelationRule",
       });
     case 7:
-      return S.Array(GoogleCloudContactcenterinsightsV1CorrelationRule);
+      return S.Array(__S(286));
   }
 }
 function __c36(j: number): any {
@@ -14110,7 +11354,7 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          correlationRules: S.optional(GoogleCloudContactcenterinsightsV1CorrelationRuleList),
+          correlationRules: S.optional(__S(287)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1CorrelationTypeConfig",
@@ -14121,9 +11365,7 @@ function __c36(j: number): any {
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          fullConversationConfig: S.optional(
-            GoogleCloudContactcenterinsightsV1CorrelationTypeConfig,
-          ),
+          fullConversationConfig: S.optional(__S(288)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1CorrelationConfig",
@@ -14181,12 +11423,12 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           role: S.optional(S.String),
-          members: S.optional(StringList),
-          condition: S.optional(GoogleTypeExpr),
+          members: S.optional(__S(2)),
+          condition: S.optional(__S(293)),
         }),
       ).annotate({ identifier: "GoogleIamV1Binding" });
     case 7:
-      return S.Array(GoogleIamV1Binding);
+      return S.Array(__S(294));
   }
 }
 function __c37(j: number): any {
@@ -14194,30 +11436,30 @@ function __c37(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          exemptedMembers: S.optional(StringList),
-          logType: S.optional(GoogleIamV1AuditLogConfigLogTypeEnum),
+          exemptedMembers: S.optional(__S(2)),
+          logType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleIamV1AuditLogConfig",
       });
     case 1:
-      return S.Array(GoogleIamV1AuditLogConfig);
+      return S.Array(__S(296));
     case 2:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(GoogleIamV1AuditLogConfigList),
+          auditLogConfigs: S.optional(__S(297)),
         }),
       ).annotate({ identifier: "GoogleIamV1AuditConfig" });
     case 3:
-      return S.Array(GoogleIamV1AuditConfig);
+      return S.Array(__S(298));
     case 4:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
           etag: S.optional(S.String),
-          bindings: S.optional(GoogleIamV1BindingList),
-          auditConfigs: S.optional(GoogleIamV1AuditConfigList),
+          bindings: S.optional(__S(295)),
+          auditConfigs: S.optional(__S(299)),
         }),
       ).annotate({ identifier: "GoogleIamV1Policy" });
     case 5:
@@ -14298,11 +11540,7 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          view: S.optional(
-            GetProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum.pipe(
-              T.Query(),
-            ),
-          ),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -14375,7 +11613,7 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          view: S.optional(GetProjectsLocationsConversationsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -14478,7 +11716,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          view: S.optional(GetProjectsLocationsDatasetsConversationsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -14679,11 +11917,11 @@ function __c41(j: number): any {
         identifier: "GoogleCloudContactcenterinsightsV1MetricDefinition",
       });
     case 5:
-      return S.Record(S.String, GoogleCloudContactcenterinsightsV1MetricDefinition);
+      return S.Record(S.String, __S(332));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metrics: S.optional(GoogleCloudContactcenterinsightsV1MetricDefinitionMap),
+          metrics: S.optional(__S(333)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig",
@@ -14691,7 +11929,7 @@ function __c41(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          annotatorSelector: S.optional(GoogleCloudContactcenterinsightsV1AnnotatorSelector),
+          annotatorSelector: S.optional(__S(9)),
           runtimeIntegrationAnalysisPercentage: S.optional(S.Number),
           uploadConversationAnalysisPercentage: S.optional(S.Number),
         }),
@@ -14705,21 +11943,19 @@ function __c42(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          pubsubNotificationSettings: S.optional(StringMap),
+          pubsubNotificationSettings: S.optional(__S(102)),
           createTime: S.optional(S.String),
           conversationTtl: S.optional(S.String),
-          redactionConfig: S.optional(GoogleCloudContactcenterinsightsV1RedactionConfig),
+          redactionConfig: S.optional(__S(330)),
           satisfiesPzi: S.optional(S.Boolean),
           screenRecordingBucketUri: S.optional(S.String),
           updateTime: S.optional(S.String),
           languageCode: S.optional(S.String),
           satisfiesPzs: S.optional(S.Boolean),
-          speechConfig: S.optional(GoogleCloudContactcenterinsightsV1SpeechConfig),
-          diagnosticMetricConfig: S.optional(
-            GoogleCloudContactcenterinsightsV1SettingsDiagnosticMetricConfig,
-          ),
+          speechConfig: S.optional(__S(331)),
+          diagnosticMetricConfig: S.optional(__S(334)),
           name: S.optional(S.String),
-          analysisConfig: S.optional(GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig),
+          analysisConfig: S.optional(__S(335)),
           timeZone: S.optional(S.String),
         }),
       ).annotate({
@@ -14730,9 +11966,7 @@ function __c42(j: number): any {
         S.Struct({
           createNewModel: S.optional(S.Boolean),
           parent: S.optional(S.String),
-          gcsSource: S.optional(
-            GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination,
-          ),
+          gcsSource: S.optional(__S(272)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ImportIssueModelRequest",
@@ -14741,9 +11975,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1ImportIssueModelRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(337).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14757,9 +11989,7 @@ function __c42(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          medium: S.optional(
-            GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfigMediumEnum,
-          ),
+          medium: S.optional(S.String),
         }),
       ).annotate({
         identifier:
@@ -14768,10 +11998,8 @@ function __c42(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          customMetadataKeys: S.optional(StringList),
-          bucketObjectType: S.optional(
-            GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSourceBucketObjectTypeEnum,
-          ),
+          customMetadataKeys: S.optional(__S(2)),
+          bucketObjectType: S.optional(S.String),
           bucketUri: S.optional(S.String),
           transcriptBucketUri: S.optional(S.String),
           metadataBucketUri: S.optional(S.String),
@@ -14794,19 +12022,13 @@ function __c42(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          redactionConfig: S.optional(GoogleCloudContactcenterinsightsV1RedactionConfig),
-          speechConfig: S.optional(GoogleCloudContactcenterinsightsV1SpeechConfig),
+          redactionConfig: S.optional(__S(330)),
+          speechConfig: S.optional(__S(331)),
           sampleSize: S.optional(S.Number),
-          transcriptObjectConfig: S.optional(
-            GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig,
-          ),
-          gcsSource: S.optional(
-            GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource,
-          ),
+          transcriptObjectConfig: S.optional(__S(339)),
+          gcsSource: S.optional(__S(340)),
           parent: S.optional(S.String),
-          conversationConfig: S.optional(
-            GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig,
-          ),
+          conversationConfig: S.optional(__S(341)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1IngestConversationsRequest",
@@ -14815,9 +12037,7 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1IngestConversationsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(342).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14836,9 +12056,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1IngestConversationsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(342).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14852,7 +12070,7 @@ function __c43(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          encryptionSpec: S.optional(GoogleCloudContactcenterinsightsV1EncryptionSpec),
+          encryptionSpec: S.optional(__S(291)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest",
@@ -14861,9 +12079,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(345).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14895,7 +12111,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          feedbackLabels: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabelList),
+          feedbackLabels: S.optional(__S(81)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse",
@@ -14934,7 +12150,7 @@ function __c43(j: number): any {
         identifier: "ListProjectsLocationsAnalysisRulesRequest",
       });
     case 7:
-      return S.Array(GoogleCloudContactcenterinsightsV1AnalysisRule);
+      return S.Array(__S(50));
   }
 }
 function __c44(j: number): any {
@@ -14942,7 +12158,7 @@ function __c44(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          analysisRules: S.optional(GoogleCloudContactcenterinsightsV1AnalysisRuleList),
+          analysisRules: S.optional(__S(351)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -14965,11 +12181,11 @@ function __c44(j: number): any {
         identifier: "ListProjectsLocationsAssessmentRulesRequest",
       });
     case 2:
-      return S.Array(GoogleCloudContactcenterinsightsV1AssessmentRule);
+      return S.Array(__S(54));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          assessmentRules: S.optional(GoogleCloudContactcenterinsightsV1AssessmentRuleList),
+          assessmentRules: S.optional(__S(354)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -14993,11 +12209,11 @@ function __c44(j: number): any {
         identifier: "ListProjectsLocationsAssistantSessionsRequest",
       });
     case 5:
-      return S.Array(GoogleCloudContactcenterinsightsV1AssistantSession);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          assistantSessions: S.optional(GoogleCloudContactcenterinsightsV1AssistantSessionList),
+          assistantSessions: S.optional(__S(357)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -15026,11 +12242,11 @@ function __c44(j: number): any {
 function __c45(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudContactcenterinsightsV1AuthorizedViewSet);
+      return S.Array(__S(62));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          authorizedViewSets: S.optional(GoogleCloudContactcenterinsightsV1AuthorizedViewSetList),
+          authorizedViewSets: S.optional(__S(360)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -15055,11 +12271,11 @@ function __c45(j: number): any {
         identifier: "ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsRequest",
       });
     case 3:
-      return S.Array(GoogleCloudContactcenterinsightsV1AuthorizedView);
+      return S.Array(__S(64));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          authorizedViews: S.optional(GoogleCloudContactcenterinsightsV1AuthorizedViewList),
+          authorizedViews: S.optional(__S(363)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -15071,11 +12287,7 @@ function __c45(j: number): any {
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          view: S.optional(
-            ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsViewEnum.pipe(
-              T.Query(),
-            ),
-          ),
+          view: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -15089,12 +12301,12 @@ function __c45(j: number): any {
         identifier: "ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsRequest",
       });
     case 6:
-      return S.Array(GoogleCloudContactcenterinsightsV1Conversation);
+      return S.Array(__S(177));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          conversations: S.optional(GoogleCloudContactcenterinsightsV1ConversationList),
+          conversations: S.optional(__S(366)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ListConversationsResponse",
@@ -15122,11 +12334,11 @@ function __c46(j: number): any {
           "ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsRequest",
       });
     case 1:
-      return S.Array(GoogleCloudContactcenterinsightsV1Assessment);
+      return S.Array(__S(4));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          assessments: S.optional(GoogleCloudContactcenterinsightsV1AssessmentList),
+          assessments: S.optional(__S(369)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -15150,11 +12362,11 @@ function __c46(j: number): any {
           "ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsConversationsAssessmentsNotesRequest",
       });
     case 4:
-      return S.Array(GoogleCloudContactcenterinsightsV1Note);
+      return S.Array(__S(70));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          notes: S.optional(GoogleCloudContactcenterinsightsV1NoteList),
+          notes: S.optional(__S(372)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -15181,7 +12393,7 @@ function __c46(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          feedbackLabels: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabelList),
+          feedbackLabels: S.optional(__S(81)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -15210,13 +12422,13 @@ function __c47(j: number): any {
         identifier: "ListProjectsLocationsAuthorizedViewSetsAuthorizedViewsOperationsRequest",
       });
     case 1:
-      return S.Array(GoogleLongrunningOperation);
+      return S.Array(__S(15));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(GoogleLongrunningOperationList),
+          operations: S.optional(__S(377)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "GoogleLongrunningListOperationsResponse",
@@ -15238,12 +12450,12 @@ function __c47(j: number): any {
         identifier: "ListProjectsLocationsAutoLabelingRulesRequest",
       });
     case 4:
-      return S.Array(GoogleCloudContactcenterinsightsV1AutoLabelingRule);
+      return S.Array(__S(77));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          autoLabelingRules: S.optional(GoogleCloudContactcenterinsightsV1AutoLabelingRuleList),
+          autoLabelingRules: S.optional(__S(380)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse",
@@ -15254,7 +12466,7 @@ function __c47(j: number): any {
           orderBy: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(ListProjectsLocationsConversationsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
         }).pipe(
@@ -15289,11 +12501,11 @@ function __c47(j: number): any {
 function __c48(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudContactcenterinsightsV1Analysis);
+      return S.Array(__S(115));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          analyses: S.optional(GoogleCloudContactcenterinsightsV1AnalysisList),
+          analyses: S.optional(__S(384)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -15368,11 +12580,11 @@ function __c48(j: number): any {
         identifier: "ListProjectsLocationsDashboardsRequest",
       });
     case 6:
-      return S.Array(GoogleCloudContactcenterinsightsV1Dashboard);
+      return S.Array(__S(202));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dashboards: S.optional(GoogleCloudContactcenterinsightsV1DashboardList),
+          dashboards: S.optional(__S(390)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -15397,11 +12609,11 @@ function __c49(j: number): any {
         identifier: "ListProjectsLocationsDashboardsChartsRequest",
       });
     case 1:
-      return S.Array(GoogleCloudContactcenterinsightsV1Chart);
+      return S.Array(__S(198));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          charts: S.optional(GoogleCloudContactcenterinsightsV1ChartList),
+          charts: S.optional(__S(393)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -15425,11 +12637,11 @@ function __c49(j: number): any {
         identifier: "ListProjectsLocationsDatasetsRequest",
       });
     case 4:
-      return S.Array(GoogleCloudContactcenterinsightsV1Dataset);
+      return S.Array(__S(205));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          datasets: S.optional(GoogleCloudContactcenterinsightsV1DatasetList),
+          datasets: S.optional(__S(396)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -15440,7 +12652,7 @@ function __c49(j: number): any {
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          view: S.optional(ListProjectsLocationsDatasetsConversationsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -15490,11 +12702,11 @@ function __c50(j: number): any {
         identifier: "ListProjectsLocationsIssueModelsRequest",
       });
     case 1:
-      return S.Array(GoogleCloudContactcenterinsightsV1IssueModel);
+      return S.Array(__S(209));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          issueModels: S.optional(GoogleCloudContactcenterinsightsV1IssueModelList),
+          issueModels: S.optional(__S(401)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ListIssueModelsResponse",
@@ -15514,11 +12726,11 @@ function __c50(j: number): any {
         identifier: "ListProjectsLocationsIssueModelsIssuesRequest",
       });
     case 4:
-      return S.Array(GoogleCloudContactcenterinsightsV1Issue);
+      return S.Array(__S(211));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          issues: S.optional(GoogleCloudContactcenterinsightsV1IssueList),
+          issues: S.optional(__S(404)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ListIssuesResponse",
@@ -15563,11 +12775,11 @@ function __c50(j: number): any {
 function __c51(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudContactcenterinsightsV1PhraseMatcher);
+      return S.Array(__S(219));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          phraseMatchers: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatcherList),
+          phraseMatchers: S.optional(__S(408)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -15589,27 +12801,25 @@ function __c51(j: number): any {
         identifier: "ListProjectsLocationsQaQuestionTagsRequest",
       });
     case 3:
-      return S.Array(GoogleCloudContactcenterinsightsV1QaQuestionTag);
+      return S.Array(__S(221));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          qaQuestionTags: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionTagList),
+          qaQuestionTags: S.optional(__S(411)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse",
       });
     case 5:
-      return S.Array(ListProjectsLocationsQaScorecardsQaScorecardSourcesEnum);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          qaScorecardSources: S.optional(
-            ListProjectsLocationsQaScorecardsQaScorecardSourcesEnumList.pipe(T.Query()),
-          ),
+          qaScorecardSources: S.optional(__S(413).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -15621,7 +12831,7 @@ function __c51(j: number): any {
         identifier: "ListProjectsLocationsQaScorecardsRequest",
       });
     case 7:
-      return S.Array(GoogleCloudContactcenterinsightsV1QaScorecard);
+      return S.Array(__S(223));
   }
 }
 function __c52(j: number): any {
@@ -15630,7 +12840,7 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          qaScorecards: S.optional(GoogleCloudContactcenterinsightsV1QaScorecardList),
+          qaScorecards: S.optional(__S(415)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse",
@@ -15638,9 +12848,7 @@ function __c52(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          qaScorecardSources: S.optional(
-            ListProjectsLocationsQaScorecardsRevisionsQaScorecardSourcesEnumList.pipe(T.Query()),
-          ),
+          qaScorecardSources: S.optional(__S(116).pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
@@ -15656,14 +12864,12 @@ function __c52(j: number): any {
         identifier: "ListProjectsLocationsQaScorecardsRevisionsRequest",
       });
     case 2:
-      return S.Array(GoogleCloudContactcenterinsightsV1QaScorecardRevision);
+      return S.Array(__S(225));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          qaScorecardRevisions: S.optional(
-            GoogleCloudContactcenterinsightsV1QaScorecardRevisionList,
-          ),
+          qaScorecardRevisions: S.optional(__S(418)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse",
@@ -15685,12 +12891,12 @@ function __c52(j: number): any {
         identifier: "ListProjectsLocationsQaScorecardsRevisionsQaQuestionsRequest",
       });
     case 5:
-      return S.Array(GoogleCloudContactcenterinsightsV1QaQuestion);
+      return S.Array(__S(234));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          qaQuestions: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionList),
+          qaQuestions: S.optional(__S(421)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse",
@@ -15716,12 +12922,12 @@ function __c52(j: number): any {
 function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleCloudContactcenterinsightsV1View);
+      return S.Array(__S(236));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          views: S.optional(GoogleCloudContactcenterinsightsV1ViewList),
+          views: S.optional(__S(424)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1ListViewsResponse",
@@ -15731,7 +12937,7 @@ function __c53(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1AnalysisRule.pipe(T.HttpBody())),
+          body: S.optional(__S(50).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15747,7 +12953,7 @@ function __c53(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1AssessmentRule.pipe(T.HttpBody())),
+          body: S.optional(__S(54).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15763,7 +12969,7 @@ function __c53(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1AuthorizedViewSet.pipe(T.HttpBody())),
+          body: S.optional(__S(62).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15779,7 +12985,7 @@ function __c53(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1AuthorizedView.pipe(T.HttpBody())),
+          body: S.optional(__S(64).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15795,7 +13001,7 @@ function __c53(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Note.pipe(T.HttpBody())),
+          body: S.optional(__S(70).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15812,7 +13018,7 @@ function __c53(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabel.pipe(T.HttpBody())),
+          body: S.optional(__S(73).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15833,7 +13039,7 @@ function __c54(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1AutoLabelingRule.pipe(T.HttpBody())),
+          body: S.optional(__S(77).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15853,7 +13059,7 @@ function __c54(j: number): any {
           ),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Conversation.pipe(T.HttpBody())),
+          body: S.optional(__S(177).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15869,7 +13075,7 @@ function __c54(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Note.pipe(T.HttpBody())),
+          body: S.optional(__S(70).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15885,7 +13091,7 @@ function __c54(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabel.pipe(T.HttpBody())),
+          body: S.optional(__S(73).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15901,7 +13107,7 @@ function __c54(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Dashboard.pipe(T.HttpBody())),
+          body: S.optional(__S(202).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15917,7 +13123,7 @@ function __c54(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Chart.pipe(T.HttpBody())),
+          body: S.optional(__S(198).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15933,7 +13139,7 @@ function __c54(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Dataset.pipe(T.HttpBody())),
+          body: S.optional(__S(205).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15949,7 +13155,7 @@ function __c54(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1FeedbackLabel.pipe(T.HttpBody())),
+          body: S.optional(__S(73).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15969,7 +13175,7 @@ function __c55(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1IssueModel.pipe(T.HttpBody())),
+          body: S.optional(__S(209).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15985,7 +13191,7 @@ function __c55(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Issue.pipe(T.HttpBody())),
+          body: S.optional(__S(211).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16001,7 +13207,7 @@ function __c55(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1PhraseMatcher.pipe(T.HttpBody())),
+          body: S.optional(__S(219).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16017,7 +13223,7 @@ function __c55(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1QaQuestionTag.pipe(T.HttpBody())),
+          body: S.optional(__S(221).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16033,7 +13239,7 @@ function __c55(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1QaScorecard.pipe(T.HttpBody())),
+          body: S.optional(__S(223).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16049,7 +13255,7 @@ function __c55(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1QaQuestion.pipe(T.HttpBody())),
+          body: S.optional(__S(234).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16065,7 +13271,7 @@ function __c55(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1View.pipe(T.HttpBody())),
+          body: S.optional(__S(236).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16080,9 +13286,7 @@ function __c55(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16102,9 +13306,7 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16230,54 +13432,30 @@ function __c57(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          labelDimensionMetadata: S.optional(
-            GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata,
-          ),
-          conversationalAgentsToolDimensionMetadata: S.optional(
-            GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata,
-          ),
-          issueDimensionMetadata: S.optional(
-            GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata,
-          ),
-          qaQuestionAnswerDimensionMetadata: S.optional(
-            GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata,
-          ),
-          conversationProfileDimensionMetadata: S.optional(
-            GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata,
-          ),
-          qaScorecardDimensionMetadata: S.optional(
-            GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata,
-          ),
-          qaQuestionDimensionMetadata: S.optional(
-            GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata,
-          ),
-          conversationalAgentsPlaybookDimensionMetadata: S.optional(
-            GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata,
-          ),
-          agentDimensionMetadata: S.optional(
-            GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata,
-          ),
-          dimensionKey: S.optional(GoogleCloudContactcenterinsightsV1DimensionDimensionKeyEnum),
-          clientSentimentCategoryDimensionMetadata: S.optional(
-            GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata,
-          ),
-          mediumDimensionMetadata: S.optional(
-            GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata,
-          ),
+          labelDimensionMetadata: S.optional(__S(449)),
+          conversationalAgentsToolDimensionMetadata: S.optional(__S(450)),
+          issueDimensionMetadata: S.optional(__S(451)),
+          qaQuestionAnswerDimensionMetadata: S.optional(__S(452)),
+          conversationProfileDimensionMetadata: S.optional(__S(453)),
+          qaScorecardDimensionMetadata: S.optional(__S(454)),
+          qaQuestionDimensionMetadata: S.optional(__S(455)),
+          conversationalAgentsPlaybookDimensionMetadata: S.optional(__S(456)),
+          agentDimensionMetadata: S.optional(__S(457)),
+          dimensionKey: S.optional(S.String),
+          clientSentimentCategoryDimensionMetadata: S.optional(__S(458)),
+          mediumDimensionMetadata: S.optional(__S(459)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1Dimension",
       });
     case 5:
-      return S.Array(GoogleCloudContactcenterinsightsV1Dimension);
+      return S.Array(__S(460));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(GoogleCloudContactcenterinsightsV1DimensionList),
+          dimensions: S.optional(__S(461)),
           filter: S.optional(S.String),
-          timeGranularity: S.optional(
-            GoogleCloudContactcenterinsightsV1QueryMetricsRequestTimeGranularityEnum,
-          ),
+          timeGranularity: S.optional(S.String),
           measureMask: S.optional(S.String),
         }),
       ).annotate({
@@ -16287,9 +13465,7 @@ function __c57(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1QueryMetricsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(462).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16308,9 +13484,7 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1QueryMetricsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(462).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16332,12 +13506,10 @@ function __c58(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          agentPerformanceSource: S.optional(
-            GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource,
-          ),
-          queryInterval: S.optional(GoogleCloudContactcenterinsightsV1QueryInterval),
+          agentPerformanceSource: S.optional(__S(465)),
+          queryInterval: S.optional(__S(184)),
           filter: S.optional(S.String),
-          comparisonQueryInterval: S.optional(GoogleCloudContactcenterinsightsV1QueryInterval),
+          comparisonQueryInterval: S.optional(__S(184)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest",
@@ -16346,9 +13518,7 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(466).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16363,9 +13533,7 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(466).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16380,8 +13548,8 @@ function __c58(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          destinationDataset: S.optional(GoogleCloudContactcenterinsightsV1Dataset),
-          sampleRule: S.optional(GoogleCloudContactcenterinsightsV1SampleRule),
+          destinationDataset: S.optional(__S(205)),
+          sampleRule: S.optional(__S(53)),
           parent: S.optional(S.String),
         }),
       ).annotate({
@@ -16391,9 +13559,7 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1SampleConversationsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(469).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16408,9 +13574,7 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1SampleConversationsRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(469).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16447,7 +13611,7 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          authorizedViews: S.optional(GoogleCloudContactcenterinsightsV1AuthorizedViewList),
+          authorizedViews: S.optional(__S(363)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse",
@@ -16456,7 +13620,7 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String),
-          policy: S.optional(GoogleIamV1Policy),
+          policy: S.optional(__S(300)),
         }),
       ).annotate({
         identifier: "GoogleIamV1SetIamPolicyRequest",
@@ -16465,7 +13629,7 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(474).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16488,7 +13652,7 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1StreamChatRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(476).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16503,7 +13667,7 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           eventTime: S.optional(S.String),
-          chunk: S.optional(GoogleCloudContactcenterinsightsV1AssistantChunk),
+          chunk: S.optional(__S(56)),
           statusMessage: S.optional(S.String),
           eventId: S.optional(S.String),
         }),
@@ -16513,7 +13677,7 @@ function __c59(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          conversations: S.optional(GoogleCloudContactcenterinsightsV1ConversationList),
+          conversations: S.optional(__S(366)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations",
@@ -16525,10 +13689,8 @@ function __c60(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          conversations: S.optional(
-            GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations,
-          ),
-          correlationConfig: S.optional(GoogleCloudContactcenterinsightsV1CorrelationConfig),
+          conversations: S.optional(__S(479)),
+          correlationConfig: S.optional(__S(289)),
           maxSampleCount: S.optional(S.Number),
           filter: S.optional(S.String),
         }),
@@ -16539,9 +13701,7 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(480).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16555,7 +13715,7 @@ function __c60(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "GoogleIamV1TestIamPermissionsRequest",
@@ -16564,7 +13724,7 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(482).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16578,8 +13738,8 @@ function __c60(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          conversation: S.optional(GoogleCloudContactcenterinsightsV1Conversation),
-          autoLabelingRule: S.optional(GoogleCloudContactcenterinsightsV1AutoLabelingRule),
+          conversation: S.optional(__S(177)),
+          autoLabelingRule: S.optional(__S(77)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest",
@@ -16588,9 +13748,7 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(484).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16626,9 +13784,7 @@ function __c61(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(487).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16643,9 +13799,7 @@ function __c61(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(265).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16660,9 +13814,7 @@ function __c61(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1AppealAssessmentRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16678,7 +13830,7 @@ function __c61(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GoogleCloudContactcenterinsightsV1CorrelationConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(289).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16694,7 +13846,7 @@ function __c61(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleCloudContactcenterinsightsV1Settings.pipe(T.HttpBody())),
+          body: S.optional(__S(336).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -16710,9 +13862,9 @@ function __c61(j: number): any {
         S.Struct({
           parent: S.optional(S.String),
           conversationId: S.optional(S.String),
-          conversation: S.optional(GoogleCloudContactcenterinsightsV1Conversation),
-          redactionConfig: S.optional(GoogleCloudContactcenterinsightsV1RedactionConfig),
-          speechConfig: S.optional(GoogleCloudContactcenterinsightsV1SpeechConfig),
+          conversation: S.optional(__S(177)),
+          redactionConfig: S.optional(__S(330)),
+          speechConfig: S.optional(__S(331)),
         }),
       ).annotate({
         identifier: "GoogleCloudContactcenterinsightsV1UploadConversationRequest",
@@ -16721,9 +13873,7 @@ function __c61(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(
-            GoogleCloudContactcenterinsightsV1UploadConversationRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(493).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -16734,5 +13884,138 @@ function __c61(j: number): any {
       ).annotate({
         identifier: "UploadProjectsLocationsConversationsRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
+    case 41:
+      return __c41(i & 7);
+    case 42:
+      return __c42(i & 7);
+    case 43:
+      return __c43(i & 7);
+    case 44:
+      return __c44(i & 7);
+    case 45:
+      return __c45(i & 7);
+    case 46:
+      return __c46(i & 7);
+    case 47:
+      return __c47(i & 7);
+    case 48:
+      return __c48(i & 7);
+    case 49:
+      return __c49(i & 7);
+    case 50:
+      return __c50(i & 7);
+    case 51:
+      return __c51(i & 7);
+    case 52:
+      return __c52(i & 7);
+    case 53:
+      return __c53(i & 7);
+    case 54:
+      return __c54(i & 7);
+    case 55:
+      return __c55(i & 7);
+    case 56:
+      return __c56(i & 7);
+    case 57:
+      return __c57(i & 7);
+    case 58:
+      return __c58(i & 7);
+    case 59:
+      return __c59(i & 7);
+    case 60:
+      return __c60(i & 7);
+    case 61:
+      return __c61(i & 7);
   }
 }

@@ -6,6 +6,8 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -13,8 +15,6 @@ export type ValidateBlockRequestBlocksCase1ItemMap = { [key: string]: unknown | 
 export type ValidateBlockRequestBlocksCase1List = Array<ValidateBlockRequestBlocksCase1ItemMap>;
 /** A JSON-encoded array of [structured blocks](/reference/block-kit/blocks). Provide exactly one of `blocks`, `view`, or `message`. */
 export type ValidateBlockRequestBlocks = string | ValidateBlockRequestBlocksCase1List;
-const ValidateBlockRequestBlocks = /*@__PURE__*/ __L.at(__c0, 0);
-
 export interface ValidateBlockRequest {
   /** A JSON-encoded array of [structured blocks](/reference/block-kit/blocks). Provide exactly one of `blocks`, `view`, or `message`. */
   blocks?: ValidateBlockRequestBlocks;
@@ -23,17 +23,10 @@ export interface ValidateBlockRequest {
   /** A JSON-encoded [view payload](/reference/views) to validate. Provide exactly one of `blocks`, `view`, or `message`. */
   view?: string;
 }
-const ValidateBlockRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ValidateBlockRequest>;
-
 export interface ValidateBlockResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const ValidateBlockResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ValidateBlockResponse>;
-
 export type ValidateBlockError = SlackOpError;
 /** Validates blocks, messages, and views Block Kit JSON payloads. Method-specific errors (the `error` slug on the SlackError): - `invalid_arguments` -- The request arguments are invalid. Ensure you provide exactly one of `blocks`, `view`, or `message`, and that the value is valid JSON. Consult `response_metadata.messages` for details. - `invalid_blocks` -- The blocks array failed validation. The `errors` field contains a list of issues, each with a JSON pointer path to the invalid element, the constraint that failed, and the expected value. - `invalid_view` -- The view payload failed validation. The `errors` field contains a list of issues, each with a JSON pointer path to the invalid element, the constraint that failed, and the expected value. - `invalid_message` -- The message payload failed validation. The `errors` field contains a list of issues, each with a JSON pointer path to the invalid element, the constraint that failed, and the expected value. - `ratelimited` -- Too many requests. Reduce your request rate and retry after a brief wait. See https://docs.slack.dev/reference/methods/blocks.validate */
 export const validateBlock: API.OperationMethod<
@@ -42,8 +35,8 @@ export const validateBlock: API.OperationMethod<
   ValidateBlockError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateBlockRequest,
-  output: ValidateBlockResponse,
+  input: __S(1) as any as S.Schema<ValidateBlockRequest>,
+  output: __S(2) as any as S.Schema<ValidateBlockResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -57,7 +50,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          blocks: S.optional(ValidateBlockRequestBlocks),
+          blocks: S.optional(__S(0)),
           message: S.optional(S.String),
           view: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/blocks.validate", code: 200 })),
@@ -68,5 +61,16 @@ function __c0(j: number): any {
           ok: S.Boolean,
         }),
       ).annotate({ identifier: "ValidateBlockResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 2) {
+    case 0:
+      return __c0(i & 3);
   }
 }

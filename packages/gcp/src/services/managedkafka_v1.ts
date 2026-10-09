@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -115,22 +117,13 @@ export interface AclEntry {
   /** Required. The operation type. Allowed values are (case insensitive): ALL, READ, WRITE, CREATE, DELETE, ALTER, DESCRIBE, CLUSTER_ACTION, DESCRIBE_CONFIGS, ALTER_CONFIGS, and IDEMPOTENT_WRITE. See https://kafka.apache.org/documentation/#operations_resources_and_protocols for valid combinations of resource_type and operation for different Kafka API requests. */
   operation?: string;
 }
-const AclEntry = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AclEntry>;
-
 export interface AddAclEntryProjectsLocationsClustersAclsRequest {
   /** Required. The name of the acl to add the acl entry to. Structured like: `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. See `Acl.name` for details. */
   acl: string;
   /** Request body */
   body?: AclEntry;
 }
-const AddAclEntryProjectsLocationsClustersAclsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddAclEntryProjectsLocationsClustersAclsRequest>;
-
 export type AclEntryList = Array<AclEntry>;
-const AclEntryList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AclEntryList>;
-
 /** Represents the set of ACLs for a given Kafka Resource Pattern, which consists of resource_type, resource_name and pattern_type. */
 export interface Acl {
   /** Output only. The ACL pattern type derived from the name. One of: LITERAL, PREFIXED. */
@@ -146,8 +139,6 @@ export interface Acl {
   /** Output only. The ACL resource type derived from the name. One of: CLUSTER, TOPIC, GROUP, TRANSACTIONAL_ID. */
   resourceType?: string;
 }
-const Acl = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Acl>;
-
 /** Response for AddAclEntry. */
 export interface AddAclEntryResponse {
   /** Whether the acl was created as a result of adding the acl entry. */
@@ -155,37 +146,21 @@ export interface AddAclEntryResponse {
   /** The updated acl. */
   acl?: Acl;
 }
-const AddAclEntryResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AddAclEntryResponse>;
-
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 export type CheckCompatibilityRequestSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
   | "AVRO"
   | "JSON"
   | "PROTOBUF";
-const CheckCompatibilityRequestSchemaTypeEnum = S.String;
-
 /** SchemaReference is a reference to a schema. */
 export interface SchemaReference {
   /** Required. The name of the reference. */
@@ -195,11 +170,7 @@ export interface SchemaReference {
   /** Required. The version of the reference. */
   version?: number;
 }
-const SchemaReference = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SchemaReference>;
-
 export type SchemaReferenceList = Array<SchemaReference>;
-const SchemaReferenceList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<SchemaReferenceList>;
-
 /** Request for CheckCompatibility. */
 export interface CheckCompatibilityRequest {
   /** Optional. If true, the response will contain the compatibility check result with reasons for failed checks. The default is false. */
@@ -211,26 +182,13 @@ export interface CheckCompatibilityRequest {
   /** Optional. The schema references used by the schema. */
   references?: SchemaReferenceList;
 }
-const CheckCompatibilityRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CheckCompatibilityRequest>;
-
 export interface CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest {
   /** Required. The name of the resource to check compatibility for. The format is either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/*\/versions: Check compatibility with one or more versions of the specified subject. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/{subject}/versions/{version}: Check compatibility with a specific version of the subject. */
   name: string;
   /** Request body */
   body?: CheckCompatibilityRequest;
 }
-const CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    2,
-  ) as any as S.Schema<CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<StringList>;
-
 /** Response for CheckCompatibility. */
 export interface CheckCompatibilityResponse {
   /** The compatibility check result. If true, the schema is compatible with the resource. */
@@ -238,36 +196,21 @@ export interface CheckCompatibilityResponse {
   /** Failure reasons if verbose = true. */
   messages?: StringList;
 }
-const CheckCompatibilityResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CheckCompatibilityResponse>;
-
 export interface CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest {
   /** Required. The name of the resource to check compatibility for. The format is either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/*\/versions: Check compatibility with one or more versions of the specified subject. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/compatibility/subjects/{subject}/versions/{version}: Check compatibility with a specific version of the subject. */
   name: string;
   /** Request body */
   body?: CheckCompatibilityRequest;
 }
-const CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    5,
-  ) as any as S.Schema<CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest>;
-
 export type RebalanceConfigModeEnum =
   | "MODE_UNSPECIFIED"
   | "NO_REBALANCE"
   | "AUTO_REBALANCE_ON_SCALE_UP";
-const RebalanceConfigModeEnum = S.String;
-
 /** Defines rebalancing behavior of a Kafka cluster. */
 export interface RebalanceConfig {
   /** Optional. The rebalance behavior for the cluster. When not specified, defaults to `NO_REBALANCE`. */
   mode?: RebalanceConfigModeEnum | (string & {});
 }
-const RebalanceConfig = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<RebalanceConfig>;
-
 /** Describes the effective capacity configuration of a Kafka cluster, both cluster-wide and per-broker. */
 export interface EffectiveCapacityConfig {
   /** Output only. The number of brokers in the cluster. */
@@ -275,18 +218,11 @@ export interface EffectiveCapacityConfig {
   /** Output only. The disk assigned to each broker in Gibibytes. */
   brokerDiskSizeGib?: string;
 }
-const EffectiveCapacityConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<EffectiveCapacityConfig>;
-
 /** Capacity configuration at a per-broker level within the Kafka cluster. The config will be appled to each broker in the cluster. */
 export interface BrokerCapacityConfig {
   /** Optional. The disk to provision for each broker in Gibibytes. Minimum: 100 GiB. */
   diskSizeGib?: string;
 }
-const BrokerCapacityConfig = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<BrokerCapacityConfig>;
-
 /** A capacity configuration of a Kafka cluster. */
 export interface CapacityConfig {
   /** Required. The memory to provision for the cluster in bytes. The CPU:memory ratio (vCPU:GiB) must be between 1:1 and 1:8. Minimum: 3221225472 (3 GiB). */
@@ -294,39 +230,23 @@ export interface CapacityConfig {
   /** Required. The number of vCPUs to provision for the cluster. Minimum: 3. */
   vcpuCount?: string;
 }
-const CapacityConfig = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CapacityConfig>;
-
 export type ClusterStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
   | "UPDATING";
-const ClusterStateEnum = S.String;
-
 /** A configuration for the Google Certificate Authority Service. */
 export interface CertificateAuthorityServiceConfig {
   /** Required. The name of the CA pool to pull CA certificates from. Structured like: projects/{project}/locations/{location}/caPools/{ca_pool}. The CA pool does not need to be in the same project or location as the Kafka cluster. */
   caPool?: string;
 }
-const CertificateAuthorityServiceConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CertificateAuthorityServiceConfig>;
-
 export type CertificateAuthorityServiceConfigList = Array<CertificateAuthorityServiceConfig>;
-const CertificateAuthorityServiceConfigList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CertificateAuthorityServiceConfigList>;
-
 /** Sources of CA certificates to install in the broker's truststore. */
 export interface TrustConfig {
   /** Optional. Configuration for the Google Certificate Authority Service. Maximum 10. */
   casConfigs?: CertificateAuthorityServiceConfigList;
 }
-const TrustConfig = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<TrustConfig>;
-
 /** The TLS configuration for the Kafka cluster. */
 export interface TlsConfig {
   /** Optional. A list of rules for mapping from SSL principal names to short names. These are applied in order by Kafka. Refer to the Apache Kafka documentation for `ssl.principal.mapping.rules` for the precise formatting details and syntax. Example: "RULE:^CN=(.*?),OU=ServiceUsers.*$/$1@example.com/,DEFAULT" This is a static Kafka broker configuration. Setting or modifying this field will trigger a rolling restart of the Kafka brokers to apply the change. An empty string means no rules are applied (Kafka default). */
@@ -334,28 +254,18 @@ export interface TlsConfig {
   /** Optional. The configuration of the broker truststore. If specified, clients can use mTLS for authentication. */
   trustConfig?: TrustConfig;
 }
-const TlsConfig = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<TlsConfig>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<StringMap>;
-
 /** The configuration of a Virtual Private Cloud (VPC) network that can access the Kafka cluster. */
 export interface NetworkConfig {
   /** Required. Name of the VPC subnet in which to create Private Service Connect (PSC) endpoints for the Kafka brokers and bootstrap address. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id} The subnet must be located in the same region as the Kafka cluster. The project may differ. Multiple subnets from the same parent network must not be specified. */
   subnet?: string;
 }
-const NetworkConfig = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<NetworkConfig>;
-
 export type NetworkConfigList = Array<NetworkConfig>;
-const NetworkConfigList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<NetworkConfigList>;
-
 /** The configuration for a public Kafka cluster */
 export interface PublicClusterConfig {
   /** Required. The list of IPv4 ranges in CIDR notation that are allowed to connect to the public Kafka broker endpoints. The Kafka cluster should only be exposed to trusted external ranges. A maximum of 500 IP ranges can be specified and no single range can be larger than a `/16`. This field is required if PublicClusterConfig is specified. */
   allowedSourceIpRanges?: StringList;
 }
-const PublicClusterConfig = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<PublicClusterConfig>;
-
 /** The configuration of access to the Kafka cluster. */
 export interface AccessConfig {
   /** Required. Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka cluster. Minimum of 1 network is required. Maximum 10 networks can be specified. */
@@ -363,8 +273,6 @@ export interface AccessConfig {
   /** Optional. The configuration for public connectivity to the Kafka cluster. */
   publicClusterConfig?: PublicClusterConfig;
 }
-const AccessConfig = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<AccessConfig>;
-
 /** Configuration properties for a Kafka cluster deployed to Google Cloud Platform. */
 export interface GcpConfig {
   /** Optional. Immutable. The Cloud KMS Key name to use for encryption. The key must be located in the same region as the cluster and cannot be changed. Structured like: projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}. */
@@ -372,8 +280,6 @@ export interface GcpConfig {
   /** Required. Access configuration for the Kafka cluster. */
   accessConfig?: AccessConfig;
 }
-const GcpConfig = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GcpConfig>;
-
 /** Details of a broker in the Kafka cluster. */
 export interface BrokerDetails {
   /** Output only. The rack of the broker. */
@@ -383,18 +289,12 @@ export interface BrokerDetails {
   /** Output only. The index of the broker. */
   brokerIndex?: string;
 }
-const BrokerDetails = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<BrokerDetails>;
-
 export type BrokerDetailsList = Array<BrokerDetails>;
-const BrokerDetailsList = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<BrokerDetailsList>;
-
 /** UpdateOptions specifies options that influence how a cluster update is applied. These options control the behavior of the update process, rather than defining the desired end-state of a cluster. */
 export interface UpdateOptions {
   /** Optional. If true, allows an update operation that increases the total vCPU and/or memory allocation of the cluster to significantly decrease the per-broker vCPU and/or memory allocation. This can result in reduced performance and availability. By default, the update operation will fail if an upscale request results in a vCPU or memory allocation for the brokers that is smaller than 90% of the current broker size. */
   allowBrokerDownscaleOnClusterUpscale?: boolean;
 }
-const UpdateOptions = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<UpdateOptions>;
-
 /** Details of the public cluster feature for the Kafka cluster. */
 export interface PublicClusterDetails {
   /** Output only. DNS discovery records that resolve to all of the external IP addresses associated with the public cluster. Used for configuring DNS-based egress firewall rules to a public cluster. discovery_dns_record can be added to this list if the cluster is scaled up. Must configure DNS based firewalls to resolve ALL DNS records in this list as large clusters have IP addresses sharded across records. Each record contains a maximum of 30 IP addresses. */
@@ -402,8 +302,6 @@ export interface PublicClusterDetails {
   /** Output only. All of the external IP addresses associated with the public cluster used for configuring egress firewall rules to a public cluster. external_ip_address can be added to this list if the cluster is scaled up. */
   externalIpAddresses?: StringList;
 }
-const PublicClusterDetails = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<PublicClusterDetails>;
-
 /** An Apache Kafka cluster deployed in a location. */
 export interface Cluster {
   /** Identifier. The name of the cluster. Structured like: projects/{project_number}/locations/{location}/clusters/{cluster_id} */
@@ -443,8 +341,6 @@ export interface Cluster {
   /** Output only. Details of the public cluster feature for the Kafka cluster. */
   publicClusterDetails?: PublicClusterDetails;
 }
-const Cluster = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Cluster>;
-
 export interface CreateProjectsLocationsClustersRequest {
   /** Required. The parent region in which to create the cluster. Structured like `projects/{project}/locations/{location}`. */
   parent: string;
@@ -455,17 +351,8 @@ export interface CreateProjectsLocationsClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-const CreateProjectsLocationsClustersRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateProjectsLocationsClustersRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -475,8 +362,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -490,8 +375,6 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-const Operation = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Operation>;
-
 export interface CreateProjectsLocationsClustersAclsRequest {
   /** Required. The ID to use for the acl, which will become the final component of the acl's name. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. `acl_id` is structured like one of the following: For acls on the cluster: `cluster` For acls on a single resource within the cluster: `topic/{resource_name}` `consumerGroup/{resource_name}` `transactionalId/{resource_name}` For acls on all resources that match a prefix: `topicPrefixed/{resource_name}` `consumerGroupPrefixed/{resource_name}` `transactionalIdPrefixed/{resource_name}` For acls on all resources of a given type (i.e. the wildcard literal "*"): `allTopics` (represents `topic/*`) `allConsumerGroups` (represents `consumerGroup/*`) `allTransactionalIds` (represents `transactionalId/*`) */
   aclId?: string;
@@ -500,11 +383,6 @@ export interface CreateProjectsLocationsClustersAclsRequest {
   /** Request body */
   body?: Acl;
 }
-const CreateProjectsLocationsClustersAclsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateProjectsLocationsClustersAclsRequest>;
-
 /** A Kafka topic in a given cluster. */
 export interface Topic {
   /** Identifier. The name of the topic. The `topic` segment is used when connecting directly to the cluster. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/topics/{topic} */
@@ -516,8 +394,6 @@ export interface Topic {
   /** Optional. Configurations for the topic that are overridden from the cluster defaults. The key of the map is a Kafka topic property name, for example: `cleanup.policy`, `compression.type`. */
   configs?: StringMap;
 }
-const Topic = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Topic>;
-
 export interface CreateProjectsLocationsClustersTopicsRequest {
   /** Required. The parent cluster in which to create the topic. Structured like `projects/{project}/locations/{location}/clusters/{cluster}`. */
   parent: string;
@@ -526,11 +402,6 @@ export interface CreateProjectsLocationsClustersTopicsRequest {
   /** Request body */
   body?: Topic;
 }
-const CreateProjectsLocationsClustersTopicsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateProjectsLocationsClustersTopicsRequest>;
-
 /** The configuration of a Virtual Private Cloud (VPC) network that can access the Kafka Connect cluster. */
 export interface ConnectNetworkConfig {
   /** Required. VPC subnet to make available to the Kafka Connect cluster. Structured like: projects/{project}/regions/{region}/subnetworks/{subnet_id} It is used to create a Private Service Connect (PSC) interface for the Kafka Connect workers. It must be located in the same region as the Kafka Connect cluster. The CIDR range of the subnet must be within the IPv4 address ranges for private networks, as specified in RFC 1918. The primary subnet CIDR range must have a minimum size of /22 (1024 addresses). */
@@ -540,21 +411,12 @@ export interface ConnectNetworkConfig {
   /** Optional. Additional DNS domain names from the subnet's network to be made visible to the Connect Cluster. When using MirrorMaker2, it's necessary to add the bootstrap address's dns domain name of the target cluster to make it visible to the connector. For example: my-kafka-cluster.us-central1.managedkafka.my-project.cloud.goog */
   dnsDomainNames?: StringList;
 }
-const ConnectNetworkConfig = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ConnectNetworkConfig>;
-
 export type ConnectNetworkConfigList = Array<ConnectNetworkConfig>;
-const ConnectNetworkConfigList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ConnectNetworkConfigList>;
-
 /** The configuration of access to the Kafka Connect cluster. */
 export interface ConnectAccessConfig {
   /** Required. Virtual Private Cloud (VPC) networks that must be granted direct access to the Kafka Connect cluster. Minimum of 1 network is required. Maximum 10 networks can be specified. */
   networkConfigs?: ConnectNetworkConfigList;
 }
-const ConnectAccessConfig = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ConnectAccessConfig>;
-
 /** Configuration properties for a Kafka Connect cluster deployed to Google Cloud Platform. */
 export interface ConnectGcpConfig {
   /** Optional. Secrets to load into workers. Exact SecretVersions from Secret Manager must be provided -- aliases are not supported. Up to 32 secrets may be loaded into one cluster. Format: projects//secrets//versions/ */
@@ -562,16 +424,12 @@ export interface ConnectGcpConfig {
   /** Required. Access configuration for the Kafka Connect cluster. */
   accessConfig?: ConnectAccessConfig;
 }
-const ConnectGcpConfig = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ConnectGcpConfig>;
-
 export type ConnectClusterStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
   | "DETACHED";
-const ConnectClusterStateEnum = S.String;
-
 /** An Apache Kafka Connect cluster deployed in a location. */
 export interface ConnectCluster {
   /** Required. Capacity configuration for the Kafka Connect cluster. */
@@ -597,8 +455,6 @@ export interface ConnectCluster {
   /** Output only. The current state of the Kafka Connect cluster. */
   state?: ConnectClusterStateEnum | (string & {});
 }
-const ConnectCluster = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ConnectCluster>;
-
 export interface CreateProjectsLocationsConnectClustersRequest {
   /** Required. The parent project/location in which to create the Kafka Connect cluster. Structured like `projects/{project}/locations/{location}/`. */
   parent: string;
@@ -609,11 +465,6 @@ export interface CreateProjectsLocationsConnectClustersRequest {
   /** Request body */
   body?: ConnectCluster;
 }
-const CreateProjectsLocationsConnectClustersRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateProjectsLocationsConnectClustersRequest>;
-
 /** Task Retry Policy is implemented on a best-effort basis. The default policy retries tasks with a minimum_backoff of 60 seconds, and a maximum_backoff of 12 hours. You can disable the policy by setting the task_retry_disabled field to true. Retry delay will be exponential based on provided minimum and maximum backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. Note that the delay between consecutive task restarts may not always precisely match the configured settings. This can happen when the ConnectCluster is in rebalancing state or if the ConnectCluster is unresponsive etc. The default values for minimum and maximum backoffs are 60 seconds and 12 hours respectively. */
 export interface TaskRetryPolicy {
   /** Optional. The minimum amount of time to wait before retrying a failed task. This sets a lower bound for the backoff delay. */
@@ -623,8 +474,6 @@ export interface TaskRetryPolicy {
   /** Optional. If true, task retry is disabled. */
   taskRetryDisabled?: boolean;
 }
-const TaskRetryPolicy = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<TaskRetryPolicy>;
-
 export type ConnectorStateEnum =
   | "STATE_UNSPECIFIED"
   | "UNASSIGNED"
@@ -633,8 +482,6 @@ export type ConnectorStateEnum =
   | "FAILED"
   | "RESTARTING"
   | "STOPPED";
-const ConnectorStateEnum = S.String;
-
 /** A Kafka Connect connector in a given ConnectCluster. */
 export interface Connector {
   /** Optional. Restarts the individual tasks of a Connector. */
@@ -646,8 +493,6 @@ export interface Connector {
   /** Optional. Connector config as keys/values. The keys of the map are connector property names, for example: `connector.class`, `tasks.max`, `key.converter`. */
   configs?: StringMap;
 }
-const Connector = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Connector>;
-
 export interface CreateProjectsLocationsConnectClustersConnectorsRequest {
   /** Required. The ID to use for the connector, which will become the final component of the connector's name. The ID must be 1-63 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` to comply with RFC 1035. This value is structured like: `my-connector-id`. */
   connectorId?: string;
@@ -656,11 +501,6 @@ export interface CreateProjectsLocationsConnectClustersConnectorsRequest {
   /** Request body */
   body?: Connector;
 }
-const CreateProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreateProjectsLocationsConnectClustersConnectorsRequest>;
-
 /** SchemaRegistry is a schema registry instance. */
 export interface SchemaRegistry {
   /** Output only. The contexts of the schema registry instance. */
@@ -668,8 +508,6 @@ export interface SchemaRegistry {
   /** Identifier. The name of the schema registry instance. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` The instance name {schema_registry} can contain the following: * Up to 255 characters. * Letters (uppercase or lowercase), numbers, and underscores. */
   name?: string;
 }
-const SchemaRegistry = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<SchemaRegistry>;
-
 /** Request to create a schema registry instance. */
 export interface CreateSchemaRegistryRequest {
   /** Required. The schema registry instance ID to use for this schema registry. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores (-). The maximum length is 63 characters. The ID must not start with a number. */
@@ -677,29 +515,17 @@ export interface CreateSchemaRegistryRequest {
   /** Required. The schema registry instance to create. The name field is ignored. */
   schemaRegistry?: SchemaRegistry;
 }
-const CreateSchemaRegistryRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CreateSchemaRegistryRequest>;
-
 export interface CreateProjectsLocationsSchemaRegistriesRequest {
   /** Required. The parent whose schema registry instance is to be created. Structured like: `projects/{project}/locations/{location}` */
   parent: string;
   /** Request body */
   body?: CreateSchemaRegistryRequest;
 }
-const CreateProjectsLocationsSchemaRegistriesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CreateProjectsLocationsSchemaRegistriesRequest>;
-
 export type CreateVersionRequestSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
   | "AVRO"
   | "JSON"
   | "PROTOBUF";
-const CreateVersionRequestSchemaTypeEnum = S.String;
-
 /** Request for CreateVersion. */
 export interface CreateVersionRequest {
   /** Optional. The type of the schema. It is optional. If not specified, the schema type will be AVRO. */
@@ -715,125 +541,63 @@ export interface CreateVersionRequest {
   /** Optional. The schema references used by the schema. */
   references?: SchemaReferenceList;
 }
-const CreateVersionRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<CreateVersionRequest>;
-
 export interface CreateProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest {
   /** Required. The subject to create the version for. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
   parent: string;
   /** Request body */
   body?: CreateVersionRequest;
 }
-const CreateProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CreateProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>;
-
 /** Response for CreateVersion. */
 export interface CreateVersionResponse {
   /** The unique identifier of the schema created. */
   id?: number;
 }
-const CreateVersionResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CreateVersionResponse>;
-
 export interface CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
   /** Required. The subject to create the version for. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
   parent: string;
   /** Request body */
   body?: CreateVersionRequest;
 }
-const CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
-
 export interface DeleteProjectsLocationsClustersRequest {
   /** Required. The name of the cluster to delete. */
   name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID to avoid duplication of requests. If a request times out or fails, retrying with the same ID allows the server to recognize the previous attempt. For at least 60 minutes, the server ignores duplicate requests bearing the same ID. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID within 60 minutes of the last request, the server checks if an original operation with the same request ID was received. If so, the server ignores the second request. The request ID must be a valid UUID. A zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const DeleteProjectsLocationsClustersRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsClustersRequest>;
-
 export interface DeleteProjectsLocationsClustersAclsRequest {
   /** Required. The name of the acl to delete. Structured like: `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. See `Acl.name` for details. */
   name: string;
 }
-const DeleteProjectsLocationsClustersAclsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsClustersAclsRequest>;
-
 export interface DeleteProjectsLocationsClustersConsumerGroupsRequest {
   /** Required. The name of the consumer group to delete. `projects/{project}/locations/{location}/clusters/{cluster}/consumerGroups/{consumerGroup}`. */
   name: string;
 }
-const DeleteProjectsLocationsClustersConsumerGroupsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsClustersConsumerGroupsRequest>;
-
 export interface DeleteProjectsLocationsClustersTopicsRequest {
   /** Required. The name of the topic to delete. `projects/{project}/locations/{location}/clusters/{cluster}/topics/{topic}`. */
   name: string;
 }
-const DeleteProjectsLocationsClustersTopicsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsClustersTopicsRequest>;
-
 export interface DeleteProjectsLocationsConnectClustersRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID to avoid duplication of requests. If a request times out or fails, retrying with the same ID allows the server to recognize the previous attempt. For at least 60 minutes, the server ignores duplicate requests bearing the same ID. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID within 60 minutes of the last request, the server checks if an original operation with the same request ID was received. If so, the server ignores the second request. The request ID must be a valid UUID. A zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Required. The name of the Kafka Connect cluster to delete. Structured like `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`. */
   name: string;
 }
-const DeleteProjectsLocationsConnectClustersRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsConnectClustersRequest>;
-
 export interface DeleteProjectsLocationsConnectClustersConnectorsRequest {
   /** Required. The name of the connector to delete. Structured like: projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector} */
   name: string;
 }
-const DeleteProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsConnectClustersConnectorsRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 export interface DeleteProjectsLocationsSchemaRegistriesRequest {
   /** Required. The name of the schema registry instance to delete. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` */
   name: string;
 }
-const DeleteProjectsLocationsSchemaRegistriesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesRequest>;
-
 export interface DeleteProjectsLocationsSchemaRegistriesConfigRequest {
   /** Required. The resource name of subject to delete the config for. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject} */
   name: string;
 }
-const DeleteProjectsLocationsSchemaRegistriesConfigRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesConfigRequest>;
-
 export type SchemaConfigCompatibilityEnum =
   | "NONE"
   | "BACKWARD"
@@ -842,8 +606,6 @@ export type SchemaConfigCompatibilityEnum =
   | "FORWARD_TRANSITIVE"
   | "FULL"
   | "FULL_TRANSITIVE";
-const SchemaConfigCompatibilityEnum = S.String;
-
 /** SchemaConfig represents configuration for a schema registry or a specific subject. */
 export interface SchemaConfig {
   /** Required. The compatibility type of the schema. The default value is BACKWARD. If unset in a SchemaSubject-level SchemaConfig, defaults to the global value. If unset in a SchemaRegistry-level SchemaConfig, reverts to the default value. */
@@ -853,45 +615,26 @@ export interface SchemaConfig {
   /** Optional. If true, the schema will be normalized before being stored or looked up. The default is false. If unset in a SchemaSubject-level SchemaConfig, the global value will be used. If unset in a SchemaRegistry-level SchemaConfig, reverts to the default value. */
   normalize?: boolean;
 }
-const SchemaConfig = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<SchemaConfig>;
-
 export interface DeleteProjectsLocationsSchemaRegistriesContextsConfigRequest {
   /** Required. The resource name of subject to delete the config for. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject} */
   name: string;
 }
-const DeleteProjectsLocationsSchemaRegistriesContextsConfigRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsConfigRequest>;
-
 export interface DeleteProjectsLocationsSchemaRegistriesContextsModeRequest {
   /** Required. The resource name of subject to delete the mode for. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject} * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject} */
   name: string;
 }
-const DeleteProjectsLocationsSchemaRegistriesContextsModeRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsModeRequest>;
-
 export type SchemaModeModeEnum = "NONE" | "READONLY" | "READWRITE" | "IMPORT";
 /** SchemaMode represents the mode of a schema registry or a specific subject. Four modes are supported: * NONE: deprecated. This was the default mode for a subject, but now the default is unset (which means use the global schema registry setting) * READONLY: The schema registry is in read-only mode. * READWRITE: The schema registry is in read-write mode, which allows limited write operations on the schema. * IMPORT: The schema registry is in import mode, which allows more editing operations on the schema for data importing purposes. */
 export interface SchemaMode {
   /** Required. The mode type of a schema registry (READWRITE by default) or of a subject (unset by default, which means use the global schema registry setting). */
   mode?: SchemaModeModeEnum;
 }
-const SchemaMode = RebalanceConfig as any as S.Schema<SchemaMode>;
-
 export interface DeleteProjectsLocationsSchemaRegistriesContextsSubjectsRequest {
   /** Optional. If true, the subject and all associated metadata including the schema ID will be deleted permanently. Otherwise, only the subject is soft-deleted. The default is false. Soft-deleted subjects can still be searched in ListSubjects API call with deleted=true query parameter. A soft-delete of a subject must be performed before a hard-delete. */
   permanent?: boolean;
   /** Required. The name of the subject to delete. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
   name: string;
 }
-const DeleteProjectsLocationsSchemaRegistriesContextsSubjectsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsSubjectsRequest>;
-
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
   /** The HTTP request/response body as raw binary. */
@@ -901,59 +644,32 @@ export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
   contentType?: string;
 }
-const HttpBody = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<HttpBody>;
-
 export interface DeleteProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest {
   /** Optional. If true, both the version and the referenced schema ID will be permanently deleted. The default is false. If false, the version will be deleted but the schema ID will be retained. Soft-deleted versions can still be searched in ListVersions API call with deleted=true query parameter. A soft-delete of a version must be performed before a hard-delete. */
   permanent?: boolean;
   /** Required. The name of the subject version to delete. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
   name: string;
 }
-const DeleteProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>;
-
 export interface DeleteProjectsLocationsSchemaRegistriesModeRequest {
   /** Required. The resource name of subject to delete the mode for. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject} * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject} */
   name: string;
 }
-const DeleteProjectsLocationsSchemaRegistriesModeRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesModeRequest>;
-
 export interface DeleteProjectsLocationsSchemaRegistriesSubjectsRequest {
   /** Required. The name of the subject to delete. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
   name: string;
   /** Optional. If true, the subject and all associated metadata including the schema ID will be deleted permanently. Otherwise, only the subject is soft-deleted. The default is false. Soft-deleted subjects can still be searched in ListSubjects API call with deleted=true query parameter. A soft-delete of a subject must be performed before a hard-delete. */
   permanent?: boolean;
 }
-const DeleteProjectsLocationsSchemaRegistriesSubjectsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesSubjectsRequest>;
-
 export interface DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
   /** Required. The name of the subject version to delete. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
   name: string;
   /** Optional. If true, both the version and the referenced schema ID will be permanently deleted. The default is false. If false, the version will be deleted but the schema ID will be retained. Soft-deleted versions can still be searched in ListVersions API call with deleted=true query parameter. A soft-delete of a version must be performed before a hard-delete. */
   permanent?: boolean;
 }
-const DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -967,43 +683,24 @@ export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
   name?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<Location>;
-
 export type GetProjectsLocationsClustersViewEnum =
   | "CLUSTER_VIEW_UNSPECIFIED"
   | "CLUSTER_VIEW_BASIC"
   | "CLUSTER_VIEW_FULL";
-const GetProjectsLocationsClustersViewEnum = S.String;
-
 export interface GetProjectsLocationsClustersRequest {
   /** Required. The name of the cluster whose configuration to return. */
   name: string;
   /** Optional. Specifies the view of the Cluster resource to be returned. Defaults to CLUSTER_VIEW_BASIC. See the ClusterView enum for possible values. */
   view?: GetProjectsLocationsClustersViewEnum | (string & {});
 }
-const GetProjectsLocationsClustersRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<GetProjectsLocationsClustersRequest>;
-
 export interface GetProjectsLocationsClustersAclsRequest {
   /** Required. The name of the acl to return. Structured like: `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. See `Acl.name` for details. */
   name: string;
 }
-const GetProjectsLocationsClustersAclsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GetProjectsLocationsClustersAclsRequest>;
-
 export interface GetProjectsLocationsClustersConsumerGroupsRequest {
   /** Required. The name of the consumer group whose configuration to return. `projects/{project}/locations/{location}/clusters/{cluster}/consumerGroups/{consumerGroup}`. */
   name: string;
 }
-const GetProjectsLocationsClustersConsumerGroupsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GetProjectsLocationsClustersConsumerGroupsRequest>;
-
 /** Metadata for a consumer group corresponding to a specific partition. */
 export interface ConsumerPartitionMetadata {
   /** Required. The current offset for this partition, or 0 if no offset has been committed. */
@@ -1011,33 +708,13 @@ export interface ConsumerPartitionMetadata {
   /** Optional. The associated metadata for this partition, or empty if it does not exist. */
   metadata?: string;
 }
-const ConsumerPartitionMetadata = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ConsumerPartitionMetadata>;
-
 export type ConsumerPartitionMetadataMap = { [key: string]: ConsumerPartitionMetadata | undefined };
-const ConsumerPartitionMetadataMap = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ConsumerPartitionMetadataMap>;
-
 /** Metadata for a consumer group corresponding to a specific topic. */
 export interface ConsumerTopicMetadata {
   /** Optional. Metadata for this consumer group and topic for all partition indexes it has metadata for. */
   partitions?: ConsumerPartitionMetadataMap;
 }
-const ConsumerTopicMetadata = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ConsumerTopicMetadata>;
-
 export type ConsumerTopicMetadataMap = { [key: string]: ConsumerTopicMetadata | undefined };
-const ConsumerTopicMetadataMap = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ConsumerTopicMetadataMap>;
-
 /** A Kafka consumer group in a given cluster. */
 export interface ConsumerGroup {
   /** Optional. Metadata for this consumer group for all topics it has metadata for. The key of the map is a topic name, structured like: projects/{project}/locations/{location}/clusters/{cluster}/topics/{topic} */
@@ -1045,73 +722,36 @@ export interface ConsumerGroup {
   /** Identifier. The name of the consumer group. The `consumer_group` segment is used when connecting directly to the cluster. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/consumerGroups/{consumer_group} */
   name?: string;
 }
-const ConsumerGroup = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ConsumerGroup>;
-
 export interface GetProjectsLocationsClustersTopicsRequest {
   /** Required. The name of the topic whose configuration to return. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/topics/{topic}. */
   name: string;
 }
-const GetProjectsLocationsClustersTopicsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GetProjectsLocationsClustersTopicsRequest>;
-
 export interface GetProjectsLocationsConnectClustersRequest {
   /** Required. The name of the Kafka Connect cluster whose configuration to return. Structured like `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`. */
   name: string;
 }
-const GetProjectsLocationsConnectClustersRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetProjectsLocationsConnectClustersRequest>;
-
 export interface GetProjectsLocationsConnectClustersConnectorsRequest {
   /** Required. The name of the connector whose configuration to return. Structured like: projects/{project}/locations/{location}/connectClusters/{connectCluster}/connectors/{connector} */
   name: string;
 }
-const GetProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GetProjectsLocationsConnectClustersConnectorsRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsSchemaRegistriesRequest {
   /** Required. The name of the schema registry instance to return. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` */
   name: string;
 }
-const GetProjectsLocationsSchemaRegistriesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<GetProjectsLocationsSchemaRegistriesRequest>;
-
 export interface GetProjectsLocationsSchemaRegistriesConfigRequest {
   /** Optional. If true, the config will fall back to the config at the global level if no subject level config is found. */
   defaultToGlobal?: boolean;
   /** Required. The resource name to get the config for. It can be either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Get config at global level. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}: Get config for a specific subject. */
   name: string;
 }
-const GetProjectsLocationsSchemaRegistriesConfigRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GetProjectsLocationsSchemaRegistriesConfigRequest>;
-
 export interface GetProjectsLocationsSchemaRegistriesContextsRequest {
   /** Required. The name of the context to return. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}` */
   name: string;
 }
-const GetProjectsLocationsSchemaRegistriesContextsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsRequest>;
-
 /** Context represents an independent schema grouping in a schema registry instance. */
 export interface Context {
   /** Optional. The subjects of the context. */
@@ -1119,46 +759,27 @@ export interface Context {
   /** Identifier. The name of the context. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}` The context name {context} can contain the following: * Up to 255 characters. * Allowed characters: letters (uppercase or lowercase), numbers, and the following special characters: `.`, `-`, `_`, `+`, `%`, and `~`. */
   name?: string;
 }
-const Context = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<Context>;
-
 export interface GetProjectsLocationsSchemaRegistriesContextsConfigRequest {
   /** Optional. If true, the config will fall back to the config at the global level if no subject level config is found. */
   defaultToGlobal?: boolean;
   /** Required. The resource name to get the config for. It can be either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Get config at global level. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}: Get config for a specific subject. */
   name: string;
 }
-const GetProjectsLocationsSchemaRegistriesContextsConfigRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsConfigRequest>;
-
 export interface GetProjectsLocationsSchemaRegistriesContextsModeRequest {
   /** Required. The resource name of the mode. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}: mode for a schema registry, or * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}: mode for a specific subject in a specific context */
   name: string;
 }
-const GetProjectsLocationsSchemaRegistriesContextsModeRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsModeRequest>;
-
 export interface GetProjectsLocationsSchemaRegistriesContextsSchemasRequest {
   /** Optional. Used to limit the search for the schema ID to a specific subject, otherwise the schema ID will be searched for in all subjects in the given specified context. */
   subject?: string;
   /** Required. The name of the schema to return. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` */
   name: string;
 }
-const GetProjectsLocationsSchemaRegistriesContextsSchemasRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsSchemasRequest>;
-
 export type Managedkafka_SchemaSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
   | "AVRO"
   | "JSON"
   | "PROTOBUF";
-const Managedkafka_SchemaSchemaTypeEnum = S.String;
-
 /** Schema for a Kafka message. */
 export interface Managedkafka_Schema {
   /** Optional. The schema type of the schema. */
@@ -1168,22 +789,13 @@ export interface Managedkafka_Schema {
   /** The schema payload. */
   schema?: string;
 }
-const Managedkafka_Schema = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<Managedkafka_Schema>;
-
 export interface GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest {
   /** Required. The name of the subject to return versions. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
   name: string;
   /** Optional. If true, no matter if the subject/version is soft-deleted or not, it returns the version details. If false, it returns NOT_FOUND error if the subject/version is soft-deleted. The default is false. */
   deleted?: boolean;
 }
-const GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>;
-
 export type SchemaVersionSchemaTypeEnum = "SCHEMA_TYPE_UNSPECIFIED" | "AVRO" | "JSON" | "PROTOBUF";
-const SchemaVersionSchemaTypeEnum = S.String;
-
 /** Version of a schema. */
 export interface SchemaVersion {
   /** Optional. The schema type of the schema. */
@@ -1199,84 +811,46 @@ export interface SchemaVersion {
   /** Required. The schema ID. */
   id?: number;
 }
-const SchemaVersion = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<SchemaVersion>;
-
 export interface GetProjectsLocationsSchemaRegistriesModeRequest {
   /** Required. The resource name of the mode. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}: mode for a schema registry, or * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}: mode for a specific subject in a specific context */
   name: string;
 }
-const GetProjectsLocationsSchemaRegistriesModeRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetProjectsLocationsSchemaRegistriesModeRequest>;
-
 export interface GetProjectsLocationsSchemaRegistriesSchemasRequest {
   /** Optional. Used to limit the search for the schema ID to a specific subject, otherwise the schema ID will be searched for in all subjects in the given specified context. */
   subject?: string;
   /** Required. The name of the schema to return. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` */
   name: string;
 }
-const GetProjectsLocationsSchemaRegistriesSchemasRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GetProjectsLocationsSchemaRegistriesSchemasRequest>;
-
 export interface GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
   /** Optional. If true, no matter if the subject/version is soft-deleted or not, it returns the version details. If false, it returns NOT_FOUND error if the subject/version is soft-deleted. The default is false. */
   deleted?: boolean;
   /** Required. The name of the subject to return versions. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
   name: string;
 }
-const GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
-
 export interface GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest {
   /** Required. The name of the schema to return. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` */
   name: string;
   /** Optional. Used to limit the search for the schema ID to a specific subject, otherwise the schema ID will be searched for in all subjects in the given specified context. */
   subject?: string;
 }
-const GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest>;
-
 export interface GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest {
   /** Required. The name of the subject to return versions. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
   name: string;
   /** Optional. If true, no matter if the subject/version is soft-deleted or not, it returns the version details. If false, it returns NOT_FOUND error if the subject/version is soft-deleted. The default is false. */
   deleted?: boolean;
 }
-const GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest =
-  /*@__PURE__*/ __L.at(
-    __c12,
-    7,
-  ) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>;
-
 export interface GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest {
   /** Required. The name of the schema to return. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` */
   name: string;
   /** Optional. Used to limit the search for the schema ID to a specific subject, otherwise the schema ID will be searched for in all subjects in the given specified context. */
   subject?: string;
 }
-const GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest>;
-
 export interface GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
   /** Required. The name of the subject to return versions. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
   name: string;
   /** Optional. If true, no matter if the subject/version is soft-deleted or not, it returns the version details. If false, it returns NOT_FOUND error if the subject/version is soft-deleted. The default is false. */
   deleted?: boolean;
 }
-const GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
-
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
@@ -1289,14 +863,7 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1304,11 +871,6 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsClustersRequest {
   /** Optional. Order by fields for the result. */
   orderBy?: string;
@@ -1321,14 +883,7 @@ export interface ListProjectsLocationsClustersRequest {
   /** Required. The parent location whose clusters are to be listed. Structured like `projects/{project}/locations/{location}`. */
   parent: string;
 }
-const ListProjectsLocationsClustersRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ListProjectsLocationsClustersRequest>;
-
 export type ClusterList = Array<Cluster>;
-const ClusterList = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<ClusterList>;
-
 /** Response for ListClusters. */
 export interface ListClustersResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
@@ -1338,11 +893,6 @@ export interface ListClustersResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListClustersResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ListClustersResponse>;
-
 export interface ListProjectsLocationsClustersAclsRequest {
   /** Optional. A page token, received from a previous `ListAcls` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAcls` must match the call that provided the page token. */
   pageToken?: string;
@@ -1351,14 +901,7 @@ export interface ListProjectsLocationsClustersAclsRequest {
   /** Optional. The maximum number of acls to return. The service may return fewer than this value. If unset or zero, all acls for the parent is returned. */
   pageSize?: number;
 }
-const ListProjectsLocationsClustersAclsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<ListProjectsLocationsClustersAclsRequest>;
-
 export type AclList = Array<Acl>;
-const AclList = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<AclList>;
-
 /** Response for ListAcls. */
 export interface ListAclsResponse {
   /** The list of acls in the requested parent. The order of the acls is unspecified. */
@@ -1366,14 +909,10 @@ export interface ListAclsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
 }
-const ListAclsResponse = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<ListAclsResponse>;
-
 export type ListProjectsLocationsClustersConsumerGroupsViewEnum =
   | "CONSUMER_GROUP_VIEW_UNSPECIFIED"
   | "CONSUMER_GROUP_VIEW_BASIC"
   | "CONSUMER_GROUP_VIEW_FULL";
-const ListProjectsLocationsClustersConsumerGroupsViewEnum = S.String;
-
 export interface ListProjectsLocationsClustersConsumerGroupsRequest {
   /** Optional. A page token, received from a previous `ListConsumerGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConsumerGroups` must match the call that provided the page token. */
   pageToken?: string;
@@ -1386,14 +925,7 @@ export interface ListProjectsLocationsClustersConsumerGroupsRequest {
   /** Required. The parent cluster whose consumer groups are to be listed. Structured like `projects/{project}/locations/{location}/clusters/{cluster}`. */
   parent: string;
 }
-const ListProjectsLocationsClustersConsumerGroupsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ListProjectsLocationsClustersConsumerGroupsRequest>;
-
 export type ConsumerGroupList = Array<ConsumerGroup>;
-const ConsumerGroupList = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<ConsumerGroupList>;
-
 /** Response for ListConsumerGroups. */
 export interface ListConsumerGroupsResponse {
   /** The list of consumer group in the requested parent. The order of the consumer groups is unspecified. */
@@ -1401,11 +933,6 @@ export interface ListConsumerGroupsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
 }
-const ListConsumerGroupsResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<ListConsumerGroupsResponse>;
-
 export interface ListProjectsLocationsClustersTopicsRequest {
   /** Required. The parent cluster whose topics are to be listed. Structured like `projects/{project}/locations/{location}/clusters/{cluster}`. */
   parent: string;
@@ -1414,14 +941,7 @@ export interface ListProjectsLocationsClustersTopicsRequest {
   /** Optional. A page token, received from a previous `ListTopics` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTopics` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsClustersTopicsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ListProjectsLocationsClustersTopicsRequest>;
-
 export type TopicList = Array<Topic>;
-const TopicList = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<TopicList>;
-
 /** Response for ListTopics. */
 export interface ListTopicsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
@@ -1429,8 +949,6 @@ export interface ListTopicsResponse {
   /** The list of topics in the requested parent. The order of the topics is unspecified. */
   topics?: TopicList;
 }
-const ListTopicsResponse = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<ListTopicsResponse>;
-
 export interface ListProjectsLocationsConnectClustersRequest {
   /** Optional. Filter expression for the result. */
   filter?: string;
@@ -1443,14 +961,7 @@ export interface ListProjectsLocationsConnectClustersRequest {
   /** Optional. The maximum number of Connect clusters to return. The service may return fewer than this value. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-const ListProjectsLocationsConnectClustersRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ListProjectsLocationsConnectClustersRequest>;
-
 export type ConnectClusterList = Array<ConnectCluster>;
-const ConnectClusterList = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<ConnectClusterList>;
-
 /** Response for ListConnectClusters. */
 export interface ListConnectClustersResponse {
   /** The list of Connect clusters in the requested parent. */
@@ -1460,11 +971,6 @@ export interface ListConnectClustersResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
 }
-const ListConnectClustersResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ListConnectClustersResponse>;
-
 export interface ListProjectsLocationsConnectClustersConnectorsRequest {
   /** Required. The parent Connect cluster whose connectors are to be listed. Structured like `projects/{project}/locations/{location}/connectClusters/{connect_cluster_id}`. */
   parent: string;
@@ -1473,14 +979,7 @@ export interface ListProjectsLocationsConnectClustersConnectorsRequest {
   /** Optional. The maximum number of connectors to return. The service may return fewer than this value. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-const ListProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<ListProjectsLocationsConnectClustersConnectorsRequest>;
-
 export type ConnectorList = Array<Connector>;
-const ConnectorList = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<ConnectorList>;
-
 /** Response for ListConnectors. */
 export interface ListConnectorsResponse {
   /** The list of connectors in the requested parent. */
@@ -1488,11 +987,6 @@ export interface ListConnectorsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
   nextPageToken?: string;
 }
-const ListConnectorsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ListConnectorsResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -1505,14 +999,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -1522,50 +1009,26 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ListOperationsResponse>;
-
 export type ListProjectsLocationsSchemaRegistriesViewEnum =
   | "SCHEMA_REGISTRY_VIEW_UNSPECIFIED"
   | "SCHEMA_REGISTRY_VIEW_BASIC"
   | "SCHEMA_REGISTRY_VIEW_FULL";
-const ListProjectsLocationsSchemaRegistriesViewEnum = S.String;
-
 export interface ListProjectsLocationsSchemaRegistriesRequest {
   /** Optional. Specifies the view to return for the schema registry instances. If not specified, the default view is SCHEMA_REGISTRY_VIEW_BASIC. */
   view?: ListProjectsLocationsSchemaRegistriesViewEnum | (string & {});
   /** Required. The parent whose schema registry instances are to be listed. Structured like: `projects/{project}/locations/{location}` */
   parent: string;
 }
-const ListProjectsLocationsSchemaRegistriesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ListProjectsLocationsSchemaRegistriesRequest>;
-
 export type SchemaRegistryList = Array<SchemaRegistry>;
-const SchemaRegistryList = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<SchemaRegistryList>;
-
 /** Request for ListSchemaRegistries. */
 export interface ListSchemaRegistriesResponse {
   /** The schema registry instances. */
   schemaRegistries?: SchemaRegistryList;
 }
-const ListSchemaRegistriesResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ListSchemaRegistriesResponse>;
-
 export interface ListProjectsLocationsSchemaRegistriesContextsRequest {
   /** Required. The parent of the contexts. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` */
   parent: string;
 }
-const ListProjectsLocationsSchemaRegistriesContextsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsRequest>;
-
 export interface ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsRequest {
   /** Optional. The subject to filter the subjects by. */
   subject?: string;
@@ -1574,20 +1037,10 @@ export interface ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsReq
   /** Optional. If true, the response will include soft-deleted subjects. The default is false. */
   deleted?: boolean;
 }
-const ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsRequest>;
-
 export interface ListProjectsLocationsSchemaRegistriesContextsSchemasTypesRequest {
   /** Required. The parent schema registry whose schema types are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` */
   parent: string;
 }
-const ListProjectsLocationsSchemaRegistriesContextsSchemasTypesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasTypesRequest>;
-
 export interface ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest {
   /** Required. The schema whose schema versions are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}` */
   parent: string;
@@ -1596,11 +1049,6 @@ export interface ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsReq
   /** Optional. If true, the response will include soft-deleted versions of the schema, even if the subject is soft-deleted. The default is false. */
   deleted?: boolean;
 }
-const ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest>;
-
 export interface ListProjectsLocationsSchemaRegistriesContextsSubjectsRequest {
   /** Optional. If true, the response will include soft-deleted subjects. The default is false. */
   deleted?: boolean;
@@ -1609,32 +1057,16 @@ export interface ListProjectsLocationsSchemaRegistriesContextsSubjectsRequest {
   /** Required. The parent schema registry/context whose subjects are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}` */
   parent: string;
 }
-const ListProjectsLocationsSchemaRegistriesContextsSubjectsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSubjectsRequest>;
-
 export interface ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest {
   /** Optional. If true, the response will include soft-deleted versions of an active or soft-deleted subject. The default is false. */
   deleted?: boolean;
   /** Required. The subject whose versions are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
   parent: string;
 }
-const ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>;
-
 export interface ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyRequest {
   /** Required. The version to list referenced by. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
   parent: string;
 }
-const ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyRequest =
-  /*@__PURE__*/ __L.at(
-    __c17,
-    3,
-  ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyRequest>;
-
 export interface ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest {
   /** Required. The schema resource whose associated subjects are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}` */
   parent: string;
@@ -1643,20 +1075,10 @@ export interface ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest {
   /** Optional. The subject to filter the subjects by. */
   subject?: string;
 }
-const ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest>;
-
 export interface ListProjectsLocationsSchemaRegistriesSchemasTypesRequest {
   /** Required. The parent schema registry whose schema types are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}` */
   parent: string;
 }
-const ListProjectsLocationsSchemaRegistriesSchemasTypesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSchemasTypesRequest>;
-
 export interface ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest {
   /** Optional. If true, the response will include soft-deleted versions of the schema, even if the subject is soft-deleted. The default is false. */
   deleted?: boolean;
@@ -1665,11 +1087,6 @@ export interface ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest {
   /** Required. The schema whose schema versions are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/schemas/ids/{schema}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/schemas/ids/{schema}` */
   parent: string;
 }
-const ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest>;
-
 export interface ListProjectsLocationsSchemaRegistriesSubjectsRequest {
   /** Optional. The context to filter the subjects by, in the format of `:.{context}:`. If unset, all subjects in the registry are returned. Set to empty string or add as '?subjectPrefix=' at the end of this request to list subjects in the default context. */
   subjectPrefix?: string;
@@ -1678,39 +1095,21 @@ export interface ListProjectsLocationsSchemaRegistriesSubjectsRequest {
   /** Optional. If true, the response will include soft-deleted subjects. The default is false. */
   deleted?: boolean;
 }
-const ListProjectsLocationsSchemaRegistriesSubjectsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSubjectsRequest>;
-
 export interface ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest {
   /** Required. The subject whose versions are to be listed. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
   parent: string;
   /** Optional. If true, the response will include soft-deleted versions of an active or soft-deleted subject. The default is false. */
   deleted?: boolean;
 }
-const ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>;
-
 export interface ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest {
   /** Required. The version to list referenced by. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}/versions/{version}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}/versions/{version}` */
   parent: string;
 }
-const ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest =
-  /*@__PURE__*/ __L.at(
-    __c18,
-    1,
-  ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest>;
-
 export type LookupVersionRequestSchemaTypeEnum =
   | "SCHEMA_TYPE_UNSPECIFIED"
   | "AVRO"
   | "JSON"
   | "PROTOBUF";
-const LookupVersionRequestSchemaTypeEnum = S.String;
-
 /** Request for LookupVersion. */
 export interface LookupVersionRequest {
   /** Optional. The schema references used by the schema. */
@@ -1724,33 +1123,18 @@ export interface LookupVersionRequest {
   /** Optional. If true, the schema will be normalized before being looked up. The default is false. */
   normalize?: boolean;
 }
-const LookupVersionRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<LookupVersionRequest>;
-
 export interface LookupVersionProjectsLocationsSchemaRegistriesContextsSubjectsRequest {
   /** Required. The subject to lookup the schema in. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
   parent: string;
   /** Request body */
   body?: LookupVersionRequest;
 }
-const LookupVersionProjectsLocationsSchemaRegistriesContextsSubjectsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<LookupVersionProjectsLocationsSchemaRegistriesContextsSubjectsRequest>;
-
 export interface LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest {
   /** Required. The subject to lookup the schema in. Structured like: `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/subjects/{subject}` or `projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/subjects/{subject}` */
   parent: string;
   /** Request body */
   body?: LookupVersionRequest;
 }
-const LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest>;
-
 export interface PatchProjectsLocationsClustersRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID to avoid duplication of requests. If a request times out or fails, retrying with the same ID allows the server to recognize the previous attempt. For at least 60 minutes, the server ignores duplicate requests bearing the same ID. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID within 60 minutes of the last request, the server checks if an original operation with the same request ID was received. If so, the server ignores the second request. The request ID must be a valid UUID. A zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -1761,11 +1145,6 @@ export interface PatchProjectsLocationsClustersRequest {
   /** Request body */
   body?: Cluster;
 }
-const PatchProjectsLocationsClustersRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<PatchProjectsLocationsClustersRequest>;
-
 export interface PatchProjectsLocationsClustersAclsRequest {
   /** Optional. Field mask is used to specify the fields to be overwritten in the Acl resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. */
   updateMask?: string;
@@ -1774,11 +1153,6 @@ export interface PatchProjectsLocationsClustersAclsRequest {
   /** Request body */
   body?: Acl;
 }
-const PatchProjectsLocationsClustersAclsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<PatchProjectsLocationsClustersAclsRequest>;
-
 export interface PatchProjectsLocationsClustersConsumerGroupsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the ConsumerGroup resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. The mask is required and a value of * will update all fields. */
   updateMask?: string;
@@ -1787,11 +1161,6 @@ export interface PatchProjectsLocationsClustersConsumerGroupsRequest {
   /** Request body */
   body?: ConsumerGroup;
 }
-const PatchProjectsLocationsClustersConsumerGroupsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<PatchProjectsLocationsClustersConsumerGroupsRequest>;
-
 export interface PatchProjectsLocationsClustersTopicsRequest {
   /** Identifier. The name of the topic. The `topic` segment is used when connecting directly to the cluster. Structured like: projects/{project}/locations/{location}/clusters/{cluster}/topics/{topic} */
   name: string;
@@ -1800,11 +1169,6 @@ export interface PatchProjectsLocationsClustersTopicsRequest {
   /** Request body */
   body?: Topic;
 }
-const PatchProjectsLocationsClustersTopicsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<PatchProjectsLocationsClustersTopicsRequest>;
-
 export interface PatchProjectsLocationsConnectClustersRequest {
   /** Identifier. The name of the Kafka Connect cluster. Structured like: projects/{project_number}/locations/{location}/connectClusters/{connect_cluster_id} */
   name: string;
@@ -1815,11 +1179,6 @@ export interface PatchProjectsLocationsConnectClustersRequest {
   /** Request body */
   body?: ConnectCluster;
 }
-const PatchProjectsLocationsConnectClustersRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<PatchProjectsLocationsConnectClustersRequest>;
-
 export interface PatchProjectsLocationsConnectClustersConnectorsRequest {
   /** Identifier. The name of the connector. Structured like: projects/{project}/locations/{location}/connectClusters/{connect_cluster}/connectors/{connector} */
   name: string;
@@ -1828,11 +1187,6 @@ export interface PatchProjectsLocationsConnectClustersConnectorsRequest {
   /** Request body */
   body?: Connector;
 }
-const PatchProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<PatchProjectsLocationsConnectClustersConnectorsRequest>;
-
 /** Request for PauseConnector. */
 export type PauseConnectorRequest = CancelOperationRequest;
 export interface PauseProjectsLocationsConnectClustersConnectorsRequest {
@@ -1841,26 +1195,14 @@ export interface PauseProjectsLocationsConnectClustersConnectorsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const PauseProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<PauseProjectsLocationsConnectClustersConnectorsRequest>;
-
 /** Response for PauseConnector. */
 export interface PauseConnectorResponse {}
-const PauseConnectorResponse = CancelOperationRequest as any as S.Schema<PauseConnectorResponse>;
-
 export interface RemoveAclEntryProjectsLocationsClustersAclsRequest {
   /** Required. The name of the acl to remove the acl entry from. Structured like: `projects/{project}/locations/{location}/clusters/{cluster}/acls/{acl_id}`. The structure of `acl_id` defines the Resource Pattern (resource_type, resource_name, pattern_type) of the acl. See `Acl.name` for details. */
   acl: string;
   /** Request body */
   body?: AclEntry;
 }
-const RemoveAclEntryProjectsLocationsClustersAclsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<RemoveAclEntryProjectsLocationsClustersAclsRequest>;
-
 /** Response for RemoveAclEntry. */
 export interface RemoveAclEntryResponse {
   /** Returned with value true if the removed acl entry was the last entry in the acl, resulting in acl deletion. */
@@ -1868,11 +1210,6 @@ export interface RemoveAclEntryResponse {
   /** The updated acl. Returned if the removed acl entry was not the last entry in the acl. */
   acl?: Acl;
 }
-const RemoveAclEntryResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<RemoveAclEntryResponse>;
-
 /** Request for RestartConnector. */
 export type RestartConnectorRequest = CancelOperationRequest;
 export interface RestartProjectsLocationsConnectClustersConnectorsRequest {
@@ -1881,16 +1218,8 @@ export interface RestartProjectsLocationsConnectClustersConnectorsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const RestartProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<RestartProjectsLocationsConnectClustersConnectorsRequest>;
-
 /** Response for RestartConnector. */
 export interface RestartConnectorResponse {}
-const RestartConnectorResponse =
-  CancelOperationRequest as any as S.Schema<RestartConnectorResponse>;
-
 /** Request for ResumeConnector. */
 export type ResumeConnectorRequest = CancelOperationRequest;
 export interface ResumeProjectsLocationsConnectClustersConnectorsRequest {
@@ -1899,15 +1228,8 @@ export interface ResumeProjectsLocationsConnectClustersConnectorsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const ResumeProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ResumeProjectsLocationsConnectClustersConnectorsRequest>;
-
 /** Response for ResumeConnector. */
 export interface ResumeConnectorResponse {}
-const ResumeConnectorResponse = CancelOperationRequest as any as S.Schema<ResumeConnectorResponse>;
-
 /** Request for StopConnector. */
 export type StopConnectorRequest = CancelOperationRequest;
 export interface StopProjectsLocationsConnectClustersConnectorsRequest {
@@ -1916,15 +1238,8 @@ export interface StopProjectsLocationsConnectClustersConnectorsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const StopProjectsLocationsConnectClustersConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<StopProjectsLocationsConnectClustersConnectorsRequest>;
-
 /** Response for StopConnector. */
 export interface StopConnectorResponse {}
-const StopConnectorResponse = CancelOperationRequest as any as S.Schema<StopConnectorResponse>;
-
 export type UpdateSchemaConfigRequestCompatibilityEnum =
   | "NONE"
   | "BACKWARD"
@@ -1933,8 +1248,6 @@ export type UpdateSchemaConfigRequestCompatibilityEnum =
   | "FORWARD_TRANSITIVE"
   | "FULL"
   | "FULL_TRANSITIVE";
-const UpdateSchemaConfigRequestCompatibilityEnum = S.String;
-
 /** Request for updating schema config. On a SchemaSubject-level SchemaConfig, an unset field will be removed from the SchemaConfig. */
 export interface UpdateSchemaConfigRequest {
   /** Optional. If true, the schema will be normalized before being stored or looked up. The default is false. Cannot be unset for a SchemaRegistry-level SchemaConfig. If unset on a SchemaSubject-level SchemaConfig, removes the normalize field for the SchemaConfig. */
@@ -1942,63 +1255,36 @@ export interface UpdateSchemaConfigRequest {
   /** Required. The compatibility type of the schemas. Cannot be unset for a SchemaRegistry-level SchemaConfig. If unset on a SchemaSubject-level SchemaConfig, removes the compatibility field for the SchemaConfig. */
   compatibility?: UpdateSchemaConfigRequestCompatibilityEnum | (string & {});
 }
-const UpdateSchemaConfigRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<UpdateSchemaConfigRequest>;
-
 export interface UpdateProjectsLocationsSchemaRegistriesConfigRequest {
   /** Required. The resource name to update the config for. It can be either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Update config at global level. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}: Update config for a specific subject. */
   name: string;
   /** Request body */
   body?: UpdateSchemaConfigRequest;
 }
-const UpdateProjectsLocationsSchemaRegistriesConfigRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<UpdateProjectsLocationsSchemaRegistriesConfigRequest>;
-
 export interface UpdateProjectsLocationsSchemaRegistriesContextsConfigRequest {
   /** Required. The resource name to update the config for. It can be either of following: * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config: Update config at global level. * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/config/{subject}: Update config for a specific subject. */
   name: string;
   /** Request body */
   body?: UpdateSchemaConfigRequest;
 }
-const UpdateProjectsLocationsSchemaRegistriesContextsConfigRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<UpdateProjectsLocationsSchemaRegistriesContextsConfigRequest>;
-
 export type UpdateSchemaModeRequestModeEnum = "NONE" | "READONLY" | "READWRITE" | "IMPORT";
 /** Request for updating schema registry or subject mode. */
 export interface UpdateSchemaModeRequest {
   /** Required. The mode type. */
   mode?: UpdateSchemaModeRequestModeEnum | (string & {});
 }
-const UpdateSchemaModeRequest = RebalanceConfig as any as S.Schema<UpdateSchemaModeRequest>;
-
 export interface UpdateProjectsLocationsSchemaRegistriesContextsModeRequest {
   /** Required. The resource name of the mode. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}: mode for a schema registry, or * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}: mode for a specific subject in a specific context */
   name: string;
   /** Request body */
   body?: UpdateSchemaModeRequest;
 }
-const UpdateProjectsLocationsSchemaRegistriesContextsModeRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<UpdateProjectsLocationsSchemaRegistriesContextsModeRequest>;
-
 export interface UpdateProjectsLocationsSchemaRegistriesModeRequest {
   /** Required. The resource name of the mode. The format is * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/mode/{subject}: mode for a schema registry, or * projects/{project}/locations/{location}/schemaRegistries/{schema_registry}/contexts/{context}/mode/{subject}: mode for a specific subject in a specific context */
   name: string;
   /** Request body */
   body?: UpdateSchemaModeRequest;
 }
-const UpdateProjectsLocationsSchemaRegistriesModeRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<UpdateProjectsLocationsSchemaRegistriesModeRequest>;
-
 export type AddAclEntryProjectsLocationsClustersAclsError =
   | NotFound
   | Forbidden
@@ -2013,8 +1299,8 @@ export const addAclEntryProjectsLocationsClustersAcls: API.OperationMethod<
   AddAclEntryProjectsLocationsClustersAclsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddAclEntryProjectsLocationsClustersAclsRequest,
-  output: AddAclEntryResponse,
+  input: __S(1) as any as S.Schema<AddAclEntryProjectsLocationsClustersAclsRequest>,
+  output: __S(4) as any as S.Schema<AddAclEntryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AclClusterNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2033,8 +1319,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(6) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(5) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2054,8 +1340,10 @@ export const checkCompatibilityProjectsLocationsSchemaRegistriesCompatibility: A
   CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest,
-  output: CheckCompatibilityResponse,
+  input: __S(
+    10,
+  ) as any as S.Schema<CheckCompatibilityProjectsLocationsSchemaRegistriesCompatibilityRequest>,
+  output: __S(12) as any as S.Schema<CheckCompatibilityResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -2082,8 +1370,10 @@ export const checkCompatibilityProjectsLocationsSchemaRegistriesContextsCompatib
   CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest,
-  output: CheckCompatibilityResponse,
+  input: __S(
+    13,
+  ) as any as S.Schema<CheckCompatibilityProjectsLocationsSchemaRegistriesContextsCompatibilityRequest>,
+  output: __S(12) as any as S.Schema<CheckCompatibilityResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -2109,8 +1399,8 @@ export const createProjectsLocationsClusters: API.OperationMethod<
   CreateProjectsLocationsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsClustersRequest,
-  output: Operation,
+  input: __S(33) as any as S.Schema<CreateProjectsLocationsClustersRequest>,
+  output: __S(37) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2130,8 +1420,8 @@ export const createProjectsLocationsClustersAcls: API.OperationMethod<
   CreateProjectsLocationsClustersAclsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsClustersAclsRequest,
-  output: Acl,
+  input: __S(38) as any as S.Schema<CreateProjectsLocationsClustersAclsRequest>,
+  output: __S(3) as any as S.Schema<Acl>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AclClusterNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2150,8 +1440,8 @@ export const createProjectsLocationsClustersTopics: API.OperationMethod<
   CreateProjectsLocationsClustersTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsClustersTopicsRequest,
-  output: Topic,
+  input: __S(40) as any as S.Schema<CreateProjectsLocationsClustersTopicsRequest>,
+  output: __S(39) as any as S.Schema<Topic>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2170,8 +1460,8 @@ export const createProjectsLocationsConnectClusters: API.OperationMethod<
   CreateProjectsLocationsConnectClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsConnectClustersRequest,
-  output: Operation,
+  input: __S(46) as any as S.Schema<CreateProjectsLocationsConnectClustersRequest>,
+  output: __S(37) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2190,8 +1480,8 @@ export const createProjectsLocationsConnectClustersConnectors: API.OperationMeth
   CreateProjectsLocationsConnectClustersConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsConnectClustersConnectorsRequest,
-  output: Connector,
+  input: __S(49) as any as S.Schema<CreateProjectsLocationsConnectClustersConnectorsRequest>,
+  output: __S(48) as any as S.Schema<Connector>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2211,8 +1501,8 @@ export const createProjectsLocationsSchemaRegistries: API.OperationMethod<
   CreateProjectsLocationsSchemaRegistriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSchemaRegistriesRequest,
-  output: SchemaRegistry,
+  input: __S(52) as any as S.Schema<CreateProjectsLocationsSchemaRegistriesRequest>,
+  output: __S(50) as any as S.Schema<SchemaRegistry>,
   errors: [
     NotFound,
     Forbidden,
@@ -2239,8 +1529,10 @@ export const createProjectsLocationsSchemaRegistriesContextsSubjectsVersions: AP
   CreateProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
-  output: CreateVersionResponse,
+  input: __S(
+    54,
+  ) as any as S.Schema<CreateProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>,
+  output: __S(55) as any as S.Schema<CreateVersionResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -2267,8 +1559,8 @@ export const createProjectsLocationsSchemaRegistriesSubjectsVersions: API.Operat
   CreateProjectsLocationsSchemaRegistriesSubjectsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
-  output: CreateVersionResponse,
+  input: __S(56) as any as S.Schema<CreateProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>,
+  output: __S(55) as any as S.Schema<CreateVersionResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -2294,8 +1586,8 @@ export const deleteProjectsLocationsClusters: API.OperationMethod<
   DeleteProjectsLocationsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsClustersRequest,
-  output: Operation,
+  input: __S(57) as any as S.Schema<DeleteProjectsLocationsClustersRequest>,
+  output: __S(37) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2315,8 +1607,8 @@ export const deleteProjectsLocationsClustersAcls: API.OperationMethod<
   DeleteProjectsLocationsClustersAclsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsClustersAclsRequest,
-  output: Empty,
+  input: __S(58) as any as S.Schema<DeleteProjectsLocationsClustersAclsRequest>,
+  output: __S(5) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AclClusterNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2335,8 +1627,8 @@ export const deleteProjectsLocationsClustersConsumerGroups: API.OperationMethod<
   DeleteProjectsLocationsClustersConsumerGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsClustersConsumerGroupsRequest,
-  output: Empty,
+  input: __S(59) as any as S.Schema<DeleteProjectsLocationsClustersConsumerGroupsRequest>,
+  output: __S(5) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2355,8 +1647,8 @@ export const deleteProjectsLocationsClustersTopics: API.OperationMethod<
   DeleteProjectsLocationsClustersTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsClustersTopicsRequest,
-  output: Empty,
+  input: __S(60) as any as S.Schema<DeleteProjectsLocationsClustersTopicsRequest>,
+  output: __S(5) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2375,8 +1667,8 @@ export const deleteProjectsLocationsConnectClusters: API.OperationMethod<
   DeleteProjectsLocationsConnectClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsConnectClustersRequest,
-  output: Operation,
+  input: __S(61) as any as S.Schema<DeleteProjectsLocationsConnectClustersRequest>,
+  output: __S(37) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2395,8 +1687,8 @@ export const deleteProjectsLocationsConnectClustersConnectors: API.OperationMeth
   DeleteProjectsLocationsConnectClustersConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsConnectClustersConnectorsRequest,
-  output: Empty,
+  input: __S(62) as any as S.Schema<DeleteProjectsLocationsConnectClustersConnectorsRequest>,
+  output: __S(5) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2415,8 +1707,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(63) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(5) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2436,8 +1728,8 @@ export const deleteProjectsLocationsSchemaRegistries: API.OperationMethod<
   DeleteProjectsLocationsSchemaRegistriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSchemaRegistriesRequest,
-  output: Empty,
+  input: __S(64) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesRequest>,
+  output: __S(5) as any as S.Schema<Empty>,
   errors: [
     NotFound,
     Forbidden,
@@ -2464,8 +1756,8 @@ export const deleteProjectsLocationsSchemaRegistriesConfig: API.OperationMethod<
   DeleteProjectsLocationsSchemaRegistriesConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSchemaRegistriesConfigRequest,
-  output: SchemaConfig,
+  input: __S(65) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesConfigRequest>,
+  output: __S(66) as any as S.Schema<SchemaConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -2492,8 +1784,8 @@ export const deleteProjectsLocationsSchemaRegistriesContextsConfig: API.Operatio
   DeleteProjectsLocationsSchemaRegistriesContextsConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSchemaRegistriesContextsConfigRequest,
-  output: SchemaConfig,
+  input: __S(67) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsConfigRequest>,
+  output: __S(66) as any as S.Schema<SchemaConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -2520,8 +1812,8 @@ export const deleteProjectsLocationsSchemaRegistriesContextsMode: API.OperationM
   DeleteProjectsLocationsSchemaRegistriesContextsModeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSchemaRegistriesContextsModeRequest,
-  output: SchemaMode,
+  input: __S(68) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsModeRequest>,
+  output: __S(14) as any as S.Schema<SchemaMode>,
   errors: [
     NotFound,
     Forbidden,
@@ -2549,8 +1841,8 @@ export const deleteProjectsLocationsSchemaRegistriesContextsSubjects: API.Operat
   DeleteProjectsLocationsSchemaRegistriesContextsSubjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSchemaRegistriesContextsSubjectsRequest,
-  output: HttpBody,
+  input: __S(69) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsSubjectsRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [
     NotFound,
     Forbidden,
@@ -2579,8 +1871,10 @@ export const deleteProjectsLocationsSchemaRegistriesContextsSubjectsVersions: AP
   DeleteProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
-  output: HttpBody,
+  input: __S(
+    71,
+  ) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [
     NotFound,
     Forbidden,
@@ -2608,8 +1902,8 @@ export const deleteProjectsLocationsSchemaRegistriesMode: API.OperationMethod<
   DeleteProjectsLocationsSchemaRegistriesModeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSchemaRegistriesModeRequest,
-  output: SchemaMode,
+  input: __S(72) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesModeRequest>,
+  output: __S(14) as any as S.Schema<SchemaMode>,
   errors: [
     NotFound,
     Forbidden,
@@ -2637,8 +1931,8 @@ export const deleteProjectsLocationsSchemaRegistriesSubjects: API.OperationMetho
   DeleteProjectsLocationsSchemaRegistriesSubjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSchemaRegistriesSubjectsRequest,
-  output: HttpBody,
+  input: __S(73) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesSubjectsRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [
     NotFound,
     Forbidden,
@@ -2667,8 +1961,8 @@ export const deleteProjectsLocationsSchemaRegistriesSubjectsVersions: API.Operat
   DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
-  output: HttpBody,
+  input: __S(74) as any as S.Schema<DeleteProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [
     NotFound,
     Forbidden,
@@ -2690,8 +1984,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(75) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(76) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2705,8 +1999,8 @@ export const getProjectsLocationsClusters: API.OperationMethod<
   GetProjectsLocationsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsClustersRequest,
-  output: Cluster,
+  input: __S(77) as any as S.Schema<GetProjectsLocationsClustersRequest>,
+  output: __S(32) as any as S.Schema<Cluster>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2724,8 +2018,8 @@ export const getProjectsLocationsClustersAcls: API.OperationMethod<
   GetProjectsLocationsClustersAclsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsClustersAclsRequest,
-  output: Acl,
+  input: __S(78) as any as S.Schema<GetProjectsLocationsClustersAclsRequest>,
+  output: __S(3) as any as S.Schema<Acl>,
   errors: [NotFound, Forbidden, AclClusterNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2739,8 +2033,8 @@ export const getProjectsLocationsClustersConsumerGroups: API.OperationMethod<
   GetProjectsLocationsClustersConsumerGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsClustersConsumerGroupsRequest,
-  output: ConsumerGroup,
+  input: __S(79) as any as S.Schema<GetProjectsLocationsClustersConsumerGroupsRequest>,
+  output: __S(84) as any as S.Schema<ConsumerGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2754,8 +2048,8 @@ export const getProjectsLocationsClustersTopics: API.OperationMethod<
   GetProjectsLocationsClustersTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsClustersTopicsRequest,
-  output: Topic,
+  input: __S(85) as any as S.Schema<GetProjectsLocationsClustersTopicsRequest>,
+  output: __S(39) as any as S.Schema<Topic>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2769,8 +2063,8 @@ export const getProjectsLocationsConnectClusters: API.OperationMethod<
   GetProjectsLocationsConnectClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConnectClustersRequest,
-  output: ConnectCluster,
+  input: __S(86) as any as S.Schema<GetProjectsLocationsConnectClustersRequest>,
+  output: __S(45) as any as S.Schema<ConnectCluster>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2784,8 +2078,8 @@ export const getProjectsLocationsConnectClustersConnectors: API.OperationMethod<
   GetProjectsLocationsConnectClustersConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConnectClustersConnectorsRequest,
-  output: Connector,
+  input: __S(87) as any as S.Schema<GetProjectsLocationsConnectClustersConnectorsRequest>,
+  output: __S(48) as any as S.Schema<Connector>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2799,8 +2093,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(88) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(37) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2818,8 +2112,8 @@ export const getProjectsLocationsSchemaRegistries: API.OperationMethod<
   GetProjectsLocationsSchemaRegistriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSchemaRegistriesRequest,
-  output: SchemaRegistry,
+  input: __S(89) as any as S.Schema<GetProjectsLocationsSchemaRegistriesRequest>,
+  output: __S(50) as any as S.Schema<SchemaRegistry>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2837,8 +2131,8 @@ export const getProjectsLocationsSchemaRegistriesConfig: API.OperationMethod<
   GetProjectsLocationsSchemaRegistriesConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSchemaRegistriesConfigRequest,
-  output: SchemaConfig,
+  input: __S(90) as any as S.Schema<GetProjectsLocationsSchemaRegistriesConfigRequest>,
+  output: __S(66) as any as S.Schema<SchemaConfig>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2856,8 +2150,8 @@ export const getProjectsLocationsSchemaRegistriesContexts: API.OperationMethod<
   GetProjectsLocationsSchemaRegistriesContextsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSchemaRegistriesContextsRequest,
-  output: Context,
+  input: __S(91) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsRequest>,
+  output: __S(92) as any as S.Schema<Context>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2875,8 +2169,8 @@ export const getProjectsLocationsSchemaRegistriesContextsConfig: API.OperationMe
   GetProjectsLocationsSchemaRegistriesContextsConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSchemaRegistriesContextsConfigRequest,
-  output: SchemaConfig,
+  input: __S(93) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsConfigRequest>,
+  output: __S(66) as any as S.Schema<SchemaConfig>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2894,8 +2188,8 @@ export const getProjectsLocationsSchemaRegistriesContextsMode: API.OperationMeth
   GetProjectsLocationsSchemaRegistriesContextsModeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSchemaRegistriesContextsModeRequest,
-  output: SchemaMode,
+  input: __S(94) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsModeRequest>,
+  output: __S(14) as any as S.Schema<SchemaMode>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2913,8 +2207,8 @@ export const getProjectsLocationsSchemaRegistriesContextsSchemas: API.OperationM
   GetProjectsLocationsSchemaRegistriesContextsSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSchemaRegistriesContextsSchemasRequest,
-  output: Managedkafka_Schema,
+  input: __S(95) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsSchemasRequest>,
+  output: __S(96) as any as S.Schema<Managedkafka_Schema>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2933,8 +2227,10 @@ export const getProjectsLocationsSchemaRegistriesContextsSubjectsVersions: API.O
   GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
-  output: SchemaVersion,
+  input: __S(
+    97,
+  ) as any as S.Schema<GetProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>,
+  output: __S(98) as any as S.Schema<SchemaVersion>,
   errors: [
     NotFound,
     Forbidden,
@@ -2958,8 +2254,8 @@ export const getProjectsLocationsSchemaRegistriesMode: API.OperationMethod<
   GetProjectsLocationsSchemaRegistriesModeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSchemaRegistriesModeRequest,
-  output: SchemaMode,
+  input: __S(99) as any as S.Schema<GetProjectsLocationsSchemaRegistriesModeRequest>,
+  output: __S(14) as any as S.Schema<SchemaMode>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2977,8 +2273,8 @@ export const getProjectsLocationsSchemaRegistriesSchemas: API.OperationMethod<
   GetProjectsLocationsSchemaRegistriesSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSchemaRegistriesSchemasRequest,
-  output: Managedkafka_Schema,
+  input: __S(100) as any as S.Schema<GetProjectsLocationsSchemaRegistriesSchemasRequest>,
+  output: __S(96) as any as S.Schema<Managedkafka_Schema>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2997,8 +2293,8 @@ export const getProjectsLocationsSchemaRegistriesSubjectsVersions: API.Operation
   GetProjectsLocationsSchemaRegistriesSubjectsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
-  output: SchemaVersion,
+  input: __S(101) as any as S.Schema<GetProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>,
+  output: __S(98) as any as S.Schema<SchemaVersion>,
   errors: [
     NotFound,
     Forbidden,
@@ -3022,8 +2318,10 @@ export const getSchemaProjectsLocationsSchemaRegistriesContextsSchemas: API.Oper
   GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest,
-  output: HttpBody,
+  input: __S(
+    102,
+  ) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesContextsSchemasRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3041,8 +2339,10 @@ export const getSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersions:
   GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
-  output: HttpBody,
+  input: __S(
+    103,
+  ) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3060,8 +2360,8 @@ export const getSchemaProjectsLocationsSchemaRegistriesSchemas: API.OperationMet
   GetSchemaProjectsLocationsSchemaRegistriesSchemasError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest,
-  output: HttpBody,
+  input: __S(104) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesSchemasRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3079,8 +2379,10 @@ export const getSchemaProjectsLocationsSchemaRegistriesSubjectsVersions: API.Ope
   GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
-  output: HttpBody,
+  input: __S(
+    105,
+  ) as any as S.Schema<GetSchemaProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3095,8 +2397,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(106) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(108) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3112,8 +2414,8 @@ export const listProjectsLocationsClusters: API.PaginatedOperationMethod<
   GcpOpContext,
   ListClustersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsClustersRequest,
-  output: ListClustersResponse,
+  input: __S(109) as any as S.Schema<ListProjectsLocationsClustersRequest>,
+  output: __S(111) as any as S.Schema<ListClustersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3133,8 +2435,8 @@ export const listProjectsLocationsClustersAcls: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAclsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsClustersAclsRequest,
-  output: ListAclsResponse,
+  input: __S(112) as any as S.Schema<ListProjectsLocationsClustersAclsRequest>,
+  output: __S(114) as any as S.Schema<ListAclsResponse>,
   errors: [NotFound, Forbidden, AclClusterNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3150,8 +2452,8 @@ export const listProjectsLocationsClustersConsumerGroups: API.PaginatedOperation
   GcpOpContext,
   ListConsumerGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsClustersConsumerGroupsRequest,
-  output: ListConsumerGroupsResponse,
+  input: __S(115) as any as S.Schema<ListProjectsLocationsClustersConsumerGroupsRequest>,
+  output: __S(117) as any as S.Schema<ListConsumerGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3167,8 +2469,8 @@ export const listProjectsLocationsClustersTopics: API.PaginatedOperationMethod<
   GcpOpContext,
   ListTopicsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsClustersTopicsRequest,
-  output: ListTopicsResponse,
+  input: __S(118) as any as S.Schema<ListProjectsLocationsClustersTopicsRequest>,
+  output: __S(120) as any as S.Schema<ListTopicsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3184,8 +2486,8 @@ export const listProjectsLocationsConnectClusters: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConnectClustersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectClustersRequest,
-  output: ListConnectClustersResponse,
+  input: __S(121) as any as S.Schema<ListProjectsLocationsConnectClustersRequest>,
+  output: __S(123) as any as S.Schema<ListConnectClustersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3201,8 +2503,8 @@ export const listProjectsLocationsConnectClustersConnectors: API.PaginatedOperat
   GcpOpContext,
   ListConnectorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectClustersConnectorsRequest,
-  output: ListConnectorsResponse,
+  input: __S(124) as any as S.Schema<ListProjectsLocationsConnectClustersConnectorsRequest>,
+  output: __S(126) as any as S.Schema<ListConnectorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3218,8 +2520,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(127) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(129) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3238,8 +2540,8 @@ export const listProjectsLocationsSchemaRegistries: API.OperationMethod<
   ListProjectsLocationsSchemaRegistriesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesRequest,
-  output: ListSchemaRegistriesResponse,
+  input: __S(130) as any as S.Schema<ListProjectsLocationsSchemaRegistriesRequest>,
+  output: __S(132) as any as S.Schema<ListSchemaRegistriesResponse>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3257,8 +2559,8 @@ export const listProjectsLocationsSchemaRegistriesContexts: API.OperationMethod<
   ListProjectsLocationsSchemaRegistriesContextsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesContextsRequest,
-  output: HttpBody,
+  input: __S(133) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3276,8 +2578,10 @@ export const listProjectsLocationsSchemaRegistriesContextsSchemasSubjects: API.O
   ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsRequest,
-  output: HttpBody,
+  input: __S(
+    134,
+  ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasSubjectsRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3295,8 +2599,10 @@ export const listProjectsLocationsSchemaRegistriesContextsSchemasTypes: API.Oper
   ListProjectsLocationsSchemaRegistriesContextsSchemasTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesContextsSchemasTypesRequest,
-  output: HttpBody,
+  input: __S(
+    135,
+  ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasTypesRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3314,8 +2620,10 @@ export const listProjectsLocationsSchemaRegistriesContextsSchemasVersions: API.O
   ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest,
-  output: HttpBody,
+  input: __S(
+    136,
+  ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSchemasVersionsRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3333,8 +2641,8 @@ export const listProjectsLocationsSchemaRegistriesContextsSubjects: API.Operatio
   ListProjectsLocationsSchemaRegistriesContextsSubjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesContextsSubjectsRequest,
-  output: HttpBody,
+  input: __S(137) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSubjectsRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3352,8 +2660,10 @@ export const listProjectsLocationsSchemaRegistriesContextsSubjectsVersions: API.
   ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest,
-  output: HttpBody,
+  input: __S(
+    138,
+  ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3371,8 +2681,10 @@ export const listProjectsLocationsSchemaRegistriesContextsSubjectsVersionsRefere
   ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyRequest,
-  output: HttpBody,
+  input: __S(
+    139,
+  ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesContextsSubjectsVersionsReferencedbyRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3390,8 +2702,8 @@ export const listProjectsLocationsSchemaRegistriesSchemasSubjects: API.Operation
   ListProjectsLocationsSchemaRegistriesSchemasSubjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest,
-  output: HttpBody,
+  input: __S(140) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSchemasSubjectsRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3409,8 +2721,8 @@ export const listProjectsLocationsSchemaRegistriesSchemasTypes: API.OperationMet
   ListProjectsLocationsSchemaRegistriesSchemasTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesSchemasTypesRequest,
-  output: HttpBody,
+  input: __S(141) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSchemasTypesRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3428,8 +2740,8 @@ export const listProjectsLocationsSchemaRegistriesSchemasVersions: API.Operation
   ListProjectsLocationsSchemaRegistriesSchemasVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest,
-  output: HttpBody,
+  input: __S(142) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSchemasVersionsRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3447,8 +2759,8 @@ export const listProjectsLocationsSchemaRegistriesSubjects: API.OperationMethod<
   ListProjectsLocationsSchemaRegistriesSubjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesSubjectsRequest,
-  output: HttpBody,
+  input: __S(143) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSubjectsRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3466,8 +2778,8 @@ export const listProjectsLocationsSchemaRegistriesSubjectsVersions: API.Operatio
   ListProjectsLocationsSchemaRegistriesSubjectsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest,
-  output: HttpBody,
+  input: __S(144) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSubjectsVersionsRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3485,8 +2797,10 @@ export const listProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedby: 
   ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest,
-  output: HttpBody,
+  input: __S(
+    145,
+  ) as any as S.Schema<ListProjectsLocationsSchemaRegistriesSubjectsVersionsReferencedbyRequest>,
+  output: __S(70) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, SchemaRegistryRequiresCluster, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3506,8 +2820,10 @@ export const lookupVersionProjectsLocationsSchemaRegistriesContextsSubjects: API
   LookupVersionProjectsLocationsSchemaRegistriesContextsSubjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LookupVersionProjectsLocationsSchemaRegistriesContextsSubjectsRequest,
-  output: SchemaVersion,
+  input: __S(
+    147,
+  ) as any as S.Schema<LookupVersionProjectsLocationsSchemaRegistriesContextsSubjectsRequest>,
+  output: __S(98) as any as S.Schema<SchemaVersion>,
   errors: [
     NotFound,
     Forbidden,
@@ -3534,8 +2850,8 @@ export const lookupVersionProjectsLocationsSchemaRegistriesSubjects: API.Operati
   LookupVersionProjectsLocationsSchemaRegistriesSubjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest,
-  output: SchemaVersion,
+  input: __S(148) as any as S.Schema<LookupVersionProjectsLocationsSchemaRegistriesSubjectsRequest>,
+  output: __S(98) as any as S.Schema<SchemaVersion>,
   errors: [
     NotFound,
     Forbidden,
@@ -3561,8 +2877,8 @@ export const patchProjectsLocationsClusters: API.OperationMethod<
   PatchProjectsLocationsClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsClustersRequest,
-  output: Operation,
+  input: __S(149) as any as S.Schema<PatchProjectsLocationsClustersRequest>,
+  output: __S(37) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3582,8 +2898,8 @@ export const patchProjectsLocationsClustersAcls: API.OperationMethod<
   PatchProjectsLocationsClustersAclsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsClustersAclsRequest,
-  output: Acl,
+  input: __S(150) as any as S.Schema<PatchProjectsLocationsClustersAclsRequest>,
+  output: __S(3) as any as S.Schema<Acl>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AclClusterNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3602,8 +2918,8 @@ export const patchProjectsLocationsClustersConsumerGroups: API.OperationMethod<
   PatchProjectsLocationsClustersConsumerGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsClustersConsumerGroupsRequest,
-  output: ConsumerGroup,
+  input: __S(151) as any as S.Schema<PatchProjectsLocationsClustersConsumerGroupsRequest>,
+  output: __S(84) as any as S.Schema<ConsumerGroup>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3622,8 +2938,8 @@ export const patchProjectsLocationsClustersTopics: API.OperationMethod<
   PatchProjectsLocationsClustersTopicsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsClustersTopicsRequest,
-  output: Topic,
+  input: __S(152) as any as S.Schema<PatchProjectsLocationsClustersTopicsRequest>,
+  output: __S(39) as any as S.Schema<Topic>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3642,8 +2958,8 @@ export const patchProjectsLocationsConnectClusters: API.OperationMethod<
   PatchProjectsLocationsConnectClustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsConnectClustersRequest,
-  output: Operation,
+  input: __S(153) as any as S.Schema<PatchProjectsLocationsConnectClustersRequest>,
+  output: __S(37) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3662,8 +2978,8 @@ export const patchProjectsLocationsConnectClustersConnectors: API.OperationMetho
   PatchProjectsLocationsConnectClustersConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsConnectClustersConnectorsRequest,
-  output: Connector,
+  input: __S(154) as any as S.Schema<PatchProjectsLocationsConnectClustersConnectorsRequest>,
+  output: __S(48) as any as S.Schema<Connector>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3682,8 +2998,8 @@ export const pauseProjectsLocationsConnectClustersConnectors: API.OperationMetho
   PauseProjectsLocationsConnectClustersConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PauseProjectsLocationsConnectClustersConnectorsRequest,
-  output: PauseConnectorResponse,
+  input: __S(155) as any as S.Schema<PauseProjectsLocationsConnectClustersConnectorsRequest>,
+  output: __S(5) as any as S.Schema<PauseConnectorResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3703,8 +3019,8 @@ export const removeAclEntryProjectsLocationsClustersAcls: API.OperationMethod<
   RemoveAclEntryProjectsLocationsClustersAclsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveAclEntryProjectsLocationsClustersAclsRequest,
-  output: RemoveAclEntryResponse,
+  input: __S(156) as any as S.Schema<RemoveAclEntryProjectsLocationsClustersAclsRequest>,
+  output: __S(157) as any as S.Schema<RemoveAclEntryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, AclClusterNotFound, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3723,8 +3039,8 @@ export const restartProjectsLocationsConnectClustersConnectors: API.OperationMet
   RestartProjectsLocationsConnectClustersConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartProjectsLocationsConnectClustersConnectorsRequest,
-  output: RestartConnectorResponse,
+  input: __S(158) as any as S.Schema<RestartProjectsLocationsConnectClustersConnectorsRequest>,
+  output: __S(5) as any as S.Schema<RestartConnectorResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3743,8 +3059,8 @@ export const resumeProjectsLocationsConnectClustersConnectors: API.OperationMeth
   ResumeProjectsLocationsConnectClustersConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumeProjectsLocationsConnectClustersConnectorsRequest,
-  output: ResumeConnectorResponse,
+  input: __S(159) as any as S.Schema<ResumeProjectsLocationsConnectClustersConnectorsRequest>,
+  output: __S(5) as any as S.Schema<ResumeConnectorResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3763,8 +3079,8 @@ export const stopProjectsLocationsConnectClustersConnectors: API.OperationMethod
   StopProjectsLocationsConnectClustersConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopProjectsLocationsConnectClustersConnectorsRequest,
-  output: StopConnectorResponse,
+  input: __S(160) as any as S.Schema<StopProjectsLocationsConnectClustersConnectorsRequest>,
+  output: __S(5) as any as S.Schema<StopConnectorResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3784,8 +3100,8 @@ export const updateProjectsLocationsSchemaRegistriesConfig: API.OperationMethod<
   UpdateProjectsLocationsSchemaRegistriesConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectsLocationsSchemaRegistriesConfigRequest,
-  output: SchemaConfig,
+  input: __S(162) as any as S.Schema<UpdateProjectsLocationsSchemaRegistriesConfigRequest>,
+  output: __S(66) as any as S.Schema<SchemaConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -3812,8 +3128,8 @@ export const updateProjectsLocationsSchemaRegistriesContextsConfig: API.Operatio
   UpdateProjectsLocationsSchemaRegistriesContextsConfigError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectsLocationsSchemaRegistriesContextsConfigRequest,
-  output: SchemaConfig,
+  input: __S(163) as any as S.Schema<UpdateProjectsLocationsSchemaRegistriesContextsConfigRequest>,
+  output: __S(66) as any as S.Schema<SchemaConfig>,
   errors: [
     NotFound,
     Forbidden,
@@ -3840,8 +3156,8 @@ export const updateProjectsLocationsSchemaRegistriesContextsMode: API.OperationM
   UpdateProjectsLocationsSchemaRegistriesContextsModeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectsLocationsSchemaRegistriesContextsModeRequest,
-  output: SchemaMode,
+  input: __S(164) as any as S.Schema<UpdateProjectsLocationsSchemaRegistriesContextsModeRequest>,
+  output: __S(14) as any as S.Schema<SchemaMode>,
   errors: [
     NotFound,
     Forbidden,
@@ -3868,8 +3184,8 @@ export const updateProjectsLocationsSchemaRegistriesMode: API.OperationMethod<
   UpdateProjectsLocationsSchemaRegistriesModeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectsLocationsSchemaRegistriesModeRequest,
-  output: SchemaMode,
+  input: __S(165) as any as S.Schema<UpdateProjectsLocationsSchemaRegistriesModeRequest>,
+  output: __S(14) as any as S.Schema<SchemaMode>,
   errors: [
     NotFound,
     Forbidden,
@@ -3898,7 +3214,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           acl: S.String.pipe(T.Label()),
-          body: S.optional(AclEntry.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3910,12 +3226,12 @@ function __c0(j: number): any {
         identifier: "AddAclEntryProjectsLocationsClustersAclsRequest",
       });
     case 2:
-      return S.Array(AclEntry);
+      return S.Array(__S(0));
     case 3:
       return S.suspend(() =>
         S.Struct({
           patternType: S.optional(S.String),
-          aclEntries: S.optional(AclEntryList),
+          aclEntries: S.optional(__S(2)),
           name: S.optional(S.String),
           resourceName: S.optional(S.String),
           etag: S.optional(S.String),
@@ -3926,7 +3242,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           aclCreated: S.optional(S.Boolean),
-          acl: S.optional(Acl),
+          acl: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "AddAclEntryResponse" });
     case 5:
@@ -3937,7 +3253,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3961,14 +3277,14 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SchemaReference);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           verbose: S.optional(S.Boolean),
           schema: S.optional(S.String),
-          schemaType: S.optional(CheckCompatibilityRequestSchemaTypeEnum),
-          references: S.optional(SchemaReferenceList),
+          schemaType: S.optional(S.String),
+          references: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "CheckCompatibilityRequest",
@@ -3977,7 +3293,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CheckCompatibilityRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3994,7 +3310,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           is_compatible: S.optional(S.Boolean),
-          messages: S.optional(StringList),
+          messages: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "CheckCompatibilityResponse",
@@ -4003,7 +3319,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CheckCompatibilityRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4018,7 +3334,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(RebalanceConfigModeEnum),
+          mode: S.optional(S.String),
         }),
       ).annotate({ identifier: "RebalanceConfig" });
     case 7:
@@ -4054,18 +3370,18 @@ function __c2(j: number): any {
         identifier: "CertificateAuthorityServiceConfig",
       });
     case 3:
-      return S.Array(CertificateAuthorityServiceConfig);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          casConfigs: S.optional(CertificateAuthorityServiceConfigList),
+          casConfigs: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "TrustConfig" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           sslPrincipalMappingRules: S.optional(S.String),
-          trustConfig: S.optional(TrustConfig),
+          trustConfig: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "TlsConfig" });
     case 6:
@@ -4081,25 +3397,25 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(NetworkConfig);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          allowedSourceIpRanges: S.optional(StringList),
+          allowedSourceIpRanges: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "PublicClusterConfig" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          networkConfigs: S.optional(NetworkConfigList),
-          publicClusterConfig: S.optional(PublicClusterConfig),
+          networkConfigs: S.optional(__S(24)),
+          publicClusterConfig: S.optional(__S(25)),
         }),
       ).annotate({ identifier: "AccessConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           kmsKey: S.optional(S.String),
-          accessConfig: S.optional(AccessConfig),
+          accessConfig: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "GcpConfig" });
     case 4:
@@ -4111,7 +3427,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "BrokerDetails" });
     case 5:
-      return S.Array(BrokerDetails);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4121,8 +3437,8 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          discoveryDnsRecords: S.optional(StringList),
-          externalIpAddresses: S.optional(StringList),
+          discoveryDnsRecords: S.optional(__S(11)),
+          externalIpAddresses: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "PublicClusterDetails" });
   }
@@ -4134,22 +3450,22 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           satisfiesPzs: S.optional(S.Boolean),
-          rebalanceConfig: S.optional(RebalanceConfig),
-          effectiveCapacityConfig: S.optional(EffectiveCapacityConfig),
+          rebalanceConfig: S.optional(__S(14)),
+          effectiveCapacityConfig: S.optional(__S(15)),
           kafkaVersion: S.optional(S.String),
-          brokerCapacityConfig: S.optional(BrokerCapacityConfig),
-          capacityConfig: S.optional(CapacityConfig),
+          brokerCapacityConfig: S.optional(__S(16)),
+          capacityConfig: S.optional(__S(17)),
           bootstrapAddress: S.optional(S.String),
-          state: S.optional(ClusterStateEnum),
-          tlsConfig: S.optional(TlsConfig),
-          labels: S.optional(StringMap),
-          gcpConfig: S.optional(GcpConfig),
-          brokerDetails: S.optional(BrokerDetailsList),
-          updateOptions: S.optional(UpdateOptions),
+          state: S.optional(S.String),
+          tlsConfig: S.optional(__S(21)),
+          labels: S.optional(__S(22)),
+          gcpConfig: S.optional(__S(27)),
+          brokerDetails: S.optional(__S(29)),
+          updateOptions: S.optional(__S(30)),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
           satisfiesPzi: S.optional(S.Boolean),
-          publicClusterDetails: S.optional(PublicClusterDetails),
+          publicClusterDetails: S.optional(__S(31)),
         }),
       ).annotate({ identifier: "Cluster" });
     case 1:
@@ -4158,7 +3474,7 @@ function __c4(j: number): any {
           parent: S.String.pipe(T.Label()),
           clusterId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Cluster.pipe(T.HttpBody())),
+          body: S.optional(__S(32).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4172,11 +3488,11 @@ function __c4(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(35)),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
@@ -4184,10 +3500,10 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(Status),
-          response: S.optional(DocumentMap),
+          error: S.optional(__S(36)),
+          response: S.optional(__S(34)),
           done: S.optional(S.Boolean),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(34)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
@@ -4196,7 +3512,7 @@ function __c4(j: number): any {
         S.Struct({
           aclId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Acl.pipe(T.HttpBody())),
+          body: S.optional(__S(3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4213,7 +3529,7 @@ function __c4(j: number): any {
           name: S.optional(S.String),
           partitionCount: S.optional(S.Number),
           replicationFactor: S.optional(S.Number),
-          configs: S.optional(StringMap),
+          configs: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "Topic" });
   }
@@ -4225,7 +3541,7 @@ function __c5(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           topicId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Topic.pipe(T.HttpBody())),
+          body: S.optional(__S(39).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4240,39 +3556,39 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           primarySubnet: S.optional(S.String),
-          additionalSubnets: S.optional(StringList),
-          dnsDomainNames: S.optional(StringList),
+          additionalSubnets: S.optional(__S(11)),
+          dnsDomainNames: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "ConnectNetworkConfig" });
     case 2:
-      return S.Array(ConnectNetworkConfig);
+      return S.Array(__S(41));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          networkConfigs: S.optional(ConnectNetworkConfigList),
+          networkConfigs: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "ConnectAccessConfig" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          secretPaths: S.optional(StringList),
-          accessConfig: S.optional(ConnectAccessConfig),
+          secretPaths: S.optional(__S(11)),
+          accessConfig: S.optional(__S(43)),
         }),
       ).annotate({ identifier: "ConnectGcpConfig" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          capacityConfig: S.optional(CapacityConfig),
+          capacityConfig: S.optional(__S(17)),
           satisfiesPzi: S.optional(S.Boolean),
-          labels: S.optional(StringMap),
-          config: S.optional(StringMap),
+          labels: S.optional(__S(22)),
+          config: S.optional(__S(22)),
           name: S.optional(S.String),
           kafkaCluster: S.optional(S.String),
           createTime: S.optional(S.String),
-          gcpConfig: S.optional(ConnectGcpConfig),
+          gcpConfig: S.optional(__S(44)),
           satisfiesPzs: S.optional(S.Boolean),
           updateTime: S.optional(S.String),
-          state: S.optional(ConnectClusterStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectCluster" });
     case 6:
@@ -4281,7 +3597,7 @@ function __c5(j: number): any {
           parent: S.String.pipe(T.Label()),
           connectClusterId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ConnectCluster.pipe(T.HttpBody())),
+          body: S.optional(__S(45).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4307,10 +3623,10 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          taskRestartPolicy: S.optional(TaskRetryPolicy),
+          taskRestartPolicy: S.optional(__S(47)),
           name: S.optional(S.String),
-          state: S.optional(ConnectorStateEnum),
-          configs: S.optional(StringMap),
+          state: S.optional(S.String),
+          configs: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "Connector" });
     case 1:
@@ -4318,7 +3634,7 @@ function __c6(j: number): any {
         S.Struct({
           connectorId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Connector.pipe(T.HttpBody())),
+          body: S.optional(__S(48).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4332,7 +3648,7 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          contexts: S.optional(StringList),
+          contexts: S.optional(__S(11)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "SchemaRegistry" });
@@ -4340,7 +3656,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           schemaRegistryId: S.optional(S.String),
-          schemaRegistry: S.optional(SchemaRegistry),
+          schemaRegistry: S.optional(__S(50)),
         }),
       ).annotate({
         identifier: "CreateSchemaRegistryRequest",
@@ -4349,7 +3665,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CreateSchemaRegistryRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(51).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4363,19 +3679,19 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          schemaType: S.optional(CreateVersionRequestSchemaTypeEnum),
+          schemaType: S.optional(S.String),
           version: S.optional(S.Number),
           id: S.optional(S.Number),
           schema: S.optional(S.String),
           normalize: S.optional(S.Boolean),
-          references: S.optional(SchemaReferenceList),
+          references: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "CreateVersionRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CreateVersionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(53).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4400,7 +3716,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CreateVersionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(53).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4546,7 +3862,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          compatibility: S.optional(SchemaConfigCompatibilityEnum),
+          compatibility: S.optional(S.String),
           alias: S.optional(S.String),
           normalize: S.optional(S.Boolean),
         }),
@@ -4598,7 +3914,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String),
-          extensions: S.optional(DocumentMapList),
+          extensions: S.optional(__S(35)),
           contentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "HttpBody" });
@@ -4683,8 +3999,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           locationId: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
-          labels: S.optional(StringMap),
+          metadata: S.optional(__S(34)),
+          labels: S.optional(__S(22)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -4693,7 +4009,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          view: S.optional(GetProjectsLocationsClustersViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4746,19 +4062,19 @@ function __c10(j: number): any {
         identifier: "ConsumerPartitionMetadata",
       });
     case 1:
-      return S.Record(S.String, ConsumerPartitionMetadata);
+      return S.Record(S.String, __S(80));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          partitions: S.optional(ConsumerPartitionMetadataMap),
+          partitions: S.optional(__S(81)),
         }),
       ).annotate({ identifier: "ConsumerTopicMetadata" });
     case 3:
-      return S.Record(S.String, ConsumerTopicMetadata);
+      return S.Record(S.String, __S(82));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          topics: S.optional(ConsumerTopicMetadataMap),
+          topics: S.optional(__S(83)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConsumerGroup" });
@@ -4868,7 +4184,7 @@ function __c11(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          subjects: S.optional(StringList),
+          subjects: S.optional(__S(11)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Context" });
@@ -4923,8 +4239,8 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          schemaType: S.optional(Managedkafka_SchemaSchemaTypeEnum),
-          references: S.optional(SchemaReferenceList),
+          schemaType: S.optional(S.String),
+          references: S.optional(__S(8)),
           schema: S.optional(S.String),
         }),
       ).annotate({ identifier: "Managedkafka_Schema" });
@@ -4946,11 +4262,11 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          schemaType: S.optional(SchemaVersionSchemaTypeEnum),
+          schemaType: S.optional(S.String),
           schema: S.optional(S.String),
           subject: S.optional(S.String),
           version: S.optional(S.Number),
-          references: S.optional(SchemaReferenceList),
+          references: S.optional(__S(8)),
           id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SchemaVersion" });
@@ -5066,7 +4382,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(11).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -5081,11 +4397,11 @@ function __c13(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 3:
-      return S.Array(Location);
+      return S.Array(__S(76));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(107)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -5108,13 +4424,13 @@ function __c13(j: number): any {
         identifier: "ListProjectsLocationsClustersRequest",
       });
     case 6:
-      return S.Array(Cluster);
+      return S.Array(__S(32));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          clusters: S.optional(ClusterList),
-          unreachable: S.optional(StringList),
+          clusters: S.optional(__S(110)),
+          unreachable: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "ListClustersResponse" });
   }
@@ -5138,11 +4454,11 @@ function __c14(j: number): any {
         identifier: "ListProjectsLocationsClustersAclsRequest",
       });
     case 1:
-      return S.Array(Acl);
+      return S.Array(__S(3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          acls: S.optional(AclList),
+          acls: S.optional(__S(113)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAclsResponse" });
@@ -5150,7 +4466,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(ListProjectsLocationsClustersConsumerGroupsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
@@ -5165,11 +4481,11 @@ function __c14(j: number): any {
         identifier: "ListProjectsLocationsClustersConsumerGroupsRequest",
       });
     case 4:
-      return S.Array(ConsumerGroup);
+      return S.Array(__S(84));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          consumerGroups: S.optional(ConsumerGroupList),
+          consumerGroups: S.optional(__S(116)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5192,7 +4508,7 @@ function __c14(j: number): any {
         identifier: "ListProjectsLocationsClustersTopicsRequest",
       });
     case 7:
-      return S.Array(Topic);
+      return S.Array(__S(39));
   }
 }
 function __c15(j: number): any {
@@ -5201,7 +4517,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          topics: S.optional(TopicList),
+          topics: S.optional(__S(119)),
         }),
       ).annotate({ identifier: "ListTopicsResponse" });
     case 1:
@@ -5223,12 +4539,12 @@ function __c15(j: number): any {
         identifier: "ListProjectsLocationsConnectClustersRequest",
       });
     case 2:
-      return S.Array(ConnectCluster);
+      return S.Array(__S(45));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          connectClusters: S.optional(ConnectClusterList),
-          unreachable: S.optional(StringList),
+          connectClusters: S.optional(__S(122)),
+          unreachable: S.optional(__S(11)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5251,11 +4567,11 @@ function __c15(j: number): any {
         identifier: "ListProjectsLocationsConnectClustersConnectorsRequest",
       });
     case 5:
-      return S.Array(Connector);
+      return S.Array(__S(48));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          connectors: S.optional(ConnectorList),
+          connectors: S.optional(__S(125)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListConnectorsResponse" });
@@ -5282,19 +4598,19 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Operation);
+      return S.Array(__S(37));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(OperationList),
+          operations: S.optional(__S(128)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(ListProjectsLocationsSchemaRegistriesViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -5307,11 +4623,11 @@ function __c16(j: number): any {
         identifier: "ListProjectsLocationsSchemaRegistriesRequest",
       });
     case 3:
-      return S.Array(SchemaRegistry);
+      return S.Array(__S(50));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          schemaRegistries: S.optional(SchemaRegistryList),
+          schemaRegistries: S.optional(__S(131)),
         }),
       ).annotate({
         identifier: "ListSchemaRegistriesResponse",
@@ -5524,8 +4840,8 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          references: S.optional(SchemaReferenceList),
-          schemaType: S.optional(LookupVersionRequestSchemaTypeEnum),
+          references: S.optional(__S(8)),
+          schemaType: S.optional(S.String),
           deleted: S.optional(S.Boolean),
           schema: S.optional(S.String),
           normalize: S.optional(S.Boolean),
@@ -5535,7 +4851,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(LookupVersionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(146).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5550,7 +4866,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(LookupVersionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(146).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5567,7 +4883,7 @@ function __c18(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Cluster.pipe(T.HttpBody())),
+          body: S.optional(__S(32).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5583,7 +4899,7 @@ function __c18(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Acl.pipe(T.HttpBody())),
+          body: S.optional(__S(3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5599,7 +4915,7 @@ function __c18(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(ConsumerGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(84).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5619,7 +4935,7 @@ function __c19(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Topic.pipe(T.HttpBody())),
+          body: S.optional(__S(39).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5636,7 +4952,7 @@ function __c19(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ConnectCluster.pipe(T.HttpBody())),
+          body: S.optional(__S(45).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5652,7 +4968,7 @@ function __c19(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Connector.pipe(T.HttpBody())),
+          body: S.optional(__S(48).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5667,7 +4983,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5682,7 +4998,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           acl: S.String.pipe(T.Label()),
-          body: S.optional(AclEntry.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5697,14 +5013,14 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           aclDeleted: S.optional(S.Boolean),
-          acl: S.optional(Acl),
+          acl: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "RemoveAclEntryResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5719,7 +5035,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5738,7 +5054,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5753,7 +5069,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           normalize: S.optional(S.Boolean),
-          compatibility: S.optional(UpdateSchemaConfigRequestCompatibilityEnum),
+          compatibility: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateSchemaConfigRequest",
@@ -5762,7 +5078,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UpdateSchemaConfigRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(161).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5777,7 +5093,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UpdateSchemaConfigRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(161).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5792,7 +5108,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UpdateSchemaModeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5807,7 +5123,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UpdateSchemaModeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5818,5 +5134,56 @@ function __c20(j: number): any {
       ).annotate({
         identifier: "UpdateProjectsLocationsSchemaRegistriesModeRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
   }
 }

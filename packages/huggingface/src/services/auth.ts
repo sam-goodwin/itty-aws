@@ -9,15 +9,13 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 export interface GetUserInfoRequest {}
-const GetUserInfoRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetUserInfoRequest>;
-
 export type GetUserInfoResponseBodyAuthAccessTokenRole = "read" | "write" | "god" | "fineGrained";
-const GetUserInfoResponseBodyAuthAccessTokenRole = S.String;
-
 export type GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItemEntityType =
   | "dataset"
   | "model"
@@ -30,113 +28,55 @@ export type GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItemEntityTyp
   | "user"
   | "resource-group"
   | "oauth-app";
-const GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItemEntityType = S.String;
-
 export interface GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItemEntity {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
   name?: string;
   type: GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItemEntityType;
 }
-const GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItemEntity = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItemEntity>;
-
 export type GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItemPermissionsList =
   Array<string>;
-const GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItemPermissionsList =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    2,
-  ) as any as S.Schema<GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItemPermissionsList>;
-
 export interface GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItem {
   entity: GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItemEntity;
   permissions: GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItemPermissionsList;
 }
-const GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItem>;
-
 export type GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedList =
   Array<GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItem>;
-const GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedList>;
-
 export type GetUserInfoResponseBodyAuthAccessTokenFineGrainedGlobalItem =
   | "discussion.write"
   | "post.write";
-const GetUserInfoResponseBodyAuthAccessTokenFineGrainedGlobalItem = S.String;
-
 export type GetUserInfoResponseBodyAuthAccessTokenFineGrainedGlobalList =
   Array<GetUserInfoResponseBodyAuthAccessTokenFineGrainedGlobalItem>;
-const GetUserInfoResponseBodyAuthAccessTokenFineGrainedGlobalList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetUserInfoResponseBodyAuthAccessTokenFineGrainedGlobalList>;
-
 export interface GetUserInfoResponseBodyAuthAccessTokenFineGrained {
   scoped: GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedList;
   global?: GetUserInfoResponseBodyAuthAccessTokenFineGrainedGlobalList;
   /** Allow access to all public gated repos to which the user has access */
   canReadGatedRepos?: boolean;
 }
-const GetUserInfoResponseBodyAuthAccessTokenFineGrained = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetUserInfoResponseBodyAuthAccessTokenFineGrained>;
-
 export interface GetUserInfoResponseBodyAuthAccessToken {
   displayName: string;
   role: GetUserInfoResponseBodyAuthAccessTokenRole;
   fineGrained?: GetUserInfoResponseBodyAuthAccessTokenFineGrained;
   createdAt: string;
 }
-const GetUserInfoResponseBodyAuthAccessToken = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetUserInfoResponseBodyAuthAccessToken>;
-
 export interface GetUserInfoResponseBodyAuthResource {
   sub: string;
 }
-const GetUserInfoResponseBodyAuthResource = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetUserInfoResponseBodyAuthResource>;
-
 export interface GetUserInfoResponseBodyAuth {
   type: string;
   accessToken?: GetUserInfoResponseBodyAuthAccessToken;
   expiresAt?: string;
   resource?: GetUserInfoResponseBodyAuthResource;
 }
-const GetUserInfoResponseBodyAuth = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetUserInfoResponseBodyAuth>;
-
 export type GetUserInfoResponseBodyBillingMode = "prepaid" | "postpaid";
-const GetUserInfoResponseBodyBillingMode = S.String;
-
 export type GetUserInfoResponseBodyOrgsItemBillingMode = "prepaid" | "postpaid";
-const GetUserInfoResponseBodyOrgsItemBillingMode = S.String;
-
 export type GetUserInfoResponseBodyOrgsItemPlan = "team" | "enterprise" | "plus" | "academia";
-const GetUserInfoResponseBodyOrgsItemPlan = S.String;
-
 export type GetUserInfoResponseBodyOrgsItemRoleInOrg =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-const GetUserInfoResponseBodyOrgsItemRoleInOrg = S.String;
-
 export type GetUserInfoResponseBodyOrgsItemSecurityRestrictionsItem =
   | "mfa"
   | "token-policy"
@@ -146,35 +86,20 @@ export type GetUserInfoResponseBodyOrgsItemSecurityRestrictionsItem =
 /** Current security restrictions for accessing data in this organization with current authentication method */
 export type GetUserInfoResponseBodyOrgsItemSecurityRestrictionsList =
   Array<GetUserInfoResponseBodyOrgsItemSecurityRestrictionsItem>;
-const GetUserInfoResponseBodyOrgsItemSecurityRestrictionsList =
-  GetUserInfoResponseBodyAuthAccessTokenFineGrainedGlobalList as any as S.Schema<GetUserInfoResponseBodyOrgsItemSecurityRestrictionsList>;
-
 export type GetUserInfoResponseBodyOrgsItemResourceGroupsItemRole =
   | "admin"
   | "write"
   | "contributor"
   | "read"
   | "no_access";
-const GetUserInfoResponseBodyOrgsItemResourceGroupsItemRole = S.String;
-
 export interface GetUserInfoResponseBodyOrgsItemResourceGroupsItem {
   /** A hex string of 24 characters representing an ObjectId. */
   id: string;
   name: string;
   role: GetUserInfoResponseBodyOrgsItemResourceGroupsItemRole;
 }
-const GetUserInfoResponseBodyOrgsItemResourceGroupsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetUserInfoResponseBodyOrgsItemResourceGroupsItem>;
-
 export type GetUserInfoResponseBodyOrgsItemResourceGroupsList =
   Array<GetUserInfoResponseBodyOrgsItemResourceGroupsItem>;
-const GetUserInfoResponseBodyOrgsItemResourceGroupsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetUserInfoResponseBodyOrgsItemResourceGroupsList>;
-
 export interface GetUserInfoResponseBodyOrgsItem {
   type: string;
   id: string;
@@ -192,17 +117,7 @@ export interface GetUserInfoResponseBodyOrgsItem {
   securityRestrictions?: GetUserInfoResponseBodyOrgsItemSecurityRestrictionsList;
   resourceGroups?: GetUserInfoResponseBodyOrgsItemResourceGroupsList;
 }
-const GetUserInfoResponseBodyOrgsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetUserInfoResponseBodyOrgsItem>;
-
 export type GetUserInfoResponseBodyOrgsList = Array<GetUserInfoResponseBodyOrgsItem>;
-const GetUserInfoResponseBodyOrgsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetUserInfoResponseBodyOrgsList>;
-
 export interface GetUserInfoResponseBody {
   auth: GetUserInfoResponseBodyAuth;
   type: string;
@@ -218,14 +133,7 @@ export interface GetUserInfoResponseBody {
   isPro: boolean;
   orgs: GetUserInfoResponseBodyOrgsList;
 }
-const GetUserInfoResponseBody = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetUserInfoResponseBody>;
-
 export type GetUserInfoResponse = GetUserInfoResponseBody;
-const GetUserInfoResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetUserInfoResponse>;
-
 export type GetUserInfoError = HuggingFaceOpError;
 /** Get user info Get information about the user and auth method used */
 export const getUserInfo: API.OperationMethod<
@@ -234,8 +142,8 @@ export const getUserInfo: API.OperationMethod<
   GetUserInfoError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserInfoRequest,
-  output: GetUserInfoResponse,
+  input: __S(0) as any as S.Schema<GetUserInfoRequest>,
+  output: __S(15) as any as S.Schema<GetUserInfoResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -253,7 +161,7 @@ function __c0(j: number): any {
         S.Struct({
           _id: S.String,
           name: S.optional(S.String),
-          type: GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItemEntityType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItemEntity",
@@ -263,21 +171,21 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          entity: GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItemEntity,
-          permissions: GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItemPermissionsList,
+          entity: __S(1),
+          permissions: __S(2),
         }),
       ).annotate({
         identifier: "GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItem",
       });
     case 4:
-      return S.Array(GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedItem);
+      return S.Array(__S(3));
     case 5:
-      return S.Array(GetUserInfoResponseBodyAuthAccessTokenFineGrainedGlobalItem);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          scoped: GetUserInfoResponseBodyAuthAccessTokenFineGrainedScopedList,
-          global: S.optional(GetUserInfoResponseBodyAuthAccessTokenFineGrainedGlobalList),
+          scoped: __S(4),
+          global: S.optional(__S(5)),
           canReadGatedRepos: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -287,8 +195,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           displayName: S.String,
-          role: GetUserInfoResponseBodyAuthAccessTokenRole,
-          fineGrained: S.optional(GetUserInfoResponseBodyAuthAccessTokenFineGrained),
+          role: S.String,
+          fineGrained: S.optional(__S(6)),
           createdAt: S.String,
         }),
       ).annotate({
@@ -310,9 +218,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.String,
-          accessToken: S.optional(GetUserInfoResponseBodyAuthAccessToken),
+          accessToken: S.optional(__S(7)),
           expiresAt: S.optional(S.String),
-          resource: S.optional(GetUserInfoResponseBodyAuthResource),
+          resource: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "GetUserInfoResponseBodyAuth",
@@ -322,13 +230,13 @@ function __c1(j: number): any {
         S.Struct({
           id: S.String,
           name: S.String,
-          role: GetUserInfoResponseBodyOrgsItemResourceGroupsItemRole,
+          role: S.String,
         }),
       ).annotate({
         identifier: "GetUserInfoResponseBodyOrgsItemResourceGroupsItem",
       });
     case 3:
-      return S.Array(GetUserInfoResponseBodyOrgsItemResourceGroupsItem);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -339,40 +247,53 @@ function __c1(j: number): any {
           email: S.optional(S.NullOr(S.String)),
           canPay: S.optional(S.Boolean),
           spendLimitReached: S.optional(S.Boolean),
-          billingMode: S.optional(GetUserInfoResponseBodyOrgsItemBillingMode),
+          billingMode: S.optional(S.String),
           avatarUrl: S.String,
           periodEnd: S.optional(S.NullOr(S.Number)),
-          plan: S.optional(GetUserInfoResponseBodyOrgsItemPlan),
-          roleInOrg: S.optional(GetUserInfoResponseBodyOrgsItemRoleInOrg),
-          securityRestrictions: S.optional(GetUserInfoResponseBodyOrgsItemSecurityRestrictionsList),
-          resourceGroups: S.optional(GetUserInfoResponseBodyOrgsItemResourceGroupsList),
+          plan: S.optional(S.String),
+          roleInOrg: S.optional(S.String),
+          securityRestrictions: S.optional(__S(5)),
+          resourceGroups: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "GetUserInfoResponseBodyOrgsItem",
       });
     case 5:
-      return S.Array(GetUserInfoResponseBodyOrgsItem);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          auth: GetUserInfoResponseBodyAuth,
+          auth: __S(9),
           type: S.String,
           id: S.String,
           name: S.String,
           fullname: S.String,
           email: S.optional(S.NullOr(S.String)),
           canPay: S.optional(S.Boolean),
-          billingMode: S.optional(GetUserInfoResponseBodyBillingMode),
+          billingMode: S.optional(S.String),
           avatarUrl: S.String,
           periodEnd: S.optional(S.NullOr(S.Number)),
           emailVerified: S.optional(S.Boolean),
           isPro: S.Boolean,
-          orgs: GetUserInfoResponseBodyOrgsList,
+          orgs: __S(13),
         }),
       ).annotate({ identifier: "GetUserInfoResponseBody" });
     case 7:
-      return S.suspend(() => GetUserInfoResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(14).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetUserInfoResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

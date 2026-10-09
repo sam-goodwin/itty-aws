@@ -8,6 +8,8 @@ import { paginateStartAfter } from "../pagination.ts";
 import { S2Protocol, type S2OpError, type S2OpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { S2OpError, S2OpContext };
 
@@ -22,26 +24,17 @@ export interface ResourceSetCase1 {
   prefix: string;
 }
 export type ResourceSet = ResourceSetCase0 | ResourceSetCase1;
-const ResourceSet = /*@__PURE__*/ S.Unknown as any as S.Schema<ResourceSet>;
-
 export interface ReadWritePermissions {
   /** Read permission. */
   read?: boolean;
   /** Write permission. */
   write?: boolean;
 }
-const ReadWritePermissions = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ReadWritePermissions>;
-
 export interface PermittedOperationGroups {
   account?: ReadWritePermissions | null;
   basin?: ReadWritePermissions | null;
   stream?: ReadWritePermissions | null;
 }
-const PermittedOperationGroups = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<PermittedOperationGroups>;
-
 export type Operation =
   | "list-basins"
   | "create-basin"
@@ -67,15 +60,8 @@ export type Operation =
   | "list-locations"
   | "get-default-location"
   | "set-default-location";
-const Operation = S.String;
-
 /** Operations allowed for the token. A union of allowed operations and groups is used as an effective set of allowed operations. */
 export type AccessTokenScopeOpsList = Array<Operation | (string & {})>;
-const AccessTokenScopeOpsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AccessTokenScopeOpsList>;
-
 export interface AccessTokenScope {
   access_tokens?: ResourceSet | null;
   basins?: ResourceSet | null;
@@ -84,8 +70,6 @@ export interface AccessTokenScope {
   ops?: AccessTokenScopeOpsList | null;
   streams?: ResourceSet | null;
 }
-const AccessTokenScope = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AccessTokenScope>;
-
 export interface IssueAccessTokenRequest {
   /** Namespace streams based on the configured stream-level scope, which must be a prefix. Stream name arguments will be automatically prefixed, and the prefix will be stripped when listing streams. */
   auto_prefix_streams?: boolean;
@@ -96,20 +80,10 @@ export interface IssueAccessTokenRequest {
   /** Access token scope. */
   scope: AccessTokenScope;
 }
-const IssueAccessTokenRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<IssueAccessTokenRequest>;
-
 export interface IssueAccessTokenResponse {
   /** Created access token. */
   access_token: string | Redacted.Redacted<string>;
 }
-const IssueAccessTokenResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<IssueAccessTokenResponse>;
-
 export interface ListAccessTokensRequest {
   /** Filter to access tokens whose IDs begin with this prefix. It must not contain NUL bytes. */
   prefix?: string;
@@ -118,11 +92,6 @@ export interface ListAccessTokensRequest {
   /** Number of results, up to a maximum of 1000. */
   limit?: number;
 }
-const ListAccessTokensRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ListAccessTokensRequest>;
-
 export interface AccessTokenInfo {
   /** Namespace streams based on the configured stream-level scope. */
   auto_prefix_streams: boolean;
@@ -133,41 +102,19 @@ export interface AccessTokenInfo {
   /** Access token scope. */
   scope: AccessTokenScope;
 }
-const AccessTokenInfo = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AccessTokenInfo>;
-
 /** Matching access tokens. */
 export type ListAccessTokensResponseAccessTokensList = Array<AccessTokenInfo>;
-const ListAccessTokensResponseAccessTokensList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListAccessTokensResponseAccessTokensList>;
-
 export interface ListAccessTokensResponse {
   /** Matching access tokens. */
   access_tokens: ListAccessTokensResponseAccessTokensList;
   /** Indicates that there are more access tokens that match the criteria. */
   has_more: boolean;
 }
-const ListAccessTokensResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListAccessTokensResponse>;
-
 export interface RevokeAccessTokenRequest {
   /** Access token ID. */
   id: string;
 }
-const RevokeAccessTokenRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<RevokeAccessTokenRequest>;
-
 export interface RevokeAccessTokenResponse {}
-const RevokeAccessTokenResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<RevokeAccessTokenResponse>;
-
 export type IssueAccessTokenError = S2OpError;
 /** Issue a new access token. */
 export const issueAccessToken: API.OperationMethod<
@@ -176,8 +123,8 @@ export const issueAccessToken: API.OperationMethod<
   IssueAccessTokenError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IssueAccessTokenRequest,
-  output: IssueAccessTokenResponse,
+  input: __S(4) as any as S.Schema<IssueAccessTokenRequest>,
+  output: __S(5) as any as S.Schema<IssueAccessTokenResponse>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -193,8 +140,8 @@ export const listAccessTokens: API.PaginatedOperationMethod<
   AccessTokenInfo
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAccessTokensRequest,
-    output: ListAccessTokensResponse,
+    input: __S(6) as any as S.Schema<ListAccessTokensRequest>,
+    output: __S(9) as any as S.Schema<ListAccessTokensResponse>,
     errors: [UnknownS2Error],
     protocol: S2Protocol,
     retry: Retry.Retry,
@@ -217,8 +164,8 @@ export const revokeAccessToken: API.OperationMethod<
   RevokeAccessTokenError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeAccessTokenRequest,
-  output: RevokeAccessTokenResponse,
+  input: __S(10) as any as S.Schema<RevokeAccessTokenRequest>,
+  output: __S(11) as any as S.Schema<RevokeAccessTokenResponse>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -237,21 +184,21 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          account: S.optional(S.NullOr(ReadWritePermissions)),
-          basin: S.optional(S.NullOr(ReadWritePermissions)),
-          stream: S.optional(S.NullOr(ReadWritePermissions)),
+          account: S.optional(S.NullOr(__S(0))),
+          basin: S.optional(S.NullOr(__S(0))),
+          stream: S.optional(S.NullOr(__S(0))),
         }),
       ).annotate({ identifier: "PermittedOperationGroups" });
     case 2:
-      return S.Array(Operation);
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
-          access_tokens: S.optional(S.NullOr(ResourceSet)),
-          basins: S.optional(S.NullOr(ResourceSet)),
-          op_groups: S.optional(S.NullOr(PermittedOperationGroups)),
-          ops: S.optional(S.NullOr(AccessTokenScopeOpsList)),
-          streams: S.optional(S.NullOr(ResourceSet)),
+          access_tokens: S.optional(S.NullOr(S.Unknown)),
+          basins: S.optional(S.NullOr(S.Unknown)),
+          op_groups: S.optional(S.NullOr(__S(1))),
+          ops: S.optional(S.NullOr(__S(2))),
+          streams: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "AccessTokenScope" });
     case 4:
@@ -260,7 +207,7 @@ function __c0(j: number): any {
           auto_prefix_streams: S.optional(S.Boolean),
           expires_at: S.optional(S.NullOr(S.String)),
           id: S.String,
-          scope: AccessTokenScope,
+          scope: __S(3),
         }).pipe(T.Http({ method: "POST", uri: "/access-tokens", code: 200 })),
       ).annotate({ identifier: "IssueAccessTokenRequest" });
     case 5:
@@ -283,7 +230,7 @@ function __c0(j: number): any {
           auto_prefix_streams: S.Boolean,
           expires_at: S.optional(S.NullOr(S.String)),
           id: S.String,
-          scope: AccessTokenScope,
+          scope: __S(3),
         }),
       ).annotate({ identifier: "AccessTokenInfo" });
   }
@@ -291,11 +238,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AccessTokenInfo);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          access_tokens: ListAccessTokensResponseAccessTokensList,
+          access_tokens: __S(8),
           has_more: S.Boolean,
         }),
       ).annotate({ identifier: "ListAccessTokensResponse" });
@@ -309,5 +256,18 @@ function __c1(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "RevokeAccessTokenResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

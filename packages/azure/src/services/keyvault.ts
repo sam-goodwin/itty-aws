@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -15,15 +17,8 @@ export interface CheckManagedHsmMhsmNameAvailabilityRequest {
   /** The managed hsm name. */
   name: string;
 }
-const CheckManagedHsmMhsmNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckManagedHsmMhsmNameAvailabilityRequest>;
-
 /** The reason that a vault name could not be used. The Reason element is only returned if NameAvailable is false. */
 export type Reason = "AccountNameInvalid" | "AlreadyExists";
-const Reason = S.String;
-
 /** The CheckMhsmNameAvailability operation response. */
 export interface CheckMhsmNameAvailabilityResult {
   /** A boolean value that indicates whether the name is available for you to use. If true, the name is available. If false, the name has already been taken or is invalid and cannot be used. */
@@ -33,15 +28,8 @@ export interface CheckMhsmNameAvailabilityResult {
   /** An error message explaining the Reason value in more detail. */
   message?: string;
 }
-const CheckMhsmNameAvailabilityResult = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CheckMhsmNameAvailabilityResult>;
-
 /** The type of resource, Microsoft.KeyVault/vaults */
 export type CheckVaultNameAvailabilityRequestType = "Microsoft.KeyVault/vaults";
-const CheckVaultNameAvailabilityRequestType = S.String;
-
 export interface CheckVaultNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -50,11 +38,6 @@ export interface CheckVaultNameAvailabilityRequest {
   /** The type of resource, Microsoft.KeyVault/vaults */
   type: CheckVaultNameAvailabilityRequestType | (string & {});
 }
-const CheckVaultNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CheckVaultNameAvailabilityRequest>;
-
 /** The CheckNameAvailability operation response. */
 export interface CheckNameAvailabilityResult {
   /** A boolean value that indicates whether the name is available for you to use. If true, the name is available. If false, the name has already been taken or is invalid and cannot be used. */
@@ -64,16 +47,8 @@ export interface CheckNameAvailabilityResult {
   /** An error message explaining the Reason value in more detail. */
   message?: string;
 }
-const CheckNameAvailabilityResult =
-  CheckMhsmNameAvailabilityResult as any as S.Schema<CheckNameAvailabilityResult>;
-
 /** The tags that will be assigned to the key. */
 export type CreateKeyIfNotExistRequestTagsMap = { [key: string]: string | undefined };
-const CreateKeyIfNotExistRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateKeyIfNotExistRequestTagsMap>;
-
 /** The object attributes managed by the Azure Key Vault service. */
 export interface KeyAttributesInput {
   /** Determines whether or not the object is enabled. */
@@ -85,12 +60,8 @@ export interface KeyAttributesInput {
   /** Indicates if the private key can be exported. */
   exportable?: boolean;
 }
-const KeyAttributesInput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<KeyAttributesInput>;
-
 /** The type of the key. For valid values, see JsonWebKeyType. */
 export type JsonWebKeyType = "EC" | "EC-HSM" | "RSA" | "RSA-HSM" | "oct-HSM";
-const JsonWebKeyType = S.String;
-
 /** The permitted JSON web key operations of the key. For more information, see JsonWebKeyOperation. */
 export type JsonWebKeyOperation =
   | "encrypt"
@@ -101,76 +72,45 @@ export type JsonWebKeyOperation =
   | "unwrapKey"
   | "import"
   | "release";
-const JsonWebKeyOperation = S.String;
-
 export type KeyPropertiesInputKeyOpsList = Array<JsonWebKeyOperation | (string & {})>;
-const KeyPropertiesInputKeyOpsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<KeyPropertiesInputKeyOpsList>;
-
 /** The elliptic curve name. For valid values, see JsonWebKeyCurveName. Default for EC and EC-HSM keys is P-256 */
 export type JsonWebKeyCurveName = "P-256" | "P-384" | "P-521" | "P-256K";
-const JsonWebKeyCurveName = S.String;
-
 export interface KeyRotationPolicyAttributesInput {
   /** The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'. */
   expiryTime?: string;
 }
-const KeyRotationPolicyAttributesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<KeyRotationPolicyAttributesInput>;
-
 export interface Trigger {
   /** The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'. */
   timeAfterCreate?: string;
   /** The time duration before key expiring to rotate or notify. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'. */
   timeBeforeExpiry?: string;
 }
-const Trigger = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Trigger>;
-
 /** The type of action. */
 export type KeyRotationPolicyActionType = "rotate" | "notify";
-const KeyRotationPolicyActionType = S.String;
-
 export interface Action {
   /** The type of action. */
   type?: KeyRotationPolicyActionType | (string & {});
 }
-const Action = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Action>;
-
 export interface LifetimeAction {
   /** The trigger of key rotation policy lifetimeAction. */
   trigger?: Trigger;
   /** The action of key rotation policy lifetimeAction. */
   action?: Action;
 }
-const LifetimeAction = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<LifetimeAction>;
-
 /** The lifetimeActions for key rotation action. */
 export type RotationPolicyInputLifetimeActionsList = Array<LifetimeAction>;
-const RotationPolicyInputLifetimeActionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<RotationPolicyInputLifetimeActionsList>;
-
 export interface RotationPolicyInput {
   /** The attributes of key rotation policy. */
   attributes?: KeyRotationPolicyAttributesInput;
   /** The lifetimeActions for key rotation action. */
   lifetimeActions?: RotationPolicyInputLifetimeActionsList;
 }
-const RotationPolicyInput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<RotationPolicyInput>;
-
 export interface KeyReleasePolicy {
   /** Content type and version of key release policy */
   contentType?: string;
   /** Blob encoding the policy rules under which the key can be released. */
   data?: string;
 }
-const KeyReleasePolicy = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<KeyReleasePolicy>;
-
 /** The properties of the key. */
 export interface KeyPropertiesInput {
   /** The attributes of the key. */
@@ -187,8 +127,6 @@ export interface KeyPropertiesInput {
   /** Key release policy in response. It will be used for both output and input. Omitted if empty */
   release_policy?: KeyReleasePolicy;
 }
-const KeyPropertiesInput = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<KeyPropertiesInput>;
-
 export interface CreateKeyIfNotExistRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -203,19 +141,10 @@ export interface CreateKeyIfNotExistRequest {
   /** The properties of the key to be created. */
   properties: KeyPropertiesInput;
 }
-const CreateKeyIfNotExistRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateKeyIfNotExistRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -231,16 +160,12 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<SystemData>;
-
 /** The deletion recovery level currently in effect for the object. If it contains 'Purgeable', then the object can be permanently deleted by a privileged user; otherwise, only the system can purge the object at the end of the retention interval. */
 export type DeletionRecoveryLevel =
   | "Purgeable"
   | "Recoverable+Purgeable"
   | "Recoverable"
   | "Recoverable+ProtectedSubscription";
-const DeletionRecoveryLevel = S.String;
-
 /** The object attributes managed by the Azure Key Vault service. */
 export interface KeyAttributes {
   /** Determines whether or not the object is enabled. */
@@ -258,12 +183,7 @@ export interface KeyAttributes {
   /** Indicates if the private key can be exported. */
   exportable?: boolean;
 }
-const KeyAttributes = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<KeyAttributes>;
-
 export type KeyPropertiesKeyOpsList = Array<JsonWebKeyOperation>;
-const KeyPropertiesKeyOpsList =
-  KeyPropertiesInputKeyOpsList as any as S.Schema<KeyPropertiesKeyOpsList>;
-
 export interface KeyRotationPolicyAttributes {
   /** Creation time in seconds since 1970-01-01T00:00:00Z. */
   created?: number;
@@ -272,24 +192,14 @@ export interface KeyRotationPolicyAttributes {
   /** The expiration time for the new key version. It should be in ISO8601 format. Eg: 'P90D', 'P1Y'. */
   expiryTime?: string;
 }
-const KeyRotationPolicyAttributes = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<KeyRotationPolicyAttributes>;
-
 /** The lifetimeActions for key rotation action. */
 export type RotationPolicyLifetimeActionsList = Array<LifetimeAction>;
-const RotationPolicyLifetimeActionsList =
-  RotationPolicyInputLifetimeActionsList as any as S.Schema<RotationPolicyLifetimeActionsList>;
-
 export interface RotationPolicy {
   /** The attributes of key rotation policy. */
   attributes?: KeyRotationPolicyAttributes;
   /** The lifetimeActions for key rotation action. */
   lifetimeActions?: RotationPolicyLifetimeActionsList;
 }
-const RotationPolicy = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<RotationPolicy>;
-
 /** The properties of the key. */
 export interface KeyProperties {
   /** The attributes of the key. */
@@ -310,13 +220,8 @@ export interface KeyProperties {
   /** Key release policy in response. It will be used for both output and input. Omitted if empty */
   release_policy?: KeyReleasePolicy;
 }
-const KeyProperties = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<KeyProperties>;
-
 /** Resource tags */
 export type CreateKeyIfNotExistResponseTagsMap = { [key: string]: string | undefined };
-const CreateKeyIfNotExistResponseTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<CreateKeyIfNotExistResponseTagsMap>;
-
 export interface CreateKeyIfNotExistResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -333,42 +238,23 @@ export interface CreateKeyIfNotExistResponse {
   /** Resource tags */
   tags?: CreateKeyIfNotExistResponseTagsMap;
 }
-const CreateKeyIfNotExistResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateKeyIfNotExistResponse>;
-
 /** The tags that will be assigned to the key. */
 export type CreateManagedHsmKeyIfNotExistRequestTagsMap = { [key: string]: string | undefined };
-const CreateManagedHsmKeyIfNotExistRequestTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<CreateManagedHsmKeyIfNotExistRequestTagsMap>;
-
 /** The object attributes managed by the Azure Key Vault service. */
 export type ManagedHsmKeyAttributesInput = KeyAttributesInput;
 export type ManagedHsmKeyPropertiesInputKeyOpsList = Array<JsonWebKeyOperation | (string & {})>;
-const ManagedHsmKeyPropertiesInputKeyOpsList =
-  KeyPropertiesInputKeyOpsList as any as S.Schema<ManagedHsmKeyPropertiesInputKeyOpsList>;
-
 export type ManagedHsmKeyRotationPolicyAttributesInput = KeyRotationPolicyAttributesInput;
 export type ManagedHsmTrigger = Trigger;
 export type ManagedHsmAction = Action;
 export type ManagedHsmLifetimeAction = LifetimeAction;
 /** The lifetimeActions for key rotation action. */
 export type ManagedHsmRotationPolicyInputLifetimeActionsList = Array<LifetimeAction>;
-const ManagedHsmRotationPolicyInputLifetimeActionsList =
-  RotationPolicyInputLifetimeActionsList as any as S.Schema<ManagedHsmRotationPolicyInputLifetimeActionsList>;
-
 export interface ManagedHsmRotationPolicyInput {
   /** The attributes of key rotation policy. */
   attributes?: KeyRotationPolicyAttributesInput;
   /** The lifetimeActions for key rotation action. */
   lifetimeActions?: ManagedHsmRotationPolicyInputLifetimeActionsList;
 }
-const ManagedHsmRotationPolicyInput = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ManagedHsmRotationPolicyInput>;
-
 export type ManagedHsmKeyReleasePolicy = KeyReleasePolicy;
 /** The properties of the key. */
 export interface ManagedHsmKeyPropertiesInput {
@@ -386,11 +272,6 @@ export interface ManagedHsmKeyPropertiesInput {
   /** Key release policy in response. It will be used for both output and input. Omitted if empty */
   release_policy?: KeyReleasePolicy;
 }
-const ManagedHsmKeyPropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ManagedHsmKeyPropertiesInput>;
-
 export interface CreateManagedHsmKeyIfNotExistRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -405,11 +286,6 @@ export interface CreateManagedHsmKeyIfNotExistRequest {
   /** The properties of the key to be created. */
   properties: ManagedHsmKeyPropertiesInput;
 }
-const CreateManagedHsmKeyIfNotExistRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateManagedHsmKeyIfNotExistRequest>;
-
 /** The object attributes managed by the Azure Key Vault service. */
 export type ManagedHsmKeyAttributes = KeyAttributes;
 export type ManagedHsmKeyPropertiesKeyOpsList = Array<JsonWebKeyOperation>;
@@ -442,13 +318,8 @@ export interface ManagedHsmKeyProperties {
   /** Key release policy in response. It will be used for both output and input. Omitted if empty */
   release_policy?: KeyReleasePolicy;
 }
-const ManagedHsmKeyProperties = KeyProperties as any as S.Schema<ManagedHsmKeyProperties>;
-
 /** Resource tags */
 export type CreateManagedHsmKeyIfNotExistResponseTagsMap = { [key: string]: string | undefined };
-const CreateManagedHsmKeyIfNotExistResponseTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<CreateManagedHsmKeyIfNotExistResponseTagsMap>;
-
 export interface CreateManagedHsmKeyIfNotExistResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -463,11 +334,6 @@ export interface CreateManagedHsmKeyIfNotExistResponse {
   /** Resource tags */
   tags?: CreateManagedHsmKeyIfNotExistResponseTagsMap;
 }
-const CreateManagedHsmKeyIfNotExistResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateManagedHsmKeyIfNotExistResponse>;
-
 export interface DeleteManagedHsmRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -476,17 +342,7 @@ export interface DeleteManagedHsmRequest {
   /** The name of the managed HSM Pool. */
   name: string;
 }
-const DeleteManagedHsmRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteManagedHsmRequest>;
-
 export interface DeleteManagedHsmResponse {}
-const DeleteManagedHsmResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeleteManagedHsmResponse>;
-
 export interface DeleteMHSMPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -497,30 +353,19 @@ export interface DeleteMHSMPrivateEndpointConnectionRequest {
   /** Name of the private endpoint connection associated with the managed hsm pool. */
   privateEndpointConnectionName: string;
 }
-const DeleteMHSMPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteMHSMPrivateEndpointConnectionRequest>;
-
 /** Private endpoint object properties. */
 export interface MHSMPrivateEndpoint {
   /** Full identifier of the private endpoint resource. */
   id?: string;
 }
-const MHSMPrivateEndpoint = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<MHSMPrivateEndpoint>;
-
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus =
   | "Pending"
   | "Approved"
   | "Rejected"
   | "Disconnected";
-const PrivateEndpointServiceConnectionStatus = S.String;
-
 /** A message indicating if changes on the service provider require any updates on the consumer. */
 export type ActionsRequired = "None";
-const ActionsRequired = S.String;
-
 /** An object that represents the approval state of the private link connection. */
 export interface MHSMPrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been approved, rejected or removed by the key vault owner. */
@@ -530,11 +375,6 @@ export interface MHSMPrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: ActionsRequired | (string & {});
 }
-const MHSMPrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<MHSMPrivateLinkServiceConnectionState>;
-
 /** The current provisioning state. */
 export type PrivateEndpointConnectionProvisioningState =
   | "Succeeded"
@@ -543,8 +383,6 @@ export type PrivateEndpointConnectionProvisioningState =
   | "Deleting"
   | "Failed"
   | "Disconnected";
-const PrivateEndpointConnectionProvisioningState = S.String;
-
 /** Properties of the private endpoint connection resource. */
 export interface MHSMPrivateEndpointConnectionProperties {
   /** Properties of the private endpoint object. */
@@ -554,15 +392,8 @@ export interface MHSMPrivateEndpointConnectionProperties {
   /** Provisioning state of the private endpoint connection. */
   provisioningState?: PrivateEndpointConnectionProvisioningState;
 }
-const MHSMPrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<MHSMPrivateEndpointConnectionProperties>;
-
 /** SKU Family of the managed HSM Pool */
 export type ManagedHsmSkuFamily = "B" | "C";
-const ManagedHsmSkuFamily = S.String;
-
 /** SKU of the managed HSM Pool */
 export type ManagedHsmSkuNameV2 =
   | "Standard_B1"
@@ -575,8 +406,6 @@ export type ManagedHsmSkuNameV2 =
   | "Standard_B10v2"
   | "Standard_B15v2"
   | "Standard_B20v2";
-const ManagedHsmSkuNameV2 = S.String;
-
 /** SKU details */
 export interface ManagedHsmSku {
   /** SKU Family of the managed HSM Pool */
@@ -584,16 +413,12 @@ export interface ManagedHsmSku {
   /** SKU of the managed HSM Pool */
   name: ManagedHsmSkuNameV2 | (string & {});
 }
-const ManagedHsmSku = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ManagedHsmSku>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const ManagedServiceIdentityType = S.String;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -601,15 +426,8 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<UserAssignedIdentity>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | null | undefined };
-const UserAssignedIdentities = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<UserAssignedIdentities>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface DeleteMHSMPrivateEndpointConnectionResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -619,18 +437,10 @@ export interface DeleteMHSMPrivateEndpointConnectionResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities;
 }
-const DeleteMHSMPrivateEndpointConnectionResponseIdentity = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DeleteMHSMPrivateEndpointConnectionResponseIdentity>;
-
 /** Resource tags. */
 export type DeleteMHSMPrivateEndpointConnectionResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const DeleteMHSMPrivateEndpointConnectionResponseTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<DeleteMHSMPrivateEndpointConnectionResponseTagsMap>;
-
 export interface DeleteMHSMPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -653,11 +463,6 @@ export interface DeleteMHSMPrivateEndpointConnectionResponse {
   /** Resource tags. */
   tags?: DeleteMHSMPrivateEndpointConnectionResponseTagsMap;
 }
-const DeleteMHSMPrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DeleteMHSMPrivateEndpointConnectionResponse>;
-
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -668,11 +473,6 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** Name of the private endpoint connection associated with the key vault. */
   privateEndpointConnectionName: string;
 }
-const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
-
 /** Private endpoint object properties. */
 export type PrivateEndpoint = MHSMPrivateEndpoint;
 /** An object that represents the approval state of the private link connection. */
@@ -681,9 +481,6 @@ export type PrivateLinkServiceConnectionState = MHSMPrivateLinkServiceConnection
 export type PrivateEndpointConnectionProperties = MHSMPrivateEndpointConnectionProperties;
 /** Tags assigned to the key vault resource. */
 export type DeletePrivateEndpointConnectionResponseTagsMap = { [key: string]: string | undefined };
-const DeletePrivateEndpointConnectionResponseTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<DeletePrivateEndpointConnectionResponseTagsMap>;
-
 export interface DeletePrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -702,11 +499,6 @@ export interface DeletePrivateEndpointConnectionResponse {
   /** Modified whenever there is a change in the state of private endpoint connection. */
   etag?: string;
 }
-const DeletePrivateEndpointConnectionResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
-
 export interface DeleteVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -715,11 +507,7 @@ export interface DeleteVaultRequest {
   /** The name of the vault. */
   vaultName: string;
 }
-const DeleteVaultRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<DeleteVaultRequest>;
-
 export interface DeleteVaultResponse {}
-const DeleteVaultResponse = DeleteManagedHsmResponse as any as S.Schema<DeleteVaultResponse>;
-
 export interface GetKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -730,13 +518,8 @@ export interface GetKeyRequest {
   /** The name of the key to be retrieved. */
   keyName: string;
 }
-const GetKeyRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GetKeyRequest>;
-
 /** Resource tags */
 export type GetKeyResponseTagsMap = { [key: string]: string | undefined };
-const GetKeyResponseTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<GetKeyResponseTagsMap>;
-
 export interface GetKeyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -753,8 +536,6 @@ export interface GetKeyResponse {
   /** Resource tags */
   tags?: GetKeyResponseTagsMap;
 }
-const GetKeyResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<GetKeyResponse>;
-
 export interface GetKeyVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -767,8 +548,6 @@ export interface GetKeyVersionRequest {
   /** The version of the key to be retrieved. */
   keyVersion: string;
 }
-const GetKeyVersionRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GetKeyVersionRequest>;
-
 /** Resource tags */
 export type GetKeyVersionResponseTagsMap = { [key: string]: string | undefined };
 export interface GetKeyVersionResponse {
@@ -787,8 +566,6 @@ export interface GetKeyVersionResponse {
   /** Resource tags */
   tags?: GetKeyVersionResponseTagsMap;
 }
-const GetKeyVersionResponse = GetKeyResponse as any as S.Schema<GetKeyVersionResponse>;
-
 export interface GetManagedHsmRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -797,19 +574,10 @@ export interface GetManagedHsmRequest {
   /** The name of the managed HSM Pool. */
   name: string;
 }
-const GetManagedHsmRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<GetManagedHsmRequest>;
-
 /** Array of initial administrators object ids for this managed hsm pool. */
 export type ManagedHsmPropertiesInitialAdminObjectIdsList = Array<string>;
-const ManagedHsmPropertiesInitialAdminObjectIdsList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ManagedHsmPropertiesInitialAdminObjectIdsList>;
-
 /** The vault's create mode to indicate whether the vault need to be recovered or not. */
 export type CreateMode = "recover" | "default";
-const CreateMode = S.String;
-
 /** Provisioning state. */
 export type ProvisioningState =
   | "Succeeded"
@@ -820,61 +588,31 @@ export type ProvisioningState =
   | "Activated"
   | "SecurityDomainRestore"
   | "Restoring";
-const ProvisioningState = S.String;
-
 /** Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'. If not specified the default is 'AzureServices'. */
 export type NetworkRuleBypassOptions = "AzureServices" | "None";
-const NetworkRuleBypassOptions = S.String;
-
 /** The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated. */
 export type NetworkRuleAction = "Allow" | "Deny";
-const NetworkRuleAction = S.String;
-
 /** A rule governing the accessibility of a managed HSM pool from a specific IP address or IP range. */
 export interface MHSMIPRule {
   /** An IPv4 address range in CIDR notation, such as '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that start with 124.56.78). */
   value: string;
 }
-const MHSMIPRule = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<MHSMIPRule>;
-
 /** The list of IP address rules. */
 export type MHSMNetworkRuleSetIpRulesList = Array<MHSMIPRule>;
-const MHSMNetworkRuleSetIpRulesList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<MHSMNetworkRuleSetIpRulesList>;
-
 /** A rule governing the accessibility of a managed hsm pool from a specific service tags. */
 export interface MHSMServiceTagRule {
   /** Name of the service tag. */
   tag: string;
 }
-const MHSMServiceTagRule = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<MHSMServiceTagRule>;
-
 /** The list of service tags. */
 export type MHSMNetworkRuleSetServiceTagsList = Array<MHSMServiceTagRule>;
-const MHSMNetworkRuleSetServiceTagsList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<MHSMNetworkRuleSetServiceTagsList>;
-
 /** A rule governing the accessibility of a managed hsm pool from a specific virtual network. */
 export interface MHSMVirtualNetworkRule {
   /** Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'. */
   id: string;
 }
-const MHSMVirtualNetworkRule = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<MHSMVirtualNetworkRule>;
-
 /** The list of virtual network rules. */
 export type MHSMNetworkRuleSetVirtualNetworkRulesList = Array<MHSMVirtualNetworkRule>;
-const MHSMNetworkRuleSetVirtualNetworkRulesList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<MHSMNetworkRuleSetVirtualNetworkRulesList>;
-
 /** A set of rules governing the network accessibility of a managed hsm pool. */
 export interface MHSMNetworkRuleSet {
   /** Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'. If not specified the default is 'AzureServices'. */
@@ -888,8 +626,6 @@ export interface MHSMNetworkRuleSet {
   /** The list of virtual network rules. */
   virtualNetworkRules?: MHSMNetworkRuleSetVirtualNetworkRulesList;
 }
-const MHSMNetworkRuleSet = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<MHSMNetworkRuleSet>;
-
 /** The current provisioning state. */
 export type GeoReplicationRegionProvisioningState =
   | "Preprovisioning"
@@ -898,8 +634,6 @@ export type GeoReplicationRegionProvisioningState =
   | "Failed"
   | "Deleting"
   | "Cleanup";
-const GeoReplicationRegionProvisioningState = S.String;
-
 /** A region that this managed HSM Pool has been extended to. */
 export interface MHSMGeoReplicatedRegion {
   /** Name of the geo replicated region. */
@@ -909,18 +643,8 @@ export interface MHSMGeoReplicatedRegion {
   /** A boolean value that indicates whether the region is the primary region or a secondary region. */
   isPrimary?: boolean;
 }
-const MHSMGeoReplicatedRegion = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<MHSMGeoReplicatedRegion>;
-
 /** List of all regions associated with the managed hsm pool. */
 export type ManagedHsmPropertiesRegionsList = Array<MHSMGeoReplicatedRegion>;
-const ManagedHsmPropertiesRegionsList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ManagedHsmPropertiesRegionsList>;
-
 /** Private endpoint connection item. */
 export interface MHSMPrivateEndpointConnectionItem {
   /** Id of private endpoint connection. */
@@ -930,27 +654,13 @@ export interface MHSMPrivateEndpointConnectionItem {
   /** Private endpoint connection properties. */
   properties?: MHSMPrivateEndpointConnectionProperties;
 }
-const MHSMPrivateEndpointConnectionItem = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<MHSMPrivateEndpointConnectionItem>;
-
 /** List of private endpoint connections associated with the managed hsm pool. */
 export type ManagedHsmPropertiesPrivateEndpointConnectionsList =
   Array<MHSMPrivateEndpointConnectionItem>;
-const ManagedHsmPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ManagedHsmPropertiesPrivateEndpointConnectionsList>;
-
 /** Control permission to the managed HSM from public networks. */
 export type ManagedHsmPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-const ManagedHsmPropertiesPublicNetworkAccess = S.String;
-
 /** Activation Status */
 export type ActivationStatus = "Active" | "NotActivated" | "Unknown" | "Failed";
-const ActivationStatus = S.String;
-
 /** The security domain properties of the managed hsm. */
 export interface ManagedHSMSecurityDomainProperties {
   /** Activation Status */
@@ -958,11 +668,6 @@ export interface ManagedHSMSecurityDomainProperties {
   /** Activation Status Message. */
   activationStatusMessage?: string;
 }
-const ManagedHSMSecurityDomainProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ManagedHSMSecurityDomainProperties>;
-
 /** Properties of the managed HSM Pool */
 export interface ManagedHsmProperties {
   /** The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool. */
@@ -996,15 +701,10 @@ export interface ManagedHsmProperties {
   /** Managed HSM security domain properties. */
   securityDomainProperties?: ManagedHSMSecurityDomainProperties;
 }
-const ManagedHsmProperties = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ManagedHsmProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetManagedHsmResponseIdentity = DeleteMHSMPrivateEndpointConnectionResponseIdentity;
 /** Resource tags. */
 export type GetManagedHsmResponseTagsMap = { [key: string]: string | undefined };
-const GetManagedHsmResponseTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<GetManagedHsmResponseTagsMap>;
-
 export interface GetManagedHsmResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1025,11 +725,6 @@ export interface GetManagedHsmResponse {
   /** Resource tags. */
   tags?: GetManagedHsmResponseTagsMap;
 }
-const GetManagedHsmResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetManagedHsmResponse>;
-
 export interface GetManagedHsmDeletedRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1038,16 +733,8 @@ export interface GetManagedHsmDeletedRequest {
   /** The name of the deleted managed HSM. */
   name: string;
 }
-const GetManagedHsmDeletedRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetManagedHsmDeletedRequest>;
-
 /** Tags of the original managed HSM. */
 export type DeletedManagedHsmPropertiesTagsMap = { [key: string]: string | undefined };
-const DeletedManagedHsmPropertiesTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<DeletedManagedHsmPropertiesTagsMap>;
-
 /** Properties of the deleted managed HSM. */
 export interface DeletedManagedHsmProperties {
   /** The resource id of the original managed HSM. */
@@ -1063,11 +750,6 @@ export interface DeletedManagedHsmProperties {
   /** Tags of the original managed HSM. */
   tags?: DeletedManagedHsmPropertiesTagsMap;
 }
-const DeletedManagedHsmProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DeletedManagedHsmProperties>;
-
 export interface GetManagedHsmDeletedResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1080,11 +762,6 @@ export interface GetManagedHsmDeletedResponse {
   /** Properties of the deleted managed HSM */
   properties?: DeletedManagedHsmProperties;
 }
-const GetManagedHsmDeletedResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetManagedHsmDeletedResponse>;
-
 export interface GetManagedHsmKeyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1095,16 +772,8 @@ export interface GetManagedHsmKeyRequest {
   /** The name of the key to be created. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information. */
   keyName: string;
 }
-const GetManagedHsmKeyRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GetManagedHsmKeyRequest>;
-
 /** Resource tags */
 export type GetManagedHsmKeyResponseTagsMap = { [key: string]: string | undefined };
-const GetManagedHsmKeyResponseTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<GetManagedHsmKeyResponseTagsMap>;
-
 export interface GetManagedHsmKeyResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1119,11 +788,6 @@ export interface GetManagedHsmKeyResponse {
   /** Resource tags */
   tags?: GetManagedHsmKeyResponseTagsMap;
 }
-const GetManagedHsmKeyResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GetManagedHsmKeyResponse>;
-
 export interface GetManagedHsmKeyVersionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1136,11 +800,6 @@ export interface GetManagedHsmKeyVersionRequest {
   /** The version of the key to be retrieved. */
   keyVersion: string;
 }
-const GetManagedHsmKeyVersionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GetManagedHsmKeyVersionRequest>;
-
 /** Resource tags */
 export type GetManagedHsmKeyVersionResponseTagsMap = { [key: string]: string | undefined };
 export interface GetManagedHsmKeyVersionResponse {
@@ -1157,9 +816,6 @@ export interface GetManagedHsmKeyVersionResponse {
   /** Resource tags */
   tags?: GetManagedHsmKeyVersionResponseTagsMap;
 }
-const GetManagedHsmKeyVersionResponse =
-  CreateManagedHsmKeyIfNotExistResponse as any as S.Schema<GetManagedHsmKeyVersionResponse>;
-
 export interface GetMHSMPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1170,11 +826,6 @@ export interface GetMHSMPrivateEndpointConnectionRequest {
   /** Name of the private endpoint connection associated with the managed hsm pool. */
   privateEndpointConnectionName: string;
 }
-const GetMHSMPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetMHSMPrivateEndpointConnectionRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetMHSMPrivateEndpointConnectionResponseIdentity =
   DeleteMHSMPrivateEndpointConnectionResponseIdentity;
@@ -1202,9 +853,6 @@ export interface GetMHSMPrivateEndpointConnectionResponse {
   /** Resource tags. */
   tags?: GetMHSMPrivateEndpointConnectionResponseTagsMap;
 }
-const GetMHSMPrivateEndpointConnectionResponse =
-  DeleteMHSMPrivateEndpointConnectionResponse as any as S.Schema<GetMHSMPrivateEndpointConnectionResponse>;
-
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1215,11 +863,6 @@ export interface GetPrivateEndpointConnectionRequest {
   /** Name of the private endpoint connection associated with the key vault. */
   privateEndpointConnectionName: string;
 }
-const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
-
 /** Tags assigned to the key vault resource. */
 export type GetPrivateEndpointConnectionResponseTagsMap = { [key: string]: string | undefined };
 export interface GetPrivateEndpointConnectionResponse {
@@ -1240,9 +883,6 @@ export interface GetPrivateEndpointConnectionResponse {
   /** Modified whenever there is a change in the state of private endpoint connection. */
   etag?: string;
 }
-const GetPrivateEndpointConnectionResponse =
-  DeletePrivateEndpointConnectionResponse as any as S.Schema<GetPrivateEndpointConnectionResponse>;
-
 export interface GetSecretRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1253,8 +893,6 @@ export interface GetSecretRequest {
   /** The name of the secret. */
   secretName: string;
 }
-const GetSecretRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GetSecretRequest>;
-
 /** The object attributes managed by the KeyVault service. */
 export interface Attributes {
   /** Determines whether the object is enabled. */
@@ -1268,8 +906,6 @@ export interface Attributes {
   /** Last updated time in seconds since 1970-01-01T00:00:00Z. */
   updated?: number;
 }
-const Attributes = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<Attributes>;
-
 /** Properties of the secret */
 export interface SecretProperties {
   /** The value of the secret. NOTE: 'value' will never be returned from the service, as APIs using this model are is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets. */
@@ -1283,13 +919,8 @@ export interface SecretProperties {
   /** The URI to retrieve the specific version of the secret. */
   secretUriWithVersion?: string;
 }
-const SecretProperties = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<SecretProperties>;
-
 /** Tags assigned to the key vault resource. */
 export type GetSecretResponseTagsMap = { [key: string]: string | undefined };
-const GetSecretResponseTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<GetSecretResponseTagsMap>;
-
 export interface GetSecretResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1306,8 +937,6 @@ export interface GetSecretResponse {
   /** Tags assigned to the key vault resource. */
   tags?: GetSecretResponseTagsMap;
 }
-const GetSecretResponse = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<GetSecretResponse>;
-
 export interface GetVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1316,8 +945,6 @@ export interface GetVaultRequest {
   /** The name of the vault. */
   vaultName: string;
 }
-const GetVaultRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<GetVaultRequest>;
-
 /** SKU family name */
 export type SkuFamily = "A";
 /** SKU name to specify whether the key vault is a standard vault or a premium vault. */
@@ -1329,8 +956,6 @@ export interface Sku {
   /** SKU name to specify whether the key vault is a standard vault or a premium vault. */
   name: SkuName | (string & {});
 }
-const Sku = ManagedHsmSku as any as S.Schema<Sku>;
-
 export type KeyPermissions =
   | "all"
   | "encrypt"
@@ -1355,8 +980,6 @@ export type KeyPermissions =
   | "setrotationpolicy";
 /** Permissions to keys */
 export type PermissionsKeysList = Array<KeyPermissions | (string & {})>;
-const PermissionsKeysList = KeyPropertiesInputKeyOpsList as any as S.Schema<PermissionsKeysList>;
-
 export type SecretPermissions =
   | "all"
   | "get"
@@ -1369,9 +992,6 @@ export type SecretPermissions =
   | "purge";
 /** Permissions to secrets */
 export type PermissionsSecretsList = Array<SecretPermissions | (string & {})>;
-const PermissionsSecretsList =
-  KeyPropertiesInputKeyOpsList as any as S.Schema<PermissionsSecretsList>;
-
 export type CertificatePermissions =
   | "all"
   | "get"
@@ -1392,9 +1012,6 @@ export type CertificatePermissions =
   | "restore";
 /** Permissions to certificates */
 export type PermissionsCertificatesList = Array<CertificatePermissions | (string & {})>;
-const PermissionsCertificatesList =
-  KeyPropertiesInputKeyOpsList as any as S.Schema<PermissionsCertificatesList>;
-
 export type StoragePermissions =
   | "all"
   | "get"
@@ -1413,9 +1030,6 @@ export type StoragePermissions =
   | "deletesas";
 /** Permissions to storage accounts */
 export type PermissionsStorageList = Array<StoragePermissions | (string & {})>;
-const PermissionsStorageList =
-  KeyPropertiesInputKeyOpsList as any as S.Schema<PermissionsStorageList>;
-
 /** Permissions the identity has for keys, secrets, certificates and storage. */
 export interface Permissions {
   /** Permissions to keys */
@@ -1427,8 +1041,6 @@ export interface Permissions {
   /** Permissions to storage accounts */
   storage?: PermissionsStorageList;
 }
-const Permissions = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Permissions>;
-
 /** An identity that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. */
 export interface AccessPolicyEntry {
   /** The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault. */
@@ -1440,22 +1052,12 @@ export interface AccessPolicyEntry {
   /** Permissions the identity has for keys, secrets and certificates. */
   permissions: Permissions;
 }
-const AccessPolicyEntry = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<AccessPolicyEntry>;
-
 /** An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required. */
 export type VaultPropertiesAccessPoliciesList = Array<AccessPolicyEntry>;
-const VaultPropertiesAccessPoliciesList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<VaultPropertiesAccessPoliciesList>;
-
 /** A rule governing the accessibility of a vault from a specific ip address or ip range. */
 export type IPRule = MHSMIPRule;
 /** The list of IP address rules. */
 export type NetworkRuleSetIpRulesList = Array<MHSMIPRule>;
-const NetworkRuleSetIpRulesList =
-  MHSMNetworkRuleSetIpRulesList as any as S.Schema<NetworkRuleSetIpRulesList>;
-
 /** A rule governing the accessibility of a vault from a specific virtual network. */
 export interface VirtualNetworkRule {
   /** Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'. */
@@ -1463,15 +1065,8 @@ export interface VirtualNetworkRule {
   /** Property to specify whether NRP will ignore the check if parent subnet has serviceEndpoints configured. */
   ignoreMissingVnetServiceEndpoint?: boolean;
 }
-const VirtualNetworkRule = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<VirtualNetworkRule>;
-
 /** The list of virtual network rules. */
 export type NetworkRuleSetVirtualNetworkRulesList = Array<VirtualNetworkRule>;
-const NetworkRuleSetVirtualNetworkRulesList = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<NetworkRuleSetVirtualNetworkRulesList>;
-
 /** A set of rules governing the network accessibility of a vault. */
 export interface NetworkRuleSet {
   /** Tells what traffic can bypass network rules. This can be 'AzureServices' or 'None'. If not specified the default is 'AzureServices'. */
@@ -1483,20 +1078,13 @@ export interface NetworkRuleSet {
   /** The list of virtual network rules. */
   virtualNetworkRules?: NetworkRuleSetVirtualNetworkRulesList;
 }
-const NetworkRuleSet = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<NetworkRuleSet>;
-
 /** Provisioning state of the vault. */
 export type VaultProvisioningState = "Succeeded" | "RegisteringDns";
-const VaultProvisioningState = S.String;
-
 /** Private endpoint connection item. */
 export type PrivateEndpointConnectionItem = MHSMPrivateEndpointConnectionItem;
 /** List of private endpoint connections associated with the key vault. */
 export type VaultPropertiesPrivateEndpointConnectionsList =
   Array<MHSMPrivateEndpointConnectionItem>;
-const VaultPropertiesPrivateEndpointConnectionsList =
-  ManagedHsmPropertiesPrivateEndpointConnectionsList as any as S.Schema<VaultPropertiesPrivateEndpointConnectionsList>;
-
 /** Properties of the vault */
 export interface VaultProperties {
   /** The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault. */
@@ -1534,13 +1122,8 @@ export interface VaultProperties {
   /** Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules. */
   publicNetworkAccess?: string;
 }
-const VaultProperties = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<VaultProperties>;
-
 /** Tags assigned to the key vault resource. */
 export type GetVaultResponseTagsMap = { [key: string]: string | undefined };
-const GetVaultResponseTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<GetVaultResponseTagsMap>;
-
 export interface GetVaultResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1557,8 +1140,6 @@ export interface GetVaultResponse {
   /** Tags assigned to the key vault resource. */
   tags?: GetVaultResponseTagsMap;
 }
-const GetVaultResponse = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<GetVaultResponse>;
-
 export interface GetVaultDeletedRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1567,16 +1148,8 @@ export interface GetVaultDeletedRequest {
   /** The name of the vault. */
   vaultName: string;
 }
-const GetVaultDeletedRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GetVaultDeletedRequest>;
-
 /** Tags of the original vault. */
 export type DeletedVaultPropertiesTagsMap = { [key: string]: string | undefined };
-const DeletedVaultPropertiesTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<DeletedVaultPropertiesTagsMap>;
-
 /** Properties of the deleted vault. */
 export interface DeletedVaultProperties {
   /** The resource id of the original vault. */
@@ -1592,11 +1165,6 @@ export interface DeletedVaultProperties {
   /** Purge protection status of the original vault. */
   purgeProtectionEnabled?: boolean;
 }
-const DeletedVaultProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DeletedVaultProperties>;
-
 export interface GetVaultDeletedResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1609,11 +1177,6 @@ export interface GetVaultDeletedResponse {
   /** Properties of the vault */
   properties?: DeletedVaultProperties;
 }
-const GetVaultDeletedResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GetVaultDeletedResponse>;
-
 export interface ListKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1622,12 +1185,8 @@ export interface ListKeysRequest {
   /** The name of the vault which contains the key to be retrieved. */
   vaultName: string;
 }
-const ListKeysRequest = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<ListKeysRequest>;
-
 /** Resource tags */
 export type KeyTagsMap = { [key: string]: string | undefined };
-const KeyTagsMap = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<KeyTagsMap>;
-
 /** The key resource. */
 export interface Key {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1645,15 +1204,8 @@ export interface Key {
   /** Resource tags */
   tags?: KeyTagsMap;
 }
-const Key = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<Key>;
-
 /** The Key items on this page */
 export type KeyListResultValueList = Array<Key>;
-const KeyListResultValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<KeyListResultValueList>;
-
 /** The response of a Key list operation. */
 export interface KeyListResult {
   /** The Key items on this page */
@@ -1661,8 +1213,6 @@ export interface KeyListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const KeyListResult = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<KeyListResult>;
-
 export interface ListKeyVersionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1673,11 +1223,6 @@ export interface ListKeyVersionsRequest {
   /** The name of the key version to be retrieved. */
   keyName: string;
 }
-const ListKeyVersionsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListKeyVersionsRequest>;
-
 export interface ListManagedHsmByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1686,11 +1231,6 @@ export interface ListManagedHsmByResourceGroupRequest {
   /** Maximum number of results to return. */
   _top?: number;
 }
-const ListManagedHsmByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListManagedHsmByResourceGroupRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ManagedHsmIdentity = DeleteMHSMPrivateEndpointConnectionResponseIdentity;
 /** Resource tags. */
@@ -1716,15 +1256,8 @@ export interface ManagedHsm {
   /** Resource tags. */
   tags?: ManagedHsmTagsMap;
 }
-const ManagedHsm = GetManagedHsmResponse as any as S.Schema<ManagedHsm>;
-
 /** The ManagedHsm items on this page */
 export type ManagedHsmListResultValueList = Array<ManagedHsm>;
-const ManagedHsmListResultValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ManagedHsmListResultValueList>;
-
 /** The response of a ManagedHsm list operation. */
 export interface ManagedHsmListResult {
   /** The ManagedHsm items on this page */
@@ -1732,31 +1265,16 @@ export interface ManagedHsmListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ManagedHsmListResult = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ManagedHsmListResult>;
-
 export interface ListManagedHsmBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** Maximum number of results to return. */
   _top?: number;
 }
-const ListManagedHsmBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ListManagedHsmBySubscriptionRequest>;
-
 export interface ListManagedHsmDeletedRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListManagedHsmDeletedRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ListManagedHsmDeletedRequest>;
-
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface DeletedManagedHsm {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -1770,15 +1288,8 @@ export interface DeletedManagedHsm {
   /** Properties of the deleted managed HSM */
   properties?: DeletedManagedHsmProperties;
 }
-const DeletedManagedHsm = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<DeletedManagedHsm>;
-
 /** The DeletedManagedHsm items on this page */
 export type DeletedManagedHsmListResultValueList = Array<DeletedManagedHsm>;
-const DeletedManagedHsmListResultValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<DeletedManagedHsmListResultValueList>;
-
 /** The response of a DeletedManagedHsm list operation. */
 export interface DeletedManagedHsmListResult {
   /** The DeletedManagedHsm items on this page */
@@ -1786,11 +1297,6 @@ export interface DeletedManagedHsmListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DeletedManagedHsmListResult = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<DeletedManagedHsmListResult>;
-
 export interface ListManagedHsmKeysRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1799,11 +1305,6 @@ export interface ListManagedHsmKeysRequest {
   /** The name of the Managed HSM Pool within the specified resource group. */
   name: string;
 }
-const ListManagedHsmKeysRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ListManagedHsmKeysRequest>;
-
 /** Resource tags */
 export type ManagedHsmKeyTagsMap = { [key: string]: string | undefined };
 /** The key resource. */
@@ -1821,15 +1322,8 @@ export interface ManagedHsmKey {
   /** Resource tags */
   tags?: ManagedHsmKeyTagsMap;
 }
-const ManagedHsmKey = GetManagedHsmKeyResponse as any as S.Schema<ManagedHsmKey>;
-
 /** The ManagedHsmKey items on this page */
 export type ManagedHsmKeyListResultValueList = Array<ManagedHsmKey>;
-const ManagedHsmKeyListResultValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ManagedHsmKeyListResultValueList>;
-
 /** The response of a ManagedHsmKey list operation. */
 export interface ManagedHsmKeyListResult {
   /** The ManagedHsmKey items on this page */
@@ -1837,11 +1331,6 @@ export interface ManagedHsmKeyListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ManagedHsmKeyListResult = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ManagedHsmKeyListResult>;
-
 export interface ListManagedHsmKeyVersionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1852,11 +1341,6 @@ export interface ListManagedHsmKeyVersionsRequest {
   /** The name of the key to be created. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information. */
   keyName: string;
 }
-const ListManagedHsmKeyVersionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListManagedHsmKeyVersionsRequest>;
-
 export interface ListMHSMPrivateEndpointConnectionByResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1865,11 +1349,6 @@ export interface ListMHSMPrivateEndpointConnectionByResourceRequest {
   /** The name of the managed HSM Pool. */
   name: string;
 }
-const ListMHSMPrivateEndpointConnectionByResourceRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListMHSMPrivateEndpointConnectionByResourceRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type MHSMPrivateEndpointConnectionIdentity =
   DeleteMHSMPrivateEndpointConnectionResponseIdentity;
@@ -1898,17 +1377,9 @@ export interface MHSMPrivateEndpointConnection {
   /** Resource tags. */
   tags?: MHSMPrivateEndpointConnectionTagsMap;
 }
-const MHSMPrivateEndpointConnection =
-  DeleteMHSMPrivateEndpointConnectionResponse as any as S.Schema<MHSMPrivateEndpointConnection>;
-
 /** The MhsmPrivateEndpointConnection items on this page */
 export type MHSMPrivateEndpointConnectionsListResultValueList =
   Array<MHSMPrivateEndpointConnection>;
-const MHSMPrivateEndpointConnectionsListResultValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<MHSMPrivateEndpointConnectionsListResultValueList>;
-
 /** List of private endpoint connections associated with a managed HSM Pools */
 export interface MHSMPrivateEndpointConnectionsListResult {
   /** The MhsmPrivateEndpointConnection items on this page */
@@ -1916,11 +1387,6 @@ export interface MHSMPrivateEndpointConnectionsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const MHSMPrivateEndpointConnectionsListResult = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<MHSMPrivateEndpointConnectionsListResult>;
-
 export interface ListMHSMPrivateLinkResourceByMHSMResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1929,26 +1395,12 @@ export interface ListMHSMPrivateLinkResourceByMHSMResourceRequest {
   /** The name of the managed HSM Pool. */
   name: string;
 }
-const ListMHSMPrivateLinkResourceByMHSMResourceRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListMHSMPrivateLinkResourceByMHSMResourceRequest>;
-
 /** Resource tags. */
 export type MHSMPrivateLinkResourceTagsMap = { [key: string]: string | undefined };
-const MHSMPrivateLinkResourceTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<MHSMPrivateLinkResourceTagsMap>;
-
 /** Required member names of private link resource. */
 export type MHSMPrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-const MHSMPrivateLinkResourcePropertiesRequiredMembersList =
-  ManagedHsmPropertiesInitialAdminObjectIdsList as any as S.Schema<MHSMPrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** Required DNS zone names of the the private link resource. */
 export type MHSMPrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-const MHSMPrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ManagedHsmPropertiesInitialAdminObjectIdsList as any as S.Schema<MHSMPrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Properties of a private link resource. */
 export interface MHSMPrivateLinkResourceProperties {
   /** Group identifier of private link resource. */
@@ -1958,11 +1410,6 @@ export interface MHSMPrivateLinkResourceProperties {
   /** Required DNS zone names of the the private link resource. */
   requiredZoneNames?: MHSMPrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-const MHSMPrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<MHSMPrivateLinkResourceProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type MHSMPrivateLinkResourceIdentity = DeleteMHSMPrivateEndpointConnectionResponseIdentity;
 /** A private link resource */
@@ -1986,28 +1433,13 @@ export interface MHSMPrivateLinkResource {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: DeleteMHSMPrivateEndpointConnectionResponseIdentity;
 }
-const MHSMPrivateLinkResource = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<MHSMPrivateLinkResource>;
-
 /** Array of private link resources */
 export type MHSMPrivateLinkResourceListResultValueList = Array<MHSMPrivateLinkResource>;
-const MHSMPrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<MHSMPrivateLinkResourceListResultValueList>;
-
 /** A list of private link resources */
 export interface MHSMPrivateLinkResourceListResult {
   /** Array of private link resources */
   value?: MHSMPrivateLinkResourceListResultValueList;
 }
-const MHSMPrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<MHSMPrivateLinkResourceListResult>;
-
 export interface ListMHSMRegionByResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2016,16 +1448,8 @@ export interface ListMHSMRegionByResourceRequest {
   /** The name of the managed HSM Pool. */
   name: string;
 }
-const ListMHSMRegionByResourceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<ListMHSMRegionByResourceRequest>;
-
 /** The MhsmGeoReplicatedRegion items on this page */
 export type MHSMRegionsListResultValueList = Array<MHSMGeoReplicatedRegion>;
-const MHSMRegionsListResultValueList =
-  ManagedHsmPropertiesRegionsList as any as S.Schema<MHSMRegionsListResultValueList>;
-
 /** List of regions associated with a managed HSM Pools */
 export interface MHSMRegionsListResult {
   /** The MhsmGeoReplicatedRegion items on this page */
@@ -2033,17 +1457,7 @@ export interface MHSMRegionsListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const MHSMRegionsListResult = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<MHSMRegionsListResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Display metadata associated with the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft Key Vault. */
@@ -2055,8 +1469,6 @@ export interface OperationDisplay {
   /** Description of operation. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<OperationDisplay>;
-
 /** Log specification of operation. */
 export interface LogSpecification {
   /** Name of log specification. */
@@ -2066,25 +1478,12 @@ export interface LogSpecification {
   /** Blob duration of specification. */
   blobDuration?: string;
 }
-const LogSpecification = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<LogSpecification>;
-
 /** Log specifications of operation. */
 export type ServiceSpecificationLogSpecificationsList = Array<LogSpecification>;
-const ServiceSpecificationLogSpecificationsList = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ServiceSpecificationLogSpecificationsList>;
-
 /** The supported aggregation types for the metrics. */
 export type MetricSpecificationSupportedAggregationTypesList = Array<string>;
-const MetricSpecificationSupportedAggregationTypesList =
-  ManagedHsmPropertiesInitialAdminObjectIdsList as any as S.Schema<MetricSpecificationSupportedAggregationTypesList>;
-
 /** The supported time grain types for the metrics. */
 export type MetricSpecificationSupportedTimeGrainTypesList = Array<string>;
-const MetricSpecificationSupportedTimeGrainTypesList =
-  ManagedHsmPropertiesInitialAdminObjectIdsList as any as S.Schema<MetricSpecificationSupportedTimeGrainTypesList>;
-
 /** Type of operation: get, read, delete, etc. */
 export interface DimensionProperties {
   /** Name of dimension. */
@@ -2094,15 +1493,8 @@ export interface DimensionProperties {
   /** Property to specify whether the dimension should be exported for Shoebox. */
   toBeExportedForShoebox?: boolean;
 }
-const DimensionProperties = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<DimensionProperties>;
-
 /** The dimensions of metric */
 export type MetricSpecificationDimensionsList = Array<DimensionProperties>;
-const MetricSpecificationDimensionsList = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<MetricSpecificationDimensionsList>;
-
 /** Metric specification of operation. */
 export interface MetricSpecification {
   /** Name of metric specification. */
@@ -2128,15 +1520,8 @@ export interface MetricSpecification {
   /** The internal metric name. */
   internalMetricName?: string;
 }
-const MetricSpecification = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<MetricSpecification>;
-
 /** Metric specifications of operation. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecification>;
-const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
-
 /** One property of operation, include log specifications. */
 export interface ServiceSpecification {
   /** Log specifications of operation. */
@@ -2144,18 +1529,11 @@ export interface ServiceSpecification {
   /** Metric specifications of operation. */
   metricSpecifications?: ServiceSpecificationMetricSpecificationsList;
 }
-const ServiceSpecification = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ServiceSpecification>;
-
 /** Properties of operation, include metric specifications. */
 export interface OperationProperties {
   /** One property of operation, include metric specifications. */
   serviceSpecification?: ServiceSpecification;
 }
-const OperationProperties = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<OperationProperties>;
-
 /** Key Vault REST API operation definition. */
 export interface Operation {
   /** Operation name: {provider}/{resource}/{operation} */
@@ -2169,15 +1547,8 @@ export interface Operation {
   /** Property to specify whether the action is a data action. */
   isDataAction?: boolean;
 }
-const Operation = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<Operation>;
-
 /** List of Storage operations supported by the Storage resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** Result of the request to list Storage operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of Storage operations supported by the Storage resource provider. */
@@ -2185,8 +1556,6 @@ export interface OperationListResult {
   /** The URL to get the next set of operations. */
   nextLink?: string;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<OperationListResult>;
-
 export interface ListPrivateEndpointConnectionByResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2195,11 +1564,6 @@ export interface ListPrivateEndpointConnectionByResourceRequest {
   /** The name of the vault. */
   vaultName: string;
 }
-const ListPrivateEndpointConnectionByResourceRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ListPrivateEndpointConnectionByResourceRequest>;
-
 /** Tags assigned to the key vault resource. */
 export type PrivateEndpointConnectionTagsMap = { [key: string]: string | undefined };
 /** Private endpoint connection resource. */
@@ -2221,16 +1585,8 @@ export interface PrivateEndpointConnection {
   /** Modified whenever there is a change in the state of private endpoint connection. */
   etag?: string;
 }
-const PrivateEndpointConnection =
-  DeletePrivateEndpointConnectionResponse as any as S.Schema<PrivateEndpointConnection>;
-
 /** The PrivateEndpointConnection items on this page */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-const PrivateEndpointConnectionListResultValueList = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
-
 /** The response of a PrivateEndpointConnection list operation. */
 export interface PrivateEndpointConnectionListResult {
   /** The PrivateEndpointConnection items on this page */
@@ -2238,11 +1594,6 @@ export interface PrivateEndpointConnectionListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<PrivateEndpointConnectionListResult>;
-
 export interface ListPrivateLinkResourceByVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2251,11 +1602,6 @@ export interface ListPrivateLinkResourceByVaultRequest {
   /** The name of the vault. */
   vaultName: string;
 }
-const ListPrivateLinkResourceByVaultRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ListPrivateLinkResourceByVaultRequest>;
-
 /** Required member names of private link resource. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
 /** Required DNS zone names of the the private link resource. */
@@ -2269,14 +1615,8 @@ export interface PrivateLinkResourceProperties {
   /** Required DNS zone names of the the private link resource. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-const PrivateLinkResourceProperties =
-  MHSMPrivateLinkResourceProperties as any as S.Schema<PrivateLinkResourceProperties>;
-
 /** Tags assigned to the key vault resource. */
 export type PrivateLinkResourceTagsMap = { [key: string]: string | undefined };
-const PrivateLinkResourceTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<PrivateLinkResourceTagsMap>;
-
 /** A private link resource */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2294,25 +1634,13 @@ export interface PrivateLinkResource {
   /** Tags assigned to the key vault resource. */
   tags?: PrivateLinkResourceTagsMap;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<PrivateLinkResource>;
-
 /** Array of private link resources */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-const PrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<PrivateLinkResourceListResultValueList>;
-
 /** A list of private link resources */
 export interface PrivateLinkResourceListResult {
   /** Array of private link resources */
   value?: PrivateLinkResourceListResultValueList;
 }
-const PrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<PrivateLinkResourceListResult>;
-
 export interface ListSecretsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2323,8 +1651,6 @@ export interface ListSecretsRequest {
   /** Maximum number of results to return. */
   _top?: number;
 }
-const ListSecretsRequest = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<ListSecretsRequest>;
-
 /** Tags assigned to the key vault resource. */
 export type SecretTagsMap = { [key: string]: string | undefined };
 /** Resource information with extended details. */
@@ -2344,15 +1670,8 @@ export interface Secret {
   /** Tags assigned to the key vault resource. */
   tags?: SecretTagsMap;
 }
-const Secret = GetSecretResponse as any as S.Schema<Secret>;
-
 /** The Secret items on this page */
 export type SecretListResultValueList = Array<Secret>;
-const SecretListResultValueList = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<SecretListResultValueList>;
-
 /** The response of a Secret list operation. */
 export interface SecretListResult {
   /** The Secret items on this page */
@@ -2360,8 +1679,6 @@ export interface SecretListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const SecretListResult = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<SecretListResult>;
-
 export interface ListVaultByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2370,11 +1687,6 @@ export interface ListVaultByResourceGroupRequest {
   /** Maximum number of results to return. */
   _top?: number;
 }
-const ListVaultByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ListVaultByResourceGroupRequest>;
-
 /** Tags assigned to the key vault resource. */
 export type VaultTagsMap = { [key: string]: string | undefined };
 /** Resource information with extended details. */
@@ -2394,15 +1706,8 @@ export interface Vault {
   /** Tags assigned to the key vault resource. */
   tags?: VaultTagsMap;
 }
-const Vault = GetVaultResponse as any as S.Schema<Vault>;
-
 /** The Vault items on this page */
 export type VaultListResultValueList = Array<Vault>;
-const VaultListResultValueList = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<VaultListResultValueList>;
-
 /** The response of a Vault list operation. */
 export interface VaultListResult {
   /** The Vault items on this page */
@@ -2410,28 +1715,16 @@ export interface VaultListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const VaultListResult = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<VaultListResult>;
-
 export interface ListVaultBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** Maximum number of results to return. */
   _top?: number;
 }
-const ListVaultBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListVaultBySubscriptionRequest>;
-
 export interface ListVaultDeletedRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListVaultDeletedRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ListVaultDeletedRequest>;
-
 /** Deleted vault information with extended details. */
 export interface DeletedVault {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2445,15 +1738,8 @@ export interface DeletedVault {
   /** Properties of the vault */
   properties?: DeletedVaultProperties;
 }
-const DeletedVault = GetVaultDeletedResponse as any as S.Schema<DeletedVault>;
-
 /** The DeletedVault items on this page */
 export type DeletedVaultListResultValueList = Array<DeletedVault>;
-const DeletedVaultListResultValueList = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<DeletedVaultListResultValueList>;
-
 /** The response of a DeletedVault list operation. */
 export interface DeletedVaultListResult {
   /** The DeletedVault items on this page */
@@ -2461,14 +1747,7 @@ export interface DeletedVaultListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DeletedVaultListResult = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<DeletedVaultListResult>;
-
 export type ListVaultsRequestFilter = "resourceType eq 'Microsoft.KeyVault/vaults'";
-const ListVaultsRequestFilter = S.String;
-
 export interface ListVaultsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2477,13 +1756,8 @@ export interface ListVaultsRequest {
   /** Maximum number of results to return. */
   _top?: number;
 }
-const ListVaultsRequest = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<ListVaultsRequest>;
-
 /** Resource tags. */
 export type ResourceListResultValueItemTagsMap = { [key: string]: string | undefined };
-const ResourceListResultValueItemTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<ResourceListResultValueItemTagsMap>;
-
 /** The resource model definition for an Azure Resource Manager tracked top level resource which has 'tags' and a 'location' */
 export interface ResourceListResultValueItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2499,18 +1773,8 @@ export interface ResourceListResultValueItem {
   /** The geo-location where the resource lives */
   location: string;
 }
-const ResourceListResultValueItem = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ResourceListResultValueItem>;
-
 /** The list of vault resources. */
 export type ResourceListResultValueList = Array<ResourceListResultValueItem>;
-const ResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ResourceListResultValueList>;
-
 /** The list of vault resources. */
 export interface ResourceListResult {
   /** The list of vault resources. */
@@ -2518,13 +1782,8 @@ export interface ResourceListResult {
   /** The URL to get the next set of vault resources. */
   nextLink?: string;
 }
-const ResourceListResult = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<ResourceListResult>;
-
 /** Array of initial administrators object ids for this managed hsm pool. */
 export type ManagedHsmPropertiesInputInitialAdminObjectIdsList = Array<string>;
-const ManagedHsmPropertiesInputInitialAdminObjectIdsList =
-  ManagedHsmPropertiesInitialAdminObjectIdsList as any as S.Schema<ManagedHsmPropertiesInputInitialAdminObjectIdsList>;
-
 /** A region that this managed HSM Pool has been extended to. */
 export interface MHSMGeoReplicatedRegionInput {
   /** Name of the geo replicated region. */
@@ -2532,22 +1791,10 @@ export interface MHSMGeoReplicatedRegionInput {
   /** A boolean value that indicates whether the region is the primary region or a secondary region. */
   isPrimary?: boolean;
 }
-const MHSMGeoReplicatedRegionInput = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<MHSMGeoReplicatedRegionInput>;
-
 /** List of all regions associated with the managed hsm pool. */
 export type ManagedHsmPropertiesInputRegionsList = Array<MHSMGeoReplicatedRegionInput>;
-const ManagedHsmPropertiesInputRegionsList = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ManagedHsmPropertiesInputRegionsList>;
-
 /** Control permission to the managed HSM from public networks. */
 export type ManagedHsmPropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
-const ManagedHsmPropertiesInputPublicNetworkAccess = S.String;
-
 /** Properties of the managed HSM Pool */
 export interface ManagedHsmPropertiesInput {
   /** The Azure Active Directory tenant ID that should be used for authenticating requests to the managed HSM pool. */
@@ -2569,40 +1816,19 @@ export interface ManagedHsmPropertiesInput {
   /** Control permission to the managed HSM from public networks. */
   publicNetworkAccess?: ManagedHsmPropertiesInputPublicNetworkAccess | (string & {});
 }
-const ManagedHsmPropertiesInput = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<ManagedHsmPropertiesInput>;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-const UserAssignedIdentityInput =
-  DeleteManagedHsmResponse as any as S.Schema<UserAssignedIdentityInput>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = {
   [key: string]: UserAssignedIdentityInput | null | undefined;
 };
-const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<UserAssignedIdentitiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface ManagedHsmsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput;
 }
-const ManagedHsmsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ManagedHsmsCreateOrUpdateRequestIdentity>;
-
 /** Resource tags. */
 export type ManagedHsmsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ManagedHsmsCreateOrUpdateRequestTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<ManagedHsmsCreateOrUpdateRequestTagsMap>;
-
 export interface ManagedHsmsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2621,19 +1847,11 @@ export interface ManagedHsmsCreateOrUpdateRequest {
   /** Resource tags. */
   tags?: ManagedHsmsCreateOrUpdateRequestTagsMap;
 }
-const ManagedHsmsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ManagedHsmsCreateOrUpdateRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type ManagedHsmsCreateOrUpdateResponseIdentity =
   DeleteMHSMPrivateEndpointConnectionResponseIdentity;
 /** Resource tags. */
 export type ManagedHsmsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ManagedHsmsCreateOrUpdateResponseTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<ManagedHsmsCreateOrUpdateResponseTagsMap>;
-
 export interface ManagedHsmsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2654,11 +1872,6 @@ export interface ManagedHsmsCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: ManagedHsmsCreateOrUpdateResponseTagsMap;
 }
-const ManagedHsmsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ManagedHsmsCreateOrUpdateResponse>;
-
 export interface PurgeManagedHsmDeletedRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2667,15 +1880,7 @@ export interface PurgeManagedHsmDeletedRequest {
   /** The name of the deleted managed HSM. */
   name: string;
 }
-const PurgeManagedHsmDeletedRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<PurgeManagedHsmDeletedRequest>;
-
 export interface PurgeManagedHsmDeletedResponse {}
-const PurgeManagedHsmDeletedResponse =
-  DeleteManagedHsmResponse as any as S.Schema<PurgeManagedHsmDeletedResponse>;
-
 export interface PurgeVaultDeletedRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2684,15 +1889,7 @@ export interface PurgeVaultDeletedRequest {
   /** The name of the vault. */
   vaultName: string;
 }
-const PurgeVaultDeletedRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<PurgeVaultDeletedRequest>;
-
 export interface PurgeVaultDeletedResponse {}
-const PurgeVaultDeletedResponse =
-  DeleteManagedHsmResponse as any as S.Schema<PurgeVaultDeletedResponse>;
-
 /** Private endpoint object properties. */
 export type MHSMPrivateEndpointInput = UserAssignedIdentityInput;
 /** Properties of the private endpoint connection resource. */
@@ -2702,19 +1899,11 @@ export interface MHSMPrivateEndpointConnectionPropertiesInput {
   /** Approval state of the private link connection. */
   privateLinkServiceConnectionState?: MHSMPrivateLinkServiceConnectionState;
 }
-const MHSMPrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<MHSMPrivateEndpointConnectionPropertiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type PutMHSMPrivateEndpointConnectionRequestIdentity =
   ManagedHsmsCreateOrUpdateRequestIdentity;
 /** Resource tags. */
 export type PutMHSMPrivateEndpointConnectionRequestTagsMap = { [key: string]: string | undefined };
-const PutMHSMPrivateEndpointConnectionRequestTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<PutMHSMPrivateEndpointConnectionRequestTagsMap>;
-
 export interface PutMHSMPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2737,11 +1926,6 @@ export interface PutMHSMPrivateEndpointConnectionRequest {
   /** Resource tags. */
   tags?: PutMHSMPrivateEndpointConnectionRequestTagsMap;
 }
-const PutMHSMPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<PutMHSMPrivateEndpointConnectionRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type PutMHSMPrivateEndpointConnectionResponseIdentity =
   DeleteMHSMPrivateEndpointConnectionResponseIdentity;
@@ -2769,9 +1953,6 @@ export interface PutMHSMPrivateEndpointConnectionResponse {
   /** Resource tags. */
   tags?: PutMHSMPrivateEndpointConnectionResponseTagsMap;
 }
-const PutMHSMPrivateEndpointConnectionResponse =
-  DeleteMHSMPrivateEndpointConnectionResponse as any as S.Schema<PutMHSMPrivateEndpointConnectionResponse>;
-
 /** Private endpoint object properties. */
 export type PrivateEndpointInput = UserAssignedIdentityInput;
 /** Properties of the private endpoint connection resource. */
@@ -2790,11 +1971,6 @@ export interface PutPrivateEndpointConnectionRequest {
   /** Modified whenever there is a change in the state of private endpoint connection. */
   etag?: string;
 }
-const PutPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<PutPrivateEndpointConnectionRequest>;
-
 /** Tags assigned to the key vault resource. */
 export type PutPrivateEndpointConnectionResponseTagsMap = { [key: string]: string | undefined };
 export interface PutPrivateEndpointConnectionResponse {
@@ -2815,14 +1991,8 @@ export interface PutPrivateEndpointConnectionResponse {
   /** Modified whenever there is a change in the state of private endpoint connection. */
   etag?: string;
 }
-const PutPrivateEndpointConnectionResponse =
-  DeletePrivateEndpointConnectionResponse as any as S.Schema<PutPrivateEndpointConnectionResponse>;
-
 /** The tags that will be assigned to the secret. */
 export type SecretsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const SecretsCreateOrUpdateRequestTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<SecretsCreateOrUpdateRequestTagsMap>;
-
 /** The object attributes managed by the KeyVault service. */
 export interface AttributesInput {
   /** Determines whether the object is enabled. */
@@ -2832,8 +2002,6 @@ export interface AttributesInput {
   /** Expiry date in seconds since 1970-01-01T00:00:00Z. */
   exp?: number;
 }
-const AttributesInput = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<AttributesInput>;
-
 /** Properties of the secret */
 export interface SecretPropertiesInput {
   /** The value of the secret. NOTE: 'value' will never be returned from the service, as APIs using this model are is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets. */
@@ -2843,11 +2011,6 @@ export interface SecretPropertiesInput {
   /** The attributes of the secret. */
   attributes?: AttributesInput;
 }
-const SecretPropertiesInput = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<SecretPropertiesInput>;
-
 export interface SecretsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2862,16 +2025,8 @@ export interface SecretsCreateOrUpdateRequest {
   /** Properties of the secret */
   properties: SecretPropertiesInput;
 }
-const SecretsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<SecretsCreateOrUpdateRequest>;
-
 /** Tags assigned to the key vault resource. */
 export type SecretsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const SecretsCreateOrUpdateResponseTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<SecretsCreateOrUpdateResponseTagsMap>;
-
 export interface SecretsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2888,18 +2043,10 @@ export interface SecretsCreateOrUpdateResponse {
   /** Tags assigned to the key vault resource. */
   tags?: SecretsCreateOrUpdateResponseTagsMap;
 }
-const SecretsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<SecretsCreateOrUpdateResponse>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateManagedHsmRequestIdentity = ManagedHsmsCreateOrUpdateRequestIdentity;
 /** Resource tags. */
 export type UpdateManagedHsmRequestTagsMap = { [key: string]: string | undefined };
-const UpdateManagedHsmRequestTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<UpdateManagedHsmRequestTagsMap>;
-
 export interface UpdateManagedHsmRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2918,11 +2065,6 @@ export interface UpdateManagedHsmRequest {
   /** Resource tags. */
   tags?: UpdateManagedHsmRequestTagsMap;
 }
-const UpdateManagedHsmRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<UpdateManagedHsmRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateManagedHsmResponseIdentity = DeleteMHSMPrivateEndpointConnectionResponseIdentity;
 /** Resource tags. */
@@ -2947,13 +2089,8 @@ export interface UpdateManagedHsmResponse {
   /** Resource tags. */
   tags?: UpdateManagedHsmResponseTagsMap;
 }
-const UpdateManagedHsmResponse = GetManagedHsmResponse as any as S.Schema<UpdateManagedHsmResponse>;
-
 /** The tags that will be assigned to the secret. */
 export type UpdateSecretRequestTagsMap = { [key: string]: string | undefined };
-const UpdateSecretRequestTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<UpdateSecretRequestTagsMap>;
-
 /** Properties of the secret */
 export interface SecretPatchPropertiesInput {
   /** The value of the secret. */
@@ -2963,11 +2100,6 @@ export interface SecretPatchPropertiesInput {
   /** The attributes of the secret. */
   attributes?: AttributesInput;
 }
-const SecretPatchPropertiesInput = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<SecretPatchPropertiesInput>;
-
 export interface UpdateSecretRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2982,8 +2114,6 @@ export interface UpdateSecretRequest {
   /** Properties of the secret */
   properties?: SecretPatchPropertiesInput;
 }
-const UpdateSecretRequest = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<UpdateSecretRequest>;
-
 /** Tags assigned to the key vault resource. */
 export type UpdateSecretResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateSecretResponse {
@@ -3002,18 +2132,10 @@ export interface UpdateSecretResponse {
   /** Tags assigned to the key vault resource. */
   tags?: UpdateSecretResponseTagsMap;
 }
-const UpdateSecretResponse = GetSecretResponse as any as S.Schema<UpdateSecretResponse>;
-
 /** The tags that will be assigned to the key vault. */
 export type UpdateVaultRequestTagsMap = { [key: string]: string | undefined };
-const UpdateVaultRequestTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<UpdateVaultRequestTagsMap>;
-
 /** An array of 0 to 16 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. */
 export type VaultPatchPropertiesAccessPoliciesList = Array<AccessPolicyEntry>;
-const VaultPatchPropertiesAccessPoliciesList =
-  VaultPropertiesAccessPoliciesList as any as S.Schema<VaultPatchPropertiesAccessPoliciesList>;
-
 /** Properties of the vault */
 export interface VaultPatchProperties {
   /** The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault. */
@@ -3043,11 +2165,6 @@ export interface VaultPatchProperties {
   /** Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules. */
   publicNetworkAccess?: string;
 }
-const VaultPatchProperties = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<VaultPatchProperties>;
-
 export interface UpdateVaultRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3060,8 +2177,6 @@ export interface UpdateVaultRequest {
   /** Properties of the vault */
   properties?: VaultPatchProperties;
 }
-const UpdateVaultRequest = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<UpdateVaultRequest>;
-
 /** Tags assigned to the key vault resource. */
 export type UpdateVaultResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateVaultResponse {
@@ -3080,26 +2195,14 @@ export interface UpdateVaultResponse {
   /** Tags assigned to the key vault resource. */
   tags?: UpdateVaultResponseTagsMap;
 }
-const UpdateVaultResponse = GetVaultResponse as any as S.Schema<UpdateVaultResponse>;
-
 export type UpdateVaultAccessPolicyRequestOperationKind = "add" | "replace" | "remove";
-const UpdateVaultAccessPolicyRequestOperationKind = S.String;
-
 /** An array of 0 to 16 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. */
 export type VaultAccessPolicyPropertiesAccessPoliciesList = Array<AccessPolicyEntry>;
-const VaultAccessPolicyPropertiesAccessPoliciesList =
-  VaultPropertiesAccessPoliciesList as any as S.Schema<VaultAccessPolicyPropertiesAccessPoliciesList>;
-
 /** Properties of the vault access policy */
 export interface VaultAccessPolicyProperties {
   /** An array of 0 to 16 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. */
   accessPolicies: VaultAccessPolicyPropertiesAccessPoliciesList;
 }
-const VaultAccessPolicyProperties = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<VaultAccessPolicyProperties>;
-
 export interface UpdateVaultAccessPolicyRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3112,11 +2215,6 @@ export interface UpdateVaultAccessPolicyRequest {
   /** Properties of the access policy */
   properties: VaultAccessPolicyProperties;
 }
-const UpdateVaultAccessPolicyRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<UpdateVaultAccessPolicyRequest>;
-
 /** Parameters for updating the access policy in a vault */
 export interface VaultAccessPolicyParameters {
   /** The resource id of the access policy. */
@@ -3130,21 +2228,10 @@ export interface VaultAccessPolicyParameters {
   /** Properties of the access policy */
   properties: VaultAccessPolicyProperties;
 }
-const VaultAccessPolicyParameters = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<VaultAccessPolicyParameters>;
-
 /** The tags that will be assigned to the key vault. */
 export type VaultsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const VaultsCreateOrUpdateRequestTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<VaultsCreateOrUpdateRequestTagsMap>;
-
 /** An array of 0 to 1024 identities that have access to the key vault. All identities in the array must use the same tenant ID as the key vault's tenant ID. When `createMode` is set to `recover`, access policies are not required. Otherwise, access policies are required. */
 export type VaultPropertiesInputAccessPoliciesList = Array<AccessPolicyEntry>;
-const VaultPropertiesInputAccessPoliciesList =
-  VaultPropertiesAccessPoliciesList as any as S.Schema<VaultPropertiesInputAccessPoliciesList>;
-
 /** Properties of the vault */
 export interface VaultPropertiesInput {
   /** The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault. */
@@ -3178,11 +2265,6 @@ export interface VaultPropertiesInput {
   /** Property to specify whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules. */
   publicNetworkAccess?: string;
 }
-const VaultPropertiesInput = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<VaultPropertiesInput>;
-
 export interface VaultsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3197,16 +2279,8 @@ export interface VaultsCreateOrUpdateRequest {
   /** Properties of the vault */
   properties: VaultPropertiesInput;
 }
-const VaultsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<VaultsCreateOrUpdateRequest>;
-
 /** Tags assigned to the key vault resource. */
 export type VaultsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const VaultsCreateOrUpdateResponseTagsMap =
-  CreateKeyIfNotExistRequestTagsMap as any as S.Schema<VaultsCreateOrUpdateResponseTagsMap>;
-
 export interface VaultsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3223,11 +2297,6 @@ export interface VaultsCreateOrUpdateResponse {
   /** Tags assigned to the key vault resource. */
   tags?: VaultsCreateOrUpdateResponseTagsMap;
 }
-const VaultsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<VaultsCreateOrUpdateResponse>;
-
 export type CheckManagedHsmMhsmNameAvailabilityError = AzureOpError;
 /** Checks that the managed hsm name is valid and is not already in use. */
 export const CheckManagedHsmMhsmNameAvailability: API.OperationMethod<
@@ -3236,8 +2305,8 @@ export const CheckManagedHsmMhsmNameAvailability: API.OperationMethod<
   CheckManagedHsmMhsmNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckManagedHsmMhsmNameAvailabilityRequest,
-  output: CheckMhsmNameAvailabilityResult,
+  input: __S(0) as any as S.Schema<CheckManagedHsmMhsmNameAvailabilityRequest>,
+  output: __S(1) as any as S.Schema<CheckMhsmNameAvailabilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3251,8 +2320,8 @@ export const CheckVaultNameAvailability: API.OperationMethod<
   CheckVaultNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckVaultNameAvailabilityRequest,
-  output: CheckNameAvailabilityResult,
+  input: __S(2) as any as S.Schema<CheckVaultNameAvailabilityRequest>,
+  output: __S(1) as any as S.Schema<CheckNameAvailabilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3266,8 +2335,8 @@ export const CreateKeyIfNotExist: API.OperationMethod<
   CreateKeyIfNotExistError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateKeyIfNotExistRequest,
-  output: CreateKeyIfNotExistResponse,
+  input: __S(14) as any as S.Schema<CreateKeyIfNotExistRequest>,
+  output: __S(20) as any as S.Schema<CreateKeyIfNotExistResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3281,8 +2350,8 @@ export const CreateManagedHsmKeyIfNotExist: API.OperationMethod<
   CreateManagedHsmKeyIfNotExistError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateManagedHsmKeyIfNotExistRequest,
-  output: CreateManagedHsmKeyIfNotExistResponse,
+  input: __S(23) as any as S.Schema<CreateManagedHsmKeyIfNotExistRequest>,
+  output: __S(24) as any as S.Schema<CreateManagedHsmKeyIfNotExistResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3296,8 +2365,8 @@ export const DeleteManagedHsm: API.OperationMethod<
   DeleteManagedHsmError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteManagedHsmRequest,
-  output: DeleteManagedHsmResponse,
+  input: __S(25) as any as S.Schema<DeleteManagedHsmRequest>,
+  output: __S(26) as any as S.Schema<DeleteManagedHsmResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3311,8 +2380,8 @@ export const DeleteMHSMPrivateEndpointConnection: API.OperationMethod<
   DeleteMHSMPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMHSMPrivateEndpointConnectionRequest,
-  output: DeleteMHSMPrivateEndpointConnectionResponse,
+  input: __S(27) as any as S.Schema<DeleteMHSMPrivateEndpointConnectionRequest>,
+  output: __S(35) as any as S.Schema<DeleteMHSMPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3326,8 +2395,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateEndpointConnectionRequest,
-  output: DeletePrivateEndpointConnectionResponse,
+  input: __S(36) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(37) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3341,8 +2410,8 @@ export const DeleteVault: API.OperationMethod<
   DeleteVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVaultRequest,
-  output: DeleteVaultResponse,
+  input: __S(38) as any as S.Schema<DeleteVaultRequest>,
+  output: __S(26) as any as S.Schema<DeleteVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3356,8 +2425,8 @@ export const GetKey: API.OperationMethod<
   GetKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetKeyRequest,
-  output: GetKeyResponse,
+  input: __S(39) as any as S.Schema<GetKeyRequest>,
+  output: __S(40) as any as S.Schema<GetKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3371,8 +2440,8 @@ export const GetKeyVersion: API.OperationMethod<
   GetKeyVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetKeyVersionRequest,
-  output: GetKeyVersionResponse,
+  input: __S(41) as any as S.Schema<GetKeyVersionRequest>,
+  output: __S(40) as any as S.Schema<GetKeyVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3386,8 +2455,8 @@ export const GetManagedHsm: API.OperationMethod<
   GetManagedHsmError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedHsmRequest,
-  output: GetManagedHsmResponse,
+  input: __S(42) as any as S.Schema<GetManagedHsmRequest>,
+  output: __S(57) as any as S.Schema<GetManagedHsmResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3401,8 +2470,8 @@ export const GetManagedHsmDeleted: API.OperationMethod<
   GetManagedHsmDeletedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedHsmDeletedRequest,
-  output: GetManagedHsmDeletedResponse,
+  input: __S(58) as any as S.Schema<GetManagedHsmDeletedRequest>,
+  output: __S(60) as any as S.Schema<GetManagedHsmDeletedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3416,8 +2485,8 @@ export const GetManagedHsmKey: API.OperationMethod<
   GetManagedHsmKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedHsmKeyRequest,
-  output: GetManagedHsmKeyResponse,
+  input: __S(61) as any as S.Schema<GetManagedHsmKeyRequest>,
+  output: __S(62) as any as S.Schema<GetManagedHsmKeyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3431,8 +2500,8 @@ export const GetManagedHsmKeyVersion: API.OperationMethod<
   GetManagedHsmKeyVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedHsmKeyVersionRequest,
-  output: GetManagedHsmKeyVersionResponse,
+  input: __S(63) as any as S.Schema<GetManagedHsmKeyVersionRequest>,
+  output: __S(24) as any as S.Schema<GetManagedHsmKeyVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3446,8 +2515,8 @@ export const GetMHSMPrivateEndpointConnection: API.OperationMethod<
   GetMHSMPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMHSMPrivateEndpointConnectionRequest,
-  output: GetMHSMPrivateEndpointConnectionResponse,
+  input: __S(64) as any as S.Schema<GetMHSMPrivateEndpointConnectionRequest>,
+  output: __S(35) as any as S.Schema<GetMHSMPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3461,8 +2530,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateEndpointConnectionRequest,
-  output: GetPrivateEndpointConnectionResponse,
+  input: __S(65) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(37) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3476,8 +2545,8 @@ export const GetSecret: API.OperationMethod<
   GetSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecretRequest,
-  output: GetSecretResponse,
+  input: __S(66) as any as S.Schema<GetSecretRequest>,
+  output: __S(69) as any as S.Schema<GetSecretResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3491,8 +2560,8 @@ export const GetVault: API.OperationMethod<
   GetVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVaultRequest,
-  output: GetVaultResponse,
+  input: __S(70) as any as S.Schema<GetVaultRequest>,
+  output: __S(78) as any as S.Schema<GetVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3506,8 +2575,8 @@ export const GetVaultDeleted: API.OperationMethod<
   GetVaultDeletedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVaultDeletedRequest,
-  output: GetVaultDeletedResponse,
+  input: __S(79) as any as S.Schema<GetVaultDeletedRequest>,
+  output: __S(81) as any as S.Schema<GetVaultDeletedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3521,8 +2590,8 @@ export const ListKeys: API.OperationMethod<
   ListKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListKeysRequest,
-  output: KeyListResult,
+  input: __S(82) as any as S.Schema<ListKeysRequest>,
+  output: __S(86) as any as S.Schema<KeyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3536,8 +2605,8 @@ export const ListKeyVersions: API.OperationMethod<
   ListKeyVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListKeyVersionsRequest,
-  output: KeyListResult,
+  input: __S(87) as any as S.Schema<ListKeyVersionsRequest>,
+  output: __S(86) as any as S.Schema<KeyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3551,8 +2620,8 @@ export const ListManagedHsmByResourceGroup: API.OperationMethod<
   ListManagedHsmByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedHsmByResourceGroupRequest,
-  output: ManagedHsmListResult,
+  input: __S(88) as any as S.Schema<ListManagedHsmByResourceGroupRequest>,
+  output: __S(90) as any as S.Schema<ManagedHsmListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3566,8 +2635,8 @@ export const ListManagedHsmBySubscription: API.OperationMethod<
   ListManagedHsmBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedHsmBySubscriptionRequest,
-  output: ManagedHsmListResult,
+  input: __S(91) as any as S.Schema<ListManagedHsmBySubscriptionRequest>,
+  output: __S(90) as any as S.Schema<ManagedHsmListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3581,8 +2650,8 @@ export const ListManagedHsmDeleted: API.OperationMethod<
   ListManagedHsmDeletedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedHsmDeletedRequest,
-  output: DeletedManagedHsmListResult,
+  input: __S(92) as any as S.Schema<ListManagedHsmDeletedRequest>,
+  output: __S(95) as any as S.Schema<DeletedManagedHsmListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3596,8 +2665,8 @@ export const ListManagedHsmKeys: API.OperationMethod<
   ListManagedHsmKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedHsmKeysRequest,
-  output: ManagedHsmKeyListResult,
+  input: __S(96) as any as S.Schema<ListManagedHsmKeysRequest>,
+  output: __S(98) as any as S.Schema<ManagedHsmKeyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3611,8 +2680,8 @@ export const ListManagedHsmKeyVersions: API.OperationMethod<
   ListManagedHsmKeyVersionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedHsmKeyVersionsRequest,
-  output: ManagedHsmKeyListResult,
+  input: __S(99) as any as S.Schema<ListManagedHsmKeyVersionsRequest>,
+  output: __S(98) as any as S.Schema<ManagedHsmKeyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3626,8 +2695,8 @@ export const ListMHSMPrivateEndpointConnectionByResource: API.OperationMethod<
   ListMHSMPrivateEndpointConnectionByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMHSMPrivateEndpointConnectionByResourceRequest,
-  output: MHSMPrivateEndpointConnectionsListResult,
+  input: __S(100) as any as S.Schema<ListMHSMPrivateEndpointConnectionByResourceRequest>,
+  output: __S(102) as any as S.Schema<MHSMPrivateEndpointConnectionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3641,8 +2710,8 @@ export const ListMHSMPrivateLinkResourceByMHSMResource: API.OperationMethod<
   ListMHSMPrivateLinkResourceByMHSMResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMHSMPrivateLinkResourceByMHSMResourceRequest,
-  output: MHSMPrivateLinkResourceListResult,
+  input: __S(103) as any as S.Schema<ListMHSMPrivateLinkResourceByMHSMResourceRequest>,
+  output: __S(107) as any as S.Schema<MHSMPrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3656,8 +2725,8 @@ export const ListMHSMRegionByResource: API.OperationMethod<
   ListMHSMRegionByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMHSMRegionByResourceRequest,
-  output: MHSMRegionsListResult,
+  input: __S(108) as any as S.Schema<ListMHSMRegionByResourceRequest>,
+  output: __S(109) as any as S.Schema<MHSMRegionsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3671,8 +2740,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(110) as any as S.Schema<ListOperationsRequest>,
+  output: __S(122) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3686,8 +2755,8 @@ export const ListPrivateEndpointConnectionByResource: API.OperationMethod<
   ListPrivateEndpointConnectionByResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateEndpointConnectionByResourceRequest,
-  output: PrivateEndpointConnectionListResult,
+  input: __S(123) as any as S.Schema<ListPrivateEndpointConnectionByResourceRequest>,
+  output: __S(125) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3701,8 +2770,8 @@ export const ListPrivateLinkResourceByVault: API.OperationMethod<
   ListPrivateLinkResourceByVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateLinkResourceByVaultRequest,
-  output: PrivateLinkResourceListResult,
+  input: __S(126) as any as S.Schema<ListPrivateLinkResourceByVaultRequest>,
+  output: __S(129) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3716,8 +2785,8 @@ export const ListSecrets: API.OperationMethod<
   ListSecretsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecretsRequest,
-  output: SecretListResult,
+  input: __S(130) as any as S.Schema<ListSecretsRequest>,
+  output: __S(132) as any as S.Schema<SecretListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3731,8 +2800,8 @@ export const ListVaultByResourceGroup: API.OperationMethod<
   ListVaultByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVaultByResourceGroupRequest,
-  output: VaultListResult,
+  input: __S(133) as any as S.Schema<ListVaultByResourceGroupRequest>,
+  output: __S(135) as any as S.Schema<VaultListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3746,8 +2815,8 @@ export const ListVaultBySubscription: API.OperationMethod<
   ListVaultBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVaultBySubscriptionRequest,
-  output: VaultListResult,
+  input: __S(136) as any as S.Schema<ListVaultBySubscriptionRequest>,
+  output: __S(135) as any as S.Schema<VaultListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3761,8 +2830,8 @@ export const ListVaultDeleted: API.OperationMethod<
   ListVaultDeletedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVaultDeletedRequest,
-  output: DeletedVaultListResult,
+  input: __S(137) as any as S.Schema<ListVaultDeletedRequest>,
+  output: __S(139) as any as S.Schema<DeletedVaultListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3776,8 +2845,8 @@ export const ListVaults: API.OperationMethod<
   ListVaultsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVaultsRequest,
-  output: ResourceListResult,
+  input: __S(140) as any as S.Schema<ListVaultsRequest>,
+  output: __S(143) as any as S.Schema<ResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3791,8 +2860,8 @@ export const ManagedHsmsCreateOrUpdate: API.OperationMethod<
   ManagedHsmsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ManagedHsmsCreateOrUpdateRequest,
-  output: ManagedHsmsCreateOrUpdateResponse,
+  input: __S(149) as any as S.Schema<ManagedHsmsCreateOrUpdateRequest>,
+  output: __S(150) as any as S.Schema<ManagedHsmsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3806,8 +2875,8 @@ export const PurgeManagedHsmDeleted: API.OperationMethod<
   PurgeManagedHsmDeletedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurgeManagedHsmDeletedRequest,
-  output: PurgeManagedHsmDeletedResponse,
+  input: __S(151) as any as S.Schema<PurgeManagedHsmDeletedRequest>,
+  output: __S(26) as any as S.Schema<PurgeManagedHsmDeletedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3821,8 +2890,8 @@ export const PurgeVaultDeleted: API.OperationMethod<
   PurgeVaultDeletedError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurgeVaultDeletedRequest,
-  output: PurgeVaultDeletedResponse,
+  input: __S(152) as any as S.Schema<PurgeVaultDeletedRequest>,
+  output: __S(26) as any as S.Schema<PurgeVaultDeletedResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3836,8 +2905,8 @@ export const PutMHSMPrivateEndpointConnection: API.OperationMethod<
   PutMHSMPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutMHSMPrivateEndpointConnectionRequest,
-  output: PutMHSMPrivateEndpointConnectionResponse,
+  input: __S(154) as any as S.Schema<PutMHSMPrivateEndpointConnectionRequest>,
+  output: __S(35) as any as S.Schema<PutMHSMPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3851,8 +2920,8 @@ export const PutPrivateEndpointConnection: API.OperationMethod<
   PutPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutPrivateEndpointConnectionRequest,
-  output: PutPrivateEndpointConnectionResponse,
+  input: __S(155) as any as S.Schema<PutPrivateEndpointConnectionRequest>,
+  output: __S(37) as any as S.Schema<PutPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3866,8 +2935,8 @@ export const SecretsCreateOrUpdate: API.OperationMethod<
   SecretsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SecretsCreateOrUpdateRequest,
-  output: SecretsCreateOrUpdateResponse,
+  input: __S(158) as any as S.Schema<SecretsCreateOrUpdateRequest>,
+  output: __S(159) as any as S.Schema<SecretsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3881,8 +2950,8 @@ export const UpdateManagedHsm: API.OperationMethod<
   UpdateManagedHsmError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateManagedHsmRequest,
-  output: UpdateManagedHsmResponse,
+  input: __S(160) as any as S.Schema<UpdateManagedHsmRequest>,
+  output: __S(57) as any as S.Schema<UpdateManagedHsmResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3896,8 +2965,8 @@ export const UpdateSecret: API.OperationMethod<
   UpdateSecretError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSecretRequest,
-  output: UpdateSecretResponse,
+  input: __S(162) as any as S.Schema<UpdateSecretRequest>,
+  output: __S(69) as any as S.Schema<UpdateSecretResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3911,8 +2980,8 @@ export const UpdateVault: API.OperationMethod<
   UpdateVaultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVaultRequest,
-  output: UpdateVaultResponse,
+  input: __S(164) as any as S.Schema<UpdateVaultRequest>,
+  output: __S(78) as any as S.Schema<UpdateVaultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3926,8 +2995,8 @@ export const UpdateVaultAccessPolicy: API.OperationMethod<
   UpdateVaultAccessPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVaultAccessPolicyRequest,
-  output: VaultAccessPolicyParameters,
+  input: __S(166) as any as S.Schema<UpdateVaultAccessPolicyRequest>,
+  output: __S(167) as any as S.Schema<VaultAccessPolicyParameters>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3941,8 +3010,8 @@ export const VaultsCreateOrUpdate: API.OperationMethod<
   VaultsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VaultsCreateOrUpdateRequest,
-  output: VaultsCreateOrUpdateResponse,
+  input: __S(169) as any as S.Schema<VaultsCreateOrUpdateRequest>,
+  output: __S(170) as any as S.Schema<VaultsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -3971,7 +3040,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nameAvailable: S.optional(S.Boolean),
-          reason: S.optional(Reason),
+          reason: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -3982,7 +3051,7 @@ function __c0(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           name: S.String,
-          type: CheckVaultNameAvailabilityRequestType,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -4006,7 +3075,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "KeyAttributesInput" });
     case 5:
-      return S.Array(JsonWebKeyOperation);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4029,23 +3098,23 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(KeyRotationPolicyActionType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Action" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          trigger: S.optional(Trigger),
-          action: S.optional(Action),
+          trigger: S.optional(__S(7)),
+          action: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "LifetimeAction" });
     case 2:
-      return S.Array(LifetimeAction);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(KeyRotationPolicyAttributesInput),
-          lifetimeActions: S.optional(RotationPolicyInputLifetimeActionsList),
+          attributes: S.optional(__S(6)),
+          lifetimeActions: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "RotationPolicyInput" });
     case 4:
@@ -4058,13 +3127,13 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(KeyAttributesInput),
-          kty: S.optional(JsonWebKeyType),
-          keyOps: S.optional(KeyPropertiesInputKeyOpsList),
+          attributes: S.optional(__S(4)),
+          kty: S.optional(S.String),
+          keyOps: S.optional(__S(5)),
           keySize: S.optional(S.Number),
-          curveName: S.optional(JsonWebKeyCurveName),
-          rotationPolicy: S.optional(RotationPolicyInput),
-          release_policy: S.optional(KeyReleasePolicy),
+          curveName: S.optional(S.String),
+          rotationPolicy: S.optional(__S(11)),
+          release_policy: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "KeyPropertiesInput" });
     case 6:
@@ -4074,8 +3143,8 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           keyName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateKeyIfNotExistRequestTagsMap),
-          properties: KeyPropertiesInput,
+          tags: S.optional(__S(3)),
+          properties: __S(13),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4091,10 +3160,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -4110,7 +3179,7 @@ function __c2(j: number): any {
           exp: S.optional(S.Number),
           created: S.optional(S.Number),
           updated: S.optional(S.Number),
-          recoveryLevel: S.optional(DeletionRecoveryLevel),
+          recoveryLevel: S.optional(S.String),
           exportable: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "KeyAttributes" });
@@ -4127,22 +3196,22 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(KeyRotationPolicyAttributes),
-          lifetimeActions: S.optional(RotationPolicyLifetimeActionsList),
+          attributes: S.optional(__S(17)),
+          lifetimeActions: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "RotationPolicy" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(KeyAttributes),
-          kty: S.optional(JsonWebKeyType),
-          keyOps: S.optional(KeyPropertiesKeyOpsList),
+          attributes: S.optional(__S(16)),
+          kty: S.optional(S.String),
+          keyOps: S.optional(__S(5)),
           keySize: S.optional(S.Number),
-          curveName: S.optional(JsonWebKeyCurveName),
+          curveName: S.optional(S.String),
           keyUri: S.optional(S.String),
           keyUriWithVersion: S.optional(S.String),
-          rotationPolicy: S.optional(RotationPolicy),
-          release_policy: S.optional(KeyReleasePolicy),
+          rotationPolicy: S.optional(__S(18)),
+          release_policy: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "KeyProperties" });
     case 4:
@@ -4151,10 +3220,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: KeyProperties,
+          systemData: S.optional(__S(15)),
+          properties: __S(19),
           location: S.optional(S.String),
-          tags: S.optional(CreateKeyIfNotExistResponseTagsMap),
+          tags: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "CreateKeyIfNotExistResponse",
@@ -4162,8 +3231,8 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(KeyRotationPolicyAttributesInput),
-          lifetimeActions: S.optional(ManagedHsmRotationPolicyInputLifetimeActionsList),
+          attributes: S.optional(__S(6)),
+          lifetimeActions: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "ManagedHsmRotationPolicyInput",
@@ -4171,13 +3240,13 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(KeyAttributesInput),
-          kty: S.optional(JsonWebKeyType),
-          keyOps: S.optional(ManagedHsmKeyPropertiesInputKeyOpsList),
+          attributes: S.optional(__S(4)),
+          kty: S.optional(S.String),
+          keyOps: S.optional(__S(5)),
           keySize: S.optional(S.Number),
-          curveName: S.optional(JsonWebKeyCurveName),
-          rotationPolicy: S.optional(ManagedHsmRotationPolicyInput),
-          release_policy: S.optional(KeyReleasePolicy),
+          curveName: S.optional(S.String),
+          rotationPolicy: S.optional(__S(21)),
+          release_policy: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "ManagedHsmKeyPropertiesInput",
@@ -4189,8 +3258,8 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           keyName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateManagedHsmKeyIfNotExistRequestTagsMap),
-          properties: ManagedHsmKeyPropertiesInput,
+          tags: S.optional(__S(3)),
+          properties: __S(22),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4212,9 +3281,9 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ManagedHsmKeyProperties,
-          tags: S.optional(CreateManagedHsmKeyIfNotExistResponseTagsMap),
+          systemData: S.optional(__S(15)),
+          properties: __S(19),
+          tags: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "CreateManagedHsmKeyIfNotExistResponse",
@@ -4265,9 +3334,9 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(PrivateEndpointServiceConnectionStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
-          actionsRequired: S.optional(ActionsRequired),
+          actionsRequired: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MHSMPrivateLinkServiceConnectionState",
@@ -4275,9 +3344,9 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(MHSMPrivateEndpoint),
-          privateLinkServiceConnectionState: S.optional(MHSMPrivateLinkServiceConnectionState),
-          provisioningState: S.optional(PrivateEndpointConnectionProvisioningState),
+          privateEndpoint: S.optional(__S(28)),
+          privateLinkServiceConnectionState: S.optional(__S(29)),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MHSMPrivateEndpointConnectionProperties",
@@ -4285,8 +3354,8 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          family: ManagedHsmSkuFamily,
-          name: ManagedHsmSkuNameV2,
+          family: S.String,
+          name: S.String,
         }),
       ).annotate({ identifier: "ManagedHsmSku" });
   }
@@ -4301,14 +3370,14 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentity));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(32)));
     case 2:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentities),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(33)),
         }),
       ).annotate({
         identifier: "DeleteMHSMPrivateEndpointConnectionResponseIdentity",
@@ -4319,13 +3388,13 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(MHSMPrivateEndpointConnectionProperties),
-          sku: S.optional(ManagedHsmSku),
-          identity: S.optional(DeleteMHSMPrivateEndpointConnectionResponseIdentity),
+          systemData: S.optional(__S(15)),
+          properties: S.optional(__S(30)),
+          sku: S.optional(__S(31)),
+          identity: S.optional(__S(34)),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(DeleteMHSMPrivateEndpointConnectionResponseTagsMap),
+          tags: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "DeleteMHSMPrivateEndpointConnectionResponse",
@@ -4354,10 +3423,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(MHSMPrivateEndpointConnectionProperties),
+          systemData: S.optional(__S(15)),
+          properties: S.optional(__S(30)),
           location: S.optional(S.String),
-          tags: S.optional(DeletePrivateEndpointConnectionResponseTagsMap),
+          tags: S.optional(__S(3)),
           etag: S.optional(S.String),
         }),
       ).annotate({
@@ -4404,10 +3473,10 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: KeyProperties,
+          systemData: S.optional(__S(15)),
+          properties: __S(19),
           location: S.optional(S.String),
-          tags: S.optional(GetKeyResponseTagsMap),
+          tags: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "GetKeyResponse" });
     case 1:
@@ -4451,7 +3520,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "MHSMIPRule" });
     case 5:
-      return S.Array(MHSMIPRule);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4459,7 +3528,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "MHSMServiceTagRule" });
     case 7:
-      return S.Array(MHSMServiceTagRule);
+      return S.Array(__S(46));
   }
 }
 function __c6(j: number): any {
@@ -4471,43 +3540,43 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "MHSMVirtualNetworkRule" });
     case 1:
-      return S.Array(MHSMVirtualNetworkRule);
+      return S.Array(__S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          bypass: S.optional(NetworkRuleBypassOptions),
-          defaultAction: S.optional(NetworkRuleAction),
-          ipRules: S.optional(MHSMNetworkRuleSetIpRulesList),
-          serviceTags: S.optional(MHSMNetworkRuleSetServiceTagsList),
-          virtualNetworkRules: S.optional(MHSMNetworkRuleSetVirtualNetworkRulesList),
+          bypass: S.optional(S.String),
+          defaultAction: S.optional(S.String),
+          ipRules: S.optional(__S(45)),
+          serviceTags: S.optional(__S(47)),
+          virtualNetworkRules: S.optional(__S(49)),
         }),
       ).annotate({ identifier: "MHSMNetworkRuleSet" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          provisioningState: S.optional(GeoReplicationRegionProvisioningState),
+          provisioningState: S.optional(S.String),
           isPrimary: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MHSMGeoReplicatedRegion" });
     case 4:
-      return S.Array(MHSMGeoReplicatedRegion);
+      return S.Array(__S(51));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           etag: S.optional(S.String),
-          properties: S.optional(MHSMPrivateEndpointConnectionProperties),
+          properties: S.optional(__S(30)),
         }),
       ).annotate({
         identifier: "MHSMPrivateEndpointConnectionItem",
       });
     case 6:
-      return S.Array(MHSMPrivateEndpointConnectionItem);
+      return S.Array(__S(53));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          activationStatus: S.optional(ActivationStatus),
+          activationStatus: S.optional(S.String),
           activationStatusMessage: S.optional(S.String),
         }),
       ).annotate({
@@ -4521,22 +3590,20 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
-          initialAdminObjectIds: S.optional(ManagedHsmPropertiesInitialAdminObjectIdsList),
+          initialAdminObjectIds: S.optional(__S(43)),
           hsmUri: S.optional(S.String),
           enableSoftDelete: S.optional(S.Boolean),
           softDeleteRetentionInDays: S.optional(S.Number),
           enablePurgeProtection: S.optional(S.Boolean),
-          createMode: S.optional(CreateMode),
+          createMode: S.optional(S.String),
           statusMessage: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
-          networkAcls: S.optional(MHSMNetworkRuleSet),
-          regions: S.optional(ManagedHsmPropertiesRegionsList),
-          privateEndpointConnections: S.optional(
-            ManagedHsmPropertiesPrivateEndpointConnectionsList,
-          ),
-          publicNetworkAccess: S.optional(ManagedHsmPropertiesPublicNetworkAccess),
+          provisioningState: S.optional(S.String),
+          networkAcls: S.optional(__S(50)),
+          regions: S.optional(__S(52)),
+          privateEndpointConnections: S.optional(__S(54)),
+          publicNetworkAccess: S.optional(S.String),
           scheduledPurgeDate: S.optional(S.String),
-          securityDomainProperties: S.optional(ManagedHSMSecurityDomainProperties),
+          securityDomainProperties: S.optional(__S(55)),
         }),
       ).annotate({ identifier: "ManagedHsmProperties" });
     case 1:
@@ -4545,12 +3612,12 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ManagedHsmProperties),
-          sku: S.optional(ManagedHsmSku),
-          identity: S.optional(DeleteMHSMPrivateEndpointConnectionResponseIdentity),
+          systemData: S.optional(__S(15)),
+          properties: S.optional(__S(56)),
+          sku: S.optional(__S(31)),
+          identity: S.optional(__S(34)),
           location: S.optional(S.String),
-          tags: S.optional(GetManagedHsmResponseTagsMap),
+          tags: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "GetManagedHsmResponse" });
     case 2:
@@ -4578,7 +3645,7 @@ function __c7(j: number): any {
           deletionDate: S.optional(S.String),
           scheduledPurgeDate: S.optional(S.String),
           purgeProtectionEnabled: S.optional(S.Boolean),
-          tags: S.optional(DeletedManagedHsmPropertiesTagsMap),
+          tags: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "DeletedManagedHsmProperties",
@@ -4589,8 +3656,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeletedManagedHsmProperties),
+          systemData: S.optional(__S(15)),
+          properties: S.optional(__S(59)),
         }),
       ).annotate({
         identifier: "GetManagedHsmDeletedResponse",
@@ -4617,9 +3684,9 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ManagedHsmKeyProperties,
-          tags: S.optional(GetManagedHsmKeyResponseTagsMap),
+          systemData: S.optional(__S(15)),
+          properties: __S(19),
+          tags: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "GetManagedHsmKeyResponse" });
     case 7:
@@ -4712,7 +3779,7 @@ function __c8(j: number): any {
         S.Struct({
           value: S.optional(S.String),
           contentType: S.optional(S.String),
-          attributes: S.optional(Attributes),
+          attributes: S.optional(__S(67)),
           secretUri: S.optional(S.String),
           secretUriWithVersion: S.optional(S.String),
         }),
@@ -4723,10 +3790,10 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: SecretProperties,
+          systemData: S.optional(__S(15)),
+          properties: __S(68),
           location: S.optional(S.String),
-          tags: S.optional(GetSecretResponseTagsMap),
+          tags: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "GetSecretResponse" });
     case 6:
@@ -4747,10 +3814,10 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          keys: S.optional(PermissionsKeysList),
-          secrets: S.optional(PermissionsSecretsList),
-          certificates: S.optional(PermissionsCertificatesList),
-          storage: S.optional(PermissionsStorageList),
+          keys: S.optional(__S(5)),
+          secrets: S.optional(__S(5)),
+          certificates: S.optional(__S(5)),
+          storage: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "Permissions" });
   }
@@ -4763,11 +3830,11 @@ function __c9(j: number): any {
           tenantId: S.String,
           objectId: S.String,
           applicationId: S.optional(S.String),
-          permissions: Permissions,
+          permissions: __S(71),
         }),
       ).annotate({ identifier: "AccessPolicyEntry" });
     case 1:
-      return S.Array(AccessPolicyEntry);
+      return S.Array(__S(72));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4776,22 +3843,22 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "VirtualNetworkRule" });
     case 3:
-      return S.Array(VirtualNetworkRule);
+      return S.Array(__S(74));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          bypass: S.optional(NetworkRuleBypassOptions),
-          defaultAction: S.optional(NetworkRuleAction),
-          ipRules: S.optional(NetworkRuleSetIpRulesList),
-          virtualNetworkRules: S.optional(NetworkRuleSetVirtualNetworkRulesList),
+          bypass: S.optional(S.String),
+          defaultAction: S.optional(S.String),
+          ipRules: S.optional(__S(45)),
+          virtualNetworkRules: S.optional(__S(75)),
         }),
       ).annotate({ identifier: "NetworkRuleSet" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.String,
-          sku: Sku,
-          accessPolicies: S.optional(VaultPropertiesAccessPoliciesList),
+          sku: __S(31),
+          accessPolicies: S.optional(__S(73)),
           vaultUri: S.optional(S.String),
           hsmPoolResourceId: S.optional(S.String),
           enabledForDeployment: S.optional(S.Boolean),
@@ -4800,11 +3867,11 @@ function __c9(j: number): any {
           enableSoftDelete: S.optional(S.Boolean),
           softDeleteRetentionInDays: S.optional(S.Number),
           enableRbacAuthorization: S.optional(S.Boolean),
-          createMode: S.optional(CreateMode),
+          createMode: S.optional(S.String),
           enablePurgeProtection: S.optional(S.Boolean),
-          networkAcls: S.optional(NetworkRuleSet),
-          provisioningState: S.optional(VaultProvisioningState),
-          privateEndpointConnections: S.optional(VaultPropertiesPrivateEndpointConnectionsList),
+          networkAcls: S.optional(__S(76)),
+          provisioningState: S.optional(S.String),
+          privateEndpointConnections: S.optional(__S(54)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "VaultProperties" });
@@ -4814,10 +3881,10 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: VaultProperties,
+          systemData: S.optional(__S(15)),
+          properties: __S(77),
           location: S.optional(S.String),
-          tags: S.optional(GetVaultResponseTagsMap),
+          tags: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "GetVaultResponse" });
     case 7:
@@ -4846,7 +3913,7 @@ function __c10(j: number): any {
           location: S.optional(S.String),
           deletionDate: S.optional(S.String),
           scheduledPurgeDate: S.optional(S.String),
-          tags: S.optional(DeletedVaultPropertiesTagsMap),
+          tags: S.optional(__S(3)),
           purgeProtectionEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DeletedVaultProperties" });
@@ -4856,8 +3923,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeletedVaultProperties),
+          systemData: S.optional(__S(15)),
+          properties: S.optional(__S(80)),
         }),
       ).annotate({ identifier: "GetVaultDeletedResponse" });
     case 2:
@@ -4883,18 +3950,18 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: KeyProperties,
+          systemData: S.optional(__S(15)),
+          properties: __S(19),
           location: S.optional(S.String),
-          tags: S.optional(KeyTagsMap),
+          tags: S.optional(__S(83)),
         }),
       ).annotate({ identifier: "Key" });
     case 5:
-      return S.Array(Key);
+      return S.Array(__S(84));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: KeyListResultValueList,
+          value: __S(85),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "KeyListResult" });
@@ -4936,11 +4003,11 @@ function __c11(j: number): any {
         identifier: "ListManagedHsmByResourceGroupRequest",
       });
     case 1:
-      return S.Array(ManagedHsm);
+      return S.Array(__S(57));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: ManagedHsmListResultValueList,
+          value: __S(89),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedHsmListResult" });
@@ -4981,16 +4048,16 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeletedManagedHsmProperties),
+          systemData: S.optional(__S(15)),
+          properties: S.optional(__S(59)),
         }),
       ).annotate({ identifier: "DeletedManagedHsm" });
     case 6:
-      return S.Array(DeletedManagedHsm);
+      return S.Array(__S(93));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: DeletedManagedHsmListResultValueList,
+          value: __S(94),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -5018,11 +4085,11 @@ function __c12(j: number): any {
         identifier: "ListManagedHsmKeysRequest",
       });
     case 1:
-      return S.Array(ManagedHsmKey);
+      return S.Array(__S(62));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: ManagedHsmKeyListResultValueList,
+          value: __S(97),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedHsmKeyListResult" });
@@ -5062,11 +4129,11 @@ function __c12(j: number): any {
         identifier: "ListMHSMPrivateEndpointConnectionByResourceRequest",
       });
     case 5:
-      return S.Array(MHSMPrivateEndpointConnection);
+      return S.Array(__S(35));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: MHSMPrivateEndpointConnectionsListResultValueList,
+          value: __S(101),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -5097,8 +4164,8 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(MHSMPrivateLinkResourcePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(MHSMPrivateLinkResourcePropertiesRequiredZoneNamesList),
+          requiredMembers: S.optional(__S(43)),
+          requiredZoneNames: S.optional(__S(43)),
         }),
       ).annotate({
         identifier: "MHSMPrivateLinkResourceProperties",
@@ -5109,20 +4176,20 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(MHSMPrivateLinkResourceTagsMap),
+          systemData: S.optional(__S(15)),
+          tags: S.optional(__S(3)),
           location: S.String,
-          properties: S.optional(MHSMPrivateLinkResourceProperties),
-          sku: S.optional(ManagedHsmSku),
-          identity: S.optional(DeleteMHSMPrivateEndpointConnectionResponseIdentity),
+          properties: S.optional(__S(104)),
+          sku: S.optional(__S(31)),
+          identity: S.optional(__S(34)),
         }),
       ).annotate({ identifier: "MHSMPrivateLinkResource" });
     case 2:
-      return S.Array(MHSMPrivateLinkResource);
+      return S.Array(__S(105));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(MHSMPrivateLinkResourceListResultValueList),
+          value: S.optional(__S(106)),
         }),
       ).annotate({
         identifier: "MHSMPrivateLinkResourceListResult",
@@ -5147,7 +4214,7 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: MHSMRegionsListResultValueList,
+          value: __S(52),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "MHSMRegionsListResult" });
@@ -5184,7 +4251,7 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "LogSpecification" });
     case 1:
-      return S.Array(LogSpecification);
+      return S.Array(__S(112));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5194,7 +4261,7 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "DimensionProperties" });
     case 3:
-      return S.Array(DimensionProperties);
+      return S.Array(__S(114));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5203,27 +4270,27 @@ function __c14(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          supportedAggregationTypes: S.optional(MetricSpecificationSupportedAggregationTypesList),
-          supportedTimeGrainTypes: S.optional(MetricSpecificationSupportedTimeGrainTypesList),
+          supportedAggregationTypes: S.optional(__S(43)),
+          supportedTimeGrainTypes: S.optional(__S(43)),
           lockAggregationType: S.optional(S.String),
-          dimensions: S.optional(MetricSpecificationDimensionsList),
+          dimensions: S.optional(__S(115)),
           fillGapWithZero: S.optional(S.Boolean),
           internalMetricName: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricSpecification" });
     case 5:
-      return S.Array(MetricSpecification);
+      return S.Array(__S(116));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          logSpecifications: S.optional(ServiceSpecificationLogSpecificationsList),
-          metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
+          logSpecifications: S.optional(__S(113)),
+          metricSpecifications: S.optional(__S(117)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(ServiceSpecification),
+          serviceSpecification: S.optional(__S(118)),
         }),
       ).annotate({ identifier: "OperationProperties" });
   }
@@ -5234,18 +4301,18 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(OperationDisplay),
+          display: S.optional(__S(111)),
           origin: S.optional(S.String),
-          properties: S.optional(OperationProperties),
+          properties: S.optional(__S(119)),
           isDataAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(Operation);
+      return S.Array(__S(120));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: OperationListResultValueList,
+          value: __S(121),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -5267,11 +4334,11 @@ function __c15(j: number): any {
         identifier: "ListPrivateEndpointConnectionByResourceRequest",
       });
     case 4:
-      return S.Array(PrivateEndpointConnection);
+      return S.Array(__S(37));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: PrivateEndpointConnectionListResultValueList,
+          value: __S(124),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -5300,10 +4367,10 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateLinkResourceProperties),
+          systemData: S.optional(__S(15)),
+          properties: S.optional(__S(104)),
           location: S.optional(S.String),
-          tags: S.optional(PrivateLinkResourceTagsMap),
+          tags: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
   }
@@ -5311,11 +4378,11 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(127));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PrivateLinkResourceListResultValueList),
+          value: S.optional(__S(128)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResult",
@@ -5337,11 +4404,11 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ListSecretsRequest" });
     case 3:
-      return S.Array(Secret);
+      return S.Array(__S(69));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: SecretListResultValueList,
+          value: __S(131),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecretListResult" });
@@ -5363,11 +4430,11 @@ function __c16(j: number): any {
         identifier: "ListVaultByResourceGroupRequest",
       });
     case 6:
-      return S.Array(Vault);
+      return S.Array(__S(78));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: VaultListResultValueList,
+          value: __S(134),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "VaultListResult" });
@@ -5405,11 +4472,11 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "ListVaultDeletedRequest" });
     case 2:
-      return S.Array(DeletedVault);
+      return S.Array(__S(81));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: DeletedVaultListResultValueList,
+          value: __S(138),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeletedVaultListResult" });
@@ -5417,7 +4484,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          _filter: ListVaultsRequestFilter.pipe(T.Query("$filter")),
+          _filter: S.String.pipe(T.Query("$filter")),
           _top: S.optional(S.Number.pipe(T.Query("$top"))),
         }).pipe(
           T.Http({
@@ -5434,19 +4501,19 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(ResourceListResultValueItemTagsMap),
+          systemData: S.optional(__S(15)),
+          tags: S.optional(__S(3)),
           location: S.String,
         }),
       ).annotate({
         identifier: "ResourceListResultValueItem",
       });
     case 6:
-      return S.Array(ResourceListResultValueItem);
+      return S.Array(__S(141));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: ResourceListResultValueList,
+          value: __S(142),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceListResult" });
@@ -5464,30 +4531,30 @@ function __c18(j: number): any {
         identifier: "MHSMGeoReplicatedRegionInput",
       });
     case 1:
-      return S.Array(MHSMGeoReplicatedRegionInput);
+      return S.Array(__S(144));
     case 2:
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
-          initialAdminObjectIds: S.optional(ManagedHsmPropertiesInputInitialAdminObjectIdsList),
+          initialAdminObjectIds: S.optional(__S(43)),
           enableSoftDelete: S.optional(S.Boolean),
           softDeleteRetentionInDays: S.optional(S.Number),
           enablePurgeProtection: S.optional(S.Boolean),
-          createMode: S.optional(CreateMode),
-          networkAcls: S.optional(MHSMNetworkRuleSet),
-          regions: S.optional(ManagedHsmPropertiesInputRegionsList),
-          publicNetworkAccess: S.optional(ManagedHsmPropertiesInputPublicNetworkAccess),
+          createMode: S.optional(S.String),
+          networkAcls: S.optional(__S(50)),
+          regions: S.optional(__S(145)),
+          publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedHsmPropertiesInput",
       });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UserAssignedIdentityInput));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(26)));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(UserAssignedIdentitiesInput),
+          type: S.String,
+          userAssignedIdentities: S.optional(__S(147)),
         }),
       ).annotate({
         identifier: "ManagedHsmsCreateOrUpdateRequestIdentity",
@@ -5498,11 +4565,11 @@ function __c18(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(ManagedHsmPropertiesInput),
-          sku: S.optional(ManagedHsmSku),
-          identity: S.optional(ManagedHsmsCreateOrUpdateRequestIdentity),
+          properties: S.optional(__S(146)),
+          sku: S.optional(__S(31)),
+          identity: S.optional(__S(148)),
           location: S.optional(S.String),
-          tags: S.optional(ManagedHsmsCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5520,12 +4587,12 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ManagedHsmProperties),
-          sku: S.optional(ManagedHsmSku),
-          identity: S.optional(DeleteMHSMPrivateEndpointConnectionResponseIdentity),
+          systemData: S.optional(__S(15)),
+          properties: S.optional(__S(56)),
+          sku: S.optional(__S(31)),
+          identity: S.optional(__S(34)),
           location: S.optional(S.String),
-          tags: S.optional(ManagedHsmsCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "ManagedHsmsCreateOrUpdateResponse",
@@ -5569,8 +4636,8 @@ function __c19(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(UserAssignedIdentityInput),
-          privateLinkServiceConnectionState: S.optional(MHSMPrivateLinkServiceConnectionState),
+          privateEndpoint: S.optional(__S(26)),
+          privateLinkServiceConnectionState: S.optional(__S(29)),
         }),
       ).annotate({
         identifier: "MHSMPrivateEndpointConnectionPropertiesInput",
@@ -5582,12 +4649,12 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(MHSMPrivateEndpointConnectionPropertiesInput),
-          sku: S.optional(ManagedHsmSku),
-          identity: S.optional(ManagedHsmsCreateOrUpdateRequestIdentity),
+          properties: S.optional(__S(153)),
+          sku: S.optional(__S(31)),
+          identity: S.optional(__S(148)),
           etag: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(PutMHSMPrivateEndpointConnectionRequestTagsMap),
+          tags: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5606,7 +4673,7 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(MHSMPrivateEndpointConnectionPropertiesInput),
+          properties: S.optional(__S(153)),
           etag: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -5632,7 +4699,7 @@ function __c19(j: number): any {
         S.Struct({
           value: S.optional(S.String),
           contentType: S.optional(S.String),
-          attributes: S.optional(AttributesInput),
+          attributes: S.optional(__S(156)),
         }),
       ).annotate({ identifier: "SecretPropertiesInput" });
     case 6:
@@ -5642,8 +4709,8 @@ function __c19(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           secretName: S.String.pipe(T.Label()),
-          tags: S.optional(SecretsCreateOrUpdateRequestTagsMap),
-          properties: SecretPropertiesInput,
+          tags: S.optional(__S(3)),
+          properties: __S(157),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5661,10 +4728,10 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: SecretProperties,
+          systemData: S.optional(__S(15)),
+          properties: __S(68),
           location: S.optional(S.String),
-          tags: S.optional(SecretsCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "SecretsCreateOrUpdateResponse",
@@ -5679,11 +4746,11 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: S.optional(ManagedHsmPropertiesInput),
-          sku: S.optional(ManagedHsmSku),
-          identity: S.optional(ManagedHsmsCreateOrUpdateRequestIdentity),
+          properties: S.optional(__S(146)),
+          sku: S.optional(__S(31)),
+          identity: S.optional(__S(148)),
           location: S.optional(S.String),
-          tags: S.optional(UpdateManagedHsmRequestTagsMap),
+          tags: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5698,7 +4765,7 @@ function __c20(j: number): any {
         S.Struct({
           value: S.optional(S.String),
           contentType: S.optional(S.String),
-          attributes: S.optional(AttributesInput),
+          attributes: S.optional(__S(156)),
         }),
       ).annotate({
         identifier: "SecretPatchPropertiesInput",
@@ -5710,8 +4777,8 @@ function __c20(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           secretName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateSecretRequestTagsMap),
-          properties: S.optional(SecretPatchPropertiesInput),
+          tags: S.optional(__S(3)),
+          properties: S.optional(__S(161)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5725,17 +4792,17 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tenantId: S.optional(S.String),
-          sku: S.optional(Sku),
-          accessPolicies: S.optional(VaultPatchPropertiesAccessPoliciesList),
+          sku: S.optional(__S(31)),
+          accessPolicies: S.optional(__S(73)),
           enabledForDeployment: S.optional(S.Boolean),
           enabledForDiskEncryption: S.optional(S.Boolean),
           enabledForTemplateDeployment: S.optional(S.Boolean),
           enableSoftDelete: S.optional(S.Boolean),
           enableRbacAuthorization: S.optional(S.Boolean),
           softDeleteRetentionInDays: S.optional(S.Number),
-          createMode: S.optional(CreateMode),
+          createMode: S.optional(S.String),
           enablePurgeProtection: S.optional(S.Boolean),
-          networkAcls: S.optional(NetworkRuleSet),
+          networkAcls: S.optional(__S(76)),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "VaultPatchProperties" });
@@ -5745,8 +4812,8 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateVaultRequestTagsMap),
-          properties: S.optional(VaultPatchProperties),
+          tags: S.optional(__S(3)),
+          properties: S.optional(__S(163)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -5759,7 +4826,7 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          accessPolicies: VaultAccessPolicyPropertiesAccessPoliciesList,
+          accessPolicies: __S(73),
         }),
       ).annotate({
         identifier: "VaultAccessPolicyProperties",
@@ -5770,8 +4837,8 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
-          operationKind: UpdateVaultAccessPolicyRequestOperationKind.pipe(T.Label()),
-          properties: VaultAccessPolicyProperties,
+          operationKind: S.String.pipe(T.Label()),
+          properties: __S(165),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5790,7 +4857,7 @@ function __c20(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          properties: VaultAccessPolicyProperties,
+          properties: __S(165),
         }),
       ).annotate({
         identifier: "VaultAccessPolicyParameters",
@@ -5803,8 +4870,8 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tenantId: S.String,
-          sku: Sku,
-          accessPolicies: S.optional(VaultPropertiesInputAccessPoliciesList),
+          sku: __S(31),
+          accessPolicies: S.optional(__S(73)),
           vaultUri: S.optional(S.String),
           enabledForDeployment: S.optional(S.Boolean),
           enabledForDiskEncryption: S.optional(S.Boolean),
@@ -5812,10 +4879,10 @@ function __c21(j: number): any {
           enableSoftDelete: S.optional(S.Boolean),
           softDeleteRetentionInDays: S.optional(S.Number),
           enableRbacAuthorization: S.optional(S.Boolean),
-          createMode: S.optional(CreateMode),
+          createMode: S.optional(S.String),
           enablePurgeProtection: S.optional(S.Boolean),
-          networkAcls: S.optional(NetworkRuleSet),
-          provisioningState: S.optional(VaultProvisioningState),
+          networkAcls: S.optional(__S(76)),
+          provisioningState: S.optional(S.String),
           publicNetworkAccess: S.optional(S.String),
         }),
       ).annotate({ identifier: "VaultPropertiesInput" });
@@ -5826,8 +4893,8 @@ function __c21(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           vaultName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(VaultsCreateOrUpdateRequestTagsMap),
-          properties: VaultPropertiesInput,
+          tags: S.optional(__S(3)),
+          properties: __S(168),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5845,13 +4912,66 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: VaultProperties,
+          systemData: S.optional(__S(15)),
+          properties: __S(77),
           location: S.optional(S.String),
-          tags: S.optional(VaultsCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "VaultsCreateOrUpdateResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
   }
 }

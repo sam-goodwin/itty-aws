@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -61,11 +63,6 @@ export interface AddFreeDaysMembershipRequest {
   /** The number of free days to add (1-1095). Extends the billing period, expiration date, or Stripe trial depending on plan type. */
   free_days: number;
 }
-const AddFreeDaysMembershipRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddFreeDaysMembershipRequest>;
-
 /** The different reasons a user can choose for why they are canceling their membership. */
 export type CancelOptions =
   | "too_expensive"
@@ -75,12 +72,8 @@ export type CancelOptions =
   | "bad_experience"
   | "other"
   | "testing";
-const CancelOptions = S.String;
-
 /** The state of a membership after a customer provides a cancelation reason. */
 export type CancelationStatus = "won_back" | "left" | "canceling";
-const CancelationStatus = S.String;
-
 /** The company this membership belongs to. */
 export interface LegacyMembershipCompany {
   /** The unique identifier for the company. */
@@ -88,11 +81,6 @@ export interface LegacyMembershipCompany {
   /** The display name of the company shown to customers. */
   title: string;
 }
-const LegacyMembershipCompany = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<LegacyMembershipCompany>;
-
 /** The available currencies on the platform */
 export type LegacyCurrencies =
   | "usd"
@@ -185,8 +173,6 @@ export type LegacyCurrencies =
   | "awg"
   | "whop_usd"
   | "xau";
-const LegacyCurrencies = S.String;
-
 /** The response from a custom field on checkout */
 export interface LegacyMembershipCustomFieldResponsesItem {
   /** The response a user gave to the specific question or field. */
@@ -196,41 +182,18 @@ export interface LegacyMembershipCustomFieldResponsesItem {
   /** The question asked by the custom field */
   question: string;
 }
-const LegacyMembershipCustomFieldResponsesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<LegacyMembershipCustomFieldResponsesItem>;
-
 /** The customer's responses to custom checkout questions configured on the product at the time of purchase. */
 export type LegacyMembershipCustomFieldResponsesList =
   Array<LegacyMembershipCustomFieldResponsesItem>;
-const LegacyMembershipCustomFieldResponsesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<LegacyMembershipCustomFieldResponsesList>;
-
 /** The member record linking the user to the company for this membership. Null if the member record has not been created yet. */
 export interface LegacyMembershipMember {
   /** The unique identifier for the member. */
   id: string;
 }
-const LegacyMembershipMember = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<LegacyMembershipMember>;
-
 /** Custom key-value pairs for the membership (commonly used for software licensing, e.g., HWID). Max 50 keys, 100 chars per key, 500 chars per string value. */
 export type LegacyMembershipMetadataMap = { [key: string]: unknown | undefined };
-const LegacyMembershipMetadataMap = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<LegacyMembershipMetadataMap>;
-
 /** Custom key-value pairs stored on the plan. Included in webhook payloads for payment and membership events. Max 50 keys, 100 chars per key, 500 chars per string value. The reserved keys `custom_cta` and `custom_cta_url`, when set, override the product's checkout call to action for this plan. */
 export type LegacyMembershipPlanMetadataMap = { [key: string]: unknown | undefined };
-const LegacyMembershipPlanMetadataMap =
-  LegacyMembershipMetadataMap as any as S.Schema<LegacyMembershipPlanMetadataMap>;
-
 /** The plan the customer purchased to create this membership. */
 export interface LegacyMembershipPlan {
   /** The unique identifier for the plan. */
@@ -238,13 +201,8 @@ export interface LegacyMembershipPlan {
   /** Custom key-value pairs stored on the plan. Included in webhook payloads for payment and membership events. Max 50 keys, 100 chars per key, 500 chars per string value. The reserved keys `custom_cta` and `custom_cta_url`, when set, override the product's checkout call to action for this plan. */
   metadata: LegacyMembershipPlanMetadataMap | null;
 }
-const LegacyMembershipPlan = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<LegacyMembershipPlan>;
-
 /** Custom key-value pairs stored on the product and included in payment and membership webhook payloads. Max 50 keys, 100 characters per key, 500 characters per string value. */
 export type LegacyMembershipProductMetadataMap = { [key: string]: unknown | undefined };
-const LegacyMembershipProductMetadataMap =
-  LegacyMembershipMetadataMap as any as S.Schema<LegacyMembershipProductMetadataMap>;
-
 /** The product this membership grants access to. */
 export interface LegacyMembershipProduct {
   /** The unique identifier for the product. */
@@ -254,21 +212,11 @@ export interface LegacyMembershipProduct {
   /** The display name of the product shown to customers on the product page and in search results. */
   title: string;
 }
-const LegacyMembershipProduct = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<LegacyMembershipProduct>;
-
 /** The promotional code currently applied to this membership's billing. Null if no promo code is active. */
 export interface LegacyMembershipPromoCode {
   /** The unique identifier for the promo code. */
   id: string;
 }
-const LegacyMembershipPromoCode = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<LegacyMembershipPromoCode>;
-
 /** The status of a membership */
 export type MembershipStatus2 =
   | "trialing"
@@ -280,8 +228,6 @@ export type MembershipStatus2 =
   | "unresolved"
   | "drafted"
   | "canceling";
-const MembershipStatus2 = S.String;
-
 /** The user who owns this membership. Null if the user account has been deleted. */
 export interface LegacyMembershipUser {
   /** The user's email address. Requires the member:email:read permission to access. Null if not authorized. */
@@ -295,8 +241,6 @@ export interface LegacyMembershipUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-const LegacyMembershipUser = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<LegacyMembershipUser>;
-
 /** A membership represents an active relationship between a user and a product. It tracks the user's access, billing status, and renewal schedule. */
 export interface LegacyMembership {
   /** Whether this membership is set to cancel at the end of the current billing cycle. Only applies to memberships with a recurring plan. */
@@ -354,8 +298,6 @@ export interface LegacyMembership {
   /** The user who owns this membership. Null if the user account has been deleted. */
   user: LegacyMembershipUser | null;
 }
-const LegacyMembership = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<LegacyMembership>;
-
 export interface CancelMembershipRequest {
   /** Membership ID (`mem_` tag). */
   id: string;
@@ -366,11 +308,6 @@ export interface CancelMembershipRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CancelMembershipRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CancelMembershipRequest>;
-
 export interface StorefrontAccount {
   /** Account ID, prefixed `biz_`. */
   id: string;
@@ -381,12 +318,8 @@ export interface StorefrontAccount {
   /** Account display name. */
   title: string;
 }
-const StorefrontAccount = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StorefrontAccount>;
-
 /** What the member can reach on the account: `customer` for paying members, `admin` for team members, `no_access` once every grant has lapsed. */
 export type MembershipMemberAccessLevel = "no_access" | "admin" | "customer";
-const MembershipMemberAccessLevel = S.String;
-
 export interface MembershipMember {
   /** What the member can reach on the account: `customer` for paying members, `admin` for team members, `no_access` once every grant has lapsed. */
   access_level: MembershipMemberAccessLevel;
@@ -395,8 +328,6 @@ export interface MembershipMember {
   /** The member's sort position in the buyer's own account list. `null` until they arrange it. */
   position: number | null;
 }
-const MembershipMember = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<MembershipMember>;
-
 /** Billing state of the membership. `active`/`trialing` memberships grant access; `past_due` is the grace period after a failed payment; `completed` one-time purchases keep access; `canceled`/`expired` do not. */
 export type MembershipStatus =
   | "trialing"
@@ -406,8 +337,6 @@ export type MembershipStatus =
   | "canceled"
   | "expired"
   | "unresolved";
-const MembershipStatus = S.String;
-
 export interface Membership {
   /** The account (seller) this membership belongs to. */
   account: StorefrontAccount;
@@ -444,8 +373,6 @@ export interface Membership {
   /** The buyer, prefixed `user_`. `null` when the buyer is another business or the membership is unclaimed. */
   user_id: string | null;
 }
-const Membership = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Membership>;
-
 export interface ExtendMembershipRequest {
   /** Membership ID (`mem_` tag). */
   id: string;
@@ -454,17 +381,10 @@ export interface ExtendMembershipRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const ExtendMembershipRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ExtendMembershipRequest>;
-
 export interface GetMembershipRequest {
   /** Membership ID (`mem_` tag), or a software license key. */
   id: string;
 }
-const GetMembershipRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetMembershipRequest>;
-
 export interface InviteMembershipRequest {
   /** Recipient email address. Mutually exclusive with `user_id`. */
   email?: string;
@@ -475,19 +395,9 @@ export interface InviteMembershipRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const InviteMembershipRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<InviteMembershipRequest>;
-
 export interface InviteMembershipResponse {
   invitation_sent: boolean;
 }
-const InviteMembershipResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<InviteMembershipResponse>;
-
 export type ListMembershipsRequestStatus =
   | "active"
   | "trialing"
@@ -497,14 +407,8 @@ export type ListMembershipsRequestStatus =
   | "expired"
   | "canceling"
   | "paused";
-const ListMembershipsRequestStatus = S.String;
-
 export type ListMembershipsRequestOrder = "created_at";
-const ListMembershipsRequestOrder = S.String;
-
 export type ListMembershipsRequestDirection = "asc" | "desc";
-const ListMembershipsRequestDirection = S.String;
-
 export interface ListMembershipsRequest {
   /** Narrow to one account (`biz_` tag). With read access to the account this lists all of its memberships; without, only the caller's own memberships in it. */
   account_id?: string;
@@ -533,37 +437,17 @@ export interface ListMembershipsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-const ListMembershipsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListMembershipsRequest>;
-
 export type ListMembershipsResponseDataList = Array<Membership>;
-const ListMembershipsResponseDataList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListMembershipsResponseDataList>;
-
 export interface ListMembershipsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListMembershipsResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListMembershipsResponsePageInfo>;
-
 export interface ListMembershipsResponse {
   data: ListMembershipsResponseDataList;
   page_info: ListMembershipsResponsePageInfo;
 }
-const ListMembershipsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListMembershipsResponse>;
-
 export interface PauseMembershipRequest {
   /** Membership ID (`mem_` tag). */
   id: string;
@@ -572,11 +456,6 @@ export interface PauseMembershipRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const PauseMembershipRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<PauseMembershipRequest>;
-
 export interface ReactivateMembershipRequest {
   /** Membership ID (`mem_` tag). */
   id: string;
@@ -585,62 +464,32 @@ export interface ReactivateMembershipRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const ReactivateMembershipRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ReactivateMembershipRequest>;
-
 export interface ResumeMembershipRequest {
   /** Membership ID (`mem_` tag). */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const ResumeMembershipRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ResumeMembershipRequest>;
-
 export interface ResyncAccessMembershipRequest {
   /** Membership ID (`mem_` tag). */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const ResyncAccessMembershipRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ResyncAccessMembershipRequest>;
-
 export interface TransferMembershipRequest {
   /** Membership ID (`mem_` tag). */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const TransferMembershipRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<TransferMembershipRequest>;
-
 export interface TransferMembershipResponse {
   /** One-use URL the destination account opens to claim the membership. */
   url: string;
 }
-const TransferMembershipResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<TransferMembershipResponse>;
-
 export interface UncancelMembershipRequest {
   /** The unique identifier of the membership to uncancel. */
   id: string;
 }
-const UncancelMembershipRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<UncancelMembershipRequest>;
-
 export interface UpdateMembershipRequest {
   /** Membership ID (`mem_` tag), or a software license key. */
   id: string;
@@ -651,11 +500,6 @@ export interface UpdateMembershipRequest {
   /** The ID of a payment method the customer has saved with your account. Future renewals charge it, and an open past-due payment is retried on it right away. Requires the `member:payment_methods:manage` permission. */
   payment_method_id?: string;
 }
-const UpdateMembershipRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<UpdateMembershipRequest>;
-
 export type AddFreeDaysMembershipError =
   | BadRequest
   | Forbidden
@@ -669,8 +513,8 @@ export const addFreeDaysMembership: API.OperationMethod<
   AddFreeDaysMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddFreeDaysMembershipRequest,
-  output: LegacyMembership,
+  input: __S(0) as any as S.Schema<AddFreeDaysMembershipRequest>,
+  output: __S(10) as any as S.Schema<LegacyMembership>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -684,8 +528,8 @@ export const cancelMembership: API.OperationMethod<
   CancelMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelMembershipRequest,
-  output: Membership,
+  input: __S(11) as any as S.Schema<CancelMembershipRequest>,
+  output: __S(14) as any as S.Schema<Membership>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -699,8 +543,8 @@ export const extendMembership: API.OperationMethod<
   ExtendMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExtendMembershipRequest,
-  output: Membership,
+  input: __S(15) as any as S.Schema<ExtendMembershipRequest>,
+  output: __S(14) as any as S.Schema<Membership>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -714,8 +558,8 @@ export const getMembership: API.OperationMethod<
   GetMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMembershipRequest,
-  output: Membership,
+  input: __S(16) as any as S.Schema<GetMembershipRequest>,
+  output: __S(14) as any as S.Schema<Membership>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -729,8 +573,8 @@ export const inviteMembership: API.OperationMethod<
   InviteMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InviteMembershipRequest,
-  output: InviteMembershipResponse,
+  input: __S(17) as any as S.Schema<InviteMembershipRequest>,
+  output: __S(18) as any as S.Schema<InviteMembershipResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -746,8 +590,8 @@ export const listMemberships: API.PaginatedOperationMethod<
   Membership
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListMembershipsRequest,
-    output: ListMembershipsResponse,
+    input: __S(19) as any as S.Schema<ListMembershipsRequest>,
+    output: __S(22) as any as S.Schema<ListMembershipsResponse>,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -771,8 +615,8 @@ export const pauseMembership: API.OperationMethod<
   PauseMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PauseMembershipRequest,
-  output: Membership,
+  input: __S(23) as any as S.Schema<PauseMembershipRequest>,
+  output: __S(14) as any as S.Schema<Membership>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -786,8 +630,8 @@ export const reactivateMembership: API.OperationMethod<
   ReactivateMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReactivateMembershipRequest,
-  output: Membership,
+  input: __S(24) as any as S.Schema<ReactivateMembershipRequest>,
+  output: __S(14) as any as S.Schema<Membership>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -801,8 +645,8 @@ export const resumeMembership: API.OperationMethod<
   ResumeMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumeMembershipRequest,
-  output: Membership,
+  input: __S(25) as any as S.Schema<ResumeMembershipRequest>,
+  output: __S(14) as any as S.Schema<Membership>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -816,8 +660,8 @@ export const resyncAccessMembership: API.OperationMethod<
   ResyncAccessMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResyncAccessMembershipRequest,
-  output: Membership,
+  input: __S(26) as any as S.Schema<ResyncAccessMembershipRequest>,
+  output: __S(14) as any as S.Schema<Membership>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -831,8 +675,8 @@ export const transferMembership: API.OperationMethod<
   TransferMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransferMembershipRequest,
-  output: TransferMembershipResponse,
+  input: __S(27) as any as S.Schema<TransferMembershipRequest>,
+  output: __S(28) as any as S.Schema<TransferMembershipResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -851,8 +695,8 @@ export const uncancelMembership: API.OperationMethod<
   UncancelMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UncancelMembershipRequest,
-  output: LegacyMembership,
+  input: __S(29) as any as S.Schema<UncancelMembershipRequest>,
+  output: __S(10) as any as S.Schema<LegacyMembership>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -866,8 +710,8 @@ export const updateMembership: API.OperationMethod<
   UpdateMembershipError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMembershipRequest,
-  output: Membership,
+  input: __S(30) as any as S.Schema<UpdateMembershipRequest>,
+  output: __S(14) as any as S.Schema<Membership>,
   errors: [BadRequest, Forbidden],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -903,7 +747,7 @@ function __c0(j: number): any {
         identifier: "LegacyMembershipCustomFieldResponsesItem",
       });
     case 3:
-      return S.Array(LegacyMembershipCustomFieldResponsesItem);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -916,14 +760,14 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          metadata: S.NullOr(LegacyMembershipPlanMetadataMap),
+          metadata: S.NullOr(__S(5)),
         }),
       ).annotate({ identifier: "LegacyMembershipPlan" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          metadata: S.NullOr(LegacyMembershipProductMetadataMap),
+          metadata: S.NullOr(__S(5)),
           title: S.String,
         }),
       ).annotate({ identifier: "LegacyMembershipProduct" });
@@ -953,32 +797,32 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cancel_at_period_end: S.Boolean,
-          cancel_option: S.NullOr(CancelOptions),
-          cancelation_status: S.NullOr(CancelationStatus),
+          cancel_option: S.NullOr(S.String),
+          cancelation_status: S.NullOr(S.String),
           canceled_at: S.NullOr(S.String),
           cancellation_reason: S.NullOr(S.String),
           checkout_configuration_id: S.NullOr(S.String),
-          company: LegacyMembershipCompany,
+          company: __S(1),
           created_at: S.String,
-          currency: S.NullOr(LegacyCurrencies),
-          custom_field_responses: LegacyMembershipCustomFieldResponsesList,
+          currency: S.NullOr(S.String),
+          custom_field_responses: __S(3),
           formatted_renewal_price: S.NullOr(S.String),
           id: S.String,
           initial_price_paid: S.String,
           joined_at: S.NullOr(S.String),
           license_key: S.NullOr(S.String),
           manage_url: S.NullOr(S.String),
-          member: S.NullOr(LegacyMembershipMember),
-          metadata: S.NullOr(LegacyMembershipMetadataMap),
+          member: S.NullOr(__S(4)),
+          metadata: S.NullOr(__S(5)),
           payment_collection_paused: S.Boolean,
-          plan: LegacyMembershipPlan,
-          product: LegacyMembershipProduct,
-          promo_code: S.NullOr(LegacyMembershipPromoCode),
+          plan: __S(6),
+          product: __S(7),
+          promo_code: S.NullOr(__S(8)),
           renewal_period_end: S.NullOr(S.String),
           renewal_period_start: S.NullOr(S.String),
-          status: MembershipStatus2,
+          status: S.String,
           updated_at: S.String,
-          user: S.NullOr(LegacyMembershipUser),
+          user: S.NullOr(__S(9)),
         }),
       ).annotate({ identifier: "LegacyMembership" });
     case 3:
@@ -1002,7 +846,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          access_level: MembershipMemberAccessLevel,
+          access_level: S.String,
           last_accessed_at: S.NullOr(S.String),
           position: S.NullOr(S.Number),
         }),
@@ -1010,7 +854,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          account: StorefrontAccount,
+          account: __S(12),
           cancel_at_period_end: S.Boolean,
           canceled_at: S.NullOr(S.String),
           cancellation_reason: S.NullOr(S.String),
@@ -1020,12 +864,12 @@ function __c1(j: number): any {
           id: S.String,
           license_key: S.NullOr(S.String),
           manage_url: S.NullOr(S.String),
-          member: S.NullOr(MembershipMember),
+          member: S.NullOr(__S(13)),
           metadata: S.Unknown,
           phone_number: S.NullOr(S.String),
           plan_id: S.String,
           product_id: S.String,
-          status: MembershipStatus,
+          status: S.String,
           user_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "Membership" });
@@ -1067,13 +911,13 @@ function __c2(j: number): any {
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
           user_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListMembershipsRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           product_id: S.optional(S.String.pipe(T.Query())),
           plan_id: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListMembershipsRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListMembershipsRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -1081,7 +925,7 @@ function __c2(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/memberships", code: 200 })),
       ).annotate({ identifier: "ListMembershipsRequest" });
     case 4:
-      return S.Array(Membership);
+      return S.Array(__S(14));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1096,8 +940,8 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: ListMembershipsResponseDataList,
-          page_info: ListMembershipsResponsePageInfo,
+          data: __S(20),
+          page_info: __S(21),
         }),
       ).annotate({ identifier: "ListMembershipsResponse" });
     case 7:
@@ -1172,5 +1016,22 @@ function __c3(j: number): any {
           payment_method_id: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/memberships/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateMembershipRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

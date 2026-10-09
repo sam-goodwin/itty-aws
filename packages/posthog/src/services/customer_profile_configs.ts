@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -16,8 +18,6 @@ export type CustomerProfileConfigScopeEnum =
   | "group_2"
   | "group_3"
   | "group_4";
-const CustomerProfileConfigScopeEnum = S.String;
-
 export interface CreateCustomerProfileConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -25,11 +25,6 @@ export interface CreateCustomerProfileConfigRequest {
   content?: unknown;
   sidebar?: unknown;
 }
-const CreateCustomerProfileConfigRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateCustomerProfileConfigRequest>;
-
 export interface CustomerProfileConfig {
   id?: string;
   scope?: CustomerProfileConfigScopeEnum;
@@ -38,37 +33,17 @@ export interface CustomerProfileConfig {
   created_at?: string;
   updated_at?: string | null;
 }
-const CustomerProfileConfig = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CustomerProfileConfig>;
-
 export interface CustomerProfileConfigsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
-const CustomerProfileConfigsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CustomerProfileConfigsDestroyRequest>;
-
 export interface CustomerProfileConfigsDestroyResponse {}
-const CustomerProfileConfigsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CustomerProfileConfigsDestroyResponse>;
-
 export interface GetCustomerProfileConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
-const GetCustomerProfileConfigRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetCustomerProfileConfigRequest>;
-
 export interface ListCustomerProfileConfigsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -77,28 +52,13 @@ export interface ListCustomerProfileConfigsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListCustomerProfileConfigsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListCustomerProfileConfigsRequest>;
-
 export type PaginatedCustomerProfileConfigListResultsList = Array<CustomerProfileConfig>;
-const PaginatedCustomerProfileConfigListResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PaginatedCustomerProfileConfigListResultsList>;
-
 export interface PaginatedCustomerProfileConfigList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedCustomerProfileConfigListResultsList;
 }
-const PaginatedCustomerProfileConfigList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PaginatedCustomerProfileConfigList>;
-
 export interface UpdateCustomerProfileConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -107,11 +67,6 @@ export interface UpdateCustomerProfileConfigRequest {
   content?: unknown;
   sidebar?: unknown;
 }
-const UpdateCustomerProfileConfigRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<UpdateCustomerProfileConfigRequest>;
-
 export interface UpdateCustomerProfileConfigsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -120,11 +75,6 @@ export interface UpdateCustomerProfileConfigsPartialRequest {
   content?: unknown;
   sidebar?: unknown;
 }
-const UpdateCustomerProfileConfigsPartialRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<UpdateCustomerProfileConfigsPartialRequest>;
-
 export type CreateCustomerProfileConfigError = PosthogOpError;
 export const createCustomerProfileConfig: API.OperationMethod<
   CreateCustomerProfileConfigRequest,
@@ -132,8 +82,8 @@ export const createCustomerProfileConfig: API.OperationMethod<
   CreateCustomerProfileConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCustomerProfileConfigRequest,
-  output: CustomerProfileConfig,
+  input: __S(0) as any as S.Schema<CreateCustomerProfileConfigRequest>,
+  output: __S(1) as any as S.Schema<CustomerProfileConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -146,8 +96,8 @@ export const customerProfileConfigsDestroy: API.OperationMethod<
   CustomerProfileConfigsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomerProfileConfigsDestroyRequest,
-  output: CustomerProfileConfigsDestroyResponse,
+  input: __S(2) as any as S.Schema<CustomerProfileConfigsDestroyRequest>,
+  output: __S(3) as any as S.Schema<CustomerProfileConfigsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -160,8 +110,8 @@ export const getCustomerProfileConfig: API.OperationMethod<
   GetCustomerProfileConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomerProfileConfigRequest,
-  output: CustomerProfileConfig,
+  input: __S(4) as any as S.Schema<GetCustomerProfileConfigRequest>,
+  output: __S(1) as any as S.Schema<CustomerProfileConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -174,8 +124,8 @@ export const listCustomerProfileConfigs: API.OperationMethod<
   ListCustomerProfileConfigsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCustomerProfileConfigsRequest,
-  output: PaginatedCustomerProfileConfigList,
+  input: __S(5) as any as S.Schema<ListCustomerProfileConfigsRequest>,
+  output: __S(7) as any as S.Schema<PaginatedCustomerProfileConfigList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -188,8 +138,8 @@ export const updateCustomerProfileConfig: API.OperationMethod<
   UpdateCustomerProfileConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCustomerProfileConfigRequest,
-  output: CustomerProfileConfig,
+  input: __S(8) as any as S.Schema<UpdateCustomerProfileConfigRequest>,
+  output: __S(1) as any as S.Schema<CustomerProfileConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -202,8 +152,8 @@ export const updateCustomerProfileConfigsPartial: API.OperationMethod<
   UpdateCustomerProfileConfigsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCustomerProfileConfigsPartialRequest,
-  output: CustomerProfileConfig,
+  input: __S(9) as any as S.Schema<UpdateCustomerProfileConfigsPartialRequest>,
+  output: __S(1) as any as S.Schema<CustomerProfileConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -216,7 +166,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          scope: S.optional(CustomerProfileConfigScopeEnum),
+          scope: S.optional(S.String),
           content: S.optional(S.Unknown),
           sidebar: S.optional(S.Unknown),
         }).pipe(
@@ -233,7 +183,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          scope: S.optional(CustomerProfileConfigScopeEnum),
+          scope: S.optional(S.String),
           content: S.optional(S.Unknown),
           sidebar: S.optional(S.Unknown),
           created_at: S.optional(S.String),
@@ -291,14 +241,14 @@ function __c0(j: number): any {
         identifier: "ListCustomerProfileConfigsRequest",
       });
     case 6:
-      return S.Array(CustomerProfileConfig);
+      return S.Array(__S(1));
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedCustomerProfileConfigListResultsList),
+          results: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "PaginatedCustomerProfileConfigList",
@@ -312,7 +262,7 @@ function __c1(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          scope: S.optional(CustomerProfileConfigScopeEnum),
+          scope: S.optional(S.String),
           content: S.optional(S.Unknown),
           sidebar: S.optional(S.Unknown),
         }).pipe(
@@ -330,7 +280,7 @@ function __c1(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          scope: S.optional(CustomerProfileConfigScopeEnum),
+          scope: S.optional(S.String),
           content: S.optional(S.Unknown),
           sidebar: S.optional(S.Unknown),
         }).pipe(
@@ -343,5 +293,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateCustomerProfileConfigsPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

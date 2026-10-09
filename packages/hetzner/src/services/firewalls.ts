@@ -7,36 +7,21 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateFirewallRequestLabelsMap = { [key: string]: string | undefined };
-const CreateFirewallRequestLabelsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateFirewallRequestLabelsMap>;
-
 /** Traffic direction in which the rule should be applied to. Use `source_ips` for direction `in` and `destination_ips` for direction `out` to specify IPs. */
 export type CreateFirewallRequestRulesItemDirection = "in" | "out";
-const CreateFirewallRequestRulesItemDirection = S.String;
-
 /** List of permitted IPv4/IPv6 addresses for incoming traffic. The `direction` must be set to `in`. IPs must be provided in [CIDR block notation](https://wikipedia.org/wiki/CIDR). You can specify 100 CIDR blocks at most. The CIDR blocks may refer to networks (with empty host bits) or single hosts. For example, a network could be defined with `10.0.1.0/24` or `2001:db8:ff00:42::/64`, and a single host with `10.0.1.1/32` or `2001:db8:ff00:42::8329/128`. Use `0.0.0.0/0` to allow any IPv4 addresses and `::/0` to allow any IPv6 addresses. IPv6 CIDRs will be transformed to their canonical form according to [RFC5952](https://datatracker.ietf.org/doc/html/rfc5952#section-4). */
 export type CreateFirewallRequestRulesItemSourceIpsList = Array<string>;
-const CreateFirewallRequestRulesItemSourceIpsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateFirewallRequestRulesItemSourceIpsList>;
-
 /** List of permitted IPv4/IPv6 addresses for outgoing traffic. The `direction` must be set to `out`. IPs must be in [CIDR block notation](https://wikipedia.org/wiki/CIDR). You can specify 100 CIDR blocks at most. The CIDR blocks may refer to networks (with empty host bits) or single hosts. For example, a network could be defined with `10.0.1.0/24` or `2001:db8:ff00:42::/64`, and a single host with `10.0.1.1/32` or `2001:db8:ff00:42::8329/128`. Use `0.0.0.0/0` to allow any IPv4 addresses and `::/0` to allow any IPv6 addresses. IPv6 CIDRs will be transformed to their canonical form according to [RFC5952](https://datatracker.ietf.org/doc/html/rfc5952#section-4). */
 export type CreateFirewallRequestRulesItemDestinationIpsList = Array<string>;
-const CreateFirewallRequestRulesItemDestinationIpsList =
-  CreateFirewallRequestRulesItemSourceIpsList as any as S.Schema<CreateFirewallRequestRulesItemDestinationIpsList>;
-
 /** Network protocol to apply the rule for. */
 export type CreateFirewallRequestRulesItemProtocol = "tcp" | "udp" | "icmp" | "esp" | "gre";
-const CreateFirewallRequestRulesItemProtocol = S.String;
-
 export interface CreateFirewallRequestRulesItem {
   /** Description of the rule. */
   description?: string | null;
@@ -51,42 +36,20 @@ export interface CreateFirewallRequestRulesItem {
   /** Port or port range to apply the rule for. Only applicable for protocols `tcp` and `udp`. A port range can be specified by separating lower and upper bounds with a dash. `1024-5000` will include all ports starting from 1024 up to port 5000. */
   port?: string;
 }
-const CreateFirewallRequestRulesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateFirewallRequestRulesItem>;
-
 /** Array of rules. Rules are limited to 50 entries per [Firewall](#tag/firewalls) and [500 effective rules](https://docs.hetzner.com/cloud/firewalls/overview#limits). */
 export type CreateFirewallRequestRulesList = Array<CreateFirewallRequestRulesItem>;
-const CreateFirewallRequestRulesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateFirewallRequestRulesList>;
-
 /** Type of the resource. */
 export type CreateFirewallRequestApplyToItemType = "server" | "label_selector";
-const CreateFirewallRequestApplyToItemType = S.String;
-
 /** [Server](#tag/servers) the [Firewall](#tag/firewalls) is applied to. Only set for `type` `server`, otherwise `null`. */
 export interface CreateFirewallRequestApplyToItemServer {
   /** ID of the [Server](#tag/servers). */
   id: number;
 }
-const CreateFirewallRequestApplyToItemServer = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateFirewallRequestApplyToItemServer>;
-
 /** [Label Selector](#description/label-selector) the [Firewall](#tag/firewalls) is applied to. Only set for `type` `label_selector`, otherwise `null`. */
 export interface CreateFirewallRequestApplyToItemLabelSelector {
   /** The selector. */
   selector: string;
 }
-const CreateFirewallRequestApplyToItemLabelSelector = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateFirewallRequestApplyToItemLabelSelector>;
-
 export interface CreateFirewallRequestApplyToItem {
   /** Type of the resource. */
   type: CreateFirewallRequestApplyToItemType | (string & {});
@@ -95,18 +58,8 @@ export interface CreateFirewallRequestApplyToItem {
   /** [Label Selector](#description/label-selector) the [Firewall](#tag/firewalls) is applied to. Only set for `type` `label_selector`, otherwise `null`. */
   label_selector?: CreateFirewallRequestApplyToItemLabelSelector;
 }
-const CreateFirewallRequestApplyToItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateFirewallRequestApplyToItem>;
-
 /** Resources to apply the [Firewall](#tag/firewalls) to. Resources added directly are taking precedence over those added via a [Label Selector](#description/label-selector). */
 export type CreateFirewallRequestApplyToList = Array<CreateFirewallRequestApplyToItem>;
-const CreateFirewallRequestApplyToList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateFirewallRequestApplyToList>;
-
 export interface CreateFirewallRequest {
   /** Name of the [Firewall](#tag/firewalls). Must be unique per Project. */
   name: string;
@@ -117,30 +70,14 @@ export interface CreateFirewallRequest {
   /** Resources to apply the [Firewall](#tag/firewalls) to. Resources added directly are taking precedence over those added via a [Label Selector](#description/label-selector). */
   apply_to?: CreateFirewallRequestApplyToList;
 }
-const CreateFirewallRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateFirewallRequest>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type CreateFirewallResponseFirewallLabelsMap = { [key: string]: string | undefined };
-const CreateFirewallResponseFirewallLabelsMap =
-  CreateFirewallRequestLabelsMap as any as S.Schema<CreateFirewallResponseFirewallLabelsMap>;
-
 /** Traffic direction in which the rule should be applied to. Use `source_ips` for direction `in` and `destination_ips` for direction `out` to specify IPs. */
 export type CreateFirewallResponseFirewallRulesItemDirection = "in" | "out";
-const CreateFirewallResponseFirewallRulesItemDirection = S.String;
-
 /** List of permitted IPv4/IPv6 addresses for incoming traffic. The `direction` must be set to `in`. IPs must be provided in [CIDR block notation](https://wikipedia.org/wiki/CIDR). You can specify 100 CIDR blocks at most. The CIDR blocks may refer to networks (with empty host bits) or single hosts. For example, a network could be defined with `10.0.1.0/24` or `2001:db8:ff00:42::/64`, and a single host with `10.0.1.1/32` or `2001:db8:ff00:42::8329/128`. Use `0.0.0.0/0` to allow any IPv4 addresses and `::/0` to allow any IPv6 addresses. IPv6 CIDRs will be transformed to their canonical form according to [RFC5952](https://datatracker.ietf.org/doc/html/rfc5952#section-4). */
 export type CreateFirewallResponseFirewallRulesItemSourceIpsList = Array<string>;
-const CreateFirewallResponseFirewallRulesItemSourceIpsList =
-  CreateFirewallRequestRulesItemSourceIpsList as any as S.Schema<CreateFirewallResponseFirewallRulesItemSourceIpsList>;
-
 /** List of permitted IPv4/IPv6 addresses for outgoing traffic. The `direction` must be set to `out`. IPs must be in [CIDR block notation](https://wikipedia.org/wiki/CIDR). You can specify 100 CIDR blocks at most. The CIDR blocks may refer to networks (with empty host bits) or single hosts. For example, a network could be defined with `10.0.1.0/24` or `2001:db8:ff00:42::/64`, and a single host with `10.0.1.1/32` or `2001:db8:ff00:42::8329/128`. Use `0.0.0.0/0` to allow any IPv4 addresses and `::/0` to allow any IPv6 addresses. IPv6 CIDRs will be transformed to their canonical form according to [RFC5952](https://datatracker.ietf.org/doc/html/rfc5952#section-4). */
 export type CreateFirewallResponseFirewallRulesItemDestinationIpsList = Array<string>;
-const CreateFirewallResponseFirewallRulesItemDestinationIpsList =
-  CreateFirewallRequestRulesItemSourceIpsList as any as S.Schema<CreateFirewallResponseFirewallRulesItemDestinationIpsList>;
-
 /** Network protocol to apply the rule for. */
 export type CreateFirewallResponseFirewallRulesItemProtocol =
   | "tcp"
@@ -148,8 +85,6 @@ export type CreateFirewallResponseFirewallRulesItemProtocol =
   | "icmp"
   | "esp"
   | "gre";
-const CreateFirewallResponseFirewallRulesItemProtocol = S.String;
-
 export interface CreateFirewallResponseFirewallRulesItem {
   /** Description of the rule. */
   description?: string | null;
@@ -164,22 +99,10 @@ export interface CreateFirewallResponseFirewallRulesItem {
   /** Port or port range to apply the rule for. Only applicable for protocols `tcp` and `udp`. A port range can be specified by separating lower and upper bounds with a dash. `1024-5000` will include all ports starting from 1024 up to port 5000. */
   port: string | null;
 }
-const CreateFirewallResponseFirewallRulesItem = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateFirewallResponseFirewallRulesItem>;
-
 export type CreateFirewallResponseFirewallRulesList =
   Array<CreateFirewallResponseFirewallRulesItem>;
-const CreateFirewallResponseFirewallRulesList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateFirewallResponseFirewallRulesList>;
-
 /** The type of resource to apply. */
 export type CreateFirewallResponseFirewallAppliedToItemType = "server" | "label_selector";
-const CreateFirewallResponseFirewallAppliedToItemType = S.String;
-
 /** [Server](#tag/servers) the [Firewall](#tag/firewalls) is applied to. Only set for `type` `server`, otherwise `null`. */
 export type CreateFirewallResponseFirewallAppliedToItemServer =
   CreateFirewallRequestApplyToItemServer;
@@ -188,8 +111,6 @@ export type CreateFirewallResponseFirewallAppliedToItemLabelSelector =
   CreateFirewallRequestApplyToItemLabelSelector;
 /** Type of resource. */
 export type CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesItemType = "server";
-const CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesItemType = S.String;
-
 /** [Server](#tag/servers) the [Firewall](#tag/firewalls) is applied to. Only set for `type` `server`, otherwise `null`. */
 export type CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesItemServer =
   CreateFirewallRequestApplyToItemServer;
@@ -199,19 +120,9 @@ export interface CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesIt
   /** [Server](#tag/servers) the [Firewall](#tag/firewalls) is applied to. Only set for `type` `server`, otherwise `null`. */
   server?: CreateFirewallRequestApplyToItemServer;
 }
-const CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem>;
-
 /** Resources applied to via this [Label Selector](#description/label-selector). */
 export type CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesList =
   Array<CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem>;
-const CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesList>;
-
 export interface CreateFirewallResponseFirewallAppliedToItem {
   /** The type of resource to apply. */
   type: CreateFirewallResponseFirewallAppliedToItemType;
@@ -222,18 +133,8 @@ export interface CreateFirewallResponseFirewallAppliedToItem {
   /** Resources applied to via this [Label Selector](#description/label-selector). */
   applied_to_resources?: CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesList;
 }
-const CreateFirewallResponseFirewallAppliedToItem = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateFirewallResponseFirewallAppliedToItem>;
-
 export type CreateFirewallResponseFirewallAppliedToList =
   Array<CreateFirewallResponseFirewallAppliedToItem>;
-const CreateFirewallResponseFirewallAppliedToList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateFirewallResponseFirewallAppliedToList>;
-
 export interface CreateFirewallResponseFirewall {
   /** ID of the [Firewall](#tag/firewalls). */
   id: number;
@@ -246,34 +147,17 @@ export interface CreateFirewallResponseFirewall {
   rules: CreateFirewallResponseFirewallRulesList;
   applied_to: CreateFirewallResponseFirewallAppliedToList;
 }
-const CreateFirewallResponseFirewall = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateFirewallResponseFirewall>;
-
 /** Status of the Action. */
 export type CreateFirewallResponseActionsItemStatus = "running" | "success" | "error";
-const CreateFirewallResponseActionsItemStatus = S.String;
-
 export interface CreateFirewallResponseActionsItemResourcesItem {
   /** ID of the Resource. */
   id: number;
   /** Type of the Resource. */
   type: string;
 }
-const CreateFirewallResponseActionsItemResourcesItem = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateFirewallResponseActionsItemResourcesItem>;
-
 /** Resources the Action relates to. */
 export type CreateFirewallResponseActionsItemResourcesList =
   Array<CreateFirewallResponseActionsItemResourcesItem>;
-const CreateFirewallResponseActionsItemResourcesList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateFirewallResponseActionsItemResourcesList>;
-
 /** Error message for the Action if an error occurred, otherwise null. */
 export interface CreateFirewallResponseActionsItemError {
   /** Fixed error code for machines. */
@@ -281,11 +165,6 @@ export interface CreateFirewallResponseActionsItemError {
   /** Error message for humans. */
   message: string;
 }
-const CreateFirewallResponseActionsItemError = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateFirewallResponseActionsItemError>;
-
 export interface CreateFirewallResponseActionsItem {
   /** ID of the [Action](#description/actions). */
   id: number;
@@ -304,70 +183,30 @@ export interface CreateFirewallResponseActionsItem {
   /** Error message for the Action if an error occurred, otherwise null. */
   error: CreateFirewallResponseActionsItemError | null;
 }
-const CreateFirewallResponseActionsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateFirewallResponseActionsItem>;
-
 export type CreateFirewallResponseActionsList = Array<CreateFirewallResponseActionsItem>;
-const CreateFirewallResponseActionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateFirewallResponseActionsList>;
-
 export interface CreateFirewallResponse {
   firewall?: CreateFirewallResponseFirewall;
   actions?: CreateFirewallResponseActionsList;
 }
-const CreateFirewallResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateFirewallResponse>;
-
 export interface DeleteFirewallRequest {
   /** ID of the Firewall. */
   id: number;
 }
-const DeleteFirewallRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteFirewallRequest>;
-
 export interface DeleteFirewallResponse {}
-const DeleteFirewallResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DeleteFirewallResponse>;
-
 export interface GetFirewallRequest {
   /** ID of the Firewall. */
   id: number;
 }
-const GetFirewallRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetFirewallRequest>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type GetFirewallResponseFirewallLabelsMap = { [key: string]: string | undefined };
-const GetFirewallResponseFirewallLabelsMap =
-  CreateFirewallRequestLabelsMap as any as S.Schema<GetFirewallResponseFirewallLabelsMap>;
-
 /** Traffic direction in which the rule should be applied to. Use `source_ips` for direction `in` and `destination_ips` for direction `out` to specify IPs. */
 export type GetFirewallResponseFirewallRulesItemDirection = "in" | "out";
-const GetFirewallResponseFirewallRulesItemDirection = S.String;
-
 /** List of permitted IPv4/IPv6 addresses for incoming traffic. The `direction` must be set to `in`. IPs must be provided in [CIDR block notation](https://wikipedia.org/wiki/CIDR). You can specify 100 CIDR blocks at most. The CIDR blocks may refer to networks (with empty host bits) or single hosts. For example, a network could be defined with `10.0.1.0/24` or `2001:db8:ff00:42::/64`, and a single host with `10.0.1.1/32` or `2001:db8:ff00:42::8329/128`. Use `0.0.0.0/0` to allow any IPv4 addresses and `::/0` to allow any IPv6 addresses. IPv6 CIDRs will be transformed to their canonical form according to [RFC5952](https://datatracker.ietf.org/doc/html/rfc5952#section-4). */
 export type GetFirewallResponseFirewallRulesItemSourceIpsList = Array<string>;
-const GetFirewallResponseFirewallRulesItemSourceIpsList =
-  CreateFirewallRequestRulesItemSourceIpsList as any as S.Schema<GetFirewallResponseFirewallRulesItemSourceIpsList>;
-
 /** List of permitted IPv4/IPv6 addresses for outgoing traffic. The `direction` must be set to `out`. IPs must be in [CIDR block notation](https://wikipedia.org/wiki/CIDR). You can specify 100 CIDR blocks at most. The CIDR blocks may refer to networks (with empty host bits) or single hosts. For example, a network could be defined with `10.0.1.0/24` or `2001:db8:ff00:42::/64`, and a single host with `10.0.1.1/32` or `2001:db8:ff00:42::8329/128`. Use `0.0.0.0/0` to allow any IPv4 addresses and `::/0` to allow any IPv6 addresses. IPv6 CIDRs will be transformed to their canonical form according to [RFC5952](https://datatracker.ietf.org/doc/html/rfc5952#section-4). */
 export type GetFirewallResponseFirewallRulesItemDestinationIpsList = Array<string>;
-const GetFirewallResponseFirewallRulesItemDestinationIpsList =
-  CreateFirewallRequestRulesItemSourceIpsList as any as S.Schema<GetFirewallResponseFirewallRulesItemDestinationIpsList>;
-
 /** Network protocol to apply the rule for. */
 export type GetFirewallResponseFirewallRulesItemProtocol = "tcp" | "udp" | "icmp" | "esp" | "gre";
-const GetFirewallResponseFirewallRulesItemProtocol = S.String;
-
 export interface GetFirewallResponseFirewallRulesItem {
   /** Description of the rule. */
   description?: string | null;
@@ -382,21 +221,9 @@ export interface GetFirewallResponseFirewallRulesItem {
   /** Port or port range to apply the rule for. Only applicable for protocols `tcp` and `udp`. A port range can be specified by separating lower and upper bounds with a dash. `1024-5000` will include all ports starting from 1024 up to port 5000. */
   port: string | null;
 }
-const GetFirewallResponseFirewallRulesItem = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetFirewallResponseFirewallRulesItem>;
-
 export type GetFirewallResponseFirewallRulesList = Array<GetFirewallResponseFirewallRulesItem>;
-const GetFirewallResponseFirewallRulesList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetFirewallResponseFirewallRulesList>;
-
 /** The type of resource to apply. */
 export type GetFirewallResponseFirewallAppliedToItemType = "server" | "label_selector";
-const GetFirewallResponseFirewallAppliedToItemType = S.String;
-
 /** [Server](#tag/servers) the [Firewall](#tag/firewalls) is applied to. Only set for `type` `server`, otherwise `null`. */
 export type GetFirewallResponseFirewallAppliedToItemServer = CreateFirewallRequestApplyToItemServer;
 /** [Label Selector](#description/label-selector) the [Firewall](#tag/firewalls) is applied to. Only set for `type` `label_selector`, otherwise `null`. */
@@ -413,17 +240,9 @@ export interface GetFirewallResponseFirewallAppliedToItemAppliedToResourcesItem 
   /** [Server](#tag/servers) the [Firewall](#tag/firewalls) is applied to. Only set for `type` `server`, otherwise `null`. */
   server?: CreateFirewallRequestApplyToItemServer;
 }
-const GetFirewallResponseFirewallAppliedToItemAppliedToResourcesItem =
-  CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem as any as S.Schema<GetFirewallResponseFirewallAppliedToItemAppliedToResourcesItem>;
-
 /** Resources applied to via this [Label Selector](#description/label-selector). */
 export type GetFirewallResponseFirewallAppliedToItemAppliedToResourcesList =
   Array<GetFirewallResponseFirewallAppliedToItemAppliedToResourcesItem>;
-const GetFirewallResponseFirewallAppliedToItemAppliedToResourcesList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetFirewallResponseFirewallAppliedToItemAppliedToResourcesList>;
-
 export interface GetFirewallResponseFirewallAppliedToItem {
   /** The type of resource to apply. */
   type: GetFirewallResponseFirewallAppliedToItemType;
@@ -434,18 +253,8 @@ export interface GetFirewallResponseFirewallAppliedToItem {
   /** Resources applied to via this [Label Selector](#description/label-selector). */
   applied_to_resources?: GetFirewallResponseFirewallAppliedToItemAppliedToResourcesList;
 }
-const GetFirewallResponseFirewallAppliedToItem = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetFirewallResponseFirewallAppliedToItem>;
-
 export type GetFirewallResponseFirewallAppliedToList =
   Array<GetFirewallResponseFirewallAppliedToItem>;
-const GetFirewallResponseFirewallAppliedToList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetFirewallResponseFirewallAppliedToList>;
-
 export interface GetFirewallResponseFirewall {
   /** ID of the [Firewall](#tag/firewalls). */
   id: number;
@@ -458,16 +267,9 @@ export interface GetFirewallResponseFirewall {
   rules: GetFirewallResponseFirewallRulesList;
   applied_to: GetFirewallResponseFirewallAppliedToList;
 }
-const GetFirewallResponseFirewall = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetFirewallResponseFirewall>;
-
 export interface GetFirewallResponse {
   firewall: GetFirewallResponseFirewall;
 }
-const GetFirewallResponse = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetFirewallResponse>;
-
 export type ListFirewallsRequestSortItem =
   | "id"
   | "id:asc"
@@ -478,14 +280,7 @@ export type ListFirewallsRequestSortItem =
   | "created"
   | "created:asc"
   | "created:desc";
-const ListFirewallsRequestSortItem = S.String;
-
 export type ListFirewallsRequestSortList = Array<ListFirewallsRequestSortItem | (string & {})>;
-const ListFirewallsRequestSortList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListFirewallsRequestSortList>;
-
 export interface ListFirewallsRequest {
   /** Sort resources by field and direction. May be used multiple times. For more information, see "[Sorting](#description/sorting)". */
   sort?: ListFirewallsRequestSortList;
@@ -498,27 +293,14 @@ export interface ListFirewallsRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListFirewallsRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ListFirewallsRequest>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type ListFirewallsResponseFirewallsItemLabelsMap = { [key: string]: string | undefined };
-const ListFirewallsResponseFirewallsItemLabelsMap =
-  CreateFirewallRequestLabelsMap as any as S.Schema<ListFirewallsResponseFirewallsItemLabelsMap>;
-
 /** Traffic direction in which the rule should be applied to. Use `source_ips` for direction `in` and `destination_ips` for direction `out` to specify IPs. */
 export type ListFirewallsResponseFirewallsItemRulesItemDirection = "in" | "out";
-const ListFirewallsResponseFirewallsItemRulesItemDirection = S.String;
-
 /** List of permitted IPv4/IPv6 addresses for incoming traffic. The `direction` must be set to `in`. IPs must be provided in [CIDR block notation](https://wikipedia.org/wiki/CIDR). You can specify 100 CIDR blocks at most. The CIDR blocks may refer to networks (with empty host bits) or single hosts. For example, a network could be defined with `10.0.1.0/24` or `2001:db8:ff00:42::/64`, and a single host with `10.0.1.1/32` or `2001:db8:ff00:42::8329/128`. Use `0.0.0.0/0` to allow any IPv4 addresses and `::/0` to allow any IPv6 addresses. IPv6 CIDRs will be transformed to their canonical form according to [RFC5952](https://datatracker.ietf.org/doc/html/rfc5952#section-4). */
 export type ListFirewallsResponseFirewallsItemRulesItemSourceIpsList = Array<string>;
-const ListFirewallsResponseFirewallsItemRulesItemSourceIpsList =
-  CreateFirewallRequestRulesItemSourceIpsList as any as S.Schema<ListFirewallsResponseFirewallsItemRulesItemSourceIpsList>;
-
 /** List of permitted IPv4/IPv6 addresses for outgoing traffic. The `direction` must be set to `out`. IPs must be in [CIDR block notation](https://wikipedia.org/wiki/CIDR). You can specify 100 CIDR blocks at most. The CIDR blocks may refer to networks (with empty host bits) or single hosts. For example, a network could be defined with `10.0.1.0/24` or `2001:db8:ff00:42::/64`, and a single host with `10.0.1.1/32` or `2001:db8:ff00:42::8329/128`. Use `0.0.0.0/0` to allow any IPv4 addresses and `::/0` to allow any IPv6 addresses. IPv6 CIDRs will be transformed to their canonical form according to [RFC5952](https://datatracker.ietf.org/doc/html/rfc5952#section-4). */
 export type ListFirewallsResponseFirewallsItemRulesItemDestinationIpsList = Array<string>;
-const ListFirewallsResponseFirewallsItemRulesItemDestinationIpsList =
-  CreateFirewallRequestRulesItemSourceIpsList as any as S.Schema<ListFirewallsResponseFirewallsItemRulesItemDestinationIpsList>;
-
 /** Network protocol to apply the rule for. */
 export type ListFirewallsResponseFirewallsItemRulesItemProtocol =
   | "tcp"
@@ -526,8 +308,6 @@ export type ListFirewallsResponseFirewallsItemRulesItemProtocol =
   | "icmp"
   | "esp"
   | "gre";
-const ListFirewallsResponseFirewallsItemRulesItemProtocol = S.String;
-
 export interface ListFirewallsResponseFirewallsItemRulesItem {
   /** Description of the rule. */
   description?: string | null;
@@ -542,18 +322,8 @@ export interface ListFirewallsResponseFirewallsItemRulesItem {
   /** Port or port range to apply the rule for. Only applicable for protocols `tcp` and `udp`. A port range can be specified by separating lower and upper bounds with a dash. `1024-5000` will include all ports starting from 1024 up to port 5000. */
   port: string | null;
 }
-const ListFirewallsResponseFirewallsItemRulesItem = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListFirewallsResponseFirewallsItemRulesItem>;
-
 export type ListFirewallsResponseFirewallsItemRulesList =
   Array<ListFirewallsResponseFirewallsItemRulesItem>;
-const ListFirewallsResponseFirewallsItemRulesList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListFirewallsResponseFirewallsItemRulesList>;
-
 /** The type of resource to apply. */
 export type ListFirewallsResponseFirewallsItemAppliedToItemType = "server" | "label_selector";
 /** [Server](#tag/servers) the [Firewall](#tag/firewalls) is applied to. Only set for `type` `server`, otherwise `null`. */
@@ -588,9 +358,6 @@ export interface ListFirewallsResponseFirewallsItemAppliedToItem {
 }
 export type ListFirewallsResponseFirewallsItemAppliedToList =
   Array<ListFirewallsResponseFirewallsItemAppliedToItem>;
-const ListFirewallsResponseFirewallsItemAppliedToList =
-  CreateFirewallResponseFirewallAppliedToList as any as S.Schema<ListFirewallsResponseFirewallsItemAppliedToList>;
-
 export interface ListFirewallsResponseFirewallsItem {
   /** ID of the [Firewall](#tag/firewalls). */
   id: number;
@@ -603,17 +370,7 @@ export interface ListFirewallsResponseFirewallsItem {
   rules: ListFirewallsResponseFirewallsItemRulesList;
   applied_to: ListFirewallsResponseFirewallsItemAppliedToList;
 }
-const ListFirewallsResponseFirewallsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListFirewallsResponseFirewallsItem>;
-
 export type ListFirewallsResponseFirewallsList = Array<ListFirewallsResponseFirewallsItem>;
-const ListFirewallsResponseFirewallsList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListFirewallsResponseFirewallsList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListFirewallsResponseMetaPagination {
   /** Current page number. */
@@ -629,34 +386,16 @@ export interface ListFirewallsResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-const ListFirewallsResponseMetaPagination = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListFirewallsResponseMetaPagination>;
-
 export interface ListFirewallsResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListFirewallsResponseMetaPagination;
 }
-const ListFirewallsResponseMeta = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListFirewallsResponseMeta>;
-
 export interface ListFirewallsResponse {
   firewalls: ListFirewallsResponseFirewallsList;
   meta: ListFirewallsResponseMeta;
 }
-const ListFirewallsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListFirewallsResponse>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
 export type UpdateFirewallRequestLabelsMap = { [key: string]: string | undefined };
-const UpdateFirewallRequestLabelsMap =
-  CreateFirewallRequestLabelsMap as any as S.Schema<UpdateFirewallRequestLabelsMap>;
-
 export interface UpdateFirewallRequest {
   /** ID of the Firewall. */
   id: number;
@@ -665,30 +404,14 @@ export interface UpdateFirewallRequest {
   /** User-defined labels (`key/value` pairs) for the Resource. Note that the set of [Labels](#description/labels) provided in the request will overwrite the existing one. For more information, see "[Labels](#description/labels)". */
   labels?: UpdateFirewallRequestLabelsMap;
 }
-const UpdateFirewallRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<UpdateFirewallRequest>;
-
 /** User-defined labels (`key/value` pairs) for the Resource. For more information, see "[Labels](#description/labels)". */
 export type UpdateFirewallResponseFirewallLabelsMap = { [key: string]: string | undefined };
-const UpdateFirewallResponseFirewallLabelsMap =
-  CreateFirewallRequestLabelsMap as any as S.Schema<UpdateFirewallResponseFirewallLabelsMap>;
-
 /** Traffic direction in which the rule should be applied to. Use `source_ips` for direction `in` and `destination_ips` for direction `out` to specify IPs. */
 export type UpdateFirewallResponseFirewallRulesItemDirection = "in" | "out";
-const UpdateFirewallResponseFirewallRulesItemDirection = S.String;
-
 /** List of permitted IPv4/IPv6 addresses for incoming traffic. The `direction` must be set to `in`. IPs must be provided in [CIDR block notation](https://wikipedia.org/wiki/CIDR). You can specify 100 CIDR blocks at most. The CIDR blocks may refer to networks (with empty host bits) or single hosts. For example, a network could be defined with `10.0.1.0/24` or `2001:db8:ff00:42::/64`, and a single host with `10.0.1.1/32` or `2001:db8:ff00:42::8329/128`. Use `0.0.0.0/0` to allow any IPv4 addresses and `::/0` to allow any IPv6 addresses. IPv6 CIDRs will be transformed to their canonical form according to [RFC5952](https://datatracker.ietf.org/doc/html/rfc5952#section-4). */
 export type UpdateFirewallResponseFirewallRulesItemSourceIpsList = Array<string>;
-const UpdateFirewallResponseFirewallRulesItemSourceIpsList =
-  CreateFirewallRequestRulesItemSourceIpsList as any as S.Schema<UpdateFirewallResponseFirewallRulesItemSourceIpsList>;
-
 /** List of permitted IPv4/IPv6 addresses for outgoing traffic. The `direction` must be set to `out`. IPs must be in [CIDR block notation](https://wikipedia.org/wiki/CIDR). You can specify 100 CIDR blocks at most. The CIDR blocks may refer to networks (with empty host bits) or single hosts. For example, a network could be defined with `10.0.1.0/24` or `2001:db8:ff00:42::/64`, and a single host with `10.0.1.1/32` or `2001:db8:ff00:42::8329/128`. Use `0.0.0.0/0` to allow any IPv4 addresses and `::/0` to allow any IPv6 addresses. IPv6 CIDRs will be transformed to their canonical form according to [RFC5952](https://datatracker.ietf.org/doc/html/rfc5952#section-4). */
 export type UpdateFirewallResponseFirewallRulesItemDestinationIpsList = Array<string>;
-const UpdateFirewallResponseFirewallRulesItemDestinationIpsList =
-  CreateFirewallRequestRulesItemSourceIpsList as any as S.Schema<UpdateFirewallResponseFirewallRulesItemDestinationIpsList>;
-
 /** Network protocol to apply the rule for. */
 export type UpdateFirewallResponseFirewallRulesItemProtocol =
   | "tcp"
@@ -696,8 +419,6 @@ export type UpdateFirewallResponseFirewallRulesItemProtocol =
   | "icmp"
   | "esp"
   | "gre";
-const UpdateFirewallResponseFirewallRulesItemProtocol = S.String;
-
 export interface UpdateFirewallResponseFirewallRulesItem {
   /** Description of the rule. */
   description?: string | null;
@@ -712,18 +433,8 @@ export interface UpdateFirewallResponseFirewallRulesItem {
   /** Port or port range to apply the rule for. Only applicable for protocols `tcp` and `udp`. A port range can be specified by separating lower and upper bounds with a dash. `1024-5000` will include all ports starting from 1024 up to port 5000. */
   port: string | null;
 }
-const UpdateFirewallResponseFirewallRulesItem = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<UpdateFirewallResponseFirewallRulesItem>;
-
 export type UpdateFirewallResponseFirewallRulesList =
   Array<UpdateFirewallResponseFirewallRulesItem>;
-const UpdateFirewallResponseFirewallRulesList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<UpdateFirewallResponseFirewallRulesList>;
-
 /** The type of resource to apply. */
 export type UpdateFirewallResponseFirewallAppliedToItemType = "server" | "label_selector";
 /** [Server](#tag/servers) the [Firewall](#tag/firewalls) is applied to. Only set for `type` `server`, otherwise `null`. */
@@ -758,9 +469,6 @@ export interface UpdateFirewallResponseFirewallAppliedToItem {
 }
 export type UpdateFirewallResponseFirewallAppliedToList =
   Array<UpdateFirewallResponseFirewallAppliedToItem>;
-const UpdateFirewallResponseFirewallAppliedToList =
-  CreateFirewallResponseFirewallAppliedToList as any as S.Schema<UpdateFirewallResponseFirewallAppliedToList>;
-
 export interface UpdateFirewallResponseFirewall {
   /** ID of the [Firewall](#tag/firewalls). */
   id: number;
@@ -773,19 +481,9 @@ export interface UpdateFirewallResponseFirewall {
   rules: UpdateFirewallResponseFirewallRulesList;
   applied_to: UpdateFirewallResponseFirewallAppliedToList;
 }
-const UpdateFirewallResponseFirewall = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<UpdateFirewallResponseFirewall>;
-
 export interface UpdateFirewallResponse {
   firewall: UpdateFirewallResponseFirewall;
 }
-const UpdateFirewallResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<UpdateFirewallResponse>;
-
 export type CreateFirewallError = HetznerOpError;
 /** Create a Firewall Create a [Firewall](#tag/firewalls). #### Operation specific errors */
 export const createFirewall: API.OperationMethod<
@@ -794,8 +492,8 @@ export const createFirewall: API.OperationMethod<
   CreateFirewallError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFirewallRequest,
-  output: CreateFirewallResponse,
+  input: __S(8) as any as S.Schema<CreateFirewallRequest>,
+  output: __S(21) as any as S.Schema<CreateFirewallResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -809,8 +507,8 @@ export const deleteFirewall: API.OperationMethod<
   DeleteFirewallError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFirewallRequest,
-  output: DeleteFirewallResponse,
+  input: __S(22) as any as S.Schema<DeleteFirewallRequest>,
+  output: __S(23) as any as S.Schema<DeleteFirewallResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -824,8 +522,8 @@ export const getFirewall: API.OperationMethod<
   GetFirewallError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFirewallRequest,
-  output: GetFirewallResponse,
+  input: __S(24) as any as S.Schema<GetFirewallRequest>,
+  output: __S(31) as any as S.Schema<GetFirewallResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -841,8 +539,8 @@ export const listFirewalls: API.PaginatedOperationMethod<
   ListFirewallsResponseFirewallsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListFirewallsRequest,
-    output: ListFirewallsResponse,
+    input: __S(33) as any as S.Schema<ListFirewallsRequest>,
+    output: __S(40) as any as S.Schema<ListFirewallsResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -865,8 +563,8 @@ export const updateFirewall: API.OperationMethod<
   UpdateFirewallError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFirewallRequest,
-  output: UpdateFirewallResponse,
+  input: __S(41) as any as S.Schema<UpdateFirewallRequest>,
+  output: __S(45) as any as S.Schema<UpdateFirewallResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -883,17 +581,17 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          direction: CreateFirewallRequestRulesItemDirection,
-          source_ips: S.optional(CreateFirewallRequestRulesItemSourceIpsList),
-          destination_ips: S.optional(CreateFirewallRequestRulesItemDestinationIpsList),
-          protocol: CreateFirewallRequestRulesItemProtocol,
+          direction: S.String,
+          source_ips: S.optional(__S(1)),
+          destination_ips: S.optional(__S(1)),
+          protocol: S.String,
           port: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateFirewallRequestRulesItem",
       });
     case 3:
-      return S.Array(CreateFirewallRequestRulesItem);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -913,15 +611,15 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: CreateFirewallRequestApplyToItemType,
-          server: S.optional(CreateFirewallRequestApplyToItemServer),
-          label_selector: S.optional(CreateFirewallRequestApplyToItemLabelSelector),
+          type: S.String,
+          server: S.optional(__S(4)),
+          label_selector: S.optional(__S(5)),
         }),
       ).annotate({
         identifier: "CreateFirewallRequestApplyToItem",
       });
     case 7:
-      return S.Array(CreateFirewallRequestApplyToItem);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -930,61 +628,59 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          labels: S.optional(CreateFirewallRequestLabelsMap),
-          rules: S.optional(CreateFirewallRequestRulesList),
-          apply_to: S.optional(CreateFirewallRequestApplyToList),
+          labels: S.optional(__S(0)),
+          rules: S.optional(__S(3)),
+          apply_to: S.optional(__S(7)),
         }).pipe(T.Http({ method: "POST", uri: "/firewalls", code: 200 })),
       ).annotate({ identifier: "CreateFirewallRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          direction: CreateFirewallResponseFirewallRulesItemDirection,
-          source_ips: CreateFirewallResponseFirewallRulesItemSourceIpsList,
-          destination_ips: CreateFirewallResponseFirewallRulesItemDestinationIpsList,
-          protocol: CreateFirewallResponseFirewallRulesItemProtocol,
+          direction: S.String,
+          source_ips: __S(1),
+          destination_ips: __S(1),
+          protocol: S.String,
           port: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "CreateFirewallResponseFirewallRulesItem",
       });
     case 2:
-      return S.Array(CreateFirewallResponseFirewallRulesItem);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesItemType),
-          server: S.optional(CreateFirewallRequestApplyToItemServer),
+          type: S.optional(S.String),
+          server: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem",
       });
     case 4:
-      return S.Array(CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesItem);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: CreateFirewallResponseFirewallAppliedToItemType,
-          server: S.optional(CreateFirewallRequestApplyToItemServer),
-          label_selector: S.optional(CreateFirewallRequestApplyToItemLabelSelector),
-          applied_to_resources: S.optional(
-            CreateFirewallResponseFirewallAppliedToItemAppliedToResourcesList,
-          ),
+          type: S.String,
+          server: S.optional(__S(4)),
+          label_selector: S.optional(__S(5)),
+          applied_to_resources: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "CreateFirewallResponseFirewallAppliedToItem",
       });
     case 6:
-      return S.Array(CreateFirewallResponseFirewallAppliedToItem);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: S.optional(CreateFirewallResponseFirewallLabelsMap),
+          labels: S.optional(__S(0)),
           created: S.String,
-          rules: CreateFirewallResponseFirewallRulesList,
-          applied_to: CreateFirewallResponseFirewallAppliedToList,
+          rules: __S(10),
+          applied_to: __S(14),
         }),
       ).annotate({
         identifier: "CreateFirewallResponseFirewall",
@@ -1003,7 +699,7 @@ function __c2(j: number): any {
         identifier: "CreateFirewallResponseActionsItemResourcesItem",
       });
     case 1:
-      return S.Array(CreateFirewallResponseActionsItemResourcesItem);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1018,23 +714,23 @@ function __c2(j: number): any {
         S.Struct({
           id: S.Number,
           command: S.String,
-          status: CreateFirewallResponseActionsItemStatus,
+          status: S.String,
           started: S.String,
           finished: S.NullOr(S.String),
           progress: S.Number,
-          resources: CreateFirewallResponseActionsItemResourcesList,
-          error: S.NullOr(CreateFirewallResponseActionsItemError),
+          resources: __S(17),
+          error: S.NullOr(__S(18)),
         }),
       ).annotate({
         identifier: "CreateFirewallResponseActionsItem",
       });
     case 4:
-      return S.Array(CreateFirewallResponseActionsItem);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          firewall: S.optional(CreateFirewallResponseFirewall),
-          actions: S.optional(CreateFirewallResponseActionsList),
+          firewall: S.optional(__S(15)),
+          actions: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "CreateFirewallResponse" });
     case 6:
@@ -1061,43 +757,41 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          direction: GetFirewallResponseFirewallRulesItemDirection,
-          source_ips: GetFirewallResponseFirewallRulesItemSourceIpsList,
-          destination_ips: GetFirewallResponseFirewallRulesItemDestinationIpsList,
-          protocol: GetFirewallResponseFirewallRulesItemProtocol,
+          direction: S.String,
+          source_ips: __S(1),
+          destination_ips: __S(1),
+          protocol: S.String,
           port: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "GetFirewallResponseFirewallRulesItem",
       });
     case 2:
-      return S.Array(GetFirewallResponseFirewallRulesItem);
+      return S.Array(__S(25));
     case 3:
-      return S.Array(GetFirewallResponseFirewallAppliedToItemAppliedToResourcesItem);
+      return S.Array(__S(11));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: GetFirewallResponseFirewallAppliedToItemType,
-          server: S.optional(CreateFirewallRequestApplyToItemServer),
-          label_selector: S.optional(CreateFirewallRequestApplyToItemLabelSelector),
-          applied_to_resources: S.optional(
-            GetFirewallResponseFirewallAppliedToItemAppliedToResourcesList,
-          ),
+          type: S.String,
+          server: S.optional(__S(4)),
+          label_selector: S.optional(__S(5)),
+          applied_to_resources: S.optional(__S(27)),
         }),
       ).annotate({
         identifier: "GetFirewallResponseFirewallAppliedToItem",
       });
     case 5:
-      return S.Array(GetFirewallResponseFirewallAppliedToItem);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: S.optional(GetFirewallResponseFirewallLabelsMap),
+          labels: S.optional(__S(0)),
           created: S.String,
-          rules: GetFirewallResponseFirewallRulesList,
-          applied_to: GetFirewallResponseFirewallAppliedToList,
+          rules: __S(26),
+          applied_to: __S(29),
         }),
       ).annotate({
         identifier: "GetFirewallResponseFirewall",
@@ -1105,7 +799,7 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          firewall: GetFirewallResponseFirewall,
+          firewall: __S(30),
         }),
       ).annotate({ identifier: "GetFirewallResponse" });
   }
@@ -1113,11 +807,11 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListFirewallsRequestSortItem);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sort: S.optional(ListFirewallsRequestSortList.pipe(T.Query())),
+          sort: S.optional(__S(32).pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           label_selector: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
@@ -1128,32 +822,32 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          direction: ListFirewallsResponseFirewallsItemRulesItemDirection,
-          source_ips: ListFirewallsResponseFirewallsItemRulesItemSourceIpsList,
-          destination_ips: ListFirewallsResponseFirewallsItemRulesItemDestinationIpsList,
-          protocol: ListFirewallsResponseFirewallsItemRulesItemProtocol,
+          direction: S.String,
+          source_ips: __S(1),
+          destination_ips: __S(1),
+          protocol: S.String,
           port: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "ListFirewallsResponseFirewallsItemRulesItem",
       });
     case 3:
-      return S.Array(ListFirewallsResponseFirewallsItemRulesItem);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: S.optional(ListFirewallsResponseFirewallsItemLabelsMap),
+          labels: S.optional(__S(0)),
           created: S.String,
-          rules: ListFirewallsResponseFirewallsItemRulesList,
-          applied_to: ListFirewallsResponseFirewallsItemAppliedToList,
+          rules: __S(35),
+          applied_to: __S(14),
         }),
       ).annotate({
         identifier: "ListFirewallsResponseFirewallsItem",
       });
     case 5:
-      return S.Array(ListFirewallsResponseFirewallsItem);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1170,7 +864,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pagination: ListFirewallsResponseMetaPagination,
+          pagination: __S(38),
         }),
       ).annotate({
         identifier: "ListFirewallsResponseMeta",
@@ -1182,8 +876,8 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          firewalls: ListFirewallsResponseFirewallsList,
-          meta: ListFirewallsResponseMeta,
+          firewalls: __S(37),
+          meta: __S(39),
         }),
       ).annotate({ identifier: "ListFirewallsResponse" });
     case 1:
@@ -1191,33 +885,33 @@ function __c5(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          labels: S.optional(UpdateFirewallRequestLabelsMap),
+          labels: S.optional(__S(0)),
         }).pipe(T.Http({ method: "PUT", uri: "/firewalls/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateFirewallRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          direction: UpdateFirewallResponseFirewallRulesItemDirection,
-          source_ips: UpdateFirewallResponseFirewallRulesItemSourceIpsList,
-          destination_ips: UpdateFirewallResponseFirewallRulesItemDestinationIpsList,
-          protocol: UpdateFirewallResponseFirewallRulesItemProtocol,
+          direction: S.String,
+          source_ips: __S(1),
+          destination_ips: __S(1),
+          protocol: S.String,
           port: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "UpdateFirewallResponseFirewallRulesItem",
       });
     case 3:
-      return S.Array(UpdateFirewallResponseFirewallRulesItem);
+      return S.Array(__S(42));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           name: S.String,
-          labels: S.optional(UpdateFirewallResponseFirewallLabelsMap),
+          labels: S.optional(__S(0)),
           created: S.String,
-          rules: UpdateFirewallResponseFirewallRulesList,
-          applied_to: UpdateFirewallResponseFirewallAppliedToList,
+          rules: __S(43),
+          applied_to: __S(14),
         }),
       ).annotate({
         identifier: "UpdateFirewallResponseFirewall",
@@ -1225,8 +919,29 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          firewall: UpdateFirewallResponseFirewall,
+          firewall: __S(44),
         }),
       ).annotate({ identifier: "UpdateFirewallResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
   }
 }

@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Bedrock Data Automation Runtime",
   serviceShapeName: "AmazonBedrockKeystoneRuntimeService",
@@ -122,10 +124,6 @@ export type InvocationArn = string;
 export interface GetDataAutomationStatusRequest {
   invocationArn: string;
 }
-const GetDataAutomationStatusRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetDataAutomationStatusRequest>;
 export type AutomationJobStatus =
   | "Created"
   | "InProgress"
@@ -133,13 +131,10 @@ export type AutomationJobStatus =
   | "ServiceError"
   | "ClientError"
   | (string & {});
-const AutomationJobStatus = S.String;
-
 export type S3Uri = string;
 export interface OutputConfiguration {
   s3Uri: string;
 }
-const OutputConfiguration = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<OutputConfiguration>;
 export interface GetDataAutomationStatusResponse {
   status?: AutomationJobStatus;
   errorType?: string;
@@ -149,57 +144,34 @@ export interface GetDataAutomationStatusResponse {
   jobCompletionTime?: Date;
   jobDurationInSeconds?: number;
 }
-const GetDataAutomationStatusResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetDataAutomationStatusResponse>;
 export interface SyncInputConfiguration {
   bytes?: Uint8Array;
   s3Uri?: string;
 }
-const SyncInputConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<SyncInputConfiguration>;
 export type DataAutomationArn = string;
 export type DataAutomationStage = "LIVE" | "DEVELOPMENT" | (string & {});
-const DataAutomationStage = S.String;
-
 export interface DataAutomationConfiguration {
   dataAutomationProjectArn: string;
   stage?: DataAutomationStage;
 }
-const DataAutomationConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DataAutomationConfiguration>;
 export type BlueprintArn = string;
 export type BlueprintVersion = string;
 export type BlueprintStage = "DEVELOPMENT" | "LIVE" | (string & {});
-const BlueprintStage = S.String;
-
 export interface Blueprint {
   blueprintArn: string;
   version?: string;
   stage?: BlueprintStage;
 }
-const Blueprint = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Blueprint>;
 export type BlueprintList = Blueprint[];
-const BlueprintList = /*@__PURE__*/ __L.at(__c0, 6);
 export type DataAutomationProfileArn = string;
 export type KMSKeyId = string;
 export type EncryptionContextKey = string;
 export type EncryptionContextValue = string;
 export type EncryptionContextMap = { [key: string]: string | undefined };
-const EncryptionContextMap = /*@__PURE__*/ __L.at(__c0, 7);
 export interface EncryptionConfiguration {
   kmsKeyId: string;
   kmsEncryptionContext?: { [key: string]: string | undefined };
 }
-const EncryptionConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<EncryptionConfiguration>;
 export interface InvokeDataAutomationRequest {
   inputConfiguration: SyncInputConfiguration;
   dataAutomationConfiguration?: DataAutomationConfiguration;
@@ -208,83 +180,48 @@ export interface InvokeDataAutomationRequest {
   encryptionConfiguration?: EncryptionConfiguration;
   outputConfiguration?: OutputConfiguration;
 }
-const InvokeDataAutomationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<InvokeDataAutomationRequest>;
 export type SemanticModality = "DOCUMENT" | "IMAGE" | "AUDIO" | "VIDEO" | (string & {});
-const SemanticModality = S.String;
-
 export type CustomOutputStatus = "MATCH" | "NO_MATCH" | (string & {});
-const CustomOutputStatus = S.String;
-
 export interface OutputSegment {
   customOutputStatus?: CustomOutputStatus;
   customOutput?: string;
   standardOutput?: string;
 }
-const OutputSegment = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<OutputSegment>;
 export type OutputSegmentList = OutputSegment[];
-const OutputSegmentList = /*@__PURE__*/ __L.at(__c1, 3);
 export interface InvokeDataAutomationResponse {
   outputConfiguration?: OutputConfiguration;
   semanticModality: SemanticModality;
   outputSegments?: OutputSegment[];
 }
-const InvokeDataAutomationResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<InvokeDataAutomationResponse>;
 export type IdempotencyToken = string;
 export interface TimestampSegment {
   startTimeMillis: number;
   endTimeMillis: number;
 }
-const TimestampSegment = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<TimestampSegment>;
 export type VideoSegmentConfiguration = { timestampSegment: TimestampSegment };
-const VideoSegmentConfiguration = /*@__PURE__*/ __L.at(__c1, 6);
 export interface VideoAssetProcessingConfiguration {
   segmentConfiguration?: VideoSegmentConfiguration;
 }
-const VideoAssetProcessingConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<VideoAssetProcessingConfiguration>;
 export interface AssetProcessingConfiguration {
   video?: VideoAssetProcessingConfiguration;
 }
-const AssetProcessingConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AssetProcessingConfiguration>;
 export interface InputConfiguration {
   s3Uri: string;
   assetProcessingConfiguration?: AssetProcessingConfiguration;
 }
-const InputConfiguration = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<InputConfiguration>;
 export interface EventBridgeConfiguration {
   eventBridgeEnabled: boolean;
 }
-const EventBridgeConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<EventBridgeConfiguration>;
 export interface NotificationConfiguration {
   eventBridgeConfiguration: EventBridgeConfiguration;
 }
-const NotificationConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<NotificationConfiguration>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   key: string;
   value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c2, 5);
 export interface InvokeDataAutomationAsyncRequest {
   clientToken?: string;
   inputConfiguration: InputConfiguration;
@@ -296,48 +233,27 @@ export interface InvokeDataAutomationAsyncRequest {
   dataAutomationProfileArn: string;
   tags?: Tag[];
 }
-const InvokeDataAutomationAsyncRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<InvokeDataAutomationAsyncRequest>;
 export interface InvokeDataAutomationAsyncResponse {
   invocationArn: string;
 }
-const InvokeDataAutomationAsyncResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<InvokeDataAutomationAsyncResponse>;
 export type TaggableResourceArn = string;
 export interface ListTagsForResourceRequest {
   resourceARN: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   resourceARN: string;
   tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface UntagResourceRequest {
   resourceARN: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type NonBlankString = string;
 export type GetDataAutomationStatusError =
   | AccessDeniedException
@@ -355,8 +271,8 @@ export const getDataAutomationStatus: API.OperationMethod<
   GetDataAutomationStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataAutomationStatusRequest,
-  output: GetDataAutomationStatusResponse,
+  input: __S(0) as any as S.Schema<GetDataAutomationStatusRequest>,
+  output: __S(2) as any as S.Schema<GetDataAutomationStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -385,8 +301,8 @@ export const invokeDataAutomation: API.OperationMethod<
   InvokeDataAutomationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvokeDataAutomationRequest,
-  output: InvokeDataAutomationResponse,
+  input: __S(9) as any as S.Schema<InvokeDataAutomationRequest>,
+  output: __S(12) as any as S.Schema<InvokeDataAutomationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -415,8 +331,8 @@ export const invokeDataAutomationAsync: API.OperationMethod<
   InvokeDataAutomationAsyncError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvokeDataAutomationAsyncRequest,
-  output: InvokeDataAutomationAsyncResponse,
+  input: __S(22) as any as S.Schema<InvokeDataAutomationAsyncRequest>,
+  output: __S(23) as any as S.Schema<InvokeDataAutomationAsyncResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -445,8 +361,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(24) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(25) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -476,8 +392,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(26) as any as S.Schema<TagResourceRequest>,
+  output: __S(27) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -507,8 +423,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(29) as any as S.Schema<UntagResourceRequest>,
+  output: __S(27) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -539,10 +455,10 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(AutomationJobStatus),
+          status: S.optional(S.String),
           errorType: S.optional(S.String),
           errorMessage: S.optional(S.String),
-          outputConfiguration: S.optional(OutputConfiguration),
+          outputConfiguration: S.optional(__S(1)),
           jobSubmissionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           jobCompletionTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           jobDurationInSeconds: S.optional(S.Number),
@@ -556,7 +472,7 @@ function __c0(j: number): any {
       ).annotate({ identifier: "SyncInputConfiguration" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ dataAutomationProjectArn: S.String, stage: S.optional(DataAutomationStage) }),
+        S.Struct({ dataAutomationProjectArn: S.String, stage: S.optional(S.String) }),
       ).annotate({
         identifier: "DataAutomationConfiguration",
       });
@@ -565,11 +481,11 @@ function __c0(j: number): any {
         S.Struct({
           blueprintArn: S.String,
           version: S.optional(S.String),
-          stage: S.optional(BlueprintStage),
+          stage: S.optional(S.String),
         }),
       ).annotate({ identifier: "Blueprint" });
     case 6:
-      return S.Array(Blueprint);
+      return S.Array(__S(5));
     case 7:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
@@ -578,17 +494,17 @@ function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ kmsKeyId: S.String, kmsEncryptionContext: S.optional(EncryptionContextMap) }),
+        S.Struct({ kmsKeyId: S.String, kmsEncryptionContext: S.optional(__S(7)) }),
       ).annotate({ identifier: "EncryptionConfiguration" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          inputConfiguration: SyncInputConfiguration,
-          dataAutomationConfiguration: S.optional(DataAutomationConfiguration),
-          blueprints: S.optional(BlueprintList),
+          inputConfiguration: __S(3),
+          dataAutomationConfiguration: S.optional(__S(4)),
+          blueprints: S.optional(__S(6)),
           dataAutomationProfileArn: S.String,
-          encryptionConfiguration: S.optional(EncryptionConfiguration),
-          outputConfiguration: S.optional(OutputConfiguration),
+          encryptionConfiguration: S.optional(__S(8)),
+          outputConfiguration: S.optional(__S(1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "InvokeDataAutomationRequest",
@@ -596,19 +512,19 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          customOutputStatus: S.optional(CustomOutputStatus),
+          customOutputStatus: S.optional(S.String),
           customOutput: S.optional(S.String),
           standardOutput: S.optional(S.String),
         }),
       ).annotate({ identifier: "OutputSegment" });
     case 3:
-      return S.Array(OutputSegment);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          outputConfiguration: S.optional(OutputConfiguration),
-          semanticModality: SemanticModality,
-          outputSegments: S.optional(OutputSegmentList),
+          outputConfiguration: S.optional(__S(1)),
+          semanticModality: S.String,
+          outputSegments: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "InvokeDataAutomationResponse",
@@ -618,11 +534,9 @@ function __c1(j: number): any {
         S.Struct({ startTimeMillis: S.Number, endTimeMillis: S.Number }),
       ).annotate({ identifier: "TimestampSegment" });
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ timestampSegment: TimestampSegment })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ timestampSegment: __S(13) })]);
     case 7:
-      return S.suspend(() =>
-        S.Struct({ segmentConfiguration: S.optional(VideoSegmentConfiguration) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ segmentConfiguration: S.optional(__S(14)) })).annotate({
         identifier: "VideoAssetProcessingConfiguration",
       });
   }
@@ -630,16 +544,14 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ video: S.optional(VideoAssetProcessingConfiguration) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ video: S.optional(__S(15)) })).annotate({
         identifier: "AssetProcessingConfiguration",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           s3Uri: S.String,
-          assetProcessingConfiguration: S.optional(AssetProcessingConfiguration),
+          assetProcessingConfiguration: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "InputConfiguration" });
     case 2:
@@ -647,9 +559,7 @@ function __c2(j: number): any {
         identifier: "EventBridgeConfiguration",
       });
     case 3:
-      return S.suspend(() =>
-        S.Struct({ eventBridgeConfiguration: EventBridgeConfiguration }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ eventBridgeConfiguration: __S(18) })).annotate({
         identifier: "NotificationConfiguration",
       });
     case 4:
@@ -657,19 +567,19 @@ function __c2(j: number): any {
         identifier: "Tag",
       });
     case 5:
-      return S.Array(Tag);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          inputConfiguration: InputConfiguration,
-          outputConfiguration: OutputConfiguration,
-          dataAutomationConfiguration: S.optional(DataAutomationConfiguration),
-          encryptionConfiguration: S.optional(EncryptionConfiguration),
-          notificationConfiguration: S.optional(NotificationConfiguration),
-          blueprints: S.optional(BlueprintList),
+          inputConfiguration: __S(17),
+          outputConfiguration: __S(1),
+          dataAutomationConfiguration: S.optional(__S(4)),
+          encryptionConfiguration: S.optional(__S(8)),
+          notificationConfiguration: S.optional(__S(19)),
+          blueprints: S.optional(__S(6)),
           dataAutomationProfileArn: S.String,
-          tags: S.optional(TagList),
+          tags: S.optional(__S(21)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "InvokeDataAutomationAsyncRequest",
@@ -691,12 +601,12 @@ function __c3(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ tags: S.optional(TagList) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(21)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ resourceARN: S.String, tags: TagList }).pipe(
+        S.Struct({ resourceARN: S.String, tags: __S(21) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -708,9 +618,26 @@ function __c3(j: number): any {
       return S.Array(S.String);
     case 5:
       return S.suspend(() =>
-        S.Struct({ resourceARN: S.String, tagKeys: TagKeyList }).pipe(
+        S.Struct({ resourceARN: S.String, tagKeys: __S(28) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

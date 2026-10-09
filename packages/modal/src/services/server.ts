@@ -6,6 +6,8 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
@@ -13,20 +15,10 @@ export interface FetchServerRequestRequestTail {
   /** Number of most recent requests to return. Must be between 1 and 1000. */
   count?: number;
 }
-const FetchServerRequestRequestTail = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<FetchServerRequestRequestTail>;
-
 export interface FetchServerRequestRequest {
   functionId?: string;
   tail?: FetchServerRequestRequestTail;
 }
-const FetchServerRequestRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<FetchServerRequestRequest>;
-
 export interface ServerRequestInfo {
   route?: string;
   timestamp?: string;
@@ -34,23 +26,11 @@ export interface ServerRequestInfo {
   durationSeconds?: number;
   status?: number;
 }
-const ServerRequestInfo = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ServerRequestInfo>;
-
 export type ServerRequestInfoList = Array<ServerRequestInfo>;
-const ServerRequestInfoList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ServerRequestInfoList>;
-
 export interface FetchServerRequestResponse {
   /** The requested number of most recent requests from the last seven days, ordered from newest to oldest. */
   requests?: ServerRequestInfoList;
 }
-const FetchServerRequestResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<FetchServerRequestResponse>;
-
 export interface ServerGetTimeRangeStatsRequest {
   functionId?: string;
   since?: string;
@@ -59,68 +39,33 @@ export interface ServerGetTimeRangeStatsRequest {
   /** Exclusive. Filter stats for a specific container */
   containerId?: string;
 }
-const ServerGetTimeRangeStatsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ServerGetTimeRangeStatsRequest>;
-
 export interface ServerGetTimeRangeStatsResponseServerStatusCodeCount {
   statusCode?: number;
   count?: string;
 }
-const ServerGetTimeRangeStatsResponseServerStatusCodeCount = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ServerGetTimeRangeStatsResponseServerStatusCodeCount>;
-
 export type ServerGetTimeRangeStatsResponseServerStatusCodeCountList =
   Array<ServerGetTimeRangeStatsResponseServerStatusCodeCount>;
-const ServerGetTimeRangeStatsResponseServerStatusCodeCountList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ServerGetTimeRangeStatsResponseServerStatusCodeCountList>;
-
 export interface StatsPercentile {
   /** The percentile expressed in basis points: 5000 is p50 and 9990 is p99.9. */
   percentileBasisPoints?: number;
   value?: number;
 }
-const StatsPercentile = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<StatsPercentile>;
-
 export type StatsPercentileList = Array<StatsPercentile>;
-const StatsPercentileList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<StatsPercentileList>;
-
 export interface StatsPercentileDistribution {
   /** Unit identifier such as "seconds", "cores", "gibibytes", or "fraction". */
   unit?: string;
   percentiles?: StatsPercentileList;
 }
-const StatsPercentileDistribution = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<StatsPercentileDistribution>;
-
 export type StatsPercentileDistributionMap = {
   [key: string]: StatsPercentileDistribution | undefined;
 };
-const StatsPercentileDistributionMap = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<StatsPercentileDistributionMap>;
-
 export type LLMEngine = "LLM_ENGINE_UNSPECIFIED" | "LLM_ENGINE_SGLANG" | "LLM_ENGINE_VLLM";
-const LLMEngine = S.String;
-
 export type ServerInferenceStatsStatus =
   | "SERVER_INFERENCE_STATS_STATUS_UNSPECIFIED"
   | "SERVER_INFERENCE_STATS_STATUS_AVAILABLE"
   | "SERVER_INFERENCE_STATS_STATUS_NO_DATA"
   | "SERVER_INFERENCE_STATS_STATUS_UNAVAILABLE";
-const ServerInferenceStatsStatus = S.String;
-
 export type DoubleMap = { [key: string]: number | undefined };
-const DoubleMap = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DoubleMap>;
-
 export interface ServerGetTimeRangeStatsResponseServerInferenceStats {
   engine?: LLMEngine;
   status?: ServerInferenceStatsStatus;
@@ -129,11 +74,6 @@ export interface ServerGetTimeRangeStatsResponseServerInferenceStats {
   /** Metrics include input_tokens_per_second, cached_input_tokens_per_second, and output_tokens_per_second, subject to change as requirements evolve. */
   scalarStats?: DoubleMap;
 }
-const ServerGetTimeRangeStatsResponseServerInferenceStats = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ServerGetTimeRangeStatsResponseServerInferenceStats>;
-
 export interface ServerGetTimeRangeStatsResponse {
   since?: string;
   /** Inclusive. */
@@ -155,11 +95,6 @@ export interface ServerGetTimeRangeStatsResponse {
   /** Number of containers that were active (published heartbeats) in the time range. */
   containerTotalCount?: string;
 }
-const ServerGetTimeRangeStatsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ServerGetTimeRangeStatsResponse>;
-
 export type FetchServerRequestError = ModalOpError;
 export const fetchServerRequest: API.OperationMethod<
   FetchServerRequestRequest,
@@ -167,8 +102,8 @@ export const fetchServerRequest: API.OperationMethod<
   FetchServerRequestError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchServerRequestRequest,
-  output: FetchServerRequestResponse,
+  input: __S(1) as any as S.Schema<FetchServerRequestRequest>,
+  output: __S(4) as any as S.Schema<FetchServerRequestResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -182,8 +117,8 @@ export const serverGetTimeRangeStats: API.OperationMethod<
   ServerGetTimeRangeStatsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServerGetTimeRangeStatsRequest,
-  output: ServerGetTimeRangeStatsResponse,
+  input: __S(5) as any as S.Schema<ServerGetTimeRangeStatsRequest>,
+  output: __S(14) as any as S.Schema<ServerGetTimeRangeStatsResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -204,7 +139,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           functionId: S.optional(S.String),
-          tail: S.optional(FetchServerRequestRequestTail),
+          tail: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -226,11 +161,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ServerRequestInfo" });
     case 3:
-      return S.Array(ServerRequestInfo);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(ServerRequestInfoList),
+          requests: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "FetchServerRequestResponse",
@@ -262,7 +197,7 @@ function __c0(j: number): any {
         identifier: "ServerGetTimeRangeStatsResponseServerStatusCodeCount",
       });
     case 7:
-      return S.Array(ServerGetTimeRangeStatsResponseServerStatusCodeCount);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -275,27 +210,27 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "StatsPercentile" });
     case 1:
-      return S.Array(StatsPercentile);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
           unit: S.optional(S.String),
-          percentiles: S.optional(StatsPercentileList),
+          percentiles: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "StatsPercentileDistribution",
       });
     case 3:
-      return S.Record(S.String, StatsPercentileDistribution);
+      return S.Record(S.String, __S(10));
     case 4:
       return S.Record(S.String, S.Number);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          engine: S.optional(LLMEngine),
-          status: S.optional(ServerInferenceStatsStatus),
-          percentileStats: S.optional(StatsPercentileDistributionMap),
-          scalarStats: S.optional(DoubleMap),
+          engine: S.optional(S.String),
+          status: S.optional(S.String),
+          percentileStats: S.optional(__S(11)),
+          scalarStats: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "ServerGetTimeRangeStatsResponseServerInferenceStats",
@@ -306,13 +241,11 @@ function __c1(j: number): any {
           since: S.optional(S.String),
           until: S.optional(S.String),
           requestCount: S.optional(S.String),
-          requestCountByStatusCode: S.optional(
-            ServerGetTimeRangeStatsResponseServerStatusCodeCountList,
-          ),
+          requestCountByStatusCode: S.optional(__S(7)),
           requestRatePerSecond: S.optional(S.Number),
-          requestPercentileStats: S.optional(StatsPercentileDistributionMap),
-          containerPercentileStats: S.optional(StatsPercentileDistributionMap),
-          inference: S.optional(ServerGetTimeRangeStatsResponseServerInferenceStats),
+          requestPercentileStats: S.optional(__S(11)),
+          containerPercentileStats: S.optional(__S(11)),
+          inference: S.optional(__S(13)),
           containerStartedCount: S.optional(S.String),
           containerErrorCount: S.optional(S.String),
           containerCreatingAtEndCount: S.optional(S.String),
@@ -321,5 +254,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "ServerGetTimeRangeStatsResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

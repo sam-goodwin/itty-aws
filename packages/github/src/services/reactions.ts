@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -46,8 +48,6 @@ export type CreateForCommitCommentRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-const CreateForCommitCommentRequestContent = S.String;
-
 export interface CreateForCommitCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -58,11 +58,6 @@ export interface CreateForCommitCommentRequest {
   /** The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the commit comment. */
   content: CreateForCommitCommentRequestContent | (string & {});
 }
-const CreateForCommitCommentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateForCommitCommentRequest>;
-
 /** A GitHub user. */
 export interface NullableSimpleUser {
   name?: string | null;
@@ -88,8 +83,6 @@ export interface NullableSimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-const NullableSimpleUser = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<NullableSimpleUser>;
-
 /** The reaction to use */
 export type ReactionContent =
   | "+1"
@@ -100,8 +93,6 @@ export type ReactionContent =
   | "hooray"
   | "rocket"
   | "eyes";
-const ReactionContent = S.String;
-
 /** Reactions to conversations provide a way to help people express their feelings more simply and effectively. */
 export interface Reaction {
   id: number;
@@ -111,8 +102,6 @@ export interface Reaction {
   content: ReactionContent;
   created_at: string;
 }
-const Reaction = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Reaction>;
-
 /** The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue. */
 export type CreateForIssueRequestContent =
   | "+1"
@@ -123,8 +112,6 @@ export type CreateForIssueRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-const CreateForIssueRequestContent = S.String;
-
 export interface CreateForIssueRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -135,11 +122,6 @@ export interface CreateForIssueRequest {
   /** The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue. */
   content: CreateForIssueRequestContent | (string & {});
 }
-const CreateForIssueRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateForIssueRequest>;
-
 /** The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue comment. */
 export type CreateForIssueCommentRequestContent =
   | "+1"
@@ -150,8 +132,6 @@ export type CreateForIssueCommentRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-const CreateForIssueCommentRequestContent = S.String;
-
 export interface CreateForIssueCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -162,11 +142,6 @@ export interface CreateForIssueCommentRequest {
   /** The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the issue comment. */
   content: CreateForIssueCommentRequestContent | (string & {});
 }
-const CreateForIssueCommentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateForIssueCommentRequest>;
-
 /** The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the pull request review comment. */
 export type CreateForPullRequestReviewCommentRequestContent =
   | "+1"
@@ -177,8 +152,6 @@ export type CreateForPullRequestReviewCommentRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-const CreateForPullRequestReviewCommentRequestContent = S.String;
-
 export interface CreateForPullRequestReviewCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -189,11 +162,6 @@ export interface CreateForPullRequestReviewCommentRequest {
   /** The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the pull request review comment. */
   content: CreateForPullRequestReviewCommentRequestContent | (string & {});
 }
-const CreateForPullRequestReviewCommentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateForPullRequestReviewCommentRequest>;
-
 /** The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the release. */
 export type CreateForReleaseRequestContent =
   | "+1"
@@ -202,8 +170,6 @@ export type CreateForReleaseRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-const CreateForReleaseRequestContent = S.String;
-
 export interface CreateForReleaseRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -214,11 +180,6 @@ export interface CreateForReleaseRequest {
   /** The [reaction type](https://docs.github.com/rest/reactions/reactions#about-reactions) to add to the release. */
   content: CreateForReleaseRequestContent | (string & {});
 }
-const CreateForReleaseRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateForReleaseRequest>;
-
 export interface DeleteForCommitCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -229,17 +190,7 @@ export interface DeleteForCommitCommentRequest {
   /** The unique identifier of the reaction. */
   reaction_id: number;
 }
-const DeleteForCommitCommentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeleteForCommitCommentRequest>;
-
 export interface DeleteForCommitCommentResponse {}
-const DeleteForCommitCommentResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeleteForCommitCommentResponse>;
-
 export interface DeleteForIssueRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -250,15 +201,7 @@ export interface DeleteForIssueRequest {
   /** The unique identifier of the reaction. */
   reaction_id: number;
 }
-const DeleteForIssueRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteForIssueRequest>;
-
 export interface DeleteForIssueResponse {}
-const DeleteForIssueResponse =
-  DeleteForCommitCommentResponse as any as S.Schema<DeleteForIssueResponse>;
-
 export interface DeleteForIssueCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -269,15 +212,7 @@ export interface DeleteForIssueCommentRequest {
   /** The unique identifier of the reaction. */
   reaction_id: number;
 }
-const DeleteForIssueCommentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeleteForIssueCommentRequest>;
-
 export interface DeleteForIssueCommentResponse {}
-const DeleteForIssueCommentResponse =
-  DeleteForCommitCommentResponse as any as S.Schema<DeleteForIssueCommentResponse>;
-
 export interface DeleteForPullRequestCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -288,17 +223,7 @@ export interface DeleteForPullRequestCommentRequest {
   /** The unique identifier of the reaction. */
   reaction_id: number;
 }
-const DeleteForPullRequestCommentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteForPullRequestCommentRequest>;
-
 export interface DeleteForPullRequestCommentResponse {}
-const DeleteForPullRequestCommentResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteForPullRequestCommentResponse>;
-
 export interface DeleteForReleaseRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -309,15 +234,7 @@ export interface DeleteForReleaseRequest {
   /** The unique identifier of the reaction. */
   reaction_id: number;
 }
-const DeleteForReleaseRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteForReleaseRequest>;
-
 export interface DeleteForReleaseResponse {}
-const DeleteForReleaseResponse =
-  DeleteForCommitCommentResponse as any as S.Schema<DeleteForReleaseResponse>;
-
 export type ListForCommitCommentRequestContent =
   | "+1"
   | "-1"
@@ -327,8 +244,6 @@ export type ListForCommitCommentRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-const ListForCommitCommentRequestContent = S.String;
-
 export interface ListForCommitCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -343,23 +258,8 @@ export interface ListForCommitCommentRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListForCommitCommentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListForCommitCommentRequest>;
-
 export type ListForCommitCommentResponseBodyList = Array<Reaction>;
-const ListForCommitCommentResponseBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListForCommitCommentResponseBodyList>;
-
 export type ListForCommitCommentResponse = ListForCommitCommentResponseBodyList;
-const ListForCommitCommentResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListForCommitCommentResponse>;
-
 export type ListForIssueRequestContent =
   | "+1"
   | "-1"
@@ -369,8 +269,6 @@ export type ListForIssueRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-const ListForIssueRequestContent = S.String;
-
 export interface ListForIssueRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -385,15 +283,8 @@ export interface ListForIssueRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListForIssueRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ListForIssueRequest>;
-
 export type ListForIssueResponseBodyList = Array<Reaction>;
-const ListForIssueResponseBodyList =
-  ListForCommitCommentResponseBodyList as any as S.Schema<ListForIssueResponseBodyList>;
-
 export type ListForIssueResponse = ListForIssueResponseBodyList;
-const ListForIssueResponse = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ListForIssueResponse>;
-
 export type ListForIssueCommentRequestContent =
   | "+1"
   | "-1"
@@ -403,8 +294,6 @@ export type ListForIssueCommentRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-const ListForIssueCommentRequestContent = S.String;
-
 export interface ListForIssueCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -419,16 +308,8 @@ export interface ListForIssueCommentRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListForIssueCommentRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListForIssueCommentRequest>;
-
 export type ListForIssueCommentResponseBodyList = Array<Reaction>;
 export type ListForIssueCommentResponse = ListForIssueCommentResponseBodyList;
-const ListForIssueCommentResponse =
-  ListForCommitCommentResponse as any as S.Schema<ListForIssueCommentResponse>;
-
 export type ListForPullRequestReviewCommentRequestContent =
   | "+1"
   | "-1"
@@ -438,8 +319,6 @@ export type ListForPullRequestReviewCommentRequestContent =
   | "hooray"
   | "rocket"
   | "eyes";
-const ListForPullRequestReviewCommentRequestContent = S.String;
-
 export interface ListForPullRequestReviewCommentRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -454,20 +333,10 @@ export interface ListForPullRequestReviewCommentRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListForPullRequestReviewCommentRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListForPullRequestReviewCommentRequest>;
-
 export type ListForPullRequestReviewCommentResponseBodyList = Array<Reaction>;
 export type ListForPullRequestReviewCommentResponse =
   ListForPullRequestReviewCommentResponseBodyList;
-const ListForPullRequestReviewCommentResponse =
-  ListForCommitCommentResponse as any as S.Schema<ListForPullRequestReviewCommentResponse>;
-
 export type ListForReleaseRequestContent = "+1" | "laugh" | "heart" | "hooray" | "rocket" | "eyes";
-const ListForReleaseRequestContent = S.String;
-
 export interface ListForReleaseRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -482,15 +351,8 @@ export interface ListForReleaseRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListForReleaseRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListForReleaseRequest>;
-
 export type ListForReleaseResponseBodyList = Array<Reaction>;
 export type ListForReleaseResponse = ListForReleaseResponseBodyList;
-const ListForReleaseResponse = ListForIssueResponse as any as S.Schema<ListForReleaseResponse>;
-
 export type CreateForCommitCommentError = UnprocessableEntity | GithubOpError;
 /** Create reaction for a commit comment Create a reaction to a [commit comment](https://docs.github.com/rest/commits/comments#get-a-commit-comment). A response with an HTTP `200` status means that you already added the reaction type to this commit comment. */
 export const createForCommitComment: API.OperationMethod<
@@ -499,8 +361,8 @@ export const createForCommitComment: API.OperationMethod<
   CreateForCommitCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateForCommitCommentRequest,
-  output: Reaction,
+  input: __S(0) as any as S.Schema<CreateForCommitCommentRequest>,
+  output: __S(2) as any as S.Schema<Reaction>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -514,8 +376,8 @@ export const createForIssue: API.OperationMethod<
   CreateForIssueError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateForIssueRequest,
-  output: Reaction,
+  input: __S(3) as any as S.Schema<CreateForIssueRequest>,
+  output: __S(2) as any as S.Schema<Reaction>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -529,8 +391,8 @@ export const createForIssueComment: API.OperationMethod<
   CreateForIssueCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateForIssueCommentRequest,
-  output: Reaction,
+  input: __S(4) as any as S.Schema<CreateForIssueCommentRequest>,
+  output: __S(2) as any as S.Schema<Reaction>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -544,8 +406,8 @@ export const createForPullRequestReviewComment: API.OperationMethod<
   CreateForPullRequestReviewCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateForPullRequestReviewCommentRequest,
-  output: Reaction,
+  input: __S(5) as any as S.Schema<CreateForPullRequestReviewCommentRequest>,
+  output: __S(2) as any as S.Schema<Reaction>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -559,8 +421,8 @@ export const createForRelease: API.OperationMethod<
   CreateForReleaseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateForReleaseRequest,
-  output: Reaction,
+  input: __S(6) as any as S.Schema<CreateForReleaseRequest>,
+  output: __S(2) as any as S.Schema<Reaction>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -574,8 +436,8 @@ export const deleteForCommitComment: API.OperationMethod<
   DeleteForCommitCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteForCommitCommentRequest,
-  output: DeleteForCommitCommentResponse,
+  input: __S(7) as any as S.Schema<DeleteForCommitCommentRequest>,
+  output: __S(8) as any as S.Schema<DeleteForCommitCommentResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -589,8 +451,8 @@ export const deleteForIssue: API.OperationMethod<
   DeleteForIssueError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteForIssueRequest,
-  output: DeleteForIssueResponse,
+  input: __S(9) as any as S.Schema<DeleteForIssueRequest>,
+  output: __S(8) as any as S.Schema<DeleteForIssueResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -604,8 +466,8 @@ export const deleteForIssueComment: API.OperationMethod<
   DeleteForIssueCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteForIssueCommentRequest,
-  output: DeleteForIssueCommentResponse,
+  input: __S(10) as any as S.Schema<DeleteForIssueCommentRequest>,
+  output: __S(8) as any as S.Schema<DeleteForIssueCommentResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -619,8 +481,8 @@ export const deleteForPullRequestComment: API.OperationMethod<
   DeleteForPullRequestCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteForPullRequestCommentRequest,
-  output: DeleteForPullRequestCommentResponse,
+  input: __S(11) as any as S.Schema<DeleteForPullRequestCommentRequest>,
+  output: __S(12) as any as S.Schema<DeleteForPullRequestCommentResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -634,8 +496,8 @@ export const deleteForRelease: API.OperationMethod<
   DeleteForReleaseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteForReleaseRequest,
-  output: DeleteForReleaseResponse,
+  input: __S(13) as any as S.Schema<DeleteForReleaseRequest>,
+  output: __S(8) as any as S.Schema<DeleteForReleaseResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -649,8 +511,8 @@ export const listForCommitComment: API.OperationMethod<
   ListForCommitCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForCommitCommentRequest,
-  output: ListForCommitCommentResponse,
+  input: __S(14) as any as S.Schema<ListForCommitCommentRequest>,
+  output: __S(16) as any as S.Schema<ListForCommitCommentResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -664,8 +526,8 @@ export const listForIssue: API.OperationMethod<
   ListForIssueError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForIssueRequest,
-  output: ListForIssueResponse,
+  input: __S(17) as any as S.Schema<ListForIssueRequest>,
+  output: __S(18) as any as S.Schema<ListForIssueResponse>,
   errors: [NotFound, Gone],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -679,8 +541,8 @@ export const listForIssueComment: API.OperationMethod<
   ListForIssueCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForIssueCommentRequest,
-  output: ListForIssueCommentResponse,
+  input: __S(19) as any as S.Schema<ListForIssueCommentRequest>,
+  output: __S(16) as any as S.Schema<ListForIssueCommentResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -694,8 +556,8 @@ export const listForPullRequestReviewComment: API.OperationMethod<
   ListForPullRequestReviewCommentError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForPullRequestReviewCommentRequest,
-  output: ListForPullRequestReviewCommentResponse,
+  input: __S(20) as any as S.Schema<ListForPullRequestReviewCommentRequest>,
+  output: __S(16) as any as S.Schema<ListForPullRequestReviewCommentResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -709,8 +571,8 @@ export const listForRelease: API.OperationMethod<
   ListForReleaseError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForReleaseRequest,
-  output: ListForReleaseResponse,
+  input: __S(21) as any as S.Schema<ListForReleaseRequest>,
+  output: __S(18) as any as S.Schema<ListForReleaseResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -725,7 +587,7 @@ function __c0(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           comment_id: S.Number.pipe(T.Label()),
-          content: CreateForCommitCommentRequestContent,
+          content: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -768,8 +630,8 @@ function __c0(j: number): any {
         S.Struct({
           id: S.Number,
           node_id: S.String,
-          user: S.NullOr(NullableSimpleUser),
-          content: ReactionContent,
+          user: S.NullOr(__S(1)),
+          content: S.String,
           created_at: S.String,
         }),
       ).annotate({ identifier: "Reaction" });
@@ -779,7 +641,7 @@ function __c0(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           issue_number: S.Number.pipe(T.Label()),
-          content: CreateForIssueRequestContent,
+          content: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -794,7 +656,7 @@ function __c0(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           comment_id: S.Number.pipe(T.Label()),
-          content: CreateForIssueCommentRequestContent,
+          content: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -811,7 +673,7 @@ function __c0(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           comment_id: S.Number.pipe(T.Label()),
-          content: CreateForPullRequestReviewCommentRequestContent,
+          content: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -828,7 +690,7 @@ function __c0(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           release_id: S.Number.pipe(T.Label()),
-          content: CreateForReleaseRequestContent,
+          content: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -936,7 +798,7 @@ function __c1(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           comment_id: S.Number.pipe(T.Label()),
-          content: S.optional(ListForCommitCommentRequestContent.pipe(T.Query())),
+          content: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -950,15 +812,13 @@ function __c1(j: number): any {
         identifier: "ListForCommitCommentRequest",
       });
     case 7:
-      return S.Array(Reaction);
+      return S.Array(__S(2));
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListForCommitCommentResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(15).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListForCommitCommentResponse",
       });
     case 1:
@@ -967,7 +827,7 @@ function __c2(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           issue_number: S.Number.pipe(T.Label()),
-          content: S.optional(ListForIssueRequestContent.pipe(T.Query())),
+          content: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -979,7 +839,7 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListForIssueRequest" });
     case 2:
-      return S.suspend(() => ListForIssueResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(15).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListForIssueResponse",
       });
     case 3:
@@ -988,7 +848,7 @@ function __c2(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           comment_id: S.Number.pipe(T.Label()),
-          content: S.optional(ListForIssueCommentRequestContent.pipe(T.Query())),
+          content: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -1007,7 +867,7 @@ function __c2(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           comment_id: S.Number.pipe(T.Label()),
-          content: S.optional(ListForPullRequestReviewCommentRequestContent.pipe(T.Query())),
+          content: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -1026,7 +886,7 @@ function __c2(j: number): any {
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
           release_id: S.Number.pipe(T.Label()),
-          content: S.optional(ListForReleaseRequestContent.pipe(T.Query())),
+          content: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -1037,5 +897,20 @@ function __c2(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ListForReleaseRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -87,25 +89,13 @@ export type IntegrationKindEnum =
   | "twilio"
   | "vercel"
   | "youtube-analytics";
-const IntegrationKindEnum = S.String;
-
 export interface CreateIntegrationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   kind?: IntegrationKindEnum | (string & {});
   config?: unknown;
 }
-const CreateIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateIntegrationRequest>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -119,8 +109,6 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -132,12 +120,8 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserBasic>;
-
 /** * `connected` - connected * `unavailable` - unavailable */
 export type InstallationStatusEnum = "connected" | "unavailable";
-const InstallationStatusEnum = S.String;
-
 /** Standard Integration serializer. */
 export interface IntegrationConfig {
   id?: number;
@@ -154,8 +138,6 @@ export interface IntegrationConfig {
   /** GitHub only, null otherwise. `unavailable` means the App was uninstalled or suspended on GitHub and PostHog can no longer mint tokens for it; `connected` otherwise. */
   installation_status?: InstallationStatusEnum | null;
 }
-const IntegrationConfig = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<IntegrationConfig>;
-
 export interface CreateIntegrationsGithubLinkExistingRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -166,11 +148,6 @@ export interface CreateIntegrationsGithubLinkExistingRequest {
   /** GitHub installation ID to link; resolved within the organization when source_team_id is omitted. */
   installation_id?: string | null;
 }
-const CreateIntegrationsGithubLinkExistingRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateIntegrationsGithubLinkExistingRequest>;
-
 export interface CreateIntegrationsGithubPrepareCallbackRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -179,17 +156,7 @@ export interface CreateIntegrationsGithubPrepareCallbackRequest {
   /** GitHub installation ID being managed; binds the seeded update state so a callback can't swap in a different installation. */
   installation_id?: string;
 }
-const CreateIntegrationsGithubPrepareCallbackRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateIntegrationsGithubPrepareCallbackRequest>;
-
 export interface CreateIntegrationsGithubPrepareCallbackResponse {}
-const CreateIntegrationsGithubPrepareCallbackResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateIntegrationsGithubPrepareCallbackResponse>;
-
 export interface CreateIntegrationsRequestAccessRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -198,76 +165,37 @@ export interface CreateIntegrationsRequestAccessRequest {
   /** Explanation from the requester of why this integration is needed. Shown to admins in the notification email. */
   reason: string;
 }
-const CreateIntegrationsRequestAccessRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateIntegrationsRequestAccessRequest>;
-
 export interface IntegrationAccessRequestResponse {
   /** Whether the access request was accepted and the project admins were notified. */
   success: boolean;
 }
-const IntegrationAccessRequestResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<IntegrationAccessRequestResponse>;
-
 export interface GetIntegrationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
 }
-const GetIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetIntegrationRequest>;
-
 export interface GetIntegrationsAnthropicManagedAgentRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
 }
-const GetIntegrationsAnthropicManagedAgentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetIntegrationsAnthropicManagedAgentRequest>;
-
 export interface GetIntegrationsAnthropicManagedAgentResponse {}
-const GetIntegrationsAnthropicManagedAgentResponse =
-  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsAnthropicManagedAgentResponse>;
-
 export interface GetIntegrationsAnthropicManagedAgentEnvRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
 }
-const GetIntegrationsAnthropicManagedAgentEnvRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetIntegrationsAnthropicManagedAgentEnvRequest>;
-
 export interface GetIntegrationsAnthropicManagedAgentEnvResponse {}
-const GetIntegrationsAnthropicManagedAgentEnvResponse =
-  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsAnthropicManagedAgentEnvResponse>;
-
 export interface GetIntegrationsAnthropicManagedAgentVaultRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
 }
-const GetIntegrationsAnthropicManagedAgentVaultRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetIntegrationsAnthropicManagedAgentVaultRequest>;
-
 export interface GetIntegrationsAnthropicManagedAgentVaultResponse {}
-const GetIntegrationsAnthropicManagedAgentVaultResponse =
-  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsAnthropicManagedAgentVaultResponse>;
-
 export interface GetIntegrationsChannelRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -280,11 +208,6 @@ export interface GetIntegrationsChannelRequest {
   /** Optional case-insensitive channel name or ID search query. */
   search?: string;
 }
-const GetIntegrationsChannelRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetIntegrationsChannelRequest>;
-
 export interface SlackChannel {
   /** Slack channel ID (e.g. C0123ABC) -- pass to cdp-functions inputs.channel. */
   id: string;
@@ -299,15 +222,8 @@ export interface SlackChannel {
   /** True if the channel is private and the PostHog Slack app cannot access it. */
   is_private_without_access: boolean;
 }
-const SlackChannel = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SlackChannel>;
-
 /** Slack channels visible to the PostHog Slack app. */
 export type SlackChannelsResponseChannelsList = Array<SlackChannel>;
-const SlackChannelsResponseChannelsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<SlackChannelsResponseChannelsList>;
-
 export interface SlackChannelsResponse {
   /** Slack channels visible to the PostHog Slack app. */
   channels: SlackChannelsResponseChannelsList;
@@ -316,69 +232,33 @@ export interface SlackChannelsResponse {
   /** Whether more channels match the current search beyond this page. */
   has_more?: boolean;
 }
-const SlackChannelsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<SlackChannelsResponse>;
-
 export interface GetIntegrationsClickupListRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
 }
-const GetIntegrationsClickupListRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetIntegrationsClickupListRequest>;
-
 export interface GetIntegrationsClickupListResponse {}
-const GetIntegrationsClickupListResponse =
-  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsClickupListResponse>;
-
 export interface GetIntegrationsClickupSpaceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
 }
-const GetIntegrationsClickupSpaceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetIntegrationsClickupSpaceRequest>;
-
 export interface GetIntegrationsClickupSpaceResponse {}
-const GetIntegrationsClickupSpaceResponse =
-  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsClickupSpaceResponse>;
-
 export interface GetIntegrationsClickupWorkspaceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
 }
-const GetIntegrationsClickupWorkspaceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetIntegrationsClickupWorkspaceRequest>;
-
 export interface GetIntegrationsClickupWorkspaceResponse {}
-const GetIntegrationsClickupWorkspaceResponse =
-  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsClickupWorkspaceResponse>;
-
 export interface GetIntegrationsGithubAvailableInstallationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetIntegrationsGithubAvailableInstallationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetIntegrationsGithubAvailableInstallationRequest>;
-
 /** * `ok` - Ok * `not_connected` - Not Connected * `unavailable` - Unavailable */
 export type GitHubPersonalDiscoveryStatusEnum = "ok" | "not_connected" | "unavailable";
-const GitHubPersonalDiscoveryStatusEnum = S.String;
-
 export interface GitHubAvailableInstallation {
   /** GitHub installation ID to pass to github/link_existing when linking this installation. */
   installation_id: string;
@@ -391,19 +271,9 @@ export interface GitHubAvailableInstallation {
   /** Name of the project in source_team_id, so the picker can say where the installation comes from. Null for an installation no project has linked yet. */
   source_team_name: string | null;
 }
-const GitHubAvailableInstallation = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GitHubAvailableInstallation>;
-
 /** GitHub installations available to link to this project: the organization's existing installations plus any the user's personal GitHub link can see but that aren't linked to any project yet. */
 export type GitHubAvailableInstallationsResponseInstallationsList =
   Array<GitHubAvailableInstallation>;
-const GitHubAvailableInstallationsResponseInstallationsList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GitHubAvailableInstallationsResponseInstallationsList>;
-
 export interface GitHubAvailableInstallationsResponse {
   /** Correlation ID for this discovery response. */
   discovery_id: string;
@@ -418,11 +288,6 @@ export interface GitHubAvailableInstallationsResponse {
   /** Whether the requesting user has a personal GitHub account linked (via Linked Accounts). Used to prompt for that link when it would surface more installations to adopt. */
   personal_github_connected: boolean;
 }
-const GitHubAvailableInstallationsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GitHubAvailableInstallationsResponse>;
-
 export interface GetIntegrationsGithubBranchRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -437,18 +302,8 @@ export interface GetIntegrationsGithubBranchRequest {
   /** Optional case-insensitive branch name search query. */
   search?: string;
 }
-const GetIntegrationsGithubBranchRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetIntegrationsGithubBranchRequest>;
-
 /** List of branch names */
 export type GitHubBranchesResponseBranchesList = Array<string>;
-const GitHubBranchesResponseBranchesList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GitHubBranchesResponseBranchesList>;
-
 export interface GitHubBranchesResponse {
   /** List of branch names */
   branches?: GitHubBranchesResponseBranchesList;
@@ -457,11 +312,6 @@ export interface GitHubBranchesResponse {
   /** Whether more branches exist beyond the returned page */
   has_more?: boolean;
 }
-const GitHubBranchesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GitHubBranchesResponse>;
-
 export interface GetIntegrationsGithubReposRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -476,11 +326,6 @@ export interface GetIntegrationsGithubReposRequest {
   /** Optional case-insensitive repository name search query. */
   search?: string;
 }
-const GetIntegrationsGithubReposRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetIntegrationsGithubReposRequest>;
-
 export interface GitHubRepo {
   /** GitHub repository numeric identifier. */
   id?: number;
@@ -501,14 +346,7 @@ export interface GitHubRepo {
   /** Whether the PostHog GitHub App has write access -- required to open pull requests. */
   can_push?: boolean;
 }
-const GitHubRepo = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GitHubRepo>;
-
 export type GitHubReposResponseRepositoriesList = Array<GitHubRepo>;
-const GitHubReposResponseRepositoriesList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GitHubReposResponseRepositoriesList>;
-
 export interface GitHubReposResponse {
   repositories?: GitHubReposResponseRepositoriesList;
   /** Whether more repositories are available beyond this page. */
@@ -518,8 +356,6 @@ export interface GitHubReposResponse {
   /** Total number of repositories matching the search query, across all pages. */
   total?: number;
 }
-const GitHubReposResponse = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GitHubReposResponse>;
-
 export interface GetIntegrationsGithubTeamRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -532,11 +368,6 @@ export interface GetIntegrationsGithubTeamRequest {
   /** Optional case-insensitive team name or slug search query. */
   search?: string;
 }
-const GetIntegrationsGithubTeamRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetIntegrationsGithubTeamRequest>;
-
 export interface GitHubTeam {
   /** GitHub team numeric identifier. */
   id: number;
@@ -545,64 +376,34 @@ export interface GitHubTeam {
   /** GitHub team display name. */
   name: string;
 }
-const GitHubTeam = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GitHubTeam>;
-
 /** List of GitHub teams available to the installation organization. */
 export type GitHubTeamsResponseTeamsList = Array<GitHubTeam>;
-const GitHubTeamsResponseTeamsList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GitHubTeamsResponseTeamsList>;
-
 export interface GitHubTeamsResponse {
   /** List of GitHub teams available to the installation organization. */
   teams: GitHubTeamsResponseTeamsList;
   /** Whether more teams are available beyond this page. */
   has_more: boolean;
 }
-const GitHubTeamsResponse = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GitHubTeamsResponse>;
-
 export interface GetIntegrationsGoogleAccessibleAccountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
 }
-const GetIntegrationsGoogleAccessibleAccountRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetIntegrationsGoogleAccessibleAccountRequest>;
-
 export interface GetIntegrationsGoogleAccessibleAccountResponse {}
-const GetIntegrationsGoogleAccessibleAccountResponse =
-  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsGoogleAccessibleAccountResponse>;
-
 export interface GetIntegrationsGoogleConversionActionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
 }
-const GetIntegrationsGoogleConversionActionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetIntegrationsGoogleConversionActionRequest>;
-
 export interface GetIntegrationsGoogleConversionActionResponse {}
-const GetIntegrationsGoogleConversionActionResponse =
-  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsGoogleConversionActionResponse>;
-
 export interface GetIntegrationsJiraProjectRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
 }
-const GetIntegrationsJiraProjectRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetIntegrationsJiraProjectRequest>;
-
 export interface JiraProject {
   /** Jira project ID. */
   id: string;
@@ -611,98 +412,51 @@ export interface JiraProject {
   /** Jira project display name. */
   name: string;
 }
-const JiraProject = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<JiraProject>;
-
 /** Jira projects available to this integration. */
 export type JiraProjectsResponseProjectsList = Array<JiraProject>;
-const JiraProjectsResponseProjectsList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<JiraProjectsResponseProjectsList>;
-
 export interface JiraProjectsResponse {
   /** Jira projects available to this integration. */
   projects: JiraProjectsResponseProjectsList;
 }
-const JiraProjectsResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<JiraProjectsResponse>;
-
 export interface GetIntegrationsLinearTeamRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
 }
-const GetIntegrationsLinearTeamRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetIntegrationsLinearTeamRequest>;
-
 export interface LinearTeam {
   /** Linear team ID to pass as error tracking config.team_id. */
   id: string;
   /** Linear team display name. */
   name: string;
 }
-const LinearTeam = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<LinearTeam>;
-
 /** Linear teams available to this integration. */
 export type LinearTeamsResponseTeamsList = Array<LinearTeam>;
-const LinearTeamsResponseTeamsList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<LinearTeamsResponseTeamsList>;
-
 export interface LinearTeamsResponse {
   /** Linear teams available to this integration. */
   teams: LinearTeamsResponseTeamsList;
 }
-const LinearTeamsResponse = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<LinearTeamsResponse>;
-
 export interface GetIntegrationsLinkedinAdsAccountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
 }
-const GetIntegrationsLinkedinAdsAccountRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetIntegrationsLinkedinAdsAccountRequest>;
-
 export interface GetIntegrationsLinkedinAdsAccountResponse {}
-const GetIntegrationsLinkedinAdsAccountResponse =
-  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsLinkedinAdsAccountResponse>;
-
 export interface GetIntegrationsLinkedinAdsConversionRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
 }
-const GetIntegrationsLinkedinAdsConversionRuleRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetIntegrationsLinkedinAdsConversionRuleRequest>;
-
 export interface GetIntegrationsLinkedinAdsConversionRuleResponse {}
-const GetIntegrationsLinkedinAdsConversionRuleResponse =
-  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsLinkedinAdsConversionRuleResponse>;
-
 export interface GetIntegrationsTwilioPhoneNumberRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
 }
-const GetIntegrationsTwilioPhoneNumberRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetIntegrationsTwilioPhoneNumberRequest>;
-
 export interface GetIntegrationsTwilioPhoneNumberResponse {}
-const GetIntegrationsTwilioPhoneNumberResponse =
-  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<GetIntegrationsTwilioPhoneNumberResponse>;
-
 export interface GetIntegrationsUserRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -719,11 +473,6 @@ export interface GetIntegrationsUserRequest {
   /** Look up one member directly by Slack member ID (e.g. U0123ABC). When set, `search`, `limit`, and `offset` are ignored and the response holds at most that member. */
   user_id?: string;
 }
-const GetIntegrationsUserRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetIntegrationsUserRequest>;
-
 export interface SlackUser {
   /** Slack member ID (e.g. U0123ABC) -- post to it to open a direct message. */
   id: string;
@@ -732,15 +481,8 @@ export interface SlackUser {
   /** Name to show in pickers: the member's display name, falling back to their real name or handle. */
   display_name: string;
 }
-const SlackUser = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<SlackUser>;
-
 /** Human Slack workspace members the PostHog Slack app can DM. */
 export type SlackUsersResponseUsersList = Array<SlackUser>;
-const SlackUsersResponseUsersList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<SlackUsersResponseUsersList>;
-
 export interface SlackUsersResponse {
   /** Human Slack workspace members the PostHog Slack app can DM. */
   users: SlackUsersResponseUsersList;
@@ -749,66 +491,30 @@ export interface SlackUsersResponse {
   /** Whether more members match the current search beyond this page. */
   has_more?: boolean;
 }
-const SlackUsersResponse = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<SlackUsersResponse>;
-
 export interface IntegrationsAuthorizeRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const IntegrationsAuthorizeRetrieveRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<IntegrationsAuthorizeRetrieveRequest>;
-
 export interface IntegrationsAuthorizeRetrieveResponse {}
-const IntegrationsAuthorizeRetrieveResponse =
-  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<IntegrationsAuthorizeRetrieveResponse>;
-
 export interface IntegrationsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
 }
-const IntegrationsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<IntegrationsDestroyRequest>;
-
 export interface IntegrationsDestroyResponse {}
-const IntegrationsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<IntegrationsDestroyResponse>;
-
 export interface IntegrationsDomainConnectApplyUrlCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   kind?: IntegrationKindEnum | (string & {});
   config?: unknown;
 }
-const IntegrationsDomainConnectApplyUrlCreateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<IntegrationsDomainConnectApplyUrlCreateRequest>;
-
 export interface IntegrationsDomainConnectApplyUrlCreateResponse {}
-const IntegrationsDomainConnectApplyUrlCreateResponse =
-  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<IntegrationsDomainConnectApplyUrlCreateResponse>;
-
 export interface IntegrationsDomainConnectCheckRetrieveRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const IntegrationsDomainConnectCheckRetrieveRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<IntegrationsDomainConnectCheckRetrieveRequest>;
-
 export interface IntegrationsDomainConnectCheckRetrieveResponse {}
-const IntegrationsDomainConnectCheckRetrieveResponse =
-  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<IntegrationsDomainConnectCheckRetrieveResponse>;
-
 export interface IntegrationsEmailVerifyCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -817,19 +523,9 @@ export interface IntegrationsEmailVerifyCreateRequest {
   kind?: IntegrationKindEnum | (string & {});
   config?: unknown;
 }
-const IntegrationsEmailVerifyCreateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<IntegrationsEmailVerifyCreateRequest>;
-
 export interface IntegrationsEmailVerifyCreateResponse {}
-const IntegrationsEmailVerifyCreateResponse =
-  CreateIntegrationsGithubPrepareCallbackResponse as any as S.Schema<IntegrationsEmailVerifyCreateResponse>;
-
 /** * `posthog_code` - posthog_code */
 export type ConnectFromEnum = "posthog_code";
-const ConnectFromEnum = S.String;
-
 export interface IntegrationsGithubOauthAuthorizeCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -840,47 +536,24 @@ export interface IntegrationsGithubOauthAuthorizeCreateRequest {
   /** Originating surface for the connect flow; only 'posthog_code' is recognized. * `posthog_code` - posthog_code */
   connect_from?: ConnectFromEnum | (string & {});
 }
-const IntegrationsGithubOauthAuthorizeCreateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<IntegrationsGithubOauthAuthorizeCreateRequest>;
-
 export interface GitHubOAuthAuthorizeResponse {
   /** GitHub User OAuth URL the client should redirect to. */
   oauth_url: string;
 }
-const GitHubOAuthAuthorizeResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GitHubOAuthAuthorizeResponse>;
-
 export interface IntegrationsGithubReposRefreshCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this integration. */
   id: number;
 }
-const IntegrationsGithubReposRefreshCreateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<IntegrationsGithubReposRefreshCreateRequest>;
-
 /** The refreshed repository cache. */
 export type GitHubReposRefreshResponseRepositoriesList = Array<GitHubRepo>;
-const GitHubReposRefreshResponseRepositoriesList =
-  GitHubReposResponseRepositoriesList as any as S.Schema<GitHubReposRefreshResponseRepositoriesList>;
-
 export interface GitHubReposRefreshResponse {
   /** The refreshed repository cache. */
   repositories?: GitHubReposRefreshResponseRepositoriesList;
   /** `unavailable` when GitHub reports the App installation as uninstalled or suspended, in which case `repositories` is the last cached list rather than a fresh one. * `connected` - connected * `unavailable` - unavailable */
   installation_status?: InstallationStatusEnum;
 }
-const GitHubReposRefreshResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GitHubReposRefreshResponse>;
-
 export type ListIntegrationsRequestKind =
   | "anthropic"
   | "apns"
@@ -931,8 +604,6 @@ export type ListIntegrationsRequestKind =
   | "twitter-ads"
   | "vercel"
   | "youtube-analytics";
-const ListIntegrationsRequestKind = S.String;
-
 export interface ListIntegrationsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -943,28 +614,13 @@ export interface ListIntegrationsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListIntegrationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListIntegrationsRequest>;
-
 export type PaginatedIntegrationConfigListResultsList = Array<IntegrationConfig>;
-const PaginatedIntegrationConfigListResultsList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<PaginatedIntegrationConfigListResultsList>;
-
 export interface PaginatedIntegrationConfigList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedIntegrationConfigListResultsList;
 }
-const PaginatedIntegrationConfigList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<PaginatedIntegrationConfigList>;
-
 export interface UpdateIntegrationsEmailPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -973,11 +629,6 @@ export interface UpdateIntegrationsEmailPartialRequest {
   kind?: IntegrationKindEnum | (string & {});
   config?: unknown;
 }
-const UpdateIntegrationsEmailPartialRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<UpdateIntegrationsEmailPartialRequest>;
-
 export type CreateIntegrationError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createIntegration: API.OperationMethod<
   CreateIntegrationRequest,
@@ -985,8 +636,8 @@ export const createIntegration: API.OperationMethod<
   CreateIntegrationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIntegrationRequest,
-  output: IntegrationConfig,
+  input: __S(0) as any as S.Schema<CreateIntegrationRequest>,
+  output: __S(3) as any as S.Schema<IntegrationConfig>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1000,8 +651,8 @@ export const createIntegrationsGithubLinkExisting: API.OperationMethod<
   CreateIntegrationsGithubLinkExistingError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIntegrationsGithubLinkExistingRequest,
-  output: IntegrationConfig,
+  input: __S(4) as any as S.Schema<CreateIntegrationsGithubLinkExistingRequest>,
+  output: __S(3) as any as S.Schema<IntegrationConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1015,8 +666,8 @@ export const createIntegrationsGithubPrepareCallback: API.OperationMethod<
   CreateIntegrationsGithubPrepareCallbackError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIntegrationsGithubPrepareCallbackRequest,
-  output: CreateIntegrationsGithubPrepareCallbackResponse,
+  input: __S(5) as any as S.Schema<CreateIntegrationsGithubPrepareCallbackRequest>,
+  output: __S(6) as any as S.Schema<CreateIntegrationsGithubPrepareCallbackResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1030,8 +681,8 @@ export const createIntegrationsRequestAccess: API.OperationMethod<
   CreateIntegrationsRequestAccessError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIntegrationsRequestAccessRequest,
-  output: IntegrationAccessRequestResponse,
+  input: __S(7) as any as S.Schema<CreateIntegrationsRequestAccessRequest>,
+  output: __S(8) as any as S.Schema<IntegrationAccessRequestResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1044,8 +695,8 @@ export const getIntegration: API.OperationMethod<
   GetIntegrationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationRequest,
-  output: IntegrationConfig,
+  input: __S(9) as any as S.Schema<GetIntegrationRequest>,
+  output: __S(3) as any as S.Schema<IntegrationConfig>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1058,8 +709,8 @@ export const getIntegrationsAnthropicManagedAgent: API.OperationMethod<
   GetIntegrationsAnthropicManagedAgentError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsAnthropicManagedAgentRequest,
-  output: GetIntegrationsAnthropicManagedAgentResponse,
+  input: __S(10) as any as S.Schema<GetIntegrationsAnthropicManagedAgentRequest>,
+  output: __S(6) as any as S.Schema<GetIntegrationsAnthropicManagedAgentResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1072,8 +723,8 @@ export const getIntegrationsAnthropicManagedAgentEnv: API.OperationMethod<
   GetIntegrationsAnthropicManagedAgentEnvError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsAnthropicManagedAgentEnvRequest,
-  output: GetIntegrationsAnthropicManagedAgentEnvResponse,
+  input: __S(11) as any as S.Schema<GetIntegrationsAnthropicManagedAgentEnvRequest>,
+  output: __S(6) as any as S.Schema<GetIntegrationsAnthropicManagedAgentEnvResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1086,8 +737,8 @@ export const getIntegrationsAnthropicManagedAgentVault: API.OperationMethod<
   GetIntegrationsAnthropicManagedAgentVaultError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsAnthropicManagedAgentVaultRequest,
-  output: GetIntegrationsAnthropicManagedAgentVaultResponse,
+  input: __S(12) as any as S.Schema<GetIntegrationsAnthropicManagedAgentVaultRequest>,
+  output: __S(6) as any as S.Schema<GetIntegrationsAnthropicManagedAgentVaultResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1100,8 +751,8 @@ export const getIntegrationsChannel: API.OperationMethod<
   GetIntegrationsChannelError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsChannelRequest,
-  output: SlackChannelsResponse,
+  input: __S(13) as any as S.Schema<GetIntegrationsChannelRequest>,
+  output: __S(16) as any as S.Schema<SlackChannelsResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1114,8 +765,8 @@ export const getIntegrationsClickupList: API.OperationMethod<
   GetIntegrationsClickupListError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsClickupListRequest,
-  output: GetIntegrationsClickupListResponse,
+  input: __S(17) as any as S.Schema<GetIntegrationsClickupListRequest>,
+  output: __S(6) as any as S.Schema<GetIntegrationsClickupListResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1128,8 +779,8 @@ export const getIntegrationsClickupSpace: API.OperationMethod<
   GetIntegrationsClickupSpaceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsClickupSpaceRequest,
-  output: GetIntegrationsClickupSpaceResponse,
+  input: __S(18) as any as S.Schema<GetIntegrationsClickupSpaceRequest>,
+  output: __S(6) as any as S.Schema<GetIntegrationsClickupSpaceResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1142,8 +793,8 @@ export const getIntegrationsClickupWorkspace: API.OperationMethod<
   GetIntegrationsClickupWorkspaceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsClickupWorkspaceRequest,
-  output: GetIntegrationsClickupWorkspaceResponse,
+  input: __S(19) as any as S.Schema<GetIntegrationsClickupWorkspaceRequest>,
+  output: __S(6) as any as S.Schema<GetIntegrationsClickupWorkspaceResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1157,8 +808,8 @@ export const getIntegrationsGithubAvailableInstallation: API.OperationMethod<
   GetIntegrationsGithubAvailableInstallationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsGithubAvailableInstallationRequest,
-  output: GitHubAvailableInstallationsResponse,
+  input: __S(20) as any as S.Schema<GetIntegrationsGithubAvailableInstallationRequest>,
+  output: __S(23) as any as S.Schema<GitHubAvailableInstallationsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1171,8 +822,8 @@ export const getIntegrationsGithubBranch: API.OperationMethod<
   GetIntegrationsGithubBranchError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsGithubBranchRequest,
-  output: GitHubBranchesResponse,
+  input: __S(24) as any as S.Schema<GetIntegrationsGithubBranchRequest>,
+  output: __S(26) as any as S.Schema<GitHubBranchesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1185,8 +836,8 @@ export const getIntegrationsGithubRepos: API.OperationMethod<
   GetIntegrationsGithubReposError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsGithubReposRequest,
-  output: GitHubReposResponse,
+  input: __S(27) as any as S.Schema<GetIntegrationsGithubReposRequest>,
+  output: __S(30) as any as S.Schema<GitHubReposResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1199,8 +850,8 @@ export const getIntegrationsGithubTeam: API.OperationMethod<
   GetIntegrationsGithubTeamError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsGithubTeamRequest,
-  output: GitHubTeamsResponse,
+  input: __S(31) as any as S.Schema<GetIntegrationsGithubTeamRequest>,
+  output: __S(34) as any as S.Schema<GitHubTeamsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1213,8 +864,8 @@ export const getIntegrationsGoogleAccessibleAccount: API.OperationMethod<
   GetIntegrationsGoogleAccessibleAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsGoogleAccessibleAccountRequest,
-  output: GetIntegrationsGoogleAccessibleAccountResponse,
+  input: __S(35) as any as S.Schema<GetIntegrationsGoogleAccessibleAccountRequest>,
+  output: __S(6) as any as S.Schema<GetIntegrationsGoogleAccessibleAccountResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1227,8 +878,8 @@ export const getIntegrationsGoogleConversionAction: API.OperationMethod<
   GetIntegrationsGoogleConversionActionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsGoogleConversionActionRequest,
-  output: GetIntegrationsGoogleConversionActionResponse,
+  input: __S(36) as any as S.Schema<GetIntegrationsGoogleConversionActionRequest>,
+  output: __S(6) as any as S.Schema<GetIntegrationsGoogleConversionActionResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1241,8 +892,8 @@ export const getIntegrationsJiraProject: API.OperationMethod<
   GetIntegrationsJiraProjectError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsJiraProjectRequest,
-  output: JiraProjectsResponse,
+  input: __S(37) as any as S.Schema<GetIntegrationsJiraProjectRequest>,
+  output: __S(40) as any as S.Schema<JiraProjectsResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1255,8 +906,8 @@ export const getIntegrationsLinearTeam: API.OperationMethod<
   GetIntegrationsLinearTeamError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsLinearTeamRequest,
-  output: LinearTeamsResponse,
+  input: __S(41) as any as S.Schema<GetIntegrationsLinearTeamRequest>,
+  output: __S(44) as any as S.Schema<LinearTeamsResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1269,8 +920,8 @@ export const getIntegrationsLinkedinAdsAccount: API.OperationMethod<
   GetIntegrationsLinkedinAdsAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsLinkedinAdsAccountRequest,
-  output: GetIntegrationsLinkedinAdsAccountResponse,
+  input: __S(45) as any as S.Schema<GetIntegrationsLinkedinAdsAccountRequest>,
+  output: __S(6) as any as S.Schema<GetIntegrationsLinkedinAdsAccountResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1283,8 +934,8 @@ export const getIntegrationsLinkedinAdsConversionRule: API.OperationMethod<
   GetIntegrationsLinkedinAdsConversionRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsLinkedinAdsConversionRuleRequest,
-  output: GetIntegrationsLinkedinAdsConversionRuleResponse,
+  input: __S(46) as any as S.Schema<GetIntegrationsLinkedinAdsConversionRuleRequest>,
+  output: __S(6) as any as S.Schema<GetIntegrationsLinkedinAdsConversionRuleResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1297,8 +948,8 @@ export const getIntegrationsTwilioPhoneNumber: API.OperationMethod<
   GetIntegrationsTwilioPhoneNumberError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsTwilioPhoneNumberRequest,
-  output: GetIntegrationsTwilioPhoneNumberResponse,
+  input: __S(47) as any as S.Schema<GetIntegrationsTwilioPhoneNumberRequest>,
+  output: __S(6) as any as S.Schema<GetIntegrationsTwilioPhoneNumberResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1311,8 +962,8 @@ export const getIntegrationsUser: API.OperationMethod<
   GetIntegrationsUserError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationsUserRequest,
-  output: SlackUsersResponse,
+  input: __S(48) as any as S.Schema<GetIntegrationsUserRequest>,
+  output: __S(51) as any as S.Schema<SlackUsersResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1325,8 +976,8 @@ export const integrationsAuthorizeRetrieve: API.OperationMethod<
   IntegrationsAuthorizeRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationsAuthorizeRetrieveRequest,
-  output: IntegrationsAuthorizeRetrieveResponse,
+  input: __S(52) as any as S.Schema<IntegrationsAuthorizeRetrieveRequest>,
+  output: __S(6) as any as S.Schema<IntegrationsAuthorizeRetrieveResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1339,8 +990,8 @@ export const integrationsDestroy: API.OperationMethod<
   IntegrationsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationsDestroyRequest,
-  output: IntegrationsDestroyResponse,
+  input: __S(53) as any as S.Schema<IntegrationsDestroyRequest>,
+  output: __S(54) as any as S.Schema<IntegrationsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1358,8 +1009,8 @@ export const integrationsDomainConnectApplyUrlCreate: API.OperationMethod<
   IntegrationsDomainConnectApplyUrlCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationsDomainConnectApplyUrlCreateRequest,
-  output: IntegrationsDomainConnectApplyUrlCreateResponse,
+  input: __S(55) as any as S.Schema<IntegrationsDomainConnectApplyUrlCreateRequest>,
+  output: __S(6) as any as S.Schema<IntegrationsDomainConnectApplyUrlCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1372,8 +1023,8 @@ export const integrationsDomainConnectCheckRetrieve: API.OperationMethod<
   IntegrationsDomainConnectCheckRetrieveError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationsDomainConnectCheckRetrieveRequest,
-  output: IntegrationsDomainConnectCheckRetrieveResponse,
+  input: __S(56) as any as S.Schema<IntegrationsDomainConnectCheckRetrieveRequest>,
+  output: __S(6) as any as S.Schema<IntegrationsDomainConnectCheckRetrieveResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1386,8 +1037,8 @@ export const integrationsEmailVerifyCreate: API.OperationMethod<
   IntegrationsEmailVerifyCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationsEmailVerifyCreateRequest,
-  output: IntegrationsEmailVerifyCreateResponse,
+  input: __S(57) as any as S.Schema<IntegrationsEmailVerifyCreateRequest>,
+  output: __S(6) as any as S.Schema<IntegrationsEmailVerifyCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1401,8 +1052,8 @@ export const integrationsGithubOauthAuthorizeCreate: API.OperationMethod<
   IntegrationsGithubOauthAuthorizeCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationsGithubOauthAuthorizeCreateRequest,
-  output: GitHubOAuthAuthorizeResponse,
+  input: __S(58) as any as S.Schema<IntegrationsGithubOauthAuthorizeCreateRequest>,
+  output: __S(59) as any as S.Schema<GitHubOAuthAuthorizeResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1415,8 +1066,8 @@ export const integrationsGithubReposRefreshCreate: API.OperationMethod<
   IntegrationsGithubReposRefreshCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IntegrationsGithubReposRefreshCreateRequest,
-  output: GitHubReposRefreshResponse,
+  input: __S(60) as any as S.Schema<IntegrationsGithubReposRefreshCreateRequest>,
+  output: __S(61) as any as S.Schema<GitHubReposRefreshResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1429,8 +1080,8 @@ export const listIntegrations: API.OperationMethod<
   ListIntegrationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIntegrationsRequest,
-  output: PaginatedIntegrationConfigList,
+  input: __S(62) as any as S.Schema<ListIntegrationsRequest>,
+  output: __S(64) as any as S.Schema<PaginatedIntegrationConfigList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1447,8 +1098,8 @@ export const updateIntegrationsEmailPartial: API.OperationMethod<
   UpdateIntegrationsEmailPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIntegrationsEmailPartialRequest,
-  output: IntegrationConfig,
+  input: __S(65) as any as S.Schema<UpdateIntegrationsEmailPartialRequest>,
+  output: __S(3) as any as S.Schema<IntegrationConfig>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1461,7 +1112,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          kind: S.optional(IntegrationKindEnum),
+          kind: S.optional(S.String),
           config: S.optional(S.Unknown),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/integrations/", code: 200 }),
@@ -1479,23 +1130,23 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(1))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          kind: S.optional(IntegrationKindEnum),
+          kind: S.optional(S.String),
           config: S.optional(S.Unknown),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(2))),
           errors: S.optional(S.String),
           display_name: S.optional(S.String),
           files_write_requestable: S.optional(S.Boolean),
           installation_shared: S.optional(S.NullOr(S.Boolean)),
-          installation_status: S.optional(S.NullOr(InstallationStatusEnum)),
+          installation_status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "IntegrationConfig" });
     case 4:
@@ -1539,7 +1190,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          kind: IntegrationKindEnum,
+          kind: S.String,
           reason: S.String,
         }).pipe(
           T.Http({
@@ -1651,7 +1302,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "SlackChannel" });
     case 7:
-      return S.Array(SlackChannel);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -1659,7 +1310,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          channels: SlackChannelsResponseChannelsList,
+          channels: __S(15),
           lastRefreshedAt: S.optional(S.NullOr(S.String)),
           has_more: S.optional(S.Boolean),
         }),
@@ -1736,15 +1387,15 @@ function __c2(j: number): any {
         identifier: "GitHubAvailableInstallation",
       });
     case 6:
-      return S.Array(GitHubAvailableInstallation);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
           discovery_id: S.String,
           discovered_at: S.String,
           personal_github_login: S.NullOr(S.String),
-          personal_discovery_status: GitHubPersonalDiscoveryStatusEnum,
-          installations: GitHubAvailableInstallationsResponseInstallationsList,
+          personal_discovery_status: S.String,
+          installations: __S(22),
           personal_github_connected: S.Boolean,
         }),
       ).annotate({
@@ -1778,7 +1429,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          branches: S.optional(GitHubBranchesResponseBranchesList),
+          branches: S.optional(__S(25)),
           default_branch: S.optional(S.NullOr(S.String)),
           has_more: S.optional(S.Boolean),
         }),
@@ -1817,11 +1468,11 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "GitHubRepo" });
     case 5:
-      return S.Array(GitHubRepo);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          repositories: S.optional(GitHubReposResponseRepositoriesList),
+          repositories: S.optional(__S(29)),
           has_more: S.optional(S.Boolean),
           next_offset: S.optional(S.NullOr(S.Number)),
           total: S.optional(S.Number),
@@ -1858,11 +1509,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "GitHubTeam" });
     case 1:
-      return S.Array(GitHubTeam);
+      return S.Array(__S(32));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          teams: GitHubTeamsResponseTeamsList,
+          teams: __S(33),
           has_more: S.Boolean,
         }),
       ).annotate({ identifier: "GitHubTeamsResponse" });
@@ -1920,7 +1571,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "JiraProject" });
     case 7:
-      return S.Array(JiraProject);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
@@ -1928,7 +1579,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          projects: JiraProjectsResponseProjectsList,
+          projects: __S(39),
         }),
       ).annotate({ identifier: "JiraProjectsResponse" });
     case 1:
@@ -1954,11 +1605,11 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "LinearTeam" });
     case 3:
-      return S.Array(LinearTeam);
+      return S.Array(__S(42));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          teams: LinearTeamsResponseTeamsList,
+          teams: __S(43),
         }),
       ).annotate({ identifier: "LinearTeamsResponse" });
     case 5:
@@ -2039,11 +1690,11 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "SlackUser" });
     case 2:
-      return S.Array(SlackUser);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          users: SlackUsersResponseUsersList,
+          users: __S(50),
           lastRefreshedAt: S.optional(S.NullOr(S.String)),
           has_more: S.optional(S.Boolean),
         }),
@@ -2085,7 +1736,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          kind: S.optional(IntegrationKindEnum),
+          kind: S.optional(S.String),
           config: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -2120,7 +1771,7 @@ function __c7(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          kind: S.optional(IntegrationKindEnum),
+          kind: S.optional(S.String),
           config: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -2138,7 +1789,7 @@ function __c7(j: number): any {
           project_id: S.String.pipe(T.Label()),
           installation_id: S.optional(S.String),
           next: S.optional(S.String),
-          connect_from: S.optional(ConnectFromEnum),
+          connect_from: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2175,8 +1826,8 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          repositories: S.optional(GitHubReposRefreshResponseRepositoriesList),
-          installation_status: S.optional(InstallationStatusEnum),
+          repositories: S.optional(__S(29)),
+          installation_status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GitHubReposRefreshResponse",
@@ -2185,7 +1836,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          kind: S.optional(ListIntegrationsRequestKind.pipe(T.Query())),
+          kind: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
@@ -2193,7 +1844,7 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "ListIntegrationsRequest" });
     case 7:
-      return S.Array(IntegrationConfig);
+      return S.Array(__S(3));
   }
 }
 function __c8(j: number): any {
@@ -2204,7 +1855,7 @@ function __c8(j: number): any {
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedIntegrationConfigListResultsList),
+          results: S.optional(__S(63)),
         }),
       ).annotate({
         identifier: "PaginatedIntegrationConfigList",
@@ -2214,7 +1865,7 @@ function __c8(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          kind: S.optional(IntegrationKindEnum),
+          kind: S.optional(S.String),
           config: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -2226,5 +1877,32 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateIntegrationsEmailPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
   }
 }

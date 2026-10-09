@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,26 +66,14 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface GoogleProtobufEmpty {}
-const GoogleProtobufEmpty = CancelOperationRequest as any as S.Schema<GoogleProtobufEmpty>;
-
 export type BlockchainNodeStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -94,25 +84,15 @@ export type BlockchainNodeStateEnum =
   | "REPAIRING"
   | "RECONCILING"
   | "SYNCING";
-const BlockchainNodeStateEnum = S.String;
-
 export type BlockchainNodeBlockchainTypeEnum = "BLOCKCHAIN_TYPE_UNSPECIFIED" | "ETHEREUM";
-const BlockchainNodeBlockchainTypeEnum = S.String;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringMap>;
-
 export type EthereumDetailsNodeTypeEnum = "NODE_TYPE_UNSPECIFIED" | "LIGHT" | "FULL" | "ARCHIVE";
-const EthereumDetailsNodeTypeEnum = S.String;
-
 export type EthereumDetailsNetworkEnum =
   | "NETWORK_UNSPECIFIED"
   | "MAINNET"
   | "TESTNET_GOERLI_PRATER"
   | "TESTNET_SEPOLIA"
   | "TESTNET_HOLESKY";
-const EthereumDetailsNetworkEnum = S.String;
-
 /** Contains endpoint information specific to Ethereum nodes. */
 export interface EthereumEndpoints {
   /** Output only. The assigned URL for the node's Beacon API endpoint. */
@@ -122,33 +102,21 @@ export interface EthereumEndpoints {
   /** Output only. The assigned URL for the node's execution client's Prometheus metrics endpoint. */
   executionClientPrometheusMetricsApiEndpoint?: string;
 }
-const EthereumEndpoints = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<EthereumEndpoints>;
-
 export type GethDetailsGarbageCollectionModeEnum =
   | "GARBAGE_COLLECTION_MODE_UNSPECIFIED"
   | "FULL"
   | "ARCHIVE";
-const GethDetailsGarbageCollectionModeEnum = S.String;
-
 /** Options for the Geth execution client. See [Command-line Options](https://geth.ethereum.org/docs/fundamentals/command-line-options) for more details. */
 export interface GethDetails {
   /** Immutable. Blockchain garbage collection mode. */
   garbageCollectionMode?: GethDetailsGarbageCollectionModeEnum | (string & {});
 }
-const GethDetails = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GethDetails>;
-
 export type EthereumDetailsConsensusClientEnum =
   | "CONSENSUS_CLIENT_UNSPECIFIED"
   | "LIGHTHOUSE"
   | "ERIGON_EMBEDDED_CONSENSUS_LAYER";
-const EthereumDetailsConsensusClientEnum = S.String;
-
 export type EthereumDetailsExecutionClientEnum = "EXECUTION_CLIENT_UNSPECIFIED" | "GETH" | "ERIGON";
-const EthereumDetailsExecutionClientEnum = S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringList>;
-
 /** Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client. */
 export interface ValidatorConfig {
   /** An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that while this is often described as "suggested", as we run the execution node we can trust the execution node, and therefore this is considered enforced. */
@@ -158,8 +126,6 @@ export interface ValidatorConfig {
   /** URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is configured on the beacon client. */
   mevRelayUrls?: StringList;
 }
-const ValidatorConfig = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ValidatorConfig>;
-
 /** Ethereum-specific blockchain node details. */
 export interface EthereumDetails {
   /** Immutable. Enables JSON-RPC access to functions in the `admin` namespace. Defaults to `false`. */
@@ -181,8 +147,6 @@ export interface EthereumDetails {
   /** Configuration for validator-related parameters on the beacon client, and for any GCP-managed validator client. */
   validatorConfig?: ValidatorConfig;
 }
-const EthereumDetails = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<EthereumDetails>;
-
 /** Contains endpoint information through which to interact with a blockchain node. */
 export interface EndpointInfo {
   /** Output only. The assigned URL for the node JSON-RPC API endpoint. */
@@ -190,8 +154,6 @@ export interface EndpointInfo {
   /** Output only. The assigned URL for the node WebSockets API endpoint. */
   websocketsApiEndpoint?: string;
 }
-const EndpointInfo = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<EndpointInfo>;
-
 /** The connection information through which to interact with a blockchain node. */
 export interface ConnectionInfo {
   /** Output only. A service attachment that exposes a node, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name} */
@@ -199,8 +161,6 @@ export interface ConnectionInfo {
   /** Output only. The endpoint information through which to interact with a blockchain node. */
   endpointInfo?: EndpointInfo;
 }
-const ConnectionInfo = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ConnectionInfo>;
-
 /** A representation of a blockchain node. */
 export interface BlockchainNode {
   /** Output only. A status representing the state of the node. */
@@ -222,8 +182,6 @@ export interface BlockchainNode {
   /** Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. Warning: These nodes are deprecated, please use public endpoints instead. */
   privateServiceConnectEnabled?: boolean;
 }
-const BlockchainNode = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<BlockchainNode>;
-
 export interface CreateProjectsLocationsBlockchainNodesRequest {
   /** Required. ID of the requesting object. */
   blockchainNodeId?: string;
@@ -234,17 +192,8 @@ export interface CreateProjectsLocationsBlockchainNodesRequest {
   /** Request body */
   body?: BlockchainNode;
 }
-const CreateProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateProjectsLocationsBlockchainNodesRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -254,8 +203,6 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-const Status = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -269,37 +216,20 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-const Operation = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Operation>;
-
 export interface DeleteProjectsLocationsBlockchainNodesRequest {
   /** Required. The fully qualified name of the blockchain node to delete. e.g. `projects/my-project/locations/us-central1/blockchainNodes/my-node`. */
   name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const DeleteProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsBlockchainNodesRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -313,26 +243,14 @@ export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
   metadata?: DocumentMap;
 }
-const Location = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsBlockchainNodesRequest {
   /** Required. The fully qualified name of the blockchain node to fetch. e.g. `projects/my-project/locations/us-central1/blockchainNodes/my-node`. */
   name: string;
 }
-const GetProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetProjectsLocationsBlockchainNodesRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface ListProjectsLocationsRequest {
   /** Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. */
   extraLocationTypes?: StringList;
@@ -345,14 +263,7 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -360,11 +271,6 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsBlockchainNodesRequest {
   /** A token identifying a page of results the server should return. */
   pageToken?: string;
@@ -377,14 +283,7 @@ export interface ListProjectsLocationsBlockchainNodesRequest {
   /** Filtering results. */
   filter?: string;
 }
-const ListProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListProjectsLocationsBlockchainNodesRequest>;
-
 export type BlockchainNodeList = Array<BlockchainNode>;
-const BlockchainNodeList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<BlockchainNodeList>;
-
 /** Message for response to listing blockchain nodes. */
 export interface ListBlockchainNodesResponse {
   /** Locations that could not be reached. */
@@ -394,11 +293,6 @@ export interface ListBlockchainNodesResponse {
   /** The list of nodes */
   blockchainNodes?: BlockchainNodeList;
 }
-const ListBlockchainNodesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListBlockchainNodesResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
@@ -409,14 +303,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -424,11 +311,6 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface PatchProjectsLocationsBlockchainNodesRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the Blockchain node resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -439,11 +321,6 @@ export interface PatchProjectsLocationsBlockchainNodesRequest {
   /** Request body */
   body?: BlockchainNode;
 }
-const PatchProjectsLocationsBlockchainNodesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<PatchProjectsLocationsBlockchainNodesRequest>;
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -457,8 +334,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -477,8 +354,8 @@ export const createProjectsLocationsBlockchainNodes: API.OperationMethod<
   CreateProjectsLocationsBlockchainNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsBlockchainNodesRequest,
-  output: Operation,
+  input: __S(11) as any as S.Schema<CreateProjectsLocationsBlockchainNodesRequest>,
+  output: __S(15) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -497,8 +374,8 @@ export const deleteProjectsLocationsBlockchainNodes: API.OperationMethod<
   DeleteProjectsLocationsBlockchainNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsBlockchainNodesRequest,
-  output: Operation,
+  input: __S(16) as any as S.Schema<DeleteProjectsLocationsBlockchainNodesRequest>,
+  output: __S(15) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -517,8 +394,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: GoogleProtobufEmpty,
+  input: __S(17) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<GoogleProtobufEmpty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -532,8 +409,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(18) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(19) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -547,8 +424,8 @@ export const getProjectsLocationsBlockchainNodes: API.OperationMethod<
   GetProjectsLocationsBlockchainNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBlockchainNodesRequest,
-  output: BlockchainNode,
+  input: __S(20) as any as S.Schema<GetProjectsLocationsBlockchainNodesRequest>,
+  output: __S(10) as any as S.Schema<BlockchainNode>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -562,8 +439,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(21) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(15) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -578,8 +455,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(22) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(24) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -595,8 +472,8 @@ export const listProjectsLocationsBlockchainNodes: API.PaginatedOperationMethod<
   GcpOpContext,
   ListBlockchainNodesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBlockchainNodesRequest,
-  output: ListBlockchainNodesResponse,
+  input: __S(25) as any as S.Schema<ListProjectsLocationsBlockchainNodesRequest>,
+  output: __S(27) as any as S.Schema<ListBlockchainNodesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -612,8 +489,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(28) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(30) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -633,8 +510,8 @@ export const patchProjectsLocationsBlockchainNodes: API.OperationMethod<
   PatchProjectsLocationsBlockchainNodesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsBlockchainNodesRequest,
-  output: Operation,
+  input: __S(31) as any as S.Schema<PatchProjectsLocationsBlockchainNodesRequest>,
+  output: __S(15) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -651,7 +528,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -675,7 +552,7 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          garbageCollectionMode: S.optional(GethDetailsGarbageCollectionModeEnum),
+          garbageCollectionMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "GethDetails" });
     case 5:
@@ -685,21 +562,21 @@ function __c0(j: number): any {
         S.Struct({
           beaconFeeRecipient: S.optional(S.String),
           managedValidatorClient: S.optional(S.Boolean),
-          mevRelayUrls: S.optional(StringList),
+          mevRelayUrls: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "ValidatorConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           apiEnableAdmin: S.optional(S.Boolean),
-          nodeType: S.optional(EthereumDetailsNodeTypeEnum),
+          nodeType: S.optional(S.String),
           apiEnableDebug: S.optional(S.Boolean),
-          network: S.optional(EthereumDetailsNetworkEnum),
-          additionalEndpoints: S.optional(EthereumEndpoints),
-          gethDetails: S.optional(GethDetails),
-          consensusClient: S.optional(EthereumDetailsConsensusClientEnum),
-          executionClient: S.optional(EthereumDetailsExecutionClientEnum),
-          validatorConfig: S.optional(ValidatorConfig),
+          network: S.optional(S.String),
+          additionalEndpoints: S.optional(__S(3)),
+          gethDetails: S.optional(__S(4)),
+          consensusClient: S.optional(S.String),
+          executionClient: S.optional(S.String),
+          validatorConfig: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "EthereumDetails" });
   }
@@ -717,19 +594,19 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceAttachment: S.optional(S.String),
-          endpointInfo: S.optional(EndpointInfo),
+          endpointInfo: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "ConnectionInfo" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(BlockchainNodeStateEnum),
+          state: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          blockchainType: S.optional(BlockchainNodeBlockchainTypeEnum),
-          labels: S.optional(StringMap),
-          ethereumDetails: S.optional(EthereumDetails),
-          connectionInfo: S.optional(ConnectionInfo),
+          blockchainType: S.optional(S.String),
+          labels: S.optional(__S(2)),
+          ethereumDetails: S.optional(__S(7)),
+          connectionInfo: S.optional(__S(9)),
           updateTime: S.optional(S.String),
           privateServiceConnectEnabled: S.optional(S.Boolean),
         }),
@@ -740,7 +617,7 @@ function __c1(j: number): any {
           blockchainNodeId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(BlockchainNode.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -754,21 +631,21 @@ function __c1(j: number): any {
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(DocumentMap);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(13)),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "Status" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
-          response: S.optional(DocumentMap),
-          error: S.optional(Status),
+          metadata: S.optional(__S(12)),
+          response: S.optional(__S(12)),
+          error: S.optional(__S(14)),
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
         }),
@@ -824,10 +701,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           locationId: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(2)),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "Location" });
     case 4:
@@ -861,7 +738,7 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(5).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
@@ -877,7 +754,7 @@ function __c2(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 7:
-      return S.Array(Location);
+      return S.Array(__S(19));
   }
 }
 function __c3(j: number): any {
@@ -886,7 +763,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(23)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 1:
@@ -908,13 +785,13 @@ function __c3(j: number): any {
         identifier: "ListProjectsLocationsBlockchainNodesRequest",
       });
     case 2:
-      return S.Array(BlockchainNode);
+      return S.Array(__S(10));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(5)),
           nextPageToken: S.optional(S.String),
-          blockchainNodes: S.optional(BlockchainNodeList),
+          blockchainNodes: S.optional(__S(26)),
         }),
       ).annotate({
         identifier: "ListBlockchainNodesResponse",
@@ -937,12 +814,12 @@ function __c3(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 5:
-      return S.Array(Operation);
+      return S.Array(__S(15));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          operations: S.optional(OperationList),
+          operations: S.optional(__S(29)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 7:
@@ -951,7 +828,7 @@ function __c3(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(BlockchainNode.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -962,5 +839,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsBlockchainNodesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

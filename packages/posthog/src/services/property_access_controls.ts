@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -58,12 +60,8 @@ export type AIEventPropertyEnum =
   | "$ai_input_state"
   | "$ai_output_state"
   | "$ai_tools";
-const AIEventPropertyEnum = S.String;
-
 /** * `read_write` - read_write * `read` - read * `none` - none */
 export type AccessLevelEnum = "read_write" | "read" | "none";
-const AccessLevelEnum = S.String;
-
 export interface CreatePropertyAccessControlRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -78,11 +76,6 @@ export interface CreatePropertyAccessControlRequest {
   /** The role UUID to set an override for. */
   role?: string | null;
 }
-const CreatePropertyAccessControlRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreatePropertyAccessControlRequest>;
-
 /** Serializes a single access control rule DTO. */
 export interface PropertyAccessControlRule {
   id: string;
@@ -96,36 +89,16 @@ export interface PropertyAccessControlRule {
   created_at: string;
   updated_at: string;
 }
-const PropertyAccessControlRule = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<PropertyAccessControlRule>;
-
 export interface GetPropertyAccessControlRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** The property definition ID to fetch access control rules for. */
   property_definition_id: string;
 }
-const GetPropertyAccessControlRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetPropertyAccessControlRequest>;
-
 /** List of all access control rules for this property definition. */
 export type PropertyAccessControlStateAccessControlsList = Array<PropertyAccessControlRule>;
-const PropertyAccessControlStateAccessControlsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<PropertyAccessControlStateAccessControlsList>;
-
 /** Available access levels that can be assigned. */
 export type PropertyAccessControlStateAvailableAccessLevelsList = Array<string>;
-const PropertyAccessControlStateAvailableAccessLevelsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<PropertyAccessControlStateAvailableAccessLevelsList>;
-
 /** Serializes the aggregate state for a property definition. Preserves the existing API shape: ``access_controls`` is the list of rules, plus the available levels and the computed default. */
 export interface PropertyAccessControlState {
   /** List of all access control rules for this property definition. */
@@ -135,11 +108,6 @@ export interface PropertyAccessControlState {
   /** The default access level when no rules match. */
   default_access_level: string;
 }
-const PropertyAccessControlState = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PropertyAccessControlState>;
-
 export interface PropertyAccessControlsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -150,17 +118,7 @@ export interface PropertyAccessControlsDestroyRequest {
   /** The role UUID whose override should be deleted. */
   role?: string;
 }
-const PropertyAccessControlsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PropertyAccessControlsDestroyRequest>;
-
 export interface PropertyAccessControlsDestroyResponse {}
-const PropertyAccessControlsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PropertyAccessControlsDestroyResponse>;
-
 export type CreatePropertyAccessControlError = PosthogOpError;
 /** Create or update a property access control rule. */
 export const createPropertyAccessControl: API.OperationMethod<
@@ -169,8 +127,8 @@ export const createPropertyAccessControl: API.OperationMethod<
   CreatePropertyAccessControlError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePropertyAccessControlRequest,
-  output: PropertyAccessControlRule,
+  input: __S(0) as any as S.Schema<CreatePropertyAccessControlRequest>,
+  output: __S(1) as any as S.Schema<PropertyAccessControlRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -184,8 +142,8 @@ export const getPropertyAccessControl: API.OperationMethod<
   GetPropertyAccessControlError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPropertyAccessControlRequest,
-  output: PropertyAccessControlState,
+  input: __S(2) as any as S.Schema<GetPropertyAccessControlRequest>,
+  output: __S(5) as any as S.Schema<PropertyAccessControlState>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -199,8 +157,8 @@ export const propertyAccessControlsDestroy: API.OperationMethod<
   PropertyAccessControlsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PropertyAccessControlsDestroyRequest,
-  output: PropertyAccessControlsDestroyResponse,
+  input: __S(6) as any as S.Schema<PropertyAccessControlsDestroyRequest>,
+  output: __S(7) as any as S.Schema<PropertyAccessControlsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -214,8 +172,8 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           property_definition_id: S.optional(S.String),
-          ai_property: S.optional(AIEventPropertyEnum),
-          access_level: AccessLevelEnum,
+          ai_property: S.optional(S.String),
+          access_level: S.String,
           organization_member: S.optional(S.NullOr(S.String)),
           role: S.optional(S.NullOr(S.String)),
         }).pipe(
@@ -232,7 +190,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          access_level: AccessLevelEnum,
+          access_level: S.String,
           organization_member: S.NullOr(S.String),
           role: S.NullOr(S.String),
           created_by: S.NullOr(S.Number),
@@ -258,14 +216,14 @@ function __c0(j: number): any {
         identifier: "GetPropertyAccessControlRequest",
       });
     case 3:
-      return S.Array(PropertyAccessControlRule);
+      return S.Array(__S(1));
     case 4:
       return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          access_controls: PropertyAccessControlStateAccessControlsList,
-          available_access_levels: PropertyAccessControlStateAvailableAccessLevelsList,
+          access_controls: __S(3),
+          available_access_levels: __S(4),
           default_access_level: S.String,
         }),
       ).annotate({
@@ -292,5 +250,16 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "PropertyAccessControlsDestroyResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

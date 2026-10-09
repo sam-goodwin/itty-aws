@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "DocDB Elastic",
   serviceShapeName: "ChimeraDbLionfishServiceLambda",
@@ -132,7 +134,7 @@ export class ValidationException
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: S.String,
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(44)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -147,10 +149,6 @@ export interface ApplyPendingMaintenanceActionInput {
   optInType: string;
   applyOn?: string;
 }
-const ApplyPendingMaintenanceActionInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ApplyPendingMaintenanceActionInput>;
 export interface PendingMaintenanceActionDetails {
   action: string;
   autoAppliedAfterDate?: string;
@@ -159,31 +157,17 @@ export interface PendingMaintenanceActionDetails {
   currentApplyDate?: string;
   description?: string;
 }
-const PendingMaintenanceActionDetails = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<PendingMaintenanceActionDetails>;
 export type PendingMaintenanceActionDetailsList = PendingMaintenanceActionDetails[];
-const PendingMaintenanceActionDetailsList = /*@__PURE__*/ __L.at(__c0, 2);
 export interface ResourcePendingMaintenanceAction {
   resourceArn?: string;
   pendingMaintenanceActionDetails?: PendingMaintenanceActionDetails[];
 }
-const ResourcePendingMaintenanceAction = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ResourcePendingMaintenanceAction>;
 export interface ApplyPendingMaintenanceActionOutput {
   resourcePendingMaintenanceAction: ResourcePendingMaintenanceAction;
 }
-const ApplyPendingMaintenanceActionOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ApplyPendingMaintenanceActionOutput>;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c0, 5);
 export interface CopyClusterSnapshotInput {
   snapshotArn: string;
   targetSnapshotName: string;
@@ -191,12 +175,7 @@ export interface CopyClusterSnapshotInput {
   copyTags?: boolean;
   tags?: { [key: string]: string | undefined };
 }
-const CopyClusterSnapshotInput = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CopyClusterSnapshotInput>;
 export type StringList = string[];
-const StringList = /*@__PURE__*/ __L.at(__c0, 7);
 export type Status = string;
 export type SnapshotType = string;
 export interface ClusterSnapshot {
@@ -212,14 +191,9 @@ export interface ClusterSnapshot {
   kmsKeyId: string;
   snapshotType?: string;
 }
-const ClusterSnapshot = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ClusterSnapshot>;
 export interface CopyClusterSnapshotOutput {
   snapshot: ClusterSnapshot;
 }
-const CopyClusterSnapshotOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CopyClusterSnapshotOutput>;
 export type Auth = string;
 export type Password = string | redacted.Redacted<string>;
 export interface CreateClusterInput {
@@ -239,15 +213,12 @@ export interface CreateClusterInput {
   preferredBackupWindow?: string;
   shardInstanceCount?: number;
 }
-const CreateClusterInput = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CreateClusterInput>;
 export interface Shard {
   shardId: string;
   createTime: string;
   status: string;
 }
-const Shard = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Shard>;
 export type ShardList = Shard[];
-const ShardList = /*@__PURE__*/ __L.at(__c1, 4);
 export interface Cluster {
   clusterName: string;
   clusterArn: string;
@@ -267,108 +238,68 @@ export interface Cluster {
   preferredBackupWindow?: string;
   shardInstanceCount?: number;
 }
-const Cluster = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Cluster>;
 export interface CreateClusterOutput {
   cluster: Cluster;
 }
-const CreateClusterOutput = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CreateClusterOutput>;
 export interface CreateClusterSnapshotInput {
   clusterArn: string;
   snapshotName: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateClusterSnapshotInput = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateClusterSnapshotInput>;
 export interface CreateClusterSnapshotOutput {
   snapshot: ClusterSnapshot;
 }
-const CreateClusterSnapshotOutput =
-  CopyClusterSnapshotOutput as any as S.Schema<CreateClusterSnapshotOutput>;
 export interface DeleteClusterInput {
   clusterArn: string;
 }
-const DeleteClusterInput = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteClusterInput>;
 export interface DeleteClusterOutput {
   cluster: Cluster;
 }
-const DeleteClusterOutput = CreateClusterOutput as any as S.Schema<DeleteClusterOutput>;
 export interface DeleteClusterSnapshotInput {
   snapshotArn: string;
 }
-const DeleteClusterSnapshotInput = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteClusterSnapshotInput>;
 export interface DeleteClusterSnapshotOutput {
   snapshot: ClusterSnapshot;
 }
-const DeleteClusterSnapshotOutput =
-  CopyClusterSnapshotOutput as any as S.Schema<DeleteClusterSnapshotOutput>;
 export interface GetClusterInput {
   clusterArn: string;
 }
-const GetClusterInput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetClusterInput>;
 export interface GetClusterOutput {
   cluster: Cluster;
 }
-const GetClusterOutput = CreateClusterOutput as any as S.Schema<GetClusterOutput>;
 export interface GetClusterSnapshotInput {
   snapshotArn: string;
 }
-const GetClusterSnapshotInput = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetClusterSnapshotInput>;
 export interface GetClusterSnapshotOutput {
   snapshot: ClusterSnapshot;
 }
-const GetClusterSnapshotOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetClusterSnapshotOutput>;
 export interface GetPendingMaintenanceActionInput {
   resourceArn: string;
 }
-const GetPendingMaintenanceActionInput = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetPendingMaintenanceActionInput>;
 export interface GetPendingMaintenanceActionOutput {
   resourcePendingMaintenanceAction: ResourcePendingMaintenanceAction;
 }
-const GetPendingMaintenanceActionOutput =
-  ApplyPendingMaintenanceActionOutput as any as S.Schema<GetPendingMaintenanceActionOutput>;
 export type PaginationToken = string;
 export interface ListClustersInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListClustersInput = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ListClustersInput>;
 export interface ClusterInList {
   clusterName: string;
   clusterArn: string;
   status: string;
 }
-const ClusterInList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ClusterInList>;
 export type ClusterList = ClusterInList[];
-const ClusterList = /*@__PURE__*/ __L.at(__c3, 0);
 export interface ListClustersOutput {
   clusters?: ClusterInList[];
   nextToken?: string;
 }
-const ListClustersOutput = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListClustersOutput>;
 export interface ListClusterSnapshotsInput {
   clusterArn?: string;
   nextToken?: string;
   maxResults?: number;
   snapshotType?: string;
 }
-const ListClusterSnapshotsInput = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListClusterSnapshotsInput>;
 export interface ClusterSnapshotInList {
   snapshotName: string;
   snapshotArn: string;
@@ -376,53 +307,27 @@ export interface ClusterSnapshotInList {
   status: string;
   snapshotCreationTime: string;
 }
-const ClusterSnapshotInList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ClusterSnapshotInList>;
 export type ClusterSnapshotList = ClusterSnapshotInList[];
-const ClusterSnapshotList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface ListClusterSnapshotsOutput {
   snapshots?: ClusterSnapshotInList[];
   nextToken?: string;
 }
-const ListClusterSnapshotsOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListClusterSnapshotsOutput>;
 export interface ListPendingMaintenanceActionsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListPendingMaintenanceActionsInput = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListPendingMaintenanceActionsInput>;
 export type ResourcePendingMaintenanceActionList = ResourcePendingMaintenanceAction[];
-const ResourcePendingMaintenanceActionList = /*@__PURE__*/ __L.at(__c3, 7);
 export interface ListPendingMaintenanceActionsOutput {
   resourcePendingMaintenanceActions: ResourcePendingMaintenanceAction[];
   nextToken?: string;
 }
-const ListPendingMaintenanceActionsOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListPendingMaintenanceActionsOutput>;
 export type Arn = string;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RestoreClusterFromSnapshotInput {
   clusterName: string;
   snapshotArn: string;
@@ -433,49 +338,32 @@ export interface RestoreClusterFromSnapshotInput {
   shardCapacity?: number;
   shardInstanceCount?: number;
 }
-const RestoreClusterFromSnapshotInput = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<RestoreClusterFromSnapshotInput>;
 export interface RestoreClusterFromSnapshotOutput {
   cluster: Cluster;
 }
-const RestoreClusterFromSnapshotOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<RestoreClusterFromSnapshotOutput>;
 export interface StartClusterInput {
   clusterArn: string;
 }
-const StartClusterInput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<StartClusterInput>;
 export interface StartClusterOutput {
   cluster: Cluster;
 }
-const StartClusterOutput = CreateClusterOutput as any as S.Schema<StartClusterOutput>;
 export interface StopClusterInput {
   clusterArn: string;
 }
-const StopClusterInput = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<StopClusterInput>;
 export interface StopClusterOutput {
   cluster: Cluster;
 }
-const StopClusterOutput = CreateClusterOutput as any as S.Schema<StopClusterOutput>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = StringList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateClusterInput {
   clusterArn: string;
   authType?: string;
@@ -490,22 +378,15 @@ export interface UpdateClusterInput {
   preferredBackupWindow?: string;
   shardInstanceCount?: number;
 }
-const UpdateClusterInput = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<UpdateClusterInput>;
 export interface UpdateClusterOutput {
   cluster: Cluster;
 }
-const UpdateClusterOutput = CreateClusterOutput as any as S.Schema<UpdateClusterOutput>;
 export type ValidationExceptionReason = string;
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c5, 4);
 export type ApplyPendingMaintenanceActionError =
   | AccessDeniedException
   | ConflictException
@@ -523,8 +404,8 @@ export const applyPendingMaintenanceAction: API.OperationMethod<
   ApplyPendingMaintenanceActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplyPendingMaintenanceActionInput,
-  output: ApplyPendingMaintenanceActionOutput,
+  input: __S(0) as any as S.Schema<ApplyPendingMaintenanceActionInput>,
+  output: __S(4) as any as S.Schema<ApplyPendingMaintenanceActionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -556,8 +437,8 @@ export const copyClusterSnapshot: API.OperationMethod<
   CopyClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CopyClusterSnapshotInput,
-  output: CopyClusterSnapshotOutput,
+  input: __S(6) as any as S.Schema<CopyClusterSnapshotInput>,
+  output: __S(9) as any as S.Schema<CopyClusterSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -589,8 +470,8 @@ export const createCluster: API.OperationMethod<
   CreateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateClusterInput,
-  output: CreateClusterOutput,
+  input: __S(10) as any as S.Schema<CreateClusterInput>,
+  output: __S(14) as any as S.Schema<CreateClusterOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -622,8 +503,8 @@ export const createClusterSnapshot: API.OperationMethod<
   CreateClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateClusterSnapshotInput,
-  output: CreateClusterSnapshotOutput,
+  input: __S(15) as any as S.Schema<CreateClusterSnapshotInput>,
+  output: __S(9) as any as S.Schema<CreateClusterSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -655,8 +536,8 @@ export const deleteCluster: API.OperationMethod<
   DeleteClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteClusterInput,
-  output: DeleteClusterOutput,
+  input: __S(16) as any as S.Schema<DeleteClusterInput>,
+  output: __S(14) as any as S.Schema<DeleteClusterOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -687,8 +568,8 @@ export const deleteClusterSnapshot: API.OperationMethod<
   DeleteClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteClusterSnapshotInput,
-  output: DeleteClusterSnapshotOutput,
+  input: __S(17) as any as S.Schema<DeleteClusterSnapshotInput>,
+  output: __S(9) as any as S.Schema<DeleteClusterSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -718,8 +599,8 @@ export const getCluster: API.OperationMethod<
   GetClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClusterInput,
-  output: GetClusterOutput,
+  input: __S(18) as any as S.Schema<GetClusterInput>,
+  output: __S(14) as any as S.Schema<GetClusterOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -748,8 +629,8 @@ export const getClusterSnapshot: API.OperationMethod<
   GetClusterSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClusterSnapshotInput,
-  output: GetClusterSnapshotOutput,
+  input: __S(19) as any as S.Schema<GetClusterSnapshotInput>,
+  output: __S(20) as any as S.Schema<GetClusterSnapshotOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -779,8 +660,8 @@ export const getPendingMaintenanceAction: API.OperationMethod<
   GetPendingMaintenanceActionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPendingMaintenanceActionInput,
-  output: GetPendingMaintenanceActionOutput,
+  input: __S(21) as any as S.Schema<GetPendingMaintenanceActionInput>,
+  output: __S(4) as any as S.Schema<GetPendingMaintenanceActionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -810,8 +691,8 @@ export const listClusters: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterInList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListClustersInput,
-  output: ListClustersOutput,
+  input: __S(22) as any as S.Schema<ListClustersInput>,
+  output: __S(25) as any as S.Schema<ListClustersOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -845,8 +726,8 @@ export const listClusterSnapshots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClusterSnapshotInList
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListClusterSnapshotsInput,
-  output: ListClusterSnapshotsOutput,
+  input: __S(26) as any as S.Schema<ListClusterSnapshotsInput>,
+  output: __S(29) as any as S.Schema<ListClusterSnapshotsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -880,8 +761,8 @@ export const listPendingMaintenanceActions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourcePendingMaintenanceAction
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPendingMaintenanceActionsInput,
-  output: ListPendingMaintenanceActionsOutput,
+  input: __S(30) as any as S.Schema<ListPendingMaintenanceActionsInput>,
+  output: __S(32) as any as S.Schema<ListPendingMaintenanceActionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -914,8 +795,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(33) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(34) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -945,8 +826,8 @@ export const restoreClusterFromSnapshot: API.OperationMethod<
   RestoreClusterFromSnapshotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreClusterFromSnapshotInput,
-  output: RestoreClusterFromSnapshotOutput,
+  input: __S(35) as any as S.Schema<RestoreClusterFromSnapshotInput>,
+  output: __S(36) as any as S.Schema<RestoreClusterFromSnapshotOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -977,8 +858,8 @@ export const startCluster: API.OperationMethod<
   StartClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartClusterInput,
-  output: StartClusterOutput,
+  input: __S(37) as any as S.Schema<StartClusterInput>,
+  output: __S(14) as any as S.Schema<StartClusterOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1008,8 +889,8 @@ export const stopCluster: API.OperationMethod<
   StopClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopClusterInput,
-  output: StopClusterOutput,
+  input: __S(38) as any as S.Schema<StopClusterInput>,
+  output: __S(14) as any as S.Schema<StopClusterOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1037,8 +918,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(39) as any as S.Schema<TagResourceRequest>,
+  output: __S(40) as any as S.Schema<TagResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1065,8 +946,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(41) as any as S.Schema<UntagResourceRequest>,
+  output: __S(40) as any as S.Schema<UntagResourceResponse>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -1096,8 +977,8 @@ export const updateCluster: API.OperationMethod<
   UpdateClusterError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateClusterInput,
-  output: UpdateClusterOutput,
+  input: __S(42) as any as S.Schema<UpdateClusterInput>,
+  output: __S(14) as any as S.Schema<UpdateClusterOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1141,20 +1022,18 @@ function __c0(j: number): any {
         identifier: "PendingMaintenanceActionDetails",
       });
     case 2:
-      return S.Array(PendingMaintenanceActionDetails);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.optional(S.String),
-          pendingMaintenanceActionDetails: S.optional(PendingMaintenanceActionDetailsList),
+          pendingMaintenanceActionDetails: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "ResourcePendingMaintenanceAction",
       });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ resourcePendingMaintenanceAction: ResourcePendingMaintenanceAction }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ resourcePendingMaintenanceAction: __S(3) })).annotate({
         identifier: "ApplyPendingMaintenanceActionOutput",
       });
     case 5:
@@ -1166,7 +1045,7 @@ function __c0(j: number): any {
           targetSnapshotName: S.String,
           kmsKeyId: S.optional(S.String),
           copyTags: S.optional(S.Boolean),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(5)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/cluster-snapshot/{snapshotArn}/copy" }),
@@ -1187,21 +1066,21 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          subnetIds: StringList,
+          subnetIds: __S(7),
           snapshotName: S.String,
           snapshotArn: S.String,
           snapshotCreationTime: S.String,
           clusterArn: S.String,
           clusterCreationTime: S.String,
           status: S.String,
-          vpcSecurityGroupIds: StringList,
+          vpcSecurityGroupIds: __S(7),
           adminUserName: S.String,
           kmsKeyId: S.String,
           snapshotType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterSnapshot" });
     case 1:
-      return S.suspend(() => S.Struct({ snapshot: ClusterSnapshot })).annotate({
+      return S.suspend(() => S.Struct({ snapshot: __S(8) })).annotate({
         identifier: "CopyClusterSnapshotOutput",
       });
     case 2:
@@ -1213,12 +1092,12 @@ function __c1(j: number): any {
           adminUserPassword: SensitiveString,
           shardCapacity: S.Number,
           shardCount: S.Number,
-          vpcSecurityGroupIds: S.optional(StringList),
-          subnetIds: S.optional(StringList),
+          vpcSecurityGroupIds: S.optional(__S(7)),
+          subnetIds: S.optional(__S(7)),
           kmsKeyId: S.optional(S.String),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           preferredMaintenanceWindow: S.optional(S.String),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(5)),
           backupRetentionPeriod: S.optional(S.Number),
           preferredBackupWindow: S.optional(S.String),
           shardInstanceCount: S.optional(S.Number),
@@ -1229,7 +1108,7 @@ function __c1(j: number): any {
         S.Struct({ shardId: S.String, createTime: S.String, status: S.String }),
       ).annotate({ identifier: "Shard" });
     case 4:
-      return S.Array(Shard);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1242,23 +1121,23 @@ function __c1(j: number): any {
           authType: S.String,
           shardCapacity: S.Number,
           shardCount: S.Number,
-          vpcSecurityGroupIds: StringList,
-          subnetIds: StringList,
+          vpcSecurityGroupIds: __S(7),
+          subnetIds: __S(7),
           preferredMaintenanceWindow: S.String,
           kmsKeyId: S.String,
-          shards: S.optional(ShardList),
+          shards: S.optional(__S(12)),
           backupRetentionPeriod: S.optional(S.Number),
           preferredBackupWindow: S.optional(S.String),
           shardInstanceCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Cluster" });
     case 6:
-      return S.suspend(() => S.Struct({ cluster: Cluster })).annotate({
+      return S.suspend(() => S.Struct({ cluster: __S(13) })).annotate({
         identifier: "CreateClusterOutput",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ clusterArn: S.String, snapshotName: S.String, tags: S.optional(TagMap) }).pipe(
+        S.Struct({ clusterArn: S.String, snapshotName: S.String, tags: S.optional(__S(5)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/cluster-snapshot" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -1323,7 +1202,7 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "GetClusterSnapshotInput" });
     case 4:
-      return S.suspend(() => S.Struct({ snapshot: ClusterSnapshot })).annotate({
+      return S.suspend(() => S.Struct({ snapshot: __S(8) })).annotate({
         identifier: "GetClusterSnapshotOutput",
       });
     case 5:
@@ -1357,10 +1236,10 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ClusterInList);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
-        S.Struct({ clusters: S.optional(ClusterList), nextToken: S.optional(S.String) }),
+        S.Struct({ clusters: S.optional(__S(24)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListClustersOutput" });
     case 2:
       return S.suspend(() =>
@@ -1386,10 +1265,10 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "ClusterSnapshotInList" });
     case 4:
-      return S.Array(ClusterSnapshotInList);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
-        S.Struct({ snapshots: S.optional(ClusterSnapshotList), nextToken: S.optional(S.String) }),
+        S.Struct({ snapshots: S.optional(__S(28)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListClusterSnapshotsOutput",
       });
@@ -1405,7 +1284,7 @@ function __c3(j: number): any {
         identifier: "ListPendingMaintenanceActionsInput",
       });
     case 7:
-      return S.Array(ResourcePendingMaintenanceAction);
+      return S.Array(__S(3));
   }
 }
 function __c4(j: number): any {
@@ -1413,7 +1292,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          resourcePendingMaintenanceActions: ResourcePendingMaintenanceActionList,
+          resourcePendingMaintenanceActions: __S(31),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1435,7 +1314,7 @@ function __c4(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ tags: S.optional(TagMap) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(5)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 3:
@@ -1443,10 +1322,10 @@ function __c4(j: number): any {
         S.Struct({
           clusterName: S.String,
           snapshotArn: S.String.pipe(T.HttpLabel("snapshotArn")),
-          vpcSecurityGroupIds: S.optional(StringList),
-          subnetIds: S.optional(StringList),
+          vpcSecurityGroupIds: S.optional(__S(7)),
+          subnetIds: S.optional(__S(7)),
           kmsKeyId: S.optional(S.String),
-          tags: S.optional(TagMap),
+          tags: S.optional(__S(5)),
           shardCapacity: S.optional(S.Number),
           shardInstanceCount: S.optional(S.Number),
         }).pipe(
@@ -1463,7 +1342,7 @@ function __c4(j: number): any {
         identifier: "RestoreClusterFromSnapshotInput",
       });
     case 4:
-      return S.suspend(() => S.Struct({ cluster: Cluster })).annotate({
+      return S.suspend(() => S.Struct({ cluster: __S(13) })).annotate({
         identifier: "RestoreClusterFromSnapshotOutput",
       });
     case 5:
@@ -1494,7 +1373,7 @@ function __c4(j: number): any {
       ).annotate({ identifier: "StopClusterInput" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: TagMap }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), tags: __S(5) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -1517,7 +1396,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(7).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1536,8 +1415,8 @@ function __c5(j: number): any {
           authType: S.optional(S.String),
           shardCapacity: S.optional(S.Number),
           shardCount: S.optional(S.Number),
-          vpcSecurityGroupIds: S.optional(StringList),
-          subnetIds: S.optional(StringList),
+          vpcSecurityGroupIds: S.optional(__S(7)),
+          subnetIds: S.optional(__S(7)),
           adminUserPassword: S.optional(SensitiveString),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           preferredMaintenanceWindow: S.optional(S.String),
@@ -1560,6 +1439,27 @@ function __c5(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 4:
-      return S.Array(ValidationExceptionField);
+      return S.Array(__S(43));
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
   }
 }

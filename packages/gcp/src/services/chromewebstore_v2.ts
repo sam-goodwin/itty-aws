@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,36 +66,18 @@ export class NotFound
 
 /** Request message for CancelSubmission. */
 export interface CancelSubmissionRequest {}
-const CancelSubmissionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelSubmissionRequest>;
-
 export interface CancelSubmissionPublishersItemsRequest {
   /** Required. Name of the item to cancel the submission of in the form `publishers/{publisherId}/items/{itemId}` */
   name: string;
   /** Request body */
   body?: CancelSubmissionRequest;
 }
-const CancelSubmissionPublishersItemsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelSubmissionPublishersItemsRequest>;
-
 /** Response message for `CancelSubmission`. */
 export interface CancelSubmissionResponse {}
-const CancelSubmissionResponse =
-  CancelSubmissionRequest as any as S.Schema<CancelSubmissionResponse>;
-
 export interface FetchStatusPublishersItemsRequest {
   /** Required. Name of the item to retrieve the status of in the form `publishers/{publisherId}/items/{itemId}` */
   name: string;
 }
-const FetchStatusPublishersItemsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<FetchStatusPublishersItemsRequest>;
-
 export type ItemRevisionStatusStateEnum =
   | "ITEM_STATE_UNSPECIFIED"
   | "PENDING_REVIEW"
@@ -102,8 +86,6 @@ export type ItemRevisionStatusStateEnum =
   | "PUBLISHED_TO_TESTERS"
   | "REJECTED"
   | "CANCELLED";
-const ItemRevisionStatusStateEnum = S.String;
-
 /** Deployment information for a specific release channel */
 export interface DistributionChannel {
   /** The extension version provided in the manifest of the uploaded package. */
@@ -111,14 +93,7 @@ export interface DistributionChannel {
   /** The current deploy percentage for the release channel (nonnegative number between 0 and 100). */
   deployPercentage?: number;
 }
-const DistributionChannel = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DistributionChannel>;
-
 export type DistributionChannelList = Array<DistributionChannel>;
-const DistributionChannelList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DistributionChannelList>;
-
 /** Details on the status of an item revision. */
 export interface ItemRevisionStatus {
   /** Output only. Current state of the item */
@@ -126,16 +101,12 @@ export interface ItemRevisionStatus {
   /** Details on the package of the item */
   distributionChannels?: DistributionChannelList;
 }
-const ItemRevisionStatus = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ItemRevisionStatus>;
-
 export type FetchItemStatusResponseLastAsyncUploadStateEnum =
   | "UPLOAD_STATE_UNSPECIFIED"
   | "SUCCEEDED"
   | "IN_PROGRESS"
   | "FAILED"
   | "NOT_FOUND";
-const FetchItemStatusResponseLastAsyncUploadStateEnum = S.String;
-
 /** Response message for `FetchItemStatus`. */
 export interface FetchItemStatusResponse {
   /** Output only. Status of the current published revision of the item. Will be unset if the item is not published. */
@@ -155,27 +126,16 @@ export interface FetchItemStatusResponse {
   /** Output only. The ID of the item. */
   itemId?: string;
 }
-const FetchItemStatusResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<FetchItemStatusResponse>;
-
 export type PublishItemRequestPublishTypeEnum =
   | "PUBLISH_TYPE_UNSPECIFIED"
   | "DEFAULT_PUBLISH"
   | "STAGED_PUBLISH";
-const PublishItemRequestPublishTypeEnum = S.String;
-
 /** Deployment information for a specific release channel. Used in requests to update deployment parameters. */
 export interface DeployInfo {
   /** Required. The current deploy percentage for the release channel (nonnegative number between 0 and 100). */
   deployPercentage?: number;
 }
-const DeployInfo = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<DeployInfo>;
-
 export type DeployInfoList = Array<DeployInfo>;
-const DeployInfoList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<DeployInfoList>;
-
 /** Request message for PublishItem. */
 export interface PublishItemRequest {
   /** Optional. Use this to control if the item is published immediately on approval or staged for publishing in the future. Defaults to `DEFAULT_PUBLISH` if unset. */
@@ -187,19 +147,12 @@ export interface PublishItemRequest {
   /** Optional. Whether to attempt to skip item review. The API will validate if the item qualifies and return a validation error if the item requires review. Defaults to `false` if unset. */
   skipReview?: boolean;
 }
-const PublishItemRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<PublishItemRequest>;
-
 export interface PublishPublishersItemsRequest {
   /** Required. Name of the item in the form `publishers/{publisherId}/items/{itemId}` */
   name: string;
   /** Request body */
   body?: PublishItemRequest;
 }
-const PublishPublishersItemsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PublishPublishersItemsRequest>;
-
 export type PublishItemResponseStateEnum =
   | "ITEM_STATE_UNSPECIFIED"
   | "PENDING_REVIEW"
@@ -208,8 +161,6 @@ export type PublishItemResponseStateEnum =
   | "PUBLISHED_TO_TESTERS"
   | "REJECTED"
   | "CANCELLED";
-const PublishItemResponseStateEnum = S.String;
-
 /** Represents a single warning encountered during the request. */
 export interface Warning {
   /** The reason for the warning. This is a constant value that identifies the proximate cause of the warning. */
@@ -217,18 +168,12 @@ export interface Warning {
   /** A description of the warning. Developers should use this message to understand the warning and take appropriate action to resolve the issue. */
   description?: string;
 }
-const Warning = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Warning>;
-
 export type WarningList = Array<Warning>;
-const WarningList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<WarningList>;
-
 /** Message containing details on warnings encountered during PublishItem. */
 export interface WarningsInfo {
   /** All warnings encountered during the request. */
   warnings?: WarningList;
 }
-const WarningsInfo = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<WarningsInfo>;
-
 /** Response message for `PublishItem`. */
 export interface PublishItemResponse {
   /** Output only. The current state of the submission. */
@@ -240,36 +185,19 @@ export interface PublishItemResponse {
   /** Output only. Non-blocking warnings encountered during the request. */
   warningInfo?: WarningsInfo;
 }
-const PublishItemResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<PublishItemResponse>;
-
 /** Request message for SetPublishedDeployPercentage. */
 export interface SetPublishedDeployPercentageRequest {
   /** Required. Unscaled percentage value for the publised revision (nonnegative number between 0 and 100). It must be larger than the existing target percentage. */
   deployPercentage?: number;
 }
-const SetPublishedDeployPercentageRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<SetPublishedDeployPercentageRequest>;
-
 export interface SetPublishedDeployPercentagePublishersItemsRequest {
   /** Required. Name of the item to update the published revision of in the form `publishers/{publisherId}/items/{itemId}` */
   name: string;
   /** Request body */
   body?: SetPublishedDeployPercentageRequest;
 }
-const SetPublishedDeployPercentagePublishersItemsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<SetPublishedDeployPercentagePublishersItemsRequest>;
-
 /** Response message for `SetPublishedDeployPercentage`. */
 export interface SetPublishedDeployPercentageResponse {}
-const SetPublishedDeployPercentageResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<SetPublishedDeployPercentageResponse>;
-
 /** Request message for UploadItemPackage. */
 export type UploadItemPackageRequest = CancelSubmissionRequest;
 export interface UploadMediaRequest {
@@ -278,16 +206,12 @@ export interface UploadMediaRequest {
   /** Request body */
   body?: CancelSubmissionRequest;
 }
-const UploadMediaRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<UploadMediaRequest>;
-
 export type UploadItemPackageResponseUploadStateEnum =
   | "UPLOAD_STATE_UNSPECIFIED"
   | "SUCCEEDED"
   | "IN_PROGRESS"
   | "FAILED"
   | "NOT_FOUND";
-const UploadItemPackageResponseUploadStateEnum = S.String;
-
 /** Response message for `UploadItemPackage`. */
 export interface UploadItemPackageResponse {
   /** The extension version provided in the manifest of the uploaded package. This will not be set if the upload is still in progress (`upload_state` is `UPLOAD_IN_PROGRESS`). */
@@ -299,11 +223,6 @@ export interface UploadItemPackageResponse {
   /** The name of the item the package was uploaded to. */
   name?: string;
 }
-const UploadItemPackageResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<UploadItemPackageResponse>;
-
 export type CancelSubmissionPublishersItemsError =
   | NotFound
   | Forbidden
@@ -317,8 +236,8 @@ export const cancelSubmissionPublishersItems: API.OperationMethod<
   CancelSubmissionPublishersItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelSubmissionPublishersItemsRequest,
-  output: CancelSubmissionResponse,
+  input: __S(1) as any as S.Schema<CancelSubmissionPublishersItemsRequest>,
+  output: __S(0) as any as S.Schema<CancelSubmissionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -332,8 +251,8 @@ export const fetchStatusPublishersItems: API.OperationMethod<
   FetchStatusPublishersItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchStatusPublishersItemsRequest,
-  output: FetchItemStatusResponse,
+  input: __S(2) as any as S.Schema<FetchStatusPublishersItemsRequest>,
+  output: __S(6) as any as S.Schema<FetchItemStatusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -347,8 +266,8 @@ export const publishPublishersItems: API.OperationMethod<
   PublishPublishersItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishPublishersItemsRequest,
-  output: PublishItemResponse,
+  input: __S(10) as any as S.Schema<PublishPublishersItemsRequest>,
+  output: __S(14) as any as S.Schema<PublishItemResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -367,8 +286,8 @@ export const setPublishedDeployPercentagePublishersItems: API.OperationMethod<
   SetPublishedDeployPercentagePublishersItemsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetPublishedDeployPercentagePublishersItemsRequest,
-  output: SetPublishedDeployPercentageResponse,
+  input: __S(16) as any as S.Schema<SetPublishedDeployPercentagePublishersItemsRequest>,
+  output: __S(17) as any as S.Schema<SetPublishedDeployPercentageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -382,8 +301,8 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadMediaRequest,
-  output: UploadItemPackageResponse,
+  input: __S(18) as any as S.Schema<UploadMediaRequest>,
+  output: __S(19) as any as S.Schema<UploadItemPackageResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -400,7 +319,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelSubmissionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -433,23 +352,23 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "DistributionChannel" });
     case 4:
-      return S.Array(DistributionChannel);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(ItemRevisionStatusStateEnum),
-          distributionChannels: S.optional(DistributionChannelList),
+          state: S.optional(S.String),
+          distributionChannels: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "ItemRevisionStatus" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          publishedItemRevisionStatus: S.optional(ItemRevisionStatus),
+          publishedItemRevisionStatus: S.optional(__S(5)),
           name: S.optional(S.String),
           warned: S.optional(S.Boolean),
-          lastAsyncUploadState: S.optional(FetchItemStatusResponseLastAsyncUploadStateEnum),
+          lastAsyncUploadState: S.optional(S.String),
           takenDown: S.optional(S.Boolean),
-          submittedItemRevisionStatus: S.optional(ItemRevisionStatus),
+          submittedItemRevisionStatus: S.optional(__S(5)),
           publicKey: S.optional(S.String),
           itemId: S.optional(S.String),
         }),
@@ -465,12 +384,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DeployInfo);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          publishType: S.optional(PublishItemRequestPublishTypeEnum),
-          deployInfos: S.optional(DeployInfoList),
+          publishType: S.optional(S.String),
+          deployInfos: S.optional(__S(8)),
           blockOnWarnings: S.optional(S.Boolean),
           skipReview: S.optional(S.Boolean),
         }),
@@ -479,7 +398,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(PublishItemRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -498,20 +417,20 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Warning" });
     case 4:
-      return S.Array(Warning);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          warnings: S.optional(WarningList),
+          warnings: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "WarningsInfo" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(PublishItemResponseStateEnum),
+          state: S.optional(S.String),
           itemId: S.optional(S.String),
           name: S.optional(S.String),
-          warningInfo: S.optional(WarningsInfo),
+          warningInfo: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "PublishItemResponse" });
     case 7:
@@ -530,7 +449,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(SetPublishedDeployPercentageRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -549,7 +468,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelSubmissionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -563,11 +482,26 @@ function __c2(j: number): any {
         S.Struct({
           crxVersion: S.optional(S.String),
           itemId: S.optional(S.String),
-          uploadState: S.optional(UploadItemPackageResponseUploadStateEnum),
+          uploadState: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UploadItemPackageResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

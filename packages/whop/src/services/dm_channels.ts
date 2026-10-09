@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -48,11 +50,6 @@ export class UnprocessableEntity
 
 /** The list of user identifiers to include in the DM channel. Each entry can be an email, username, or user ID (e.g. 'user_xxxxx'). */
 export type CreateDmChannelRequestWithUserIdsList = Array<string>;
-const CreateDmChannelRequestWithUserIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDmChannelRequestWithUserIdsList>;
-
 export interface CreateDmChannelRequest {
   /** The unique identifier of the company to scope this DM channel to. When set, the channel is visible only within that company context. */
   account_id?: string | null;
@@ -63,11 +60,6 @@ export interface CreateDmChannelRequest {
   /** The list of user identifiers to include in the DM channel. Each entry can be an email, username, or user ID (e.g. 'user_xxxxx'). */
   with_user_ids: CreateDmChannelRequestWithUserIdsList;
 }
-const CreateDmChannelRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateDmChannelRequest>;
-
 /** A messaging channel that can be a one-on-one DM, group chat, company support conversation, or platform-level direct message. */
 export interface DmChannel {
   /** The time the entity was created (in milliseconds since Unix epoch) */
@@ -79,29 +71,15 @@ export interface DmChannel {
   /** A custom display name assigned to this channel by the user. Null if no custom name has been set. */
   name: string | null;
 }
-const DmChannel = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DmChannel>;
-
 export interface DeleteDmChannelRequest {
   /** The unique identifier of the DM channel to delete. */
   id: string;
 }
-const DeleteDmChannelRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteDmChannelRequest>;
-
 export type DeleteDmChannelResponse = boolean;
-const DeleteDmChannelResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeleteDmChannelResponse>;
-
 export interface GetDmChannelRequest {
   /** The unique identifier of the DM channel to retrieve. */
   id: string;
 }
-const GetDmChannelRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetDmChannelRequest>;
-
 export interface ListDmChannelRequest {
   after?: string;
   before?: string;
@@ -109,8 +87,6 @@ export interface ListDmChannelRequest {
   last?: number;
   account_id?: string;
 }
-const ListDmChannelRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListDmChannelRequest>;
-
 /** A messaging channel that can be a one-on-one DM, group chat, company support conversation, or platform-level direct message. */
 export interface DmChannelListItem {
   /** The time the entity was created (in milliseconds since Unix epoch) */
@@ -122,15 +98,8 @@ export interface DmChannelListItem {
   /** A custom display name assigned to this channel by the user. Null if no custom name has been set. */
   name: string | null;
 }
-const DmChannelListItem = DmChannel as any as S.Schema<DmChannelListItem>;
-
 /** A list of nodes. */
 export type ListDmChannelResponseDataList = Array<DmChannelListItem>;
-const ListDmChannelResponseDataList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListDmChannelResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -142,30 +111,18 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PageInfo>;
-
 export interface ListDmChannelResponse {
   /** A list of nodes. */
   data: ListDmChannelResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListDmChannelResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListDmChannelResponse>;
-
 export interface UpdateDmChannelRequest {
   /** The unique identifier of the DM channel to update. */
   id: string;
   /** A new custom display name for the DM channel. For example, 'Project Discussion'. */
   custom_name?: string | null;
 }
-const UpdateDmChannelRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<UpdateDmChannelRequest>;
-
 export type CreateDmChannelError =
   | BadRequest
   | Forbidden
@@ -179,8 +136,8 @@ export const createDmChannel: API.OperationMethod<
   CreateDmChannelError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDmChannelRequest,
-  output: DmChannel,
+  input: __S(1) as any as S.Schema<CreateDmChannelRequest>,
+  output: __S(2) as any as S.Schema<DmChannel>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -199,8 +156,8 @@ export const deleteDmChannel: API.OperationMethod<
   DeleteDmChannelError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDmChannelRequest,
-  output: DeleteDmChannelResponse,
+  input: __S(3) as any as S.Schema<DeleteDmChannelRequest>,
+  output: __S(4) as any as S.Schema<DeleteDmChannelResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -219,8 +176,8 @@ export const getDmChannel: API.OperationMethod<
   GetDmChannelError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDmChannelRequest,
-  output: DmChannel,
+  input: __S(5) as any as S.Schema<GetDmChannelRequest>,
+  output: __S(2) as any as S.Schema<DmChannel>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -241,8 +198,8 @@ export const listDmChannel: API.PaginatedOperationMethod<
   DmChannelListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListDmChannelRequest,
-    output: ListDmChannelResponse,
+    input: __S(6) as any as S.Schema<ListDmChannelRequest>,
+    output: __S(9) as any as S.Schema<ListDmChannelResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -271,8 +228,8 @@ export const updateDmChannel: API.OperationMethod<
   UpdateDmChannelError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDmChannelRequest,
-  output: DmChannel,
+  input: __S(10) as any as S.Schema<UpdateDmChannelRequest>,
+  output: __S(2) as any as S.Schema<DmChannel>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -289,7 +246,7 @@ function __c0(j: number): any {
           account_id: S.optional(S.NullOr(S.String)),
           custom_name: S.optional(S.NullOr(S.String)),
           notifications_enabled: S.optional(S.NullOr(S.Boolean)),
-          with_user_ids: CreateDmChannelRequestWithUserIdsList,
+          with_user_ids: __S(0),
         }).pipe(T.Http({ method: "POST", uri: "/dm_channels", code: 200 })),
       ).annotate({ identifier: "CreateDmChannelRequest" });
     case 2:
@@ -328,7 +285,7 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/dm_channels", code: 200 })),
       ).annotate({ identifier: "ListDmChannelRequest" });
     case 7:
-      return S.Array(DmChannelListItem);
+      return S.Array(__S(2));
   }
 }
 function __c1(j: number): any {
@@ -345,8 +302,8 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: ListDmChannelResponseDataList,
-          page_info: PageInfo,
+          data: __S(7),
+          page_info: __S(8),
         }),
       ).annotate({ identifier: "ListDmChannelResponse" });
     case 2:
@@ -356,5 +313,18 @@ function __c1(j: number): any {
           custom_name: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PATCH", uri: "/dm_channels/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateDmChannelRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

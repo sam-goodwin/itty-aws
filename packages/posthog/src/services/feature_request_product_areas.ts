@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -18,11 +20,6 @@ export interface CreateFeatureRequestProductAreasRequest {
   /** Whether editors can select this product area for new requests. */
   is_active?: boolean;
 }
-const CreateFeatureRequestProductAreasRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateFeatureRequestProductAreasRequest>;
-
 export interface FeatureRequestProductArea {
   /** Stable product area ID. */
   id: string;
@@ -37,34 +34,14 @@ export interface FeatureRequestProductArea {
   /** When the product area was last updated. */
   updated_at: string;
 }
-const FeatureRequestProductArea = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<FeatureRequestProductArea>;
-
 export interface ListFeatureRequestProductAreasRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Include inactive product areas. Defaults to false. */
   include_inactive?: boolean;
 }
-const ListFeatureRequestProductAreasRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ListFeatureRequestProductAreasRequest>;
-
 export type ListFeatureRequestProductAreasResponseBodyList = Array<FeatureRequestProductArea>;
-const ListFeatureRequestProductAreasResponseBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ListFeatureRequestProductAreasResponseBodyList>;
-
 export type ListFeatureRequestProductAreasResponse = ListFeatureRequestProductAreasResponseBodyList;
-const ListFeatureRequestProductAreasResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListFeatureRequestProductAreasResponse>;
-
 export interface UpdateFeatureRequestProductAreasRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -76,11 +53,6 @@ export interface UpdateFeatureRequestProductAreasRequest {
   /** Whether editors can select this product area for new requests. */
   is_active?: boolean;
 }
-const UpdateFeatureRequestProductAreasRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<UpdateFeatureRequestProductAreasRequest>;
-
 export interface UpdateFeatureRequestProductAreasPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -92,11 +64,6 @@ export interface UpdateFeatureRequestProductAreasPartialRequest {
   /** Whether editors can select this product area for new requests. */
   is_active?: boolean;
 }
-const UpdateFeatureRequestProductAreasPartialRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<UpdateFeatureRequestProductAreasPartialRequest>;
-
 export type CreateFeatureRequestProductAreasError = PosthogOpError;
 export const createFeatureRequestProductAreas: API.OperationMethod<
   CreateFeatureRequestProductAreasRequest,
@@ -104,8 +71,8 @@ export const createFeatureRequestProductAreas: API.OperationMethod<
   CreateFeatureRequestProductAreasError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFeatureRequestProductAreasRequest,
-  output: FeatureRequestProductArea,
+  input: __S(0) as any as S.Schema<CreateFeatureRequestProductAreasRequest>,
+  output: __S(1) as any as S.Schema<FeatureRequestProductArea>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -118,8 +85,8 @@ export const listFeatureRequestProductAreas: API.OperationMethod<
   ListFeatureRequestProductAreasError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFeatureRequestProductAreasRequest,
-  output: ListFeatureRequestProductAreasResponse,
+  input: __S(2) as any as S.Schema<ListFeatureRequestProductAreasRequest>,
+  output: __S(4) as any as S.Schema<ListFeatureRequestProductAreasResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -132,8 +99,8 @@ export const updateFeatureRequestProductAreas: API.OperationMethod<
   UpdateFeatureRequestProductAreasError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFeatureRequestProductAreasRequest,
-  output: FeatureRequestProductArea,
+  input: __S(5) as any as S.Schema<UpdateFeatureRequestProductAreasRequest>,
+  output: __S(1) as any as S.Schema<FeatureRequestProductArea>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -146,8 +113,8 @@ export const updateFeatureRequestProductAreasPartial: API.OperationMethod<
   UpdateFeatureRequestProductAreasPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFeatureRequestProductAreasPartialRequest,
-  output: FeatureRequestProductArea,
+  input: __S(6) as any as S.Schema<UpdateFeatureRequestProductAreasPartialRequest>,
+  output: __S(1) as any as S.Schema<FeatureRequestProductArea>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -202,11 +169,9 @@ function __c0(j: number): any {
         identifier: "ListFeatureRequestProductAreasRequest",
       });
     case 3:
-      return S.Array(FeatureRequestProductArea);
+      return S.Array(__S(1));
     case 4:
-      return S.suspend(() =>
-        ListFeatureRequestProductAreasResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListFeatureRequestProductAreasResponse",
       });
     case 5:
@@ -245,5 +210,16 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "UpdateFeatureRequestProductAreasPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

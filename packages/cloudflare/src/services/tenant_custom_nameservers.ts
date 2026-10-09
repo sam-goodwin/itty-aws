@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -31,34 +33,15 @@ export interface CreateTenantCustomNameserverRequest {
   /** The number of the set that this name server belongs to. */
   nsSet?: number;
 }
-const CreateTenantCustomNameserverRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateTenantCustomNameserverRequest>;
-
 export type CreateResponseDnsRecordsItemType = "A" | "AAAA";
-const CreateResponseDnsRecordsItemType = S.String;
-
 export interface CreateResponseDnsRecordsItem {
   /** DNS record type. */
   type?: CreateResponseDnsRecordsItemType | null;
   /** DNS record contents (an IPv4 or IPv6 address). */
   value?: string | null;
 }
-const CreateResponseDnsRecordsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateResponseDnsRecordsItem>;
-
 export type CreateResponseDnsRecordsList = Array<CreateResponseDnsRecordsItem>;
-const CreateResponseDnsRecordsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateResponseDnsRecordsList>;
-
 export type CreateResponseStatus = "moved" | "pending" | "verified";
-const CreateResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateTenantCustomNameserverResponse {
   /** A and AAAA records associated with the nameserver. */
@@ -72,45 +55,23 @@ export interface CreateTenantCustomNameserverResponse {
   /** The number of the set that this name server belongs to. */
   nsSet?: number | null;
 }
-const CreateTenantCustomNameserverResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateTenantCustomNameserverResponse>;
-
 export interface DeleteTenantCustomNameserverRequest {
   /** Tenant identifier tag. */
   tenantTag: string;
   /** The FQDN of the name server. */
   customNsId: string;
 }
-const DeleteTenantCustomNameserverRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeleteTenantCustomNameserverRequest>;
-
 export type DeleteResultList = Array<string>;
-const DeleteResultList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteResultList>;
-
 export interface DeleteTenantCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: DeleteResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const DeleteTenantCustomNameserverResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteTenantCustomNameserverResponse>;
-
 export interface GetTenantCustomNameserverRequest {
   /** Tenant identifier tag. */
   tenantTag: string;
 }
-const GetTenantCustomNameserverRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetTenantCustomNameserverRequest>;
-
 export type GetResultItemDnsRecordsItemType = "A" | "AAAA";
 export interface GetResultItemDnsRecordsItem {
   /** DNS record type. */
@@ -119,12 +80,7 @@ export interface GetResultItemDnsRecordsItem {
   value?: string | null;
 }
 export type GetResultItemDnsRecordsList = Array<GetResultItemDnsRecordsItem>;
-const GetResultItemDnsRecordsList =
-  CreateResponseDnsRecordsList as any as S.Schema<GetResultItemDnsRecordsList>;
-
 export type GetResultItemStatus = "moved" | "pending" | "verified";
-const GetResultItemStatus = S.String;
-
 export interface GetResultItem {
   /** A and AAAA records associated with the nameserver. */
   dnsRecords: GetResultItemDnsRecordsList;
@@ -137,22 +93,13 @@ export interface GetResultItem {
   /** The number of the set that this name server belongs to. */
   nsSet?: number | null;
 }
-const GetResultItem = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetResultItem>;
-
 export type GetResultList = Array<GetResultItem>;
-const GetResultList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetResultList>;
-
 export interface GetTenantCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: GetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const GetTenantCustomNameserverResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetTenantCustomNameserverResponse>;
-
 export type CreateTenantCustomNameserverError = CloudflareOpError;
 /** Adds a custom nameserver for a tenant. */
 export const createTenantCustomNameserver: API.OperationMethod<
@@ -161,8 +108,8 @@ export const createTenantCustomNameserver: API.OperationMethod<
   CreateTenantCustomNameserverError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTenantCustomNameserverRequest,
-  output: CreateTenantCustomNameserverResponse,
+  input: __S(0) as any as S.Schema<CreateTenantCustomNameserverRequest>,
+  output: __S(3) as any as S.Schema<CreateTenantCustomNameserverResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -178,8 +125,8 @@ export const deleteTenantCustomNameserver: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: DeleteTenantCustomNameserverRequest,
-    output: DeleteTenantCustomNameserverResponse,
+    input: __S(4) as any as S.Schema<DeleteTenantCustomNameserverRequest>,
+    output: __S(6) as any as S.Schema<DeleteTenantCustomNameserverResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -198,8 +145,8 @@ export const getTenantCustomNameserver: API.PaginatedOperationMethod<
   GetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: GetTenantCustomNameserverRequest,
-    output: GetTenantCustomNameserverResponse,
+    input: __S(7) as any as S.Schema<GetTenantCustomNameserverRequest>,
+    output: __S(10) as any as S.Schema<GetTenantCustomNameserverResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -226,20 +173,20 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(S.NullOr(CreateResponseDnsRecordsItemType)),
+          type: S.optional(S.NullOr(S.String)),
           value: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "CreateResponseDnsRecordsItem",
       });
     case 2:
-      return S.Array(CreateResponseDnsRecordsItem);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dnsRecords: CreateResponseDnsRecordsList.pipe(T.Body("dns_records")),
+          dnsRecords: __S(2).pipe(T.Body("dns_records")),
           nsName: S.String.pipe(T.Body("ns_name")),
-          status: CreateResponseStatus,
+          status: S.String,
           zoneTag: S.String.pipe(T.Body("zone_tag")),
           nsSet: S.optional(S.NullOr(S.Number).pipe(T.Body("ns_set"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -268,7 +215,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: DeleteResultList.pipe(T.EnvelopePayload()),
+          result: __S(5).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -291,23 +238,36 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dnsRecords: GetResultItemDnsRecordsList.pipe(T.Body("dns_records")),
+          dnsRecords: __S(2).pipe(T.Body("dns_records")),
           nsName: S.String.pipe(T.Body("ns_name")),
-          status: GetResultItemStatus,
+          status: S.String,
           zoneTag: S.String.pipe(T.Body("zone_tag")),
           nsSet: S.optional(S.NullOr(S.Number).pipe(T.Body("ns_set"))),
         }),
       ).annotate({ identifier: "GetResultItem" });
     case 1:
-      return S.Array(GetResultItem);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: GetResultList.pipe(T.EnvelopePayload()),
+          result: __S(9).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetTenantCustomNameserverResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -1150,8 +1152,6 @@ export type RulesCreateRequestBody =
   | RulesCreateRequestBodySetConfigurationRule
   | RulesCreateRequestBodySkipRule
   | RulesCreateRequestBodyTransformResponseHTMLRule;
-const RulesCreateRequestBody = /*@__PURE__*/ __L.at(__c0, 0);
-
 export interface CreateRuleForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -1161,14 +1161,7 @@ export interface CreateRuleForAccountRequest {
   dryRun?: boolean;
   body: RulesCreateRequestBody;
 }
-const CreateRuleForAccountRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateRuleForAccountRequest>;
-
 export type RulesCreateResultRulesetKind = "managed" | "custom" | "root" | "zone";
-const RulesCreateResultRulesetKind = S.String;
-
 export type RulesCreateResultRulesetPhase =
   | "ddos_l4"
   | "ddos_l7"
@@ -1194,8 +1187,6 @@ export type RulesCreateResultRulesetPhase =
   | "magic_transit_ids_managed"
   | "magic_transit_managed"
   | "magic_transit_ratelimit";
-const RulesCreateResultRulesetPhase = S.String;
-
 export type RulesCreateResultRulesetRulesItemBlockRuleAction = "block";
 export interface RulesCreateResultRulesetRulesItemBlockRuleActionParametersResponse {
   /** The content to return. */
@@ -3368,14 +3359,7 @@ export type RulesCreateResultRulesetRulesItem =
   | RulesCreateResultRulesetRulesItemSetConfigurationRule
   | RulesCreateResultRulesetRulesItemSkipRule
   | RulesCreateResultRulesetRulesItemTransformResponseHTMLRule;
-const RulesCreateResultRulesetRulesItem = /*@__PURE__*/ __L.at(__c0, 2);
-
 export type RulesCreateResultRulesetRulesList = Array<RulesCreateResultRulesetRulesItem>;
-const RulesCreateResultRulesetRulesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<RulesCreateResultRulesetRulesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRuleResponse {
   /** The unique ID of the ruleset. */
@@ -3395,8 +3379,6 @@ export interface CreateRuleResponse {
   /** An informative description of the ruleset. */
   description?: string | null;
 }
-const CreateRuleResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateRuleResponse>;
-
 export interface CreateRuleForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -3406,14 +3388,7 @@ export interface CreateRuleForZoneRequest {
   dryRun?: boolean;
   body: RulesCreateRequestBody;
 }
-const CreateRuleForZoneRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateRuleForZoneRequest>;
-
 export type CreateRequestKind = "managed" | "custom" | "root" | "zone";
-const CreateRequestKind = S.String;
-
 export type CreateRequestPhase =
   | "ddos_l4"
   | "ddos_l7"
@@ -3439,8 +3414,6 @@ export type CreateRequestPhase =
   | "magic_transit_ids_managed"
   | "magic_transit_managed"
   | "magic_transit_ratelimit";
-const CreateRequestPhase = S.String;
-
 export type CreateRequestRulesItemBlockRuleAction = "block";
 export type CreateRequestRulesItemBlockRuleActionParametersResponse =
   RulesCreateResultRulesetRulesItemBlockRuleActionParametersResponse;
@@ -5594,14 +5567,7 @@ export type CreateRequestRulesItem =
   | CreateRequestRulesItemSetConfigRule
   | CreateRequestRulesItemSkipRule
   | CreateRequestRulesItemTransformResponseHTML;
-const CreateRequestRulesItem = /*@__PURE__*/ __L.at(__c0, 6);
-
 export type CreateRequestRulesList = Array<CreateRequestRulesItem>;
-const CreateRequestRulesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateRequestRulesList>;
-
 export interface CreateRulesetForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -5618,14 +5584,7 @@ export interface CreateRulesetForAccountRequest {
   /** The list of rules in the ruleset. */
   rules?: CreateRequestRulesList;
 }
-const CreateRulesetForAccountRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateRulesetForAccountRequest>;
-
 export type CreateResultRulesetKind = "managed" | "custom" | "root" | "zone";
-const CreateResultRulesetKind = S.String;
-
 export type CreateResultRulesetPhase =
   | "ddos_l4"
   | "ddos_l7"
@@ -5651,8 +5610,6 @@ export type CreateResultRulesetPhase =
   | "magic_transit_ids_managed"
   | "magic_transit_managed"
   | "magic_transit_ratelimit";
-const CreateResultRulesetPhase = S.String;
-
 export type CreateResultRulesetRulesItemBlockRuleAction = "block";
 export type CreateResultRulesetRulesItemBlockRuleActionParametersResponse =
   RulesCreateResultRulesetRulesItemBlockRuleActionParametersResponse;
@@ -7724,14 +7681,7 @@ export type CreateResultRulesetRulesItem =
   | CreateResultRulesetRulesItemSetConfigurationRule
   | CreateResultRulesetRulesItemSkipRule
   | CreateResultRulesetRulesItemTransformResponseHTMLRule;
-const CreateResultRulesetRulesItem = /*@__PURE__*/ __L.at(__c1, 1);
-
 export type CreateResultRulesetRulesList = Array<CreateResultRulesetRulesItem>;
-const CreateResultRulesetRulesList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateResultRulesetRulesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRulesetResponse {
   /** The unique ID of the ruleset. */
@@ -7751,11 +7701,6 @@ export interface CreateRulesetResponse {
   /** An informative description of the ruleset. */
   description?: string | null;
 }
-const CreateRulesetResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateRulesetResponse>;
-
 export interface CreateRulesetForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -7772,11 +7717,6 @@ export interface CreateRulesetForZoneRequest {
   /** The list of rules in the ruleset. */
   rules?: CreateRequestRulesList;
 }
-const CreateRulesetForZoneRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateRulesetForZoneRequest>;
-
 export interface DeleteRuleForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -7787,14 +7727,7 @@ export interface DeleteRuleForAccountRequest {
   /** Validates the request without persisting changes when set to `true`. Responses that normally return 200 return `result: null`; endpoints that normally return 204 continue to return 204. */
   dryRun?: boolean;
 }
-const DeleteRuleForAccountRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteRuleForAccountRequest>;
-
 export type RulesDeleteResultRulesetKind = "managed" | "custom" | "root" | "zone";
-const RulesDeleteResultRulesetKind = S.String;
-
 export type RulesDeleteResultRulesetPhase =
   | "ddos_l4"
   | "ddos_l7"
@@ -7820,8 +7753,6 @@ export type RulesDeleteResultRulesetPhase =
   | "magic_transit_ids_managed"
   | "magic_transit_managed"
   | "magic_transit_ratelimit";
-const RulesDeleteResultRulesetPhase = S.String;
-
 export type RulesDeleteResultRulesetRulesItemBlockRuleAction = "block";
 export type RulesDeleteResultRulesetRulesItemBlockRuleActionParametersResponse =
   RulesCreateResultRulesetRulesItemBlockRuleActionParametersResponse;
@@ -9906,14 +9837,7 @@ export type RulesDeleteResultRulesetRulesItem =
   | RulesDeleteResultRulesetRulesItemSetConfigurationRule
   | RulesDeleteResultRulesetRulesItemSkipRule
   | RulesDeleteResultRulesetRulesItemTransformResponseHTMLRule;
-const RulesDeleteResultRulesetRulesItem = /*@__PURE__*/ __L.at(__c1, 6);
-
 export type RulesDeleteResultRulesetRulesList = Array<RulesDeleteResultRulesetRulesItem>;
-const RulesDeleteResultRulesetRulesList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<RulesDeleteResultRulesetRulesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteRuleResponse {
   /** The unique ID of the ruleset. */
@@ -9933,8 +9857,6 @@ export interface DeleteRuleResponse {
   /** An informative description of the ruleset. */
   description?: string | null;
 }
-const DeleteRuleResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteRuleResponse>;
-
 export interface DeleteRuleForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -9945,11 +9867,6 @@ export interface DeleteRuleForZoneRequest {
   /** Validates the request without persisting changes when set to `true`. Responses that normally return 200 return `result: null`; endpoints that normally return 204 continue to return 204. */
   dryRun?: boolean;
 }
-const DeleteRuleForZoneRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteRuleForZoneRequest>;
-
 export interface DeleteRulesetForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -9958,17 +9875,7 @@ export interface DeleteRulesetForAccountRequest {
   /** Validates the request without persisting changes when set to `true`. Responses that normally return 200 return `result: null`; endpoints that normally return 204 continue to return 204. */
   dryRun?: boolean;
 }
-const DeleteRulesetForAccountRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteRulesetForAccountRequest>;
-
 export interface DeleteRulesetForAccountResponse {}
-const DeleteRulesetForAccountResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteRulesetForAccountResponse>;
-
 export interface DeleteRulesetForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -9977,15 +9884,7 @@ export interface DeleteRulesetForZoneRequest {
   /** Validates the request without persisting changes when set to `true`. Responses that normally return 200 return `result: null`; endpoints that normally return 204 continue to return 204. */
   dryRun?: boolean;
 }
-const DeleteRulesetForZoneRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteRulesetForZoneRequest>;
-
 export interface DeleteRulesetForZoneResponse {}
-const DeleteRulesetForZoneResponse =
-  DeleteRulesetForAccountResponse as any as S.Schema<DeleteRulesetForZoneResponse>;
-
 export interface DeleteVersionForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -9996,15 +9895,7 @@ export interface DeleteVersionForAccountRequest {
   /** Validates the request without persisting changes when set to `true`. Responses that normally return 200 return `result: null`; endpoints that normally return 204 continue to return 204. */
   dryRun?: boolean;
 }
-const DeleteVersionForAccountRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteVersionForAccountRequest>;
-
 export interface DeleteVersionForAccountResponse {}
-const DeleteVersionForAccountResponse =
-  DeleteRulesetForAccountResponse as any as S.Schema<DeleteVersionForAccountResponse>;
-
 export interface DeleteVersionForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -10015,29 +9906,14 @@ export interface DeleteVersionForZoneRequest {
   /** Validates the request without persisting changes when set to `true`. Responses that normally return 200 return `result: null`; endpoints that normally return 204 continue to return 204. */
   dryRun?: boolean;
 }
-const DeleteVersionForZoneRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteVersionForZoneRequest>;
-
 export interface DeleteVersionForZoneResponse {}
-const DeleteVersionForZoneResponse =
-  DeleteRulesetForAccountResponse as any as S.Schema<DeleteVersionForZoneResponse>;
-
 export interface GetPhasForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** The phase of the ruleset. */
   rulesetPhase: string;
 }
-const GetPhasForAccountRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetPhasForAccountRequest>;
-
 export type PhasesGetResponseKind = "managed" | "custom" | "root" | "zone";
-const PhasesGetResponseKind = S.String;
-
 export type PhasesGetResponsePhase =
   | "ddos_l4"
   | "ddos_l7"
@@ -10063,8 +9939,6 @@ export type PhasesGetResponsePhase =
   | "magic_transit_ids_managed"
   | "magic_transit_managed"
   | "magic_transit_ratelimit";
-const PhasesGetResponsePhase = S.String;
-
 export type PhasesGetResponseRulesItemBlockRuleAction = "block";
 export type PhasesGetResponseRulesItemBlockRuleActionParametersResponse =
   RulesCreateResultRulesetRulesItemBlockRuleActionParametersResponse;
@@ -12135,14 +12009,7 @@ export type PhasesGetResponseRulesItem =
   | PhasesGetResponseRulesItemSetConfigurationRule
   | PhasesGetResponseRulesItemSkipRule
   | PhasesGetResponseRulesItemTransformResponseHTMLRule;
-const PhasesGetResponseRulesItem = /*@__PURE__*/ __L.at(__c3, 0);
-
 export type PhasesGetResponseRulesList = Array<PhasesGetResponseRulesItem>;
-const PhasesGetResponseRulesList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<PhasesGetResponseRulesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPhasResponse {
   /** The unique ID of the ruleset. */
@@ -12162,19 +12029,12 @@ export interface GetPhasResponse {
   /** An informative description of the ruleset. */
   description?: string | null;
 }
-const GetPhasResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<GetPhasResponse>;
-
 export interface GetPhasForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** The phase of the ruleset. */
   rulesetPhase: string;
 }
-const GetPhasForZoneRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetPhasForZoneRequest>;
-
 export interface GetPhasVersionForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -12183,14 +12043,7 @@ export interface GetPhasVersionForAccountRequest {
   /** The version of the ruleset. */
   rulesetVersion: string;
 }
-const GetPhasVersionForAccountRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetPhasVersionForAccountRequest>;
-
 export type PhasesVersionsGetResponseKind = "managed" | "custom" | "root" | "zone";
-const PhasesVersionsGetResponseKind = S.String;
-
 export type PhasesVersionsGetResponsePhase =
   | "ddos_l4"
   | "ddos_l7"
@@ -12216,8 +12069,6 @@ export type PhasesVersionsGetResponsePhase =
   | "magic_transit_ids_managed"
   | "magic_transit_managed"
   | "magic_transit_ratelimit";
-const PhasesVersionsGetResponsePhase = S.String;
-
 export type PhasesVersionsGetResponseRulesItemBlockRuleAction = "block";
 export type PhasesVersionsGetResponseRulesItemBlockRuleActionParametersResponse =
   RulesCreateResultRulesetRulesItemBlockRuleActionParametersResponse;
@@ -14304,14 +14155,7 @@ export type PhasesVersionsGetResponseRulesItem =
   | PhasesVersionsGetResponseRulesItemSetConfigurationRule
   | PhasesVersionsGetResponseRulesItemSkipRule
   | PhasesVersionsGetResponseRulesItemTransformResponseHTMLRule;
-const PhasesVersionsGetResponseRulesItem = /*@__PURE__*/ __L.at(__c3, 5);
-
 export type PhasesVersionsGetResponseRulesList = Array<PhasesVersionsGetResponseRulesItem>;
-const PhasesVersionsGetResponseRulesList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<PhasesVersionsGetResponseRulesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetPhasVersionResponse {
   /** The unique ID of the ruleset. */
@@ -14331,11 +14175,6 @@ export interface GetPhasVersionResponse {
   /** An informative description of the ruleset. */
   description?: string | null;
 }
-const GetPhasVersionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetPhasVersionResponse>;
-
 export interface GetPhasVersionForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -14344,25 +14183,13 @@ export interface GetPhasVersionForZoneRequest {
   /** The version of the ruleset. */
   rulesetVersion: string;
 }
-const GetPhasVersionForZoneRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetPhasVersionForZoneRequest>;
-
 export interface GetRulesetForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** The unique ID of the ruleset. */
   rulesetId: string;
 }
-const GetRulesetForAccountRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetRulesetForAccountRequest>;
-
 export type GetResponseKind = "managed" | "custom" | "root" | "zone";
-const GetResponseKind = S.String;
-
 export type GetResponsePhase =
   | "ddos_l4"
   | "ddos_l7"
@@ -14388,8 +14215,6 @@ export type GetResponsePhase =
   | "magic_transit_ids_managed"
   | "magic_transit_managed"
   | "magic_transit_ratelimit";
-const GetResponsePhase = S.String;
-
 export type GetResponseRulesItemBlockRuleAction = "block";
 export type GetResponseRulesItemBlockRuleActionParametersResponse =
   RulesCreateResultRulesetRulesItemBlockRuleActionParametersResponse;
@@ -16451,11 +16276,7 @@ export type GetResponseRulesItem =
   | GetResponseRulesItemSetConfigurationRule
   | GetResponseRulesItemSkipRule
   | GetResponseRulesItemTransformResponseHTMLRule;
-const GetResponseRulesItem = /*@__PURE__*/ __L.at(__c4, 2);
-
 export type GetResponseRulesList = Array<GetResponseRulesItem>;
-const GetResponseRulesList = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GetResponseRulesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRulesetResponse {
   /** The unique ID of the ruleset. */
@@ -16475,19 +16296,12 @@ export interface GetRulesetResponse {
   /** An informative description of the ruleset. */
   description?: string | null;
 }
-const GetRulesetResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetRulesetResponse>;
-
 export interface GetRulesetForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** The unique ID of the ruleset. */
   rulesetId: string;
 }
-const GetRulesetForZoneRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetRulesetForZoneRequest>;
-
 export interface GetVersionForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -16496,14 +16310,7 @@ export interface GetVersionForAccountRequest {
   /** The version of the ruleset. */
   rulesetVersion: string;
 }
-const GetVersionForAccountRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetVersionForAccountRequest>;
-
 export type VersionsGetResponseKind = "managed" | "custom" | "root" | "zone";
-const VersionsGetResponseKind = S.String;
-
 export type VersionsGetResponsePhase =
   | "ddos_l4"
   | "ddos_l7"
@@ -16529,8 +16336,6 @@ export type VersionsGetResponsePhase =
   | "magic_transit_ids_managed"
   | "magic_transit_managed"
   | "magic_transit_ratelimit";
-const VersionsGetResponsePhase = S.String;
-
 export type VersionsGetResponseRulesItemBlockRuleAction = "block";
 export type VersionsGetResponseRulesItemBlockRuleActionParametersResponse =
   RulesCreateResultRulesetRulesItemBlockRuleActionParametersResponse;
@@ -18602,14 +18407,7 @@ export type VersionsGetResponseRulesItem =
   | VersionsGetResponseRulesItemSetConfigurationRule
   | VersionsGetResponseRulesItemSkipRule
   | VersionsGetResponseRulesItemTransformResponseHTMLRule;
-const VersionsGetResponseRulesItem = /*@__PURE__*/ __L.at(__c4, 7);
-
 export type VersionsGetResponseRulesList = Array<VersionsGetResponseRulesItem>;
-const VersionsGetResponseRulesList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<VersionsGetResponseRulesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetVersionResponse {
   /** The unique ID of the ruleset. */
@@ -18629,8 +18427,6 @@ export interface GetVersionResponse {
   /** An informative description of the ruleset. */
   description?: string | null;
 }
-const GetVersionResponse = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GetVersionResponse>;
-
 export interface GetVersionForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -18639,25 +18435,13 @@ export interface GetVersionForZoneRequest {
   /** The version of the ruleset. */
   rulesetVersion: string;
 }
-const GetVersionForZoneRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetVersionForZoneRequest>;
-
 export interface ListPhasVersionsForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** The phase of the ruleset. */
   rulesetPhase: string;
 }
-const ListPhasVersionsForAccountRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ListPhasVersionsForAccountRequest>;
-
 export type PhasesVersionsListResultItemKind = "managed" | "custom" | "root" | "zone";
-const PhasesVersionsListResultItemKind = S.String;
-
 export type PhasesVersionsListResultItemPhase =
   | "ddos_l4"
   | "ddos_l7"
@@ -18683,8 +18467,6 @@ export type PhasesVersionsListResultItemPhase =
   | "magic_transit_ids_managed"
   | "magic_transit_managed"
   | "magic_transit_ratelimit";
-const PhasesVersionsListResultItemPhase = S.String;
-
 export interface PhasesVersionsListResultItem {
   /** The unique ID of the ruleset. */
   id: string;
@@ -18701,39 +18483,19 @@ export interface PhasesVersionsListResultItem {
   /** An informative description of the ruleset. */
   description?: string | null;
 }
-const PhasesVersionsListResultItem = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<PhasesVersionsListResultItem>;
-
 export type PhasesVersionsListResultList = Array<PhasesVersionsListResultItem>;
-const PhasesVersionsListResultList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<PhasesVersionsListResultList>;
-
 export interface ListPhasVersionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: PhasesVersionsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListPhasVersionsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListPhasVersionsResponse>;
-
 export interface ListPhasVersionsForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** The phase of the ruleset. */
   rulesetPhase: string;
 }
-const ListPhasVersionsForZoneRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListPhasVersionsForZoneRequest>;
-
 export interface ListRulesetsForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -18742,14 +18504,7 @@ export interface ListRulesetsForAccountRequest {
   /** The number of rulesets to return per page. */
   perPage?: number;
 }
-const ListRulesetsForAccountRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListRulesetsForAccountRequest>;
-
 export type ListResultItemKind = "managed" | "custom" | "root" | "zone";
-const ListResultItemKind = S.String;
-
 export type ListResultItemPhase =
   | "ddos_l4"
   | "ddos_l7"
@@ -18775,8 +18530,6 @@ export type ListResultItemPhase =
   | "magic_transit_ids_managed"
   | "magic_transit_managed"
   | "magic_transit_ratelimit";
-const ListResultItemPhase = S.String;
-
 export interface ListResultItem {
   /** The unique ID of the ruleset. */
   id: string;
@@ -18793,19 +18546,13 @@ export interface ListResultItem {
   /** An informative description of the ruleset. */
   description?: string | null;
 }
-const ListResultItem = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ListResultItem>;
-
 export type ListResultList = Array<ListResultItem>;
-const ListResultList = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ListResultList>;
-
 export interface ListRulesetsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListRulesetsResponse = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ListRulesetsResponse>;
-
 export interface ListRulesetsForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -18814,22 +18561,12 @@ export interface ListRulesetsForZoneRequest {
   /** The number of rulesets to return per page. */
   perPage?: number;
 }
-const ListRulesetsForZoneRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListRulesetsForZoneRequest>;
-
 export interface ListVersionsForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
   /** The unique ID of the ruleset. */
   rulesetId: string;
 }
-const ListVersionsForAccountRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListVersionsForAccountRequest>;
-
 export type VersionsListResultItemKind = "managed" | "custom" | "root" | "zone";
 export type VersionsListResultItemPhase =
   | "ddos_l4"
@@ -18879,19 +18616,12 @@ export interface ListVersionsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListVersionsResponse = ListRulesetsResponse as any as S.Schema<ListVersionsResponse>;
-
 export interface ListVersionsForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
   /** The unique ID of the ruleset. */
   rulesetId: string;
 }
-const ListVersionsForZoneRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListVersionsForZoneRequest>;
-
 export type RulesEditRequestBodyBlockRulePositionBeforePosition =
   RulesCreateRequestBodyBlockRulePositionBeforePosition;
 export type RulesEditRequestBodyBlockRulePositionAfterPosition =
@@ -19896,8 +19626,6 @@ export type RulesEditRequestBody =
   | RulesEditRequestBodySetConfigurationRule
   | RulesEditRequestBodySkipRule
   | RulesEditRequestBodyTransformResponseHTMLRule;
-const RulesEditRequestBody = /*@__PURE__*/ __L.at(__c6, 7);
-
 export interface PatchRuleForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -19909,14 +19637,7 @@ export interface PatchRuleForAccountRequest {
   dryRun?: boolean;
   body: RulesEditRequestBody;
 }
-const PatchRuleForAccountRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<PatchRuleForAccountRequest>;
-
 export type RulesEditResultRulesetKind = "managed" | "custom" | "root" | "zone";
-const RulesEditResultRulesetKind = S.String;
-
 export type RulesEditResultRulesetPhase =
   | "ddos_l4"
   | "ddos_l7"
@@ -19942,8 +19663,6 @@ export type RulesEditResultRulesetPhase =
   | "magic_transit_ids_managed"
   | "magic_transit_managed"
   | "magic_transit_ratelimit";
-const RulesEditResultRulesetPhase = S.String;
-
 export type RulesEditResultRulesetRulesItemBlockRuleAction = "block";
 export type RulesEditResultRulesetRulesItemBlockRuleActionParametersResponse =
   RulesCreateResultRulesetRulesItemBlockRuleActionParametersResponse;
@@ -22020,14 +21739,7 @@ export type RulesEditResultRulesetRulesItem =
   | RulesEditResultRulesetRulesItemSetConfigurationRule
   | RulesEditResultRulesetRulesItemSkipRule
   | RulesEditResultRulesetRulesItemTransformResponseHTMLRule;
-const RulesEditResultRulesetRulesItem = /*@__PURE__*/ __L.at(__c7, 1);
-
 export type RulesEditResultRulesetRulesList = Array<RulesEditResultRulesetRulesItem>;
-const RulesEditResultRulesetRulesList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<RulesEditResultRulesetRulesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchRuleResponse {
   /** The unique ID of the ruleset. */
@@ -22047,8 +21759,6 @@ export interface PatchRuleResponse {
   /** An informative description of the ruleset. */
   description?: string | null;
 }
-const PatchRuleResponse = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<PatchRuleResponse>;
-
 export interface PatchRuleForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -22060,11 +21770,6 @@ export interface PatchRuleForZoneRequest {
   dryRun?: boolean;
   body: RulesEditRequestBody;
 }
-const PatchRuleForZoneRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<PatchRuleForZoneRequest>;
-
 export type PhasesUpdateRequestRulesItemBlockRuleAction = "block";
 export type PhasesUpdateRequestRulesItemBlockRuleActionParametersResponse =
   RulesCreateResultRulesetRulesItemBlockRuleActionParametersResponse;
@@ -24173,14 +23878,7 @@ export type PhasesUpdateRequestRulesItem =
   | PhasesUpdateRequestRulesItemSetConfigRule
   | PhasesUpdateRequestRulesItemSkipRule
   | PhasesUpdateRequestRulesItemTransformResponseHTML;
-const PhasesUpdateRequestRulesItem = /*@__PURE__*/ __L.at(__c7, 5);
-
 export type PhasesUpdateRequestRulesList = Array<PhasesUpdateRequestRulesItem>;
-const PhasesUpdateRequestRulesList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<PhasesUpdateRequestRulesList>;
-
 export interface PutPhasForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -24195,14 +23893,7 @@ export interface PutPhasForAccountRequest {
   /** The list of rules in the ruleset. */
   rules?: PhasesUpdateRequestRulesList;
 }
-const PutPhasForAccountRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<PutPhasForAccountRequest>;
-
 export type PhasesUpdateResultRulesetKind = "managed" | "custom" | "root" | "zone";
-const PhasesUpdateResultRulesetKind = S.String;
-
 export type PhasesUpdateResultRulesetPhase =
   | "ddos_l4"
   | "ddos_l7"
@@ -24228,8 +23919,6 @@ export type PhasesUpdateResultRulesetPhase =
   | "magic_transit_ids_managed"
   | "magic_transit_managed"
   | "magic_transit_ratelimit";
-const PhasesUpdateResultRulesetPhase = S.String;
-
 export type PhasesUpdateResultRulesetRulesItemBlockRuleAction = "block";
 export type PhasesUpdateResultRulesetRulesItemBlockRuleActionParametersResponse =
   RulesCreateResultRulesetRulesItemBlockRuleActionParametersResponse;
@@ -26316,14 +26005,7 @@ export type PhasesUpdateResultRulesetRulesItem =
   | PhasesUpdateResultRulesetRulesItemSetConfigurationRule
   | PhasesUpdateResultRulesetRulesItemSkipRule
   | PhasesUpdateResultRulesetRulesItemTransformResponseHTMLRule;
-const PhasesUpdateResultRulesetRulesItem = /*@__PURE__*/ __L.at(__c8, 0);
-
 export type PhasesUpdateResultRulesetRulesList = Array<PhasesUpdateResultRulesetRulesItem>;
-const PhasesUpdateResultRulesetRulesList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<PhasesUpdateResultRulesetRulesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutPhasResponse {
   /** The unique ID of the ruleset. */
@@ -26343,8 +26025,6 @@ export interface PutPhasResponse {
   /** An informative description of the ruleset. */
   description?: string | null;
 }
-const PutPhasResponse = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<PutPhasResponse>;
-
 export interface PutPhasForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -26359,14 +26039,7 @@ export interface PutPhasForZoneRequest {
   /** The list of rules in the ruleset. */
   rules?: PhasesUpdateRequestRulesList;
 }
-const PutPhasForZoneRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<PutPhasForZoneRequest>;
-
 export type UpdateRequestKind = "managed" | "custom" | "root" | "zone";
-const UpdateRequestKind = S.String;
-
 export type UpdateRequestPhase =
   | "ddos_l4"
   | "ddos_l7"
@@ -26392,8 +26065,6 @@ export type UpdateRequestPhase =
   | "magic_transit_ids_managed"
   | "magic_transit_managed"
   | "magic_transit_ratelimit";
-const UpdateRequestPhase = S.String;
-
 export type UpdateRequestRulesItemBlockRuleAction = "block";
 export type UpdateRequestRulesItemBlockRuleActionParametersResponse =
   RulesCreateResultRulesetRulesItemBlockRuleActionParametersResponse;
@@ -28481,14 +28152,7 @@ export type UpdateRequestRulesItem =
   | UpdateRequestRulesItemSetConfigRule
   | UpdateRequestRulesItemSkipRule
   | UpdateRequestRulesItemTransformResponseHTML;
-const UpdateRequestRulesItem = /*@__PURE__*/ __L.at(__c8, 4);
-
 export type UpdateRequestRulesList = Array<UpdateRequestRulesItem>;
-const UpdateRequestRulesList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<UpdateRequestRulesList>;
-
 export interface UpdateRulesetForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -28507,14 +28171,7 @@ export interface UpdateRulesetForAccountRequest {
   /** The list of rules in the ruleset. */
   rules?: UpdateRequestRulesList;
 }
-const UpdateRulesetForAccountRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<UpdateRulesetForAccountRequest>;
-
 export type UpdateResultRulesetKind = "managed" | "custom" | "root" | "zone";
-const UpdateResultRulesetKind = S.String;
-
 export type UpdateResultRulesetPhase =
   | "ddos_l4"
   | "ddos_l7"
@@ -28540,8 +28197,6 @@ export type UpdateResultRulesetPhase =
   | "magic_transit_ids_managed"
   | "magic_transit_managed"
   | "magic_transit_ratelimit";
-const UpdateResultRulesetPhase = S.String;
-
 export type UpdateResultRulesetRulesItemBlockRuleAction = "block";
 export type UpdateResultRulesetRulesItemBlockRuleActionParametersResponse =
   RulesCreateResultRulesetRulesItemBlockRuleActionParametersResponse;
@@ -30613,14 +30268,7 @@ export type UpdateResultRulesetRulesItem =
   | UpdateResultRulesetRulesItemSetConfigurationRule
   | UpdateResultRulesetRulesItemSkipRule
   | UpdateResultRulesetRulesItemTransformResponseHTMLRule;
-const UpdateResultRulesetRulesItem = /*@__PURE__*/ __L.at(__c8, 7);
-
 export type UpdateResultRulesetRulesList = Array<UpdateResultRulesetRulesItem>;
-const UpdateResultRulesetRulesList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<UpdateResultRulesetRulesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateRulesetResponse {
   /** The unique ID of the ruleset. */
@@ -30640,11 +30288,6 @@ export interface UpdateRulesetResponse {
   /** An informative description of the ruleset. */
   description?: string | null;
 }
-const UpdateRulesetResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<UpdateRulesetResponse>;
-
 export interface UpdateRulesetForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -30663,11 +30306,6 @@ export interface UpdateRulesetForZoneRequest {
   /** The list of rules in the ruleset. */
   rules?: UpdateRequestRulesList;
 }
-const UpdateRulesetForZoneRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<UpdateRulesetForZoneRequest>;
-
 export type CreateRuleForAccountError = CloudflareOpError;
 /** Adds a new rule to an account or zone ruleset. The rule will be added to the end of the existing list of rules in the ruleset by default. */
 export const createRuleForAccount: API.OperationMethod<
@@ -30676,8 +30314,8 @@ export const createRuleForAccount: API.OperationMethod<
   CreateRuleForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRuleForAccountRequest,
-  output: CreateRuleResponse,
+  input: __S(1) as any as S.Schema<CreateRuleForAccountRequest>,
+  output: __S(4) as any as S.Schema<CreateRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30691,8 +30329,8 @@ export const createRuleForZone: API.OperationMethod<
   CreateRuleForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRuleForZoneRequest,
-  output: CreateRuleResponse,
+  input: __S(5) as any as S.Schema<CreateRuleForZoneRequest>,
+  output: __S(4) as any as S.Schema<CreateRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30706,8 +30344,8 @@ export const createRulesetForAccount: API.OperationMethod<
   CreateRulesetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRulesetForAccountRequest,
-  output: CreateRulesetResponse,
+  input: __S(8) as any as S.Schema<CreateRulesetForAccountRequest>,
+  output: __S(11) as any as S.Schema<CreateRulesetResponse>,
   errors: [PhaseNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30721,8 +30359,8 @@ export const createRulesetForZone: API.OperationMethod<
   CreateRulesetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRulesetForZoneRequest,
-  output: CreateRulesetResponse,
+  input: __S(12) as any as S.Schema<CreateRulesetForZoneRequest>,
+  output: __S(11) as any as S.Schema<CreateRulesetResponse>,
   errors: [PhaseNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30736,8 +30374,8 @@ export const deleteRuleForAccount: API.OperationMethod<
   DeleteRuleForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRuleForAccountRequest,
-  output: DeleteRuleResponse,
+  input: __S(13) as any as S.Schema<DeleteRuleForAccountRequest>,
+  output: __S(16) as any as S.Schema<DeleteRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30751,8 +30389,8 @@ export const deleteRuleForZone: API.OperationMethod<
   DeleteRuleForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRuleForZoneRequest,
-  output: DeleteRuleResponse,
+  input: __S(17) as any as S.Schema<DeleteRuleForZoneRequest>,
+  output: __S(16) as any as S.Schema<DeleteRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30766,8 +30404,8 @@ export const deleteRulesetForAccount: API.OperationMethod<
   DeleteRulesetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRulesetForAccountRequest,
-  output: DeleteRulesetForAccountResponse,
+  input: __S(18) as any as S.Schema<DeleteRulesetForAccountRequest>,
+  output: __S(19) as any as S.Schema<DeleteRulesetForAccountResponse>,
   errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30781,8 +30419,8 @@ export const deleteRulesetForZone: API.OperationMethod<
   DeleteRulesetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRulesetForZoneRequest,
-  output: DeleteRulesetForZoneResponse,
+  input: __S(20) as any as S.Schema<DeleteRulesetForZoneRequest>,
+  output: __S(19) as any as S.Schema<DeleteRulesetForZoneResponse>,
   errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30796,8 +30434,8 @@ export const deleteVersionForAccount: API.OperationMethod<
   DeleteVersionForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVersionForAccountRequest,
-  output: DeleteVersionForAccountResponse,
+  input: __S(21) as any as S.Schema<DeleteVersionForAccountRequest>,
+  output: __S(19) as any as S.Schema<DeleteVersionForAccountResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30811,8 +30449,8 @@ export const deleteVersionForZone: API.OperationMethod<
   DeleteVersionForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVersionForZoneRequest,
-  output: DeleteVersionForZoneResponse,
+  input: __S(22) as any as S.Schema<DeleteVersionForZoneRequest>,
+  output: __S(19) as any as S.Schema<DeleteVersionForZoneResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30826,8 +30464,8 @@ export const getPhasForAccount: API.OperationMethod<
   GetPhasForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPhasForAccountRequest,
-  output: GetPhasResponse,
+  input: __S(23) as any as S.Schema<GetPhasForAccountRequest>,
+  output: __S(26) as any as S.Schema<GetPhasResponse>,
   errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30841,8 +30479,8 @@ export const getPhasForZone: API.OperationMethod<
   GetPhasForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPhasForZoneRequest,
-  output: GetPhasResponse,
+  input: __S(27) as any as S.Schema<GetPhasForZoneRequest>,
+  output: __S(26) as any as S.Schema<GetPhasResponse>,
   errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30856,8 +30494,8 @@ export const getPhasVersionForAccount: API.OperationMethod<
   GetPhasVersionForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPhasVersionForAccountRequest,
-  output: GetPhasVersionResponse,
+  input: __S(28) as any as S.Schema<GetPhasVersionForAccountRequest>,
+  output: __S(31) as any as S.Schema<GetPhasVersionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30871,8 +30509,8 @@ export const getPhasVersionForZone: API.OperationMethod<
   GetPhasVersionForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPhasVersionForZoneRequest,
-  output: GetPhasVersionResponse,
+  input: __S(32) as any as S.Schema<GetPhasVersionForZoneRequest>,
+  output: __S(31) as any as S.Schema<GetPhasVersionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30886,8 +30524,8 @@ export const getRulesetForAccount: API.OperationMethod<
   GetRulesetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRulesetForAccountRequest,
-  output: GetRulesetResponse,
+  input: __S(33) as any as S.Schema<GetRulesetForAccountRequest>,
+  output: __S(36) as any as S.Schema<GetRulesetResponse>,
   errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30901,8 +30539,8 @@ export const getRulesetForZone: API.OperationMethod<
   GetRulesetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRulesetForZoneRequest,
-  output: GetRulesetResponse,
+  input: __S(37) as any as S.Schema<GetRulesetForZoneRequest>,
+  output: __S(36) as any as S.Schema<GetRulesetResponse>,
   errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30916,8 +30554,8 @@ export const getVersionForAccount: API.OperationMethod<
   GetVersionForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVersionForAccountRequest,
-  output: GetVersionResponse,
+  input: __S(38) as any as S.Schema<GetVersionForAccountRequest>,
+  output: __S(41) as any as S.Schema<GetVersionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30931,8 +30569,8 @@ export const getVersionForZone: API.OperationMethod<
   GetVersionForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVersionForZoneRequest,
-  output: GetVersionResponse,
+  input: __S(42) as any as S.Schema<GetVersionForZoneRequest>,
+  output: __S(41) as any as S.Schema<GetVersionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -30948,8 +30586,8 @@ export const listPhasVersionsForAccount: API.PaginatedOperationMethod<
   PhasesVersionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPhasVersionsForAccountRequest,
-    output: ListPhasVersionsResponse,
+    input: __S(43) as any as S.Schema<ListPhasVersionsForAccountRequest>,
+    output: __S(46) as any as S.Schema<ListPhasVersionsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -30968,8 +30606,8 @@ export const listPhasVersionsForZone: API.PaginatedOperationMethod<
   PhasesVersionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPhasVersionsForZoneRequest,
-    output: ListPhasVersionsResponse,
+    input: __S(47) as any as S.Schema<ListPhasVersionsForZoneRequest>,
+    output: __S(46) as any as S.Schema<ListPhasVersionsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -30988,8 +30626,8 @@ export const listRulesetsForAccount: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListRulesetsForAccountRequest,
-    output: ListRulesetsResponse,
+    input: __S(48) as any as S.Schema<ListRulesetsForAccountRequest>,
+    output: __S(51) as any as S.Schema<ListRulesetsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -31014,8 +30652,8 @@ export const listRulesetsForZone: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListRulesetsForZoneRequest,
-    output: ListRulesetsResponse,
+    input: __S(52) as any as S.Schema<ListRulesetsForZoneRequest>,
+    output: __S(51) as any as S.Schema<ListRulesetsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -31040,8 +30678,8 @@ export const listVersionsForAccount: API.PaginatedOperationMethod<
   VersionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListVersionsForAccountRequest,
-    output: ListVersionsResponse,
+    input: __S(53) as any as S.Schema<ListVersionsForAccountRequest>,
+    output: __S(51) as any as S.Schema<ListVersionsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -31060,8 +30698,8 @@ export const listVersionsForZone: API.PaginatedOperationMethod<
   VersionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListVersionsForZoneRequest,
-    output: ListVersionsResponse,
+    input: __S(54) as any as S.Schema<ListVersionsForZoneRequest>,
+    output: __S(51) as any as S.Schema<ListVersionsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -31078,8 +30716,8 @@ export const patchRuleForAccount: API.OperationMethod<
   PatchRuleForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchRuleForAccountRequest,
-  output: PatchRuleResponse,
+  input: __S(56) as any as S.Schema<PatchRuleForAccountRequest>,
+  output: __S(59) as any as S.Schema<PatchRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -31093,8 +30731,8 @@ export const patchRuleForZone: API.OperationMethod<
   PatchRuleForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchRuleForZoneRequest,
-  output: PatchRuleResponse,
+  input: __S(60) as any as S.Schema<PatchRuleForZoneRequest>,
+  output: __S(59) as any as S.Schema<PatchRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -31112,8 +30750,8 @@ export const putPhasForAccount: API.OperationMethod<
   PutPhasForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutPhasForAccountRequest,
-  output: PutPhasResponse,
+  input: __S(63) as any as S.Schema<PutPhasForAccountRequest>,
+  output: __S(66) as any as S.Schema<PutPhasResponse>,
   errors: [RulesetNotFound, PhaseNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -31131,8 +30769,8 @@ export const putPhasForZone: API.OperationMethod<
   PutPhasForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutPhasForZoneRequest,
-  output: PutPhasResponse,
+  input: __S(67) as any as S.Schema<PutPhasForZoneRequest>,
+  output: __S(66) as any as S.Schema<PutPhasResponse>,
   errors: [RulesetNotFound, PhaseNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -31146,8 +30784,8 @@ export const updateRulesetForAccount: API.OperationMethod<
   UpdateRulesetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRulesetForAccountRequest,
-  output: UpdateRulesetResponse,
+  input: __S(70) as any as S.Schema<UpdateRulesetForAccountRequest>,
+  output: __S(73) as any as S.Schema<UpdateRulesetResponse>,
   errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -31161,8 +30799,8 @@ export const updateRulesetForZone: API.OperationMethod<
   UpdateRulesetForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRulesetForZoneRequest,
-  output: UpdateRulesetResponse,
+  input: __S(74) as any as S.Schema<UpdateRulesetForZoneRequest>,
+  output: __S(73) as any as S.Schema<UpdateRulesetResponse>,
   errors: [RulesetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -31268,7 +30906,7 @@ function __c0(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           rulesetId: S.String.pipe(T.Label("ruleset_id")),
           dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
-          body: RulesCreateRequestBody.pipe(T.HttpBody()),
+          body: __S(0).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -31630,16 +31268,16 @@ function __c0(j: number): any {
         ),
       );
     case 3:
-      return S.Array(RulesCreateResultRulesetRulesItem);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: RulesCreateResultRulesetKind,
+          kind: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
-          phase: RulesCreateResultRulesetPhase,
-          rules: RulesCreateResultRulesetRulesList,
+          phase: S.String,
+          rules: __S(3),
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -31650,7 +31288,7 @@ function __c0(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           rulesetId: S.String.pipe(T.Label("ruleset_id")),
           dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
-          body: RulesCreateRequestBody.pipe(T.HttpBody()),
+          body: __S(0).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -31968,7 +31606,7 @@ function __c0(j: number): any {
         ),
       );
     case 7:
-      return S.Array(CreateRequestRulesItem);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -31979,10 +31617,10 @@ function __c1(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
           description: S.optional(S.String),
-          kind: S.optional(CreateRequestKind),
+          kind: S.optional(S.String),
           name: S.optional(S.String),
-          phase: S.optional(CreateRequestPhase),
-          rules: S.optional(CreateRequestRulesList),
+          phase: S.optional(S.String),
+          rules: S.optional(__S(7)),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/rulesets", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -32338,16 +31976,16 @@ function __c1(j: number): any {
         ),
       );
     case 2:
-      return S.Array(CreateResultRulesetRulesItem);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: CreateResultRulesetKind,
+          kind: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
-          phase: CreateResultRulesetPhase,
-          rules: CreateResultRulesetRulesList,
+          phase: S.String,
+          rules: __S(10),
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -32358,10 +31996,10 @@ function __c1(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
           description: S.optional(S.String),
-          kind: S.optional(CreateRequestKind),
+          kind: S.optional(S.String),
           name: S.optional(S.String),
-          phase: S.optional(CreateRequestPhase),
-          rules: S.optional(CreateRequestRulesList),
+          phase: S.optional(S.String),
+          rules: S.optional(__S(7)),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/rulesets", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -32736,7 +32374,7 @@ function __c1(j: number): any {
         ),
       );
     case 7:
-      return S.Array(RulesDeleteResultRulesetRulesItem);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -32745,11 +32383,11 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: RulesDeleteResultRulesetKind,
+          kind: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
-          phase: RulesDeleteResultRulesetPhase,
-          rules: RulesDeleteResultRulesetRulesList,
+          phase: S.String,
+          rules: __S(15),
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -33213,16 +32851,16 @@ function __c3(j: number): any {
         ),
       );
     case 1:
-      return S.Array(PhasesGetResponseRulesItem);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: PhasesGetResponseKind,
+          kind: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
-          phase: PhasesGetResponsePhase,
-          rules: PhasesGetResponseRulesList,
+          phase: S.String,
+          rules: __S(25),
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -33609,16 +33247,16 @@ function __c3(j: number): any {
         ),
       );
     case 6:
-      return S.Array(PhasesVersionsGetResponseRulesItem);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: PhasesVersionsGetResponseKind,
+          kind: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
-          phase: PhasesVersionsGetResponsePhase,
-          rules: PhasesVersionsGetResponseRulesList,
+          phase: S.String,
+          rules: __S(30),
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -34011,16 +33649,16 @@ function __c4(j: number): any {
         ),
       );
     case 3:
-      return S.Array(GetResponseRulesItem);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: GetResponseKind,
+          kind: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
-          phase: GetResponsePhase,
-          rules: GetResponseRulesList,
+          phase: S.String,
+          rules: __S(35),
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -34405,16 +34043,16 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(VersionsGetResponseRulesItem);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: VersionsGetResponseKind,
+          kind: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
-          phase: VersionsGetResponsePhase,
-          rules: VersionsGetResponseRulesList,
+          phase: S.String,
+          rules: __S(40),
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -34456,10 +34094,10 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: PhasesVersionsListResultItemKind,
+          kind: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
-          phase: PhasesVersionsListResultItemPhase,
+          phase: S.String,
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }),
@@ -34467,11 +34105,11 @@ function __c5(j: number): any {
         identifier: "PhasesVersionsListResultItem",
       });
     case 5:
-      return S.Array(PhasesVersionsListResultItem);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: PhasesVersionsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(45).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListPhasVersionsResponse" });
@@ -34512,20 +34150,20 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: ListResultItemKind,
+          kind: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
-          phase: ListResultItemPhase,
+          phase: S.String,
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 2:
-      return S.Array(ListResultItem);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: ListResultList.pipe(T.EnvelopePayload()),
+          result: __S(50).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListRulesetsResponse" });
@@ -34677,7 +34315,7 @@ function __c7(j: number): any {
           rulesetId: S.String.pipe(T.Label("ruleset_id")),
           ruleId: S.String.pipe(T.Label("rule_id")),
           dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
-          body: RulesEditRequestBody.pipe(T.HttpBody()),
+          body: __S(55).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -35039,16 +34677,16 @@ function __c7(j: number): any {
         ),
       );
     case 2:
-      return S.Array(RulesEditResultRulesetRulesItem);
+      return S.Array(__S(57));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: RulesEditResultRulesetKind,
+          kind: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
-          phase: RulesEditResultRulesetPhase,
-          rules: RulesEditResultRulesetRulesList,
+          phase: S.String,
+          rules: __S(58),
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -35060,7 +34698,7 @@ function __c7(j: number): any {
           rulesetId: S.String.pipe(T.Label("ruleset_id")),
           ruleId: S.String.pipe(T.Label("rule_id")),
           dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
-          body: RulesEditRequestBody.pipe(T.HttpBody()),
+          body: __S(55).pipe(T.HttpBody()),
         })
           .pipe(
             T.Http({
@@ -35378,7 +35016,7 @@ function __c7(j: number): any {
         ),
       );
     case 6:
-      return S.Array(PhasesUpdateRequestRulesItem);
+      return S.Array(__S(61));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -35387,7 +35025,7 @@ function __c7(j: number): any {
           dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          rules: S.optional(PhasesUpdateRequestRulesList),
+          rules: S.optional(__S(62)),
         })
           .pipe(
             T.Http({
@@ -35751,16 +35389,16 @@ function __c8(j: number): any {
         ),
       );
     case 1:
-      return S.Array(PhasesUpdateResultRulesetRulesItem);
+      return S.Array(__S(64));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: PhasesUpdateResultRulesetKind,
+          kind: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
-          phase: PhasesUpdateResultRulesetPhase,
-          rules: PhasesUpdateResultRulesetRulesList,
+          phase: S.String,
+          rules: __S(65),
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -35773,7 +35411,7 @@ function __c8(j: number): any {
           dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          rules: S.optional(PhasesUpdateRequestRulesList),
+          rules: S.optional(__S(62)),
         })
           .pipe(
             T.Http({
@@ -36091,7 +35729,7 @@ function __c8(j: number): any {
         ),
       );
     case 5:
-      return S.Array(UpdateRequestRulesItem);
+      return S.Array(__S(68));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -36099,10 +35737,10 @@ function __c8(j: number): any {
           rulesetId: S.String.pipe(T.Label("ruleset_id")),
           dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
           description: S.optional(S.String),
-          kind: S.optional(UpdateRequestKind),
+          kind: S.optional(S.String),
           name: S.optional(S.String),
-          phase: S.optional(UpdateRequestPhase),
-          rules: S.optional(UpdateRequestRulesList),
+          phase: S.optional(S.String),
+          rules: S.optional(__S(69)),
         })
           .pipe(
             T.Http({
@@ -36468,16 +36106,16 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UpdateResultRulesetRulesItem);
+      return S.Array(__S(71));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          kind: UpdateResultRulesetKind,
+          kind: S.String,
           lastUpdated: S.String.pipe(T.Body("last_updated")),
           name: S.String,
-          phase: UpdateResultRulesetPhase,
-          rules: UpdateResultRulesetRulesList,
+          phase: S.String,
+          rules: __S(72),
           version: S.String,
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -36489,15 +36127,44 @@ function __c9(j: number): any {
           rulesetId: S.String.pipe(T.Label("ruleset_id")),
           dryRun: S.optional(S.Boolean.pipe(T.Query("dry_run"))),
           description: S.optional(S.String),
-          kind: S.optional(UpdateRequestKind),
+          kind: S.optional(S.String),
           name: S.optional(S.String),
-          phase: S.optional(UpdateRequestPhase),
-          rules: S.optional(UpdateRequestRulesList),
+          phase: S.optional(S.String),
+          rules: S.optional(__S(69)),
         })
           .pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/rulesets/{ruleset_id}", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UpdateRulesetForZoneRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
   }
 }

@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,26 +66,14 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 /** App Engine Routing. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed). */
 export interface AppEngineRouting {
   /** Output only. The host that the job is sent to. For more information about how App Engine requests are routed, see [here](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed). The host is constructed as: * `host = [application_domain_name]` `| [service] + '.' + [application_domain_name]` `| [version] + '.' + [application_domain_name]` `| [version_dot_service]+ '.' + [application_domain_name]` `| [instance] + '.' + [application_domain_name]` `| [instance_dot_service] + '.' + [application_domain_name]` `| [instance_dot_version] + '.' + [application_domain_name]` `| [instance_dot_version_dot_service] + '.' + [application_domain_name]` * `application_domain_name` = The domain name of the app, for example .appspot.com, which is associated with the job's project ID. * `service =` service * `version =` version * `version_dot_service =` version `+ '.' +` service * `instance =` instance * `instance_dot_service =` instance `+ '.' +` service * `instance_dot_version =` instance `+ '.' +` version * `instance_dot_version_dot_service =` instance `+ '.' +` version `+ '.' +` service If service is empty, then the job will be sent to the service which is the default service when the job is attempted. If version is empty, then the job will be sent to the version which is the default version when the job is attempted. If instance is empty, then the job will be sent to an instance which is available when the job is attempted. If service, version, or instance is invalid, then the job will be sent to the default version of the default service when the job is attempted. */
@@ -95,11 +85,7 @@ export interface AppEngineRouting {
   /** App version. By default, the job is sent to the version which is the default version when the job is attempted. */
   version?: string;
 }
-const AppEngineRouting = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AppEngineRouting>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringMap>;
-
 export type AppEngineHttpTargetHttpMethodEnum =
   | "HTTP_METHOD_UNSPECIFIED"
   | "POST"
@@ -109,8 +95,6 @@ export type AppEngineHttpTargetHttpMethodEnum =
   | "DELETE"
   | "PATCH"
   | "OPTIONS";
-const AppEngineHttpTargetHttpMethodEnum = S.String;
-
 /** App Engine target. The job will be pushed to a job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. Error 503 is considered an App Engine system error instead of an application error. Requests returning error 503 will be retried regardless of retry configuration and not counted against retry counts. Any other response code, or a failure to receive a response before the deadline, constitutes a failed attempt. */
 export interface AppEngineHttpTarget {
   /** App Engine Routing setting for the job. */
@@ -124,16 +108,12 @@ export interface AppEngineHttpTarget {
   /** The relative URI. The relative URL must begin with "/" and must be a valid HTTP relative URL. It can contain a path, query string arguments, and `#` fragments. If the relative URL is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters. */
   relativeUri?: string;
 }
-const AppEngineHttpTarget = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AppEngineHttpTarget>;
-
 export type JobStateEnum =
   | "STATE_UNSPECIFIED"
   | "ENABLED"
   | "PAUSED"
   | "DISABLED"
   | "UPDATE_FAILED";
-const JobStateEnum = S.String;
-
 /** Pub/Sub target. The job will be delivered by publishing a message to the given Pub/Sub topic. */
 export interface PubsubTarget {
   /** The message payload for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute. */
@@ -143,8 +123,6 @@ export interface PubsubTarget {
   /** Attributes for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute. */
   attributes?: StringMap;
 }
-const PubsubTarget = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PubsubTarget>;
-
 /** Settings that determine the retry behavior. For more information, see [Retry jobs](/scheduler/docs/configuring/retry-jobs). By default, if a job does not complete successfully (meaning that an acknowledgement is not received from the handler, then it will be retried with exponential backoff according to the settings in RetryConfig. */
 export interface RetryConfig {
   /** The number of attempts that the system will make to run a job using the exponential backoff procedure described by max_doublings. The default value of retry_count is zero. If retry_count is 0 (and if max_retry_duration is also 0), a job attempt won't be retried if it fails. Instead, Cloud Scheduler system will wait for the next scheduled execution time. Setting retry_count to 0 doesn't prevent failed jobs from running according to schedule after the failure. If retry_count is set to a non-zero number, Cloud Scheduler will retry the failed job, using exponential backoff, for retry_count times until the job succeeds or the number of retries is exhausted. Note that the next scheduled execution time might be skipped if the retries continue through that time. Values greater than 5 and negative values are not allowed. */
@@ -158,8 +136,6 @@ export interface RetryConfig {
   /** The minimum amount of time to wait before retrying a job after it fails. The default value of this field is 5 seconds. */
   minBackoffDuration?: string;
 }
-const RetryConfig = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<RetryConfig>;
-
 /** Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself. */
 export interface OidcToken {
   /** [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the job. The caller must have iam.serviceAccounts.actAs permission for the service account. */
@@ -167,8 +143,6 @@ export interface OidcToken {
   /** Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used. */
   audience?: string;
 }
-const OidcToken = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<OidcToken>;
-
 export type HttpTargetHttpMethodEnum =
   | "HTTP_METHOD_UNSPECIFIED"
   | "POST"
@@ -178,8 +152,6 @@ export type HttpTargetHttpMethodEnum =
   | "DELETE"
   | "PATCH"
   | "OPTIONS";
-const HttpTargetHttpMethodEnum = S.String;
-
 /** Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com. */
 export interface OAuthToken {
   /** [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OAuth token. The service account must be within the same project as the job. The caller must have iam.serviceAccounts.actAs permission for the service account. */
@@ -187,8 +159,6 @@ export interface OAuthToken {
   /** OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used. */
   scope?: string;
 }
-const OAuthToken = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<OAuthToken>;
-
 /** Http target. The job will be pushed to the job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. A failure to receive a response constitutes a failed execution. For a redirected request, the response returned by the redirected request is considered. */
 export interface HttpTarget {
   /** Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. */
@@ -204,14 +174,8 @@ export interface HttpTarget {
   /** If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com. */
   oauthToken?: OAuthToken;
 }
-const HttpTarget = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<HttpTarget>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -221,8 +185,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Status>;
-
 /** Configuration for a job. The maximum allowed size for a job is 1MB. */
 export interface Job {
   /** App Engine HTTP target. */
@@ -258,48 +220,26 @@ export interface Job {
   /** Output only. The response from the target for the last attempted execution. */
   status?: Status;
 }
-const Job = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Job>;
-
 export interface CreateProjectsLocationsJobsRequest {
   /** Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`. */
   parent: string;
   /** Request body */
   body?: Job;
 }
-const CreateProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateProjectsLocationsJobsRequest>;
-
 export interface DeleteProjectsLocationsJobsRequest {
   /** Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. */
   name: string;
   /** This field is used to manage the legacy App Engine Cron jobs using the Cloud Scheduler API. If the field is set to true, the job in the __cron queue with the corresponding name will be deleted instead. */
   legacyAppEngineCron?: boolean;
 }
-const DeleteProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsJobsRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -313,26 +253,14 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsJobsRequest {
   /** Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. */
   name: string;
 }
-const GetProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetProjectsLocationsJobsRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -346,11 +274,7 @@ export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
   error?: Status;
 }
-const Operation = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Operation>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<StringList>;
-
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
@@ -363,14 +287,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -378,11 +295,6 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsJobsRequest {
   /** A token identifying a page of results the server will return. To request the first page results, page_token must be empty. To request the next page of results, page_token must be the value of next_page_token returned from the previous call to ListJobs. It is an error to switch the value of filter or order_by while iterating through pages. */
   pageToken?: string;
@@ -395,14 +307,7 @@ export interface ListProjectsLocationsJobsRequest {
   /** Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`. */
   parent: string;
 }
-const ListProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListProjectsLocationsJobsRequest>;
-
 export type JobList = Array<Job>;
-const JobList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<JobList>;
-
 /** Response message for listing jobs using ListJobs. */
 export interface ListJobsResponse {
   /** The list of jobs. */
@@ -410,8 +315,6 @@ export interface ListJobsResponse {
   /** A token to retrieve next page of results. Pass this value in the page_token field in the subsequent call to ListJobs to retrieve the next page of results. If this is empty it indicates that there are no more results through which to paginate. The page token is valid for only 2 hours. */
   nextPageToken?: string;
 }
-const ListJobsResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ListJobsResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
@@ -424,14 +327,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -441,11 +337,6 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface PatchProjectsLocationsJobsRequest {
   /** A mask used to specify which fields of the job are being updated. */
   updateMask?: string;
@@ -454,11 +345,6 @@ export interface PatchProjectsLocationsJobsRequest {
   /** Request body */
   body?: Job;
 }
-const PatchProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<PatchProjectsLocationsJobsRequest>;
-
 /** Request message for PauseJob. */
 export type PauseJobRequest = CancelOperationRequest;
 export interface PauseProjectsLocationsJobsRequest {
@@ -467,11 +353,6 @@ export interface PauseProjectsLocationsJobsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const PauseProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<PauseProjectsLocationsJobsRequest>;
-
 /** Request message for ResumeJob. */
 export type ResumeJobRequest = CancelOperationRequest;
 export interface ResumeProjectsLocationsJobsRequest {
@@ -480,29 +361,17 @@ export interface ResumeProjectsLocationsJobsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const ResumeProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ResumeProjectsLocationsJobsRequest>;
-
 /** Request message for forcing a job to run now using RunJob. */
 export interface RunJobRequest {
   /** This field is used to manage the legacy App Engine Cron jobs using the Cloud Scheduler API. If the field is set to true, the job in the __cron queue with the corresponding name will be forced to run instead. */
   legacyAppEngineCron?: boolean;
 }
-const RunJobRequest = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<RunJobRequest>;
-
 export interface RunProjectsLocationsJobsRequest {
   /** Required. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. */
   name: string;
   /** Request body */
   body?: RunJobRequest;
 }
-const RunProjectsLocationsJobsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<RunProjectsLocationsJobsRequest>;
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -516,8 +385,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -536,8 +405,8 @@ export const createProjectsLocationsJobs: API.OperationMethod<
   CreateProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsJobsRequest,
-  output: Job,
+  input: __S(14) as any as S.Schema<CreateProjectsLocationsJobsRequest>,
+  output: __S(13) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -556,8 +425,8 @@ export const deleteProjectsLocationsJobs: API.OperationMethod<
   DeleteProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsJobsRequest,
-  output: Empty,
+  input: __S(15) as any as S.Schema<DeleteProjectsLocationsJobsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -576,8 +445,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(16) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -591,8 +460,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(17) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(18) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -606,8 +475,8 @@ export const getProjectsLocationsJobs: API.OperationMethod<
   GetProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsJobsRequest,
-  output: Job,
+  input: __S(19) as any as S.Schema<GetProjectsLocationsJobsRequest>,
+  output: __S(13) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -621,8 +490,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(20) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(21) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -637,8 +506,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(23) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(25) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -654,8 +523,8 @@ export const listProjectsLocationsJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsJobsRequest,
-  output: ListJobsResponse,
+  input: __S(26) as any as S.Schema<ListProjectsLocationsJobsRequest>,
+  output: __S(28) as any as S.Schema<ListJobsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -671,8 +540,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(29) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(31) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -692,8 +561,8 @@ export const patchProjectsLocationsJobs: API.OperationMethod<
   PatchProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsJobsRequest,
-  output: Job,
+  input: __S(32) as any as S.Schema<PatchProjectsLocationsJobsRequest>,
+  output: __S(13) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -712,8 +581,8 @@ export const pauseProjectsLocationsJobs: API.OperationMethod<
   PauseProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PauseProjectsLocationsJobsRequest,
-  output: Job,
+  input: __S(33) as any as S.Schema<PauseProjectsLocationsJobsRequest>,
+  output: __S(13) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -732,8 +601,8 @@ export const resumeProjectsLocationsJobs: API.OperationMethod<
   ResumeProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumeProjectsLocationsJobsRequest,
-  output: Job,
+  input: __S(34) as any as S.Schema<ResumeProjectsLocationsJobsRequest>,
+  output: __S(13) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -752,8 +621,8 @@ export const runProjectsLocationsJobs: API.OperationMethod<
   RunProjectsLocationsJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunProjectsLocationsJobsRequest,
-  output: Job,
+  input: __S(36) as any as S.Schema<RunProjectsLocationsJobsRequest>,
+  output: __S(13) as any as S.Schema<Job>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -770,7 +639,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -795,10 +664,10 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          appEngineRouting: S.optional(AppEngineRouting),
+          appEngineRouting: S.optional(__S(2)),
           body: S.optional(S.String),
-          headers: S.optional(StringMap),
-          httpMethod: S.optional(AppEngineHttpTargetHttpMethodEnum),
+          headers: S.optional(__S(3)),
+          httpMethod: S.optional(S.String),
           relativeUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppEngineHttpTarget" });
@@ -807,7 +676,7 @@ function __c0(j: number): any {
         S.Struct({
           data: S.optional(S.String),
           topicName: S.optional(S.String),
-          attributes: S.optional(StringMap),
+          attributes: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "PubsubTarget" });
     case 6:
@@ -842,51 +711,51 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
-          oidcToken: S.optional(OidcToken),
-          headers: S.optional(StringMap),
+          oidcToken: S.optional(__S(7)),
+          headers: S.optional(__S(3)),
           body: S.optional(S.String),
-          httpMethod: S.optional(HttpTargetHttpMethodEnum),
-          oauthToken: S.optional(OAuthToken),
+          httpMethod: S.optional(S.String),
+          oauthToken: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "HttpTarget" });
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(11)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          appEngineHttpTarget: S.optional(AppEngineHttpTarget),
+          appEngineHttpTarget: S.optional(__S(4)),
           userUpdateTime: S.optional(S.String),
-          state: S.optional(JobStateEnum),
-          pubsubTarget: S.optional(PubsubTarget),
+          state: S.optional(S.String),
+          pubsubTarget: S.optional(__S(5)),
           attemptDeadline: S.optional(S.String),
-          retryConfig: S.optional(RetryConfig),
+          retryConfig: S.optional(__S(6)),
           name: S.optional(S.String),
           timeZone: S.optional(S.String),
           scheduleTime: S.optional(S.String),
           description: S.optional(S.String),
           legacyAppEngineCron: S.optional(S.Boolean),
-          httpTarget: S.optional(HttpTarget),
+          httpTarget: S.optional(__S(9)),
           satisfiesPzs: S.optional(S.Boolean),
           schedule: S.optional(S.String),
           lastAttemptTime: S.optional(S.String),
-          status: S.optional(Status),
+          status: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "Job" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Job.pipe(T.HttpBody())),
+          body: S.optional(__S(13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -947,10 +816,10 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(3)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(10)),
           locationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
@@ -985,11 +854,11 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(DocumentMap),
+          response: S.optional(__S(10)),
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
-          error: S.optional(Status),
+          metadata: S.optional(__S(10)),
+          error: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
@@ -999,7 +868,7 @@ function __c2(j: number): any {
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(22).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
         }).pipe(
@@ -1017,12 +886,12 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Location);
+      return S.Array(__S(18));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 2:
@@ -1044,11 +913,11 @@ function __c3(j: number): any {
         identifier: "ListProjectsLocationsJobsRequest",
       });
     case 3:
-      return S.Array(Job);
+      return S.Array(__S(13));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          jobs: S.optional(JobList),
+          jobs: S.optional(__S(27)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListJobsResponse" });
@@ -1071,13 +940,13 @@ function __c3(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 6:
-      return S.Array(Operation);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(22)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(OperationList),
+          operations: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
   }
@@ -1089,7 +958,7 @@ function __c4(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Job.pipe(T.HttpBody())),
+          body: S.optional(__S(13).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1104,7 +973,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1119,7 +988,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1140,7 +1009,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(RunJobRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(35).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1151,5 +1020,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "RunProjectsLocationsJobsRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

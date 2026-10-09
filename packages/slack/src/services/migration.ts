@@ -6,15 +6,12 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
 export type MigrationExchangeRequestUsersList = Array<string>;
-const MigrationExchangeRequestUsersList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<MigrationExchangeRequestUsersList>;
-
 export interface MigrationExchangeRequest {
   /** A comma-separated list of user ids, up to 400 per request */
   users: MigrationExchangeRequestUsersList;
@@ -23,21 +20,8 @@ export interface MigrationExchangeRequest {
   /** Specify `true` to convert `W` global user IDs to workspace-specific `U` IDs. Defaults to `false`. */
   to_old?: boolean;
 }
-const MigrationExchangeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<MigrationExchangeRequest>;
-
 export type MigrationExchangeResponseUserIdMapMap = { [key: string]: unknown | undefined };
-const MigrationExchangeResponseUserIdMapMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<MigrationExchangeResponseUserIdMapMap>;
-
 export type MigrationExchangeResponseInvalidUserIdsList = Array<string>;
-const MigrationExchangeResponseInvalidUserIdsList =
-  MigrationExchangeRequestUsersList as any as S.Schema<MigrationExchangeResponseInvalidUserIdsList>;
-
 export interface MigrationExchangeResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
@@ -46,11 +30,6 @@ export interface MigrationExchangeResponse {
   user_id_map: MigrationExchangeResponseUserIdMapMap;
   invalid_user_ids?: MigrationExchangeResponseInvalidUserIdsList;
 }
-const MigrationExchangeResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<MigrationExchangeResponse>;
-
 export type MigrationExchangeError = SlackOpError;
 /** For Enterprise organization workspaces, map local user IDs to global user IDs Required scopes -- bot: `tokens.basic`; user: `tokens.basic` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `not_enterprise_team` -- The workspace associated with the token is not part of an Enterprise organization. User IDs have not changed and there is nothing to map. - `too_many_users` -- Too many user IDs provided in `users`. Up to 400 user IDs are allowed per request. See https://docs.slack.dev/reference/methods/migration.exchange */
 export const migrationExchange: API.OperationMethod<
@@ -59,8 +38,8 @@ export const migrationExchange: API.OperationMethod<
   MigrationExchangeError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MigrationExchangeRequest,
-  output: MigrationExchangeResponse,
+  input: __S(1) as any as S.Schema<MigrationExchangeRequest>,
+  output: __S(3) as any as S.Schema<MigrationExchangeResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -74,7 +53,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          users: MigrationExchangeRequestUsersList.pipe(T.Query()),
+          users: __S(0).pipe(T.Query()),
           team_id: S.optional(S.String.pipe(T.Query())),
           to_old: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/migration.exchange", code: 200 })),
@@ -87,11 +66,22 @@ function __c0(j: number): any {
           ok: S.Boolean,
           team_id: S.String,
           enterprise_id: S.String,
-          user_id_map: MigrationExchangeResponseUserIdMapMap,
-          invalid_user_ids: S.optional(MigrationExchangeResponseInvalidUserIdsList),
+          user_id_map: __S(2),
+          invalid_user_ids: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "MigrationExchangeResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 2) {
+    case 0:
+      return __c0(i & 3);
   }
 }

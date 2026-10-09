@@ -6,100 +6,50 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
 export interface ContainerCheckpointRequest {
   checkpointId?: string;
 }
-const ContainerCheckpointRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ContainerCheckpointRequest>;
-
 export interface ContainerCheckpointResponse {}
-const ContainerCheckpointResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ContainerCheckpointResponse>;
-
 /** Whether to use RDMA interfaces */
 export interface RuntimeInputMessage {
   message?: string;
   messageIndex?: string;
   eof?: boolean;
 }
-const RuntimeInputMessage = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<RuntimeInputMessage>;
-
 export interface ContainerExecPutInputRequest {
   execId?: string;
   input?: RuntimeInputMessage;
 }
-const ContainerExecPutInputRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ContainerExecPutInputRequest>;
-
 export interface ContainerExecPutInputResponse {}
-const ContainerExecPutInputResponse =
-  ContainerCheckpointResponse as any as S.Schema<ContainerExecPutInputResponse>;
-
 export interface ContainerExecWaitRequest {
   execId?: string;
   timeout?: number;
 }
-const ContainerExecWaitRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ContainerExecWaitRequest>;
-
 export interface ContainerExecWaitResponse {
   exitCode?: number;
   completed?: boolean;
 }
-const ContainerExecWaitResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ContainerExecWaitResponse>;
-
 export interface ContainerHeartbeatRequest {
   canceledInputsReturnOutputs?: boolean;
   /** Bad client version. */
   canceledInputsReturnOutputsV2?: boolean;
 }
-const ContainerHeartbeatRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ContainerHeartbeatRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StringList>;
-
 export interface CancelInputEvent {
   inputIds?: StringList;
   terminateContainers?: boolean;
   cancellationReason?: string;
 }
-const CancelInputEvent = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CancelInputEvent>;
-
 export interface ContainerHeartbeatResponse {
   cancelInputEvent?: CancelInputEvent;
 }
-const ContainerHeartbeatResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ContainerHeartbeatResponse>;
-
 export interface ContainerHelloRequest {}
-const ContainerHelloRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ContainerHelloRequest>;
-
 export interface ContainerHelloResponse {}
-const ContainerHelloResponse =
-  ContainerCheckpointResponse as any as S.Schema<ContainerHelloResponse>;
-
 export type TaskState =
   | "TASK_STATE_UNSPECIFIED"
   | "TASK_STATE_CREATED"
@@ -113,26 +63,18 @@ export type TaskState =
   | "TASK_STATE_PREEMPTIBLE"
   | "TASK_STATE_PREEMPTED"
   | "TASK_STATE_LOADING_CHECKPOINT_IMAGE";
-const TaskState = S.String;
-
 export type FileDescriptor =
   | "FILE_DESCRIPTOR_UNSPECIFIED"
   | "FILE_DESCRIPTOR_STDOUT"
   | "FILE_DESCRIPTOR_STDERR"
   | "FILE_DESCRIPTOR_INFO";
-const FileDescriptor = S.String;
-
 export type ProgressType = "IMAGE_SNAPSHOT_UPLOAD" | "FUNCTION_QUEUED";
-const ProgressType = S.String;
-
 export interface TaskProgress {
   len?: string;
   pos?: string;
   progressType?: ProgressType | (string & {});
   description?: string;
 }
-const TaskProgress = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<TaskProgress>;
-
 export interface TaskLogs {
   data?: string;
   taskState?: TaskState | (string & {});
@@ -145,46 +87,18 @@ export interface TaskLogs {
   containerId?: string;
   containerName?: string;
 }
-const TaskLogs = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<TaskLogs>;
-
 export type TaskLogsList = Array<TaskLogs>;
-const TaskLogsList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<TaskLogsList>;
-
 export interface ContainerLogRequest {
   logs?: TaskLogsList;
 }
-const ContainerLogRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ContainerLogRequest>;
-
 export interface ContainerLogResponse {}
-const ContainerLogResponse = ContainerCheckpointResponse as any as S.Schema<ContainerLogResponse>;
-
 export interface ContainerReloadVolumesRequest {
   taskId?: string;
 }
-const ContainerReloadVolumesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ContainerReloadVolumesRequest>;
-
 export interface ContainerReloadVolumesResponse {}
-const ContainerReloadVolumesResponse =
-  ContainerCheckpointResponse as any as S.Schema<ContainerReloadVolumesResponse>;
-
 export interface ContainerServerLifecycleReadyRequest {}
-const ContainerServerLifecycleReadyRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ContainerServerLifecycleReadyRequest>;
-
 export interface ContainerServerLifecycleReadyResponse {}
-const ContainerServerLifecycleReadyResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ContainerServerLifecycleReadyResponse>;
-
 export type PTYInfoPTYType = "PTY_TYPE_UNSPECIFIED" | "PTY_TYPE_FUNCTION" | "PTY_TYPE_SHELL";
-const PTYInfoPTYType = S.String;
-
 export interface PTYInfo {
   enabled?: boolean;
   /** Soon deprecated */
@@ -197,15 +111,11 @@ export interface PTYInfo {
   ptyType?: PTYInfoPTYType | (string & {});
   noTerminateOnIdleStdin?: boolean;
 }
-const PTYInfo = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<PTYInfo>;
-
 export type ExecOutputOption =
   | "EXEC_OUTPUT_OPTION_UNSPECIFIED"
   | "EXEC_OUTPUT_OPTION_DEVNULL"
   | "EXEC_OUTPUT_OPTION_PIPE"
   | "EXEC_OUTPUT_OPTION_STDOUT";
-const ExecOutputOption = S.String;
-
 export interface ExecContainerRequest {
   taskId?: string;
   command?: StringList;
@@ -221,125 +131,61 @@ export interface ExecContainerRequest {
   workdir?: string;
   secretIds?: StringList;
 }
-const ExecContainerRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ExecContainerRequest>;
-
 export interface ExecContainerResponse {
   execId?: string;
 }
-const ExecContainerResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ExecContainerResponse>;
-
 export interface ContainerFileOpenRequest {
   /** file descriptor is hydrated when sent from server -> worker */
   fileDescriptor?: string;
   path?: string;
   mode?: string;
 }
-const ContainerFileOpenRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ContainerFileOpenRequest>;
-
 export interface ContainerFileWriteRequest {
   fileDescriptor?: string;
   data?: string;
 }
-const ContainerFileWriteRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ContainerFileWriteRequest>;
-
 export interface ContainerFileReadRequest {
   fileDescriptor?: string;
   n?: number;
 }
-const ContainerFileReadRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ContainerFileReadRequest>;
-
 export interface ContainerFileFlushRequest {
   fileDescriptor?: string;
 }
-const ContainerFileFlushRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ContainerFileFlushRequest>;
-
 export type ContainerFileReadLineRequest = ContainerFileFlushRequest;
 export type SeekWhence = "SEEK_SET" | "SEEK_CUR" | "SEEK_END";
-const SeekWhence = S.String;
-
 export interface ContainerFileSeekRequest {
   fileDescriptor?: string;
   offset?: number;
   whence?: SeekWhence | (string & {});
 }
-const ContainerFileSeekRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ContainerFileSeekRequest>;
-
 export interface ContainerFileDeleteBytesRequest {
   fileDescriptor?: string;
   startInclusive?: number;
   endExclusive?: number;
 }
-const ContainerFileDeleteBytesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ContainerFileDeleteBytesRequest>;
-
 export interface ContainerFileWriteReplaceBytesRequest {
   fileDescriptor?: string;
   data?: string;
   startInclusive?: number;
   endExclusive?: number;
 }
-const ContainerFileWriteReplaceBytesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ContainerFileWriteReplaceBytesRequest>;
-
 export type ContainerFileCloseRequest = ContainerFileFlushRequest;
 export interface ContainerFileLsRequest {
   path?: string;
 }
-const ContainerFileLsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ContainerFileLsRequest>;
-
 export interface ContainerFileMkdirRequest {
   path?: string;
   makeParents?: boolean;
 }
-const ContainerFileMkdirRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ContainerFileMkdirRequest>;
-
 export interface ContainerFileRmRequest {
   path?: string;
   recursive?: boolean;
 }
-const ContainerFileRmRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ContainerFileRmRequest>;
-
 export interface ContainerFileWatchRequest {
   path?: string;
   recursive?: boolean;
   timeoutSecs?: string;
 }
-const ContainerFileWatchRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ContainerFileWatchRequest>;
-
 export interface ExecContainerFilesystemRequest {
   fileOpenRequest?: ContainerFileOpenRequest;
   fileWriteRequest?: ContainerFileWriteRequest;
@@ -356,30 +202,16 @@ export interface ExecContainerFilesystemRequest {
   fileWatchRequest?: ContainerFileWatchRequest;
   taskId?: string;
 }
-const ExecContainerFilesystemRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ExecContainerFilesystemRequest>;
-
 export interface ExecContainerFilesystemResponse {
   execId?: string;
   /** only set when the request opens a new file, i.e., ContainerFileOpenRequest */
   fileDescriptor?: string;
 }
-const ExecContainerFilesystemResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ExecContainerFilesystemResponse>;
-
 export interface StopContainerRequest {
   taskId?: string;
   graceful?: boolean;
 }
-const StopContainerRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<StopContainerRequest>;
-
 export interface StopContainerResponse {}
-const StopContainerResponse = ContainerCheckpointResponse as any as S.Schema<StopContainerResponse>;
-
 export type ContainerCheckpointError = ModalOpError;
 /** Container */
 export const containerCheckpoint: API.OperationMethod<
@@ -388,8 +220,8 @@ export const containerCheckpoint: API.OperationMethod<
   ContainerCheckpointError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ContainerCheckpointRequest,
-  output: ContainerCheckpointResponse,
+  input: __S(0) as any as S.Schema<ContainerCheckpointRequest>,
+  output: __S(1) as any as S.Schema<ContainerCheckpointResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -402,8 +234,8 @@ export const containerExecPutInput: API.OperationMethod<
   ContainerExecPutInputError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ContainerExecPutInputRequest,
-  output: ContainerExecPutInputResponse,
+  input: __S(3) as any as S.Schema<ContainerExecPutInputRequest>,
+  output: __S(1) as any as S.Schema<ContainerExecPutInputResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -416,8 +248,8 @@ export const containerExecWait: API.OperationMethod<
   ContainerExecWaitError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ContainerExecWaitRequest,
-  output: ContainerExecWaitResponse,
+  input: __S(4) as any as S.Schema<ContainerExecWaitRequest>,
+  output: __S(5) as any as S.Schema<ContainerExecWaitResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -430,8 +262,8 @@ export const containerHeartbeat: API.OperationMethod<
   ContainerHeartbeatError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ContainerHeartbeatRequest,
-  output: ContainerHeartbeatResponse,
+  input: __S(6) as any as S.Schema<ContainerHeartbeatRequest>,
+  output: __S(9) as any as S.Schema<ContainerHeartbeatResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -444,8 +276,8 @@ export const containerHello: API.OperationMethod<
   ContainerHelloError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ContainerHelloRequest,
-  output: ContainerHelloResponse,
+  input: __S(10) as any as S.Schema<ContainerHelloRequest>,
+  output: __S(1) as any as S.Schema<ContainerHelloResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -458,8 +290,8 @@ export const containerLog: API.OperationMethod<
   ContainerLogError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ContainerLogRequest,
-  output: ContainerLogResponse,
+  input: __S(14) as any as S.Schema<ContainerLogRequest>,
+  output: __S(1) as any as S.Schema<ContainerLogResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -472,8 +304,8 @@ export const containerReloadVolumes: API.OperationMethod<
   ContainerReloadVolumesError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ContainerReloadVolumesRequest,
-  output: ContainerReloadVolumesResponse,
+  input: __S(15) as any as S.Schema<ContainerReloadVolumesRequest>,
+  output: __S(1) as any as S.Schema<ContainerReloadVolumesResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -486,8 +318,8 @@ export const containerServerLifecycleReady: API.OperationMethod<
   ContainerServerLifecycleReadyError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ContainerServerLifecycleReadyRequest,
-  output: ContainerServerLifecycleReadyResponse,
+  input: __S(16) as any as S.Schema<ContainerServerLifecycleReadyRequest>,
+  output: __S(17) as any as S.Schema<ContainerServerLifecycleReadyResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -500,8 +332,8 @@ export const execContainer: API.OperationMethod<
   ExecContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecContainerRequest,
-  output: ExecContainerResponse,
+  input: __S(19) as any as S.Schema<ExecContainerRequest>,
+  output: __S(20) as any as S.Schema<ExecContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -514,8 +346,8 @@ export const execContainerFilesystem: API.OperationMethod<
   ExecContainerFilesystemError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecContainerFilesystemRequest,
-  output: ExecContainerFilesystemResponse,
+  input: __S(32) as any as S.Schema<ExecContainerFilesystemRequest>,
+  output: __S(33) as any as S.Schema<ExecContainerFilesystemResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -528,8 +360,8 @@ export const stopContainer: API.OperationMethod<
   StopContainerError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopContainerRequest,
-  output: StopContainerResponse,
+  input: __S(34) as any as S.Schema<StopContainerRequest>,
+  output: __S(1) as any as S.Schema<StopContainerResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -568,7 +400,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           execId: S.optional(S.String),
-          input: S.optional(RuntimeInputMessage),
+          input: S.optional(__S(2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -621,7 +453,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          inputIds: S.optional(StringList),
+          inputIds: S.optional(__S(7)),
           terminateContainers: S.optional(S.Boolean),
           cancellationReason: S.optional(S.String),
         }),
@@ -629,7 +461,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          cancelInputEvent: S.optional(CancelInputEvent),
+          cancelInputEvent: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "ContainerHeartbeatResponse",
@@ -645,7 +477,7 @@ function __c1(j: number): any {
         S.Struct({
           len: S.optional(S.String),
           pos: S.optional(S.String),
-          progressType: S.optional(ProgressType),
+          progressType: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskProgress" });
@@ -653,10 +485,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String),
-          taskState: S.optional(TaskState),
+          taskState: S.optional(S.String),
           timestamp: S.optional(S.Number),
-          fileDescriptor: S.optional(FileDescriptor),
-          taskProgress: S.optional(TaskProgress),
+          fileDescriptor: S.optional(S.String),
+          taskProgress: S.optional(__S(11)),
           functionCallId: S.optional(S.String),
           inputId: S.optional(S.String),
           timestampNs: S.optional(S.String),
@@ -665,11 +497,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "TaskLogs" });
     case 5:
-      return S.Array(TaskLogs);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          logs: S.optional(TaskLogsList),
+          logs: S.optional(__S(13)),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ContainerLog", code: 200 }),
         ),
@@ -717,7 +549,7 @@ function __c2(j: number): any {
           envTerm: S.optional(S.String),
           envColorterm: S.optional(S.String),
           envTermProgram: S.optional(S.String),
-          ptyType: S.optional(PTYInfoPTYType),
+          ptyType: S.optional(S.String),
           noTerminateOnIdleStdin: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PTYInfo" });
@@ -725,15 +557,15 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
-          command: S.optional(StringList),
-          ptyInfo: S.optional(PTYInfo),
+          command: S.optional(__S(7)),
+          ptyInfo: S.optional(__S(18)),
           terminateContainerOnExit: S.optional(S.Boolean),
           runtimeDebug: S.optional(S.Boolean),
-          stdoutOutput: S.optional(ExecOutputOption),
-          stderrOutput: S.optional(ExecOutputOption),
+          stdoutOutput: S.optional(S.String),
+          stderrOutput: S.optional(S.String),
           timeoutSecs: S.optional(S.Number),
           workdir: S.optional(S.String),
-          secretIds: S.optional(StringList),
+          secretIds: S.optional(__S(7)),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ContainerExec", code: 200 }),
         ),
@@ -785,7 +617,7 @@ function __c3(j: number): any {
         S.Struct({
           fileDescriptor: S.optional(S.String),
           offset: S.optional(S.Number),
-          whence: S.optional(SeekWhence),
+          whence: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerFileSeekRequest" });
     case 2:
@@ -848,19 +680,19 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          fileOpenRequest: S.optional(ContainerFileOpenRequest),
-          fileWriteRequest: S.optional(ContainerFileWriteRequest),
-          fileReadRequest: S.optional(ContainerFileReadRequest),
-          fileFlushRequest: S.optional(ContainerFileFlushRequest),
-          fileReadLineRequest: S.optional(ContainerFileFlushRequest),
-          fileSeekRequest: S.optional(ContainerFileSeekRequest),
-          fileDeleteBytesRequest: S.optional(ContainerFileDeleteBytesRequest),
-          fileWriteReplaceBytesRequest: S.optional(ContainerFileWriteReplaceBytesRequest),
-          fileCloseRequest: S.optional(ContainerFileFlushRequest),
-          fileLsRequest: S.optional(ContainerFileLsRequest),
-          fileMkdirRequest: S.optional(ContainerFileMkdirRequest),
-          fileRmRequest: S.optional(ContainerFileRmRequest),
-          fileWatchRequest: S.optional(ContainerFileWatchRequest),
+          fileOpenRequest: S.optional(__S(21)),
+          fileWriteRequest: S.optional(__S(22)),
+          fileReadRequest: S.optional(__S(23)),
+          fileFlushRequest: S.optional(__S(24)),
+          fileReadLineRequest: S.optional(__S(24)),
+          fileSeekRequest: S.optional(__S(25)),
+          fileDeleteBytesRequest: S.optional(__S(26)),
+          fileWriteReplaceBytesRequest: S.optional(__S(27)),
+          fileCloseRequest: S.optional(__S(24)),
+          fileLsRequest: S.optional(__S(28)),
+          fileMkdirRequest: S.optional(__S(29)),
+          fileRmRequest: S.optional(__S(30)),
+          fileWatchRequest: S.optional(__S(31)),
           taskId: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -890,5 +722,24 @@ function __c4(j: number): any {
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/ContainerStop", code: 200 }),
         ),
       ).annotate({ identifier: "StopContainerRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

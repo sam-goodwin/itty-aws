@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -55,8 +57,6 @@ export type CreateTeamMemberRequestRole =
   | "moderator"
   | "advertiser"
   | "workforce";
-const CreateTeamMemberRequestRole = S.String;
-
 export interface CreateTeamMemberRequest {
   /** Account ID, prefixed `biz_`. */
   account_id: string;
@@ -69,22 +69,12 @@ export interface CreateTeamMemberRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateTeamMemberRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateTeamMemberRequest>;
-
 export interface TeamMemberAuthorizedRole {
   /** Custom role ID, prefixed `aurl_`. */
   id: string;
   /** Custom role name. */
   name: string;
 }
-const TeamMemberAuthorizedRole = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<TeamMemberAuthorizedRole>;
-
 /** The member's role on the account. `custom` means a bespoke dashboard-managed role; the API can read but not grant it. */
 export type TeamMemberRole =
   | "owner"
@@ -98,18 +88,12 @@ export type TeamMemberRole =
   | "manager"
   | "workforce"
   | "custom";
-const TeamMemberRole = S.String;
-
 /** `joined` for accepted members, `pending` while the invite is pending. */
 export type TeamMemberStatus = "joined" | "pending";
-const TeamMemberStatus = S.String;
-
 export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
-const UserProfilePicture = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserProfilePicture>;
-
 export interface UserSummary {
   /** User ID, prefixed `user_`. */
   id: string;
@@ -120,8 +104,6 @@ export interface UserSummary {
   /** Public username. */
   username: string;
 }
-const UserSummary = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UserSummary>;
-
 export interface TeamMember {
   /** The account this membership belongs to, prefixed `biz_`. */
   account_id: string;
@@ -144,34 +126,18 @@ export interface TeamMember {
   /** The user behind this team membership. `null` for an invite sent to an email with no Whop account yet. */
   user: UserSummary | null;
 }
-const TeamMember = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<TeamMember>;
-
 export interface DeleteTeamMemberRequest {
   /** Team member ID -- `ausr_` for accepted members, `ausri_` for pending invites. */
   id: string;
 }
-const DeleteTeamMemberRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeleteTeamMemberRequest>;
-
 export interface DeleteTeamMemberResponse {
   success: boolean;
 }
-const DeleteTeamMemberResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteTeamMemberResponse>;
-
 export interface GetTeamMemberRequest {
   /** Team member ID -- `ausr_` for accepted members, `ausri_` for pending invites. */
   id: string;
 }
-const GetTeamMemberRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetTeamMemberRequest>;
-
 export type ListTeamMembersRequestStatus = "joined" | "pending";
-const ListTeamMembersRequestStatus = S.String;
-
 export type ListTeamMembersRequestRole =
   | "owner"
   | "admin"
@@ -184,14 +150,8 @@ export type ListTeamMembersRequestRole =
   | "manager"
   | "workforce"
   | "custom";
-const ListTeamMembersRequestRole = S.String;
-
 export type ListTeamMembersRequestOrder = "created_at";
-const ListTeamMembersRequestOrder = S.String;
-
 export type ListTeamMembersRequestDirection = "asc" | "desc";
-const ListTeamMembersRequestDirection = S.String;
-
 export interface ListTeamMembersRequest {
   /** Account ID, prefixed `biz_`. */
   account_id: string;
@@ -218,37 +178,17 @@ export interface ListTeamMembersRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-const ListTeamMembersRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListTeamMembersRequest>;
-
 export type ListTeamMembersResponseDataList = Array<TeamMember>;
-const ListTeamMembersResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListTeamMembersResponseDataList>;
-
 export interface ListTeamMembersResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListTeamMembersResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListTeamMembersResponsePageInfo>;
-
 export interface ListTeamMembersResponse {
   data: ListTeamMembersResponseDataList;
   page_info: ListTeamMembersResponsePageInfo;
 }
-const ListTeamMembersResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListTeamMembersResponse>;
-
 /** The system role to grant. The Partner role can only be granted to the account's attached, verified partner. */
 export type UpdateTeamMemberRequestRole =
   | "owner"
@@ -258,19 +198,12 @@ export type UpdateTeamMemberRequestRole =
   | "moderator"
   | "advertiser"
   | "workforce";
-const UpdateTeamMemberRequestRole = S.String;
-
 export interface UpdateTeamMemberRequest {
   /** Team member ID -- `ausr_` for accepted members, `ausri_` for pending invites. */
   id: string;
   /** The system role to grant. The Partner role can only be granted to the account's attached, verified partner. */
   role: UpdateTeamMemberRequestRole | (string & {});
 }
-const UpdateTeamMemberRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<UpdateTeamMemberRequest>;
-
 export type CreateTeamMemberError = BadRequest | Conflict | WhopOpError;
 /** Create Team Member Adds a member to an account's team with a system role. Identify them by exactly one of `user_id` or `email`. If the person has not yet accepted -- or the email does not belong to a Whop account yet -- an invitation is sent instead and the response is `202` with `{ "object": "team_member_invite", "invitation_sent": true }`. If they already have a pending invite, the request fails with a `400`. Custom roles cannot be granted via the API. Granting the `workforce` role is also allowed with the `bounty:create` scope. */
 export const createTeamMember: API.OperationMethod<
@@ -279,8 +212,8 @@ export const createTeamMember: API.OperationMethod<
   CreateTeamMemberError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTeamMemberRequest,
-  output: TeamMember,
+  input: __S(0) as any as S.Schema<CreateTeamMemberRequest>,
+  output: __S(4) as any as S.Schema<TeamMember>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -294,8 +227,8 @@ export const deleteTeamMember: API.OperationMethod<
   DeleteTeamMemberError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTeamMemberRequest,
-  output: DeleteTeamMemberResponse,
+  input: __S(5) as any as S.Schema<DeleteTeamMemberRequest>,
+  output: __S(6) as any as S.Schema<DeleteTeamMemberResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -309,8 +242,8 @@ export const getTeamMember: API.OperationMethod<
   GetTeamMemberError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTeamMemberRequest,
-  output: TeamMember,
+  input: __S(7) as any as S.Schema<GetTeamMemberRequest>,
+  output: __S(4) as any as S.Schema<TeamMember>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -326,8 +259,8 @@ export const listTeamMembers: API.PaginatedOperationMethod<
   TeamMember
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListTeamMembersRequest,
-    output: ListTeamMembersResponse,
+    input: __S(8) as any as S.Schema<ListTeamMembersRequest>,
+    output: __S(11) as any as S.Schema<ListTeamMembersResponse>,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -351,8 +284,8 @@ export const updateTeamMember: API.OperationMethod<
   UpdateTeamMemberError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTeamMemberRequest,
-  output: TeamMember,
+  input: __S(12) as any as S.Schema<UpdateTeamMemberRequest>,
+  output: __S(4) as any as S.Schema<TeamMember>,
   errors: [BadRequest, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -366,7 +299,7 @@ function __c0(j: number): any {
         S.Struct({
           account_id: S.String,
           email: S.optional(S.String),
-          role: CreateTeamMemberRequestRole,
+          role: S.String,
           user_id: S.optional(S.String),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/team_members", code: 200 })),
@@ -389,7 +322,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           name: S.NullOr(S.String),
-          profile_picture: UserProfilePicture,
+          profile_picture: __S(2),
           username: S.String,
         }),
       ).annotate({ identifier: "UserSummary" });
@@ -397,15 +330,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.String,
-          authorized_role: S.NullOr(TeamMemberAuthorizedRole),
+          authorized_role: S.NullOr(__S(1)),
           created_at: S.String,
           email: S.NullOr(S.String),
           id: S.String,
           is_agent: S.Boolean,
-          role: TeamMemberRole,
-          status: TeamMemberStatus,
+          role: S.String,
+          status: S.String,
           updated_at: S.String,
-          user: S.NullOr(UserSummary),
+          user: S.NullOr(__S(3)),
         }),
       ).annotate({ identifier: "TeamMember" });
     case 5:
@@ -434,13 +367,13 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           account_id: S.String.pipe(T.Query()),
-          status: S.optional(ListTeamMembersRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
           user_id: S.optional(S.String.pipe(T.Query())),
-          role: S.optional(ListTeamMembersRequestRole.pipe(T.Query())),
+          role: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListTeamMembersRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListTeamMembersRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -448,7 +381,7 @@ function __c1(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/team_members", code: 200 })),
       ).annotate({ identifier: "ListTeamMembersRequest" });
     case 1:
-      return S.Array(TeamMember);
+      return S.Array(__S(4));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -463,16 +396,29 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: ListTeamMembersResponseDataList,
-          page_info: ListTeamMembersResponsePageInfo,
+          data: __S(9),
+          page_info: __S(10),
         }),
       ).annotate({ identifier: "ListTeamMembersResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          role: UpdateTeamMemberRequestRole,
+          role: S.String,
         }).pipe(T.Http({ method: "PATCH", uri: "/team_members/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateTeamMemberRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

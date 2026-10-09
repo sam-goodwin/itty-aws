@@ -7,6 +7,8 @@ import { paginateCursor } from "../pagination.ts";
 import { NotionProtocol, type NotionOpError, type NotionOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { NotionOpError, NotionOpContext };
 
@@ -15,8 +17,6 @@ export interface CancelSessionRequest {
   /** A session event identifying the turn to cancel. If omitted, cancels the current nonterminal turn. */
   event_id?: string;
 }
-const CancelSessionRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CancelSessionRequest>;
-
 /** One of: `queued`, `in_progress`, `requires_action`, `completed`, `failed`, `canceled`, `terminated` */
 export type CancelSessionResponseStatus =
   | "queued"
@@ -26,56 +26,27 @@ export type CancelSessionResponseStatus =
   | "failed"
   | "canceled"
   | "terminated";
-const CancelSessionResponseStatus = S.String;
-
 /** One of: `approve`, `reject` */
 export type CancelSessionResponseRequiredActionsItemOptionsItemId = "approve" | "reject";
-const CancelSessionResponseRequiredActionsItemOptionsItemId = S.String;
-
 export interface CancelSessionResponseRequiredActionsItemOptionsItem {
   /** One of: `approve`, `reject` */
   id: CancelSessionResponseRequiredActionsItemOptionsItemId;
   label: string;
 }
-const CancelSessionResponseRequiredActionsItemOptionsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelSessionResponseRequiredActionsItemOptionsItem>;
-
 export type CancelSessionResponseRequiredActionsItemOptionsList =
   Array<CancelSessionResponseRequiredActionsItemOptionsItem>;
-const CancelSessionResponseRequiredActionsItemOptionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CancelSessionResponseRequiredActionsItemOptionsList>;
-
 export interface CancelSessionResponseRequiredActionsItem {
   action_id: string;
   title: string;
   options: CancelSessionResponseRequiredActionsItemOptionsList;
 }
-const CancelSessionResponseRequiredActionsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CancelSessionResponseRequiredActionsItem>;
-
 export type CancelSessionResponseRequiredActionsList =
   Array<CancelSessionResponseRequiredActionsItem>;
-const CancelSessionResponseRequiredActionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CancelSessionResponseRequiredActionsList>;
-
 export interface CancelSessionResponseError {
   code: string;
   message: string;
   retryable: boolean;
 }
-const CancelSessionResponseError = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CancelSessionResponseError>;
-
 export interface CancelSessionResponse {
   /** Always `session` */
   object: string;
@@ -89,16 +60,9 @@ export interface CancelSessionResponse {
   required_actions?: CancelSessionResponseRequiredActionsList;
   error?: CancelSessionResponseError;
 }
-const CancelSessionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CancelSessionResponse>;
-
 export interface GetSessionRequest {
   session_id: string;
 }
-const GetSessionRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetSessionRequest>;
-
 /** One of: `queued`, `in_progress`, `requires_action`, `completed`, `failed`, `canceled`, `terminated` */
 export type GetSessionResponseStatus =
   | "queued"
@@ -108,32 +72,18 @@ export type GetSessionResponseStatus =
   | "failed"
   | "canceled"
   | "terminated";
-const GetSessionResponseStatus = S.String;
-
 /** One of: `user`, `bot` */
 export type GetSessionResponseCreatedByType = "user" | "bot";
-const GetSessionResponseCreatedByType = S.String;
-
 export interface GetSessionResponseCreatedBy {
   id: string;
   /** One of: `user`, `bot` */
   type: GetSessionResponseCreatedByType;
 }
-const GetSessionResponseCreatedBy = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetSessionResponseCreatedBy>;
-
 export interface GetSessionResponseAgentVersion {
   id: string;
   number: number;
   published_at: string;
 }
-const GetSessionResponseAgentVersion = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetSessionResponseAgentVersion>;
-
 export interface GetSessionResponseModelsCase0 {
   /** Always `auto` */
   type: string;
@@ -147,9 +97,6 @@ export interface GetSessionResponseModelsCase1 {
 export type GetSessionResponseModels =
   | GetSessionResponseModelsCase0
   | GetSessionResponseModelsCase1;
-const GetSessionResponseModels =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GetSessionResponseModels>;
-
 /** One of: `approve`, `reject` */
 export type GetSessionResponseRequiredActionsItemOptionsItemId = "approve" | "reject";
 export interface GetSessionResponseRequiredActionsItemOptionsItem {
@@ -165,24 +112,10 @@ export interface GetSessionResponseRequiredActionsItem {
   options: GetSessionResponseRequiredActionsItemOptionsList;
 }
 export type GetSessionResponseRequiredActionsList = Array<GetSessionResponseRequiredActionsItem>;
-const GetSessionResponseRequiredActionsList =
-  CancelSessionResponseRequiredActionsList as any as S.Schema<GetSessionResponseRequiredActionsList>;
-
 export type GetSessionResponseError = CancelSessionResponseError;
 export type GetSessionResponseTypeLabelsList = Array<string>;
-const GetSessionResponseTypeLabelsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetSessionResponseTypeLabelsList>;
-
 export type GetSessionResponseChatUserEmailsList = Array<string>;
-const GetSessionResponseChatUserEmailsList =
-  GetSessionResponseTypeLabelsList as any as S.Schema<GetSessionResponseChatUserEmailsList>;
-
 export type GetSessionResponseToolTypesList = Array<string>;
-const GetSessionResponseToolTypesList =
-  GetSessionResponseTypeLabelsList as any as S.Schema<GetSessionResponseToolTypesList>;
-
 export interface GetSessionResponse {
   /** Always `session` */
   object: string;
@@ -207,8 +140,6 @@ export interface GetSessionResponse {
   runs_completed?: number | null;
   message_count?: number | null;
 }
-const GetSessionResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetSessionResponse>;
-
 export type QuerySessionEventsRequestFilterCase0Property = "id";
 export interface QuerySessionEventsRequestFilterCase0String {
   equals: string;
@@ -1144,35 +1075,18 @@ export type QuerySessionEventsRequestFilter =
   | QuerySessionEventsRequestFilterCase3
   | QuerySessionEventsRequestFilterCase4
   | QuerySessionEventsRequestFilterCase5;
-const QuerySessionEventsRequestFilter =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QuerySessionEventsRequestFilter>;
-
 /** One of: `sequence`, `created_at` */
 export type QuerySessionEventsRequestSortsItemProperty = "sequence" | "created_at";
-const QuerySessionEventsRequestSortsItemProperty = S.String;
-
 /** One of: `ascending`, `descending` */
 export type QuerySessionEventsRequestSortsItemDirection = "ascending" | "descending";
-const QuerySessionEventsRequestSortsItemDirection = S.String;
-
 export interface QuerySessionEventsRequestSortsItem {
   /** One of: `sequence`, `created_at` */
   property: QuerySessionEventsRequestSortsItemProperty | (string & {});
   /** One of: `ascending`, `descending` */
   direction: QuerySessionEventsRequestSortsItemDirection | (string & {});
 }
-const QuerySessionEventsRequestSortsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<QuerySessionEventsRequestSortsItem>;
-
 /** Ordered sort precedence. Defaults to sequence ascending. */
 export type QuerySessionEventsRequestSortsList = Array<QuerySessionEventsRequestSortsItem>;
-const QuerySessionEventsRequestSortsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<QuerySessionEventsRequestSortsList>;
-
 export interface QuerySessionEventsRequest {
   session_id: string;
   /** A session event property filter, or an and/or compound filter nested up to three levels deep. */
@@ -1184,11 +1098,6 @@ export interface QuerySessionEventsRequest {
   /** The number of events to return. Maximum: 100. */
   page_size?: number;
 }
-const QuerySessionEventsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<QuerySessionEventsRequest>;
-
 export interface QuerySessionEventsResponseResultsItemCase0ContentItemCase0 {
   /** Always `text` */
   type: string;
@@ -1312,19 +1221,11 @@ export type QuerySessionEventsResponseResultsItemCase5Status =
 export type QuerySessionEventsResponseResultsItemCase5RequiredActionsItemOptionsItemId =
   | "approve"
   | "reject";
-const QuerySessionEventsResponseResultsItemCase5RequiredActionsItemOptionsItemId = S.String;
-
 export interface QuerySessionEventsResponseResultsItemCase5RequiredActionsItemOptionsItem {
   /** One of: `approve`, `reject` */
   id: QuerySessionEventsResponseResultsItemCase5RequiredActionsItemOptionsItemId;
   label: string;
 }
-const QuerySessionEventsResponseResultsItemCase5RequiredActionsItemOptionsItem =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    7,
-  ) as any as S.Schema<QuerySessionEventsResponseResultsItemCase5RequiredActionsItemOptionsItem>;
-
 export type QuerySessionEventsResponseResultsItemCase5RequiredActionsItemOptionsList =
   Array<QuerySessionEventsResponseResultsItemCase5RequiredActionsItemOptionsItem>;
 export interface QuerySessionEventsResponseResultsItemCase5RequiredActionsItem {
@@ -1356,15 +1257,7 @@ export type QuerySessionEventsResponseResultsItem =
   | QuerySessionEventsResponseResultsItemCase3
   | QuerySessionEventsResponseResultsItemCase4
   | QuerySessionEventsResponseResultsItemCase5;
-const QuerySessionEventsResponseResultsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QuerySessionEventsResponseResultsItem>;
-
 export type QuerySessionEventsResponseResultsList = Array<QuerySessionEventsResponseResultsItem>;
-const QuerySessionEventsResponseResultsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<QuerySessionEventsResponseResultsList>;
-
 export interface QuerySessionEventsResponse {
   /** Always `list` */
   object: string;
@@ -1375,11 +1268,6 @@ export interface QuerySessionEventsResponse {
   has_more: boolean;
   next_cursor: string | null;
 }
-const QuerySessionEventsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<QuerySessionEventsResponse>;
-
 /** Filter sessions by id. */
 export type QuerySessionsRequestFilterCase0Property = "id";
 /** An exact string comparison. */
@@ -1962,9 +1850,6 @@ export type QuerySessionsRequestFilter =
   | QuerySessionsRequestFilterCase3
   | QuerySessionsRequestFilterCase4
   | QuerySessionsRequestFilterCase5;
-const QuerySessionsRequestFilter =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QuerySessionsRequestFilter>;
-
 /** One of: `created_at`, `updated_at` */
 export type QuerySessionsRequestSortsItemProperty = "created_at" | "updated_at";
 /** One of: `ascending`, `descending` */
@@ -1977,9 +1862,6 @@ export interface QuerySessionsRequestSortsItem {
 }
 /** Ordered sort precedence. Defaults to updated_at descending. */
 export type QuerySessionsRequestSortsList = Array<QuerySessionsRequestSortsItem>;
-const QuerySessionsRequestSortsList =
-  QuerySessionEventsRequestSortsList as any as S.Schema<QuerySessionsRequestSortsList>;
-
 export interface QuerySessionsRequest {
   /** A case-insensitive substring search over session titles. */
   query?: string;
@@ -1992,8 +1874,6 @@ export interface QuerySessionsRequest {
   /** The number of sessions to return. Maximum: 100. */
   page_size?: number;
 }
-const QuerySessionsRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<QuerySessionsRequest>;
-
 /** One of: `queued`, `in_progress`, `requires_action`, `completed`, `failed`, `canceled`, `terminated` */
 export type QuerySessionsResponseResultsItemStatus =
   | "queued"
@@ -2003,8 +1883,6 @@ export type QuerySessionsResponseResultsItemStatus =
   | "failed"
   | "canceled"
   | "terminated";
-const QuerySessionsResponseResultsItemStatus = S.String;
-
 /** One of: `user`, `bot` */
 export type QuerySessionsResponseResultsItemCreatedByType = "user" | "bot";
 export interface QuerySessionsResponseResultsItemCreatedBy {
@@ -2012,9 +1890,6 @@ export interface QuerySessionsResponseResultsItemCreatedBy {
   /** One of: `user`, `bot` */
   type: QuerySessionsResponseResultsItemCreatedByType;
 }
-const QuerySessionsResponseResultsItemCreatedBy =
-  GetSessionResponseCreatedBy as any as S.Schema<QuerySessionsResponseResultsItemCreatedBy>;
-
 export type QuerySessionsResponseResultsItemAgentVersion = GetSessionResponseAgentVersion;
 export type QuerySessionsResponseResultsItemModelsCase0 = GetSessionResponseModelsCase0;
 export type QuerySessionsResponseResultsItemModelsCase1IdsList = Array<string | null>;
@@ -2026,9 +1901,6 @@ export interface QuerySessionsResponseResultsItemModelsCase1 {
 export type QuerySessionsResponseResultsItemModels =
   | GetSessionResponseModelsCase0
   | QuerySessionsResponseResultsItemModelsCase1;
-const QuerySessionsResponseResultsItemModels =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QuerySessionsResponseResultsItemModels>;
-
 /** One of: `approve`, `reject` */
 export type QuerySessionsResponseResultsItemRequiredActionsItemOptionsItemId = "approve" | "reject";
 export interface QuerySessionsResponseResultsItemRequiredActionsItemOptionsItem {
@@ -2036,46 +1908,19 @@ export interface QuerySessionsResponseResultsItemRequiredActionsItemOptionsItem 
   id: QuerySessionsResponseResultsItemRequiredActionsItemOptionsItemId;
   label: string;
 }
-const QuerySessionsResponseResultsItemRequiredActionsItemOptionsItem =
-  QuerySessionEventsResponseResultsItemCase5RequiredActionsItemOptionsItem as any as S.Schema<QuerySessionsResponseResultsItemRequiredActionsItemOptionsItem>;
-
 export type QuerySessionsResponseResultsItemRequiredActionsItemOptionsList =
   Array<QuerySessionsResponseResultsItemRequiredActionsItemOptionsItem>;
-const QuerySessionsResponseResultsItemRequiredActionsItemOptionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<QuerySessionsResponseResultsItemRequiredActionsItemOptionsList>;
-
 export interface QuerySessionsResponseResultsItemRequiredActionsItem {
   action_id: string;
   title: string;
   options: QuerySessionsResponseResultsItemRequiredActionsItemOptionsList;
 }
-const QuerySessionsResponseResultsItemRequiredActionsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<QuerySessionsResponseResultsItemRequiredActionsItem>;
-
 export type QuerySessionsResponseResultsItemRequiredActionsList =
   Array<QuerySessionsResponseResultsItemRequiredActionsItem>;
-const QuerySessionsResponseResultsItemRequiredActionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<QuerySessionsResponseResultsItemRequiredActionsList>;
-
 export type QuerySessionsResponseResultsItemError = CancelSessionResponseError;
 export type QuerySessionsResponseResultsItemTypeLabelsList = Array<string>;
-const QuerySessionsResponseResultsItemTypeLabelsList =
-  GetSessionResponseTypeLabelsList as any as S.Schema<QuerySessionsResponseResultsItemTypeLabelsList>;
-
 export type QuerySessionsResponseResultsItemChatUserEmailsList = Array<string>;
-const QuerySessionsResponseResultsItemChatUserEmailsList =
-  GetSessionResponseTypeLabelsList as any as S.Schema<QuerySessionsResponseResultsItemChatUserEmailsList>;
-
 export type QuerySessionsResponseResultsItemToolTypesList = Array<string>;
-const QuerySessionsResponseResultsItemToolTypesList =
-  GetSessionResponseTypeLabelsList as any as S.Schema<QuerySessionsResponseResultsItemToolTypesList>;
-
 export interface QuerySessionsResponseResultsItem {
   /** Always `session` */
   object: string;
@@ -2100,18 +1945,8 @@ export interface QuerySessionsResponseResultsItem {
   runs_completed?: number | null;
   message_count?: number | null;
 }
-const QuerySessionsResponseResultsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<QuerySessionsResponseResultsItem>;
-
 /** Sessions found in this bounded scan. Access filtering can leave this array empty while has_more is true. */
 export type QuerySessionsResponseResultsList = Array<QuerySessionsResponseResultsItem>;
-const QuerySessionsResponseResultsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<QuerySessionsResponseResultsList>;
-
 export interface QuerySessionsResponse {
   /** Always `list` */
   object: string;
@@ -2125,11 +1960,6 @@ export interface QuerySessionsResponse {
   /** Pass this cursor as start_cursor when has_more is true, even when results is empty. */
   next_cursor: string | null;
 }
-const QuerySessionsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<QuerySessionsResponse>;
-
 /** One of: `notion_ai`, `33333333-3333-3333-3333-333333333333` */
 export type UpdateSessionRequestBodyCase0AgentIdCase1 =
   | "notion_ai"
@@ -2181,14 +2011,9 @@ export type UpdateSessionRequestBody =
   | UpdateSessionRequestBodyCase0
   | UpdateSessionRequestBodyCase1
   | UpdateSessionRequestBodyCase2;
-const UpdateSessionRequestBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateSessionRequestBody>;
-
 export interface UpdateSessionRequest {
   body: UpdateSessionRequestBody;
 }
-const UpdateSessionRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<UpdateSessionRequest>;
-
 /** One of: `queued`, `in_progress`, `requires_action`, `completed`, `failed`, `canceled`, `terminated` */
 export type UpdateSessionResponseStatus =
   | "queued"
@@ -2228,8 +2053,6 @@ export interface UpdateSessionResponse {
   required_actions?: UpdateSessionResponseRequiredActionsList;
   error?: CancelSessionResponseError;
 }
-const UpdateSessionResponse = CancelSessionResponse as any as S.Schema<UpdateSessionResponse>;
-
 export type CancelSessionError = NotionOpError;
 /** Cancel a session */
 export const cancelSession: API.OperationMethod<
@@ -2238,8 +2061,8 @@ export const cancelSession: API.OperationMethod<
   CancelSessionError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelSessionRequest,
-  output: CancelSessionResponse,
+  input: __S(0) as any as S.Schema<CancelSessionRequest>,
+  output: __S(6) as any as S.Schema<CancelSessionResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2253,8 +2076,8 @@ export const getSession: API.OperationMethod<
   GetSessionError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionRequest,
-  output: GetSessionResponse,
+  input: __S(7) as any as S.Schema<GetSessionRequest>,
+  output: __S(11) as any as S.Schema<GetSessionResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2270,8 +2093,8 @@ export const querySessionEvents: API.PaginatedOperationMethod<
   QuerySessionEventsResponseResultsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: QuerySessionEventsRequest,
-    output: QuerySessionEventsResponse,
+    input: __S(14) as any as S.Schema<QuerySessionEventsRequest>,
+    output: __S(17) as any as S.Schema<QuerySessionEventsResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -2295,8 +2118,8 @@ export const querySessions: API.PaginatedOperationMethod<
   QuerySessionsResponseResultsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: QuerySessionsRequest,
-    output: QuerySessionsResponse,
+    input: __S(18) as any as S.Schema<QuerySessionsRequest>,
+    output: __S(24) as any as S.Schema<QuerySessionsResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -2318,8 +2141,8 @@ export const updateSession: API.OperationMethod<
   UpdateSessionError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSessionRequest,
-  output: UpdateSessionResponse,
+  input: __S(25) as any as S.Schema<UpdateSessionRequest>,
+  output: __S(6) as any as S.Schema<UpdateSessionResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2338,26 +2161,26 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          id: CancelSessionResponseRequiredActionsItemOptionsItemId,
+          id: S.String,
           label: S.String,
         }),
       ).annotate({
         identifier: "CancelSessionResponseRequiredActionsItemOptionsItem",
       });
     case 2:
-      return S.Array(CancelSessionResponseRequiredActionsItemOptionsItem);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           action_id: S.String,
           title: S.String,
-          options: CancelSessionResponseRequiredActionsItemOptionsList,
+          options: __S(2),
         }),
       ).annotate({
         identifier: "CancelSessionResponseRequiredActionsItem",
       });
     case 4:
-      return S.Array(CancelSessionResponseRequiredActionsItem);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2375,11 +2198,11 @@ function __c0(j: number): any {
           id: S.String,
           agent_id: S.String,
           title: S.String,
-          status: CancelSessionResponseStatus,
+          status: S.String,
           created_at: S.String,
           updated_at: S.String,
-          required_actions: S.optional(CancelSessionResponseRequiredActionsList),
-          error: S.optional(CancelSessionResponseError),
+          required_actions: S.optional(__S(4)),
+          error: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "CancelSessionResponse" });
     case 7:
@@ -2396,7 +2219,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: GetSessionResponseCreatedByType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "GetSessionResponseCreatedBy",
@@ -2420,18 +2243,18 @@ function __c1(j: number): any {
           id: S.String,
           agent_id: S.String,
           title: S.String,
-          status: GetSessionResponseStatus,
+          status: S.String,
           created_at: S.String,
           updated_at: S.String,
-          created_by: GetSessionResponseCreatedBy,
-          agent_version: S.NullOr(GetSessionResponseAgentVersion),
-          models: GetSessionResponseModels,
-          required_actions: S.optional(GetSessionResponseRequiredActionsList),
-          error: S.optional(CancelSessionResponseError),
+          created_by: __S(8),
+          agent_version: S.NullOr(__S(9)),
+          models: S.Unknown,
+          required_actions: S.optional(__S(4)),
+          error: S.optional(__S(5)),
           trigger_type: S.optional(S.String),
-          type_labels: S.optional(S.NullOr(GetSessionResponseTypeLabelsList)),
-          chat_user_emails: S.optional(S.NullOr(GetSessionResponseChatUserEmailsList)),
-          tool_types: S.optional(S.NullOr(GetSessionResponseToolTypesList)),
+          type_labels: S.optional(S.NullOr(__S(10))),
+          chat_user_emails: S.optional(S.NullOr(__S(10))),
+          tool_types: S.optional(S.NullOr(__S(10))),
           tool_call_count: S.optional(S.NullOr(S.Number)),
           credits_used: S.optional(S.NullOr(S.Number)),
           runs_completed: S.optional(S.NullOr(S.Number)),
@@ -2441,20 +2264,20 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          property: QuerySessionEventsRequestSortsItemProperty,
-          direction: QuerySessionEventsRequestSortsItemDirection,
+          property: S.String,
+          direction: S.String,
         }),
       ).annotate({
         identifier: "QuerySessionEventsRequestSortsItem",
       });
     case 5:
-      return S.Array(QuerySessionEventsRequestSortsItem);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           session_id: S.String.pipe(T.Label()),
-          filter: S.optional(QuerySessionEventsRequestFilter),
-          sorts: S.optional(QuerySessionEventsRequestSortsList),
+          filter: S.optional(S.Unknown),
+          sorts: S.optional(__S(13)),
           start_cursor: S.optional(S.String),
           page_size: S.optional(S.Number),
         }).pipe(
@@ -2466,7 +2289,7 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          id: QuerySessionEventsResponseResultsItemCase5RequiredActionsItemOptionsItemId,
+          id: S.String,
           label: S.String,
         }),
       ).annotate({
@@ -2477,14 +2300,14 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(QuerySessionEventsResponseResultsItem);
+      return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
           type: S.String,
           session_event: S.Unknown,
-          results: QuerySessionEventsResponseResultsList,
+          results: __S(16),
           has_more: S.Boolean,
           next_cursor: S.NullOr(S.String),
         }),
@@ -2495,26 +2318,26 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
-          filter: S.optional(QuerySessionsRequestFilter),
-          sorts: S.optional(QuerySessionsRequestSortsList),
+          filter: S.optional(S.Unknown),
+          sorts: S.optional(__S(13)),
           start_cursor: S.optional(S.String),
           page_size: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/v1/sessions/query", code: 200 })),
       ).annotate({ identifier: "QuerySessionsRequest" });
     case 3:
-      return S.Array(QuerySessionsResponseResultsItemRequiredActionsItemOptionsItem);
+      return S.Array(__S(15));
     case 4:
       return S.suspend(() =>
         S.Struct({
           action_id: S.String,
           title: S.String,
-          options: QuerySessionsResponseResultsItemRequiredActionsItemOptionsList,
+          options: __S(19),
         }),
       ).annotate({
         identifier: "QuerySessionsResponseResultsItemRequiredActionsItem",
       });
     case 5:
-      return S.Array(QuerySessionsResponseResultsItemRequiredActionsItem);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -2522,20 +2345,18 @@ function __c2(j: number): any {
           id: S.String,
           agent_id: S.String,
           title: S.String,
-          status: QuerySessionsResponseResultsItemStatus,
-          created_by: QuerySessionsResponseResultsItemCreatedBy,
-          agent_version: S.NullOr(GetSessionResponseAgentVersion),
-          models: QuerySessionsResponseResultsItemModels,
+          status: S.String,
+          created_by: __S(8),
+          agent_version: S.NullOr(__S(9)),
+          models: S.Unknown,
           created_at: S.String,
           updated_at: S.String,
-          required_actions: S.optional(QuerySessionsResponseResultsItemRequiredActionsList),
-          error: S.optional(CancelSessionResponseError),
+          required_actions: S.optional(__S(21)),
+          error: S.optional(__S(5)),
           trigger_type: S.optional(S.String),
-          type_labels: S.optional(S.NullOr(QuerySessionsResponseResultsItemTypeLabelsList)),
-          chat_user_emails: S.optional(
-            S.NullOr(QuerySessionsResponseResultsItemChatUserEmailsList),
-          ),
-          tool_types: S.optional(S.NullOr(QuerySessionsResponseResultsItemToolTypesList)),
+          type_labels: S.optional(S.NullOr(__S(10))),
+          chat_user_emails: S.optional(S.NullOr(__S(10))),
+          tool_types: S.optional(S.NullOr(__S(10))),
           tool_call_count: S.optional(S.NullOr(S.Number)),
           credits_used: S.optional(S.NullOr(S.Number)),
           runs_completed: S.optional(S.NullOr(S.Number)),
@@ -2545,7 +2366,7 @@ function __c2(j: number): any {
         identifier: "QuerySessionsResponseResultsItem",
       });
     case 7:
-      return S.Array(QuerySessionsResponseResultsItem);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -2556,7 +2377,7 @@ function __c3(j: number): any {
           object: S.String,
           type: S.String,
           session: S.Unknown,
-          results: QuerySessionsResponseResultsList,
+          results: __S(23),
           has_more: S.Boolean,
           next_cursor: S.NullOr(S.String),
         }),
@@ -2564,8 +2385,25 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: UpdateSessionRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v1/sessions", code: 200 })),
       ).annotate({ identifier: "UpdateSessionRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

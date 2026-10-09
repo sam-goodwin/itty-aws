@@ -6,13 +6,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0. */
 export type TimeMinute = 0 | 30;
-const TimeMinute = S.Number;
-
 /** The time of day. */
 export interface Time {
   /** The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0. */
@@ -20,8 +20,6 @@ export interface Time {
   /** The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0. */
   minute?: TimeMinute | (number & {});
 }
-const Time = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Time>;
-
 /** The day of week. */
 export type DayOfWeek =
   | "Monday"
@@ -31,15 +29,8 @@ export type DayOfWeek =
   | "Friday"
   | "Saturday"
   | "Sunday";
-const DayOfWeek = S.String;
-
 /** The set of days of week for the schedule recurrence. A day must not be specified more than once in a recurrence. */
 export type UploadLimitWeeklyRecurrenceDaysList = Array<DayOfWeek | (string & {})>;
-const UploadLimitWeeklyRecurrenceDaysList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<UploadLimitWeeklyRecurrenceDaysList>;
-
 /** The weekly recurrence of the WAN-link upload limit schedule. The start time must be earlier in the day than the end time. The recurrence must not span across multiple days. */
 export interface UploadLimitWeeklyRecurrence {
   /** The start time of the schedule recurrence. Full hour and 30-minute intervals are supported. */
@@ -51,25 +42,13 @@ export interface UploadLimitWeeklyRecurrence {
   /** The WAN-link upload bandwidth (maximum data transfer rate) in megabits per second. Value of 0 indicates no throughput is allowed and any running migration job is effectively paused for the duration of this recurrence. Only data plane operations are governed by this limit. Control plane operations ensure seamless functionality. The agent may exceed this limit with control messages, if necessary. */
   limitInMbps: number;
 }
-const UploadLimitWeeklyRecurrence = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<UploadLimitWeeklyRecurrence>;
-
 /** The set of weekly repeating recurrences of the WAN-link upload limit schedule. */
 export type UploadLimitScheduleWeeklyRecurrencesList = Array<UploadLimitWeeklyRecurrence>;
-const UploadLimitScheduleWeeklyRecurrencesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<UploadLimitScheduleWeeklyRecurrencesList>;
-
 /** The WAN-link upload limit schedule. Overlapping recurrences are not allowed. */
 export interface UploadLimitSchedule {
   /** The set of weekly repeating recurrences of the WAN-link upload limit schedule. */
   weeklyRecurrences?: UploadLimitScheduleWeeklyRecurrencesList;
 }
-const UploadLimitSchedule = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<UploadLimitSchedule>;
-
 export interface AgentPropertiesInput {
   /** A description for the Agent. */
   description?: string;
@@ -80,8 +59,6 @@ export interface AgentPropertiesInput {
   /** The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time. */
   uploadLimitSchedule?: UploadLimitSchedule;
 }
-const AgentPropertiesInput = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AgentPropertiesInput>;
-
 export interface AgentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -93,19 +70,10 @@ export interface AgentsCreateOrUpdateRequest {
   agentName: string;
   properties: AgentPropertiesInput;
 }
-const AgentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AgentsCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -121,8 +89,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SystemData>;
-
 /** The Agent status. */
 export type AgentStatus =
   | "Registering"
@@ -131,23 +97,14 @@ export type AgentStatus =
   | "Executing"
   | "RequiresAttention"
   | "Unregistering";
-const AgentStatus = S.String;
-
 export interface AgentPropertiesErrorDetails {
   /** Error code reported by Agent */
   code?: string;
   /** Expanded description of reported error code */
   message?: string;
 }
-const AgentPropertiesErrorDetails = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AgentPropertiesErrorDetails>;
-
 /** The provisioning state of a resource. */
 export type ProvisioningState = "Succeeded" | "Canceled" | "Failed" | "Deleting";
-const ProvisioningState = S.String;
-
 export interface AgentProperties {
   /** A description for the Agent. */
   description?: string;
@@ -177,8 +134,6 @@ export interface AgentProperties {
   /** The provisioning state of this resource. */
   provisioningState?: ProvisioningState;
 }
-const AgentProperties = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<AgentProperties>;
-
 export interface AgentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -190,18 +145,8 @@ export interface AgentsCreateOrUpdateResponse {
   systemData?: SystemData;
   properties: AgentProperties;
 }
-const AgentsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AgentsCreateOrUpdateResponse>;
-
 /** List of job definitions associated with this connection. */
 export type ConnectionPropertiesInputJobListList = Array<string>;
-const ConnectionPropertiesInputJobListList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ConnectionPropertiesInputJobListList>;
-
 /** Properties of the Connection resource. */
 export interface ConnectionPropertiesInput {
   /** A description for the Connection. */
@@ -211,11 +156,6 @@ export interface ConnectionPropertiesInput {
   /** List of job definitions associated with this connection. */
   jobList?: ConnectionPropertiesInputJobListList;
 }
-const ConnectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ConnectionPropertiesInput>;
-
 export interface ConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -228,20 +168,10 @@ export interface ConnectionsCreateOrUpdateRequest {
   /** Connection properties. */
   properties: ConnectionPropertiesInput;
 }
-const ConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ConnectionsCreateOrUpdateRequest>;
-
 /** The connection status. */
 export type ConnectionStatus = "Approved" | "Rejected" | "Disconnected" | "Pending" | "Stale";
-const ConnectionStatus = S.String;
-
 /** List of job definitions associated with this connection. */
 export type ConnectionPropertiesJobListList = Array<string>;
-const ConnectionPropertiesJobListList =
-  ConnectionPropertiesInputJobListList as any as S.Schema<ConnectionPropertiesJobListList>;
-
 /** Properties of the Connection resource. */
 export interface ConnectionProperties {
   /** A description for the Connection. */
@@ -259,8 +189,6 @@ export interface ConnectionProperties {
   /** The provisioning state of this resource. */
   provisioningState?: ProvisioningState;
 }
-const ConnectionProperties = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ConnectionProperties>;
-
 export interface ConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -273,11 +201,6 @@ export interface ConnectionsCreateOrUpdateResponse {
   /** Connection properties. */
   properties: ConnectionProperties;
 }
-const ConnectionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ConnectionsCreateOrUpdateResponse>;
-
 export interface DeleteAgentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -288,11 +211,7 @@ export interface DeleteAgentRequest {
   /** The name of the Agent resource. */
   agentName: string;
 }
-const DeleteAgentRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteAgentRequest>;
-
 export interface DeleteAgentResponse {}
-const DeleteAgentResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DeleteAgentResponse>;
-
 export interface DeleteConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -303,14 +222,7 @@ export interface DeleteConnectionRequest {
   /** The name of the Connection resource. */
   connectionName: string;
 }
-const DeleteConnectionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteConnectionRequest>;
-
 export interface DeleteConnectionResponse {}
-const DeleteConnectionResponse = DeleteAgentResponse as any as S.Schema<DeleteConnectionResponse>;
-
 export interface DeleteEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -321,14 +233,7 @@ export interface DeleteEndpointRequest {
   /** The name of the Endpoint resource. */
   endpointName: string;
 }
-const DeleteEndpointRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteEndpointRequest>;
-
 export interface DeleteEndpointResponse {}
-const DeleteEndpointResponse = DeleteAgentResponse as any as S.Schema<DeleteEndpointResponse>;
-
 export interface DeleteJobDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -341,15 +246,7 @@ export interface DeleteJobDefinitionRequest {
   /** The name of the Job Definition resource. */
   jobDefinitionName: string;
 }
-const DeleteJobDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteJobDefinitionRequest>;
-
 export interface DeleteJobDefinitionResponse {}
-const DeleteJobDefinitionResponse =
-  DeleteAgentResponse as any as S.Schema<DeleteJobDefinitionResponse>;
-
 export interface DeleteProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -360,11 +257,7 @@ export interface DeleteProjectRequest {
   /** The name of the Project resource. */
   projectName: string;
 }
-const DeleteProjectRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DeleteProjectRequest>;
-
 export interface DeleteProjectResponse {}
-const DeleteProjectResponse = DeleteAgentResponse as any as S.Schema<DeleteProjectResponse>;
-
 export interface DeleteStorageMoverRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -373,15 +266,7 @@ export interface DeleteStorageMoverRequest {
   /** The name of the Storage Mover resource. */
   storageMoverName: string;
 }
-const DeleteStorageMoverRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteStorageMoverRequest>;
-
 export interface DeleteStorageMoverResponse {}
-const DeleteStorageMoverResponse =
-  DeleteAgentResponse as any as S.Schema<DeleteStorageMoverResponse>;
-
 /** The Endpoint resource type. */
 export type EndpointType =
   | "AzureStorageBlobContainer"
@@ -391,12 +276,8 @@ export type EndpointType =
   | "AzureMultiCloudConnector"
   | "AzureStorageNfsFileShare"
   | "S3WithHMAC";
-const EndpointType = S.String;
-
 /** The type of the endpoint source/target. */
 export type EndpointKind = "Source" | "Target";
-const EndpointKind = S.String;
-
 /** The resource specific properties for the Storage Mover resource. */
 export interface EndpointBasePropertiesInput {
   /** The Endpoint resource type. */
@@ -436,40 +317,21 @@ export interface EndpointBasePropertiesInput {
   /** Description of an `Other` source type (S3WithHMAC). */
   otherSourceTypeDescription?: string;
 }
-const EndpointBasePropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<EndpointBasePropertiesInput>;
-
 /** Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed). */
 export type ManagedServiceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned,UserAssigned";
-const ManagedServiceIdentityType = S.String;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentityInput {}
-const UserAssignedIdentityInput = DeleteAgentResponse as any as S.Schema<UserAssignedIdentityInput>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentitiesInput = { [key: string]: UserAssignedIdentityInput | undefined };
-const UserAssignedIdentitiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<UserAssignedIdentitiesInput>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface EndpointsCreateOrUpdateRequestIdentity {
   type: ManagedServiceIdentityType | (string & {});
   userAssignedIdentities?: UserAssignedIdentitiesInput | null;
 }
-const EndpointsCreateOrUpdateRequestIdentity = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<EndpointsCreateOrUpdateRequestIdentity>;
-
 export interface EndpointsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -484,11 +346,6 @@ export interface EndpointsCreateOrUpdateRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EndpointsCreateOrUpdateRequestIdentity;
 }
-const EndpointsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<EndpointsCreateOrUpdateRequest>;
-
 /** The resource specific properties for the Storage Mover resource. */
 export interface EndpointBaseProperties {
   /** The Endpoint resource type. */
@@ -530,11 +387,6 @@ export interface EndpointBaseProperties {
   /** Description of an `Other` source type (S3WithHMAC). */
   otherSourceTypeDescription?: string;
 }
-const EndpointBaseProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<EndpointBaseProperties>;
-
 /** User assigned identity properties */
 export interface UserAssignedIdentity {
   /** The principal ID of the assigned identity. */
@@ -542,15 +394,8 @@ export interface UserAssignedIdentity {
   /** The client ID of the assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<UserAssignedIdentity>;
-
 /** The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests. */
 export type UserAssignedIdentities = { [key: string]: UserAssignedIdentity | undefined };
-const UserAssignedIdentities = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<UserAssignedIdentities>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export interface EndpointsCreateOrUpdateResponseIdentity {
   /** The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity. */
@@ -560,11 +405,6 @@ export interface EndpointsCreateOrUpdateResponseIdentity {
   type: ManagedServiceIdentityType;
   userAssignedIdentities?: UserAssignedIdentities | null;
 }
-const EndpointsCreateOrUpdateResponseIdentity = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<EndpointsCreateOrUpdateResponseIdentity>;
-
 export interface EndpointsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -579,11 +419,6 @@ export interface EndpointsCreateOrUpdateResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EndpointsCreateOrUpdateResponseIdentity;
 }
-const EndpointsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<EndpointsCreateOrUpdateResponse>;
-
 export interface GetAgentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -594,8 +429,6 @@ export interface GetAgentRequest {
   /** The name of the Agent resource. */
   agentName: string;
 }
-const GetAgentRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetAgentRequest>;
-
 export interface GetAgentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -607,8 +440,6 @@ export interface GetAgentResponse {
   systemData?: SystemData;
   properties: AgentProperties;
 }
-const GetAgentResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GetAgentResponse>;
-
 export interface GetConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -619,8 +450,6 @@ export interface GetConnectionRequest {
   /** The name of the Connection resource. */
   connectionName: string;
 }
-const GetConnectionRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GetConnectionRequest>;
-
 export interface GetConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -633,11 +462,6 @@ export interface GetConnectionResponse {
   /** Connection properties. */
   properties: ConnectionProperties;
 }
-const GetConnectionResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetConnectionResponse>;
-
 export interface GetEndpointRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -648,8 +472,6 @@ export interface GetEndpointRequest {
   /** The name of the Endpoint resource. */
   endpointName: string;
 }
-const GetEndpointRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetEndpointRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type GetEndpointResponseIdentity = EndpointsCreateOrUpdateResponseIdentity;
 export interface GetEndpointResponse {
@@ -666,8 +488,6 @@ export interface GetEndpointResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EndpointsCreateOrUpdateResponseIdentity;
 }
-const GetEndpointResponse = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GetEndpointResponse>;
-
 export interface GetJobDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -680,22 +500,13 @@ export interface GetJobDefinitionRequest {
   /** The name of the Job Definition resource. */
   jobDefinitionName: string;
 }
-const GetJobDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetJobDefinitionRequest>;
-
 /** The type of the Job. */
 export type JobDefinitionPropertiesJobType =
   | "OnPremToCloud"
   | "CloudToCloud"
   | "OnPremToCloudAgentLess";
-const JobDefinitionPropertiesJobType = S.String;
-
 /** Strategy to use for copy. */
 export type CopyMode = "Additive" | "Mirror";
-const CopyMode = S.String;
-
 /** The current status of the Job Run in a non-terminal state, if exists. */
 export type JobRunStatus =
   | "Queued"
@@ -707,8 +518,6 @@ export type JobRunStatus =
   | "Failed"
   | "Succeeded"
   | "PausedByBandwidthManagement";
-const JobRunStatus = S.String;
-
 /** The properties of the cloud source endpoint to migrate. */
 export interface SourceEndpointProperties {
   /** The name of the cloud source endpoint to migrate. */
@@ -718,18 +527,11 @@ export interface SourceEndpointProperties {
   /** The fully qualified ARM resource ID of the AWS S3 bucket to migrate. */
   awsS3BucketId?: string;
 }
-const SourceEndpointProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<SourceEndpointProperties>;
-
 /** The source endpoint resource for source and target mapping. */
 export interface SourceEndpoint {
   /** The properties of the cloud source endpoint to migrate. */
   properties?: SourceEndpointProperties;
 }
-const SourceEndpoint = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<SourceEndpoint>;
-
 /** The properties of the cloud target endpoint to migrate. */
 export interface TargetEndpointProperties {
   /** The name of the cloud target endpoint to migrate. */
@@ -741,53 +543,27 @@ export interface TargetEndpointProperties {
   /** The name of the Azure Storage blob container. */
   azureStorageBlobContainerName?: string;
 }
-const TargetEndpointProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<TargetEndpointProperties>;
-
 /** The target endpoint resource for source and target mapping. */
 export interface TargetEndpoint {
   /** The properties of the cloud target endpoint to migrate. */
   properties?: TargetEndpointProperties;
 }
-const TargetEndpoint = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<TargetEndpoint>;
-
 /** The properties of cloud endpoints to migrate. */
 export interface SourceTargetMap {
   sourceEndpoint: SourceEndpoint;
   targetEndpoint: TargetEndpoint;
 }
-const SourceTargetMap = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<SourceTargetMap>;
-
 export type JobDefinitionPropertiesSourceTargetMapValueList = Array<SourceTargetMap>;
-const JobDefinitionPropertiesSourceTargetMapValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<JobDefinitionPropertiesSourceTargetMapValueList>;
-
 /** The list of cloud endpoints to migrate. */
 export interface JobDefinitionPropertiesSourceTargetMap {
   value?: JobDefinitionPropertiesSourceTargetMapValueList;
 }
-const JobDefinitionPropertiesSourceTargetMap = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<JobDefinitionPropertiesSourceTargetMap>;
-
 /** List of connections associated to this job */
 export type JobDefinitionPropertiesConnectionsList = Array<string>;
-const JobDefinitionPropertiesConnectionsList =
-  ConnectionPropertiesInputJobListList as any as S.Schema<JobDefinitionPropertiesConnectionsList>;
-
 /** Type of schedule -- Monthly, Weekly, or Daily */
 export type Frequency = "Monthly" | "Weekly" | "Daily" | "Onetime" | "None" | "Hourly";
-const Frequency = S.String;
-
 /** The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0. */
 export type SchedulerTimeMinute = 0 | 30;
-const SchedulerTimeMinute = S.Number;
-
 /** The time of day. */
 export interface SchedulerTime {
   /** The hour element of the time. Allowed values range from 0 (start of the selected day) to 24 (end of the selected day). Hour value 24 cannot be combined with any other minute value but 0. */
@@ -795,20 +571,10 @@ export interface SchedulerTime {
   /** The minute element of the time. Allowed values are 0 and 30. If not specified, its value defaults to 0. */
   minute?: SchedulerTimeMinute | (number & {});
 }
-const SchedulerTime = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<SchedulerTime>;
-
 /** Days of the week for weekly schedules */
 export type ScheduleInfoDaysOfWeekList = Array<string>;
-const ScheduleInfoDaysOfWeekList =
-  ConnectionPropertiesInputJobListList as any as S.Schema<ScheduleInfoDaysOfWeekList>;
-
 /** Days of the month for monthly schedules */
 export type ScheduleInfoDaysOfMonthList = Array<number>;
-const ScheduleInfoDaysOfMonthList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ScheduleInfoDaysOfMonthList>;
-
 /** Schedule information for the Job Definition. */
 export interface ScheduleInfo {
   /** Type of schedule -- Monthly, Weekly, or Daily */
@@ -830,15 +596,11 @@ export interface ScheduleInfo {
   /** Repeat interval used for sub-daily schedules. */
   repeatInterval?: string;
 }
-const ScheduleInfo = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ScheduleInfo>;
-
 /** The checksum validation mode for the job definition. */
 export type JobDefinitionPropertiesDataIntegrityValidation =
   | "SaveVerifyFileMD5"
   | "SaveFileMD5"
   | "None";
-const JobDefinitionPropertiesDataIntegrityValidation = S.String;
-
 /** Job definition properties. */
 export interface JobDefinitionProperties {
   /** A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for migrating data between cloud to cloud. */
@@ -892,11 +654,6 @@ export interface JobDefinitionProperties {
   /** The last time the mover was synchronized. */
   moverSyncedUntil?: string;
 }
-const JobDefinitionProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<JobDefinitionProperties>;
-
 export interface GetJobDefinitionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -909,11 +666,6 @@ export interface GetJobDefinitionResponse {
   /** Job definition properties. */
   properties: JobDefinitionProperties;
 }
-const GetJobDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GetJobDefinitionResponse>;
-
 export interface GetJobRunRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -928,16 +680,10 @@ export interface GetJobRunRequest {
   /** The name of the Job Run resource. */
   jobRunName: string;
 }
-const GetJobRunRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<GetJobRunRequest>;
-
 /** The status of Agent's scanning of source. */
 export type JobRunScanStatus = "NotStarted" | "Scanning" | "Completed";
-const JobRunScanStatus = S.String;
-
 /** Trigger type for the job run. Default is manual. */
 export type JobRunPropertiesTriggerType = "Manual" | "Scheduled";
-const JobRunPropertiesTriggerType = S.String;
-
 /** Error type */
 export interface JobRunError {
   /** Error code of the given entry. */
@@ -947,8 +693,6 @@ export interface JobRunError {
   /** Target of the given error entry. */
   target?: string;
 }
-const JobRunError = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<JobRunError>;
-
 /** Warning type */
 export interface JobRunWarning {
   /** Error code of the given entry. */
@@ -958,15 +702,8 @@ export interface JobRunWarning {
   /** Target of the given error entry. */
   target?: string;
 }
-const JobRunWarning = JobRunError as any as S.Schema<JobRunWarning>;
-
 /** Warning details. */
 export type JobRunPropertiesWarningsList = Array<JobRunWarning>;
-const JobRunPropertiesWarningsList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<JobRunPropertiesWarningsList>;
-
 /** Job run properties. */
 export interface JobRunProperties {
   /** The state of the job execution. */
@@ -1032,8 +769,6 @@ export interface JobRunProperties {
   /** The provisioning state of this resource. */
   provisioningState?: ProvisioningState;
 }
-const JobRunProperties = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<JobRunProperties>;
-
 export interface GetJobRunResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1046,8 +781,6 @@ export interface GetJobRunResponse {
   /** Job run properties. */
   properties?: JobRunProperties;
 }
-const GetJobRunResponse = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetJobRunResponse>;
-
 export interface GetProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1058,8 +791,6 @@ export interface GetProjectRequest {
   /** The name of the Project resource. */
   projectName: string;
 }
-const GetProjectRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<GetProjectRequest>;
-
 /** Project properties. */
 export interface ProjectProperties {
   /** A description for the Project. */
@@ -1067,8 +798,6 @@ export interface ProjectProperties {
   /** The provisioning state of this resource. */
   provisioningState?: ProvisioningState;
 }
-const ProjectProperties = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ProjectProperties>;
-
 export interface GetProjectResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1081,8 +810,6 @@ export interface GetProjectResponse {
   /** Project properties. */
   properties?: ProjectProperties;
 }
-const GetProjectResponse = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<GetProjectResponse>;
-
 export interface GetStorageMoverRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1091,18 +818,8 @@ export interface GetStorageMoverRequest {
   /** The name of the Storage Mover resource. */
   storageMoverName: string;
 }
-const GetStorageMoverRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetStorageMoverRequest>;
-
 /** Resource tags. */
 export type GetStorageMoverResponseTagsMap = { [key: string]: string | undefined };
-const GetStorageMoverResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetStorageMoverResponseTagsMap>;
-
 /** The resource specific properties for the Storage Mover resource. */
 export interface StorageMoverProperties {
   /** A description for the Storage Mover. */
@@ -1110,8 +827,6 @@ export interface StorageMoverProperties {
   /** The provisioning state of this resource. */
   provisioningState?: ProvisioningState;
 }
-const StorageMoverProperties = ProjectProperties as any as S.Schema<StorageMoverProperties>;
-
 export interface GetStorageMoverResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1128,32 +843,20 @@ export interface GetStorageMoverResponse {
   /** The resource specific properties for the Storage Mover resource. */
   properties?: StorageMoverProperties;
 }
-const GetStorageMoverResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GetStorageMoverResponse>;
-
 /** The type of the Job. */
 export type JobDefinitionPropertiesInputJobType =
   | "OnPremToCloud"
   | "CloudToCloud"
   | "OnPremToCloudAgentLess";
-const JobDefinitionPropertiesInputJobType = S.String;
-
 /** The list of cloud endpoints to migrate. */
 export type JobDefinitionPropertiesInputSourceTargetMap = UserAssignedIdentityInput;
 /** List of connections associated to this job */
 export type JobDefinitionPropertiesInputConnectionsList = Array<string>;
-const JobDefinitionPropertiesInputConnectionsList =
-  ConnectionPropertiesInputJobListList as any as S.Schema<JobDefinitionPropertiesInputConnectionsList>;
-
 /** The checksum validation mode for the job definition. */
 export type JobDefinitionPropertiesInputDataIntegrityValidation =
   | "SaveVerifyFileMD5"
   | "SaveFileMD5"
   | "None";
-const JobDefinitionPropertiesInputDataIntegrityValidation = S.String;
-
 /** Job definition properties. */
 export interface JobDefinitionPropertiesInput {
   /** A description for the Job Definition. OnPremToCloud is for migrating data from on-premises to cloud. CloudToCloud is for migrating data between cloud to cloud. */
@@ -1193,11 +896,6 @@ export interface JobDefinitionPropertiesInput {
   /** The last time the mover was synchronized. */
   moverSyncedUntil?: string;
 }
-const JobDefinitionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<JobDefinitionPropertiesInput>;
-
 export interface JobDefinitionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1212,11 +910,6 @@ export interface JobDefinitionsCreateOrUpdateRequest {
   /** Job definition properties. */
   properties: JobDefinitionPropertiesInput;
 }
-const JobDefinitionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<JobDefinitionsCreateOrUpdateRequest>;
-
 export interface JobDefinitionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1229,11 +922,6 @@ export interface JobDefinitionsCreateOrUpdateResponse {
   /** Job definition properties. */
   properties: JobDefinitionProperties;
 }
-const JobDefinitionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<JobDefinitionsCreateOrUpdateResponse>;
-
 export interface JobDefinitionsReconcileJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1246,18 +934,11 @@ export interface JobDefinitionsReconcileJobRequest {
   /** The name of the Job Definition resource. */
   jobDefinitionName: string;
 }
-const JobDefinitionsReconcileJobRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<JobDefinitionsReconcileJobRequest>;
-
 /** Response that identifies a Job Run. */
 export interface JobRunResourceId {
   /** Fully qualified resource id of the Job Run. */
   jobRunResourceId?: string;
 }
-const JobRunResourceId = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<JobRunResourceId>;
-
 export interface ListAgentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1266,8 +947,6 @@ export interface ListAgentsRequest {
   /** The name of the Storage Mover resource. */
   storageMoverName: string;
 }
-const ListAgentsRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ListAgentsRequest>;
-
 /** The Agent resource. */
 export interface Agent {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1280,12 +959,8 @@ export interface Agent {
   systemData?: SystemData;
   properties: AgentProperties;
 }
-const Agent = GetAgentResponse as any as S.Schema<Agent>;
-
 /** The Agent items on this page */
 export type AgentListValueList = Array<Agent>;
-const AgentListValueList = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<AgentListValueList>;
-
 /** List of Agents. */
 export interface AgentList {
   /** The Agent items on this page */
@@ -1293,8 +968,6 @@ export interface AgentList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const AgentList = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<AgentList>;
-
 export interface ListConnectionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1303,11 +976,6 @@ export interface ListConnectionsRequest {
   /** The name of the Storage Mover resource. */
   storageMoverName: string;
 }
-const ListConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListConnectionsRequest>;
-
 /** The Connection resource. */
 export interface Connection {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1321,15 +989,8 @@ export interface Connection {
   /** Connection properties. */
   properties: ConnectionProperties;
 }
-const Connection = GetConnectionResponse as any as S.Schema<Connection>;
-
 /** The Connection items on this page */
 export type ConnectionListValueList = Array<Connection>;
-const ConnectionListValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ConnectionListValueList>;
-
 /** List of Connections. */
 export interface ConnectionList {
   /** The Connection items on this page */
@@ -1337,8 +998,6 @@ export interface ConnectionList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ConnectionList = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ConnectionList>;
-
 export interface ListEndpointsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1347,8 +1006,6 @@ export interface ListEndpointsRequest {
   /** The name of the Storage Mover resource. */
   storageMoverName: string;
 }
-const ListEndpointsRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ListEndpointsRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type EndpointIdentity = EndpointsCreateOrUpdateResponseIdentity;
 /** The Endpoint resource, which contains information about file sources and targets. */
@@ -1366,15 +1023,8 @@ export interface Endpoint {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EndpointsCreateOrUpdateResponseIdentity;
 }
-const Endpoint = GetEndpointResponse as any as S.Schema<Endpoint>;
-
 /** The Endpoint items on this page */
 export type EndpointListValueList = Array<Endpoint>;
-const EndpointListValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<EndpointListValueList>;
-
 /** List of Endpoints. */
 export interface EndpointList {
   /** The Endpoint items on this page */
@@ -1382,8 +1032,6 @@ export interface EndpointList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const EndpointList = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<EndpointList>;
-
 export interface ListJobDefinitionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1394,11 +1042,6 @@ export interface ListJobDefinitionsRequest {
   /** The name of the Project resource. */
   projectName: string;
 }
-const ListJobDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListJobDefinitionsRequest>;
-
 /** The Job Definition resource. */
 export interface JobDefinition {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1412,15 +1055,8 @@ export interface JobDefinition {
   /** Job definition properties. */
   properties: JobDefinitionProperties;
 }
-const JobDefinition = GetJobDefinitionResponse as any as S.Schema<JobDefinition>;
-
 /** The JobDefinition items on this page */
 export type JobDefinitionListValueList = Array<JobDefinition>;
-const JobDefinitionListValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<JobDefinitionListValueList>;
-
 /** List of Job Definitions. */
 export interface JobDefinitionList {
   /** The JobDefinition items on this page */
@@ -1428,8 +1064,6 @@ export interface JobDefinitionList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const JobDefinitionList = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<JobDefinitionList>;
-
 export interface ListJobRunsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1442,8 +1076,6 @@ export interface ListJobRunsRequest {
   /** The name of the Job Definition resource. */
   jobDefinitionName: string;
 }
-const ListJobRunsRequest = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ListJobRunsRequest>;
-
 /** The Job Run resource. */
 export interface JobRun {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1457,12 +1089,8 @@ export interface JobRun {
   /** Job run properties. */
   properties?: JobRunProperties;
 }
-const JobRun = GetJobRunResponse as any as S.Schema<JobRun>;
-
 /** The JobRun items on this page */
 export type JobRunListValueList = Array<JobRun>;
-const JobRunListValueList = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<JobRunListValueList>;
-
 /** List of Job Runs. */
 export interface JobRunList {
   /** The JobRun items on this page */
@@ -1470,14 +1098,7 @@ export interface JobRunList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const JobRunList = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<JobRunList>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -1489,16 +1110,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -1512,26 +1127,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListProjectsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1540,8 +1143,6 @@ export interface ListProjectsRequest {
   /** The name of the Storage Mover resource. */
   storageMoverName: string;
 }
-const ListProjectsRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<ListProjectsRequest>;
-
 /** The Project resource. */
 export interface Project {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1555,15 +1156,8 @@ export interface Project {
   /** Project properties. */
   properties?: ProjectProperties;
 }
-const Project = GetProjectResponse as any as S.Schema<Project>;
-
 /** The Project items on this page */
 export type ProjectListValueList = Array<Project>;
-const ProjectListValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ProjectListValueList>;
-
 /** List of Project resources. */
 export interface ProjectList {
   /** The Project items on this page */
@@ -1571,17 +1165,10 @@ export interface ProjectList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ProjectList = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<ProjectList>;
-
 export interface ListStorageMoverBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListStorageMoverBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListStorageMoverBySubscriptionRequest>;
-
 /** Resource tags. */
 export type StorageMoverTagsMap = { [key: string]: string | undefined };
 /** The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints. */
@@ -1601,15 +1188,8 @@ export interface StorageMover {
   /** The resource specific properties for the Storage Mover resource. */
   properties?: StorageMoverProperties;
 }
-const StorageMover = GetStorageMoverResponse as any as S.Schema<StorageMover>;
-
 /** The StorageMover items on this page */
 export type StorageMoverListValueList = Array<StorageMover>;
-const StorageMoverListValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<StorageMoverListValueList>;
-
 /** List of Storage Movers. */
 export interface StorageMoverList {
   /** The StorageMover items on this page */
@@ -1617,29 +1197,17 @@ export interface StorageMoverList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const StorageMoverList = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<StorageMoverList>;
-
 export interface ListStorageMoversRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListStorageMoversRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ListStorageMoversRequest>;
-
 /** Project properties. */
 export interface ProjectPropertiesInput {
   /** A description for the Project. */
   description?: string;
 }
-const ProjectPropertiesInput = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ProjectPropertiesInput>;
-
 export interface ProjectsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1652,11 +1220,6 @@ export interface ProjectsCreateOrUpdateRequest {
   /** Project properties. */
   properties?: ProjectPropertiesInput;
 }
-const ProjectsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ProjectsCreateOrUpdateRequest>;
-
 export interface ProjectsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1669,11 +1232,6 @@ export interface ProjectsCreateOrUpdateResponse {
   /** Project properties. */
   properties?: ProjectProperties;
 }
-const ProjectsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ProjectsCreateOrUpdateResponse>;
-
 export interface StartJobDefinitionJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1686,11 +1244,6 @@ export interface StartJobDefinitionJobRequest {
   /** The name of the Job Definition resource. */
   jobDefinitionName: string;
 }
-const StartJobDefinitionJobRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<StartJobDefinitionJobRequest>;
-
 export interface StopJobDefinitionJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1703,26 +1256,13 @@ export interface StopJobDefinitionJobRequest {
   /** The name of the Job Definition resource. */
   jobDefinitionName: string;
 }
-const StopJobDefinitionJobRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<StopJobDefinitionJobRequest>;
-
 /** Resource tags. */
 export type StorageMoversCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const StorageMoversCreateOrUpdateRequestTagsMap =
-  GetStorageMoverResponseTagsMap as any as S.Schema<StorageMoversCreateOrUpdateRequestTagsMap>;
-
 /** The resource specific properties for the Storage Mover resource. */
 export interface StorageMoverPropertiesInput {
   /** A description for the Storage Mover. */
   description?: string;
 }
-const StorageMoverPropertiesInput = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<StorageMoverPropertiesInput>;
-
 export interface StorageMoversCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1737,16 +1277,8 @@ export interface StorageMoversCreateOrUpdateRequest {
   /** The resource specific properties for the Storage Mover resource. */
   properties?: StorageMoverPropertiesInput;
 }
-const StorageMoversCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<StorageMoversCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type StorageMoversCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const StorageMoversCreateOrUpdateResponseTagsMap =
-  GetStorageMoverResponseTagsMap as any as S.Schema<StorageMoversCreateOrUpdateResponseTagsMap>;
-
 export interface StorageMoversCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1763,22 +1295,12 @@ export interface StorageMoversCreateOrUpdateResponse {
   /** The resource specific properties for the Storage Mover resource. */
   properties?: StorageMoverProperties;
 }
-const StorageMoversCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<StorageMoversCreateOrUpdateResponse>;
-
 export interface AgentUpdateProperties {
   /** A description for the Agent. */
   description?: string;
   /** The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time. */
   uploadLimitSchedule?: UploadLimitSchedule;
 }
-const AgentUpdateProperties = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<AgentUpdateProperties>;
-
 export interface UpdateAgentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1790,8 +1312,6 @@ export interface UpdateAgentRequest {
   agentName: string;
   properties?: AgentUpdateProperties;
 }
-const UpdateAgentRequest = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<UpdateAgentRequest>;
-
 export interface UpdateAgentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1803,8 +1323,6 @@ export interface UpdateAgentResponse {
   systemData?: SystemData;
   properties: AgentProperties;
 }
-const UpdateAgentResponse = GetAgentResponse as any as S.Schema<UpdateAgentResponse>;
-
 /** The Endpoint resource, which contains information about file sources and targets. */
 export interface EndpointBaseUpdateProperties {
   /** The Endpoint resource type. */
@@ -1818,11 +1336,6 @@ export interface EndpointBaseUpdateProperties {
   /** Storage account ARM IDs allowed for cross-tenant transfers (string array). */
   allowedStorageAccounts?: unknown;
 }
-const EndpointBaseUpdateProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<EndpointBaseUpdateProperties>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateEndpointRequestIdentity = EndpointsCreateOrUpdateRequestIdentity;
 export interface UpdateEndpointRequest {
@@ -1839,11 +1352,6 @@ export interface UpdateEndpointRequest {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EndpointsCreateOrUpdateRequestIdentity;
 }
-const UpdateEndpointRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<UpdateEndpointRequest>;
-
 /** Managed service identity (system assigned and/or user assigned identities) */
 export type UpdateEndpointResponseIdentity = EndpointsCreateOrUpdateResponseIdentity;
 export interface UpdateEndpointResponse {
@@ -1860,17 +1368,10 @@ export interface UpdateEndpointResponse {
   /** Managed service identity (system assigned and/or user assigned identities) */
   identity?: EndpointsCreateOrUpdateResponseIdentity;
 }
-const UpdateEndpointResponse = GetEndpointResponse as any as S.Schema<UpdateEndpointResponse>;
-
 /** List of connections associated to this job */
 export type JobDefinitionUpdatePropertiesConnectionsList = Array<string>;
-const JobDefinitionUpdatePropertiesConnectionsList =
-  ConnectionPropertiesInputJobListList as any as S.Schema<JobDefinitionUpdatePropertiesConnectionsList>;
-
 /** The Data integrity validation mode. */
 export type DataIntegrityValidation = "SaveVerifyFileMD5" | "SaveFileMD5" | "None";
-const DataIntegrityValidation = S.String;
-
 /** Job definition properties. */
 export interface JobDefinitionUpdateProperties {
   /** A description for the Job Definition. */
@@ -1890,11 +1391,6 @@ export interface JobDefinitionUpdateProperties {
   /** The last time the mover was synchronized. */
   moverSyncedUntil?: string;
 }
-const JobDefinitionUpdateProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<JobDefinitionUpdateProperties>;
-
 export interface UpdateJobDefinitionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1909,11 +1405,6 @@ export interface UpdateJobDefinitionRequest {
   /** Job definition properties. */
   properties?: JobDefinitionUpdateProperties;
 }
-const UpdateJobDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<UpdateJobDefinitionRequest>;
-
 export interface UpdateJobDefinitionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1926,9 +1417,6 @@ export interface UpdateJobDefinitionResponse {
   /** Job definition properties. */
   properties: JobDefinitionProperties;
 }
-const UpdateJobDefinitionResponse =
-  JobDefinitionsCreateOrUpdateResponse as any as S.Schema<UpdateJobDefinitionResponse>;
-
 /** Project properties. */
 export type ProjectUpdateProperties = ProjectPropertiesInput;
 export interface UpdateProjectRequest {
@@ -1943,11 +1431,6 @@ export interface UpdateProjectRequest {
   /** Project properties. */
   properties?: ProjectPropertiesInput;
 }
-const UpdateProjectRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<UpdateProjectRequest>;
-
 export interface UpdateProjectResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1960,15 +1443,10 @@ export interface UpdateProjectResponse {
   /** Project properties. */
   properties?: ProjectProperties;
 }
-const UpdateProjectResponse = GetProjectResponse as any as S.Schema<UpdateProjectResponse>;
-
 /** The resource specific properties for the Storage Mover resource. */
 export type StorageMoverUpdateProperties = StorageMoverPropertiesInput;
 /** Resource tags. */
 export type UpdateStorageMoverRequestTagsMap = { [key: string]: string | undefined };
-const UpdateStorageMoverRequestTagsMap =
-  GetStorageMoverResponseTagsMap as any as S.Schema<UpdateStorageMoverRequestTagsMap>;
-
 export interface UpdateStorageMoverRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1981,11 +1459,6 @@ export interface UpdateStorageMoverRequest {
   /** Resource tags. */
   tags?: UpdateStorageMoverRequestTagsMap;
 }
-const UpdateStorageMoverRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<UpdateStorageMoverRequest>;
-
 /** Resource tags. */
 export type UpdateStorageMoverResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateStorageMoverResponse {
@@ -2004,9 +1477,6 @@ export interface UpdateStorageMoverResponse {
   /** The resource specific properties for the Storage Mover resource. */
   properties?: StorageMoverProperties;
 }
-const UpdateStorageMoverResponse =
-  StorageMoversCreateOrUpdateResponse as any as S.Schema<UpdateStorageMoverResponse>;
-
 export type AgentsCreateOrUpdateError = AzureOpError;
 /** Creates or updates an Agent resource, which references a hybrid compute machine that can run jobs. */
 export const AgentsCreateOrUpdate: API.OperationMethod<
@@ -2015,8 +1485,8 @@ export const AgentsCreateOrUpdate: API.OperationMethod<
   AgentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AgentsCreateOrUpdateRequest,
-  output: AgentsCreateOrUpdateResponse,
+  input: __S(6) as any as S.Schema<AgentsCreateOrUpdateRequest>,
+  output: __S(10) as any as S.Schema<AgentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2030,8 +1500,8 @@ export const ConnectionsCreateOrUpdate: API.OperationMethod<
   ConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConnectionsCreateOrUpdateRequest,
-  output: ConnectionsCreateOrUpdateResponse,
+  input: __S(13) as any as S.Schema<ConnectionsCreateOrUpdateRequest>,
+  output: __S(15) as any as S.Schema<ConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2045,8 +1515,8 @@ export const DeleteAgent: API.OperationMethod<
   DeleteAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAgentRequest,
-  output: DeleteAgentResponse,
+  input: __S(16) as any as S.Schema<DeleteAgentRequest>,
+  output: __S(17) as any as S.Schema<DeleteAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2060,8 +1530,8 @@ export const DeleteConnection: API.OperationMethod<
   DeleteConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConnectionRequest,
-  output: DeleteConnectionResponse,
+  input: __S(18) as any as S.Schema<DeleteConnectionRequest>,
+  output: __S(17) as any as S.Schema<DeleteConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2075,8 +1545,8 @@ export const DeleteEndpoint: API.OperationMethod<
   DeleteEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEndpointRequest,
-  output: DeleteEndpointResponse,
+  input: __S(19) as any as S.Schema<DeleteEndpointRequest>,
+  output: __S(17) as any as S.Schema<DeleteEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2090,8 +1560,8 @@ export const DeleteJobDefinition: API.OperationMethod<
   DeleteJobDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteJobDefinitionRequest,
-  output: DeleteJobDefinitionResponse,
+  input: __S(20) as any as S.Schema<DeleteJobDefinitionRequest>,
+  output: __S(17) as any as S.Schema<DeleteJobDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2105,8 +1575,8 @@ export const DeleteProject: API.OperationMethod<
   DeleteProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectRequest,
-  output: DeleteProjectResponse,
+  input: __S(21) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(17) as any as S.Schema<DeleteProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2120,8 +1590,8 @@ export const DeleteStorageMover: API.OperationMethod<
   DeleteStorageMoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageMoverRequest,
-  output: DeleteStorageMoverResponse,
+  input: __S(22) as any as S.Schema<DeleteStorageMoverRequest>,
+  output: __S(17) as any as S.Schema<DeleteStorageMoverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2135,8 +1605,8 @@ export const EndpointsCreateOrUpdate: API.OperationMethod<
   EndpointsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndpointsCreateOrUpdateRequest,
-  output: EndpointsCreateOrUpdateResponse,
+  input: __S(26) as any as S.Schema<EndpointsCreateOrUpdateRequest>,
+  output: __S(31) as any as S.Schema<EndpointsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2150,8 +1620,8 @@ export const GetAgent: API.OperationMethod<
   GetAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgentRequest,
-  output: GetAgentResponse,
+  input: __S(32) as any as S.Schema<GetAgentRequest>,
+  output: __S(33) as any as S.Schema<GetAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2165,8 +1635,8 @@ export const GetConnection: API.OperationMethod<
   GetConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectionRequest,
-  output: GetConnectionResponse,
+  input: __S(34) as any as S.Schema<GetConnectionRequest>,
+  output: __S(35) as any as S.Schema<GetConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2180,8 +1650,8 @@ export const GetEndpoint: API.OperationMethod<
   GetEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEndpointRequest,
-  output: GetEndpointResponse,
+  input: __S(36) as any as S.Schema<GetEndpointRequest>,
+  output: __S(37) as any as S.Schema<GetEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2195,8 +1665,8 @@ export const GetJobDefinition: API.OperationMethod<
   GetJobDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJobDefinitionRequest,
-  output: GetJobDefinitionResponse,
+  input: __S(38) as any as S.Schema<GetJobDefinitionRequest>,
+  output: __S(50) as any as S.Schema<GetJobDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2210,8 +1680,8 @@ export const GetJobRun: API.OperationMethod<
   GetJobRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJobRunRequest,
-  output: GetJobRunResponse,
+  input: __S(51) as any as S.Schema<GetJobRunRequest>,
+  output: __S(55) as any as S.Schema<GetJobRunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2225,8 +1695,8 @@ export const GetProject: API.OperationMethod<
   GetProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectRequest,
-  output: GetProjectResponse,
+  input: __S(56) as any as S.Schema<GetProjectRequest>,
+  output: __S(58) as any as S.Schema<GetProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2240,8 +1710,8 @@ export const GetStorageMover: API.OperationMethod<
   GetStorageMoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStorageMoverRequest,
-  output: GetStorageMoverResponse,
+  input: __S(59) as any as S.Schema<GetStorageMoverRequest>,
+  output: __S(61) as any as S.Schema<GetStorageMoverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2255,8 +1725,8 @@ export const JobDefinitionsCreateOrUpdate: API.OperationMethod<
   JobDefinitionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JobDefinitionsCreateOrUpdateRequest,
-  output: JobDefinitionsCreateOrUpdateResponse,
+  input: __S(63) as any as S.Schema<JobDefinitionsCreateOrUpdateRequest>,
+  output: __S(64) as any as S.Schema<JobDefinitionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2270,8 +1740,8 @@ export const JobDefinitionsReconcileJob: API.OperationMethod<
   JobDefinitionsReconcileJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JobDefinitionsReconcileJobRequest,
-  output: JobRunResourceId,
+  input: __S(65) as any as S.Schema<JobDefinitionsReconcileJobRequest>,
+  output: __S(66) as any as S.Schema<JobRunResourceId>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2285,8 +1755,8 @@ export const ListAgents: API.OperationMethod<
   ListAgentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAgentsRequest,
-  output: AgentList,
+  input: __S(67) as any as S.Schema<ListAgentsRequest>,
+  output: __S(69) as any as S.Schema<AgentList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2300,8 +1770,8 @@ export const ListConnections: API.OperationMethod<
   ListConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConnectionsRequest,
-  output: ConnectionList,
+  input: __S(70) as any as S.Schema<ListConnectionsRequest>,
+  output: __S(72) as any as S.Schema<ConnectionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2315,8 +1785,8 @@ export const ListEndpoints: API.OperationMethod<
   ListEndpointsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEndpointsRequest,
-  output: EndpointList,
+  input: __S(73) as any as S.Schema<ListEndpointsRequest>,
+  output: __S(75) as any as S.Schema<EndpointList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2330,8 +1800,8 @@ export const ListJobDefinitions: API.OperationMethod<
   ListJobDefinitionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListJobDefinitionsRequest,
-  output: JobDefinitionList,
+  input: __S(76) as any as S.Schema<ListJobDefinitionsRequest>,
+  output: __S(78) as any as S.Schema<JobDefinitionList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2345,8 +1815,8 @@ export const ListJobRuns: API.OperationMethod<
   ListJobRunsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListJobRunsRequest,
-  output: JobRunList,
+  input: __S(79) as any as S.Schema<ListJobRunsRequest>,
+  output: __S(81) as any as S.Schema<JobRunList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2360,8 +1830,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(82) as any as S.Schema<ListOperationsRequest>,
+  output: __S(86) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2375,8 +1845,8 @@ export const ListProjects: API.OperationMethod<
   ListProjectsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsRequest,
-  output: ProjectList,
+  input: __S(87) as any as S.Schema<ListProjectsRequest>,
+  output: __S(89) as any as S.Schema<ProjectList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2390,8 +1860,8 @@ export const ListStorageMoverBySubscription: API.OperationMethod<
   ListStorageMoverBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorageMoverBySubscriptionRequest,
-  output: StorageMoverList,
+  input: __S(90) as any as S.Schema<ListStorageMoverBySubscriptionRequest>,
+  output: __S(92) as any as S.Schema<StorageMoverList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2405,8 +1875,8 @@ export const ListStorageMovers: API.OperationMethod<
   ListStorageMoversError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorageMoversRequest,
-  output: StorageMoverList,
+  input: __S(93) as any as S.Schema<ListStorageMoversRequest>,
+  output: __S(92) as any as S.Schema<StorageMoverList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2420,8 +1890,8 @@ export const ProjectsCreateOrUpdate: API.OperationMethod<
   ProjectsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProjectsCreateOrUpdateRequest,
-  output: ProjectsCreateOrUpdateResponse,
+  input: __S(95) as any as S.Schema<ProjectsCreateOrUpdateRequest>,
+  output: __S(96) as any as S.Schema<ProjectsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2435,8 +1905,8 @@ export const StartJobDefinitionJob: API.OperationMethod<
   StartJobDefinitionJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartJobDefinitionJobRequest,
-  output: JobRunResourceId,
+  input: __S(97) as any as S.Schema<StartJobDefinitionJobRequest>,
+  output: __S(66) as any as S.Schema<JobRunResourceId>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2450,8 +1920,8 @@ export const StopJobDefinitionJob: API.OperationMethod<
   StopJobDefinitionJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopJobDefinitionJobRequest,
-  output: JobRunResourceId,
+  input: __S(98) as any as S.Schema<StopJobDefinitionJobRequest>,
+  output: __S(66) as any as S.Schema<JobRunResourceId>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2465,8 +1935,8 @@ export const StorageMoversCreateOrUpdate: API.OperationMethod<
   StorageMoversCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StorageMoversCreateOrUpdateRequest,
-  output: StorageMoversCreateOrUpdateResponse,
+  input: __S(100) as any as S.Schema<StorageMoversCreateOrUpdateRequest>,
+  output: __S(101) as any as S.Schema<StorageMoversCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2480,8 +1950,8 @@ export const UpdateAgent: API.OperationMethod<
   UpdateAgentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAgentRequest,
-  output: UpdateAgentResponse,
+  input: __S(103) as any as S.Schema<UpdateAgentRequest>,
+  output: __S(33) as any as S.Schema<UpdateAgentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2495,8 +1965,8 @@ export const UpdateEndpoint: API.OperationMethod<
   UpdateEndpointError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEndpointRequest,
-  output: UpdateEndpointResponse,
+  input: __S(105) as any as S.Schema<UpdateEndpointRequest>,
+  output: __S(37) as any as S.Schema<UpdateEndpointResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2510,8 +1980,8 @@ export const UpdateJobDefinition: API.OperationMethod<
   UpdateJobDefinitionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateJobDefinitionRequest,
-  output: UpdateJobDefinitionResponse,
+  input: __S(107) as any as S.Schema<UpdateJobDefinitionRequest>,
+  output: __S(64) as any as S.Schema<UpdateJobDefinitionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2525,8 +1995,8 @@ export const UpdateProject: API.OperationMethod<
   UpdateProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectRequest,
-  output: UpdateProjectResponse,
+  input: __S(108) as any as S.Schema<UpdateProjectRequest>,
+  output: __S(58) as any as S.Schema<UpdateProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2540,8 +2010,8 @@ export const UpdateStorageMover: API.OperationMethod<
   UpdateStorageMoverError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStorageMoverRequest,
-  output: UpdateStorageMoverResponse,
+  input: __S(109) as any as S.Schema<UpdateStorageMoverRequest>,
+  output: __S(101) as any as S.Schema<UpdateStorageMoverResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2554,28 +2024,28 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           hour: S.Number,
-          minute: S.optional(TimeMinute),
+          minute: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Time" });
     case 1:
-      return S.Array(DayOfWeek);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          startTime: Time,
-          endTime: Time,
-          days: UploadLimitWeeklyRecurrenceDaysList,
+          startTime: __S(0),
+          endTime: __S(0),
+          days: __S(1),
           limitInMbps: S.Number,
         }),
       ).annotate({
         identifier: "UploadLimitWeeklyRecurrence",
       });
     case 3:
-      return S.Array(UploadLimitWeeklyRecurrence);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          weeklyRecurrences: S.optional(UploadLimitScheduleWeeklyRecurrencesList),
+          weeklyRecurrences: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "UploadLimitSchedule" });
     case 5:
@@ -2584,7 +2054,7 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           arcResourceId: S.String,
           arcVmUuid: S.String,
-          uploadLimitSchedule: S.optional(UploadLimitSchedule),
+          uploadLimitSchedule: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "AgentPropertiesInput" });
     case 6:
@@ -2594,7 +2064,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageMoverName: S.String.pipe(T.Label()),
           agentName: S.String.pipe(T.Label()),
-          properties: AgentPropertiesInput,
+          properties: __S(5),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2610,10 +2080,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -2637,16 +2107,16 @@ function __c1(j: number): any {
           agentVersion: S.optional(S.String),
           arcResourceId: S.String,
           arcVmUuid: S.String,
-          agentStatus: S.optional(AgentStatus),
+          agentStatus: S.optional(S.String),
           lastStatusUpdate: S.optional(S.String),
           localIPAddress: S.optional(S.String),
           memoryInMB: S.optional(S.Number),
           numberOfCores: S.optional(S.Number),
           uptimeInSeconds: S.optional(S.Number),
           timeZone: S.optional(S.String),
-          uploadLimitSchedule: S.optional(UploadLimitSchedule),
-          errorDetails: S.optional(AgentPropertiesErrorDetails),
-          provisioningState: S.optional(ProvisioningState),
+          uploadLimitSchedule: S.optional(__S(4)),
+          errorDetails: S.optional(__S(8)),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentProperties" });
     case 2:
@@ -2655,8 +2125,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: AgentProperties,
+          systemData: S.optional(__S(7)),
+          properties: __S(9),
         }),
       ).annotate({
         identifier: "AgentsCreateOrUpdateResponse",
@@ -2668,7 +2138,7 @@ function __c1(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           privateLinkServiceId: S.String,
-          jobList: S.optional(ConnectionPropertiesInputJobListList),
+          jobList: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "ConnectionPropertiesInput",
@@ -2680,7 +2150,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageMoverName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
-          properties: ConnectionPropertiesInput,
+          properties: __S(12),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2696,12 +2166,12 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          connectionStatus: S.optional(ConnectionStatus),
+          connectionStatus: S.optional(S.String),
           privateLinkServiceId: S.String,
           privateEndpointName: S.optional(S.String),
           privateEndpointResourceId: S.optional(S.String),
-          jobList: S.optional(ConnectionPropertiesJobListList),
-          provisioningState: S.optional(ProvisioningState),
+          jobList: S.optional(__S(11)),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectionProperties" });
     case 7:
@@ -2710,8 +2180,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ConnectionProperties,
+          systemData: S.optional(__S(7)),
+          properties: __S(14),
         }),
       ).annotate({
         identifier: "ConnectionsCreateOrUpdateResponse",
@@ -2827,9 +2297,9 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          endpointType: EndpointType,
+          endpointType: S.String,
           description: S.optional(S.String),
-          endpointKind: S.optional(EndpointKind),
+          endpointKind: S.optional(S.String),
           storageAccountResourceId: S.optional(S.String),
           blobContainerName: S.optional(S.String),
           fileShareName: S.optional(S.String),
@@ -2854,12 +2324,12 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, UserAssignedIdentityInput);
+      return S.Record(S.String, __S(17));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentitiesInput)),
+          type: S.String,
+          userAssignedIdentities: S.optional(S.NullOr(__S(24))),
         }),
       ).annotate({
         identifier: "EndpointsCreateOrUpdateRequestIdentity",
@@ -2871,8 +2341,8 @@ function __c3(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageMoverName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          properties: EndpointBasePropertiesInput,
-          identity: S.optional(EndpointsCreateOrUpdateRequestIdentity),
+          properties: __S(23),
+          identity: S.optional(__S(25)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2887,10 +2357,10 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          endpointType: EndpointType,
+          endpointType: S.String,
           description: S.optional(S.String),
-          endpointKind: S.optional(EndpointKind),
-          provisioningState: S.optional(ProvisioningState),
+          endpointKind: S.optional(S.String),
+          provisioningState: S.optional(S.String),
           storageAccountResourceId: S.optional(S.String),
           blobContainerName: S.optional(S.String),
           fileShareName: S.optional(S.String),
@@ -2916,14 +2386,14 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 5:
-      return S.Record(S.String, UserAssignedIdentity);
+      return S.Record(S.String, __S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: ManagedServiceIdentityType,
-          userAssignedIdentities: S.optional(S.NullOr(UserAssignedIdentities)),
+          type: S.String,
+          userAssignedIdentities: S.optional(S.NullOr(__S(29))),
         }),
       ).annotate({
         identifier: "EndpointsCreateOrUpdateResponseIdentity",
@@ -2934,9 +2404,9 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: EndpointBaseProperties,
-          identity: S.optional(EndpointsCreateOrUpdateResponseIdentity),
+          systemData: S.optional(__S(7)),
+          properties: __S(27),
+          identity: S.optional(__S(30)),
         }),
       ).annotate({
         identifier: "EndpointsCreateOrUpdateResponse",
@@ -2967,8 +2437,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: AgentProperties,
+          systemData: S.optional(__S(7)),
+          properties: __S(9),
         }),
       ).annotate({ identifier: "GetAgentResponse" });
     case 2:
@@ -2993,8 +2463,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ConnectionProperties,
+          systemData: S.optional(__S(7)),
+          properties: __S(14),
         }),
       ).annotate({ identifier: "GetConnectionResponse" });
     case 4:
@@ -3019,9 +2489,9 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: EndpointBaseProperties,
-          identity: S.optional(EndpointsCreateOrUpdateResponseIdentity),
+          systemData: S.optional(__S(7)),
+          properties: __S(27),
+          identity: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "GetEndpointResponse" });
     case 6:
@@ -3056,7 +2526,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(SourceEndpointProperties),
+          properties: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "SourceEndpoint" });
     case 1:
@@ -3071,22 +2541,22 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(TargetEndpointProperties),
+          properties: S.optional(__S(41)),
         }),
       ).annotate({ identifier: "TargetEndpoint" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sourceEndpoint: SourceEndpoint,
-          targetEndpoint: TargetEndpoint,
+          sourceEndpoint: __S(40),
+          targetEndpoint: __S(42),
         }),
       ).annotate({ identifier: "SourceTargetMap" });
     case 4:
-      return S.Array(SourceTargetMap);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(JobDefinitionPropertiesSourceTargetMapValueList),
+          value: S.optional(__S(44)),
         }),
       ).annotate({
         identifier: "JobDefinitionPropertiesSourceTargetMap",
@@ -3095,7 +2565,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           hour: S.optional(S.Number),
-          minute: S.optional(SchedulerTimeMinute),
+          minute: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SchedulerTime" });
     case 7:
@@ -3107,12 +2577,12 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          frequency: S.optional(Frequency),
+          frequency: S.optional(S.String),
           isActive: S.optional(S.Boolean),
-          executionTime: S.optional(SchedulerTime),
+          executionTime: S.optional(__S(46)),
           startDate: S.optional(S.String),
-          daysOfWeek: S.optional(ScheduleInfoDaysOfWeekList),
-          daysOfMonth: S.optional(ScheduleInfoDaysOfMonthList),
+          daysOfWeek: S.optional(__S(11)),
+          daysOfMonth: S.optional(__S(47)),
           cronExpression: S.optional(S.String),
           endDate: S.optional(S.String),
           repeatInterval: S.optional(S.String),
@@ -3122,8 +2592,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          jobType: S.optional(JobDefinitionPropertiesJobType),
-          copyMode: CopyMode,
+          jobType: S.optional(S.String),
+          copyMode: S.String,
           sourceName: S.String,
           sourceResourceId: S.optional(S.String),
           sourceSubpath: S.optional(S.String),
@@ -3132,14 +2602,14 @@ function __c6(j: number): any {
           targetSubpath: S.optional(S.String),
           latestJobRunName: S.optional(S.String),
           latestJobRunResourceId: S.optional(S.String),
-          latestJobRunStatus: S.optional(JobRunStatus),
+          latestJobRunStatus: S.optional(S.String),
           agentName: S.optional(S.String),
           agentResourceId: S.optional(S.String),
-          sourceTargetMap: S.optional(JobDefinitionPropertiesSourceTargetMap),
-          provisioningState: S.optional(ProvisioningState),
-          connections: S.optional(JobDefinitionPropertiesConnectionsList),
-          schedule: S.optional(ScheduleInfo),
-          dataIntegrityValidation: S.optional(JobDefinitionPropertiesDataIntegrityValidation),
+          sourceTargetMap: S.optional(__S(45)),
+          provisioningState: S.optional(S.String),
+          connections: S.optional(__S(11)),
+          schedule: S.optional(__S(48)),
+          dataIntegrityValidation: S.optional(S.String),
           preservePermissions: S.optional(S.Boolean),
           isCrossTenantJob: S.optional(S.Boolean),
           crossTenantEndpointTenantId: S.optional(S.String),
@@ -3154,8 +2624,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: JobDefinitionProperties,
+          systemData: S.optional(__S(7)),
+          properties: __S(49),
         }),
       ).annotate({ identifier: "GetJobDefinitionResponse" });
     case 3:
@@ -3185,17 +2655,17 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "JobRunError" });
     case 5:
-      return S.Array(JobRunWarning);
+      return S.Array(__S(52));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(JobRunStatus),
-          scanStatus: S.optional(JobRunScanStatus),
+          status: S.optional(S.String),
+          scanStatus: S.optional(S.String),
           agentName: S.optional(S.String),
           agentResourceId: S.optional(S.String),
           executionStartTime: S.optional(S.String),
           executionEndTime: S.optional(S.String),
-          triggerType: S.optional(JobRunPropertiesTriggerType),
+          triggerType: S.optional(S.String),
           scheduledExecutionTime: S.optional(S.String),
           lastStatusUpdate: S.optional(S.String),
           itemsScanned: S.optional(S.Number),
@@ -3217,9 +2687,9 @@ function __c6(j: number): any {
           targetResourceId: S.optional(S.String),
           targetProperties: S.optional(S.Unknown),
           jobDefinitionProperties: S.optional(S.Unknown),
-          error: S.optional(JobRunError),
-          warnings: S.optional(JobRunPropertiesWarningsList),
-          provisioningState: S.optional(ProvisioningState),
+          error: S.optional(__S(52)),
+          warnings: S.optional(__S(53)),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobRunProperties" });
     case 7:
@@ -3228,8 +2698,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(JobRunProperties),
+          systemData: S.optional(__S(7)),
+          properties: S.optional(__S(54)),
         }),
       ).annotate({ identifier: "GetJobRunResponse" });
   }
@@ -3256,7 +2726,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectProperties" });
     case 2:
@@ -3265,8 +2735,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ProjectProperties),
+          systemData: S.optional(__S(7)),
+          properties: S.optional(__S(57)),
         }),
       ).annotate({ identifier: "GetProjectResponse" });
     case 3:
@@ -3292,27 +2762,27 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetStorageMoverResponseTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(60)),
           location: S.String,
-          properties: S.optional(StorageMoverProperties),
+          properties: S.optional(__S(57)),
         }),
       ).annotate({ identifier: "GetStorageMoverResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          jobType: S.optional(JobDefinitionPropertiesInputJobType),
-          copyMode: CopyMode,
+          jobType: S.optional(S.String),
+          copyMode: S.String,
           sourceName: S.String,
           sourceSubpath: S.optional(S.String),
           targetName: S.String,
           targetSubpath: S.optional(S.String),
           agentName: S.optional(S.String),
-          sourceTargetMap: S.optional(UserAssignedIdentityInput),
-          connections: S.optional(JobDefinitionPropertiesInputConnectionsList),
-          schedule: S.optional(ScheduleInfo),
-          dataIntegrityValidation: S.optional(JobDefinitionPropertiesInputDataIntegrityValidation),
+          sourceTargetMap: S.optional(__S(17)),
+          connections: S.optional(__S(11)),
+          schedule: S.optional(__S(48)),
+          dataIntegrityValidation: S.optional(S.String),
           preservePermissions: S.optional(S.Boolean),
           isCrossTenantJob: S.optional(S.Boolean),
           crossTenantEndpointTenantId: S.optional(S.String),
@@ -3331,7 +2801,7 @@ function __c7(j: number): any {
           storageMoverName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           jobDefinitionName: S.String.pipe(T.Label()),
-          properties: JobDefinitionPropertiesInput,
+          properties: __S(62),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3353,8 +2823,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: JobDefinitionProperties,
+          systemData: S.optional(__S(7)),
+          properties: __S(49),
         }),
       ).annotate({
         identifier: "JobDefinitionsCreateOrUpdateResponse",
@@ -3400,11 +2870,11 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListAgentsRequest" });
     case 4:
-      return S.Array(Agent);
+      return S.Array(__S(33));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: AgentListValueList,
+          value: __S(68),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AgentList" });
@@ -3424,7 +2894,7 @@ function __c8(j: number): any {
         ),
       ).annotate({ identifier: "ListConnectionsRequest" });
     case 7:
-      return S.Array(Connection);
+      return S.Array(__S(35));
   }
 }
 function __c9(j: number): any {
@@ -3432,7 +2902,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: ConnectionListValueList,
+          value: __S(71),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectionList" });
@@ -3452,11 +2922,11 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "ListEndpointsRequest" });
     case 2:
-      return S.Array(Endpoint);
+      return S.Array(__S(37));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: EndpointListValueList,
+          value: __S(74),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointList" });
@@ -3479,11 +2949,11 @@ function __c9(j: number): any {
         identifier: "ListJobDefinitionsRequest",
       });
     case 5:
-      return S.Array(JobDefinition);
+      return S.Array(__S(50));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: JobDefinitionListValueList,
+          value: __S(77),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobDefinitionList" });
@@ -3509,11 +2979,11 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(JobRun);
+      return S.Array(__S(55));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: JobRunListValueList,
+          value: __S(80),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobRunList" });
@@ -3542,17 +3012,17 @@ function __c10(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(83)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 5:
-      return S.Array(Operation);
+      return S.Array(__S(84));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(85)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -3576,11 +3046,11 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Project);
+      return S.Array(__S(58));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: ProjectListValueList,
+          value: __S(88),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProjectList" });
@@ -3600,11 +3070,11 @@ function __c11(j: number): any {
         identifier: "ListStorageMoverBySubscriptionRequest",
       });
     case 3:
-      return S.Array(StorageMover);
+      return S.Array(__S(61));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: StorageMoverListValueList,
+          value: __S(91),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageMoverList" });
@@ -3635,7 +3105,7 @@ function __c11(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageMoverName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
-          properties: S.optional(ProjectPropertiesInput),
+          properties: S.optional(__S(94)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3657,8 +3127,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ProjectProperties),
+          systemData: S.optional(__S(7)),
+          properties: S.optional(__S(57)),
         }),
       ).annotate({
         identifier: "ProjectsCreateOrUpdateResponse",
@@ -3715,9 +3185,9 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageMoverName: S.String.pipe(T.Label()),
-          tags: S.optional(StorageMoversCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(60)),
           location: S.String,
-          properties: S.optional(StorageMoverPropertiesInput),
+          properties: S.optional(__S(99)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3735,10 +3205,10 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(StorageMoversCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(7)),
+          tags: S.optional(__S(60)),
           location: S.String,
-          properties: S.optional(StorageMoverProperties),
+          properties: S.optional(__S(57)),
         }),
       ).annotate({
         identifier: "StorageMoversCreateOrUpdateResponse",
@@ -3747,7 +3217,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          uploadLimitSchedule: S.optional(UploadLimitSchedule),
+          uploadLimitSchedule: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "AgentUpdateProperties" });
     case 7:
@@ -3757,7 +3227,7 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageMoverName: S.String.pipe(T.Label()),
           agentName: S.String.pipe(T.Label()),
-          properties: S.optional(AgentUpdateProperties),
+          properties: S.optional(__S(102)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3774,7 +3244,7 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          endpointType: EndpointType,
+          endpointType: S.String,
           description: S.optional(S.String),
           credentials: S.optional(S.Unknown),
           enableCrossTenantTransfer: S.optional(S.Boolean),
@@ -3790,8 +3260,8 @@ function __c13(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageMoverName: S.String.pipe(T.Label()),
           endpointName: S.String.pipe(T.Label()),
-          properties: S.optional(EndpointBaseUpdateProperties),
-          identity: S.optional(EndpointsCreateOrUpdateRequestIdentity),
+          properties: S.optional(__S(104)),
+          identity: S.optional(__S(25)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3805,11 +3275,11 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          copyMode: S.optional(CopyMode),
+          copyMode: S.optional(S.String),
           agentName: S.optional(S.String),
-          connections: S.optional(JobDefinitionUpdatePropertiesConnectionsList),
-          dataIntegrityValidation: S.optional(DataIntegrityValidation),
-          schedule: S.optional(ScheduleInfo),
+          connections: S.optional(__S(11)),
+          dataIntegrityValidation: S.optional(S.String),
+          schedule: S.optional(__S(48)),
           syncMode: S.optional(S.String),
           moverSyncedUntil: S.optional(S.String),
         }),
@@ -3824,7 +3294,7 @@ function __c13(j: number): any {
           storageMoverName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           jobDefinitionName: S.String.pipe(T.Label()),
-          properties: S.optional(JobDefinitionUpdateProperties),
+          properties: S.optional(__S(106)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3843,7 +3313,7 @@ function __c13(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageMoverName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
-          properties: S.optional(ProjectPropertiesInput),
+          properties: S.optional(__S(94)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3859,8 +3329,8 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageMoverName: S.String.pipe(T.Label()),
-          properties: S.optional(StorageMoverPropertiesInput),
-          tags: S.optional(UpdateStorageMoverRequestTagsMap),
+          properties: S.optional(__S(99)),
+          tags: S.optional(__S(60)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3872,5 +3342,42 @@ function __c13(j: number): any {
       ).annotate({
         identifier: "UpdateStorageMoverRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
   }
 }

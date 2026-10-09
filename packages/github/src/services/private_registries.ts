@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -53,19 +55,10 @@ export type CreateOrgPrivateRegistryRequestRegistryType =
   | "pub_repository"
   | "python_index"
   | "terraform_registry";
-const CreateOrgPrivateRegistryRequestRegistryType = S.String;
-
 /** Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry. */
 export type CreateOrgPrivateRegistryRequestVisibility = "all" | "private" | "selected";
-const CreateOrgPrivateRegistryRequestVisibility = S.String;
-
 /** An array of repository IDs that can access the organization private registry. You can only provide a list of repository IDs when `visibility` is set to `selected`. You can manage the list of selected repositories using the [Update a private registry for an organization](https://docs.github.com/rest/private-registries/organization-configurations#update-a-private-registry-for-an-organization) endpoint. This field should be omitted if `visibility` is set to `all` or `private`. */
 export type CreateOrgPrivateRegistryRequestSelectedRepositoryIdsList = Array<number>;
-const CreateOrgPrivateRegistryRequestSelectedRepositoryIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateOrgPrivateRegistryRequestSelectedRepositoryIdsList>;
-
 /** The authentication type for the private registry. Defaults to `token` if not specified. Use `oidc_azure`, `oidc_aws`, `oidc_jfrog`, `oidc_cloudsmith`, or `oidc_gcp` for OIDC authentication. */
 export type CreateOrgPrivateRegistryRequestAuthType =
   | "token"
@@ -75,8 +68,6 @@ export type CreateOrgPrivateRegistryRequestAuthType =
   | "oidc_jfrog"
   | "oidc_cloudsmith"
   | "oidc_gcp";
-const CreateOrgPrivateRegistryRequestAuthType = S.String;
-
 export interface CreateOrgPrivateRegistryRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -129,11 +120,6 @@ export interface CreateOrgPrivateRegistryRequest {
   /** The GCP service account email to impersonate. Optional for `oidc_gcp` auth type. If omitted, the federated token is used directly (direct WIF). */
   service_account?: string;
 }
-const CreateOrgPrivateRegistryRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateOrgPrivateRegistryRequest>;
-
 /** The registry type. */
 export type OrgPrivateRegistryConfigurationWithSelectedRepositoriesRegistryType =
   | "maven_repository"
@@ -151,8 +137,6 @@ export type OrgPrivateRegistryConfigurationWithSelectedRepositoriesRegistryType 
   | "pub_repository"
   | "python_index"
   | "terraform_registry";
-const OrgPrivateRegistryConfigurationWithSelectedRepositoriesRegistryType = S.String;
-
 /** The authentication type for the private registry. */
 export type OrgPrivateRegistryConfigurationWithSelectedRepositoriesAuthType =
   | "token"
@@ -162,24 +146,14 @@ export type OrgPrivateRegistryConfigurationWithSelectedRepositoriesAuthType =
   | "oidc_jfrog"
   | "oidc_cloudsmith"
   | "oidc_gcp";
-const OrgPrivateRegistryConfigurationWithSelectedRepositoriesAuthType = S.String;
-
 /** Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry. */
 export type OrgPrivateRegistryConfigurationWithSelectedRepositoriesVisibility =
   | "all"
   | "private"
   | "selected";
-const OrgPrivateRegistryConfigurationWithSelectedRepositoriesVisibility = S.String;
-
 /** An array of repository IDs that can access the organization private registry when `visibility` is set to `selected`. */
 export type OrgPrivateRegistryConfigurationWithSelectedRepositoriesSelectedRepositoryIdsList =
   Array<number>;
-const OrgPrivateRegistryConfigurationWithSelectedRepositoriesSelectedRepositoryIdsList =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    2,
-  ) as any as S.Schema<OrgPrivateRegistryConfigurationWithSelectedRepositoriesSelectedRepositoryIdsList>;
-
 /** Private registry configuration for an organization */
 export interface OrgPrivateRegistryConfigurationWithSelectedRepositories {
   /** The name of the private registry configuration. */
@@ -231,39 +205,19 @@ export interface OrgPrivateRegistryConfigurationWithSelectedRepositories {
   created_at: string;
   updated_at: string;
 }
-const OrgPrivateRegistryConfigurationWithSelectedRepositories = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<OrgPrivateRegistryConfigurationWithSelectedRepositories>;
-
 export interface DeleteOrgPrivateRegistryRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The name of the secret. */
   secret_name: string;
 }
-const DeleteOrgPrivateRegistryRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeleteOrgPrivateRegistryRequest>;
-
 export interface DeleteOrgPrivateRegistryResponse {}
-const DeleteOrgPrivateRegistryResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeleteOrgPrivateRegistryResponse>;
-
 export interface GetOrgPrivateRegistryRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The name of the secret. */
   secret_name: string;
 }
-const GetOrgPrivateRegistryRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetOrgPrivateRegistryRequest>;
-
 /** The registry type. */
 export type OrgPrivateRegistryConfigurationRegistryType =
   | "maven_repository"
@@ -281,8 +235,6 @@ export type OrgPrivateRegistryConfigurationRegistryType =
   | "pub_repository"
   | "python_index"
   | "terraform_registry";
-const OrgPrivateRegistryConfigurationRegistryType = S.String;
-
 /** The authentication type for the private registry. */
 export type OrgPrivateRegistryConfigurationAuthType =
   | "token"
@@ -292,12 +244,8 @@ export type OrgPrivateRegistryConfigurationAuthType =
   | "oidc_jfrog"
   | "oidc_cloudsmith"
   | "oidc_gcp";
-const OrgPrivateRegistryConfigurationAuthType = S.String;
-
 /** Which type of organization repositories have access to the private registry. */
 export type OrgPrivateRegistryConfigurationVisibility = "all" | "private" | "selected";
-const OrgPrivateRegistryConfigurationVisibility = S.String;
-
 /** Private registry configuration for an organization */
 export interface OrgPrivateRegistryConfiguration {
   /** The name of the private registry configuration. */
@@ -347,31 +295,16 @@ export interface OrgPrivateRegistryConfiguration {
   created_at: string;
   updated_at: string;
 }
-const OrgPrivateRegistryConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<OrgPrivateRegistryConfiguration>;
-
 export interface GetOrgPublicKeyRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const GetOrgPublicKeyRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetOrgPublicKeyRequest>;
-
 export interface GetOrgPublicKeyResponse {
   /** The identifier for the key. */
   key_id: string;
   /** The Base64 encoded public key. */
   key: string;
 }
-const GetOrgPublicKeyResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetOrgPublicKeyResponse>;
-
 export interface ListOrgPrivateRegistriesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -380,27 +313,12 @@ export interface ListOrgPrivateRegistriesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListOrgPrivateRegistriesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListOrgPrivateRegistriesRequest>;
-
 export type ListOrgPrivateRegistriesResponseConfigurationsList =
   Array<OrgPrivateRegistryConfiguration>;
-const ListOrgPrivateRegistriesResponseConfigurationsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListOrgPrivateRegistriesResponseConfigurationsList>;
-
 export interface ListOrgPrivateRegistriesResponse {
   total_count: number;
   configurations: ListOrgPrivateRegistriesResponseConfigurationsList;
 }
-const ListOrgPrivateRegistriesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListOrgPrivateRegistriesResponse>;
-
 /** The registry type. */
 export type UpdateOrgPrivateRegistryRequestRegistryType =
   | "maven_repository"
@@ -418,17 +336,10 @@ export type UpdateOrgPrivateRegistryRequestRegistryType =
   | "pub_repository"
   | "python_index"
   | "terraform_registry";
-const UpdateOrgPrivateRegistryRequestRegistryType = S.String;
-
 /** Which type of organization repositories have access to the private registry. `selected` means only the repositories specified by `selected_repository_ids` can access the private registry. */
 export type UpdateOrgPrivateRegistryRequestVisibility = "all" | "private" | "selected";
-const UpdateOrgPrivateRegistryRequestVisibility = S.String;
-
 /** An array of repository IDs that can access the organization private registry. You can only provide a list of repository IDs when `visibility` is set to `selected`. This field should be omitted if `visibility` is set to `all` or `private`. */
 export type UpdateOrgPrivateRegistryRequestSelectedRepositoryIdsList = Array<number>;
-const UpdateOrgPrivateRegistryRequestSelectedRepositoryIdsList =
-  CreateOrgPrivateRegistryRequestSelectedRepositoryIdsList as any as S.Schema<UpdateOrgPrivateRegistryRequestSelectedRepositoryIdsList>;
-
 /** The authentication type for the private registry. This field cannot be changed after creation. If provided, it must match the existing `auth_type` of the configuration. To change the authentication type, delete and recreate the configuration. */
 export type UpdateOrgPrivateRegistryRequestAuthType =
   | "token"
@@ -438,8 +349,6 @@ export type UpdateOrgPrivateRegistryRequestAuthType =
   | "oidc_jfrog"
   | "oidc_cloudsmith"
   | "oidc_gcp";
-const UpdateOrgPrivateRegistryRequestAuthType = S.String;
-
 export interface UpdateOrgPrivateRegistryRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -494,15 +403,7 @@ export interface UpdateOrgPrivateRegistryRequest {
   /** The GCP service account email to impersonate. Optional for `oidc_gcp` auth type. If omitted, the federated token is used directly (direct WIF). */
   service_account?: string;
 }
-const UpdateOrgPrivateRegistryRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<UpdateOrgPrivateRegistryRequest>;
-
 export interface UpdateOrgPrivateRegistryResponse {}
-const UpdateOrgPrivateRegistryResponse =
-  DeleteOrgPrivateRegistryResponse as any as S.Schema<UpdateOrgPrivateRegistryResponse>;
-
 export type CreateOrgPrivateRegistryError = NotFound | UnprocessableEntity | GithubOpError;
 /** Create a private registry for an organization Creates a private registry configuration with an encrypted value for an organization. Encrypt your secret using [LibSodium](https://libsodium.gitbook.io/doc/bindings_for_other_languages). For more information, see "[Encrypting secrets for the REST API](https://docs.github.com/rest/guides/encrypting-secrets-for-the-rest-api)." For OIDC-based registries (`oidc_azure`, `oidc_aws`, `oidc_jfrog`, `oidc_cloudsmith`, or `oidc_gcp`), the `encrypted_value` and `key_id` fields should be omitted. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. */
 export const createOrgPrivateRegistry: API.OperationMethod<
@@ -511,8 +412,8 @@ export const createOrgPrivateRegistry: API.OperationMethod<
   CreateOrgPrivateRegistryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrgPrivateRegistryRequest,
-  output: OrgPrivateRegistryConfigurationWithSelectedRepositories,
+  input: __S(1) as any as S.Schema<CreateOrgPrivateRegistryRequest>,
+  output: __S(3) as any as S.Schema<OrgPrivateRegistryConfigurationWithSelectedRepositories>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -526,8 +427,8 @@ export const deleteOrgPrivateRegistry: API.OperationMethod<
   DeleteOrgPrivateRegistryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrgPrivateRegistryRequest,
-  output: DeleteOrgPrivateRegistryResponse,
+  input: __S(4) as any as S.Schema<DeleteOrgPrivateRegistryRequest>,
+  output: __S(5) as any as S.Schema<DeleteOrgPrivateRegistryResponse>,
   errors: [BadRequest, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -541,8 +442,8 @@ export const getOrgPrivateRegistry: API.OperationMethod<
   GetOrgPrivateRegistryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgPrivateRegistryRequest,
-  output: OrgPrivateRegistryConfiguration,
+  input: __S(6) as any as S.Schema<GetOrgPrivateRegistryRequest>,
+  output: __S(7) as any as S.Schema<OrgPrivateRegistryConfiguration>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -556,8 +457,8 @@ export const getOrgPublicKey: API.OperationMethod<
   GetOrgPublicKeyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgPublicKeyRequest,
-  output: GetOrgPublicKeyResponse,
+  input: __S(8) as any as S.Schema<GetOrgPublicKeyRequest>,
+  output: __S(9) as any as S.Schema<GetOrgPublicKeyResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -571,8 +472,8 @@ export const listOrgPrivateRegistries: API.OperationMethod<
   ListOrgPrivateRegistriesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrgPrivateRegistriesRequest,
-  output: ListOrgPrivateRegistriesResponse,
+  input: __S(10) as any as S.Schema<ListOrgPrivateRegistriesRequest>,
+  output: __S(12) as any as S.Schema<ListOrgPrivateRegistriesResponse>,
   errors: [BadRequest, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -586,8 +487,8 @@ export const updateOrgPrivateRegistry: API.OperationMethod<
   UpdateOrgPrivateRegistryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOrgPrivateRegistryRequest,
-  output: UpdateOrgPrivateRegistryResponse,
+  input: __S(13) as any as S.Schema<UpdateOrgPrivateRegistryRequest>,
+  output: __S(5) as any as S.Schema<UpdateOrgPrivateRegistryResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -602,17 +503,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          registry_type: CreateOrgPrivateRegistryRequestRegistryType,
+          registry_type: S.String,
           url: S.String,
           username: S.optional(S.NullOr(S.String)),
           replaces_base: S.optional(S.Boolean),
           encrypted_value: S.optional(S.String),
           key_id: S.optional(S.String),
-          visibility: CreateOrgPrivateRegistryRequestVisibility,
-          selected_repository_ids: S.optional(
-            CreateOrgPrivateRegistryRequestSelectedRepositoryIdsList,
-          ),
-          auth_type: S.optional(CreateOrgPrivateRegistryRequestAuthType),
+          visibility: S.String,
+          selected_repository_ids: S.optional(__S(0)),
+          auth_type: S.optional(S.String),
           tenant_id: S.optional(S.String),
           client_id: S.optional(S.String),
           aws_region: S.optional(S.String),
@@ -638,15 +537,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          registry_type: OrgPrivateRegistryConfigurationWithSelectedRepositoriesRegistryType,
-          auth_type: S.optional(OrgPrivateRegistryConfigurationWithSelectedRepositoriesAuthType),
+          registry_type: S.String,
+          auth_type: S.optional(S.String),
           url: S.optional(S.String),
           username: S.optional(S.String),
           replaces_base: S.optional(S.Boolean),
-          visibility: OrgPrivateRegistryConfigurationWithSelectedRepositoriesVisibility,
-          selected_repository_ids: S.optional(
-            OrgPrivateRegistryConfigurationWithSelectedRepositoriesSelectedRepositoryIdsList,
-          ),
+          visibility: S.String,
+          selected_repository_ids: S.optional(__S(2)),
           tenant_id: S.optional(S.String),
           client_id: S.optional(S.String),
           aws_region: S.optional(S.String),
@@ -702,12 +599,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          registry_type: OrgPrivateRegistryConfigurationRegistryType,
-          auth_type: S.optional(OrgPrivateRegistryConfigurationAuthType),
+          registry_type: S.String,
+          auth_type: S.optional(S.String),
           url: S.optional(S.String),
           username: S.optional(S.NullOr(S.String)),
           replaces_base: S.optional(S.Boolean),
-          visibility: OrgPrivateRegistryConfigurationVisibility,
+          visibility: S.String,
           tenant_id: S.optional(S.String),
           client_id: S.optional(S.String),
           aws_region: S.optional(S.String),
@@ -759,12 +656,12 @@ function __c1(j: number): any {
         identifier: "ListOrgPrivateRegistriesRequest",
       });
     case 3:
-      return S.Array(OrgPrivateRegistryConfiguration);
+      return S.Array(__S(7));
     case 4:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          configurations: ListOrgPrivateRegistriesResponseConfigurationsList,
+          configurations: __S(11),
         }),
       ).annotate({
         identifier: "ListOrgPrivateRegistriesResponse",
@@ -774,17 +671,15 @@ function __c1(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           secret_name: S.String.pipe(T.Label()),
-          registry_type: S.optional(UpdateOrgPrivateRegistryRequestRegistryType),
+          registry_type: S.optional(S.String),
           url: S.optional(S.String),
           username: S.optional(S.NullOr(S.String)),
           replaces_base: S.optional(S.Boolean),
           encrypted_value: S.optional(S.String),
           key_id: S.optional(S.String),
-          visibility: S.optional(UpdateOrgPrivateRegistryRequestVisibility),
-          selected_repository_ids: S.optional(
-            UpdateOrgPrivateRegistryRequestSelectedRepositoryIdsList,
-          ),
-          auth_type: S.optional(UpdateOrgPrivateRegistryRequestAuthType),
+          visibility: S.optional(S.String),
+          selected_repository_ids: S.optional(__S(0)),
+          auth_type: S.optional(S.String),
           tenant_id: S.optional(S.String),
           client_id: S.optional(S.String),
           aws_region: S.optional(S.String),
@@ -810,5 +705,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateOrgPrivateRegistryRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

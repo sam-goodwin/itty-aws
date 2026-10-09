@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -44,11 +46,6 @@ export interface ListProjectsAndroidAppsDeliveryDataRequest {
   /** Required. The application for which to list delivery data. Format: `projects/{project_id}/androidApps/{app_id}` */
   parent: string;
 }
-const ListProjectsAndroidAppsDeliveryDataRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ListProjectsAndroidAppsDeliveryDataRequest>;
-
 /** Overview of delivery performance for messages that were successfully delivered. All percentages are calculated with countMessagesAccepted as the denominator. These categories are not mutually exclusive; a message can be delayed for multiple reasons. */
 export interface GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents {
   /** The percentage of accepted messages that were delivered to the device without delay from the FCM system. */
@@ -62,11 +59,6 @@ export interface GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents {
   /** The percentage of accepted messages that were delayed because the device was in doze mode. Only [normal priority messages](https://firebase.google.com/docs/cloud-messaging/concept-options#setting-the-priority-of-a-message) should be delayed due to doze mode. */
   delayedDeviceDoze?: number;
 }
-const GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents>;
-
 /** Additional information about [proxy notification](https://firebase.google.com/docs/cloud-messaging/android/message-priority#proxy) delivery. All percentages are calculated with countNotificationsAccepted as the denominator. */
 export interface GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents {
   /** The percentage of accepted notifications that were skipped because the app disallowed these messages to be proxied. */
@@ -82,11 +74,6 @@ export interface GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents {
   /** The percentage of accepted notifications that were skipped because the messages were not throttled. */
   skippedNotThrottled?: number;
 }
-const GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents>;
-
 /** Percentage breakdown of message delivery outcomes. These categories are mutually exclusive. All percentages are calculated with countMessagesAccepted as the denominator. These categories may not account for all message outcomes. */
 export interface GoogleFirebaseFcmDataV1beta1MessageOutcomePercents {
   /** The percentage of accepted messages that were [collapsed](https://firebase.google.com/docs/cloud-messaging/concept-options#collapsible_and_non-collapsible_messages) by another message. */
@@ -104,21 +91,11 @@ export interface GoogleFirebaseFcmDataV1beta1MessageOutcomePercents {
   /** The percentage of accepted messages that were dropped due to [too many undelivered non-collapsible messages](https://firebase.google.com/docs/cloud-messaging/concept-options#collapsible_and_non-collapsible_messages). Specifically, each app instance can only have 100 pending messages stored on our servers for a device which is disconnected. When that device reconnects, those messages are delivered. When there are more than the maximum pending messages, we call [OnDeletedMessages()](https://firebase.google.com/docs/cloud-messaging/android/receive#override-ondeletedmessages) in our SDK instead of delivering the messages. */
   droppedTooManyPendingMessages?: number;
 }
-const GoogleFirebaseFcmDataV1beta1MessageOutcomePercents = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GoogleFirebaseFcmDataV1beta1MessageOutcomePercents>;
-
 /** Additional information about message delivery. All percentages are calculated with countMessagesAccepted as the denominator. */
 export interface GoogleFirebaseFcmDataV1beta1MessageInsightPercents {
   /** The percentage of accepted messages that had their priority lowered from high to normal. See [documentation for setting message priority](https://firebase.google.com/docs/cloud-messaging/android/message-priority). */
   priorityLowered?: number;
 }
-const GoogleFirebaseFcmDataV1beta1MessageInsightPercents = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GoogleFirebaseFcmDataV1beta1MessageInsightPercents>;
-
 /** Data detailing messaging delivery */
 export interface GoogleFirebaseFcmDataV1beta1Data {
   /** Count of messages accepted by FCM intended for Android devices. The targeted device must have opted in to the collection of usage and diagnostic information. */
@@ -134,11 +111,6 @@ export interface GoogleFirebaseFcmDataV1beta1Data {
   /** Count of notifications accepted by FCM intended for Android devices. The targeted device must have opted in to the collection of usage and diagnostic information. */
   countNotificationsAccepted?: string;
 }
-const GoogleFirebaseFcmDataV1beta1Data = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GoogleFirebaseFcmDataV1beta1Data>;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface GoogleTypeDate {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -148,8 +120,6 @@ export interface GoogleTypeDate {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-const GoogleTypeDate = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GoogleTypeDate>;
-
 /** Message delivery data for a given date, app, and analytics label combination. */
 export interface GoogleFirebaseFcmDataV1beta1AndroidDeliveryData {
   /** The data for the specified appId, date, and analyticsLabel. */
@@ -161,18 +131,8 @@ export interface GoogleFirebaseFcmDataV1beta1AndroidDeliveryData {
   /** The app ID to which the messages were sent. */
   appId?: string;
 }
-const GoogleFirebaseFcmDataV1beta1AndroidDeliveryData = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GoogleFirebaseFcmDataV1beta1AndroidDeliveryData>;
-
 export type GoogleFirebaseFcmDataV1beta1AndroidDeliveryDataList =
   Array<GoogleFirebaseFcmDataV1beta1AndroidDeliveryData>;
-const GoogleFirebaseFcmDataV1beta1AndroidDeliveryDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GoogleFirebaseFcmDataV1beta1AndroidDeliveryDataList>;
-
 /** Response message for ListAndroidDeliveryData. */
 export interface GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse {
   /** The delivery data for the provided app. There will be one entry per combination of app, date, and analytics label. */
@@ -180,11 +140,6 @@ export interface GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse>;
-
 export type ListProjectsAndroidAppsDeliveryDataError = NotFound | Forbidden | GcpOpError;
 /** List aggregate delivery data for the given Android application. */
 export const listProjectsAndroidAppsDeliveryData: API.PaginatedOperationMethod<
@@ -194,8 +149,8 @@ export const listProjectsAndroidAppsDeliveryData: API.PaginatedOperationMethod<
   GcpOpContext,
   GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsAndroidAppsDeliveryDataRequest,
-  output: GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse,
+  input: __S(0) as any as S.Schema<ListProjectsAndroidAppsDeliveryDataRequest>,
+  output: __S(9) as any as S.Schema<GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -272,14 +227,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           countMessagesAccepted: S.optional(S.String),
-          deliveryPerformancePercents: S.optional(
-            GoogleFirebaseFcmDataV1beta1DeliveryPerformancePercents,
-          ),
-          proxyNotificationInsightPercents: S.optional(
-            GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents,
-          ),
-          messageOutcomePercents: S.optional(GoogleFirebaseFcmDataV1beta1MessageOutcomePercents),
-          messageInsightPercents: S.optional(GoogleFirebaseFcmDataV1beta1MessageInsightPercents),
+          deliveryPerformancePercents: S.optional(__S(1)),
+          proxyNotificationInsightPercents: S.optional(__S(2)),
+          messageOutcomePercents: S.optional(__S(3)),
+          messageInsightPercents: S.optional(__S(4)),
           countNotificationsAccepted: S.optional(S.String),
         }),
       ).annotate({
@@ -296,9 +247,9 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(GoogleFirebaseFcmDataV1beta1Data),
+          data: S.optional(__S(5)),
           analyticsLabel: S.optional(S.String),
-          date: S.optional(GoogleTypeDate),
+          date: S.optional(__S(6)),
           appId: S.optional(S.String),
         }),
       ).annotate({
@@ -309,15 +260,28 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleFirebaseFcmDataV1beta1AndroidDeliveryData);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          androidDeliveryData: S.optional(GoogleFirebaseFcmDataV1beta1AndroidDeliveryDataList),
+          androidDeliveryData: S.optional(__S(8)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleFirebaseFcmDataV1beta1ListAndroidDeliveryDataResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

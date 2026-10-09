@@ -6,44 +6,32 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
 export interface CreateDomainRequest {
   domainName?: string;
 }
-const CreateDomainRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateDomainRequest>;
-
 /** now unused internal experimental values */
 export type DNSRecordType = "DNS_RECORD_TYPE_A" | "DNS_RECORD_TYPE_TXT" | "DNS_RECORD_TYPE_CNAME";
-const DNSRecordType = S.String;
-
 export interface DNSRecord {
   type?: DNSRecordType;
   name?: string;
   value?: string;
 }
-const DNSRecord = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DNSRecord>;
-
 export type DNSRecordList = Array<DNSRecord>;
-const DNSRecordList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DNSRecordList>;
-
 export interface CreateDomainResponse {
   domainId?: string;
   dnsRecords?: DNSRecordList;
 }
-const CreateDomainResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateDomainResponse>;
-
 export interface ListDomainRequest {}
-const ListDomainRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ListDomainRequest>;
-
 export type CertificateStatus =
   | "CERTIFICATE_STATUS_PENDING"
   | "CERTIFICATE_STATUS_ISSUED"
   | "CERTIFICATE_STATUS_FAILED"
   | "CERTIFICATE_STATUS_REVOKED";
-const CertificateStatus = S.String;
-
 export interface Domain {
   domainId?: string;
   domainName?: string;
@@ -51,32 +39,16 @@ export interface Domain {
   certificateStatus?: CertificateStatus;
   dnsRecords?: DNSRecordList;
 }
-const Domain = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Domain>;
-
 export type DomainList2 = Array<Domain>;
-const DomainList2 = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DomainList2>;
-
 export interface ListDomainResponse {
   domains?: DomainList2;
 }
-const ListDomainResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ListDomainResponse>;
-
 export interface VerifyDomainCertificateRequest {
   domainId?: string;
 }
-const VerifyDomainCertificateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<VerifyDomainCertificateRequest>;
-
 export interface VerifyDomainCertificateResponse {
   domain?: Domain;
 }
-const VerifyDomainCertificateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<VerifyDomainCertificateResponse>;
-
 export type CreateDomainError = ModalOpError;
 export const createDomain: API.OperationMethod<
   CreateDomainRequest,
@@ -84,8 +56,8 @@ export const createDomain: API.OperationMethod<
   CreateDomainError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDomainRequest,
-  output: CreateDomainResponse,
+  input: __S(0) as any as S.Schema<CreateDomainRequest>,
+  output: __S(3) as any as S.Schema<CreateDomainResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -98,8 +70,8 @@ export const listDomain: API.OperationMethod<
   ListDomainError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDomainRequest,
-  output: ListDomainResponse,
+  input: __S(4) as any as S.Schema<ListDomainRequest>,
+  output: __S(7) as any as S.Schema<ListDomainResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -113,8 +85,8 @@ export const verifyDomainCertificate: API.OperationMethod<
   VerifyDomainCertificateError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyDomainCertificateRequest,
-  output: VerifyDomainCertificateResponse,
+  input: __S(8) as any as S.Schema<VerifyDomainCertificateRequest>,
+  output: __S(9) as any as S.Schema<VerifyDomainCertificateResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -134,18 +106,18 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(DNSRecordType),
+          type: S.optional(S.String),
           name: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "DNSRecord" });
     case 2:
-      return S.Array(DNSRecord);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           domainId: S.optional(S.String),
-          dnsRecords: S.optional(DNSRecordList),
+          dnsRecords: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "CreateDomainResponse" });
     case 4:
@@ -160,16 +132,16 @@ function __c0(j: number): any {
           domainId: S.optional(S.String),
           domainName: S.optional(S.String),
           createdAt: S.optional(S.Number),
-          certificateStatus: S.optional(CertificateStatus),
-          dnsRecords: S.optional(DNSRecordList),
+          certificateStatus: S.optional(S.String),
+          dnsRecords: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "Domain" });
     case 6:
-      return S.Array(Domain);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(DomainList2),
+          domains: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "ListDomainResponse" });
   }
@@ -193,10 +165,23 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          domain: S.optional(Domain),
+          domain: S.optional(__S(5)),
         }),
       ).annotate({
         identifier: "VerifyDomainCertificateResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

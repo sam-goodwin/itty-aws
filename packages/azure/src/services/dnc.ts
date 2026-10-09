@@ -6,16 +6,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** The resource tags. */
 export type CreateControllerRequestTagsMap = { [key: string]: string | undefined };
-const CreateControllerRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateControllerRequestTagsMap>;
-
 export interface CreateControllerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -28,24 +25,14 @@ export interface CreateControllerRequest {
   /** The resource tags. */
   tags?: CreateControllerRequestTagsMap;
 }
-const CreateControllerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateControllerRequest>;
-
 /** The resource tags. */
 export type CreateControllerResponseTagsMap = { [key: string]: string | undefined };
-const CreateControllerResponseTagsMap =
-  CreateControllerRequestTagsMap as any as S.Schema<CreateControllerResponseTagsMap>;
-
 /** The current state of dnc controller resource. */
 export type DelegatedControllerPropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
   | "Provisioning";
-const DelegatedControllerPropertiesProvisioningState = S.String;
-
 /** Properties of Delegated controller resource. */
 export interface DelegatedControllerProperties {
   /** Resource guid. */
@@ -59,11 +46,6 @@ export interface DelegatedControllerProperties {
   /** dnc endpoint url that customers can use to connect to */
   dncEndpoint?: string;
 }
-const DelegatedControllerProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DelegatedControllerProperties>;
-
 export interface CreateControllerResponse {
   /** An identifier that represents the resource. */
   id?: string;
@@ -78,43 +60,21 @@ export interface CreateControllerResponse {
   /** Properties of the provision operation request. */
   properties?: DelegatedControllerProperties;
 }
-const CreateControllerResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateControllerResponse>;
-
 /** The kind of workbook. Choices are user and shared. */
 export type CreateOrchestratorInstanceServiceRequestKind = "Kubernetes";
-const CreateOrchestratorInstanceServiceRequestKind = S.String;
-
 /** The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters */
 export type OrchestratorIdentityInputType = "SystemAssigned" | "None";
-const OrchestratorIdentityInputType = S.String;
-
 export interface OrchestratorIdentityInput {
   /** The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters */
   type?: OrchestratorIdentityInputType | (string & {});
 }
-const OrchestratorIdentityInput = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<OrchestratorIdentityInput>;
-
 /** The resource tags. */
 export type CreateOrchestratorInstanceServiceRequestTagsMap = { [key: string]: string | undefined };
-const CreateOrchestratorInstanceServiceRequestTagsMap =
-  CreateControllerRequestTagsMap as any as S.Schema<CreateOrchestratorInstanceServiceRequestTagsMap>;
-
 /** controller details */
 export interface OrchestratorResourcePropertiesInputControllerDetails {
   /** controller arm resource id */
   id?: string;
 }
-const OrchestratorResourcePropertiesInputControllerDetails = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<OrchestratorResourcePropertiesInputControllerDetails>;
-
 /** Properties of orchestrator */
 export interface OrchestratorResourcePropertiesInput {
   /** AAD ID used with apiserver */
@@ -130,11 +90,6 @@ export interface OrchestratorResourcePropertiesInput {
   /** controller details */
   controllerDetails: OrchestratorResourcePropertiesInputControllerDetails;
 }
-const OrchestratorResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<OrchestratorResourcePropertiesInput>;
-
 export interface CreateOrchestratorInstanceServiceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -153,19 +108,10 @@ export interface CreateOrchestratorInstanceServiceRequest {
   /** Properties of the provision operation request. */
   properties?: OrchestratorResourcePropertiesInput;
 }
-const CreateOrchestratorInstanceServiceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateOrchestratorInstanceServiceRequest>;
-
 /** The kind of workbook. Choices are user and shared. */
 export type CreateOrchestratorInstanceServiceResponseKind = "Kubernetes";
-const CreateOrchestratorInstanceServiceResponseKind = S.String;
-
 /** The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters */
 export type OrchestratorIdentityType = "SystemAssigned" | "None";
-const OrchestratorIdentityType = S.String;
-
 export interface OrchestratorIdentity {
   /** The principal id of the system assigned identity which is used by orchestrator. */
   principalId?: string;
@@ -174,23 +120,16 @@ export interface OrchestratorIdentity {
   /** The type of identity used for orchestrator cluster. Type 'SystemAssigned' will use an implicitly created identity orchestrator clusters */
   type?: OrchestratorIdentityType;
 }
-const OrchestratorIdentity = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<OrchestratorIdentity>;
-
 /** The resource tags. */
 export type CreateOrchestratorInstanceServiceResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const CreateOrchestratorInstanceServiceResponseTagsMap =
-  CreateControllerRequestTagsMap as any as S.Schema<CreateOrchestratorInstanceServiceResponseTagsMap>;
-
 /** The current state of orchestratorInstance resource. */
 export type OrchestratorResourcePropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
   | "Provisioning";
-const OrchestratorResourcePropertiesProvisioningState = S.String;
-
 /** controller details */
 export type OrchestratorResourcePropertiesControllerDetails =
   OrchestratorResourcePropertiesInputControllerDetails;
@@ -213,11 +152,6 @@ export interface OrchestratorResourceProperties {
   /** controller details */
   controllerDetails: OrchestratorResourcePropertiesInputControllerDetails;
 }
-const OrchestratorResourceProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<OrchestratorResourceProperties>;
-
 export interface CreateOrchestratorInstanceServiceResponse {
   /** An identifier that represents the resource. */
   id?: string;
@@ -236,11 +170,6 @@ export interface CreateOrchestratorInstanceServiceResponse {
   /** Properties of the provision operation request. */
   properties?: OrchestratorResourceProperties;
 }
-const CreateOrchestratorInstanceServiceResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateOrchestratorInstanceServiceResponse>;
-
 export interface DeleteControllerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -249,17 +178,7 @@ export interface DeleteControllerRequest {
   /** The name of the resource. It must be a minimum of 3 characters, and a maximum of 63. */
   resourceName: string;
 }
-const DeleteControllerRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteControllerRequest>;
-
 export interface DeleteControllerResponse {}
-const DeleteControllerResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteControllerResponse>;
-
 export interface DeleteDelegatedSubnetServiceDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -270,17 +189,7 @@ export interface DeleteDelegatedSubnetServiceDetailsRequest {
   /** Force delete resource */
   forceDelete?: boolean;
 }
-const DeleteDelegatedSubnetServiceDetailsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteDelegatedSubnetServiceDetailsRequest>;
-
 export interface DeleteDelegatedSubnetServiceDetailsResponse {}
-const DeleteDelegatedSubnetServiceDetailsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteDelegatedSubnetServiceDetailsResponse>;
-
 export interface DeleteOrchestratorInstanceServiceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -291,15 +200,7 @@ export interface DeleteOrchestratorInstanceServiceRequest {
   /** Force delete resource */
   forceDelete?: boolean;
 }
-const DeleteOrchestratorInstanceServiceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteOrchestratorInstanceServiceRequest>;
-
 export interface DeleteOrchestratorInstanceServiceResponse {}
-const DeleteOrchestratorInstanceServiceResponse =
-  DeleteDelegatedSubnetServiceDetailsResponse as any as S.Schema<DeleteOrchestratorInstanceServiceResponse>;
-
 export interface GetControllerDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -308,16 +209,8 @@ export interface GetControllerDetailsRequest {
   /** The name of the resource. It must be a minimum of 3 characters, and a maximum of 63. */
   resourceName: string;
 }
-const GetControllerDetailsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetControllerDetailsRequest>;
-
 /** The resource tags. */
 export type GetControllerDetailsResponseTagsMap = { [key: string]: string | undefined };
-const GetControllerDetailsResponseTagsMap =
-  CreateControllerRequestTagsMap as any as S.Schema<GetControllerDetailsResponseTagsMap>;
-
 export interface GetControllerDetailsResponse {
   /** An identifier that represents the resource. */
   id?: string;
@@ -332,11 +225,6 @@ export interface GetControllerDetailsResponse {
   /** Properties of the provision operation request. */
   properties?: DelegatedControllerProperties;
 }
-const GetControllerDetailsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetControllerDetailsResponse>;
-
 export interface GetDelegatedSubnetServiceDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -345,31 +233,19 @@ export interface GetDelegatedSubnetServiceDetailsRequest {
   /** The name of the resource. It must be a minimum of 3 characters, and a maximum of 63. */
   resourceName: string;
 }
-const GetDelegatedSubnetServiceDetailsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetDelegatedSubnetServiceDetailsRequest>;
-
 /** The resource tags. */
 export type GetDelegatedSubnetServiceDetailsResponseTagsMap = { [key: string]: string | undefined };
-const GetDelegatedSubnetServiceDetailsResponseTagsMap =
-  CreateControllerRequestTagsMap as any as S.Schema<GetDelegatedSubnetServiceDetailsResponseTagsMap>;
-
 /** The current state of dnc delegated subnet resource. */
 export type DelegatedSubnetPropertiesProvisioningState =
   | "Deleting"
   | "Succeeded"
   | "Failed"
   | "Provisioning";
-const DelegatedSubnetPropertiesProvisioningState = S.String;
-
 /** Properties of orchestrator */
 export interface SubnetDetails {
   /** subnet arm resource id */
   id?: string;
 }
-const SubnetDetails = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SubnetDetails>;
-
 /** controller details */
 export type DelegatedSubnetPropertiesControllerDetails =
   OrchestratorResourcePropertiesInputControllerDetails;
@@ -384,11 +260,6 @@ export interface DelegatedSubnetProperties {
   /** controller details */
   controllerDetails?: OrchestratorResourcePropertiesInputControllerDetails;
 }
-const DelegatedSubnetProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DelegatedSubnetProperties>;
-
 export interface GetDelegatedSubnetServiceDetailsResponse {
   /** An identifier that represents the resource. */
   id?: string;
@@ -403,11 +274,6 @@ export interface GetDelegatedSubnetServiceDetailsResponse {
   /** Properties of the provision operation request. */
   properties?: DelegatedSubnetProperties;
 }
-const GetDelegatedSubnetServiceDetailsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetDelegatedSubnetServiceDetailsResponse>;
-
 export interface GetOrchestratorInstanceServiceDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -416,22 +282,12 @@ export interface GetOrchestratorInstanceServiceDetailsRequest {
   /** The name of the resource. It must be a minimum of 3 characters, and a maximum of 63. */
   resourceName: string;
 }
-const GetOrchestratorInstanceServiceDetailsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetOrchestratorInstanceServiceDetailsRequest>;
-
 /** The kind of workbook. Choices are user and shared. */
 export type GetOrchestratorInstanceServiceDetailsResponseKind = "Kubernetes";
-const GetOrchestratorInstanceServiceDetailsResponseKind = S.String;
-
 /** The resource tags. */
 export type GetOrchestratorInstanceServiceDetailsResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const GetOrchestratorInstanceServiceDetailsResponseTagsMap =
-  CreateControllerRequestTagsMap as any as S.Schema<GetOrchestratorInstanceServiceDetailsResponseTagsMap>;
-
 export interface GetOrchestratorInstanceServiceDetailsResponse {
   /** An identifier that represents the resource. */
   id?: string;
@@ -450,22 +306,12 @@ export interface GetOrchestratorInstanceServiceDetailsResponse {
   /** Properties of the provision operation request. */
   properties?: OrchestratorResourceProperties;
 }
-const GetOrchestratorInstanceServiceDetailsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetOrchestratorInstanceServiceDetailsResponse>;
-
 export interface ListDelegatedNetworkByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListDelegatedNetworkByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListDelegatedNetworkByResourceGroupRequest>;
-
 /** The resource tags. */
 export type DelegatedControllerTagsMap = { [key: string]: string | undefined };
 /** Represents an instance of a DNC controller. */
@@ -483,15 +329,8 @@ export interface DelegatedController {
   /** Properties of the provision operation request. */
   properties?: DelegatedControllerProperties;
 }
-const DelegatedController = CreateControllerResponse as any as S.Schema<DelegatedController>;
-
 /** An array of Delegated controller resources. */
 export type DelegatedControllersValueList = Array<DelegatedController>;
-const DelegatedControllersValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DelegatedControllersValueList>;
-
 /** An array of Delegated controller resources. */
 export interface DelegatedControllers {
   /** An array of Delegated controller resources. */
@@ -499,33 +338,18 @@ export interface DelegatedControllers {
   /** The URL to get the next set of controllers. */
   nextLink?: string;
 }
-const DelegatedControllers = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DelegatedControllers>;
-
 export interface ListDelegatedNetworkBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListDelegatedNetworkBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListDelegatedNetworkBySubscriptionRequest>;
-
 export interface ListDelegatedSubnetServiceByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListDelegatedSubnetServiceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListDelegatedSubnetServiceByResourceGroupRequest>;
-
 /** The resource tags. */
 export type DelegatedSubnetTagsMap = { [key: string]: string | undefined };
-const DelegatedSubnetTagsMap =
-  CreateControllerRequestTagsMap as any as S.Schema<DelegatedSubnetTagsMap>;
-
 /** Represents an instance of a orchestrator. */
 export interface DelegatedSubnet {
   /** An identifier that represents the resource. */
@@ -541,15 +365,8 @@ export interface DelegatedSubnet {
   /** Properties of the provision operation request. */
   properties?: DelegatedSubnetProperties;
 }
-const DelegatedSubnet = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DelegatedSubnet>;
-
 /** An array of DelegatedSubnet resources. */
 export type DelegatedSubnetsValueList = Array<DelegatedSubnet>;
-const DelegatedSubnetsValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DelegatedSubnetsValueList>;
-
 /** An array of DelegatedSubnet resources. */
 export interface DelegatedSubnets {
   /** An array of DelegatedSubnet resources. */
@@ -557,23 +374,11 @@ export interface DelegatedSubnets {
   /** The URL to get the next set of DelegatedSubnet resources. */
   nextLink?: string;
 }
-const DelegatedSubnets = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<DelegatedSubnets>;
-
 export interface ListDelegatedSubnetServiceBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListDelegatedSubnetServiceBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListDelegatedSubnetServiceBySubscriptionRequest>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -585,16 +390,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -608,45 +407,24 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListOrchestratorInstanceServiceByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListOrchestratorInstanceServiceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListOrchestratorInstanceServiceByResourceGroupRequest>;
-
 /** The kind of workbook. Choices are user and shared. */
 export type OrchestratorKind = "Kubernetes";
-const OrchestratorKind = S.String;
-
 /** The resource tags. */
 export type OrchestratorTagsMap = { [key: string]: string | undefined };
-const OrchestratorTagsMap = CreateControllerRequestTagsMap as any as S.Schema<OrchestratorTagsMap>;
-
 /** Represents an instance of a orchestrator. */
 export interface Orchestrator {
   /** An identifier that represents the resource. */
@@ -666,15 +444,8 @@ export interface Orchestrator {
   /** Properties of the provision operation request. */
   properties?: OrchestratorResourceProperties;
 }
-const Orchestrator = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<Orchestrator>;
-
 /** An array of OrchestratorInstance resources. */
 export type OrchestratorsValueList = Array<Orchestrator>;
-const OrchestratorsValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<OrchestratorsValueList>;
-
 /** An array of OrchestratorInstance resources. */
 export interface Orchestrators {
   /** An array of OrchestratorInstance resources. */
@@ -682,22 +453,12 @@ export interface Orchestrators {
   /** The URL to get the next set of orchestrators. */
   nextLink?: string;
 }
-const Orchestrators = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Orchestrators>;
-
 export interface ListOrchestratorInstanceServiceBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListOrchestratorInstanceServiceBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ListOrchestratorInstanceServiceBySubscriptionRequest>;
-
 /** The resource tags. */
 export type PatchControllerRequestTagsMap = { [key: string]: string | undefined };
-const PatchControllerRequestTagsMap =
-  CreateControllerRequestTagsMap as any as S.Schema<PatchControllerRequestTagsMap>;
-
 export interface PatchControllerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -708,11 +469,6 @@ export interface PatchControllerRequest {
   /** The resource tags. */
   tags?: PatchControllerRequestTagsMap;
 }
-const PatchControllerRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<PatchControllerRequest>;
-
 /** The resource tags. */
 export type PatchControllerResponseTagsMap = { [key: string]: string | undefined };
 export interface PatchControllerResponse {
@@ -729,16 +485,10 @@ export interface PatchControllerResponse {
   /** Properties of the provision operation request. */
   properties?: DelegatedControllerProperties;
 }
-const PatchControllerResponse =
-  CreateControllerResponse as any as S.Schema<PatchControllerResponse>;
-
 /** The resource tags. */
 export type PatchDelegatedSubnetServiceDetailsRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const PatchDelegatedSubnetServiceDetailsRequestTagsMap =
-  CreateControllerRequestTagsMap as any as S.Schema<PatchDelegatedSubnetServiceDetailsRequestTagsMap>;
-
 export interface PatchDelegatedSubnetServiceDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -749,11 +499,6 @@ export interface PatchDelegatedSubnetServiceDetailsRequest {
   /** The resource tags. */
   tags?: PatchDelegatedSubnetServiceDetailsRequestTagsMap;
 }
-const PatchDelegatedSubnetServiceDetailsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<PatchDelegatedSubnetServiceDetailsRequest>;
-
 /** The resource tags. */
 export type PatchDelegatedSubnetServiceDetailsResponseTagsMap = {
   [key: string]: string | undefined;
@@ -772,14 +517,8 @@ export interface PatchDelegatedSubnetServiceDetailsResponse {
   /** Properties of the provision operation request. */
   properties?: DelegatedSubnetProperties;
 }
-const PatchDelegatedSubnetServiceDetailsResponse =
-  GetDelegatedSubnetServiceDetailsResponse as any as S.Schema<PatchDelegatedSubnetServiceDetailsResponse>;
-
 /** The resource tags. */
 export type PatchOrchestratorInstanceServiceRequestTagsMap = { [key: string]: string | undefined };
-const PatchOrchestratorInstanceServiceRequestTagsMap =
-  CreateControllerRequestTagsMap as any as S.Schema<PatchOrchestratorInstanceServiceRequestTagsMap>;
-
 export interface PatchOrchestratorInstanceServiceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -790,20 +529,10 @@ export interface PatchOrchestratorInstanceServiceRequest {
   /** The resource tags. */
   tags?: PatchOrchestratorInstanceServiceRequestTagsMap;
 }
-const PatchOrchestratorInstanceServiceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<PatchOrchestratorInstanceServiceRequest>;
-
 /** The kind of workbook. Choices are user and shared. */
 export type PatchOrchestratorInstanceServiceResponseKind = "Kubernetes";
-const PatchOrchestratorInstanceServiceResponseKind = S.String;
-
 /** The resource tags. */
 export type PatchOrchestratorInstanceServiceResponseTagsMap = { [key: string]: string | undefined };
-const PatchOrchestratorInstanceServiceResponseTagsMap =
-  CreateControllerRequestTagsMap as any as S.Schema<PatchOrchestratorInstanceServiceResponseTagsMap>;
-
 export interface PatchOrchestratorInstanceServiceResponse {
   /** An identifier that represents the resource. */
   id?: string;
@@ -822,16 +551,8 @@ export interface PatchOrchestratorInstanceServiceResponse {
   /** Properties of the provision operation request. */
   properties?: OrchestratorResourceProperties;
 }
-const PatchOrchestratorInstanceServiceResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<PatchOrchestratorInstanceServiceResponse>;
-
 /** The resource tags. */
 export type PutDelegatedSubnetServiceDetailsRequestTagsMap = { [key: string]: string | undefined };
-const PutDelegatedSubnetServiceDetailsRequestTagsMap =
-  CreateControllerRequestTagsMap as any as S.Schema<PutDelegatedSubnetServiceDetailsRequestTagsMap>;
-
 /** controller details */
 export type DelegatedSubnetPropertiesInputControllerDetails =
   OrchestratorResourcePropertiesInputControllerDetails;
@@ -842,11 +563,6 @@ export interface DelegatedSubnetPropertiesInput {
   /** controller details */
   controllerDetails?: OrchestratorResourcePropertiesInputControllerDetails;
 }
-const DelegatedSubnetPropertiesInput = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DelegatedSubnetPropertiesInput>;
-
 export interface PutDelegatedSubnetServiceDetailsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -861,11 +577,6 @@ export interface PutDelegatedSubnetServiceDetailsRequest {
   /** Properties of the provision operation request. */
   properties?: DelegatedSubnetPropertiesInput;
 }
-const PutDelegatedSubnetServiceDetailsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<PutDelegatedSubnetServiceDetailsRequest>;
-
 /** The resource tags. */
 export type PutDelegatedSubnetServiceDetailsResponseTagsMap = { [key: string]: string | undefined };
 export interface PutDelegatedSubnetServiceDetailsResponse {
@@ -882,9 +593,6 @@ export interface PutDelegatedSubnetServiceDetailsResponse {
   /** Properties of the provision operation request. */
   properties?: DelegatedSubnetProperties;
 }
-const PutDelegatedSubnetServiceDetailsResponse =
-  GetDelegatedSubnetServiceDetailsResponse as any as S.Schema<PutDelegatedSubnetServiceDetailsResponse>;
-
 export type CreateControllerError = AzureOpError;
 /** Create a dnc controller */
 export const CreateController: API.OperationMethod<
@@ -893,8 +601,8 @@ export const CreateController: API.OperationMethod<
   CreateControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateControllerRequest,
-  output: CreateControllerResponse,
+  input: __S(1) as any as S.Schema<CreateControllerRequest>,
+  output: __S(3) as any as S.Schema<CreateControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -908,8 +616,8 @@ export const CreateOrchestratorInstanceService: API.OperationMethod<
   CreateOrchestratorInstanceServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrchestratorInstanceServiceRequest,
-  output: CreateOrchestratorInstanceServiceResponse,
+  input: __S(7) as any as S.Schema<CreateOrchestratorInstanceServiceRequest>,
+  output: __S(10) as any as S.Schema<CreateOrchestratorInstanceServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -923,8 +631,8 @@ export const DeleteController: API.OperationMethod<
   DeleteControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteControllerRequest,
-  output: DeleteControllerResponse,
+  input: __S(11) as any as S.Schema<DeleteControllerRequest>,
+  output: __S(12) as any as S.Schema<DeleteControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -938,8 +646,8 @@ export const DeleteDelegatedSubnetServiceDetails: API.OperationMethod<
   DeleteDelegatedSubnetServiceDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDelegatedSubnetServiceDetailsRequest,
-  output: DeleteDelegatedSubnetServiceDetailsResponse,
+  input: __S(13) as any as S.Schema<DeleteDelegatedSubnetServiceDetailsRequest>,
+  output: __S(14) as any as S.Schema<DeleteDelegatedSubnetServiceDetailsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -953,8 +661,8 @@ export const DeleteOrchestratorInstanceService: API.OperationMethod<
   DeleteOrchestratorInstanceServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrchestratorInstanceServiceRequest,
-  output: DeleteOrchestratorInstanceServiceResponse,
+  input: __S(15) as any as S.Schema<DeleteOrchestratorInstanceServiceRequest>,
+  output: __S(14) as any as S.Schema<DeleteOrchestratorInstanceServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -968,8 +676,8 @@ export const GetControllerDetails: API.OperationMethod<
   GetControllerDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetControllerDetailsRequest,
-  output: GetControllerDetailsResponse,
+  input: __S(16) as any as S.Schema<GetControllerDetailsRequest>,
+  output: __S(17) as any as S.Schema<GetControllerDetailsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -983,8 +691,8 @@ export const GetDelegatedSubnetServiceDetails: API.OperationMethod<
   GetDelegatedSubnetServiceDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDelegatedSubnetServiceDetailsRequest,
-  output: GetDelegatedSubnetServiceDetailsResponse,
+  input: __S(18) as any as S.Schema<GetDelegatedSubnetServiceDetailsRequest>,
+  output: __S(21) as any as S.Schema<GetDelegatedSubnetServiceDetailsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -998,8 +706,8 @@ export const GetOrchestratorInstanceServiceDetails: API.OperationMethod<
   GetOrchestratorInstanceServiceDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrchestratorInstanceServiceDetailsRequest,
-  output: GetOrchestratorInstanceServiceDetailsResponse,
+  input: __S(22) as any as S.Schema<GetOrchestratorInstanceServiceDetailsRequest>,
+  output: __S(23) as any as S.Schema<GetOrchestratorInstanceServiceDetailsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1013,8 +721,8 @@ export const ListDelegatedNetworkByResourceGroup: API.OperationMethod<
   ListDelegatedNetworkByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDelegatedNetworkByResourceGroupRequest,
-  output: DelegatedControllers,
+  input: __S(24) as any as S.Schema<ListDelegatedNetworkByResourceGroupRequest>,
+  output: __S(26) as any as S.Schema<DelegatedControllers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1028,8 +736,8 @@ export const ListDelegatedNetworkBySubscription: API.OperationMethod<
   ListDelegatedNetworkBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDelegatedNetworkBySubscriptionRequest,
-  output: DelegatedControllers,
+  input: __S(27) as any as S.Schema<ListDelegatedNetworkBySubscriptionRequest>,
+  output: __S(26) as any as S.Schema<DelegatedControllers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1043,8 +751,8 @@ export const ListDelegatedSubnetServiceByResourceGroup: API.OperationMethod<
   ListDelegatedSubnetServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDelegatedSubnetServiceByResourceGroupRequest,
-  output: DelegatedSubnets,
+  input: __S(28) as any as S.Schema<ListDelegatedSubnetServiceByResourceGroupRequest>,
+  output: __S(31) as any as S.Schema<DelegatedSubnets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1058,8 +766,8 @@ export const ListDelegatedSubnetServiceBySubscription: API.OperationMethod<
   ListDelegatedSubnetServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDelegatedSubnetServiceBySubscriptionRequest,
-  output: DelegatedSubnets,
+  input: __S(32) as any as S.Schema<ListDelegatedSubnetServiceBySubscriptionRequest>,
+  output: __S(31) as any as S.Schema<DelegatedSubnets>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1073,8 +781,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(33) as any as S.Schema<ListOperationsRequest>,
+  output: __S(37) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1088,8 +796,8 @@ export const ListOrchestratorInstanceServiceByResourceGroup: API.OperationMethod
   ListOrchestratorInstanceServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrchestratorInstanceServiceByResourceGroupRequest,
-  output: Orchestrators,
+  input: __S(38) as any as S.Schema<ListOrchestratorInstanceServiceByResourceGroupRequest>,
+  output: __S(41) as any as S.Schema<Orchestrators>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1103,8 +811,8 @@ export const ListOrchestratorInstanceServiceBySubscription: API.OperationMethod<
   ListOrchestratorInstanceServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrchestratorInstanceServiceBySubscriptionRequest,
-  output: Orchestrators,
+  input: __S(42) as any as S.Schema<ListOrchestratorInstanceServiceBySubscriptionRequest>,
+  output: __S(41) as any as S.Schema<Orchestrators>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1118,8 +826,8 @@ export const PatchController: API.OperationMethod<
   PatchControllerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchControllerRequest,
-  output: PatchControllerResponse,
+  input: __S(43) as any as S.Schema<PatchControllerRequest>,
+  output: __S(3) as any as S.Schema<PatchControllerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1133,8 +841,8 @@ export const PatchDelegatedSubnetServiceDetails: API.OperationMethod<
   PatchDelegatedSubnetServiceDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchDelegatedSubnetServiceDetailsRequest,
-  output: PatchDelegatedSubnetServiceDetailsResponse,
+  input: __S(44) as any as S.Schema<PatchDelegatedSubnetServiceDetailsRequest>,
+  output: __S(21) as any as S.Schema<PatchDelegatedSubnetServiceDetailsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1148,8 +856,8 @@ export const PatchOrchestratorInstanceService: API.OperationMethod<
   PatchOrchestratorInstanceServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrchestratorInstanceServiceRequest,
-  output: PatchOrchestratorInstanceServiceResponse,
+  input: __S(45) as any as S.Schema<PatchOrchestratorInstanceServiceRequest>,
+  output: __S(46) as any as S.Schema<PatchOrchestratorInstanceServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1163,8 +871,8 @@ export const PutDelegatedSubnetServiceDetails: API.OperationMethod<
   PutDelegatedSubnetServiceDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDelegatedSubnetServiceDetailsRequest,
-  output: PutDelegatedSubnetServiceDetailsResponse,
+  input: __S(48) as any as S.Schema<PutDelegatedSubnetServiceDetailsRequest>,
+  output: __S(21) as any as S.Schema<PutDelegatedSubnetServiceDetailsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1182,7 +890,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(CreateControllerRequestTagsMap),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1196,7 +904,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceGuid: S.optional(S.String),
-          provisioningState: S.optional(DelegatedControllerPropertiesProvisioningState),
+          provisioningState: S.optional(S.String),
           dncAppId: S.optional(S.String),
           dncTenantId: S.optional(S.String),
           dncEndpoint: S.optional(S.String),
@@ -1211,14 +919,14 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(CreateControllerResponseTagsMap),
-          properties: S.optional(DelegatedControllerProperties),
+          tags: S.optional(__S(0)),
+          properties: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "CreateControllerResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(OrchestratorIdentityInputType),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OrchestratorIdentityInput",
@@ -1239,7 +947,7 @@ function __c0(j: number): any {
           clusterRootCA: S.optional(S.String),
           apiServerEndpoint: S.optional(S.String),
           privateLinkResourceId: S.optional(S.String),
-          controllerDetails: OrchestratorResourcePropertiesInputControllerDetails,
+          controllerDetails: __S(5),
         }),
       ).annotate({
         identifier: "OrchestratorResourcePropertiesInput",
@@ -1251,10 +959,10 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          kind: CreateOrchestratorInstanceServiceRequestKind,
-          identity: S.optional(OrchestratorIdentityInput),
-          tags: S.optional(CreateOrchestratorInstanceServiceRequestTagsMap),
-          properties: S.optional(OrchestratorResourcePropertiesInput),
+          kind: S.String,
+          identity: S.optional(__S(4)),
+          tags: S.optional(__S(0)),
+          properties: S.optional(__S(6)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1275,20 +983,20 @@ function __c1(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(OrchestratorIdentityType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrchestratorIdentity" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           resourceGuid: S.optional(S.String),
-          provisioningState: S.optional(OrchestratorResourcePropertiesProvisioningState),
+          provisioningState: S.optional(S.String),
           orchestratorAppId: S.optional(S.String),
           orchestratorTenantId: S.optional(S.String),
           clusterRootCA: S.optional(S.String),
           apiServerEndpoint: S.optional(S.String),
           privateLinkResourceId: S.optional(S.String),
-          controllerDetails: OrchestratorResourcePropertiesInputControllerDetails,
+          controllerDetails: __S(5),
         }),
       ).annotate({
         identifier: "OrchestratorResourceProperties",
@@ -1300,10 +1008,10 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          kind: CreateOrchestratorInstanceServiceResponseKind,
-          identity: S.optional(OrchestratorIdentity),
-          tags: S.optional(CreateOrchestratorInstanceServiceResponseTagsMap),
-          properties: S.optional(OrchestratorResourceProperties),
+          kind: S.String,
+          identity: S.optional(__S(8)),
+          tags: S.optional(__S(0)),
+          properties: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "CreateOrchestratorInstanceServiceResponse",
@@ -1395,8 +1103,8 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(GetControllerDetailsResponseTagsMap),
-          properties: S.optional(DelegatedControllerProperties),
+          tags: S.optional(__S(0)),
+          properties: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "GetControllerDetailsResponse",
@@ -1428,9 +1136,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceGuid: S.optional(S.String),
-          provisioningState: S.optional(DelegatedSubnetPropertiesProvisioningState),
-          subnetDetails: S.optional(SubnetDetails),
-          controllerDetails: S.optional(OrchestratorResourcePropertiesInputControllerDetails),
+          provisioningState: S.optional(S.String),
+          subnetDetails: S.optional(__S(19)),
+          controllerDetails: S.optional(__S(5)),
         }),
       ).annotate({
         identifier: "DelegatedSubnetProperties",
@@ -1442,8 +1150,8 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(GetDelegatedSubnetServiceDetailsResponseTagsMap),
-          properties: S.optional(DelegatedSubnetProperties),
+          tags: S.optional(__S(0)),
+          properties: S.optional(__S(20)),
         }),
       ).annotate({
         identifier: "GetDelegatedSubnetServiceDetailsResponse",
@@ -1472,10 +1180,10 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          kind: GetOrchestratorInstanceServiceDetailsResponseKind,
-          identity: S.optional(OrchestratorIdentity),
-          tags: S.optional(GetOrchestratorInstanceServiceDetailsResponseTagsMap),
-          properties: S.optional(OrchestratorResourceProperties),
+          kind: S.String,
+          identity: S.optional(__S(8)),
+          tags: S.optional(__S(0)),
+          properties: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "GetOrchestratorInstanceServiceDetailsResponse",
@@ -1501,11 +1209,11 @@ function __c3(j: number): any {
         identifier: "ListDelegatedNetworkByResourceGroupRequest",
       });
     case 1:
-      return S.Array(DelegatedController);
+      return S.Array(__S(3));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: DelegatedControllersValueList,
+          value: __S(25),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DelegatedControllers" });
@@ -1547,16 +1255,16 @@ function __c3(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          tags: S.optional(DelegatedSubnetTagsMap),
-          properties: S.optional(DelegatedSubnetProperties),
+          tags: S.optional(__S(0)),
+          properties: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "DelegatedSubnet" });
     case 6:
-      return S.Array(DelegatedSubnet);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: DelegatedSubnetsValueList,
+          value: __S(30),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DelegatedSubnets" });
@@ -1604,17 +1312,17 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(34)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
-      return S.Array(Operation);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(36)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1641,10 +1349,10 @@ function __c4(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          kind: OrchestratorKind,
-          identity: S.optional(OrchestratorIdentity),
-          tags: S.optional(OrchestratorTagsMap),
-          properties: S.optional(OrchestratorResourceProperties),
+          kind: S.String,
+          identity: S.optional(__S(8)),
+          tags: S.optional(__S(0)),
+          properties: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "Orchestrator" });
   }
@@ -1652,11 +1360,11 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Orchestrator);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: OrchestratorsValueList,
+          value: __S(40),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "Orchestrators" });
@@ -1681,7 +1389,7 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(PatchControllerRequestTagsMap),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1697,7 +1405,7 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(PatchDelegatedSubnetServiceDetailsRequestTagsMap),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1715,7 +1423,7 @@ function __c5(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(PatchOrchestratorInstanceServiceRequestTagsMap),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1734,10 +1442,10 @@ function __c5(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.optional(S.String),
-          kind: PatchOrchestratorInstanceServiceResponseKind,
-          identity: S.optional(OrchestratorIdentity),
-          tags: S.optional(PatchOrchestratorInstanceServiceResponseTagsMap),
-          properties: S.optional(OrchestratorResourceProperties),
+          kind: S.String,
+          identity: S.optional(__S(8)),
+          tags: S.optional(__S(0)),
+          properties: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "PatchOrchestratorInstanceServiceResponse",
@@ -1745,8 +1453,8 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          subnetDetails: S.optional(SubnetDetails),
-          controllerDetails: S.optional(OrchestratorResourcePropertiesInputControllerDetails),
+          subnetDetails: S.optional(__S(19)),
+          controllerDetails: S.optional(__S(5)),
         }),
       ).annotate({
         identifier: "DelegatedSubnetPropertiesInput",
@@ -1762,8 +1470,8 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(PutDelegatedSubnetServiceDetailsRequestTagsMap),
-          properties: S.optional(DelegatedSubnetPropertiesInput),
+          tags: S.optional(__S(0)),
+          properties: S.optional(__S(47)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1775,5 +1483,28 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "PutDelegatedSubnetServiceDetailsRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
   }
 }

@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -18,8 +20,6 @@ export type ExternalDataDestinationTypeEnum =
   | "Databricks"
   | "AzureBlob"
   | "S3";
-const ExternalDataDestinationTypeEnum = S.String;
-
 export interface CreateExternalDataDestinationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -32,11 +32,6 @@ export interface CreateExternalDataDestinationRequest {
   /** Integration holding this destination's credentials. Required for every type except the PostHog warehouse. */
   integration?: number | null;
 }
-const CreateExternalDataDestinationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateExternalDataDestinationRequest>;
-
 /** One source that writes to a destination. Shape only -- never used to deserialize. */
 export interface SyncedSource {
   /** The source's id. */
@@ -48,15 +43,8 @@ export interface SyncedSource {
   /** True when only some of the source's tables reach this destination, through their own override. */
   via_table_override: boolean;
 }
-const SyncedSource = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SyncedSource>;
-
 /** Sources whose tables sync to this destination, so you can see what a change or a deletion would affect. Includes sources that reach it through a single table's override, and -- for the PostHog warehouse -- sources that write there by default because nothing else was configured. */
 export type ExternalDataDestinationSyncedSourcesList = Array<SyncedSource>;
-const ExternalDataDestinationSyncedSourcesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ExternalDataDestinationSyncedSourcesList>;
-
 export interface ExternalDataDestination {
   id: string;
   /** Where synced rows are written. The PostHog warehouse is managed for you, so you cannot create one here. * `PostHogWarehouse` - PostHog warehouse * `Redshift` - Redshift * `Snowflake` - Snowflake * `BigQuery` - BigQuery * `Postgres` - Postgres * `Databricks` - Databricks * `AzureBlob` - Azure Blob * `S3` - S3 */
@@ -75,39 +63,19 @@ export interface ExternalDataDestination {
   /** Sources whose tables sync to this destination, so you can see what a change or a deletion would affect. Includes sources that reach it through a single table's override, and -- for the PostHog warehouse -- sources that write there by default because nothing else was configured. */
   synced_sources: ExternalDataDestinationSyncedSourcesList;
 }
-const ExternalDataDestination = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ExternalDataDestination>;
-
 export interface ExternalDataDestinationsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this external data destination. */
   id: string;
 }
-const ExternalDataDestinationsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ExternalDataDestinationsDestroyRequest>;
-
 export interface ExternalDataDestinationsDestroyResponse {}
-const ExternalDataDestinationsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ExternalDataDestinationsDestroyResponse>;
-
 export interface GetExternalDataDestinationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this external data destination. */
   id: string;
 }
-const GetExternalDataDestinationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetExternalDataDestinationRequest>;
-
 export interface ListExternalDataDestinationsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -116,28 +84,13 @@ export interface ListExternalDataDestinationsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListExternalDataDestinationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListExternalDataDestinationsRequest>;
-
 export type PaginatedExternalDataDestinationListResultsList = Array<ExternalDataDestination>;
-const PaginatedExternalDataDestinationListResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<PaginatedExternalDataDestinationListResultsList>;
-
 export interface PaginatedExternalDataDestinationList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedExternalDataDestinationListResultsList;
 }
-const PaginatedExternalDataDestinationList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PaginatedExternalDataDestinationList>;
-
 export interface UpdateExternalDataDestinationRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -152,11 +105,6 @@ export interface UpdateExternalDataDestinationRequest {
   /** Integration holding this destination's credentials. Required for every type except the PostHog warehouse. */
   integration?: number | null;
 }
-const UpdateExternalDataDestinationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<UpdateExternalDataDestinationRequest>;
-
 export interface UpdateExternalDataDestinationsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -171,11 +119,6 @@ export interface UpdateExternalDataDestinationsPartialRequest {
   /** Integration holding this destination's credentials. Required for every type except the PostHog warehouse. */
   integration?: number | null;
 }
-const UpdateExternalDataDestinationsPartialRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<UpdateExternalDataDestinationsPartialRequest>;
-
 export type CreateExternalDataDestinationError = PosthogOpError;
 /** Manage where warehouse sources write their synced rows. A destination can be attached to several sources, or to a single table on a source. Credentials come from an integration, so one connection can be reused across syncs. */
 export const createExternalDataDestination: API.OperationMethod<
@@ -184,8 +127,8 @@ export const createExternalDataDestination: API.OperationMethod<
   CreateExternalDataDestinationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateExternalDataDestinationRequest,
-  output: ExternalDataDestination,
+  input: __S(0) as any as S.Schema<CreateExternalDataDestinationRequest>,
+  output: __S(3) as any as S.Schema<ExternalDataDestination>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -199,8 +142,8 @@ export const externalDataDestinationsDestroy: API.OperationMethod<
   ExternalDataDestinationsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExternalDataDestinationsDestroyRequest,
-  output: ExternalDataDestinationsDestroyResponse,
+  input: __S(4) as any as S.Schema<ExternalDataDestinationsDestroyRequest>,
+  output: __S(5) as any as S.Schema<ExternalDataDestinationsDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -214,8 +157,8 @@ export const getExternalDataDestination: API.OperationMethod<
   GetExternalDataDestinationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExternalDataDestinationRequest,
-  output: ExternalDataDestination,
+  input: __S(6) as any as S.Schema<GetExternalDataDestinationRequest>,
+  output: __S(3) as any as S.Schema<ExternalDataDestination>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -229,8 +172,8 @@ export const listExternalDataDestinations: API.OperationMethod<
   ListExternalDataDestinationsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListExternalDataDestinationsRequest,
-  output: PaginatedExternalDataDestinationList,
+  input: __S(7) as any as S.Schema<ListExternalDataDestinationsRequest>,
+  output: __S(9) as any as S.Schema<PaginatedExternalDataDestinationList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -244,8 +187,8 @@ export const updateExternalDataDestination: API.OperationMethod<
   UpdateExternalDataDestinationError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateExternalDataDestinationRequest,
-  output: ExternalDataDestination,
+  input: __S(10) as any as S.Schema<UpdateExternalDataDestinationRequest>,
+  output: __S(3) as any as S.Schema<ExternalDataDestination>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -259,8 +202,8 @@ export const updateExternalDataDestinationsPartial: API.OperationMethod<
   UpdateExternalDataDestinationsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateExternalDataDestinationsPartialRequest,
-  output: ExternalDataDestination,
+  input: __S(11) as any as S.Schema<UpdateExternalDataDestinationsPartialRequest>,
+  output: __S(3) as any as S.Schema<ExternalDataDestination>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -273,7 +216,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          type: ExternalDataDestinationTypeEnum,
+          type: S.String,
           name: S.String,
           config: S.optional(S.Unknown),
           integration: S.optional(S.NullOr(S.Number)),
@@ -297,12 +240,12 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "SyncedSource" });
     case 2:
-      return S.Array(SyncedSource);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: ExternalDataDestinationTypeEnum,
+          type: S.String,
           name: S.String,
           config: S.optional(S.Unknown),
           integration: S.optional(S.NullOr(S.Number)),
@@ -310,7 +253,7 @@ function __c0(j: number): any {
           created_at: S.String,
           created_by: S.NullOr(S.Number),
           updated_at: S.NullOr(S.String),
-          synced_sources: ExternalDataDestinationSyncedSourcesList,
+          synced_sources: __S(2),
         }),
       ).annotate({ identifier: "ExternalDataDestination" });
     case 4:
@@ -368,14 +311,14 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ExternalDataDestination);
+      return S.Array(__S(3));
     case 1:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedExternalDataDestinationListResultsList,
+          results: __S(8),
         }),
       ).annotate({
         identifier: "PaginatedExternalDataDestinationList",
@@ -385,7 +328,7 @@ function __c1(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          type: ExternalDataDestinationTypeEnum,
+          type: S.String,
           name: S.String,
           config: S.optional(S.Unknown),
           integration: S.optional(S.NullOr(S.Number)),
@@ -404,7 +347,7 @@ function __c1(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          type: S.optional(ExternalDataDestinationTypeEnum),
+          type: S.optional(S.String),
           name: S.optional(S.String),
           config: S.optional(S.Unknown),
           integration: S.optional(S.NullOr(S.Number)),
@@ -418,5 +361,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateExternalDataDestinationsPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

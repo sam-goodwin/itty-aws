@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -78,26 +80,14 @@ export class ServiceDisabled
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 export type InstanceConfigInstanceSizeEnum =
   | "INSTANCE_SIZE_UNSPECIFIED"
   | "STANDARD_SMALL"
@@ -116,18 +106,12 @@ export type InstanceConfigInstanceSizeEnum =
   | "SANDBOX_SMALL"
   | "TRIAL_SMALL"
   | "TIME_LIMITED_TRIAL_SMALL";
-const InstanceConfigInstanceSizeEnum = S.String;
-
 /** Message storing the instance configuration. */
 export interface InstanceConfig {
   /** The instance size of this the instance configuration. */
   instanceSize?: InstanceConfigInstanceSizeEnum | (string & {});
 }
-const InstanceConfig = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<InstanceConfig>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringList>;
-
 /** Message storing the URIs of the ContactCenter. */
 export interface URIs {
   /** Virtual Agent Streaming Service Uri of the ContactCenter. */
@@ -139,8 +123,6 @@ export interface URIs {
   /** Media Uri of the ContactCenter. */
   mediaUri?: string;
 }
-const URIs = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<URIs>;
-
 export type SAMLParamsAuthenticationContextsItemEnum =
   | "AUTHENTICATION_CONTEXT_UNSPECIFIED"
   | "INTERNET_PROTOCOL"
@@ -167,16 +149,9 @@ export type SAMLParamsAuthenticationContextsItemEnum =
   | "SECURE_REMOTE_PASSWORD"
   | "SSL_TLS_CERTIFICATE_BASED"
   | "TIME_SYNC_TOKEN";
-const SAMLParamsAuthenticationContextsItemEnum = S.String;
-
 export type SAMLParamsAuthenticationContextsItemEnumList = Array<
   SAMLParamsAuthenticationContextsItemEnum | (string & {})
 >;
-const SAMLParamsAuthenticationContextsItemEnumList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<SAMLParamsAuthenticationContextsItemEnumList>;
-
 /** Message storing SAML params to enable Google as IDP. */
 export interface SAMLParams {
   /** SAML certificate */
@@ -192,8 +167,6 @@ export interface SAMLParams {
   /** Additional contexts used for authentication. */
   authenticationContexts?: SAMLParamsAuthenticationContextsItemEnumList;
 }
-const SAMLParams = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SAMLParams>;
-
 export type WeeklyScheduleDaysItemEnum =
   | "DAY_OF_WEEK_UNSPECIFIED"
   | "MONDAY"
@@ -204,9 +177,6 @@ export type WeeklyScheduleDaysItemEnum =
   | "SATURDAY"
   | "SUNDAY";
 export type WeeklyScheduleDaysItemEnumList = Array<WeeklyScheduleDaysItemEnum | (string & {})>;
-const WeeklyScheduleDaysItemEnumList =
-  SAMLParamsAuthenticationContextsItemEnumList as any as S.Schema<WeeklyScheduleDaysItemEnumList>;
-
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
@@ -218,8 +188,6 @@ export interface TimeOfDay {
   /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
   minutes?: number;
 }
-const TimeOfDay = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<TimeOfDay>;
-
 /** Message representing a weekly schedule. */
 export interface WeeklySchedule {
   /** Optional. Duration of the schedule. */
@@ -231,18 +199,12 @@ export interface WeeklySchedule {
   /** Optional. Daily end time of the schedule. If `end_time` is before `start_time`, the schedule will be considered as ending on the next day. */
   endTime?: TimeOfDay;
 }
-const WeeklySchedule = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<WeeklySchedule>;
-
 export type WeeklyScheduleList = Array<WeeklySchedule>;
-const WeeklyScheduleList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<WeeklyScheduleList>;
-
 /** Instances in this Channel will receive updates after all instances in `Normal` were updated. They also will only be updated outside of their peak hours. */
 export interface Critical {
   /** Required. Hours during which the instance should not be updated. */
   peakHours?: WeeklyScheduleList;
 }
-const Critical = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Critical>;
-
 /** Instances in this Channel will receive updates after all instances in `Early` were updated + 2 days. */
 export type Normal = CancelOperationRequest;
 /** Message storing info about the first admin user. Next ID: 3 */
@@ -252,8 +214,6 @@ export interface AdminUser {
   /** Optional. Last/family name of the first admin user. */
   familyName?: string;
 }
-const AdminUser = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<AdminUser>;
-
 /** LINT.IfChange First Channel to receive the updates. Meant to dev/test instances */
 export type Early = CancelOperationRequest;
 export type ContactCenterStateEnum =
@@ -269,17 +229,11 @@ export type ContactCenterStateEnum =
   | "STATE_DEGRADED"
   | "STATE_REPAIRING"
   | "STATE_EXPIRING";
-const ContactCenterStateEnum = S.String;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StringMap>;
-
 export interface FeatureConfig {
   /** Optional. If true - enables the agent desktop feature. Default is false. */
   agentDesktopEnabled?: boolean;
 }
-const FeatureConfig = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<FeatureConfig>;
-
 /** Defines a logical CCAIP component that e.g. "EMAIL", "CRM". For more information see go/ccaip-private-path-v2. Each logical component is associated with a list of service attachments. */
 export interface Component {
   /** Associated service attachments. The service attachment names that will be used for sending private traffic to the CCAIP tenant project. Example service attachment name: "projects/${TENANT_PROJECT_ID}/regions/${REGION}/serviceAttachments/ingress-default". */
@@ -287,11 +241,7 @@ export interface Component {
   /** Name of the component. */
   name?: string;
 }
-const Component = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Component>;
-
 export type ComponentList = Array<Component>;
-const ComponentList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ComponentList>;
-
 /** Private service connect settings. */
 export interface PscSetting {
   /** The list of project ids that are allowed to send traffic to the service attachment. This field should be filled only for the ingress components. */
@@ -299,8 +249,6 @@ export interface PscSetting {
   /** Output only. The CCAIP tenant project ids. */
   producerProjectIds?: StringList;
 }
-const PscSetting = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PscSetting>;
-
 /** Defines ingress and egress private traffic settings for CCAIP instances. */
 export interface PrivateAccess {
   /** List of egress components that should not be accessed via the Internet. For more information see go/ccaip-private-path-v2. */
@@ -310,8 +258,6 @@ export interface PrivateAccess {
   /** List of ingress components that should not be accessed via the Internet. For more information see go/ccaip-private-path-v2. */
   ingressSettings?: ComponentList;
 }
-const PrivateAccess = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PrivateAccess>;
-
 /** Message describing ContactCenter object */
 export interface ContactCenter {
   /** The configuration of this instance, it is currently immutable once created. */
@@ -365,8 +311,6 @@ export interface ContactCenter {
   /** Optional. Whether the advanced reporting feature is enabled. */
   advancedReportingEnabled?: boolean;
 }
-const ContactCenter = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ContactCenter>;
-
 export interface CreateProjectsLocationsContactCentersRequest {
   /** Required. Id of the requesting object If auto-generating Id server-side, remove this field and contact_center_id from the method_signature of Create RPC */
   contactCenterId?: string;
@@ -377,17 +321,8 @@ export interface CreateProjectsLocationsContactCentersRequest {
   /** Request body */
   body?: ContactCenter;
 }
-const CreateProjectsLocationsContactCentersRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateProjectsLocationsContactCentersRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -397,8 +332,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -412,28 +345,16 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-const Operation = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Operation>;
-
 export interface DeleteProjectsLocationsContactCentersRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Required. Name of the resource */
   name: string;
 }
-const DeleteProjectsLocationsContactCentersRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsContactCentersRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 /** Template specifying rules for generating a single event that occurs during a shift. An event may represent a meeting, break, lunch, etc. */
 export interface EventTemplate {
   /** Required. The time increment (in minutes) used to generate the set of possible event start times between `minimum_minutes_after_shift_start` and `maximum_minutes_after_shift_start`. For example, if the minimum minutes after shift start are 30, maximum minutes after shift start are 45, and the start time increment is 5 minutes, the event can take place 30, 35, 40, or 45 minutes after the start of the shift. */
@@ -447,11 +368,7 @@ export interface EventTemplate {
   /** Optional. Maximum number of minutes after the beginning of a shift that this event can start. */
   maximumMinutesAfterShiftStart?: number;
 }
-const EventTemplate = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<EventTemplate>;
-
 export type EventTemplateList = Array<EventTemplate>;
-const EventTemplateList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<EventTemplateList>;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Contactcenteraiplatform_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -461,24 +378,12 @@ export interface Contactcenteraiplatform_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-const Contactcenteraiplatform_Date = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<Contactcenteraiplatform_Date>;
-
 export type Contactcenteraiplatform_DateList = Array<Contactcenteraiplatform_Date>;
-const Contactcenteraiplatform_DateList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<Contactcenteraiplatform_DateList>;
-
 /** List of dates. */
 export interface DateList {
   /** Optional. Values in the list. */
   values?: Contactcenteraiplatform_DateList;
 }
-const DateList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<DateList>;
-
 /** Template specifying rules for generating shifts. A shift is a unit of work that specifies a start time, end time, and may contain events (e.g. lunch, breaks etc.). Shifts will be assigned to specific dates in the response. */
 export interface ShiftTemplate {
   /** Required. Earliest time in the day that a shift can start. This value is specified with hours and minutes; seconds and nanos are ignored. */
@@ -506,18 +411,12 @@ export interface ShiftTemplate {
   /** Optional. Minimum number of employees that can be assigned to all shifts generated by this template on working days. */
   minimumEmployeeCount?: number;
 }
-const ShiftTemplate = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ShiftTemplate>;
-
 export type ShiftTemplateList = Array<ShiftTemplate>;
-const ShiftTemplateList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ShiftTemplateList>;
-
 export type SolverConfigScheduleTypeEnum =
   | "SCHEDULE_TYPE_UNSPECIFIED"
   | "SINGLE_SHIFT"
   | "WEEKLY_WITH_FIXED_EVENTS"
   | "WEEKLY_WITH_VARIABLE_EVENTS";
-const SolverConfigScheduleTypeEnum = S.String;
-
 /** Specifies additional parameters for the solver generating shifts. */
 export interface SolverConfig {
   /** Optional. Maximum time the solver should spend on the problem. If not set, defaults to 1 minute. The choice of a time limit should depend on the size of the problem. To give an example, when solving a 7-day instance with 2 `ShiftTemplates`, each with ~20 possible start times and holding 2 events with ~30 possible start times, and two days off per week, recommended values are: <10s for fast solutions (and likely suboptimal), (10s, 300s) for good quality solutions, and >300s for an exhaustive search. Larger instances may require longer time limits. This value is not a hard limit and it does not account for the communication overhead. The expected latency to solve the problem may slightly exceed this value. */
@@ -525,8 +424,6 @@ export interface SolverConfig {
   /** Required. Specifies the type of schedule to generate. */
   scheduleType?: SolverConfigScheduleTypeEnum | (string & {});
 }
-const SolverConfig = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<SolverConfig>;
-
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -534,8 +431,6 @@ export interface TimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
   version?: string;
 }
-const TimeZone = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<TimeZone>;
-
 /** Represents civil time (or occasionally physical time). This type can represent a civil time in one of a few possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered not to have a specific year, month, or day respectively. This type may also be used to represent a physical time if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone, that can be done in another field. This type is more flexible than some applications may want. Make sure to document and validate your application's limitations. */
 export interface DateTime {
   /** Time zone. */
@@ -557,8 +452,6 @@ export interface DateTime {
   /** Optional. Month of year. Must be from 1 to 12, or 0 if specifying a datetime without a month. */
   month?: number;
 }
-const DateTime = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<DateTime>;
-
 /** Specifies the number of employees required to cover the demand in the given time interval. The length of the interval must be strictly positive. */
 export interface WorkforceDemand {
   /** Required. Start of the time interval for the given demand (inclusive). These values are read down to the minute; seconds and all smaller units are ignored. */
@@ -568,18 +461,12 @@ export interface WorkforceDemand {
   /** Optional. Number of employees needed to cover the demand for this interval. */
   employeeCount?: number;
 }
-const WorkforceDemand = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<WorkforceDemand>;
-
 export type WorkforceDemandList_ = Array<WorkforceDemand>;
-const WorkforceDemandList_ = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<WorkforceDemandList_>;
-
 /** List of workforce demands. */
 export interface WorkforceDemandList {
   /** Optional. Values in the list. */
   values?: WorkforceDemandList_;
 }
-const WorkforceDemandList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<WorkforceDemandList>;
-
 /** Specifies a time interval during which the overlap with events (generated from event templates) should be minimal. */
 export interface UnwantedEventInterval {
   /** Required. Start time of the event. */
@@ -587,17 +474,7 @@ export interface UnwantedEventInterval {
   /** Required. Duration of the event. */
   durationMinutes?: number;
 }
-const UnwantedEventInterval = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<UnwantedEventInterval>;
-
 export type UnwantedEventIntervalList = Array<UnwantedEventInterval>;
-const UnwantedEventIntervalList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<UnwantedEventIntervalList>;
-
 /** Information about a particular employee for planning purposes. */
 export interface EmployeeInfo {
   /** Required. Unique ID of this employee. */
@@ -605,11 +482,7 @@ export interface EmployeeInfo {
   /** Optional. A list of unwanted event intervals for this employee. The start time of the interval must be in the planning horizon. */
   unwantedEventIntervals?: UnwantedEventIntervalList;
 }
-const EmployeeInfo = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<EmployeeInfo>;
-
 export type EmployeeInfoList = Array<EmployeeInfo>;
-const EmployeeInfoList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<EmployeeInfoList>;
-
 /** Specifies the time interval during which the solver should generate shifts. The start time must be before the end time. */
 export interface PlanningHorizon {
   /** Required. End of the time interval for the given demand (exclusive). These values are read down to the minute; seconds and all smaller units are ignored. */
@@ -617,8 +490,6 @@ export interface PlanningHorizon {
   /** Required. Start of the time interval for the given demand (inclusive). These values are read down to the minute; seconds and all smaller units are ignored. */
   startTime?: DateTime;
 }
-const PlanningHorizon = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<PlanningHorizon>;
-
 /** Request with constraints for generating shifts. The shifts generated must adhere to these constraints. */
 export interface GenerateShiftsRequest {
   /** Required. Set of shift templates specifying rules for generating shifts. A shift template can be used for generating multiple shifts. */
@@ -632,31 +503,16 @@ export interface GenerateShiftsRequest {
   /** Required. The solver will generate the maximum number of shifts per shift template. */
   planningHorizon?: PlanningHorizon;
 }
-const GenerateShiftsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GenerateShiftsRequest>;
-
 export interface GenerateShiftsProjectsLocationsRequest {
   /** Required. Name of the parent resource associated with the request. Format: projects/{project}/locations/{location} */
   parent: string;
   /** Request body */
   body?: GenerateShiftsRequest;
 }
-const GenerateShiftsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GenerateShiftsProjectsLocationsRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -670,26 +526,14 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsContactCentersRequest {
   /** Required. Name of the resource */
   name: string;
 }
-const GetProjectsLocationsContactCentersRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetProjectsLocationsContactCentersRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
@@ -702,14 +546,7 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -717,11 +554,6 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsContactCentersRequest {
   /** Required. Parent value for ListContactCentersRequest */
   parent: string;
@@ -734,14 +566,7 @@ export interface ListProjectsLocationsContactCentersRequest {
   /** Hint for how to order the results */
   orderBy?: string;
 }
-const ListProjectsLocationsContactCentersRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListProjectsLocationsContactCentersRequest>;
-
 export type ContactCenterList = Array<ContactCenter>;
-const ContactCenterList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ContactCenterList>;
-
 /** Message for response to listing ContactCenters */
 export interface ListContactCentersResponse {
   /** Locations that could not be reached. */
@@ -751,11 +576,6 @@ export interface ListContactCentersResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-const ListContactCentersResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListContactCentersResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -768,14 +588,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -785,11 +598,6 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface PatchProjectsLocationsContactCentersRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the ContactCenter resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -800,20 +608,10 @@ export interface PatchProjectsLocationsContactCentersRequest {
   /** Request body */
   body?: ContactCenter;
 }
-const PatchProjectsLocationsContactCentersRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<PatchProjectsLocationsContactCentersRequest>;
-
 export interface QueryContactCenterQuotaProjectsLocationsRequest {
   /** Required. Parent project resource id. */
   parent: string;
 }
-const QueryContactCenterQuotaProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<QueryContactCenterQuotaProjectsLocationsRequest>;
-
 export type QuotaContactCenterInstanceSizeEnum =
   | "INSTANCE_SIZE_UNSPECIFIED"
   | "STANDARD_SMALL"
@@ -832,8 +630,6 @@ export type QuotaContactCenterInstanceSizeEnum =
   | "SANDBOX_SMALL"
   | "TRIAL_SMALL"
   | "TIME_LIMITED_TRIAL_SMALL";
-const QuotaContactCenterInstanceSizeEnum = S.String;
-
 /** Quota details. */
 export interface Quota {
   /** Reflects the count sum of contact centers on a billing account. */
@@ -843,11 +639,7 @@ export interface Quota {
   /** Contact center instance type. */
   contactCenterInstanceSize?: QuotaContactCenterInstanceSizeEnum;
 }
-const Quota = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Quota>;
-
 export type QuotaList = Array<Quota>;
-const QuotaList = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<QuotaList>;
-
 /** Represents a quota for contact centers. */
 export interface ContactCenterQuota {
   /** Quota details per contact center instance type. */
@@ -857,8 +649,6 @@ export interface ContactCenterQuota {
   /** Deprecated: Use the Quota fields instead. Reflects the count limit of contact centers on a billing account. */
   contactCenterCountLimit?: number;
 }
-const ContactCenterQuota = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ContactCenterQuota>;
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -873,8 +663,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -894,8 +684,8 @@ export const createProjectsLocationsContactCenters: API.OperationMethod<
   CreateProjectsLocationsContactCentersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsContactCentersRequest,
-  output: Operation,
+  input: __S(19) as any as S.Schema<CreateProjectsLocationsContactCentersRequest>,
+  output: __S(23) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -915,8 +705,8 @@ export const deleteProjectsLocationsContactCenters: API.OperationMethod<
   DeleteProjectsLocationsContactCentersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsContactCentersRequest,
-  output: Operation,
+  input: __S(24) as any as S.Schema<DeleteProjectsLocationsContactCentersRequest>,
+  output: __S(23) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -936,8 +726,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(25) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -957,8 +747,8 @@ export const generateShiftsProjectsLocations: API.OperationMethod<
   GenerateShiftsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateShiftsProjectsLocationsRequest,
-  output: Operation,
+  input: __S(45) as any as S.Schema<GenerateShiftsProjectsLocationsRequest>,
+  output: __S(23) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -972,8 +762,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(46) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(47) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -991,8 +781,8 @@ export const getProjectsLocationsContactCenters: API.OperationMethod<
   GetProjectsLocationsContactCentersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsContactCentersRequest,
-  output: ContactCenter,
+  input: __S(48) as any as S.Schema<GetProjectsLocationsContactCentersRequest>,
+  output: __S(18) as any as S.Schema<ContactCenter>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1010,8 +800,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(49) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(23) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1026,8 +816,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(50) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(52) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1047,8 +837,8 @@ export const listProjectsLocationsContactCenters: API.PaginatedOperationMethod<
   GcpOpContext,
   ListContactCentersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsContactCentersRequest,
-  output: ListContactCentersResponse,
+  input: __S(53) as any as S.Schema<ListProjectsLocationsContactCentersRequest>,
+  output: __S(55) as any as S.Schema<ListContactCentersResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1068,8 +858,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(56) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(58) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1090,8 +880,8 @@ export const patchProjectsLocationsContactCenters: API.OperationMethod<
   PatchProjectsLocationsContactCentersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsContactCentersRequest,
-  output: Operation,
+  input: __S(59) as any as S.Schema<PatchProjectsLocationsContactCentersRequest>,
+  output: __S(23) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1109,8 +899,8 @@ export const queryContactCenterQuotaProjectsLocations: API.OperationMethod<
   QueryContactCenterQuotaProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryContactCenterQuotaProjectsLocationsRequest,
-  output: ContactCenterQuota,
+  input: __S(60) as any as S.Schema<QueryContactCenterQuotaProjectsLocationsRequest>,
+  output: __S(63) as any as S.Schema<ContactCenterQuota>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1127,7 +917,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1141,7 +931,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          instanceSize: S.optional(InstanceConfigInstanceSizeEnum),
+          instanceSize: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceConfig" });
     case 3:
@@ -1156,7 +946,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "URIs" });
     case 5:
-      return S.Array(SAMLParamsAuthenticationContextsItemEnum);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1165,7 +955,7 @@ function __c0(j: number): any {
           userEmail: S.optional(S.String),
           ssoUri: S.optional(S.String),
           entityId: S.optional(S.String),
-          authenticationContexts: S.optional(SAMLParamsAuthenticationContextsItemEnumList),
+          authenticationContexts: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "SAMLParams" });
     case 7:
@@ -1185,17 +975,17 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           duration: S.optional(S.String),
-          days: S.optional(WeeklyScheduleDaysItemEnumList),
-          startTime: S.optional(TimeOfDay),
-          endTime: S.optional(TimeOfDay),
+          days: S.optional(__S(5)),
+          startTime: S.optional(__S(7)),
+          endTime: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "WeeklySchedule" });
     case 1:
-      return S.Array(WeeklySchedule);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          peakHours: S.optional(WeeklyScheduleList),
+          peakHours: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "Critical" });
     case 3:
@@ -1216,12 +1006,12 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          serviceAttachmentNames: S.optional(StringList),
+          serviceAttachmentNames: S.optional(__S(3)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Component" });
     case 7:
-      return S.Array(Component);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -1229,43 +1019,43 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          allowedConsumerProjectIds: S.optional(StringList),
-          producerProjectIds: S.optional(StringList),
+          allowedConsumerProjectIds: S.optional(__S(3)),
+          producerProjectIds: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "PscSetting" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          egressSettings: S.optional(ComponentList),
-          pscSetting: S.optional(PscSetting),
-          ingressSettings: S.optional(ComponentList),
+          egressSettings: S.optional(__S(15)),
+          pscSetting: S.optional(__S(16)),
+          ingressSettings: S.optional(__S(15)),
         }),
       ).annotate({ identifier: "PrivateAccess" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          instanceConfig: S.optional(InstanceConfig),
-          privateComponents: S.optional(StringList),
+          instanceConfig: S.optional(__S(2)),
+          privateComponents: S.optional(__S(3)),
           userEmail: S.optional(S.String),
           customerDomainPrefix: S.optional(S.String),
-          uris: S.optional(URIs),
-          samlParams: S.optional(SAMLParams),
+          uris: S.optional(__S(4)),
+          samlParams: S.optional(__S(6)),
           releaseVersion: S.optional(S.String),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
           deleteTime: S.optional(S.String),
-          critical: S.optional(Critical),
+          critical: S.optional(__S(10)),
           expireTime: S.optional(S.String),
           updateTime: S.optional(S.String),
-          normal: S.optional(CancelOperationRequest),
-          adminUser: S.optional(AdminUser),
-          early: S.optional(CancelOperationRequest),
+          normal: S.optional(__S(0)),
+          adminUser: S.optional(__S(11)),
+          early: S.optional(__S(0)),
           createTime: S.optional(S.String),
           ccaipManagedUsers: S.optional(S.Boolean),
-          state: S.optional(ContactCenterStateEnum),
-          labels: S.optional(StringMap),
-          featureConfig: S.optional(FeatureConfig),
-          privateAccess: S.optional(PrivateAccess),
+          state: S.optional(S.String),
+          labels: S.optional(__S(12)),
+          featureConfig: S.optional(__S(13)),
+          privateAccess: S.optional(__S(17)),
           purgeTime: S.optional(S.String),
           kmsKey: S.optional(S.String),
           advancedReportingEnabled: S.optional(S.Boolean),
@@ -1277,7 +1067,7 @@ function __c2(j: number): any {
           contactCenterId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(ContactCenter.pipe(T.HttpBody())),
+          body: S.optional(__S(18).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1291,22 +1081,22 @@ function __c2(j: number): any {
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(DocumentMap);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "Status" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          error: S.optional(Status),
-          metadata: S.optional(DocumentMap),
-          response: S.optional(DocumentMap),
+          error: S.optional(__S(22)),
+          metadata: S.optional(__S(20)),
+          response: S.optional(__S(20)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
@@ -1354,7 +1144,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "EventTemplate" });
     case 3:
-      return S.Array(EventTemplate);
+      return S.Array(__S(26));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1366,22 +1156,22 @@ function __c3(j: number): any {
         identifier: "Contactcenteraiplatform_Date",
       });
     case 5:
-      return S.Array(Contactcenteraiplatform_Date);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(Contactcenteraiplatform_DateList),
+          values: S.optional(__S(29)),
         }),
       ).annotate({ identifier: "DateList" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          earliestStartTime: S.optional(TimeOfDay),
-          eventTemplates: S.optional(EventTemplateList),
-          latestStartTime: S.optional(TimeOfDay),
+          earliestStartTime: S.optional(__S(7)),
+          eventTemplates: S.optional(__S(27)),
+          latestStartTime: S.optional(__S(7)),
           durationMinutes: S.optional(S.Number),
-          assignableEmployeeIds: S.optional(StringList),
-          daysOffDates: S.optional(DateList),
+          assignableEmployeeIds: S.optional(__S(3)),
+          daysOffDates: S.optional(__S(30)),
           startTimeIncrementMinutes: S.optional(S.Number),
           daysOffCountPerWeek: S.optional(S.Number),
           minimumIntereventGapMinutes: S.optional(S.Number),
@@ -1395,12 +1185,12 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ShiftTemplate);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() =>
         S.Struct({
           maximumProcessingDuration: S.optional(S.String),
-          scheduleType: S.optional(SolverConfigScheduleTypeEnum),
+          scheduleType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SolverConfig" });
     case 2:
@@ -1413,7 +1203,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          timeZone: S.optional(TimeZone),
+          timeZone: S.optional(__S(34)),
           nanos: S.optional(S.Number),
           year: S.optional(S.Number),
           hours: S.optional(S.Number),
@@ -1427,23 +1217,23 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          startTime: S.optional(DateTime),
-          endTime: S.optional(DateTime),
+          startTime: S.optional(__S(35)),
+          endTime: S.optional(__S(35)),
           employeeCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WorkforceDemand" });
     case 5:
-      return S.Array(WorkforceDemand);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(WorkforceDemandList_),
+          values: S.optional(__S(37)),
         }),
       ).annotate({ identifier: "WorkforceDemandList" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          startTime: S.optional(DateTime),
+          startTime: S.optional(__S(35)),
           durationMinutes: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UnwantedEventInterval" });
@@ -1452,38 +1242,38 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UnwantedEventInterval);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          unwantedEventIntervals: S.optional(UnwantedEventIntervalList),
+          unwantedEventIntervals: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "EmployeeInfo" });
     case 2:
-      return S.Array(EmployeeInfo);
+      return S.Array(__S(41));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          endTime: S.optional(DateTime),
-          startTime: S.optional(DateTime),
+          endTime: S.optional(__S(35)),
+          startTime: S.optional(__S(35)),
         }),
       ).annotate({ identifier: "PlanningHorizon" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          shiftTemplates: S.optional(ShiftTemplateList),
-          solverConfig: S.optional(SolverConfig),
-          workforceDemands: S.optional(WorkforceDemandList),
-          employeeInfo: S.optional(EmployeeInfoList),
-          planningHorizon: S.optional(PlanningHorizon),
+          shiftTemplates: S.optional(__S(32)),
+          solverConfig: S.optional(__S(33)),
+          workforceDemands: S.optional(__S(38)),
+          employeeInfo: S.optional(__S(42)),
+          planningHorizon: S.optional(__S(43)),
         }),
       ).annotate({ identifier: "GenerateShiftsRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GenerateShiftsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(44).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1512,8 +1302,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
-          labels: S.optional(StringMap),
+          metadata: S.optional(__S(20)),
+          labels: S.optional(__S(12)),
           locationId: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
@@ -1554,7 +1344,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(3).pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -1569,12 +1359,12 @@ function __c6(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 3:
-      return S.Array(Location);
+      return S.Array(__S(47));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(51)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 5:
@@ -1596,12 +1386,12 @@ function __c6(j: number): any {
         identifier: "ListProjectsLocationsContactCentersRequest",
       });
     case 6:
-      return S.Array(ContactCenter);
+      return S.Array(__S(18));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          contactCenters: S.optional(ContactCenterList),
+          unreachable: S.optional(__S(3)),
+          contactCenters: S.optional(__S(54)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1630,13 +1420,13 @@ function __c7(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 1:
-      return S.Array(Operation);
+      return S.Array(__S(23));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(3)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(OperationList),
+          operations: S.optional(__S(57)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 3:
@@ -1645,7 +1435,7 @@ function __c7(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ContactCenter.pipe(T.HttpBody())),
+          body: S.optional(__S(18).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1675,18 +1465,43 @@ function __c7(j: number): any {
         S.Struct({
           contactCenterCountSum: S.optional(S.Number),
           contactCenterCountLimit: S.optional(S.Number),
-          contactCenterInstanceSize: S.optional(QuotaContactCenterInstanceSizeEnum),
+          contactCenterInstanceSize: S.optional(S.String),
         }),
       ).annotate({ identifier: "Quota" });
     case 6:
-      return S.Array(Quota);
+      return S.Array(__S(61));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          quotas: S.optional(QuotaList),
+          quotas: S.optional(__S(62)),
           contactCenterCountSum: S.optional(S.Number),
           contactCenterCountLimit: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ContactCenterQuota" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
   }
 }

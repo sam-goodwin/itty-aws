@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -62,11 +64,6 @@ export interface CreateDetectionRequest {
   /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string;
 }
-const CreateDetectionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDetectionRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDetectionResponse {
   /** Defines the unique ID for this custom detection. */
@@ -76,57 +73,30 @@ export interface CreateDetectionResponse {
   /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string | null;
 }
-const CreateDetectionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateDetectionResponse>;
-
 export interface CreateLeakedCredentialCheckRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** Determines whether or not Leaked Credential Checks are enabled. */
   enabled?: boolean;
 }
-const CreateLeakedCredentialCheckRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateLeakedCredentialCheckRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateLeakedCredentialCheckResponse {
   /** Determines whether or not Leaked Credential Checks are enabled. */
   enabled?: boolean | null;
 }
-const CreateLeakedCredentialCheckResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateLeakedCredentialCheckResponse>;
-
 export interface DeleteDetectionRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** Defines the unique ID for this custom detection. */
   detectionId: string;
 }
-const DeleteDetectionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeleteDetectionRequest>;
-
 export type DeleteDetectionResponse = unknown;
-const DeleteDetectionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeleteDetectionResponse>;
-
 export interface GetDetectionRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** Defines the unique ID for this custom detection. */
   detectionId: string;
 }
-const GetDetectionRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetDetectionRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDetectionResponse {
   /** Defines the unique ID for this custom detection. */
@@ -136,34 +106,19 @@ export interface GetDetectionResponse {
   /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string | null;
 }
-const GetDetectionResponse = CreateDetectionResponse as any as S.Schema<GetDetectionResponse>;
-
 export interface GetLeakedCredentialCheckRequest {
   /** Defines an identifier. */
   zoneId: string;
 }
-const GetLeakedCredentialCheckRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetLeakedCredentialCheckRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetLeakedCredentialCheckResponse {
   /** Determines whether or not Leaked Credential Checks are enabled. */
   enabled?: boolean | null;
 }
-const GetLeakedCredentialCheckResponse =
-  CreateLeakedCredentialCheckResponse as any as S.Schema<GetLeakedCredentialCheckResponse>;
-
 export interface ListDetectionsRequest {
   /** Defines an identifier. */
   zoneId: string;
 }
-const ListDetectionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListDetectionsRequest>;
-
 export interface DetectionsListResultItem {
   /** Defines the unique ID for this custom detection. */
   id?: string | null;
@@ -172,26 +127,13 @@ export interface DetectionsListResultItem {
   /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string | null;
 }
-const DetectionsListResultItem =
-  CreateDetectionResponse as any as S.Schema<DetectionsListResultItem>;
-
 export type DetectionsListResultList = Array<DetectionsListResultItem>;
-const DetectionsListResultList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DetectionsListResultList>;
-
 export interface ListDetectionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: DetectionsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListDetectionsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListDetectionsResponse>;
-
 export interface UpdateDetectionRequest {
   /** Defines an identifier. */
   zoneId: string;
@@ -202,11 +144,6 @@ export interface UpdateDetectionRequest {
   /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string;
 }
-const UpdateDetectionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<UpdateDetectionRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateDetectionResponse {
   /** Defines the unique ID for this custom detection. */
@@ -216,8 +153,6 @@ export interface UpdateDetectionResponse {
   /** Defines the ruleset expression to use in matching the username in a request. */
   username?: string | null;
 }
-const UpdateDetectionResponse = CreateDetectionResponse as any as S.Schema<UpdateDetectionResponse>;
-
 export type CreateDetectionError =
   | DetectionQuotaExceeded
   | LeakedCredentialChecksDisabled
@@ -230,8 +165,8 @@ export const createDetection: API.OperationMethod<
   CreateDetectionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDetectionRequest,
-  output: CreateDetectionResponse,
+  input: __S(0) as any as S.Schema<CreateDetectionRequest>,
+  output: __S(1) as any as S.Schema<CreateDetectionResponse>,
   errors: [
     DetectionQuotaExceeded,
     LeakedCredentialChecksDisabled,
@@ -251,8 +186,8 @@ export const createLeakedCredentialCheck: API.OperationMethod<
   CreateLeakedCredentialCheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLeakedCredentialCheckRequest,
-  output: CreateLeakedCredentialCheckResponse,
+  input: __S(2) as any as S.Schema<CreateLeakedCredentialCheckRequest>,
+  output: __S(3) as any as S.Schema<CreateLeakedCredentialCheckResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -270,8 +205,8 @@ export const deleteDetection: API.OperationMethod<
   DeleteDetectionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDetectionRequest,
-  output: DeleteDetectionResponse,
+  input: __S(4) as any as S.Schema<DeleteDetectionRequest>,
+  output: __S(5) as any as S.Schema<DeleteDetectionResponse>,
   errors: [
     DetectionNotFound,
     LeakedCredentialChecksDisabled,
@@ -295,8 +230,8 @@ export const getDetection: API.OperationMethod<
   GetDetectionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDetectionRequest,
-  output: GetDetectionResponse,
+  input: __S(6) as any as S.Schema<GetDetectionRequest>,
+  output: __S(1) as any as S.Schema<GetDetectionResponse>,
   errors: [
     DetectionNotFound,
     LeakedCredentialChecksDisabled,
@@ -316,8 +251,8 @@ export const getLeakedCredentialCheck: API.OperationMethod<
   GetLeakedCredentialCheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLeakedCredentialCheckRequest,
-  output: GetLeakedCredentialCheckResponse,
+  input: __S(7) as any as S.Schema<GetLeakedCredentialCheckRequest>,
+  output: __S(3) as any as S.Schema<GetLeakedCredentialCheckResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -333,8 +268,8 @@ export const listDetections: API.PaginatedOperationMethod<
   DetectionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListDetectionsRequest,
-    output: ListDetectionsResponse,
+    input: __S(8) as any as S.Schema<ListDetectionsRequest>,
+    output: __S(10) as any as S.Schema<ListDetectionsResponse>,
     errors: [LeakedCredentialChecksDisabled, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -355,8 +290,8 @@ export const updateDetection: API.OperationMethod<
   UpdateDetectionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDetectionRequest,
-  output: UpdateDetectionResponse,
+  input: __S(11) as any as S.Schema<UpdateDetectionRequest>,
+  output: __S(1) as any as S.Schema<UpdateDetectionResponse>,
   errors: [
     DetectionNotFound,
     LeakedCredentialChecksDisabled,
@@ -469,11 +404,11 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListDetectionsRequest" });
     case 1:
-      return S.Array(DetectionsListResultItem);
+      return S.Array(__S(1));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: DetectionsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(9).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }),
       ).annotate({ identifier: "ListDetectionsResponse" });
@@ -492,5 +427,18 @@ function __c1(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateDetectionRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

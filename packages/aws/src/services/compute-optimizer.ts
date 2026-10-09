@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Compute Optimizer",
   serviceShapeName: "ComputeOptimizerService",
@@ -140,17 +142,12 @@ export type ResourceType =
   | "AuroraDBClusterStorage"
   | "Idle"
   | (string & {});
-const ResourceType = S.String;
-
 export type ScopeName = "Organization" | "AccountId" | "ResourceArn" | (string & {});
-const ScopeName = S.String;
-
 export type ScopeValue = string;
 export interface Scope {
   name?: ScopeName;
   value?: string;
 }
-const Scope = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Scope>;
 export type RecommendationPreferenceName =
   | "EnhancedInfrastructureMetrics"
   | "InferredWorkloadTypes"
@@ -159,40 +156,23 @@ export type RecommendationPreferenceName =
   | "PreferredResources"
   | "UtilizationPreferences"
   | (string & {});
-const RecommendationPreferenceName = S.String;
-
 export type RecommendationPreferenceNames = RecommendationPreferenceName[];
-const RecommendationPreferenceNames = /*@__PURE__*/ __L.at(__c0, 1);
 export interface DeleteRecommendationPreferencesRequest {
   resourceType: ResourceType;
   scope?: Scope;
   recommendationPreferenceNames: RecommendationPreferenceName[];
 }
-const DeleteRecommendationPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DeleteRecommendationPreferencesRequest>;
 export interface DeleteRecommendationPreferencesResponse {}
-const DeleteRecommendationPreferencesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteRecommendationPreferencesResponse>;
 export type JobId = string;
 export type JobIds = string[];
-const JobIds = /*@__PURE__*/ __L.at(__c0, 4);
 export type JobFilterName = "ResourceType" | "JobStatus" | (string & {});
-const JobFilterName = S.String;
-
 export type FilterValue = string;
 export type FilterValues = string[];
-const FilterValues = JobIds as any as S.Schema<FilterValues>;
 export interface JobFilter {
   name?: JobFilterName;
   values?: string[];
 }
-const JobFilter = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<JobFilter>;
 export type JobFilters = JobFilter[];
-const JobFilters = /*@__PURE__*/ __L.at(__c0, 6);
 export type NextToken = string;
 export type MaxResults = number;
 export interface DescribeRecommendationExportJobsRequest {
@@ -201,10 +181,6 @@ export interface DescribeRecommendationExportJobsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const DescribeRecommendationExportJobsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DescribeRecommendationExportJobsRequest>;
 export type DestinationBucket = string;
 export type DestinationKey = string;
 export type MetadataKey = string;
@@ -213,14 +189,10 @@ export interface S3Destination {
   key?: string;
   metadataKey?: string;
 }
-const S3Destination = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<S3Destination>;
 export interface ExportDestination {
   s3?: S3Destination;
 }
-const ExportDestination = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ExportDestination>;
 export type JobStatus = "Queued" | "InProgress" | "Complete" | "Failed" | (string & {});
-const JobStatus = S.String;
-
 export type CreationTimestamp = Date;
 export type LastUpdatedTimestamp = Date;
 export type FailureReason = string;
@@ -233,23 +205,13 @@ export interface RecommendationExportJob {
   lastUpdatedTimestamp?: Date;
   failureReason?: string;
 }
-const RecommendationExportJob = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<RecommendationExportJob>;
 export type RecommendationExportJobs = RecommendationExportJob[];
-const RecommendationExportJobs = /*@__PURE__*/ __L.at(__c1, 3);
 export interface DescribeRecommendationExportJobsResponse {
   recommendationExportJobs?: RecommendationExportJob[];
   nextToken?: string;
 }
-const DescribeRecommendationExportJobsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DescribeRecommendationExportJobsResponse>;
 export type AccountId = string;
 export type AccountIds = string[];
-const AccountIds = JobIds as any as S.Schema<AccountIds>;
 export type FilterName =
   | "Finding"
   | "FindingReasonCodes"
@@ -261,7 +223,6 @@ export interface Filter {
   values?: string[];
 }
 export type Filters = Filter[];
-const Filters = JobFilters as any as S.Schema<Filters>;
 export type ExportableAutoScalingGroupField =
   | "AccountId"
   | "AutoScalingGroupArn"
@@ -337,31 +298,19 @@ export type ExportableAutoScalingGroupField =
   | "RecommendationOptionsEstimatedMonthlySavingsCurrencyAfterDiscounts"
   | "RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
   | (string & {});
-const ExportableAutoScalingGroupField = S.String;
-
 export type ExportableAutoScalingGroupFields = ExportableAutoScalingGroupField[];
-const ExportableAutoScalingGroupFields = /*@__PURE__*/ __L.at(__c1, 5);
 export type DestinationKeyPrefix = string;
 export interface S3DestinationConfig {
   bucket?: string;
   keyPrefix?: string;
 }
-const S3DestinationConfig = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<S3DestinationConfig>;
 export type FileFormat = "Csv" | (string & {});
-const FileFormat = S.String;
-
 export type IncludeMemberAccounts = boolean;
 export type CpuVendorArchitecture = "AWS_ARM64" | "CURRENT" | (string & {});
 export type CpuVendorArchitectures = CpuVendorArchitecture[];
-const CpuVendorArchitectures =
-  RecommendationPreferenceNames as any as S.Schema<CpuVendorArchitectures>;
 export interface RecommendationPreferences {
   cpuVendorArchitectures?: CpuVendorArchitecture[];
 }
-const RecommendationPreferences = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<RecommendationPreferences>;
 export interface ExportAutoScalingGroupRecommendationsRequest {
   accountIds?: string[];
   filters?: Filter[];
@@ -371,25 +320,16 @@ export interface ExportAutoScalingGroupRecommendationsRequest {
   includeMemberAccounts?: boolean;
   recommendationPreferences?: RecommendationPreferences;
 }
-const ExportAutoScalingGroupRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ExportAutoScalingGroupRecommendationsRequest>;
 export interface ExportAutoScalingGroupRecommendationsResponse {
   jobId?: string;
   s3Destination?: S3Destination;
 }
-const ExportAutoScalingGroupRecommendationsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ExportAutoScalingGroupRecommendationsResponse>;
 export type EBSFilterName = "Finding" | (string & {});
 export interface EBSFilter {
   name?: EBSFilterName;
   values?: string[];
 }
 export type EBSFilters = EBSFilter[];
-const EBSFilters = JobFilters as any as S.Schema<EBSFilters>;
 export type ExportableVolumeField =
   | "AccountId"
   | "VolumeArn"
@@ -431,8 +371,6 @@ export type ExportableVolumeField =
   | "EffectiveRecommendationPreferencesLookBackPeriod"
   | (string & {});
 export type ExportableVolumeFields = ExportableVolumeField[];
-const ExportableVolumeFields =
-  RecommendationPreferenceNames as any as S.Schema<ExportableVolumeFields>;
 export interface ExportEBSVolumeRecommendationsRequest {
   accountIds?: string[];
   filters?: EBSFilter[];
@@ -441,16 +379,10 @@ export interface ExportEBSVolumeRecommendationsRequest {
   fileFormat?: FileFormat;
   includeMemberAccounts?: boolean;
 }
-const ExportEBSVolumeRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ExportEBSVolumeRecommendationsRequest>;
 export interface ExportEBSVolumeRecommendationsResponse {
   jobId?: string;
   s3Destination?: S3Destination;
 }
-const ExportEBSVolumeRecommendationsResponse =
-  ExportAutoScalingGroupRecommendationsResponse as any as S.Schema<ExportEBSVolumeRecommendationsResponse>;
 export type ExportableInstanceField =
   | "AccountId"
   | "InstanceArn"
@@ -525,8 +457,6 @@ export type ExportableInstanceField =
   | "RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
   | (string & {});
 export type ExportableInstanceFields = ExportableInstanceField[];
-const ExportableInstanceFields =
-  RecommendationPreferenceNames as any as S.Schema<ExportableInstanceFields>;
 export interface ExportEC2InstanceRecommendationsRequest {
   accountIds?: string[];
   filters?: Filter[];
@@ -536,29 +466,16 @@ export interface ExportEC2InstanceRecommendationsRequest {
   includeMemberAccounts?: boolean;
   recommendationPreferences?: RecommendationPreferences;
 }
-const ExportEC2InstanceRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ExportEC2InstanceRecommendationsRequest>;
 export interface ExportEC2InstanceRecommendationsResponse {
   jobId?: string;
   s3Destination?: S3Destination;
 }
-const ExportEC2InstanceRecommendationsResponse =
-  ExportAutoScalingGroupRecommendationsResponse as any as S.Schema<ExportEC2InstanceRecommendationsResponse>;
 export type ECSServiceRecommendationFilterName = "Finding" | "FindingReasonCode" | (string & {});
-const ECSServiceRecommendationFilterName = S.String;
-
 export interface ECSServiceRecommendationFilter {
   name?: ECSServiceRecommendationFilterName;
   values?: string[];
 }
-const ECSServiceRecommendationFilter = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ECSServiceRecommendationFilter>;
 export type ECSServiceRecommendationFilters = ECSServiceRecommendationFilter[];
-const ECSServiceRecommendationFilters = /*@__PURE__*/ __L.at(__c2, 5);
 export type ExportableECSServiceField =
   | "AccountId"
   | "ServiceArn"
@@ -591,8 +508,6 @@ export type ExportableECSServiceField =
   | "EffectiveRecommendationPreferencesLookBackPeriod"
   | (string & {});
 export type ExportableECSServiceFields = ExportableECSServiceField[];
-const ExportableECSServiceFields =
-  RecommendationPreferenceNames as any as S.Schema<ExportableECSServiceFields>;
 export interface ExportECSServiceRecommendationsRequest {
   accountIds?: string[];
   filters?: ECSServiceRecommendationFilter[];
@@ -601,23 +516,16 @@ export interface ExportECSServiceRecommendationsRequest {
   fileFormat?: FileFormat;
   includeMemberAccounts?: boolean;
 }
-const ExportECSServiceRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ExportECSServiceRecommendationsRequest>;
 export interface ExportECSServiceRecommendationsResponse {
   jobId?: string;
   s3Destination?: S3Destination;
 }
-const ExportECSServiceRecommendationsResponse =
-  ExportAutoScalingGroupRecommendationsResponse as any as S.Schema<ExportECSServiceRecommendationsResponse>;
 export type IdleRecommendationFilterName = "Finding" | "ResourceType" | (string & {});
 export interface IdleRecommendationFilter {
   name?: IdleRecommendationFilterName;
   values?: string[];
 }
 export type IdleRecommendationFilters = IdleRecommendationFilter[];
-const IdleRecommendationFilters = JobFilters as any as S.Schema<IdleRecommendationFilters>;
 export type ExportableIdleField =
   | "AccountId"
   | "ResourceArn"
@@ -660,7 +568,6 @@ export type ExportableIdleField =
   | "Tags"
   | (string & {});
 export type ExportableIdleFields = ExportableIdleField[];
-const ExportableIdleFields = RecommendationPreferenceNames as any as S.Schema<ExportableIdleFields>;
 export interface ExportIdleRecommendationsRequest {
   accountIds?: string[];
   filters?: IdleRecommendationFilter[];
@@ -669,16 +576,10 @@ export interface ExportIdleRecommendationsRequest {
   fileFormat?: FileFormat;
   includeMemberAccounts?: boolean;
 }
-const ExportIdleRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ExportIdleRecommendationsRequest>;
 export interface ExportIdleRecommendationsResponse {
   jobId?: string;
   s3Destination?: S3Destination;
 }
-const ExportIdleRecommendationsResponse =
-  ExportAutoScalingGroupRecommendationsResponse as any as S.Schema<ExportIdleRecommendationsResponse>;
 export type LambdaFunctionRecommendationFilterName =
   | "Finding"
   | "FindingReasonCode"
@@ -688,8 +589,6 @@ export interface LambdaFunctionRecommendationFilter {
   values?: string[];
 }
 export type LambdaFunctionRecommendationFilters = LambdaFunctionRecommendationFilter[];
-const LambdaFunctionRecommendationFilters =
-  ECSServiceRecommendationFilters as any as S.Schema<LambdaFunctionRecommendationFilters>;
 export type ExportableLambdaFunctionField =
   | "AccountId"
   | "FunctionArn"
@@ -724,8 +623,6 @@ export type ExportableLambdaFunctionField =
   | "RecommendationOptionsEstimatedMonthlySavingsValueAfterDiscounts"
   | (string & {});
 export type ExportableLambdaFunctionFields = ExportableLambdaFunctionField[];
-const ExportableLambdaFunctionFields =
-  RecommendationPreferenceNames as any as S.Schema<ExportableLambdaFunctionFields>;
 export interface ExportLambdaFunctionRecommendationsRequest {
   accountIds?: string[];
   filters?: LambdaFunctionRecommendationFilter[];
@@ -734,33 +631,20 @@ export interface ExportLambdaFunctionRecommendationsRequest {
   fileFormat?: FileFormat;
   includeMemberAccounts?: boolean;
 }
-const ExportLambdaFunctionRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ExportLambdaFunctionRecommendationsRequest>;
 export interface ExportLambdaFunctionRecommendationsResponse {
   jobId?: string;
   s3Destination?: S3Destination;
 }
-const ExportLambdaFunctionRecommendationsResponse =
-  ExportAutoScalingGroupRecommendationsResponse as any as S.Schema<ExportLambdaFunctionRecommendationsResponse>;
 export type LicenseRecommendationFilterName =
   | "Finding"
   | "FindingReasonCode"
   | "LicenseName"
   | (string & {});
-const LicenseRecommendationFilterName = S.String;
-
 export interface LicenseRecommendationFilter {
   name?: LicenseRecommendationFilterName;
   values?: string[];
 }
-const LicenseRecommendationFilter = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<LicenseRecommendationFilter>;
 export type LicenseRecommendationFilters = LicenseRecommendationFilter[];
-const LicenseRecommendationFilters = /*@__PURE__*/ __L.at(__c3, 2);
 export type ExportableLicenseField =
   | "AccountId"
   | "ResourceArn"
@@ -785,8 +669,6 @@ export type ExportableLicenseField =
   | "Tags"
   | (string & {});
 export type ExportableLicenseFields = ExportableLicenseField[];
-const ExportableLicenseFields =
-  RecommendationPreferenceNames as any as S.Schema<ExportableLicenseFields>;
 export interface ExportLicenseRecommendationsRequest {
   accountIds?: string[];
   filters?: LicenseRecommendationFilter[];
@@ -795,16 +677,10 @@ export interface ExportLicenseRecommendationsRequest {
   fileFormat?: FileFormat;
   includeMemberAccounts?: boolean;
 }
-const ExportLicenseRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ExportLicenseRecommendationsRequest>;
 export interface ExportLicenseRecommendationsResponse {
   jobId?: string;
   s3Destination?: S3Destination;
 }
-const ExportLicenseRecommendationsResponse =
-  ExportAutoScalingGroupRecommendationsResponse as any as S.Schema<ExportLicenseRecommendationsResponse>;
 export type RDSDBRecommendationFilterName =
   | "InstanceFinding"
   | "InstanceFindingReasonCode"
@@ -817,8 +693,6 @@ export interface RDSDBRecommendationFilter {
   values?: string[];
 }
 export type RDSDBRecommendationFilters = RDSDBRecommendationFilter[];
-const RDSDBRecommendationFilters =
-  LicenseRecommendationFilters as any as S.Schema<RDSDBRecommendationFilters>;
 export type ExportableRDSDBField =
   | "ResourceArn"
   | "AccountId"
@@ -904,8 +778,6 @@ export type ExportableRDSDBField =
   | "PromotionTier"
   | (string & {});
 export type ExportableRDSDBFields = ExportableRDSDBField[];
-const ExportableRDSDBFields =
-  RecommendationPreferenceNames as any as S.Schema<ExportableRDSDBFields>;
 export interface ExportRDSDatabaseRecommendationsRequest {
   accountIds?: string[];
   filters?: RDSDBRecommendationFilter[];
@@ -915,19 +787,12 @@ export interface ExportRDSDatabaseRecommendationsRequest {
   includeMemberAccounts?: boolean;
   recommendationPreferences?: RecommendationPreferences;
 }
-const ExportRDSDatabaseRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ExportRDSDatabaseRecommendationsRequest>;
 export interface ExportRDSDatabaseRecommendationsResponse {
   jobId?: string;
   s3Destination?: S3Destination;
 }
-const ExportRDSDatabaseRecommendationsResponse =
-  ExportAutoScalingGroupRecommendationsResponse as any as S.Schema<ExportRDSDatabaseRecommendationsResponse>;
 export type AutoScalingGroupArn = string;
 export type AutoScalingGroupArns = string[];
-const AutoScalingGroupArns = JobIds as any as S.Schema<AutoScalingGroupArns>;
 export interface GetAutoScalingGroupRecommendationsRequest {
   accountIds?: string[];
   autoScalingGroupArns?: string[];
@@ -936,10 +801,6 @@ export interface GetAutoScalingGroupRecommendationsRequest {
   filters?: Filter[];
   recommendationPreferences?: RecommendationPreferences;
 }
-const GetAutoScalingGroupRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetAutoScalingGroupRecommendationsRequest>;
 export type AutoScalingGroupName = string;
 export type Finding =
   | "Underprovisioned"
@@ -947,8 +808,6 @@ export type Finding =
   | "Optimized"
   | "NotOptimized"
   | (string & {});
-const Finding = S.String;
-
 export type MetricName =
   | "Cpu"
   | "Memory"
@@ -967,35 +826,24 @@ export type MetricName =
   | "GPU_PERCENTAGE"
   | "GPU_MEMORY_PERCENTAGE"
   | (string & {});
-const MetricName = S.String;
-
 export type MetricStatistic = "Maximum" | "Average" | (string & {});
-const MetricStatistic = S.String;
-
 export type MetricValue = number;
 export interface UtilizationMetric {
   name?: MetricName;
   statistic?: MetricStatistic;
   value?: number;
 }
-const UtilizationMetric = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<UtilizationMetric>;
 export type UtilizationMetrics = UtilizationMetric[];
-const UtilizationMetrics = /*@__PURE__*/ __L.at(__c3, 7);
 export type LookBackPeriodInDays = number;
 export type DesiredCapacity = number;
 export type MinSize = number;
 export type MaxSize = number;
 export type NullableInstanceType = string;
 export type AllocationStrategy = "Prioritized" | "LowestPrice" | (string & {});
-const AllocationStrategy = S.String;
-
 export type NullableEstimatedInstanceHourReductionPercentage = number;
 export type AsgType = "SingleInstanceType" | "MixedInstanceTypes" | (string & {});
-const AsgType = S.String;
-
 export type MixedInstanceType = string;
 export type MixedInstanceTypes = string[];
-const MixedInstanceTypes = JobIds as any as S.Schema<MixedInstanceTypes>;
 export interface AutoScalingGroupConfiguration {
   desiredCapacity?: number;
   minSize?: number;
@@ -1006,65 +854,39 @@ export interface AutoScalingGroupConfiguration {
   type?: AsgType;
   mixedInstanceTypes?: string[];
 }
-const AutoScalingGroupConfiguration = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<AutoScalingGroupConfiguration>;
 export type GpuCount = number;
 export type GpuMemorySizeInMiB = number;
 export interface Gpu {
   gpuCount?: number;
   gpuMemorySizeInMiB?: number;
 }
-const Gpu = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Gpu>;
 export type Gpus = Gpu[];
-const Gpus = /*@__PURE__*/ __L.at(__c4, 2);
 export interface GpuInfo {
   gpus?: Gpu[];
 }
-const GpuInfo = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GpuInfo>;
 export type ProjectedUtilizationMetrics = UtilizationMetric[];
-const ProjectedUtilizationMetrics =
-  UtilizationMetrics as any as S.Schema<ProjectedUtilizationMetrics>;
 export type PerformanceRisk = number;
 export type Rank = number;
 export type SavingsOpportunityPercentage = number;
 export type Currency = "USD" | "CNY" | (string & {});
-const Currency = S.String;
-
 export type Value = number;
 export interface EstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
 }
-const EstimatedMonthlySavings = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<EstimatedMonthlySavings>;
 export interface SavingsOpportunity {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: EstimatedMonthlySavings;
 }
-const SavingsOpportunity = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SavingsOpportunity>;
 export interface AutoScalingGroupEstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
 }
-const AutoScalingGroupEstimatedMonthlySavings = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<AutoScalingGroupEstimatedMonthlySavings>;
 export interface AutoScalingGroupSavingsOpportunityAfterDiscounts {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: AutoScalingGroupEstimatedMonthlySavings;
 }
-const AutoScalingGroupSavingsOpportunityAfterDiscounts = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<AutoScalingGroupSavingsOpportunityAfterDiscounts>;
 export type MigrationEffort = "VeryLow" | "Low" | "Medium" | "High" | (string & {});
-const MigrationEffort = S.String;
-
 export interface AutoScalingGroupRecommendationOption {
   configuration?: AutoScalingGroupConfiguration;
   instanceGpuInfo?: GpuInfo;
@@ -1075,90 +897,48 @@ export interface AutoScalingGroupRecommendationOption {
   savingsOpportunityAfterDiscounts?: AutoScalingGroupSavingsOpportunityAfterDiscounts;
   migrationEffort?: MigrationEffort;
 }
-const AutoScalingGroupRecommendationOption = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<AutoScalingGroupRecommendationOption>;
 export type AutoScalingGroupRecommendationOptions = AutoScalingGroupRecommendationOption[];
-const AutoScalingGroupRecommendationOptions = /*@__PURE__*/ __L.at(__c5, 1);
 export type LastRefreshTimestamp = Date;
 export type CurrentPerformanceRisk = "VeryLow" | "Low" | "Medium" | "High" | (string & {});
-const CurrentPerformanceRisk = S.String;
-
 export type EnhancedInfrastructureMetrics = "Active" | "Inactive" | (string & {});
-const EnhancedInfrastructureMetrics = S.String;
-
 export type InferredWorkloadTypesPreference = "Active" | "Inactive" | (string & {});
-const InferredWorkloadTypesPreference = S.String;
-
 export type ExternalMetricsSource =
   | "Datadog"
   | "Dynatrace"
   | "NewRelic"
   | "Instana"
   | (string & {});
-const ExternalMetricsSource = S.String;
-
 export interface ExternalMetricsPreference {
   source?: ExternalMetricsSource;
 }
-const ExternalMetricsPreference = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ExternalMetricsPreference>;
 export type LookBackPeriodPreference = "DAYS_14" | "DAYS_32" | "DAYS_93" | (string & {});
-const LookBackPeriodPreference = S.String;
-
 export type CustomizableMetricName = "CpuUtilization" | "MemoryUtilization" | (string & {});
-const CustomizableMetricName = S.String;
-
 export type CustomizableMetricThreshold = "P90" | "P95" | "P99_5" | (string & {});
-const CustomizableMetricThreshold = S.String;
-
 export type CustomizableMetricHeadroom =
   | "PERCENT_30"
   | "PERCENT_20"
   | "PERCENT_10"
   | "PERCENT_0"
   | (string & {});
-const CustomizableMetricHeadroom = S.String;
-
 export interface CustomizableMetricParameters {
   threshold?: CustomizableMetricThreshold;
   headroom?: CustomizableMetricHeadroom;
 }
-const CustomizableMetricParameters = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CustomizableMetricParameters>;
 export interface UtilizationPreference {
   metricName?: CustomizableMetricName;
   metricParameters?: CustomizableMetricParameters;
 }
-const UtilizationPreference = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<UtilizationPreference>;
 export type UtilizationPreferences = UtilizationPreference[];
-const UtilizationPreferences = /*@__PURE__*/ __L.at(__c5, 5);
 export type PreferredResourceName = "Ec2InstanceTypes" | (string & {});
-const PreferredResourceName = S.String;
-
 export type PreferredResourceValue = string;
 export type PreferredResourceValues = string[];
-const PreferredResourceValues = JobIds as any as S.Schema<PreferredResourceValues>;
 export interface EffectivePreferredResource {
   name?: PreferredResourceName;
   includeList?: string[];
   effectiveIncludeList?: string[];
   excludeList?: string[];
 }
-const EffectivePreferredResource = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<EffectivePreferredResource>;
 export type EffectivePreferredResources = EffectivePreferredResource[];
-const EffectivePreferredResources = /*@__PURE__*/ __L.at(__c5, 7);
 export type InstanceSavingsEstimationModeSource =
   | "PublicPricing"
   | "CostExplorerRightsizing"
@@ -1167,8 +947,6 @@ export type InstanceSavingsEstimationModeSource =
 export interface InstanceSavingsEstimationMode {
   source?: InstanceSavingsEstimationModeSource;
 }
-const InstanceSavingsEstimationMode =
-  ExternalMetricsPreference as any as S.Schema<InstanceSavingsEstimationMode>;
 export interface EffectiveRecommendationPreferences {
   cpuVendorArchitectures?: CpuVendorArchitecture[];
   enhancedInfrastructureMetrics?: EnhancedInfrastructureMetrics;
@@ -1179,10 +957,6 @@ export interface EffectiveRecommendationPreferences {
   preferredResources?: EffectivePreferredResource[];
   savingsEstimationMode?: InstanceSavingsEstimationMode;
 }
-const EffectiveRecommendationPreferences = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<EffectiveRecommendationPreferences>;
 export type InferredWorkloadType =
   | "AmazonEmr"
   | "ApacheCassandra"
@@ -1195,8 +969,6 @@ export type InferredWorkloadType =
   | "SQLServer"
   | (string & {});
 export type InferredWorkloadTypes = InferredWorkloadType[];
-const InferredWorkloadTypes =
-  RecommendationPreferenceNames as any as S.Schema<InferredWorkloadTypes>;
 export interface AutoScalingGroupRecommendation {
   accountId?: string;
   autoScalingGroupArn?: string;
@@ -1212,12 +984,7 @@ export interface AutoScalingGroupRecommendation {
   effectiveRecommendationPreferences?: EffectiveRecommendationPreferences;
   inferredWorkloadTypes?: InferredWorkloadType[];
 }
-const AutoScalingGroupRecommendation = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<AutoScalingGroupRecommendation>;
 export type AutoScalingGroupRecommendations = AutoScalingGroupRecommendation[];
-const AutoScalingGroupRecommendations = /*@__PURE__*/ __L.at(__c6, 2);
 export type Identifier = string;
 export type Code = string;
 export type Message = string;
@@ -1226,24 +993,14 @@ export interface GetRecommendationError {
   code?: string;
   message?: string;
 }
-const GetRecommendationError = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GetRecommendationError>;
 export type GetRecommendationErrors = GetRecommendationError[];
-const GetRecommendationErrors = /*@__PURE__*/ __L.at(__c6, 4);
 export interface GetAutoScalingGroupRecommendationsResponse {
   nextToken?: string;
   autoScalingGroupRecommendations?: AutoScalingGroupRecommendation[];
   errors?: GetRecommendationError[];
 }
-const GetAutoScalingGroupRecommendationsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetAutoScalingGroupRecommendationsResponse>;
 export type VolumeArn = string;
 export type VolumeArns = string[];
-const VolumeArns = JobIds as any as S.Schema<VolumeArns>;
 export interface GetEBSVolumeRecommendationsRequest {
   volumeArns?: string[];
   nextToken?: string;
@@ -1251,10 +1008,6 @@ export interface GetEBSVolumeRecommendationsRequest {
   filters?: EBSFilter[];
   accountIds?: string[];
 }
-const GetEBSVolumeRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetEBSVolumeRecommendationsRequest>;
 export type VolumeType = string;
 export type VolumeSize = number;
 export type VolumeBaselineIOPS = number;
@@ -1271,10 +1024,7 @@ export interface VolumeConfiguration {
   volumeBurstThroughput?: number;
   rootVolume?: boolean;
 }
-const VolumeConfiguration = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<VolumeConfiguration>;
 export type EBSFinding = "Optimized" | "NotOptimized" | (string & {});
-const EBSFinding = S.String;
-
 export type EBSMetricName =
   | "VolumeReadOpsPerSecond"
   | "VolumeWriteOpsPerSecond"
@@ -1289,7 +1039,6 @@ export interface EBSUtilizationMetric {
   value?: number;
 }
 export type EBSUtilizationMetrics = EBSUtilizationMetric[];
-const EBSUtilizationMetrics = UtilizationMetrics as any as S.Schema<EBSUtilizationMetrics>;
 export interface EBSEstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
@@ -1298,8 +1047,6 @@ export interface EBSSavingsOpportunityAfterDiscounts {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: EBSEstimatedMonthlySavings;
 }
-const EBSSavingsOpportunityAfterDiscounts =
-  AutoScalingGroupSavingsOpportunityAfterDiscounts as any as S.Schema<EBSSavingsOpportunityAfterDiscounts>;
 export interface VolumeRecommendationOption {
   configuration?: VolumeConfiguration;
   performanceRisk?: number;
@@ -1307,43 +1054,26 @@ export interface VolumeRecommendationOption {
   savingsOpportunity?: SavingsOpportunity;
   savingsOpportunityAfterDiscounts?: EBSSavingsOpportunityAfterDiscounts;
 }
-const VolumeRecommendationOption = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<VolumeRecommendationOption>;
 export type VolumeRecommendationOptions = VolumeRecommendationOption[];
-const VolumeRecommendationOptions = /*@__PURE__*/ __L.at(__c7, 1);
 export type EBSSavingsEstimationModeSource =
   | "PublicPricing"
   | "CostExplorerRightsizing"
   | "CostOptimizationHub"
   | (string & {});
-const EBSSavingsEstimationModeSource = S.String;
-
 export interface EBSSavingsEstimationMode {
   source?: EBSSavingsEstimationModeSource;
 }
-const EBSSavingsEstimationMode = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<EBSSavingsEstimationMode>;
 export interface EBSEffectiveRecommendationPreferences {
   savingsEstimationMode?: EBSSavingsEstimationMode;
   lookBackPeriod?: LookBackPeriodPreference;
 }
-const EBSEffectiveRecommendationPreferences = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<EBSEffectiveRecommendationPreferences>;
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   key?: string;
   value?: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<Tag>;
 export type Tags = Tag[];
-const Tags = /*@__PURE__*/ __L.at(__c7, 5);
 export interface VolumeRecommendation {
   volumeArn?: string;
   accountId?: string;
@@ -1357,21 +1087,14 @@ export interface VolumeRecommendation {
   effectiveRecommendationPreferences?: EBSEffectiveRecommendationPreferences;
   tags?: Tag[];
 }
-const VolumeRecommendation = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<VolumeRecommendation>;
 export type VolumeRecommendations = VolumeRecommendation[];
-const VolumeRecommendations = /*@__PURE__*/ __L.at(__c7, 7);
 export interface GetEBSVolumeRecommendationsResponse {
   nextToken?: string;
   volumeRecommendations?: VolumeRecommendation[];
   errors?: GetRecommendationError[];
 }
-const GetEBSVolumeRecommendationsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetEBSVolumeRecommendationsResponse>;
 export type InstanceArn = string;
 export type InstanceArns = string[];
-const InstanceArns = JobIds as any as S.Schema<InstanceArns>;
 export interface GetEC2InstanceRecommendationsRequest {
   instanceArns?: string[];
   nextToken?: string;
@@ -1380,10 +1103,6 @@ export interface GetEC2InstanceRecommendationsRequest {
   accountIds?: string[];
   recommendationPreferences?: RecommendationPreferences;
 }
-const GetEC2InstanceRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GetEC2InstanceRecommendationsRequest>;
 export type InstanceName = string;
 export type CurrentInstanceType = string;
 export type InstanceRecommendationFindingReasonCode =
@@ -1409,8 +1128,6 @@ export type InstanceRecommendationFindingReasonCode =
   | "GPUMemoryOverprovisioned"
   | (string & {});
 export type InstanceRecommendationFindingReasonCodes = InstanceRecommendationFindingReasonCode[];
-const InstanceRecommendationFindingReasonCodes =
-  ExportableAutoScalingGroupFields as any as S.Schema<InstanceRecommendationFindingReasonCodes>;
 export type InstanceType = string;
 export type PlatformDifference =
   | "Hypervisor"
@@ -1421,7 +1138,6 @@ export type PlatformDifference =
   | "Architecture"
   | (string & {});
 export type PlatformDifferences = PlatformDifference[];
-const PlatformDifferences = RecommendationPreferenceNames as any as S.Schema<PlatformDifferences>;
 export interface InstanceEstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
@@ -1430,8 +1146,6 @@ export interface InstanceSavingsOpportunityAfterDiscounts {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: InstanceEstimatedMonthlySavings;
 }
-const InstanceSavingsOpportunityAfterDiscounts =
-  AutoScalingGroupSavingsOpportunityAfterDiscounts as any as S.Schema<InstanceSavingsOpportunityAfterDiscounts>;
 export interface InstanceRecommendationOption {
   instanceType?: string;
   instanceGpuInfo?: GpuInfo;
@@ -1443,12 +1157,7 @@ export interface InstanceRecommendationOption {
   savingsOpportunityAfterDiscounts?: InstanceSavingsOpportunityAfterDiscounts;
   migrationEffort?: MigrationEffort;
 }
-const InstanceRecommendationOption = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<InstanceRecommendationOption>;
 export type RecommendationOptions = InstanceRecommendationOption[];
-const RecommendationOptions = /*@__PURE__*/ __L.at(__c8, 3);
 export type RecommendationSourceArn = string;
 export type RecommendationSourceType =
   | "Ec2Instance"
@@ -1468,15 +1177,11 @@ export type RecommendationSourceType =
   | "WorkSpaces"
   | "SageMakerEndpoint"
   | (string & {});
-const RecommendationSourceType = S.String;
-
 export interface RecommendationSource {
   recommendationSourceArn?: string;
   recommendationSourceType?: RecommendationSourceType;
 }
-const RecommendationSource = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<RecommendationSource>;
 export type RecommendationSources = RecommendationSource[];
-const RecommendationSources = /*@__PURE__*/ __L.at(__c8, 5);
 export type InstanceState =
   | "pending"
   | "running"
@@ -1485,8 +1190,6 @@ export type InstanceState =
   | "stopping"
   | "stopped"
   | (string & {});
-const InstanceState = S.String;
-
 export type ExternalMetricStatusCode =
   | "NO_EXTERNAL_METRIC_SET"
   | "INTEGRATION_SUCCESS"
@@ -1499,17 +1202,12 @@ export type ExternalMetricStatusCode =
   | "INSUFFICIENT_NEWRELIC_METRICS"
   | "INSUFFICIENT_INSTANA_METRICS"
   | (string & {});
-const ExternalMetricStatusCode = S.String;
-
 export type ExternalMetricStatusReason = string;
 export interface ExternalMetricStatus {
   statusCode?: ExternalMetricStatusCode;
   statusReason?: string;
 }
-const ExternalMetricStatus = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<ExternalMetricStatus>;
 export type InstanceIdle = "True" | "False" | (string & {});
-const InstanceIdle = S.String;
-
 export interface InstanceRecommendation {
   instanceArn?: string;
   accountId?: string;
@@ -1531,21 +1229,12 @@ export interface InstanceRecommendation {
   currentInstanceGpuInfo?: GpuInfo;
   idle?: InstanceIdle;
 }
-const InstanceRecommendation = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<InstanceRecommendation>;
 export type InstanceRecommendations = InstanceRecommendation[];
-const InstanceRecommendations = /*@__PURE__*/ __L.at(__c9, 0);
 export interface GetEC2InstanceRecommendationsResponse {
   nextToken?: string;
   instanceRecommendations?: InstanceRecommendation[];
   errors?: GetRecommendationError[];
 }
-const GetEC2InstanceRecommendationsResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GetEC2InstanceRecommendationsResponse>;
 export type Period = number;
 export interface GetEC2RecommendationProjectedMetricsRequest {
   instanceArn: string;
@@ -1555,41 +1244,24 @@ export interface GetEC2RecommendationProjectedMetricsRequest {
   endTime: Date;
   recommendationPreferences?: RecommendationPreferences;
 }
-const GetEC2RecommendationProjectedMetricsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetEC2RecommendationProjectedMetricsRequest>;
 export type RecommendedInstanceType = string;
 export type Timestamps = Date[];
-const Timestamps = /*@__PURE__*/ __L.at(__c9, 3);
 export type MetricValues = number[];
-const MetricValues = /*@__PURE__*/ __L.at(__c9, 4);
 export interface ProjectedMetric {
   name?: MetricName;
   timestamps?: Date[];
   values?: number[];
 }
-const ProjectedMetric = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<ProjectedMetric>;
 export type ProjectedMetrics = ProjectedMetric[];
-const ProjectedMetrics = /*@__PURE__*/ __L.at(__c9, 6);
 export interface RecommendedOptionProjectedMetric {
   recommendedInstanceType?: string;
   rank?: number;
   projectedMetrics?: ProjectedMetric[];
 }
-const RecommendedOptionProjectedMetric = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<RecommendedOptionProjectedMetric>;
 export type RecommendedOptionProjectedMetrics = RecommendedOptionProjectedMetric[];
-const RecommendedOptionProjectedMetrics = /*@__PURE__*/ __L.at(__c10, 0);
 export interface GetEC2RecommendationProjectedMetricsResponse {
   recommendedOptionProjectedMetrics?: RecommendedOptionProjectedMetric[];
 }
-const GetEC2RecommendationProjectedMetricsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GetEC2RecommendationProjectedMetricsResponse>;
 export type ServiceArn = string;
 export interface GetECSServiceRecommendationProjectedMetricsRequest {
   serviceArn: string;
@@ -1598,48 +1270,27 @@ export interface GetECSServiceRecommendationProjectedMetricsRequest {
   startTime: Date;
   endTime: Date;
 }
-const GetECSServiceRecommendationProjectedMetricsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GetECSServiceRecommendationProjectedMetricsRequest>;
 export type CpuSize = number;
 export type MemorySize = number;
 export type ECSServiceMetricName = "Cpu" | "Memory" | (string & {});
-const ECSServiceMetricName = S.String;
-
 export interface ECSServiceProjectedMetric {
   name?: ECSServiceMetricName;
   timestamps?: Date[];
   upperBoundValues?: number[];
   lowerBoundValues?: number[];
 }
-const ECSServiceProjectedMetric = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ECSServiceProjectedMetric>;
 export type ECSServiceProjectedMetrics = ECSServiceProjectedMetric[];
-const ECSServiceProjectedMetrics = /*@__PURE__*/ __L.at(__c10, 4);
 export interface ECSServiceRecommendedOptionProjectedMetric {
   recommendedCpuUnits?: number;
   recommendedMemorySize?: number;
   projectedMetrics?: ECSServiceProjectedMetric[];
 }
-const ECSServiceRecommendedOptionProjectedMetric = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ECSServiceRecommendedOptionProjectedMetric>;
 export type ECSServiceRecommendedOptionProjectedMetrics =
   ECSServiceRecommendedOptionProjectedMetric[];
-const ECSServiceRecommendedOptionProjectedMetrics = /*@__PURE__*/ __L.at(__c10, 6);
 export interface GetECSServiceRecommendationProjectedMetricsResponse {
   recommendedOptionProjectedMetrics?: ECSServiceRecommendedOptionProjectedMetric[];
 }
-const GetECSServiceRecommendationProjectedMetricsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GetECSServiceRecommendationProjectedMetricsResponse>;
 export type ServiceArns = string[];
-const ServiceArns = JobIds as any as S.Schema<ServiceArns>;
 export interface GetECSServiceRecommendationsRequest {
   serviceArns?: string[];
   nextToken?: string;
@@ -1647,10 +1298,6 @@ export interface GetECSServiceRecommendationsRequest {
   filters?: ECSServiceRecommendationFilter[];
   accountIds?: string[];
 }
-const GetECSServiceRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GetECSServiceRecommendationsRequest>;
 export type NullableMemory = number;
 export type NullableCpu = number;
 export type ContainerName = string;
@@ -1659,27 +1306,16 @@ export interface MemorySizeConfiguration {
   memory?: number;
   memoryReservation?: number;
 }
-const MemorySizeConfiguration = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<MemorySizeConfiguration>;
 export interface ContainerConfiguration {
   containerName?: string;
   memorySizeConfiguration?: MemorySizeConfiguration;
   cpu?: number;
 }
-const ContainerConfiguration = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ContainerConfiguration>;
 export type ContainerConfigurations = ContainerConfiguration[];
-const ContainerConfigurations = /*@__PURE__*/ __L.at(__c11, 3);
 export type AutoScalingConfiguration =
   | "TargetTrackingScalingCpu"
   | "TargetTrackingScalingMemory"
   | (string & {});
-const AutoScalingConfiguration = S.String;
-
 export type TaskDefinitionArn = string;
 export interface ServiceConfiguration {
   memory?: number;
@@ -1688,34 +1324,19 @@ export interface ServiceConfiguration {
   autoScalingConfiguration?: AutoScalingConfiguration;
   taskDefinitionArn?: string;
 }
-const ServiceConfiguration = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ServiceConfiguration>;
 export type ECSServiceMetricStatistic = "Maximum" | "Average" | (string & {});
-const ECSServiceMetricStatistic = S.String;
-
 export interface ECSServiceUtilizationMetric {
   name?: ECSServiceMetricName;
   statistic?: ECSServiceMetricStatistic;
   value?: number;
 }
-const ECSServiceUtilizationMetric = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ECSServiceUtilizationMetric>;
 export type ECSServiceUtilizationMetrics = ECSServiceUtilizationMetric[];
-const ECSServiceUtilizationMetrics = /*@__PURE__*/ __L.at(__c11, 6);
 export type ECSServiceLaunchType = "EC2" | "Fargate" | (string & {});
-const ECSServiceLaunchType = S.String;
-
 export type ECSServiceRecommendationFinding =
   | "Optimized"
   | "Underprovisioned"
   | "Overprovisioned"
   | (string & {});
-const ECSServiceRecommendationFinding = S.String;
-
 export type ECSServiceRecommendationFindingReasonCode =
   | "MemoryOverprovisioned"
   | "MemoryUnderprovisioned"
@@ -1724,8 +1345,6 @@ export type ECSServiceRecommendationFindingReasonCode =
   | (string & {});
 export type ECSServiceRecommendationFindingReasonCodes =
   ECSServiceRecommendationFindingReasonCode[];
-const ECSServiceRecommendationFindingReasonCodes =
-  ExportableAutoScalingGroupFields as any as S.Schema<ECSServiceRecommendationFindingReasonCodes>;
 export interface ECSEstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
@@ -1734,8 +1353,6 @@ export interface ECSSavingsOpportunityAfterDiscounts {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: ECSEstimatedMonthlySavings;
 }
-const ECSSavingsOpportunityAfterDiscounts =
-  AutoScalingGroupSavingsOpportunityAfterDiscounts as any as S.Schema<ECSSavingsOpportunityAfterDiscounts>;
 export type LowerBoundValue = number;
 export type UpperBoundValue = number;
 export interface ECSServiceProjectedUtilizationMetric {
@@ -1744,20 +1361,13 @@ export interface ECSServiceProjectedUtilizationMetric {
   lowerBoundValue?: number;
   upperBoundValue?: number;
 }
-const ECSServiceProjectedUtilizationMetric = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ECSServiceProjectedUtilizationMetric>;
 export type ECSServiceProjectedUtilizationMetrics = ECSServiceProjectedUtilizationMetric[];
-const ECSServiceProjectedUtilizationMetrics = /*@__PURE__*/ __L.at(__c12, 0);
 export interface ContainerRecommendation {
   containerName?: string;
   memorySizeConfiguration?: MemorySizeConfiguration;
   cpu?: number;
 }
 export type ContainerRecommendations = ContainerRecommendation[];
-const ContainerRecommendations =
-  ContainerConfigurations as any as S.Schema<ContainerRecommendations>;
 export interface ECSServiceRecommendationOption {
   memory?: number;
   cpu?: number;
@@ -1766,12 +1376,7 @@ export interface ECSServiceRecommendationOption {
   projectedUtilizationMetrics?: ECSServiceProjectedUtilizationMetric[];
   containerRecommendations?: ContainerRecommendation[];
 }
-const ECSServiceRecommendationOption = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ECSServiceRecommendationOption>;
 export type ECSServiceRecommendationOptions = ECSServiceRecommendationOption[];
-const ECSServiceRecommendationOptions = /*@__PURE__*/ __L.at(__c12, 2);
 export type ECSSavingsEstimationModeSource =
   | "PublicPricing"
   | "CostExplorerRightsizing"
@@ -1784,8 +1389,6 @@ export interface ECSEffectiveRecommendationPreferences {
   savingsEstimationMode?: ECSSavingsEstimationMode;
   lookBackPeriod?: LookBackPeriodPreference;
 }
-const ECSEffectiveRecommendationPreferences =
-  EBSEffectiveRecommendationPreferences as any as S.Schema<ECSEffectiveRecommendationPreferences>;
 export interface ECSServiceRecommendation {
   serviceArn?: string;
   accountId?: string;
@@ -1801,29 +1404,16 @@ export interface ECSServiceRecommendation {
   effectiveRecommendationPreferences?: ECSEffectiveRecommendationPreferences;
   tags?: Tag[];
 }
-const ECSServiceRecommendation = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ECSServiceRecommendation>;
 export type ECSServiceRecommendations = ECSServiceRecommendation[];
-const ECSServiceRecommendations = /*@__PURE__*/ __L.at(__c12, 4);
 export interface GetECSServiceRecommendationsResponse {
   nextToken?: string;
   ecsServiceRecommendations?: ECSServiceRecommendation[];
   errors?: GetRecommendationError[];
 }
-const GetECSServiceRecommendationsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GetECSServiceRecommendationsResponse>;
 export type ResourceArn = string;
 export interface GetEffectiveRecommendationPreferencesRequest {
   resourceArn: string;
 }
-const GetEffectiveRecommendationPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GetEffectiveRecommendationPreferencesRequest>;
 export interface GetEffectiveRecommendationPreferencesResponse {
   enhancedInfrastructureMetrics?: EnhancedInfrastructureMetrics;
   externalMetricsPreference?: ExternalMetricsPreference;
@@ -1831,18 +1421,8 @@ export interface GetEffectiveRecommendationPreferencesResponse {
   utilizationPreferences?: UtilizationPreference[];
   preferredResources?: EffectivePreferredResource[];
 }
-const GetEffectiveRecommendationPreferencesResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GetEffectiveRecommendationPreferencesResponse>;
 export interface GetEnrollmentStatusRequest {}
-const GetEnrollmentStatusRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<GetEnrollmentStatusRequest>;
 export type Status = "Active" | "Inactive" | "Pending" | "Failed" | (string & {});
-const Status = S.String;
-
 export type StatusReason = string;
 export type MemberAccountsEnrolled = boolean;
 export type NumberOfMemberAccountsOptedIn = number;
@@ -1853,60 +1433,36 @@ export interface GetEnrollmentStatusResponse {
   lastUpdatedTimestamp?: Date;
   numberOfMemberAccountsOptedIn?: number;
 }
-const GetEnrollmentStatusResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GetEnrollmentStatusResponse>;
 export type EnrollmentFilterName = "Status" | (string & {});
 export interface EnrollmentFilter {
   name?: EnrollmentFilterName;
   values?: string[];
 }
 export type EnrollmentFilters = EnrollmentFilter[];
-const EnrollmentFilters = JobFilters as any as S.Schema<EnrollmentFilters>;
 export interface GetEnrollmentStatusesForOrganizationRequest {
   filters?: EnrollmentFilter[];
   nextToken?: string;
   maxResults?: number;
 }
-const GetEnrollmentStatusesForOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GetEnrollmentStatusesForOrganizationRequest>;
 export interface AccountEnrollmentStatus {
   accountId?: string;
   status?: Status;
   statusReason?: string;
   lastUpdatedTimestamp?: Date;
 }
-const AccountEnrollmentStatus = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<AccountEnrollmentStatus>;
 export type AccountEnrollmentStatuses = AccountEnrollmentStatus[];
-const AccountEnrollmentStatuses = /*@__PURE__*/ __L.at(__c13, 4);
 export interface GetEnrollmentStatusesForOrganizationResponse {
   accountEnrollmentStatuses?: AccountEnrollmentStatus[];
   nextToken?: string;
 }
-const GetEnrollmentStatusesForOrganizationResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GetEnrollmentStatusesForOrganizationResponse>;
 export type ResourceArns = string[];
-const ResourceArns = JobIds as any as S.Schema<ResourceArns>;
 export type IdleMaxResults = number;
 export type Dimension = "SavingsValue" | "SavingsValueAfterDiscount" | (string & {});
-const Dimension = S.String;
-
 export type Order = "Asc" | "Desc" | (string & {});
-const Order = S.String;
-
 export interface OrderBy {
   dimension?: Dimension;
   order?: Order;
 }
-const OrderBy = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<OrderBy>;
 export interface GetIdleRecommendationsRequest {
   resourceArns?: string[];
   nextToken?: string;
@@ -1915,10 +1471,6 @@ export interface GetIdleRecommendationsRequest {
   accountIds?: string[];
   orderBy?: OrderBy;
 }
-const GetIdleRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetIdleRecommendationsRequest>;
 export type ResourceId = string;
 export type IdleRecommendationResourceType =
   | "EC2Instance"
@@ -1934,32 +1486,20 @@ export type IdleRecommendationResourceType =
   | "WorkSpaces"
   | "SageMakerEndpoint"
   | (string & {});
-const IdleRecommendationResourceType = S.String;
-
 export type IdleFinding = "Idle" | "Unattached" | "Unused" | (string & {});
-const IdleFinding = S.String;
-
 export type IdleFindingDescription = string;
 export interface IdleEstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
 }
-const IdleEstimatedMonthlySavings =
-  AutoScalingGroupEstimatedMonthlySavings as any as S.Schema<IdleEstimatedMonthlySavings>;
 export interface IdleSavingsOpportunity {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: IdleEstimatedMonthlySavings;
 }
-const IdleSavingsOpportunity = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<IdleSavingsOpportunity>;
 export interface IdleSavingsOpportunityAfterDiscounts {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: IdleEstimatedMonthlySavings;
 }
-const IdleSavingsOpportunityAfterDiscounts =
-  AutoScalingGroupSavingsOpportunityAfterDiscounts as any as S.Schema<IdleSavingsOpportunityAfterDiscounts>;
 export type IdleMetricName =
   | "CPU"
   | "Memory"
@@ -1990,31 +1530,21 @@ export type IdleMetricName =
   | "ElastiCacheProcessingUnits"
   | "CurrConnections"
   | (string & {});
-const IdleMetricName = S.String;
-
 export type IdleDimensionKey = string;
 export type IdleDimensionValue = string;
 export type IdleDimensionValues = string[];
-const IdleDimensionValues = JobIds as any as S.Schema<IdleDimensionValues>;
 export interface IdleDimension {
   key?: string;
   values?: string[];
 }
-const IdleDimension = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<IdleDimension>;
 export type IdleDimensions = IdleDimension[];
-const IdleDimensions = /*@__PURE__*/ __L.at(__c14, 2);
 export interface IdleUtilizationMetric {
   name?: IdleMetricName;
   statistic?: MetricStatistic;
   value?: number;
   dimensions?: IdleDimension[];
 }
-const IdleUtilizationMetric = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<IdleUtilizationMetric>;
 export type IdleUtilizationMetrics = IdleUtilizationMetric[];
-const IdleUtilizationMetrics = /*@__PURE__*/ __L.at(__c14, 4);
 export interface IdleRecommendation {
   resourceArn?: string;
   resourceId?: string;
@@ -2029,33 +1559,21 @@ export interface IdleRecommendation {
   lastRefreshTimestamp?: Date;
   tags?: Tag[];
 }
-const IdleRecommendation = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<IdleRecommendation>;
 export type IdleRecommendations = IdleRecommendation[];
-const IdleRecommendations = /*@__PURE__*/ __L.at(__c14, 6);
 export interface IdleRecommendationError {
   identifier?: string;
   code?: string;
   message?: string;
   resourceType?: IdleRecommendationResourceType;
 }
-const IdleRecommendationError = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<IdleRecommendationError>;
 export type IdleRecommendationErrors = IdleRecommendationError[];
-const IdleRecommendationErrors = /*@__PURE__*/ __L.at(__c15, 0);
 export interface GetIdleRecommendationsResponse {
   nextToken?: string;
   idleRecommendations?: IdleRecommendation[];
   errors?: IdleRecommendationError[];
 }
-const GetIdleRecommendationsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<GetIdleRecommendationsResponse>;
 export type FunctionArn = string;
 export type FunctionArns = string[];
-const FunctionArns = JobIds as any as S.Schema<FunctionArns>;
 export interface GetLambdaFunctionRecommendationsRequest {
   functionArns?: string[];
   accountIds?: string[];
@@ -2063,10 +1581,6 @@ export interface GetLambdaFunctionRecommendationsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const GetLambdaFunctionRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GetLambdaFunctionRecommendationsRequest>;
 export type FunctionVersion = string;
 export type NumberOfInvocations = number;
 export type LambdaFunctionMetricName = "Duration" | "Memory" | (string & {});
@@ -2076,17 +1590,12 @@ export interface LambdaFunctionUtilizationMetric {
   statistic?: LambdaFunctionMetricStatistic;
   value?: number;
 }
-const LambdaFunctionUtilizationMetric =
-  ECSServiceUtilizationMetric as any as S.Schema<LambdaFunctionUtilizationMetric>;
 export type LambdaFunctionUtilizationMetrics = LambdaFunctionUtilizationMetric[];
-const LambdaFunctionUtilizationMetrics = /*@__PURE__*/ __L.at(__c15, 3);
 export type LambdaFunctionRecommendationFinding =
   | "Optimized"
   | "NotOptimized"
   | "Unavailable"
   | (string & {});
-const LambdaFunctionRecommendationFinding = S.String;
-
 export type LambdaFunctionRecommendationFindingReasonCode =
   | "MemoryOverprovisioned"
   | "MemoryUnderprovisioned"
@@ -2095,8 +1604,6 @@ export type LambdaFunctionRecommendationFindingReasonCode =
   | (string & {});
 export type LambdaFunctionRecommendationFindingReasonCodes =
   LambdaFunctionRecommendationFindingReasonCode[];
-const LambdaFunctionRecommendationFindingReasonCodes =
-  ExportableAutoScalingGroupFields as any as S.Schema<LambdaFunctionRecommendationFindingReasonCodes>;
 export type LambdaFunctionMemoryMetricName = "Duration" | (string & {});
 export type LambdaFunctionMemoryMetricStatistic =
   | "LowerBound"
@@ -2109,8 +1616,6 @@ export interface LambdaFunctionMemoryProjectedMetric {
   value?: number;
 }
 export type LambdaFunctionMemoryProjectedMetrics = LambdaFunctionMemoryProjectedMetric[];
-const LambdaFunctionMemoryProjectedMetrics =
-  LambdaFunctionUtilizationMetrics as any as S.Schema<LambdaFunctionMemoryProjectedMetrics>;
 export interface LambdaEstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
@@ -2119,8 +1624,6 @@ export interface LambdaSavingsOpportunityAfterDiscounts {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: LambdaEstimatedMonthlySavings;
 }
-const LambdaSavingsOpportunityAfterDiscounts =
-  AutoScalingGroupSavingsOpportunityAfterDiscounts as any as S.Schema<LambdaSavingsOpportunityAfterDiscounts>;
 export interface LambdaFunctionMemoryRecommendationOption {
   rank?: number;
   memorySize?: number;
@@ -2128,12 +1631,7 @@ export interface LambdaFunctionMemoryRecommendationOption {
   savingsOpportunity?: SavingsOpportunity;
   savingsOpportunityAfterDiscounts?: LambdaSavingsOpportunityAfterDiscounts;
 }
-const LambdaFunctionMemoryRecommendationOption = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<LambdaFunctionMemoryRecommendationOption>;
 export type LambdaFunctionMemoryRecommendationOptions = LambdaFunctionMemoryRecommendationOption[];
-const LambdaFunctionMemoryRecommendationOptions = /*@__PURE__*/ __L.at(__c15, 5);
 export type LambdaSavingsEstimationModeSource =
   | "PublicPricing"
   | "CostExplorerRightsizing"
@@ -2142,15 +1640,9 @@ export type LambdaSavingsEstimationModeSource =
 export interface LambdaSavingsEstimationMode {
   source?: LambdaSavingsEstimationModeSource;
 }
-const LambdaSavingsEstimationMode =
-  ExternalMetricsPreference as any as S.Schema<LambdaSavingsEstimationMode>;
 export interface LambdaEffectiveRecommendationPreferences {
   savingsEstimationMode?: LambdaSavingsEstimationMode;
 }
-const LambdaEffectiveRecommendationPreferences = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<LambdaEffectiveRecommendationPreferences>;
 export interface LambdaFunctionRecommendation {
   functionArn?: string;
   functionVersion?: string;
@@ -2167,20 +1659,11 @@ export interface LambdaFunctionRecommendation {
   effectiveRecommendationPreferences?: LambdaEffectiveRecommendationPreferences;
   tags?: Tag[];
 }
-const LambdaFunctionRecommendation = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<LambdaFunctionRecommendation>;
 export type LambdaFunctionRecommendations = LambdaFunctionRecommendation[];
-const LambdaFunctionRecommendations = /*@__PURE__*/ __L.at(__c16, 0);
 export interface GetLambdaFunctionRecommendationsResponse {
   nextToken?: string;
   lambdaFunctionRecommendations?: LambdaFunctionRecommendation[];
 }
-const GetLambdaFunctionRecommendationsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GetLambdaFunctionRecommendationsResponse>;
 export interface GetLicenseRecommendationsRequest {
   resourceArns?: string[];
   nextToken?: string;
@@ -2188,10 +1671,6 @@ export interface GetLicenseRecommendationsRequest {
   filters?: LicenseRecommendationFilter[];
   accountIds?: string[];
 }
-const GetLicenseRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetLicenseRecommendationsRequest>;
 export type NumberOfCores = number;
 export type OperatingSystem = string;
 export type LicenseEdition =
@@ -2200,26 +1679,16 @@ export type LicenseEdition =
   | "Free"
   | "NoLicenseEditionFound"
   | (string & {});
-const LicenseEdition = S.String;
-
 export type LicenseName = "SQLServer" | (string & {});
-const LicenseName = S.String;
-
 export type LicenseModel = "LicenseIncluded" | "BringYourOwnLicense" | (string & {});
-const LicenseModel = S.String;
-
 export type LicenseVersion = string;
 export type MetricSourceProvider = "CloudWatchApplicationInsights" | (string & {});
-const MetricSourceProvider = S.String;
-
 export type MetricProviderArn = string;
 export interface MetricSource {
   provider?: MetricSourceProvider;
   providerArn?: string;
 }
-const MetricSource = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<MetricSource>;
 export type MetricsSource = MetricSource[];
-const MetricsSource = /*@__PURE__*/ __L.at(__c16, 4);
 export interface LicenseConfiguration {
   numberOfCores?: number;
   instanceType?: string;
@@ -2230,13 +1699,7 @@ export interface LicenseConfiguration {
   licenseVersion?: string;
   metricsSource?: MetricSource[];
 }
-const LicenseConfiguration = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<LicenseConfiguration>;
 export type LicenseFinding = "InsufficientMetrics" | "Optimized" | "NotOptimized" | (string & {});
-const LicenseFinding = S.String;
-
 export type LicenseFindingReasonCode =
   | "InvalidCloudWatchApplicationInsightsSetup"
   | "CloudWatchApplicationInsightsError"
@@ -2244,8 +1707,6 @@ export type LicenseFindingReasonCode =
   | "Optimized"
   | (string & {});
 export type LicenseFindingReasonCodes = LicenseFindingReasonCode[];
-const LicenseFindingReasonCodes =
-  RecommendationPreferenceNames as any as S.Schema<LicenseFindingReasonCodes>;
 export interface LicenseRecommendationOption {
   rank?: number;
   operatingSystem?: string;
@@ -2253,12 +1714,7 @@ export interface LicenseRecommendationOption {
   licenseModel?: LicenseModel;
   savingsOpportunity?: SavingsOpportunity;
 }
-const LicenseRecommendationOption = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<LicenseRecommendationOption>;
 export type LicenseRecommendationOptions = LicenseRecommendationOption[];
-const LicenseRecommendationOptions = /*@__PURE__*/ __L.at(__c16, 7);
 export interface LicenseRecommendation {
   resourceArn?: string;
   accountId?: string;
@@ -2270,21 +1726,12 @@ export interface LicenseRecommendation {
   licenseRecommendationOptions?: LicenseRecommendationOption[];
   tags?: Tag[];
 }
-const LicenseRecommendation = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<LicenseRecommendation>;
 export type LicenseRecommendations = LicenseRecommendation[];
-const LicenseRecommendations = /*@__PURE__*/ __L.at(__c17, 1);
 export interface GetLicenseRecommendationsResponse {
   nextToken?: string;
   licenseRecommendations?: LicenseRecommendation[];
   errors?: GetRecommendationError[];
 }
-const GetLicenseRecommendationsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<GetLicenseRecommendationsResponse>;
 export interface GetRDSDatabaseRecommendationProjectedMetricsRequest {
   resourceArn: string;
   stat: MetricStatistic;
@@ -2293,10 +1740,6 @@ export interface GetRDSDatabaseRecommendationProjectedMetricsRequest {
   endTime: Date;
   recommendationPreferences?: RecommendationPreferences;
 }
-const GetRDSDatabaseRecommendationProjectedMetricsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<GetRDSDatabaseRecommendationProjectedMetricsRequest>;
 export type RecommendedDBInstanceClass = string;
 export type RDSDBMetricName =
   | "CPU"
@@ -2321,38 +1764,22 @@ export type RDSDBMetricName =
   | "VolumeBytesUsed"
   | "VolumeWriteIOPs"
   | (string & {});
-const RDSDBMetricName = S.String;
-
 export interface RDSDatabaseProjectedMetric {
   name?: RDSDBMetricName;
   timestamps?: Date[];
   values?: number[];
 }
-const RDSDatabaseProjectedMetric = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<RDSDatabaseProjectedMetric>;
 export type RDSDatabaseProjectedMetrics = RDSDatabaseProjectedMetric[];
-const RDSDatabaseProjectedMetrics = /*@__PURE__*/ __L.at(__c17, 5);
 export interface RDSDatabaseRecommendedOptionProjectedMetric {
   recommendedDBInstanceClass?: string;
   rank?: number;
   projectedMetrics?: RDSDatabaseProjectedMetric[];
 }
-const RDSDatabaseRecommendedOptionProjectedMetric = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<RDSDatabaseRecommendedOptionProjectedMetric>;
 export type RDSDatabaseRecommendedOptionProjectedMetrics =
   RDSDatabaseRecommendedOptionProjectedMetric[];
-const RDSDatabaseRecommendedOptionProjectedMetrics = /*@__PURE__*/ __L.at(__c17, 7);
 export interface GetRDSDatabaseRecommendationProjectedMetricsResponse {
   recommendedOptionProjectedMetrics?: RDSDatabaseRecommendedOptionProjectedMetric[];
 }
-const GetRDSDatabaseRecommendationProjectedMetricsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GetRDSDatabaseRecommendationProjectedMetricsResponse>;
 export interface GetRDSDatabaseRecommendationsRequest {
   resourceArns?: string[];
   nextToken?: string;
@@ -2361,10 +1788,6 @@ export interface GetRDSDatabaseRecommendationsRequest {
   accountIds?: string[];
   recommendationPreferences?: RecommendationPreferences;
 }
-const GetRDSDatabaseRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<GetRDSDatabaseRecommendationsRequest>;
 export type Engine = string;
 export type EngineVersion = string;
 export type PromotionTier = number;
@@ -2381,29 +1804,19 @@ export interface DBStorageConfiguration {
   maxAllocatedStorage?: number;
   storageThroughput?: number;
 }
-const DBStorageConfiguration = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<DBStorageConfiguration>;
 export type DBClusterIdentifier = string;
 export type Idle = "True" | "False" | (string & {});
-const Idle = S.String;
-
 export type RDSInstanceFinding =
   | "Optimized"
   | "Underprovisioned"
   | "Overprovisioned"
   | (string & {});
-const RDSInstanceFinding = S.String;
-
 export type RDSStorageFinding =
   | "Optimized"
   | "Underprovisioned"
   | "Overprovisioned"
   | "NotOptimized"
   | (string & {});
-const RDSStorageFinding = S.String;
-
 export type RDSInstanceFindingReasonCode =
   | "CPUOverprovisioned"
   | "NetworkBandwidthOverprovisioned"
@@ -2421,24 +1834,18 @@ export type RDSInstanceFindingReasonCode =
   | "InstanceStorageWriteIOPSUnderprovisioned"
   | (string & {});
 export type RDSInstanceFindingReasonCodes = RDSInstanceFindingReasonCode[];
-const RDSInstanceFindingReasonCodes =
-  RecommendationPreferenceNames as any as S.Schema<RDSInstanceFindingReasonCodes>;
 export type RDSCurrentInstancePerformanceRisk =
   | "VeryLow"
   | "Low"
   | "Medium"
   | "High"
   | (string & {});
-const RDSCurrentInstancePerformanceRisk = S.String;
-
 export type RDSEstimatedMonthlyVolumeIOPsCostVariation =
   | "None"
   | "Low"
   | "Medium"
   | "High"
   | (string & {});
-const RDSEstimatedMonthlyVolumeIOPsCostVariation = S.String;
-
 export type RDSStorageFindingReasonCode =
   | "EBSVolumeAllocatedStorageUnderprovisioned"
   | "EBSVolumeThroughputUnderprovisioned"
@@ -2449,8 +1856,6 @@ export type RDSStorageFindingReasonCode =
   | "DBClusterStorageSavingsAvailable"
   | (string & {});
 export type RDSStorageFindingReasonCodes = RDSStorageFindingReasonCode[];
-const RDSStorageFindingReasonCodes =
-  RecommendationPreferenceNames as any as S.Schema<RDSStorageFindingReasonCodes>;
 export type DBInstanceClass = string;
 export type RDSDBMetricStatistic = "Maximum" | "Minimum" | "Average" | (string & {});
 export interface RDSDBUtilizationMetric {
@@ -2459,8 +1864,6 @@ export interface RDSDBUtilizationMetric {
   value?: number;
 }
 export type RDSDBProjectedUtilizationMetrics = RDSDBUtilizationMetric[];
-const RDSDBProjectedUtilizationMetrics =
-  UtilizationMetrics as any as S.Schema<RDSDBProjectedUtilizationMetrics>;
 export interface RDSInstanceEstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
@@ -2469,8 +1872,6 @@ export interface RDSInstanceSavingsOpportunityAfterDiscounts {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: RDSInstanceEstimatedMonthlySavings;
 }
-const RDSInstanceSavingsOpportunityAfterDiscounts =
-  AutoScalingGroupSavingsOpportunityAfterDiscounts as any as S.Schema<RDSInstanceSavingsOpportunityAfterDiscounts>;
 export interface RDSDBInstanceRecommendationOption {
   dbInstanceClass?: string;
   projectedUtilizationMetrics?: RDSDBUtilizationMetric[];
@@ -2479,12 +1880,7 @@ export interface RDSDBInstanceRecommendationOption {
   savingsOpportunity?: SavingsOpportunity;
   savingsOpportunityAfterDiscounts?: RDSInstanceSavingsOpportunityAfterDiscounts;
 }
-const RDSDBInstanceRecommendationOption = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<RDSDBInstanceRecommendationOption>;
 export type RDSDBInstanceRecommendationOptions = RDSDBInstanceRecommendationOption[];
-const RDSDBInstanceRecommendationOptions = /*@__PURE__*/ __L.at(__c18, 4);
 export interface RDSStorageEstimatedMonthlySavings {
   currency?: Currency;
   value?: number;
@@ -2493,8 +1889,6 @@ export interface RDSStorageSavingsOpportunityAfterDiscounts {
   savingsOpportunityPercentage?: number;
   estimatedMonthlySavings?: RDSStorageEstimatedMonthlySavings;
 }
-const RDSStorageSavingsOpportunityAfterDiscounts =
-  AutoScalingGroupSavingsOpportunityAfterDiscounts as any as S.Schema<RDSStorageSavingsOpportunityAfterDiscounts>;
 export interface RDSDBStorageRecommendationOption {
   storageConfiguration?: DBStorageConfiguration;
   rank?: number;
@@ -2502,15 +1896,8 @@ export interface RDSDBStorageRecommendationOption {
   savingsOpportunityAfterDiscounts?: RDSStorageSavingsOpportunityAfterDiscounts;
   estimatedMonthlyVolumeIOPsCostVariation?: RDSEstimatedMonthlyVolumeIOPsCostVariation;
 }
-const RDSDBStorageRecommendationOption = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<RDSDBStorageRecommendationOption>;
 export type RDSDBStorageRecommendationOptions = RDSDBStorageRecommendationOption[];
-const RDSDBStorageRecommendationOptions = /*@__PURE__*/ __L.at(__c18, 6);
 export type RDSDBUtilizationMetrics = RDSDBUtilizationMetric[];
-const RDSDBUtilizationMetrics =
-  RDSDBProjectedUtilizationMetrics as any as S.Schema<RDSDBUtilizationMetrics>;
 export type RDSSavingsEstimationModeSource =
   | "PublicPricing"
   | "CostExplorerRightsizing"
@@ -2519,18 +1906,12 @@ export type RDSSavingsEstimationModeSource =
 export interface RDSSavingsEstimationMode {
   source?: RDSSavingsEstimationModeSource;
 }
-const RDSSavingsEstimationMode =
-  EBSSavingsEstimationMode as any as S.Schema<RDSSavingsEstimationMode>;
 export interface RDSEffectiveRecommendationPreferences {
   cpuVendorArchitectures?: CpuVendorArchitecture[];
   enhancedInfrastructureMetrics?: EnhancedInfrastructureMetrics;
   lookBackPeriod?: LookBackPeriodPreference;
   savingsEstimationMode?: RDSSavingsEstimationMode;
 }
-const RDSEffectiveRecommendationPreferences = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<RDSEffectiveRecommendationPreferences>;
 export interface RDSDBRecommendation {
   resourceArn?: string;
   accountId?: string;
@@ -2555,31 +1936,19 @@ export interface RDSDBRecommendation {
   lastRefreshTimestamp?: Date;
   tags?: Tag[];
 }
-const RDSDBRecommendation = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<RDSDBRecommendation>;
 export type RDSDBRecommendations = RDSDBRecommendation[];
-const RDSDBRecommendations = /*@__PURE__*/ __L.at(__c19, 1);
 export interface GetRDSDatabaseRecommendationsResponse {
   nextToken?: string;
   rdsDBRecommendations?: RDSDBRecommendation[];
   errors?: GetRecommendationError[];
 }
-const GetRDSDatabaseRecommendationsResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetRDSDatabaseRecommendationsResponse>;
 export interface GetRecommendationPreferencesRequest {
   resourceType: ResourceType;
   scope?: Scope;
   nextToken?: string;
   maxResults?: number;
 }
-const GetRecommendationPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GetRecommendationPreferencesRequest>;
 export type SavingsEstimationMode = "AfterDiscounts" | "BeforeDiscounts" | (string & {});
-const SavingsEstimationMode = S.String;
-
 export interface RecommendationPreferencesDetail {
   scope?: Scope;
   resourceType?: ResourceType;
@@ -2591,54 +1960,34 @@ export interface RecommendationPreferencesDetail {
   preferredResources?: EffectivePreferredResource[];
   savingsEstimationMode?: SavingsEstimationMode;
 }
-const RecommendationPreferencesDetail = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<RecommendationPreferencesDetail>;
 export type RecommendationPreferencesDetails = RecommendationPreferencesDetail[];
-const RecommendationPreferencesDetails = /*@__PURE__*/ __L.at(__c19, 5);
 export interface GetRecommendationPreferencesResponse {
   nextToken?: string;
   recommendationPreferencesDetails?: RecommendationPreferencesDetail[];
 }
-const GetRecommendationPreferencesResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<GetRecommendationPreferencesResponse>;
 export interface GetRecommendationSummariesRequest {
   accountIds?: string[];
   nextToken?: string;
   maxResults?: number;
 }
-const GetRecommendationSummariesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<GetRecommendationSummariesRequest>;
 export type SummaryValue = number;
 export type FindingReasonCode = "MemoryOverprovisioned" | "MemoryUnderprovisioned" | (string & {});
-const FindingReasonCode = S.String;
-
 export interface ReasonCodeSummary {
   name?: FindingReasonCode;
   value?: number;
 }
-const ReasonCodeSummary = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<ReasonCodeSummary>;
 export type ReasonCodeSummaries = ReasonCodeSummary[];
-const ReasonCodeSummaries = /*@__PURE__*/ __L.at(__c20, 1);
 export interface Summary {
   name?: Finding;
   value?: number;
   reasonCodeSummaries?: ReasonCodeSummary[];
 }
-const Summary = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<Summary>;
 export type Summaries = Summary[];
-const Summaries = /*@__PURE__*/ __L.at(__c20, 3);
 export interface IdleSummary {
   name?: IdleFinding;
   value?: number;
 }
 export type IdleSummaries = IdleSummary[];
-const IdleSummaries = ReasonCodeSummaries as any as S.Schema<IdleSummaries>;
 export type High = number;
 export type Medium = number;
 export type Low = number;
@@ -2649,20 +1998,11 @@ export interface CurrentPerformanceRiskRatings {
   low?: number;
   veryLow?: number;
 }
-const CurrentPerformanceRiskRatings = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<CurrentPerformanceRiskRatings>;
 export interface InferredWorkloadSaving {
   inferredWorkloadTypes?: InferredWorkloadType[];
   estimatedMonthlySavings?: EstimatedMonthlySavings;
 }
-const InferredWorkloadSaving = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<InferredWorkloadSaving>;
 export type InferredWorkloadSavings = InferredWorkloadSaving[];
-const InferredWorkloadSavings = /*@__PURE__*/ __L.at(__c20, 6);
 export interface RecommendationSummary {
   summaries?: Summary[];
   idleSummaries?: IdleSummary[];
@@ -2674,28 +2014,17 @@ export interface RecommendationSummary {
   currentPerformanceRiskRatings?: CurrentPerformanceRiskRatings;
   inferredWorkloadSavings?: InferredWorkloadSaving[];
 }
-const RecommendationSummary = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<RecommendationSummary>;
 export type RecommendationSummaries = RecommendationSummary[];
-const RecommendationSummaries = /*@__PURE__*/ __L.at(__c21, 0);
 export interface GetRecommendationSummariesResponse {
   nextToken?: string;
   recommendationSummaries?: RecommendationSummary[];
 }
-const GetRecommendationSummariesResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<GetRecommendationSummariesResponse>;
 export interface PreferredResource {
   name?: PreferredResourceName;
   includeList?: string[];
   excludeList?: string[];
 }
-const PreferredResource = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<PreferredResource>;
 export type PreferredResources = PreferredResource[];
-const PreferredResources = /*@__PURE__*/ __L.at(__c21, 3);
 export interface PutRecommendationPreferencesRequest {
   resourceType: ResourceType;
   scope?: Scope;
@@ -2707,29 +2036,15 @@ export interface PutRecommendationPreferencesRequest {
   preferredResources?: PreferredResource[];
   savingsEstimationMode?: SavingsEstimationMode;
 }
-const PutRecommendationPreferencesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<PutRecommendationPreferencesRequest>;
 export interface PutRecommendationPreferencesResponse {}
-const PutRecommendationPreferencesResponse =
-  DeleteRecommendationPreferencesResponse as any as S.Schema<PutRecommendationPreferencesResponse>;
 export interface UpdateEnrollmentStatusRequest {
   status: Status;
   includeMemberAccounts?: boolean;
 }
-const UpdateEnrollmentStatusRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<UpdateEnrollmentStatusRequest>;
 export interface UpdateEnrollmentStatusResponse {
   status?: Status;
   statusReason?: string;
 }
-const UpdateEnrollmentStatusResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<UpdateEnrollmentStatusResponse>;
 export type ErrorMessage = string;
 export type DeleteRecommendationPreferencesError =
   | AccessDeniedException
@@ -2754,8 +2069,8 @@ export const deleteRecommendationPreferences: API.OperationMethod<
   DeleteRecommendationPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRecommendationPreferencesRequest,
-  output: DeleteRecommendationPreferencesResponse,
+  input: __S(2) as any as S.Schema<DeleteRecommendationPreferencesRequest>,
+  output: __S(3) as any as S.Schema<DeleteRecommendationPreferencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2795,8 +2110,8 @@ export const describeRecommendationExportJobs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommendationExportJob
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeRecommendationExportJobsRequest,
-  output: DescribeRecommendationExportJobsResponse,
+  input: __S(7) as any as S.Schema<DescribeRecommendationExportJobsRequest>,
+  output: __S(12) as any as S.Schema<DescribeRecommendationExportJobsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2844,8 +2159,8 @@ export const exportAutoScalingGroupRecommendations: API.OperationMethod<
   ExportAutoScalingGroupRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportAutoScalingGroupRecommendationsRequest,
-  output: ExportAutoScalingGroupRecommendationsResponse,
+  input: __S(16) as any as S.Schema<ExportAutoScalingGroupRecommendationsRequest>,
+  output: __S(17) as any as S.Schema<ExportAutoScalingGroupRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2887,8 +2202,8 @@ export const exportEBSVolumeRecommendations: API.OperationMethod<
   ExportEBSVolumeRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportEBSVolumeRecommendationsRequest,
-  output: ExportEBSVolumeRecommendationsResponse,
+  input: __S(18) as any as S.Schema<ExportEBSVolumeRecommendationsRequest>,
+  output: __S(17) as any as S.Schema<ExportEBSVolumeRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2930,8 +2245,8 @@ export const exportEC2InstanceRecommendations: API.OperationMethod<
   ExportEC2InstanceRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportEC2InstanceRecommendationsRequest,
-  output: ExportEC2InstanceRecommendationsResponse,
+  input: __S(19) as any as S.Schema<ExportEC2InstanceRecommendationsRequest>,
+  output: __S(17) as any as S.Schema<ExportEC2InstanceRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2973,8 +2288,8 @@ export const exportECSServiceRecommendations: API.OperationMethod<
   ExportECSServiceRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportECSServiceRecommendationsRequest,
-  output: ExportECSServiceRecommendationsResponse,
+  input: __S(22) as any as S.Schema<ExportECSServiceRecommendationsRequest>,
+  output: __S(17) as any as S.Schema<ExportECSServiceRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3016,8 +2331,8 @@ export const exportIdleRecommendations: API.OperationMethod<
   ExportIdleRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportIdleRecommendationsRequest,
-  output: ExportIdleRecommendationsResponse,
+  input: __S(23) as any as S.Schema<ExportIdleRecommendationsRequest>,
+  output: __S(17) as any as S.Schema<ExportIdleRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3059,8 +2374,8 @@ export const exportLambdaFunctionRecommendations: API.OperationMethod<
   ExportLambdaFunctionRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportLambdaFunctionRecommendationsRequest,
-  output: ExportLambdaFunctionRecommendationsResponse,
+  input: __S(24) as any as S.Schema<ExportLambdaFunctionRecommendationsRequest>,
+  output: __S(17) as any as S.Schema<ExportLambdaFunctionRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3102,8 +2417,8 @@ export const exportLicenseRecommendations: API.OperationMethod<
   ExportLicenseRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportLicenseRecommendationsRequest,
-  output: ExportLicenseRecommendationsResponse,
+  input: __S(27) as any as S.Schema<ExportLicenseRecommendationsRequest>,
+  output: __S(17) as any as S.Schema<ExportLicenseRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3145,8 +2460,8 @@ export const exportRDSDatabaseRecommendations: API.OperationMethod<
   ExportRDSDatabaseRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportRDSDatabaseRecommendationsRequest,
-  output: ExportRDSDatabaseRecommendationsResponse,
+  input: __S(28) as any as S.Schema<ExportRDSDatabaseRecommendationsRequest>,
+  output: __S(17) as any as S.Schema<ExportRDSDatabaseRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3186,8 +2501,8 @@ export const getAutoScalingGroupRecommendations: API.OperationMethod<
   GetAutoScalingGroupRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutoScalingGroupRecommendationsRequest,
-  output: GetAutoScalingGroupRecommendationsResponse,
+  input: __S(29) as any as S.Schema<GetAutoScalingGroupRecommendationsRequest>,
+  output: __S(53) as any as S.Schema<GetAutoScalingGroupRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3227,8 +2542,8 @@ export const getEBSVolumeRecommendations: API.OperationMethod<
   GetEBSVolumeRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEBSVolumeRecommendationsRequest,
-  output: GetEBSVolumeRecommendationsResponse,
+  input: __S(54) as any as S.Schema<GetEBSVolumeRecommendationsRequest>,
+  output: __S(64) as any as S.Schema<GetEBSVolumeRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3268,8 +2583,8 @@ export const getEC2InstanceRecommendations: API.OperationMethod<
   GetEC2InstanceRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEC2InstanceRecommendationsRequest,
-  output: GetEC2InstanceRecommendationsResponse,
+  input: __S(65) as any as S.Schema<GetEC2InstanceRecommendationsRequest>,
+  output: __S(73) as any as S.Schema<GetEC2InstanceRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3310,8 +2625,8 @@ export const getEC2RecommendationProjectedMetrics: API.OperationMethod<
   GetEC2RecommendationProjectedMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEC2RecommendationProjectedMetricsRequest,
-  output: GetEC2RecommendationProjectedMetricsResponse,
+  input: __S(74) as any as S.Schema<GetEC2RecommendationProjectedMetricsRequest>,
+  output: __S(81) as any as S.Schema<GetEC2RecommendationProjectedMetricsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3346,8 +2661,8 @@ export const getECSServiceRecommendationProjectedMetrics: API.OperationMethod<
   GetECSServiceRecommendationProjectedMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetECSServiceRecommendationProjectedMetricsRequest,
-  output: GetECSServiceRecommendationProjectedMetricsResponse,
+  input: __S(82) as any as S.Schema<GetECSServiceRecommendationProjectedMetricsRequest>,
+  output: __S(87) as any as S.Schema<GetECSServiceRecommendationProjectedMetricsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3388,8 +2703,8 @@ export const getECSServiceRecommendations: API.OperationMethod<
   GetECSServiceRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetECSServiceRecommendationsRequest,
-  output: GetECSServiceRecommendationsResponse,
+  input: __S(88) as any as S.Schema<GetECSServiceRecommendationsRequest>,
+  output: __S(101) as any as S.Schema<GetECSServiceRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3430,8 +2745,8 @@ export const getEffectiveRecommendationPreferences: API.OperationMethod<
   GetEffectiveRecommendationPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEffectiveRecommendationPreferencesRequest,
-  output: GetEffectiveRecommendationPreferencesResponse,
+  input: __S(102) as any as S.Schema<GetEffectiveRecommendationPreferencesRequest>,
+  output: __S(103) as any as S.Schema<GetEffectiveRecommendationPreferencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3469,8 +2784,8 @@ export const getEnrollmentStatus: API.OperationMethod<
   GetEnrollmentStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnrollmentStatusRequest,
-  output: GetEnrollmentStatusResponse,
+  input: __S(104) as any as S.Schema<GetEnrollmentStatusRequest>,
+  output: __S(105) as any as S.Schema<GetEnrollmentStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3505,8 +2820,8 @@ export const getEnrollmentStatusesForOrganization: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountEnrollmentStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetEnrollmentStatusesForOrganizationRequest,
-  output: GetEnrollmentStatusesForOrganizationResponse,
+  input: __S(106) as any as S.Schema<GetEnrollmentStatusesForOrganizationRequest>,
+  output: __S(109) as any as S.Schema<GetEnrollmentStatusesForOrganizationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3548,8 +2863,8 @@ export const getIdleRecommendations: API.OperationMethod<
   GetIdleRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIdleRecommendationsRequest,
-  output: GetIdleRecommendationsResponse,
+  input: __S(111) as any as S.Schema<GetIdleRecommendationsRequest>,
+  output: __S(121) as any as S.Schema<GetIdleRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3590,8 +2905,8 @@ export const getLambdaFunctionRecommendations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LambdaFunctionRecommendation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetLambdaFunctionRecommendationsRequest,
-  output: GetLambdaFunctionRecommendationsResponse,
+  input: __S(122) as any as S.Schema<GetLambdaFunctionRecommendationsRequest>,
+  output: __S(129) as any as S.Schema<GetLambdaFunctionRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3637,8 +2952,8 @@ export const getLicenseRecommendations: API.OperationMethod<
   GetLicenseRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLicenseRecommendationsRequest,
-  output: GetLicenseRecommendationsResponse,
+  input: __S(130) as any as S.Schema<GetLicenseRecommendationsRequest>,
+  output: __S(138) as any as S.Schema<GetLicenseRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3673,8 +2988,8 @@ export const getRDSDatabaseRecommendationProjectedMetrics: API.OperationMethod<
   GetRDSDatabaseRecommendationProjectedMetricsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRDSDatabaseRecommendationProjectedMetricsRequest,
-  output: GetRDSDatabaseRecommendationProjectedMetricsResponse,
+  input: __S(139) as any as S.Schema<GetRDSDatabaseRecommendationProjectedMetricsRequest>,
+  output: __S(144) as any as S.Schema<GetRDSDatabaseRecommendationProjectedMetricsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3715,8 +3030,8 @@ export const getRDSDatabaseRecommendations: API.OperationMethod<
   GetRDSDatabaseRecommendationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRDSDatabaseRecommendationsRequest,
-  output: GetRDSDatabaseRecommendationsResponse,
+  input: __S(145) as any as S.Schema<GetRDSDatabaseRecommendationsRequest>,
+  output: __S(154) as any as S.Schema<GetRDSDatabaseRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3761,8 +3076,8 @@ export const getRecommendationPreferences: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommendationPreferencesDetail
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetRecommendationPreferencesRequest,
-  output: GetRecommendationPreferencesResponse,
+  input: __S(155) as any as S.Schema<GetRecommendationPreferencesRequest>,
+  output: __S(158) as any as S.Schema<GetRecommendationPreferencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3827,8 +3142,8 @@ export const getRecommendationSummaries: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommendationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetRecommendationSummariesRequest,
-  output: GetRecommendationSummariesResponse,
+  input: __S(159) as any as S.Schema<GetRecommendationSummariesRequest>,
+  output: __S(169) as any as S.Schema<GetRecommendationSummariesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3873,8 +3188,8 @@ export const putRecommendationPreferences: API.OperationMethod<
   PutRecommendationPreferencesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutRecommendationPreferencesRequest,
-  output: PutRecommendationPreferencesResponse,
+  input: __S(172) as any as S.Schema<PutRecommendationPreferencesRequest>,
+  output: __S(3) as any as S.Schema<PutRecommendationPreferencesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3917,8 +3232,8 @@ export const updateEnrollmentStatus: API.OperationMethod<
   UpdateEnrollmentStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEnrollmentStatusRequest,
-  output: UpdateEnrollmentStatusResponse,
+  input: __S(173) as any as S.Schema<UpdateEnrollmentStatusRequest>,
+  output: __S(174) as any as S.Schema<UpdateEnrollmentStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3937,16 +3252,16 @@ function __c0(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ name: S.optional(ScopeName), value: S.optional(S.String) }),
+        S.Struct({ name: S.optional(S.String), value: S.optional(S.String) }),
       ).annotate({ identifier: "Scope" });
     case 1:
-      return S.Array(RecommendationPreferenceName);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resourceType: ResourceType,
-          scope: S.optional(Scope),
-          recommendationPreferenceNames: RecommendationPreferenceNames,
+          resourceType: S.String,
+          scope: S.optional(__S(0)),
+          recommendationPreferenceNames: __S(1),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "DeleteRecommendationPreferencesRequest",
@@ -3959,15 +3274,15 @@ function __c0(j: number): any {
       return S.Array(S.String);
     case 5:
       return S.suspend(() =>
-        S.Struct({ name: S.optional(JobFilterName), values: S.optional(FilterValues) }),
+        S.Struct({ name: S.optional(S.String), values: S.optional(__S(4)) }),
       ).annotate({ identifier: "JobFilter" });
     case 6:
-      return S.Array(JobFilter);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          jobIds: S.optional(JobIds),
-          filters: S.optional(JobFilters),
+          jobIds: S.optional(__S(4)),
+          filters: S.optional(__S(6)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -3987,42 +3302,40 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "S3Destination" });
     case 1:
-      return S.suspend(() => S.Struct({ s3: S.optional(S3Destination) })).annotate({
+      return S.suspend(() => S.Struct({ s3: S.optional(__S(8)) })).annotate({
         identifier: "ExportDestination",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           jobId: S.optional(S.String),
-          destination: S.optional(ExportDestination),
-          resourceType: S.optional(ResourceType),
-          status: S.optional(JobStatus),
+          destination: S.optional(__S(9)),
+          resourceType: S.optional(S.String),
+          status: S.optional(S.String),
           creationTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           failureReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecommendationExportJob" });
     case 3:
-      return S.Array(RecommendationExportJob);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          recommendationExportJobs: S.optional(RecommendationExportJobs),
+          recommendationExportJobs: S.optional(__S(11)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DescribeRecommendationExportJobsResponse",
       });
     case 5:
-      return S.Array(ExportableAutoScalingGroupField);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({ bucket: S.optional(S.String), keyPrefix: S.optional(S.String) }),
       ).annotate({ identifier: "S3DestinationConfig" });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ cpuVendorArchitectures: S.optional(CpuVendorArchitectures) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ cpuVendorArchitectures: S.optional(__S(1)) })).annotate({
         identifier: "RecommendationPreferences",
       });
   }
@@ -4032,31 +3345,31 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(AccountIds),
-          filters: S.optional(Filters),
-          fieldsToExport: S.optional(ExportableAutoScalingGroupFields),
-          s3DestinationConfig: S3DestinationConfig,
-          fileFormat: S.optional(FileFormat),
+          accountIds: S.optional(__S(4)),
+          filters: S.optional(__S(6)),
+          fieldsToExport: S.optional(__S(13)),
+          s3DestinationConfig: __S(14),
+          fileFormat: S.optional(S.String),
           includeMemberAccounts: S.optional(S.Boolean),
-          recommendationPreferences: S.optional(RecommendationPreferences),
+          recommendationPreferences: S.optional(__S(15)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ExportAutoScalingGroupRecommendationsRequest",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ jobId: S.optional(S.String), s3Destination: S.optional(S3Destination) }),
+        S.Struct({ jobId: S.optional(S.String), s3Destination: S.optional(__S(8)) }),
       ).annotate({
         identifier: "ExportAutoScalingGroupRecommendationsResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(AccountIds),
-          filters: S.optional(EBSFilters),
-          fieldsToExport: S.optional(ExportableVolumeFields),
-          s3DestinationConfig: S3DestinationConfig,
-          fileFormat: S.optional(FileFormat),
+          accountIds: S.optional(__S(4)),
+          filters: S.optional(__S(6)),
+          fieldsToExport: S.optional(__S(1)),
+          s3DestinationConfig: __S(14),
+          fileFormat: S.optional(S.String),
           includeMemberAccounts: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4065,13 +3378,13 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(AccountIds),
-          filters: S.optional(Filters),
-          fieldsToExport: S.optional(ExportableInstanceFields),
-          s3DestinationConfig: S3DestinationConfig,
-          fileFormat: S.optional(FileFormat),
+          accountIds: S.optional(__S(4)),
+          filters: S.optional(__S(6)),
+          fieldsToExport: S.optional(__S(1)),
+          s3DestinationConfig: __S(14),
+          fileFormat: S.optional(S.String),
           includeMemberAccounts: S.optional(S.Boolean),
-          recommendationPreferences: S.optional(RecommendationPreferences),
+          recommendationPreferences: S.optional(__S(15)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ExportEC2InstanceRecommendationsRequest",
@@ -4079,22 +3392,22 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(ECSServiceRecommendationFilterName),
-          values: S.optional(FilterValues),
+          name: S.optional(S.String),
+          values: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "ECSServiceRecommendationFilter",
       });
     case 5:
-      return S.Array(ECSServiceRecommendationFilter);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(AccountIds),
-          filters: S.optional(ECSServiceRecommendationFilters),
-          fieldsToExport: S.optional(ExportableECSServiceFields),
-          s3DestinationConfig: S3DestinationConfig,
-          fileFormat: S.optional(FileFormat),
+          accountIds: S.optional(__S(4)),
+          filters: S.optional(__S(21)),
+          fieldsToExport: S.optional(__S(1)),
+          s3DestinationConfig: __S(14),
+          fileFormat: S.optional(S.String),
           includeMemberAccounts: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4103,11 +3416,11 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(AccountIds),
-          filters: S.optional(IdleRecommendationFilters),
-          fieldsToExport: S.optional(ExportableIdleFields),
-          s3DestinationConfig: S3DestinationConfig,
-          fileFormat: S.optional(FileFormat),
+          accountIds: S.optional(__S(4)),
+          filters: S.optional(__S(6)),
+          fieldsToExport: S.optional(__S(1)),
+          s3DestinationConfig: __S(14),
+          fileFormat: S.optional(S.String),
           includeMemberAccounts: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4120,11 +3433,11 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(AccountIds),
-          filters: S.optional(LambdaFunctionRecommendationFilters),
-          fieldsToExport: S.optional(ExportableLambdaFunctionFields),
-          s3DestinationConfig: S3DestinationConfig,
-          fileFormat: S.optional(FileFormat),
+          accountIds: S.optional(__S(4)),
+          filters: S.optional(__S(21)),
+          fieldsToExport: S.optional(__S(1)),
+          s3DestinationConfig: __S(14),
+          fileFormat: S.optional(S.String),
           includeMemberAccounts: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4133,22 +3446,22 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(LicenseRecommendationFilterName),
-          values: S.optional(FilterValues),
+          name: S.optional(S.String),
+          values: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "LicenseRecommendationFilter",
       });
     case 2:
-      return S.Array(LicenseRecommendationFilter);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(AccountIds),
-          filters: S.optional(LicenseRecommendationFilters),
-          fieldsToExport: S.optional(ExportableLicenseFields),
-          s3DestinationConfig: S3DestinationConfig,
-          fileFormat: S.optional(FileFormat),
+          accountIds: S.optional(__S(4)),
+          filters: S.optional(__S(26)),
+          fieldsToExport: S.optional(__S(1)),
+          s3DestinationConfig: __S(14),
+          fileFormat: S.optional(S.String),
           includeMemberAccounts: S.optional(S.Boolean),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -4157,13 +3470,13 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(AccountIds),
-          filters: S.optional(RDSDBRecommendationFilters),
-          fieldsToExport: S.optional(ExportableRDSDBFields),
-          s3DestinationConfig: S3DestinationConfig,
-          fileFormat: S.optional(FileFormat),
+          accountIds: S.optional(__S(4)),
+          filters: S.optional(__S(26)),
+          fieldsToExport: S.optional(__S(1)),
+          s3DestinationConfig: __S(14),
+          fileFormat: S.optional(S.String),
           includeMemberAccounts: S.optional(S.Boolean),
-          recommendationPreferences: S.optional(RecommendationPreferences),
+          recommendationPreferences: S.optional(__S(15)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "ExportRDSDatabaseRecommendationsRequest",
@@ -4171,12 +3484,12 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(AccountIds),
-          autoScalingGroupArns: S.optional(AutoScalingGroupArns),
+          accountIds: S.optional(__S(4)),
+          autoScalingGroupArns: S.optional(__S(4)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(Filters),
-          recommendationPreferences: S.optional(RecommendationPreferences),
+          filters: S.optional(__S(6)),
+          recommendationPreferences: S.optional(__S(15)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetAutoScalingGroupRecommendationsRequest",
@@ -4184,13 +3497,13 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(MetricName),
-          statistic: S.optional(MetricStatistic),
+          name: S.optional(S.String),
+          statistic: S.optional(S.String),
           value: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UtilizationMetric" });
     case 7:
-      return S.Array(UtilizationMetric);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
@@ -4202,10 +3515,10 @@ function __c4(j: number): any {
           minSize: S.optional(S.Number),
           maxSize: S.optional(S.Number),
           instanceType: S.optional(S.String),
-          allocationStrategy: S.optional(AllocationStrategy),
+          allocationStrategy: S.optional(S.String),
           estimatedInstanceHourReductionPercentage: S.optional(S.Number),
-          type: S.optional(AsgType),
-          mixedInstanceTypes: S.optional(MixedInstanceTypes),
+          type: S.optional(S.String),
+          mixedInstanceTypes: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "AutoScalingGroupConfiguration",
@@ -4215,25 +3528,25 @@ function __c4(j: number): any {
         S.Struct({ gpuCount: S.optional(S.Number), gpuMemorySizeInMiB: S.optional(S.Number) }),
       ).annotate({ identifier: "Gpu" });
     case 2:
-      return S.Array(Gpu);
+      return S.Array(__S(33));
     case 3:
-      return S.suspend(() => S.Struct({ gpus: S.optional(Gpus) })).annotate({
+      return S.suspend(() => S.Struct({ gpus: S.optional(__S(34)) })).annotate({
         identifier: "GpuInfo",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ currency: S.optional(Currency), value: S.optional(S.Number) }),
+        S.Struct({ currency: S.optional(S.String), value: S.optional(S.Number) }),
       ).annotate({ identifier: "EstimatedMonthlySavings" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           savingsOpportunityPercentage: S.optional(S.Number),
-          estimatedMonthlySavings: S.optional(EstimatedMonthlySavings),
+          estimatedMonthlySavings: S.optional(__S(36)),
         }),
       ).annotate({ identifier: "SavingsOpportunity" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ currency: S.optional(Currency), value: S.optional(S.Number) }),
+        S.Struct({ currency: S.optional(S.String), value: S.optional(S.Number) }),
       ).annotate({
         identifier: "AutoScalingGroupEstimatedMonthlySavings",
       });
@@ -4241,7 +3554,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           savingsOpportunityPercentage: S.optional(S.Number),
-          estimatedMonthlySavings: S.optional(AutoScalingGroupEstimatedMonthlySavings),
+          estimatedMonthlySavings: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "AutoScalingGroupSavingsOpportunityAfterDiscounts",
@@ -4253,31 +3566,29 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(AutoScalingGroupConfiguration),
-          instanceGpuInfo: S.optional(GpuInfo),
-          projectedUtilizationMetrics: S.optional(ProjectedUtilizationMetrics),
+          configuration: S.optional(__S(32)),
+          instanceGpuInfo: S.optional(__S(35)),
+          projectedUtilizationMetrics: S.optional(__S(31)),
           performanceRisk: S.optional(S.Number),
           rank: S.optional(S.Number),
-          savingsOpportunity: S.optional(SavingsOpportunity),
-          savingsOpportunityAfterDiscounts: S.optional(
-            AutoScalingGroupSavingsOpportunityAfterDiscounts,
-          ),
-          migrationEffort: S.optional(MigrationEffort),
+          savingsOpportunity: S.optional(__S(37)),
+          savingsOpportunityAfterDiscounts: S.optional(__S(39)),
+          migrationEffort: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AutoScalingGroupRecommendationOption",
       });
     case 1:
-      return S.Array(AutoScalingGroupRecommendationOption);
+      return S.Array(__S(40));
     case 2:
-      return S.suspend(() => S.Struct({ source: S.optional(ExternalMetricsSource) })).annotate({
+      return S.suspend(() => S.Struct({ source: S.optional(S.String) })).annotate({
         identifier: "ExternalMetricsPreference",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          threshold: S.optional(CustomizableMetricThreshold),
-          headroom: S.optional(CustomizableMetricHeadroom),
+          threshold: S.optional(S.String),
+          headroom: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CustomizableMetricParameters",
@@ -4285,25 +3596,25 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metricName: S.optional(CustomizableMetricName),
-          metricParameters: S.optional(CustomizableMetricParameters),
+          metricName: S.optional(S.String),
+          metricParameters: S.optional(__S(43)),
         }),
       ).annotate({ identifier: "UtilizationPreference" });
     case 5:
-      return S.Array(UtilizationPreference);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(PreferredResourceName),
-          includeList: S.optional(PreferredResourceValues),
-          effectiveIncludeList: S.optional(PreferredResourceValues),
-          excludeList: S.optional(PreferredResourceValues),
+          name: S.optional(S.String),
+          includeList: S.optional(__S(4)),
+          effectiveIncludeList: S.optional(__S(4)),
+          excludeList: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "EffectivePreferredResource",
       });
     case 7:
-      return S.Array(EffectivePreferredResource);
+      return S.Array(__S(46));
   }
 }
 function __c6(j: number): any {
@@ -4311,14 +3622,14 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          cpuVendorArchitectures: S.optional(CpuVendorArchitectures),
-          enhancedInfrastructureMetrics: S.optional(EnhancedInfrastructureMetrics),
-          inferredWorkloadTypes: S.optional(InferredWorkloadTypesPreference),
-          externalMetricsPreference: S.optional(ExternalMetricsPreference),
-          lookBackPeriod: S.optional(LookBackPeriodPreference),
-          utilizationPreferences: S.optional(UtilizationPreferences),
-          preferredResources: S.optional(EffectivePreferredResources),
-          savingsEstimationMode: S.optional(InstanceSavingsEstimationMode),
+          cpuVendorArchitectures: S.optional(__S(1)),
+          enhancedInfrastructureMetrics: S.optional(S.String),
+          inferredWorkloadTypes: S.optional(S.String),
+          externalMetricsPreference: S.optional(__S(42)),
+          lookBackPeriod: S.optional(S.String),
+          utilizationPreferences: S.optional(__S(45)),
+          preferredResources: S.optional(__S(47)),
+          savingsEstimationMode: S.optional(__S(42)),
         }),
       ).annotate({
         identifier: "EffectiveRecommendationPreferences",
@@ -4329,22 +3640,22 @@ function __c6(j: number): any {
           accountId: S.optional(S.String),
           autoScalingGroupArn: S.optional(S.String),
           autoScalingGroupName: S.optional(S.String),
-          finding: S.optional(Finding),
-          utilizationMetrics: S.optional(UtilizationMetrics),
+          finding: S.optional(S.String),
+          utilizationMetrics: S.optional(__S(31)),
           lookBackPeriodInDays: S.optional(S.Number),
-          currentConfiguration: S.optional(AutoScalingGroupConfiguration),
-          currentInstanceGpuInfo: S.optional(GpuInfo),
-          recommendationOptions: S.optional(AutoScalingGroupRecommendationOptions),
+          currentConfiguration: S.optional(__S(32)),
+          currentInstanceGpuInfo: S.optional(__S(35)),
+          recommendationOptions: S.optional(__S(41)),
           lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          currentPerformanceRisk: S.optional(CurrentPerformanceRisk),
-          effectiveRecommendationPreferences: S.optional(EffectiveRecommendationPreferences),
-          inferredWorkloadTypes: S.optional(InferredWorkloadTypes),
+          currentPerformanceRisk: S.optional(S.String),
+          effectiveRecommendationPreferences: S.optional(__S(48)),
+          inferredWorkloadTypes: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "AutoScalingGroupRecommendation",
       });
     case 2:
-      return S.Array(AutoScalingGroupRecommendation);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4354,13 +3665,13 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "GetRecommendationError" });
     case 4:
-      return S.Array(GetRecommendationError);
+      return S.Array(__S(51));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          autoScalingGroupRecommendations: S.optional(AutoScalingGroupRecommendations),
-          errors: S.optional(GetRecommendationErrors),
+          autoScalingGroupRecommendations: S.optional(__S(50)),
+          errors: S.optional(__S(52)),
         }),
       ).annotate({
         identifier: "GetAutoScalingGroupRecommendationsResponse",
@@ -4368,11 +3679,11 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          volumeArns: S.optional(VolumeArns),
+          volumeArns: S.optional(__S(4)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(EBSFilters),
-          accountIds: S.optional(AccountIds),
+          filters: S.optional(__S(6)),
+          accountIds: S.optional(__S(4)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetEBSVolumeRecommendationsRequest",
@@ -4396,26 +3707,26 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          configuration: S.optional(VolumeConfiguration),
+          configuration: S.optional(__S(55)),
           performanceRisk: S.optional(S.Number),
           rank: S.optional(S.Number),
-          savingsOpportunity: S.optional(SavingsOpportunity),
-          savingsOpportunityAfterDiscounts: S.optional(EBSSavingsOpportunityAfterDiscounts),
+          savingsOpportunity: S.optional(__S(37)),
+          savingsOpportunityAfterDiscounts: S.optional(__S(39)),
         }),
       ).annotate({
         identifier: "VolumeRecommendationOption",
       });
     case 1:
-      return S.Array(VolumeRecommendationOption);
+      return S.Array(__S(56));
     case 2:
-      return S.suspend(() =>
-        S.Struct({ source: S.optional(EBSSavingsEstimationModeSource) }),
-      ).annotate({ identifier: "EBSSavingsEstimationMode" });
+      return S.suspend(() => S.Struct({ source: S.optional(S.String) })).annotate({
+        identifier: "EBSSavingsEstimationMode",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          savingsEstimationMode: S.optional(EBSSavingsEstimationMode),
-          lookBackPeriod: S.optional(LookBackPeriodPreference),
+          savingsEstimationMode: S.optional(__S(58)),
+          lookBackPeriod: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EBSEffectiveRecommendationPreferences",
@@ -4425,25 +3736,25 @@ function __c7(j: number): any {
         S.Struct({ key: S.optional(S.String), value: S.optional(S.String) }),
       ).annotate({ identifier: "Tag" });
     case 5:
-      return S.Array(Tag);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
         S.Struct({
           volumeArn: S.optional(S.String),
           accountId: S.optional(S.String),
-          currentConfiguration: S.optional(VolumeConfiguration),
-          finding: S.optional(EBSFinding),
-          utilizationMetrics: S.optional(EBSUtilizationMetrics),
+          currentConfiguration: S.optional(__S(55)),
+          finding: S.optional(S.String),
+          utilizationMetrics: S.optional(__S(31)),
           lookBackPeriodInDays: S.optional(S.Number),
-          volumeRecommendationOptions: S.optional(VolumeRecommendationOptions),
+          volumeRecommendationOptions: S.optional(__S(57)),
           lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          currentPerformanceRisk: S.optional(CurrentPerformanceRisk),
-          effectiveRecommendationPreferences: S.optional(EBSEffectiveRecommendationPreferences),
-          tags: S.optional(Tags),
+          currentPerformanceRisk: S.optional(S.String),
+          effectiveRecommendationPreferences: S.optional(__S(59)),
+          tags: S.optional(__S(61)),
         }),
       ).annotate({ identifier: "VolumeRecommendation" });
     case 7:
-      return S.Array(VolumeRecommendation);
+      return S.Array(__S(62));
   }
 }
 function __c8(j: number): any {
@@ -4452,8 +3763,8 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          volumeRecommendations: S.optional(VolumeRecommendations),
-          errors: S.optional(GetRecommendationErrors),
+          volumeRecommendations: S.optional(__S(63)),
+          errors: S.optional(__S(52)),
         }),
       ).annotate({
         identifier: "GetEBSVolumeRecommendationsResponse",
@@ -4461,12 +3772,12 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          instanceArns: S.optional(InstanceArns),
+          instanceArns: S.optional(__S(4)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(Filters),
-          accountIds: S.optional(AccountIds),
-          recommendationPreferences: S.optional(RecommendationPreferences),
+          filters: S.optional(__S(6)),
+          accountIds: S.optional(__S(4)),
+          recommendationPreferences: S.optional(__S(15)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetEC2InstanceRecommendationsRequest",
@@ -4475,33 +3786,33 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           instanceType: S.optional(S.String),
-          instanceGpuInfo: S.optional(GpuInfo),
-          projectedUtilizationMetrics: S.optional(ProjectedUtilizationMetrics),
-          platformDifferences: S.optional(PlatformDifferences),
+          instanceGpuInfo: S.optional(__S(35)),
+          projectedUtilizationMetrics: S.optional(__S(31)),
+          platformDifferences: S.optional(__S(1)),
           performanceRisk: S.optional(S.Number),
           rank: S.optional(S.Number),
-          savingsOpportunity: S.optional(SavingsOpportunity),
-          savingsOpportunityAfterDiscounts: S.optional(InstanceSavingsOpportunityAfterDiscounts),
-          migrationEffort: S.optional(MigrationEffort),
+          savingsOpportunity: S.optional(__S(37)),
+          savingsOpportunityAfterDiscounts: S.optional(__S(39)),
+          migrationEffort: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InstanceRecommendationOption",
       });
     case 3:
-      return S.Array(InstanceRecommendationOption);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
           recommendationSourceArn: S.optional(S.String),
-          recommendationSourceType: S.optional(RecommendationSourceType),
+          recommendationSourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecommendationSource" });
     case 5:
-      return S.Array(RecommendationSource);
+      return S.Array(__S(68));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          statusCode: S.optional(ExternalMetricStatusCode),
+          statusCode: S.optional(S.String),
           statusReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalMetricStatus" });
@@ -4512,21 +3823,21 @@ function __c8(j: number): any {
           accountId: S.optional(S.String),
           instanceName: S.optional(S.String),
           currentInstanceType: S.optional(S.String),
-          finding: S.optional(Finding),
-          findingReasonCodes: S.optional(InstanceRecommendationFindingReasonCodes),
-          utilizationMetrics: S.optional(UtilizationMetrics),
+          finding: S.optional(S.String),
+          findingReasonCodes: S.optional(__S(13)),
+          utilizationMetrics: S.optional(__S(31)),
           lookBackPeriodInDays: S.optional(S.Number),
-          recommendationOptions: S.optional(RecommendationOptions),
-          recommendationSources: S.optional(RecommendationSources),
+          recommendationOptions: S.optional(__S(67)),
+          recommendationSources: S.optional(__S(69)),
           lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          currentPerformanceRisk: S.optional(CurrentPerformanceRisk),
-          effectiveRecommendationPreferences: S.optional(EffectiveRecommendationPreferences),
-          inferredWorkloadTypes: S.optional(InferredWorkloadTypes),
-          instanceState: S.optional(InstanceState),
-          tags: S.optional(Tags),
-          externalMetricStatus: S.optional(ExternalMetricStatus),
-          currentInstanceGpuInfo: S.optional(GpuInfo),
-          idle: S.optional(InstanceIdle),
+          currentPerformanceRisk: S.optional(S.String),
+          effectiveRecommendationPreferences: S.optional(__S(48)),
+          inferredWorkloadTypes: S.optional(__S(1)),
+          instanceState: S.optional(S.String),
+          tags: S.optional(__S(61)),
+          externalMetricStatus: S.optional(__S(70)),
+          currentInstanceGpuInfo: S.optional(__S(35)),
+          idle: S.optional(S.String),
         }),
       ).annotate({ identifier: "InstanceRecommendation" });
   }
@@ -4534,13 +3845,13 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(InstanceRecommendation);
+      return S.Array(__S(71));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          instanceRecommendations: S.optional(InstanceRecommendations),
-          errors: S.optional(GetRecommendationErrors),
+          instanceRecommendations: S.optional(__S(72)),
+          errors: S.optional(__S(52)),
         }),
       ).annotate({
         identifier: "GetEC2InstanceRecommendationsResponse",
@@ -4549,11 +3860,11 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           instanceArn: S.String,
-          stat: MetricStatistic,
+          stat: S.String,
           period: S.Number,
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          recommendationPreferences: S.optional(RecommendationPreferences),
+          recommendationPreferences: S.optional(__S(15)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetEC2RecommendationProjectedMetricsRequest",
@@ -4565,19 +3876,19 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(MetricName),
-          timestamps: S.optional(Timestamps),
-          values: S.optional(MetricValues),
+          name: S.optional(S.String),
+          timestamps: S.optional(__S(75)),
+          values: S.optional(__S(76)),
         }),
       ).annotate({ identifier: "ProjectedMetric" });
     case 6:
-      return S.Array(ProjectedMetric);
+      return S.Array(__S(77));
     case 7:
       return S.suspend(() =>
         S.Struct({
           recommendedInstanceType: S.optional(S.String),
           rank: S.optional(S.Number),
-          projectedMetrics: S.optional(ProjectedMetrics),
+          projectedMetrics: S.optional(__S(78)),
         }),
       ).annotate({
         identifier: "RecommendedOptionProjectedMetric",
@@ -4587,11 +3898,11 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RecommendedOptionProjectedMetric);
+      return S.Array(__S(79));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          recommendedOptionProjectedMetrics: S.optional(RecommendedOptionProjectedMetrics),
+          recommendedOptionProjectedMetrics: S.optional(__S(80)),
         }),
       ).annotate({
         identifier: "GetEC2RecommendationProjectedMetricsResponse",
@@ -4600,7 +3911,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceArn: S.String,
-          stat: MetricStatistic,
+          stat: S.String,
           period: S.Number,
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
@@ -4611,34 +3922,32 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(ECSServiceMetricName),
-          timestamps: S.optional(Timestamps),
-          upperBoundValues: S.optional(MetricValues),
-          lowerBoundValues: S.optional(MetricValues),
+          name: S.optional(S.String),
+          timestamps: S.optional(__S(75)),
+          upperBoundValues: S.optional(__S(76)),
+          lowerBoundValues: S.optional(__S(76)),
         }),
       ).annotate({
         identifier: "ECSServiceProjectedMetric",
       });
     case 4:
-      return S.Array(ECSServiceProjectedMetric);
+      return S.Array(__S(83));
     case 5:
       return S.suspend(() =>
         S.Struct({
           recommendedCpuUnits: S.optional(S.Number),
           recommendedMemorySize: S.optional(S.Number),
-          projectedMetrics: S.optional(ECSServiceProjectedMetrics),
+          projectedMetrics: S.optional(__S(84)),
         }),
       ).annotate({
         identifier: "ECSServiceRecommendedOptionProjectedMetric",
       });
     case 6:
-      return S.Array(ECSServiceRecommendedOptionProjectedMetric);
+      return S.Array(__S(85));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          recommendedOptionProjectedMetrics: S.optional(
-            ECSServiceRecommendedOptionProjectedMetrics,
-          ),
+          recommendedOptionProjectedMetrics: S.optional(__S(86)),
         }),
       ).annotate({
         identifier: "GetECSServiceRecommendationProjectedMetricsResponse",
@@ -4650,11 +3959,11 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          serviceArns: S.optional(ServiceArns),
+          serviceArns: S.optional(__S(4)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(ECSServiceRecommendationFilters),
-          accountIds: S.optional(AccountIds),
+          filters: S.optional(__S(21)),
+          accountIds: S.optional(__S(4)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetECSServiceRecommendationsRequest",
@@ -4667,39 +3976,39 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           containerName: S.optional(S.String),
-          memorySizeConfiguration: S.optional(MemorySizeConfiguration),
+          memorySizeConfiguration: S.optional(__S(89)),
           cpu: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ContainerConfiguration" });
     case 3:
-      return S.Array(ContainerConfiguration);
+      return S.Array(__S(90));
     case 4:
       return S.suspend(() =>
         S.Struct({
           memory: S.optional(S.Number),
           cpu: S.optional(S.Number),
-          containerConfigurations: S.optional(ContainerConfigurations),
-          autoScalingConfiguration: S.optional(AutoScalingConfiguration),
+          containerConfigurations: S.optional(__S(91)),
+          autoScalingConfiguration: S.optional(S.String),
           taskDefinitionArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceConfiguration" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(ECSServiceMetricName),
-          statistic: S.optional(ECSServiceMetricStatistic),
+          name: S.optional(S.String),
+          statistic: S.optional(S.String),
           value: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "ECSServiceUtilizationMetric",
       });
     case 6:
-      return S.Array(ECSServiceUtilizationMetric);
+      return S.Array(__S(93));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(ECSServiceMetricName),
-          statistic: S.optional(ECSServiceMetricStatistic),
+          name: S.optional(S.String),
+          statistic: S.optional(S.String),
           lowerBoundValue: S.optional(S.Number),
           upperBoundValue: S.optional(S.Number),
         }),
@@ -4711,48 +4020,48 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ECSServiceProjectedUtilizationMetric);
+      return S.Array(__S(95));
     case 1:
       return S.suspend(() =>
         S.Struct({
           memory: S.optional(S.Number),
           cpu: S.optional(S.Number),
-          savingsOpportunity: S.optional(SavingsOpportunity),
-          savingsOpportunityAfterDiscounts: S.optional(ECSSavingsOpportunityAfterDiscounts),
-          projectedUtilizationMetrics: S.optional(ECSServiceProjectedUtilizationMetrics),
-          containerRecommendations: S.optional(ContainerRecommendations),
+          savingsOpportunity: S.optional(__S(37)),
+          savingsOpportunityAfterDiscounts: S.optional(__S(39)),
+          projectedUtilizationMetrics: S.optional(__S(96)),
+          containerRecommendations: S.optional(__S(91)),
         }),
       ).annotate({
         identifier: "ECSServiceRecommendationOption",
       });
     case 2:
-      return S.Array(ECSServiceRecommendationOption);
+      return S.Array(__S(97));
     case 3:
       return S.suspend(() =>
         S.Struct({
           serviceArn: S.optional(S.String),
           accountId: S.optional(S.String),
-          currentServiceConfiguration: S.optional(ServiceConfiguration),
-          utilizationMetrics: S.optional(ECSServiceUtilizationMetrics),
+          currentServiceConfiguration: S.optional(__S(92)),
+          utilizationMetrics: S.optional(__S(94)),
           lookbackPeriodInDays: S.optional(S.Number),
-          launchType: S.optional(ECSServiceLaunchType),
+          launchType: S.optional(S.String),
           lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          finding: S.optional(ECSServiceRecommendationFinding),
-          findingReasonCodes: S.optional(ECSServiceRecommendationFindingReasonCodes),
-          serviceRecommendationOptions: S.optional(ECSServiceRecommendationOptions),
-          currentPerformanceRisk: S.optional(CurrentPerformanceRisk),
-          effectiveRecommendationPreferences: S.optional(ECSEffectiveRecommendationPreferences),
-          tags: S.optional(Tags),
+          finding: S.optional(S.String),
+          findingReasonCodes: S.optional(__S(13)),
+          serviceRecommendationOptions: S.optional(__S(98)),
+          currentPerformanceRisk: S.optional(S.String),
+          effectiveRecommendationPreferences: S.optional(__S(59)),
+          tags: S.optional(__S(61)),
         }),
       ).annotate({ identifier: "ECSServiceRecommendation" });
     case 4:
-      return S.Array(ECSServiceRecommendation);
+      return S.Array(__S(99));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          ecsServiceRecommendations: S.optional(ECSServiceRecommendations),
-          errors: S.optional(GetRecommendationErrors),
+          ecsServiceRecommendations: S.optional(__S(100)),
+          errors: S.optional(__S(52)),
         }),
       ).annotate({
         identifier: "GetECSServiceRecommendationsResponse",
@@ -4768,11 +4077,11 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          enhancedInfrastructureMetrics: S.optional(EnhancedInfrastructureMetrics),
-          externalMetricsPreference: S.optional(ExternalMetricsPreference),
-          lookBackPeriod: S.optional(LookBackPeriodPreference),
-          utilizationPreferences: S.optional(UtilizationPreferences),
-          preferredResources: S.optional(EffectivePreferredResources),
+          enhancedInfrastructureMetrics: S.optional(S.String),
+          externalMetricsPreference: S.optional(__S(42)),
+          lookBackPeriod: S.optional(S.String),
+          utilizationPreferences: S.optional(__S(45)),
+          preferredResources: S.optional(__S(47)),
         }),
       ).annotate({
         identifier: "GetEffectiveRecommendationPreferencesResponse",
@@ -4792,7 +4101,7 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(Status),
+          status: S.optional(S.String),
           statusReason: S.optional(S.String),
           memberAccountsEnrolled: S.optional(S.Boolean),
           lastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -4804,7 +4113,7 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          filters: S.optional(EnrollmentFilters),
+          filters: S.optional(__S(6)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4815,17 +4124,17 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
-          status: S.optional(Status),
+          status: S.optional(S.String),
           statusReason: S.optional(S.String),
           lastUpdatedTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "AccountEnrollmentStatus" });
     case 4:
-      return S.Array(AccountEnrollmentStatus);
+      return S.Array(__S(107));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          accountEnrollmentStatuses: S.optional(AccountEnrollmentStatuses),
+          accountEnrollmentStatuses: S.optional(__S(108)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -4833,17 +4142,17 @@ function __c13(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ dimension: S.optional(Dimension), order: S.optional(Order) }),
+        S.Struct({ dimension: S.optional(S.String), order: S.optional(S.String) }),
       ).annotate({ identifier: "OrderBy" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          resourceArns: S.optional(ResourceArns),
+          resourceArns: S.optional(__S(4)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(IdleRecommendationFilters),
-          accountIds: S.optional(AccountIds),
-          orderBy: S.optional(OrderBy),
+          filters: S.optional(__S(6)),
+          accountIds: S.optional(__S(4)),
+          orderBy: S.optional(__S(110)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetIdleRecommendationsRequest",
@@ -4856,52 +4165,52 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           savingsOpportunityPercentage: S.optional(S.Number),
-          estimatedMonthlySavings: S.optional(IdleEstimatedMonthlySavings),
+          estimatedMonthlySavings: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "IdleSavingsOpportunity" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ key: S.optional(S.String), values: S.optional(IdleDimensionValues) }),
+        S.Struct({ key: S.optional(S.String), values: S.optional(__S(4)) }),
       ).annotate({ identifier: "IdleDimension" });
     case 2:
-      return S.Array(IdleDimension);
+      return S.Array(__S(113));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(IdleMetricName),
-          statistic: S.optional(MetricStatistic),
+          name: S.optional(S.String),
+          statistic: S.optional(S.String),
           value: S.optional(S.Number),
-          dimensions: S.optional(IdleDimensions),
+          dimensions: S.optional(__S(114)),
         }),
       ).annotate({ identifier: "IdleUtilizationMetric" });
     case 4:
-      return S.Array(IdleUtilizationMetric);
+      return S.Array(__S(115));
     case 5:
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.optional(S.String),
           resourceId: S.optional(S.String),
-          resourceType: S.optional(IdleRecommendationResourceType),
+          resourceType: S.optional(S.String),
           accountId: S.optional(S.String),
-          finding: S.optional(IdleFinding),
+          finding: S.optional(S.String),
           findingDescription: S.optional(S.String),
-          savingsOpportunity: S.optional(IdleSavingsOpportunity),
-          savingsOpportunityAfterDiscounts: S.optional(IdleSavingsOpportunityAfterDiscounts),
-          utilizationMetrics: S.optional(IdleUtilizationMetrics),
+          savingsOpportunity: S.optional(__S(112)),
+          savingsOpportunityAfterDiscounts: S.optional(__S(39)),
+          utilizationMetrics: S.optional(__S(116)),
           lookBackPeriodInDays: S.optional(S.Number),
           lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(61)),
         }),
       ).annotate({ identifier: "IdleRecommendation" });
     case 6:
-      return S.Array(IdleRecommendation);
+      return S.Array(__S(117));
     case 7:
       return S.suspend(() =>
         S.Struct({
           identifier: S.optional(S.String),
           code: S.optional(S.String),
           message: S.optional(S.String),
-          resourceType: S.optional(IdleRecommendationResourceType),
+          resourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "IdleRecommendationError" });
   }
@@ -4909,13 +4218,13 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IdleRecommendationError);
+      return S.Array(__S(119));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          idleRecommendations: S.optional(IdleRecommendations),
-          errors: S.optional(IdleRecommendationErrors),
+          idleRecommendations: S.optional(__S(118)),
+          errors: S.optional(__S(120)),
         }),
       ).annotate({
         identifier: "GetIdleRecommendationsResponse",
@@ -4923,9 +4232,9 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          functionArns: S.optional(FunctionArns),
-          accountIds: S.optional(AccountIds),
-          filters: S.optional(LambdaFunctionRecommendationFilters),
+          functionArns: S.optional(__S(4)),
+          accountIds: S.optional(__S(4)),
+          filters: S.optional(__S(21)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -4933,25 +4242,23 @@ function __c15(j: number): any {
         identifier: "GetLambdaFunctionRecommendationsRequest",
       });
     case 3:
-      return S.Array(LambdaFunctionUtilizationMetric);
+      return S.Array(__S(93));
     case 4:
       return S.suspend(() =>
         S.Struct({
           rank: S.optional(S.Number),
           memorySize: S.optional(S.Number),
-          projectedUtilizationMetrics: S.optional(LambdaFunctionMemoryProjectedMetrics),
-          savingsOpportunity: S.optional(SavingsOpportunity),
-          savingsOpportunityAfterDiscounts: S.optional(LambdaSavingsOpportunityAfterDiscounts),
+          projectedUtilizationMetrics: S.optional(__S(123)),
+          savingsOpportunity: S.optional(__S(37)),
+          savingsOpportunityAfterDiscounts: S.optional(__S(39)),
         }),
       ).annotate({
         identifier: "LambdaFunctionMemoryRecommendationOption",
       });
     case 5:
-      return S.Array(LambdaFunctionMemoryRecommendationOption);
+      return S.Array(__S(124));
     case 6:
-      return S.suspend(() =>
-        S.Struct({ savingsEstimationMode: S.optional(LambdaSavingsEstimationMode) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ savingsEstimationMode: S.optional(__S(42)) })).annotate({
         identifier: "LambdaEffectiveRecommendationPreferences",
       });
     case 7:
@@ -4962,15 +4269,15 @@ function __c15(j: number): any {
           accountId: S.optional(S.String),
           currentMemorySize: S.optional(S.Number),
           numberOfInvocations: S.optional(S.Number),
-          utilizationMetrics: S.optional(LambdaFunctionUtilizationMetrics),
+          utilizationMetrics: S.optional(__S(123)),
           lookbackPeriodInDays: S.optional(S.Number),
           lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          finding: S.optional(LambdaFunctionRecommendationFinding),
-          findingReasonCodes: S.optional(LambdaFunctionRecommendationFindingReasonCodes),
-          memorySizeRecommendationOptions: S.optional(LambdaFunctionMemoryRecommendationOptions),
-          currentPerformanceRisk: S.optional(CurrentPerformanceRisk),
-          effectiveRecommendationPreferences: S.optional(LambdaEffectiveRecommendationPreferences),
-          tags: S.optional(Tags),
+          finding: S.optional(S.String),
+          findingReasonCodes: S.optional(__S(13)),
+          memorySizeRecommendationOptions: S.optional(__S(125)),
+          currentPerformanceRisk: S.optional(S.String),
+          effectiveRecommendationPreferences: S.optional(__S(126)),
+          tags: S.optional(__S(61)),
         }),
       ).annotate({
         identifier: "LambdaFunctionRecommendation",
@@ -4980,12 +4287,12 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(LambdaFunctionRecommendation);
+      return S.Array(__S(127));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          lambdaFunctionRecommendations: S.optional(LambdaFunctionRecommendations),
+          lambdaFunctionRecommendations: S.optional(__S(128)),
         }),
       ).annotate({
         identifier: "GetLambdaFunctionRecommendationsResponse",
@@ -4993,32 +4300,32 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resourceArns: S.optional(ResourceArns),
+          resourceArns: S.optional(__S(4)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(LicenseRecommendationFilters),
-          accountIds: S.optional(AccountIds),
+          filters: S.optional(__S(26)),
+          accountIds: S.optional(__S(4)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetLicenseRecommendationsRequest",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ provider: S.optional(MetricSourceProvider), providerArn: S.optional(S.String) }),
+        S.Struct({ provider: S.optional(S.String), providerArn: S.optional(S.String) }),
       ).annotate({ identifier: "MetricSource" });
     case 4:
-      return S.Array(MetricSource);
+      return S.Array(__S(131));
     case 5:
       return S.suspend(() =>
         S.Struct({
           numberOfCores: S.optional(S.Number),
           instanceType: S.optional(S.String),
           operatingSystem: S.optional(S.String),
-          licenseEdition: S.optional(LicenseEdition),
-          licenseName: S.optional(LicenseName),
-          licenseModel: S.optional(LicenseModel),
+          licenseEdition: S.optional(S.String),
+          licenseName: S.optional(S.String),
+          licenseModel: S.optional(S.String),
           licenseVersion: S.optional(S.String),
-          metricsSource: S.optional(MetricsSource),
+          metricsSource: S.optional(__S(132)),
         }),
       ).annotate({ identifier: "LicenseConfiguration" });
     case 6:
@@ -5026,15 +4333,15 @@ function __c16(j: number): any {
         S.Struct({
           rank: S.optional(S.Number),
           operatingSystem: S.optional(S.String),
-          licenseEdition: S.optional(LicenseEdition),
-          licenseModel: S.optional(LicenseModel),
-          savingsOpportunity: S.optional(SavingsOpportunity),
+          licenseEdition: S.optional(S.String),
+          licenseModel: S.optional(S.String),
+          savingsOpportunity: S.optional(__S(37)),
         }),
       ).annotate({
         identifier: "LicenseRecommendationOption",
       });
     case 7:
-      return S.Array(LicenseRecommendationOption);
+      return S.Array(__S(134));
   }
 }
 function __c17(j: number): any {
@@ -5044,23 +4351,23 @@ function __c17(j: number): any {
         S.Struct({
           resourceArn: S.optional(S.String),
           accountId: S.optional(S.String),
-          currentLicenseConfiguration: S.optional(LicenseConfiguration),
+          currentLicenseConfiguration: S.optional(__S(133)),
           lookbackPeriodInDays: S.optional(S.Number),
           lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          finding: S.optional(LicenseFinding),
-          findingReasonCodes: S.optional(LicenseFindingReasonCodes),
-          licenseRecommendationOptions: S.optional(LicenseRecommendationOptions),
-          tags: S.optional(Tags),
+          finding: S.optional(S.String),
+          findingReasonCodes: S.optional(__S(1)),
+          licenseRecommendationOptions: S.optional(__S(135)),
+          tags: S.optional(__S(61)),
         }),
       ).annotate({ identifier: "LicenseRecommendation" });
     case 1:
-      return S.Array(LicenseRecommendation);
+      return S.Array(__S(136));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          licenseRecommendations: S.optional(LicenseRecommendations),
-          errors: S.optional(GetRecommendationErrors),
+          licenseRecommendations: S.optional(__S(137)),
+          errors: S.optional(__S(52)),
         }),
       ).annotate({
         identifier: "GetLicenseRecommendationsResponse",
@@ -5069,11 +4376,11 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String,
-          stat: MetricStatistic,
+          stat: S.String,
           period: S.Number,
           startTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           endTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          recommendationPreferences: S.optional(RecommendationPreferences),
+          recommendationPreferences: S.optional(__S(15)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetRDSDatabaseRecommendationProjectedMetricsRequest",
@@ -5081,27 +4388,27 @@ function __c17(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(RDSDBMetricName),
-          timestamps: S.optional(Timestamps),
-          values: S.optional(MetricValues),
+          name: S.optional(S.String),
+          timestamps: S.optional(__S(75)),
+          values: S.optional(__S(76)),
         }),
       ).annotate({
         identifier: "RDSDatabaseProjectedMetric",
       });
     case 5:
-      return S.Array(RDSDatabaseProjectedMetric);
+      return S.Array(__S(140));
     case 6:
       return S.suspend(() =>
         S.Struct({
           recommendedDBInstanceClass: S.optional(S.String),
           rank: S.optional(S.Number),
-          projectedMetrics: S.optional(RDSDatabaseProjectedMetrics),
+          projectedMetrics: S.optional(__S(141)),
         }),
       ).annotate({
         identifier: "RDSDatabaseRecommendedOptionProjectedMetric",
       });
     case 7:
-      return S.Array(RDSDatabaseRecommendedOptionProjectedMetric);
+      return S.Array(__S(142));
   }
 }
 function __c18(j: number): any {
@@ -5109,9 +4416,7 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          recommendedOptionProjectedMetrics: S.optional(
-            RDSDatabaseRecommendedOptionProjectedMetrics,
-          ),
+          recommendedOptionProjectedMetrics: S.optional(__S(143)),
         }),
       ).annotate({
         identifier: "GetRDSDatabaseRecommendationProjectedMetricsResponse",
@@ -5119,12 +4424,12 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          resourceArns: S.optional(ResourceArns),
+          resourceArns: S.optional(__S(4)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(RDSDBRecommendationFilters),
-          accountIds: S.optional(AccountIds),
-          recommendationPreferences: S.optional(RecommendationPreferences),
+          filters: S.optional(__S(26)),
+          accountIds: S.optional(__S(4)),
+          recommendationPreferences: S.optional(__S(15)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "GetRDSDatabaseRecommendationsRequest",
@@ -5143,40 +4448,38 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dbInstanceClass: S.optional(S.String),
-          projectedUtilizationMetrics: S.optional(RDSDBProjectedUtilizationMetrics),
+          projectedUtilizationMetrics: S.optional(__S(31)),
           performanceRisk: S.optional(S.Number),
           rank: S.optional(S.Number),
-          savingsOpportunity: S.optional(SavingsOpportunity),
-          savingsOpportunityAfterDiscounts: S.optional(RDSInstanceSavingsOpportunityAfterDiscounts),
+          savingsOpportunity: S.optional(__S(37)),
+          savingsOpportunityAfterDiscounts: S.optional(__S(39)),
         }),
       ).annotate({
         identifier: "RDSDBInstanceRecommendationOption",
       });
     case 4:
-      return S.Array(RDSDBInstanceRecommendationOption);
+      return S.Array(__S(147));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          storageConfiguration: S.optional(DBStorageConfiguration),
+          storageConfiguration: S.optional(__S(146)),
           rank: S.optional(S.Number),
-          savingsOpportunity: S.optional(SavingsOpportunity),
-          savingsOpportunityAfterDiscounts: S.optional(RDSStorageSavingsOpportunityAfterDiscounts),
-          estimatedMonthlyVolumeIOPsCostVariation: S.optional(
-            RDSEstimatedMonthlyVolumeIOPsCostVariation,
-          ),
+          savingsOpportunity: S.optional(__S(37)),
+          savingsOpportunityAfterDiscounts: S.optional(__S(39)),
+          estimatedMonthlyVolumeIOPsCostVariation: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RDSDBStorageRecommendationOption",
       });
     case 6:
-      return S.Array(RDSDBStorageRecommendationOption);
+      return S.Array(__S(149));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cpuVendorArchitectures: S.optional(CpuVendorArchitectures),
-          enhancedInfrastructureMetrics: S.optional(EnhancedInfrastructureMetrics),
-          lookBackPeriod: S.optional(LookBackPeriodPreference),
-          savingsEstimationMode: S.optional(RDSSavingsEstimationMode),
+          cpuVendorArchitectures: S.optional(__S(1)),
+          enhancedInfrastructureMetrics: S.optional(S.String),
+          lookBackPeriod: S.optional(S.String),
+          savingsEstimationMode: S.optional(__S(58)),
         }),
       ).annotate({
         identifier: "RDSEffectiveRecommendationPreferences",
@@ -5194,34 +4497,32 @@ function __c19(j: number): any {
           engineVersion: S.optional(S.String),
           promotionTier: S.optional(S.Number),
           currentDBInstanceClass: S.optional(S.String),
-          currentStorageConfiguration: S.optional(DBStorageConfiguration),
+          currentStorageConfiguration: S.optional(__S(146)),
           dbClusterIdentifier: S.optional(S.String),
-          idle: S.optional(Idle),
-          instanceFinding: S.optional(RDSInstanceFinding),
-          storageFinding: S.optional(RDSStorageFinding),
-          instanceFindingReasonCodes: S.optional(RDSInstanceFindingReasonCodes),
-          currentInstancePerformanceRisk: S.optional(RDSCurrentInstancePerformanceRisk),
-          currentStorageEstimatedMonthlyVolumeIOPsCostVariation: S.optional(
-            RDSEstimatedMonthlyVolumeIOPsCostVariation,
-          ),
-          storageFindingReasonCodes: S.optional(RDSStorageFindingReasonCodes),
-          instanceRecommendationOptions: S.optional(RDSDBInstanceRecommendationOptions),
-          storageRecommendationOptions: S.optional(RDSDBStorageRecommendationOptions),
-          utilizationMetrics: S.optional(RDSDBUtilizationMetrics),
-          effectiveRecommendationPreferences: S.optional(RDSEffectiveRecommendationPreferences),
+          idle: S.optional(S.String),
+          instanceFinding: S.optional(S.String),
+          storageFinding: S.optional(S.String),
+          instanceFindingReasonCodes: S.optional(__S(1)),
+          currentInstancePerformanceRisk: S.optional(S.String),
+          currentStorageEstimatedMonthlyVolumeIOPsCostVariation: S.optional(S.String),
+          storageFindingReasonCodes: S.optional(__S(1)),
+          instanceRecommendationOptions: S.optional(__S(148)),
+          storageRecommendationOptions: S.optional(__S(150)),
+          utilizationMetrics: S.optional(__S(31)),
+          effectiveRecommendationPreferences: S.optional(__S(151)),
           lookbackPeriodInDays: S.optional(S.Number),
           lastRefreshTimestamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(61)),
         }),
       ).annotate({ identifier: "RDSDBRecommendation" });
     case 1:
-      return S.Array(RDSDBRecommendation);
+      return S.Array(__S(152));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          rdsDBRecommendations: S.optional(RDSDBRecommendations),
-          errors: S.optional(GetRecommendationErrors),
+          rdsDBRecommendations: S.optional(__S(153)),
+          errors: S.optional(__S(52)),
         }),
       ).annotate({
         identifier: "GetRDSDatabaseRecommendationsResponse",
@@ -5229,8 +4530,8 @@ function __c19(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resourceType: ResourceType,
-          scope: S.optional(Scope),
+          resourceType: S.String,
+          scope: S.optional(__S(0)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5240,26 +4541,26 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          scope: S.optional(Scope),
-          resourceType: S.optional(ResourceType),
-          enhancedInfrastructureMetrics: S.optional(EnhancedInfrastructureMetrics),
-          inferredWorkloadTypes: S.optional(InferredWorkloadTypesPreference),
-          externalMetricsPreference: S.optional(ExternalMetricsPreference),
-          lookBackPeriod: S.optional(LookBackPeriodPreference),
-          utilizationPreferences: S.optional(UtilizationPreferences),
-          preferredResources: S.optional(EffectivePreferredResources),
-          savingsEstimationMode: S.optional(SavingsEstimationMode),
+          scope: S.optional(__S(0)),
+          resourceType: S.optional(S.String),
+          enhancedInfrastructureMetrics: S.optional(S.String),
+          inferredWorkloadTypes: S.optional(S.String),
+          externalMetricsPreference: S.optional(__S(42)),
+          lookBackPeriod: S.optional(S.String),
+          utilizationPreferences: S.optional(__S(45)),
+          preferredResources: S.optional(__S(47)),
+          savingsEstimationMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RecommendationPreferencesDetail",
       });
     case 5:
-      return S.Array(RecommendationPreferencesDetail);
+      return S.Array(__S(156));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          recommendationPreferencesDetails: S.optional(RecommendationPreferencesDetails),
+          recommendationPreferencesDetails: S.optional(__S(157)),
         }),
       ).annotate({
         identifier: "GetRecommendationPreferencesResponse",
@@ -5267,7 +4568,7 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          accountIds: S.optional(AccountIds),
+          accountIds: S.optional(__S(4)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5280,20 +4581,20 @@ function __c20(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ name: S.optional(FindingReasonCode), value: S.optional(S.Number) }),
+        S.Struct({ name: S.optional(S.String), value: S.optional(S.Number) }),
       ).annotate({ identifier: "ReasonCodeSummary" });
     case 1:
-      return S.Array(ReasonCodeSummary);
+      return S.Array(__S(160));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(Finding),
+          name: S.optional(S.String),
           value: S.optional(S.Number),
-          reasonCodeSummaries: S.optional(ReasonCodeSummaries),
+          reasonCodeSummaries: S.optional(__S(161)),
         }),
       ).annotate({ identifier: "Summary" });
     case 3:
-      return S.Array(Summary);
+      return S.Array(__S(162));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5308,24 +4609,24 @@ function __c20(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          inferredWorkloadTypes: S.optional(InferredWorkloadTypes),
-          estimatedMonthlySavings: S.optional(EstimatedMonthlySavings),
+          inferredWorkloadTypes: S.optional(__S(1)),
+          estimatedMonthlySavings: S.optional(__S(36)),
         }),
       ).annotate({ identifier: "InferredWorkloadSaving" });
     case 6:
-      return S.Array(InferredWorkloadSaving);
+      return S.Array(__S(165));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          summaries: S.optional(Summaries),
-          idleSummaries: S.optional(IdleSummaries),
-          recommendationResourceType: S.optional(RecommendationSourceType),
+          summaries: S.optional(__S(163)),
+          idleSummaries: S.optional(__S(161)),
+          recommendationResourceType: S.optional(S.String),
           accountId: S.optional(S.String),
-          savingsOpportunity: S.optional(SavingsOpportunity),
-          idleSavingsOpportunity: S.optional(SavingsOpportunity),
-          aggregatedSavingsOpportunity: S.optional(SavingsOpportunity),
-          currentPerformanceRiskRatings: S.optional(CurrentPerformanceRiskRatings),
-          inferredWorkloadSavings: S.optional(InferredWorkloadSavings),
+          savingsOpportunity: S.optional(__S(37)),
+          idleSavingsOpportunity: S.optional(__S(37)),
+          aggregatedSavingsOpportunity: S.optional(__S(37)),
+          currentPerformanceRiskRatings: S.optional(__S(164)),
+          inferredWorkloadSavings: S.optional(__S(166)),
         }),
       ).annotate({ identifier: "RecommendationSummary" });
   }
@@ -5333,12 +4634,12 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RecommendationSummary);
+      return S.Array(__S(167));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          recommendationSummaries: S.optional(RecommendationSummaries),
+          recommendationSummaries: S.optional(__S(168)),
         }),
       ).annotate({
         identifier: "GetRecommendationSummariesResponse",
@@ -5346,32 +4647,32 @@ function __c21(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(PreferredResourceName),
-          includeList: S.optional(PreferredResourceValues),
-          excludeList: S.optional(PreferredResourceValues),
+          name: S.optional(S.String),
+          includeList: S.optional(__S(4)),
+          excludeList: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "PreferredResource" });
     case 3:
-      return S.Array(PreferredResource);
+      return S.Array(__S(170));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resourceType: ResourceType,
-          scope: S.optional(Scope),
-          enhancedInfrastructureMetrics: S.optional(EnhancedInfrastructureMetrics),
-          inferredWorkloadTypes: S.optional(InferredWorkloadTypesPreference),
-          externalMetricsPreference: S.optional(ExternalMetricsPreference),
-          lookBackPeriod: S.optional(LookBackPeriodPreference),
-          utilizationPreferences: S.optional(UtilizationPreferences),
-          preferredResources: S.optional(PreferredResources),
-          savingsEstimationMode: S.optional(SavingsEstimationMode),
+          resourceType: S.String,
+          scope: S.optional(__S(0)),
+          enhancedInfrastructureMetrics: S.optional(S.String),
+          inferredWorkloadTypes: S.optional(S.String),
+          externalMetricsPreference: S.optional(__S(42)),
+          lookBackPeriod: S.optional(S.String),
+          utilizationPreferences: S.optional(__S(45)),
+          preferredResources: S.optional(__S(171)),
+          savingsEstimationMode: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutRecommendationPreferencesRequest",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ status: Status, includeMemberAccounts: S.optional(S.Boolean) }).pipe(
+        S.Struct({ status: S.String, includeMemberAccounts: S.optional(S.Boolean) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -5379,9 +4680,62 @@ function __c21(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ status: S.optional(Status), statusReason: S.optional(S.String) }),
+        S.Struct({ status: S.optional(S.String), statusReason: S.optional(S.String) }),
       ).annotate({
         identifier: "UpdateEnrollmentStatusResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
   }
 }

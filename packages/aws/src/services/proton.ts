@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Proton",
   serviceShapeName: "AwsProton20200720",
@@ -123,10 +125,6 @@ export type EnvironmentAccountConnectionId = string;
 export interface AcceptEnvironmentAccountConnectionInput {
   id: string;
 }
-const AcceptEnvironmentAccountConnectionInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AcceptEnvironmentAccountConnectionInput>;
 export type EnvironmentAccountConnectionArn = string;
 export type AwsAccountId = string;
 export type Arn = string;
@@ -146,24 +144,12 @@ export interface EnvironmentAccountConnection {
   componentRoleArn?: string;
   codebuildRoleArn?: string;
 }
-const EnvironmentAccountConnection = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<EnvironmentAccountConnection>;
 export interface AcceptEnvironmentAccountConnectionOutput {
   environmentAccountConnection: EnvironmentAccountConnection;
 }
-const AcceptEnvironmentAccountConnectionOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AcceptEnvironmentAccountConnectionOutput>;
 export interface CancelComponentDeploymentInput {
   componentName: string;
 }
-const CancelComponentDeploymentInput = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CancelComponentDeploymentInput>;
 export type Description = string | redacted.Redacted<string>;
 export type ComponentArn = string;
 export type DeploymentStatus = string;
@@ -188,21 +174,12 @@ export interface Component {
   lastAttemptedDeploymentId?: string;
   lastSucceededDeploymentId?: string;
 }
-const Component = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Component>;
 export interface CancelComponentDeploymentOutput {
   component: Component;
 }
-const CancelComponentDeploymentOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CancelComponentDeploymentOutput>;
 export interface CancelEnvironmentDeploymentInput {
   environmentName: string;
 }
-const CancelEnvironmentDeploymentInput = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CancelEnvironmentDeploymentInput>;
 export type EnvironmentArn = string;
 export type TemplateVersionPart = string;
 export type Provisioning = string;
@@ -216,7 +193,6 @@ export interface RepositoryBranch {
   name: string;
   branch: string;
 }
-const RepositoryBranch = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<RepositoryBranch>;
 export interface Environment {
   name: string;
   description?: string | redacted.Redacted<string>;
@@ -240,22 +216,13 @@ export interface Environment {
   lastAttemptedDeploymentId?: string;
   lastSucceededDeploymentId?: string;
 }
-const Environment = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Environment>;
 export interface CancelEnvironmentDeploymentOutput {
   environment: Environment;
 }
-const CancelEnvironmentDeploymentOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CancelEnvironmentDeploymentOutput>;
 export interface CancelServiceInstanceDeploymentInput {
   serviceInstanceName: string;
   serviceName: string;
 }
-const CancelServiceInstanceDeploymentInput = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CancelServiceInstanceDeploymentInput>;
 export type ServiceInstanceArn = string;
 export interface ServiceInstance {
   name: string;
@@ -275,21 +242,12 @@ export interface ServiceInstance {
   lastAttemptedDeploymentId?: string;
   lastSucceededDeploymentId?: string;
 }
-const ServiceInstance = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ServiceInstance>;
 export interface CancelServiceInstanceDeploymentOutput {
   serviceInstance: ServiceInstance;
 }
-const CancelServiceInstanceDeploymentOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CancelServiceInstanceDeploymentOutput>;
 export interface CancelServicePipelineDeploymentInput {
   serviceName: string;
 }
-const CancelServicePipelineDeploymentInput = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CancelServicePipelineDeploymentInput>;
 export interface ServicePipeline {
   arn: string;
   createdAt: Date;
@@ -304,14 +262,9 @@ export interface ServicePipeline {
   lastAttemptedDeploymentId?: string;
   lastSucceededDeploymentId?: string;
 }
-const ServicePipeline = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ServicePipeline>;
 export interface CancelServicePipelineDeploymentOutput {
   pipeline: ServicePipeline;
 }
-const CancelServicePipelineDeploymentOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CancelServicePipelineDeploymentOutput>;
 export type TemplateFileContents = string | redacted.Redacted<string>;
 export type TemplateManifestContents = string | redacted.Redacted<string>;
 export type TagKey = string;
@@ -320,9 +273,7 @@ export interface Tag {
   key: string;
   value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c2, 1);
 export type ClientToken = string;
 export interface CreateComponentInput {
   name: string;
@@ -336,23 +287,14 @@ export interface CreateComponentInput {
   tags?: Tag[];
   clientToken?: string;
 }
-const CreateComponentInput = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CreateComponentInput>;
 export interface CreateComponentOutput {
   component: Component;
 }
-const CreateComponentOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateComponentOutput>;
 export interface RepositoryBranchInput {
   provider: string;
   name: string;
   branch: string;
 }
-const RepositoryBranchInput = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<RepositoryBranchInput>;
 export interface CreateEnvironmentInput {
   name: string;
   templateName: string;
@@ -367,17 +309,9 @@ export interface CreateEnvironmentInput {
   componentRoleArn?: string;
   codebuildRoleArn?: string;
 }
-const CreateEnvironmentInput = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateEnvironmentInput>;
 export interface CreateEnvironmentOutput {
   environment: Environment;
 }
-const CreateEnvironmentOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateEnvironmentOutput>;
 export interface CreateEnvironmentAccountConnectionInput {
   clientToken?: string;
   managementAccountId: string;
@@ -387,15 +321,9 @@ export interface CreateEnvironmentAccountConnectionInput {
   componentRoleArn?: string;
   codebuildRoleArn?: string;
 }
-const CreateEnvironmentAccountConnectionInput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateEnvironmentAccountConnectionInput>;
 export interface CreateEnvironmentAccountConnectionOutput {
   environmentAccountConnection: EnvironmentAccountConnection;
 }
-const CreateEnvironmentAccountConnectionOutput =
-  AcceptEnvironmentAccountConnectionOutput as any as S.Schema<CreateEnvironmentAccountConnectionOutput>;
 export type DisplayName = string | redacted.Redacted<string>;
 export interface CreateEnvironmentTemplateInput {
   name: string;
@@ -405,10 +333,6 @@ export interface CreateEnvironmentTemplateInput {
   provisioning?: string;
   tags?: Tag[];
 }
-const CreateEnvironmentTemplateInput = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateEnvironmentTemplateInput>;
 export type EnvironmentTemplateArn = string;
 export type FullTemplateVersionNumber = string;
 export interface EnvironmentTemplate {
@@ -422,23 +346,16 @@ export interface EnvironmentTemplate {
   encryptionKey?: string;
   provisioning?: string;
 }
-const EnvironmentTemplate = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<EnvironmentTemplate>;
 export interface CreateEnvironmentTemplateOutput {
   environmentTemplate: EnvironmentTemplate;
 }
-const CreateEnvironmentTemplateOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateEnvironmentTemplateOutput>;
 export type S3Bucket = string;
 export type S3Key = string;
 export interface S3ObjectSource {
   bucket: string;
   key: string;
 }
-const S3ObjectSource = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<S3ObjectSource>;
 export type TemplateVersionSourceInput = { s3: S3ObjectSource };
-const TemplateVersionSourceInput = /*@__PURE__*/ __L.at(__c3, 4);
 export interface CreateEnvironmentTemplateVersionInput {
   clientToken?: string;
   templateName: string;
@@ -447,10 +364,6 @@ export interface CreateEnvironmentTemplateVersionInput {
   source: TemplateVersionSourceInput;
   tags?: Tag[];
 }
-const CreateEnvironmentTemplateVersionInput = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateEnvironmentTemplateVersionInput>;
 export type TemplateVersionStatus = string;
 export type EnvironmentTemplateVersionArn = string;
 export type TemplateSchema = string | redacted.Redacted<string>;
@@ -467,17 +380,9 @@ export interface EnvironmentTemplateVersion {
   lastModifiedAt: Date;
   schema?: string | redacted.Redacted<string>;
 }
-const EnvironmentTemplateVersion = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<EnvironmentTemplateVersion>;
 export interface CreateEnvironmentTemplateVersionOutput {
   environmentTemplateVersion: EnvironmentTemplateVersion;
 }
-const CreateEnvironmentTemplateVersionOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateEnvironmentTemplateVersionOutput>;
 export interface CreateRepositoryInput {
   provider: string;
   name: string;
@@ -485,10 +390,6 @@ export interface CreateRepositoryInput {
   encryptionKey?: string;
   tags?: Tag[];
 }
-const CreateRepositoryInput = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateRepositoryInput>;
 export interface Repository {
   arn: string;
   provider: string;
@@ -496,14 +397,9 @@ export interface Repository {
   connectionArn: string;
   encryptionKey?: string;
 }
-const Repository = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Repository>;
 export interface CreateRepositoryOutput {
   repository: Repository;
 }
-const CreateRepositoryOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateRepositoryOutput>;
 export type RepositoryId = string;
 export interface CreateServiceInput {
   name: string;
@@ -517,7 +413,6 @@ export interface CreateServiceInput {
   branchName?: string;
   tags?: Tag[];
 }
-const CreateServiceInput = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<CreateServiceInput>;
 export type ServiceArn = string;
 export type ServiceStatus = string;
 export interface Service {
@@ -535,11 +430,9 @@ export interface Service {
   repositoryId?: string;
   branchName?: string;
 }
-const Service = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Service>;
 export interface CreateServiceOutput {
   service: Service;
 }
-const CreateServiceOutput = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<CreateServiceOutput>;
 export interface CreateServiceInstanceInput {
   name: string;
   serviceName: string;
@@ -549,15 +442,9 @@ export interface CreateServiceInstanceInput {
   tags?: Tag[];
   clientToken?: string;
 }
-const CreateServiceInstanceInput = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateServiceInstanceInput>;
 export interface CreateServiceInstanceOutput {
   serviceInstance: ServiceInstance;
 }
-const CreateServiceInstanceOutput =
-  CancelServiceInstanceDeploymentOutput as any as S.Schema<CreateServiceInstanceOutput>;
 export type OpsFilePath = string;
 export interface CreateServiceSyncConfigInput {
   serviceName: string;
@@ -566,10 +453,6 @@ export interface CreateServiceSyncConfigInput {
   branch: string;
   filePath: string;
 }
-const CreateServiceSyncConfigInput = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateServiceSyncConfigInput>;
 export interface ServiceSyncConfig {
   serviceName: string;
   repositoryProvider: string;
@@ -577,14 +460,9 @@ export interface ServiceSyncConfig {
   branch: string;
   filePath: string;
 }
-const ServiceSyncConfig = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ServiceSyncConfig>;
 export interface CreateServiceSyncConfigOutput {
   serviceSyncConfig?: ServiceSyncConfig;
 }
-const CreateServiceSyncConfigOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateServiceSyncConfigOutput>;
 export interface CreateServiceTemplateInput {
   name: string;
   displayName?: string | redacted.Redacted<string>;
@@ -593,10 +471,6 @@ export interface CreateServiceTemplateInput {
   pipelineProvisioning?: string;
   tags?: Tag[];
 }
-const CreateServiceTemplateInput = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CreateServiceTemplateInput>;
 export type ServiceTemplateArn = string;
 export interface ServiceTemplate {
   name: string;
@@ -609,27 +483,16 @@ export interface ServiceTemplate {
   encryptionKey?: string;
   pipelineProvisioning?: string;
 }
-const ServiceTemplate = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ServiceTemplate>;
 export interface CreateServiceTemplateOutput {
   serviceTemplate: ServiceTemplate;
 }
-const CreateServiceTemplateOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateServiceTemplateOutput>;
 export interface CompatibleEnvironmentTemplateInput {
   templateName: string;
   majorVersion: string;
 }
-const CompatibleEnvironmentTemplateInput = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CompatibleEnvironmentTemplateInput>;
 export type CompatibleEnvironmentTemplateInputList = CompatibleEnvironmentTemplateInput[];
-const CompatibleEnvironmentTemplateInputList = /*@__PURE__*/ __L.at(__c5, 6);
 export type ServiceTemplateSupportedComponentSourceType = string;
 export type ServiceTemplateSupportedComponentSourceInputList = string[];
-const ServiceTemplateSupportedComponentSourceInputList = /*@__PURE__*/ __L.at(__c5, 7);
 export interface CreateServiceTemplateVersionInput {
   clientToken?: string;
   templateName: string;
@@ -640,18 +503,12 @@ export interface CreateServiceTemplateVersionInput {
   tags?: Tag[];
   supportedComponentSources?: string[];
 }
-const CreateServiceTemplateVersionInput = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateServiceTemplateVersionInput>;
 export type ServiceTemplateVersionArn = string;
 export interface CompatibleEnvironmentTemplate {
   templateName: string;
   majorVersion: string;
 }
 export type CompatibleEnvironmentTemplateList = CompatibleEnvironmentTemplate[];
-const CompatibleEnvironmentTemplateList =
-  CompatibleEnvironmentTemplateInputList as any as S.Schema<CompatibleEnvironmentTemplateList>;
 export interface ServiceTemplateVersion {
   templateName: string;
   majorVersion: string;
@@ -667,17 +524,9 @@ export interface ServiceTemplateVersion {
   schema?: string | redacted.Redacted<string>;
   supportedComponentSources?: string[];
 }
-const ServiceTemplateVersion = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ServiceTemplateVersion>;
 export interface CreateServiceTemplateVersionOutput {
   serviceTemplateVersion: ServiceTemplateVersion;
 }
-const CreateServiceTemplateVersionOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateServiceTemplateVersionOutput>;
 export type TemplateType = string;
 export type Subdirectory = string;
 export interface CreateTemplateSyncConfigInput {
@@ -688,10 +537,6 @@ export interface CreateTemplateSyncConfigInput {
   branch: string;
   subdirectory?: string;
 }
-const CreateTemplateSyncConfigInput = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CreateTemplateSyncConfigInput>;
 export interface TemplateSyncConfig {
   templateName: string;
   templateType: string;
@@ -700,37 +545,21 @@ export interface TemplateSyncConfig {
   branch: string;
   subdirectory?: string;
 }
-const TemplateSyncConfig = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<TemplateSyncConfig>;
 export interface CreateTemplateSyncConfigOutput {
   templateSyncConfig?: TemplateSyncConfig;
 }
-const CreateTemplateSyncConfigOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CreateTemplateSyncConfigOutput>;
 export interface DeleteComponentInput {
   name: string;
 }
-const DeleteComponentInput = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<DeleteComponentInput>;
 export interface DeleteComponentOutput {
   component?: Component;
 }
-const DeleteComponentOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<DeleteComponentOutput>;
 export interface DeleteDeploymentInput {
   id: string;
 }
-const DeleteDeploymentInput = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<DeleteDeploymentInput>;
 export type DeploymentArn = string;
 export type DeploymentTargetResourceType = string;
 export type ComponentDeploymentIdList = string[];
-const ComponentDeploymentIdList =
-  ServiceTemplateSupportedComponentSourceInputList as any as S.Schema<ComponentDeploymentIdList>;
 export interface ServiceInstanceState {
   spec: string | redacted.Redacted<string>;
   templateName: string;
@@ -740,21 +569,18 @@ export interface ServiceInstanceState {
   lastSuccessfulEnvironmentDeploymentId?: string;
   lastSuccessfulServicePipelineDeploymentId?: string;
 }
-const ServiceInstanceState = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ServiceInstanceState>;
 export interface EnvironmentState {
   spec?: string | redacted.Redacted<string>;
   templateName: string;
   templateMajorVersion: string;
   templateMinorVersion: string;
 }
-const EnvironmentState = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<EnvironmentState>;
 export interface ServicePipelineState {
   spec?: string | redacted.Redacted<string>;
   templateName: string;
   templateMajorVersion: string;
   templateMinorVersion: string;
 }
-const ServicePipelineState = EnvironmentState as any as S.Schema<ServicePipelineState>;
 export type ResourceNameOrEmpty = string;
 export interface ComponentState {
   serviceName?: string;
@@ -762,7 +588,6 @@ export interface ComponentState {
   serviceSpec?: string | redacted.Redacted<string>;
   templateFile?: string | redacted.Redacted<string>;
 }
-const ComponentState = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ComponentState>;
 export type DeploymentState =
   | {
       serviceInstance: ServiceInstanceState;
@@ -788,7 +613,6 @@ export type DeploymentState =
       servicePipeline?: never;
       component: ComponentState;
     };
-const DeploymentState = /*@__PURE__*/ __L.at(__c7, 4);
 export interface Deployment {
   id: string;
   arn: string;
@@ -809,177 +633,91 @@ export interface Deployment {
   initialState?: DeploymentState;
   targetState?: DeploymentState;
 }
-const Deployment = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<Deployment>;
 export interface DeleteDeploymentOutput {
   deployment?: Deployment;
 }
-const DeleteDeploymentOutput = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DeleteDeploymentOutput>;
 export interface DeleteEnvironmentInput {
   name: string;
 }
-const DeleteEnvironmentInput = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DeleteEnvironmentInput>;
 export interface DeleteEnvironmentOutput {
   environment?: Environment;
 }
-const DeleteEnvironmentOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeleteEnvironmentOutput>;
 export interface DeleteEnvironmentAccountConnectionInput {
   id: string;
 }
-const DeleteEnvironmentAccountConnectionInput = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeleteEnvironmentAccountConnectionInput>;
 export interface DeleteEnvironmentAccountConnectionOutput {
   environmentAccountConnection?: EnvironmentAccountConnection;
 }
-const DeleteEnvironmentAccountConnectionOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DeleteEnvironmentAccountConnectionOutput>;
 export interface DeleteEnvironmentTemplateInput {
   name: string;
 }
-const DeleteEnvironmentTemplateInput = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DeleteEnvironmentTemplateInput>;
 export interface DeleteEnvironmentTemplateOutput {
   environmentTemplate?: EnvironmentTemplate;
 }
-const DeleteEnvironmentTemplateOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeleteEnvironmentTemplateOutput>;
 export interface DeleteEnvironmentTemplateVersionInput {
   templateName: string;
   majorVersion: string;
   minorVersion: string;
 }
-const DeleteEnvironmentTemplateVersionInput = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DeleteEnvironmentTemplateVersionInput>;
 export interface DeleteEnvironmentTemplateVersionOutput {
   environmentTemplateVersion?: EnvironmentTemplateVersion;
 }
-const DeleteEnvironmentTemplateVersionOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DeleteEnvironmentTemplateVersionOutput>;
 export interface DeleteRepositoryInput {
   provider: string;
   name: string;
 }
-const DeleteRepositoryInput = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DeleteRepositoryInput>;
 export interface DeleteRepositoryOutput {
   repository?: Repository;
 }
-const DeleteRepositoryOutput = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DeleteRepositoryOutput>;
 export interface DeleteServiceInput {
   name: string;
 }
-const DeleteServiceInput = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<DeleteServiceInput>;
 export interface DeleteServiceOutput {
   service?: Service;
 }
-const DeleteServiceOutput = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<DeleteServiceOutput>;
 export interface DeleteServiceSyncConfigInput {
   serviceName: string;
 }
-const DeleteServiceSyncConfigInput = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DeleteServiceSyncConfigInput>;
 export interface DeleteServiceSyncConfigOutput {
   serviceSyncConfig?: ServiceSyncConfig;
 }
-const DeleteServiceSyncConfigOutput =
-  CreateServiceSyncConfigOutput as any as S.Schema<DeleteServiceSyncConfigOutput>;
 export interface DeleteServiceTemplateInput {
   name: string;
 }
-const DeleteServiceTemplateInput = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeleteServiceTemplateInput>;
 export interface DeleteServiceTemplateOutput {
   serviceTemplate?: ServiceTemplate;
 }
-const DeleteServiceTemplateOutput = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeleteServiceTemplateOutput>;
 export interface DeleteServiceTemplateVersionInput {
   templateName: string;
   majorVersion: string;
   minorVersion: string;
 }
-const DeleteServiceTemplateVersionInput = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DeleteServiceTemplateVersionInput>;
 export interface DeleteServiceTemplateVersionOutput {
   serviceTemplateVersion?: ServiceTemplateVersion;
 }
-const DeleteServiceTemplateVersionOutput = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DeleteServiceTemplateVersionOutput>;
 export interface DeleteTemplateSyncConfigInput {
   templateName: string;
   templateType: string;
 }
-const DeleteTemplateSyncConfigInput = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DeleteTemplateSyncConfigInput>;
 export interface DeleteTemplateSyncConfigOutput {
   templateSyncConfig?: TemplateSyncConfig;
 }
-const DeleteTemplateSyncConfigOutput =
-  CreateTemplateSyncConfigOutput as any as S.Schema<DeleteTemplateSyncConfigOutput>;
 export interface GetAccountSettingsInput {}
-const GetAccountSettingsInput = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GetAccountSettingsInput>;
 export type RoleArnOrEmptyString = string;
 export interface AccountSettings {
   pipelineServiceRoleArn?: string;
   pipelineProvisioningRepository?: RepositoryBranch;
   pipelineCodebuildRoleArn?: string;
 }
-const AccountSettings = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<AccountSettings>;
 export interface GetAccountSettingsOutput {
   accountSettings?: AccountSettings;
 }
-const GetAccountSettingsOutput = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GetAccountSettingsOutput>;
 export interface GetComponentInput {
   name: string;
 }
-const GetComponentInput = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<GetComponentInput>;
 export interface GetComponentOutput {
   component?: Component;
 }
-const GetComponentOutput = DeleteComponentOutput as any as S.Schema<GetComponentOutput>;
 export interface GetDeploymentInput {
   id: string;
   environmentName?: string;
@@ -987,66 +725,42 @@ export interface GetDeploymentInput {
   serviceInstanceName?: string;
   componentName?: string;
 }
-const GetDeploymentInput = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<GetDeploymentInput>;
 export interface GetDeploymentOutput {
   deployment?: Deployment;
 }
-const GetDeploymentOutput = DeleteDeploymentOutput as any as S.Schema<GetDeploymentOutput>;
 export interface GetEnvironmentInput {
   name: string;
 }
-const GetEnvironmentInput = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<GetEnvironmentInput>;
 export interface GetEnvironmentOutput {
   environment: Environment;
 }
-const GetEnvironmentOutput = CreateEnvironmentOutput as any as S.Schema<GetEnvironmentOutput>;
 export interface GetEnvironmentAccountConnectionInput {
   id: string;
 }
-const GetEnvironmentAccountConnectionInput = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GetEnvironmentAccountConnectionInput>;
 export interface GetEnvironmentAccountConnectionOutput {
   environmentAccountConnection: EnvironmentAccountConnection;
 }
-const GetEnvironmentAccountConnectionOutput =
-  AcceptEnvironmentAccountConnectionOutput as any as S.Schema<GetEnvironmentAccountConnectionOutput>;
 export interface GetEnvironmentTemplateInput {
   name: string;
 }
-const GetEnvironmentTemplateInput = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GetEnvironmentTemplateInput>;
 export interface GetEnvironmentTemplateOutput {
   environmentTemplate: EnvironmentTemplate;
 }
-const GetEnvironmentTemplateOutput =
-  CreateEnvironmentTemplateOutput as any as S.Schema<GetEnvironmentTemplateOutput>;
 export interface GetEnvironmentTemplateVersionInput {
   templateName: string;
   majorVersion: string;
   minorVersion: string;
 }
-const GetEnvironmentTemplateVersionInput = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<GetEnvironmentTemplateVersionInput>;
 export interface GetEnvironmentTemplateVersionOutput {
   environmentTemplateVersion: EnvironmentTemplateVersion;
 }
-const GetEnvironmentTemplateVersionOutput =
-  CreateEnvironmentTemplateVersionOutput as any as S.Schema<GetEnvironmentTemplateVersionOutput>;
 export interface GetRepositoryInput {
   provider: string;
   name: string;
 }
-const GetRepositoryInput = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<GetRepositoryInput>;
 export interface GetRepositoryOutput {
   repository: Repository;
 }
-const GetRepositoryOutput = CreateRepositoryOutput as any as S.Schema<GetRepositoryOutput>;
 export type SyncType = string;
 export interface GetRepositorySyncStatusInput {
   repositoryName: string;
@@ -1054,10 +768,6 @@ export interface GetRepositorySyncStatusInput {
   branch: string;
   syncType: string;
 }
-const GetRepositorySyncStatusInput = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<GetRepositorySyncStatusInput>;
 export type RepositorySyncStatus = string;
 export interface RepositorySyncEvent {
   type: string;
@@ -1065,30 +775,16 @@ export interface RepositorySyncEvent {
   time: Date;
   event: string;
 }
-const RepositorySyncEvent = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<RepositorySyncEvent>;
 export type RepositorySyncEvents = RepositorySyncEvent[];
-const RepositorySyncEvents = /*@__PURE__*/ __L.at(__c11, 5);
 export interface RepositorySyncAttempt {
   startedAt: Date;
   status: string;
   events: RepositorySyncEvent[];
 }
-const RepositorySyncAttempt = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<RepositorySyncAttempt>;
 export interface GetRepositorySyncStatusOutput {
   latestSync?: RepositorySyncAttempt;
 }
-const GetRepositorySyncStatusOutput = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetRepositorySyncStatusOutput>;
 export interface GetResourcesSummaryInput {}
-const GetResourcesSummaryInput = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GetResourcesSummaryInput>;
 export interface ResourceCountsSummary {
   total: number;
   failed?: number;
@@ -1096,10 +792,6 @@ export interface ResourceCountsSummary {
   behindMajor?: number;
   behindMinor?: number;
 }
-const ResourceCountsSummary = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ResourceCountsSummary>;
 export interface CountsSummary {
   components?: ResourceCountsSummary;
   environments?: ResourceCountsSummary;
@@ -1109,45 +801,26 @@ export interface CountsSummary {
   serviceTemplates?: ResourceCountsSummary;
   pipelines?: ResourceCountsSummary;
 }
-const CountsSummary = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<CountsSummary>;
 export interface GetResourcesSummaryOutput {
   counts: CountsSummary;
 }
-const GetResourcesSummaryOutput = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetResourcesSummaryOutput>;
 export interface GetServiceInput {
   name: string;
 }
-const GetServiceInput = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<GetServiceInput>;
 export interface GetServiceOutput {
   service?: Service;
 }
-const GetServiceOutput = DeleteServiceOutput as any as S.Schema<GetServiceOutput>;
 export interface GetServiceInstanceInput {
   name: string;
   serviceName: string;
 }
-const GetServiceInstanceInput = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GetServiceInstanceInput>;
 export interface GetServiceInstanceOutput {
   serviceInstance: ServiceInstance;
 }
-const GetServiceInstanceOutput = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GetServiceInstanceOutput>;
 export interface GetServiceInstanceSyncStatusInput {
   serviceName: string;
   serviceInstanceName: string;
 }
-const GetServiceInstanceSyncStatusInput = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GetServiceInstanceSyncStatusInput>;
 export type SHA = string;
 export interface Revision {
   repositoryName: string;
@@ -1156,7 +829,6 @@ export interface Revision {
   directory: string;
   branch: string;
 }
-const Revision = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<Revision>;
 export type ResourceSyncStatus = string;
 export interface ResourceSyncEvent {
   type: string;
@@ -1165,7 +837,6 @@ export interface ResourceSyncEvent {
   event: string;
 }
 export type ResourceSyncEvents = ResourceSyncEvent[];
-const ResourceSyncEvents = RepositorySyncEvents as any as S.Schema<ResourceSyncEvents>;
 export interface ResourceSyncAttempt {
   initialRevision: Revision;
   targetRevision: Revision;
@@ -1174,24 +845,15 @@ export interface ResourceSyncAttempt {
   status: string;
   events: ResourceSyncEvent[];
 }
-const ResourceSyncAttempt = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ResourceSyncAttempt>;
 export interface GetServiceInstanceSyncStatusOutput {
   latestSync?: ResourceSyncAttempt;
   latestSuccessfulSync?: ResourceSyncAttempt;
   desiredState?: Revision;
 }
-const GetServiceInstanceSyncStatusOutput = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GetServiceInstanceSyncStatusOutput>;
 export interface GetServiceSyncBlockerSummaryInput {
   serviceName: string;
   serviceInstanceName?: string;
 }
-const GetServiceSyncBlockerSummaryInput = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<GetServiceSyncBlockerSummaryInput>;
 export type BlockerType = string;
 export type BlockerStatus = string;
 export interface SyncBlockerContext {
@@ -1199,7 +861,6 @@ export interface SyncBlockerContext {
   value: string;
 }
 export type SyncBlockerContexts = SyncBlockerContext[];
-const SyncBlockerContexts = TagList as any as S.Schema<SyncBlockerContexts>;
 export interface SyncBlocker {
   id: string;
   type: string;
@@ -1210,129 +871,73 @@ export interface SyncBlocker {
   resolvedReason?: string;
   resolvedAt?: Date;
 }
-const SyncBlocker = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<SyncBlocker>;
 export type LatestSyncBlockers = SyncBlocker[];
-const LatestSyncBlockers = /*@__PURE__*/ __L.at(__c13, 5);
 export interface ServiceSyncBlockerSummary {
   serviceName: string;
   serviceInstanceName?: string;
   latestBlockers?: SyncBlocker[];
 }
-const ServiceSyncBlockerSummary = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ServiceSyncBlockerSummary>;
 export interface GetServiceSyncBlockerSummaryOutput {
   serviceSyncBlockerSummary?: ServiceSyncBlockerSummary;
 }
-const GetServiceSyncBlockerSummaryOutput = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetServiceSyncBlockerSummaryOutput>;
 export interface GetServiceSyncConfigInput {
   serviceName: string;
 }
-const GetServiceSyncConfigInput = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetServiceSyncConfigInput>;
 export interface GetServiceSyncConfigOutput {
   serviceSyncConfig?: ServiceSyncConfig;
 }
-const GetServiceSyncConfigOutput =
-  CreateServiceSyncConfigOutput as any as S.Schema<GetServiceSyncConfigOutput>;
 export interface GetServiceTemplateInput {
   name: string;
 }
-const GetServiceTemplateInput = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GetServiceTemplateInput>;
 export interface GetServiceTemplateOutput {
   serviceTemplate: ServiceTemplate;
 }
-const GetServiceTemplateOutput = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GetServiceTemplateOutput>;
 export interface GetServiceTemplateVersionInput {
   templateName: string;
   majorVersion: string;
   minorVersion: string;
 }
-const GetServiceTemplateVersionInput = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GetServiceTemplateVersionInput>;
 export interface GetServiceTemplateVersionOutput {
   serviceTemplateVersion: ServiceTemplateVersion;
 }
-const GetServiceTemplateVersionOutput =
-  CreateServiceTemplateVersionOutput as any as S.Schema<GetServiceTemplateVersionOutput>;
 export interface GetTemplateSyncConfigInput {
   templateName: string;
   templateType: string;
 }
-const GetTemplateSyncConfigInput = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GetTemplateSyncConfigInput>;
 export interface GetTemplateSyncConfigOutput {
   templateSyncConfig?: TemplateSyncConfig;
 }
-const GetTemplateSyncConfigOutput =
-  CreateTemplateSyncConfigOutput as any as S.Schema<GetTemplateSyncConfigOutput>;
 export interface GetTemplateSyncStatusInput {
   templateName: string;
   templateType: string;
   templateVersion: string;
 }
-const GetTemplateSyncStatusInput = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<GetTemplateSyncStatusInput>;
 export interface GetTemplateSyncStatusOutput {
   latestSync?: ResourceSyncAttempt;
   latestSuccessfulSync?: ResourceSyncAttempt;
   desiredState?: Revision;
 }
-const GetTemplateSyncStatusOutput =
-  GetServiceInstanceSyncStatusOutput as any as S.Schema<GetTemplateSyncStatusOutput>;
 export type EmptyNextToken = string;
 export interface ListComponentOutputsInput {
   componentName: string;
   nextToken?: string;
   deploymentId?: string;
 }
-const ListComponentOutputsInput = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ListComponentOutputsInput>;
 export type OutputKey = string;
 export type OutputValueString = string;
 export interface Output {
   key?: string;
   valueString?: string;
 }
-const Output = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<Output>;
 export type OutputsList = Output[];
-const OutputsList = /*@__PURE__*/ __L.at(__c15, 0);
 export interface ListComponentOutputsOutput {
   nextToken?: string;
   outputs: Output[];
 }
-const ListComponentOutputsOutput = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ListComponentOutputsOutput>;
 export interface ListComponentProvisionedResourcesInput {
   componentName: string;
   nextToken?: string;
 }
-const ListComponentProvisionedResourcesInput = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<ListComponentProvisionedResourcesInput>;
 export type ProvisionedResourceName = string;
 export type ProvisionedResourceIdentifier = string;
 export type ProvisionedResourceEngine = string;
@@ -1341,17 +946,11 @@ export interface ProvisionedResource {
   identifier?: string;
   provisioningEngine?: string;
 }
-const ProvisionedResource = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<ProvisionedResource>;
 export type ProvisionedResourceList = ProvisionedResource[];
-const ProvisionedResourceList = /*@__PURE__*/ __L.at(__c15, 4);
 export interface ListComponentProvisionedResourcesOutput {
   nextToken?: string;
   provisionedResources: ProvisionedResource[];
 }
-const ListComponentProvisionedResourcesOutput = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<ListComponentProvisionedResourcesOutput>;
 export type NextToken = string;
 export type MaxPageResults = number;
 export interface ListComponentsInput {
@@ -1361,7 +960,6 @@ export interface ListComponentsInput {
   serviceInstanceName?: string;
   maxResults?: number;
 }
-const ListComponentsInput = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<ListComponentsInput>;
 export interface ComponentSummary {
   name: string;
   arn: string;
@@ -1377,17 +975,11 @@ export interface ComponentSummary {
   lastAttemptedDeploymentId?: string;
   lastSucceededDeploymentId?: string;
 }
-const ComponentSummary = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<ComponentSummary>;
 export type ComponentSummaryList = ComponentSummary[];
-const ComponentSummaryList = /*@__PURE__*/ __L.at(__c16, 0);
 export interface ListComponentsOutput {
   nextToken?: string;
   components: ComponentSummary[];
 }
-const ListComponentsOutput = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ListComponentsOutput>;
 export interface ListDeploymentsInput {
   nextToken?: string;
   environmentName?: string;
@@ -1396,10 +988,6 @@ export interface ListDeploymentsInput {
   componentName?: string;
   maxResults?: number;
 }
-const ListDeploymentsInput = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ListDeploymentsInput>;
 export interface DeploymentSummary {
   id: string;
   arn: string;
@@ -1417,21 +1005,13 @@ export interface DeploymentSummary {
   lastSucceededDeploymentId?: string;
   deploymentStatus: string;
 }
-const DeploymentSummary = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<DeploymentSummary>;
 export type DeploymentSummaryList = DeploymentSummary[];
-const DeploymentSummaryList = /*@__PURE__*/ __L.at(__c16, 4);
 export interface ListDeploymentsOutput {
   nextToken?: string;
   deployments: DeploymentSummary[];
 }
-const ListDeploymentsOutput = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ListDeploymentsOutput>;
 export type EnvironmentAccountConnectionRequesterAccountType = string;
 export type EnvironmentAccountConnectionStatusList = string[];
-const EnvironmentAccountConnectionStatusList =
-  ServiceTemplateSupportedComponentSourceInputList as any as S.Schema<EnvironmentAccountConnectionStatusList>;
 export interface ListEnvironmentAccountConnectionsInput {
   requestedBy: string;
   environmentName?: string;
@@ -1439,10 +1019,6 @@ export interface ListEnvironmentAccountConnectionsInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListEnvironmentAccountConnectionsInput = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ListEnvironmentAccountConnectionsInput>;
 export interface EnvironmentAccountConnectionSummary {
   id: string;
   arn: string;
@@ -1455,66 +1031,38 @@ export interface EnvironmentAccountConnectionSummary {
   status: string;
   componentRoleArn?: string;
 }
-const EnvironmentAccountConnectionSummary = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<EnvironmentAccountConnectionSummary>;
 export type EnvironmentAccountConnectionSummaryList = EnvironmentAccountConnectionSummary[];
-const EnvironmentAccountConnectionSummaryList = /*@__PURE__*/ __L.at(__c17, 0);
 export interface ListEnvironmentAccountConnectionsOutput {
   environmentAccountConnections: EnvironmentAccountConnectionSummary[];
   nextToken?: string;
 }
-const ListEnvironmentAccountConnectionsOutput = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ListEnvironmentAccountConnectionsOutput>;
 export interface ListEnvironmentOutputsInput {
   environmentName: string;
   nextToken?: string;
   deploymentId?: string;
 }
-const ListEnvironmentOutputsInput = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ListEnvironmentOutputsInput>;
 export interface ListEnvironmentOutputsOutput {
   nextToken?: string;
   outputs: Output[];
 }
-const ListEnvironmentOutputsOutput =
-  ListComponentOutputsOutput as any as S.Schema<ListEnvironmentOutputsOutput>;
 export interface ListEnvironmentProvisionedResourcesInput {
   environmentName: string;
   nextToken?: string;
 }
-const ListEnvironmentProvisionedResourcesInput = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListEnvironmentProvisionedResourcesInput>;
 export interface ListEnvironmentProvisionedResourcesOutput {
   nextToken?: string;
   provisionedResources: ProvisionedResource[];
 }
-const ListEnvironmentProvisionedResourcesOutput =
-  ListComponentProvisionedResourcesOutput as any as S.Schema<ListEnvironmentProvisionedResourcesOutput>;
 export interface EnvironmentTemplateFilter {
   templateName: string;
   majorVersion: string;
 }
-const EnvironmentTemplateFilter =
-  CompatibleEnvironmentTemplateInput as any as S.Schema<EnvironmentTemplateFilter>;
 export type EnvironmentTemplateFilterList = EnvironmentTemplateFilter[];
-const EnvironmentTemplateFilterList = /*@__PURE__*/ __L.at(__c17, 4);
 export interface ListEnvironmentsInput {
   nextToken?: string;
   maxResults?: number;
   environmentTemplates?: EnvironmentTemplateFilter[];
 }
-const ListEnvironmentsInput = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ListEnvironmentsInput>;
 export interface EnvironmentSummary {
   name: string;
   description?: string | redacted.Redacted<string>;
@@ -1535,25 +1083,15 @@ export interface EnvironmentSummary {
   lastAttemptedDeploymentId?: string;
   lastSucceededDeploymentId?: string;
 }
-const EnvironmentSummary = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<EnvironmentSummary>;
 export type EnvironmentSummaryList = EnvironmentSummary[];
-const EnvironmentSummaryList = /*@__PURE__*/ __L.at(__c17, 7);
 export interface ListEnvironmentsOutput {
   nextToken?: string;
   environments: EnvironmentSummary[];
 }
-const ListEnvironmentsOutput = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ListEnvironmentsOutput>;
 export interface ListEnvironmentTemplatesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListEnvironmentTemplatesInput = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ListEnvironmentTemplatesInput>;
 export interface EnvironmentTemplateSummary {
   name: string;
   arn: string;
@@ -1564,30 +1102,17 @@ export interface EnvironmentTemplateSummary {
   recommendedVersion?: string;
   provisioning?: string;
 }
-const EnvironmentTemplateSummary = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<EnvironmentTemplateSummary>;
 export type EnvironmentTemplateSummaryList = EnvironmentTemplateSummary[];
-const EnvironmentTemplateSummaryList = /*@__PURE__*/ __L.at(__c18, 3);
 export interface ListEnvironmentTemplatesOutput {
   nextToken?: string;
   templates: EnvironmentTemplateSummary[];
 }
-const ListEnvironmentTemplatesOutput = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ListEnvironmentTemplatesOutput>;
 export interface ListEnvironmentTemplateVersionsInput {
   nextToken?: string;
   maxResults?: number;
   templateName: string;
   majorVersion?: string;
 }
-const ListEnvironmentTemplateVersionsInput = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListEnvironmentTemplateVersionsInput>;
 export interface EnvironmentTemplateVersionSummary {
   templateName: string;
   majorVersion: string;
@@ -1600,118 +1125,69 @@ export interface EnvironmentTemplateVersionSummary {
   createdAt: Date;
   lastModifiedAt: Date;
 }
-const EnvironmentTemplateVersionSummary = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<EnvironmentTemplateVersionSummary>;
 export type EnvironmentTemplateVersionSummaryList = EnvironmentTemplateVersionSummary[];
-const EnvironmentTemplateVersionSummaryList = /*@__PURE__*/ __L.at(__c18, 7);
 export interface ListEnvironmentTemplateVersionsOutput {
   nextToken?: string;
   templateVersions: EnvironmentTemplateVersionSummary[];
 }
-const ListEnvironmentTemplateVersionsOutput = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ListEnvironmentTemplateVersionsOutput>;
 export interface ListRepositoriesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListRepositoriesInput = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ListRepositoriesInput>;
 export interface RepositorySummary {
   arn: string;
   provider: string;
   name: string;
   connectionArn: string;
 }
-const RepositorySummary = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<RepositorySummary>;
 export type RepositorySummaryList = RepositorySummary[];
-const RepositorySummaryList = /*@__PURE__*/ __L.at(__c19, 3);
 export interface ListRepositoriesOutput {
   nextToken?: string;
   repositories: RepositorySummary[];
 }
-const ListRepositoriesOutput = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ListRepositoriesOutput>;
 export interface ListRepositorySyncDefinitionsInput {
   repositoryName: string;
   repositoryProvider: string;
   syncType: string;
   nextToken?: string;
 }
-const ListRepositorySyncDefinitionsInput = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ListRepositorySyncDefinitionsInput>;
 export interface RepositorySyncDefinition {
   target: string;
   parent: string;
   branch: string;
   directory: string;
 }
-const RepositorySyncDefinition = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<RepositorySyncDefinition>;
 export type RepositorySyncDefinitionList = RepositorySyncDefinition[];
-const RepositorySyncDefinitionList = /*@__PURE__*/ __L.at(__c19, 7);
 export interface ListRepositorySyncDefinitionsOutput {
   nextToken?: string;
   syncDefinitions: RepositorySyncDefinition[];
 }
-const ListRepositorySyncDefinitionsOutput = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<ListRepositorySyncDefinitionsOutput>;
 export interface ListServiceInstanceOutputsInput {
   serviceInstanceName: string;
   serviceName: string;
   nextToken?: string;
   deploymentId?: string;
 }
-const ListServiceInstanceOutputsInput = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<ListServiceInstanceOutputsInput>;
 export interface ListServiceInstanceOutputsOutput {
   nextToken?: string;
   outputs: Output[];
 }
-const ListServiceInstanceOutputsOutput =
-  ListComponentOutputsOutput as any as S.Schema<ListServiceInstanceOutputsOutput>;
 export interface ListServiceInstanceProvisionedResourcesInput {
   serviceName: string;
   serviceInstanceName: string;
   nextToken?: string;
 }
-const ListServiceInstanceProvisionedResourcesInput = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListServiceInstanceProvisionedResourcesInput>;
 export interface ListServiceInstanceProvisionedResourcesOutput {
   nextToken?: string;
   provisionedResources: ProvisionedResource[];
 }
-const ListServiceInstanceProvisionedResourcesOutput =
-  ListComponentProvisionedResourcesOutput as any as S.Schema<ListServiceInstanceProvisionedResourcesOutput>;
 export type ListServiceInstancesFilterBy = string;
 export type ListServiceInstancesFilterValue = string;
 export interface ListServiceInstancesFilter {
   key?: string;
   value?: string;
 }
-const ListServiceInstancesFilter = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ListServiceInstancesFilter>;
 export type ListServiceInstancesFilterList = ListServiceInstancesFilter[];
-const ListServiceInstancesFilterList = /*@__PURE__*/ __L.at(__c20, 4);
 export type ListServiceInstancesSortBy = string;
 export type SortOrder = string;
 export interface ListServiceInstancesInput {
@@ -1722,10 +1198,6 @@ export interface ListServiceInstancesInput {
   sortBy?: string;
   sortOrder?: string;
 }
-const ListServiceInstancesInput = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListServiceInstancesInput>;
 export interface ServiceInstanceSummary {
   name: string;
   arn: string;
@@ -1742,54 +1214,32 @@ export interface ServiceInstanceSummary {
   lastAttemptedDeploymentId?: string;
   lastSucceededDeploymentId?: string;
 }
-const ServiceInstanceSummary = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<ServiceInstanceSummary>;
 export type ServiceInstanceSummaryList = ServiceInstanceSummary[];
-const ServiceInstanceSummaryList = /*@__PURE__*/ __L.at(__c20, 7);
 export interface ListServiceInstancesOutput {
   nextToken?: string;
   serviceInstances: ServiceInstanceSummary[];
 }
-const ListServiceInstancesOutput = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<ListServiceInstancesOutput>;
 export interface ListServicePipelineOutputsInput {
   serviceName: string;
   nextToken?: string;
   deploymentId?: string;
 }
-const ListServicePipelineOutputsInput = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ListServicePipelineOutputsInput>;
 export interface ListServicePipelineOutputsOutput {
   nextToken?: string;
   outputs: Output[];
 }
-const ListServicePipelineOutputsOutput =
-  ListComponentOutputsOutput as any as S.Schema<ListServicePipelineOutputsOutput>;
 export interface ListServicePipelineProvisionedResourcesInput {
   serviceName: string;
   nextToken?: string;
 }
-const ListServicePipelineProvisionedResourcesInput = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ListServicePipelineProvisionedResourcesInput>;
 export interface ListServicePipelineProvisionedResourcesOutput {
   nextToken?: string;
   provisionedResources: ProvisionedResource[];
 }
-const ListServicePipelineProvisionedResourcesOutput =
-  ListComponentProvisionedResourcesOutput as any as S.Schema<ListServicePipelineProvisionedResourcesOutput>;
 export interface ListServicesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListServicesInput = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<ListServicesInput>;
 export interface ServiceSummary {
   name: string;
   description?: string | redacted.Redacted<string>;
@@ -1800,22 +1250,15 @@ export interface ServiceSummary {
   status: string;
   statusMessage?: string | redacted.Redacted<string>;
 }
-const ServiceSummary = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<ServiceSummary>;
 export type ServiceSummaryList = ServiceSummary[];
-const ServiceSummaryList = /*@__PURE__*/ __L.at(__c21, 5);
 export interface ListServicesOutput {
   nextToken?: string;
   services: ServiceSummary[];
 }
-const ListServicesOutput = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<ListServicesOutput>;
 export interface ListServiceTemplatesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListServiceTemplatesInput = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<ListServiceTemplatesInput>;
 export interface ServiceTemplateSummary {
   name: string;
   arn: string;
@@ -1826,30 +1269,17 @@ export interface ServiceTemplateSummary {
   recommendedVersion?: string;
   pipelineProvisioning?: string;
 }
-const ServiceTemplateSummary = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<ServiceTemplateSummary>;
 export type ServiceTemplateSummaryList = ServiceTemplateSummary[];
-const ServiceTemplateSummaryList = /*@__PURE__*/ __L.at(__c22, 1);
 export interface ListServiceTemplatesOutput {
   nextToken?: string;
   templates: ServiceTemplateSummary[];
 }
-const ListServiceTemplatesOutput = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<ListServiceTemplatesOutput>;
 export interface ListServiceTemplateVersionsInput {
   nextToken?: string;
   maxResults?: number;
   templateName: string;
   majorVersion?: string;
 }
-const ListServiceTemplateVersionsInput = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<ListServiceTemplateVersionsInput>;
 export interface ServiceTemplateVersionSummary {
   templateName: string;
   majorVersion: string;
@@ -1867,25 +1297,15 @@ export interface ListServiceTemplateVersionsOutput {
   nextToken?: string;
   templateVersions: ServiceTemplateVersionSummary[];
 }
-const ListServiceTemplateVersionsOutput =
-  ListEnvironmentTemplateVersionsOutput as any as S.Schema<ListServiceTemplateVersionsOutput>;
 export interface ListTagsForResourceInput {
   resourceArn: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   tags: Tag[];
   nextToken?: string;
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<ListTagsForResourceOutput>;
 export type ResourceDeploymentStatus = string;
 export interface NotifyResourceDeploymentStatusChangeInput {
   resourceArn: string;
@@ -1894,60 +1314,33 @@ export interface NotifyResourceDeploymentStatusChangeInput {
   deploymentId?: string;
   statusMessage?: string | redacted.Redacted<string>;
 }
-const NotifyResourceDeploymentStatusChangeInput = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<NotifyResourceDeploymentStatusChangeInput>;
 export interface NotifyResourceDeploymentStatusChangeOutput {}
-const NotifyResourceDeploymentStatusChangeOutput = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<NotifyResourceDeploymentStatusChangeOutput>;
 export interface RejectEnvironmentAccountConnectionInput {
   id: string;
 }
-const RejectEnvironmentAccountConnectionInput = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<RejectEnvironmentAccountConnectionInput>;
 export interface RejectEnvironmentAccountConnectionOutput {
   environmentAccountConnection: EnvironmentAccountConnection;
 }
-const RejectEnvironmentAccountConnectionOutput =
-  AcceptEnvironmentAccountConnectionOutput as any as S.Schema<RejectEnvironmentAccountConnectionOutput>;
 export interface TagResourceInput {
   resourceArn: string;
   tags: Tag[];
 }
-const TagResourceInput = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-const TagResourceOutput = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<TagResourceOutput>;
 export type TagKeyList = string[];
-const TagKeyList = ServiceTemplateSupportedComponentSourceInputList as any as S.Schema<TagKeyList>;
 export interface UntagResourceInput {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-const UntagResourceOutput = TagResourceOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateAccountSettingsInput {
   pipelineServiceRoleArn?: string;
   pipelineProvisioningRepository?: RepositoryBranchInput;
   deletePipelineProvisioningRepository?: boolean;
   pipelineCodebuildRoleArn?: string;
 }
-const UpdateAccountSettingsInput = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<UpdateAccountSettingsInput>;
 export interface UpdateAccountSettingsOutput {
   accountSettings: AccountSettings;
 }
-const UpdateAccountSettingsOutput = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<UpdateAccountSettingsOutput>;
 export type ComponentDeploymentUpdateType = string;
 export interface UpdateComponentInput {
   name: string;
@@ -1959,14 +1352,9 @@ export interface UpdateComponentInput {
   templateFile?: string | redacted.Redacted<string>;
   clientToken?: string;
 }
-const UpdateComponentInput = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<UpdateComponentInput>;
 export interface UpdateComponentOutput {
   component: Component;
 }
-const UpdateComponentOutput = CreateComponentOutput as any as S.Schema<UpdateComponentOutput>;
 export type DeploymentUpdateType = string;
 export interface UpdateEnvironmentInput {
   name: string;
@@ -1981,43 +1369,26 @@ export interface UpdateEnvironmentInput {
   componentRoleArn?: string;
   codebuildRoleArn?: string;
 }
-const UpdateEnvironmentInput = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<UpdateEnvironmentInput>;
 export interface UpdateEnvironmentOutput {
   environment: Environment;
 }
-const UpdateEnvironmentOutput = CreateEnvironmentOutput as any as S.Schema<UpdateEnvironmentOutput>;
 export interface UpdateEnvironmentAccountConnectionInput {
   id: string;
   roleArn?: string;
   componentRoleArn?: string;
   codebuildRoleArn?: string;
 }
-const UpdateEnvironmentAccountConnectionInput = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<UpdateEnvironmentAccountConnectionInput>;
 export interface UpdateEnvironmentAccountConnectionOutput {
   environmentAccountConnection: EnvironmentAccountConnection;
 }
-const UpdateEnvironmentAccountConnectionOutput =
-  AcceptEnvironmentAccountConnectionOutput as any as S.Schema<UpdateEnvironmentAccountConnectionOutput>;
 export interface UpdateEnvironmentTemplateInput {
   name: string;
   displayName?: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
 }
-const UpdateEnvironmentTemplateInput = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<UpdateEnvironmentTemplateInput>;
 export interface UpdateEnvironmentTemplateOutput {
   environmentTemplate: EnvironmentTemplate;
 }
-const UpdateEnvironmentTemplateOutput =
-  CreateEnvironmentTemplateOutput as any as S.Schema<UpdateEnvironmentTemplateOutput>;
 export interface UpdateEnvironmentTemplateVersionInput {
   templateName: string;
   majorVersion: string;
@@ -2025,25 +1396,17 @@ export interface UpdateEnvironmentTemplateVersionInput {
   description?: string | redacted.Redacted<string>;
   status?: string;
 }
-const UpdateEnvironmentTemplateVersionInput = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<UpdateEnvironmentTemplateVersionInput>;
 export interface UpdateEnvironmentTemplateVersionOutput {
   environmentTemplateVersion: EnvironmentTemplateVersion;
 }
-const UpdateEnvironmentTemplateVersionOutput =
-  CreateEnvironmentTemplateVersionOutput as any as S.Schema<UpdateEnvironmentTemplateVersionOutput>;
 export interface UpdateServiceInput {
   name: string;
   description?: string | redacted.Redacted<string>;
   spec?: string | redacted.Redacted<string>;
 }
-const UpdateServiceInput = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<UpdateServiceInput>;
 export interface UpdateServiceOutput {
   service: Service;
 }
-const UpdateServiceOutput = CreateServiceOutput as any as S.Schema<UpdateServiceOutput>;
 export interface UpdateServiceInstanceInput {
   name: string;
   serviceName: string;
@@ -2053,15 +1416,9 @@ export interface UpdateServiceInstanceInput {
   templateMinorVersion?: string;
   clientToken?: string;
 }
-const UpdateServiceInstanceInput = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<UpdateServiceInstanceInput>;
 export interface UpdateServiceInstanceOutput {
   serviceInstance: ServiceInstance;
 }
-const UpdateServiceInstanceOutput =
-  CancelServiceInstanceDeploymentOutput as any as S.Schema<UpdateServiceInstanceOutput>;
 export interface UpdateServicePipelineInput {
   serviceName: string;
   spec: string | redacted.Redacted<string>;
@@ -2069,32 +1426,18 @@ export interface UpdateServicePipelineInput {
   templateMajorVersion?: string;
   templateMinorVersion?: string;
 }
-const UpdateServicePipelineInput = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<UpdateServicePipelineInput>;
 export interface UpdateServicePipelineOutput {
   pipeline: ServicePipeline;
 }
-const UpdateServicePipelineOutput =
-  CancelServicePipelineDeploymentOutput as any as S.Schema<UpdateServicePipelineOutput>;
 export interface UpdateServiceSyncBlockerInput {
   id: string;
   resolvedReason: string;
 }
-const UpdateServiceSyncBlockerInput = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<UpdateServiceSyncBlockerInput>;
 export interface UpdateServiceSyncBlockerOutput {
   serviceName: string;
   serviceInstanceName?: string;
   serviceSyncBlocker: SyncBlocker;
 }
-const UpdateServiceSyncBlockerOutput = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<UpdateServiceSyncBlockerOutput>;
 export interface UpdateServiceSyncConfigInput {
   serviceName: string;
   repositoryProvider: string;
@@ -2102,29 +1445,17 @@ export interface UpdateServiceSyncConfigInput {
   branch: string;
   filePath: string;
 }
-const UpdateServiceSyncConfigInput = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<UpdateServiceSyncConfigInput>;
 export interface UpdateServiceSyncConfigOutput {
   serviceSyncConfig?: ServiceSyncConfig;
 }
-const UpdateServiceSyncConfigOutput =
-  CreateServiceSyncConfigOutput as any as S.Schema<UpdateServiceSyncConfigOutput>;
 export interface UpdateServiceTemplateInput {
   name: string;
   displayName?: string | redacted.Redacted<string>;
   description?: string | redacted.Redacted<string>;
 }
-const UpdateServiceTemplateInput = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<UpdateServiceTemplateInput>;
 export interface UpdateServiceTemplateOutput {
   serviceTemplate: ServiceTemplate;
 }
-const UpdateServiceTemplateOutput =
-  CreateServiceTemplateOutput as any as S.Schema<UpdateServiceTemplateOutput>;
 export interface UpdateServiceTemplateVersionInput {
   templateName: string;
   majorVersion: string;
@@ -2134,15 +1465,9 @@ export interface UpdateServiceTemplateVersionInput {
   compatibleEnvironmentTemplates?: CompatibleEnvironmentTemplateInput[];
   supportedComponentSources?: string[];
 }
-const UpdateServiceTemplateVersionInput = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<UpdateServiceTemplateVersionInput>;
 export interface UpdateServiceTemplateVersionOutput {
   serviceTemplateVersion: ServiceTemplateVersion;
 }
-const UpdateServiceTemplateVersionOutput =
-  CreateServiceTemplateVersionOutput as any as S.Schema<UpdateServiceTemplateVersionOutput>;
 export interface UpdateTemplateSyncConfigInput {
   templateName: string;
   templateType: string;
@@ -2151,15 +1476,9 @@ export interface UpdateTemplateSyncConfigInput {
   branch: string;
   subdirectory?: string;
 }
-const UpdateTemplateSyncConfigInput = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<UpdateTemplateSyncConfigInput>;
 export interface UpdateTemplateSyncConfigOutput {
   templateSyncConfig?: TemplateSyncConfig;
 }
-const UpdateTemplateSyncConfigOutput =
-  CreateTemplateSyncConfigOutput as any as S.Schema<UpdateTemplateSyncConfigOutput>;
 export type ErrorMessage = string | redacted.Redacted<string>;
 export type AcceptEnvironmentAccountConnectionError =
   | AccessDeniedException
@@ -2182,8 +1501,8 @@ export const acceptEnvironmentAccountConnection: API.OperationMethod<
   AcceptEnvironmentAccountConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptEnvironmentAccountConnectionInput,
-  output: AcceptEnvironmentAccountConnectionOutput,
+  input: __S(0) as any as S.Schema<AcceptEnvironmentAccountConnectionInput>,
+  output: __S(2) as any as S.Schema<AcceptEnvironmentAccountConnectionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2218,8 +1537,8 @@ export const cancelComponentDeployment: API.OperationMethod<
   CancelComponentDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelComponentDeploymentInput,
-  output: CancelComponentDeploymentOutput,
+  input: __S(3) as any as S.Schema<CancelComponentDeploymentInput>,
+  output: __S(5) as any as S.Schema<CancelComponentDeploymentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2261,8 +1580,8 @@ export const cancelEnvironmentDeployment: API.OperationMethod<
   CancelEnvironmentDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelEnvironmentDeploymentInput,
-  output: CancelEnvironmentDeploymentOutput,
+  input: __S(6) as any as S.Schema<CancelEnvironmentDeploymentInput>,
+  output: __S(9) as any as S.Schema<CancelEnvironmentDeploymentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2307,8 +1626,8 @@ export const cancelServiceInstanceDeployment: API.OperationMethod<
   CancelServiceInstanceDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelServiceInstanceDeploymentInput,
-  output: CancelServiceInstanceDeploymentOutput,
+  input: __S(10) as any as S.Schema<CancelServiceInstanceDeploymentInput>,
+  output: __S(12) as any as S.Schema<CancelServiceInstanceDeploymentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2353,8 +1672,8 @@ export const cancelServicePipelineDeployment: API.OperationMethod<
   CancelServicePipelineDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelServicePipelineDeploymentInput,
-  output: CancelServicePipelineDeploymentOutput,
+  input: __S(13) as any as S.Schema<CancelServicePipelineDeploymentInput>,
+  output: __S(15) as any as S.Schema<CancelServicePipelineDeploymentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2390,8 +1709,8 @@ export const createComponent: API.OperationMethod<
   CreateComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateComponentInput,
-  output: CreateComponentOutput,
+  input: __S(18) as any as S.Schema<CreateComponentInput>,
+  output: __S(19) as any as S.Schema<CreateComponentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2435,8 +1754,8 @@ export const createEnvironment: API.OperationMethod<
   CreateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEnvironmentInput,
-  output: CreateEnvironmentOutput,
+  input: __S(21) as any as S.Schema<CreateEnvironmentInput>,
+  output: __S(22) as any as S.Schema<CreateEnvironmentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2473,8 +1792,8 @@ export const createEnvironmentAccountConnection: API.OperationMethod<
   CreateEnvironmentAccountConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEnvironmentAccountConnectionInput,
-  output: CreateEnvironmentAccountConnectionOutput,
+  input: __S(23) as any as S.Schema<CreateEnvironmentAccountConnectionInput>,
+  output: __S(2) as any as S.Schema<CreateEnvironmentAccountConnectionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2516,8 +1835,8 @@ export const createEnvironmentTemplate: API.OperationMethod<
   CreateEnvironmentTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEnvironmentTemplateInput,
-  output: CreateEnvironmentTemplateOutput,
+  input: __S(24) as any as S.Schema<CreateEnvironmentTemplateInput>,
+  output: __S(26) as any as S.Schema<CreateEnvironmentTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2551,8 +1870,8 @@ export const createEnvironmentTemplateVersion: API.OperationMethod<
   CreateEnvironmentTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEnvironmentTemplateVersionInput,
-  output: CreateEnvironmentTemplateVersionOutput,
+  input: __S(29) as any as S.Schema<CreateEnvironmentTemplateVersionInput>,
+  output: __S(31) as any as S.Schema<CreateEnvironmentTemplateVersionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2590,8 +1909,8 @@ export const createRepository: API.OperationMethod<
   CreateRepositoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRepositoryInput,
-  output: CreateRepositoryOutput,
+  input: __S(32) as any as S.Schema<CreateRepositoryInput>,
+  output: __S(34) as any as S.Schema<CreateRepositoryOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2626,8 +1945,8 @@ export const createService: API.OperationMethod<
   CreateServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateServiceInput,
-  output: CreateServiceOutput,
+  input: __S(35) as any as S.Schema<CreateServiceInput>,
+  output: __S(37) as any as S.Schema<CreateServiceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2659,8 +1978,8 @@ export const createServiceInstance: API.OperationMethod<
   CreateServiceInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateServiceInstanceInput,
-  output: CreateServiceInstanceOutput,
+  input: __S(38) as any as S.Schema<CreateServiceInstanceInput>,
+  output: __S(12) as any as S.Schema<CreateServiceInstanceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2691,8 +2010,8 @@ export const createServiceSyncConfig: API.OperationMethod<
   CreateServiceSyncConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateServiceSyncConfigInput,
-  output: CreateServiceSyncConfigOutput,
+  input: __S(39) as any as S.Schema<CreateServiceSyncConfigInput>,
+  output: __S(41) as any as S.Schema<CreateServiceSyncConfigOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2728,8 +2047,8 @@ export const createServiceTemplate: API.OperationMethod<
   CreateServiceTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateServiceTemplateInput,
-  output: CreateServiceTemplateOutput,
+  input: __S(42) as any as S.Schema<CreateServiceTemplateInput>,
+  output: __S(44) as any as S.Schema<CreateServiceTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2763,8 +2082,8 @@ export const createServiceTemplateVersion: API.OperationMethod<
   CreateServiceTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateServiceTemplateVersionInput,
-  output: CreateServiceTemplateVersionOutput,
+  input: __S(48) as any as S.Schema<CreateServiceTemplateVersionInput>,
+  output: __S(50) as any as S.Schema<CreateServiceTemplateVersionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2801,8 +2120,8 @@ export const createTemplateSyncConfig: API.OperationMethod<
   CreateTemplateSyncConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTemplateSyncConfigInput,
-  output: CreateTemplateSyncConfigOutput,
+  input: __S(51) as any as S.Schema<CreateTemplateSyncConfigInput>,
+  output: __S(53) as any as S.Schema<CreateTemplateSyncConfigOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2837,8 +2156,8 @@ export const deleteComponent: API.OperationMethod<
   DeleteComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteComponentInput,
-  output: DeleteComponentOutput,
+  input: __S(54) as any as S.Schema<DeleteComponentInput>,
+  output: __S(55) as any as S.Schema<DeleteComponentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2868,8 +2187,8 @@ export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeploymentInput,
-  output: DeleteDeploymentOutput,
+  input: __S(56) as any as S.Schema<DeleteDeploymentInput>,
+  output: __S(62) as any as S.Schema<DeleteDeploymentOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2899,8 +2218,8 @@ export const deleteEnvironment: API.OperationMethod<
   DeleteEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEnvironmentInput,
-  output: DeleteEnvironmentOutput,
+  input: __S(63) as any as S.Schema<DeleteEnvironmentInput>,
+  output: __S(64) as any as S.Schema<DeleteEnvironmentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2938,8 +2257,8 @@ export const deleteEnvironmentAccountConnection: API.OperationMethod<
   DeleteEnvironmentAccountConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEnvironmentAccountConnectionInput,
-  output: DeleteEnvironmentAccountConnectionOutput,
+  input: __S(65) as any as S.Schema<DeleteEnvironmentAccountConnectionInput>,
+  output: __S(66) as any as S.Schema<DeleteEnvironmentAccountConnectionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2970,8 +2289,8 @@ export const deleteEnvironmentTemplate: API.OperationMethod<
   DeleteEnvironmentTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEnvironmentTemplateInput,
-  output: DeleteEnvironmentTemplateOutput,
+  input: __S(67) as any as S.Schema<DeleteEnvironmentTemplateInput>,
+  output: __S(68) as any as S.Schema<DeleteEnvironmentTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3008,8 +2327,8 @@ export const deleteEnvironmentTemplateVersion: API.OperationMethod<
   DeleteEnvironmentTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEnvironmentTemplateVersionInput,
-  output: DeleteEnvironmentTemplateVersionOutput,
+  input: __S(69) as any as S.Schema<DeleteEnvironmentTemplateVersionInput>,
+  output: __S(70) as any as S.Schema<DeleteEnvironmentTemplateVersionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3040,8 +2359,8 @@ export const deleteRepository: API.OperationMethod<
   DeleteRepositoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRepositoryInput,
-  output: DeleteRepositoryOutput,
+  input: __S(71) as any as S.Schema<DeleteRepositoryInput>,
+  output: __S(72) as any as S.Schema<DeleteRepositoryOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3079,8 +2398,8 @@ export const deleteService: API.OperationMethod<
   DeleteServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceInput,
-  output: DeleteServiceOutput,
+  input: __S(73) as any as S.Schema<DeleteServiceInput>,
+  output: __S(74) as any as S.Schema<DeleteServiceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3111,8 +2430,8 @@ export const deleteServiceSyncConfig: API.OperationMethod<
   DeleteServiceSyncConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceSyncConfigInput,
-  output: DeleteServiceSyncConfigOutput,
+  input: __S(75) as any as S.Schema<DeleteServiceSyncConfigInput>,
+  output: __S(41) as any as S.Schema<DeleteServiceSyncConfigOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3144,8 +2463,8 @@ export const deleteServiceTemplate: API.OperationMethod<
   DeleteServiceTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceTemplateInput,
-  output: DeleteServiceTemplateOutput,
+  input: __S(76) as any as S.Schema<DeleteServiceTemplateInput>,
+  output: __S(77) as any as S.Schema<DeleteServiceTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3185,8 +2504,8 @@ export const deleteServiceTemplateVersion: API.OperationMethod<
   DeleteServiceTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceTemplateVersionInput,
-  output: DeleteServiceTemplateVersionOutput,
+  input: __S(78) as any as S.Schema<DeleteServiceTemplateVersionInput>,
+  output: __S(79) as any as S.Schema<DeleteServiceTemplateVersionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3217,8 +2536,8 @@ export const deleteTemplateSyncConfig: API.OperationMethod<
   DeleteTemplateSyncConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTemplateSyncConfigInput,
-  output: DeleteTemplateSyncConfigOutput,
+  input: __S(80) as any as S.Schema<DeleteTemplateSyncConfigInput>,
+  output: __S(53) as any as S.Schema<DeleteTemplateSyncConfigOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3248,8 +2567,8 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountSettingsInput,
-  output: GetAccountSettingsOutput,
+  input: __S(81) as any as S.Schema<GetAccountSettingsInput>,
+  output: __S(83) as any as S.Schema<GetAccountSettingsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3282,8 +2601,8 @@ export const getComponent: API.OperationMethod<
   GetComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetComponentInput,
-  output: GetComponentOutput,
+  input: __S(84) as any as S.Schema<GetComponentInput>,
+  output: __S(55) as any as S.Schema<GetComponentOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3312,8 +2631,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeploymentInput,
-  output: GetDeploymentOutput,
+  input: __S(85) as any as S.Schema<GetDeploymentInput>,
+  output: __S(62) as any as S.Schema<GetDeploymentOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3342,8 +2661,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnvironmentInput,
-  output: GetEnvironmentOutput,
+  input: __S(86) as any as S.Schema<GetEnvironmentInput>,
+  output: __S(22) as any as S.Schema<GetEnvironmentOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3375,8 +2694,8 @@ export const getEnvironmentAccountConnection: API.OperationMethod<
   GetEnvironmentAccountConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnvironmentAccountConnectionInput,
-  output: GetEnvironmentAccountConnectionOutput,
+  input: __S(87) as any as S.Schema<GetEnvironmentAccountConnectionInput>,
+  output: __S(2) as any as S.Schema<GetEnvironmentAccountConnectionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3405,8 +2724,8 @@ export const getEnvironmentTemplate: API.OperationMethod<
   GetEnvironmentTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnvironmentTemplateInput,
-  output: GetEnvironmentTemplateOutput,
+  input: __S(88) as any as S.Schema<GetEnvironmentTemplateInput>,
+  output: __S(26) as any as S.Schema<GetEnvironmentTemplateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3435,8 +2754,8 @@ export const getEnvironmentTemplateVersion: API.OperationMethod<
   GetEnvironmentTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnvironmentTemplateVersionInput,
-  output: GetEnvironmentTemplateVersionOutput,
+  input: __S(89) as any as S.Schema<GetEnvironmentTemplateVersionInput>,
+  output: __S(31) as any as S.Schema<GetEnvironmentTemplateVersionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3465,8 +2784,8 @@ export const getRepository: API.OperationMethod<
   GetRepositoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepositoryInput,
-  output: GetRepositoryOutput,
+  input: __S(90) as any as S.Schema<GetRepositoryInput>,
+  output: __S(34) as any as S.Schema<GetRepositoryOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3502,8 +2821,8 @@ export const getRepositorySyncStatus: API.OperationMethod<
   GetRepositorySyncStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRepositorySyncStatusInput,
-  output: GetRepositorySyncStatusOutput,
+  input: __S(91) as any as S.Schema<GetRepositorySyncStatusInput>,
+  output: __S(95) as any as S.Schema<GetRepositorySyncStatusOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3544,8 +2863,8 @@ export const getResourcesSummary: API.OperationMethod<
   GetResourcesSummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourcesSummaryInput,
-  output: GetResourcesSummaryOutput,
+  input: __S(96) as any as S.Schema<GetResourcesSummaryInput>,
+  output: __S(99) as any as S.Schema<GetResourcesSummaryOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3573,8 +2892,8 @@ export const getService: API.OperationMethod<
   GetServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceInput,
-  output: GetServiceOutput,
+  input: __S(100) as any as S.Schema<GetServiceInput>,
+  output: __S(74) as any as S.Schema<GetServiceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3604,8 +2923,8 @@ export const getServiceInstance: API.OperationMethod<
   GetServiceInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceInstanceInput,
-  output: GetServiceInstanceOutput,
+  input: __S(101) as any as S.Schema<GetServiceInstanceInput>,
+  output: __S(102) as any as S.Schema<GetServiceInstanceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3634,8 +2953,8 @@ export const getServiceInstanceSyncStatus: API.OperationMethod<
   GetServiceInstanceSyncStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceInstanceSyncStatusInput,
-  output: GetServiceInstanceSyncStatusOutput,
+  input: __S(103) as any as S.Schema<GetServiceInstanceSyncStatusInput>,
+  output: __S(106) as any as S.Schema<GetServiceInstanceSyncStatusOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3664,8 +2983,8 @@ export const getServiceSyncBlockerSummary: API.OperationMethod<
   GetServiceSyncBlockerSummaryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceSyncBlockerSummaryInput,
-  output: GetServiceSyncBlockerSummaryOutput,
+  input: __S(107) as any as S.Schema<GetServiceSyncBlockerSummaryInput>,
+  output: __S(111) as any as S.Schema<GetServiceSyncBlockerSummaryOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3694,8 +3013,8 @@ export const getServiceSyncConfig: API.OperationMethod<
   GetServiceSyncConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceSyncConfigInput,
-  output: GetServiceSyncConfigOutput,
+  input: __S(112) as any as S.Schema<GetServiceSyncConfigInput>,
+  output: __S(41) as any as S.Schema<GetServiceSyncConfigOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3724,8 +3043,8 @@ export const getServiceTemplate: API.OperationMethod<
   GetServiceTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceTemplateInput,
-  output: GetServiceTemplateOutput,
+  input: __S(113) as any as S.Schema<GetServiceTemplateInput>,
+  output: __S(114) as any as S.Schema<GetServiceTemplateOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3754,8 +3073,8 @@ export const getServiceTemplateVersion: API.OperationMethod<
   GetServiceTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceTemplateVersionInput,
-  output: GetServiceTemplateVersionOutput,
+  input: __S(115) as any as S.Schema<GetServiceTemplateVersionInput>,
+  output: __S(50) as any as S.Schema<GetServiceTemplateVersionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3784,8 +3103,8 @@ export const getTemplateSyncConfig: API.OperationMethod<
   GetTemplateSyncConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTemplateSyncConfigInput,
-  output: GetTemplateSyncConfigOutput,
+  input: __S(116) as any as S.Schema<GetTemplateSyncConfigInput>,
+  output: __S(53) as any as S.Schema<GetTemplateSyncConfigOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3814,8 +3133,8 @@ export const getTemplateSyncStatus: API.OperationMethod<
   GetTemplateSyncStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTemplateSyncStatusInput,
-  output: GetTemplateSyncStatusOutput,
+  input: __S(117) as any as S.Schema<GetTemplateSyncStatusInput>,
+  output: __S(106) as any as S.Schema<GetTemplateSyncStatusOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3849,8 +3168,8 @@ export const listComponentOutputs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Output
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListComponentOutputsInput,
-  output: ListComponentOutputsOutput,
+  input: __S(118) as any as S.Schema<ListComponentOutputsInput>,
+  output: __S(121) as any as S.Schema<ListComponentOutputsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3885,8 +3204,8 @@ export const listComponentProvisionedResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProvisionedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListComponentProvisionedResourcesInput,
-  output: ListComponentProvisionedResourcesOutput,
+  input: __S(122) as any as S.Schema<ListComponentProvisionedResourcesInput>,
+  output: __S(125) as any as S.Schema<ListComponentProvisionedResourcesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3924,8 +3243,8 @@ export const listComponents: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ComponentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListComponentsInput,
-  output: ListComponentsOutput,
+  input: __S(126) as any as S.Schema<ListComponentsInput>,
+  output: __S(129) as any as S.Schema<ListComponentsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3960,8 +3279,8 @@ export const listDeployments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DeploymentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDeploymentsInput,
-  output: ListDeploymentsOutput,
+  input: __S(130) as any as S.Schema<ListDeploymentsInput>,
+  output: __S(133) as any as S.Schema<ListDeploymentsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3999,8 +3318,8 @@ export const listEnvironmentAccountConnections: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnvironmentAccountConnectionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEnvironmentAccountConnectionsInput,
-  output: ListEnvironmentAccountConnectionsOutput,
+  input: __S(134) as any as S.Schema<ListEnvironmentAccountConnectionsInput>,
+  output: __S(137) as any as S.Schema<ListEnvironmentAccountConnectionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4035,8 +3354,8 @@ export const listEnvironmentOutputs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Output
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEnvironmentOutputsInput,
-  output: ListEnvironmentOutputsOutput,
+  input: __S(138) as any as S.Schema<ListEnvironmentOutputsInput>,
+  output: __S(121) as any as S.Schema<ListEnvironmentOutputsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4067,8 +3386,8 @@ export const listEnvironmentProvisionedResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProvisionedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEnvironmentProvisionedResourcesInput,
-  output: ListEnvironmentProvisionedResourcesOutput,
+  input: __S(139) as any as S.Schema<ListEnvironmentProvisionedResourcesInput>,
+  output: __S(125) as any as S.Schema<ListEnvironmentProvisionedResourcesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4103,8 +3422,8 @@ export const listEnvironments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnvironmentSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEnvironmentsInput,
-  output: ListEnvironmentsOutput,
+  input: __S(141) as any as S.Schema<ListEnvironmentsInput>,
+  output: __S(144) as any as S.Schema<ListEnvironmentsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4139,8 +3458,8 @@ export const listEnvironmentTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnvironmentTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEnvironmentTemplatesInput,
-  output: ListEnvironmentTemplatesOutput,
+  input: __S(145) as any as S.Schema<ListEnvironmentTemplatesInput>,
+  output: __S(148) as any as S.Schema<ListEnvironmentTemplatesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4175,8 +3494,8 @@ export const listEnvironmentTemplateVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   EnvironmentTemplateVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEnvironmentTemplateVersionsInput,
-  output: ListEnvironmentTemplateVersionsOutput,
+  input: __S(149) as any as S.Schema<ListEnvironmentTemplateVersionsInput>,
+  output: __S(152) as any as S.Schema<ListEnvironmentTemplateVersionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4212,8 +3531,8 @@ export const listRepositories: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RepositorySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRepositoriesInput,
-  output: ListRepositoriesOutput,
+  input: __S(153) as any as S.Schema<ListRepositoriesInput>,
+  output: __S(156) as any as S.Schema<ListRepositoriesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4248,8 +3567,8 @@ export const listRepositorySyncDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RepositorySyncDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRepositorySyncDefinitionsInput,
-  output: ListRepositorySyncDefinitionsOutput,
+  input: __S(157) as any as S.Schema<ListRepositorySyncDefinitionsInput>,
+  output: __S(160) as any as S.Schema<ListRepositorySyncDefinitionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4283,8 +3602,8 @@ export const listServiceInstanceOutputs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Output
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServiceInstanceOutputsInput,
-  output: ListServiceInstanceOutputsOutput,
+  input: __S(161) as any as S.Schema<ListServiceInstanceOutputsInput>,
+  output: __S(121) as any as S.Schema<ListServiceInstanceOutputsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4315,8 +3634,8 @@ export const listServiceInstanceProvisionedResources: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   ProvisionedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServiceInstanceProvisionedResourcesInput,
-  output: ListServiceInstanceProvisionedResourcesOutput,
+  input: __S(162) as any as S.Schema<ListServiceInstanceProvisionedResourcesInput>,
+  output: __S(125) as any as S.Schema<ListServiceInstanceProvisionedResourcesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4352,8 +3671,8 @@ export const listServiceInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceInstanceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServiceInstancesInput,
-  output: ListServiceInstancesOutput,
+  input: __S(165) as any as S.Schema<ListServiceInstancesInput>,
+  output: __S(168) as any as S.Schema<ListServiceInstancesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4389,8 +3708,8 @@ export const listServicePipelineOutputs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Output
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServicePipelineOutputsInput,
-  output: ListServicePipelineOutputsOutput,
+  input: __S(169) as any as S.Schema<ListServicePipelineOutputsInput>,
+  output: __S(121) as any as S.Schema<ListServicePipelineOutputsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4421,8 +3740,8 @@ export const listServicePipelineProvisionedResources: API.PaginatedOperationMeth
   Credentials | HttpClient.HttpClient,
   ProvisionedResource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServicePipelineProvisionedResourcesInput,
-  output: ListServicePipelineProvisionedResourcesOutput,
+  input: __S(170) as any as S.Schema<ListServicePipelineProvisionedResourcesInput>,
+  output: __S(125) as any as S.Schema<ListServicePipelineProvisionedResourcesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4456,8 +3775,8 @@ export const listServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServicesInput,
-  output: ListServicesOutput,
+  input: __S(171) as any as S.Schema<ListServicesInput>,
+  output: __S(174) as any as S.Schema<ListServicesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4491,8 +3810,8 @@ export const listServiceTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServiceTemplatesInput,
-  output: ListServiceTemplatesOutput,
+  input: __S(175) as any as S.Schema<ListServiceTemplatesInput>,
+  output: __S(178) as any as S.Schema<ListServiceTemplatesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4527,8 +3846,8 @@ export const listServiceTemplateVersions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ServiceTemplateVersionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServiceTemplateVersionsInput,
-  output: ListServiceTemplateVersionsOutput,
+  input: __S(179) as any as S.Schema<ListServiceTemplateVersionsInput>,
+  output: __S(152) as any as S.Schema<ListServiceTemplateVersionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4565,8 +3884,8 @@ export const listTagsForResource: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Tag
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTagsForResourceInput,
-  output: ListTagsForResourceOutput,
+  input: __S(180) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(181) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4605,8 +3924,8 @@ export const notifyResourceDeploymentStatusChange: API.OperationMethod<
   NotifyResourceDeploymentStatusChangeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: NotifyResourceDeploymentStatusChangeInput,
-  output: NotifyResourceDeploymentStatusChangeOutput,
+  input: __S(182) as any as S.Schema<NotifyResourceDeploymentStatusChangeInput>,
+  output: __S(183) as any as S.Schema<NotifyResourceDeploymentStatusChangeOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4646,8 +3965,8 @@ export const rejectEnvironmentAccountConnection: API.OperationMethod<
   RejectEnvironmentAccountConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RejectEnvironmentAccountConnectionInput,
-  output: RejectEnvironmentAccountConnectionOutput,
+  input: __S(184) as any as S.Schema<RejectEnvironmentAccountConnectionInput>,
+  output: __S(2) as any as S.Schema<RejectEnvironmentAccountConnectionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4681,8 +4000,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceInput,
-  output: TagResourceOutput,
+  input: __S(185) as any as S.Schema<TagResourceInput>,
+  output: __S(186) as any as S.Schema<TagResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4716,8 +4035,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceInput,
-  output: UntagResourceOutput,
+  input: __S(187) as any as S.Schema<UntagResourceInput>,
+  output: __S(186) as any as S.Schema<UntagResourceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4747,8 +4066,8 @@ export const updateAccountSettings: API.OperationMethod<
   UpdateAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountSettingsInput,
-  output: UpdateAccountSettingsOutput,
+  input: __S(188) as any as S.Schema<UpdateAccountSettingsInput>,
+  output: __S(189) as any as S.Schema<UpdateAccountSettingsOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4788,8 +4107,8 @@ export const updateComponent: API.OperationMethod<
   UpdateComponentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateComponentInput,
-  output: UpdateComponentOutput,
+  input: __S(190) as any as S.Schema<UpdateComponentInput>,
+  output: __S(19) as any as S.Schema<UpdateComponentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4863,8 +4182,8 @@ export const updateEnvironment: API.OperationMethod<
   UpdateEnvironmentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEnvironmentInput,
-  output: UpdateEnvironmentOutput,
+  input: __S(191) as any as S.Schema<UpdateEnvironmentInput>,
+  output: __S(22) as any as S.Schema<UpdateEnvironmentOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4898,8 +4217,8 @@ export const updateEnvironmentAccountConnection: API.OperationMethod<
   UpdateEnvironmentAccountConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEnvironmentAccountConnectionInput,
-  output: UpdateEnvironmentAccountConnectionOutput,
+  input: __S(192) as any as S.Schema<UpdateEnvironmentAccountConnectionInput>,
+  output: __S(2) as any as S.Schema<UpdateEnvironmentAccountConnectionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4930,8 +4249,8 @@ export const updateEnvironmentTemplate: API.OperationMethod<
   UpdateEnvironmentTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEnvironmentTemplateInput,
-  output: UpdateEnvironmentTemplateOutput,
+  input: __S(193) as any as S.Schema<UpdateEnvironmentTemplateInput>,
+  output: __S(26) as any as S.Schema<UpdateEnvironmentTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4962,8 +4281,8 @@ export const updateEnvironmentTemplateVersion: API.OperationMethod<
   UpdateEnvironmentTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEnvironmentTemplateVersionInput,
-  output: UpdateEnvironmentTemplateVersionOutput,
+  input: __S(194) as any as S.Schema<UpdateEnvironmentTemplateVersionInput>,
+  output: __S(31) as any as S.Schema<UpdateEnvironmentTemplateVersionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5009,8 +4328,8 @@ export const updateService: API.OperationMethod<
   UpdateServiceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceInput,
-  output: UpdateServiceOutput,
+  input: __S(195) as any as S.Schema<UpdateServiceInput>,
+  output: __S(37) as any as S.Schema<UpdateServiceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5052,8 +4371,8 @@ export const updateServiceInstance: API.OperationMethod<
   UpdateServiceInstanceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceInstanceInput,
-  output: UpdateServiceInstanceOutput,
+  input: __S(196) as any as S.Schema<UpdateServiceInstanceInput>,
+  output: __S(12) as any as S.Schema<UpdateServiceInstanceOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5111,8 +4430,8 @@ export const updateServicePipeline: API.OperationMethod<
   UpdateServicePipelineError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServicePipelineInput,
-  output: UpdateServicePipelineOutput,
+  input: __S(197) as any as S.Schema<UpdateServicePipelineInput>,
+  output: __S(15) as any as S.Schema<UpdateServicePipelineOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5143,8 +4462,8 @@ export const updateServiceSyncBlocker: API.OperationMethod<
   UpdateServiceSyncBlockerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceSyncBlockerInput,
-  output: UpdateServiceSyncBlockerOutput,
+  input: __S(198) as any as S.Schema<UpdateServiceSyncBlockerInput>,
+  output: __S(199) as any as S.Schema<UpdateServiceSyncBlockerOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5175,8 +4494,8 @@ export const updateServiceSyncConfig: API.OperationMethod<
   UpdateServiceSyncConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceSyncConfigInput,
-  output: UpdateServiceSyncConfigOutput,
+  input: __S(200) as any as S.Schema<UpdateServiceSyncConfigInput>,
+  output: __S(41) as any as S.Schema<UpdateServiceSyncConfigOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5207,8 +4526,8 @@ export const updateServiceTemplate: API.OperationMethod<
   UpdateServiceTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceTemplateInput,
-  output: UpdateServiceTemplateOutput,
+  input: __S(201) as any as S.Schema<UpdateServiceTemplateInput>,
+  output: __S(44) as any as S.Schema<UpdateServiceTemplateOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5239,8 +4558,8 @@ export const updateServiceTemplateVersion: API.OperationMethod<
   UpdateServiceTemplateVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceTemplateVersionInput,
-  output: UpdateServiceTemplateVersionOutput,
+  input: __S(202) as any as S.Schema<UpdateServiceTemplateVersionInput>,
+  output: __S(50) as any as S.Schema<UpdateServiceTemplateVersionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5273,8 +4592,8 @@ export const updateTemplateSyncConfig: API.OperationMethod<
   UpdateTemplateSyncConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTemplateSyncConfigInput,
-  output: UpdateTemplateSyncConfigOutput,
+  input: __S(203) as any as S.Schema<UpdateTemplateSyncConfigInput>,
+  output: __S(53) as any as S.Schema<UpdateTemplateSyncConfigOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -5318,9 +4637,7 @@ function __c0(j: number): any {
         identifier: "EnvironmentAccountConnection",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ environmentAccountConnection: EnvironmentAccountConnection }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ environmentAccountConnection: __S(1) })).annotate({
         identifier: "AcceptEnvironmentAccountConnectionOutput",
       });
     case 3:
@@ -5353,7 +4670,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Component" });
     case 5:
-      return S.suspend(() => S.Struct({ component: Component })).annotate({
+      return S.suspend(() => S.Struct({ component: __S(4) })).annotate({
         identifier: "CancelComponentDeploymentOutput",
       });
     case 6:
@@ -5391,7 +4708,7 @@ function __c1(j: number): any {
           environmentAccountId: S.optional(S.String),
           spec: S.optional(SensitiveString),
           provisioning: S.optional(S.String),
-          provisioningRepository: S.optional(RepositoryBranch),
+          provisioningRepository: S.optional(__S(7)),
           componentRoleArn: S.optional(S.String),
           codebuildRoleArn: S.optional(S.String),
           lastAttemptedDeploymentId: S.optional(S.String),
@@ -5399,7 +4716,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Environment" });
     case 1:
-      return S.suspend(() => S.Struct({ environment: Environment })).annotate({
+      return S.suspend(() => S.Struct({ environment: __S(8) })).annotate({
         identifier: "CancelEnvironmentDeploymentOutput",
       });
     case 2:
@@ -5432,7 +4749,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ServiceInstance" });
     case 4:
-      return S.suspend(() => S.Struct({ serviceInstance: ServiceInstance })).annotate({
+      return S.suspend(() => S.Struct({ serviceInstance: __S(11) })).annotate({
         identifier: "CancelServiceInstanceDeploymentOutput",
       });
     case 5:
@@ -5461,7 +4778,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ServicePipeline" });
     case 7:
-      return S.suspend(() => S.Struct({ pipeline: ServicePipeline })).annotate({
+      return S.suspend(() => S.Struct({ pipeline: __S(14) })).annotate({
         identifier: "CancelServicePipelineDeploymentOutput",
       });
   }
@@ -5473,7 +4790,7 @@ function __c2(j: number): any {
         identifier: "Tag",
       });
     case 1:
-      return S.Array(Tag);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5485,12 +4802,12 @@ function __c2(j: number): any {
           templateFile: SensitiveString,
           manifest: SensitiveString,
           serviceSpec: S.optional(SensitiveString),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(17)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateComponentInput" });
     case 3:
-      return S.suspend(() => S.Struct({ component: Component })).annotate({
+      return S.suspend(() => S.Struct({ component: __S(4) })).annotate({
         identifier: "CreateComponentOutput",
       });
     case 4:
@@ -5508,14 +4825,14 @@ function __c2(j: number): any {
           spec: SensitiveString,
           protonServiceRoleArn: S.optional(S.String),
           environmentAccountConnectionId: S.optional(S.String),
-          tags: S.optional(TagList),
-          provisioningRepository: S.optional(RepositoryBranchInput),
+          tags: S.optional(__S(17)),
+          provisioningRepository: S.optional(__S(20)),
           componentRoleArn: S.optional(S.String),
           codebuildRoleArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateEnvironmentInput" });
     case 6:
-      return S.suspend(() => S.Struct({ environment: Environment })).annotate({
+      return S.suspend(() => S.Struct({ environment: __S(8) })).annotate({
         identifier: "CreateEnvironmentOutput",
       });
     case 7:
@@ -5525,7 +4842,7 @@ function __c2(j: number): any {
           managementAccountId: S.String,
           roleArn: S.optional(S.String),
           environmentName: S.String,
-          tags: S.optional(TagList),
+          tags: S.optional(__S(17)),
           componentRoleArn: S.optional(S.String),
           codebuildRoleArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -5544,7 +4861,7 @@ function __c3(j: number): any {
           description: S.optional(SensitiveString),
           encryptionKey: S.optional(S.String),
           provisioning: S.optional(S.String),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(17)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateEnvironmentTemplateInput",
@@ -5564,7 +4881,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "EnvironmentTemplate" });
     case 2:
-      return S.suspend(() => S.Struct({ environmentTemplate: EnvironmentTemplate })).annotate({
+      return S.suspend(() => S.Struct({ environmentTemplate: __S(25) })).annotate({
         identifier: "CreateEnvironmentTemplateOutput",
       });
     case 3:
@@ -5572,7 +4889,7 @@ function __c3(j: number): any {
         identifier: "S3ObjectSource",
       });
     case 4:
-      return S.Union([/*@__PURE__*/ S.Struct({ s3: S3ObjectSource })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ s3: __S(27) })]);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5580,8 +4897,8 @@ function __c3(j: number): any {
           templateName: S.String,
           description: S.optional(SensitiveString),
           majorVersion: S.optional(S.String),
-          source: TemplateVersionSourceInput,
-          tags: S.optional(TagList),
+          source: __S(28),
+          tags: S.optional(__S(17)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateEnvironmentTemplateVersionInput",
@@ -5605,9 +4922,7 @@ function __c3(j: number): any {
         identifier: "EnvironmentTemplateVersion",
       });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ environmentTemplateVersion: EnvironmentTemplateVersion }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ environmentTemplateVersion: __S(30) })).annotate({
         identifier: "CreateEnvironmentTemplateVersionOutput",
       });
   }
@@ -5621,7 +4936,7 @@ function __c4(j: number): any {
           name: S.String,
           connectionArn: S.String,
           encryptionKey: S.optional(S.String),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(17)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRepositoryInput" });
     case 1:
@@ -5635,7 +4950,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "Repository" });
     case 2:
-      return S.suspend(() => S.Struct({ repository: Repository })).annotate({
+      return S.suspend(() => S.Struct({ repository: __S(33) })).annotate({
         identifier: "CreateRepositoryOutput",
       });
     case 3:
@@ -5650,7 +4965,7 @@ function __c4(j: number): any {
           repositoryConnectionArn: S.optional(S.String),
           repositoryId: S.optional(S.String),
           branchName: S.optional(S.String),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(17)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateServiceInput" });
     case 4:
@@ -5665,14 +4980,14 @@ function __c4(j: number): any {
           status: S.String,
           statusMessage: S.optional(SensitiveString),
           spec: SensitiveString,
-          pipeline: S.optional(ServicePipeline),
+          pipeline: S.optional(__S(14)),
           repositoryConnectionArn: S.optional(S.String),
           repositoryId: S.optional(S.String),
           branchName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Service" });
     case 5:
-      return S.suspend(() => S.Struct({ service: Service })).annotate({
+      return S.suspend(() => S.Struct({ service: __S(36) })).annotate({
         identifier: "CreateServiceOutput",
       });
     case 6:
@@ -5683,7 +4998,7 @@ function __c4(j: number): any {
           spec: SensitiveString,
           templateMajorVersion: S.optional(S.String),
           templateMinorVersion: S.optional(S.String),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(17)),
           clientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
@@ -5716,9 +5031,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ServiceSyncConfig" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ serviceSyncConfig: S.optional(ServiceSyncConfig) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ serviceSyncConfig: S.optional(__S(40)) })).annotate({
         identifier: "CreateServiceSyncConfigOutput",
       });
     case 2:
@@ -5729,7 +5042,7 @@ function __c5(j: number): any {
           description: S.optional(SensitiveString),
           encryptionKey: S.optional(S.String),
           pipelineProvisioning: S.optional(S.String),
-          tags: S.optional(TagList),
+          tags: S.optional(__S(17)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateServiceTemplateInput",
@@ -5749,7 +5062,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ServiceTemplate" });
     case 4:
-      return S.suspend(() => S.Struct({ serviceTemplate: ServiceTemplate })).annotate({
+      return S.suspend(() => S.Struct({ serviceTemplate: __S(43) })).annotate({
         identifier: "CreateServiceTemplateOutput",
       });
     case 5:
@@ -5759,7 +5072,7 @@ function __c5(j: number): any {
         },
       );
     case 6:
-      return S.Array(CompatibleEnvironmentTemplateInput);
+      return S.Array(__S(45));
     case 7:
       return S.Array(S.String);
   }
@@ -5773,10 +5086,10 @@ function __c6(j: number): any {
           templateName: S.String,
           description: S.optional(SensitiveString),
           majorVersion: S.optional(S.String),
-          source: TemplateVersionSourceInput,
-          compatibleEnvironmentTemplates: CompatibleEnvironmentTemplateInputList,
-          tags: S.optional(TagList),
-          supportedComponentSources: S.optional(ServiceTemplateSupportedComponentSourceInputList),
+          source: __S(28),
+          compatibleEnvironmentTemplates: __S(46),
+          tags: S.optional(__S(17)),
+          supportedComponentSources: S.optional(__S(47)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "CreateServiceTemplateVersionInput",
@@ -5794,17 +5107,15 @@ function __c6(j: number): any {
           arn: S.String,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModifiedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          compatibleEnvironmentTemplates: CompatibleEnvironmentTemplateList,
+          compatibleEnvironmentTemplates: __S(46),
           schema: S.optional(SensitiveString),
-          supportedComponentSources: S.optional(ServiceTemplateSupportedComponentSourceInputList),
+          supportedComponentSources: S.optional(__S(47)),
         }),
       ).annotate({ identifier: "ServiceTemplateVersion" });
     case 2:
-      return S.suspend(() => S.Struct({ serviceTemplateVersion: ServiceTemplateVersion })).annotate(
-        {
-          identifier: "CreateServiceTemplateVersionOutput",
-        },
-      );
+      return S.suspend(() => S.Struct({ serviceTemplateVersion: __S(49) })).annotate({
+        identifier: "CreateServiceTemplateVersionOutput",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5830,9 +5141,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "TemplateSyncConfig" });
     case 5:
-      return S.suspend(() =>
-        S.Struct({ templateSyncConfig: S.optional(TemplateSyncConfig) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ templateSyncConfig: S.optional(__S(52)) })).annotate({
         identifier: "CreateTemplateSyncConfigOutput",
       });
     case 6:
@@ -5842,7 +5151,7 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "DeleteComponentInput" });
     case 7:
-      return S.suspend(() => S.Struct({ component: S.optional(Component) })).annotate({
+      return S.suspend(() => S.Struct({ component: S.optional(__S(4)) })).annotate({
         identifier: "DeleteComponentOutput",
       });
   }
@@ -5862,7 +5171,7 @@ function __c7(j: number): any {
           templateName: S.String,
           templateMajorVersion: S.String,
           templateMinorVersion: S.String,
-          lastSuccessfulComponentDeploymentIds: S.optional(ComponentDeploymentIdList),
+          lastSuccessfulComponentDeploymentIds: S.optional(__S(47)),
           lastSuccessfulEnvironmentDeploymentId: S.optional(S.String),
           lastSuccessfulServicePipelineDeploymentId: S.optional(S.String),
         }),
@@ -5887,10 +5196,10 @@ function __c7(j: number): any {
       ).annotate({ identifier: "ComponentState" });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ serviceInstance: ServiceInstanceState }),
-        /*@__PURE__*/ S.Struct({ environment: EnvironmentState }),
-        /*@__PURE__*/ S.Struct({ servicePipeline: ServicePipelineState }),
-        /*@__PURE__*/ S.Struct({ component: ComponentState }),
+        /*@__PURE__*/ S.Struct({ serviceInstance: __S(57) }),
+        /*@__PURE__*/ S.Struct({ environment: __S(58) }),
+        /*@__PURE__*/ S.Struct({ servicePipeline: __S(58) }),
+        /*@__PURE__*/ S.Struct({ component: __S(59) }),
       ]);
     case 5:
       return S.suspend(() =>
@@ -5911,12 +5220,12 @@ function __c7(j: number): any {
           completedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastAttemptedDeploymentId: S.optional(S.String),
           lastSucceededDeploymentId: S.optional(S.String),
-          initialState: S.optional(DeploymentState),
-          targetState: S.optional(DeploymentState),
+          initialState: S.optional(__S(60)),
+          targetState: S.optional(__S(60)),
         }),
       ).annotate({ identifier: "Deployment" });
     case 6:
-      return S.suspend(() => S.Struct({ deployment: S.optional(Deployment) })).annotate({
+      return S.suspend(() => S.Struct({ deployment: S.optional(__S(61)) })).annotate({
         identifier: "DeleteDeploymentOutput",
       });
     case 7:
@@ -5930,7 +5239,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ environment: S.optional(Environment) })).annotate({
+      return S.suspend(() => S.Struct({ environment: S.optional(__S(8)) })).annotate({
         identifier: "DeleteEnvironmentOutput",
       });
     case 1:
@@ -5943,7 +5252,7 @@ function __c8(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ environmentAccountConnection: S.optional(EnvironmentAccountConnection) }),
+        S.Struct({ environmentAccountConnection: S.optional(__S(1)) }),
       ).annotate({
         identifier: "DeleteEnvironmentAccountConnectionOutput",
       });
@@ -5956,9 +5265,7 @@ function __c8(j: number): any {
         identifier: "DeleteEnvironmentTemplateInput",
       });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ environmentTemplate: S.optional(EnvironmentTemplate) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ environmentTemplate: S.optional(__S(25)) })).annotate({
         identifier: "DeleteEnvironmentTemplateOutput",
       });
     case 5:
@@ -5971,7 +5278,7 @@ function __c8(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ environmentTemplateVersion: S.optional(EnvironmentTemplateVersion) }),
+        S.Struct({ environmentTemplateVersion: S.optional(__S(30)) }),
       ).annotate({
         identifier: "DeleteEnvironmentTemplateVersionOutput",
       });
@@ -5986,7 +5293,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ repository: S.optional(Repository) })).annotate({
+      return S.suspend(() => S.Struct({ repository: S.optional(__S(33)) })).annotate({
         identifier: "DeleteRepositoryOutput",
       });
     case 1:
@@ -5996,7 +5303,7 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "DeleteServiceInput" });
     case 2:
-      return S.suspend(() => S.Struct({ service: S.optional(Service) })).annotate({
+      return S.suspend(() => S.Struct({ service: S.optional(__S(36)) })).annotate({
         identifier: "DeleteServiceOutput",
       });
     case 3:
@@ -6016,7 +5323,7 @@ function __c9(j: number): any {
         identifier: "DeleteServiceTemplateInput",
       });
     case 5:
-      return S.suspend(() => S.Struct({ serviceTemplate: S.optional(ServiceTemplate) })).annotate({
+      return S.suspend(() => S.Struct({ serviceTemplate: S.optional(__S(43)) })).annotate({
         identifier: "DeleteServiceTemplateOutput",
       });
     case 6:
@@ -6028,9 +5335,7 @@ function __c9(j: number): any {
         identifier: "DeleteServiceTemplateVersionInput",
       });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ serviceTemplateVersion: S.optional(ServiceTemplateVersion) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ serviceTemplateVersion: S.optional(__S(49)) })).annotate({
         identifier: "DeleteServiceTemplateVersionOutput",
       });
   }
@@ -6055,12 +5360,12 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pipelineServiceRoleArn: S.optional(S.String),
-          pipelineProvisioningRepository: S.optional(RepositoryBranch),
+          pipelineProvisioningRepository: S.optional(__S(7)),
           pipelineCodebuildRoleArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountSettings" });
     case 3:
-      return S.suspend(() => S.Struct({ accountSettings: S.optional(AccountSettings) })).annotate({
+      return S.suspend(() => S.Struct({ accountSettings: S.optional(__S(82)) })).annotate({
         identifier: "GetAccountSettingsOutput",
       });
     case 4:
@@ -6140,17 +5445,17 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "RepositorySyncEvent" });
     case 5:
-      return S.Array(RepositorySyncEvent);
+      return S.Array(__S(92));
     case 6:
       return S.suspend(() =>
         S.Struct({
           startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           status: S.String,
-          events: RepositorySyncEvents,
+          events: __S(93),
         }),
       ).annotate({ identifier: "RepositorySyncAttempt" });
     case 7:
-      return S.suspend(() => S.Struct({ latestSync: S.optional(RepositorySyncAttempt) })).annotate({
+      return S.suspend(() => S.Struct({ latestSync: S.optional(__S(94)) })).annotate({
         identifier: "GetRepositorySyncStatusOutput",
       });
   }
@@ -6176,17 +5481,17 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          components: S.optional(ResourceCountsSummary),
-          environments: S.optional(ResourceCountsSummary),
-          environmentTemplates: S.optional(ResourceCountsSummary),
-          serviceInstances: S.optional(ResourceCountsSummary),
-          services: S.optional(ResourceCountsSummary),
-          serviceTemplates: S.optional(ResourceCountsSummary),
-          pipelines: S.optional(ResourceCountsSummary),
+          components: S.optional(__S(97)),
+          environments: S.optional(__S(97)),
+          environmentTemplates: S.optional(__S(97)),
+          serviceInstances: S.optional(__S(97)),
+          services: S.optional(__S(97)),
+          serviceTemplates: S.optional(__S(97)),
+          pipelines: S.optional(__S(97)),
         }),
       ).annotate({ identifier: "CountsSummary" });
     case 3:
-      return S.suspend(() => S.Struct({ counts: CountsSummary })).annotate({
+      return S.suspend(() => S.Struct({ counts: __S(98) })).annotate({
         identifier: "GetResourcesSummaryOutput",
       });
     case 4:
@@ -6202,7 +5507,7 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "GetServiceInstanceInput" });
     case 6:
-      return S.suspend(() => S.Struct({ serviceInstance: ServiceInstance })).annotate({
+      return S.suspend(() => S.Struct({ serviceInstance: __S(11) })).annotate({
         identifier: "GetServiceInstanceOutput",
       });
     case 7:
@@ -6230,20 +5535,20 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          initialRevision: Revision,
-          targetRevision: Revision,
+          initialRevision: __S(104),
+          targetRevision: __S(104),
           target: S.String,
           startedAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           status: S.String,
-          events: ResourceSyncEvents,
+          events: __S(93),
         }),
       ).annotate({ identifier: "ResourceSyncAttempt" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          latestSync: S.optional(ResourceSyncAttempt),
-          latestSuccessfulSync: S.optional(ResourceSyncAttempt),
-          desiredState: S.optional(Revision),
+          latestSync: S.optional(__S(105)),
+          latestSuccessfulSync: S.optional(__S(105)),
+          desiredState: S.optional(__S(104)),
         }),
       ).annotate({
         identifier: "GetServiceInstanceSyncStatusOutput",
@@ -6264,26 +5569,26 @@ function __c13(j: number): any {
           status: S.String,
           createdReason: S.String,
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          contexts: S.optional(SyncBlockerContexts),
+          contexts: S.optional(__S(17)),
           resolvedReason: S.optional(S.String),
           resolvedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "SyncBlocker" });
     case 5:
-      return S.Array(SyncBlocker);
+      return S.Array(__S(108));
     case 6:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String,
           serviceInstanceName: S.optional(S.String),
-          latestBlockers: S.optional(LatestSyncBlockers),
+          latestBlockers: S.optional(__S(109)),
         }),
       ).annotate({
         identifier: "ServiceSyncBlockerSummary",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ serviceSyncBlockerSummary: S.optional(ServiceSyncBlockerSummary) }),
+        S.Struct({ serviceSyncBlockerSummary: S.optional(__S(110)) }),
       ).annotate({
         identifier: "GetServiceSyncBlockerSummaryOutput",
       });
@@ -6306,7 +5611,7 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "GetServiceTemplateInput" });
     case 2:
-      return S.suspend(() => S.Struct({ serviceTemplate: ServiceTemplate })).annotate({
+      return S.suspend(() => S.Struct({ serviceTemplate: __S(43) })).annotate({
         identifier: "GetServiceTemplateOutput",
       });
     case 3:
@@ -6354,10 +5659,10 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Output);
+      return S.Array(__S(119));
     case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), outputs: OutputsList }),
+        S.Struct({ nextToken: S.optional(S.String), outputs: __S(120) }),
       ).annotate({
         identifier: "ListComponentOutputsOutput",
       });
@@ -6378,12 +5683,12 @@ function __c15(j: number): any {
         }),
       ).annotate({ identifier: "ProvisionedResource" });
     case 4:
-      return S.Array(ProvisionedResource);
+      return S.Array(__S(123));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          provisionedResources: ProvisionedResourceList,
+          provisionedResources: __S(124),
         }),
       ).annotate({
         identifier: "ListComponentProvisionedResourcesOutput",
@@ -6421,10 +5726,10 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ComponentSummary);
+      return S.Array(__S(127));
     case 1:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), components: ComponentSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), components: __S(128) }),
       ).annotate({ identifier: "ListComponentsOutput" });
     case 2:
       return S.suspend(() =>
@@ -6458,17 +5763,17 @@ function __c16(j: number): any {
         }),
       ).annotate({ identifier: "DeploymentSummary" });
     case 4:
-      return S.Array(DeploymentSummary);
+      return S.Array(__S(131));
     case 5:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), deployments: DeploymentSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), deployments: __S(132) }),
       ).annotate({ identifier: "ListDeploymentsOutput" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           requestedBy: S.String,
           environmentName: S.optional(S.String),
-          statuses: S.optional(EnvironmentAccountConnectionStatusList),
+          statuses: S.optional(__S(47)),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6497,11 +5802,11 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(EnvironmentAccountConnectionSummary);
+      return S.Array(__S(135));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          environmentAccountConnections: EnvironmentAccountConnectionSummaryList,
+          environmentAccountConnections: __S(136),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -6526,13 +5831,13 @@ function __c17(j: number): any {
         identifier: "ListEnvironmentProvisionedResourcesInput",
       });
     case 4:
-      return S.Array(EnvironmentTemplateFilter);
+      return S.Array(__S(45));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          environmentTemplates: S.optional(EnvironmentTemplateFilterList),
+          environmentTemplates: S.optional(__S(140)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListEnvironmentsInput" });
     case 6:
@@ -6559,14 +5864,14 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "EnvironmentSummary" });
     case 7:
-      return S.Array(EnvironmentSummary);
+      return S.Array(__S(142));
   }
 }
 function __c18(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), environments: EnvironmentSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), environments: __S(143) }),
       ).annotate({ identifier: "ListEnvironmentsOutput" });
     case 1:
       return S.suspend(() =>
@@ -6592,10 +5897,10 @@ function __c18(j: number): any {
         identifier: "EnvironmentTemplateSummary",
       });
     case 3:
-      return S.Array(EnvironmentTemplateSummary);
+      return S.Array(__S(146));
     case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), templates: EnvironmentTemplateSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), templates: __S(147) }),
       ).annotate({
         identifier: "ListEnvironmentTemplatesOutput",
       });
@@ -6628,7 +5933,7 @@ function __c18(j: number): any {
         identifier: "EnvironmentTemplateVersionSummary",
       });
     case 7:
-      return S.Array(EnvironmentTemplateVersionSummary);
+      return S.Array(__S(150));
   }
 }
 function __c19(j: number): any {
@@ -6637,7 +5942,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          templateVersions: EnvironmentTemplateVersionSummaryList,
+          templateVersions: __S(151),
         }),
       ).annotate({
         identifier: "ListEnvironmentTemplateVersionsOutput",
@@ -6653,10 +5958,10 @@ function __c19(j: number): any {
         S.Struct({ arn: S.String, provider: S.String, name: S.String, connectionArn: S.String }),
       ).annotate({ identifier: "RepositorySummary" });
     case 3:
-      return S.Array(RepositorySummary);
+      return S.Array(__S(154));
     case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), repositories: RepositorySummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), repositories: __S(155) }),
       ).annotate({ identifier: "ListRepositoriesOutput" });
     case 5:
       return S.suspend(() =>
@@ -6674,7 +5979,7 @@ function __c19(j: number): any {
         S.Struct({ target: S.String, parent: S.String, branch: S.String, directory: S.String }),
       ).annotate({ identifier: "RepositorySyncDefinition" });
     case 7:
-      return S.Array(RepositorySyncDefinition);
+      return S.Array(__S(158));
   }
 }
 function __c20(j: number): any {
@@ -6683,7 +5988,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextToken: S.optional(S.String),
-          syncDefinitions: RepositorySyncDefinitionList,
+          syncDefinitions: __S(159),
         }),
       ).annotate({
         identifier: "ListRepositorySyncDefinitionsOutput",
@@ -6716,14 +6021,14 @@ function __c20(j: number): any {
         identifier: "ListServiceInstancesFilter",
       });
     case 4:
-      return S.Array(ListServiceInstancesFilter);
+      return S.Array(__S(163));
     case 5:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.optional(S.String),
           nextToken: S.optional(S.String),
           maxResults: S.optional(S.Number),
-          filters: S.optional(ListServiceInstancesFilterList),
+          filters: S.optional(__S(164)),
           sortBy: S.optional(S.String),
           sortOrder: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6750,14 +6055,14 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "ServiceInstanceSummary" });
     case 7:
-      return S.Array(ServiceInstanceSummary);
+      return S.Array(__S(166));
   }
 }
 function __c21(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), serviceInstances: ServiceInstanceSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), serviceInstances: __S(167) }),
       ).annotate({
         identifier: "ListServiceInstancesOutput",
       });
@@ -6799,10 +6104,10 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "ServiceSummary" });
     case 5:
-      return S.Array(ServiceSummary);
+      return S.Array(__S(172));
     case 6:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), services: ServiceSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), services: __S(173) }),
       ).annotate({ identifier: "ListServicesOutput" });
     case 7:
       return S.suspend(() =>
@@ -6830,10 +6135,10 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "ServiceTemplateSummary" });
     case 1:
-      return S.Array(ServiceTemplateSummary);
+      return S.Array(__S(176));
     case 2:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), templates: ServiceTemplateSummaryList }),
+        S.Struct({ nextToken: S.optional(S.String), templates: __S(177) }),
       ).annotate({
         identifier: "ListServiceTemplatesOutput",
       });
@@ -6857,7 +6162,7 @@ function __c22(j: number): any {
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 5:
-      return S.suspend(() => S.Struct({ tags: TagList, nextToken: S.optional(S.String) })).annotate(
+      return S.suspend(() => S.Struct({ tags: __S(17), nextToken: S.optional(S.String) })).annotate(
         {
           identifier: "ListTagsForResourceOutput",
         },
@@ -6867,7 +6172,7 @@ function __c22(j: number): any {
         S.Struct({
           resourceArn: S.String,
           status: S.optional(S.String),
-          outputs: S.optional(OutputsList),
+          outputs: S.optional(__S(120)),
           deploymentId: S.optional(S.String),
           statusMessage: S.optional(SensitiveString),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6892,7 +6197,7 @@ function __c23(j: number): any {
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")), tags: TagList }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpQuery("resourceArn")), tags: __S(17) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceInput" });
@@ -6904,14 +6209,14 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpQuery("resourceArn")),
-          tagKeys: TagKeyList,
+          tagKeys: __S(47),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UntagResourceInput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           pipelineServiceRoleArn: S.optional(S.String),
-          pipelineProvisioningRepository: S.optional(RepositoryBranchInput),
+          pipelineProvisioningRepository: S.optional(__S(20)),
           deletePipelineProvisioningRepository: S.optional(S.Boolean),
           pipelineCodebuildRoleArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -6919,7 +6224,7 @@ function __c23(j: number): any {
         identifier: "UpdateAccountSettingsInput",
       });
     case 5:
-      return S.suspend(() => S.Struct({ accountSettings: AccountSettings })).annotate({
+      return S.suspend(() => S.Struct({ accountSettings: __S(82) })).annotate({
         identifier: "UpdateAccountSettingsOutput",
       });
     case 6:
@@ -6946,7 +6251,7 @@ function __c23(j: number): any {
           protonServiceRoleArn: S.optional(S.String),
           deploymentType: S.String,
           environmentAccountConnectionId: S.optional(S.String),
-          provisioningRepository: S.optional(RepositoryBranchInput),
+          provisioningRepository: S.optional(__S(20)),
           componentRoleArn: S.optional(S.String),
           codebuildRoleArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
@@ -7035,7 +6340,7 @@ function __c24(j: number): any {
         S.Struct({
           serviceName: S.String,
           serviceInstanceName: S.optional(S.String),
-          serviceSyncBlocker: SyncBlocker,
+          serviceSyncBlocker: __S(108),
         }),
       ).annotate({
         identifier: "UpdateServiceSyncBlockerOutput",
@@ -7074,8 +6379,8 @@ function __c25(j: number): any {
           minorVersion: S.String,
           description: S.optional(SensitiveString),
           status: S.optional(S.String),
-          compatibleEnvironmentTemplates: S.optional(CompatibleEnvironmentTemplateInputList),
-          supportedComponentSources: S.optional(ServiceTemplateSupportedComponentSourceInputList),
+          compatibleEnvironmentTemplates: S.optional(__S(46)),
+          supportedComponentSources: S.optional(__S(47)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateServiceTemplateVersionInput",
@@ -7093,5 +6398,66 @@ function __c25(j: number): any {
       ).annotate({
         identifier: "UpdateTemplateSyncConfigInput",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
   }
 }

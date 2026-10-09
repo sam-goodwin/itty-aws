@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -59,39 +61,19 @@ export interface ListNamespaceObjectsRequest {
   /** The number of objects to return. The cursor attribute may be used to iterate over the next batch of objects if there are more than the limit. */
   limit?: number;
 }
-const ListNamespaceObjectsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ListNamespaceObjectsRequest>;
-
 export interface NamespacesObjectsListResultItem {
   /** ID of the Durable Object. */
   id?: string | null;
   /** Whether the Durable Object has stored data. */
   hasStoredData?: boolean | null;
 }
-const NamespacesObjectsListResultItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<NamespacesObjectsListResultItem>;
-
 export type NamespacesObjectsListResultList = Array<NamespacesObjectsListResultItem>;
-const NamespacesObjectsListResultList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<NamespacesObjectsListResultList>;
-
 export interface ListNamespaceObjectsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: NamespacesObjectsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListNamespaceObjectsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ListNamespaceObjectsResponse>;
-
 export interface ListNamespacesRequest {
   /** Identifier. */
   accountId: string;
@@ -100,11 +82,6 @@ export interface ListNamespacesRequest {
   /** Items per-page. */
   perPage?: number;
 }
-const ListNamespacesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListNamespacesRequest>;
-
 export interface NamespacesListResultItem {
   id?: string | null;
   class?: string | null;
@@ -112,28 +89,13 @@ export interface NamespacesListResultItem {
   script?: string | null;
   useSqlite?: boolean | null;
 }
-const NamespacesListResultItem = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<NamespacesListResultItem>;
-
 export type NamespacesListResultList = Array<NamespacesListResultItem>;
-const NamespacesListResultList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<NamespacesListResultList>;
-
 export interface ListNamespacesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: NamespacesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListNamespacesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListNamespacesResponse>;
-
 export type ListNamespaceObjectsError =
   | NamespaceNotFound
   | InvalidIdentifier
@@ -148,8 +110,8 @@ export const listNamespaceObjects: API.PaginatedOperationMethod<
   NamespacesObjectsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListNamespaceObjectsRequest,
-    output: ListNamespaceObjectsResponse,
+    input: __S(0) as any as S.Schema<ListNamespaceObjectsRequest>,
+    output: __S(3) as any as S.Schema<ListNamespaceObjectsResponse>,
     errors: [
       NamespaceNotFound,
       InvalidIdentifier,
@@ -179,8 +141,8 @@ export const listNamespaces: API.PaginatedOperationMethod<
   NamespacesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListNamespacesRequest,
-    output: ListNamespacesResponse,
+    input: __S(4) as any as S.Schema<ListNamespacesRequest>,
+    output: __S(7) as any as S.Schema<ListNamespacesResponse>,
     errors: [InvalidIdentifier, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -227,11 +189,11 @@ function __c0(j: number): any {
         identifier: "NamespacesObjectsListResultItem",
       });
     case 2:
-      return S.Array(NamespacesObjectsListResultItem);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: NamespacesObjectsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(2).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -264,13 +226,24 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "NamespacesListResultItem" });
     case 6:
-      return S.Array(NamespacesListResultItem);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: NamespacesListResultList.pipe(T.EnvelopePayload()),
+          result: __S(6).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListNamespacesResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

@@ -5,13 +5,13 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `table` - table * `view` - view * `metric` - metric * `posthog_table` - posthog_table */
 export type SubjectTypeEnum = "table" | "view" | "metric" | "posthog_table";
-const SubjectTypeEnum = S.String;
-
 /** * `not_null` - not_null * `unique` - unique * `accepted_values` - accepted_values * `relationships` - relationships * `row_count` - row_count * `freshness` - freshness * `custom_sql` - custom_sql */
 export type CheckTypeEnum =
   | "not_null"
@@ -21,30 +21,14 @@ export type CheckTypeEnum =
   | "row_count"
   | "freshness"
   | "custom_sql";
-const CheckTypeEnum = S.String;
-
 /** Type-specific configuration, validated against the check type's JSON schema. */
 export type CreateDataQualityCheckRequestConfigMap = { [key: string]: unknown | undefined };
-const CreateDataQualityCheckRequestConfigMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDataQualityCheckRequestConfigMap>;
-
 /** * `error` - error * `warn` - warn */
 export type DataQualityCheckSeverityEnum = "error" | "warn";
-const DataQualityCheckSeverityEnum = S.String;
-
 /** Free-form string labels for grouping and filtering. */
 export type CreateDataQualityCheckRequestTagsList = Array<string>;
-const CreateDataQualityCheckRequestTagsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateDataQualityCheckRequestTagsList>;
-
 /** * `user` - user * `ai_generated` - ai_generated */
 export type CreatedSourceEnum = "user" | "ai_generated";
-const CreatedSourceEnum = S.String;
-
 export interface CreateDataQualityCheckRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -77,25 +61,11 @@ export interface CreateDataQualityCheckRequest {
   /** AI author's reasoning, surfaced as review context. */
   reasoning?: string;
 }
-const CreateDataQualityCheckRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateDataQualityCheckRequest>;
-
 /** Type-specific configuration, validated against the check type's JSON schema. */
 export type DataQualityCheckCreateConfigMap = { [key: string]: unknown | undefined };
-const DataQualityCheckCreateConfigMap =
-  CreateDataQualityCheckRequestConfigMap as any as S.Schema<DataQualityCheckCreateConfigMap>;
-
 /** Free-form string labels for grouping and filtering. */
 export type DataQualityCheckCreateTagsList = Array<string>;
-const DataQualityCheckCreateTagsList =
-  CreateDataQualityCheckRequestTagsList as any as S.Schema<DataQualityCheckCreateTagsList>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap =
-  CreateDataQualityCheckRequestConfigMap as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -109,8 +79,6 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -122,8 +90,6 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UserBasic>;
-
 /** The create body, where the subject is named for the only time in a check's life. */
 export interface DataQualityCheckCreate {
   id: string;
@@ -176,22 +142,12 @@ export interface DataQualityCheckCreate {
   created_at: string;
   updated_at: string | null;
 }
-const DataQualityCheckCreate = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DataQualityCheckCreate>;
-
 export interface CreateDataQualityChecksRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data quality check. */
   id: string;
 }
-const CreateDataQualityChecksRunRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateDataQualityChecksRunRequest>;
-
 export interface DataQualitySuiteRun {
   id: string;
   /** manual, materialization, source_sync, or scheduled. */
@@ -213,46 +169,23 @@ export interface DataQualitySuiteRun {
   error: string;
   created_at: string;
 }
-const DataQualitySuiteRun = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DataQualitySuiteRun>;
-
 export interface DataQualityChecksDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data quality check. */
   id: string;
 }
-const DataQualityChecksDestroyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DataQualityChecksDestroyRequest>;
-
 export interface DataQualityChecksDestroyResponse {}
-const DataQualityChecksDestroyResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DataQualityChecksDestroyResponse>;
-
 export interface GetDataQualityCheckRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data quality check. */
   id: string;
 }
-const GetDataQualityCheckRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetDataQualityCheckRequest>;
-
 /** Type-specific configuration, validated against the check type's JSON schema. */
 export type DataQualityCheckConfigMap = { [key: string]: unknown | undefined };
-const DataQualityCheckConfigMap =
-  CreateDataQualityCheckRequestConfigMap as any as S.Schema<DataQualityCheckConfigMap>;
-
 /** Free-form string labels for grouping and filtering. */
 export type DataQualityCheckTagsList = Array<string>;
-const DataQualityCheckTagsList =
-  CreateDataQualityCheckRequestTagsList as any as S.Schema<DataQualityCheckTagsList>;
-
 /** A check as it reads back, and everything an edit may change about it. The subject is not one of those: it is writable only on ``DataQualityCheckCreate``. */
 export interface DataQualityCheck {
   id: string;
@@ -305,15 +238,11 @@ export interface DataQualityCheck {
   created_at: string;
   updated_at: string | null;
 }
-const DataQualityCheck = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DataQualityCheck>;
-
 export type GetDataQualityChecksOutputSchemaRequestSubjectType =
   | "metric"
   | "posthog_table"
   | "table"
   | "view";
-const GetDataQualityChecksOutputSchemaRequestSubjectType = S.String;
-
 export interface GetDataQualityChecksOutputSchemaRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -322,45 +251,23 @@ export interface GetDataQualityChecksOutputSchemaRequest {
   /** Id of the table, view, metric, or PostHog table. */
   subject_uuid?: string;
 }
-const GetDataQualityChecksOutputSchemaRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetDataQualityChecksOutputSchemaRequest>;
-
 export interface DataQualityOutputColumn {
   /** Output column name available through the {metric} relation. */
   name: string;
   /** ClickHouse type, or null when it could not be inferred. */
   type: string | null;
 }
-const DataQualityOutputColumn = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DataQualityOutputColumn>;
-
 /** Columns returned by the saved metric query. */
 export type DataQualityOutputSchemaColumnsList = Array<DataQualityOutputColumn>;
-const DataQualityOutputSchemaColumnsList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DataQualityOutputSchemaColumnsList>;
-
 export interface DataQualityOutputSchema {
   /** Columns returned by the saved metric query. */
   columns: DataQualityOutputSchemaColumnsList;
 }
-const DataQualityOutputSchema = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DataQualityOutputSchema>;
-
 export type GetDataQualityChecksScheduleRequestSubjectType =
   | "metric"
   | "posthog_table"
   | "table"
   | "view";
-const GetDataQualityChecksScheduleRequestSubjectType = S.String;
-
 export interface GetDataQualityChecksScheduleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -369,15 +276,8 @@ export interface GetDataQualityChecksScheduleRequest {
   /** Id of the table, view, metric, or PostHog table. */
   subject_uuid?: string;
 }
-const GetDataQualityChecksScheduleRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetDataQualityChecksScheduleRequest>;
-
 /** * `1hour` - 1hour * `6hour` - 6hour * `12hour` - 12hour * `24hour` - 24hour * `7day` - 7day */
 export type DataQualityScheduleIntervalEnum = "1hour" | "6hour" | "12hour" | "24hour" | "7day";
-const DataQualityScheduleIntervalEnum = S.String;
-
 export interface DataQualityCheckSchedule {
   /** Schedule identifier. */
   id: string;
@@ -392,11 +292,6 @@ export interface DataQualityCheckSchedule {
   /** Most recent visible scheduled suite. */
   last_suite_run: string | null;
 }
-const DataQualityCheckSchedule = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DataQualityCheckSchedule>;
-
 export type ListDataQualityChecksRequestCheckType =
   | "accepted_values"
   | "custom_sql"
@@ -405,11 +300,7 @@ export type ListDataQualityChecksRequestCheckType =
   | "relationships"
   | "row_count"
   | "unique";
-const ListDataQualityChecksRequestCheckType = S.String;
-
 export type ListDataQualityChecksRequestSubjectType = "metric" | "posthog_table" | "table" | "view";
-const ListDataQualityChecksRequestSubjectType = S.String;
-
 export interface ListDataQualityChecksRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -424,21 +315,10 @@ export interface ListDataQualityChecksRequest {
   /** Id of the table, view, metric, or PostHog table. */
   subject_uuid?: string;
 }
-const ListDataQualityChecksRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListDataQualityChecksRequest>;
-
 /** Type-specific configuration, validated against the check type's JSON schema. */
 export type DataQualityOverviewCheckConfigMap = { [key: string]: unknown | undefined };
-const DataQualityOverviewCheckConfigMap =
-  CreateDataQualityCheckRequestConfigMap as any as S.Schema<DataQualityOverviewCheckConfigMap>;
-
 /** Free-form string labels for grouping and filtering. */
 export type DataQualityOverviewCheckTagsList = Array<string>;
-const DataQualityOverviewCheckTagsList =
-  CreateDataQualityCheckRequestTagsList as any as S.Schema<DataQualityOverviewCheckTagsList>;
-
 /** A check plus where its subject can be opened, for the project-wide list. The per-subject surfaces already know their parent; only this one lists checks across every table and view, so only this one needs to say where each subject lives. The ids are resolved for a whole page at once and handed in through ``subject_locations`` in the context. */
 export interface DataQualityOverviewCheck {
   id: string;
@@ -499,51 +379,26 @@ export interface DataQualityOverviewCheck {
   /** Current metric name for opening its Tests tab, or null for other subjects. */
   subject_metric_name: string | null;
 }
-const DataQualityOverviewCheck = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DataQualityOverviewCheck>;
-
 export type PaginatedDataQualityOverviewCheckListResultsList = Array<DataQualityOverviewCheck>;
-const PaginatedDataQualityOverviewCheckListResultsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<PaginatedDataQualityOverviewCheckListResultsList>;
-
 export interface PaginatedDataQualityOverviewCheckList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedDataQualityOverviewCheckListResultsList;
 }
-const PaginatedDataQualityOverviewCheckList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<PaginatedDataQualityOverviewCheckList>;
-
 export type ListDataQualityChecksCheckTypesRequestSubjectType =
   | "metric"
   | "posthog_table"
   | "table"
   | "view";
-const ListDataQualityChecksCheckTypesRequestSubjectType = S.String;
-
 export interface ListDataQualityChecksCheckTypesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Kind of object being checked: 'table', 'view', 'metric', or 'posthog_table'. */
   subject_type?: ListDataQualityChecksCheckTypesRequestSubjectType | (string & {});
 }
-const ListDataQualityChecksCheckTypesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListDataQualityChecksCheckTypesRequest>;
-
 /** JSON schema the config object is validated against. */
 export type DataQualityCheckTypeConfigSchemaMap = { [key: string]: unknown | undefined };
-const DataQualityCheckTypeConfigSchemaMap =
-  CreateDataQualityCheckRequestConfigMap as any as S.Schema<DataQualityCheckTypeConfigSchemaMap>;
-
 /** One entry of the check-type catalog, so an agent can author config without guessing. */
 export interface DataQualityCheckType {
   /** Value to pass as check_type. */
@@ -555,28 +410,14 @@ export interface DataQualityCheckType {
   /** JSON schema the config object is validated against. */
   config_schema: DataQualityCheckTypeConfigSchemaMap;
 }
-const DataQualityCheckType = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DataQualityCheckType>;
-
 export type ListDataQualityChecksCheckTypesResponseBodyList = Array<DataQualityCheckType>;
-const ListDataQualityChecksCheckTypesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListDataQualityChecksCheckTypesResponseBodyList>;
-
 export type ListDataQualityChecksCheckTypesResponse =
   ListDataQualityChecksCheckTypesResponseBodyList;
-const ListDataQualityChecksCheckTypesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListDataQualityChecksCheckTypesResponse>;
-
 export type ListDataQualityChecksHealthRequestSubjectType =
   | "metric"
   | "posthog_table"
   | "table"
   | "view";
-const ListDataQualityChecksHealthRequestSubjectType = S.String;
-
 export interface ListDataQualityChecksHealthRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -585,11 +426,6 @@ export interface ListDataQualityChecksHealthRequest {
   /** Id of the table, view, metric, or PostHog table. */
   subject_uuid?: string;
 }
-const ListDataQualityChecksHealthRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListDataQualityChecksHealthRequest>;
-
 /** Per-subject rollup, the same rule the information_schema.data_quality_health table uses. */
 export interface DataQualitySubjectHealth {
   /** 'table', 'view', 'metric', or 'posthog_table'. */
@@ -603,32 +439,12 @@ export interface DataQualitySubjectHealth {
   /** How many of those checks last reported a failure. */
   checks_failing: number;
 }
-const DataQualitySubjectHealth = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DataQualitySubjectHealth>;
-
 export type ListDataQualityChecksHealthResponseBodyList = Array<DataQualitySubjectHealth>;
-const ListDataQualityChecksHealthResponseBodyList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListDataQualityChecksHealthResponseBodyList>;
-
 export type ListDataQualityChecksHealthResponse = ListDataQualityChecksHealthResponseBodyList;
-const ListDataQualityChecksHealthResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListDataQualityChecksHealthResponse>;
-
 export interface ListDataQualityChecksMetricSubjectsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const ListDataQualityChecksMetricSubjectsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListDataQualityChecksMetricSubjectsRequest>;
-
 export interface DataQualityMetricSubject {
   /** Metric identifier used by the nested check endpoints. */
   id: string;
@@ -637,40 +453,17 @@ export interface DataQualityMetricSubject {
   /** Metric label shown in the data catalog. */
   display_name: string;
 }
-const DataQualityMetricSubject = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DataQualityMetricSubject>;
-
 export type ListDataQualityChecksMetricSubjectsResponseBodyList = Array<DataQualityMetricSubject>;
-const ListDataQualityChecksMetricSubjectsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListDataQualityChecksMetricSubjectsResponseBodyList>;
-
 export type ListDataQualityChecksMetricSubjectsResponse =
   ListDataQualityChecksMetricSubjectsResponseBodyList;
-const ListDataQualityChecksMetricSubjectsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListDataQualityChecksMetricSubjectsResponse>;
-
 export interface ListDataQualityChecksRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data quality check. */
   id: string;
 }
-const ListDataQualityChecksRunsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListDataQualityChecksRunsRequest>;
-
 /** Config this run executed, snapshotted so an edit to the check cannot rewrite history. Null for runs recorded before snapshots existed -- unknown, not 'same as the check has now'. */
 export type DataQualityCheckRunCheckConfigMap = { [key: string]: unknown | undefined };
-const DataQualityCheckRunCheckConfigMap =
-  CreateDataQualityCheckRequestConfigMap as any as S.Schema<DataQualityCheckRunCheckConfigMap>;
-
 export interface DataQualityCheckRun {
   id: string;
   /** The definition executed. Nulled rather than cascaded so history outlives hard deletes. */
@@ -705,29 +498,12 @@ export interface DataQualityCheckRun {
   finished_at: string | null;
   created_at: string;
 }
-const DataQualityCheckRun = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DataQualityCheckRun>;
-
 export type ListDataQualityChecksRunsResponseBodyList = Array<DataQualityCheckRun>;
-const ListDataQualityChecksRunsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListDataQualityChecksRunsResponseBodyList>;
-
 export type ListDataQualityChecksRunsResponse = ListDataQualityChecksRunsResponseBodyList;
-const ListDataQualityChecksRunsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListDataQualityChecksRunsResponse>;
-
 export interface ListDataQualityChecksSchedulesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const ListDataQualityChecksSchedulesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListDataQualityChecksSchedulesRequest>;
-
 /** One subject's schedule, in the project-wide listing. */
 export interface DataQualitySubjectSchedule {
   /** Schedule identifier. */
@@ -747,39 +523,14 @@ export interface DataQualitySubjectSchedule {
   /** Id of the metric or PostHog table. */
   subject_uuid: string;
 }
-const DataQualitySubjectSchedule = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DataQualitySubjectSchedule>;
-
 export type ListDataQualityChecksSchedulesResponseBodyList = Array<DataQualitySubjectSchedule>;
-const ListDataQualityChecksSchedulesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListDataQualityChecksSchedulesResponseBodyList>;
-
 export type ListDataQualityChecksSchedulesResponse = ListDataQualityChecksSchedulesResponseBodyList;
-const ListDataQualityChecksSchedulesResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListDataQualityChecksSchedulesResponse>;
-
 export interface ListDataQualityChecksSubjectsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const ListDataQualityChecksSubjectsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListDataQualityChecksSubjectsRequest>;
-
 /** Column name to ClickHouse type. Empty for a metric, and for a view that has not run yet. */
 export type DataQualitySubjectColumnsMap = { [key: string]: string | undefined };
-const DataQualitySubjectColumnsMap = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DataQualitySubjectColumnsMap>;
-
 /** One thing a check can be authored on, whatever kind it is. */
 export interface DataQualitySubject {
   /** Kind of object: 'table', 'view', 'metric', or 'posthog_table'. Pass it back as subject_type when creating a check. * `table` - table * `view` - view * `metric` - metric * `posthog_table` - posthog_table */
@@ -797,30 +548,12 @@ export interface DataQualitySubject {
   /** Whether the caller may author a check on this subject. A subject that is only readable can still be the target of a relationships check. */
   editable: boolean;
 }
-const DataQualitySubject = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<DataQualitySubject>;
-
 export type ListDataQualityChecksSubjectsResponseBodyList = Array<DataQualitySubject>;
-const ListDataQualityChecksSubjectsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ListDataQualityChecksSubjectsResponseBodyList>;
-
 export type ListDataQualityChecksSubjectsResponse = ListDataQualityChecksSubjectsResponseBodyList;
-const ListDataQualityChecksSubjectsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListDataQualityChecksSubjectsResponse>;
-
 /** Type-specific configuration, validated against the check type's JSON schema. */
 export type UpdateDataQualityCheckRequestConfigMap = { [key: string]: unknown | undefined };
-const UpdateDataQualityCheckRequestConfigMap =
-  CreateDataQualityCheckRequestConfigMap as any as S.Schema<UpdateDataQualityCheckRequestConfigMap>;
-
 /** Free-form string labels for grouping and filtering. */
 export type UpdateDataQualityCheckRequestTagsList = Array<string>;
-const UpdateDataQualityCheckRequestTagsList =
-  CreateDataQualityCheckRequestTagsList as any as S.Schema<UpdateDataQualityCheckRequestTagsList>;
-
 export interface UpdateDataQualityCheckRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -851,21 +584,10 @@ export interface UpdateDataQualityCheckRequest {
   /** AI author's reasoning, surfaced as review context. */
   reasoning?: string;
 }
-const UpdateDataQualityCheckRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<UpdateDataQualityCheckRequest>;
-
 /** Type-specific configuration, validated against the check type's JSON schema. */
 export type UpdateDataQualityChecksPartialRequestConfigMap = { [key: string]: unknown | undefined };
-const UpdateDataQualityChecksPartialRequestConfigMap =
-  CreateDataQualityCheckRequestConfigMap as any as S.Schema<UpdateDataQualityChecksPartialRequestConfigMap>;
-
 /** Free-form string labels for grouping and filtering. */
 export type UpdateDataQualityChecksPartialRequestTagsList = Array<string>;
-const UpdateDataQualityChecksPartialRequestTagsList =
-  CreateDataQualityCheckRequestTagsList as any as S.Schema<UpdateDataQualityChecksPartialRequestTagsList>;
-
 export interface UpdateDataQualityChecksPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -896,11 +618,6 @@ export interface UpdateDataQualityChecksPartialRequest {
   /** AI author's reasoning, surfaced as review context. */
   reasoning?: string;
 }
-const UpdateDataQualityChecksPartialRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<UpdateDataQualityChecksPartialRequest>;
-
 export interface UpdateDataQualityChecksSchedulePartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -913,11 +630,6 @@ export interface UpdateDataQualityChecksSchedulePartialRequest {
   /** Whether checks run automatically on this schedule. */
   enabled?: boolean;
 }
-const UpdateDataQualityChecksSchedulePartialRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<UpdateDataQualityChecksSchedulePartialRequest>;
-
 export type CreateDataQualityCheckError = PosthogOpError;
 /** Create a check on the table, view or metric named by subject_type and subject_uuid, or refine the one already carrying the same fingerprint. Re-creating a semantically identical check returns 200 and the existing row, never a duplicate. */
 export const createDataQualityCheck: API.OperationMethod<
@@ -926,8 +638,8 @@ export const createDataQualityCheck: API.OperationMethod<
   CreateDataQualityCheckError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataQualityCheckRequest,
-  output: DataQualityCheckCreate,
+  input: __S(2) as any as S.Schema<CreateDataQualityCheckRequest>,
+  output: __S(4) as any as S.Schema<DataQualityCheckCreate>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -941,8 +653,8 @@ export const createDataQualityChecksRun: API.OperationMethod<
   CreateDataQualityChecksRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataQualityChecksRunRequest,
-  output: DataQualitySuiteRun,
+  input: __S(5) as any as S.Schema<CreateDataQualityChecksRunRequest>,
+  output: __S(6) as any as S.Schema<DataQualitySuiteRun>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -956,8 +668,8 @@ export const dataQualityChecksDestroy: API.OperationMethod<
   DataQualityChecksDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataQualityChecksDestroyRequest,
-  output: DataQualityChecksDestroyResponse,
+  input: __S(7) as any as S.Schema<DataQualityChecksDestroyRequest>,
+  output: __S(8) as any as S.Schema<DataQualityChecksDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -971,8 +683,8 @@ export const getDataQualityCheck: API.OperationMethod<
   GetDataQualityCheckError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataQualityCheckRequest,
-  output: DataQualityCheck,
+  input: __S(9) as any as S.Schema<GetDataQualityCheckRequest>,
+  output: __S(10) as any as S.Schema<DataQualityCheck>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -986,8 +698,8 @@ export const getDataQualityChecksOutputSchema: API.OperationMethod<
   GetDataQualityChecksOutputSchemaError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataQualityChecksOutputSchemaRequest,
-  output: DataQualityOutputSchema,
+  input: __S(11) as any as S.Schema<GetDataQualityChecksOutputSchemaRequest>,
+  output: __S(14) as any as S.Schema<DataQualityOutputSchema>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1001,8 +713,8 @@ export const getDataQualityChecksSchedule: API.OperationMethod<
   GetDataQualityChecksScheduleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataQualityChecksScheduleRequest,
-  output: DataQualityCheckSchedule,
+  input: __S(15) as any as S.Schema<GetDataQualityChecksScheduleRequest>,
+  output: __S(16) as any as S.Schema<DataQualityCheckSchedule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1016,8 +728,8 @@ export const listDataQualityChecks: API.OperationMethod<
   ListDataQualityChecksError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataQualityChecksRequest,
-  output: PaginatedDataQualityOverviewCheckList,
+  input: __S(17) as any as S.Schema<ListDataQualityChecksRequest>,
+  output: __S(20) as any as S.Schema<PaginatedDataQualityOverviewCheckList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1031,8 +743,8 @@ export const listDataQualityChecksCheckTypes: API.OperationMethod<
   ListDataQualityChecksCheckTypesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataQualityChecksCheckTypesRequest,
-  output: ListDataQualityChecksCheckTypesResponse,
+  input: __S(21) as any as S.Schema<ListDataQualityChecksCheckTypesRequest>,
+  output: __S(24) as any as S.Schema<ListDataQualityChecksCheckTypesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1046,8 +758,8 @@ export const listDataQualityChecksHealth: API.OperationMethod<
   ListDataQualityChecksHealthError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataQualityChecksHealthRequest,
-  output: ListDataQualityChecksHealthResponse,
+  input: __S(25) as any as S.Schema<ListDataQualityChecksHealthRequest>,
+  output: __S(28) as any as S.Schema<ListDataQualityChecksHealthResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1061,8 +773,8 @@ export const listDataQualityChecksMetricSubjects: API.OperationMethod<
   ListDataQualityChecksMetricSubjectsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataQualityChecksMetricSubjectsRequest,
-  output: ListDataQualityChecksMetricSubjectsResponse,
+  input: __S(29) as any as S.Schema<ListDataQualityChecksMetricSubjectsRequest>,
+  output: __S(32) as any as S.Schema<ListDataQualityChecksMetricSubjectsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1076,8 +788,8 @@ export const listDataQualityChecksRuns: API.OperationMethod<
   ListDataQualityChecksRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataQualityChecksRunsRequest,
-  output: ListDataQualityChecksRunsResponse,
+  input: __S(33) as any as S.Schema<ListDataQualityChecksRunsRequest>,
+  output: __S(36) as any as S.Schema<ListDataQualityChecksRunsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1091,8 +803,8 @@ export const listDataQualityChecksSchedules: API.OperationMethod<
   ListDataQualityChecksSchedulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataQualityChecksSchedulesRequest,
-  output: ListDataQualityChecksSchedulesResponse,
+  input: __S(37) as any as S.Schema<ListDataQualityChecksSchedulesRequest>,
+  output: __S(40) as any as S.Schema<ListDataQualityChecksSchedulesResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1106,8 +818,8 @@ export const listDataQualityChecksSubjects: API.OperationMethod<
   ListDataQualityChecksSubjectsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataQualityChecksSubjectsRequest,
-  output: ListDataQualityChecksSubjectsResponse,
+  input: __S(41) as any as S.Schema<ListDataQualityChecksSubjectsRequest>,
+  output: __S(45) as any as S.Schema<ListDataQualityChecksSubjectsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1121,8 +833,8 @@ export const updateDataQualityCheck: API.OperationMethod<
   UpdateDataQualityCheckError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataQualityCheckRequest,
-  output: DataQualityCheck,
+  input: __S(46) as any as S.Schema<UpdateDataQualityCheckRequest>,
+  output: __S(10) as any as S.Schema<DataQualityCheck>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1136,8 +848,8 @@ export const updateDataQualityChecksPartial: API.OperationMethod<
   UpdateDataQualityChecksPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataQualityChecksPartialRequest,
-  output: DataQualityCheck,
+  input: __S(47) as any as S.Schema<UpdateDataQualityChecksPartialRequest>,
+  output: __S(10) as any as S.Schema<DataQualityCheck>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1151,8 +863,8 @@ export const updateDataQualityChecksSchedulePartial: API.OperationMethod<
   UpdateDataQualityChecksSchedulePartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataQualityChecksSchedulePartialRequest,
-  output: DataQualityCheckSchedule,
+  input: __S(48) as any as S.Schema<UpdateDataQualityChecksSchedulePartialRequest>,
+  output: __S(16) as any as S.Schema<DataQualityCheckSchedule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1171,15 +883,15 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          subject_type: SubjectTypeEnum,
+          subject_type: S.String,
           subject_uuid: S.String,
           column_name: S.optional(S.String),
-          check_type: CheckTypeEnum,
-          config: S.optional(CreateDataQualityCheckRequestConfigMap),
-          severity: S.optional(DataQualityCheckSeverityEnum),
+          check_type: S.String,
+          config: S.optional(__S(0)),
+          severity: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          tags: S.optional(CreateDataQualityCheckRequestTagsList),
-          created_source: S.optional(CreatedSourceEnum),
+          tags: S.optional(__S(1)),
+          created_source: S.optional(S.String),
           ai_model: S.optional(S.String),
           confidence: S.optional(S.NullOr(S.Number)),
           reasoning: S.optional(S.String),
@@ -1203,8 +915,8 @@ function __c0(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(0))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 4:
@@ -1213,27 +925,27 @@ function __c0(j: number): any {
           id: S.String,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          subject_type: SubjectTypeEnum,
+          subject_type: S.String,
           subject_uuid: S.String,
           subject_name: S.String,
           subject_status: S.String,
           column_name: S.optional(S.String),
-          check_type: CheckTypeEnum,
-          config: S.optional(DataQualityCheckCreateConfigMap),
-          severity: S.optional(DataQualityCheckSeverityEnum),
+          check_type: S.String,
+          config: S.optional(__S(0)),
+          severity: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          tags: S.optional(DataQualityCheckCreateTagsList),
+          tags: S.optional(__S(1)),
           owner: S.NullOr(S.String),
           last_run_at: S.NullOr(S.String),
           last_status: S.String,
           last_succeeded_at: S.NullOr(S.String),
           failing_since: S.NullOr(S.String),
           fingerprint: S.String,
-          created_source: S.optional(CreatedSourceEnum),
+          created_source: S.optional(S.String),
           ai_model: S.optional(S.String),
           confidence: S.optional(S.NullOr(S.Number)),
           reasoning: S.optional(S.String),
-          created_by: UserBasic,
+          created_by: __S(3),
           created_at: S.String,
           updated_at: S.NullOr(S.String),
         }),
@@ -1316,27 +1028,27 @@ function __c1(j: number): any {
           id: S.String,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          subject_type: SubjectTypeEnum,
+          subject_type: S.String,
           subject_uuid: S.NullOr(S.String),
           subject_name: S.String,
           subject_status: S.String,
           column_name: S.optional(S.String),
-          check_type: CheckTypeEnum,
-          config: S.optional(DataQualityCheckConfigMap),
-          severity: S.optional(DataQualityCheckSeverityEnum),
+          check_type: S.String,
+          config: S.optional(__S(0)),
+          severity: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          tags: S.optional(DataQualityCheckTagsList),
+          tags: S.optional(__S(1)),
           owner: S.NullOr(S.String),
           last_run_at: S.NullOr(S.String),
           last_status: S.String,
           last_succeeded_at: S.NullOr(S.String),
           failing_since: S.NullOr(S.String),
           fingerprint: S.String,
-          created_source: S.optional(CreatedSourceEnum),
+          created_source: S.optional(S.String),
           ai_model: S.optional(S.String),
           confidence: S.optional(S.NullOr(S.Number)),
           reasoning: S.optional(S.String),
-          created_by: UserBasic,
+          created_by: __S(3),
           created_at: S.String,
           updated_at: S.NullOr(S.String),
         }),
@@ -1345,9 +1057,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          subject_type: S.optional(
-            GetDataQualityChecksOutputSchemaRequestSubjectType.pipe(T.Query()),
-          ),
+          subject_type: S.optional(S.String.pipe(T.Query())),
           subject_uuid: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -1367,18 +1077,18 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "DataQualityOutputColumn" });
     case 5:
-      return S.Array(DataQualityOutputColumn);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          columns: DataQualityOutputSchemaColumnsList,
+          columns: __S(13),
         }),
       ).annotate({ identifier: "DataQualityOutputSchema" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          subject_type: S.optional(GetDataQualityChecksScheduleRequestSubjectType.pipe(T.Query())),
+          subject_type: S.optional(S.String.pipe(T.Query())),
           subject_uuid: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -1398,7 +1108,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          interval: DataQualityScheduleIntervalEnum,
+          interval: S.String,
           enabled: S.Boolean,
           next_run_at: S.NullOr(S.String),
           last_run_at: S.NullOr(S.String),
@@ -1409,10 +1119,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          check_type: S.optional(ListDataQualityChecksRequestCheckType.pipe(T.Query())),
+          check_type: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          subject_type: S.optional(ListDataQualityChecksRequestSubjectType.pipe(T.Query())),
+          subject_type: S.optional(S.String.pipe(T.Query())),
           subject_uuid: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -1430,27 +1140,27 @@ function __c2(j: number): any {
           id: S.String,
           name: S.optional(S.String),
           description: S.optional(S.String),
-          subject_type: SubjectTypeEnum,
+          subject_type: S.String,
           subject_uuid: S.NullOr(S.String),
           subject_name: S.String,
           subject_status: S.String,
           column_name: S.optional(S.String),
-          check_type: CheckTypeEnum,
-          config: S.optional(DataQualityOverviewCheckConfigMap),
-          severity: S.optional(DataQualityCheckSeverityEnum),
+          check_type: S.String,
+          config: S.optional(__S(0)),
+          severity: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          tags: S.optional(DataQualityOverviewCheckTagsList),
+          tags: S.optional(__S(1)),
           owner: S.NullOr(S.String),
           last_run_at: S.NullOr(S.String),
           last_status: S.String,
           last_succeeded_at: S.NullOr(S.String),
           failing_since: S.NullOr(S.String),
           fingerprint: S.String,
-          created_source: S.optional(CreatedSourceEnum),
+          created_source: S.optional(S.String),
           ai_model: S.optional(S.String),
           confidence: S.optional(S.NullOr(S.Number)),
           reasoning: S.optional(S.String),
-          created_by: UserBasic,
+          created_by: __S(3),
           created_at: S.String,
           updated_at: S.NullOr(S.String),
           subject_node_id: S.NullOr(S.String),
@@ -1460,14 +1170,14 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "DataQualityOverviewCheck" });
     case 3:
-      return S.Array(DataQualityOverviewCheck);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedDataQualityOverviewCheckListResultsList,
+          results: __S(19),
         }),
       ).annotate({
         identifier: "PaginatedDataQualityOverviewCheckList",
@@ -1476,9 +1186,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          subject_type: S.optional(
-            ListDataQualityChecksCheckTypesRequestSubjectType.pipe(T.Query()),
-          ),
+          subject_type: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1495,26 +1203,24 @@ function __c2(j: number): any {
           check_type: S.String,
           description: S.String,
           requires_column: S.Boolean,
-          config_schema: DataQualityCheckTypeConfigSchemaMap,
+          config_schema: __S(0),
         }),
       ).annotate({ identifier: "DataQualityCheckType" });
     case 7:
-      return S.Array(DataQualityCheckType);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListDataQualityChecksCheckTypesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(23).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDataQualityChecksCheckTypesResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          subject_type: S.optional(ListDataQualityChecksHealthRequestSubjectType.pipe(T.Query())),
+          subject_type: S.optional(S.String.pipe(T.Query())),
           subject_uuid: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -1537,11 +1243,9 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "DataQualitySubjectHealth" });
     case 3:
-      return S.Array(DataQualitySubjectHealth);
+      return S.Array(__S(26));
     case 4:
-      return S.suspend(() =>
-        ListDataQualityChecksHealthResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(27).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDataQualityChecksHealthResponse",
       });
     case 5:
@@ -1567,15 +1271,13 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "DataQualityMetricSubject" });
     case 7:
-      return S.Array(DataQualityMetricSubject);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListDataQualityChecksMetricSubjectsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(31).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDataQualityChecksMetricSubjectsResponse",
       });
     case 1:
@@ -1600,13 +1302,13 @@ function __c4(j: number): any {
           quality_check: S.NullOr(S.String),
           check_name: S.NullOr(S.String),
           suite_run: S.String,
-          subject_type: SubjectTypeEnum,
+          subject_type: S.String,
           subject_uuid: S.String,
           subject_name: S.String,
-          check_type: CheckTypeEnum,
+          check_type: S.String,
           column_name: S.String,
-          check_config: S.NullOr(DataQualityCheckRunCheckConfigMap),
-          check_severity: S.NullOr(DataQualityCheckSeverityEnum),
+          check_config: S.NullOr(__S(0)),
+          check_severity: S.NullOr(S.String),
           status: S.String,
           failed_row_count: S.NullOr(S.Number),
           observed_value: S.NullOr(S.Number),
@@ -1620,11 +1322,9 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "DataQualityCheckRun" });
     case 3:
-      return S.Array(DataQualityCheckRun);
+      return S.Array(__S(34));
     case 4:
-      return S.suspend(() =>
-        ListDataQualityChecksRunsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(35).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDataQualityChecksRunsResponse",
       });
     case 5:
@@ -1645,27 +1345,25 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          interval: DataQualityScheduleIntervalEnum,
+          interval: S.String,
           enabled: S.Boolean,
           next_run_at: S.NullOr(S.String),
           last_run_at: S.NullOr(S.String),
           last_suite_run: S.NullOr(S.String),
-          subject_type: SubjectTypeEnum,
+          subject_type: S.String,
           subject_uuid: S.String,
         }),
       ).annotate({
         identifier: "DataQualitySubjectSchedule",
       });
     case 7:
-      return S.Array(DataQualitySubjectSchedule);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListDataQualityChecksSchedulesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(39).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDataQualityChecksSchedulesResponse",
       });
     case 1:
@@ -1687,21 +1385,19 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          subject_type: SubjectTypeEnum,
+          subject_type: S.String,
           id: S.String,
           name: S.String,
           display_name: S.String,
           time_column: S.String,
-          columns: DataQualitySubjectColumnsMap,
+          columns: __S(42),
           editable: S.Boolean,
         }),
       ).annotate({ identifier: "DataQualitySubject" });
     case 4:
-      return S.Array(DataQualitySubject);
+      return S.Array(__S(43));
     case 5:
-      return S.suspend(() =>
-        ListDataQualityChecksSubjectsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(44).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDataQualityChecksSubjectsResponse",
       });
     case 6:
@@ -1712,12 +1408,12 @@ function __c5(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           column_name: S.optional(S.String),
-          check_type: CheckTypeEnum,
-          config: S.optional(UpdateDataQualityCheckRequestConfigMap),
-          severity: S.optional(DataQualityCheckSeverityEnum),
+          check_type: S.String,
+          config: S.optional(__S(0)),
+          severity: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          tags: S.optional(UpdateDataQualityCheckRequestTagsList),
-          created_source: S.optional(CreatedSourceEnum),
+          tags: S.optional(__S(1)),
+          created_source: S.optional(S.String),
           ai_model: S.optional(S.String),
           confidence: S.optional(S.NullOr(S.Number)),
           reasoning: S.optional(S.String),
@@ -1739,12 +1435,12 @@ function __c5(j: number): any {
           name: S.optional(S.String),
           description: S.optional(S.String),
           column_name: S.optional(S.String),
-          check_type: S.optional(CheckTypeEnum),
-          config: S.optional(UpdateDataQualityChecksPartialRequestConfigMap),
-          severity: S.optional(DataQualityCheckSeverityEnum),
+          check_type: S.optional(S.String),
+          config: S.optional(__S(0)),
+          severity: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          tags: S.optional(UpdateDataQualityChecksPartialRequestTagsList),
-          created_source: S.optional(CreatedSourceEnum),
+          tags: S.optional(__S(1)),
+          created_source: S.optional(S.String),
           ai_model: S.optional(S.String),
           confidence: S.optional(S.NullOr(S.Number)),
           reasoning: S.optional(S.String),
@@ -1766,9 +1462,9 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          subject_type: S.optional(SubjectTypeEnum),
+          subject_type: S.optional(S.String),
           subject_uuid: S.optional(S.String),
-          interval: S.optional(DataQualityScheduleIntervalEnum),
+          interval: S.optional(S.String),
           enabled: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -1780,5 +1476,28 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpdateDataQualityChecksSchedulePartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
   }
 }

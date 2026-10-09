@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GoogleWorkspaceOpError, GoogleWorkspaceOpContext };
 
@@ -68,35 +70,21 @@ export class NotFound
 
 /** Request message for completing the import process for a space. */
 export interface CompleteImportSpaceRequest {}
-const CompleteImportSpaceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CompleteImportSpaceRequest>;
-
 export interface CompleteImportSpacesRequest {
   /** Required. Resource name of the import mode space. Format: `spaces/{space}` */
   name: string;
   /** Request body */
   body?: CompleteImportSpaceRequest;
 }
-const CompleteImportSpacesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CompleteImportSpacesRequest>;
-
 export type SpaceSpaceTypeEnum =
   | "SPACE_TYPE_UNSPECIFIED"
   | "SPACE"
   | "GROUP_CHAT"
   | "DIRECT_MESSAGE";
-const SpaceSpaceTypeEnum = S.String;
-
 export type SpacePredefinedPermissionSettingsEnum =
   | "PREDEFINED_PERMISSION_SETTINGS_UNSPECIFIED"
   | "COLLABORATION_SPACE"
   | "ANNOUNCEMENT_SPACE";
-const SpacePredefinedPermissionSettingsEnum = S.String;
-
 /** Represents the count of memberships of a space, grouped into categories. */
 export interface MembershipCount {
   /** Output only. Count of all groups that have directly joined the space. */
@@ -104,35 +92,22 @@ export interface MembershipCount {
   /** Output only. Count of human users that have directly joined the space, not counting users joined by having membership in a joined group. */
   joinedDirectHumanUserCount?: number;
 }
-const MembershipCount = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<MembershipCount>;
-
 /** A target audience in Google Chat. A target audience represents a group of users within a Google Workspace organization, defined by an administrator. Target audiences are used to configure access and visibility settings for resources, such as making a space discoverable to a specific group of users. For more details, see [Target audiences](https://support.google.com/a/answer/9934697) and [Make a space discoverable to a target audience](https://developers.google.com/workspace/chat/space-target-audience). */
 export interface Audience {
   /** The resource name of the [target audience](https://support.google.com/a/answer/9934697) who can discover or join the space. For details, see [Make a space discoverable to a target audience](https://developers.google.com/workspace/chat/space-target-audience). Format: `audiences/{audience}` To use the default target audience for the Google Workspace organization, set to `audiences/default`. */
   name?: string;
 }
-const Audience = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Audience>;
-
 /** A principal representing an entity granted access. */
 export interface Principal {
   /** An audience. */
   audience?: Audience;
 }
-const Principal = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Principal>;
-
 export type PrincipalList = Array<Principal>;
-const PrincipalList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PrincipalList>;
-
 /** An access permission setting. */
 export interface AccessPermissionSetting {
   /** Optional. Unordered list. Allowed principals for this permission. */
   principals?: PrincipalList;
 }
-const AccessPermissionSetting = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AccessPermissionSetting>;
-
 /** Access permission settings for a space. */
 export interface AccessPermissionSettings {
   /** Optional. Access permission setting for discovering the space. */
@@ -142,14 +117,7 @@ export interface AccessPermissionSettings {
   /** Optional. Access permission setting for joining the space. */
   joinSpaceSetting?: AccessPermissionSetting;
 }
-const AccessPermissionSettings = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AccessPermissionSettings>;
-
 export type AccessSettingsAccessStateEnum = "ACCESS_STATE_UNSPECIFIED" | "PRIVATE" | "DISCOVERABLE";
-const AccessSettingsAccessStateEnum = S.String;
-
 /** Represents the [access setting](https://support.google.com/chat/answer/11971020) of the space. */
 export interface AccessSettings {
   /** Optional. Access permission settings for the space. To set the target audience when creating a space, specify the `accessSettings.audience` field in your request. */
@@ -159,8 +127,6 @@ export interface AccessSettings {
   /** Output only. Indicates the access state of the space. */
   accessState?: AccessSettingsAccessStateEnum | (string & {});
 }
-const AccessSettings = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AccessSettings>;
-
 /** Represents a space permission setting. */
 export interface PermissionSetting {
   /** Optional. Whether basic space members (`ROLE_MEMBER`) have this permission. */
@@ -170,8 +136,6 @@ export interface PermissionSetting {
   /** Optional. Whether space managers `ROLE_ASSISTANT_MANAGER`) have this permission. */
   assistantManagersAllowed?: boolean;
 }
-const PermissionSetting = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<PermissionSetting>;
-
 /** [Permission settings](https://support.google.com/chat/answer/13340792) that you can specify when updating an existing named space. To set permission settings when creating a space, specify the `PredefinedPermissionSettings` field in your request. */
 export interface PermissionSettings {
   /** Optional. Setting for managing webhooks in a space. */
@@ -193,8 +157,6 @@ export interface PermissionSettings {
   /** Output only. Setting for posting messages in a space. */
   postMessages?: PermissionSetting;
 }
-const PermissionSettings = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PermissionSettings>;
-
 /** Details about the space including description and rules. */
 export interface SpaceDetails {
   /** Optional. A description of the space. For example, describe the space's discussion topic, functional purpose, or participants. Supports up to 4,096 characters. */
@@ -202,21 +164,13 @@ export interface SpaceDetails {
   /** Optional. The space's rules, expectations, and etiquette. Supports up to 5,000 characters. */
   guidelines?: string;
 }
-const SpaceDetails = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SpaceDetails>;
-
 export type SpaceSpaceThreadingStateEnum =
   | "SPACE_THREADING_STATE_UNSPECIFIED"
   | "THREADED_MESSAGES"
   | "GROUPED_MESSAGES"
   | "UNTHREADED_MESSAGES";
-const SpaceSpaceThreadingStateEnum = S.String;
-
 export type SpaceTypeEnum = "TYPE_UNSPECIFIED" | "ROOM" | "DM";
-const SpaceTypeEnum = S.String;
-
 export type SpaceSpaceHistoryStateEnum = "HISTORY_STATE_UNSPECIFIED" | "HISTORY_OFF" | "HISTORY_ON";
-const SpaceSpaceHistoryStateEnum = S.String;
-
 /** A space in Google Chat. Spaces are conversations between two or more users or 1:1 messages between a user and a Chat app. */
 export interface Space {
   /** Optional. Immutable. Whether this space permits any Google Chat user as a member. Input when creating a space in a Google Workspace organization. Omit this field when creating spaces in the following conditions: * The authenticated user uses a consumer account (unmanaged user account). By default, a space created by a consumer account permits any Google Chat user. For existing spaces, this field is output only. */
@@ -262,18 +216,11 @@ export interface Space {
   /** Optional. The message history state for messages and threads in this space. */
   spaceHistoryState?: SpaceSpaceHistoryStateEnum | (string & {});
 }
-const Space = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Space>;
-
 /** Response message for completing the import process for a space. */
 export interface CompleteImportSpaceResponse {
   /** The import mode space. */
   space?: Space;
 }
-const CompleteImportSpaceResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CompleteImportSpaceResponse>;
-
 /** Payload data for the custom emoji. */
 export interface CustomEmojiPayload {
   /** Required. Input only. The image used for the custom emoji. The payload must be under 256 KB and the dimension of the image must be square and between 64 and 500 pixels. The restrictions are subject to change. */
@@ -281,8 +228,6 @@ export interface CustomEmojiPayload {
   /** Required. Input only. The image file name. Supported file extensions: `.png`, `.jpg`, `.gif`. */
   filename?: string;
 }
-const CustomEmojiPayload = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CustomEmojiPayload>;
-
 /** Represents a [custom emoji](https://support.google.com/chat/answer/12800149). */
 export interface CustomEmoji {
   /** Output only. Unique key for the custom emoji resource. */
@@ -296,28 +241,17 @@ export interface CustomEmoji {
   /** Output only. A temporary image URL for the custom emoji, valid for at least 10 minutes. Note that this is not populated in the response when the custom emoji is created. */
   temporaryImageUri?: string;
 }
-const CustomEmoji = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<CustomEmoji>;
-
 export interface CreateCustomEmojisRequest {
   /** Request body */
   body?: CustomEmoji;
 }
-const CreateCustomEmojisRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateCustomEmojisRequest>;
-
 export interface CreateSpacesRequest {
   /** Optional. A unique ID for this request. A random UUID is recommended. Specifying a request ID makes the request idempotent, which ensures that multiple identical requests with the same request ID result in only a single space being created. Subsequent requests with the same request ID return the existing space and do not update the space, even if the requested details differ from the current state. To use this field effectively: - Ensure that subsequent requests are identical and use the same authentication credentials as the original request. - If a space was already created with the provided request ID, the request returns that space. Note that the returned space might not be fully populated; the API echoes the space in your request with the system-assigned resource name populated. To retrieve the latest metadata for the space, call `GetSpace`. - Reusing an existing request ID with a different authenticated user results in an error. */
   requestId?: string;
   /** Request body */
   body?: Space;
 }
-const CreateSpacesRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CreateSpacesRequest>;
-
 export type UserTypeEnum = "TYPE_UNSPECIFIED" | "HUMAN" | "BOT";
-const UserTypeEnum = S.String;
-
 /** If your Chat app [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), the output for a `User` resource (such as in the Messages and Memberships APIs) only populates the `name` and `type` fields for both internal and external users, unless they are members of the space or have prior affinity with the calling user. */
 export interface User {
   /** Output only. When `true`, the user is deleted or their profile is not visible, such as when a user is mentioned in a space without being a member and without prior affinity with the calling user. */
@@ -335,36 +269,26 @@ export interface User {
   /** Unique identifier of the user's Google Workspace domain. */
   domainId?: string;
 }
-const User = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<User>;
-
 export type MembershipAffiliationEnum =
   | "AFFILIATION_UNSPECIFIED"
   | "INTERNAL"
   | "EXTERNAL"
   | "MANAGED_EXTERNAL";
-const MembershipAffiliationEnum = S.String;
-
 /** A Google Group in Google Chat. */
 export interface Group {
   /** Resource name for a Google Group. Represents a [group](https://cloud.google.com/identity/docs/reference/rest/v1/groups) in Cloud Identity Groups API. Format: groups/{group} */
   name?: string;
 }
-const Group = Audience as any as S.Schema<Group>;
-
 export type MembershipStateEnum =
   | "MEMBERSHIP_STATE_UNSPECIFIED"
   | "JOINED"
   | "INVITED"
   | "NOT_A_MEMBER";
-const MembershipStateEnum = S.String;
-
 export type MembershipRoleEnum =
   | "MEMBERSHIP_ROLE_UNSPECIFIED"
   | "ROLE_MEMBER"
   | "ROLE_MANAGER"
   | "ROLE_ASSISTANT_MANAGER";
-const MembershipRoleEnum = S.String;
-
 /** Represents a membership relation in Google Chat, such as whether a user or Chat app is invited to, part of, or absent from a space. */
 export interface Membership {
   /** Optional. Immutable. The creation time of the membership, such as when a member joined or was invited to join a space. This field is output only, except when used to import historical memberships in import mode spaces. */
@@ -384,8 +308,6 @@ export interface Membership {
   /** Optional. User's role within a Chat space, which determines their permitted actions in the space. This field can only be used as input in `UpdateMembership`. */
   role?: MembershipRoleEnum | (string & {});
 }
-const Membership = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Membership>;
-
 export interface CreateSpacesMembersRequest {
   /** Required. The resource name of the space for which to create the membership. Format: spaces/{space} */
   parent: string;
@@ -394,11 +316,6 @@ export interface CreateSpacesMembersRequest {
   /** Request body */
   body?: Membership;
 }
-const CreateSpacesMembersRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateSpacesMembersRequest>;
-
 /** A pin on a Chat message. For more information see [Pin a message](https://support.google.com/chat?p=chat-board-hc). */
 export interface MessagePin {
   /** Identifier. The resource name of the message pin. Format: `spaces/{space}/messagePins/{message_pin}` The resource ID component matches the resource ID component of the message. For example, a message with `spaces/AAA/messages/bbb.ccc` corresponds to the message pin with the resource name `spaces/AAA/messagePins/bbb.ccc`. */
@@ -406,31 +323,20 @@ export interface MessagePin {
   /** Required. Immutable. The resource name of the message that is pinned. Format: `spaces/{space}/messages/{message}` */
   message?: string;
 }
-const MessagePin = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<MessagePin>;
-
 export interface CreateSpacesMessagePinsRequest {
   /** Required. The parent space in which to create the message pin. Format: spaces/{space} */
   parent: string;
   /** Request body */
   body?: MessagePin;
 }
-const CreateSpacesMessagePinsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateSpacesMessagePinsRequest>;
-
 export type CreateSpacesMessagesCreateMessageNotificationOptions_notificationTypeEnum =
   | "NOTIFICATION_TYPE_NONE"
   | "NOTIFICATION_TYPE_FORCE_NOTIFY"
   | "NOTIFICATION_TYPE_SILENT";
-const CreateSpacesMessagesCreateMessageNotificationOptions_notificationTypeEnum = S.String;
-
 export type CreateSpacesMessagesMessageReplyOptionEnum =
   | "MESSAGE_REPLY_OPTION_UNSPECIFIED"
   | "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD"
   | "REPLY_MESSAGE_OR_FAIL";
-const CreateSpacesMessagesMessageReplyOptionEnum = S.String;
-
 /** A [Google Material Icon](https://fonts.google.com/icons), which includes over 2500+ options. For example, to display a [checkbox icon](https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Acheck_box%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048) with customized weight and grade, write the following: ``` { "name": "check_box", "fill": true, "weight": 300, "grade": -25 } ``` [Google Chat apps](https://developers.google.com/workspace/chat): */
 export interface GoogleAppsCardV1MaterialIcon {
   /** The icon name defined in the [Google Material Icon](https://fonts.google.com/icons), for example, `check_box`. Any invalid names are abandoned and replaced with empty string and results in the icon failing to render. */
@@ -442,14 +348,7 @@ export interface GoogleAppsCardV1MaterialIcon {
   /** Whether the icon renders as filled. Default value is false. To preview different icon settings, go to [Google Font Icons](https://fonts.google.com/icons) and adjust the settings under **Customize**. */
   fill?: boolean;
 }
-const GoogleAppsCardV1MaterialIcon = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GoogleAppsCardV1MaterialIcon>;
-
 export type GoogleAppsCardV1IconImageTypeEnum = "SQUARE" | "CIRCLE";
-const GoogleAppsCardV1IconImageTypeEnum = S.String;
-
 /** An icon displayed in a widget on a card. For an example in Google Chat apps, see [Add an icon](https://developers.google.com/workspace/chat/add-text-image-card-dialog#add_an_icon). Supports [built-in](https://developers.google.com/workspace/chat/format-messages#builtinicons) and [custom](https://developers.google.com/workspace/chat/format-messages#customicons) icons. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1Icon {
   /** Display one of the built-in icons provided by Google Workspace. For example, to display an airplane icon, specify `AIRPLANE`. For a bus, specify `BUS`. For a full list of supported icons, see [built-in icons](https://developers.google.com/workspace/chat/format-messages#builtinicons). */
@@ -463,14 +362,8 @@ export interface GoogleAppsCardV1Icon {
   /** The crop style applied to the image. In some cases, applying a `CIRCLE` crop causes the image to be drawn larger than a built-in icon. */
   imageType?: GoogleAppsCardV1IconImageTypeEnum | (string & {});
 }
-const GoogleAppsCardV1Icon = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GoogleAppsCardV1Icon>;
-
 export type GoogleAppsCardV1ActionLoadIndicatorEnum = "SPINNER" | "NONE";
-const GoogleAppsCardV1ActionLoadIndicatorEnum = S.String;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<StringList>;
-
 /** List of string parameters to supply when the action method is invoked. For example, consider three snooze buttons: snooze now, snooze one day, or snooze next week. You might use `action method = snooze()`, passing the snooze type and snooze time in the list of string parameters. To learn more, see [`CommonEventObject`](https://developers.google.com/workspace/chat/api/reference/rest/v1/Event#commoneventobject). [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1ActionParameter {
   /** The name of the parameter for the action script. */
@@ -478,20 +371,8 @@ export interface GoogleAppsCardV1ActionParameter {
   /** The value of the parameter. */
   value?: string;
 }
-const GoogleAppsCardV1ActionParameter = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GoogleAppsCardV1ActionParameter>;
-
 export type GoogleAppsCardV1ActionParameterList = Array<GoogleAppsCardV1ActionParameter>;
-const GoogleAppsCardV1ActionParameterList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GoogleAppsCardV1ActionParameterList>;
-
 export type GoogleAppsCardV1ActionInteractionEnum = "INTERACTION_UNSPECIFIED" | "OPEN_DIALOG";
-const GoogleAppsCardV1ActionInteractionEnum = S.String;
-
 /** An action that describes the behavior when the form is submitted. For example, you can invoke an Apps Script script to handle the form. If the action is triggered, the form values are sent to the server. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1Action {
   /** Specifies the loading indicator that the action displays while making the call to the action. */
@@ -509,17 +390,8 @@ export interface GoogleAppsCardV1Action {
   /** Optional. If this is true, then all widgets are considered required by this action. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
   allWidgetsAreRequired?: boolean;
 }
-const GoogleAppsCardV1Action = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GoogleAppsCardV1Action>;
-
 export type GoogleAppsCardV1OpenLinkOnCloseEnum = "NOTHING" | "RELOAD";
-const GoogleAppsCardV1OpenLinkOnCloseEnum = S.String;
-
 export type GoogleAppsCardV1OpenLinkOpenAsEnum = "FULL_SIZE" | "OVERLAY";
-const GoogleAppsCardV1OpenLinkOpenAsEnum = S.String;
-
 /** Represents an `onClick` event that opens a hyperlink. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1OpenLink {
   /** Whether the client forgets about a link after opening it, or observes it until the window closes. [Google Workspace add-ons](https://developers.google.com/workspace/add-ons): */
@@ -529,11 +401,6 @@ export interface GoogleAppsCardV1OpenLink {
   /** The URL to open. HTTP URLs are converted to HTTPS. */
   url?: string;
 }
-const GoogleAppsCardV1OpenLink = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GoogleAppsCardV1OpenLink>;
-
 /** A card action is the action associated with the card. For example, an invoice card might include actions such as delete invoice, email invoice, or open the invoice in a browser. [Google Workspace add-ons](https://developers.google.com/workspace/add-ons): */
 export interface GoogleAppsCardV1CardAction {
   /** The `onClick` action for this action item. */
@@ -541,23 +408,11 @@ export interface GoogleAppsCardV1CardAction {
   /** The label that displays as the action menu item. */
   actionLabel?: string;
 }
-const GoogleAppsCardV1CardAction = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GoogleAppsCardV1CardAction>;
-
 export type GoogleAppsCardV1CardActionList = Array<GoogleAppsCardV1CardAction>;
-const GoogleAppsCardV1CardActionList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GoogleAppsCardV1CardActionList>;
-
 export type GoogleAppsCardV1TextParagraphTextSyntaxEnum =
   | "TEXT_SYNTAX_UNSPECIFIED"
   | "HTML"
   | "MARKDOWN";
-const GoogleAppsCardV1TextParagraphTextSyntaxEnum = S.String;
-
 /** A paragraph of text that supports formatting. For an example in Google Chat apps, see [Add a paragraph of formatted text](https://developers.google.com/workspace/chat/add-text-image-card-dialog#add_a_paragraph_of_formatted_text). For more information about formatting text, see [Formatting text in Google Chat apps](https://developers.google.com/workspace/chat/format-messages#card-formatting) and [Formatting text in Google Workspace add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1TextParagraph {
   /** The text that's shown in the widget. */
@@ -567,11 +422,6 @@ export interface GoogleAppsCardV1TextParagraph {
   /** The syntax of the text. If not set, the text is rendered as HTML. [Google Chat apps](https://developers.google.com/workspace/chat): */
   textSyntax?: GoogleAppsCardV1TextParagraphTextSyntaxEnum | (string & {});
 }
-const GoogleAppsCardV1TextParagraph = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GoogleAppsCardV1TextParagraph>;
-
 /** An image that is specified by a URL and can have an `onClick` action. For an example, see [Add an image](https://developers.google.com/workspace/chat/add-text-image-card-dialog#add_an_image). [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1Image {
   /** When a user clicks the image, the click triggers this action. */
@@ -581,11 +431,6 @@ export interface GoogleAppsCardV1Image {
   /** The HTTPS URL that hosts the image. For example: ``` https://developers.google.com/workspace/chat/images/quickstart-app-avatar.png ``` */
   imageUrl?: string;
 }
-const GoogleAppsCardV1Image = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GoogleAppsCardV1Image>;
-
 /** A list of widgets that can be displayed in a containing layout, such as a `CarouselCard`. [Google Chat apps](https://developers.google.com/workspace/chat): */
 export interface GoogleAppsCardV1NestedWidget {
   /** A text paragraph widget. */
@@ -595,17 +440,7 @@ export interface GoogleAppsCardV1NestedWidget {
   /** A button list widget. */
   buttonList?: GoogleAppsCardV1ButtonList;
 }
-const GoogleAppsCardV1NestedWidget = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GoogleAppsCardV1NestedWidget>;
-
 export type GoogleAppsCardV1NestedWidgetList = Array<GoogleAppsCardV1NestedWidget>;
-const GoogleAppsCardV1NestedWidgetList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GoogleAppsCardV1NestedWidgetList>;
-
 /** A card that can be displayed as a carousel item. [Google Chat apps](https://developers.google.com/workspace/chat): */
 export interface GoogleAppsCardV1CarouselCard {
   /** A list of widgets displayed in the carousel card. The widgets are displayed in the order that they are specified. */
@@ -613,70 +448,38 @@ export interface GoogleAppsCardV1CarouselCard {
   /** A list of widgets displayed at the bottom of the carousel card. The widgets are displayed in the order that they are specified. */
   footerWidgets?: GoogleAppsCardV1NestedWidgetList;
 }
-const GoogleAppsCardV1CarouselCard = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GoogleAppsCardV1CarouselCard>;
-
 export type GoogleAppsCardV1CarouselCardList = Array<GoogleAppsCardV1CarouselCard>;
-const GoogleAppsCardV1CarouselCardList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GoogleAppsCardV1CarouselCardList>;
-
 /** A carousel, also known as a slider, rotates and displays a list of widgets in a slideshow format, with buttons navigating to the previous or next widget. For example, this is a JSON representation of a carousel that contains three text paragraph widgets. ``` { "carouselCards": [ { "widgets": [ { "textParagraph": { "text": "First text paragraph in carousel", } } ] }, { "widgets": [ { "textParagraph": { "text": "Second text paragraph in carousel", } } ] }, { "widgets": [ { "textParagraph": { "text": "Third text paragraph in carousel", } } ] } ] } ``` [Google Chat apps](https://developers.google.com/workspace/chat): */
 export interface GoogleAppsCardV1Carousel {
   /** A list of cards included in the carousel. */
   carouselCards?: GoogleAppsCardV1CarouselCardList;
 }
-const GoogleAppsCardV1Carousel = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GoogleAppsCardV1Carousel>;
-
 export type GoogleAppsCardV1ColumnHorizontalAlignmentEnum =
   | "HORIZONTAL_ALIGNMENT_UNSPECIFIED"
   | "START"
   | "CENTER"
   | "END";
-const GoogleAppsCardV1ColumnHorizontalAlignmentEnum = S.String;
-
 export type GoogleAppsCardV1ColumnVerticalAlignmentEnum =
   | "VERTICAL_ALIGNMENT_UNSPECIFIED"
   | "CENTER"
   | "TOP"
   | "BOTTOM";
-const GoogleAppsCardV1ColumnVerticalAlignmentEnum = S.String;
-
 export type GoogleAppsCardV1ColumnHorizontalSizeStyleEnum =
   | "HORIZONTAL_SIZE_STYLE_UNSPECIFIED"
   | "FILL_AVAILABLE_SPACE"
   | "FILL_MINIMUM_SPACE";
-const GoogleAppsCardV1ColumnHorizontalSizeStyleEnum = S.String;
-
 export type GoogleAppsCardV1PlatformDataSourceCommonDataSourceEnum = "UNKNOWN" | "USER";
-const GoogleAppsCardV1PlatformDataSourceCommonDataSourceEnum = S.String;
-
 /** A data source that populates Google Chat spaces as selection items for a multiselect menu. Only populates spaces that the user is a member of. [Google Chat apps](https://developers.google.com/workspace/chat): */
 export interface SpaceDataSource {
   /** If set to `true`, the multiselect menu selects the current Google Chat space as an item by default. */
   defaultToCurrentSpace?: boolean;
 }
-const SpaceDataSource = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<SpaceDataSource>;
-
 /** For a `SelectionInput` widget that uses a multiselect menu, a data source from Google Chat. The data source populates selection items for the multiselect menu. For example, a user can select Google Chat spaces that they're a member of. [Google Chat apps](https://developers.google.com/workspace/chat): */
 export interface ChatClientDataSourceMarkup {
   /** Google Chat spaces that the user is a member of. */
   spaceDataSource?: SpaceDataSource;
 }
-const ChatClientDataSourceMarkup = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ChatClientDataSourceMarkup>;
-
 export type WorkflowDataSourceMarkupTypeEnum = "UNKNOWN" | "USER" | "SPACE" | "USER_WITH_FREE_FORM";
-const WorkflowDataSourceMarkupTypeEnum = S.String;
-
 /** * Only supported by Google Workspace Workflow, but not Google Chat apps or Google Workspace add-ons. In a `TextInput` or `SelectionInput` widget with MULTI_SELECT type or a `DateTimePicker`, provide data source from Google. */
 export interface WorkflowDataSourceMarkup {
   /** Whether to include variables from the previous step in the data source. */
@@ -684,11 +487,6 @@ export interface WorkflowDataSourceMarkup {
   /** The type of data source. */
   type?: WorkflowDataSourceMarkupTypeEnum | (string & {});
 }
-const WorkflowDataSourceMarkup = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<WorkflowDataSourceMarkup>;
-
 /** A data source from a Google Workspace application. The data source populates available items for a widget. */
 export interface HostAppDataSourceMarkup {
   /** A data source from Google Chat. */
@@ -696,11 +494,6 @@ export interface HostAppDataSourceMarkup {
   /** A data source from Google Workflow. */
   workflowDataSource?: WorkflowDataSourceMarkup;
 }
-const HostAppDataSourceMarkup = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<HostAppDataSourceMarkup>;
-
 /** For a `SelectionInput` widget that uses a multiselect menu, a data source from Google Workspace. Used to populate items in a multiselect menu. [Google Chat apps](https://developers.google.com/workspace/chat): */
 export interface GoogleAppsCardV1PlatformDataSource {
   /** A data source shared by all Google Workspace applications, such as users in a Google Workspace organization. */
@@ -708,11 +501,6 @@ export interface GoogleAppsCardV1PlatformDataSource {
   /** A data source that's unique to a Google Workspace host application, such spaces in Google Chat. This field supports the Google API Client Libraries but isn't available in the Cloud Client Libraries. To learn more, see [Install the client libraries](https://developers.google.com/workspace/chat/libraries). */
   hostAppDataSource?: HostAppDataSourceMarkup;
 }
-const GoogleAppsCardV1PlatformDataSource = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GoogleAppsCardV1PlatformDataSource>;
-
 /** A configuration object that helps configure the data sources for a widget. Available for Google Chat apps and Google Workspace add-ons that extend Google Workspace Studio. */
 export interface GoogleAppsCardV1DataSourceConfig {
   /** The minimum number of characters the user must enter before this data provider is triggered (i.e., before it starts returning results). */
@@ -722,25 +510,13 @@ export interface GoogleAppsCardV1DataSourceConfig {
   /** The data is from a Google Workspace application. */
   platformDataSource?: GoogleAppsCardV1PlatformDataSource;
 }
-const GoogleAppsCardV1DataSourceConfig = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GoogleAppsCardV1DataSourceConfig>;
-
 export type GoogleAppsCardV1DataSourceConfigList = Array<GoogleAppsCardV1DataSourceConfig>;
-const GoogleAppsCardV1DataSourceConfigList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GoogleAppsCardV1DataSourceConfigList>;
-
 export type GoogleAppsCardV1SelectionInputTypeEnum =
   | "CHECK_BOX"
   | "RADIO_BUTTON"
   | "SWITCH"
   | "DROPDOWN"
   | "MULTI_SELECT";
-const GoogleAppsCardV1SelectionInputTypeEnum = S.String;
-
 /** An item that users can select in a selection input, such as a checkbox or switch. Supports up to 100 items. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1SelectionItem {
   /** The text that identifies or describes the item to users. */
@@ -753,17 +529,7 @@ export interface GoogleAppsCardV1SelectionItem {
   /** The value associated with this item. The client should use this as a form input value. For details about working with form inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data). */
   value?: string;
 }
-const GoogleAppsCardV1SelectionItem = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GoogleAppsCardV1SelectionItem>;
-
 export type GoogleAppsCardV1SelectionItemList = Array<GoogleAppsCardV1SelectionItem>;
-const GoogleAppsCardV1SelectionItemList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GoogleAppsCardV1SelectionItemList>;
-
 /** A widget that creates one or more UI items that users can select. Supports form submission validation for `dropdown` and `multiselect` menus only. When `Action.all_widgets_are_required` is set to `true` or this widget is specified in `Action.required_widgets`, the submission action is blocked unless a value is selected. For example, a dropdown menu or checkboxes. You can use this widget to collect data that can be predicted or enumerated. For an example in Google Chat apps, see [Add selectable UI elements](/workspace/chat/design-interactive-card-dialog#add_selectable_ui_elements). Chat apps can process the value of items that users select or input. For details about working with form inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data). To collect undefined or abstract data from users, use the TextInput widget. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1SelectionInput {
   /** The text that appears above the selection input field in the user interface. Specify text that helps the user enter the information your app needs. For example, if users are selecting the urgency of a work ticket from a drop-down menu, the label might be "Urgency" or "Select urgency". */
@@ -789,21 +555,12 @@ export interface GoogleAppsCardV1SelectionInput {
   /** Optional. Text that appears below the selection input field meant to assist users by prompting them to enter a certain value. This text is always visible. Available for Google Workspace add-ons that extend Google Workspace Studio. Unavailable for Google Chat apps. */
   hintText?: string;
 }
-const GoogleAppsCardV1SelectionInput = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GoogleAppsCardV1SelectionInput>;
-
 export type GoogleAppsCardV1DecoratedTextStartIconVerticalAlignmentEnum =
   | "VERTICAL_ALIGNMENT_UNSPECIFIED"
   | "TOP"
   | "MIDDLE"
   | "BOTTOM";
-const GoogleAppsCardV1DecoratedTextStartIconVerticalAlignmentEnum = S.String;
-
 export type GoogleAppsCardV1SwitchControlControlTypeEnum = "SWITCH" | "CHECKBOX" | "CHECK_BOX";
-const GoogleAppsCardV1SwitchControlControlTypeEnum = S.String;
-
 /** Either a toggle-style switch or a checkbox inside a `decoratedText` widget. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): Only supported in the `decoratedText` widget. */
 export interface GoogleAppsCardV1SwitchControl {
   /** When `true`, the switch is selected. */
@@ -817,11 +574,6 @@ export interface GoogleAppsCardV1SwitchControl {
   /** The value entered by a user, returned as part of a form input event. For details about working with form inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data). */
   value?: string;
 }
-const GoogleAppsCardV1SwitchControl = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GoogleAppsCardV1SwitchControl>;
-
 /** A widget that displays text with optional decorations such as a label above or below the text, an icon in front of the text, a selection widget, or a button after the text. For an example in Google Chat apps, see [Display text with decorative text](https://developers.google.com/workspace/chat/add-text-image-card-dialog#display_text_with_decorative_elements). [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1DecoratedText {
   /** Deprecated in favor of `startIcon`. */
@@ -855,11 +607,6 @@ export interface GoogleAppsCardV1DecoratedText {
   /** `TextParagraph` equivalent of `text`. Allows for more complex formatting than `text`. [Google Chat apps](https://developers.google.com/workspace/chat): */
   contentText?: GoogleAppsCardV1TextParagraph;
 }
-const GoogleAppsCardV1DecoratedText = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<GoogleAppsCardV1DecoratedText>;
-
 export type GoogleAppsCardV1ValidationInputTypeEnum =
   | "INPUT_TYPE_UNSPECIFIED"
   | "TEXT"
@@ -867,8 +614,6 @@ export type GoogleAppsCardV1ValidationInputTypeEnum =
   | "FLOAT"
   | "EMAIL"
   | "EMOJI_PICKER";
-const GoogleAppsCardV1ValidationInputTypeEnum = S.String;
-
 /** Represents the necessary data for validating the widget it's attached to. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1Validation {
   /** Specify the character limit for text input widgets. Note that this is only used for text input and is ignored for other widgets. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
@@ -876,40 +621,18 @@ export interface GoogleAppsCardV1Validation {
   /** Specify the type of the input widgets. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
   inputType?: GoogleAppsCardV1ValidationInputTypeEnum | (string & {});
 }
-const GoogleAppsCardV1Validation = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<GoogleAppsCardV1Validation>;
-
 /** One suggested value that users can enter in a text input field. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1SuggestionItem {
   /** The value of a suggested input to a text input field. This is equivalent to what users enter themselves. */
   text?: string;
 }
-const GoogleAppsCardV1SuggestionItem = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GoogleAppsCardV1SuggestionItem>;
-
 export type GoogleAppsCardV1SuggestionItemList = Array<GoogleAppsCardV1SuggestionItem>;
-const GoogleAppsCardV1SuggestionItemList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GoogleAppsCardV1SuggestionItemList>;
-
 /** Suggested values that users can enter. These values appear when users click inside the text input field. As users type, the suggested values dynamically filter to match what the users have typed. For example, a text input field for programming language might suggest Java, JavaScript, Python, and C++. When users start typing `Jav`, the list of suggestions filters to show `Java` and `JavaScript`. Suggested values help guide users to enter values that your app can make sense of. When referring to JavaScript, some users might enter `javascript` and others `java script`. Suggesting `JavaScript` can standardize how users interact with your app. When specified, `TextInput.type` is always `SINGLE_LINE`, even if it's set to `MULTIPLE_LINE`. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1Suggestions {
   /** A list of suggestions used for autocomplete recommendations in text input fields. */
   items?: GoogleAppsCardV1SuggestionItemList;
 }
-const GoogleAppsCardV1Suggestions = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GoogleAppsCardV1Suggestions>;
-
 export type GoogleAppsCardV1TextInputTypeEnum = "SINGLE_LINE" | "MULTIPLE_LINE";
-const GoogleAppsCardV1TextInputTypeEnum = S.String;
-
 /** A field in which users can enter text. Supports suggestions and on-change actions. Supports form submission validation. When `Action.all_widgets_are_required` is set to `true` or this widget is specified in `Action.required_widgets`, the submission action is blocked unless a value is entered. For an example in Google Chat apps, see [Add a field in which a user can enter text](https://developers.google.com/workspace/chat/design-interactive-card-dialog#add_a_field_in_which_a_user_can_enter_text). Chat apps receive and can process the value of entered text during form input events. For details about working with form inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data). When you need to collect undefined or abstract data from users, use a text input. To collect defined or enumerated data from users, use the SelectionInput widget. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1TextInput {
   /** The name by which the text input is identified in a form input event. For details about working with form inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data). */
@@ -935,11 +658,6 @@ export interface GoogleAppsCardV1TextInput {
   /** How a text input field appears in the user interface. For example, whether the field is single or multi-line. */
   type?: GoogleAppsCardV1TextInputTypeEnum | (string & {});
 }
-const GoogleAppsCardV1TextInput = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GoogleAppsCardV1TextInput>;
-
 /** A text, icon, or text and icon chip that users can click. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1Chip {
   /** The alternative text that's used for accessibility. Set descriptive text that lets users know what the chip does. For example, if a chip opens a hyperlink, write: "Opens a new browser tab and navigates to the Google Chat developer documentation at https://developers.google.com/workspace/chat". */
@@ -955,20 +673,11 @@ export interface GoogleAppsCardV1Chip {
   /** Optional. The action to perform when a user clicks the chip, such as opening a hyperlink or running a custom function. */
   onClick?: GoogleAppsCardV1OnClick;
 }
-const GoogleAppsCardV1Chip = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<GoogleAppsCardV1Chip>;
-
 export type GoogleAppsCardV1ChipList_ = Array<GoogleAppsCardV1Chip>;
-const GoogleAppsCardV1ChipList_ = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GoogleAppsCardV1ChipList_>;
-
 export type GoogleAppsCardV1ChipListLayoutEnum =
   | "LAYOUT_UNSPECIFIED"
   | "WRAPPED"
   | "HORIZONTAL_SCROLLABLE";
-const GoogleAppsCardV1ChipListLayoutEnum = S.String;
-
 /** A list of chips layed out horizontally, which can either scroll horizontally or wrap to the next line. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1ChipList {
   /** An array of chips. */
@@ -976,14 +685,7 @@ export interface GoogleAppsCardV1ChipList {
   /** Specified chip list layout. */
   layout?: GoogleAppsCardV1ChipListLayoutEnum | (string & {});
 }
-const GoogleAppsCardV1ChipList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GoogleAppsCardV1ChipList>;
-
 export type GoogleAppsCardV1DateTimePickerTypeEnum = "DATE_AND_TIME" | "DATE_ONLY" | "TIME_ONLY";
-const GoogleAppsCardV1DateTimePickerTypeEnum = S.String;
-
 /** Lets users input a date, a time, or both a date and a time. Supports form submission validation. When `Action.all_widgets_are_required` is set to `true` or this widget is specified in `Action.required_widgets`, the submission action is blocked unless a value is selected. For an example in Google Chat apps, see [Let a user pick a date and time](https://developers.google.com/workspace/chat/design-interactive-card-dialog#let_a_user_pick_a_date_and_time). Users can input text or use the picker to select dates and times. If users input an invalid date or time, the picker shows an error that prompts users to input the information correctly. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1DateTimePicker {
   /** The name by which the `DateTimePicker` is identified in a form input event. For details about working with form inputs, see [Receive form data](https://developers.google.com/workspace/chat/read-form-data). */
@@ -1001,11 +703,6 @@ export interface GoogleAppsCardV1DateTimePicker {
   /** The text that prompts users to input a date, a time, or a date and time. For example, if users are scheduling an appointment, use a label such as `Appointment date` or `Appointment date and time`. */
   label?: string;
 }
-const GoogleAppsCardV1DateTimePicker = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GoogleAppsCardV1DateTimePicker>;
-
 /** The supported widgets that you can include in a column. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend) */
 export interface GoogleAppsCardV1Widgets {
   /** SelectionInput widget. */
@@ -1025,17 +722,7 @@ export interface GoogleAppsCardV1Widgets {
   /** DateTimePicker widget. */
   dateTimePicker?: GoogleAppsCardV1DateTimePicker;
 }
-const GoogleAppsCardV1Widgets = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GoogleAppsCardV1Widgets>;
-
 export type GoogleAppsCardV1WidgetsList = Array<GoogleAppsCardV1Widgets>;
-const GoogleAppsCardV1WidgetsList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GoogleAppsCardV1WidgetsList>;
-
 /** A column. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend) */
 export interface GoogleAppsCardV1Column {
   /** Specifies whether widgets align to the left, right, or center of a column. */
@@ -1047,81 +734,40 @@ export interface GoogleAppsCardV1Column {
   /** An array of widgets included in a column. Widgets appear in the order that they are specified. */
   widgets?: GoogleAppsCardV1WidgetsList;
 }
-const GoogleAppsCardV1Column = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GoogleAppsCardV1Column>;
-
 export type GoogleAppsCardV1ColumnList = Array<GoogleAppsCardV1Column>;
-const GoogleAppsCardV1ColumnList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GoogleAppsCardV1ColumnList>;
-
 /** The `Columns` widget displays up to 2 columns in a card or dialog. You can add widgets to each column; the widgets appear in the order that they are specified. For an example in Google Chat apps, see [Display cards and dialogs in columns](https://developers.google.com/workspace/chat/format-structure-card-dialog#display_cards_and_dialogs_in_columns). The height of each column is determined by the taller column. For example, if the first column is taller than the second column, both columns have the height of the first column. Because each column can contain a different number of widgets, you can't define rows or align widgets between the columns. Columns are displayed side-by-side. You can customize the width of each column using the `HorizontalSizeStyle` field. If the user's screen width is too narrow, the second column wraps below the first: * On web, the second column wraps if the screen width is less than or equal to 480 pixels. * On iOS devices, the second column wraps if the screen width is less than or equal to 300 pt. * On Android devices, the second column wraps if the screen width is less than or equal to 320 dp. To include more than two columns, or to use rows, use the `Grid` widget. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): The add-on UIs that support columns include: * The dialog displayed when users open the add-on from an email draft. * The dialog displayed when users open the add-on from the **Add attachment** menu in a Google Calendar event. */
 export interface GoogleAppsCardV1Columns {
   /** An array of columns. You can include up to 2 columns in a card or dialog. */
   columnItems?: GoogleAppsCardV1ColumnList;
 }
-const GoogleAppsCardV1Columns = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GoogleAppsCardV1Columns>;
-
 export type GoogleAppsCardV1WidgetVisibilityEnum = "VISIBILITY_UNSPECIFIED" | "VISIBLE" | "HIDDEN";
-const GoogleAppsCardV1WidgetVisibilityEnum = S.String;
-
 export type GoogleAppsCardV1WidgetHorizontalAlignmentEnum =
   | "HORIZONTAL_ALIGNMENT_UNSPECIFIED"
   | "START"
   | "CENTER"
   | "END";
-const GoogleAppsCardV1WidgetHorizontalAlignmentEnum = S.String;
-
 /** Displays a divider between widgets as a horizontal line. For an example in Google Chat apps, see [Add a horizontal divider between widgets](https://developers.google.com/workspace/chat/format-structure-card-dialog#add_a_horizontal_divider_between_widgets). [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): For example, the following JSON creates a divider: ``` "divider": {} ``` */
 export type GoogleAppsCardV1Divider = CompleteImportSpaceRequest;
 export type GoogleAppsCardV1UpdateVisibilityActionVisibilityEnum =
   | "VISIBILITY_UNSPECIFIED"
   | "VISIBLE"
   | "HIDDEN";
-const GoogleAppsCardV1UpdateVisibilityActionVisibilityEnum = S.String;
-
 /** Represents an action that updates the visibility of a widget. Available for Google Workspace add-ons that extend Google Workspace Studio. Unavailable for Google Chat apps. */
 export interface GoogleAppsCardV1UpdateVisibilityAction {
   /** The new visibility. */
   visibility?: GoogleAppsCardV1UpdateVisibilityActionVisibilityEnum | (string & {});
 }
-const GoogleAppsCardV1UpdateVisibilityAction = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<GoogleAppsCardV1UpdateVisibilityAction>;
-
 /** Represents an action that is not specific to a widget. Available for Google Workspace add-ons that extend Google Workspace Studio. Unavailable for Google Chat apps. */
 export interface GoogleAppsCardV1CommonWidgetAction {
   /** The action to update the visibility of a widget. */
   updateVisibilityAction?: GoogleAppsCardV1UpdateVisibilityAction;
 }
-const GoogleAppsCardV1CommonWidgetAction = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<GoogleAppsCardV1CommonWidgetAction>;
-
 /** Represents a trigger. Available for Google Workspace add-ons that extend Google Workspace Studio. Unavailable for Google Chat apps. */
 export interface GoogleAppsCardV1Trigger {
   /** The unique identifier of the ActionRule. */
   actionRuleId?: string;
 }
-const GoogleAppsCardV1Trigger = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GoogleAppsCardV1Trigger>;
-
 export type GoogleAppsCardV1TriggerList = Array<GoogleAppsCardV1Trigger>;
-const GoogleAppsCardV1TriggerList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GoogleAppsCardV1TriggerList>;
-
 /** Represents an actionthat can be performed on an ui element. Available for Google Workspace add-ons that extend Google Workspace Studio. Unavailable for Google Chat apps. */
 export interface GoogleAppsCardV1EventAction {
   /** Common widget action. */
@@ -1131,17 +777,7 @@ export interface GoogleAppsCardV1EventAction {
   /** The list of triggers that will be triggered after the EventAction is executed. */
   postEventTriggers?: GoogleAppsCardV1TriggerList;
 }
-const GoogleAppsCardV1EventAction = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GoogleAppsCardV1EventAction>;
-
 export type GoogleAppsCardV1EventActionList = Array<GoogleAppsCardV1EventAction>;
-const GoogleAppsCardV1EventActionList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GoogleAppsCardV1EventActionList>;
-
 /** Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and from color representations in various languages over compactness. For example, the fields of this representation can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the absolute color space that should be used to interpret the RGB value--for example, sRGB, Adobe RGB, DCI-P3, and BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided, implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ? protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); } // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed:&red green:&green blue:&blue alpha:&alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result setGreen:green]; [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): // ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green = Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue); var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return resultBuilder.join(''); }; // ... */
 export interface Color {
   /** The amount of red in the color as a value in the interval [0, 1]. */
@@ -1153,14 +789,10 @@ export interface Color {
   /** The amount of blue in the color as a value in the interval [0, 1]. */
   blue?: number;
 }
-const Color = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Color>;
-
 export type GoogleAppsCardV1BorderStyleTypeEnum =
   | "BORDER_TYPE_UNSPECIFIED"
   | "NO_BORDER"
   | "STROKE";
-const GoogleAppsCardV1BorderStyleTypeEnum = S.String;
-
 /** The style options for the border of a card or widget, including the border type and color. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1BorderStyle {
   /** The corner radius for the border. */
@@ -1170,25 +802,16 @@ export interface GoogleAppsCardV1BorderStyle {
   /** The border type. */
   type?: GoogleAppsCardV1BorderStyleTypeEnum | (string & {});
 }
-const GoogleAppsCardV1BorderStyle = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GoogleAppsCardV1BorderStyle>;
-
 export type GoogleAppsCardV1GridItemLayoutEnum =
   | "GRID_ITEM_LAYOUT_UNSPECIFIED"
   | "TEXT_BELOW"
   | "TEXT_ABOVE";
-const GoogleAppsCardV1GridItemLayoutEnum = S.String;
-
 export type GoogleAppsCardV1ImageCropStyleTypeEnum =
   | "IMAGE_CROP_TYPE_UNSPECIFIED"
   | "SQUARE"
   | "CIRCLE"
   | "RECTANGLE_CUSTOM"
   | "RECTANGLE_4_3";
-const GoogleAppsCardV1ImageCropStyleTypeEnum = S.String;
-
 /** Represents the crop style applied to an image. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): For example, here's how to apply a 16:9 aspect ratio: ``` cropStyle { "type": "RECTANGLE_CUSTOM", "aspectRatio": 16/9 } ``` */
 export interface GoogleAppsCardV1ImageCropStyle {
   /** The crop type. */
@@ -1196,11 +819,6 @@ export interface GoogleAppsCardV1ImageCropStyle {
   /** The aspect ratio to use if the crop type is `RECTANGLE_CUSTOM`. For example, here's how to apply a 16:9 aspect ratio: ``` cropStyle { "type": "RECTANGLE_CUSTOM", "aspectRatio": 16/9 } ``` */
   aspectRatio?: number;
 }
-const GoogleAppsCardV1ImageCropStyle = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GoogleAppsCardV1ImageCropStyle>;
-
 /** Represents an image. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1ImageComponent {
   /** The crop style to apply to the image. */
@@ -1212,11 +830,6 @@ export interface GoogleAppsCardV1ImageComponent {
   /** The accessibility label for the image. */
   altText?: string;
 }
-const GoogleAppsCardV1ImageComponent = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GoogleAppsCardV1ImageComponent>;
-
 /** Represents an item in a grid layout. Items can contain text, an image, or both text and an image. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1GridItem {
   /** A user-specified identifier for this grid item. This identifier is returned in the parent grid's `onClick` callback parameters. */
@@ -1230,17 +843,7 @@ export interface GoogleAppsCardV1GridItem {
   /** The grid item's title. */
   title?: string;
 }
-const GoogleAppsCardV1GridItem = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GoogleAppsCardV1GridItem>;
-
 export type GoogleAppsCardV1GridItemList = Array<GoogleAppsCardV1GridItem>;
-const GoogleAppsCardV1GridItemList = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<GoogleAppsCardV1GridItemList>;
-
 /** Displays a grid with a collection of items. Items can only include text or images. For responsive columns, or to include more than text or images, use `Columns`. For an example in Google Chat apps, see [Display a Grid with a collection of items](https://developers.google.com/workspace/chat/format-structure-card-dialog#display_a_grid_with_a_collection_of_items). A grid supports any number of columns and items. The number of rows is determined by items divided by columns. A grid with 10 items and 2 columns has 5 rows. A grid with 11 items and 2 columns has 6 rows. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): For example, the following JSON creates a 2 column grid with a single item: ``` "grid": { "title": "A fine collection of items", "columnCount": 2, "borderStyle": { "type": "STROKE", "cornerRadius": 4 }, "items": [ { "image": { "imageUri": "https://www.example.com/image.png", "cropStyle": { "type": "SQUARE" }, "borderStyle": { "type": "STROKE" } }, "title": "An item", "textAlignment": "CENTER" } ], "onClick": { "openLink": { "url": "https://www.example.com" } } } ``` */
 export interface GoogleAppsCardV1Grid {
   /** The border style to apply to each grid item. */
@@ -1254,8 +857,6 @@ export interface GoogleAppsCardV1Grid {
   /** The items to display in the grid. */
   items?: GoogleAppsCardV1GridItemList;
 }
-const GoogleAppsCardV1Grid = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<GoogleAppsCardV1Grid>;
-
 /** Each card is made up of widgets. A widget is a composite object that can represent one of text, images, buttons, and other object types. */
 export interface GoogleAppsCardV1Widget {
   /** A carousel contains a collection of nested widgets. For example, this is a JSON representation of a carousel that contains two text paragraphs. ``` { "widgets": [ { "textParagraph": { "text": "First text paragraph in the carousel." } }, { "textParagraph": { "text": "Second text paragraph in the carousel." } } ] } ``` */
@@ -1291,24 +892,12 @@ export interface GoogleAppsCardV1Widget {
   /** A unique ID assigned to the widget that's used to identify the widget to be mutated. The ID has a character limit of 64 characters and should be in the format of `[a-zA-Z0-9-]+`. Available for Google Workspace add-ons that extend Google Workspace Studio. Unavailable for Google Chat apps. */
   id?: string;
 }
-const GoogleAppsCardV1Widget = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GoogleAppsCardV1Widget>;
-
 export type GoogleAppsCardV1WidgetList = Array<GoogleAppsCardV1Widget>;
-const GoogleAppsCardV1WidgetList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GoogleAppsCardV1WidgetList>;
-
 export type GoogleAppsCardV1CollapseControlHorizontalAlignmentEnum =
   | "HORIZONTAL_ALIGNMENT_UNSPECIFIED"
   | "START"
   | "CENTER"
   | "END";
-const GoogleAppsCardV1CollapseControlHorizontalAlignmentEnum = S.String;
-
 /** Represent an expand and collapse control. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1CollapseControl {
   /** The horizontal alignment of the expand and collapse button. */
@@ -1318,11 +907,6 @@ export interface GoogleAppsCardV1CollapseControl {
   /** Optional. Define a customizable button to expand the section. Both expand_button and collapse_button field must be set. Only one field set will not take into effect. If this field isn't set, the default button is used. */
   expandButton?: GoogleAppsCardV1Button;
 }
-const GoogleAppsCardV1CollapseControl = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GoogleAppsCardV1CollapseControl>;
-
 /** A section contains a collection of widgets that are rendered vertically in the order that they're specified. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1Section {
   /** Text that appears at the top of a section. Supports simple HTML formatted text. For more information about formatting text, see [Formatting text in Google Chat apps](https://developers.google.com/workspace/chat/format-messages#card-formatting) and [Formatting text in Google Workspace add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). */
@@ -1338,20 +922,8 @@ export interface GoogleAppsCardV1Section {
   /** Indicates whether this section is collapsible. Collapsible sections hide some or all widgets, but users can expand the section to reveal the hidden widgets by clicking **Show more**. Users can hide the widgets again by clicking **Show less**. To determine which widgets are hidden, specify `uncollapsibleWidgetsCount`. */
   collapsible?: boolean;
 }
-const GoogleAppsCardV1Section = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GoogleAppsCardV1Section>;
-
 export type GoogleAppsCardV1SectionList = Array<GoogleAppsCardV1Section>;
-const GoogleAppsCardV1SectionList = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GoogleAppsCardV1SectionList>;
-
 export type GoogleAppsCardV1CardDisplayStyleEnum = "DISPLAY_STYLE_UNSPECIFIED" | "PEEK" | "REPLACE";
-const GoogleAppsCardV1CardDisplayStyleEnum = S.String;
-
 /** A persistent (sticky) footer that that appears at the bottom of the card. Setting `fixedFooter` without specifying a `primaryButton` or a `secondaryButton` causes an error. For Chat apps, you can use fixed footers in [dialogs](https://developers.google.com/workspace/chat/dialogs), but not [card messages](https://developers.google.com/workspace/chat/create-messages#create). For an example in Google Chat apps, see [Add a persistent footer](https://developers.google.com/workspace/chat/design-components-card-dialog#add_a_persistent_footer). [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1CardFixedFooter {
   /** The secondary button of the fixed footer. The button must be a text button with text and color set. If `secondaryButton` is set, you must also set `primaryButton`. */
@@ -1359,14 +931,7 @@ export interface GoogleAppsCardV1CardFixedFooter {
   /** The primary button of the fixed footer. The button must be a text button with text and color set. */
   primaryButton?: GoogleAppsCardV1Button;
 }
-const GoogleAppsCardV1CardFixedFooter = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<GoogleAppsCardV1CardFixedFooter>;
-
 export type GoogleAppsCardV1CardHeaderImageTypeEnum = "SQUARE" | "CIRCLE";
-const GoogleAppsCardV1CardHeaderImageTypeEnum = S.String;
-
 /** Represents a card header. For an example in Google Chat apps, see [Add a header](https://developers.google.com/workspace/chat/design-components-card-dialog#add_a_header). [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1CardHeader {
   /** The subtitle of the card header. If specified, appears on its own line below the `title`. */
@@ -1380,33 +945,19 @@ export interface GoogleAppsCardV1CardHeader {
   /** The HTTPS URL of the image in the card header. */
   imageUrl?: string;
 }
-const GoogleAppsCardV1CardHeader = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GoogleAppsCardV1CardHeader>;
-
 export type GoogleAppsCardV1CardSectionDividerStyleEnum =
   | "DIVIDER_STYLE_UNSPECIFIED"
   | "SOLID_DIVIDER"
   | "NO_DIVIDER";
-const GoogleAppsCardV1CardSectionDividerStyleEnum = S.String;
-
 export type GoogleAppsCardV1ExpressionDataConditionConditionTypeEnum =
   | "CONDITION_TYPE_UNSPECIFIED"
   | "EXPRESSION_EVALUATION_SUCCESS"
   | "EXPRESSION_EVALUATION_FAILURE";
-const GoogleAppsCardV1ExpressionDataConditionConditionTypeEnum = S.String;
-
 /** Represents a condition that is evaluated using CEL. Available for Google Workspace add-ons that extend Google Workspace Studio. Unavailable for Google Chat apps. */
 export interface GoogleAppsCardV1ExpressionDataCondition {
   /** The type of the condition. */
   conditionType?: GoogleAppsCardV1ExpressionDataConditionConditionTypeEnum | (string & {});
 }
-const GoogleAppsCardV1ExpressionDataCondition = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GoogleAppsCardV1ExpressionDataCondition>;
-
 /** Represents a condition that can be used to trigger an action. Available for Google Workspace add-ons that extend Google Workspace Studio. Unavailable for Google Chat apps. */
 export interface GoogleAppsCardV1Condition {
   /** The condition that is determined by the expression data. */
@@ -1414,17 +965,7 @@ export interface GoogleAppsCardV1Condition {
   /** The unique identifier of the ActionRule. */
   actionRuleId?: string;
 }
-const GoogleAppsCardV1Condition = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GoogleAppsCardV1Condition>;
-
 export type GoogleAppsCardV1ConditionList = Array<GoogleAppsCardV1Condition>;
-const GoogleAppsCardV1ConditionList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<GoogleAppsCardV1ConditionList>;
-
 /** Represents the data that is used to evaluate an expression. Available for Google Workspace add-ons that extend Google Workspace Studio. Unavailable for Google Chat apps. */
 export interface GoogleAppsCardV1ExpressionData {
   /** The uncompiled expression. */
@@ -1436,17 +977,7 @@ export interface GoogleAppsCardV1ExpressionData {
   /** The list of actions that the ExpressionData can be used. */
   eventActions?: GoogleAppsCardV1EventActionList;
 }
-const GoogleAppsCardV1ExpressionData = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GoogleAppsCardV1ExpressionData>;
-
 export type GoogleAppsCardV1ExpressionDataList = Array<GoogleAppsCardV1ExpressionData>;
-const GoogleAppsCardV1ExpressionDataList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<GoogleAppsCardV1ExpressionDataList>;
-
 /** A card interface displayed in a Google Chat message or Google Workspace add-on. Cards support a defined layout, interactive UI elements like buttons, and rich media like images. Use cards to present detailed information, gather information from users, and guide users to take a next step. [Card builder](https://addons.gsuite.google.com/uikit/builder) To learn how to build cards, see the following documentation: * For Google Chat apps, see [Design the components of a card or dialog](https://developers.google.com/workspace/chat/design-components-card-dialog). * For Google Workspace add-ons, see [Card-based interfaces](https://developers.google.com/apps-script/add-ons/concepts/cards). Note: You can add up to 100 widgets per card. If a section's widgets push the total count above 100, that entire section and all following sections are ignored. This limit applies to both card messages and dialogs in Google Chat apps, and to cards in Google Workspace add-ons. **Example: Card message for a Google Chat app** ![Example contact card](https://developers.google.com/workspace/chat/images/card_api_reference.png) To create the sample card message in Google Chat, use the following JSON: ``` { "cardsV2": [ { "cardId": "unique-card-id", "card": { "header": { "title": "Sasha", "subtitle": "Software Engineer", "imageUrl": "https://developers.google.com/workspace/chat/images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText": "Avatar for Sasha" }, "sections": [ { "header": "Contact Info", "collapsible": true, "uncollapsibleWidgetsCount": 1, "widgets": [ { "decoratedText": { "startIcon": { "knownIcon": "EMAIL" }, "text": "sasha@example.com" } }, { "decoratedText": { "startIcon": { "knownIcon": "PERSON" }, "text": "Online" } }, { "decoratedText": { "startIcon": { "knownIcon": "PHONE" }, "text": "+1 (555) 555-1234" } }, { "buttonList": { "buttons": [ { "text": "Share", "onClick": { "openLink": { "url": "https://example.com/share" } } }, { "text": "Edit", "onClick": { "action": { "function": "goToView", "parameters": [ { "key": "viewType", "value": "EDIT" } ] } } } ] } } ] } ] } } ] } ``` */
 export interface GoogleAppsCardV1Card {
   /** The card's actions. Actions are added to the card's toolbar menu. [Google Workspace add-ons](https://developers.google.com/workspace/add-ons): For example, the following JSON constructs a card action menu with `Settings` and `Send Feedback` options: ``` "card_actions": [ { "actionLabel": "Settings", "onClick": { "action": { "functionName": "goToView", "parameters": [ { "key": "viewType", "value": "SETTING" } ], "loadIndicator": "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send Feedback", "onClick": { "openLink": { "url": "https://example.com/feedback" } } } ] ``` */
@@ -1468,11 +999,6 @@ export interface GoogleAppsCardV1Card {
   /** The expression data for the card. Available for Google Workspace add-ons that extend Google Workspace Studio. Unavailable for Google Chat apps. */
   expressionData?: GoogleAppsCardV1ExpressionDataList;
 }
-const GoogleAppsCardV1Card = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GoogleAppsCardV1Card>;
-
 /** An option that users can invoke in an overflow menu. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1OverflowMenuItem {
   /** Required. The text that identifies or describes the item to users. */
@@ -1484,27 +1010,12 @@ export interface GoogleAppsCardV1OverflowMenuItem {
   /** Required. The action invoked when a menu option is selected. This `OnClick` cannot contain an `OverflowMenu`, any specified `OverflowMenu` is dropped and the menu item disabled. */
   onClick?: GoogleAppsCardV1OnClick;
 }
-const GoogleAppsCardV1OverflowMenuItem = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<GoogleAppsCardV1OverflowMenuItem>;
-
 export type GoogleAppsCardV1OverflowMenuItemList = Array<GoogleAppsCardV1OverflowMenuItem>;
-const GoogleAppsCardV1OverflowMenuItemList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GoogleAppsCardV1OverflowMenuItemList>;
-
 /** A widget that presents a pop-up menu with one or more actions that users can invoke. For example, showing non-primary actions in a card. You can use this widget when actions don't fit in the available space. To use, specify this widget in the `OnClick` action of widgets that support it. For example, in a `Button`. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1OverflowMenu {
   /** Required. The list of menu options. */
   items?: GoogleAppsCardV1OverflowMenuItemList;
 }
-const GoogleAppsCardV1OverflowMenu = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GoogleAppsCardV1OverflowMenu>;
-
 /** Represents how to respond when users click an interactive element on a card, such as a button. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1OnClick {
   /** An add-on triggers this action when the action needs to open a link. This differs from the `open_link` above in that this needs to talk to server to get the link. Thus some preparation work is required for web client to do before the open link action response comes back. [Google Workspace add-ons](https://developers.google.com/workspace/add-ons): */
@@ -1518,19 +1029,12 @@ export interface GoogleAppsCardV1OnClick {
   /** If specified, this `onClick` opens an overflow menu. */
   overflowMenu?: GoogleAppsCardV1OverflowMenu;
 }
-const GoogleAppsCardV1OnClick = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GoogleAppsCardV1OnClick>;
-
 export type GoogleAppsCardV1ButtonTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "OUTLINED"
   | "FILLED"
   | "FILLED_TONAL"
   | "BORDERLESS";
-const GoogleAppsCardV1ButtonTypeEnum = S.String;
-
 /** A text, icon, or text and icon button that users can click. For an example in Google Chat apps, see [Add a button](https://developers.google.com/workspace/chat/design-interactive-card-dialog#add_a_button). To make an image a clickable button, specify an `Image` (not an `ImageComponent`) and set an `onClick` action. [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1Button {
   /** The text displayed inside the button. */
@@ -1548,44 +1052,23 @@ export interface GoogleAppsCardV1Button {
   /** Optional. The color of the button. If set, the button `type` is set to `FILLED` and the color of `text` and `icon` fields are set to a contrasting color for readability. For example, if the button color is set to blue, any text or icons in the button are set to white. To set the button color, specify a value for the `red`, `green`, and `blue` fields. The value must be a float number between 0 and 1 based on the RGB color value, where `0` (0/255) represents the absence of color and `1` (255/255) represents the maximum intensity of the color. For example, the following sets the color to red at its maximum intensity: ``` "color": { "red": 1, "green": 0, "blue": 0, } ``` The `alpha` field is unavailable for button color. If specified, this field is ignored. */
   color?: Color;
 }
-const GoogleAppsCardV1Button = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GoogleAppsCardV1Button>;
-
 export type GoogleAppsCardV1ButtonList_ = Array<GoogleAppsCardV1Button>;
-const GoogleAppsCardV1ButtonList_ = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GoogleAppsCardV1ButtonList_>;
-
 /** A list of buttons layed out horizontally. For an example in Google Chat apps, see [Add a button](https://developers.google.com/workspace/chat/design-interactive-card-dialog#add_a_button). [Google Workspace add-ons and Chat apps](https://developers.google.com/workspace/extend): */
 export interface GoogleAppsCardV1ButtonList {
   /** An array of buttons. */
   buttons?: GoogleAppsCardV1ButtonList_;
 }
-const GoogleAppsCardV1ButtonList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GoogleAppsCardV1ButtonList>;
-
 /** One or more interactive widgets that appear at the bottom of a message. For details, see [Add interactive widgets at the bottom of a message](https://developers.google.com/workspace/chat/create-messages#add-accessory-widgets). */
 export interface AccessoryWidget {
   /** A list of buttons. */
   buttonList?: GoogleAppsCardV1ButtonList;
 }
-const AccessoryWidget = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<AccessoryWidget>;
-
 export type AccessoryWidgetList = Array<AccessoryWidget>;
-const AccessoryWidgetList = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<AccessoryWidgetList>;
-
 /** A reference to the data of a drive attachment. */
 export interface DriveDataRef {
   /** The ID for the drive file. Use with the Drive API. */
   driveFileId?: string;
 }
-const DriveDataRef = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<DriveDataRef>;
-
 /** A reference to the attachment data. */
 export interface AttachmentDataRef {
   /** Optional. The resource name of the attachment data. This field is used with the media API to download the attachment data. */
@@ -1593,11 +1076,7 @@ export interface AttachmentDataRef {
   /** Optional. Opaque token containing a reference to an uploaded attachment. Treated by clients as an opaque string and used to create or update Chat messages with attachments. */
   attachmentUploadToken?: string;
 }
-const AttachmentDataRef = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<AttachmentDataRef>;
-
 export type AttachmentSourceEnum = "SOURCE_UNSPECIFIED" | "DRIVE_FILE" | "UPLOADED_CONTENT";
-const AttachmentSourceEnum = S.String;
-
 /** An attachment in Google Chat. */
 export interface Attachment {
   /** Output only. A reference to the Google Drive attachment. This field is used with the Google Drive API. */
@@ -1617,11 +1096,7 @@ export interface Attachment {
   /** Identifier. Resource name of the attachment. Format: `spaces/{space}/messages/{message}/attachments/{attachment}`. */
   name?: string;
 }
-const Attachment = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<Attachment>;
-
 export type AttachmentList = Array<Attachment>;
-const AttachmentList = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<AttachmentList>;
-
 /** A thread in a Google Chat space. For example usage, see [Start or reply to a message thread](https://developers.google.com/workspace/chat/create-messages#create-message-thread). If you specify a thread when creating a message, you can set the [`messageReplyOption`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages/create#messagereplyoption) field to determine what happens if no matching thread is found. */
 export interface Thread {
   /** Optional. Input for creating or updating a thread. Otherwise, output only. ID for the thread. Supports up to 4000 characters. This ID is unique to the Chat app that sets it. For example, if multiple Chat apps create a message using the same thread key, the messages are posted in different threads. To reply in a thread created by a person or another Chat app, specify the thread `name` field instead. */
@@ -1629,14 +1104,10 @@ export interface Thread {
   /** Identifier. Resource name of the thread. Example: `spaces/{space}/threads/{thread}` */
   name?: string;
 }
-const Thread = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<Thread>;
-
 export type MessageMarkupSyntaxEnum =
   | "MARKUP_SYNTAX_UNSPECIFIED"
   | "MARKUP_SYNTAX_CHAT"
   | "MARKUP_SYNTAX_MARKDOWN";
-const MessageMarkupSyntaxEnum = S.String;
-
 /** A [card](https://developers.google.com/workspace/chat/api/reference/rest/v1/cards) in a Google Chat message. Chat apps can create cards with [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). As part of the [Developer Preview Program](https://developers.google.com/workspace/preview), if your Chat app [authenticates as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), it can create card messages. If your Chat app is not part of Developer Preview Program, it can't create cards with user authentication. To learn how to create a message that contains cards, see [Send a message](https://developers.google.com/workspace/chat/create-messages). [Card builder](https://addons.gsuite.google.com/uikit/builder) */
 export interface CardWithId {
   /** Required if the message contains multiple cards. A unique identifier for a card in a message. */
@@ -1644,11 +1115,7 @@ export interface CardWithId {
   /** A card. Maximum size is 32 KB. */
   card?: GoogleAppsCardV1Card;
 }
-const CardWithId = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<CardWithId>;
-
 export type CardWithIdList = Array<CardWithId>;
-const CardWithIdList = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<CardWithIdList>;
-
 export type DeletionMetadataDeletionTypeEnum =
   | "DELETION_TYPE_UNSPECIFIED"
   | "CREATOR"
@@ -1658,15 +1125,11 @@ export type DeletionMetadataDeletionTypeEnum =
   | "CREATOR_VIA_APP"
   | "SPACE_OWNER_VIA_APP"
   | "SPACE_MEMBER";
-const DeletionMetadataDeletionTypeEnum = S.String;
-
 /** Information about a deleted message. A message is deleted when `delete_time` is set. */
 export interface DeletionMetadata {
   /** Indicates who deleted the message. */
   deletionType?: DeletionMetadataDeletionTypeEnum | (string & {});
 }
-const DeletionMetadata = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<DeletionMetadata>;
-
 export type RichLinkMetadataRichLinkTypeEnum =
   | "RICH_LINK_TYPE_UNSPECIFIED"
   | "DRIVE_FILE"
@@ -1674,18 +1137,12 @@ export type RichLinkMetadataRichLinkTypeEnum =
   | "GMAIL_MESSAGE"
   | "MEET_SPACE"
   | "CALENDAR_EVENT";
-const RichLinkMetadataRichLinkTypeEnum = S.String;
-
 export type MeetSpaceLinkDataTypeEnum = "TYPE_UNSPECIFIED" | "MEETING" | "HUDDLE";
-const MeetSpaceLinkDataTypeEnum = S.String;
-
 export type MeetSpaceLinkDataHuddleStatusEnum =
   | "HUDDLE_STATUS_UNSPECIFIED"
   | "STARTED"
   | "ENDED"
   | "MISSED";
-const MeetSpaceLinkDataHuddleStatusEnum = S.String;
-
 /** Data for Meet space links. */
 export interface MeetSpaceLinkData {
   /** Indicates the type of the Meet space. */
@@ -1695,8 +1152,6 @@ export interface MeetSpaceLinkData {
   /** Meeting code of the linked Meet space. */
   meetingCode?: string;
 }
-const MeetSpaceLinkData = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<MeetSpaceLinkData>;
-
 /** Data for Calendar event links. */
 export interface CalendarEventLinkData {
   /** The [Calendar identifier](https://developers.google.com/workspace/calendar/api/v3/reference/calendars) of the linked Calendar. */
@@ -1704,11 +1159,6 @@ export interface CalendarEventLinkData {
   /** The [Event identifier](https://developers.google.com/workspace/calendar/api/v3/reference/events) of the linked Calendar event. */
   eventId?: string;
 }
-const CalendarEventLinkData = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<CalendarEventLinkData>;
-
 /** Data for Google Drive links. */
 export interface DriveLinkData {
   /** A [DriveDataRef](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages.attachments#drivedataref) which references a Google Drive file. */
@@ -1716,8 +1166,6 @@ export interface DriveLinkData {
   /** The mime type of the linked Google Drive resource. */
   mimeType?: string;
 }
-const DriveLinkData = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<DriveLinkData>;
-
 /** Data for Chat space links. */
 export interface ChatSpaceLinkData {
   /** The message of the linked Chat space resource. Format: `spaces/{space}/messages/{message}` */
@@ -1727,8 +1175,6 @@ export interface ChatSpaceLinkData {
   /** The space of the linked Chat space resource. Format: `spaces/{space}` */
   space?: string;
 }
-const ChatSpaceLinkData = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<ChatSpaceLinkData>;
-
 /** A rich link to a resource. Rich links can be associated with the plain-text body of the message or represent chips that link to Google Workspace resources like Google Docs or Sheets with `start_index` and `length` of 0. */
 export interface RichLinkMetadata {
   /** The rich link type. */
@@ -1744,11 +1190,7 @@ export interface RichLinkMetadata {
   /** The URI of this link. */
   uri?: string;
 }
-const RichLinkMetadata = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<RichLinkMetadata>;
-
 export type SlashCommandMetadataTypeEnum = "TYPE_UNSPECIFIED" | "ADD" | "INVOKE";
-const SlashCommandMetadataTypeEnum = S.String;
-
 /** Annotation metadata for slash commands (/). */
 export interface SlashCommandMetadata {
   /** The name of the invoked slash command. */
@@ -1762,21 +1204,12 @@ export interface SlashCommandMetadata {
   /** The command ID of the invoked slash command. */
   commandId?: string;
 }
-const SlashCommandMetadata = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<SlashCommandMetadata>;
-
 /** Annotation metadata for custom emoji. */
 export interface CustomEmojiMetadata {
   /** The custom emoji. */
   customEmoji?: CustomEmoji;
 }
-const CustomEmojiMetadata = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<CustomEmojiMetadata>;
-
 export type UserMentionMetadataTypeEnum = "TYPE_UNSPECIFIED" | "ADD" | "MENTION";
-const UserMentionMetadataTypeEnum = S.String;
-
 /** Annotation metadata for user mentions (@). */
 export interface UserMentionMetadata {
   /** The type of user mention. */
@@ -1784,16 +1217,12 @@ export interface UserMentionMetadata {
   /** The user mentioned. */
   user?: User;
 }
-const UserMentionMetadata = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<UserMentionMetadata>;
-
 export type AnnotationTypeEnum =
   | "ANNOTATION_TYPE_UNSPECIFIED"
   | "USER_MENTION"
   | "SLASH_COMMAND"
   | "RICH_LINK"
   | "CUSTOM_EMOJI";
-const AnnotationTypeEnum = S.String;
-
 /** Annotations can be associated with the plain-text body of the message or with chips that link to Google Workspace resources like Google Docs or Sheets with `start_index` and `length` of 0. To add basic formatting to a text message, see [Format text messages](https://developers.google.com/workspace/chat/format-messages). Example plain-text message body: ``` Hello @FooBot how are you!" ``` The corresponding annotations metadata: ``` "annotations":[{ "type":"USER_MENTION", "startIndex":6, "length":7, "userMention": { "user": { "name":"users/{user}", "displayName":"FooBot", "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" }, "type":"MENTION" } }] ``` */
 export interface Annotation {
   /** The metadata for a rich link. */
@@ -1811,18 +1240,12 @@ export interface Annotation {
   /** The type of this annotation. */
   type?: AnnotationTypeEnum | (string & {});
 }
-const Annotation = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<Annotation>;
-
 export type AnnotationList = Array<Annotation>;
-const AnnotationList = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<AnnotationList>;
-
 /** Metadata about a [slash command](https://developers.google.com/workspace/chat/commands) in Google Chat. */
 export interface SlashCommand {
   /** The ID of the slash command. */
   commandId?: string;
 }
-const SlashCommand = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<SlashCommand>;
-
 /** An emoji that is used as a reaction to a message. */
 export interface Emoji {
   /** Optional. A basic emoji represented by a unicode string. */
@@ -1830,8 +1253,6 @@ export interface Emoji {
   /** A custom emoji. */
   customEmoji?: CustomEmoji;
 }
-const Emoji = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<Emoji>;
-
 /** The number of people who reacted to a message with a specific emoji. */
 export interface EmojiReactionSummary {
   /** Output only. The total number of reactions using the associated emoji. */
@@ -1839,20 +1260,8 @@ export interface EmojiReactionSummary {
   /** Output only. Emoji associated with the reactions. */
   emoji?: Emoji;
 }
-const EmojiReactionSummary = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<EmojiReactionSummary>;
-
 export type EmojiReactionSummaryList = Array<EmojiReactionSummary>;
-const EmojiReactionSummaryList = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<EmojiReactionSummaryList>;
-
 export type CardHeaderImageStyleEnum = "IMAGE_STYLE_UNSPECIFIED" | "IMAGE" | "AVATAR";
-const CardHeaderImageStyleEnum = S.String;
-
 export interface CardHeader {
   /** The subtitle of the card header. */
   subtitle?: string;
@@ -1863,14 +1272,9 @@ export interface CardHeader {
   /** The title must be specified. The header has a fixed height: if both a title and subtitle is specified, each takes up one line. If only the title is specified, it takes up both lines. */
   title?: string;
 }
-const CardHeader = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<CardHeader>;
-
 /** List of string parameters to supply when the action method is invoked. For example, consider three snooze buttons: snooze now, snooze one day, snooze next week. You might use `action method = snooze()`, passing the snooze type and snooze time in the list of string parameters. */
 export type ActionParameter = GoogleAppsCardV1ActionParameter;
 export type ActionParameterList = Array<GoogleAppsCardV1ActionParameter>;
-const ActionParameterList =
-  GoogleAppsCardV1ActionParameterList as any as S.Schema<ActionParameterList>;
-
 /** A form action describes the behavior when the form is submitted. For example, you can invoke Apps Script to handle the form. */
 export interface FormAction {
   /** List of action parameters. */
@@ -1878,15 +1282,11 @@ export interface FormAction {
   /** The method name is used to identify which part of the form triggered the form submission. This information is echoed back to the Chat app as part of the card click event. You can use the same method name for several elements that trigger a common behavior. */
   actionMethodName?: string;
 }
-const FormAction = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<FormAction>;
-
 /** A link that opens a new window. */
 export interface OpenLink {
   /** The URL to open. */
   url?: string;
 }
-const OpenLink = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<OpenLink>;
-
 /** An `onclick` action (for example, open a link). */
 export interface OnClick {
   /** A form action is triggered by this `onclick` action if specified. */
@@ -1894,8 +1294,6 @@ export interface OnClick {
   /** This `onclick` action triggers an open link action if specified. */
   openLink?: OpenLink;
 }
-const OnClick = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<OnClick>;
-
 /** A card action is the action associated with the card. For an invoice card, a typical action would be: delete invoice, email invoice or open the invoice in browser. Not supported by Google Chat apps. */
 export interface CardAction {
   /** The label used to be displayed in the action menu item. */
@@ -1903,11 +1301,7 @@ export interface CardAction {
   /** The onclick action for this action item. */
   onClick?: OnClick;
 }
-const CardAction = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<CardAction>;
-
 export type CardActionList = Array<CardAction>;
-const CardActionList = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<CardActionList>;
-
 /** An image that's specified by a URL and can have an `onclick` action. */
 export interface Image {
   /** The URL of the image. */
@@ -1917,14 +1311,10 @@ export interface Image {
   /** The `onclick` action. */
   onClick?: OnClick;
 }
-const Image = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<Image>;
-
 /** A paragraph of text. Formatted text supported. For more information about formatting text, see [Formatting text in Google Chat apps](https://developers.google.com/workspace/chat/format-messages#card-formatting) and [Formatting text in Google Workspace Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). */
 export interface TextParagraph {
   text?: string;
 }
-const TextParagraph = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<TextParagraph>;
-
 export type KeyValueIconEnum =
   | "ICON_UNSPECIFIED"
   | "AIRPLANE"
@@ -1957,8 +1347,6 @@ export type KeyValueIconEnum =
   | "TRAIN"
   | "VIDEO_CAMERA"
   | "VIDEO_PLAY";
-const KeyValueIconEnum = S.String;
-
 export type ImageButtonIconEnum =
   | "ICON_UNSPECIFIED"
   | "AIRPLANE"
@@ -1991,8 +1379,6 @@ export type ImageButtonIconEnum =
   | "TRAIN"
   | "VIDEO_CAMERA"
   | "VIDEO_PLAY";
-const ImageButtonIconEnum = S.String;
-
 /** An image button with an `onclick` action. */
 export interface ImageButton {
   /** The icon specified by an `enum` that indices to an icon provided by Chat API. */
@@ -2004,8 +1390,6 @@ export interface ImageButton {
   /** The icon specified by a URL. */
   iconUrl?: string;
 }
-const ImageButton = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<ImageButton>;
-
 /** A button with text and `onclick` action. */
 export interface TextButton {
   /** The text of the button. */
@@ -2013,8 +1397,6 @@ export interface TextButton {
   /** The `onclick` action of the button. */
   onClick?: OnClick;
 }
-const TextButton = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<TextButton>;
-
 /** A button. Can be a text button or an image button. */
 export interface Button {
   /** A button with image and `onclick` action. */
@@ -2022,8 +1404,6 @@ export interface Button {
   /** A button with text and `onclick` action. */
   textButton?: TextButton;
 }
-const Button = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<Button>;
-
 /** A UI element contains a key (label) and a value (content). This element can also contain some actions such as `onclick` button. */
 export interface KeyValue {
   /** The icon specified by a URL. */
@@ -2043,11 +1423,7 @@ export interface KeyValue {
   /** The `onclick` action. Only the top label, bottom label, and content region are clickable. */
   onClick?: OnClick;
 }
-const KeyValue = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<KeyValue>;
-
 export type ButtonList = Array<Button>;
-const ButtonList = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<ButtonList>;
-
 /** A widget is a UI element that presents text and images. */
 export interface WidgetMarkup {
   /** Display an image in this widget. */
@@ -2059,11 +1435,7 @@ export interface WidgetMarkup {
   /** A list of buttons. Buttons is also `oneof data` and only one of these fields should be set. */
   buttons?: ButtonList;
 }
-const WidgetMarkup = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<WidgetMarkup>;
-
 export type WidgetMarkupList = Array<WidgetMarkup>;
-const WidgetMarkupList = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<WidgetMarkupList>;
-
 /** A section contains a collection of widgets that are rendered (vertically) in the order that they are specified. Across all platforms, cards have a narrow fixed width, so there's currently no need for layout properties (for example, float). */
 export interface Section {
   /** A section must contain at least one widget. */
@@ -2071,11 +1443,7 @@ export interface Section {
   /** The header of the section. Formatted text is supported. For more information about formatting text, see [Formatting text in Google Chat apps](https://developers.google.com/workspace/chat/format-messages#card-formatting) and [Formatting text in Google Workspace Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). */
   header?: string;
 }
-const Section = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<Section>;
-
 export type SectionList = Array<Section>;
-const SectionList = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<SectionList>;
-
 /** A card is a UI element that can contain UI widgets such as text and images. */
 export interface Card {
   /** The header of the card. A header usually contains a title and an image. */
@@ -2087,35 +1455,23 @@ export interface Card {
   /** Sections are separated by a line divider. */
   sections?: SectionList;
 }
-const Card = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<Card>;
-
 export type CardList = Array<Card>;
-const CardList = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<CardList>;
-
 /** A matched URL in a Chat message. Chat apps can preview matched URLs. For more information, see [Preview links](https://developers.google.com/chat/how-tos/preview-links). */
 export interface MatchedUrl {
   /** Output only. The URL that was matched. */
   url?: string;
 }
-const MatchedUrl = OpenLink as any as S.Schema<MatchedUrl>;
-
 /** A GIF image that's specified by a URL. */
 export interface AttachedGif {
   /** Output only. The URL that hosts the GIF image. */
   uri?: string;
 }
-const AttachedGif = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<AttachedGif>;
-
 export type AttachedGifList = Array<AttachedGif>;
-const AttachedGifList = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<AttachedGifList>;
-
 /** List of widget autocomplete results. */
 export interface SelectionItems {
   /** An array of the SelectionItem objects. */
   items?: GoogleAppsCardV1SelectionItemList;
 }
-const SelectionItems = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<SelectionItems>;
-
 /** For `selectionInput` widgets, returns autocomplete suggestions for a multiselect menu. */
 export interface UpdatedWidget {
   /** The ID of the updated widget. The ID must match the one for the widget that triggered the update request. */
@@ -2123,8 +1479,6 @@ export interface UpdatedWidget {
   /** List of widget autocomplete results */
   suggestions?: SelectionItems;
 }
-const UpdatedWidget = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<UpdatedWidget>;
-
 export type ActionStatusStatusCodeEnum =
   | "OK"
   | "CANCELLED"
@@ -2143,8 +1497,6 @@ export type ActionStatusStatusCodeEnum =
   | "INTERNAL"
   | "UNAVAILABLE"
   | "DATA_LOSS";
-const ActionStatusStatusCodeEnum = S.String;
-
 /** Represents the status for a request to either invoke or submit a [dialog](https://developers.google.com/workspace/chat/dialogs). */
 export interface ActionStatus {
   /** The status code. */
@@ -2152,15 +1504,11 @@ export interface ActionStatus {
   /** The message to send users about the status of their request. If unset, a generic message based on the `status_code` is sent. */
   userFacingMessage?: string;
 }
-const ActionStatus = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<ActionStatus>;
-
 /** Wrapper around the card body of the dialog. */
 export interface Dialog {
   /** Input only. Body of the dialog, which is rendered in a modal. Google Chat apps don't support the following card entities: `DateTimePicker`, `OnChangeAction`. */
   body?: GoogleAppsCardV1Card;
 }
-const Dialog = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<Dialog>;
-
 /** Contains a [dialog](https://developers.google.com/workspace/chat/dialogs) and request status code. */
 export interface DialogAction {
   /** Input only. Status for a request to either invoke or submit a [dialog](https://developers.google.com/workspace/chat/dialogs). Displays a status and message to users, if necessary. For example, in case of an error or success. */
@@ -2168,8 +1516,6 @@ export interface DialogAction {
   /** Input only. [Dialog](https://developers.google.com/workspace/chat/dialogs) for the request. */
   dialog?: Dialog;
 }
-const DialogAction = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<DialogAction>;
-
 export type ActionResponseTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NEW_MESSAGE"
@@ -2178,8 +1524,6 @@ export type ActionResponseTypeEnum =
   | "REQUEST_CONFIG"
   | "DIALOG"
   | "UPDATE_WIDGET";
-const ActionResponseTypeEnum = S.String;
-
 /** Parameters that a Chat app can use to configure how its response is posted. */
 export interface ActionResponse {
   /** Input only. The response of the updated widget. */
@@ -2191,8 +1535,6 @@ export interface ActionResponse {
   /** Input only. The type of Chat app response. */
   type?: ActionResponseTypeEnum | (string & {});
 }
-const ActionResponse = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<ActionResponse>;
-
 /** Provides a snapshot of the content of the quoted message at the time of quoting or forwarding */
 export interface QuotedMessageSnapshot {
   /** Output only. Annotations parsed from the text body of the quoted message. Populated only for FORWARD quote type. */
@@ -2206,11 +1548,6 @@ export interface QuotedMessageSnapshot {
   /** Output only. Snapshot of the quoted message's text content. */
   text?: string;
 }
-const QuotedMessageSnapshot = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<QuotedMessageSnapshot>;
-
 /** Metadata about the source space from which a message was forwarded. */
 export interface ForwardedMetadata {
   /** Output only. The display name of the source space or DM at the time of forwarding. For `SPACE`, this is the space name. For `DIRECT_MESSAGE`, this is the other participant's name (e.g., "User A"). For `GROUP_CHAT`, this is a generated name based on members' first names, limited to 5 including the creator (e.g., "User A, User B"). */
@@ -2218,11 +1555,7 @@ export interface ForwardedMetadata {
   /** Output only. The resource name of the source space. Format: spaces/{space} */
   space?: string;
 }
-const ForwardedMetadata = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<ForwardedMetadata>;
-
 export type QuotedMessageMetadataQuoteTypeEnum = "QUOTE_TYPE_UNSPECIFIED" | "REPLY" | "FORWARD";
-const QuotedMessageMetadataQuoteTypeEnum = S.String;
-
 /** Information about a message that another message quotes. When you update a message, you can't add or replace the `quotedMessageMetadata` field, but you can remove it. For example usage, see [Quote another message](https://developers.google.com/workspace/chat/create-messages#quote-a-message). */
 export interface QuotedMessageMetadata {
   /** Required. The timestamp when the quoted message was created or when the quoted message was last updated. If the message was edited, use this field, `last_update_time`. If the message was never edited, use `create_time`. If `last_update_time` doesn't match the latest version of the quoted message, the request fails. */
@@ -2236,11 +1569,6 @@ export interface QuotedMessageMetadata {
   /** Required. Resource name of the message that is quoted. Format: `spaces/{space}/messages/{message}` */
   name?: string;
 }
-const QuotedMessageMetadata = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<QuotedMessageMetadata>;
-
 /** A message in a Google Chat space. */
 export interface Message {
   /** Output only. When `true`, the message is a response in a reply thread. When `false`, the message is visible in the space's top-level conversation as either the first message of a thread or a message with no threaded replies. If the space doesn't support reply in threads, this field is always `false`. */
@@ -2300,8 +1628,6 @@ export interface Message {
   /** Optional. Information about a message that another message quotes. When you create a message, you can quote messages within the same thread, or quote a root message to create a new root message. However, you can't quote a message reply from a different thread. When you update a message, you can't add or replace the `quotedMessageMetadata` field, but you can remove it. For example usage, see [Quote another message](https://developers.google.com/workspace/chat/create-messages#quote-a-message). */
   quotedMessageMetadata?: QuotedMessageMetadata;
 }
-const Message = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<Message>;
-
 export interface CreateSpacesMessagesRequest {
   /** Required. The resource name of the space in which to create a message. Format: `spaces/{space}` */
   parent: string;
@@ -2320,11 +1646,6 @@ export interface CreateSpacesMessagesRequest {
   /** Request body */
   body?: Message;
 }
-const CreateSpacesMessagesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<CreateSpacesMessagesRequest>;
-
 /** A reaction to a message. */
 export interface Reaction {
   /** Required. The emoji used in the reaction. */
@@ -2334,27 +1655,18 @@ export interface Reaction {
   /** Identifier. The resource name of the reaction. Format: `spaces/{space}/messages/{message}/reactions/{reaction}` */
   name?: string;
 }
-const Reaction = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<Reaction>;
-
 export interface CreateSpacesMessagesReactionsRequest {
   /** Required. The message where the reaction is created. Format: `spaces/{space}/messages/{message}` */
   parent: string;
   /** Request body */
   body?: Reaction;
 }
-const CreateSpacesMessagesReactionsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<CreateSpacesMessagesReactionsRequest>;
-
 export type GoogleChatV1SectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"
   | "CUSTOM_SECTION"
   | "DEFAULT_DIRECT_MESSAGES"
   | "DEFAULT_SPACES"
   | "DEFAULT_APPS";
-const GoogleChatV1SectionTypeEnum = S.String;
-
 /** Represents a [section](https://support.google.com/chat/answer/16059854) in Google Chat. Sections help users organize their spaces. There are two types of sections: 1. **System Sections:** These are predefined sections managed by Google Chat. Their resource names are fixed, and they cannot be created, deleted, or have their `display_name` modified. Examples include: * `users/{user}/sections/default-direct-messages` * `users/{user}/sections/default-spaces` * `users/{user}/sections/default-apps` 2. **Custom Sections:** These are sections created and managed by the user. Creating a custom section using `CreateSection` **requires** a `display_name`. Custom sections can be updated using `UpdateSection` and deleted using `DeleteSection`. */
 export interface GoogleChatV1Section {
   /** Output only. The order of the section in relation to other sections. Sections with a lower `sort_order` value appear before sections with a higher value. */
@@ -2366,120 +1678,65 @@ export interface GoogleChatV1Section {
   /** Required. The type of the section. */
   type?: GoogleChatV1SectionTypeEnum | (string & {});
 }
-const GoogleChatV1Section = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<GoogleChatV1Section>;
-
 export interface CreateUsersSectionsRequest {
   /** Required. The parent resource name where the section is created. Format: `users/{user}` */
   parent: string;
   /** Request body */
   body?: GoogleChatV1Section;
 }
-const CreateUsersSectionsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<CreateUsersSectionsRequest>;
-
 export interface DeleteCustomEmojisRequest {
   /** Required. Resource name of the custom emoji to delete. Format: `customEmojis/{customEmoji}` You can use the emoji name as an alias for `{customEmoji}`. For example, `customEmojis/:example-emoji:` where `:example-emoji:` is the emoji name for a custom emoji. */
   name: string;
 }
-const DeleteCustomEmojisRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<DeleteCustomEmojisRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CompleteImportSpaceRequest as any as S.Schema<Empty>;
-
 export interface DeleteSpacesRequest {
   /** Optional. When `true`, the method runs using the user's Google Workspace administrator privileges. The calling user must be a Google Workspace administrator with the [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.delete` [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). */
   useAdminAccess?: boolean;
   /** Required. Resource name of the space to delete. Format: `spaces/{space}` */
   name: string;
 }
-const DeleteSpacesRequest = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<DeleteSpacesRequest>;
-
 export interface DeleteSpacesMembersRequest {
   /** Optional. When `true`, the method runs using the user's Google Workspace administrator privileges. The calling user must be a Google Workspace administrator with the [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.memberships` [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). Deleting app memberships in a space isn't supported using admin access. */
   useAdminAccess?: boolean;
   /** Required. Resource name of the membership to delete. Chat apps can delete human users' or their own memberships. Chat apps can't delete other apps' memberships. When deleting a human membership, requires the `chat.memberships` scope with [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user) or the `chat.memberships.app` scope with [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and the `spaces/{space}/members/{member}` format. You can use the email as an alias for `{member}`. For example, `spaces/{space}/members/example@gmail.com` where `example@gmail.com` is the email of the Google Chat user. When deleting an app membership, requires the `chat.memberships.app` scope and `spaces/{space}/members/app` format. Format: `spaces/{space}/members/{member}` or `spaces/{space}/members/app`. */
   name: string;
 }
-const DeleteSpacesMembersRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<DeleteSpacesMembersRequest>;
-
 export interface DeleteSpacesMessagePinsRequest {
   /** Required. The resource name of the message pin to remove. Format: spaces/{space}/messagePins/{message_pin} */
   name: string;
 }
-const DeleteSpacesMessagePinsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<DeleteSpacesMessagePinsRequest>;
-
 export interface DeleteSpacesMessagesRequest {
   /** Optional. When `true`, deleting a message also deletes its threaded replies. When `false`, if a message has threaded replies, deletion fails. Only applies when [authenticating as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). Has no effect when [authenticating as a Chat app] (https://developers.google.com/workspace/chat/authenticate-authorize-chat-app). */
   force?: boolean;
   /** Required. Resource name of the message. Format: `spaces/{space}/messages/{message}` If you've set a custom ID for your message, you can use the value from the `clientAssignedMessageId` field for `{message}`. For details, see [Name a message] (https://developers.google.com/workspace/chat/create-messages#name_a_created_message). */
   name: string;
 }
-const DeleteSpacesMessagesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<DeleteSpacesMessagesRequest>;
-
 export interface DeleteSpacesMessagesReactionsRequest {
   /** Required. Name of the reaction to delete. Format: `spaces/{space}/messages/{message}/reactions/{reaction}` */
   name: string;
 }
-const DeleteSpacesMessagesReactionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<DeleteSpacesMessagesReactionsRequest>;
-
 export interface DeleteUsersSectionsRequest {
   /** Required. The name of the section to delete. Format: `users/{user}/sections/{section}` */
   name: string;
 }
-const DeleteUsersSectionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<DeleteUsersSectionsRequest>;
-
 export interface DownloadMediaRequest {
   /** Name of the media that is being downloaded. See ReadRequest.resource_name. */
   resourceName: string;
 }
-const DownloadMediaRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<DownloadMediaRequest>;
-
 /** Media resource. */
 export interface Media {
   /** Name of the media resource. */
   resourceName?: string;
 }
-const Media = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<Media>;
-
 export interface FindDirectMessageSpacesRequest {
   /** Required. Resource name of the user to find direct message with. Format: `users/{user}`, where `{user}` is either the `id` for the [person](https://developers.google.com/people/api/rest/v1/people) from the People API, or the `id` for the [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Directory API. For example, if the People API profile ID is `123456789`, you can find a direct message with that person by using `users/123456789` as the `name`. When [authenticated as a user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), you can use the email as an alias for `{user}`. For example, `users/example@gmail.com` where `example@gmail.com` is the email of the Google Chat user. */
   name?: string;
 }
-const FindDirectMessageSpacesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<FindDirectMessageSpacesRequest>;
-
 export type FindGroupChatsSpacesSpaceViewEnum =
   | "SPACE_VIEW_UNSPECIFIED"
   | "SPACE_VIEW_RESOURCE_NAME_ONLY"
   | "SPACE_VIEW_EXPANDED";
-const FindGroupChatsSpacesSpaceViewEnum = S.String;
-
 export interface FindGroupChatsSpacesRequest {
   /** Optional. Resource names of all human users in group chat with the calling user. Chat apps can't be included in the request. The maximum number of users that can be specified in a single request is `49`. Format: `users/{user}`, where `{user}` is either the `id` for the [person](https://developers.google.com/people/api/rest/v1/people) from the People API, or the `id` for the [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Directory API. For example, to find all group chats with the calling user and two other users, with People API profile IDs `123456789` and `987654321`, you can use `users/123456789` and `users/987654321`. You can also use the email as an alias for `{user}`. For example, `users/example@gmail.com` where `example@gmail.com` is the email of the Google Chat user. */
   users?: StringList;
@@ -2490,14 +1747,7 @@ export interface FindGroupChatsSpacesRequest {
   /** Requested space view type. If unset, defaults to `SPACE_VIEW_RESOURCE_NAME_ONLY`. Requests that specify `SPACE_VIEW_EXPANDED` must include scopes that allow reading space data, for example, https://www.googleapis.com/auth/chat.spaces or https://www.googleapis.com/auth/chat.spaces.readonly. */
   spaceView?: FindGroupChatsSpacesSpaceViewEnum | (string & {});
 }
-const FindGroupChatsSpacesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<FindGroupChatsSpacesRequest>;
-
 export type SpaceList = Array<Space>;
-const SpaceList = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<SpaceList>;
-
 /** A response containing group chat spaces with exactly the calling user and the requested users. */
 export interface FindGroupChatsResponse {
   /** A token that you can send as `pageToken` to retrieve the next page of results. If empty, there are no subsequent pages. */
@@ -2505,29 +1755,14 @@ export interface FindGroupChatsResponse {
   /** List of spaces in the requested (or first) page. */
   spaces?: SpaceList;
 }
-const FindGroupChatsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<FindGroupChatsResponse>;
-
 export interface GetCustomEmojisRequest {
   /** Required. Resource name of the custom emoji. Format: `customEmojis/{customEmoji}` You can use the emoji name as an alias for `{customEmoji}`. For example, `customEmojis/:example-emoji:` where `:example-emoji:` is the emoji name for a custom emoji. */
   name: string;
 }
-const GetCustomEmojisRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<GetCustomEmojisRequest>;
-
 export interface GetSpaceReadStateUsersSpacesRequest {
   /** Required. Resource name of the space read state to retrieve. Only supports getting read state for the calling user. To refer to the calling user, set one of the following: - The `me` alias. For example, `users/me/spaces/{space}/spaceReadState`. - Their Workspace email address. For example, `users/user@example.com/spaces/{space}/spaceReadState`. - Their user id. For example, `users/123456789/spaces/{space}/spaceReadState`. Format: users/{user}/spaces/{space}/spaceReadState */
   name: string;
 }
-const GetSpaceReadStateUsersSpacesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<GetSpaceReadStateUsersSpacesRequest>;
-
 /** A user's read state within a space, used to identify read and unread messages. */
 export interface SpaceReadState {
   /** Optional. The time when the user's space read state was updated. Usually this corresponds with either the timestamp of the last read message, or a timestamp specified by the user to mark the last read position in a space. */
@@ -2535,249 +1770,135 @@ export interface SpaceReadState {
   /** Resource name of the space read state. Format: `users/{user}/spaces/{space}/spaceReadState` */
   name?: string;
 }
-const SpaceReadState = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<SpaceReadState>;
-
 export interface GetSpacesRequest {
   /** Optional. When `true`, the method runs using the user's Google Workspace administrator privileges. The calling user must be a Google Workspace administrator with the [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.spaces` or `chat.admin.spaces.readonly` [OAuth 2.0 scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). */
   useAdminAccess?: boolean;
   /** Required. Resource name of the space, in the form `spaces/{space}`. Format: `spaces/{space}` */
   name: string;
 }
-const GetSpacesRequest = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<GetSpacesRequest>;
-
 export interface GetSpacesMembersRequest {
   /** Required. Resource name of the membership to retrieve. To get the app's own membership [by using user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), you can optionally use `spaces/{space}/members/app`. Format: `spaces/{space}/members/{member}` or `spaces/{space}/members/app` You can use the user's email as an alias for `{member}`. For example, `spaces/{space}/members/example@gmail.com` where `example@gmail.com` is the email of the Google Chat user. */
   name: string;
   /** Optional. When `true`, the method runs using the user's Google Workspace administrator privileges. The calling user must be a Google Workspace administrator with the [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.memberships` or `chat.admin.memberships.readonly` [OAuth 2.0 scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). Getting app memberships in a space isn't supported when using admin access. */
   useAdminAccess?: boolean;
 }
-const GetSpacesMembersRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<GetSpacesMembersRequest>;
-
 export type GetSpacesMessagesMarkupSyntaxEnum =
   | "MARKUP_SYNTAX_UNSPECIFIED"
   | "MARKUP_SYNTAX_CHAT"
   | "MARKUP_SYNTAX_MARKDOWN";
-const GetSpacesMessagesMarkupSyntaxEnum = S.String;
-
 export interface GetSpacesMessagesRequest {
   /** Optional. Specifies the desired output syntax for the Chat message `formatted_text` field. */
   markupSyntax?: GetSpacesMessagesMarkupSyntaxEnum | (string & {});
   /** Required. Resource name of the message. Format: `spaces/{space}/messages/{message}` If you've set a custom ID for your message, you can use the value from the `clientAssignedMessageId` field for `{message}`. For details, see [Name a message] (https://developers.google.com/workspace/chat/create-messages#name_a_created_message). */
   name: string;
 }
-const GetSpacesMessagesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<GetSpacesMessagesRequest>;
-
 export interface GetSpacesMessagesAttachmentsRequest {
   /** Required. Resource name of the attachment, in the form `spaces/{space}/messages/{message}/attachments/{attachment}`. */
   name: string;
 }
-const GetSpacesMessagesAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<GetSpacesMessagesAttachmentsRequest>;
-
 export interface GetSpacesSpaceEventsRequest {
   /** Required. The resource name of the space event. Format: `spaces/{space}/spaceEvents/{spaceEvent}` */
   name: string;
 }
-const GetSpacesSpaceEventsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<GetSpacesSpaceEventsRequest>;
-
 /** Event payload for a new reaction. Event type: `google.workspace.chat.reaction.v1.created` */
 export interface ReactionCreatedEventData {
   /** The new reaction. */
   reaction?: Reaction;
 }
-const ReactionCreatedEventData = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<ReactionCreatedEventData>;
-
 /** Event payload for a deleted membership. Event type: `google.workspace.chat.membership.v1.deleted` */
 export interface MembershipDeletedEventData {
   /** The deleted membership. Only the `name` and `state` fields are populated. */
   membership?: Membership;
 }
-const MembershipDeletedEventData = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<MembershipDeletedEventData>;
-
 /** Event payload for an updated message. Event type: `google.workspace.chat.message.v1.updated` */
 export interface MessageUpdatedEventData {
   /** The updated message. */
   message?: Message;
 }
-const MessageUpdatedEventData = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<MessageUpdatedEventData>;
-
 export type MessageUpdatedEventDataList = Array<MessageUpdatedEventData>;
-const MessageUpdatedEventDataList = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<MessageUpdatedEventDataList>;
-
 /** Event payload for multiple updated messages. Event type: `google.workspace.chat.message.v1.batchUpdated` */
 export interface MessageBatchUpdatedEventData {
   /** A list of updated messages. */
   messages?: MessageUpdatedEventDataList;
 }
-const MessageBatchUpdatedEventData = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<MessageBatchUpdatedEventData>;
-
 /** Event payload for an updated space. Event type: `google.workspace.chat.space.v1.updated` */
 export interface SpaceUpdatedEventData {
   /** The updated space. */
   space?: Space;
 }
-const SpaceUpdatedEventData = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<SpaceUpdatedEventData>;
-
 /** Event payload for a new message. Event type: `google.workspace.chat.message.v1.created` */
 export interface MessageCreatedEventData {
   /** The new message. */
   message?: Message;
 }
-const MessageCreatedEventData = MessageUpdatedEventData as any as S.Schema<MessageCreatedEventData>;
-
 export type MessageCreatedEventDataList = Array<MessageCreatedEventData>;
 /** Event payload for multiple new messages. Event type: `google.workspace.chat.message.v1.batchCreated` */
 export interface MessageBatchCreatedEventData {
   /** A list of new messages. */
   messages?: MessageCreatedEventDataList;
 }
-const MessageBatchCreatedEventData =
-  MessageBatchUpdatedEventData as any as S.Schema<MessageBatchCreatedEventData>;
-
 /** Event payload for a new membership. Event type: `google.workspace.chat.membership.v1.created`. */
 export interface MembershipCreatedEventData {
   /** The new membership. */
   membership?: Membership;
 }
-const MembershipCreatedEventData =
-  MembershipDeletedEventData as any as S.Schema<MembershipCreatedEventData>;
-
 /** Event payload for a deleted message. Event type: `google.workspace.chat.message.v1.deleted` */
 export interface MessageDeletedEventData {
   /** The deleted message. Only the `name`, `createTime`, and `deletionMetadata` fields are populated. */
   message?: Message;
 }
-const MessageDeletedEventData = MessageUpdatedEventData as any as S.Schema<MessageDeletedEventData>;
-
 export type MessageDeletedEventDataList = Array<MessageDeletedEventData>;
 /** Event payload for multiple deleted messages. Event type: `google.workspace.chat.message.v1.batchDeleted` */
 export interface MessageBatchDeletedEventData {
   /** A list of deleted messages. */
   messages?: MessageDeletedEventDataList;
 }
-const MessageBatchDeletedEventData =
-  MessageBatchUpdatedEventData as any as S.Schema<MessageBatchDeletedEventData>;
-
 export type ReactionCreatedEventDataList = Array<ReactionCreatedEventData>;
-const ReactionCreatedEventDataList = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<ReactionCreatedEventDataList>;
-
 /** Event payload for multiple new reactions. Event type: `google.workspace.chat.reaction.v1.batchCreated` */
 export interface ReactionBatchCreatedEventData {
   /** A list of new reactions. */
   reactions?: ReactionCreatedEventDataList;
 }
-const ReactionBatchCreatedEventData = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ReactionBatchCreatedEventData>;
-
 export type MembershipCreatedEventDataList = Array<MembershipCreatedEventData>;
-const MembershipCreatedEventDataList = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<MembershipCreatedEventDataList>;
-
 /** Event payload for multiple new memberships. Event type: `google.workspace.chat.membership.v1.batchCreated` */
 export interface MembershipBatchCreatedEventData {
   /** A list of new memberships. */
   memberships?: MembershipCreatedEventDataList;
 }
-const MembershipBatchCreatedEventData = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<MembershipBatchCreatedEventData>;
-
 /** Event payload for an updated membership. Event type: `google.workspace.chat.membership.v1.updated` */
 export interface MembershipUpdatedEventData {
   /** The updated membership. */
   membership?: Membership;
 }
-const MembershipUpdatedEventData =
-  MembershipDeletedEventData as any as S.Schema<MembershipUpdatedEventData>;
-
 export type MembershipUpdatedEventDataList = Array<MembershipUpdatedEventData>;
 /** Event payload for multiple updated memberships. Event type: `google.workspace.chat.membership.v1.batchUpdated` */
 export interface MembershipBatchUpdatedEventData {
   /** A list of updated memberships. */
   memberships?: MembershipUpdatedEventDataList;
 }
-const MembershipBatchUpdatedEventData =
-  MembershipBatchCreatedEventData as any as S.Schema<MembershipBatchUpdatedEventData>;
-
 export type MembershipDeletedEventDataList = Array<MembershipDeletedEventData>;
 /** Event payload for multiple deleted memberships. Event type: `google.workspace.chat.membership.v1.batchDeleted` */
 export interface MembershipBatchDeletedEventData {
   /** A list of deleted memberships. */
   memberships?: MembershipDeletedEventDataList;
 }
-const MembershipBatchDeletedEventData =
-  MembershipBatchCreatedEventData as any as S.Schema<MembershipBatchDeletedEventData>;
-
 /** Event payload for a deleted reaction. Type: `google.workspace.chat.reaction.v1.deleted` */
 export interface ReactionDeletedEventData {
   /** The deleted reaction. */
   reaction?: Reaction;
 }
-const ReactionDeletedEventData =
-  ReactionCreatedEventData as any as S.Schema<ReactionDeletedEventData>;
-
 export type ReactionDeletedEventDataList = Array<ReactionDeletedEventData>;
 /** Event payload for multiple deleted reactions. Event type: `google.workspace.chat.reaction.v1.batchDeleted` */
 export interface ReactionBatchDeletedEventData {
   /** A list of deleted reactions. */
   reactions?: ReactionDeletedEventDataList;
 }
-const ReactionBatchDeletedEventData =
-  ReactionBatchCreatedEventData as any as S.Schema<ReactionBatchDeletedEventData>;
-
 export type SpaceUpdatedEventDataList = Array<SpaceUpdatedEventData>;
-const SpaceUpdatedEventDataList = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<SpaceUpdatedEventDataList>;
-
 /** Event payload for multiple updates to a space. Event type: `google.workspace.chat.space.v1.batchUpdated` */
 export interface SpaceBatchUpdatedEventData {
   /** A list of updated spaces. */
   spaces?: SpaceUpdatedEventDataList;
 }
-const SpaceBatchUpdatedEventData = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<SpaceBatchUpdatedEventData>;
-
 /** An event that represents a change or activity in a Google Chat space. To learn more, see [Work with events from Google Chat](https://developers.google.com/workspace/chat/events-overview). */
 export interface SpaceEvent {
   /** Resource name of the space event. Format: `spaces/{space}/spaceEvents/{spaceEvent}` */
@@ -2823,17 +1944,10 @@ export interface SpaceEvent {
   /** Event payload for a deleted reaction. Event type: `google.workspace.chat.reaction.v1.deleted` */
   reactionDeletedEventData?: ReactionDeletedEventData;
 }
-const SpaceEvent = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<SpaceEvent>;
-
 export interface GetThreadReadStateUsersSpacesThreadsRequest {
   /** Required. Resource name of the thread read state to retrieve. Only supports getting read state for the calling user. To refer to the calling user, set one of the following: - The `me` alias. For example, `users/me/spaces/{space}/threads/{thread}/threadReadState`. - Their Workspace email address. For example, `users/user@example.com/spaces/{space}/threads/{thread}/threadReadState`. - Their user id. For example, `users/123456789/spaces/{space}/threads/{thread}/threadReadState`. Format: users/{user}/spaces/{space}/threads/{thread}/threadReadState */
   name: string;
 }
-const GetThreadReadStateUsersSpacesThreadsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<GetThreadReadStateUsersSpacesThreadsRequest>;
-
 /** A user's read state within a thread, used to identify read and unread messages. */
 export interface ThreadReadState {
   /** Resource name of the thread read state. Format: `users/{user}/spaces/{space}/threads/{thread}/threadReadState` */
@@ -2841,27 +1955,15 @@ export interface ThreadReadState {
   /** The time when the user's thread read state was updated. Usually this corresponds with the timestamp of the last read message in a thread. */
   lastReadTime?: string;
 }
-const ThreadReadState = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<ThreadReadState>;
-
 export interface GetUsersAvailabilityRequest {
   /** Required. The resource name of the availability to retrieve. Format: users/{user}/availability `{user}` is the id for the Person in the People API or Admin SDK directory API. For example, `users/123456789`. The user's email address or `me` can also be used as an alias to refer to the caller. For example, `users/user@example.com` or `users/me`. */
   name: string;
 }
-const GetUsersAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<GetUsersAvailabilityRequest>;
-
 /** Metadata associated with the `DO_NOT_DISTURB` availability state, specifying when the state is set to expire. */
 export interface DoNotDisturbMetadata {
   /** Output only. Timestamp until which the user should be marked as DO_NOT_DISTURB. This can be maximum of 1 year in the future. */
   expirationTime?: string;
 }
-const DoNotDisturbMetadata = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<DoNotDisturbMetadata>;
-
 /** Represents a user's custom status in Google Chat. This includes a short text message with an optional emoji that a user sets to give more context about their availability. */
 export interface CustomStatus {
   /** Input only. The time-to-live duration after which the custom status expires. */
@@ -2873,16 +1975,12 @@ export interface CustomStatus {
   /** Required. The emoji of the custom status. Only Unicode emojis are supported; custom emojis are not supported. */
   emoji?: Emoji;
 }
-const CustomStatus = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<CustomStatus>;
-
 export type AvailabilityStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "IDLE"
   | "AWAY"
   | "DO_NOT_DISTURB";
-const AvailabilityStateEnum = S.String;
-
 /** Represents a user's current availability information in Google Chat, including their state (for example, Active, Away, Do Not Disturb) and any custom status. */
 export interface Availability {
   /** Output only. Metadata if the user state is set to DO_NOT_DISTURB. */
@@ -2894,31 +1992,20 @@ export interface Availability {
   /** Output only. The user's current availability state. */
   state?: AvailabilityStateEnum | (string & {});
 }
-const Availability = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<Availability>;
-
 export interface GetUsersSpacesSpaceNotificationSettingRequest {
   /** Required. Format: users/{user}/spaces/{space}/spaceNotificationSetting - `users/me/spaces/{space}/spaceNotificationSetting`, OR - `users/user@example.com/spaces/{space}/spaceNotificationSetting`, OR - `users/123456789/spaces/{space}/spaceNotificationSetting`. Note: Only the caller's user id or email is allowed in the path. */
   name: string;
 }
-const GetUsersSpacesSpaceNotificationSettingRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<GetUsersSpacesSpaceNotificationSettingRequest>;
-
 export type SpaceNotificationSettingNotificationSettingEnum =
   | "NOTIFICATION_SETTING_UNSPECIFIED"
   | "ALL"
   | "MAIN_CONVERSATIONS"
   | "FOR_YOU"
   | "OFF";
-const SpaceNotificationSettingNotificationSettingEnum = S.String;
-
 export type SpaceNotificationSettingMuteSettingEnum =
   | "MUTE_SETTING_UNSPECIFIED"
   | "UNMUTED"
   | "MUTED";
-const SpaceNotificationSettingMuteSettingEnum = S.String;
-
 /** The notification setting of a user in a space. */
 export interface SpaceNotificationSetting {
   /** The notification setting. */
@@ -2928,11 +2015,6 @@ export interface SpaceNotificationSetting {
   /** The space notification mute setting. */
   muteSetting?: SpaceNotificationSettingMuteSettingEnum | (string & {});
 }
-const SpaceNotificationSetting = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<SpaceNotificationSetting>;
-
 export interface ListCustomEmojisRequest {
   /** Optional. A query filter. Supports filtering by creator. To filter by creator, you must specify a valid value. Currently only `creator("users/me")` and `NOT creator("users/me")` are accepted to filter custom emojis by whether they were created by the calling user or not. For example, the following query returns custom emojis created by the caller: ``` creator("users/me") ``` Invalid queries are rejected with an `INVALID_ARGUMENT` error. */
   filter?: string;
@@ -2941,14 +2023,7 @@ export interface ListCustomEmojisRequest {
   /** Optional. (If resuming from a previous query.) A page token received from a previous list custom emoji call. Provide this to retrieve the subsequent page. When paginating, the filter value should match the call that provided the page token. Passing a different value might lead to unexpected results. */
   pageToken?: string;
 }
-const ListCustomEmojisRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ListCustomEmojisRequest>;
-
 export type CustomEmojiList = Array<CustomEmoji>;
-const CustomEmojiList = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<CustomEmojiList>;
-
 /** A response to list custom emojis. */
 export interface ListCustomEmojisResponse {
   /** Unordered list. List of custom emojis. */
@@ -2956,11 +2031,6 @@ export interface ListCustomEmojisResponse {
   /** A token that you can send as `pageToken` to retrieve the next page of results. If empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListCustomEmojisResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<ListCustomEmojisResponse>;
-
 export interface ListSpacesRequest {
   /** Optional. A query filter. You can filter spaces by the space type ([`space_type`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces#spacetype)). To filter by space type, you must specify valid enum value, such as `SPACE` or `GROUP_CHAT` (the `space_type` can't be `SPACE_TYPE_UNSPECIFIED`). To query for multiple space types, use the `OR` operator. For example, the following queries are valid: ``` space_type = "SPACE" spaceType = "GROUP_CHAT" OR spaceType = "DIRECT_MESSAGE" ``` Invalid queries are rejected by the server with an `INVALID_ARGUMENT` error. */
   filter?: string;
@@ -2969,8 +2039,6 @@ export interface ListSpacesRequest {
   /** Optional. A page token, received from a previous list spaces call. Provide this parameter to retrieve the subsequent page. When paginating, the filter value should match the call that provided the page token. Passing a different value may lead to unexpected results. */
   pageToken?: string;
 }
-const ListSpacesRequest = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<ListSpacesRequest>;
-
 /** The response for a list spaces request. */
 export interface ListSpacesResponse {
   /** List of spaces in the requested (or first) page. Note: The `permissionSettings` field is not returned in the Space object for list requests. */
@@ -2978,8 +2046,6 @@ export interface ListSpacesResponse {
   /** You can send a token as `pageToken` to retrieve the next page of results. If empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListSpacesResponse = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<ListSpacesResponse>;
-
 export interface ListSpacesMembersRequest {
   /** Optional. The maximum number of memberships to return. The service might return fewer than this value. If unspecified, at most 100 memberships are returned. The maximum value is 1000. If you use a value more than 1000, it's automatically changed to 1000. Negative values return an `INVALID_ARGUMENT` error. */
   pageSize?: number;
@@ -2996,14 +2062,7 @@ export interface ListSpacesMembersRequest {
   /** Optional. A query filter. You can filter memberships by a member's role ([`role`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.members#membershiprole)) and type ([`member.type`](https://developers.google.com/workspace/chat/api/reference/rest/v1/User#type)). To filter by role, set `role` to `ROLE_MEMBER` or `ROLE_MANAGER`. To filter by type, set `member.type` to `HUMAN` or `BOT`. You can also filter for `member.type` using the `!=` operator. To filter by both role and type, use the `AND` operator. To filter by either role or type, use the `OR` operator. Either `member.type = "HUMAN"` or `member.type != "BOT"` is required when `use_admin_access` is set to true. Other member type filters will be rejected. For example, the following queries are valid: ``` role = "ROLE_MANAGER" OR role = "ROLE_MEMBER" member.type = "HUMAN" AND role = "ROLE_MANAGER" member.type != "BOT" ``` The following queries are invalid: ``` member.type = "HUMAN" AND member.type = "BOT" role = "ROLE_MANAGER" AND role = "ROLE_MEMBER" ``` Invalid queries are rejected by the server with an `INVALID_ARGUMENT` error. */
   filter?: string;
 }
-const ListSpacesMembersRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<ListSpacesMembersRequest>;
-
 export type MembershipList = Array<Membership>;
-const MembershipList = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<MembershipList>;
-
 /** Response to list memberships of the space. */
 export interface ListMembershipsResponse {
   /** A token that you can send as `pageToken` to retrieve the next page of results. If empty, there are no subsequent pages. */
@@ -3011,11 +2070,6 @@ export interface ListMembershipsResponse {
   /** Unordered list. List of memberships in the requested (or first) page. */
   memberships?: MembershipList;
 }
-const ListMembershipsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<ListMembershipsResponse>;
-
 export interface ListSpacesMessagePinsRequest {
   /** Required. The parent space which owns the collection of pinned items Format: `spaces/{space}` */
   parent: string;
@@ -3024,14 +2078,7 @@ export interface ListSpacesMessagePinsRequest {
   /** Optional. The maximum number of message pins returned. The service might return fewer messages than this value. The maximum value is 100. If you use a value more than 100, it's automatically changed to 100. If unspecified, at most 100 message pins will be returned. Negative values return an `INVALID_ARGUMENT` error. */
   pageSize?: number;
 }
-const ListSpacesMessagePinsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<ListSpacesMessagePinsRequest>;
-
 export type MessagePinList = Array<MessagePin>;
-const MessagePinList = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<MessagePinList>;
-
 /** Response message for listing message pins. */
 export interface ListMessagePinsResponse {
   /** You can send a token as `pageToken` to retrieve the next page of results. If empty, there are no subsequent pages. */
@@ -3039,17 +2086,10 @@ export interface ListMessagePinsResponse {
   /** The pinned messages from the specified space. */
   messagePins?: MessagePinList;
 }
-const ListMessagePinsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ListMessagePinsResponse>;
-
 export type ListSpacesMessagesMarkupSyntaxEnum =
   | "MARKUP_SYNTAX_UNSPECIFIED"
   | "MARKUP_SYNTAX_CHAT"
   | "MARKUP_SYNTAX_MARKDOWN";
-const ListSpacesMessagesMarkupSyntaxEnum = S.String;
-
 export interface ListSpacesMessagesRequest {
   /** Optional. A page token received from a previous list messages call. Provide this parameter to retrieve the subsequent page. When paginating, all other parameters provided should match the call that provided the page token. Passing different values to the other parameters might lead to unexpected results. */
   pageToken?: string;
@@ -3066,14 +2106,7 @@ export interface ListSpacesMessagesRequest {
   /** Required. The resource name of the space to list messages from. Format: `spaces/{space}` */
   parent: string;
 }
-const ListSpacesMessagesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<ListSpacesMessagesRequest>;
-
 export type MessageList = Array<Message>;
-const MessageList = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<MessageList>;
-
 /** Response message for listing messages. */
 export interface ListMessagesResponse {
   /** List of messages. */
@@ -3081,11 +2114,6 @@ export interface ListMessagesResponse {
   /** You can send a token as `pageToken` to retrieve the next page of results. If empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListMessagesResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<ListMessagesResponse>;
-
 export interface ListSpacesMessagesReactionsRequest {
   /** Optional. A query filter. You can filter reactions by [emoji](https://developers.google.com/workspace/chat/api/reference/rest/v1/Emoji) (either `emoji.unicode` or `emoji.custom_emoji.uid`) and [user](https://developers.google.com/workspace/chat/api/reference/rest/v1/User) (`user.name`). To filter reactions for multiple emojis or users, join similar fields with the `OR` operator, such as `emoji.unicode = "U+1F642" OR emoji.unicode = "U+1F44D"` and `user.name = "users/AAAAAA" OR user.name = "users/BBBBBB"`. To filter reactions by emoji and user, use the `AND` operator, such as `emoji.unicode = "U+1F642" AND user.name = "users/AAAAAA"`. If your query uses both `AND` and `OR`, group them with parentheses. For example, the following queries are valid: ``` user.name = "users/{user}" emoji.unicode = "U+1F642" emoji.custom_emoji.uid = "{uid}" emoji.unicode = "U+1F642" OR emoji.unicode = "U+1F44D" emoji.unicode = "U+1F642" OR emoji.custom_emoji.uid = "{uid}" emoji.unicode = "U+1F642" AND user.name = "users/{user}" (emoji.unicode = "U+1F642" OR emoji.custom_emoji.uid = "{uid}") AND user.name = "users/{user}" ``` The following queries are invalid: ``` emoji.unicode = "U+1F642" AND emoji.unicode = "U+1F44D" emoji.unicode = "U+1F642" AND emoji.custom_emoji.uid = "{uid}" emoji.unicode = "U+1F642" OR user.name = "users/{user}" emoji.unicode = "U+1F642" OR emoji.custom_emoji.uid = "{uid}" OR user.name = "users/{user}" emoji.unicode = "U+1F642" OR emoji.custom_emoji.uid = "{uid}" AND user.name = "users/{user}" ``` Invalid queries are rejected with an `INVALID_ARGUMENT` error. */
   filter?: string;
@@ -3096,14 +2124,7 @@ export interface ListSpacesMessagesReactionsRequest {
   /** Required. The message users reacted to. Format: `spaces/{space}/messages/{message}` */
   parent: string;
 }
-const ListSpacesMessagesReactionsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<ListSpacesMessagesReactionsRequest>;
-
 export type ReactionList = Array<Reaction>;
-const ReactionList = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<ReactionList>;
-
 /** Response to a list reactions request. */
 export interface ListReactionsResponse {
   /** Continuation token to retrieve the next page of results. It's empty for the last page of results. */
@@ -3111,11 +2132,6 @@ export interface ListReactionsResponse {
   /** List of reactions in the requested (or first) page. */
   reactions?: ReactionList;
 }
-const ListReactionsResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<ListReactionsResponse>;
-
 export interface ListSpacesSpaceEventsRequest {
   /** Required. A query filter. You must specify at least one event type (`event_type`) using the has `:` operator. To filter by multiple event types, use the `OR` operator. Omit batch event types in your filter. The request automatically returns any related batch events. For example, if you filter by new reactions (`google.workspace.chat.reaction.v1.created`), the server also returns batch new reactions events (`google.workspace.chat.reaction.v1.batchCreated`). For a list of supported event types, see the [`SpaceEvents` reference documentation](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.spaceEvents#SpaceEvent.FIELDS.event_type). Optionally, you can also filter by start time (`start_time`) and end time (`end_time`): * `start_time`: Exclusive timestamp from which to start listing space events. You can list events that occurred up to 28 days ago. If unspecified, lists space events from the past 28 days. * `end_time`: Inclusive timestamp until which space events are listed. If unspecified, lists events up to the time of the request. To specify a start or end time, use the equals `=` operator and format in [RFC-3339](https://www.rfc-editor.org/rfc/rfc3339). To filter by both `start_time` and `end_time`, use the `AND` operator. For example, the following queries are valid: ``` start_time="2023-08-23T19:20:33+00:00" AND end_time="2023-08-23T19:21:54+00:00" ``` ``` start_time="2023-08-23T19:20:33+00:00" AND (event_types:"google.workspace.chat.space.v1.updated" OR event_types:"google.workspace.chat.message.v1.created") ``` The following queries are invalid: ``` start_time="2023-08-23T19:20:33+00:00" OR end_time="2023-08-23T19:21:54+00:00" ``` ``` event_types:"google.workspace.chat.space.v1.updated" AND event_types:"google.workspace.chat.message.v1.created" ``` Invalid queries are rejected by the server with an `INVALID_ARGUMENT` error. */
   filter?: string;
@@ -3126,14 +2142,7 @@ export interface ListSpacesSpaceEventsRequest {
   /** Optional. A page token, received from a previous list space events call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to list space events must match the call that provided the page token. Passing different values to the other parameters might lead to unexpected results. */
   pageToken?: string;
 }
-const ListSpacesSpaceEventsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<ListSpacesSpaceEventsRequest>;
-
 export type SpaceEventList = Array<SpaceEvent>;
-const SpaceEventList = /*@__PURE__*/ __L.at(__c27, 2) as any as S.Schema<SpaceEventList>;
-
 /** Response message for listing space events. */
 export interface ListSpaceEventsResponse {
   /** Results are returned in chronological order (oldest event first). Note: The `permissionSettings` field is not returned in the Space object for list requests. */
@@ -3141,11 +2150,6 @@ export interface ListSpaceEventsResponse {
   /** Continuation token used to fetch more events. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListSpaceEventsResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ListSpaceEventsResponse>;
-
 export interface ListUsersSectionsRequest {
   /** Optional. The maximum number of sections to return. The service may return fewer than this value. If unspecified, at most 10 sections will be returned. The maximum value is 100. If you use a value more than 100, it's automatically changed to 100. Negative values return an `INVALID_ARGUMENT` error. */
   pageSize?: number;
@@ -3154,17 +2158,7 @@ export interface ListUsersSectionsRequest {
   /** Required. The parent, which is the user resource name that owns this collection of sections. Only supports listing sections for the calling user. To refer to the calling user, set one of the following: - The `me` alias. For example, `users/me`. - Their Workspace email address. For example, `users/user@example.com`. - Their user id. For example, `users/123456789`. Format: `users/{user}` */
   parent: string;
 }
-const ListUsersSectionsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<ListUsersSectionsRequest>;
-
 export type GoogleChatV1SectionList = Array<GoogleChatV1Section>;
-const GoogleChatV1SectionList = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<GoogleChatV1SectionList>;
-
 /** Response message for listing sections. */
 export interface ListSectionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -3172,11 +2166,6 @@ export interface ListSectionsResponse {
   /** The sections from the specified user. */
   sections?: GoogleChatV1SectionList;
 }
-const ListSectionsResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<ListSectionsResponse>;
-
 export interface ListUsersSectionsItemsRequest {
   /** Optional. The maximum number of section items to return. The service may return fewer than this value. If unspecified, at most 10 section items will be returned. The maximum value is 100. If you use a value more than 100, it's automatically changed to 100. Negative values return an `INVALID_ARGUMENT` error. */
   pageSize?: number;
@@ -3187,11 +2176,6 @@ export interface ListUsersSectionsItemsRequest {
   /** Required. The parent, which is the section resource name that owns this collection of section items. Only supports listing section items for the calling user. When you're filtering by space, use the wildcard `-` to search across all sections. For example, `users/{user}/sections/-`. Format: `users/{user}/sections/{section}` */
   parent: string;
 }
-const ListUsersSectionsItemsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<ListUsersSectionsItemsRequest>;
-
 /** A user's defined section item. This is used to represent section items, such as spaces, grouped under a section. */
 export interface SectionItem {
   /** Optional. The space resource name. Format: `spaces/{space}` */
@@ -3199,11 +2183,7 @@ export interface SectionItem {
   /** Identifier. The resource name of the section item. Format: `users/{user}/sections/{section}/items/{item}` */
   name?: string;
 }
-const SectionItem = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<SectionItem>;
-
 export type SectionItemList = Array<SectionItem>;
-const SectionItemList = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<SectionItemList>;
-
 /** Response message for listing section items. */
 export interface ListSectionItemsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -3211,11 +2191,6 @@ export interface ListSectionItemsResponse {
   /** The section items from the specified section. */
   sectionItems?: SectionItemList;
 }
-const ListSectionItemsResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<ListSectionItemsResponse>;
-
 /** Request message for the `MarkAsActive` method. */
 export interface MarkAsActiveRequest {
   /** The absolute timestamp when the ACTIVE state expires. */
@@ -3223,19 +2198,12 @@ export interface MarkAsActiveRequest {
   /** The duration from the current time until the ACTIVE state expires. Using a short TTL can effectively reset the user's state to be based on activity after this brief duration. */
   ttl?: string;
 }
-const MarkAsActiveRequest = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<MarkAsActiveRequest>;
-
 export interface MarkAsActiveUsersAvailabilityRequest {
   /** Required. The resource name of the availability to mark as active. Format: users/{user}/availability `{user}` is the id for the Person in the People API or Admin SDK directory API. For example, `users/123456789`. The user's email address or `me` can also be used as an alias to refer to the caller. For example, `users/user@example.com` or `users/me`. */
   name: string;
   /** Request body */
   body?: MarkAsActiveRequest;
 }
-const MarkAsActiveUsersAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<MarkAsActiveUsersAvailabilityRequest>;
-
 /** Request message for the `MarkAsAway` method. */
 export type MarkAsAwayRequest = CompleteImportSpaceRequest;
 export interface MarkAsAwayUsersAvailabilityRequest {
@@ -3244,11 +2212,6 @@ export interface MarkAsAwayUsersAvailabilityRequest {
   /** Request body */
   body?: CompleteImportSpaceRequest;
 }
-const MarkAsAwayUsersAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<MarkAsAwayUsersAvailabilityRequest>;
-
 /** Request message for the `MarkAsDoNotDisturb` method. */
 export interface MarkAsDoNotDisturbRequest {
   /** The duration from the current time until the DND state expires. */
@@ -3256,53 +2219,28 @@ export interface MarkAsDoNotDisturbRequest {
   /** The absolute timestamp when the DND state expires. */
   expireTime?: string;
 }
-const MarkAsDoNotDisturbRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<MarkAsDoNotDisturbRequest>;
-
 export interface MarkAsDoNotDisturbUsersAvailabilityRequest {
   /** Required. The resource name of the availability to mark as Do Not Disturb. Format: users/{user}/availability `{user}` is the id for the Person in the People API or Admin SDK directory API. For example, `users/123456789`. The user's email address or `me` can also be used as an alias to refer to the caller. For example, `users/user@example.com` or `users/me`. */
   name: string;
   /** Request body */
   body?: MarkAsDoNotDisturbRequest;
 }
-const MarkAsDoNotDisturbUsersAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<MarkAsDoNotDisturbUsersAvailabilityRequest>;
-
 /** Request message for moving a section item across sections. */
 export interface MoveSectionItemRequest {
   /** Required. The resource name of the section to move the section item to. Format: `users/{user}/sections/{section}` */
   targetSection?: string;
 }
-const MoveSectionItemRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<MoveSectionItemRequest>;
-
 export interface MoveUsersSectionsItemsRequest {
   /** Required. The resource name of the section item to move. Format: `users/{user}/sections/{section}/items/{item}` */
   name: string;
   /** Request body */
   body?: MoveSectionItemRequest;
 }
-const MoveUsersSectionsItemsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<MoveUsersSectionsItemsRequest>;
-
 /** Response message for moving a section item. */
 export interface MoveSectionItemResponse {
   /** The updated section item. */
   sectionItem?: SectionItem;
 }
-const MoveSectionItemResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<MoveSectionItemResponse>;
-
 export interface PatchSpacesRequest {
   /** Optional. When `true`, the method runs using the user's Google Workspace administrator privileges. The calling user must be a Google Workspace administrator with the [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245). Requires the `chat.admin.spaces` [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). Some `FieldMask` values are not supported using admin access. For details, see the description of `update_mask`. */
   useAdminAccess?: boolean;
@@ -3313,8 +2251,6 @@ export interface PatchSpacesRequest {
   /** Request body */
   body?: Space;
 }
-const PatchSpacesRequest = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<PatchSpacesRequest>;
-
 export interface PatchSpacesMembersRequest {
   /** Identifier. Resource name of the membership, assigned by the server. Format: `spaces/{space}/members/{member}` */
   name: string;
@@ -3325,11 +2261,6 @@ export interface PatchSpacesMembersRequest {
   /** Request body */
   body?: Membership;
 }
-const PatchSpacesMembersRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<PatchSpacesMembersRequest>;
-
 export interface PatchSpacesMessagesRequest {
   /** Identifier. Resource name of the message. Format: `spaces/{space}/messages/{message}` Where `{space}` is the ID of the space where the message is posted and `{message}` is a system-assigned ID for the message. For example, `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom ID when you create a message, you can use this ID to specify the message in a request by replacing `{message}` with the value from the `clientAssignedMessageId` field. For example, `spaces/AAAAAAAAAAA/messages/client-custom-name`. For details, see [Name a message](https://developers.google.com/workspace/chat/create-messages#name_a_created_message). */
   name: string;
@@ -3340,11 +2271,6 @@ export interface PatchSpacesMessagesRequest {
   /** Request body */
   body?: Message;
 }
-const PatchSpacesMessagesRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<PatchSpacesMessagesRequest>;
-
 export interface PatchUsersAvailabilityRequest {
   /** Identifier. Resource name of the user's availability. Format: `users/{user}/availability` `{user}` is the id for the Person in the People API or Admin SDK directory API. For example, `users/123456789`. The user's email address or `me` can also be used as an alias to refer to the caller. For example, `users/user@example.com` or `users/me`. */
   name: string;
@@ -3353,11 +2279,6 @@ export interface PatchUsersAvailabilityRequest {
   /** Request body */
   body?: Availability;
 }
-const PatchUsersAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<PatchUsersAvailabilityRequest>;
-
 export interface PatchUsersSectionsRequest {
   /** Identifier. Resource name of the section. For system sections, the section ID is a constant string: - DEFAULT_DIRECT_MESSAGES: `users/{user}/sections/default-direct-messages` - DEFAULT_SPACES: `users/{user}/sections/default-spaces` - DEFAULT_APPS: `users/{user}/sections/default-apps` Format: `users/{user}/sections/{section}` */
   name: string;
@@ -3366,11 +2287,6 @@ export interface PatchUsersSectionsRequest {
   /** Request body */
   body?: GoogleChatV1Section;
 }
-const PatchUsersSectionsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<PatchUsersSectionsRequest>;
-
 export interface PatchUsersSpacesSpaceNotificationSettingRequest {
   /** Identifier. The resource name of the space notification setting. Format: `users/{user}/spaces/{space}/spaceNotificationSetting`. */
   name: string;
@@ -3379,14 +2295,7 @@ export interface PatchUsersSpacesSpaceNotificationSettingRequest {
   /** Request body */
   body?: SpaceNotificationSetting;
 }
-const PatchUsersSpacesSpaceNotificationSettingRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<PatchUsersSpacesSpaceNotificationSettingRequest>;
-
 export type PositionSectionRequestRelativePositionEnum = "POSITION_UNSPECIFIED" | "START" | "END";
-const PositionSectionRequestRelativePositionEnum = S.String;
-
 /** Request message for positioning a section. */
 export interface PositionSectionRequest {
   /** Optional. The absolute position of the section in the list of sections. The position must be greater than 0. If the position is greater than the number of sections, the section will be appended to the end of the list. This operation inserts the section at the given position and shifts the original section at that position, and those below it, to the next position. */
@@ -3394,32 +2303,17 @@ export interface PositionSectionRequest {
   /** Optional. The relative position of the section in the list of sections. */
   relativePosition?: PositionSectionRequestRelativePositionEnum | (string & {});
 }
-const PositionSectionRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<PositionSectionRequest>;
-
 export interface PositionUsersSectionsRequest {
   /** Required. The resource name of the section to position. Format: `users/{user}/sections/{section}` */
   name: string;
   /** Request body */
   body?: PositionSectionRequest;
 }
-const PositionUsersSectionsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<PositionUsersSectionsRequest>;
-
 /** Response message for positioning a section. */
 export interface PositionSectionResponse {
   /** The updated section. */
   section?: GoogleChatV1Section;
 }
-const PositionSectionResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<PositionSectionResponse>;
-
 export interface SearchSpacesRequest {
   /** When `true`, the method runs using the user's Google Workspace administrator privileges. The calling user must be a Google Workspace administrator with the [manage chat and spaces conversations privilege](https://support.google.com/a/answer/13369245). Requires either the `chat.admin.spaces.readonly` or `chat.admin.spaces` [OAuth 2.0 scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes). */
   useAdminAccess?: boolean;
@@ -3432,16 +2326,12 @@ export interface SearchSpacesRequest {
   /** Optional. How the list of spaces is ordered. Supported attributes to order by are: - `membership_count.joined_direct_human_user_count` -- Denotes the count of human users that have directly joined a space. - `last_active_time` -- Denotes the time when last eligible item is added to any topic of this space. - `create_time` -- Denotes the time of the space creation. When `useAdminAccess` is `false`, only `create_time` and `relevance` are supported for ordering. Only `DESC` is supported for these fields in non-admin searches. Valid ordering operation values are: - `ASC` for ascending. Default value. - `DESC` for descending. The supported syntax are when `useAdminAccess` is set to `true`: - `membership_count.joined_direct_human_user_count DESC` - `membership_count.joined_direct_human_user_count ASC` - `last_active_time DESC` - `last_active_time ASC` - `create_time DESC` - `create_time ASC` When `useAdminAccess` is set to `false`: - `create_time DESC` - `relevance DESC` [Developer Preview](https://developers.google.com/workspace/preview). */
   orderBy?: string;
 }
-const SearchSpacesRequest = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<SearchSpacesRequest>;
-
 /** A single result item from a space search. */
 export interface SearchSpaceResult {
   /** Output only. The matched space. */
   space?: Space;
 }
 export type SearchSpaceResultList = Array<SearchSpaceResult>;
-const SearchSpaceResultList = SpaceUpdatedEventDataList as any as S.Schema<SearchSpaceResultList>;
-
 /** Response with a list of spaces corresponding to the search spaces request. */
 export interface SearchSpacesResponse {
   /** A token that can be used to retrieve the next page. If this field is empty, there are no subsequent pages. Only populated when `useAdminAccess` is set to `true`. */
@@ -3453,23 +2343,14 @@ export interface SearchSpacesResponse {
   /** Output only. The list of search results that matched the query. */
   results?: SearchSpaceResultList;
 }
-const SearchSpacesResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<SearchSpacesResponse>;
-
 export type SearchMessagesRequestMarkupSyntaxEnum =
   | "MARKUP_SYNTAX_UNSPECIFIED"
   | "MARKUP_SYNTAX_CHAT"
   | "MARKUP_SYNTAX_MARKDOWN";
-const SearchMessagesRequestMarkupSyntaxEnum = S.String;
-
 export type SearchMessagesRequestViewEnum =
   | "SEARCH_MESSAGES_VIEW_UNSPECIFIED"
   | "SEARCH_MESSAGES_VIEW_BASIC"
   | "SEARCH_MESSAGES_VIEW_FULL";
-const SearchMessagesRequestViewEnum = S.String;
-
 /** Request message for searching messages. */
 export interface SearchMessagesRequest {
   /** Optional. A token, received from the previous search messages call. Provide this parameter to retrieve the subsequent page. When paginating, all other parameters provided should match the call that provided the page token. Passing different values to the other parameters might lead to unexpected results. */
@@ -3485,28 +2366,16 @@ export interface SearchMessagesRequest {
   /** Required. A search query. The query can specify one or more search keywords, which are used to filter the results, You can also filter the results using the following message fields: - `create_time`: Accepts a timestamp in [RFC-3339](https://www.rfc-editor.org/rfc/rfc3339) format and the supported comparison operators are: `<` and `>=`. - `sender.name`: The resource name of the sender (`users/{user}`). Only supports `=`. You can use the e-mail as an alias for `{user}`. For example, `users/example@gmail.com`, where `example@gmail.com` is the e-mail of the Google Chat user. - `space.name`: The resource name of the space where the message is posted. (`spaces/{space}`). Only supports `=`. If this filter is not set, the search is performed across all direct messages and spaces the user has access to as a space member. - `space.display_name`: Supports the operator `:` (has) and filters spaces based on a partial match of their display name. Results are limited to the top five space matches. For example, `space.display_name:Project` searches for messages in the top five spaces that contain the word "Project" in their display names. - `space.space_type`: The type of the space. Only supports `=`. For example, `space.space_type="DIRECT_MESSAGE"` returns only messages from direct messages. The possible values are `DIRECT_MESSAGE`, `GROUP_CHAT`, and `SPACE`. - `attachment`: Supports the operator `:*` (has any) to check for the presence of attachments. If `attachment:*` is specified, only messages that have at least one attachment are returned. - `annotations.user_mentions.user.name`: The resource name of the mentioned user (`users/{user}`). Only supports `:` (has). For example: `annotations.user_mentions.user.name:"users/1234567890"` returns only messages that contain a mention to the specified user. Alternatively, the alias `me` can be used to filter for messages that mention the caller user, for example: `annotations.user_mentions.user.name:users/me`. You can also use the e-mail as an alias for `{user}`, for example, `users/example@gmail.com`. For advanced filtering, the following functions are also available: - `has_link()`: Returns only messages that have at least one hyperlink in the message text. - `is_unread()`: Filters out messages that have been read by the calling user. Using the `space.display_name` or the `space.space_type` filters requires that the calling credentials include one of the following [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.spaces.readonly` - `https://www.googleapis.com/auth/chat.spaces` Using the `is_unread()` filter requires that the calling credentials include one of the following [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.readstate.readonly` - `https://www.googleapis.com/auth/chat.users.readstate` Across different fields, only `AND` operators are supported. A valid example is `sender.name = "users/1234567890" AND is_unread()`. The word `AND` is optional and is implied if omitted. For example, `sender.name = "users/1234567890" is_unread()` is valid and is equivalent to the previous example. An invalid example is `sender.name = "users/1234567890" OR is_unread()` because `OR` is not supported between different fields. Among the same field: - `create_time` supports only `AND`, and can only be used to represent an interval, such as `create_time >= "2022-01-01T00:00:00+00:00" AND create_time < "2023-01-01T00:00:00+00:00"`. - `sender.name` supports only the `OR` operator, for example: `sender.name = "users/1234567890" OR sender.name = "users/0987654321"`. - `space.name` supports only the `OR` operator, for example: `space.name = "spaces/ABCDEFGH" OR space.name = "spaces/QWERTYUI"`. - `space.display_name` supports the operators `AND` and `OR`, but not a mix of both. For example: `space.display_name:Project AND space.display_name:Tasks` returns messages that are in spaces with display names containing both `Project` and `Tasks`, whereas `space.display_name:Project OR space.display_name:Tasks` returns messages that are in spaces with display names containing either `Project` or `Tasks` or both. - `space.space_type` supports only the `OR` operator, for example: `space.space_type = "DIRECT_MESSAGE" OR space.space_type = "GROUP_CHAT"`. - `annotations.user_mentions.user.name` supports the operators `AND` and `OR`, but not a mix of both. For example: `annotations.user_mentions.user.name:"users/1234567890" AND annotations.user_mentions.user.name:"users/0987654321"` returns only messages that mentions both users, whereas `annotations.user_mentions.user.name:"users/1234567890" OR annotations.user_mentions.user.name:"users/0987654321"` returns messages that mention either user or both. Parentheses are required to disambiguate operator precedence when combining `AND` and `OR` operators in the same query. For example: `(sender.name="users/me" OR sender.name="users/123456") AND is_unread()`. Otherwise, parentheses are optional. The following example queries are valid: ``` "Pending reports" AND create_time >= "2023-01-01T00:00:00Z" sender.name = "users/example@gmail.com" annotations.user_mentions.user.name:"users/0987654321" attachment:* AND space.name = "spaces/ABCDEFGH" tasks AND is_unread() AND sender.name = "users/1234567890" "things to do" "urgent" (sender.name = "users/1234567890") AND (create_time < "2023-05-01T00:00:00Z") tasks AND space.name = "spaces/ABCDEFGH" AND has_link() "project one" is_unread() space.display_name:Project tasks ``` The maximum query length is 1,000 characters. Invalid queries are rejected by the server with an `INVALID_ARGUMENT` error. */
   filter?: string;
 }
-const SearchMessagesRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<SearchMessagesRequest>;
-
 export interface SearchSpacesMessagesRequest {
   /** Required. The resource name of the space to search within. To search across all spaces the user has access to, set this field to `spaces/-`. Using any other value for `parent` results in an `INVALID_ARGUMENT` error. To limit the search to one or more spaces, use `space.name` or `space.display_name` in the `filter`. */
   parent: string;
   /** Request body */
   body?: SearchMessagesRequest;
 }
-const SearchSpacesMessagesRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<SearchSpacesMessagesRequest>;
-
 export type SearchMessageResultSpaceMuteSettingEnum =
   | "MUTE_SETTING_UNSPECIFIED"
   | "UNMUTED"
   | "MUTED";
-const SearchMessageResultSpaceMuteSettingEnum = S.String;
-
 /** A single result item from a message search. */
 export interface SearchMessageResult {
   /** Indicates if the matched message is read by the calling user. Only returned if the request view is `SEARCH_MESSAGES_VIEW_FULL` and the calling credentials include one of the following [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.readstate.readonly` - `https://www.googleapis.com/auth/chat.users.readstate` */
@@ -3516,14 +2385,7 @@ export interface SearchMessageResult {
   /** The mute setting of the calling user for the space where the message is posted. The caller app can use this information to decide how to process the message depending on whether the space is muted for the user or not. Only returned if the request view is `SEARCH_MESSAGES_VIEW_FULL` and the calling credentials include the following [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes): - `https://www.googleapis.com/auth/chat.users.spacesettings` */
   spaceMuteSetting?: SearchMessageResultSpaceMuteSettingEnum;
 }
-const SearchMessageResult = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<SearchMessageResult>;
-
 export type SearchMessageResultList = Array<SearchMessageResult>;
-const SearchMessageResultList = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<SearchMessageResultList>;
-
 /** Response message for searching messages. */
 export interface SearchMessagesResponse {
   /** The list of search results that matched the query. */
@@ -3531,11 +2393,6 @@ export interface SearchMessagesResponse {
   /** A token that can be used to retrieve the next page. If this field is empty, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const SearchMessagesResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<SearchMessagesResponse>;
-
 /** Request to create a space and add specified users to it. */
 export interface SetUpSpaceRequest {
   /** Optional. A unique ID for this request. A random UUID is recommended. Specifying a request ID makes the request idempotent, which ensures that multiple identical requests with the same request ID result in only a single space being created. Subsequent requests with the same request ID return the existing space and do not update the space, even if the requested details differ from the current state. To use this field effectively: - Ensure that subsequent requests are identical and use the same authentication credentials as the original request. - If a space was already created with the provided request ID, the request returns that space. Note that the returned space might not be fully populated; the API echoes the space in your request with the system-assigned resource name populated. To retrieve the latest metadata for the space, call `GetSpace`. - Reusing an existing request ID with a different authenticated user results in an error. */
@@ -3545,14 +2402,10 @@ export interface SetUpSpaceRequest {
   /** Required. The `Space.spaceType` field is required. To create a space, set `Space.spaceType` to `SPACE` and set `Space.displayName`. If you receive the error message `ALREADY_EXISTS` when setting up a space, try a different `displayName`. An existing space within the Google Workspace organization might already use this display name. To create a group chat, set `Space.spaceType` to `GROUP_CHAT`. Don't set `Space.displayName`. To create a 1:1 conversation between humans, set `Space.spaceType` to `DIRECT_MESSAGE` and set `Space.singleUserBotDm` to `false`. Don't set `Space.displayName` or `Space.spaceDetails`. To create an 1:1 conversation between a human and the calling Chat app, set `Space.spaceType` to `DIRECT_MESSAGE` and `Space.singleUserBotDm` to `true`. Don't set `Space.displayName` or `Space.spaceDetails`. If a `DIRECT_MESSAGE` space already exists, that space is returned instead of creating a new space. */
   space?: Space;
 }
-const SetUpSpaceRequest = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<SetUpSpaceRequest>;
-
 export interface SetupSpacesRequest {
   /** Request body */
   body?: SetUpSpaceRequest;
 }
-const SetupSpacesRequest = /*@__PURE__*/ __L.at(__c31, 4) as any as S.Schema<SetupSpacesRequest>;
-
 export interface UpdateSpaceReadStateUsersSpacesRequest {
   /** Resource name of the space read state. Format: `users/{user}/spaces/{space}/spaceReadState` */
   name: string;
@@ -3561,11 +2414,6 @@ export interface UpdateSpaceReadStateUsersSpacesRequest {
   /** Request body */
   body?: SpaceReadState;
 }
-const UpdateSpaceReadStateUsersSpacesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<UpdateSpaceReadStateUsersSpacesRequest>;
-
 export interface UpdateSpacesMessagesRequest {
   /** Identifier. Resource name of the message. Format: `spaces/{space}/messages/{message}` Where `{space}` is the ID of the space where the message is posted and `{message}` is a system-assigned ID for the message. For example, `spaces/AAAAAAAAAAA/messages/BBBBBBBBBBB.BBBBBBBBBBB`. If you set a custom ID when you create a message, you can use this ID to specify the message in a request by replacing `{message}` with the value from the `clientAssignedMessageId` field. For example, `spaces/AAAAAAAAAAA/messages/client-custom-name`. For details, see [Name a message](https://developers.google.com/workspace/chat/create-messages#name_a_created_message). */
   name: string;
@@ -3576,39 +2424,22 @@ export interface UpdateSpacesMessagesRequest {
   /** Request body */
   body?: Message;
 }
-const UpdateSpacesMessagesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<UpdateSpacesMessagesRequest>;
-
 /** Request to upload an attachment. */
 export interface UploadAttachmentRequest {
   /** Required. The filename of the attachment, including the file extension. */
   filename?: string;
 }
-const UploadAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<UploadAttachmentRequest>;
-
 export interface UploadMediaRequest {
   /** Required. Resource name of the Chat space in which the attachment is uploaded. Format "spaces/{space}". */
   parent: string;
   /** Request body */
   body?: UploadAttachmentRequest;
 }
-const UploadMediaRequest = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<UploadMediaRequest>;
-
 /** Response of uploading an attachment. */
 export interface UploadAttachmentResponse {
   /** Reference to the uploaded attachment. */
   attachmentDataRef?: AttachmentDataRef;
 }
-const UploadAttachmentResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<UploadAttachmentResponse>;
-
 export type CompleteImportSpacesError =
   | NotFound
   | Forbidden
@@ -3622,8 +2453,8 @@ export const completeImportSpaces: API.OperationMethod<
   CompleteImportSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CompleteImportSpacesRequest,
-  output: CompleteImportSpaceResponse,
+  input: __S(1) as any as S.Schema<CompleteImportSpacesRequest>,
+  output: __S(13) as any as S.Schema<CompleteImportSpaceResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3642,8 +2473,8 @@ export const createCustomEmojis: API.OperationMethod<
   CreateCustomEmojisError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCustomEmojisRequest,
-  output: CustomEmoji,
+  input: __S(16) as any as S.Schema<CreateCustomEmojisRequest>,
+  output: __S(15) as any as S.Schema<CustomEmoji>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3662,8 +2493,8 @@ export const createSpaces: API.OperationMethod<
   CreateSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSpacesRequest,
-  output: Space,
+  input: __S(17) as any as S.Schema<CreateSpacesRequest>,
+  output: __S(12) as any as S.Schema<Space>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3682,8 +2513,8 @@ export const createSpacesMembers: API.OperationMethod<
   CreateSpacesMembersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSpacesMembersRequest,
-  output: Membership,
+  input: __S(20) as any as S.Schema<CreateSpacesMembersRequest>,
+  output: __S(19) as any as S.Schema<Membership>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3702,8 +2533,8 @@ export const createSpacesMessagePins: API.OperationMethod<
   CreateSpacesMessagePinsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSpacesMessagePinsRequest,
-  output: MessagePin,
+  input: __S(22) as any as S.Schema<CreateSpacesMessagePinsRequest>,
+  output: __S(21) as any as S.Schema<MessagePin>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3722,8 +2553,8 @@ export const createSpacesMessages: API.OperationMethod<
   CreateSpacesMessagesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSpacesMessagesRequest,
-  output: Message,
+  input: __S(153) as any as S.Schema<CreateSpacesMessagesRequest>,
+  output: __S(152) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3742,8 +2573,8 @@ export const createSpacesMessagesReactions: API.OperationMethod<
   CreateSpacesMessagesReactionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSpacesMessagesReactionsRequest,
-  output: Reaction,
+  input: __S(155) as any as S.Schema<CreateSpacesMessagesReactionsRequest>,
+  output: __S(154) as any as S.Schema<Reaction>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3762,8 +2593,8 @@ export const createUsersSections: API.OperationMethod<
   CreateUsersSectionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersSectionsRequest,
-  output: GoogleChatV1Section,
+  input: __S(157) as any as S.Schema<CreateUsersSectionsRequest>,
+  output: __S(156) as any as S.Schema<GoogleChatV1Section>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3782,8 +2613,8 @@ export const deleteCustomEmojis: API.OperationMethod<
   DeleteCustomEmojisError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCustomEmojisRequest,
-  output: Empty,
+  input: __S(158) as any as S.Schema<DeleteCustomEmojisRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3802,8 +2633,8 @@ export const deleteSpaces: API.OperationMethod<
   DeleteSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSpacesRequest,
-  output: Empty,
+  input: __S(159) as any as S.Schema<DeleteSpacesRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3822,8 +2653,8 @@ export const deleteSpacesMembers: API.OperationMethod<
   DeleteSpacesMembersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSpacesMembersRequest,
-  output: Membership,
+  input: __S(160) as any as S.Schema<DeleteSpacesMembersRequest>,
+  output: __S(19) as any as S.Schema<Membership>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3842,8 +2673,8 @@ export const deleteSpacesMessagePins: API.OperationMethod<
   DeleteSpacesMessagePinsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSpacesMessagePinsRequest,
-  output: Empty,
+  input: __S(161) as any as S.Schema<DeleteSpacesMessagePinsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3862,8 +2693,8 @@ export const deleteSpacesMessages: API.OperationMethod<
   DeleteSpacesMessagesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSpacesMessagesRequest,
-  output: Empty,
+  input: __S(162) as any as S.Schema<DeleteSpacesMessagesRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3882,8 +2713,8 @@ export const deleteSpacesMessagesReactions: API.OperationMethod<
   DeleteSpacesMessagesReactionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSpacesMessagesReactionsRequest,
-  output: Empty,
+  input: __S(163) as any as S.Schema<DeleteSpacesMessagesReactionsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3902,8 +2733,8 @@ export const deleteUsersSections: API.OperationMethod<
   DeleteUsersSectionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUsersSectionsRequest,
-  output: Empty,
+  input: __S(164) as any as S.Schema<DeleteUsersSectionsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3917,8 +2748,8 @@ export const downloadMedia: API.OperationMethod<
   DownloadMediaError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadMediaRequest,
-  output: Media,
+  input: __S(165) as any as S.Schema<DownloadMediaRequest>,
+  output: __S(166) as any as S.Schema<Media>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3932,8 +2763,8 @@ export const findDirectMessageSpaces: API.OperationMethod<
   FindDirectMessageSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FindDirectMessageSpacesRequest,
-  output: Space,
+  input: __S(167) as any as S.Schema<FindDirectMessageSpacesRequest>,
+  output: __S(12) as any as S.Schema<Space>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3948,8 +2779,8 @@ export const findGroupChatsSpaces: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   FindGroupChatsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: FindGroupChatsSpacesRequest,
-  output: FindGroupChatsResponse,
+  input: __S(168) as any as S.Schema<FindGroupChatsSpacesRequest>,
+  output: __S(170) as any as S.Schema<FindGroupChatsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3964,8 +2795,8 @@ export const getCustomEmojis: API.OperationMethod<
   GetCustomEmojisError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomEmojisRequest,
-  output: CustomEmoji,
+  input: __S(171) as any as S.Schema<GetCustomEmojisRequest>,
+  output: __S(15) as any as S.Schema<CustomEmoji>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3979,8 +2810,8 @@ export const getSpaceReadStateUsersSpaces: API.OperationMethod<
   GetSpaceReadStateUsersSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSpaceReadStateUsersSpacesRequest,
-  output: SpaceReadState,
+  input: __S(172) as any as S.Schema<GetSpaceReadStateUsersSpacesRequest>,
+  output: __S(173) as any as S.Schema<SpaceReadState>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -3994,8 +2825,8 @@ export const getSpaces: API.OperationMethod<
   GetSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSpacesRequest,
-  output: Space,
+  input: __S(174) as any as S.Schema<GetSpacesRequest>,
+  output: __S(12) as any as S.Schema<Space>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4009,8 +2840,8 @@ export const getSpacesMembers: API.OperationMethod<
   GetSpacesMembersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSpacesMembersRequest,
-  output: Membership,
+  input: __S(175) as any as S.Schema<GetSpacesMembersRequest>,
+  output: __S(19) as any as S.Schema<Membership>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4024,8 +2855,8 @@ export const getSpacesMessages: API.OperationMethod<
   GetSpacesMessagesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSpacesMessagesRequest,
-  output: Message,
+  input: __S(176) as any as S.Schema<GetSpacesMessagesRequest>,
+  output: __S(152) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4039,8 +2870,8 @@ export const getSpacesMessagesAttachments: API.OperationMethod<
   GetSpacesMessagesAttachmentsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSpacesMessagesAttachmentsRequest,
-  output: Attachment,
+  input: __S(177) as any as S.Schema<GetSpacesMessagesAttachmentsRequest>,
+  output: __S(102) as any as S.Schema<Attachment>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4054,8 +2885,8 @@ export const getSpacesSpaceEvents: API.OperationMethod<
   GetSpacesSpaceEventsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSpacesSpaceEventsRequest,
-  output: SpaceEvent,
+  input: __S(178) as any as S.Schema<GetSpacesSpaceEventsRequest>,
+  output: __S(191) as any as S.Schema<SpaceEvent>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4072,8 +2903,8 @@ export const getThreadReadStateUsersSpacesThreads: API.OperationMethod<
   GetThreadReadStateUsersSpacesThreadsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetThreadReadStateUsersSpacesThreadsRequest,
-  output: ThreadReadState,
+  input: __S(192) as any as S.Schema<GetThreadReadStateUsersSpacesThreadsRequest>,
+  output: __S(193) as any as S.Schema<ThreadReadState>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4087,8 +2918,8 @@ export const getUsersAvailability: API.OperationMethod<
   GetUsersAvailabilityError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersAvailabilityRequest,
-  output: Availability,
+  input: __S(194) as any as S.Schema<GetUsersAvailabilityRequest>,
+  output: __S(197) as any as S.Schema<Availability>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4105,8 +2936,8 @@ export const getUsersSpacesSpaceNotificationSetting: API.OperationMethod<
   GetUsersSpacesSpaceNotificationSettingError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersSpacesSpaceNotificationSettingRequest,
-  output: SpaceNotificationSetting,
+  input: __S(198) as any as S.Schema<GetUsersSpacesSpaceNotificationSettingRequest>,
+  output: __S(199) as any as S.Schema<SpaceNotificationSetting>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4121,8 +2952,8 @@ export const listCustomEmojis: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListCustomEmojisResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomEmojisRequest,
-  output: ListCustomEmojisResponse,
+  input: __S(200) as any as S.Schema<ListCustomEmojisRequest>,
+  output: __S(202) as any as S.Schema<ListCustomEmojisResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4138,8 +2969,8 @@ export const listSpaces: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListSpacesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSpacesRequest,
-  output: ListSpacesResponse,
+  input: __S(203) as any as S.Schema<ListSpacesRequest>,
+  output: __S(204) as any as S.Schema<ListSpacesResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4155,8 +2986,8 @@ export const listSpacesMembers: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListMembershipsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSpacesMembersRequest,
-  output: ListMembershipsResponse,
+  input: __S(205) as any as S.Schema<ListSpacesMembersRequest>,
+  output: __S(207) as any as S.Schema<ListMembershipsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4172,8 +3003,8 @@ export const listSpacesMessagePins: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListMessagePinsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSpacesMessagePinsRequest,
-  output: ListMessagePinsResponse,
+  input: __S(208) as any as S.Schema<ListSpacesMessagePinsRequest>,
+  output: __S(210) as any as S.Schema<ListMessagePinsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4189,8 +3020,8 @@ export const listSpacesMessages: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListMessagesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSpacesMessagesRequest,
-  output: ListMessagesResponse,
+  input: __S(211) as any as S.Schema<ListSpacesMessagesRequest>,
+  output: __S(213) as any as S.Schema<ListMessagesResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4206,8 +3037,8 @@ export const listSpacesMessagesReactions: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListReactionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSpacesMessagesReactionsRequest,
-  output: ListReactionsResponse,
+  input: __S(214) as any as S.Schema<ListSpacesMessagesReactionsRequest>,
+  output: __S(216) as any as S.Schema<ListReactionsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4223,8 +3054,8 @@ export const listSpacesSpaceEvents: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListSpaceEventsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSpacesSpaceEventsRequest,
-  output: ListSpaceEventsResponse,
+  input: __S(217) as any as S.Schema<ListSpacesSpaceEventsRequest>,
+  output: __S(219) as any as S.Schema<ListSpaceEventsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4240,8 +3071,8 @@ export const listUsersSections: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListSectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUsersSectionsRequest,
-  output: ListSectionsResponse,
+  input: __S(220) as any as S.Schema<ListUsersSectionsRequest>,
+  output: __S(222) as any as S.Schema<ListSectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4257,8 +3088,8 @@ export const listUsersSectionsItems: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListSectionItemsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUsersSectionsItemsRequest,
-  output: ListSectionItemsResponse,
+  input: __S(223) as any as S.Schema<ListUsersSectionsItemsRequest>,
+  output: __S(226) as any as S.Schema<ListSectionItemsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4278,8 +3109,8 @@ export const markAsActiveUsersAvailability: API.OperationMethod<
   MarkAsActiveUsersAvailabilityError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MarkAsActiveUsersAvailabilityRequest,
-  output: Availability,
+  input: __S(228) as any as S.Schema<MarkAsActiveUsersAvailabilityRequest>,
+  output: __S(197) as any as S.Schema<Availability>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4298,8 +3129,8 @@ export const markAsAwayUsersAvailability: API.OperationMethod<
   MarkAsAwayUsersAvailabilityError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MarkAsAwayUsersAvailabilityRequest,
-  output: Availability,
+  input: __S(229) as any as S.Schema<MarkAsAwayUsersAvailabilityRequest>,
+  output: __S(197) as any as S.Schema<Availability>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4318,8 +3149,8 @@ export const markAsDoNotDisturbUsersAvailability: API.OperationMethod<
   MarkAsDoNotDisturbUsersAvailabilityError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MarkAsDoNotDisturbUsersAvailabilityRequest,
-  output: Availability,
+  input: __S(231) as any as S.Schema<MarkAsDoNotDisturbUsersAvailabilityRequest>,
+  output: __S(197) as any as S.Schema<Availability>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4338,8 +3169,8 @@ export const moveUsersSectionsItems: API.OperationMethod<
   MoveUsersSectionsItemsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveUsersSectionsItemsRequest,
-  output: MoveSectionItemResponse,
+  input: __S(233) as any as S.Schema<MoveUsersSectionsItemsRequest>,
+  output: __S(234) as any as S.Schema<MoveSectionItemResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4358,8 +3189,8 @@ export const patchSpaces: API.OperationMethod<
   PatchSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchSpacesRequest,
-  output: Space,
+  input: __S(235) as any as S.Schema<PatchSpacesRequest>,
+  output: __S(12) as any as S.Schema<Space>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4378,8 +3209,8 @@ export const patchSpacesMembers: API.OperationMethod<
   PatchSpacesMembersError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchSpacesMembersRequest,
-  output: Membership,
+  input: __S(236) as any as S.Schema<PatchSpacesMembersRequest>,
+  output: __S(19) as any as S.Schema<Membership>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4398,8 +3229,8 @@ export const patchSpacesMessages: API.OperationMethod<
   PatchSpacesMessagesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchSpacesMessagesRequest,
-  output: Message,
+  input: __S(237) as any as S.Schema<PatchSpacesMessagesRequest>,
+  output: __S(152) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4418,8 +3249,8 @@ export const patchUsersAvailability: API.OperationMethod<
   PatchUsersAvailabilityError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchUsersAvailabilityRequest,
-  output: Availability,
+  input: __S(238) as any as S.Schema<PatchUsersAvailabilityRequest>,
+  output: __S(197) as any as S.Schema<Availability>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4438,8 +3269,8 @@ export const patchUsersSections: API.OperationMethod<
   PatchUsersSectionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchUsersSectionsRequest,
-  output: GoogleChatV1Section,
+  input: __S(239) as any as S.Schema<PatchUsersSectionsRequest>,
+  output: __S(156) as any as S.Schema<GoogleChatV1Section>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4458,8 +3289,8 @@ export const patchUsersSpacesSpaceNotificationSetting: API.OperationMethod<
   PatchUsersSpacesSpaceNotificationSettingError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchUsersSpacesSpaceNotificationSettingRequest,
-  output: SpaceNotificationSetting,
+  input: __S(240) as any as S.Schema<PatchUsersSpacesSpaceNotificationSettingRequest>,
+  output: __S(199) as any as S.Schema<SpaceNotificationSetting>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4478,8 +3309,8 @@ export const positionUsersSections: API.OperationMethod<
   PositionUsersSectionsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PositionUsersSectionsRequest,
-  output: PositionSectionResponse,
+  input: __S(242) as any as S.Schema<PositionUsersSectionsRequest>,
+  output: __S(243) as any as S.Schema<PositionSectionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4494,8 +3325,8 @@ export const searchSpaces: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   SearchSpacesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchSpacesRequest,
-  output: SearchSpacesResponse,
+  input: __S(244) as any as S.Schema<SearchSpacesRequest>,
+  output: __S(245) as any as S.Schema<SearchSpacesResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4515,8 +3346,8 @@ export const searchSpacesMessages: API.OperationMethod<
   SearchSpacesMessagesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchSpacesMessagesRequest,
-  output: SearchMessagesResponse,
+  input: __S(247) as any as S.Schema<SearchSpacesMessagesRequest>,
+  output: __S(250) as any as S.Schema<SearchMessagesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4535,8 +3366,8 @@ export const setupSpaces: API.OperationMethod<
   SetupSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetupSpacesRequest,
-  output: Space,
+  input: __S(252) as any as S.Schema<SetupSpacesRequest>,
+  output: __S(12) as any as S.Schema<Space>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4555,8 +3386,8 @@ export const updateSpaceReadStateUsersSpaces: API.OperationMethod<
   UpdateSpaceReadStateUsersSpacesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSpaceReadStateUsersSpacesRequest,
-  output: SpaceReadState,
+  input: __S(253) as any as S.Schema<UpdateSpaceReadStateUsersSpacesRequest>,
+  output: __S(173) as any as S.Schema<SpaceReadState>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4575,8 +3406,8 @@ export const updateSpacesMessages: API.OperationMethod<
   UpdateSpacesMessagesError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSpacesMessagesRequest,
-  output: Message,
+  input: __S(254) as any as S.Schema<UpdateSpacesMessagesRequest>,
+  output: __S(152) as any as S.Schema<Message>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4595,8 +3426,8 @@ export const uploadMedia: API.OperationMethod<
   UploadMediaError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadMediaRequest,
-  output: UploadAttachmentResponse,
+  input: __S(256) as any as S.Schema<UploadMediaRequest>,
+  output: __S(257) as any as S.Schema<UploadAttachmentResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -4613,7 +3444,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CompleteImportSpaceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4640,23 +3471,23 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          audience: S.optional(Audience),
+          audience: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "Principal" });
     case 5:
-      return S.Array(Principal);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          principals: S.optional(PrincipalList),
+          principals: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "AccessPermissionSetting" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          discoverSpaceSetting: S.optional(AccessPermissionSetting),
-          viewSpaceMembershipSetting: S.optional(AccessPermissionSetting),
-          joinSpaceSetting: S.optional(AccessPermissionSetting),
+          discoverSpaceSetting: S.optional(__S(6)),
+          viewSpaceMembershipSetting: S.optional(__S(6)),
+          joinSpaceSetting: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "AccessPermissionSettings" });
   }
@@ -4666,9 +3497,9 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accessPermissionSettings: S.optional(AccessPermissionSettings),
+          accessPermissionSettings: S.optional(__S(7)),
           audience: S.optional(S.String),
-          accessState: S.optional(AccessSettingsAccessStateEnum),
+          accessState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccessSettings" });
     case 1:
@@ -4682,15 +3513,15 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          manageWebhooks: S.optional(PermissionSetting),
-          manageMembersAndGroups: S.optional(PermissionSetting),
-          toggleHistory: S.optional(PermissionSetting),
-          replyMessages: S.optional(PermissionSetting),
-          modifySpaceDetails: S.optional(PermissionSetting),
-          useAtMentionAll: S.optional(PermissionSetting),
-          viewSpaceMembership: S.optional(PermissionSetting),
-          manageApps: S.optional(PermissionSetting),
-          postMessages: S.optional(PermissionSetting),
+          manageWebhooks: S.optional(__S(9)),
+          manageMembersAndGroups: S.optional(__S(9)),
+          toggleHistory: S.optional(__S(9)),
+          replyMessages: S.optional(__S(9)),
+          modifySpaceDetails: S.optional(__S(9)),
+          useAtMentionAll: S.optional(__S(9)),
+          viewSpaceMembership: S.optional(__S(9)),
+          manageApps: S.optional(__S(9)),
+          postMessages: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "PermissionSettings" });
     case 3:
@@ -4704,32 +3535,32 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           externalUserAllowed: S.optional(S.Boolean),
-          spaceType: S.optional(SpaceSpaceTypeEnum),
+          spaceType: S.optional(S.String),
           adminInstalled: S.optional(S.Boolean),
           createTime: S.optional(S.String),
           threaded: S.optional(S.Boolean),
-          predefinedPermissionSettings: S.optional(SpacePredefinedPermissionSettingsEnum),
-          membershipCount: S.optional(MembershipCount),
+          predefinedPermissionSettings: S.optional(S.String),
+          membershipCount: S.optional(__S(2)),
           importMode: S.optional(S.Boolean),
-          accessSettings: S.optional(AccessSettings),
-          permissionSettings: S.optional(PermissionSettings),
+          accessSettings: S.optional(__S(8)),
+          permissionSettings: S.optional(__S(10)),
           singleUserBotDm: S.optional(S.Boolean),
-          spaceDetails: S.optional(SpaceDetails),
+          spaceDetails: S.optional(__S(11)),
           spaceUri: S.optional(S.String),
           name: S.optional(S.String),
           customer: S.optional(S.String),
-          spaceThreadingState: S.optional(SpaceSpaceThreadingStateEnum),
+          spaceThreadingState: S.optional(S.String),
           importModeExpireTime: S.optional(S.String),
-          type: S.optional(SpaceTypeEnum),
+          type: S.optional(S.String),
           lastActiveTime: S.optional(S.String),
           displayName: S.optional(S.String),
-          spaceHistoryState: S.optional(SpaceSpaceHistoryStateEnum),
+          spaceHistoryState: S.optional(S.String),
         }),
       ).annotate({ identifier: "Space" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          space: S.optional(Space),
+          space: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "CompleteImportSpaceResponse",
@@ -4746,7 +3577,7 @@ function __c1(j: number): any {
         S.Struct({
           uid: S.optional(S.String),
           name: S.optional(S.String),
-          payload: S.optional(CustomEmojiPayload),
+          payload: S.optional(__S(14)),
           emojiName: S.optional(S.String),
           temporaryImageUri: S.optional(S.String),
         }),
@@ -4758,7 +3589,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(CustomEmoji.pipe(T.HttpBody())),
+          body: S.optional(__S(15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4773,7 +3604,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Space.pipe(T.HttpBody())),
+          body: S.optional(__S(12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "POST", uri: "v1/spaces", baseUrl: "https://chat.googleapis.com/" }),
         ),
@@ -4782,7 +3613,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           isAnonymous: S.optional(S.Boolean),
-          type: S.optional(UserTypeEnum),
+          type: S.optional(S.String),
           email: S.optional(S.String),
           avatarUrl: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -4794,13 +3625,13 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          member: S.optional(User),
-          affiliation: S.optional(MembershipAffiliationEnum),
+          member: S.optional(__S(18)),
+          affiliation: S.optional(S.String),
           name: S.optional(S.String),
           deleteTime: S.optional(S.String),
-          groupMember: S.optional(Group),
-          state: S.optional(MembershipStateEnum),
-          role: S.optional(MembershipRoleEnum),
+          groupMember: S.optional(__S(3)),
+          state: S.optional(S.String),
+          role: S.optional(S.String),
         }),
       ).annotate({ identifier: "Membership" });
     case 4:
@@ -4808,7 +3639,7 @@ function __c2(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(Membership.pipe(T.HttpBody())),
+          body: S.optional(__S(19).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4830,7 +3661,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(MessagePin.pipe(T.HttpBody())),
+          body: S.optional(__S(21).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4862,8 +3693,8 @@ function __c3(j: number): any {
           knownIcon: S.optional(S.String),
           iconUrl: S.optional(S.String),
           altText: S.optional(S.String),
-          materialIcon: S.optional(GoogleAppsCardV1MaterialIcon),
-          imageType: S.optional(GoogleAppsCardV1IconImageTypeEnum),
+          materialIcon: S.optional(__S(23)),
+          imageType: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleAppsCardV1Icon" });
     case 1:
@@ -4878,38 +3709,38 @@ function __c3(j: number): any {
         identifier: "GoogleAppsCardV1ActionParameter",
       });
     case 3:
-      return S.Array(GoogleAppsCardV1ActionParameter);
+      return S.Array(__S(26));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          loadIndicator: S.optional(GoogleAppsCardV1ActionLoadIndicatorEnum),
+          loadIndicator: S.optional(S.String),
           persistValues: S.optional(S.Boolean),
-          requiredWidgets: S.optional(StringList),
-          parameters: S.optional(GoogleAppsCardV1ActionParameterList),
+          requiredWidgets: S.optional(__S(25)),
+          parameters: S.optional(__S(27)),
           function: S.optional(S.String),
-          interaction: S.optional(GoogleAppsCardV1ActionInteractionEnum),
+          interaction: S.optional(S.String),
           allWidgetsAreRequired: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GoogleAppsCardV1Action" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          onClose: S.optional(GoogleAppsCardV1OpenLinkOnCloseEnum),
-          openAs: S.optional(GoogleAppsCardV1OpenLinkOpenAsEnum),
+          onClose: S.optional(S.String),
+          openAs: S.optional(S.String),
           url: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleAppsCardV1OpenLink" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          onClick: S.optional(S.suspend(() => GoogleAppsCardV1OnClick)),
+          onClick: S.optional(S.suspend(() => __S(94))),
           actionLabel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1CardAction",
       });
     case 7:
-      return S.Array(GoogleAppsCardV1CardAction);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
@@ -4919,7 +3750,7 @@ function __c4(j: number): any {
         S.Struct({
           text: S.optional(S.String),
           maxLines: S.optional(S.Number),
-          textSyntax: S.optional(GoogleAppsCardV1TextParagraphTextSyntaxEnum),
+          textSyntax: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1TextParagraph",
@@ -4927,7 +3758,7 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          onClick: S.optional(S.suspend(() => GoogleAppsCardV1OnClick)),
+          onClick: S.optional(S.suspend(() => __S(94))),
           altText: S.optional(S.String),
           imageUrl: S.optional(S.String),
         }),
@@ -4935,30 +3766,30 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          textParagraph: S.optional(GoogleAppsCardV1TextParagraph),
-          image: S.optional(GoogleAppsCardV1Image),
-          buttonList: S.optional(S.suspend(() => GoogleAppsCardV1ButtonList)),
+          textParagraph: S.optional(__S(32)),
+          image: S.optional(__S(33)),
+          buttonList: S.optional(S.suspend(() => __S(97))),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1NestedWidget",
       });
     case 3:
-      return S.Array(GoogleAppsCardV1NestedWidget);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          widgets: S.optional(GoogleAppsCardV1NestedWidgetList),
-          footerWidgets: S.optional(GoogleAppsCardV1NestedWidgetList),
+          widgets: S.optional(__S(35)),
+          footerWidgets: S.optional(__S(35)),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1CarouselCard",
       });
     case 5:
-      return S.Array(GoogleAppsCardV1CarouselCard);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          carouselCards: S.optional(GoogleAppsCardV1CarouselCardList),
+          carouselCards: S.optional(__S(37)),
         }),
       ).annotate({ identifier: "GoogleAppsCardV1Carousel" });
     case 7:
@@ -4974,7 +3805,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          spaceDataSource: S.optional(SpaceDataSource),
+          spaceDataSource: S.optional(__S(39)),
         }),
       ).annotate({
         identifier: "ChatClientDataSourceMarkup",
@@ -4983,21 +3814,21 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           includeVariables: S.optional(S.Boolean),
-          type: S.optional(WorkflowDataSourceMarkupTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkflowDataSourceMarkup" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          chatDataSource: S.optional(ChatClientDataSourceMarkup),
-          workflowDataSource: S.optional(WorkflowDataSourceMarkup),
+          chatDataSource: S.optional(__S(40)),
+          workflowDataSource: S.optional(__S(41)),
         }),
       ).annotate({ identifier: "HostAppDataSourceMarkup" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          commonDataSource: S.optional(GoogleAppsCardV1PlatformDataSourceCommonDataSourceEnum),
-          hostAppDataSource: S.optional(HostAppDataSourceMarkup),
+          commonDataSource: S.optional(S.String),
+          hostAppDataSource: S.optional(__S(42)),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1PlatformDataSource",
@@ -5006,14 +3837,14 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           minCharactersTrigger: S.optional(S.Number),
-          remoteDataSource: S.optional(GoogleAppsCardV1Action),
-          platformDataSource: S.optional(GoogleAppsCardV1PlatformDataSource),
+          remoteDataSource: S.optional(__S(28)),
+          platformDataSource: S.optional(__S(43)),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1DataSourceConfig",
       });
     case 5:
-      return S.Array(GoogleAppsCardV1DataSourceConfig);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5027,7 +3858,7 @@ function __c5(j: number): any {
         identifier: "GoogleAppsCardV1SelectionItem",
       });
     case 7:
-      return S.Array(GoogleAppsCardV1SelectionItem);
+      return S.Array(__S(46));
   }
 }
 function __c6(j: number): any {
@@ -5037,14 +3868,14 @@ function __c6(j: number): any {
         S.Struct({
           label: S.optional(S.String),
           multiSelectMaxSelectedItems: S.optional(S.Number),
-          onChangeAction: S.optional(GoogleAppsCardV1Action),
+          onChangeAction: S.optional(__S(28)),
           name: S.optional(S.String),
-          externalDataSource: S.optional(GoogleAppsCardV1Action),
-          dataSourceConfigs: S.optional(GoogleAppsCardV1DataSourceConfigList),
-          type: S.optional(GoogleAppsCardV1SelectionInputTypeEnum),
-          items: S.optional(GoogleAppsCardV1SelectionItemList),
+          externalDataSource: S.optional(__S(28)),
+          dataSourceConfigs: S.optional(__S(45)),
+          type: S.optional(S.String),
+          items: S.optional(__S(47)),
           multiSelectMinQueryLength: S.optional(S.Number),
-          platformDataSource: S.optional(GoogleAppsCardV1PlatformDataSource),
+          platformDataSource: S.optional(__S(43)),
           hintText: S.optional(S.String),
         }),
       ).annotate({
@@ -5055,8 +3886,8 @@ function __c6(j: number): any {
         S.Struct({
           selected: S.optional(S.Boolean),
           name: S.optional(S.String),
-          onChangeAction: S.optional(GoogleAppsCardV1Action),
-          controlType: S.optional(GoogleAppsCardV1SwitchControlControlTypeEnum),
+          onChangeAction: S.optional(__S(28)),
+          controlType: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({
@@ -5065,22 +3896,20 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          icon: S.optional(GoogleAppsCardV1Icon),
+          icon: S.optional(__S(24)),
           text: S.optional(S.String),
           topLabel: S.optional(S.String),
           wrapText: S.optional(S.Boolean),
-          bottomLabelText: S.optional(GoogleAppsCardV1TextParagraph),
-          startIcon: S.optional(GoogleAppsCardV1Icon),
-          endIcon: S.optional(GoogleAppsCardV1Icon),
-          topLabelText: S.optional(GoogleAppsCardV1TextParagraph),
+          bottomLabelText: S.optional(__S(32)),
+          startIcon: S.optional(__S(24)),
+          endIcon: S.optional(__S(24)),
+          topLabelText: S.optional(__S(32)),
           bottomLabel: S.optional(S.String),
-          onClick: S.optional(S.suspend(() => GoogleAppsCardV1OnClick)),
-          startIconVerticalAlignment: S.optional(
-            GoogleAppsCardV1DecoratedTextStartIconVerticalAlignmentEnum,
-          ),
-          button: S.optional(S.suspend(() => GoogleAppsCardV1Button)),
-          switchControl: S.optional(GoogleAppsCardV1SwitchControl),
-          contentText: S.optional(GoogleAppsCardV1TextParagraph),
+          onClick: S.optional(S.suspend(() => __S(94))),
+          startIconVerticalAlignment: S.optional(S.String),
+          button: S.optional(S.suspend(() => __S(95))),
+          switchControl: S.optional(__S(49)),
+          contentText: S.optional(__S(32)),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1DecoratedText",
@@ -5089,7 +3918,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           characterLimit: S.optional(S.Number),
-          inputType: S.optional(GoogleAppsCardV1ValidationInputTypeEnum),
+          inputType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1Validation",
@@ -5103,11 +3932,11 @@ function __c6(j: number): any {
         identifier: "GoogleAppsCardV1SuggestionItem",
       });
     case 5:
-      return S.Array(GoogleAppsCardV1SuggestionItem);
+      return S.Array(__S(52));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(GoogleAppsCardV1SuggestionItemList),
+          items: S.optional(__S(53)),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1Suggestions",
@@ -5116,16 +3945,16 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          autoCompleteAction: S.optional(GoogleAppsCardV1Action),
-          onChangeAction: S.optional(GoogleAppsCardV1Action),
-          hostAppDataSource: S.optional(HostAppDataSourceMarkup),
-          validation: S.optional(GoogleAppsCardV1Validation),
+          autoCompleteAction: S.optional(__S(28)),
+          onChangeAction: S.optional(__S(28)),
+          hostAppDataSource: S.optional(__S(42)),
+          validation: S.optional(__S(51)),
           hintText: S.optional(S.String),
-          initialSuggestions: S.optional(GoogleAppsCardV1Suggestions),
+          initialSuggestions: S.optional(__S(54)),
           label: S.optional(S.String),
           value: S.optional(S.String),
           placeholderText: S.optional(S.String),
-          type: S.optional(GoogleAppsCardV1TextInputTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1TextInput",
@@ -5141,17 +3970,17 @@ function __c7(j: number): any {
           label: S.optional(S.String),
           disabled: S.optional(S.Boolean),
           enabled: S.optional(S.Boolean),
-          icon: S.optional(GoogleAppsCardV1Icon),
-          onClick: S.optional(S.suspend(() => GoogleAppsCardV1OnClick)),
+          icon: S.optional(__S(24)),
+          onClick: S.optional(S.suspend(() => __S(94))),
         }),
       ).annotate({ identifier: "GoogleAppsCardV1Chip" });
     case 1:
-      return S.Array(GoogleAppsCardV1Chip);
+      return S.Array(__S(56));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          chips: S.optional(GoogleAppsCardV1ChipList_),
-          layout: S.optional(GoogleAppsCardV1ChipListLayoutEnum),
+          chips: S.optional(__S(57)),
+          layout: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleAppsCardV1ChipList" });
     case 3:
@@ -5159,9 +3988,9 @@ function __c7(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           valueMsEpoch: S.optional(S.String),
-          hostAppDataSource: S.optional(HostAppDataSourceMarkup),
-          onChangeAction: S.optional(GoogleAppsCardV1Action),
-          type: S.optional(GoogleAppsCardV1DateTimePickerTypeEnum),
+          hostAppDataSource: S.optional(__S(42)),
+          onChangeAction: S.optional(__S(28)),
+          type: S.optional(S.String),
           timezoneOffsetDate: S.optional(S.Number),
           label: S.optional(S.String),
         }),
@@ -5171,29 +4000,29 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          selectionInput: S.optional(GoogleAppsCardV1SelectionInput),
-          buttonList: S.optional(S.suspend(() => GoogleAppsCardV1ButtonList)),
-          decoratedText: S.optional(GoogleAppsCardV1DecoratedText),
-          image: S.optional(GoogleAppsCardV1Image),
-          textInput: S.optional(GoogleAppsCardV1TextInput),
-          chipList: S.optional(GoogleAppsCardV1ChipList),
-          textParagraph: S.optional(GoogleAppsCardV1TextParagraph),
-          dateTimePicker: S.optional(GoogleAppsCardV1DateTimePicker),
+          selectionInput: S.optional(__S(48)),
+          buttonList: S.optional(S.suspend(() => __S(97))),
+          decoratedText: S.optional(__S(50)),
+          image: S.optional(__S(33)),
+          textInput: S.optional(__S(55)),
+          chipList: S.optional(__S(58)),
+          textParagraph: S.optional(__S(32)),
+          dateTimePicker: S.optional(__S(59)),
         }),
       ).annotate({ identifier: "GoogleAppsCardV1Widgets" });
     case 5:
-      return S.Array(GoogleAppsCardV1Widgets);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          horizontalAlignment: S.optional(GoogleAppsCardV1ColumnHorizontalAlignmentEnum),
-          verticalAlignment: S.optional(GoogleAppsCardV1ColumnVerticalAlignmentEnum),
-          horizontalSizeStyle: S.optional(GoogleAppsCardV1ColumnHorizontalSizeStyleEnum),
-          widgets: S.optional(GoogleAppsCardV1WidgetsList),
+          horizontalAlignment: S.optional(S.String),
+          verticalAlignment: S.optional(S.String),
+          horizontalSizeStyle: S.optional(S.String),
+          widgets: S.optional(__S(61)),
         }),
       ).annotate({ identifier: "GoogleAppsCardV1Column" });
     case 7:
-      return S.Array(GoogleAppsCardV1Column);
+      return S.Array(__S(62));
   }
 }
 function __c8(j: number): any {
@@ -5201,13 +4030,13 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          columnItems: S.optional(GoogleAppsCardV1ColumnList),
+          columnItems: S.optional(__S(63)),
         }),
       ).annotate({ identifier: "GoogleAppsCardV1Columns" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          visibility: S.optional(GoogleAppsCardV1UpdateVisibilityActionVisibilityEnum),
+          visibility: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1UpdateVisibilityAction",
@@ -5215,7 +4044,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          updateVisibilityAction: S.optional(GoogleAppsCardV1UpdateVisibilityAction),
+          updateVisibilityAction: S.optional(__S(65)),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1CommonWidgetAction",
@@ -5227,19 +4056,19 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "GoogleAppsCardV1Trigger" });
     case 4:
-      return S.Array(GoogleAppsCardV1Trigger);
+      return S.Array(__S(67));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          commonWidgetAction: S.optional(GoogleAppsCardV1CommonWidgetAction),
+          commonWidgetAction: S.optional(__S(66)),
           actionRuleId: S.optional(S.String),
-          postEventTriggers: S.optional(GoogleAppsCardV1TriggerList),
+          postEventTriggers: S.optional(__S(68)),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1EventAction",
       });
     case 6:
-      return S.Array(GoogleAppsCardV1EventAction);
+      return S.Array(__S(69));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -5257,8 +4086,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cornerRadius: S.optional(S.Number),
-          strokeColor: S.optional(Color),
-          type: S.optional(GoogleAppsCardV1BorderStyleTypeEnum),
+          strokeColor: S.optional(__S(71)),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1BorderStyle",
@@ -5266,7 +4095,7 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(GoogleAppsCardV1ImageCropStyleTypeEnum),
+          type: S.optional(S.String),
           aspectRatio: S.optional(S.Number),
         }),
       ).annotate({
@@ -5275,8 +4104,8 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cropStyle: S.optional(GoogleAppsCardV1ImageCropStyle),
-          borderStyle: S.optional(GoogleAppsCardV1BorderStyle),
+          cropStyle: S.optional(__S(73)),
+          borderStyle: S.optional(__S(72)),
           imageUri: S.optional(S.String),
           altText: S.optional(S.String),
         }),
@@ -5287,47 +4116,47 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          layout: S.optional(GoogleAppsCardV1GridItemLayoutEnum),
+          layout: S.optional(S.String),
           subtitle: S.optional(S.String),
-          image: S.optional(GoogleAppsCardV1ImageComponent),
+          image: S.optional(__S(74)),
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleAppsCardV1GridItem" });
     case 4:
-      return S.Array(GoogleAppsCardV1GridItem);
+      return S.Array(__S(75));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          borderStyle: S.optional(GoogleAppsCardV1BorderStyle),
+          borderStyle: S.optional(__S(72)),
           title: S.optional(S.String),
           columnCount: S.optional(S.Number),
-          onClick: S.optional(S.suspend(() => GoogleAppsCardV1OnClick)),
-          items: S.optional(GoogleAppsCardV1GridItemList),
+          onClick: S.optional(S.suspend(() => __S(94))),
+          items: S.optional(__S(76)),
         }),
       ).annotate({ identifier: "GoogleAppsCardV1Grid" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          carousel: S.optional(GoogleAppsCardV1Carousel),
-          columns: S.optional(GoogleAppsCardV1Columns),
-          visibility: S.optional(GoogleAppsCardV1WidgetVisibilityEnum),
-          horizontalAlignment: S.optional(GoogleAppsCardV1WidgetHorizontalAlignmentEnum),
-          divider: S.optional(CompleteImportSpaceRequest),
-          chipList: S.optional(GoogleAppsCardV1ChipList),
-          buttonList: S.optional(S.suspend(() => GoogleAppsCardV1ButtonList)),
-          eventActions: S.optional(GoogleAppsCardV1EventActionList),
-          selectionInput: S.optional(GoogleAppsCardV1SelectionInput),
-          grid: S.optional(GoogleAppsCardV1Grid),
-          textInput: S.optional(GoogleAppsCardV1TextInput),
-          dateTimePicker: S.optional(GoogleAppsCardV1DateTimePicker),
-          textParagraph: S.optional(GoogleAppsCardV1TextParagraph),
-          image: S.optional(GoogleAppsCardV1Image),
-          decoratedText: S.optional(GoogleAppsCardV1DecoratedText),
+          carousel: S.optional(__S(38)),
+          columns: S.optional(__S(64)),
+          visibility: S.optional(S.String),
+          horizontalAlignment: S.optional(S.String),
+          divider: S.optional(__S(0)),
+          chipList: S.optional(__S(58)),
+          buttonList: S.optional(S.suspend(() => __S(97))),
+          eventActions: S.optional(__S(70)),
+          selectionInput: S.optional(__S(48)),
+          grid: S.optional(__S(77)),
+          textInput: S.optional(__S(55)),
+          dateTimePicker: S.optional(__S(59)),
+          textParagraph: S.optional(__S(32)),
+          image: S.optional(__S(33)),
+          decoratedText: S.optional(__S(50)),
           id: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleAppsCardV1Widget" });
     case 7:
-      return S.Array(GoogleAppsCardV1Widget);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
@@ -5335,9 +4164,9 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          horizontalAlignment: S.optional(GoogleAppsCardV1CollapseControlHorizontalAlignmentEnum),
-          collapseButton: S.optional(S.suspend(() => GoogleAppsCardV1Button)),
-          expandButton: S.optional(S.suspend(() => GoogleAppsCardV1Button)),
+          horizontalAlignment: S.optional(S.String),
+          collapseButton: S.optional(S.suspend(() => __S(95))),
+          expandButton: S.optional(S.suspend(() => __S(95))),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1CollapseControl",
@@ -5348,18 +4177,18 @@ function __c10(j: number): any {
           header: S.optional(S.String),
           id: S.optional(S.String),
           uncollapsibleWidgetsCount: S.optional(S.Number),
-          widgets: S.optional(GoogleAppsCardV1WidgetList),
-          collapseControl: S.optional(GoogleAppsCardV1CollapseControl),
+          widgets: S.optional(__S(79)),
+          collapseControl: S.optional(__S(80)),
           collapsible: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GoogleAppsCardV1Section" });
     case 2:
-      return S.Array(GoogleAppsCardV1Section);
+      return S.Array(__S(81));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          secondaryButton: S.optional(S.suspend(() => GoogleAppsCardV1Button)),
-          primaryButton: S.optional(S.suspend(() => GoogleAppsCardV1Button)),
+          secondaryButton: S.optional(S.suspend(() => __S(95))),
+          primaryButton: S.optional(S.suspend(() => __S(95))),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1CardFixedFooter",
@@ -5368,7 +4197,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subtitle: S.optional(S.String),
-          imageType: S.optional(GoogleAppsCardV1CardHeaderImageTypeEnum),
+          imageType: S.optional(S.String),
           title: S.optional(S.String),
           imageAltText: S.optional(S.String),
           imageUrl: S.optional(S.String),
@@ -5379,7 +4208,7 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          conditionType: S.optional(GoogleAppsCardV1ExpressionDataConditionConditionTypeEnum),
+          conditionType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1ExpressionDataCondition",
@@ -5387,14 +4216,14 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          expressionDataCondition: S.optional(GoogleAppsCardV1ExpressionDataCondition),
+          expressionDataCondition: S.optional(__S(85)),
           actionRuleId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1Condition",
       });
     case 7:
-      return S.Array(GoogleAppsCardV1Condition);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -5404,45 +4233,45 @@ function __c11(j: number): any {
         S.Struct({
           expression: S.optional(S.String),
           id: S.optional(S.String),
-          conditions: S.optional(GoogleAppsCardV1ConditionList),
-          eventActions: S.optional(GoogleAppsCardV1EventActionList),
+          conditions: S.optional(__S(87)),
+          eventActions: S.optional(__S(70)),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1ExpressionData",
       });
     case 1:
-      return S.Array(GoogleAppsCardV1ExpressionData);
+      return S.Array(__S(88));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cardActions: S.optional(GoogleAppsCardV1CardActionList),
+          cardActions: S.optional(__S(31)),
           name: S.optional(S.String),
-          sections: S.optional(GoogleAppsCardV1SectionList),
-          displayStyle: S.optional(GoogleAppsCardV1CardDisplayStyleEnum),
-          fixedFooter: S.optional(GoogleAppsCardV1CardFixedFooter),
-          peekCardHeader: S.optional(GoogleAppsCardV1CardHeader),
-          sectionDividerStyle: S.optional(GoogleAppsCardV1CardSectionDividerStyleEnum),
-          header: S.optional(GoogleAppsCardV1CardHeader),
-          expressionData: S.optional(GoogleAppsCardV1ExpressionDataList),
+          sections: S.optional(__S(82)),
+          displayStyle: S.optional(S.String),
+          fixedFooter: S.optional(__S(83)),
+          peekCardHeader: S.optional(__S(84)),
+          sectionDividerStyle: S.optional(S.String),
+          header: S.optional(__S(84)),
+          expressionData: S.optional(__S(89)),
         }),
       ).annotate({ identifier: "GoogleAppsCardV1Card" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
-          startIcon: S.optional(GoogleAppsCardV1Icon),
+          startIcon: S.optional(__S(24)),
           disabled: S.optional(S.Boolean),
-          onClick: S.optional(S.suspend(() => GoogleAppsCardV1OnClick)),
+          onClick: S.optional(S.suspend(() => __S(94))),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1OverflowMenuItem",
       });
     case 4:
-      return S.Array(GoogleAppsCardV1OverflowMenuItem);
+      return S.Array(__S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(GoogleAppsCardV1OverflowMenuItemList),
+          items: S.optional(__S(92)),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1OverflowMenu",
@@ -5450,23 +4279,23 @@ function __c11(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          openDynamicLinkAction: S.optional(GoogleAppsCardV1Action),
-          openLink: S.optional(GoogleAppsCardV1OpenLink),
-          action: S.optional(GoogleAppsCardV1Action),
-          card: S.optional(GoogleAppsCardV1Card),
-          overflowMenu: S.optional(GoogleAppsCardV1OverflowMenu),
+          openDynamicLinkAction: S.optional(__S(28)),
+          openLink: S.optional(__S(29)),
+          action: S.optional(__S(28)),
+          card: S.optional(__S(90)),
+          overflowMenu: S.optional(__S(93)),
         }),
       ).annotate({ identifier: "GoogleAppsCardV1OnClick" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
-          icon: S.optional(GoogleAppsCardV1Icon),
+          icon: S.optional(__S(24)),
           disabled: S.optional(S.Boolean),
-          onClick: S.optional(GoogleAppsCardV1OnClick),
-          type: S.optional(GoogleAppsCardV1ButtonTypeEnum),
+          onClick: S.optional(__S(94)),
+          type: S.optional(S.String),
           altText: S.optional(S.String),
-          color: S.optional(Color),
+          color: S.optional(__S(71)),
         }),
       ).annotate({ identifier: "GoogleAppsCardV1Button" });
   }
@@ -5474,11 +4303,11 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GoogleAppsCardV1Button);
+      return S.Array(__S(95));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          buttons: S.optional(GoogleAppsCardV1ButtonList_),
+          buttons: S.optional(__S(96)),
         }),
       ).annotate({
         identifier: "GoogleAppsCardV1ButtonList",
@@ -5486,11 +4315,11 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          buttonList: S.optional(GoogleAppsCardV1ButtonList),
+          buttonList: S.optional(__S(97)),
         }),
       ).annotate({ identifier: "AccessoryWidget" });
     case 3:
-      return S.Array(AccessoryWidget);
+      return S.Array(__S(98));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5507,18 +4336,18 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          driveDataRef: S.optional(DriveDataRef),
+          driveDataRef: S.optional(__S(100)),
           thumbnailUri: S.optional(S.String),
-          attachmentDataRef: S.optional(AttachmentDataRef),
+          attachmentDataRef: S.optional(__S(101)),
           contentType: S.optional(S.String),
           downloadUri: S.optional(S.String),
-          source: S.optional(AttachmentSourceEnum),
+          source: S.optional(S.String),
           contentName: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Attachment" });
     case 7:
-      return S.Array(Attachment);
+      return S.Array(__S(102));
   }
 }
 function __c13(j: number): any {
@@ -5534,22 +4363,22 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cardId: S.optional(S.String),
-          card: S.optional(GoogleAppsCardV1Card),
+          card: S.optional(__S(90)),
         }),
       ).annotate({ identifier: "CardWithId" });
     case 2:
-      return S.Array(CardWithId);
+      return S.Array(__S(105));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          deletionType: S.optional(DeletionMetadataDeletionTypeEnum),
+          deletionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeletionMetadata" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(MeetSpaceLinkDataTypeEnum),
-          huddleStatus: S.optional(MeetSpaceLinkDataHuddleStatusEnum),
+          type: S.optional(S.String),
+          huddleStatus: S.optional(S.String),
           meetingCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "MeetSpaceLinkData" });
@@ -5563,7 +4392,7 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          driveDataRef: S.optional(DriveDataRef),
+          driveDataRef: S.optional(__S(100)),
           mimeType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DriveLinkData" });
@@ -5582,11 +4411,11 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          richLinkType: S.optional(RichLinkMetadataRichLinkTypeEnum),
-          meetSpaceLinkData: S.optional(MeetSpaceLinkData),
-          calendarEventLinkData: S.optional(CalendarEventLinkData),
-          driveLinkData: S.optional(DriveLinkData),
-          chatSpaceLinkData: S.optional(ChatSpaceLinkData),
+          richLinkType: S.optional(S.String),
+          meetSpaceLinkData: S.optional(__S(108)),
+          calendarEventLinkData: S.optional(__S(109)),
+          driveLinkData: S.optional(__S(110)),
+          chatSpaceLinkData: S.optional(__S(111)),
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "RichLinkMetadata" });
@@ -5595,38 +4424,38 @@ function __c14(j: number): any {
         S.Struct({
           commandName: S.optional(S.String),
           triggersDialog: S.optional(S.Boolean),
-          type: S.optional(SlashCommandMetadataTypeEnum),
-          bot: S.optional(User),
+          type: S.optional(S.String),
+          bot: S.optional(__S(18)),
           commandId: S.optional(S.String),
         }),
       ).annotate({ identifier: "SlashCommandMetadata" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          customEmoji: S.optional(CustomEmoji),
+          customEmoji: S.optional(__S(15)),
         }),
       ).annotate({ identifier: "CustomEmojiMetadata" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(UserMentionMetadataTypeEnum),
-          user: S.optional(User),
+          type: S.optional(S.String),
+          user: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "UserMentionMetadata" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          richLinkMetadata: S.optional(RichLinkMetadata),
+          richLinkMetadata: S.optional(__S(112)),
           length: S.optional(S.Number),
-          slashCommand: S.optional(SlashCommandMetadata),
-          customEmojiMetadata: S.optional(CustomEmojiMetadata),
-          userMention: S.optional(UserMentionMetadata),
+          slashCommand: S.optional(__S(113)),
+          customEmojiMetadata: S.optional(__S(114)),
+          userMention: S.optional(__S(115)),
           startIndex: S.optional(S.Number),
-          type: S.optional(AnnotationTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Annotation" });
     case 5:
-      return S.Array(Annotation);
+      return S.Array(__S(116));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5637,7 +4466,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           unicode: S.optional(S.String),
-          customEmoji: S.optional(CustomEmoji),
+          customEmoji: S.optional(__S(15)),
         }),
       ).annotate({ identifier: "Emoji" });
   }
@@ -5648,16 +4477,16 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reactionCount: S.optional(S.Number),
-          emoji: S.optional(Emoji),
+          emoji: S.optional(__S(119)),
         }),
       ).annotate({ identifier: "EmojiReactionSummary" });
     case 1:
-      return S.Array(EmojiReactionSummary);
+      return S.Array(__S(120));
     case 2:
       return S.suspend(() =>
         S.Struct({
           subtitle: S.optional(S.String),
-          imageStyle: S.optional(CardHeaderImageStyleEnum),
+          imageStyle: S.optional(S.String),
           imageUrl: S.optional(S.String),
           title: S.optional(S.String),
         }),
@@ -5665,7 +4494,7 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(ActionParameterList),
+          parameters: S.optional(__S(27)),
           actionMethodName: S.optional(S.String),
         }),
       ).annotate({ identifier: "FormAction" });
@@ -5678,19 +4507,19 @@ function __c15(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(FormAction),
-          openLink: S.optional(OpenLink),
+          action: S.optional(__S(123)),
+          openLink: S.optional(__S(124)),
         }),
       ).annotate({ identifier: "OnClick" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           actionLabel: S.optional(S.String),
-          onClick: S.optional(OnClick),
+          onClick: S.optional(__S(125)),
         }),
       ).annotate({ identifier: "CardAction" });
     case 7:
-      return S.Array(CardAction);
+      return S.Array(__S(126));
   }
 }
 function __c16(j: number): any {
@@ -5700,7 +4529,7 @@ function __c16(j: number): any {
         S.Struct({
           imageUrl: S.optional(S.String),
           aspectRatio: S.optional(S.Number),
-          onClick: S.optional(OnClick),
+          onClick: S.optional(__S(125)),
         }),
       ).annotate({ identifier: "Image" });
     case 1:
@@ -5712,8 +4541,8 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          icon: S.optional(ImageButtonIconEnum),
-          onClick: S.optional(OnClick),
+          icon: S.optional(S.String),
+          onClick: S.optional(__S(125)),
           name: S.optional(S.String),
           iconUrl: S.optional(S.String),
         }),
@@ -5722,14 +4551,14 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
-          onClick: S.optional(OnClick),
+          onClick: S.optional(__S(125)),
         }),
       ).annotate({ identifier: "TextButton" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          imageButton: S.optional(ImageButton),
-          textButton: S.optional(TextButton),
+          imageButton: S.optional(__S(130)),
+          textButton: S.optional(__S(131)),
         }),
       ).annotate({ identifier: "Button" });
     case 5:
@@ -5737,23 +4566,23 @@ function __c16(j: number): any {
         S.Struct({
           iconUrl: S.optional(S.String),
           bottomLabel: S.optional(S.String),
-          icon: S.optional(KeyValueIconEnum),
+          icon: S.optional(S.String),
           topLabel: S.optional(S.String),
-          button: S.optional(Button),
+          button: S.optional(__S(132)),
           contentMultiline: S.optional(S.Boolean),
           content: S.optional(S.String),
-          onClick: S.optional(OnClick),
+          onClick: S.optional(__S(125)),
         }),
       ).annotate({ identifier: "KeyValue" });
     case 6:
-      return S.Array(Button);
+      return S.Array(__S(132));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          image: S.optional(Image),
-          textParagraph: S.optional(TextParagraph),
-          keyValue: S.optional(KeyValue),
-          buttons: S.optional(ButtonList),
+          image: S.optional(__S(128)),
+          textParagraph: S.optional(__S(129)),
+          keyValue: S.optional(__S(133)),
+          buttons: S.optional(__S(134)),
         }),
       ).annotate({ identifier: "WidgetMarkup" });
   }
@@ -5761,27 +4590,27 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(WidgetMarkup);
+      return S.Array(__S(135));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          widgets: S.optional(WidgetMarkupList),
+          widgets: S.optional(__S(136)),
           header: S.optional(S.String),
         }),
       ).annotate({ identifier: "Section" });
     case 2:
-      return S.Array(Section);
+      return S.Array(__S(137));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          header: S.optional(CardHeader),
-          cardActions: S.optional(CardActionList),
+          header: S.optional(__S(122)),
+          cardActions: S.optional(__S(127)),
           name: S.optional(S.String),
-          sections: S.optional(SectionList),
+          sections: S.optional(__S(138)),
         }),
       ).annotate({ identifier: "Card" });
     case 4:
-      return S.Array(Card);
+      return S.Array(__S(139));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -5789,11 +4618,11 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "AttachedGif" });
     case 6:
-      return S.Array(AttachedGif);
+      return S.Array(__S(141));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(GoogleAppsCardV1SelectionItemList),
+          items: S.optional(__S(47)),
         }),
       ).annotate({ identifier: "SelectionItems" });
   }
@@ -5804,43 +4633,43 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           widget: S.optional(S.String),
-          suggestions: S.optional(SelectionItems),
+          suggestions: S.optional(__S(143)),
         }),
       ).annotate({ identifier: "UpdatedWidget" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          statusCode: S.optional(ActionStatusStatusCodeEnum),
+          statusCode: S.optional(S.String),
           userFacingMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActionStatus" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(GoogleAppsCardV1Card),
+          body: S.optional(__S(90)),
         }),
       ).annotate({ identifier: "Dialog" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          actionStatus: S.optional(ActionStatus),
-          dialog: S.optional(Dialog),
+          actionStatus: S.optional(__S(145)),
+          dialog: S.optional(__S(146)),
         }),
       ).annotate({ identifier: "DialogAction" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          updatedWidget: S.optional(UpdatedWidget),
+          updatedWidget: S.optional(__S(144)),
           url: S.optional(S.String),
-          dialogAction: S.optional(DialogAction),
-          type: S.optional(ActionResponseTypeEnum),
+          dialogAction: S.optional(__S(147)),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActionResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(AnnotationList),
-          attachments: S.optional(AttachmentList),
+          annotations: S.optional(__S(117)),
+          attachments: S.optional(__S(103)),
           sender: S.optional(S.String),
           formattedText: S.optional(S.String),
           text: S.optional(S.String),
@@ -5857,9 +4686,9 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lastUpdateTime: S.optional(S.String),
-          quotedMessageSnapshot: S.optional(QuotedMessageSnapshot),
-          forwardedMetadata: S.optional(ForwardedMetadata),
-          quoteType: S.optional(QuotedMessageMetadataQuoteTypeEnum),
+          quotedMessageSnapshot: S.optional(__S(149)),
+          forwardedMetadata: S.optional(__S(150)),
+          quoteType: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotedMessageMetadata" });
@@ -5871,51 +4700,45 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           threadReply: S.optional(S.Boolean),
-          accessoryWidgets: S.optional(AccessoryWidgetList),
-          attachment: S.optional(AttachmentList),
+          accessoryWidgets: S.optional(__S(99)),
+          attachment: S.optional(__S(103)),
           text: S.optional(S.String),
           lastUpdateTime: S.optional(S.String),
-          thread: S.optional(Thread),
-          sender: S.optional(User),
+          thread: S.optional(__S(104)),
+          sender: S.optional(__S(18)),
           silent: S.optional(S.Boolean),
-          markupSyntax: S.optional(MessageMarkupSyntaxEnum),
-          cardsV2: S.optional(CardWithIdList),
-          deletionMetadata: S.optional(DeletionMetadata),
-          space: S.optional(Space),
+          markupSyntax: S.optional(S.String),
+          cardsV2: S.optional(__S(106)),
+          deletionMetadata: S.optional(__S(107)),
+          space: S.optional(__S(12)),
           deleteTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          annotations: S.optional(AnnotationList),
+          annotations: S.optional(__S(117)),
           fallbackText: S.optional(S.String),
           argumentText: S.optional(S.String),
           formattedText: S.optional(S.String),
-          slashCommand: S.optional(SlashCommand),
-          emojiReactionSummaries: S.optional(EmojiReactionSummaryList),
-          cards: S.optional(CardList),
-          matchedUrl: S.optional(MatchedUrl),
-          attachedGifs: S.optional(AttachedGifList),
-          privateMessageViewer: S.optional(User),
+          slashCommand: S.optional(__S(118)),
+          emojiReactionSummaries: S.optional(__S(121)),
+          cards: S.optional(__S(140)),
+          matchedUrl: S.optional(__S(124)),
+          attachedGifs: S.optional(__S(142)),
+          privateMessageViewer: S.optional(__S(18)),
           clientAssignedMessageId: S.optional(S.String),
-          actionResponse: S.optional(ActionResponse),
+          actionResponse: S.optional(__S(148)),
           name: S.optional(S.String),
-          quotedMessageMetadata: S.optional(QuotedMessageMetadata),
+          quotedMessageMetadata: S.optional(__S(151)),
         }),
       ).annotate({ identifier: "Message" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          "createMessageNotificationOptions.notificationType": S.optional(
-            CreateSpacesMessagesCreateMessageNotificationOptions_notificationTypeEnum.pipe(
-              T.Query(),
-            ),
-          ),
+          "createMessageNotificationOptions.notificationType": S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           messageId: S.optional(S.String.pipe(T.Query())),
-          messageReplyOption: S.optional(
-            CreateSpacesMessagesMessageReplyOptionEnum.pipe(T.Query()),
-          ),
+          messageReplyOption: S.optional(S.String.pipe(T.Query())),
           threadKey: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Message.pipe(T.HttpBody())),
+          body: S.optional(__S(152).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5929,8 +4752,8 @@ function __c19(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          emoji: S.optional(Emoji),
-          user: S.optional(User),
+          emoji: S.optional(__S(119)),
+          user: S.optional(__S(18)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Reaction" });
@@ -5938,7 +4761,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Reaction.pipe(T.HttpBody())),
+          body: S.optional(__S(154).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5955,14 +4778,14 @@ function __c19(j: number): any {
           sortOrder: S.optional(S.Number),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
-          type: S.optional(GoogleChatV1SectionTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleChatV1Section" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GoogleChatV1Section.pipe(T.HttpBody())),
+          body: S.optional(__S(156).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6087,10 +4910,10 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(StringList.pipe(T.Query())),
+          users: S.optional(__S(25).pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          spaceView: S.optional(FindGroupChatsSpacesSpaceViewEnum.pipe(T.Query())),
+          spaceView: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6102,12 +4925,12 @@ function __c21(j: number): any {
         identifier: "FindGroupChatsSpacesRequest",
       });
     case 1:
-      return S.Array(Space);
+      return S.Array(__S(12));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          spaces: S.optional(SpaceList),
+          spaces: S.optional(__S(169)),
         }),
       ).annotate({ identifier: "FindGroupChatsResponse" });
     case 3:
@@ -6160,7 +4983,7 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          markupSyntax: S.optional(GetSpacesMessagesMarkupSyntaxEnum.pipe(T.Query())),
+          markupSyntax: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({ method: "GET", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
@@ -6189,13 +5012,13 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          reaction: S.optional(Reaction),
+          reaction: S.optional(__S(154)),
         }),
       ).annotate({ identifier: "ReactionCreatedEventData" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          membership: S.optional(Membership),
+          membership: S.optional(__S(19)),
         }),
       ).annotate({
         identifier: "MembershipDeletedEventData",
@@ -6203,15 +5026,15 @@ function __c22(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          message: S.optional(Message),
+          message: S.optional(__S(152)),
         }),
       ).annotate({ identifier: "MessageUpdatedEventData" });
     case 6:
-      return S.Array(MessageUpdatedEventData);
+      return S.Array(__S(181));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(MessageUpdatedEventDataList),
+          messages: S.optional(__S(182)),
         }),
       ).annotate({
         identifier: "MessageBatchUpdatedEventData",
@@ -6223,35 +5046,35 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          space: S.optional(Space),
+          space: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "SpaceUpdatedEventData" });
     case 1:
-      return S.Array(ReactionCreatedEventData);
+      return S.Array(__S(179));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          reactions: S.optional(ReactionCreatedEventDataList),
+          reactions: S.optional(__S(185)),
         }),
       ).annotate({
         identifier: "ReactionBatchCreatedEventData",
       });
     case 3:
-      return S.Array(MembershipCreatedEventData);
+      return S.Array(__S(180));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          memberships: S.optional(MembershipCreatedEventDataList),
+          memberships: S.optional(__S(187)),
         }),
       ).annotate({
         identifier: "MembershipBatchCreatedEventData",
       });
     case 5:
-      return S.Array(SpaceUpdatedEventData);
+      return S.Array(__S(184));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          spaces: S.optional(SpaceUpdatedEventDataList),
+          spaces: S.optional(__S(189)),
         }),
       ).annotate({
         identifier: "SpaceBatchUpdatedEventData",
@@ -6260,26 +5083,26 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          reactionCreatedEventData: S.optional(ReactionCreatedEventData),
-          membershipDeletedEventData: S.optional(MembershipDeletedEventData),
+          reactionCreatedEventData: S.optional(__S(179)),
+          membershipDeletedEventData: S.optional(__S(180)),
           eventTime: S.optional(S.String),
-          messageBatchUpdatedEventData: S.optional(MessageBatchUpdatedEventData),
-          spaceUpdatedEventData: S.optional(SpaceUpdatedEventData),
-          messageBatchCreatedEventData: S.optional(MessageBatchCreatedEventData),
-          messageUpdatedEventData: S.optional(MessageUpdatedEventData),
+          messageBatchUpdatedEventData: S.optional(__S(183)),
+          spaceUpdatedEventData: S.optional(__S(184)),
+          messageBatchCreatedEventData: S.optional(__S(183)),
+          messageUpdatedEventData: S.optional(__S(181)),
           eventType: S.optional(S.String),
-          membershipCreatedEventData: S.optional(MembershipCreatedEventData),
-          messageBatchDeletedEventData: S.optional(MessageBatchDeletedEventData),
-          reactionBatchCreatedEventData: S.optional(ReactionBatchCreatedEventData),
-          membershipBatchCreatedEventData: S.optional(MembershipBatchCreatedEventData),
-          membershipBatchUpdatedEventData: S.optional(MembershipBatchUpdatedEventData),
-          membershipBatchDeletedEventData: S.optional(MembershipBatchDeletedEventData),
-          messageDeletedEventData: S.optional(MessageDeletedEventData),
-          membershipUpdatedEventData: S.optional(MembershipUpdatedEventData),
-          reactionBatchDeletedEventData: S.optional(ReactionBatchDeletedEventData),
-          messageCreatedEventData: S.optional(MessageCreatedEventData),
-          spaceBatchUpdatedEventData: S.optional(SpaceBatchUpdatedEventData),
-          reactionDeletedEventData: S.optional(ReactionDeletedEventData),
+          membershipCreatedEventData: S.optional(__S(180)),
+          messageBatchDeletedEventData: S.optional(__S(183)),
+          reactionBatchCreatedEventData: S.optional(__S(186)),
+          membershipBatchCreatedEventData: S.optional(__S(188)),
+          membershipBatchUpdatedEventData: S.optional(__S(188)),
+          membershipBatchDeletedEventData: S.optional(__S(188)),
+          messageDeletedEventData: S.optional(__S(181)),
+          membershipUpdatedEventData: S.optional(__S(180)),
+          reactionBatchDeletedEventData: S.optional(__S(186)),
+          messageCreatedEventData: S.optional(__S(181)),
+          spaceBatchUpdatedEventData: S.optional(__S(190)),
+          reactionDeletedEventData: S.optional(__S(179)),
         }),
       ).annotate({ identifier: "SpaceEvent" });
   }
@@ -6325,16 +5148,16 @@ function __c24(j: number): any {
           ttl: S.optional(S.String),
           text: S.optional(S.String),
           expireTime: S.optional(S.String),
-          emoji: S.optional(Emoji),
+          emoji: S.optional(__S(119)),
         }),
       ).annotate({ identifier: "CustomStatus" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          doNotDisturbMetadata: S.optional(DoNotDisturbMetadata),
+          doNotDisturbMetadata: S.optional(__S(195)),
           name: S.optional(S.String),
-          customStatus: S.optional(CustomStatus),
-          state: S.optional(AvailabilityStateEnum),
+          customStatus: S.optional(__S(196)),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "Availability" });
     case 6:
@@ -6350,9 +5173,9 @@ function __c24(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          notificationSetting: S.optional(SpaceNotificationSettingNotificationSettingEnum),
+          notificationSetting: S.optional(S.String),
           name: S.optional(S.String),
-          muteSetting: S.optional(SpaceNotificationSettingMuteSettingEnum),
+          muteSetting: S.optional(S.String),
         }),
       ).annotate({ identifier: "SpaceNotificationSetting" });
   }
@@ -6374,11 +5197,11 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListCustomEmojisRequest" });
     case 1:
-      return S.Array(CustomEmoji);
+      return S.Array(__S(15));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          customEmojis: S.optional(CustomEmojiList),
+          customEmojis: S.optional(__S(201)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCustomEmojisResponse" });
@@ -6395,7 +5218,7 @@ function __c25(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          spaces: S.optional(SpaceList),
+          spaces: S.optional(__S(169)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSpacesResponse" });
@@ -6418,12 +5241,12 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListSpacesMembersRequest" });
     case 6:
-      return S.Array(Membership);
+      return S.Array(__S(19));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          memberships: S.optional(MembershipList),
+          memberships: S.optional(__S(206)),
         }),
       ).annotate({ identifier: "ListMembershipsResponse" });
   }
@@ -6447,12 +5270,12 @@ function __c26(j: number): any {
         identifier: "ListSpacesMessagePinsRequest",
       });
     case 1:
-      return S.Array(MessagePin);
+      return S.Array(__S(21));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          messagePins: S.optional(MessagePinList),
+          messagePins: S.optional(__S(209)),
         }),
       ).annotate({ identifier: "ListMessagePinsResponse" });
     case 3:
@@ -6462,7 +5285,7 @@ function __c26(j: number): any {
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           showDeleted: S.optional(S.Boolean.pipe(T.Query())),
-          markupSyntax: S.optional(ListSpacesMessagesMarkupSyntaxEnum.pipe(T.Query())),
+          markupSyntax: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
         }).pipe(
@@ -6476,11 +5299,11 @@ function __c26(j: number): any {
         identifier: "ListSpacesMessagesRequest",
       });
     case 4:
-      return S.Array(Message);
+      return S.Array(__S(152));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(MessageList),
+          messages: S.optional(__S(212)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListMessagesResponse" });
@@ -6502,7 +5325,7 @@ function __c26(j: number): any {
         identifier: "ListSpacesMessagesReactionsRequest",
       });
     case 7:
-      return S.Array(Reaction);
+      return S.Array(__S(154));
   }
 }
 function __c27(j: number): any {
@@ -6511,7 +5334,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          reactions: S.optional(ReactionList),
+          reactions: S.optional(__S(215)),
         }),
       ).annotate({ identifier: "ListReactionsResponse" });
     case 1:
@@ -6532,11 +5355,11 @@ function __c27(j: number): any {
         identifier: "ListSpacesSpaceEventsRequest",
       });
     case 2:
-      return S.Array(SpaceEvent);
+      return S.Array(__S(191));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          spaceEvents: S.optional(SpaceEventList),
+          spaceEvents: S.optional(__S(218)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListSpaceEventsResponse" });
@@ -6555,12 +5378,12 @@ function __c27(j: number): any {
         ),
       ).annotate({ identifier: "ListUsersSectionsRequest" });
     case 5:
-      return S.Array(GoogleChatV1Section);
+      return S.Array(__S(156));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          sections: S.optional(GoogleChatV1SectionList),
+          sections: S.optional(__S(221)),
         }),
       ).annotate({ identifier: "ListSectionsResponse" });
     case 7:
@@ -6592,12 +5415,12 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "SectionItem" });
     case 1:
-      return S.Array(SectionItem);
+      return S.Array(__S(224));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          sectionItems: S.optional(SectionItemList),
+          sectionItems: S.optional(__S(225)),
         }),
       ).annotate({ identifier: "ListSectionItemsResponse" });
     case 3:
@@ -6611,7 +5434,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(MarkAsActiveRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(227).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6626,7 +5449,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CompleteImportSpaceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6650,7 +5473,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(MarkAsDoNotDisturbRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(230).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6675,7 +5498,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(MoveSectionItemRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(232).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6689,7 +5512,7 @@ function __c29(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sectionItem: S.optional(SectionItem),
+          sectionItem: S.optional(__S(224)),
         }),
       ).annotate({ identifier: "MoveSectionItemResponse" });
     case 3:
@@ -6698,7 +5521,7 @@ function __c29(j: number): any {
           useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Space.pipe(T.HttpBody())),
+          body: S.optional(__S(12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
@@ -6709,7 +5532,7 @@ function __c29(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           useAdminAccess: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(Membership.pipe(T.HttpBody())),
+          body: S.optional(__S(19).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
@@ -6722,7 +5545,7 @@ function __c29(j: number): any {
           name: S.String.pipe(T.Label()),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Message.pipe(T.HttpBody())),
+          body: S.optional(__S(152).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
@@ -6734,7 +5557,7 @@ function __c29(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Availability.pipe(T.HttpBody())),
+          body: S.optional(__S(197).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
@@ -6746,7 +5569,7 @@ function __c29(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GoogleChatV1Section.pipe(T.HttpBody())),
+          body: S.optional(__S(156).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
@@ -6762,7 +5585,7 @@ function __c30(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(SpaceNotificationSetting.pipe(T.HttpBody())),
+          body: S.optional(__S(199).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
@@ -6773,14 +5596,14 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sortOrder: S.optional(S.Number),
-          relativePosition: S.optional(PositionSectionRequestRelativePositionEnum),
+          relativePosition: S.optional(S.String),
         }),
       ).annotate({ identifier: "PositionSectionRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(PositionSectionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(241).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6794,7 +5617,7 @@ function __c30(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          section: S.optional(GoogleChatV1Section),
+          section: S.optional(__S(156)),
         }),
       ).annotate({ identifier: "PositionSectionResponse" });
     case 4:
@@ -6818,8 +5641,8 @@ function __c30(j: number): any {
         S.Struct({
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
-          spaces: S.optional(SpaceList),
-          results: S.optional(SearchSpaceResultList),
+          spaces: S.optional(__S(169)),
+          results: S.optional(__S(189)),
         }),
       ).annotate({ identifier: "SearchSpacesResponse" });
     case 6:
@@ -6828,8 +5651,8 @@ function __c30(j: number): any {
           pageToken: S.optional(S.String),
           orderBy: S.optional(S.String),
           pageSize: S.optional(S.Number),
-          markupSyntax: S.optional(SearchMessagesRequestMarkupSyntaxEnum),
-          view: S.optional(SearchMessagesRequestViewEnum),
+          markupSyntax: S.optional(S.String),
+          view: S.optional(S.String),
           filter: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchMessagesRequest" });
@@ -6837,7 +5660,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(SearchMessagesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(246).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6856,16 +5679,16 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           read: S.optional(S.Boolean),
-          message: S.optional(Message),
-          spaceMuteSetting: S.optional(SearchMessageResultSpaceMuteSettingEnum),
+          message: S.optional(__S(152)),
+          spaceMuteSetting: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchMessageResult" });
     case 1:
-      return S.Array(SearchMessageResult);
+      return S.Array(__S(248));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(SearchMessageResultList),
+          results: S.optional(__S(249)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "SearchMessagesResponse" });
@@ -6873,14 +5696,14 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          memberships: S.optional(MembershipList),
-          space: S.optional(Space),
+          memberships: S.optional(__S(206)),
+          space: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "SetUpSpaceRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(SetUpSpaceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(251).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6894,7 +5717,7 @@ function __c31(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(SpaceReadState.pipe(T.HttpBody())),
+          body: S.optional(__S(173).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
@@ -6907,7 +5730,7 @@ function __c31(j: number): any {
           name: S.String.pipe(T.Label()),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Message.pipe(T.HttpBody())),
+          body: S.optional(__S(152).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PUT", uri: "v1/{+name}", baseUrl: "https://chat.googleapis.com/" }),
         ),
@@ -6928,7 +5751,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(UploadAttachmentRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(255).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6940,8 +5763,83 @@ function __c32(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          attachmentDataRef: S.optional(AttachmentDataRef),
+          attachmentDataRef: S.optional(__S(101)),
         }),
       ).annotate({ identifier: "UploadAttachmentResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
   }
 }

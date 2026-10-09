@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,21 +65,12 @@ export class NotFound
   ) {}
 
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringMap>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringList>;
-
 /** The IP addresses of callers that are allowed to use the key. */
 export interface V2ServerKeyRestrictions {
   /** A list of the caller IP addresses that are allowed to make API calls with this key. */
   allowedIps?: StringList;
 }
-const V2ServerKeyRestrictions = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<V2ServerKeyRestrictions>;
-
 /** A restriction for a specific service and optionally one or multiple specific methods. Both fields are case insensitive. */
 export interface V2ApiTarget {
   /** The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use [`gcloud services list`](https://cloud.google.com/sdk/gcloud/reference/services/list) to get a list of services that are enabled in the project. */
@@ -85,28 +78,17 @@ export interface V2ApiTarget {
   /** Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*` */
   methods?: StringList;
 }
-const V2ApiTarget = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<V2ApiTarget>;
-
 export type V2ApiTargetList = Array<V2ApiTarget>;
-const V2ApiTargetList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<V2ApiTargetList>;
-
 /** The HTTP referrers (websites) that are allowed to use the key. */
 export interface V2BrowserKeyRestrictions {
   /** A list of regular expressions for the referrer URLs that are allowed to make API calls with this key. */
   allowedReferrers?: StringList;
 }
-const V2BrowserKeyRestrictions = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<V2BrowserKeyRestrictions>;
-
 /** The iOS apps that are allowed to use the key. */
 export interface V2IosKeyRestrictions {
   /** A list of bundle IDs that are allowed when making API calls with this key. */
   allowedBundleIds?: StringList;
 }
-const V2IosKeyRestrictions = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<V2IosKeyRestrictions>;
-
 /** Identifier of an Android application for key use. */
 export interface V2AndroidApplication {
   /** The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter. */
@@ -114,24 +96,12 @@ export interface V2AndroidApplication {
   /** The package name of the application. */
   packageName?: string;
 }
-const V2AndroidApplication = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<V2AndroidApplication>;
-
 export type V2AndroidApplicationList = Array<V2AndroidApplication>;
-const V2AndroidApplicationList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<V2AndroidApplicationList>;
-
 /** The Android apps that are allowed to use the key. */
 export interface V2AndroidKeyRestrictions {
   /** A list of Android applications that are allowed to make API calls with this key. */
   allowedApplications?: V2AndroidApplicationList;
 }
-const V2AndroidKeyRestrictions = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<V2AndroidKeyRestrictions>;
-
 /** Describes the restrictions on the key. */
 export interface V2Restrictions {
   /** The IP addresses of callers that are allowed to use the key. */
@@ -145,8 +115,6 @@ export interface V2Restrictions {
   /** The Android apps that are allowed to use the key. */
   androidKeyRestrictions?: V2AndroidKeyRestrictions;
 }
-const V2Restrictions = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<V2Restrictions>;
-
 /** The representation of a key managed by the API Keys API. */
 export interface V2Key {
   /** Output only. A timestamp when this key was deleted. If the resource is not deleted, this must be empty. */
@@ -172,8 +140,6 @@ export interface V2Key {
   /** Key restrictions. */
   restrictions?: V2Restrictions;
 }
-const V2Key = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<V2Key>;
-
 export interface CreateProjectsLocationsKeysRequest {
   /** Required. The project in which the API key is created. The parent field must be in format of "projects//locations/global". */
   parent: string;
@@ -182,17 +148,8 @@ export interface CreateProjectsLocationsKeysRequest {
   /** Request body */
   body?: V2Key;
 }
-const CreateProjectsLocationsKeysRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateProjectsLocationsKeysRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -202,8 +159,6 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-const Status = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -217,14 +172,10 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Operation>;
-
 export type DeleteProjectsLocationsKeysCheckExistingUsageEnum =
   | "CHECK_EXISTING_USAGE_UNSPECIFIED"
   | "SKIP"
   | "CHECK";
-const DeleteProjectsLocationsKeysCheckExistingUsageEnum = S.String;
-
 export interface DeleteProjectsLocationsKeysRequest {
   /** Optional. The etag known to the client for the expected state of the key. This is to be used for optimistic concurrency. */
   etag?: string;
@@ -233,45 +184,23 @@ export interface DeleteProjectsLocationsKeysRequest {
   /** Optional. Defines the behavior for checking existing usage when deleting a key. */
   checkExistingUsage?: DeleteProjectsLocationsKeysCheckExistingUsageEnum | (string & {});
 }
-const DeleteProjectsLocationsKeysRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsKeysRequest>;
-
 export interface GetKeyStringProjectsLocationsKeysRequest {
   /** Required. The resource name of the API key to be retrieved. */
   name: string;
 }
-const GetKeyStringProjectsLocationsKeysRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetKeyStringProjectsLocationsKeysRequest>;
-
 /** Response message for `GetKeyString` method. */
 export interface V2GetKeyStringResponse {
   /** An encrypted and signed value of the key. */
   keyString?: string;
 }
-const V2GetKeyStringResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<V2GetKeyStringResponse>;
-
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetOperationsRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetOperationsRequest>;
-
 export interface GetProjectsLocationsKeysRequest {
   /** Required. The resource name of the API key to get. */
   name: string;
 }
-const GetProjectsLocationsKeysRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetProjectsLocationsKeysRequest>;
-
 export interface ListProjectsLocationsKeysRequest {
   /** Required. Lists all API keys associated with this project. The parent field must be in format of "projects//locations/global". */
   parent: string;
@@ -282,14 +211,7 @@ export interface ListProjectsLocationsKeysRequest {
   /** Optional. Requests a specific page of results. */
   pageToken?: string;
 }
-const ListProjectsLocationsKeysRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListProjectsLocationsKeysRequest>;
-
 export type V2KeyList = Array<V2Key>;
-const V2KeyList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<V2KeyList>;
-
 /** Response message for `ListKeys` method. */
 export interface V2ListKeysResponse {
   /** The pagination token for the next page of results. */
@@ -297,14 +219,10 @@ export interface V2ListKeysResponse {
   /** A list of API keys. */
   keys?: V2KeyList;
 }
-const V2ListKeysResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<V2ListKeysResponse>;
-
 export interface LookupKeyKeysRequest {
   /** Required. Finds the project that owns the key string value. */
   keyString?: string;
 }
-const LookupKeyKeysRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<LookupKeyKeysRequest>;
-
 /** Response message for `LookupKey` method. */
 export interface V2LookupKeyResponse {
   /** The resource name of the API key. If the API key has been purged, resource name is empty. */
@@ -312,14 +230,10 @@ export interface V2LookupKeyResponse {
   /** The project that owns the key with the value specified in the request. */
   parent?: string;
 }
-const V2LookupKeyResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<V2LookupKeyResponse>;
-
 export type PatchProjectsLocationsKeysCheckExistingUsageEnum =
   | "CHECK_EXISTING_USAGE_UNSPECIFIED"
   | "SKIP"
   | "CHECK";
-const PatchProjectsLocationsKeysCheckExistingUsageEnum = S.String;
-
 export interface PatchProjectsLocationsKeysRequest {
   /** The field mask specifies which fields to be updated as part of this request. All other fields are ignored. Mutable fields are: `display_name`, `restrictions`, and `annotations`. If an update mask is not provided, the service treats it as an implied mask equivalent to all allowed fields that are set on the wire. If the field mask has a special value "*", the service treats it equivalent to replace all allowed mutable fields. */
   updateMask?: string;
@@ -330,26 +244,14 @@ export interface PatchProjectsLocationsKeysRequest {
   /** Request body */
   body?: V2Key;
 }
-const PatchProjectsLocationsKeysRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<PatchProjectsLocationsKeysRequest>;
-
 /** Request message for `UndeleteKey` method. */
 export interface V2UndeleteKeyRequest {}
-const V2UndeleteKeyRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<V2UndeleteKeyRequest>;
-
 export interface UndeleteProjectsLocationsKeysRequest {
   /** Required. The resource name of the API key to be undeleted. */
   name: string;
   /** Request body */
   body?: V2UndeleteKeyRequest;
 }
-const UndeleteProjectsLocationsKeysRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<UndeleteProjectsLocationsKeysRequest>;
-
 export type CreateProjectsLocationsKeysError =
   | NotFound
   | Forbidden
@@ -363,8 +265,8 @@ export const createProjectsLocationsKeys: API.OperationMethod<
   CreateProjectsLocationsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsKeysRequest,
-  output: Operation,
+  input: __S(12) as any as S.Schema<CreateProjectsLocationsKeysRequest>,
+  output: __S(16) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -383,8 +285,8 @@ export const deleteProjectsLocationsKeys: API.OperationMethod<
   DeleteProjectsLocationsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsKeysRequest,
-  output: Operation,
+  input: __S(17) as any as S.Schema<DeleteProjectsLocationsKeysRequest>,
+  output: __S(16) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -398,8 +300,8 @@ export const getKeyStringProjectsLocationsKeys: API.OperationMethod<
   GetKeyStringProjectsLocationsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetKeyStringProjectsLocationsKeysRequest,
-  output: V2GetKeyStringResponse,
+  input: __S(18) as any as S.Schema<GetKeyStringProjectsLocationsKeysRequest>,
+  output: __S(19) as any as S.Schema<V2GetKeyStringResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -413,8 +315,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationsRequest,
-  output: Operation,
+  input: __S(20) as any as S.Schema<GetOperationsRequest>,
+  output: __S(16) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -428,8 +330,8 @@ export const getProjectsLocationsKeys: API.OperationMethod<
   GetProjectsLocationsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsKeysRequest,
-  output: V2Key,
+  input: __S(21) as any as S.Schema<GetProjectsLocationsKeysRequest>,
+  output: __S(11) as any as S.Schema<V2Key>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -444,8 +346,8 @@ export const listProjectsLocationsKeys: API.PaginatedOperationMethod<
   GcpOpContext,
   V2ListKeysResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsKeysRequest,
-  output: V2ListKeysResponse,
+  input: __S(22) as any as S.Schema<ListProjectsLocationsKeysRequest>,
+  output: __S(24) as any as S.Schema<V2ListKeysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -460,8 +362,8 @@ export const lookupKeyKeys: API.OperationMethod<
   LookupKeyKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LookupKeyKeysRequest,
-  output: V2LookupKeyResponse,
+  input: __S(25) as any as S.Schema<LookupKeyKeysRequest>,
+  output: __S(26) as any as S.Schema<V2LookupKeyResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -480,8 +382,8 @@ export const patchProjectsLocationsKeys: API.OperationMethod<
   PatchProjectsLocationsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsKeysRequest,
-  output: Operation,
+  input: __S(27) as any as S.Schema<PatchProjectsLocationsKeysRequest>,
+  output: __S(16) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -500,8 +402,8 @@ export const undeleteProjectsLocationsKeys: API.OperationMethod<
   UndeleteProjectsLocationsKeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeleteProjectsLocationsKeysRequest,
-  output: Operation,
+  input: __S(29) as any as S.Schema<UndeleteProjectsLocationsKeysRequest>,
+  output: __S(16) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -517,28 +419,28 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          allowedIps: S.optional(StringList),
+          allowedIps: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "V2ServerKeyRestrictions" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          methods: S.optional(StringList),
+          methods: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "V2ApiTarget" });
     case 4:
-      return S.Array(V2ApiTarget);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          allowedReferrers: S.optional(StringList),
+          allowedReferrers: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "V2BrowserKeyRestrictions" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          allowedBundleIds: S.optional(StringList),
+          allowedBundleIds: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "V2IosKeyRestrictions" });
     case 7:
@@ -553,21 +455,21 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(V2AndroidApplication);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          allowedApplications: S.optional(V2AndroidApplicationList),
+          allowedApplications: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "V2AndroidKeyRestrictions" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          serverKeyRestrictions: S.optional(V2ServerKeyRestrictions),
-          apiTargets: S.optional(V2ApiTargetList),
-          browserKeyRestrictions: S.optional(V2BrowserKeyRestrictions),
-          iosKeyRestrictions: S.optional(V2IosKeyRestrictions),
-          androidKeyRestrictions: S.optional(V2AndroidKeyRestrictions),
+          serverKeyRestrictions: S.optional(__S(2)),
+          apiTargets: S.optional(__S(4)),
+          browserKeyRestrictions: S.optional(__S(5)),
+          iosKeyRestrictions: S.optional(__S(6)),
+          androidKeyRestrictions: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "V2Restrictions" });
     case 3:
@@ -577,13 +479,13 @@ function __c1(j: number): any {
           keyString: S.optional(S.String),
           updateTime: S.optional(S.String),
           etag: S.optional(S.String),
-          annotations: S.optional(StringMap),
+          annotations: S.optional(__S(0)),
           name: S.optional(S.String),
           serviceAccountEmail: S.optional(S.String),
           uid: S.optional(S.String),
           displayName: S.optional(S.String),
           createTime: S.optional(S.String),
-          restrictions: S.optional(V2Restrictions),
+          restrictions: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "V2Key" });
     case 4:
@@ -591,7 +493,7 @@ function __c1(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           keyId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(V2Key.pipe(T.HttpBody())),
+          body: S.optional(__S(11).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -605,11 +507,11 @@ function __c1(j: number): any {
     case 5:
       return S.Record(S.String, S.Unknown);
     case 6:
-      return S.Array(DocumentMap);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(14)),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -623,9 +525,9 @@ function __c2(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          error: S.optional(Status),
-          response: S.optional(DocumentMap),
-          metadata: S.optional(DocumentMap),
+          error: S.optional(__S(15)),
+          response: S.optional(__S(13)),
+          metadata: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
@@ -633,9 +535,7 @@ function __c2(j: number): any {
         S.Struct({
           etag: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          checkExistingUsage: S.optional(
-            DeleteProjectsLocationsKeysCheckExistingUsageEnum.pipe(T.Query()),
-          ),
+          checkExistingUsage: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "DELETE",
@@ -702,7 +602,7 @@ function __c2(j: number): any {
         identifier: "ListProjectsLocationsKeysRequest",
       });
     case 7:
-      return S.Array(V2Key);
+      return S.Array(__S(11));
   }
 }
 function __c3(j: number): any {
@@ -711,7 +611,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          keys: S.optional(V2KeyList),
+          keys: S.optional(__S(23)),
         }),
       ).annotate({ identifier: "V2ListKeysResponse" });
     case 1:
@@ -737,11 +637,9 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
-          checkExistingUsage: S.optional(
-            PatchProjectsLocationsKeysCheckExistingUsageEnum.pipe(T.Query()),
-          ),
+          checkExistingUsage: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(V2Key.pipe(T.HttpBody())),
+          body: S.optional(__S(11).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -760,7 +658,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(V2UndeleteKeyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(28).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -771,5 +669,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UndeleteProjectsLocationsKeysRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

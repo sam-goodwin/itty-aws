@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -77,8 +79,6 @@ export class ServiceDisabled
   ) {}
 
 export type TagActionActionEnum = "ACTION_UNSPECIFIED" | "ADD" | "REMOVE";
-const TagActionActionEnum = S.String;
-
 /** Message for edit tag action */
 export interface TagAction {
   /** Required. Tag to be added or removed */
@@ -86,11 +86,7 @@ export interface TagAction {
   /** Required. Action to be applied */
   action?: TagActionActionEnum | (string & {});
 }
-const TagAction = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<TagAction>;
-
 export type TagActionList = Array<TagAction>;
-const TagActionList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<TagActionList>;
-
 /** Message for requesting edit tags for ApiObservation */
 export interface EditTagsApiObservationsRequest {
   /** Required. Identifier of ApiObservation need to be edit tags Format example: "apigee.googleapis.com|us-west1|443" */
@@ -98,44 +94,20 @@ export interface EditTagsApiObservationsRequest {
   /** Required. Tag actions to be applied */
   tagActions?: TagActionList;
 }
-const EditTagsApiObservationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<EditTagsApiObservationsRequest>;
-
 export type EditTagsApiObservationsRequestList = Array<EditTagsApiObservationsRequest>;
-const EditTagsApiObservationsRequestList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<EditTagsApiObservationsRequestList>;
-
 /** Message for requesting batch edit tags for ApiObservations */
 export interface BatchEditTagsApiObservationsRequest {
   /** Required. The request message specifying the resources to update. A maximum of 1000 apiObservations can be modified in a batch. */
   requests?: EditTagsApiObservationsRequestList;
 }
-const BatchEditTagsApiObservationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<BatchEditTagsApiObservationsRequest>;
-
 export interface BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest {
   /** Required. The parent resource shared by all ApiObservations being edited. Format: projects/{project}/locations/{location}/observationJobs/{observation_job} */
   parent: string;
   /** Request body */
   body?: BatchEditTagsApiObservationsRequest;
 }
-const BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringList>;
-
 export type ApiObservationStyleEnum = "STYLE_UNSPECIFIED" | "REST" | "GRPC" | "GRAPHQL";
-const ApiObservationStyleEnum = S.String;
-
 /** Message describing ApiObservation object */
 export interface ApiObservation {
   /** Update time stamp */
@@ -159,43 +131,22 @@ export interface ApiObservation {
   /** The number of observed API Operations. */
   apiOperationCount?: string;
 }
-const ApiObservation = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ApiObservation>;
-
 export type ApiObservationList = Array<ApiObservation>;
-const ApiObservationList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ApiObservationList>;
-
 /** Message for response to edit Tags for ApiObservations */
 export interface BatchEditTagsApiObservationsResponse {
   /** ApiObservations that were changed */
   apiObservations?: ApiObservationList;
 }
-const BatchEditTagsApiObservationsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BatchEditTagsApiObservationsResponse>;
-
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 export type ObservationJobStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -205,8 +156,6 @@ export type ObservationJobStateEnum =
   | "DISABLED"
   | "DELETING"
   | "ERROR";
-const ObservationJobStateEnum = S.String;
-
 /** Message describing ObservationJob object */
 export interface ObservationJob {
   /** Identifier. name of resource Format: projects/{project}/locations/{location}/observationJobs/{observation_job} */
@@ -220,8 +169,6 @@ export interface ObservationJob {
   /** Output only. The observation job state */
   state?: ObservationJobStateEnum | (string & {});
 }
-const ObservationJob = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ObservationJob>;
-
 export interface CreateProjectsLocationsObservationJobsRequest {
   /** Required. The ID to use for the Observation Job. This value should be 4-63 characters, and valid characters are /a-z-/. */
   observationJobId?: string;
@@ -232,17 +179,8 @@ export interface CreateProjectsLocationsObservationJobsRequest {
   /** Request body */
   body?: ObservationJob;
 }
-const CreateProjectsLocationsObservationJobsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateProjectsLocationsObservationJobsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -252,8 +190,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -267,16 +203,12 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Operation>;
-
 export type ObservationSourceStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "CREATED"
   | "DELETING"
   | "ERROR";
-const ObservationSourceStateEnum = S.String;
-
 /** Network information for setting up a PSC connection. */
 export interface GclbObservationSourcePscNetworkConfig {
   /** Required. The VPC network. Format: `projects/{project_id}/global/networks/{network}` */
@@ -284,28 +216,13 @@ export interface GclbObservationSourcePscNetworkConfig {
   /** Required. The subnetwork in the source region that will be used to connect to the Cloud Load Balancers via PSC NEGs. Must belong to `network`. Format: projects/{project_id}/regions/{region}/subnetworks/{subnet} */
   subnetwork?: string;
 }
-const GclbObservationSourcePscNetworkConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GclbObservationSourcePscNetworkConfig>;
-
 export type GclbObservationSourcePscNetworkConfigList =
   Array<GclbObservationSourcePscNetworkConfig>;
-const GclbObservationSourcePscNetworkConfigList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GclbObservationSourcePscNetworkConfigList>;
-
 /** The GCLB observation source. */
 export interface GclbObservationSource {
   /** Required. The VPC networks where traffic will be observed. All load balancers within this network will be observed. Currently, this is limited to only one network. */
   pscNetworkConfigs?: GclbObservationSourcePscNetworkConfigList;
 }
-const GclbObservationSource = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GclbObservationSource>;
-
 /** Observation source configuration types */
 export interface ObservationSource {
   /** Output only. The observation source state */
@@ -319,8 +236,6 @@ export interface ObservationSource {
   /** Identifier. name of resource For MVP, each region can only have 1 source. */
   name?: string;
 }
-const ObservationSource = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ObservationSource>;
-
 export interface CreateProjectsLocationsObservationSourcesRequest {
   /** Required. Value for parent. */
   parent: string;
@@ -331,38 +246,18 @@ export interface CreateProjectsLocationsObservationSourcesRequest {
   /** Request body */
   body?: ObservationSource;
 }
-const CreateProjectsLocationsObservationSourcesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateProjectsLocationsObservationSourcesRequest>;
-
 export interface DeleteProjectsLocationsObservationJobsRequest {
   /** Required. Name of the resource Format: projects/{project}/locations/{location}/observationJobs/{observation_job} */
   name: string;
 }
-const DeleteProjectsLocationsObservationJobsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsObservationJobsRequest>;
-
 export interface DeleteProjectsLocationsObservationSourcesRequest {
   /** Required. Name of the resource Format: projects/{project}/locations/{location}/observationSources/{source} */
   name: string;
 }
-const DeleteProjectsLocationsObservationSourcesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsObservationSourcesRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 /** Message for disabling an ObservationJob */
 export type DisableObservationJobRequest = CancelOperationRequest;
 export interface DisableProjectsLocationsObservationJobsRequest {
@@ -371,11 +266,6 @@ export interface DisableProjectsLocationsObservationJobsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const DisableProjectsLocationsObservationJobsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DisableProjectsLocationsObservationJobsRequest>;
-
 /** Message for enabling an ObservationJob */
 export type EnableObservationJobRequest = CancelOperationRequest;
 export interface EnableProjectsLocationsObservationJobsRequest {
@@ -384,20 +274,10 @@ export interface EnableProjectsLocationsObservationJobsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const EnableProjectsLocationsObservationJobsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<EnableProjectsLocationsObservationJobsRequest>;
-
 export interface GetEntitlementProjectsLocationsRequest {
   /** Required. The entitlement resource name Format: projects/{project}/locations/{location}/entitlement */
   name: string;
 }
-const GetEntitlementProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetEntitlementProjectsLocationsRequest>;
-
 /** Entitlement stores data related to API Observation entitlement for a given project */
 export interface Entitlement {
   /** Output only. The time of the entitlement creation. */
@@ -411,20 +291,11 @@ export interface Entitlement {
   /** Project number of associated billing project that has Apigee and Advanced API Security entitled. */
   billingProjectNumber?: string;
 }
-const Entitlement = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Entitlement>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<StringMap>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -438,35 +309,18 @@ export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
   displayName?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsObservationJobsRequest {
   /** Required. The name of the ObservationJob to retrieve. Format: projects/{project}/locations/{location}/observationJobs/{job} */
   name: string;
 }
-const GetProjectsLocationsObservationJobsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetProjectsLocationsObservationJobsRequest>;
-
 export interface GetProjectsLocationsObservationJobsApiObservationsRequest {
   /** Required. The name of the ApiObservation to retrieve. Format: projects/{project}/locations/{location}/observationJobs/{observation_job}/apiObservations/{api_observation} */
   name: string;
 }
-const GetProjectsLocationsObservationJobsApiObservationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetProjectsLocationsObservationJobsApiObservationsRequest>;
-
 export interface GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest {
   /** Required. The name of the ApiOperation to retrieve. Format: projects/{project}/locations/{location}/observationJobs/{observation_job}/apiObservations/{api_observation}/apiOperation/{api_operation} */
   name: string;
 }
-const GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>;
-
 export type HttpOperationPathParamDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "BOOL"
@@ -474,8 +328,6 @@ export type HttpOperationPathParamDataTypeEnum =
   | "FLOAT"
   | "STRING"
   | "UUID";
-const HttpOperationPathParamDataTypeEnum = S.String;
-
 /** HTTP Path parameter. */
 export interface HttpOperationPathParam {
   /** Data type of path param */
@@ -483,17 +335,7 @@ export interface HttpOperationPathParam {
   /** Segment location in the path, 1-indexed */
   position?: number;
 }
-const HttpOperationPathParam = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<HttpOperationPathParam>;
-
 export type HttpOperationPathParamList = Array<HttpOperationPathParam>;
-const HttpOperationPathParamList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<HttpOperationPathParamList>;
-
 export type HttpOperationHeaderDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "BOOL"
@@ -501,8 +343,6 @@ export type HttpOperationHeaderDataTypeEnum =
   | "FLOAT"
   | "STRING"
   | "UUID";
-const HttpOperationHeaderDataTypeEnum = S.String;
-
 /** An aggregation of HTTP header occurrences. */
 export interface HttpOperationHeader {
   /** Data type of header */
@@ -512,14 +352,7 @@ export interface HttpOperationHeader {
   /** Header name. */
   name?: string;
 }
-const HttpOperationHeader = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<HttpOperationHeader>;
-
 export type HttpOperationHeaderMap = { [key: string]: HttpOperationHeader | undefined };
-const HttpOperationHeaderMap = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<HttpOperationHeaderMap>;
-
 /** An aggregation of HTTP responses. */
 export interface HttpOperationHttpResponse {
   /** Unordered map from header name to header metadata */
@@ -527,21 +360,11 @@ export interface HttpOperationHttpResponse {
   /** Map of status code to observed count */
   responseCodes?: StringMap;
 }
-const HttpOperationHttpResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<HttpOperationHttpResponse>;
-
 /** An aggregation of HTTP requests. */
 export interface HttpOperationHttpRequest {
   /** Unordered map from header name to header metadata */
   headers?: HttpOperationHeaderMap;
 }
-const HttpOperationHttpRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<HttpOperationHttpRequest>;
-
 export type HttpOperationMethodEnum =
   | "HTTP_METHOD_UNSPECIFIED"
   | "GET"
@@ -553,8 +376,6 @@ export type HttpOperationMethodEnum =
   | "TRACE"
   | "OPTIONS"
   | "CONNECT";
-const HttpOperationMethodEnum = S.String;
-
 export type HttpOperationQueryParamDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "BOOL"
@@ -572,9 +393,6 @@ export interface HttpOperationQueryParam {
   name?: string;
 }
 export type HttpOperationQueryParamMap = { [key: string]: HttpOperationQueryParam | undefined };
-const HttpOperationQueryParamMap =
-  HttpOperationHeaderMap as any as S.Schema<HttpOperationQueryParamMap>;
-
 /** An HTTP-based API Operation, sometimes called a "REST" Operation. */
 export interface HttpOperation {
   /** Path params of HttpOperation */
@@ -590,8 +408,6 @@ export interface HttpOperation {
   /** Query params of HttpOperation */
   queryParams?: HttpOperationQueryParamMap;
 }
-const HttpOperation = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<HttpOperation>;
-
 /** Message describing ApiOperation object */
 export interface ApiOperation {
   /** First seen time stamp */
@@ -605,26 +421,14 @@ export interface ApiOperation {
   /** An HTTP Operation. */
   httpOperation?: HttpOperation;
 }
-const ApiOperation = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ApiOperation>;
-
 export interface GetProjectsLocationsObservationSourcesRequest {
   /** Required. The name of the ObservationSource to retrieve. Format: projects/{project}/locations/{location}/observationSources/{source} */
   name: string;
 }
-const GetProjectsLocationsObservationSourcesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetProjectsLocationsObservationSourcesRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface ListApiObservationTagsProjectsLocationsRequest {
   /** Optional. A page token, received from a previous `ListApiObservationTags` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListApiObservationTags` must match the call that provided the page token. */
   pageToken?: string;
@@ -633,11 +437,6 @@ export interface ListApiObservationTagsProjectsLocationsRequest {
   /** Optional. The maximum number of tags to return. The service may return fewer than this value. If unspecified, at most 10 tags will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-const ListApiObservationTagsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListApiObservationTagsProjectsLocationsRequest>;
-
 /** Message for response to listing tags */
 export interface ListApiObservationTagsResponse {
   /** The tags from the specified project */
@@ -645,11 +444,6 @@ export interface ListApiObservationTagsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListApiObservationTagsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListApiObservationTagsResponse>;
-
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
@@ -662,14 +456,7 @@ export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -677,11 +464,6 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsObservationJobsRequest {
   /** Optional. The maximum number of ObservationJobs to return. The service may return fewer than this value. If unspecified, at most 10 ObservationJobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -690,14 +472,7 @@ export interface ListProjectsLocationsObservationJobsRequest {
   /** Required. The parent, which owns this collection of ObservationJobs. Format: projects/{project}/locations/{location} */
   parent: string;
 }
-const ListProjectsLocationsObservationJobsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListProjectsLocationsObservationJobsRequest>;
-
 export type ObservationJobList = Array<ObservationJob>;
-const ObservationJobList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ObservationJobList>;
-
 /** Message for response to listing ObservationJobs */
 export interface ListObservationJobsResponse {
   /** The ObservationJob from the specified project and location. */
@@ -707,11 +482,6 @@ export interface ListObservationJobsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListObservationJobsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListObservationJobsResponse>;
-
 export interface ListProjectsLocationsObservationJobsApiObservationsRequest {
   /** Optional. The maximum number of ApiObservations to return. The service may return fewer than this value. If unspecified, at most 10 ApiObservations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -720,11 +490,6 @@ export interface ListProjectsLocationsObservationJobsApiObservationsRequest {
   /** Required. The parent, which owns this collection of ApiObservations. Format: projects/{project}/locations/{location}/observationJobs/{observation_job} */
   parent: string;
 }
-const ListProjectsLocationsObservationJobsApiObservationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListProjectsLocationsObservationJobsApiObservationsRequest>;
-
 /** Message for response to listing ApiObservations */
 export interface ListApiObservationsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -732,11 +497,6 @@ export interface ListApiObservationsResponse {
   /** The ApiObservation from the specified project and location and ObservationJobs. */
   apiObservations?: ApiObservationList;
 }
-const ListApiObservationsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListApiObservationsResponse>;
-
 export interface ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest {
   /** Required. The parent, which owns this collection of ApiOperations. Format: projects/{project}/locations/{location}/observationJobs/{observation_job}/apiObservations/{api_observation} */
   parent: string;
@@ -745,15 +505,7 @@ export interface ListProjectsLocationsObservationJobsApiObservationsApiOperation
   /** Optional. The maximum number of ApiOperations to return. The service may return fewer than this value. If unspecified, at most 10 ApiOperations will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-const ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest =
-  /*@__PURE__*/ __L.at(
-    __c7,
-    0,
-  ) as any as S.Schema<ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>;
-
 export type ApiOperationList = Array<ApiOperation>;
-const ApiOperationList = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ApiOperationList>;
-
 /** Message for response to listing ApiOperations */
 export interface ListApiOperationsResponse {
   /** The ApiOperations from the specified project and location and ObservationJob and ApiObservation. */
@@ -761,11 +513,6 @@ export interface ListApiOperationsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListApiOperationsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListApiOperationsResponse>;
-
 export interface ListProjectsLocationsObservationSourcesRequest {
   /** Required. The parent, which owns this collection of ObservationSources. Format: projects/{project}/locations/{location} */
   parent: string;
@@ -774,17 +521,7 @@ export interface ListProjectsLocationsObservationSourcesRequest {
   /** Optional. A page token, received from a previous `ListObservationSources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListObservationSources` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsObservationSourcesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListProjectsLocationsObservationSourcesRequest>;
-
 export type ObservationSourceList = Array<ObservationSource>;
-const ObservationSourceList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ObservationSourceList>;
-
 /** Message for response to listing ObservationSources */
 export interface ListObservationSourcesResponse {
   /** The ObservationSource from the specified project and location. */
@@ -794,11 +531,6 @@ export interface ListObservationSourcesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListObservationSourcesResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ListObservationSourcesResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -811,14 +543,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -828,11 +553,6 @@ export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
   unreachable?: StringList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListOperationsResponse>;
-
 export type BatchEditTagsProjectsLocationsObservationJobsApiObservationsError =
   | NotFound
   | Forbidden
@@ -846,8 +566,10 @@ export const batchEditTagsProjectsLocationsObservationJobsApiObservations: API.O
   BatchEditTagsProjectsLocationsObservationJobsApiObservationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest,
-  output: BatchEditTagsApiObservationsResponse,
+  input: __S(
+    5,
+  ) as any as S.Schema<BatchEditTagsProjectsLocationsObservationJobsApiObservationsRequest>,
+  output: __S(9) as any as S.Schema<BatchEditTagsApiObservationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -866,8 +588,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(11) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(10) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -887,8 +609,8 @@ export const createProjectsLocationsObservationJobs: API.OperationMethod<
   CreateProjectsLocationsObservationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsObservationJobsRequest,
-  output: Operation,
+  input: __S(13) as any as S.Schema<CreateProjectsLocationsObservationJobsRequest>,
+  output: __S(17) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -908,8 +630,8 @@ export const createProjectsLocationsObservationSources: API.OperationMethod<
   CreateProjectsLocationsObservationSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsObservationSourcesRequest,
-  output: Operation,
+  input: __S(22) as any as S.Schema<CreateProjectsLocationsObservationSourcesRequest>,
+  output: __S(17) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -929,8 +651,8 @@ export const deleteProjectsLocationsObservationJobs: API.OperationMethod<
   DeleteProjectsLocationsObservationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsObservationJobsRequest,
-  output: Operation,
+  input: __S(23) as any as S.Schema<DeleteProjectsLocationsObservationJobsRequest>,
+  output: __S(17) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -950,8 +672,8 @@ export const deleteProjectsLocationsObservationSources: API.OperationMethod<
   DeleteProjectsLocationsObservationSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsObservationSourcesRequest,
-  output: Operation,
+  input: __S(24) as any as S.Schema<DeleteProjectsLocationsObservationSourcesRequest>,
+  output: __S(17) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -970,8 +692,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(25) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(10) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -991,8 +713,8 @@ export const disableProjectsLocationsObservationJobs: API.OperationMethod<
   DisableProjectsLocationsObservationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableProjectsLocationsObservationJobsRequest,
-  output: Operation,
+  input: __S(26) as any as S.Schema<DisableProjectsLocationsObservationJobsRequest>,
+  output: __S(17) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1012,8 +734,8 @@ export const enableProjectsLocationsObservationJobs: API.OperationMethod<
   EnableProjectsLocationsObservationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableProjectsLocationsObservationJobsRequest,
-  output: Operation,
+  input: __S(27) as any as S.Schema<EnableProjectsLocationsObservationJobsRequest>,
+  output: __S(17) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1027,8 +749,8 @@ export const getEntitlementProjectsLocations: API.OperationMethod<
   GetEntitlementProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEntitlementProjectsLocationsRequest,
-  output: Entitlement,
+  input: __S(28) as any as S.Schema<GetEntitlementProjectsLocationsRequest>,
+  output: __S(29) as any as S.Schema<Entitlement>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1042,8 +764,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(30) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(32) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1061,8 +783,8 @@ export const getProjectsLocationsObservationJobs: API.OperationMethod<
   GetProjectsLocationsObservationJobsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsObservationJobsRequest,
-  output: ObservationJob,
+  input: __S(33) as any as S.Schema<GetProjectsLocationsObservationJobsRequest>,
+  output: __S(12) as any as S.Schema<ObservationJob>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1079,8 +801,8 @@ export const getProjectsLocationsObservationJobsApiObservations: API.OperationMe
   GetProjectsLocationsObservationJobsApiObservationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsObservationJobsApiObservationsRequest,
-  output: ApiObservation,
+  input: __S(34) as any as S.Schema<GetProjectsLocationsObservationJobsApiObservationsRequest>,
+  output: __S(7) as any as S.Schema<ApiObservation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1097,8 +819,10 @@ export const getProjectsLocationsObservationJobsApiObservationsApiOperations: AP
   GetProjectsLocationsObservationJobsApiObservationsApiOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest,
-  output: ApiOperation,
+  input: __S(
+    35,
+  ) as any as S.Schema<GetProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>,
+  output: __S(43) as any as S.Schema<ApiOperation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1116,8 +840,8 @@ export const getProjectsLocationsObservationSources: API.OperationMethod<
   GetProjectsLocationsObservationSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsObservationSourcesRequest,
-  output: ObservationSource,
+  input: __S(44) as any as S.Schema<GetProjectsLocationsObservationSourcesRequest>,
+  output: __S(21) as any as S.Schema<ObservationSource>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1135,8 +859,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(45) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(17) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1151,8 +875,8 @@ export const listApiObservationTagsProjectsLocations: API.PaginatedOperationMeth
   GcpOpContext,
   ListApiObservationTagsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListApiObservationTagsProjectsLocationsRequest,
-  output: ListApiObservationTagsResponse,
+  input: __S(46) as any as S.Schema<ListApiObservationTagsProjectsLocationsRequest>,
+  output: __S(47) as any as S.Schema<ListApiObservationTagsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1168,8 +892,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(48) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(50) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1189,8 +913,8 @@ export const listProjectsLocationsObservationJobs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListObservationJobsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsObservationJobsRequest,
-  output: ListObservationJobsResponse,
+  input: __S(51) as any as S.Schema<ListProjectsLocationsObservationJobsRequest>,
+  output: __S(53) as any as S.Schema<ListObservationJobsResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1209,8 +933,8 @@ export const listProjectsLocationsObservationJobsApiObservations: API.PaginatedO
   GcpOpContext,
   ListApiObservationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsObservationJobsApiObservationsRequest,
-  output: ListApiObservationsResponse,
+  input: __S(54) as any as S.Schema<ListProjectsLocationsObservationJobsApiObservationsRequest>,
+  output: __S(55) as any as S.Schema<ListApiObservationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1229,8 +953,10 @@ export const listProjectsLocationsObservationJobsApiObservationsApiOperations: A
   GcpOpContext,
   ListApiOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest,
-  output: ListApiOperationsResponse,
+  input: __S(
+    56,
+  ) as any as S.Schema<ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest>,
+  output: __S(58) as any as S.Schema<ListApiOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1250,8 +976,8 @@ export const listProjectsLocationsObservationSources: API.PaginatedOperationMeth
   GcpOpContext,
   ListObservationSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsObservationSourcesRequest,
-  output: ListObservationSourcesResponse,
+  input: __S(59) as any as S.Schema<ListProjectsLocationsObservationSourcesRequest>,
+  output: __S(61) as any as S.Schema<ListObservationSourcesResponse>,
   errors: [NotFound, Forbidden, ServiceDisabled, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1267,8 +993,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(62) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(64) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1282,26 +1008,26 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tag: S.optional(S.String),
-          action: S.optional(TagActionActionEnum),
+          action: S.optional(S.String),
         }),
       ).annotate({ identifier: "TagAction" });
     case 1:
-      return S.Array(TagAction);
+      return S.Array(__S(0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           apiObservationId: S.optional(S.String),
-          tagActions: S.optional(TagActionList),
+          tagActions: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "EditTagsApiObservationsRequest",
       });
     case 3:
-      return S.Array(EditTagsApiObservationsRequest);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(EditTagsApiObservationsRequestList),
+          requests: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "BatchEditTagsApiObservationsRequest",
@@ -1310,7 +1036,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(BatchEditTagsApiObservationsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(4).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1330,11 +1056,11 @@ function __c0(j: number): any {
           lastEventDetectedTime: S.optional(S.String),
           createTime: S.optional(S.String),
           hostname: S.optional(S.String),
-          tags: S.optional(StringList),
-          sourceLocations: S.optional(StringList),
-          style: S.optional(ApiObservationStyleEnum),
+          tags: S.optional(__S(6)),
+          sourceLocations: S.optional(__S(6)),
+          style: S.optional(S.String),
           name: S.optional(S.String),
-          serverIps: S.optional(StringList),
+          serverIps: S.optional(__S(6)),
           apiOperationCount: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApiObservation" });
@@ -1343,11 +1069,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ApiObservation);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          apiObservations: S.optional(ApiObservationList),
+          apiObservations: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "BatchEditTagsApiObservationsResponse",
@@ -1360,7 +1086,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1375,10 +1101,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          sources: S.optional(StringList),
+          sources: S.optional(__S(6)),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
-          state: S.optional(ObservationJobStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "ObservationJob" });
     case 5:
@@ -1387,7 +1113,7 @@ function __c1(j: number): any {
           observationJobId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ObservationJob.pipe(T.HttpBody())),
+          body: S.optional(__S(12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1401,7 +1127,7 @@ function __c1(j: number): any {
     case 6:
       return S.Record(S.String, S.Unknown);
     case 7:
-      return S.Array(DocumentMap);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -1409,7 +1135,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(15)),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
@@ -1419,9 +1145,9 @@ function __c2(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          error: S.optional(Status),
-          metadata: S.optional(DocumentMap),
-          response: S.optional(DocumentMap),
+          error: S.optional(__S(16)),
+          metadata: S.optional(__S(14)),
+          response: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
@@ -1434,20 +1160,20 @@ function __c2(j: number): any {
         identifier: "GclbObservationSourcePscNetworkConfig",
       });
     case 3:
-      return S.Array(GclbObservationSourcePscNetworkConfig);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          pscNetworkConfigs: S.optional(GclbObservationSourcePscNetworkConfigList),
+          pscNetworkConfigs: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "GclbObservationSource" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(ObservationSourceStateEnum),
+          state: S.optional(S.String),
           updateTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          gclbObservationSource: S.optional(GclbObservationSource),
+          gclbObservationSource: S.optional(__S(20)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ObservationSource" });
@@ -1457,7 +1183,7 @@ function __c2(j: number): any {
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           observationSourceId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ObservationSource.pipe(T.HttpBody())),
+          body: S.optional(__S(21).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1518,7 +1244,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1533,7 +1259,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1593,8 +1319,8 @@ function __c4(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           locationId: S.optional(S.String),
-          labels: S.optional(StringMap),
-          metadata: S.optional(DocumentMap),
+          labels: S.optional(__S(31)),
+          metadata: S.optional(__S(14)),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
@@ -1643,22 +1369,22 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dataType: S.optional(HttpOperationPathParamDataTypeEnum),
+          dataType: S.optional(S.String),
           position: S.optional(S.Number),
         }),
       ).annotate({ identifier: "HttpOperationPathParam" });
     case 5:
-      return S.Array(HttpOperationPathParam);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dataType: S.optional(HttpOperationHeaderDataTypeEnum),
+          dataType: S.optional(S.String),
           count: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "HttpOperationHeader" });
     case 7:
-      return S.Record(S.String, HttpOperationHeader);
+      return S.Record(S.String, __S(38));
   }
 }
 function __c5(j: number): any {
@@ -1666,8 +1392,8 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(HttpOperationHeaderMap),
-          responseCodes: S.optional(StringMap),
+          headers: S.optional(__S(39)),
+          responseCodes: S.optional(__S(31)),
         }),
       ).annotate({
         identifier: "HttpOperationHttpResponse",
@@ -1675,18 +1401,18 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(HttpOperationHeaderMap),
+          headers: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "HttpOperationHttpRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          pathParams: S.optional(HttpOperationPathParamList),
-          response: S.optional(HttpOperationHttpResponse),
+          pathParams: S.optional(__S(37)),
+          response: S.optional(__S(40)),
           path: S.optional(S.String),
-          request: S.optional(HttpOperationHttpRequest),
-          method: S.optional(HttpOperationMethodEnum),
-          queryParams: S.optional(HttpOperationQueryParamMap),
+          request: S.optional(__S(41)),
+          method: S.optional(S.String),
+          queryParams: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "HttpOperation" });
     case 3:
@@ -1696,7 +1422,7 @@ function __c5(j: number): any {
           count: S.optional(S.String),
           lastSeenTime: S.optional(S.String),
           name: S.optional(S.String),
-          httpOperation: S.optional(HttpOperation),
+          httpOperation: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "ApiOperation" });
     case 4:
@@ -1746,7 +1472,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          apiObservationTags: S.optional(StringList),
+          apiObservationTags: S.optional(__S(6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1763,7 +1489,7 @@ function __c6(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(6).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1775,12 +1501,12 @@ function __c6(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 1:
-      return S.Array(Location);
+      return S.Array(__S(32));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(49)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 3:
@@ -1800,12 +1526,12 @@ function __c6(j: number): any {
         identifier: "ListProjectsLocationsObservationJobsRequest",
       });
     case 4:
-      return S.Array(ObservationJob);
+      return S.Array(__S(12));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          observationJobs: S.optional(ObservationJobList),
-          unreachable: S.optional(StringList),
+          observationJobs: S.optional(__S(52)),
+          unreachable: S.optional(__S(6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1831,7 +1557,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          apiObservations: S.optional(ApiObservationList),
+          apiObservations: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "ListApiObservationsResponse",
@@ -1857,11 +1583,11 @@ function __c7(j: number): any {
         identifier: "ListProjectsLocationsObservationJobsApiObservationsApiOperationsRequest",
       });
     case 1:
-      return S.Array(ApiOperation);
+      return S.Array(__S(43));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          apiOperations: S.optional(ApiOperationList),
+          apiOperations: S.optional(__S(57)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1884,12 +1610,12 @@ function __c7(j: number): any {
         identifier: "ListProjectsLocationsObservationSourcesRequest",
       });
     case 4:
-      return S.Array(ObservationSource);
+      return S.Array(__S(21));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          observationSources: S.optional(ObservationSourceList),
-          unreachable: S.optional(StringList),
+          observationSources: S.optional(__S(60)),
+          unreachable: S.optional(__S(6)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1914,7 +1640,7 @@ function __c7(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 7:
-      return S.Array(Operation);
+      return S.Array(__S(17));
   }
 }
 function __c8(j: number): any {
@@ -1922,10 +1648,37 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(OperationList),
+          operations: S.optional(__S(63)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
   }
 }

@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -52,28 +54,13 @@ export interface DeletePaymentMethodRequest {
   member_id?: string;
   account_id?: string;
 }
-const DeletePaymentMethodRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeletePaymentMethodRequest>;
-
 export type DeletePaymentMethodResponse = boolean;
-const DeletePaymentMethodResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeletePaymentMethodResponse>;
-
 export interface GetPaymentMethodRequest {
   /** The unique identifier of the payment method. */
   id: string;
   member_id?: string;
   account_id?: string;
 }
-const GetPaymentMethodRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetPaymentMethodRequest>;
-
 /** The colorway for dark surfaces. */
 export interface PaymentMethodCase0IconsCardDark {
   /** Raster fallback at the shape's native size. */
@@ -238,8 +225,6 @@ export type LegacyPaymentMethodTypes =
   | "zip"
   | "coinflow"
   | "unknown";
-const LegacyPaymentMethodTypes = S.String;
-
 /** A saved payment method with no type-specific details available. */
 export interface PaymentMethodCase0 {
   /** The time of the event in ISO 8601 UTC format with millisecond precision */
@@ -510,41 +495,19 @@ export type PaymentMethod =
   | PaymentMethodCase3
   | PaymentMethodCase4
   | PaymentMethodCase5;
-const PaymentMethod = S.Unknown as any as S.Schema<PaymentMethod>;
-
 export type GetPaymentMethodResponse = PaymentMethod;
-const GetPaymentMethodResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetPaymentMethodResponse>;
-
 /** The direction of the sort. */
 export type Direction = "asc" | "desc";
-const Direction = S.String;
-
 /** How a payment method will be charged after the buyer leaves -- the same vocabulary as a confirmation token's setup_future_usage. */
 export type FutureUsageTypes = "off_session" | "on_session";
-const FutureUsageTypes = S.String;
-
 /** Only return payment methods of these types. Pass the eligible `type` values from the payment method types catalogue so the list holds nothing the purchase cannot take. An empty list returns no payment methods. */
 export type ListPaymentMethodRequestPaymentMethodTypesList = Array<
   LegacyPaymentMethodTypes | (string & {})
 >;
-const ListPaymentMethodRequestPaymentMethodTypesList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListPaymentMethodRequestPaymentMethodTypesList>;
-
 /** Only return cards on these networks, such as the networks the seller accepts. Payment methods that are not cards are unaffected. */
 export type ListPaymentMethodRequestCardBrandsList = Array<CardBrands | (string & {})>;
-const ListPaymentMethodRequestCardBrandsList =
-  ListPaymentMethodRequestPaymentMethodTypesList as any as S.Schema<ListPaymentMethodRequestCardBrandsList>;
-
 /** Only return cards funded this way. A card whose funding could not be determined is excluded, and payment methods that are not cards are unaffected. */
 export type ListPaymentMethodRequestCardFundingTypesList = Array<CardFundingTypes | (string & {})>;
-const ListPaymentMethodRequestCardFundingTypesList =
-  ListPaymentMethodRequestPaymentMethodTypesList as any as S.Schema<ListPaymentMethodRequestCardFundingTypesList>;
-
 export interface ListPaymentMethodRequest {
   after?: string;
   before?: string;
@@ -563,11 +526,6 @@ export interface ListPaymentMethodRequest {
   broken?: boolean;
   account_id?: string;
 }
-const ListPaymentMethodRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListPaymentMethodRequest>;
-
 /** The colorway for dark surfaces. */
 export type PaymentMethodListItemCase0IconsCardDark = PaymentMethodCase0IconsCardDark;
 /** The colorway for light surfaces. */
@@ -681,15 +639,8 @@ export type PaymentMethodListItem =
   | PaymentMethodCase3
   | PaymentMethodCase4
   | PaymentMethodCase5;
-const PaymentMethodListItem = S.Unknown as any as S.Schema<PaymentMethodListItem>;
-
 /** A list of nodes. */
 export type ListPaymentMethodResponseDataList = Array<PaymentMethodListItem>;
-const ListPaymentMethodResponseDataList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ListPaymentMethodResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -701,19 +652,12 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<PageInfo>;
-
 export interface ListPaymentMethodResponse {
   /** A list of nodes. */
   data: ListPaymentMethodResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListPaymentMethodResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListPaymentMethodResponse>;
-
 export type DeletePaymentMethodError =
   | BadRequest
   | Forbidden
@@ -727,8 +671,8 @@ export const deletePaymentMethod: API.OperationMethod<
   DeletePaymentMethodError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePaymentMethodRequest,
-  output: DeletePaymentMethodResponse,
+  input: __S(0) as any as S.Schema<DeletePaymentMethodRequest>,
+  output: __S(1) as any as S.Schema<DeletePaymentMethodResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -747,8 +691,8 @@ export const getPaymentMethod: API.OperationMethod<
   GetPaymentMethodError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPaymentMethodRequest,
-  output: GetPaymentMethodResponse,
+  input: __S(2) as any as S.Schema<GetPaymentMethodRequest>,
+  output: __S(3) as any as S.Schema<GetPaymentMethodResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -769,8 +713,8 @@ export const listPaymentMethod: API.PaginatedOperationMethod<
   PaymentMethodListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPaymentMethodRequest,
-    output: ListPaymentMethodResponse,
+    input: __S(5) as any as S.Schema<ListPaymentMethodRequest>,
+    output: __S(8) as any as S.Schema<ListPaymentMethodResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -812,11 +756,11 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/payment_methods/{id}", code: 200 })),
       ).annotate({ identifier: "GetPaymentMethodRequest" });
     case 3:
-      return S.suspend(() => PaymentMethod.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetPaymentMethodResponse",
       });
     case 4:
-      return S.Array(LegacyPaymentMethodTypes);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -825,17 +769,13 @@ function __c0(j: number): any {
           first: S.optional(S.Number.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           member_id: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(Direction.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           created_before: S.optional(S.String.pipe(T.Query())),
           created_after: S.optional(S.String.pipe(T.Query())),
-          future_usage: S.optional(FutureUsageTypes.pipe(T.Query())),
-          payment_method_types: S.optional(
-            ListPaymentMethodRequestPaymentMethodTypesList.pipe(T.Query()),
-          ),
-          card_brands: S.optional(ListPaymentMethodRequestCardBrandsList.pipe(T.Query())),
-          card_funding_types: S.optional(
-            ListPaymentMethodRequestCardFundingTypesList.pipe(T.Query()),
-          ),
+          future_usage: S.optional(S.String.pipe(T.Query())),
+          payment_method_types: S.optional(__S(4).pipe(T.Query())),
+          card_brands: S.optional(__S(4).pipe(T.Query())),
+          card_funding_types: S.optional(__S(4).pipe(T.Query())),
           has_payer_document: S.optional(S.Boolean.pipe(T.Query())),
           expired: S.optional(S.Boolean.pipe(T.Query())),
           broken: S.optional(S.Boolean.pipe(T.Query())),
@@ -843,7 +783,7 @@ function __c0(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/payment_methods", code: 200 })),
       ).annotate({ identifier: "ListPaymentMethodRequest" });
     case 6:
-      return S.Array(PaymentMethodListItem);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -860,11 +800,24 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: ListPaymentMethodResponseDataList,
-          page_info: PageInfo,
+          data: __S(6),
+          page_info: __S(7),
         }),
       ).annotate({
         identifier: "ListPaymentMethodResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

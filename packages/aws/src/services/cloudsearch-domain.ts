@@ -7,6 +7,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const ns = /*@__PURE__*/ T.XmlNamespace("http://cloudsearch.amazonaws.com/doc/2013-01-01/");
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "CloudSearch Domain",
@@ -92,8 +94,6 @@ export type Partial = boolean;
 export type Query = string;
 export type QueryOptions = string;
 export type QueryParser = "simple" | "structured" | "lucene" | "dismax" | (string & {});
-const QueryParser = S.String;
-
 export type Return = string;
 export type Size = number;
 export type Sort = string;
@@ -115,49 +115,36 @@ export interface SearchRequest {
   start?: number;
   stats?: string;
 }
-const SearchRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<SearchRequest>;
 export interface SearchStatus {
   timems?: number;
   rid?: string;
 }
-const SearchStatus = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SearchStatus>;
 export type FieldValue = string[];
-const FieldValue = /*@__PURE__*/ __L.at(__c0, 2);
 export type Fields = { [key: string]: string[] | undefined };
-const Fields = /*@__PURE__*/ __L.at(__c0, 3);
 export type Exprs = { [key: string]: string | undefined };
-const Exprs = /*@__PURE__*/ __L.at(__c0, 4);
 export type Highlights = { [key: string]: string | undefined };
-const Highlights = Exprs as any as S.Schema<Highlights>;
 export interface Hit {
   id?: string;
   fields?: { [key: string]: string[] | undefined };
   exprs?: { [key: string]: string | undefined };
   highlights?: { [key: string]: string | undefined };
 }
-const Hit = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Hit>;
 export type HitList = Hit[];
-const HitList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface Hits {
   found?: number;
   start?: number;
   cursor?: string;
   hit?: Hit[];
 }
-const Hits = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Hits>;
 export interface Bucket {
   value?: string;
   count?: number;
 }
-const Bucket = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Bucket>;
 export type BucketList = Bucket[];
-const BucketList = /*@__PURE__*/ __L.at(__c1, 1);
 export interface BucketInfo {
   buckets?: Bucket[];
 }
-const BucketInfo = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<BucketInfo>;
 export type Facets = { [key: string]: BucketInfo | undefined };
-const Facets = /*@__PURE__*/ __L.at(__c1, 3);
 export interface FieldStats {
   min?: string;
   max?: string;
@@ -168,16 +155,13 @@ export interface FieldStats {
   mean?: string;
   stddev?: number;
 }
-const FieldStats = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<FieldStats>;
 export type Stats = { [key: string]: FieldStats | undefined };
-const Stats = /*@__PURE__*/ __L.at(__c1, 5);
 export interface SearchResponse {
   status?: SearchStatus;
   hits?: Hits;
   facets?: { [key: string]: BucketInfo | undefined };
   stats?: { [key: string]: FieldStats | undefined };
 }
-const SearchResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<SearchResponse>;
 export type Suggester = string;
 export type SuggestionsSize = number;
 export interface SuggestRequest {
@@ -185,63 +169,42 @@ export interface SuggestRequest {
   suggester: string;
   size?: number;
 }
-const SuggestRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<SuggestRequest>;
 export interface SuggestStatus {
   timems?: number;
   rid?: string;
 }
-const SuggestStatus = SearchStatus as any as S.Schema<SuggestStatus>;
 export interface SuggestionMatch {
   suggestion?: string;
   score?: number;
   id?: string;
 }
-const SuggestionMatch = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<SuggestionMatch>;
 export type Suggestions = SuggestionMatch[];
-const Suggestions = /*@__PURE__*/ __L.at(__c2, 1);
 export interface SuggestModel {
   query?: string;
   found?: number;
   suggestions?: SuggestionMatch[];
 }
-const SuggestModel = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<SuggestModel>;
 export interface SuggestResponse {
   status?: SuggestStatus;
   suggest?: SuggestModel;
 }
-const SuggestResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SuggestResponse>;
 export type ContentType = "application/json" | "application/xml" | (string & {});
-const ContentType = S.String;
-
 export interface UploadDocumentsRequest {
   documents: T.StreamingInputBody;
   contentType: ContentType;
 }
-const UploadDocumentsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<UploadDocumentsRequest>;
 export type Adds = number;
 export type Deletes = number;
 export interface DocumentServiceWarning {
   message?: string;
 }
-const DocumentServiceWarning = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DocumentServiceWarning>;
 export type DocumentServiceWarnings = DocumentServiceWarning[];
-const DocumentServiceWarnings = /*@__PURE__*/ __L.at(__c2, 6);
 export interface UploadDocumentsResponse {
   status?: string;
   adds?: number;
   deletes?: number;
   warnings?: DocumentServiceWarning[];
 }
-const UploadDocumentsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<UploadDocumentsResponse>;
 export type SearchError = SearchException | CommonErrors;
 /**
  * Retrieves a list of documents that match the specified search criteria. How you specify the search criteria depends on which query parser you use. Amazon CloudSearch supports four query parsers:
@@ -264,8 +227,8 @@ export const search: API.OperationMethod<
   SearchError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchRequest,
-  output: SearchResponse,
+  input: __S(0) as any as S.Schema<SearchRequest>,
+  output: __S(14) as any as S.Schema<SearchResponse>,
   errors: [SearchException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -286,8 +249,8 @@ export const suggest: API.OperationMethod<
   SuggestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: SuggestRequest,
-  output: SuggestResponse,
+  input: __S(15) as any as S.Schema<SuggestRequest>,
+  output: __S(19) as any as S.Schema<SuggestResponse>,
   errors: [SearchException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -309,8 +272,8 @@ export const uploadDocuments: API.OperationMethod<
   UploadDocumentsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadDocumentsRequest,
-  output: UploadDocumentsResponse,
+  input: __S(20) as any as S.Schema<UploadDocumentsRequest>,
+  output: __S(23) as any as S.Schema<UploadDocumentsResponse>,
   errors: [DocumentServiceException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -331,7 +294,7 @@ function __c0(j: number): any {
           partial: S.optional(S.Boolean).pipe(T.HttpQuery("partial")),
           query: S.String.pipe(T.HttpQuery("q")),
           queryOptions: S.optional(S.String).pipe(T.HttpQuery("q.options")),
-          queryParser: S.optional(QueryParser).pipe(T.HttpQuery("q.parser")),
+          queryParser: S.optional(S.String).pipe(T.HttpQuery("q.parser")),
           return: S.optional(S.String).pipe(T.HttpQuery("return")),
           size: S.optional(S.Number).pipe(T.HttpQuery("size")),
           sort: S.optional(S.String).pipe(T.HttpQuery("sort")),
@@ -356,27 +319,27 @@ function __c0(j: number): any {
     case 2:
       return S.Array(S.String);
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ FieldValue.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(2).pipe(S.optional));
     case 4:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          fields: S.optional(Fields),
-          exprs: S.optional(Exprs),
-          highlights: S.optional(Highlights),
+          fields: S.optional(__S(3)),
+          exprs: S.optional(__S(4)),
+          highlights: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "Hit" });
     case 6:
-      return S.Array(Hit);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
           found: S.optional(S.Number),
           start: S.optional(S.Number),
           cursor: S.optional(S.String),
-          hit: S.optional(HitList),
+          hit: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "Hits" });
   }
@@ -388,13 +351,13 @@ function __c1(j: number): any {
         S.Struct({ value: S.optional(S.String), count: S.optional(S.Number) }),
       ).annotate({ identifier: "Bucket" });
     case 1:
-      return S.Array(Bucket);
+      return S.Array(__S(8));
     case 2:
-      return S.suspend(() => S.Struct({ buckets: S.optional(BucketList) })).annotate({
+      return S.suspend(() => S.Struct({ buckets: S.optional(__S(9)) })).annotate({
         identifier: "BucketInfo",
       });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ BucketInfo.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(10).pipe(S.optional));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -409,14 +372,14 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "FieldStats" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ FieldStats.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(12).pipe(S.optional));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SearchStatus),
-          hits: S.optional(Hits),
-          facets: S.optional(Facets),
-          stats: S.optional(Stats),
+          status: S.optional(__S(1)),
+          hits: S.optional(__S(7)),
+          facets: S.optional(__S(11)),
+          stats: S.optional(__S(13)),
         }).pipe(ns),
       ).annotate({ identifier: "SearchResponse" });
     case 7:
@@ -450,24 +413,24 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "SuggestionMatch" });
     case 1:
-      return S.Array(SuggestionMatch);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
           found: S.optional(S.Number),
-          suggestions: S.optional(Suggestions),
+          suggestions: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "SuggestModel" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ status: S.optional(SuggestStatus), suggest: S.optional(SuggestModel) }).pipe(ns),
+        S.Struct({ status: S.optional(__S(1)), suggest: S.optional(__S(18)) }).pipe(ns),
       ).annotate({ identifier: "SuggestResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           documents: T.StreamingInput.pipe(T.HttpPayload()),
-          contentType: ContentType.pipe(T.HttpHeader("Content-Type")),
+          contentType: S.String.pipe(T.HttpHeader("Content-Type")),
         }).pipe(
           T.all(
             ns,
@@ -485,15 +448,30 @@ function __c2(j: number): any {
         identifier: "DocumentServiceWarning",
       });
     case 6:
-      return S.Array(DocumentServiceWarning);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
           status: S.optional(S.String),
           adds: S.optional(S.Number),
           deletes: S.optional(S.Number),
-          warnings: S.optional(DocumentServiceWarnings),
+          warnings: S.optional(__S(22)),
         }).pipe(ns),
       ).annotate({ identifier: "UploadDocumentsResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

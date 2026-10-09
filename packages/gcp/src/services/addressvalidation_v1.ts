@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -68,8 +70,6 @@ export type GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequestConclus
   | "USER_VERSION_USED"
   | "UNVALIDATED_VERSION_USED"
   | "UNUSED";
-const GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequestConclusionEnum = S.String;
-
 /** The request for sending validation feedback. */
 export interface GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest {
   /** Required. The ID of the response that this feedback is for. This should be the response_id from the first response in a series of address validation attempts. */
@@ -79,30 +79,13 @@ export interface GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest {
     | GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequestConclusionEnum
     | (string & {});
 }
-const GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest>;
-
 export interface ProvideValidationFeedbackV1Request {
   /** Request body */
   body?: GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest;
 }
-const ProvideValidationFeedbackV1Request = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ProvideValidationFeedbackV1Request>;
-
 /** The response for validation feedback. The response is empty if the feedback is sent successfully. */
 export interface GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse {}
-const GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringList>;
-
 /** Represents a postal address, such as for postal delivery or payments addresses. With a postal address, a postal service can deliver items to a premise, P.O. box, or similar. A postal address is not intended to model geographical locations like roads, towns, or mountains. In typical usage, an address would be created by user input or from importing existing data, depending on the type of process. Advice on address input or editing: - Use an internationalization-ready address widget such as https://github.com/google/libaddressinput. - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, see: https://support.google.com/business/answer/6397478. */
 export interface GoogleTypePostalAddress {
   /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
@@ -128,21 +111,11 @@ export interface GoogleTypePostalAddress {
   /** Optional. The name of the organization at the address. */
   organization?: string;
 }
-const GoogleTypePostalAddress = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GoogleTypePostalAddress>;
-
 /** Preview: This feature is in Preview (pre-GA). Pre-GA products and features might have limited support, and changes to pre-GA products and features might not be compatible with other pre-GA versions. Pre-GA Offerings are covered by the [Google Maps Platform Service Specific Terms](https://cloud.google.com/maps-platform/terms/maps-service-terms). For more information, see the [launch stage descriptions](https://developers.google.com/maps/launch-stages). Enables the Address Validation API to include additional information in the response. */
 export interface GoogleMapsAddressvalidationV1LanguageOptions {
   /** Preview: Return a [google.maps.addressvalidation.v1.Address] in English. See [google.maps.addressvalidation.v1.ValidationResult.english_latin_address] for details. */
   returnEnglishLatinAddress?: boolean;
 }
-const GoogleMapsAddressvalidationV1LanguageOptions = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GoogleMapsAddressvalidationV1LanguageOptions>;
-
 /** The request for validating an address. */
 export interface GoogleMapsAddressvalidationV1ValidateAddressRequest {
   /** Required. The address being validated. Unformatted addresses should be submitted via `address_lines`. The total length of the fields in this input must not exceed 280 characters. Supported regions can be found [here](https://developers.google.com/maps/documentation/address-validation/coverage). The language_code value in the input address is reserved for future uses and is ignored today. The validated address result will be populated based on the preferred language for the given address, as identified by the system. The Address Validation API ignores the values in recipients and organization. Any values in those fields will be discarded and not returned. Please do not set them. */
@@ -156,20 +129,10 @@ export interface GoogleMapsAddressvalidationV1ValidateAddressRequest {
   /** Optional. Preview: This feature is in Preview (pre-GA). Pre-GA products and features might have limited support, and changes to pre-GA products and features might not be compatible with other pre-GA versions. Pre-GA Offerings are covered by the [Google Maps Platform Service Specific Terms](https://cloud.google.com/maps-platform/terms/maps-service-terms). For more information, see the [launch stage descriptions](https://developers.google.com/maps/launch-stages). Enables the Address Validation API to include additional information in the response. */
   languageOptions?: GoogleMapsAddressvalidationV1LanguageOptions;
 }
-const GoogleMapsAddressvalidationV1ValidateAddressRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GoogleMapsAddressvalidationV1ValidateAddressRequest>;
-
 export interface ValidateAddressV1Request {
   /** Request body */
   body?: GoogleMapsAddressvalidationV1ValidateAddressRequest;
 }
-const ValidateAddressV1Request = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ValidateAddressV1Request>;
-
 /** The metadata for the post-processed address. `metadata` is not guaranteed to be fully populated for every address sent to the Address Validation API. */
 export interface GoogleMapsAddressvalidationV1AddressMetadata {
   /** Indicates that this is the address of a residence. If unset, indicates that the value is unknown. */
@@ -179,18 +142,11 @@ export interface GoogleMapsAddressvalidationV1AddressMetadata {
   /** Indicates that the address of a PO box. If unset, indicates that the value is unknown. */
   poBox?: boolean;
 }
-const GoogleMapsAddressvalidationV1AddressMetadata = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GoogleMapsAddressvalidationV1AddressMetadata>;
-
 export type GoogleMapsAddressvalidationV1AddressComponentConfirmationLevelEnum =
   | "CONFIRMATION_LEVEL_UNSPECIFIED"
   | "CONFIRMED"
   | "UNCONFIRMED_BUT_PLAUSIBLE"
   | "UNCONFIRMED_AND_SUSPICIOUS";
-const GoogleMapsAddressvalidationV1AddressComponentConfirmationLevelEnum = S.String;
-
 /** A wrapper for the name of the component. */
 export interface GoogleMapsAddressvalidationV1ComponentName {
   /** The name text. For example, "5th Avenue" for a street name or "1253" for a street number. */
@@ -198,11 +154,6 @@ export interface GoogleMapsAddressvalidationV1ComponentName {
   /** The BCP-47 language code. This will not be present if the component name is not associated with a language, such as a street number. */
   languageCode?: string;
 }
-const GoogleMapsAddressvalidationV1ComponentName = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GoogleMapsAddressvalidationV1ComponentName>;
-
 /** Represents an address component, such as a street, city, or state. */
 export interface GoogleMapsAddressvalidationV1AddressComponent {
   /** Indicates that the component was not part of the input, but we inferred it for the address location and believe it should be provided for a complete address. */
@@ -220,18 +171,8 @@ export interface GoogleMapsAddressvalidationV1AddressComponent {
   /** The name for this component. */
   componentName?: GoogleMapsAddressvalidationV1ComponentName;
 }
-const GoogleMapsAddressvalidationV1AddressComponent = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GoogleMapsAddressvalidationV1AddressComponent>;
-
 export type GoogleMapsAddressvalidationV1AddressComponentList =
   Array<GoogleMapsAddressvalidationV1AddressComponent>;
-const GoogleMapsAddressvalidationV1AddressComponentList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GoogleMapsAddressvalidationV1AddressComponentList>;
-
 /** Details of the post-processed address. Post-processing includes correcting misspelled parts of the address, replacing incorrect parts, and inferring missing parts. */
 export interface GoogleMapsAddressvalidationV1Address {
   /** The post-processed address, formatted as a single-line address following the address formatting rules of the region where the address is located. Note: the format of this address may not match the format of the address in the `postal_address` field. For example, the `postal_address` always represents the country as a 2 letter `region_code`, such as "US" or "NZ". By contrast, this field uses a longer form of the country name, such as "USA" or "New Zealand". */
@@ -247,19 +188,12 @@ export interface GoogleMapsAddressvalidationV1Address {
   /** Any tokens in the input that could not be resolved. This might be an input that was not recognized as a valid part of an address. For example, for an input such as "Parcel 0000123123 & 0000456456 Str # Guthrie Center IA 50115 US", the unresolved tokens might look like `["Parcel", "0000123123", "&", "0000456456"]`. */
   unresolvedTokens?: StringList;
 }
-const GoogleMapsAddressvalidationV1Address = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GoogleMapsAddressvalidationV1Address>;
-
 export type GoogleMapsAddressvalidationV1VerdictPossibleNextActionEnum =
   | "POSSIBLE_NEXT_ACTION_UNSPECIFIED"
   | "FIX"
   | "CONFIRM_ADD_SUBPREMISES"
   | "CONFIRM"
   | "ACCEPT";
-const GoogleMapsAddressvalidationV1VerdictPossibleNextActionEnum = S.String;
-
 export type GoogleMapsAddressvalidationV1VerdictValidationGranularityEnum =
   | "GRANULARITY_UNSPECIFIED"
   | "SUB_PREMISE"
@@ -268,8 +202,6 @@ export type GoogleMapsAddressvalidationV1VerdictValidationGranularityEnum =
   | "BLOCK"
   | "ROUTE"
   | "OTHER";
-const GoogleMapsAddressvalidationV1VerdictValidationGranularityEnum = S.String;
-
 export type GoogleMapsAddressvalidationV1VerdictGeocodeGranularityEnum =
   | "GRANULARITY_UNSPECIFIED"
   | "SUB_PREMISE"
@@ -278,8 +210,6 @@ export type GoogleMapsAddressvalidationV1VerdictGeocodeGranularityEnum =
   | "BLOCK"
   | "ROUTE"
   | "OTHER";
-const GoogleMapsAddressvalidationV1VerdictGeocodeGranularityEnum = S.String;
-
 export type GoogleMapsAddressvalidationV1VerdictInputGranularityEnum =
   | "GRANULARITY_UNSPECIFIED"
   | "SUB_PREMISE"
@@ -288,8 +218,6 @@ export type GoogleMapsAddressvalidationV1VerdictInputGranularityEnum =
   | "BLOCK"
   | "ROUTE"
   | "OTHER";
-const GoogleMapsAddressvalidationV1VerdictInputGranularityEnum = S.String;
-
 /** High level overview of the address validation result and geocode. */
 export interface GoogleMapsAddressvalidationV1Verdict {
   /** At least one address component was spell-corrected, see [google.maps.addressvalidation.v1.Address.address_components] for details. */
@@ -311,11 +239,6 @@ export interface GoogleMapsAddressvalidationV1Verdict {
   /** The granularity of the **input** address. This is the result of parsing the input address and does not give any validation signals. For validation signals, refer to `validation_granularity` below. For example, if the input address includes a specific apartment number, then the `input_granularity` here will be `SUB_PREMISE`. If the address validation service cannot match the apartment number in the databases or the apartment number is invalid, the `validation_granularity` will likely be `PREMISE` or more coarse. */
   inputGranularity?: GoogleMapsAddressvalidationV1VerdictInputGranularityEnum;
 }
-const GoogleMapsAddressvalidationV1Verdict = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GoogleMapsAddressvalidationV1Verdict>;
-
 /** USPS representation of a US address. */
 export interface GoogleMapsAddressvalidationV1UspsAddress {
   /** City name. */
@@ -337,11 +260,6 @@ export interface GoogleMapsAddressvalidationV1UspsAddress {
   /** Second address line. */
   secondAddressLine?: string;
 }
-const GoogleMapsAddressvalidationV1UspsAddress = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GoogleMapsAddressvalidationV1UspsAddress>;
-
 /** The USPS data for the address. `uspsData` is not guaranteed to be fully populated for every US or PR address sent to the Address Validation API. It's recommended to integrate the backup address fields in the response if you utilize uspsData as the primary part of the response. */
 export interface GoogleMapsAddressvalidationV1UspsData {
   /** Is this a no stat address or an active address? No stat addresses are ones which are not continuously occupied or addresses that the USPS does not service. Returns a single character. * `Y`: The address is not active * `N`: The address is active */
@@ -419,11 +337,6 @@ export interface GoogleMapsAddressvalidationV1UspsData {
   /** PMB (Private Mail Box) unit designator. */
   pmbDesignator?: string;
 }
-const GoogleMapsAddressvalidationV1UspsData = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GoogleMapsAddressvalidationV1UspsData>;
-
 /** An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. */
 export interface GoogleTypeLatLng {
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
@@ -431,8 +344,6 @@ export interface GoogleTypeLatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
   latitude?: number;
 }
-const GoogleTypeLatLng = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GoogleTypeLatLng>;
-
 /** Plus code (http://plus.codes) is a location reference with two formats: global code defining a 14mx14m (1/8000th of a degree) or smaller rectangle, and compound code, replacing the prefix with a reference location. */
 export interface GoogleMapsAddressvalidationV1PlusCode {
   /** Place's global (full) code, such as "9FWM33GV+HQ", representing an 1/8000 by 1/8000 degree area (~14 by 14 meters). */
@@ -440,11 +351,6 @@ export interface GoogleMapsAddressvalidationV1PlusCode {
   /** Place's compound code, such as "33GV+HQ, Ramberg, Norway", containing the suffix of the global code and replacing the prefix with a formatted name of a reference entity. */
   compoundCode?: string;
 }
-const GoogleMapsAddressvalidationV1PlusCode = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GoogleMapsAddressvalidationV1PlusCode>;
-
 /** A latitude-longitude viewport, represented as two diagonally opposite `low` and `high` points. A viewport is considered a closed region, i.e. it includes its boundary. The latitude bounds must range between -90 to 90 degrees inclusive, and the longitude bounds must range between -180 to 180 degrees inclusive. Various cases include: - If `low` = `high`, the viewport consists of that single point. - If `low.longitude` > `high.longitude`, the longitude range is inverted (the viewport crosses the 180 degree longitude line). - If `low.longitude` = -180 degrees and `high.longitude` = 180 degrees, the viewport includes all longitudes. - If `low.longitude` = 180 degrees and `high.longitude` = -180 degrees, the longitude range is empty. - If `low.latitude` > `high.latitude`, the latitude range is empty. Both `low` and `high` must be populated, and the represented box cannot be empty (as specified by the definitions above). An empty viewport will result in an error. For example, this viewport fully encloses New York City: { "low": { "latitude": 40.477398, "longitude": -74.259087 }, "high": { "latitude": 40.91618, "longitude": -73.70018 } } */
 export interface GoogleGeoTypeViewport {
   /** Required. The low point of the viewport. */
@@ -452,11 +358,6 @@ export interface GoogleGeoTypeViewport {
   /** Required. The high point of the viewport. */
   high?: GoogleTypeLatLng;
 }
-const GoogleGeoTypeViewport = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GoogleGeoTypeViewport>;
-
 /** Contains information about the place the input was geocoded to. */
 export interface GoogleMapsAddressvalidationV1Geocode {
   /** The PlaceID of the place this input geocodes to. For more information about Place IDs see [here](https://developers.google.com/maps/documentation/places/web-service/place-id). */
@@ -472,11 +373,6 @@ export interface GoogleMapsAddressvalidationV1Geocode {
   /** The size of the geocoded place, in meters. This is another measure of the coarseness of the geocoded location, but in physical size rather than in semantic meaning. */
   featureSizeMeters?: number;
 }
-const GoogleMapsAddressvalidationV1Geocode = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GoogleMapsAddressvalidationV1Geocode>;
-
 /** The result of validating an address. */
 export interface GoogleMapsAddressvalidationV1ValidationResult {
   /** Other information relevant to deliverability. `metadata` is not guaranteed to be fully populated for every address sent to the Address Validation API. */
@@ -492,11 +388,6 @@ export interface GoogleMapsAddressvalidationV1ValidationResult {
   /** Information about the location and place that the address geocoded to. */
   geocode?: GoogleMapsAddressvalidationV1Geocode;
 }
-const GoogleMapsAddressvalidationV1ValidationResult = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GoogleMapsAddressvalidationV1ValidationResult>;
-
 /** The response to an address validation request. */
 export interface GoogleMapsAddressvalidationV1ValidateAddressResponse {
   /** The result of the address validation. */
@@ -504,11 +395,6 @@ export interface GoogleMapsAddressvalidationV1ValidateAddressResponse {
   /** The UUID that identifies this response. If the address needs to be re-validated, this UUID *must* accompany the new request. */
   responseId?: string;
 }
-const GoogleMapsAddressvalidationV1ValidateAddressResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GoogleMapsAddressvalidationV1ValidateAddressResponse>;
-
 export type ProvideValidationFeedbackV1Error =
   | NotFound
   | Forbidden
@@ -522,8 +408,8 @@ export const provideValidationFeedbackV1: API.OperationMethod<
   ProvideValidationFeedbackV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProvideValidationFeedbackV1Request,
-  output: GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse,
+  input: __S(1) as any as S.Schema<ProvideValidationFeedbackV1Request>,
+  output: __S(2) as any as S.Schema<GoogleMapsAddressvalidationV1ProvideValidationFeedbackResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -537,8 +423,8 @@ export const validateAddressV1: API.OperationMethod<
   ValidateAddressV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateAddressV1Request,
-  output: GoogleMapsAddressvalidationV1ValidateAddressResponse,
+  input: __S(7) as any as S.Schema<ValidateAddressV1Request>,
+  output: __S(21) as any as S.Schema<GoogleMapsAddressvalidationV1ValidateAddressResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -551,9 +437,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           responseId: S.optional(S.String),
-          conclusion: S.optional(
-            GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequestConclusionEnum,
-          ),
+          conclusion: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest",
@@ -561,9 +445,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(
-            GoogleMapsAddressvalidationV1ProvideValidationFeedbackRequest.pipe(T.HttpBody()),
-          ),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -586,12 +468,12 @@ function __c0(j: number): any {
           revision: S.optional(S.Number),
           administrativeArea: S.optional(S.String),
           postalCode: S.optional(S.String),
-          recipients: S.optional(StringList),
+          recipients: S.optional(__S(3)),
           regionCode: S.optional(S.String),
           sublocality: S.optional(S.String),
           sortingCode: S.optional(S.String),
           languageCode: S.optional(S.String),
-          addressLines: S.optional(StringList),
+          addressLines: S.optional(__S(3)),
           locality: S.optional(S.String),
           organization: S.optional(S.String),
         }),
@@ -607,11 +489,11 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          address: S.optional(GoogleTypePostalAddress),
+          address: S.optional(__S(4)),
           previousResponseId: S.optional(S.String),
           enableUspsCass: S.optional(S.Boolean),
           sessionToken: S.optional(S.String),
-          languageOptions: S.optional(GoogleMapsAddressvalidationV1LanguageOptions),
+          languageOptions: S.optional(__S(5)),
         }),
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1ValidateAddressRequest",
@@ -619,7 +501,7 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(GoogleMapsAddressvalidationV1ValidateAddressRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -655,29 +537,27 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           inferred: S.optional(S.Boolean),
-          confirmationLevel: S.optional(
-            GoogleMapsAddressvalidationV1AddressComponentConfirmationLevelEnum,
-          ),
+          confirmationLevel: S.optional(S.String),
           componentType: S.optional(S.String),
           unexpected: S.optional(S.Boolean),
           replaced: S.optional(S.Boolean),
           spellCorrected: S.optional(S.Boolean),
-          componentName: S.optional(GoogleMapsAddressvalidationV1ComponentName),
+          componentName: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1AddressComponent",
       });
     case 3:
-      return S.Array(GoogleMapsAddressvalidationV1AddressComponent);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
           formattedAddress: S.optional(S.String),
-          addressComponents: S.optional(GoogleMapsAddressvalidationV1AddressComponentList),
-          unconfirmedComponentTypes: S.optional(StringList),
-          missingComponentTypes: S.optional(StringList),
-          postalAddress: S.optional(GoogleTypePostalAddress),
-          unresolvedTokens: S.optional(StringList),
+          addressComponents: S.optional(__S(11)),
+          unconfirmedComponentTypes: S.optional(__S(3)),
+          missingComponentTypes: S.optional(__S(3)),
+          postalAddress: S.optional(__S(4)),
+          unresolvedTokens: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1Address",
@@ -686,20 +566,14 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           hasSpellCorrectedComponents: S.optional(S.Boolean),
-          possibleNextAction: S.optional(
-            GoogleMapsAddressvalidationV1VerdictPossibleNextActionEnum,
-          ),
+          possibleNextAction: S.optional(S.String),
           hasInferredComponents: S.optional(S.Boolean),
-          validationGranularity: S.optional(
-            GoogleMapsAddressvalidationV1VerdictValidationGranularityEnum,
-          ),
+          validationGranularity: S.optional(S.String),
           hasReplacedComponents: S.optional(S.Boolean),
           addressComplete: S.optional(S.Boolean),
           hasUnconfirmedComponents: S.optional(S.Boolean),
-          geocodeGranularity: S.optional(
-            GoogleMapsAddressvalidationV1VerdictGeocodeGranularityEnum,
-          ),
-          inputGranularity: S.optional(GoogleMapsAddressvalidationV1VerdictInputGranularityEnum),
+          geocodeGranularity: S.optional(S.String),
+          inputGranularity: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1Verdict",
@@ -739,7 +613,7 @@ function __c1(j: number): any {
           dpvFootnote: S.optional(S.String),
           deliveryPointCheckDigit: S.optional(S.String),
           dpvVacant: S.optional(S.String),
-          standardizedAddress: S.optional(GoogleMapsAddressvalidationV1UspsAddress),
+          standardizedAddress: S.optional(__S(14)),
           dpvEnhancedDeliveryCode: S.optional(S.String),
           abbreviatedCity: S.optional(S.String),
           pmbNumber: S.optional(S.String),
@@ -787,18 +661,18 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          low: S.optional(GoogleTypeLatLng),
-          high: S.optional(GoogleTypeLatLng),
+          low: S.optional(__S(16)),
+          high: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "GoogleGeoTypeViewport" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           placeId: S.optional(S.String),
-          location: S.optional(GoogleTypeLatLng),
-          plusCode: S.optional(GoogleMapsAddressvalidationV1PlusCode),
-          bounds: S.optional(GoogleGeoTypeViewport),
-          placeTypes: S.optional(StringList),
+          location: S.optional(__S(16)),
+          plusCode: S.optional(__S(17)),
+          bounds: S.optional(__S(18)),
+          placeTypes: S.optional(__S(3)),
           featureSizeMeters: S.optional(S.Number),
         }),
       ).annotate({
@@ -807,12 +681,12 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(GoogleMapsAddressvalidationV1AddressMetadata),
-          address: S.optional(GoogleMapsAddressvalidationV1Address),
-          verdict: S.optional(GoogleMapsAddressvalidationV1Verdict),
-          uspsData: S.optional(GoogleMapsAddressvalidationV1UspsData),
-          englishLatinAddress: S.optional(GoogleMapsAddressvalidationV1Address),
-          geocode: S.optional(GoogleMapsAddressvalidationV1Geocode),
+          metadata: S.optional(__S(8)),
+          address: S.optional(__S(12)),
+          verdict: S.optional(__S(13)),
+          uspsData: S.optional(__S(15)),
+          englishLatinAddress: S.optional(__S(12)),
+          geocode: S.optional(__S(19)),
         }),
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1ValidationResult",
@@ -820,11 +694,26 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(GoogleMapsAddressvalidationV1ValidationResult),
+          result: S.optional(__S(20)),
           responseId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleMapsAddressvalidationV1ValidateAddressResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

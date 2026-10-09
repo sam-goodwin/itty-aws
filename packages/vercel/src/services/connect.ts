@@ -7,6 +7,8 @@ import * as Redacted from "effect/Redacted";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -59,11 +61,6 @@ export class UnprocessableEntity
 export type ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemUse = "sig" | "enc";
 /** Operations permitted for this key. */
 export type ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList = Array<string>;
-const ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList>;
-
 export interface ConnectConnectorCreateDataCase0ServerConfigJwksKeysItem {
   /** JSON Web Key type. */
   kty: string;
@@ -94,11 +91,6 @@ export type ConnectConnectorCreateDataCase0ServerConfigTokenEndpointAuthSigningA
   Array<string>;
 /** OAuth scopes supported by the server. */
 export type ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList = Array<string>;
-const ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList>;
-
 /** OAuth grant types supported by the server. */
 export type ConnectConnectorCreateDataCase0ServerConfigGrantTypesSupportedList = Array<string>;
 /** Supported authorization grant profiles. urn:ietf:params:oauth:grant-profile:id-jag advertises XAA resource support. */
@@ -223,11 +215,6 @@ export interface ConnectConnectorCreateDataCase0RefreshTokens {
   /** Whether this OAuth grant is enabled. */
   enabled: boolean;
 }
-const ConnectConnectorCreateDataCase0RefreshTokens = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ConnectConnectorCreateDataCase0RefreshTokens>;
-
 /** Default scopes to request when token params specify scopes: [\"*\"]. */
 export type ConnectConnectorCreateDataCase0ClientCredentialsScopesList = Array<string>;
 /** Client credentials grant settings. */
@@ -248,22 +235,12 @@ export interface ConnectConnectorCreateDataCase0ForwardedClaims {
 export type ConnectConnectorCreateDataCase0AuthorizationUrlParamsMap = {
   [key: string]: string | undefined;
 };
-const ConnectConnectorCreateDataCase0AuthorizationUrlParamsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ConnectConnectorCreateDataCase0AuthorizationUrlParamsMap>;
-
 /** Default scopes to request when token params specify scopes: [\"*\"]. */
 export type ConnectConnectorCreateDataCase0JwtBearerScopesList = Array<string>;
 /** Additional claims included in generated JWT assertions. */
 export type ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap = {
   [key: string]: unknown | undefined;
 };
-const ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap>;
-
 /** JWT bearer grant settings. */
 export interface ConnectConnectorCreateDataCase0JwtBearer {
   /** Whether JWT bearer grants are enabled. */
@@ -612,33 +589,17 @@ export type ConnectConnectorCreateData =
   | ConnectConnectorCreateDataCase9
   | ConnectConnectorCreateDataCase10
   | ConnectConnectorCreateDataCase11Map;
-const ConnectConnectorCreateData = S.Unknown as any as S.Schema<ConnectConnectorCreateData>;
-
 /** Values for the selected connection method's template fields. Requires connectionMethod. */
 export type CreateConnectorRequestParamsMap = { [key: string]: string | undefined };
-const CreateConnectorRequestParamsMap =
-  ConnectConnectorCreateDataCase0AuthorizationUrlParamsMap as any as S.Schema<CreateConnectorRequestParamsMap>;
-
 export type CreateConnectorRequestEnvironmentsItemCase0 = "development" | "preview" | "production";
 /** A built-in environment name or the stable env_* ID of a custom environment. */
 export type CreateConnectorRequestEnvironmentsItem =
   | CreateConnectorRequestEnvironmentsItemCase0
   | string;
-const CreateConnectorRequestEnvironmentsItem =
-  S.Unknown as any as S.Schema<CreateConnectorRequestEnvironmentsItem>;
-
 /** Environments for the project connection. Requires projectId. Use one or more built-in environment names or stable custom environment IDs that belong to the project. Duplicate values are accepted and removed. */
 export type CreateConnectorRequestEnvironmentsList = Array<CreateConnectorRequestEnvironmentsItem>;
-const CreateConnectorRequestEnvironmentsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateConnectorRequestEnvironmentsList>;
-
 /** Trigger configuration, validated and encrypted by the trigger driver. An empty object applies driver defaults. */
 export type CreateConnectorRequestTriggerDataMap = { [key: string]: unknown | undefined };
-const CreateConnectorRequestTriggerDataMap =
-  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<CreateConnectorRequestTriggerDataMap>;
-
 export interface CreateConnectorRequestTriggerDestinationCase0 {
   /** Project that receives triggers. During connector creation, omit it to use the top-level projectId. */
   projectId?: string;
@@ -666,14 +627,8 @@ export type CreateConnectorRequestTriggerDestination =
   | CreateConnectorRequestTriggerDestinationCase0
   | CreateConnectorRequestTriggerDestinationCase1
   | CreateConnectorRequestTriggerDestinationCase2;
-const CreateConnectorRequestTriggerDestination =
-  S.Unknown as any as S.Schema<CreateConnectorRequestTriggerDestination>;
-
 /** Default trigger events for this connector. */
 export type CreateConnectorRequestEventsList = Array<string>;
-const CreateConnectorRequestEventsList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<CreateConnectorRequestEventsList>;
-
 export interface CreateConnectorRequest {
   /** The team ID that scopes the request. Do not send it with slug. If both are omitted, Vercel uses the team associated with the token or the authenticated user's default team. The request returns 401 if no team can be selected. */
   teamId?: string;
@@ -716,21 +671,10 @@ export interface CreateConnectorRequest {
   /** Default trigger events for this connector. */
   events?: CreateConnectorRequestEventsList;
 }
-const CreateConnectorRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateConnectorRequest>;
-
 /** Known allowed app-level scopes. For Slack this is the bot scope set configured on the app; for OAuth it is the connector's enabled `clientCredentials.scopes` configuration. */
 export type ConnectConnectorCreateResultAppTokensScopesList = Array<string>;
-const ConnectConnectorCreateResultAppTokensScopesList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateResultAppTokensScopesList>;
-
 /** Supported OAuth authorization-detail type names. */
 export type ConnectConnectorCreateResultAppTokensSupportedAuthorizationDetailsList = Array<string>;
-const ConnectConnectorCreateResultAppTokensSupportedAuthorizationDetailsList =
-  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateResultAppTokensSupportedAuthorizationDetailsList>;
-
 /** App-token capabilities and known grants for the connector. */
 export interface ConnectConnectorCreateResultAppTokens {
   /** Whether one app token can be used across installations. */
@@ -748,11 +692,6 @@ export interface ConnectConnectorCreateResultAppTokens {
   /** Whether callers can request resource-specific app tokens. */
   supportsResources?: boolean;
 }
-const ConnectConnectorCreateResultAppTokens = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ConnectConnectorCreateResultAppTokens>;
-
 /** Principal kind. */
 export type ConnectConnectorCreateResultCreatedByCase0Type = "user";
 /** Principal that originally created the connector -- either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all. */
@@ -785,33 +724,17 @@ export interface ConnectConnectorCreateResultCreatedByCase1 {
 export type ConnectConnectorCreateResultCreatedBy =
   | ConnectConnectorCreateResultCreatedByCase0
   | ConnectConnectorCreateResultCreatedByCase1;
-const ConnectConnectorCreateResultCreatedBy =
-  S.Unknown as any as S.Schema<ConnectConnectorCreateResultCreatedBy>;
-
 /** How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it. */
 export type ConnectConnectorCreateResultCreationMode = "managed" | "manual";
-const ConnectConnectorCreateResultCreationMode = S.String;
-
 /** Known events this connector subscribes to (e.g. Slack bot events, GitHub webhook events). Names are type-specific and validated by the managed-create flow when forwarded to the third-party service. */
 export type ConnectConnectorCreateResultEventsList = Array<string>;
-const ConnectConnectorCreateResultEventsList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateResultEventsList>;
-
 /** Managed connector metadata exposed without leaking the manager connector or installation identifiers. */
 export interface ConnectConnectorCreateResultManaged {
   /** Whether Vercel synchronizes provider-side configuration. */
   sync?: boolean;
 }
-const ConnectConnectorCreateResultManaged = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ConnectConnectorCreateResultManaged>;
-
 /** Token subject types supported by the connector. */
 export type ConnectConnectorCreateResultSupportedSubjectTypesList = Array<string>;
-const ConnectConnectorCreateResultSupportedSubjectTypesList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateResultSupportedSubjectTypesList>;
-
 /** Destinations that incoming triggers should be forwarded to. Limited to 3 entries. Set the initial destination with `triggerDestination` during creation. Replace the complete set with `PATCH /v1/connect/connectors/{connector}/trigger-destinations`. */
 export interface ConnectTriggerDestination {
   /** Git branch used to select a preview deployment. */
@@ -823,26 +746,13 @@ export interface ConnectTriggerDestination {
   /** Vercel project that receives matching trigger requests. */
   projectId: string;
 }
-const ConnectTriggerDestination = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ConnectTriggerDestination>;
-
 /** Destinations that incoming triggers should be forwarded to. Limited to 3 entries. Set the initial destination with `triggerDestination` during creation. Replace the complete set with `PATCH /v1/connect/connectors/{connector}/trigger-destinations`. */
 export type ConnectConnectorCreateResultTriggerDestinationsList = Array<ConnectTriggerDestination>;
-const ConnectConnectorCreateResultTriggerDestinationsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ConnectConnectorCreateResultTriggerDestinationsList>;
-
 /** Incoming trigger configuration. Only present when enabled. */
 export interface ConnectTriggerConfiguration {
   /** Whether incoming triggers are enabled for the connector. */
   enabled: boolean;
 }
-const ConnectTriggerConfiguration =
-  ConnectConnectorCreateDataCase0RefreshTokens as any as S.Schema<ConnectTriggerConfiguration>;
-
 /** Connector implementation type. */
 export type ConnectConnectorCreateResultType =
   | "api-key"
@@ -861,8 +771,6 @@ export type ConnectConnectorCreateResultType =
   | "slack"
   | "snowflake"
   | "snowflake-wif";
-const ConnectConnectorCreateResultType = S.String;
-
 /** Principal kind. */
 export type ConnectConnectorCreateResultUpdatedByCase0Type = "user";
 /** Principal that most recently mutated the connector. Same shape as {@link createdBy} but tracks the most recent updater, not the original creator. At create time the two fields point at the same principal; they diverge on the first subsequent update. */
@@ -895,19 +803,10 @@ export interface ConnectConnectorCreateResultUpdatedByCase1 {
 export type ConnectConnectorCreateResultUpdatedBy =
   | ConnectConnectorCreateResultUpdatedByCase0
   | ConnectConnectorCreateResultUpdatedByCase1;
-const ConnectConnectorCreateResultUpdatedBy =
-  S.Unknown as any as S.Schema<ConnectConnectorCreateResultUpdatedBy>;
-
 /** Known allowed user-level scopes. For Slack this is the user scope set configured on the app; for OAuth it is the connector's enabled `userAuthorization.scopes` configuration. */
 export type ConnectConnectorCreateResultUserTokensScopesList = Array<string>;
-const ConnectConnectorCreateResultUserTokensScopesList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorCreateResultUserTokensScopesList>;
-
 /** Supported OAuth authorization-detail type names. */
 export type ConnectConnectorCreateResultUserTokensSupportedAuthorizationDetailsList = Array<string>;
-const ConnectConnectorCreateResultUserTokensSupportedAuthorizationDetailsList =
-  ConnectConnectorCreateDataCase0ServerConfigJwksKeysItemKeyOpsList as any as S.Schema<ConnectConnectorCreateResultUserTokensSupportedAuthorizationDetailsList>;
-
 /** User-token capabilities and known grants for the connector. */
 export interface ConnectConnectorCreateResultUserTokens {
   /** Whether one user token can be used across installations. */
@@ -923,11 +822,6 @@ export interface ConnectConnectorCreateResultUserTokens {
   /** Whether callers can request resource-specific user tokens. */
   supportsResources?: boolean;
 }
-const ConnectConnectorCreateResultUserTokens = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ConnectConnectorCreateResultUserTokens>;
-
 /** Connector created by the request. */
 export interface ConnectConnectorCreateResult {
   /** Hex accent color (e.g., `#000000`) for branding. */
@@ -1007,11 +901,6 @@ export interface ConnectConnectorCreateResult {
   /** Public website for the connected service. */
   website?: string;
 }
-const ConnectConnectorCreateResult = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ConnectConnectorCreateResult>;
-
 export type CreateConnectorAuthorizationRequestRequestSubjectCase0Type = "app";
 export interface CreateConnectorAuthorizationRequestRequestSubjectCase0 {
   type: CreateConnectorAuthorizationRequestRequestSubjectCase0Type;
@@ -1047,42 +936,17 @@ export type CreateConnectorAuthorizationRequestRequestSubject =
   | CreateConnectorAuthorizationRequestRequestSubjectCase2
   | CreateConnectorAuthorizationRequestRequestSubjectCase3
   | CreateConnectorAuthorizationRequestRequestSubjectCase4;
-const CreateConnectorAuthorizationRequestRequestSubject =
-  S.Unknown as any as S.Schema<CreateConnectorAuthorizationRequestRequestSubject>;
-
 export type CreateConnectorAuthorizationRequestRequestAudienceList = Array<string>;
-const CreateConnectorAuthorizationRequestRequestAudienceList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<CreateConnectorAuthorizationRequestRequestAudienceList>;
-
 export type CreateConnectorAuthorizationRequestRequestScopesList = Array<string>;
-const CreateConnectorAuthorizationRequestRequestScopesList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<CreateConnectorAuthorizationRequestRequestScopesList>;
-
 export type CreateConnectorAuthorizationRequestRequestResourcesList = Array<string>;
-const CreateConnectorAuthorizationRequestRequestResourcesList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<CreateConnectorAuthorizationRequestRequestResourcesList>;
-
 export interface CreateConnectorAuthorizationRequestRequestAuthorizationDetailsItem {
   type?: string;
 }
-const CreateConnectorAuthorizationRequestRequestAuthorizationDetailsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateConnectorAuthorizationRequestRequestAuthorizationDetailsItem>;
-
 export type CreateConnectorAuthorizationRequestRequestAuthorizationDetailsList =
   Array<CreateConnectorAuthorizationRequestRequestAuthorizationDetailsItem>;
-const CreateConnectorAuthorizationRequestRequestAuthorizationDetailsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateConnectorAuthorizationRequestRequestAuthorizationDetailsList>;
-
 export type CreateConnectorAuthorizationRequestRequestAdditionalParamsMap = {
   [key: string]: string | undefined;
 };
-const CreateConnectorAuthorizationRequestRequestAdditionalParamsMap =
-  ConnectConnectorCreateDataCase0AuthorizationUrlParamsMap as any as S.Schema<CreateConnectorAuthorizationRequestRequestAdditionalParamsMap>;
-
 export interface CreateConnectorAuthorizationRequestRequest {
   connector: string;
   subject?: CreateConnectorAuthorizationRequestRequestSubject;
@@ -1099,11 +963,6 @@ export interface CreateConnectorAuthorizationRequestRequest {
   expiresInMs?: number;
   additionalParams?: CreateConnectorAuthorizationRequestRequestAdditionalParamsMap;
 }
-const CreateConnectorAuthorizationRequestRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateConnectorAuthorizationRequestRequest>;
-
 export interface CreateConnectorAuthorizationRequestResponseConnector {
   /** Provider-facing display name when the connector type exposes one, falling back to the stored connector name. */
   displayName: string;
@@ -1120,11 +979,6 @@ export interface CreateConnectorAuthorizationRequestResponseConnector {
   /** Client uid (e.g. `salesforce/my-org`). */
   uid: string;
 }
-const CreateConnectorAuthorizationRequestResponseConnector = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateConnectorAuthorizationRequestResponseConnector>;
-
 export interface CreateConnectorAuthorizationRequestResponse {
   connector: CreateConnectorAuthorizationRequestResponseConnector;
   deviceCode?: string;
@@ -1133,11 +987,6 @@ export interface CreateConnectorAuthorizationRequestResponse {
   url: string;
   verifier: string;
 }
-const CreateConnectorAuthorizationRequestResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateConnectorAuthorizationRequestResponse>;
-
 export interface DeleteConnectorRequest {
   /** Stable connector ID or URL-encoded team-scoped UID. Examples: `scl_abc123` or `slack%2Fmy-bot`. */
   connector: string;
@@ -1146,17 +995,7 @@ export interface DeleteConnectorRequest {
   /** The team slug that scopes the request. Do not send it with teamId. If both are omitted, Vercel uses the team associated with the token or the authenticated user's default team. The request returns 401 if no team can be selected. */
   slug?: string;
 }
-const DeleteConnectorRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteConnectorRequest>;
-
 export interface DeleteConnectorResponse {}
-const DeleteConnectorResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteConnectorResponse>;
-
 export interface DeleteConnectorProjectConnectionRequest {
   /** Stable connector ID or URL-encoded team-scoped UID. Examples: `scl_abc123` or `slack%2Fmy-bot`. */
   connector: string;
@@ -1167,17 +1006,7 @@ export interface DeleteConnectorProjectConnectionRequest {
   /** The team slug that scopes the request. Do not send it with teamId. If both are omitted, Vercel uses the team associated with the token or the authenticated user's default team. The request returns 401 if no team can be selected. */
   slug?: string;
 }
-const DeleteConnectorProjectConnectionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteConnectorProjectConnectionRequest>;
-
 export interface DeleteConnectorProjectConnectionResponse {}
-const DeleteConnectorProjectConnectionResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteConnectorProjectConnectionResponse>;
-
 export interface GetConnectorRequest {
   /** Stable connector ID or URL-encoded team-scoped UID. Examples: `scl_abc123` or `slack%2Fmy-bot`. */
   connector: string;
@@ -1186,18 +1015,10 @@ export interface GetConnectorRequest {
   /** The team slug that scopes the request. Do not send it with teamId. If both are omitted, Vercel uses the team associated with the token or the authenticated user's default team. The request returns 401 if no team can be selected. */
   slug?: string;
 }
-const GetConnectorRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<GetConnectorRequest>;
-
 /** Known allowed app-level scopes. For Slack this is the bot scope set configured on the app; for OAuth it is the connector's enabled `clientCredentials.scopes` configuration. */
 export type ConnectConnectorAppTokensScopesList = Array<string>;
-const ConnectConnectorAppTokensScopesList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorAppTokensScopesList>;
-
 /** Supported OAuth authorization-detail type names. */
 export type ConnectConnectorAppTokensSupportedAuthorizationDetailsList = Array<string>;
-const ConnectConnectorAppTokensSupportedAuthorizationDetailsList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorAppTokensSupportedAuthorizationDetailsList>;
-
 /** App-token capabilities and known grants for the connector. */
 export interface ConnectConnectorAppTokens {
   /** Whether one app token can be used across installations. */
@@ -1215,11 +1036,6 @@ export interface ConnectConnectorAppTokens {
   /** Whether callers can request resource-specific app tokens. */
   supportsResources?: boolean;
 }
-const ConnectConnectorAppTokens = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ConnectConnectorAppTokens>;
-
 /** Principal kind. */
 export type ConnectConnectorCreatedByCase0Type = "user";
 /** Principal that originally created the connector -- either a Vercel user (interactive dashboard / CLI flow) or a Vercel deployment (OIDC-authenticated project, used by runtime auto-provisioning). See {@link ConnexPrincipal}. Optional: pre-existing rows from before this shape was introduced may carry no attribution at all. */
@@ -1252,29 +1068,16 @@ export interface ConnectConnectorCreatedByCase1 {
 export type ConnectConnectorCreatedBy =
   | ConnectConnectorCreatedByCase0
   | ConnectConnectorCreatedByCase1;
-const ConnectConnectorCreatedBy = S.Unknown as any as S.Schema<ConnectConnectorCreatedBy>;
-
 /** How the connector row was originally created. New create paths stamp this explicitly; older rows may omit it. */
 export type ConnectConnectorCreationMode = "managed" | "manual";
-const ConnectConnectorCreationMode = S.String;
-
 /** Known events this connector subscribes to (e.g. Slack bot events, GitHub webhook events). Names are type-specific and validated by the managed-create flow when forwarded to the third-party service. */
 export type ConnectConnectorEventsList = Array<string>;
-const ConnectConnectorEventsList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorEventsList>;
-
 /** Managed connector metadata exposed without leaking the manager connector or installation identifiers. */
 export type ConnectConnectorManaged = ConnectConnectorCreateResultManaged;
 /** Token subject types supported by the connector. */
 export type ConnectConnectorSupportedSubjectTypesList = Array<string>;
-const ConnectConnectorSupportedSubjectTypesList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorSupportedSubjectTypesList>;
-
 /** Destinations that incoming triggers should be forwarded to. Limited to 3 entries. Set the initial destination with `triggerDestination` during creation. Replace the complete set with `PATCH /v1/connect/connectors/{connector}/trigger-destinations`. */
 export type ConnectConnectorTriggerDestinationsList = Array<ConnectTriggerDestination>;
-const ConnectConnectorTriggerDestinationsList =
-  ConnectConnectorCreateResultTriggerDestinationsList as any as S.Schema<ConnectConnectorTriggerDestinationsList>;
-
 /** Connector implementation type. */
 export type ConnectConnectorType =
   | "api-key"
@@ -1293,8 +1096,6 @@ export type ConnectConnectorType =
   | "slack"
   | "snowflake"
   | "snowflake-wif";
-const ConnectConnectorType = S.String;
-
 /** Principal kind. */
 export type ConnectConnectorUpdatedByCase0Type = "user";
 /** Principal that most recently mutated the connector. Same shape as {@link createdBy} but tracks the most recent updater, not the original creator. At create time the two fields point at the same principal; they diverge on the first subsequent update. */
@@ -1327,18 +1128,10 @@ export interface ConnectConnectorUpdatedByCase1 {
 export type ConnectConnectorUpdatedBy =
   | ConnectConnectorUpdatedByCase0
   | ConnectConnectorUpdatedByCase1;
-const ConnectConnectorUpdatedBy = S.Unknown as any as S.Schema<ConnectConnectorUpdatedBy>;
-
 /** Known allowed user-level scopes. For Slack this is the user scope set configured on the app; for OAuth it is the connector's enabled `userAuthorization.scopes` configuration. */
 export type ConnectConnectorUserTokensScopesList = Array<string>;
-const ConnectConnectorUserTokensScopesList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUserTokensScopesList>;
-
 /** Supported OAuth authorization-detail type names. */
 export type ConnectConnectorUserTokensSupportedAuthorizationDetailsList = Array<string>;
-const ConnectConnectorUserTokensSupportedAuthorizationDetailsList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectConnectorUserTokensSupportedAuthorizationDetailsList>;
-
 /** User-token capabilities and known grants for the connector. */
 export interface ConnectConnectorUserTokens {
   /** Whether one user token can be used across installations. */
@@ -1354,11 +1147,6 @@ export interface ConnectConnectorUserTokens {
   /** Whether callers can request resource-specific user tokens. */
   supportsResources?: boolean;
 }
-const ConnectConnectorUserTokens = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ConnectConnectorUserTokens>;
-
 /** A connector that defines how Vercel accesses an external service. */
 export interface ConnectConnector {
   /** Hex accent color (e.g., `#000000`) for branding. */
@@ -1438,8 +1226,6 @@ export interface ConnectConnector {
   /** Public website for the connected service. */
   website?: string;
 }
-const ConnectConnector = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ConnectConnector>;
-
 export interface GetConnectorProjectConnectionRequest {
   /** Stable connector ID or URL-encoded team-scoped UID. Examples: `scl_abc123` or `slack%2Fmy-bot`. */
   connector: string;
@@ -1450,11 +1236,6 @@ export interface GetConnectorProjectConnectionRequest {
   /** The team slug that scopes the request. Do not send it with teamId. If both are omitted, Vercel uses the team associated with the token or the authenticated user's default team. The request returns 401 if no team can be selected. */
   slug?: string;
 }
-const GetConnectorProjectConnectionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetConnectorProjectConnectionRequest>;
-
 export type ConnectProjectConnectionEnabledEnvironmentsItemCase1 =
   | "development"
   | "preview"
@@ -1462,17 +1243,9 @@ export type ConnectProjectConnectionEnabledEnvironmentsItemCase1 =
 export type ConnectProjectConnectionEnabledEnvironmentsItem =
   | string
   | ConnectProjectConnectionEnabledEnvironmentsItemCase1;
-const ConnectProjectConnectionEnabledEnvironmentsItem =
-  S.Unknown as any as S.Schema<ConnectProjectConnectionEnabledEnvironmentsItem>;
-
 /** Environments where the connector is enabled for the project. */
 export type ConnectProjectConnectionEnabledEnvironmentsList =
   Array<ConnectProjectConnectionEnabledEnvironmentsItem>;
-const ConnectProjectConnectionEnabledEnvironmentsList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ConnectProjectConnectionEnabledEnvironmentsList>;
-
 /** Custom environments available on the project. This list can include environments where the connector is not enabled. */
 export interface ConnectProjectConnectionProjectCustomEnvironmentsItem {
   /** Stable custom environment ID. */
@@ -1480,19 +1253,9 @@ export interface ConnectProjectConnectionProjectCustomEnvironmentsItem {
   /** Current human-readable custom environment slug. */
   slug: string;
 }
-const ConnectProjectConnectionProjectCustomEnvironmentsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ConnectProjectConnectionProjectCustomEnvironmentsItem>;
-
 /** Custom environments available on the project. This list can include environments where the connector is not enabled. */
 export type ConnectProjectConnectionProjectCustomEnvironmentsList =
   Array<ConnectProjectConnectionProjectCustomEnvironmentsItem>;
-const ConnectProjectConnectionProjectCustomEnvironmentsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ConnectProjectConnectionProjectCustomEnvironmentsList>;
-
 /** Vercel project connected to the connector. */
 export interface ConnectProjectConnectionProject {
   /** Custom environments available on the project. This list can include environments where the connector is not enabled. */
@@ -1502,11 +1265,6 @@ export interface ConnectProjectConnectionProject {
   /** Current Vercel project name. */
   name: string;
 }
-const ConnectProjectConnectionProject = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ConnectProjectConnectionProject>;
-
 /** A connection between a connector and a Vercel project, including the environments where the connector is enabled. */
 export interface ConnectProjectConnection {
   /** Stable `scl_` connector ID, even when the request used a UID. */
@@ -1520,11 +1278,6 @@ export interface ConnectProjectConnection {
   /** Time when the project connection was last updated, in epoch milliseconds. */
   updatedAt: number;
 }
-const ConnectProjectConnection = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ConnectProjectConnection>;
-
 export type GetConnectorTokenRequestSubjectCase0Type = "app";
 export interface GetConnectorTokenRequestSubjectCase0 {
   type: GetConnectorTokenRequestSubjectCase0Type;
@@ -1559,30 +1312,13 @@ export type GetConnectorTokenRequestSubject =
   | GetConnectorTokenRequestSubjectCase2
   | GetConnectorTokenRequestSubjectCase3
   | CreateConnectorAuthorizationRequestRequestSubjectCase4;
-const GetConnectorTokenRequestSubject =
-  S.Unknown as any as S.Schema<GetConnectorTokenRequestSubject>;
-
 export type GetConnectorTokenRequestAudienceList = Array<string>;
-const GetConnectorTokenRequestAudienceList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<GetConnectorTokenRequestAudienceList>;
-
 export type GetConnectorTokenRequestScopesList = Array<string>;
-const GetConnectorTokenRequestScopesList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<GetConnectorTokenRequestScopesList>;
-
 export type GetConnectorTokenRequestResourcesList = Array<string>;
-const GetConnectorTokenRequestResourcesList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<GetConnectorTokenRequestResourcesList>;
-
 export type GetConnectorTokenRequestAuthorizationDetailsItem =
   CreateConnectorAuthorizationRequestRequestAuthorizationDetailsItem;
 export type GetConnectorTokenRequestAuthorizationDetailsList =
   Array<CreateConnectorAuthorizationRequestRequestAuthorizationDetailsItem>;
-const GetConnectorTokenRequestAuthorizationDetailsList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetConnectorTokenRequestAuthorizationDetailsList>;
-
 export interface GetConnectorTokenRequest {
   connector: string;
   subject?: GetConnectorTokenRequestSubject;
@@ -1593,31 +1329,15 @@ export interface GetConnectorTokenRequest {
   authorizationDetails?: GetConnectorTokenRequestAuthorizationDetailsList;
   validityBufferMs?: number;
 }
-const GetConnectorTokenRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetConnectorTokenRequest>;
-
 /** Claims extracted from the provider's tokens per the connector's `ForwardedClaims` allow-list. Currently sourced from the OIDC id_token only. */
 export type GetConnectorTokenResponseClaimsMap = { [key: string]: unknown | undefined };
-const GetConnectorTokenResponseClaimsMap =
-  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<GetConnectorTokenResponseClaimsMap>;
-
 export interface GetConnectorTokenResponseConnector {
   id: string;
   type: string;
   uid: string;
 }
-const GetConnectorTokenResponseConnector = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetConnectorTokenResponseConnector>;
-
 /** Driver-specific metadata (e.g., botUserId for Slack). */
 export type GetConnectorTokenResponseMetadataMap = { [key: string]: unknown | undefined };
-const GetConnectorTokenResponseMetadataMap =
-  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<GetConnectorTokenResponseMetadataMap>;
-
 export interface GetConnectorTokenResponse {
   /** Stable id correlating all tokens (including refreshes) back to the original authorization. */
   authorizationId?: string;
@@ -1636,11 +1356,6 @@ export interface GetConnectorTokenResponse {
   tokenGroupId?: string;
   tokenId: string;
 }
-const GetConnectorTokenResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetConnectorTokenResponse>;
-
 export interface ListConnectorProjectConnectionsRequest {
   /** Stable connector ID or URL-encoded team-scoped UID. Examples: `scl_abc123` or `slack%2Fmy-bot`. */
   connector: string;
@@ -1653,25 +1368,13 @@ export interface ListConnectorProjectConnectionsRequest {
   /** The team slug that scopes the request. Do not send it with teamId. If both are omitted, Vercel uses the team associated with the token or the authenticated user's default team. The request returns 401 if no team can be selected. */
   slug?: string;
 }
-const ListConnectorProjectConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListConnectorProjectConnectionsRequest>;
-
 /** Cursor for the next page. */
 export interface ConnectPagination {
   /** Opaque value to pass as `cursor` on the next request. */
   next: string | null;
 }
-const ConnectPagination = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ConnectPagination>;
-
 /** Project connections in this page. */
 export type ConnectConnectorProjectConnectionListProjectsList = Array<ConnectProjectConnection>;
-const ConnectConnectorProjectConnectionListProjectsList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ConnectConnectorProjectConnectionListProjectsList>;
-
 /** Page of projects connected to a connector. */
 export interface ConnectConnectorProjectConnectionList {
   /** Cursor for the next page. */
@@ -1679,15 +1382,8 @@ export interface ConnectConnectorProjectConnectionList {
   /** Project connections in this page. */
   projects: ConnectConnectorProjectConnectionListProjectsList;
 }
-const ConnectConnectorProjectConnectionList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ConnectConnectorProjectConnectionList>;
-
 /** Sort by name in ascending order, or by creation or update time in descending order. */
 export type ListConnectorsRequestSort = "name" | "createdAt" | "updatedAt";
-const ListConnectorsRequestSort = S.String;
-
 export interface ListConnectorsRequest {
   /** Maximum number of connectors to return. Defaults to 20. */
   limit?: number;
@@ -1708,18 +1404,8 @@ export interface ListConnectorsRequest {
   /** The team slug that scopes the request. Do not send it with teamId. If both are omitted, Vercel uses the team associated with the token or the authenticated user's default team. The request returns 401 if no team can be selected. */
   slug?: string;
 }
-const ListConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListConnectorsRequest>;
-
 /** Connectors in this page. */
 export type ConnectConnectorListConnectorsList = Array<ConnectConnector>;
-const ConnectConnectorListConnectorsList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ConnectConnectorListConnectorsList>;
-
 /** Page of connectors. */
 export interface ConnectConnectorList {
   /** Connectors in this page. */
@@ -1727,8 +1413,6 @@ export interface ConnectConnectorList {
   /** Cursor for the next page. */
   pagination: ConnectPagination;
 }
-const ConnectConnectorList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ConnectConnectorList>;
-
 export interface ListProjectConnectorConnectionsRequest {
   /** Vercel project ID. */
   projectId: string;
@@ -1741,16 +1425,8 @@ export interface ListProjectConnectorConnectionsRequest {
   /** The team slug that scopes the request. Do not send it with teamId. If both are omitted, Vercel uses the team associated with the token or the authenticated user's default team. The request returns 401 if no team can be selected. */
   slug?: string;
 }
-const ListProjectConnectorConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ListProjectConnectorConnectionsRequest>;
-
 /** Connector connections in this page. */
 export type ConnectProjectConnectorConnectionListConnectorsList = Array<ConnectProjectConnection>;
-const ConnectProjectConnectorConnectionListConnectorsList =
-  ConnectConnectorProjectConnectionListProjectsList as any as S.Schema<ConnectProjectConnectorConnectionListConnectorsList>;
-
 /** Page of connectors connected to a project. */
 export interface ConnectProjectConnectorConnectionList {
   /** Connector connections in this page. */
@@ -1758,11 +1434,6 @@ export interface ConnectProjectConnectorConnectionList {
   /** Cursor for the next page. */
   pagination: ConnectPagination;
 }
-const ConnectProjectConnectorConnectionList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ConnectProjectConnectorConnectionList>;
-
 export interface ConnectTriggerDestinationInputCase0 {
   /** Project that receives matching trigger requests. */
   projectId: string;
@@ -1790,16 +1461,9 @@ export type ConnectTriggerDestinationInput =
   | ConnectTriggerDestinationInputCase0
   | ConnectTriggerDestinationInputCase1
   | ConnectTriggerDestinationInputCase2;
-const ConnectTriggerDestinationInput = S.Unknown as any as S.Schema<ConnectTriggerDestinationInput>;
-
 /** Complete replacement set of trigger destinations. An empty array removes all destinations. Connector get and list responses expose the saved set as triggerDestinations. */
 export type ReplaceConnectorTriggerDestinationsRequestDestinationsList =
   Array<ConnectTriggerDestinationInput>;
-const ReplaceConnectorTriggerDestinationsRequestDestinationsList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ReplaceConnectorTriggerDestinationsRequestDestinationsList>;
-
 export interface ReplaceConnectorTriggerDestinationsRequest {
   /** Stable connector ID or URL-encoded team-scoped UID. Examples: `scl_abc123` or `slack%2Fmy-bot`. */
   connector: string;
@@ -1810,21 +1474,10 @@ export interface ReplaceConnectorTriggerDestinationsRequest {
   /** Complete replacement set of trigger destinations. An empty array removes all destinations. Connector get and list responses expose the saved set as triggerDestinations. */
   destinations: ReplaceConnectorTriggerDestinationsRequestDestinationsList;
 }
-const ReplaceConnectorTriggerDestinationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ReplaceConnectorTriggerDestinationsRequest>;
-
 /** Trigger configuration, validated and encrypted by the trigger driver. An empty object applies driver defaults. */
 export type UpdateConnectorRequestTriggerDataMap = { [key: string]: unknown | undefined };
-const UpdateConnectorRequestTriggerDataMap =
-  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<UpdateConnectorRequestTriggerDataMap>;
-
 /** Default trigger events for this connector. */
 export type UpdateConnectorRequestEventsList = Array<string>;
-const UpdateConnectorRequestEventsList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<UpdateConnectorRequestEventsList>;
-
 /** Intended key use: signing or encryption. */
 export type ConnectConnectorUpdateDataCase0ServerConfigJwksKeysItemUse = "sig" | "enc";
 /** Operations permitted for this key. */
@@ -2326,8 +1979,6 @@ export type ConnectConnectorUpdateData =
   | ConnectConnectorUpdateDataCase9
   | ConnectConnectorUpdateDataCase10
   | ConnectConnectorUpdateDataCase11Map;
-const ConnectConnectorUpdateData = S.Unknown as any as S.Schema<ConnectConnectorUpdateData>;
-
 export interface UpdateConnectorRequest {
   /** Stable connector ID or URL-encoded team-scoped UID. Examples: `scl_abc123` or `slack%2Fmy-bot`. */
   connector: string;
@@ -2352,32 +2003,17 @@ export interface UpdateConnectorRequest {
   /** Display name for the connector. It is trimmed and cannot be empty or contain control characters. */
   name?: string;
 }
-const UpdateConnectorRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<UpdateConnectorRequest>;
-
 /** The affected authorization scope. user means each affected user must authorize again. */
 export type ConnectReconsentScope = "user";
-const ConnectReconsentScope = S.String;
-
 /** Existing authorizations no longer cover the connector's configured scopes, so they must be re-authorized. */
 export interface ConnectReconsent {
   /** The affected authorization scope. user means each affected user must authorize again. */
   scope: ConnectReconsentScope;
 }
-const ConnectReconsent = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ConnectReconsent>;
-
 /** Connector fields that caused the synchronization error. */
 export type ConnectServiceSyncErrorFieldsList = Array<string>;
-const ConnectServiceSyncErrorFieldsList =
-  ConnectConnectorCreateDataCase0ServerConfigScopesSupportedList as any as S.Schema<ConnectServiceSyncErrorFieldsList>;
-
 /** Provider-specific error details that are safe to expose. */
 export type ConnectServiceSyncErrorVendorMap = { [key: string]: unknown | undefined };
-const ConnectServiceSyncErrorVendorMap =
-  ConnectConnectorCreateDataCase0JwtBearerAdditionalClaimsMap as any as S.Schema<ConnectServiceSyncErrorVendorMap>;
-
 /** Provider synchronization errors, when synchronization is required. */
 export interface ConnectServiceSyncError {
   /** Connector fields that caused the synchronization error. */
@@ -2387,22 +2023,10 @@ export interface ConnectServiceSyncError {
   /** Provider-specific error details that are safe to expose. */
   vendor?: ConnectServiceSyncErrorVendorMap;
 }
-const ConnectServiceSyncError = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ConnectServiceSyncError>;
-
 /** Provider synchronization errors. Present when serviceSync.status is required. */
 export type ConnectServiceSyncErrorsList = Array<ConnectServiceSyncError>;
-const ConnectServiceSyncErrorsList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ConnectServiceSyncErrorsList>;
-
 /** done means the external service was updated. required means the Vercel update was saved, but provider-side configuration still needs attention. */
 export type ConnectServiceSyncStatus = "done" | "required";
-const ConnectServiceSyncStatus = S.String;
-
 /** Provider-side configuration synchronization result. */
 export interface ConnectServiceSync {
   /** Provider synchronization errors. Present when serviceSync.status is required. */
@@ -2410,8 +2034,6 @@ export interface ConnectServiceSync {
   /** done means the external service was updated. required means the Vercel update was saved, but provider-side configuration still needs attention. */
   status: ConnectServiceSyncStatus;
 }
-const ConnectServiceSync = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ConnectServiceSync>;
-
 /** Updated connector and any required provider follow-up actions. */
 export interface ConnectConnectorUpdateResult {
   /** Updated connector. */
@@ -2423,11 +2045,6 @@ export interface ConnectConnectorUpdateResult {
   /** Result of synchronizing the change with the external service. */
   serviceSync?: ConnectServiceSync;
 }
-const ConnectConnectorUpdateResult = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ConnectConnectorUpdateResult>;
-
 export type UpsertConnectorProjectConnectionRequestEnvironmentsItemCase0 =
   | "development"
   | "preview"
@@ -2436,17 +2053,9 @@ export type UpsertConnectorProjectConnectionRequestEnvironmentsItemCase0 =
 export type UpsertConnectorProjectConnectionRequestEnvironmentsItem =
   | UpsertConnectorProjectConnectionRequestEnvironmentsItemCase0
   | string;
-const UpsertConnectorProjectConnectionRequestEnvironmentsItem =
-  S.Unknown as any as S.Schema<UpsertConnectorProjectConnectionRequestEnvironmentsItem>;
-
 /** One or more built-in environment names or stable custom environment IDs that belong to the project. Duplicate values are accepted and removed. */
 export type UpsertConnectorProjectConnectionRequestEnvironmentsList =
   Array<UpsertConnectorProjectConnectionRequestEnvironmentsItem>;
-const UpsertConnectorProjectConnectionRequestEnvironmentsList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<UpsertConnectorProjectConnectionRequestEnvironmentsList>;
-
 export interface UpsertConnectorProjectConnectionRequest {
   /** Stable connector ID or URL-encoded team-scoped UID. Examples: `scl_abc123` or `slack%2Fmy-bot`. */
   connector: string;
@@ -2459,11 +2068,6 @@ export interface UpsertConnectorProjectConnectionRequest {
   /** One or more built-in environment names or stable custom environment IDs that belong to the project. Duplicate values are accepted and removed. */
   environments: UpsertConnectorProjectConnectionRequestEnvironmentsList;
 }
-const UpsertConnectorProjectConnectionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<UpsertConnectorProjectConnectionRequest>;
-
 export type CreateConnectorError =
   | BadRequest
   | Forbidden
@@ -2478,8 +2082,8 @@ export const createConnector: API.OperationMethod<
   CreateConnectorError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConnectorRequest,
-  output: ConnectConnectorCreateResult,
+  input: __S(6) as any as S.Schema<CreateConnectorRequest>,
+  output: __S(12) as any as S.Schema<ConnectConnectorCreateResult>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2499,8 +2103,8 @@ export const createConnectorAuthorizationRequest: API.OperationMethod<
   CreateConnectorAuthorizationRequestError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConnectorAuthorizationRequestRequest,
-  output: CreateConnectorAuthorizationRequestResponse,
+  input: __S(15) as any as S.Schema<CreateConnectorAuthorizationRequestRequest>,
+  output: __S(17) as any as S.Schema<CreateConnectorAuthorizationRequestResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2520,8 +2124,8 @@ export const deleteConnector: API.OperationMethod<
   DeleteConnectorError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConnectorRequest,
-  output: DeleteConnectorResponse,
+  input: __S(18) as any as S.Schema<DeleteConnectorRequest>,
+  output: __S(19) as any as S.Schema<DeleteConnectorResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2540,8 +2144,8 @@ export const deleteConnectorProjectConnection: API.OperationMethod<
   DeleteConnectorProjectConnectionError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConnectorProjectConnectionRequest,
-  output: DeleteConnectorProjectConnectionResponse,
+  input: __S(20) as any as S.Schema<DeleteConnectorProjectConnectionRequest>,
+  output: __S(21) as any as S.Schema<DeleteConnectorProjectConnectionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2561,8 +2165,8 @@ export const getConnector: API.OperationMethod<
   GetConnectorError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectorRequest,
-  output: ConnectConnector,
+  input: __S(22) as any as S.Schema<GetConnectorRequest>,
+  output: __S(25) as any as S.Schema<ConnectConnector>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2581,8 +2185,8 @@ export const getConnectorProjectConnection: API.OperationMethod<
   GetConnectorProjectConnectionError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectorProjectConnectionRequest,
-  output: ConnectProjectConnection,
+  input: __S(26) as any as S.Schema<GetConnectorProjectConnectionRequest>,
+  output: __S(31) as any as S.Schema<ConnectProjectConnection>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2602,8 +2206,8 @@ export const getConnectorToken: API.OperationMethod<
   GetConnectorTokenError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectorTokenRequest,
-  output: GetConnectorTokenResponse,
+  input: __S(33) as any as S.Schema<GetConnectorTokenRequest>,
+  output: __S(35) as any as S.Schema<GetConnectorTokenResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2622,8 +2226,8 @@ export const listConnectorProjectConnections: API.OperationMethod<
   ListConnectorProjectConnectionsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConnectorProjectConnectionsRequest,
-  output: ConnectConnectorProjectConnectionList,
+  input: __S(36) as any as S.Schema<ListConnectorProjectConnectionsRequest>,
+  output: __S(39) as any as S.Schema<ConnectConnectorProjectConnectionList>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2643,8 +2247,8 @@ export const listConnectors: API.OperationMethod<
   ListConnectorsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConnectorsRequest,
-  output: ConnectConnectorList,
+  input: __S(40) as any as S.Schema<ListConnectorsRequest>,
+  output: __S(42) as any as S.Schema<ConnectConnectorList>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2662,8 +2266,8 @@ export const listProjectConnectorConnections: API.OperationMethod<
   ListProjectConnectorConnectionsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectConnectorConnectionsRequest,
-  output: ConnectProjectConnectorConnectionList,
+  input: __S(43) as any as S.Schema<ListProjectConnectorConnectionsRequest>,
+  output: __S(44) as any as S.Schema<ConnectProjectConnectorConnectionList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2683,8 +2287,8 @@ export const replaceConnectorTriggerDestinations: API.OperationMethod<
   ReplaceConnectorTriggerDestinationsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceConnectorTriggerDestinationsRequest,
-  output: ConnectConnector,
+  input: __S(46) as any as S.Schema<ReplaceConnectorTriggerDestinationsRequest>,
+  output: __S(25) as any as S.Schema<ConnectConnector>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2704,8 +2308,8 @@ export const updateConnector: API.OperationMethod<
   UpdateConnectorError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConnectorRequest,
-  output: ConnectConnectorUpdateResult,
+  input: __S(47) as any as S.Schema<UpdateConnectorRequest>,
+  output: __S(52) as any as S.Schema<ConnectConnectorUpdateResult>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2724,8 +2328,8 @@ export const upsertConnectorProjectConnection: API.OperationMethod<
   UpsertConnectorProjectConnectionError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpsertConnectorProjectConnectionRequest,
-  output: ConnectProjectConnection,
+  input: __S(54) as any as S.Schema<UpsertConnectorProjectConnectionRequest>,
+  output: __S(31) as any as S.Schema<ConnectProjectConnection>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -2751,30 +2355,30 @@ function __c0(j: number): any {
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(CreateConnectorRequestEnvironmentsItem);
+      return S.Array(S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          data: ConnectConnectorCreateData,
+          data: S.Unknown,
           icon: S.optional(S.String),
           backgroundColor: S.optional(S.String),
           accentColor: S.optional(S.String),
           type: S.optional(S.String),
           service: S.optional(S.String),
           connectionMethod: S.optional(S.String),
-          params: S.optional(CreateConnectorRequestParamsMap),
+          params: S.optional(__S(3)),
           target: S.optional(S.String),
           uid: S.optional(S.String),
           name: S.optional(S.String),
           projectId: S.optional(S.String),
-          environments: S.optional(CreateConnectorRequestEnvironmentsList),
+          environments: S.optional(__S(5)),
           triggers: S.optional(S.Boolean),
           triggerType: S.optional(S.String),
-          triggerData: S.optional(CreateConnectorRequestTriggerDataMap),
-          triggerDestination: S.optional(CreateConnectorRequestTriggerDestination),
-          events: S.optional(CreateConnectorRequestEventsList),
+          triggerData: S.optional(__S(4)),
+          triggerDestination: S.optional(S.Unknown),
+          events: S.optional(__S(1)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/connect/connectors", code: 200 })),
       ).annotate({ identifier: "CreateConnectorRequest" });
     case 7:
@@ -2783,10 +2387,8 @@ function __c0(j: number): any {
           crossInstallation: S.Boolean,
           permissionsUrl: S.optional(S.String),
           requiresReinstallation: S.optional(S.Boolean),
-          scopes: S.optional(ConnectConnectorCreateResultAppTokensScopesList),
-          supportedAuthorizationDetails: S.optional(
-            ConnectConnectorCreateResultAppTokensSupportedAuthorizationDetailsList,
-          ),
+          scopes: S.optional(__S(1)),
+          supportedAuthorizationDetails: S.optional(__S(0)),
           supportsRefinement: S.Boolean,
           supportsResources: S.optional(S.Boolean),
         }),
@@ -2817,16 +2419,14 @@ function __c1(j: number): any {
         identifier: "ConnectTriggerDestination",
       });
     case 2:
-      return S.Array(ConnectTriggerDestination);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
           crossInstallation: S.Boolean,
           manualCredentialInput: S.optional(S.Boolean),
-          scopes: S.optional(ConnectConnectorCreateResultUserTokensScopesList),
-          supportedAuthorizationDetails: S.optional(
-            ConnectConnectorCreateResultUserTokensSupportedAuthorizationDetailsList,
-          ),
+          scopes: S.optional(__S(1)),
+          supportedAuthorizationDetails: S.optional(__S(0)),
           supportsRefinement: S.Boolean,
           supportsResources: S.optional(S.Boolean),
         }),
@@ -2837,42 +2437,42 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accentColor: S.optional(S.String),
-          appTokens: S.optional(ConnectConnectorCreateResultAppTokens),
+          appTokens: S.optional(__S(7)),
           backgroundColor: S.optional(S.String),
           clientUrl: S.optional(S.NullOr(S.String)),
           connectionMethod: S.optional(S.String),
           createdAt: S.Number,
-          createdBy: S.optional(ConnectConnectorCreateResultCreatedBy),
-          creationMode: S.optional(ConnectConnectorCreateResultCreationMode),
+          createdBy: S.optional(S.Unknown),
+          creationMode: S.optional(S.String),
           defaultInstallationId: S.optional(S.String),
           devsite: S.optional(S.String),
           displayName: S.String,
           docsite: S.optional(S.String),
-          events: S.optional(ConnectConnectorCreateResultEventsList),
+          events: S.optional(__S(1)),
           icon: S.optional(S.String),
           id: S.String,
           knownStale: S.optional(S.Boolean),
-          managed: S.optional(ConnectConnectorCreateResultManaged),
+          managed: S.optional(__S(8)),
           name: S.String,
           redirectUri: S.optional(S.String),
           reinstallAt: S.optional(S.Number),
           service: S.String,
           serviceIcon: S.optional(S.String),
-          supportedSubjectTypes: ConnectConnectorCreateResultSupportedSubjectTypesList,
+          supportedSubjectTypes: __S(1),
           supportsIcon: S.Unknown,
           supportsInstallation: S.Boolean,
           supportsRevocation: S.Boolean,
           supportsTriggers: S.Boolean,
           target: S.optional(S.String),
-          triggerDestinations: S.optional(ConnectConnectorCreateResultTriggerDestinationsList),
-          triggers: S.optional(ConnectTriggerConfiguration),
-          type: ConnectConnectorCreateResultType,
+          triggerDestinations: S.optional(__S(10)),
+          triggers: S.optional(__S(2)),
+          type: S.String,
           typeIcon: S.optional(S.String),
           typeName: S.String,
           uid: S.String,
           updatedAt: S.Number,
-          updatedBy: S.optional(ConnectConnectorCreateResultUpdatedBy),
-          userTokens: S.optional(ConnectConnectorCreateResultUserTokens),
+          updatedBy: S.optional(S.Unknown),
+          userTokens: S.optional(__S(11)),
           website: S.optional(S.String),
         }),
       ).annotate({
@@ -2887,28 +2487,24 @@ function __c1(j: number): any {
         identifier: "CreateConnectorAuthorizationRequestRequestAuthorizationDetailsItem",
       });
     case 6:
-      return S.Array(CreateConnectorAuthorizationRequestRequestAuthorizationDetailsItem);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
           connector: S.String.pipe(T.Label()),
-          subject: S.optional(CreateConnectorAuthorizationRequestRequestSubject),
+          subject: S.optional(S.Unknown),
           installationId: S.optional(S.String),
-          audience: S.optional(CreateConnectorAuthorizationRequestRequestAudienceList),
-          scopes: S.optional(CreateConnectorAuthorizationRequestRequestScopesList),
-          resources: S.optional(CreateConnectorAuthorizationRequestRequestResourcesList),
-          authorizationDetails: S.optional(
-            CreateConnectorAuthorizationRequestRequestAuthorizationDetailsList,
-          ),
+          audience: S.optional(__S(1)),
+          scopes: S.optional(__S(1)),
+          resources: S.optional(__S(1)),
+          authorizationDetails: S.optional(__S(14)),
           validityBufferMs: S.optional(S.Number),
           returnUrl: S.optional(S.String),
           webhook: S.optional(S.String),
           prompt: S.optional(S.String),
           deviceCode: S.optional(S.Boolean),
           expiresInMs: S.optional(S.Number),
-          additionalParams: S.optional(
-            CreateConnectorAuthorizationRequestRequestAdditionalParamsMap,
-          ),
+          additionalParams: S.optional(__S(3)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/connect/authorize/{connector}", code: 200 })),
       ).annotate({
         identifier: "CreateConnectorAuthorizationRequestRequest",
@@ -2934,7 +2530,7 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          connector: CreateConnectorAuthorizationRequestResponseConnector,
+          connector: __S(16),
           deviceCode: S.optional(S.String),
           expiresAt: S.Number,
           request: S.String,
@@ -2991,10 +2587,8 @@ function __c2(j: number): any {
           crossInstallation: S.Boolean,
           permissionsUrl: S.optional(S.String),
           requiresReinstallation: S.optional(S.Boolean),
-          scopes: S.optional(ConnectConnectorAppTokensScopesList),
-          supportedAuthorizationDetails: S.optional(
-            ConnectConnectorAppTokensSupportedAuthorizationDetailsList,
-          ),
+          scopes: S.optional(__S(1)),
+          supportedAuthorizationDetails: S.optional(__S(1)),
           supportsRefinement: S.Boolean,
           supportsResources: S.optional(S.Boolean),
         }),
@@ -3010,10 +2604,8 @@ function __c3(j: number): any {
         S.Struct({
           crossInstallation: S.Boolean,
           manualCredentialInput: S.optional(S.Boolean),
-          scopes: S.optional(ConnectConnectorUserTokensScopesList),
-          supportedAuthorizationDetails: S.optional(
-            ConnectConnectorUserTokensSupportedAuthorizationDetailsList,
-          ),
+          scopes: S.optional(__S(1)),
+          supportedAuthorizationDetails: S.optional(__S(1)),
           supportsRefinement: S.Boolean,
           supportsResources: S.optional(S.Boolean),
         }),
@@ -3024,42 +2616,42 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accentColor: S.optional(S.String),
-          appTokens: S.optional(ConnectConnectorAppTokens),
+          appTokens: S.optional(__S(23)),
           backgroundColor: S.optional(S.String),
           clientUrl: S.optional(S.NullOr(S.String)),
           connectionMethod: S.optional(S.String),
           createdAt: S.Number,
-          createdBy: S.optional(ConnectConnectorCreatedBy),
-          creationMode: S.optional(ConnectConnectorCreationMode),
+          createdBy: S.optional(S.Unknown),
+          creationMode: S.optional(S.String),
           defaultInstallationId: S.optional(S.String),
           devsite: S.optional(S.String),
           displayName: S.String,
           docsite: S.optional(S.String),
-          events: S.optional(ConnectConnectorEventsList),
+          events: S.optional(__S(1)),
           icon: S.optional(S.String),
           id: S.String,
           knownStale: S.optional(S.Boolean),
-          managed: S.optional(ConnectConnectorCreateResultManaged),
+          managed: S.optional(__S(8)),
           name: S.String,
           redirectUri: S.optional(S.String),
           reinstallAt: S.optional(S.Number),
           service: S.String,
           serviceIcon: S.optional(S.String),
-          supportedSubjectTypes: ConnectConnectorSupportedSubjectTypesList,
+          supportedSubjectTypes: __S(1),
           supportsIcon: S.Unknown,
           supportsInstallation: S.Boolean,
           supportsRevocation: S.Boolean,
           supportsTriggers: S.Boolean,
           target: S.optional(S.String),
-          triggerDestinations: S.optional(ConnectConnectorTriggerDestinationsList),
-          triggers: S.optional(ConnectTriggerConfiguration),
-          type: ConnectConnectorType,
+          triggerDestinations: S.optional(__S(10)),
+          triggers: S.optional(__S(2)),
+          type: S.String,
           typeIcon: S.optional(S.String),
           typeName: S.String,
           uid: S.String,
           updatedAt: S.Number,
-          updatedBy: S.optional(ConnectConnectorUpdatedBy),
-          userTokens: S.optional(ConnectConnectorUserTokens),
+          updatedBy: S.optional(S.Unknown),
+          userTokens: S.optional(__S(24)),
           website: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectConnector" });
@@ -3081,7 +2673,7 @@ function __c3(j: number): any {
         identifier: "GetConnectorProjectConnectionRequest",
       });
     case 3:
-      return S.Array(ConnectProjectConnectionEnabledEnvironmentsItem);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3092,11 +2684,11 @@ function __c3(j: number): any {
         identifier: "ConnectProjectConnectionProjectCustomEnvironmentsItem",
       });
     case 5:
-      return S.Array(ConnectProjectConnectionProjectCustomEnvironmentsItem);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          customEnvironments: S.optional(ConnectProjectConnectionProjectCustomEnvironmentsList),
+          customEnvironments: S.optional(__S(29)),
           id: S.String,
           name: S.String,
         }),
@@ -3108,8 +2700,8 @@ function __c3(j: number): any {
         S.Struct({
           connectorId: S.String,
           createdAt: S.Number,
-          enabledEnvironments: ConnectProjectConnectionEnabledEnvironmentsList,
-          project: ConnectProjectConnectionProject,
+          enabledEnvironments: __S(27),
+          project: __S(30),
           updatedAt: S.Number,
         }),
       ).annotate({ identifier: "ConnectProjectConnection" });
@@ -3118,17 +2710,17 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateConnectorAuthorizationRequestRequestAuthorizationDetailsItem);
+      return S.Array(__S(13));
     case 1:
       return S.suspend(() =>
         S.Struct({
           connector: S.String.pipe(T.Label()),
-          subject: S.optional(GetConnectorTokenRequestSubject),
+          subject: S.optional(S.Unknown),
           installationId: S.optional(S.String),
-          audience: S.optional(GetConnectorTokenRequestAudienceList),
-          scopes: S.optional(GetConnectorTokenRequestScopesList),
-          resources: S.optional(GetConnectorTokenRequestResourcesList),
-          authorizationDetails: S.optional(GetConnectorTokenRequestAuthorizationDetailsList),
+          audience: S.optional(__S(1)),
+          scopes: S.optional(__S(1)),
+          resources: S.optional(__S(1)),
+          authorizationDetails: S.optional(__S(32)),
           validityBufferMs: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/v1/connect/token/{connector}", code: 200 })),
       ).annotate({ identifier: "GetConnectorTokenRequest" });
@@ -3146,12 +2738,12 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           authorizationId: S.optional(S.String),
-          claims: S.optional(GetConnectorTokenResponseClaimsMap),
-          connector: GetConnectorTokenResponseConnector,
+          claims: S.optional(__S(4)),
+          connector: __S(34),
           expiresAt: S.Number,
           externalSubject: S.optional(S.String),
           installationId: S.optional(S.String),
-          metadata: S.optional(GetConnectorTokenResponseMetadataMap),
+          metadata: S.optional(__S(4)),
           name: S.optional(S.String),
           tenantId: S.optional(S.String),
           token: S.String,
@@ -3182,12 +2774,12 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "ConnectPagination" });
     case 6:
-      return S.Array(ConnectProjectConnection);
+      return S.Array(__S(31));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pagination: ConnectPagination,
-          projects: ConnectConnectorProjectConnectionListProjectsList,
+          pagination: __S(37),
+          projects: __S(38),
         }),
       ).annotate({
         identifier: "ConnectConnectorProjectConnectionList",
@@ -3205,18 +2797,18 @@ function __c5(j: number): any {
           search: S.optional(S.String.pipe(T.Query())),
           type: S.optional(S.String.pipe(T.Query())),
           service: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(ListConnectorsRequestSort.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v2/connect/connectors", code: 200 })),
       ).annotate({ identifier: "ListConnectorsRequest" });
     case 1:
-      return S.Array(ConnectConnector);
+      return S.Array(__S(25));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          connectors: ConnectConnectorListConnectorsList,
-          pagination: ConnectPagination,
+          connectors: __S(41),
+          pagination: __S(37),
         }),
       ).annotate({ identifier: "ConnectConnectorList" });
     case 3:
@@ -3236,21 +2828,21 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          connectors: ConnectProjectConnectorConnectionListConnectorsList,
-          pagination: ConnectPagination,
+          connectors: __S(38),
+          pagination: __S(37),
         }),
       ).annotate({
         identifier: "ConnectProjectConnectorConnectionList",
       });
     case 5:
-      return S.Array(ConnectTriggerDestinationInput);
+      return S.Array(S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
           connector: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          destinations: ReplaceConnectorTriggerDestinationsRequestDestinationsList,
+          destinations: __S(45),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3268,9 +2860,9 @@ function __c5(j: number): any {
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
           triggers: S.optional(S.Boolean),
-          triggerData: S.optional(UpdateConnectorRequestTriggerDataMap),
-          events: S.optional(UpdateConnectorRequestEventsList),
-          data: S.optional(ConnectConnectorUpdateData),
+          triggerData: S.optional(__S(4)),
+          events: S.optional(__S(1)),
+          data: S.optional(S.Unknown),
           icon: S.optional(S.String),
           backgroundColor: S.optional(S.String),
           accentColor: S.optional(S.String),
@@ -3285,39 +2877,39 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          scope: ConnectReconsentScope,
+          scope: S.String,
         }),
       ).annotate({ identifier: "ConnectReconsent" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          fields: S.optional(ConnectServiceSyncErrorFieldsList),
+          fields: S.optional(__S(1)),
           message: S.String,
-          vendor: S.optional(ConnectServiceSyncErrorVendorMap),
+          vendor: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "ConnectServiceSyncError" });
     case 2:
-      return S.Array(ConnectServiceSyncError);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(ConnectServiceSyncErrorsList),
-          status: ConnectServiceSyncStatus,
+          errors: S.optional(__S(50)),
+          status: S.String,
         }),
       ).annotate({ identifier: "ConnectServiceSync" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          connector: ConnectConnector,
-          reconsentNeeded: S.optional(ConnectReconsent),
+          connector: __S(25),
+          reconsentNeeded: S.optional(__S(48)),
           reinstallNeeded: S.optional(S.Boolean),
-          serviceSync: S.optional(ConnectServiceSync),
+          serviceSync: S.optional(__S(51)),
         }),
       ).annotate({
         identifier: "ConnectConnectorUpdateResult",
       });
     case 5:
-      return S.Array(UpsertConnectorProjectConnectionRequestEnvironmentsItem);
+      return S.Array(S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3325,7 +2917,7 @@ function __c6(j: number): any {
           projectId: S.String.pipe(T.Label()),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          environments: UpsertConnectorProjectConnectionRequestEnvironmentsList,
+          environments: __S(53),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3336,5 +2928,28 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "UpsertConnectorProjectConnectionRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
   }
 }

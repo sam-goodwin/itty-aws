@@ -6,22 +6,14 @@ import { UnknownS2Error } from "../errors.ts";
 import { S2Protocol, type S2OpError, type S2OpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { S2OpError, S2OpContext };
 
 export interface GetDefaultLocationRequest {}
-const GetDefaultLocationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetDefaultLocationRequest>;
-
 /** [Storage classes](https://s2.dev/docs/storage-classes) available to the account in this location. */
 export type LocationInfoStorageClassesList = Array<string>;
-const LocationInfoStorageClassesList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<LocationInfoStorageClassesList>;
-
 export interface LocationInfo {
   /** Default [storage class](https://s2.dev/docs/storage-classes) for this location. */
   default_storage_class?: string | null;
@@ -32,31 +24,12 @@ export interface LocationInfo {
   /** [Storage classes](https://s2.dev/docs/storage-classes) available to the account in this location. */
   storage_classes?: LocationInfoStorageClassesList | null;
 }
-const LocationInfo = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<LocationInfo>;
-
 export interface ListLocationsRequest {}
-const ListLocationsRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ListLocationsRequest>;
-
 export type ListLocationsResponseBodyList = Array<LocationInfo>;
-const ListLocationsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListLocationsResponseBodyList>;
-
 export type ListLocationsResponse = ListLocationsResponseBodyList;
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface SetDefaultLocationRequest {
   body: string;
 }
-const SetDefaultLocationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<SetDefaultLocationRequest>;
-
 export type GetDefaultLocationError = S2OpError;
 /** Get the default location. */
 export const getDefaultLocation: API.OperationMethod<
@@ -65,8 +38,8 @@ export const getDefaultLocation: API.OperationMethod<
   GetDefaultLocationError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDefaultLocationRequest,
-  output: LocationInfo,
+  input: __S(0) as any as S.Schema<GetDefaultLocationRequest>,
+  output: __S(2) as any as S.Schema<LocationInfo>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -80,8 +53,8 @@ export const listLocations: API.OperationMethod<
   ListLocationsError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(3) as any as S.Schema<ListLocationsRequest>,
+  output: __S(5) as any as S.Schema<ListLocationsResponse>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -95,8 +68,8 @@ export const setDefaultLocation: API.OperationMethod<
   SetDefaultLocationError,
   S2OpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetDefaultLocationRequest,
-  output: LocationInfo,
+  input: __S(6) as any as S.Schema<SetDefaultLocationRequest>,
+  output: __S(2) as any as S.Schema<LocationInfo>,
   errors: [UnknownS2Error],
   protocol: S2Protocol,
   retry: Retry.Retry,
@@ -119,7 +92,7 @@ function __c0(j: number): any {
           default_storage_class: S.optional(S.NullOr(S.String)),
           is_private: S.Boolean,
           name: S.String,
-          storage_classes: S.optional(S.NullOr(LocationInfoStorageClassesList)),
+          storage_classes: S.optional(S.NullOr(__S(1))),
         }),
       ).annotate({ identifier: "LocationInfo" });
     case 3:
@@ -127,9 +100,9 @@ function __c0(j: number): any {
         S.Struct({}).pipe(T.Http({ method: "GET", uri: "/locations", code: 200 })),
       ).annotate({ identifier: "ListLocationsRequest" });
     case 4:
-      return S.Array(LocationInfo);
+      return S.Array(__S(2));
     case 5:
-      return S.suspend(() => ListLocationsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(4).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListLocationsResponse",
       });
     case 6:
@@ -140,5 +113,16 @@ function __c0(j: number): any {
       ).annotate({
         identifier: "SetDefaultLocationRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

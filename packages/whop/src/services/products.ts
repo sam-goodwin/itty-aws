@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -52,41 +54,20 @@ export type CreateProductRequestCustomCta =
   | "get_offer"
   | "apply_now"
   | "complete_order";
-const CreateProductRequestCustomCta = S.String;
-
 export interface CreateProductRequestGalleryImagesItem {
   /** The signed ID of a completed direct upload, as an alternative to id. */
   direct_upload_id?: string;
   /** The tag of an already-uploaded attachment. */
   id?: string;
 }
-const CreateProductRequestGalleryImagesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateProductRequestGalleryImagesItem>;
-
 /** Images or videos displayed in the product gallery, in display order. Replaces the existing gallery. Send an empty array to clear it; omit or pass null to leave it unchanged. A banner image does not populate the gallery. */
 export type CreateProductRequestGalleryImagesList = Array<CreateProductRequestGalleryImagesItem>;
-const CreateProductRequestGalleryImagesList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateProductRequestGalleryImagesList>;
-
 /** The enrollment status in the global affiliate program. */
 export type CreateProductRequestGlobalAffiliateStatus = "enabled" | "disabled";
-const CreateProductRequestGlobalAffiliateStatus = S.String;
-
 /** Labels used to group products into collections. Stored lowercased and de-duplicated. Maximum 20 labels, 50 characters each. */
 export type CreateProductRequestLabelsList = Array<string>;
-const CreateProductRequestLabelsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateProductRequestLabelsList>;
-
 /** The enrollment status in the member affiliate program. */
 export type CreateProductRequestMemberAffiliateStatus = "enabled" | "disabled";
-const CreateProductRequestMemberAffiliateStatus = S.String;
-
 export interface CreateProductRequest {
   /** The unique identifier of the account to create this product for. */
   account_id?: string;
@@ -131,8 +112,6 @@ export interface CreateProductRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateProductRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateProductRequest>;
-
 /** Call-to-action button label shown on the product purchase page. */
 export type ProductCustomCta =
   | "get_access"
@@ -148,8 +127,6 @@ export type ProductCustomCta =
   | "get_offer"
   | "apply_now"
   | "complete_order";
-const ProductCustomCta = S.String;
-
 export interface Money {
   /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
@@ -160,16 +137,10 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-const Money = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Money>;
-
 /** Billing model for this plan: `one_time` or `renewal`. */
 export type ProductPublicPlanPlanType = "renewal" | "one_time";
-const ProductPublicPlanPlanType = S.String;
-
 /** Where this plan can be seen. `visible` plans appear on the product page. */
 export type ProductPublicPlanVisibility = "visible" | "hidden" | "archived" | "quick_link";
-const ProductPublicPlanVisibility = S.String;
-
 export interface ProductPublicPlan {
   /** Number of days between recurring charges, such as 30 for monthly or 365 for annual. `null` for one-time plans. */
   billing_period: number | null;
@@ -190,8 +161,6 @@ export interface ProductPublicPlan {
   /** Where this plan can be seen. `visible` plans appear on the product page. */
   visibility: ProductPublicPlanVisibility;
 }
-const ProductPublicPlan = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ProductPublicPlan>;
-
 export interface ProductGalleryImage {
   /** Uploaded file MIME type, such as image/jpeg. */
   content_type: string | null;
@@ -200,48 +169,24 @@ export interface ProductGalleryImage {
   /** Pre-optimized URL for rendering this image on the client. */
   url: string | null;
 }
-const ProductGalleryImage = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ProductGalleryImage>;
-
 export type ProductGalleryImagesList = Array<ProductGalleryImage>;
-const ProductGalleryImagesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ProductGalleryImagesList>;
-
 /** Enrollment status in the global affiliate program. */
 export type ProductGlobalAffiliateStatus = "enabled" | "disabled";
-const ProductGlobalAffiliateStatus = S.String;
-
 export type ProductLabelsList = Array<string>;
-const ProductLabelsList = CreateProductRequestLabelsList as any as S.Schema<ProductLabelsList>;
-
 /** Listing state on the whop.com marketplace. `pending_review` means submitted and awaiting review; `live_marketplace` means approved and discoverable. */
 export type ProductMarketplaceStatus = "not_available" | "pending_review" | "live_marketplace";
-const ProductMarketplaceStatus = S.String;
-
 /** Enrollment status in the member affiliate program. */
 export type ProductMemberAffiliateStatus = "enabled" | "disabled";
-const ProductMemberAffiliateStatus = S.String;
-
 export interface AccountSummary {
   /** Account ID, prefixed `biz_`. */
   id: string;
   /** Account display name. */
   title: string;
 }
-const AccountSummary = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AccountSummary>;
-
 /** Attribute values that make this plan one variant of its product, as a map of attribute name to value, e.g. `{"color": "Blue", "size": "Large"}`. Names are snake_case identifiers and come back in alphabetical order. Every variant plan on a product carries the same attribute names and a distinct set of values; the product lists the full option set as `variant_attributes`. `null` for a plan that is not a variant. */
 export type PlanListItemAttributesMap = { [key: string]: string | undefined };
-const PlanListItemAttributesMap = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PlanListItemAttributesMap>;
-
 /** Custom field input type. */
 export type PlanCustomFieldFieldType = "text";
-const PlanCustomFieldFieldType = S.String;
-
 export interface PlanCustomField {
   /** Custom field input type. */
   field_type: PlanCustomFieldFieldType;
@@ -256,33 +201,18 @@ export interface PlanCustomField {
   /** Whether the customer must complete this field to check out. */
   required: boolean;
 }
-const PlanCustomField = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<PlanCustomField>;
-
 export type PlanListItemCustomFieldsList = Array<PlanCustomField>;
-const PlanListItemCustomFieldsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<PlanListItemCustomFieldsList>;
-
 /** Billing model for this plan. */
 export type PlanListItemPlanType = "renewal" | "one_time";
-const PlanListItemPlanType = S.String;
-
 /** Sales method for this plan. */
 export type PlanListItemReleaseMethod = "buy_now" | "waitlist";
-const PlanListItemReleaseMethod = S.String;
-
 /** 3D Secure behavior for supported on-session card payments. `mandate_challenge` requires a 3DS challenge before payment processing; `mandate_if_required` mandates a challenge only when the payment processor requires it; `frictionless_if_required` uses the regular frictionless 3DS flow. Payments of $1,000 or more use `mandate_if_required` unless `mandate_challenge` is selected. Risk and authentication recovery requirements can override the preference. `null` inherits the account default. */
 export type PlanListItemThreeDsLevel =
   | "mandate_challenge"
   | "mandate_if_required"
   | "frictionless_if_required";
-const PlanListItemThreeDsLevel = S.String;
-
 /** Controls where this plan can be seen. When `hidden`, the plan is reachable only by its direct link. */
 export type PlanListItemVisibility = "visible" | "hidden" | "archived" | "quick_link";
-const PlanListItemVisibility = S.String;
-
 export interface PlanListItem {
   /** Account that sells this plan; `null` for standalone invoice plans. */
   account: AccountSummary | null;
@@ -362,11 +292,7 @@ export interface PlanListItem {
   /** Controls where this plan can be seen. When `hidden`, the plan is reachable only by its direct link. */
   visibility: PlanListItemVisibility;
 }
-const PlanListItem = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<PlanListItem>;
-
 export type ProductVariantsList = Array<PlanListItem>;
-const ProductVariantsList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ProductVariantsList>;
-
 export interface Product {
   /** Account that sells this product. */
   account: unknown | null;
@@ -426,57 +352,28 @@ export interface Product {
   /** Whether the product is publicly visible, hidden, or archived. */
   visibility: string | null;
 }
-const Product = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Product>;
-
 export interface DeleteProductRequest {
   /** The unique identifier of the product. */
   id: string;
 }
-const DeleteProductRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteProductRequest>;
-
 export interface DeleteProductResponse {
   /** Always true. */
   deleted: boolean;
   /** ID of the deleted product. */
   id: string;
 }
-const DeleteProductResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteProductResponse>;
-
 export interface GetProductRequest {
   /** The unique identifier of the product. */
   id: string;
 }
-const GetProductRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GetProductRequest>;
-
 export type ListProductsRequestPlanTypesItem = "renewal" | "one_time";
-const ListProductsRequestPlanTypesItem = S.String;
-
 export type ListProductsRequestPlanTypesList = Array<
   ListProductsRequestPlanTypesItem | (string & {})
 >;
-const ListProductsRequestPlanTypesList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListProductsRequestPlanTypesList>;
-
 export type ListProductsRequestVisibilitiesList = Array<string>;
-const ListProductsRequestVisibilitiesList =
-  CreateProductRequestLabelsList as any as S.Schema<ListProductsRequestVisibilitiesList>;
-
 export type ListProductsRequestAccessPassTypesList = Array<string>;
-const ListProductsRequestAccessPassTypesList =
-  CreateProductRequestLabelsList as any as S.Schema<ListProductsRequestAccessPassTypesList>;
-
 export type ListProductsRequestLabelsList = Array<string>;
-const ListProductsRequestLabelsList =
-  CreateProductRequestLabelsList as any as S.Schema<ListProductsRequestLabelsList>;
-
 export type ListProductsRequestDirection = "asc" | "desc";
-const ListProductsRequestDirection = S.String;
-
 export interface ListProductsRequest {
   /** The unique identifier of the account to list products for. Omit to search the public marketplace. */
   account_id?: string;
@@ -513,16 +410,8 @@ export interface ListProductsRequest {
   /** Only return products created before this ISO 8601 timestamp. */
   created_before?: string;
 }
-const ListProductsRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListProductsRequest>;
-
 export type ProductListItemGalleryImagesList = Array<ProductGalleryImage>;
-const ProductListItemGalleryImagesList =
-  ProductGalleryImagesList as any as S.Schema<ProductListItemGalleryImagesList>;
-
 export type ProductListItemLabelsList = Array<string>;
-const ProductListItemLabelsList =
-  CreateProductRequestLabelsList as any as S.Schema<ProductListItemLabelsList>;
-
 export interface ProductListItem {
   /** Account that sells this product. */
   account: unknown | null;
@@ -561,53 +450,29 @@ export interface ProductListItem {
   /** Whether the product is publicly visible, hidden, or archived. */
   visibility: string | null;
 }
-const ProductListItem = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ProductListItem>;
-
 export type ListProductsResponseDataList = Array<ProductListItem>;
-const ListProductsResponseDataList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListProductsResponseDataList>;
-
 export interface ListProductsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListProductsResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListProductsResponsePageInfo>;
-
 export interface ListProductsResponse {
   data: ListProductsResponseDataList;
   page_info: ListProductsResponsePageInfo;
 }
-const ListProductsResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListProductsResponse>;
-
 export interface PublishProductRequest {
   /** The unique identifier of the product, prefixed `prod_`. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const PublishProductRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<PublishProductRequest>;
-
 export interface UnpublishProductRequest {
   /** The unique identifier of the product, prefixed `prod_`. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const UnpublishProductRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<UnpublishProductRequest>;
-
 /** A wide image for the product, shown on the product page and on listing cards. Pass `{ id }` for an existing attachment or `{ direct_upload_id }` for a completed direct upload; `null` removes it. */
 export interface UpdateProductRequestBannerImage {
   /** The signed id of a completed direct upload. */
@@ -615,20 +480,11 @@ export interface UpdateProductRequestBannerImage {
   /** The tag of an already-uploaded attachment. */
   id?: string;
 }
-const UpdateProductRequestBannerImage =
-  CreateProductRequestGalleryImagesItem as any as S.Schema<UpdateProductRequestBannerImage>;
-
 export type UpdateProductRequestGalleryImagesItem = CreateProductRequestGalleryImagesItem;
 /** Images or videos displayed in the product gallery, in display order. Replaces the existing gallery. Send an empty array to clear it; omit or pass null to leave it unchanged. A banner image does not populate the gallery. */
 export type UpdateProductRequestGalleryImagesList = Array<CreateProductRequestGalleryImagesItem>;
-const UpdateProductRequestGalleryImagesList =
-  CreateProductRequestGalleryImagesList as any as S.Schema<UpdateProductRequestGalleryImagesList>;
-
 /** Labels used to group products into collections. Replaces the existing labels. Send an empty array to clear them. */
 export type UpdateProductRequestLabelsList = Array<string>;
-const UpdateProductRequestLabelsList =
-  CreateProductRequestLabelsList as any as S.Schema<UpdateProductRequestLabelsList>;
-
 export interface UpdateProductRequest {
   /** The unique identifier of the product. */
   id: string;
@@ -653,8 +509,6 @@ export interface UpdateProductRequest {
   /** Whether the product is visible to customers. */
   visibility?: string;
 }
-const UpdateProductRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UpdateProductRequest>;
-
 export type CreateProductError = Conflict | WhopOpError;
 /** Create Product Creates a new product for an account. */
 export const createProduct: API.OperationMethod<
@@ -663,8 +517,8 @@ export const createProduct: API.OperationMethod<
   CreateProductError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProductRequest,
-  output: Product,
+  input: __S(3) as any as S.Schema<CreateProductRequest>,
+  output: __S(14) as any as S.Schema<Product>,
   errors: [Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -678,8 +532,8 @@ export const deleteProduct: API.OperationMethod<
   DeleteProductError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProductRequest,
-  output: DeleteProductResponse,
+  input: __S(15) as any as S.Schema<DeleteProductRequest>,
+  output: __S(16) as any as S.Schema<DeleteProductResponse>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -693,8 +547,8 @@ export const getProduct: API.OperationMethod<
   GetProductError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProductRequest,
-  output: Product,
+  input: __S(17) as any as S.Schema<GetProductRequest>,
+  output: __S(14) as any as S.Schema<Product>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -710,8 +564,8 @@ export const listProducts: API.PaginatedOperationMethod<
   ProductListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListProductsRequest,
-    output: ListProductsResponse,
+    input: __S(19) as any as S.Schema<ListProductsRequest>,
+    output: __S(23) as any as S.Schema<ListProductsResponse>,
     errors: [BadRequest],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -735,8 +589,8 @@ export const publishProduct: API.OperationMethod<
   PublishProductError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishProductRequest,
-  output: Product,
+  input: __S(24) as any as S.Schema<PublishProductRequest>,
+  output: __S(14) as any as S.Schema<Product>,
   errors: [NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -750,8 +604,8 @@ export const unpublishProduct: API.OperationMethod<
   UnpublishProductError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnpublishProductRequest,
-  output: Product,
+  input: __S(25) as any as S.Schema<UnpublishProductRequest>,
+  output: __S(14) as any as S.Schema<Product>,
   errors: [NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -765,8 +619,8 @@ export const updateProduct: API.OperationMethod<
   UpdateProductError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProductRequest,
-  output: Product,
+  input: __S(26) as any as S.Schema<UpdateProductRequest>,
+  output: __S(14) as any as S.Schema<Product>,
   errors: [NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -785,7 +639,7 @@ function __c0(j: number): any {
         identifier: "CreateProductRequestGalleryImagesItem",
       });
     case 1:
-      return S.Array(CreateProductRequestGalleryImagesItem);
+      return S.Array(__S(0));
     case 2:
       return S.Array(S.String);
     case 3:
@@ -793,17 +647,17 @@ function __c0(j: number): any {
         S.Struct({
           account_id: S.optional(S.String),
           collect_shipping_address: S.optional(S.NullOr(S.Boolean)),
-          custom_cta: S.optional(S.NullOr(CreateProductRequestCustomCta)),
+          custom_cta: S.optional(S.NullOr(S.String)),
           custom_cta_url: S.optional(S.NullOr(S.String)),
           custom_statement_descriptor: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          gallery_images: S.optional(S.NullOr(CreateProductRequestGalleryImagesList)),
+          gallery_images: S.optional(S.NullOr(__S(1))),
           global_affiliate_percentage: S.optional(S.NullOr(S.Number)),
-          global_affiliate_status: S.optional(CreateProductRequestGlobalAffiliateStatus),
+          global_affiliate_status: S.optional(S.String),
           headline: S.optional(S.NullOr(S.String)),
-          labels: S.optional(S.NullOr(CreateProductRequestLabelsList)),
+          labels: S.optional(S.NullOr(__S(2))),
           member_affiliate_percentage: S.optional(S.NullOr(S.Number)),
-          member_affiliate_status: S.optional(CreateProductRequestMemberAffiliateStatus),
+          member_affiliate_status: S.optional(S.String),
           metadata: S.optional(S.NullOr(S.Unknown)),
           product_tax_code_id: S.optional(S.NullOr(S.String)),
           redirect_purchase_url: S.optional(S.NullOr(S.String)),
@@ -829,12 +683,12 @@ function __c0(j: number): any {
           billing_period: S.NullOr(S.Number),
           expiration_days: S.NullOr(S.Number),
           id: S.String,
-          initial_price: Money,
-          plan_type: ProductPublicPlanPlanType,
-          renewal_price: Money,
+          initial_price: __S(4),
+          plan_type: S.String,
+          renewal_price: __S(4),
           title: S.NullOr(S.String),
           unlimited_stock: S.Boolean,
-          visibility: ProductPublicPlanVisibility,
+          visibility: S.String,
         }),
       ).annotate({ identifier: "ProductPublicPlan" });
     case 6:
@@ -846,7 +700,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ProductGalleryImage" });
     case 7:
-      return S.Array(ProductGalleryImage);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -863,7 +717,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          field_type: PlanCustomFieldFieldType,
+          field_type: S.String,
           id: S.String,
           name: S.String,
           order: S.Number,
@@ -872,74 +726,74 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "PlanCustomField" });
     case 3:
-      return S.Array(PlanCustomField);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          account: S.NullOr(AccountSummary),
+          account: S.NullOr(__S(8)),
           adaptive_pricing_enabled: S.Boolean,
-          attributes: S.NullOr(PlanListItemAttributesMap),
+          attributes: S.NullOr(__S(9)),
           billing_period: S.NullOr(S.Number),
           cancel_discount_intervals: S.NullOr(S.Number),
           cancel_discount_percentage: S.NullOr(S.Number),
           checkout_styling: S.NullOr(S.Unknown),
           created_at: S.String,
           currency: S.String,
-          custom_fields: PlanListItemCustomFieldsList,
+          custom_fields: __S(11),
           description: S.NullOr(S.String),
           expiration_days: S.NullOr(S.Number),
           formatted_price: S.String,
           id: S.String,
           image: S.NullOr(S.Unknown),
           initial_price: S.Number,
-          initial_price_due: Money,
+          initial_price_due: __S(4),
           internal_notes: S.NullOr(S.String),
           invoice: S.NullOr(S.Unknown),
           member_count: S.NullOr(S.Number),
           metadata: S.NullOr(S.Unknown),
           offer_cancel_discount: S.NullOr(S.Boolean),
           payment_method_configuration: S.NullOr(S.Unknown),
-          plan_type: PlanListItemPlanType,
+          plan_type: S.String,
           product: S.NullOr(S.Unknown),
           purchase_url: S.String,
-          release_method: PlanListItemReleaseMethod,
+          release_method: S.String,
           renewal_price: S.Number,
           sku: S.NullOr(S.String),
           split_pay_required_payments: S.NullOr(S.Number),
           stock: S.NullOr(S.Number),
           strike_through_initial_price: S.NullOr(S.Number),
           strike_through_renewal_price: S.NullOr(S.Number),
-          three_ds_level: S.NullOr(PlanListItemThreeDsLevel),
+          three_ds_level: S.NullOr(S.String),
           title: S.NullOr(S.String),
           trial_period_days: S.NullOr(S.Number),
           unlimited_stock: S.Boolean,
           updated_at: S.String,
-          visibility: PlanListItemVisibility,
+          visibility: S.String,
         }),
       ).annotate({ identifier: "PlanListItem" });
     case 5:
-      return S.Array(PlanListItem);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           account: S.NullOr(S.Unknown),
           average_review_rating: S.Number,
           created_at: S.String,
-          custom_cta: S.NullOr(ProductCustomCta),
+          custom_cta: S.NullOr(S.String),
           custom_cta_url: S.NullOr(S.String),
           custom_statement_descriptor: S.NullOr(S.String),
-          default_plan: S.NullOr(ProductPublicPlan),
+          default_plan: S.NullOr(__S(5)),
           description: S.NullOr(S.String),
           external_identifier: S.NullOr(S.String),
-          gallery_images: ProductGalleryImagesList,
+          gallery_images: __S(7),
           global_affiliate_percentage: S.NullOr(S.Number),
-          global_affiliate_status: S.NullOr(ProductGlobalAffiliateStatus),
+          global_affiliate_status: S.NullOr(S.String),
           headline: S.NullOr(S.String),
           id: S.String,
-          labels: ProductLabelsList,
-          marketplace_status: ProductMarketplaceStatus,
+          labels: __S(2),
+          marketplace_status: S.String,
           member_affiliate_percentage: S.NullOr(S.Number),
-          member_affiliate_status: S.NullOr(ProductMemberAffiliateStatus),
+          member_affiliate_status: S.NullOr(S.String),
           member_count: S.Number,
           metadata: S.NullOr(S.Unknown),
           owner_user: S.NullOr(S.Unknown),
@@ -949,7 +803,7 @@ function __c1(j: number): any {
           title: S.String,
           updated_at: S.String,
           variant_attributes: S.NullOr(S.Unknown),
-          variants: S.NullOr(ProductVariantsList),
+          variants: S.NullOr(__S(13)),
           verified: S.Boolean,
           visibility: S.NullOr(S.String),
         }),
@@ -978,20 +832,20 @@ function __c2(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/products/{id}", code: 200 })),
       ).annotate({ identifier: "GetProductRequest" });
     case 2:
-      return S.Array(ListProductsRequestPlanTypesItem);
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
           account_id: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           marketplace_category_route: S.optional(S.String.pipe(T.Query())),
-          plan_types: S.optional(ListProductsRequestPlanTypesList.pipe(T.Query())),
+          plan_types: S.optional(__S(18).pipe(T.Query())),
           price_minimum: S.optional(S.Number.pipe(T.Query())),
           price_maximum: S.optional(S.Number.pipe(T.Query())),
-          visibilities: S.optional(ListProductsRequestVisibilitiesList.pipe(T.Query())),
-          access_pass_types: S.optional(ListProductsRequestAccessPassTypesList.pipe(T.Query())),
-          labels: S.optional(ListProductsRequestLabelsList.pipe(T.Query())),
-          direction: S.optional(ListProductsRequestDirection.pipe(T.Query())),
+          visibilities: S.optional(__S(2).pipe(T.Query())),
+          access_pass_types: S.optional(__S(2).pipe(T.Query())),
+          labels: S.optional(__S(2).pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           order: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
@@ -1007,13 +861,13 @@ function __c2(j: number): any {
           account: S.NullOr(S.Unknown),
           average_review_rating: S.Number,
           created_at: S.String,
-          default_plan: S.NullOr(ProductPublicPlan),
+          default_plan: S.NullOr(__S(5)),
           description: S.NullOr(S.String),
           external_identifier: S.NullOr(S.String),
-          gallery_images: ProductListItemGalleryImagesList,
+          gallery_images: __S(7),
           headline: S.NullOr(S.String),
           id: S.String,
-          labels: ProductListItemLabelsList,
+          labels: __S(2),
           member_count: S.Number,
           metadata: S.NullOr(S.Unknown),
           published_reviews_count: S.Number,
@@ -1026,7 +880,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ProductListItem" });
     case 5:
-      return S.Array(ProductListItem);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1041,8 +895,8 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: ListProductsResponseDataList,
-          page_info: ListProductsResponsePageInfo,
+          data: __S(21),
+          page_info: __S(22),
         }),
       ).annotate({ identifier: "ListProductsResponse" });
   }
@@ -1067,11 +921,11 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          banner_image: S.optional(S.NullOr(UpdateProductRequestBannerImage)),
+          banner_image: S.optional(S.NullOr(__S(0))),
           description: S.optional(S.NullOr(S.String)),
-          gallery_images: S.optional(S.NullOr(UpdateProductRequestGalleryImagesList)),
+          gallery_images: S.optional(S.NullOr(__S(1))),
           headline: S.optional(S.NullOr(S.String)),
-          labels: S.optional(S.NullOr(UpdateProductRequestLabelsList)),
+          labels: S.optional(S.NullOr(__S(2))),
           metadata: S.optional(S.NullOr(S.Unknown)),
           product_tax_code_id: S.optional(S.NullOr(S.String)),
           send_welcome_message: S.optional(S.NullOr(S.Boolean)),
@@ -1079,5 +933,22 @@ function __c3(j: number): any {
           visibility: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/products/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateProductRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

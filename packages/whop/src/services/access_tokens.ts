@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -47,11 +49,6 @@ export class UnprocessableEntity
 
 /** An array of permission scopes to grant to the access token. If empty or omitted, all permissions from the authenticating credential are inherited. Must be a subset of the credential's permissions. */
 export type CreateAccessTokenRequestScopedActionsList = Array<string>;
-const CreateAccessTokenRequestScopedActionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateAccessTokenRequestScopedActionsList>;
-
 export interface CreateAccessTokenRequest {
   /** The unique identifier of the company to generate the token for, starting with 'biz_'. The API key must have permission to access this company. */
   account_id?: string | null;
@@ -62,11 +59,6 @@ export interface CreateAccessTokenRequest {
   /** The unique identifier of the user to generate the token for, starting with 'user_'. The API key must have permission to access this user. */
   user_id?: string | null;
 }
-const CreateAccessTokenRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateAccessTokenRequest>;
-
 /** A short-lived access token used to authenticate API requests on behalf of a user. */
 export interface AccessToken {
   /** The timestamp after which this access token is no longer valid and must be refreshed. */
@@ -74,8 +66,6 @@ export interface AccessToken {
   /** The signed JWT access token string to include in API request Authorization headers. */
   token: string;
 }
-const AccessToken = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AccessToken>;
-
 export type CreateAccessTokenError =
   | BadRequest
   | Forbidden
@@ -89,8 +79,8 @@ export const createAccessToken: API.OperationMethod<
   CreateAccessTokenError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccessTokenRequest,
-  output: AccessToken,
+  input: __S(1) as any as S.Schema<CreateAccessTokenRequest>,
+  output: __S(2) as any as S.Schema<AccessToken>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -106,7 +96,7 @@ function __c0(j: number): any {
         S.Struct({
           account_id: S.optional(S.NullOr(S.String)),
           expires_at: S.optional(S.NullOr(S.String)),
-          scoped_actions: S.optional(S.NullOr(CreateAccessTokenRequestScopedActionsList)),
+          scoped_actions: S.optional(S.NullOr(__S(0))),
           user_id: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/access_tokens", code: 200 })),
       ).annotate({ identifier: "CreateAccessTokenRequest" });
@@ -117,5 +107,16 @@ function __c0(j: number): any {
           token: S.String,
         }),
       ).annotate({ identifier: "AccessToken" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 2) {
+    case 0:
+      return __c0(i & 3);
   }
 }

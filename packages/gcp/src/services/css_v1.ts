@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,8 +65,6 @@ export class NotFound
   ) {}
 
 export type AccountLabelLabelTypeEnum = "LABEL_TYPE_UNSPECIFIED" | "MANUAL" | "AUTOMATIC";
-const AccountLabelLabelTypeEnum = S.String;
-
 /** Label assigned by CSS domain or CSS group to one of its sub-accounts. */
 export interface AccountLabel {
   /** Output only. The ID of account this label belongs to. */
@@ -80,54 +80,31 @@ export interface AccountLabel {
   /** Output only. The type of this label. */
   labelType?: AccountLabelLabelTypeEnum | (string & {});
 }
-const AccountLabel = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AccountLabel>;
-
 export interface CreateAccountsLabelsRequest {
   /** Required. The parent account. Format: accounts/{account} */
   parent: string;
   /** Request body */
   body?: AccountLabel;
 }
-const CreateAccountsLabelsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateAccountsLabelsRequest>;
-
 export interface DeleteAccountsCssProductInputsRequest {
   /** Required. The name of the CSS product input resource to delete. Format: accounts/{account}/cssProductInputs/{css_product_input}, where the last section `css_product_input` consists of 3 parts: contentLanguage~feedLabel~offerId. Example: accounts/123/cssProductInputs/de~DE~rawProvidedId123 */
   name: string;
   /** The Content API Supplemental Feed ID. The field must not be set if the action applies to a primary feed. If the field is set, then product action applies to a supplemental feed instead of primary Content API feed. */
   supplementalFeedId?: string;
 }
-const DeleteAccountsCssProductInputsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DeleteAccountsCssProductInputsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Empty>;
-
 export interface DeleteAccountsLabelsRequest {
   /** Required. The name of the label to delete. Format: accounts/{account}/labels/{label} */
   name: string;
 }
-const DeleteAccountsLabelsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeleteAccountsLabelsRequest>;
-
 export interface GetAccountsRequest {
   /** Required. The name of the managed CSS/MC account. Format: accounts/{account} */
   name: string;
   /** Optional. Only required when retrieving MC account information. The CSS domain that is the parent resource of the MC account. Format: accounts/{account} */
   parent?: string;
 }
-const GetAccountsRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetAccountsRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringList>;
-
 export type AccountAccountTypeEnum =
   | "ACCOUNT_TYPE_UNSPECIFIED"
   | "CSS_GROUP"
@@ -138,8 +115,6 @@ export type AccountAccountTypeEnum =
   | "MC_OTHER_MCA"
   | "MC_STANDALONE"
   | "MC_MCA_SUBACCOUNT";
-const AccountAccountTypeEnum = S.String;
-
 /** Information about CSS/MC account. */
 export interface Account {
   /** Automatically created label IDs assigned to the MC account by CSS Center. */
@@ -159,17 +134,10 @@ export interface Account {
   /** Output only. Immutable. The CSS/MC account's homepage. */
   homepageUri?: string;
 }
-const Account = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Account>;
-
 export interface GetAccountsCssProductsRequest {
   /** Required. The name of the CSS product to retrieve. Format: `accounts/{account}/cssProducts/{css_product}` */
   name: string;
 }
-const GetAccountsCssProductsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetAccountsCssProductsRequest>;
-
 /** A message that represents custom attributes. Exactly one of `value` or `group_values` must not be empty. */
 export interface CustomAttribute {
   /** The value of the attribute. If `value` is not empty, `group_values` must be empty. */
@@ -179,11 +147,7 @@ export interface CustomAttribute {
   /** Subattributes within this attribute group. If `group_values` is not empty, `value` must be empty. */
   groupValues?: CustomAttributeList;
 }
-const CustomAttribute = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CustomAttribute>;
-
 export type CustomAttributeList = Array<CustomAttribute>;
-const CustomAttributeList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CustomAttributeList>;
-
 /** The certification for the product. Use the this attribute to describe certifications, such as energy efficiency ratings, associated with a product. */
 export interface Certification {
   /** The name of the certification. At this time, the most common value is "EPREL", which represents energy efficiency certifications in the EU European Registry for Energy Labeling (EPREL) database. */
@@ -193,11 +157,7 @@ export interface Certification {
   /** The authority or certification body responsible for issuing the certification. At this time, the most common value is "EC" or "European_Commission" for energy labels in the EU. */
   authority?: string;
 }
-const Certification = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Certification>;
-
 export type CertificationList = Array<Certification>;
-const CertificationList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CertificationList>;
-
 /** The price represented as a number and currency. */
 export interface Price {
   /** The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217). */
@@ -205,8 +165,6 @@ export interface Price {
   /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
   amountMicros?: string;
 }
-const Price = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Price>;
-
 /** A message that represents installment. */
 export interface HeadlineOfferInstallment {
   /** The up-front down payment amount the buyer has to pay. */
@@ -216,11 +174,6 @@ export interface HeadlineOfferInstallment {
   /** The number of installments the buyer has to pay. */
   months?: string;
 }
-const HeadlineOfferInstallment = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<HeadlineOfferInstallment>;
-
 /** The dimension of the product. */
 export interface ProductDimension {
   /** Required. The dimension value represented as a number. The value can have a maximum precision of four decimal places. */
@@ -228,14 +181,10 @@ export interface ProductDimension {
   /** Required. The dimension units. Acceptable values are: * "`in`" * "`cm`" */
   unit?: string;
 }
-const ProductDimension = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ProductDimension>;
-
 export type HeadlineOfferSubscriptionCostPeriodEnum =
   | "SUBSCRIPTION_PERIOD_UNSPECIFIED"
   | "MONTH"
   | "YEAR";
-const HeadlineOfferSubscriptionCostPeriodEnum = S.String;
-
 /** The SubscriptionCost of the product. */
 export interface HeadlineOfferSubscriptionCost {
   /** The amount the buyer has to pay per subscription period. */
@@ -245,11 +194,6 @@ export interface HeadlineOfferSubscriptionCost {
   /** The type of subscription period. Supported values are: * "`month`" * "`year`" */
   period?: HeadlineOfferSubscriptionCostPeriodEnum | (string & {});
 }
-const HeadlineOfferSubscriptionCost = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<HeadlineOfferSubscriptionCost>;
-
 /** The product details. */
 export interface ProductDetail {
   /** The value of the product detail. */
@@ -259,11 +203,7 @@ export interface ProductDetail {
   /** The name of the product detail. */
   attributeName?: string;
 }
-const ProductDetail = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ProductDetail>;
-
 export type ProductDetailList = Array<ProductDetail>;
-const ProductDetailList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ProductDetailList>;
-
 /** The weight of the product. */
 export interface ProductWeight {
   /** Required. The weight unit. Acceptable values are: * "`g`" * "`kg`" * "`oz`" * "`lb`" */
@@ -271,8 +211,6 @@ export interface ProductWeight {
   /** Required. The weight represented as a number. The weight can have a maximum precision of four decimal places. */
   value?: number;
 }
-const ProductWeight = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ProductWeight>;
-
 /** Attributes for CSS Product. */
 export interface Attributes {
   /** Set to true if the item is targeted towards adults. */
@@ -384,8 +322,6 @@ export interface Attributes {
   /** Low Price of the CSS Product. */
   lowPrice?: Price;
 }
-const Attributes = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Attributes>;
-
 /** The destination status of the product status. */
 export interface DestinationStatus {
   /** List of country codes (ISO 3166-1 alpha-2) where the CSS Product is approved. */
@@ -397,14 +333,7 @@ export interface DestinationStatus {
   /** List of country codes (ISO 3166-1 alpha-2) where the CSS Product is disapproved. */
   disapprovedCountries?: StringList;
 }
-const DestinationStatus = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DestinationStatus>;
-
 export type DestinationStatusList = Array<DestinationStatus>;
-const DestinationStatusList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DestinationStatusList>;
-
 /** The ItemLevelIssue of the product status. */
 export interface ItemLevelIssue {
   /** The URL of a web page to help with resolving this issue. */
@@ -426,11 +355,7 @@ export interface ItemLevelIssue {
   /** Whether the issue can be resolved by the merchant. */
   resolution?: string;
 }
-const ItemLevelIssue = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ItemLevelIssue>;
-
 export type ItemLevelIssueList = Array<ItemLevelIssue>;
-const ItemLevelIssueList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ItemLevelIssueList>;
-
 /** The status of the Css Product, data validation issues, that is, information about the Css Product computed asynchronously. */
 export interface CssProductStatus {
   /** The intended destinations for the product. */
@@ -444,8 +369,6 @@ export interface CssProductStatus {
   /** A list of all issues associated with the product. */
   itemLevelIssues?: ItemLevelIssueList;
 }
-const CssProductStatus = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<CssProductStatus>;
-
 /** The processed CSS Product. */
 export interface CssProduct {
   /** Output only. A list of custom (CSS-provided) attributes. It can also be used to submit any attribute of the feed specification in its generic form (for example, `{ "name": "size type", "value": "regular" }`). This is useful for submitting attributes not explicitly exposed by the API, such as additional attributes used for Buy on Google. */
@@ -463,8 +386,6 @@ export interface CssProduct {
   /** Output only. The feed label for the product. */
   feedLabel?: string;
 }
-const CssProduct = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CssProduct>;
-
 /** This resource represents input data you submit for a CSS Product, not the processed CSS Product that you see in CSS Center, in Shopping Ads, or across Google surfaces. */
 export interface CssProductInput {
   /** Output only. The name of the processed CSS Product. Format: `accounts/{account}/cssProducts/{css_product}` " */
@@ -484,8 +405,6 @@ export interface CssProductInput {
   /** Required. The [feed label](https://developers.google.com/shopping-content/guides/products/feed-labels) for the CSS Product. Feed Label is synonymous to "target country" and hence should always be a valid region code. For example: 'DE' for Germany, 'FR' for France. */
   feedLabel?: string;
 }
-const CssProductInput = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CssProductInput>;
-
 export interface InsertAccountsCssProductInputsRequest {
   /** Optional. DEPRECATED. Feed id is not required for CSS Products. The primary or supplemental feed id. If CSS Product already exists and feed id provided is different, then the CSS Product will be moved to a new feed. Note: For now, CSSs do not need to provide feed ids as we create feeds on the fly. We do not have supplemental feed support for CSS Products yet. */
   feedId?: string;
@@ -494,11 +413,6 @@ export interface InsertAccountsCssProductInputsRequest {
   /** Request body */
   body?: CssProductInput;
 }
-const InsertAccountsCssProductInputsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<InsertAccountsCssProductInputsRequest>;
-
 export interface ListAccountsCssProductsRequest {
   /** The maximum number of CSS Products to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. If unspecified, the maximum number of CSS products will be returned. */
   pageSize?: number;
@@ -507,14 +421,7 @@ export interface ListAccountsCssProductsRequest {
   /** A page token, received from a previous `ListCssProducts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCssProducts` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListAccountsCssProductsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListAccountsCssProductsRequest>;
-
 export type CssProductList = Array<CssProduct>;
-const CssProductList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<CssProductList>;
-
 /** Response message for the ListCssProducts method. */
 export interface ListCssProductsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -522,11 +429,6 @@ export interface ListCssProductsResponse {
   /** The processed CSS products from the specified account. These are your processed CSS products after applying rules and supplemental feeds. */
   cssProducts?: CssProductList;
 }
-const ListCssProductsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListCssProductsResponse>;
-
 export interface ListAccountsLabelsRequest {
   /** Required. The parent account. Format: accounts/{account} */
   parent: string;
@@ -535,14 +437,7 @@ export interface ListAccountsLabelsRequest {
   /** The maximum number of labels to return. The service may return fewer than this value. If unspecified, at most 50 labels will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-const ListAccountsLabelsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListAccountsLabelsRequest>;
-
 export type AccountLabelList = Array<AccountLabel>;
-const AccountLabelList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<AccountLabelList>;
-
 /** Response message for the `ListAccountLabels` method. */
 export interface ListAccountLabelsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -550,11 +445,6 @@ export interface ListAccountLabelsResponse {
   /** The labels from the specified account. */
   accountLabels?: AccountLabelList;
 }
-const ListAccountLabelsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListAccountLabelsResponse>;
-
 export interface ListAccountsQuotasRequest {
   /** Optional. The maximum number of quotas to return in the response, used for paging. Defaults to 500; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -563,11 +453,6 @@ export interface ListAccountsQuotasRequest {
   /** Required. The CSS account that owns the collection of method quotas and resources. In most cases, this is the CSS domain. Format: accounts/{account} */
   parent: string;
 }
-const ListAccountsQuotasRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListAccountsQuotasRequest>;
-
 /** The method details per method in the CSS API. */
 export interface MethodDetails {
   /** Output only. The API version that the method belongs to. */
@@ -579,11 +464,7 @@ export interface MethodDetails {
   /** Output only. The sub-API that the method belongs to. In the CSS API, this is always `css`. */
   subapi?: string;
 }
-const MethodDetails = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<MethodDetails>;
-
 export type MethodDetailsList = Array<MethodDetails>;
-const MethodDetailsList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<MethodDetailsList>;
-
 /** The group information for methods in the CSS API. The quota is shared between all methods in the group. Even if none of the methods within the group have usage the information for the group is returned. */
 export interface QuotaGroup {
   /** Identifier. The resource name of the quota group. Format: accounts/{account}/quotas/{group} Example: `accounts/12345678/quotas/css-products-insert` Note: The {group} part is not guaranteed to follow a specific pattern. */
@@ -597,11 +478,7 @@ export interface QuotaGroup {
   /** Output only. The current quota usage, meaning the number of calls already made on a given day to the methods in the group. The daily quota limits reset at 12:00 PM midday UTC. */
   quotaUsage?: string;
 }
-const QuotaGroup = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<QuotaGroup>;
-
 export type QuotaGroupList = Array<QuotaGroup>;
-const QuotaGroupList = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<QuotaGroupList>;
-
 /** Response message for the ListMethodGroups method. */
 export interface ListQuotaGroupsResponse {
   /** The methods, current quota usage and limits per each group. The quota is shared between all methods in the group. The groups are sorted in descending order based on quota_usage. */
@@ -609,11 +486,6 @@ export interface ListQuotaGroupsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListQuotaGroupsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListQuotaGroupsResponse>;
-
 export interface ListChildAccountsAccountsRequest {
   /** Optional. A page token, received from a previous `ListChildAccounts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListChildAccounts` must match the call that provided the page token. */
   pageToken?: string;
@@ -626,14 +498,7 @@ export interface ListChildAccountsAccountsRequest {
   /** If set, only the MC accounts with the given name (case sensitive) will be returned. */
   fullName?: string;
 }
-const ListChildAccountsAccountsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListChildAccountsAccountsRequest>;
-
 export type AccountList = Array<Account>;
-const AccountList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<AccountList>;
-
 /** Response message for the `ListChildAccounts` method. */
 export interface ListChildAccountsResponse {
   /** The CSS/MC accounts returned for the specified CSS parent account. */
@@ -641,11 +506,6 @@ export interface ListChildAccountsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListChildAccountsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ListChildAccountsResponse>;
-
 export interface PatchAccountsCssProductInputsRequest {
   /** The list of CSS product attributes to be updated. If the update mask is omitted, then it is treated as implied field mask equivalent to all fields that are populated (have a non-empty value). Attributes specified in the update mask without a value specified in the body will be deleted from the CSS product. Update mask can only be specified for top level fields in attributes and custom attributes. To specify the update mask for custom attributes you need to add the `custom_attribute.` prefix. Providing special "*" value for full CSS product replacement is not supported. */
   updateMask?: string;
@@ -654,22 +514,12 @@ export interface PatchAccountsCssProductInputsRequest {
   /** Request body */
   body?: CssProductInput;
 }
-const PatchAccountsCssProductInputsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<PatchAccountsCssProductInputsRequest>;
-
 export interface PatchAccountsLabelsRequest {
   /** Identifier. The resource name of the label. Format: accounts/{account}/labels/{label} */
   name: string;
   /** Request body */
   body?: AccountLabel;
 }
-const PatchAccountsLabelsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<PatchAccountsLabelsRequest>;
-
 /** The request message for the `UpdateLabels` method. */
 export interface UpdateAccountLabelsRequest {
   /** The list of label IDs to overwrite the existing account label IDs. If the list is empty, all currently assigned label IDs will be deleted. */
@@ -677,22 +527,12 @@ export interface UpdateAccountLabelsRequest {
   /** Optional. Only required when updating MC account labels. The CSS domain that is the parent resource of the MC account. Format: accounts/{account} */
   parent?: string;
 }
-const UpdateAccountLabelsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<UpdateAccountLabelsRequest>;
-
 export interface UpdateLabelsAccountsRequest {
   /** Required. The label resource name. Format: accounts/{account} */
   name: string;
   /** Request body */
   body?: UpdateAccountLabelsRequest;
 }
-const UpdateLabelsAccountsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<UpdateLabelsAccountsRequest>;
-
 export type CreateAccountsLabelsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Creates a new label, not assigned to any account. */
 export const createAccountsLabels: API.OperationMethod<
@@ -701,8 +541,8 @@ export const createAccountsLabels: API.OperationMethod<
   CreateAccountsLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsLabelsRequest,
-  output: AccountLabel,
+  input: __S(1) as any as S.Schema<CreateAccountsLabelsRequest>,
+  output: __S(0) as any as S.Schema<AccountLabel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -721,8 +561,8 @@ export const deleteAccountsCssProductInputs: API.OperationMethod<
   DeleteAccountsCssProductInputsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsCssProductInputsRequest,
-  output: Empty,
+  input: __S(2) as any as S.Schema<DeleteAccountsCssProductInputsRequest>,
+  output: __S(3) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -736,8 +576,8 @@ export const deleteAccountsLabels: API.OperationMethod<
   DeleteAccountsLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsLabelsRequest,
-  output: Empty,
+  input: __S(4) as any as S.Schema<DeleteAccountsLabelsRequest>,
+  output: __S(3) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -751,8 +591,8 @@ export const getAccounts: API.OperationMethod<
   GetAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsRequest,
-  output: Account,
+  input: __S(5) as any as S.Schema<GetAccountsRequest>,
+  output: __S(7) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -766,8 +606,8 @@ export const getAccountsCssProducts: API.OperationMethod<
   GetAccountsCssProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsCssProductsRequest,
-  output: CssProduct,
+  input: __S(8) as any as S.Schema<GetAccountsCssProductsRequest>,
+  output: __S(26) as any as S.Schema<CssProduct>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -786,8 +626,8 @@ export const insertAccountsCssProductInputs: API.OperationMethod<
   InsertAccountsCssProductInputsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertAccountsCssProductInputsRequest,
-  output: CssProductInput,
+  input: __S(28) as any as S.Schema<InsertAccountsCssProductInputsRequest>,
+  output: __S(27) as any as S.Schema<CssProductInput>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -802,8 +642,8 @@ export const listAccountsCssProducts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCssProductsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsCssProductsRequest,
-  output: ListCssProductsResponse,
+  input: __S(29) as any as S.Schema<ListAccountsCssProductsRequest>,
+  output: __S(31) as any as S.Schema<ListCssProductsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -819,8 +659,8 @@ export const listAccountsLabels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountLabelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsLabelsRequest,
-  output: ListAccountLabelsResponse,
+  input: __S(32) as any as S.Schema<ListAccountsLabelsRequest>,
+  output: __S(34) as any as S.Schema<ListAccountLabelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -836,8 +676,8 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
   GcpOpContext,
   ListQuotaGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsQuotasRequest,
-  output: ListQuotaGroupsResponse,
+  input: __S(35) as any as S.Schema<ListAccountsQuotasRequest>,
+  output: __S(40) as any as S.Schema<ListQuotaGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -853,8 +693,8 @@ export const listChildAccountsAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   ListChildAccountsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListChildAccountsAccountsRequest,
-  output: ListChildAccountsResponse,
+  input: __S(41) as any as S.Schema<ListChildAccountsAccountsRequest>,
+  output: __S(43) as any as S.Schema<ListChildAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -874,8 +714,8 @@ export const patchAccountsCssProductInputs: API.OperationMethod<
   PatchAccountsCssProductInputsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAccountsCssProductInputsRequest,
-  output: CssProductInput,
+  input: __S(44) as any as S.Schema<PatchAccountsCssProductInputsRequest>,
+  output: __S(27) as any as S.Schema<CssProductInput>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -889,8 +729,8 @@ export const patchAccountsLabels: API.OperationMethod<
   PatchAccountsLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAccountsLabelsRequest,
-  output: AccountLabel,
+  input: __S(45) as any as S.Schema<PatchAccountsLabelsRequest>,
+  output: __S(0) as any as S.Schema<AccountLabel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -904,8 +744,8 @@ export const updateLabelsAccounts: API.OperationMethod<
   UpdateLabelsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLabelsAccountsRequest,
-  output: Account,
+  input: __S(47) as any as S.Schema<UpdateLabelsAccountsRequest>,
+  output: __S(7) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -922,14 +762,14 @@ function __c0(j: number): any {
           name: S.optional(S.String),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          labelType: S.optional(AccountLabelLabelTypeEnum),
+          labelType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountLabel" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(AccountLabel.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -979,13 +819,13 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          automaticLabelIds: S.optional(StringList),
+          automaticLabelIds: S.optional(__S(6)),
           displayName: S.optional(S.String),
           parent: S.optional(S.String),
-          labelIds: S.optional(StringList),
+          labelIds: S.optional(__S(6)),
           name: S.optional(S.String),
           fullName: S.optional(S.String),
-          accountType: S.optional(AccountAccountTypeEnum),
+          accountType: S.optional(S.String),
           homepageUri: S.optional(S.String),
         }),
       ).annotate({ identifier: "Account" });
@@ -1008,11 +848,11 @@ function __c1(j: number): any {
         S.Struct({
           value: S.optional(S.String),
           name: S.optional(S.String),
-          groupValues: S.optional(S.suspend(() => CustomAttributeList)),
+          groupValues: S.optional(S.suspend(() => __S(10))),
         }),
       ).annotate({ identifier: "CustomAttribute" });
     case 2:
-      return S.Array(CustomAttribute);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1022,7 +862,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Certification" });
     case 4:
-      return S.Array(Certification);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1033,8 +873,8 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          downpayment: S.optional(Price),
-          amount: S.optional(Price),
+          downpayment: S.optional(__S(13)),
+          amount: S.optional(__S(13)),
           months: S.optional(S.String),
         }),
       ).annotate({ identifier: "HeadlineOfferInstallment" });
@@ -1052,9 +892,9 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          amount: S.optional(Price),
+          amount: S.optional(__S(13)),
           periodLength: S.optional(S.String),
-          period: S.optional(HeadlineOfferSubscriptionCostPeriodEnum),
+          period: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HeadlineOfferSubscriptionCost",
@@ -1068,7 +908,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ProductDetail" });
     case 2:
-      return S.Array(ProductDetail);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1080,37 +920,37 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           adult: S.optional(S.Boolean),
-          certifications: S.optional(CertificationList),
+          certifications: S.optional(__S(12)),
           headlineOfferCondition: S.optional(S.String),
           color: S.optional(S.String),
           pattern: S.optional(S.String),
           imageLink: S.optional(S.String),
           sizeSystem: S.optional(S.String),
-          headlineOfferInstallment: S.optional(HeadlineOfferInstallment),
-          productLength: S.optional(ProductDimension),
-          headlineOfferShippingPrice: S.optional(Price),
+          headlineOfferInstallment: S.optional(__S(14)),
+          productLength: S.optional(__S(15)),
+          headlineOfferShippingPrice: S.optional(__S(13)),
           customLabel4: S.optional(S.String),
           brand: S.optional(S.String),
           maxRating: S.optional(S.String),
           customLabel3: S.optional(S.String),
-          productHighlights: S.optional(StringList),
+          productHighlights: S.optional(__S(6)),
           material: S.optional(S.String),
           itemGroupId: S.optional(S.String),
           minRating: S.optional(S.String),
-          productWidth: S.optional(ProductDimension),
-          headlineOfferSubscriptionCost: S.optional(HeadlineOfferSubscriptionCost),
-          productDetails: S.optional(ProductDetailList),
+          productWidth: S.optional(__S(15)),
+          headlineOfferSubscriptionCost: S.optional(__S(16)),
+          productDetails: S.optional(__S(18)),
           customLabel1: S.optional(S.String),
           description: S.optional(S.String),
-          productHeight: S.optional(ProductDimension),
+          productHeight: S.optional(__S(15)),
           headlineOfferLink: S.optional(S.String),
-          excludedDestinations: S.optional(StringList),
+          excludedDestinations: S.optional(__S(6)),
           ageGroup: S.optional(S.String),
           size: S.optional(S.String),
           reviewCount: S.optional(S.String),
           pause: S.optional(S.String),
-          productWeight: S.optional(ProductWeight),
-          includedDestinations: S.optional(StringList),
+          productWeight: S.optional(__S(19)),
+          includedDestinations: S.optional(__S(6)),
           mpn: S.optional(S.String),
           numberOfOffers: S.optional(S.String),
           gender: S.optional(S.String),
@@ -1118,41 +958,41 @@ function __c2(j: number): any {
           headlineOfferMobileLink: S.optional(S.String),
           cppAdsRedirect: S.optional(S.String),
           googleProductCategory: S.optional(S.String),
-          productTypes: S.optional(StringList),
+          productTypes: S.optional(__S(6)),
           gtin: S.optional(S.String),
-          headlineOfferPrice: S.optional(Price),
-          sizeTypes: S.optional(StringList),
-          highPrice: S.optional(Price),
+          headlineOfferPrice: S.optional(__S(13)),
+          sizeTypes: S.optional(__S(6)),
+          highPrice: S.optional(__S(13)),
           isBundle: S.optional(S.Boolean),
           expirationDate: S.optional(S.String),
           rating: S.optional(S.Number),
           customLabel2: S.optional(S.String),
-          additionalImageLinks: S.optional(StringList),
+          additionalImageLinks: S.optional(__S(6)),
           multipack: S.optional(S.String),
           cppLink: S.optional(S.String),
           title: S.optional(S.String),
           cppMobileLink: S.optional(S.String),
-          lowPrice: S.optional(Price),
+          lowPrice: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "Attributes" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          approvedCountries: S.optional(StringList),
+          approvedCountries: S.optional(__S(6)),
           destination: S.optional(S.String),
-          pendingCountries: S.optional(StringList),
-          disapprovedCountries: S.optional(StringList),
+          pendingCountries: S.optional(__S(6)),
+          disapprovedCountries: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "DestinationStatus" });
     case 6:
-      return S.Array(DestinationStatus);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
           documentation: S.optional(S.String),
           attribute: S.optional(S.String),
           detail: S.optional(S.String),
-          applicableCountries: S.optional(StringList),
+          applicableCountries: S.optional(__S(6)),
           description: S.optional(S.String),
           destination: S.optional(S.String),
           code: S.optional(S.String),
@@ -1165,26 +1005,26 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ItemLevelIssue);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          destinationStatuses: S.optional(DestinationStatusList),
+          destinationStatuses: S.optional(__S(22)),
           googleExpirationDate: S.optional(S.String),
           creationDate: S.optional(S.String),
           lastUpdateDate: S.optional(S.String),
-          itemLevelIssues: S.optional(ItemLevelIssueList),
+          itemLevelIssues: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "CssProductStatus" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          customAttributes: S.optional(CustomAttributeList),
+          customAttributes: S.optional(__S(10)),
           contentLanguage: S.optional(S.String),
           name: S.optional(S.String),
           rawProvidedId: S.optional(S.String),
-          attributes: S.optional(Attributes),
-          cssProductStatus: S.optional(CssProductStatus),
+          attributes: S.optional(__S(20)),
+          cssProductStatus: S.optional(__S(25)),
           feedLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "CssProduct" });
@@ -1192,9 +1032,9 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           finalName: S.optional(S.String),
-          customAttributes: S.optional(CustomAttributeList),
+          customAttributes: S.optional(__S(10)),
           rawProvidedId: S.optional(S.String),
-          attributes: S.optional(Attributes),
+          attributes: S.optional(__S(20)),
           contentLanguage: S.optional(S.String),
           name: S.optional(S.String),
           freshnessTime: S.optional(S.String),
@@ -1206,7 +1046,7 @@ function __c3(j: number): any {
         S.Struct({
           feedId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CssProductInput.pipe(T.HttpBody())),
+          body: S.optional(__S(27).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1234,12 +1074,12 @@ function __c3(j: number): any {
         identifier: "ListAccountsCssProductsRequest",
       });
     case 6:
-      return S.Array(CssProduct);
+      return S.Array(__S(26));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          cssProducts: S.optional(CssProductList),
+          cssProducts: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "ListCssProductsResponse" });
   }
@@ -1263,12 +1103,12 @@ function __c4(j: number): any {
         identifier: "ListAccountsLabelsRequest",
       });
     case 1:
-      return S.Array(AccountLabel);
+      return S.Array(__S(0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          accountLabels: S.optional(AccountLabelList),
+          accountLabels: S.optional(__S(33)),
         }),
       ).annotate({
         identifier: "ListAccountLabelsResponse",
@@ -1299,19 +1139,19 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "MethodDetails" });
     case 5:
-      return S.Array(MethodDetails);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           quotaLimit: S.optional(S.String),
-          methodDetails: S.optional(MethodDetailsList),
+          methodDetails: S.optional(__S(37)),
           quotaMinuteLimit: S.optional(S.String),
           quotaUsage: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaGroup" });
     case 7:
-      return S.Array(QuotaGroup);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
@@ -1319,7 +1159,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          quotaGroups: S.optional(QuotaGroupList),
+          quotaGroups: S.optional(__S(39)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListQuotaGroupsResponse" });
@@ -1342,11 +1182,11 @@ function __c5(j: number): any {
         identifier: "ListChildAccountsAccountsRequest",
       });
     case 2:
-      return S.Array(Account);
+      return S.Array(__S(7));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          accounts: S.optional(AccountList),
+          accounts: S.optional(__S(42)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1357,7 +1197,7 @@ function __c5(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(CssProductInput.pipe(T.HttpBody())),
+          body: S.optional(__S(27).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://css.googleapis.com/" }),
         ),
@@ -1368,7 +1208,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(AccountLabel.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v1/{+name}", baseUrl: "https://css.googleapis.com/" }),
         ),
@@ -1378,7 +1218,7 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          labelIds: S.optional(StringList),
+          labelIds: S.optional(__S(6)),
           parent: S.optional(S.String),
         }),
       ).annotate({
@@ -1388,7 +1228,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UpdateAccountLabelsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(46).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1399,5 +1239,26 @@ function __c5(j: number): any {
       ).annotate({
         identifier: "UpdateLabelsAccountsRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
   }
 }

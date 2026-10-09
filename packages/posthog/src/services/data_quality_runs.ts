@@ -5,20 +5,15 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 /** Ids of the checks to run. Omit to run every enabled check in the project. */
 export type CreateDataQualityRunRequestCheckIdsList = Array<string>;
-const CreateDataQualityRunRequestCheckIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateDataQualityRunRequestCheckIdsList>;
-
 /** * `table` - table * `view` - view * `metric` - metric * `posthog_table` - posthog_table */
 export type SubjectTypeEnum = "table" | "view" | "metric" | "posthog_table";
-const SubjectTypeEnum = S.String;
-
 export interface CreateDataQualityRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -29,11 +24,6 @@ export interface CreateDataQualityRunRequest {
   /** Id of the subject to run every enabled check on. Pass subject_type with it. */
   subject_uuid?: string;
 }
-const CreateDataQualityRunRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateDataQualityRunRequest>;
-
 export interface DataQualitySuiteRun {
   id: string;
   /** manual, materialization, source_sync, or scheduled. */
@@ -55,22 +45,13 @@ export interface DataQualitySuiteRun {
   error: string;
   created_at: string;
 }
-const DataQualitySuiteRun = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DataQualitySuiteRun>;
-
 export interface GetDataQualityRunRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data quality suite run. */
   id: string;
 }
-const GetDataQualityRunRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetDataQualityRunRequest>;
-
 export type ListDataQualityRunsRequestSubjectType = "metric" | "posthog_table" | "table" | "view";
-const ListDataQualityRunsRequestSubjectType = S.String;
-
 export interface ListDataQualityRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -83,39 +64,19 @@ export interface ListDataQualityRunsRequest {
   /** Id of the table, view, metric, or PostHog table. */
   subject_uuid?: string;
 }
-const ListDataQualityRunsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListDataQualityRunsRequest>;
-
 export type PaginatedDataQualitySuiteRunListResultsList = Array<DataQualitySuiteRun>;
-const PaginatedDataQualitySuiteRunListResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PaginatedDataQualitySuiteRunListResultsList>;
-
 export interface PaginatedDataQualitySuiteRunList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedDataQualitySuiteRunListResultsList;
 }
-const PaginatedDataQualitySuiteRunList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PaginatedDataQualitySuiteRunList>;
-
 export interface ListDataQualityRunsCheckRunsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this data quality suite run. */
   id: string;
 }
-const ListDataQualityRunsCheckRunsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListDataQualityRunsCheckRunsRequest>;
-
 /** * `not_null` - not_null * `unique` - unique * `accepted_values` - accepted_values * `relationships` - relationships * `row_count` - row_count * `freshness` - freshness * `custom_sql` - custom_sql */
 export type CheckTypeEnum =
   | "not_null"
@@ -125,19 +86,10 @@ export type CheckTypeEnum =
   | "row_count"
   | "freshness"
   | "custom_sql";
-const CheckTypeEnum = S.String;
-
 /** Config this run executed, snapshotted so an edit to the check cannot rewrite history. Null for runs recorded before snapshots existed -- unknown, not 'same as the check has now'. */
 export type DataQualityCheckRunCheckConfigMap = { [key: string]: unknown | undefined };
-const DataQualityCheckRunCheckConfigMap = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DataQualityCheckRunCheckConfigMap>;
-
 /** * `error` - error * `warn` - warn */
 export type DataQualityCheckSeverityEnum = "error" | "warn";
-const DataQualityCheckSeverityEnum = S.String;
-
 export interface DataQualityCheckRun {
   id: string;
   /** The definition executed. Nulled rather than cascaded so history outlives hard deletes. */
@@ -172,20 +124,8 @@ export interface DataQualityCheckRun {
   finished_at: string | null;
   created_at: string;
 }
-const DataQualityCheckRun = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DataQualityCheckRun>;
-
 export type ListDataQualityRunsCheckRunsResponseBodyList = Array<DataQualityCheckRun>;
-const ListDataQualityRunsCheckRunsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListDataQualityRunsCheckRunsResponseBodyList>;
-
 export type ListDataQualityRunsCheckRunsResponse = ListDataQualityRunsCheckRunsResponseBodyList;
-const ListDataQualityRunsCheckRunsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListDataQualityRunsCheckRunsResponse>;
-
 export type CreateDataQualityRunError = PosthogOpError;
 /** Run checks now: the ones named by check_ids, every enabled check on the subject named by subject_type and subject_uuid, or every enabled check in the project when neither is given. Returns the suite run to poll for the report. */
 export const createDataQualityRun: API.OperationMethod<
@@ -194,8 +134,8 @@ export const createDataQualityRun: API.OperationMethod<
   CreateDataQualityRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataQualityRunRequest,
-  output: DataQualitySuiteRun,
+  input: __S(1) as any as S.Schema<CreateDataQualityRunRequest>,
+  output: __S(2) as any as S.Schema<DataQualitySuiteRun>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -209,8 +149,8 @@ export const getDataQualityRun: API.OperationMethod<
   GetDataQualityRunError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataQualityRunRequest,
-  output: DataQualitySuiteRun,
+  input: __S(3) as any as S.Schema<GetDataQualityRunRequest>,
+  output: __S(2) as any as S.Schema<DataQualitySuiteRun>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -224,8 +164,8 @@ export const listDataQualityRuns: API.OperationMethod<
   ListDataQualityRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataQualityRunsRequest,
-  output: PaginatedDataQualitySuiteRunList,
+  input: __S(4) as any as S.Schema<ListDataQualityRunsRequest>,
+  output: __S(6) as any as S.Schema<PaginatedDataQualitySuiteRunList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -239,8 +179,8 @@ export const listDataQualityRunsCheckRuns: API.OperationMethod<
   ListDataQualityRunsCheckRunsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDataQualityRunsCheckRunsRequest,
-  output: ListDataQualityRunsCheckRunsResponse,
+  input: __S(7) as any as S.Schema<ListDataQualityRunsCheckRunsRequest>,
+  output: __S(11) as any as S.Schema<ListDataQualityRunsCheckRunsResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -255,8 +195,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          check_ids: S.optional(CreateDataQualityRunRequestCheckIdsList),
-          subject_type: S.optional(SubjectTypeEnum),
+          check_ids: S.optional(__S(0)),
+          subject_type: S.optional(S.String),
           subject_uuid: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -306,7 +246,7 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          subject_type: S.optional(ListDataQualityRunsRequestSubjectType.pipe(T.Query())),
+          subject_type: S.optional(S.String.pipe(T.Query())),
           subject_uuid: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -319,14 +259,14 @@ function __c0(j: number): any {
         identifier: "ListDataQualityRunsRequest",
       });
     case 5:
-      return S.Array(DataQualitySuiteRun);
+      return S.Array(__S(2));
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedDataQualitySuiteRunListResultsList,
+          results: __S(5),
         }),
       ).annotate({
         identifier: "PaginatedDataQualitySuiteRunList",
@@ -359,13 +299,13 @@ function __c1(j: number): any {
           quality_check: S.NullOr(S.String),
           check_name: S.NullOr(S.String),
           suite_run: S.String,
-          subject_type: SubjectTypeEnum,
+          subject_type: S.String,
           subject_uuid: S.String,
           subject_name: S.String,
-          check_type: CheckTypeEnum,
+          check_type: S.String,
           column_name: S.String,
-          check_config: S.NullOr(DataQualityCheckRunCheckConfigMap),
-          check_severity: S.NullOr(DataQualityCheckSeverityEnum),
+          check_config: S.NullOr(__S(8)),
+          check_severity: S.NullOr(S.String),
           status: S.String,
           failed_row_count: S.NullOr(S.Number),
           observed_value: S.NullOr(S.Number),
@@ -379,12 +319,23 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "DataQualityCheckRun" });
     case 2:
-      return S.Array(DataQualityCheckRun);
+      return S.Array(__S(9));
     case 3:
-      return S.suspend(() =>
-        ListDataQualityRunsCheckRunsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(10).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListDataQualityRunsCheckRunsResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

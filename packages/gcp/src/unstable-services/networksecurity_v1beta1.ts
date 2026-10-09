@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,8 +65,6 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 /** Request used by the AddAddressGroupItems method. */
 export interface AddAddressGroupItemsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -72,28 +72,14 @@ export interface AddAddressGroupItemsRequest {
   /** Required. List of items to add. */
   items?: StringList;
 }
-const AddAddressGroupItemsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddAddressGroupItemsRequest>;
-
 export interface AddItemsOrganizationsLocationsAddressGroupsRequest {
   /** Required. A name of the AddressGroup to add items to. Must be in the format `projects|organization/*\/locations/{location}/addressGroups/*`. */
   addressGroup: string;
   /** Request body */
   body?: AddAddressGroupItemsRequest;
 }
-const AddItemsOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddItemsOrganizationsLocationsAddressGroupsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -103,8 +89,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -118,52 +102,28 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Operation>;
-
 export interface AddItemsProjectsLocationsAddressGroupsRequest {
   /** Required. A name of the AddressGroup to add items to. Must be in the format `projects|organization/*\/locations/{location}/addressGroups/*`. */
   addressGroup: string;
   /** Request body */
   body?: AddAddressGroupItemsRequest;
 }
-const AddItemsProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AddItemsProjectsLocationsAddressGroupsRequest>;
-
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** Request used by the CloneAddressGroupItems method. */
 export interface CloneAddressGroupItemsRequest {
   /** Required. Source address group to clone items from. */
@@ -171,48 +131,22 @@ export interface CloneAddressGroupItemsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const CloneAddressGroupItemsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CloneAddressGroupItemsRequest>;
-
 export interface CloneItemsOrganizationsLocationsAddressGroupsRequest {
   /** Required. A name of the AddressGroup to clone items to. Must be in the format `projects|organization/*\/locations/{location}/addressGroups/*`. */
   addressGroup: string;
   /** Request body */
   body?: CloneAddressGroupItemsRequest;
 }
-const CloneItemsOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CloneItemsOrganizationsLocationsAddressGroupsRequest>;
-
 export interface CloneItemsProjectsLocationsAddressGroupsRequest {
   /** Required. A name of the AddressGroup to clone items to. Must be in the format `projects|organization/*\/locations/{location}/addressGroups/*`. */
   addressGroup: string;
   /** Request body */
   body?: CloneAddressGroupItemsRequest;
 }
-const CloneItemsProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CloneItemsProjectsLocationsAddressGroupsRequest>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<StringMap>;
-
 export type AddressGroupTypeEnum = "TYPE_UNSPECIFIED" | "IPV4" | "IPV6";
-const AddressGroupTypeEnum = S.String;
-
 export type AddressGroupPurposeItemEnum = "PURPOSE_UNSPECIFIED" | "DEFAULT" | "CLOUD_ARMOR";
-const AddressGroupPurposeItemEnum = S.String;
-
 export type AddressGroupPurposeItemEnumList = Array<AddressGroupPurposeItemEnum | (string & {})>;
-const AddressGroupPurposeItemEnumList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<AddressGroupPurposeItemEnumList>;
-
 /** AddressGroup is a resource that specifies how a collection of IP/DNS used in Firewall Policy. */
 export interface AddressGroup {
   /** Required. Name of the AddressGroup resource. It matches pattern `projects/*\/locations/{location}/addressGroups/`. */
@@ -236,8 +170,6 @@ export interface AddressGroup {
   /** Required. Capacity of the Address Group */
   capacity?: number;
 }
-const AddressGroup = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<AddressGroup>;
-
 export interface CreateOrganizationsLocationsAddressGroupsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -248,11 +180,6 @@ export interface CreateOrganizationsLocationsAddressGroupsRequest {
   /** Request body */
   body?: AddressGroup;
 }
-const CreateOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateOrganizationsLocationsAddressGroupsRequest>;
-
 /** This is a subset of the FirewallEndpointAssociation message, containing fields to be used by the consumer. */
 export interface FirewallEndpointAssociationReference {
   /** Output only. The resource name of the FirewallEndpointAssociation. Format: projects/{project}/locations/{location}/firewallEndpointAssociations/{id} */
@@ -260,32 +187,17 @@ export interface FirewallEndpointAssociationReference {
   /** Output only. The VPC network associated. Format: projects/{project}/global/networks/{name}. */
   network?: string;
 }
-const FirewallEndpointAssociationReference = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<FirewallEndpointAssociationReference>;
-
 export type FirewallEndpointAssociationReferenceList = Array<FirewallEndpointAssociationReference>;
-const FirewallEndpointAssociationReferenceList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<FirewallEndpointAssociationReferenceList>;
-
 export type FirewallEndpointStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
   | "ACTIVE"
   | "DELETING"
   | "INACTIVE";
-const FirewallEndpointStateEnum = S.String;
-
 export type FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsTimeoutActionEnum =
   | "WILDFIRE_INLINE_CLOUD_ANALYSIS_TIMEOUT_ACTION_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
-const FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsTimeoutActionEnum =
-  S.String;
-
 /** Settings for WildFire inline cloud analysis. */
 export interface FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings {
   /** Optional. Action to take when WildFire inline cloud analysis times out. Default value is ALLOW. */
@@ -297,17 +209,10 @@ export interface FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSett
   /** Optional. Timeout in milliseconds on a file being held while WildFire inline cloud analysis is performed. Value between 1 to 240000 is valid. Default value is 30000. */
   maxAnalysisDuration?: string;
 }
-const FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings>;
-
 export type FirewallEndpointWildfireSettingsWildfireRealtimeLookupTimeoutActionEnum =
   | "WILDFIRE_REALTIME_SIGNATURE_LOOKUP_TIMEOUT_ACTION_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
-const FirewallEndpointWildfireSettingsWildfireRealtimeLookupTimeoutActionEnum = S.String;
-
 export type FirewallEndpointWildfireSettingsWildfireRegionEnum =
   | "WILDFIRE_REGION_UNSPECIFIED"
   | "CANADA"
@@ -328,8 +233,6 @@ export type FirewallEndpointWildfireSettingsWildfireRegionEnum =
   | "ISRAEL"
   | "SAUDI_ARABIA"
   | "SPAIN";
-const FirewallEndpointWildfireSettingsWildfireRegionEnum = S.String;
-
 /** Settings for WildFire analysis. */
 export interface FirewallEndpointWildfireSettings {
   /** Optional. Indicates whether WildFire analysis is enabled. Default value is false. */
@@ -345,11 +248,6 @@ export interface FirewallEndpointWildfireSettings {
   /** Optional. The region where WildFire analysis will be performed. Palo Alto Networks supports regions: https://docs.paloaltonetworks.com/advanced-wildfire/administration/advanced-wildfire-overview/advanced-wildfire-deployments/advanced-wildfire-global-cloud */
   wildfireRegion?: FirewallEndpointWildfireSettingsWildfireRegionEnum | (string & {});
 }
-const FirewallEndpointWildfireSettings = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<FirewallEndpointWildfireSettings>;
-
 export type FirewallEndpointEndpointSettingsContentCloudRegionEnum =
   | "CONTENT_CLOUD_REGION_UNSPECIFIED"
   | "US_CENTRAL"
@@ -369,8 +267,6 @@ export type FirewallEndpointEndpointSettingsContentCloudRegionEnum =
   | "SOUTH_KOREA"
   | "SAUDI_ARABIA"
   | "ITALY";
-const FirewallEndpointEndpointSettingsContentCloudRegionEnum = S.String;
-
 /** Settings for the endpoint. */
 export interface FirewallEndpointEndpointSettings {
   /** Optional. Immutable. Indicates whether Jumbo Frames are enabled. Default value is false. */
@@ -380,11 +276,6 @@ export interface FirewallEndpointEndpointSettings {
   /** Optional. The content cloud region of the endpoint. */
   contentCloudRegion?: FirewallEndpointEndpointSettingsContentCloudRegionEnum | (string & {});
 }
-const FirewallEndpointEndpointSettings = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<FirewallEndpointEndpointSettings>;
-
 /** Message describing Endpoint object. */
 export interface FirewallEndpoint {
   /** Output only. Deprecated: List of networks that are associated with this endpoint in the local zone. This is a projection of the FirewallEndpointAssociations pointing at this endpoint. A network will only appear in this list after traffic routing is fully configured. Format: projects/{project}/global/networks/{name}. */
@@ -418,8 +309,6 @@ export interface FirewallEndpoint {
   /** Optional. Settings for the endpoint. */
   endpointSettings?: FirewallEndpointEndpointSettings;
 }
-const FirewallEndpoint = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<FirewallEndpoint>;
-
 export interface CreateOrganizationsLocationsFirewallEndpointsRequest {
   /** Required. Value for parent. */
   parent: string;
@@ -432,42 +321,29 @@ export interface CreateOrganizationsLocationsFirewallEndpointsRequest {
   /** Request body */
   body?: FirewallEndpoint;
 }
-const CreateOrganizationsLocationsFirewallEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateOrganizationsLocationsFirewallEndpointsRequest>;
-
 export type WildfireVerdictChangeRequestFinalVerdictEnum =
   | "WILDFIRE_SAMPLE_VERDICT_UNKNOWN"
   | "BENIGN"
   | "MALWARE"
   | "GRAYWARE"
   | "PHISHING";
-const WildfireVerdictChangeRequestFinalVerdictEnum = S.String;
-
 export type WildfireVerdictChangeRequestNewVerdictEnum =
   | "WILDFIRE_SAMPLE_VERDICT_UNKNOWN"
   | "BENIGN"
   | "MALWARE"
   | "GRAYWARE"
   | "PHISHING";
-const WildfireVerdictChangeRequestNewVerdictEnum = S.String;
-
 export type WildfireVerdictChangeRequestOldVerdictEnum =
   | "WILDFIRE_SAMPLE_VERDICT_UNKNOWN"
   | "BENIGN"
   | "MALWARE"
   | "GRAYWARE"
   | "PHISHING";
-const WildfireVerdictChangeRequestOldVerdictEnum = S.String;
-
 export type WildfireVerdictChangeRequestStateEnum =
   | "VERDICT_CHANGE_REQUEST_STATE_UNSPECIFIED"
   | "OPEN"
   | "CLOSED"
   | "PENDING";
-const WildfireVerdictChangeRequestStateEnum = S.String;
-
 /** Message for a WildfireVerdictChangeRequest. */
 export interface WildfireVerdictChangeRequest {
   /** Output only. Identifier. The relative name of the WildfireVerdictChangeRequest. Output only. This is a unique identifier generated by the third party API. Format: organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id} Where {wildfire_verdict_change_request_id} is the ID in the format: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$ */
@@ -499,23 +375,12 @@ export interface WildfireVerdictChangeRequest {
   /** Output only. The region of the file associated with the Malware Sample. */
   sourceRegion?: string;
 }
-const WildfireVerdictChangeRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<WildfireVerdictChangeRequest>;
-
 export interface CreateOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest {
   /** Required. Parent value for CreateWildfireVerdictChangeRequestRequest. The parent is a firewall endpoint resource. Format: organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint} */
   parent: string;
   /** Request body */
   body?: WildfireVerdictChangeRequest;
 }
-const CreateOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
-  /*@__PURE__*/ __L.at(
-    __c3,
-    2,
-  ) as any as S.Schema<CreateOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest>;
-
 /** SecurityProfileGroup is a resource that defines the behavior for various ProfileTypes. */
 export interface SecurityProfileGroup {
   /** Optional. Reference to a SecurityProfile with the WildFire configuration. */
@@ -543,8 +408,6 @@ export interface SecurityProfileGroup {
   /** Output only. Resource creation timestamp. */
   createTime?: string;
 }
-const SecurityProfileGroup = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<SecurityProfileGroup>;
-
 export interface CreateOrganizationsLocationsSecurityProfileGroupsRequest {
   /** Required. Short name of the SecurityProfileGroup resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "security_profile_group1". */
   securityProfileGroupId?: string;
@@ -553,14 +416,7 @@ export interface CreateOrganizationsLocationsSecurityProfileGroupsRequest {
   /** Request body */
   body?: SecurityProfileGroup;
 }
-const CreateOrganizationsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateOrganizationsLocationsSecurityProfileGroupsRequest>;
-
 export type UrlFilterFilteringActionEnum = "URL_FILTERING_ACTION_UNSPECIFIED" | "ALLOW" | "DENY";
-const UrlFilterFilteringActionEnum = S.String;
-
 /** A URL filter defines an action to take for some URL match. */
 export interface UrlFilter {
   /** Required. The action taken when this filter is applied. */
@@ -570,18 +426,12 @@ export interface UrlFilter {
   /** Required. The priority of this filter within the URL Filtering Profile. Lower integers indicate higher priorities. The priority of a filter must be unique within a URL Filtering Profile. */
   priority?: number;
 }
-const UrlFilter = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<UrlFilter>;
-
 export type UrlFilterList = Array<UrlFilter>;
-const UrlFilterList = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<UrlFilterList>;
-
 /** UrlFilteringProfile defines filters based on URL. */
 export interface UrlFilteringProfile {
   /** Optional. The list of filtering configs in which each config defines an action to take for some URL match. */
   urlFilters?: UrlFilterList;
 }
-const UrlFilteringProfile = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<UrlFilteringProfile>;
-
 export type WildfireInlineMlSettingsInlineMlConfigFileTypeEnum =
   | "INLINE_ML_CONFIG_UNSPECIFIED"
   | "WINDOWS_EXECUTABLE"
@@ -592,15 +442,11 @@ export type WildfireInlineMlSettingsInlineMlConfigFileTypeEnum =
   | "SHELL"
   | "OOXML"
   | "MACHO";
-const WildfireInlineMlSettingsInlineMlConfigFileTypeEnum = S.String;
-
 export type WildfireInlineMlSettingsInlineMlConfigActionEnum =
   | "INLINE_ML_ACTION_UNSPECIFIED"
   | "DISABLE"
   | "ALERT"
   | "ENABLE";
-const WildfireInlineMlSettingsInlineMlConfigActionEnum = S.String;
-
 /** Configuration for WildFire Inline ML analysis per file type. */
 export interface WildfireInlineMlSettingsInlineMlConfig {
   /** Required. File type to configure Inline ML for. */
@@ -608,18 +454,8 @@ export interface WildfireInlineMlSettingsInlineMlConfig {
   /** Required. Action to take when a threat is detected using Inline ML. */
   action?: WildfireInlineMlSettingsInlineMlConfigActionEnum | (string & {});
 }
-const WildfireInlineMlSettingsInlineMlConfig = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<WildfireInlineMlSettingsInlineMlConfig>;
-
 export type WildfireInlineMlSettingsInlineMlConfigList =
   Array<WildfireInlineMlSettingsInlineMlConfig>;
-const WildfireInlineMlSettingsInlineMlConfigList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<WildfireInlineMlSettingsInlineMlConfigList>;
-
 /** Defines the file to exclude from WildFire Inline ML analysis. */
 export interface WildfireInlineMlFileException {
   /** Optional. Name of the file to exclude from WildFire Inline ML analysis. */
@@ -627,17 +463,7 @@ export interface WildfireInlineMlFileException {
   /** Required. Machine learning partial hash of the file to exclude from WildFire Inline ML analysis. */
   partialHash?: string;
 }
-const WildfireInlineMlFileException = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<WildfireInlineMlFileException>;
-
 export type WildfireInlineMlFileExceptionList = Array<WildfireInlineMlFileException>;
-const WildfireInlineMlFileExceptionList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<WildfireInlineMlFileExceptionList>;
-
 /** Defines the settings for WildFire Inline ML analysis. */
 export interface WildfireInlineMlSettings {
   /** Optional. List of Inline ML configs to enable in WildFire Inline ML analysis. */
@@ -645,30 +471,16 @@ export interface WildfireInlineMlSettings {
   /** Optional. List of files to exclude from WildFire Inline ML analysis. */
   fileExceptions?: WildfireInlineMlFileExceptionList;
 }
-const WildfireInlineMlSettings = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<WildfireInlineMlSettings>;
-
 export type WildfireInlineMlSettingsList = Array<WildfireInlineMlSettings>;
-const WildfireInlineMlSettingsList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<WildfireInlineMlSettingsList>;
-
 export type WildfireSubmissionRuleDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "UPLOAD"
   | "DOWNLOAD"
   | "BOTH";
-const WildfireSubmissionRuleDirectionEnum = S.String;
-
 export type WildfireSubmissionRuleFileSelectionModeEnum =
   | "FILE_SELECTION_MODE_UNSPECIFIED"
   | "ALL_FILE_TYPES"
   | "CUSTOM_FILE_TYPES";
-const WildfireSubmissionRuleFileSelectionModeEnum = S.String;
-
 export type WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum =
   | "FILE_TYPE_UNSPECIFIED"
   | "APK"
@@ -684,19 +496,11 @@ export type WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum =
 export type WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList = Array<
   WildfireSubmissionRuleCustomFileTypesFileTypesItemEnum | (string & {})
 >;
-const WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList =
-  AddressGroupPurposeItemEnumList as any as S.Schema<WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList>;
-
 /** The options to submit a custom list of file types for scan. */
 export interface WildfireSubmissionRuleCustomFileTypes {
   /** Required. File types to be submitted for WildFire analysis. */
   fileTypes?: WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList;
 }
-const WildfireSubmissionRuleCustomFileTypes = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<WildfireSubmissionRuleCustomFileTypes>;
-
 /** Defines the file types to be submitted for WildFire analysis and the direction of the traffic. */
 export interface WildfireSubmissionRule {
   /** Required. Direction for the files to be analyzed by WildFire. */
@@ -706,17 +510,7 @@ export interface WildfireSubmissionRule {
   /** Submit a custom list of file types for WildFire analysis. */
   customFileTypes?: WildfireSubmissionRuleCustomFileTypes;
 }
-const WildfireSubmissionRule = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<WildfireSubmissionRule>;
-
 export type WildfireSubmissionRuleList = Array<WildfireSubmissionRule>;
-const WildfireSubmissionRuleList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<WildfireSubmissionRuleList>;
-
 export type WildfireInlineMlOverrideProtocolEnum =
   | "WILDFIRE_PROTOCOL_UNSPECIFIED"
   | "WILDFIRE_SMTP"
@@ -726,16 +520,12 @@ export type WildfireInlineMlOverrideProtocolEnum =
   | "WILDFIRE_HTTP2"
   | "WILDFIRE_HTTP"
   | "WILDFIRE_FTP";
-const WildfireInlineMlOverrideProtocolEnum = S.String;
-
 export type WildfireInlineMlOverrideActionEnum =
   | "WILDFIRE_THREAT_ACTION_UNSPECIFIED"
   | "WILDFIRE_DEFAULT_ACTION"
   | "WILDFIRE_ALLOW"
   | "WILDFIRE_ALERT"
   | "WILDFIRE_DENY";
-const WildfireInlineMlOverrideActionEnum = S.String;
-
 /** Defines what action to take for WildFire Inline ML threats per protocol. */
 export interface WildfireInlineMlOverride {
   /** Required. Protocol to match for WildFire Inline ML override. */
@@ -743,60 +533,32 @@ export interface WildfireInlineMlOverride {
   /** Required. The action to take for WildFire Inline ML override. */
   action?: WildfireInlineMlOverrideActionEnum | (string & {});
 }
-const WildfireInlineMlOverride = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<WildfireInlineMlOverride>;
-
 export type WildfireInlineMlOverrideList = Array<WildfireInlineMlOverride>;
-const WildfireInlineMlOverrideList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<WildfireInlineMlOverrideList>;
-
 export type WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnum =
   | "FILE_TYPE_UNSPECIFIED"
   | "PE";
-const WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnum = S.String;
-
 export type WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnumList = Array<
   WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnum | (string & {})
 >;
-const WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnumList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnumList>;
-
 /** The options to submit a custom list of file types for scan. */
 export interface WildfireInlineCloudAnalysisRuleCustomFileTypes {
   /** Required. File types to be submitted for WildFire inline cloud analysis. */
   fileTypes?: WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnumList;
 }
-const WildfireInlineCloudAnalysisRuleCustomFileTypes = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<WildfireInlineCloudAnalysisRuleCustomFileTypes>;
-
 export type WildfireInlineCloudAnalysisRuleDirectionEnum =
   | "DIRECTION_UNSPECIFIED"
   | "UPLOAD"
   | "DOWNLOAD"
   | "BOTH";
-const WildfireInlineCloudAnalysisRuleDirectionEnum = S.String;
-
 export type WildfireInlineCloudAnalysisRuleActionEnum =
   | "WILDFIRE_INLINE_CLOUD_ANALYSIS_ACTION_UNSPECIFIED"
   | "ALLOW"
   | "DENY"
   | "ALERT";
-const WildfireInlineCloudAnalysisRuleActionEnum = S.String;
-
 export type WildfireInlineCloudAnalysisRuleFileSelectionModeEnum =
   | "FILE_SELECTION_MODE_UNSPECIFIED"
   | "ALL_FILE_TYPES"
   | "CUSTOM_FILE_TYPES";
-const WildfireInlineCloudAnalysisRuleFileSelectionModeEnum = S.String;
-
 /** The list of file type configurations to be scanned by WildFire Inline Cloud Analysis. */
 export interface WildfireInlineCloudAnalysisRule {
   /** Submit a custom list of file types for WildFire analysis. */
@@ -808,25 +570,13 @@ export interface WildfireInlineCloudAnalysisRule {
   /** Required. File selection mode for WildFire inline cloud analysis. */
   fileSelectionMode?: WildfireInlineCloudAnalysisRuleFileSelectionModeEnum | (string & {});
 }
-const WildfireInlineCloudAnalysisRule = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<WildfireInlineCloudAnalysisRule>;
-
 export type WildfireInlineCloudAnalysisRuleList = Array<WildfireInlineCloudAnalysisRule>;
-const WildfireInlineCloudAnalysisRuleList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<WildfireInlineCloudAnalysisRuleList>;
-
 export type WildfireThreatOverrideActionEnum =
   | "WILDFIRE_THREAT_ACTION_UNSPECIFIED"
   | "WILDFIRE_DEFAULT_ACTION"
   | "WILDFIRE_ALLOW"
   | "WILDFIRE_ALERT"
   | "WILDFIRE_DENY";
-const WildfireThreatOverrideActionEnum = S.String;
-
 /** Defines what action to take for a specific WildFire threat_id match. */
 export interface WildfireThreatOverride {
   /** Required. Threat action override. */
@@ -834,17 +584,7 @@ export interface WildfireThreatOverride {
   /** Required. Threat ID to match. */
   threatId?: string;
 }
-const WildfireThreatOverride = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<WildfireThreatOverride>;
-
 export type WildfireThreatOverrideList = Array<WildfireThreatOverride>;
-const WildfireThreatOverrideList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<WildfireThreatOverrideList>;
-
 export type WildfireOverrideProtocolEnum =
   | "WILDFIRE_PROTOCOL_UNSPECIFIED"
   | "WILDFIRE_SMTP"
@@ -868,8 +608,6 @@ export interface WildfireOverride {
   action?: WildfireOverrideActionEnum | (string & {});
 }
 export type WildfireOverrideList = Array<WildfireOverride>;
-const WildfireOverrideList = WildfireInlineMlOverrideList as any as S.Schema<WildfireOverrideList>;
-
 /** WildfireAnalysisProfile defines Palo Alto Networks WildFire behavior. */
 export interface WildfireAnalysisProfile {
   /** Optional. Settings for WildFire Inline ML analysis. */
@@ -889,29 +627,17 @@ export interface WildfireAnalysisProfile {
   /** Optional. Configuration for overriding WildFire actions per protocol. */
   wildfireOverrides?: WildfireOverrideList;
 }
-const WildfireAnalysisProfile = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<WildfireAnalysisProfile>;
-
 /** CustomMirroringProfile defines out-of-band integration behavior (mirroring). It is used by mirroring rules with a MIRROR action. */
 export interface CustomMirroringProfile {
   /** Required. Immutable. The target MirroringEndpointGroup. When a mirroring rule with this security profile attached matches a packet, a replica will be mirrored to the location-local target in this group. */
   mirroringEndpointGroup?: string;
 }
-const CustomMirroringProfile = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CustomMirroringProfile>;
-
 export type ThreatOverrideActionEnum =
   | "THREAT_ACTION_UNSPECIFIED"
   | "DEFAULT_ACTION"
   | "ALLOW"
   | "ALERT"
   | "DENY";
-const ThreatOverrideActionEnum = S.String;
-
 export type ThreatOverrideTypeEnum =
   | "THREAT_TYPE_UNSPECIFIED"
   | "UNKNOWN"
@@ -919,8 +645,6 @@ export type ThreatOverrideTypeEnum =
   | "ANTIVIRUS"
   | "SPYWARE"
   | "DNS";
-const ThreatOverrideTypeEnum = S.String;
-
 /** Defines what action to take for a specific threat_id match. */
 export interface ThreatOverride {
   /** Required. Vendor-specific ID of a threat to override. */
@@ -930,11 +654,7 @@ export interface ThreatOverride {
   /** Output only. Type of the threat (read only). */
   type?: ThreatOverrideTypeEnum | (string & {});
 }
-const ThreatOverride = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ThreatOverride>;
-
 export type ThreatOverrideList = Array<ThreatOverride>;
-const ThreatOverrideList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ThreatOverrideList>;
-
 export type AntivirusOverrideProtocolEnum =
   | "PROTOCOL_UNSPECIFIED"
   | "SMTP"
@@ -958,9 +678,6 @@ export interface AntivirusOverride {
   action?: AntivirusOverrideActionEnum | (string & {});
 }
 export type AntivirusOverrideList = Array<AntivirusOverride>;
-const AntivirusOverrideList =
-  WildfireInlineMlOverrideList as any as S.Schema<AntivirusOverrideList>;
-
 export type SeverityOverrideSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "INFORMATIONAL"
@@ -968,16 +685,12 @@ export type SeverityOverrideSeverityEnum =
   | "MEDIUM"
   | "HIGH"
   | "CRITICAL";
-const SeverityOverrideSeverityEnum = S.String;
-
 export type SeverityOverrideActionEnum =
   | "THREAT_ACTION_UNSPECIFIED"
   | "DEFAULT_ACTION"
   | "ALLOW"
   | "ALERT"
   | "DENY";
-const SeverityOverrideActionEnum = S.String;
-
 /** Defines what action to take for a specific severity match. */
 export interface SeverityOverride {
   /** Required. Severity level to match. */
@@ -985,11 +698,7 @@ export interface SeverityOverride {
   /** Required. Threat action override. */
   action?: SeverityOverrideActionEnum | (string & {});
 }
-const SeverityOverride = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<SeverityOverride>;
-
 export type SeverityOverrideList = Array<SeverityOverride>;
-const SeverityOverrideList = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<SeverityOverrideList>;
-
 /** ThreatPreventionProfile defines an action for specific threat signatures or severity levels. */
 export interface ThreatPreventionProfile {
   /** Optional. Configuration for overriding threats actions by threat_id match. If a threat is matched both by configuration provided in severity_overrides and threat_overrides, the threat_overrides action is applied. */
@@ -999,21 +708,11 @@ export interface ThreatPreventionProfile {
   /** Optional. Configuration for overriding threats actions by severity match. */
   severityOverrides?: SeverityOverrideList;
 }
-const ThreatPreventionProfile = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ThreatPreventionProfile>;
-
 /** CustomInterceptProfile defines in-band integration behavior (intercept). It is used by firewall rules with an APPLY_SECURITY_PROFILE_GROUP action. */
 export interface CustomInterceptProfile {
   /** Required. The target InterceptEndpointGroup. When a firewall rule with this security profile attached matches a packet, the packet will be intercepted to the location-local target in this group. */
   interceptEndpointGroup?: string;
 }
-const CustomInterceptProfile = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CustomInterceptProfile>;
-
 export type SecurityProfileTypeEnum =
   | "PROFILE_TYPE_UNSPECIFIED"
   | "THREAT_PREVENTION"
@@ -1021,8 +720,6 @@ export type SecurityProfileTypeEnum =
   | "CUSTOM_INTERCEPT"
   | "URL_FILTERING"
   | "WILDFIRE_ANALYSIS";
-const SecurityProfileTypeEnum = S.String;
-
 /** SecurityProfile is a resource that defines the behavior for one of many ProfileTypes. */
 export interface SecurityProfile {
   /** The URL filtering configuration for the SecurityProfile. */
@@ -1050,8 +747,6 @@ export interface SecurityProfile {
   /** Immutable. The single ProfileType that the SecurityProfile resource configures. */
   type?: SecurityProfileTypeEnum | (string & {});
 }
-const SecurityProfile = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<SecurityProfile>;
-
 export interface CreateOrganizationsLocationsSecurityProfilesRequest {
   /** Required. Short name of the SecurityProfile resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "security_profile1". */
   securityProfileId?: string;
@@ -1060,11 +755,6 @@ export interface CreateOrganizationsLocationsSecurityProfilesRequest {
   /** Request body */
   body?: SecurityProfile;
 }
-const CreateOrganizationsLocationsSecurityProfilesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreateOrganizationsLocationsSecurityProfilesRequest>;
-
 export interface CreateProjectsLocationsAddressGroupsRequest {
   /** Required. The parent resource of the AddressGroup. Must be in the format `projects/*\/locations/{location}`. */
   parent: string;
@@ -1075,14 +765,7 @@ export interface CreateProjectsLocationsAddressGroupsRequest {
   /** Request body */
   body?: AddressGroup;
 }
-const CreateProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateProjectsLocationsAddressGroupsRequest>;
-
 export type AuthorizationPolicyActionEnum = "ACTION_UNSPECIFIED" | "ALLOW" | "DENY";
-const AuthorizationPolicyActionEnum = S.String;
-
 /** Specification of traffic source attributes. */
 export interface Source {
   /** Optional. List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided. The IP addresses of any load balancers or proxies should be considered untrusted. */
@@ -1090,11 +773,7 @@ export interface Source {
   /** Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*\/service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure. */
   principals?: StringList;
 }
-const Source = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<Source>;
-
 export type SourceList = Array<Source>;
-const SourceList = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<SourceList>;
-
 /** Specification of HTTP header match attributes. */
 export interface HttpHeaderMatch {
   /** Required. The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method". */
@@ -1102,11 +781,7 @@ export interface HttpHeaderMatch {
   /** Required. The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: en.cppreference.com/w/cpp/regex/ecmascript For matching against a port specified in the HTTP request, use a headerMatch with headerName set to Host and a regular expression that satisfies the RFC2616 Host header's port specifier. */
   regexMatch?: string;
 }
-const HttpHeaderMatch = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<HttpHeaderMatch>;
-
 export type IntegerList = Array<number>;
-const IntegerList = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<IntegerList>;
-
 /** Specification of traffic destination attributes. */
 export interface Destination {
   /** Optional. A list of HTTP methods to match. At least one method should match. Should not be set for gRPC services. */
@@ -1118,11 +793,7 @@ export interface Destination {
   /** Required. List of destination ports to match. At least one port should match. */
   ports?: IntegerList;
 }
-const Destination = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<Destination>;
-
 export type DestinationList = Array<Destination>;
-const DestinationList = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<DestinationList>;
-
 /** Specification of rules. */
 export interface Rule {
   /** Optional. List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ip_blocks match. If not set, the action specified in the 'action' field will be applied without any rule checks for the source. */
@@ -1130,11 +801,7 @@ export interface Rule {
   /** Optional. List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers. If not set, the action specified in the 'action' field will be applied without any rule checks for the destination. */
   destinations?: DestinationList;
 }
-const Rule = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<Rule>;
-
 export type RuleList = Array<Rule>;
-const RuleList = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<RuleList>;
-
 /** AuthorizationPolicy is a resource that specifies how a server should authorize incoming connections. This resource in itself does not change the configuration unless it's attached to a target https proxy or endpoint config selector resource. */
 export interface AuthorizationPolicy {
   /** Optional. Free-text description of the resource. */
@@ -1152,8 +819,6 @@ export interface AuthorizationPolicy {
   /** Output only. The timestamp when the resource was created. */
   createTime?: string;
 }
-const AuthorizationPolicy = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<AuthorizationPolicy>;
-
 export interface CreateProjectsLocationsAuthorizationPoliciesRequest {
   /** Required. Short name of the AuthorizationPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy". */
   authorizationPolicyId?: string;
@@ -1162,24 +827,15 @@ export interface CreateProjectsLocationsAuthorizationPoliciesRequest {
   /** Request body */
   body?: AuthorizationPolicy;
 }
-const CreateProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateProjectsLocationsAuthorizationPoliciesRequest>;
-
 export type AuthzPolicyPolicyProfileEnum =
   | "POLICY_PROFILE_UNSPECIFIED"
   | "REQUEST_AUTHZ"
   | "CONTENT_AUTHZ";
-const AuthzPolicyPolicyProfileEnum = S.String;
-
 export type AuthzPolicyTargetLoadBalancingSchemeEnum =
   | "LOAD_BALANCING_SCHEME_UNSPECIFIED"
   | "INTERNAL_MANAGED"
   | "EXTERNAL_MANAGED"
   | "INTERNAL_SELF_MANAGED";
-const AuthzPolicyTargetLoadBalancingSchemeEnum = S.String;
-
 /** Specifies the set of targets to which this policy should be applied to. */
 export interface AuthzPolicyTarget {
   /** Required. A list of references to the Forwarding Rules, Secure Web Proxy Gateways, or Agent Gateways on which this policy will be applied. */
@@ -1187,8 +843,6 @@ export interface AuthzPolicyTarget {
   /** Optional. All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme. Required only when targeting forwarding rules. If targeting Secure Web Proxy, this field must be `INTERNAL_MANAGED` or not specified. Must not be specified when targeting Agent Gateway. Supported values include `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service). */
   loadBalancingScheme?: AuthzPolicyTargetLoadBalancingSchemeEnum | (string & {});
 }
-const AuthzPolicyTarget = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<AuthzPolicyTarget>;
-
 /** Represents a range of IP Addresses. */
 export interface AuthzPolicyAuthzRuleIpBlock {
   /** Required. The address prefix. */
@@ -1196,17 +850,7 @@ export interface AuthzPolicyAuthzRuleIpBlock {
   /** Required. The length of the address range. */
   length?: number;
 }
-const AuthzPolicyAuthzRuleIpBlock = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<AuthzPolicyAuthzRuleIpBlock>;
-
 export type AuthzPolicyAuthzRuleIpBlockList = Array<AuthzPolicyAuthzRuleIpBlock>;
-const AuthzPolicyAuthzRuleIpBlockList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<AuthzPolicyAuthzRuleIpBlockList>;
-
 /** Determines how a string value should be matched. */
 export interface AuthzPolicyAuthzRuleStringMatch {
   /** The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead. Examples: * ``abc`` matches the value ``abc.xyz`` */
@@ -1220,21 +864,11 @@ export interface AuthzPolicyAuthzRuleStringMatch {
   /** The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead. Examples: * ``abc`` matches the value ``xyz.abc.def`` */
   contains?: string;
 }
-const AuthzPolicyAuthzRuleStringMatch = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<AuthzPolicyAuthzRuleStringMatch>;
-
 /** Describes a set of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. */
 export interface AuthzPolicyAuthzRuleRequestResourceTagValueIdSet {
   /** Required. A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match. Limited to 5 ids in the Tag value id set. */
   ids?: StringList;
 }
-const AuthzPolicyAuthzRuleRequestResourceTagValueIdSet = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<AuthzPolicyAuthzRuleRequestResourceTagValueIdSet>;
-
 /** Describes the properties of a client VM resource accessing the internal application load balancers. */
 export interface AuthzPolicyAuthzRuleRequestResource {
   /** Optional. An IAM service account to match against the source service account of the VM sending the request. */
@@ -1242,24 +876,12 @@ export interface AuthzPolicyAuthzRuleRequestResource {
   /** Optional. A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. */
   tagValueIdSet?: AuthzPolicyAuthzRuleRequestResourceTagValueIdSet;
 }
-const AuthzPolicyAuthzRuleRequestResource = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<AuthzPolicyAuthzRuleRequestResource>;
-
 export type AuthzPolicyAuthzRuleRequestResourceList = Array<AuthzPolicyAuthzRuleRequestResource>;
-const AuthzPolicyAuthzRuleRequestResourceList = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<AuthzPolicyAuthzRuleRequestResourceList>;
-
 export type AuthzPolicyAuthzRulePrincipalPrincipalSelectorEnum =
   | "PRINCIPAL_SELECTOR_UNSPECIFIED"
   | "CLIENT_CERT_URI_SAN"
   | "CLIENT_CERT_DNS_NAME_SAN"
   | "CLIENT_CERT_COMMON_NAME";
-const AuthzPolicyAuthzRulePrincipalPrincipalSelectorEnum = S.String;
-
 /** Describes the properties of a principal to be matched against. */
 export interface AuthzPolicyAuthzRulePrincipal {
   /** Optional. An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN. */
@@ -1267,17 +889,7 @@ export interface AuthzPolicyAuthzRulePrincipal {
   /** Required. A non-empty string whose value is matched against the principal value based on the principal_selector. Only exact match can be applied for CLIENT_CERT_URI_SAN, CLIENT_CERT_DNS_NAME_SAN, CLIENT_CERT_COMMON_NAME selectors. */
   principal?: AuthzPolicyAuthzRuleStringMatch;
 }
-const AuthzPolicyAuthzRulePrincipal = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<AuthzPolicyAuthzRulePrincipal>;
-
 export type AuthzPolicyAuthzRulePrincipalList = Array<AuthzPolicyAuthzRulePrincipal>;
-const AuthzPolicyAuthzRulePrincipalList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<AuthzPolicyAuthzRulePrincipalList>;
-
 /** Describes the properties of a single source. */
 export interface AuthzPolicyAuthzRuleFromRequestSource {
   /** Optional. A list of IP addresses or IP address ranges to match against the source IP address of the request. Limited to 10 ip_blocks per Authorization Policy */
@@ -1287,18 +899,8 @@ export interface AuthzPolicyAuthzRuleFromRequestSource {
   /** Optional. A list of identities derived from the client's certificate. This field will not match on a request unless frontend mutual TLS is enabled for the forwarding rule or Gateway and the client certificate has been successfully validated by mTLS. Each identity is a string whose value is matched against a list of URI SANs, DNS Name SANs, or the common name in the client's certificate. A match happens when any principal matches with the rule. Limited to 50 principals per Authorization Policy for regional internal Application Load Balancers, regional external Application Load Balancers, cross-region internal Application Load Balancers, and Cloud Service Mesh while 25 principals per Authorization Policy for global external Application Load Balancers. */
   principals?: AuthzPolicyAuthzRulePrincipalList;
 }
-const AuthzPolicyAuthzRuleFromRequestSource = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<AuthzPolicyAuthzRuleFromRequestSource>;
-
 export type AuthzPolicyAuthzRuleFromRequestSourceList =
   Array<AuthzPolicyAuthzRuleFromRequestSource>;
-const AuthzPolicyAuthzRuleFromRequestSourceList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<AuthzPolicyAuthzRuleFromRequestSourceList>;
-
 /** Describes properties of one or more sources of a request. */
 export interface AuthzPolicyAuthzRuleFrom {
   /** Optional. Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 1 source. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match. */
@@ -1306,17 +908,7 @@ export interface AuthzPolicyAuthzRuleFrom {
   /** Optional. Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. */
   notSources?: AuthzPolicyAuthzRuleFromRequestSourceList;
 }
-const AuthzPolicyAuthzRuleFrom = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<AuthzPolicyAuthzRuleFrom>;
-
 export type AuthzPolicyAuthzRuleStringMatchList = Array<AuthzPolicyAuthzRuleStringMatch>;
-const AuthzPolicyAuthzRuleStringMatchList = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<AuthzPolicyAuthzRuleStringMatchList>;
-
 /** Determines how a HTTP header should be matched. */
 export interface AuthzPolicyAuthzRuleHeaderMatch {
   /** Optional. Specifies the name of the header in the request. */
@@ -1324,27 +916,12 @@ export interface AuthzPolicyAuthzRuleHeaderMatch {
   /** Optional. Specifies how the header match will be performed. */
   value?: AuthzPolicyAuthzRuleStringMatch;
 }
-const AuthzPolicyAuthzRuleHeaderMatch = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<AuthzPolicyAuthzRuleHeaderMatch>;
-
 export type AuthzPolicyAuthzRuleHeaderMatchList = Array<AuthzPolicyAuthzRuleHeaderMatch>;
-const AuthzPolicyAuthzRuleHeaderMatchList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<AuthzPolicyAuthzRuleHeaderMatchList>;
-
 /** Describes a set of HTTP headers to match against. */
 export interface AuthzPolicyAuthzRuleToRequestOperationHeaderSet {
   /** Required. A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 headers per Authorization Policy. */
   headers?: AuthzPolicyAuthzRuleHeaderMatchList;
 }
-const AuthzPolicyAuthzRuleToRequestOperationHeaderSet = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<AuthzPolicyAuthzRuleToRequestOperationHeaderSet>;
-
 /** Describes a set of MCP methods to match against. */
 export interface AuthzPolicyAuthzRuleToRequestOperationMCPMethod {
   /** Required. The MCP method to match against. Allowed values include: 1. `tools`, `prompts`, `resources` - these will match against all sub methods under the respective methods. 2. `prompts/list`, `tools/list`, `resources/list`, `resources/templates/list` 3. `prompts/get`, `tools/call`, `resources/subscribe`, `resources/unsubscribe`, `resources/read` Params cannot be specified for categories 1 and 2. */
@@ -1352,24 +929,12 @@ export interface AuthzPolicyAuthzRuleToRequestOperationMCPMethod {
   /** Optional. A list of MCP method parameters to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set. Limited to 10 MCP method parameters per Authorization Policy. */
   params?: AuthzPolicyAuthzRuleStringMatchList;
 }
-const AuthzPolicyAuthzRuleToRequestOperationMCPMethod = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<AuthzPolicyAuthzRuleToRequestOperationMCPMethod>;
-
 export type AuthzPolicyAuthzRuleToRequestOperationMCPMethodList =
   Array<AuthzPolicyAuthzRuleToRequestOperationMCPMethod>;
-const AuthzPolicyAuthzRuleToRequestOperationMCPMethodList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<AuthzPolicyAuthzRuleToRequestOperationMCPMethodList>;
-
 export type AuthzPolicyAuthzRuleToRequestOperationMCPBaseProtocolMethodsOptionEnum =
   | "BASE_PROTOCOL_METHODS_OPTION_UNSPECIFIED"
   | "SKIP_BASE_PROTOCOL_METHODS"
   | "MATCH_BASE_PROTOCOL_METHODS";
-const AuthzPolicyAuthzRuleToRequestOperationMCPBaseProtocolMethodsOptionEnum = S.String;
-
 /** Describes a set of MCP protocol attributes to match against for a given MCP request. */
 export interface AuthzPolicyAuthzRuleToRequestOperationMCP {
   /** Optional. A list of MCP methods and associated parameters to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the baseProtocolMethodsOption to MATCH_BASE_PROTOCOL_METHODS to match on all the other MCP protocol methods. Limited to 10 MCP methods per Authorization Policy. */
@@ -1379,11 +944,6 @@ export interface AuthzPolicyAuthzRuleToRequestOperationMCP {
     | AuthzPolicyAuthzRuleToRequestOperationMCPBaseProtocolMethodsOptionEnum
     | (string & {});
 }
-const AuthzPolicyAuthzRuleToRequestOperationMCP = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<AuthzPolicyAuthzRuleToRequestOperationMCP>;
-
 /** Describes properties of one or more targets of a request. */
 export interface AuthzPolicyAuthzRuleToRequestOperation {
   /** Optional. A list of SNIs to match against. The match can be one of exact, prefix, suffix, or contains (substring match). If there is no SNI (i.e. plaintext HTTP traffic), the request will be denied. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 SNIs per Authorization Policy. */
@@ -1399,18 +959,8 @@ export interface AuthzPolicyAuthzRuleToRequestOperation {
   /** Optional. A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set. Limited to 10 hosts per Authorization Policy. */
   hosts?: AuthzPolicyAuthzRuleStringMatchList;
 }
-const AuthzPolicyAuthzRuleToRequestOperation = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<AuthzPolicyAuthzRuleToRequestOperation>;
-
 export type AuthzPolicyAuthzRuleToRequestOperationList =
   Array<AuthzPolicyAuthzRuleToRequestOperation>;
-const AuthzPolicyAuthzRuleToRequestOperationList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<AuthzPolicyAuthzRuleToRequestOperationList>;
-
 /** Describes properties of one or more targets of a request. */
 export interface AuthzPolicyAuthzRuleTo {
   /** Optional. Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches. */
@@ -1418,11 +968,6 @@ export interface AuthzPolicyAuthzRuleTo {
   /** Optional. Describes the negated properties of the targets of a request. Matches requests for operations that do not match the criteria specified in this field. At least one of operations or notOperations must be specified. */
   notOperations?: AuthzPolicyAuthzRuleToRequestOperationList;
 }
-const AuthzPolicyAuthzRuleTo = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<AuthzPolicyAuthzRuleTo>;
-
 /** Conditions to match against the incoming request. */
 export interface AuthzPolicyAuthzRule {
   /** Optional. Describes properties of a source of a request. */
@@ -1432,35 +977,18 @@ export interface AuthzPolicyAuthzRule {
   /** Optional. CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes. */
   when?: string;
 }
-const AuthzPolicyAuthzRule = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<AuthzPolicyAuthzRule>;
-
 export type AuthzPolicyAuthzRuleList = Array<AuthzPolicyAuthzRule>;
-const AuthzPolicyAuthzRuleList = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<AuthzPolicyAuthzRuleList>;
-
 export type AuthzPolicyActionEnum =
   | "AUTHZ_ACTION_UNSPECIFIED"
   | "ALLOW"
   | "DENY"
   | "CUSTOM"
   | "DENY_BY_DEFAULT";
-const AuthzPolicyActionEnum = S.String;
-
 /** Optional. Delegate authorization decision to user authored extension. Only one of cloudIap or authzExtension can be specified. */
 export interface AuthzPolicyCustomProviderAuthzExtension {
   /** Required. A list of references to authorization extensions that will be invoked for requests matching this policy. Limited to 1 custom provider. */
   resources?: StringList;
 }
-const AuthzPolicyCustomProviderAuthzExtension = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<AuthzPolicyCustomProviderAuthzExtension>;
-
 /** Optional. Delegates authorization decisions to Cloud IAP. Applicable only for managed load balancers. Enabling Cloud IAP at the AuthzPolicy level is not compatible with Cloud IAP settings in the BackendService. Enabling IAP in both places will result in request failure. Ensure that IAP is enabled in either the AuthzPolicy or the BackendService but not in both places. */
 export type AuthzPolicyCustomProviderCloudIap = CancelOperationRequest;
 /** Allows delegating authorization decisions to Cloud IAP or to Service Extensions. */
@@ -1470,11 +998,6 @@ export interface AuthzPolicyCustomProvider {
   /** Optional. Delegates authorization decisions to Cloud IAP. Applicable only for managed load balancers. Enabling Cloud IAP at the AuthzPolicy level is not compatible with Cloud IAP settings in the BackendService. Enabling IAP in both places will result in request failure. Ensure that IAP is enabled in either the AuthzPolicy or the BackendService but not in both places. */
   cloudIap?: CancelOperationRequest;
 }
-const AuthzPolicyCustomProvider = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<AuthzPolicyCustomProvider>;
-
 /** `AuthzPolicy` is a resource that allows to forward traffic to a callout backend designed to scan the traffic for security purposes. */
 export interface AuthzPolicy {
   /** Optional. Immutable. Defines the type of authorization being performed. If not specified, `REQUEST_AUTHZ` is applied. This field cannot be changed once AuthzPolicy is created. */
@@ -1500,8 +1023,6 @@ export interface AuthzPolicy {
   /** Optional. Required if the action is `CUSTOM`. Allows delegating authorization decisions to Cloud IAP or to Service Extensions. One of `cloudIap` or `authzExtension` must be specified. */
   customProvider?: AuthzPolicyCustomProvider;
 }
-const AuthzPolicy = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<AuthzPolicy>;
-
 export interface CreateProjectsLocationsAuthzPoliciesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -1512,17 +1033,10 @@ export interface CreateProjectsLocationsAuthzPoliciesRequest {
   /** Request body */
   body?: AuthzPolicy;
 }
-const CreateProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<CreateProjectsLocationsAuthzPoliciesRequest>;
-
 export type BackendAuthenticationConfigWellKnownRootsEnum =
   | "WELL_KNOWN_ROOTS_UNSPECIFIED"
   | "NONE"
   | "PUBLIC_ROOTS";
-const BackendAuthenticationConfigWellKnownRootsEnum = S.String;
-
 /** BackendAuthenticationConfig message groups the TrustConfig together with other settings that control how the load balancer authenticates, and expresses its identity to, the backend: * `trustConfig` is the attached TrustConfig. * `wellKnownRoots` indicates whether the load balance should trust backend server certificates that are issued by public certificate authorities, in addition to certificates trusted by the TrustConfig. * `clientCertificate` is a client certificate that the load balancer uses to express its identity to the backend, if the connection to the backend uses mTLS. You can attach the BackendAuthenticationConfig to the load balancer's BackendService directly determining how that BackendService negotiates TLS. */
 export interface BackendAuthenticationConfig {
   /** Well known roots to use for server certificate validation. */
@@ -1544,11 +1058,6 @@ export interface BackendAuthenticationConfig {
   /** Output only. The timestamp when the resource was created. */
   createTime?: string;
 }
-const BackendAuthenticationConfig = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<BackendAuthenticationConfig>;
-
 export interface CreateProjectsLocationsBackendAuthenticationConfigsRequest {
   /** Required. Short name of the BackendAuthenticationConfig resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "backend-auth-config". */
   backendAuthenticationConfigId?: string;
@@ -1557,31 +1066,16 @@ export interface CreateProjectsLocationsBackendAuthenticationConfigsRequest {
   /** Request body */
   body?: BackendAuthenticationConfig;
 }
-const CreateProjectsLocationsBackendAuthenticationConfigsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<CreateProjectsLocationsBackendAuthenticationConfigsRequest>;
-
 /** Specification of a TLS certificate provider instance. Workloads may have one or more CertificateProvider instances (plugins) and one of them is enabled and configured by specifying this message. Workloads use the values from this message to locate and load the CertificateProvider instance configuration. */
 export interface CertificateProviderInstance {
   /** Required. Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance. */
   pluginInstance?: string;
 }
-const CertificateProviderInstance = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<CertificateProviderInstance>;
-
 /** Specification of the GRPC Endpoint. */
 export interface GoogleCloudNetworksecurityV1beta1GrpcEndpoint {
   /** Required. The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:". */
   targetUri?: string;
 }
-const GoogleCloudNetworksecurityV1beta1GrpcEndpoint = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GoogleCloudNetworksecurityV1beta1GrpcEndpoint>;
-
 /** Specification of ValidationCA. Defines the mechanism to obtain the Certificate Authority certificate to validate the peer certificate. */
 export interface ValidationCA {
   /** The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information. */
@@ -1589,11 +1083,7 @@ export interface ValidationCA {
   /** gRPC specific configuration to access the gRPC server to obtain the CA certificate. */
   grpcEndpoint?: GoogleCloudNetworksecurityV1beta1GrpcEndpoint;
 }
-const ValidationCA = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<ValidationCA>;
-
 export type ValidationCAList = Array<ValidationCA>;
-const ValidationCAList = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<ValidationCAList>;
-
 /** Specification of certificate provider. Defines the mechanism to obtain the certificate and private key for peer to peer authentication. */
 export interface GoogleCloudNetworksecurityV1beta1CertificateProvider {
   /** The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information. */
@@ -1601,11 +1091,6 @@ export interface GoogleCloudNetworksecurityV1beta1CertificateProvider {
   /** gRPC specific configuration to access the gRPC server to obtain the cert and private key. */
   grpcEndpoint?: GoogleCloudNetworksecurityV1beta1GrpcEndpoint;
 }
-const GoogleCloudNetworksecurityV1beta1CertificateProvider = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<GoogleCloudNetworksecurityV1beta1CertificateProvider>;
-
 /** ClientTlsPolicy is a resource that specifies how a client should authenticate connections to backends of a service. This resource itself does not affect configuration unless it is attached to a backend service resource. */
 export interface ClientTlsPolicy {
   /** Required. Name of the ClientTlsPolicy resource. It matches the pattern `projects/{project}/locations/{location}/clientTlsPolicies/{client_tls_policy}` */
@@ -1625,8 +1110,6 @@ export interface ClientTlsPolicy {
   /** Optional. Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com". */
   sni?: string;
 }
-const ClientTlsPolicy = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ClientTlsPolicy>;
-
 export interface CreateProjectsLocationsClientTlsPoliciesRequest {
   /** Required. The parent resource of the ClientTlsPolicy. Must be in the format `projects/*\/locations/{location}`. */
   parent: string;
@@ -1635,14 +1118,7 @@ export interface CreateProjectsLocationsClientTlsPoliciesRequest {
   /** Request body */
   body?: ClientTlsPolicy;
 }
-const CreateProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<CreateProjectsLocationsClientTlsPoliciesRequest>;
-
 export type DnsThreatDetectorProviderEnum = "PROVIDER_UNSPECIFIED" | "INFOBLOX";
-const DnsThreatDetectorProviderEnum = S.String;
-
 /** A DNS threat detector sends DNS query logs to a _provider_ that then analyzes the logs to identify threat events in the DNS queries. By default, all VPC networks in your projects are included. You can exclude specific networks by supplying `excluded_networks`. */
 export interface DnsThreatDetector {
   /** Optional. A list of network resource names which aren't monitored by this DnsThreatDetector. Example: `projects/PROJECT_ID/global/networks/NETWORK_NAME`. */
@@ -1658,8 +1134,6 @@ export interface DnsThreatDetector {
   /** Output only. Update time stamp. */
   updateTime?: string;
 }
-const DnsThreatDetector = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<DnsThreatDetector>;
-
 export interface CreateProjectsLocationsDnsThreatDetectorsRequest {
   /** Required. The value for the parent of the DnsThreatDetector resource. */
   parent: string;
@@ -1668,11 +1142,6 @@ export interface CreateProjectsLocationsDnsThreatDetectorsRequest {
   /** Request body */
   body?: DnsThreatDetector;
 }
-const CreateProjectsLocationsDnsThreatDetectorsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<CreateProjectsLocationsDnsThreatDetectorsRequest>;
-
 export type FirewallEndpointAssociationStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -1680,8 +1149,6 @@ export type FirewallEndpointAssociationStateEnum =
   | "DELETING"
   | "INACTIVE"
   | "ORPHAN";
-const FirewallEndpointAssociationStateEnum = S.String;
-
 /** Message describing Association object */
 export interface FirewallEndpointAssociation {
   /** Output only. Create time stamp */
@@ -1705,11 +1172,6 @@ export interface FirewallEndpointAssociation {
   /** Output only. Update time stamp */
   updateTime?: string;
 }
-const FirewallEndpointAssociation = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<FirewallEndpointAssociation>;
-
 export interface CreateProjectsLocationsFirewallEndpointAssociationsRequest {
   /** Required. Value for parent. */
   parent: string;
@@ -1720,11 +1182,6 @@ export interface CreateProjectsLocationsFirewallEndpointAssociationsRequest {
   /** Request body */
   body?: FirewallEndpointAssociation;
 }
-const CreateProjectsLocationsFirewallEndpointAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<CreateProjectsLocationsFirewallEndpointAssociationsRequest>;
-
 export interface CreateProjectsLocationsFirewallEndpointsRequest {
   /** Required. Value for parent. */
   parent: string;
@@ -1737,23 +1194,12 @@ export interface CreateProjectsLocationsFirewallEndpointsRequest {
   /** Request body */
   body?: FirewallEndpoint;
 }
-const CreateProjectsLocationsFirewallEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<CreateProjectsLocationsFirewallEndpointsRequest>;
-
 export interface CreateProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest {
   /** Required. Parent value for CreateWildfireVerdictChangeRequestRequest. The parent is a firewall endpoint resource. Format: organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint} */
   parent: string;
   /** Request body */
   body?: WildfireVerdictChangeRequest;
 }
-const CreateProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
-  /*@__PURE__*/ __L.at(
-    __c14,
-    0,
-  ) as any as S.Schema<CreateProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest>;
-
 /** The GatewaySecurityPolicy resource contains a collection of GatewaySecurityPolicyRules and associated metadata. */
 export interface GatewaySecurityPolicy {
   /** Output only. The timestamp when the resource was created. */
@@ -1767,11 +1213,6 @@ export interface GatewaySecurityPolicy {
   /** Required. Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy} gateway_security_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$). */
   name?: string;
 }
-const GatewaySecurityPolicy = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GatewaySecurityPolicy>;
-
 export interface CreateProjectsLocationsGatewaySecurityPoliciesRequest {
   /** Required. Short name of the GatewaySecurityPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "gateway_security_policy1". */
   gatewaySecurityPolicyId?: string;
@@ -1780,17 +1221,10 @@ export interface CreateProjectsLocationsGatewaySecurityPoliciesRequest {
   /** Request body */
   body?: GatewaySecurityPolicy;
 }
-const CreateProjectsLocationsGatewaySecurityPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<CreateProjectsLocationsGatewaySecurityPoliciesRequest>;
-
 export type GatewaySecurityPolicyRuleBasicProfileEnum =
   | "BASIC_PROFILE_UNSPECIFIED"
   | "ALLOW"
   | "DENY";
-const GatewaySecurityPolicyRuleBasicProfileEnum = S.String;
-
 /** The GatewaySecurityPolicyRule resource is in a nested collection within a GatewaySecurityPolicy and represents a traffic matching condition and associated action to perform. */
 export interface GatewaySecurityPolicyRule {
   /** Required. Priority of the rule. Lower number corresponds to higher precedence. */
@@ -1814,11 +1248,6 @@ export interface GatewaySecurityPolicyRule {
   /** Required. Profile which tells what the primitive action should be. */
   basicProfile?: GatewaySecurityPolicyRuleBasicProfileEnum | (string & {});
 }
-const GatewaySecurityPolicyRule = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GatewaySecurityPolicyRule>;
-
 export interface CreateProjectsLocationsGatewaySecurityPoliciesRulesRequest {
   /** The ID to use for the rule, which will become the final component of the rule's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. */
   gatewaySecurityPolicyRuleId?: string;
@@ -1827,11 +1256,6 @@ export interface CreateProjectsLocationsGatewaySecurityPoliciesRulesRequest {
   /** Request body */
   body?: GatewaySecurityPolicyRule;
 }
-const CreateProjectsLocationsGatewaySecurityPoliciesRulesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<CreateProjectsLocationsGatewaySecurityPoliciesRulesRequest>;
-
 export type InterceptDeploymentGroupDeploymentStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -1839,8 +1263,6 @@ export type InterceptDeploymentGroupDeploymentStateEnum =
   | "DELETING"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-const InterceptDeploymentGroupDeploymentStateEnum = S.String;
-
 /** A deployment belonging to this deployment group. */
 export interface InterceptDeploymentGroupDeployment {
   /** Output only. The name of the Intercept Deployment, in the format: `projects/{project}/locations/{location}/interceptDeployments/{intercept_deployment}`. */
@@ -1848,20 +1270,8 @@ export interface InterceptDeploymentGroupDeployment {
   /** Output only. Most recent known state of the deployment. */
   state?: InterceptDeploymentGroupDeploymentStateEnum | (string & {});
 }
-const InterceptDeploymentGroupDeployment = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<InterceptDeploymentGroupDeployment>;
-
 export type InterceptDeploymentGroupDeploymentList = Array<InterceptDeploymentGroupDeployment>;
-const InterceptDeploymentGroupDeploymentList = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<InterceptDeploymentGroupDeploymentList>;
-
 export type InterceptLocationStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "OUT_OF_SYNC";
-const InterceptLocationStateEnum = S.String;
-
 /** Details about intercept in a specific cloud location. */
 export interface InterceptLocation {
   /** Output only. The cloud location, e.g. "us-central1-a" or "asia-south1". */
@@ -1869,38 +1279,19 @@ export interface InterceptLocation {
   /** Output only. The current state of the association in this location. */
   state?: InterceptLocationStateEnum | (string & {});
 }
-const InterceptLocation = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<InterceptLocation>;
-
 export type InterceptLocationList = Array<InterceptLocation>;
-const InterceptLocationList = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<InterceptLocationList>;
-
 export type InterceptDeploymentGroupStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "CREATING"
   | "DELETING";
-const InterceptDeploymentGroupStateEnum = S.String;
-
 /** An endpoint group connected to this deployment group. */
 export interface InterceptDeploymentGroupConnectedEndpointGroup {
   /** Output only. The connected endpoint group's resource name, for example: `projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See https://google.aip.dev/124. */
   name?: string;
 }
-const InterceptDeploymentGroupConnectedEndpointGroup = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<InterceptDeploymentGroupConnectedEndpointGroup>;
-
 export type InterceptDeploymentGroupConnectedEndpointGroupList =
   Array<InterceptDeploymentGroupConnectedEndpointGroup>;
-const InterceptDeploymentGroupConnectedEndpointGroupList = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<InterceptDeploymentGroupConnectedEndpointGroupList>;
-
 /** A deployment group aggregates many zonal intercept backends (deployments) into a single global intercept service. Consumers can connect this service using an endpoint group. */
 export interface InterceptDeploymentGroup {
   /** Immutable. Identifier. The resource name of this deployment group, for example: `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See https://google.aip.dev/122 for more details. */
@@ -1926,11 +1317,6 @@ export interface InterceptDeploymentGroup {
   /** Output only. The list of endpoint groups that are connected to this resource. */
   connectedEndpointGroups?: InterceptDeploymentGroupConnectedEndpointGroupList;
 }
-const InterceptDeploymentGroup = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<InterceptDeploymentGroup>;
-
 export interface CreateProjectsLocationsInterceptDeploymentGroupsRequest {
   /** Required. The ID to use for the new deployment group, which will become the final component of the deployment group's resource name. */
   interceptDeploymentGroupId?: string;
@@ -1941,11 +1327,6 @@ export interface CreateProjectsLocationsInterceptDeploymentGroupsRequest {
   /** Request body */
   body?: InterceptDeploymentGroup;
 }
-const CreateProjectsLocationsInterceptDeploymentGroupsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<CreateProjectsLocationsInterceptDeploymentGroupsRequest>;
-
 export type InterceptDeploymentStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -1953,8 +1334,6 @@ export type InterceptDeploymentStateEnum =
   | "DELETING"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-const InterceptDeploymentStateEnum = S.String;
-
 /** A deployment represents a zonal intercept backend ready to accept GENEVE-encapsulated traffic, e.g. a zonal instance group fronted by an internal passthrough load balancer. Deployments are always part of a global deployment group which represents a global intercept service. */
 export interface InterceptDeployment {
   /** Required. Immutable. The deployment group that this deployment is a part of, for example: `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See https://google.aip.dev/124. */
@@ -1976,8 +1355,6 @@ export interface InterceptDeployment {
   /** Output only. The timestamp when the resource was most recently updated. See https://google.aip.dev/148#timestamps. */
   updateTime?: string;
 }
-const InterceptDeployment = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<InterceptDeployment>;
-
 export interface CreateProjectsLocationsInterceptDeploymentsRequest {
   /** Required. The parent resource where this deployment will be created. Format: projects/{project}/locations/{location} */
   parent: string;
@@ -1988,11 +1365,6 @@ export interface CreateProjectsLocationsInterceptDeploymentsRequest {
   /** Request body */
   body?: InterceptDeployment;
 }
-const CreateProjectsLocationsInterceptDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<CreateProjectsLocationsInterceptDeploymentsRequest>;
-
 export type InterceptEndpointGroupAssociationStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -2001,14 +1373,10 @@ export type InterceptEndpointGroupAssociationStateEnum =
   | "CLOSED"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-const InterceptEndpointGroupAssociationStateEnum = S.String;
-
 export type InterceptEndpointGroupAssociationLocationDetailsStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "OUT_OF_SYNC";
-const InterceptEndpointGroupAssociationLocationDetailsStateEnum = S.String;
-
 /** Contains details about the state of an association in a specific cloud location. */
 export interface InterceptEndpointGroupAssociationLocationDetails {
   /** Output only. The cloud location, e.g. "us-central1-a" or "asia-south1". */
@@ -2016,18 +1384,8 @@ export interface InterceptEndpointGroupAssociationLocationDetails {
   /** Output only. The current state of the association in this location. */
   state?: InterceptEndpointGroupAssociationLocationDetailsStateEnum | (string & {});
 }
-const InterceptEndpointGroupAssociationLocationDetails = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<InterceptEndpointGroupAssociationLocationDetails>;
-
 export type InterceptEndpointGroupAssociationLocationDetailsList =
   Array<InterceptEndpointGroupAssociationLocationDetails>;
-const InterceptEndpointGroupAssociationLocationDetailsList = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<InterceptEndpointGroupAssociationLocationDetailsList>;
-
 /** An endpoint group association represents a link between a network and an endpoint group in the organization. Creating an association creates the networking infrastructure linking the network to the endpoint group, but does not enable intercept by itself. To enable intercept, the user must also create a network firewall policy containing intercept rules and associate it with the network. */
 export interface InterceptEndpointGroupAssociation {
   /** Output only. The timestamp when the resource was most recently updated. See https://google.aip.dev/148#timestamps. */
@@ -2053,11 +1411,6 @@ export interface InterceptEndpointGroupAssociation {
   /** Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps. */
   createTime?: string;
 }
-const InterceptEndpointGroupAssociation = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<InterceptEndpointGroupAssociation>;
-
 export interface CreateProjectsLocationsInterceptEndpointGroupAssociationsRequest {
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
@@ -2068,11 +1421,6 @@ export interface CreateProjectsLocationsInterceptEndpointGroupAssociationsReques
   /** Request body */
   body?: InterceptEndpointGroupAssociation;
 }
-const CreateProjectsLocationsInterceptEndpointGroupAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<CreateProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
-
 export type InterceptEndpointGroupAssociationDetailsStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -2081,8 +1429,6 @@ export type InterceptEndpointGroupAssociationDetailsStateEnum =
   | "CLOSED"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-const InterceptEndpointGroupAssociationDetailsStateEnum = S.String;
-
 /** The endpoint group's view of a connected association. */
 export interface InterceptEndpointGroupAssociationDetails {
   /** Output only. The associated network, for example: projects/123456789/global/networks/my-network. See https://google.aip.dev/124. */
@@ -2092,18 +1438,8 @@ export interface InterceptEndpointGroupAssociationDetails {
   /** Output only. The connected association's resource name, for example: `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-ega`. See https://google.aip.dev/124. */
   name?: string;
 }
-const InterceptEndpointGroupAssociationDetails = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<InterceptEndpointGroupAssociationDetails>;
-
 export type InterceptEndpointGroupAssociationDetailsList =
   Array<InterceptEndpointGroupAssociationDetails>;
-const InterceptEndpointGroupAssociationDetailsList = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<InterceptEndpointGroupAssociationDetailsList>;
-
 export type InterceptEndpointGroupStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -2112,8 +1448,6 @@ export type InterceptEndpointGroupStateEnum =
   | "DELETING"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-const InterceptEndpointGroupStateEnum = S.String;
-
 /** The endpoint group's view of a connected deployment group. */
 export interface InterceptEndpointGroupConnectedDeploymentGroup {
   /** Output only. The connected deployment group's resource name, for example: `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See https://google.aip.dev/124. */
@@ -2121,11 +1455,6 @@ export interface InterceptEndpointGroupConnectedDeploymentGroup {
   /** Output only. The list of locations where the deployment group is present. */
   locations?: InterceptLocationList;
 }
-const InterceptEndpointGroupConnectedDeploymentGroup = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<InterceptEndpointGroupConnectedDeploymentGroup>;
-
 /** An endpoint group is a consumer frontend for a deployment group (backend). In order to configure intercept for a network, consumers must create: - An association between their network and the endpoint group. - A security profile that points to the endpoint group. - A firewall rule that references the security profile (group). */
 export interface InterceptEndpointGroup {
   /** Output only. The timestamp when the resource was most recently updated. See https://google.aip.dev/148#timestamps. */
@@ -2149,11 +1478,6 @@ export interface InterceptEndpointGroup {
   /** Immutable. Identifier. The resource name of this endpoint group, for example: `projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See https://google.aip.dev/122 for more details. */
   name?: string;
 }
-const InterceptEndpointGroup = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<InterceptEndpointGroup>;
-
 export interface CreateProjectsLocationsInterceptEndpointGroupsRequest {
   /** Required. The ID to use for the endpoint group, which will become the final component of the endpoint group's resource name. */
   interceptEndpointGroupId?: string;
@@ -2164,19 +1488,12 @@ export interface CreateProjectsLocationsInterceptEndpointGroupsRequest {
   /** Request body */
   body?: InterceptEndpointGroup;
 }
-const CreateProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<CreateProjectsLocationsInterceptEndpointGroupsRequest>;
-
 export type MirroringDeploymentGroupStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "CREATING"
   | "DELETING"
   | "CLOSED";
-const MirroringDeploymentGroupStateEnum = S.String;
-
 /** An endpoint group connected to this deployment group. */
 export interface MirroringDeploymentGroupConnectedEndpointGroup {
   /** Output only. The connected endpoint group's resource name, for example: `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https://google.aip.dev/124. */
@@ -2184,9 +1501,6 @@ export interface MirroringDeploymentGroupConnectedEndpointGroup {
 }
 export type MirroringDeploymentGroupConnectedEndpointGroupList =
   Array<MirroringDeploymentGroupConnectedEndpointGroup>;
-const MirroringDeploymentGroupConnectedEndpointGroupList =
-  InterceptDeploymentGroupConnectedEndpointGroupList as any as S.Schema<MirroringDeploymentGroupConnectedEndpointGroupList>;
-
 export type MirroringDeploymentGroupDeploymentStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -2194,8 +1508,6 @@ export type MirroringDeploymentGroupDeploymentStateEnum =
   | "DELETING"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-const MirroringDeploymentGroupDeploymentStateEnum = S.String;
-
 /** A deployment belonging to this deployment group. */
 export interface MirroringDeploymentGroupDeployment {
   /** Output only. Most recent known state of the deployment. */
@@ -2203,20 +1515,8 @@ export interface MirroringDeploymentGroupDeployment {
   /** Output only. The name of the Mirroring Deployment, in the format: `projects/{project}/locations/{location}/mirroringDeployments/{mirroring_deployment}`. */
   name?: string;
 }
-const MirroringDeploymentGroupDeployment = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<MirroringDeploymentGroupDeployment>;
-
 export type MirroringDeploymentGroupDeploymentList = Array<MirroringDeploymentGroupDeployment>;
-const MirroringDeploymentGroupDeploymentList = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<MirroringDeploymentGroupDeploymentList>;
-
 export type MirroringLocationStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "OUT_OF_SYNC";
-const MirroringLocationStateEnum = S.String;
-
 /** Details about mirroring in a specific cloud location. */
 export interface MirroringLocation {
   /** Output only. The current state of the association in this location. */
@@ -2224,14 +1524,7 @@ export interface MirroringLocation {
   /** Output only. The cloud location, e.g. "us-central1-a" or "asia-south1". */
   location?: string;
 }
-const MirroringLocation = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<MirroringLocation>;
-
 export type MirroringLocationList = Array<MirroringLocation>;
-const MirroringLocationList = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<MirroringLocationList>;
-
 /** A deployment group aggregates many zonal mirroring backends (deployments) into a single global mirroring service. Consumers can connect this service using an endpoint group. */
 export interface MirroringDeploymentGroup {
   /** Output only. The current state of the resource does not match the user's intended state, and the system is working to reconcile them. This is part of the normal operation (e.g. adding a new deployment to the group) See https://google.aip.dev/128. */
@@ -2257,11 +1550,6 @@ export interface MirroringDeploymentGroup {
   /** Output only. The list of locations where the deployment group is present. */
   locations?: MirroringLocationList;
 }
-const MirroringDeploymentGroup = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<MirroringDeploymentGroup>;
-
 export interface CreateProjectsLocationsMirroringDeploymentGroupsRequest {
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
@@ -2272,11 +1560,6 @@ export interface CreateProjectsLocationsMirroringDeploymentGroupsRequest {
   /** Request body */
   body?: MirroringDeploymentGroup;
 }
-const CreateProjectsLocationsMirroringDeploymentGroupsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<CreateProjectsLocationsMirroringDeploymentGroupsRequest>;
-
 export type MirroringDeploymentStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -2284,8 +1567,6 @@ export type MirroringDeploymentStateEnum =
   | "DELETING"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-const MirroringDeploymentStateEnum = S.String;
-
 /** A deployment represents a zonal mirroring backend ready to accept GENEVE-encapsulated replica traffic, e.g. a zonal instance group fronted by an internal passthrough load balancer. Deployments are always part of a global deployment group which represents a global mirroring service. */
 export interface MirroringDeployment {
   /** Required. Immutable. The regional forwarding rule that fronts the mirroring collectors, for example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`. See https://google.aip.dev/124. */
@@ -2307,8 +1588,6 @@ export interface MirroringDeployment {
   /** Output only. The current state of the resource does not match the user's intended state, and the system is working to reconcile them. This part of the normal operation (e.g. linking a new association to the parent group). See https://google.aip.dev/128. */
   reconciling?: boolean;
 }
-const MirroringDeployment = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<MirroringDeployment>;
-
 export interface CreateProjectsLocationsMirroringDeploymentsRequest {
   /** Required. The parent resource where this deployment will be created. Format: projects/{project}/locations/{location} */
   parent: string;
@@ -2319,11 +1598,6 @@ export interface CreateProjectsLocationsMirroringDeploymentsRequest {
   /** Request body */
   body?: MirroringDeployment;
 }
-const CreateProjectsLocationsMirroringDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<CreateProjectsLocationsMirroringDeploymentsRequest>;
-
 export type MirroringEndpointGroupAssociationStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -2332,14 +1606,10 @@ export type MirroringEndpointGroupAssociationStateEnum =
   | "CLOSED"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-const MirroringEndpointGroupAssociationStateEnum = S.String;
-
 export type MirroringEndpointGroupAssociationLocationDetailsStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "OUT_OF_SYNC";
-const MirroringEndpointGroupAssociationLocationDetailsStateEnum = S.String;
-
 /** Contains details about the state of an association in a specific cloud location. */
 export interface MirroringEndpointGroupAssociationLocationDetails {
   /** Output only. The current state of the association in this location. */
@@ -2347,18 +1617,8 @@ export interface MirroringEndpointGroupAssociationLocationDetails {
   /** Output only. The cloud location, e.g. "us-central1-a" or "asia-south1". */
   location?: string;
 }
-const MirroringEndpointGroupAssociationLocationDetails = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<MirroringEndpointGroupAssociationLocationDetails>;
-
 export type MirroringEndpointGroupAssociationLocationDetailsList =
   Array<MirroringEndpointGroupAssociationLocationDetails>;
-const MirroringEndpointGroupAssociationLocationDetailsList = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<MirroringEndpointGroupAssociationLocationDetailsList>;
-
 /** An endpoint group association represents a link between a network and an endpoint group in the organization. Creating an association creates the networking infrastructure linking the network to the endpoint group, but does not enable mirroring by itself. To enable mirroring, the user must also create a network firewall policy containing mirroring rules and associate it with the network. */
 export interface MirroringEndpointGroupAssociation {
   /** Immutable. The VPC network that is associated. for example: `projects/123456789/global/networks/my-network`. See https://google.aip.dev/124. */
@@ -2384,11 +1644,6 @@ export interface MirroringEndpointGroupAssociation {
   /** Optional. Labels are key/value pairs that help to organize and filter resources. */
   labels?: StringMap;
 }
-const MirroringEndpointGroupAssociation = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<MirroringEndpointGroupAssociation>;
-
 export interface CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest {
   /** Required. The parent resource where this association will be created. Format: projects/{project}/locations/{location} */
   parent: string;
@@ -2399,11 +1654,6 @@ export interface CreateProjectsLocationsMirroringEndpointGroupAssociationsReques
   /** Request body */
   body?: MirroringEndpointGroupAssociation;
 }
-const CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
-
 export type MirroringEndpointGroupStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -2412,8 +1662,6 @@ export type MirroringEndpointGroupStateEnum =
   | "DELETING"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-const MirroringEndpointGroupStateEnum = S.String;
-
 export type MirroringEndpointGroupAssociationDetailsStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
@@ -2422,8 +1670,6 @@ export type MirroringEndpointGroupAssociationDetailsStateEnum =
   | "CLOSED"
   | "OUT_OF_SYNC"
   | "DELETE_FAILED";
-const MirroringEndpointGroupAssociationDetailsStateEnum = S.String;
-
 /** The endpoint group's view of a connected association. */
 export interface MirroringEndpointGroupAssociationDetails {
   /** Output only. The connected association's resource name, for example: `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-ega`. See https://google.aip.dev/124. */
@@ -2433,18 +1679,8 @@ export interface MirroringEndpointGroupAssociationDetails {
   /** Output only. The associated network, for example: projects/123456789/global/networks/my-network. See https://google.aip.dev/124. */
   network?: string;
 }
-const MirroringEndpointGroupAssociationDetails = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<MirroringEndpointGroupAssociationDetails>;
-
 export type MirroringEndpointGroupAssociationDetailsList =
   Array<MirroringEndpointGroupAssociationDetails>;
-const MirroringEndpointGroupAssociationDetailsList = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<MirroringEndpointGroupAssociationDetailsList>;
-
 /** The endpoint group's view of a connected deployment group. */
 export interface MirroringEndpointGroupConnectedDeploymentGroup {
   /** Output only. The list of locations where the deployment group is present. */
@@ -2452,21 +1688,9 @@ export interface MirroringEndpointGroupConnectedDeploymentGroup {
   /** Output only. The connected deployment group's resource name, for example: `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See https://google.aip.dev/124. */
   name?: string;
 }
-const MirroringEndpointGroupConnectedDeploymentGroup = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<MirroringEndpointGroupConnectedDeploymentGroup>;
-
 export type MirroringEndpointGroupConnectedDeploymentGroupList =
   Array<MirroringEndpointGroupConnectedDeploymentGroup>;
-const MirroringEndpointGroupConnectedDeploymentGroupList = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<MirroringEndpointGroupConnectedDeploymentGroupList>;
-
 export type MirroringEndpointGroupTypeEnum = "TYPE_UNSPECIFIED" | "DIRECT";
-const MirroringEndpointGroupTypeEnum = S.String;
-
 /** An endpoint group is a consumer frontend for a deployment group (backend). In order to configure mirroring for a network, consumers must create: - An association between their network and the endpoint group. - A security profile that points to the endpoint group. - A mirroring rule that references the security profile (group). */
 export interface MirroringEndpointGroup {
   /** Output only. The current state of the endpoint group. See https://google.aip.dev/216. */
@@ -2492,11 +1716,6 @@ export interface MirroringEndpointGroup {
   /** Output only. The current state of the resource does not match the user's intended state, and the system is working to reconcile them. This is part of the normal operation (e.g. adding a new association to the group). See https://google.aip.dev/128. */
   reconciling?: boolean;
 }
-const MirroringEndpointGroup = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<MirroringEndpointGroup>;
-
 export interface CreateProjectsLocationsMirroringEndpointGroupsRequest {
   /** Required. The ID to use for the endpoint group, which will become the final component of the endpoint group's resource name. */
   mirroringEndpointGroupId?: string;
@@ -2507,27 +1726,12 @@ export interface CreateProjectsLocationsMirroringEndpointGroupsRequest {
   /** Request body */
   body?: MirroringEndpointGroup;
 }
-const CreateProjectsLocationsMirroringEndpointGroupsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<CreateProjectsLocationsMirroringEndpointGroupsRequest>;
-
 /** Specifies the target to which this policy applies. */
 export interface RateLimitPolicyTarget {
   /** Required. Reference to a Gateway or Forwarding Rule resource on which this policy will be applied. */
   resource?: string;
 }
-const RateLimitPolicyTarget = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<RateLimitPolicyTarget>;
-
 export type RateLimitPolicyTargetList = Array<RateLimitPolicyTarget>;
-const RateLimitPolicyTargetList = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<RateLimitPolicyTargetList>;
-
 /** Specifies the key in the type HTTP header to override. */
 export interface RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader {
   /** Required. Specifies the header value of the key. */
@@ -2535,23 +1739,11 @@ export interface RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader
   /** Required. Specifies the header name of the key. */
   header?: string;
 }
-const RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader>;
-
 export type RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeaderList =
   Array<RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader>;
-const RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeaderList = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeaderList>;
-
 export type RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipalPrincipalTypeEnum =
   | "PRINCIPAL_TYPE_UNSPECIFIED"
   | "CLIENT_CERT_COMMON_NAME";
-const RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipalPrincipalTypeEnum = S.String;
-
 /** Specifies the key in the type PRINCIPAL to override. */
 export interface RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal {
   /** Required. Specifies the principal value of the key. */
@@ -2561,18 +1753,8 @@ export interface RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal 
     | RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipalPrincipalTypeEnum
     | (string & {});
 }
-const RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal>;
-
 export type RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipalList =
   Array<RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal>;
-const RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipalList = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipalList>;
-
 /** Specifies the key to override. Key fields must match the key types specified in the rate limit bucket. Key type ALL does not support overrides. */
 export interface RateLimitPolicyRateLimitBucketUserOverrideOverrideKey {
   /** Optional. Specifies the source IP if the rate limit bucket keys contain a key of type SOURCE_IP. */
@@ -2586,19 +1768,12 @@ export interface RateLimitPolicyRateLimitBucketUserOverrideOverrideKey {
   /** Optional. Specifies the MCP tool if the rate limit bucket keys contain a key of type MCP_TOOL. */
   mcpTool?: string;
 }
-const RateLimitPolicyRateLimitBucketUserOverrideOverrideKey = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<RateLimitPolicyRateLimitBucketUserOverrideOverrideKey>;
-
 export type RateLimitPolicyRateLimitBucketCountLimitIntervalUnitEnum =
   | "INTERVAL_UNIT_UNSPECIFIED"
   | "SECONDS"
   | "MINUTES"
   | "HOURS"
   | "DAYS";
-const RateLimitPolicyRateLimitBucketCountLimitIntervalUnitEnum = S.String;
-
 /** Describes the count limit for enforcement. */
 export interface RateLimitPolicyRateLimitBucketCountLimit {
   /** Required. Specifies the unit of the interval. Defaults to MINUTES. */
@@ -2608,21 +1783,11 @@ export interface RateLimitPolicyRateLimitBucketCountLimit {
   /** Required. Specifies the interval in units for which the count limit is enforced. Must be positive. */
   interval?: string;
 }
-const RateLimitPolicyRateLimitBucketCountLimit = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<RateLimitPolicyRateLimitBucketCountLimit>;
-
 /** Describes a limit for enforcement. */
 export interface RateLimitPolicyRateLimitBucketLimit {
   /** Required. Defines the count limit to enforce. */
   countLimit?: RateLimitPolicyRateLimitBucketCountLimit;
 }
-const RateLimitPolicyRateLimitBucketLimit = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<RateLimitPolicyRateLimitBucketLimit>;
-
 /** Describes properties of a user override for the rate limit bucket. */
 export interface RateLimitPolicyRateLimitBucketUserOverride {
   /** Required. Specifies the key to override. */
@@ -2630,23 +1795,11 @@ export interface RateLimitPolicyRateLimitBucketUserOverride {
   /** Required. Specifies the limit to apply for this specific key. */
   limit?: RateLimitPolicyRateLimitBucketLimit;
 }
-const RateLimitPolicyRateLimitBucketUserOverride = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<RateLimitPolicyRateLimitBucketUserOverride>;
-
 export type RateLimitPolicyRateLimitBucketUserOverrideList =
   Array<RateLimitPolicyRateLimitBucketUserOverride>;
-const RateLimitPolicyRateLimitBucketUserOverrideList = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<RateLimitPolicyRateLimitBucketUserOverrideList>;
-
 export type RateLimitPolicyRateLimitBucketKeyPrincipalTypeEnum =
   | "PRINCIPAL_TYPE_UNSPECIFIED"
   | "CLIENT_CERT_COMMON_NAME";
-const RateLimitPolicyRateLimitBucketKeyPrincipalTypeEnum = S.String;
-
 export type RateLimitPolicyRateLimitBucketKeyKeyTypeEnum =
   | "KEY_TYPE_UNSPECIFIED"
   | "ALL"
@@ -2655,8 +1808,6 @@ export type RateLimitPolicyRateLimitBucketKeyKeyTypeEnum =
   | "HTTP_PATH"
   | "PRINCIPAL"
   | "MCP_TOOL";
-const RateLimitPolicyRateLimitBucketKeyKeyTypeEnum = S.String;
-
 /** Describes properties of a key to use for rate limiting. */
 export interface RateLimitPolicyRateLimitBucketKey {
   /** Optional. Specifies the header name if key_type is HTTP_HEADER. */
@@ -2666,17 +1817,7 @@ export interface RateLimitPolicyRateLimitBucketKey {
   /** Required. Specifies the type of key to use for rate limiting. */
   keyType?: RateLimitPolicyRateLimitBucketKeyKeyTypeEnum | (string & {});
 }
-const RateLimitPolicyRateLimitBucketKey = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<RateLimitPolicyRateLimitBucketKey>;
-
 export type RateLimitPolicyRateLimitBucketKeyList = Array<RateLimitPolicyRateLimitBucketKey>;
-const RateLimitPolicyRateLimitBucketKeyList = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<RateLimitPolicyRateLimitBucketKeyList>;
-
 /** Describes properties of a rate limit bucket. */
 export interface RateLimitPolicyRateLimitBucket {
   /** Optional. Specifies a list of user overrides to apply to the rate limit bucket. */
@@ -2690,24 +1831,12 @@ export interface RateLimitPolicyRateLimitBucket {
   /** Required. Specifies the keys to use for rate limiting. At least one key is required. If multiple keys are specified, the keys will be combined and used as a single key. */
   keys?: RateLimitPolicyRateLimitBucketKeyList;
 }
-const RateLimitPolicyRateLimitBucket = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<RateLimitPolicyRateLimitBucket>;
-
 export type RateLimitPolicyRateLimitBucketList = Array<RateLimitPolicyRateLimitBucket>;
-const RateLimitPolicyRateLimitBucketList = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<RateLimitPolicyRateLimitBucketList>;
-
 export type RateLimitPolicyRateLimitRulePrincipalPrincipalSelectorEnum =
   | "PRINCIPAL_SELECTOR_UNSPECIFIED"
   | "CLIENT_CERT_URI_SAN"
   | "CLIENT_CERT_DNS_NAME_SAN"
   | "CLIENT_CERT_COMMON_NAME";
-const RateLimitPolicyRateLimitRulePrincipalPrincipalSelectorEnum = S.String;
-
 /** Determines how a string value is matched. */
 export interface RateLimitPolicyRateLimitRuleStringMatch {
   /** Checks if the input string has the prefix specified here. Note: empty prefix is not allowed, please use regex instead. Examples: * ``abc`` matches the value ``abc.xyz`` */
@@ -2721,9 +1850,6 @@ export interface RateLimitPolicyRateLimitRuleStringMatch {
   /** Checks if the input string contains the substring specified here. Note: empty contains match is not allowed, please use regex instead. Examples: * ``abc`` matches the value ``xyz.abc.def`` */
   contains?: string;
 }
-const RateLimitPolicyRateLimitRuleStringMatch =
-  AuthzPolicyAuthzRuleStringMatch as any as S.Schema<RateLimitPolicyRateLimitRuleStringMatch>;
-
 /** Describes the properties of a principal for matching. */
 export interface RateLimitPolicyRateLimitRulePrincipal {
   /** Optional. Decides what principal value the principal rule will match against. If not specified, defaults to CLIENT_CERT_URI_SAN. */
@@ -2731,28 +1857,13 @@ export interface RateLimitPolicyRateLimitRulePrincipal {
   /** Required. Matches a non-empty string against the principal value based on the principal_selector. */
   principal?: RateLimitPolicyRateLimitRuleStringMatch;
 }
-const RateLimitPolicyRateLimitRulePrincipal = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<RateLimitPolicyRateLimitRulePrincipal>;
-
 export type RateLimitPolicyRateLimitRulePrincipalList =
   Array<RateLimitPolicyRateLimitRulePrincipal>;
-const RateLimitPolicyRateLimitRulePrincipalList = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<RateLimitPolicyRateLimitRulePrincipalList>;
-
 /** Describes the properties of a request source. */
 export interface RateLimitPolicyRateLimitRuleFromSource {
   /** Required. Contains a list of identities derived from the client's certificate. This field does not match on a request unless frontend mutual TLS is enabled for the Gateway and the client certificate is successfully validated by mTLS. Each identity is a string whose value is matched against a list of URI SANs, DNS Name SANs, or the common name in the client's certificate. A match happens when any principal matches with the rule. */
   principals?: RateLimitPolicyRateLimitRulePrincipalList;
 }
-const RateLimitPolicyRateLimitRuleFromSource = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<RateLimitPolicyRateLimitRuleFromSource>;
-
 /** Describes properties of the sources of a request. */
 export interface RateLimitPolicyRateLimitRuleFrom {
   /** Optional. Describes the properties of a request's source. At least one of source or not_source must be specified. A match occurs when ANY fields in either source or not_source matches the request. Within a single source, the match follows OR semantics across fields and AND semantics within a single field. */
@@ -2760,16 +1871,8 @@ export interface RateLimitPolicyRateLimitRuleFrom {
   /** Optional. Describes the negated properties of request source. Matches requests from source that does not match the criteria specified in this field. At least one of source or not_source must be specified. */
   notSource?: RateLimitPolicyRateLimitRuleFromSource;
 }
-const RateLimitPolicyRateLimitRuleFrom = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<RateLimitPolicyRateLimitRuleFrom>;
-
 export type RateLimitPolicyRateLimitRuleStringMatchList =
   Array<RateLimitPolicyRateLimitRuleStringMatch>;
-const RateLimitPolicyRateLimitRuleStringMatchList =
-  AuthzPolicyAuthzRuleStringMatchList as any as S.Schema<RateLimitPolicyRateLimitRuleStringMatchList>;
-
 /** Determines how an HTTP header is matched. */
 export interface RateLimitPolicyRateLimitRuleHeaderMatch {
   /** Optional. Specifies the name of the header in the request. */
@@ -2784,9 +1887,6 @@ export interface RateLimitPolicyRateLimitRuleToDestinationHeaderSet {
   /** Required. Contains a list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. */
   headers?: RateLimitPolicyRateLimitRuleHeaderMatchList;
 }
-const RateLimitPolicyRateLimitRuleToDestinationHeaderSet =
-  AuthzPolicyAuthzRuleToRequestOperationHeaderSet as any as S.Schema<RateLimitPolicyRateLimitRuleToDestinationHeaderSet>;
-
 /** Describes a set of MCP methods to match against. This field is only valid if the targeted Gateway or Forwarding Rule has an Agent Gateway attached to it. */
 export interface RateLimitPolicyRateLimitRuleToDestinationMCPMethod {
   /** Required. Specifies the MCP method to match against. Allowed values are as follows: 1. `tools`, `prompts`, `resources` - these will match against all sub methods under the respective methods. 2. `prompts/list`, `tools/list`, `resources/list`, `resources/templates/list` 3. `prompts/get`, `tools/call`, `resources/subscribe`, `resources/unsubscribe`, `resources/read` Params cannot be specified for categories 1 and 2. */
@@ -2796,15 +1896,10 @@ export interface RateLimitPolicyRateLimitRuleToDestinationMCPMethod {
 }
 export type RateLimitPolicyRateLimitRuleToDestinationMCPMethodList =
   Array<RateLimitPolicyRateLimitRuleToDestinationMCPMethod>;
-const RateLimitPolicyRateLimitRuleToDestinationMCPMethodList =
-  AuthzPolicyAuthzRuleToRequestOperationMCPMethodList as any as S.Schema<RateLimitPolicyRateLimitRuleToDestinationMCPMethodList>;
-
 export type RateLimitPolicyRateLimitRuleToDestinationMCPBaseProtocolMethodsOptionEnum =
   | "BASE_PROTOCOL_METHODS_OPTION_UNSPECIFIED"
   | "SKIP_BASE_PROTOCOL_METHODS"
   | "MATCH_BASE_PROTOCOL_METHODS";
-const RateLimitPolicyRateLimitRuleToDestinationMCPBaseProtocolMethodsOptionEnum = S.String;
-
 /** Describes a set of MCP protocol attributes to match against for a given MCP request. This field is only valid if the targeted Gateway or Forwarding Rule has an Agent Gateway attached to it. */
 export interface RateLimitPolicyRateLimitRuleToDestinationMCP {
   /** Optional. A list of MCP methods and associated parameter names to match on. It is recommended to use this field to match on tools, prompts and resource accesses while setting the baseProtocolMethodsOption to MATCH_BASE_PROTOCOL_METHODS to match on all the other MCP protocol methods. Limited to 10 MCP methods per Rate Limit Policy. */
@@ -2814,11 +1909,6 @@ export interface RateLimitPolicyRateLimitRuleToDestinationMCP {
     | RateLimitPolicyRateLimitRuleToDestinationMCPBaseProtocolMethodsOptionEnum
     | (string & {});
 }
-const RateLimitPolicyRateLimitRuleToDestinationMCP = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<RateLimitPolicyRateLimitRuleToDestinationMCP>;
-
 /** Describes properties of a request target. */
 export interface RateLimitPolicyRateLimitRuleToDestination {
   /** Optional. Specifies a list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set. The match follows OR semantics which means that if any of the hosts match, the operation is considered to be matched. */
@@ -2832,11 +1922,6 @@ export interface RateLimitPolicyRateLimitRuleToDestination {
   /** Optional. Specifies the MCP protocol attributes to match against. This field is only valid if the targeted Gateway or Forwarding Rule has an Agent Gateway attached to it. */
   mcp?: RateLimitPolicyRateLimitRuleToDestinationMCP;
 }
-const RateLimitPolicyRateLimitRuleToDestination = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<RateLimitPolicyRateLimitRuleToDestination>;
-
 /** Describes properties of the targets of a request. */
 export interface RateLimitPolicyRateLimitRuleTo {
   /** Optional. Describes properties of a request's destination. At least one of destination or not_destination must be specified. A match occurs when ANY fields in either destination or not_destination matches the request. Within a destination, the match follows OR semantics across fields and AND semantics within a single field. */
@@ -2844,28 +1929,13 @@ export interface RateLimitPolicyRateLimitRuleTo {
   /** Optional. Describes the negated properties of a request's destination. Matches requests for destination that does not match the criteria specified in this field. At least one of destination or not_destination must be specified. */
   notDestination?: RateLimitPolicyRateLimitRuleToDestination;
 }
-const RateLimitPolicyRateLimitRuleTo = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<RateLimitPolicyRateLimitRuleTo>;
-
 /** Describes the action to take when the rate limit rule is matched. */
 export interface RateLimitPolicyRateLimitRuleRateLimitAction {
   /** Required. Specifies the name of the rate limit bucket to apply when this rule is matched. */
   rateLimitBucket?: string;
 }
-const RateLimitPolicyRateLimitRuleRateLimitAction = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<RateLimitPolicyRateLimitRuleRateLimitAction>;
-
 export type RateLimitPolicyRateLimitRuleRateLimitActionList =
   Array<RateLimitPolicyRateLimitRuleRateLimitAction>;
-const RateLimitPolicyRateLimitRuleRateLimitActionList = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<RateLimitPolicyRateLimitRuleRateLimitActionList>;
-
 /** Specifies conditions to match against the incoming request. */
 export interface RateLimitPolicyRateLimitRule {
   /** Optional. Describes properties of a source of a request. */
@@ -2875,17 +1945,7 @@ export interface RateLimitPolicyRateLimitRule {
   /** Optional. Specifies the actions to take when this rule is matched. */
   rateLimitActions?: RateLimitPolicyRateLimitRuleRateLimitActionList;
 }
-const RateLimitPolicyRateLimitRule = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<RateLimitPolicyRateLimitRule>;
-
 export type RateLimitPolicyRateLimitRuleList = Array<RateLimitPolicyRateLimitRule>;
-const RateLimitPolicyRateLimitRuleList = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<RateLimitPolicyRateLimitRuleList>;
-
 /** Describes a `RateLimitPolicy` object. */
 export interface RateLimitPolicy {
   /** Required. Specifies a list of targets to which this policy applies. */
@@ -2905,8 +1965,6 @@ export interface RateLimitPolicy {
   /** Optional. Specifies a list of rate limit HTTP rules to match against the incoming request. */
   httpRules?: RateLimitPolicyRateLimitRuleList;
 }
-const RateLimitPolicy = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<RateLimitPolicy>;
-
 export interface CreateProjectsLocationsRateLimitPoliciesRequest {
   /** Optional. Specifies an optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -2917,18 +1975,11 @@ export interface CreateProjectsLocationsRateLimitPoliciesRequest {
   /** Request body */
   body?: RateLimitPolicy;
 }
-const CreateProjectsLocationsRateLimitPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<CreateProjectsLocationsRateLimitPoliciesRequest>;
-
 export type SACAttachmentStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING_PARTNER_ATTACHMENT"
   | "PARTNER_ATTACHED"
   | "PARTNER_DETACHED";
-const SACAttachmentStateEnum = S.String;
-
 /** Fields specific to attachments associated with Symantec Cloud SWG. */
 export interface SACAttachmentSACAttachmentSymantecOptions {
   /** Immutable. Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations. */
@@ -2936,11 +1987,6 @@ export interface SACAttachmentSACAttachmentSymantecOptions {
   /** Immutable. Symantec data center identifier that this attachment will connect to. */
   symantecSite?: string;
 }
-const SACAttachmentSACAttachmentSymantecOptions = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<SACAttachmentSACAttachmentSymantecOptions>;
-
 /** Represents a Secure Access Connect (SAC) attachment resource. A Secure Access Connect attachment enables NCC Gateway to process traffic with an SSE product. */
 export interface SACAttachment {
   /** Optional. Optional list of labels applied to the resource. */
@@ -2964,8 +2010,6 @@ export interface SACAttachment {
   /** Identifier. Resource name, in the form `projects/{project}/locations/{location}/sacAttachments/{sac_attachment}`. */
   name?: string;
 }
-const SACAttachment = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<SACAttachment>;
-
 export interface CreateProjectsLocationsSacAttachmentsRequest {
   /** Required. The parent, in the form `projects/{project}/locations/{location}`. */
   parent: string;
@@ -2976,33 +2020,22 @@ export interface CreateProjectsLocationsSacAttachmentsRequest {
   /** Request body */
   body?: SACAttachment;
 }
-const CreateProjectsLocationsSacAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<CreateProjectsLocationsSacAttachmentsRequest>;
-
 export type SACRealmSecurityServiceEnum =
   | "SECURITY_SERVICE_UNSPECIFIED"
   | "PALO_ALTO_PRISMA_ACCESS"
   | "SYMANTEC_CLOUD_SWG";
-const SACRealmSecurityServiceEnum = S.String;
-
 export type SACRealmStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING_PARTNER_ATTACHMENT"
   | "PARTNER_ATTACHED"
   | "PARTNER_DETACHED"
   | "KEY_EXPIRED";
-const SACRealmStateEnum = S.String;
-
 export type SACRealmSACRealmSymantecOptionsSymantecConnectionStateEnum =
   | "SYMANTEC_CONNECTION_STATE_UNSPECIFIED"
   | "SUCCEEDED"
   | "READ_SECRET_FAILED"
   | "REQUEST_TO_SYMANTEC_FAILED"
   | "UNAVAILABLE_FOR_HISTORICAL_REQUESTS";
-const SACRealmSACRealmSymantecOptionsSymantecConnectionStateEnum = S.String;
-
 /** Fields specific to realms using Symantec Cloud SWG. */
 export interface SACRealmSACRealmSymantecOptions {
   /** Output only. Connection status to Symantec API. */
@@ -3014,11 +2047,6 @@ export interface SACRealmSACRealmSymantecOptions {
   /** Output only. Symantec site IDs which the user can choose to connect to. */
   availableSymantecSites?: StringList;
 }
-const SACRealmSACRealmSymantecOptions = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<SACRealmSACRealmSymantecOptions>;
-
 /** Key to be shared with SSE service provider to establish global handshake. */
 export interface SACRealmPairingKey {
   /** Output only. Timestamp in UTC of when this resource is considered expired. It expires 7 days after creation. */
@@ -3026,8 +2054,6 @@ export interface SACRealmPairingKey {
   /** Output only. Key value. */
   key?: string;
 }
-const SACRealmPairingKey = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<SACRealmPairingKey>;
-
 /** Represents a Secure Access Connect (SAC) realm resource. A Secure Access Connect realm establishes a connection between your Google Cloud project and an SSE service. */
 export interface SACRealm {
   /** Immutable. SSE service provider associated with the realm. */
@@ -3047,8 +2073,6 @@ export interface SACRealm {
   /** Output only. Key to be shared with SSE service provider during pairing. */
   pairingKey?: SACRealmPairingKey;
 }
-const SACRealm = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<SACRealm>;
-
 export interface CreateProjectsLocationsSacRealmsRequest {
   /** Required. ID of the created realm. The ID must be 1-63 characters long, and comply with RFC1035. Specifically, it must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. */
   sacRealmId?: string;
@@ -3059,11 +2083,6 @@ export interface CreateProjectsLocationsSacRealmsRequest {
   /** Request body */
   body?: SACRealm;
 }
-const CreateProjectsLocationsSacRealmsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<CreateProjectsLocationsSacRealmsRequest>;
-
 export interface CreateProjectsLocationsSecurityProfileGroupsRequest {
   /** Required. Short name of the SecurityProfileGroup resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "security_profile_group1". */
   securityProfileGroupId?: string;
@@ -3072,11 +2091,6 @@ export interface CreateProjectsLocationsSecurityProfileGroupsRequest {
   /** Request body */
   body?: SecurityProfileGroup;
 }
-const CreateProjectsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<CreateProjectsLocationsSecurityProfileGroupsRequest>;
-
 export interface CreateProjectsLocationsSecurityProfilesRequest {
   /** Required. Short name of the SecurityProfile resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "security_profile1". */
   securityProfileId?: string;
@@ -3085,17 +2099,10 @@ export interface CreateProjectsLocationsSecurityProfilesRequest {
   /** Request body */
   body?: SecurityProfile;
 }
-const CreateProjectsLocationsSecurityProfilesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<CreateProjectsLocationsSecurityProfilesRequest>;
-
 export type MTLSPolicyClientValidationModeEnum =
   | "CLIENT_VALIDATION_MODE_UNSPECIFIED"
   | "ALLOW_INVALID_OR_MISSING_CLIENT_CERT"
   | "REJECT_INVALID";
-const MTLSPolicyClientValidationModeEnum = S.String;
-
 /** Specification of the MTLSPolicy. */
 export interface MTLSPolicy {
   /** Required if the policy is to be used with Traffic Director. For Application Load Balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate. */
@@ -3105,8 +2112,6 @@ export interface MTLSPolicy {
   /** When the client presents an invalid certificate or no certificate to the load balancer, the `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be used with the Application Load Balancers. For Traffic Director it must be empty. */
   clientValidationMode?: MTLSPolicyClientValidationModeEnum | (string & {});
 }
-const MTLSPolicy = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<MTLSPolicy>;
-
 /** ServerTlsPolicy is a resource that specifies how a server should authenticate incoming requests. This resource itself does not affect configuration unless it is attached to a target HTTPS proxy or endpoint config selector resource. ServerTlsPolicy in the form accepted by Application Load Balancers can be attached only to TargetHttpsProxy with an `EXTERNAL`, `EXTERNAL_MANAGED` or `INTERNAL_MANAGED` load balancing scheme. Traffic Director compatible ServerTlsPolicies can be attached to EndpointPolicy and TargetHttpsProxy with Traffic Director `INTERNAL_SELF_MANAGED` load balancing scheme. */
 export interface ServerTlsPolicy {
   /** Output only. The timestamp when the resource was updated. */
@@ -3126,8 +2131,6 @@ export interface ServerTlsPolicy {
   /** Optional if policy is to be used with Traffic Director. For Application Load Balancers must be empty. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported. */
   serverCertificate?: GoogleCloudNetworksecurityV1beta1CertificateProvider;
 }
-const ServerTlsPolicy = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<ServerTlsPolicy>;
-
 export interface CreateProjectsLocationsServerTlsPoliciesRequest {
   /** Required. Short name of the ServerTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "server_mtls_policy". */
   serverTlsPolicyId?: string;
@@ -3136,33 +2139,22 @@ export interface CreateProjectsLocationsServerTlsPoliciesRequest {
   /** Request body */
   body?: ServerTlsPolicy;
 }
-const CreateProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<CreateProjectsLocationsServerTlsPoliciesRequest>;
-
 export type TlsInspectionPolicyCertificateIssuanceModeEnum =
   | "CERTIFICATE_ISSUANCE_MODE_UNSPECIFIED"
   | "DIRECT_LEAF_PROVISIONING"
   | "LOCAL_INTERMEDIATE_CA_SIGNING";
-const TlsInspectionPolicyCertificateIssuanceModeEnum = S.String;
-
 export type TlsInspectionPolicyTlsFeatureProfileEnum =
   | "PROFILE_UNSPECIFIED"
   | "PROFILE_COMPATIBLE"
   | "PROFILE_MODERN"
   | "PROFILE_RESTRICTED"
   | "PROFILE_CUSTOM";
-const TlsInspectionPolicyTlsFeatureProfileEnum = S.String;
-
 export type TlsInspectionPolicyMinTlsVersionEnum =
   | "TLS_VERSION_UNSPECIFIED"
   | "TLS_1_0"
   | "TLS_1_1"
   | "TLS_1_2"
   | "TLS_1_3";
-const TlsInspectionPolicyMinTlsVersionEnum = S.String;
-
 /** The TlsInspectionPolicy resource contains references to CA pools in Certificate Authority Service and associated metadata. */
 export interface TlsInspectionPolicy {
   /** Optional. The mode used to issue certificates (local CA signing vs direct leaf). */
@@ -3188,8 +2180,6 @@ export interface TlsInspectionPolicy {
   /** Output only. The timestamp when the resource was created. */
   createTime?: string;
 }
-const TlsInspectionPolicy = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<TlsInspectionPolicy>;
-
 export interface CreateProjectsLocationsTlsInspectionPoliciesRequest {
   /** Required. The parent resource of the TlsInspectionPolicy. Must be in the format `projects/{project}/locations/{location}`. */
   parent: string;
@@ -3198,11 +2188,6 @@ export interface CreateProjectsLocationsTlsInspectionPoliciesRequest {
   /** Request body */
   body?: TlsInspectionPolicy;
 }
-const CreateProjectsLocationsTlsInspectionPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<CreateProjectsLocationsTlsInspectionPoliciesRequest>;
-
 /** UrlList proto helps users to set reusable, independently manageable lists of hosts, host patterns, URLs, URL patterns. */
 export interface UrlList {
   /** Output only. Time when the security policy was created. */
@@ -3216,8 +2201,6 @@ export interface UrlList {
   /** Required. FQDNs and URLs. */
   values?: StringList;
 }
-const UrlList = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<UrlList>;
-
 export interface CreateProjectsLocationsUrlListsRequest {
   /** Required. The parent resource of the UrlList. Must be in the format `projects/*\/locations/{location}`. */
   parent: string;
@@ -3226,272 +2209,142 @@ export interface CreateProjectsLocationsUrlListsRequest {
   /** Request body */
   body?: UrlList;
 }
-const CreateProjectsLocationsUrlListsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<CreateProjectsLocationsUrlListsRequest>;
-
 export interface DeleteOrganizationsLocationsAddressGroupsRequest {
   /** Required. A name of the AddressGroup to delete. Must be in the format `projects/*\/locations/{location}/addressGroups/*`. */
   name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const DeleteOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<DeleteOrganizationsLocationsAddressGroupsRequest>;
-
 export interface DeleteOrganizationsLocationsFirewallEndpointsRequest {
   /** Required. Name of the resource */
   name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const DeleteOrganizationsLocationsFirewallEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<DeleteOrganizationsLocationsFirewallEndpointsRequest>;
-
 export interface DeleteOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>;
-
 export interface DeleteOrganizationsLocationsSecurityProfileGroupsRequest {
   /** Required. A name of the SecurityProfileGroup to delete. Must be in the format `projects|organizations/*\/locations/{location}/securityProfileGroups/{security_profile_group}`. */
   name: string;
   /** Optional. If client provided etag is out of date, delete will return FAILED_PRECONDITION error. */
   etag?: string;
 }
-const DeleteOrganizationsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<DeleteOrganizationsLocationsSecurityProfileGroupsRequest>;
-
 export interface DeleteOrganizationsLocationsSecurityProfilesRequest {
   /** Required. A name of the SecurityProfile to delete. Must be in the format `projects|organizations/*\/locations/{location}/securityProfiles/{security_profile_id}`. */
   name: string;
   /** Optional. If client provided etag is out of date, delete will return FAILED_PRECONDITION error. */
   etag?: string;
 }
-const DeleteOrganizationsLocationsSecurityProfilesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<DeleteOrganizationsLocationsSecurityProfilesRequest>;
-
 export interface DeleteProjectsLocationsAddressGroupsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Required. A name of the AddressGroup to delete. Must be in the format `projects/*\/locations/{location}/addressGroups/*`. */
   name: string;
 }
-const DeleteProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsAddressGroupsRequest>;
-
 export interface DeleteProjectsLocationsAuthorizationPoliciesRequest {
   /** Required. A name of the AuthorizationPolicy to delete. Must be in the format `projects/{project}/locations/{location}/authorizationPolicies/*`. */
   name: string;
 }
-const DeleteProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsAuthorizationPoliciesRequest>;
-
 export interface DeleteProjectsLocationsAuthzPoliciesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Required. The name of the `AuthzPolicy` resource to delete. Must be in the format `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`. */
   name: string;
 }
-const DeleteProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsAuthzPoliciesRequest>;
-
 export interface DeleteProjectsLocationsBackendAuthenticationConfigsRequest {
   /** Required. A name of the BackendAuthenticationConfig to delete. Must be in the format `projects/*\/locations/{location}/backendAuthenticationConfigs/*`. */
   name: string;
   /** Optional. Etag of the resource. If this is provided, it must match the server's etag. */
   etag?: string;
 }
-const DeleteProjectsLocationsBackendAuthenticationConfigsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsBackendAuthenticationConfigsRequest>;
-
 export interface DeleteProjectsLocationsClientTlsPoliciesRequest {
   /** Required. A name of the ClientTlsPolicy to delete. Must be in the format `projects/*\/locations/{location}/clientTlsPolicies/*`. */
   name: string;
 }
-const DeleteProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsClientTlsPoliciesRequest>;
-
 export interface DeleteProjectsLocationsDnsThreatDetectorsRequest {
   /** Required. Name of the DnsThreatDetector resource. */
   name: string;
 }
-const DeleteProjectsLocationsDnsThreatDetectorsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsDnsThreatDetectorsRequest>;
-
 export interface DeleteProjectsLocationsFirewallEndpointAssociationsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Required. Name of the resource */
   name: string;
 }
-const DeleteProjectsLocationsFirewallEndpointAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsFirewallEndpointAssociationsRequest>;
-
 export interface DeleteProjectsLocationsFirewallEndpointsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Required. Name of the resource */
   name: string;
 }
-const DeleteProjectsLocationsFirewallEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsFirewallEndpointsRequest>;
-
 export interface DeleteProjectsLocationsGatewaySecurityPoliciesRequest {
   /** Required. A name of the GatewaySecurityPolicy to delete. Must be in the format `projects/{project}/locations/{location}/gatewaySecurityPolicies/*`. */
   name: string;
 }
-const DeleteProjectsLocationsGatewaySecurityPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsGatewaySecurityPoliciesRequest>;
-
 export interface DeleteProjectsLocationsGatewaySecurityPoliciesRulesRequest {
   /** Required. A name of the GatewaySecurityPolicyRule to delete. Must be in the format `projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}/rules/*`. */
   name: string;
 }
-const DeleteProjectsLocationsGatewaySecurityPoliciesRulesRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsGatewaySecurityPoliciesRulesRequest>;
-
 export interface DeleteProjectsLocationsInterceptDeploymentGroupsRequest {
   /** Required. The deployment group to delete. */
   name: string;
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
 }
-const DeleteProjectsLocationsInterceptDeploymentGroupsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsInterceptDeploymentGroupsRequest>;
-
 export interface DeleteProjectsLocationsInterceptDeploymentsRequest {
   /** Required. Name of the resource */
   name: string;
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
 }
-const DeleteProjectsLocationsInterceptDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsInterceptDeploymentsRequest>;
-
 export interface DeleteProjectsLocationsInterceptEndpointGroupAssociationsRequest {
   /** Required. The association to delete. */
   name: string;
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
 }
-const DeleteProjectsLocationsInterceptEndpointGroupAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
-
 export interface DeleteProjectsLocationsInterceptEndpointGroupsRequest {
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
   /** Required. The endpoint group to delete. */
   name: string;
 }
-const DeleteProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsInterceptEndpointGroupsRequest>;
-
 export interface DeleteProjectsLocationsMirroringDeploymentGroupsRequest {
   /** Required. The deployment group to delete. */
   name: string;
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
 }
-const DeleteProjectsLocationsMirroringDeploymentGroupsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsMirroringDeploymentGroupsRequest>;
-
 export interface DeleteProjectsLocationsMirroringDeploymentsRequest {
   /** Required. Name of the resource */
   name: string;
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
 }
-const DeleteProjectsLocationsMirroringDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsMirroringDeploymentsRequest>;
-
 export interface DeleteProjectsLocationsMirroringEndpointGroupAssociationsRequest {
   /** Required. The association to delete. */
   name: string;
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
 }
-const DeleteProjectsLocationsMirroringEndpointGroupAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
-
 export interface DeleteProjectsLocationsMirroringEndpointGroupsRequest {
   /** Required. The endpoint group to delete. */
   name: string;
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
 }
-const DeleteProjectsLocationsMirroringEndpointGroupsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsMirroringEndpointGroupsRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 export interface DeleteProjectsLocationsRateLimitPoliciesRequest {
   /** Optional. Specifies an optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
   /** Required. Specifies the name of the resource. */
   name: string;
 }
-const DeleteProjectsLocationsRateLimitPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsRateLimitPoliciesRequest>;
-
 export interface DeleteProjectsLocationsSacAttachmentsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -3500,84 +2353,44 @@ export interface DeleteProjectsLocationsSacAttachmentsRequest {
   /** Optional. If set to true, the request will delete the SAC Attachment even if some steps fail (e.g. deleting the remote Symantec Location). This option is a no-op for partners where it does not apply (e.g. Palo Alto Networks). WARNING: Enabling this option may leave dangling resources in the Broadcom/Symantec customer portal that requires manual cleanup. */
   ignorePartnerDeletionErrors?: boolean;
 }
-const DeleteProjectsLocationsSacAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsSacAttachmentsRequest>;
-
 export interface DeleteProjectsLocationsSacRealmsRequest {
   /** Required. Name of the resource, in the form `projects/{project}/locations/global/sacRealms/{sacRealm}`. */
   name: string;
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const DeleteProjectsLocationsSacRealmsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsSacRealmsRequest>;
-
 export interface DeleteProjectsLocationsSecurityProfileGroupsRequest {
   /** Required. A name of the SecurityProfileGroup to delete. Must be in the format `projects|organizations/*\/locations/{location}/securityProfileGroups/{security_profile_group}`. */
   name: string;
   /** Optional. If client provided etag is out of date, delete will return FAILED_PRECONDITION error. */
   etag?: string;
 }
-const DeleteProjectsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsSecurityProfileGroupsRequest>;
-
 export interface DeleteProjectsLocationsSecurityProfilesRequest {
   /** Required. A name of the SecurityProfile to delete. Must be in the format `projects|organizations/*\/locations/{location}/securityProfiles/{security_profile_id}`. */
   name: string;
   /** Optional. If client provided etag is out of date, delete will return FAILED_PRECONDITION error. */
   etag?: string;
 }
-const DeleteProjectsLocationsSecurityProfilesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsSecurityProfilesRequest>;
-
 export interface DeleteProjectsLocationsServerTlsPoliciesRequest {
   /** Required. A name of the ServerTlsPolicy to delete. Must be in the format `projects/*\/locations/{location}/serverTlsPolicies/*`. */
   name: string;
 }
-const DeleteProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsServerTlsPoliciesRequest>;
-
 export interface DeleteProjectsLocationsTlsInspectionPoliciesRequest {
   /** Required. A name of the TlsInspectionPolicy to delete. Must be in the format `projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy}`. */
   name: string;
   /** If set to true, any rules for this TlsInspectionPolicy will also be deleted. (Otherwise, the request will only work if the TlsInspectionPolicy has no rules.) */
   force?: boolean;
 }
-const DeleteProjectsLocationsTlsInspectionPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsTlsInspectionPoliciesRequest>;
-
 export interface DeleteProjectsLocationsUrlListsRequest {
   /** Required. A name of the UrlList to delete. Must be in the format `projects/*\/locations/{location}/urlLists/*`. */
   name: string;
 }
-const DeleteProjectsLocationsUrlListsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsUrlListsRequest>;
-
 export interface GetIamPolicyProjectsLocationsAddressGroupsRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-const GetIamPolicyProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<GetIamPolicyProjectsLocationsAddressGroupsRequest>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -3589,8 +2402,6 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-const Expr = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<Expr>;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface GoogleIamV1Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -3600,21 +2411,12 @@ export interface GoogleIamV1Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-const GoogleIamV1Binding = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<GoogleIamV1Binding>;
-
 export type GoogleIamV1BindingList = Array<GoogleIamV1Binding>;
-const GoogleIamV1BindingList = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<GoogleIamV1BindingList>;
-
 export type GoogleIamV1AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-const GoogleIamV1AuditLogConfigLogTypeEnum = S.String;
-
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
@@ -3622,17 +2424,7 @@ export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-const GoogleIamV1AuditLogConfig = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<GoogleIamV1AuditLogConfig>;
-
 export type GoogleIamV1AuditLogConfigList = Array<GoogleIamV1AuditLogConfig>;
-const GoogleIamV1AuditLogConfigList = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<GoogleIamV1AuditLogConfigList>;
-
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -3640,17 +2432,7 @@ export interface GoogleIamV1AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: GoogleIamV1AuditLogConfigList;
 }
-const GoogleIamV1AuditConfig = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<GoogleIamV1AuditConfig>;
-
 export type GoogleIamV1AuditConfigList = Array<GoogleIamV1AuditConfig>;
-const GoogleIamV1AuditConfigList = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<GoogleIamV1AuditConfigList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface GoogleIamV1Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -3662,61 +2444,34 @@ export interface GoogleIamV1Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
-const GoogleIamV1Policy = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<GoogleIamV1Policy>;
-
 export interface GetIamPolicyProjectsLocationsAuthorizationPoliciesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<GetIamPolicyProjectsLocationsAuthorizationPoliciesRequest>;
-
 export interface GetIamPolicyProjectsLocationsAuthzPoliciesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<GetIamPolicyProjectsLocationsAuthzPoliciesRequest>;
-
 export interface GetIamPolicyProjectsLocationsClientTlsPoliciesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<GetIamPolicyProjectsLocationsClientTlsPoliciesRequest>;
-
 export interface GetIamPolicyProjectsLocationsServerTlsPoliciesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<GetIamPolicyProjectsLocationsServerTlsPoliciesRequest>;
-
 export interface GetOrganizationsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetOrganizationsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<GetOrganizationsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
@@ -3730,325 +2485,146 @@ export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
-const Location = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<Location>;
-
 export interface GetOrganizationsLocationsAddressGroupsRequest {
   /** Required. A name of the AddressGroup to get. Must be in the format `projects/*\/locations/{location}/addressGroups/*`. */
   name: string;
 }
-const GetOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<GetOrganizationsLocationsAddressGroupsRequest>;
-
 export interface GetOrganizationsLocationsFirewallEndpointsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-const GetOrganizationsLocationsFirewallEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<GetOrganizationsLocationsFirewallEndpointsRequest>;
-
 export interface GetOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest {
   /** Required. Name of the WildfireVerdictChangeRequest to retrieve. Format: organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id} Where {wildfire_verdict_change_request_id} is the ID in the format: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$ */
   name: string;
 }
-const GetOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
-  /*@__PURE__*/ __L.at(
-    __c30,
-    7,
-  ) as any as S.Schema<GetOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest>;
-
 export interface GetOrganizationsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>;
-
 export interface GetOrganizationsLocationsSecurityProfileGroupsRequest {
   /** Required. A name of the SecurityProfileGroup to get. Must be in the format `projects|organizations/*\/locations/{location}/securityProfileGroups/{security_profile_group}`. */
   name: string;
 }
-const GetOrganizationsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<GetOrganizationsLocationsSecurityProfileGroupsRequest>;
-
 export interface GetOrganizationsLocationsSecurityProfilesRequest {
   /** Required. A name of the SecurityProfile to get. Must be in the format `projects|organizations/*\/locations/{location}/securityProfiles/{security_profile_id}`. */
   name: string;
 }
-const GetOrganizationsLocationsSecurityProfilesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<GetOrganizationsLocationsSecurityProfilesRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 export interface GetProjectsLocationsAddressGroupsRequest {
   /** Required. A name of the AddressGroup to get. Must be in the format `projects/*\/locations/{location}/addressGroups/*`. */
   name: string;
 }
-const GetProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<GetProjectsLocationsAddressGroupsRequest>;
-
 export interface GetProjectsLocationsAuthorizationPoliciesRequest {
   /** Required. A name of the AuthorizationPolicy to get. Must be in the format `projects/{project}/locations/{location}/authorizationPolicies/*`. */
   name: string;
 }
-const GetProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<GetProjectsLocationsAuthorizationPoliciesRequest>;
-
 export interface GetProjectsLocationsAuthzPoliciesRequest {
   /** Required. A name of the `AuthzPolicy` resource to get. Must be in the format `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`. */
   name: string;
 }
-const GetProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<GetProjectsLocationsAuthzPoliciesRequest>;
-
 export interface GetProjectsLocationsBackendAuthenticationConfigsRequest {
   /** Required. A name of the BackendAuthenticationConfig to get. Must be in the format `projects/*\/locations/{location}/backendAuthenticationConfigs/*`. */
   name: string;
 }
-const GetProjectsLocationsBackendAuthenticationConfigsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<GetProjectsLocationsBackendAuthenticationConfigsRequest>;
-
 export interface GetProjectsLocationsClientTlsPoliciesRequest {
   /** Required. A name of the ClientTlsPolicy to get. Must be in the format `projects/*\/locations/{location}/clientTlsPolicies/*`. */
   name: string;
 }
-const GetProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<GetProjectsLocationsClientTlsPoliciesRequest>;
-
 export interface GetProjectsLocationsDnsThreatDetectorsRequest {
   /** Required. Name of the DnsThreatDetector resource. */
   name: string;
 }
-const GetProjectsLocationsDnsThreatDetectorsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<GetProjectsLocationsDnsThreatDetectorsRequest>;
-
 export interface GetProjectsLocationsFirewallEndpointAssociationsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-const GetProjectsLocationsFirewallEndpointAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<GetProjectsLocationsFirewallEndpointAssociationsRequest>;
-
 export interface GetProjectsLocationsFirewallEndpointsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-const GetProjectsLocationsFirewallEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<GetProjectsLocationsFirewallEndpointsRequest>;
-
 export interface GetProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest {
   /** Required. Name of the WildfireVerdictChangeRequest to retrieve. Format: organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint}/wildfireVerdictChangeRequests/{wildfire_verdict_change_request_id} Where {wildfire_verdict_change_request_id} is the ID in the format: ^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$ */
   name: string;
 }
-const GetProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
-  /*@__PURE__*/ __L.at(
-    __c32,
-    4,
-  ) as any as S.Schema<GetProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest>;
-
 export interface GetProjectsLocationsGatewaySecurityPoliciesRequest {
   /** Required. A name of the GatewaySecurityPolicy to get. Must be in the format `projects/{project}/locations/{location}/gatewaySecurityPolicies/*`. */
   name: string;
 }
-const GetProjectsLocationsGatewaySecurityPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<GetProjectsLocationsGatewaySecurityPoliciesRequest>;
-
 export interface GetProjectsLocationsGatewaySecurityPoliciesRulesRequest {
   /** Required. The name of the GatewaySecurityPolicyRule to retrieve. Format: projects/{project}/location/{location}/gatewaySecurityPolicies/*\/rules/* */
   name: string;
 }
-const GetProjectsLocationsGatewaySecurityPoliciesRulesRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<GetProjectsLocationsGatewaySecurityPoliciesRulesRequest>;
-
 export interface GetProjectsLocationsInterceptDeploymentGroupsRequest {
   /** Required. The name of the deployment group to retrieve. Format: projects/{project}/locations/{location}/interceptDeploymentGroups/{intercept_deployment_group} */
   name: string;
 }
-const GetProjectsLocationsInterceptDeploymentGroupsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<GetProjectsLocationsInterceptDeploymentGroupsRequest>;
-
 export interface GetProjectsLocationsInterceptDeploymentsRequest {
   /** Required. The name of the deployment to retrieve. Format: projects/{project}/locations/{location}/interceptDeployments/{intercept_deployment} */
   name: string;
 }
-const GetProjectsLocationsInterceptDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<GetProjectsLocationsInterceptDeploymentsRequest>;
-
 export interface GetProjectsLocationsInterceptEndpointGroupAssociationsRequest {
   /** Required. The name of the association to retrieve. Format: projects/{project}/locations/{location}/interceptEndpointGroupAssociations/{intercept_endpoint_group_association} */
   name: string;
 }
-const GetProjectsLocationsInterceptEndpointGroupAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<GetProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
-
 export interface GetProjectsLocationsInterceptEndpointGroupsRequest {
   /** Required. The name of the endpoint group to retrieve. Format: projects/{project}/locations/{location}/interceptEndpointGroups/{intercept_endpoint_group} */
   name: string;
 }
-const GetProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<GetProjectsLocationsInterceptEndpointGroupsRequest>;
-
 export interface GetProjectsLocationsMirroringDeploymentGroupsRequest {
   /** Required. The name of the deployment group to retrieve. Format: projects/{project}/locations/{location}/mirroringDeploymentGroups/{mirroring_deployment_group} */
   name: string;
 }
-const GetProjectsLocationsMirroringDeploymentGroupsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<GetProjectsLocationsMirroringDeploymentGroupsRequest>;
-
 export interface GetProjectsLocationsMirroringDeploymentsRequest {
   /** Required. The name of the deployment to retrieve. Format: projects/{project}/locations/{location}/mirroringDeployments/{mirroring_deployment} */
   name: string;
 }
-const GetProjectsLocationsMirroringDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<GetProjectsLocationsMirroringDeploymentsRequest>;
-
 export interface GetProjectsLocationsMirroringEndpointGroupAssociationsRequest {
   /** Required. The name of the association to retrieve. Format: projects/{project}/locations/{location}/mirroringEndpointGroupAssociations/{mirroring_endpoint_group_association} */
   name: string;
 }
-const GetProjectsLocationsMirroringEndpointGroupAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<GetProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
-
 export interface GetProjectsLocationsMirroringEndpointGroupsRequest {
   /** Required. The name of the endpoint group to retrieve. Format: projects/{project}/locations/{location}/mirroringEndpointGroups/{mirroring_endpoint_group} */
   name: string;
 }
-const GetProjectsLocationsMirroringEndpointGroupsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<GetProjectsLocationsMirroringEndpointGroupsRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsRateLimitPoliciesRequest {
   /** Required. Specifies the name of the resource. */
   name: string;
 }
-const GetProjectsLocationsRateLimitPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<GetProjectsLocationsRateLimitPoliciesRequest>;
-
 export interface GetProjectsLocationsSacAttachmentsRequest {
   /** Required. Name of the resource, in the form `projects/{project}/locations/{location}/sacAttachments/{sac_attachment}`. */
   name: string;
 }
-const GetProjectsLocationsSacAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<GetProjectsLocationsSacAttachmentsRequest>;
-
 export interface GetProjectsLocationsSacRealmsRequest {
   /** Required. Name of the resource, in the form `projects/{project}/locations/global/sacRealms/{sacRealm}`. */
   name: string;
 }
-const GetProjectsLocationsSacRealmsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<GetProjectsLocationsSacRealmsRequest>;
-
 export interface GetProjectsLocationsSecurityProfileGroupsRequest {
   /** Required. A name of the SecurityProfileGroup to get. Must be in the format `projects|organizations/*\/locations/{location}/securityProfileGroups/{security_profile_group}`. */
   name: string;
 }
-const GetProjectsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<GetProjectsLocationsSecurityProfileGroupsRequest>;
-
 export interface GetProjectsLocationsSecurityProfilesRequest {
   /** Required. A name of the SecurityProfile to get. Must be in the format `projects|organizations/*\/locations/{location}/securityProfiles/{security_profile_id}`. */
   name: string;
 }
-const GetProjectsLocationsSecurityProfilesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<GetProjectsLocationsSecurityProfilesRequest>;
-
 export interface GetProjectsLocationsServerTlsPoliciesRequest {
   /** Required. A name of the ServerTlsPolicy to get. Must be in the format `projects/*\/locations/{location}/serverTlsPolicies/*`. */
   name: string;
 }
-const GetProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<GetProjectsLocationsServerTlsPoliciesRequest>;
-
 export interface GetProjectsLocationsTlsInspectionPoliciesRequest {
   /** Required. A name of the TlsInspectionPolicy to get. Must be in the format `projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy}`. */
   name: string;
 }
-const GetProjectsLocationsTlsInspectionPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<GetProjectsLocationsTlsInspectionPoliciesRequest>;
-
 export interface GetProjectsLocationsUrlListsRequest {
   /** Required. A name of the UrlList to get. Must be in the format `projects/*\/locations/{location}/urlLists/*`. */
   name: string;
 }
-const GetProjectsLocationsUrlListsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<GetProjectsLocationsUrlListsRequest>;
-
 export interface ListOrganizationsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
@@ -4061,14 +2637,7 @@ export interface ListOrganizationsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-const ListOrganizationsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<ListOrganizationsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c35, 1) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -4076,11 +2645,6 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListOrganizationsLocationsAddressGroupsRequest {
   /** The value returned by the last `ListAddressGroupsResponse` Indicates that this is a continuation of a prior `ListAddressGroups` call, and that the system should return the next page of data. */
   pageToken?: string;
@@ -4091,14 +2655,7 @@ export interface ListOrganizationsLocationsAddressGroupsRequest {
   /** Required. The project and location from which the AddressGroups should be listed, specified in the format `projects/*\/locations/{location}`. */
   parent: string;
 }
-const ListOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<ListOrganizationsLocationsAddressGroupsRequest>;
-
 export type AddressGroupList = Array<AddressGroup>;
-const AddressGroupList = /*@__PURE__*/ __L.at(__c35, 4) as any as S.Schema<AddressGroupList>;
-
 /** Response returned by the ListAddressGroups method. */
 export interface ListAddressGroupsResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
@@ -4108,11 +2665,6 @@ export interface ListAddressGroupsResponse {
   /** List of AddressGroups resources. */
   addressGroups?: AddressGroupList;
 }
-const ListAddressGroupsResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<ListAddressGroupsResponse>;
-
 export interface ListOrganizationsLocationsFirewallEndpointsRequest {
   /** Optional. Filtering results */
   filter?: string;
@@ -4125,17 +2677,7 @@ export interface ListOrganizationsLocationsFirewallEndpointsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
 }
-const ListOrganizationsLocationsFirewallEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<ListOrganizationsLocationsFirewallEndpointsRequest>;
-
 export type FirewallEndpointList = Array<FirewallEndpoint>;
-const FirewallEndpointList = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<FirewallEndpointList>;
-
 /** Message for response to listing Endpoints */
 export interface ListFirewallEndpointsResponse {
   /** A token identifying a page of results the server should return. */
@@ -4145,11 +2687,6 @@ export interface ListFirewallEndpointsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListFirewallEndpointsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<ListFirewallEndpointsResponse>;
-
 export interface ListOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
@@ -4160,18 +2697,7 @@ export interface ListOrganizationsLocationsFirewallEndpointsWildfireVerdictChang
   /** Optional. Filter expression to filter the results. See AIP-160 for filtering syntax. Supported fields are: - `sha256` (string, equality only, e.g. `sha256 = "..."`) - `state` (enum, equality only, e.g. `state = "ACTIVE"`) - `create_time` (timestamp, comparisons, e.g. `create_time > "2026-01-01T00:00:00Z"`) */
   filter?: string;
 }
-const ListOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
-  /*@__PURE__*/ __L.at(
-    __c36,
-    1,
-  ) as any as S.Schema<ListOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest>;
-
 export type WildfireVerdictChangeRequestList = Array<WildfireVerdictChangeRequest>;
-const WildfireVerdictChangeRequestList = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<WildfireVerdictChangeRequestList>;
-
 /** Message for response to listing WildfireVerdictChangeRequests. */
 export interface ListWildfireVerdictChangeRequestsResponse {
   /** Unordered list. Locations that could not be reached. */
@@ -4181,11 +2707,6 @@ export interface ListWildfireVerdictChangeRequestsResponse {
   /** The list of WildfireVerdictChangeRequests */
   wildfireVerdictChangeRequests?: WildfireVerdictChangeRequestList;
 }
-const ListWildfireVerdictChangeRequestsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<ListWildfireVerdictChangeRequestsResponse>;
-
 export interface ListOrganizationsLocationsOperationsRequest {
   /** The standard list page token. */
   pageToken?: string;
@@ -4198,14 +2719,7 @@ export interface ListOrganizationsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
 }
-const ListOrganizationsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c36, 5) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -4215,11 +2729,6 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListOrganizationsLocationsSecurityProfileGroupsRequest {
   /** Optional. Maximum number of SecurityProfileGroups to return per call. */
   pageSize?: number;
@@ -4228,17 +2737,7 @@ export interface ListOrganizationsLocationsSecurityProfileGroupsRequest {
   /** Optional. The value returned by the last `ListSecurityProfileGroupsResponse` Indicates that this is a continuation of a prior `ListSecurityProfileGroups` call, and that the system should return the next page of data. */
   pageToken?: string;
 }
-const ListOrganizationsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<ListOrganizationsLocationsSecurityProfileGroupsRequest>;
-
 export type SecurityProfileGroupList = Array<SecurityProfileGroup>;
-const SecurityProfileGroupList = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<SecurityProfileGroupList>;
-
 /** Response returned by the ListSecurityProfileGroups method. */
 export interface ListSecurityProfileGroupsResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
@@ -4246,11 +2745,6 @@ export interface ListSecurityProfileGroupsResponse {
   /** List of SecurityProfileGroups resources. */
   securityProfileGroups?: SecurityProfileGroupList;
 }
-const ListSecurityProfileGroupsResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<ListSecurityProfileGroupsResponse>;
-
 export interface ListOrganizationsLocationsSecurityProfilesRequest {
   /** Optional. Maximum number of SecurityProfiles to return per call. */
   pageSize?: number;
@@ -4259,14 +2753,7 @@ export interface ListOrganizationsLocationsSecurityProfilesRequest {
   /** Required. The project or organization and location from which the SecurityProfiles should be listed, specified in the format `projects|organizations/*\/locations/{location}`. */
   parent: string;
 }
-const ListOrganizationsLocationsSecurityProfilesRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<ListOrganizationsLocationsSecurityProfilesRequest>;
-
 export type SecurityProfileList = Array<SecurityProfile>;
-const SecurityProfileList = /*@__PURE__*/ __L.at(__c37, 3) as any as S.Schema<SecurityProfileList>;
-
 /** Response returned by the ListSecurityProfiles method. */
 export interface ListSecurityProfilesResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
@@ -4274,11 +2761,6 @@ export interface ListSecurityProfilesResponse {
   /** List of SecurityProfile resources. */
   securityProfiles?: SecurityProfileList;
 }
-const ListSecurityProfilesResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<ListSecurityProfilesResponse>;
-
 export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
@@ -4291,11 +2773,6 @@ export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export interface ListProjectsLocationsAddressGroupsRequest {
   /** Optional. If true, allow partial responses for multi-regional Aggregated List requests. */
   returnPartialSuccess?: boolean;
@@ -4306,11 +2783,6 @@ export interface ListProjectsLocationsAddressGroupsRequest {
   /** Maximum number of AddressGroups to return per call. */
   pageSize?: number;
 }
-const ListProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<ListProjectsLocationsAddressGroupsRequest>;
-
 export interface ListProjectsLocationsAuthorizationPoliciesRequest {
   /** The value returned by the last `ListAuthorizationPoliciesResponse` Indicates that this is a continuation of a prior `ListAuthorizationPolicies` call, and that the system should return the next page of data. */
   pageToken?: string;
@@ -4319,17 +2791,7 @@ export interface ListProjectsLocationsAuthorizationPoliciesRequest {
   /** Required. The project and location from which the AuthorizationPolicies should be listed, specified in the format `projects/{project}/locations/{location}`. */
   parent: string;
 }
-const ListProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<ListProjectsLocationsAuthorizationPoliciesRequest>;
-
 export type AuthorizationPolicyList = Array<AuthorizationPolicy>;
-const AuthorizationPolicyList = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<AuthorizationPolicyList>;
-
 /** Response returned by the ListAuthorizationPolicies method. */
 export interface ListAuthorizationPoliciesResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
@@ -4337,11 +2799,6 @@ export interface ListAuthorizationPoliciesResponse {
   /** List of AuthorizationPolicies resources. */
   authorizationPolicies?: AuthorizationPolicyList;
 }
-const ListAuthorizationPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<ListAuthorizationPoliciesResponse>;
-
 export interface ListProjectsLocationsAuthzPoliciesRequest {
   /** Optional. Requested page size. The server might return fewer items than requested. If unspecified, the server picks an appropriate default. */
   pageSize?: number;
@@ -4354,14 +2811,7 @@ export interface ListProjectsLocationsAuthzPoliciesRequest {
   /** Optional. A token identifying a page of results that the server returns. */
   pageToken?: string;
 }
-const ListProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<ListProjectsLocationsAuthzPoliciesRequest>;
-
 export type AuthzPolicyList = Array<AuthzPolicy>;
-const AuthzPolicyList = /*@__PURE__*/ __L.at(__c38, 3) as any as S.Schema<AuthzPolicyList>;
-
 /** Message for response to listing `AuthzPolicy` resources. */
 export interface ListAuthzPoliciesResponse {
   /** A token identifying a page of results that the server returns. */
@@ -4371,11 +2821,6 @@ export interface ListAuthzPoliciesResponse {
   /** The list of `AuthzPolicy` resources. */
   authzPolicies?: AuthzPolicyList;
 }
-const ListAuthzPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<ListAuthzPoliciesResponse>;
-
 export interface ListProjectsLocationsBackendAuthenticationConfigsRequest {
   /** The value returned by the last `ListBackendAuthenticationConfigsResponse` Indicates that this is a continuation of a prior `ListBackendAuthenticationConfigs` call, and that the system should return the next page of data. */
   pageToken?: string;
@@ -4384,17 +2829,7 @@ export interface ListProjectsLocationsBackendAuthenticationConfigsRequest {
   /** Required. The project and location from which the BackendAuthenticationConfigs should be listed, specified in the format `projects/*\/locations/{location}`. */
   parent: string;
 }
-const ListProjectsLocationsBackendAuthenticationConfigsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<ListProjectsLocationsBackendAuthenticationConfigsRequest>;
-
 export type BackendAuthenticationConfigList = Array<BackendAuthenticationConfig>;
-const BackendAuthenticationConfigList = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<BackendAuthenticationConfigList>;
-
 /** Response returned by the ListBackendAuthenticationConfigs method. */
 export interface ListBackendAuthenticationConfigsResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
@@ -4404,11 +2839,6 @@ export interface ListBackendAuthenticationConfigsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListBackendAuthenticationConfigsResponse = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<ListBackendAuthenticationConfigsResponse>;
-
 export interface ListProjectsLocationsClientTlsPoliciesRequest {
   /** Maximum number of ClientTlsPolicies to return per call. */
   pageSize?: number;
@@ -4417,14 +2847,7 @@ export interface ListProjectsLocationsClientTlsPoliciesRequest {
   /** Required. The project and location from which the ClientTlsPolicies should be listed, specified in the format `projects/*\/locations/{location}`. */
   parent: string;
 }
-const ListProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<ListProjectsLocationsClientTlsPoliciesRequest>;
-
 export type ClientTlsPolicyList = Array<ClientTlsPolicy>;
-const ClientTlsPolicyList = /*@__PURE__*/ __L.at(__c39, 1) as any as S.Schema<ClientTlsPolicyList>;
-
 /** Response returned by the ListClientTlsPolicies method. */
 export interface ListClientTlsPoliciesResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
@@ -4432,11 +2855,6 @@ export interface ListClientTlsPoliciesResponse {
   /** List of ClientTlsPolicy resources. */
   clientTlsPolicies?: ClientTlsPolicyList;
 }
-const ListClientTlsPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<ListClientTlsPoliciesResponse>;
-
 export interface ListProjectsLocationsDnsThreatDetectorsRequest {
   /** Optional. The requested page size. The server may return fewer items than requested. If unspecified, the server picks an appropriate default. */
   pageSize?: number;
@@ -4445,17 +2863,7 @@ export interface ListProjectsLocationsDnsThreatDetectorsRequest {
   /** Optional. A page token received from a previous `ListDnsThreatDetectorsRequest` call. Provide this to retrieve the subsequent page. */
   pageToken?: string;
 }
-const ListProjectsLocationsDnsThreatDetectorsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<ListProjectsLocationsDnsThreatDetectorsRequest>;
-
 export type DnsThreatDetectorList = Array<DnsThreatDetector>;
-const DnsThreatDetectorList = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<DnsThreatDetectorList>;
-
 /** The response message to requesting a list of DnsThreatDetectors. */
 export interface ListDnsThreatDetectorsResponse {
   /** A token, which can be sent as `page_token`, to retrieve the next page. */
@@ -4465,11 +2873,6 @@ export interface ListDnsThreatDetectorsResponse {
   /** Unordered list. Unreachable `DnsThreatDetector` resources. */
   unreachable?: StringList;
 }
-const ListDnsThreatDetectorsResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<ListDnsThreatDetectorsResponse>;
-
 export interface ListProjectsLocationsFirewallEndpointAssociationsRequest {
   /** Optional. Filtering results */
   filter?: string;
@@ -4482,17 +2885,7 @@ export interface ListProjectsLocationsFirewallEndpointAssociationsRequest {
   /** Required. Parent value for ListAssociationsRequest */
   parent: string;
 }
-const ListProjectsLocationsFirewallEndpointAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<ListProjectsLocationsFirewallEndpointAssociationsRequest>;
-
 export type FirewallEndpointAssociationList = Array<FirewallEndpointAssociation>;
-const FirewallEndpointAssociationList = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<FirewallEndpointAssociationList>;
-
 /** Message for response to listing Associations */
 export interface ListFirewallEndpointAssociationsResponse {
   /** Locations that could not be reached. */
@@ -4502,11 +2895,6 @@ export interface ListFirewallEndpointAssociationsResponse {
   /** The list of Association */
   firewallEndpointAssociations?: FirewallEndpointAssociationList;
 }
-const ListFirewallEndpointAssociationsResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<ListFirewallEndpointAssociationsResponse>;
-
 export interface ListProjectsLocationsFirewallEndpointsRequest {
   /** Required. Parent value for ListEndpointsRequest */
   parent: string;
@@ -4519,11 +2907,6 @@ export interface ListProjectsLocationsFirewallEndpointsRequest {
   /** Optional. Filtering results */
   filter?: string;
 }
-const ListProjectsLocationsFirewallEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<ListProjectsLocationsFirewallEndpointsRequest>;
-
 export interface ListProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest {
   /** Required. Parent value for ListWildfireVerdictChangeRequestsRequest. The parent is a firewall endpoint resource. Format: organizations|projects/{project_or_organization}/locations/{location}/firewallEndpoints/{firewall_endpoint} */
   parent: string;
@@ -4534,12 +2917,6 @@ export interface ListProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequ
   /** Optional. Filter expression to filter the results. See AIP-160 for filtering syntax. Supported fields are: - `sha256` (string, equality only, e.g. `sha256 = "..."`) - `state` (enum, equality only, e.g. `state = "ACTIVE"`) - `create_time` (timestamp, comparisons, e.g. `create_time > "2026-01-01T00:00:00Z"`) */
   filter?: string;
 }
-const ListProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest =
-  /*@__PURE__*/ __L.at(
-    __c40,
-    2,
-  ) as any as S.Schema<ListProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest>;
-
 export interface ListProjectsLocationsGatewaySecurityPoliciesRequest {
   /** Maximum number of GatewaySecurityPolicies to return per call. */
   pageSize?: number;
@@ -4548,17 +2925,7 @@ export interface ListProjectsLocationsGatewaySecurityPoliciesRequest {
   /** Required. The project and location from which the GatewaySecurityPolicies should be listed, specified in the format `projects/{project}/locations/{location}`. */
   parent: string;
 }
-const ListProjectsLocationsGatewaySecurityPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<ListProjectsLocationsGatewaySecurityPoliciesRequest>;
-
 export type GatewaySecurityPolicyList = Array<GatewaySecurityPolicy>;
-const GatewaySecurityPolicyList = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<GatewaySecurityPolicyList>;
-
 /** Response returned by the ListGatewaySecurityPolicies method. */
 export interface ListGatewaySecurityPoliciesResponse {
   /** If there might be more results than those appearing in this response, then 'next_page_token' is included. To get the next set of results, call this method again using the value of 'next_page_token' as 'page_token'. */
@@ -4568,11 +2935,6 @@ export interface ListGatewaySecurityPoliciesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListGatewaySecurityPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<ListGatewaySecurityPoliciesResponse>;
-
 export interface ListProjectsLocationsGatewaySecurityPoliciesRulesRequest {
   /** Required. The project, location and GatewaySecurityPolicy from which the GatewaySecurityPolicyRules should be listed, specified in the format `projects/{project}/locations/{location}/gatewaySecurityPolicies/{gatewaySecurityPolicy}`. */
   parent: string;
@@ -4581,17 +2943,7 @@ export interface ListProjectsLocationsGatewaySecurityPoliciesRulesRequest {
   /** The value returned by the last 'ListGatewaySecurityPolicyRulesResponse' Indicates that this is a continuation of a prior 'ListGatewaySecurityPolicyRules' call, and that the system should return the next page of data. */
   pageToken?: string;
 }
-const ListProjectsLocationsGatewaySecurityPoliciesRulesRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<ListProjectsLocationsGatewaySecurityPoliciesRulesRequest>;
-
 export type GatewaySecurityPolicyRuleList = Array<GatewaySecurityPolicyRule>;
-const GatewaySecurityPolicyRuleList = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<GatewaySecurityPolicyRuleList>;
-
 /** Response returned by the ListGatewaySecurityPolicyRules method. */
 export interface ListGatewaySecurityPolicyRulesResponse {
   /** List of GatewaySecurityPolicyRule resources. */
@@ -4601,11 +2953,6 @@ export interface ListGatewaySecurityPolicyRulesResponse {
   /** If there might be more results than those appearing in this response, then 'next_page_token' is included. To get the next set of results, call this method again using the value of 'next_page_token' as 'page_token'. */
   nextPageToken?: string;
 }
-const ListGatewaySecurityPolicyRulesResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<ListGatewaySecurityPolicyRulesResponse>;
-
 export interface ListProjectsLocationsInterceptDeploymentGroupsRequest {
   /** Optional. A page token, received from a previous `ListInterceptDeploymentGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListInterceptDeploymentGroups` must match the call that provided the page token. See https://google.aip.dev/158 for more details. */
   pageToken?: string;
@@ -4618,17 +2965,7 @@ export interface ListProjectsLocationsInterceptDeploymentGroupsRequest {
   /** Optional. Sort expression. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
 }
-const ListProjectsLocationsInterceptDeploymentGroupsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<ListProjectsLocationsInterceptDeploymentGroupsRequest>;
-
 export type InterceptDeploymentGroupList = Array<InterceptDeploymentGroup>;
-const InterceptDeploymentGroupList = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<InterceptDeploymentGroupList>;
-
 /** Response message for ListInterceptDeploymentGroups. */
 export interface ListInterceptDeploymentGroupsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. See https://google.aip.dev/158 for more details. */
@@ -4636,11 +2973,6 @@ export interface ListInterceptDeploymentGroupsResponse {
   /** The deployment groups from the specified parent. */
   interceptDeploymentGroups?: InterceptDeploymentGroupList;
 }
-const ListInterceptDeploymentGroupsResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<ListInterceptDeploymentGroupsResponse>;
-
 export interface ListProjectsLocationsInterceptDeploymentsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. See https://google.aip.dev/158 for more details. */
   pageSize?: number;
@@ -4653,17 +2985,7 @@ export interface ListProjectsLocationsInterceptDeploymentsRequest {
   /** Optional. A page token, received from a previous `ListInterceptDeployments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListInterceptDeployments` must match the call that provided the page token. See https://google.aip.dev/158 for more details. */
   pageToken?: string;
 }
-const ListProjectsLocationsInterceptDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<ListProjectsLocationsInterceptDeploymentsRequest>;
-
 export type InterceptDeploymentList = Array<InterceptDeployment>;
-const InterceptDeploymentList = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<InterceptDeploymentList>;
-
 /** Response message for ListInterceptDeployments. */
 export interface ListInterceptDeploymentsResponse {
   /** The deployments from the specified parent. */
@@ -4673,11 +2995,6 @@ export interface ListInterceptDeploymentsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. See https://google.aip.dev/158 for more details. */
   nextPageToken?: string;
 }
-const ListInterceptDeploymentsResponse = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<ListInterceptDeploymentsResponse>;
-
 export interface ListProjectsLocationsInterceptEndpointGroupAssociationsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. See https://google.aip.dev/158 for more details. */
   pageSize?: number;
@@ -4690,17 +3007,7 @@ export interface ListProjectsLocationsInterceptEndpointGroupAssociationsRequest 
   /** Optional. A page token, received from a previous `ListInterceptEndpointGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListInterceptEndpointGroups` must match the call that provided the page token. See https://google.aip.dev/158 for more details. */
   pageToken?: string;
 }
-const ListProjectsLocationsInterceptEndpointGroupAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<ListProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
-
 export type InterceptEndpointGroupAssociationList = Array<InterceptEndpointGroupAssociation>;
-const InterceptEndpointGroupAssociationList = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<InterceptEndpointGroupAssociationList>;
-
 /** Response message for ListInterceptEndpointGroupAssociations. */
 export interface ListInterceptEndpointGroupAssociationsResponse {
   /** The associations from the specified parent. */
@@ -4708,11 +3015,6 @@ export interface ListInterceptEndpointGroupAssociationsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. See https://google.aip.dev/158 for more details. */
   nextPageToken?: string;
 }
-const ListInterceptEndpointGroupAssociationsResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<ListInterceptEndpointGroupAssociationsResponse>;
-
 export interface ListProjectsLocationsInterceptEndpointGroupsRequest {
   /** Optional. A page token, received from a previous `ListInterceptEndpointGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListInterceptEndpointGroups` must match the call that provided the page token. See https://google.aip.dev/158 for more details. */
   pageToken?: string;
@@ -4725,17 +3027,7 @@ export interface ListProjectsLocationsInterceptEndpointGroupsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. See https://google.aip.dev/158 for more details. */
   pageSize?: number;
 }
-const ListProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<ListProjectsLocationsInterceptEndpointGroupsRequest>;
-
 export type InterceptEndpointGroupList = Array<InterceptEndpointGroup>;
-const InterceptEndpointGroupList = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<InterceptEndpointGroupList>;
-
 /** Response message for ListInterceptEndpointGroups. */
 export interface ListInterceptEndpointGroupsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. See https://google.aip.dev/158 for more details. */
@@ -4743,11 +3035,6 @@ export interface ListInterceptEndpointGroupsResponse {
   /** The endpoint groups from the specified parent. */
   interceptEndpointGroups?: InterceptEndpointGroupList;
 }
-const ListInterceptEndpointGroupsResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<ListInterceptEndpointGroupsResponse>;
-
 export interface ListProjectsLocationsMirroringDeploymentGroupsRequest {
   /** Optional. A page token, received from a previous `ListMirroringDeploymentGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMirroringDeploymentGroups` must match the call that provided the page token. See https://google.aip.dev/158 for more details. */
   pageToken?: string;
@@ -4760,17 +3047,7 @@ export interface ListProjectsLocationsMirroringDeploymentGroupsRequest {
   /** Required. The parent, which owns this collection of deployment groups. Example: `projects/123456789/locations/global`. See https://google.aip.dev/132 for more details. */
   parent: string;
 }
-const ListProjectsLocationsMirroringDeploymentGroupsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<ListProjectsLocationsMirroringDeploymentGroupsRequest>;
-
 export type MirroringDeploymentGroupList = Array<MirroringDeploymentGroup>;
-const MirroringDeploymentGroupList = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<MirroringDeploymentGroupList>;
-
 /** Response message for ListMirroringDeploymentGroups. */
 export interface ListMirroringDeploymentGroupsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. See https://google.aip.dev/158 for more details. */
@@ -4778,11 +3055,6 @@ export interface ListMirroringDeploymentGroupsResponse {
   /** The deployment groups from the specified parent. */
   mirroringDeploymentGroups?: MirroringDeploymentGroupList;
 }
-const ListMirroringDeploymentGroupsResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<ListMirroringDeploymentGroupsResponse>;
-
 export interface ListProjectsLocationsMirroringDeploymentsRequest {
   /** Optional. Filter expression. See https://google.aip.dev/160#filtering for more details. */
   filter?: string;
@@ -4795,17 +3067,7 @@ export interface ListProjectsLocationsMirroringDeploymentsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. See https://google.aip.dev/158 for more details. */
   pageSize?: number;
 }
-const ListProjectsLocationsMirroringDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<ListProjectsLocationsMirroringDeploymentsRequest>;
-
 export type MirroringDeploymentList = Array<MirroringDeployment>;
-const MirroringDeploymentList = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<MirroringDeploymentList>;
-
 /** Response message for ListMirroringDeployments. */
 export interface ListMirroringDeploymentsResponse {
   /** Unordered list. Locations that could not be reached. See https://google.aip.dev/217 for more details. */
@@ -4815,11 +3077,6 @@ export interface ListMirroringDeploymentsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. See https://google.aip.dev/158 for more details. */
   nextPageToken?: string;
 }
-const ListMirroringDeploymentsResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<ListMirroringDeploymentsResponse>;
-
 export interface ListProjectsLocationsMirroringEndpointGroupAssociationsRequest {
   /** Optional. Sort expression. See https://google.aip.dev/132#ordering for more details. */
   orderBy?: string;
@@ -4832,17 +3089,7 @@ export interface ListProjectsLocationsMirroringEndpointGroupAssociationsRequest 
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. See https://google.aip.dev/158 for more details. */
   pageSize?: number;
 }
-const ListProjectsLocationsMirroringEndpointGroupAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<ListProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
-
 export type MirroringEndpointGroupAssociationList = Array<MirroringEndpointGroupAssociation>;
-const MirroringEndpointGroupAssociationList = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<MirroringEndpointGroupAssociationList>;
-
 /** Response message for ListMirroringEndpointGroupAssociations. */
 export interface ListMirroringEndpointGroupAssociationsResponse {
   /** The associations from the specified parent. */
@@ -4850,11 +3097,6 @@ export interface ListMirroringEndpointGroupAssociationsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. See https://google.aip.dev/158 for more details. */
   nextPageToken?: string;
 }
-const ListMirroringEndpointGroupAssociationsResponse = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<ListMirroringEndpointGroupAssociationsResponse>;
-
 export interface ListProjectsLocationsMirroringEndpointGroupsRequest {
   /** Optional. A page token, received from a previous `ListMirroringEndpointGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMirroringEndpointGroups` must match the call that provided the page token. See https://google.aip.dev/158 for more details. */
   pageToken?: string;
@@ -4867,17 +3109,7 @@ export interface ListProjectsLocationsMirroringEndpointGroupsRequest {
   /** Optional. Filter expression. See https://google.aip.dev/160#filtering for more details. */
   filter?: string;
 }
-const ListProjectsLocationsMirroringEndpointGroupsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<ListProjectsLocationsMirroringEndpointGroupsRequest>;
-
 export type MirroringEndpointGroupList = Array<MirroringEndpointGroup>;
-const MirroringEndpointGroupList = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<MirroringEndpointGroupList>;
-
 /** Response message for ListMirroringEndpointGroups. */
 export interface ListMirroringEndpointGroupsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. See https://google.aip.dev/158 for more details. */
@@ -4885,11 +3117,6 @@ export interface ListMirroringEndpointGroupsResponse {
   /** The endpoint groups from the specified parent. */
   mirroringEndpointGroups?: MirroringEndpointGroupList;
 }
-const ListMirroringEndpointGroupsResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<ListMirroringEndpointGroupsResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -4902,11 +3129,6 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export interface ListProjectsLocationsRateLimitPoliciesRequest {
   /** Optional. Specifies the requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
@@ -4919,14 +3141,7 @@ export interface ListProjectsLocationsRateLimitPoliciesRequest {
   /** Optional. Identifies a token for a page of results the server should return. */
   pageToken?: string;
 }
-const ListProjectsLocationsRateLimitPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<ListProjectsLocationsRateLimitPoliciesRequest>;
-
 export type RateLimitPolicyList = Array<RateLimitPolicy>;
-const RateLimitPolicyList = /*@__PURE__*/ __L.at(__c44, 3) as any as S.Schema<RateLimitPolicyList>;
-
 /** Contains a response to listing `RateLimitPolicy` resources. */
 export interface ListRateLimitPoliciesResponse {
   /** Unordered list. Lists locations that could not be reached. */
@@ -4936,11 +3151,6 @@ export interface ListRateLimitPoliciesResponse {
   /** Identifies a token for a page of results the server should return. */
   nextPageToken?: string;
 }
-const ListRateLimitPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<ListRateLimitPoliciesResponse>;
-
 export interface ListProjectsLocationsSacAttachmentsRequest {
   /** Optional. An expression that filters the list of results. */
   filter?: string;
@@ -4953,14 +3163,7 @@ export interface ListProjectsLocationsSacAttachmentsRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-const ListProjectsLocationsSacAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<ListProjectsLocationsSacAttachmentsRequest>;
-
 export type SACAttachmentList = Array<SACAttachment>;
-const SACAttachmentList = /*@__PURE__*/ __L.at(__c44, 6) as any as S.Schema<SACAttachmentList>;
-
 /** Response for `ListSACAttachments` method. */
 export interface ListSACAttachmentsResponse {
   /** Locations that could not be reached. */
@@ -4970,11 +3173,6 @@ export interface ListSACAttachmentsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-const ListSACAttachmentsResponse = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<ListSACAttachmentsResponse>;
-
 export interface ListProjectsLocationsSacRealmsRequest {
   /** Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. */
   pageSize?: number;
@@ -4987,14 +3185,7 @@ export interface ListProjectsLocationsSacRealmsRequest {
   /** Optional. An expression that filters the list of results. */
   filter?: string;
 }
-const ListProjectsLocationsSacRealmsRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<ListProjectsLocationsSacRealmsRequest>;
-
 export type SACRealmList = Array<SACRealm>;
-const SACRealmList = /*@__PURE__*/ __L.at(__c45, 1) as any as S.Schema<SACRealmList>;
-
 /** Response for `ListSACRealms` method. */
 export interface ListSACRealmsResponse {
   /** The list of SACRealms. */
@@ -5004,11 +3195,6 @@ export interface ListSACRealmsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListSACRealmsResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<ListSACRealmsResponse>;
-
 export interface ListProjectsLocationsSecurityProfileGroupsRequest {
   /** Optional. Maximum number of SecurityProfileGroups to return per call. */
   pageSize?: number;
@@ -5017,11 +3203,6 @@ export interface ListProjectsLocationsSecurityProfileGroupsRequest {
   /** Required. The project or organization and location from which the SecurityProfileGroups should be listed, specified in the format `projects|organizations/*\/locations/{location}`. */
   parent: string;
 }
-const ListProjectsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<ListProjectsLocationsSecurityProfileGroupsRequest>;
-
 export interface ListProjectsLocationsSecurityProfilesRequest {
   /** Optional. The value returned by the last `ListSecurityProfilesResponse` Indicates that this is a continuation of a prior `ListSecurityProfiles` call, and that the system should return the next page of data. */
   pageToken?: string;
@@ -5030,11 +3211,6 @@ export interface ListProjectsLocationsSecurityProfilesRequest {
   /** Required. The project or organization and location from which the SecurityProfiles should be listed, specified in the format `projects|organizations/*\/locations/{location}`. */
   parent: string;
 }
-const ListProjectsLocationsSecurityProfilesRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<ListProjectsLocationsSecurityProfilesRequest>;
-
 export interface ListProjectsLocationsServerTlsPoliciesRequest {
   /** Maximum number of ServerTlsPolicies to return per call. */
   pageSize?: number;
@@ -5045,14 +3221,7 @@ export interface ListProjectsLocationsServerTlsPoliciesRequest {
   /** Optional. Setting this field to `true` will opt the request into returning the resources that are reachable, and into including the names of those that were unreachable in the [ListServerTlsPoliciesResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. */
   returnPartialSuccess?: boolean;
 }
-const ListProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<ListProjectsLocationsServerTlsPoliciesRequest>;
-
 export type ServerTlsPolicyList = Array<ServerTlsPolicy>;
-const ServerTlsPolicyList = /*@__PURE__*/ __L.at(__c45, 6) as any as S.Schema<ServerTlsPolicyList>;
-
 /** Response returned by the ListServerTlsPolicies method. */
 export interface ListServerTlsPoliciesResponse {
   /** List of ServerTlsPolicy resources. */
@@ -5062,11 +3231,6 @@ export interface ListServerTlsPoliciesResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
-const ListServerTlsPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<ListServerTlsPoliciesResponse>;
-
 export interface ListProjectsLocationsTlsInspectionPoliciesRequest {
   /** Required. The project and location from which the TlsInspectionPolicies should be listed, specified in the format `projects/{project}/locations/{location}`. */
   parent: string;
@@ -5075,17 +3239,7 @@ export interface ListProjectsLocationsTlsInspectionPoliciesRequest {
   /** The value returned by the last 'ListTlsInspectionPoliciesResponse' Indicates that this is a continuation of a prior 'ListTlsInspectionPolicies' call, and that the system should return the next page of data. */
   pageToken?: string;
 }
-const ListProjectsLocationsTlsInspectionPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  0,
-) as any as S.Schema<ListProjectsLocationsTlsInspectionPoliciesRequest>;
-
 export type TlsInspectionPolicyList = Array<TlsInspectionPolicy>;
-const TlsInspectionPolicyList = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<TlsInspectionPolicyList>;
-
 /** Response returned by the ListTlsInspectionPolicies method. */
 export interface ListTlsInspectionPoliciesResponse {
   /** Locations that could not be reached. */
@@ -5095,11 +3249,6 @@ export interface ListTlsInspectionPoliciesResponse {
   /** If there might be more results than those appearing in this response, then 'next_page_token' is included. To get the next set of results, call this method again using the value of 'next_page_token' as 'page_token'. */
   nextPageToken?: string;
 }
-const ListTlsInspectionPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<ListTlsInspectionPoliciesResponse>;
-
 export interface ListProjectsLocationsUrlListsRequest {
   /** The value returned by the last `ListUrlListsResponse` Indicates that this is a continuation of a prior `ListUrlLists` call, and that the system should return the next page of data. */
   pageToken?: string;
@@ -5108,14 +3257,7 @@ export interface ListProjectsLocationsUrlListsRequest {
   /** Required. The project and location from which the UrlLists should be listed, specified in the format `projects/{project}/locations/{location}`. */
   parent: string;
 }
-const ListProjectsLocationsUrlListsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  3,
-) as any as S.Schema<ListProjectsLocationsUrlListsRequest>;
-
 export type UrlListList = Array<UrlList>;
-const UrlListList = /*@__PURE__*/ __L.at(__c46, 4) as any as S.Schema<UrlListList>;
-
 /** Response returned by the ListUrlLists method. */
 export interface ListUrlListsResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
@@ -5125,11 +3267,6 @@ export interface ListUrlListsResponse {
   /** List of UrlList resources. */
   urlLists?: UrlListList;
 }
-const ListUrlListsResponse = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<ListUrlListsResponse>;
-
 export interface ListReferencesOrganizationsLocationsAddressGroupsRequest {
   /** The maximum number of references to return. If unspecified, server will pick an appropriate default. Server may return fewer items than requested. A caller should only rely on response's next_page_token to determine if there are more AddressGroupUsers left to be queried. */
   pageSize?: number;
@@ -5138,11 +3275,6 @@ export interface ListReferencesOrganizationsLocationsAddressGroupsRequest {
   /** Required. A name of the AddressGroup to clone items to. Must be in the format `projects|organization/*\/locations/{location}/addressGroups/*`. */
   addressGroup: string;
 }
-const ListReferencesOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<ListReferencesOrganizationsLocationsAddressGroupsRequest>;
-
 /** The Reference of AddressGroup. */
 export interface ListAddressGroupReferencesResponseAddressGroupReference {
   /** Cloud Armor SecurityPolicy that is using the Address Group. */
@@ -5152,18 +3284,8 @@ export interface ListAddressGroupReferencesResponseAddressGroupReference {
   /** FirewallPolicy that is using the Address Group. */
   firewallPolicy?: string;
 }
-const ListAddressGroupReferencesResponseAddressGroupReference = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<ListAddressGroupReferencesResponseAddressGroupReference>;
-
 export type ListAddressGroupReferencesResponseAddressGroupReferenceList =
   Array<ListAddressGroupReferencesResponseAddressGroupReference>;
-const ListAddressGroupReferencesResponseAddressGroupReferenceList = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<ListAddressGroupReferencesResponseAddressGroupReferenceList>;
-
 /** Response of the ListAddressGroupReferences method. */
 export interface ListAddressGroupReferencesResponse {
   /** A list of references that matches the specified filter in the request. */
@@ -5171,11 +3293,6 @@ export interface ListAddressGroupReferencesResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
   nextPageToken?: string;
 }
-const ListAddressGroupReferencesResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<ListAddressGroupReferencesResponse>;
-
 export interface ListReferencesProjectsLocationsAddressGroupsRequest {
   /** The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
@@ -5184,11 +3301,6 @@ export interface ListReferencesProjectsLocationsAddressGroupsRequest {
   /** The maximum number of references to return. If unspecified, server will pick an appropriate default. Server may return fewer items than requested. A caller should only rely on response's next_page_token to determine if there are more AddressGroupUsers left to be queried. */
   pageSize?: number;
 }
-const ListReferencesProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<ListReferencesProjectsLocationsAddressGroupsRequest>;
-
 export interface PatchOrganizationsLocationsAddressGroupsRequest {
   /** Required. Name of the AddressGroup resource. It matches pattern `projects/*\/locations/{location}/addressGroups/`. */
   name: string;
@@ -5199,11 +3311,6 @@ export interface PatchOrganizationsLocationsAddressGroupsRequest {
   /** Request body */
   body?: AddressGroup;
 }
-const PatchOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  3,
-) as any as S.Schema<PatchOrganizationsLocationsAddressGroupsRequest>;
-
 export interface PatchOrganizationsLocationsFirewallEndpointsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the Endpoint resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -5214,11 +3321,6 @@ export interface PatchOrganizationsLocationsFirewallEndpointsRequest {
   /** Request body */
   body?: FirewallEndpoint;
 }
-const PatchOrganizationsLocationsFirewallEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<PatchOrganizationsLocationsFirewallEndpointsRequest>;
-
 export interface PatchOrganizationsLocationsSecurityProfileGroupsRequest {
   /** Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches pattern `projects|organizations/*\/locations/{location}/securityProfileGroups/{security_profile_group}`. */
   name: string;
@@ -5227,11 +3329,6 @@ export interface PatchOrganizationsLocationsSecurityProfileGroupsRequest {
   /** Request body */
   body?: SecurityProfileGroup;
 }
-const PatchOrganizationsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<PatchOrganizationsLocationsSecurityProfileGroupsRequest>;
-
 export interface PatchOrganizationsLocationsSecurityProfilesRequest {
   /** Immutable. Identifier. Name of the SecurityProfile resource. It matches pattern `projects|organizations/*\/locations/{location}/securityProfiles/{security_profile}`. */
   name: string;
@@ -5240,11 +3337,6 @@ export interface PatchOrganizationsLocationsSecurityProfilesRequest {
   /** Request body */
   body?: SecurityProfile;
 }
-const PatchOrganizationsLocationsSecurityProfilesRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<PatchOrganizationsLocationsSecurityProfilesRequest>;
-
 export interface PatchProjectsLocationsAddressGroupsRequest {
   /** Optional. Field mask is used to specify the fields to be overwritten in the AddressGroup resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -5255,11 +3347,6 @@ export interface PatchProjectsLocationsAddressGroupsRequest {
   /** Request body */
   body?: AddressGroup;
 }
-const PatchProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<PatchProjectsLocationsAddressGroupsRequest>;
-
 export interface PatchProjectsLocationsAuthorizationPoliciesRequest {
   /** Optional. Field mask is used to specify the fields to be overwritten in the AuthorizationPolicy resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -5268,11 +3355,6 @@ export interface PatchProjectsLocationsAuthorizationPoliciesRequest {
   /** Request body */
   body?: AuthorizationPolicy;
 }
-const PatchProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<PatchProjectsLocationsAuthorizationPoliciesRequest>;
-
 export interface PatchProjectsLocationsAuthzPoliciesRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
@@ -5283,11 +3365,6 @@ export interface PatchProjectsLocationsAuthzPoliciesRequest {
   /** Request body */
   body?: AuthzPolicy;
 }
-const PatchProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  1,
-) as any as S.Schema<PatchProjectsLocationsAuthzPoliciesRequest>;
-
 export interface PatchProjectsLocationsBackendAuthenticationConfigsRequest {
   /** Optional. Field mask is used to specify the fields to be overwritten in the BackendAuthenticationConfig resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -5296,11 +3373,6 @@ export interface PatchProjectsLocationsBackendAuthenticationConfigsRequest {
   /** Request body */
   body?: BackendAuthenticationConfig;
 }
-const PatchProjectsLocationsBackendAuthenticationConfigsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  2,
-) as any as S.Schema<PatchProjectsLocationsBackendAuthenticationConfigsRequest>;
-
 export interface PatchProjectsLocationsClientTlsPoliciesRequest {
   /** Required. Name of the ClientTlsPolicy resource. It matches the pattern `projects/{project}/locations/{location}/clientTlsPolicies/{client_tls_policy}` */
   name: string;
@@ -5309,11 +3381,6 @@ export interface PatchProjectsLocationsClientTlsPoliciesRequest {
   /** Request body */
   body?: ClientTlsPolicy;
 }
-const PatchProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<PatchProjectsLocationsClientTlsPoliciesRequest>;
-
 export interface PatchProjectsLocationsDnsThreatDetectorsRequest {
   /** Optional. The field mask is used to specify the fields to be overwritten in the DnsThreatDetector resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the mask is not provided then all fields present in the request will be overwritten. */
   updateMask?: string;
@@ -5322,11 +3389,6 @@ export interface PatchProjectsLocationsDnsThreatDetectorsRequest {
   /** Request body */
   body?: DnsThreatDetector;
 }
-const PatchProjectsLocationsDnsThreatDetectorsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<PatchProjectsLocationsDnsThreatDetectorsRequest>;
-
 export interface PatchProjectsLocationsFirewallEndpointAssociationsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the Association resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -5337,11 +3399,6 @@ export interface PatchProjectsLocationsFirewallEndpointAssociationsRequest {
   /** Request body */
   body?: FirewallEndpointAssociation;
 }
-const PatchProjectsLocationsFirewallEndpointAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<PatchProjectsLocationsFirewallEndpointAssociationsRequest>;
-
 export interface PatchProjectsLocationsFirewallEndpointsRequest {
   /** Immutable. Identifier. Name of resource. */
   name: string;
@@ -5352,11 +3409,6 @@ export interface PatchProjectsLocationsFirewallEndpointsRequest {
   /** Request body */
   body?: FirewallEndpoint;
 }
-const PatchProjectsLocationsFirewallEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  6,
-) as any as S.Schema<PatchProjectsLocationsFirewallEndpointsRequest>;
-
 export interface PatchProjectsLocationsGatewaySecurityPoliciesRequest {
   /** Required. Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy} gateway_security_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$). */
   name: string;
@@ -5365,11 +3417,6 @@ export interface PatchProjectsLocationsGatewaySecurityPoliciesRequest {
   /** Request body */
   body?: GatewaySecurityPolicy;
 }
-const PatchProjectsLocationsGatewaySecurityPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<PatchProjectsLocationsGatewaySecurityPoliciesRequest>;
-
 export interface PatchProjectsLocationsGatewaySecurityPoliciesRulesRequest {
   /** Optional. Field mask is used to specify the fields to be overwritten in the GatewaySecurityPolicy resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -5378,11 +3425,6 @@ export interface PatchProjectsLocationsGatewaySecurityPoliciesRulesRequest {
   /** Request body */
   body?: GatewaySecurityPolicyRule;
 }
-const PatchProjectsLocationsGatewaySecurityPoliciesRulesRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<PatchProjectsLocationsGatewaySecurityPoliciesRulesRequest>;
-
 export interface PatchProjectsLocationsInterceptDeploymentGroupsRequest {
   /** Optional. The list of fields to update. Fields are specified relative to the deployment group (e.g. `description`; *not* `intercept_deployment_group.description`). See https://google.aip.dev/161 for more details. */
   updateMask?: string;
@@ -5393,11 +3435,6 @@ export interface PatchProjectsLocationsInterceptDeploymentGroupsRequest {
   /** Request body */
   body?: InterceptDeploymentGroup;
 }
-const PatchProjectsLocationsInterceptDeploymentGroupsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<PatchProjectsLocationsInterceptDeploymentGroupsRequest>;
-
 export interface PatchProjectsLocationsInterceptDeploymentsRequest {
   /** Immutable. Identifier. The resource name of this deployment, for example: `projects/123456789/locations/us-central1-a/interceptDeployments/my-dep`. See https://google.aip.dev/122 for more details. */
   name: string;
@@ -5408,11 +3445,6 @@ export interface PatchProjectsLocationsInterceptDeploymentsRequest {
   /** Request body */
   body?: InterceptDeployment;
 }
-const PatchProjectsLocationsInterceptDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  2,
-) as any as S.Schema<PatchProjectsLocationsInterceptDeploymentsRequest>;
-
 export interface PatchProjectsLocationsInterceptEndpointGroupAssociationsRequest {
   /** Immutable. Identifier. The resource name of this endpoint group association, for example: `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`. See https://google.aip.dev/122 for more details. */
   name: string;
@@ -5423,11 +3455,6 @@ export interface PatchProjectsLocationsInterceptEndpointGroupAssociationsRequest
   /** Request body */
   body?: InterceptEndpointGroupAssociation;
 }
-const PatchProjectsLocationsInterceptEndpointGroupAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  3,
-) as any as S.Schema<PatchProjectsLocationsInterceptEndpointGroupAssociationsRequest>;
-
 export interface PatchProjectsLocationsInterceptEndpointGroupsRequest {
   /** Immutable. Identifier. The resource name of this endpoint group, for example: `projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See https://google.aip.dev/122 for more details. */
   name: string;
@@ -5438,11 +3465,6 @@ export interface PatchProjectsLocationsInterceptEndpointGroupsRequest {
   /** Request body */
   body?: InterceptEndpointGroup;
 }
-const PatchProjectsLocationsInterceptEndpointGroupsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<PatchProjectsLocationsInterceptEndpointGroupsRequest>;
-
 export interface PatchProjectsLocationsMirroringDeploymentGroupsRequest {
   /** Immutable. Identifier. The resource name of this deployment group, for example: `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See https://google.aip.dev/122 for more details. */
   name: string;
@@ -5453,11 +3475,6 @@ export interface PatchProjectsLocationsMirroringDeploymentGroupsRequest {
   /** Request body */
   body?: MirroringDeploymentGroup;
 }
-const PatchProjectsLocationsMirroringDeploymentGroupsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<PatchProjectsLocationsMirroringDeploymentGroupsRequest>;
-
 export interface PatchProjectsLocationsMirroringDeploymentsRequest {
   /** Immutable. Identifier. The resource name of this deployment, for example: `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`. See https://google.aip.dev/122 for more details. */
   name: string;
@@ -5468,11 +3485,6 @@ export interface PatchProjectsLocationsMirroringDeploymentsRequest {
   /** Request body */
   body?: MirroringDeployment;
 }
-const PatchProjectsLocationsMirroringDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<PatchProjectsLocationsMirroringDeploymentsRequest>;
-
 export interface PatchProjectsLocationsMirroringEndpointGroupAssociationsRequest {
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
@@ -5483,11 +3495,6 @@ export interface PatchProjectsLocationsMirroringEndpointGroupAssociationsRequest
   /** Request body */
   body?: MirroringEndpointGroupAssociation;
 }
-const PatchProjectsLocationsMirroringEndpointGroupAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<PatchProjectsLocationsMirroringEndpointGroupAssociationsRequest>;
-
 export interface PatchProjectsLocationsMirroringEndpointGroupsRequest {
   /** Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. */
   requestId?: string;
@@ -5498,11 +3505,6 @@ export interface PatchProjectsLocationsMirroringEndpointGroupsRequest {
   /** Request body */
   body?: MirroringEndpointGroup;
 }
-const PatchProjectsLocationsMirroringEndpointGroupsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  0,
-) as any as S.Schema<PatchProjectsLocationsMirroringEndpointGroupsRequest>;
-
 export interface PatchProjectsLocationsRateLimitPoliciesRequest {
   /** Identifier. Specifies the name of the `RateLimitPolicy` resource. */
   name: string;
@@ -5513,11 +3515,6 @@ export interface PatchProjectsLocationsRateLimitPoliciesRequest {
   /** Request body */
   body?: RateLimitPolicy;
 }
-const PatchProjectsLocationsRateLimitPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<PatchProjectsLocationsRateLimitPoliciesRequest>;
-
 export interface PatchProjectsLocationsSecurityProfileGroupsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the SecurityProfileGroup resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. */
   updateMask?: string;
@@ -5526,11 +3523,6 @@ export interface PatchProjectsLocationsSecurityProfileGroupsRequest {
   /** Request body */
   body?: SecurityProfileGroup;
 }
-const PatchProjectsLocationsSecurityProfileGroupsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  2,
-) as any as S.Schema<PatchProjectsLocationsSecurityProfileGroupsRequest>;
-
 export interface PatchProjectsLocationsSecurityProfilesRequest {
   /** Immutable. Identifier. Name of the SecurityProfile resource. It matches pattern `projects|organizations/*\/locations/{location}/securityProfiles/{security_profile}`. */
   name: string;
@@ -5539,11 +3531,6 @@ export interface PatchProjectsLocationsSecurityProfilesRequest {
   /** Request body */
   body?: SecurityProfile;
 }
-const PatchProjectsLocationsSecurityProfilesRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<PatchProjectsLocationsSecurityProfilesRequest>;
-
 export interface PatchProjectsLocationsServerTlsPoliciesRequest {
   /** Required. Name of the ServerTlsPolicy resource. It matches the pattern `projects/*\/locations/{location}/serverTlsPolicies/{server_tls_policy}` */
   name: string;
@@ -5552,11 +3539,6 @@ export interface PatchProjectsLocationsServerTlsPoliciesRequest {
   /** Request body */
   body?: ServerTlsPolicy;
 }
-const PatchProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<PatchProjectsLocationsServerTlsPoliciesRequest>;
-
 export interface PatchProjectsLocationsTlsInspectionPoliciesRequest {
   /** Optional. Field mask is used to specify the fields to be overwritten in the TlsInspectionPolicy resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. */
   updateMask?: string;
@@ -5565,11 +3547,6 @@ export interface PatchProjectsLocationsTlsInspectionPoliciesRequest {
   /** Request body */
   body?: TlsInspectionPolicy;
 }
-const PatchProjectsLocationsTlsInspectionPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  5,
-) as any as S.Schema<PatchProjectsLocationsTlsInspectionPoliciesRequest>;
-
 export interface PatchProjectsLocationsUrlListsRequest {
   /** Required. Name of the resource provided by the user. Name is of the form projects/{project}/locations/{location}/urlLists/{url_list} url_list should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$). */
   name: string;
@@ -5578,11 +3555,6 @@ export interface PatchProjectsLocationsUrlListsRequest {
   /** Request body */
   body?: UrlList;
 }
-const PatchProjectsLocationsUrlListsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<PatchProjectsLocationsUrlListsRequest>;
-
 /** Request used by the RemoveAddressGroupItems method. */
 export interface RemoveAddressGroupItemsRequest {
   /** Required. List of items to remove. */
@@ -5590,33 +3562,18 @@ export interface RemoveAddressGroupItemsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const RemoveAddressGroupItemsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<RemoveAddressGroupItemsRequest>;
-
 export interface RemoveItemsOrganizationsLocationsAddressGroupsRequest {
   /** Required. A name of the AddressGroup to remove items from. Must be in the format `projects|organization/*\/locations/{location}/addressGroups/*`. */
   addressGroup: string;
   /** Request body */
   body?: RemoveAddressGroupItemsRequest;
 }
-const RemoveItemsOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<RemoveItemsOrganizationsLocationsAddressGroupsRequest>;
-
 export interface RemoveItemsProjectsLocationsAddressGroupsRequest {
   /** Required. A name of the AddressGroup to remove items from. Must be in the format `projects|organization/*\/locations/{location}/addressGroups/*`. */
   addressGroup: string;
   /** Request body */
   body?: RemoveAddressGroupItemsRequest;
 }
-const RemoveItemsProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<RemoveItemsProjectsLocationsAddressGroupsRequest>;
-
 /** Request message for `SetIamPolicy` method. */
 export interface GoogleIamV1SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -5624,150 +3581,82 @@ export interface GoogleIamV1SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-const GoogleIamV1SetIamPolicyRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  2,
-) as any as S.Schema<GoogleIamV1SetIamPolicyRequest>;
-
 export interface SetIamPolicyProjectsLocationsAddressGroupsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  3,
-) as any as S.Schema<SetIamPolicyProjectsLocationsAddressGroupsRequest>;
-
 export interface SetIamPolicyProjectsLocationsAuthorizationPoliciesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<SetIamPolicyProjectsLocationsAuthorizationPoliciesRequest>;
-
 export interface SetIamPolicyProjectsLocationsAuthzPoliciesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<SetIamPolicyProjectsLocationsAuthzPoliciesRequest>;
-
 export interface SetIamPolicyProjectsLocationsClientTlsPoliciesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  6,
-) as any as S.Schema<SetIamPolicyProjectsLocationsClientTlsPoliciesRequest>;
-
 export interface SetIamPolicyProjectsLocationsServerTlsPoliciesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<SetIamPolicyProjectsLocationsServerTlsPoliciesRequest>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-const GoogleIamV1TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<GoogleIamV1TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsOrganizationsLocationsAddressGroupsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-const TestIamPermissionsOrganizationsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  1,
-) as any as S.Schema<TestIamPermissionsOrganizationsLocationsAddressGroupsRequest>;
-
 /** Response message for `TestIamPermissions` method. */
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-const GoogleIamV1TestIamPermissionsResponse =
-  GoogleIamV1TestIamPermissionsRequest as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>;
-
 export interface TestIamPermissionsProjectsLocationsAddressGroupsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsAddressGroupsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsAddressGroupsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsAuthorizationPoliciesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsAuthorizationPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsAuthorizationPoliciesRequest>;
-
 export interface TestIamPermissionsProjectsLocationsAuthzPoliciesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsAuthzPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsAuthzPoliciesRequest>;
-
 export interface TestIamPermissionsProjectsLocationsClientTlsPoliciesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsClientTlsPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsClientTlsPoliciesRequest>;
-
 export interface TestIamPermissionsProjectsLocationsServerTlsPoliciesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GoogleIamV1TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsServerTlsPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsServerTlsPoliciesRequest>;
-
 export type AddItemsOrganizationsLocationsAddressGroupsError =
   | NotFound
   | Forbidden
@@ -5781,8 +3670,8 @@ export const addItemsOrganizationsLocationsAddressGroups: API.OperationMethod<
   AddItemsOrganizationsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddItemsOrganizationsLocationsAddressGroupsRequest,
-  output: Operation,
+  input: __S(2) as any as S.Schema<AddItemsOrganizationsLocationsAddressGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5801,8 +3690,8 @@ export const addItemsProjectsLocationsAddressGroups: API.OperationMethod<
   AddItemsProjectsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddItemsProjectsLocationsAddressGroupsRequest,
-  output: Operation,
+  input: __S(7) as any as S.Schema<AddItemsProjectsLocationsAddressGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5821,8 +3710,8 @@ export const cancelOrganizationsLocationsOperations: API.OperationMethod<
   CancelOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelOrganizationsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(9) as any as S.Schema<CancelOrganizationsLocationsOperationsRequest>,
+  output: __S(8) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5841,8 +3730,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(10) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(8) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5861,8 +3750,8 @@ export const cloneItemsOrganizationsLocationsAddressGroups: API.OperationMethod<
   CloneItemsOrganizationsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CloneItemsOrganizationsLocationsAddressGroupsRequest,
-  output: Operation,
+  input: __S(12) as any as S.Schema<CloneItemsOrganizationsLocationsAddressGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5881,8 +3770,8 @@ export const cloneItemsProjectsLocationsAddressGroups: API.OperationMethod<
   CloneItemsProjectsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CloneItemsProjectsLocationsAddressGroupsRequest,
-  output: Operation,
+  input: __S(13) as any as S.Schema<CloneItemsProjectsLocationsAddressGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5901,8 +3790,8 @@ export const createOrganizationsLocationsAddressGroups: API.OperationMethod<
   CreateOrganizationsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsLocationsAddressGroupsRequest,
-  output: Operation,
+  input: __S(17) as any as S.Schema<CreateOrganizationsLocationsAddressGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5921,8 +3810,8 @@ export const createOrganizationsLocationsFirewallEndpoints: API.OperationMethod<
   CreateOrganizationsLocationsFirewallEndpointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsLocationsFirewallEndpointsRequest,
-  output: Operation,
+  input: __S(24) as any as S.Schema<CreateOrganizationsLocationsFirewallEndpointsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5941,8 +3830,10 @@ export const createOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeR
   CreateOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest,
-  output: WildfireVerdictChangeRequest,
+  input: __S(
+    26,
+  ) as any as S.Schema<CreateOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest>,
+  output: __S(25) as any as S.Schema<WildfireVerdictChangeRequest>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5961,8 +3852,8 @@ export const createOrganizationsLocationsSecurityProfileGroups: API.OperationMet
   CreateOrganizationsLocationsSecurityProfileGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsLocationsSecurityProfileGroupsRequest,
-  output: Operation,
+  input: __S(28) as any as S.Schema<CreateOrganizationsLocationsSecurityProfileGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5981,8 +3872,8 @@ export const createOrganizationsLocationsSecurityProfiles: API.OperationMethod<
   CreateOrganizationsLocationsSecurityProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrganizationsLocationsSecurityProfilesRequest,
-  output: Operation,
+  input: __S(58) as any as S.Schema<CreateOrganizationsLocationsSecurityProfilesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6001,8 +3892,8 @@ export const createProjectsLocationsAddressGroups: API.OperationMethod<
   CreateProjectsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAddressGroupsRequest,
-  output: Operation,
+  input: __S(59) as any as S.Schema<CreateProjectsLocationsAddressGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6021,8 +3912,8 @@ export const createProjectsLocationsAuthorizationPolicies: API.OperationMethod<
   CreateProjectsLocationsAuthorizationPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAuthorizationPoliciesRequest,
-  output: Operation,
+  input: __S(69) as any as S.Schema<CreateProjectsLocationsAuthorizationPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6041,8 +3932,8 @@ export const createProjectsLocationsAuthzPolicies: API.OperationMethod<
   CreateProjectsLocationsAuthzPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsAuthzPoliciesRequest,
-  output: Operation,
+  input: __S(97) as any as S.Schema<CreateProjectsLocationsAuthzPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6061,8 +3952,8 @@ export const createProjectsLocationsBackendAuthenticationConfigs: API.OperationM
   CreateProjectsLocationsBackendAuthenticationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsBackendAuthenticationConfigsRequest,
-  output: Operation,
+  input: __S(99) as any as S.Schema<CreateProjectsLocationsBackendAuthenticationConfigsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6081,8 +3972,8 @@ export const createProjectsLocationsClientTlsPolicies: API.OperationMethod<
   CreateProjectsLocationsClientTlsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsClientTlsPoliciesRequest,
-  output: Operation,
+  input: __S(106) as any as S.Schema<CreateProjectsLocationsClientTlsPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6101,8 +3992,8 @@ export const createProjectsLocationsDnsThreatDetectors: API.OperationMethod<
   CreateProjectsLocationsDnsThreatDetectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsDnsThreatDetectorsRequest,
-  output: DnsThreatDetector,
+  input: __S(108) as any as S.Schema<CreateProjectsLocationsDnsThreatDetectorsRequest>,
+  output: __S(107) as any as S.Schema<DnsThreatDetector>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6121,8 +4012,8 @@ export const createProjectsLocationsFirewallEndpointAssociations: API.OperationM
   CreateProjectsLocationsFirewallEndpointAssociationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsFirewallEndpointAssociationsRequest,
-  output: Operation,
+  input: __S(110) as any as S.Schema<CreateProjectsLocationsFirewallEndpointAssociationsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6141,8 +4032,8 @@ export const createProjectsLocationsFirewallEndpoints: API.OperationMethod<
   CreateProjectsLocationsFirewallEndpointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsFirewallEndpointsRequest,
-  output: Operation,
+  input: __S(111) as any as S.Schema<CreateProjectsLocationsFirewallEndpointsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6161,8 +4052,10 @@ export const createProjectsLocationsFirewallEndpointsWildfireVerdictChangeReques
   CreateProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest,
-  output: WildfireVerdictChangeRequest,
+  input: __S(
+    112,
+  ) as any as S.Schema<CreateProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest>,
+  output: __S(25) as any as S.Schema<WildfireVerdictChangeRequest>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6181,8 +4074,8 @@ export const createProjectsLocationsGatewaySecurityPolicies: API.OperationMethod
   CreateProjectsLocationsGatewaySecurityPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsGatewaySecurityPoliciesRequest,
-  output: Operation,
+  input: __S(114) as any as S.Schema<CreateProjectsLocationsGatewaySecurityPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6201,8 +4094,8 @@ export const createProjectsLocationsGatewaySecurityPoliciesRules: API.OperationM
   CreateProjectsLocationsGatewaySecurityPoliciesRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsGatewaySecurityPoliciesRulesRequest,
-  output: Operation,
+  input: __S(116) as any as S.Schema<CreateProjectsLocationsGatewaySecurityPoliciesRulesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6221,8 +4114,8 @@ export const createProjectsLocationsInterceptDeploymentGroups: API.OperationMeth
   CreateProjectsLocationsInterceptDeploymentGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsInterceptDeploymentGroupsRequest,
-  output: Operation,
+  input: __S(124) as any as S.Schema<CreateProjectsLocationsInterceptDeploymentGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6241,8 +4134,8 @@ export const createProjectsLocationsInterceptDeployments: API.OperationMethod<
   CreateProjectsLocationsInterceptDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsInterceptDeploymentsRequest,
-  output: Operation,
+  input: __S(126) as any as S.Schema<CreateProjectsLocationsInterceptDeploymentsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6261,8 +4154,10 @@ export const createProjectsLocationsInterceptEndpointGroupAssociations: API.Oper
   CreateProjectsLocationsInterceptEndpointGroupAssociationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsInterceptEndpointGroupAssociationsRequest,
-  output: Operation,
+  input: __S(
+    130,
+  ) as any as S.Schema<CreateProjectsLocationsInterceptEndpointGroupAssociationsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6281,8 +4176,8 @@ export const createProjectsLocationsInterceptEndpointGroups: API.OperationMethod
   CreateProjectsLocationsInterceptEndpointGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsInterceptEndpointGroupsRequest,
-  output: Operation,
+  input: __S(135) as any as S.Schema<CreateProjectsLocationsInterceptEndpointGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6301,8 +4196,8 @@ export const createProjectsLocationsMirroringDeploymentGroups: API.OperationMeth
   CreateProjectsLocationsMirroringDeploymentGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsMirroringDeploymentGroupsRequest,
-  output: Operation,
+  input: __S(141) as any as S.Schema<CreateProjectsLocationsMirroringDeploymentGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6321,8 +4216,8 @@ export const createProjectsLocationsMirroringDeployments: API.OperationMethod<
   CreateProjectsLocationsMirroringDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsMirroringDeploymentsRequest,
-  output: Operation,
+  input: __S(143) as any as S.Schema<CreateProjectsLocationsMirroringDeploymentsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6341,8 +4236,10 @@ export const createProjectsLocationsMirroringEndpointGroupAssociations: API.Oper
   CreateProjectsLocationsMirroringEndpointGroupAssociationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest,
-  output: Operation,
+  input: __S(
+    147,
+  ) as any as S.Schema<CreateProjectsLocationsMirroringEndpointGroupAssociationsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6361,8 +4258,8 @@ export const createProjectsLocationsMirroringEndpointGroups: API.OperationMethod
   CreateProjectsLocationsMirroringEndpointGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsMirroringEndpointGroupsRequest,
-  output: Operation,
+  input: __S(153) as any as S.Schema<CreateProjectsLocationsMirroringEndpointGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6381,8 +4278,8 @@ export const createProjectsLocationsRateLimitPolicies: API.OperationMethod<
   CreateProjectsLocationsRateLimitPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsRateLimitPoliciesRequest,
-  output: Operation,
+  input: __S(181) as any as S.Schema<CreateProjectsLocationsRateLimitPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6401,8 +4298,8 @@ export const createProjectsLocationsSacAttachments: API.OperationMethod<
   CreateProjectsLocationsSacAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSacAttachmentsRequest,
-  output: Operation,
+  input: __S(184) as any as S.Schema<CreateProjectsLocationsSacAttachmentsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6421,8 +4318,8 @@ export const createProjectsLocationsSacRealms: API.OperationMethod<
   CreateProjectsLocationsSacRealmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSacRealmsRequest,
-  output: Operation,
+  input: __S(188) as any as S.Schema<CreateProjectsLocationsSacRealmsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6441,8 +4338,8 @@ export const createProjectsLocationsSecurityProfileGroups: API.OperationMethod<
   CreateProjectsLocationsSecurityProfileGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSecurityProfileGroupsRequest,
-  output: Operation,
+  input: __S(189) as any as S.Schema<CreateProjectsLocationsSecurityProfileGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6461,8 +4358,8 @@ export const createProjectsLocationsSecurityProfiles: API.OperationMethod<
   CreateProjectsLocationsSecurityProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsSecurityProfilesRequest,
-  output: Operation,
+  input: __S(190) as any as S.Schema<CreateProjectsLocationsSecurityProfilesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6481,8 +4378,8 @@ export const createProjectsLocationsServerTlsPolicies: API.OperationMethod<
   CreateProjectsLocationsServerTlsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsServerTlsPoliciesRequest,
-  output: Operation,
+  input: __S(193) as any as S.Schema<CreateProjectsLocationsServerTlsPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6501,8 +4398,8 @@ export const createProjectsLocationsTlsInspectionPolicies: API.OperationMethod<
   CreateProjectsLocationsTlsInspectionPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsTlsInspectionPoliciesRequest,
-  output: Operation,
+  input: __S(195) as any as S.Schema<CreateProjectsLocationsTlsInspectionPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6521,8 +4418,8 @@ export const createProjectsLocationsUrlLists: API.OperationMethod<
   CreateProjectsLocationsUrlListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsUrlListsRequest,
-  output: Operation,
+  input: __S(197) as any as S.Schema<CreateProjectsLocationsUrlListsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6541,8 +4438,8 @@ export const deleteOrganizationsLocationsAddressGroups: API.OperationMethod<
   DeleteOrganizationsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsLocationsAddressGroupsRequest,
-  output: Operation,
+  input: __S(198) as any as S.Schema<DeleteOrganizationsLocationsAddressGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6561,8 +4458,8 @@ export const deleteOrganizationsLocationsFirewallEndpoints: API.OperationMethod<
   DeleteOrganizationsLocationsFirewallEndpointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsLocationsFirewallEndpointsRequest,
-  output: Operation,
+  input: __S(199) as any as S.Schema<DeleteOrganizationsLocationsFirewallEndpointsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6581,8 +4478,8 @@ export const deleteOrganizationsLocationsOperations: API.OperationMethod<
   DeleteOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(200) as any as S.Schema<DeleteOrganizationsLocationsOperationsRequest>,
+  output: __S(8) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6601,8 +4498,8 @@ export const deleteOrganizationsLocationsSecurityProfileGroups: API.OperationMet
   DeleteOrganizationsLocationsSecurityProfileGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsLocationsSecurityProfileGroupsRequest,
-  output: Operation,
+  input: __S(201) as any as S.Schema<DeleteOrganizationsLocationsSecurityProfileGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6621,8 +4518,8 @@ export const deleteOrganizationsLocationsSecurityProfiles: API.OperationMethod<
   DeleteOrganizationsLocationsSecurityProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrganizationsLocationsSecurityProfilesRequest,
-  output: Operation,
+  input: __S(202) as any as S.Schema<DeleteOrganizationsLocationsSecurityProfilesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6641,8 +4538,8 @@ export const deleteProjectsLocationsAddressGroups: API.OperationMethod<
   DeleteProjectsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAddressGroupsRequest,
-  output: Operation,
+  input: __S(203) as any as S.Schema<DeleteProjectsLocationsAddressGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6661,8 +4558,8 @@ export const deleteProjectsLocationsAuthorizationPolicies: API.OperationMethod<
   DeleteProjectsLocationsAuthorizationPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAuthorizationPoliciesRequest,
-  output: Operation,
+  input: __S(204) as any as S.Schema<DeleteProjectsLocationsAuthorizationPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6681,8 +4578,8 @@ export const deleteProjectsLocationsAuthzPolicies: API.OperationMethod<
   DeleteProjectsLocationsAuthzPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsAuthzPoliciesRequest,
-  output: Operation,
+  input: __S(205) as any as S.Schema<DeleteProjectsLocationsAuthzPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6701,8 +4598,8 @@ export const deleteProjectsLocationsBackendAuthenticationConfigs: API.OperationM
   DeleteProjectsLocationsBackendAuthenticationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsBackendAuthenticationConfigsRequest,
-  output: Operation,
+  input: __S(206) as any as S.Schema<DeleteProjectsLocationsBackendAuthenticationConfigsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6721,8 +4618,8 @@ export const deleteProjectsLocationsClientTlsPolicies: API.OperationMethod<
   DeleteProjectsLocationsClientTlsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsClientTlsPoliciesRequest,
-  output: Operation,
+  input: __S(207) as any as S.Schema<DeleteProjectsLocationsClientTlsPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6741,8 +4638,8 @@ export const deleteProjectsLocationsDnsThreatDetectors: API.OperationMethod<
   DeleteProjectsLocationsDnsThreatDetectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsDnsThreatDetectorsRequest,
-  output: Empty,
+  input: __S(208) as any as S.Schema<DeleteProjectsLocationsDnsThreatDetectorsRequest>,
+  output: __S(8) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6761,8 +4658,8 @@ export const deleteProjectsLocationsFirewallEndpointAssociations: API.OperationM
   DeleteProjectsLocationsFirewallEndpointAssociationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsFirewallEndpointAssociationsRequest,
-  output: Operation,
+  input: __S(209) as any as S.Schema<DeleteProjectsLocationsFirewallEndpointAssociationsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6781,8 +4678,8 @@ export const deleteProjectsLocationsFirewallEndpoints: API.OperationMethod<
   DeleteProjectsLocationsFirewallEndpointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsFirewallEndpointsRequest,
-  output: Operation,
+  input: __S(210) as any as S.Schema<DeleteProjectsLocationsFirewallEndpointsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6801,8 +4698,8 @@ export const deleteProjectsLocationsGatewaySecurityPolicies: API.OperationMethod
   DeleteProjectsLocationsGatewaySecurityPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsGatewaySecurityPoliciesRequest,
-  output: Operation,
+  input: __S(211) as any as S.Schema<DeleteProjectsLocationsGatewaySecurityPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6821,8 +4718,8 @@ export const deleteProjectsLocationsGatewaySecurityPoliciesRules: API.OperationM
   DeleteProjectsLocationsGatewaySecurityPoliciesRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsGatewaySecurityPoliciesRulesRequest,
-  output: Operation,
+  input: __S(212) as any as S.Schema<DeleteProjectsLocationsGatewaySecurityPoliciesRulesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6841,8 +4738,8 @@ export const deleteProjectsLocationsInterceptDeploymentGroups: API.OperationMeth
   DeleteProjectsLocationsInterceptDeploymentGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsInterceptDeploymentGroupsRequest,
-  output: Operation,
+  input: __S(213) as any as S.Schema<DeleteProjectsLocationsInterceptDeploymentGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6861,8 +4758,8 @@ export const deleteProjectsLocationsInterceptDeployments: API.OperationMethod<
   DeleteProjectsLocationsInterceptDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsInterceptDeploymentsRequest,
-  output: Operation,
+  input: __S(214) as any as S.Schema<DeleteProjectsLocationsInterceptDeploymentsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6881,8 +4778,10 @@ export const deleteProjectsLocationsInterceptEndpointGroupAssociations: API.Oper
   DeleteProjectsLocationsInterceptEndpointGroupAssociationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsInterceptEndpointGroupAssociationsRequest,
-  output: Operation,
+  input: __S(
+    215,
+  ) as any as S.Schema<DeleteProjectsLocationsInterceptEndpointGroupAssociationsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6901,8 +4800,8 @@ export const deleteProjectsLocationsInterceptEndpointGroups: API.OperationMethod
   DeleteProjectsLocationsInterceptEndpointGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsInterceptEndpointGroupsRequest,
-  output: Operation,
+  input: __S(216) as any as S.Schema<DeleteProjectsLocationsInterceptEndpointGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6921,8 +4820,8 @@ export const deleteProjectsLocationsMirroringDeploymentGroups: API.OperationMeth
   DeleteProjectsLocationsMirroringDeploymentGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsMirroringDeploymentGroupsRequest,
-  output: Operation,
+  input: __S(217) as any as S.Schema<DeleteProjectsLocationsMirroringDeploymentGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6941,8 +4840,8 @@ export const deleteProjectsLocationsMirroringDeployments: API.OperationMethod<
   DeleteProjectsLocationsMirroringDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsMirroringDeploymentsRequest,
-  output: Operation,
+  input: __S(218) as any as S.Schema<DeleteProjectsLocationsMirroringDeploymentsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6961,8 +4860,10 @@ export const deleteProjectsLocationsMirroringEndpointGroupAssociations: API.Oper
   DeleteProjectsLocationsMirroringEndpointGroupAssociationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsMirroringEndpointGroupAssociationsRequest,
-  output: Operation,
+  input: __S(
+    219,
+  ) as any as S.Schema<DeleteProjectsLocationsMirroringEndpointGroupAssociationsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -6981,8 +4882,8 @@ export const deleteProjectsLocationsMirroringEndpointGroups: API.OperationMethod
   DeleteProjectsLocationsMirroringEndpointGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsMirroringEndpointGroupsRequest,
-  output: Operation,
+  input: __S(220) as any as S.Schema<DeleteProjectsLocationsMirroringEndpointGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7001,8 +4902,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(221) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(8) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7021,8 +4922,8 @@ export const deleteProjectsLocationsRateLimitPolicies: API.OperationMethod<
   DeleteProjectsLocationsRateLimitPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsRateLimitPoliciesRequest,
-  output: Operation,
+  input: __S(222) as any as S.Schema<DeleteProjectsLocationsRateLimitPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7041,8 +4942,8 @@ export const deleteProjectsLocationsSacAttachments: API.OperationMethod<
   DeleteProjectsLocationsSacAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSacAttachmentsRequest,
-  output: Operation,
+  input: __S(223) as any as S.Schema<DeleteProjectsLocationsSacAttachmentsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7061,8 +4962,8 @@ export const deleteProjectsLocationsSacRealms: API.OperationMethod<
   DeleteProjectsLocationsSacRealmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSacRealmsRequest,
-  output: Operation,
+  input: __S(224) as any as S.Schema<DeleteProjectsLocationsSacRealmsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7081,8 +4982,8 @@ export const deleteProjectsLocationsSecurityProfileGroups: API.OperationMethod<
   DeleteProjectsLocationsSecurityProfileGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSecurityProfileGroupsRequest,
-  output: Operation,
+  input: __S(225) as any as S.Schema<DeleteProjectsLocationsSecurityProfileGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7101,8 +5002,8 @@ export const deleteProjectsLocationsSecurityProfiles: API.OperationMethod<
   DeleteProjectsLocationsSecurityProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsSecurityProfilesRequest,
-  output: Operation,
+  input: __S(226) as any as S.Schema<DeleteProjectsLocationsSecurityProfilesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7121,8 +5022,8 @@ export const deleteProjectsLocationsServerTlsPolicies: API.OperationMethod<
   DeleteProjectsLocationsServerTlsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsServerTlsPoliciesRequest,
-  output: Operation,
+  input: __S(227) as any as S.Schema<DeleteProjectsLocationsServerTlsPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7141,8 +5042,8 @@ export const deleteProjectsLocationsTlsInspectionPolicies: API.OperationMethod<
   DeleteProjectsLocationsTlsInspectionPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsTlsInspectionPoliciesRequest,
-  output: Operation,
+  input: __S(228) as any as S.Schema<DeleteProjectsLocationsTlsInspectionPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7161,8 +5062,8 @@ export const deleteProjectsLocationsUrlLists: API.OperationMethod<
   DeleteProjectsLocationsUrlListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsUrlListsRequest,
-  output: Operation,
+  input: __S(229) as any as S.Schema<DeleteProjectsLocationsUrlListsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7176,8 +5077,8 @@ export const getIamPolicyProjectsLocationsAddressGroups: API.OperationMethod<
   GetIamPolicyProjectsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsAddressGroupsRequest,
-  output: GoogleIamV1Policy,
+  input: __S(230) as any as S.Schema<GetIamPolicyProjectsLocationsAddressGroupsRequest>,
+  output: __S(238) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7194,8 +5095,8 @@ export const getIamPolicyProjectsLocationsAuthorizationPolicies: API.OperationMe
   GetIamPolicyProjectsLocationsAuthorizationPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsAuthorizationPoliciesRequest,
-  output: GoogleIamV1Policy,
+  input: __S(239) as any as S.Schema<GetIamPolicyProjectsLocationsAuthorizationPoliciesRequest>,
+  output: __S(238) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7209,8 +5110,8 @@ export const getIamPolicyProjectsLocationsAuthzPolicies: API.OperationMethod<
   GetIamPolicyProjectsLocationsAuthzPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsAuthzPoliciesRequest,
-  output: GoogleIamV1Policy,
+  input: __S(240) as any as S.Schema<GetIamPolicyProjectsLocationsAuthzPoliciesRequest>,
+  output: __S(238) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7224,8 +5125,8 @@ export const getIamPolicyProjectsLocationsClientTlsPolicies: API.OperationMethod
   GetIamPolicyProjectsLocationsClientTlsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsClientTlsPoliciesRequest,
-  output: GoogleIamV1Policy,
+  input: __S(241) as any as S.Schema<GetIamPolicyProjectsLocationsClientTlsPoliciesRequest>,
+  output: __S(238) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7239,8 +5140,8 @@ export const getIamPolicyProjectsLocationsServerTlsPolicies: API.OperationMethod
   GetIamPolicyProjectsLocationsServerTlsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsServerTlsPoliciesRequest,
-  output: GoogleIamV1Policy,
+  input: __S(242) as any as S.Schema<GetIamPolicyProjectsLocationsServerTlsPoliciesRequest>,
+  output: __S(238) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7254,8 +5155,8 @@ export const getOrganizationsLocations: API.OperationMethod<
   GetOrganizationsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsRequest,
-  output: Location,
+  input: __S(243) as any as S.Schema<GetOrganizationsLocationsRequest>,
+  output: __S(244) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7269,8 +5170,8 @@ export const getOrganizationsLocationsAddressGroups: API.OperationMethod<
   GetOrganizationsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsAddressGroupsRequest,
-  output: AddressGroup,
+  input: __S(245) as any as S.Schema<GetOrganizationsLocationsAddressGroupsRequest>,
+  output: __S(16) as any as S.Schema<AddressGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7284,8 +5185,8 @@ export const getOrganizationsLocationsFirewallEndpoints: API.OperationMethod<
   GetOrganizationsLocationsFirewallEndpointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsFirewallEndpointsRequest,
-  output: FirewallEndpoint,
+  input: __S(246) as any as S.Schema<GetOrganizationsLocationsFirewallEndpointsRequest>,
+  output: __S(23) as any as S.Schema<FirewallEndpoint>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7302,8 +5203,10 @@ export const getOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequ
   GetOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest,
-  output: WildfireVerdictChangeRequest,
+  input: __S(
+    247,
+  ) as any as S.Schema<GetOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest>,
+  output: __S(25) as any as S.Schema<WildfireVerdictChangeRequest>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7317,8 +5220,8 @@ export const getOrganizationsLocationsOperations: API.OperationMethod<
   GetOrganizationsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(248) as any as S.Schema<GetOrganizationsLocationsOperationsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7332,8 +5235,8 @@ export const getOrganizationsLocationsSecurityProfileGroups: API.OperationMethod
   GetOrganizationsLocationsSecurityProfileGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsSecurityProfileGroupsRequest,
-  output: SecurityProfileGroup,
+  input: __S(249) as any as S.Schema<GetOrganizationsLocationsSecurityProfileGroupsRequest>,
+  output: __S(27) as any as S.Schema<SecurityProfileGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7347,8 +5250,8 @@ export const getOrganizationsLocationsSecurityProfiles: API.OperationMethod<
   GetOrganizationsLocationsSecurityProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrganizationsLocationsSecurityProfilesRequest,
-  output: SecurityProfile,
+  input: __S(250) as any as S.Schema<GetOrganizationsLocationsSecurityProfilesRequest>,
+  output: __S(57) as any as S.Schema<SecurityProfile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7362,8 +5265,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(251) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(244) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7377,8 +5280,8 @@ export const getProjectsLocationsAddressGroups: API.OperationMethod<
   GetProjectsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAddressGroupsRequest,
-  output: AddressGroup,
+  input: __S(252) as any as S.Schema<GetProjectsLocationsAddressGroupsRequest>,
+  output: __S(16) as any as S.Schema<AddressGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7392,8 +5295,8 @@ export const getProjectsLocationsAuthorizationPolicies: API.OperationMethod<
   GetProjectsLocationsAuthorizationPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAuthorizationPoliciesRequest,
-  output: AuthorizationPolicy,
+  input: __S(253) as any as S.Schema<GetProjectsLocationsAuthorizationPoliciesRequest>,
+  output: __S(68) as any as S.Schema<AuthorizationPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7407,8 +5310,8 @@ export const getProjectsLocationsAuthzPolicies: API.OperationMethod<
   GetProjectsLocationsAuthzPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsAuthzPoliciesRequest,
-  output: AuthzPolicy,
+  input: __S(254) as any as S.Schema<GetProjectsLocationsAuthzPoliciesRequest>,
+  output: __S(96) as any as S.Schema<AuthzPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7425,8 +5328,8 @@ export const getProjectsLocationsBackendAuthenticationConfigs: API.OperationMeth
   GetProjectsLocationsBackendAuthenticationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsBackendAuthenticationConfigsRequest,
-  output: BackendAuthenticationConfig,
+  input: __S(255) as any as S.Schema<GetProjectsLocationsBackendAuthenticationConfigsRequest>,
+  output: __S(98) as any as S.Schema<BackendAuthenticationConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7440,8 +5343,8 @@ export const getProjectsLocationsClientTlsPolicies: API.OperationMethod<
   GetProjectsLocationsClientTlsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsClientTlsPoliciesRequest,
-  output: ClientTlsPolicy,
+  input: __S(256) as any as S.Schema<GetProjectsLocationsClientTlsPoliciesRequest>,
+  output: __S(105) as any as S.Schema<ClientTlsPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7455,8 +5358,8 @@ export const getProjectsLocationsDnsThreatDetectors: API.OperationMethod<
   GetProjectsLocationsDnsThreatDetectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsDnsThreatDetectorsRequest,
-  output: DnsThreatDetector,
+  input: __S(257) as any as S.Schema<GetProjectsLocationsDnsThreatDetectorsRequest>,
+  output: __S(107) as any as S.Schema<DnsThreatDetector>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7473,8 +5376,8 @@ export const getProjectsLocationsFirewallEndpointAssociations: API.OperationMeth
   GetProjectsLocationsFirewallEndpointAssociationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsFirewallEndpointAssociationsRequest,
-  output: FirewallEndpointAssociation,
+  input: __S(258) as any as S.Schema<GetProjectsLocationsFirewallEndpointAssociationsRequest>,
+  output: __S(109) as any as S.Schema<FirewallEndpointAssociation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7488,8 +5391,8 @@ export const getProjectsLocationsFirewallEndpoints: API.OperationMethod<
   GetProjectsLocationsFirewallEndpointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsFirewallEndpointsRequest,
-  output: FirewallEndpoint,
+  input: __S(259) as any as S.Schema<GetProjectsLocationsFirewallEndpointsRequest>,
+  output: __S(23) as any as S.Schema<FirewallEndpoint>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7506,8 +5409,10 @@ export const getProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequests:
   GetProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest,
-  output: WildfireVerdictChangeRequest,
+  input: __S(
+    260,
+  ) as any as S.Schema<GetProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest>,
+  output: __S(25) as any as S.Schema<WildfireVerdictChangeRequest>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7521,8 +5426,8 @@ export const getProjectsLocationsGatewaySecurityPolicies: API.OperationMethod<
   GetProjectsLocationsGatewaySecurityPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsGatewaySecurityPoliciesRequest,
-  output: GatewaySecurityPolicy,
+  input: __S(261) as any as S.Schema<GetProjectsLocationsGatewaySecurityPoliciesRequest>,
+  output: __S(113) as any as S.Schema<GatewaySecurityPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7539,8 +5444,8 @@ export const getProjectsLocationsGatewaySecurityPoliciesRules: API.OperationMeth
   GetProjectsLocationsGatewaySecurityPoliciesRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsGatewaySecurityPoliciesRulesRequest,
-  output: GatewaySecurityPolicyRule,
+  input: __S(262) as any as S.Schema<GetProjectsLocationsGatewaySecurityPoliciesRulesRequest>,
+  output: __S(115) as any as S.Schema<GatewaySecurityPolicyRule>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7554,8 +5459,8 @@ export const getProjectsLocationsInterceptDeploymentGroups: API.OperationMethod<
   GetProjectsLocationsInterceptDeploymentGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsInterceptDeploymentGroupsRequest,
-  output: InterceptDeploymentGroup,
+  input: __S(263) as any as S.Schema<GetProjectsLocationsInterceptDeploymentGroupsRequest>,
+  output: __S(123) as any as S.Schema<InterceptDeploymentGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7569,8 +5474,8 @@ export const getProjectsLocationsInterceptDeployments: API.OperationMethod<
   GetProjectsLocationsInterceptDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsInterceptDeploymentsRequest,
-  output: InterceptDeployment,
+  input: __S(264) as any as S.Schema<GetProjectsLocationsInterceptDeploymentsRequest>,
+  output: __S(125) as any as S.Schema<InterceptDeployment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7587,8 +5492,8 @@ export const getProjectsLocationsInterceptEndpointGroupAssociations: API.Operati
   GetProjectsLocationsInterceptEndpointGroupAssociationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsInterceptEndpointGroupAssociationsRequest,
-  output: InterceptEndpointGroupAssociation,
+  input: __S(265) as any as S.Schema<GetProjectsLocationsInterceptEndpointGroupAssociationsRequest>,
+  output: __S(129) as any as S.Schema<InterceptEndpointGroupAssociation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7602,8 +5507,8 @@ export const getProjectsLocationsInterceptEndpointGroups: API.OperationMethod<
   GetProjectsLocationsInterceptEndpointGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsInterceptEndpointGroupsRequest,
-  output: InterceptEndpointGroup,
+  input: __S(266) as any as S.Schema<GetProjectsLocationsInterceptEndpointGroupsRequest>,
+  output: __S(134) as any as S.Schema<InterceptEndpointGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7617,8 +5522,8 @@ export const getProjectsLocationsMirroringDeploymentGroups: API.OperationMethod<
   GetProjectsLocationsMirroringDeploymentGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsMirroringDeploymentGroupsRequest,
-  output: MirroringDeploymentGroup,
+  input: __S(267) as any as S.Schema<GetProjectsLocationsMirroringDeploymentGroupsRequest>,
+  output: __S(140) as any as S.Schema<MirroringDeploymentGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7632,8 +5537,8 @@ export const getProjectsLocationsMirroringDeployments: API.OperationMethod<
   GetProjectsLocationsMirroringDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsMirroringDeploymentsRequest,
-  output: MirroringDeployment,
+  input: __S(268) as any as S.Schema<GetProjectsLocationsMirroringDeploymentsRequest>,
+  output: __S(142) as any as S.Schema<MirroringDeployment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7650,8 +5555,8 @@ export const getProjectsLocationsMirroringEndpointGroupAssociations: API.Operati
   GetProjectsLocationsMirroringEndpointGroupAssociationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsMirroringEndpointGroupAssociationsRequest,
-  output: MirroringEndpointGroupAssociation,
+  input: __S(269) as any as S.Schema<GetProjectsLocationsMirroringEndpointGroupAssociationsRequest>,
+  output: __S(146) as any as S.Schema<MirroringEndpointGroupAssociation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7665,8 +5570,8 @@ export const getProjectsLocationsMirroringEndpointGroups: API.OperationMethod<
   GetProjectsLocationsMirroringEndpointGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsMirroringEndpointGroupsRequest,
-  output: MirroringEndpointGroup,
+  input: __S(270) as any as S.Schema<GetProjectsLocationsMirroringEndpointGroupsRequest>,
+  output: __S(152) as any as S.Schema<MirroringEndpointGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7680,8 +5585,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(271) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7695,8 +5600,8 @@ export const getProjectsLocationsRateLimitPolicies: API.OperationMethod<
   GetProjectsLocationsRateLimitPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRateLimitPoliciesRequest,
-  output: RateLimitPolicy,
+  input: __S(272) as any as S.Schema<GetProjectsLocationsRateLimitPoliciesRequest>,
+  output: __S(180) as any as S.Schema<RateLimitPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7710,8 +5615,8 @@ export const getProjectsLocationsSacAttachments: API.OperationMethod<
   GetProjectsLocationsSacAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSacAttachmentsRequest,
-  output: SACAttachment,
+  input: __S(273) as any as S.Schema<GetProjectsLocationsSacAttachmentsRequest>,
+  output: __S(183) as any as S.Schema<SACAttachment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7725,8 +5630,8 @@ export const getProjectsLocationsSacRealms: API.OperationMethod<
   GetProjectsLocationsSacRealmsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSacRealmsRequest,
-  output: SACRealm,
+  input: __S(274) as any as S.Schema<GetProjectsLocationsSacRealmsRequest>,
+  output: __S(187) as any as S.Schema<SACRealm>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7740,8 +5645,8 @@ export const getProjectsLocationsSecurityProfileGroups: API.OperationMethod<
   GetProjectsLocationsSecurityProfileGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSecurityProfileGroupsRequest,
-  output: SecurityProfileGroup,
+  input: __S(275) as any as S.Schema<GetProjectsLocationsSecurityProfileGroupsRequest>,
+  output: __S(27) as any as S.Schema<SecurityProfileGroup>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7755,8 +5660,8 @@ export const getProjectsLocationsSecurityProfiles: API.OperationMethod<
   GetProjectsLocationsSecurityProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsSecurityProfilesRequest,
-  output: SecurityProfile,
+  input: __S(276) as any as S.Schema<GetProjectsLocationsSecurityProfilesRequest>,
+  output: __S(57) as any as S.Schema<SecurityProfile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7770,8 +5675,8 @@ export const getProjectsLocationsServerTlsPolicies: API.OperationMethod<
   GetProjectsLocationsServerTlsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsServerTlsPoliciesRequest,
-  output: ServerTlsPolicy,
+  input: __S(277) as any as S.Schema<GetProjectsLocationsServerTlsPoliciesRequest>,
+  output: __S(192) as any as S.Schema<ServerTlsPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7785,8 +5690,8 @@ export const getProjectsLocationsTlsInspectionPolicies: API.OperationMethod<
   GetProjectsLocationsTlsInspectionPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsTlsInspectionPoliciesRequest,
-  output: TlsInspectionPolicy,
+  input: __S(278) as any as S.Schema<GetProjectsLocationsTlsInspectionPoliciesRequest>,
+  output: __S(194) as any as S.Schema<TlsInspectionPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7800,8 +5705,8 @@ export const getProjectsLocationsUrlLists: API.OperationMethod<
   GetProjectsLocationsUrlListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsUrlListsRequest,
-  output: UrlList,
+  input: __S(279) as any as S.Schema<GetProjectsLocationsUrlListsRequest>,
+  output: __S(196) as any as S.Schema<UrlList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7816,8 +5721,8 @@ export const listOrganizationsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(280) as any as S.Schema<ListOrganizationsLocationsRequest>,
+  output: __S(282) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7833,8 +5738,8 @@ export const listOrganizationsLocationsAddressGroups: API.PaginatedOperationMeth
   GcpOpContext,
   ListAddressGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsAddressGroupsRequest,
-  output: ListAddressGroupsResponse,
+  input: __S(283) as any as S.Schema<ListOrganizationsLocationsAddressGroupsRequest>,
+  output: __S(285) as any as S.Schema<ListAddressGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7850,8 +5755,8 @@ export const listOrganizationsLocationsFirewallEndpoints: API.PaginatedOperation
   GcpOpContext,
   ListFirewallEndpointsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsFirewallEndpointsRequest,
-  output: ListFirewallEndpointsResponse,
+  input: __S(286) as any as S.Schema<ListOrganizationsLocationsFirewallEndpointsRequest>,
+  output: __S(288) as any as S.Schema<ListFirewallEndpointsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7870,8 +5775,10 @@ export const listOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeReq
   GcpOpContext,
   ListWildfireVerdictChangeRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest,
-  output: ListWildfireVerdictChangeRequestsResponse,
+  input: __S(
+    289,
+  ) as any as S.Schema<ListOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest>,
+  output: __S(291) as any as S.Schema<ListWildfireVerdictChangeRequestsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7887,8 +5794,8 @@ export const listOrganizationsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(292) as any as S.Schema<ListOrganizationsLocationsOperationsRequest>,
+  output: __S(294) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7907,8 +5814,8 @@ export const listOrganizationsLocationsSecurityProfileGroups: API.PaginatedOpera
   GcpOpContext,
   ListSecurityProfileGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsSecurityProfileGroupsRequest,
-  output: ListSecurityProfileGroupsResponse,
+  input: __S(295) as any as S.Schema<ListOrganizationsLocationsSecurityProfileGroupsRequest>,
+  output: __S(297) as any as S.Schema<ListSecurityProfileGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7924,8 +5831,8 @@ export const listOrganizationsLocationsSecurityProfiles: API.PaginatedOperationM
   GcpOpContext,
   ListSecurityProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationsLocationsSecurityProfilesRequest,
-  output: ListSecurityProfilesResponse,
+  input: __S(298) as any as S.Schema<ListOrganizationsLocationsSecurityProfilesRequest>,
+  output: __S(300) as any as S.Schema<ListSecurityProfilesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7941,8 +5848,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(301) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(282) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7958,8 +5865,8 @@ export const listProjectsLocationsAddressGroups: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAddressGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAddressGroupsRequest,
-  output: ListAddressGroupsResponse,
+  input: __S(302) as any as S.Schema<ListProjectsLocationsAddressGroupsRequest>,
+  output: __S(285) as any as S.Schema<ListAddressGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7975,8 +5882,8 @@ export const listProjectsLocationsAuthorizationPolicies: API.PaginatedOperationM
   GcpOpContext,
   ListAuthorizationPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAuthorizationPoliciesRequest,
-  output: ListAuthorizationPoliciesResponse,
+  input: __S(303) as any as S.Schema<ListProjectsLocationsAuthorizationPoliciesRequest>,
+  output: __S(305) as any as S.Schema<ListAuthorizationPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7992,8 +5899,8 @@ export const listProjectsLocationsAuthzPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAuthzPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsAuthzPoliciesRequest,
-  output: ListAuthzPoliciesResponse,
+  input: __S(306) as any as S.Schema<ListProjectsLocationsAuthzPoliciesRequest>,
+  output: __S(308) as any as S.Schema<ListAuthzPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8012,8 +5919,8 @@ export const listProjectsLocationsBackendAuthenticationConfigs: API.PaginatedOpe
   GcpOpContext,
   ListBackendAuthenticationConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsBackendAuthenticationConfigsRequest,
-  output: ListBackendAuthenticationConfigsResponse,
+  input: __S(309) as any as S.Schema<ListProjectsLocationsBackendAuthenticationConfigsRequest>,
+  output: __S(311) as any as S.Schema<ListBackendAuthenticationConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8029,8 +5936,8 @@ export const listProjectsLocationsClientTlsPolicies: API.PaginatedOperationMetho
   GcpOpContext,
   ListClientTlsPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsClientTlsPoliciesRequest,
-  output: ListClientTlsPoliciesResponse,
+  input: __S(312) as any as S.Schema<ListProjectsLocationsClientTlsPoliciesRequest>,
+  output: __S(314) as any as S.Schema<ListClientTlsPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8046,8 +5953,8 @@ export const listProjectsLocationsDnsThreatDetectors: API.PaginatedOperationMeth
   GcpOpContext,
   ListDnsThreatDetectorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsDnsThreatDetectorsRequest,
-  output: ListDnsThreatDetectorsResponse,
+  input: __S(315) as any as S.Schema<ListProjectsLocationsDnsThreatDetectorsRequest>,
+  output: __S(317) as any as S.Schema<ListDnsThreatDetectorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8066,8 +5973,8 @@ export const listProjectsLocationsFirewallEndpointAssociations: API.PaginatedOpe
   GcpOpContext,
   ListFirewallEndpointAssociationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsFirewallEndpointAssociationsRequest,
-  output: ListFirewallEndpointAssociationsResponse,
+  input: __S(318) as any as S.Schema<ListProjectsLocationsFirewallEndpointAssociationsRequest>,
+  output: __S(320) as any as S.Schema<ListFirewallEndpointAssociationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8083,8 +5990,8 @@ export const listProjectsLocationsFirewallEndpoints: API.PaginatedOperationMetho
   GcpOpContext,
   ListFirewallEndpointsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsFirewallEndpointsRequest,
-  output: ListFirewallEndpointsResponse,
+  input: __S(321) as any as S.Schema<ListProjectsLocationsFirewallEndpointsRequest>,
+  output: __S(288) as any as S.Schema<ListFirewallEndpointsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8103,8 +6010,10 @@ export const listProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequests
   GcpOpContext,
   ListWildfireVerdictChangeRequestsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest,
-  output: ListWildfireVerdictChangeRequestsResponse,
+  input: __S(
+    322,
+  ) as any as S.Schema<ListProjectsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest>,
+  output: __S(291) as any as S.Schema<ListWildfireVerdictChangeRequestsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8120,8 +6029,8 @@ export const listProjectsLocationsGatewaySecurityPolicies: API.PaginatedOperatio
   GcpOpContext,
   ListGatewaySecurityPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsGatewaySecurityPoliciesRequest,
-  output: ListGatewaySecurityPoliciesResponse,
+  input: __S(323) as any as S.Schema<ListProjectsLocationsGatewaySecurityPoliciesRequest>,
+  output: __S(325) as any as S.Schema<ListGatewaySecurityPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8140,8 +6049,8 @@ export const listProjectsLocationsGatewaySecurityPoliciesRules: API.PaginatedOpe
   GcpOpContext,
   ListGatewaySecurityPolicyRulesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsGatewaySecurityPoliciesRulesRequest,
-  output: ListGatewaySecurityPolicyRulesResponse,
+  input: __S(326) as any as S.Schema<ListProjectsLocationsGatewaySecurityPoliciesRulesRequest>,
+  output: __S(328) as any as S.Schema<ListGatewaySecurityPolicyRulesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8157,8 +6066,8 @@ export const listProjectsLocationsInterceptDeploymentGroups: API.PaginatedOperat
   GcpOpContext,
   ListInterceptDeploymentGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsInterceptDeploymentGroupsRequest,
-  output: ListInterceptDeploymentGroupsResponse,
+  input: __S(329) as any as S.Schema<ListProjectsLocationsInterceptDeploymentGroupsRequest>,
+  output: __S(331) as any as S.Schema<ListInterceptDeploymentGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8174,8 +6083,8 @@ export const listProjectsLocationsInterceptDeployments: API.PaginatedOperationMe
   GcpOpContext,
   ListInterceptDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsInterceptDeploymentsRequest,
-  output: ListInterceptDeploymentsResponse,
+  input: __S(332) as any as S.Schema<ListProjectsLocationsInterceptDeploymentsRequest>,
+  output: __S(334) as any as S.Schema<ListInterceptDeploymentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8194,8 +6103,10 @@ export const listProjectsLocationsInterceptEndpointGroupAssociations: API.Pagina
   GcpOpContext,
   ListInterceptEndpointGroupAssociationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsInterceptEndpointGroupAssociationsRequest,
-  output: ListInterceptEndpointGroupAssociationsResponse,
+  input: __S(
+    335,
+  ) as any as S.Schema<ListProjectsLocationsInterceptEndpointGroupAssociationsRequest>,
+  output: __S(337) as any as S.Schema<ListInterceptEndpointGroupAssociationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8211,8 +6122,8 @@ export const listProjectsLocationsInterceptEndpointGroups: API.PaginatedOperatio
   GcpOpContext,
   ListInterceptEndpointGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsInterceptEndpointGroupsRequest,
-  output: ListInterceptEndpointGroupsResponse,
+  input: __S(338) as any as S.Schema<ListProjectsLocationsInterceptEndpointGroupsRequest>,
+  output: __S(340) as any as S.Schema<ListInterceptEndpointGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8228,8 +6139,8 @@ export const listProjectsLocationsMirroringDeploymentGroups: API.PaginatedOperat
   GcpOpContext,
   ListMirroringDeploymentGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsMirroringDeploymentGroupsRequest,
-  output: ListMirroringDeploymentGroupsResponse,
+  input: __S(341) as any as S.Schema<ListProjectsLocationsMirroringDeploymentGroupsRequest>,
+  output: __S(343) as any as S.Schema<ListMirroringDeploymentGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8245,8 +6156,8 @@ export const listProjectsLocationsMirroringDeployments: API.PaginatedOperationMe
   GcpOpContext,
   ListMirroringDeploymentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsMirroringDeploymentsRequest,
-  output: ListMirroringDeploymentsResponse,
+  input: __S(344) as any as S.Schema<ListProjectsLocationsMirroringDeploymentsRequest>,
+  output: __S(346) as any as S.Schema<ListMirroringDeploymentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8265,8 +6176,10 @@ export const listProjectsLocationsMirroringEndpointGroupAssociations: API.Pagina
   GcpOpContext,
   ListMirroringEndpointGroupAssociationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsMirroringEndpointGroupAssociationsRequest,
-  output: ListMirroringEndpointGroupAssociationsResponse,
+  input: __S(
+    347,
+  ) as any as S.Schema<ListProjectsLocationsMirroringEndpointGroupAssociationsRequest>,
+  output: __S(349) as any as S.Schema<ListMirroringEndpointGroupAssociationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8282,8 +6195,8 @@ export const listProjectsLocationsMirroringEndpointGroups: API.PaginatedOperatio
   GcpOpContext,
   ListMirroringEndpointGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsMirroringEndpointGroupsRequest,
-  output: ListMirroringEndpointGroupsResponse,
+  input: __S(350) as any as S.Schema<ListProjectsLocationsMirroringEndpointGroupsRequest>,
+  output: __S(352) as any as S.Schema<ListMirroringEndpointGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8299,8 +6212,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(353) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(294) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8316,8 +6229,8 @@ export const listProjectsLocationsRateLimitPolicies: API.PaginatedOperationMetho
   GcpOpContext,
   ListRateLimitPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRateLimitPoliciesRequest,
-  output: ListRateLimitPoliciesResponse,
+  input: __S(354) as any as S.Schema<ListProjectsLocationsRateLimitPoliciesRequest>,
+  output: __S(356) as any as S.Schema<ListRateLimitPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8333,8 +6246,8 @@ export const listProjectsLocationsSacAttachments: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSACAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSacAttachmentsRequest,
-  output: ListSACAttachmentsResponse,
+  input: __S(357) as any as S.Schema<ListProjectsLocationsSacAttachmentsRequest>,
+  output: __S(359) as any as S.Schema<ListSACAttachmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8350,8 +6263,8 @@ export const listProjectsLocationsSacRealms: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSACRealmsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSacRealmsRequest,
-  output: ListSACRealmsResponse,
+  input: __S(360) as any as S.Schema<ListProjectsLocationsSacRealmsRequest>,
+  output: __S(362) as any as S.Schema<ListSACRealmsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8367,8 +6280,8 @@ export const listProjectsLocationsSecurityProfileGroups: API.PaginatedOperationM
   GcpOpContext,
   ListSecurityProfileGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSecurityProfileGroupsRequest,
-  output: ListSecurityProfileGroupsResponse,
+  input: __S(363) as any as S.Schema<ListProjectsLocationsSecurityProfileGroupsRequest>,
+  output: __S(297) as any as S.Schema<ListSecurityProfileGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8384,8 +6297,8 @@ export const listProjectsLocationsSecurityProfiles: API.PaginatedOperationMethod
   GcpOpContext,
   ListSecurityProfilesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsSecurityProfilesRequest,
-  output: ListSecurityProfilesResponse,
+  input: __S(364) as any as S.Schema<ListProjectsLocationsSecurityProfilesRequest>,
+  output: __S(300) as any as S.Schema<ListSecurityProfilesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8401,8 +6314,8 @@ export const listProjectsLocationsServerTlsPolicies: API.PaginatedOperationMetho
   GcpOpContext,
   ListServerTlsPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsServerTlsPoliciesRequest,
-  output: ListServerTlsPoliciesResponse,
+  input: __S(365) as any as S.Schema<ListProjectsLocationsServerTlsPoliciesRequest>,
+  output: __S(367) as any as S.Schema<ListServerTlsPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8418,8 +6331,8 @@ export const listProjectsLocationsTlsInspectionPolicies: API.PaginatedOperationM
   GcpOpContext,
   ListTlsInspectionPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsTlsInspectionPoliciesRequest,
-  output: ListTlsInspectionPoliciesResponse,
+  input: __S(368) as any as S.Schema<ListProjectsLocationsTlsInspectionPoliciesRequest>,
+  output: __S(370) as any as S.Schema<ListTlsInspectionPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8435,8 +6348,8 @@ export const listProjectsLocationsUrlLists: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUrlListsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsUrlListsRequest,
-  output: ListUrlListsResponse,
+  input: __S(371) as any as S.Schema<ListProjectsLocationsUrlListsRequest>,
+  output: __S(373) as any as S.Schema<ListUrlListsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8455,8 +6368,8 @@ export const listReferencesOrganizationsLocationsAddressGroups: API.PaginatedOpe
   GcpOpContext,
   ListAddressGroupReferencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListReferencesOrganizationsLocationsAddressGroupsRequest,
-  output: ListAddressGroupReferencesResponse,
+  input: __S(374) as any as S.Schema<ListReferencesOrganizationsLocationsAddressGroupsRequest>,
+  output: __S(377) as any as S.Schema<ListAddressGroupReferencesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8472,8 +6385,8 @@ export const listReferencesProjectsLocationsAddressGroups: API.PaginatedOperatio
   GcpOpContext,
   ListAddressGroupReferencesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListReferencesProjectsLocationsAddressGroupsRequest,
-  output: ListAddressGroupReferencesResponse,
+  input: __S(378) as any as S.Schema<ListReferencesProjectsLocationsAddressGroupsRequest>,
+  output: __S(377) as any as S.Schema<ListAddressGroupReferencesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8493,8 +6406,8 @@ export const patchOrganizationsLocationsAddressGroups: API.OperationMethod<
   PatchOrganizationsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsLocationsAddressGroupsRequest,
-  output: Operation,
+  input: __S(379) as any as S.Schema<PatchOrganizationsLocationsAddressGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8513,8 +6426,8 @@ export const patchOrganizationsLocationsFirewallEndpoints: API.OperationMethod<
   PatchOrganizationsLocationsFirewallEndpointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsLocationsFirewallEndpointsRequest,
-  output: Operation,
+  input: __S(380) as any as S.Schema<PatchOrganizationsLocationsFirewallEndpointsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8533,8 +6446,8 @@ export const patchOrganizationsLocationsSecurityProfileGroups: API.OperationMeth
   PatchOrganizationsLocationsSecurityProfileGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsLocationsSecurityProfileGroupsRequest,
-  output: Operation,
+  input: __S(381) as any as S.Schema<PatchOrganizationsLocationsSecurityProfileGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8553,8 +6466,8 @@ export const patchOrganizationsLocationsSecurityProfiles: API.OperationMethod<
   PatchOrganizationsLocationsSecurityProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchOrganizationsLocationsSecurityProfilesRequest,
-  output: Operation,
+  input: __S(382) as any as S.Schema<PatchOrganizationsLocationsSecurityProfilesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8573,8 +6486,8 @@ export const patchProjectsLocationsAddressGroups: API.OperationMethod<
   PatchProjectsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsAddressGroupsRequest,
-  output: Operation,
+  input: __S(383) as any as S.Schema<PatchProjectsLocationsAddressGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8593,8 +6506,8 @@ export const patchProjectsLocationsAuthorizationPolicies: API.OperationMethod<
   PatchProjectsLocationsAuthorizationPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsAuthorizationPoliciesRequest,
-  output: Operation,
+  input: __S(384) as any as S.Schema<PatchProjectsLocationsAuthorizationPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8613,8 +6526,8 @@ export const patchProjectsLocationsAuthzPolicies: API.OperationMethod<
   PatchProjectsLocationsAuthzPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsAuthzPoliciesRequest,
-  output: Operation,
+  input: __S(385) as any as S.Schema<PatchProjectsLocationsAuthzPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8633,8 +6546,8 @@ export const patchProjectsLocationsBackendAuthenticationConfigs: API.OperationMe
   PatchProjectsLocationsBackendAuthenticationConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsBackendAuthenticationConfigsRequest,
-  output: Operation,
+  input: __S(386) as any as S.Schema<PatchProjectsLocationsBackendAuthenticationConfigsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8653,8 +6566,8 @@ export const patchProjectsLocationsClientTlsPolicies: API.OperationMethod<
   PatchProjectsLocationsClientTlsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsClientTlsPoliciesRequest,
-  output: Operation,
+  input: __S(387) as any as S.Schema<PatchProjectsLocationsClientTlsPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8673,8 +6586,8 @@ export const patchProjectsLocationsDnsThreatDetectors: API.OperationMethod<
   PatchProjectsLocationsDnsThreatDetectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsDnsThreatDetectorsRequest,
-  output: DnsThreatDetector,
+  input: __S(388) as any as S.Schema<PatchProjectsLocationsDnsThreatDetectorsRequest>,
+  output: __S(107) as any as S.Schema<DnsThreatDetector>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8693,8 +6606,8 @@ export const patchProjectsLocationsFirewallEndpointAssociations: API.OperationMe
   PatchProjectsLocationsFirewallEndpointAssociationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsFirewallEndpointAssociationsRequest,
-  output: Operation,
+  input: __S(389) as any as S.Schema<PatchProjectsLocationsFirewallEndpointAssociationsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8713,8 +6626,8 @@ export const patchProjectsLocationsFirewallEndpoints: API.OperationMethod<
   PatchProjectsLocationsFirewallEndpointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsFirewallEndpointsRequest,
-  output: Operation,
+  input: __S(390) as any as S.Schema<PatchProjectsLocationsFirewallEndpointsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8733,8 +6646,8 @@ export const patchProjectsLocationsGatewaySecurityPolicies: API.OperationMethod<
   PatchProjectsLocationsGatewaySecurityPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsGatewaySecurityPoliciesRequest,
-  output: Operation,
+  input: __S(391) as any as S.Schema<PatchProjectsLocationsGatewaySecurityPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8753,8 +6666,8 @@ export const patchProjectsLocationsGatewaySecurityPoliciesRules: API.OperationMe
   PatchProjectsLocationsGatewaySecurityPoliciesRulesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsGatewaySecurityPoliciesRulesRequest,
-  output: Operation,
+  input: __S(392) as any as S.Schema<PatchProjectsLocationsGatewaySecurityPoliciesRulesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8773,8 +6686,8 @@ export const patchProjectsLocationsInterceptDeploymentGroups: API.OperationMetho
   PatchProjectsLocationsInterceptDeploymentGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsInterceptDeploymentGroupsRequest,
-  output: Operation,
+  input: __S(393) as any as S.Schema<PatchProjectsLocationsInterceptDeploymentGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8793,8 +6706,8 @@ export const patchProjectsLocationsInterceptDeployments: API.OperationMethod<
   PatchProjectsLocationsInterceptDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsInterceptDeploymentsRequest,
-  output: Operation,
+  input: __S(394) as any as S.Schema<PatchProjectsLocationsInterceptDeploymentsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8813,8 +6726,10 @@ export const patchProjectsLocationsInterceptEndpointGroupAssociations: API.Opera
   PatchProjectsLocationsInterceptEndpointGroupAssociationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsInterceptEndpointGroupAssociationsRequest,
-  output: Operation,
+  input: __S(
+    395,
+  ) as any as S.Schema<PatchProjectsLocationsInterceptEndpointGroupAssociationsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8833,8 +6748,8 @@ export const patchProjectsLocationsInterceptEndpointGroups: API.OperationMethod<
   PatchProjectsLocationsInterceptEndpointGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsInterceptEndpointGroupsRequest,
-  output: Operation,
+  input: __S(396) as any as S.Schema<PatchProjectsLocationsInterceptEndpointGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8853,8 +6768,8 @@ export const patchProjectsLocationsMirroringDeploymentGroups: API.OperationMetho
   PatchProjectsLocationsMirroringDeploymentGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsMirroringDeploymentGroupsRequest,
-  output: Operation,
+  input: __S(397) as any as S.Schema<PatchProjectsLocationsMirroringDeploymentGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8873,8 +6788,8 @@ export const patchProjectsLocationsMirroringDeployments: API.OperationMethod<
   PatchProjectsLocationsMirroringDeploymentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsMirroringDeploymentsRequest,
-  output: Operation,
+  input: __S(398) as any as S.Schema<PatchProjectsLocationsMirroringDeploymentsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8893,8 +6808,10 @@ export const patchProjectsLocationsMirroringEndpointGroupAssociations: API.Opera
   PatchProjectsLocationsMirroringEndpointGroupAssociationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsMirroringEndpointGroupAssociationsRequest,
-  output: Operation,
+  input: __S(
+    399,
+  ) as any as S.Schema<PatchProjectsLocationsMirroringEndpointGroupAssociationsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8913,8 +6830,8 @@ export const patchProjectsLocationsMirroringEndpointGroups: API.OperationMethod<
   PatchProjectsLocationsMirroringEndpointGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsMirroringEndpointGroupsRequest,
-  output: Operation,
+  input: __S(400) as any as S.Schema<PatchProjectsLocationsMirroringEndpointGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8933,8 +6850,8 @@ export const patchProjectsLocationsRateLimitPolicies: API.OperationMethod<
   PatchProjectsLocationsRateLimitPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsRateLimitPoliciesRequest,
-  output: Operation,
+  input: __S(401) as any as S.Schema<PatchProjectsLocationsRateLimitPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8953,8 +6870,8 @@ export const patchProjectsLocationsSecurityProfileGroups: API.OperationMethod<
   PatchProjectsLocationsSecurityProfileGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsSecurityProfileGroupsRequest,
-  output: Operation,
+  input: __S(402) as any as S.Schema<PatchProjectsLocationsSecurityProfileGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8973,8 +6890,8 @@ export const patchProjectsLocationsSecurityProfiles: API.OperationMethod<
   PatchProjectsLocationsSecurityProfilesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsSecurityProfilesRequest,
-  output: Operation,
+  input: __S(403) as any as S.Schema<PatchProjectsLocationsSecurityProfilesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8993,8 +6910,8 @@ export const patchProjectsLocationsServerTlsPolicies: API.OperationMethod<
   PatchProjectsLocationsServerTlsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsServerTlsPoliciesRequest,
-  output: Operation,
+  input: __S(404) as any as S.Schema<PatchProjectsLocationsServerTlsPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9013,8 +6930,8 @@ export const patchProjectsLocationsTlsInspectionPolicies: API.OperationMethod<
   PatchProjectsLocationsTlsInspectionPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsTlsInspectionPoliciesRequest,
-  output: Operation,
+  input: __S(405) as any as S.Schema<PatchProjectsLocationsTlsInspectionPoliciesRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9033,8 +6950,8 @@ export const patchProjectsLocationsUrlLists: API.OperationMethod<
   PatchProjectsLocationsUrlListsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsUrlListsRequest,
-  output: Operation,
+  input: __S(406) as any as S.Schema<PatchProjectsLocationsUrlListsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9053,8 +6970,8 @@ export const removeItemsOrganizationsLocationsAddressGroups: API.OperationMethod
   RemoveItemsOrganizationsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveItemsOrganizationsLocationsAddressGroupsRequest,
-  output: Operation,
+  input: __S(408) as any as S.Schema<RemoveItemsOrganizationsLocationsAddressGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9073,8 +6990,8 @@ export const removeItemsProjectsLocationsAddressGroups: API.OperationMethod<
   RemoveItemsProjectsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveItemsProjectsLocationsAddressGroupsRequest,
-  output: Operation,
+  input: __S(409) as any as S.Schema<RemoveItemsProjectsLocationsAddressGroupsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9093,8 +7010,8 @@ export const setIamPolicyProjectsLocationsAddressGroups: API.OperationMethod<
   SetIamPolicyProjectsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsAddressGroupsRequest,
-  output: GoogleIamV1Policy,
+  input: __S(411) as any as S.Schema<SetIamPolicyProjectsLocationsAddressGroupsRequest>,
+  output: __S(238) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9113,8 +7030,8 @@ export const setIamPolicyProjectsLocationsAuthorizationPolicies: API.OperationMe
   SetIamPolicyProjectsLocationsAuthorizationPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsAuthorizationPoliciesRequest,
-  output: GoogleIamV1Policy,
+  input: __S(412) as any as S.Schema<SetIamPolicyProjectsLocationsAuthorizationPoliciesRequest>,
+  output: __S(238) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9133,8 +7050,8 @@ export const setIamPolicyProjectsLocationsAuthzPolicies: API.OperationMethod<
   SetIamPolicyProjectsLocationsAuthzPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsAuthzPoliciesRequest,
-  output: GoogleIamV1Policy,
+  input: __S(413) as any as S.Schema<SetIamPolicyProjectsLocationsAuthzPoliciesRequest>,
+  output: __S(238) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9153,8 +7070,8 @@ export const setIamPolicyProjectsLocationsClientTlsPolicies: API.OperationMethod
   SetIamPolicyProjectsLocationsClientTlsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsClientTlsPoliciesRequest,
-  output: GoogleIamV1Policy,
+  input: __S(414) as any as S.Schema<SetIamPolicyProjectsLocationsClientTlsPoliciesRequest>,
+  output: __S(238) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9173,8 +7090,8 @@ export const setIamPolicyProjectsLocationsServerTlsPolicies: API.OperationMethod
   SetIamPolicyProjectsLocationsServerTlsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsServerTlsPoliciesRequest,
-  output: GoogleIamV1Policy,
+  input: __S(415) as any as S.Schema<SetIamPolicyProjectsLocationsServerTlsPoliciesRequest>,
+  output: __S(238) as any as S.Schema<GoogleIamV1Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9193,8 +7110,8 @@ export const testIamPermissionsOrganizationsLocationsAddressGroups: API.Operatio
   TestIamPermissionsOrganizationsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsOrganizationsLocationsAddressGroupsRequest,
-  output: GoogleIamV1TestIamPermissionsResponse,
+  input: __S(417) as any as S.Schema<TestIamPermissionsOrganizationsLocationsAddressGroupsRequest>,
+  output: __S(416) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9213,8 +7130,8 @@ export const testIamPermissionsProjectsLocationsAddressGroups: API.OperationMeth
   TestIamPermissionsProjectsLocationsAddressGroupsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsAddressGroupsRequest,
-  output: GoogleIamV1TestIamPermissionsResponse,
+  input: __S(418) as any as S.Schema<TestIamPermissionsProjectsLocationsAddressGroupsRequest>,
+  output: __S(416) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9233,8 +7150,10 @@ export const testIamPermissionsProjectsLocationsAuthorizationPolicies: API.Opera
   TestIamPermissionsProjectsLocationsAuthorizationPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsAuthorizationPoliciesRequest,
-  output: GoogleIamV1TestIamPermissionsResponse,
+  input: __S(
+    419,
+  ) as any as S.Schema<TestIamPermissionsProjectsLocationsAuthorizationPoliciesRequest>,
+  output: __S(416) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9253,8 +7172,8 @@ export const testIamPermissionsProjectsLocationsAuthzPolicies: API.OperationMeth
   TestIamPermissionsProjectsLocationsAuthzPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsAuthzPoliciesRequest,
-  output: GoogleIamV1TestIamPermissionsResponse,
+  input: __S(420) as any as S.Schema<TestIamPermissionsProjectsLocationsAuthzPoliciesRequest>,
+  output: __S(416) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9273,8 +7192,8 @@ export const testIamPermissionsProjectsLocationsClientTlsPolicies: API.Operation
   TestIamPermissionsProjectsLocationsClientTlsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsClientTlsPoliciesRequest,
-  output: GoogleIamV1TestIamPermissionsResponse,
+  input: __S(421) as any as S.Schema<TestIamPermissionsProjectsLocationsClientTlsPoliciesRequest>,
+  output: __S(416) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9293,8 +7212,8 @@ export const testIamPermissionsProjectsLocationsServerTlsPolicies: API.Operation
   TestIamPermissionsProjectsLocationsServerTlsPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsServerTlsPoliciesRequest,
-  output: GoogleIamV1TestIamPermissionsResponse,
+  input: __S(422) as any as S.Schema<TestIamPermissionsProjectsLocationsServerTlsPoliciesRequest>,
+  output: __S(416) as any as S.Schema<GoogleIamV1TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9309,7 +7228,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           requestId: S.optional(S.String),
-          items: S.optional(StringList),
+          items: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "AddAddressGroupItemsRequest",
@@ -9318,7 +7237,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           addressGroup: S.String.pipe(T.Label()),
-          body: S.optional(AddAddressGroupItemsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9332,30 +7251,30 @@ function __c0(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(DocumentMap);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "Status" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(3)),
           name: S.optional(S.String),
-          error: S.optional(Status),
-          response: S.optional(DocumentMap),
+          error: S.optional(__S(5)),
+          response: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "Operation" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           addressGroup: S.String.pipe(T.Label()),
-          body: S.optional(AddAddressGroupItemsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9378,7 +7297,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9393,7 +7312,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9417,7 +7336,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           addressGroup: S.String.pipe(T.Label()),
-          body: S.optional(CloneAddressGroupItemsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(11).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9432,7 +7351,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           addressGroup: S.String.pipe(T.Label()),
-          body: S.optional(CloneAddressGroupItemsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(11).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9446,7 +7365,7 @@ function __c1(j: number): any {
     case 6:
       return S.Record(S.String, S.String);
     case 7:
-      return S.Array(AddressGroupPurposeItemEnum);
+      return S.Array(S.String);
   }
 }
 function __c2(j: number): any {
@@ -9457,12 +7376,12 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           createTime: S.optional(S.String),
           selfLink: S.optional(S.String),
-          labels: S.optional(StringMap),
-          items: S.optional(StringList),
+          labels: S.optional(__S(14)),
+          items: S.optional(__S(0)),
           updateTime: S.optional(S.String),
-          type: S.optional(AddressGroupTypeEnum),
+          type: S.optional(S.String),
           description: S.optional(S.String),
-          purpose: S.optional(AddressGroupPurposeItemEnumList),
+          purpose: S.optional(__S(15)),
           capacity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AddressGroup" });
@@ -9472,7 +7391,7 @@ function __c2(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           addressGroupId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(AddressGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9493,13 +7412,11 @@ function __c2(j: number): any {
         identifier: "FirewallEndpointAssociationReference",
       });
     case 3:
-      return S.Array(FirewallEndpointAssociationReference);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          timeoutAction: S.optional(
-            FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettingsTimeoutActionEnum,
-          ),
+          timeoutAction: S.optional(S.String),
           submissionTimeoutLoggingDisabled: S.optional(S.Boolean),
           maxAnalysisDuration: S.optional(S.String),
         }),
@@ -9510,14 +7427,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          wildfireInlineCloudAnalysisSettings: S.optional(
-            FirewallEndpointWildfireSettingsWildfireInlineCloudAnalysisSettings,
-          ),
-          wildfireRealtimeLookupTimeoutAction: S.optional(
-            FirewallEndpointWildfireSettingsWildfireRealtimeLookupTimeoutActionEnum,
-          ),
+          wildfireInlineCloudAnalysisSettings: S.optional(__S(20)),
+          wildfireRealtimeLookupTimeoutAction: S.optional(S.String),
           wildfireRealtimeLookupDuration: S.optional(S.String),
-          wildfireRegion: S.optional(FirewallEndpointWildfireSettingsWildfireRegionEnum),
+          wildfireRegion: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FirewallEndpointWildfireSettings",
@@ -9527,7 +7440,7 @@ function __c2(j: number): any {
         S.Struct({
           jumboFramesEnabled: S.optional(S.Boolean),
           httpPartialResponseBlocked: S.optional(S.Boolean),
-          contentCloudRegion: S.optional(FirewallEndpointEndpointSettingsContentCloudRegionEnum),
+          contentCloudRegion: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FirewallEndpointEndpointSettings",
@@ -9535,10 +7448,10 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          associatedNetworks: S.optional(StringList),
-          associations: S.optional(FirewallEndpointAssociationReferenceList),
-          state: S.optional(FirewallEndpointStateEnum),
-          labels: S.optional(StringMap),
+          associatedNetworks: S.optional(__S(0)),
+          associations: S.optional(__S(19)),
+          state: S.optional(S.String),
+          labels: S.optional(__S(14)),
           reconciling: S.optional(S.Boolean),
           billingProjectId: S.optional(S.String),
           description: S.optional(S.String),
@@ -9546,10 +7459,10 @@ function __c2(j: number): any {
           name: S.optional(S.String),
           createTime: S.optional(S.String),
           explicitPrivateServiceConnectAttachment: S.optional(S.String),
-          wildfireSettings: S.optional(FirewallEndpointWildfireSettings),
+          wildfireSettings: S.optional(__S(21)),
           updateTime: S.optional(S.String),
           satisfiesPzi: S.optional(S.Boolean),
-          endpointSettings: S.optional(FirewallEndpointEndpointSettings),
+          endpointSettings: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "FirewallEndpoint" });
   }
@@ -9563,7 +7476,7 @@ function __c3(j: number): any {
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           firewallEndpointId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(FirewallEndpoint.pipe(T.HttpBody())),
+          body: S.optional(__S(23).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9579,13 +7492,13 @@ function __c3(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           fileType: S.optional(S.String),
-          finalVerdict: S.optional(WildfireVerdictChangeRequestFinalVerdictEnum),
+          finalVerdict: S.optional(S.String),
           wildfireVerdictChangeRequestId: S.optional(S.String),
-          newVerdict: S.optional(WildfireVerdictChangeRequestNewVerdictEnum),
-          oldVerdict: S.optional(WildfireVerdictChangeRequestOldVerdictEnum),
+          newVerdict: S.optional(S.String),
+          oldVerdict: S.optional(S.String),
           resolutionTime: S.optional(S.String),
           comment: S.optional(S.String),
-          state: S.optional(WildfireVerdictChangeRequestStateEnum),
+          state: S.optional(S.String),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
           sha256: S.optional(S.String),
@@ -9599,7 +7512,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(WildfireVerdictChangeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(25).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9624,7 +7537,7 @@ function __c3(j: number): any {
           dataPathId: S.optional(S.String),
           urlFilteringProfile: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(14)),
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecurityProfileGroup" });
@@ -9633,7 +7546,7 @@ function __c3(j: number): any {
         S.Struct({
           securityProfileGroupId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(SecurityProfileGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(27).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9647,17 +7560,17 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          filteringAction: S.optional(UrlFilterFilteringActionEnum),
-          urls: S.optional(StringList),
+          filteringAction: S.optional(S.String),
+          urls: S.optional(__S(0)),
           priority: S.optional(S.Number),
         }),
       ).annotate({ identifier: "UrlFilter" });
     case 6:
-      return S.Array(UrlFilter);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          urlFilters: S.optional(UrlFilterList),
+          urlFilters: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "UrlFilteringProfile" });
   }
@@ -9667,14 +7580,14 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          fileType: S.optional(WildfireInlineMlSettingsInlineMlConfigFileTypeEnum),
-          action: S.optional(WildfireInlineMlSettingsInlineMlConfigActionEnum),
+          fileType: S.optional(S.String),
+          action: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WildfireInlineMlSettingsInlineMlConfig",
       });
     case 1:
-      return S.Array(WildfireInlineMlSettingsInlineMlConfig);
+      return S.Array(__S(32));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9685,20 +7598,20 @@ function __c4(j: number): any {
         identifier: "WildfireInlineMlFileException",
       });
     case 3:
-      return S.Array(WildfireInlineMlFileException);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          inlineMlConfigs: S.optional(WildfireInlineMlSettingsInlineMlConfigList),
-          fileExceptions: S.optional(WildfireInlineMlFileExceptionList),
+          inlineMlConfigs: S.optional(__S(33)),
+          fileExceptions: S.optional(__S(35)),
         }),
       ).annotate({ identifier: "WildfireInlineMlSettings" });
     case 5:
-      return S.Array(WildfireInlineMlSettings);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          fileTypes: S.optional(WildfireSubmissionRuleCustomFileTypesFileTypesItemEnumList),
+          fileTypes: S.optional(__S(15)),
         }),
       ).annotate({
         identifier: "WildfireSubmissionRuleCustomFileTypes",
@@ -9706,9 +7619,9 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          direction: S.optional(WildfireSubmissionRuleDirectionEnum),
-          fileSelectionMode: S.optional(WildfireSubmissionRuleFileSelectionModeEnum),
-          customFileTypes: S.optional(WildfireSubmissionRuleCustomFileTypes),
+          direction: S.optional(S.String),
+          fileSelectionMode: S.optional(S.String),
+          customFileTypes: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "WildfireSubmissionRule" });
   }
@@ -9716,24 +7629,22 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(WildfireSubmissionRule);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          protocol: S.optional(WildfireInlineMlOverrideProtocolEnum),
-          action: S.optional(WildfireInlineMlOverrideActionEnum),
+          protocol: S.optional(S.String),
+          action: S.optional(S.String),
         }),
       ).annotate({ identifier: "WildfireInlineMlOverride" });
     case 2:
-      return S.Array(WildfireInlineMlOverride);
+      return S.Array(__S(41));
     case 3:
-      return S.Array(WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnum);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          fileTypes: S.optional(
-            WildfireInlineCloudAnalysisRuleCustomFileTypesFileTypesItemEnumList,
-          ),
+          fileTypes: S.optional(__S(43)),
         }),
       ).annotate({
         identifier: "WildfireInlineCloudAnalysisRuleCustomFileTypes",
@@ -9741,20 +7652,20 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          customFileTypes: S.optional(WildfireInlineCloudAnalysisRuleCustomFileTypes),
-          direction: S.optional(WildfireInlineCloudAnalysisRuleDirectionEnum),
-          action: S.optional(WildfireInlineCloudAnalysisRuleActionEnum),
-          fileSelectionMode: S.optional(WildfireInlineCloudAnalysisRuleFileSelectionModeEnum),
+          customFileTypes: S.optional(__S(44)),
+          direction: S.optional(S.String),
+          action: S.optional(S.String),
+          fileSelectionMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WildfireInlineCloudAnalysisRule",
       });
     case 6:
-      return S.Array(WildfireInlineCloudAnalysisRule);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(WildfireThreatOverrideActionEnum),
+          action: S.optional(S.String),
           threatId: S.optional(S.String),
         }),
       ).annotate({ identifier: "WildfireThreatOverride" });
@@ -9763,18 +7674,18 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(WildfireThreatOverride);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          wildfireInlineMlSetting: S.optional(WildfireInlineMlSettings),
-          wildfireInlineMlSettings: S.optional(WildfireInlineMlSettingsList),
+          wildfireInlineMlSetting: S.optional(__S(36)),
+          wildfireInlineMlSettings: S.optional(__S(37)),
           wildfireRealtimeLookup: S.optional(S.Boolean),
-          wildfireSubmissionRules: S.optional(WildfireSubmissionRuleList),
-          wildfireInlineMlOverrides: S.optional(WildfireInlineMlOverrideList),
-          wildfireInlineCloudAnalysisRules: S.optional(WildfireInlineCloudAnalysisRuleList),
-          wildfireThreatOverrides: S.optional(WildfireThreatOverrideList),
-          wildfireOverrides: S.optional(WildfireOverrideList),
+          wildfireSubmissionRules: S.optional(__S(40)),
+          wildfireInlineMlOverrides: S.optional(__S(42)),
+          wildfireInlineCloudAnalysisRules: S.optional(__S(46)),
+          wildfireThreatOverrides: S.optional(__S(48)),
+          wildfireOverrides: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "WildfireAnalysisProfile" });
     case 2:
@@ -9787,27 +7698,27 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           threatId: S.optional(S.String),
-          action: S.optional(ThreatOverrideActionEnum),
-          type: S.optional(ThreatOverrideTypeEnum),
+          action: S.optional(S.String),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ThreatOverride" });
     case 4:
-      return S.Array(ThreatOverride);
+      return S.Array(__S(51));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          severity: S.optional(SeverityOverrideSeverityEnum),
-          action: S.optional(SeverityOverrideActionEnum),
+          severity: S.optional(S.String),
+          action: S.optional(S.String),
         }),
       ).annotate({ identifier: "SeverityOverride" });
     case 6:
-      return S.Array(SeverityOverride);
+      return S.Array(__S(53));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          threatOverrides: S.optional(ThreatOverrideList),
-          antivirusOverrides: S.optional(AntivirusOverrideList),
-          severityOverrides: S.optional(SeverityOverrideList),
+          threatOverrides: S.optional(__S(52)),
+          antivirusOverrides: S.optional(__S(42)),
+          severityOverrides: S.optional(__S(54)),
         }),
       ).annotate({ identifier: "ThreatPreventionProfile" });
   }
@@ -9823,18 +7734,18 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          urlFilteringProfile: S.optional(UrlFilteringProfile),
+          urlFilteringProfile: S.optional(__S(31)),
           updateTime: S.optional(S.String),
-          wildfireAnalysisProfile: S.optional(WildfireAnalysisProfile),
-          customMirroringProfile: S.optional(CustomMirroringProfile),
+          wildfireAnalysisProfile: S.optional(__S(49)),
+          customMirroringProfile: S.optional(__S(50)),
           name: S.optional(S.String),
-          labels: S.optional(StringMap),
-          threatPreventionProfile: S.optional(ThreatPreventionProfile),
+          labels: S.optional(__S(14)),
+          threatPreventionProfile: S.optional(__S(55)),
           description: S.optional(S.String),
           createTime: S.optional(S.String),
-          customInterceptProfile: S.optional(CustomInterceptProfile),
+          customInterceptProfile: S.optional(__S(56)),
           etag: S.optional(S.String),
-          type: S.optional(SecurityProfileTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecurityProfile" });
     case 2:
@@ -9842,7 +7753,7 @@ function __c7(j: number): any {
         S.Struct({
           securityProfileId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(SecurityProfile.pipe(T.HttpBody())),
+          body: S.optional(__S(57).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9859,7 +7770,7 @@ function __c7(j: number): any {
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           addressGroupId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(AddressGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9873,12 +7784,12 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ipBlocks: S.optional(StringList),
-          principals: S.optional(StringList),
+          ipBlocks: S.optional(__S(0)),
+          principals: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "Source" });
     case 5:
-      return S.Array(Source);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -9895,31 +7806,31 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          methods: S.optional(StringList),
-          httpHeaderMatch: S.optional(HttpHeaderMatch),
-          hosts: S.optional(StringList),
-          ports: S.optional(IntegerList),
+          methods: S.optional(__S(0)),
+          httpHeaderMatch: S.optional(__S(62)),
+          hosts: S.optional(__S(0)),
+          ports: S.optional(__S(63)),
         }),
       ).annotate({ identifier: "Destination" });
     case 1:
-      return S.Array(Destination);
+      return S.Array(__S(64));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sources: S.optional(SourceList),
-          destinations: S.optional(DestinationList),
+          sources: S.optional(__S(61)),
+          destinations: S.optional(__S(65)),
         }),
       ).annotate({ identifier: "Rule" });
     case 3:
-      return S.Array(Rule);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          action: S.optional(AuthorizationPolicyActionEnum),
-          rules: S.optional(RuleList),
+          action: S.optional(S.String),
+          rules: S.optional(__S(67)),
           updateTime: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(14)),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
         }),
@@ -9929,7 +7840,7 @@ function __c8(j: number): any {
         S.Struct({
           authorizationPolicyId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(AuthorizationPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(68).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9943,8 +7854,8 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(StringList),
-          loadBalancingScheme: S.optional(AuthzPolicyTargetLoadBalancingSchemeEnum),
+          resources: S.optional(__S(0)),
+          loadBalancingScheme: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthzPolicyTarget" });
     case 7:
@@ -9961,7 +7872,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AuthzPolicyAuthzRuleIpBlock);
+      return S.Array(__S(71));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -9977,7 +7888,7 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ids: S.optional(StringList),
+          ids: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "AuthzPolicyAuthzRuleRequestResourceTagValueIdSet",
@@ -9985,31 +7896,31 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          iamServiceAccount: S.optional(AuthzPolicyAuthzRuleStringMatch),
-          tagValueIdSet: S.optional(AuthzPolicyAuthzRuleRequestResourceTagValueIdSet),
+          iamServiceAccount: S.optional(__S(73)),
+          tagValueIdSet: S.optional(__S(74)),
         }),
       ).annotate({
         identifier: "AuthzPolicyAuthzRuleRequestResource",
       });
     case 4:
-      return S.Array(AuthzPolicyAuthzRuleRequestResource);
+      return S.Array(__S(75));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          principalSelector: S.optional(AuthzPolicyAuthzRulePrincipalPrincipalSelectorEnum),
-          principal: S.optional(AuthzPolicyAuthzRuleStringMatch),
+          principalSelector: S.optional(S.String),
+          principal: S.optional(__S(73)),
         }),
       ).annotate({
         identifier: "AuthzPolicyAuthzRulePrincipal",
       });
     case 6:
-      return S.Array(AuthzPolicyAuthzRulePrincipal);
+      return S.Array(__S(77));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ipBlocks: S.optional(AuthzPolicyAuthzRuleIpBlockList),
-          resources: S.optional(AuthzPolicyAuthzRuleRequestResourceList),
-          principals: S.optional(AuthzPolicyAuthzRulePrincipalList),
+          ipBlocks: S.optional(__S(72)),
+          resources: S.optional(__S(76)),
+          principals: S.optional(__S(78)),
         }),
       ).annotate({
         identifier: "AuthzPolicyAuthzRuleFromRequestSource",
@@ -10019,31 +7930,31 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AuthzPolicyAuthzRuleFromRequestSource);
+      return S.Array(__S(79));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          sources: S.optional(AuthzPolicyAuthzRuleFromRequestSourceList),
-          notSources: S.optional(AuthzPolicyAuthzRuleFromRequestSourceList),
+          sources: S.optional(__S(80)),
+          notSources: S.optional(__S(80)),
         }),
       ).annotate({ identifier: "AuthzPolicyAuthzRuleFrom" });
     case 2:
-      return S.Array(AuthzPolicyAuthzRuleStringMatch);
+      return S.Array(__S(73));
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          value: S.optional(AuthzPolicyAuthzRuleStringMatch),
+          value: S.optional(__S(73)),
         }),
       ).annotate({
         identifier: "AuthzPolicyAuthzRuleHeaderMatch",
       });
     case 4:
-      return S.Array(AuthzPolicyAuthzRuleHeaderMatch);
+      return S.Array(__S(83));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(AuthzPolicyAuthzRuleHeaderMatchList),
+          headers: S.optional(__S(84)),
         }),
       ).annotate({
         identifier: "AuthzPolicyAuthzRuleToRequestOperationHeaderSet",
@@ -10052,13 +7963,13 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          params: S.optional(AuthzPolicyAuthzRuleStringMatchList),
+          params: S.optional(__S(82)),
         }),
       ).annotate({
         identifier: "AuthzPolicyAuthzRuleToRequestOperationMCPMethod",
       });
     case 7:
-      return S.Array(AuthzPolicyAuthzRuleToRequestOperationMCPMethod);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -10066,10 +7977,8 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          methods: S.optional(AuthzPolicyAuthzRuleToRequestOperationMCPMethodList),
-          baseProtocolMethodsOption: S.optional(
-            AuthzPolicyAuthzRuleToRequestOperationMCPBaseProtocolMethodsOptionEnum,
-          ),
+          methods: S.optional(__S(87)),
+          baseProtocolMethodsOption: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AuthzPolicyAuthzRuleToRequestOperationMCP",
@@ -10077,39 +7986,39 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          snis: S.optional(AuthzPolicyAuthzRuleStringMatchList),
-          headerSet: S.optional(AuthzPolicyAuthzRuleToRequestOperationHeaderSet),
-          paths: S.optional(AuthzPolicyAuthzRuleStringMatchList),
-          methods: S.optional(StringList),
-          mcp: S.optional(AuthzPolicyAuthzRuleToRequestOperationMCP),
-          hosts: S.optional(AuthzPolicyAuthzRuleStringMatchList),
+          snis: S.optional(__S(82)),
+          headerSet: S.optional(__S(85)),
+          paths: S.optional(__S(82)),
+          methods: S.optional(__S(0)),
+          mcp: S.optional(__S(88)),
+          hosts: S.optional(__S(82)),
         }),
       ).annotate({
         identifier: "AuthzPolicyAuthzRuleToRequestOperation",
       });
     case 2:
-      return S.Array(AuthzPolicyAuthzRuleToRequestOperation);
+      return S.Array(__S(89));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(AuthzPolicyAuthzRuleToRequestOperationList),
-          notOperations: S.optional(AuthzPolicyAuthzRuleToRequestOperationList),
+          operations: S.optional(__S(90)),
+          notOperations: S.optional(__S(90)),
         }),
       ).annotate({ identifier: "AuthzPolicyAuthzRuleTo" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          from: S.optional(AuthzPolicyAuthzRuleFrom),
-          to: S.optional(AuthzPolicyAuthzRuleTo),
+          from: S.optional(__S(81)),
+          to: S.optional(__S(91)),
           when: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthzPolicyAuthzRule" });
     case 5:
-      return S.Array(AuthzPolicyAuthzRule);
+      return S.Array(__S(92));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(StringList),
+          resources: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "AuthzPolicyCustomProviderAuthzExtension",
@@ -10117,8 +8026,8 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          authzExtension: S.optional(AuthzPolicyCustomProviderAuthzExtension),
-          cloudIap: S.optional(CancelOperationRequest),
+          authzExtension: S.optional(__S(94)),
+          cloudIap: S.optional(__S(8)),
         }),
       ).annotate({
         identifier: "AuthzPolicyCustomProvider",
@@ -10130,17 +8039,17 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          policyProfile: S.optional(AuthzPolicyPolicyProfileEnum),
+          policyProfile: S.optional(S.String),
           updateTime: S.optional(S.String),
-          labels: S.optional(StringMap),
-          target: S.optional(AuthzPolicyTarget),
+          labels: S.optional(__S(14)),
+          target: S.optional(__S(70)),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          httpRules: S.optional(AuthzPolicyAuthzRuleList),
-          networkRules: S.optional(AuthzPolicyAuthzRuleList),
-          action: S.optional(AuthzPolicyActionEnum),
+          httpRules: S.optional(__S(93)),
+          networkRules: S.optional(__S(93)),
+          action: S.optional(S.String),
           description: S.optional(S.String),
-          customProvider: S.optional(AuthzPolicyCustomProvider),
+          customProvider: S.optional(__S(95)),
         }),
       ).annotate({ identifier: "AuthzPolicy" });
     case 1:
@@ -10149,7 +8058,7 @@ function __c12(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           authzPolicyId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(AuthzPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(96).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10163,11 +8072,11 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          wellKnownRoots: S.optional(BackendAuthenticationConfigWellKnownRootsEnum),
+          wellKnownRoots: S.optional(S.String),
           etag: S.optional(S.String),
           updateTime: S.optional(S.String),
           description: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(14)),
           clientCertificate: S.optional(S.String),
           name: S.optional(S.String),
           trustConfig: S.optional(S.String),
@@ -10181,7 +8090,7 @@ function __c12(j: number): any {
         S.Struct({
           backendAuthenticationConfigId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(BackendAuthenticationConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(98).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10211,12 +8120,12 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          certificateProviderInstance: S.optional(CertificateProviderInstance),
-          grpcEndpoint: S.optional(GoogleCloudNetworksecurityV1beta1GrpcEndpoint),
+          certificateProviderInstance: S.optional(__S(100)),
+          grpcEndpoint: S.optional(__S(101)),
         }),
       ).annotate({ identifier: "ValidationCA" });
     case 7:
-      return S.Array(ValidationCA);
+      return S.Array(__S(102));
   }
 }
 function __c13(j: number): any {
@@ -10224,8 +8133,8 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          certificateProviderInstance: S.optional(CertificateProviderInstance),
-          grpcEndpoint: S.optional(GoogleCloudNetworksecurityV1beta1GrpcEndpoint),
+          certificateProviderInstance: S.optional(__S(100)),
+          grpcEndpoint: S.optional(__S(101)),
         }),
       ).annotate({
         identifier: "GoogleCloudNetworksecurityV1beta1CertificateProvider",
@@ -10235,11 +8144,11 @@ function __c13(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
-          serverValidationCa: S.optional(ValidationCAList),
+          serverValidationCa: S.optional(__S(103)),
           description: S.optional(S.String),
           createTime: S.optional(S.String),
-          labels: S.optional(StringMap),
-          clientCertificate: S.optional(GoogleCloudNetworksecurityV1beta1CertificateProvider),
+          labels: S.optional(__S(14)),
+          clientCertificate: S.optional(__S(104)),
           sni: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClientTlsPolicy" });
@@ -10248,7 +8157,7 @@ function __c13(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           clientTlsPolicyId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ClientTlsPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(105).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10262,11 +8171,11 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          excludedNetworks: S.optional(StringList),
+          excludedNetworks: S.optional(__S(0)),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          provider: S.optional(DnsThreatDetectorProviderEnum),
-          labels: S.optional(StringMap),
+          provider: S.optional(S.String),
+          labels: S.optional(__S(14)),
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "DnsThreatDetector" });
@@ -10275,7 +8184,7 @@ function __c13(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           dnsThreatDetectorId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(DnsThreatDetector.pipe(T.HttpBody())),
+          body: S.optional(__S(107).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10292,12 +8201,12 @@ function __c13(j: number): any {
           createTime: S.optional(S.String),
           name: S.optional(S.String),
           tlsInspectionPolicy: S.optional(S.String),
-          state: S.optional(FirewallEndpointAssociationStateEnum),
+          state: S.optional(S.String),
           firewallEndpoint: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
           disabled: S.optional(S.Boolean),
           network: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(14)),
           updateTime: S.optional(S.String),
         }),
       ).annotate({
@@ -10309,7 +8218,7 @@ function __c13(j: number): any {
           parent: S.String.pipe(T.Label()),
           firewallEndpointAssociationId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(FirewallEndpointAssociation.pipe(T.HttpBody())),
+          body: S.optional(__S(109).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10327,7 +8236,7 @@ function __c13(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           firewallEndpointId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(FirewallEndpoint.pipe(T.HttpBody())),
+          body: S.optional(__S(23).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10346,7 +8255,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(WildfireVerdictChangeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(25).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10372,7 +8281,7 @@ function __c14(j: number): any {
         S.Struct({
           gatewaySecurityPolicyId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GatewaySecurityPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(113).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10395,7 +8304,7 @@ function __c14(j: number): any {
           updateTime: S.optional(S.String),
           applicationMatcher: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          basicProfile: S.optional(GatewaySecurityPolicyRuleBasicProfileEnum),
+          basicProfile: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GatewaySecurityPolicyRule",
@@ -10405,7 +8314,7 @@ function __c14(j: number): any {
         S.Struct({
           gatewaySecurityPolicyRuleId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(GatewaySecurityPolicyRule.pipe(T.HttpBody())),
+          body: S.optional(__S(115).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10420,18 +8329,18 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          state: S.optional(InterceptDeploymentGroupDeploymentStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InterceptDeploymentGroupDeployment",
       });
     case 6:
-      return S.Array(InterceptDeploymentGroupDeployment);
+      return S.Array(__S(117));
     case 7:
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
-          state: S.optional(InterceptLocationStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "InterceptLocation" });
   }
@@ -10439,7 +8348,7 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(InterceptLocation);
+      return S.Array(__S(119));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10449,21 +8358,21 @@ function __c15(j: number): any {
         identifier: "InterceptDeploymentGroupConnectedEndpointGroup",
       });
     case 2:
-      return S.Array(InterceptDeploymentGroupConnectedEndpointGroup);
+      return S.Array(__S(121));
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          nestedDeployments: S.optional(InterceptDeploymentGroupDeploymentList),
-          locations: S.optional(InterceptLocationList),
+          nestedDeployments: S.optional(__S(118)),
+          locations: S.optional(__S(120)),
           reconciling: S.optional(S.Boolean),
           description: S.optional(S.String),
           updateTime: S.optional(S.String),
-          state: S.optional(InterceptDeploymentGroupStateEnum),
-          labels: S.optional(StringMap),
+          state: S.optional(S.String),
+          labels: S.optional(__S(14)),
           network: S.optional(S.String),
           createTime: S.optional(S.String),
-          connectedEndpointGroups: S.optional(InterceptDeploymentGroupConnectedEndpointGroupList),
+          connectedEndpointGroups: S.optional(__S(122)),
         }),
       ).annotate({ identifier: "InterceptDeploymentGroup" });
     case 4:
@@ -10472,7 +8381,7 @@ function __c15(j: number): any {
           interceptDeploymentGroupId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(InterceptDeploymentGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(123).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10488,10 +8397,10 @@ function __c15(j: number): any {
         S.Struct({
           interceptDeploymentGroup: S.optional(S.String),
           createTime: S.optional(S.String),
-          state: S.optional(InterceptDeploymentStateEnum),
+          state: S.optional(S.String),
           name: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(14)),
           description: S.optional(S.String),
           forwardingRule: S.optional(S.String),
           updateTime: S.optional(S.String),
@@ -10503,7 +8412,7 @@ function __c15(j: number): any {
           parent: S.String.pipe(T.Label()),
           interceptDeploymentId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(InterceptDeployment.pipe(T.HttpBody())),
+          body: S.optional(__S(125).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10518,7 +8427,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
-          state: S.optional(InterceptEndpointGroupAssociationLocationDetailsStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InterceptEndpointGroupAssociationLocationDetails",
@@ -10528,20 +8437,20 @@ function __c15(j: number): any {
 function __c16(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(InterceptEndpointGroupAssociationLocationDetails);
+      return S.Array(__S(127));
     case 1:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
           networkCookie: S.optional(S.Number),
-          state: S.optional(InterceptEndpointGroupAssociationStateEnum),
-          labels: S.optional(StringMap),
+          state: S.optional(S.String),
+          labels: S.optional(__S(14)),
           network: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
-          locations: S.optional(InterceptLocationList),
+          locations: S.optional(__S(120)),
           name: S.optional(S.String),
           interceptEndpointGroup: S.optional(S.String),
-          locationsDetails: S.optional(InterceptEndpointGroupAssociationLocationDetailsList),
+          locationsDetails: S.optional(__S(128)),
           createTime: S.optional(S.String),
         }),
       ).annotate({
@@ -10553,7 +8462,7 @@ function __c16(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           interceptEndpointGroupAssociationId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(InterceptEndpointGroupAssociation.pipe(T.HttpBody())),
+          body: S.optional(__S(129).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10568,19 +8477,19 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           network: S.optional(S.String),
-          state: S.optional(InterceptEndpointGroupAssociationDetailsStateEnum),
+          state: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InterceptEndpointGroupAssociationDetails",
       });
     case 4:
-      return S.Array(InterceptEndpointGroupAssociationDetails);
+      return S.Array(__S(131));
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          locations: S.optional(InterceptLocationList),
+          locations: S.optional(__S(120)),
         }),
       ).annotate({
         identifier: "InterceptEndpointGroupConnectedDeploymentGroup",
@@ -10589,13 +8498,13 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          associations: S.optional(InterceptEndpointGroupAssociationDetailsList),
+          associations: S.optional(__S(132)),
           interceptDeploymentGroup: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(14)),
           reconciling: S.optional(S.Boolean),
-          state: S.optional(InterceptEndpointGroupStateEnum),
+          state: S.optional(S.String),
           createTime: S.optional(S.String),
-          connectedDeploymentGroup: S.optional(InterceptEndpointGroupConnectedDeploymentGroup),
+          connectedDeploymentGroup: S.optional(__S(133)),
           description: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -10606,7 +8515,7 @@ function __c16(j: number): any {
           interceptEndpointGroupId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(InterceptEndpointGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(134).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10624,23 +8533,23 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(MirroringDeploymentGroupDeploymentStateEnum),
+          state: S.optional(S.String),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MirroringDeploymentGroupDeployment",
       });
     case 1:
-      return S.Array(MirroringDeploymentGroupDeployment);
+      return S.Array(__S(136));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(MirroringLocationStateEnum),
+          state: S.optional(S.String),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "MirroringLocation" });
     case 3:
-      return S.Array(MirroringLocation);
+      return S.Array(__S(138));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -10648,13 +8557,13 @@ function __c17(j: number): any {
           network: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          state: S.optional(MirroringDeploymentGroupStateEnum),
-          connectedEndpointGroups: S.optional(MirroringDeploymentGroupConnectedEndpointGroupList),
-          labels: S.optional(StringMap),
+          state: S.optional(S.String),
+          connectedEndpointGroups: S.optional(__S(122)),
+          labels: S.optional(__S(14)),
           description: S.optional(S.String),
           createTime: S.optional(S.String),
-          nestedDeployments: S.optional(MirroringDeploymentGroupDeploymentList),
-          locations: S.optional(MirroringLocationList),
+          nestedDeployments: S.optional(__S(137)),
+          locations: S.optional(__S(139)),
         }),
       ).annotate({ identifier: "MirroringDeploymentGroup" });
     case 5:
@@ -10663,7 +8572,7 @@ function __c17(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           mirroringDeploymentGroupId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(MirroringDeploymentGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(140).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10680,10 +8589,10 @@ function __c17(j: number): any {
           forwardingRule: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(14)),
           description: S.optional(S.String),
           mirroringDeploymentGroup: S.optional(S.String),
-          state: S.optional(MirroringDeploymentStateEnum),
+          state: S.optional(S.String),
           createTime: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
         }),
@@ -10694,7 +8603,7 @@ function __c17(j: number): any {
           parent: S.String.pipe(T.Label()),
           mirroringDeploymentId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(MirroringDeployment.pipe(T.HttpBody())),
+          body: S.optional(__S(142).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10712,14 +8621,14 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(MirroringEndpointGroupAssociationLocationDetailsStateEnum),
+          state: S.optional(S.String),
           location: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MirroringEndpointGroupAssociationLocationDetails",
       });
     case 1:
-      return S.Array(MirroringEndpointGroupAssociationLocationDetails);
+      return S.Array(__S(144));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10728,12 +8637,12 @@ function __c18(j: number): any {
           reconciling: S.optional(S.Boolean),
           name: S.optional(S.String),
           mirroringEndpointGroup: S.optional(S.String),
-          state: S.optional(MirroringEndpointGroupAssociationStateEnum),
-          locations: S.optional(MirroringLocationList),
-          locationsDetails: S.optional(MirroringEndpointGroupAssociationLocationDetailsList),
+          state: S.optional(S.String),
+          locations: S.optional(__S(139)),
+          locationsDetails: S.optional(__S(145)),
           updateTime: S.optional(S.String),
           networkCookie: S.optional(S.Number),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(14)),
         }),
       ).annotate({
         identifier: "MirroringEndpointGroupAssociation",
@@ -10744,7 +8653,7 @@ function __c18(j: number): any {
           parent: S.String.pipe(T.Label()),
           mirroringEndpointGroupAssociationId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(MirroringEndpointGroupAssociation.pipe(T.HttpBody())),
+          body: S.optional(__S(146).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10759,25 +8668,25 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          state: S.optional(MirroringEndpointGroupAssociationDetailsStateEnum),
+          state: S.optional(S.String),
           network: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MirroringEndpointGroupAssociationDetails",
       });
     case 5:
-      return S.Array(MirroringEndpointGroupAssociationDetails);
+      return S.Array(__S(148));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(MirroringLocationList),
+          locations: S.optional(__S(139)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MirroringEndpointGroupConnectedDeploymentGroup",
       });
     case 7:
-      return S.Array(MirroringEndpointGroupConnectedDeploymentGroup);
+      return S.Array(__S(150));
   }
 }
 function __c19(j: number): any {
@@ -10785,14 +8694,14 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(MirroringEndpointGroupStateEnum),
+          state: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          associations: S.optional(MirroringEndpointGroupAssociationDetailsList),
-          connectedDeploymentGroups: S.optional(MirroringEndpointGroupConnectedDeploymentGroupList),
-          labels: S.optional(StringMap),
-          type: S.optional(MirroringEndpointGroupTypeEnum),
+          associations: S.optional(__S(149)),
+          connectedDeploymentGroups: S.optional(__S(151)),
+          labels: S.optional(__S(14)),
+          type: S.optional(S.String),
           mirroringDeploymentGroup: S.optional(S.String),
           createTime: S.optional(S.String),
           reconciling: S.optional(S.Boolean),
@@ -10804,7 +8713,7 @@ function __c19(j: number): any {
           mirroringEndpointGroupId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(MirroringEndpointGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(152).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10822,7 +8731,7 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "RateLimitPolicyTarget" });
     case 3:
-      return S.Array(RateLimitPolicyTarget);
+      return S.Array(__S(154));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -10833,20 +8742,18 @@ function __c19(j: number): any {
         identifier: "RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader",
       });
     case 5:
-      return S.Array(RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeader);
+      return S.Array(__S(156));
     case 6:
       return S.suspend(() =>
         S.Struct({
           principal: S.optional(S.String),
-          principalType: S.optional(
-            RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipalPrincipalTypeEnum,
-          ),
+          principalType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal",
       });
     case 7:
-      return S.Array(RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipal);
+      return S.Array(__S(158));
   }
 }
 function __c20(j: number): any {
@@ -10856,12 +8763,8 @@ function __c20(j: number): any {
         S.Struct({
           sourceIp: S.optional(S.String),
           httpPath: S.optional(S.String),
-          httpHeaders: S.optional(
-            RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyHttpHeaderList,
-          ),
-          principals: S.optional(
-            RateLimitPolicyRateLimitBucketUserOverrideOverrideKeyPrincipalList,
-          ),
+          httpHeaders: S.optional(__S(157)),
+          principals: S.optional(__S(159)),
           mcpTool: S.optional(S.String),
         }),
       ).annotate({
@@ -10870,7 +8773,7 @@ function __c20(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          intervalUnit: S.optional(RateLimitPolicyRateLimitBucketCountLimitIntervalUnitEnum),
+          intervalUnit: S.optional(S.String),
           count: S.optional(S.String),
           interval: S.optional(S.String),
         }),
@@ -10880,7 +8783,7 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          countLimit: S.optional(RateLimitPolicyRateLimitBucketCountLimit),
+          countLimit: S.optional(__S(161)),
         }),
       ).annotate({
         identifier: "RateLimitPolicyRateLimitBucketLimit",
@@ -10888,34 +8791,34 @@ function __c20(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          overrideKey: S.optional(RateLimitPolicyRateLimitBucketUserOverrideOverrideKey),
-          limit: S.optional(RateLimitPolicyRateLimitBucketLimit),
+          overrideKey: S.optional(__S(160)),
+          limit: S.optional(__S(162)),
         }),
       ).annotate({
         identifier: "RateLimitPolicyRateLimitBucketUserOverride",
       });
     case 4:
-      return S.Array(RateLimitPolicyRateLimitBucketUserOverride);
+      return S.Array(__S(163));
     case 5:
       return S.suspend(() =>
         S.Struct({
           header: S.optional(S.String),
-          principalType: S.optional(RateLimitPolicyRateLimitBucketKeyPrincipalTypeEnum),
-          keyType: S.optional(RateLimitPolicyRateLimitBucketKeyKeyTypeEnum),
+          principalType: S.optional(S.String),
+          keyType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RateLimitPolicyRateLimitBucketKey",
       });
     case 6:
-      return S.Array(RateLimitPolicyRateLimitBucketKey);
+      return S.Array(__S(165));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          userOverrides: S.optional(RateLimitPolicyRateLimitBucketUserOverrideList),
-          defaultLimit: S.optional(RateLimitPolicyRateLimitBucketLimit),
+          userOverrides: S.optional(__S(164)),
+          defaultLimit: S.optional(__S(162)),
           name: S.optional(S.String),
           dryRun: S.optional(S.Boolean),
-          keys: S.optional(RateLimitPolicyRateLimitBucketKeyList),
+          keys: S.optional(__S(166)),
         }),
       ).annotate({
         identifier: "RateLimitPolicyRateLimitBucket",
@@ -10925,22 +8828,22 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RateLimitPolicyRateLimitBucket);
+      return S.Array(__S(167));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          principalSelector: S.optional(RateLimitPolicyRateLimitRulePrincipalPrincipalSelectorEnum),
-          principal: S.optional(RateLimitPolicyRateLimitRuleStringMatch),
+          principalSelector: S.optional(S.String),
+          principal: S.optional(__S(73)),
         }),
       ).annotate({
         identifier: "RateLimitPolicyRateLimitRulePrincipal",
       });
     case 2:
-      return S.Array(RateLimitPolicyRateLimitRulePrincipal);
+      return S.Array(__S(169));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          principals: S.optional(RateLimitPolicyRateLimitRulePrincipalList),
+          principals: S.optional(__S(170)),
         }),
       ).annotate({
         identifier: "RateLimitPolicyRateLimitRuleFromSource",
@@ -10948,8 +8851,8 @@ function __c21(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          source: S.optional(RateLimitPolicyRateLimitRuleFromSource),
-          notSource: S.optional(RateLimitPolicyRateLimitRuleFromSource),
+          source: S.optional(__S(171)),
+          notSource: S.optional(__S(171)),
         }),
       ).annotate({
         identifier: "RateLimitPolicyRateLimitRuleFrom",
@@ -10957,10 +8860,8 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          methods: S.optional(RateLimitPolicyRateLimitRuleToDestinationMCPMethodList),
-          baseProtocolMethodsOption: S.optional(
-            RateLimitPolicyRateLimitRuleToDestinationMCPBaseProtocolMethodsOptionEnum,
-          ),
+          methods: S.optional(__S(87)),
+          baseProtocolMethodsOption: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RateLimitPolicyRateLimitRuleToDestinationMCP",
@@ -10968,11 +8869,11 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          hosts: S.optional(RateLimitPolicyRateLimitRuleStringMatchList),
-          paths: S.optional(RateLimitPolicyRateLimitRuleStringMatchList),
-          headerSet: S.optional(RateLimitPolicyRateLimitRuleToDestinationHeaderSet),
-          methods: S.optional(StringList),
-          mcp: S.optional(RateLimitPolicyRateLimitRuleToDestinationMCP),
+          hosts: S.optional(__S(82)),
+          paths: S.optional(__S(82)),
+          headerSet: S.optional(__S(85)),
+          methods: S.optional(__S(0)),
+          mcp: S.optional(__S(173)),
         }),
       ).annotate({
         identifier: "RateLimitPolicyRateLimitRuleToDestination",
@@ -10980,8 +8881,8 @@ function __c21(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          destination: S.optional(RateLimitPolicyRateLimitRuleToDestination),
-          notDestination: S.optional(RateLimitPolicyRateLimitRuleToDestination),
+          destination: S.optional(__S(174)),
+          notDestination: S.optional(__S(174)),
         }),
       ).annotate({
         identifier: "RateLimitPolicyRateLimitRuleTo",
@@ -10999,30 +8900,30 @@ function __c22(j: number): any {
         identifier: "RateLimitPolicyRateLimitRuleRateLimitAction",
       });
     case 1:
-      return S.Array(RateLimitPolicyRateLimitRuleRateLimitAction);
+      return S.Array(__S(176));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          from: S.optional(RateLimitPolicyRateLimitRuleFrom),
-          to: S.optional(RateLimitPolicyRateLimitRuleTo),
-          rateLimitActions: S.optional(RateLimitPolicyRateLimitRuleRateLimitActionList),
+          from: S.optional(__S(172)),
+          to: S.optional(__S(175)),
+          rateLimitActions: S.optional(__S(177)),
         }),
       ).annotate({
         identifier: "RateLimitPolicyRateLimitRule",
       });
     case 3:
-      return S.Array(RateLimitPolicyRateLimitRule);
+      return S.Array(__S(178));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          targets: S.optional(RateLimitPolicyTargetList),
+          targets: S.optional(__S(155)),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
           createTime: S.optional(S.String),
           description: S.optional(S.String),
-          rateLimitBuckets: S.optional(RateLimitPolicyRateLimitBucketList),
-          labels: S.optional(StringMap),
-          httpRules: S.optional(RateLimitPolicyRateLimitRuleList),
+          rateLimitBuckets: S.optional(__S(168)),
+          labels: S.optional(__S(14)),
+          httpRules: S.optional(__S(179)),
         }),
       ).annotate({ identifier: "RateLimitPolicy" });
     case 5:
@@ -11031,7 +8932,7 @@ function __c22(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           rateLimitPolicyId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(RateLimitPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(180).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11054,12 +8955,12 @@ function __c22(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(14)),
           updateTime: S.optional(S.String),
-          state: S.optional(SACAttachmentStateEnum),
+          state: S.optional(S.String),
           timeZone: S.optional(S.String),
           nccGateway: S.optional(S.String),
-          symantecOptions: S.optional(SACAttachmentSACAttachmentSymantecOptions),
+          symantecOptions: S.optional(__S(182)),
           country: S.optional(S.String),
           sacRealm: S.optional(S.String),
           createTime: S.optional(S.String),
@@ -11076,7 +8977,7 @@ function __c23(j: number): any {
           parent: S.String.pipe(T.Label()),
           sacAttachmentId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(SACAttachment.pipe(T.HttpBody())),
+          body: S.optional(__S(183).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11090,11 +8991,9 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          symantecConnectionState: S.optional(
-            SACRealmSACRealmSymantecOptionsSymantecConnectionStateEnum,
-          ),
+          symantecConnectionState: S.optional(S.String),
           secretPath: S.optional(S.String),
-          availableSymantecSites: S.optional(StringList),
+          availableSymantecSites: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "SACRealmSACRealmSymantecOptions",
@@ -11109,14 +9008,14 @@ function __c23(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          securityService: S.optional(SACRealmSecurityServiceEnum),
-          labels: S.optional(StringMap),
-          state: S.optional(SACRealmStateEnum),
+          securityService: S.optional(S.String),
+          labels: S.optional(__S(14)),
+          state: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          symantecOptions: S.optional(SACRealmSACRealmSymantecOptions),
+          symantecOptions: S.optional(__S(185)),
           updateTime: S.optional(S.String),
-          pairingKey: S.optional(SACRealmPairingKey),
+          pairingKey: S.optional(__S(186)),
         }),
       ).annotate({ identifier: "SACRealm" });
     case 4:
@@ -11125,7 +9024,7 @@ function __c23(j: number): any {
           sacRealmId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(SACRealm.pipe(T.HttpBody())),
+          body: S.optional(__S(187).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11141,7 +9040,7 @@ function __c23(j: number): any {
         S.Struct({
           securityProfileGroupId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(SecurityProfileGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(27).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11157,7 +9056,7 @@ function __c23(j: number): any {
         S.Struct({
           securityProfileId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(SecurityProfile.pipe(T.HttpBody())),
+          body: S.optional(__S(57).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11171,9 +9070,9 @@ function __c23(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          clientValidationCa: S.optional(ValidationCAList),
+          clientValidationCa: S.optional(__S(103)),
           clientValidationTrustConfig: S.optional(S.String),
-          clientValidationMode: S.optional(MTLSPolicyClientValidationModeEnum),
+          clientValidationMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "MTLSPolicy" });
   }
@@ -11185,12 +9084,12 @@ function __c24(j: number): any {
         S.Struct({
           updateTime: S.optional(S.String),
           createTime: S.optional(S.String),
-          mtlsPolicy: S.optional(MTLSPolicy),
-          labels: S.optional(StringMap),
+          mtlsPolicy: S.optional(__S(191)),
+          labels: S.optional(__S(14)),
           name: S.optional(S.String),
           description: S.optional(S.String),
           allowOpen: S.optional(S.Boolean),
-          serverCertificate: S.optional(GoogleCloudNetworksecurityV1beta1CertificateProvider),
+          serverCertificate: S.optional(__S(104)),
         }),
       ).annotate({ identifier: "ServerTlsPolicy" });
     case 1:
@@ -11198,7 +9097,7 @@ function __c24(j: number): any {
         S.Struct({
           serverTlsPolicyId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(ServerTlsPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(192).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11212,15 +9111,15 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          certificateIssuanceMode: S.optional(TlsInspectionPolicyCertificateIssuanceModeEnum),
-          tlsFeatureProfile: S.optional(TlsInspectionPolicyTlsFeatureProfileEnum),
+          certificateIssuanceMode: S.optional(S.String),
+          tlsFeatureProfile: S.optional(S.String),
           updateTime: S.optional(S.String),
           description: S.optional(S.String),
           name: S.optional(S.String),
           caPool: S.optional(S.String),
-          customTlsFeatures: S.optional(StringList),
+          customTlsFeatures: S.optional(__S(0)),
           excludePublicCaSet: S.optional(S.Boolean),
-          minTlsVersion: S.optional(TlsInspectionPolicyMinTlsVersionEnum),
+          minTlsVersion: S.optional(S.String),
           trustConfig: S.optional(S.String),
           createTime: S.optional(S.String),
         }),
@@ -11230,7 +9129,7 @@ function __c24(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           tlsInspectionPolicyId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(TlsInspectionPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(194).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11248,7 +9147,7 @@ function __c24(j: number): any {
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
           description: S.optional(S.String),
-          values: S.optional(StringList),
+          values: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "UrlList" });
     case 5:
@@ -11256,7 +9155,7 @@ function __c24(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           urlListId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(UrlList.pipe(T.HttpBody())),
+          body: S.optional(__S(196).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11786,39 +9685,39 @@ function __c29(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(Expr),
+          condition: S.optional(__S(231)),
           role: S.optional(S.String),
-          members: S.optional(StringList),
+          members: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "GoogleIamV1Binding" });
     case 1:
-      return S.Array(GoogleIamV1Binding);
+      return S.Array(__S(232));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(GoogleIamV1AuditLogConfigLogTypeEnum),
-          exemptedMembers: S.optional(StringList),
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "GoogleIamV1AuditLogConfig",
       });
     case 3:
-      return S.Array(GoogleIamV1AuditLogConfig);
+      return S.Array(__S(234));
     case 4:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(GoogleIamV1AuditLogConfigList),
+          auditLogConfigs: S.optional(__S(235)),
         }),
       ).annotate({ identifier: "GoogleIamV1AuditConfig" });
     case 5:
-      return S.Array(GoogleIamV1AuditConfig);
+      return S.Array(__S(236));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(GoogleIamV1BindingList),
+          bindings: S.optional(__S(233)),
           version: S.optional(S.Number),
-          auditConfigs: S.optional(GoogleIamV1AuditConfigList),
+          auditConfigs: S.optional(__S(237)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleIamV1Policy" });
@@ -11903,11 +9802,11 @@ function __c30(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(3)),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
           locationId: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "Location" });
     case 5:
@@ -12424,7 +10323,7 @@ function __c35(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(0).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -12440,11 +10339,11 @@ function __c35(j: number): any {
         identifier: "ListOrganizationsLocationsRequest",
       });
     case 1:
-      return S.Array(Location);
+      return S.Array(__S(244));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(281)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -12466,13 +10365,13 @@ function __c35(j: number): any {
         identifier: "ListOrganizationsLocationsAddressGroupsRequest",
       });
     case 4:
-      return S.Array(AddressGroup);
+      return S.Array(__S(16));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          addressGroups: S.optional(AddressGroupList),
+          unreachable: S.optional(__S(0)),
+          addressGroups: S.optional(__S(284)),
         }),
       ).annotate({
         identifier: "ListAddressGroupsResponse",
@@ -12496,7 +10395,7 @@ function __c35(j: number): any {
         identifier: "ListOrganizationsLocationsFirewallEndpointsRequest",
       });
     case 7:
-      return S.Array(FirewallEndpoint);
+      return S.Array(__S(23));
   }
 }
 function __c36(j: number): any {
@@ -12505,8 +10404,8 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          firewallEndpoints: S.optional(FirewallEndpointList),
-          unreachable: S.optional(StringList),
+          firewallEndpoints: S.optional(__S(287)),
+          unreachable: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "ListFirewallEndpointsResponse",
@@ -12530,13 +10429,13 @@ function __c36(j: number): any {
           "ListOrganizationsLocationsFirewallEndpointsWildfireVerdictChangeRequestsRequest",
       });
     case 2:
-      return S.Array(WildfireVerdictChangeRequest);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(0)),
           nextPageToken: S.optional(S.String),
-          wildfireVerdictChangeRequests: S.optional(WildfireVerdictChangeRequestList),
+          wildfireVerdictChangeRequests: S.optional(__S(290)),
         }),
       ).annotate({
         identifier: "ListWildfireVerdictChangeRequestsResponse",
@@ -12560,13 +10459,13 @@ function __c36(j: number): any {
         identifier: "ListOrganizationsLocationsOperationsRequest",
       });
     case 5:
-      return S.Array(Operation);
+      return S.Array(__S(6));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          operations: S.optional(OperationList),
+          unreachable: S.optional(__S(0)),
+          operations: S.optional(__S(293)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 7:
@@ -12590,12 +10489,12 @@ function __c36(j: number): any {
 function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SecurityProfileGroup);
+      return S.Array(__S(27));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          securityProfileGroups: S.optional(SecurityProfileGroupList),
+          securityProfileGroups: S.optional(__S(296)),
         }),
       ).annotate({
         identifier: "ListSecurityProfileGroupsResponse",
@@ -12617,12 +10516,12 @@ function __c37(j: number): any {
         identifier: "ListOrganizationsLocationsSecurityProfilesRequest",
       });
     case 3:
-      return S.Array(SecurityProfile);
+      return S.Array(__S(57));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          securityProfiles: S.optional(SecurityProfileList),
+          securityProfiles: S.optional(__S(299)),
         }),
       ).annotate({
         identifier: "ListSecurityProfilesResponse",
@@ -12631,7 +10530,7 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(0).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -12683,12 +10582,12 @@ function __c37(j: number): any {
 function __c38(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AuthorizationPolicy);
+      return S.Array(__S(68));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          authorizationPolicies: S.optional(AuthorizationPolicyList),
+          authorizationPolicies: S.optional(__S(304)),
         }),
       ).annotate({
         identifier: "ListAuthorizationPoliciesResponse",
@@ -12712,13 +10611,13 @@ function __c38(j: number): any {
         identifier: "ListProjectsLocationsAuthzPoliciesRequest",
       });
     case 3:
-      return S.Array(AuthzPolicy);
+      return S.Array(__S(96));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          authzPolicies: S.optional(AuthzPolicyList),
+          unreachable: S.optional(__S(0)),
+          authzPolicies: S.optional(__S(307)),
         }),
       ).annotate({
         identifier: "ListAuthzPoliciesResponse",
@@ -12740,13 +10639,13 @@ function __c38(j: number): any {
         identifier: "ListProjectsLocationsBackendAuthenticationConfigsRequest",
       });
     case 6:
-      return S.Array(BackendAuthenticationConfig);
+      return S.Array(__S(98));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          backendAuthenticationConfigs: S.optional(BackendAuthenticationConfigList),
-          unreachable: S.optional(StringList),
+          backendAuthenticationConfigs: S.optional(__S(310)),
+          unreachable: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "ListBackendAuthenticationConfigsResponse",
@@ -12772,12 +10671,12 @@ function __c39(j: number): any {
         identifier: "ListProjectsLocationsClientTlsPoliciesRequest",
       });
     case 1:
-      return S.Array(ClientTlsPolicy);
+      return S.Array(__S(105));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          clientTlsPolicies: S.optional(ClientTlsPolicyList),
+          clientTlsPolicies: S.optional(__S(313)),
         }),
       ).annotate({
         identifier: "ListClientTlsPoliciesResponse",
@@ -12799,13 +10698,13 @@ function __c39(j: number): any {
         identifier: "ListProjectsLocationsDnsThreatDetectorsRequest",
       });
     case 4:
-      return S.Array(DnsThreatDetector);
+      return S.Array(__S(107));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          dnsThreatDetectors: S.optional(DnsThreatDetectorList),
-          unreachable: S.optional(StringList),
+          dnsThreatDetectors: S.optional(__S(316)),
+          unreachable: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "ListDnsThreatDetectorsResponse",
@@ -12829,7 +10728,7 @@ function __c39(j: number): any {
         identifier: "ListProjectsLocationsFirewallEndpointAssociationsRequest",
       });
     case 7:
-      return S.Array(FirewallEndpointAssociation);
+      return S.Array(__S(109));
   }
 }
 function __c40(j: number): any {
@@ -12837,9 +10736,9 @@ function __c40(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(0)),
           nextPageToken: S.optional(S.String),
-          firewallEndpointAssociations: S.optional(FirewallEndpointAssociationList),
+          firewallEndpointAssociations: S.optional(__S(319)),
         }),
       ).annotate({
         identifier: "ListFirewallEndpointAssociationsResponse",
@@ -12896,13 +10795,13 @@ function __c40(j: number): any {
         identifier: "ListProjectsLocationsGatewaySecurityPoliciesRequest",
       });
     case 4:
-      return S.Array(GatewaySecurityPolicy);
+      return S.Array(__S(113));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          gatewaySecurityPolicies: S.optional(GatewaySecurityPolicyList),
-          unreachable: S.optional(StringList),
+          gatewaySecurityPolicies: S.optional(__S(324)),
+          unreachable: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "ListGatewaySecurityPoliciesResponse",
@@ -12924,7 +10823,7 @@ function __c40(j: number): any {
         identifier: "ListProjectsLocationsGatewaySecurityPoliciesRulesRequest",
       });
     case 7:
-      return S.Array(GatewaySecurityPolicyRule);
+      return S.Array(__S(115));
   }
 }
 function __c41(j: number): any {
@@ -12932,8 +10831,8 @@ function __c41(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          gatewaySecurityPolicyRules: S.optional(GatewaySecurityPolicyRuleList),
-          unreachable: S.optional(StringList),
+          gatewaySecurityPolicyRules: S.optional(__S(327)),
+          unreachable: S.optional(__S(0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -12958,12 +10857,12 @@ function __c41(j: number): any {
         identifier: "ListProjectsLocationsInterceptDeploymentGroupsRequest",
       });
     case 2:
-      return S.Array(InterceptDeploymentGroup);
+      return S.Array(__S(123));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          interceptDeploymentGroups: S.optional(InterceptDeploymentGroupList),
+          interceptDeploymentGroups: S.optional(__S(330)),
         }),
       ).annotate({
         identifier: "ListInterceptDeploymentGroupsResponse",
@@ -12987,12 +10886,12 @@ function __c41(j: number): any {
         identifier: "ListProjectsLocationsInterceptDeploymentsRequest",
       });
     case 5:
-      return S.Array(InterceptDeployment);
+      return S.Array(__S(125));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          interceptDeployments: S.optional(InterceptDeploymentList),
-          unreachable: S.optional(StringList),
+          interceptDeployments: S.optional(__S(333)),
+          unreachable: S.optional(__S(0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13021,11 +10920,11 @@ function __c41(j: number): any {
 function __c42(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(InterceptEndpointGroupAssociation);
+      return S.Array(__S(129));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          interceptEndpointGroupAssociations: S.optional(InterceptEndpointGroupAssociationList),
+          interceptEndpointGroupAssociations: S.optional(__S(336)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13050,12 +10949,12 @@ function __c42(j: number): any {
         identifier: "ListProjectsLocationsInterceptEndpointGroupsRequest",
       });
     case 3:
-      return S.Array(InterceptEndpointGroup);
+      return S.Array(__S(134));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          interceptEndpointGroups: S.optional(InterceptEndpointGroupList),
+          interceptEndpointGroups: S.optional(__S(339)),
         }),
       ).annotate({
         identifier: "ListInterceptEndpointGroupsResponse",
@@ -13079,12 +10978,12 @@ function __c42(j: number): any {
         identifier: "ListProjectsLocationsMirroringDeploymentGroupsRequest",
       });
     case 6:
-      return S.Array(MirroringDeploymentGroup);
+      return S.Array(__S(140));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          mirroringDeploymentGroups: S.optional(MirroringDeploymentGroupList),
+          mirroringDeploymentGroups: S.optional(__S(342)),
         }),
       ).annotate({
         identifier: "ListMirroringDeploymentGroupsResponse",
@@ -13112,12 +11011,12 @@ function __c43(j: number): any {
         identifier: "ListProjectsLocationsMirroringDeploymentsRequest",
       });
     case 1:
-      return S.Array(MirroringDeployment);
+      return S.Array(__S(142));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          mirroringDeployments: S.optional(MirroringDeploymentList),
+          unreachable: S.optional(__S(0)),
+          mirroringDeployments: S.optional(__S(345)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13142,11 +11041,11 @@ function __c43(j: number): any {
         identifier: "ListProjectsLocationsMirroringEndpointGroupAssociationsRequest",
       });
     case 4:
-      return S.Array(MirroringEndpointGroupAssociation);
+      return S.Array(__S(146));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          mirroringEndpointGroupAssociations: S.optional(MirroringEndpointGroupAssociationList),
+          mirroringEndpointGroupAssociations: S.optional(__S(348)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13171,7 +11070,7 @@ function __c43(j: number): any {
         identifier: "ListProjectsLocationsMirroringEndpointGroupsRequest",
       });
     case 7:
-      return S.Array(MirroringEndpointGroup);
+      return S.Array(__S(152));
   }
 }
 function __c44(j: number): any {
@@ -13180,7 +11079,7 @@ function __c44(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          mirroringEndpointGroups: S.optional(MirroringEndpointGroupList),
+          mirroringEndpointGroups: S.optional(__S(351)),
         }),
       ).annotate({
         identifier: "ListMirroringEndpointGroupsResponse",
@@ -13222,12 +11121,12 @@ function __c44(j: number): any {
         identifier: "ListProjectsLocationsRateLimitPoliciesRequest",
       });
     case 3:
-      return S.Array(RateLimitPolicy);
+      return S.Array(__S(180));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          rateLimitPolicies: S.optional(RateLimitPolicyList),
+          unreachable: S.optional(__S(0)),
+          rateLimitPolicies: S.optional(__S(355)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13252,12 +11151,12 @@ function __c44(j: number): any {
         identifier: "ListProjectsLocationsSacAttachmentsRequest",
       });
     case 6:
-      return S.Array(SACAttachment);
+      return S.Array(__S(183));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          sacAttachments: S.optional(SACAttachmentList),
+          unreachable: S.optional(__S(0)),
+          sacAttachments: S.optional(__S(358)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13286,13 +11185,13 @@ function __c45(j: number): any {
         identifier: "ListProjectsLocationsSacRealmsRequest",
       });
     case 1:
-      return S.Array(SACRealm);
+      return S.Array(__S(187));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sacRealms: S.optional(SACRealmList),
+          sacRealms: S.optional(__S(361)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "ListSACRealmsResponse" });
     case 3:
@@ -13345,12 +11244,12 @@ function __c45(j: number): any {
         identifier: "ListProjectsLocationsServerTlsPoliciesRequest",
       });
     case 6:
-      return S.Array(ServerTlsPolicy);
+      return S.Array(__S(192));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          serverTlsPolicies: S.optional(ServerTlsPolicyList),
-          unreachable: S.optional(StringList),
+          serverTlsPolicies: S.optional(__S(366)),
+          unreachable: S.optional(__S(0)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13377,12 +11276,12 @@ function __c46(j: number): any {
         identifier: "ListProjectsLocationsTlsInspectionPoliciesRequest",
       });
     case 1:
-      return S.Array(TlsInspectionPolicy);
+      return S.Array(__S(194));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          tlsInspectionPolicies: S.optional(TlsInspectionPolicyList),
+          unreachable: S.optional(__S(0)),
+          tlsInspectionPolicies: S.optional(__S(369)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13405,13 +11304,13 @@ function __c46(j: number): any {
         identifier: "ListProjectsLocationsUrlListsRequest",
       });
     case 4:
-      return S.Array(UrlList);
+      return S.Array(__S(196));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          urlLists: S.optional(UrlListList),
+          unreachable: S.optional(__S(0)),
+          urlLists: S.optional(__S(372)),
         }),
       ).annotate({ identifier: "ListUrlListsResponse" });
     case 6:
@@ -13445,13 +11344,11 @@ function __c46(j: number): any {
 function __c47(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListAddressGroupReferencesResponseAddressGroupReference);
+      return S.Array(__S(375));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          addressGroupReferences: S.optional(
-            ListAddressGroupReferencesResponseAddressGroupReferenceList,
-          ),
+          addressGroupReferences: S.optional(__S(376)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13479,7 +11376,7 @@ function __c47(j: number): any {
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(AddressGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13496,7 +11393,7 @@ function __c47(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(FirewallEndpoint.pipe(T.HttpBody())),
+          body: S.optional(__S(23).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13512,7 +11409,7 @@ function __c47(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(SecurityProfileGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(27).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13528,7 +11425,7 @@ function __c47(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(SecurityProfile.pipe(T.HttpBody())),
+          body: S.optional(__S(57).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13545,7 +11442,7 @@ function __c47(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(AddressGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(16).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13565,7 +11462,7 @@ function __c48(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(AuthorizationPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(68).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13582,7 +11479,7 @@ function __c48(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(AuthzPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(96).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13598,7 +11495,7 @@ function __c48(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(BackendAuthenticationConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(98).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13614,7 +11511,7 @@ function __c48(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ClientTlsPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(105).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13630,7 +11527,7 @@ function __c48(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(DnsThreatDetector.pipe(T.HttpBody())),
+          body: S.optional(__S(107).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13647,7 +11544,7 @@ function __c48(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(FirewallEndpointAssociation.pipe(T.HttpBody())),
+          body: S.optional(__S(109).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13664,7 +11561,7 @@ function __c48(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(FirewallEndpoint.pipe(T.HttpBody())),
+          body: S.optional(__S(23).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13680,7 +11577,7 @@ function __c48(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(GatewaySecurityPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(113).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13700,7 +11597,7 @@ function __c49(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(GatewaySecurityPolicyRule.pipe(T.HttpBody())),
+          body: S.optional(__S(115).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13717,7 +11614,7 @@ function __c49(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(InterceptDeploymentGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(123).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13734,7 +11631,7 @@ function __c49(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(InterceptDeployment.pipe(T.HttpBody())),
+          body: S.optional(__S(125).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13751,7 +11648,7 @@ function __c49(j: number): any {
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(InterceptEndpointGroupAssociation.pipe(T.HttpBody())),
+          body: S.optional(__S(129).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13768,7 +11665,7 @@ function __c49(j: number): any {
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(InterceptEndpointGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(134).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13785,7 +11682,7 @@ function __c49(j: number): any {
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(MirroringDeploymentGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(140).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13802,7 +11699,7 @@ function __c49(j: number): any {
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(MirroringDeployment.pipe(T.HttpBody())),
+          body: S.optional(__S(142).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13819,7 +11716,7 @@ function __c49(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(MirroringEndpointGroupAssociation.pipe(T.HttpBody())),
+          body: S.optional(__S(146).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13840,7 +11737,7 @@ function __c50(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(MirroringEndpointGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(152).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13857,7 +11754,7 @@ function __c50(j: number): any {
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(RateLimitPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(180).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13873,7 +11770,7 @@ function __c50(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(SecurityProfileGroup.pipe(T.HttpBody())),
+          body: S.optional(__S(27).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13889,7 +11786,7 @@ function __c50(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(SecurityProfile.pipe(T.HttpBody())),
+          body: S.optional(__S(57).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13905,7 +11802,7 @@ function __c50(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ServerTlsPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(192).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13921,7 +11818,7 @@ function __c50(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(TlsInspectionPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(194).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13937,7 +11834,7 @@ function __c50(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(UrlList.pipe(T.HttpBody())),
+          body: S.optional(__S(196).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -13951,7 +11848,7 @@ function __c50(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(StringList),
+          items: S.optional(__S(0)),
           requestId: S.optional(S.String),
         }),
       ).annotate({
@@ -13965,7 +11862,7 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           addressGroup: S.String.pipe(T.Label()),
-          body: S.optional(RemoveAddressGroupItemsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(407).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13980,7 +11877,7 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           addressGroup: S.String.pipe(T.Label()),
-          body: S.optional(RemoveAddressGroupItemsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(407).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13994,7 +11891,7 @@ function __c51(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(GoogleIamV1Policy),
+          policy: S.optional(__S(238)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({
@@ -14004,7 +11901,7 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(410).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14019,7 +11916,7 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(410).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14034,7 +11931,7 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(410).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14049,7 +11946,7 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(410).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14064,7 +11961,7 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(410).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14082,7 +11979,7 @@ function __c52(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "GoogleIamV1TestIamPermissionsRequest",
@@ -14091,7 +11988,7 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(416).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14106,7 +12003,7 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(416).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14121,7 +12018,7 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(416).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14136,7 +12033,7 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(416).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14151,7 +12048,7 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(416).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14166,7 +12063,7 @@ function __c52(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GoogleIamV1TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(416).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14177,5 +12074,120 @@ function __c52(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsServerTlsPoliciesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
+    case 41:
+      return __c41(i & 7);
+    case 42:
+      return __c42(i & 7);
+    case 43:
+      return __c43(i & 7);
+    case 44:
+      return __c44(i & 7);
+    case 45:
+      return __c45(i & 7);
+    case 46:
+      return __c46(i & 7);
+    case 47:
+      return __c47(i & 7);
+    case 48:
+      return __c48(i & 7);
+    case 49:
+      return __c49(i & 7);
+    case 50:
+      return __c50(i & 7);
+    case 51:
+      return __c51(i & 7);
+    case 52:
+      return __c52(i & 7);
   }
 }

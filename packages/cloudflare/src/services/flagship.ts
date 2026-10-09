@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -60,8 +62,6 @@ export interface CreateAppRequest {
   /** Name of the Flagship app (1-64 letters, numbers, hyphens, or underscores). */
   name: string;
 }
-const CreateAppRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateAppRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAppResponse {
   id: string;
@@ -71,8 +71,6 @@ export interface CreateAppResponse {
   /** Email of the actor who last modified the app, or `unknown` when unavailable. */
   updatedBy: string;
 }
-const CreateAppResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateAppResponse>;
-
 export type AppsFlagsCreateRequestRulesItemConditionsItemCase0Operator =
   | "equals"
   | "not_equals"
@@ -348,26 +346,14 @@ export interface AppsFlagsCreateRequestRulesItemConditionsItemCase1 {
 export type AppsFlagsCreateRequestRulesItemConditionsItem =
   | AppsFlagsCreateRequestRulesItemConditionsItemCase0
   | AppsFlagsCreateRequestRulesItemConditionsItemCase1;
-const AppsFlagsCreateRequestRulesItemConditionsItem = /*@__PURE__*/ __L.at(__c0, 2);
-
 export type AppsFlagsCreateRequestRulesItemConditionsList =
   Array<AppsFlagsCreateRequestRulesItemConditionsItem>;
-const AppsFlagsCreateRequestRulesItemConditionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AppsFlagsCreateRequestRulesItemConditionsList>;
-
 export interface AppsFlagsCreateRequestRulesItemRollout {
   /** Percentage of matching traffic (0-100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
   /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
   attribute?: string;
 }
-const AppsFlagsCreateRequestRulesItemRollout = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AppsFlagsCreateRequestRulesItemRollout>;
-
 export interface AppsFlagsCreateRequestRulesItem {
   /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
   conditions: AppsFlagsCreateRequestRulesItemConditionsList;
@@ -377,23 +363,9 @@ export interface AppsFlagsCreateRequestRulesItem {
   serveVariation: string;
   rollout?: AppsFlagsCreateRequestRulesItemRollout;
 }
-const AppsFlagsCreateRequestRulesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AppsFlagsCreateRequestRulesItem>;
-
 export type AppsFlagsCreateRequestRulesList = Array<AppsFlagsCreateRequestRulesItem>;
-const AppsFlagsCreateRequestRulesList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AppsFlagsCreateRequestRulesList>;
-
 export type UntypedVariationsMap = { [key: string]: unknown | undefined };
-const UntypedVariationsMap = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<UntypedVariationsMap>;
-
 export type AppsFlagsCreateRequestType = "boolean" | "string" | "number" | "json";
-const AppsFlagsCreateRequestType = S.String;
-
 export interface CreateAppFlagRequest {
   /** Cloudflare account ID that owns the Flagship app. */
   accountId: string;
@@ -414,8 +386,6 @@ export interface CreateAppFlagRequest {
   /** Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations. */
   type?: AppsFlagsCreateRequestType | (string & {});
 }
-const CreateAppFlagRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateAppFlagRequest>;
-
 export type AppsFlagsCreateResponseRulesItemConditionsItemCase0Operator =
   | "equals"
   | "not_equals"
@@ -669,26 +639,14 @@ export interface AppsFlagsCreateResponseRulesItemConditionsItemCase1 {
 export type AppsFlagsCreateResponseRulesItemConditionsItem =
   | AppsFlagsCreateResponseRulesItemConditionsItemCase0
   | AppsFlagsCreateResponseRulesItemConditionsItemCase1;
-const AppsFlagsCreateResponseRulesItemConditionsItem = /*@__PURE__*/ __L.at(__c1, 1);
-
 export type AppsFlagsCreateResponseRulesItemConditionsList =
   Array<AppsFlagsCreateResponseRulesItemConditionsItem>;
-const AppsFlagsCreateResponseRulesItemConditionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AppsFlagsCreateResponseRulesItemConditionsList>;
-
 export interface AppsFlagsCreateResponseRulesItemRollout {
   /** Percentage of matching traffic (0-100, up to 2 decimal places) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100). */
   percentage: number;
   /** Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request. */
   attribute?: string | null;
 }
-const AppsFlagsCreateResponseRulesItemRollout = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AppsFlagsCreateResponseRulesItemRollout>;
-
 export interface AppsFlagsCreateResponseRulesItem {
   /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
   conditions: AppsFlagsCreateResponseRulesItemConditionsList;
@@ -698,20 +656,8 @@ export interface AppsFlagsCreateResponseRulesItem {
   serveVariation: string;
   rollout?: AppsFlagsCreateResponseRulesItemRollout | null;
 }
-const AppsFlagsCreateResponseRulesItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AppsFlagsCreateResponseRulesItem>;
-
 export type AppsFlagsCreateResponseRulesList = Array<AppsFlagsCreateResponseRulesItem>;
-const AppsFlagsCreateResponseRulesList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<AppsFlagsCreateResponseRulesList>;
-
 export type AppsFlagsCreateResponseType = "boolean" | "string" | "number" | "json";
-const AppsFlagsCreateResponseType = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAppFlagResponse {
   /** Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`. */
@@ -731,25 +677,16 @@ export interface CreateAppFlagResponse {
   updatedAt?: string | null;
   updatedBy?: string | null;
 }
-const CreateAppFlagResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateAppFlagResponse>;
-
 export interface DeleteAppRequest {
   /** Cloudflare account ID that owns the Flagship app. */
   accountId: string;
   /** Flagship app ID returned when the app was created. */
   appId: string;
 }
-const DeleteAppRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteAppRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteAppResponse {
   id: string;
 }
-const DeleteAppResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteAppResponse>;
-
 export interface DeleteAppFlagRequest {
   /** Cloudflare account ID that owns the Flagship app. */
   accountId: string;
@@ -758,25 +695,16 @@ export interface DeleteAppFlagRequest {
   /** Case-sensitive key identifying the flag within the app. */
   flagKey: string;
 }
-const DeleteAppFlagRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DeleteAppFlagRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteAppFlagResponse {
   key: string;
 }
-const DeleteAppFlagResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteAppFlagResponse>;
-
 export interface GetAppRequest {
   /** Cloudflare account ID that owns the Flagship app. */
   accountId: string;
   /** Flagship app ID returned when the app was created. */
   appId: string;
 }
-const GetAppRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetAppRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAppResponse {
   id: string;
@@ -786,8 +714,6 @@ export interface GetAppResponse {
   /** Email of the actor who last modified the app, or `unknown` when unavailable. */
   updatedBy: string;
 }
-const GetAppResponse = CreateAppResponse as any as S.Schema<GetAppResponse>;
-
 export interface GetAppEvaluateRequest {
   /** Cloudflare account ID that owns the Flagship app. */
   accountId: string;
@@ -798,19 +724,12 @@ export interface GetAppEvaluateRequest {
   /** Context targeting key (per OpenFeature spec); used for percentage rollout bucketing. */
   targetingKey?: string;
 }
-const GetAppEvaluateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetAppEvaluateRequest>;
-
 export type AppsEvaluateGetResponseReason =
   | "STATIC"
   | "TARGETING_MATCH"
   | "DEFAULT"
   | "DISABLED"
   | "SPLIT";
-const AppsEvaluateGetResponseReason = S.String;
-
 export type AppsEvaluateGetResponseValueCase3Map = { [key: string]: unknown | undefined };
 export type AppsEvaluateGetResponseValueCase4List = Array<unknown>;
 export type AppsEvaluateGetResponseValue =
@@ -819,8 +738,6 @@ export type AppsEvaluateGetResponseValue =
   | boolean
   | AppsEvaluateGetResponseValueCase3Map
   | AppsEvaluateGetResponseValueCase4List;
-const AppsEvaluateGetResponseValue = /*@__PURE__*/ __L.at(__c2, 5);
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetAppEvaluateResponse {
   /** Key of the evaluated flag. */
@@ -831,11 +748,6 @@ export interface GetAppEvaluateResponse {
   variant: string;
   value?: AppsEvaluateGetResponseValue | null;
 }
-const GetAppEvaluateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetAppEvaluateResponse>;
-
 export interface GetAppFlagRequest {
   /** Cloudflare account ID that owns the Flagship app. */
   accountId: string;
@@ -844,8 +756,6 @@ export interface GetAppFlagRequest {
   /** Case-sensitive key identifying the flag within the app. */
   flagKey: string;
 }
-const GetAppFlagRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetAppFlagRequest>;
-
 export type AppsFlagsGetResponseRulesItemConditionsItemCase0Operator =
   | "equals"
   | "not_equals"
@@ -1099,15 +1009,8 @@ export interface AppsFlagsGetResponseRulesItemConditionsItemCase1 {
 export type AppsFlagsGetResponseRulesItemConditionsItem =
   | AppsFlagsGetResponseRulesItemConditionsItemCase0
   | AppsFlagsGetResponseRulesItemConditionsItemCase1;
-const AppsFlagsGetResponseRulesItemConditionsItem = /*@__PURE__*/ __L.at(__c3, 0);
-
 export type AppsFlagsGetResponseRulesItemConditionsList =
   Array<AppsFlagsGetResponseRulesItemConditionsItem>;
-const AppsFlagsGetResponseRulesItemConditionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<AppsFlagsGetResponseRulesItemConditionsList>;
-
 export type AppsFlagsGetResponseRulesItemRollout = AppsFlagsCreateResponseRulesItemRollout;
 export interface AppsFlagsGetResponseRulesItem {
   /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
@@ -1118,20 +1021,8 @@ export interface AppsFlagsGetResponseRulesItem {
   serveVariation: string;
   rollout?: AppsFlagsCreateResponseRulesItemRollout | null;
 }
-const AppsFlagsGetResponseRulesItem = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<AppsFlagsGetResponseRulesItem>;
-
 export type AppsFlagsGetResponseRulesList = Array<AppsFlagsGetResponseRulesItem>;
-const AppsFlagsGetResponseRulesList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<AppsFlagsGetResponseRulesList>;
-
 export type AppsFlagsGetResponseType = "boolean" | "string" | "number" | "json";
-const AppsFlagsGetResponseType = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAppFlagResponse {
   /** Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`. */
@@ -1151,8 +1042,6 @@ export interface GetAppFlagResponse {
   updatedAt?: string | null;
   updatedBy?: string | null;
 }
-const GetAppFlagResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetAppFlagResponse>;
-
 export interface ListAppFlagChangelogsRequest {
   /** Cloudflare account ID that owns the Flagship app. */
   accountId: string;
@@ -1165,11 +1054,6 @@ export interface ListAppFlagChangelogsRequest {
   /** Max items to return (1-200). */
   limit?: number;
 }
-const ListAppFlagChangelogsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListAppFlagChangelogsRequest>;
-
 export type AppsFlagsChangelogListResultItemCase0AfterRulesItemConditionsItemCase0Operator =
   | "equals"
   | "not_equals"
@@ -2099,25 +1983,13 @@ export type AppsFlagsChangelogListResultItem =
   | AppsFlagsChangelogListResultItemCase0
   | AppsFlagsChangelogListResultItemCase1
   | AppsFlagsChangelogListResultItemCase2;
-const AppsFlagsChangelogListResultItem = /*@__PURE__*/ __L.at(__c3, 6);
-
 export type AppsFlagsChangelogListResultList = Array<AppsFlagsChangelogListResultItem>;
-const AppsFlagsChangelogListResultList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<AppsFlagsChangelogListResultList>;
-
 export interface ListAppFlagChangelogsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: AppsFlagsChangelogListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListAppFlagChangelogsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListAppFlagChangelogsResponse>;
-
 export interface ListAppFlagsRequest {
   /** Cloudflare account ID that owns the Flagship app. */
   accountId: string;
@@ -2128,8 +2000,6 @@ export interface ListAppFlagsRequest {
   /** Max items to return (1-200). */
   limit?: number;
 }
-const ListAppFlagsRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<ListAppFlagsRequest>;
-
 export type AppsFlagsListResultItemRulesItemConditionsItemCase0Operator =
   | "equals"
   | "not_equals"
@@ -2383,15 +2253,8 @@ export interface AppsFlagsListResultItemRulesItemConditionsItemCase1 {
 export type AppsFlagsListResultItemRulesItemConditionsItem =
   | AppsFlagsListResultItemRulesItemConditionsItemCase0
   | AppsFlagsListResultItemRulesItemConditionsItemCase1;
-const AppsFlagsListResultItemRulesItemConditionsItem = /*@__PURE__*/ __L.at(__c4, 2);
-
 export type AppsFlagsListResultItemRulesItemConditionsList =
   Array<AppsFlagsListResultItemRulesItemConditionsItem>;
-const AppsFlagsListResultItemRulesItemConditionsList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<AppsFlagsListResultItemRulesItemConditionsList>;
-
 export type AppsFlagsListResultItemRulesItemRollout = AppsFlagsCreateResponseRulesItemRollout;
 export interface AppsFlagsListResultItemRulesItem {
   /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
@@ -2402,20 +2265,8 @@ export interface AppsFlagsListResultItemRulesItem {
   serveVariation: string;
   rollout?: AppsFlagsCreateResponseRulesItemRollout | null;
 }
-const AppsFlagsListResultItemRulesItem = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<AppsFlagsListResultItemRulesItem>;
-
 export type AppsFlagsListResultItemRulesList = Array<AppsFlagsListResultItemRulesItem>;
-const AppsFlagsListResultItemRulesList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<AppsFlagsListResultItemRulesList>;
-
 export type AppsFlagsListResultItemType = "boolean" | "string" | "number" | "json";
-const AppsFlagsListResultItemType = S.String;
-
 export interface AppsFlagsListResultItem {
   /** Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`. */
   defaultVariation: string;
@@ -2434,31 +2285,17 @@ export interface AppsFlagsListResultItem {
   updatedAt?: string | null;
   updatedBy?: string | null;
 }
-const AppsFlagsListResultItem = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<AppsFlagsListResultItem>;
-
 export type AppsFlagsListResultList = Array<AppsFlagsListResultItem>;
-const AppsFlagsListResultList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<AppsFlagsListResultList>;
-
 export interface ListAppFlagsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: AppsFlagsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListAppFlagsResponse = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ListAppFlagsResponse>;
-
 export interface ListAppsRequest {
   /** Cloudflare account ID that owns the Flagship app. */
   accountId: string;
 }
-const ListAppsRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ListAppsRequest>;
-
 export interface AppsListResultItem {
   id: string;
   createdAt: string;
@@ -2467,19 +2304,13 @@ export interface AppsListResultItem {
   /** Email of the actor who last modified the app, or `unknown` when unavailable. */
   updatedBy: string;
 }
-const AppsListResultItem = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<AppsListResultItem>;
-
 export type AppsListResultList = Array<AppsListResultItem>;
-const AppsListResultList = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<AppsListResultList>;
-
 export interface ListAppsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: AppsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListAppsResponse = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ListAppsResponse>;
-
 export interface UpdateAppRequest {
   /** Cloudflare account ID that owns the Flagship app. */
   accountId: string;
@@ -2488,8 +2319,6 @@ export interface UpdateAppRequest {
   /** Name of the Flagship app (1-64 letters, numbers, hyphens, or underscores). */
   name?: string;
 }
-const UpdateAppRequest = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<UpdateAppRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateAppResponse {
   id: string;
@@ -2499,8 +2328,6 @@ export interface UpdateAppResponse {
   /** Email of the actor who last modified the app, or `unknown` when unavailable. */
   updatedBy: string;
 }
-const UpdateAppResponse = CreateAppResponse as any as S.Schema<UpdateAppResponse>;
-
 export type AppsFlagsUpdateRequestRulesItemConditionsItemCase0Operator =
   | "equals"
   | "not_equals"
@@ -2776,15 +2603,8 @@ export interface AppsFlagsUpdateRequestRulesItemConditionsItemCase1 {
 export type AppsFlagsUpdateRequestRulesItemConditionsItem =
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase0
   | AppsFlagsUpdateRequestRulesItemConditionsItemCase1;
-const AppsFlagsUpdateRequestRulesItemConditionsItem = /*@__PURE__*/ __L.at(__c5, 6);
-
 export type AppsFlagsUpdateRequestRulesItemConditionsList =
   Array<AppsFlagsUpdateRequestRulesItemConditionsItem>;
-const AppsFlagsUpdateRequestRulesItemConditionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<AppsFlagsUpdateRequestRulesItemConditionsList>;
-
 export type AppsFlagsUpdateRequestRulesItemRollout = AppsFlagsCreateRequestRulesItemRollout;
 export interface AppsFlagsUpdateRequestRulesItem {
   /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
@@ -2795,20 +2615,8 @@ export interface AppsFlagsUpdateRequestRulesItem {
   serveVariation: string;
   rollout?: AppsFlagsCreateRequestRulesItemRollout;
 }
-const AppsFlagsUpdateRequestRulesItem = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<AppsFlagsUpdateRequestRulesItem>;
-
 export type AppsFlagsUpdateRequestRulesList = Array<AppsFlagsUpdateRequestRulesItem>;
-const AppsFlagsUpdateRequestRulesList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<AppsFlagsUpdateRequestRulesList>;
-
 export type AppsFlagsUpdateRequestType = "boolean" | "string" | "number" | "json";
-const AppsFlagsUpdateRequestType = S.String;
-
 export interface UpdateAppFlagRequest {
   /** Cloudflare account ID that owns the Flagship app. */
   accountId: string;
@@ -2831,8 +2639,6 @@ export interface UpdateAppFlagRequest {
   /** Deprecated compatibility field. Omit it; the API ignores this value and infers the type from the flag's variations. */
   type?: AppsFlagsUpdateRequestType | (string & {});
 }
-const UpdateAppFlagRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<UpdateAppFlagRequest>;
-
 export type AppsFlagsUpdateResponseRulesItemConditionsItemCase0Operator =
   | "equals"
   | "not_equals"
@@ -3086,15 +2892,8 @@ export interface AppsFlagsUpdateResponseRulesItemConditionsItemCase1 {
 export type AppsFlagsUpdateResponseRulesItemConditionsItem =
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase0
   | AppsFlagsUpdateResponseRulesItemConditionsItemCase1;
-const AppsFlagsUpdateResponseRulesItemConditionsItem = /*@__PURE__*/ __L.at(__c6, 3);
-
 export type AppsFlagsUpdateResponseRulesItemConditionsList =
   Array<AppsFlagsUpdateResponseRulesItemConditionsItem>;
-const AppsFlagsUpdateResponseRulesItemConditionsList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<AppsFlagsUpdateResponseRulesItemConditionsList>;
-
 export type AppsFlagsUpdateResponseRulesItemRollout = AppsFlagsCreateResponseRulesItemRollout;
 export interface AppsFlagsUpdateResponseRulesItem {
   /** Conditions the context must satisfy for this rule to match. An empty array matches all contexts. */
@@ -3105,20 +2904,8 @@ export interface AppsFlagsUpdateResponseRulesItem {
   serveVariation: string;
   rollout?: AppsFlagsCreateResponseRulesItemRollout | null;
 }
-const AppsFlagsUpdateResponseRulesItem = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<AppsFlagsUpdateResponseRulesItem>;
-
 export type AppsFlagsUpdateResponseRulesList = Array<AppsFlagsUpdateResponseRulesItem>;
-const AppsFlagsUpdateResponseRulesList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<AppsFlagsUpdateResponseRulesList>;
-
 export type AppsFlagsUpdateResponseType = "boolean" | "string" | "number" | "json";
-const AppsFlagsUpdateResponseType = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateAppFlagResponse {
   /** Variation the API serves when the flag is off, or when it's on but no rule matches the context. Must be a key in `variations`. */
@@ -3138,11 +2925,6 @@ export interface UpdateAppFlagResponse {
   updatedAt?: string | null;
   updatedBy?: string | null;
 }
-const UpdateAppFlagResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<UpdateAppFlagResponse>;
-
 export type CreateAppError = CloudflareOpError;
 /** Creates an app. The returned `id` is used in all subsequent flag, changelog, and evaluation requests. */
 export const createApp: API.OperationMethod<
@@ -3151,8 +2933,8 @@ export const createApp: API.OperationMethod<
   CreateAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAppRequest,
-  output: CreateAppResponse,
+  input: __S(0) as any as S.Schema<CreateAppRequest>,
+  output: __S(1) as any as S.Schema<CreateAppResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3169,8 +2951,8 @@ export const createAppFlag: API.OperationMethod<
   CreateAppFlagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAppFlagRequest,
-  output: CreateAppFlagResponse,
+  input: __S(8) as any as S.Schema<CreateAppFlagRequest>,
+  output: __S(14) as any as S.Schema<CreateAppFlagResponse>,
   errors: [FlagshipFlagAlreadyExists, FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3184,8 +2966,8 @@ export const deleteApp: API.OperationMethod<
   DeleteAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAppRequest,
-  output: DeleteAppResponse,
+  input: __S(15) as any as S.Schema<DeleteAppRequest>,
+  output: __S(16) as any as S.Schema<DeleteAppResponse>,
   errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3199,8 +2981,8 @@ export const deleteAppFlag: API.OperationMethod<
   DeleteAppFlagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAppFlagRequest,
-  output: DeleteAppFlagResponse,
+  input: __S(17) as any as S.Schema<DeleteAppFlagRequest>,
+  output: __S(18) as any as S.Schema<DeleteAppFlagResponse>,
   errors: [FlagshipFlagNotFound, FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3214,8 +2996,8 @@ export const getApp: API.OperationMethod<
   GetAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppRequest,
-  output: GetAppResponse,
+  input: __S(19) as any as S.Schema<GetAppRequest>,
+  output: __S(1) as any as S.Schema<GetAppResponse>,
   errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3229,8 +3011,8 @@ export const getAppEvaluate: API.OperationMethod<
   GetAppEvaluateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppEvaluateRequest,
-  output: GetAppEvaluateResponse,
+  input: __S(20) as any as S.Schema<GetAppEvaluateRequest>,
+  output: __S(22) as any as S.Schema<GetAppEvaluateResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3244,8 +3026,8 @@ export const getAppFlag: API.OperationMethod<
   GetAppFlagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppFlagRequest,
-  output: GetAppFlagResponse,
+  input: __S(23) as any as S.Schema<GetAppFlagRequest>,
+  output: __S(28) as any as S.Schema<GetAppFlagResponse>,
   errors: [FlagshipFlagNotFound, FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3261,8 +3043,8 @@ export const listAppFlagChangelogs: API.PaginatedOperationMethod<
   AppsFlagsChangelogListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAppFlagChangelogsRequest,
-    output: ListAppFlagChangelogsResponse,
+    input: __S(29) as any as S.Schema<ListAppFlagChangelogsRequest>,
+    output: __S(32) as any as S.Schema<ListAppFlagChangelogsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3286,8 +3068,8 @@ export const listAppFlags: API.PaginatedOperationMethod<
   AppsFlagsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAppFlagsRequest,
-    output: ListAppFlagsResponse,
+    input: __S(33) as any as S.Schema<ListAppFlagsRequest>,
+    output: __S(40) as any as S.Schema<ListAppFlagsResponse>,
     errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3311,8 +3093,8 @@ export const listApps: API.PaginatedOperationMethod<
   AppsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAppsRequest,
-    output: ListAppsResponse,
+    input: __S(41) as any as S.Schema<ListAppsRequest>,
+    output: __S(44) as any as S.Schema<ListAppsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -3329,8 +3111,8 @@ export const updateApp: API.OperationMethod<
   UpdateAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAppRequest,
-  output: UpdateAppResponse,
+  input: __S(45) as any as S.Schema<UpdateAppRequest>,
+  output: __S(1) as any as S.Schema<UpdateAppResponse>,
   errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3344,8 +3126,8 @@ export const updateAppFlag: API.OperationMethod<
   UpdateAppFlagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAppFlagRequest,
-  output: UpdateAppFlagResponse,
+  input: __S(50) as any as S.Schema<UpdateAppFlagRequest>,
+  output: __S(55) as any as S.Schema<UpdateAppFlagResponse>,
   errors: [FlagshipFlagNotFound, FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -3381,7 +3163,7 @@ function __c0(j: number): any {
         ]),
       );
     case 3:
-      return S.Array(AppsFlagsCreateRequestRulesItemConditionsItem);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -3394,16 +3176,16 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          conditions: AppsFlagsCreateRequestRulesItemConditionsList,
+          conditions: __S(3),
           priority: S.Number,
           serveVariation: S.String.pipe(T.Body("serve_variation")),
-          rollout: S.optional(AppsFlagsCreateRequestRulesItemRollout),
+          rollout: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "AppsFlagsCreateRequestRulesItem",
       });
     case 6:
-      return S.Array(AppsFlagsCreateRequestRulesItem);
+      return S.Array(__S(5));
     case 7:
       return S.Record(S.String, S.Unknown);
   }
@@ -3418,10 +3200,10 @@ function __c1(j: number): any {
           defaultVariation: S.String.pipe(T.Body("default_variation")),
           enabled: S.Boolean,
           key: S.String,
-          rules: AppsFlagsCreateRequestRulesList,
-          variations: UntypedVariationsMap,
+          rules: __S(6),
+          variations: __S(7),
           description: S.optional(S.String),
-          type: S.optional(AppsFlagsCreateRequestType),
+          type: S.optional(S.String),
         })
           .pipe(
             T.Http({
@@ -3440,7 +3222,7 @@ function __c1(j: number): any {
         ]),
       );
     case 2:
-      return S.Array(AppsFlagsCreateResponseRulesItemConditionsItem);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -3453,25 +3235,25 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          conditions: AppsFlagsCreateResponseRulesItemConditionsList,
+          conditions: __S(10),
           priority: S.Number,
           serveVariation: S.String.pipe(T.Body("serve_variation")),
-          rollout: S.optional(S.NullOr(AppsFlagsCreateResponseRulesItemRollout)),
+          rollout: S.optional(S.NullOr(__S(11))),
         }),
       ).annotate({
         identifier: "AppsFlagsCreateResponseRulesItem",
       });
     case 5:
-      return S.Array(AppsFlagsCreateResponseRulesItem);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           defaultVariation: S.String.pipe(T.Body("default_variation")),
           enabled: S.Boolean,
           key: S.String,
-          rules: AppsFlagsCreateResponseRulesList,
-          type: AppsFlagsCreateResponseType,
-          variations: UntypedVariationsMap,
+          rules: __S(13),
+          type: S.String,
+          variations: __S(7),
           description: S.optional(S.NullOr(S.String)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
           updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
@@ -3562,9 +3344,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           flagKey: S.String,
-          reason: AppsEvaluateGetResponseReason,
+          reason: S.String,
           variant: S.String,
-          value: S.optional(S.NullOr(AppsEvaluateGetResponseValue)),
+          value: S.optional(S.NullOr(__S(21))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetAppEvaluateResponse" });
     case 7:
@@ -3595,29 +3377,29 @@ function __c3(j: number): any {
         ]),
       );
     case 1:
-      return S.Array(AppsFlagsGetResponseRulesItemConditionsItem);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          conditions: AppsFlagsGetResponseRulesItemConditionsList,
+          conditions: __S(25),
           priority: S.Number,
           serveVariation: S.String.pipe(T.Body("serve_variation")),
-          rollout: S.optional(S.NullOr(AppsFlagsCreateResponseRulesItemRollout)),
+          rollout: S.optional(S.NullOr(__S(11))),
         }),
       ).annotate({
         identifier: "AppsFlagsGetResponseRulesItem",
       });
     case 3:
-      return S.Array(AppsFlagsGetResponseRulesItem);
+      return S.Array(__S(26));
     case 4:
       return S.suspend(() =>
         S.Struct({
           defaultVariation: S.String.pipe(T.Body("default_variation")),
           enabled: S.Boolean,
           key: S.String,
-          rules: AppsFlagsGetResponseRulesList,
-          type: AppsFlagsGetResponseType,
-          variations: UntypedVariationsMap,
+          rules: __S(27),
+          type: S.String,
+          variations: __S(7),
           description: S.optional(S.NullOr(S.String)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
           updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
@@ -3655,7 +3437,7 @@ function __c3(j: number): any {
         ),
       );
     case 7:
-      return S.Array(AppsFlagsChangelogListResultItem);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
@@ -3663,7 +3445,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: AppsFlagsChangelogListResultList.pipe(T.EnvelopePayload()),
+          result: __S(31).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -3694,36 +3476,36 @@ function __c4(j: number): any {
         ]),
       );
     case 3:
-      return S.Array(AppsFlagsListResultItemRulesItemConditionsItem);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          conditions: AppsFlagsListResultItemRulesItemConditionsList,
+          conditions: __S(35),
           priority: S.Number,
           serveVariation: S.String.pipe(T.Body("serve_variation")),
-          rollout: S.optional(S.NullOr(AppsFlagsCreateResponseRulesItemRollout)),
+          rollout: S.optional(S.NullOr(__S(11))),
         }),
       ).annotate({
         identifier: "AppsFlagsListResultItemRulesItem",
       });
     case 5:
-      return S.Array(AppsFlagsListResultItemRulesItem);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
           defaultVariation: S.String.pipe(T.Body("default_variation")),
           enabled: S.Boolean,
           key: S.String,
-          rules: AppsFlagsListResultItemRulesList,
-          type: AppsFlagsListResultItemType,
-          variations: UntypedVariationsMap,
+          rules: __S(37),
+          type: S.String,
+          variations: __S(7),
           description: S.optional(S.NullOr(S.String)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
           updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
         }),
       ).annotate({ identifier: "AppsFlagsListResultItem" });
     case 7:
-      return S.Array(AppsFlagsListResultItem);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
@@ -3731,7 +3513,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: AppsFlagsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(39).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAppFlagsResponse" });
@@ -3754,11 +3536,11 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "AppsListResultItem" });
     case 3:
-      return S.Array(AppsListResultItem);
+      return S.Array(__S(42));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: AppsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(43).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAppsResponse" });
@@ -3786,7 +3568,7 @@ function __c5(j: number): any {
         ]),
       );
     case 7:
-      return S.Array(AppsFlagsUpdateRequestRulesItemConditionsItem);
+      return S.Array(__S(46));
   }
 }
 function __c6(j: number): any {
@@ -3794,16 +3576,16 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          conditions: AppsFlagsUpdateRequestRulesItemConditionsList,
+          conditions: __S(47),
           priority: S.Number,
           serveVariation: S.String.pipe(T.Body("serve_variation")),
-          rollout: S.optional(AppsFlagsCreateRequestRulesItemRollout),
+          rollout: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "AppsFlagsUpdateRequestRulesItem",
       });
     case 1:
-      return S.Array(AppsFlagsUpdateRequestRulesItem);
+      return S.Array(__S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3813,10 +3595,10 @@ function __c6(j: number): any {
           defaultVariation: S.String.pipe(T.Body("default_variation")),
           enabled: S.Boolean,
           key: S.String,
-          rules: AppsFlagsUpdateRequestRulesList,
-          variations: UntypedVariationsMap,
+          rules: __S(49),
+          variations: __S(7),
           description: S.optional(S.String),
-          type: S.optional(AppsFlagsUpdateRequestType),
+          type: S.optional(S.String),
         })
           .pipe(
             T.Http({
@@ -3835,33 +3617,56 @@ function __c6(j: number): any {
         ]),
       );
     case 4:
-      return S.Array(AppsFlagsUpdateResponseRulesItemConditionsItem);
+      return S.Array(__S(51));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          conditions: AppsFlagsUpdateResponseRulesItemConditionsList,
+          conditions: __S(52),
           priority: S.Number,
           serveVariation: S.String.pipe(T.Body("serve_variation")),
-          rollout: S.optional(S.NullOr(AppsFlagsCreateResponseRulesItemRollout)),
+          rollout: S.optional(S.NullOr(__S(11))),
         }),
       ).annotate({
         identifier: "AppsFlagsUpdateResponseRulesItem",
       });
     case 6:
-      return S.Array(AppsFlagsUpdateResponseRulesItem);
+      return S.Array(__S(53));
     case 7:
       return S.suspend(() =>
         S.Struct({
           defaultVariation: S.String.pipe(T.Body("default_variation")),
           enabled: S.Boolean,
           key: S.String,
-          rules: AppsFlagsUpdateResponseRulesList,
-          type: AppsFlagsUpdateResponseType,
-          variations: UntypedVariationsMap,
+          rules: __S(54),
+          type: S.String,
+          variations: __S(7),
           description: S.optional(S.NullOr(S.String)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
           updatedBy: S.optional(S.NullOr(S.String).pipe(T.Body("updated_by"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateAppFlagResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
   }
 }

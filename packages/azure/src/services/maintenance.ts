@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -21,27 +23,18 @@ export interface ApplyUpdatesCreateOrUpdateRequest {
   /** Resource identifier */
   resourceName: string;
 }
-const ApplyUpdatesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ApplyUpdatesCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type ApplyUpdatesCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ApplyUpdatesCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ApplyUpdatesCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ApplyUpdatesCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ApplyUpdatesCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -57,11 +50,6 @@ export interface ApplyUpdatesCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const ApplyUpdatesCreateOrUpdateResponseSystemData = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ApplyUpdatesCreateOrUpdateResponseSystemData>;
-
 /** The status */
 export type ApplyUpdatePropertiesStatus =
   | "Pending"
@@ -69,8 +57,6 @@ export type ApplyUpdatePropertiesStatus =
   | "Completed"
   | "RetryNow"
   | "RetryLater";
-const ApplyUpdatePropertiesStatus = S.String;
-
 /** Properties for apply update */
 export interface ApplyUpdateProperties {
   /** The status */
@@ -80,11 +66,6 @@ export interface ApplyUpdateProperties {
   /** Last Update time */
   lastUpdateTime?: string;
 }
-const ApplyUpdateProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ApplyUpdateProperties>;
-
 export interface ApplyUpdatesCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -97,11 +78,6 @@ export interface ApplyUpdatesCreateOrUpdateResponse {
   /** Properties of the apply update */
   properties?: ApplyUpdateProperties;
 }
-const ApplyUpdatesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ApplyUpdatesCreateOrUpdateResponse>;
-
 export interface ApplyUpdatesCreateOrUpdateParentRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -118,27 +94,18 @@ export interface ApplyUpdatesCreateOrUpdateParentRequest {
   /** Resource identifier */
   resourceName: string;
 }
-const ApplyUpdatesCreateOrUpdateParentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ApplyUpdatesCreateOrUpdateParentRequest>;
-
 /** The type of identity that created the resource. */
 export type ApplyUpdatesCreateOrUpdateParentResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ApplyUpdatesCreateOrUpdateParentResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ApplyUpdatesCreateOrUpdateParentResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ApplyUpdatesCreateOrUpdateParentResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ApplyUpdatesCreateOrUpdateParentResponseSystemData {
   /** The identity that created the resource. */
@@ -154,11 +121,6 @@ export interface ApplyUpdatesCreateOrUpdateParentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const ApplyUpdatesCreateOrUpdateParentResponseSystemData = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ApplyUpdatesCreateOrUpdateParentResponseSystemData>;
-
 export interface ApplyUpdatesCreateOrUpdateParentResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -171,50 +133,21 @@ export interface ApplyUpdatesCreateOrUpdateParentResponse {
   /** Properties of the apply update */
   properties?: ApplyUpdateProperties;
 }
-const ApplyUpdatesCreateOrUpdateParentResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ApplyUpdatesCreateOrUpdateParentResponse>;
-
 /** List of allowed resources. */
 export type ConfigurationAssignmentFilterPropertiesResourceTypesList = Array<string>;
-const ConfigurationAssignmentFilterPropertiesResourceTypesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ConfigurationAssignmentFilterPropertiesResourceTypesList>;
-
 /** List of allowed resource groups. */
 export type ConfigurationAssignmentFilterPropertiesResourceGroupsList = Array<string>;
-const ConfigurationAssignmentFilterPropertiesResourceGroupsList =
-  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<ConfigurationAssignmentFilterPropertiesResourceGroupsList>;
-
 /** List of allowed operating systems. */
 export type ConfigurationAssignmentFilterPropertiesOsTypesList = Array<string>;
-const ConfigurationAssignmentFilterPropertiesOsTypesList =
-  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<ConfigurationAssignmentFilterPropertiesOsTypesList>;
-
 /** List of locations to scope the query to. */
 export type ConfigurationAssignmentFilterPropertiesLocationsList = Array<string>;
-const ConfigurationAssignmentFilterPropertiesLocationsList =
-  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<ConfigurationAssignmentFilterPropertiesLocationsList>;
-
 export type TagSettingsPropertiesTagsValueList = Array<string>;
-const TagSettingsPropertiesTagsValueList =
-  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<TagSettingsPropertiesTagsValueList>;
-
 /** Dictionary of tags with its list of values. */
 export type TagSettingsPropertiesTagsMap = {
   [key: string]: TagSettingsPropertiesTagsValueList | undefined;
 };
-const TagSettingsPropertiesTagsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<TagSettingsPropertiesTagsMap>;
-
 /** Filter VMs by Any or All specified tags. */
 export type TagSettingsPropertiesFilterOperator = "All" | "Any";
-const TagSettingsPropertiesFilterOperator = S.String;
-
 /** Tag filter information for the VM. */
 export interface TagSettingsProperties {
   /** Dictionary of tags with its list of values. */
@@ -222,11 +155,6 @@ export interface TagSettingsProperties {
   /** Filter VMs by Any or All specified tags. */
   filterOperator?: TagSettingsPropertiesFilterOperator | (string & {});
 }
-const TagSettingsProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<TagSettingsProperties>;
-
 /** Azure query for the update configuration. */
 export interface ConfigurationAssignmentFilterProperties {
   /** List of allowed resources. */
@@ -240,11 +168,6 @@ export interface ConfigurationAssignmentFilterProperties {
   /** Tag settings for the VM. */
   tagSettings?: TagSettingsProperties;
 }
-const ConfigurationAssignmentFilterProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ConfigurationAssignmentFilterProperties>;
-
 /** Properties for configuration assignment */
 export interface ConfigurationAssignmentProperties {
   /** The maintenance configuration Id */
@@ -254,11 +177,6 @@ export interface ConfigurationAssignmentProperties {
   /** Properties of the configuration assignment */
   filter?: ConfigurationAssignmentFilterProperties;
 }
-const ConfigurationAssignmentProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ConfigurationAssignmentProperties>;
-
 export interface ConfigurationAssignmentsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -277,27 +195,18 @@ export interface ConfigurationAssignmentsCreateOrUpdateRequest {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const ConfigurationAssignmentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type ConfigurationAssignmentsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ConfigurationAssignmentsCreateOrUpdateResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ConfigurationAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ConfigurationAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfigurationAssignmentsCreateOrUpdateResponseSystemData {
   /** The identity that created the resource. */
@@ -313,11 +222,6 @@ export interface ConfigurationAssignmentsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const ConfigurationAssignmentsCreateOrUpdateResponseSystemData = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateResponseSystemData>;
-
 export interface ConfigurationAssignmentsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -332,11 +236,6 @@ export interface ConfigurationAssignmentsCreateOrUpdateResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const ConfigurationAssignmentsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateResponse>;
-
 export interface ConfigurationAssignmentsCreateOrUpdateParentRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -359,27 +258,18 @@ export interface ConfigurationAssignmentsCreateOrUpdateParentRequest {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const ConfigurationAssignmentsCreateOrUpdateParentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateParentRequest>;
-
 /** The type of identity that created the resource. */
 export type ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData {
   /** The identity that created the resource. */
@@ -395,11 +285,6 @@ export interface ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData 
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData>;
-
 export interface ConfigurationAssignmentsCreateOrUpdateParentResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -414,11 +299,6 @@ export interface ConfigurationAssignmentsCreateOrUpdateParentResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const ConfigurationAssignmentsCreateOrUpdateParentResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateParentResponse>;
-
 export interface ConfigurationAssignmentsForResourceGroupCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -431,11 +311,6 @@ export interface ConfigurationAssignmentsForResourceGroupCreateOrUpdateRequest {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const ConfigurationAssignmentsForResourceGroupCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ConfigurationAssignmentsForResourceGroupCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -463,9 +338,6 @@ export interface ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseS
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemData =
-  ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData as any as S.Schema<ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemData>;
-
 export interface ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -480,11 +352,6 @@ export interface ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse 
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse>;
-
 export interface ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -495,11 +362,6 @@ export interface ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -541,9 +403,6 @@ export interface ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse 
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse =
-  ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse as any as S.Schema<ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse>;
-
 export interface DeleteConfigurationAssignmentRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -558,11 +417,6 @@ export interface DeleteConfigurationAssignmentRequest {
   /** Unique configuration assignment name */
   configurationAssignmentName: string;
 }
-const DeleteConfigurationAssignmentRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteConfigurationAssignmentRequest>;
-
 /** The type of identity that created the resource. */
 export type DeleteConfigurationAssignmentResponseSystemDataCreatedByType =
   | "User"
@@ -590,9 +444,6 @@ export interface DeleteConfigurationAssignmentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const DeleteConfigurationAssignmentResponseSystemData =
-  ApplyUpdatesCreateOrUpdateParentResponseSystemData as any as S.Schema<DeleteConfigurationAssignmentResponseSystemData>;
-
 export interface DeleteConfigurationAssignmentResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -607,11 +458,6 @@ export interface DeleteConfigurationAssignmentResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const DeleteConfigurationAssignmentResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteConfigurationAssignmentResponse>;
-
 export interface DeleteConfigurationAssignmentParentRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -630,11 +476,6 @@ export interface DeleteConfigurationAssignmentParentRequest {
   /** Unique configuration assignment name */
   configurationAssignmentName: string;
 }
-const DeleteConfigurationAssignmentParentRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DeleteConfigurationAssignmentParentRequest>;
-
 /** The type of identity that created the resource. */
 export type DeleteConfigurationAssignmentParentResponseSystemDataCreatedByType =
   | "User"
@@ -676,9 +517,6 @@ export interface DeleteConfigurationAssignmentParentResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const DeleteConfigurationAssignmentParentResponse =
-  DeleteConfigurationAssignmentResponse as any as S.Schema<DeleteConfigurationAssignmentParentResponse>;
-
 export interface DeleteConfigurationAssignmentsForResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -687,11 +525,6 @@ export interface DeleteConfigurationAssignmentsForResourceGroupRequest {
   /** Unique configuration assignment name */
   configurationAssignmentName: string;
 }
-const DeleteConfigurationAssignmentsForResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DeleteConfigurationAssignmentsForResourceGroupRequest>;
-
 /** The type of identity that created the resource. */
 export type DeleteConfigurationAssignmentsForResourceGroupResponseSystemDataCreatedByType =
   | "User"
@@ -733,20 +566,12 @@ export interface DeleteConfigurationAssignmentsForResourceGroupResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const DeleteConfigurationAssignmentsForResourceGroupResponse =
-  ConfigurationAssignmentsCreateOrUpdateParentResponse as any as S.Schema<DeleteConfigurationAssignmentsForResourceGroupResponse>;
-
 export interface DeleteConfigurationAssignmentsForSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** Unique configuration assignment name */
   configurationAssignmentName: string;
 }
-const DeleteConfigurationAssignmentsForSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteConfigurationAssignmentsForSubscriptionRequest>;
-
 /** The type of identity that created the resource. */
 export type DeleteConfigurationAssignmentsForSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -788,9 +613,6 @@ export interface DeleteConfigurationAssignmentsForSubscriptionResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const DeleteConfigurationAssignmentsForSubscriptionResponse =
-  ConfigurationAssignmentsCreateOrUpdateParentResponse as any as S.Schema<DeleteConfigurationAssignmentsForSubscriptionResponse>;
-
 export interface DeleteMaintenanceConfigurationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -799,11 +621,6 @@ export interface DeleteMaintenanceConfigurationRequest {
   /** Maintenance Configuration Name */
   resourceName: string;
 }
-const DeleteMaintenanceConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeleteMaintenanceConfigurationRequest>;
-
 /** The type of identity that created the resource. */
 export type DeleteMaintenanceConfigurationResponseSystemDataCreatedByType =
   | "User"
@@ -831,23 +648,12 @@ export interface DeleteMaintenanceConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const DeleteMaintenanceConfigurationResponseSystemData =
-  ApplyUpdatesCreateOrUpdateParentResponseSystemData as any as S.Schema<DeleteMaintenanceConfigurationResponseSystemData>;
-
 /** Gets or sets tags of the resource */
 export type DeleteMaintenanceConfigurationResponseTagsMap = { [key: string]: string | undefined };
-const DeleteMaintenanceConfigurationResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteMaintenanceConfigurationResponseTagsMap>;
-
 /** Gets or sets extensionProperties of the maintenanceConfiguration */
 export type MaintenanceConfigurationPropertiesExtensionPropertiesMap = {
   [key: string]: string | undefined;
 };
-const MaintenanceConfigurationPropertiesExtensionPropertiesMap =
-  DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<MaintenanceConfigurationPropertiesExtensionPropertiesMap>;
-
 /** Gets or sets maintenanceScope of the configuration */
 export type MaintenanceConfigurationPropertiesMaintenanceScope =
   | "Host"
@@ -857,8 +663,6 @@ export type MaintenanceConfigurationPropertiesMaintenanceScope =
   | "InGuestPatch"
   | "SQLDB"
   | "SQLManagedInstance";
-const MaintenanceConfigurationPropertiesMaintenanceScope = S.String;
-
 /** Definition of a MaintenanceWindow */
 export interface MaintenanceWindow {
   /** Effective start date of the maintenance window in YYYY-MM-DD hh:mm format. The start date can be set to either the current date or future date. The window will be created in the time zone provided and adjusted to daylight savings according to that time zone. */
@@ -872,31 +676,16 @@ export interface MaintenanceWindow {
   /** Rate at which a Maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules. Daily schedule are formatted as recurEvery: [Frequency as integer]['Day(s)']. If no frequency is provided, the default frequency is 1. Daily schedule examples are recurEvery: Day, recurEvery: 3Days. Weekly schedule are formatted as recurEvery: [Frequency as integer]['Week(s)'] [Optional comma separated list of weekdays Monday-Sunday]. Weekly schedule examples are recurEvery: 3Weeks, recurEvery: Week Saturday,Sunday. Monthly schedules are formatted as [Frequency as integer]['Month(s)'] [Comma separated list of month days] or [Frequency as integer]['Month(s)'] [Week of Month (First, Second, Third, Fourth, Last)] [Weekday Monday-Sunday] [Optional Offset(No. of days)]. Offset value must be between -6 to 6 inclusive. Monthly schedule examples are recurEvery: Month, recurEvery: 2Months, recurEvery: Month day23,day24, recurEvery: Month Last Sunday, recurEvery: Month Fourth Monday, recurEvery: Month Last Sunday Offset-3, recurEvery: Month Third Sunday Offset6. */
   recurEvery?: string;
 }
-const MaintenanceWindow = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<MaintenanceWindow>;
-
 /** Gets or sets the visibility of the configuration. The default value is 'Custom' */
 export type MaintenanceConfigurationPropertiesVisibility = "Custom" | "Public";
-const MaintenanceConfigurationPropertiesVisibility = S.String;
-
 /** Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed. */
 export type InputPatchConfigurationRebootSetting = "IfRequired" | "Never" | "Always";
-const InputPatchConfigurationRebootSetting = S.String;
-
 /** Windows KBID to be excluded for patching. */
 export type InputWindowsParametersKbNumbersToExcludeList = Array<string>;
-const InputWindowsParametersKbNumbersToExcludeList =
-  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputWindowsParametersKbNumbersToExcludeList>;
-
 /** Windows KBID to be included for patching. */
 export type InputWindowsParametersKbNumbersToIncludeList = Array<string>;
-const InputWindowsParametersKbNumbersToIncludeList =
-  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputWindowsParametersKbNumbersToIncludeList>;
-
 /** Classification category of patches to be patched. Allowed values are 'Critical', 'Security', 'UpdateRollup', 'FeaturePack', 'ServicePack', 'Definition', 'Tools', and 'Updates'. */
 export type InputWindowsParametersClassificationsToIncludeList = Array<string>;
-const InputWindowsParametersClassificationsToIncludeList =
-  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputWindowsParametersClassificationsToIncludeList>;
-
 /** Input properties for patching a Windows machine. */
 export interface InputWindowsParameters {
   /** Windows KBID to be excluded for patching. */
@@ -908,26 +697,12 @@ export interface InputWindowsParameters {
   /** Exclude patches which need reboot */
   excludeKbsRequiringReboot?: boolean;
 }
-const InputWindowsParameters = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<InputWindowsParameters>;
-
 /** Package names to be excluded for patching. */
 export type InputLinuxParametersPackageNameMasksToExcludeList = Array<string>;
-const InputLinuxParametersPackageNameMasksToExcludeList =
-  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputLinuxParametersPackageNameMasksToExcludeList>;
-
 /** Package names to be included for patching. */
 export type InputLinuxParametersPackageNameMasksToIncludeList = Array<string>;
-const InputLinuxParametersPackageNameMasksToIncludeList =
-  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputLinuxParametersPackageNameMasksToIncludeList>;
-
 /** Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'. */
 export type InputLinuxParametersClassificationsToIncludeList = Array<string>;
-const InputLinuxParametersClassificationsToIncludeList =
-  ConfigurationAssignmentFilterPropertiesResourceTypesList as any as S.Schema<InputLinuxParametersClassificationsToIncludeList>;
-
 /** Input properties for patching a Linux machine. */
 export interface InputLinuxParameters {
   /** Package names to be excluded for patching. */
@@ -937,8 +712,6 @@ export interface InputLinuxParameters {
   /** Classification category of patches to be patched. Allowed values are 'Critical', 'Security', and 'Other'. */
   classificationsToInclude?: InputLinuxParametersClassificationsToIncludeList;
 }
-const InputLinuxParameters = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<InputLinuxParameters>;
-
 /** Input configuration for a patch run */
 export interface InputPatchConfiguration {
   /** Possible reboot preference as defined by the user based on which it would be decided to reboot the machine or not after the patch operation is completed. */
@@ -948,11 +721,6 @@ export interface InputPatchConfiguration {
   /** Input parameters specific to patching Linux machine. For Windows machines, do not pass this property. */
   linuxParameters?: InputLinuxParameters;
 }
-const InputPatchConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<InputPatchConfiguration>;
-
 /** Properties for maintenance configuration */
 export interface MaintenanceConfigurationProperties {
   /** Gets or sets namespace of the resource */
@@ -968,11 +736,6 @@ export interface MaintenanceConfigurationProperties {
   /** The input parameters to be passed to the patch run operation. */
   installPatches?: InputPatchConfiguration;
 }
-const MaintenanceConfigurationProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<MaintenanceConfigurationProperties>;
-
 export interface DeleteMaintenanceConfigurationResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -989,11 +752,6 @@ export interface DeleteMaintenanceConfigurationResponse {
   /** Gets or sets properties of the resource */
   properties?: MaintenanceConfigurationProperties;
 }
-const DeleteMaintenanceConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DeleteMaintenanceConfigurationResponse>;
-
 export interface GetApplyUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1008,11 +766,6 @@ export interface GetApplyUpdateRequest {
   /** applyUpdate Id */
   applyUpdateName: string;
 }
-const GetApplyUpdateRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetApplyUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type GetApplyUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -1040,9 +793,6 @@ export interface GetApplyUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const GetApplyUpdateResponseSystemData =
-  ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<GetApplyUpdateResponseSystemData>;
-
 export interface GetApplyUpdateResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -1055,11 +805,6 @@ export interface GetApplyUpdateResponse {
   /** Properties of the apply update */
   properties?: ApplyUpdateProperties;
 }
-const GetApplyUpdateResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetApplyUpdateResponse>;
-
 export interface GetApplyUpdateParentRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1078,11 +823,6 @@ export interface GetApplyUpdateParentRequest {
   /** applyUpdate Id */
   applyUpdateName: string;
 }
-const GetApplyUpdateParentRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetApplyUpdateParentRequest>;
-
 /** The type of identity that created the resource. */
 export type GetApplyUpdateParentResponseSystemDataCreatedByType =
   | "User"
@@ -1122,9 +862,6 @@ export interface GetApplyUpdateParentResponse {
   /** Properties of the apply update */
   properties?: ApplyUpdateProperties;
 }
-const GetApplyUpdateParentResponse =
-  ApplyUpdatesCreateOrUpdateResponse as any as S.Schema<GetApplyUpdateParentResponse>;
-
 export interface GetConfigurationAssignmentRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1139,11 +876,6 @@ export interface GetConfigurationAssignmentRequest {
   /** Configuration assignment name */
   configurationAssignmentName: string;
 }
-const GetConfigurationAssignmentRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetConfigurationAssignmentRequest>;
-
 /** The type of identity that created the resource. */
 export type GetConfigurationAssignmentResponseSystemDataCreatedByType =
   | "User"
@@ -1171,9 +903,6 @@ export interface GetConfigurationAssignmentResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const GetConfigurationAssignmentResponseSystemData =
-  ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<GetConfigurationAssignmentResponseSystemData>;
-
 export interface GetConfigurationAssignmentResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -1188,11 +917,6 @@ export interface GetConfigurationAssignmentResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const GetConfigurationAssignmentResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetConfigurationAssignmentResponse>;
-
 export interface GetConfigurationAssignmentParentRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1211,11 +935,6 @@ export interface GetConfigurationAssignmentParentRequest {
   /** Configuration assignment name */
   configurationAssignmentName: string;
 }
-const GetConfigurationAssignmentParentRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetConfigurationAssignmentParentRequest>;
-
 /** The type of identity that created the resource. */
 export type GetConfigurationAssignmentParentResponseSystemDataCreatedByType =
   | "User"
@@ -1257,9 +976,6 @@ export interface GetConfigurationAssignmentParentResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const GetConfigurationAssignmentParentResponse =
-  DeleteConfigurationAssignmentResponse as any as S.Schema<GetConfigurationAssignmentParentResponse>;
-
 export interface GetConfigurationAssignmentsForResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1268,11 +984,6 @@ export interface GetConfigurationAssignmentsForResourceGroupRequest {
   /** Configuration assignment name */
   configurationAssignmentName: string;
 }
-const GetConfigurationAssignmentsForResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetConfigurationAssignmentsForResourceGroupRequest>;
-
 /** The type of identity that created the resource. */
 export type GetConfigurationAssignmentsForResourceGroupResponseSystemDataCreatedByType =
   | "User"
@@ -1314,20 +1025,12 @@ export interface GetConfigurationAssignmentsForResourceGroupResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const GetConfigurationAssignmentsForResourceGroupResponse =
-  ConfigurationAssignmentsCreateOrUpdateParentResponse as any as S.Schema<GetConfigurationAssignmentsForResourceGroupResponse>;
-
 export interface GetConfigurationAssignmentsForSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** Configuration assignment name */
   configurationAssignmentName: string;
 }
-const GetConfigurationAssignmentsForSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetConfigurationAssignmentsForSubscriptionRequest>;
-
 /** The type of identity that created the resource. */
 export type GetConfigurationAssignmentsForSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -1369,9 +1072,6 @@ export interface GetConfigurationAssignmentsForSubscriptionResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const GetConfigurationAssignmentsForSubscriptionResponse =
-  ConfigurationAssignmentsCreateOrUpdateResponse as any as S.Schema<GetConfigurationAssignmentsForSubscriptionResponse>;
-
 export interface GetMaintenanceConfigurationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1380,11 +1080,6 @@ export interface GetMaintenanceConfigurationRequest {
   /** Maintenance Configuration Name */
   resourceName: string;
 }
-const GetMaintenanceConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetMaintenanceConfigurationRequest>;
-
 /** The type of identity that created the resource. */
 export type GetMaintenanceConfigurationResponseSystemDataCreatedByType =
   | "User"
@@ -1412,14 +1107,8 @@ export interface GetMaintenanceConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const GetMaintenanceConfigurationResponseSystemData =
-  ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<GetMaintenanceConfigurationResponseSystemData>;
-
 /** Gets or sets tags of the resource */
 export type GetMaintenanceConfigurationResponseTagsMap = { [key: string]: string | undefined };
-const GetMaintenanceConfigurationResponseTagsMap =
-  DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<GetMaintenanceConfigurationResponseTagsMap>;
-
 export interface GetMaintenanceConfigurationResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -1436,22 +1125,12 @@ export interface GetMaintenanceConfigurationResponse {
   /** Gets or sets properties of the resource */
   properties?: MaintenanceConfigurationProperties;
 }
-const GetMaintenanceConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetMaintenanceConfigurationResponse>;
-
 export interface GetPublicMaintenanceConfigurationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** Maintenance Configuration Name */
   resourceName: string;
 }
-const GetPublicMaintenanceConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetPublicMaintenanceConfigurationRequest>;
-
 /** The type of identity that created the resource. */
 export type GetPublicMaintenanceConfigurationResponseSystemDataCreatedByType =
   | "User"
@@ -1479,16 +1158,10 @@ export interface GetPublicMaintenanceConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const GetPublicMaintenanceConfigurationResponseSystemData =
-  ApplyUpdatesCreateOrUpdateParentResponseSystemData as any as S.Schema<GetPublicMaintenanceConfigurationResponseSystemData>;
-
 /** Gets or sets tags of the resource */
 export type GetPublicMaintenanceConfigurationResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const GetPublicMaintenanceConfigurationResponseTagsMap =
-  DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<GetPublicMaintenanceConfigurationResponseTagsMap>;
-
 export interface GetPublicMaintenanceConfigurationResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -1505,11 +1178,6 @@ export interface GetPublicMaintenanceConfigurationResponse {
   /** Gets or sets properties of the resource */
   properties?: MaintenanceConfigurationProperties;
 }
-const GetPublicMaintenanceConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetPublicMaintenanceConfigurationResponse>;
-
 export interface ListConfigurationAssignmentParentRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1526,11 +1194,6 @@ export interface ListConfigurationAssignmentParentRequest {
   /** Resource identifier */
   resourceName: string;
 }
-const ListConfigurationAssignmentParentRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListConfigurationAssignmentParentRequest>;
-
 /** The type of identity that created the resource. */
 export type ConfigurationAssignmentSystemDataCreatedByType =
   | "User"
@@ -1558,9 +1221,6 @@ export interface ConfigurationAssignmentSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const ConfigurationAssignmentSystemData =
-  ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<ConfigurationAssignmentSystemData>;
-
 /** Configuration Assignment */
 export interface ConfigurationAssignment {
   /** Fully qualified identifier of the resource */
@@ -1576,28 +1236,13 @@ export interface ConfigurationAssignment {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const ConfigurationAssignment = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ConfigurationAssignment>;
-
 /** The list of configuration Assignments */
 export type ListConfigurationAssignmentsResultValueList = Array<ConfigurationAssignment>;
-const ListConfigurationAssignmentsResultValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListConfigurationAssignmentsResultValueList>;
-
 /** Response for ConfigurationAssignments list */
 export interface ListConfigurationAssignmentsResult {
   /** The list of configuration Assignments */
   value?: ListConfigurationAssignmentsResultValueList;
 }
-const ListConfigurationAssignmentsResult = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListConfigurationAssignmentsResult>;
-
 export interface ListConfigurationAssignmentsRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1610,29 +1255,14 @@ export interface ListConfigurationAssignmentsRequest {
   /** Resource identifier */
   resourceName: string;
 }
-const ListConfigurationAssignmentsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListConfigurationAssignmentsRequest>;
-
 export interface ListConfigurationAssignmentsWithinSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-const ListConfigurationAssignmentsWithinSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListConfigurationAssignmentsWithinSubscriptionRequest>;
-
 export interface ListMaintenanceConfigurationsRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-const ListMaintenanceConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListMaintenanceConfigurationsRequest>;
-
 /** The type of identity that created the resource. */
 export type MaintenanceConfigurationSystemDataCreatedByType =
   | "User"
@@ -1660,14 +1290,8 @@ export interface MaintenanceConfigurationSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const MaintenanceConfigurationSystemData =
-  ApplyUpdatesCreateOrUpdateResponseSystemData as any as S.Schema<MaintenanceConfigurationSystemData>;
-
 /** Gets or sets tags of the resource */
 export type MaintenanceConfigurationTagsMap = { [key: string]: string | undefined };
-const MaintenanceConfigurationTagsMap =
-  DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<MaintenanceConfigurationTagsMap>;
-
 /** Maintenance configuration record type */
 export interface MaintenanceConfiguration {
   /** Fully qualified identifier of the resource */
@@ -1685,45 +1309,20 @@ export interface MaintenanceConfiguration {
   /** Gets or sets properties of the resource */
   properties?: MaintenanceConfigurationProperties;
 }
-const MaintenanceConfiguration = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<MaintenanceConfiguration>;
-
 /** The list of maintenance Configurations */
 export type ListMaintenanceConfigurationsResultValueList = Array<MaintenanceConfiguration>;
-const ListMaintenanceConfigurationsResultValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListMaintenanceConfigurationsResultValueList>;
-
 /** Response for MaintenanceConfigurations list */
 export interface ListMaintenanceConfigurationsResult {
   /** The list of maintenance Configurations */
   value?: ListMaintenanceConfigurationsResultValueList;
 }
-const ListMaintenanceConfigurationsResult = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListMaintenanceConfigurationsResult>;
-
 export interface ListMaintenanceConfigurationsForResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** Resource Group Name */
   resourceGroupName: string;
 }
-const ListMaintenanceConfigurationsForResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListMaintenanceConfigurationsForResourceGroupRequest>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Information about an operation */
 export interface OperationInfo {
   /** Name of the provider */
@@ -1735,8 +1334,6 @@ export interface OperationInfo {
   /** Description of the operation */
   description?: string;
 }
-const OperationInfo = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<OperationInfo>;
-
 /** Represents an operation returned by the GetOperations request */
 export interface Operation {
   /** Name of the operation */
@@ -1750,31 +1347,17 @@ export interface Operation {
   /** Indicates whether the operation is a data action */
   isDataAction?: boolean;
 }
-const Operation = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<Operation>;
-
 /** A collection of operations */
 export type OperationsListResultValueList = Array<Operation>;
-const OperationsListResultValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<OperationsListResultValueList>;
-
 /** Result of the List Operations operation */
 export interface OperationsListResult {
   /** A collection of operations */
   value?: OperationsListResultValueList;
 }
-const OperationsListResult = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<OperationsListResult>;
-
 export interface ListPublicMaintenanceConfigurationsRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-const ListPublicMaintenanceConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListPublicMaintenanceConfigurationsRequest>;
-
 export interface ListUpdateParentRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1791,11 +1374,6 @@ export interface ListUpdateParentRequest {
   /** Resource identifier */
   resourceName: string;
 }
-const ListUpdateParentRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ListUpdateParentRequest>;
-
 /** The impact area */
 export type UpdateMaintenanceScope =
   | "Host"
@@ -1805,23 +1383,15 @@ export type UpdateMaintenanceScope =
   | "InGuestPatch"
   | "SQLDB"
   | "SQLManagedInstance";
-const UpdateMaintenanceScope = S.String;
-
 /** The impact type */
 export type UpdateImpactType = "None" | "Freeze" | "Restart" | "Redeploy";
-const UpdateImpactType = S.String;
-
 /** The status */
 export type UpdateStatus = "Pending" | "InProgress" | "Completed" | "RetryNow" | "RetryLater";
-const UpdateStatus = S.String;
-
 /** Properties for update */
 export interface UpdateProperties {
   /** The resourceId */
   resourceId?: string;
 }
-const UpdateProperties = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<UpdateProperties>;
-
 /** Maintenance update on a resource */
 export interface Update {
   /** The impact area */
@@ -1837,22 +1407,13 @@ export interface Update {
   /** Properties of the apply update */
   properties?: UpdateProperties;
 }
-const Update = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Update>;
-
 /** The pending updates */
 export type ListUpdatesResultValueList = Array<Update>;
-const ListUpdatesResultValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListUpdatesResultValueList>;
-
 /** Response for Updates list */
 export interface ListUpdatesResult {
   /** The pending updates */
   value?: ListUpdatesResultValueList;
 }
-const ListUpdatesResult = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ListUpdatesResult>;
-
 export interface ListUpdatesRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1865,15 +1426,10 @@ export interface ListUpdatesRequest {
   /** Resource identifier */
   resourceName: string;
 }
-const ListUpdatesRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ListUpdatesRequest>;
-
 /** Gets or sets tags of the resource */
 export type MaintenanceConfigurationsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const MaintenanceConfigurationsCreateOrUpdateRequestTagsMap =
-  DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateRequestTagsMap>;
-
 export interface MaintenanceConfigurationsCreateOrUpdateRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1888,11 +1444,6 @@ export interface MaintenanceConfigurationsCreateOrUpdateRequest {
   /** Gets or sets properties of the resource */
   properties?: MaintenanceConfigurationProperties;
 }
-const MaintenanceConfigurationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type MaintenanceConfigurationsCreateOrUpdateResponseSystemDataCreatedByType =
   | "User"
@@ -1920,16 +1471,10 @@ export interface MaintenanceConfigurationsCreateOrUpdateResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const MaintenanceConfigurationsCreateOrUpdateResponseSystemData =
-  ConfigurationAssignmentsCreateOrUpdateResponseSystemData as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponseSystemData>;
-
 /** Gets or sets tags of the resource */
 export type MaintenanceConfigurationsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const MaintenanceConfigurationsCreateOrUpdateResponseTagsMap =
-  DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponseTagsMap>;
-
 export interface MaintenanceConfigurationsCreateOrUpdateResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -1946,11 +1491,6 @@ export interface MaintenanceConfigurationsCreateOrUpdateResponse {
   /** Gets or sets properties of the resource */
   properties?: MaintenanceConfigurationProperties;
 }
-const MaintenanceConfigurationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponse>;
-
 export interface UpdateConfigurationAssignmentsForResourceGroupRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -1963,11 +1503,6 @@ export interface UpdateConfigurationAssignmentsForResourceGroupRequest {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const UpdateConfigurationAssignmentsForResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<UpdateConfigurationAssignmentsForResourceGroupRequest>;
-
 /** The type of identity that created the resource. */
 export type UpdateConfigurationAssignmentsForResourceGroupResponseSystemDataCreatedByType =
   | "User"
@@ -2009,9 +1544,6 @@ export interface UpdateConfigurationAssignmentsForResourceGroupResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const UpdateConfigurationAssignmentsForResourceGroupResponse =
-  ConfigurationAssignmentsCreateOrUpdateParentResponse as any as S.Schema<UpdateConfigurationAssignmentsForResourceGroupResponse>;
-
 export interface UpdateConfigurationAssignmentsForSubscriptionRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2022,11 +1554,6 @@ export interface UpdateConfigurationAssignmentsForSubscriptionRequest {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const UpdateConfigurationAssignmentsForSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<UpdateConfigurationAssignmentsForSubscriptionRequest>;
-
 /** The type of identity that created the resource. */
 export type UpdateConfigurationAssignmentsForSubscriptionResponseSystemDataCreatedByType =
   | "User"
@@ -2068,14 +1595,8 @@ export interface UpdateConfigurationAssignmentsForSubscriptionResponse {
   /** Properties of the configuration assignment */
   properties?: ConfigurationAssignmentProperties;
 }
-const UpdateConfigurationAssignmentsForSubscriptionResponse =
-  ConfigurationAssignmentsCreateOrUpdateParentResponse as any as S.Schema<UpdateConfigurationAssignmentsForSubscriptionResponse>;
-
 /** Gets or sets tags of the resource */
 export type UpdateMaintenanceConfigurationRequestTagsMap = { [key: string]: string | undefined };
-const UpdateMaintenanceConfigurationRequestTagsMap =
-  DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<UpdateMaintenanceConfigurationRequestTagsMap>;
-
 export interface UpdateMaintenanceConfigurationRequest {
   /** Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -2090,11 +1611,6 @@ export interface UpdateMaintenanceConfigurationRequest {
   /** Gets or sets properties of the resource */
   properties?: MaintenanceConfigurationProperties;
 }
-const UpdateMaintenanceConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<UpdateMaintenanceConfigurationRequest>;
-
 /** The type of identity that created the resource. */
 export type UpdateMaintenanceConfigurationResponseSystemDataCreatedByType =
   | "User"
@@ -2122,14 +1638,8 @@ export interface UpdateMaintenanceConfigurationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const UpdateMaintenanceConfigurationResponseSystemData =
-  ApplyUpdatesCreateOrUpdateParentResponseSystemData as any as S.Schema<UpdateMaintenanceConfigurationResponseSystemData>;
-
 /** Gets or sets tags of the resource */
 export type UpdateMaintenanceConfigurationResponseTagsMap = { [key: string]: string | undefined };
-const UpdateMaintenanceConfigurationResponseTagsMap =
-  DeleteMaintenanceConfigurationResponseTagsMap as any as S.Schema<UpdateMaintenanceConfigurationResponseTagsMap>;
-
 export interface UpdateMaintenanceConfigurationResponse {
   /** Fully qualified identifier of the resource */
   id?: string;
@@ -2146,11 +1656,6 @@ export interface UpdateMaintenanceConfigurationResponse {
   /** Gets or sets properties of the resource */
   properties?: MaintenanceConfigurationProperties;
 }
-const UpdateMaintenanceConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<UpdateMaintenanceConfigurationResponse>;
-
 export type ApplyUpdatesCreateOrUpdateError = AzureOpError;
 /** Apply Updates to resource Apply maintenance updates to resource */
 export const ApplyUpdatesCreateOrUpdate: API.OperationMethod<
@@ -2159,8 +1664,8 @@ export const ApplyUpdatesCreateOrUpdate: API.OperationMethod<
   ApplyUpdatesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplyUpdatesCreateOrUpdateRequest,
-  output: ApplyUpdatesCreateOrUpdateResponse,
+  input: __S(0) as any as S.Schema<ApplyUpdatesCreateOrUpdateRequest>,
+  output: __S(3) as any as S.Schema<ApplyUpdatesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2174,8 +1679,8 @@ export const ApplyUpdatesCreateOrUpdateParent: API.OperationMethod<
   ApplyUpdatesCreateOrUpdateParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplyUpdatesCreateOrUpdateParentRequest,
-  output: ApplyUpdatesCreateOrUpdateParentResponse,
+  input: __S(4) as any as S.Schema<ApplyUpdatesCreateOrUpdateParentRequest>,
+  output: __S(6) as any as S.Schema<ApplyUpdatesCreateOrUpdateParentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2189,8 +1694,8 @@ export const ConfigurationAssignmentsCreateOrUpdate: API.OperationMethod<
   ConfigurationAssignmentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationAssignmentsCreateOrUpdateRequest,
-  output: ConfigurationAssignmentsCreateOrUpdateResponse,
+  input: __S(12) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateRequest>,
+  output: __S(14) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2204,8 +1709,8 @@ export const ConfigurationAssignmentsCreateOrUpdateParent: API.OperationMethod<
   ConfigurationAssignmentsCreateOrUpdateParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationAssignmentsCreateOrUpdateParentRequest,
-  output: ConfigurationAssignmentsCreateOrUpdateParentResponse,
+  input: __S(15) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateParentRequest>,
+  output: __S(17) as any as S.Schema<ConfigurationAssignmentsCreateOrUpdateParentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2219,8 +1724,10 @@ export const ConfigurationAssignmentsForResourceGroupCreateOrUpdate: API.Operati
   ConfigurationAssignmentsForResourceGroupCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationAssignmentsForResourceGroupCreateOrUpdateRequest,
-  output: ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse,
+  input: __S(18) as any as S.Schema<ConfigurationAssignmentsForResourceGroupCreateOrUpdateRequest>,
+  output: __S(
+    19,
+  ) as any as S.Schema<ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2234,8 +1741,10 @@ export const ConfigurationAssignmentsForSubscriptionsCreateOrUpdate: API.Operati
   ConfigurationAssignmentsForSubscriptionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest,
-  output: ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse,
+  input: __S(20) as any as S.Schema<ConfigurationAssignmentsForSubscriptionsCreateOrUpdateRequest>,
+  output: __S(
+    19,
+  ) as any as S.Schema<ConfigurationAssignmentsForSubscriptionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2249,8 +1758,8 @@ export const DeleteConfigurationAssignment: API.OperationMethod<
   DeleteConfigurationAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConfigurationAssignmentRequest,
-  output: DeleteConfigurationAssignmentResponse,
+  input: __S(21) as any as S.Schema<DeleteConfigurationAssignmentRequest>,
+  output: __S(22) as any as S.Schema<DeleteConfigurationAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2264,8 +1773,8 @@ export const DeleteConfigurationAssignmentParent: API.OperationMethod<
   DeleteConfigurationAssignmentParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConfigurationAssignmentParentRequest,
-  output: DeleteConfigurationAssignmentParentResponse,
+  input: __S(23) as any as S.Schema<DeleteConfigurationAssignmentParentRequest>,
+  output: __S(22) as any as S.Schema<DeleteConfigurationAssignmentParentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2279,8 +1788,8 @@ export const DeleteConfigurationAssignmentsForResourceGroup: API.OperationMethod
   DeleteConfigurationAssignmentsForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConfigurationAssignmentsForResourceGroupRequest,
-  output: DeleteConfigurationAssignmentsForResourceGroupResponse,
+  input: __S(24) as any as S.Schema<DeleteConfigurationAssignmentsForResourceGroupRequest>,
+  output: __S(17) as any as S.Schema<DeleteConfigurationAssignmentsForResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2294,8 +1803,8 @@ export const DeleteConfigurationAssignmentsForSubscription: API.OperationMethod<
   DeleteConfigurationAssignmentsForSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConfigurationAssignmentsForSubscriptionRequest,
-  output: DeleteConfigurationAssignmentsForSubscriptionResponse,
+  input: __S(25) as any as S.Schema<DeleteConfigurationAssignmentsForSubscriptionRequest>,
+  output: __S(17) as any as S.Schema<DeleteConfigurationAssignmentsForSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2309,8 +1818,8 @@ export const DeleteMaintenanceConfiguration: API.OperationMethod<
   DeleteMaintenanceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMaintenanceConfigurationRequest,
-  output: DeleteMaintenanceConfigurationResponse,
+  input: __S(26) as any as S.Schema<DeleteMaintenanceConfigurationRequest>,
+  output: __S(33) as any as S.Schema<DeleteMaintenanceConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2324,8 +1833,8 @@ export const GetApplyUpdate: API.OperationMethod<
   GetApplyUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplyUpdateRequest,
-  output: GetApplyUpdateResponse,
+  input: __S(34) as any as S.Schema<GetApplyUpdateRequest>,
+  output: __S(35) as any as S.Schema<GetApplyUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2339,8 +1848,8 @@ export const GetApplyUpdateParent: API.OperationMethod<
   GetApplyUpdateParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplyUpdateParentRequest,
-  output: GetApplyUpdateParentResponse,
+  input: __S(36) as any as S.Schema<GetApplyUpdateParentRequest>,
+  output: __S(3) as any as S.Schema<GetApplyUpdateParentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2354,8 +1863,8 @@ export const GetConfigurationAssignment: API.OperationMethod<
   GetConfigurationAssignmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationAssignmentRequest,
-  output: GetConfigurationAssignmentResponse,
+  input: __S(37) as any as S.Schema<GetConfigurationAssignmentRequest>,
+  output: __S(38) as any as S.Schema<GetConfigurationAssignmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2369,8 +1878,8 @@ export const GetConfigurationAssignmentParent: API.OperationMethod<
   GetConfigurationAssignmentParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationAssignmentParentRequest,
-  output: GetConfigurationAssignmentParentResponse,
+  input: __S(39) as any as S.Schema<GetConfigurationAssignmentParentRequest>,
+  output: __S(22) as any as S.Schema<GetConfigurationAssignmentParentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2384,8 +1893,8 @@ export const GetConfigurationAssignmentsForResourceGroup: API.OperationMethod<
   GetConfigurationAssignmentsForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationAssignmentsForResourceGroupRequest,
-  output: GetConfigurationAssignmentsForResourceGroupResponse,
+  input: __S(40) as any as S.Schema<GetConfigurationAssignmentsForResourceGroupRequest>,
+  output: __S(17) as any as S.Schema<GetConfigurationAssignmentsForResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2399,8 +1908,8 @@ export const GetConfigurationAssignmentsForSubscription: API.OperationMethod<
   GetConfigurationAssignmentsForSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationAssignmentsForSubscriptionRequest,
-  output: GetConfigurationAssignmentsForSubscriptionResponse,
+  input: __S(41) as any as S.Schema<GetConfigurationAssignmentsForSubscriptionRequest>,
+  output: __S(14) as any as S.Schema<GetConfigurationAssignmentsForSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2414,8 +1923,8 @@ export const GetMaintenanceConfiguration: API.OperationMethod<
   GetMaintenanceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMaintenanceConfigurationRequest,
-  output: GetMaintenanceConfigurationResponse,
+  input: __S(42) as any as S.Schema<GetMaintenanceConfigurationRequest>,
+  output: __S(43) as any as S.Schema<GetMaintenanceConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2429,8 +1938,8 @@ export const GetPublicMaintenanceConfiguration: API.OperationMethod<
   GetPublicMaintenanceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPublicMaintenanceConfigurationRequest,
-  output: GetPublicMaintenanceConfigurationResponse,
+  input: __S(44) as any as S.Schema<GetPublicMaintenanceConfigurationRequest>,
+  output: __S(45) as any as S.Schema<GetPublicMaintenanceConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2444,8 +1953,8 @@ export const ListConfigurationAssignmentParent: API.OperationMethod<
   ListConfigurationAssignmentParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConfigurationAssignmentParentRequest,
-  output: ListConfigurationAssignmentsResult,
+  input: __S(46) as any as S.Schema<ListConfigurationAssignmentParentRequest>,
+  output: __S(49) as any as S.Schema<ListConfigurationAssignmentsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2459,8 +1968,8 @@ export const ListConfigurationAssignments: API.OperationMethod<
   ListConfigurationAssignmentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConfigurationAssignmentsRequest,
-  output: ListConfigurationAssignmentsResult,
+  input: __S(50) as any as S.Schema<ListConfigurationAssignmentsRequest>,
+  output: __S(49) as any as S.Schema<ListConfigurationAssignmentsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2474,8 +1983,8 @@ export const ListConfigurationAssignmentsWithinSubscription: API.OperationMethod
   ListConfigurationAssignmentsWithinSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConfigurationAssignmentsWithinSubscriptionRequest,
-  output: ListConfigurationAssignmentsResult,
+  input: __S(51) as any as S.Schema<ListConfigurationAssignmentsWithinSubscriptionRequest>,
+  output: __S(49) as any as S.Schema<ListConfigurationAssignmentsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2489,8 +1998,8 @@ export const ListMaintenanceConfigurations: API.OperationMethod<
   ListMaintenanceConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMaintenanceConfigurationsRequest,
-  output: ListMaintenanceConfigurationsResult,
+  input: __S(52) as any as S.Schema<ListMaintenanceConfigurationsRequest>,
+  output: __S(55) as any as S.Schema<ListMaintenanceConfigurationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2504,8 +2013,8 @@ export const ListMaintenanceConfigurationsForResourceGroup: API.OperationMethod<
   ListMaintenanceConfigurationsForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMaintenanceConfigurationsForResourceGroupRequest,
-  output: ListMaintenanceConfigurationsResult,
+  input: __S(56) as any as S.Schema<ListMaintenanceConfigurationsForResourceGroupRequest>,
+  output: __S(55) as any as S.Schema<ListMaintenanceConfigurationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2519,8 +2028,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationsListResult,
+  input: __S(57) as any as S.Schema<ListOperationsRequest>,
+  output: __S(61) as any as S.Schema<OperationsListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2534,8 +2043,8 @@ export const ListPublicMaintenanceConfigurations: API.OperationMethod<
   ListPublicMaintenanceConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPublicMaintenanceConfigurationsRequest,
-  output: ListMaintenanceConfigurationsResult,
+  input: __S(62) as any as S.Schema<ListPublicMaintenanceConfigurationsRequest>,
+  output: __S(55) as any as S.Schema<ListMaintenanceConfigurationsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2549,8 +2058,8 @@ export const ListUpdateParent: API.OperationMethod<
   ListUpdateParentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUpdateParentRequest,
-  output: ListUpdatesResult,
+  input: __S(63) as any as S.Schema<ListUpdateParentRequest>,
+  output: __S(67) as any as S.Schema<ListUpdatesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2564,8 +2073,8 @@ export const ListUpdates: API.OperationMethod<
   ListUpdatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUpdatesRequest,
-  output: ListUpdatesResult,
+  input: __S(68) as any as S.Schema<ListUpdatesRequest>,
+  output: __S(67) as any as S.Schema<ListUpdatesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2579,8 +2088,8 @@ export const MaintenanceConfigurationsCreateOrUpdate: API.OperationMethod<
   MaintenanceConfigurationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MaintenanceConfigurationsCreateOrUpdateRequest,
-  output: MaintenanceConfigurationsCreateOrUpdateResponse,
+  input: __S(69) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateRequest>,
+  output: __S(70) as any as S.Schema<MaintenanceConfigurationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2594,8 +2103,8 @@ export const UpdateConfigurationAssignmentsForResourceGroup: API.OperationMethod
   UpdateConfigurationAssignmentsForResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConfigurationAssignmentsForResourceGroupRequest,
-  output: UpdateConfigurationAssignmentsForResourceGroupResponse,
+  input: __S(71) as any as S.Schema<UpdateConfigurationAssignmentsForResourceGroupRequest>,
+  output: __S(17) as any as S.Schema<UpdateConfigurationAssignmentsForResourceGroupResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2609,8 +2118,8 @@ export const UpdateConfigurationAssignmentsForSubscription: API.OperationMethod<
   UpdateConfigurationAssignmentsForSubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConfigurationAssignmentsForSubscriptionRequest,
-  output: UpdateConfigurationAssignmentsForSubscriptionResponse,
+  input: __S(72) as any as S.Schema<UpdateConfigurationAssignmentsForSubscriptionRequest>,
+  output: __S(17) as any as S.Schema<UpdateConfigurationAssignmentsForSubscriptionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2624,8 +2133,8 @@ export const UpdateMaintenanceConfiguration: API.OperationMethod<
   UpdateMaintenanceConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMaintenanceConfigurationRequest,
-  output: UpdateMaintenanceConfigurationResponse,
+  input: __S(73) as any as S.Schema<UpdateMaintenanceConfigurationRequest>,
+  output: __S(74) as any as S.Schema<UpdateMaintenanceConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2657,12 +2166,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(ApplyUpdatesCreateOrUpdateResponseSystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(
-            ApplyUpdatesCreateOrUpdateResponseSystemDataLastModifiedByType,
-          ),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -2671,7 +2178,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ApplyUpdatePropertiesStatus),
+          status: S.optional(S.String),
           resourceId: S.optional(S.String),
           lastUpdateTime: S.optional(S.String),
         }),
@@ -2682,8 +2189,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(ApplyUpdatesCreateOrUpdateResponseSystemData),
-          properties: S.optional(ApplyUpdateProperties),
+          systemData: S.optional(__S(1)),
+          properties: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "ApplyUpdatesCreateOrUpdateResponse",
@@ -2713,14 +2220,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(
-            ApplyUpdatesCreateOrUpdateParentResponseSystemDataCreatedByType,
-          ),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(
-            ApplyUpdatesCreateOrUpdateParentResponseSystemDataLastModifiedByType,
-          ),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -2732,8 +2235,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(ApplyUpdatesCreateOrUpdateParentResponseSystemData),
-          properties: S.optional(ApplyUpdateProperties),
+          systemData: S.optional(__S(5)),
+          properties: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "ApplyUpdatesCreateOrUpdateParentResponse",
@@ -2745,22 +2248,22 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, TagSettingsPropertiesTagsValueList);
+      return S.Record(S.String, __S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tags: S.optional(TagSettingsPropertiesTagsMap),
-          filterOperator: S.optional(TagSettingsPropertiesFilterOperator),
+          tags: S.optional(__S(8)),
+          filterOperator: S.optional(S.String),
         }),
       ).annotate({ identifier: "TagSettingsProperties" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resourceTypes: S.optional(ConfigurationAssignmentFilterPropertiesResourceTypesList),
-          resourceGroups: S.optional(ConfigurationAssignmentFilterPropertiesResourceGroupsList),
-          osTypes: S.optional(ConfigurationAssignmentFilterPropertiesOsTypesList),
-          locations: S.optional(ConfigurationAssignmentFilterPropertiesLocationsList),
-          tagSettings: S.optional(TagSettingsProperties),
+          resourceTypes: S.optional(__S(7)),
+          resourceGroups: S.optional(__S(7)),
+          osTypes: S.optional(__S(7)),
+          locations: S.optional(__S(7)),
+          tagSettings: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "ConfigurationAssignmentFilterProperties",
@@ -2770,7 +2273,7 @@ function __c1(j: number): any {
         S.Struct({
           maintenanceConfigurationId: S.optional(S.String),
           resourceId: S.optional(S.String),
-          filter: S.optional(ConfigurationAssignmentFilterProperties),
+          filter: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "ConfigurationAssignmentProperties",
@@ -2785,7 +2288,7 @@ function __c1(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           configurationAssignmentName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          properties: S.optional(ConfigurationAssignmentProperties),
+          properties: S.optional(__S(11)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2801,14 +2304,10 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(
-            ConfigurationAssignmentsCreateOrUpdateResponseSystemDataCreatedByType,
-          ),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(
-            ConfigurationAssignmentsCreateOrUpdateResponseSystemDataLastModifiedByType,
-          ),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -2820,9 +2319,9 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(ConfigurationAssignmentsCreateOrUpdateResponseSystemData),
+          systemData: S.optional(__S(13)),
           location: S.optional(S.String),
-          properties: S.optional(ConfigurationAssignmentProperties),
+          properties: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "ConfigurationAssignmentsCreateOrUpdateResponse",
@@ -2839,7 +2338,7 @@ function __c1(j: number): any {
           resourceName: S.String.pipe(T.Label()),
           configurationAssignmentName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          properties: S.optional(ConfigurationAssignmentProperties),
+          properties: S.optional(__S(11)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2859,14 +2358,10 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(
-            ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataCreatedByType,
-          ),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(
-            ConfigurationAssignmentsCreateOrUpdateParentResponseSystemDataLastModifiedByType,
-          ),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -2878,9 +2373,9 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(ConfigurationAssignmentsCreateOrUpdateParentResponseSystemData),
+          systemData: S.optional(__S(16)),
           location: S.optional(S.String),
-          properties: S.optional(ConfigurationAssignmentProperties),
+          properties: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "ConfigurationAssignmentsCreateOrUpdateParentResponse",
@@ -2892,7 +2387,7 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configurationAssignmentName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          properties: S.optional(ConfigurationAssignmentProperties),
+          properties: S.optional(__S(11)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2910,11 +2405,9 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(
-            ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponseSystemData,
-          ),
+          systemData: S.optional(__S(16)),
           location: S.optional(S.String),
-          properties: S.optional(ConfigurationAssignmentProperties),
+          properties: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "ConfigurationAssignmentsForResourceGroupCreateOrUpdateResponse",
@@ -2925,7 +2418,7 @@ function __c2(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           configurationAssignmentName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          properties: S.optional(ConfigurationAssignmentProperties),
+          properties: S.optional(__S(11)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2963,9 +2456,9 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(DeleteConfigurationAssignmentResponseSystemData),
+          systemData: S.optional(__S(5)),
           location: S.optional(S.String),
-          properties: S.optional(ConfigurationAssignmentProperties),
+          properties: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "DeleteConfigurationAssignmentResponse",
@@ -3061,26 +2554,26 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          kbNumbersToExclude: S.optional(InputWindowsParametersKbNumbersToExcludeList),
-          kbNumbersToInclude: S.optional(InputWindowsParametersKbNumbersToIncludeList),
-          classificationsToInclude: S.optional(InputWindowsParametersClassificationsToIncludeList),
+          kbNumbersToExclude: S.optional(__S(7)),
+          kbNumbersToInclude: S.optional(__S(7)),
+          classificationsToInclude: S.optional(__S(7)),
           excludeKbsRequiringReboot: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "InputWindowsParameters" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          packageNameMasksToExclude: S.optional(InputLinuxParametersPackageNameMasksToExcludeList),
-          packageNameMasksToInclude: S.optional(InputLinuxParametersPackageNameMasksToIncludeList),
-          classificationsToInclude: S.optional(InputLinuxParametersClassificationsToIncludeList),
+          packageNameMasksToExclude: S.optional(__S(7)),
+          packageNameMasksToInclude: S.optional(__S(7)),
+          classificationsToInclude: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "InputLinuxParameters" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          rebootSetting: S.optional(InputPatchConfigurationRebootSetting),
-          windowsParameters: S.optional(InputWindowsParameters),
-          linuxParameters: S.optional(InputLinuxParameters),
+          rebootSetting: S.optional(S.String),
+          windowsParameters: S.optional(__S(29)),
+          linuxParameters: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "InputPatchConfiguration" });
   }
@@ -3091,11 +2584,11 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           namespace: S.optional(S.String),
-          extensionProperties: S.optional(MaintenanceConfigurationPropertiesExtensionPropertiesMap),
-          maintenanceScope: S.optional(MaintenanceConfigurationPropertiesMaintenanceScope),
-          maintenanceWindow: S.optional(MaintenanceWindow),
-          visibility: S.optional(MaintenanceConfigurationPropertiesVisibility),
-          installPatches: S.optional(InputPatchConfiguration),
+          extensionProperties: S.optional(__S(27)),
+          maintenanceScope: S.optional(S.String),
+          maintenanceWindow: S.optional(__S(28)),
+          visibility: S.optional(S.String),
+          installPatches: S.optional(__S(31)),
         }),
       ).annotate({
         identifier: "MaintenanceConfigurationProperties",
@@ -3106,10 +2599,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(DeleteMaintenanceConfigurationResponseSystemData),
+          systemData: S.optional(__S(5)),
           location: S.optional(S.String),
-          tags: S.optional(DeleteMaintenanceConfigurationResponseTagsMap),
-          properties: S.optional(MaintenanceConfigurationProperties),
+          tags: S.optional(__S(27)),
+          properties: S.optional(__S(32)),
         }),
       ).annotate({
         identifier: "DeleteMaintenanceConfigurationResponse",
@@ -3138,8 +2631,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(GetApplyUpdateResponseSystemData),
-          properties: S.optional(ApplyUpdateProperties),
+          systemData: S.optional(__S(1)),
+          properties: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "GetApplyUpdateResponse" });
     case 4:
@@ -3190,9 +2683,9 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(GetConfigurationAssignmentResponseSystemData),
+          systemData: S.optional(__S(1)),
           location: S.optional(S.String),
-          properties: S.optional(ConfigurationAssignmentProperties),
+          properties: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "GetConfigurationAssignmentResponse",
@@ -3279,10 +2772,10 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(GetMaintenanceConfigurationResponseSystemData),
+          systemData: S.optional(__S(1)),
           location: S.optional(S.String),
-          tags: S.optional(GetMaintenanceConfigurationResponseTagsMap),
-          properties: S.optional(MaintenanceConfigurationProperties),
+          tags: S.optional(__S(27)),
+          properties: S.optional(__S(32)),
         }),
       ).annotate({
         identifier: "GetMaintenanceConfigurationResponse",
@@ -3309,10 +2802,10 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(GetPublicMaintenanceConfigurationResponseSystemData),
+          systemData: S.optional(__S(5)),
           location: S.optional(S.String),
-          tags: S.optional(GetPublicMaintenanceConfigurationResponseTagsMap),
-          properties: S.optional(MaintenanceConfigurationProperties),
+          tags: S.optional(__S(27)),
+          properties: S.optional(__S(32)),
         }),
       ).annotate({
         identifier: "GetPublicMaintenanceConfigurationResponse",
@@ -3344,9 +2837,9 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(ConfigurationAssignmentSystemData),
+          systemData: S.optional(__S(1)),
           location: S.optional(S.String),
-          properties: S.optional(ConfigurationAssignmentProperties),
+          properties: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "ConfigurationAssignment" });
   }
@@ -3354,11 +2847,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ConfigurationAssignment);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListConfigurationAssignmentsResultValueList),
+          value: S.optional(__S(48)),
         }),
       ).annotate({
         identifier: "ListConfigurationAssignmentsResult",
@@ -3418,18 +2911,18 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(MaintenanceConfigurationSystemData),
+          systemData: S.optional(__S(1)),
           location: S.optional(S.String),
-          tags: S.optional(MaintenanceConfigurationTagsMap),
-          properties: S.optional(MaintenanceConfigurationProperties),
+          tags: S.optional(__S(27)),
+          properties: S.optional(__S(32)),
         }),
       ).annotate({ identifier: "MaintenanceConfiguration" });
     case 6:
-      return S.Array(MaintenanceConfiguration);
+      return S.Array(__S(53));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListMaintenanceConfigurationsResultValueList),
+          value: S.optional(__S(54)),
         }),
       ).annotate({
         identifier: "ListMaintenanceConfigurationsResult",
@@ -3478,18 +2971,18 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(OperationInfo),
+          display: S.optional(__S(58)),
           origin: S.optional(S.String),
           properties: S.optional(S.Unknown),
           isDataAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
-      return S.Array(Operation);
+      return S.Array(__S(59));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(OperationsListResultValueList),
+          value: S.optional(__S(60)),
         }),
       ).annotate({ identifier: "OperationsListResult" });
     case 6:
@@ -3539,20 +3032,20 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          maintenanceScope: S.optional(UpdateMaintenanceScope),
-          impactType: S.optional(UpdateImpactType),
-          status: S.optional(UpdateStatus),
+          maintenanceScope: S.optional(S.String),
+          impactType: S.optional(S.String),
+          status: S.optional(S.String),
           impactDurationInSec: S.optional(S.Number),
           notBefore: S.optional(S.String),
-          properties: S.optional(UpdateProperties),
+          properties: S.optional(__S(64)),
         }),
       ).annotate({ identifier: "Update" });
     case 2:
-      return S.Array(Update);
+      return S.Array(__S(65));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListUpdatesResultValueList),
+          value: S.optional(__S(66)),
         }),
       ).annotate({ identifier: "ListUpdatesResult" });
     case 4:
@@ -3579,8 +3072,8 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(MaintenanceConfigurationsCreateOrUpdateRequestTagsMap),
-          properties: S.optional(MaintenanceConfigurationProperties),
+          tags: S.optional(__S(27)),
+          properties: S.optional(__S(32)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3598,10 +3091,10 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(MaintenanceConfigurationsCreateOrUpdateResponseSystemData),
+          systemData: S.optional(__S(13)),
           location: S.optional(S.String),
-          tags: S.optional(MaintenanceConfigurationsCreateOrUpdateResponseTagsMap),
-          properties: S.optional(MaintenanceConfigurationProperties),
+          tags: S.optional(__S(27)),
+          properties: S.optional(__S(32)),
         }),
       ).annotate({
         identifier: "MaintenanceConfigurationsCreateOrUpdateResponse",
@@ -3613,7 +3106,7 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           configurationAssignmentName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          properties: S.optional(ConfigurationAssignmentProperties),
+          properties: S.optional(__S(11)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3635,7 +3128,7 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           configurationAssignmentName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          properties: S.optional(ConfigurationAssignmentProperties),
+          properties: S.optional(__S(11)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3654,8 +3147,8 @@ function __c9(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
           location: S.optional(S.String),
-          tags: S.optional(UpdateMaintenanceConfigurationRequestTagsMap),
-          properties: S.optional(MaintenanceConfigurationProperties),
+          tags: S.optional(__S(27)),
+          properties: S.optional(__S(32)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3673,13 +3166,42 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(UpdateMaintenanceConfigurationResponseSystemData),
+          systemData: S.optional(__S(5)),
           location: S.optional(S.String),
-          tags: S.optional(UpdateMaintenanceConfigurationResponseTagsMap),
-          properties: S.optional(MaintenanceConfigurationProperties),
+          tags: S.optional(__S(27)),
+          properties: S.optional(__S(32)),
         }),
       ).annotate({
         identifier: "UpdateMaintenanceConfigurationResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
   }
 }

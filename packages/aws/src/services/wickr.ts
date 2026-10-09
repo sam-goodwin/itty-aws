@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Wickr", serviceShapeName: "WickrAdminApi" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "wickr" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2024-02-01");
@@ -114,7 +116,7 @@ export class ValidationError
     "ValidationError",
     {
       reasons: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ErrorDetailList).annotate({ identifier: "ErrorDetailList" }),
+        /*@__PURE__*/ S.suspend(() => __S(126)).annotate({ identifier: "ErrorDetailList" }),
       ),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
     },
@@ -124,7 +126,6 @@ export type NetworkId = string;
 export type SensitiveString = string | redacted.Redacted<string>;
 export type SecurityGroupId = string;
 export type SecurityGroupIdList = string[];
-const SecurityGroupIdList = /*@__PURE__*/ __L.at(__c0, 0);
 export interface BatchCreateUserRequestItem {
   firstName?: string | redacted.Redacted<string>;
   lastName?: string | redacted.Redacted<string>;
@@ -134,22 +135,13 @@ export interface BatchCreateUserRequestItem {
   inviteCodeTtl?: number;
   codeValidation?: boolean;
 }
-const BatchCreateUserRequestItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<BatchCreateUserRequestItem>;
 export type BatchCreateUserRequestItems = BatchCreateUserRequestItem[];
-const BatchCreateUserRequestItems = /*@__PURE__*/ __L.at(__c0, 2);
 export type ClientToken = string;
 export interface BatchCreateUserRequest {
   networkId: string;
   users: BatchCreateUserRequestItem[];
   clientToken?: string;
 }
-const BatchCreateUserRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<BatchCreateUserRequest>;
 export type UserId = string;
 export interface User {
   userId?: string;
@@ -172,176 +164,99 @@ export interface User {
   codeValidation?: boolean;
   uname?: string;
 }
-const User = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<User>;
 export type Users = User[];
-const Users = /*@__PURE__*/ __L.at(__c0, 5);
 export interface BatchUserErrorResponseItem {
   field?: string;
   reason?: string;
   userId: string;
 }
-const BatchUserErrorResponseItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<BatchUserErrorResponseItem>;
 export type BatchUserErrorResponseItems = BatchUserErrorResponseItem[];
-const BatchUserErrorResponseItems = /*@__PURE__*/ __L.at(__c0, 7);
 export interface BatchCreateUserResponse {
   message?: string;
   successful?: User[];
   failed?: BatchUserErrorResponseItem[];
 }
-const BatchCreateUserResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<BatchCreateUserResponse>;
 export type UserIds = string[];
-const UserIds = SecurityGroupIdList as any as S.Schema<UserIds>;
 export interface BatchDeleteUserRequest {
   networkId: string;
   userIds: string[];
   clientToken?: string;
 }
-const BatchDeleteUserRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BatchDeleteUserRequest>;
 export interface BatchUserSuccessResponseItem {
   userId: string;
 }
-const BatchUserSuccessResponseItem = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<BatchUserSuccessResponseItem>;
 export type BatchUserSuccessResponseItems = BatchUserSuccessResponseItem[];
-const BatchUserSuccessResponseItems = /*@__PURE__*/ __L.at(__c1, 3);
 export interface BatchDeleteUserResponse {
   message?: string;
   successful?: BatchUserSuccessResponseItem[];
   failed?: BatchUserErrorResponseItem[];
 }
-const BatchDeleteUserResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<BatchDeleteUserResponse>;
 export type Unames = string[];
-const Unames = SecurityGroupIdList as any as S.Schema<Unames>;
 export interface BatchLookupUserUnameRequest {
   networkId: string;
   unames: string[];
   clientToken?: string;
 }
-const BatchLookupUserUnameRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<BatchLookupUserUnameRequest>;
 export type Uname = string;
 export interface BatchUnameSuccessResponseItem {
   uname: string;
   username: string;
 }
-const BatchUnameSuccessResponseItem = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<BatchUnameSuccessResponseItem>;
 export type BatchUnameSuccessResponseItems = BatchUnameSuccessResponseItem[];
-const BatchUnameSuccessResponseItems = /*@__PURE__*/ __L.at(__c1, 7);
 export interface BatchUnameErrorResponseItem {
   field?: string;
   reason?: string;
   uname: string;
 }
-const BatchUnameErrorResponseItem = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<BatchUnameErrorResponseItem>;
 export type BatchUnameErrorResponseItems = BatchUnameErrorResponseItem[];
-const BatchUnameErrorResponseItems = /*@__PURE__*/ __L.at(__c2, 1);
 export interface BatchLookupUserUnameResponse {
   message?: string;
   successful?: BatchUnameSuccessResponseItem[];
   failed?: BatchUnameErrorResponseItem[];
 }
-const BatchLookupUserUnameResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<BatchLookupUserUnameResponse>;
 export interface BatchReinviteUserRequest {
   networkId: string;
   userIds: string[];
   clientToken?: string;
 }
-const BatchReinviteUserRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<BatchReinviteUserRequest>;
 export interface BatchReinviteUserResponse {
   message?: string;
   successful?: BatchUserSuccessResponseItem[];
   failed?: BatchUserErrorResponseItem[];
 }
-const BatchReinviteUserResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<BatchReinviteUserResponse>;
 export type AppIds = string[];
-const AppIds = SecurityGroupIdList as any as S.Schema<AppIds>;
 export interface BatchResetDevicesForUserRequest {
   networkId: string;
   userId: string;
   appIds: string[];
   clientToken?: string;
 }
-const BatchResetDevicesForUserRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<BatchResetDevicesForUserRequest>;
 export interface BatchDeviceSuccessResponseItem {
   appId: string;
 }
-const BatchDeviceSuccessResponseItem = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<BatchDeviceSuccessResponseItem>;
 export type BatchDeviceSuccessResponseItems = BatchDeviceSuccessResponseItem[];
-const BatchDeviceSuccessResponseItems = /*@__PURE__*/ __L.at(__c2, 7);
 export interface BatchDeviceErrorResponseItem {
   field?: string;
   reason?: string;
   appId: string;
 }
-const BatchDeviceErrorResponseItem = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<BatchDeviceErrorResponseItem>;
 export type BatchDeviceErrorResponseItems = BatchDeviceErrorResponseItem[];
-const BatchDeviceErrorResponseItems = /*@__PURE__*/ __L.at(__c3, 1);
 export interface BatchResetDevicesForUserResponse {
   message?: string;
   successful?: BatchDeviceSuccessResponseItem[];
   failed?: BatchDeviceErrorResponseItem[];
 }
-const BatchResetDevicesForUserResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<BatchResetDevicesForUserResponse>;
 export interface BatchToggleUserSuspendStatusRequest {
   networkId: string;
   suspend: boolean;
   userIds: string[];
   clientToken?: string;
 }
-const BatchToggleUserSuspendStatusRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<BatchToggleUserSuspendStatusRequest>;
 export interface BatchToggleUserSuspendStatusResponse {
   message?: string;
   successful?: BatchUserSuccessResponseItem[];
   failed?: BatchUserErrorResponseItem[];
 }
-const BatchToggleUserSuspendStatusResponse =
-  BatchReinviteUserResponse as any as S.Schema<BatchToggleUserSuspendStatusResponse>;
 export interface CreateBotRequest {
   networkId: string;
   username: string;
@@ -349,7 +264,6 @@ export interface CreateBotRequest {
   groupId: string;
   challenge: string | redacted.Redacted<string>;
 }
-const CreateBotRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<CreateBotRequest>;
 export type BotId = string;
 export interface CreateBotResponse {
   message?: string;
@@ -359,73 +273,41 @@ export interface CreateBotResponse {
   displayName?: string;
   groupId?: string;
 }
-const CreateBotResponse = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CreateBotResponse>;
 export interface CreateDataRetentionBotRequest {
   networkId: string;
 }
-const CreateDataRetentionBotRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateDataRetentionBotRequest>;
 export interface CreateDataRetentionBotResponse {
   message?: string;
 }
-const CreateDataRetentionBotResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateDataRetentionBotResponse>;
 export interface CreateDataRetentionBotChallengeRequest {
   networkId: string;
 }
-const CreateDataRetentionBotChallengeRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateDataRetentionBotChallengeRequest>;
 export interface CreateDataRetentionBotChallengeResponse {
   challenge: string | redacted.Redacted<string>;
 }
-const CreateDataRetentionBotChallengeResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateDataRetentionBotChallengeResponse>;
 export type AccessLevel = "STANDARD" | "PREMIUM" | (string & {});
-const AccessLevel = S.String;
-
 export interface CreateNetworkRequest {
   networkName: string;
   accessLevel: AccessLevel;
   enablePremiumFreeTrial?: boolean;
   encryptionKeyArn?: string;
 }
-const CreateNetworkRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CreateNetworkRequest>;
 export interface CreateNetworkResponse {
   networkId?: string;
   networkName?: string;
   encryptionKeyArn?: string;
 }
-const CreateNetworkResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateNetworkResponse>;
 export type PermittedNetworksList = string[];
-const PermittedNetworksList = SecurityGroupIdList as any as S.Schema<PermittedNetworksList>;
 export interface WickrAwsNetworks {
   region: string;
   networkId: string;
 }
-const WickrAwsNetworks = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<WickrAwsNetworks>;
 export type WickrAwsNetworksList = WickrAwsNetworks[];
-const WickrAwsNetworksList = /*@__PURE__*/ __L.at(__c4, 5);
 export interface PermittedWickrEnterpriseNetwork {
   domain: string;
   networkId: string;
 }
-const PermittedWickrEnterpriseNetwork = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<PermittedWickrEnterpriseNetwork>;
 export type PermittedWickrEnterpriseNetworksList = PermittedWickrEnterpriseNetwork[];
-const PermittedWickrEnterpriseNetworksList = /*@__PURE__*/ __L.at(__c4, 7);
 export interface SecurityGroupSettingsRequest {
   lockoutThreshold?: number;
   permittedNetworks?: string[];
@@ -436,28 +318,18 @@ export interface SecurityGroupSettingsRequest {
   permittedWickrAwsNetworks?: WickrAwsNetworks[];
   permittedWickrEnterpriseNetworks?: PermittedWickrEnterpriseNetwork[];
 }
-const SecurityGroupSettingsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<SecurityGroupSettingsRequest>;
 export interface CreateSecurityGroupRequest {
   networkId: string;
   name: string;
   securityGroupSettings: SecurityGroupSettingsRequest;
   clientToken?: string;
 }
-const CreateSecurityGroupRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateSecurityGroupRequest>;
 export type SecurityGroupStringList = string[];
-const SecurityGroupStringList = SecurityGroupIdList as any as S.Schema<SecurityGroupStringList>;
 export interface CallingSettings {
   canStart11Call?: boolean;
   canVideoCall?: boolean;
   forceTcpCall?: boolean;
 }
-const CallingSettings = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<CallingSettings>;
 export interface PasswordRequirements {
   lowercase?: number;
   minLength?: number;
@@ -465,12 +337,10 @@ export interface PasswordRequirements {
   symbols?: number;
   uppercase?: number;
 }
-const PasswordRequirements = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<PasswordRequirements>;
 export interface ShredderSettings {
   canProcessManually?: boolean;
   intensity?: number;
 }
-const ShredderSettings = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ShredderSettings>;
 export interface SecurityGroupSettings {
   alwaysReauthenticate?: boolean;
   atakPackageValues?: string[];
@@ -509,10 +379,6 @@ export interface SecurityGroupSettings {
   permittedWickrAwsNetworks?: WickrAwsNetworks[];
   permittedWickrEnterpriseNetworks?: PermittedWickrEnterpriseNetwork[];
 }
-const SecurityGroupSettings = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<SecurityGroupSettings>;
 export interface SecurityGroup {
   activeMembers: number;
   botMembers: number;
@@ -523,68 +389,43 @@ export interface SecurityGroup {
   modified: number;
   securityGroupSettings: SecurityGroupSettings;
 }
-const SecurityGroup = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<SecurityGroup>;
 export interface CreateSecurityGroupResponse {
   securityGroup: SecurityGroup;
 }
-const CreateSecurityGroupResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CreateSecurityGroupResponse>;
 export interface DeleteBotRequest {
   networkId: string;
   botId: string;
 }
-const DeleteBotRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<DeleteBotRequest>;
 export interface DeleteBotResponse {
   message?: string;
 }
-const DeleteBotResponse = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DeleteBotResponse>;
 export interface DeleteDataRetentionBotRequest {
   networkId: string;
 }
-const DeleteDataRetentionBotRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DeleteDataRetentionBotRequest>;
 export interface DeleteDataRetentionBotResponse {
   message?: string;
 }
-const DeleteDataRetentionBotResponse =
-  CreateDataRetentionBotResponse as any as S.Schema<DeleteDataRetentionBotResponse>;
 export interface DeleteNetworkRequest {
   networkId: string;
   clientToken?: string;
 }
-const DeleteNetworkRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<DeleteNetworkRequest>;
 export interface DeleteNetworkResponse {
   message?: string;
 }
-const DeleteNetworkResponse = DeleteBotResponse as any as S.Schema<DeleteNetworkResponse>;
 export interface DeleteSecurityGroupRequest {
   networkId: string;
   groupId: string;
 }
-const DeleteSecurityGroupRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DeleteSecurityGroupRequest>;
 export interface DeleteSecurityGroupResponse {
   message?: string;
   networkId?: string;
   groupId?: string;
 }
-const DeleteSecurityGroupResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<DeleteSecurityGroupResponse>;
 export interface GetBotRequest {
   networkId: string;
   botId: string;
 }
-const GetBotRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<GetBotRequest>;
 export type BotStatus = 1 | 2 | (number & {});
-const BotStatus = S.Number;
 export interface GetBotResponse {
   botId?: string;
   displayName?: string;
@@ -597,24 +438,17 @@ export interface GetBotResponse {
   suspended?: boolean;
   lastLogin?: string;
 }
-const GetBotResponse = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetBotResponse>;
 export interface GetBotsCountRequest {
   networkId: string;
 }
-const GetBotsCountRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<GetBotsCountRequest>;
 export interface GetBotsCountResponse {
   pending: number;
   active: number;
   total: number;
 }
-const GetBotsCountResponse = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<GetBotsCountResponse>;
 export interface GetDataRetentionBotRequest {
   networkId: string;
 }
-const GetDataRetentionBotRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetDataRetentionBotRequest>;
 export interface GetDataRetentionBotResponse {
   botName?: string;
   botExists?: boolean;
@@ -623,38 +457,20 @@ export interface GetDataRetentionBotResponse {
   isDataRetentionServiceEnabled?: boolean;
   isPubkeyMsgAcked?: boolean;
 }
-const GetDataRetentionBotResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetDataRetentionBotResponse>;
 export interface GetGuestUserHistoryCountRequest {
   networkId: string;
 }
-const GetGuestUserHistoryCountRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetGuestUserHistoryCountRequest>;
 export interface GuestUserHistoryCount {
   month: string;
   count: string;
 }
-const GuestUserHistoryCount = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<GuestUserHistoryCount>;
 export type GuestUserHistoryCountList = GuestUserHistoryCount[];
-const GuestUserHistoryCountList = /*@__PURE__*/ __L.at(__c7, 6);
 export interface GetGuestUserHistoryCountResponse {
   history: GuestUserHistoryCount[];
 }
-const GetGuestUserHistoryCountResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GetGuestUserHistoryCountResponse>;
 export interface GetNetworkRequest {
   networkId: string;
 }
-const GetNetworkRequest = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<GetNetworkRequest>;
 export interface GetNetworkResponse {
   networkId: string;
   networkName: string;
@@ -666,29 +482,18 @@ export interface GetNetworkResponse {
   migrationState?: number;
   encryptionKeyArn?: string;
 }
-const GetNetworkResponse = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<GetNetworkResponse>;
 export interface GetNetworkSettingsRequest {
   networkId: string;
 }
-const GetNetworkSettingsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<GetNetworkSettingsRequest>;
 export interface Setting {
   optionName: string;
   value: string;
   type: string;
 }
-const Setting = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<Setting>;
 export type SettingsList = Setting[];
-const SettingsList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface GetNetworkSettingsResponse {
   settings: Setting[];
 }
-const GetNetworkSettingsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<GetNetworkSettingsResponse>;
 export interface GetOidcInfoRequest {
   networkId: string;
   clientId?: string;
@@ -700,7 +505,6 @@ export interface GetOidcInfoRequest {
   codeVerifier?: string;
   certificate?: string;
 }
-const GetOidcInfoRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<GetOidcInfoRequest>;
 export interface OidcConfigInfo {
   applicationName?: string;
   clientId?: string;
@@ -717,7 +521,6 @@ export interface OidcConfigInfo {
   ssoTokenBufferMinutes?: number;
   extraAuthParams?: string;
 }
-const OidcConfigInfo = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<OidcConfigInfo>;
 export interface OidcTokenInfo {
   codeVerifier?: string;
   codeChallenge?: string;
@@ -727,51 +530,32 @@ export interface OidcTokenInfo {
   tokenType?: string;
   expiresIn?: number;
 }
-const OidcTokenInfo = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<OidcTokenInfo>;
 export interface GetOidcInfoResponse {
   openidConnectInfo?: OidcConfigInfo;
   tokenInfo?: OidcTokenInfo;
 }
-const GetOidcInfoResponse = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<GetOidcInfoResponse>;
 export interface GetOpentdfConfigRequest {
   networkId: string;
 }
-const GetOpentdfConfigRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetOpentdfConfigRequest>;
 export interface GetOpentdfConfigResponse {
   clientId: string;
   domain: string;
   clientSecret: string | redacted.Redacted<string>;
   provider: string;
 }
-const GetOpentdfConfigResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GetOpentdfConfigResponse>;
 export interface GetSecurityGroupRequest {
   networkId: string;
   groupId: string;
 }
-const GetSecurityGroupRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<GetSecurityGroupRequest>;
 export interface GetSecurityGroupResponse {
   securityGroup: SecurityGroup;
 }
-const GetSecurityGroupResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<GetSecurityGroupResponse>;
 export interface GetUserRequest {
   networkId: string;
   userId: string;
   startTime?: Date;
   endTime?: Date;
 }
-const GetUserRequest = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<GetUserRequest>;
 export interface GetUserResponse {
   userId: string;
   firstName?: string | redacted.Redacted<string>;
@@ -784,14 +568,9 @@ export interface GetUserResponse {
   lastLogin?: number;
   securityGroupIds?: string[];
 }
-const GetUserResponse = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<GetUserResponse>;
 export interface GetUsersCountRequest {
   networkId: string;
 }
-const GetUsersCountRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetUsersCountRequest>;
 export interface GetUsersCountResponse {
   pending: number;
   active: number;
@@ -799,13 +578,7 @@ export interface GetUsersCountResponse {
   remaining: number;
   total: number;
 }
-const GetUsersCountResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<GetUsersCountResponse>;
 export type SortDirection = "ASC" | "DESC" | (string & {});
-const SortDirection = S.String;
-
 export interface ListBlockedGuestUsersRequest {
   networkId: string;
   maxResults?: number;
@@ -815,27 +588,17 @@ export interface ListBlockedGuestUsersRequest {
   admin?: string;
   nextToken?: string;
 }
-const ListBlockedGuestUsersRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListBlockedGuestUsersRequest>;
 export interface BlockedGuestUser {
   username: string;
   admin: string;
   modified: string;
   usernameHash: string;
 }
-const BlockedGuestUser = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<BlockedGuestUser>;
 export type BlockedGuestUserList = BlockedGuestUser[];
-const BlockedGuestUserList = /*@__PURE__*/ __L.at(__c10, 4);
 export interface ListBlockedGuestUsersResponse {
   nextToken?: string;
   blocklist: BlockedGuestUser[];
 }
-const ListBlockedGuestUsersResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListBlockedGuestUsersResponse>;
 export interface ListBotsRequest {
   networkId: string;
   nextToken?: string;
@@ -847,7 +610,6 @@ export interface ListBotsRequest {
   status?: BotStatus;
   groupId?: string;
 }
-const ListBotsRequest = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ListBotsRequest>;
 export interface Bot {
   botId?: string;
   displayName?: string;
@@ -860,14 +622,11 @@ export interface Bot {
   suspended?: boolean;
   lastLogin?: string;
 }
-const Bot = GetBotResponse as any as S.Schema<Bot>;
 export type Bots = Bot[];
-const Bots = /*@__PURE__*/ __L.at(__c10, 7);
 export interface ListBotsResponse {
   bots: Bot[];
   nextToken?: string;
 }
-const ListBotsResponse = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<ListBotsResponse>;
 export interface ListDevicesForUserRequest {
   networkId: string;
   userId: string;
@@ -876,10 +635,6 @@ export interface ListDevicesForUserRequest {
   sortFields?: string;
   sortDirection?: SortDirection;
 }
-const ListDevicesForUserRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListDevicesForUserRequest>;
 export interface BasicDeviceObject {
   appId?: string;
   created?: string;
@@ -888,17 +643,11 @@ export interface BasicDeviceObject {
   suspend?: boolean;
   type?: string;
 }
-const BasicDeviceObject = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<BasicDeviceObject>;
 export type Devices = BasicDeviceObject[];
-const Devices = /*@__PURE__*/ __L.at(__c11, 3);
 export interface ListDevicesForUserResponse {
   nextToken?: string;
   devices: BasicDeviceObject[];
 }
-const ListDevicesForUserResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ListDevicesForUserResponse>;
 export interface ListGuestUsersRequest {
   networkId: string;
   maxResults?: number;
@@ -908,33 +657,22 @@ export interface ListGuestUsersRequest {
   billingPeriod?: string;
   nextToken?: string;
 }
-const ListGuestUsersRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ListGuestUsersRequest>;
 export interface GuestUser {
   billingPeriod: string;
   username: string;
   usernameHash: string;
 }
-const GuestUser = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<GuestUser>;
 export type GuestUserList = GuestUser[];
-const GuestUserList = /*@__PURE__*/ __L.at(__c11, 7);
 export interface ListGuestUsersResponse {
   nextToken?: string;
   guestlist: GuestUser[];
 }
-const ListGuestUsersResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ListGuestUsersResponse>;
 export interface ListNetworksRequest {
   maxResults?: number;
   sortFields?: string;
   sortDirection?: SortDirection;
   nextToken?: string;
 }
-const ListNetworksRequest = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<ListNetworksRequest>;
 export interface Network {
   networkId: string;
   networkName: string;
@@ -946,17 +684,11 @@ export interface Network {
   migrationState?: number;
   encryptionKeyArn?: string;
 }
-const Network = GetNetworkResponse as any as S.Schema<Network>;
 export type NetworkList = Network[];
-const NetworkList = /*@__PURE__*/ __L.at(__c12, 2);
 export interface ListNetworksResponse {
   networks: Network[];
   nextToken?: string;
 }
-const ListNetworksResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListNetworksResponse>;
 export interface ListSecurityGroupsRequest {
   networkId: string;
   nextToken?: string;
@@ -964,20 +696,11 @@ export interface ListSecurityGroupsRequest {
   sortFields?: string;
   sortDirection?: SortDirection;
 }
-const ListSecurityGroupsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListSecurityGroupsRequest>;
 export type SecurityGroupList = SecurityGroup[];
-const SecurityGroupList = /*@__PURE__*/ __L.at(__c12, 5);
 export interface ListSecurityGroupsResponse {
   securityGroups?: SecurityGroup[];
   nextToken?: string;
 }
-const ListSecurityGroupsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ListSecurityGroupsResponse>;
 export interface ListSecurityGroupUsersRequest {
   networkId: string;
   groupId: string;
@@ -986,20 +709,11 @@ export interface ListSecurityGroupUsersRequest {
   sortFields?: string;
   sortDirection?: SortDirection;
 }
-const ListSecurityGroupUsersRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListSecurityGroupUsersRequest>;
 export interface ListSecurityGroupUsersResponse {
   users: User[];
   nextToken?: string;
 }
-const ListSecurityGroupUsersResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListSecurityGroupUsersResponse>;
 export type UserStatus = 1 | 2 | (number & {});
-const UserStatus = S.Number;
 export interface ListUsersRequest {
   networkId: string;
   nextToken?: string;
@@ -1012,12 +726,10 @@ export interface ListUsersRequest {
   status?: UserStatus;
   groupId?: string;
 }
-const ListUsersRequest = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ListUsersRequest>;
 export interface ListUsersResponse {
   nextToken?: string;
   users?: User[];
 }
-const ListUsersResponse = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<ListUsersResponse>;
 export interface RegisterOidcConfigRequest {
   networkId: string;
   companyId: string;
@@ -1029,10 +741,6 @@ export interface RegisterOidcConfigRequest {
   ssoTokenBufferMinutes?: number;
   userId?: string;
 }
-const RegisterOidcConfigRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<RegisterOidcConfigRequest>;
 export interface RegisterOidcConfigResponse {
   applicationName?: string;
   clientId?: string;
@@ -1049,10 +757,6 @@ export interface RegisterOidcConfigResponse {
   ssoTokenBufferMinutes?: number;
   extraAuthParams?: string;
 }
-const RegisterOidcConfigResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<RegisterOidcConfigResponse>;
 export interface RegisterOidcConfigTestRequest {
   networkId: string;
   extraAuthParams?: string;
@@ -1060,12 +764,7 @@ export interface RegisterOidcConfigTestRequest {
   scopes: string;
   certificate?: string;
 }
-const RegisterOidcConfigTestRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<RegisterOidcConfigTestRequest>;
 export type StringList = string[];
-const StringList = SecurityGroupIdList as any as S.Schema<StringList>;
 export interface RegisterOidcConfigTestResponse {
   tokenEndpoint?: string;
   userinfoEndpoint?: string;
@@ -1080,10 +779,6 @@ export interface RegisterOidcConfigTestResponse {
   tokenEndpointAuthMethodsSupported?: string[];
   microsoftMultiRefreshToken?: boolean;
 }
-const RegisterOidcConfigTestResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<RegisterOidcConfigTestResponse>;
 export interface RegisterOpentdfConfigRequest {
   networkId: string;
   clientId: string;
@@ -1092,20 +787,12 @@ export interface RegisterOpentdfConfigRequest {
   provider: string;
   dryRun?: boolean;
 }
-const RegisterOpentdfConfigRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<RegisterOpentdfConfigRequest>;
 export interface RegisterOpentdfConfigResponse {
   clientId: string;
   domain: string;
   clientSecret: string | redacted.Redacted<string>;
   provider: string;
 }
-const RegisterOpentdfConfigResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<RegisterOpentdfConfigResponse>;
 export interface UpdateBotRequest {
   networkId: string;
   botId: string;
@@ -1114,68 +801,44 @@ export interface UpdateBotRequest {
   challenge?: string | redacted.Redacted<string>;
   suspend?: boolean;
 }
-const UpdateBotRequest = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<UpdateBotRequest>;
 export interface UpdateBotResponse {
   message?: string;
 }
-const UpdateBotResponse = DeleteBotResponse as any as S.Schema<UpdateBotResponse>;
 export type DataRetentionActionType = "ENABLE" | "DISABLE" | "PUBKEY_MSG_ACK" | (string & {});
-const DataRetentionActionType = S.String;
-
 export interface UpdateDataRetentionRequest {
   networkId: string;
   actionType: DataRetentionActionType;
 }
-const UpdateDataRetentionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<UpdateDataRetentionRequest>;
 export interface UpdateDataRetentionResponse {
   message?: string;
 }
-const UpdateDataRetentionResponse =
-  CreateDataRetentionBotResponse as any as S.Schema<UpdateDataRetentionResponse>;
 export interface UpdateGuestUserRequest {
   networkId: string;
   usernameHash: string;
   block: boolean;
 }
-const UpdateGuestUserRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<UpdateGuestUserRequest>;
 export interface UpdateGuestUserResponse {
   message?: string;
 }
-const UpdateGuestUserResponse = DeleteBotResponse as any as S.Schema<UpdateGuestUserResponse>;
 export interface UpdateNetworkRequest {
   networkId: string;
   networkName: string;
   clientToken?: string;
   encryptionKeyArn?: string;
 }
-const UpdateNetworkRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<UpdateNetworkRequest>;
 export interface UpdateNetworkResponse {
   message?: string;
 }
-const UpdateNetworkResponse = DeleteBotResponse as any as S.Schema<UpdateNetworkResponse>;
 export type Status = "DISABLED" | "ENABLED" | "FORCE_ENABLED" | (string & {});
-const Status = S.String;
-
 export interface ReadReceiptConfig {
   status?: Status;
 }
-const ReadReceiptConfig = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<ReadReceiptConfig>;
 export interface ConsentPopupConfig {
   enabled: boolean;
   header?: string;
   content?: string;
   closeButtonLabel?: string;
 }
-const ConsentPopupConfig = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<ConsentPopupConfig>;
 export interface NetworkSettings {
   enableClientMetrics?: boolean;
   readReceiptConfig?: ReadReceiptConfig;
@@ -1183,35 +846,22 @@ export interface NetworkSettings {
   enableTrustedDataFormat?: boolean;
   consentPopup?: ConsentPopupConfig;
 }
-const NetworkSettings = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<NetworkSettings>;
 export interface UpdateNetworkSettingsRequest {
   networkId: string;
   settings: NetworkSettings;
 }
-const UpdateNetworkSettingsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<UpdateNetworkSettingsRequest>;
 export interface UpdateNetworkSettingsResponse {
   settings: Setting[];
 }
-const UpdateNetworkSettingsResponse =
-  GetNetworkSettingsResponse as any as S.Schema<UpdateNetworkSettingsResponse>;
 export interface UpdateSecurityGroupRequest {
   networkId: string;
   groupId: string;
   name?: string;
   securityGroupSettings?: SecurityGroupSettings;
 }
-const UpdateSecurityGroupRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<UpdateSecurityGroupRequest>;
 export interface UpdateSecurityGroupResponse {
   securityGroup: SecurityGroup;
 }
-const UpdateSecurityGroupResponse =
-  CreateSecurityGroupResponse as any as S.Schema<UpdateSecurityGroupResponse>;
 export interface UpdateUserDetails {
   firstName?: string | redacted.Redacted<string>;
   lastName?: string | redacted.Redacted<string>;
@@ -1221,13 +871,11 @@ export interface UpdateUserDetails {
   inviteCodeTtl?: number;
   codeValidation?: boolean;
 }
-const UpdateUserDetails = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<UpdateUserDetails>;
 export interface UpdateUserRequest {
   networkId: string;
   userId: string;
   userDetails?: UpdateUserDetails;
 }
-const UpdateUserRequest = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<UpdateUserRequest>;
 export interface UpdateUserResponse {
   userId: string;
   networkId: string;
@@ -1242,14 +890,11 @@ export interface UpdateUserResponse {
   inviteExpiration?: number;
   codeValidation?: boolean;
 }
-const UpdateUserResponse = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<UpdateUserResponse>;
 export interface ErrorDetail {
   field?: string;
   reason?: string;
 }
-const ErrorDetail = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<ErrorDetail>;
 export type ErrorDetailList = ErrorDetail[];
-const ErrorDetailList = /*@__PURE__*/ __L.at(__c15, 6);
 export type BatchCreateUserError =
   | BadRequestError
   | ForbiddenError
@@ -1270,8 +915,8 @@ export const batchCreateUser: API.OperationMethod<
   BatchCreateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateUserRequest,
-  output: BatchCreateUserResponse,
+  input: __S(3) as any as S.Schema<BatchCreateUserRequest>,
+  output: __S(8) as any as S.Schema<BatchCreateUserResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1304,8 +949,8 @@ export const batchDeleteUser: API.OperationMethod<
   BatchDeleteUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteUserRequest,
-  output: BatchDeleteUserResponse,
+  input: __S(9) as any as S.Schema<BatchDeleteUserRequest>,
+  output: __S(12) as any as S.Schema<BatchDeleteUserResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1338,8 +983,8 @@ export const batchLookupUserUname: API.OperationMethod<
   BatchLookupUserUnameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchLookupUserUnameRequest,
-  output: BatchLookupUserUnameResponse,
+  input: __S(13) as any as S.Schema<BatchLookupUserUnameRequest>,
+  output: __S(18) as any as S.Schema<BatchLookupUserUnameResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1372,8 +1017,8 @@ export const batchReinviteUser: API.OperationMethod<
   BatchReinviteUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchReinviteUserRequest,
-  output: BatchReinviteUserResponse,
+  input: __S(19) as any as S.Schema<BatchReinviteUserRequest>,
+  output: __S(20) as any as S.Schema<BatchReinviteUserResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1406,8 +1051,8 @@ export const batchResetDevicesForUser: API.OperationMethod<
   BatchResetDevicesForUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchResetDevicesForUserRequest,
-  output: BatchResetDevicesForUserResponse,
+  input: __S(21) as any as S.Schema<BatchResetDevicesForUserRequest>,
+  output: __S(26) as any as S.Schema<BatchResetDevicesForUserResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1440,8 +1085,8 @@ export const batchToggleUserSuspendStatus: API.OperationMethod<
   BatchToggleUserSuspendStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchToggleUserSuspendStatusRequest,
-  output: BatchToggleUserSuspendStatusResponse,
+  input: __S(27) as any as S.Schema<BatchToggleUserSuspendStatusRequest>,
+  output: __S(20) as any as S.Schema<BatchToggleUserSuspendStatusResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1474,8 +1119,8 @@ export const createBot: API.OperationMethod<
   CreateBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBotRequest,
-  output: CreateBotResponse,
+  input: __S(28) as any as S.Schema<CreateBotRequest>,
+  output: __S(29) as any as S.Schema<CreateBotResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1508,8 +1153,8 @@ export const createDataRetentionBot: API.OperationMethod<
   CreateDataRetentionBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataRetentionBotRequest,
-  output: CreateDataRetentionBotResponse,
+  input: __S(30) as any as S.Schema<CreateDataRetentionBotRequest>,
+  output: __S(31) as any as S.Schema<CreateDataRetentionBotResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1542,8 +1187,8 @@ export const createDataRetentionBotChallenge: API.OperationMethod<
   CreateDataRetentionBotChallengeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataRetentionBotChallengeRequest,
-  output: CreateDataRetentionBotChallengeResponse,
+  input: __S(32) as any as S.Schema<CreateDataRetentionBotChallengeRequest>,
+  output: __S(33) as any as S.Schema<CreateDataRetentionBotChallengeResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1576,8 +1221,8 @@ export const createNetwork: API.OperationMethod<
   CreateNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNetworkRequest,
-  output: CreateNetworkResponse,
+  input: __S(34) as any as S.Schema<CreateNetworkRequest>,
+  output: __S(35) as any as S.Schema<CreateNetworkResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1610,8 +1255,8 @@ export const createSecurityGroup: API.OperationMethod<
   CreateSecurityGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSecurityGroupRequest,
-  output: CreateSecurityGroupResponse,
+  input: __S(41) as any as S.Schema<CreateSecurityGroupRequest>,
+  output: __S(47) as any as S.Schema<CreateSecurityGroupResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1644,8 +1289,8 @@ export const deleteBot: API.OperationMethod<
   DeleteBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBotRequest,
-  output: DeleteBotResponse,
+  input: __S(48) as any as S.Schema<DeleteBotRequest>,
+  output: __S(49) as any as S.Schema<DeleteBotResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1678,8 +1323,8 @@ export const deleteDataRetentionBot: API.OperationMethod<
   DeleteDataRetentionBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDataRetentionBotRequest,
-  output: DeleteDataRetentionBotResponse,
+  input: __S(50) as any as S.Schema<DeleteDataRetentionBotRequest>,
+  output: __S(31) as any as S.Schema<DeleteDataRetentionBotResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1712,8 +1357,8 @@ export const deleteNetwork: API.OperationMethod<
   DeleteNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNetworkRequest,
-  output: DeleteNetworkResponse,
+  input: __S(51) as any as S.Schema<DeleteNetworkRequest>,
+  output: __S(49) as any as S.Schema<DeleteNetworkResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1746,8 +1391,8 @@ export const deleteSecurityGroup: API.OperationMethod<
   DeleteSecurityGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSecurityGroupRequest,
-  output: DeleteSecurityGroupResponse,
+  input: __S(52) as any as S.Schema<DeleteSecurityGroupRequest>,
+  output: __S(53) as any as S.Schema<DeleteSecurityGroupResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1780,8 +1425,8 @@ export const getBot: API.OperationMethod<
   GetBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBotRequest,
-  output: GetBotResponse,
+  input: __S(54) as any as S.Schema<GetBotRequest>,
+  output: __S(55) as any as S.Schema<GetBotResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1814,8 +1459,8 @@ export const getBotsCount: API.OperationMethod<
   GetBotsCountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBotsCountRequest,
-  output: GetBotsCountResponse,
+  input: __S(56) as any as S.Schema<GetBotsCountRequest>,
+  output: __S(57) as any as S.Schema<GetBotsCountResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1848,8 +1493,8 @@ export const getDataRetentionBot: API.OperationMethod<
   GetDataRetentionBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataRetentionBotRequest,
-  output: GetDataRetentionBotResponse,
+  input: __S(58) as any as S.Schema<GetDataRetentionBotRequest>,
+  output: __S(59) as any as S.Schema<GetDataRetentionBotResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1882,8 +1527,8 @@ export const getGuestUserHistoryCount: API.OperationMethod<
   GetGuestUserHistoryCountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGuestUserHistoryCountRequest,
-  output: GetGuestUserHistoryCountResponse,
+  input: __S(60) as any as S.Schema<GetGuestUserHistoryCountRequest>,
+  output: __S(63) as any as S.Schema<GetGuestUserHistoryCountResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1916,8 +1561,8 @@ export const getNetwork: API.OperationMethod<
   GetNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkRequest,
-  output: GetNetworkResponse,
+  input: __S(64) as any as S.Schema<GetNetworkRequest>,
+  output: __S(65) as any as S.Schema<GetNetworkResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1950,8 +1595,8 @@ export const getNetworkSettings: API.OperationMethod<
   GetNetworkSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkSettingsRequest,
-  output: GetNetworkSettingsResponse,
+  input: __S(66) as any as S.Schema<GetNetworkSettingsRequest>,
+  output: __S(69) as any as S.Schema<GetNetworkSettingsResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -1984,8 +1629,8 @@ export const getOidcInfo: API.OperationMethod<
   GetOidcInfoError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOidcInfoRequest,
-  output: GetOidcInfoResponse,
+  input: __S(70) as any as S.Schema<GetOidcInfoRequest>,
+  output: __S(73) as any as S.Schema<GetOidcInfoResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2018,8 +1663,8 @@ export const getOpentdfConfig: API.OperationMethod<
   GetOpentdfConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOpentdfConfigRequest,
-  output: GetOpentdfConfigResponse,
+  input: __S(74) as any as S.Schema<GetOpentdfConfigRequest>,
+  output: __S(75) as any as S.Schema<GetOpentdfConfigResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2052,8 +1697,8 @@ export const getSecurityGroup: API.OperationMethod<
   GetSecurityGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityGroupRequest,
-  output: GetSecurityGroupResponse,
+  input: __S(76) as any as S.Schema<GetSecurityGroupRequest>,
+  output: __S(77) as any as S.Schema<GetSecurityGroupResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2086,8 +1731,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserRequest,
-  output: GetUserResponse,
+  input: __S(78) as any as S.Schema<GetUserRequest>,
+  output: __S(79) as any as S.Schema<GetUserResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2120,8 +1765,8 @@ export const getUsersCount: API.OperationMethod<
   GetUsersCountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersCountRequest,
-  output: GetUsersCountResponse,
+  input: __S(80) as any as S.Schema<GetUsersCountRequest>,
+  output: __S(81) as any as S.Schema<GetUsersCountResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2155,8 +1800,8 @@ export const listBlockedGuestUsers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BlockedGuestUser
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBlockedGuestUsersRequest,
-  output: ListBlockedGuestUsersResponse,
+  input: __S(82) as any as S.Schema<ListBlockedGuestUsersRequest>,
+  output: __S(85) as any as S.Schema<ListBlockedGuestUsersResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2196,8 +1841,8 @@ export const listBots: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Bot
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListBotsRequest,
-  output: ListBotsResponse,
+  input: __S(86) as any as S.Schema<ListBotsRequest>,
+  output: __S(88) as any as S.Schema<ListBotsResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2237,8 +1882,8 @@ export const listDevicesForUser: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BasicDeviceObject
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDevicesForUserRequest,
-  output: ListDevicesForUserResponse,
+  input: __S(89) as any as S.Schema<ListDevicesForUserRequest>,
+  output: __S(92) as any as S.Schema<ListDevicesForUserResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2278,8 +1923,8 @@ export const listGuestUsers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GuestUser
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListGuestUsersRequest,
-  output: ListGuestUsersResponse,
+  input: __S(93) as any as S.Schema<ListGuestUsersRequest>,
+  output: __S(96) as any as S.Schema<ListGuestUsersResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2318,8 +1963,8 @@ export const listNetworks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Network
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListNetworksRequest,
-  output: ListNetworksResponse,
+  input: __S(97) as any as S.Schema<ListNetworksRequest>,
+  output: __S(99) as any as S.Schema<ListNetworksResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2358,8 +2003,8 @@ export const listSecurityGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SecurityGroup
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSecurityGroupsRequest,
-  output: ListSecurityGroupsResponse,
+  input: __S(100) as any as S.Schema<ListSecurityGroupsRequest>,
+  output: __S(102) as any as S.Schema<ListSecurityGroupsResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2399,8 +2044,8 @@ export const listSecurityGroupUsers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   User
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSecurityGroupUsersRequest,
-  output: ListSecurityGroupUsersResponse,
+  input: __S(103) as any as S.Schema<ListSecurityGroupUsersRequest>,
+  output: __S(104) as any as S.Schema<ListSecurityGroupUsersResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2440,8 +2085,8 @@ export const listUsers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   User
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUsersRequest,
-  output: ListUsersResponse,
+  input: __S(105) as any as S.Schema<ListUsersRequest>,
+  output: __S(106) as any as S.Schema<ListUsersResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2480,8 +2125,8 @@ export const registerOidcConfig: API.OperationMethod<
   RegisterOidcConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterOidcConfigRequest,
-  output: RegisterOidcConfigResponse,
+  input: __S(107) as any as S.Schema<RegisterOidcConfigRequest>,
+  output: __S(108) as any as S.Schema<RegisterOidcConfigResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2514,8 +2159,8 @@ export const registerOidcConfigTest: API.OperationMethod<
   RegisterOidcConfigTestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterOidcConfigTestRequest,
-  output: RegisterOidcConfigTestResponse,
+  input: __S(109) as any as S.Schema<RegisterOidcConfigTestRequest>,
+  output: __S(110) as any as S.Schema<RegisterOidcConfigTestResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2548,8 +2193,8 @@ export const registerOpentdfConfig: API.OperationMethod<
   RegisterOpentdfConfigError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterOpentdfConfigRequest,
-  output: RegisterOpentdfConfigResponse,
+  input: __S(111) as any as S.Schema<RegisterOpentdfConfigRequest>,
+  output: __S(112) as any as S.Schema<RegisterOpentdfConfigResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2582,8 +2227,8 @@ export const updateBot: API.OperationMethod<
   UpdateBotError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBotRequest,
-  output: UpdateBotResponse,
+  input: __S(113) as any as S.Schema<UpdateBotRequest>,
+  output: __S(49) as any as S.Schema<UpdateBotResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2616,8 +2261,8 @@ export const updateDataRetention: API.OperationMethod<
   UpdateDataRetentionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataRetentionRequest,
-  output: UpdateDataRetentionResponse,
+  input: __S(114) as any as S.Schema<UpdateDataRetentionRequest>,
+  output: __S(31) as any as S.Schema<UpdateDataRetentionResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2650,8 +2295,8 @@ export const updateGuestUser: API.OperationMethod<
   UpdateGuestUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGuestUserRequest,
-  output: UpdateGuestUserResponse,
+  input: __S(115) as any as S.Schema<UpdateGuestUserRequest>,
+  output: __S(49) as any as S.Schema<UpdateGuestUserResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2684,8 +2329,8 @@ export const updateNetwork: API.OperationMethod<
   UpdateNetworkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkRequest,
-  output: UpdateNetworkResponse,
+  input: __S(116) as any as S.Schema<UpdateNetworkRequest>,
+  output: __S(49) as any as S.Schema<UpdateNetworkResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2718,8 +2363,8 @@ export const updateNetworkSettings: API.OperationMethod<
   UpdateNetworkSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNetworkSettingsRequest,
-  output: UpdateNetworkSettingsResponse,
+  input: __S(120) as any as S.Schema<UpdateNetworkSettingsRequest>,
+  output: __S(69) as any as S.Schema<UpdateNetworkSettingsResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2752,8 +2397,8 @@ export const updateSecurityGroup: API.OperationMethod<
   UpdateSecurityGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSecurityGroupRequest,
-  output: UpdateSecurityGroupResponse,
+  input: __S(121) as any as S.Schema<UpdateSecurityGroupRequest>,
+  output: __S(47) as any as S.Schema<UpdateSecurityGroupResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2788,8 +2433,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserRequest,
-  output: UpdateUserResponse,
+  input: __S(123) as any as S.Schema<UpdateUserRequest>,
+  output: __S(124) as any as S.Schema<UpdateUserResponse>,
   errors: [
     BadRequestError,
     ForbiddenError,
@@ -2814,7 +2459,7 @@ function __c0(j: number): any {
         S.Struct({
           firstName: S.optional(SensitiveString),
           lastName: S.optional(SensitiveString),
-          securityGroupIds: SecurityGroupIdList,
+          securityGroupIds: __S(0),
           username: S.String,
           inviteCode: S.optional(S.String),
           inviteCodeTtl: S.optional(S.Number),
@@ -2824,12 +2469,12 @@ function __c0(j: number): any {
         identifier: "BatchCreateUserRequestItem",
       });
     case 2:
-      return S.Array(BatchCreateUserRequestItem);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           networkId: S.String.pipe(T.HttpLabel("networkId")),
-          users: BatchCreateUserRequestItems,
+          users: __S(2),
           clientToken: S.optional(S.String).pipe(
             T.HttpHeader("X-Client-Token"),
             T.IdempotencyToken(),
@@ -2852,7 +2497,7 @@ function __c0(j: number): any {
           firstName: S.optional(SensitiveString),
           lastName: S.optional(SensitiveString),
           username: S.optional(S.String),
-          securityGroups: S.optional(SecurityGroupIdList),
+          securityGroups: S.optional(__S(0)),
           isAdmin: S.optional(S.Boolean),
           suspended: S.optional(S.Boolean),
           status: S.optional(S.Number),
@@ -2870,7 +2515,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "User" });
     case 5:
-      return S.Array(User);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({ field: S.optional(S.String), reason: S.optional(S.String), userId: S.String }),
@@ -2878,7 +2523,7 @@ function __c0(j: number): any {
         identifier: "BatchUserErrorResponseItem",
       });
     case 7:
-      return S.Array(BatchUserErrorResponseItem);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -2887,15 +2532,15 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          successful: S.optional(Users),
-          failed: S.optional(BatchUserErrorResponseItems),
+          successful: S.optional(__S(5)),
+          failed: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "BatchCreateUserResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           networkId: S.String.pipe(T.HttpLabel("networkId")),
-          userIds: UserIds,
+          userIds: __S(0),
           clientToken: S.optional(S.String).pipe(
             T.HttpHeader("X-Client-Token"),
             T.IdempotencyToken(),
@@ -2916,20 +2561,20 @@ function __c1(j: number): any {
         identifier: "BatchUserSuccessResponseItem",
       });
     case 3:
-      return S.Array(BatchUserSuccessResponseItem);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          successful: S.optional(BatchUserSuccessResponseItems),
-          failed: S.optional(BatchUserErrorResponseItems),
+          successful: S.optional(__S(11)),
+          failed: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "BatchDeleteUserResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           networkId: S.String.pipe(T.HttpLabel("networkId")),
-          unames: Unames,
+          unames: __S(0),
           clientToken: S.optional(S.String).pipe(
             T.HttpHeader("X-Client-Token"),
             T.IdempotencyToken(),
@@ -2952,7 +2597,7 @@ function __c1(j: number): any {
         identifier: "BatchUnameSuccessResponseItem",
       });
     case 7:
-      return S.Array(BatchUnameSuccessResponseItem);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -2964,13 +2609,13 @@ function __c2(j: number): any {
         identifier: "BatchUnameErrorResponseItem",
       });
     case 1:
-      return S.Array(BatchUnameErrorResponseItem);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          successful: S.optional(BatchUnameSuccessResponseItems),
-          failed: S.optional(BatchUnameErrorResponseItems),
+          successful: S.optional(__S(15)),
+          failed: S.optional(__S(17)),
         }),
       ).annotate({
         identifier: "BatchLookupUserUnameResponse",
@@ -2979,7 +2624,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           networkId: S.String.pipe(T.HttpLabel("networkId")),
-          userIds: UserIds,
+          userIds: __S(0),
           clientToken: S.optional(S.String).pipe(
             T.HttpHeader("X-Client-Token"),
             T.IdempotencyToken(),
@@ -2999,8 +2644,8 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          successful: S.optional(BatchUserSuccessResponseItems),
-          failed: S.optional(BatchUserErrorResponseItems),
+          successful: S.optional(__S(11)),
+          failed: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "BatchReinviteUserResponse",
@@ -3010,7 +2655,7 @@ function __c2(j: number): any {
         S.Struct({
           networkId: S.String.pipe(T.HttpLabel("networkId")),
           userId: S.String.pipe(T.HttpLabel("userId")),
-          appIds: AppIds,
+          appIds: __S(0),
           clientToken: S.optional(S.String).pipe(
             T.HttpHeader("X-Client-Token"),
             T.IdempotencyToken(),
@@ -3033,7 +2678,7 @@ function __c2(j: number): any {
         identifier: "BatchDeviceSuccessResponseItem",
       });
     case 7:
-      return S.Array(BatchDeviceSuccessResponseItem);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -3045,13 +2690,13 @@ function __c3(j: number): any {
         identifier: "BatchDeviceErrorResponseItem",
       });
     case 1:
-      return S.Array(BatchDeviceErrorResponseItem);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          successful: S.optional(BatchDeviceSuccessResponseItems),
-          failed: S.optional(BatchDeviceErrorResponseItems),
+          successful: S.optional(__S(23)),
+          failed: S.optional(__S(25)),
         }),
       ).annotate({
         identifier: "BatchResetDevicesForUserResponse",
@@ -3061,7 +2706,7 @@ function __c3(j: number): any {
         S.Struct({
           networkId: S.String.pipe(T.HttpLabel("networkId")),
           suspend: S.Boolean.pipe(T.HttpQuery("suspend")),
-          userIds: UserIds,
+          userIds: __S(0),
           clientToken: S.optional(S.String).pipe(
             T.HttpHeader("X-Client-Token"),
             T.IdempotencyToken(),
@@ -3155,7 +2800,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           networkName: S.String,
-          accessLevel: AccessLevel,
+          accessLevel: S.String,
           enablePremiumFreeTrial: S.optional(S.Boolean),
           encryptionKeyArn: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/networks" }), svc, auth, proto, ver, rules)),
@@ -3173,13 +2818,13 @@ function __c4(j: number): any {
         identifier: "WickrAwsNetworks",
       });
     case 5:
-      return S.Array(WickrAwsNetworks);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() => S.Struct({ domain: S.String, networkId: S.String })).annotate({
         identifier: "PermittedWickrEnterpriseNetwork",
       });
     case 7:
-      return S.Array(PermittedWickrEnterpriseNetwork);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
@@ -3188,13 +2833,13 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           lockoutThreshold: S.optional(S.Number),
-          permittedNetworks: S.optional(PermittedNetworksList),
+          permittedNetworks: S.optional(__S(0)),
           enableGuestFederation: S.optional(S.Boolean),
           globalFederation: S.optional(S.Boolean),
           federationMode: S.optional(S.Number),
           enableRestrictedGlobalFederation: S.optional(S.Boolean),
-          permittedWickrAwsNetworks: S.optional(WickrAwsNetworksList),
-          permittedWickrEnterpriseNetworks: S.optional(PermittedWickrEnterpriseNetworksList),
+          permittedWickrAwsNetworks: S.optional(__S(37)),
+          permittedWickrEnterpriseNetworks: S.optional(__S(39)),
         }),
       ).annotate({
         identifier: "SecurityGroupSettingsRequest",
@@ -3204,7 +2849,7 @@ function __c5(j: number): any {
         S.Struct({
           networkId: S.String.pipe(T.HttpLabel("networkId")),
           name: S.String,
-          securityGroupSettings: SecurityGroupSettingsRequest,
+          securityGroupSettings: __S(40),
           clientToken: S.optional(S.String).pipe(
             T.HttpHeader("X-Client-Token"),
             T.IdempotencyToken(),
@@ -3248,8 +2893,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           alwaysReauthenticate: S.optional(S.Boolean),
-          atakPackageValues: S.optional(SecurityGroupStringList),
-          calling: S.optional(CallingSettings),
+          atakPackageValues: S.optional(__S(0)),
+          calling: S.optional(__S(42)),
           checkForUpdates: S.optional(S.Boolean),
           enableAtak: S.optional(S.Boolean),
           enableCrashReports: S.optional(S.Boolean),
@@ -3271,18 +2916,18 @@ function __c5(j: number): any {
           maxBor: S.optional(S.Number),
           maxTtl: S.optional(S.Number),
           messageForwardingEnabled: S.optional(S.Boolean),
-          passwordRequirements: S.optional(PasswordRequirements),
+          passwordRequirements: S.optional(__S(43)),
           presenceEnabled: S.optional(S.Boolean),
-          quickResponses: S.optional(SecurityGroupStringList),
+          quickResponses: S.optional(__S(0)),
           showMasterRecoveryKey: S.optional(S.Boolean),
-          shredder: S.optional(ShredderSettings),
+          shredder: S.optional(__S(44)),
           ssoMaxIdleMinutes: S.optional(S.Number),
           maxNonSsoSessionMinutes: S.optional(S.Number),
           federationMode: S.optional(S.Number),
           lockoutThreshold: S.optional(S.Number),
-          permittedNetworks: S.optional(PermittedNetworksList),
-          permittedWickrAwsNetworks: S.optional(WickrAwsNetworksList),
-          permittedWickrEnterpriseNetworks: S.optional(PermittedWickrEnterpriseNetworksList),
+          permittedNetworks: S.optional(__S(0)),
+          permittedWickrAwsNetworks: S.optional(__S(37)),
+          permittedWickrEnterpriseNetworks: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "SecurityGroupSettings" });
     case 6:
@@ -3295,11 +2940,11 @@ function __c5(j: number): any {
           isDefault: S.Boolean,
           name: S.String,
           modified: S.Number,
-          securityGroupSettings: SecurityGroupSettings,
+          securityGroupSettings: __S(45),
         }),
       ).annotate({ identifier: "SecurityGroup" });
     case 7:
-      return S.suspend(() => S.Struct({ securityGroup: SecurityGroup })).annotate({
+      return S.suspend(() => S.Struct({ securityGroup: __S(46) })).annotate({
         identifier: "CreateSecurityGroupResponse",
       });
   }
@@ -3412,7 +3057,7 @@ function __c6(j: number): any {
           username: S.optional(S.String),
           uname: S.optional(S.String),
           pubkey: S.optional(S.String),
-          status: S.optional(BotStatus),
+          status: S.optional(S.Number),
           groupId: S.optional(S.String),
           hasChallenge: S.optional(S.Boolean),
           suspended: S.optional(S.Boolean),
@@ -3488,9 +3133,9 @@ function __c7(j: number): any {
         identifier: "GuestUserHistoryCount",
       });
     case 6:
-      return S.Array(GuestUserHistoryCount);
+      return S.Array(__S(61));
     case 7:
-      return S.suspend(() => S.Struct({ history: GuestUserHistoryCountList })).annotate({
+      return S.suspend(() => S.Struct({ history: __S(62) })).annotate({
         identifier: "GetGuestUserHistoryCountResponse",
       });
   }
@@ -3515,7 +3160,7 @@ function __c8(j: number): any {
         S.Struct({
           networkId: S.String,
           networkName: S.String,
-          accessLevel: AccessLevel,
+          accessLevel: S.String,
           awsAccountId: S.String,
           networkArn: S.String,
           standing: S.optional(S.Number),
@@ -3544,9 +3189,9 @@ function __c8(j: number): any {
         S.Struct({ optionName: S.String, value: S.String, type: S.String }),
       ).annotate({ identifier: "Setting" });
     case 4:
-      return S.Array(Setting);
+      return S.Array(__S(67));
     case 5:
-      return S.suspend(() => S.Struct({ settings: SettingsList })).annotate({
+      return S.suspend(() => S.Struct({ settings: __S(68) })).annotate({
         identifier: "GetNetworkSettingsResponse",
       });
     case 6:
@@ -3610,8 +3255,8 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          openidConnectInfo: S.optional(OidcConfigInfo),
-          tokenInfo: S.optional(OidcTokenInfo),
+          openidConnectInfo: S.optional(__S(71)),
+          tokenInfo: S.optional(__S(72)),
         }),
       ).annotate({ identifier: "GetOidcInfoResponse" });
     case 2:
@@ -3653,7 +3298,7 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "GetSecurityGroupRequest" });
     case 5:
-      return S.suspend(() => S.Struct({ securityGroup: SecurityGroup })).annotate({
+      return S.suspend(() => S.Struct({ securityGroup: __S(46) })).annotate({
         identifier: "GetSecurityGroupResponse",
       });
     case 6:
@@ -3690,7 +3335,7 @@ function __c9(j: number): any {
           status: S.optional(S.Number),
           lastActivity: S.optional(S.Number),
           lastLogin: S.optional(S.Number),
-          securityGroupIds: S.optional(SecurityGroupIdList),
+          securityGroupIds: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "GetUserResponse" });
   }
@@ -3725,7 +3370,7 @@ function __c10(j: number): any {
         S.Struct({
           networkId: S.String.pipe(T.HttpLabel("networkId")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+          sortDirection: S.optional(S.String).pipe(T.HttpQuery("sortDirection")),
           sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
           username: S.optional(S.String).pipe(T.HttpQuery("username")),
           admin: S.optional(S.String).pipe(T.HttpQuery("admin")),
@@ -3753,10 +3398,10 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "BlockedGuestUser" });
     case 4:
-      return S.Array(BlockedGuestUser);
+      return S.Array(__S(83));
     case 5:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), blocklist: BlockedGuestUserList }),
+        S.Struct({ nextToken: S.optional(S.String), blocklist: __S(84) }),
       ).annotate({
         identifier: "ListBlockedGuestUsersResponse",
       });
@@ -3767,10 +3412,10 @@ function __c10(j: number): any {
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
-          sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+          sortDirection: S.optional(S.String).pipe(T.HttpQuery("sortDirection")),
           displayName: S.optional(S.String).pipe(T.HttpQuery("displayName")),
           username: S.optional(S.String).pipe(T.HttpQuery("username")),
-          status: S.optional(BotStatus).pipe(T.HttpQuery("status")),
+          status: S.optional(S.Number).pipe(T.HttpQuery("status")),
           groupId: S.optional(S.String).pipe(T.HttpQuery("groupId")),
         }).pipe(
           T.all(
@@ -3784,15 +3429,17 @@ function __c10(j: number): any {
         ),
       ).annotate({ identifier: "ListBotsRequest" });
     case 7:
-      return S.Array(Bot);
+      return S.Array(__S(55));
   }
 }
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ bots: Bots, nextToken: S.optional(S.String) })).annotate({
-        identifier: "ListBotsResponse",
-      });
+      return S.suspend(() => S.Struct({ bots: __S(87), nextToken: S.optional(S.String) })).annotate(
+        {
+          identifier: "ListBotsResponse",
+        },
+      );
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3801,7 +3448,7 @@ function __c11(j: number): any {
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
-          sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+          sortDirection: S.optional(S.String).pipe(T.HttpQuery("sortDirection")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/networks/{networkId}/users/{userId}/devices" }),
@@ -3827,10 +3474,10 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "BasicDeviceObject" });
     case 3:
-      return S.Array(BasicDeviceObject);
+      return S.Array(__S(90));
     case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), devices: Devices }),
+        S.Struct({ nextToken: S.optional(S.String), devices: __S(91) }),
       ).annotate({
         identifier: "ListDevicesForUserResponse",
       });
@@ -3839,7 +3486,7 @@ function __c11(j: number): any {
         S.Struct({
           networkId: S.String.pipe(T.HttpLabel("networkId")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+          sortDirection: S.optional(S.String).pipe(T.HttpQuery("sortDirection")),
           sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
           username: S.optional(S.String).pipe(T.HttpQuery("username")),
           billingPeriod: S.optional(S.String).pipe(T.HttpQuery("billingPeriod")),
@@ -3860,29 +3507,29 @@ function __c11(j: number): any {
         S.Struct({ billingPeriod: S.String, username: S.String, usernameHash: S.String }),
       ).annotate({ identifier: "GuestUser" });
     case 7:
-      return S.Array(GuestUser);
+      return S.Array(__S(94));
   }
 }
 function __c12(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), guestlist: GuestUserList }),
+        S.Struct({ nextToken: S.optional(S.String), guestlist: __S(95) }),
       ).annotate({ identifier: "ListGuestUsersResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
-          sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+          sortDirection: S.optional(S.String).pipe(T.HttpQuery("sortDirection")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/networks" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListNetworksRequest" });
     case 2:
-      return S.Array(Network);
+      return S.Array(__S(65));
     case 3:
       return S.suspend(() =>
-        S.Struct({ networks: NetworkList, nextToken: S.optional(S.String) }),
+        S.Struct({ networks: __S(98), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListNetworksResponse" });
     case 4:
       return S.suspend(() =>
@@ -3891,7 +3538,7 @@ function __c12(j: number): any {
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
-          sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+          sortDirection: S.optional(S.String).pipe(T.HttpQuery("sortDirection")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/networks/{networkId}/security-groups" }),
@@ -3906,11 +3553,11 @@ function __c12(j: number): any {
         identifier: "ListSecurityGroupsRequest",
       });
     case 5:
-      return S.Array(SecurityGroup);
+      return S.Array(__S(46));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          securityGroups: S.optional(SecurityGroupList),
+          securityGroups: S.optional(__S(101)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3924,7 +3571,7 @@ function __c12(j: number): any {
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
-          sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+          sortDirection: S.optional(S.String).pipe(T.HttpQuery("sortDirection")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/networks/{networkId}/security-groups/{groupId}/users" }),
@@ -3943,9 +3590,11 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ users: Users, nextToken: S.optional(S.String) })).annotate({
-        identifier: "ListSecurityGroupUsersResponse",
-      });
+      return S.suspend(() => S.Struct({ users: __S(5), nextToken: S.optional(S.String) })).annotate(
+        {
+          identifier: "ListSecurityGroupUsersResponse",
+        },
+      );
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3953,11 +3602,11 @@ function __c13(j: number): any {
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           sortFields: S.optional(S.String).pipe(T.HttpQuery("sortFields")),
-          sortDirection: S.optional(SortDirection).pipe(T.HttpQuery("sortDirection")),
+          sortDirection: S.optional(S.String).pipe(T.HttpQuery("sortDirection")),
           firstName: S.optional(SensitiveString).pipe(T.HttpQuery("firstName")),
           lastName: S.optional(SensitiveString).pipe(T.HttpQuery("lastName")),
           username: S.optional(S.String).pipe(T.HttpQuery("username")),
-          status: S.optional(UserStatus).pipe(T.HttpQuery("status")),
+          status: S.optional(S.Number).pipe(T.HttpQuery("status")),
           groupId: S.optional(S.String).pipe(T.HttpQuery("groupId")),
         }).pipe(
           T.all(
@@ -3972,7 +3621,7 @@ function __c13(j: number): any {
       ).annotate({ identifier: "ListUsersRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), users: S.optional(Users) }),
+        S.Struct({ nextToken: S.optional(S.String), users: S.optional(__S(5)) }),
       ).annotate({ identifier: "ListUsersResponse" });
     case 3:
       return S.suspend(() =>
@@ -4046,15 +3695,15 @@ function __c13(j: number): any {
         S.Struct({
           tokenEndpoint: S.optional(S.String),
           userinfoEndpoint: S.optional(S.String),
-          responseTypesSupported: S.optional(StringList),
-          scopesSupported: S.optional(StringList),
+          responseTypesSupported: S.optional(__S(0)),
+          scopesSupported: S.optional(__S(0)),
           issuer: S.optional(S.String),
           authorizationEndpoint: S.optional(S.String),
           endSessionEndpoint: S.optional(S.String),
           logoutEndpoint: S.optional(S.String),
-          grantTypesSupported: S.optional(StringList),
+          grantTypesSupported: S.optional(__S(0)),
           revocationEndpoint: S.optional(S.String),
-          tokenEndpointAuthMethodsSupported: S.optional(StringList),
+          tokenEndpointAuthMethodsSupported: S.optional(__S(0)),
           microsoftMultiRefreshToken: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -4121,7 +3770,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           networkId: S.String.pipe(T.HttpLabel("networkId")),
-          actionType: DataRetentionActionType,
+          actionType: S.String,
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/networks/{networkId}/data-retention-bots" }),
@@ -4174,7 +3823,7 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "UpdateNetworkRequest" });
     case 5:
-      return S.suspend(() => S.Struct({ status: S.optional(Status) })).annotate({
+      return S.suspend(() => S.Struct({ status: S.optional(S.String) })).annotate({
         identifier: "ReadReceiptConfig",
       });
     case 6:
@@ -4190,10 +3839,10 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enableClientMetrics: S.optional(S.Boolean),
-          readReceiptConfig: S.optional(ReadReceiptConfig),
+          readReceiptConfig: S.optional(__S(117)),
           dataRetention: S.optional(S.Boolean),
           enableTrustedDataFormat: S.optional(S.Boolean),
-          consentPopup: S.optional(ConsentPopupConfig),
+          consentPopup: S.optional(__S(118)),
         }),
       ).annotate({ identifier: "NetworkSettings" });
   }
@@ -4204,7 +3853,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           networkId: S.String.pipe(T.HttpLabel("networkId")),
-          settings: NetworkSettings,
+          settings: __S(119),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/networks/{networkId}/settings" }),
@@ -4224,7 +3873,7 @@ function __c15(j: number): any {
           networkId: S.String.pipe(T.HttpLabel("networkId")),
           groupId: S.String.pipe(T.HttpLabel("groupId")),
           name: S.optional(S.String),
-          securityGroupSettings: S.optional(SecurityGroupSettings),
+          securityGroupSettings: S.optional(__S(45)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/networks/{networkId}/security-groups/{groupId}" }),
@@ -4244,7 +3893,7 @@ function __c15(j: number): any {
           firstName: S.optional(SensitiveString),
           lastName: S.optional(SensitiveString),
           username: S.optional(S.String),
-          securityGroupIds: S.optional(SecurityGroupIdList),
+          securityGroupIds: S.optional(__S(0)),
           inviteCode: S.optional(S.String),
           inviteCodeTtl: S.optional(S.Number),
           codeValidation: S.optional(S.Boolean),
@@ -4255,7 +3904,7 @@ function __c15(j: number): any {
         S.Struct({
           networkId: S.String.pipe(T.HttpLabel("networkId")),
           userId: S.String,
-          userDetails: S.optional(UpdateUserDetails),
+          userDetails: S.optional(__S(122)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/networks/{networkId}/users" }),
@@ -4272,7 +3921,7 @@ function __c15(j: number): any {
         S.Struct({
           userId: S.String,
           networkId: S.String,
-          securityGroupIds: S.optional(SecurityGroupIdList),
+          securityGroupIds: S.optional(__S(0)),
           firstName: S.optional(SensitiveString),
           lastName: S.optional(SensitiveString),
           middleName: S.optional(S.String),
@@ -4289,6 +3938,47 @@ function __c15(j: number): any {
         S.Struct({ field: S.optional(S.String), reason: S.optional(S.String) }),
       ).annotate({ identifier: "ErrorDetail" });
     case 6:
-      return S.Array(ErrorDetail);
+      return S.Array(__S(125));
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
   }
 }

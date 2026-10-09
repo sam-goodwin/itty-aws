@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,14 +65,10 @@ export class NotFound
   ) {}
 
 export type ConversionSourceStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "ARCHIVED" | "PENDING";
-const ConversionSourceStateEnum = S.String;
-
 export type ConversionSourceControllerEnum =
   | "CONTROLLER_UNSPECIFIED"
   | "MERCHANT"
   | "YOUTUBE_AFFILIATES";
-const ConversionSourceControllerEnum = S.String;
-
 /** Message representing the type of a conversion event. */
 export interface ConversionType {
   /** Output only. Option indicating if the type should be included in Merchant Center reporting. */
@@ -78,11 +76,7 @@ export interface ConversionType {
   /** Output only. Conversion event name, as it'll be reported by the client. */
   name?: string;
 }
-const ConversionType = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ConversionType>;
-
 export type ConversionTypeList = Array<ConversionType>;
-const ConversionTypeList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ConversionTypeList>;
-
 export type AttributionSettingsAttributionModelEnum =
   | "ATTRIBUTION_MODEL_UNSPECIFIED"
   | "CROSS_CHANNEL_LAST_CLICK"
@@ -92,8 +86,6 @@ export type AttributionSettingsAttributionModelEnum =
   | "CROSS_CHANNEL_LINEAR"
   | "CROSS_CHANNEL_POSITION_BASED"
   | "CROSS_CHANNEL_TIME_DECAY";
-const AttributionSettingsAttributionModelEnum = S.String;
-
 /** Represents attribution settings for conversion sources receiving pre-attribution data. */
 export interface AttributionSettings {
   /** Immutable. Unordered list. List of different conversion types a conversion event can be classified as. A standard "purchase" type will be automatically created if this list is empty at creation time. */
@@ -103,8 +95,6 @@ export interface AttributionSettings {
   /** Required. Lookback window (in days) used for attribution in this source. Supported values are `7`, `30` & `40`. */
   attributionLookbackWindowDays?: number;
 }
-const AttributionSettings = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AttributionSettings>;
-
 /** "Google Analytics Link" sources can be used to get conversion data from an existing Google Analytics property into the linked Merchant Center account. */
 export interface GoogleAnalyticsLink {
   /** Output only. Name of the Google Analytics property the merchant is linked to. */
@@ -114,8 +104,6 @@ export interface GoogleAnalyticsLink {
   /** Output only. Attribution settings for the linked Google Analytics property. */
   attributionSettings?: AttributionSettings;
 }
-const GoogleAnalyticsLink = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GoogleAnalyticsLink>;
-
 /** "Merchant Center Destination" sources can be used to send conversion events from an online store using a Google tag directly to a Merchant Center account where the source is created. */
 export interface MerchantCenterDestination {
   /** Output only. Merchant Center Destination ID. */
@@ -127,11 +115,6 @@ export interface MerchantCenterDestination {
   /** Required. Three-letter currency code (ISO 4217). The currency code defines in which currency the conversions sent to this destination will be reported in Merchant Center. */
   currencyCode?: string;
 }
-const MerchantCenterDestination = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<MerchantCenterDestination>;
-
 /** Represents a conversion source owned by a Merchant account. A merchant account can have up to 200 conversion sources. */
 export interface ConversionSource {
   /** Output only. Current state of this conversion source. Can't be edited through the API. */
@@ -147,41 +130,22 @@ export interface ConversionSource {
   /** Conversion Source of type "Merchant Center Tag Destination". */
   merchantCenterDestination?: MerchantCenterDestination;
 }
-const ConversionSource = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ConversionSource>;
-
 export interface CreateAccountsConversionSourcesRequest {
   /** Required. The merchant account that will own the new conversion source. Format: `accounts/{account}` */
   parent: string;
   /** Request body */
   body?: ConversionSource;
 }
-const CreateAccountsConversionSourcesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateAccountsConversionSourcesRequest>;
-
 export interface DeleteAccountsConversionSourcesRequest {
   /** Required. The name of the conversion source to be deleted. Format: `accounts/{account}/conversionSources/{conversion_source}` */
   name: string;
 }
-const DeleteAccountsConversionSourcesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeleteAccountsConversionSourcesRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Empty>;
-
 export interface GetAccountsConversionSourcesRequest {
   /** Required. The name of the conversion source to be fetched. Format: `accounts/{account}/conversionSources/{conversion_source}` */
   name: string;
 }
-const GetAccountsConversionSourcesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetAccountsConversionSourcesRequest>;
-
 export interface ListAccountsConversionSourcesRequest {
   /** Optional. The maximum number of conversion sources to return in a page. If no `page_size` is specified, `100` is used as the default value. The maximum value is `200`. Values above `200` will be coerced to `200`. Regardless of pagination, at most `200` conversion sources are returned in total. */
   pageSize?: number;
@@ -192,14 +156,7 @@ export interface ListAccountsConversionSourcesRequest {
   /** Optional. Show deleted (archived) conversion sources. By default, deleted conversion sources are not returned. */
   showDeleted?: boolean;
 }
-const ListAccountsConversionSourcesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListAccountsConversionSourcesRequest>;
-
 export type ConversionSourceList = Array<ConversionSource>;
-const ConversionSourceList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ConversionSourceList>;
-
 /** Response message for the ListConversionSources method. */
 export interface ListConversionSourcesResponse {
   /** Token to be used to fetch the next results page. */
@@ -207,11 +164,6 @@ export interface ListConversionSourcesResponse {
   /** List of conversion sources. */
   conversionSources?: ConversionSourceList;
 }
-const ListConversionSourcesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListConversionSourcesResponse>;
-
 export interface PatchAccountsConversionSourcesRequest {
   /** Optional. List of fields being updated. */
   updateMask?: string;
@@ -220,29 +172,14 @@ export interface PatchAccountsConversionSourcesRequest {
   /** Request body */
   body?: ConversionSource;
 }
-const PatchAccountsConversionSourcesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<PatchAccountsConversionSourcesRequest>;
-
 /** Request message for the UndeleteConversionSource method. */
 export interface UndeleteConversionSourceRequest {}
-const UndeleteConversionSourceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<UndeleteConversionSourceRequest>;
-
 export interface UndeleteAccountsConversionSourcesRequest {
   /** Required. The name of the conversion source to be undeleted. Format: `accounts/{account}/conversionSources/{conversion_source}` */
   name: string;
   /** Request body */
   body?: UndeleteConversionSourceRequest;
 }
-const UndeleteAccountsConversionSourcesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<UndeleteAccountsConversionSourcesRequest>;
-
 export type CreateAccountsConversionSourcesError =
   | NotFound
   | Forbidden
@@ -256,8 +193,8 @@ export const createAccountsConversionSources: API.OperationMethod<
   CreateAccountsConversionSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsConversionSourcesRequest,
-  output: ConversionSource,
+  input: __S(6) as any as S.Schema<CreateAccountsConversionSourcesRequest>,
+  output: __S(5) as any as S.Schema<ConversionSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -276,8 +213,8 @@ export const deleteAccountsConversionSources: API.OperationMethod<
   DeleteAccountsConversionSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsConversionSourcesRequest,
-  output: Empty,
+  input: __S(7) as any as S.Schema<DeleteAccountsConversionSourcesRequest>,
+  output: __S(8) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -291,8 +228,8 @@ export const getAccountsConversionSources: API.OperationMethod<
   GetAccountsConversionSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsConversionSourcesRequest,
-  output: ConversionSource,
+  input: __S(9) as any as S.Schema<GetAccountsConversionSourcesRequest>,
+  output: __S(5) as any as S.Schema<ConversionSource>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -307,8 +244,8 @@ export const listAccountsConversionSources: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConversionSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsConversionSourcesRequest,
-  output: ListConversionSourcesResponse,
+  input: __S(10) as any as S.Schema<ListAccountsConversionSourcesRequest>,
+  output: __S(12) as any as S.Schema<ListConversionSourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -328,8 +265,8 @@ export const patchAccountsConversionSources: API.OperationMethod<
   PatchAccountsConversionSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAccountsConversionSourcesRequest,
-  output: ConversionSource,
+  input: __S(13) as any as S.Schema<PatchAccountsConversionSourcesRequest>,
+  output: __S(5) as any as S.Schema<ConversionSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -348,8 +285,8 @@ export const undeleteAccountsConversionSources: API.OperationMethod<
   UndeleteAccountsConversionSourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeleteAccountsConversionSourcesRequest,
-  output: ConversionSource,
+  input: __S(15) as any as S.Schema<UndeleteAccountsConversionSourcesRequest>,
+  output: __S(5) as any as S.Schema<ConversionSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -366,12 +303,12 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ConversionType" });
     case 1:
-      return S.Array(ConversionType);
+      return S.Array(__S(0));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          conversionType: S.optional(ConversionTypeList),
-          attributionModel: S.optional(AttributionSettingsAttributionModelEnum),
+          conversionType: S.optional(__S(1)),
+          attributionModel: S.optional(S.String),
           attributionLookbackWindowDays: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AttributionSettings" });
@@ -380,7 +317,7 @@ function __c0(j: number): any {
         S.Struct({
           property: S.optional(S.String),
           propertyId: S.optional(S.String),
-          attributionSettings: S.optional(AttributionSettings),
+          attributionSettings: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "GoogleAnalyticsLink" });
     case 4:
@@ -388,7 +325,7 @@ function __c0(j: number): any {
         S.Struct({
           destination: S.optional(S.String),
           displayName: S.optional(S.String),
-          attributionSettings: S.optional(AttributionSettings),
+          attributionSettings: S.optional(__S(2)),
           currencyCode: S.optional(S.String),
         }),
       ).annotate({
@@ -397,19 +334,19 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(ConversionSourceStateEnum),
-          controller: S.optional(ConversionSourceControllerEnum),
-          googleAnalyticsLink: S.optional(GoogleAnalyticsLink),
+          state: S.optional(S.String),
+          controller: S.optional(S.String),
+          googleAnalyticsLink: S.optional(__S(3)),
           expireTime: S.optional(S.String),
           name: S.optional(S.String),
-          merchantCenterDestination: S.optional(MerchantCenterDestination),
+          merchantCenterDestination: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "ConversionSource" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(ConversionSource.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -474,12 +411,12 @@ function __c1(j: number): any {
         identifier: "ListAccountsConversionSourcesRequest",
       });
     case 3:
-      return S.Array(ConversionSource);
+      return S.Array(__S(5));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          conversionSources: S.optional(ConversionSourceList),
+          conversionSources: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "ListConversionSourcesResponse",
@@ -489,7 +426,7 @@ function __c1(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(ConversionSource.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -508,7 +445,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(UndeleteConversionSourceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -519,5 +456,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UndeleteAccountsConversionSourcesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,17 +19,7 @@ export interface DeleteGraphQueryRequest {
   /** The name of the Graph Query resource. */
   resourceName: string;
 }
-const DeleteGraphQueryRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteGraphQueryRequest>;
-
 export interface DeleteGraphQueryResponse {}
-const DeleteGraphQueryResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteGraphQueryResponse>;
-
 export interface GetGraphQueryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -36,16 +28,10 @@ export interface GetGraphQueryRequest {
   /** The name of the Graph Query resource. */
   resourceName: string;
 }
-const GetGraphQueryRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetGraphQueryRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -61,12 +47,8 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SystemData>;
-
 /** Enum indicating a type of graph query. */
 export type ResultKind = "basic";
-const ResultKind = S.String;
-
 /** Properties that contain a graph query. */
 export interface GraphQueryProperties {
   /** Date and time in UTC of the last modification that was made to this graph query definition. */
@@ -78,15 +60,8 @@ export interface GraphQueryProperties {
   /** Enum indicating a type of graph query. */
   resultKind?: ResultKind;
 }
-const GraphQueryProperties = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GraphQueryProperties>;
-
 /** Resource tags. */
 export type GetGraphQueryResponseTagsMap = { [key: string]: string | undefined };
-const GetGraphQueryResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetGraphQueryResponseTagsMap>;
-
 export interface GetGraphQueryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -105,11 +80,6 @@ export interface GetGraphQueryResponse {
   /** This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict. */
   etag?: string;
 }
-const GetGraphQueryResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetGraphQueryResponse>;
-
 /** Properties that contain a graph query. */
 export interface GraphQueryPropertiesInput {
   /** The description of a graph query. */
@@ -117,16 +87,8 @@ export interface GraphQueryPropertiesInput {
   /** KQL query that will be graph. */
   query: string;
 }
-const GraphQueryPropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GraphQueryPropertiesInput>;
-
 /** Resource tags. */
 export type GraphQueryCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const GraphQueryCreateOrUpdateRequestTagsMap =
-  GetGraphQueryResponseTagsMap as any as S.Schema<GraphQueryCreateOrUpdateRequestTagsMap>;
-
 export interface GraphQueryCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -143,16 +105,8 @@ export interface GraphQueryCreateOrUpdateRequest {
   /** This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict. */
   etag?: string;
 }
-const GraphQueryCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GraphQueryCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type GraphQueryCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const GraphQueryCreateOrUpdateResponseTagsMap =
-  GetGraphQueryResponseTagsMap as any as S.Schema<GraphQueryCreateOrUpdateResponseTagsMap>;
-
 export interface GraphQueryCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -171,22 +125,12 @@ export interface GraphQueryCreateOrUpdateResponse {
   /** This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict. */
   etag?: string;
 }
-const GraphQueryCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GraphQueryCreateOrUpdateResponse>;
-
 export interface ListGraphQueryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListGraphQueryRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListGraphQueryRequest>;
-
 /** Resource tags. */
 export type GraphQueryResourceTagsMap = { [key: string]: string | undefined };
 /** Graph Query entity definition. */
@@ -208,15 +152,8 @@ export interface GraphQueryResource {
   /** This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict. */
   etag?: string;
 }
-const GraphQueryResource = GetGraphQueryResponse as any as S.Schema<GraphQueryResource>;
-
 /** The GraphQueryResource items on this page */
 export type GraphQueryListResultValueList = Array<GraphQueryResource>;
-const GraphQueryListResultValueList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GraphQueryListResultValueList>;
-
 /** Graph query list result. */
 export interface GraphQueryListResult {
   /** The GraphQueryResource items on this page */
@@ -224,23 +161,11 @@ export interface GraphQueryListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const GraphQueryListResult = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GraphQueryListResult>;
-
 export interface ListGraphQueryBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListGraphQueryBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListGraphQueryBySubscriptionRequest>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Display metadata associated with the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft Resource Graph. */
@@ -252,8 +177,6 @@ export interface OperationDisplay {
   /** Description for the operation. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<OperationDisplay>;
-
 /** Resource Graph REST API operation definition. */
 export interface Operation {
   /** Operation name: {provider}/{resource}/{operation} */
@@ -263,15 +186,8 @@ export interface Operation {
   /** The origin of operations. */
   origin?: string;
 }
-const Operation = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Operation>;
-
 /** The Operation items on this page */
 export type OperationListResultValueList = Array<Operation>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** Paged collection of Operation items */
 export interface OperationListResult {
   /** The Operation items on this page */
@@ -279,32 +195,18 @@ export interface OperationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<OperationListResult>;
-
 /** Azure subscriptions against which to execute the query. */
 export type ResourcesRequestSubscriptionsList = Array<string>;
-const ResourcesRequestSubscriptionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ResourcesRequestSubscriptionsList>;
-
 /** Azure management groups against which to execute the query. Example: [ 'mg1', 'mg2' ] */
 export type ResourcesRequestManagementGroupsList = Array<string>;
-const ResourcesRequestManagementGroupsList =
-  ResourcesRequestSubscriptionsList as any as S.Schema<ResourcesRequestManagementGroupsList>;
-
 /** Defines in which format query result returned. */
 export type QueryRequestOptionsResultFormat = "table" | "objectArray";
-const QueryRequestOptionsResultFormat = S.String;
-
 /** Defines what level of authorization resources should be returned based on the which subscriptions and management groups are passed as scopes. */
 export type QueryRequestOptionsAuthorizationScopeFilter =
   | "AtScopeAndBelow"
   | "AtScopeAndAbove"
   | "AtScopeExact"
   | "AtScopeAboveAndBelow";
-const QueryRequestOptionsAuthorizationScopeFilter = S.String;
-
 /** The options for query evaluation */
 export interface QueryRequestOptions {
   /** Continuation token for pagination, capturing the next page size and offset, as well as the context of the query. */
@@ -320,12 +222,8 @@ export interface QueryRequestOptions {
   /** Defines what level of authorization resources should be returned based on the which subscriptions and management groups are passed as scopes. */
   authorizationScopeFilter?: QueryRequestOptionsAuthorizationScopeFilter | (string & {});
 }
-const QueryRequestOptions = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<QueryRequestOptions>;
-
 /** The sorting order by the selected column (count by default). */
 export type FacetRequestOptionsSortOrder = "asc" | "desc";
-const FacetRequestOptionsSortOrder = S.String;
-
 /** The options for facet evaluation */
 export interface FacetRequestOptions {
   /** The column name or query expression to sort on. Defaults to count if not present. */
@@ -337,8 +235,6 @@ export interface FacetRequestOptions {
   /** The maximum number of facet rows that should be returned. */
   _top?: number;
 }
-const FacetRequestOptions = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<FacetRequestOptions>;
-
 /** A request to compute additional statistics (facets) over the query results. */
 export interface FacetRequest {
   /** The column or list of columns to summarize by */
@@ -346,15 +242,8 @@ export interface FacetRequest {
   /** The options for facet evaluation */
   options?: FacetRequestOptions;
 }
-const FacetRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<FacetRequest>;
-
 /** An array of facet requests to be computed against the query result. */
 export type ResourcesRequestFacetsList = Array<FacetRequest>;
-const ResourcesRequestFacetsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ResourcesRequestFacetsList>;
-
 export interface ResourcesRequest {
   /** Azure subscriptions against which to execute the query. */
   subscriptions?: ResourcesRequestSubscriptionsList;
@@ -367,12 +256,8 @@ export interface ResourcesRequest {
   /** An array of facet requests to be computed against the query result. */
   facets?: ResourcesRequestFacetsList;
 }
-const ResourcesRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ResourcesRequest>;
-
 /** Indicates whether the query results are truncated. */
 export type ResultTruncated = "true" | "false";
-const ResultTruncated = S.String;
-
 /** A facet containing additional statistics on the response of a query. Can be either FacetResult or FacetError. */
 export interface Facet {
   /** Facet expression, same as in the corresponding facet request. */
@@ -380,15 +265,8 @@ export interface Facet {
   /** Result type */
   resultType: string;
 }
-const Facet = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Facet>;
-
 /** Query facets. */
 export type QueryResponseFacetsList = Array<Facet>;
-const QueryResponseFacetsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<QueryResponseFacetsList>;
-
 /** Query result. */
 export interface QueryResponse {
   /** Number of total records matching the query. */
@@ -404,13 +282,8 @@ export interface QueryResponse {
   /** Query facets. */
   facets?: QueryResponseFacetsList;
 }
-const QueryResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<QueryResponse>;
-
 /** Resource tags */
 export type UpdateGraphQueryRequestTagsMap = { [key: string]: string | undefined };
-const UpdateGraphQueryRequestTagsMap =
-  GetGraphQueryResponseTagsMap as any as S.Schema<UpdateGraphQueryRequestTagsMap>;
-
 /** Properties that contain a workbook for PATCH operation. */
 export interface GraphQueryPropertiesUpdateParameters {
   /** The description of a graph query. */
@@ -418,11 +291,6 @@ export interface GraphQueryPropertiesUpdateParameters {
   /** KQL query that will be graph. */
   query?: string;
 }
-const GraphQueryPropertiesUpdateParameters = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GraphQueryPropertiesUpdateParameters>;
-
 export interface UpdateGraphQueryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -437,11 +305,6 @@ export interface UpdateGraphQueryRequest {
   /** Metadata describing a graph query for an Azure resource. */
   properties?: GraphQueryPropertiesUpdateParameters;
 }
-const UpdateGraphQueryRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<UpdateGraphQueryRequest>;
-
 /** Resource tags. */
 export type UpdateGraphQueryResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateGraphQueryResponse {
@@ -462,8 +325,6 @@ export interface UpdateGraphQueryResponse {
   /** This will be used to handle Optimistic Concurrency. If not present, it will always overwrite the existing resource without checking conflict. */
   etag?: string;
 }
-const UpdateGraphQueryResponse = GetGraphQueryResponse as any as S.Schema<UpdateGraphQueryResponse>;
-
 export type DeleteGraphQueryError = AzureOpError;
 /** Delete a graph query. */
 export const DeleteGraphQuery: API.OperationMethod<
@@ -472,8 +333,8 @@ export const DeleteGraphQuery: API.OperationMethod<
   DeleteGraphQueryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGraphQueryRequest,
-  output: DeleteGraphQueryResponse,
+  input: __S(0) as any as S.Schema<DeleteGraphQueryRequest>,
+  output: __S(1) as any as S.Schema<DeleteGraphQueryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -487,8 +348,8 @@ export const GetGraphQuery: API.OperationMethod<
   GetGraphQueryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGraphQueryRequest,
-  output: GetGraphQueryResponse,
+  input: __S(2) as any as S.Schema<GetGraphQueryRequest>,
+  output: __S(6) as any as S.Schema<GetGraphQueryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -502,8 +363,8 @@ export const GraphQueryCreateOrUpdate: API.OperationMethod<
   GraphQueryCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GraphQueryCreateOrUpdateRequest,
-  output: GraphQueryCreateOrUpdateResponse,
+  input: __S(8) as any as S.Schema<GraphQueryCreateOrUpdateRequest>,
+  output: __S(9) as any as S.Schema<GraphQueryCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -517,8 +378,8 @@ export const ListGraphQuery: API.OperationMethod<
   ListGraphQueryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGraphQueryRequest,
-  output: GraphQueryListResult,
+  input: __S(10) as any as S.Schema<ListGraphQueryRequest>,
+  output: __S(12) as any as S.Schema<GraphQueryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -532,8 +393,8 @@ export const ListGraphQueryBySubscription: API.OperationMethod<
   ListGraphQueryBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGraphQueryBySubscriptionRequest,
-  output: GraphQueryListResult,
+  input: __S(13) as any as S.Schema<ListGraphQueryBySubscriptionRequest>,
+  output: __S(12) as any as S.Schema<GraphQueryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -547,8 +408,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(14) as any as S.Schema<ListOperationsRequest>,
+  output: __S(18) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -562,8 +423,8 @@ export const Resources: API.OperationMethod<
   ResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResourcesRequest,
-  output: QueryResponse,
+  input: __S(24) as any as S.Schema<ResourcesRequest>,
+  output: __S(27) as any as S.Schema<QueryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -577,8 +438,8 @@ export const UpdateGraphQuery: API.OperationMethod<
   UpdateGraphQueryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGraphQueryRequest,
-  output: UpdateGraphQueryResponse,
+  input: __S(29) as any as S.Schema<UpdateGraphQueryRequest>,
+  output: __S(6) as any as S.Schema<UpdateGraphQueryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -625,10 +486,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -638,7 +499,7 @@ function __c0(j: number): any {
           timeModified: S.optional(S.String),
           description: S.optional(S.String),
           query: S.String,
-          resultKind: S.optional(ResultKind),
+          resultKind: S.optional(S.String),
         }),
       ).annotate({ identifier: "GraphQueryProperties" });
     case 5:
@@ -649,9 +510,9 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(GraphQueryProperties),
-          tags: S.optional(GetGraphQueryResponseTagsMap),
+          systemData: S.optional(__S(3)),
+          properties: S.optional(__S(4)),
+          tags: S.optional(__S(5)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }),
@@ -675,8 +536,8 @@ function __c1(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          properties: S.optional(GraphQueryPropertiesInput),
-          tags: S.optional(GraphQueryCreateOrUpdateRequestTagsMap),
+          properties: S.optional(__S(7)),
+          tags: S.optional(__S(5)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }).pipe(
@@ -696,9 +557,9 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(GraphQueryProperties),
-          tags: S.optional(GraphQueryCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(3)),
+          properties: S.optional(__S(4)),
+          tags: S.optional(__S(5)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
         }),
@@ -720,11 +581,11 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "ListGraphQueryRequest" });
     case 3:
-      return S.Array(GraphQueryResource);
+      return S.Array(__S(6));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: GraphQueryListResultValueList,
+          value: __S(11),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "GraphQueryListResult" });
@@ -771,16 +632,16 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(OperationDisplay),
+          display: S.optional(__S(15)),
           origin: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(Operation);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: OperationListResultValueList,
+          value: __S(17),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -792,16 +653,16 @@ function __c2(j: number): any {
           _skipToken: S.optional(S.String.pipe(T.Body("$skipToken"))),
           _top: S.optional(S.Number.pipe(T.Body("$top"))),
           _skip: S.optional(S.Number.pipe(T.Body("$skip"))),
-          resultFormat: S.optional(QueryRequestOptionsResultFormat),
+          resultFormat: S.optional(S.String),
           allowPartialScopes: S.optional(S.Boolean),
-          authorizationScopeFilter: S.optional(QueryRequestOptionsAuthorizationScopeFilter),
+          authorizationScopeFilter: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryRequestOptions" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           sortBy: S.optional(S.String),
-          sortOrder: S.optional(FacetRequestOptionsSortOrder),
+          sortOrder: S.optional(S.String),
           filter: S.optional(S.String),
           _top: S.optional(S.Number.pipe(T.Body("$top"))),
         }),
@@ -810,11 +671,11 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           expression: S.String,
-          options: S.optional(FacetRequestOptions),
+          options: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "FacetRequest" });
     case 7:
-      return S.Array(FacetRequest);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -822,11 +683,11 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          subscriptions: S.optional(ResourcesRequestSubscriptionsList),
-          managementGroups: S.optional(ResourcesRequestManagementGroupsList),
+          subscriptions: S.optional(__S(19)),
+          managementGroups: S.optional(__S(19)),
           query: S.String,
-          options: S.optional(QueryRequestOptions),
-          facets: S.optional(ResourcesRequestFacetsList),
+          options: S.optional(__S(20)),
+          facets: S.optional(__S(23)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -844,16 +705,16 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Facet" });
     case 2:
-      return S.Array(Facet);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
           totalRecords: S.Number,
           count: S.Number,
-          resultTruncated: ResultTruncated,
+          resultTruncated: S.String,
           _skipToken: S.optional(S.String.pipe(T.Body("$skipToken"))),
           data: S.Unknown,
-          facets: S.optional(QueryResponseFacetsList),
+          facets: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "QueryResponse" });
     case 4:
@@ -871,9 +732,9 @@ function __c3(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           resourceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateGraphQueryRequestTagsMap),
+          tags: S.optional(__S(5)),
           etag: S.optional(S.String),
-          properties: S.optional(GraphQueryPropertiesUpdateParameters),
+          properties: S.optional(__S(28)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -883,5 +744,22 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateGraphQueryRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

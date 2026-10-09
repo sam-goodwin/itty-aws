@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -229,34 +231,14 @@ export interface MessagesAckRequestAcksItem {
   /** An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message. */
   leaseId?: string;
 }
-const MessagesAckRequestAcksItem = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<MessagesAckRequestAcksItem>;
-
 export type MessagesAckRequestAcksList = Array<MessagesAckRequestAcksItem>;
-const MessagesAckRequestAcksList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<MessagesAckRequestAcksList>;
-
 export interface MessagesAckRequestRetriesItem {
   /** The number of seconds to delay before making the message available for another attempt. */
   delaySeconds?: number;
   /** An ID that represents an "in-flight" message that has been pulled from a Queue. You must hold on to this ID and use it to acknowledge this message. */
   leaseId?: string;
 }
-const MessagesAckRequestRetriesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<MessagesAckRequestRetriesItem>;
-
 export type MessagesAckRequestRetriesList = Array<MessagesAckRequestRetriesItem>;
-const MessagesAckRequestRetriesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<MessagesAckRequestRetriesList>;
-
 export interface AckMessageRequest {
   /** A Resource identifier. */
   accountId: string;
@@ -265,14 +247,7 @@ export interface AckMessageRequest {
   acks?: MessagesAckRequestAcksList;
   retries?: MessagesAckRequestRetriesList;
 }
-const AckMessageRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AckMessageRequest>;
-
 export type MessagesAckResponseWarningsMap = { [key: string]: string | undefined };
-const MessagesAckResponseWarningsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<MessagesAckResponseWarningsMap>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AckMessageResponse {
   /** The number of messages that were succesfully acknowledged. */
@@ -282,8 +257,6 @@ export interface AckMessageResponse {
   /** Map of lease IDs to warning messages encountered during acknowledgement. */
   warnings?: MessagesAckResponseWarningsMap | null;
 }
-const AckMessageResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AckMessageResponse>;
-
 export type MessagesBulkPushRequestMessagesItemMqQueueMessageTextContentType = "text";
 export interface MessagesBulkPushRequestMessagesItemMqQueueMessageText {
   body?: string;
@@ -301,14 +274,7 @@ export interface MessagesBulkPushRequestMessagesItemMqQueueMessageJson {
 export type MessagesBulkPushRequestMessagesItem =
   | MessagesBulkPushRequestMessagesItemMqQueueMessageText
   | MessagesBulkPushRequestMessagesItemMqQueueMessageJson;
-const MessagesBulkPushRequestMessagesItem = /*@__PURE__*/ __L.at(__c0, 7);
-
 export type MessagesBulkPushRequestMessagesList = Array<MessagesBulkPushRequestMessagesItem>;
-const MessagesBulkPushRequestMessagesList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<MessagesBulkPushRequestMessagesList>;
-
 export interface BulkPushMessagesRequest {
   /** A Resource identifier. */
   accountId: string;
@@ -318,11 +284,6 @@ export interface BulkPushMessagesRequest {
   delaySeconds?: number;
   messages?: MessagesBulkPushRequestMessagesList;
 }
-const BulkPushMessagesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BulkPushMessagesRequest>;
-
 export interface MessagesBulkPushResponseMetadataMetrics {
   /** The size in bytes of unacknowledged messages in the queue. */
   backlogBytes: number;
@@ -331,32 +292,15 @@ export interface MessagesBulkPushResponseMetadataMetrics {
   /** Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown. */
   oldestMessageTimestampMs: number;
 }
-const MessagesBulkPushResponseMetadataMetrics = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<MessagesBulkPushResponseMetadataMetrics>;
-
 export interface MessagesBulkPushResponseMetadata {
   /** Best-effort metrics for the queue. Values may be approximate due to the distributed nature of queues. */
   metrics?: MessagesBulkPushResponseMetadataMetrics | null;
 }
-const MessagesBulkPushResponseMetadata = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<MessagesBulkPushResponseMetadata>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface BulkPushMessagesResponse {
   metadata?: MessagesBulkPushResponseMetadata | null;
 }
-const BulkPushMessagesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<BulkPushMessagesResponse>;
-
 export type ConsumersCreateRequestType = "worker" | "http_pull";
-const ConsumersCreateRequestType = S.String;
-
 export interface ConsumersCreateRequestSettingsWorker {
   /** The maximum number of messages to include in a batch. */
   batchSize?: number;
@@ -382,8 +326,6 @@ export interface ConsumersCreateRequestSettingsHTTPPull {
 export type ConsumersCreateRequestSettings =
   | ConsumersCreateRequestSettingsWorker
   | ConsumersCreateRequestSettingsHTTPPull;
-const ConsumersCreateRequestSettings = /*@__PURE__*/ __L.at(__c1, 5);
-
 export interface CreateConsumerRequest {
   /** A Resource identifier. */
   accountId: string;
@@ -395,11 +337,6 @@ export interface CreateConsumerRequest {
   deadLetterQueue?: string;
   settings?: ConsumersCreateRequestSettings;
 }
-const CreateConsumerRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateConsumerRequest>;
-
 export interface ConsumersCreateResultWorkerSettings {
   /** The maximum number of messages to include in a batch. */
   batchSize?: number | null;
@@ -447,25 +384,14 @@ export interface ConsumersCreateResultHTTPPull {
   type?: ConsumersCreateResultHTTPPullType | null;
 }
 export type ConsumersCreateResult = ConsumersCreateResultWorker | ConsumersCreateResultHTTPPull;
-const ConsumersCreateResult = /*@__PURE__*/ __L.at(__c1, 7);
-
 export type CreateConsumerResponse = ConsumersCreateResult;
-const CreateConsumerResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateConsumerResponse>;
-
 export type CreateRequestJurisdiction = "eu" | "us" | "fedramp";
-const CreateRequestJurisdiction = S.String;
-
 export interface CreateQueueRequest {
   /** A Resource identifier. */
   accountId: string;
   queueName: string;
   jurisdiction?: CreateRequestJurisdiction | (string & {});
 }
-const CreateQueueRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CreateQueueRequest>;
-
 export type CreateResponseConsumersItemWorkerSettings = ConsumersCreateResultWorkerSettings;
 export type CreateResponseConsumersItemWorkerType = "worker";
 export interface CreateResponseConsumersItemWorker {
@@ -495,17 +421,8 @@ export interface CreateResponseConsumersItemHTTPPull {
 export type CreateResponseConsumersItem =
   | CreateResponseConsumersItemWorker
   | CreateResponseConsumersItemHTTPPull;
-const CreateResponseConsumersItem = /*@__PURE__*/ __L.at(__c2, 2);
-
 export type CreateResponseConsumersList = Array<CreateResponseConsumersItem>;
-const CreateResponseConsumersList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateResponseConsumersList>;
-
 export type CreateResponseJurisdiction = "eu" | "us" | "fedramp";
-const CreateResponseJurisdiction = S.String;
-
 export type CreateResponseProducersItemMqWorkerProducerType = "worker";
 export interface CreateResponseProducersItemMqWorkerProducer {
   type?: CreateResponseProducersItemMqWorkerProducerType | null;
@@ -519,14 +436,7 @@ export interface CreateResponseProducersItemMqR2Producer {
 export type CreateResponseProducersItem =
   | CreateResponseProducersItemMqWorkerProducer
   | CreateResponseProducersItemMqR2Producer;
-const CreateResponseProducersItem = /*@__PURE__*/ __L.at(__c2, 4);
-
 export type CreateResponseProducersList = Array<CreateResponseProducersItem>;
-const CreateResponseProducersList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateResponseProducersList>;
-
 export interface CreateResponseSettings {
   /** Number of seconds to delay delivery of all messages to consumers. */
   deliveryDelay?: number | null;
@@ -535,11 +445,6 @@ export interface CreateResponseSettings {
   /** Number of seconds after which an unconsumed message will be delayed. */
   messageRetentionPeriod?: number | null;
 }
-const CreateResponseSettings = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateResponseSettings>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateQueueResponse {
   consumers?: CreateResponseConsumersList | null;
@@ -553,28 +458,14 @@ export interface CreateQueueResponse {
   queueName?: string | null;
   settings?: CreateResponseSettings | null;
 }
-const CreateQueueResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CreateQueueResponse>;
-
 export type SubscriptionsCreateRequestDestinationType = "queues.queue";
-const SubscriptionsCreateRequestDestinationType = S.String;
-
 export interface SubscriptionsCreateRequestDestination {
   /** ID of the target queue */
   queueId: string;
   /** Type of destination */
   type: SubscriptionsCreateRequestDestinationType | (string & {});
 }
-const SubscriptionsCreateRequestDestination = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<SubscriptionsCreateRequestDestination>;
-
 export type SubscriptionsCreateRequestEventsList = Array<string>;
-const SubscriptionsCreateRequestEventsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<SubscriptionsCreateRequestEventsList>;
-
 export type SubscriptionsCreateRequestSourceMqEventSourceImagesType = "images";
 export interface SubscriptionsCreateRequestSourceMqEventSourceImages {
   /** Type of source */
@@ -666,8 +557,6 @@ export type SubscriptionsCreateRequestSource =
   | SubscriptionsCreateRequestSourceMqEventSourceArtifacts
   | SubscriptionsCreateRequestSourceMqEventSourceArtifactsRepo
   | SubscriptionsCreateRequestSourceMqEventSourceEmailSending;
-const SubscriptionsCreateRequestSource = /*@__PURE__*/ __L.at(__c3, 2);
-
 export interface CreateSubscriptionRequest {
   /** A Resource identifier. */
   accountId: string;
@@ -682,11 +571,6 @@ export interface CreateSubscriptionRequest {
   /** Source configuration for the subscription */
   source?: SubscriptionsCreateRequestSource;
 }
-const CreateSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateSubscriptionRequest>;
-
 export type SubscriptionsCreateResponseDestinationType = "queues.queue";
 export interface SubscriptionsCreateResponseDestination {
   /** ID of the target queue */
@@ -694,13 +578,7 @@ export interface SubscriptionsCreateResponseDestination {
   /** Type of destination */
   type: SubscriptionsCreateResponseDestinationType;
 }
-const SubscriptionsCreateResponseDestination =
-  SubscriptionsCreateRequestDestination as any as S.Schema<SubscriptionsCreateResponseDestination>;
-
 export type SubscriptionsCreateResponseEventsList = Array<string>;
-const SubscriptionsCreateResponseEventsList =
-  SubscriptionsCreateRequestEventsList as any as S.Schema<SubscriptionsCreateResponseEventsList>;
-
 export type SubscriptionsCreateResponseSourceMqEventSourceImagesType = "images";
 export interface SubscriptionsCreateResponseSourceMqEventSourceImages {
   /** Type of source */
@@ -792,8 +670,6 @@ export type SubscriptionsCreateResponseSource =
   | SubscriptionsCreateResponseSourceMqEventSourceArtifacts
   | SubscriptionsCreateResponseSourceMqEventSourceArtifactsRepo
   | SubscriptionsCreateResponseSourceMqEventSourceEmailSending;
-const SubscriptionsCreateResponseSource = /*@__PURE__*/ __L.at(__c3, 4);
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSubscriptionResponse {
   /** Unique identifier for the subscription */
@@ -813,11 +689,6 @@ export interface CreateSubscriptionResponse {
   /** Source configuration for the subscription */
   source: SubscriptionsCreateResponseSource;
 }
-const CreateSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateSubscriptionResponse>;
-
 export interface DeleteConsumerRequest {
   /** A Resource identifier. */
   accountId: string;
@@ -826,39 +697,20 @@ export interface DeleteConsumerRequest {
   /** A Resource identifier. */
   consumerId: string;
 }
-const DeleteConsumerRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeleteConsumerRequest>;
-
 export interface DeleteConsumerResponse {}
-const DeleteConsumerResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DeleteConsumerResponse>;
-
 export interface DeleteQueueRequest {
   /** A Resource identifier. */
   accountId: string;
   /** A Resource identifier. */
   queueId: string;
 }
-const DeleteQueueRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DeleteQueueRequest>;
-
 export interface DeleteQueueResponse {}
-const DeleteQueueResponse = DeleteConsumerResponse as any as S.Schema<DeleteQueueResponse>;
-
 export interface DeleteSubscriptionRequest {
   /** A Resource identifier. */
   accountId: string;
   /** A Resource identifier. */
   subscriptionId: string;
 }
-const DeleteSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DeleteSubscriptionRequest>;
-
 export type SubscriptionsDeleteResponseDestinationType = "queues.queue";
 export interface SubscriptionsDeleteResponseDestination {
   /** ID of the target queue */
@@ -866,13 +718,7 @@ export interface SubscriptionsDeleteResponseDestination {
   /** Type of destination */
   type: SubscriptionsDeleteResponseDestinationType;
 }
-const SubscriptionsDeleteResponseDestination =
-  SubscriptionsCreateRequestDestination as any as S.Schema<SubscriptionsDeleteResponseDestination>;
-
 export type SubscriptionsDeleteResponseEventsList = Array<string>;
-const SubscriptionsDeleteResponseEventsList =
-  SubscriptionsCreateRequestEventsList as any as S.Schema<SubscriptionsDeleteResponseEventsList>;
-
 export type SubscriptionsDeleteResponseSourceMqEventSourceImagesType = "images";
 export interface SubscriptionsDeleteResponseSourceMqEventSourceImages {
   /** Type of source */
@@ -964,8 +810,6 @@ export type SubscriptionsDeleteResponseSource =
   | SubscriptionsDeleteResponseSourceMqEventSourceArtifacts
   | SubscriptionsDeleteResponseSourceMqEventSourceArtifactsRepo
   | SubscriptionsDeleteResponseSourceMqEventSourceEmailSending;
-const SubscriptionsDeleteResponseSource = /*@__PURE__*/ __L.at(__c4, 2);
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSubscriptionResponse {
   /** Unique identifier for the subscription */
@@ -985,11 +829,6 @@ export interface DeleteSubscriptionResponse {
   /** Source configuration for the subscription */
   source: SubscriptionsDeleteResponseSource;
 }
-const DeleteSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DeleteSubscriptionResponse>;
-
 export interface GetConsumerRequest {
   /** A Resource identifier. */
   accountId: string;
@@ -998,8 +837,6 @@ export interface GetConsumerRequest {
   /** A Resource identifier. */
   consumerId: string;
 }
-const GetConsumerRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetConsumerRequest>;
-
 export type ConsumersGetResultWorkerSettings = ConsumersCreateResultWorkerSettings;
 export type ConsumersGetResultWorkerType = "worker";
 export interface ConsumersGetResultWorker {
@@ -1027,22 +864,13 @@ export interface ConsumersGetResultHTTPPull {
   type?: ConsumersGetResultHTTPPullType | null;
 }
 export type ConsumersGetResult = ConsumersGetResultWorker | ConsumersGetResultHTTPPull;
-const ConsumersGetResult = /*@__PURE__*/ __L.at(__c4, 5);
-
 export type GetConsumerResponse = ConsumersGetResult;
-const GetConsumerResponse = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GetConsumerResponse>;
-
 export interface GetMetricsQueueRequest {
   /** A Resource identifier. */
   accountId: string;
   /** A Resource identifier. */
   queueId: string;
 }
-const GetMetricsQueueRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetMetricsQueueRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetMetricsQueueResponse {
   /** The size in bytes of unacknowledged messages in the queue. */
@@ -1052,19 +880,12 @@ export interface GetMetricsQueueResponse {
   /** Unix timestamp in milliseconds of the oldest unacknowledged message in the queue. Returns 0 if unknown. */
   oldestMessageTimestampMs: number;
 }
-const GetMetricsQueueResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetMetricsQueueResponse>;
-
 export interface GetQueueRequest {
   /** A Resource identifier. */
   accountId: string;
   /** A Resource identifier. */
   queueId: string;
 }
-const GetQueueRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<GetQueueRequest>;
-
 export type GetResponseConsumersItemWorkerSettings = ConsumersCreateResultWorkerSettings;
 export type GetResponseConsumersItemWorkerType = "worker";
 export interface GetResponseConsumersItemWorker {
@@ -1094,17 +915,8 @@ export interface GetResponseConsumersItemHTTPPull {
 export type GetResponseConsumersItem =
   | GetResponseConsumersItemWorker
   | GetResponseConsumersItemHTTPPull;
-const GetResponseConsumersItem = /*@__PURE__*/ __L.at(__c5, 2);
-
 export type GetResponseConsumersList = Array<GetResponseConsumersItem>;
-const GetResponseConsumersList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetResponseConsumersList>;
-
 export type GetResponseJurisdiction = "eu" | "us" | "fedramp";
-const GetResponseJurisdiction = S.String;
-
 export type GetResponseProducersItemMqWorkerProducerType = "worker";
 export interface GetResponseProducersItemMqWorkerProducer {
   type?: GetResponseProducersItemMqWorkerProducerType | null;
@@ -1118,14 +930,7 @@ export interface GetResponseProducersItemMqR2Producer {
 export type GetResponseProducersItem =
   | GetResponseProducersItemMqWorkerProducer
   | GetResponseProducersItemMqR2Producer;
-const GetResponseProducersItem = /*@__PURE__*/ __L.at(__c5, 4);
-
 export type GetResponseProducersList = Array<GetResponseProducersItem>;
-const GetResponseProducersList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetResponseProducersList>;
-
 export type GetResponseSettings = CreateResponseSettings;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetQueueResponse {
@@ -1140,19 +945,12 @@ export interface GetQueueResponse {
   queueName?: string | null;
   settings?: CreateResponseSettings | null;
 }
-const GetQueueResponse = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<GetQueueResponse>;
-
 export interface GetSubscriptionRequest {
   /** A Resource identifier. */
   accountId: string;
   /** A Resource identifier. */
   subscriptionId: string;
 }
-const GetSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetSubscriptionRequest>;
-
 export type SubscriptionsGetResponseDestinationType = "queues.queue";
 export interface SubscriptionsGetResponseDestination {
   /** ID of the target queue */
@@ -1160,13 +958,7 @@ export interface SubscriptionsGetResponseDestination {
   /** Type of destination */
   type: SubscriptionsGetResponseDestinationType;
 }
-const SubscriptionsGetResponseDestination =
-  SubscriptionsCreateRequestDestination as any as S.Schema<SubscriptionsGetResponseDestination>;
-
 export type SubscriptionsGetResponseEventsList = Array<string>;
-const SubscriptionsGetResponseEventsList =
-  SubscriptionsCreateRequestEventsList as any as S.Schema<SubscriptionsGetResponseEventsList>;
-
 export type SubscriptionsGetResponseSourceMqEventSourceImagesType = "images";
 export interface SubscriptionsGetResponseSourceMqEventSourceImages {
   /** Type of source */
@@ -1257,8 +1049,6 @@ export type SubscriptionsGetResponseSource =
   | SubscriptionsGetResponseSourceMqEventSourceArtifacts
   | SubscriptionsGetResponseSourceMqEventSourceArtifactsRepo
   | SubscriptionsGetResponseSourceMqEventSourceEmailSending;
-const SubscriptionsGetResponseSource = /*@__PURE__*/ __L.at(__c6, 0);
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSubscriptionResponse {
   /** Unique identifier for the subscription */
@@ -1278,19 +1068,12 @@ export interface GetSubscriptionResponse {
   /** Source configuration for the subscription */
   source: SubscriptionsGetResponseSource;
 }
-const GetSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetSubscriptionResponse>;
-
 export interface ListConsumersRequest {
   /** A Resource identifier. */
   accountId: string;
   /** A Resource identifier. */
   queueId: string;
 }
-const ListConsumersRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ListConsumersRequest>;
-
 export type ConsumersListResultItemWorkerSettings = ConsumersCreateResultWorkerSettings;
 export type ConsumersListResultItemWorkerType = "worker";
 export interface ConsumersListResultItemWorker {
@@ -1320,31 +1103,17 @@ export interface ConsumersListResultItemHTTPPull {
 export type ConsumersListResultItem =
   | ConsumersListResultItemWorker
   | ConsumersListResultItemHTTPPull;
-const ConsumersListResultItem = /*@__PURE__*/ __L.at(__c6, 3);
-
 export type ConsumersListResultList = Array<ConsumersListResultItem>;
-const ConsumersListResultList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ConsumersListResultList>;
-
 export interface ListConsumersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ConsumersListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListConsumersResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ListConsumersResponse>;
-
 export interface ListQueuesRequest {
   /** A Resource identifier. */
   accountId: string;
 }
-const ListQueuesRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ListQueuesRequest>;
-
 export type ListResultItemConsumersItemWorkerSettings = ConsumersCreateResultWorkerSettings;
 export type ListResultItemConsumersItemWorkerType = "worker";
 export interface ListResultItemConsumersItemWorker {
@@ -1374,17 +1143,8 @@ export interface ListResultItemConsumersItemHTTPPull {
 export type ListResultItemConsumersItem =
   | ListResultItemConsumersItemWorker
   | ListResultItemConsumersItemHTTPPull;
-const ListResultItemConsumersItem = /*@__PURE__*/ __L.at(__c6, 7);
-
 export type ListResultItemConsumersList = Array<ListResultItemConsumersItem>;
-const ListResultItemConsumersList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListResultItemConsumersList>;
-
 export type ListResultItemJurisdiction = "eu" | "us" | "fedramp";
-const ListResultItemJurisdiction = S.String;
-
 export type ListResultItemProducersItemMqWorkerProducerType = "worker";
 export interface ListResultItemProducersItemMqWorkerProducer {
   type?: ListResultItemProducersItemMqWorkerProducerType | null;
@@ -1398,14 +1158,7 @@ export interface ListResultItemProducersItemMqR2Producer {
 export type ListResultItemProducersItem =
   | ListResultItemProducersItemMqWorkerProducer
   | ListResultItemProducersItemMqR2Producer;
-const ListResultItemProducersItem = /*@__PURE__*/ __L.at(__c7, 1);
-
 export type ListResultItemProducersList = Array<ListResultItemProducersItem>;
-const ListResultItemProducersList = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListResultItemProducersList>;
-
 export type ListResultItemSettings = CreateResponseSettings;
 export interface ListResultItem {
   consumers?: ListResultItemConsumersList | null;
@@ -1419,25 +1172,15 @@ export interface ListResultItem {
   queueName?: string | null;
   settings?: CreateResponseSettings | null;
 }
-const ListResultItem = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ListResultItem>;
-
 export type ListResultList = Array<ListResultItem>;
-const ListResultList = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<ListResultList>;
-
 export interface ListQueuesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListQueuesResponse = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ListQueuesResponse>;
-
 export type SubscriptionsListRequestDirection = "asc" | "desc";
-const SubscriptionsListRequestDirection = S.String;
-
 export type SubscriptionsListRequestOrder = "created_at" | "name" | "enabled" | "source";
-const SubscriptionsListRequestOrder = S.String;
-
 export interface ListSubscriptionsRequest {
   /** A Resource identifier. */
   accountId: string;
@@ -1450,11 +1193,6 @@ export interface ListSubscriptionsRequest {
   /** Number of items per page */
   perPage?: number;
 }
-const ListSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListSubscriptionsRequest>;
-
 export type SubscriptionsListResultItemDestinationType = "queues.queue";
 export interface SubscriptionsListResultItemDestination {
   /** ID of the target queue */
@@ -1462,13 +1200,7 @@ export interface SubscriptionsListResultItemDestination {
   /** Type of destination */
   type: SubscriptionsListResultItemDestinationType;
 }
-const SubscriptionsListResultItemDestination =
-  SubscriptionsCreateRequestDestination as any as S.Schema<SubscriptionsListResultItemDestination>;
-
 export type SubscriptionsListResultItemEventsList = Array<string>;
-const SubscriptionsListResultItemEventsList =
-  SubscriptionsCreateRequestEventsList as any as S.Schema<SubscriptionsListResultItemEventsList>;
-
 export type SubscriptionsListResultItemSourceMqEventSourceImagesType = "images";
 export interface SubscriptionsListResultItemSourceMqEventSourceImages {
   /** Type of source */
@@ -1560,8 +1292,6 @@ export type SubscriptionsListResultItemSource =
   | SubscriptionsListResultItemSourceMqEventSourceArtifacts
   | SubscriptionsListResultItemSourceMqEventSourceArtifactsRepo
   | SubscriptionsListResultItemSourceMqEventSourceEmailSending;
-const SubscriptionsListResultItemSource = /*@__PURE__*/ __L.at(__c7, 7);
-
 export interface SubscriptionsListResultItem {
   /** Unique identifier for the subscription */
   id: string;
@@ -1580,28 +1310,13 @@ export interface SubscriptionsListResultItem {
   /** Source configuration for the subscription */
   source: SubscriptionsListResultItemSource;
 }
-const SubscriptionsListResultItem = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<SubscriptionsListResultItem>;
-
 export type SubscriptionsListResultList = Array<SubscriptionsListResultItem>;
-const SubscriptionsListResultList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<SubscriptionsListResultList>;
-
 export interface ListSubscriptionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: SubscriptionsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListSubscriptionsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListSubscriptionsResponse>;
-
 export interface MessagesPeekRequest {
   /** A Resource identifier. */
   accountId: string;
@@ -1610,8 +1325,6 @@ export interface MessagesPeekRequest {
   /** The maximum number of messages to include in a batch. */
   batchSize?: number;
 }
-const MessagesPeekRequest = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<MessagesPeekRequest>;
-
 export interface MessagesPeekResponseMessagesItem {
   id?: string | null;
   attempts?: number | null;
@@ -1621,26 +1334,12 @@ export interface MessagesPeekResponseMessagesItem {
   ref?: string | null;
   timestampMs?: number | null;
 }
-const MessagesPeekResponseMessagesItem = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<MessagesPeekResponseMessagesItem>;
-
 export type MessagesPeekResponseMessagesList = Array<MessagesPeekResponseMessagesItem>;
-const MessagesPeekResponseMessagesList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<MessagesPeekResponseMessagesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface MessagesPeekResponse {
   messages?: MessagesPeekResponseMessagesList | null;
 }
-const MessagesPeekResponse = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<MessagesPeekResponse>;
-
 export type EditRequestJurisdiction = "eu" | "us" | "fedramp";
-const EditRequestJurisdiction = S.String;
-
 export interface EditRequestSettings {
   /** Number of seconds to delay delivery of all messages to consumers. */
   deliveryDelay?: number;
@@ -1649,8 +1348,6 @@ export interface EditRequestSettings {
   /** Number of seconds after which an unconsumed message will be delayed. */
   messageRetentionPeriod?: number;
 }
-const EditRequestSettings = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<EditRequestSettings>;
-
 export interface PatchQueueRequest {
   /** A Resource identifier. */
   accountId: string;
@@ -1660,8 +1357,6 @@ export interface PatchQueueRequest {
   queueName?: string;
   settings?: EditRequestSettings;
 }
-const PatchQueueRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<PatchQueueRequest>;
-
 export type EditResponseConsumersItemWorkerSettings = ConsumersCreateResultWorkerSettings;
 export type EditResponseConsumersItemWorkerType = "worker";
 export interface EditResponseConsumersItemWorker {
@@ -1691,17 +1386,8 @@ export interface EditResponseConsumersItemHTTPPull {
 export type EditResponseConsumersItem =
   | EditResponseConsumersItemWorker
   | EditResponseConsumersItemHTTPPull;
-const EditResponseConsumersItem = /*@__PURE__*/ __L.at(__c9, 1);
-
 export type EditResponseConsumersList = Array<EditResponseConsumersItem>;
-const EditResponseConsumersList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<EditResponseConsumersList>;
-
 export type EditResponseJurisdiction = "eu" | "us" | "fedramp";
-const EditResponseJurisdiction = S.String;
-
 export type EditResponseProducersItemMqWorkerProducerType = "worker";
 export interface EditResponseProducersItemMqWorkerProducer {
   type?: EditResponseProducersItemMqWorkerProducerType | null;
@@ -1715,14 +1401,7 @@ export interface EditResponseProducersItemMqR2Producer {
 export type EditResponseProducersItem =
   | EditResponseProducersItemMqWorkerProducer
   | EditResponseProducersItemMqR2Producer;
-const EditResponseProducersItem = /*@__PURE__*/ __L.at(__c9, 3);
-
 export type EditResponseProducersList = Array<EditResponseProducersItem>;
-const EditResponseProducersList = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<EditResponseProducersList>;
-
 export type EditResponseSettings = CreateResponseSettings;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchQueueResponse {
@@ -1737,8 +1416,6 @@ export interface PatchQueueResponse {
   queueName?: string | null;
   settings?: CreateResponseSettings | null;
 }
-const PatchQueueResponse = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<PatchQueueResponse>;
-
 export type SubscriptionsUpdateRequestDestinationType = "queues.queue";
 export interface SubscriptionsUpdateRequestDestination {
   /** ID of the target queue */
@@ -1746,13 +1423,7 @@ export interface SubscriptionsUpdateRequestDestination {
   /** Type of destination */
   type: SubscriptionsUpdateRequestDestinationType | (string & {});
 }
-const SubscriptionsUpdateRequestDestination =
-  SubscriptionsCreateRequestDestination as any as S.Schema<SubscriptionsUpdateRequestDestination>;
-
 export type SubscriptionsUpdateRequestEventsList = Array<string>;
-const SubscriptionsUpdateRequestEventsList =
-  SubscriptionsCreateRequestEventsList as any as S.Schema<SubscriptionsUpdateRequestEventsList>;
-
 export interface PatchSubscriptionRequest {
   /** A Resource identifier. */
   accountId: string;
@@ -1767,11 +1438,6 @@ export interface PatchSubscriptionRequest {
   /** Name of the subscription */
   name?: string;
 }
-const PatchSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<PatchSubscriptionRequest>;
-
 export type SubscriptionsUpdateResponseDestinationType = "queues.queue";
 export interface SubscriptionsUpdateResponseDestination {
   /** ID of the target queue */
@@ -1779,13 +1445,7 @@ export interface SubscriptionsUpdateResponseDestination {
   /** Type of destination */
   type: SubscriptionsUpdateResponseDestinationType;
 }
-const SubscriptionsUpdateResponseDestination =
-  SubscriptionsCreateRequestDestination as any as S.Schema<SubscriptionsUpdateResponseDestination>;
-
 export type SubscriptionsUpdateResponseEventsList = Array<string>;
-const SubscriptionsUpdateResponseEventsList =
-  SubscriptionsCreateRequestEventsList as any as S.Schema<SubscriptionsUpdateResponseEventsList>;
-
 export type SubscriptionsUpdateResponseSourceMqEventSourceImagesType = "images";
 export interface SubscriptionsUpdateResponseSourceMqEventSourceImages {
   /** Type of source */
@@ -1877,8 +1537,6 @@ export type SubscriptionsUpdateResponseSource =
   | SubscriptionsUpdateResponseSourceMqEventSourceArtifacts
   | SubscriptionsUpdateResponseSourceMqEventSourceArtifactsRepo
   | SubscriptionsUpdateResponseSourceMqEventSourceEmailSending;
-const SubscriptionsUpdateResponseSource = /*@__PURE__*/ __L.at(__c9, 7);
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSubscriptionResponse {
   /** Unique identifier for the subscription */
@@ -1898,11 +1556,6 @@ export interface PatchSubscriptionResponse {
   /** Source configuration for the subscription */
   source: SubscriptionsUpdateResponseSource;
 }
-const PatchSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<PatchSubscriptionResponse>;
-
 export interface PullMessageRequest {
   /** A Resource identifier. */
   accountId: string;
@@ -1913,8 +1566,6 @@ export interface PullMessageRequest {
   /** The number of milliseconds that a message is exclusively leased. After the timeout, the message becomes available for another attempt. */
   visibilityTimeoutMs?: number;
 }
-const PullMessageRequest = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<PullMessageRequest>;
-
 export interface MessagesPullResponseMessagesItem {
   id?: string | null;
   attempts?: number | null;
@@ -1924,17 +1575,7 @@ export interface MessagesPullResponseMessagesItem {
   metadata?: unknown | null;
   timestampMs?: number | null;
 }
-const MessagesPullResponseMessagesItem = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<MessagesPullResponseMessagesItem>;
-
 export type MessagesPullResponseMessagesList = Array<MessagesPullResponseMessagesItem>;
-const MessagesPullResponseMessagesList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<MessagesPullResponseMessagesList>;
-
 export type MessagesPullResponseMetadataMetrics = MessagesBulkPushResponseMetadataMetrics;
 export type MessagesPullResponseMetadata = MessagesBulkPushResponseMetadata;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -1944,23 +1585,11 @@ export interface PullMessageResponse {
   messages?: MessagesPullResponseMessagesList | null;
   metadata?: MessagesBulkPushResponseMetadata | null;
 }
-const PullMessageResponse = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<PullMessageResponse>;
-
 export interface PurgeMessageRequestRefsItem {
   /** An opaque reference to a peeked message. You must hold on to this value and use it to purge the message. */
   ref: string;
 }
-const PurgeMessageRequestRefsItem = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<PurgeMessageRequestRefsItem>;
-
 export type PurgeMessageRequestRefsList = Array<PurgeMessageRequestRefsItem>;
-const PurgeMessageRequestRefsList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<PurgeMessageRequestRefsList>;
-
 export interface PurgeMessageRequest {
   /** A Resource identifier. */
   accountId: string;
@@ -1968,26 +1597,11 @@ export interface PurgeMessageRequest {
   queueId: string;
   refs: PurgeMessageRequestRefsList;
 }
-const PurgeMessageRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<PurgeMessageRequest>;
-
 export interface PurgeMessageResponseErrorsItem {
   message?: string | null;
 }
-const PurgeMessageResponseErrorsItem = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<PurgeMessageResponseErrorsItem>;
-
 export type PurgeMessageResponseErrorsList = Array<PurgeMessageResponseErrorsItem>;
-const PurgeMessageResponseErrorsList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<PurgeMessageResponseErrorsList>;
-
 export type PurgeMessageResponseWarningsMap = { [key: string]: string | undefined };
-const PurgeMessageResponseWarningsMap =
-  MessagesAckResponseWarningsMap as any as S.Schema<PurgeMessageResponseWarningsMap>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PurgeMessageResponse {
   /** Errors encountered while purging messages. */
@@ -1995,19 +1609,12 @@ export interface PurgeMessageResponse {
   /** Map of refs to warning messages encountered during purge. */
   warnings?: PurgeMessageResponseWarningsMap | null;
 }
-const PurgeMessageResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<PurgeMessageResponse>;
-
 export interface PurgeStatusRequest {
   /** A Resource identifier. */
   accountId: string;
   /** A Resource identifier. */
   queueId: string;
 }
-const PurgeStatusRequest = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<PurgeStatusRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PurgeStatusResponse {
   /** Indicates if the last purge operation completed successfully. */
@@ -2015,11 +1622,7 @@ export interface PurgeStatusResponse {
   /** Timestamp when the last purge operation started. */
   startedAt?: string | null;
 }
-const PurgeStatusResponse = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<PurgeStatusResponse>;
-
 export type MessagesPushRequestContentType = "text" | "json";
-const MessagesPushRequestContentType = S.String;
-
 export interface PushMessageRequest {
   /** A Resource identifier. */
   accountId: string;
@@ -2030,16 +1633,12 @@ export interface PushMessageRequest {
   /** The number of seconds to wait for attempting to deliver this message to consumers */
   delaySeconds?: number;
 }
-const PushMessageRequest = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<PushMessageRequest>;
-
 export type MessagesPushResponseMetadataMetrics = MessagesBulkPushResponseMetadataMetrics;
 export type MessagesPushResponseMetadata = MessagesBulkPushResponseMetadata;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PushMessageResponse {
   metadata?: MessagesBulkPushResponseMetadata | null;
 }
-const PushMessageResponse = BulkPushMessagesResponse as any as S.Schema<PushMessageResponse>;
-
 export interface StartPurgeRequest {
   /** A Resource identifier. */
   accountId: string;
@@ -2048,8 +1647,6 @@ export interface StartPurgeRequest {
   /** Confirms that all messages will be permanently deleted. */
   deleteMessagesPermanently?: boolean;
 }
-const StartPurgeRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<StartPurgeRequest>;
-
 export type PurgeStartResponseConsumersItemWorkerSettings = ConsumersCreateResultWorkerSettings;
 export type PurgeStartResponseConsumersItemWorkerType = "worker";
 export interface PurgeStartResponseConsumersItemWorker {
@@ -2079,17 +1676,8 @@ export interface PurgeStartResponseConsumersItemHTTPPull {
 export type PurgeStartResponseConsumersItem =
   | PurgeStartResponseConsumersItemWorker
   | PurgeStartResponseConsumersItemHTTPPull;
-const PurgeStartResponseConsumersItem = /*@__PURE__*/ __L.at(__c11, 7);
-
 export type PurgeStartResponseConsumersList = Array<PurgeStartResponseConsumersItem>;
-const PurgeStartResponseConsumersList = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<PurgeStartResponseConsumersList>;
-
 export type PurgeStartResponseJurisdiction = "eu" | "us" | "fedramp";
-const PurgeStartResponseJurisdiction = S.String;
-
 export type PurgeStartResponseProducersItemMqWorkerProducerType = "worker";
 export interface PurgeStartResponseProducersItemMqWorkerProducer {
   type?: PurgeStartResponseProducersItemMqWorkerProducerType | null;
@@ -2103,14 +1691,7 @@ export interface PurgeStartResponseProducersItemMqR2Producer {
 export type PurgeStartResponseProducersItem =
   | PurgeStartResponseProducersItemMqWorkerProducer
   | PurgeStartResponseProducersItemMqR2Producer;
-const PurgeStartResponseProducersItem = /*@__PURE__*/ __L.at(__c12, 1);
-
 export type PurgeStartResponseProducersList = Array<PurgeStartResponseProducersItem>;
-const PurgeStartResponseProducersList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<PurgeStartResponseProducersList>;
-
 export type PurgeStartResponseSettings = CreateResponseSettings;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StartPurgeResponse {
@@ -2125,18 +1706,12 @@ export interface StartPurgeResponse {
   queueName?: string | null;
   settings?: CreateResponseSettings | null;
 }
-const StartPurgeResponse = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<StartPurgeResponse>;
-
 export type ConsumersUpdateRequestType = "worker" | "http_pull";
-const ConsumersUpdateRequestType = S.String;
-
 export type ConsumersUpdateRequestSettingsWorker = ConsumersCreateRequestSettingsWorker;
 export type ConsumersUpdateRequestSettingsHTTPPull = ConsumersCreateRequestSettingsHTTPPull;
 export type ConsumersUpdateRequestSettings =
   | ConsumersCreateRequestSettingsWorker
   | ConsumersCreateRequestSettingsHTTPPull;
-const ConsumersUpdateRequestSettings = /*@__PURE__*/ __L.at(__c12, 4);
-
 export interface UpdateConsumerRequest {
   /** A Resource identifier. */
   accountId: string;
@@ -2150,11 +1725,6 @@ export interface UpdateConsumerRequest {
   deadLetterQueue?: string;
   settings?: ConsumersUpdateRequestSettings;
 }
-const UpdateConsumerRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<UpdateConsumerRequest>;
-
 export type ConsumersUpdateResultWorkerSettings = ConsumersCreateResultWorkerSettings;
 export type ConsumersUpdateResultWorkerType = "worker";
 export interface ConsumersUpdateResultWorker {
@@ -2182,17 +1752,8 @@ export interface ConsumersUpdateResultHTTPPull {
   type?: ConsumersUpdateResultHTTPPullType | null;
 }
 export type ConsumersUpdateResult = ConsumersUpdateResultWorker | ConsumersUpdateResultHTTPPull;
-const ConsumersUpdateResult = /*@__PURE__*/ __L.at(__c12, 6);
-
 export type UpdateConsumerResponse = ConsumersUpdateResult;
-const UpdateConsumerResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<UpdateConsumerResponse>;
-
 export type UpdateRequestJurisdiction = "eu" | "us" | "fedramp";
-const UpdateRequestJurisdiction = S.String;
-
 export type UpdateRequestSettings = EditRequestSettings;
 export interface UpdateQueueRequest {
   /** A Resource identifier. */
@@ -2203,8 +1764,6 @@ export interface UpdateQueueRequest {
   queueName?: string;
   settings?: EditRequestSettings;
 }
-const UpdateQueueRequest = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<UpdateQueueRequest>;
-
 export type UpdateResponseConsumersItemWorkerSettings = ConsumersCreateResultWorkerSettings;
 export type UpdateResponseConsumersItemWorkerType = "worker";
 export interface UpdateResponseConsumersItemWorker {
@@ -2234,17 +1793,8 @@ export interface UpdateResponseConsumersItemHTTPPull {
 export type UpdateResponseConsumersItem =
   | UpdateResponseConsumersItemWorker
   | UpdateResponseConsumersItemHTTPPull;
-const UpdateResponseConsumersItem = /*@__PURE__*/ __L.at(__c13, 1);
-
 export type UpdateResponseConsumersList = Array<UpdateResponseConsumersItem>;
-const UpdateResponseConsumersList = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<UpdateResponseConsumersList>;
-
 export type UpdateResponseJurisdiction = "eu" | "us" | "fedramp";
-const UpdateResponseJurisdiction = S.String;
-
 export type UpdateResponseProducersItemMqWorkerProducerType = "worker";
 export interface UpdateResponseProducersItemMqWorkerProducer {
   type?: UpdateResponseProducersItemMqWorkerProducerType | null;
@@ -2258,14 +1808,7 @@ export interface UpdateResponseProducersItemMqR2Producer {
 export type UpdateResponseProducersItem =
   | UpdateResponseProducersItemMqWorkerProducer
   | UpdateResponseProducersItemMqR2Producer;
-const UpdateResponseProducersItem = /*@__PURE__*/ __L.at(__c13, 3);
-
 export type UpdateResponseProducersList = Array<UpdateResponseProducersItem>;
-const UpdateResponseProducersList = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<UpdateResponseProducersList>;
-
 export type UpdateResponseSettings = CreateResponseSettings;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateQueueResponse {
@@ -2280,8 +1823,6 @@ export interface UpdateQueueResponse {
   queueName?: string | null;
   settings?: CreateResponseSettings | null;
 }
-const UpdateQueueResponse = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<UpdateQueueResponse>;
-
 export type AckMessageError =
   | InvalidRequestBody
   | InvalidQueueId
@@ -2295,8 +1836,8 @@ export const ackMessage: API.OperationMethod<
   AckMessageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AckMessageRequest,
-  output: AckMessageResponse,
+  input: __S(4) as any as S.Schema<AckMessageRequest>,
+  output: __S(6) as any as S.Schema<AckMessageResponse>,
   errors: [
     InvalidRequestBody,
     InvalidQueueId,
@@ -2321,8 +1862,8 @@ export const bulkPushMessages: API.OperationMethod<
   BulkPushMessagesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkPushMessagesRequest,
-  output: BulkPushMessagesResponse,
+  input: __S(9) as any as S.Schema<BulkPushMessagesRequest>,
+  output: __S(12) as any as S.Schema<BulkPushMessagesResponse>,
   errors: [
     InvalidMessageBody,
     InvalidQueueId,
@@ -2349,8 +1890,8 @@ export const createConsumer: API.OperationMethod<
   CreateConsumerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConsumerRequest,
-  output: CreateConsumerResponse,
+  input: __S(14) as any as S.Schema<CreateConsumerRequest>,
+  output: __S(16) as any as S.Schema<CreateConsumerResponse>,
   errors: [
     InvalidRequestBody,
     QueueNotFound,
@@ -2377,8 +1918,8 @@ export const createQueue: API.OperationMethod<
   CreateQueueError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateQueueRequest,
-  output: CreateQueueResponse,
+  input: __S(17) as any as S.Schema<CreateQueueRequest>,
+  output: __S(23) as any as S.Schema<CreateQueueResponse>,
   errors: [
     QueueAlreadyExists,
     InvalidQueueName,
@@ -2402,8 +1943,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSubscriptionRequest,
-  output: CreateSubscriptionResponse,
+  input: __S(27) as any as S.Schema<CreateSubscriptionRequest>,
+  output: __S(29) as any as S.Schema<CreateSubscriptionResponse>,
   errors: [
     UnrecognizedEventType,
     SubscriptionAlreadyExists,
@@ -2428,8 +1969,8 @@ export const deleteConsumer: API.OperationMethod<
   DeleteConsumerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConsumerRequest,
-  output: DeleteConsumerResponse,
+  input: __S(30) as any as S.Schema<DeleteConsumerRequest>,
+  output: __S(31) as any as S.Schema<DeleteConsumerResponse>,
   errors: [
     InvalidRequestBody,
     QueueNotFound,
@@ -2455,8 +1996,8 @@ export const deleteQueue: API.OperationMethod<
   DeleteQueueError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteQueueRequest,
-  output: DeleteQueueResponse,
+  input: __S(32) as any as S.Schema<DeleteQueueRequest>,
+  output: __S(31) as any as S.Schema<DeleteQueueResponse>,
   errors: [
     QueueNotFound,
     QueueInUseByEventNotification,
@@ -2480,8 +2021,8 @@ export const deleteSubscription: API.OperationMethod<
   DeleteSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSubscriptionRequest,
-  output: DeleteSubscriptionResponse,
+  input: __S(33) as any as S.Schema<DeleteSubscriptionRequest>,
+  output: __S(35) as any as S.Schema<DeleteSubscriptionResponse>,
   errors: [UnrecognizedEventType, SubscriptionNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2500,8 +2041,8 @@ export const getConsumer: API.OperationMethod<
   GetConsumerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConsumerRequest,
-  output: GetConsumerResponse,
+  input: __S(36) as any as S.Schema<GetConsumerRequest>,
+  output: __S(38) as any as S.Schema<GetConsumerResponse>,
   errors: [
     InvalidRequestBody,
     QueueNotFound,
@@ -2522,8 +2063,8 @@ export const getMetricsQueue: API.OperationMethod<
   GetMetricsQueueError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetricsQueueRequest,
-  output: GetMetricsQueueResponse,
+  input: __S(39) as any as S.Schema<GetMetricsQueueRequest>,
+  output: __S(40) as any as S.Schema<GetMetricsQueueResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2537,8 +2078,8 @@ export const getQueue: API.OperationMethod<
   GetQueueError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueueRequest,
-  output: GetQueueResponse,
+  input: __S(41) as any as S.Schema<GetQueueRequest>,
+  output: __S(46) as any as S.Schema<GetQueueResponse>,
   errors: [QueueNotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2556,8 +2097,8 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionRequest,
-  output: GetSubscriptionResponse,
+  input: __S(47) as any as S.Schema<GetSubscriptionRequest>,
+  output: __S(49) as any as S.Schema<GetSubscriptionResponse>,
   errors: [
     UnrecognizedEventType,
     SubscriptionNotFound,
@@ -2583,8 +2124,8 @@ export const listConsumers: API.PaginatedOperationMethod<
   ConsumersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListConsumersRequest,
-    output: ListConsumersResponse,
+    input: __S(50) as any as S.Schema<ListConsumersRequest>,
+    output: __S(53) as any as S.Schema<ListConsumersResponse>,
     errors: [
       InvalidRequestBody,
       QueueNotFound,
@@ -2609,8 +2150,8 @@ export const listQueues: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListQueuesRequest,
-    output: ListQueuesResponse,
+    input: __S(54) as any as S.Schema<ListQueuesRequest>,
+    output: __S(61) as any as S.Schema<ListQueuesResponse>,
     errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2629,8 +2170,8 @@ export const listSubscriptions: API.PaginatedOperationMethod<
   SubscriptionsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListSubscriptionsRequest,
-    output: ListSubscriptionsResponse,
+    input: __S(62) as any as S.Schema<ListSubscriptionsRequest>,
+    output: __S(66) as any as S.Schema<ListSubscriptionsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2653,8 +2194,8 @@ export const messagesPeek: API.OperationMethod<
   MessagesPeekError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MessagesPeekRequest,
-  output: MessagesPeekResponse,
+  input: __S(67) as any as S.Schema<MessagesPeekRequest>,
+  output: __S(70) as any as S.Schema<MessagesPeekResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2668,8 +2209,8 @@ export const patchQueue: API.OperationMethod<
   PatchQueueError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchQueueRequest,
-  output: PatchQueueResponse,
+  input: __S(72) as any as S.Schema<PatchQueueRequest>,
+  output: __S(77) as any as S.Schema<PatchQueueResponse>,
   errors: [QueueNotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2687,8 +2228,8 @@ export const patchSubscription: API.OperationMethod<
   PatchSubscriptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchSubscriptionRequest,
-  output: PatchSubscriptionResponse,
+  input: __S(78) as any as S.Schema<PatchSubscriptionRequest>,
+  output: __S(80) as any as S.Schema<PatchSubscriptionResponse>,
   errors: [
     UnrecognizedEventType,
     SubscriptionNotFound,
@@ -2714,8 +2255,8 @@ export const pullMessage: API.OperationMethod<
   PullMessageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PullMessageRequest,
-  output: PullMessageResponse,
+  input: __S(81) as any as S.Schema<PullMessageRequest>,
+  output: __S(84) as any as S.Schema<PullMessageResponse>,
   errors: [
     InvalidRequestBody,
     InvalidQueueId,
@@ -2737,8 +2278,8 @@ export const purgeMessage: API.OperationMethod<
   PurgeMessageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurgeMessageRequest,
-  output: PurgeMessageResponse,
+  input: __S(87) as any as S.Schema<PurgeMessageRequest>,
+  output: __S(90) as any as S.Schema<PurgeMessageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2752,8 +2293,8 @@ export const purgeStatus: API.OperationMethod<
   PurgeStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurgeStatusRequest,
-  output: PurgeStatusResponse,
+  input: __S(91) as any as S.Schema<PurgeStatusRequest>,
+  output: __S(92) as any as S.Schema<PurgeStatusResponse>,
   errors: [InvalidQueueId, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2771,8 +2312,8 @@ export const pushMessage: API.OperationMethod<
   PushMessageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PushMessageRequest,
-  output: PushMessageResponse,
+  input: __S(93) as any as S.Schema<PushMessageRequest>,
+  output: __S(12) as any as S.Schema<PushMessageResponse>,
   errors: [
     InvalidMessageBody,
     InvalidQueueId,
@@ -2792,8 +2333,8 @@ export const startPurge: API.OperationMethod<
   StartPurgeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartPurgeRequest,
-  output: StartPurgeResponse,
+  input: __S(94) as any as S.Schema<StartPurgeRequest>,
+  output: __S(99) as any as S.Schema<StartPurgeResponse>,
   errors: [InvalidQueueId, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2814,8 +2355,8 @@ export const updateConsumer: API.OperationMethod<
   UpdateConsumerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConsumerRequest,
-  output: UpdateConsumerResponse,
+  input: __S(101) as any as S.Schema<UpdateConsumerRequest>,
+  output: __S(103) as any as S.Schema<UpdateConsumerResponse>,
   errors: [
     InvalidRequestBody,
     QueueNotFound,
@@ -2838,8 +2379,8 @@ export const updateQueue: API.OperationMethod<
   UpdateQueueError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateQueueRequest,
-  output: UpdateQueueResponse,
+  input: __S(104) as any as S.Schema<UpdateQueueRequest>,
+  output: __S(109) as any as S.Schema<UpdateQueueResponse>,
   errors: [InvalidQueueName, QueueNotFound, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2857,7 +2398,7 @@ function __c0(j: number): any {
         identifier: "MessagesAckRequestAcksItem",
       });
     case 1:
-      return S.Array(MessagesAckRequestAcksItem);
+      return S.Array(__S(0));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2868,14 +2409,14 @@ function __c0(j: number): any {
         identifier: "MessagesAckRequestRetriesItem",
       });
     case 3:
-      return S.Array(MessagesAckRequestRetriesItem);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           queueId: S.String.pipe(T.Label("queue_id")),
-          acks: S.optional(MessagesAckRequestAcksList),
-          retries: S.optional(MessagesAckRequestRetriesList),
+          acks: S.optional(__S(1)),
+          retries: S.optional(__S(3)),
         })
           .pipe(
             T.Http({
@@ -2893,7 +2434,7 @@ function __c0(j: number): any {
         S.Struct({
           ackCount: S.optional(S.NullOr(S.Number)),
           retryCount: S.optional(S.NullOr(S.Number)),
-          warnings: S.optional(S.NullOr(MessagesAckResponseWarningsMap)),
+          warnings: S.optional(S.NullOr(__S(5))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "AckMessageResponse" });
     case 7:
@@ -2911,14 +2452,14 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MessagesBulkPushRequestMessagesItem);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           queueId: S.String.pipe(T.Label("queue_id")),
           delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
-          messages: S.optional(MessagesBulkPushRequestMessagesList),
+          messages: S.optional(__S(8)),
         })
           .pipe(
             T.Http({
@@ -2942,7 +2483,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metrics: S.optional(S.NullOr(MessagesBulkPushResponseMetadataMetrics)),
+          metrics: S.optional(S.NullOr(__S(10))),
         }),
       ).annotate({
         identifier: "MessagesBulkPushResponseMetadata",
@@ -2950,7 +2491,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(S.NullOr(MessagesBulkPushResponseMetadata)),
+          metadata: S.optional(S.NullOr(__S(11))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "BulkPushMessagesResponse" });
     case 5:
@@ -2966,9 +2507,9 @@ function __c1(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           queueId: S.String.pipe(T.Label("queue_id")),
           scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-          type: ConsumersCreateRequestType,
+          type: S.String,
           deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-          settings: S.optional(ConsumersCreateRequestSettings),
+          settings: S.optional(__S(13)),
         })
           .pipe(
             T.Http({
@@ -3003,14 +2544,14 @@ function __c2(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        ConsumersCreateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(15).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateConsumerResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           queueName: S.String.pipe(T.Body("queue_name")),
-          jurisdiction: S.optional(CreateRequestJurisdiction),
+          jurisdiction: S.optional(S.String),
         })
           .pipe(T.Http({ method: "POST", uri: "/accounts/{account_id}/queues", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3034,7 +2575,7 @@ function __c2(j: number): any {
         ),
       );
     case 3:
-      return S.Array(CreateResponseConsumersItem);
+      return S.Array(__S(18));
     case 4:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -3046,7 +2587,7 @@ function __c2(j: number): any {
         ),
       );
     case 5:
-      return S.Array(CreateResponseProducersItem);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -3060,16 +2601,16 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          consumers: S.optional(S.NullOr(CreateResponseConsumersList)),
+          consumers: S.optional(S.NullOr(__S(19))),
           consumersTotalCount: S.optional(S.NullOr(S.Number).pipe(T.Body("consumers_total_count"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          jurisdiction: S.optional(S.NullOr(CreateResponseJurisdiction)),
+          jurisdiction: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          producers: S.optional(S.NullOr(CreateResponseProducersList)),
+          producers: S.optional(S.NullOr(__S(21))),
           producersTotalCount: S.optional(S.NullOr(S.Number).pipe(T.Body("producers_total_count"))),
           queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
           queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-          settings: S.optional(S.NullOr(CreateResponseSettings)),
+          settings: S.optional(S.NullOr(__S(22))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateQueueResponse" });
   }
@@ -3080,7 +2621,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           queueId: S.String.pipe(T.Body("queue_id")),
-          type: SubscriptionsCreateRequestDestinationType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "SubscriptionsCreateRequestDestination",
@@ -3127,11 +2668,11 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          destination: S.optional(SubscriptionsCreateRequestDestination),
+          destination: S.optional(__S(24)),
           enabled: S.optional(S.Boolean),
-          events: S.optional(SubscriptionsCreateRequestEventsList),
+          events: S.optional(__S(25)),
           name: S.optional(S.String),
-          source: S.optional(SubscriptionsCreateRequestSource),
+          source: S.optional(__S(26)),
         })
           .pipe(
             T.Http({
@@ -3185,12 +2726,12 @@ function __c3(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          destination: SubscriptionsCreateResponseDestination,
+          destination: __S(24),
           enabled: S.Boolean,
-          events: SubscriptionsCreateResponseEventsList,
+          events: __S(25),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
-          source: SubscriptionsCreateResponseSource,
+          source: __S(28),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateSubscriptionResponse",
@@ -3292,12 +2833,12 @@ function __c4(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          destination: SubscriptionsDeleteResponseDestination,
+          destination: __S(24),
           enabled: S.Boolean,
-          events: SubscriptionsDeleteResponseEventsList,
+          events: __S(25),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
-          source: SubscriptionsDeleteResponseSource,
+          source: __S(34),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "DeleteSubscriptionResponse",
@@ -3338,7 +2879,7 @@ function __c4(j: number): any {
       );
     case 6:
       return S.suspend(() =>
-        ConsumersGetResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(37).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetConsumerResponse" });
     case 7:
       return S.suspend(() =>
@@ -3397,7 +2938,7 @@ function __c5(j: number): any {
         ),
       );
     case 3:
-      return S.Array(GetResponseConsumersItem);
+      return S.Array(__S(42));
     case 4:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -3409,20 +2950,20 @@ function __c5(j: number): any {
         ),
       );
     case 5:
-      return S.Array(GetResponseProducersItem);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          consumers: S.optional(S.NullOr(GetResponseConsumersList)),
+          consumers: S.optional(S.NullOr(__S(43))),
           consumersTotalCount: S.optional(S.NullOr(S.Number).pipe(T.Body("consumers_total_count"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          jurisdiction: S.optional(S.NullOr(GetResponseJurisdiction)),
+          jurisdiction: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          producers: S.optional(S.NullOr(GetResponseProducersList)),
+          producers: S.optional(S.NullOr(__S(45))),
           producersTotalCount: S.optional(S.NullOr(S.Number).pipe(T.Body("producers_total_count"))),
           queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
           queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-          settings: S.optional(S.NullOr(CreateResponseSettings)),
+          settings: S.optional(S.NullOr(__S(22))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetQueueResponse" });
     case 7:
@@ -3485,12 +3026,12 @@ function __c6(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          destination: SubscriptionsGetResponseDestination,
+          destination: __S(24),
           enabled: S.Boolean,
-          events: SubscriptionsGetResponseEventsList,
+          events: __S(25),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
-          source: SubscriptionsGetResponseSource,
+          source: __S(48),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetSubscriptionResponse" });
     case 2:
@@ -3527,11 +3068,11 @@ function __c6(j: number): any {
         ),
       );
     case 4:
-      return S.Array(ConsumersListResultItem);
+      return S.Array(__S(51));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: ConsumersListResultList.pipe(T.EnvelopePayload()),
+          result: __S(52).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListConsumersResponse" });
@@ -3566,7 +3107,7 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListResultItemConsumersItem);
+      return S.Array(__S(55));
     case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -3578,28 +3119,28 @@ function __c7(j: number): any {
         ),
       );
     case 2:
-      return S.Array(ListResultItemProducersItem);
+      return S.Array(__S(57));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          consumers: S.optional(S.NullOr(ListResultItemConsumersList)),
+          consumers: S.optional(S.NullOr(__S(56))),
           consumersTotalCount: S.optional(S.NullOr(S.Number).pipe(T.Body("consumers_total_count"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          jurisdiction: S.optional(S.NullOr(ListResultItemJurisdiction)),
+          jurisdiction: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          producers: S.optional(S.NullOr(ListResultItemProducersList)),
+          producers: S.optional(S.NullOr(__S(58))),
           producersTotalCount: S.optional(S.NullOr(S.Number).pipe(T.Body("producers_total_count"))),
           queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
           queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-          settings: S.optional(S.NullOr(CreateResponseSettings)),
+          settings: S.optional(S.NullOr(__S(22))),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 4:
-      return S.Array(ListResultItem);
+      return S.Array(__S(59));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: ListResultList.pipe(T.EnvelopePayload()),
+          result: __S(60).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListQueuesResponse" });
@@ -3607,8 +3148,8 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          direction: S.optional(SubscriptionsListRequestDirection.pipe(T.Query())),
-          order: S.optional(SubscriptionsListRequestOrder.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
         })
@@ -3666,22 +3207,22 @@ function __c8(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          destination: SubscriptionsListResultItemDestination,
+          destination: __S(24),
           enabled: S.Boolean,
-          events: SubscriptionsListResultItemEventsList,
+          events: __S(25),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
-          source: SubscriptionsListResultItemSource,
+          source: __S(63),
         }),
       ).annotate({
         identifier: "SubscriptionsListResultItem",
       });
     case 1:
-      return S.Array(SubscriptionsListResultItem);
+      return S.Array(__S(64));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: SubscriptionsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(65).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -3717,11 +3258,11 @@ function __c8(j: number): any {
         identifier: "MessagesPeekResponseMessagesItem",
       });
     case 5:
-      return S.Array(MessagesPeekResponseMessagesItem);
+      return S.Array(__S(68));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          messages: S.optional(S.NullOr(MessagesPeekResponseMessagesList)),
+          messages: S.optional(S.NullOr(__S(69))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "MessagesPeekResponse" });
     case 7:
@@ -3741,9 +3282,9 @@ function __c9(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           queueId: S.String.pipe(T.Label("queue_id")),
-          jurisdiction: S.optional(EditRequestJurisdiction),
+          jurisdiction: S.optional(S.String),
           queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-          settings: S.optional(EditRequestSettings),
+          settings: S.optional(__S(71)),
         })
           .pipe(
             T.Http({ method: "PATCH", uri: "/accounts/{account_id}/queues/{queue_id}", code: 200 }),
@@ -3769,7 +3310,7 @@ function __c9(j: number): any {
         ),
       );
     case 2:
-      return S.Array(EditResponseConsumersItem);
+      return S.Array(__S(73));
     case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -3781,20 +3322,20 @@ function __c9(j: number): any {
         ),
       );
     case 4:
-      return S.Array(EditResponseProducersItem);
+      return S.Array(__S(75));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          consumers: S.optional(S.NullOr(EditResponseConsumersList)),
+          consumers: S.optional(S.NullOr(__S(74))),
           consumersTotalCount: S.optional(S.NullOr(S.Number).pipe(T.Body("consumers_total_count"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          jurisdiction: S.optional(S.NullOr(EditResponseJurisdiction)),
+          jurisdiction: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          producers: S.optional(S.NullOr(EditResponseProducersList)),
+          producers: S.optional(S.NullOr(__S(76))),
           producersTotalCount: S.optional(S.NullOr(S.Number).pipe(T.Body("producers_total_count"))),
           queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
           queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-          settings: S.optional(S.NullOr(CreateResponseSettings)),
+          settings: S.optional(S.NullOr(__S(22))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchQueueResponse" });
     case 6:
@@ -3802,9 +3343,9 @@ function __c9(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           subscriptionId: S.String.pipe(T.Label("subscription_id")),
-          destination: S.optional(SubscriptionsUpdateRequestDestination),
+          destination: S.optional(__S(24)),
           enabled: S.optional(S.Boolean),
-          events: S.optional(SubscriptionsUpdateRequestEventsList),
+          events: S.optional(__S(25)),
           name: S.optional(S.String),
         })
           .pipe(
@@ -3861,12 +3402,12 @@ function __c10(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          destination: SubscriptionsUpdateResponseDestination,
+          destination: __S(24),
           enabled: S.Boolean,
-          events: SubscriptionsUpdateResponseEventsList,
+          events: __S(25),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
-          source: SubscriptionsUpdateResponseSource,
+          source: __S(79),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchSubscriptionResponse",
@@ -3902,13 +3443,13 @@ function __c10(j: number): any {
         identifier: "MessagesPullResponseMessagesItem",
       });
     case 3:
-      return S.Array(MessagesPullResponseMessagesItem);
+      return S.Array(__S(82));
     case 4:
       return S.suspend(() =>
         S.Struct({
           messageBacklogCount: S.optional(S.NullOr(S.Number).pipe(T.Body("message_backlog_count"))),
-          messages: S.optional(S.NullOr(MessagesPullResponseMessagesList)),
-          metadata: S.optional(S.NullOr(MessagesBulkPushResponseMetadata)),
+          messages: S.optional(S.NullOr(__S(83))),
+          metadata: S.optional(S.NullOr(__S(11))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PullMessageResponse" });
     case 5:
@@ -3920,13 +3461,13 @@ function __c10(j: number): any {
         identifier: "PurgeMessageRequestRefsItem",
       });
     case 6:
-      return S.Array(PurgeMessageRequestRefsItem);
+      return S.Array(__S(85));
     case 7:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           queueId: S.String.pipe(T.Label("queue_id")),
-          refs: PurgeMessageRequestRefsList,
+          refs: __S(86),
         })
           .pipe(
             T.Http({
@@ -3950,12 +3491,12 @@ function __c11(j: number): any {
         identifier: "PurgeMessageResponseErrorsItem",
       });
     case 1:
-      return S.Array(PurgeMessageResponseErrorsItem);
+      return S.Array(__S(88));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(S.NullOr(PurgeMessageResponseErrorsList)),
-          warnings: S.optional(S.NullOr(PurgeMessageResponseWarningsMap)),
+          errors: S.optional(S.NullOr(__S(89))),
+          warnings: S.optional(S.NullOr(__S(5))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PurgeMessageResponse" });
     case 3:
@@ -3986,7 +3527,7 @@ function __c11(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           queueId: S.String.pipe(T.Label("queue_id")),
           body: S.optional(S.Unknown),
-          contentType: S.optional(MessagesPushRequestContentType.pipe(T.Body("content_type"))),
+          contentType: S.optional(S.String.pipe(T.Body("content_type"))),
           delaySeconds: S.optional(S.Number.pipe(T.Body("delay_seconds"))),
         })
           .pipe(
@@ -4039,7 +3580,7 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PurgeStartResponseConsumersItem);
+      return S.Array(__S(95));
     case 1:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -4051,20 +3592,20 @@ function __c12(j: number): any {
         ),
       );
     case 2:
-      return S.Array(PurgeStartResponseProducersItem);
+      return S.Array(__S(97));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          consumers: S.optional(S.NullOr(PurgeStartResponseConsumersList)),
+          consumers: S.optional(S.NullOr(__S(96))),
           consumersTotalCount: S.optional(S.NullOr(S.Number).pipe(T.Body("consumers_total_count"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          jurisdiction: S.optional(S.NullOr(PurgeStartResponseJurisdiction)),
+          jurisdiction: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          producers: S.optional(S.NullOr(PurgeStartResponseProducersList)),
+          producers: S.optional(S.NullOr(__S(98))),
           producersTotalCount: S.optional(S.NullOr(S.Number).pipe(T.Body("producers_total_count"))),
           queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
           queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-          settings: S.optional(S.NullOr(CreateResponseSettings)),
+          settings: S.optional(S.NullOr(__S(22))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "StartPurgeResponse" });
     case 4:
@@ -4081,9 +3622,9 @@ function __c12(j: number): any {
           queueId: S.String.pipe(T.Label("queue_id")),
           consumerId: S.String.pipe(T.Label("consumer_id")),
           scriptName: S.optional(S.String.pipe(T.Body("script_name"))),
-          type: ConsumersUpdateRequestType,
+          type: S.String,
           deadLetterQueue: S.optional(S.String.pipe(T.Body("dead_letter_queue"))),
-          settings: S.optional(ConsumersUpdateRequestSettings),
+          settings: S.optional(__S(100)),
         })
           .pipe(
             T.Http({
@@ -4114,7 +3655,7 @@ function __c12(j: number): any {
       );
     case 7:
       return S.suspend(() =>
-        ConsumersUpdateResult.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(102).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateConsumerResponse" });
   }
 }
@@ -4125,9 +3666,9 @@ function __c13(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           queueId: S.String.pipe(T.Label("queue_id")),
-          jurisdiction: S.optional(UpdateRequestJurisdiction),
+          jurisdiction: S.optional(S.String),
           queueName: S.optional(S.String.pipe(T.Body("queue_name"))),
-          settings: S.optional(EditRequestSettings),
+          settings: S.optional(__S(71)),
         })
           .pipe(
             T.Http({ method: "PUT", uri: "/accounts/{account_id}/queues/{queue_id}", code: 200 }),
@@ -4153,7 +3694,7 @@ function __c13(j: number): any {
         ),
       );
     case 2:
-      return S.Array(UpdateResponseConsumersItem);
+      return S.Array(__S(105));
     case 3:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases(
@@ -4165,21 +3706,58 @@ function __c13(j: number): any {
         ),
       );
     case 4:
-      return S.Array(UpdateResponseProducersItem);
+      return S.Array(__S(107));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          consumers: S.optional(S.NullOr(UpdateResponseConsumersList)),
+          consumers: S.optional(S.NullOr(__S(106))),
           consumersTotalCount: S.optional(S.NullOr(S.Number).pipe(T.Body("consumers_total_count"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
-          jurisdiction: S.optional(S.NullOr(UpdateResponseJurisdiction)),
+          jurisdiction: S.optional(S.NullOr(S.String)),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
-          producers: S.optional(S.NullOr(UpdateResponseProducersList)),
+          producers: S.optional(S.NullOr(__S(108))),
           producersTotalCount: S.optional(S.NullOr(S.Number).pipe(T.Body("producers_total_count"))),
           queueId: S.optional(S.NullOr(S.String).pipe(T.Body("queue_id"))),
           queueName: S.optional(S.NullOr(S.String).pipe(T.Body("queue_name"))),
-          settings: S.optional(S.NullOr(CreateResponseSettings)),
+          settings: S.optional(S.NullOr(__S(22))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateQueueResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
   }
 }

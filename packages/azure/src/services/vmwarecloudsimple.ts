@@ -7,6 +7,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,8 +19,6 @@ export interface SkuDescription {
   /** SKU's name */
   name: string;
 }
-const SkuDescription = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<SkuDescription>;
-
 /** Properties of dedicated cloud node */
 export interface DedicatedCloudNodePropertiesInput {
   /** Availability Zone id, e.g. "az1" */
@@ -32,11 +32,6 @@ export interface DedicatedCloudNodePropertiesInput {
   /** Dedicated Cloud Nodes SKU's description */
   skuDescription?: SkuDescription;
 }
-const DedicatedCloudNodePropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DedicatedCloudNodePropertiesInput>;
-
 /** The purchase SKU for CloudSimple paid resources */
 export interface Sku {
   /** The capacity of the SKU */
@@ -50,12 +45,8 @@ export interface Sku {
   /** The tier of the SKU */
   tier?: string;
 }
-const Sku = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Sku>;
-
 /** Tags model */
 export type Tags = { [key: string]: string | undefined };
-const Tags = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Tags>;
-
 export interface DedicatedCloudNodesCreateOrUpdateRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -72,15 +63,8 @@ export interface DedicatedCloudNodesCreateOrUpdateRequest {
   /** Dedicated Cloud Nodes tags */
   tags?: Tags;
 }
-const DedicatedCloudNodesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DedicatedCloudNodesCreateOrUpdateRequest>;
-
 /** Node status, indicates is private cloud set up on this node or not */
 export type DedicatedCloudNodePropertiesStatus = "unused" | "used";
-const DedicatedCloudNodePropertiesStatus = S.String;
-
 /** Properties of dedicated cloud node */
 export interface DedicatedCloudNodeProperties {
   /** Availability Zone id, e.g. "az1" */
@@ -112,11 +96,6 @@ export interface DedicatedCloudNodeProperties {
   /** VMWare Cluster Name */
   vmwareClusterName?: string;
 }
-const DedicatedCloudNodeProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DedicatedCloudNodeProperties>;
-
 /** Dedicated cloud node model */
 export interface DedicatedCloudNode {
   /** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/dedicatedCloudNodes/{dedicatedCloudNodeName} */
@@ -134,18 +113,11 @@ export interface DedicatedCloudNode {
   /** {resourceProviderNamespace}/{resourceType} */
   type?: string;
 }
-const DedicatedCloudNode = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DedicatedCloudNode>;
-
 /** Properties of dedicated cloud service */
 export interface DedicatedCloudServicePropertiesInput {
   /** gateway Subnet for the account. It will collect the subnet address and always treat it as /28 */
   gatewaySubnet: string;
 }
-const DedicatedCloudServicePropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DedicatedCloudServicePropertiesInput>;
-
 export interface DedicatedCloudServicesCreateOrUpdateRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -160,19 +132,12 @@ export interface DedicatedCloudServicesCreateOrUpdateRequest {
   /** The list of tags */
   tags?: Tags;
 }
-const DedicatedCloudServicesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DedicatedCloudServicesCreateOrUpdateRequest>;
-
 /** indicates whether account onboarded or not in a given region */
 export type DedicatedCloudServicePropertiesIsAccountOnboarded =
   | "notOnBoarded"
   | "onBoarded"
   | "onBoardingFailed"
   | "onBoarding";
-const DedicatedCloudServicePropertiesIsAccountOnboarded = S.String;
-
 /** Properties of dedicated cloud service */
 export interface DedicatedCloudServiceProperties {
   /** gateway Subnet for the account. It will collect the subnet address and always treat it as /28 */
@@ -184,11 +149,6 @@ export interface DedicatedCloudServiceProperties {
   /** link to a service management web portal */
   serviceURL?: string;
 }
-const DedicatedCloudServiceProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DedicatedCloudServiceProperties>;
-
 /** Dedicated cloud service model */
 export interface DedicatedCloudService {
   /** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/dedicatedCloudServices/{dedicatedCloudServiceName} */
@@ -204,11 +164,6 @@ export interface DedicatedCloudService {
   /** {resourceProviderNamespace}/{resourceType} */
   type?: string;
 }
-const DedicatedCloudService = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DedicatedCloudService>;
-
 export interface DeleteDedicatedCloudNodeRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -217,17 +172,7 @@ export interface DeleteDedicatedCloudNodeRequest {
   /** dedicated cloud node name */
   dedicatedCloudNodeName: string;
 }
-const DeleteDedicatedCloudNodeRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeleteDedicatedCloudNodeRequest>;
-
 export interface DeleteDedicatedCloudNodeResponse {}
-const DeleteDedicatedCloudNodeResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteDedicatedCloudNodeResponse>;
-
 export interface DeleteDedicatedCloudServiceRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -236,15 +181,7 @@ export interface DeleteDedicatedCloudServiceRequest {
   /** dedicated cloud service name */
   dedicatedCloudServiceName: string;
 }
-const DeleteDedicatedCloudServiceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteDedicatedCloudServiceRequest>;
-
 export interface DeleteDedicatedCloudServiceResponse {}
-const DeleteDedicatedCloudServiceResponse =
-  DeleteDedicatedCloudNodeResponse as any as S.Schema<DeleteDedicatedCloudServiceResponse>;
-
 export interface DeleteVirtualMachineRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -253,17 +190,7 @@ export interface DeleteVirtualMachineRequest {
   /** virtual machine name */
   virtualMachineName: string;
 }
-const DeleteVirtualMachineRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeleteVirtualMachineRequest>;
-
 export interface DeleteVirtualMachineResponse {}
-const DeleteVirtualMachineResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteVirtualMachineResponse>;
-
 export interface GetCustomizationPolicyRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -274,11 +201,6 @@ export interface GetCustomizationPolicyRequest {
   /** customization policy name */
   customizationPolicyName: string;
 }
-const GetCustomizationPolicyRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetCustomizationPolicyRequest>;
-
 /** Type of host name */
 export type CustomizationHostNameType =
   | "USER_DEFINED"
@@ -286,8 +208,6 @@ export type CustomizationHostNameType =
   | "FIXED"
   | "VIRTUAL_MACHINE_NAME"
   | "CUSTOM_NAME";
-const CustomizationHostNameType = S.String;
-
 /** Host name model */
 export interface CustomizationHostName {
   /** Hostname */
@@ -295,25 +215,13 @@ export interface CustomizationHostName {
   /** Type of host name */
   type?: CustomizationHostNameType;
 }
-const CustomizationHostName = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CustomizationHostName>;
-
 /** Identity type */
 export type CustomizationIdentityType = "WINDOWS_TEXT" | "WINDOWS" | "LINUX";
-const CustomizationIdentityType = S.String;
-
 /** Windows Identity. User data customization */
 export interface CustomizationIdentityUserData {
   /** Is password predefined in customization policy */
   isPasswordPredefined?: boolean;
 }
-const CustomizationIdentityUserData = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CustomizationIdentityUserData>;
-
 export interface CustomizationIdentity {
   /** Windows Text Identity. Prepared data */
   data?: string;
@@ -324,22 +232,10 @@ export interface CustomizationIdentity {
   /** Windows Identity. User data customization */
   userData?: CustomizationIdentityUserData;
 }
-const CustomizationIdentity = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CustomizationIdentity>;
-
 /** The list of gateways */
 export type CustomizationIPSettingsGatewayList = Array<string>;
-const CustomizationIPSettingsGatewayList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CustomizationIPSettingsGatewayList>;
-
 /** Customization Specification ip type */
 export type CustomizationIPAddressType = "CUSTOM" | "DHCP_IP" | "FIXED_IP" | "USER_DEFINED";
-const CustomizationIPAddressType = S.String;
-
 export interface CustomizationIPAddress {
   /** Argument when Custom ip type is selected */
   argument?: string;
@@ -348,11 +244,6 @@ export interface CustomizationIPAddress {
   /** Customization Specification ip type */
   type?: CustomizationIPAddressType;
 }
-const CustomizationIPAddress = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CustomizationIPAddress>;
-
 export interface CustomizationIPSettings {
   /** The list of gateways */
   gateway?: CustomizationIPSettingsGatewayList;
@@ -361,29 +252,14 @@ export interface CustomizationIPSettings {
   /** Adapter subnet mask */
   subnetMask?: string;
 }
-const CustomizationIPSettings = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CustomizationIPSettings>;
-
 export interface CustomizationNicSetting {
   /** The list of adapters' settings */
   adapter?: CustomizationIPSettings;
   /** NIC mac address */
   macAddress?: string;
 }
-const CustomizationNicSetting = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CustomizationNicSetting>;
-
 /** Network interface settings */
 export type CustomizationSpecificationNicSettingsList = Array<CustomizationNicSetting>;
-const CustomizationSpecificationNicSettingsList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CustomizationSpecificationNicSettingsList>;
-
 /** The specification for Customization Policy */
 export interface CustomizationSpecification {
   /** Customization Identity. It contains data about user and hostname */
@@ -391,15 +267,8 @@ export interface CustomizationSpecification {
   /** Network interface settings */
   nicSettings?: CustomizationSpecificationNicSettingsList;
 }
-const CustomizationSpecification = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CustomizationSpecification>;
-
 /** The type of customization (Linux or Windows) */
 export type CustomizationPolicyPropertiesType = "LINUX" | "WINDOWS";
-const CustomizationPolicyPropertiesType = S.String;
-
 /** The properties of Customization policy */
 export interface CustomizationPolicyProperties {
   /** Policy description */
@@ -413,11 +282,6 @@ export interface CustomizationPolicyProperties {
   /** Policy version */
   version?: string;
 }
-const CustomizationPolicyProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CustomizationPolicyProperties>;
-
 /** The virtual machine customization policy */
 export interface CustomizationPolicy {
   /** Customization policy azure id */
@@ -430,8 +294,6 @@ export interface CustomizationPolicy {
   properties?: CustomizationPolicyProperties;
   type?: string;
 }
-const CustomizationPolicy = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CustomizationPolicy>;
-
 export interface GetDedicatedCloudNodeRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -440,11 +302,6 @@ export interface GetDedicatedCloudNodeRequest {
   /** dedicated cloud node name */
   dedicatedCloudNodeName: string;
 }
-const GetDedicatedCloudNodeRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetDedicatedCloudNodeRequest>;
-
 export interface GetDedicatedCloudServiceRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -453,11 +310,6 @@ export interface GetDedicatedCloudServiceRequest {
   /** dedicated cloud Service name */
   dedicatedCloudServiceName: string;
 }
-const GetDedicatedCloudServiceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetDedicatedCloudServiceRequest>;
-
 export interface GetOperationRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -466,8 +318,6 @@ export interface GetOperationRequest {
   /** operation id */
   operationId: string;
 }
-const GetOperationRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetOperationRequest>;
-
 /** Operation error model */
 export interface OperationError {
   /** Error's code */
@@ -475,8 +325,6 @@ export interface OperationError {
   /** Error's message */
   message?: string;
 }
-const OperationError = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<OperationError>;
-
 /** Operation status response */
 export interface OperationResource {
   /** End time of the operation */
@@ -492,8 +340,6 @@ export interface OperationResource {
   /** Operation status */
   status?: string;
 }
-const OperationResource = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<OperationResource>;
-
 export interface GetPrivateCloudRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -502,26 +348,13 @@ export interface GetPrivateCloudRequest {
   /** The private cloud name */
   pcName: string;
 }
-const GetPrivateCloudRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetPrivateCloudRequest>;
-
 /** Array of DNS servers */
 export type PrivateCloudPropertiesDnsServersList = Array<string>;
-const PrivateCloudPropertiesDnsServersList =
-  CustomizationIPSettingsGatewayList as any as S.Schema<PrivateCloudPropertiesDnsServersList>;
-
 /** Properties of resource pool */
 export interface ResourcePoolProperties {
   /** Hierarchical resource pool name */
   fullName?: string;
 }
-const ResourcePoolProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ResourcePoolProperties>;
-
 /** Resource pool model */
 export interface ResourcePool {
   /** resource pool id (privateCloudId:vsphereId) */
@@ -537,15 +370,8 @@ export interface ResourcePool {
   /** {resourceProviderNamespace}/{resourceType} */
   type?: string;
 }
-const ResourcePool = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ResourcePool>;
-
 /** The list of Resource Pools */
 export type PrivateCloudPropertiesResourcePoolsList = Array<ResourcePool>;
-const PrivateCloudPropertiesResourcePoolsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<PrivateCloudPropertiesResourcePoolsList>;
-
 /** Virtual disk controller model */
 export interface VirtualDiskController {
   /** Controller's id */
@@ -557,25 +383,13 @@ export interface VirtualDiskController {
   /** disk controller type (SCSI) */
   type?: string;
 }
-const VirtualDiskController = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<VirtualDiskController>;
-
 /** The list of Virtual Disk Controllers */
 export type VirtualMachineTemplatePropertiesControllersList = Array<VirtualDiskController>;
-const VirtualMachineTemplatePropertiesControllersList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<VirtualMachineTemplatePropertiesControllersList>;
-
 /** Disk's independence mode type */
 export type VirtualDiskIndependenceMode =
   | "persistent"
   | "independent_persistent"
   | "independent_nonpersistent";
-const VirtualDiskIndependenceMode = S.String;
-
 /** Virtual disk model */
 export interface VirtualDisk {
   /** Disk's Controller id */
@@ -589,29 +403,14 @@ export interface VirtualDisk {
   /** Disk's display name */
   virtualDiskName?: string;
 }
-const VirtualDisk = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<VirtualDisk>;
-
 /** The list of Virtual Disks */
 export type VirtualMachineTemplatePropertiesDisksList = Array<VirtualDisk>;
-const VirtualMachineTemplatePropertiesDisksList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<VirtualMachineTemplatePropertiesDisksList>;
-
 /** IP address allocation method */
 export type GuestOSNICCustomizationAllocation = "static" | "dynamic";
-const GuestOSNICCustomizationAllocation = S.String;
-
 /** List of dns servers to use */
 export type GuestOSNICCustomizationDnsServersList = Array<string>;
-const GuestOSNICCustomizationDnsServersList =
-  CustomizationIPSettingsGatewayList as any as S.Schema<GuestOSNICCustomizationDnsServersList>;
-
 /** Gateway addresses assigned to nic */
 export type GuestOSNICCustomizationGatewayList = Array<string>;
-const GuestOSNICCustomizationGatewayList =
-  CustomizationIPSettingsGatewayList as any as S.Schema<GuestOSNICCustomizationGatewayList>;
-
 /** Guest OS nic customization */
 export interface GuestOSNICCustomization {
   /** IP address allocation method */
@@ -629,26 +428,13 @@ export interface GuestOSNICCustomization {
   /** secondary WINS server for Windows */
   secondaryWinsServer?: string;
 }
-const GuestOSNICCustomization = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GuestOSNICCustomization>;
-
 /** NIC ip address */
 export type VirtualNicIpAddressesList = Array<string>;
-const VirtualNicIpAddressesList =
-  CustomizationIPSettingsGatewayList as any as S.Schema<VirtualNicIpAddressesList>;
-
 /** Properties of virtual network */
 export interface VirtualNetworkProperties {
   /** The Private Cloud id */
   privateCloudId?: string;
 }
-const VirtualNetworkProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<VirtualNetworkProperties>;
-
 /** Virtual network model */
 export interface VirtualNetwork {
   /** can be used in vm creation/deletion */
@@ -664,12 +450,8 @@ export interface VirtualNetwork {
   /** {resourceProviderNamespace}/{resourceType} */
   type?: string;
 }
-const VirtualNetwork = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<VirtualNetwork>;
-
 /** NIC type */
 export type VirtualNicNicType = "E1000" | "E1000E" | "PCNET32" | "VMXNET" | "VMXNET2" | "VMXNET3";
-const VirtualNicNicType = S.String;
-
 /** Virtual NIC model */
 export interface VirtualNic {
   /** guest OS customization for nic */
@@ -689,25 +471,12 @@ export interface VirtualNic {
   /** NIC name */
   virtualNicName?: string;
 }
-const VirtualNic = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<VirtualNic>;
-
 /** The list of Virtual NICs */
 export type VirtualMachineTemplatePropertiesNicsList = Array<VirtualNic>;
-const VirtualMachineTemplatePropertiesNicsList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<VirtualMachineTemplatePropertiesNicsList>;
-
 /** The list of VSphere networks */
 export type VirtualMachineTemplatePropertiesVSphereNetworksList = Array<string>;
-const VirtualMachineTemplatePropertiesVSphereNetworksList =
-  CustomizationIPSettingsGatewayList as any as S.Schema<VirtualMachineTemplatePropertiesVSphereNetworksList>;
-
 /** The tags from VSphere */
 export type VirtualMachineTemplatePropertiesVSphereTagsList = Array<string>;
-const VirtualMachineTemplatePropertiesVSphereTagsList =
-  CustomizationIPSettingsGatewayList as any as S.Schema<VirtualMachineTemplatePropertiesVSphereTagsList>;
-
 /** Properties of virtual machine template */
 export interface VirtualMachineTemplateProperties {
   /** The amount of memory */
@@ -739,11 +508,6 @@ export interface VirtualMachineTemplateProperties {
   /** The VMware tools version */
   vmwaretools?: string;
 }
-const VirtualMachineTemplateProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<VirtualMachineTemplateProperties>;
-
 /** Virtual machine template model */
 export interface VirtualMachineTemplate {
   /** virtual machine template id (privateCloudId:vsphereId) */
@@ -757,25 +521,10 @@ export interface VirtualMachineTemplate {
   /** {resourceProviderNamespace}/{resourceType} */
   type?: string;
 }
-const VirtualMachineTemplate = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<VirtualMachineTemplate>;
-
 /** The list of Virtual Machine Templates */
 export type PrivateCloudPropertiesVirtualMachineTemplatesList = Array<VirtualMachineTemplate>;
-const PrivateCloudPropertiesVirtualMachineTemplatesList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<PrivateCloudPropertiesVirtualMachineTemplatesList>;
-
 /** The list of Virtual Networks */
 export type PrivateCloudPropertiesVirtualNetworksList = Array<VirtualNetwork>;
-const PrivateCloudPropertiesVirtualNetworksList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<PrivateCloudPropertiesVirtualNetworksList>;
-
 /** Properties of private */
 export interface PrivateCloudProperties {
   /** Availability Zone id, e.g. "az1" */
@@ -827,15 +576,8 @@ export interface PrivateCloudProperties {
   /** Is vRealize Operations Manager enabled/disabled */
   vrOpsEnabled?: boolean;
 }
-const PrivateCloudProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<PrivateCloudProperties>;
-
 /** Azure Resource type */
 export type PrivateCloudType = "Microsoft.VMwareCloudSimple/privateClouds";
-const PrivateCloudType = S.String;
-
 /** Private cloud model */
 export interface PrivateCloud {
   /** Azure Id, e.g. "/subscriptions/4da99247-a172-4ed6-8ae9-ebed2d12f839/providers/Microsoft.VMwareCloudSimple/privateClouds/cloud123" */
@@ -849,8 +591,6 @@ export interface PrivateCloud {
   /** Azure Resource type */
   type?: PrivateCloudType;
 }
-const PrivateCloud = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<PrivateCloud>;
-
 export interface GetResourcePoolRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -861,11 +601,6 @@ export interface GetResourcePoolRequest {
   /** resource pool id (vsphereId) */
   resourcePoolName: string;
 }
-const GetResourcePoolRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<GetResourcePoolRequest>;
-
 export interface GetVirtualMachineRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -874,21 +609,10 @@ export interface GetVirtualMachineRequest {
   /** virtual machine name */
   virtualMachineName: string;
 }
-const GetVirtualMachineRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetVirtualMachineRequest>;
-
 /** The list of Virtual Disks' Controllers */
 export type VirtualMachinePropertiesControllersList = Array<VirtualDiskController>;
-const VirtualMachinePropertiesControllersList =
-  VirtualMachineTemplatePropertiesControllersList as any as S.Schema<VirtualMachinePropertiesControllersList>;
-
 /** List of dns servers to use */
 export type GuestOSCustomizationDnsServersList = Array<string>;
-const GuestOSCustomizationDnsServersList =
-  CustomizationIPSettingsGatewayList as any as S.Schema<GuestOSCustomizationDnsServersList>;
-
 /** Guest OS Customization properties */
 export interface GuestOSCustomization {
   /** List of dns servers to use */
@@ -902,22 +626,12 @@ export interface GuestOSCustomization {
   /** Username for login */
   username?: string;
 }
-const GuestOSCustomization = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<GuestOSCustomization>;
-
 /** The list of Virtual Disks */
 export type VirtualMachinePropertiesDisksList = Array<VirtualDisk>;
-const VirtualMachinePropertiesDisksList =
-  VirtualMachineTemplatePropertiesDisksList as any as S.Schema<VirtualMachinePropertiesDisksList>;
-
 /** The Guest OS type */
 export type VirtualMachinePropertiesGuestOSType = "linux" | "windows" | "other";
-const VirtualMachinePropertiesGuestOSType = S.String;
-
 /** The list of Virtual NICs */
 export type VirtualMachinePropertiesNicsList = Array<VirtualNic>;
-const VirtualMachinePropertiesNicsList =
-  VirtualMachineTemplatePropertiesNicsList as any as S.Schema<VirtualMachinePropertiesNicsList>;
-
 /** The status of Virtual machine */
 export type VirtualMachinePropertiesStatus =
   | "running"
@@ -926,13 +640,8 @@ export type VirtualMachinePropertiesStatus =
   | "updating"
   | "deallocating"
   | "deleting";
-const VirtualMachinePropertiesStatus = S.String;
-
 /** The list of Virtual VSphere Networks */
 export type VirtualMachinePropertiesVSphereNetworksList = Array<string>;
-const VirtualMachinePropertiesVSphereNetworksList =
-  CustomizationIPSettingsGatewayList as any as S.Schema<VirtualMachinePropertiesVSphereNetworksList>;
-
 /** Properties of virtual machine */
 export interface VirtualMachineProperties {
   /** The amount of memory */
@@ -980,11 +689,6 @@ export interface VirtualMachineProperties {
   /** VMware tools version */
   vmwaretools?: string;
 }
-const VirtualMachineProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<VirtualMachineProperties>;
-
 /** Virtual machine model */
 export interface VirtualMachine {
   /** /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/virtualMachines/{virtualMachineName} */
@@ -1000,8 +704,6 @@ export interface VirtualMachine {
   /** {resourceProviderNamespace}/{resourceType} */
   type?: string;
 }
-const VirtualMachine = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<VirtualMachine>;
-
 export interface GetVirtualMachineTemplateRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1012,11 +714,6 @@ export interface GetVirtualMachineTemplateRequest {
   /** virtual machine template id (vsphereId) */
   virtualMachineTemplateName: string;
 }
-const GetVirtualMachineTemplateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<GetVirtualMachineTemplateRequest>;
-
 export interface GetVirtualNetworkRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1027,11 +724,6 @@ export interface GetVirtualNetworkRequest {
   /** virtual network id (vsphereId) */
   virtualNetworkName: string;
 }
-const GetVirtualNetworkRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<GetVirtualNetworkRequest>;
-
 export interface ListCustomizationPoliciesRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1042,18 +734,8 @@ export interface ListCustomizationPoliciesRequest {
   /** The filter to apply on the list operation. only type is allowed here as a filter e.g. $filter=type eq 'xxxx' */
   _filter?: string;
 }
-const ListCustomizationPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListCustomizationPoliciesRequest>;
-
 /** List of the customization policies */
 export type CustomizationPoliciesListResponseValueList = Array<CustomizationPolicy>;
-const CustomizationPoliciesListResponseValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CustomizationPoliciesListResponseValueList>;
-
 /** List of customization polices response model */
 export interface CustomizationPoliciesListResponse {
   /** Link for next list of the Customization policy */
@@ -1061,11 +743,6 @@ export interface CustomizationPoliciesListResponse {
   /** List of the customization policies */
   value?: CustomizationPoliciesListResponseValueList;
 }
-const CustomizationPoliciesListResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CustomizationPoliciesListResponse>;
-
 export interface ListDedicatedCloudNodeByResourceGroupRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1078,18 +755,8 @@ export interface ListDedicatedCloudNodeByResourceGroupRequest {
   /** to be used by nextLink implementation */
   _skipToken?: string;
 }
-const ListDedicatedCloudNodeByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListDedicatedCloudNodeByResourceGroupRequest>;
-
 /** Results of the DedicatedCloudNode list */
 export type DedicatedCloudNodeListResponseValueList = Array<DedicatedCloudNode>;
-const DedicatedCloudNodeListResponseValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DedicatedCloudNodeListResponseValueList>;
-
 /** List of dedicated nodes response model */
 export interface DedicatedCloudNodeListResponse {
   /** Link for next list of DedicatedCloudNode */
@@ -1097,11 +764,6 @@ export interface DedicatedCloudNodeListResponse {
   /** Results of the DedicatedCloudNode list */
   value?: DedicatedCloudNodeListResponseValueList;
 }
-const DedicatedCloudNodeListResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DedicatedCloudNodeListResponse>;
-
 export interface ListDedicatedCloudNodeBySubscriptionRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1112,11 +774,6 @@ export interface ListDedicatedCloudNodeBySubscriptionRequest {
   /** to be used by nextLink implementation */
   _skipToken?: string;
 }
-const ListDedicatedCloudNodeBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ListDedicatedCloudNodeBySubscriptionRequest>;
-
 export interface ListDedicatedCloudServiceByResourceGroupRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1129,18 +786,8 @@ export interface ListDedicatedCloudServiceByResourceGroupRequest {
   /** to be used by nextLink implementation */
   _skipToken?: string;
 }
-const ListDedicatedCloudServiceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ListDedicatedCloudServiceByResourceGroupRequest>;
-
 /** Results of the DedicatedCloudService list */
 export type DedicatedCloudServiceListResponseValueList = Array<DedicatedCloudService>;
-const DedicatedCloudServiceListResponseValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DedicatedCloudServiceListResponseValueList>;
-
 /** List of dedicated cloud services */
 export interface DedicatedCloudServiceListResponse {
   /** Link for next list of DedicatedCloudNode */
@@ -1148,11 +795,6 @@ export interface DedicatedCloudServiceListResponse {
   /** Results of the DedicatedCloudService list */
   value?: DedicatedCloudServiceListResponseValueList;
 }
-const DedicatedCloudServiceListResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DedicatedCloudServiceListResponse>;
-
 export interface ListDedicatedCloudServiceBySubscriptionRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1163,17 +805,7 @@ export interface ListDedicatedCloudServiceBySubscriptionRequest {
   /** to be used by nextLink implementation */
   _skipToken?: string;
 }
-const ListDedicatedCloudServiceBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ListDedicatedCloudServiceBySubscriptionRequest>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Resource provider available operation display model */
 export interface AvailableOperationDisplay {
   /** Description of the operation for display purposes */
@@ -1185,21 +817,12 @@ export interface AvailableOperationDisplay {
   /** Name of the resource type for display purposes */
   resource?: string;
 }
-const AvailableOperationDisplay = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<AvailableOperationDisplay>;
-
 /** The origin of operation */
 export type AvailableOperationOrigin = "user" | "system" | "user,system";
-const AvailableOperationOrigin = S.String;
-
 /** Metric's aggregation type for e.g. (Average, Total) */
 export type AvailableOperationDisplayPropertyServiceSpecificationMetricsItemAggregationType =
   | "Average"
   | "Total";
-const AvailableOperationDisplayPropertyServiceSpecificationMetricsItemAggregationType = S.String;
-
 /** Available operation display property service specification metrics item */
 export interface AvailableOperationDisplayPropertyServiceSpecificationMetricsItem {
   /** Metric's aggregation type for e.g. (Average, Total) */
@@ -1213,40 +836,19 @@ export interface AvailableOperationDisplayPropertyServiceSpecificationMetricsIte
   /** Metric's unit */
   unit: string;
 }
-const AvailableOperationDisplayPropertyServiceSpecificationMetricsItem = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<AvailableOperationDisplayPropertyServiceSpecificationMetricsItem>;
-
 /** Metric specifications of operation */
 export type AvailableOperationDisplayPropertyServiceSpecificationMetricsListMetricSpecificationsList =
   Array<AvailableOperationDisplayPropertyServiceSpecificationMetricsItem>;
-const AvailableOperationDisplayPropertyServiceSpecificationMetricsListMetricSpecificationsList =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    1,
-  ) as any as S.Schema<AvailableOperationDisplayPropertyServiceSpecificationMetricsListMetricSpecificationsList>;
-
 /** List of available operation display property service specification metrics */
 export interface AvailableOperationDisplayPropertyServiceSpecificationMetricsList {
   /** Metric specifications of operation */
   metricSpecifications?: AvailableOperationDisplayPropertyServiceSpecificationMetricsListMetricSpecificationsList;
 }
-const AvailableOperationDisplayPropertyServiceSpecificationMetricsList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<AvailableOperationDisplayPropertyServiceSpecificationMetricsList>;
-
 /** Available operation display property service specification model */
 export interface AvailableOperationDisplayPropertyServiceSpecification {
   /** The list of specification's service metrics */
   serviceSpecification?: AvailableOperationDisplayPropertyServiceSpecificationMetricsList;
 }
-const AvailableOperationDisplayPropertyServiceSpecification = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<AvailableOperationDisplayPropertyServiceSpecification>;
-
 /** Resource provider available operation model */
 export interface AvailableOperation {
   /** The list of operations */
@@ -1260,15 +862,8 @@ export interface AvailableOperation {
   /** The list of operation properties */
   properties?: AvailableOperationDisplayPropertyServiceSpecification;
 }
-const AvailableOperation = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<AvailableOperation>;
-
 /** Returns a list of available operations */
 export type AvailableOperationsListResponseValueList = Array<AvailableOperation>;
-const AvailableOperationsListResponseValueList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<AvailableOperationsListResponseValueList>;
-
 /** List of available operations */
 export interface AvailableOperationsListResponse {
   /** Link for next list of available operations */
@@ -1276,29 +871,14 @@ export interface AvailableOperationsListResponse {
   /** Returns a list of available operations */
   value?: AvailableOperationsListResponseValueList;
 }
-const AvailableOperationsListResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<AvailableOperationsListResponse>;
-
 export interface ListPrivateCloudsRequest {
   /** The subscription ID. */
   subscriptionId: string;
   /** The region Id (westus, eastus) */
   regionId: string;
 }
-const ListPrivateCloudsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListPrivateCloudsRequest>;
-
 /** the list of private clouds */
 export type PrivateCloudListValueList = Array<PrivateCloud>;
-const PrivateCloudListValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<PrivateCloudListValueList>;
-
 /** List of private clouds */
 export interface PrivateCloudList {
   /** Link for next list of Private Clouds */
@@ -1306,8 +886,6 @@ export interface PrivateCloudList {
   /** the list of private clouds */
   value?: PrivateCloudListValueList;
 }
-const PrivateCloudList = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<PrivateCloudList>;
-
 export interface ListResourcePoolsRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1316,16 +894,8 @@ export interface ListResourcePoolsRequest {
   /** The private cloud name */
   pcName: string;
 }
-const ListResourcePoolsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListResourcePoolsRequest>;
-
 /** Results of the Resource pools list */
 export type ResourcePoolsListResponseValueList = Array<ResourcePool>;
-const ResourcePoolsListResponseValueList =
-  PrivateCloudPropertiesResourcePoolsList as any as S.Schema<ResourcePoolsListResponseValueList>;
-
 /** List of resource pools response model */
 export interface ResourcePoolsListResponse {
   /** Link for next list of ResourcePoolsList */
@@ -1333,11 +903,6 @@ export interface ResourcePoolsListResponse {
   /** Results of the Resource pools list */
   value?: ResourcePoolsListResponseValueList;
 }
-const ResourcePoolsListResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ResourcePoolsListResponse>;
-
 export interface ListSkusAvailabilityRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1346,11 +911,6 @@ export interface ListSkusAvailabilityRequest {
   /** sku id, if no sku is passed availability for all skus will be returned */
   skuId?: string;
 }
-const ListSkusAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListSkusAvailabilityRequest>;
-
 /** SKU availability model */
 export interface SkuAvailability {
   /** CloudSimple Availability Zone id */
@@ -1370,15 +930,8 @@ export interface SkuAvailability {
   /** sku name */
   skuName?: string;
 }
-const SkuAvailability = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<SkuAvailability>;
-
 /** Results of the DedicatedPlacementGroupSkuAvailability list */
 export type SkuAvailabilityListResponseValueList = Array<SkuAvailability>;
-const SkuAvailabilityListResponseValueList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<SkuAvailabilityListResponseValueList>;
-
 /** List of SKU availabilities */
 export interface SkuAvailabilityListResponse {
   /** Link for next list of DedicatedCloudNode */
@@ -1386,11 +939,6 @@ export interface SkuAvailabilityListResponse {
   /** Results of the DedicatedPlacementGroupSkuAvailability list */
   value?: SkuAvailabilityListResponseValueList;
 }
-const SkuAvailabilityListResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<SkuAvailabilityListResponse>;
-
 export interface ListUsagesRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1399,8 +947,6 @@ export interface ListUsagesRequest {
   /** The filter to apply on the list operation. only name.value is allowed here as a filter e.g. $filter=name.value eq 'xxxx' */
   _filter?: string;
 }
-const ListUsagesRequest = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<ListUsagesRequest>;
-
 /** User name model */
 export interface UsageName {
   /** e.g. "Virtual Machines" */
@@ -1408,8 +954,6 @@ export interface UsageName {
   /** resource type or resource type sku name, e.g. virtualMachines */
   value?: string;
 }
-const UsageName = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<UsageName>;
-
 /** The usages' unit */
 export type UsageUnit =
   | "Count"
@@ -1418,8 +962,6 @@ export type UsageUnit =
   | "Percent"
   | "CountPerSecond"
   | "BytesPerSecond";
-const UsageUnit = S.String;
-
 /** Usage model */
 export interface Usage {
   /** The current usage value */
@@ -1431,15 +973,8 @@ export interface Usage {
   /** The usages' unit */
   unit?: UsageUnit;
 }
-const Usage = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<Usage>;
-
 /** The list of usages */
 export type UsageListResponseValueList = Array<Usage>;
-const UsageListResponseValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<UsageListResponseValueList>;
-
 /** List of usages */
 export interface UsageListResponse {
   /** Link for next list of DedicatedCloudNode */
@@ -1447,8 +982,6 @@ export interface UsageListResponse {
   /** The list of usages */
   value?: UsageListResponseValueList;
 }
-const UsageListResponse = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<UsageListResponse>;
-
 export interface ListVirtualMachineByResourceGroupRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1461,18 +994,8 @@ export interface ListVirtualMachineByResourceGroupRequest {
   /** to be used by nextLink implementation */
   _skipToken?: string;
 }
-const ListVirtualMachineByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ListVirtualMachineByResourceGroupRequest>;
-
 /** Results of the VirtualMachine list */
 export type VirtualMachineListResponseValueList = Array<VirtualMachine>;
-const VirtualMachineListResponseValueList = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<VirtualMachineListResponseValueList>;
-
 /** List of virtual machines */
 export interface VirtualMachineListResponse {
   /** Link for next list of VirtualMachines */
@@ -1480,11 +1003,6 @@ export interface VirtualMachineListResponse {
   /** Results of the VirtualMachine list */
   value?: VirtualMachineListResponseValueList;
 }
-const VirtualMachineListResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<VirtualMachineListResponse>;
-
 export interface ListVirtualMachineBySubscriptionRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1495,11 +1013,6 @@ export interface ListVirtualMachineBySubscriptionRequest {
   /** to be used by nextLink implementation */
   _skipToken?: string;
 }
-const ListVirtualMachineBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ListVirtualMachineBySubscriptionRequest>;
-
 export interface ListVirtualMachineTemplatesRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1510,16 +1023,8 @@ export interface ListVirtualMachineTemplatesRequest {
   /** Resource pool used to derive vSphere cluster which contains VM templates */
   resourcePoolName: string;
 }
-const ListVirtualMachineTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ListVirtualMachineTemplatesRequest>;
-
 /** Results of the VM template list */
 export type VirtualMachineTemplateListResponseValueList = Array<VirtualMachineTemplate>;
-const VirtualMachineTemplateListResponseValueList =
-  PrivateCloudPropertiesVirtualMachineTemplatesList as any as S.Schema<VirtualMachineTemplateListResponseValueList>;
-
 /** List of virtual machine templates */
 export interface VirtualMachineTemplateListResponse {
   /** Link for next list of VirtualMachineTemplate */
@@ -1527,11 +1032,6 @@ export interface VirtualMachineTemplateListResponse {
   /** Results of the VM template list */
   value?: VirtualMachineTemplateListResponseValueList;
 }
-const VirtualMachineTemplateListResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<VirtualMachineTemplateListResponse>;
-
 export interface ListVirtualNetworksRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1542,16 +1042,8 @@ export interface ListVirtualNetworksRequest {
   /** Resource pool used to derive vSphere cluster which contains virtual networks */
   resourcePoolName: string;
 }
-const ListVirtualNetworksRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListVirtualNetworksRequest>;
-
 /** Results of the VirtualNetwork list */
 export type VirtualNetworkListResponseValueList = Array<VirtualNetwork>;
-const VirtualNetworkListResponseValueList =
-  PrivateCloudPropertiesVirtualNetworksList as any as S.Schema<VirtualNetworkListResponseValueList>;
-
 /** List of virtual networks */
 export interface VirtualNetworkListResponse {
   /** Link for next list of VirtualNetwork */
@@ -1559,11 +1051,6 @@ export interface VirtualNetworkListResponse {
   /** Results of the VirtualNetwork list */
   value?: VirtualNetworkListResponseValueList;
 }
-const VirtualNetworkListResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<VirtualNetworkListResponse>;
-
 export interface StartVirtualMachineRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1572,18 +1059,8 @@ export interface StartVirtualMachineRequest {
   /** virtual machine name */
   virtualMachineName: string;
 }
-const StartVirtualMachineRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<StartVirtualMachineRequest>;
-
 export interface StartVirtualMachineResponse {}
-const StartVirtualMachineResponse =
-  DeleteVirtualMachineResponse as any as S.Schema<StartVirtualMachineResponse>;
-
 export type StopVirtualMachineRequestMode = "reboot" | "suspend" | "shutdown" | "poweroff";
-const StopVirtualMachineRequestMode = S.String;
-
 export interface StopVirtualMachineRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1594,15 +1071,7 @@ export interface StopVirtualMachineRequest {
   /** query stop mode parameter (reboot, shutdown, etc...) */
   mode?: StopVirtualMachineRequestMode | (string & {});
 }
-const StopVirtualMachineRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<StopVirtualMachineRequest>;
-
 export interface StopVirtualMachineResponse {}
-const StopVirtualMachineResponse =
-  DeleteVirtualMachineResponse as any as S.Schema<StopVirtualMachineResponse>;
-
 export interface UpdateDedicatedCloudNodeRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1613,11 +1082,6 @@ export interface UpdateDedicatedCloudNodeRequest {
   /** The tags key:value pairs */
   tags?: Tags;
 }
-const UpdateDedicatedCloudNodeRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<UpdateDedicatedCloudNodeRequest>;
-
 export interface UpdateDedicatedCloudServiceRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1628,11 +1092,6 @@ export interface UpdateDedicatedCloudServiceRequest {
   /** The tags key:value pairs */
   tags?: Tags;
 }
-const UpdateDedicatedCloudServiceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<UpdateDedicatedCloudServiceRequest>;
-
 export interface UpdateVirtualMachineRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1643,18 +1102,11 @@ export interface UpdateVirtualMachineRequest {
   /** The tags key:value pairs */
   tags?: Tags;
 }
-const UpdateVirtualMachineRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<UpdateVirtualMachineRequest>;
-
 /** Disk's independence mode type */
 export type VirtualDiskInputIndependenceMode =
   | "persistent"
   | "independent_persistent"
   | "independent_nonpersistent";
-const VirtualDiskInputIndependenceMode = S.String;
-
 /** Virtual disk model */
 export interface VirtualDiskInput {
   /** Disk's Controller id */
@@ -1666,25 +1118,12 @@ export interface VirtualDiskInput {
   /** Disk's id */
   virtualDiskId?: string;
 }
-const VirtualDiskInput = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<VirtualDiskInput>;
-
 /** The list of Virtual Disks */
 export type VirtualMachinePropertiesInputDisksList = Array<VirtualDiskInput>;
-const VirtualMachinePropertiesInputDisksList = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<VirtualMachinePropertiesInputDisksList>;
-
 /** NIC ip address */
 export type VirtualNicInputIpAddressesList = Array<string>;
-const VirtualNicInputIpAddressesList =
-  CustomizationIPSettingsGatewayList as any as S.Schema<VirtualNicInputIpAddressesList>;
-
 /** Properties of virtual network */
 export interface VirtualNetworkPropertiesInput {}
-const VirtualNetworkPropertiesInput =
-  DeleteVirtualMachineResponse as any as S.Schema<VirtualNetworkPropertiesInput>;
-
 /** Virtual network model */
 export interface VirtualNetworkInput {
   /** virtual network id (privateCloudId:vsphereId) */
@@ -1692,8 +1131,6 @@ export interface VirtualNetworkInput {
   /** Virtual Network properties */
   properties?: VirtualNetworkPropertiesInput;
 }
-const VirtualNetworkInput = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<VirtualNetworkInput>;
-
 /** NIC type */
 export type VirtualNicInputNicType =
   | "E1000"
@@ -1702,8 +1139,6 @@ export type VirtualNicInputNicType =
   | "VMXNET"
   | "VMXNET2"
   | "VMXNET3";
-const VirtualNicInputNicType = S.String;
-
 /** Virtual NIC model */
 export interface VirtualNicInput {
   /** guest OS customization for nic */
@@ -1721,15 +1156,8 @@ export interface VirtualNicInput {
   /** NIC id */
   virtualNicId?: string;
 }
-const VirtualNicInput = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<VirtualNicInput>;
-
 /** The list of Virtual NICs */
 export type VirtualMachinePropertiesInputNicsList = Array<VirtualNicInput>;
-const VirtualMachinePropertiesInputNicsList = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<VirtualMachinePropertiesInputNicsList>;
-
 /** Properties of resource pool */
 export type ResourcePoolPropertiesInput = VirtualNetworkPropertiesInput;
 /** Resource pool model */
@@ -1739,13 +1167,8 @@ export interface ResourcePoolInput {
   /** Resource pool properties */
   properties?: VirtualNetworkPropertiesInput;
 }
-const ResourcePoolInput = VirtualNetworkInput as any as S.Schema<ResourcePoolInput>;
-
 /** The list of Virtual VSphere Networks */
 export type VirtualMachinePropertiesInputVSphereNetworksList = Array<string>;
-const VirtualMachinePropertiesInputVSphereNetworksList =
-  CustomizationIPSettingsGatewayList as any as S.Schema<VirtualMachinePropertiesInputVSphereNetworksList>;
-
 /** Properties of virtual machine */
 export interface VirtualMachinePropertiesInput {
   /** The amount of memory */
@@ -1773,11 +1196,6 @@ export interface VirtualMachinePropertiesInput {
   /** The list of Virtual VSphere Networks */
   vSphereNetworks?: VirtualMachinePropertiesInputVSphereNetworksList;
 }
-const VirtualMachinePropertiesInput = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<VirtualMachinePropertiesInput>;
-
 export interface VirtualMachinesCreateOrUpdateRequest {
   /** The subscription ID. */
   subscriptionId: string;
@@ -1792,11 +1210,6 @@ export interface VirtualMachinesCreateOrUpdateRequest {
   /** The list of tags */
   tags?: Tags;
 }
-const VirtualMachinesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<VirtualMachinesCreateOrUpdateRequest>;
-
 export type DedicatedCloudNodesCreateOrUpdateError = AzureOpError;
 /** Implements dedicated cloud node PUT method Returns dedicated cloud node by its name */
 export const DedicatedCloudNodesCreateOrUpdate: API.OperationMethod<
@@ -1805,8 +1218,8 @@ export const DedicatedCloudNodesCreateOrUpdate: API.OperationMethod<
   DedicatedCloudNodesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DedicatedCloudNodesCreateOrUpdateRequest,
-  output: DedicatedCloudNode,
+  input: __S(4) as any as S.Schema<DedicatedCloudNodesCreateOrUpdateRequest>,
+  output: __S(6) as any as S.Schema<DedicatedCloudNode>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1820,8 +1233,8 @@ export const DedicatedCloudServicesCreateOrUpdate: API.OperationMethod<
   DedicatedCloudServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DedicatedCloudServicesCreateOrUpdateRequest,
-  output: DedicatedCloudService,
+  input: __S(8) as any as S.Schema<DedicatedCloudServicesCreateOrUpdateRequest>,
+  output: __S(10) as any as S.Schema<DedicatedCloudService>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1835,8 +1248,8 @@ export const DeleteDedicatedCloudNode: API.OperationMethod<
   DeleteDedicatedCloudNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDedicatedCloudNodeRequest,
-  output: DeleteDedicatedCloudNodeResponse,
+  input: __S(11) as any as S.Schema<DeleteDedicatedCloudNodeRequest>,
+  output: __S(12) as any as S.Schema<DeleteDedicatedCloudNodeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1850,8 +1263,8 @@ export const DeleteDedicatedCloudService: API.OperationMethod<
   DeleteDedicatedCloudServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDedicatedCloudServiceRequest,
-  output: DeleteDedicatedCloudServiceResponse,
+  input: __S(13) as any as S.Schema<DeleteDedicatedCloudServiceRequest>,
+  output: __S(12) as any as S.Schema<DeleteDedicatedCloudServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1865,8 +1278,8 @@ export const DeleteVirtualMachine: API.OperationMethod<
   DeleteVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVirtualMachineRequest,
-  output: DeleteVirtualMachineResponse,
+  input: __S(14) as any as S.Schema<DeleteVirtualMachineRequest>,
+  output: __S(15) as any as S.Schema<DeleteVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1880,8 +1293,8 @@ export const GetCustomizationPolicy: API.OperationMethod<
   GetCustomizationPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomizationPolicyRequest,
-  output: CustomizationPolicy,
+  input: __S(16) as any as S.Schema<GetCustomizationPolicyRequest>,
+  output: __S(27) as any as S.Schema<CustomizationPolicy>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1895,8 +1308,8 @@ export const GetDedicatedCloudNode: API.OperationMethod<
   GetDedicatedCloudNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedCloudNodeRequest,
-  output: DedicatedCloudNode,
+  input: __S(28) as any as S.Schema<GetDedicatedCloudNodeRequest>,
+  output: __S(6) as any as S.Schema<DedicatedCloudNode>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1910,8 +1323,8 @@ export const GetDedicatedCloudService: API.OperationMethod<
   GetDedicatedCloudServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDedicatedCloudServiceRequest,
-  output: DedicatedCloudService,
+  input: __S(29) as any as S.Schema<GetDedicatedCloudServiceRequest>,
+  output: __S(10) as any as S.Schema<DedicatedCloudService>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1925,8 +1338,8 @@ export const GetOperation: API.OperationMethod<
   GetOperationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationRequest,
-  output: OperationResource,
+  input: __S(30) as any as S.Schema<GetOperationRequest>,
+  output: __S(32) as any as S.Schema<OperationResource>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1940,8 +1353,8 @@ export const GetPrivateCloud: API.OperationMethod<
   GetPrivateCloudError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateCloudRequest,
-  output: PrivateCloud,
+  input: __S(33) as any as S.Schema<GetPrivateCloudRequest>,
+  output: __S(51) as any as S.Schema<PrivateCloud>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1955,8 +1368,8 @@ export const GetResourcePool: API.OperationMethod<
   GetResourcePoolError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourcePoolRequest,
-  output: ResourcePool,
+  input: __S(52) as any as S.Schema<GetResourcePoolRequest>,
+  output: __S(35) as any as S.Schema<ResourcePool>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1970,8 +1383,8 @@ export const GetVirtualMachine: API.OperationMethod<
   GetVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVirtualMachineRequest,
-  output: VirtualMachine,
+  input: __S(53) as any as S.Schema<GetVirtualMachineRequest>,
+  output: __S(56) as any as S.Schema<VirtualMachine>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1985,8 +1398,8 @@ export const GetVirtualMachineTemplate: API.OperationMethod<
   GetVirtualMachineTemplateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVirtualMachineTemplateRequest,
-  output: VirtualMachineTemplate,
+  input: __S(57) as any as S.Schema<GetVirtualMachineTemplateRequest>,
+  output: __S(47) as any as S.Schema<VirtualMachineTemplate>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2000,8 +1413,8 @@ export const GetVirtualNetwork: API.OperationMethod<
   GetVirtualNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVirtualNetworkRequest,
-  output: VirtualNetwork,
+  input: __S(58) as any as S.Schema<GetVirtualNetworkRequest>,
+  output: __S(43) as any as S.Schema<VirtualNetwork>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2015,8 +1428,8 @@ export const ListCustomizationPolicies: API.OperationMethod<
   ListCustomizationPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCustomizationPoliciesRequest,
-  output: CustomizationPoliciesListResponse,
+  input: __S(59) as any as S.Schema<ListCustomizationPoliciesRequest>,
+  output: __S(61) as any as S.Schema<CustomizationPoliciesListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2030,8 +1443,8 @@ export const ListDedicatedCloudNodeByResourceGroup: API.OperationMethod<
   ListDedicatedCloudNodeByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedCloudNodeByResourceGroupRequest,
-  output: DedicatedCloudNodeListResponse,
+  input: __S(62) as any as S.Schema<ListDedicatedCloudNodeByResourceGroupRequest>,
+  output: __S(64) as any as S.Schema<DedicatedCloudNodeListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2045,8 +1458,8 @@ export const ListDedicatedCloudNodeBySubscription: API.OperationMethod<
   ListDedicatedCloudNodeBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedCloudNodeBySubscriptionRequest,
-  output: DedicatedCloudNodeListResponse,
+  input: __S(65) as any as S.Schema<ListDedicatedCloudNodeBySubscriptionRequest>,
+  output: __S(64) as any as S.Schema<DedicatedCloudNodeListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2060,8 +1473,8 @@ export const ListDedicatedCloudServiceByResourceGroup: API.OperationMethod<
   ListDedicatedCloudServiceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedCloudServiceByResourceGroupRequest,
-  output: DedicatedCloudServiceListResponse,
+  input: __S(66) as any as S.Schema<ListDedicatedCloudServiceByResourceGroupRequest>,
+  output: __S(68) as any as S.Schema<DedicatedCloudServiceListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2075,8 +1488,8 @@ export const ListDedicatedCloudServiceBySubscription: API.OperationMethod<
   ListDedicatedCloudServiceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDedicatedCloudServiceBySubscriptionRequest,
-  output: DedicatedCloudServiceListResponse,
+  input: __S(69) as any as S.Schema<ListDedicatedCloudServiceBySubscriptionRequest>,
+  output: __S(68) as any as S.Schema<DedicatedCloudServiceListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2090,8 +1503,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: AvailableOperationsListResponse,
+  input: __S(70) as any as S.Schema<ListOperationsRequest>,
+  output: __S(78) as any as S.Schema<AvailableOperationsListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2105,8 +1518,8 @@ export const ListPrivateClouds: API.OperationMethod<
   ListPrivateCloudsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateCloudsRequest,
-  output: PrivateCloudList,
+  input: __S(79) as any as S.Schema<ListPrivateCloudsRequest>,
+  output: __S(81) as any as S.Schema<PrivateCloudList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2120,8 +1533,8 @@ export const ListResourcePools: API.OperationMethod<
   ListResourcePoolsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListResourcePoolsRequest,
-  output: ResourcePoolsListResponse,
+  input: __S(82) as any as S.Schema<ListResourcePoolsRequest>,
+  output: __S(83) as any as S.Schema<ResourcePoolsListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2135,8 +1548,8 @@ export const ListSkusAvailability: API.OperationMethod<
   ListSkusAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSkusAvailabilityRequest,
-  output: SkuAvailabilityListResponse,
+  input: __S(84) as any as S.Schema<ListSkusAvailabilityRequest>,
+  output: __S(87) as any as S.Schema<SkuAvailabilityListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2150,8 +1563,8 @@ export const ListUsages: API.OperationMethod<
   ListUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsagesRequest,
-  output: UsageListResponse,
+  input: __S(88) as any as S.Schema<ListUsagesRequest>,
+  output: __S(92) as any as S.Schema<UsageListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2165,8 +1578,8 @@ export const ListVirtualMachineByResourceGroup: API.OperationMethod<
   ListVirtualMachineByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVirtualMachineByResourceGroupRequest,
-  output: VirtualMachineListResponse,
+  input: __S(93) as any as S.Schema<ListVirtualMachineByResourceGroupRequest>,
+  output: __S(95) as any as S.Schema<VirtualMachineListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2180,8 +1593,8 @@ export const ListVirtualMachineBySubscription: API.OperationMethod<
   ListVirtualMachineBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVirtualMachineBySubscriptionRequest,
-  output: VirtualMachineListResponse,
+  input: __S(96) as any as S.Schema<ListVirtualMachineBySubscriptionRequest>,
+  output: __S(95) as any as S.Schema<VirtualMachineListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2195,8 +1608,8 @@ export const ListVirtualMachineTemplates: API.OperationMethod<
   ListVirtualMachineTemplatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVirtualMachineTemplatesRequest,
-  output: VirtualMachineTemplateListResponse,
+  input: __S(97) as any as S.Schema<ListVirtualMachineTemplatesRequest>,
+  output: __S(98) as any as S.Schema<VirtualMachineTemplateListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2210,8 +1623,8 @@ export const ListVirtualNetworks: API.OperationMethod<
   ListVirtualNetworksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVirtualNetworksRequest,
-  output: VirtualNetworkListResponse,
+  input: __S(99) as any as S.Schema<ListVirtualNetworksRequest>,
+  output: __S(100) as any as S.Schema<VirtualNetworkListResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2225,8 +1638,8 @@ export const StartVirtualMachine: API.OperationMethod<
   StartVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartVirtualMachineRequest,
-  output: StartVirtualMachineResponse,
+  input: __S(101) as any as S.Schema<StartVirtualMachineRequest>,
+  output: __S(15) as any as S.Schema<StartVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2240,8 +1653,8 @@ export const StopVirtualMachine: API.OperationMethod<
   StopVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopVirtualMachineRequest,
-  output: StopVirtualMachineResponse,
+  input: __S(102) as any as S.Schema<StopVirtualMachineRequest>,
+  output: __S(15) as any as S.Schema<StopVirtualMachineResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2255,8 +1668,8 @@ export const UpdateDedicatedCloudNode: API.OperationMethod<
   UpdateDedicatedCloudNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDedicatedCloudNodeRequest,
-  output: DedicatedCloudNode,
+  input: __S(103) as any as S.Schema<UpdateDedicatedCloudNodeRequest>,
+  output: __S(6) as any as S.Schema<DedicatedCloudNode>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2270,8 +1683,8 @@ export const UpdateDedicatedCloudService: API.OperationMethod<
   UpdateDedicatedCloudServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDedicatedCloudServiceRequest,
-  output: DedicatedCloudService,
+  input: __S(104) as any as S.Schema<UpdateDedicatedCloudServiceRequest>,
+  output: __S(10) as any as S.Schema<DedicatedCloudService>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2285,8 +1698,8 @@ export const UpdateVirtualMachine: API.OperationMethod<
   UpdateVirtualMachineError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVirtualMachineRequest,
-  output: VirtualMachine,
+  input: __S(105) as any as S.Schema<UpdateVirtualMachineRequest>,
+  output: __S(56) as any as S.Schema<VirtualMachine>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2300,8 +1713,8 @@ export const VirtualMachinesCreateOrUpdate: API.OperationMethod<
   VirtualMachinesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VirtualMachinesCreateOrUpdateRequest,
-  output: VirtualMachine,
+  input: __S(112) as any as S.Schema<VirtualMachinesCreateOrUpdateRequest>,
+  output: __S(56) as any as S.Schema<VirtualMachine>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -2324,7 +1737,7 @@ function __c0(j: number): any {
           nodesCount: S.Number,
           placementGroupId: S.String,
           purchaseId: S.String,
-          skuDescription: S.optional(SkuDescription),
+          skuDescription: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "DedicatedCloudNodePropertiesInput",
@@ -2348,9 +1761,9 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dedicatedCloudNodeName: S.String.pipe(T.Label()),
           location: S.String,
-          properties: S.optional(DedicatedCloudNodePropertiesInput),
-          sku: S.optional(Sku),
-          tags: S.optional(Tags),
+          properties: S.optional(__S(1)),
+          sku: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2376,8 +1789,8 @@ function __c0(j: number): any {
           privateCloudName: S.optional(S.String),
           provisioningState: S.optional(S.String),
           purchaseId: S.String,
-          skuDescription: S.optional(SkuDescription),
-          status: S.optional(DedicatedCloudNodePropertiesStatus),
+          skuDescription: S.optional(__S(0)),
+          status: S.optional(S.String),
           vmwareClusterName: S.optional(S.String),
         }),
       ).annotate({
@@ -2389,9 +1802,9 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           location: S.String,
           name: S.optional(S.String),
-          properties: S.optional(DedicatedCloudNodeProperties),
-          sku: S.optional(Sku),
-          tags: S.optional(Tags),
+          properties: S.optional(__S(5)),
+          sku: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedCloudNode" });
@@ -2414,8 +1827,8 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           dedicatedCloudServiceName: S.String.pipe(T.Label()),
           location: S.String,
-          properties: S.optional(DedicatedCloudServicePropertiesInput),
-          tags: S.optional(Tags),
+          properties: S.optional(__S(7)),
+          tags: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2431,7 +1844,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           gatewaySubnet: S.String,
-          isAccountOnboarded: S.optional(DedicatedCloudServicePropertiesIsAccountOnboarded),
+          isAccountOnboarded: S.optional(S.String),
           nodes: S.optional(S.Number),
           serviceURL: S.optional(S.String),
         }),
@@ -2444,8 +1857,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           location: S.String,
           name: S.optional(S.String),
-          properties: S.optional(DedicatedCloudServiceProperties),
-          tags: S.optional(Tags),
+          properties: S.optional(__S(9)),
+          tags: S.optional(__S(3)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "DedicatedCloudService" });
@@ -2534,7 +1947,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(CustomizationHostNameType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomizationHostName" });
     case 2:
@@ -2549,9 +1962,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           data: S.optional(S.String),
-          hostName: S.optional(CustomizationHostName),
-          type: S.optional(CustomizationIdentityType),
-          userData: S.optional(CustomizationIdentityUserData),
+          hostName: S.optional(__S(17)),
+          type: S.optional(S.String),
+          userData: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "CustomizationIdentity" });
     case 4:
@@ -2561,21 +1974,21 @@ function __c2(j: number): any {
         S.Struct({
           argument: S.optional(S.String),
           ipAddress: S.optional(S.String),
-          type: S.optional(CustomizationIPAddressType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomizationIPAddress" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          gateway: S.optional(CustomizationIPSettingsGatewayList),
-          ip: S.optional(CustomizationIPAddress),
+          gateway: S.optional(__S(20)),
+          ip: S.optional(__S(21)),
           subnetMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomizationIPSettings" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          adapter: S.optional(CustomizationIPSettings),
+          adapter: S.optional(__S(22)),
           macAddress: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomizationNicSetting" });
@@ -2584,12 +1997,12 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CustomizationNicSetting);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          identity: S.optional(CustomizationIdentity),
-          nicSettings: S.optional(CustomizationSpecificationNicSettingsList),
+          identity: S.optional(__S(19)),
+          nicSettings: S.optional(__S(24)),
         }),
       ).annotate({
         identifier: "CustomizationSpecification",
@@ -2599,8 +2012,8 @@ function __c3(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           privateCloudId: S.optional(S.String),
-          specification: S.optional(CustomizationSpecification),
-          type: S.optional(CustomizationPolicyPropertiesType),
+          specification: S.optional(__S(25)),
+          type: S.optional(S.String),
           version: S.optional(S.String),
         }),
       ).annotate({
@@ -2612,7 +2025,7 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           location: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(CustomizationPolicyProperties),
+          properties: S.optional(__S(26)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomizationPolicy" });
@@ -2680,7 +2093,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
-          error: S.optional(OperationError),
+          error: S.optional(__S(31)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           startTime: S.optional(S.String),
@@ -2715,12 +2128,12 @@ function __c4(j: number): any {
           location: S.optional(S.String),
           name: S.optional(S.String),
           privateCloudId: S.optional(S.String),
-          properties: S.optional(ResourcePoolProperties),
+          properties: S.optional(__S(34)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourcePool" });
     case 4:
-      return S.Array(ResourcePool);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -2731,12 +2144,12 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "VirtualDiskController" });
     case 6:
-      return S.Array(VirtualDiskController);
+      return S.Array(__S(37));
     case 7:
       return S.suspend(() =>
         S.Struct({
           controllerId: S.String,
-          independenceMode: VirtualDiskIndependenceMode,
+          independenceMode: S.String,
           totalSize: S.Number,
           virtualDiskId: S.optional(S.String),
           virtualDiskName: S.optional(S.String),
@@ -2747,13 +2160,13 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(VirtualDisk);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          allocation: S.optional(GuestOSNICCustomizationAllocation),
-          dnsServers: S.optional(GuestOSNICCustomizationDnsServersList),
-          gateway: S.optional(GuestOSNICCustomizationGatewayList),
+          allocation: S.optional(S.String),
+          dnsServers: S.optional(__S(20)),
+          gateway: S.optional(__S(20)),
           ipAddress: S.optional(S.String),
           mask: S.optional(S.String),
           primaryWinsServer: S.optional(S.String),
@@ -2773,41 +2186,41 @@ function __c5(j: number): any {
           id: S.String,
           location: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(VirtualNetworkProperties),
+          properties: S.optional(__S(42)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNetwork" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          customization: S.optional(GuestOSNICCustomization),
-          ipAddresses: S.optional(VirtualNicIpAddressesList),
+          customization: S.optional(__S(41)),
+          ipAddresses: S.optional(__S(20)),
           macAddress: S.optional(S.String),
-          network: VirtualNetwork,
-          nicType: VirtualNicNicType,
+          network: __S(43),
+          nicType: S.String,
           powerOnBoot: S.optional(S.Boolean),
           virtualNicId: S.optional(S.String),
           virtualNicName: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNic" });
     case 5:
-      return S.Array(VirtualNic);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
           amountOfRam: S.optional(S.Number),
-          controllers: S.optional(VirtualMachineTemplatePropertiesControllersList),
+          controllers: S.optional(__S(38)),
           description: S.optional(S.String),
-          disks: S.optional(VirtualMachineTemplatePropertiesDisksList),
+          disks: S.optional(__S(40)),
           exposeToGuestVM: S.optional(S.Boolean),
           guestOS: S.optional(S.String),
           guestOSType: S.optional(S.String),
-          nics: S.optional(VirtualMachineTemplatePropertiesNicsList),
+          nics: S.optional(__S(45)),
           numberOfCores: S.optional(S.Number),
           path: S.optional(S.String),
           privateCloudId: S.String,
-          vSphereNetworks: S.optional(VirtualMachineTemplatePropertiesVSphereNetworksList),
-          vSphereTags: S.optional(VirtualMachineTemplatePropertiesVSphereTagsList),
+          vSphereNetworks: S.optional(__S(20)),
+          vSphereTags: S.optional(__S(20)),
           vmwaretools: S.optional(S.String),
         }),
       ).annotate({
@@ -2819,7 +2232,7 @@ function __c5(j: number): any {
           id: S.optional(S.String),
           location: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(VirtualMachineTemplateProperties),
+          properties: S.optional(__S(46)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachineTemplate" });
@@ -2828,9 +2241,9 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(VirtualMachineTemplate);
+      return S.Array(__S(47));
     case 1:
-      return S.Array(VirtualNetwork);
+      return S.Array(__S(43));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2839,13 +2252,13 @@ function __c6(j: number): any {
           clustersNumber: S.optional(S.Number),
           createdBy: S.optional(S.String),
           createdOn: S.optional(S.String),
-          dnsServers: S.optional(PrivateCloudPropertiesDnsServersList),
+          dnsServers: S.optional(__S(20)),
           expires: S.optional(S.String),
           nsxType: S.optional(S.String),
           placementGroupId: S.optional(S.String),
           placementGroupName: S.optional(S.String),
           privateCloudId: S.optional(S.String),
-          resourcePools: S.optional(PrivateCloudPropertiesResourcePoolsList),
+          resourcePools: S.optional(__S(36)),
           state: S.optional(S.String),
           totalCpuCores: S.optional(S.Number),
           totalNodes: S.optional(S.Number),
@@ -2855,8 +2268,8 @@ function __c6(j: number): any {
           vSphereVersion: S.optional(S.String),
           vcenterFqdn: S.optional(S.String),
           vcenterRefid: S.optional(S.String),
-          virtualMachineTemplates: S.optional(PrivateCloudPropertiesVirtualMachineTemplatesList),
-          virtualNetworks: S.optional(PrivateCloudPropertiesVirtualNetworksList),
+          virtualMachineTemplates: S.optional(__S(48)),
+          virtualNetworks: S.optional(__S(49)),
           vrOpsEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PrivateCloudProperties" });
@@ -2866,8 +2279,8 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           location: S.optional(S.String),
           name: S.optional(S.String),
-          properties: S.optional(PrivateCloudProperties),
-          type: S.optional(PrivateCloudType),
+          properties: S.optional(__S(50)),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "PrivateCloud" });
     case 4:
@@ -2904,7 +2317,7 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dnsServers: S.optional(GuestOSCustomizationDnsServersList),
+          dnsServers: S.optional(__S(20)),
           hostName: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           policyId: S.optional(S.String),
@@ -2915,25 +2328,25 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           amountOfRam: S.Number,
-          controllers: S.optional(VirtualMachinePropertiesControllersList),
-          customization: S.optional(GuestOSCustomization),
-          disks: S.optional(VirtualMachinePropertiesDisksList),
+          controllers: S.optional(__S(38)),
+          customization: S.optional(__S(54)),
+          disks: S.optional(__S(40)),
           dnsname: S.optional(S.String),
           exposeToGuestVM: S.optional(S.Boolean),
           folder: S.optional(S.String),
           guestOS: S.optional(S.String),
-          guestOSType: S.optional(VirtualMachinePropertiesGuestOSType),
-          nics: S.optional(VirtualMachinePropertiesNicsList),
+          guestOSType: S.optional(S.String),
+          nics: S.optional(__S(45)),
           numberOfCores: S.Number,
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           privateCloudId: S.String,
           provisioningState: S.optional(S.String),
           publicIP: S.optional(S.String),
-          resourcePool: S.optional(ResourcePool),
-          status: S.optional(VirtualMachinePropertiesStatus),
+          resourcePool: S.optional(__S(35)),
+          status: S.optional(S.String),
           templateId: S.optional(S.String),
           username: S.optional(S.String),
-          vSphereNetworks: S.optional(VirtualMachinePropertiesVSphereNetworksList),
+          vSphereNetworks: S.optional(__S(20)),
           vmId: S.optional(S.String),
           vmwaretools: S.optional(S.String),
         }),
@@ -2948,8 +2361,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           location: S.String,
           name: S.optional(S.String),
-          properties: S.optional(VirtualMachineProperties),
-          tags: S.optional(Tags),
+          properties: S.optional(__S(55)),
+          tags: S.optional(__S(3)),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualMachine" });
@@ -3006,12 +2419,12 @@ function __c7(j: number): any {
         identifier: "ListCustomizationPoliciesRequest",
       });
     case 4:
-      return S.Array(CustomizationPolicy);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(CustomizationPoliciesListResponseValueList),
+          value: S.optional(__S(60)),
         }),
       ).annotate({
         identifier: "CustomizationPoliciesListResponse",
@@ -3036,7 +2449,7 @@ function __c7(j: number): any {
         identifier: "ListDedicatedCloudNodeByResourceGroupRequest",
       });
     case 7:
-      return S.Array(DedicatedCloudNode);
+      return S.Array(__S(6));
   }
 }
 function __c8(j: number): any {
@@ -3045,7 +2458,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(DedicatedCloudNodeListResponseValueList),
+          value: S.optional(__S(63)),
         }),
       ).annotate({
         identifier: "DedicatedCloudNodeListResponse",
@@ -3088,12 +2501,12 @@ function __c8(j: number): any {
         identifier: "ListDedicatedCloudServiceByResourceGroupRequest",
       });
     case 3:
-      return S.Array(DedicatedCloudService);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(DedicatedCloudServiceListResponseValueList),
+          value: S.optional(__S(67)),
         }),
       ).annotate({
         identifier: "DedicatedCloudServiceListResponse",
@@ -3145,8 +2558,7 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          aggregationType:
-            AvailableOperationDisplayPropertyServiceSpecificationMetricsItemAggregationType,
+          aggregationType: S.String,
           displayDescription: S.String,
           displayName: S.String,
           name: S.String,
@@ -3156,13 +2568,11 @@ function __c9(j: number): any {
         identifier: "AvailableOperationDisplayPropertyServiceSpecificationMetricsItem",
       });
     case 1:
-      return S.Array(AvailableOperationDisplayPropertyServiceSpecificationMetricsItem);
+      return S.Array(__S(72));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(
-            AvailableOperationDisplayPropertyServiceSpecificationMetricsListMetricSpecificationsList,
-          ),
+          metricSpecifications: S.optional(__S(73)),
         }),
       ).annotate({
         identifier: "AvailableOperationDisplayPropertyServiceSpecificationMetricsList",
@@ -3170,9 +2580,7 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(
-            AvailableOperationDisplayPropertyServiceSpecificationMetricsList,
-          ),
+          serviceSpecification: S.optional(__S(74)),
         }),
       ).annotate({
         identifier: "AvailableOperationDisplayPropertyServiceSpecification",
@@ -3180,20 +2588,20 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          display: S.optional(AvailableOperationDisplay),
+          display: S.optional(__S(71)),
           isDataAction: S.optional(S.Boolean),
           name: S.optional(S.String),
-          origin: S.optional(AvailableOperationOrigin),
-          properties: S.optional(AvailableOperationDisplayPropertyServiceSpecification),
+          origin: S.optional(S.String),
+          properties: S.optional(__S(75)),
         }),
       ).annotate({ identifier: "AvailableOperation" });
     case 5:
-      return S.Array(AvailableOperation);
+      return S.Array(__S(76));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(AvailableOperationsListResponseValueList),
+          value: S.optional(__S(77)),
         }),
       ).annotate({
         identifier: "AvailableOperationsListResponse",
@@ -3217,12 +2625,12 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PrivateCloud);
+      return S.Array(__S(51));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(PrivateCloudListValueList),
+          value: S.optional(__S(80)),
         }),
       ).annotate({ identifier: "PrivateCloudList" });
     case 2:
@@ -3244,7 +2652,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ResourcePoolsListResponseValueList),
+          value: S.optional(__S(36)),
         }),
       ).annotate({
         identifier: "ResourcePoolsListResponse",
@@ -3280,12 +2688,12 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "SkuAvailability" });
     case 6:
-      return S.Array(SkuAvailability);
+      return S.Array(__S(85));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(SkuAvailabilityListResponseValueList),
+          value: S.optional(__S(86)),
         }),
       ).annotate({
         identifier: "SkuAvailabilityListResponse",
@@ -3321,17 +2729,17 @@ function __c11(j: number): any {
         S.Struct({
           currentValue: S.Number,
           limit: S.Number,
-          name: S.optional(UsageName),
-          unit: S.optional(UsageUnit),
+          name: S.optional(__S(89)),
+          unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "Usage" });
     case 3:
-      return S.Array(Usage);
+      return S.Array(__S(90));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(UsageListResponseValueList),
+          value: S.optional(__S(91)),
         }),
       ).annotate({ identifier: "UsageListResponse" });
     case 5:
@@ -3354,12 +2762,12 @@ function __c11(j: number): any {
         identifier: "ListVirtualMachineByResourceGroupRequest",
       });
     case 6:
-      return S.Array(VirtualMachine);
+      return S.Array(__S(56));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(VirtualMachineListResponseValueList),
+          value: S.optional(__S(94)),
         }),
       ).annotate({
         identifier: "VirtualMachineListResponse",
@@ -3408,7 +2816,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(VirtualMachineTemplateListResponseValueList),
+          value: S.optional(__S(48)),
         }),
       ).annotate({
         identifier: "VirtualMachineTemplateListResponse",
@@ -3435,7 +2843,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(VirtualNetworkListResponseValueList),
+          value: S.optional(__S(49)),
         }),
       ).annotate({
         identifier: "VirtualNetworkListResponse",
@@ -3463,7 +2871,7 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualMachineName: S.String.pipe(T.Label()),
-          mode: S.optional(StopVirtualMachineRequestMode.pipe(T.Query())),
+          mode: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3481,7 +2889,7 @@ function __c12(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dedicatedCloudNodeName: S.String.pipe(T.Label()),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3503,7 +2911,7 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           dedicatedCloudServiceName: S.String.pipe(T.Label()),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3521,7 +2929,7 @@ function __c13(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           virtualMachineName: S.String.pipe(T.Label()),
-          tags: S.optional(Tags),
+          tags: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3537,49 +2945,49 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           controllerId: S.String,
-          independenceMode: VirtualDiskInputIndependenceMode,
+          independenceMode: S.String,
           totalSize: S.Number,
           virtualDiskId: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualDiskInput" });
     case 3:
-      return S.Array(VirtualDiskInput);
+      return S.Array(__S(106));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          properties: S.optional(VirtualNetworkPropertiesInput),
+          properties: S.optional(__S(15)),
         }),
       ).annotate({ identifier: "VirtualNetworkInput" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          customization: S.optional(GuestOSNICCustomization),
-          ipAddresses: S.optional(VirtualNicInputIpAddressesList),
+          customization: S.optional(__S(41)),
+          ipAddresses: S.optional(__S(20)),
           macAddress: S.optional(S.String),
-          network: VirtualNetworkInput,
-          nicType: VirtualNicInputNicType,
+          network: __S(108),
+          nicType: S.String,
           powerOnBoot: S.optional(S.Boolean),
           virtualNicId: S.optional(S.String),
         }),
       ).annotate({ identifier: "VirtualNicInput" });
     case 6:
-      return S.Array(VirtualNicInput);
+      return S.Array(__S(109));
     case 7:
       return S.suspend(() =>
         S.Struct({
           amountOfRam: S.Number,
-          customization: S.optional(GuestOSCustomization),
-          disks: S.optional(VirtualMachinePropertiesInputDisksList),
+          customization: S.optional(__S(54)),
+          disks: S.optional(__S(107)),
           exposeToGuestVM: S.optional(S.Boolean),
-          nics: S.optional(VirtualMachinePropertiesInputNicsList),
+          nics: S.optional(__S(110)),
           numberOfCores: S.Number,
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           privateCloudId: S.String,
-          resourcePool: S.optional(ResourcePoolInput),
+          resourcePool: S.optional(__S(108)),
           templateId: S.optional(S.String),
           username: S.optional(S.String),
-          vSphereNetworks: S.optional(VirtualMachinePropertiesInputVSphereNetworksList),
+          vSphereNetworks: S.optional(__S(20)),
         }),
       ).annotate({
         identifier: "VirtualMachinePropertiesInput",
@@ -3595,8 +3003,8 @@ function __c14(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           virtualMachineName: S.String.pipe(T.Label()),
           location: S.String,
-          properties: S.optional(VirtualMachinePropertiesInput),
-          tags: S.optional(Tags),
+          properties: S.optional(__S(111)),
+          tags: S.optional(__S(3)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -3608,5 +3016,44 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "VirtualMachinesCreateOrUpdateRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
   }
 }

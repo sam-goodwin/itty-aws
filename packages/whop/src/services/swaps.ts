@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -47,12 +49,8 @@ export class NotFound
 
 /** Source chain name or chain ID. Defaults to the source token's chain when omitted. */
 export type CreateSwapRequestFromChain = string | number;
-const CreateSwapRequestFromChain = S.Unknown as any as S.Schema<CreateSwapRequestFromChain>;
-
 /** Destination chain name or chain ID. Defaults to the destination token's chain when omitted. */
 export type CreateSwapRequestToChain = string | number;
-const CreateSwapRequestToChain = S.Unknown as any as S.Schema<CreateSwapRequestToChain>;
-
 export interface CreateSwapRequest {
   /** Business account that makes the swap, prefixed `biz_`. Provide this or `user_id`. */
   account_id?: string;
@@ -75,24 +73,13 @@ export interface CreateSwapRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateSwapRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateSwapRequest>;
-
 /** Fiat pairs only: the source currency. */
 export interface CreateSwapResponseFromToken {
   symbol?: string;
 }
-const CreateSwapResponseFromToken = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateSwapResponseFromToken>;
-
 export type CreateSwapResponseObject = "swap";
-const CreateSwapResponseObject = S.String;
-
 /** Swap status. Crypto swaps start `queued`; fiat conversions return `complete`, or `working` while a stablecoin repayment settles. */
 export type CreateSwapResponseStatus = "queued" | "working" | "complete" | "failed";
-const CreateSwapResponseStatus = S.String;
-
 /** Fiat pairs only: the destination currency. */
 export type CreateSwapResponseToToken = CreateSwapResponseFromToken;
 export interface CreateSwapResponse {
@@ -122,24 +109,12 @@ export interface CreateSwapResponse {
   /** User whose personal account owns the swap, prefixed `user_`. Null for a business account. */
   user_id: string | null;
 }
-const CreateSwapResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateSwapResponse>;
-
 /** Source chain name or chain ID. Defaults to the source token's chain when omitted. */
 export type CreateSwapQuoteRequestFromChain = string | number;
-const CreateSwapQuoteRequestFromChain =
-  S.Unknown as any as S.Schema<CreateSwapQuoteRequestFromChain>;
-
 /** Metadata to include with the quote response. */
 export type CreateSwapQuoteRequestMetadataMap = { [key: string]: unknown | undefined };
-const CreateSwapQuoteRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateSwapQuoteRequestMetadataMap>;
-
 /** Destination chain name or chain ID. Defaults to the destination token's chain when omitted. */
 export type CreateSwapQuoteRequestToChain = string | number;
-const CreateSwapQuoteRequestToChain = S.Unknown as any as S.Schema<CreateSwapQuoteRequestToChain>;
-
 export interface CreateSwapQuoteRequest {
   /** Source token amount. */
   amount: string;
@@ -162,29 +137,13 @@ export interface CreateSwapQuoteRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateSwapQuoteRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateSwapQuoteRequest>;
-
 /** Resolved source token details. */
 export type CreateSwapQuoteResponseFromTokenMap = { [key: string]: unknown | undefined };
-const CreateSwapQuoteResponseFromTokenMap =
-  CreateSwapQuoteRequestMetadataMap as any as S.Schema<CreateSwapQuoteResponseFromTokenMap>;
-
 /** Metadata from the request. */
 export type CreateSwapQuoteResponseMetadataMap = { [key: string]: unknown | undefined };
-const CreateSwapQuoteResponseMetadataMap =
-  CreateSwapQuoteRequestMetadataMap as any as S.Schema<CreateSwapQuoteResponseMetadataMap>;
-
 export type CreateSwapQuoteResponseObject = "swap_quote";
-const CreateSwapQuoteResponseObject = S.String;
-
 /** Resolved destination token details. */
 export type CreateSwapQuoteResponseToTokenMap = { [key: string]: unknown | undefined };
-const CreateSwapQuoteResponseToTokenMap =
-  CreateSwapQuoteRequestMetadataMap as any as S.Schema<CreateSwapQuoteResponseToTokenMap>;
-
 export interface CreateSwapQuoteResponse {
   /** Source token amount used for the quote. */
   amount_in: string;
@@ -214,31 +173,15 @@ export interface CreateSwapQuoteResponse {
   /** Resolved destination token details. */
   to_token: CreateSwapQuoteResponseToTokenMap;
 }
-const CreateSwapQuoteResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateSwapQuoteResponse>;
-
 export interface GetSwapRequest {
   /** Swap ID returned from POST /swaps. */
   id: string;
 }
-const GetSwapRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetSwapRequest>;
-
 export type GetSwapResponseObject = "swap";
-const GetSwapResponseObject = S.String;
-
 /** Current swap status. `complete` and `failed` are terminal. */
 export type GetSwapResponseStatus = "queued" | "working" | "complete" | "failed";
-const GetSwapResponseStatus = S.String;
-
 /** On-chain transaction hashes produced by the swap. */
 export type GetSwapResponseTxHashesList = Array<string>;
-const GetSwapResponseTxHashesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetSwapResponseTxHashesList>;
-
 export interface GetSwapResponse {
   /** Account that owns the swap: a business ID prefixed `biz_`, or the user ID for a personal account. */
   account_id: string;
@@ -254,28 +197,17 @@ export interface GetSwapResponse {
   /** User whose personal account owns the swap, prefixed `user_`. Null for a business account. */
   user_id: string | null;
 }
-const GetSwapResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetSwapResponse>;
-
 export interface ListSwapsRequest {
   /** Business account whose swaps to list, prefixed `biz_`. Provide this or `user_id`. */
   account_id?: string;
   /** The caller's own user ID, prefixed `user_`, to list swaps in their personal account. Provide this or `account_id`. */
   user_id?: string;
 }
-const ListSwapsRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListSwapsRequest>;
-
 export type ListSwapsResponseDataItemObject = "swap";
-const ListSwapsResponseDataItemObject = S.String;
-
 /** Current swap status. `complete` and `failed` are terminal. */
 export type ListSwapsResponseDataItemStatus = "queued" | "working" | "complete" | "failed";
-const ListSwapsResponseDataItemStatus = S.String;
-
 /** On-chain transaction hashes produced by the swap. */
 export type ListSwapsResponseDataItemTxHashesList = Array<string>;
-const ListSwapsResponseDataItemTxHashesList =
-  GetSwapResponseTxHashesList as any as S.Schema<ListSwapsResponseDataItemTxHashesList>;
-
 export interface ListSwapsResponseDataItem {
   /** Account that owns the swap: a business ID prefixed `biz_`, or the user ID for a personal account. */
   account_id: string;
@@ -291,24 +223,12 @@ export interface ListSwapsResponseDataItem {
   /** User whose personal account owns the swap, prefixed `user_`. Null for a business account. */
   user_id: string | null;
 }
-const ListSwapsResponseDataItem = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListSwapsResponseDataItem>;
-
 /** Swaps returned for this account. */
 export type ListSwapsResponseDataList = Array<ListSwapsResponseDataItem>;
-const ListSwapsResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListSwapsResponseDataList>;
-
 export interface ListSwapsResponse {
   /** Swaps returned for this account. */
   data: ListSwapsResponseDataList;
 }
-const ListSwapsResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ListSwapsResponse>;
-
 export type CreateSwapError = BadRequest | Forbidden | Conflict | WhopOpError;
 /** Create Swap Swaps one token for another from the account's wallet, or converts between fiat currencies in the account's ledger at the mid-market rate. Crypto swaps finish in the background -- check the swap for its status. */
 export const createSwap: API.OperationMethod<
@@ -317,8 +237,8 @@ export const createSwap: API.OperationMethod<
   CreateSwapError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSwapRequest,
-  output: CreateSwapResponse,
+  input: __S(0) as any as S.Schema<CreateSwapRequest>,
+  output: __S(2) as any as S.Schema<CreateSwapResponse>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -332,8 +252,8 @@ export const createSwapQuote: API.OperationMethod<
   CreateSwapQuoteError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSwapQuoteRequest,
-  output: CreateSwapQuoteResponse,
+  input: __S(4) as any as S.Schema<CreateSwapQuoteRequest>,
+  output: __S(5) as any as S.Schema<CreateSwapQuoteResponse>,
   errors: [BadRequest, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -347,8 +267,8 @@ export const getSwap: API.OperationMethod<
   GetSwapError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSwapRequest,
-  output: GetSwapResponse,
+  input: __S(6) as any as S.Schema<GetSwapRequest>,
+  output: __S(8) as any as S.Schema<GetSwapResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -362,8 +282,8 @@ export const listSwaps: API.OperationMethod<
   ListSwapsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSwapsRequest,
-  output: ListSwapsResponse,
+  input: __S(9) as any as S.Schema<ListSwapsRequest>,
+  output: __S(12) as any as S.Schema<ListSwapsResponse>,
   errors: [Forbidden],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -377,11 +297,11 @@ function __c0(j: number): any {
         S.Struct({
           account_id: S.optional(S.String),
           amount: S.optional(S.NullOr(S.String)),
-          from_chain: S.optional(S.NullOr(CreateSwapRequestFromChain)),
+          from_chain: S.optional(S.NullOr(S.Unknown)),
           from_token: S.String,
           slippage_bps: S.optional(S.NullOr(S.Number)),
           to_amount: S.optional(S.NullOr(S.String)),
-          to_chain: S.optional(S.NullOr(CreateSwapRequestToChain)),
+          to_chain: S.optional(S.NullOr(S.Unknown)),
           to_token: S.String,
           user_id: S.optional(S.String),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
@@ -403,13 +323,13 @@ function __c0(j: number): any {
           amount_out: S.optional(S.NullOr(S.Number)),
           amount_out_expected: S.optional(S.String),
           amount_out_min: S.optional(S.String),
-          from_token: S.optional(S.NullOr(CreateSwapResponseFromToken)),
+          from_token: S.optional(S.NullOr(__S(1))),
           id: S.optional(S.String),
-          object: CreateSwapResponseObject,
+          object: S.String,
           rate: S.optional(S.String),
-          status: CreateSwapResponseStatus,
+          status: S.String,
           to_chain: S.optional(S.String),
-          to_token: S.optional(S.NullOr(CreateSwapResponseFromToken)),
+          to_token: S.optional(S.NullOr(__S(1))),
           user_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "CreateSwapResponse" });
@@ -420,12 +340,12 @@ function __c0(j: number): any {
         S.Struct({
           amount: S.String,
           from_address: S.optional(S.NullOr(S.String)),
-          from_chain: S.optional(S.NullOr(CreateSwapQuoteRequestFromChain)),
+          from_chain: S.optional(S.NullOr(S.Unknown)),
           from_token: S.String,
-          metadata: S.optional(CreateSwapQuoteRequestMetadataMap),
+          metadata: S.optional(__S(3)),
           slippage_bps: S.optional(S.NullOr(S.Number)),
           to_address: S.optional(S.NullOr(S.String)),
-          to_chain: S.optional(S.NullOr(CreateSwapQuoteRequestToChain)),
+          to_chain: S.optional(S.NullOr(S.Unknown)),
           to_token: S.String,
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/swaps/quote", code: 200 })),
@@ -440,13 +360,13 @@ function __c0(j: number): any {
           estimated_duration_seconds: S.optional(S.NullOr(S.Number)),
           fee_bps: S.Number,
           from_address: S.optional(S.NullOr(S.String)),
-          from_token: CreateSwapQuoteResponseFromTokenMap,
-          metadata: CreateSwapQuoteResponseMetadataMap,
-          object: CreateSwapQuoteResponseObject,
+          from_token: __S(3),
+          metadata: __S(3),
+          object: S.String,
           rate: S.String,
           requires_token_approval: S.optional(S.NullOr(S.Boolean)),
           to_address: S.optional(S.NullOr(S.String)),
-          to_token: CreateSwapQuoteResponseToTokenMap,
+          to_token: __S(3),
         }),
       ).annotate({ identifier: "CreateSwapQuoteResponse" });
     case 6:
@@ -467,9 +387,9 @@ function __c1(j: number): any {
           account_id: S.String,
           error: S.optional(S.NullOr(S.String)),
           id: S.String,
-          object: GetSwapResponseObject,
-          status: GetSwapResponseStatus,
-          tx_hashes: GetSwapResponseTxHashesList,
+          object: S.String,
+          status: S.String,
+          tx_hashes: __S(7),
           user_id: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "GetSwapResponse" });
@@ -486,21 +406,34 @@ function __c1(j: number): any {
           account_id: S.String,
           error: S.optional(S.NullOr(S.String)),
           id: S.String,
-          object: ListSwapsResponseDataItemObject,
-          status: ListSwapsResponseDataItemStatus,
-          tx_hashes: ListSwapsResponseDataItemTxHashesList,
+          object: S.String,
+          status: S.String,
+          tx_hashes: __S(7),
           user_id: S.NullOr(S.String),
         }),
       ).annotate({
         identifier: "ListSwapsResponseDataItem",
       });
     case 3:
-      return S.Array(ListSwapsResponseDataItem);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: ListSwapsResponseDataList,
+          data: __S(11),
         }),
       ).annotate({ identifier: "ListSwapsResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

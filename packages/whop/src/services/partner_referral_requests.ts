@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -52,25 +54,16 @@ export interface AcceptPartnerReferralRequestRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const AcceptPartnerReferralRequestRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AcceptPartnerReferralRequestRequest>;
-
 export interface AccountSummary {
   /** Account ID, prefixed `biz_`. */
   id: string;
   /** Account display name. */
   title: string;
 }
-const AccountSummary = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AccountSummary>;
-
 export interface UserProfilePicture {
   /** Avatar image URL. Always present -- a generated placeholder when the user set no picture. */
   url: string;
 }
-const UserProfilePicture = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<UserProfilePicture>;
-
 export interface UserSummary {
   /** User ID, prefixed `user_`. */
   id: string;
@@ -81,16 +74,10 @@ export interface UserSummary {
   /** Public username. */
   username: string;
 }
-const UserSummary = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UserSummary>;
-
 /** How the referral request was initiated. */
 export type PartnerReferralRequestRequestType = "manual" | "ownership_transfer" | "link";
-const PartnerReferralRequestRequestType = S.String;
-
 /** Activity that qualifies for this reward, when specified. */
 export type PartnerReferralRewardBotQualificationType = "sales" | "ad_spend";
-const PartnerReferralRewardBotQualificationType = S.String;
-
 export interface Money {
   /** The amount in major units, as an exact decimal string -- `"10.00"` is ten dollars. A string so no float rounds it in transit. */
   amount: string;
@@ -101,12 +88,8 @@ export interface Money {
   /** How many decimal places to SHOW. Usually equal to `decimals`, and deliberately not always: COP is charged in centavos but written in whole pesos, so it is `2` and `0`. Format the number in your own locale using this. */
   display_decimals: number;
 }
-const Money = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Money>;
-
 /** Reward recipient's role, or null for a fixed user who is not the requesting partner. */
 export type PartnerReferralRewardRecipient = "business" | "partner";
-const PartnerReferralRewardRecipient = S.String;
-
 export interface PartnerReferralReward {
   /** Activity that qualifies for this reward, when specified. */
   bot_qualification_type: PartnerReferralRewardBotQualificationType | null;
@@ -121,21 +104,9 @@ export interface PartnerReferralReward {
   /** USD amount granted after qualification. */
   reward_amount: Money;
 }
-const PartnerReferralReward = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PartnerReferralReward>;
-
 export type PartnerReferralRequestRewardsList = Array<PartnerReferralReward>;
-const PartnerReferralRequestRewardsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PartnerReferralRequestRewardsList>;
-
 /** The approval state, or null for requests without an approval process. */
 export type PartnerReferralRequestStatus = "pending" | "accepted" | "denied" | "cancelled";
-const PartnerReferralRequestStatus = S.String;
-
 export interface PartnerReferralRequest {
   /** Business receiving the request, when one is assigned. */
   account: AccountSummary | null;
@@ -159,22 +130,12 @@ export interface PartnerReferralRequest {
   /** User receiving the attribution request, or null for a business request or referral link. */
   user: UserSummary | null;
 }
-const PartnerReferralRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<PartnerReferralRequest>;
-
 export interface CancelPartnerReferralRequestRequest {
   /** Partner referral request ID, prefixed `prfr_`. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CancelPartnerReferralRequestRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CancelPartnerReferralRequestRequest>;
-
 export interface CreatePartnerReferralRequestRequestBodyCase0 {
   /** Business to request attribution for, prefixed `biz_`. */
   account_id: string;
@@ -210,58 +171,32 @@ export type CreatePartnerReferralRequestRequestBody =
   | CreatePartnerReferralRequestRequestBodyCase2
   | CreatePartnerReferralRequestRequestBodyCase3
   | CreatePartnerReferralRequestRequestBodyCase4;
-const CreatePartnerReferralRequestRequestBody =
-  S.Unknown as any as S.Schema<CreatePartnerReferralRequestRequestBody>;
-
 export interface CreatePartnerReferralRequestRequest {
   body: CreatePartnerReferralRequestRequestBody;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreatePartnerReferralRequestRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreatePartnerReferralRequestRequest>;
-
 export interface DeclinePartnerReferralRequestRequest {
   /** Partner referral request ID, prefixed `prfr_`. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const DeclinePartnerReferralRequestRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeclinePartnerReferralRequestRequest>;
-
 export interface GetPartnerReferralRequestRequest {
   /** Partner referral request ID, prefixed `prfr_`. */
   id: string;
 }
-const GetPartnerReferralRequestRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetPartnerReferralRequestRequest>;
-
 export type ListPartnerReferralRequestsRequestStatus =
   | "pending"
   | "accepted"
   | "denied"
   | "cancelled";
-const ListPartnerReferralRequestsRequestStatus = S.String;
-
 export type ListPartnerReferralRequestsRequestRequestType =
   | "manual"
   | "ownership_transfer"
   | "link";
-const ListPartnerReferralRequestsRequestRequestType = S.String;
-
 export type ListPartnerReferralRequestsRequestOrder = "created_at";
-const ListPartnerReferralRequestsRequestOrder = S.String;
-
 export type ListPartnerReferralRequestsRequestDirection = "asc" | "desc";
-const ListPartnerReferralRequestsRequestDirection = S.String;
-
 export interface ListPartnerReferralRequestsRequest {
   /** Only requests for this business ID, prefixed `biz_`. */
   account_id?: string;
@@ -286,37 +221,17 @@ export interface ListPartnerReferralRequestsRequest {
   /** Return results before this cursor. Use `page_info.start_cursor` from the previous response to fetch the previous page. */
   before?: string;
 }
-const ListPartnerReferralRequestsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ListPartnerReferralRequestsRequest>;
-
 export type ListPartnerReferralRequestsResponseDataList = Array<PartnerReferralRequest>;
-const ListPartnerReferralRequestsResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListPartnerReferralRequestsResponseDataList>;
-
 export interface ListPartnerReferralRequestsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListPartnerReferralRequestsResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ListPartnerReferralRequestsResponsePageInfo>;
-
 export interface ListPartnerReferralRequestsResponse {
   data: ListPartnerReferralRequestsResponseDataList;
   page_info: ListPartnerReferralRequestsResponsePageInfo;
 }
-const ListPartnerReferralRequestsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListPartnerReferralRequestsResponse>;
-
 export type AcceptPartnerReferralRequestError = Forbidden | NotFound | Conflict | WhopOpError;
 /** Accept a partner referral request Accepts a pending attribution request as the receiving user or business owner, assigning the requesting partner as that user's or business's referrer. */
 export const acceptPartnerReferralRequest: API.OperationMethod<
@@ -325,8 +240,8 @@ export const acceptPartnerReferralRequest: API.OperationMethod<
   AcceptPartnerReferralRequestError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptPartnerReferralRequestRequest,
-  output: PartnerReferralRequest,
+  input: __S(0) as any as S.Schema<AcceptPartnerReferralRequestRequest>,
+  output: __S(7) as any as S.Schema<PartnerReferralRequest>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -340,8 +255,8 @@ export const cancelPartnerReferralRequest: API.OperationMethod<
   CancelPartnerReferralRequestError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelPartnerReferralRequestRequest,
-  output: PartnerReferralRequest,
+  input: __S(8) as any as S.Schema<CancelPartnerReferralRequestRequest>,
+  output: __S(7) as any as S.Schema<PartnerReferralRequest>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -360,8 +275,8 @@ export const createPartnerReferralRequest: API.OperationMethod<
   CreatePartnerReferralRequestError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePartnerReferralRequestRequest,
-  output: PartnerReferralRequest,
+  input: __S(9) as any as S.Schema<CreatePartnerReferralRequestRequest>,
+  output: __S(7) as any as S.Schema<PartnerReferralRequest>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -375,8 +290,8 @@ export const declinePartnerReferralRequest: API.OperationMethod<
   DeclinePartnerReferralRequestError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeclinePartnerReferralRequestRequest,
-  output: PartnerReferralRequest,
+  input: __S(10) as any as S.Schema<DeclinePartnerReferralRequestRequest>,
+  output: __S(7) as any as S.Schema<PartnerReferralRequest>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -390,8 +305,8 @@ export const getPartnerReferralRequest: API.OperationMethod<
   GetPartnerReferralRequestError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPartnerReferralRequestRequest,
-  output: PartnerReferralRequest,
+  input: __S(11) as any as S.Schema<GetPartnerReferralRequestRequest>,
+  output: __S(7) as any as S.Schema<PartnerReferralRequest>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -407,8 +322,8 @@ export const listPartnerReferralRequests: API.PaginatedOperationMethod<
   PartnerReferralRequest
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPartnerReferralRequestsRequest,
-    output: ListPartnerReferralRequestsResponse,
+    input: __S(12) as any as S.Schema<ListPartnerReferralRequestsRequest>,
+    output: __S(15) as any as S.Schema<ListPartnerReferralRequestsResponse>,
     errors: [BadRequest, Forbidden],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -456,7 +371,7 @@ function __c0(j: number): any {
         S.Struct({
           id: S.String,
           name: S.NullOr(S.String),
-          profile_picture: UserProfilePicture,
+          profile_picture: __S(2),
           username: S.String,
         }),
       ).annotate({ identifier: "UserSummary" });
@@ -472,30 +387,30 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bot_qualification_type: S.NullOr(PartnerReferralRewardBotQualificationType),
+          bot_qualification_type: S.NullOr(S.String),
           id: S.String,
-          qualification_amount: Money,
-          recipient: S.NullOr(PartnerReferralRewardRecipient),
+          qualification_amount: __S(4),
+          recipient: S.NullOr(S.String),
           recipient_id: S.NullOr(S.String),
-          reward_amount: Money,
+          reward_amount: __S(4),
         }),
       ).annotate({ identifier: "PartnerReferralReward" });
     case 6:
-      return S.Array(PartnerReferralReward);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          account: S.NullOr(AccountSummary),
+          account: S.NullOr(__S(1)),
           code: S.NullOr(S.String),
           created_at: S.String,
           id: S.String,
           max_redemptions: S.NullOr(S.Number),
-          partner: UserSummary,
-          request_type: PartnerReferralRequestRequestType,
-          rewards: PartnerReferralRequestRewardsList,
-          status: S.NullOr(PartnerReferralRequestStatus),
+          partner: __S(3),
+          request_type: S.String,
+          rewards: __S(6),
+          status: S.NullOr(S.String),
           updated_at: S.String,
-          user: S.NullOr(UserSummary),
+          user: S.NullOr(__S(3)),
         }),
       ).annotate({ identifier: "PartnerReferralRequest" });
   }
@@ -516,7 +431,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: CreatePartnerReferralRequestRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/partner_referral_requests", code: 200 })),
       ).annotate({
@@ -547,10 +462,10 @@ function __c1(j: number): any {
           account_id: S.optional(S.String.pipe(T.Query())),
           target_user_id: S.optional(S.String.pipe(T.Query())),
           partner_id: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListPartnerReferralRequestsRequestStatus.pipe(T.Query())),
-          request_type: S.optional(ListPartnerReferralRequestsRequestRequestType.pipe(T.Query())),
-          order: S.optional(ListPartnerReferralRequestsRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListPartnerReferralRequestsRequestDirection.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
+          request_type: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
@@ -560,7 +475,7 @@ function __c1(j: number): any {
         identifier: "ListPartnerReferralRequestsRequest",
       });
     case 5:
-      return S.Array(PartnerReferralRequest);
+      return S.Array(__S(7));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -575,11 +490,24 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: ListPartnerReferralRequestsResponseDataList,
-          page_info: ListPartnerReferralRequestsResponsePageInfo,
+          data: __S(13),
+          page_info: __S(14),
         }),
       ).annotate({
         identifier: "ListPartnerReferralRequestsResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

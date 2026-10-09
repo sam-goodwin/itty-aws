@@ -6,6 +6,8 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
@@ -15,81 +17,42 @@ export interface CreateFolderRequest {
   /** Octal permission mode (default: 0755) */
   mode: string;
 }
-const CreateFolderRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateFolderRequest>;
-
 export interface CreateFolderResponse {}
-const CreateFolderResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateFolderResponse>;
-
 export interface DeleteFileRequest {
   /** File or directory path to delete */
   path: string;
   /** Enable recursive deletion for directories */
   recursive?: boolean;
 }
-const DeleteFileRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeleteFileRequest>;
-
 export interface DeleteFileResponse {}
-const DeleteFileResponse = CreateFolderResponse as any as S.Schema<DeleteFileResponse>;
-
 export interface DownloadFileRequest {
   /** File path to download */
   path: string;
 }
-const DownloadFileRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DownloadFileRequest>;
-
 export type DownloadFileResponse = unknown;
-const DownloadFileResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DownloadFileResponse>;
-
 export type DownloadFilesRequestPathsList = Array<string>;
-const DownloadFilesRequestPathsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DownloadFilesRequestPathsList>;
-
 export interface DownloadFilesRequest {
   paths: DownloadFilesRequestPathsList;
 }
-const DownloadFilesRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DownloadFilesRequest>;
-
 export type GinH = { [key: string]: unknown | undefined };
-const GinH = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GinH>;
-
 export type DownloadFilesResponse = GinH;
-const DownloadFilesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DownloadFilesResponse>;
-
 export interface FindInFilesRequest {
   /** Directory path to search in */
   path: string;
   /** Text pattern to search for */
   pattern: string;
 }
-const FindInFilesRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<FindInFilesRequest>;
-
 export interface Match {
   content: string;
   file: string;
   line: number;
 }
-const Match = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Match>;
-
 export type FindInFilesResponseBodyList = Array<Match>;
-const FindInFilesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<FindInFilesResponseBodyList>;
-
 export type FindInFilesResponse = FindInFilesResponseBodyList;
-const FindInFilesResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<FindInFilesResponse>;
-
 export interface GetFileInfoRequest {
   /** File or directory path */
   path: string;
 }
-const GetFileInfoRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetFileInfoRequest>;
-
 export interface FileInfo {
   group: string;
   isDir: boolean;
@@ -104,86 +67,44 @@ export interface FileInfo {
   permissions: string;
   size: number;
 }
-const FileInfo = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<FileInfo>;
-
 export interface ListFilesRequest {
   /** Directory path to list (defaults to working directory) */
   path?: string;
   /** How many levels deep to list (default: 1, must be >= 1) */
   depth?: number;
 }
-const ListFilesRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ListFilesRequest>;
-
 export type ListFilesResponseBodyList = Array<FileInfo>;
-const ListFilesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListFilesResponseBodyList>;
-
 export type ListFilesResponse = ListFilesResponseBodyList;
-const ListFilesResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ListFilesResponse>;
-
 export interface MoveFileRequest {
   /** Source file or directory path */
   source: string;
   /** Destination file or directory path */
   destination: string;
 }
-const MoveFileRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<MoveFileRequest>;
-
 export interface MoveFileResponse {}
-const MoveFileResponse = CreateFolderResponse as any as S.Schema<MoveFileResponse>;
-
 export type ReplaceInFilesRequestFilesList = Array<string>;
-const ReplaceInFilesRequestFilesList =
-  DownloadFilesRequestPathsList as any as S.Schema<ReplaceInFilesRequestFilesList>;
-
 export interface ReplaceInFilesRequest {
   files: ReplaceInFilesRequestFilesList;
   newValue: string;
   pattern: string;
 }
-const ReplaceInFilesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ReplaceInFilesRequest>;
-
 export interface ReplaceResult {
   error?: string;
   file?: string;
   success?: boolean;
 }
-const ReplaceResult = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ReplaceResult>;
-
 export type ReplaceInFilesResponseBodyList = Array<ReplaceResult>;
-const ReplaceInFilesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ReplaceInFilesResponseBodyList>;
-
 export type ReplaceInFilesResponse = ReplaceInFilesResponseBodyList;
-const ReplaceInFilesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ReplaceInFilesResponse>;
-
 export interface SearchFilesRequest {
   /** Directory path to search in */
   path: string;
   /** File pattern to match (e.g., *.txt, *.go) */
   pattern: string;
 }
-const SearchFilesRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<SearchFilesRequest>;
-
 export type SearchFilesResponseFilesList = Array<string>;
-const SearchFilesResponseFilesList =
-  DownloadFilesRequestPathsList as any as S.Schema<SearchFilesResponseFilesList>;
-
 export interface SearchFilesResponse {
   files: SearchFilesResponseFilesList;
 }
-const SearchFilesResponse = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<SearchFilesResponse>;
-
 export interface SetFilePermissionsRequest {
   /** File or directory path */
   path: string;
@@ -194,34 +115,18 @@ export interface SetFilePermissionsRequest {
   /** File mode in octal format (e.g., 0755) */
   mode?: string;
 }
-const SetFilePermissionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<SetFilePermissionsRequest>;
-
 export interface SetFilePermissionsResponse {}
-const SetFilePermissionsResponse =
-  CreateFolderResponse as any as S.Schema<SetFilePermissionsResponse>;
-
 export interface UploadFileRequest {
   /** Destination path for the uploaded file */
   path: string;
 }
-const UploadFileRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<UploadFileRequest>;
-
 export interface UploadedFile {
   name: string;
   path: string;
   type: string;
 }
-const UploadedFile = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<UploadedFile>;
-
 export interface UploadFilesRequest {}
-const UploadFilesRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<UploadFilesRequest>;
-
 export interface UploadFilesResponse {}
-const UploadFilesResponse = CreateFolderResponse as any as S.Schema<UploadFilesResponse>;
-
 export type CreateFolderError = DaytonaOpError;
 /** Create a folder Create a folder with the specified path and optional permissions */
 export const createFolder: API.OperationMethod<
@@ -230,8 +135,8 @@ export const createFolder: API.OperationMethod<
   CreateFolderError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFolderRequest,
-  output: CreateFolderResponse,
+  input: __S(0) as any as S.Schema<CreateFolderRequest>,
+  output: __S(1) as any as S.Schema<CreateFolderResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -245,8 +150,8 @@ export const deleteFile: API.OperationMethod<
   DeleteFileError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFileRequest,
-  output: DeleteFileResponse,
+  input: __S(2) as any as S.Schema<DeleteFileRequest>,
+  output: __S(1) as any as S.Schema<DeleteFileResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -260,8 +165,8 @@ export const downloadFile: API.OperationMethod<
   DownloadFileError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadFileRequest,
-  output: DownloadFileResponse,
+  input: __S(3) as any as S.Schema<DownloadFileRequest>,
+  output: __S(4) as any as S.Schema<DownloadFileResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -275,8 +180,8 @@ export const downloadFiles: API.OperationMethod<
   DownloadFilesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadFilesRequest,
-  output: DownloadFilesResponse,
+  input: __S(6) as any as S.Schema<DownloadFilesRequest>,
+  output: __S(8) as any as S.Schema<DownloadFilesResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -290,8 +195,8 @@ export const findInFiles: API.OperationMethod<
   FindInFilesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FindInFilesRequest,
-  output: FindInFilesResponse,
+  input: __S(9) as any as S.Schema<FindInFilesRequest>,
+  output: __S(12) as any as S.Schema<FindInFilesResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -305,8 +210,8 @@ export const getFileInfo: API.OperationMethod<
   GetFileInfoError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFileInfoRequest,
-  output: FileInfo,
+  input: __S(13) as any as S.Schema<GetFileInfoRequest>,
+  output: __S(14) as any as S.Schema<FileInfo>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -320,8 +225,8 @@ export const listFiles: API.OperationMethod<
   ListFilesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFilesRequest,
-  output: ListFilesResponse,
+  input: __S(15) as any as S.Schema<ListFilesRequest>,
+  output: __S(17) as any as S.Schema<ListFilesResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -335,8 +240,8 @@ export const moveFile: API.OperationMethod<
   MoveFileError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MoveFileRequest,
-  output: MoveFileResponse,
+  input: __S(18) as any as S.Schema<MoveFileRequest>,
+  output: __S(1) as any as S.Schema<MoveFileResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -350,8 +255,8 @@ export const replaceInFiles: API.OperationMethod<
   ReplaceInFilesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReplaceInFilesRequest,
-  output: ReplaceInFilesResponse,
+  input: __S(19) as any as S.Schema<ReplaceInFilesRequest>,
+  output: __S(22) as any as S.Schema<ReplaceInFilesResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -365,8 +270,8 @@ export const searchFiles: API.OperationMethod<
   SearchFilesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchFilesRequest,
-  output: SearchFilesResponse,
+  input: __S(23) as any as S.Schema<SearchFilesRequest>,
+  output: __S(24) as any as S.Schema<SearchFilesResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -380,8 +285,8 @@ export const setFilePermissions: API.OperationMethod<
   SetFilePermissionsError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetFilePermissionsRequest,
-  output: SetFilePermissionsResponse,
+  input: __S(25) as any as S.Schema<SetFilePermissionsRequest>,
+  output: __S(1) as any as S.Schema<SetFilePermissionsResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -395,8 +300,8 @@ export const uploadFile: API.OperationMethod<
   UploadFileError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadFileRequest,
-  output: UploadedFile,
+  input: __S(26) as any as S.Schema<UploadFileRequest>,
+  output: __S(27) as any as S.Schema<UploadedFile>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -410,8 +315,8 @@ export const uploadFiles: API.OperationMethod<
   UploadFilesError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadFilesRequest,
-  output: UploadFilesResponse,
+  input: __S(28) as any as S.Schema<UploadFilesRequest>,
+  output: __S(1) as any as S.Schema<UploadFilesResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -453,7 +358,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          paths: DownloadFilesRequestPathsList,
+          paths: __S(5),
         }).pipe(T.Http({ method: "POST", uri: "/files/bulk-download", code: 200 })),
       ).annotate({ identifier: "DownloadFilesRequest" });
     case 7:
@@ -463,7 +368,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => GinH.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(7).pipe(T.RawResponseRoot())).annotate({
         identifier: "DownloadFilesResponse",
       });
     case 1:
@@ -482,9 +387,9 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Match" });
     case 3:
-      return S.Array(Match);
+      return S.Array(__S(10));
     case 4:
-      return S.suspend(() => FindInFilesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(11).pipe(T.RawResponseRoot())).annotate({
         identifier: "FindInFilesResponse",
       });
     case 5:
@@ -520,9 +425,9 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(FileInfo);
+      return S.Array(__S(14));
     case 1:
-      return S.suspend(() => ListFilesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(16).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListFilesResponse",
       });
     case 2:
@@ -535,7 +440,7 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          files: ReplaceInFilesRequestFilesList,
+          files: __S(5),
           newValue: S.String,
           pattern: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/files/replace", code: 200 })),
@@ -549,9 +454,9 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ReplaceResult" });
     case 5:
-      return S.Array(ReplaceResult);
+      return S.Array(__S(20));
     case 6:
-      return S.suspend(() => ReplaceInFilesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(21).pipe(T.RawResponseRoot())).annotate({
         identifier: "ReplaceInFilesResponse",
       });
     case 7:
@@ -568,7 +473,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          files: SearchFilesResponseFilesList,
+          files: __S(5),
         }),
       ).annotate({ identifier: "SearchFilesResponse" });
     case 1:
@@ -600,5 +505,22 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({}).pipe(T.Http({ method: "POST", uri: "/files/bulk-upload", code: 200 })),
       ).annotate({ identifier: "UploadFilesRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

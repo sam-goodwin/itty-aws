@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,35 +65,19 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 /** Request to delete a batch of identifiable data points. */
 export interface BatchDeleteDataPointsRequest {
   /** Required. The names of the DataPoints to delete. A maximum of 10000 data points can be deleted in a single request. */
   names?: StringList;
 }
-const BatchDeleteDataPointsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<BatchDeleteDataPointsRequest>;
-
 export interface BatchDeleteUsersDataTypesDataPointsRequest {
   /** Optional. Parent (data type) for the Data Point collection Format: `users/me/dataTypes/{data_type}`, e.g.: - `users/me/dataTypes/steps` - `users/me/dataTypes/-` For a list of the supported data types see the DataPoint data union field. Deleting data points across multiple data type collections is supported following https://aip.dev/159. If this is set, the parent of all of the data points specified in `names` must match this field. */
   parent: string;
   /** Request body */
   body?: BatchDeleteDataPointsRequest;
 }
-const BatchDeleteUsersDataTypesDataPointsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BatchDeleteUsersDataTypesDataPointsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -101,8 +87,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -116,8 +100,6 @@ export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
   done?: boolean;
 }
-const Operation = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Operation>;
-
 /** Authorization mechanism for a subscriber endpoint. For all requests sent by the Webhooks service, the JSON payload is cryptographically signed. The signature is delivered in the `GOOGLE-HEALTH-API-SIGNATURE` HTTP header. This is an ECDSA (NIST P256) signature of the JSON payload. Clients must verify this signature using Google Health API's public key to confirm the payload was sent by the Health API. */
 export interface EndpointAuthorization {
   /** Required. Input only. Provides a client-provided secret that will be sent with each notification to the subscriber endpoint using the "Authorization" header. The value must include the authorization scheme, e.g., "Bearer " or "Basic ", as it will be used as the full Authorization header value. This secret is used by the API to test the endpoint during `CreateSubscriber` and `UpdateSubscriber` calls, and will be sent in the `Authorization` header for all subsequent webhook notifications to this endpoint. */
@@ -125,17 +107,10 @@ export interface EndpointAuthorization {
   /** Output only. Whether the secret is set. */
   secretSet?: boolean;
 }
-const EndpointAuthorization = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<EndpointAuthorization>;
-
 export type SubscriberConfigSubscriptionCreatePolicyEnum =
   | "SUBSCRIPTION_CREATE_POLICY_UNSPECIFIED"
   | "AUTOMATIC"
   | "MANUAL";
-const SubscriberConfigSubscriptionCreatePolicyEnum = S.String;
-
 /** Configuration for a subscriber. A notification is sent to a subscription ONLY if the subscriber has a config for the data type. */
 export interface SubscriberConfig {
   /** Required. See [Google Health API data types](https://developers.google.com/health/data-types) for the list of supported data types. Values should be in kebab-case. */
@@ -143,11 +118,7 @@ export interface SubscriberConfig {
   /** Required. Policy for subscription creation. */
   subscriptionCreatePolicy?: SubscriberConfigSubscriptionCreatePolicyEnum | (string & {});
 }
-const SubscriberConfig = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<SubscriberConfig>;
-
 export type SubscriberConfigList = Array<SubscriberConfig>;
-const SubscriberConfigList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<SubscriberConfigList>;
-
 /** Payload for creating a subscriber. */
 export interface CreateSubscriberPayload {
   /** Required. The full HTTPS URI where update notifications will be sent. The URI must be a valid URL and use HTTPS as the scheme. This endpoint will be verified during the `CreateSubscriber` call. See CreateSubscriber RPC documentation for verification details. */
@@ -157,11 +128,6 @@ export interface CreateSubscriberPayload {
   /** Optional. Configuration for the subscriber. */
   subscriberConfigs?: SubscriberConfigList;
 }
-const CreateSubscriberPayload = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateSubscriberPayload>;
-
 export interface CreateProjectsSubscribersRequest {
   /** Required. The parent resource where this subscriber will be created. Format: projects/{project_number} Example: projects/1234567890 */
   parent: string;
@@ -170,11 +136,6 @@ export interface CreateProjectsSubscribersRequest {
   /** Request body */
   body?: CreateSubscriberPayload;
 }
-const CreateProjectsSubscribersRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateProjectsSubscribersRequest>;
-
 /** Payload for creating a subscription. */
 export interface CreateSubscriptionPayload {
   /** Optional. Data types subscribed to. */
@@ -182,11 +143,6 @@ export interface CreateSubscriptionPayload {
   /** Required. Immutable. The resource name of the user for whom this subscription is active. Format: `users/{user}` where `{user}` is the public `healthUserId` as returned by the `GetIdentity` action in the profile PAPI (see `google.devicesandservices.health.v4main.HealthProfileService.GetIdentity`). */
   user?: string;
 }
-const CreateSubscriptionPayload = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateSubscriptionPayload>;
-
 export interface CreateProjectsSubscribersSubscriptionsRequest {
   /** Optional. The {subscription_id} is user-settable (4-36 chars, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) or system-generated otherwise. If provided, the ID must be unique within the parent subscriber. */
   subscriptionId?: string;
@@ -195,11 +151,6 @@ export interface CreateProjectsSubscribersSubscriptionsRequest {
   /** Request body */
   body?: CreateSubscriptionPayload;
 }
-const CreateProjectsSubscribersSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateProjectsSubscribersSubscriptionsRequest>;
-
 /** A subscription to a data collection for a specific user, to be delivered to a subscriber. */
 export interface Subscription {
   /** Identifier. The resource name of the Subscription. Format: `projects/{project}/subscribers/{subscriber}/subscriptions/{subscription}` Example: `projects/my-project/subscribers/my-subscriber-123/subscriptions/my-subscription-456` The {project} ID is mandatory (6-30 characters, matching /a-z{6,30}/) The {subscriber} ID is user-settable (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) if provided during creation, or system-generated otherwise. The {subscription} ID is user-settable (4-36 chars, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) or system-generated otherwise. */
@@ -209,8 +160,6 @@ export interface Subscription {
   /** Optional. Data types subscribed to. A subscriber will only receive notifications for data types that are declared here. A subscription can only subscribe to the data types of the subscriber. The values should be in the format "users/{health_user_id}/dataTypes/{data_type}" where `{data_type}` is one of "altitude", "distance", "floors", "sleep", "steps", "weight". */
   dataTypes?: StringList;
 }
-const Subscription = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Subscription>;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Health_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
@@ -220,8 +169,6 @@ export interface Health_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
-const Health_Date = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Health_Date>;
-
 /** A daily oxygen saturation (SpO2) record. Represents the user's daily oxygen saturation summary, typically calculated during sleep. */
 export interface DailyOxygenSaturation {
   /** Required. The upper bound of the confidence interval of oxygen saturation samples during sleep. Must be in the range `[0, 100]`. */
@@ -235,11 +182,6 @@ export interface DailyOxygenSaturation {
   /** Required. Date (in user's timezone) of the daily oxygen saturation record. */
   date?: Health_Date;
 }
-const DailyOxygenSaturation = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DailyOxygenSaturation>;
-
 export type CoreBodyTemperatureMeasurementLocationEnum =
   | "MEASUREMENT_LOCATION_UNSPECIFIED"
   | "OTHER"
@@ -259,8 +201,6 @@ export type CoreBodyTemperatureMeasurementLocationEnum =
   | "NASOPHARYNGEAL"
   | "WRIST"
   | "VAGINA";
-const CoreBodyTemperatureMeasurementLocationEnum = S.String;
-
 /** Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`. */
 export interface TimeOfDay {
   /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
@@ -272,8 +212,6 @@ export interface TimeOfDay {
   /** Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. */
   nanos?: number;
 }
-const TimeOfDay = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<TimeOfDay>;
-
 /** Civil time representation similar to google.type.DateTime, but ensures that neither the timezone nor the UTC offset can be set to avoid confusion between civil and physical time queries. */
 export interface CivilDateTime {
   /** Required. Calendar date. */
@@ -281,8 +219,6 @@ export interface CivilDateTime {
   /** Optional. Time of day. Defaults to the start of the day, at midnight if omitted. */
   time?: TimeOfDay;
 }
-const CivilDateTime = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CivilDateTime>;
-
 /** Represents a sample time of an observed data point. */
 export interface ObservationSampleTime {
   /** Required. The offset of the user's local time during the observation relative to the Coordinated Universal Time (UTC). */
@@ -292,11 +228,6 @@ export interface ObservationSampleTime {
   /** Required. The time of the observation. */
   physicalTime?: string;
 }
-const ObservationSampleTime = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ObservationSampleTime>;
-
 /** Core body temperature measurement, distinct from peripheral body temperature, reflects the temperature of the body's internal organs. */
 export interface CoreBodyTemperature {
   /** Optional. The unique identifier of the core body temperature measurement. */
@@ -308,8 +239,6 @@ export interface CoreBodyTemperature {
   /** Required. The time at which core body temperature was measured. */
   sampleTime?: ObservationSampleTime;
 }
-const CoreBodyTemperature = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CoreBodyTemperature>;
-
 export type SymptomsSymptomsItemEnum =
   | "SYMPTOM_VALUE_UNSPECIFIED"
   | "CRAMPS"
@@ -377,14 +306,7 @@ export type SymptomsSymptomsItemEnum =
   | "VAGINAL_DRYNESS"
   | "VAGINAL_ITCHING"
   | "VOMITING";
-const SymptomsSymptomsItemEnum = S.String;
-
 export type SymptomsSymptomsItemEnumList = Array<SymptomsSymptomsItemEnum | (string & {})>;
-const SymptomsSymptomsItemEnumList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<SymptomsSymptomsItemEnumList>;
-
 /** Symptoms logged by the user. */
 export interface Symptoms {
   /** Required. Time when the symptoms were logged. */
@@ -392,8 +314,6 @@ export interface Symptoms {
   /** Required. List of symptoms experienced. */
   symptoms?: SymptomsSymptomsItemEnumList;
 }
-const Symptoms = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Symptoms>;
-
 export type VolumeQuantityUserProvidedUnitEnum =
   | "VOLUME_UNIT_UNSPECIFIED"
   | "CUP_IMPERIAL"
@@ -404,8 +324,6 @@ export type VolumeQuantityUserProvidedUnitEnum =
   | "MILLILITER"
   | "PINT_IMPERIAL"
   | "PINT_US";
-const VolumeQuantityUserProvidedUnitEnum = S.String;
-
 /** Represents the volume quantity. */
 export interface VolumeQuantity {
   /** Required. Value representing the volume in milliliters. Must be in the range `[0, 100000]`. */
@@ -413,8 +331,6 @@ export interface VolumeQuantity {
   /** Optional. Value representing the user provided unit, used only for user-facing input and display purposes. In the API format, all volume quantities are converted to milliliters. */
   userProvidedUnit?: VolumeQuantityUserProvidedUnitEnum | (string & {});
 }
-const VolumeQuantity = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<VolumeQuantity>;
-
 /** Represents a time interval of session data point, which bundles multiple observed metrics together. */
 export interface SessionTimeInterval {
   /** Required. The start time of the observed session. */
@@ -430,8 +346,6 @@ export interface SessionTimeInterval {
   /** Required. The end time of the observed session. */
   endTime?: string;
 }
-const SessionTimeInterval = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<SessionTimeInterval>;
-
 /** Holds information about a user logged hydration. */
 export interface HydrationLog {
   /** Required. Amount of liquid (ex. water) consumed. */
@@ -439,8 +353,6 @@ export interface HydrationLog {
   /** Required. Observed interval. */
   interval?: SessionTimeInterval;
 }
-const HydrationLog = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<HydrationLog>;
-
 /** Body weight measurement. */
 export interface Weight {
   /** Required. The time at which the weight was measured */
@@ -450,8 +362,6 @@ export interface Weight {
   /** Required. Weight of a user in grams. Must be in the range `[0, 1000000]`. */
   weightGrams?: number;
 }
-const Weight = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Weight>;
-
 /** Represents a time interval of an observed data point. */
 export interface ObservationTimeInterval {
   /** Required. Observed interval start time. */
@@ -467,11 +377,6 @@ export interface ObservationTimeInterval {
   /** Output only. Observed interval end time in civil time in the timezone the subject is in at the end of the observed interval */
   civilEndTime?: CivilDateTime;
 }
-const ObservationTimeInterval = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ObservationTimeInterval>;
-
 /** Energy burned as part of an activity, excluding the basal energy burn. */
 export interface ActiveEnergyBurned {
   /** Required. Energy burned during an activity, measured in kilocalories. Must be in the range `[0, 1000000]`. */
@@ -479,8 +384,6 @@ export interface ActiveEnergyBurned {
   /** Required. Observed interval */
   interval?: ObservationTimeInterval;
 }
-const ActiveEnergyBurned = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ActiveEnergyBurned>;
-
 export type MoodsMoodsItemEnum =
   | "MOOD_UNSPECIFIED"
   | "AMAZED"
@@ -552,14 +455,8 @@ export type MoodsMoodsItemEnum =
   | "UNHAPPY"
   | "VERY_SELF_CRITICAL";
 export type MoodsMoodsItemEnumList = Array<MoodsMoodsItemEnum | (string & {})>;
-const MoodsMoodsItemEnumList =
-  SymptomsSymptomsItemEnumList as any as S.Schema<MoodsMoodsItemEnumList>;
-
 export type MoodsValencesItemEnum = "VALENCE_UNSPECIFIED" | "UNPLEASANT" | "BASELINE" | "PLEASANT";
 export type MoodsValencesItemEnumList = Array<MoodsValencesItemEnum | (string & {})>;
-const MoodsValencesItemEnumList =
-  SymptomsSymptomsItemEnumList as any as S.Schema<MoodsValencesItemEnumList>;
-
 /** Moods record. */
 export interface Moods {
   /** Required. The moods logged. */
@@ -569,8 +466,6 @@ export interface Moods {
   /** Optional. The valences. */
   valences?: MoodsValencesItemEnumList;
 }
-const Moods = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Moods>;
-
 export type EnergyQuantityUserProvidedUnitEnum =
   | "ENERGY_UNIT_UNSPECIFIED"
   | "JOULE"
@@ -578,8 +473,6 @@ export type EnergyQuantityUserProvidedUnitEnum =
   | "KILOCALORIE"
   | "SMALL_CALORIE"
   | "CALORIE";
-const EnergyQuantityUserProvidedUnitEnum = S.String;
-
 /** Represents the energy quantity. */
 export interface EnergyQuantity {
   /** Optional. Value representing the user provided unit. */
@@ -587,8 +480,6 @@ export interface EnergyQuantity {
   /** Required. The energy value in kilocalories. Must be in the range `[0, 100000]`. */
   kcal?: number;
 }
-const EnergyQuantity = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<EnergyQuantity>;
-
 export type NutritionLogMealTypeEnum =
   | "MEAL_TYPE_UNSPECIFIED"
   | "BEFORE_BREAKFAST"
@@ -600,8 +491,6 @@ export type NutritionLogMealTypeEnum =
   | "AFTER_DINNER"
   | "SNACK"
   | "ANYTIME";
-const NutritionLogMealTypeEnum = S.String;
-
 /** Represents different properties and information about the serving of a specific food. */
 export interface Serving {
   /** Output only. Legacy measurement unit for serving size in singular form (e.g. "piece", "gram"). */
@@ -611,8 +500,6 @@ export interface Serving {
   /** Optional. The number of servings. */
   amount?: number;
 }
-const Serving = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<Serving>;
-
 export type WeightQuantityUserProvidedUnitEnum =
   | "WEIGHT_UNIT_UNSPECIFIED"
   | "GRAM"
@@ -623,8 +510,6 @@ export type WeightQuantityUserProvidedUnitEnum =
   | "MILLIGRAM"
   | "MICROGRAM"
   | "NANOGRAM";
-const WeightQuantityUserProvidedUnitEnum = S.String;
-
 /** Represents the weight quantity. */
 export interface WeightQuantity {
   /** Required. The weight value in grams. Must be in the range `[0, 100000]`. */
@@ -632,8 +517,6 @@ export interface WeightQuantity {
   /** Optional. Value representing the user provided unit. */
   userProvidedUnit?: WeightQuantityUserProvidedUnitEnum | (string & {});
 }
-const WeightQuantity = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<WeightQuantity>;
-
 export type NutrientQuantityNutrientEnum =
   | "NUTRIENT_UNSPECIFIED"
   | "BIOTIN"
@@ -675,8 +558,6 @@ export type NutrientQuantityNutrientEnum =
   | "VITAMIN_K"
   | "ZINC"
   | "FOLATE";
-const NutrientQuantityNutrientEnum = S.String;
-
 /** Represents the quantity of a nutrient. */
 export interface NutrientQuantity {
   /** Required. The quantity of the nutrient, measured in grams. */
@@ -684,11 +565,7 @@ export interface NutrientQuantity {
   /** Required. The nutrient type. */
   nutrient?: NutrientQuantityNutrientEnum | (string & {});
 }
-const NutrientQuantity = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<NutrientQuantity>;
-
 export type NutrientQuantityList = Array<NutrientQuantity>;
-const NutrientQuantityList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<NutrientQuantityList>;
-
 /** Holds information about food logged by a user. There are two ways of creating a nutrition log based on the food type: 1. Identified food: Using the food field, which is a reference to a Food resource. In this case fields `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `food_display_name` will be populated based on the referenced food. 2. Anonymous food: Using the `food_display_name` field and setting the `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields manually. The identified food is preferred over the anonymous food. Nutrition logs created from anonymous food are not editable. */
 export interface NutritionLog {
   /** Optional. The energy from fat, measured in kilocalories (`kcal`). */
@@ -712,16 +589,12 @@ export interface NutritionLog {
   /** Optional. The total energy of the food, measured in kilocalories (`kcal`). */
   energy?: EnergyQuantity;
 }
-const NutritionLog = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<NutritionLog>;
-
 export type ActivityLevelActivityLevelTypeEnum =
   | "ACTIVITY_LEVEL_TYPE_UNSPECIFIED"
   | "SEDENTARY"
   | "LIGHTLY_ACTIVE"
   | "MODERATELY_ACTIVE"
   | "VERY_ACTIVE";
-const ActivityLevelActivityLevelTypeEnum = S.String;
-
 /** Internal type to capture activity level during a certain time interval. */
 export interface ActivityLevel {
   /** Required. Activity level type in the given time interval. */
@@ -729,8 +602,6 @@ export interface ActivityLevel {
   /** Required. Observed interval. */
   interval?: ObservationTimeInterval;
 }
-const ActivityLevel = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ActivityLevel>;
-
 /** Provides derived sleep temperature values, calculated from skin or internal device temperature readings during sleep. */
 export interface DailySleepTemperatureDerivations {
   /** Required. The user's nightly skin temperature. It is the mean of skin temperature samples taken from the user's sleep. */
@@ -742,11 +613,6 @@ export interface DailySleepTemperatureDerivations {
   /** Optional. The standard deviation of the user's relative nightly skin temperature (temperature - baseline) over the past 30 days. */
   relativeNightlyStddev30dCelsius?: number;
 }
-const DailySleepTemperatureDerivations = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DailySleepTemperatureDerivations>;
-
 /** Software as Medical Device (SaMD) metadata. Used to construct the Unique Device Identifier (UDI). */
 export interface MedicalDeviceInfo {
   /** Output only. The service version used by the feature. */
@@ -760,8 +626,6 @@ export interface MedicalDeviceInfo {
   /** Output only. The model name or device type of the compatible device used to collect the data. */
   deviceModel?: string;
 }
-const MedicalDeviceInfo = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<MedicalDeviceInfo>;
-
 /** A single heart beat measurement. */
 export interface HeartBeat {
   /** Required. The time of the heart beat measurement. */
@@ -773,11 +637,7 @@ export interface HeartBeat {
   /** Required. The beats-per-minute value extrapolated from the time before the following heart beat. This is calculated as 60000 / rr, where rr is the gap between heart beats in milliseconds (IBI - Interbeat Interval). */
   beatsPerMinute?: number;
 }
-const HeartBeat = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<HeartBeat>;
-
 export type HeartBeatList = Array<HeartBeat>;
-const HeartBeatList = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<HeartBeatList>;
-
 /** An analysis window evaluated for AFib. Note: The current version of the algorithm will only produce alerts if all windows are positive. So anything returned from the API will always have the positive bit set to true. Internally, windows can be negative, however. We never save "inconclusive" windows (they aren't produced by the algorithm). */
 export interface AlertWindow {
   /** Output only. Observed interval start time in civil time in the timezone the subject is in at the start of the observed interval */
@@ -797,11 +657,7 @@ export interface AlertWindow {
   /** Required. The UTC offset of the user's timezone when the analysis window started. */
   startUtcOffset?: string;
 }
-const AlertWindow = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<AlertWindow>;
-
 export type AlertWindowList = Array<AlertWindow>;
-const AlertWindowList = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<AlertWindowList>;
-
 /** Represents an Irregular Rhythm Notification alert, indicating a potential sign of atrial fibrillation (AFib). This data type is based on SaMD feature and any changes to it may require additional review. */
 export interface IrregularRhythmNotification {
   /** Output only. The meta information for the compatible device used to conduct the measurement. Irregular Rhythm Notification measurements typically populate `algorithm_version`, `service_version`, and `device_model`. */
@@ -811,18 +667,11 @@ export interface IrregularRhythmNotification {
   /** Optional. The overlapping analysis windows that were used to evaluate rhythm for potential AFib, containing specific information about the user's heart rhythm. */
   alertWindows?: AlertWindowList;
 }
-const IrregularRhythmNotification = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<IrregularRhythmNotification>;
-
 export type ActiveZoneMinutesHeartRateZoneEnum =
   | "HEART_RATE_ZONE_UNSPECIFIED"
   | "FAT_BURN"
   | "CARDIO"
   | "PEAK";
-const ActiveZoneMinutesHeartRateZoneEnum = S.String;
-
 /** Record of active zone minutes in a given time interval. */
 export interface ActiveZoneMinutes {
   /** Required. Number of Active Zone Minutes earned in the given time interval. Note: active_zone_minutes equals to 1 for low intensity (fat burn) zones or 2 for high intensity zones (cardio, peak). */
@@ -832,16 +681,12 @@ export interface ActiveZoneMinutes {
   /** Required. Observed interval. */
   interval?: ObservationTimeInterval;
 }
-const ActiveZoneMinutes = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ActiveZoneMinutes>;
-
 export type HeartRateZoneHeartRateZoneTypeEnum =
   | "HEART_RATE_ZONE_TYPE_UNSPECIFIED"
   | "LIGHT"
   | "MODERATE"
   | "VIGOROUS"
   | "PEAK";
-const HeartRateZoneHeartRateZoneTypeEnum = S.String;
-
 /** The heart rate zone. */
 export interface HeartRateZone {
   /** Required. The heart rate zone type. */
@@ -851,11 +696,7 @@ export interface HeartRateZone {
   /** Required. Minimum heart rate for this zone in beats per minute. */
   minBeatsPerMinute?: string;
 }
-const HeartRateZone = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<HeartRateZone>;
-
 export type HeartRateZoneList = Array<HeartRateZone>;
-const HeartRateZoneList = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<HeartRateZoneList>;
-
 /** User's heart rate zone thresholds based on the Karvonen algorithm for a specific day. */
 export interface DailyHeartRateZones {
   /** Required. The heart rate zones. */
@@ -863,8 +704,6 @@ export interface DailyHeartRateZones {
   /** Required. Date (in user's timezone) of the heart rate zones record. */
   date?: Health_Date;
 }
-const DailyHeartRateZones = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<DailyHeartRateZones>;
-
 export type DataSourcePlatformEnum =
   | "PLATFORM_UNSPECIFIED"
   | "FITBIT"
@@ -875,8 +714,6 @@ export type DataSourcePlatformEnum =
   | "NEST"
   | "GOOGLE_WEB_API"
   | "GOOGLE_PARTNER_INTEGRATION";
-const DataSourcePlatformEnum = S.String;
-
 /** Optional metadata for the application that provided this data. */
 export interface Application {
   /** Output only. A unique identifier for the mobile application that was the source of the data. This is typically the application's package name on Android (e.g., `com.google.fitbit`) or the bundle ID on iOS. This field is informational and helps trace data origin. This field is system-populated when the data is uploaded from the Fitbit mobile application, Health Connect or Health Kit. */
@@ -886,8 +723,6 @@ export interface Application {
   /** Output only. The Google OAuth 2.0 client ID of the web application or service that recorded the data. This is the client ID used during the Google OAuth flow to obtain user credentials. This field is system-populated when the data is uploaded from Google Web API. */
   googleWebClientId?: string;
 }
-const Application = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Application>;
-
 export type DeviceFormFactorEnum =
   | "FORM_FACTOR_UNSPECIFIED"
   | "FITNESS_BAND"
@@ -899,8 +734,6 @@ export type DeviceFormFactorEnum =
   | "TABLET"
   | "HEAD_MOUNTED"
   | "SMART_DISPLAY";
-const DeviceFormFactorEnum = S.String;
-
 /** Captures metadata about the device that recorded the measurement. */
 export interface Device {
   /** Optional. Captures the form factor of the device. */
@@ -910,8 +743,6 @@ export interface Device {
   /** Optional. An optional name for the device. */
   displayName?: string;
 }
-const Device = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<Device>;
-
 export type DataSourceRecordingMethodEnum =
   | "RECORDING_METHOD_UNSPECIFIED"
   | "MANUAL"
@@ -919,8 +750,6 @@ export type DataSourceRecordingMethodEnum =
   | "DERIVED"
   | "ACTIVELY_MEASURED"
   | "UNKNOWN";
-const DataSourceRecordingMethodEnum = S.String;
-
 /** Data Source definition to track the origin of data. Each health data point, regardless of the complexity or data model (whether a simple step count or a detailed sleep session) must retain information about its source of origin (e.g. the device or app that collected it). */
 export interface DataSource {
   /** Output only. Captures the platform that uploaded the data. */
@@ -932,8 +761,6 @@ export interface DataSource {
   /** Optional. Captures how the data was recorded. */
   recordingMethod?: DataSourceRecordingMethodEnum | (string & {});
 }
-const DataSource = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<DataSource>;
-
 /** Respiratory rate statistics for a given sleep stage. */
 export interface RespiratoryRateSleepSummaryStatistics {
   /** Required. Average breaths per minute. */
@@ -943,11 +770,6 @@ export interface RespiratoryRateSleepSummaryStatistics {
   /** Optional. Standard deviation of the respiratory rate during sleep. */
   standardDeviation?: number;
 }
-const RespiratoryRateSleepSummaryStatistics = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<RespiratoryRateSleepSummaryStatistics>;
-
 /** Records respiratory rate details during sleep. Can have multiple per day if the user sleeps multiple times. */
 export interface RespiratoryRateSleepSummary {
   /** Required. The time at which respiratory rate was measured. */
@@ -961,11 +783,6 @@ export interface RespiratoryRateSleepSummary {
   /** Optional. Respiratory rate statistics for deep sleep. */
   deepSleepStats?: RespiratoryRateSleepSummaryStatistics;
 }
-const RespiratoryRateSleepSummary = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<RespiratoryRateSleepSummary>;
-
 /** Captures the altitude gain (i.e. deltas), and not level above sea, for a user in millimeters. */
 export interface Altitude {
   /** Required. Altitude gain in millimeters over the observed interval. Must be in the range `[-1000000000, 1000000000]`. */
@@ -973,8 +790,6 @@ export interface Altitude {
   /** Required. Observed interval. */
   interval?: ObservationTimeInterval;
 }
-const Altitude = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<Altitude>;
-
 /** Number of calories burned due to basal metabolic rate (BMR) over a period of time. */
 export interface BasalEnergyBurned {
   /** Required. Observed interval. */
@@ -982,8 +797,6 @@ export interface BasalEnergyBurned {
   /** Required. Number of calories burned due to basal metabolic rate in kilocalories over the observed interval. */
   kcal?: number;
 }
-const BasalEnergyBurned = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<BasalEnergyBurned>;
-
 export type FoodMealTypeEnum =
   | "MEAL_TYPE_UNSPECIFIED"
   | "BEFORE_BREAKFAST"
@@ -995,8 +808,6 @@ export type FoodMealTypeEnum =
   | "AFTER_DINNER"
   | "SNACK"
   | "ANYTIME";
-const FoodMealTypeEnum = S.String;
-
 /** Represents different properties and information about the serving of a specific food. */
 export interface FoodServing {
   /** Required. Food measurement unit */
@@ -1010,17 +821,11 @@ export interface FoodServing {
   /** Optional. Value representing the multiplier used to compute the energy when using this serving instead of the default serving. */
   multiplier?: number;
 }
-const FoodServing = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<FoodServing>;
-
 export type FoodServingList = Array<FoodServing>;
-const FoodServingList = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<FoodServingList>;
-
 export type FoodAccessLevelEnum =
   | "FOOD_ACCESS_LEVEL_UNSPECIFIED"
   | "FOOD_ACCESS_LEVEL_PUBLIC"
   | "FOOD_ACCESS_LEVEL_PRIVATE";
-const FoodAccessLevelEnum = S.String;
-
 /** Represents a food item. */
 export interface Food {
   /** Optional. The meal type associated with this food. */
@@ -1054,8 +859,6 @@ export interface Food {
   /** Required. Value representing the default serving of the food. */
   defaultServing?: FoodServing;
 }
-const Food = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<Food>;
-
 /** Represents a food measurement unit. */
 export interface FoodMeasurementUnit {
   /** Optional. The plural display name of the food measurement unit (e.g., "grams", "pieces"). */
@@ -1063,8 +866,6 @@ export interface FoodMeasurementUnit {
   /** Required. The display name of the food measurement unit (e.g., "gram", "piece"). */
   displayName?: string;
 }
-const FoodMeasurementUnit = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<FoodMeasurementUnit>;
-
 /** A daily average respiratory rate (breaths per minute) for a day of the year. One data point per day calculated for the main sleep. */
 export interface DailyRespiratoryRate {
   /** Required. The average number of breaths taken per minute. */
@@ -1072,8 +873,6 @@ export interface DailyRespiratoryRate {
   /** Required. The date on which the respiratory rate was measured. */
   date?: Health_Date;
 }
-const DailyRespiratoryRate = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<DailyRespiratoryRate>;
-
 export type DailyVO2MaxCardioFitnessLevelEnum =
   | "CARDIO_FITNESS_LEVEL_UNSPECIFIED"
   | "POOR"
@@ -1082,8 +881,6 @@ export type DailyVO2MaxCardioFitnessLevelEnum =
   | "GOOD"
   | "VERY_GOOD"
   | "EXCELLENT";
-const DailyVO2MaxCardioFitnessLevelEnum = S.String;
-
 /** Contains a daily summary of the user's VO2 max (cardio fitness score), which is the maximum rate of oxygen the body can use during exercise. */
 export interface DailyVO2Max {
   /** Optional. The covariance of the VO2 max value. */
@@ -1097,16 +894,12 @@ export interface DailyVO2Max {
   /** Required. Daily VO2 max value measured as in ml consumed oxygen / kg of body weight / min. Must be in the range `[0, 100]`. */
   vo2Max?: number;
 }
-const DailyVO2Max = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<DailyVO2Max>;
-
 export type TimeInHeartRateZoneHeartRateZoneTypeEnum =
   | "HEART_RATE_ZONE_TYPE_UNSPECIFIED"
   | "LIGHT"
   | "MODERATE"
   | "VIGOROUS"
   | "PEAK";
-const TimeInHeartRateZoneHeartRateZoneTypeEnum = S.String;
-
 /** Time in heart rate zone record. It's an interval spent in specific heart rate zone. */
 export interface TimeInHeartRateZone {
   /** Required. Observed interval. */
@@ -1114,8 +907,6 @@ export interface TimeInHeartRateZone {
   /** Required. Heart rate zone type. */
   heartRateZoneType?: TimeInHeartRateZoneHeartRateZoneTypeEnum | (string & {});
 }
-const TimeInHeartRateZone = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<TimeInHeartRateZone>;
-
 export type OvulationTestResultEnum =
   | "OVULATION_TEST_RESULT_UNSPECIFIED"
   | "NEGATIVE"
@@ -1123,8 +914,6 @@ export type OvulationTestResultEnum =
   | "ESTROGEN_SURGE"
   | "POSITIVE"
   | "INDETERMINATE";
-const OvulationTestResultEnum = S.String;
-
 /** Ovulation test record. */
 export interface OvulationTest {
   /** Required. The time at which ovulation test was measured. */
@@ -1132,8 +921,6 @@ export interface OvulationTest {
   /** Required. The result of the ovulation test. */
   result?: OvulationTestResultEnum | (string & {});
 }
-const OvulationTest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<OvulationTest>;
-
 /** Menstrual period record. */
 export interface MenstrualPeriod {
   /** Required. Observed interval. */
@@ -1141,16 +928,12 @@ export interface MenstrualPeriod {
   /** Optional. Standard free-form notes captured at manual logging. */
   notes?: string;
 }
-const MenstrualPeriod = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<MenstrualPeriod>;
-
 export type SwimLengthsDataSwimStrokeTypeEnum =
   | "SWIM_STROKE_TYPE_UNSPECIFIED"
   | "FREESTYLE"
   | "BACKSTROKE"
   | "BREASTSTROKE"
   | "BUTTERFLY";
-const SwimLengthsDataSwimStrokeTypeEnum = S.String;
-
 /** Swim lengths data over the time interval. */
 export interface SwimLengthsData {
   /** Required. Observed interval. */
@@ -1160,8 +943,6 @@ export interface SwimLengthsData {
   /** Required. Swim stroke type. */
   swimStrokeType?: SwimLengthsDataSwimStrokeTypeEnum | (string & {});
 }
-const SwimLengthsData = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<SwimLengthsData>;
-
 /** Metadata for HeartRateVariability. */
 export interface HeartRateVariabilityMetadata {
   /** Optional. The power in interbeat interval fluctuations within the high frequency band (0.15 Hz - 0.4 Hz). */
@@ -1169,11 +950,6 @@ export interface HeartRateVariabilityMetadata {
   /** Optional. The power in interbeat interval fluctuations within the low frequency band (0.04 Hz - 0.15 Hz). */
   lowFrequencyPower?: number;
 }
-const HeartRateVariabilityMetadata = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<HeartRateVariabilityMetadata>;
-
 /** Captures user's heart rate variability (HRV) as measured by the root mean square of successive differences (RMSSD) between normal heartbeats or by standard deviation of the inter-beat intervals (SDNN). */
 export interface HeartRateVariability {
   /** Required. The time of the heart rate variability measurement. */
@@ -1185,8 +961,6 @@ export interface HeartRateVariability {
   /** Optional. Additional information about the heart rate variability measurement. */
   metadata?: HeartRateVariabilityMetadata;
 }
-const HeartRateVariability = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<HeartRateVariability>;
-
 /** Gained elevation measured in floors over the time interval */
 export interface Floors {
   /** Required. Observed interval */
@@ -1194,8 +968,6 @@ export interface Floors {
   /** Required. Number of floors in the recorded interval. Must be in the range `[0, 1000000]`. */
   count?: string;
 }
-const Floors = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<Floors>;
-
 /** Captures the user's instantaneous oxygen saturation percentage (SpO2). */
 export interface OxygenSaturation {
   /** Required. The time at which oxygen saturation was measured. */
@@ -1203,8 +975,6 @@ export interface OxygenSaturation {
   /** Required. The oxygen saturation percentage. Must be in the range `[0, 100]`. */
   percentage?: number;
 }
-const OxygenSaturation = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<OxygenSaturation>;
-
 export type StageSummaryTypeEnum =
   | "SLEEP_STAGE_TYPE_UNSPECIFIED"
   | "AWAKE"
@@ -1213,8 +983,6 @@ export type StageSummaryTypeEnum =
   | "REM"
   | "ASLEEP"
   | "RESTLESS";
-const StageSummaryTypeEnum = S.String;
-
 /** Total duration and segment count for a stage. */
 export interface StageSummary {
   /** Output only. Number of sleep stages segments. */
@@ -1224,11 +992,7 @@ export interface StageSummary {
   /** Output only. Total duration in minutes of a sleep stage. */
   minutes?: string;
 }
-const StageSummary = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<StageSummary>;
-
 export type StageSummaryList = Array<StageSummary>;
-const StageSummaryList = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<StageSummaryList>;
-
 /** Sleep summary: metrics and stages summary. */
 export interface SleepSummary {
   /** Output only. Total number of minutes awake. It is a sum of all AWAKE stages. */
@@ -1244,8 +1008,6 @@ export interface SleepSummary {
   /** Output only. Minutes after wake up calculated by restlessness algorithm. */
   minutesAfterWakeUp?: string;
 }
-const SleepSummary = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<SleepSummary>;
-
 /** A time interval to represent an out-of-bed segment. */
 export interface OutOfBedSegment {
   /** Required. The offset of the user's local time at the start of the segment relative to the Coordinated Universal Time (UTC). */
@@ -1257,11 +1019,7 @@ export interface OutOfBedSegment {
   /** Required. Segment tart time. */
   startTime?: string;
 }
-const OutOfBedSegment = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<OutOfBedSegment>;
-
 export type OutOfBedSegmentList = Array<OutOfBedSegment>;
-const OutOfBedSegmentList = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<OutOfBedSegmentList>;
-
 export type SleepMetadataStagesStatusEnum =
   | "STAGES_STATE_UNSPECIFIED"
   | "REJECTED_COVERAGE"
@@ -1273,8 +1031,6 @@ export type SleepMetadataStagesStatusEnum =
   | "TIMEOUT"
   | "SUCCEEDED"
   | "PROCESSING_INTERNAL_ERROR";
-const SleepMetadataStagesStatusEnum = S.String;
-
 /** Additional information about how the sleep was processed. */
 export interface SleepMetadata {
   /** Output only. Sleep stages algorithm processing status. */
@@ -1290,11 +1046,7 @@ export interface SleepMetadata {
   /** Output only. `main_sleep`: the longest sleep session with stages within one day. If no sleep session has stages, then the longest sleep is the `main_sleep`. If there are multiple days of sleep in the response, there is one `main_sleep` per day. */
   mainSleep?: boolean;
 }
-const SleepMetadata = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<SleepMetadata>;
-
 export type SleepTypeEnum = "SLEEP_TYPE_UNSPECIFIED" | "CLASSIC" | "STAGES";
-const SleepTypeEnum = S.String;
-
 export type SleepStageTypeEnum =
   | "SLEEP_STAGE_TYPE_UNSPECIFIED"
   | "AWAKE"
@@ -1303,8 +1055,6 @@ export type SleepStageTypeEnum =
   | "REM"
   | "ASLEEP"
   | "RESTLESS";
-const SleepStageTypeEnum = S.String;
-
 /** Sleep stage segment. */
 export interface SleepStage {
   /** Required. Sleep stage type: AWAKE, DEEP, REM, LIGHT etc. */
@@ -1322,11 +1072,7 @@ export interface SleepStage {
   /** Required. The offset of the user's local time at the end of the sleep stage relative to the Coordinated Universal Time (UTC). */
   endUtcOffset?: string;
 }
-const SleepStage = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<SleepStage>;
-
 export type SleepStageList = Array<SleepStage>;
-const SleepStageList = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<SleepStageList>;
-
 /** A sleep session possibly including stages. */
 export interface Sleep {
   /** Output only. Sleep summary: metrics and stages summary. */
@@ -1348,8 +1094,6 @@ export interface Sleep {
   /** Optional. List of non-overlapping contiguous sleep stage segments that cover the sleep period. */
   stages?: SleepStageList;
 }
-const Sleep = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<Sleep>;
-
 export type BloodGlucoseMeasurementTimingEnum =
   | "MEASUREMENT_TIMING_UNSPECIFIED"
   | "AFTER_MEAL"
@@ -1358,23 +1102,17 @@ export type BloodGlucoseMeasurementTimingEnum =
   | "GENERAL"
   | "BEFORE_BED"
   | "OVER_NIGHT";
-const BloodGlucoseMeasurementTimingEnum = S.String;
-
 export type BloodGlucoseMealTypeEnum =
   | "MEAL_TYPE_UNSPECIFIED"
   | "BREAKFAST"
   | "LUNCH"
   | "DINNER"
   | "SNACK";
-const BloodGlucoseMealTypeEnum = S.String;
-
 export type BloodGlucoseMeasurementSourceEnum =
   | "MEASUREMENT_SOURCE_UNSPECIFIED"
   | "SELF_MONITORING_BLOOD_GLUCOSE"
   | "CONTINUOUS_GLUCOSE_MONITORING"
   | "LAB_TEST";
-const BloodGlucoseMeasurementSourceEnum = S.String;
-
 export type BloodGlucoseSpecimenEnum =
   | "SPECIMEN_UNSPECIFIED"
   | "CAPILLARY_BLOOD"
@@ -1383,8 +1121,6 @@ export type BloodGlucoseSpecimenEnum =
   | "SERUM"
   | "TEARS"
   | "WHOLE_BLOOD";
-const BloodGlucoseSpecimenEnum = S.String;
-
 /** Represents a blood glucose level measurement. LINT: LEGACY_NAMES */
 export interface BloodGlucose {
   /** Required. Blood glucose level concentration in mg/dL. Must be in the range `[0, 900]`. */
@@ -1402,15 +1138,11 @@ export interface BloodGlucose {
   /** Optional. Type of body fluid used to measure the blood glucose. */
   specimen?: BloodGlucoseSpecimenEnum | (string & {});
 }
-const BloodGlucose = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<BloodGlucose>;
-
 /** SedentaryPeriod SedentaryPeriod data represents the periods of time that the user was sedentary (i.e. not moving while wearing the device). */
 export interface SedentaryPeriod {
   /** Required. Observed interval. */
   interval?: ObservationTimeInterval;
 }
-const SedentaryPeriod = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<SedentaryPeriod>;
-
 /** Body height measurement. */
 export interface Height {
   /** Required. The time at which the height was recorded. */
@@ -1418,8 +1150,6 @@ export interface Height {
   /** Required. Height of the user in millimeters. Must be in the range `[0, 3000]`. */
   heightMillimeters?: string;
 }
-const Height = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<Height>;
-
 export type ExerciseEventExerciseEventTypeEnum =
   | "EXERCISE_EVENT_TYPE_UNSPECIFIED"
   | "START"
@@ -1428,8 +1158,6 @@ export type ExerciseEventExerciseEventTypeEnum =
   | "RESUME"
   | "AUTO_PAUSE"
   | "AUTO_RESUME";
-const ExerciseEventExerciseEventTypeEnum = S.String;
-
 /** Represents instantaneous events that happen during an exercise, such as start, stop, pause, split. */
 export interface ExerciseEvent {
   /** Required. The type of the event, such as start, stop, pause, resume. */
@@ -1439,11 +1167,7 @@ export interface ExerciseEvent {
   /** Required. Exercise event time */
   eventTime?: string;
 }
-const ExerciseEvent = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ExerciseEvent>;
-
 export type ExerciseEventList = Array<ExerciseEvent>;
-const ExerciseEventList = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<ExerciseEventList>;
-
 export type ExerciseExerciseTypeEnum =
   | "EXERCISE_TYPE_UNSPECIFIED"
   | "AEROBIC_WORKOUT"
@@ -1627,8 +1351,6 @@ export type ExerciseExerciseTypeEnum =
   | "YOGA_POWER"
   | "YOGA_VINYASA"
   | "ZUMBA";
-const ExerciseExerciseTypeEnum = S.String;
-
 /** Mobility workouts specific metrics */
 export interface MobilityMetrics {
   /** Optional. Stride length is a measure of the distance covered by a single stride */
@@ -1642,8 +1364,6 @@ export interface MobilityMetrics {
   /** Optional. Distance off the ground your center of mass moves with each stride while running */
   avgVerticalOscillationMillimeters?: string;
 }
-const MobilityMetrics = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<MobilityMetrics>;
-
 /** Time spent in each heart rate zone. */
 export interface TimeInHeartRateZones {
   /** Optional. Time spent in moderate heart rate zone. */
@@ -1655,11 +1375,6 @@ export interface TimeInHeartRateZones {
   /** Optional. Time spent in light heart rate zone. */
   lightTime?: string;
 }
-const TimeInHeartRateZones = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<TimeInHeartRateZones>;
-
 /** Summary metrics for an exercise. */
 export interface MetricsSummary {
   /** Optional. Average speed in millimeters per second. */
@@ -1687,8 +1402,6 @@ export interface MetricsSummary {
   /** Optional. Total steps taken during the exercise. */
   steps?: string;
 }
-const MetricsSummary = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<MetricsSummary>;
-
 /** Additional exercise metadata. */
 export interface ExerciseMetadata {
   /** Optional. Whether the exercise had GPS tracking. */
@@ -1696,16 +1409,12 @@ export interface ExerciseMetadata {
   /** Optional. Pool length in millimeters. Only present in the swimming exercises. */
   poolLengthMillimeters?: string;
 }
-const ExerciseMetadata = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<ExerciseMetadata>;
-
 export type SplitSummarySplitTypeEnum =
   | "SPLIT_TYPE_UNSPECIFIED"
   | "MANUAL"
   | "DURATION"
   | "DISTANCE"
   | "CALORIES";
-const SplitSummarySplitTypeEnum = S.String;
-
 /** Represents splits or laps recorded within an exercise. Lap events partition a workout into segments based on criteria like distance, time, or calories. */
 export interface SplitSummary {
   /** Required. Lap end time */
@@ -1723,11 +1432,7 @@ export interface SplitSummary {
   /** Required. Lap end time offset from UTC */
   endUtcOffset?: string;
 }
-const SplitSummary = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<SplitSummary>;
-
 export type SplitSummaryList = Array<SplitSummary>;
-const SplitSummaryList = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<SplitSummaryList>;
-
 /** An exercise that stores information about a physical activity. */
 export interface Exercise {
   /** Optional. Exercise events that happen during an exercise, such as pause & restarts. */
@@ -1755,15 +1460,11 @@ export interface Exercise {
   /** Output only. Represents the timestamp of the creation of the exercise. */
   createTime?: string;
 }
-const Exercise = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<Exercise>;
-
 export type ActiveMinutesByActivityLevelActivityLevelEnum =
   | "ACTIVITY_LEVEL_UNSPECIFIED"
   | "LIGHT"
   | "MODERATE"
   | "VIGOROUS";
-const ActiveMinutesByActivityLevelActivityLevelEnum = S.String;
-
 /** Active minutes at a given activity level. */
 export interface ActiveMinutesByActivityLevel {
   /** Required. The level of activity. */
@@ -1771,17 +1472,7 @@ export interface ActiveMinutesByActivityLevel {
   /** Required. Number of whole minutes spent in activity. */
   activeMinutes?: string;
 }
-const ActiveMinutesByActivityLevel = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ActiveMinutesByActivityLevel>;
-
 export type ActiveMinutesByActivityLevelList = Array<ActiveMinutesByActivityLevel>;
-const ActiveMinutesByActivityLevelList = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ActiveMinutesByActivityLevelList>;
-
 /** Record of active minutes in a given time interval. */
 export interface ActiveMinutes {
   /** Required. Active minutes by activity level. At most one record per activity level is allowed. */
@@ -1789,8 +1480,6 @@ export interface ActiveMinutes {
   /** Required. Observed interval. */
   interval?: ObservationTimeInterval;
 }
-const ActiveMinutes = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<ActiveMinutes>;
-
 export type ElectrocardiogramResultClassificationEnum =
   | "RESULT_CLASSIFICATION_UNSPECIFIED"
   | "NORMAL_SINUS_RHYTHM"
@@ -1800,11 +1489,7 @@ export type ElectrocardiogramResultClassificationEnum =
   | "INCONCLUSIVE_LOW_HEART_RATE"
   | "UNREADABLE"
   | "NOT_ANALYZED";
-const ElectrocardiogramResultClassificationEnum = S.String;
-
 export type IntegerList = Array<number>;
-const IntegerList = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<IntegerList>;
-
 /** Represents an Electrocardiogram (ECG) measurement session. This data type is based on SaMD feature and any changes to it may require additional review. */
 export interface Electrocardiogram {
   /** Optional. The sampling frequency of waveform samples in hertz. */
@@ -1824,8 +1509,6 @@ export interface Electrocardiogram {
   /** Optional. The factor by which to divide waveform samples to get voltage in millivolts: millivolts = waveform_sample / millivolts_scaling_factor. */
   millivoltsScalingFactor?: number;
 }
-const Electrocardiogram = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<Electrocardiogram>;
-
 /** Represents the daily heart rate variability data type. At least one of the following fields must be set: - `average_heart_rate_variability_milliseconds` - `non_rem_heart_rate_beats_per_minute` - `entropy` - `deep_sleep_root_mean_square_of_successive_differences_milliseconds` */
 export interface DailyHeartRateVariability {
   /** Required. Date (in the user's timezone) of heart rate variability measurement. */
@@ -1839,11 +1522,6 @@ export interface DailyHeartRateVariability {
   /** Optional. A user's average heart rate variability calculated using the root mean square of successive differences (RMSSD) in times between heartbeats. */
   averageHeartRateVariabilityMilliseconds?: number;
 }
-const DailyHeartRateVariability = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<DailyHeartRateVariability>;
-
 export type VO2MaxMeasurementMethodEnum =
   | "MEASUREMENT_METHOD_UNSPECIFIED"
   | "FITBIT_RUN"
@@ -1857,8 +1535,6 @@ export type VO2MaxMeasurementMethodEnum =
   | "PREDICTION_SUB_MAX_EXERCISE"
   | "PREDICTION_NON_EXERCISE"
   | "OTHER";
-const VO2MaxMeasurementMethodEnum = S.String;
-
 /** VO2 max measurement. */
 export interface VO2Max {
   /** Optional. The method used to measure the VO2 max value. */
@@ -1868,8 +1544,6 @@ export interface VO2Max {
   /** Required. VO2 max value measured as in ml consumed oxygen / kg of body weight / min. Must be in the range `[0, 100]`. */
   vo2Max?: number;
 }
-const VO2Max = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<VO2Max>;
-
 /** Body fat measurement. */
 export interface BodyFat {
   /** Required. The time at which body fat was measured. */
@@ -1877,8 +1551,6 @@ export interface BodyFat {
   /** Required. Body fat percentage. Must be in the range `[0, 100]`. */
   percentage?: number;
 }
-const BodyFat = OxygenSaturation as any as S.Schema<BodyFat>;
-
 /** Step count over the time interval. */
 export interface Steps {
   /** Required. Number of steps in the recorded interval. Must be in the range `[0, 1000000]`. */
@@ -1886,8 +1558,6 @@ export interface Steps {
   /** Required. Observed interval. */
   interval?: ObservationTimeInterval;
 }
-const Steps = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<Steps>;
-
 /** VO2 max value calculated based on the user's running activity. Value stored in ml/kg/min. */
 export interface RunVO2Max {
   /** Required. Run VO2 max value in ml/kg/min. Must be in the range `[0, 100]`. */
@@ -1895,24 +1565,15 @@ export interface RunVO2Max {
   /** Required. The time at which the metric was measured. */
   sampleTime?: ObservationSampleTime;
 }
-const RunVO2Max = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<RunVO2Max>;
-
 export type DailyRestingHeartRateMetadataCalculationMethodEnum =
   | "CALCULATION_METHOD_UNSPECIFIED"
   | "WITH_SLEEP"
   | "ONLY_WITH_AWAKE_DATA";
-const DailyRestingHeartRateMetadataCalculationMethodEnum = S.String;
-
 /** Metadata for the daily resting heart rate. */
 export interface DailyRestingHeartRateMetadata {
   /** Required. The method used to calculate the resting heart rate. */
   calculationMethod?: DailyRestingHeartRateMetadataCalculationMethodEnum | (string & {});
 }
-const DailyRestingHeartRateMetadata = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<DailyRestingHeartRateMetadata>;
-
 /** Measures the daily resting heart rate for a user, calculated using the all day heart rate measurements. */
 export interface DailyRestingHeartRate {
   /** Optional. Metadata for the daily resting heart rate. */
@@ -1922,11 +1583,6 @@ export interface DailyRestingHeartRate {
   /** Required. The resting heart rate value in beats per minute. */
   beatsPerMinute?: string;
 }
-const DailyRestingHeartRate = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<DailyRestingHeartRate>;
-
 export type HeartRateMetadataSensorLocationEnum =
   | "SENSOR_LOCATION_UNSPECIFIED"
   | "CHEST"
@@ -1935,14 +1591,10 @@ export type HeartRateMetadataSensorLocationEnum =
   | "HAND"
   | "EAR_LOBE"
   | "FOOT";
-const HeartRateMetadataSensorLocationEnum = S.String;
-
 export type HeartRateMetadataMotionContextEnum =
   | "MOTION_CONTEXT_UNSPECIFIED"
   | "ACTIVE"
   | "SEDENTARY";
-const HeartRateMetadataMotionContextEnum = S.String;
-
 /** Heart rate metadata. */
 export interface HeartRateMetadata {
   /** Optional. Indicates the location of the sensor that measured the heart rate. */
@@ -1950,8 +1602,6 @@ export interface HeartRateMetadata {
   /** Optional. Indicates the user's level of activity when the heart rate sample was measured */
   motionContext?: HeartRateMetadataMotionContextEnum | (string & {});
 }
-const HeartRateMetadata = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<HeartRateMetadata>;
-
 /** A heart rate measurement. */
 export interface HeartRate {
   /** Required. Observation time */
@@ -1961,8 +1611,6 @@ export interface HeartRate {
   /** Required. The heart rate value in beats per minute. Must be in the range `[1, 300]`. */
   beatsPerMinute?: string;
 }
-const HeartRate = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<HeartRate>;
-
 /** Distance traveled over an interval of time. */
 export interface Distance {
   /** Required. Distance in millimeters over the observed interval. Must be in the range `[0, 1000000000]`. */
@@ -1970,8 +1618,6 @@ export interface Distance {
   /** Required. Observed interval. */
   interval?: ObservationTimeInterval;
 }
-const Distance = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<Distance>;
-
 /** A computed or recorded metric. */
 export interface DataPoint {
   /** Optional. Data for points in the `daily-oxygen-saturation` daily data type collection. */
@@ -2063,19 +1709,12 @@ export interface DataPoint {
   /** Optional. Data for points in the `distance` interval data type collection. */
   distance?: Distance;
 }
-const DataPoint = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<DataPoint>;
-
 export interface CreateUsersDataTypesDataPointsRequest {
   /** Required. The parent resource name where the data point will be created. Format: `users/{user}/dataTypes/{data_type}` */
   parent: string;
   /** Request body */
   body?: DataPoint;
 }
-const CreateUsersDataTypesDataPointsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<CreateUsersDataTypesDataPointsRequest>;
-
 /** Counterpart of google.type.Interval, but using CivilDateTime. */
 export interface CivilTimeInterval {
   /** Required. The exclusive end of the range. */
@@ -2083,8 +1722,6 @@ export interface CivilTimeInterval {
   /** Required. The inclusive start of the range. */
   start?: CivilDateTime;
 }
-const CivilTimeInterval = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<CivilTimeInterval>;
-
 /** Request to roll up data points by civil time intervals. */
 export interface DailyRollUpDataPointsRequest {
   /** Optional. The next_page_token from a previous request, if any. All other request fields need to be the same as in the initial request when the page token is specified. */
@@ -2098,80 +1735,47 @@ export interface DailyRollUpDataPointsRequest {
   /** Optional. The maximum number of data points to return. If unspecified, at most 1440 data points will be returned. The maximum page size is 10000; values above that will be truncated accordingly. */
   pageSize?: number;
 }
-const DailyRollUpDataPointsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<DailyRollUpDataPointsRequest>;
-
 export interface DailyRollUpUsersDataTypesDataPointsRequest {
   /** Required. Parent data type of the Data Point collection. Format: `users/{user}/dataTypes/{data_type}`, e.g.: - `users/me/dataTypes/steps` - `users/me/dataTypes/distance` For a list of the supported data types see the DailyRollupDataPoint value union field. */
   parent: string;
   /** Request body */
   body?: DailyRollUpDataPointsRequest;
 }
-const DailyRollUpUsersDataTypesDataPointsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<DailyRollUpUsersDataTypesDataPointsRequest>;
-
 /** Represents the result of the rollup of the weight data type. */
 export interface WeightRollupValue {
   /** Average weight in grams. */
   weightGramsAvg?: number;
 }
-const WeightRollupValue = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<WeightRollupValue>;
-
 /** Represents the result of the rollup of the user's total calories. Note: Queries for the `total-calories` data type must include a time interval filter (such as `total_calories.interval.start_time` or `total_calories.interval.civil_start_time`). The maximum range is 14 days. Example filter query: `total_calories.interval.start_time >= "2026-04-20T00:00:00Z" AND total_calories.interval.start_time < "2026-04-21T00:00:00Z"` */
 export interface TotalCaloriesRollupValue {
   /** Sum of the total calories in kilocalories. */
   kcalSum?: number;
 }
-const TotalCaloriesRollupValue = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<TotalCaloriesRollupValue>;
-
 /** Represents the result of the rollup of the body fat data type. */
 export interface BodyFatRollupValue {
   /** Average body fat percentage. */
   bodyFatPercentageAvg?: number;
 }
-const BodyFatRollupValue = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<BodyFatRollupValue>;
-
 /** Result of the rollup of the user's distance. */
 export interface DistanceRollupValue {
   /** Sum of the distance in millimeters. */
   millimetersSum?: string;
 }
-const DistanceRollupValue = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<DistanceRollupValue>;
-
 /** Represents the result of the rollup of the user's sedentary periods. */
 export interface SedentaryPeriodRollupValue {
   /** The total time user spent sedentary during the interval. */
   durationSum?: string;
 }
-const SedentaryPeriodRollupValue = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<SedentaryPeriodRollupValue>;
-
 /** Represents the result of the rollup of the blood glucose data type. LINT: LEGACY_NAMES */
 export interface BloodGlucoseRollupValue {
   /** Average blood glucose level in mg/dL. */
   bloodGlucoseMilligramsPerDeciliterAvg?: number;
 }
-const BloodGlucoseRollupValue = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<BloodGlucoseRollupValue>;
-
 export type ActiveMinutesRollupByActivityLevelActivityLevelEnum =
   | "ACTIVITY_LEVEL_UNSPECIFIED"
   | "LIGHT"
   | "MODERATE"
   | "VIGOROUS";
-const ActiveMinutesRollupByActivityLevelActivityLevelEnum = S.String;
-
 /** Active minutes by activity level. */
 export interface ActiveMinutesRollupByActivityLevel {
   /** The level of activity. */
@@ -2179,27 +1783,12 @@ export interface ActiveMinutesRollupByActivityLevel {
   /** Number of whole minutes spent in activity. */
   activeMinutesSum?: string;
 }
-const ActiveMinutesRollupByActivityLevel = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ActiveMinutesRollupByActivityLevel>;
-
 export type ActiveMinutesRollupByActivityLevelList = Array<ActiveMinutesRollupByActivityLevel>;
-const ActiveMinutesRollupByActivityLevelList = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ActiveMinutesRollupByActivityLevelList>;
-
 /** Represents the result of the rollup of the active minutes data type. */
 export interface ActiveMinutesRollupValue {
   /** Active minutes by activity level. At most one record per activity level is allowed. */
   activeMinutesRollupByActivityLevel?: ActiveMinutesRollupByActivityLevelList;
 }
-const ActiveMinutesRollupValue = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<ActiveMinutesRollupValue>;
-
 /** Represents the result of the rollup of the user's daily heart rate variability personal range. */
 export interface RunVO2MaxRollupValue {
   /** Minimum value of run VO2 max in the interval.. */
@@ -2209,19 +1798,12 @@ export interface RunVO2MaxRollupValue {
   /** Average value of run VO2 max in the interval. */
   rateAvg?: number;
 }
-const RunVO2MaxRollupValue = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<RunVO2MaxRollupValue>;
-
 export type CaloriesInHeartRateZoneValueHeartRateZoneEnum =
   | "HEART_RATE_ZONE_TYPE_UNSPECIFIED"
   | "LIGHT"
   | "MODERATE"
   | "VIGOROUS"
   | "PEAK";
-const CaloriesInHeartRateZoneValueHeartRateZoneEnum = S.String;
-
 /** Represents the amount of kilocalories burned in a specific heart rate zone. */
 export interface CaloriesInHeartRateZoneValue {
   /** The amount of kilocalories burned in the specified heart rate zone. */
@@ -2229,27 +1811,12 @@ export interface CaloriesInHeartRateZoneValue {
   /** The heart rate zone. */
   heartRateZone?: CaloriesInHeartRateZoneValueHeartRateZoneEnum;
 }
-const CaloriesInHeartRateZoneValue = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<CaloriesInHeartRateZoneValue>;
-
 export type CaloriesInHeartRateZoneValueList = Array<CaloriesInHeartRateZoneValue>;
-const CaloriesInHeartRateZoneValueList = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<CaloriesInHeartRateZoneValueList>;
-
 /** Represents the result of the rollup of the calories in heart rate zone data type. */
 export interface CaloriesInHeartRateZoneRollupValue {
   /** List of calories burned in each heart rate zone. */
   caloriesInHeartRateZones?: CaloriesInHeartRateZoneValueList;
 }
-const CaloriesInHeartRateZoneRollupValue = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<CaloriesInHeartRateZoneRollupValue>;
-
 /** Represents the result of the rollup of the heart rate data type. */
 export interface HeartRateRollupValue {
   /** The minimum heart rate value in the interval. */
@@ -2259,11 +1826,6 @@ export interface HeartRateRollupValue {
   /** The maximum heart rate value in the interval. */
   beatsPerMinuteMax?: number;
 }
-const HeartRateRollupValue = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<HeartRateRollupValue>;
-
 /** Represents the result of the rollup of the core body temperature data type. */
 export interface CoreBodyTemperatureRollupValue {
   /** Average core body temperature in Celsius. */
@@ -2273,11 +1835,6 @@ export interface CoreBodyTemperatureRollupValue {
   /** Maximum core body temperature in Celsius. */
   temperatureCelsiusMax?: number;
 }
-const CoreBodyTemperatureRollupValue = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<CoreBodyTemperatureRollupValue>;
-
 /** Represents the result of the rollup of the active zone minutes data type. */
 export interface ActiveZoneMinutesRollupValue {
   /** Active zone minutes in `HeartRateZone.PEAK`. */
@@ -2287,11 +1844,6 @@ export interface ActiveZoneMinutesRollupValue {
   /** Active zone minutes in `HeartRateZone.CARDIO`. */
   sumInCardioHeartZone?: string;
 }
-const ActiveZoneMinutesRollupValue = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<ActiveZoneMinutesRollupValue>;
-
 export type VolumeQuantityRollupUserProvidedUnitLastEnum =
   | "VOLUME_UNIT_UNSPECIFIED"
   | "CUP_IMPERIAL"
@@ -2302,8 +1854,6 @@ export type VolumeQuantityRollupUserProvidedUnitLastEnum =
   | "MILLILITER"
   | "PINT_IMPERIAL"
   | "PINT_US";
-const VolumeQuantityRollupUserProvidedUnitLastEnum = S.String;
-
 /** Rollup for volume quantity. */
 export interface VolumeQuantityRollup {
   /** Required. The sum of volume in milliliters. */
@@ -2311,35 +1861,21 @@ export interface VolumeQuantityRollup {
   /** Optional. The user provided unit on the last element. */
   userProvidedUnitLast?: VolumeQuantityRollupUserProvidedUnitLastEnum;
 }
-const VolumeQuantityRollup = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<VolumeQuantityRollup>;
-
 /** Represents the result of the rollup of the hydration log data type. */
 export interface HydrationLogRollupValue {
   /** Rollup for amount consumed. */
   amountConsumed?: VolumeQuantityRollup;
 }
-const HydrationLogRollupValue = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<HydrationLogRollupValue>;
-
 /** Represents the result of the rollup of the user's floors. */
 export interface FloorsRollupValue {
   /** Sum of the floors count. */
   countSum?: string;
 }
-const FloorsRollupValue = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<FloorsRollupValue>;
-
 /** Represents the result of the rollup of the steps data type. */
 export interface StepsRollupValue {
   /** Total number of steps in the interval. */
   countSum?: string;
 }
-const StepsRollupValue = FloorsRollupValue as any as S.Schema<StepsRollupValue>;
-
 export type WeightQuantityRollupUserProvidedUnitLastEnum =
   | "WEIGHT_UNIT_UNSPECIFIED"
   | "GRAM"
@@ -2350,8 +1886,6 @@ export type WeightQuantityRollupUserProvidedUnitLastEnum =
   | "MILLIGRAM"
   | "MICROGRAM"
   | "NANOGRAM";
-const WeightQuantityRollupUserProvidedUnitLastEnum = S.String;
-
 /** Rollup for the weight. */
 export interface WeightQuantityRollup {
   /** Optional. The user provided unit on the last element. */
@@ -2359,11 +1893,6 @@ export interface WeightQuantityRollup {
   /** Required. The sum of the weight in grams. */
   gramsSum?: number;
 }
-const WeightQuantityRollup = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<WeightQuantityRollup>;
-
 export type NutrientQuantityRollupNutrientEnum =
   | "NUTRIENT_UNSPECIFIED"
   | "BIOTIN"
@@ -2405,8 +1934,6 @@ export type NutrientQuantityRollupNutrientEnum =
   | "VITAMIN_K"
   | "ZINC"
   | "FOLATE";
-const NutrientQuantityRollupNutrientEnum = S.String;
-
 /** Nutrient quantity rollup. */
 export interface NutrientQuantityRollup {
   /** Required. Aggregated nutrient weight. */
@@ -2414,17 +1941,7 @@ export interface NutrientQuantityRollup {
   /** Required. Aggregated nutrient. */
   nutrient?: NutrientQuantityRollupNutrientEnum;
 }
-const NutrientQuantityRollup = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<NutrientQuantityRollup>;
-
 export type NutrientQuantityRollupList = Array<NutrientQuantityRollup>;
-const NutrientQuantityRollupList = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<NutrientQuantityRollupList>;
-
 export type EnergyQuantityRollupUserProvidedUnitLastEnum =
   | "ENERGY_UNIT_UNSPECIFIED"
   | "JOULE"
@@ -2432,8 +1949,6 @@ export type EnergyQuantityRollupUserProvidedUnitLastEnum =
   | "KILOCALORIE"
   | "SMALL_CALORIE"
   | "CALORIE";
-const EnergyQuantityRollupUserProvidedUnitLastEnum = S.String;
-
 /** Rollup for the energy quantity. */
 export interface EnergyQuantityRollup {
   /** Required. The sum of the energy in kilocalories. */
@@ -2441,11 +1956,6 @@ export interface EnergyQuantityRollup {
   /** Optional. The user provided unit on the last element. */
   userProvidedUnitLast?: EnergyQuantityRollupUserProvidedUnitLastEnum;
 }
-const EnergyQuantityRollup = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<EnergyQuantityRollup>;
-
 /** Represents the result of the rollup of the nutrition log data type. */
 export interface NutritionLogRollupValue {
   /** Total fat rollup. */
@@ -2459,28 +1969,16 @@ export interface NutritionLogRollupValue {
   /** Energy rollup. */
   energy?: EnergyQuantityRollup;
 }
-const NutritionLogRollupValue = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<NutritionLogRollupValue>;
-
 /** Represents the result of the rollup of the user's altitude. */
 export interface AltitudeRollupValue {
   /** Sum of the altitude gain in millimeters. */
   gainMillimetersSum?: string;
 }
-const AltitudeRollupValue = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<AltitudeRollupValue>;
-
 /** Represents the result of the rollup of active energy burned. */
 export interface ActiveEnergyBurnedRollupValue {
   /** Output only. Sum of the active energy burned in kilocalories. */
   kcalSum?: number;
 }
-const ActiveEnergyBurnedRollupValue = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ActiveEnergyBurnedRollupValue>;
-
 /** Represents the result of the rollup of the user's daily heart rate variability personal range. */
 export interface HeartRateVariabilityPersonalRangeRollupValue {
   /** The lower bound of the user's average heart rate variability personal range. */
@@ -2488,19 +1986,12 @@ export interface HeartRateVariabilityPersonalRangeRollupValue {
   /** The upper bound of the user's average heart rate variability personal range. */
   averageHeartRateVariabilityMillisecondsMax?: number;
 }
-const HeartRateVariabilityPersonalRangeRollupValue = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<HeartRateVariabilityPersonalRangeRollupValue>;
-
 export type ActivityLevelRollupByActivityLevelTypeActivityLevelTypeEnum =
   | "ACTIVITY_LEVEL_TYPE_UNSPECIFIED"
   | "SEDENTARY"
   | "LIGHTLY_ACTIVE"
   | "MODERATELY_ACTIVE"
   | "VERY_ACTIVE";
-const ActivityLevelRollupByActivityLevelTypeActivityLevelTypeEnum = S.String;
-
 /** Represents the total duration in a specific activity level type. */
 export interface ActivityLevelRollupByActivityLevelType {
   /** Activity level type. */
@@ -2508,28 +1999,13 @@ export interface ActivityLevelRollupByActivityLevelType {
   /** Total duration in the activity level type. */
   totalDuration?: string;
 }
-const ActivityLevelRollupByActivityLevelType = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ActivityLevelRollupByActivityLevelType>;
-
 export type ActivityLevelRollupByActivityLevelTypeList =
   Array<ActivityLevelRollupByActivityLevelType>;
-const ActivityLevelRollupByActivityLevelTypeList = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ActivityLevelRollupByActivityLevelTypeList>;
-
 /** Represents the result of the rollup of the activity level data type. */
 export interface ActivityLevelRollupValue {
   /** List of total durations in each activity level type. */
   activityLevelRollupsByActivityLevelType?: ActivityLevelRollupByActivityLevelTypeList;
 }
-const ActivityLevelRollupValue = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ActivityLevelRollupValue>;
-
 /** Represents the rollup value for the daily resting heart rate data type. */
 export interface RestingHeartRatePersonalRangeRollupValue {
   /** The lower bound of the user's daily resting heart rate personal range. */
@@ -2537,29 +2013,17 @@ export interface RestingHeartRatePersonalRangeRollupValue {
   /** The upper bound of the user's daily resting heart rate personal range. */
   beatsPerMinuteMax?: number;
 }
-const RestingHeartRatePersonalRangeRollupValue = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<RestingHeartRatePersonalRangeRollupValue>;
-
 /** Represents the result of the rollup of the swim lengths data type. */
 export interface SwimLengthsDataRollupValue {
   /** Total number of swim strokes in the interval. */
   strokeCountSum?: string;
 }
-const SwimLengthsDataRollupValue = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<SwimLengthsDataRollupValue>;
-
 export type TimeInHeartRateZoneValueHeartRateZoneEnum =
   | "HEART_RATE_ZONE_TYPE_UNSPECIFIED"
   | "LIGHT"
   | "MODERATE"
   | "VIGOROUS"
   | "PEAK";
-const TimeInHeartRateZoneValueHeartRateZoneEnum = S.String;
-
 /** Represents the total time spent in a specific heart rate zone. */
 export interface TimeInHeartRateZoneValue {
   /** The total time spent in the specified heart rate zone. */
@@ -2567,27 +2031,12 @@ export interface TimeInHeartRateZoneValue {
   /** The heart rate zone. */
   heartRateZone?: TimeInHeartRateZoneValueHeartRateZoneEnum;
 }
-const TimeInHeartRateZoneValue = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<TimeInHeartRateZoneValue>;
-
 export type TimeInHeartRateZoneValueList = Array<TimeInHeartRateZoneValue>;
-const TimeInHeartRateZoneValueList = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<TimeInHeartRateZoneValueList>;
-
 /** Represents the result of the rollup of the time in heart rate zone data type. */
 export interface TimeInHeartRateZoneRollupValue {
   /** List of time spent in each heart rate zone. */
   timeInHeartRateZones?: TimeInHeartRateZoneValueList;
 }
-const TimeInHeartRateZoneRollupValue = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<TimeInHeartRateZoneRollupValue>;
-
 /** Value of a daily rollup for a single civil time interval (aggregation window) of reconciled data points from all data sources, excluding those data points that are identified as recorded by wearables in intervals when they were not actually worn. */
 export interface DailyRollupDataPoint {
   /** Returned by default when rolling up data points from the `weight` data type, or when requested explicitly using the `weight` rollup type identifier. */
@@ -2641,17 +2090,7 @@ export interface DailyRollupDataPoint {
   /** Returned by default when rolling up data points from the `time-in-heart-rate-zone` data type, or when requested explicitly using the `time-in-heart-rate-zone` rollup type identifier. */
   timeInHeartRateZone?: TimeInHeartRateZoneRollupValue;
 }
-const DailyRollupDataPoint = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<DailyRollupDataPoint>;
-
 export type DailyRollupDataPointList = Array<DailyRollupDataPoint>;
-const DailyRollupDataPointList = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<DailyRollupDataPointList>;
-
 /** Response containing the list of rolled up data points. */
 export interface DailyRollUpDataPointsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2659,65 +2098,33 @@ export interface DailyRollUpDataPointsResponse {
   /** Values for each aggregation time window. */
   rollupDataPoints?: DailyRollupDataPointList;
 }
-const DailyRollUpDataPointsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<DailyRollUpDataPointsResponse>;
-
 export interface DeleteProjectsSubscribersRequest {
   /** Optional. If set to true, any child resources (e.g., subscriptions) will also be deleted. If false (default) and child resources exist, the request will fail. */
   force?: boolean;
   /** Required. The name of the subscriber to delete. Format: projects/{project}/subscribers/{subscriber} Example: projects/my-project/subscribers/my-subscriber-123 The {subscriber} ID is user-settable (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) or system-generated if not provided during creation. */
   name: string;
 }
-const DeleteProjectsSubscribersRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<DeleteProjectsSubscribersRequest>;
-
 export interface DeleteProjectsSubscribersSubscriptionsRequest {
   /** Required. The resource name of the subscription to delete. Format: `projects/{project}/subscribers/{subscriber}/subscriptions/{subscription}` Example: `projects/my-project/subscribers/my-subscriber-123/subscriptions/my-subscription-456` The {subscriber} ID is user-settable (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) if provided during creation, or system-generated otherwise. The {subscription} ID is user-settable (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) or system-generated if not provided during creation. */
   name: string;
 }
-const DeleteProjectsSubscribersSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<DeleteProjectsSubscribersSubscriptionsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<Empty>;
-
 export interface ExportExerciseTcxUsersDataTypesDataPointsRequest {
   /** Required. The resource name of the exercise data point to export. Format: `users/{user}/dataTypes/exercise/dataPoints/{data_point}` Example: `users/me/dataTypes/exercise/dataPoints/2026443605080188808` The `{user}` is the alias `"me"` currently. Future versions may support user IDs. The `{data_point}` ID maps to the exercise ID, which is a long integer. */
   name: string;
   /** Optional. Indicates whether to include the TCX data points when the GPS data is not available. If not specified, defaults to `false` and partial data will not be included. */
   partialData?: boolean;
 }
-const ExportExerciseTcxUsersDataTypesDataPointsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ExportExerciseTcxUsersDataTypesDataPointsRequest>;
-
 /** Represents a Response for exporting exercise data in TCX format. */
 export interface ExportExerciseTcxResponse {
   /** Contains the exported TCX data. This field is intended for gRPC clients, as media download integration is not supported for gRPC. HTTP clients should instead use the `alt=media` query parameter to download the raw binary TCX file. */
   tcxData?: string;
 }
-const ExportExerciseTcxResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<ExportExerciseTcxResponse>;
-
 export interface GetIdentityUsersRequest {
   /** Required. The resource name of the Identity. Format: `users/me/identity` */
   name: string;
 }
-const GetIdentityUsersRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<GetIdentityUsersRequest>;
-
 /** Represents details about the Google user's identity. */
 export interface Identity {
   /** Output only. The legacy Fitbit User identifier. This is the Fitbit ID used in the legacy Fitbit APIs (v1-v3). It can be referenced by clients migrating from the legacy Fitbit APIs to map their existing identifiers to the new Google user ID. It **must not** be used for any other purpose. It is not of any use for new clients using only the Google Health APIs. Valid values are strings of 1-63 characters, and valid characters are lowercase and uppercase letters, numbers, and hyphens. */
@@ -2727,17 +2134,10 @@ export interface Identity {
   /** Identifier. The resource name of this Identity resource. Format: `users/me/identity` */
   name?: string;
 }
-const Identity = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<Identity>;
-
 export interface GetIrnProfileUsersRequest {
   /** Required. The resource name of the IRN Profile. Format: `users/{user}/irnProfile` Example: `users/1234567890/irnProfile` or `users/me/irnProfile` The {user} ID is a system-generated Google Health API user ID, a string of 1-63 characters consisting of lowercase and uppercase letters, numbers, and hyphens. The literal `me` can also be used to refer to the authenticated user. */
   name: string;
 }
-const GetIrnProfileUsersRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetIrnProfileUsersRequest>;
-
 /** Irregular Rhythm Notifications (IRN) Profile details. The Irregular Rhythm Notifications (IRN) feature checks for signs of atrial fibrillation (AFib). The IrnProfile details include information about the user's onboarding status, enrollment status, and the last update time of analyzable data for this feature. */
 export interface IrnProfile {
   /** Output only. The timestamp of the last piece of analyzable data synced by the user. */
@@ -2749,17 +2149,10 @@ export interface IrnProfile {
   /** Required. Whether or not the user is currently enrolled in having their data processed for IRN alerts. */
   enrollmentStatus?: boolean;
 }
-const IrnProfile = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<IrnProfile>;
-
 export interface GetProfileUsersRequest {
   /** Required. The name of the Profile. Format: `users/me/profile`. */
   name: string;
 }
-const GetProfileUsersRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<GetProfileUsersRequest>;
-
 /** Profile details. */
 export interface Profile {
   /** Optional. The user's user configured running stride length, in millimeters. The user must consent to the following access scope to access this field: - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly` */
@@ -2777,72 +2170,47 @@ export interface Profile {
   /** Output only. The automatically calculated walking stride length, in millimeters. The user must consent to the following access scope to access this field: - `https://www.googleapis.com/auth/googlehealth.activity_and_fitness.readonly` */
   autoWalkingStrideLengthMm?: number;
 }
-const Profile = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<Profile>;
-
 export interface GetSettingsUsersRequest {
   /** Required. The name of the Settings. Format: `users/me/settings`. */
   name: string;
 }
-const GetSettingsUsersRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<GetSettingsUsersRequest>;
-
 export type SettingsSwimUnitEnum = "SWIM_UNIT_UNSPECIFIED" | "SWIM_UNIT_METERS" | "SWIM_UNIT_YARDS";
-const SettingsSwimUnitEnum = S.String;
-
 export type SettingsWaterUnitEnum =
   | "WATER_UNIT_UNSPECIFIED"
   | "WATER_UNIT_ML"
   | "WATER_UNIT_FL_OZ"
   | "WATER_UNIT_CUP";
-const SettingsWaterUnitEnum = S.String;
-
 export type SettingsStrideLengthWalkingTypeEnum =
   | "STRIDE_LENGTH_TYPE_UNSPECIFIED"
   | "STRIDE_LENGTH_TYPE_DEFAULT"
   | "STRIDE_LENGTH_TYPE_MANUAL"
   | "STRIDE_LENGTH_TYPE_AUTO";
-const SettingsStrideLengthWalkingTypeEnum = S.String;
-
 export type SettingsStrideLengthRunningTypeEnum =
   | "STRIDE_LENGTH_TYPE_UNSPECIFIED"
   | "STRIDE_LENGTH_TYPE_DEFAULT"
   | "STRIDE_LENGTH_TYPE_MANUAL"
   | "STRIDE_LENGTH_TYPE_AUTO";
-const SettingsStrideLengthRunningTypeEnum = S.String;
-
 export type SettingsGlucoseUnitEnum =
   | "GLUCOSE_UNIT_UNSPECIFIED"
   | "GLUCOSE_UNIT_MG_DL"
   | "GLUCOSE_UNIT_MMOL_L";
-const SettingsGlucoseUnitEnum = S.String;
-
 export type SettingsTemperatureUnitEnum =
   | "TEMPERATURE_UNIT_UNSPECIFIED"
   | "TEMPERATURE_UNIT_CELSIUS"
   | "TEMPERATURE_UNIT_FAHRENHEIT";
-const SettingsTemperatureUnitEnum = S.String;
-
 export type SettingsDistanceUnitEnum =
   | "DISTANCE_UNIT_UNSPECIFIED"
   | "DISTANCE_UNIT_MILES"
   | "DISTANCE_UNIT_KILOMETERS";
-const SettingsDistanceUnitEnum = S.String;
-
 export type SettingsHeightUnitEnum =
   | "HEIGHT_UNIT_UNSPECIFIED"
   | "HEIGHT_UNIT_INCHES"
   | "HEIGHT_UNIT_CENTIMETERS";
-const SettingsHeightUnitEnum = S.String;
-
 export type SettingsWeightUnitEnum =
   | "WEIGHT_UNIT_UNSPECIFIED"
   | "WEIGHT_UNIT_POUNDS"
   | "WEIGHT_UNIT_STONE"
   | "WEIGHT_UNIT_KILOGRAMS";
-const SettingsWeightUnitEnum = S.String;
-
 /** Settings details. */
 export interface Settings {
   /** Output only. The food language code derived from the user's food database. Possible values: `'en-US'`, `'en-GB'`, `'de-DE'`, `'es-ES'`, `'fr-FR'`, `'zh-CN'`, `'zh-TW'`, `'ja-JP'`, `'en-AU'`, `'en-CA'`, `'it-IT'`, `'ko-KR'`, `'es-MX'`, `'en-IN'`, `'en-SG'`, `'en-PH'`, `'en-IE'`, `'fr-CA'`. Updates to this field are currently not supported. */
@@ -2876,8 +2244,6 @@ export interface Settings {
   /** Optional. The measurement unit defined in the user's account settings. */
   weightUnit?: SettingsWeightUnitEnum | (string & {});
 }
-const Settings = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<Settings>;
-
 /** Represents the POST body contained in a GetShlManifestRequest This message is nested to represent that See https://build.fhir.org/ig/HL7/smart-health-cards-and-links/links-specification.html#smart-health-link-manifest-request */
 export interface ManifestParams {
   /** Optional. Integer upper bound on the length of embedded payloads */
@@ -2887,19 +2253,12 @@ export interface ManifestParams {
   /** Optional. */
   passcode?: string;
 }
-const ManifestParams = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<ManifestParams>;
-
 export interface GetShlManifestShlMRequest {
   /** Required. External ID mapping to a ShlSharedLinkCapabilityToken object See https://docs.google.com/document/d/1Pch20pxJHRbsaMxp0EYgs3ZU0Gu7QTUznk8LhvbQvfY/edit?tab=t.0#heading=h.17wg41voij6q */
   externalShlId: string;
   /** Request body */
   body?: ManifestParams;
 }
-const GetShlManifestShlMRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<GetShlManifestShlMRequest>;
-
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and non-streaming API methods in the request as well as the response. It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body. Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
   /** The HTTP request/response body as raw binary. */
@@ -2909,37 +2268,21 @@ export interface HttpBody {
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
   extensions?: DocumentMapList;
 }
-const HttpBody = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<HttpBody>;
-
 export interface GetShlRRequest {
   /** Required. External ID mapping to a ShlSharedLinkCapabilityToken object See https://docs.google.com/document/d/1Pch20pxJHRbsaMxp0EYgs3ZU0Gu7QTUznk8LhvbQvfY/edit?tab=t.0#heading=h.17wg41voij6q */
   externalShlId: string;
   /** Required. Encoded, encrypted message containing resource access details */
   resourceToken: string;
 }
-const GetShlRRequest = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<GetShlRRequest>;
-
 export interface GetUsersDataTypesDataPointsRequest {
   /** Required. The name of the data point to retrieve. Format: `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` See DataPoint.name for examples and possible values. */
   name: string;
 }
-const GetUsersDataTypesDataPointsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<GetUsersDataTypesDataPointsRequest>;
-
 export interface GetUsersPairedDevicesRequest {
   /** Required. The name of the device to retrieve. Format: users/{user}/devices/{device} */
   name: string;
 }
-const GetUsersPairedDevicesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<GetUsersPairedDevicesRequest>;
-
 export type PairedDeviceDeviceTypeEnum = "DEVICE_TYPE_UNSPECIFIED" | "TRACKER" | "SCALE";
-const PairedDeviceDeviceTypeEnum = S.String;
-
 /** User's Paired 1P Device The PairedDevice details include information about the device type, battery status, battery level, last sync time, device version, mac address, and features. */
 export interface PairedDevice {
   /** Output only. The product name of the device */
@@ -2959,8 +2302,6 @@ export interface PairedDevice {
   /** Output only. The device type. Supported: TRACKER | SCALE */
   deviceType?: PairedDeviceDeviceTypeEnum;
 }
-const PairedDevice = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<PairedDevice>;
-
 export interface ListProjectsSubscribersRequest {
   /** Optional. A page token, received from a previous `ListSubscribers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscribers` must match the call that provided the page token. */
   pageToken?: string;
@@ -2969,14 +2310,7 @@ export interface ListProjectsSubscribersRequest {
   /** Required. The parent, which owns this collection of subscribers. Format: projects/{project} */
   parent: string;
 }
-const ListProjectsSubscribersRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<ListProjectsSubscribersRequest>;
-
 export type SubscriberStateEnum = "STATE_UNSPECIFIED" | "UNVERIFIED" | "ACTIVE" | "INACTIVE";
-const SubscriberStateEnum = S.String;
-
 /** -- Resource Messages -- A subscriber receives notifications from Google Health API. */
 export interface Subscriber {
   /** Optional. Configuration for the subscriber. */
@@ -2994,11 +2328,7 @@ export interface Subscriber {
   /** Output only. The state of the subscriber. */
   state?: SubscriberStateEnum | (string & {});
 }
-const Subscriber = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<Subscriber>;
-
 export type SubscriberList = Array<Subscriber>;
-const SubscriberList = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<SubscriberList>;
-
 /** Response message for ListSubscribers. */
 export interface ListSubscribersResponse {
   /** Subscribers from the specified project. */
@@ -3008,11 +2338,6 @@ export interface ListSubscribersResponse {
   /** The total number of subscribers matching the request. */
   totalSize?: number;
 }
-const ListSubscribersResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ListSubscribersResponse>;
-
 export interface ListProjectsSubscribersSubscriptionsRequest {
   /** Optional. A page token, received from a previous `ListSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSubscriptions` must match the call that provided the page token. */
   pageToken?: string;
@@ -3023,14 +2348,7 @@ export interface ListProjectsSubscribersSubscriptionsRequest {
   /** Optional. A filter to apply to the list of subscriptions. The filter syntax is described in https://google.aip.dev/160. The filter can be applied to the following fields: - `user` - `data_type` The `user` identifier (e.g., `user1` in `users/user1`) refers to the public `health_user_id` Example: user = "users/user1" Example: user = "users/user1" OR user = "users/user2" Example: user = "users/user1" AND (data_type = "sleep" OR data_type = "weight") */
   filter?: string;
 }
-const ListProjectsSubscribersSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ListProjectsSubscribersSubscriptionsRequest>;
-
 export type SubscriptionList = Array<Subscription>;
-const SubscriptionList = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<SubscriptionList>;
-
 /** Response message for ListSubscriptions. */
 export interface ListSubscriptionsResponse {
   /** The subscriptions from the specified subscriber. */
@@ -3038,11 +2356,6 @@ export interface ListSubscriptionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListSubscriptionsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<ListSubscriptionsResponse>;
-
 export interface ListUsersDataTypesDataPointsRequest {
   /** Required. Parent data type of the Data Point collection. Format: `users/me/dataTypes/{data_type}`, e.g.: - `users/me/dataTypes/steps` - `users/me/dataTypes/weight` For a list of the supported data types see the DataPoint data union field. */
   parent: string;
@@ -3055,14 +2368,7 @@ export interface ListUsersDataTypesDataPointsRequest {
   /** Optional. The data source family name to filter by. If empty, data points from all available data sources will be returned. Format: `users/me/dataSourceFamilies/{data_source_family}` The supported values are: - `users/me/dataSourceFamilies/all-sources` - Default value. Includes data from all available data sources. - `users/me/dataSourceFamilies/google-wearables` - Includes data from Google and Fitbit tracker devices (such as Fitbit trackers and Pixel Watch). Excludes manually logged data. - `users/me/dataSourceFamilies/google-sources` - Includes first-party Google data, such as data from tracker devices, manually logged data, and Health Connect. - `users/me/dataSourceFamilies/self-sources` - Includes only the data the calling client wrote through this API, that is, data points whose data source was registered through this API with the same OAuth client ID as the caller. Callers that were only granted write scopes for the requested data types may only read the data they wrote themselves: their requests are implicitly restricted to `self-sources`, and requesting any other data source family fails with `PERMISSION_DENIED`. If no data point matches the requested data source family, the response is an empty list rather than an error. Filtering by data source family is not supported for the `sleep`, `food` and `food-measurement-unit` data types, because the underlying listing implementation cannot restrict results by data source. Such requests fail with `INVALID_ARGUMENT` when the data source family is set explicitly, and with `PERMISSION_DENIED` when the restriction is only implied by the caller's scopes. For `sleep`, use ReconcileDataPoints instead. */
   dataSourceFamily?: string;
 }
-const ListUsersDataTypesDataPointsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<ListUsersDataTypesDataPointsRequest>;
-
 export type DataPointList = Array<DataPoint>;
-const DataPointList = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<DataPointList>;
-
 /** Response containing raw data points matching the query */
 export interface ListDataPointsResponse {
   /** Data points matching the query */
@@ -3070,11 +2376,6 @@ export interface ListDataPointsResponse {
   /** Next page token, empty if the response is complete */
   nextPageToken?: string;
 }
-const ListDataPointsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<ListDataPointsResponse>;
-
 export interface ListUsersPairedDevicesRequest {
   /** Required. The parent, which owns this collection of devices. Format: users/{user} */
   parent: string;
@@ -3083,14 +2384,7 @@ export interface ListUsersPairedDevicesRequest {
   /** Optional. A page token, received from a previous `ListPairedDevices` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPairedDevices` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListUsersPairedDevicesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<ListUsersPairedDevicesRequest>;
-
 export type PairedDeviceList = Array<PairedDevice>;
-const PairedDeviceList = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<PairedDeviceList>;
-
 /** Response message for ListPairedDevices. */
 export interface ListPairedDevicesResponse {
   /** The paired devices of the user. */
@@ -3098,11 +2392,6 @@ export interface ListPairedDevicesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListPairedDevicesResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<ListPairedDevicesResponse>;
-
 export interface PatchProjectsSubscribersRequest {
   /** Optional. A field mask that specifies which fields of the Subscriber message are to be updated. This allows for partial updates. Supported fields: - endpoint_uri - subscriber_configs - endpoint_authorization */
   updateMask?: string;
@@ -3111,11 +2400,6 @@ export interface PatchProjectsSubscribersRequest {
   /** Request body */
   body?: Subscriber;
 }
-const PatchProjectsSubscribersRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<PatchProjectsSubscribersRequest>;
-
 export interface PatchProjectsSubscribersSubscriptionsRequest {
   /** Identifier. The resource name of the Subscription. Format: `projects/{project}/subscribers/{subscriber}/subscriptions/{subscription}` Example: `projects/my-project/subscribers/my-subscriber-123/subscriptions/my-subscription-456` The {project} ID is mandatory (6-30 characters, matching /a-z{6,30}/) The {subscriber} ID is user-settable (4-36 characters, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) if provided during creation, or system-generated otherwise. The {subscription} ID is user-settable (4-36 chars, matching /[a-z]([a-z0-9-]{2,34}[a-z0-9])/) or system-generated otherwise. */
   name: string;
@@ -3124,22 +2408,12 @@ export interface PatchProjectsSubscribersSubscriptionsRequest {
   /** Request body */
   body?: Subscription;
 }
-const PatchProjectsSubscribersSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<PatchProjectsSubscribersSubscriptionsRequest>;
-
 export interface PatchUsersDataTypesDataPointsRequest {
   /** Identifier. Data point name, only supported for the subset of identifiable data types. For the majority of the data types, individual data points do not need to be identified and this field would be empty. Format: `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` Example: `users/abcd1234/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` The `{user}` ID is a system-generated identifier, as described in Identity.health_user_id. The `{data_type}` ID corresponds to the kebab-case version of the field names in the DataPoint data union field, e.g. `heart-rate` for the `heart_rate` field. The `{data_point}` ID can be client-provided or system-generated. If client-provided, it must be a string of 4-63 characters, containing only lowercase letters, numbers, and hyphens. */
   name: string;
   /** Request body */
   body?: DataPoint;
 }
-const PatchUsersDataTypesDataPointsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<PatchUsersDataTypesDataPointsRequest>;
-
 export interface ReconcileUsersDataTypesDataPointsRequest {
   /** Optional. The data source family name to reconcile. If empty, data points from all data sources will be reconciled. Format: `users/me/dataSourceFamilies/{data_source_family}` - `users/me/dataSourceFamilies/all-sources` - Default value. Includes data from all available data sources. - `users/me/dataSourceFamilies/google-wearables` - Includes data from Google and Fitbit tracker devices (such as Fitbit trackers and Pixel Watch). Excludes manually logged data. - `users/me/dataSourceFamilies/google-sources` - Includes first-party Google data, such as data from tracker devices, manually logged data, and Health Connect. - `users/me/dataSourceFamilies/self-sources` - Includes only the data the calling client wrote through this API, that is, data points whose data source was registered through this API with the same OAuth client ID as the caller. Callers that were only granted write scopes for the requested data type may only read the data they wrote themselves: their requests are implicitly restricted to `self-sources`, and requesting any other data source family fails with `PERMISSION_DENIED`. If no data point matches the requested data source family, the response is an empty list rather than an error. */
   dataSourceFamily?: string;
@@ -3152,11 +2426,6 @@ export interface ReconcileUsersDataTypesDataPointsRequest {
   /** Required. Parent data type of the Data Point collection. Format: `users/me/dataTypes/{data_type}`, e.g.: - `users/me/dataTypes/steps` - `users/me/dataTypes/heart-rate` For a list of the supported data types see the DataPoint data union field. */
   parent: string;
 }
-const ReconcileUsersDataTypesDataPointsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ReconcileUsersDataTypesDataPointsRequest>;
-
 /** A reconciled computed or recorded metric. */
 export interface ReconciledDataPoint {
   /** Data for points in the `floors` interval data type collection. */
@@ -3230,14 +2499,7 @@ export interface ReconciledDataPoint {
   /** Data for points in the `oxygen-saturation` sample data type collection. */
   oxygenSaturation?: OxygenSaturation;
 }
-const ReconciledDataPoint = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<ReconciledDataPoint>;
-
 export type ReconciledDataPointList = Array<ReconciledDataPoint>;
-const ReconciledDataPointList = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<ReconciledDataPointList>;
-
 /** Response containing the list of reconciled DataPoints. */
 export interface ReconcileDataPointsResponse {
   /** Data points matching the query */
@@ -3245,11 +2507,6 @@ export interface ReconcileDataPointsResponse {
   /** Next page token, empty if the response is complete */
   nextPageToken?: string;
 }
-const ReconcileDataPointsResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ReconcileDataPointsResponse>;
-
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
@@ -3257,8 +2514,6 @@ export interface Interval {
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
   endTime?: string;
 }
-const Interval = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<Interval>;
-
 /** Request to roll up data points by physical time intervals. */
 export interface RollUpDataPointsRequest {
   /** Required. The size of the time window to group data points into before applying the aggregation functions. Must be at least 1 second. If the requested range is not an exact multiple of `window_size`, the final bucket chronologically will be truncated at the upper endpoint of the range and will cover a duration shorter than `window_size`. */
@@ -3272,22 +2527,12 @@ export interface RollUpDataPointsRequest {
   /** Required. Closed-open range of data points that will be rolled up. The maximum range for `calories-in-heart-rate-zone`, `heart-rate`, `active-minutes` and `total-calories` is 14 days. The maximum range for all other data types is 90 days. */
   range?: Interval;
 }
-const RollUpDataPointsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<RollUpDataPointsRequest>;
-
 export interface RollUpUsersDataTypesDataPointsRequest {
   /** Required. Parent data type of the Data Point collection. Format: `users/{user}/dataTypes/{data_type}`, e.g.: - `users/me/dataTypes/steps` - `users/me/dataTypes/distance` For a list of the supported data types see the RollupDataPoint value union field. */
   parent: string;
   /** Request body */
   body?: RollUpDataPointsRequest;
 }
-const RollUpUsersDataTypesDataPointsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<RollUpUsersDataTypesDataPointsRequest>;
-
 /** Value of a rollup for a single physical time interval (aggregation window) of reconciled data points from all data sources, excluding those data points that are identified as recorded by wearables in intervals when they were not actually worn. */
 export interface RollupDataPoint {
   /** Returned by default when rolling up data points from the `active-zone-minutes` data type, or when requested explicitly using the `active-zone-minutes` rollup type identifier. */
@@ -3337,11 +2582,7 @@ export interface RollupDataPoint {
   /** Returned by default when rolling up data points from the `nutrition-log` data type, or when requested explicitly using the `nutrition-log` rollup type identifier. */
   nutritionLog?: NutritionLogRollupValue;
 }
-const RollupDataPoint = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<RollupDataPoint>;
-
 export type RollupDataPointList = Array<RollupDataPoint>;
-const RollupDataPointList = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<RollupDataPointList>;
-
 /** Response containing the list of rolled up data points. */
 export interface RollUpDataPointsResponse {
   /** Values for each aggregation time window. */
@@ -3349,11 +2590,6 @@ export interface RollUpDataPointsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const RollUpDataPointsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<RollUpDataPointsResponse>;
-
 export interface UpdateProfileUsersRequest {
   /** Identifier. The resource name of this Profile resource. Format: `users/{user}/profile` Example: `users/1234567890/profile` or `users/me/profile` The {user} ID is a system-generated Google Health API user ID, a string of 1-63 characters consisting of lowercase and uppercase letters, numbers, and hyphens. The literal `me` can also be used to refer to the authenticated user. This field is read-only. */
   name: string;
@@ -3362,11 +2598,6 @@ export interface UpdateProfileUsersRequest {
   /** Request body */
   body?: Profile;
 }
-const UpdateProfileUsersRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<UpdateProfileUsersRequest>;
-
 export interface UpdateSettingsUsersRequest {
   /** Identifier. The resource name of this Settings resource. Format: `users/{user}/settings` Example: `users/1234567890/settings` or `users/me/settings` The {user} ID is a system-generated Google Health API user ID, a string of 1-63 characters consisting of lowercase and uppercase letters, numbers, and hyphens. The literal `me` can also be used to refer to the authenticated user. This field is read-only. */
   name: string;
@@ -3375,11 +2606,6 @@ export interface UpdateSettingsUsersRequest {
   /** Request body */
   body?: Settings;
 }
-const UpdateSettingsUsersRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<UpdateSettingsUsersRequest>;
-
 export type BatchDeleteUsersDataTypesDataPointsError =
   | NotFound
   | Forbidden
@@ -3393,8 +2619,8 @@ export const batchDeleteUsersDataTypesDataPoints: API.OperationMethod<
   BatchDeleteUsersDataTypesDataPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteUsersDataTypesDataPointsRequest,
-  output: Operation,
+  input: __S(2) as any as S.Schema<BatchDeleteUsersDataTypesDataPointsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3413,8 +2639,8 @@ export const createProjectsSubscribers: API.OperationMethod<
   CreateProjectsSubscribersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsSubscribersRequest,
-  output: Operation,
+  input: __S(11) as any as S.Schema<CreateProjectsSubscribersRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3433,8 +2659,8 @@ export const createProjectsSubscribersSubscriptions: API.OperationMethod<
   CreateProjectsSubscribersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsSubscribersSubscriptionsRequest,
-  output: Subscription,
+  input: __S(13) as any as S.Schema<CreateProjectsSubscribersSubscriptionsRequest>,
+  output: __S(14) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3453,8 +2679,8 @@ export const createUsersDataTypesDataPoints: API.OperationMethod<
   CreateUsersDataTypesDataPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsersDataTypesDataPointsRequest,
-  output: Operation,
+  input: __S(105) as any as S.Schema<CreateUsersDataTypesDataPointsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3473,8 +2699,8 @@ export const dailyRollUpUsersDataTypesDataPoints: API.OperationMethod<
   DailyRollUpUsersDataTypesDataPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DailyRollUpUsersDataTypesDataPointsRequest,
-  output: DailyRollUpDataPointsResponse,
+  input: __S(108) as any as S.Schema<DailyRollUpUsersDataTypesDataPointsRequest>,
+  output: __S(146) as any as S.Schema<DailyRollUpDataPointsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3493,8 +2719,8 @@ export const deleteProjectsSubscribers: API.OperationMethod<
   DeleteProjectsSubscribersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsSubscribersRequest,
-  output: Operation,
+  input: __S(147) as any as S.Schema<DeleteProjectsSubscribersRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3513,8 +2739,8 @@ export const deleteProjectsSubscribersSubscriptions: API.OperationMethod<
   DeleteProjectsSubscribersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsSubscribersSubscriptionsRequest,
-  output: Empty,
+  input: __S(148) as any as S.Schema<DeleteProjectsSubscribersSubscriptionsRequest>,
+  output: __S(149) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3528,8 +2754,8 @@ export const exportExerciseTcxUsersDataTypesDataPoints: API.OperationMethod<
   ExportExerciseTcxUsersDataTypesDataPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportExerciseTcxUsersDataTypesDataPointsRequest,
-  output: ExportExerciseTcxResponse,
+  input: __S(150) as any as S.Schema<ExportExerciseTcxUsersDataTypesDataPointsRequest>,
+  output: __S(151) as any as S.Schema<ExportExerciseTcxResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3543,8 +2769,8 @@ export const getIdentityUsers: API.OperationMethod<
   GetIdentityUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIdentityUsersRequest,
-  output: Identity,
+  input: __S(152) as any as S.Schema<GetIdentityUsersRequest>,
+  output: __S(153) as any as S.Schema<Identity>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3558,8 +2784,8 @@ export const getIrnProfileUsers: API.OperationMethod<
   GetIrnProfileUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIrnProfileUsersRequest,
-  output: IrnProfile,
+  input: __S(154) as any as S.Schema<GetIrnProfileUsersRequest>,
+  output: __S(155) as any as S.Schema<IrnProfile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3573,8 +2799,8 @@ export const getProfileUsers: API.OperationMethod<
   GetProfileUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProfileUsersRequest,
-  output: Profile,
+  input: __S(156) as any as S.Schema<GetProfileUsersRequest>,
+  output: __S(157) as any as S.Schema<Profile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3588,8 +2814,8 @@ export const getSettingsUsers: API.OperationMethod<
   GetSettingsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingsUsersRequest,
-  output: Settings,
+  input: __S(158) as any as S.Schema<GetSettingsUsersRequest>,
+  output: __S(159) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3603,8 +2829,8 @@ export const getShlManifestShlM: API.OperationMethod<
   GetShlManifestShlMError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetShlManifestShlMRequest,
-  output: HttpBody,
+  input: __S(161) as any as S.Schema<GetShlManifestShlMRequest>,
+  output: __S(162) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3614,8 +2840,8 @@ export type GetShlRError = NotFound | Forbidden | GcpOpError;
 /** Forward a resource request for a given SHL */
 export const getShlR: API.OperationMethod<GetShlRRequest, HttpBody, GetShlRError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetShlRRequest,
-    output: HttpBody,
+    input: __S(163) as any as S.Schema<GetShlRRequest>,
+    output: __S(162) as any as S.Schema<HttpBody>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -3629,8 +2855,8 @@ export const getUsersDataTypesDataPoints: API.OperationMethod<
   GetUsersDataTypesDataPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersDataTypesDataPointsRequest,
-  output: DataPoint,
+  input: __S(164) as any as S.Schema<GetUsersDataTypesDataPointsRequest>,
+  output: __S(104) as any as S.Schema<DataPoint>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3644,8 +2870,8 @@ export const getUsersPairedDevices: API.OperationMethod<
   GetUsersPairedDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsersPairedDevicesRequest,
-  output: PairedDevice,
+  input: __S(165) as any as S.Schema<GetUsersPairedDevicesRequest>,
+  output: __S(166) as any as S.Schema<PairedDevice>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3660,8 +2886,8 @@ export const listProjectsSubscribers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSubscribersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsSubscribersRequest,
-  output: ListSubscribersResponse,
+  input: __S(167) as any as S.Schema<ListProjectsSubscribersRequest>,
+  output: __S(170) as any as S.Schema<ListSubscribersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3677,8 +2903,8 @@ export const listProjectsSubscribersSubscriptions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsSubscribersSubscriptionsRequest,
-  output: ListSubscriptionsResponse,
+  input: __S(171) as any as S.Schema<ListProjectsSubscribersSubscriptionsRequest>,
+  output: __S(173) as any as S.Schema<ListSubscriptionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3694,8 +2920,8 @@ export const listUsersDataTypesDataPoints: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDataPointsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUsersDataTypesDataPointsRequest,
-  output: ListDataPointsResponse,
+  input: __S(174) as any as S.Schema<ListUsersDataTypesDataPointsRequest>,
+  output: __S(176) as any as S.Schema<ListDataPointsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3711,8 +2937,8 @@ export const listUsersPairedDevices: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPairedDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUsersPairedDevicesRequest,
-  output: ListPairedDevicesResponse,
+  input: __S(177) as any as S.Schema<ListUsersPairedDevicesRequest>,
+  output: __S(179) as any as S.Schema<ListPairedDevicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3732,8 +2958,8 @@ export const patchProjectsSubscribers: API.OperationMethod<
   PatchProjectsSubscribersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsSubscribersRequest,
-  output: Operation,
+  input: __S(180) as any as S.Schema<PatchProjectsSubscribersRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3752,8 +2978,8 @@ export const patchProjectsSubscribersSubscriptions: API.OperationMethod<
   PatchProjectsSubscribersSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsSubscribersSubscriptionsRequest,
-  output: Subscription,
+  input: __S(181) as any as S.Schema<PatchProjectsSubscribersSubscriptionsRequest>,
+  output: __S(14) as any as S.Schema<Subscription>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3772,8 +2998,8 @@ export const patchUsersDataTypesDataPoints: API.OperationMethod<
   PatchUsersDataTypesDataPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchUsersDataTypesDataPointsRequest,
-  output: Operation,
+  input: __S(182) as any as S.Schema<PatchUsersDataTypesDataPointsRequest>,
+  output: __S(6) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3788,8 +3014,8 @@ export const reconcileUsersDataTypesDataPoints: API.PaginatedOperationMethod<
   GcpOpContext,
   ReconcileDataPointsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ReconcileUsersDataTypesDataPointsRequest,
-  output: ReconcileDataPointsResponse,
+  input: __S(183) as any as S.Schema<ReconcileUsersDataTypesDataPointsRequest>,
+  output: __S(186) as any as S.Schema<ReconcileDataPointsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3809,8 +3035,8 @@ export const rollUpUsersDataTypesDataPoints: API.OperationMethod<
   RollUpUsersDataTypesDataPointsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RollUpUsersDataTypesDataPointsRequest,
-  output: RollUpDataPointsResponse,
+  input: __S(189) as any as S.Schema<RollUpUsersDataTypesDataPointsRequest>,
+  output: __S(192) as any as S.Schema<RollUpDataPointsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3824,8 +3050,8 @@ export const updateProfileUsers: API.OperationMethod<
   UpdateProfileUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProfileUsersRequest,
-  output: Profile,
+  input: __S(193) as any as S.Schema<UpdateProfileUsersRequest>,
+  output: __S(157) as any as S.Schema<Profile>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3839,8 +3065,8 @@ export const updateSettingsUsers: API.OperationMethod<
   UpdateSettingsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSettingsUsersRequest,
-  output: Settings,
+  input: __S(194) as any as S.Schema<UpdateSettingsUsersRequest>,
+  output: __S(159) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3854,7 +3080,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          names: S.optional(StringList),
+          names: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "BatchDeleteDataPointsRequest",
@@ -3863,7 +3089,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(BatchDeleteDataPointsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3877,22 +3103,22 @@ function __c0(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(DocumentMap);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           code: S.optional(S.Number),
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "Status" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(DocumentMap),
-          error: S.optional(Status),
+          response: S.optional(__S(3)),
+          error: S.optional(__S(5)),
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(3)),
           done: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Operation" });
@@ -3910,18 +3136,18 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dataTypes: S.optional(StringList),
-          subscriptionCreatePolicy: S.optional(SubscriberConfigSubscriptionCreatePolicyEnum),
+          dataTypes: S.optional(__S(0)),
+          subscriptionCreatePolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriberConfig" });
     case 1:
-      return S.Array(SubscriberConfig);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
           endpointUri: S.optional(S.String),
-          endpointAuthorization: S.optional(EndpointAuthorization),
-          subscriberConfigs: S.optional(SubscriberConfigList),
+          endpointAuthorization: S.optional(__S(7)),
+          subscriberConfigs: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "CreateSubscriberPayload" });
     case 3:
@@ -3929,7 +3155,7 @@ function __c1(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           subscriberId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(CreateSubscriberPayload.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3943,7 +3169,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dataTypes: S.optional(StringList),
+          dataTypes: S.optional(__S(0)),
           user: S.optional(S.String),
         }),
       ).annotate({
@@ -3954,7 +3180,7 @@ function __c1(j: number): any {
         S.Struct({
           subscriptionId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CreateSubscriptionPayload.pipe(T.HttpBody())),
+          body: S.optional(__S(12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3970,7 +3196,7 @@ function __c1(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           user: S.optional(S.String),
-          dataTypes: S.optional(StringList),
+          dataTypes: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "Subscription" });
     case 7:
@@ -3992,7 +3218,7 @@ function __c2(j: number): any {
           lowerBoundPercentage: S.optional(S.Number),
           averagePercentage: S.optional(S.Number),
           standardDeviationPercentage: S.optional(S.Number),
-          date: S.optional(Health_Date),
+          date: S.optional(__S(15)),
         }),
       ).annotate({ identifier: "DailyOxygenSaturation" });
     case 1:
@@ -4007,15 +3233,15 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          date: S.optional(Health_Date),
-          time: S.optional(TimeOfDay),
+          date: S.optional(__S(15)),
+          time: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "CivilDateTime" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           utcOffset: S.optional(S.String),
-          civilTime: S.optional(CivilDateTime),
+          civilTime: S.optional(__S(18)),
           physicalTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ObservationSampleTime" });
@@ -4024,24 +3250,24 @@ function __c2(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           temperatureCelsius: S.optional(S.Number),
-          measurementLocation: S.optional(CoreBodyTemperatureMeasurementLocationEnum),
-          sampleTime: S.optional(ObservationSampleTime),
+          measurementLocation: S.optional(S.String),
+          sampleTime: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "CoreBodyTemperature" });
     case 5:
-      return S.Array(SymptomsSymptomsItemEnum);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sampleTime: S.optional(ObservationSampleTime),
-          symptoms: S.optional(SymptomsSymptomsItemEnumList),
+          sampleTime: S.optional(__S(19)),
+          symptoms: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "Symptoms" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           milliliters: S.optional(S.Number),
-          userProvidedUnit: S.optional(VolumeQuantityUserProvidedUnitEnum),
+          userProvidedUnit: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeQuantity" });
   }
@@ -4052,9 +3278,9 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           startTime: S.optional(S.String),
-          civilStartTime: S.optional(CivilDateTime),
+          civilStartTime: S.optional(__S(18)),
           endUtcOffset: S.optional(S.String),
-          civilEndTime: S.optional(CivilDateTime),
+          civilEndTime: S.optional(__S(18)),
           startUtcOffset: S.optional(S.String),
           endTime: S.optional(S.String),
         }),
@@ -4062,14 +3288,14 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          amountConsumed: S.optional(VolumeQuantity),
-          interval: S.optional(SessionTimeInterval),
+          amountConsumed: S.optional(__S(23)),
+          interval: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "HydrationLog" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sampleTime: S.optional(ObservationSampleTime),
+          sampleTime: S.optional(__S(19)),
           notes: S.optional(S.String),
           weightGrams: S.optional(S.Number),
         }),
@@ -4080,30 +3306,30 @@ function __c3(j: number): any {
           startTime: S.optional(S.String),
           startUtcOffset: S.optional(S.String),
           endUtcOffset: S.optional(S.String),
-          civilStartTime: S.optional(CivilDateTime),
+          civilStartTime: S.optional(__S(18)),
           endTime: S.optional(S.String),
-          civilEndTime: S.optional(CivilDateTime),
+          civilEndTime: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "ObservationTimeInterval" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           kcal: S.optional(S.Number),
-          interval: S.optional(ObservationTimeInterval),
+          interval: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "ActiveEnergyBurned" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          moods: S.optional(MoodsMoodsItemEnumList),
-          sampleTime: S.optional(ObservationSampleTime),
-          valences: S.optional(MoodsValencesItemEnumList),
+          moods: S.optional(__S(21)),
+          sampleTime: S.optional(__S(19)),
+          valences: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "Moods" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          userProvidedUnit: S.optional(EnergyQuantityUserProvidedUnitEnum),
+          userProvidedUnit: S.optional(S.String),
           kcal: S.optional(S.Number),
         }),
       ).annotate({ identifier: "EnergyQuantity" });
@@ -4123,45 +3349,45 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           grams: S.optional(S.Number),
-          userProvidedUnit: S.optional(WeightQuantityUserProvidedUnitEnum),
+          userProvidedUnit: S.optional(S.String),
         }),
       ).annotate({ identifier: "WeightQuantity" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          quantity: S.optional(WeightQuantity),
-          nutrient: S.optional(NutrientQuantityNutrientEnum),
+          quantity: S.optional(__S(32)),
+          nutrient: S.optional(S.String),
         }),
       ).annotate({ identifier: "NutrientQuantity" });
     case 2:
-      return S.Array(NutrientQuantity);
+      return S.Array(__S(33));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          energyFromFat: S.optional(EnergyQuantity),
-          interval: S.optional(SessionTimeInterval),
-          mealType: S.optional(NutritionLogMealTypeEnum),
+          energyFromFat: S.optional(__S(30)),
+          interval: S.optional(__S(24)),
+          mealType: S.optional(S.String),
           food: S.optional(S.String),
-          serving: S.optional(Serving),
-          totalFat: S.optional(WeightQuantity),
-          totalCarbohydrate: S.optional(WeightQuantity),
+          serving: S.optional(__S(31)),
+          totalFat: S.optional(__S(32)),
+          totalCarbohydrate: S.optional(__S(32)),
           foodDisplayName: S.optional(S.String),
-          nutrients: S.optional(NutrientQuantityList),
-          energy: S.optional(EnergyQuantity),
+          nutrients: S.optional(__S(34)),
+          energy: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "NutritionLog" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          activityLevelType: S.optional(ActivityLevelActivityLevelTypeEnum),
-          interval: S.optional(ObservationTimeInterval),
+          activityLevelType: S.optional(S.String),
+          interval: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "ActivityLevel" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           nightlyTemperatureCelsius: S.optional(S.Number),
-          date: S.optional(Health_Date),
+          date: S.optional(__S(15)),
           baselineTemperatureCelsius: S.optional(S.Number),
           relativeNightlyStddev30dCelsius: S.optional(S.Number),
         }),
@@ -4183,7 +3409,7 @@ function __c4(j: number): any {
         S.Struct({
           physicalTime: S.optional(S.String),
           utcOffset: S.optional(S.String),
-          civilTime: S.optional(CivilDateTime),
+          civilTime: S.optional(__S(18)),
           beatsPerMinute: S.optional(S.Number),
         }),
       ).annotate({ identifier: "HeartBeat" });
@@ -4192,28 +3418,28 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(HeartBeat);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          civilStartTime: S.optional(CivilDateTime),
+          civilStartTime: S.optional(__S(18)),
           endTime: S.optional(S.String),
           startTime: S.optional(S.String),
-          civilEndTime: S.optional(CivilDateTime),
-          heartBeats: S.optional(HeartBeatList),
+          civilEndTime: S.optional(__S(18)),
+          heartBeats: S.optional(__S(40)),
           endUtcOffset: S.optional(S.String),
           positive: S.optional(S.Boolean),
           startUtcOffset: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertWindow" });
     case 2:
-      return S.Array(AlertWindow);
+      return S.Array(__S(41));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          medicalDeviceInfo: S.optional(MedicalDeviceInfo),
-          interval: S.optional(SessionTimeInterval),
-          alertWindows: S.optional(AlertWindowList),
+          medicalDeviceInfo: S.optional(__S(38)),
+          interval: S.optional(__S(24)),
+          alertWindows: S.optional(__S(42)),
         }),
       ).annotate({
         identifier: "IrregularRhythmNotification",
@@ -4222,25 +3448,25 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           activeZoneMinutes: S.optional(S.String),
-          heartRateZone: S.optional(ActiveZoneMinutesHeartRateZoneEnum),
-          interval: S.optional(ObservationTimeInterval),
+          heartRateZone: S.optional(S.String),
+          interval: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "ActiveZoneMinutes" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          heartRateZoneType: S.optional(HeartRateZoneHeartRateZoneTypeEnum),
+          heartRateZoneType: S.optional(S.String),
           maxBeatsPerMinute: S.optional(S.String),
           minBeatsPerMinute: S.optional(S.String),
         }),
       ).annotate({ identifier: "HeartRateZone" });
     case 6:
-      return S.Array(HeartRateZone);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          heartRateZones: S.optional(HeartRateZoneList),
-          date: S.optional(Health_Date),
+          heartRateZones: S.optional(__S(46)),
+          date: S.optional(__S(15)),
         }),
       ).annotate({ identifier: "DailyHeartRateZones" });
   }
@@ -4258,7 +3484,7 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          formFactor: S.optional(DeviceFormFactorEnum),
+          formFactor: S.optional(S.String),
           manufacturer: S.optional(S.String),
           displayName: S.optional(S.String),
         }),
@@ -4266,10 +3492,10 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          platform: S.optional(DataSourcePlatformEnum),
-          application: S.optional(Application),
-          device: S.optional(Device),
-          recordingMethod: S.optional(DataSourceRecordingMethodEnum),
+          platform: S.optional(S.String),
+          application: S.optional(__S(48)),
+          device: S.optional(__S(49)),
+          recordingMethod: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataSource" });
     case 3:
@@ -4285,11 +3511,11 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sampleTime: S.optional(ObservationSampleTime),
-          remSleepStats: S.optional(RespiratoryRateSleepSummaryStatistics),
-          fullSleepStats: S.optional(RespiratoryRateSleepSummaryStatistics),
-          lightSleepStats: S.optional(RespiratoryRateSleepSummaryStatistics),
-          deepSleepStats: S.optional(RespiratoryRateSleepSummaryStatistics),
+          sampleTime: S.optional(__S(19)),
+          remSleepStats: S.optional(__S(51)),
+          fullSleepStats: S.optional(__S(51)),
+          lightSleepStats: S.optional(__S(51)),
+          deepSleepStats: S.optional(__S(51)),
         }),
       ).annotate({
         identifier: "RespiratoryRateSleepSummary",
@@ -4298,13 +3524,13 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           gainMillimeters: S.optional(S.String),
-          interval: S.optional(ObservationTimeInterval),
+          interval: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "Altitude" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          interval: S.optional(ObservationTimeInterval),
+          interval: S.optional(__S(27)),
           kcal: S.optional(S.Number),
         }),
       ).annotate({ identifier: "BasalEnergyBurned" });
@@ -4323,25 +3549,25 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(FoodServing);
+      return S.Array(__S(55));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mealType: S.optional(FoodMealTypeEnum),
+          mealType: S.optional(S.String),
           displayName: S.optional(S.String),
-          servings: S.optional(FoodServingList),
-          totalCarbohydrate: S.optional(WeightQuantity),
-          accessLevel: S.optional(FoodAccessLevelEnum),
-          energyAvg: S.optional(EnergyQuantity),
+          servings: S.optional(__S(56)),
+          totalCarbohydrate: S.optional(__S(32)),
+          accessLevel: S.optional(S.String),
+          energyAvg: S.optional(__S(30)),
           languageCode: S.optional(S.String),
           brand: S.optional(S.String),
-          energyMax: S.optional(EnergyQuantity),
+          energyMax: S.optional(__S(30)),
           description: S.optional(S.String),
-          energyFromFat: S.optional(EnergyQuantity),
-          nutrients: S.optional(NutrientQuantityList),
-          energyMin: S.optional(EnergyQuantity),
-          totalFat: S.optional(WeightQuantity),
-          defaultServing: S.optional(FoodServing),
+          energyFromFat: S.optional(__S(30)),
+          nutrients: S.optional(__S(34)),
+          energyMin: S.optional(__S(30)),
+          totalFat: S.optional(__S(32)),
+          defaultServing: S.optional(__S(55)),
         }),
       ).annotate({ identifier: "Food" });
     case 2:
@@ -4355,37 +3581,37 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           breathsPerMinute: S.optional(S.Number),
-          date: S.optional(Health_Date),
+          date: S.optional(__S(15)),
         }),
       ).annotate({ identifier: "DailyRespiratoryRate" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           vo2MaxCovariance: S.optional(S.Number),
-          date: S.optional(Health_Date),
+          date: S.optional(__S(15)),
           estimated: S.optional(S.Boolean),
-          cardioFitnessLevel: S.optional(DailyVO2MaxCardioFitnessLevelEnum),
+          cardioFitnessLevel: S.optional(S.String),
           vo2Max: S.optional(S.Number),
         }),
       ).annotate({ identifier: "DailyVO2Max" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          interval: S.optional(ObservationTimeInterval),
-          heartRateZoneType: S.optional(TimeInHeartRateZoneHeartRateZoneTypeEnum),
+          interval: S.optional(__S(27)),
+          heartRateZoneType: S.optional(S.String),
         }),
       ).annotate({ identifier: "TimeInHeartRateZone" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sampleTime: S.optional(ObservationSampleTime),
-          result: S.optional(OvulationTestResultEnum),
+          sampleTime: S.optional(__S(19)),
+          result: S.optional(S.String),
         }),
       ).annotate({ identifier: "OvulationTest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          interval: S.optional(ObservationTimeInterval),
+          interval: S.optional(__S(27)),
           notes: S.optional(S.String),
         }),
       ).annotate({ identifier: "MenstrualPeriod" });
@@ -4396,9 +3622,9 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          interval: S.optional(ObservationTimeInterval),
+          interval: S.optional(__S(27)),
           strokeCount: S.optional(S.String),
-          swimStrokeType: S.optional(SwimLengthsDataSwimStrokeTypeEnum),
+          swimStrokeType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SwimLengthsData" });
     case 1:
@@ -4413,23 +3639,23 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sampleTime: S.optional(ObservationSampleTime),
+          sampleTime: S.optional(__S(19)),
           rootMeanSquareOfSuccessiveDifferencesMilliseconds: S.optional(S.Number),
           standardDeviationMilliseconds: S.optional(S.Number),
-          metadata: S.optional(HeartRateVariabilityMetadata),
+          metadata: S.optional(__S(65)),
         }),
       ).annotate({ identifier: "HeartRateVariability" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          interval: S.optional(ObservationTimeInterval),
+          interval: S.optional(__S(27)),
           count: S.optional(S.String),
         }),
       ).annotate({ identifier: "Floors" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          sampleTime: S.optional(ObservationSampleTime),
+          sampleTime: S.optional(__S(19)),
           percentage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "OxygenSaturation" });
@@ -4437,17 +3663,17 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.String),
-          type: S.optional(StageSummaryTypeEnum),
+          type: S.optional(S.String),
           minutes: S.optional(S.String),
         }),
       ).annotate({ identifier: "StageSummary" });
     case 6:
-      return S.Array(StageSummary);
+      return S.Array(__S(69));
     case 7:
       return S.suspend(() =>
         S.Struct({
           minutesAwake: S.optional(S.String),
-          stagesSummary: S.optional(StageSummaryList),
+          stagesSummary: S.optional(__S(70)),
           minutesToFallAsleep: S.optional(S.String),
           minutesInSleepPeriod: S.optional(S.String),
           minutesAsleep: S.optional(S.String),
@@ -4468,11 +3694,11 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "OutOfBedSegment" });
     case 1:
-      return S.Array(OutOfBedSegment);
+      return S.Array(__S(72));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          stagesStatus: S.optional(SleepMetadataStagesStatusEnum),
+          stagesStatus: S.optional(S.String),
           nap: S.optional(S.Boolean),
           processed: S.optional(S.Boolean),
           externalId: S.optional(S.String),
@@ -4483,7 +3709,7 @@ function __c9(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(SleepStageTypeEnum),
+          type: S.optional(S.String),
           createTime: S.optional(S.String),
           startTime: S.optional(S.String),
           updateTime: S.optional(S.String),
@@ -4493,37 +3719,37 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "SleepStage" });
     case 4:
-      return S.Array(SleepStage);
+      return S.Array(__S(75));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          summary: S.optional(SleepSummary),
-          outOfBedSegments: S.optional(OutOfBedSegmentList),
-          metadata: S.optional(SleepMetadata),
+          summary: S.optional(__S(71)),
+          outOfBedSegments: S.optional(__S(73)),
+          metadata: S.optional(__S(74)),
           createTime: S.optional(S.String),
           updateTime: S.optional(S.String),
-          type: S.optional(SleepTypeEnum),
-          interval: S.optional(SessionTimeInterval),
-          shortAwakenings: S.optional(SleepStageList),
-          stages: S.optional(SleepStageList),
+          type: S.optional(S.String),
+          interval: S.optional(__S(24)),
+          shortAwakenings: S.optional(__S(76)),
+          stages: S.optional(__S(76)),
         }),
       ).annotate({ identifier: "Sleep" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           bloodGlucoseMilligramsPerDeciliter: S.optional(S.Number),
-          sampleTime: S.optional(ObservationSampleTime),
-          measurementTiming: S.optional(BloodGlucoseMeasurementTimingEnum),
-          mealType: S.optional(BloodGlucoseMealTypeEnum),
+          sampleTime: S.optional(__S(19)),
+          measurementTiming: S.optional(S.String),
+          mealType: S.optional(S.String),
           notes: S.optional(S.String),
-          measurementSource: S.optional(BloodGlucoseMeasurementSourceEnum),
-          specimen: S.optional(BloodGlucoseSpecimenEnum),
+          measurementSource: S.optional(S.String),
+          specimen: S.optional(S.String),
         }),
       ).annotate({ identifier: "BloodGlucose" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          interval: S.optional(ObservationTimeInterval),
+          interval: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "SedentaryPeriod" });
   }
@@ -4533,20 +3759,20 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sampleTime: S.optional(ObservationSampleTime),
+          sampleTime: S.optional(__S(19)),
           heightMillimeters: S.optional(S.String),
         }),
       ).annotate({ identifier: "Height" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          exerciseEventType: S.optional(ExerciseEventExerciseEventTypeEnum),
+          exerciseEventType: S.optional(S.String),
           eventUtcOffset: S.optional(S.String),
           eventTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExerciseEvent" });
     case 2:
-      return S.Array(ExerciseEvent);
+      return S.Array(__S(81));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -4570,13 +3796,13 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           averageSpeedMillimetersPerSecond: S.optional(S.Number),
-          mobilityMetrics: S.optional(MobilityMetrics),
+          mobilityMetrics: S.optional(__S(83)),
           activeZoneMinutes: S.optional(S.String),
           totalSwimLengths: S.optional(S.Number),
           runVo2Max: S.optional(S.Number),
           caloriesKcal: S.optional(S.Number),
           averageHeartRateBeatsPerMinute: S.optional(S.String),
-          heartRateZoneDurations: S.optional(TimeInHeartRateZones),
+          heartRateZoneDurations: S.optional(__S(84)),
           averagePaceSecondsPerMeter: S.optional(S.Number),
           elevationGainMillimeters: S.optional(S.Number),
           distanceMillimeters: S.optional(S.Number),
@@ -4594,10 +3820,10 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endTime: S.optional(S.String),
-          splitType: S.optional(SplitSummarySplitTypeEnum),
+          splitType: S.optional(S.String),
           startUtcOffset: S.optional(S.String),
           activeDuration: S.optional(S.String),
-          metricsSummary: S.optional(MetricsSummary),
+          metricsSummary: S.optional(__S(85)),
           startTime: S.optional(S.String),
           endUtcOffset: S.optional(S.String),
         }),
@@ -4607,40 +3833,40 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SplitSummary);
+      return S.Array(__S(87));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          exerciseEvents: S.optional(ExerciseEventList),
-          exerciseType: S.optional(ExerciseExerciseTypeEnum),
+          exerciseEvents: S.optional(__S(82)),
+          exerciseType: S.optional(S.String),
           notes: S.optional(S.String),
-          metricsSummary: S.optional(MetricsSummary),
+          metricsSummary: S.optional(__S(85)),
           updateTime: S.optional(S.String),
-          exerciseMetadata: S.optional(ExerciseMetadata),
-          splits: S.optional(SplitSummaryList),
-          splitSummaries: S.optional(SplitSummaryList),
+          exerciseMetadata: S.optional(__S(86)),
+          splits: S.optional(__S(88)),
+          splitSummaries: S.optional(__S(88)),
           activeDuration: S.optional(S.String),
           displayName: S.optional(S.String),
-          interval: S.optional(SessionTimeInterval),
+          interval: S.optional(__S(24)),
           createTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Exercise" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          activityLevel: S.optional(ActiveMinutesByActivityLevelActivityLevelEnum),
+          activityLevel: S.optional(S.String),
           activeMinutes: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ActiveMinutesByActivityLevel",
       });
     case 3:
-      return S.Array(ActiveMinutesByActivityLevel);
+      return S.Array(__S(90));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          activeMinutesByActivityLevel: S.optional(ActiveMinutesByActivityLevelList),
-          interval: S.optional(ObservationTimeInterval),
+          activeMinutesByActivityLevel: S.optional(__S(91)),
+          interval: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "ActiveMinutes" });
     case 5:
@@ -4650,18 +3876,18 @@ function __c11(j: number): any {
         S.Struct({
           samplingFrequencyHertz: S.optional(S.Number),
           leadNumber: S.optional(S.Number),
-          resultClassification: S.optional(ElectrocardiogramResultClassificationEnum),
-          waveformSamples: S.optional(IntegerList),
-          interval: S.optional(SessionTimeInterval),
+          resultClassification: S.optional(S.String),
+          waveformSamples: S.optional(__S(93)),
+          interval: S.optional(__S(24)),
           beatsPerMinuteAvg: S.optional(S.String),
-          medicalDeviceInfo: S.optional(MedicalDeviceInfo),
+          medicalDeviceInfo: S.optional(__S(38)),
           millivoltsScalingFactor: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Electrocardiogram" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          date: S.optional(Health_Date),
+          date: S.optional(__S(15)),
           deepSleepRootMeanSquareOfSuccessiveDifferencesMilliseconds: S.optional(S.Number),
           entropy: S.optional(S.Number),
           nonRemHeartRateBeatsPerMinute: S.optional(S.String),
@@ -4677,8 +3903,8 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          measurementMethod: S.optional(VO2MaxMeasurementMethodEnum),
-          sampleTime: S.optional(ObservationSampleTime),
+          measurementMethod: S.optional(S.String),
+          sampleTime: S.optional(__S(19)),
           vo2Max: S.optional(S.Number),
         }),
       ).annotate({ identifier: "VO2Max" });
@@ -4686,20 +3912,20 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.String),
-          interval: S.optional(ObservationTimeInterval),
+          interval: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "Steps" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           runVo2Max: S.optional(S.Number),
-          sampleTime: S.optional(ObservationSampleTime),
+          sampleTime: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "RunVO2Max" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          calculationMethod: S.optional(DailyRestingHeartRateMetadataCalculationMethodEnum),
+          calculationMethod: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DailyRestingHeartRateMetadata",
@@ -4707,23 +3933,23 @@ function __c12(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dailyRestingHeartRateMetadata: S.optional(DailyRestingHeartRateMetadata),
-          date: S.optional(Health_Date),
+          dailyRestingHeartRateMetadata: S.optional(__S(99)),
+          date: S.optional(__S(15)),
           beatsPerMinute: S.optional(S.String),
         }),
       ).annotate({ identifier: "DailyRestingHeartRate" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sensorLocation: S.optional(HeartRateMetadataSensorLocationEnum),
-          motionContext: S.optional(HeartRateMetadataMotionContextEnum),
+          sensorLocation: S.optional(S.String),
+          motionContext: S.optional(S.String),
         }),
       ).annotate({ identifier: "HeartRateMetadata" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sampleTime: S.optional(ObservationSampleTime),
-          metadata: S.optional(HeartRateMetadata),
+          sampleTime: S.optional(__S(19)),
+          metadata: S.optional(__S(101)),
           beatsPerMinute: S.optional(S.String),
         }),
       ).annotate({ identifier: "HeartRate" });
@@ -4731,7 +3957,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           millimeters: S.optional(S.String),
-          interval: S.optional(ObservationTimeInterval),
+          interval: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "Distance" });
   }
@@ -4741,57 +3967,57 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dailyOxygenSaturation: S.optional(DailyOxygenSaturation),
-          coreBodyTemperature: S.optional(CoreBodyTemperature),
-          symptoms: S.optional(Symptoms),
+          dailyOxygenSaturation: S.optional(__S(16)),
+          coreBodyTemperature: S.optional(__S(20)),
+          symptoms: S.optional(__S(22)),
           name: S.optional(S.String),
-          hydrationLog: S.optional(HydrationLog),
-          weight: S.optional(Weight),
-          activeEnergyBurned: S.optional(ActiveEnergyBurned),
-          moods: S.optional(Moods),
-          nutritionLog: S.optional(NutritionLog),
-          activityLevel: S.optional(ActivityLevel),
-          dailySleepTemperatureDerivations: S.optional(DailySleepTemperatureDerivations),
-          irregularRhythmNotification: S.optional(IrregularRhythmNotification),
-          activeZoneMinutes: S.optional(ActiveZoneMinutes),
-          dailyHeartRateZones: S.optional(DailyHeartRateZones),
-          dataSource: S.optional(DataSource),
-          respiratoryRateSleepSummary: S.optional(RespiratoryRateSleepSummary),
-          altitude: S.optional(Altitude),
-          basalEnergyBurned: S.optional(BasalEnergyBurned),
-          food: S.optional(Food),
-          foodMeasurementUnit: S.optional(FoodMeasurementUnit),
-          dailyRespiratoryRate: S.optional(DailyRespiratoryRate),
-          dailyVo2Max: S.optional(DailyVO2Max),
-          timeInHeartRateZone: S.optional(TimeInHeartRateZone),
-          ovulationTest: S.optional(OvulationTest),
-          menstrualPeriod: S.optional(MenstrualPeriod),
-          swimLengthsData: S.optional(SwimLengthsData),
-          heartRateVariability: S.optional(HeartRateVariability),
-          floors: S.optional(Floors),
-          oxygenSaturation: S.optional(OxygenSaturation),
-          sleep: S.optional(Sleep),
-          bloodGlucose: S.optional(BloodGlucose),
-          sedentaryPeriod: S.optional(SedentaryPeriod),
-          height: S.optional(Height),
-          exercise: S.optional(Exercise),
-          activeMinutes: S.optional(ActiveMinutes),
-          electrocardiogram: S.optional(Electrocardiogram),
-          dailyHeartRateVariability: S.optional(DailyHeartRateVariability),
-          vo2Max: S.optional(VO2Max),
-          bodyFat: S.optional(BodyFat),
-          steps: S.optional(Steps),
-          runVo2Max: S.optional(RunVO2Max),
-          dailyRestingHeartRate: S.optional(DailyRestingHeartRate),
-          heartRate: S.optional(HeartRate),
-          distance: S.optional(Distance),
+          hydrationLog: S.optional(__S(25)),
+          weight: S.optional(__S(26)),
+          activeEnergyBurned: S.optional(__S(28)),
+          moods: S.optional(__S(29)),
+          nutritionLog: S.optional(__S(35)),
+          activityLevel: S.optional(__S(36)),
+          dailySleepTemperatureDerivations: S.optional(__S(37)),
+          irregularRhythmNotification: S.optional(__S(43)),
+          activeZoneMinutes: S.optional(__S(44)),
+          dailyHeartRateZones: S.optional(__S(47)),
+          dataSource: S.optional(__S(50)),
+          respiratoryRateSleepSummary: S.optional(__S(52)),
+          altitude: S.optional(__S(53)),
+          basalEnergyBurned: S.optional(__S(54)),
+          food: S.optional(__S(57)),
+          foodMeasurementUnit: S.optional(__S(58)),
+          dailyRespiratoryRate: S.optional(__S(59)),
+          dailyVo2Max: S.optional(__S(60)),
+          timeInHeartRateZone: S.optional(__S(61)),
+          ovulationTest: S.optional(__S(62)),
+          menstrualPeriod: S.optional(__S(63)),
+          swimLengthsData: S.optional(__S(64)),
+          heartRateVariability: S.optional(__S(66)),
+          floors: S.optional(__S(67)),
+          oxygenSaturation: S.optional(__S(68)),
+          sleep: S.optional(__S(77)),
+          bloodGlucose: S.optional(__S(78)),
+          sedentaryPeriod: S.optional(__S(79)),
+          height: S.optional(__S(80)),
+          exercise: S.optional(__S(89)),
+          activeMinutes: S.optional(__S(92)),
+          electrocardiogram: S.optional(__S(94)),
+          dailyHeartRateVariability: S.optional(__S(95)),
+          vo2Max: S.optional(__S(96)),
+          bodyFat: S.optional(__S(68)),
+          steps: S.optional(__S(97)),
+          runVo2Max: S.optional(__S(98)),
+          dailyRestingHeartRate: S.optional(__S(100)),
+          heartRate: S.optional(__S(102)),
+          distance: S.optional(__S(103)),
         }),
       ).annotate({ identifier: "DataPoint" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(DataPoint.pipe(T.HttpBody())),
+          body: S.optional(__S(104).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4805,15 +4031,15 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          end: S.optional(CivilDateTime),
-          start: S.optional(CivilDateTime),
+          end: S.optional(__S(18)),
+          start: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "CivilTimeInterval" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String),
-          range: S.optional(CivilTimeInterval),
+          range: S.optional(__S(106)),
           dataSourceFamily: S.optional(S.String),
           windowSizeDays: S.optional(S.Number),
           pageSize: S.optional(S.Number),
@@ -4825,7 +4051,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(DailyRollUpDataPointsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(107).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4881,18 +4107,18 @@ function __c14(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          activityLevel: S.optional(ActiveMinutesRollupByActivityLevelActivityLevelEnum),
+          activityLevel: S.optional(S.String),
           activeMinutesSum: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ActiveMinutesRollupByActivityLevel",
       });
     case 4:
-      return S.Array(ActiveMinutesRollupByActivityLevel);
+      return S.Array(__S(115));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          activeMinutesRollupByActivityLevel: S.optional(ActiveMinutesRollupByActivityLevelList),
+          activeMinutesRollupByActivityLevel: S.optional(__S(116)),
         }),
       ).annotate({ identifier: "ActiveMinutesRollupValue" });
     case 6:
@@ -4907,7 +4133,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kcal: S.optional(S.Number),
-          heartRateZone: S.optional(CaloriesInHeartRateZoneValueHeartRateZoneEnum),
+          heartRateZone: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CaloriesInHeartRateZoneValue",
@@ -4917,11 +4143,11 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CaloriesInHeartRateZoneValue);
+      return S.Array(__S(119));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          caloriesInHeartRateZones: S.optional(CaloriesInHeartRateZoneValueList),
+          caloriesInHeartRateZones: S.optional(__S(120)),
         }),
       ).annotate({
         identifier: "CaloriesInHeartRateZoneRollupValue",
@@ -4958,13 +4184,13 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           millilitersSum: S.optional(S.Number),
-          userProvidedUnitLast: S.optional(VolumeQuantityRollupUserProvidedUnitLastEnum),
+          userProvidedUnitLast: S.optional(S.String),
         }),
       ).annotate({ identifier: "VolumeQuantityRollup" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          amountConsumed: S.optional(VolumeQuantityRollup),
+          amountConsumed: S.optional(__S(125)),
         }),
       ).annotate({ identifier: "HydrationLogRollupValue" });
     case 7:
@@ -4980,34 +4206,34 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          userProvidedUnitLast: S.optional(WeightQuantityRollupUserProvidedUnitLastEnum),
+          userProvidedUnitLast: S.optional(S.String),
           gramsSum: S.optional(S.Number),
         }),
       ).annotate({ identifier: "WeightQuantityRollup" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          quantity: S.optional(WeightQuantityRollup),
-          nutrient: S.optional(NutrientQuantityRollupNutrientEnum),
+          quantity: S.optional(__S(128)),
+          nutrient: S.optional(S.String),
         }),
       ).annotate({ identifier: "NutrientQuantityRollup" });
     case 2:
-      return S.Array(NutrientQuantityRollup);
+      return S.Array(__S(129));
     case 3:
       return S.suspend(() =>
         S.Struct({
           kcalSum: S.optional(S.Number),
-          userProvidedUnitLast: S.optional(EnergyQuantityRollupUserProvidedUnitLastEnum),
+          userProvidedUnitLast: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnergyQuantityRollup" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          totalFat: S.optional(WeightQuantityRollup),
-          nutrients: S.optional(NutrientQuantityRollupList),
-          energyFromFat: S.optional(EnergyQuantityRollup),
-          totalCarbohydrate: S.optional(WeightQuantityRollup),
-          energy: S.optional(EnergyQuantityRollup),
+          totalFat: S.optional(__S(128)),
+          nutrients: S.optional(__S(130)),
+          energyFromFat: S.optional(__S(131)),
+          totalCarbohydrate: S.optional(__S(128)),
+          energy: S.optional(__S(131)),
         }),
       ).annotate({ identifier: "NutritionLogRollupValue" });
     case 5:
@@ -5040,22 +4266,18 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          activityLevelType: S.optional(
-            ActivityLevelRollupByActivityLevelTypeActivityLevelTypeEnum,
-          ),
+          activityLevelType: S.optional(S.String),
           totalDuration: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ActivityLevelRollupByActivityLevelType",
       });
     case 1:
-      return S.Array(ActivityLevelRollupByActivityLevelType);
+      return S.Array(__S(136));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          activityLevelRollupsByActivityLevelType: S.optional(
-            ActivityLevelRollupByActivityLevelTypeList,
-          ),
+          activityLevelRollupsByActivityLevelType: S.optional(__S(137)),
         }),
       ).annotate({ identifier: "ActivityLevelRollupValue" });
     case 3:
@@ -5079,15 +4301,15 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           duration: S.optional(S.String),
-          heartRateZone: S.optional(TimeInHeartRateZoneValueHeartRateZoneEnum),
+          heartRateZone: S.optional(S.String),
         }),
       ).annotate({ identifier: "TimeInHeartRateZoneValue" });
     case 6:
-      return S.Array(TimeInHeartRateZoneValue);
+      return S.Array(__S(141));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          timeInHeartRateZones: S.optional(TimeInHeartRateZoneValueList),
+          timeInHeartRateZones: S.optional(__S(142)),
         }),
       ).annotate({
         identifier: "TimeInHeartRateZoneRollupValue",
@@ -5099,42 +4321,40 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          weight: S.optional(WeightRollupValue),
-          totalCalories: S.optional(TotalCaloriesRollupValue),
-          bodyFat: S.optional(BodyFatRollupValue),
-          distance: S.optional(DistanceRollupValue),
-          sedentaryPeriod: S.optional(SedentaryPeriodRollupValue),
-          bloodGlucose: S.optional(BloodGlucoseRollupValue),
-          activeMinutes: S.optional(ActiveMinutesRollupValue),
-          runVo2Max: S.optional(RunVO2MaxRollupValue),
-          caloriesInHeartRateZone: S.optional(CaloriesInHeartRateZoneRollupValue),
-          heartRate: S.optional(HeartRateRollupValue),
-          coreBodyTemperature: S.optional(CoreBodyTemperatureRollupValue),
-          activeZoneMinutes: S.optional(ActiveZoneMinutesRollupValue),
-          hydrationLog: S.optional(HydrationLogRollupValue),
-          floors: S.optional(FloorsRollupValue),
-          steps: S.optional(StepsRollupValue),
-          nutritionLog: S.optional(NutritionLogRollupValue),
-          altitude: S.optional(AltitudeRollupValue),
-          activeEnergyBurned: S.optional(ActiveEnergyBurnedRollupValue),
-          civilEndTime: S.optional(CivilDateTime),
-          heartRateVariabilityPersonalRange: S.optional(
-            HeartRateVariabilityPersonalRangeRollupValue,
-          ),
-          civilStartTime: S.optional(CivilDateTime),
-          activityLevel: S.optional(ActivityLevelRollupValue),
-          restingHeartRatePersonalRange: S.optional(RestingHeartRatePersonalRangeRollupValue),
-          swimLengthsData: S.optional(SwimLengthsDataRollupValue),
-          timeInHeartRateZone: S.optional(TimeInHeartRateZoneRollupValue),
+          weight: S.optional(__S(109)),
+          totalCalories: S.optional(__S(110)),
+          bodyFat: S.optional(__S(111)),
+          distance: S.optional(__S(112)),
+          sedentaryPeriod: S.optional(__S(113)),
+          bloodGlucose: S.optional(__S(114)),
+          activeMinutes: S.optional(__S(117)),
+          runVo2Max: S.optional(__S(118)),
+          caloriesInHeartRateZone: S.optional(__S(121)),
+          heartRate: S.optional(__S(122)),
+          coreBodyTemperature: S.optional(__S(123)),
+          activeZoneMinutes: S.optional(__S(124)),
+          hydrationLog: S.optional(__S(126)),
+          floors: S.optional(__S(127)),
+          steps: S.optional(__S(127)),
+          nutritionLog: S.optional(__S(132)),
+          altitude: S.optional(__S(133)),
+          activeEnergyBurned: S.optional(__S(134)),
+          civilEndTime: S.optional(__S(18)),
+          heartRateVariabilityPersonalRange: S.optional(__S(135)),
+          civilStartTime: S.optional(__S(18)),
+          activityLevel: S.optional(__S(138)),
+          restingHeartRatePersonalRange: S.optional(__S(139)),
+          swimLengthsData: S.optional(__S(140)),
+          timeInHeartRateZone: S.optional(__S(143)),
         }),
       ).annotate({ identifier: "DailyRollupDataPoint" });
     case 1:
-      return S.Array(DailyRollupDataPoint);
+      return S.Array(__S(144));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          rollupDataPoints: S.optional(DailyRollupDataPointList),
+          rollupDataPoints: S.optional(__S(145)),
         }),
       ).annotate({
         identifier: "DailyRollUpDataPointsResponse",
@@ -5247,7 +4467,7 @@ function __c19(j: number): any {
         S.Struct({
           userConfiguredRunningStrideLengthMm: S.optional(S.Number),
           autoRunningStrideLengthMm: S.optional(S.Number),
-          membershipStartDate: S.optional(Health_Date),
+          membershipStartDate: S.optional(__S(15)),
           name: S.optional(S.String),
           userConfiguredWalkingStrideLengthMm: S.optional(S.Number),
           age: S.optional(S.Number),
@@ -5266,20 +4486,20 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           foodLanguageCode: S.optional(S.String),
-          swimUnit: S.optional(SettingsSwimUnitEnum),
+          swimUnit: S.optional(S.String),
           languageLocale: S.optional(S.String),
-          waterUnit: S.optional(SettingsWaterUnitEnum),
+          waterUnit: S.optional(S.String),
           utcOffset: S.optional(S.String),
-          strideLengthWalkingType: S.optional(SettingsStrideLengthWalkingTypeEnum),
-          strideLengthRunningType: S.optional(SettingsStrideLengthRunningTypeEnum),
+          strideLengthWalkingType: S.optional(S.String),
+          strideLengthRunningType: S.optional(S.String),
           timeZone: S.optional(S.String),
-          glucoseUnit: S.optional(SettingsGlucoseUnitEnum),
+          glucoseUnit: S.optional(S.String),
           name: S.optional(S.String),
-          temperatureUnit: S.optional(SettingsTemperatureUnitEnum),
-          distanceUnit: S.optional(SettingsDistanceUnitEnum),
-          heightUnit: S.optional(SettingsHeightUnitEnum),
+          temperatureUnit: S.optional(S.String),
+          distanceUnit: S.optional(S.String),
+          heightUnit: S.optional(S.String),
           autoStrideEnabled: S.optional(S.Boolean),
-          weightUnit: S.optional(SettingsWeightUnitEnum),
+          weightUnit: S.optional(S.String),
         }),
       ).annotate({ identifier: "Settings" });
   }
@@ -5298,7 +4518,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           externalShlId: S.String.pipe(T.Label()),
-          body: S.optional(ManifestParams.pipe(T.HttpBody())),
+          body: S.optional(__S(160).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5314,7 +4534,7 @@ function __c20(j: number): any {
         S.Struct({
           data: S.optional(S.String),
           contentType: S.optional(S.String),
-          extensions: S.optional(DocumentMapList),
+          extensions: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "HttpBody" });
     case 3:
@@ -5358,9 +4578,9 @@ function __c20(j: number): any {
           batteryStatus: S.optional(S.String),
           macAddress: S.optional(S.String),
           batteryLevel: S.optional(S.Number),
-          features: S.optional(StringList),
+          features: S.optional(__S(0)),
           lastSyncTime: S.optional(S.String),
-          deviceType: S.optional(PairedDeviceDeviceTypeEnum),
+          deviceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "PairedDevice" });
     case 7:
@@ -5386,21 +4606,21 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          subscriberConfigs: S.optional(SubscriberConfigList),
+          subscriberConfigs: S.optional(__S(9)),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          endpointAuthorization: S.optional(EndpointAuthorization),
+          endpointAuthorization: S.optional(__S(7)),
           updateTime: S.optional(S.String),
           endpointUri: S.optional(S.String),
-          state: S.optional(SubscriberStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "Subscriber" });
     case 1:
-      return S.Array(Subscriber);
+      return S.Array(__S(168));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          subscribers: S.optional(SubscriberList),
+          subscribers: S.optional(__S(169)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
         }),
@@ -5423,11 +4643,11 @@ function __c21(j: number): any {
         identifier: "ListProjectsSubscribersSubscriptionsRequest",
       });
     case 4:
-      return S.Array(Subscription);
+      return S.Array(__S(14));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          subscriptions: S.optional(SubscriptionList),
+          subscriptions: S.optional(__S(172)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5452,7 +4672,7 @@ function __c21(j: number): any {
         identifier: "ListUsersDataTypesDataPointsRequest",
       });
     case 7:
-      return S.Array(DataPoint);
+      return S.Array(__S(104));
   }
 }
 function __c22(j: number): any {
@@ -5460,7 +4680,7 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dataPoints: S.optional(DataPointList),
+          dataPoints: S.optional(__S(175)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDataPointsResponse" });
@@ -5481,11 +4701,11 @@ function __c22(j: number): any {
         identifier: "ListUsersPairedDevicesRequest",
       });
     case 2:
-      return S.Array(PairedDevice);
+      return S.Array(__S(166));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          pairedDevices: S.optional(PairedDeviceList),
+          pairedDevices: S.optional(__S(178)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5496,7 +4716,7 @@ function __c22(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Subscriber.pipe(T.HttpBody())),
+          body: S.optional(__S(168).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v4/{+name}", baseUrl: "https://health.googleapis.com/" }),
         ),
@@ -5508,7 +4728,7 @@ function __c22(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Subscription.pipe(T.HttpBody())),
+          body: S.optional(__S(14).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v4/{+name}", baseUrl: "https://health.googleapis.com/" }),
         ),
@@ -5519,7 +4739,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(DataPoint.pipe(T.HttpBody())),
+          body: S.optional(__S(104).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v4/{+name}", baseUrl: "https://health.googleapis.com/" }),
         ),
@@ -5551,49 +4771,49 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          floors: S.optional(Floors),
-          basalEnergyBurned: S.optional(BasalEnergyBurned),
-          activeZoneMinutes: S.optional(ActiveZoneMinutes),
-          dailyVo2Max: S.optional(DailyVO2Max),
-          activeEnergyBurned: S.optional(ActiveEnergyBurned),
-          sedentaryPeriod: S.optional(SedentaryPeriod),
-          height: S.optional(Height),
-          heartRateVariability: S.optional(HeartRateVariability),
-          vo2Max: S.optional(VO2Max),
+          floors: S.optional(__S(67)),
+          basalEnergyBurned: S.optional(__S(54)),
+          activeZoneMinutes: S.optional(__S(44)),
+          dailyVo2Max: S.optional(__S(60)),
+          activeEnergyBurned: S.optional(__S(28)),
+          sedentaryPeriod: S.optional(__S(79)),
+          height: S.optional(__S(80)),
+          heartRateVariability: S.optional(__S(66)),
+          vo2Max: S.optional(__S(96)),
           dataPointName: S.optional(S.String),
-          bloodGlucose: S.optional(BloodGlucose),
-          altitude: S.optional(Altitude),
-          dailyRestingHeartRate: S.optional(DailyRestingHeartRate),
-          dailySleepTemperatureDerivations: S.optional(DailySleepTemperatureDerivations),
-          dailyHeartRateVariability: S.optional(DailyHeartRateVariability),
-          activeMinutes: S.optional(ActiveMinutes),
-          sleep: S.optional(Sleep),
-          exercise: S.optional(Exercise),
-          dailyOxygenSaturation: S.optional(DailyOxygenSaturation),
-          weight: S.optional(Weight),
-          coreBodyTemperature: S.optional(CoreBodyTemperature),
-          bodyFat: S.optional(BodyFat),
-          dailyRespiratoryRate: S.optional(DailyRespiratoryRate),
-          runVo2Max: S.optional(RunVO2Max),
-          distance: S.optional(Distance),
-          dailyHeartRateZones: S.optional(DailyHeartRateZones),
-          steps: S.optional(Steps),
-          respiratoryRateSleepSummary: S.optional(RespiratoryRateSleepSummary),
-          nutritionLog: S.optional(NutritionLog),
-          activityLevel: S.optional(ActivityLevel),
-          heartRate: S.optional(HeartRate),
-          timeInHeartRateZone: S.optional(TimeInHeartRateZone),
-          hydrationLog: S.optional(HydrationLog),
-          swimLengthsData: S.optional(SwimLengthsData),
-          oxygenSaturation: S.optional(OxygenSaturation),
+          bloodGlucose: S.optional(__S(78)),
+          altitude: S.optional(__S(53)),
+          dailyRestingHeartRate: S.optional(__S(100)),
+          dailySleepTemperatureDerivations: S.optional(__S(37)),
+          dailyHeartRateVariability: S.optional(__S(95)),
+          activeMinutes: S.optional(__S(92)),
+          sleep: S.optional(__S(77)),
+          exercise: S.optional(__S(89)),
+          dailyOxygenSaturation: S.optional(__S(16)),
+          weight: S.optional(__S(26)),
+          coreBodyTemperature: S.optional(__S(20)),
+          bodyFat: S.optional(__S(68)),
+          dailyRespiratoryRate: S.optional(__S(59)),
+          runVo2Max: S.optional(__S(98)),
+          distance: S.optional(__S(103)),
+          dailyHeartRateZones: S.optional(__S(47)),
+          steps: S.optional(__S(97)),
+          respiratoryRateSleepSummary: S.optional(__S(52)),
+          nutritionLog: S.optional(__S(35)),
+          activityLevel: S.optional(__S(36)),
+          heartRate: S.optional(__S(102)),
+          timeInHeartRateZone: S.optional(__S(61)),
+          hydrationLog: S.optional(__S(25)),
+          swimLengthsData: S.optional(__S(64)),
+          oxygenSaturation: S.optional(__S(68)),
         }),
       ).annotate({ identifier: "ReconciledDataPoint" });
     case 1:
-      return S.Array(ReconciledDataPoint);
+      return S.Array(__S(184));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dataPoints: S.optional(ReconciledDataPointList),
+          dataPoints: S.optional(__S(185)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5613,14 +4833,14 @@ function __c23(j: number): any {
           pageToken: S.optional(S.String),
           dataSourceFamily: S.optional(S.String),
           pageSize: S.optional(S.Number),
-          range: S.optional(Interval),
+          range: S.optional(__S(187)),
         }),
       ).annotate({ identifier: "RollUpDataPointsRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(RollUpDataPointsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(188).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5634,33 +4854,33 @@ function __c23(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          activeZoneMinutes: S.optional(ActiveZoneMinutesRollupValue),
-          altitude: S.optional(AltitudeRollupValue),
+          activeZoneMinutes: S.optional(__S(124)),
+          altitude: S.optional(__S(133)),
           startTime: S.optional(S.String),
-          swimLengthsData: S.optional(SwimLengthsDataRollupValue),
-          totalCalories: S.optional(TotalCaloriesRollupValue),
-          activeEnergyBurned: S.optional(ActiveEnergyBurnedRollupValue),
-          coreBodyTemperature: S.optional(CoreBodyTemperatureRollupValue),
-          distance: S.optional(DistanceRollupValue),
-          timeInHeartRateZone: S.optional(TimeInHeartRateZoneRollupValue),
-          bloodGlucose: S.optional(BloodGlucoseRollupValue),
-          activityLevel: S.optional(ActivityLevelRollupValue),
-          caloriesInHeartRateZone: S.optional(CaloriesInHeartRateZoneRollupValue),
-          weight: S.optional(WeightRollupValue),
-          activeMinutes: S.optional(ActiveMinutesRollupValue),
-          floors: S.optional(FloorsRollupValue),
-          bodyFat: S.optional(BodyFatRollupValue),
-          sedentaryPeriod: S.optional(SedentaryPeriodRollupValue),
-          heartRate: S.optional(HeartRateRollupValue),
-          steps: S.optional(StepsRollupValue),
+          swimLengthsData: S.optional(__S(140)),
+          totalCalories: S.optional(__S(110)),
+          activeEnergyBurned: S.optional(__S(134)),
+          coreBodyTemperature: S.optional(__S(123)),
+          distance: S.optional(__S(112)),
+          timeInHeartRateZone: S.optional(__S(143)),
+          bloodGlucose: S.optional(__S(114)),
+          activityLevel: S.optional(__S(138)),
+          caloriesInHeartRateZone: S.optional(__S(121)),
+          weight: S.optional(__S(109)),
+          activeMinutes: S.optional(__S(117)),
+          floors: S.optional(__S(127)),
+          bodyFat: S.optional(__S(111)),
+          sedentaryPeriod: S.optional(__S(113)),
+          heartRate: S.optional(__S(122)),
+          steps: S.optional(__S(127)),
           endTime: S.optional(S.String),
-          hydrationLog: S.optional(HydrationLogRollupValue),
-          runVo2Max: S.optional(RunVO2MaxRollupValue),
-          nutritionLog: S.optional(NutritionLogRollupValue),
+          hydrationLog: S.optional(__S(126)),
+          runVo2Max: S.optional(__S(118)),
+          nutritionLog: S.optional(__S(132)),
         }),
       ).annotate({ identifier: "RollupDataPoint" });
     case 7:
-      return S.Array(RollupDataPoint);
+      return S.Array(__S(190));
   }
 }
 function __c24(j: number): any {
@@ -5668,7 +4888,7 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          rollupDataPoints: S.optional(RollupDataPointList),
+          rollupDataPoints: S.optional(__S(191)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "RollUpDataPointsResponse" });
@@ -5677,7 +4897,7 @@ function __c24(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Profile.pipe(T.HttpBody())),
+          body: S.optional(__S(157).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v4/{+name}", baseUrl: "https://health.googleapis.com/" }),
         ),
@@ -5689,12 +4909,71 @@ function __c24(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Settings.pipe(T.HttpBody())),
+          body: S.optional(__S(159).pipe(T.HttpBody())),
         }).pipe(
           T.Http({ method: "PATCH", uri: "v4/{+name}", baseUrl: "https://health.googleapis.com/" }),
         ),
       ).annotate({
         identifier: "UpdateSettingsUsersRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
   }
 }

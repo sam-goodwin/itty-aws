@@ -7,6 +7,8 @@ import { paginateCursor } from "../pagination.ts";
 import { NotionProtocol, type NotionOpError, type NotionOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { NotionOpError, NotionOpContext };
 
@@ -15,11 +17,6 @@ export interface ListCustomEmojisRequest {
   page_size?: number;
   name?: string;
 }
-const ListCustomEmojisRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ListCustomEmojisRequest>;
-
 export interface CustomEmojiResponse {
   /** The ID of the custom emoji. */
   id: string;
@@ -28,15 +25,8 @@ export interface CustomEmojiResponse {
   /** The URL of the custom emoji. */
   url: string;
 }
-const CustomEmojiResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CustomEmojiResponse>;
-
 /** The list of custom emojis. */
 export type ListCustomEmojisResponseResultsList = Array<CustomEmojiResponse>;
-const ListCustomEmojisResponseResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ListCustomEmojisResponseResultsList>;
-
 export interface ListCustomEmojisResponse {
   /** Always `list` */
   object: string;
@@ -49,11 +39,6 @@ export interface ListCustomEmojisResponse {
   /** The cursor to use for the next page of results, or null if there are no more results. */
   next_cursor: string | null;
 }
-const ListCustomEmojisResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ListCustomEmojisResponse>;
-
 export type ListCustomEmojisError = NotionOpError;
 /** List custom emojis */
 export const listCustomEmojis: API.PaginatedOperationMethod<
@@ -64,8 +49,8 @@ export const listCustomEmojis: API.PaginatedOperationMethod<
   CustomEmojiResponse
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListCustomEmojisRequest,
-    output: ListCustomEmojisResponse,
+    input: __S(0) as any as S.Schema<ListCustomEmojisRequest>,
+    output: __S(3) as any as S.Schema<ListCustomEmojisResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -99,16 +84,27 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "CustomEmojiResponse" });
     case 2:
-      return S.Array(CustomEmojiResponse);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           object: S.String,
           type: S.String,
-          results: ListCustomEmojisResponseResultsList,
+          results: __S(2),
           has_more: S.Boolean,
           next_cursor: S.NullOr(S.String),
         }),
       ).annotate({ identifier: "ListCustomEmojisResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 2) {
+    case 0:
+      return __c0(i & 3);
   }
 }

@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,24 +19,9 @@ export interface DeleteStorageDiscoveryWorkspaceRequest {
   /** The name of the StorageDiscoveryWorkspace */
   storageDiscoveryWorkspaceName: string;
 }
-const DeleteStorageDiscoveryWorkspaceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteStorageDiscoveryWorkspaceRequest>;
-
 export interface DeleteStorageDiscoveryWorkspaceResponse {}
-const DeleteStorageDiscoveryWorkspaceResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteStorageDiscoveryWorkspaceResponse>;
-
 /** The queries to execute against Storage Discovery data. Format: Base64-encoded JSON object with structure: {"queries":[{"name":"queryName","query":"KQL query"}]} For query syntax and available tables, see: https://aka.ms/storageDiscoveryQuery */
 export type GenerateReportReportRequestQueriesList = Array<string>;
-const GenerateReportReportRequestQueriesList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GenerateReportReportRequestQueriesList>;
-
 export interface GenerateReportReportRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -47,11 +34,6 @@ export interface GenerateReportReportRequest {
   /** The queries to execute against Storage Discovery data. Format: Base64-encoded JSON object with structure: {"queries":[{"name":"queryName","query":"KQL query"}]} For query syntax and available tables, see: https://aka.ms/storageDiscoveryQuery */
   queries: GenerateReportReportRequestQueriesList;
 }
-const GenerateReportReportRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GenerateReportReportRequest>;
-
 /** The column of the response result set */
 export interface ReportResultColumn {
   /** Name of the column */
@@ -59,26 +41,11 @@ export interface ReportResultColumn {
   /** ADX type of the column */
   type: string;
 }
-const ReportResultColumn = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ReportResultColumn>;
-
 /** Array of columns object, present only if the query succeeded */
 export type ReportResultSetColumnsList = Array<ReportResultColumn>;
-const ReportResultSetColumnsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ReportResultSetColumnsList>;
-
 export type ReportResultSetRowsItemList = Array<string>;
-const ReportResultSetRowsItemList =
-  GenerateReportReportRequestQueriesList as any as S.Schema<ReportResultSetRowsItemList>;
-
 /** Array of all rows from ADX, present only if the query succeeded */
 export type ReportResultSetRowsList = Array<ReportResultSetRowsItemList>;
-const ReportResultSetRowsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ReportResultSetRowsList>;
-
 /** The result set of the report operation */
 export interface ReportResultSet {
   /** Array of columns object, present only if the query succeeded */
@@ -88,22 +55,13 @@ export interface ReportResultSet {
   /** Provides an error about the query, present only if the query fails */
   errorCode?: string;
 }
-const ReportResultSet = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ReportResultSet>;
-
 /** One or more result sets, in the same order as the queries in the request body */
 export type GetReportResultResultsList = Array<ReportResultSet>;
-const GetReportResultResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetReportResultResultsList>;
-
 /** The response of the report operation */
 export interface GetReportResult {
   /** One or more result sets, in the same order as the queries in the request body */
   results: GetReportResultResultsList;
 }
-const GetReportResult = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetReportResult>;
-
 export interface GetReportRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -114,16 +72,10 @@ export interface GetReportRequest {
   /** The name of the ReportResource */
   discoveryResourceName: string;
 }
-const GetReportRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetReportRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -139,19 +91,13 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SystemData>;
-
 /** The provisioning state of a resource type. */
 export type AzureResourceManagerResourceProvisioningState = "Succeeded" | "Failed" | "Canceled";
-const AzureResourceManagerResourceProvisioningState = S.String;
-
 /** Properties for the Report resource used only as a proxy for the Report API. */
 export interface ReportProperties {
   /** The status of the last operation. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-const ReportProperties = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ReportProperties>;
-
 export interface GetReportResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -164,8 +110,6 @@ export interface GetReportResponse {
   /** The resource-specific properties for this resource. */
   properties?: ReportProperties;
 }
-const GetReportResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetReportResponse>;
-
 export interface GetStorageDiscoveryWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -174,50 +118,22 @@ export interface GetStorageDiscoveryWorkspaceRequest {
   /** The name of the StorageDiscoveryWorkspace */
   storageDiscoveryWorkspaceName: string;
 }
-const GetStorageDiscoveryWorkspaceRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetStorageDiscoveryWorkspaceRequest>;
-
 /** Resource tags. */
 export type GetStorageDiscoveryWorkspaceResponseTagsMap = { [key: string]: string | undefined };
-const GetStorageDiscoveryWorkspaceResponseTagsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetStorageDiscoveryWorkspaceResponseTagsMap>;
-
 /** The storage discovery sku */
 export type StorageDiscoveryWorkspacePropertiesSku = "Standard" | "Free";
-const StorageDiscoveryWorkspacePropertiesSku = S.String;
-
 /** The view level storage discovery data estate */
 export type StorageDiscoveryWorkspacePropertiesWorkspaceRootsList = Array<string>;
-const StorageDiscoveryWorkspacePropertiesWorkspaceRootsList =
-  GenerateReportReportRequestQueriesList as any as S.Schema<StorageDiscoveryWorkspacePropertiesWorkspaceRootsList>;
-
 /** Storage Discovery Resource Type */
 export type StorageDiscoveryResourceType = "Microsoft.Storage/storageAccounts";
-const StorageDiscoveryResourceType = S.String;
-
 /** Resource types for the collection */
 export type StorageDiscoveryScopeResourceTypesList = Array<
   StorageDiscoveryResourceType | (string & {})
 >;
-const StorageDiscoveryScopeResourceTypesList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<StorageDiscoveryScopeResourceTypesList>;
-
 /** The storage account tags keys to filter */
 export type StorageDiscoveryScopeTagKeysOnlyList = Array<string>;
-const StorageDiscoveryScopeTagKeysOnlyList =
-  GenerateReportReportRequestQueriesList as any as S.Schema<StorageDiscoveryScopeTagKeysOnlyList>;
-
 /** Resource tags. */
 export type StorageDiscoveryScopeTagsMap = { [key: string]: string | undefined };
-const StorageDiscoveryScopeTagsMap =
-  GetStorageDiscoveryWorkspaceResponseTagsMap as any as S.Schema<StorageDiscoveryScopeTagsMap>;
-
 /** Storage Discovery Scope. This had added validations */
 export interface StorageDiscoveryScope {
   /** Display name of the collection */
@@ -229,18 +145,8 @@ export interface StorageDiscoveryScope {
   /** Resource tags. */
   tags?: StorageDiscoveryScopeTagsMap;
 }
-const StorageDiscoveryScope = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<StorageDiscoveryScope>;
-
 /** The scopes of the storage discovery workspace. */
 export type StorageDiscoveryWorkspacePropertiesScopesList = Array<StorageDiscoveryScope>;
-const StorageDiscoveryWorkspacePropertiesScopesList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<StorageDiscoveryWorkspacePropertiesScopesList>;
-
 /** Storage Discovery Workspace Properties */
 export interface StorageDiscoveryWorkspaceProperties {
   /** The storage discovery sku */
@@ -254,11 +160,6 @@ export interface StorageDiscoveryWorkspaceProperties {
   /** The status of the last operation. */
   provisioningState?: AzureResourceManagerResourceProvisioningState;
 }
-const StorageDiscoveryWorkspaceProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<StorageDiscoveryWorkspaceProperties>;
-
 export interface GetStorageDiscoveryWorkspaceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -275,17 +176,7 @@ export interface GetStorageDiscoveryWorkspaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageDiscoveryWorkspaceProperties;
 }
-const GetStorageDiscoveryWorkspaceResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetStorageDiscoveryWorkspaceResponse>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -297,16 +188,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -320,26 +205,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListReportByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -348,11 +221,6 @@ export interface ListReportByResourceGroupRequest {
   /** The name of the StorageDiscoveryWorkspace */
   storageDiscoveryWorkspaceName: string;
 }
-const ListReportByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListReportByResourceGroupRequest>;
-
 /** A report resource */
 export interface ReportResource {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -366,15 +234,8 @@ export interface ReportResource {
   /** The resource-specific properties for this resource. */
   properties?: ReportProperties;
 }
-const ReportResource = GetReportResponse as any as S.Schema<ReportResource>;
-
 /** The ReportResource items on this page */
 export type ReportResourceListResultValueList = Array<ReportResource>;
-const ReportResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ReportResourceListResultValueList>;
-
 /** The response of a ReportResource list operation. */
 export interface ReportResourceListResult {
   /** The ReportResource items on this page */
@@ -382,33 +243,18 @@ export interface ReportResourceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ReportResourceListResult = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ReportResourceListResult>;
-
 export interface ListReportBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the StorageDiscoveryWorkspace */
   storageDiscoveryWorkspaceName: string;
 }
-const ListReportBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListReportBySubscriptionRequest>;
-
 export interface ListStorageDiscoveryWorkspaceByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListStorageDiscoveryWorkspaceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListStorageDiscoveryWorkspaceByResourceGroupRequest>;
-
 /** Resource tags. */
 export type StorageDiscoveryWorkspaceTagsMap = { [key: string]: string | undefined };
 /** A Storage Discovery Workspace resource. This resource configures the collection of storage account metrics. */
@@ -428,16 +274,8 @@ export interface StorageDiscoveryWorkspace {
   /** The resource-specific properties for this resource. */
   properties?: StorageDiscoveryWorkspaceProperties;
 }
-const StorageDiscoveryWorkspace =
-  GetStorageDiscoveryWorkspaceResponse as any as S.Schema<StorageDiscoveryWorkspace>;
-
 /** The StorageDiscoveryWorkspace items on this page */
 export type StorageDiscoveryWorkspaceListResultValueList = Array<StorageDiscoveryWorkspace>;
-const StorageDiscoveryWorkspaceListResultValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<StorageDiscoveryWorkspaceListResultValueList>;
-
 /** The response of a StorageDiscoveryWorkspace list operation. */
 export interface StorageDiscoveryWorkspaceListResult {
   /** The StorageDiscoveryWorkspace items on this page */
@@ -445,41 +283,20 @@ export interface StorageDiscoveryWorkspaceListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const StorageDiscoveryWorkspaceListResult = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<StorageDiscoveryWorkspaceListResult>;
-
 export interface ListStorageDiscoveryWorkspaceBySubscriptionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListStorageDiscoveryWorkspaceBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListStorageDiscoveryWorkspaceBySubscriptionRequest>;
-
 /** Resource tags. */
 export type StorageDiscoveryWorkspacesCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const StorageDiscoveryWorkspacesCreateOrUpdateRequestTagsMap =
-  GetStorageDiscoveryWorkspaceResponseTagsMap as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateRequestTagsMap>;
-
 /** The storage discovery sku */
 export type StorageDiscoveryWorkspacePropertiesInputSku = "Standard" | "Free";
-const StorageDiscoveryWorkspacePropertiesInputSku = S.String;
-
 /** The view level storage discovery data estate */
 export type StorageDiscoveryWorkspacePropertiesInputWorkspaceRootsList = Array<string>;
-const StorageDiscoveryWorkspacePropertiesInputWorkspaceRootsList =
-  GenerateReportReportRequestQueriesList as any as S.Schema<StorageDiscoveryWorkspacePropertiesInputWorkspaceRootsList>;
-
 /** The scopes of the storage discovery workspace. */
 export type StorageDiscoveryWorkspacePropertiesInputScopesList = Array<StorageDiscoveryScope>;
-const StorageDiscoveryWorkspacePropertiesInputScopesList =
-  StorageDiscoveryWorkspacePropertiesScopesList as any as S.Schema<StorageDiscoveryWorkspacePropertiesInputScopesList>;
-
 /** Storage Discovery Workspace Properties */
 export interface StorageDiscoveryWorkspacePropertiesInput {
   /** The storage discovery sku */
@@ -491,11 +308,6 @@ export interface StorageDiscoveryWorkspacePropertiesInput {
   /** The scopes of the storage discovery workspace. */
   scopes: StorageDiscoveryWorkspacePropertiesInputScopesList;
 }
-const StorageDiscoveryWorkspacePropertiesInput = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<StorageDiscoveryWorkspacePropertiesInput>;
-
 export interface StorageDiscoveryWorkspacesCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -510,11 +322,6 @@ export interface StorageDiscoveryWorkspacesCreateOrUpdateRequest {
   /** The resource-specific properties for this resource. */
   properties?: StorageDiscoveryWorkspacePropertiesInput;
 }
-const StorageDiscoveryWorkspacesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type StorageDiscoveryWorkspacesCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -535,14 +342,8 @@ export interface StorageDiscoveryWorkspacesCreateOrUpdateResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageDiscoveryWorkspaceProperties;
 }
-const StorageDiscoveryWorkspacesCreateOrUpdateResponse =
-  GetStorageDiscoveryWorkspaceResponse as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateResponse>;
-
 /** The queries to execute against Storage Discovery data. Format: Base64-encoded JSON object with structure: {"queries":[{"name":"queryName","query":"KQL query"}]} For query syntax and available tables, see: https://aka.ms/storageDiscoveryQuery */
 export type StorageDiscoveryWorkspacesReportRequestQueriesList = Array<string>;
-const StorageDiscoveryWorkspacesReportRequestQueriesList =
-  GenerateReportReportRequestQueriesList as any as S.Schema<StorageDiscoveryWorkspacesReportRequestQueriesList>;
-
 export interface StorageDiscoveryWorkspacesReportRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -553,30 +354,14 @@ export interface StorageDiscoveryWorkspacesReportRequest {
   /** The queries to execute against Storage Discovery data. Format: Base64-encoded JSON object with structure: {"queries":[{"name":"queryName","query":"KQL query"}]} For query syntax and available tables, see: https://aka.ms/storageDiscoveryQuery */
   queries: StorageDiscoveryWorkspacesReportRequestQueriesList;
 }
-const StorageDiscoveryWorkspacesReportRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<StorageDiscoveryWorkspacesReportRequest>;
-
 /** Resource tags. */
 export type UpdateStorageDiscoveryWorkspaceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateStorageDiscoveryWorkspaceRequestTagsMap =
-  GetStorageDiscoveryWorkspaceResponseTagsMap as any as S.Schema<UpdateStorageDiscoveryWorkspaceRequestTagsMap>;
-
 /** Storage Discovery Sku */
 export type StorageDiscoverySku = "Standard" | "Free";
-const StorageDiscoverySku = S.String;
-
 /** The view level storage discovery data estate */
 export type StorageDiscoveryWorkspacePropertiesUpdateWorkspaceRootsList = Array<string>;
-const StorageDiscoveryWorkspacePropertiesUpdateWorkspaceRootsList =
-  GenerateReportReportRequestQueriesList as any as S.Schema<StorageDiscoveryWorkspacePropertiesUpdateWorkspaceRootsList>;
-
 /** The scopes of the storage discovery workspace. */
 export type StorageDiscoveryWorkspacePropertiesUpdateScopesList = Array<StorageDiscoveryScope>;
-const StorageDiscoveryWorkspacePropertiesUpdateScopesList =
-  StorageDiscoveryWorkspacePropertiesScopesList as any as S.Schema<StorageDiscoveryWorkspacePropertiesUpdateScopesList>;
-
 /** The template for adding updateable properties. */
 export interface StorageDiscoveryWorkspacePropertiesUpdate {
   /** The storage discovery sku */
@@ -588,11 +373,6 @@ export interface StorageDiscoveryWorkspacePropertiesUpdate {
   /** The scopes of the storage discovery workspace. */
   scopes?: StorageDiscoveryWorkspacePropertiesUpdateScopesList;
 }
-const StorageDiscoveryWorkspacePropertiesUpdate = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<StorageDiscoveryWorkspacePropertiesUpdate>;
-
 export interface UpdateStorageDiscoveryWorkspaceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -605,11 +385,6 @@ export interface UpdateStorageDiscoveryWorkspaceRequest {
   /** The resource-specific properties for this resource. */
   properties?: StorageDiscoveryWorkspacePropertiesUpdate;
 }
-const UpdateStorageDiscoveryWorkspaceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<UpdateStorageDiscoveryWorkspaceRequest>;
-
 /** Resource tags. */
 export type UpdateStorageDiscoveryWorkspaceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateStorageDiscoveryWorkspaceResponse {
@@ -628,9 +403,6 @@ export interface UpdateStorageDiscoveryWorkspaceResponse {
   /** The resource-specific properties for this resource. */
   properties?: StorageDiscoveryWorkspaceProperties;
 }
-const UpdateStorageDiscoveryWorkspaceResponse =
-  GetStorageDiscoveryWorkspaceResponse as any as S.Schema<UpdateStorageDiscoveryWorkspaceResponse>;
-
 export type DeleteStorageDiscoveryWorkspaceError = AzureOpError;
 /** Delete a StorageDiscoveryWorkspace */
 export const DeleteStorageDiscoveryWorkspace: API.OperationMethod<
@@ -639,8 +411,8 @@ export const DeleteStorageDiscoveryWorkspace: API.OperationMethod<
   DeleteStorageDiscoveryWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageDiscoveryWorkspaceRequest,
-  output: DeleteStorageDiscoveryWorkspaceResponse,
+  input: __S(0) as any as S.Schema<DeleteStorageDiscoveryWorkspaceRequest>,
+  output: __S(1) as any as S.Schema<DeleteStorageDiscoveryWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -654,8 +426,8 @@ export const GenerateReportReport: API.OperationMethod<
   GenerateReportReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateReportReportRequest,
-  output: GetReportResult,
+  input: __S(3) as any as S.Schema<GenerateReportReportRequest>,
+  output: __S(9) as any as S.Schema<GetReportResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -669,8 +441,8 @@ export const GetReport: API.OperationMethod<
   GetReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReportRequest,
-  output: GetReportResponse,
+  input: __S(10) as any as S.Schema<GetReportRequest>,
+  output: __S(13) as any as S.Schema<GetReportResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -684,8 +456,8 @@ export const GetStorageDiscoveryWorkspace: API.OperationMethod<
   GetStorageDiscoveryWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStorageDiscoveryWorkspaceRequest,
-  output: GetStorageDiscoveryWorkspaceResponse,
+  input: __S(14) as any as S.Schema<GetStorageDiscoveryWorkspaceRequest>,
+  output: __S(20) as any as S.Schema<GetStorageDiscoveryWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -699,8 +471,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(21) as any as S.Schema<ListOperationsRequest>,
+  output: __S(25) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -714,8 +486,8 @@ export const ListReportByResourceGroup: API.OperationMethod<
   ListReportByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReportByResourceGroupRequest,
-  output: ReportResourceListResult,
+  input: __S(26) as any as S.Schema<ListReportByResourceGroupRequest>,
+  output: __S(28) as any as S.Schema<ReportResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -729,8 +501,8 @@ export const ListReportBySubscription: API.OperationMethod<
   ListReportBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReportBySubscriptionRequest,
-  output: ReportResourceListResult,
+  input: __S(29) as any as S.Schema<ListReportBySubscriptionRequest>,
+  output: __S(28) as any as S.Schema<ReportResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -744,8 +516,8 @@ export const ListStorageDiscoveryWorkspaceByResourceGroup: API.OperationMethod<
   ListStorageDiscoveryWorkspaceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorageDiscoveryWorkspaceByResourceGroupRequest,
-  output: StorageDiscoveryWorkspaceListResult,
+  input: __S(30) as any as S.Schema<ListStorageDiscoveryWorkspaceByResourceGroupRequest>,
+  output: __S(32) as any as S.Schema<StorageDiscoveryWorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -759,8 +531,8 @@ export const ListStorageDiscoveryWorkspaceBySubscription: API.OperationMethod<
   ListStorageDiscoveryWorkspaceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorageDiscoveryWorkspaceBySubscriptionRequest,
-  output: StorageDiscoveryWorkspaceListResult,
+  input: __S(33) as any as S.Schema<ListStorageDiscoveryWorkspaceBySubscriptionRequest>,
+  output: __S(32) as any as S.Schema<StorageDiscoveryWorkspaceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -774,8 +546,8 @@ export const StorageDiscoveryWorkspacesCreateOrUpdate: API.OperationMethod<
   StorageDiscoveryWorkspacesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StorageDiscoveryWorkspacesCreateOrUpdateRequest,
-  output: StorageDiscoveryWorkspacesCreateOrUpdateResponse,
+  input: __S(35) as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateRequest>,
+  output: __S(20) as any as S.Schema<StorageDiscoveryWorkspacesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -789,8 +561,8 @@ export const StorageDiscoveryWorkspacesReport: API.OperationMethod<
   StorageDiscoveryWorkspacesReportError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StorageDiscoveryWorkspacesReportRequest,
-  output: GetReportResult,
+  input: __S(36) as any as S.Schema<StorageDiscoveryWorkspacesReportRequest>,
+  output: __S(9) as any as S.Schema<GetReportResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -804,8 +576,8 @@ export const UpdateStorageDiscoveryWorkspace: API.OperationMethod<
   UpdateStorageDiscoveryWorkspaceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStorageDiscoveryWorkspaceRequest,
-  output: UpdateStorageDiscoveryWorkspaceResponse,
+  input: __S(38) as any as S.Schema<UpdateStorageDiscoveryWorkspaceRequest>,
+  output: __S(20) as any as S.Schema<UpdateStorageDiscoveryWorkspaceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -844,7 +616,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           storageDiscoveryWorkspaceName: S.String.pipe(T.Label()),
           discoveryResourceName: S.String.pipe(T.Label()),
-          queries: GenerateReportReportRequestQueriesList,
+          queries: __S(2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -864,14 +636,14 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ReportResultColumn" });
     case 5:
-      return S.Array(ReportResultColumn);
+      return S.Array(__S(4));
     case 6:
-      return S.Array(ReportResultSetRowsItemList);
+      return S.Array(__S(2));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(ReportResultSetColumnsList),
-          rows: S.optional(ReportResultSetRowsList),
+          columns: S.optional(__S(5)),
+          rows: S.optional(__S(6)),
           errorCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportResultSet" });
@@ -880,11 +652,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ReportResultSet);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          results: GetReportResultResultsList,
+          results: __S(8),
         }),
       ).annotate({ identifier: "GetReportResult" });
     case 2:
@@ -907,17 +679,17 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportProperties" });
     case 5:
@@ -926,8 +698,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ReportProperties),
+          systemData: S.optional(__S(11)),
+          properties: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "GetReportResponse" });
     case 6:
@@ -954,26 +726,26 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(StorageDiscoveryResourceType);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.String,
-          resourceTypes: StorageDiscoveryScopeResourceTypesList,
-          tagKeysOnly: S.optional(StorageDiscoveryScopeTagKeysOnlyList),
-          tags: S.optional(StorageDiscoveryScopeTagsMap),
+          resourceTypes: __S(16),
+          tagKeysOnly: S.optional(__S(2)),
+          tags: S.optional(__S(15)),
         }),
       ).annotate({ identifier: "StorageDiscoveryScope" });
     case 2:
-      return S.Array(StorageDiscoveryScope);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(StorageDiscoveryWorkspacePropertiesSku),
+          sku: S.optional(S.String),
           description: S.optional(S.String),
-          workspaceRoots: StorageDiscoveryWorkspacePropertiesWorkspaceRootsList,
-          scopes: StorageDiscoveryWorkspacePropertiesScopesList,
-          provisioningState: S.optional(AzureResourceManagerResourceProvisioningState),
+          workspaceRoots: __S(2),
+          scopes: __S(18),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StorageDiscoveryWorkspaceProperties",
@@ -984,10 +756,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetStorageDiscoveryWorkspaceResponseTagsMap),
+          systemData: S.optional(__S(11)),
+          tags: S.optional(__S(15)),
           location: S.String,
-          properties: S.optional(StorageDiscoveryWorkspaceProperties),
+          properties: S.optional(__S(19)),
         }),
       ).annotate({
         identifier: "GetStorageDiscoveryWorkspaceResponse",
@@ -1017,9 +789,9 @@ function __c2(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(22)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
   }
@@ -1027,11 +799,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Operation);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(24)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -1053,11 +825,11 @@ function __c3(j: number): any {
         identifier: "ListReportByResourceGroupRequest",
       });
     case 3:
-      return S.Array(ReportResource);
+      return S.Array(__S(13));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: ReportResourceListResultValueList,
+          value: __S(27),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReportResourceListResult" });
@@ -1094,7 +866,7 @@ function __c3(j: number): any {
         identifier: "ListStorageDiscoveryWorkspaceByResourceGroupRequest",
       });
     case 7:
-      return S.Array(StorageDiscoveryWorkspace);
+      return S.Array(__S(20));
   }
 }
 function __c4(j: number): any {
@@ -1102,7 +874,7 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: StorageDiscoveryWorkspaceListResultValueList,
+          value: __S(31),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -1126,10 +898,10 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(StorageDiscoveryWorkspacePropertiesInputSku),
+          sku: S.optional(S.String),
           description: S.optional(S.String),
-          workspaceRoots: StorageDiscoveryWorkspacePropertiesInputWorkspaceRootsList,
-          scopes: StorageDiscoveryWorkspacePropertiesInputScopesList,
+          workspaceRoots: __S(2),
+          scopes: __S(18),
         }),
       ).annotate({
         identifier: "StorageDiscoveryWorkspacePropertiesInput",
@@ -1140,9 +912,9 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageDiscoveryWorkspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(StorageDiscoveryWorkspacesCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(15)),
           location: S.String,
-          properties: S.optional(StorageDiscoveryWorkspacePropertiesInput),
+          properties: S.optional(__S(34)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1160,7 +932,7 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageDiscoveryWorkspaceName: S.String.pipe(T.Label()),
-          queries: StorageDiscoveryWorkspacesReportRequestQueriesList,
+          queries: __S(2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1175,10 +947,10 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(StorageDiscoverySku),
+          sku: S.optional(S.String),
           description: S.optional(S.String),
-          workspaceRoots: S.optional(StorageDiscoveryWorkspacePropertiesUpdateWorkspaceRootsList),
-          scopes: S.optional(StorageDiscoveryWorkspacePropertiesUpdateScopesList),
+          workspaceRoots: S.optional(__S(2)),
+          scopes: S.optional(__S(18)),
         }),
       ).annotate({
         identifier: "StorageDiscoveryWorkspacePropertiesUpdate",
@@ -1189,8 +961,8 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           storageDiscoveryWorkspaceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateStorageDiscoveryWorkspaceRequestTagsMap),
-          properties: S.optional(StorageDiscoveryWorkspacePropertiesUpdate),
+          tags: S.optional(__S(15)),
+          properties: S.optional(__S(37)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1202,5 +974,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UpdateStorageDiscoveryWorkspaceRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

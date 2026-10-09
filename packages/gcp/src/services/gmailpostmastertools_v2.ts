@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -85,11 +87,6 @@ export interface Gmailpostmastertools_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
-const Gmailpostmastertools_Date = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<Gmailpostmastertools_Date>;
-
 /** A single date range defined by a start and end date. */
 export interface DateRange {
   /** Required. The inclusive start date of the date range. */
@@ -97,31 +94,18 @@ export interface DateRange {
   /** Required. The inclusive end date of the date range. */
   end?: Gmailpostmastertools_Date;
 }
-const DateRange = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DateRange>;
-
 export type DateRangeList = Array<DateRange>;
-const DateRangeList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DateRangeList>;
-
 /** A set of date ranges. */
 export interface DateRanges {
   /** Required. The list of date ranges for which to retrieve data. */
   dateRanges?: DateRangeList;
 }
-const DateRanges = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DateRanges>;
-
 export type Gmailpostmastertools_DateList = Array<Gmailpostmastertools_Date>;
-const Gmailpostmastertools_DateList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<Gmailpostmastertools_DateList>;
-
 /** A set of specific dates. */
 export interface DateList {
   /** Required. The list of specific dates for which to retrieve data. */
   dates?: Gmailpostmastertools_DateList;
 }
-const DateList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DateList>;
-
 /** The date ranges or specific dates for which you want to retrieve data. */
 export interface TimeQuery {
   /** A list of date ranges. */
@@ -129,14 +113,10 @@ export interface TimeQuery {
   /** A list of specific dates. */
   dateList?: DateList;
 }
-const TimeQuery = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<TimeQuery>;
-
 export type QueryDomainStatsRequestAggregationGranularityEnum =
   | "AGGREGATION_GRANULARITY_UNSPECIFIED"
   | "DAILY"
   | "OVERALL";
-const QueryDomainStatsRequestAggregationGranularityEnum = S.String;
-
 export type BaseMetricStandardMetricEnum =
   | "STANDARD_METRIC_UNSPECIFIED"
   | "FEEDBACK_LOOP_ID"
@@ -147,15 +127,11 @@ export type BaseMetricStandardMetricEnum =
   | "TLS_ENCRYPTION_RATE"
   | "DELIVERY_ERROR_COUNT"
   | "DELIVERY_ERROR_RATE";
-const BaseMetricStandardMetricEnum = S.String;
-
 /** Specifies the base metric to query, which can be a predefined standard metric or a user-defined custom metric (if supported in the future). */
 export interface BaseMetric {
   /** A predefined standard metric. */
   standardMetric?: BaseMetricStandardMetricEnum | (string & {});
 }
-const BaseMetric = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<BaseMetric>;
-
 /** Defines a specific metric to query, including a user-defined name, the base metric type, and optional filters. */
 export interface MetricDefinition {
   /** Optional. Optional filters to apply to the metric. */
@@ -165,11 +141,7 @@ export interface MetricDefinition {
   /** Required. The user-defined name for this metric. This name will be used as the key for this metric's value in the response. */
   name?: string;
 }
-const MetricDefinition = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<MetricDefinition>;
-
 export type MetricDefinitionList = Array<MetricDefinition>;
-const MetricDefinitionList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<MetricDefinitionList>;
-
 /** Request message for QueryDomainStats. */
 export interface QueryDomainStatsRequest {
   /** Required. The parent resource name where the stats are queried. Format: domains/{domain} */
@@ -185,42 +157,18 @@ export interface QueryDomainStatsRequest {
   /** Required. The specific metrics to query. You can define a custom name for each metric, which will be used in the response. */
   metricDefinitions?: MetricDefinitionList;
 }
-const QueryDomainStatsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<QueryDomainStatsRequest>;
-
 export type QueryDomainStatsRequestList = Array<QueryDomainStatsRequest>;
-const QueryDomainStatsRequestList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<QueryDomainStatsRequestList>;
-
 /** Request message for BatchQueryDomainStats. */
 export interface BatchQueryDomainStatsRequest {
   /** Required. A list of individual query requests. Each request can be for a different domain. A maximum of 100 requests can be included in a single batch. */
   requests?: QueryDomainStatsRequestList;
 }
-const BatchQueryDomainStatsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<BatchQueryDomainStatsRequest>;
-
 export interface BatchQueryDomainStatsRequest_ {
   /** Request body */
   body?: BatchQueryDomainStatsRequest;
 }
-const BatchQueryDomainStatsRequest_ = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<BatchQueryDomainStatsRequest_>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -230,18 +178,12 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Status>;
-
 export type StringList_ = Array<string>;
-const StringList_ = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<StringList_>;
-
 /** Represents a list of strings. */
 export interface StringList {
   /** The string values. */
   values?: StringList_;
 }
-const StringList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<StringList>;
-
 /** The actual value of a statistic. */
 export interface StatisticValue {
   /** Integer value. */
@@ -255,8 +197,6 @@ export interface StatisticValue {
   /** List of string values. */
   stringList?: StringList;
 }
-const StatisticValue = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<StatisticValue>;
-
 /** Email statistics for a domain for a specified time period or date. */
 export interface DomainStat {
   /** The user-defined name from MetricDefinition.name in the request, used to correlate this result with the requested metric. */
@@ -268,11 +208,7 @@ export interface DomainStat {
   /** The value of the corresponding metric. */
   value?: StatisticValue;
 }
-const DomainStat = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DomainStat>;
-
 export type DomainStatList = Array<DomainStat>;
-const DomainStatList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DomainStatList>;
-
 /** Response message for QueryDomainStats. */
 export interface QueryDomainStatsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -280,11 +216,6 @@ export interface QueryDomainStatsResponse {
   /** The list of domain statistics. Each DomainStat object contains the value for a metric requested in the QueryDomainStatsRequest. */
   domainStats?: DomainStatList;
 }
-const QueryDomainStatsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<QueryDomainStatsResponse>;
-
 /** Represents the result of a single QueryDomainStatsRequest within a batch. */
 export interface BatchQueryDomainStatsResult {
   /** The error status if the individual query failed. */
@@ -292,49 +223,26 @@ export interface BatchQueryDomainStatsResult {
   /** The successful response for the individual query. */
   response?: QueryDomainStatsResponse;
 }
-const BatchQueryDomainStatsResult = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<BatchQueryDomainStatsResult>;
-
 export type BatchQueryDomainStatsResultList = Array<BatchQueryDomainStatsResult>;
-const BatchQueryDomainStatsResultList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<BatchQueryDomainStatsResultList>;
-
 /** Response message for BatchQueryDomainStats. */
 export interface BatchQueryDomainStatsResponse {
   /** A list of responses, one for each query in the BatchQueryDomainStatsRequest. The order of responses will correspond to the order of requests. */
   results?: BatchQueryDomainStatsResultList;
 }
-const BatchQueryDomainStatsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<BatchQueryDomainStatsResponse>;
-
 /** [Developer Preview](https://developers.google.com/workspace/preview): Request message for CreateDomain. */
 export interface CreateDomainRequest {
   /** Required. The domain to add. e.g., "example.com" */
   domainId?: string;
 }
-const CreateDomainRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CreateDomainRequest>;
-
 export interface CreateDomainsRequest {
   /** Request body */
   body?: CreateDomainRequest;
 }
-const CreateDomainsRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CreateDomainsRequest>;
-
 export type DomainVerificationStateEnum =
   | "VERIFICATION_STATE_UNSPECIFIED"
   | "UNVERIFIED"
   | "VERIFIED";
-const DomainVerificationStateEnum = S.String;
-
 export type DomainPermissionEnum = "PERMISSION_UNSPECIFIED" | "READER" | "ADMIN" | "OWNER" | "NONE";
-const DomainPermissionEnum = S.String;
-
 /** Information about a domain registered by the user. */
 export interface Domain {
   /** Identifier. The resource name of the domain. Format: `domains/{domain_name}`, where domain_name is the fully qualified domain name (i.e., mymail.mydomain.com). */
@@ -348,16 +256,12 @@ export interface Domain {
   /** Output only. User's permission of this domain. */
   permission?: DomainPermissionEnum;
 }
-const Domain = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Domain>;
-
 export type CreateUserRequestPermissionEnum =
   | "PERMISSION_UNSPECIFIED"
   | "READER"
   | "ADMIN"
   | "OWNER"
   | "NONE";
-const CreateUserRequestPermissionEnum = S.String;
-
 /** [Developer Preview](https://developers.google.com/workspace/preview): Request message for CreateUser. */
 export interface CreateUserRequest {
   /** Required. The user to create. */
@@ -365,22 +269,13 @@ export interface CreateUserRequest {
   /** Optional. Specifies the permission level to give the user for the specified domain. If not specified, the default value for this field is READER. */
   permission?: CreateUserRequestPermissionEnum | (string & {});
 }
-const CreateUserRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CreateUserRequest>;
-
 export interface CreateDomainsUsersRequest {
   /** Required. The parent resource where this user will be created. Format: domains/{domain} */
   parent: string;
   /** Request body */
   body?: CreateUserRequest;
 }
-const CreateDomainsUsersRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateDomainsUsersRequest>;
-
 export type UserPermissionEnum = "PERMISSION_UNSPECIFIED" | "READER" | "ADMIN" | "OWNER" | "NONE";
-const UserPermissionEnum = S.String;
-
 /** [Developer Preview](https://developers.google.com/workspace/preview): Information about a user's access to a domain. */
 export interface User {
   /** Output only. The time the user was granted access. */
@@ -394,53 +289,31 @@ export interface User {
   /** The permission level that the user has for the specified domain. */
   permission?: UserPermissionEnum | (string & {});
 }
-const User = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<User>;
-
 export interface DeleteDomainsRequest {
   /** Required. The domain to delete. */
   name: string;
 }
-const DeleteDomainsRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DeleteDomainsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Empty>;
-
 export interface DeleteDomainsUsersRequest {
   /** Required. The resource name of the user to delete. Format: domains/{domain}/users/{user} */
   name: string;
 }
-const DeleteDomainsUsersRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DeleteDomainsUsersRequest>;
-
 export interface GetComplianceStatusDomainsRequest {
   /** Required. The resource name of the domain's compliance status to retrieve. Format: `domains/{domain_id}/complianceStatus`. */
   name: string;
 }
-const GetComplianceStatusDomainsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetComplianceStatusDomainsRequest>;
-
 export type ComplianceStatusStatusEnum = "STATE_UNSPECIFIED" | "COMPLIANT" | "NEEDS_WORK";
-const ComplianceStatusStatusEnum = S.String;
-
 /** The status of a sender compliance requirement. */
 export interface ComplianceStatus {
   /** Output only. The compliance status. */
   status?: ComplianceStatusStatusEnum;
 }
-const ComplianceStatus = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ComplianceStatus>;
-
 export type OneClickUnsubscribeVerdictReasonEnum =
   | "REASON_UNSPECIFIED"
   | "NO_UNSUB_GENERAL"
   | "NO_UNSUB_SPAM_REPORTS"
   | "NO_UNSUB_PROMO_SPAM_REPORTS";
-const OneClickUnsubscribeVerdictReasonEnum = S.String;
-
 /** Compliance verdict for whether a sender meets the one-click unsubscribe compliance requirement. */
 export interface OneClickUnsubscribeVerdict {
   /** The compliance status. */
@@ -448,11 +321,6 @@ export interface OneClickUnsubscribeVerdict {
   /** The specific reason for the compliance verdict. Must be empty if the status is compliant. */
   reason?: OneClickUnsubscribeVerdictReasonEnum;
 }
-const OneClickUnsubscribeVerdict = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<OneClickUnsubscribeVerdict>;
-
 export type ComplianceRowDataRequirementEnum =
   | "COMPLIANCE_REQUIREMENT_UNSPECIFIED"
   | "SPF"
@@ -466,8 +334,6 @@ export type ComplianceRowDataRequirementEnum =
   | "USER_REPORTED_SPAM_RATE"
   | "ONE_CLICK_UNSUBSCRIBE"
   | "HONOR_UNSUBSCRIBE";
-const ComplianceRowDataRequirementEnum = S.String;
-
 /** Data for a single row of the compliance status table. */
 export interface ComplianceRowData {
   /** The compliance status for the requirement. */
@@ -475,14 +341,7 @@ export interface ComplianceRowData {
   /** The compliance requirement. */
   requirement?: ComplianceRowDataRequirementEnum;
 }
-const ComplianceRowData = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ComplianceRowData>;
-
 export type ComplianceRowDataList = Array<ComplianceRowData>;
-const ComplianceRowDataList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ComplianceRowDataList>;
-
 export type DeliverabilityStatusVerdictReasonEnum =
   | "REASON_UNSPECIFIED"
   | "MESSAGE_VOLUME_LOW"
@@ -492,8 +351,6 @@ export type DeliverabilityStatusVerdictReasonEnum =
   | "USER_FEEDBACK_NEGATIVE"
   | "USER_FEEDBACK_LOW"
   | "USER_FEEDBACK_POSITIVE";
-const DeliverabilityStatusVerdictReasonEnum = S.String;
-
 /** [Developer Preview](https://developers.google.com/workspace/preview): Verdict of domain deliverability status. */
 export interface DeliverabilityStatusVerdict {
   /** Output only. The compliance state. */
@@ -501,18 +358,11 @@ export interface DeliverabilityStatusVerdict {
   /** Output only. The specific reason for the compliance verdict. */
   reason?: DeliverabilityStatusVerdictReasonEnum;
 }
-const DeliverabilityStatusVerdict = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<DeliverabilityStatusVerdict>;
-
 export type HonorUnsubscribeVerdictReasonEnum =
   | "REASON_UNSPECIFIED"
   | "NOT_HONORING"
   | "NOT_HONORING_TOO_FEW_CAMPAIGNS"
   | "NOT_HONORING_TOO_MANY_CAMPAIGNS";
-const HonorUnsubscribeVerdictReasonEnum = S.String;
-
 /** Compliance verdict for whether a sender meets the unsubscribe honoring compliance requirement. */
 export interface HonorUnsubscribeVerdict {
   /** The compliance status. */
@@ -520,11 +370,6 @@ export interface HonorUnsubscribeVerdict {
   /** The specific reason for the compliance verdict. Must be empty if the status is compliant. */
   reason?: HonorUnsubscribeVerdictReasonEnum;
 }
-const HonorUnsubscribeVerdict = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<HonorUnsubscribeVerdict>;
-
 /** Compliance data for a given domain. */
 export interface DomainComplianceData {
   /** Domain that this data is for. */
@@ -538,8 +383,6 @@ export interface DomainComplianceData {
   /** Unsubscribe honoring compliance verdict. */
   honorUnsubscribeVerdict?: HonorUnsubscribeVerdict;
 }
-const DomainComplianceData = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<DomainComplianceData>;
-
 /** Compliance status for a domain. */
 export interface DomainComplianceStatus {
   /** Identifier. The resource name of the domain's compliance status. Format: `domains/{domain_id}/complianceStatus`. */
@@ -549,49 +392,28 @@ export interface DomainComplianceStatus {
   /** Compliance data calculated specifically for the subdomain in `name`. This field is only populated if the domain in `name` is a subdomain that differs from its registrable domain (e.g., `sub.example.com`), and if compliance data is available for that specific subdomain. */
   subdomainComplianceData?: DomainComplianceData;
 }
-const DomainComplianceStatus = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DomainComplianceStatus>;
-
 export interface GetDomainsRequest {
   /** Required. The resource name of the domain. Format: `domains/{domain_name}`, where domain_name is the fully qualified domain name (i.e., mymail.mydomain.com). */
   name: string;
 }
-const GetDomainsRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GetDomainsRequest>;
-
 export interface GetDomainsUsersRequest {
   /** Required. The resource name of the user to retrieve. Format: `domains/{domain}/users/{user}` */
   name: string;
 }
-const GetDomainsUsersRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<GetDomainsUsersRequest>;
-
 export type GetVerificationTokenDomainsVerificationMethodEnum =
   | "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED"
   | "TXT"
   | "CNAME";
-const GetVerificationTokenDomainsVerificationMethodEnum = S.String;
-
 export interface GetVerificationTokenDomainsRequest {
   /** Required. The resource name of the verification token to retrieve. Format: `domains/{domain}/verificationToken` */
   name: string;
   /** Required. The verification method used. Must be specified, i.e. TXT or CNAME. */
   verificationMethod?: GetVerificationTokenDomainsVerificationMethodEnum | (string & {});
 }
-const GetVerificationTokenDomainsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<GetVerificationTokenDomainsRequest>;
-
 export type DomainVerificationTokenVerificationMethodEnum =
   | "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED"
   | "TXT"
   | "CNAME";
-const DomainVerificationTokenVerificationMethodEnum = S.String;
-
 /** [Developer Preview](https://developers.google.com/workspace/preview): The DNS token a user can use to verify ownership of a domain. */
 export interface DomainVerificationToken {
   /** The verification method used. */
@@ -601,22 +423,13 @@ export interface DomainVerificationToken {
   /** The verification token. */
   token?: string;
 }
-const DomainVerificationToken = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DomainVerificationToken>;
-
 export interface ListDomainsRequest {
   /** Optional. Requested page size. Server may return fewer domains than requested. If unspecified, the default value for this field is 10. The maximum value for this field is 200. */
   pageSize?: number;
   /** Optional. The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-const ListDomainsRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ListDomainsRequest>;
-
 export type DomainList = Array<Domain>;
-const DomainList = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<DomainList>;
-
 /** Response message for ListDomains. */
 export interface ListDomainsResponse {
   /** The domains that have been registered by the user. */
@@ -624,8 +437,6 @@ export interface ListDomainsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-const ListDomainsResponse = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ListDomainsResponse>;
-
 export interface ListDomainsUsersRequest {
   /** Required. The parent resource name for which to list users. Format: `domains/{domain}` */
   parent: string;
@@ -634,14 +445,7 @@ export interface ListDomainsUsersRequest {
   /** Optional. The next_page_token value returned from a previous List request, if any. */
   pageToken?: string;
 }
-const ListDomainsUsersRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListDomainsUsersRequest>;
-
 export type UserList = Array<User>;
-const UserList = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<UserList>;
-
 /** [Developer Preview](https://developers.google.com/workspace/preview): Response message for ListUsers. */
 export interface ListUsersResponse {
   /** The users that have access to the domain. */
@@ -649,8 +453,6 @@ export interface ListUsersResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
   nextPageToken?: string;
 }
-const ListUsersResponse = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ListUsersResponse>;
-
 export interface PatchDomainsUsersRequest {
   /** The list of fields to update. */
   updateMask?: string;
@@ -659,47 +461,29 @@ export interface PatchDomainsUsersRequest {
   /** Request body */
   body?: User;
 }
-const PatchDomainsUsersRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<PatchDomainsUsersRequest>;
-
 export interface QueryDomainsDomainStatsRequest {
   /** Required. The parent resource name where the stats are queried. Format: domains/{domain} */
   parent: string;
   /** Request body */
   body?: QueryDomainStatsRequest;
 }
-const QueryDomainsDomainStatsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<QueryDomainsDomainStatsRequest>;
-
 export type VerifyDomainRequestVerificationMethodEnum =
   | "DOMAIN_VERIFICATION_METHOD_UNSPECIFIED"
   | "TXT"
   | "CNAME";
-const VerifyDomainRequestVerificationMethodEnum = S.String;
-
 /** [Developer Preview](https://developers.google.com/workspace/preview): Request message for VerifyDomain. */
 export interface VerifyDomainRequest {
   /** Required. The verification method used. Must be specified, i.e. TXT or CNAME. */
   verificationMethod?: VerifyDomainRequestVerificationMethodEnum | (string & {});
 }
-const VerifyDomainRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<VerifyDomainRequest>;
-
 export interface VerifyDomainsRequest {
   /** Required. The domain to verify. */
   name: string;
   /** Request body */
   body?: VerifyDomainRequest;
 }
-const VerifyDomainsRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<VerifyDomainsRequest>;
-
 /** [Developer Preview](https://developers.google.com/workspace/preview): Response message for VerifyDomain. */
 export interface VerifyDomainResponse {}
-const VerifyDomainResponse = Empty as any as S.Schema<VerifyDomainResponse>;
-
 export type BatchQueryDomainStatsError =
   | NotFound
   | Forbidden
@@ -714,8 +498,8 @@ export const batchQueryDomainStats: API.OperationMethod<
   BatchQueryDomainStatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchQueryDomainStatsRequest_,
-  output: BatchQueryDomainStatsResponse,
+  input: __S(13) as any as S.Schema<BatchQueryDomainStatsRequest_>,
+  output: __S(25) as any as S.Schema<BatchQueryDomainStatsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -735,8 +519,8 @@ export const createDomains: API.OperationMethod<
   CreateDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDomainsRequest,
-  output: Domain,
+  input: __S(27) as any as S.Schema<CreateDomainsRequest>,
+  output: __S(28) as any as S.Schema<Domain>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -756,8 +540,8 @@ export const createDomainsUsers: API.OperationMethod<
   CreateDomainsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDomainsUsersRequest,
-  output: User,
+  input: __S(30) as any as S.Schema<CreateDomainsUsersRequest>,
+  output: __S(31) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -777,8 +561,8 @@ export const deleteDomains: API.OperationMethod<
   DeleteDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDomainsRequest,
-  output: Empty,
+  input: __S(32) as any as S.Schema<DeleteDomainsRequest>,
+  output: __S(33) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -798,8 +582,8 @@ export const deleteDomainsUsers: API.OperationMethod<
   DeleteDomainsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDomainsUsersRequest,
-  output: Empty,
+  input: __S(34) as any as S.Schema<DeleteDomainsUsersRequest>,
+  output: __S(33) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -817,8 +601,8 @@ export const getComplianceStatusDomains: API.OperationMethod<
   GetComplianceStatusDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetComplianceStatusDomainsRequest,
-  output: DomainComplianceStatus,
+  input: __S(35) as any as S.Schema<GetComplianceStatusDomainsRequest>,
+  output: __S(43) as any as S.Schema<DomainComplianceStatus>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -832,8 +616,8 @@ export const getDomains: API.OperationMethod<
   GetDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainsRequest,
-  output: Domain,
+  input: __S(44) as any as S.Schema<GetDomainsRequest>,
+  output: __S(28) as any as S.Schema<Domain>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -847,8 +631,8 @@ export const getDomainsUsers: API.OperationMethod<
   GetDomainsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainsUsersRequest,
-  output: User,
+  input: __S(45) as any as S.Schema<GetDomainsUsersRequest>,
+  output: __S(31) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -866,8 +650,8 @@ export const getVerificationTokenDomains: API.OperationMethod<
   GetVerificationTokenDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVerificationTokenDomainsRequest,
-  output: DomainVerificationToken,
+  input: __S(46) as any as S.Schema<GetVerificationTokenDomainsRequest>,
+  output: __S(47) as any as S.Schema<DomainVerificationToken>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -882,8 +666,8 @@ export const listDomains: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDomainsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDomainsRequest,
-  output: ListDomainsResponse,
+  input: __S(48) as any as S.Schema<ListDomainsRequest>,
+  output: __S(50) as any as S.Schema<ListDomainsResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -899,8 +683,8 @@ export const listDomainsUsers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListUsersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDomainsUsersRequest,
-  output: ListUsersResponse,
+  input: __S(51) as any as S.Schema<ListDomainsUsersRequest>,
+  output: __S(53) as any as S.Schema<ListUsersResponse>,
   errors: [NotFound, Forbidden, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -921,8 +705,8 @@ export const patchDomainsUsers: API.OperationMethod<
   PatchDomainsUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchDomainsUsersRequest,
-  output: User,
+  input: __S(54) as any as S.Schema<PatchDomainsUsersRequest>,
+  output: __S(31) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -942,8 +726,8 @@ export const queryDomainsDomainStats: API.OperationMethod<
   QueryDomainsDomainStatsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryDomainsDomainStatsRequest,
-  output: QueryDomainStatsResponse,
+  input: __S(55) as any as S.Schema<QueryDomainsDomainStatsRequest>,
+  output: __S(22) as any as S.Schema<QueryDomainStatsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -963,8 +747,8 @@ export const verifyDomains: API.OperationMethod<
   VerifyDomainsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyDomainsRequest,
-  output: VerifyDomainResponse,
+  input: __S(57) as any as S.Schema<VerifyDomainsRequest>,
+  output: __S(33) as any as S.Schema<VerifyDomainResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, InsufficientScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -986,37 +770,37 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          start: S.optional(Gmailpostmastertools_Date),
-          end: S.optional(Gmailpostmastertools_Date),
+          start: S.optional(__S(0)),
+          end: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "DateRange" });
     case 2:
-      return S.Array(DateRange);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dateRanges: S.optional(DateRangeList),
+          dateRanges: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "DateRanges" });
     case 4:
-      return S.Array(Gmailpostmastertools_Date);
+      return S.Array(__S(0));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dates: S.optional(Gmailpostmastertools_DateList),
+          dates: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "DateList" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dateRanges: S.optional(DateRanges),
-          dateList: S.optional(DateList),
+          dateRanges: S.optional(__S(3)),
+          dateList: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "TimeQuery" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          standardMetric: S.optional(BaseMetricStandardMetricEnum),
+          standardMetric: S.optional(S.String),
         }),
       ).annotate({ identifier: "BaseMetric" });
   }
@@ -1027,29 +811,29 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          baseMetric: S.optional(BaseMetric),
+          baseMetric: S.optional(__S(7)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "MetricDefinition" });
     case 1:
-      return S.Array(MetricDefinition);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
           parent: S.optional(S.String),
-          timeQuery: S.optional(TimeQuery),
+          timeQuery: S.optional(__S(6)),
           pageToken: S.optional(S.String),
           pageSize: S.optional(S.Number),
-          aggregationGranularity: S.optional(QueryDomainStatsRequestAggregationGranularityEnum),
-          metricDefinitions: S.optional(MetricDefinitionList),
+          aggregationGranularity: S.optional(S.String),
+          metricDefinitions: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "QueryDomainStatsRequest" });
     case 3:
-      return S.Array(QueryDomainStatsRequest);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          requests: S.optional(QueryDomainStatsRequestList),
+          requests: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "BatchQueryDomainStatsRequest",
@@ -1057,7 +841,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(BatchQueryDomainStatsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1071,7 +855,7 @@ function __c1(j: number): any {
     case 6:
       return S.Record(S.String, S.Unknown);
     case 7:
-      return S.Array(DocumentMap);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -1080,7 +864,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(15)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
@@ -1089,7 +873,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(StringList_),
+          values: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "StringList" });
     case 3:
@@ -1099,7 +883,7 @@ function __c2(j: number): any {
           doubleValue: S.optional(S.Number),
           stringValue: S.optional(S.String),
           floatValue: S.optional(S.Number),
-          stringList: S.optional(StringList),
+          stringList: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "StatisticValue" });
     case 4:
@@ -1107,24 +891,24 @@ function __c2(j: number): any {
         S.Struct({
           metric: S.optional(S.String),
           name: S.optional(S.String),
-          date: S.optional(Gmailpostmastertools_Date),
-          value: S.optional(StatisticValue),
+          date: S.optional(__S(0)),
+          value: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "DomainStat" });
     case 5:
-      return S.Array(DomainStat);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          domainStats: S.optional(DomainStatList),
+          domainStats: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "QueryDomainStatsResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(Status),
-          response: S.optional(QueryDomainStatsResponse),
+          error: S.optional(__S(16)),
+          response: S.optional(__S(22)),
         }),
       ).annotate({
         identifier: "BatchQueryDomainStatsResult",
@@ -1134,11 +918,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BatchQueryDomainStatsResult);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(BatchQueryDomainStatsResultList),
+          results: S.optional(__S(24)),
         }),
       ).annotate({
         identifier: "BatchQueryDomainStatsResponse",
@@ -1152,7 +936,7 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(CreateDomainRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(26).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1167,22 +951,22 @@ function __c3(j: number): any {
           name: S.optional(S.String),
           createTime: S.optional(S.String),
           lastVerifyTime: S.optional(S.String),
-          verificationState: S.optional(DomainVerificationStateEnum),
-          permission: S.optional(DomainPermissionEnum),
+          verificationState: S.optional(S.String),
+          permission: S.optional(S.String),
         }),
       ).annotate({ identifier: "Domain" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           userId: S.optional(S.String),
-          permission: S.optional(CreateUserRequestPermissionEnum),
+          permission: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateUserRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CreateUserRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(29).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1200,7 +984,7 @@ function __c3(j: number): any {
           user: S.optional(S.String),
           name: S.optional(S.String),
           accessGranter: S.optional(S.String),
-          permission: S.optional(UserPermissionEnum),
+          permission: S.optional(S.String),
         }),
       ).annotate({ identifier: "User" });
   }
@@ -1254,14 +1038,14 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ComplianceStatusStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComplianceStatus" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ComplianceStatus),
-          reason: S.optional(OneClickUnsubscribeVerdictReasonEnum),
+          status: S.optional(__S(36)),
+          reason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "OneClickUnsubscribeVerdict",
@@ -1269,12 +1053,12 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ComplianceStatus),
-          requirement: S.optional(ComplianceRowDataRequirementEnum),
+          status: S.optional(__S(36)),
+          requirement: S.optional(S.String),
         }),
       ).annotate({ identifier: "ComplianceRowData" });
     case 7:
-      return S.Array(ComplianceRowData);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
@@ -1282,8 +1066,8 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(ComplianceStatus),
-          reason: S.optional(DeliverabilityStatusVerdictReasonEnum),
+          state: S.optional(__S(36)),
+          reason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DeliverabilityStatusVerdict",
@@ -1291,26 +1075,26 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ComplianceStatus),
-          reason: S.optional(HonorUnsubscribeVerdictReasonEnum),
+          status: S.optional(__S(36)),
+          reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "HonorUnsubscribeVerdict" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           domainId: S.optional(S.String),
-          oneClickUnsubscribeVerdict: S.optional(OneClickUnsubscribeVerdict),
-          rowData: S.optional(ComplianceRowDataList),
-          deliverabilityStatusVerdict: S.optional(DeliverabilityStatusVerdict),
-          honorUnsubscribeVerdict: S.optional(HonorUnsubscribeVerdict),
+          oneClickUnsubscribeVerdict: S.optional(__S(37)),
+          rowData: S.optional(__S(39)),
+          deliverabilityStatusVerdict: S.optional(__S(40)),
+          honorUnsubscribeVerdict: S.optional(__S(41)),
         }),
       ).annotate({ identifier: "DomainComplianceData" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          complianceData: S.optional(DomainComplianceData),
-          subdomainComplianceData: S.optional(DomainComplianceData),
+          complianceData: S.optional(__S(42)),
+          subdomainComplianceData: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "DomainComplianceStatus" });
     case 4:
@@ -1341,9 +1125,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          verificationMethod: S.optional(
-            GetVerificationTokenDomainsVerificationMethodEnum.pipe(T.Query()),
-          ),
+          verificationMethod: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1357,7 +1139,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          verificationMethod: S.optional(DomainVerificationTokenVerificationMethodEnum),
+          verificationMethod: S.optional(S.String),
           name: S.optional(S.String),
           token: S.optional(S.String),
         }),
@@ -1380,11 +1162,11 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListDomainsRequest" });
     case 1:
-      return S.Array(Domain);
+      return S.Array(__S(28));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(DomainList),
+          domains: S.optional(__S(49)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDomainsResponse" });
@@ -1403,11 +1185,11 @@ function __c6(j: number): any {
         ),
       ).annotate({ identifier: "ListDomainsUsersRequest" });
     case 4:
-      return S.Array(User);
+      return S.Array(__S(31));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          users: S.optional(UserList),
+          users: S.optional(__S(52)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListUsersResponse" });
@@ -1416,7 +1198,7 @@ function __c6(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(User.pipe(T.HttpBody())),
+          body: S.optional(__S(31).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1429,7 +1211,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(QueryDomainStatsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1447,14 +1229,14 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          verificationMethod: S.optional(VerifyDomainRequestVerificationMethodEnum),
+          verificationMethod: S.optional(S.String),
         }),
       ).annotate({ identifier: "VerifyDomainRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(VerifyDomainRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(56).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1463,5 +1245,30 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "VerifyDomainsRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
   }
 }

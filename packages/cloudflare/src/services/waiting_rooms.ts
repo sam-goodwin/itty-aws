@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -82,15 +84,11 @@ export class ZoneNotEntitled
   ) {}
 
 export type EventsCreateRequestTurnstileAction = "log" | "infinite_queue";
-const EventsCreateRequestTurnstileAction = S.String;
-
 export type EventsCreateRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-const EventsCreateRequestTurnstileMode = S.String;
-
 export interface CreateEventRequest {
   /** Identifier. */
   zoneId: string;
@@ -126,18 +124,12 @@ export interface CreateEventRequest {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsCreateRequestTurnstileMode | (string & {});
 }
-const CreateEventRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateEventRequest>;
-
 export type EventsCreateResponseTurnstileAction = "log" | "infinite_queue";
-const EventsCreateResponseTurnstileAction = S.String;
-
 export type EventsCreateResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-const EventsCreateResponseTurnstileMode = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateEventResponse {
   id?: string | null;
@@ -174,11 +166,7 @@ export interface CreateEventResponse {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsCreateResponseTurnstileMode | null;
 }
-const CreateEventResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateEventResponse>;
-
 export type RulesCreateRequestRulesAction = "bypass_waiting_room";
-const RulesCreateRequestRulesAction = S.String;
-
 export interface RulesCreateRequestRules {
   /** The action to take when the expression matches. */
   action: RulesCreateRequestRulesAction | (string & {});
@@ -189,22 +177,13 @@ export interface RulesCreateRequestRules {
   /** When set to true, the rule is enabled. */
   enabled?: boolean;
 }
-const RulesCreateRequestRules = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<RulesCreateRequestRules>;
-
 export interface CreateRuleRequest {
   /** Identifier. */
   zoneId: string;
   waitingRoomId: string;
   rules: RulesCreateRequestRules;
 }
-const CreateRuleRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateRuleRequest>;
-
 export type RulesCreateResultItemAction = "bypass_waiting_room";
-const RulesCreateResultItemAction = S.String;
-
 export interface RulesCreateResultItem {
   /** The ID of the rule. */
   id?: string | null;
@@ -220,59 +199,28 @@ export interface RulesCreateResultItem {
   /** The version of the rule. */
   version?: string | null;
 }
-const RulesCreateResultItem = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<RulesCreateResultItem>;
-
 export type RulesCreateResultList = Array<RulesCreateResultItem>;
-const RulesCreateResultList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<RulesCreateResultList>;
-
 export interface CreateRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: RulesCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const CreateRuleResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateRuleResponse>;
-
 export interface CreateRequestAdditionalRoutesItem {
   /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
   host?: string;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
   path?: string;
 }
-const CreateRequestAdditionalRoutesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateRequestAdditionalRoutesItem>;
-
 export type CreateRequestAdditionalRoutesList = Array<CreateRequestAdditionalRoutesItem>;
-const CreateRequestAdditionalRoutesList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateRequestAdditionalRoutesList>;
-
 export type CreateRequestCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
-const CreateRequestCookieAttributesSamesite = S.String;
-
 export type CreateRequestCookieAttributesSecure = "auto" | "always" | "never";
-const CreateRequestCookieAttributesSecure = S.String;
-
 export interface CreateRequestCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
   samesite?: CreateRequestCookieAttributesSamesite | (string & {});
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: CreateRequestCookieAttributesSecure | (string & {});
 }
-const CreateRequestCookieAttributes = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateRequestCookieAttributes>;
-
 export type CreateRequestDefaultTemplateLanguage =
   | "en-US"
   | "es-ES"
@@ -313,35 +261,18 @@ export type CreateRequestDefaultTemplateLanguage =
   | "th-TH"
   | "uk-UA"
   | "vi-VN";
-const CreateRequestDefaultTemplateLanguage = S.String;
-
 export type CreateRequestEnabledOriginCommandsItem = "revoke";
-const CreateRequestEnabledOriginCommandsItem = S.String;
-
 export type CreateRequestEnabledOriginCommandsList = Array<
   CreateRequestEnabledOriginCommandsItem | (string & {})
 >;
-const CreateRequestEnabledOriginCommandsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateRequestEnabledOriginCommandsList>;
-
 export type CreateRequestQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
-const CreateRequestQueueingMethod = S.String;
-
 export type CreateRequestQueueingStatusCode = 200 | 202 | 429;
-const CreateRequestQueueingStatusCode = S.Number;
-
 export type CreateRequestTurnstileAction = "log" | "infinite_queue";
-const CreateRequestTurnstileAction = S.String;
-
 export type CreateRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-const CreateRequestTurnstileMode = S.String;
-
 export interface CreateWaitingRoomRequest {
   /** Identifier. */
   zoneId: string;
@@ -388,45 +319,21 @@ export interface CreateWaitingRoomRequest {
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or `invisible` requires Advanced Waiting Room. */
   turnstileMode?: CreateRequestTurnstileMode | (string & {});
 }
-const CreateWaitingRoomRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateWaitingRoomRequest>;
-
 export interface CreateResponseAdditionalRoutesItem {
   /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
   host?: string | null;
   /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
   path?: string | null;
 }
-const CreateResponseAdditionalRoutesItem = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateResponseAdditionalRoutesItem>;
-
 export type CreateResponseAdditionalRoutesList = Array<CreateResponseAdditionalRoutesItem>;
-const CreateResponseAdditionalRoutesList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateResponseAdditionalRoutesList>;
-
 export type CreateResponseCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
-const CreateResponseCookieAttributesSamesite = S.String;
-
 export type CreateResponseCookieAttributesSecure = "auto" | "always" | "never";
-const CreateResponseCookieAttributesSecure = S.String;
-
 export interface CreateResponseCookieAttributes {
   /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
   samesite?: CreateResponseCookieAttributesSamesite | null;
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: CreateResponseCookieAttributesSecure | null;
 }
-const CreateResponseCookieAttributes = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateResponseCookieAttributes>;
-
 export type CreateResponseDefaultTemplateLanguage =
   | "en-US"
   | "es-ES"
@@ -467,30 +374,17 @@ export type CreateResponseDefaultTemplateLanguage =
   | "th-TH"
   | "uk-UA"
   | "vi-VN";
-const CreateResponseDefaultTemplateLanguage = S.String;
-
 export type CreateResponseEnabledOriginCommandsItem = "revoke";
 export type CreateResponseEnabledOriginCommandsList =
   Array<CreateResponseEnabledOriginCommandsItem>;
-const CreateResponseEnabledOriginCommandsList =
-  CreateRequestEnabledOriginCommandsList as any as S.Schema<CreateResponseEnabledOriginCommandsList>;
-
 export type CreateResponseQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
-const CreateResponseQueueingMethod = S.String;
-
 export type CreateResponseQueueingStatusCode = 200 | 202 | 429;
-const CreateResponseQueueingStatusCode = S.Number;
-
 export type CreateResponseTurnstileAction = "log" | "infinite_queue";
-const CreateResponseTurnstileAction = S.String;
-
 export type CreateResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-const CreateResponseTurnstileMode = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateWaitingRoomResponse {
   id?: string | null;
@@ -543,25 +437,16 @@ export interface CreateWaitingRoomResponse {
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or `invisible` requires Advanced Waiting Room. */
   turnstileMode?: CreateResponseTurnstileMode | null;
 }
-const CreateWaitingRoomResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateWaitingRoomResponse>;
-
 export interface DeleteEventRequest {
   /** Identifier. */
   zoneId: string;
   waitingRoomId: string;
   eventId: string;
 }
-const DeleteEventRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteEventRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteEventResponse {
   id?: string | null;
 }
-const DeleteEventResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DeleteEventResponse>;
-
 export interface DeleteRuleRequest {
   /** Identifier. */
   zoneId: string;
@@ -569,8 +454,6 @@ export interface DeleteRuleRequest {
   /** The ID of the rule. */
   ruleId: string;
 }
-const DeleteRuleRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DeleteRuleRequest>;
-
 export type RulesDeleteResultItemAction = "bypass_waiting_room";
 export interface RulesDeleteResultItem {
   /** The ID of the rule. */
@@ -594,35 +477,21 @@ export interface DeleteRuleResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const DeleteRuleResponse = CreateRuleResponse as any as S.Schema<DeleteRuleResponse>;
-
 export interface DeleteWaitingRoomRequest {
   /** Identifier. */
   zoneId: string;
   waitingRoomId: string;
 }
-const DeleteWaitingRoomRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteWaitingRoomRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteWaitingRoomResponse {
   id?: string | null;
 }
-const DeleteWaitingRoomResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteWaitingRoomResponse>;
-
 export interface GetEventRequest {
   /** Identifier. */
   zoneId: string;
   waitingRoomId: string;
   eventId: string;
 }
-const GetEventRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GetEventRequest>;
-
 export type EventsGetResponseTurnstileAction = "log" | "infinite_queue";
 export type EventsGetResponseTurnstileMode =
   | "off"
@@ -665,19 +534,12 @@ export interface GetEventResponse {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsGetResponseTurnstileMode | null;
 }
-const GetEventResponse = CreateEventResponse as any as S.Schema<GetEventResponse>;
-
 export interface GetEventDetailRequest {
   /** Identifier. */
   zoneId: string;
   waitingRoomId: string;
   eventId: string;
 }
-const GetEventDetailRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetEventDetailRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetEventDetailResponse {
   id?: string | null;
@@ -704,18 +566,11 @@ export interface GetEventDetailResponse {
   suspended?: boolean | null;
   totalActiveUsers?: number | null;
 }
-const GetEventDetailResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetEventDetailResponse>;
-
 export interface GetRuleRequest {
   /** Identifier. */
   zoneId: string;
   waitingRoomId: string;
 }
-const GetRuleRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetRuleRequest>;
-
 export type RulesGetResultItemAction = "bypass_waiting_room";
 export interface RulesGetResultItem {
   /** The ID of the rule. */
@@ -739,35 +594,25 @@ export interface GetRuleResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const GetRuleResponse = CreateRuleResponse as any as S.Schema<GetRuleResponse>;
-
 export interface GetSettingRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetSettingRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GetSettingRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingResponse {
   /** Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Verified search engine crawlers will not be tracked or counted by the waiting room system, and will not appear in waiting room analytics. */
   searchEngineCrawlerBypass: boolean;
 }
-const GetSettingResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<GetSettingResponse>;
-
 export interface GetStatusRequest {
   /** Identifier. */
   zoneId: string;
   waitingRoomId: string;
 }
-const GetStatusRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetStatusRequest>;
-
 export type StatusesGetResponseStatus =
   | "event_prequeueing"
   | "not_queueing"
   | "queueing"
   | "suspended";
-const StatusesGetResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetStatusResponse {
   estimatedQueuedUsers?: number | null;
@@ -776,23 +621,13 @@ export interface GetStatusResponse {
   maxEstimatedTimeMinutes?: number | null;
   status?: StatusesGetResponseStatus | null;
 }
-const GetStatusResponse = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetStatusResponse>;
-
 export interface GetWaitingRoomRequest {
   /** Identifier. */
   zoneId: string;
   waitingRoomId: string;
 }
-const GetWaitingRoomRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetWaitingRoomRequest>;
-
 export type GetResponseAdditionalRoutesItem = CreateResponseAdditionalRoutesItem;
 export type GetResponseAdditionalRoutesList = Array<CreateResponseAdditionalRoutesItem>;
-const GetResponseAdditionalRoutesList =
-  CreateResponseAdditionalRoutesList as any as S.Schema<GetResponseAdditionalRoutesList>;
-
 export type GetResponseCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
 export type GetResponseCookieAttributesSecure = "auto" | "always" | "never";
 export interface GetResponseCookieAttributes {
@@ -801,9 +636,6 @@ export interface GetResponseCookieAttributes {
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: GetResponseCookieAttributesSecure | null;
 }
-const GetResponseCookieAttributes =
-  CreateResponseCookieAttributes as any as S.Schema<GetResponseCookieAttributes>;
-
 export type GetResponseDefaultTemplateLanguage =
   | "en-US"
   | "es-ES"
@@ -844,29 +676,16 @@ export type GetResponseDefaultTemplateLanguage =
   | "th-TH"
   | "uk-UA"
   | "vi-VN";
-const GetResponseDefaultTemplateLanguage = S.String;
-
 export type GetResponseEnabledOriginCommandsItem = "revoke";
 export type GetResponseEnabledOriginCommandsList = Array<GetResponseEnabledOriginCommandsItem>;
-const GetResponseEnabledOriginCommandsList =
-  CreateRequestEnabledOriginCommandsList as any as S.Schema<GetResponseEnabledOriginCommandsList>;
-
 export type GetResponseQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
-const GetResponseQueueingMethod = S.String;
-
 export type GetResponseQueueingStatusCode = 200 | 202 | 429;
-const GetResponseQueueingStatusCode = S.Number;
-
 export type GetResponseTurnstileAction = "log" | "infinite_queue";
-const GetResponseTurnstileAction = S.String;
-
 export type GetResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-const GetResponseTurnstileMode = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetWaitingRoomResponse {
   id?: string | null;
@@ -919,11 +738,6 @@ export interface GetWaitingRoomResponse {
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or `invisible` requires Advanced Waiting Room. */
   turnstileMode?: GetResponseTurnstileMode | null;
 }
-const GetWaitingRoomResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetWaitingRoomResponse>;
-
 export interface ListEventsRequest {
   /** Identifier. */
   zoneId: string;
@@ -933,18 +747,12 @@ export interface ListEventsRequest {
   /** Maximum number of results per page. Must be a multiple of 5. */
   perPage?: number;
 }
-const ListEventsRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<ListEventsRequest>;
-
 export type EventsListResultItemTurnstileAction = "log" | "infinite_queue";
-const EventsListResultItemTurnstileAction = S.String;
-
 export type EventsListResultItemTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-const EventsListResultItemTurnstileMode = S.String;
-
 export interface EventsListResultItem {
   id?: string | null;
   createdOn?: string | null;
@@ -980,19 +788,13 @@ export interface EventsListResultItem {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsListResultItemTurnstileMode | null;
 }
-const EventsListResultItem = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<EventsListResultItem>;
-
 export type EventsListResultList = Array<EventsListResultItem>;
-const EventsListResultList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<EventsListResultList>;
-
 export interface ListEventsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: EventsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListEventsResponse = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<ListEventsResponse>;
-
 export interface ListWaitingRoomsForAccountRequest {
   /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
   accountId: string;
@@ -1001,16 +803,8 @@ export interface ListWaitingRoomsForAccountRequest {
   /** Maximum number of results per page. Must be a multiple of 5. */
   perPage?: number;
 }
-const ListWaitingRoomsForAccountRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListWaitingRoomsForAccountRequest>;
-
 export type ListResultItemAdditionalRoutesItem = CreateResponseAdditionalRoutesItem;
 export type ListResultItemAdditionalRoutesList = Array<CreateResponseAdditionalRoutesItem>;
-const ListResultItemAdditionalRoutesList =
-  CreateResponseAdditionalRoutesList as any as S.Schema<ListResultItemAdditionalRoutesList>;
-
 export type ListResultItemCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
 export type ListResultItemCookieAttributesSecure = "auto" | "always" | "never";
 export interface ListResultItemCookieAttributes {
@@ -1019,9 +813,6 @@ export interface ListResultItemCookieAttributes {
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: ListResultItemCookieAttributesSecure | null;
 }
-const ListResultItemCookieAttributes =
-  CreateResponseCookieAttributes as any as S.Schema<ListResultItemCookieAttributes>;
-
 export type ListResultItemDefaultTemplateLanguage =
   | "en-US"
   | "es-ES"
@@ -1062,30 +853,17 @@ export type ListResultItemDefaultTemplateLanguage =
   | "th-TH"
   | "uk-UA"
   | "vi-VN";
-const ListResultItemDefaultTemplateLanguage = S.String;
-
 export type ListResultItemEnabledOriginCommandsItem = "revoke";
 export type ListResultItemEnabledOriginCommandsList =
   Array<ListResultItemEnabledOriginCommandsItem>;
-const ListResultItemEnabledOriginCommandsList =
-  CreateRequestEnabledOriginCommandsList as any as S.Schema<ListResultItemEnabledOriginCommandsList>;
-
 export type ListResultItemQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
-const ListResultItemQueueingMethod = S.String;
-
 export type ListResultItemQueueingStatusCode = 200 | 202 | 429;
-const ListResultItemQueueingStatusCode = S.Number;
-
 export type ListResultItemTurnstileAction = "log" | "infinite_queue";
-const ListResultItemTurnstileAction = S.String;
-
 export type ListResultItemTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-const ListResultItemTurnstileMode = S.String;
-
 export interface ListResultItem {
   id?: string | null;
   /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms. */
@@ -1137,22 +915,13 @@ export interface ListResultItem {
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or `invisible` requires Advanced Waiting Room. */
   turnstileMode?: ListResultItemTurnstileMode | null;
 }
-const ListResultItem = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<ListResultItem>;
-
 export type ListResultList = Array<ListResultItem>;
-const ListResultList = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ListResultList>;
-
 export interface ListWaitingRoomsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListWaitingRoomsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListWaitingRoomsResponse>;
-
 export interface ListWaitingRoomsForZoneRequest {
   /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
   zoneId: string;
@@ -1161,21 +930,12 @@ export interface ListWaitingRoomsForZoneRequest {
   /** Maximum number of results per page. Must be a multiple of 5. */
   perPage?: number;
 }
-const ListWaitingRoomsForZoneRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListWaitingRoomsForZoneRequest>;
-
 export type EventsEditRequestTurnstileAction = "log" | "infinite_queue";
-const EventsEditRequestTurnstileAction = S.String;
-
 export type EventsEditRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-const EventsEditRequestTurnstileMode = S.String;
-
 export interface PatchEventRequest {
   /** Identifier. */
   zoneId: string;
@@ -1212,8 +972,6 @@ export interface PatchEventRequest {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsEditRequestTurnstileMode | (string & {});
 }
-const PatchEventRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<PatchEventRequest>;
-
 export type EventsEditResponseTurnstileAction = "log" | "infinite_queue";
 export type EventsEditResponseTurnstileMode =
   | "off"
@@ -1256,11 +1014,7 @@ export interface PatchEventResponse {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsEditResponseTurnstileMode | null;
 }
-const PatchEventResponse = CreateEventResponse as any as S.Schema<PatchEventResponse>;
-
 export type RulesEditRequestAction = "bypass_waiting_room";
-const RulesEditRequestAction = S.String;
-
 export interface RulesEditRequestPositionIndex {
   /** Places the rule in the exact position specified by the integer number &lt;POSITION_NUMBER&gt;. Position numbers start with 1. Existing rules in the ruleset from the specified position number onward are shifted one position (no rule is overwritten). */
   index?: number;
@@ -1277,8 +1031,6 @@ export type RulesEditRequestPosition =
   | RulesEditRequestPositionIndex
   | RulesEditRequestPositionBefore
   | RulesEditRequestPositionAfter;
-const RulesEditRequestPosition = /*@__PURE__*/ __L.at(__c5, 1);
-
 export interface PatchRuleRequest {
   /** Identifier. */
   zoneId: string;
@@ -1296,8 +1048,6 @@ export interface PatchRuleRequest {
   /** Reorder the position of a rule */
   position?: RulesEditRequestPosition;
 }
-const PatchRuleRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<PatchRuleRequest>;
-
 export type RulesEditResultItemAction = "bypass_waiting_room";
 export interface RulesEditResultItem {
   /** The ID of the rule. */
@@ -1321,28 +1071,19 @@ export interface PatchRuleResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const PatchRuleResponse = CreateRuleResponse as any as S.Schema<PatchRuleResponse>;
-
 export interface PatchSettingRequest {
   /** Identifier. */
   zoneId: string;
   /** Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Verified search engine crawlers will not be tracked or counted by the waiting room system, and will not appear in waiting room analytics. */
   searchEngineCrawlerBypass?: boolean;
 }
-const PatchSettingRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<PatchSettingRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchSettingResponse {
   /** Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Verified search engine crawlers will not be tracked or counted by the waiting room system, and will not appear in waiting room analytics. */
   searchEngineCrawlerBypass: boolean;
 }
-const PatchSettingResponse = GetSettingResponse as any as S.Schema<PatchSettingResponse>;
-
 export type EditRequestAdditionalRoutesItem = CreateRequestAdditionalRoutesItem;
 export type EditRequestAdditionalRoutesList = Array<CreateRequestAdditionalRoutesItem>;
-const EditRequestAdditionalRoutesList =
-  CreateRequestAdditionalRoutesList as any as S.Schema<EditRequestAdditionalRoutesList>;
-
 export type EditRequestCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
 export type EditRequestCookieAttributesSecure = "auto" | "always" | "never";
 export interface EditRequestCookieAttributes {
@@ -1351,9 +1092,6 @@ export interface EditRequestCookieAttributes {
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: EditRequestCookieAttributesSecure | (string & {});
 }
-const EditRequestCookieAttributes =
-  CreateRequestCookieAttributes as any as S.Schema<EditRequestCookieAttributes>;
-
 export type EditRequestDefaultTemplateLanguage =
   | "en-US"
   | "es-ES"
@@ -1394,31 +1132,18 @@ export type EditRequestDefaultTemplateLanguage =
   | "th-TH"
   | "uk-UA"
   | "vi-VN";
-const EditRequestDefaultTemplateLanguage = S.String;
-
 export type EditRequestEnabledOriginCommandsItem = "revoke";
 export type EditRequestEnabledOriginCommandsList = Array<
   EditRequestEnabledOriginCommandsItem | (string & {})
 >;
-const EditRequestEnabledOriginCommandsList =
-  CreateRequestEnabledOriginCommandsList as any as S.Schema<EditRequestEnabledOriginCommandsList>;
-
 export type EditRequestQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
-const EditRequestQueueingMethod = S.String;
-
 export type EditRequestQueueingStatusCode = 200 | 202 | 429;
-const EditRequestQueueingStatusCode = S.Number;
-
 export type EditRequestTurnstileAction = "log" | "infinite_queue";
-const EditRequestTurnstileAction = S.String;
-
 export type EditRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-const EditRequestTurnstileMode = S.String;
-
 export interface PatchWaitingRoomRequest {
   /** Identifier. */
   zoneId: string;
@@ -1466,16 +1191,8 @@ export interface PatchWaitingRoomRequest {
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or `invisible` requires Advanced Waiting Room. */
   turnstileMode?: EditRequestTurnstileMode | (string & {});
 }
-const PatchWaitingRoomRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<PatchWaitingRoomRequest>;
-
 export type EditResponseAdditionalRoutesItem = CreateResponseAdditionalRoutesItem;
 export type EditResponseAdditionalRoutesList = Array<CreateResponseAdditionalRoutesItem>;
-const EditResponseAdditionalRoutesList =
-  CreateResponseAdditionalRoutesList as any as S.Schema<EditResponseAdditionalRoutesList>;
-
 export type EditResponseCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
 export type EditResponseCookieAttributesSecure = "auto" | "always" | "never";
 export interface EditResponseCookieAttributes {
@@ -1484,9 +1201,6 @@ export interface EditResponseCookieAttributes {
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: EditResponseCookieAttributesSecure | null;
 }
-const EditResponseCookieAttributes =
-  CreateResponseCookieAttributes as any as S.Schema<EditResponseCookieAttributes>;
-
 export type EditResponseDefaultTemplateLanguage =
   | "en-US"
   | "es-ES"
@@ -1527,29 +1241,16 @@ export type EditResponseDefaultTemplateLanguage =
   | "th-TH"
   | "uk-UA"
   | "vi-VN";
-const EditResponseDefaultTemplateLanguage = S.String;
-
 export type EditResponseEnabledOriginCommandsItem = "revoke";
 export type EditResponseEnabledOriginCommandsList = Array<EditResponseEnabledOriginCommandsItem>;
-const EditResponseEnabledOriginCommandsList =
-  CreateRequestEnabledOriginCommandsList as any as S.Schema<EditResponseEnabledOriginCommandsList>;
-
 export type EditResponseQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
-const EditResponseQueueingMethod = S.String;
-
 export type EditResponseQueueingStatusCode = 200 | 202 | 429;
-const EditResponseQueueingStatusCode = S.Number;
-
 export type EditResponseTurnstileAction = "log" | "infinite_queue";
-const EditResponseTurnstileAction = S.String;
-
 export type EditResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-const EditResponseTurnstileMode = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PatchWaitingRoomResponse {
   id?: string | null;
@@ -1602,51 +1303,34 @@ export interface PatchWaitingRoomResponse {
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or `invisible` requires Advanced Waiting Room. */
   turnstileMode?: EditResponseTurnstileMode | null;
 }
-const PatchWaitingRoomResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<PatchWaitingRoomResponse>;
-
 export interface PreviewPageRequest {
   /** Identifier. */
   zoneId: string;
   /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
   customHtml: string;
 }
-const PreviewPageRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<PreviewPageRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PreviewPageResponse {
   /** URL where the custom waiting room page can temporarily be previewed. */
   previewUrl?: string | null;
 }
-const PreviewPageResponse = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<PreviewPageResponse>;
-
 export interface PutSettingRequest {
   /** Identifier. */
   zoneId: string;
   /** Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Verified search engine crawlers will not be tracked or counted by the waiting room system, and will not appear in waiting room analytics. */
   searchEngineCrawlerBypass?: boolean;
 }
-const PutSettingRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<PutSettingRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutSettingResponse {
   /** Whether to allow verified search engine crawlers to bypass all waiting rooms on this zone. Verified search engine crawlers will not be tracked or counted by the waiting room system, and will not appear in waiting room analytics. */
   searchEngineCrawlerBypass: boolean;
 }
-const PutSettingResponse = GetSettingResponse as any as S.Schema<PutSettingResponse>;
-
 export type EventsUpdateRequestTurnstileAction = "log" | "infinite_queue";
-const EventsUpdateRequestTurnstileAction = S.String;
-
 export type EventsUpdateRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-const EventsUpdateRequestTurnstileMode = S.String;
-
 export interface UpdateEventRequest {
   /** Identifier. */
   zoneId: string;
@@ -1683,8 +1367,6 @@ export interface UpdateEventRequest {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsUpdateRequestTurnstileMode | (string & {});
 }
-const UpdateEventRequest = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<UpdateEventRequest>;
-
 export type EventsUpdateResponseTurnstileAction = "log" | "infinite_queue";
 export type EventsUpdateResponseTurnstileMode =
   | "off"
@@ -1727,11 +1409,7 @@ export interface UpdateEventResponse {
   /** If set, the event will override the waiting room's `turnstile_mode` property while it is active. If null, the event will inherit it. */
   turnstileMode?: EventsUpdateResponseTurnstileMode | null;
 }
-const UpdateEventResponse = CreateEventResponse as any as S.Schema<UpdateEventResponse>;
-
 export type RulesUpdateRequestRulesItemAction = "bypass_waiting_room";
-const RulesUpdateRequestRulesItemAction = S.String;
-
 export interface RulesUpdateRequestRulesItem {
   /** The action to take when the expression matches. */
   action: RulesUpdateRequestRulesItemAction | (string & {});
@@ -1742,25 +1420,13 @@ export interface RulesUpdateRequestRulesItem {
   /** When set to true, the rule is enabled. */
   enabled?: boolean;
 }
-const RulesUpdateRequestRulesItem = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<RulesUpdateRequestRulesItem>;
-
 export type RulesUpdateRequestRulesList = Array<RulesUpdateRequestRulesItem>;
-const RulesUpdateRequestRulesList = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<RulesUpdateRequestRulesList>;
-
 export interface UpdateRuleRequest {
   /** Identifier. */
   zoneId: string;
   waitingRoomId: string;
   rules: RulesUpdateRequestRulesList;
 }
-const UpdateRuleRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<UpdateRuleRequest>;
-
 export type RulesUpdateResultItemAction = "bypass_waiting_room";
 export interface RulesUpdateResultItem {
   /** The ID of the rule. */
@@ -1784,13 +1450,8 @@ export interface UpdateRuleResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const UpdateRuleResponse = CreateRuleResponse as any as S.Schema<UpdateRuleResponse>;
-
 export type UpdateRequestAdditionalRoutesItem = CreateRequestAdditionalRoutesItem;
 export type UpdateRequestAdditionalRoutesList = Array<CreateRequestAdditionalRoutesItem>;
-const UpdateRequestAdditionalRoutesList =
-  CreateRequestAdditionalRoutesList as any as S.Schema<UpdateRequestAdditionalRoutesList>;
-
 export type UpdateRequestCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
 export type UpdateRequestCookieAttributesSecure = "auto" | "always" | "never";
 export interface UpdateRequestCookieAttributes {
@@ -1799,9 +1460,6 @@ export interface UpdateRequestCookieAttributes {
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: UpdateRequestCookieAttributesSecure | (string & {});
 }
-const UpdateRequestCookieAttributes =
-  CreateRequestCookieAttributes as any as S.Schema<UpdateRequestCookieAttributes>;
-
 export type UpdateRequestDefaultTemplateLanguage =
   | "en-US"
   | "es-ES"
@@ -1842,31 +1500,18 @@ export type UpdateRequestDefaultTemplateLanguage =
   | "th-TH"
   | "uk-UA"
   | "vi-VN";
-const UpdateRequestDefaultTemplateLanguage = S.String;
-
 export type UpdateRequestEnabledOriginCommandsItem = "revoke";
 export type UpdateRequestEnabledOriginCommandsList = Array<
   UpdateRequestEnabledOriginCommandsItem | (string & {})
 >;
-const UpdateRequestEnabledOriginCommandsList =
-  CreateRequestEnabledOriginCommandsList as any as S.Schema<UpdateRequestEnabledOriginCommandsList>;
-
 export type UpdateRequestQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
-const UpdateRequestQueueingMethod = S.String;
-
 export type UpdateRequestQueueingStatusCode = 200 | 202 | 429;
-const UpdateRequestQueueingStatusCode = S.Number;
-
 export type UpdateRequestTurnstileAction = "log" | "infinite_queue";
-const UpdateRequestTurnstileAction = S.String;
-
 export type UpdateRequestTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-const UpdateRequestTurnstileMode = S.String;
-
 export interface UpdateWaitingRoomRequest {
   /** Identifier. */
   zoneId: string;
@@ -1914,16 +1559,8 @@ export interface UpdateWaitingRoomRequest {
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or `invisible` requires Advanced Waiting Room. */
   turnstileMode?: UpdateRequestTurnstileMode | (string & {});
 }
-const UpdateWaitingRoomRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<UpdateWaitingRoomRequest>;
-
 export type UpdateResponseAdditionalRoutesItem = CreateResponseAdditionalRoutesItem;
 export type UpdateResponseAdditionalRoutesList = Array<CreateResponseAdditionalRoutesItem>;
-const UpdateResponseAdditionalRoutesList =
-  CreateResponseAdditionalRoutesList as any as S.Schema<UpdateResponseAdditionalRoutesList>;
-
 export type UpdateResponseCookieAttributesSamesite = "auto" | "lax" | "none" | "strict";
 export type UpdateResponseCookieAttributesSecure = "auto" | "always" | "never";
 export interface UpdateResponseCookieAttributes {
@@ -1932,9 +1569,6 @@ export interface UpdateResponseCookieAttributes {
   /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
   secure?: UpdateResponseCookieAttributesSecure | null;
 }
-const UpdateResponseCookieAttributes =
-  CreateResponseCookieAttributes as any as S.Schema<UpdateResponseCookieAttributes>;
-
 export type UpdateResponseDefaultTemplateLanguage =
   | "en-US"
   | "es-ES"
@@ -1975,30 +1609,17 @@ export type UpdateResponseDefaultTemplateLanguage =
   | "th-TH"
   | "uk-UA"
   | "vi-VN";
-const UpdateResponseDefaultTemplateLanguage = S.String;
-
 export type UpdateResponseEnabledOriginCommandsItem = "revoke";
 export type UpdateResponseEnabledOriginCommandsList =
   Array<UpdateResponseEnabledOriginCommandsItem>;
-const UpdateResponseEnabledOriginCommandsList =
-  CreateRequestEnabledOriginCommandsList as any as S.Schema<UpdateResponseEnabledOriginCommandsList>;
-
 export type UpdateResponseQueueingMethod = "fifo" | "random" | "passthrough" | "reject";
-const UpdateResponseQueueingMethod = S.String;
-
 export type UpdateResponseQueueingStatusCode = 200 | 202 | 429;
-const UpdateResponseQueueingStatusCode = S.Number;
-
 export type UpdateResponseTurnstileAction = "log" | "infinite_queue";
-const UpdateResponseTurnstileAction = S.String;
-
 export type UpdateResponseTurnstileMode =
   | "off"
   | "invisible"
   | "visible_non_interactive"
   | "visible_managed";
-const UpdateResponseTurnstileMode = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateWaitingRoomResponse {
   id?: string | null;
@@ -2051,11 +1672,6 @@ export interface UpdateWaitingRoomResponse {
   /** Which Turnstile widget type to use for detecting bot traffic. See [the Turnstile documentation](https://developers.cloudflare.com/turnstile/concepts/widget/#widget-types) for the definitions of these widget types. Set to `off` to disable the Turnstile integration entirely. Setting this to anything other than `off` or `invisible` requires Advanced Waiting Room. */
   turnstileMode?: UpdateResponseTurnstileMode | null;
 }
-const UpdateWaitingRoomResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<UpdateWaitingRoomResponse>;
-
 export type CreateEventError = CloudflareOpError;
 /** Only available for the Waiting Room Advanced subscription. Creates an event for a waiting room. An event takes place during a specified period of time, temporarily changing the behavior of a waiting room. While the event is active, some of the properties in the event's configuration may either override or inherit from the waiting room's configuration. Note that events cannot overlap with each other, so only one event can be active at a time. */
 export const createEvent: API.OperationMethod<
@@ -2064,8 +1680,8 @@ export const createEvent: API.OperationMethod<
   CreateEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEventRequest,
-  output: CreateEventResponse,
+  input: __S(0) as any as S.Schema<CreateEventRequest>,
+  output: __S(1) as any as S.Schema<CreateEventResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2081,8 +1697,8 @@ export const createRule: API.PaginatedOperationMethod<
   RulesCreateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: CreateRuleRequest,
-    output: CreateRuleResponse,
+    input: __S(3) as any as S.Schema<CreateRuleRequest>,
+    output: __S(6) as any as S.Schema<CreateRuleResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2099,8 +1715,8 @@ export const createWaitingRoom: API.OperationMethod<
   CreateWaitingRoomError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWaitingRoomRequest,
-  output: CreateWaitingRoomResponse,
+  input: __S(11) as any as S.Schema<CreateWaitingRoomRequest>,
+  output: __S(15) as any as S.Schema<CreateWaitingRoomResponse>,
   errors: [ZoneNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2114,8 +1730,8 @@ export const deleteEvent: API.OperationMethod<
   DeleteEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEventRequest,
-  output: DeleteEventResponse,
+  input: __S(16) as any as S.Schema<DeleteEventRequest>,
+  output: __S(17) as any as S.Schema<DeleteEventResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2131,8 +1747,8 @@ export const deleteRule: API.PaginatedOperationMethod<
   RulesDeleteResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: DeleteRuleRequest,
-    output: DeleteRuleResponse,
+    input: __S(18) as any as S.Schema<DeleteRuleRequest>,
+    output: __S(6) as any as S.Schema<DeleteRuleResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2149,8 +1765,8 @@ export const deleteWaitingRoom: API.OperationMethod<
   DeleteWaitingRoomError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWaitingRoomRequest,
-  output: DeleteWaitingRoomResponse,
+  input: __S(19) as any as S.Schema<DeleteWaitingRoomRequest>,
+  output: __S(20) as any as S.Schema<DeleteWaitingRoomResponse>,
   errors: [WaitingRoomNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2164,8 +1780,8 @@ export const getEvent: API.OperationMethod<
   GetEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventRequest,
-  output: GetEventResponse,
+  input: __S(21) as any as S.Schema<GetEventRequest>,
+  output: __S(1) as any as S.Schema<GetEventResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2179,8 +1795,8 @@ export const getEventDetail: API.OperationMethod<
   GetEventDetailError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEventDetailRequest,
-  output: GetEventDetailResponse,
+  input: __S(22) as any as S.Schema<GetEventDetailRequest>,
+  output: __S(23) as any as S.Schema<GetEventDetailResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2196,8 +1812,8 @@ export const getRule: API.PaginatedOperationMethod<
   RulesGetResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: GetRuleRequest,
-    output: GetRuleResponse,
+    input: __S(24) as any as S.Schema<GetRuleRequest>,
+    output: __S(6) as any as S.Schema<GetRuleResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2214,8 +1830,8 @@ export const getSetting: API.OperationMethod<
   GetSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingRequest,
-  output: GetSettingResponse,
+  input: __S(25) as any as S.Schema<GetSettingRequest>,
+  output: __S(26) as any as S.Schema<GetSettingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2229,8 +1845,8 @@ export const getStatus: API.OperationMethod<
   GetStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStatusRequest,
-  output: GetStatusResponse,
+  input: __S(27) as any as S.Schema<GetStatusRequest>,
+  output: __S(28) as any as S.Schema<GetStatusResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2244,8 +1860,8 @@ export const getWaitingRoom: API.OperationMethod<
   GetWaitingRoomError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWaitingRoomRequest,
-  output: GetWaitingRoomResponse,
+  input: __S(29) as any as S.Schema<GetWaitingRoomRequest>,
+  output: __S(30) as any as S.Schema<GetWaitingRoomResponse>,
   errors: [WaitingRoomNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2261,8 +1877,8 @@ export const listEvents: API.PaginatedOperationMethod<
   EventsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListEventsRequest,
-    output: ListEventsResponse,
+    input: __S(31) as any as S.Schema<ListEventsRequest>,
+    output: __S(34) as any as S.Schema<ListEventsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2287,8 +1903,8 @@ export const listWaitingRoomsForAccount: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListWaitingRoomsForAccountRequest,
-    output: ListWaitingRoomsResponse,
+    input: __S(35) as any as S.Schema<ListWaitingRoomsForAccountRequest>,
+    output: __S(38) as any as S.Schema<ListWaitingRoomsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2313,8 +1929,8 @@ export const listWaitingRoomsForZone: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListWaitingRoomsForZoneRequest,
-    output: ListWaitingRoomsResponse,
+    input: __S(39) as any as S.Schema<ListWaitingRoomsForZoneRequest>,
+    output: __S(38) as any as S.Schema<ListWaitingRoomsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2337,8 +1953,8 @@ export const patchEvent: API.OperationMethod<
   PatchEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchEventRequest,
-  output: PatchEventResponse,
+  input: __S(40) as any as S.Schema<PatchEventRequest>,
+  output: __S(1) as any as S.Schema<PatchEventResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2354,8 +1970,8 @@ export const patchRule: API.PaginatedOperationMethod<
   RulesEditResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: PatchRuleRequest,
-    output: PatchRuleResponse,
+    input: __S(42) as any as S.Schema<PatchRuleRequest>,
+    output: __S(6) as any as S.Schema<PatchRuleResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2372,8 +1988,8 @@ export const patchSetting: API.OperationMethod<
   PatchSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchSettingRequest,
-  output: PatchSettingResponse,
+  input: __S(43) as any as S.Schema<PatchSettingRequest>,
+  output: __S(26) as any as S.Schema<PatchSettingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2387,8 +2003,8 @@ export const patchWaitingRoom: API.OperationMethod<
   PatchWaitingRoomError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchWaitingRoomRequest,
-  output: PatchWaitingRoomResponse,
+  input: __S(44) as any as S.Schema<PatchWaitingRoomRequest>,
+  output: __S(45) as any as S.Schema<PatchWaitingRoomResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2402,8 +2018,8 @@ export const previewPage: API.OperationMethod<
   PreviewPageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PreviewPageRequest,
-  output: PreviewPageResponse,
+  input: __S(46) as any as S.Schema<PreviewPageRequest>,
+  output: __S(47) as any as S.Schema<PreviewPageResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2417,8 +2033,8 @@ export const putSetting: API.OperationMethod<
   PutSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSettingRequest,
-  output: PutSettingResponse,
+  input: __S(48) as any as S.Schema<PutSettingRequest>,
+  output: __S(26) as any as S.Schema<PutSettingResponse>,
   errors: [ZoneNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2432,8 +2048,8 @@ export const updateEvent: API.OperationMethod<
   UpdateEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEventRequest,
-  output: UpdateEventResponse,
+  input: __S(49) as any as S.Schema<UpdateEventRequest>,
+  output: __S(1) as any as S.Schema<UpdateEventResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2449,8 +2065,8 @@ export const updateRule: API.PaginatedOperationMethod<
   RulesUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: UpdateRuleRequest,
-    output: UpdateRuleResponse,
+    input: __S(52) as any as S.Schema<UpdateRuleRequest>,
+    output: __S(6) as any as S.Schema<UpdateRuleResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2471,8 +2087,8 @@ export const updateWaitingRoom: API.OperationMethod<
   UpdateWaitingRoomError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWaitingRoomRequest,
-  output: UpdateWaitingRoomResponse,
+  input: __S(53) as any as S.Schema<UpdateWaitingRoomRequest>,
+  output: __S(54) as any as S.Schema<UpdateWaitingRoomResponse>,
   errors: [WaitingRoomNotFound, ZoneNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2499,12 +2115,8 @@ function __c0(j: number): any {
           shuffleAtEventStart: S.optional(S.Boolean.pipe(T.Body("shuffle_at_event_start"))),
           suspended: S.optional(S.Boolean),
           totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
-          turnstileAction: S.optional(
-            EventsCreateRequestTurnstileAction.pipe(T.Body("turnstile_action")),
-          ),
-          turnstileMode: S.optional(
-            EventsCreateRequestTurnstileMode.pipe(T.Body("turnstile_mode")),
-          ),
+          turnstileAction: S.optional(S.String.pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.String.pipe(T.Body("turnstile_mode"))),
         })
           .pipe(
             T.Http({
@@ -2538,18 +2150,14 @@ function __c0(j: number): any {
           ),
           suspended: S.optional(S.NullOr(S.Boolean)),
           totalActiveUsers: S.optional(S.NullOr(S.Number).pipe(T.Body("total_active_users"))),
-          turnstileAction: S.optional(
-            S.NullOr(EventsCreateResponseTurnstileAction).pipe(T.Body("turnstile_action")),
-          ),
-          turnstileMode: S.optional(
-            S.NullOr(EventsCreateResponseTurnstileMode).pipe(T.Body("turnstile_mode")),
-          ),
+          turnstileAction: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_mode"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateEventResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action: RulesCreateRequestRulesAction,
+          action: S.String,
           expression: S.String,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
@@ -2560,7 +2168,7 @@ function __c0(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
-          rules: RulesCreateRequestRules,
+          rules: __S(2),
         })
           .pipe(
             T.Http({
@@ -2575,7 +2183,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          action: S.optional(S.NullOr(RulesCreateResultItemAction)),
+          action: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
           expression: S.optional(S.NullOr(S.String)),
@@ -2584,11 +2192,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "RulesCreateResultItem" });
     case 5:
-      return S.Array(RulesCreateResultItem);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: RulesCreateResultList.pipe(T.EnvelopePayload()),
+          result: __S(5).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateRuleResponse" });
@@ -2606,18 +2214,18 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateRequestAdditionalRoutesItem);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          samesite: S.optional(CreateRequestCookieAttributesSamesite),
-          secure: S.optional(CreateRequestCookieAttributesSecure),
+          samesite: S.optional(S.String),
+          secure: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateRequestCookieAttributes",
       });
     case 2:
-      return S.Array(CreateRequestEnabledOriginCommandsItem);
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -2626,35 +2234,23 @@ function __c1(j: number): any {
           name: S.String,
           newUsersPerMinute: S.Number.pipe(T.Body("new_users_per_minute")),
           totalActiveUsers: S.Number.pipe(T.Body("total_active_users")),
-          additionalRoutes: S.optional(
-            CreateRequestAdditionalRoutesList.pipe(T.Body("additional_routes")),
-          ),
-          cookieAttributes: S.optional(
-            CreateRequestCookieAttributes.pipe(T.Body("cookie_attributes")),
-          ),
+          additionalRoutes: S.optional(__S(8).pipe(T.Body("additional_routes"))),
+          cookieAttributes: S.optional(__S(9).pipe(T.Body("cookie_attributes"))),
           cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
           customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
-          defaultTemplateLanguage: S.optional(
-            CreateRequestDefaultTemplateLanguage.pipe(T.Body("default_template_language")),
-          ),
+          defaultTemplateLanguage: S.optional(S.String.pipe(T.Body("default_template_language"))),
           description: S.optional(S.String),
           disableSessionRenewal: S.optional(S.Boolean.pipe(T.Body("disable_session_renewal"))),
-          enabledOriginCommands: S.optional(
-            CreateRequestEnabledOriginCommandsList.pipe(T.Body("enabled_origin_commands")),
-          ),
+          enabledOriginCommands: S.optional(__S(10).pipe(T.Body("enabled_origin_commands"))),
           jsonResponseEnabled: S.optional(S.Boolean.pipe(T.Body("json_response_enabled"))),
           path: S.optional(S.String),
           queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
-          queueingMethod: S.optional(CreateRequestQueueingMethod.pipe(T.Body("queueing_method"))),
-          queueingStatusCode: S.optional(
-            CreateRequestQueueingStatusCode.pipe(T.Body("queueing_status_code")),
-          ),
+          queueingMethod: S.optional(S.String.pipe(T.Body("queueing_method"))),
+          queueingStatusCode: S.optional(S.Number.pipe(T.Body("queueing_status_code"))),
           sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
           suspended: S.optional(S.Boolean),
-          turnstileAction: S.optional(
-            CreateRequestTurnstileAction.pipe(T.Body("turnstile_action")),
-          ),
-          turnstileMode: S.optional(CreateRequestTurnstileMode.pipe(T.Body("turnstile_mode"))),
+          turnstileAction: S.optional(S.String.pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.String.pipe(T.Body("turnstile_mode"))),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/waiting_rooms", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -2669,12 +2265,12 @@ function __c1(j: number): any {
         identifier: "CreateResponseAdditionalRoutesItem",
       });
     case 5:
-      return S.Array(CreateResponseAdditionalRoutesItem);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          samesite: S.optional(S.NullOr(CreateResponseCookieAttributesSamesite)),
-          secure: S.optional(S.NullOr(CreateResponseCookieAttributesSecure)),
+          samesite: S.optional(S.NullOr(S.String)),
+          secure: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "CreateResponseCookieAttributes",
@@ -2683,28 +2279,20 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          additionalRoutes: S.optional(
-            S.NullOr(CreateResponseAdditionalRoutesList).pipe(T.Body("additional_routes")),
-          ),
-          cookieAttributes: S.optional(
-            S.NullOr(CreateResponseCookieAttributes).pipe(T.Body("cookie_attributes")),
-          ),
+          additionalRoutes: S.optional(S.NullOr(__S(13)).pipe(T.Body("additional_routes"))),
+          cookieAttributes: S.optional(S.NullOr(__S(14)).pipe(T.Body("cookie_attributes"))),
           cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           customPageHtml: S.optional(S.NullOr(S.String).pipe(T.Body("custom_page_html"))),
           defaultTemplateLanguage: S.optional(
-            S.NullOr(CreateResponseDefaultTemplateLanguage).pipe(
-              T.Body("default_template_language"),
-            ),
+            S.NullOr(S.String).pipe(T.Body("default_template_language")),
           ),
           description: S.optional(S.NullOr(S.String)),
           disableSessionRenewal: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
           ),
           enabledOriginCommands: S.optional(
-            S.NullOr(CreateResponseEnabledOriginCommandsList).pipe(
-              T.Body("enabled_origin_commands"),
-            ),
+            S.NullOr(__S(10)).pipe(T.Body("enabled_origin_commands")),
           ),
           host: S.optional(S.NullOr(S.String)),
           jsonResponseEnabled: S.optional(
@@ -2719,21 +2307,13 @@ function __c1(j: number): any {
           nextEventStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("next_event_start_time"))),
           path: S.optional(S.NullOr(S.String)),
           queueAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("queue_all"))),
-          queueingMethod: S.optional(
-            S.NullOr(CreateResponseQueueingMethod).pipe(T.Body("queueing_method")),
-          ),
-          queueingStatusCode: S.optional(
-            S.NullOr(CreateResponseQueueingStatusCode).pipe(T.Body("queueing_status_code")),
-          ),
+          queueingMethod: S.optional(S.NullOr(S.String).pipe(T.Body("queueing_method"))),
+          queueingStatusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("queueing_status_code"))),
           sessionDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("session_duration"))),
           suspended: S.optional(S.NullOr(S.Boolean)),
           totalActiveUsers: S.optional(S.NullOr(S.Number).pipe(T.Body("total_active_users"))),
-          turnstileAction: S.optional(
-            S.NullOr(CreateResponseTurnstileAction).pipe(T.Body("turnstile_action")),
-          ),
-          turnstileMode: S.optional(
-            S.NullOr(CreateResponseTurnstileMode).pipe(T.Body("turnstile_mode")),
-          ),
+          turnstileAction: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_mode"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateWaitingRoomResponse",
@@ -2923,7 +2503,7 @@ function __c3(j: number): any {
           maxEstimatedTimeMinutes: S.optional(
             S.NullOr(S.Number).pipe(T.Body("max_estimated_time_minutes")),
           ),
-          status: S.optional(S.NullOr(StatusesGetResponseStatus)),
+          status: S.optional(S.NullOr(S.String)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetStatusResponse" });
     case 5:
@@ -2945,24 +2525,20 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          additionalRoutes: S.optional(
-            S.NullOr(GetResponseAdditionalRoutesList).pipe(T.Body("additional_routes")),
-          ),
-          cookieAttributes: S.optional(
-            S.NullOr(GetResponseCookieAttributes).pipe(T.Body("cookie_attributes")),
-          ),
+          additionalRoutes: S.optional(S.NullOr(__S(13)).pipe(T.Body("additional_routes"))),
+          cookieAttributes: S.optional(S.NullOr(__S(14)).pipe(T.Body("cookie_attributes"))),
           cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           customPageHtml: S.optional(S.NullOr(S.String).pipe(T.Body("custom_page_html"))),
           defaultTemplateLanguage: S.optional(
-            S.NullOr(GetResponseDefaultTemplateLanguage).pipe(T.Body("default_template_language")),
+            S.NullOr(S.String).pipe(T.Body("default_template_language")),
           ),
           description: S.optional(S.NullOr(S.String)),
           disableSessionRenewal: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
           ),
           enabledOriginCommands: S.optional(
-            S.NullOr(GetResponseEnabledOriginCommandsList).pipe(T.Body("enabled_origin_commands")),
+            S.NullOr(__S(10)).pipe(T.Body("enabled_origin_commands")),
           ),
           host: S.optional(S.NullOr(S.String)),
           jsonResponseEnabled: S.optional(
@@ -2977,21 +2553,13 @@ function __c3(j: number): any {
           nextEventStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("next_event_start_time"))),
           path: S.optional(S.NullOr(S.String)),
           queueAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("queue_all"))),
-          queueingMethod: S.optional(
-            S.NullOr(GetResponseQueueingMethod).pipe(T.Body("queueing_method")),
-          ),
-          queueingStatusCode: S.optional(
-            S.NullOr(GetResponseQueueingStatusCode).pipe(T.Body("queueing_status_code")),
-          ),
+          queueingMethod: S.optional(S.NullOr(S.String).pipe(T.Body("queueing_method"))),
+          queueingStatusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("queueing_status_code"))),
           sessionDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("session_duration"))),
           suspended: S.optional(S.NullOr(S.Boolean)),
           totalActiveUsers: S.optional(S.NullOr(S.Number).pipe(T.Body("total_active_users"))),
-          turnstileAction: S.optional(
-            S.NullOr(GetResponseTurnstileAction).pipe(T.Body("turnstile_action")),
-          ),
-          turnstileMode: S.optional(
-            S.NullOr(GetResponseTurnstileMode).pipe(T.Body("turnstile_mode")),
-          ),
+          turnstileAction: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_mode"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetWaitingRoomResponse" });
     case 7:
@@ -3038,20 +2606,16 @@ function __c4(j: number): any {
           ),
           suspended: S.optional(S.NullOr(S.Boolean)),
           totalActiveUsers: S.optional(S.NullOr(S.Number).pipe(T.Body("total_active_users"))),
-          turnstileAction: S.optional(
-            S.NullOr(EventsListResultItemTurnstileAction).pipe(T.Body("turnstile_action")),
-          ),
-          turnstileMode: S.optional(
-            S.NullOr(EventsListResultItemTurnstileMode).pipe(T.Body("turnstile_mode")),
-          ),
+          turnstileAction: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_mode"))),
         }),
       ).annotate({ identifier: "EventsListResultItem" });
     case 1:
-      return S.Array(EventsListResultItem);
+      return S.Array(__S(32));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: EventsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(33).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListEventsResponse" });
@@ -3071,28 +2635,20 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          additionalRoutes: S.optional(
-            S.NullOr(ListResultItemAdditionalRoutesList).pipe(T.Body("additional_routes")),
-          ),
-          cookieAttributes: S.optional(
-            S.NullOr(ListResultItemCookieAttributes).pipe(T.Body("cookie_attributes")),
-          ),
+          additionalRoutes: S.optional(S.NullOr(__S(13)).pipe(T.Body("additional_routes"))),
+          cookieAttributes: S.optional(S.NullOr(__S(14)).pipe(T.Body("cookie_attributes"))),
           cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           customPageHtml: S.optional(S.NullOr(S.String).pipe(T.Body("custom_page_html"))),
           defaultTemplateLanguage: S.optional(
-            S.NullOr(ListResultItemDefaultTemplateLanguage).pipe(
-              T.Body("default_template_language"),
-            ),
+            S.NullOr(S.String).pipe(T.Body("default_template_language")),
           ),
           description: S.optional(S.NullOr(S.String)),
           disableSessionRenewal: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
           ),
           enabledOriginCommands: S.optional(
-            S.NullOr(ListResultItemEnabledOriginCommandsList).pipe(
-              T.Body("enabled_origin_commands"),
-            ),
+            S.NullOr(__S(10)).pipe(T.Body("enabled_origin_commands")),
           ),
           host: S.optional(S.NullOr(S.String)),
           jsonResponseEnabled: S.optional(
@@ -3107,29 +2663,21 @@ function __c4(j: number): any {
           nextEventStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("next_event_start_time"))),
           path: S.optional(S.NullOr(S.String)),
           queueAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("queue_all"))),
-          queueingMethod: S.optional(
-            S.NullOr(ListResultItemQueueingMethod).pipe(T.Body("queueing_method")),
-          ),
-          queueingStatusCode: S.optional(
-            S.NullOr(ListResultItemQueueingStatusCode).pipe(T.Body("queueing_status_code")),
-          ),
+          queueingMethod: S.optional(S.NullOr(S.String).pipe(T.Body("queueing_method"))),
+          queueingStatusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("queueing_status_code"))),
           sessionDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("session_duration"))),
           suspended: S.optional(S.NullOr(S.Boolean)),
           totalActiveUsers: S.optional(S.NullOr(S.Number).pipe(T.Body("total_active_users"))),
-          turnstileAction: S.optional(
-            S.NullOr(ListResultItemTurnstileAction).pipe(T.Body("turnstile_action")),
-          ),
-          turnstileMode: S.optional(
-            S.NullOr(ListResultItemTurnstileMode).pipe(T.Body("turnstile_mode")),
-          ),
+          turnstileAction: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_mode"))),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 5:
-      return S.Array(ListResultItem);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: ListResultList.pipe(T.EnvelopePayload()),
+          result: __S(37).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListWaitingRoomsResponse" });
@@ -3168,10 +2716,8 @@ function __c5(j: number): any {
           shuffleAtEventStart: S.optional(S.Boolean.pipe(T.Body("shuffle_at_event_start"))),
           suspended: S.optional(S.Boolean),
           totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
-          turnstileAction: S.optional(
-            EventsEditRequestTurnstileAction.pipe(T.Body("turnstile_action")),
-          ),
-          turnstileMode: S.optional(EventsEditRequestTurnstileMode.pipe(T.Body("turnstile_mode"))),
+          turnstileAction: S.optional(S.String.pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.String.pipe(T.Body("turnstile_mode"))),
         })
           .pipe(
             T.Http({
@@ -3190,11 +2736,11 @@ function __c5(j: number): any {
           zoneId: S.String.pipe(T.Label("zone_id")),
           waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
           ruleId: S.String.pipe(T.Label("rule_id")),
-          action: RulesEditRequestAction,
+          action: S.String,
           expression: S.String,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          position: S.optional(RulesEditRequestPosition),
+          position: S.optional(__S(41)),
         })
           .pipe(
             T.Http({
@@ -3227,33 +2773,23 @@ function __c5(j: number): any {
           name: S.String,
           newUsersPerMinute: S.Number.pipe(T.Body("new_users_per_minute")),
           totalActiveUsers: S.Number.pipe(T.Body("total_active_users")),
-          additionalRoutes: S.optional(
-            EditRequestAdditionalRoutesList.pipe(T.Body("additional_routes")),
-          ),
-          cookieAttributes: S.optional(
-            EditRequestCookieAttributes.pipe(T.Body("cookie_attributes")),
-          ),
+          additionalRoutes: S.optional(__S(8).pipe(T.Body("additional_routes"))),
+          cookieAttributes: S.optional(__S(9).pipe(T.Body("cookie_attributes"))),
           cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
           customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
-          defaultTemplateLanguage: S.optional(
-            EditRequestDefaultTemplateLanguage.pipe(T.Body("default_template_language")),
-          ),
+          defaultTemplateLanguage: S.optional(S.String.pipe(T.Body("default_template_language"))),
           description: S.optional(S.String),
           disableSessionRenewal: S.optional(S.Boolean.pipe(T.Body("disable_session_renewal"))),
-          enabledOriginCommands: S.optional(
-            EditRequestEnabledOriginCommandsList.pipe(T.Body("enabled_origin_commands")),
-          ),
+          enabledOriginCommands: S.optional(__S(10).pipe(T.Body("enabled_origin_commands"))),
           jsonResponseEnabled: S.optional(S.Boolean.pipe(T.Body("json_response_enabled"))),
           path: S.optional(S.String),
           queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
-          queueingMethod: S.optional(EditRequestQueueingMethod.pipe(T.Body("queueing_method"))),
-          queueingStatusCode: S.optional(
-            EditRequestQueueingStatusCode.pipe(T.Body("queueing_status_code")),
-          ),
+          queueingMethod: S.optional(S.String.pipe(T.Body("queueing_method"))),
+          queueingStatusCode: S.optional(S.Number.pipe(T.Body("queueing_status_code"))),
           sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
           suspended: S.optional(S.Boolean),
-          turnstileAction: S.optional(EditRequestTurnstileAction.pipe(T.Body("turnstile_action"))),
-          turnstileMode: S.optional(EditRequestTurnstileMode.pipe(T.Body("turnstile_mode"))),
+          turnstileAction: S.optional(S.String.pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.String.pipe(T.Body("turnstile_mode"))),
         })
           .pipe(
             T.Http({
@@ -3268,24 +2804,20 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          additionalRoutes: S.optional(
-            S.NullOr(EditResponseAdditionalRoutesList).pipe(T.Body("additional_routes")),
-          ),
-          cookieAttributes: S.optional(
-            S.NullOr(EditResponseCookieAttributes).pipe(T.Body("cookie_attributes")),
-          ),
+          additionalRoutes: S.optional(S.NullOr(__S(13)).pipe(T.Body("additional_routes"))),
+          cookieAttributes: S.optional(S.NullOr(__S(14)).pipe(T.Body("cookie_attributes"))),
           cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           customPageHtml: S.optional(S.NullOr(S.String).pipe(T.Body("custom_page_html"))),
           defaultTemplateLanguage: S.optional(
-            S.NullOr(EditResponseDefaultTemplateLanguage).pipe(T.Body("default_template_language")),
+            S.NullOr(S.String).pipe(T.Body("default_template_language")),
           ),
           description: S.optional(S.NullOr(S.String)),
           disableSessionRenewal: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
           ),
           enabledOriginCommands: S.optional(
-            S.NullOr(EditResponseEnabledOriginCommandsList).pipe(T.Body("enabled_origin_commands")),
+            S.NullOr(__S(10)).pipe(T.Body("enabled_origin_commands")),
           ),
           host: S.optional(S.NullOr(S.String)),
           jsonResponseEnabled: S.optional(
@@ -3300,21 +2832,13 @@ function __c5(j: number): any {
           nextEventStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("next_event_start_time"))),
           path: S.optional(S.NullOr(S.String)),
           queueAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("queue_all"))),
-          queueingMethod: S.optional(
-            S.NullOr(EditResponseQueueingMethod).pipe(T.Body("queueing_method")),
-          ),
-          queueingStatusCode: S.optional(
-            S.NullOr(EditResponseQueueingStatusCode).pipe(T.Body("queueing_status_code")),
-          ),
+          queueingMethod: S.optional(S.NullOr(S.String).pipe(T.Body("queueing_method"))),
+          queueingStatusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("queueing_status_code"))),
           sessionDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("session_duration"))),
           suspended: S.optional(S.NullOr(S.Boolean)),
           totalActiveUsers: S.optional(S.NullOr(S.Number).pipe(T.Body("total_active_users"))),
-          turnstileAction: S.optional(
-            S.NullOr(EditResponseTurnstileAction).pipe(T.Body("turnstile_action")),
-          ),
-          turnstileMode: S.optional(
-            S.NullOr(EditResponseTurnstileMode).pipe(T.Body("turnstile_mode")),
-          ),
+          turnstileAction: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_mode"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PatchWaitingRoomResponse" });
     case 6:
@@ -3370,12 +2894,8 @@ function __c6(j: number): any {
           shuffleAtEventStart: S.optional(S.Boolean.pipe(T.Body("shuffle_at_event_start"))),
           suspended: S.optional(S.Boolean),
           totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
-          turnstileAction: S.optional(
-            EventsUpdateRequestTurnstileAction.pipe(T.Body("turnstile_action")),
-          ),
-          turnstileMode: S.optional(
-            EventsUpdateRequestTurnstileMode.pipe(T.Body("turnstile_mode")),
-          ),
+          turnstileAction: S.optional(S.String.pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.String.pipe(T.Body("turnstile_mode"))),
         })
           .pipe(
             T.Http({
@@ -3389,7 +2909,7 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          action: RulesUpdateRequestRulesItemAction,
+          action: S.String,
           expression: S.String,
           description: S.optional(S.String),
           enabled: S.optional(S.Boolean),
@@ -3398,13 +2918,13 @@ function __c6(j: number): any {
         identifier: "RulesUpdateRequestRulesItem",
       });
     case 3:
-      return S.Array(RulesUpdateRequestRulesItem);
+      return S.Array(__S(50));
     case 4:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           waitingRoomId: S.String.pipe(T.Label("waiting_room_id")),
-          rules: RulesUpdateRequestRulesList,
+          rules: __S(51),
         })
           .pipe(
             T.Http({
@@ -3424,35 +2944,23 @@ function __c6(j: number): any {
           name: S.String,
           newUsersPerMinute: S.Number.pipe(T.Body("new_users_per_minute")),
           totalActiveUsers: S.Number.pipe(T.Body("total_active_users")),
-          additionalRoutes: S.optional(
-            UpdateRequestAdditionalRoutesList.pipe(T.Body("additional_routes")),
-          ),
-          cookieAttributes: S.optional(
-            UpdateRequestCookieAttributes.pipe(T.Body("cookie_attributes")),
-          ),
+          additionalRoutes: S.optional(__S(8).pipe(T.Body("additional_routes"))),
+          cookieAttributes: S.optional(__S(9).pipe(T.Body("cookie_attributes"))),
           cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
           customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
-          defaultTemplateLanguage: S.optional(
-            UpdateRequestDefaultTemplateLanguage.pipe(T.Body("default_template_language")),
-          ),
+          defaultTemplateLanguage: S.optional(S.String.pipe(T.Body("default_template_language"))),
           description: S.optional(S.String),
           disableSessionRenewal: S.optional(S.Boolean.pipe(T.Body("disable_session_renewal"))),
-          enabledOriginCommands: S.optional(
-            UpdateRequestEnabledOriginCommandsList.pipe(T.Body("enabled_origin_commands")),
-          ),
+          enabledOriginCommands: S.optional(__S(10).pipe(T.Body("enabled_origin_commands"))),
           jsonResponseEnabled: S.optional(S.Boolean.pipe(T.Body("json_response_enabled"))),
           path: S.optional(S.String),
           queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
-          queueingMethod: S.optional(UpdateRequestQueueingMethod.pipe(T.Body("queueing_method"))),
-          queueingStatusCode: S.optional(
-            UpdateRequestQueueingStatusCode.pipe(T.Body("queueing_status_code")),
-          ),
+          queueingMethod: S.optional(S.String.pipe(T.Body("queueing_method"))),
+          queueingStatusCode: S.optional(S.Number.pipe(T.Body("queueing_status_code"))),
           sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
           suspended: S.optional(S.Boolean),
-          turnstileAction: S.optional(
-            UpdateRequestTurnstileAction.pipe(T.Body("turnstile_action")),
-          ),
-          turnstileMode: S.optional(UpdateRequestTurnstileMode.pipe(T.Body("turnstile_mode"))),
+          turnstileAction: S.optional(S.String.pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.String.pipe(T.Body("turnstile_mode"))),
         })
           .pipe(
             T.Http({
@@ -3467,28 +2975,20 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.NullOr(S.String)),
-          additionalRoutes: S.optional(
-            S.NullOr(UpdateResponseAdditionalRoutesList).pipe(T.Body("additional_routes")),
-          ),
-          cookieAttributes: S.optional(
-            S.NullOr(UpdateResponseCookieAttributes).pipe(T.Body("cookie_attributes")),
-          ),
+          additionalRoutes: S.optional(S.NullOr(__S(13)).pipe(T.Body("additional_routes"))),
+          cookieAttributes: S.optional(S.NullOr(__S(14)).pipe(T.Body("cookie_attributes"))),
           cookieSuffix: S.optional(S.NullOr(S.String).pipe(T.Body("cookie_suffix"))),
           createdOn: S.optional(S.NullOr(S.String).pipe(T.Body("created_on"))),
           customPageHtml: S.optional(S.NullOr(S.String).pipe(T.Body("custom_page_html"))),
           defaultTemplateLanguage: S.optional(
-            S.NullOr(UpdateResponseDefaultTemplateLanguage).pipe(
-              T.Body("default_template_language"),
-            ),
+            S.NullOr(S.String).pipe(T.Body("default_template_language")),
           ),
           description: S.optional(S.NullOr(S.String)),
           disableSessionRenewal: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("disable_session_renewal")),
           ),
           enabledOriginCommands: S.optional(
-            S.NullOr(UpdateResponseEnabledOriginCommandsList).pipe(
-              T.Body("enabled_origin_commands"),
-            ),
+            S.NullOr(__S(10)).pipe(T.Body("enabled_origin_commands")),
           ),
           host: S.optional(S.NullOr(S.String)),
           jsonResponseEnabled: S.optional(
@@ -3503,24 +3003,39 @@ function __c6(j: number): any {
           nextEventStartTime: S.optional(S.NullOr(S.String).pipe(T.Body("next_event_start_time"))),
           path: S.optional(S.NullOr(S.String)),
           queueAll: S.optional(S.NullOr(S.Boolean).pipe(T.Body("queue_all"))),
-          queueingMethod: S.optional(
-            S.NullOr(UpdateResponseQueueingMethod).pipe(T.Body("queueing_method")),
-          ),
-          queueingStatusCode: S.optional(
-            S.NullOr(UpdateResponseQueueingStatusCode).pipe(T.Body("queueing_status_code")),
-          ),
+          queueingMethod: S.optional(S.NullOr(S.String).pipe(T.Body("queueing_method"))),
+          queueingStatusCode: S.optional(S.NullOr(S.Number).pipe(T.Body("queueing_status_code"))),
           sessionDuration: S.optional(S.NullOr(S.Number).pipe(T.Body("session_duration"))),
           suspended: S.optional(S.NullOr(S.Boolean)),
           totalActiveUsers: S.optional(S.NullOr(S.Number).pipe(T.Body("total_active_users"))),
-          turnstileAction: S.optional(
-            S.NullOr(UpdateResponseTurnstileAction).pipe(T.Body("turnstile_action")),
-          ),
-          turnstileMode: S.optional(
-            S.NullOr(UpdateResponseTurnstileMode).pipe(T.Body("turnstile_mode")),
-          ),
+          turnstileAction: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_action"))),
+          turnstileMode: S.optional(S.NullOr(S.String).pipe(T.Body("turnstile_mode"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UpdateWaitingRoomResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
   }
 }

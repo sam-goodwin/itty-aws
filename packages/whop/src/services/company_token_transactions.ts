@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -84,17 +86,9 @@ export type CreateCompanyTokenTransactionRequestBody =
   | CreateCompanyTokenTransactionRequestBodyCase0
   | CreateCompanyTokenTransactionRequestBodyCase1
   | CreateCompanyTokenTransactionRequestBodyCase1;
-const CreateCompanyTokenTransactionRequestBody =
-  S.Unknown as any as S.Schema<CreateCompanyTokenTransactionRequestBody>;
-
 export interface CreateCompanyTokenTransactionRequest {
   body: CreateCompanyTokenTransactionRequestBody;
 }
-const CreateCompanyTokenTransactionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateCompanyTokenTransactionRequest>;
-
 /** The company whose token balance this transaction affects. */
 export interface CompanyTokenTransactionCompany {
   /** The unique identifier for the company. */
@@ -104,25 +98,13 @@ export interface CompanyTokenTransactionCompany {
   /** The written name of the company. */
   title: string;
 }
-const CompanyTokenTransactionCompany = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CompanyTokenTransactionCompany>;
-
 /** The member whose token balance was affected by this transaction. */
 export interface CompanyTokenTransactionMember {
   /** The unique identifier for the company member. */
   id: string;
 }
-const CompanyTokenTransactionMember = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CompanyTokenTransactionMember>;
-
 /** The type of token transaction */
 export type CompanyTokenTransactionTypes = "add" | "subtract" | "transfer";
-const CompanyTokenTransactionTypes = S.String;
-
 /** The user whose token balance was affected by this transaction. */
 export interface CompanyTokenTransactionUser {
   /** The unique identifier for the user. */
@@ -132,11 +114,6 @@ export interface CompanyTokenTransactionUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-const CompanyTokenTransactionUser = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CompanyTokenTransactionUser>;
-
 /** A token transaction records a credit or debit to a member's token balance within a company, including transfers between members. */
 export interface CompanyTokenTransaction {
   /** The token amount for this transaction. Always a positive value regardless of transaction type. */
@@ -160,20 +137,10 @@ export interface CompanyTokenTransaction {
   /** The user whose token balance was affected by this transaction. */
   user: CompanyTokenTransactionUser;
 }
-const CompanyTokenTransaction = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CompanyTokenTransaction>;
-
 export interface GetCompanyTokenTransactionRequest {
   /** The unique identifier of the token transaction to retrieve. */
   id: string;
 }
-const GetCompanyTokenTransactionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetCompanyTokenTransactionRequest>;
-
 export interface ListCompanyTokenTransactionRequest {
   after?: string;
   before?: string;
@@ -183,11 +150,6 @@ export interface ListCompanyTokenTransactionRequest {
   transaction_type?: CompanyTokenTransactionTypes | (string & {});
   account_id: string;
 }
-const ListCompanyTokenTransactionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ListCompanyTokenTransactionRequest>;
-
 /** The company whose token balance this transaction affects. */
 export type CompanyTokenTransactionListItemCompany = CompanyTokenTransactionCompany;
 /** The member whose token balance was affected by this transaction. */
@@ -217,18 +179,8 @@ export interface CompanyTokenTransactionListItem {
   /** The user whose token balance was affected by this transaction. */
   user: CompanyTokenTransactionUser;
 }
-const CompanyTokenTransactionListItem = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CompanyTokenTransactionListItem>;
-
 /** A list of nodes. */
 export type ListCompanyTokenTransactionResponseDataList = Array<CompanyTokenTransactionListItem>;
-const ListCompanyTokenTransactionResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListCompanyTokenTransactionResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -240,19 +192,12 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<PageInfo>;
-
 export interface ListCompanyTokenTransactionResponse {
   /** A list of nodes. */
   data: ListCompanyTokenTransactionResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListCompanyTokenTransactionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListCompanyTokenTransactionResponse>;
-
 export type CreateCompanyTokenTransactionError =
   | BadRequest
   | Forbidden
@@ -266,8 +211,8 @@ export const createCompanyTokenTransaction: API.OperationMethod<
   CreateCompanyTokenTransactionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCompanyTokenTransactionRequest,
-  output: CompanyTokenTransaction,
+  input: __S(0) as any as S.Schema<CreateCompanyTokenTransactionRequest>,
+  output: __S(4) as any as S.Schema<CompanyTokenTransaction>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -286,8 +231,8 @@ export const getCompanyTokenTransaction: API.OperationMethod<
   GetCompanyTokenTransactionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCompanyTokenTransactionRequest,
-  output: CompanyTokenTransaction,
+  input: __S(5) as any as S.Schema<GetCompanyTokenTransactionRequest>,
+  output: __S(4) as any as S.Schema<CompanyTokenTransaction>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -308,8 +253,8 @@ export const listCompanyTokenTransaction: API.PaginatedOperationMethod<
   CompanyTokenTransactionListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListCompanyTokenTransactionRequest,
-    output: ListCompanyTokenTransactionResponse,
+    input: __S(6) as any as S.Schema<ListCompanyTokenTransactionRequest>,
+    output: __S(10) as any as S.Schema<ListCompanyTokenTransactionResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -331,7 +276,7 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: CreateCompanyTokenTransactionRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/company_token_transactions", code: 200 })),
       ).annotate({
         identifier: "CreateCompanyTokenTransactionRequest",
@@ -368,15 +313,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           amount: S.Number,
-          company: CompanyTokenTransactionCompany,
+          company: __S(1),
           created_at: S.String,
           description: S.NullOr(S.String),
           id: S.String,
           idempotency_key: S.NullOr(S.String),
           linked_transaction_id: S.NullOr(S.String),
-          member: CompanyTokenTransactionMember,
-          transaction_type: CompanyTokenTransactionTypes,
-          user: CompanyTokenTransactionUser,
+          member: __S(2),
+          transaction_type: S.String,
+          user: __S(3),
         }),
       ).annotate({ identifier: "CompanyTokenTransaction" });
     case 5:
@@ -395,7 +340,7 @@ function __c0(j: number): any {
           first: S.optional(S.Number.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           user_id: S.optional(S.String.pipe(T.Query())),
-          transaction_type: S.optional(CompanyTokenTransactionTypes.pipe(T.Query())),
+          transaction_type: S.optional(S.String.pipe(T.Query())),
           account_id: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/company_token_transactions", code: 200 })),
       ).annotate({
@@ -405,15 +350,15 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           amount: S.Number,
-          company: CompanyTokenTransactionCompany,
+          company: __S(1),
           created_at: S.String,
           description: S.NullOr(S.String),
           id: S.String,
           idempotency_key: S.NullOr(S.String),
           linked_transaction_id: S.NullOr(S.String),
-          member: CompanyTokenTransactionMember,
-          transaction_type: CompanyTokenTransactionTypes,
-          user: CompanyTokenTransactionUser,
+          member: __S(2),
+          transaction_type: S.String,
+          user: __S(3),
         }),
       ).annotate({
         identifier: "CompanyTokenTransactionListItem",
@@ -423,7 +368,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CompanyTokenTransactionListItem);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -436,11 +381,24 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: ListCompanyTokenTransactionResponseDataList,
-          page_info: PageInfo,
+          data: __S(8),
+          page_info: __S(9),
         }),
       ).annotate({
         identifier: "ListCompanyTokenTransactionResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

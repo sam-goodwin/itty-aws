@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -50,21 +52,11 @@ export interface GetCourseLessonInteractionRequest {
   /** The unique identifier of the lesson interaction to retrieve. */
   id: string;
 }
-const GetCourseLessonInteractionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetCourseLessonInteractionRequest>;
-
 /** The parent experience that this course belongs to. */
 export interface CourseLessonInteractionCourseExperience {
   /** The unique identifier for the experience. */
   id: string;
 }
-const CourseLessonInteractionCourseExperience = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CourseLessonInteractionCourseExperience>;
-
 /** The course that contains the tracked lesson. */
 export interface CourseLessonInteractionCourse {
   /** The parent experience that this course belongs to. */
@@ -74,19 +66,11 @@ export interface CourseLessonInteractionCourse {
   /** The display name of the course shown to students. Null if no title has been set. */
   title: string | null;
 }
-const CourseLessonInteractionCourse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CourseLessonInteractionCourse>;
-
 /** The parent chapter that contains this lesson. */
 export interface CourseLessonInteractionLessonChapter {
   /** The unique identifier for the chapter. */
   id: string;
 }
-const CourseLessonInteractionLessonChapter =
-  CourseLessonInteractionCourseExperience as any as S.Schema<CourseLessonInteractionLessonChapter>;
-
 /** The lesson that this progress record belongs to. */
 export interface CourseLessonInteractionLesson {
   /** The parent chapter that contains this lesson. */
@@ -96,11 +80,6 @@ export interface CourseLessonInteractionLesson {
   /** The display name of the lesson shown to students. Maximum 120 characters. */
   title: string;
 }
-const CourseLessonInteractionLesson = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CourseLessonInteractionLesson>;
-
 /** The user whose progress is being tracked. */
 export interface CourseLessonInteractionUser {
   /** The unique identifier for the user. */
@@ -110,11 +89,6 @@ export interface CourseLessonInteractionUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-const CourseLessonInteractionUser = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CourseLessonInteractionUser>;
-
 /** A record of a user's progress on a specific lesson, tracking whether they have completed it. */
 export interface CourseLessonInteraction {
   /** Whether the user has finished this lesson. */
@@ -130,11 +104,6 @@ export interface CourseLessonInteraction {
   /** The user whose progress is being tracked. */
   user: CourseLessonInteractionUser;
 }
-const CourseLessonInteraction = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CourseLessonInteraction>;
-
 export interface ListCourseLessonInteractionRequest {
   after?: string;
   before?: string;
@@ -145,11 +114,6 @@ export interface ListCourseLessonInteractionRequest {
   course_id?: string;
   completed?: boolean;
 }
-const ListCourseLessonInteractionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ListCourseLessonInteractionRequest>;
-
 /** The parent chapter that contains this lesson. */
 export type CourseLessonInteractionListItemLessonChapter = CourseLessonInteractionLessonChapter;
 /** The lesson that this progress record belongs to. */
@@ -169,18 +133,8 @@ export interface CourseLessonInteractionListItem {
   /** The user whose progress is being tracked. */
   user: CourseLessonInteractionUser;
 }
-const CourseLessonInteractionListItem = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CourseLessonInteractionListItem>;
-
 /** A list of nodes. */
 export type ListCourseLessonInteractionResponseDataList = Array<CourseLessonInteractionListItem>;
-const ListCourseLessonInteractionResponseDataList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListCourseLessonInteractionResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -192,19 +146,12 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<PageInfo>;
-
 export interface ListCourseLessonInteractionResponse {
   /** A list of nodes. */
   data: ListCourseLessonInteractionResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListCourseLessonInteractionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListCourseLessonInteractionResponse>;
-
 export type GetCourseLessonInteractionError =
   | BadRequest
   | Forbidden
@@ -218,8 +165,8 @@ export const getCourseLessonInteraction: API.OperationMethod<
   GetCourseLessonInteractionError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCourseLessonInteractionRequest,
-  output: CourseLessonInteraction,
+  input: __S(0) as any as S.Schema<GetCourseLessonInteractionRequest>,
+  output: __S(5) as any as S.Schema<CourseLessonInteraction>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -240,8 +187,8 @@ export const listCourseLessonInteraction: API.PaginatedOperationMethod<
   CourseLessonInteractionListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListCourseLessonInteractionRequest,
-    output: ListCourseLessonInteractionResponse,
+    input: __S(6) as any as S.Schema<ListCourseLessonInteractionRequest>,
+    output: __S(10) as any as S.Schema<ListCourseLessonInteractionResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -279,7 +226,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          experience: CourseLessonInteractionCourseExperience,
+          experience: __S(1),
           id: S.String,
           title: S.NullOr(S.String),
         }),
@@ -289,7 +236,7 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          chapter: CourseLessonInteractionLessonChapter,
+          chapter: __S(1),
           id: S.String,
           title: S.String,
         }),
@@ -310,11 +257,11 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           completed: S.Boolean,
-          course: CourseLessonInteractionCourse,
+          course: __S(2),
           created_at: S.String,
           id: S.String,
-          lesson: CourseLessonInteractionLesson,
-          user: CourseLessonInteractionUser,
+          lesson: __S(3),
+          user: __S(4),
         }),
       ).annotate({ identifier: "CourseLessonInteraction" });
     case 6:
@@ -338,8 +285,8 @@ function __c0(j: number): any {
           completed: S.Boolean,
           created_at: S.String,
           id: S.String,
-          lesson: CourseLessonInteractionLesson,
-          user: CourseLessonInteractionUser,
+          lesson: __S(3),
+          user: __S(4),
         }),
       ).annotate({
         identifier: "CourseLessonInteractionListItem",
@@ -349,7 +296,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CourseLessonInteractionListItem);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -362,11 +309,24 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: ListCourseLessonInteractionResponseDataList,
-          page_info: PageInfo,
+          data: __S(8),
+          page_info: __S(9),
         }),
       ).annotate({
         identifier: "ListCourseLessonInteractionResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

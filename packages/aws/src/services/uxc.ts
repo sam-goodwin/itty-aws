@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "uxc",
   serviceShapeName: "AWSAccountUXSetting",
@@ -69,16 +71,12 @@ export class ValidationException
   extends /*@__PURE__*/ S.TaggedError<ValidationException>()("ValidationException", {
     message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
     fieldList: /*@__PURE__*/ S.optional(
-      /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
+      /*@__PURE__*/ S.suspend(() => __S(7)).annotate({
         identifier: "ValidationExceptionFieldList",
       }),
     ),
   }) {}
 export interface GetAccountCustomizationsInput {}
-const GetAccountCustomizationsInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetAccountCustomizationsInput>;
 export type AccountColor =
   | "none"
   | "pink"
@@ -91,61 +89,40 @@ export type AccountColor =
   | "orange"
   | "red"
   | (string & {});
-const AccountColor = S.String;
-
 export type Service = string;
 export type ServiceList = string[];
-const ServiceList = /*@__PURE__*/ __L.at(__c0, 1);
 export type Region = string;
 export type RegionsList = string[];
-const RegionsList = ServiceList as any as S.Schema<RegionsList>;
 export interface GetAccountCustomizationsOutput {
   accountColor?: AccountColor;
   visibleServices?: string[];
   visibleRegions?: string[];
 }
-const GetAccountCustomizationsOutput = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetAccountCustomizationsOutput>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListServicesInput {
   nextToken?: string;
   maxResults?: number;
 }
-const ListServicesInput = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ListServicesInput>;
 export interface ListServicesOutput {
   nextToken?: string;
   services?: string[];
 }
-const ListServicesOutput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<ListServicesOutput>;
 export interface UpdateAccountCustomizationsInput {
   accountColor?: AccountColor;
   visibleServices?: string[];
   visibleRegions?: string[];
 }
-const UpdateAccountCustomizationsInput = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<UpdateAccountCustomizationsInput>;
 export interface UpdateAccountCustomizationsOutput {
   accountColor?: AccountColor;
   visibleServices?: string[];
   visibleRegions?: string[];
 }
-const UpdateAccountCustomizationsOutput =
-  GetAccountCustomizationsOutput as any as S.Schema<UpdateAccountCustomizationsOutput>;
 export interface ValidationExceptionField {
   path: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c0, 7);
 export type GetAccountCustomizationsError =
   | AccessDeniedException
   | InternalServerException
@@ -163,8 +140,8 @@ export const getAccountCustomizations: API.OperationMethod<
   GetAccountCustomizationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountCustomizationsInput,
-  output: GetAccountCustomizationsOutput,
+  input: __S(0) as any as S.Schema<GetAccountCustomizationsInput>,
+  output: __S(2) as any as S.Schema<GetAccountCustomizationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -194,8 +171,8 @@ export const listServices: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Service
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListServicesInput,
-  output: ListServicesOutput,
+  input: __S(3) as any as S.Schema<ListServicesInput>,
+  output: __S(4) as any as S.Schema<ListServicesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -225,8 +202,8 @@ export const updateAccountCustomizations: API.OperationMethod<
   UpdateAccountCustomizationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountCustomizationsInput,
-  output: UpdateAccountCustomizationsOutput,
+  input: __S(5) as any as S.Schema<UpdateAccountCustomizationsInput>,
+  output: __S(2) as any as S.Schema<UpdateAccountCustomizationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -261,9 +238,9 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          accountColor: S.optional(AccountColor),
-          visibleServices: S.optional(ServiceList),
-          visibleRegions: S.optional(RegionsList),
+          accountColor: S.optional(S.String),
+          visibleServices: S.optional(__S(1)),
+          visibleRegions: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "GetAccountCustomizationsOutput",
@@ -279,14 +256,14 @@ function __c0(j: number): any {
       ).annotate({ identifier: "ListServicesInput" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ nextToken: S.optional(S.String), services: S.optional(ServiceList) }),
+        S.Struct({ nextToken: S.optional(S.String), services: S.optional(__S(1)) }),
       ).annotate({ identifier: "ListServicesOutput" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          accountColor: S.optional(AccountColor),
-          visibleServices: S.optional(ServiceList),
-          visibleRegions: S.optional(RegionsList),
+          accountColor: S.optional(S.String),
+          visibleServices: S.optional(__S(1)),
+          visibleRegions: S.optional(__S(1)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/v1/account-customizations" }),
@@ -305,6 +282,17 @@ function __c0(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 7:
-      return S.Array(ValidationExceptionField);
+      return S.Array(__S(6));
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

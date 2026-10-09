@@ -9,6 +9,8 @@ import { paginateCursor } from "../pagination.ts";
 import { UnkeyProtocol, type UnkeyOpError, type UnkeyOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { UnkeyOpError, UnkeyOpContext };
 
@@ -61,53 +63,26 @@ export interface AnalyticsGetGatewayRequestsRequest {
   /** The SQL query to run on your gateway request data. A query can use only the public alias `gateway_requests_v1`. The physical `default.*` table names are not permitted. Only SELECT queries are permitted. CTEs, subqueries, UNION, and EXCEPT are also permitted. Unkey limits each query to the workspace of the root key. To get the data for one project, app, or environment, add a filter on `project_id`, `app_id`, or `environment_id`. The workspace retention period and the workspace query limits apply. */
   query: string;
 }
-const AnalyticsGetGatewayRequestsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AnalyticsGetGatewayRequestsRequest>;
-
 /** Metadata object included in every API response. This provides context about the request and is essential for debugging, audit trails, and support inquiries. The `requestId` is particularly important when troubleshooting issues with the Unkey support team. */
 export interface Meta {
   /** A unique id for this request. Always include this ID when contacting support about a specific API request. This identifier allows Unkey's support team to trace the exact request through logs and diagnostic systems to provide faster assistance. */
   requestId: string;
 }
-const Meta = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Meta>;
-
 /** One result row. The query controls its fields. */
 export type V2AnalyticsGetGatewayRequestsResponseDataItemMap = {
   [key: string]: unknown | undefined;
 };
-const V2AnalyticsGetGatewayRequestsResponseDataItemMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<V2AnalyticsGetGatewayRequestsResponseDataItemMap>;
-
 /** The gateway request rows that the query returned. The SELECT clause of the query controls the fields in each row. */
 export type V2AnalyticsGetGatewayRequestsResponseData =
   Array<V2AnalyticsGetGatewayRequestsResponseDataItemMap>;
-const V2AnalyticsGetGatewayRequestsResponseData = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<V2AnalyticsGetGatewayRequestsResponseData>;
-
 export interface V2AnalyticsGetGatewayRequestsResponseBody {
   meta: Meta;
   data: V2AnalyticsGetGatewayRequestsResponseData;
 }
-const V2AnalyticsGetGatewayRequestsResponseBody = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<V2AnalyticsGetGatewayRequestsResponseBody>;
-
 export interface AnalyticsGetRatelimitsRequest {
   /** SQL query to execute against your rate limit analytics data. Queries may reference only the five public aliases: `ratelimits_v1`, `ratelimits_per_minute_v1`, `ratelimits_per_hour_v1`, `ratelimits_per_day_v1`, or `ratelimits_per_month_v1`. Physical `default.*` table names are unsupported. CTEs, subqueries, UNION, and EXCEPT are supported. Queries are always restricted to the authenticated workspace. Wildcard analytics permission can read every namespace in that workspace; namespace-scoped permissions automatically restrict results to the permitted namespace IDs. Workspace retention and query limits apply. */
   query: string;
 }
-const AnalyticsGetRatelimitsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AnalyticsGetRatelimitsRequest>;
-
 /** Dynamic row with fields determined by the query. */
 export type V2AnalyticsGetRatelimitsResponseDataItemMap = { [key: string]: unknown | undefined };
 /** Array of rate limit rows returned by the query. Fields vary based on the SQL SELECT clause. */
@@ -117,18 +92,10 @@ export interface V2AnalyticsGetRatelimitsResponseBody {
   meta: Meta;
   data: V2AnalyticsGetRatelimitsResponseData;
 }
-const V2AnalyticsGetRatelimitsResponseBody =
-  V2AnalyticsGetGatewayRequestsResponseBody as any as S.Schema<V2AnalyticsGetRatelimitsResponseBody>;
-
 export interface AnalyticsGetRuntimeLogsRequest {
   /** The SQL query for your runtime log data. A query can use only the public alias `runtime_logs_v1`. The physical `default.*` table name is not permitted. CTEs, subqueries, UNION, and EXCEPT are permitted. Only SELECT queries are permitted. Unkey limits each query to the workspace of the root key. To get the logs of one project, app, environment, or deployment, add a filter on `project_id`, `app_id`, `environment_id`, or `deployment_id`. The workspace retention period and the workspace query limits apply. */
   query: string;
 }
-const AnalyticsGetRuntimeLogsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AnalyticsGetRuntimeLogsRequest>;
-
 /** One result row. The query sets its fields. */
 export type V2AnalyticsGetRuntimeLogsResponseDataItemMap = { [key: string]: unknown | undefined };
 /** The runtime log rows that the query returned. The SELECT clause of the query sets the fields of each row. */
@@ -138,18 +105,10 @@ export interface V2AnalyticsGetRuntimeLogsResponseBody {
   meta: Meta;
   data: V2AnalyticsGetRuntimeLogsResponseData;
 }
-const V2AnalyticsGetRuntimeLogsResponseBody =
-  V2AnalyticsGetGatewayRequestsResponseBody as any as S.Schema<V2AnalyticsGetRuntimeLogsResponseBody>;
-
 export interface AnalyticsGetVerificationsRequest {
   /** SQL query to execute against your analytics data. Queries may reference only the five public aliases: `key_verifications_v1`, `key_verifications_per_minute_v1`, `key_verifications_per_hour_v1`, `key_verifications_per_day_v1`, or `key_verifications_per_month_v1`. Physical `default.*` table names are unsupported. Only SELECT queries are allowed. CTEs, subqueries, UNION, and EXCEPT are supported. */
   query: string;
 }
-const AnalyticsGetVerificationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AnalyticsGetVerificationsRequest>;
-
 /** Dynamic row with fields determined by the query. Can include any combination of fields like time, outcome, count, key_id, etc. */
 export type V2AnalyticsGetVerificationsResponseDataItemMap = { [key: string]: unknown | undefined };
 /** Array of verification rows returned by the query. Fields vary based on the SQL SELECT clause. */
@@ -159,74 +118,40 @@ export interface V2AnalyticsGetVerificationsResponseBody {
   meta: Meta;
   data: V2AnalyticsGetVerificationsResponseData;
 }
-const V2AnalyticsGetVerificationsResponseBody =
-  V2AnalyticsGetGatewayRequestsResponseBody as any as S.Schema<V2AnalyticsGetVerificationsResponseBody>;
-
 export interface ApisCreateApiRequest {
   /** Human-readable name for this API within your workspace. Use descriptive names like 'Payment Service (prod)' or 'user-api-dev' to clearly identify purpose and environment. */
   name: string;
 }
-const ApisCreateApiRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ApisCreateApiRequest>;
-
 export interface V2ApisCreateApiResponseData {
   /** The unique identifier assigned to the newly created API. Use this ID for all subsequent operations including key creation, verification, and API management. Always begins with 'api_' followed by a unique alphanumeric sequence. Store this ID securely as it's required when: - Creating API keys within this namespace - Verifying keys associated with this API - Managing API settings and metadata - Listing keys belonging to this API This identifier is permanent and cannot be changed after creation. */
   apiId: string;
 }
-const V2ApisCreateApiResponseData = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<V2ApisCreateApiResponseData>;
-
 export interface V2ApisCreateApiResponseBody {
   meta: Meta;
   data: V2ApisCreateApiResponseData;
 }
-const V2ApisCreateApiResponseBody = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<V2ApisCreateApiResponseBody>;
-
 export interface ApisDeleteApiRequest {
   /** Specifies which API namespace to permanently delete from your workspace. Must be a valid API ID that begins with 'api_' and exists within your workspace. Before proceeding, ensure you have the correct API ID and understand that this action cannot be undone. If you need to migrate functionality, create replacement keys in a new API namespace and update client applications before deletion. */
   apiId: string;
 }
-const ApisDeleteApiRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ApisDeleteApiRequest>;
-
 export interface V2ApisDeleteApiResponseBody {
   meta: Meta;
   data: unknown;
 }
-const V2ApisDeleteApiResponseBody = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<V2ApisDeleteApiResponseBody>;
-
 export interface ApisGetApiRequest {
   /** Specifies which API to retrieve by its unique identifier. Must be a valid API ID that begins with 'api_' and exists within your workspace. */
   apiId: string;
 }
-const ApisGetApiRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ApisGetApiRequest>;
-
 export interface V2ApisGetApiResponseData {
   /** The unique identifier of this API within Unkey's system. Used in all operations related to this API including key creation, verification, and management. Always begins with 'api_' followed by alphanumeric characters and underscores. This identifier is permanent and never changes after API creation. */
   id: string;
   /** The internal name of this API as specified during creation. Used for organization and identification within your workspace. Helps distinguish between different environments, services, or access tiers. Not visible to end users - this is purely for administrative purposes. */
   name: string;
 }
-const V2ApisGetApiResponseData = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<V2ApisGetApiResponseData>;
-
 export interface V2ApisGetApiResponseBody {
   meta: Meta;
   data: V2ApisGetApiResponseData;
 }
-const V2ApisGetApiResponseBody = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<V2ApisGetApiResponseBody>;
-
 export interface ApisListKeysRequest {
   /** The API namespace whose keys you want to list. Returns all keys in this API, subject to pagination and filters. */
   apiId: string;
@@ -241,27 +166,12 @@ export interface ApisListKeysRequest {
   /** EXPERIMENTAL: Skip the cache and fetch the keys directly from the database. This ensures you see the most recent state, including keys created moments ago. Use this when: - You've just created a key and need to display it immediately - You need absolute certainty about the current key state - You're debugging cache consistency issues This parameter comes with a performance cost and should be used sparingly. */
   revalidateKeysCache?: boolean;
 }
-const ApisListKeysRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ApisListKeysRequest>;
-
 /** Custom metadata associated with this key. */
 export type KeyResponseDataMetaMap = { [key: string]: unknown | undefined };
-const KeyResponseDataMetaMap =
-  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<KeyResponseDataMetaMap>;
-
 export type KeyResponseDataPermissionsList = Array<string>;
-const KeyResponseDataPermissionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<KeyResponseDataPermissionsList>;
-
 export type KeyResponseDataRolesList = Array<string>;
-const KeyResponseDataRolesList =
-  KeyResponseDataPermissionsList as any as S.Schema<KeyResponseDataRolesList>;
-
 /** How often credits are automatically refilled. */
 export type KeyCreditsRefillInterval = "daily" | "monthly";
-const KeyCreditsRefillInterval = S.String;
-
 /** Configuration for automatic credit refill behavior. */
 export interface KeyCreditsRefill {
   /** How often credits are automatically refilled. */
@@ -271,21 +181,14 @@ export interface KeyCreditsRefill {
   /** Day of the month for monthly refills (1-31). Only required when interval is 'monthly'. For days beyond the month's length, refill occurs on the last day of the month. */
   refillDay?: number;
 }
-const KeyCreditsRefill = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<KeyCreditsRefill>;
-
 /** Credit configuration and remaining balance for this key. */
 export interface KeyCreditsData {
   /** Number of credits remaining (null for unlimited). */
   remaining: number | null;
   refill?: KeyCreditsRefill;
 }
-const KeyCreditsData = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<KeyCreditsData>;
-
 /** Identity metadata */
 export type IdentityMetaMap = { [key: string]: unknown | undefined };
-const IdentityMetaMap =
-  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<IdentityMetaMap>;
-
 export interface RatelimitResponse {
   /** Unique identifier for this rate limit configuration. */
   id: string;
@@ -298,15 +201,8 @@ export interface RatelimitResponse {
   /** Whether this rate limit was automatically applied when verifying the key. */
   autoApply: boolean;
 }
-const RatelimitResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<RatelimitResponse>;
-
 /** Identity ratelimits */
 export type IdentityRatelimitsList = Array<RatelimitResponse>;
-const IdentityRatelimitsList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<IdentityRatelimitsList>;
-
 export interface Identity {
   /** Identity ID */
   id: string;
@@ -317,12 +213,7 @@ export interface Identity {
   /** Identity ratelimits */
   ratelimits?: IdentityRatelimitsList;
 }
-const Identity = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Identity>;
-
 export type KeyResponseDataRatelimitsList = Array<RatelimitResponse>;
-const KeyResponseDataRatelimitsList =
-  IdentityRatelimitsList as any as S.Schema<KeyResponseDataRatelimitsList>;
-
 export interface KeyResponseData {
   /** Unique identifier for this key. */
   keyId: string;
@@ -350,15 +241,8 @@ export interface KeyResponseData {
   plaintext?: string | Redacted.Redacted<string>;
   ratelimits?: KeyResponseDataRatelimitsList;
 }
-const KeyResponseData = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<KeyResponseData>;
-
 /** Array of API keys with complete configuration and metadata. */
 export type V2ApisListKeysResponseData = Array<KeyResponseData>;
-const V2ApisListKeysResponseData = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<V2ApisListKeysResponseData>;
-
 /** Pagination metadata for list endpoints. Provides information necessary to traverse through large result sets efficiently using cursor-based pagination. */
 export interface Pagination {
   /** Opaque pagination token for retrieving the next page of results. Include this exact value in the cursor field of subsequent requests. Cursors are temporary and may expire after extended periods. */
@@ -366,18 +250,11 @@ export interface Pagination {
   /** Indicates whether additional results exist beyond this page. When true, use the cursor to fetch the next page. When false, you have reached the end of the result set. */
   hasMore: boolean;
 }
-const Pagination = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Pagination>;
-
 export interface V2ApisListKeysResponseBody {
   meta: Meta;
   data: V2ApisListKeysResponseData;
   pagination: Pagination;
 }
-const V2ApisListKeysResponseBody = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<V2ApisListKeysResponseBody>;
-
 /** Configure Git as the app source. Provide `repository` to connect it during creation, or use an empty object to connect a repository later. */
 export interface AppGitCreateInput {
   /** The GitHub repository to connect, as "owner/repo". The workspace must have the Unkey GitHub App installed with access to it. Omit this field to create the Git app before selecting its repository. */
@@ -385,15 +262,11 @@ export interface AppGitCreateInput {
   /** The branch this app's deployments track. This requires `repository`. Omit it to adopt the repository's default branch on GitHub. */
   defaultBranch?: string;
 }
-const AppGitCreateInput = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<AppGitCreateInput>;
-
 /** An app's OCI image source. */
 export interface AppOCI {
   /** The configured default OCI image reference for new deployments. It must include an explicit tag or digest. */
   image: string;
 }
-const AppOCI = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<AppOCI>;
-
 export interface CreateAppRequest {
   project: string;
   /** Human-readable name for this app. */
@@ -402,26 +275,14 @@ export interface CreateAppRequest {
   git?: AppGitCreateInput;
   oci?: AppOCI;
 }
-const CreateAppRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CreateAppRequest>;
-
 export interface V2AppsCreateAppResponseData {
   /** The unique identifier of the newly created app, generated by Unkey. Always begins with 'app_' followed by a unique alphanumeric sequence. */
   appId: string;
 }
-const V2AppsCreateAppResponseData = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<V2AppsCreateAppResponseData>;
-
 export interface V2AppsCreateAppResponseBody {
   meta: Meta;
   data: V2AppsCreateAppResponseData;
 }
-const V2AppsCreateAppResponseBody = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<V2AppsCreateAppResponseBody>;
-
 /** Build from the app's connected GitHub repository. */
 export interface DeploymentSourceGit {
   /** Branch to build (its HEAD). Omit branch and commitSha to use the app's default branch. */
@@ -431,24 +292,15 @@ export interface DeploymentSourceGit {
   /** Build from a fork instead of the app's connected repository, as "owner/repo". Requires commitSha. */
   repository?: string;
 }
-const DeploymentSourceGit = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DeploymentSourceGit>;
-
 /** Deploy a prebuilt OCI image without a build. */
 export interface DeploymentSourceOCI {
   /** OCI image to deploy. Mutable tags are resolved to immutable digests before rollout. */
   image: string;
 }
-const DeploymentSourceOCI = AppOCI as any as S.Schema<DeploymentSourceOCI>;
-
 /** Re-run an existing deployment. */
 export interface DeploymentSourceDeployment {
   deploymentId: string;
 }
-const DeploymentSourceDeployment = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DeploymentSourceDeployment>;
-
 export interface CreateDeploymentV3Request {
   project: string;
   app: string;
@@ -457,27 +309,14 @@ export interface CreateDeploymentV3Request {
   oci?: DeploymentSourceOCI;
   deployment?: DeploymentSourceDeployment;
 }
-const CreateDeploymentV3Request = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateDeploymentV3Request>;
-
 export interface V3DeploymentsCreateDeploymentResponseData {
   /** Unique deployment identifier */
   deploymentId: string;
 }
-const V3DeploymentsCreateDeploymentResponseData =
-  DeploymentSourceDeployment as any as S.Schema<V3DeploymentsCreateDeploymentResponseData>;
-
 export interface V3DeploymentsCreateDeploymentResponseBody {
   meta: Meta;
   data: V3DeploymentsCreateDeploymentResponseData;
 }
-const V3DeploymentsCreateDeploymentResponseBody = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<V3DeploymentsCreateDeploymentResponseBody>;
-
 export interface CreateDomainRequest {
   project: string;
   app: string;
@@ -485,12 +324,8 @@ export interface CreateDomainRequest {
   /** Fully qualified domain name to attach to the environment, without a scheme, port, or path. Must be unique across your entire workspace: the same name cannot be attached to two environments. The name must sit under a registrable domain: 'api.acme.co.uk' is accepted, the public suffix 'co.uk' itself is not. Internationalized names may be sent in Unicode or Punycode form; either way the domain is stored and returned in its canonical form, lowercase ASCII with Unicode labels Punycode encoded, and the DNS records in the response use that form. */
   domain: string;
 }
-const CreateDomainRequest = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<CreateDomainRequest>;
-
 /** Record type to create. `ALIAS` is not a real DNS record type: it means an apex-compatible alias, which providers expose as ALIAS, ANAME, or a flattened CNAME. Apex domains cannot hold a plain CNAME, so they receive `ALIAS` where a subdomain receives `CNAME`. */
 export type DnsRecordType = "CNAME" | "ALIAS" | "TXT";
-const DnsRecordType = S.String;
-
 export interface DnsRecord {
   /** Record type to create. `ALIAS` is not a real DNS record type: it means an apex-compatible alias, which providers expose as ALIAS, ANAME, or a flattened CNAME. Apex domains cannot hold a plain CNAME, so they receive `ALIAS` where a subdomain receives `CNAME`. */
   type: DnsRecordType;
@@ -505,15 +340,8 @@ export interface DnsRecord {
   /** What this record is for and any provider-specific caveat that applies to it. Worth surfacing to whoever edits the DNS zone. Treat it as optional: it carries no data the record itself needs, so a future record type may omit it. */
   note?: string;
 }
-const DnsRecord = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<DnsRecord>;
-
 /** Every DNS record needed to finish setting up this domain, ready to create at your provider. The list already accounts for whether the domain is an apex or a subdomain, so no further branching is needed: create each entry as given. One record establishes routing and one proves ownership. Create all of them: whether ownership can be inferred from the routing record depends on how your provider publishes it, and a name another workspace has already verified can only be claimed through the ownership record. Neither is knowable before the records exist. */
 export type V2DomainsCreateDomainResponseDataDnsRecordsList = Array<DnsRecord>;
-const V2DomainsCreateDomainResponseDataDnsRecordsList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<V2DomainsCreateDomainResponseDataDnsRecordsList>;
-
 /** One-click setup at the domain's DNS provider. Omitted entirely when the provider does not support Domain Connect or discovery failed, so the object's presence is the signal that the shortcut is available and both of its fields are filled. */
 export interface DomainConnect {
   /** Display name of the DNS provider the domain is delegated to, such as 'Cloudflare'. Discovered from the domain's nameservers, so it reflects where DNS is actually hosted rather than where the domain was registered. */
@@ -521,33 +349,18 @@ export interface DomainConnect {
   /** Signed Domain Connect URL that pre-fills the records in `dnsRecords` at the provider. Open it in a browser and the domain owner approves them in one step instead of entering them by hand. The URL is signed with an Unkey key, so it cannot be constructed or altered by the caller. Intended for a browser, not a script: after approval the provider sends the browser to this workspace's app settings page in the Unkey dashboard, so it suits a caller who administers this workspace. Anyone who does not have access to it approves the records successfully but lands on a page they cannot open. Approving is what writes the records; verification then proceeds on its own, so nothing depends on completing that return trip. */
   url: string;
 }
-const DomainConnect = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<DomainConnect>;
-
 export interface V2DomainsCreateDomainResponseData {
   domainId: string;
   /** Every DNS record needed to finish setting up this domain, ready to create at your provider. The list already accounts for whether the domain is an apex or a subdomain, so no further branching is needed: create each entry as given. One record establishes routing and one proves ownership. Create all of them: whether ownership can be inferred from the routing record depends on how your provider publishes it, and a name another workspace has already verified can only be claimed through the ownership record. Neither is knowable before the records exist. */
   dnsRecords: V2DomainsCreateDomainResponseDataDnsRecordsList;
   domainConnect?: DomainConnect;
 }
-const V2DomainsCreateDomainResponseData = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<V2DomainsCreateDomainResponseData>;
-
 export interface V2DomainsCreateDomainResponseBody {
   meta: Meta;
   data: V2DomainsCreateDomainResponseData;
 }
-const V2DomainsCreateDomainResponseBody = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<V2DomainsCreateDomainResponseBody>;
-
 /** Stores arbitrary JSON metadata returned during key verification for contextual information. Eliminates additional database lookups during verification, improving performance for stateless services. Avoid storing sensitive data here as it's returned in verification responses. Large metadata objects increase verification latency and should stay under 10KB total size. Use this for subscription details, feature flags, user preferences, and organization information. Metadata is returned as-is whenever keys associated with this identity are verified. */
 export type CreateIdentityRequestMetaMap = { [key: string]: unknown | undefined };
-const CreateIdentityRequestMetaMap =
-  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<CreateIdentityRequestMetaMap>;
-
 export interface RatelimitRequest {
   /** The name of this rate limit. This name is used to identify which limit to check during key verification. Best practices for limit names: - Use descriptive, semantic names like 'api_requests', 'heavy_operations', or 'downloads' - Be consistent with naming conventions across your application - Create separate limits for different resource types or operation costs - Consider using namespaced names for better organization (e.g., 'files.downloads', 'compute.training') You will reference this exact name when verifying keys to check against this specific limit. */
   name: string;
@@ -558,15 +371,8 @@ export interface RatelimitRequest {
   /** Whether this ratelimit should be automatically applied when verifying a key. */
   autoApply: boolean;
 }
-const RatelimitRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<RatelimitRequest>;
-
 /** Defines shared rate limits that apply to all keys belonging to this identity. Prevents abuse by users with multiple keys by enforcing consistent limits across their entire key portfolio. Essential for implementing fair usage policies and tiered access levels in multi-tenant applications. Rate limit counters are shared across all keys with this identity, regardless of how many keys the user creates. During verification, specify which named limits to check for enforcement. Identity rate limits supplement any key-specific rate limits that may also be configured. - Each named limit can have different thresholds and windows When verifying keys, you can specify which limits you want to use and all keys attached to this identity will share the limits, regardless of which specific key is used. */
 export type CreateIdentityRequestRatelimitsList = Array<RatelimitRequest>;
-const CreateIdentityRequestRatelimitsList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CreateIdentityRequestRatelimitsList>;
-
 export interface CreateIdentityRequest {
   /** Creates an identity using your system's unique identifier for a user, organization, or entity. Must be stable and unique across your workspace - duplicate externalIds return CONFLICT errors. This identifier links Unkey identities to your authentication system, database records, or tenant structure. Avoid changing externalIds after creation as this breaks the link between your systems. Use consistent identifier patterns across your application for easier management and debugging. Accepts letters, numbers, underscores, dots, and hyphens for flexible identifier formats. Essential for implementing proper multi-tenant isolation and user-specific rate limiting. */
   externalId: string;
@@ -575,49 +381,22 @@ export interface CreateIdentityRequest {
   /** Defines shared rate limits that apply to all keys belonging to this identity. Prevents abuse by users with multiple keys by enforcing consistent limits across their entire key portfolio. Essential for implementing fair usage policies and tiered access levels in multi-tenant applications. Rate limit counters are shared across all keys with this identity, regardless of how many keys the user creates. During verification, specify which named limits to check for enforcement. Identity rate limits supplement any key-specific rate limits that may also be configured. - Each named limit can have different thresholds and windows When verifying keys, you can specify which limits you want to use and all keys attached to this identity will share the limits, regardless of which specific key is used. */
   ratelimits?: CreateIdentityRequestRatelimitsList;
 }
-const CreateIdentityRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateIdentityRequest>;
-
 export interface V2IdentitiesCreateIdentityResponseData {
   /** The unique identifier of the created identity. */
   identityId: string;
 }
-const V2IdentitiesCreateIdentityResponseData = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<V2IdentitiesCreateIdentityResponseData>;
-
 export interface V2IdentitiesCreateIdentityResponseBody {
   meta: Meta;
   data: V2IdentitiesCreateIdentityResponseData;
 }
-const V2IdentitiesCreateIdentityResponseBody = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<V2IdentitiesCreateIdentityResponseBody>;
-
 /** Stores arbitrary JSON metadata returned during key verification for contextual information. Eliminates additional database lookups during verification, improving performance for stateless services. Avoid storing sensitive data here as it's returned in verification responses. Large metadata objects increase verification latency and should stay under 10KB total size. */
 export type CreateKeyRequestMetaMap = { [key: string]: unknown | undefined };
-const CreateKeyRequestMetaMap =
-  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<CreateKeyRequestMetaMap>;
-
 /** Assigns existing roles to this key for permission management through role-based access control. Roles must already exist in your workspace before assignment. During verification, all permissions from assigned roles are checked against requested permissions. Roles provide a convenient way to group permissions and apply consistent access patterns across multiple keys. */
 export type CreateKeyRequestRolesList = Array<string>;
-const CreateKeyRequestRolesList =
-  KeyResponseDataPermissionsList as any as S.Schema<CreateKeyRequestRolesList>;
-
 /** Grants specific permissions directly to this key without requiring role membership. Wildcard permissions like `documents.*` grant access to all sub-permissions including `documents.read` and `documents.write`. Direct permissions supplement any permissions inherited from assigned roles. */
 export type CreateKeyRequestPermissionsList = Array<string>;
-const CreateKeyRequestPermissionsList =
-  KeyResponseDataPermissionsList as any as S.Schema<CreateKeyRequestPermissionsList>;
-
 /** Defines time-based rate limits that protect against abuse by controlling request frequency. Unlike credits which track total usage, rate limits reset automatically after each window expires. Multiple rate limits can control different operation types with separate thresholds and windows. Essential for preventing API abuse while maintaining good performance for legitimate usage. */
 export type CreateKeyRequestRatelimitsList = Array<RatelimitRequest>;
-const CreateKeyRequestRatelimitsList =
-  CreateIdentityRequestRatelimitsList as any as S.Schema<CreateKeyRequestRatelimitsList>;
-
 export interface CreateKeyRequest {
   /** The API namespace this key belongs to. Keys from different APIs cannot access each other. */
   apiId: string;
@@ -646,28 +425,16 @@ export interface CreateKeyRequest {
   /** Controls whether the plaintext key is stored in an encrypted vault for later retrieval. When true, allows recovering the actual key value using keys.getKey with decrypt=true. When false, the key value cannot be retrieved after creation for maximum security. Only enable for development keys or when key recovery is absolutely necessary. */
   recoverable?: boolean;
 }
-const CreateKeyRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<CreateKeyRequest>;
-
 export interface V2KeysCreateKeyResponseData {
   /** The unique identifier for this key in Unkey's system. This is NOT the actual API key, but a reference ID used for management operations like updating or deleting the key. Store this ID in your database to reference the key later. This ID is not sensitive and can be logged or displayed in dashboards. */
   keyId: string;
   /** The full generated API key that should be securely provided to your user. SECURITY WARNING: This is the only time you'll receive the complete key - Unkey only stores a securely hashed version. Never log or store this value in your own systems; provide it directly to your end user via secure channels. After this API call completes, this value cannot be retrieved again (unless created with `recoverable=true`). */
   key: string;
 }
-const V2KeysCreateKeyResponseData = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<V2KeysCreateKeyResponseData>;
-
 export interface V2KeysCreateKeyResponseBody {
   meta: Meta;
   data: V2KeysCreateKeyResponseData;
 }
-const V2KeysCreateKeyResponseBody = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<V2KeysCreateKeyResponseBody>;
-
 export interface CreatePortalRequest {
   /** URL-safe handle for this portal, unique within your workspace. Lowercase alphanumerics and single hyphens, 3-64 characters, not starting or ending with a hyphen. */
   slug: string;
@@ -682,157 +449,80 @@ export interface CreatePortalRequest {
   /** Six-digit hex colour used for primary actions and accents in the portal. */
   primaryColor?: string;
 }
-const CreatePortalRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<CreatePortalRequest>;
-
 export interface V2PortalCreatePortalResponseData {
   /** The unique identifier of the newly created portal, generated by Unkey. Always begins with 'prt_' followed by a unique alphanumeric sequence. */
   portalId: string;
 }
-const V2PortalCreatePortalResponseData = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<V2PortalCreatePortalResponseData>;
-
 export interface V2PortalCreatePortalResponseBody {
   meta: Meta;
   data: V2PortalCreatePortalResponseData;
 }
-const V2PortalCreatePortalResponseBody = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<V2PortalCreatePortalResponseBody>;
-
 export interface CreateProjectRequest {
   /** Human-readable name for this project. Use a descriptive name like 'Payments Service' to identify its purpose. */
   name: string;
   slug: string;
 }
-const CreateProjectRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<CreateProjectRequest>;
-
 export interface V2ProjectsCreateProjectResponseData {
   /** The unique identifier of the newly created project, generated by Unkey. Always begins with 'proj_' followed by a unique alphanumeric sequence. */
   id: string;
 }
-const V2ProjectsCreateProjectResponseData = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<V2ProjectsCreateProjectResponseData>;
-
 export interface V2ProjectsCreateProjectResponseBody {
   meta: Meta;
   data: V2ProjectsCreateProjectResponseData;
 }
-const V2ProjectsCreateProjectResponseBody = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<V2ProjectsCreateProjectResponseBody>;
-
 export interface DeleteAppRequest {
   project: string;
   app: string;
 }
-const DeleteAppRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<DeleteAppRequest>;
-
 export interface DeleteAppResponse {}
-const DeleteAppResponse = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<DeleteAppResponse>;
-
 export interface DeleteDomainRequest {
   /** Identifies a domain by its Unkey ID or by its name. Pass a 'dom_'-prefixed ID, or a fully qualified domain name such as 'api.acme.com' without a scheme, port, or path. You can give an internationalized name in Unicode or Punycode form. Both forms address the same domain. Domain names are unique per workspace, so the name alone addresses the domain. You do not need to supply a project, app, or environment. */
   domain: string;
 }
-const DeleteDomainRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<DeleteDomainRequest>;
-
 export interface V2DomainsDeleteDomainResponseBody {
   meta: Meta;
   data: unknown;
 }
-const V2DomainsDeleteDomainResponseBody =
-  V2ApisDeleteApiResponseBody as any as S.Schema<V2DomainsDeleteDomainResponseBody>;
-
 export interface DeleteIdentityRequest {
   /** The ID of the identity to delete. This can be either the externalId (from your own system that was used during identity creation) or the identityId (the internal ID returned by the identity service). */
   identity: string;
 }
-const DeleteIdentityRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DeleteIdentityRequest>;
-
 /** Empty response object. A successful response indicates the identity was deleted successfully. */
 export interface V2IdentitiesDeleteIdentityResponseBody {
   meta: Meta;
 }
-const V2IdentitiesDeleteIdentityResponseBody = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<V2IdentitiesDeleteIdentityResponseBody>;
-
 export interface DeleteKeyRequest {
   /** Specifies which key to delete using the database identifier returned from `createKey`. Do not confuse this with the actual API key string that users include in requests. Deletion immediately invalidates the key, causing all future verification attempts to fail with `code=NOT_FOUND`. Key deletion triggers cache invalidation across all regions but may take up to 30 seconds to fully propagate. */
   keyId: string;
   /** Controls deletion behavior between recoverable soft-deletion and irreversible permanent erasure. Soft deletion (default) preserves key data for potential recovery through direct database operations. Permanent deletion completely removes all traces including hash values and metadata with no recovery option. Use permanent deletion only for regulatory compliance (GDPR), resolving hash collisions, or when reusing identical key strings. Permanent deletion cannot be undone and may affect analytics data that references the deleted key. Most applications should use soft deletion to maintain audit trails and prevent accidental data loss. */
   permanent?: boolean;
 }
-const DeleteKeyRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<DeleteKeyRequest>;
-
 export interface V2KeysDeleteKeyResponseBody {
   meta: Meta;
   data: unknown;
 }
-const V2KeysDeleteKeyResponseBody =
-  V2ApisDeleteApiResponseBody as any as S.Schema<V2KeysDeleteKeyResponseBody>;
-
 export interface DeletePortalRequest {
   portal: string;
 }
-const DeletePortalRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<DeletePortalRequest>;
-
 export interface V2PortalDeletePortalResponseBody {
   meta: Meta;
   data: unknown;
 }
-const V2PortalDeletePortalResponseBody =
-  V2ApisDeleteApiResponseBody as any as S.Schema<V2PortalDeletePortalResponseBody>;
-
 export interface DeleteProjectRequest {
   project: string;
 }
-const DeleteProjectRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<DeleteProjectRequest>;
-
 export interface DeleteProjectResponse {}
-const DeleteProjectResponse = DeleteAppResponse as any as S.Schema<DeleteProjectResponse>;
-
 export interface DeploymentsPromoteDeploymentRequest {
   deploymentId: string;
 }
-const DeploymentsPromoteDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeploymentsPromoteDeploymentRequest>;
-
 export interface DeploymentsPromoteDeploymentResponse {}
-const DeploymentsPromoteDeploymentResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeploymentsPromoteDeploymentResponse>;
-
 export interface DeploymentsRollbackDeploymentRequest {
   /** The deployment to roll back TO. Its app's current deployment is used as the rollback source automatically. */
   deploymentId: string;
 }
-const DeploymentsRollbackDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DeploymentsRollbackDeploymentRequest>;
-
 export interface DeploymentsRollbackDeploymentResponse {}
-const DeploymentsRollbackDeploymentResponse =
-  DeploymentsPromoteDeploymentResponse as any as S.Schema<DeploymentsRollbackDeploymentResponse>;
-
 /** How the value may be read back. `writeonly` values can never be read back through the API; `recoverable` values can be decrypted. Values are encrypted at rest either way. */
 export type EnvironmentVariableKind = "recoverable" | "writeonly";
-const EnvironmentVariableKind = S.String;
-
 /** A single environment variable to set. */
 export interface EnvironmentVariableInput {
   /** The variable name. Must be a POSIX shell name: letters, digits, and underscores only, and must not start with a digit. Other names are unreachable from shells and most runtimes. */
@@ -844,19 +534,9 @@ export interface EnvironmentVariableInput {
   /** Human-readable description of the variable. */
   description?: string;
 }
-const EnvironmentVariableInput = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<EnvironmentVariableInput>;
-
 /** The variables to upsert. Each entry is created if its key is new or fully overwritten if the key already exists. Existing variables whose keys are not in this list are left untouched, unless `prune` is true. Each entry is written exactly as sent, never merged with the current state. Only `value` is required; omitted optional fields (`kind`, `description`) fall back to their defaults rather than any previous value, so overwriting a variable without a `description` clears it. Each key may appear at most once; a duplicate key is rejected with a 400. The whole operation is atomic: if any part fails the environment is left unchanged. All values are encrypted at rest. Limited to 50 variables per request. */
 export type EnvironmentsSetEnvironmentVariablesRequestVariablesList =
   Array<EnvironmentVariableInput>;
-const EnvironmentsSetEnvironmentVariablesRequestVariablesList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<EnvironmentsSetEnvironmentVariablesRequestVariablesList>;
-
 export interface EnvironmentsSetEnvironmentVariablesRequest {
   project: string;
   app: string;
@@ -866,32 +546,16 @@ export interface EnvironmentsSetEnvironmentVariablesRequest {
   /** Optional. Defaults to false. When false, the variables above are upserted and any existing variable not in the list is kept. When true, this becomes a full replace: after upserting, every variable not in the list is deleted. Combined with an empty `variables` list, `prune: true` resets the entire environment by deleting every variable. */
   prune?: boolean;
 }
-const EnvironmentsSetEnvironmentVariablesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<EnvironmentsSetEnvironmentVariablesRequest>;
-
 export interface V2EnvironmentsSetEnvironmentVariablesResponseBody {
   meta: Meta;
   data: unknown;
 }
-const V2EnvironmentsSetEnvironmentVariablesResponseBody =
-  V2ApisDeleteApiResponseBody as any as S.Schema<V2EnvironmentsSetEnvironmentVariablesResponseBody>;
-
 /** Glob patterns that trigger auto-deploys when matching files change. Do not start a pattern with "/" or "./". Use "src/**" for everything under a directory and "**\/*.go" for a file type. A pattern with no wildcard matches only that exact file, so "src" is not "src/**". Omit to leave unchanged. Invalid patterns are rejected with a 400. */
 export type EnvironmentsUpdateSettingsRequestWatchPathsList = Array<string>;
-const EnvironmentsUpdateSettingsRequestWatchPathsList =
-  KeyResponseDataPermissionsList as any as S.Schema<EnvironmentsUpdateSettingsRequestWatchPathsList>;
-
 /** Override container entrypoint command. Omit to leave unchanged. */
 export type EnvironmentsUpdateSettingsRequestCommandList = Array<string>;
-const EnvironmentsUpdateSettingsRequestCommandList =
-  KeyResponseDataPermissionsList as any as S.Schema<EnvironmentsUpdateSettingsRequestCommandList>;
-
 /** HTTP method used to probe the container. */
 export type EnvironmentHealthcheckMethod = "GET" | "POST";
-const EnvironmentHealthcheckMethod = S.String;
-
 export interface EnvironmentHealthcheck {
   /** HTTP method used to probe the container. */
   method: EnvironmentHealthcheckMethod | (string & {});
@@ -906,19 +570,10 @@ export interface EnvironmentHealthcheck {
   /** Delay before the first probe runs, in seconds. Defaults to 0 when omitted. */
   initialDelaySeconds?: number;
 }
-const EnvironmentHealthcheck = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<EnvironmentHealthcheck>;
-
 /** Signal sent to the container on shutdown. */
 export type EnvironmentShutdownSignal = "SIGTERM" | "SIGINT" | "SIGQUIT" | "SIGKILL";
-const EnvironmentShutdownSignal = S.String;
-
 /** Protocol used to reach the container. */
 export type EnvironmentUpstreamProtocol = "http1" | "h2c";
-const EnvironmentUpstreamProtocol = S.String;
-
 /** Min and max replica bounds for autoscaling in a region. */
 export interface Replicas {
   /** Minimum number of replicas. */
@@ -926,23 +581,14 @@ export interface Replicas {
   /** Maximum number of replicas. */
   max: number;
 }
-const Replicas = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Replicas>;
-
 /** Replica bounds for a single region the environment deploys to. */
 export interface EnvironmentRegion {
   /** Region name, such as us-east-1. */
   name: string;
   replicas: Replicas;
 }
-const EnvironmentRegion = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<EnvironmentRegion>;
-
 /** Desired set of regions with per-region replica bounds. Omit to leave regions unchanged; when present, this replaces the full set (regions absent from the list are removed). At least one region is required; an empty list is rejected because an environment cannot have zero regions. */
 export type EnvironmentsUpdateSettingsRequestRegionsList = Array<EnvironmentRegion>;
-const EnvironmentsUpdateSettingsRequestRegionsList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<EnvironmentsUpdateSettingsRequestRegionsList>;
-
 export interface EnvironmentsUpdateSettingsRequest {
   project: string;
   app: string;
@@ -978,28 +624,15 @@ export interface EnvironmentsUpdateSettingsRequest {
   /** Desired set of regions with per-region replica bounds. Omit to leave regions unchanged; when present, this replaces the full set (regions absent from the list are removed). At least one region is required; an empty list is rejected because an environment cannot have zero regions. */
   regions?: EnvironmentsUpdateSettingsRequestRegionsList;
 }
-const EnvironmentsUpdateSettingsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<EnvironmentsUpdateSettingsRequest>;
-
 export interface V2EnvironmentsUpdateSettingsResponseBody {
   meta: Meta;
   data: unknown;
 }
-const V2EnvironmentsUpdateSettingsResponseBody =
-  V2ApisDeleteApiResponseBody as any as S.Schema<V2EnvironmentsUpdateSettingsResponseBody>;
-
 export interface GatewayListPoliciesRequest {
   project: string;
   app: string;
   environment: string;
 }
-const GatewayListPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GatewayListPoliciesRequest>;
-
 /** String matcher. Exactly one of `exact`, `prefix` or `regex` must be set. */
 export interface StringMatch {
   /** Matches when the input equals this value. */
@@ -1011,14 +644,10 @@ export interface StringMatch {
   /** Compare case-insensitively. May accompany any match mode. */
   ignoreCase?: boolean;
 }
-const StringMatch = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<StringMatch>;
-
 /** Matches on the request path. */
 export interface PathMatch {
   path: StringMatch;
 }
-const PathMatch = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<PathMatch>;
-
 export type MethodMatchMethodsItem =
   | "GET"
   | "POST"
@@ -1027,20 +656,11 @@ export type MethodMatchMethodsItem =
   | "DELETE"
   | "HEAD"
   | "OPTIONS";
-const MethodMatchMethodsItem = S.String;
-
 export type MethodMatchMethodsList = Array<MethodMatchMethodsItem | (string & {})>;
-const MethodMatchMethodsList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<MethodMatchMethodsList>;
-
 /** Matches when the request method is one of the listed methods. */
 export interface MethodMatch {
   methods: MethodMatchMethodsList;
 }
-const MethodMatch = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<MethodMatch>;
-
 /** Matches a named request field (header or query parameter). Exactly one of `present` or `value` must be set. */
 export interface FieldMatch {
   name: string;
@@ -1048,17 +668,10 @@ export interface FieldMatch {
   present?: boolean;
   value?: StringMatch;
 }
-const FieldMatch = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<FieldMatch>;
-
 /** Matches when the remote IP is in at least one of these ranges. Entries are CIDRs such as `203.0.113.0/24` or single addresses such as `203.0.113.7`. */
 export type RemoteIpMatchInList = Array<string>;
-const RemoteIpMatchInList = KeyResponseDataPermissionsList as any as S.Schema<RemoteIpMatchInList>;
-
 /** Matches when the remote IP is in none of these ranges. Entries are CIDRs such as `198.51.100.0/24` or single addresses such as `198.51.100.7`. */
 export type RemoteIpMatchNotInList = Array<string>;
-const RemoteIpMatchNotInList =
-  KeyResponseDataPermissionsList as any as S.Schema<RemoteIpMatchNotInList>;
-
 /** Matches the remote IP against IPv4 or IPv6 CIDR ranges. Exactly one of `in` or `notIn` must be set. Entries are rejected if they have host bits set (such as `10.1.2.3/8`), are IPv4-mapped IPv6 addresses, or carry a zone. Single addresses are returned as full-length prefixes, such as `203.0.113.7/32`. */
 export interface RemoteIpMatch {
   /** Matches when the remote IP is in at least one of these ranges. Entries are CIDRs such as `203.0.113.0/24` or single addresses such as `203.0.113.7`. */
@@ -1066,8 +679,6 @@ export interface RemoteIpMatch {
   /** Matches when the remote IP is in none of these ranges. Entries are CIDRs such as `198.51.100.0/24` or single addresses such as `198.51.100.7`. */
   notIn?: RemoteIpMatchNotInList;
 }
-const RemoteIpMatch = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<RemoteIpMatch>;
-
 /** A single request match expression. Exactly one of `path`, `method`, `header`, `queryParam` or `remoteIp` must be set. */
 export interface MatchExpr {
   path?: PathMatch;
@@ -1076,52 +687,28 @@ export interface MatchExpr {
   queryParam?: FieldMatch;
   remoteIp?: RemoteIpMatch;
 }
-const MatchExpr = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<MatchExpr>;
-
 /** Optional request matchers. The policy applies only to requests matching all expressions; omitted when the policy applies to every request. */
 export type PolicyResponseMatchList = Array<MatchExpr>;
-const PolicyResponseMatchList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<PolicyResponseMatchList>;
-
 /** Keyspaces to verify keys against, referenced by id. All keyspaces must belong to your workspace. */
 export type KeyauthPolicyKeyspacesList = Array<string>;
-const KeyauthPolicyKeyspacesList =
-  KeyResponseDataPermissionsList as any as S.Schema<KeyauthPolicyKeyspacesList>;
-
 /** Extract the key from a custom header. */
 export interface HeaderKeyLocation {
   name: string;
   /** Optional prefix removed from the header value before verification. */
   stripPrefix?: string;
 }
-const HeaderKeyLocation = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<HeaderKeyLocation>;
-
 /** Extract the key from a query parameter. */
 export interface QueryParamKeyLocation {
   name: string;
 }
-const QueryParamKeyLocation = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<QueryParamKeyLocation>;
-
 /** Where to look for the API key on incoming requests. Exactly one of `bearer`, `header` or `queryParam` must be set. */
 export interface KeyLocation {
   bearer?: unknown;
   header?: HeaderKeyLocation;
   queryParam?: QueryParamKeyLocation;
 }
-const KeyLocation = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<KeyLocation>;
-
 /** Where to look for the key on incoming requests, tried in order. Defaults to the `Authorization Bearer` header when omitted. */
 export type KeyauthPolicyLocationsList = Array<KeyLocation>;
-const KeyauthPolicyLocationsList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<KeyauthPolicyLocationsList>;
-
 /** A rate limit applied during key verification. `limit` and `duration` must be set together or both omitted; a partial pair is rejected. */
 export interface KeyRatelimit {
   /** Name of a rate limit configured on the key or its identity, or the name of the inline override defined by `limit` and `duration`. */
@@ -1133,15 +720,8 @@ export interface KeyRatelimit {
   /** Cost charged against the limit per request. Defaults to 1. */
   cost?: number;
 }
-const KeyRatelimit = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<KeyRatelimit>;
-
 /** Rate limits applied during key verification. */
 export type KeyauthPolicyRatelimitsList = Array<KeyRatelimit>;
-const KeyauthPolicyRatelimitsList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<KeyauthPolicyRatelimitsList>;
-
 /** Verifies Unkey API keys on matching requests. */
 export interface KeyauthPolicy {
   /** Keyspaces to verify keys against, referenced by id. All keyspaces must belong to your workspace. */
@@ -1155,16 +735,12 @@ export interface KeyauthPolicy {
   /** Usage credits a matching request deducts from the verified key. Defaults to 1. Set to 0 to verify the key without spending credits, or to a higher value to charge more per request. Keys with unlimited usage are unaffected. */
   credits?: number;
 }
-const KeyauthPolicy = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<KeyauthPolicy>;
-
 /** Rate limit by the value of a request header. */
 export type HeaderKey = QueryParamKeyLocation;
 /** Rate limit by a field extracted from the authenticated principal. */
 export interface PrincipalFieldKey {
   path: string;
 }
-const PrincipalFieldKey = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<PrincipalFieldKey>;
-
 /** How requests are grouped for rate limiting. Exactly one of `remoteIp`, `header`, `authenticatedSubject`, `path` or `principalField` must be set. */
 export interface RatelimitIdentifier {
   remoteIp?: unknown;
@@ -1173,15 +749,8 @@ export interface RatelimitIdentifier {
   path?: unknown;
   principalField?: PrincipalFieldKey;
 }
-const RatelimitIdentifier = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<RatelimitIdentifier>;
-
 /** Ordered list of sources that form a compound rate limit key. The gateway resolves each source for each request. Each unique combination of resolved values has its own counter. All counters use the same limit and window. Example: `[authenticatedSubject, path]` limits each subject separately on each path. */
 export type RatelimitPolicyIdentifiersList = Array<RatelimitIdentifier>;
-const RatelimitPolicyIdentifiersList = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<RatelimitPolicyIdentifiersList>;
-
 /** Rate limits matching requests. Set `identifiers` with 1 to 5 sources. The deprecated `identifier` field is accepted in place of a one-entry `identifiers` list; set exactly one of the two. */
 export interface RatelimitPolicy {
   /** Maximum number of requests per window. */
@@ -1193,19 +762,13 @@ export interface RatelimitPolicy {
   /** Ordered list of sources that form a compound rate limit key. The gateway resolves each source for each request. Each unique combination of resolved values has its own counter. All counters use the same limit and window. Example: `[authenticatedSubject, path]` limits each subject separately on each path. */
   identifiers?: RatelimitPolicyIdentifiersList;
 }
-const RatelimitPolicy = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<RatelimitPolicy>;
-
 /** What to do with matching requests. */
 export type FirewallPolicyAction = "ACTION_DENY";
-const FirewallPolicyAction = S.String;
-
 /** Blocks matching requests. */
 export interface FirewallPolicy {
   /** What to do with matching requests. */
   action: FirewallPolicyAction | (string & {});
 }
-const FirewallPolicy = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<FirewallPolicy>;
-
 /** Adds request data to the log entries of matching requests. The gateway always records a basic log entry for every request: method, host, path, status, and latency. Each capture setting is a separate opt-in: request headers, response headers, request body, response body, and query data. The policy's `match` expressions select the requests. A policy without `match` expressions matches every request. If more than one enabled logging policy matches a request, the gateway combines their settings. The gateway always redacts the `Authorization` header and configured key locations before it stores headers or query data. */
 export interface LoggingPolicy {
   /** Capture request headers, the user agent, and the client IP. The user agent and client IP are included because they identify the client. */
@@ -1219,8 +782,6 @@ export interface LoggingPolicy {
   /** Capture the query string and query parameters. Query data is a separate opt-in because URLs can contain secrets, for example `?api_key=...`. */
   query?: boolean;
 }
-const LoggingPolicy = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<LoggingPolicy>;
-
 /** A stored gateway policy as returned by list endpoints. Exactly one of `keyauth`, `ratelimit`, `firewall`, `openapi` or `logging` is set. */
 export interface PolicyResponse {
   /** Server-generated policy id. Regenerated on every `gateway.setPolicies` call, so treat it as stable only until the environment's policies are next replaced. */
@@ -1237,28 +798,14 @@ export interface PolicyResponse {
   openapi?: unknown;
   logging?: LoggingPolicy;
 }
-const PolicyResponse = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<PolicyResponse>;
-
 /** The environment's gateway policies in evaluation order. */
 export type V2GatewayListPoliciesResponseData = Array<PolicyResponse>;
-const V2GatewayListPoliciesResponseData = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<V2GatewayListPoliciesResponseData>;
-
 export interface V2GatewayListPoliciesResponseBody {
   meta: Meta;
   data: V2GatewayListPoliciesResponseData;
 }
-const V2GatewayListPoliciesResponseBody = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<V2GatewayListPoliciesResponseBody>;
-
 /** Optional request matchers. The policy applies only to requests matching all expressions; omit to apply to every request. */
 export type PolicyMatchList = Array<MatchExpr>;
-const PolicyMatchList = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<PolicyMatchList>;
-
 /** A gateway policy. Exactly one of `keyauth`, `ratelimit`, `firewall`, `openapi` or `logging` must be set. The server generates an id for every policy it stores. */
 export interface Policy {
   /** Human-readable name shown in the dashboard. */
@@ -1273,15 +820,8 @@ export interface Policy {
   openapi?: unknown;
   logging?: LoggingPolicy;
 }
-const Policy = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<Policy>;
-
 /** The environment's complete policy list, in evaluation order. Every call replaces all stored policies with exactly this list; an empty list removes every policy. The operation is atomic: if any policy is invalid, nothing is written. An environment can hold at most 50 policies. */
 export type GatewaySetPoliciesRequestPoliciesList = Array<Policy>;
-const GatewaySetPoliciesRequestPoliciesList = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GatewaySetPoliciesRequestPoliciesList>;
-
 export interface GatewaySetPoliciesRequest {
   project: string;
   app: string;
@@ -1289,23 +829,12 @@ export interface GatewaySetPoliciesRequest {
   /** The environment's complete policy list, in evaluation order. Every call replaces all stored policies with exactly this list; an empty list removes every policy. The operation is atomic: if any policy is invalid, nothing is written. An environment can hold at most 50 policies. */
   policies: GatewaySetPoliciesRequestPoliciesList;
 }
-const GatewaySetPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GatewaySetPoliciesRequest>;
-
 export interface V2GatewaySetPoliciesResponseBody {
   meta: Meta;
   data: unknown;
 }
-const V2GatewaySetPoliciesResponseBody =
-  V2ApisDeleteApiResponseBody as any as S.Schema<V2GatewaySetPoliciesResponseBody>;
-
 /** Replaces all match expressions. Set null to remove them so the policy applies to every request. Omit to keep the current expressions. */
 export type GatewayUpdatePolicyRequestMatchList = Array<MatchExpr>;
-const GatewayUpdatePolicyRequestMatchList =
-  PolicyResponseMatchList as any as S.Schema<GatewayUpdatePolicyRequestMatchList>;
-
 export interface GatewayUpdatePolicyRequest {
   project: string;
   app: string;
@@ -1324,36 +853,22 @@ export interface GatewayUpdatePolicyRequest {
   openapi?: unknown;
   logging?: LoggingPolicy;
 }
-const GatewayUpdatePolicyRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<GatewayUpdatePolicyRequest>;
-
 export interface V2GatewayUpdatePolicyResponseBody {
   meta: Meta;
   data: unknown;
 }
-const V2GatewayUpdatePolicyResponseBody =
-  V2ApisDeleteApiResponseBody as any as S.Schema<V2GatewayUpdatePolicyResponseBody>;
-
 export interface GetAppRequest {
   project: string;
   app: string;
 }
-const GetAppRequest = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<GetAppRequest>;
-
 /** The configured source used to create deployments. Omitted for historical apps whose source could not be classified. */
 export type AppSourceType = "git" | "oci";
-const AppSourceType = S.String;
-
 export interface AppGit {
   /** The connected GitHub repository, as "owner/repo". */
   repository: string;
   /** The branch this app's deployments track. */
   defaultBranch?: string;
 }
-const AppGit = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<AppGit>;
-
 export interface App {
   /** The unique identifier of the app, generated by Unkey. */
   id: string;
@@ -1378,25 +893,13 @@ export interface App {
   /** Unix timestamp in milliseconds when the app was last updated. Omitted if the app has never been updated. */
   updatedAt?: number;
 }
-const App = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<App>;
-
 export interface V2AppsGetAppResponseBody {
   meta: Meta;
   data: App;
 }
-const V2AppsGetAppResponseBody = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<V2AppsGetAppResponseBody>;
-
 export interface GetDeploymentRequest {
   deploymentId: string;
 }
-const GetDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GetDeploymentRequest>;
-
 /** Current lifecycle status of the deployment. Poll until it reaches a terminal state: ready (serving), failed, skipped, superseded, stopped, or cancelled. */
 export type DeploymentStatus =
   | "pending"
@@ -1412,34 +915,22 @@ export type DeploymentStatus =
   | "stopped"
   | "superseded"
   | "cancelled";
-const DeploymentStatus = S.String;
-
 export interface DeploymentGit {
   /** The git commit SHA this deployment was built from. */
   commitSha: string;
   /** The git branch this deployment was built from. Omitted when unknown. */
   branch?: string;
 }
-const DeploymentGit = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<DeploymentGit>;
-
 export interface DeploymentDocker {
   /** The OCI image reference requested for this deployment. */
   image: string;
 }
-const DeploymentDocker = AppOCI as any as S.Schema<DeploymentDocker>;
-
 /** A lifecycle operation that can be performed on the deployment in its current state, given its status, environment, and whether it is the current deployment. */
 export type DeploymentAction = "promote" | "rollback" | "stop" | "start";
 /** Lifecycle operations you are allowed to call on this deployment right now. Empty when none apply (e.g. while building or in a terminal state). */
 export type DeploymentAvailableActionsList = Array<DeploymentAction>;
-const DeploymentAvailableActionsList =
-  MethodMatchMethodsList as any as S.Schema<DeploymentAvailableActionsList>;
-
 /** Regions this deployment is configured to run in. Empty while the deployment has no scheduled regions yet. */
 export type DeploymentRegionsList = Array<string>;
-const DeploymentRegionsList =
-  KeyResponseDataPermissionsList as any as S.Schema<DeploymentRegionsList>;
-
 /** The reason a deployment failed. `unknown` means Unkey could not classify the failure; see `message` for details. */
 export type DeploymentErrorCode =
   | "no_schedulable_regions"
@@ -1449,8 +940,6 @@ export type DeploymentErrorCode =
   | "storage_quota_exceeded"
   | "build_failed"
   | "unknown";
-const DeploymentErrorCode = S.String;
-
 export interface DeploymentError {
   code: DeploymentErrorCode;
   /** The pipeline step that failed (e.g. `queued`, `building`, `deploying`). */
@@ -1458,18 +947,10 @@ export interface DeploymentError {
   /** Human-readable description of why the deployment failed. For programmatic handling, use `code`. */
   message: string;
 }
-const DeploymentError = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<DeploymentError>;
-
 /** Public hostnames this deployment is reachable at. */
 export type DeploymentDomainsList = Array<string>;
-const DeploymentDomainsList =
-  KeyResponseDataPermissionsList as any as S.Schema<DeploymentDomainsList>;
-
 /** Container entrypoint command override. Empty when none is set. */
 export type DeploymentRuntimeCommandList = Array<string>;
-const DeploymentRuntimeCommandList =
-  KeyResponseDataPermissionsList as any as S.Schema<DeploymentRuntimeCommandList>;
-
 export interface DeploymentRuntime {
   /** CPU allocation in vCPUs (1 = one vCPU, 0.5 = half a vCPU). */
   vCpus: number;
@@ -1486,8 +967,6 @@ export interface DeploymentRuntime {
   /** HTTP health probe configuration. Omitted when no healthcheck is configured. */
   healthcheck?: EnvironmentHealthcheck;
 }
-const DeploymentRuntime = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<DeploymentRuntime>;
-
 export interface Deployment {
   /** The unique identifier of the deployment, generated by Unkey. */
   id: string;
@@ -1518,32 +997,18 @@ export interface Deployment {
   /** Unix timestamp in milliseconds when the deployment was last updated. Omitted if the deployment has never been updated. */
   updatedAt?: number;
 }
-const Deployment = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<Deployment>;
-
 export interface V2DeploymentsGetDeploymentResponseBody {
   meta: Meta;
   data: Deployment;
 }
-const V2DeploymentsGetDeploymentResponseBody = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<V2DeploymentsGetDeploymentResponseBody>;
-
 export interface GetDomainRequest {
   /** Identifies a domain by its Unkey ID or by its name. Pass a 'dom_'-prefixed ID, or a fully qualified domain name such as 'api.acme.com' without a scheme, port, or path. You can give an internationalized name in Unicode or Punycode form. Both forms address the same domain. Domain names are unique per workspace, so the name alone addresses the domain. You do not need to supply a project, app, or environment. */
   domain: string;
 }
-const GetDomainRequest = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<GetDomainRequest>;
-
 /** The verification status of the domain. - `pending`: the domain is created. No DNS check has completed yet. - `verifying`: Unkey checks the DNS records approximately each minute. - `verified`: the domain is verified. Unkey has configured routing and requested a certificate. - `failed`: the required DNS records did not appear within 24 hours. Fix the records, then retry verification. */
 export type DomainStatus = "pending" | "verifying" | "verified" | "failed";
-const DomainStatus = S.String;
-
 /** The DNS records this domain needs. Create each record at your DNS provider. Each record has a `verified` flag. The flag shows whether Unkey has read that record back, so it tells you which records are still missing. */
 export type DomainDnsRecordsList = Array<DnsRecord>;
-const DomainDnsRecordsList =
-  V2DomainsCreateDomainResponseDataDnsRecordsList as any as S.Schema<DomainDnsRecordsList>;
-
 export interface Domain {
   id: string;
   /** Fully qualified domain name attached to the environment. */
@@ -1566,36 +1031,19 @@ export interface Domain {
   /** Unix timestamp in milliseconds of the last change to this domain. Omitted if it has never changed. */
   updatedAt?: number;
 }
-const Domain = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<Domain>;
-
 export interface V2DomainsGetDomainResponseBody {
   meta: Meta;
   data: Domain;
 }
-const V2DomainsGetDomainResponseBody = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<V2DomainsGetDomainResponseBody>;
-
 export interface GetEnvironmentRequest {
   project: string;
   app: string;
   environment: string;
 }
-const GetEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GetEnvironmentRequest>;
-
 /** The deployment lifecycle role of an environment. - `production`: Deployments serve production traffic, support promotion and rollback, and cannot be stopped. - `preview`: Deployments can be stopped and started and are eligible for preview lifecycle automation. */
 export type EnvironmentKind = "production" | "preview";
-const EnvironmentKind = S.String;
-
 /** Container entrypoint command override. */
 export type EnvironmentRuntimeCommandList = Array<string>;
-const EnvironmentRuntimeCommandList =
-  KeyResponseDataPermissionsList as any as S.Schema<EnvironmentRuntimeCommandList>;
-
 /** Runtime settings that control how the container runs. Omitted until the environment has runtime settings. */
 export interface EnvironmentRuntime {
   /** Port the container listens on. */
@@ -1614,13 +1062,8 @@ export interface EnvironmentRuntime {
   /** Path to the OpenAPI spec served by the container, if any. */
   openapiSpecPath?: string;
 }
-const EnvironmentRuntime = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<EnvironmentRuntime>;
-
 /** Paths that trigger a rebuild when changed. */
 export type EnvironmentBuildWatchPathsList = Array<string>;
-const EnvironmentBuildWatchPathsList =
-  KeyResponseDataPermissionsList as any as S.Schema<EnvironmentBuildWatchPathsList>;
-
 /** Build settings that control how the app is built. Omitted until the environment has build settings. */
 export interface EnvironmentBuild {
   /** Path to the Dockerfile used to build the app, if any. */
@@ -1634,13 +1077,8 @@ export interface EnvironmentBuild {
   /** Whether pushes automatically trigger a deployment. */
   autoDeploy: boolean;
 }
-const EnvironmentBuild = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<EnvironmentBuild>;
-
 /** Per-region deployment settings for this environment. Empty until regional settings are configured. */
 export type EnvironmentRegionsList = Array<EnvironmentRegion>;
-const EnvironmentRegionsList =
-  EnvironmentsUpdateSettingsRequestRegionsList as any as S.Schema<EnvironmentRegionsList>;
-
 export interface Environment {
   /** The unique identifier of the environment, generated by Unkey. */
   id: string;
@@ -1661,56 +1099,33 @@ export interface Environment {
   /** Per-region deployment settings for this environment. Empty until regional settings are configured. */
   regions?: EnvironmentRegionsList;
 }
-const Environment = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<Environment>;
-
 export interface V2EnvironmentsGetEnvironmentResponseBody {
   meta: Meta;
   data: Environment;
 }
-const V2EnvironmentsGetEnvironmentResponseBody = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<V2EnvironmentsGetEnvironmentResponseBody>;
-
 export interface GetIdentityRequest {
   /** The ID of the identity to retrieve. This can be either the externalId (from your own system that was used during identity creation) or the identityId (the internal ID returned by the identity service). */
   identity: string;
 }
-const GetIdentityRequest = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<GetIdentityRequest>;
-
 export interface V2IdentitiesGetIdentityResponseBody {
   meta: Meta;
   data: Identity;
 }
-const V2IdentitiesGetIdentityResponseBody = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<V2IdentitiesGetIdentityResponseBody>;
-
 export interface GetKeyRequest {
   /** Specifies which key to retrieve using the database identifier returned from `keys.createKey`. Do not confuse this with the actual API key string that users include in requests. Key data includes metadata, permissions, usage statistics, and configuration but never the plaintext key value unless `decrypt=true`. Find this ID in creation responses, key listings, dashboard, or verification responses. */
   keyId: string;
   /** Controls whether to include the plaintext key value in the response for recovery purposes. Only works for keys created with `recoverable=true` and requires the `decrypt_key` permission. Returned keys must be handled securely, never logged, cached, or stored insecurely. Use only for legitimate recovery scenarios like user password resets or emergency access. Most applications should keep this false to maintain security best practices and avoid accidental key exposure. Decryption requests are audited and may trigger security alerts in enterprise environments. */
   decrypt?: boolean;
 }
-const GetKeyRequest = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<GetKeyRequest>;
-
 export interface V2KeysGetKeyResponseBody {
   meta: Meta;
   data: KeyResponseData;
 }
-const V2KeysGetKeyResponseBody = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<V2KeysGetKeyResponseBody>;
-
 export interface GetPortalRequest {
   portal?: string;
   keyspaceId?: string;
   appId?: string;
 }
-const GetPortalRequest = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<GetPortalRequest>;
-
 /** How the portal looks to your end users. Both fields are optional; a portal with neither set renders with default styling. */
 export interface PortalBranding {
   /** Absolute `https://` URL of the logo shown in the portal header. Loaded by your end users' browsers, so the host you name receives their IP and user agent on every page view. */
@@ -1718,8 +1133,6 @@ export interface PortalBranding {
   /** Six-digit hex colour used for primary actions and accents in the portal. */
   primaryColor?: string;
 }
-const PortalBranding = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<PortalBranding>;
-
 /** A portal you expose to your end users so they can manage their own keys. Exactly one of `keyspaceId` or `appId` is present, naming the single resource the portal serves. Neither is in the required list because which one appears depends on the portal, so a reader checks for the one it cares about. */
 export interface Portal {
   /** The unique identifier of the portal, generated by Unkey. */
@@ -1739,22 +1152,13 @@ export interface Portal {
   /** Unix timestamp in milliseconds when the portal was last changed. Omitted if it has never been changed since creation. */
   updatedAt?: number;
 }
-const Portal = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<Portal>;
-
 export interface V2PortalGetPortalResponseBody {
   meta: Meta;
   data: Portal;
 }
-const V2PortalGetPortalResponseBody = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<V2PortalGetPortalResponseBody>;
-
 export interface GetProjectRequest {
   project: string;
 }
-const GetProjectRequest = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<GetProjectRequest>;
-
 export interface Project {
   /** The unique identifier of the project, generated by Unkey. */
   id: string;
@@ -1769,59 +1173,29 @@ export interface Project {
   /** Whether delete protection is enabled for this project. When true, the project cannot be deleted until protection is disabled. */
   deleteProtection: boolean;
 }
-const Project = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<Project>;
-
 export interface V2ProjectsGetProjectResponseBody {
   meta: Meta;
   data: Project;
 }
-const V2ProjectsGetProjectResponseBody = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<V2ProjectsGetProjectResponseBody>;
-
 export interface GithubInstallAppRequest {}
-const GithubInstallAppRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<GithubInstallAppRequest>;
-
 export interface V2GithubInstallAppResponseData {
   /** The GitHub App install URL. Open it in a browser to install the app and grant repository access. After installation GitHub returns to Unkey, which binds the installation and lands you in the workspace settings. */
   url: string;
   /** Unix timestamp in milliseconds after which the URL's signed state expires and the link must be requested again. */
   expiresAt: number;
 }
-const V2GithubInstallAppResponseData = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<V2GithubInstallAppResponseData>;
-
 export interface V2GithubInstallAppResponseBody {
   meta: Meta;
   data: V2GithubInstallAppResponseData;
 }
-const V2GithubInstallAppResponseBody = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<V2GithubInstallAppResponseBody>;
-
 /** Grants additional permissions to the key through direct assignment or automatic creation. Duplicate permissions are ignored automatically, making this operation idempotent. Adding permissions never removes existing permissions or role-based permissions. Any permissions that do not exist will be auto created if the root key has permissions, otherwise this operation will fail with a 403 error. */
 export type KeysAddPermissionsRequestPermissionsList = Array<string>;
-const KeysAddPermissionsRequestPermissionsList =
-  KeyResponseDataPermissionsList as any as S.Schema<KeysAddPermissionsRequestPermissionsList>;
-
 export interface KeysAddPermissionsRequest {
   /** Specifies which key receives the additional permissions using the database identifier returned from `keys.createKey`. Do not confuse this with the actual API key string that users include in requests. */
   keyId: string;
   /** Grants additional permissions to the key through direct assignment or automatic creation. Duplicate permissions are ignored automatically, making this operation idempotent. Adding permissions never removes existing permissions or role-based permissions. Any permissions that do not exist will be auto created if the root key has permissions, otherwise this operation will fail with a 403 error. */
   permissions: KeysAddPermissionsRequestPermissionsList;
 }
-const KeysAddPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<KeysAddPermissionsRequest>;
-
 export interface Permission {
   /** The unique identifier for this permission within Unkey's system. Generated automatically when the permission is created and used to reference this permission in API operations. Always begins with 'perm_' followed by alphanumeric characters and underscores. */
   id: string;
@@ -1832,42 +1206,22 @@ export interface Permission {
   /** Optional detailed explanation of what this permission grants access to. Helps team members understand the scope and implications of granting this permission. Include information about what resources can be accessed and what actions can be performed. Not visible to end users - this is for internal documentation and team clarity. */
   description?: string;
 }
-const Permission = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<Permission>;
-
 /** Complete list of all permissions directly assigned to the key (including both newly added permissions and those that were already assigned). This response includes: - All direct permissions assigned to the key (both pre-existing and newly added) - Both the permission ID and name for each permission Important notes: - This list does NOT include permissions granted through roles - For a complete permission picture, use `/v2/keys.getKey` instead - An empty array indicates the key has no direct permissions assigned */
 export type V2KeysAddPermissionsResponseData = Array<Permission>;
-const V2KeysAddPermissionsResponseData = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<V2KeysAddPermissionsResponseData>;
-
 export interface V2KeysAddPermissionsResponseBody {
   meta: Meta;
   data: V2KeysAddPermissionsResponseData;
 }
-const V2KeysAddPermissionsResponseBody = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<V2KeysAddPermissionsResponseBody>;
-
 /** Assigns additional roles to the key through direct assignment to existing workspace roles. Operations are idempotent - adding existing roles has no effect and causes no errors. All roles must already exist in the workspace - roles cannot be created automatically. Invalid roles cause the entire operation to fail atomically, ensuring consistent state. */
 export type KeysAddRolesRequestRolesList = Array<string>;
-const KeysAddRolesRequestRolesList =
-  KeyResponseDataPermissionsList as any as S.Schema<KeysAddRolesRequestRolesList>;
-
 export interface KeysAddRolesRequest {
   /** Specifies which key receives the additional roles using the database identifier returned from `createKey`. Do not confuse this with the actual API key string that users include in requests. Added roles supplement existing roles and permissions without replacing them. Role assignments take effect immediately but may take up to 30 seconds to propagate across all regions. */
   keyId: string;
   /** Assigns additional roles to the key through direct assignment to existing workspace roles. Operations are idempotent - adding existing roles has no effect and causes no errors. All roles must already exist in the workspace - roles cannot be created automatically. Invalid roles cause the entire operation to fail atomically, ensuring consistent state. */
   roles: KeysAddRolesRequestRolesList;
 }
-const KeysAddRolesRequest = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<KeysAddRolesRequest>;
-
 /** Complete list of permissions currently assigned to this role. Each permission grants specific access rights that will be inherited by any keys or users assigned this role. Use this list to understand the full scope of access provided by this role. Permissions can be added or removed from roles without affecting the role's identity or other properties. Empty array indicates a role with no permissions currently assigned. */
 export type RolePermissionsList = Array<Permission>;
-const RolePermissionsList =
-  V2KeysAddPermissionsResponseData as any as S.Schema<RolePermissionsList>;
-
 export interface Role {
   /** The unique identifier for this role within Unkey's system. Generated automatically when the role is created and used to reference this role in API operations. Always begins with 'role_' followed by alphanumeric characters and underscores. */
   id: string;
@@ -1878,85 +1232,46 @@ export interface Role {
   /** Complete list of permissions currently assigned to this role. Each permission grants specific access rights that will be inherited by any keys or users assigned this role. Use this list to understand the full scope of access provided by this role. Permissions can be added or removed from roles without affecting the role's identity or other properties. Empty array indicates a role with no permissions currently assigned. */
   permissions?: RolePermissionsList;
 }
-const Role = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<Role>;
-
 /** Complete list of all roles directly assigned to the key after the operation completes. The response includes: - All roles now assigned to the key (both pre-existing and newly added) - Both ID and name of each role for easy reference Important notes: - The response shows the complete current state after the addition - An empty array means the key has no roles assigned (unlikely after an add operation) - This only shows direct role assignments, not inherited or nested roles - Role permissions are not expanded in this response - use keys.getKey for full details */
 export type V2KeysAddRolesResponseData = Array<Role>;
-const V2KeysAddRolesResponseData = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<V2KeysAddRolesResponseData>;
-
 export interface V2KeysAddRolesResponseBody {
   meta: Meta;
   data: V2KeysAddRolesResponseData;
 }
-const V2KeysAddRolesResponseBody = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<V2KeysAddRolesResponseBody>;
-
 /** Removes direct permissions from the key without affecting role-based permissions. You can either use a permission slug, or the permission ID. After removal, verification checks for these permissions will fail unless granted through roles. */
 export type KeysRemovePermissionsRequestPermissionsList = Array<string>;
-const KeysRemovePermissionsRequestPermissionsList =
-  KeyResponseDataPermissionsList as any as S.Schema<KeysRemovePermissionsRequestPermissionsList>;
-
 export interface KeysRemovePermissionsRequest {
   /** Specifies which key to remove permissions from using the database identifier returned from `keys.createKey`. Do not confuse this with the actual API key string that users include in requests. */
   keyId: string;
   /** Removes direct permissions from the key without affecting role-based permissions. You can either use a permission slug, or the permission ID. After removal, verification checks for these permissions will fail unless granted through roles. */
   permissions: KeysRemovePermissionsRequestPermissionsList;
 }
-const KeysRemovePermissionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<KeysRemovePermissionsRequest>;
-
 /** Complete list of all permissions directly assigned to the key after the removal operation (remaining permissions only). Notes: - This list does NOT include permissions granted through roles - For a complete permission picture, use `/v2/keys.getKey` instead - An empty array indicates the key has no direct permissions assigned - Any cached versions of the key are immediately invalidated to ensure consistency - Changes to permissions take effect within seconds for new verifications */
 export type V2KeysRemovePermissionsResponseData = Array<Permission>;
 export interface V2KeysRemovePermissionsResponseBody {
   meta: Meta;
   data: V2KeysRemovePermissionsResponseData;
 }
-const V2KeysRemovePermissionsResponseBody =
-  V2KeysAddPermissionsResponseBody as any as S.Schema<V2KeysRemovePermissionsResponseBody>;
-
 /** Removes direct role assignments from the key without affecting other role sources or permissions. Operations are idempotent - removing non-assigned roles has no effect and causes no errors. After removal, the key loses access to permissions that were only granted through these roles. Invalid role references cause the entire operation to fail atomically, ensuring consistent state. */
 export type KeysRemoveRolesRequestRolesList = Array<string>;
-const KeysRemoveRolesRequestRolesList =
-  KeyResponseDataPermissionsList as any as S.Schema<KeysRemoveRolesRequestRolesList>;
-
 export interface KeysRemoveRolesRequest {
   /** Specifies which key loses the roles using the database identifier returned from createKey. Do not confuse this with the actual API key string that users include in requests. Removing roles only affects direct assignments, not permissions inherited from other sources. Role changes take effect immediately but may take up to 30 seconds to propagate across all regions. */
   keyId: string;
   /** Removes direct role assignments from the key without affecting other role sources or permissions. Operations are idempotent - removing non-assigned roles has no effect and causes no errors. After removal, the key loses access to permissions that were only granted through these roles. Invalid role references cause the entire operation to fail atomically, ensuring consistent state. */
   roles: KeysRemoveRolesRequestRolesList;
 }
-const KeysRemoveRolesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<KeysRemoveRolesRequest>;
-
 /** Complete list of all roles directly assigned to the key after the removal operation completes. The response includes: - The remaining roles still assigned to the key (after removing the specified roles) - Both ID and name for each role for easy reference Important notes: - The response reflects the current state after the removal operation - An empty array indicates the key now has no roles assigned - This only shows direct role assignments - Role permissions are not expanded in this response - use keys.getKey for full details - Changes take effect immediately for new verifications but cached sessions may retain old permissions briefly */
 export type V2KeysRemoveRolesResponseData = Array<Role>;
 export interface V2KeysRemoveRolesResponseBody {
   meta: Meta;
   data: V2KeysRemoveRolesResponseData;
 }
-const V2KeysRemoveRolesResponseBody =
-  V2KeysAddRolesResponseBody as any as S.Schema<V2KeysRemoveRolesResponseBody>;
-
 export interface KeysRerollKeyRequest {
   /** The database identifier of the key to reroll. This is the unique ID returned when creating or listing keys, NOT the actual API key token. You can find this ID in: - The response from `keys.createKey` - Key verification responses - The Unkey dashboard - API key listing endpoints */
   keyId: string;
   /** Duration in milliseconds until the ORIGINAL key is revoked, starting from now. This parameter controls the overlap period for key rotation: - Set to `0` to revoke the original key immediately - Positive values keep the original key active for the specified duration - Set to `null` to keep the original key active; it keeps its current expiration, if any - Allows graceful migration by giving users time to update their credentials Common overlap periods: - Immediate revocation: 0 - 1 hour grace period: 3600000 - 24 hours grace period: 86400000 - 7 days grace period: 604800000 - 30 days grace period: 2592000000 */
   expiration: number | null;
 }
-const KeysRerollKeyRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<KeysRerollKeyRequest>;
-
 export interface V2KeysRerollKeyResponseData {
   /** The unique identifier for the newly created key. This is NOT the actual API key token, but a reference ID for management operations. Store this ID to: - Update or revoke the key later - Track the key in your database - Display in admin dashboards (safe to log) Note: This is a new ID - the original key retains its own ID. */
   keyId: string;
@@ -1967,60 +1282,36 @@ export interface V2KeysRerollKeyResponseBody {
   meta: Meta;
   data: V2KeysRerollKeyResponseData;
 }
-const V2KeysRerollKeyResponseBody =
-  V2KeysCreateKeyResponseBody as any as S.Schema<V2KeysRerollKeyResponseBody>;
-
 /** The permissions to set for this key. This is a complete replacement operation - it overwrites all existing direct permissions with this new set. Key behaviors: - Providing an empty array removes all direct permissions from the key - This only affects direct permissions - permissions granted through roles are not affected - All existing direct permissions not included in this list will be removed Any permissions that do not exist will be auto created if the root key has permissions, otherwise this operation will fail with a 403 error. */
 export type KeysSetPermissionsRequestPermissionsList = Array<string>;
-const KeysSetPermissionsRequestPermissionsList =
-  KeyResponseDataPermissionsList as any as S.Schema<KeysSetPermissionsRequestPermissionsList>;
-
 export interface KeysSetPermissionsRequest {
   /** Specifies which key receives the additional permissions using the database identifier returned from `keys.createKey`. Do not confuse this with the actual API key string that users include in requests. */
   keyId: string;
   /** The permissions to set for this key. This is a complete replacement operation - it overwrites all existing direct permissions with this new set. Key behaviors: - Providing an empty array removes all direct permissions from the key - This only affects direct permissions - permissions granted through roles are not affected - All existing direct permissions not included in this list will be removed Any permissions that do not exist will be auto created if the root key has permissions, otherwise this operation will fail with a 403 error. */
   permissions: KeysSetPermissionsRequestPermissionsList;
 }
-const KeysSetPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<KeysSetPermissionsRequest>;
-
 /** Complete list of all permissions now directly assigned to the key after the set operation has completed. The response includes: - The comprehensive, updated set of direct permissions (reflecting the complete replacement) - Both ID and name for each permission for easy reference Important notes: - This only shows direct permissions, not those granted through roles - An empty array means the key has no direct permissions assigned - For a complete permission picture including roles, use keys.getKey instead */
 export type V2KeysSetPermissionsResponseData = Array<Permission>;
 export interface V2KeysSetPermissionsResponseBody {
   meta: Meta;
   data: V2KeysSetPermissionsResponseData;
 }
-const V2KeysSetPermissionsResponseBody =
-  V2KeysAddPermissionsResponseBody as any as S.Schema<V2KeysSetPermissionsResponseBody>;
-
 /** Replaces all existing role assignments with this complete list of roles. This is a wholesale replacement operation, not an incremental update like add/remove operations. Providing an empty array removes all direct role assignments from the key. All roles must already exist in the workspace - roles cannot be created automatically. Invalid role references cause the entire operation to fail atomically, ensuring consistent state. */
 export type KeysSetRolesRequestRolesList = Array<string>;
-const KeysSetRolesRequestRolesList =
-  KeyResponseDataPermissionsList as any as S.Schema<KeysSetRolesRequestRolesList>;
-
 export interface KeysSetRolesRequest {
   /** Specifies which key gets the complete role replacement using the database identifier returned from createKey. Do not confuse this with the actual API key string that users include in requests. This is a wholesale replacement operation that removes all existing roles not included in the request. Role changes take effect immediately but may take up to 30 seconds to propagate across all regions. */
   keyId: string;
   /** Replaces all existing role assignments with this complete list of roles. This is a wholesale replacement operation, not an incremental update like add/remove operations. Providing an empty array removes all direct role assignments from the key. All roles must already exist in the workspace - roles cannot be created automatically. Invalid role references cause the entire operation to fail atomically, ensuring consistent state. */
   roles: KeysSetRolesRequestRolesList;
 }
-const KeysSetRolesRequest = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<KeysSetRolesRequest>;
-
 /** Complete list of all roles now directly assigned to the key after the set operation has completed. The response includes: - The comprehensive, updated set of roles (reflecting the complete replacement) - Both ID and name for each role for easy reference Important notes: - This response shows the final state after the complete replacement - If you provided an empty array in the request, this will also be empty - This only shows direct role assignments on the key - Role permissions are not expanded in this response - use keys.getKey for complete details - An empty array indicates the key now has no roles assigned at all */
 export type V2KeysSetRolesResponseData = Array<Role>;
 export interface V2KeysSetRolesResponseBody {
   meta: Meta;
   data: V2KeysSetRolesResponseData;
 }
-const V2KeysSetRolesResponseBody =
-  V2KeysAddRolesResponseBody as any as S.Schema<V2KeysSetRolesResponseBody>;
-
 /** Defines how to modify the key's remaining credits. Use 'set' to replace current credits with a specific value or unlimited usage, 'increment' to add credits for plan upgrades or credit purchases, and 'decrement' to reduce credits for refunds or policy violations. */
 export type KeysUpdateCreditsRequestOperation = "set" | "increment" | "decrement";
-const KeysUpdateCreditsRequestOperation = S.String;
-
 export interface KeysUpdateCreditsRequest {
   /** The ID of the key to update (begins with `key_`). This is the database reference ID for the key, not the actual API key string that users authenticate with. This ID uniquely identifies which key's credits will be updated. */
   keyId: string;
@@ -2029,33 +1320,18 @@ export interface KeysUpdateCreditsRequest {
   /** Defines how to modify the key's remaining credits. Use 'set' to replace current credits with a specific value or unlimited usage, 'increment' to add credits for plan upgrades or credit purchases, and 'decrement' to reduce credits for refunds or policy violations. */
   operation: KeysUpdateCreditsRequestOperation | (string & {});
 }
-const KeysUpdateCreditsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<KeysUpdateCreditsRequest>;
-
 export interface V2KeysUpdateCreditsResponseBody {
   meta: Meta;
   data: KeyCreditsData;
 }
-const V2KeysUpdateCreditsResponseBody = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<V2KeysUpdateCreditsResponseBody>;
-
 export interface KeysWhoamiRequest {
   /** The complete API key string provided by you, including any prefix. Never log, cache, or store API keys in your system as they provide full access to user resources. Include the full key exactly as provided - even minor modifications will cause a not found error. */
   key: string;
 }
-const KeysWhoamiRequest = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<KeysWhoamiRequest>;
-
 export interface V2KeysWhoamiResponseBody {
   meta: Meta;
   data: KeyResponseData;
 }
-const V2KeysWhoamiResponseBody =
-  V2KeysGetKeyResponseBody as any as S.Schema<V2KeysWhoamiResponseBody>;
-
 export interface ListAppsRequest {
   project: string;
   /** Maximum number of apps to return per request. Balance between response size and number of pagination calls needed. */
@@ -2065,31 +1341,16 @@ export interface ListAppsRequest {
   /** Free-form text to filter apps. Returns apps whose ID, name, or slug contains the search string. Matching is case-insensitive. */
   search?: string;
 }
-const ListAppsRequest = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<ListAppsRequest>;
-
 /** Array of apps in the project, ordered by app id. */
 export type V2AppsListAppsResponseBodyDataList = Array<App>;
-const V2AppsListAppsResponseBodyDataList = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<V2AppsListAppsResponseBodyDataList>;
-
 export interface V2AppsListAppsResponseBody {
   meta: Meta;
   /** Array of apps in the project, ordered by app id. */
   data: V2AppsListAppsResponseBodyDataList;
   pagination: Pagination;
 }
-const V2AppsListAppsResponseBody = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<V2AppsListAppsResponseBody>;
-
 /** Restrict results to deployments in any of the given lifecycle statuses. Omit to return deployments in every status. */
 export type ListDeploymentsRequestStatusList = Array<DeploymentStatus | (string & {})>;
-const ListDeploymentsRequestStatusList =
-  MethodMatchMethodsList as any as S.Schema<ListDeploymentsRequestStatusList>;
-
 export interface ListDeploymentsRequest {
   /** Restrict results to a single project, identified by its ID or slug. Required when filtering by `app` or `environment`. */
   project?: string;
@@ -2104,29 +1365,14 @@ export interface ListDeploymentsRequest {
   /** Pagination cursor from a previous response to fetch the next page. Use when `hasMore: true` in the previous response. */
   cursor?: string;
 }
-const ListDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ListDeploymentsRequest>;
-
 /** Array of deployments, ordered newest first. */
 export type V2DeploymentsListDeploymentsResponseBodyDataList = Array<Deployment>;
-const V2DeploymentsListDeploymentsResponseBodyDataList = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<V2DeploymentsListDeploymentsResponseBodyDataList>;
-
 export interface V2DeploymentsListDeploymentsResponseBody {
   meta: Meta;
   /** Array of deployments, ordered newest first. */
   data: V2DeploymentsListDeploymentsResponseBodyDataList;
   pagination: Pagination;
 }
-const V2DeploymentsListDeploymentsResponseBody = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<V2DeploymentsListDeploymentsResponseBody>;
-
 export interface ListDomainsRequest {
   /** Match domains whose project ID or slug equals this value. This filter does not require an app or environment filter. */
   project?: string;
@@ -2141,15 +1387,8 @@ export interface ListDomainsRequest {
   /** Free-form text to filter domains. Returns domains whose ID or name contains the search string. Matching is case-insensitive. */
   search?: string;
 }
-const ListDomainsRequest = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<ListDomainsRequest>;
-
 /** Domains that match every request filter and that you have permission to read, sorted by ID. The array is empty when no readable domains match, including when a filtered resource is missing or mismatched. */
 export type V2DomainsListDomainsResponseBodyDataList = Array<Domain>;
-const V2DomainsListDomainsResponseBodyDataList = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<V2DomainsListDomainsResponseBodyDataList>;
-
 export interface V2DomainsListDomainsResponseBody {
   meta: Meta;
   /** Domains that match every request filter and that you have permission to read, sorted by ID. The array is empty when no readable domains match, including when a filtered resource is missing or mismatched. */
@@ -2157,37 +1396,17 @@ export interface V2DomainsListDomainsResponseBody {
   /** Pagination over permitted domains. When more permitted domains exist, `cursor` identifies the first permitted domain after this page. A domain the credential cannot read is never returned as the cursor. */
   pagination: Pagination;
 }
-const V2DomainsListDomainsResponseBody = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<V2DomainsListDomainsResponseBody>;
-
 export interface ListEnvironmentsRequest {
   project: string;
   app: string;
 }
-const ListEnvironmentsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListEnvironmentsRequest>;
-
 /** Array of environments in the app, ordered by environment id. */
 export type V2EnvironmentsListEnvironmentsResponseBodyDataList = Array<Environment>;
-const V2EnvironmentsListEnvironmentsResponseBodyDataList = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<V2EnvironmentsListEnvironmentsResponseBodyDataList>;
-
 export interface V2EnvironmentsListEnvironmentsResponseBody {
   meta: Meta;
   /** Array of environments in the app, ordered by environment id. */
   data: V2EnvironmentsListEnvironmentsResponseBodyDataList;
 }
-const V2EnvironmentsListEnvironmentsResponseBody = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<V2EnvironmentsListEnvironmentsResponseBody>;
-
 export interface ListEnvironmentVariablesRequest {
   project: string;
   app: string;
@@ -2197,11 +1416,6 @@ export interface ListEnvironmentVariablesRequest {
   /** Pagination cursor from a previous response to fetch the next page. Use when `hasMore: true` in the previous response. */
   cursor?: string;
 }
-const ListEnvironmentVariablesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListEnvironmentVariablesRequest>;
-
 export interface EnvironmentVariable {
   /** The variable name. */
   key: string;
@@ -2213,24 +1427,12 @@ export interface EnvironmentVariable {
   /** Unix timestamp in milliseconds when the variable was created. */
   createdAt: number;
 }
-const EnvironmentVariable = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<EnvironmentVariable>;
-
 export type V2EnvironmentsListEnvironmentVariablesResponseBodyDataList = Array<EnvironmentVariable>;
-const V2EnvironmentsListEnvironmentVariablesResponseBodyDataList = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<V2EnvironmentsListEnvironmentVariablesResponseBodyDataList>;
-
 export interface V2EnvironmentsListEnvironmentVariablesResponseBody {
   meta: Meta;
   data: V2EnvironmentsListEnvironmentVariablesResponseBodyDataList;
   pagination: Pagination;
 }
-const V2EnvironmentsListEnvironmentVariablesResponseBody = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<V2EnvironmentsListEnvironmentVariablesResponseBody>;
-
 export interface ListIdentitiesRequest {
   /** The maximum number of identities to return in a single request. Use this to control response size and loading performance. */
   limit?: number;
@@ -2239,28 +1441,13 @@ export interface ListIdentitiesRequest {
   /** Free-form text to filter identities. Returns identities whose ID or external ID contains the search string. Matching is case-insensitive. */
   search?: string;
 }
-const ListIdentitiesRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ListIdentitiesRequest>;
-
 /** List of identities matching the specified criteria. */
 export type V2IdentitiesListIdentitiesResponseData = Array<Identity>;
-const V2IdentitiesListIdentitiesResponseData = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<V2IdentitiesListIdentitiesResponseData>;
-
 export interface V2IdentitiesListIdentitiesResponseBody {
   meta: Meta;
   data: V2IdentitiesListIdentitiesResponseData;
   pagination: Pagination;
 }
-const V2IdentitiesListIdentitiesResponseBody = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<V2IdentitiesListIdentitiesResponseBody>;
-
 export interface ListPermissionsRequest {
   /** Pagination cursor from a previous response to fetch the next page of permissions. Include this value when you need to retrieve additional permissions beyond the initial response. Each response containing more results than the requested limit includes a cursor for subsequent pages. Leave empty or omit this field to start from the beginning of the permission list. Cursors are temporary and may expire - always handle cases where a cursor becomes invalid. */
   cursor?: string;
@@ -2269,26 +1456,13 @@ export interface ListPermissionsRequest {
   /** Free-form text to filter permissions. Returns permissions whose ID, name, slug, or description contains the search string. Matching is case-insensitive. */
   search?: string;
 }
-const ListPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ListPermissionsRequest>;
-
 /** Array of permission objects with complete configuration details. */
 export type V2PermissionsListPermissionsResponseData = Array<Permission>;
-const V2PermissionsListPermissionsResponseData =
-  V2KeysAddPermissionsResponseData as any as S.Schema<V2PermissionsListPermissionsResponseData>;
-
 export interface V2PermissionsListPermissionsResponseBody {
   meta: Meta;
   data: V2PermissionsListPermissionsResponseData;
   pagination: Pagination;
 }
-const V2PermissionsListPermissionsResponseBody = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<V2PermissionsListPermissionsResponseBody>;
-
 export interface ListProjectsRequest {
   /** Maximum number of projects to return per request. Balance between response size and number of pagination calls needed. */
   limit?: number;
@@ -2297,68 +1471,32 @@ export interface ListProjectsRequest {
   /** Free-form text to filter projects. Returns projects whose ID, name, or slug contains the search string. Matching is case-insensitive. */
   search?: string;
 }
-const ListProjectsRequest = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<ListProjectsRequest>;
-
 /** Array of projects in the workspace, ordered by project id. */
 export type V2ProjectsListProjectsResponseBodyDataList = Array<Project>;
-const V2ProjectsListProjectsResponseBodyDataList = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<V2ProjectsListProjectsResponseBodyDataList>;
-
 export interface V2ProjectsListProjectsResponseBody {
   meta: Meta;
   /** Array of projects in the workspace, ordered by project id. */
   data: V2ProjectsListProjectsResponseBodyDataList;
   pagination: Pagination;
 }
-const V2ProjectsListProjectsResponseBody = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<V2ProjectsListProjectsResponseBody>;
-
 export interface LivenessRequest {}
-const LivenessRequest = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<LivenessRequest>;
-
 /** Response data for the liveness check endpoint. This provides a simple indication of whether the Unkey API service is running and able to process requests. Monitoring systems can use this endpoint to track service availability and trigger alerts if the service becomes unhealthy. */
 export interface V2LivenessResponseData {
   /** Status message indicating the health of the service. A value of 'OK' indicates that the service is functioning properly and ready to accept requests. Any other value indicates a potential issue with the service health. */
   message: string;
 }
-const V2LivenessResponseData = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<V2LivenessResponseData>;
-
 export interface V2LivenessResponseBody {
   meta: Meta;
   data: V2LivenessResponseData;
 }
-const V2LivenessResponseBody = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<V2LivenessResponseBody>;
-
 /** Stores arbitrary JSON metadata returned during key verification for contextual information. Eliminates additional database lookups during verification, improving performance for stateless services. Avoid storing sensitive data here as it's returned in verification responses. Large metadata objects increase verification latency and should stay under 10KB total size. */
 export type V2KeysMigrateKeyDataMetaMap = { [key: string]: unknown | undefined };
-const V2KeysMigrateKeyDataMetaMap =
-  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<V2KeysMigrateKeyDataMetaMap>;
-
 /** Assigns existing roles to this key for permission management through role-based access control. Roles must already exist in your workspace before assignment. During verification, all permissions from assigned roles are checked against requested permissions. Roles provide a convenient way to group permissions and apply consistent access patterns across multiple keys. */
 export type V2KeysMigrateKeyDataRolesList = Array<string>;
-const V2KeysMigrateKeyDataRolesList =
-  KeyResponseDataPermissionsList as any as S.Schema<V2KeysMigrateKeyDataRolesList>;
-
 /** Grants specific permissions directly to this key without requiring role membership. Wildcard permissions like `documents.*` grant access to all sub-permissions including `documents.read` and `documents.write`. Direct permissions supplement any permissions inherited from assigned roles. */
 export type V2KeysMigrateKeyDataPermissionsList = Array<string>;
-const V2KeysMigrateKeyDataPermissionsList =
-  KeyResponseDataPermissionsList as any as S.Schema<V2KeysMigrateKeyDataPermissionsList>;
-
 /** Defines time-based rate limits that protect against abuse by controlling request frequency. Unlike credits which track total usage, rate limits reset automatically after each window expires. Multiple rate limits can control different operation types with separate thresholds and windows. Essential for preventing API abuse while maintaining good performance for legitimate usage. */
 export type V2KeysMigrateKeyDataRatelimitsList = Array<RatelimitRequest>;
-const V2KeysMigrateKeyDataRatelimitsList =
-  CreateIdentityRequestRatelimitsList as any as S.Schema<V2KeysMigrateKeyDataRatelimitsList>;
-
 export interface V2KeysMigrateKeyData {
   /** The current hash of the key on your side */
   hash: string;
@@ -2381,17 +1519,7 @@ export interface V2KeysMigrateKeyData {
   /** Defines time-based rate limits that protect against abuse by controlling request frequency. Unlike credits which track total usage, rate limits reset automatically after each window expires. Multiple rate limits can control different operation types with separate thresholds and windows. Essential for preventing API abuse while maintaining good performance for legitimate usage. */
   ratelimits?: V2KeysMigrateKeyDataRatelimitsList;
 }
-const V2KeysMigrateKeyData = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<V2KeysMigrateKeyData>;
-
 export type MigrateKeysRequestKeysList = Array<V2KeysMigrateKeyData>;
-const MigrateKeysRequestKeysList = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<MigrateKeysRequestKeysList>;
-
 export interface MigrateKeysRequest {
   /** Identifier of the configured migration provider/strategy to use (e.g., "your_company"). You will receive this from Unkey's support staff. */
   migrationId: string;
@@ -2399,51 +1527,26 @@ export interface MigrateKeysRequest {
   apiId: string;
   keys: MigrateKeysRequestKeysList;
 }
-const MigrateKeysRequest = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<MigrateKeysRequest>;
-
 export interface V2KeysMigrateKeysMigration {
   /** The hash provided in the migration request */
   hash: string;
   /** The unique identifier for this key in Unkey's system. This is NOT the actual API key, but a reference ID used for management operations like updating or deleting the key. Store this ID in your database to reference the key later. This ID is not sensitive and can be logged or displayed in dashboards. */
   keyId: string;
 }
-const V2KeysMigrateKeysMigration = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<V2KeysMigrateKeysMigration>;
-
 /** Successfully migrated keys with their hash and generated keyId */
 export type V2KeysMigrateKeysResponseDataMigratedList = Array<V2KeysMigrateKeysMigration>;
-const V2KeysMigrateKeysResponseDataMigratedList = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<V2KeysMigrateKeysResponseDataMigratedList>;
-
 /** Hashes that could not be migrated (e.g., already exist in the system) */
 export type V2KeysMigrateKeysResponseDataFailedList = Array<string>;
-const V2KeysMigrateKeysResponseDataFailedList =
-  KeyResponseDataPermissionsList as any as S.Schema<V2KeysMigrateKeysResponseDataFailedList>;
-
 export interface V2KeysMigrateKeysResponseData {
   /** Successfully migrated keys with their hash and generated keyId */
   migrated: V2KeysMigrateKeysResponseDataMigratedList;
   /** Hashes that could not be migrated (e.g., already exist in the system) */
   failed: V2KeysMigrateKeysResponseDataFailedList;
 }
-const V2KeysMigrateKeysResponseData = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<V2KeysMigrateKeysResponseData>;
-
 export interface V2KeysMigrateKeysResponseBody {
   meta: Meta;
   data: V2KeysMigrateKeysResponseData;
 }
-const V2KeysMigrateKeysResponseBody = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<V2KeysMigrateKeysResponseBody>;
-
 export interface PermissionsCreatePermissionRequest {
   /** Creates a permission with this human-readable name that describes its purpose. Names must be unique within your workspace to prevent conflicts during assignment. Use clear, semantic names that developers can easily understand when building authorization logic. Consider using hierarchical naming conventions like 'resource.action' for better organization. Examples: 'users.read', 'billing.write', 'analytics.view', 'admin.manage' */
   name: string;
@@ -2452,34 +1555,16 @@ export interface PermissionsCreatePermissionRequest {
   /** Provides detailed documentation of what this permission grants access to. Include information about affected resources, allowed actions, and any important limitations. This internal documentation helps team members understand permission scope and security implications. Not visible to end users - designed for development teams and security audits. Consider documenting: - What resources can be accessed - What operations are permitted - Any conditions or limitations - Related permissions that might be needed */
   description?: string;
 }
-const PermissionsCreatePermissionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<PermissionsCreatePermissionRequest>;
-
 export interface V2PermissionsCreatePermissionResponseData {
   /** The unique identifier assigned to the newly created permission. Use this ID to reference the permission in role assignments, key operations, and other API calls. Always begins with 'perm_' followed by a unique alphanumeric sequence. Store this ID if you need to manage or reference this permission in future operations. */
   permissionId: string;
 }
-const V2PermissionsCreatePermissionResponseData = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<V2PermissionsCreatePermissionResponseData>;
-
 export interface V2PermissionsCreatePermissionResponseBody {
   meta: Meta;
   data: V2PermissionsCreatePermissionResponseData;
 }
-const V2PermissionsCreatePermissionResponseBody = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<V2PermissionsCreatePermissionResponseBody>;
-
 /** Permission slugs to attach to the role. Existing permissions are reused. Missing permissions are created automatically when the root key has `rbac.*.create_permission`. Omit this field or provide an empty array to create the role without permissions. */
 export type PermissionsCreateRoleRequestPermissionsList = Array<string>;
-const PermissionsCreateRoleRequestPermissionsList =
-  KeyResponseDataPermissionsList as any as S.Schema<PermissionsCreateRoleRequestPermissionsList>;
-
 export interface PermissionsCreateRoleRequest {
   /** The unique name for this role. Must be unique within your workspace and clearly indicate the role's purpose. Use descriptive names like 'admin', 'editor', or 'Billing Manager'. Examples: 'admin.billing', 'support.readonly', 'developer.api', 'Billing Manager' */
   name: string;
@@ -2488,97 +1573,46 @@ export interface PermissionsCreateRoleRequest {
   /** Permission slugs to attach to the role. Existing permissions are reused. Missing permissions are created automatically when the root key has `rbac.*.create_permission`. Omit this field or provide an empty array to create the role without permissions. */
   permissions?: PermissionsCreateRoleRequestPermissionsList;
 }
-const PermissionsCreateRoleRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<PermissionsCreateRoleRequest>;
-
 export interface V2PermissionsCreateRoleResponseData {
   /** The unique identifier assigned to the newly created role. Use this ID to reference the role in permission assignments, key operations, and role management calls. Always begins with 'role_' followed by a unique alphanumeric sequence. Store this ID if you need to manage, modify, or assign this role in future operations. */
   roleId: string;
 }
-const V2PermissionsCreateRoleResponseData = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<V2PermissionsCreateRoleResponseData>;
-
 export interface V2PermissionsCreateRoleResponseBody {
   meta: Meta;
   data: V2PermissionsCreateRoleResponseData;
 }
-const V2PermissionsCreateRoleResponseBody = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<V2PermissionsCreateRoleResponseBody>;
-
 export interface PermissionsDeletePermissionRequest {
   /** Specifies which permission to permanently delete from your workspace. This can be a permission ID or a permission slug. WARNING: Deleting a permission has immediate and irreversible consequences: - All API keys with this permission will lose that access immediately - All roles containing this permission will have it removed - Any verification requests checking for this permission will fail - This action cannot be undone Before deletion, ensure you: - Have updated any keys or roles that depend on this permission - Have migrated to alternative permissions if needed - Have notified affected users about the access changes */
   permission: string;
 }
-const PermissionsDeletePermissionRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<PermissionsDeletePermissionRequest>;
-
 export interface V2PermissionsDeletePermissionResponseBody {
   meta: Meta;
   data: unknown;
 }
-const V2PermissionsDeletePermissionResponseBody =
-  V2ApisDeleteApiResponseBody as any as S.Schema<V2PermissionsDeletePermissionResponseBody>;
-
 export interface PermissionsDeleteRoleRequest {
   /** Unique identifier of the role to permanently delete from your workspace. Must either be a valid role ID that begins with 'role_' or the given role name and exists within your workspace. WARNING: Deletion is immediate and irreversible with significant consequences: - All API keys assigned this role will lose the associated permissions - Access to resources protected by this role's permissions will be denied - Any authorization logic depending on this role will start failing - Historical analytics referencing this role remain intact Before deletion, ensure: - You've updated any dependent authorization logic or code - You've migrated any keys to use alternative roles or direct permissions - You've notified relevant team members of the access changes */
   role: string;
 }
-const PermissionsDeleteRoleRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<PermissionsDeleteRoleRequest>;
-
 export interface V2PermissionsDeleteRoleResponseBody {
   meta: Meta;
   data: unknown;
 }
-const V2PermissionsDeleteRoleResponseBody =
-  V2ApisDeleteApiResponseBody as any as S.Schema<V2PermissionsDeleteRoleResponseBody>;
-
 export interface PermissionsGetPermissionRequest {
   /** The unique identifier of the permission to retrieve. Must be a valid permission ID that begins with 'perm_' and exists within your workspace. */
   permission: string;
 }
-const PermissionsGetPermissionRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<PermissionsGetPermissionRequest>;
-
 export interface V2PermissionsGetPermissionResponseBody {
   meta: Meta;
   data: Permission;
 }
-const V2PermissionsGetPermissionResponseBody = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<V2PermissionsGetPermissionResponseBody>;
-
 export interface PermissionsGetRoleRequest {
   /** Unique identifier of the role to permanently delete from your workspace. Must either be a valid role ID that begins with 'role_' or the given role name and exists within your workspace. Use this endpoint to verify role details, check its current permissions, or retrieve metadata. Returns complete role information including all assigned permissions for comprehensive access review. */
   role: string;
 }
-const PermissionsGetRoleRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<PermissionsGetRoleRequest>;
-
 export interface V2PermissionsGetRoleResponseBody {
   meta: Meta;
   data: Role;
 }
-const V2PermissionsGetRoleResponseBody = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<V2PermissionsGetRoleResponseBody>;
-
 export interface PermissionsListRolesRequest {
   /** Maximum number of roles to return in a single response. Use smaller values for faster response times and better UI performance. Use larger values when you need to process many roles efficiently. Results exceeding this limit will be paginated with a cursor for continuation. */
   limit?: number;
@@ -2587,31 +1621,15 @@ export interface PermissionsListRolesRequest {
   /** Free-form text to filter roles. Returns roles whose ID, name, or description contains the search string. Matching is case-insensitive. */
   search?: string;
 }
-const PermissionsListRolesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<PermissionsListRolesRequest>;
-
 /** Array of roles with their assigned permissions. */
 export type V2PermissionsListRolesResponseData = Array<Role>;
-const V2PermissionsListRolesResponseData =
-  V2KeysAddRolesResponseData as any as S.Schema<V2PermissionsListRolesResponseData>;
-
 export interface V2PermissionsListRolesResponseBody {
   meta: Meta;
   data: V2PermissionsListRolesResponseData;
   pagination: Pagination;
 }
-const V2PermissionsListRolesResponseBody = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<V2PermissionsListRolesResponseBody>;
-
 /** The complete set of permission slugs to assign directly to the role. Missing permissions are created when authorized. An empty array clears all direct permissions. */
 export type PermissionsSetRolePermissionsRequestPermissionsList = Array<string>;
-const PermissionsSetRolePermissionsRequestPermissionsList =
-  KeyResponseDataPermissionsList as any as S.Schema<PermissionsSetRolePermissionsRequestPermissionsList>;
-
 export interface PermissionsSetRolePermissionsRequest {
   /** The role whose directly assigned permissions will be replaced. Accepts either the generated role ID or the unique role name. */
   role?: string;
@@ -2620,28 +1638,17 @@ export interface PermissionsSetRolePermissionsRequest {
   /** The complete set of permission slugs to assign directly to the role. Missing permissions are created when authorized. An empty array clears all direct permissions. */
   permissions: PermissionsSetRolePermissionsRequestPermissionsList;
 }
-const PermissionsSetRolePermissionsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<PermissionsSetRolePermissionsRequest>;
-
 /** Complete list of permissions now directly assigned to the role. */
 export type V2PermissionsSetRolePermissionsResponseData = Array<Permission>;
 export interface V2PermissionsSetRolePermissionsResponseBody {
   meta: Meta;
   data: V2PermissionsSetRolePermissionsResponseData;
 }
-const V2PermissionsSetRolePermissionsResponseBody =
-  V2KeysAddPermissionsResponseBody as any as S.Schema<V2PermissionsSetRolePermissionsResponseBody>;
-
 export type PortalCreateSessionRequestScopesItem = "keys:read" | "keys:reroll" | "analytics:read";
 /** The capabilities granted to the end user in the Portal, from a fixed vocabulary. All capabilities are scoped to this end user: key capabilities (`keys:*`) apply only to keys the end user owns within the keyspace configured on the portal. An end user can never see another identity's keys. Rerolling and usage analytics are both reached from the keys page, so `keys:reroll` and `analytics:read` each require `keys:read` in the same session; requesting either without it is rejected. Each scope requires the equivalent permission on your own root key. See Required Permissions on this operation. */
 export type PortalCreateSessionRequestScopesList = Array<
   PortalCreateSessionRequestScopesItem | (string & {})
 >;
-const PortalCreateSessionRequestScopesList =
-  MethodMatchMethodsList as any as S.Schema<PortalCreateSessionRequestScopesList>;
-
 export interface PortalCreateSessionRequest {
   portal: string;
   /** The end user's identifier in the customer's system. Accepts arbitrary string values (user IDs, emails, UUIDs, etc.). */
@@ -2651,60 +1658,30 @@ export interface PortalCreateSessionRequest {
   /** Absolute URL the end user is sent back to when they leave the portal, or when their session expires mid-visit. Set per session rather than per portal, so one portal can serve several entry points and return each user to the page they came from. When omitted, the portal shows no return link. */
   returnUrl?: string;
 }
-const PortalCreateSessionRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<PortalCreateSessionRequest>;
-
 export interface V2PortalCreateSessionResponseData {
   /** The portal session's identifier. Not a credential: it is safe to log and to store against your own records of the end user's visit. */
   id: string;
   /** The full portal URL to redirect the end user to. Carries a single-use exchange code that is valid for 15 minutes. */
   url: string;
 }
-const V2PortalCreateSessionResponseData = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<V2PortalCreateSessionResponseData>;
-
 export interface V2PortalCreateSessionResponseBody {
   meta: Meta;
   data: V2PortalCreateSessionResponseData;
 }
-const V2PortalCreateSessionResponseBody = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<V2PortalCreateSessionResponseBody>;
-
 export interface PortalExchangeCodeRequest {
   /** The exchange code carried by the portal URL from `portal.createSession`. Must be valid, unexpired, and not previously redeemed. */
   code: string;
 }
-const PortalExchangeCodeRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<PortalExchangeCodeRequest>;
-
 export interface V2PortalExchangeCodeResponseData {
   /** The portal access token. Store this as an httpOnly cookie for subsequent portal requests. */
   accessToken: string | Redacted.Redacted<string>;
   /** Unix timestamp in milliseconds when the access token expires (24 hours from creation). */
   expiresAt: number;
 }
-const V2PortalExchangeCodeResponseData = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<V2PortalExchangeCodeResponseData>;
-
 export interface V2PortalExchangeCodeResponseBody {
   meta: Meta;
   data: V2PortalExchangeCodeResponseData;
 }
-const V2PortalExchangeCodeResponseBody = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<V2PortalExchangeCodeResponseBody>;
-
 export interface PortalGetVerificationsRequest {
   /** Start of the query window as a unix timestamp in milliseconds (inclusive). */
   startTime: number;
@@ -2713,11 +1690,6 @@ export interface PortalGetVerificationsRequest {
   /** Optional. Restrict results to a single key. The key must belong to the authenticated end user; results are always scoped to the session identity regardless of this value. */
   keyId?: string;
 }
-const PortalGetVerificationsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<PortalGetVerificationsRequest>;
-
 export interface V2PortalGetVerificationsDataPoint {
   /** Bucket start as a unix timestamp in milliseconds. */
   time: number;
@@ -2738,36 +1710,16 @@ export interface V2PortalGetVerificationsDataPoint {
   /** Verifications rejected because remaining usage was exhausted. */
   usageExceeded: number;
 }
-const V2PortalGetVerificationsDataPoint = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<V2PortalGetVerificationsDataPoint>;
-
 /** Verification timeseries for this key, zero-filled across the requested window and ordered by time ascending. */
 export type V2PortalGetVerificationsKeySeriesDataList = Array<V2PortalGetVerificationsDataPoint>;
-const V2PortalGetVerificationsKeySeriesDataList = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<V2PortalGetVerificationsKeySeriesDataList>;
-
 export interface V2PortalGetVerificationsKeySeries {
   /** The key these buckets belong to. */
   keyId: string;
   /** Verification timeseries for this key, zero-filled across the requested window and ordered by time ascending. */
   data: V2PortalGetVerificationsKeySeriesDataList;
 }
-const V2PortalGetVerificationsKeySeries = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<V2PortalGetVerificationsKeySeries>;
-
 /** One entry per key the end user has verifications for in the window, each zero-filled across the whole window and ordered by time ascending. Sum them to get the account-wide series. Keys with no verifications anywhere in the window are omitted. Entries come from the verification events themselves, so a `keyId` may name a key that has since been deleted and will not appear in `portal.listKeys`; render those totals without assuming the key is still listable. */
 export type V2PortalGetVerificationsResponseBodyKeysList = Array<V2PortalGetVerificationsKeySeries>;
-const V2PortalGetVerificationsResponseBodyKeysList = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<V2PortalGetVerificationsResponseBodyKeysList>;
-
 export interface V2PortalGetVerificationsResponseBody {
   meta: Meta;
   /** Width of one bucket in milliseconds, chosen from the window size. Every series below is aligned to it, so a client can build the buckets for a window that returned no keys at all without restating the granularity rule. */
@@ -2775,22 +1727,12 @@ export interface V2PortalGetVerificationsResponseBody {
   /** One entry per key the end user has verifications for in the window, each zero-filled across the whole window and ordered by time ascending. Sum them to get the account-wide series. Keys with no verifications anywhere in the window are omitted. Entries come from the verification events themselves, so a `keyId` may name a key that has since been deleted and will not appear in `portal.listKeys`; render those totals without assuming the key is still listable. */
   keys: V2PortalGetVerificationsResponseBodyKeysList;
 }
-const V2PortalGetVerificationsResponseBody = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<V2PortalGetVerificationsResponseBody>;
-
 export interface PortalListKeysRequest {
   /** Maximum number of keys to return per request. Balance between response size and number of pagination calls needed. */
   limit?: number;
   /** Pagination cursor from a previous response to fetch the next page. Use when `hasMore: true` in the previous response. */
   cursor?: string;
 }
-const PortalListKeysRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<PortalListKeysRequest>;
-
 /** Array of the portal end user's API keys. */
 export type V2PortalListKeysResponseData = Array<KeyResponseData>;
 export interface V2PortalListKeysResponseBody {
@@ -2798,9 +1740,6 @@ export interface V2PortalListKeysResponseBody {
   data: V2PortalListKeysResponseData;
   pagination: Pagination;
 }
-const V2PortalListKeysResponseBody =
-  V2ApisListKeysResponseBody as any as S.Schema<V2PortalListKeysResponseBody>;
-
 export interface PortalListSessionsRequest {
   portal: string;
   /** Maximum number of end users to return per request. */
@@ -2810,20 +1749,10 @@ export interface PortalListSessionsRequest {
   /** Returns only end users whose `externalId` starts with this string. Matching is case-sensitive, and `%` and `_` match literally. */
   search?: string;
 }
-const PortalListSessionsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<PortalListSessionsRequest>;
-
 /** `pending` when the portal URL was created but not opened yet. `active` when the end user opened it. */
 export type V2PortalListSessionsSessionStatus = "pending" | "active";
-const V2PortalListSessionsSessionStatus = S.String;
-
 /** The capabilities the session was created with. */
 export type V2PortalListSessionsSessionScopesList = Array<string>;
-const V2PortalListSessionsSessionScopesList =
-  KeyResponseDataPermissionsList as any as S.Schema<V2PortalListSessionsSessionScopesList>;
-
 export interface V2PortalListSessionsSession {
   /** The session id. */
   id: string;
@@ -2836,115 +1765,57 @@ export interface V2PortalListSessionsSession {
   /** The capabilities the session was created with. */
   scopes: V2PortalListSessionsSessionScopesList;
 }
-const V2PortalListSessionsSession = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<V2PortalListSessionsSession>;
-
 /** The end user's revocable sessions, newest first. */
 export type V2PortalListSessionsResponseDataSessionsList = Array<V2PortalListSessionsSession>;
-const V2PortalListSessionsResponseDataSessionsList = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<V2PortalListSessionsResponseDataSessionsList>;
-
 export interface V2PortalListSessionsResponseData {
   /** The end user's identifier, as passed to `portal.createSession`. */
   externalId: string;
   /** The end user's revocable sessions, newest first. */
   sessions: V2PortalListSessionsResponseDataSessionsList;
 }
-const V2PortalListSessionsResponseData = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<V2PortalListSessionsResponseData>;
-
 /** End users with revocable sessions, ordered by `externalId`. */
 export type V2PortalListSessionsResponseBodyDataList = Array<V2PortalListSessionsResponseData>;
-const V2PortalListSessionsResponseBodyDataList = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<V2PortalListSessionsResponseBodyDataList>;
-
 export interface V2PortalListSessionsResponseBody {
   meta: Meta;
   /** End users with revocable sessions, ordered by `externalId`. */
   data: V2PortalListSessionsResponseBodyDataList;
   pagination: Pagination;
 }
-const V2PortalListSessionsResponseBody = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<V2PortalListSessionsResponseBody>;
-
 export interface PortalRerollKeyRequest {
   /** The database identifier of the key to reroll. This is the unique ID returned when creating or listing keys, NOT the actual API key token. You can find this ID in: - The response from `keys.createKey` - Key verification responses - The Unkey dashboard - API key listing endpoints */
   keyId: string;
   /** Duration in milliseconds until the ORIGINAL key is revoked, starting from now. This parameter controls the overlap period for key rotation: - Set to `0` to revoke the original key immediately - Positive values keep the original key active for the specified duration - Set to `null` to keep the original key active; it keeps its current expiration, if any - Allows graceful migration by giving users time to update their credentials Common overlap periods: - Immediate revocation: 0 - 1 hour grace period: 3600000 - 24 hours grace period: 86400000 - 7 days grace period: 604800000 - 30 days grace period: 2592000000 */
   expiration: number | null;
 }
-const PortalRerollKeyRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<PortalRerollKeyRequest>;
-
 export interface PortalRevokeSessionRequest {
   portal: string;
   /** The end user's identifier in your system, as passed to `portal.createSession`. Every live session this end user holds on the portal is revoked. */
   externalId: string;
 }
-const PortalRevokeSessionRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<PortalRevokeSessionRequest>;
-
 export interface V2PortalRevokeSessionResponseData {
   /** How many live sessions were revoked. Zero when the end user had none, including when an earlier call already revoked them. */
   sessionsRevoked: number;
 }
-const V2PortalRevokeSessionResponseData = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<V2PortalRevokeSessionResponseData>;
-
 export interface V2PortalRevokeSessionResponseBody {
   meta: Meta;
   data: V2PortalRevokeSessionResponseData;
 }
-const V2PortalRevokeSessionResponseBody = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<V2PortalRevokeSessionResponseBody>;
-
 export interface RatelimitDeleteOverrideRequest {
   /** The id or name of the namespace containing the override. */
   namespace: string;
   /** The exact identifier pattern of the override to delete. This must match exactly as it was specified when creating the override. Important notes: - This is case-sensitive and must match exactly - Include any wildcards (*) that were part of the original pattern - For example, if the override was created for 'premium_*', you must use 'premium_*' here, not a specific ID After deletion, any identifiers previously affected by this override will immediately revert to using the default rate limit for the namespace. */
   identifier: string;
 }
-const RatelimitDeleteOverrideRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<RatelimitDeleteOverrideRequest>;
-
 export interface V2RatelimitDeleteOverrideResponseBody {
   meta: Meta;
   data: unknown;
 }
-const V2RatelimitDeleteOverrideResponseBody =
-  V2ApisDeleteApiResponseBody as any as S.Schema<V2RatelimitDeleteOverrideResponseBody>;
-
 export interface RatelimitGetOverrideRequest {
   /** The id or name of the namespace containing the override. */
   namespace: string;
   /** The exact identifier pattern for the override you want to retrieve. This must match exactly as it was specified when creating the override. Important notes: - This is case-sensitive and must match exactly - Include any wildcards (*) that were part of the original pattern - For example, if the override was created for 'premium_*', you must use 'premium_*' here, not a specific ID like 'premium_user1' This field is used to look up the specific override configuration for this pattern. */
   identifier: string;
 }
-const RatelimitGetOverrideRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<RatelimitGetOverrideRequest>;
-
 export interface RatelimitOverride {
   /** The unique identifier of this specific rate limit override. This ID is generated when the override is created and can be used for management operations like updating or deleting the override. */
   overrideId: string;
@@ -2955,17 +1826,10 @@ export interface RatelimitOverride {
   /** The maximum number of requests allowed for entities matching this override. This replaces the default limit for the namespace when applied. Common use cases: - Higher limits for premium customers - Reduced limits for abusive or suspicious entities - Zero limit to completely block specific patterns - Custom tier-based limits for different customer segments */
   limit: number;
 }
-const RatelimitOverride = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<RatelimitOverride>;
-
 export interface V2RatelimitGetOverrideResponseBody {
   meta: Meta;
   data: RatelimitOverride;
 }
-const V2RatelimitGetOverrideResponseBody = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<V2RatelimitGetOverrideResponseBody>;
-
 export interface RatelimitLimitRequest {
   /** The id or name of the namespace. */
   namespace: string;
@@ -2978,11 +1842,6 @@ export interface RatelimitLimitRequest {
   /** Sets the maximum operations allowed within the duration window before requests are rejected. When this limit is reached, subsequent requests fail with `RATE_LIMITED` until the window resets. Balance user experience with resource protection when setting limits for different user tiers. Consider system capacity, business requirements, and fair usage policies in limit determination. */
   limit: number;
 }
-const RatelimitLimitRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<RatelimitLimitRequest>;
-
 export interface V2RatelimitLimitResponseData {
   /** The maximum number of operations allowed within the time window. This reflects either the default limit specified in the request or an override limit if one exists for this identifier. This value helps clients understand their total quota for the current window. */
   limit: number;
@@ -2995,20 +1854,10 @@ export interface V2RatelimitLimitResponseData {
   /** If a rate limit override was applied for this identifier, this field contains the ID of the override that was used. Empty when no override is in effect. This can be useful for: - Debugging which override rule was matched - Tracking the effects of specific overrides - Understanding why limits differ from default values */
   overrideId?: string;
 }
-const V2RatelimitLimitResponseData = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<V2RatelimitLimitResponseData>;
-
 export interface V2RatelimitLimitResponseBody {
   meta: Meta;
   data: V2RatelimitLimitResponseData;
 }
-const V2RatelimitLimitResponseBody = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<V2RatelimitLimitResponseBody>;
-
 export interface RatelimitListOverridesRequest {
   /** The id or name of the rate limit namespace to list overrides for. */
   namespace: string;
@@ -3017,27 +1866,12 @@ export interface RatelimitListOverridesRequest {
   /** Maximum number of override entries to return in a single response. Use this to control response size and loading performance. - Lower values (10-20): Better for UI displays and faster response times - Higher values (50-100): Better for data exports or bulk operations - Default (10): Suitable for most dashboard views Results exceeding this limit will be paginated, with a cursor provided for fetching subsequent pages. */
   limit?: number;
 }
-const RatelimitListOverridesRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<RatelimitListOverridesRequest>;
-
 export type V2RatelimitListOverridesResponseData = Array<RatelimitOverride>;
-const V2RatelimitListOverridesResponseData = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<V2RatelimitListOverridesResponseData>;
-
 export interface V2RatelimitListOverridesResponseBody {
   meta: Meta;
   data: V2RatelimitListOverridesResponseData;
   pagination: Pagination;
 }
-const V2RatelimitListOverridesResponseBody = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<V2RatelimitListOverridesResponseBody>;
-
 export interface V2RatelimitLimitRequestBody {
   /** The id or name of the namespace. */
   namespace: string;
@@ -3050,26 +1884,11 @@ export interface V2RatelimitLimitRequestBody {
   /** Sets the maximum operations allowed within the duration window before requests are rejected. When this limit is reached, subsequent requests fail with `RATE_LIMITED` until the window resets. Balance user experience with resource protection when setting limits for different user tiers. Consider system capacity, business requirements, and fair usage policies in limit determination. */
   limit: number;
 }
-const V2RatelimitLimitRequestBody = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<V2RatelimitLimitRequestBody>;
-
 /** Array of rate limit checks to perform */
 export type V2RatelimitMultiLimitRequestBody = Array<V2RatelimitLimitRequestBody>;
-const V2RatelimitMultiLimitRequestBody = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<V2RatelimitMultiLimitRequestBody>;
-
 export interface RatelimitMultiLimitRequest {
   body: V2RatelimitMultiLimitRequestBody;
 }
-const RatelimitMultiLimitRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<RatelimitMultiLimitRequest>;
-
 export interface V2RatelimitMultiLimitCheck {
   /** The namespace this rate limit result corresponds to. Use this field to correlate the response with the request when checking multiple rate limits. */
   namespace: string;
@@ -3086,18 +1905,8 @@ export interface V2RatelimitMultiLimitCheck {
   /** If a rate limit override was applied for this identifier, this field contains the ID of the override that was used. Empty when no override is in effect. This can be useful for: - Debugging which override rule was matched - Tracking the effects of specific overrides - Understanding why limits differ from default values */
   overrideId?: string;
 }
-const V2RatelimitMultiLimitCheck = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<V2RatelimitMultiLimitCheck>;
-
 /** Array of individual rate limit check results, one for each rate limit check in the request */
 export type V2RatelimitMultiLimitResponseDataLimitsList = Array<V2RatelimitMultiLimitCheck>;
-const V2RatelimitMultiLimitResponseDataLimitsList = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<V2RatelimitMultiLimitResponseDataLimitsList>;
-
 /** Container for multi-limit rate limit check results */
 export interface V2RatelimitMultiLimitResponseData {
   /** Overall success indicator for all rate limit checks. This is true if ALL individual rate limit checks passed (all have success: true), and false if ANY check failed. Use this as a quick indicator to determine if the request should proceed. */
@@ -3105,20 +1914,10 @@ export interface V2RatelimitMultiLimitResponseData {
   /** Array of individual rate limit check results, one for each rate limit check in the request */
   limits: V2RatelimitMultiLimitResponseDataLimitsList;
 }
-const V2RatelimitMultiLimitResponseData = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<V2RatelimitMultiLimitResponseData>;
-
 export interface V2RatelimitMultiLimitResponseBody {
   meta: Meta;
   data: V2RatelimitMultiLimitResponseData;
 }
-const V2RatelimitMultiLimitResponseBody = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<V2RatelimitMultiLimitResponseBody>;
-
 export interface RatelimitSetOverrideRequest {
   /** The ID or name of the rate limit namespace. */
   namespace: string;
@@ -3129,34 +1928,16 @@ export interface RatelimitSetOverrideRequest {
   /** The maximum number of requests allowed for this override. This defines the custom quota for the specified identifier(s). Special values: - Higher than default: For premium or trusted entities - Lower than default: For suspicious or abusive entities - 0: To completely block access (useful for ban implementation) This limit entirely replaces the default limit for matching identifiers. */
   limit: number;
 }
-const RatelimitSetOverrideRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<RatelimitSetOverrideRequest>;
-
 export interface V2RatelimitSetOverrideResponseData {
   /** The unique identifier for the newly created or updated rate limit override. This ID can be used to: - Reference this specific override in subsequent API calls - Delete or modify this override later - Track which override is being applied in rate limit responses - Associate override effects with specific rules in analytics Store this ID if you need to manage the override in the future. */
   overrideId: string;
 }
-const V2RatelimitSetOverrideResponseData = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<V2RatelimitSetOverrideResponseData>;
-
 export interface V2RatelimitSetOverrideResponseBody {
   meta: Meta;
   data: V2RatelimitSetOverrideResponseData;
 }
-const V2RatelimitSetOverrideResponseBody = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<V2RatelimitSetOverrideResponseBody>;
-
 /** The names of the variables to remove. Keys that exist are deleted; keys that are not present are ignored, since their absence already matches the requested state. Duplicate keys collapse to a single removal. The whole operation is atomic: if any part fails the environment is left unchanged. Limited to 50 variables per request. */
 export type RemoveEnvironmentVariablesRequestVariablesList = Array<string>;
-const RemoveEnvironmentVariablesRequestVariablesList =
-  KeyResponseDataPermissionsList as any as S.Schema<RemoveEnvironmentVariablesRequestVariablesList>;
-
 export interface RemoveEnvironmentVariablesRequest {
   project: string;
   app: string;
@@ -3164,23 +1945,12 @@ export interface RemoveEnvironmentVariablesRequest {
   /** The names of the variables to remove. Keys that exist are deleted; keys that are not present are ignored, since their absence already matches the requested state. Duplicate keys collapse to a single removal. The whole operation is atomic: if any part fails the environment is left unchanged. Limited to 50 variables per request. */
   variables: RemoveEnvironmentVariablesRequestVariablesList;
 }
-const RemoveEnvironmentVariablesRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<RemoveEnvironmentVariablesRequest>;
-
 export interface V2EnvironmentsRemoveEnvironmentVariablesResponseBody {
   meta: Meta;
   data: unknown;
 }
-const V2EnvironmentsRemoveEnvironmentVariablesResponseBody =
-  V2ApisDeleteApiResponseBody as any as S.Schema<V2EnvironmentsRemoveEnvironmentVariablesResponseBody>;
-
 /** Permissions to grant to the root key. Each permission must be within the caller's existing permissions. */
 export type RootKeysCreateKeyRequestPermissionsList = Array<string>;
-const RootKeysCreateKeyRequestPermissionsList =
-  KeyResponseDataPermissionsList as any as S.Schema<RootKeysCreateKeyRequestPermissionsList>;
-
 export interface RootKeysCreateKeyRequest {
   /** Optional name for the root key. */
   name?: string;
@@ -3189,11 +1959,6 @@ export interface RootKeysCreateKeyRequest {
   /** Expiration as Unix milliseconds, strictly in the future. Expiring root-key callers must provide a child expiry no later than their own. JWT admins and nonexpiring root-key callers may omit it or set null for no expiration. */
   expires?: number | null;
 }
-const RootKeysCreateKeyRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<RootKeysCreateKeyRequest>;
-
 export interface V2RootKeysCreateKeyResponseData {
   /** Identifier used to manage the root key. */
   keyId: string;
@@ -3204,41 +1969,22 @@ export interface V2RootKeysCreateKeyResponseBody {
   meta: Meta;
   data: V2RootKeysCreateKeyResponseData;
 }
-const V2RootKeysCreateKeyResponseBody =
-  V2KeysCreateKeyResponseBody as any as S.Schema<V2RootKeysCreateKeyResponseBody>;
-
 export interface RootKeysDeleteKeyRequest {
   /** Root key identifier returned by rootKeys.createKey or rootKeys.listKeys. */
   keyId: string;
 }
-const RootKeysDeleteKeyRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<RootKeysDeleteKeyRequest>;
-
 export interface V2RootKeysDeleteKeyResponseBody {
   meta: Meta;
   data: unknown;
 }
-const V2RootKeysDeleteKeyResponseBody =
-  V2ApisDeleteApiResponseBody as any as S.Schema<V2RootKeysDeleteKeyResponseBody>;
-
 export interface RootKeysListKeysRequest {
   /** Maximum number of readable root keys per page. */
   limit?: number;
   /** Opaque cursor from a previous response. Omit for the first page. */
   cursor?: string;
 }
-const RootKeysListKeysRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<RootKeysListKeysRequest>;
-
 /** All permissions assigned to the root key. */
 export type V2RootKeysListKeysResponseDataPermissionsList = Array<string>;
-const V2RootKeysListKeysResponseDataPermissionsList =
-  KeyResponseDataPermissionsList as any as S.Schema<V2RootKeysListKeysResponseDataPermissionsList>;
-
 export interface V2RootKeysListKeysResponseData {
   /** Stable root key identifier. */
   keyId: string;
@@ -3259,38 +2005,18 @@ export interface V2RootKeysListKeysResponseData {
   /** All permissions assigned to the root key. */
   permissions: V2RootKeysListKeysResponseDataPermissionsList;
 }
-const V2RootKeysListKeysResponseData = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<V2RootKeysListKeysResponseData>;
-
 export type V2RootKeysListKeysResponseBodyDataList = Array<V2RootKeysListKeysResponseData>;
-const V2RootKeysListKeysResponseBodyDataList = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<V2RootKeysListKeysResponseBodyDataList>;
-
 export interface V2RootKeysListKeysResponseBody {
   meta: Meta;
   data: V2RootKeysListKeysResponseBodyDataList;
   pagination: Pagination;
 }
-const V2RootKeysListKeysResponseBody = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<V2RootKeysListKeysResponseBody>;
-
 export interface RootKeysRerollKeyRequest {
   /** Root key identifier returned by rootKeys.createKey or rootKeys.listKeys. */
   keyId: string;
   /** Milliseconds until the original root key expires. Use 0 to revoke it immediately. Use null to keep the original key's current expiration. This value never extends an existing expiration. */
   expiration: number | null;
 }
-const RootKeysRerollKeyRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<RootKeysRerollKeyRequest>;
-
 export interface V2RootKeysRerollKeyResponseData {
   /** Identifier of the new root key. */
   keyId: string;
@@ -3301,14 +2027,8 @@ export interface V2RootKeysRerollKeyResponseBody {
   meta: Meta;
   data: V2RootKeysRerollKeyResponseData;
 }
-const V2RootKeysRerollKeyResponseBody =
-  V2KeysCreateKeyResponseBody as any as S.Schema<V2RootKeysRerollKeyResponseBody>;
-
 /** Complete replacement permission set. Every permission must be a supported URN in the authenticated workspace and within the caller's permissions. Omit to keep the current permissions. */
 export type RootKeysUpdateKeyRequestPermissionsList = Array<string>;
-const RootKeysUpdateKeyRequestPermissionsList =
-  KeyResponseDataPermissionsList as any as S.Schema<RootKeysUpdateKeyRequestPermissionsList>;
-
 export interface RootKeysUpdateKeyRequest {
   /** Root key identifier returned by rootKeys.createKey or rootKeys.listKeys. */
   keyId: string;
@@ -3319,49 +2039,25 @@ export interface RootKeysUpdateKeyRequest {
   /** Complete replacement permission set. Every permission must be a supported URN in the authenticated workspace and within the caller's permissions. Omit to keep the current permissions. */
   permissions?: RootKeysUpdateKeyRequestPermissionsList;
 }
-const RootKeysUpdateKeyRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<RootKeysUpdateKeyRequest>;
-
 export interface V2RootKeysUpdateKeyResponseBody {
   meta: Meta;
   data: unknown;
 }
-const V2RootKeysUpdateKeyResponseBody =
-  V2ApisDeleteApiResponseBody as any as S.Schema<V2RootKeysUpdateKeyResponseBody>;
-
 export interface StartDeploymentRequest {
   /** The stopped deployment to start. */
   deploymentId: string;
 }
-const StartDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<StartDeploymentRequest>;
-
 export interface StartDeploymentResponse {}
-const StartDeploymentResponse = DeleteAppResponse as any as S.Schema<StartDeploymentResponse>;
-
 export interface StopDeploymentRequest {
   deploymentId: string;
 }
-const StopDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<StopDeploymentRequest>;
-
 export interface StopDeploymentResponse {}
-const StopDeploymentResponse = DeleteAppResponse as any as S.Schema<StopDeploymentResponse>;
-
 export interface AppGitUpdateInput {
   /** The GitHub repository to connect, as "owner/repo". Omit to change only the tracked branch of the already-connected repository. The workspace must have the Unkey GitHub App installed with access to it. */
   repository?: string;
   /** The branch this app's deployments track. Omit to adopt the repository's GitHub default branch on a new connection, keep the current branch when replacing an already-connected repository, or set it alone to retarget the branch of the connected repository. */
   defaultBranch?: string;
 }
-const AppGitUpdateInput = AppGitCreateInput as any as S.Schema<AppGitUpdateInput>;
-
 export interface UpdateAppRequest {
   project: string;
   app: string;
@@ -3375,27 +2071,14 @@ export interface UpdateAppRequest {
   /** Enable or disable delete protection for the app. Omit this field to leave the current setting unchanged. */
   deleteProtection?: boolean;
 }
-const UpdateAppRequest = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<UpdateAppRequest>;
-
 export interface V2AppsUpdateAppResponseBody {
   meta: Meta;
   data: App;
 }
-const V2AppsUpdateAppResponseBody = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<V2AppsUpdateAppResponseBody>;
-
 /** Replaces all existing metadata with this new metadata object. Omitting this field preserves existing metadata, while providing an empty object clears all metadata. Avoid storing sensitive data here as it's returned in verification responses. Large metadata objects increase verification latency and should stay under 10KB total size. */
 export type UpdateIdentityRequestMetaMap = { [key: string]: unknown | undefined };
-const UpdateIdentityRequestMetaMap =
-  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<UpdateIdentityRequestMetaMap>;
-
 /** Replaces all existing identity rate limits with this complete list of rate limits. Omitting this field preserves existing rate limits, while providing an empty array removes all rate limits. These limits are shared across all keys belonging to this identity, preventing abuse through multiple keys. Rate limit changes take effect immediately but may take up to 30 seconds to propagate across all regions. */
 export type UpdateIdentityRequestRatelimitsList = Array<RatelimitRequest>;
-const UpdateIdentityRequestRatelimitsList =
-  CreateIdentityRequestRatelimitsList as any as S.Schema<UpdateIdentityRequestRatelimitsList>;
-
 export interface UpdateIdentityRequest {
   /** The ID of the identity to update. Accepts either the externalId (your system-generated identifier) or the identityId (internal identifier returned by the identity service). */
   identity: string;
@@ -3404,25 +2087,12 @@ export interface UpdateIdentityRequest {
   /** Replaces all existing identity rate limits with this complete list of rate limits. Omitting this field preserves existing rate limits, while providing an empty array removes all rate limits. These limits are shared across all keys belonging to this identity, preventing abuse through multiple keys. Rate limit changes take effect immediately but may take up to 30 seconds to propagate across all regions. */
   ratelimits?: UpdateIdentityRequestRatelimitsList;
 }
-const UpdateIdentityRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<UpdateIdentityRequest>;
-
 export interface V2IdentitiesUpdateIdentityResponseBody {
   data: Identity;
   meta: Meta;
 }
-const V2IdentitiesUpdateIdentityResponseBody = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<V2IdentitiesUpdateIdentityResponseBody>;
-
 /** Stores arbitrary JSON metadata returned during key verification. Omitting this field preserves existing metadata, while setting null removes all metadata entirely. Avoid storing sensitive data here as it's returned in verification responses. Large metadata objects increase verification latency and should stay under 10KB total size. */
 export type UpdateKeyRequestMetaMap = { [key: string]: unknown | undefined };
-const UpdateKeyRequestMetaMap =
-  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<UpdateKeyRequestMetaMap>;
-
 /** How often credits are automatically refilled. */
 export type UpdateKeyCreditsRefillInterval = "daily" | "monthly";
 /** Configuration for automatic credit refill behavior. */
@@ -3434,32 +2104,16 @@ export interface UpdateKeyCreditsRefill {
   /** Day of the month for monthly refills (1-31). Only required when interval is 'monthly'. For days beyond the month's length, refill occurs on the last day of the month. */
   refillDay?: number;
 }
-const UpdateKeyCreditsRefill = KeyCreditsRefill as any as S.Schema<UpdateKeyCreditsRefill>;
-
 /** Credit configuration and remaining balance for this key. */
 export interface UpdateKeyCreditsData {
   /** Number of credits remaining (null for unlimited). This also clears the refilling schedule. */
   remaining?: number | null;
   refill?: UpdateKeyCreditsRefill | null;
 }
-const UpdateKeyCreditsData = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<UpdateKeyCreditsData>;
-
 /** Defines time-based rate limits that protect against abuse by controlling request frequency. Omitting this field preserves existing rate limits, while setting null removes all rate limits. Unlike credits which track total usage, rate limits reset automatically after each window expires. Multiple rate limits can control different operation types with separate thresholds and windows. */
 export type UpdateKeyRequestRatelimitsList = Array<RatelimitRequest>;
-const UpdateKeyRequestRatelimitsList =
-  CreateIdentityRequestRatelimitsList as any as S.Schema<UpdateKeyRequestRatelimitsList>;
-
 export type UpdateKeyRequestRolesList = Array<string>;
-const UpdateKeyRequestRolesList =
-  KeyResponseDataPermissionsList as any as S.Schema<UpdateKeyRequestRolesList>;
-
 export type UpdateKeyRequestPermissionsList = Array<string>;
-const UpdateKeyRequestPermissionsList =
-  KeyResponseDataPermissionsList as any as S.Schema<UpdateKeyRequestPermissionsList>;
-
 export interface UpdateKeyRequest {
   /** Specifies which key to update using the database identifier returned from `createKey`. Do not confuse this with the actual API key string that users include in requests. */
   keyId: string;
@@ -3480,15 +2134,10 @@ export interface UpdateKeyRequest {
   roles?: UpdateKeyRequestRolesList;
   permissions?: UpdateKeyRequestPermissionsList;
 }
-const UpdateKeyRequest = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<UpdateKeyRequest>;
-
 export interface V2KeysUpdateKeyResponseBody {
   meta: Meta;
   data: unknown;
 }
-const V2KeysUpdateKeyResponseBody =
-  V2ApisDeleteApiResponseBody as any as S.Schema<V2KeysUpdateKeyResponseBody>;
-
 export interface UpdatePortalRequest {
   portal: string;
   /** New handle for this portal. Omit to leave unchanged. */
@@ -3506,15 +2155,10 @@ export interface UpdatePortalRequest {
   /** Six-digit hex colour for primary actions. Omit to leave unchanged, or set null to fall back to default styling. */
   primaryColor?: string | null;
 }
-const UpdatePortalRequest = /*@__PURE__*/ __L.at(__c32, 6) as any as S.Schema<UpdatePortalRequest>;
-
 export interface V2PortalUpdatePortalResponseBody {
   meta: Meta;
   data: Portal;
 }
-const V2PortalUpdatePortalResponseBody =
-  V2PortalGetPortalResponseBody as any as S.Schema<V2PortalUpdatePortalResponseBody>;
-
 export interface UpdateProjectRequest {
   project: string;
   slug?: string;
@@ -3523,47 +2167,24 @@ export interface UpdateProjectRequest {
   /** Enable or disable delete protection for the project. Omit this field to leave the current setting unchanged. */
   deleteProtection?: boolean;
 }
-const UpdateProjectRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<UpdateProjectRequest>;
-
 export interface V2ProjectsUpdateProjectResponseBody {
   meta: Meta;
   data: Project;
 }
-const V2ProjectsUpdateProjectResponseBody =
-  V2ProjectsGetProjectResponseBody as any as S.Schema<V2ProjectsUpdateProjectResponseBody>;
-
 export interface VerifyDomainRequest {
   /** Identifies a domain by its name or by its ID. Send the fully qualified domain name, such as 'api.acme.com', without a scheme, port, or path, or send the domain ID that domains.createDomain returns. You can send an internationalized name in Unicode or in Punycode form. Both forms address the same domain. */
   domain: string;
 }
-const VerifyDomainRequest = /*@__PURE__*/ __L.at(__c33, 0) as any as S.Schema<VerifyDomainRequest>;
-
 export interface VerifyDomainResponse {}
-const VerifyDomainResponse = DeleteAppResponse as any as S.Schema<VerifyDomainResponse>;
-
 /** Attaches metadata tags for analytics and monitoring without affecting verification outcomes. Enables segmentation of API usage in dashboards by endpoint, client version, region, or custom dimensions. Use 'key=value' format for compatibility with most analytics tools and clear categorization. Avoid including sensitive data in tags as they may appear in logs and analytics reports. */
 export type VerifyKeyRequestTagsList = Array<string>;
-const VerifyKeyRequestTagsList =
-  KeyResponseDataPermissionsList as any as S.Schema<VerifyKeyRequestTagsList>;
-
 /** Controls credit consumption for usage-based billing and quota enforcement. Omitting this field uses the default cost of 1 credit per verification. Credits provide globally consistent usage tracking, essential for paid APIs with strict quotas. */
 export interface KeysVerifyKeyCredits {
   /** Sets how many credits to deduct for this verification request. Use 0 for read-only operations or free tier access, higher values for premium features. Credits are deducted after all security checks pass. Essential for implementing usage-based pricing with different operation costs. */
   cost: number;
 }
-const KeysVerifyKeyCredits = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<KeysVerifyKeyCredits>;
-
 /** Restricts verification to keys in these keyspaces, matched by exact ID. Omit this field to verify without a keyspace restriction. A failed keyspace check returns `NOT_FOUND` without consuming credits or rate limits. */
 export type VerifyKeyRequestKeyspacesList = Array<string>;
-const VerifyKeyRequestKeyspacesList =
-  KeyResponseDataPermissionsList as any as S.Schema<VerifyKeyRequestKeyspacesList>;
-
 export interface KeysVerifyKeyRatelimit {
   /** References an existing ratelimit by its name. Key Ratelimits will take precedence over identifier-based limits. */
   name: string;
@@ -3574,18 +2195,8 @@ export interface KeysVerifyKeyRatelimit {
   /** Optionally override the duration of the rate limit window duration. */
   duration?: number;
 }
-const KeysVerifyKeyRatelimit = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<KeysVerifyKeyRatelimit>;
-
 /** Enforces time-based rate limiting during verification to prevent abuse and ensure fair usage. Omitting this field skips rate limit checks entirely, relying only on configured key rate limits. Multiple rate limits can be checked simultaneously, each with different costs and temporary overrides. Rate limit checks are optimized for performance but may allow brief bursts during high concurrency. */
 export type VerifyKeyRequestRatelimitsList = Array<KeysVerifyKeyRatelimit>;
-const VerifyKeyRequestRatelimitsList = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<VerifyKeyRequestRatelimitsList>;
-
 export interface VerifyKeyRequest {
   /** The API key to verify, exactly as provided by your user. Include any prefix - even small changes will cause verification to fail. */
   key: string;
@@ -3601,8 +2212,6 @@ export interface VerifyKeyRequest {
   /** Migrate keys on demand from your previous system. Reach out for migration support at support@unkey.dev */
   migrationId?: string;
 }
-const VerifyKeyRequest = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<VerifyKeyRequest>;
-
 /** A machine-readable code indicating the verification status or failure reason. Values: `VALID` (key is valid and passed all checks), `NOT_FOUND` (key doesn't exist or belongs to wrong API), `FORBIDDEN` (key lacks required permissions), `INSUFFICIENT_PERMISSIONS` (key lacks specific required permissions for this request), `USAGE_EXCEEDED` (key has no remaining credits), `RATE_LIMITED` (key exceeded rate limits), `DISABLED` (key was explicitly disabled), `EXPIRED` (key has passed its expiration date). */
 export type V2KeysVerifyKeyResponseDataCode =
   | "VALID"
@@ -3613,23 +2222,12 @@ export type V2KeysVerifyKeyResponseDataCode =
   | "RATE_LIMITED"
   | "DISABLED"
   | "EXPIRED";
-const V2KeysVerifyKeyResponseDataCode = S.String;
-
 /** Custom metadata associated with the key. This can include any JSON-serializable data you stored with the key during creation or updates, such as plan information, feature flags, or user details. Use this to avoid additional database lookups for contextual information needed during API calls. */
 export type V2KeysVerifyKeyResponseDataMetaMap = { [key: string]: unknown | undefined };
-const V2KeysVerifyKeyResponseDataMetaMap =
-  V2AnalyticsGetGatewayRequestsResponseDataItemMap as any as S.Schema<V2KeysVerifyKeyResponseDataMetaMap>;
-
 /** A list of all permission names assigned to this key, either directly or through roles. These permissions determine what actions the key can perform. Only returned when permissions were checked during verification or when the key fails with `code=FORBIDDEN`. */
 export type V2KeysVerifyKeyResponseDataPermissionsList = Array<string>;
-const V2KeysVerifyKeyResponseDataPermissionsList =
-  KeyResponseDataPermissionsList as any as S.Schema<V2KeysVerifyKeyResponseDataPermissionsList>;
-
 /** A list of all role names assigned to this key. Roles are collections of permissions that grant access to specific functionality. Only returned when permissions were checked during verification. */
 export type V2KeysVerifyKeyResponseDataRolesList = Array<string>;
-const V2KeysVerifyKeyResponseDataRolesList =
-  KeyResponseDataPermissionsList as any as S.Schema<V2KeysVerifyKeyResponseDataRolesList>;
-
 export interface VerifyKeyRatelimitData {
   /** Whether the rate limit was exceeded. */
   exceeded: boolean;
@@ -3648,17 +2246,7 @@ export interface VerifyKeyRatelimitData {
   /** Whether this rate limit should be automatically applied when verifying keys. When true, we will automatically apply this limit during verification without it being explicitly listed. */
   autoApply: boolean;
 }
-const VerifyKeyRatelimitData = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<VerifyKeyRatelimitData>;
-
 export type V2KeysVerifyKeyResponseDataRatelimitsList = Array<VerifyKeyRatelimitData>;
-const V2KeysVerifyKeyResponseDataRatelimitsList = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<V2KeysVerifyKeyResponseDataRatelimitsList>;
-
 export interface V2KeysVerifyKeyResponseData {
   /** The primary verification result. If true, the key is valid and can be used. If false, check the 'code' field to understand why verification failed. Your application should always check this field first before proceeding. */
   valid: boolean;
@@ -3686,20 +2274,10 @@ export interface V2KeysVerifyKeyResponseData {
   identity?: Identity;
   ratelimits?: V2KeysVerifyKeyResponseDataRatelimitsList;
 }
-const V2KeysVerifyKeyResponseData = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<V2KeysVerifyKeyResponseData>;
-
 export interface V2KeysVerifyKeyResponseBody {
   meta: Meta;
   data: V2KeysVerifyKeyResponseData;
 }
-const V2KeysVerifyKeyResponseBody = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<V2KeysVerifyKeyResponseBody>;
-
 export type AnalyticsGetGatewayRequestsError =
   | BadRequest
   | Forbidden
@@ -3712,8 +2290,8 @@ export const analyticsGetGatewayRequests: API.OperationMethod<
   AnalyticsGetGatewayRequestsError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AnalyticsGetGatewayRequestsRequest,
-  output: V2AnalyticsGetGatewayRequestsResponseBody,
+  input: __S(0) as any as S.Schema<AnalyticsGetGatewayRequestsRequest>,
+  output: __S(4) as any as S.Schema<V2AnalyticsGetGatewayRequestsResponseBody>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -3731,8 +2309,8 @@ export const analyticsGetRatelimits: API.OperationMethod<
   AnalyticsGetRatelimitsError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AnalyticsGetRatelimitsRequest,
-  output: V2AnalyticsGetRatelimitsResponseBody,
+  input: __S(5) as any as S.Schema<AnalyticsGetRatelimitsRequest>,
+  output: __S(4) as any as S.Schema<V2AnalyticsGetRatelimitsResponseBody>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -3750,8 +2328,8 @@ export const analyticsGetRuntimeLogs: API.OperationMethod<
   AnalyticsGetRuntimeLogsError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AnalyticsGetRuntimeLogsRequest,
-  output: V2AnalyticsGetRuntimeLogsResponseBody,
+  input: __S(6) as any as S.Schema<AnalyticsGetRuntimeLogsRequest>,
+  output: __S(4) as any as S.Schema<V2AnalyticsGetRuntimeLogsResponseBody>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -3769,8 +2347,8 @@ export const analyticsGetVerifications: API.OperationMethod<
   AnalyticsGetVerificationsError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AnalyticsGetVerificationsRequest,
-  output: V2AnalyticsGetVerificationsResponseBody,
+  input: __S(7) as any as S.Schema<AnalyticsGetVerificationsRequest>,
+  output: __S(4) as any as S.Schema<V2AnalyticsGetVerificationsResponseBody>,
   errors: [BadRequest, Forbidden, UnprocessableEntity, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -3784,8 +2362,8 @@ export const apisCreateApi: API.OperationMethod<
   ApisCreateApiError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApisCreateApiRequest,
-  output: V2ApisCreateApiResponseBody,
+  input: __S(8) as any as S.Schema<ApisCreateApiRequest>,
+  output: __S(10) as any as S.Schema<V2ApisCreateApiResponseBody>,
   errors: [BadRequest, Forbidden, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -3799,8 +2377,8 @@ export const apisDeleteApi: API.OperationMethod<
   ApisDeleteApiError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApisDeleteApiRequest,
-  output: V2ApisDeleteApiResponseBody,
+  input: __S(11) as any as S.Schema<ApisDeleteApiRequest>,
+  output: __S(12) as any as S.Schema<V2ApisDeleteApiResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -3814,8 +2392,8 @@ export const apisGetApi: API.OperationMethod<
   ApisGetApiError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApisGetApiRequest,
-  output: V2ApisGetApiResponseBody,
+  input: __S(13) as any as S.Schema<ApisGetApiRequest>,
+  output: __S(15) as any as S.Schema<V2ApisGetApiResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -3831,8 +2409,8 @@ export const apisListKeys: API.PaginatedOperationMethod<
   KeyResponseData
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ApisListKeysRequest,
-    output: V2ApisListKeysResponseBody,
+    input: __S(16) as any as S.Schema<ApisListKeysRequest>,
+    output: __S(26) as any as S.Schema<V2ApisListKeysResponseBody>,
     errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
     protocol: UnkeyProtocol,
     retry: Retry.Retry,
@@ -3855,8 +2433,8 @@ export const createApp: API.OperationMethod<
   CreateAppError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAppRequest,
-  output: V2AppsCreateAppResponseBody,
+  input: __S(29) as any as S.Schema<CreateAppRequest>,
+  output: __S(31) as any as S.Schema<V2AppsCreateAppResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -3870,8 +2448,8 @@ export const createDeploymentV3: API.OperationMethod<
   CreateDeploymentV3Error,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeploymentV3Request,
-  output: V3DeploymentsCreateDeploymentResponseBody,
+  input: __S(34) as any as S.Schema<CreateDeploymentV3Request>,
+  output: __S(35) as any as S.Schema<V3DeploymentsCreateDeploymentResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -3885,8 +2463,8 @@ export const createDomain: API.OperationMethod<
   CreateDomainError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDomainRequest,
-  output: V2DomainsCreateDomainResponseBody,
+  input: __S(36) as any as S.Schema<CreateDomainRequest>,
+  output: __S(41) as any as S.Schema<V2DomainsCreateDomainResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -3900,8 +2478,8 @@ export const createIdentity: API.OperationMethod<
   CreateIdentityError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIdentityRequest,
-  output: V2IdentitiesCreateIdentityResponseBody,
+  input: __S(44) as any as S.Schema<CreateIdentityRequest>,
+  output: __S(46) as any as S.Schema<V2IdentitiesCreateIdentityResponseBody>,
   errors: [BadRequest, Forbidden, Conflict, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -3915,8 +2493,8 @@ export const createKey: API.OperationMethod<
   CreateKeyError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateKeyRequest,
-  output: V2KeysCreateKeyResponseBody,
+  input: __S(47) as any as S.Schema<CreateKeyRequest>,
+  output: __S(49) as any as S.Schema<V2KeysCreateKeyResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -3930,8 +2508,8 @@ export const createPortal: API.OperationMethod<
   CreatePortalError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePortalRequest,
-  output: V2PortalCreatePortalResponseBody,
+  input: __S(50) as any as S.Schema<CreatePortalRequest>,
+  output: __S(52) as any as S.Schema<V2PortalCreatePortalResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -3945,8 +2523,8 @@ export const createProject: API.OperationMethod<
   CreateProjectError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectRequest,
-  output: V2ProjectsCreateProjectResponseBody,
+  input: __S(53) as any as S.Schema<CreateProjectRequest>,
+  output: __S(55) as any as S.Schema<V2ProjectsCreateProjectResponseBody>,
   errors: [BadRequest, Forbidden, Conflict, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -3960,8 +2538,8 @@ export const deleteApp: API.OperationMethod<
   DeleteAppError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAppRequest,
-  output: DeleteAppResponse,
+  input: __S(56) as any as S.Schema<DeleteAppRequest>,
+  output: __S(57) as any as S.Schema<DeleteAppResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -3975,8 +2553,8 @@ export const deleteDomain: API.OperationMethod<
   DeleteDomainError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDomainRequest,
-  output: V2DomainsDeleteDomainResponseBody,
+  input: __S(58) as any as S.Schema<DeleteDomainRequest>,
+  output: __S(12) as any as S.Schema<V2DomainsDeleteDomainResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -3990,8 +2568,8 @@ export const deleteIdentity: API.OperationMethod<
   DeleteIdentityError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIdentityRequest,
-  output: V2IdentitiesDeleteIdentityResponseBody,
+  input: __S(59) as any as S.Schema<DeleteIdentityRequest>,
+  output: __S(60) as any as S.Schema<V2IdentitiesDeleteIdentityResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4005,8 +2583,8 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteKeyRequest,
-  output: V2KeysDeleteKeyResponseBody,
+  input: __S(61) as any as S.Schema<DeleteKeyRequest>,
+  output: __S(12) as any as S.Schema<V2KeysDeleteKeyResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4020,8 +2598,8 @@ export const deletePortal: API.OperationMethod<
   DeletePortalError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePortalRequest,
-  output: V2PortalDeletePortalResponseBody,
+  input: __S(62) as any as S.Schema<DeletePortalRequest>,
+  output: __S(12) as any as S.Schema<V2PortalDeletePortalResponseBody>,
   errors: [BadRequest, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4035,8 +2613,8 @@ export const deleteProject: API.OperationMethod<
   DeleteProjectError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectRequest,
-  output: DeleteProjectResponse,
+  input: __S(63) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(57) as any as S.Schema<DeleteProjectResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4050,8 +2628,8 @@ export const deploymentsPromoteDeployment: API.OperationMethod<
   DeploymentsPromoteDeploymentError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeploymentsPromoteDeploymentRequest,
-  output: DeploymentsPromoteDeploymentResponse,
+  input: __S(64) as any as S.Schema<DeploymentsPromoteDeploymentRequest>,
+  output: __S(65) as any as S.Schema<DeploymentsPromoteDeploymentResponse>,
   errors: [BadRequest, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4065,8 +2643,8 @@ export const deploymentsRollbackDeployment: API.OperationMethod<
   DeploymentsRollbackDeploymentError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeploymentsRollbackDeploymentRequest,
-  output: DeploymentsRollbackDeploymentResponse,
+  input: __S(66) as any as S.Schema<DeploymentsRollbackDeploymentRequest>,
+  output: __S(65) as any as S.Schema<DeploymentsRollbackDeploymentResponse>,
   errors: [BadRequest, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4084,8 +2662,8 @@ export const environmentsSetEnvironmentVariables: API.OperationMethod<
   EnvironmentsSetEnvironmentVariablesError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentsSetEnvironmentVariablesRequest,
-  output: V2EnvironmentsSetEnvironmentVariablesResponseBody,
+  input: __S(69) as any as S.Schema<EnvironmentsSetEnvironmentVariablesRequest>,
+  output: __S(12) as any as S.Schema<V2EnvironmentsSetEnvironmentVariablesResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4099,8 +2677,8 @@ export const environmentsUpdateSettings: API.OperationMethod<
   EnvironmentsUpdateSettingsError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnvironmentsUpdateSettingsRequest,
-  output: V2EnvironmentsUpdateSettingsResponseBody,
+  input: __S(74) as any as S.Schema<EnvironmentsUpdateSettingsRequest>,
+  output: __S(12) as any as S.Schema<V2EnvironmentsUpdateSettingsResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4114,8 +2692,8 @@ export const gatewayListPolicies: API.OperationMethod<
   GatewayListPoliciesError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GatewayListPoliciesRequest,
-  output: V2GatewayListPoliciesResponseBody,
+  input: __S(75) as any as S.Schema<GatewayListPoliciesRequest>,
+  output: __S(99) as any as S.Schema<V2GatewayListPoliciesResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4129,8 +2707,8 @@ export const gatewaySetPolicies: API.OperationMethod<
   GatewaySetPoliciesError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GatewaySetPoliciesRequest,
-  output: V2GatewaySetPoliciesResponseBody,
+  input: __S(103) as any as S.Schema<GatewaySetPoliciesRequest>,
+  output: __S(12) as any as S.Schema<V2GatewaySetPoliciesResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4144,8 +2722,8 @@ export const gatewayUpdatePolicy: API.OperationMethod<
   GatewayUpdatePolicyError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GatewayUpdatePolicyRequest,
-  output: V2GatewayUpdatePolicyResponseBody,
+  input: __S(104) as any as S.Schema<GatewayUpdatePolicyRequest>,
+  output: __S(12) as any as S.Schema<V2GatewayUpdatePolicyResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4159,8 +2737,8 @@ export const getApp: API.OperationMethod<
   GetAppError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppRequest,
-  output: V2AppsGetAppResponseBody,
+  input: __S(105) as any as S.Schema<GetAppRequest>,
+  output: __S(108) as any as S.Schema<V2AppsGetAppResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4174,8 +2752,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeploymentRequest,
-  output: V2DeploymentsGetDeploymentResponseBody,
+  input: __S(109) as any as S.Schema<GetDeploymentRequest>,
+  output: __S(114) as any as S.Schema<V2DeploymentsGetDeploymentResponseBody>,
   errors: [BadRequest, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4189,8 +2767,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainRequest,
-  output: V2DomainsGetDomainResponseBody,
+  input: __S(115) as any as S.Schema<GetDomainRequest>,
+  output: __S(117) as any as S.Schema<V2DomainsGetDomainResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4204,8 +2782,8 @@ export const getEnvironment: API.OperationMethod<
   GetEnvironmentError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnvironmentRequest,
-  output: V2EnvironmentsGetEnvironmentResponseBody,
+  input: __S(118) as any as S.Schema<GetEnvironmentRequest>,
+  output: __S(122) as any as S.Schema<V2EnvironmentsGetEnvironmentResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4219,8 +2797,8 @@ export const getIdentity: API.OperationMethod<
   GetIdentityError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIdentityRequest,
-  output: V2IdentitiesGetIdentityResponseBody,
+  input: __S(123) as any as S.Schema<GetIdentityRequest>,
+  output: __S(124) as any as S.Schema<V2IdentitiesGetIdentityResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4234,8 +2812,8 @@ export const getKey: API.OperationMethod<
   GetKeyError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetKeyRequest,
-  output: V2KeysGetKeyResponseBody,
+  input: __S(125) as any as S.Schema<GetKeyRequest>,
+  output: __S(126) as any as S.Schema<V2KeysGetKeyResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4249,8 +2827,8 @@ export const getPortal: API.OperationMethod<
   GetPortalError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPortalRequest,
-  output: V2PortalGetPortalResponseBody,
+  input: __S(127) as any as S.Schema<GetPortalRequest>,
+  output: __S(130) as any as S.Schema<V2PortalGetPortalResponseBody>,
   errors: [BadRequest, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4264,8 +2842,8 @@ export const getProject: API.OperationMethod<
   GetProjectError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectRequest,
-  output: V2ProjectsGetProjectResponseBody,
+  input: __S(131) as any as S.Schema<GetProjectRequest>,
+  output: __S(133) as any as S.Schema<V2ProjectsGetProjectResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4279,8 +2857,8 @@ export const githubInstallApp: API.OperationMethod<
   GithubInstallAppError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GithubInstallAppRequest,
-  output: V2GithubInstallAppResponseBody,
+  input: __S(134) as any as S.Schema<GithubInstallAppRequest>,
+  output: __S(136) as any as S.Schema<V2GithubInstallAppResponseBody>,
   errors: [BadRequest, Forbidden, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4294,8 +2872,8 @@ export const keysAddPermissions: API.OperationMethod<
   KeysAddPermissionsError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KeysAddPermissionsRequest,
-  output: V2KeysAddPermissionsResponseBody,
+  input: __S(137) as any as S.Schema<KeysAddPermissionsRequest>,
+  output: __S(140) as any as S.Schema<V2KeysAddPermissionsResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4309,8 +2887,8 @@ export const keysAddRoles: API.OperationMethod<
   KeysAddRolesError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KeysAddRolesRequest,
-  output: V2KeysAddRolesResponseBody,
+  input: __S(141) as any as S.Schema<KeysAddRolesRequest>,
+  output: __S(144) as any as S.Schema<V2KeysAddRolesResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4324,8 +2902,8 @@ export const keysRemovePermissions: API.OperationMethod<
   KeysRemovePermissionsError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KeysRemovePermissionsRequest,
-  output: V2KeysRemovePermissionsResponseBody,
+  input: __S(145) as any as S.Schema<KeysRemovePermissionsRequest>,
+  output: __S(140) as any as S.Schema<V2KeysRemovePermissionsResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4339,8 +2917,8 @@ export const keysRemoveRoles: API.OperationMethod<
   KeysRemoveRolesError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KeysRemoveRolesRequest,
-  output: V2KeysRemoveRolesResponseBody,
+  input: __S(146) as any as S.Schema<KeysRemoveRolesRequest>,
+  output: __S(144) as any as S.Schema<V2KeysRemoveRolesResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4354,8 +2932,8 @@ export const keysRerollKey: API.OperationMethod<
   KeysRerollKeyError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KeysRerollKeyRequest,
-  output: V2KeysRerollKeyResponseBody,
+  input: __S(147) as any as S.Schema<KeysRerollKeyRequest>,
+  output: __S(49) as any as S.Schema<V2KeysRerollKeyResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4369,8 +2947,8 @@ export const keysSetPermissions: API.OperationMethod<
   KeysSetPermissionsError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KeysSetPermissionsRequest,
-  output: V2KeysSetPermissionsResponseBody,
+  input: __S(148) as any as S.Schema<KeysSetPermissionsRequest>,
+  output: __S(140) as any as S.Schema<V2KeysSetPermissionsResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4384,8 +2962,8 @@ export const keysSetRoles: API.OperationMethod<
   KeysSetRolesError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KeysSetRolesRequest,
-  output: V2KeysSetRolesResponseBody,
+  input: __S(149) as any as S.Schema<KeysSetRolesRequest>,
+  output: __S(144) as any as S.Schema<V2KeysSetRolesResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4399,8 +2977,8 @@ export const keysUpdateCredits: API.OperationMethod<
   KeysUpdateCreditsError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KeysUpdateCreditsRequest,
-  output: V2KeysUpdateCreditsResponseBody,
+  input: __S(150) as any as S.Schema<KeysUpdateCreditsRequest>,
+  output: __S(151) as any as S.Schema<V2KeysUpdateCreditsResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4414,8 +2992,8 @@ export const keysWhoami: API.OperationMethod<
   KeysWhoamiError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KeysWhoamiRequest,
-  output: V2KeysWhoamiResponseBody,
+  input: __S(152) as any as S.Schema<KeysWhoamiRequest>,
+  output: __S(126) as any as S.Schema<V2KeysWhoamiResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4431,8 +3009,8 @@ export const listApps: API.PaginatedOperationMethod<
   App
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAppsRequest,
-    output: V2AppsListAppsResponseBody,
+    input: __S(153) as any as S.Schema<ListAppsRequest>,
+    output: __S(155) as any as S.Schema<V2AppsListAppsResponseBody>,
     errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
     protocol: UnkeyProtocol,
     retry: Retry.Retry,
@@ -4457,8 +3035,8 @@ export const listDeployments: API.PaginatedOperationMethod<
   Deployment
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListDeploymentsRequest,
-    output: V2DeploymentsListDeploymentsResponseBody,
+    input: __S(156) as any as S.Schema<ListDeploymentsRequest>,
+    output: __S(158) as any as S.Schema<V2DeploymentsListDeploymentsResponseBody>,
     errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
     protocol: UnkeyProtocol,
     retry: Retry.Retry,
@@ -4483,8 +3061,8 @@ export const listDomains: API.PaginatedOperationMethod<
   Domain
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListDomainsRequest,
-    output: V2DomainsListDomainsResponseBody,
+    input: __S(159) as any as S.Schema<ListDomainsRequest>,
+    output: __S(161) as any as S.Schema<V2DomainsListDomainsResponseBody>,
     errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
     protocol: UnkeyProtocol,
     retry: Retry.Retry,
@@ -4507,8 +3085,8 @@ export const listEnvironments: API.OperationMethod<
   ListEnvironmentsError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEnvironmentsRequest,
-  output: V2EnvironmentsListEnvironmentsResponseBody,
+  input: __S(162) as any as S.Schema<ListEnvironmentsRequest>,
+  output: __S(164) as any as S.Schema<V2EnvironmentsListEnvironmentsResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4524,8 +3102,8 @@ export const listEnvironmentVariables: API.PaginatedOperationMethod<
   EnvironmentVariable
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListEnvironmentVariablesRequest,
-    output: V2EnvironmentsListEnvironmentVariablesResponseBody,
+    input: __S(165) as any as S.Schema<ListEnvironmentVariablesRequest>,
+    output: __S(168) as any as S.Schema<V2EnvironmentsListEnvironmentVariablesResponseBody>,
     errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
     protocol: UnkeyProtocol,
     retry: Retry.Retry,
@@ -4550,8 +3128,8 @@ export const listIdentities: API.PaginatedOperationMethod<
   Identity
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListIdentitiesRequest,
-    output: V2IdentitiesListIdentitiesResponseBody,
+    input: __S(169) as any as S.Schema<ListIdentitiesRequest>,
+    output: __S(171) as any as S.Schema<V2IdentitiesListIdentitiesResponseBody>,
     errors: [BadRequest, Forbidden, UnknownUnkeyError],
     protocol: UnkeyProtocol,
     retry: Retry.Retry,
@@ -4576,8 +3154,8 @@ export const listPermissions: API.PaginatedOperationMethod<
   Permission
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListPermissionsRequest,
-    output: V2PermissionsListPermissionsResponseBody,
+    input: __S(172) as any as S.Schema<ListPermissionsRequest>,
+    output: __S(173) as any as S.Schema<V2PermissionsListPermissionsResponseBody>,
     errors: [BadRequest, Forbidden, UnknownUnkeyError],
     protocol: UnkeyProtocol,
     retry: Retry.Retry,
@@ -4602,8 +3180,8 @@ export const listProjects: API.PaginatedOperationMethod<
   Project
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListProjectsRequest,
-    output: V2ProjectsListProjectsResponseBody,
+    input: __S(174) as any as S.Schema<ListProjectsRequest>,
+    output: __S(176) as any as S.Schema<V2ProjectsListProjectsResponseBody>,
     errors: [BadRequest, Forbidden, UnknownUnkeyError],
     protocol: UnkeyProtocol,
     retry: Retry.Retry,
@@ -4626,8 +3204,8 @@ export const liveness: API.OperationMethod<
   LivenessError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LivenessRequest,
-  output: V2LivenessResponseBody,
+  input: __S(177) as any as S.Schema<LivenessRequest>,
+  output: __S(179) as any as S.Schema<V2LivenessResponseBody>,
   errors: [UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4641,8 +3219,8 @@ export const migrateKeys: API.OperationMethod<
   MigrateKeysError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MigrateKeysRequest,
-  output: V2KeysMigrateKeysResponseBody,
+  input: __S(182) as any as S.Schema<MigrateKeysRequest>,
+  output: __S(186) as any as S.Schema<V2KeysMigrateKeysResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4656,8 +3234,8 @@ export const permissionsCreatePermission: API.OperationMethod<
   PermissionsCreatePermissionError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PermissionsCreatePermissionRequest,
-  output: V2PermissionsCreatePermissionResponseBody,
+  input: __S(187) as any as S.Schema<PermissionsCreatePermissionRequest>,
+  output: __S(189) as any as S.Schema<V2PermissionsCreatePermissionResponseBody>,
   errors: [BadRequest, Forbidden, Conflict, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4671,8 +3249,8 @@ export const permissionsCreateRole: API.OperationMethod<
   PermissionsCreateRoleError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PermissionsCreateRoleRequest,
-  output: V2PermissionsCreateRoleResponseBody,
+  input: __S(190) as any as S.Schema<PermissionsCreateRoleRequest>,
+  output: __S(192) as any as S.Schema<V2PermissionsCreateRoleResponseBody>,
   errors: [BadRequest, Forbidden, Conflict, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4686,8 +3264,8 @@ export const permissionsDeletePermission: API.OperationMethod<
   PermissionsDeletePermissionError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PermissionsDeletePermissionRequest,
-  output: V2PermissionsDeletePermissionResponseBody,
+  input: __S(193) as any as S.Schema<PermissionsDeletePermissionRequest>,
+  output: __S(12) as any as S.Schema<V2PermissionsDeletePermissionResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4701,8 +3279,8 @@ export const permissionsDeleteRole: API.OperationMethod<
   PermissionsDeleteRoleError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PermissionsDeleteRoleRequest,
-  output: V2PermissionsDeleteRoleResponseBody,
+  input: __S(194) as any as S.Schema<PermissionsDeleteRoleRequest>,
+  output: __S(12) as any as S.Schema<V2PermissionsDeleteRoleResponseBody>,
   errors: [BadRequest, Forbidden, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4716,8 +3294,8 @@ export const permissionsGetPermission: API.OperationMethod<
   PermissionsGetPermissionError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PermissionsGetPermissionRequest,
-  output: V2PermissionsGetPermissionResponseBody,
+  input: __S(195) as any as S.Schema<PermissionsGetPermissionRequest>,
+  output: __S(196) as any as S.Schema<V2PermissionsGetPermissionResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4731,8 +3309,8 @@ export const permissionsGetRole: API.OperationMethod<
   PermissionsGetRoleError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PermissionsGetRoleRequest,
-  output: V2PermissionsGetRoleResponseBody,
+  input: __S(197) as any as S.Schema<PermissionsGetRoleRequest>,
+  output: __S(198) as any as S.Schema<V2PermissionsGetRoleResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4748,8 +3326,8 @@ export const permissionsListRoles: API.PaginatedOperationMethod<
   Role
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: PermissionsListRolesRequest,
-    output: V2PermissionsListRolesResponseBody,
+    input: __S(199) as any as S.Schema<PermissionsListRolesRequest>,
+    output: __S(200) as any as S.Schema<V2PermissionsListRolesResponseBody>,
     errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
     protocol: UnkeyProtocol,
     retry: Retry.Retry,
@@ -4772,8 +3350,8 @@ export const permissionsSetRolePermissions: API.OperationMethod<
   PermissionsSetRolePermissionsError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PermissionsSetRolePermissionsRequest,
-  output: V2PermissionsSetRolePermissionsResponseBody,
+  input: __S(201) as any as S.Schema<PermissionsSetRolePermissionsRequest>,
+  output: __S(140) as any as S.Schema<V2PermissionsSetRolePermissionsResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4787,8 +3365,8 @@ export const portalCreateSession: API.OperationMethod<
   PortalCreateSessionError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PortalCreateSessionRequest,
-  output: V2PortalCreateSessionResponseBody,
+  input: __S(202) as any as S.Schema<PortalCreateSessionRequest>,
+  output: __S(204) as any as S.Schema<V2PortalCreateSessionResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4802,8 +3380,8 @@ export const portalExchangeCode: API.OperationMethod<
   PortalExchangeCodeError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PortalExchangeCodeRequest,
-  output: V2PortalExchangeCodeResponseBody,
+  input: __S(205) as any as S.Schema<PortalExchangeCodeRequest>,
+  output: __S(207) as any as S.Schema<V2PortalExchangeCodeResponseBody>,
   errors: [BadRequest, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4822,8 +3400,8 @@ export const portalGetVerifications: API.OperationMethod<
   PortalGetVerificationsError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PortalGetVerificationsRequest,
-  output: V2PortalGetVerificationsResponseBody,
+  input: __S(208) as any as S.Schema<PortalGetVerificationsRequest>,
+  output: __S(213) as any as S.Schema<V2PortalGetVerificationsResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4839,8 +3417,8 @@ export const portalListKeys: API.PaginatedOperationMethod<
   KeyResponseData
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: PortalListKeysRequest,
-    output: V2PortalListKeysResponseBody,
+    input: __S(214) as any as S.Schema<PortalListKeysRequest>,
+    output: __S(26) as any as S.Schema<V2PortalListKeysResponseBody>,
     errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
     protocol: UnkeyProtocol,
     retry: Retry.Retry,
@@ -4865,8 +3443,8 @@ export const portalListSessions: API.PaginatedOperationMethod<
   V2PortalListSessionsResponseData
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: PortalListSessionsRequest,
-    output: V2PortalListSessionsResponseBody,
+    input: __S(215) as any as S.Schema<PortalListSessionsRequest>,
+    output: __S(220) as any as S.Schema<V2PortalListSessionsResponseBody>,
     errors: [BadRequest, NotFound, UnknownUnkeyError],
     protocol: UnkeyProtocol,
     retry: Retry.Retry,
@@ -4889,8 +3467,8 @@ export const portalRerollKey: API.OperationMethod<
   PortalRerollKeyError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PortalRerollKeyRequest,
-  output: V2KeysRerollKeyResponseBody,
+  input: __S(221) as any as S.Schema<PortalRerollKeyRequest>,
+  output: __S(49) as any as S.Schema<V2KeysRerollKeyResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4904,8 +3482,8 @@ export const portalRevokeSession: API.OperationMethod<
   PortalRevokeSessionError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PortalRevokeSessionRequest,
-  output: V2PortalRevokeSessionResponseBody,
+  input: __S(222) as any as S.Schema<PortalRevokeSessionRequest>,
+  output: __S(224) as any as S.Schema<V2PortalRevokeSessionResponseBody>,
   errors: [BadRequest, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4919,8 +3497,8 @@ export const ratelimitDeleteOverride: API.OperationMethod<
   RatelimitDeleteOverrideError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RatelimitDeleteOverrideRequest,
-  output: V2RatelimitDeleteOverrideResponseBody,
+  input: __S(225) as any as S.Schema<RatelimitDeleteOverrideRequest>,
+  output: __S(12) as any as S.Schema<V2RatelimitDeleteOverrideResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4934,8 +3512,8 @@ export const ratelimitGetOverride: API.OperationMethod<
   RatelimitGetOverrideError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RatelimitGetOverrideRequest,
-  output: V2RatelimitGetOverrideResponseBody,
+  input: __S(226) as any as S.Schema<RatelimitGetOverrideRequest>,
+  output: __S(228) as any as S.Schema<V2RatelimitGetOverrideResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4949,8 +3527,8 @@ export const ratelimitLimit: API.OperationMethod<
   RatelimitLimitError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RatelimitLimitRequest,
-  output: V2RatelimitLimitResponseBody,
+  input: __S(229) as any as S.Schema<RatelimitLimitRequest>,
+  output: __S(231) as any as S.Schema<V2RatelimitLimitResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -4966,8 +3544,8 @@ export const ratelimitListOverrides: API.PaginatedOperationMethod<
   RatelimitOverride
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: RatelimitListOverridesRequest,
-    output: V2RatelimitListOverridesResponseBody,
+    input: __S(232) as any as S.Schema<RatelimitListOverridesRequest>,
+    output: __S(234) as any as S.Schema<V2RatelimitListOverridesResponseBody>,
     errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
     protocol: UnkeyProtocol,
     retry: Retry.Retry,
@@ -4990,8 +3568,8 @@ export const ratelimitMultiLimit: API.OperationMethod<
   RatelimitMultiLimitError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RatelimitMultiLimitRequest,
-  output: V2RatelimitMultiLimitResponseBody,
+  input: __S(237) as any as S.Schema<RatelimitMultiLimitRequest>,
+  output: __S(241) as any as S.Schema<V2RatelimitMultiLimitResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -5005,8 +3583,8 @@ export const ratelimitSetOverride: API.OperationMethod<
   RatelimitSetOverrideError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RatelimitSetOverrideRequest,
-  output: V2RatelimitSetOverrideResponseBody,
+  input: __S(242) as any as S.Schema<RatelimitSetOverrideRequest>,
+  output: __S(244) as any as S.Schema<V2RatelimitSetOverrideResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -5020,8 +3598,8 @@ export const removeEnvironmentVariables: API.OperationMethod<
   RemoveEnvironmentVariablesError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveEnvironmentVariablesRequest,
-  output: V2EnvironmentsRemoveEnvironmentVariablesResponseBody,
+  input: __S(245) as any as S.Schema<RemoveEnvironmentVariablesRequest>,
+  output: __S(12) as any as S.Schema<V2EnvironmentsRemoveEnvironmentVariablesResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -5035,8 +3613,8 @@ export const rootKeysCreateKey: API.OperationMethod<
   RootKeysCreateKeyError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RootKeysCreateKeyRequest,
-  output: V2RootKeysCreateKeyResponseBody,
+  input: __S(246) as any as S.Schema<RootKeysCreateKeyRequest>,
+  output: __S(49) as any as S.Schema<V2RootKeysCreateKeyResponseBody>,
   errors: [BadRequest, Forbidden, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -5050,8 +3628,8 @@ export const rootKeysDeleteKey: API.OperationMethod<
   RootKeysDeleteKeyError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RootKeysDeleteKeyRequest,
-  output: V2RootKeysDeleteKeyResponseBody,
+  input: __S(247) as any as S.Schema<RootKeysDeleteKeyRequest>,
+  output: __S(12) as any as S.Schema<V2RootKeysDeleteKeyResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -5067,8 +3645,8 @@ export const rootKeysListKeys: API.PaginatedOperationMethod<
   V2RootKeysListKeysResponseData
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: RootKeysListKeysRequest,
-    output: V2RootKeysListKeysResponseBody,
+    input: __S(248) as any as S.Schema<RootKeysListKeysRequest>,
+    output: __S(251) as any as S.Schema<V2RootKeysListKeysResponseBody>,
     errors: [BadRequest, UnknownUnkeyError],
     protocol: UnkeyProtocol,
     retry: Retry.Retry,
@@ -5091,8 +3669,8 @@ export const rootKeysRerollKey: API.OperationMethod<
   RootKeysRerollKeyError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RootKeysRerollKeyRequest,
-  output: V2RootKeysRerollKeyResponseBody,
+  input: __S(252) as any as S.Schema<RootKeysRerollKeyRequest>,
+  output: __S(49) as any as S.Schema<V2RootKeysRerollKeyResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -5106,8 +3684,8 @@ export const rootKeysUpdateKey: API.OperationMethod<
   RootKeysUpdateKeyError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RootKeysUpdateKeyRequest,
-  output: V2RootKeysUpdateKeyResponseBody,
+  input: __S(253) as any as S.Schema<RootKeysUpdateKeyRequest>,
+  output: __S(12) as any as S.Schema<V2RootKeysUpdateKeyResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -5121,8 +3699,8 @@ export const startDeployment: API.OperationMethod<
   StartDeploymentError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartDeploymentRequest,
-  output: StartDeploymentResponse,
+  input: __S(254) as any as S.Schema<StartDeploymentRequest>,
+  output: __S(57) as any as S.Schema<StartDeploymentResponse>,
   errors: [BadRequest, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -5136,8 +3714,8 @@ export const stopDeployment: API.OperationMethod<
   StopDeploymentError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopDeploymentRequest,
-  output: StopDeploymentResponse,
+  input: __S(255) as any as S.Schema<StopDeploymentRequest>,
+  output: __S(57) as any as S.Schema<StopDeploymentResponse>,
   errors: [BadRequest, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -5151,8 +3729,8 @@ export const updateApp: API.OperationMethod<
   UpdateAppError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAppRequest,
-  output: V2AppsUpdateAppResponseBody,
+  input: __S(256) as any as S.Schema<UpdateAppRequest>,
+  output: __S(257) as any as S.Schema<V2AppsUpdateAppResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -5166,8 +3744,8 @@ export const updateIdentity: API.OperationMethod<
   UpdateIdentityError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIdentityRequest,
-  output: V2IdentitiesUpdateIdentityResponseBody,
+  input: __S(258) as any as S.Schema<UpdateIdentityRequest>,
+  output: __S(259) as any as S.Schema<V2IdentitiesUpdateIdentityResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -5181,8 +3759,8 @@ export const updateKey: API.OperationMethod<
   UpdateKeyError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateKeyRequest,
-  output: V2KeysUpdateKeyResponseBody,
+  input: __S(261) as any as S.Schema<UpdateKeyRequest>,
+  output: __S(12) as any as S.Schema<V2KeysUpdateKeyResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -5196,8 +3774,8 @@ export const updatePortal: API.OperationMethod<
   UpdatePortalError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePortalRequest,
-  output: V2PortalUpdatePortalResponseBody,
+  input: __S(262) as any as S.Schema<UpdatePortalRequest>,
+  output: __S(130) as any as S.Schema<V2PortalUpdatePortalResponseBody>,
   errors: [BadRequest, NotFound, Conflict, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -5211,8 +3789,8 @@ export const updateProject: API.OperationMethod<
   UpdateProjectError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectRequest,
-  output: V2ProjectsUpdateProjectResponseBody,
+  input: __S(263) as any as S.Schema<UpdateProjectRequest>,
+  output: __S(133) as any as S.Schema<V2ProjectsUpdateProjectResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -5226,8 +3804,8 @@ export const verifyDomain: API.OperationMethod<
   VerifyDomainError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyDomainRequest,
-  output: VerifyDomainResponse,
+  input: __S(264) as any as S.Schema<VerifyDomainRequest>,
+  output: __S(57) as any as S.Schema<VerifyDomainResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -5241,8 +3819,8 @@ export const verifyKey: API.OperationMethod<
   VerifyKeyError,
   UnkeyOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyKeyRequest,
-  output: V2KeysVerifyKeyResponseBody,
+  input: __S(268) as any as S.Schema<VerifyKeyRequest>,
+  output: __S(272) as any as S.Schema<V2KeysVerifyKeyResponseBody>,
   errors: [BadRequest, Forbidden, NotFound, UnknownUnkeyError],
   protocol: UnkeyProtocol,
   retry: Retry.Retry,
@@ -5268,12 +3846,12 @@ function __c0(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(V2AnalyticsGetGatewayRequestsResponseDataItemMap);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2AnalyticsGetGatewayRequestsResponseData,
+          meta: __S(1),
+          data: __S(3),
         }),
       ).annotate({
         identifier: "V2AnalyticsGetGatewayRequestsResponseBody",
@@ -5323,8 +3901,8 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2ApisCreateApiResponseData,
+          meta: __S(1),
+          data: __S(9),
         }),
       ).annotate({
         identifier: "V2ApisCreateApiResponseBody",
@@ -5338,7 +3916,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
+          meta: __S(1),
           data: S.Unknown,
         }),
       ).annotate({
@@ -5360,8 +3938,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2ApisGetApiResponseData,
+          meta: __S(1),
+          data: __S(14),
         }),
       ).annotate({ identifier: "V2ApisGetApiResponseBody" });
   }
@@ -5384,7 +3962,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          interval: KeyCreditsRefillInterval,
+          interval: S.String,
           amount: S.Number,
           refillDay: S.optional(S.Number),
         }),
@@ -5393,7 +3971,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           remaining: S.NullOr(S.Number),
-          refill: S.optional(KeyCreditsRefill),
+          refill: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "KeyCreditsData" });
     case 4:
@@ -5407,14 +3985,14 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "RatelimitResponse" });
     case 5:
-      return S.Array(RatelimitResponse);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           externalId: S.String,
-          meta: S.optional(IdentityMetaMap),
-          ratelimits: S.optional(IdentityRatelimitsList),
+          meta: S.optional(__S(2)),
+          ratelimits: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "Identity" });
     case 7:
@@ -5424,17 +4002,17 @@ function __c2(j: number): any {
           start: S.String,
           enabled: S.Boolean,
           name: S.optional(S.String),
-          meta: S.optional(KeyResponseDataMetaMap),
+          meta: S.optional(__S(2)),
           createdAt: S.Number,
           updatedAt: S.optional(S.Number),
           lastUsedAt: S.optional(S.Number),
           expires: S.optional(S.Number),
-          permissions: S.optional(KeyResponseDataPermissionsList),
-          roles: S.optional(KeyResponseDataRolesList),
-          credits: S.optional(KeyCreditsData),
-          identity: S.optional(Identity),
+          permissions: S.optional(__S(17)),
+          roles: S.optional(__S(17)),
+          credits: S.optional(__S(19)),
+          identity: S.optional(__S(22)),
           plaintext: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          ratelimits: S.optional(KeyResponseDataRatelimitsList),
+          ratelimits: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "KeyResponseData" });
   }
@@ -5442,7 +4020,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(KeyResponseData);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5453,9 +4031,9 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2ApisListKeysResponseData,
-          pagination: Pagination,
+          meta: __S(1),
+          data: __S(24),
+          pagination: __S(25),
         }),
       ).annotate({
         identifier: "V2ApisListKeysResponseBody",
@@ -5479,8 +4057,8 @@ function __c3(j: number): any {
           project: S.String,
           name: S.String,
           slug: S.String,
-          git: S.optional(AppGitCreateInput),
-          oci: S.optional(AppOCI),
+          git: S.optional(__S(27)),
+          oci: S.optional(__S(28)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/apps.createApp", code: 200 })),
       ).annotate({ identifier: "CreateAppRequest" });
     case 6:
@@ -5494,8 +4072,8 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2AppsCreateAppResponseData,
+          meta: __S(1),
+          data: __S(30),
         }),
       ).annotate({
         identifier: "V2AppsCreateAppResponseBody",
@@ -5526,9 +4104,9 @@ function __c4(j: number): any {
           project: S.String,
           app: S.String,
           environment: S.String,
-          git: S.optional(DeploymentSourceGit),
-          oci: S.optional(DeploymentSourceOCI),
-          deployment: S.optional(DeploymentSourceDeployment),
+          git: S.optional(__S(32)),
+          oci: S.optional(__S(28)),
+          deployment: S.optional(__S(33)),
         }).pipe(T.Http({ method: "POST", uri: "/v3/deployments.createDeployment", code: 200 })),
       ).annotate({
         identifier: "CreateDeploymentV3Request",
@@ -5536,8 +4114,8 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V3DeploymentsCreateDeploymentResponseData,
+          meta: __S(1),
+          data: __S(33),
         }),
       ).annotate({
         identifier: "V3DeploymentsCreateDeploymentResponseBody",
@@ -5554,7 +4132,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: DnsRecordType,
+          type: S.String,
           name: S.String,
           value: S.String,
           ttl: S.Number,
@@ -5563,7 +4141,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "DnsRecord" });
     case 6:
-      return S.Array(DnsRecord);
+      return S.Array(__S(37));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -5579,8 +4157,8 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domainId: S.String,
-          dnsRecords: V2DomainsCreateDomainResponseDataDnsRecordsList,
-          domainConnect: S.optional(DomainConnect),
+          dnsRecords: __S(38),
+          domainConnect: S.optional(__S(39)),
         }),
       ).annotate({
         identifier: "V2DomainsCreateDomainResponseData",
@@ -5588,8 +4166,8 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2DomainsCreateDomainResponseData,
+          meta: __S(1),
+          data: __S(40),
         }),
       ).annotate({
         identifier: "V2DomainsCreateDomainResponseBody",
@@ -5604,13 +4182,13 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "RatelimitRequest" });
     case 3:
-      return S.Array(RatelimitRequest);
+      return S.Array(__S(42));
     case 4:
       return S.suspend(() =>
         S.Struct({
           externalId: S.String,
-          meta: S.optional(CreateIdentityRequestMetaMap),
-          ratelimits: S.optional(CreateIdentityRequestRatelimitsList),
+          meta: S.optional(__S(2)),
+          ratelimits: S.optional(__S(43)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/identities.createIdentity", code: 200 })),
       ).annotate({ identifier: "CreateIdentityRequest" });
     case 5:
@@ -5624,8 +4202,8 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2IdentitiesCreateIdentityResponseData,
+          meta: __S(1),
+          data: __S(45),
         }),
       ).annotate({
         identifier: "V2IdentitiesCreateIdentityResponseBody",
@@ -5638,12 +4216,12 @@ function __c5(j: number): any {
           name: S.optional(S.String),
           byteLength: S.optional(S.Number),
           externalId: S.optional(S.String),
-          meta: S.optional(CreateKeyRequestMetaMap),
-          roles: S.optional(CreateKeyRequestRolesList),
-          permissions: S.optional(CreateKeyRequestPermissionsList),
+          meta: S.optional(__S(2)),
+          roles: S.optional(__S(17)),
+          permissions: S.optional(__S(17)),
           expires: S.optional(S.Number),
-          credits: S.optional(KeyCreditsData),
-          ratelimits: S.optional(CreateKeyRequestRatelimitsList),
+          credits: S.optional(__S(19)),
+          ratelimits: S.optional(__S(43)),
           enabled: S.optional(S.Boolean),
           recoverable: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/v2/keys.createKey", code: 200 })),
@@ -5664,8 +4242,8 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2KeysCreateKeyResponseData,
+          meta: __S(1),
+          data: __S(48),
         }),
       ).annotate({
         identifier: "V2KeysCreateKeyResponseBody",
@@ -5693,8 +4271,8 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2PortalCreatePortalResponseData,
+          meta: __S(1),
+          data: __S(51),
         }),
       ).annotate({
         identifier: "V2PortalCreatePortalResponseBody",
@@ -5717,8 +4295,8 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2ProjectsCreateProjectResponseData,
+          meta: __S(1),
+          data: __S(54),
         }),
       ).annotate({
         identifier: "V2ProjectsCreateProjectResponseBody",
@@ -5753,7 +4331,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
+          meta: __S(1),
         }),
       ).annotate({
         identifier: "V2IdentitiesDeleteIdentityResponseBody",
@@ -5806,19 +4384,19 @@ function __c8(j: number): any {
         S.Struct({
           key: S.String,
           value: S.String,
-          kind: S.optional(EnvironmentVariableKind),
+          kind: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnvironmentVariableInput" });
     case 4:
-      return S.Array(EnvironmentVariableInput);
+      return S.Array(__S(67));
     case 5:
       return S.suspend(() =>
         S.Struct({
           project: S.String,
           app: S.String,
           environment: S.String,
-          variables: EnvironmentsSetEnvironmentVariablesRequestVariablesList,
+          variables: __S(68),
           prune: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/v2/environments.setEnvironmentVariables", code: 200 }),
@@ -5829,7 +4407,7 @@ function __c8(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          method: EnvironmentHealthcheckMethod,
+          method: S.String,
           path: S.String,
           intervalSeconds: S.optional(S.Number),
           timeoutSeconds: S.optional(S.Number),
@@ -5852,11 +4430,11 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          replicas: Replicas,
+          replicas: __S(71),
         }),
       ).annotate({ identifier: "EnvironmentRegion" });
     case 1:
-      return S.Array(EnvironmentRegion);
+      return S.Array(__S(72));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5866,18 +4444,18 @@ function __c9(j: number): any {
           dockerfile: S.optional(S.NullOr(S.String)),
           rootDirectory: S.optional(S.String),
           buildCommand: S.optional(S.NullOr(S.String)),
-          watchPaths: S.optional(EnvironmentsUpdateSettingsRequestWatchPathsList),
+          watchPaths: S.optional(__S(17)),
           autoDeploy: S.optional(S.Boolean),
           port: S.optional(S.Number),
           vCpus: S.optional(S.Number),
           memoryMib: S.optional(S.Number),
           storageMib: S.optional(S.Number),
-          command: S.optional(EnvironmentsUpdateSettingsRequestCommandList),
-          healthcheck: S.optional(S.NullOr(EnvironmentHealthcheck)),
-          shutdownSignal: S.optional(EnvironmentShutdownSignal),
-          upstreamProtocol: S.optional(EnvironmentUpstreamProtocol),
+          command: S.optional(__S(17)),
+          healthcheck: S.optional(S.NullOr(__S(70))),
+          shutdownSignal: S.optional(S.String),
+          upstreamProtocol: S.optional(S.String),
           openapiSpecPath: S.optional(S.NullOr(S.String)),
-          regions: S.optional(EnvironmentsUpdateSettingsRequestRegionsList),
+          regions: S.optional(__S(73)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/environments.updateSettings", code: 200 })),
       ).annotate({
         identifier: "EnvironmentsUpdateSettingsRequest",
@@ -5904,15 +4482,15 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          path: StringMatch,
+          path: __S(76),
         }),
       ).annotate({ identifier: "PathMatch" });
     case 6:
-      return S.Array(MethodMatchMethodsItem);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          methods: MethodMatchMethodsList,
+          methods: __S(78),
         }),
       ).annotate({ identifier: "MethodMatch" });
   }
@@ -5924,28 +4502,28 @@ function __c10(j: number): any {
         S.Struct({
           name: S.String,
           present: S.optional(S.Boolean),
-          value: S.optional(StringMatch),
+          value: S.optional(__S(76)),
         }),
       ).annotate({ identifier: "FieldMatch" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          in: S.optional(RemoteIpMatchInList),
-          notIn: S.optional(RemoteIpMatchNotInList),
+          in: S.optional(__S(17)),
+          notIn: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "RemoteIpMatch" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          path: S.optional(PathMatch),
-          method: S.optional(MethodMatch),
-          header: S.optional(FieldMatch),
-          queryParam: S.optional(FieldMatch),
-          remoteIp: S.optional(RemoteIpMatch),
+          path: S.optional(__S(77)),
+          method: S.optional(__S(79)),
+          header: S.optional(__S(80)),
+          queryParam: S.optional(__S(80)),
+          remoteIp: S.optional(__S(81)),
         }),
       ).annotate({ identifier: "MatchExpr" });
     case 3:
-      return S.Array(MatchExpr);
+      return S.Array(__S(82));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -5963,12 +4541,12 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           bearer: S.optional(S.Unknown),
-          header: S.optional(HeaderKeyLocation),
-          queryParam: S.optional(QueryParamKeyLocation),
+          header: S.optional(__S(84)),
+          queryParam: S.optional(__S(85)),
         }),
       ).annotate({ identifier: "KeyLocation" });
     case 7:
-      return S.Array(KeyLocation);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -5983,14 +4561,14 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "KeyRatelimit" });
     case 1:
-      return S.Array(KeyRatelimit);
+      return S.Array(__S(88));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          keyspaces: KeyauthPolicyKeyspacesList,
-          locations: S.optional(KeyauthPolicyLocationsList),
+          keyspaces: __S(17),
+          locations: S.optional(__S(87)),
           permissionQuery: S.optional(S.String),
-          ratelimits: S.optional(KeyauthPolicyRatelimitsList),
+          ratelimits: S.optional(__S(89)),
           credits: S.optional(S.Number),
         }),
       ).annotate({ identifier: "KeyauthPolicy" });
@@ -6004,27 +4582,27 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           remoteIp: S.optional(S.Unknown),
-          header: S.optional(QueryParamKeyLocation),
+          header: S.optional(__S(85)),
           authenticatedSubject: S.optional(S.Unknown),
           path: S.optional(S.Unknown),
-          principalField: S.optional(PrincipalFieldKey),
+          principalField: S.optional(__S(91)),
         }),
       ).annotate({ identifier: "RatelimitIdentifier" });
     case 5:
-      return S.Array(RatelimitIdentifier);
+      return S.Array(__S(92));
     case 6:
       return S.suspend(() =>
         S.Struct({
           limit: S.Number,
           windowMs: S.Number,
-          identifier: S.optional(RatelimitIdentifier),
-          identifiers: S.optional(RatelimitPolicyIdentifiersList),
+          identifier: S.optional(__S(92)),
+          identifiers: S.optional(__S(93)),
         }),
       ).annotate({ identifier: "RatelimitPolicy" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: FirewallPolicyAction,
+          action: S.String,
         }),
       ).annotate({ identifier: "FirewallPolicy" });
   }
@@ -6047,49 +4625,49 @@ function __c12(j: number): any {
           id: S.String,
           name: S.String,
           enabled: S.Boolean,
-          match: S.optional(PolicyResponseMatchList),
-          keyauth: S.optional(KeyauthPolicy),
-          ratelimit: S.optional(RatelimitPolicy),
-          firewall: S.optional(FirewallPolicy),
+          match: S.optional(__S(83)),
+          keyauth: S.optional(__S(90)),
+          ratelimit: S.optional(__S(94)),
+          firewall: S.optional(__S(95)),
           openapi: S.optional(S.Unknown),
-          logging: S.optional(LoggingPolicy),
+          logging: S.optional(__S(96)),
         }),
       ).annotate({ identifier: "PolicyResponse" });
     case 2:
-      return S.Array(PolicyResponse);
+      return S.Array(__S(97));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2GatewayListPoliciesResponseData,
+          meta: __S(1),
+          data: __S(98),
         }),
       ).annotate({
         identifier: "V2GatewayListPoliciesResponseBody",
       });
     case 4:
-      return S.Array(MatchExpr);
+      return S.Array(__S(82));
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           enabled: S.Boolean,
-          match: S.optional(PolicyMatchList),
-          keyauth: S.optional(KeyauthPolicy),
-          ratelimit: S.optional(RatelimitPolicy),
-          firewall: S.optional(FirewallPolicy),
+          match: S.optional(__S(100)),
+          keyauth: S.optional(__S(90)),
+          ratelimit: S.optional(__S(94)),
+          firewall: S.optional(__S(95)),
           openapi: S.optional(S.Unknown),
-          logging: S.optional(LoggingPolicy),
+          logging: S.optional(__S(96)),
         }),
       ).annotate({ identifier: "Policy" });
     case 6:
-      return S.Array(Policy);
+      return S.Array(__S(101));
     case 7:
       return S.suspend(() =>
         S.Struct({
           project: S.String,
           app: S.String,
           environment: S.String,
-          policies: GatewaySetPoliciesRequestPoliciesList,
+          policies: __S(102),
         }).pipe(T.Http({ method: "POST", uri: "/v2/gateway.setPolicies", code: 200 })),
       ).annotate({
         identifier: "GatewaySetPoliciesRequest",
@@ -6107,12 +4685,12 @@ function __c13(j: number): any {
           policyId: S.String,
           name: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          match: S.optional(S.NullOr(GatewayUpdatePolicyRequestMatchList)),
-          keyauth: S.optional(KeyauthPolicy),
-          ratelimit: S.optional(RatelimitPolicy),
-          firewall: S.optional(FirewallPolicy),
+          match: S.optional(S.NullOr(__S(83))),
+          keyauth: S.optional(__S(90)),
+          ratelimit: S.optional(__S(94)),
+          firewall: S.optional(__S(95)),
           openapi: S.optional(S.Unknown),
-          logging: S.optional(LoggingPolicy),
+          logging: S.optional(__S(96)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/gateway.updatePolicy", code: 200 })),
       ).annotate({
         identifier: "GatewayUpdatePolicyRequest",
@@ -6137,9 +4715,9 @@ function __c13(j: number): any {
           id: S.String,
           name: S.String,
           slug: S.String,
-          sourceType: S.optional(AppSourceType),
-          git: S.optional(AppGit),
-          oci: S.optional(AppOCI),
+          sourceType: S.optional(S.String),
+          git: S.optional(__S(106)),
+          oci: S.optional(__S(28)),
           currentDeploymentId: S.optional(S.String),
           isRolledBack: S.Boolean,
           deleteProtection: S.Boolean,
@@ -6150,8 +4728,8 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: App,
+          meta: __S(1),
+          data: __S(107),
         }),
       ).annotate({ identifier: "V2AppsGetAppResponseBody" });
     case 5:
@@ -6170,7 +4748,7 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          code: DeploymentErrorCode,
+          code: S.String,
           step: S.String,
           message: S.String,
         }),
@@ -6186,28 +4764,28 @@ function __c14(j: number): any {
           memoryMib: S.Number,
           storageMib: S.Number,
           port: S.Number,
-          command: DeploymentRuntimeCommandList,
-          shutdownSignal: EnvironmentShutdownSignal,
-          upstreamProtocol: EnvironmentUpstreamProtocol,
-          healthcheck: S.optional(EnvironmentHealthcheck),
+          command: __S(17),
+          shutdownSignal: S.String,
+          upstreamProtocol: S.String,
+          healthcheck: S.optional(__S(70)),
         }),
       ).annotate({ identifier: "DeploymentRuntime" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: DeploymentStatus,
+          status: S.String,
           isCurrent: S.Boolean,
           environment: S.String,
           app: S.String,
           project: S.String,
-          git: S.optional(DeploymentGit),
-          docker: S.optional(DeploymentDocker),
-          availableActions: DeploymentAvailableActionsList,
-          regions: DeploymentRegionsList,
-          error: S.optional(DeploymentError),
-          domains: S.optional(DeploymentDomainsList),
-          runtime: DeploymentRuntime,
+          git: S.optional(__S(110)),
+          docker: S.optional(__S(28)),
+          availableActions: __S(78),
+          regions: __S(17),
+          error: S.optional(__S(111)),
+          domains: S.optional(__S(17)),
+          runtime: __S(112),
           createdAt: S.Number,
           updatedAt: S.optional(S.Number),
         }),
@@ -6215,8 +4793,8 @@ function __c14(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: Deployment,
+          meta: __S(1),
+          data: __S(113),
         }),
       ).annotate({
         identifier: "V2DeploymentsGetDeploymentResponseBody",
@@ -6235,10 +4813,10 @@ function __c14(j: number): any {
           projectId: S.String,
           appId: S.String,
           environmentId: S.String,
-          status: DomainStatus,
+          status: S.String,
           verificationError: S.optional(S.String),
-          dnsRecords: DomainDnsRecordsList,
-          domainConnect: S.optional(DomainConnect),
+          dnsRecords: __S(38),
+          domainConnect: S.optional(__S(39)),
           createdAt: S.Number,
           updatedAt: S.optional(S.Number),
         }),
@@ -6246,8 +4824,8 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: Domain,
+          meta: __S(1),
+          data: __S(116),
         }),
       ).annotate({
         identifier: "V2DomainsGetDomainResponseBody",
@@ -6267,10 +4845,10 @@ function __c14(j: number): any {
           vCpus: S.Number,
           memoryMib: S.Number,
           storageMib: S.Number,
-          command: EnvironmentRuntimeCommandList,
-          healthcheck: S.optional(EnvironmentHealthcheck),
-          shutdownSignal: EnvironmentShutdownSignal,
-          upstreamProtocol: EnvironmentUpstreamProtocol,
+          command: __S(17),
+          healthcheck: S.optional(__S(70)),
+          shutdownSignal: S.String,
+          upstreamProtocol: S.String,
           openapiSpecPath: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnvironmentRuntime" });
@@ -6284,7 +4862,7 @@ function __c15(j: number): any {
           dockerfile: S.optional(S.String),
           rootDirectory: S.String,
           buildCommand: S.optional(S.String),
-          watchPaths: EnvironmentBuildWatchPathsList,
+          watchPaths: __S(17),
           autoDeploy: S.Boolean,
         }),
       ).annotate({ identifier: "EnvironmentBuild" });
@@ -6294,20 +4872,20 @@ function __c15(j: number): any {
           id: S.String,
           slug: S.String,
           description: S.String,
-          kind: EnvironmentKind,
+          kind: S.String,
           deleteProtection: S.Boolean,
           createdAt: S.Number,
           updatedAt: S.optional(S.Number),
-          runtime: S.optional(EnvironmentRuntime),
-          build: S.optional(EnvironmentBuild),
-          regions: S.optional(EnvironmentRegionsList),
+          runtime: S.optional(__S(119)),
+          build: S.optional(__S(120)),
+          regions: S.optional(__S(73)),
         }),
       ).annotate({ identifier: "Environment" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: Environment,
+          meta: __S(1),
+          data: __S(121),
         }),
       ).annotate({
         identifier: "V2EnvironmentsGetEnvironmentResponseBody",
@@ -6321,8 +4899,8 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: Identity,
+          meta: __S(1),
+          data: __S(22),
         }),
       ).annotate({
         identifier: "V2IdentitiesGetIdentityResponseBody",
@@ -6337,8 +4915,8 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: KeyResponseData,
+          meta: __S(1),
+          data: __S(23),
         }),
       ).annotate({ identifier: "V2KeysGetKeyResponseBody" });
     case 7:
@@ -6369,7 +4947,7 @@ function __c16(j: number): any {
           enabled: S.Boolean,
           keyspaceId: S.optional(S.String),
           appId: S.optional(S.String),
-          branding: S.optional(PortalBranding),
+          branding: S.optional(__S(128)),
           createdAt: S.Number,
           updatedAt: S.optional(S.Number),
         }),
@@ -6377,8 +4955,8 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: Portal,
+          meta: __S(1),
+          data: __S(129),
         }),
       ).annotate({
         identifier: "V2PortalGetPortalResponseBody",
@@ -6403,8 +4981,8 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: Project,
+          meta: __S(1),
+          data: __S(132),
         }),
       ).annotate({
         identifier: "V2ProjectsGetProjectResponseBody",
@@ -6429,8 +5007,8 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2GithubInstallAppResponseData,
+          meta: __S(1),
+          data: __S(135),
         }),
       ).annotate({
         identifier: "V2GithubInstallAppResponseBody",
@@ -6439,7 +5017,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           keyId: S.String,
-          permissions: KeysAddPermissionsRequestPermissionsList,
+          permissions: __S(17),
         }).pipe(T.Http({ method: "POST", uri: "/v2/keys.addPermissions", code: 200 })),
       ).annotate({
         identifier: "KeysAddPermissionsRequest",
@@ -6454,12 +5032,12 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "Permission" });
     case 3:
-      return S.Array(Permission);
+      return S.Array(__S(138));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2KeysAddPermissionsResponseData,
+          meta: __S(1),
+          data: __S(139),
         }),
       ).annotate({
         identifier: "V2KeysAddPermissionsResponseBody",
@@ -6468,7 +5046,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           keyId: S.String,
-          roles: KeysAddRolesRequestRolesList,
+          roles: __S(17),
         }).pipe(T.Http({ method: "POST", uri: "/v2/keys.addRoles", code: 200 })),
       ).annotate({ identifier: "KeysAddRolesRequest" });
     case 6:
@@ -6477,11 +5055,11 @@ function __c17(j: number): any {
           id: S.String,
           name: S.String,
           description: S.optional(S.String),
-          permissions: S.optional(RolePermissionsList),
+          permissions: S.optional(__S(139)),
         }),
       ).annotate({ identifier: "Role" });
     case 7:
-      return S.Array(Role);
+      return S.Array(__S(142));
   }
 }
 function __c18(j: number): any {
@@ -6489,8 +5067,8 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2KeysAddRolesResponseData,
+          meta: __S(1),
+          data: __S(143),
         }),
       ).annotate({
         identifier: "V2KeysAddRolesResponseBody",
@@ -6499,7 +5077,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           keyId: S.String,
-          permissions: KeysRemovePermissionsRequestPermissionsList,
+          permissions: __S(17),
         }).pipe(T.Http({ method: "POST", uri: "/v2/keys.removePermissions", code: 200 })),
       ).annotate({
         identifier: "KeysRemovePermissionsRequest",
@@ -6508,7 +5086,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           keyId: S.String,
-          roles: KeysRemoveRolesRequestRolesList,
+          roles: __S(17),
         }).pipe(T.Http({ method: "POST", uri: "/v2/keys.removeRoles", code: 200 })),
       ).annotate({ identifier: "KeysRemoveRolesRequest" });
     case 3:
@@ -6522,7 +5100,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           keyId: S.String,
-          permissions: KeysSetPermissionsRequestPermissionsList,
+          permissions: __S(17),
         }).pipe(T.Http({ method: "POST", uri: "/v2/keys.setPermissions", code: 200 })),
       ).annotate({
         identifier: "KeysSetPermissionsRequest",
@@ -6531,7 +5109,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           keyId: S.String,
-          roles: KeysSetRolesRequestRolesList,
+          roles: __S(17),
         }).pipe(T.Http({ method: "POST", uri: "/v2/keys.setRoles", code: 200 })),
       ).annotate({ identifier: "KeysSetRolesRequest" });
     case 6:
@@ -6539,14 +5117,14 @@ function __c18(j: number): any {
         S.Struct({
           keyId: S.String,
           value: S.optional(S.NullOr(S.Number)),
-          operation: KeysUpdateCreditsRequestOperation,
+          operation: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/v2/keys.updateCredits", code: 200 })),
       ).annotate({ identifier: "KeysUpdateCreditsRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: KeyCreditsData,
+          meta: __S(1),
+          data: __S(19),
         }),
       ).annotate({
         identifier: "V2KeysUpdateCreditsResponseBody",
@@ -6571,13 +5149,13 @@ function __c19(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/v2/apps.listApps", code: 200 })),
       ).annotate({ identifier: "ListAppsRequest" });
     case 2:
-      return S.Array(App);
+      return S.Array(__S(107));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2AppsListAppsResponseBodyDataList,
-          pagination: Pagination,
+          meta: __S(1),
+          data: __S(154),
+          pagination: __S(25),
         }),
       ).annotate({
         identifier: "V2AppsListAppsResponseBody",
@@ -6588,19 +5166,19 @@ function __c19(j: number): any {
           project: S.optional(S.String),
           app: S.optional(S.String),
           environment: S.optional(S.String),
-          status: S.optional(ListDeploymentsRequestStatusList),
+          status: S.optional(__S(78)),
           limit: S.optional(S.Number),
           cursor: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v2/deployments.listDeployments", code: 200 })),
       ).annotate({ identifier: "ListDeploymentsRequest" });
     case 5:
-      return S.Array(Deployment);
+      return S.Array(__S(113));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2DeploymentsListDeploymentsResponseBodyDataList,
-          pagination: Pagination,
+          meta: __S(1),
+          data: __S(157),
+          pagination: __S(25),
         }),
       ).annotate({
         identifier: "V2DeploymentsListDeploymentsResponseBody",
@@ -6621,13 +5199,13 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Domain);
+      return S.Array(__S(116));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2DomainsListDomainsResponseBodyDataList,
-          pagination: Pagination,
+          meta: __S(1),
+          data: __S(160),
+          pagination: __S(25),
         }),
       ).annotate({
         identifier: "V2DomainsListDomainsResponseBody",
@@ -6640,12 +5218,12 @@ function __c20(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/v2/environments.listEnvironments", code: 200 })),
       ).annotate({ identifier: "ListEnvironmentsRequest" });
     case 3:
-      return S.Array(Environment);
+      return S.Array(__S(121));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2EnvironmentsListEnvironmentsResponseBodyDataList,
+          meta: __S(1),
+          data: __S(163),
         }),
       ).annotate({
         identifier: "V2EnvironmentsListEnvironmentsResponseBody",
@@ -6668,14 +5246,14 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          kind: EnvironmentVariableKind,
+          kind: S.String,
           value: S.optional(S.String),
           description: S.optional(S.String),
           createdAt: S.Number,
         }),
       ).annotate({ identifier: "EnvironmentVariable" });
     case 7:
-      return S.Array(EnvironmentVariable);
+      return S.Array(__S(166));
   }
 }
 function __c21(j: number): any {
@@ -6683,9 +5261,9 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2EnvironmentsListEnvironmentVariablesResponseBodyDataList,
-          pagination: Pagination,
+          meta: __S(1),
+          data: __S(167),
+          pagination: __S(25),
         }),
       ).annotate({
         identifier: "V2EnvironmentsListEnvironmentVariablesResponseBody",
@@ -6699,13 +5277,13 @@ function __c21(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/v2/identities.listIdentities", code: 200 })),
       ).annotate({ identifier: "ListIdentitiesRequest" });
     case 2:
-      return S.Array(Identity);
+      return S.Array(__S(22));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2IdentitiesListIdentitiesResponseData,
-          pagination: Pagination,
+          meta: __S(1),
+          data: __S(170),
+          pagination: __S(25),
         }),
       ).annotate({
         identifier: "V2IdentitiesListIdentitiesResponseBody",
@@ -6721,9 +5299,9 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2PermissionsListPermissionsResponseData,
-          pagination: Pagination,
+          meta: __S(1),
+          data: __S(139),
+          pagination: __S(25),
         }),
       ).annotate({
         identifier: "V2PermissionsListPermissionsResponseBody",
@@ -6737,7 +5315,7 @@ function __c21(j: number): any {
         }).pipe(T.Http({ method: "POST", uri: "/v2/projects.listProjects", code: 200 })),
       ).annotate({ identifier: "ListProjectsRequest" });
     case 7:
-      return S.Array(Project);
+      return S.Array(__S(132));
   }
 }
 function __c22(j: number): any {
@@ -6745,9 +5323,9 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2ProjectsListProjectsResponseBodyDataList,
-          pagination: Pagination,
+          meta: __S(1),
+          data: __S(175),
+          pagination: __S(25),
         }),
       ).annotate({
         identifier: "V2ProjectsListProjectsResponseBody",
@@ -6765,8 +5343,8 @@ function __c22(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2LivenessResponseData,
+          meta: __S(1),
+          data: __S(178),
         }),
       ).annotate({ identifier: "V2LivenessResponseBody" });
     case 4:
@@ -6775,23 +5353,23 @@ function __c22(j: number): any {
           hash: S.String,
           name: S.optional(S.String),
           externalId: S.optional(S.String),
-          meta: S.optional(V2KeysMigrateKeyDataMetaMap),
-          roles: S.optional(V2KeysMigrateKeyDataRolesList),
-          permissions: S.optional(V2KeysMigrateKeyDataPermissionsList),
+          meta: S.optional(__S(2)),
+          roles: S.optional(__S(17)),
+          permissions: S.optional(__S(17)),
           expires: S.optional(S.Number),
           enabled: S.optional(S.Boolean),
-          credits: S.optional(KeyCreditsData),
-          ratelimits: S.optional(V2KeysMigrateKeyDataRatelimitsList),
+          credits: S.optional(__S(19)),
+          ratelimits: S.optional(__S(43)),
         }),
       ).annotate({ identifier: "V2KeysMigrateKeyData" });
     case 5:
-      return S.Array(V2KeysMigrateKeyData);
+      return S.Array(__S(180));
     case 6:
       return S.suspend(() =>
         S.Struct({
           migrationId: S.String,
           apiId: S.String,
-          keys: MigrateKeysRequestKeysList,
+          keys: __S(181),
         }).pipe(T.Http({ method: "POST", uri: "/v2/keys.migrateKeys", code: 200 })),
       ).annotate({ identifier: "MigrateKeysRequest" });
     case 7:
@@ -6808,12 +5386,12 @@ function __c22(j: number): any {
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(V2KeysMigrateKeysMigration);
+      return S.Array(__S(183));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          migrated: V2KeysMigrateKeysResponseDataMigratedList,
-          failed: V2KeysMigrateKeysResponseDataFailedList,
+          migrated: __S(184),
+          failed: __S(17),
         }),
       ).annotate({
         identifier: "V2KeysMigrateKeysResponseData",
@@ -6821,8 +5399,8 @@ function __c23(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2KeysMigrateKeysResponseData,
+          meta: __S(1),
+          data: __S(185),
         }),
       ).annotate({
         identifier: "V2KeysMigrateKeysResponseBody",
@@ -6848,8 +5426,8 @@ function __c23(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2PermissionsCreatePermissionResponseData,
+          meta: __S(1),
+          data: __S(188),
         }),
       ).annotate({
         identifier: "V2PermissionsCreatePermissionResponseBody",
@@ -6859,7 +5437,7 @@ function __c23(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          permissions: S.optional(PermissionsCreateRoleRequestPermissionsList),
+          permissions: S.optional(__S(17)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/permissions.createRole", code: 200 })),
       ).annotate({
         identifier: "PermissionsCreateRoleRequest",
@@ -6879,8 +5457,8 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2PermissionsCreateRoleResponseData,
+          meta: __S(1),
+          data: __S(191),
         }),
       ).annotate({
         identifier: "V2PermissionsCreateRoleResponseBody",
@@ -6912,8 +5490,8 @@ function __c24(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: Permission,
+          meta: __S(1),
+          data: __S(138),
         }),
       ).annotate({
         identifier: "V2PermissionsGetPermissionResponseBody",
@@ -6929,8 +5507,8 @@ function __c24(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: Role,
+          meta: __S(1),
+          data: __S(142),
         }),
       ).annotate({
         identifier: "V2PermissionsGetRoleResponseBody",
@@ -6952,9 +5530,9 @@ function __c25(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2PermissionsListRolesResponseData,
-          pagination: Pagination,
+          meta: __S(1),
+          data: __S(143),
+          pagination: __S(25),
         }),
       ).annotate({
         identifier: "V2PermissionsListRolesResponseBody",
@@ -6964,7 +5542,7 @@ function __c25(j: number): any {
         S.Struct({
           role: S.optional(S.String),
           roleId: S.optional(S.String),
-          permissions: PermissionsSetRolePermissionsRequestPermissionsList,
+          permissions: __S(17),
         }).pipe(T.Http({ method: "POST", uri: "/v2/permissions.setRolePermissions", code: 200 })),
       ).annotate({
         identifier: "PermissionsSetRolePermissionsRequest",
@@ -6974,7 +5552,7 @@ function __c25(j: number): any {
         S.Struct({
           portal: S.String,
           externalId: S.String,
-          scopes: PortalCreateSessionRequestScopesList,
+          scopes: __S(78),
           returnUrl: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v2/portal.createSession", code: 200 })),
       ).annotate({
@@ -6992,8 +5570,8 @@ function __c25(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2PortalCreateSessionResponseData,
+          meta: __S(1),
+          data: __S(203),
         }),
       ).annotate({
         identifier: "V2PortalCreateSessionResponseBody",
@@ -7018,8 +5596,8 @@ function __c25(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2PortalExchangeCodeResponseData,
+          meta: __S(1),
+          data: __S(206),
         }),
       ).annotate({
         identifier: "V2PortalExchangeCodeResponseBody",
@@ -7055,24 +5633,24 @@ function __c26(j: number): any {
         identifier: "V2PortalGetVerificationsDataPoint",
       });
     case 2:
-      return S.Array(V2PortalGetVerificationsDataPoint);
+      return S.Array(__S(209));
     case 3:
       return S.suspend(() =>
         S.Struct({
           keyId: S.String,
-          data: V2PortalGetVerificationsKeySeriesDataList,
+          data: __S(210),
         }),
       ).annotate({
         identifier: "V2PortalGetVerificationsKeySeries",
       });
     case 4:
-      return S.Array(V2PortalGetVerificationsKeySeries);
+      return S.Array(__S(211));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
+          meta: __S(1),
           bucketMillis: S.Number,
-          keys: V2PortalGetVerificationsResponseBodyKeysList,
+          keys: __S(212),
         }),
       ).annotate({
         identifier: "V2PortalGetVerificationsResponseBody",
@@ -7103,33 +5681,33 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: V2PortalListSessionsSessionStatus,
+          status: S.String,
           createdAt: S.Number,
           expiresAt: S.Number,
-          scopes: V2PortalListSessionsSessionScopesList,
+          scopes: __S(17),
         }),
       ).annotate({
         identifier: "V2PortalListSessionsSession",
       });
     case 1:
-      return S.Array(V2PortalListSessionsSession);
+      return S.Array(__S(216));
     case 2:
       return S.suspend(() =>
         S.Struct({
           externalId: S.String,
-          sessions: V2PortalListSessionsResponseDataSessionsList,
+          sessions: __S(217),
         }),
       ).annotate({
         identifier: "V2PortalListSessionsResponseData",
       });
     case 3:
-      return S.Array(V2PortalListSessionsResponseData);
+      return S.Array(__S(218));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2PortalListSessionsResponseBodyDataList,
-          pagination: Pagination,
+          meta: __S(1),
+          data: __S(219),
+          pagination: __S(25),
         }),
       ).annotate({
         identifier: "V2PortalListSessionsResponseBody",
@@ -7165,8 +5743,8 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2PortalRevokeSessionResponseData,
+          meta: __S(1),
+          data: __S(223),
         }),
       ).annotate({
         identifier: "V2PortalRevokeSessionResponseBody",
@@ -7201,8 +5779,8 @@ function __c28(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: RatelimitOverride,
+          meta: __S(1),
+          data: __S(227),
         }),
       ).annotate({
         identifier: "V2RatelimitGetOverrideResponseBody",
@@ -7232,8 +5810,8 @@ function __c28(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2RatelimitLimitResponseData,
+          meta: __S(1),
+          data: __S(230),
         }),
       ).annotate({
         identifier: "V2RatelimitLimitResponseBody",
@@ -7253,13 +5831,13 @@ function __c29(j: number): any {
         identifier: "RatelimitListOverridesRequest",
       });
     case 1:
-      return S.Array(RatelimitOverride);
+      return S.Array(__S(227));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2RatelimitListOverridesResponseData,
-          pagination: Pagination,
+          meta: __S(1),
+          data: __S(233),
+          pagination: __S(25),
         }),
       ).annotate({
         identifier: "V2RatelimitListOverridesResponseBody",
@@ -7277,11 +5855,11 @@ function __c29(j: number): any {
         identifier: "V2RatelimitLimitRequestBody",
       });
     case 4:
-      return S.Array(V2RatelimitLimitRequestBody);
+      return S.Array(__S(235));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: V2RatelimitMultiLimitRequestBody.pipe(T.HttpBody()),
+          body: __S(236).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/v2/ratelimit.multiLimit", code: 200 })),
       ).annotate({
         identifier: "RatelimitMultiLimitRequest",
@@ -7301,7 +5879,7 @@ function __c29(j: number): any {
         identifier: "V2RatelimitMultiLimitCheck",
       });
     case 7:
-      return S.Array(V2RatelimitMultiLimitCheck);
+      return S.Array(__S(238));
   }
 }
 function __c30(j: number): any {
@@ -7310,7 +5888,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           passed: S.Boolean,
-          limits: V2RatelimitMultiLimitResponseDataLimitsList,
+          limits: __S(239),
         }),
       ).annotate({
         identifier: "V2RatelimitMultiLimitResponseData",
@@ -7318,8 +5896,8 @@ function __c30(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2RatelimitMultiLimitResponseData,
+          meta: __S(1),
+          data: __S(240),
         }),
       ).annotate({
         identifier: "V2RatelimitMultiLimitResponseBody",
@@ -7346,8 +5924,8 @@ function __c30(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2RatelimitSetOverrideResponseData,
+          meta: __S(1),
+          data: __S(243),
         }),
       ).annotate({
         identifier: "V2RatelimitSetOverrideResponseBody",
@@ -7358,7 +5936,7 @@ function __c30(j: number): any {
           project: S.String,
           app: S.String,
           environment: S.String,
-          variables: RemoveEnvironmentVariablesRequestVariablesList,
+          variables: __S(17),
         }).pipe(
           T.Http({ method: "POST", uri: "/v2/environments.removeEnvironmentVariables", code: 200 }),
         ),
@@ -7369,7 +5947,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          permissions: RootKeysCreateKeyRequestPermissionsList,
+          permissions: __S(17),
           expires: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/rootKeys.createKey", code: 200 })),
       ).annotate({ identifier: "RootKeysCreateKeyRequest" });
@@ -7401,19 +5979,19 @@ function __c31(j: number): any {
           createdAt: S.Number,
           lastUsedAt: S.Number,
           expires: S.NullOr(S.Number),
-          permissions: V2RootKeysListKeysResponseDataPermissionsList,
+          permissions: __S(17),
         }),
       ).annotate({
         identifier: "V2RootKeysListKeysResponseData",
       });
     case 2:
-      return S.Array(V2RootKeysListKeysResponseData);
+      return S.Array(__S(249));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2RootKeysListKeysResponseBodyDataList,
-          pagination: Pagination,
+          meta: __S(1),
+          data: __S(250),
+          pagination: __S(25),
         }),
       ).annotate({
         identifier: "V2RootKeysListKeysResponseBody",
@@ -7431,7 +6009,7 @@ function __c31(j: number): any {
           keyId: S.String,
           name: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.Boolean),
-          permissions: S.optional(RootKeysUpdateKeyRequestPermissionsList),
+          permissions: S.optional(__S(17)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/rootKeys.updateKey", code: 200 })),
       ).annotate({ identifier: "RootKeysUpdateKeyRequest" });
     case 6:
@@ -7457,16 +6035,16 @@ function __c32(j: number): any {
           app: S.String,
           name: S.optional(S.String),
           slug: S.optional(S.String),
-          git: S.optional(S.NullOr(AppGitUpdateInput)),
-          oci: S.optional(AppOCI),
+          git: S.optional(S.NullOr(__S(27))),
+          oci: S.optional(__S(28)),
           deleteProtection: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/v2/apps.updateApp", code: 200 })),
       ).annotate({ identifier: "UpdateAppRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: App,
+          meta: __S(1),
+          data: __S(107),
         }),
       ).annotate({
         identifier: "V2AppsUpdateAppResponseBody",
@@ -7475,15 +6053,15 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           identity: S.String,
-          meta: S.optional(UpdateIdentityRequestMetaMap),
-          ratelimits: S.optional(UpdateIdentityRequestRatelimitsList),
+          meta: S.optional(__S(2)),
+          ratelimits: S.optional(__S(43)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/identities.updateIdentity", code: 200 })),
       ).annotate({ identifier: "UpdateIdentityRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          data: Identity,
-          meta: Meta,
+          data: __S(22),
+          meta: __S(1),
         }),
       ).annotate({
         identifier: "V2IdentitiesUpdateIdentityResponseBody",
@@ -7492,7 +6070,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           remaining: S.optional(S.NullOr(S.Number)),
-          refill: S.optional(S.NullOr(UpdateKeyCreditsRefill)),
+          refill: S.optional(S.NullOr(__S(18))),
         }),
       ).annotate({ identifier: "UpdateKeyCreditsData" });
     case 5:
@@ -7501,13 +6079,13 @@ function __c32(j: number): any {
           keyId: S.String,
           name: S.optional(S.NullOr(S.String)),
           externalId: S.optional(S.NullOr(S.String)),
-          meta: S.optional(S.NullOr(UpdateKeyRequestMetaMap)),
+          meta: S.optional(S.NullOr(__S(2))),
           expires: S.optional(S.NullOr(S.Number)),
-          credits: S.optional(S.NullOr(UpdateKeyCreditsData)),
-          ratelimits: S.optional(S.NullOr(UpdateKeyRequestRatelimitsList)),
+          credits: S.optional(S.NullOr(__S(260))),
+          ratelimits: S.optional(S.NullOr(__S(43))),
           enabled: S.optional(S.Boolean),
-          roles: S.optional(UpdateKeyRequestRolesList),
-          permissions: S.optional(UpdateKeyRequestPermissionsList),
+          roles: S.optional(__S(17)),
+          permissions: S.optional(__S(17)),
         }).pipe(T.Http({ method: "POST", uri: "/v2/keys.updateKey", code: 200 })),
       ).annotate({ identifier: "UpdateKeyRequest" });
     case 6:
@@ -7558,16 +6136,16 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "KeysVerifyKeyRatelimit" });
     case 3:
-      return S.Array(KeysVerifyKeyRatelimit);
+      return S.Array(__S(266));
     case 4:
       return S.suspend(() =>
         S.Struct({
           key: S.String,
-          tags: S.optional(VerifyKeyRequestTagsList),
+          tags: S.optional(__S(17)),
           permissions: S.optional(S.String),
-          credits: S.optional(KeysVerifyKeyCredits),
-          keyspaces: S.optional(VerifyKeyRequestKeyspacesList),
-          ratelimits: S.optional(VerifyKeyRequestRatelimitsList),
+          credits: S.optional(__S(265)),
+          keyspaces: S.optional(__S(17)),
+          ratelimits: S.optional(__S(267)),
           migrationId: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/v2/keys.verifyKey", code: 200 })),
       ).annotate({ identifier: "VerifyKeyRequest" });
@@ -7585,23 +6163,23 @@ function __c33(j: number): any {
         }),
       ).annotate({ identifier: "VerifyKeyRatelimitData" });
     case 6:
-      return S.Array(VerifyKeyRatelimitData);
+      return S.Array(__S(269));
     case 7:
       return S.suspend(() =>
         S.Struct({
           valid: S.Boolean,
-          code: V2KeysVerifyKeyResponseDataCode,
+          code: S.String,
           keyId: S.optional(S.String),
           keyspaceId: S.optional(S.String),
           name: S.optional(S.String),
-          meta: S.optional(V2KeysVerifyKeyResponseDataMetaMap),
+          meta: S.optional(__S(2)),
           expires: S.optional(S.Number),
           credits: S.optional(S.Number),
           enabled: S.optional(S.Boolean),
-          permissions: S.optional(V2KeysVerifyKeyResponseDataPermissionsList),
-          roles: S.optional(V2KeysVerifyKeyResponseDataRolesList),
-          identity: S.optional(Identity),
-          ratelimits: S.optional(V2KeysVerifyKeyResponseDataRatelimitsList),
+          permissions: S.optional(__S(17)),
+          roles: S.optional(__S(17)),
+          identity: S.optional(__S(22)),
+          ratelimits: S.optional(__S(270)),
         }),
       ).annotate({
         identifier: "V2KeysVerifyKeyResponseData",
@@ -7613,11 +6191,90 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          meta: Meta,
-          data: V2KeysVerifyKeyResponseData,
+          meta: __S(1),
+          data: __S(271),
         }),
       ).annotate({
         identifier: "V2KeysVerifyKeyResponseBody",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
   }
 }

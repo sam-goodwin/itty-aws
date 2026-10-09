@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -53,15 +55,8 @@ export type AccountsTableQueryColumnsItem =
   | AccountsTableRelationshipColumn
   | AccountsTableCustomPropertyColumn
   | AccountsTableCustomPropertyHistoryColumn;
-const AccountsTableQueryColumnsItem = S.Unknown as any as S.Schema<AccountsTableQueryColumnsItem>;
-
 /** Columns to load for each account. Account identity fields are always returned. */
 export type AccountsTableQueryColumnsList = Array<AccountsTableQueryColumnsItem>;
-const AccountsTableQueryColumnsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AccountsTableQueryColumnsList>;
-
 export type AccountsTableAccountFieldOperator =
   | "exact"
   | "is_not"
@@ -73,11 +68,6 @@ export type AccountsTableAccountFieldOperator =
   | "is_date_before"
   | "is_date_after";
 export type AccountsTableAccountFieldFilterValuesList = Array<string>;
-const AccountsTableAccountFieldFilterValuesList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AccountsTableAccountFieldFilterValuesList>;
-
 export interface AccountsTableAccountFieldFilter {
   field: AccountsTableAccountField | (string & {});
   kind?: string;
@@ -86,11 +76,6 @@ export interface AccountsTableAccountFieldFilter {
 }
 export type AccountsTableRelationshipOperator = "exact" | "is_not" | "is_set" | "is_not_set";
 export type AccountsTableRelationshipFilterUserIdsList = Array<number>;
-const AccountsTableRelationshipFilterUserIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AccountsTableRelationshipFilterUserIdsList>;
-
 export interface AccountsTableRelationshipFilter {
   definitionId: string;
   kind?: string;
@@ -127,21 +112,8 @@ export type AccountsTableQueryFilterGroupsItemItem =
   | AccountsTableAccountFieldFilter
   | AccountsTableRelationshipFilter
   | AccountsTableCustomPropertyFilter;
-const AccountsTableQueryFilterGroupsItemItem =
-  S.Unknown as any as S.Schema<AccountsTableQueryFilterGroupsItemItem>;
-
 export type AccountsTableQueryFilterGroupsItemList = Array<AccountsTableQueryFilterGroupsItemItem>;
-const AccountsTableQueryFilterGroupsItemList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AccountsTableQueryFilterGroupsItemList>;
-
 export type AccountsTableQueryFilterGroupsList = Array<AccountsTableQueryFilterGroupsItemList>;
-const AccountsTableQueryFilterGroupsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AccountsTableQueryFilterGroupsList>;
-
 export interface AccountsTableSearchFilter {
   kind?: string;
   query: string;
@@ -176,14 +148,7 @@ export type AccountsTableQueryFiltersItem =
   | AccountsTableAccountIdFilter
   | AccountsTableAccountFieldFilter
   | AccountsTableCustomPropertyFilter;
-const AccountsTableQueryFiltersItem = S.Unknown as any as S.Schema<AccountsTableQueryFiltersItem>;
-
 export type AccountsTableQueryFiltersList = Array<AccountsTableQueryFiltersItem>;
-const AccountsTableQueryFiltersList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AccountsTableQueryFiltersList>;
-
 export type AccountsTableCountMetric = AccountsTableTagsColumn;
 export type AccountsTableAggregation = "sum" | "avg" | "min" | "max" | "median";
 export interface AccountsTableAggregateMetric {
@@ -203,23 +168,12 @@ export type AccountsTableQueryMetricsItem =
   | AccountsTableTagsColumn
   | AccountsTableAggregateMetric
   | AccountsTableCountThresholdMetric;
-const AccountsTableQueryMetricsItem = S.Unknown as any as S.Schema<AccountsTableQueryMetricsItem>;
-
 export type AccountsTableQueryMetricsList = Array<AccountsTableQueryMetricsItem>;
-const AccountsTableQueryMetricsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AccountsTableQueryMetricsList>;
-
 export type BounceRatePageViewMode =
   | "count_pageviews"
   | "uniq_urls"
   | "uniq_page_screen_autocaptures";
-const BounceRatePageViewMode = S.String;
-
 export type FilterLogicalOperator = "AND" | "OR";
-const FilterLogicalOperator = S.String;
-
 export type CustomBotField =
   | "$raw_user_agent"
   | "$ip"
@@ -235,11 +189,7 @@ export type CustomBotField =
   | "$geoip_country_code"
   | "$referrer"
   | "$referring_domain";
-const CustomBotField = S.String;
-
 export type CustomBotMatcher = "contains" | "regex" | "exact" | "cidr";
-const CustomBotMatcher = S.String;
-
 export interface CustomBotCondition {
   id: string;
   /** The event property this condition reads. */
@@ -248,14 +198,7 @@ export interface CustomBotCondition {
   /** Matched against the property named by `key`. */
   pattern: string;
 }
-const CustomBotCondition = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CustomBotCondition>;
-
 export type CustomBotRuleItemsList = Array<CustomBotCondition>;
-const CustomBotRuleItemsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CustomBotRuleItemsList>;
-
 export interface CustomBotRule {
   /** Reported by `$virt_traffic_category`. Defaults to `custom`. */
   category?: string | null;
@@ -266,14 +209,7 @@ export interface CustomBotRule {
   /** Reported by `$virt_bot_name` and `$virt_bot_operator` when the rule matches. */
   name: string;
 }
-const CustomBotRule = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CustomBotRule>;
-
 export type HogQLQueryModifiersCustomBotDefinitionsList = Array<CustomBotRule>;
-const HogQLQueryModifiersCustomBotDefinitionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<HogQLQueryModifiersCustomBotDefinitionsList>;
-
 export type CustomChannelField =
   | "utm_source"
   | "utm_medium"
@@ -282,8 +218,6 @@ export type CustomChannelField =
   | "url"
   | "pathname"
   | "hostname";
-const CustomChannelField = S.String;
-
 export type CustomChannelOperator =
   | "exact"
   | "is_not"
@@ -293,81 +227,39 @@ export type CustomChannelOperator =
   | "not_icontains"
   | "regex"
   | "not_regex";
-const CustomChannelOperator = S.String;
-
 export type CustomChannelConditionValueCase1List = Array<string>;
 export type CustomChannelConditionValue = string | CustomChannelConditionValueCase1List;
-const CustomChannelConditionValue = S.Unknown as any as S.Schema<CustomChannelConditionValue>;
-
 export interface CustomChannelCondition {
   id?: string;
   key?: CustomChannelField | (string & {});
   op?: CustomChannelOperator | (string & {});
   value?: CustomChannelConditionValue | null;
 }
-const CustomChannelCondition = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CustomChannelCondition>;
-
 export type CustomChannelRuleItemsList = Array<CustomChannelCondition>;
-const CustomChannelRuleItemsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CustomChannelRuleItemsList>;
-
 export interface CustomChannelRule {
   channel_type?: string;
   combiner?: FilterLogicalOperator | (string & {});
   id?: string;
   items?: CustomChannelRuleItemsList;
 }
-const CustomChannelRule = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CustomChannelRule>;
-
 export type HogQLQueryModifiersCustomChannelTypeRulesList = Array<CustomChannelRule>;
-const HogQLQueryModifiersCustomChannelTypeRulesList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<HogQLQueryModifiersCustomChannelTypeRulesList>;
-
 export interface DataWarehouseEventsModifier {
   distinct_id_field?: string;
   id_field?: string;
   table_name?: string;
   timestamp_field?: string;
 }
-const DataWarehouseEventsModifier = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DataWarehouseEventsModifier>;
-
 export type HogQLQueryModifiersDataWarehouseEventsModifiersList =
   Array<DataWarehouseEventsModifier>;
-const HogQLQueryModifiersDataWarehouseEventsModifiersList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<HogQLQueryModifiersDataWarehouseEventsModifiersList>;
-
 export type HogQLQueryModifiersForceClickhouseDataSkippingIndexesList = Array<string>;
-const HogQLQueryModifiersForceClickhouseDataSkippingIndexesList =
-  AccountsTableAccountFieldFilterValuesList as any as S.Schema<HogQLQueryModifiersForceClickhouseDataSkippingIndexesList>;
-
 export type InCohortVia = "auto" | "leftjoin" | "subquery" | "leftjoin_conjoined";
-const InCohortVia = S.String;
-
 export type InlineCohortCalculation = "off" | "auto" | "always";
-const InlineCohortCalculation = S.String;
-
 export type MaterializationMode =
   | "auto"
   | "legacy_null_as_string"
   | "legacy_null_as_null"
   | "disabled";
-const MaterializationMode = S.String;
-
 export type MaterializedColumnsOptimizationMode = "disabled" | "optimized";
-const MaterializedColumnsOptimizationMode = S.String;
-
 export type ParserMode =
   | "cpp_only"
   | "cpp_with_rust_shadow"
@@ -376,30 +268,16 @@ export type ParserMode =
   | "rust_only"
   | "rust_py_only"
   | "rust_py_with_cpp_shadow";
-const ParserMode = S.String;
-
 export type PersonsArgMaxVersion = "auto" | "v1" | "v2";
-const PersonsArgMaxVersion = S.String;
-
 export type PersonsJoinMode = "inner" | "left";
-const PersonsJoinMode = S.String;
-
 export type PersonsOnEventsMode =
   | "disabled"
   | "person_id_no_override_properties_on_events"
   | "person_id_override_properties_on_events"
   | "person_id_override_properties_joined";
-const PersonsOnEventsMode = S.String;
-
 export type PropertyGroupsMode = "enabled" | "disabled" | "optimized";
-const PropertyGroupsMode = S.String;
-
 export type SessionTableVersion = "auto" | "v1" | "v2" | "v3";
-const SessionTableVersion = S.String;
-
 export type SessionsV2JoinMode = "string" | "uuid";
-const SessionsV2JoinMode = S.String;
-
 export interface HogQLQueryModifiers {
   bounceRateDurationSeconds?: number | null;
   bounceRatePageViewMode?: BounceRatePageViewMode | (string & {}) | null;
@@ -450,18 +328,8 @@ export interface HogQLQueryModifiers {
   /** Serve filters on the stored session-entry attribution properties (`$channel_type`, `$entry_utm_*`, `$entry_referring_domain`) by recomputing the value from the session's first pageview. Resolved server-side; not intended to be set by clients. */
   webAnalyticsFirstPageviewFilters?: boolean | null;
 }
-const HogQLQueryModifiers = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<HogQLQueryModifiers>;
-
 export type AccountsTableQueryResponseMetricsResultsList = Array<number | null>;
-const AccountsTableQueryResponseMetricsResultsList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AccountsTableQueryResponseMetricsResultsList>;
-
 export type QueryStatusLabelsList = Array<string>;
-const QueryStatusLabelsList =
-  AccountsTableAccountFieldFilterValuesList as any as S.Schema<QueryStatusLabelsList>;
-
 export interface ClickhouseQueryProgress {
   active_cpu_time?: number;
   bytes_read?: number;
@@ -469,22 +337,13 @@ export interface ClickhouseQueryProgress {
   rows_read?: number;
   time_elapsed?: number;
 }
-const ClickhouseQueryProgress = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ClickhouseQueryProgress>;
-
 export type QueryScanFixLocation =
   | "query"
   | "subquery"
   | "view"
   | "insight_date_range"
   | "dashboard_date_filter";
-const QueryScanFixLocation = S.String;
-
 export type QueryScanFindingKind = "no_event_filter" | "no_start_date" | "persons_join";
-const QueryScanFindingKind = S.String;
-
 export interface QueryScanWarning {
   /** Whether the person can change the query so it reads less and still answers the same question. Surfaces show the full advice and "Fix with AI" only when a finding is actionable. */
   actionable: boolean;
@@ -502,15 +361,8 @@ export interface QueryScanWarning {
   /** Shown to the person: what happened and what to do. */
   message: string;
 }
-const QueryScanWarning = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<QueryScanWarning>;
-
 /** Every finding, fixable or not. Empty when the analysis found none. */
 export type QueryScanAnalysisFindingsList = Array<QueryScanWarning>;
-const QueryScanAnalysisFindingsList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<QueryScanAnalysisFindingsList>;
-
 export interface QueryScanAnalysis {
   /** The message the Fix with AI button sends to the assistant. Absent when no finding can be fixed in the query. */
   assistant_prompt?: string | null;
@@ -521,8 +373,6 @@ export interface QueryScanAnalysis {
   /** How much of the project's events in the query's date range the query read, 0 to 1. */
   range_share?: number | null;
 }
-const QueryScanAnalysis = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<QueryScanAnalysis>;
-
 export interface QueryScanSummary {
   /** The stored analysis, put on the response when it is served. Absent while the analysis runs, and when none was requested. */
   analysis?: QueryScanAnalysis | null;
@@ -535,8 +385,6 @@ export interface QueryScanSummary {
   /** Rows ClickHouse read for the last fresh run, all tables included. */
   rows_read: number;
 }
-const QueryScanSummary = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<QueryScanSummary>;
-
 export interface QueryStatus {
   budget_remaining_bytes?: number | null;
   bytes_read?: number | null;
@@ -568,79 +416,33 @@ export interface QueryStatus {
   task_id?: string | null;
   team_id?: number;
 }
-const QueryStatus = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<QueryStatus>;
-
 export interface ResolvedDateRangeResponse {
   date_from?: string;
   date_to?: string;
 }
-const ResolvedDateRangeResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ResolvedDateRangeResponse>;
-
 /** Requested direct Account fields, keyed by their typed field reference. */
 export type AccountsTableRowAccountFieldsMap = { [key: string]: string | null | undefined };
-const AccountsTableRowAccountFieldsMap = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<AccountsTableRowAccountFieldsMap>;
-
 export type AccountsTableRowCustomPropertiesValue = string | number | boolean;
-const AccountsTableRowCustomPropertiesValue =
-  S.Unknown as any as S.Schema<AccountsTableRowCustomPropertiesValue>;
-
 /** Current values keyed by requested custom property definition ID. */
 export type AccountsTableRowCustomPropertiesMap = {
   [key: string]: AccountsTableRowCustomPropertiesValue | null | undefined;
 };
-const AccountsTableRowCustomPropertiesMap = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<AccountsTableRowCustomPropertiesMap>;
-
 export interface AccountsTableCustomPropertyHistoryPoint {
   timestamp: string;
   value: number;
 }
-const AccountsTableCustomPropertyHistoryPoint = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<AccountsTableCustomPropertyHistoryPoint>;
-
 export type AccountsTableRowCustomPropertyHistoryValueList =
   Array<AccountsTableCustomPropertyHistoryPoint>;
-const AccountsTableRowCustomPropertyHistoryValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<AccountsTableRowCustomPropertyHistoryValueList>;
-
 /** Numeric write history keyed by requested custom property definition ID. */
 export type AccountsTableRowCustomPropertyHistoryMap = {
   [key: string]: AccountsTableRowCustomPropertyHistoryValueList | undefined;
 };
-const AccountsTableRowCustomPropertyHistoryMap = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<AccountsTableRowCustomPropertyHistoryMap>;
-
 export type AccountsTableRowRelationshipsValueList = Array<number>;
-const AccountsTableRowRelationshipsValueList =
-  AccountsTableRelationshipFilterUserIdsList as any as S.Schema<AccountsTableRowRelationshipsValueList>;
-
 /** Active assignee user IDs keyed by requested relationship definition ID. */
 export type AccountsTableRowRelationshipsMap = {
   [key: string]: AccountsTableRowRelationshipsValueList | undefined;
 };
-const AccountsTableRowRelationshipsMap = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<AccountsTableRowRelationshipsMap>;
-
 export type AccountsTableRowTagsList = Array<string>;
-const AccountsTableRowTagsList =
-  AccountsTableAccountFieldFilterValuesList as any as S.Schema<AccountsTableRowTagsList>;
-
 export interface AccountsTableRow {
   /** Requested direct Account fields, keyed by their typed field reference. */
   accountFields: AccountsTableRowAccountFieldsMap;
@@ -660,28 +462,14 @@ export interface AccountsTableRow {
   /** Sorted tag names. Omitted when the request does not select tags. */
   tags?: AccountsTableRowTagsList | null;
 }
-const AccountsTableRow = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<AccountsTableRow>;
-
 export type AccountsTableQueryResponseResultsList = Array<AccountsTableRow>;
-const AccountsTableQueryResponseResultsList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<AccountsTableQueryResponseResultsList>;
-
 export interface QueryTiming {
   /** Key. Shortened to 'k' to save on data. */
   k?: string;
   /** Time in seconds. Shortened to 't' to save on data. */
   t?: number;
 }
-const QueryTiming = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<QueryTiming>;
-
 export type AccountsTableQueryResponseTimingsList = Array<QueryTiming>;
-const AccountsTableQueryResponseTimingsList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<AccountsTableQueryResponseTimingsList>;
-
 export interface DataWarehouseSourceUsage {
   /** ExternalDataSource id */
   id: string;
@@ -690,18 +478,8 @@ export interface DataWarehouseSourceUsage {
   /** Warehouse table name that was referenced */
   table_name: string;
 }
-const DataWarehouseSourceUsage = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DataWarehouseSourceUsage>;
-
 export type AccountsTableQueryResponseUsedDataWarehouseSourcesList =
   Array<DataWarehouseSourceUsage>;
-const AccountsTableQueryResponseUsedDataWarehouseSourcesList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<AccountsTableQueryResponseUsedDataWarehouseSourcesList>;
-
 export interface DataWarehouseSyncWarning {
   /** Human-readable warning shown to the user */
   message: string;
@@ -731,15 +509,7 @@ export interface AccessControlFilterWarning {
 export type AccountsTableQueryResponseWarningsItem =
   | DataWarehouseSyncWarning
   | AccessControlFilterWarning;
-const AccountsTableQueryResponseWarningsItem =
-  S.Unknown as any as S.Schema<AccountsTableQueryResponseWarningsItem>;
-
 export type AccountsTableQueryResponseWarningsList = Array<AccountsTableQueryResponseWarningsItem>;
-const AccountsTableQueryResponseWarningsList = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<AccountsTableQueryResponseWarningsList>;
-
 export interface AccountsTableQueryResponse {
   /** Query error. Returned only if 'explain' or `modifiers.debug` is true. Throws an error otherwise. */
   error?: string | null;
@@ -767,11 +537,6 @@ export interface AccountsTableQueryResponse {
   /** Warnings about data warehouse sources referenced by the query whose latest sync failed, is paused, hit a billing limit, or is otherwise stale. Results may not reflect current source data. Accumulated across every HogQL execution that contributes to this response -- so insights backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings as raw HogQL queries. Also carries access control warnings when a system-table query filters out objects the user can't access. */
   warnings?: AccountsTableQueryResponseWarningsList | null;
 }
-const AccountsTableQueryResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<AccountsTableQueryResponse>;
-
 /** A typed column that supports server-side sorting. */
 export type AccountsTableSortColumn =
   | AccountsTableAccountFieldColumn
@@ -779,18 +544,12 @@ export type AccountsTableSortColumn =
   | AccountsTableTagsColumn
   | AccountsTableRelationshipColumn
   | AccountsTableCustomPropertyColumn;
-const AccountsTableSortColumn = S.Unknown as any as S.Schema<AccountsTableSortColumn>;
-
 export type AccountsTableSortDirection = "asc" | "desc";
-const AccountsTableSortDirection = S.String;
-
 export interface AccountsTableSort {
   /** A typed column that supports server-side sorting. */
   column: AccountsTableSortColumn;
   direction: AccountsTableSortDirection | (string & {});
 }
-const AccountsTableSort = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<AccountsTableSort>;
-
 export interface QueryLogTags {
   /** Name of the query, preferably unique. For example web_analytics_vitals */
   name?: string | null;
@@ -801,8 +560,6 @@ export interface QueryLogTags {
   /** Scene where this query is shown in the UI. Use string, there's no need to churn the Schema when we add a new Scene * */
   scene?: string | null;
 }
-const QueryLogTags = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<QueryLogTags>;
-
 export interface AccountsTableQuery2 {
   /** Columns to load for each account. Account identity fields are always returned. */
   columns: AccountsTableQueryColumnsList;
@@ -827,13 +584,9 @@ export interface AccountsTableQuery2 {
   /** version of the node, used for schema migrations */
   version?: number | null;
 }
-const AccountsTableQuery2 = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<AccountsTableQuery2>;
-
 export type BreakdownFilterBreakdownCase1Item = string | number;
 export type BreakdownFilterBreakdownCase1List = Array<BreakdownFilterBreakdownCase1Item>;
 export type BreakdownFilterBreakdown = string | BreakdownFilterBreakdownCase1List | number;
-const BreakdownFilterBreakdown = S.Unknown as any as S.Schema<BreakdownFilterBreakdown>;
-
 export type BreakdownType =
   | "cohort"
   | "person"
@@ -845,11 +598,7 @@ export type BreakdownType =
   | "data_warehouse"
   | "data_warehouse_person_property"
   | "revenue_analytics";
-const BreakdownType = S.String;
-
 export type BreakdownProperty = string | number;
-const BreakdownProperty = S.Unknown as any as S.Schema<BreakdownProperty>;
-
 export type MultipleBreakdownType =
   | "person"
   | "event"
@@ -861,8 +610,6 @@ export type MultipleBreakdownType =
   | "revenue_analytics"
   | "data_warehouse"
   | "data_warehouse_person_property";
-const MultipleBreakdownType = S.String;
-
 export interface Breakdown {
   group_type_index?: number | null;
   histogram_bin_count?: number | null;
@@ -870,14 +617,7 @@ export interface Breakdown {
   property?: BreakdownProperty;
   type?: MultipleBreakdownType | (string & {}) | null;
 }
-const Breakdown = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Breakdown>;
-
 export type BreakdownFilterBreakdownsList = Array<Breakdown>;
-const BreakdownFilterBreakdownsList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<BreakdownFilterBreakdownsList>;
-
 export interface BreakdownFilter {
   breakdown?: BreakdownFilterBreakdown | null;
   breakdown_group_type_index?: number | null;
@@ -889,8 +629,6 @@ export interface BreakdownFilter {
   breakdown_type?: BreakdownType | (string & {}) | null;
   breakdowns?: BreakdownFilterBreakdownsList | null;
 }
-const BreakdownFilter = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<BreakdownFilter>;
-
 export type IntervalType =
   | "second"
   | "minute"
@@ -900,8 +638,6 @@ export type IntervalType =
   | "month"
   | "quarter"
   | "year";
-const IntervalType = S.String;
-
 export type PropertyOperator =
   | "exact"
   | "is_not"
@@ -1315,14 +1051,7 @@ export type DashboardFilterPropertiesItem =
   | AccountCustomPropertyFilter
   | WorkflowVariablePropertyFilter
   | BehavioralPropertyFilter;
-const DashboardFilterPropertiesItem = S.Unknown as any as S.Schema<DashboardFilterPropertiesItem>;
-
 export type DashboardFilterPropertiesList = Array<DashboardFilterPropertiesItem>;
-const DashboardFilterPropertiesList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<DashboardFilterPropertiesList>;
-
 export interface DashboardFilter {
   breakdown_filter?: BreakdownFilter | null;
   date_from?: string | null;
@@ -1334,11 +1063,7 @@ export interface DashboardFilter {
   interval?: IntervalType | (string & {}) | null;
   properties?: DashboardFilterPropertiesList | null;
 }
-const DashboardFilter = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<DashboardFilter>;
-
 export type LimitContext = "posthog_ai";
-const LimitContext = S.String;
-
 export type RefreshType =
   | "async"
   | "async_except_on_cache_miss"
@@ -1347,27 +1072,14 @@ export type RefreshType =
   | "force_blocking"
   | "force_cache"
   | "lazy_async";
-const RefreshType = S.String;
-
 export type CreateCustomerAnalyticsAccountsTableQueryRequestVariablesOverrideValueMap = {
   [key: string]: unknown | undefined;
 };
-const CreateCustomerAnalyticsAccountsTableQueryRequestVariablesOverrideValueMap =
-  /*@__PURE__*/ __L.at(
-    __c6,
-    0,
-  ) as any as S.Schema<CreateCustomerAnalyticsAccountsTableQueryRequestVariablesOverrideValueMap>;
-
 export type CreateCustomerAnalyticsAccountsTableQueryRequestVariablesOverrideMap = {
   [key: string]:
     | CreateCustomerAnalyticsAccountsTableQueryRequestVariablesOverrideValueMap
     | undefined;
 };
-const CreateCustomerAnalyticsAccountsTableQueryRequestVariablesOverrideMap = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreateCustomerAnalyticsAccountsTableQueryRequestVariablesOverrideMap>;
-
 export interface CreateCustomerAnalyticsAccountsTableQueryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1385,11 +1097,6 @@ export interface CreateCustomerAnalyticsAccountsTableQueryRequest {
   refresh?: RefreshType | (string & {});
   variables_override?: CreateCustomerAnalyticsAccountsTableQueryRequestVariablesOverrideMap | null;
 }
-const CreateCustomerAnalyticsAccountsTableQueryRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateCustomerAnalyticsAccountsTableQueryRequest>;
-
 export type CreateCustomerAnalyticsAccountsTableQueryError = PosthogOpError;
 /** Run a Customer Analytics accounts table query. */
 export const createCustomerAnalyticsAccountsTableQuery: API.OperationMethod<
@@ -1398,8 +1105,8 @@ export const createCustomerAnalyticsAccountsTableQuery: API.OperationMethod<
   CreateCustomerAnalyticsAccountsTableQueryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCustomerAnalyticsAccountsTableQueryRequest,
-  output: AccountsTableQueryResponse,
+  input: __S(50) as any as S.Schema<CreateCustomerAnalyticsAccountsTableQueryRequest>,
+  output: __S(39) as any as S.Schema<AccountsTableQueryResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1409,25 +1116,25 @@ export const createCustomerAnalyticsAccountsTableQuery: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AccountsTableQueryColumnsItem);
+      return S.Array(S.Unknown);
     case 1:
       return S.Array(S.String);
     case 2:
       return S.Array(S.Number);
     case 3:
-      return S.Array(AccountsTableQueryFilterGroupsItemItem);
+      return S.Array(S.Unknown);
     case 4:
-      return S.Array(AccountsTableQueryFilterGroupsItemList);
+      return S.Array(__S(3));
     case 5:
-      return S.Array(AccountsTableQueryFiltersItem);
+      return S.Array(S.Unknown);
     case 6:
-      return S.Array(AccountsTableQueryMetricsItem);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          key: CustomBotField,
-          matcher: CustomBotMatcher,
+          key: S.String,
+          matcher: S.String,
           pattern: S.String,
         }),
       ).annotate({ identifier: "CustomBotCondition" });
@@ -1436,41 +1143,41 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CustomBotCondition);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           category: S.optional(S.NullOr(S.String)),
-          combiner: FilterLogicalOperator,
+          combiner: S.String,
           id: S.String,
-          items: CustomBotRuleItemsList,
+          items: __S(8),
           name: S.String,
         }),
       ).annotate({ identifier: "CustomBotRule" });
     case 2:
-      return S.Array(CustomBotRule);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          key: S.optional(CustomChannelField),
-          op: S.optional(CustomChannelOperator),
-          value: S.optional(S.NullOr(CustomChannelConditionValue)),
+          key: S.optional(S.String),
+          op: S.optional(S.String),
+          value: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "CustomChannelCondition" });
     case 4:
-      return S.Array(CustomChannelCondition);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
           channel_type: S.optional(S.String),
-          combiner: S.optional(FilterLogicalOperator),
+          combiner: S.optional(S.String),
           id: S.optional(S.String),
-          items: S.optional(CustomChannelRuleItemsList),
+          items: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "CustomChannelRule" });
     case 6:
-      return S.Array(CustomChannelRule);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1487,47 +1194,39 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DataWarehouseEventsModifier);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
           bounceRateDurationSeconds: S.optional(S.NullOr(S.Number)),
-          bounceRatePageViewMode: S.optional(S.NullOr(BounceRatePageViewMode)),
+          bounceRatePageViewMode: S.optional(S.NullOr(S.String)),
           convertToProjectTimezone: S.optional(S.NullOr(S.Boolean)),
           cookielessTrafficIsRegular: S.optional(S.NullOr(S.Boolean)),
-          customBotDefinitions: S.optional(S.NullOr(HogQLQueryModifiersCustomBotDefinitionsList)),
-          customChannelTypeRules: S.optional(
-            S.NullOr(HogQLQueryModifiersCustomChannelTypeRulesList),
-          ),
-          dataWarehouseEventsModifiers: S.optional(
-            S.NullOr(HogQLQueryModifiersDataWarehouseEventsModifiersList),
-          ),
+          customBotDefinitions: S.optional(S.NullOr(__S(10))),
+          customChannelTypeRules: S.optional(S.NullOr(__S(14))),
+          dataWarehouseEventsModifiers: S.optional(S.NullOr(__S(16))),
           debug: S.optional(S.NullOr(S.Boolean)),
-          forceClickhouseDataSkippingIndexes: S.optional(
-            S.NullOr(HogQLQueryModifiersForceClickhouseDataSkippingIndexesList),
-          ),
+          forceClickhouseDataSkippingIndexes: S.optional(S.NullOr(__S(1))),
           formatCsvAllowDoubleQuotes: S.optional(S.NullOr(S.Boolean)),
-          inCohortVia: S.optional(S.NullOr(InCohortVia)),
-          inlineCohortCalculation: S.optional(S.NullOr(InlineCohortCalculation)),
-          materializationMode: S.optional(S.NullOr(MaterializationMode)),
-          materializedColumnsOptimizationMode: S.optional(
-            S.NullOr(MaterializedColumnsOptimizationMode),
-          ),
+          inCohortVia: S.optional(S.NullOr(S.String)),
+          inlineCohortCalculation: S.optional(S.NullOr(S.String)),
+          materializationMode: S.optional(S.NullOr(S.String)),
+          materializedColumnsOptimizationMode: S.optional(S.NullOr(S.String)),
           mergeFederatedAggregateJoins: S.optional(S.NullOr(S.Boolean)),
           optimizeJoinedFilters: S.optional(S.NullOr(S.Boolean)),
           optimizeProjections: S.optional(S.NullOr(S.Boolean)),
-          parserMode: S.optional(S.NullOr(ParserMode)),
+          parserMode: S.optional(S.NullOr(S.String)),
           personIdPushdown: S.optional(S.NullOr(S.Boolean)),
-          personsArgMaxVersion: S.optional(S.NullOr(PersonsArgMaxVersion)),
-          personsJoinMode: S.optional(S.NullOr(PersonsJoinMode)),
-          personsOnEventsMode: S.optional(S.NullOr(PersonsOnEventsMode)),
-          propertyGroupsMode: S.optional(S.NullOr(PropertyGroupsMode)),
+          personsArgMaxVersion: S.optional(S.NullOr(S.String)),
+          personsJoinMode: S.optional(S.NullOr(S.String)),
+          personsOnEventsMode: S.optional(S.NullOr(S.String)),
+          propertyGroupsMode: S.optional(S.NullOr(S.String)),
           pushDownPredicates: S.optional(S.NullOr(S.Boolean)),
           s3TableUseInvalidColumns: S.optional(S.NullOr(S.Boolean)),
           sessionIdPushdown: S.optional(S.NullOr(S.Boolean)),
           sessionPropertyPreAggregation: S.optional(S.NullOr(S.Boolean)),
-          sessionTableVersion: S.optional(S.NullOr(SessionTableVersion)),
-          sessionsV2JoinMode: S.optional(S.NullOr(SessionsV2JoinMode)),
+          sessionTableVersion: S.optional(S.NullOr(S.String)),
+          sessionsV2JoinMode: S.optional(S.NullOr(S.String)),
           timings: S.optional(S.NullOr(S.Boolean)),
           typeAwareCastSimplification: S.optional(S.NullOr(S.Boolean)),
           useMaterializedViews: S.optional(S.NullOr(S.Boolean)),
@@ -1558,18 +1257,18 @@ function __c2(j: number): any {
           cause: S.optional(S.NullOr(S.String)),
           evidence: S.optional(S.NullOr(S.String)),
           fix: S.String,
-          fix_location: S.optional(S.NullOr(QueryScanFixLocation)),
-          kind: QueryScanFindingKind,
+          fix_location: S.optional(S.NullOr(S.String)),
+          kind: S.String,
           message: S.String,
         }),
       ).annotate({ identifier: "QueryScanWarning" });
     case 5:
-      return S.Array(QueryScanWarning);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
           assistant_prompt: S.optional(S.NullOr(S.String)),
-          findings: QueryScanAnalysisFindingsList,
+          findings: __S(21),
           project_share: S.optional(S.NullOr(S.Number)),
           range_share: S.optional(S.NullOr(S.Number)),
         }),
@@ -1577,7 +1276,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          analysis: S.optional(S.NullOr(QueryScanAnalysis)),
+          analysis: S.optional(S.NullOr(__S(22))),
           analysis_requested: S.optional(S.NullOr(S.Boolean)),
           duration_ms: S.Number,
           killed: S.optional(S.NullOr(S.Boolean)),
@@ -1603,11 +1302,11 @@ function __c3(j: number): any {
           expiration_time: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
           insight_id: S.optional(S.NullOr(S.Number)),
-          labels: S.optional(S.NullOr(QueryStatusLabelsList)),
+          labels: S.optional(S.NullOr(__S(1))),
           pickup_time: S.optional(S.NullOr(S.String)),
           query_async: S.optional(S.Boolean),
-          query_progress: S.optional(S.NullOr(ClickhouseQueryProgress)),
-          query_scan: S.optional(S.NullOr(QueryScanSummary)),
+          query_progress: S.optional(S.NullOr(__S(19))),
+          query_scan: S.optional(S.NullOr(__S(23))),
           results: S.optional(S.Unknown),
           start_time: S.optional(S.NullOr(S.String)),
           task_id: S.optional(S.NullOr(S.String)),
@@ -1626,7 +1325,7 @@ function __c3(j: number): any {
     case 2:
       return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.String));
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(AccountsTableRowCustomPropertiesValue));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1637,11 +1336,11 @@ function __c3(j: number): any {
         identifier: "AccountsTableCustomPropertyHistoryPoint",
       });
     case 5:
-      return S.Array(AccountsTableCustomPropertyHistoryPoint);
+      return S.Array(__S(28));
     case 6:
-      return S.Record(S.String, AccountsTableRowCustomPropertyHistoryValueList);
+      return S.Record(S.String, __S(29));
     case 7:
-      return S.Record(S.String, AccountsTableRowRelationshipsValueList);
+      return S.Record(S.String, __S(2));
   }
 }
 function __c4(j: number): any {
@@ -1649,20 +1348,20 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accountFields: AccountsTableRowAccountFieldsMap,
-          customProperties: AccountsTableRowCustomPropertiesMap,
-          customPropertyHistory: AccountsTableRowCustomPropertyHistoryMap,
+          accountFields: __S(26),
+          customProperties: __S(27),
+          customPropertyHistory: __S(30),
           externalId: S.optional(S.NullOr(S.String)),
           id: S.String,
           logoDomain: S.optional(S.NullOr(S.String)),
           name: S.String,
           noteCount: S.optional(S.NullOr(S.Number)),
-          relationships: AccountsTableRowRelationshipsMap,
-          tags: S.optional(S.NullOr(AccountsTableRowTagsList)),
+          relationships: __S(31),
+          tags: S.optional(S.NullOr(__S(1))),
         }),
       ).annotate({ identifier: "AccountsTableRow" });
     case 1:
-      return S.Array(AccountsTableRow);
+      return S.Array(__S(32));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1671,7 +1370,7 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "QueryTiming" });
     case 3:
-      return S.Array(QueryTiming);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1681,9 +1380,9 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "DataWarehouseSourceUsage" });
     case 5:
-      return S.Array(DataWarehouseSourceUsage);
+      return S.Array(__S(36));
     case 6:
-      return S.Array(AccountsTableQueryResponseWarningsItem);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1692,18 +1391,16 @@ function __c4(j: number): any {
           hogql: S.optional(S.NullOr(S.String)),
           kind: S.optional(S.String),
           limit: S.Number,
-          metricsResults: S.optional(S.NullOr(AccountsTableQueryResponseMetricsResultsList)),
-          modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
+          metricsResults: S.optional(S.NullOr(__S(18))),
+          modifiers: S.optional(S.NullOr(__S(17))),
           offset: S.Number,
-          query_status: S.optional(S.NullOr(QueryStatus)),
-          resolved_compare_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
-          resolved_date_range: S.optional(S.NullOr(ResolvedDateRangeResponse)),
-          results: AccountsTableQueryResponseResultsList,
-          timings: S.optional(S.NullOr(AccountsTableQueryResponseTimingsList)),
-          used_data_warehouse_sources: S.optional(
-            S.NullOr(AccountsTableQueryResponseUsedDataWarehouseSourcesList),
-          ),
-          warnings: S.optional(S.NullOr(AccountsTableQueryResponseWarningsList)),
+          query_status: S.optional(S.NullOr(__S(24))),
+          resolved_compare_date_range: S.optional(S.NullOr(__S(25))),
+          resolved_date_range: S.optional(S.NullOr(__S(25))),
+          results: __S(33),
+          timings: S.optional(S.NullOr(__S(35))),
+          used_data_warehouse_sources: S.optional(S.NullOr(__S(37))),
+          warnings: S.optional(S.NullOr(__S(38))),
         }),
       ).annotate({
         identifier: "AccountsTableQueryResponse",
@@ -1715,8 +1412,8 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          column: AccountsTableSortColumn,
-          direction: AccountsTableSortDirection,
+          column: S.Unknown,
+          direction: S.String,
         }),
       ).annotate({ identifier: "AccountsTableSort" });
     case 1:
@@ -1731,19 +1428,19 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          columns: AccountsTableQueryColumnsList,
-          filterGroups: S.optional(S.NullOr(AccountsTableQueryFilterGroupsList)),
-          filters: S.optional(S.NullOr(AccountsTableQueryFiltersList)),
+          columns: __S(0),
+          filterGroups: S.optional(S.NullOr(__S(4))),
+          filters: S.optional(S.NullOr(__S(5))),
           includeChurned: S.optional(S.NullOr(S.Boolean)),
           includeIgnored: S.optional(S.NullOr(S.Boolean)),
           kind: S.optional(S.String),
           limit: S.optional(S.NullOr(S.Number)),
-          metrics: S.optional(S.NullOr(AccountsTableQueryMetricsList)),
-          modifiers: S.optional(S.NullOr(HogQLQueryModifiers)),
+          metrics: S.optional(S.NullOr(__S(6))),
+          modifiers: S.optional(S.NullOr(__S(17))),
           offset: S.optional(S.NullOr(S.Number)),
-          response: S.optional(S.NullOr(AccountsTableQueryResponse)),
-          sort: S.optional(S.NullOr(AccountsTableSort)),
-          tags: S.optional(S.NullOr(QueryLogTags)),
+          response: S.optional(S.NullOr(__S(39))),
+          sort: S.optional(S.NullOr(__S(40))),
+          tags: S.optional(S.NullOr(__S(41))),
           version: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "AccountsTableQuery2" });
@@ -1753,38 +1450,38 @@ function __c5(j: number): any {
           group_type_index: S.optional(S.NullOr(S.Number)),
           histogram_bin_count: S.optional(S.NullOr(S.Number)),
           normalize_url: S.optional(S.NullOr(S.Boolean)),
-          property: S.optional(BreakdownProperty),
-          type: S.optional(S.NullOr(MultipleBreakdownType)),
+          property: S.optional(S.Unknown),
+          type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Breakdown" });
     case 4:
-      return S.Array(Breakdown);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          breakdown: S.optional(S.NullOr(BreakdownFilterBreakdown)),
+          breakdown: S.optional(S.NullOr(S.Unknown)),
           breakdown_group_type_index: S.optional(S.NullOr(S.Number)),
           breakdown_hide_other_aggregation: S.optional(S.NullOr(S.Boolean)),
           breakdown_histogram_bin_count: S.optional(S.NullOr(S.Number)),
           breakdown_limit: S.optional(S.NullOr(S.Number)),
           breakdown_normalize_url: S.optional(S.NullOr(S.Boolean)),
           breakdown_path_cleaning: S.optional(S.NullOr(S.Boolean)),
-          breakdown_type: S.optional(S.NullOr(BreakdownType)),
-          breakdowns: S.optional(S.NullOr(BreakdownFilterBreakdownsList)),
+          breakdown_type: S.optional(S.NullOr(S.String)),
+          breakdowns: S.optional(S.NullOr(__S(44))),
         }),
       ).annotate({ identifier: "BreakdownFilter" });
     case 6:
-      return S.Array(DashboardFilterPropertiesItem);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
-          breakdown_filter: S.optional(S.NullOr(BreakdownFilter)),
+          breakdown_filter: S.optional(S.NullOr(__S(45))),
           date_from: S.optional(S.NullOr(S.String)),
           date_to: S.optional(S.NullOr(S.String)),
           explicitDate: S.optional(S.NullOr(S.Boolean)),
           filterTestAccounts: S.optional(S.NullOr(S.Boolean)),
-          interval: S.optional(S.NullOr(IntervalType)),
-          properties: S.optional(S.NullOr(DashboardFilterPropertiesList)),
+          interval: S.optional(S.NullOr(S.String)),
+          properties: S.optional(S.NullOr(__S(46))),
         }),
       ).annotate({ identifier: "DashboardFilter" });
   }
@@ -1794,24 +1491,19 @@ function __c6(j: number): any {
     case 0:
       return S.Record(S.String, S.Unknown);
     case 1:
-      return S.Record(
-        S.String,
-        CreateCustomerAnalyticsAccountsTableQueryRequestVariablesOverrideValueMap,
-      );
+      return S.Record(S.String, __S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           async: S.optional(S.NullOr(S.Boolean)),
-          query: AccountsTableQuery2,
+          query: __S(42),
           client_query_id: S.optional(S.NullOr(S.String)),
-          filters_override: S.optional(S.NullOr(DashboardFilter)),
-          limit_context: S.optional(S.NullOr(LimitContext)),
+          filters_override: S.optional(S.NullOr(__S(47))),
+          limit_context: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          refresh: S.optional(RefreshType),
-          variables_override: S.optional(
-            S.NullOr(CreateCustomerAnalyticsAccountsTableQueryRequestVariablesOverrideMap),
-          ),
+          refresh: S.optional(S.String),
+          variables_override: S.optional(S.NullOr(__S(49))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1822,5 +1514,28 @@ function __c6(j: number): any {
       ).annotate({
         identifier: "CreateCustomerAnalyticsAccountsTableQueryRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
   }
 }

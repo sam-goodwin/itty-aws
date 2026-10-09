@@ -6,6 +6,8 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -16,8 +18,6 @@ export type ServiceTerminationFutureUseEnum =
   | "SUBSCRIBE_AN_OTHER_SERVICE"
   | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR"
   | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR";
-const ServiceTerminationFutureUseEnum = S.String;
-
 /** All reasons you can provide for a service termination */
 export type ServiceTerminationReasonEnum =
   | "FEATURES_DONT_SUIT_ME"
@@ -34,8 +34,6 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
-const ServiceTerminationReasonEnum = S.String;
-
 export interface ConfirmIpServiceTerminationRequest {
   /** The internal name of your IP services */
   serviceName: string;
@@ -48,34 +46,17 @@ export interface ConfirmIpServiceTerminationRequest {
   /** The termination token sent by email to the admin contact */
   token: string;
 }
-const ConfirmIpServiceTerminationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ConfirmIpServiceTerminationRequest>;
-
 export type ConfirmIpServiceTerminationResponse = string;
-const ConfirmIpServiceTerminationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ConfirmIpServiceTerminationResponse>;
-
 export interface CreateIpBringYourOwnIpAggregateRequest {
   ip: string;
   /** IP range to create by aggregation of all it's children */
   aggregationIp: string;
 }
-const CreateIpBringYourOwnIpAggregateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateIpBringYourOwnIpAggregateRequest>;
-
 /** Information about routing */
 export interface IpRoutedTo {
   /** Service where ip is routed to */
   serviceName?: string | null;
 }
-const IpRoutedTo = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<IpRoutedTo>;
-
 /** different task operation */
 export type IpTaskFunctionEnum =
   | "arinBlockReassign"
@@ -83,8 +64,6 @@ export type IpTaskFunctionEnum =
   | "checkAndReleaseIp"
   | "genericMoveFloatingIp"
   | "supernetByoipFailoverPartitioning";
-const IpTaskFunctionEnum = S.String;
-
 /** different task status */
 export type IpTaskStatusEnum =
   | "cancelled"
@@ -94,8 +73,6 @@ export type IpTaskStatusEnum =
   | "init"
   | "ovhError"
   | "todo";
-const IpTaskStatusEnum = S.String;
-
 /** IP tasks */
 export interface IpIpTask {
   /** Details of this task */
@@ -115,58 +92,32 @@ export interface IpIpTask {
   /** the id of the task */
   taskId?: number;
 }
-const IpIpTask = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<IpIpTask>;
-
 export interface CreateIpBringYourOwnIpSliceRequest {
   ip: string;
   /** Size (ip mask) of the IPs to create inside given IP */
   slicingSize: number;
 }
-const CreateIpBringYourOwnIpSliceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateIpBringYourOwnIpSliceRequest>;
-
 export interface CreateIpChangeOrgRequest {
   ip: string;
   /** Your organisation id (RIPE_XXXX) to add on block informations */
   organisation: string;
 }
-const CreateIpChangeOrgRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateIpChangeOrgRequest>;
-
 export interface CreateIpDelegationRequest {
   ip: string;
   /** Target for reverse delegation on IPv6 */
   target: string;
 }
-const CreateIpDelegationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateIpDelegationRequest>;
-
 /** Your reverse delegations on IPv6 subnet */
 export interface IpReverseDelegation {
   /** NS target for delegation */
   target?: string;
 }
-const IpReverseDelegation = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<IpReverseDelegation>;
-
 export interface CreateIpFirewallRequest {
   ip: string;
   ipOnFirewall: string;
 }
-const CreateIpFirewallRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateIpFirewallRequest>;
-
 /** Possible values for firewall ip state */
 export type IpFirewallStateEnum = "disableFirewallPending" | "enableFirewallPending" | "ok";
-const IpFirewallStateEnum = S.String;
-
 /** Your IP on firewall */
 export interface IpFirewallIp {
   enabled?: boolean;
@@ -174,16 +125,10 @@ export interface IpFirewallIp {
   /** Current state of your ip on firewall */
   state?: IpFirewallStateEnum;
 }
-const IpFirewallIp = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<IpFirewallIp>;
-
 /** Possible values for action */
 export type IpFirewallActionEnum = "deny" | "permit";
-const IpFirewallActionEnum = S.String;
-
 /** Possible values for protocol */
 export type IpFirewallProtocolEnum = "ah" | "esp" | "gre" | "icmp" | "ipv4" | "tcp" | "udp";
-const IpFirewallProtocolEnum = S.String;
-
 /** Possible values for action */
 export type IpFirewallSequenceRangeEnum =
   | 0
@@ -206,12 +151,8 @@ export type IpFirewallSequenceRangeEnum =
   | 17
   | 18
   | 19;
-const IpFirewallSequenceRangeEnum = S.Number;
-
 /** Possible values for TCP option - only for TCP protocol */
 export type IpFirewallTCPOptionEnum = "established" | "syn";
-const IpFirewallTCPOptionEnum = S.String;
-
 /** Possible option for TCP */
 export interface IpFirewallOptionTCP {
   /** TCP fragments */
@@ -219,8 +160,6 @@ export interface IpFirewallOptionTCP {
   /** TCP option */
   option?: IpFirewallTCPOptionEnum | (string & {}) | null;
 }
-const IpFirewallOptionTCP = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<IpFirewallOptionTCP>;
-
 export interface CreateIpFirewallRuleRequest {
   ip: string;
   ipOnFirewall: string;
@@ -239,15 +178,8 @@ export interface CreateIpFirewallRuleRequest {
   /** Option on your rule. Can only be used with TCP protocol */
   tcpOption?: IpFirewallOptionTCP;
 }
-const CreateIpFirewallRuleRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateIpFirewallRuleRequest>;
-
 /** Possible values for firewall rule state */
 export type IpFirewallRuleStateEnum = "creationPending" | "ok" | "removalPending";
-const IpFirewallRuleStateEnum = S.String;
-
 /** Rule on ip */
 export interface IpFirewallNetworkRule {
   /** Action on this rule */
@@ -272,18 +204,11 @@ export interface IpFirewallNetworkRule {
   /** TCP option on your rule */
   tcpOption?: string | null;
 }
-const IpFirewallNetworkRule = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<IpFirewallNetworkRule>;
-
 /** Start and end points (inclusive) of a range */
 export interface ComplexTypeRangeLong {
   from?: number;
   to?: number;
 }
-const ComplexTypeRangeLong = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ComplexTypeRangeLong>;
-
 /** Possible values for game rule protocol */
 export type IpGameMitigationRuleProtocolEnum =
   | "arkSurvivalEvolved"
@@ -305,8 +230,6 @@ export type IpGameMitigationRuleProtocolEnum =
   | "teamspeak3"
   | "trackmaniaShootmania"
   | "valheim";
-const IpGameMitigationRuleProtocolEnum = S.String;
-
 export interface CreateIpGameRuleRequest {
   ip: string;
   ipOnGame: string;
@@ -315,15 +238,8 @@ export interface CreateIpGameRuleRequest {
   /** The protocol running behind the given port(s). See supportedProtocols on the IP to know which values are valid here */
   protocol: IpGameMitigationRuleProtocolEnum | (string & {});
 }
-const CreateIpGameRuleRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateIpGameRuleRequest>;
-
 /** Possible values for game mitigation rule state */
 export type IpGameMitigationRuleStateEnum = "createRulePending" | "deleteRulePending" | "ok";
-const IpGameMitigationRuleStateEnum = S.String;
-
 /** Rule on ip:ports */
 export interface IpGameMitigationRule {
   /** ID of the rule */
@@ -333,18 +249,11 @@ export interface IpGameMitigationRule {
   /** Current state of your rule */
   state?: IpGameMitigationRuleStateEnum;
 }
-const IpGameMitigationRule = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<IpGameMitigationRule>;
-
 export interface CreateIpMigrationTokenRequest {
   ip: string;
   /** destination customer ID */
   customerId: string;
 }
-const CreateIpMigrationTokenRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateIpMigrationTokenRequest>;
-
 /** IP migration to OVH */
 export interface IpIpMigrationToken {
   /** destination customer ID */
@@ -352,21 +261,12 @@ export interface IpIpMigrationToken {
   /** migration token */
   token?: string;
 }
-const IpIpMigrationToken = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<IpIpMigrationToken>;
-
 export interface CreateIpMitigationRequest {
   ip: string;
   ipOnMitigation: string;
 }
-const CreateIpMitigationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateIpMitigationRequest>;
-
 /** Possible values for mitigation state */
 export type IpMitigationStateEnum = "creationPending" | "ok" | "removalPending";
-const IpMitigationStateEnum = S.String;
-
 /** Your IP on mitigation */
 export interface IpMitigationIp {
   /** Set on true if your ip is on auto-mitigation */
@@ -377,27 +277,16 @@ export interface IpMitigationIp {
   /** Current state of your ip on mitigation */
   state?: IpMitigationStateEnum;
 }
-const IpMitigationIp = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<IpMitigationIp>;
-
 /** Possible values for auto mitigation timeout (minutes) */
 export type IpMitigationProfileAutoMitigationTimeOutEnum = 0 | 15 | 60 | 360 | 1560;
-const IpMitigationProfileAutoMitigationTimeOutEnum = S.Number;
-
 export interface CreateIpMitigationProfileRequest {
   ip: string;
   /** Delay to wait before remove ip from auto mitigation after an attack */
   autoMitigationTimeOut: IpMitigationProfileAutoMitigationTimeOutEnum | (number & {});
   ipMitigationProfile: string;
 }
-const CreateIpMitigationProfileRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateIpMitigationProfileRequest>;
-
 /** Possible values for mitigation profile state */
 export type IpMitigationProfileStateEnum = "ok" | "tasksPending";
-const IpMitigationProfileStateEnum = S.String;
-
 /** Mitigation profile for your ip */
 export interface IpMitigationProfile {
   /** Delay to wait before remove ip from auto mitigation after an attack */
@@ -406,30 +295,19 @@ export interface IpMitigationProfile {
   /** Current state of your mitigation profile */
   state?: IpMitigationProfileStateEnum;
 }
-const IpMitigationProfile = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<IpMitigationProfile>;
-
 export interface CreateIpParkRequest {
   ip: string;
 }
-const CreateIpParkRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CreateIpParkRequest>;
-
 export interface CreateIpReverseRequest {
   ip: string;
   ipReverse: string;
   reverse: string;
 }
-const CreateIpReverseRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateIpReverseRequest>;
-
 /** Your reverse records on IP */
 export interface IpReverseIp {
   ipReverse?: string;
   reverse?: string;
 }
-const IpReverseIp = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<IpReverseIp>;
-
 export interface CreateIpServiceChangeContactRequest {
   /** The internal name of your IP services */
   serviceName: string;
@@ -440,117 +318,47 @@ export interface CreateIpServiceChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-const CreateIpServiceChangeContactRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateIpServiceChangeContactRequest>;
-
 export type CreateIpServiceChangeContactResponseBodyList = Array<number>;
-const CreateIpServiceChangeContactResponseBodyList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateIpServiceChangeContactResponseBodyList>;
-
 export type CreateIpServiceChangeContactResponse = CreateIpServiceChangeContactResponseBodyList;
-const CreateIpServiceChangeContactResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateIpServiceChangeContactResponse>;
-
 export interface DeleteIpDelegationRequest {
   ip: string;
   /** NS target for delegation */
   target: string;
 }
-const DeleteIpDelegationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeleteIpDelegationRequest>;
-
 export interface DeleteIpDelegationResponse {}
-const DeleteIpDelegationResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeleteIpDelegationResponse>;
-
 export interface DeleteIpFirewallRequest {
   ip: string;
   ipOnFirewall: string;
 }
-const DeleteIpFirewallRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DeleteIpFirewallRequest>;
-
 export type DeleteIpFirewallResponse = string;
-const DeleteIpFirewallResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DeleteIpFirewallResponse>;
-
 export interface DeleteIpFirewallRuleRequest {
   ip: string;
   ipOnFirewall: string;
   sequence: number;
 }
-const DeleteIpFirewallRuleRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DeleteIpFirewallRuleRequest>;
-
 export interface DeleteIpGameRuleRequest {
   ip: string;
   ipOnGame: string;
   /** ID of the rule */
   id: number;
 }
-const DeleteIpGameRuleRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DeleteIpGameRuleRequest>;
-
 export interface DeleteIpMitigationRequest {
   ip: string;
   ipOnMitigation: string;
 }
-const DeleteIpMitigationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DeleteIpMitigationRequest>;
-
 export interface DeleteIpMitigationProfileRequest {
   ip: string;
   ipMitigationProfile: string;
 }
-const DeleteIpMitigationProfileRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DeleteIpMitigationProfileRequest>;
-
 export interface DeleteIpMitigationProfileResponse {}
-const DeleteIpMitigationProfileResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DeleteIpMitigationProfileResponse>;
-
 export interface DeleteIpReverseRequest {
   ip: string;
   ipReverse: string;
 }
-const DeleteIpReverseRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DeleteIpReverseRequest>;
-
 export interface DeleteIpReverseResponse {}
-const DeleteIpReverseResponse =
-  DeleteIpDelegationResponse as any as S.Schema<DeleteIpReverseResponse>;
-
 export interface GetIpRequest {
   ip: string;
 }
-const GetIpRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GetIpRequest>;
-
 /** ISO country codes */
 export type CoreTypesCountryEnum =
   | "ac"
@@ -813,15 +621,8 @@ export type CoreTypesCountryEnum =
   | "za"
   | "zm"
   | "zw";
-const CoreTypesCountryEnum = S.String;
-
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-const IamResourceMetadataTagsMap = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<IamResourceMetadataTagsMap>;
-
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
   /** Resource display name */
@@ -833,8 +634,6 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-const IamResourceMetadata = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<IamResourceMetadata>;
-
 /** Region names */
 export type CoreTypesRegionCodenameEnum =
   | "af-central-lz-abj"
@@ -893,15 +692,8 @@ export type CoreTypesRegionCodenameEnum =
   | "us-west-lz-pao"
   | "us-west-lz-phx"
   | "us-west-lz-sea";
-const CoreTypesRegionCodenameEnum = S.String;
-
 /** Where is the IP used/usable, in the form of region codenames (alpha) */
 export type IpIpWithIAMRegionsList = Array<CoreTypesRegionCodenameEnum>;
-const IpIpWithIAMRegionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<IpIpWithIAMRegionsList>;
-
 /** Possible values for ip type */
 export type IpIpTypeEnum =
   | "cdn"
@@ -920,12 +712,8 @@ export type IpIpTypeEnum =
   | "vps"
   | "vrack"
   | "xdsl";
-const IpIpTypeEnum = S.String;
-
 /** Possible values for IP version */
 export type IpIpVersionEnum = 4 | 6;
-const IpIpVersionEnum = S.Number;
-
 /** Your IP */
 export interface IpIpWithIAM {
   /** Is this IP part of the Bring your own IP program (alpha) */
@@ -953,19 +741,13 @@ export interface IpIpWithIAM {
   /** Version of the IP (alpha) */
   version?: IpIpVersionEnum;
 }
-const IpIpWithIAM = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<IpIpWithIAM>;
-
 export interface GetIpAntihackRequest {
   ip: string;
   /** your IP */
   ipBlocked: string;
 }
-const GetIpAntihackRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<GetIpAntihackRequest>;
-
 /** Possible values for IP state */
 export type IpBlockedIpStateEnum = "blocked" | "unblocking";
-const IpBlockedIpStateEnum = S.String;
-
 /** Blocked IP information */
 export interface IpBlockedIp {
   /** The last blocking date */
@@ -979,19 +761,13 @@ export interface IpBlockedIp {
   /** Time (in seconds) remaining before you can request your IP to be unblocked */
   time?: number;
 }
-const IpBlockedIp = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<IpBlockedIp>;
-
 export interface GetIpArpRequest {
   ip: string;
   /** your IP */
   ipBlocked: string;
 }
-const GetIpArpRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<GetIpArpRequest>;
-
 /** Possible values for IP state */
 export type IpArpStateEnum = "blocked" | "unblocking";
-const IpArpStateEnum = S.String;
-
 /** ARP blocked IP information */
 export interface IpArpBlockedIp {
   /** The last blocking date */
@@ -1005,53 +781,32 @@ export interface IpArpBlockedIp {
   /** Time (in seconds) remaining before you can request your IP to be unblocked */
   time?: number;
 }
-const IpArpBlockedIp = IpBlockedIp as any as S.Schema<IpArpBlockedIp>;
-
 export interface GetIpDelegationRequest {
   ip: string;
   /** NS target for delegation */
   target: string;
 }
-const GetIpDelegationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetIpDelegationRequest>;
-
 export interface GetIpFirewallRequest {
   ip: string;
   ipOnFirewall: string;
 }
-const GetIpFirewallRequest = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<GetIpFirewallRequest>;
-
 export interface GetIpFirewallRuleRequest {
   ip: string;
   ipOnFirewall: string;
   sequence: number;
 }
-const GetIpFirewallRuleRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<GetIpFirewallRuleRequest>;
-
 export interface GetIpGameRequest {
   ip: string;
   ipOnGame: string;
 }
-const GetIpGameRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<GetIpGameRequest>;
-
 /** Possible values for udp mitigation rule state */
 export type IpGameMitigationStateEnum =
   | "cleanRulesPending"
   | "firewallModeDisablePending"
   | "firewallModeEnablePending"
   | "ok";
-const IpGameMitigationStateEnum = S.String;
-
 /** List of protocols available on this IP */
 export type IpGameMitigationSupportedProtocolsList = Array<IpGameMitigationRuleProtocolEnum>;
-const IpGameMitigationSupportedProtocolsList =
-  IpIpWithIAMRegionsList as any as S.Schema<IpGameMitigationSupportedProtocolsList>;
-
 /** GAME Anti-DDoS */
 export interface IpGameMitigation {
   /** Firewall mode : in UDP, only allow traffic matching your rules (as well as established traffic). If not enabled, traffic to ports not defined in your rules will be permited. TCP traffic is unaffected by this. */
@@ -1063,53 +818,30 @@ export interface IpGameMitigation {
   /** List of protocols available on this IP */
   supportedProtocols?: IpGameMitigationSupportedProtocolsList;
 }
-const IpGameMitigation = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<IpGameMitigation>;
-
 export interface GetIpGameRuleRequest {
   ip: string;
   ipOnGame: string;
   /** ID of the rule */
   id: number;
 }
-const GetIpGameRuleRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<GetIpGameRuleRequest>;
-
 export interface GetIpMigrationTokenRequest {
   ip: string;
 }
-const GetIpMigrationTokenRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetIpMigrationTokenRequest>;
-
 export interface GetIpMitigationRequest {
   ip: string;
   ipOnMitigation: string;
 }
-const GetIpMitigationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<GetIpMitigationRequest>;
-
 export interface GetIpMitigationProfileRequest {
   ip: string;
   ipMitigationProfile: string;
 }
-const GetIpMitigationProfileRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<GetIpMitigationProfileRequest>;
-
 export interface GetIpPhishingRequest {
   ip: string;
   /** Internal ID of the phishing entry */
   id: number;
 }
-const GetIpPhishingRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<GetIpPhishingRequest>;
-
 /** Possible values for antiphishing state */
 export type IpAntiphishingStateEnum = "blocked" | "blocking" | "unblocked" | "unblocking";
-const IpAntiphishingStateEnum = S.String;
-
 /** Phishing URLs hosted on your IP */
 export interface IpAntiphishing {
   /** Date of the event */
@@ -1123,32 +855,22 @@ export interface IpAntiphishing {
   /** Phishing URL */
   urlPhishing?: string;
 }
-const IpAntiphishing = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<IpAntiphishing>;
-
 export interface GetIpReverseRequest {
   ip: string;
   ipReverse: string;
 }
-const GetIpReverseRequest = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<GetIpReverseRequest>;
-
 export interface GetIpRipeRequest {
   ip: string;
 }
-const GetIpRipeRequest = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<GetIpRipeRequest>;
-
 /** IP block RIPE informations */
 export interface IpRipeInfos {
   description?: string | null;
   netname?: string | null;
 }
-const IpRipeInfos = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<IpRipeInfos>;
-
 export interface GetIpServiceRequest {
   /** The internal name of your IP services */
   serviceName: string;
 }
-const GetIpServiceRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GetIpServiceRequest>;
-
 /** Your IP linked to service */
 export interface IpServiceIpWithIAM {
   canBeTerminated?: boolean;
@@ -1164,22 +886,12 @@ export interface IpServiceIpWithIAM {
   routedTo?: IpRoutedTo | null;
   type?: IpIpTypeEnum;
 }
-const IpServiceIpWithIAM = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<IpServiceIpWithIAM>;
-
 export interface GetIpServiceServiceInfosRequest {
   /** The internal name of your IP services */
   serviceName: string;
 }
-const GetIpServiceServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GetIpServiceServiceInfosRequest>;
-
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-const ServicesServicePossibleRenewPeriodList =
-  CreateIpServiceChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
-
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
   /** The service is automatically renewed */
@@ -1193,8 +905,6 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-const ServiceRenewType = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ServiceRenewType>;
-
 /** Detailed renewal type of a service */
 export type ServiceRenewalTypeEnum =
   | "automaticForcedProduct"
@@ -1205,8 +915,6 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-const ServiceRenewalTypeEnum = S.String;
-
 export type ServiceStateEnum =
   | "autorenewInProgress"
   | "expired"
@@ -1214,8 +922,6 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-const ServiceStateEnum = S.String;
-
 /** Details about a Service */
 export interface ServicesService {
   /** Indicates that the service can be set up to be deleted at expiration */
@@ -1235,19 +941,13 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-const ServicesService = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<ServicesService>;
-
 export interface GetIpSpamRequest {
   ip: string;
   /** IP address which is sending spam */
   ipSpamming: string;
 }
-const GetIpSpamRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GetIpSpamRequest>;
-
 /** Possible values for spam state */
 export type IpSpamStateEnum = "blockedForSpam" | "unblocked" | "unblocking";
-const IpSpamStateEnum = S.String;
-
 /** Your IP spam stats */
 export interface IpSpamIp {
   /** Last date the ip was blocked */
@@ -1259,32 +959,15 @@ export interface IpSpamIp {
   /** Time (in seconds) while the IP will be blocked */
   time?: number;
 }
-const IpSpamIp = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<IpSpamIp>;
-
 export interface GetIpTaskRequest {
   ip: string;
   /** the id of the task */
   taskId: number;
 }
-const GetIpTaskRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<GetIpTaskRequest>;
-
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-const IamResourceTagFilterInput =
-  DeleteIpDelegationResponse as any as S.Schema<IamResourceTagFilterInput>;
-
 export type ListIpRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-const ListIpRequestIamTagsValueList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ListIpRequestIamTagsValueList>;
-
 export type ListIpRequestIamTagsMap = { [key: string]: ListIpRequestIamTagsValueList | undefined };
-const ListIpRequestIamTagsMap = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListIpRequestIamTagsMap>;
-
 export interface ListIpRequest {
   /** Filter the value of campus property (ilike) (alpha) */
   campus?: string;
@@ -1303,55 +986,27 @@ export interface ListIpRequest {
   /** Filter the value of version property (=) (alpha) */
   version?: IpIpVersionEnum | (number & {});
 }
-const ListIpRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<ListIpRequest>;
-
 export type ListIpResponseBodyList = Array<string>;
-const ListIpResponseBodyList = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ListIpResponseBodyList>;
-
 export type ListIpResponse = ListIpResponseBodyList;
-const ListIpResponse = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ListIpResponse>;
-
 export interface ListIpAntihackRequest {
   ip: string;
   /** Filter the value of state property (=) */
   state?: IpBlockedIpStateEnum | (string & {});
 }
-const ListIpAntihackRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListIpAntihackRequest>;
-
 export type ListIpAntihackResponseBodyList = Array<string>;
 export type ListIpAntihackResponse = ListIpAntihackResponseBodyList;
-const ListIpAntihackResponse = ListIpResponse as any as S.Schema<ListIpAntihackResponse>;
-
 export interface ListIpArpRequest {
   ip: string;
   /** Filter the value of state property (=) */
   state?: IpArpStateEnum | (string & {});
 }
-const ListIpArpRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ListIpArpRequest>;
-
 export type ListIpArpResponseBodyList = Array<string>;
 export type ListIpArpResponse = ListIpArpResponseBodyList;
-const ListIpArpResponse = ListIpResponse as any as S.Schema<ListIpArpResponse>;
-
 export interface ListIpBringYourOwnIpAggregateRequest {
   ip: string;
 }
-const ListIpBringYourOwnIpAggregateRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ListIpBringYourOwnIpAggregateRequest>;
-
 /** Existing Additional IP(s) that will be aggregated */
 export type IpByoipAggregationPreviewChildrenIpsList = Array<string>;
-const IpByoipAggregationPreviewChildrenIpsList =
-  ListIpResponseBodyList as any as S.Schema<IpByoipAggregationPreviewChildrenIpsList>;
-
 /** Preview of an IP aggregation on BYOIP Additional IPs */
 export interface IpByoipAggregationPreview {
   /** Aggregation Additional IP that will be created */
@@ -1359,36 +1014,13 @@ export interface IpByoipAggregationPreview {
   /** Existing Additional IP(s) that will be aggregated */
   childrenIps?: IpByoipAggregationPreviewChildrenIpsList;
 }
-const IpByoipAggregationPreview = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<IpByoipAggregationPreview>;
-
 export type ListIpBringYourOwnIpAggregateResponseBodyList = Array<IpByoipAggregationPreview>;
-const ListIpBringYourOwnIpAggregateResponseBodyList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ListIpBringYourOwnIpAggregateResponseBodyList>;
-
 export type ListIpBringYourOwnIpAggregateResponse = ListIpBringYourOwnIpAggregateResponseBodyList;
-const ListIpBringYourOwnIpAggregateResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ListIpBringYourOwnIpAggregateResponse>;
-
 export interface ListIpBringYourOwnIpSliceRequest {
   ip: string;
 }
-const ListIpBringYourOwnIpSliceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ListIpBringYourOwnIpSliceRequest>;
-
 /** Additional IP(s) that will be created */
 export type IpByoipSlicingPreviewChildrenIpsList = Array<string>;
-const IpByoipSlicingPreviewChildrenIpsList =
-  ListIpResponseBodyList as any as S.Schema<IpByoipSlicingPreviewChildrenIpsList>;
-
 /** Preview of an IP slicing on BYOIP Additional IPs */
 export interface IpByoipSlicingPreview {
   /** Additional IP(s) that will be created */
@@ -1396,31 +1028,11 @@ export interface IpByoipSlicingPreview {
   /** Slicing size */
   slicingSize?: number;
 }
-const IpByoipSlicingPreview = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<IpByoipSlicingPreview>;
-
 export type ListIpBringYourOwnIpSliceResponseBodyList = Array<IpByoipSlicingPreview>;
-const ListIpBringYourOwnIpSliceResponseBodyList = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ListIpBringYourOwnIpSliceResponseBodyList>;
-
 export type ListIpBringYourOwnIpSliceResponse = ListIpBringYourOwnIpSliceResponseBodyList;
-const ListIpBringYourOwnIpSliceResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<ListIpBringYourOwnIpSliceResponse>;
-
 export interface ListIpCampusRequest {}
-const ListIpCampusRequest = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<ListIpCampusRequest>;
-
 /** List of RIRs whose IPs can be imported in the campus */
 export type IpCampusBringYourOwnIpSupportedRirForIpList = Array<string>;
-const IpCampusBringYourOwnIpSupportedRirForIpList =
-  ListIpResponseBodyList as any as S.Schema<IpCampusBringYourOwnIpSupportedRirForIpList>;
-
 /** ovh datacenter */
 export type DedicatedDatacenterEnum =
   | "bhs1"
@@ -1479,8 +1091,6 @@ export type DedicatedDatacenterEnum =
   | "yyz01";
 /** List of datacenters in the campus */
 export type IpCampusDatacentersList = Array<DedicatedDatacenterEnum>;
-const IpCampusDatacentersList = IpIpWithIAMRegionsList as any as S.Schema<IpCampusDatacentersList>;
-
 /** Possible values for IP campuses' names */
 export type IpCampusEnum =
   | "BHS"
@@ -1497,8 +1107,6 @@ export type IpCampusEnum =
   | "WAW"
   | "YNM"
   | "YYZ";
-const IpCampusEnum = S.String;
-
 /** Campus of an IP address */
 export interface IpCampus {
   /** List of RIRs whose IPs can be imported in the campus */
@@ -1510,32 +1118,13 @@ export interface IpCampus {
   /** Campus name */
   name?: IpCampusEnum;
 }
-const IpCampus = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<IpCampus>;
-
 export type ListIpCampusResponseBodyList = Array<IpCampus>;
-const ListIpCampusResponseBodyList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ListIpCampusResponseBodyList>;
-
 export type ListIpCampusResponse = ListIpCampusResponseBodyList;
-const ListIpCampusResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListIpCampusResponse>;
-
 export interface ListIpDelegationRequest {
   ip: string;
 }
-const ListIpDelegationRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListIpDelegationRequest>;
-
 export type ListIpDelegationResponseBodyList = Array<string>;
 export type ListIpDelegationResponse = ListIpDelegationResponseBodyList;
-const ListIpDelegationResponse = ListIpResponse as any as S.Schema<ListIpDelegationResponse>;
-
 export interface ListIpFirewallRequest {
   ip: string;
   /** Filter the value of enabled property (=) */
@@ -1543,184 +1132,83 @@ export interface ListIpFirewallRequest {
   /** Filter the value of state property (=) */
   state?: IpFirewallStateEnum | (string & {});
 }
-const ListIpFirewallRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ListIpFirewallRequest>;
-
 export type ListIpFirewallResponseBodyList = Array<string>;
 export type ListIpFirewallResponse = ListIpFirewallResponseBodyList;
-const ListIpFirewallResponse = ListIpResponse as any as S.Schema<ListIpFirewallResponse>;
-
 export interface ListIpFirewallRuleRequest {
   ip: string;
   ipOnFirewall: string;
   /** Filter the value of state property (=) */
   state?: IpFirewallRuleStateEnum | (string & {});
 }
-const ListIpFirewallRuleRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<ListIpFirewallRuleRequest>;
-
 export type ListIpFirewallRuleResponseBodyList = Array<number>;
 export type ListIpFirewallRuleResponse = ListIpFirewallRuleResponseBodyList;
-const ListIpFirewallRuleResponse =
-  CreateIpServiceChangeContactResponse as any as S.Schema<ListIpFirewallRuleResponse>;
-
 export interface ListIpGameRequest {
   ip: string;
 }
-const ListIpGameRequest = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<ListIpGameRequest>;
-
 export type ListIpGameResponseBodyList = Array<string>;
 export type ListIpGameResponse = ListIpGameResponseBodyList;
-const ListIpGameResponse = ListIpResponse as any as S.Schema<ListIpGameResponse>;
-
 export interface ListIpGameRuleRequest {
   ip: string;
   ipOnGame: string;
 }
-const ListIpGameRuleRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ListIpGameRuleRequest>;
-
 export type ListIpGameRuleResponseBodyList = Array<number>;
-const ListIpGameRuleResponseBodyList =
-  CreateIpServiceChangeContactResponseBodyList as any as S.Schema<ListIpGameRuleResponseBodyList>;
-
 export type ListIpGameRuleResponse = ListIpGameRuleResponseBodyList;
-const ListIpGameRuleResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<ListIpGameRuleResponse>;
-
 export interface ListIpLicenseCloudLinuxRequest {
   ip: string;
   /** Filter the value of ipAddress property (=) */
   ipAddress?: string;
 }
-const ListIpLicenseCloudLinuxRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ListIpLicenseCloudLinuxRequest>;
-
 export type ListIpLicenseCloudLinuxResponseBodyList = Array<string>;
-const ListIpLicenseCloudLinuxResponseBodyList =
-  ListIpResponseBodyList as any as S.Schema<ListIpLicenseCloudLinuxResponseBodyList>;
-
 export type ListIpLicenseCloudLinuxResponse = ListIpLicenseCloudLinuxResponseBodyList;
-const ListIpLicenseCloudLinuxResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ListIpLicenseCloudLinuxResponse>;
-
 export interface ListIpLicenseCpanelRequest {
   ip: string;
   /** Filter the value of ipAddress property (=) */
   ipAddress?: string;
 }
-const ListIpLicenseCpanelRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ListIpLicenseCpanelRequest>;
-
 export type ListIpLicenseCpanelResponseBodyList = Array<string>;
 export type ListIpLicenseCpanelResponse = ListIpLicenseCpanelResponseBodyList;
-const ListIpLicenseCpanelResponse =
-  ListIpLicenseCloudLinuxResponse as any as S.Schema<ListIpLicenseCpanelResponse>;
-
 export interface ListIpLicenseDirectadminRequest {
   ip: string;
   /** Filter the value of ipAddress property (=) */
   ipAddress?: string;
 }
-const ListIpLicenseDirectadminRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<ListIpLicenseDirectadminRequest>;
-
 export type ListIpLicenseDirectadminResponseBodyList = Array<string>;
 export type ListIpLicenseDirectadminResponse = ListIpLicenseDirectadminResponseBodyList;
-const ListIpLicenseDirectadminResponse =
-  ListIpLicenseCloudLinuxResponse as any as S.Schema<ListIpLicenseDirectadminResponse>;
-
 export interface ListIpLicensePleskRequest {
   ip: string;
   /** Filter the value of ipAddress property (=) */
   ipAddress?: string;
 }
-const ListIpLicensePleskRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ListIpLicensePleskRequest>;
-
 export type ListIpLicensePleskResponseBodyList = Array<string>;
 export type ListIpLicensePleskResponse = ListIpLicensePleskResponseBodyList;
-const ListIpLicensePleskResponse =
-  ListIpLicenseCloudLinuxResponse as any as S.Schema<ListIpLicensePleskResponse>;
-
 export interface ListIpLicenseSqlserverRequest {
   ip: string;
   /** Filter the value of ipAddress property (=) */
   ipAddress?: string;
 }
-const ListIpLicenseSqlserverRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ListIpLicenseSqlserverRequest>;
-
 export type ListIpLicenseSqlserverResponseBodyList = Array<string>;
 export type ListIpLicenseSqlserverResponse = ListIpLicenseSqlserverResponseBodyList;
-const ListIpLicenseSqlserverResponse =
-  ListIpLicenseCloudLinuxResponse as any as S.Schema<ListIpLicenseSqlserverResponse>;
-
 export interface ListIpLicenseVirtuozzoRequest {
   ip: string;
   /** Filter the value of ipAddress property (=) */
   ipAddress?: string;
 }
-const ListIpLicenseVirtuozzoRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListIpLicenseVirtuozzoRequest>;
-
 export type ListIpLicenseVirtuozzoResponseBodyList = Array<string>;
 export type ListIpLicenseVirtuozzoResponse = ListIpLicenseVirtuozzoResponseBodyList;
-const ListIpLicenseVirtuozzoResponse =
-  ListIpLicenseCloudLinuxResponse as any as S.Schema<ListIpLicenseVirtuozzoResponse>;
-
 export interface ListIpLicenseWindowsRequest {
   ip: string;
   /** Filter the value of ipAddress property (=) */
   ipAddress?: string;
 }
-const ListIpLicenseWindowsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ListIpLicenseWindowsRequest>;
-
 export type ListIpLicenseWindowsResponseBodyList = Array<string>;
 export type ListIpLicenseWindowsResponse = ListIpLicenseWindowsResponseBodyList;
-const ListIpLicenseWindowsResponse =
-  ListIpLicenseCloudLinuxResponse as any as S.Schema<ListIpLicenseWindowsResponse>;
-
 export interface ListIpLicenseWorklightRequest {
   ip: string;
   /** Filter the value of ipAddress property (=) */
   ipAddress?: string;
 }
-const ListIpLicenseWorklightRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ListIpLicenseWorklightRequest>;
-
 export type ListIpLicenseWorklightResponseBodyList = Array<string>;
 export type ListIpLicenseWorklightResponse = ListIpLicenseWorklightResponseBodyList;
-const ListIpLicenseWorklightResponse =
-  ListIpLicenseCloudLinuxResponse as any as S.Schema<ListIpLicenseWorklightResponse>;
-
 export interface ListIpMitigationRequest {
   ip: string;
   /** Filter the value of auto property (=) */
@@ -1728,38 +1216,18 @@ export interface ListIpMitigationRequest {
   /** Filter the value of state property (=) */
   state?: IpMitigationStateEnum | (string & {});
 }
-const ListIpMitigationRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListIpMitigationRequest>;
-
 export type ListIpMitigationResponseBodyList = Array<string>;
 export type ListIpMitigationResponse = ListIpMitigationResponseBodyList;
-const ListIpMitigationResponse = ListIpResponse as any as S.Schema<ListIpMitigationResponse>;
-
 export interface ListIpMitigationProfilesRequest {
   ip: string;
 }
-const ListIpMitigationProfilesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ListIpMitigationProfilesRequest>;
-
 export type ListIpMitigationProfilesResponseBodyList = Array<string>;
 export type ListIpMitigationProfilesResponse = ListIpMitigationProfilesResponseBodyList;
-const ListIpMitigationProfilesResponse =
-  ListIpLicenseCloudLinuxResponse as any as S.Schema<ListIpMitigationProfilesResponse>;
-
 export interface ListIpMoveRequest {
   ip: string;
 }
-const ListIpMoveRequest = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<ListIpMoveRequest>;
-
 /** Nexthops available on this service */
 export type IpDestinationNexthopList = Array<string>;
-const IpDestinationNexthopList =
-  ListIpResponseBodyList as any as S.Schema<IpDestinationNexthopList>;
-
 /** A structure given service and its nexthops as a destination for failover ips */
 export interface IpDestination {
   /** Nexthops available on this service */
@@ -1767,40 +1235,18 @@ export interface IpDestination {
   /** Service destination */
   service?: string;
 }
-const IpDestination = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<IpDestination>;
-
 /** list of public cloud projects */
 export type IpDestinationsCloudProjectList = Array<IpDestination>;
-const IpDestinationsCloudProjectList = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<IpDestinationsCloudProjectList>;
-
 /** list of dedicated clouds */
 export type IpDestinationsDedicatedCloudList = Array<IpDestination>;
-const IpDestinationsDedicatedCloudList =
-  IpDestinationsCloudProjectList as any as S.Schema<IpDestinationsDedicatedCloudList>;
-
 /** list of dedicated servers */
 export type IpDestinationsDedicatedServerList = Array<IpDestination>;
-const IpDestinationsDedicatedServerList =
-  IpDestinationsCloudProjectList as any as S.Schema<IpDestinationsDedicatedServerList>;
-
 /** list of hosting reseller services */
 export type IpDestinationsHostingResellerList = Array<IpDestination>;
-const IpDestinationsHostingResellerList =
-  IpDestinationsCloudProjectList as any as S.Schema<IpDestinationsHostingResellerList>;
-
 /** list of load balancing services */
 export type IpDestinationsIpLoadbalancingList = Array<IpDestination>;
-const IpDestinationsIpLoadbalancingList =
-  IpDestinationsCloudProjectList as any as S.Schema<IpDestinationsIpLoadbalancingList>;
-
 /** list of vps */
 export type IpDestinationsVpsList = Array<IpDestination>;
-const IpDestinationsVpsList =
-  IpDestinationsCloudProjectList as any as S.Schema<IpDestinationsVpsList>;
-
 /** A structure given all services allowed as a destination for this ip */
 export interface IpDestinations {
   /** list of public cloud projects */
@@ -1816,8 +1262,6 @@ export interface IpDestinations {
   /** list of vps */
   vps?: IpDestinationsVpsList | null;
 }
-const IpDestinations = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<IpDestinations>;
-
 export interface ListIpPhishingRequest {
   ip: string;
   /** Filter the value of ipOnAntiphishing property (within or equals) */
@@ -1825,58 +1269,30 @@ export interface ListIpPhishingRequest {
   /** Filter the value of state property (=) */
   state?: IpAntiphishingStateEnum | (string & {});
 }
-const ListIpPhishingRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ListIpPhishingRequest>;
-
 export type ListIpPhishingResponseBodyList = Array<number>;
 export type ListIpPhishingResponse = ListIpPhishingResponseBodyList;
-const ListIpPhishingResponse = ListIpGameRuleResponse as any as S.Schema<ListIpPhishingResponse>;
-
 export interface ListIpReverseRequest {
   ip: string;
 }
-const ListIpReverseRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ListIpReverseRequest>;
-
 export type ListIpReverseResponseBodyList = Array<string>;
 export type ListIpReverseResponse = ListIpReverseResponseBodyList;
-const ListIpReverseResponse = ListIpResponse as any as S.Schema<ListIpReverseResponse>;
-
 export type ListIpServiceRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
 export type ListIpServiceRequestIamTagsMap = {
   [key: string]: ListIpServiceRequestIamTagsValueList | undefined;
 };
-const ListIpServiceRequestIamTagsMap =
-  ListIpRequestIamTagsMap as any as S.Schema<ListIpServiceRequestIamTagsMap>;
-
 export interface ListIpServiceRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListIpServiceRequestIamTagsMap;
 }
-const ListIpServiceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<ListIpServiceRequest>;
-
 export type ListIpServiceResponseBodyList = Array<string>;
 export type ListIpServiceResponse = ListIpServiceResponseBodyList;
-const ListIpServiceResponse = ListIpResponse as any as S.Schema<ListIpServiceResponse>;
-
 export interface ListIpSpamRequest {
   ip: string;
   /** Filter the value of state property (=) */
   state?: IpSpamStateEnum | (string & {});
 }
-const ListIpSpamRequest = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<ListIpSpamRequest>;
-
 export type ListIpSpamResponseBodyList = Array<string>;
 export type ListIpSpamResponse = ListIpSpamResponseBodyList;
-const ListIpSpamResponse = ListIpResponse as any as S.Schema<ListIpSpamResponse>;
-
 export interface ListIpSpamStatsRequest {
   ip: string;
   /** IP address which is sending spam */
@@ -1886,11 +1302,6 @@ export interface ListIpSpamStatsRequest {
   /** End date */
   to: string;
 }
-const ListIpSpamStatsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ListIpSpamStatsRequest>;
-
 /** Spam's target information */
 export interface IpSpamTarget {
   /** Timestamp when the email was sent */
@@ -1902,15 +1313,8 @@ export interface IpSpamTarget {
   /** Spam score for the email */
   spamscore?: number;
 }
-const IpSpamTarget = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<IpSpamTarget>;
-
 /** Detailed list of the spams */
 export type IpSpamStatsDetectedSpamsList = Array<IpSpamTarget>;
-const IpSpamStatsDetectedSpamsList = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<IpSpamStatsDetectedSpamsList>;
-
 /** Spam statistics about an IP address */
 export interface IpSpamStats {
   /** Average spam score. */
@@ -1924,20 +1328,8 @@ export interface IpSpamStats {
   /** Number of emails sent */
   total?: number;
 }
-const IpSpamStats = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<IpSpamStats>;
-
 export type ListIpSpamStatsResponseBodyList = Array<IpSpamStats>;
-const ListIpSpamStatsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<ListIpSpamStatsResponseBodyList>;
-
 export type ListIpSpamStatsResponse = ListIpSpamStatsResponseBodyList;
-const ListIpSpamStatsResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ListIpSpamStatsResponse>;
-
 export interface ListIpTaskRequest {
   ip: string;
   /** Filter the value of function property (=) */
@@ -1945,12 +1337,8 @@ export interface ListIpTaskRequest {
   /** Filter the value of status property (=) */
   status?: IpTaskStatusEnum | (string & {});
 }
-const ListIpTaskRequest = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<ListIpTaskRequest>;
-
 export type ListIpTaskResponseBodyList = Array<number>;
 export type ListIpTaskResponse = ListIpTaskResponseBodyList;
-const ListIpTaskResponse = ListIpGameRuleResponse as any as S.Schema<ListIpTaskResponse>;
-
 export interface MoveIpRequest {
   ip: string;
   /** Nexthop of destination service */
@@ -1958,155 +1346,81 @@ export interface MoveIpRequest {
   /** Service destination */
   to: string;
 }
-const MoveIpRequest = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<MoveIpRequest>;
-
 export interface PutIpRequest {
   ip: string;
   /** Custom description on your ip */
   description?: string | null;
 }
-const PutIpRequest = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<PutIpRequest>;
-
 export interface PutIpResponse {}
-const PutIpResponse = DeleteIpDelegationResponse as any as S.Schema<PutIpResponse>;
-
 export interface PutIpFirewallRequest {
   ip: string;
   ipOnFirewall: string;
   enabled?: boolean;
 }
-const PutIpFirewallRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<PutIpFirewallRequest>;
-
 export interface PutIpFirewallResponse {}
-const PutIpFirewallResponse = DeleteIpDelegationResponse as any as S.Schema<PutIpFirewallResponse>;
-
 export interface PutIpGameRequest {
   ip: string;
   ipOnGame: string;
   /** Firewall mode : in UDP, only allow traffic matching your rules (as well as established traffic). If not enabled, traffic to ports not defined in your rules will be permited. TCP traffic is unaffected by this. */
   firewallModeEnabled?: boolean;
 }
-const PutIpGameRequest = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<PutIpGameRequest>;
-
 export interface PutIpGameResponse {}
-const PutIpGameResponse = DeleteIpDelegationResponse as any as S.Schema<PutIpGameResponse>;
-
 export interface PutIpMitigationRequest {
   ip: string;
   ipOnMitigation: string;
   /** Set on true if your ip is on permanent mitigation */
   permanent?: boolean;
 }
-const PutIpMitigationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<PutIpMitigationRequest>;
-
 export interface PutIpMitigationResponse {}
-const PutIpMitigationResponse =
-  DeleteIpDelegationResponse as any as S.Schema<PutIpMitigationResponse>;
-
 export interface PutIpMitigationProfileRequest {
   ip: string;
   ipMitigationProfile: string;
   /** Delay to wait before remove ip from auto mitigation after an attack */
   autoMitigationTimeOut?: IpMitigationProfileAutoMitigationTimeOutEnum | (number & {});
 }
-const PutIpMitigationProfileRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<PutIpMitigationProfileRequest>;
-
 export interface PutIpMitigationProfileResponse {}
-const PutIpMitigationProfileResponse =
-  DeleteIpDelegationResponse as any as S.Schema<PutIpMitigationProfileResponse>;
-
 export interface PutIpRipeRequest {
   ip: string;
   description?: string | null;
   netname?: string | null;
 }
-const PutIpRipeRequest = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<PutIpRipeRequest>;
-
 export interface PutIpRipeResponse {}
-const PutIpRipeResponse = DeleteIpDelegationResponse as any as S.Schema<PutIpRipeResponse>;
-
 export interface PutIpServiceRequest {
   /** The internal name of your IP services */
   serviceName: string;
   /** Custom description on your ip */
   description?: string | null;
 }
-const PutIpServiceRequest = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<PutIpServiceRequest>;
-
 export interface PutIpServiceResponse {}
-const PutIpServiceResponse = DeleteIpDelegationResponse as any as S.Schema<PutIpServiceResponse>;
-
 export interface PutIpServiceServiceInfosRequest {
   /** The internal name of your IP services */
   serviceName: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-const PutIpServiceServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<PutIpServiceServiceInfosRequest>;
-
 export interface PutIpServiceServiceInfosResponse {}
-const PutIpServiceServiceInfosResponse =
-  DeleteIpMitigationProfileResponse as any as S.Schema<PutIpServiceServiceInfosResponse>;
-
 export interface TerminateIpServiceRequest {
   /** The internal name of your IP services */
   serviceName: string;
 }
-const TerminateIpServiceRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<TerminateIpServiceRequest>;
-
 export type TerminateIpServiceResponse = string;
-const TerminateIpServiceResponse =
-  ConfirmIpServiceTerminationResponse as any as S.Schema<TerminateIpServiceResponse>;
-
 export interface UnblockIpAntihackRequest {
   ip: string;
   /** your IP */
   ipBlocked: string;
 }
-const UnblockIpAntihackRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<UnblockIpAntihackRequest>;
-
 export interface UnblockIpAntihackResponse {}
-const UnblockIpAntihackResponse =
-  DeleteIpDelegationResponse as any as S.Schema<UnblockIpAntihackResponse>;
-
 export interface UnblockIpArpRequest {
   ip: string;
   /** your IP */
   ipBlocked: string;
 }
-const UnblockIpArpRequest = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<UnblockIpArpRequest>;
-
 export interface UnblockIpArpResponse {}
-const UnblockIpArpResponse = DeleteIpDelegationResponse as any as S.Schema<UnblockIpArpResponse>;
-
 export interface UnblockIpSpamRequest {
   ip: string;
   /** IP address which is sending spam */
   ipSpamming: string;
 }
-const UnblockIpSpamRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<UnblockIpSpamRequest>;
-
 export type ConfirmIpServiceTerminationError = OvhOpError;
 /** Confirm service termination */
 export const confirmIpServiceTermination: API.OperationMethod<
@@ -2115,8 +1429,8 @@ export const confirmIpServiceTermination: API.OperationMethod<
   ConfirmIpServiceTerminationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfirmIpServiceTerminationRequest,
-  output: ConfirmIpServiceTerminationResponse,
+  input: __S(0) as any as S.Schema<ConfirmIpServiceTerminationRequest>,
+  output: __S(1) as any as S.Schema<ConfirmIpServiceTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2130,8 +1444,8 @@ export const createIpBringYourOwnIpAggregate: API.OperationMethod<
   CreateIpBringYourOwnIpAggregateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpBringYourOwnIpAggregateRequest,
-  output: IpIpTask,
+  input: __S(2) as any as S.Schema<CreateIpBringYourOwnIpAggregateRequest>,
+  output: __S(4) as any as S.Schema<IpIpTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2145,8 +1459,8 @@ export const createIpBringYourOwnIpSlice: API.OperationMethod<
   CreateIpBringYourOwnIpSliceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpBringYourOwnIpSliceRequest,
-  output: IpIpTask,
+  input: __S(5) as any as S.Schema<CreateIpBringYourOwnIpSliceRequest>,
+  output: __S(4) as any as S.Schema<IpIpTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2160,8 +1474,8 @@ export const createIpChangeOrg: API.OperationMethod<
   CreateIpChangeOrgError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpChangeOrgRequest,
-  output: IpIpTask,
+  input: __S(6) as any as S.Schema<CreateIpChangeOrgRequest>,
+  output: __S(4) as any as S.Schema<IpIpTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2175,8 +1489,8 @@ export const createIpDelegation: API.OperationMethod<
   CreateIpDelegationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpDelegationRequest,
-  output: IpReverseDelegation,
+  input: __S(7) as any as S.Schema<CreateIpDelegationRequest>,
+  output: __S(8) as any as S.Schema<IpReverseDelegation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2190,8 +1504,8 @@ export const createIpFirewall: API.OperationMethod<
   CreateIpFirewallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpFirewallRequest,
-  output: IpFirewallIp,
+  input: __S(9) as any as S.Schema<CreateIpFirewallRequest>,
+  output: __S(10) as any as S.Schema<IpFirewallIp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2205,8 +1519,8 @@ export const createIpFirewallRule: API.OperationMethod<
   CreateIpFirewallRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpFirewallRuleRequest,
-  output: IpFirewallNetworkRule,
+  input: __S(12) as any as S.Schema<CreateIpFirewallRuleRequest>,
+  output: __S(13) as any as S.Schema<IpFirewallNetworkRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2220,8 +1534,8 @@ export const createIpGameRule: API.OperationMethod<
   CreateIpGameRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpGameRuleRequest,
-  output: IpGameMitigationRule,
+  input: __S(15) as any as S.Schema<CreateIpGameRuleRequest>,
+  output: __S(16) as any as S.Schema<IpGameMitigationRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2235,8 +1549,8 @@ export const createIpMigrationToken: API.OperationMethod<
   CreateIpMigrationTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpMigrationTokenRequest,
-  output: IpIpMigrationToken,
+  input: __S(17) as any as S.Schema<CreateIpMigrationTokenRequest>,
+  output: __S(18) as any as S.Schema<IpIpMigrationToken>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2250,8 +1564,8 @@ export const createIpMitigation: API.OperationMethod<
   CreateIpMitigationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpMitigationRequest,
-  output: IpMitigationIp,
+  input: __S(19) as any as S.Schema<CreateIpMitigationRequest>,
+  output: __S(20) as any as S.Schema<IpMitigationIp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2265,8 +1579,8 @@ export const createIpMitigationProfile: API.OperationMethod<
   CreateIpMitigationProfileError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpMitigationProfileRequest,
-  output: IpMitigationProfile,
+  input: __S(21) as any as S.Schema<CreateIpMitigationProfileRequest>,
+  output: __S(22) as any as S.Schema<IpMitigationProfile>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2280,8 +1594,8 @@ export const createIpPark: API.OperationMethod<
   CreateIpParkError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpParkRequest,
-  output: IpIpTask,
+  input: __S(23) as any as S.Schema<CreateIpParkRequest>,
+  output: __S(4) as any as S.Schema<IpIpTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2295,8 +1609,8 @@ export const createIpReverse: API.OperationMethod<
   CreateIpReverseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpReverseRequest,
-  output: IpReverseIp,
+  input: __S(24) as any as S.Schema<CreateIpReverseRequest>,
+  output: __S(25) as any as S.Schema<IpReverseIp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2310,8 +1624,8 @@ export const createIpServiceChangeContact: API.OperationMethod<
   CreateIpServiceChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIpServiceChangeContactRequest,
-  output: CreateIpServiceChangeContactResponse,
+  input: __S(26) as any as S.Schema<CreateIpServiceChangeContactRequest>,
+  output: __S(28) as any as S.Schema<CreateIpServiceChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2325,8 +1639,8 @@ export const deleteIpDelegation: API.OperationMethod<
   DeleteIpDelegationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIpDelegationRequest,
-  output: DeleteIpDelegationResponse,
+  input: __S(29) as any as S.Schema<DeleteIpDelegationRequest>,
+  output: __S(30) as any as S.Schema<DeleteIpDelegationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2340,8 +1654,8 @@ export const deleteIpFirewall: API.OperationMethod<
   DeleteIpFirewallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIpFirewallRequest,
-  output: DeleteIpFirewallResponse,
+  input: __S(31) as any as S.Schema<DeleteIpFirewallRequest>,
+  output: __S(32) as any as S.Schema<DeleteIpFirewallResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2355,8 +1669,8 @@ export const deleteIpFirewallRule: API.OperationMethod<
   DeleteIpFirewallRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIpFirewallRuleRequest,
-  output: IpFirewallNetworkRule,
+  input: __S(33) as any as S.Schema<DeleteIpFirewallRuleRequest>,
+  output: __S(13) as any as S.Schema<IpFirewallNetworkRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2370,8 +1684,8 @@ export const deleteIpGameRule: API.OperationMethod<
   DeleteIpGameRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIpGameRuleRequest,
-  output: IpGameMitigationRule,
+  input: __S(34) as any as S.Schema<DeleteIpGameRuleRequest>,
+  output: __S(16) as any as S.Schema<IpGameMitigationRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2385,8 +1699,8 @@ export const deleteIpMitigation: API.OperationMethod<
   DeleteIpMitigationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIpMitigationRequest,
-  output: IpMitigationIp,
+  input: __S(35) as any as S.Schema<DeleteIpMitigationRequest>,
+  output: __S(20) as any as S.Schema<IpMitigationIp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2400,8 +1714,8 @@ export const deleteIpMitigationProfile: API.OperationMethod<
   DeleteIpMitigationProfileError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIpMitigationProfileRequest,
-  output: DeleteIpMitigationProfileResponse,
+  input: __S(36) as any as S.Schema<DeleteIpMitigationProfileRequest>,
+  output: __S(37) as any as S.Schema<DeleteIpMitigationProfileResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2415,8 +1729,8 @@ export const deleteIpReverse: API.OperationMethod<
   DeleteIpReverseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIpReverseRequest,
-  output: DeleteIpReverseResponse,
+  input: __S(38) as any as S.Schema<DeleteIpReverseRequest>,
+  output: __S(30) as any as S.Schema<DeleteIpReverseResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2426,8 +1740,8 @@ export type GetIpError = OvhOpError;
 /** Get this object properties */
 export const getIp: API.OperationMethod<GetIpRequest, IpIpWithIAM, GetIpError, OvhOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetIpRequest,
-    output: IpIpWithIAM,
+    input: __S(39) as any as S.Schema<GetIpRequest>,
+    output: __S(43) as any as S.Schema<IpIpWithIAM>,
     errors: [UnknownOvhError],
     protocol: OvhProtocol,
     retry: Retry.Retry,
@@ -2441,8 +1755,8 @@ export const getIpAntihack: API.OperationMethod<
   GetIpAntihackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpAntihackRequest,
-  output: IpBlockedIp,
+  input: __S(44) as any as S.Schema<GetIpAntihackRequest>,
+  output: __S(45) as any as S.Schema<IpBlockedIp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2456,8 +1770,8 @@ export const getIpArp: API.OperationMethod<
   GetIpArpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpArpRequest,
-  output: IpArpBlockedIp,
+  input: __S(46) as any as S.Schema<GetIpArpRequest>,
+  output: __S(45) as any as S.Schema<IpArpBlockedIp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2471,8 +1785,8 @@ export const getIpDelegation: API.OperationMethod<
   GetIpDelegationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpDelegationRequest,
-  output: IpReverseDelegation,
+  input: __S(47) as any as S.Schema<GetIpDelegationRequest>,
+  output: __S(8) as any as S.Schema<IpReverseDelegation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2486,8 +1800,8 @@ export const getIpFirewall: API.OperationMethod<
   GetIpFirewallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpFirewallRequest,
-  output: IpFirewallIp,
+  input: __S(48) as any as S.Schema<GetIpFirewallRequest>,
+  output: __S(10) as any as S.Schema<IpFirewallIp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2501,8 +1815,8 @@ export const getIpFirewallRule: API.OperationMethod<
   GetIpFirewallRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpFirewallRuleRequest,
-  output: IpFirewallNetworkRule,
+  input: __S(49) as any as S.Schema<GetIpFirewallRuleRequest>,
+  output: __S(13) as any as S.Schema<IpFirewallNetworkRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2516,8 +1830,8 @@ export const getIpGame: API.OperationMethod<
   GetIpGameError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpGameRequest,
-  output: IpGameMitigation,
+  input: __S(50) as any as S.Schema<GetIpGameRequest>,
+  output: __S(51) as any as S.Schema<IpGameMitigation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2531,8 +1845,8 @@ export const getIpGameRule: API.OperationMethod<
   GetIpGameRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpGameRuleRequest,
-  output: IpGameMitigationRule,
+  input: __S(52) as any as S.Schema<GetIpGameRuleRequest>,
+  output: __S(16) as any as S.Schema<IpGameMitigationRule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2546,8 +1860,8 @@ export const getIpMigrationToken: API.OperationMethod<
   GetIpMigrationTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpMigrationTokenRequest,
-  output: IpIpMigrationToken,
+  input: __S(53) as any as S.Schema<GetIpMigrationTokenRequest>,
+  output: __S(18) as any as S.Schema<IpIpMigrationToken>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2561,8 +1875,8 @@ export const getIpMitigation: API.OperationMethod<
   GetIpMitigationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpMitigationRequest,
-  output: IpMitigationIp,
+  input: __S(54) as any as S.Schema<GetIpMitigationRequest>,
+  output: __S(20) as any as S.Schema<IpMitigationIp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2576,8 +1890,8 @@ export const getIpMitigationProfile: API.OperationMethod<
   GetIpMitigationProfileError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpMitigationProfileRequest,
-  output: IpMitigationProfile,
+  input: __S(55) as any as S.Schema<GetIpMitigationProfileRequest>,
+  output: __S(22) as any as S.Schema<IpMitigationProfile>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2591,8 +1905,8 @@ export const getIpPhishing: API.OperationMethod<
   GetIpPhishingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpPhishingRequest,
-  output: IpAntiphishing,
+  input: __S(56) as any as S.Schema<GetIpPhishingRequest>,
+  output: __S(57) as any as S.Schema<IpAntiphishing>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2606,8 +1920,8 @@ export const getIpReverse: API.OperationMethod<
   GetIpReverseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpReverseRequest,
-  output: IpReverseIp,
+  input: __S(58) as any as S.Schema<GetIpReverseRequest>,
+  output: __S(25) as any as S.Schema<IpReverseIp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2621,8 +1935,8 @@ export const getIpRipe: API.OperationMethod<
   GetIpRipeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpRipeRequest,
-  output: IpRipeInfos,
+  input: __S(59) as any as S.Schema<GetIpRipeRequest>,
+  output: __S(60) as any as S.Schema<IpRipeInfos>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2636,8 +1950,8 @@ export const getIpService: API.OperationMethod<
   GetIpServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpServiceRequest,
-  output: IpServiceIpWithIAM,
+  input: __S(61) as any as S.Schema<GetIpServiceRequest>,
+  output: __S(62) as any as S.Schema<IpServiceIpWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2651,8 +1965,8 @@ export const getIpServiceServiceInfos: API.OperationMethod<
   GetIpServiceServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpServiceServiceInfosRequest,
-  output: ServicesService,
+  input: __S(63) as any as S.Schema<GetIpServiceServiceInfosRequest>,
+  output: __S(65) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2666,8 +1980,8 @@ export const getIpSpam: API.OperationMethod<
   GetIpSpamError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpSpamRequest,
-  output: IpSpamIp,
+  input: __S(66) as any as S.Schema<GetIpSpamRequest>,
+  output: __S(67) as any as S.Schema<IpSpamIp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2681,8 +1995,8 @@ export const getIpTask: API.OperationMethod<
   GetIpTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpTaskRequest,
-  output: IpIpTask,
+  input: __S(68) as any as S.Schema<GetIpTaskRequest>,
+  output: __S(4) as any as S.Schema<IpIpTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2692,8 +2006,8 @@ export type ListIpError = OvhOpError;
 /** Your OVH IPs */
 export const listIp: API.OperationMethod<ListIpRequest, ListIpResponse, ListIpError, OvhOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: ListIpRequest,
-    output: ListIpResponse,
+    input: __S(71) as any as S.Schema<ListIpRequest>,
+    output: __S(73) as any as S.Schema<ListIpResponse>,
     errors: [UnknownOvhError],
     protocol: OvhProtocol,
     retry: Retry.Retry,
@@ -2707,8 +2021,8 @@ export const listIpAntihack: API.OperationMethod<
   ListIpAntihackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpAntihackRequest,
-  output: ListIpAntihackResponse,
+  input: __S(74) as any as S.Schema<ListIpAntihackRequest>,
+  output: __S(73) as any as S.Schema<ListIpAntihackResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2722,8 +2036,8 @@ export const listIpArp: API.OperationMethod<
   ListIpArpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpArpRequest,
-  output: ListIpArpResponse,
+  input: __S(75) as any as S.Schema<ListIpArpRequest>,
+  output: __S(73) as any as S.Schema<ListIpArpResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2737,8 +2051,8 @@ export const listIpBringYourOwnIpAggregate: API.OperationMethod<
   ListIpBringYourOwnIpAggregateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpBringYourOwnIpAggregateRequest,
-  output: ListIpBringYourOwnIpAggregateResponse,
+  input: __S(76) as any as S.Schema<ListIpBringYourOwnIpAggregateRequest>,
+  output: __S(79) as any as S.Schema<ListIpBringYourOwnIpAggregateResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2752,8 +2066,8 @@ export const listIpBringYourOwnIpSlice: API.OperationMethod<
   ListIpBringYourOwnIpSliceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpBringYourOwnIpSliceRequest,
-  output: ListIpBringYourOwnIpSliceResponse,
+  input: __S(80) as any as S.Schema<ListIpBringYourOwnIpSliceRequest>,
+  output: __S(83) as any as S.Schema<ListIpBringYourOwnIpSliceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2767,8 +2081,8 @@ export const listIpCampus: API.OperationMethod<
   ListIpCampusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpCampusRequest,
-  output: ListIpCampusResponse,
+  input: __S(84) as any as S.Schema<ListIpCampusRequest>,
+  output: __S(87) as any as S.Schema<ListIpCampusResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2782,8 +2096,8 @@ export const listIpDelegation: API.OperationMethod<
   ListIpDelegationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpDelegationRequest,
-  output: ListIpDelegationResponse,
+  input: __S(88) as any as S.Schema<ListIpDelegationRequest>,
+  output: __S(73) as any as S.Schema<ListIpDelegationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2797,8 +2111,8 @@ export const listIpFirewall: API.OperationMethod<
   ListIpFirewallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpFirewallRequest,
-  output: ListIpFirewallResponse,
+  input: __S(89) as any as S.Schema<ListIpFirewallRequest>,
+  output: __S(73) as any as S.Schema<ListIpFirewallResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2812,8 +2126,8 @@ export const listIpFirewallRule: API.OperationMethod<
   ListIpFirewallRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpFirewallRuleRequest,
-  output: ListIpFirewallRuleResponse,
+  input: __S(90) as any as S.Schema<ListIpFirewallRuleRequest>,
+  output: __S(28) as any as S.Schema<ListIpFirewallRuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2827,8 +2141,8 @@ export const listIpGame: API.OperationMethod<
   ListIpGameError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpGameRequest,
-  output: ListIpGameResponse,
+  input: __S(91) as any as S.Schema<ListIpGameRequest>,
+  output: __S(73) as any as S.Schema<ListIpGameResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2842,8 +2156,8 @@ export const listIpGameRule: API.OperationMethod<
   ListIpGameRuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpGameRuleRequest,
-  output: ListIpGameRuleResponse,
+  input: __S(92) as any as S.Schema<ListIpGameRuleRequest>,
+  output: __S(93) as any as S.Schema<ListIpGameRuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2857,8 +2171,8 @@ export const listIpLicenseCloudLinux: API.OperationMethod<
   ListIpLicenseCloudLinuxError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpLicenseCloudLinuxRequest,
-  output: ListIpLicenseCloudLinuxResponse,
+  input: __S(94) as any as S.Schema<ListIpLicenseCloudLinuxRequest>,
+  output: __S(95) as any as S.Schema<ListIpLicenseCloudLinuxResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2872,8 +2186,8 @@ export const listIpLicenseCpanel: API.OperationMethod<
   ListIpLicenseCpanelError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpLicenseCpanelRequest,
-  output: ListIpLicenseCpanelResponse,
+  input: __S(96) as any as S.Schema<ListIpLicenseCpanelRequest>,
+  output: __S(95) as any as S.Schema<ListIpLicenseCpanelResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2887,8 +2201,8 @@ export const listIpLicenseDirectadmin: API.OperationMethod<
   ListIpLicenseDirectadminError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpLicenseDirectadminRequest,
-  output: ListIpLicenseDirectadminResponse,
+  input: __S(97) as any as S.Schema<ListIpLicenseDirectadminRequest>,
+  output: __S(95) as any as S.Schema<ListIpLicenseDirectadminResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2902,8 +2216,8 @@ export const listIpLicensePlesk: API.OperationMethod<
   ListIpLicensePleskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpLicensePleskRequest,
-  output: ListIpLicensePleskResponse,
+  input: __S(98) as any as S.Schema<ListIpLicensePleskRequest>,
+  output: __S(95) as any as S.Schema<ListIpLicensePleskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2917,8 +2231,8 @@ export const listIpLicenseSqlserver: API.OperationMethod<
   ListIpLicenseSqlserverError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpLicenseSqlserverRequest,
-  output: ListIpLicenseSqlserverResponse,
+  input: __S(99) as any as S.Schema<ListIpLicenseSqlserverRequest>,
+  output: __S(95) as any as S.Schema<ListIpLicenseSqlserverResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2932,8 +2246,8 @@ export const listIpLicenseVirtuozzo: API.OperationMethod<
   ListIpLicenseVirtuozzoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpLicenseVirtuozzoRequest,
-  output: ListIpLicenseVirtuozzoResponse,
+  input: __S(100) as any as S.Schema<ListIpLicenseVirtuozzoRequest>,
+  output: __S(95) as any as S.Schema<ListIpLicenseVirtuozzoResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2947,8 +2261,8 @@ export const listIpLicenseWindows: API.OperationMethod<
   ListIpLicenseWindowsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpLicenseWindowsRequest,
-  output: ListIpLicenseWindowsResponse,
+  input: __S(101) as any as S.Schema<ListIpLicenseWindowsRequest>,
+  output: __S(95) as any as S.Schema<ListIpLicenseWindowsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2962,8 +2276,8 @@ export const listIpLicenseWorklight: API.OperationMethod<
   ListIpLicenseWorklightError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpLicenseWorklightRequest,
-  output: ListIpLicenseWorklightResponse,
+  input: __S(102) as any as S.Schema<ListIpLicenseWorklightRequest>,
+  output: __S(95) as any as S.Schema<ListIpLicenseWorklightResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2977,8 +2291,8 @@ export const listIpMitigation: API.OperationMethod<
   ListIpMitigationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpMitigationRequest,
-  output: ListIpMitigationResponse,
+  input: __S(103) as any as S.Schema<ListIpMitigationRequest>,
+  output: __S(73) as any as S.Schema<ListIpMitigationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -2992,8 +2306,8 @@ export const listIpMitigationProfiles: API.OperationMethod<
   ListIpMitigationProfilesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpMitigationProfilesRequest,
-  output: ListIpMitigationProfilesResponse,
+  input: __S(104) as any as S.Schema<ListIpMitigationProfilesRequest>,
+  output: __S(95) as any as S.Schema<ListIpMitigationProfilesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3007,8 +2321,8 @@ export const listIpMove: API.OperationMethod<
   ListIpMoveError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpMoveRequest,
-  output: IpDestinations,
+  input: __S(105) as any as S.Schema<ListIpMoveRequest>,
+  output: __S(108) as any as S.Schema<IpDestinations>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3022,8 +2336,8 @@ export const listIpPhishing: API.OperationMethod<
   ListIpPhishingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpPhishingRequest,
-  output: ListIpPhishingResponse,
+  input: __S(109) as any as S.Schema<ListIpPhishingRequest>,
+  output: __S(93) as any as S.Schema<ListIpPhishingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3037,8 +2351,8 @@ export const listIpReverse: API.OperationMethod<
   ListIpReverseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpReverseRequest,
-  output: ListIpReverseResponse,
+  input: __S(110) as any as S.Schema<ListIpReverseRequest>,
+  output: __S(73) as any as S.Schema<ListIpReverseResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3052,8 +2366,8 @@ export const listIpService: API.OperationMethod<
   ListIpServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpServiceRequest,
-  output: ListIpServiceResponse,
+  input: __S(111) as any as S.Schema<ListIpServiceRequest>,
+  output: __S(73) as any as S.Schema<ListIpServiceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3067,8 +2381,8 @@ export const listIpSpam: API.OperationMethod<
   ListIpSpamError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpSpamRequest,
-  output: ListIpSpamResponse,
+  input: __S(112) as any as S.Schema<ListIpSpamRequest>,
+  output: __S(73) as any as S.Schema<ListIpSpamResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3082,8 +2396,8 @@ export const listIpSpamStats: API.OperationMethod<
   ListIpSpamStatsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpSpamStatsRequest,
-  output: ListIpSpamStatsResponse,
+  input: __S(113) as any as S.Schema<ListIpSpamStatsRequest>,
+  output: __S(118) as any as S.Schema<ListIpSpamStatsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3097,8 +2411,8 @@ export const listIpTask: API.OperationMethod<
   ListIpTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIpTaskRequest,
-  output: ListIpTaskResponse,
+  input: __S(119) as any as S.Schema<ListIpTaskRequest>,
+  output: __S(93) as any as S.Schema<ListIpTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3108,8 +2422,8 @@ export type MoveIpError = OvhOpError;
 /** Move this IP to another service */
 export const moveIp: API.OperationMethod<MoveIpRequest, IpIpTask, MoveIpError, OvhOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: MoveIpRequest,
-    output: IpIpTask,
+    input: __S(120) as any as S.Schema<MoveIpRequest>,
+    output: __S(4) as any as S.Schema<IpIpTask>,
     errors: [UnknownOvhError],
     protocol: OvhProtocol,
     retry: Retry.Retry,
@@ -3119,8 +2433,8 @@ export type PutIpError = OvhOpError;
 /** Alter this object properties */
 export const putIp: API.OperationMethod<PutIpRequest, PutIpResponse, PutIpError, OvhOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: PutIpRequest,
-    output: PutIpResponse,
+    input: __S(121) as any as S.Schema<PutIpRequest>,
+    output: __S(30) as any as S.Schema<PutIpResponse>,
     errors: [UnknownOvhError],
     protocol: OvhProtocol,
     retry: Retry.Retry,
@@ -3134,8 +2448,8 @@ export const putIpFirewall: API.OperationMethod<
   PutIpFirewallError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIpFirewallRequest,
-  output: PutIpFirewallResponse,
+  input: __S(122) as any as S.Schema<PutIpFirewallRequest>,
+  output: __S(30) as any as S.Schema<PutIpFirewallResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3149,8 +2463,8 @@ export const putIpGame: API.OperationMethod<
   PutIpGameError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIpGameRequest,
-  output: PutIpGameResponse,
+  input: __S(123) as any as S.Schema<PutIpGameRequest>,
+  output: __S(30) as any as S.Schema<PutIpGameResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3164,8 +2478,8 @@ export const putIpMitigation: API.OperationMethod<
   PutIpMitigationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIpMitigationRequest,
-  output: PutIpMitigationResponse,
+  input: __S(124) as any as S.Schema<PutIpMitigationRequest>,
+  output: __S(30) as any as S.Schema<PutIpMitigationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3179,8 +2493,8 @@ export const putIpMitigationProfile: API.OperationMethod<
   PutIpMitigationProfileError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIpMitigationProfileRequest,
-  output: PutIpMitigationProfileResponse,
+  input: __S(125) as any as S.Schema<PutIpMitigationProfileRequest>,
+  output: __S(30) as any as S.Schema<PutIpMitigationProfileResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3194,8 +2508,8 @@ export const putIpRipe: API.OperationMethod<
   PutIpRipeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIpRipeRequest,
-  output: PutIpRipeResponse,
+  input: __S(126) as any as S.Schema<PutIpRipeRequest>,
+  output: __S(30) as any as S.Schema<PutIpRipeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3209,8 +2523,8 @@ export const putIpService: API.OperationMethod<
   PutIpServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIpServiceRequest,
-  output: PutIpServiceResponse,
+  input: __S(127) as any as S.Schema<PutIpServiceRequest>,
+  output: __S(30) as any as S.Schema<PutIpServiceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3224,8 +2538,8 @@ export const putIpServiceServiceInfos: API.OperationMethod<
   PutIpServiceServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIpServiceServiceInfosRequest,
-  output: PutIpServiceServiceInfosResponse,
+  input: __S(128) as any as S.Schema<PutIpServiceServiceInfosRequest>,
+  output: __S(37) as any as S.Schema<PutIpServiceServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3239,8 +2553,8 @@ export const terminateIpService: API.OperationMethod<
   TerminateIpServiceError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TerminateIpServiceRequest,
-  output: TerminateIpServiceResponse,
+  input: __S(129) as any as S.Schema<TerminateIpServiceRequest>,
+  output: __S(1) as any as S.Schema<TerminateIpServiceResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3254,8 +2568,8 @@ export const unblockIpAntihack: API.OperationMethod<
   UnblockIpAntihackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnblockIpAntihackRequest,
-  output: UnblockIpAntihackResponse,
+  input: __S(130) as any as S.Schema<UnblockIpAntihackRequest>,
+  output: __S(30) as any as S.Schema<UnblockIpAntihackResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3269,8 +2583,8 @@ export const unblockIpArp: API.OperationMethod<
   UnblockIpArpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnblockIpArpRequest,
-  output: UnblockIpArpResponse,
+  input: __S(131) as any as S.Schema<UnblockIpArpRequest>,
+  output: __S(30) as any as S.Schema<UnblockIpArpResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3284,8 +2598,8 @@ export const unblockIpSpam: API.OperationMethod<
   UnblockIpSpamError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnblockIpSpamRequest,
-  output: IpSpamIp,
+  input: __S(132) as any as S.Schema<UnblockIpSpamRequest>,
+  output: __S(67) as any as S.Schema<IpSpamIp>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3299,8 +2613,8 @@ function __c0(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           commentary: S.optional(S.String),
-          futureUse: S.optional(ServiceTerminationFutureUseEnum),
-          reason: S.optional(ServiceTerminationReasonEnum),
+          futureUse: S.optional(S.String),
+          reason: S.optional(S.String),
           token: S.String,
         }).pipe(
           T.Http({
@@ -3335,12 +2649,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           comment: S.optional(S.NullOr(S.String)),
-          destination: S.optional(S.NullOr(IpRoutedTo)),
+          destination: S.optional(S.NullOr(__S(3))),
           doneDate: S.optional(S.NullOr(S.String)),
-          function: S.optional(IpTaskFunctionEnum),
+          function: S.optional(S.String),
           lastUpdate: S.optional(S.NullOr(S.String)),
           startDate: S.optional(S.String),
-          status: S.optional(IpTaskStatusEnum),
+          status: S.optional(S.String),
           taskId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IpIpTask" });
@@ -3391,14 +2705,14 @@ function __c1(j: number): any {
         S.Struct({
           enabled: S.optional(S.Boolean),
           ipOnFirewall: S.optional(S.String),
-          state: S.optional(IpFirewallStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpFirewallIp" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           fragments: S.optional(S.NullOr(S.Boolean)),
-          option: S.optional(S.NullOr(IpFirewallTCPOptionEnum)),
+          option: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "IpFirewallOptionTCP" });
     case 4:
@@ -3406,13 +2720,13 @@ function __c1(j: number): any {
         S.Struct({
           ip: S.String.pipe(T.Label()),
           ipOnFirewall: S.String.pipe(T.Label()),
-          action: IpFirewallActionEnum,
+          action: S.String,
           destinationPort: S.optional(S.Number),
-          protocol: IpFirewallProtocolEnum,
-          sequence: IpFirewallSequenceRangeEnum,
+          protocol: S.String,
+          sequence: S.Number,
           source: S.optional(S.String),
           sourcePort: S.optional(S.Number),
-          tcpOption: S.optional(IpFirewallOptionTCP),
+          tcpOption: S.optional(__S(11)),
         }).pipe(
           T.Http({ method: "POST", uri: "/ip/{ip}/firewall/{ipOnFirewall}/rule", code: 200 }),
         ),
@@ -3422,17 +2736,17 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(IpFirewallActionEnum),
+          action: S.optional(S.String),
           creationDate: S.optional(S.String),
           destination: S.optional(S.String),
           destinationPort: S.optional(S.NullOr(S.String)),
           fragments: S.optional(S.NullOr(S.Boolean)),
-          protocol: S.optional(IpFirewallProtocolEnum),
+          protocol: S.optional(S.String),
           rule: S.optional(S.String),
           sequence: S.optional(S.Number),
           source: S.optional(S.String),
           sourcePort: S.optional(S.NullOr(S.String)),
-          state: S.optional(IpFirewallRuleStateEnum),
+          state: S.optional(S.String),
           tcpOption: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "IpFirewallNetworkRule" });
@@ -3448,8 +2762,8 @@ function __c1(j: number): any {
         S.Struct({
           ip: S.String.pipe(T.Label()),
           ipOnGame: S.String.pipe(T.Label()),
-          ports: ComplexTypeRangeLong,
-          protocol: IpGameMitigationRuleProtocolEnum,
+          ports: __S(14),
+          protocol: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/ip/{ip}/game/{ipOnGame}/rule", code: 200 })),
       ).annotate({ identifier: "CreateIpGameRuleRequest" });
   }
@@ -3460,9 +2774,9 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          ports: S.optional(ComplexTypeRangeLong),
-          protocol: S.optional(IpGameMitigationRuleProtocolEnum),
-          state: S.optional(IpGameMitigationRuleStateEnum),
+          ports: S.optional(__S(14)),
+          protocol: S.optional(S.String),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpGameMitigationRule" });
     case 1:
@@ -3496,14 +2810,14 @@ function __c2(j: number): any {
           auto: S.optional(S.Boolean),
           ipOnMitigation: S.optional(S.String),
           permanent: S.optional(S.Boolean),
-          state: S.optional(IpMitigationStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpMitigationIp" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           ip: S.String.pipe(T.Label()),
-          autoMitigationTimeOut: IpMitigationProfileAutoMitigationTimeOutEnum,
+          autoMitigationTimeOut: S.Number,
           ipMitigationProfile: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/ip/{ip}/mitigationProfiles", code: 200 })),
       ).annotate({
@@ -3512,9 +2826,9 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          autoMitigationTimeOut: S.optional(IpMitigationProfileAutoMitigationTimeOutEnum),
+          autoMitigationTimeOut: S.optional(S.Number),
           ipMitigationProfile: S.optional(S.String),
-          state: S.optional(IpMitigationProfileStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpMitigationProfile" });
     case 7:
@@ -3558,9 +2872,7 @@ function __c3(j: number): any {
     case 3:
       return S.Array(S.Number);
     case 4:
-      return S.suspend(() =>
-        CreateIpServiceChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(27).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateIpServiceChangeContactResponse",
       });
     case 5:
@@ -3669,29 +2981,29 @@ function __c5(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(IamResourceMetadataTagsMap)),
+          tags: S.optional(S.NullOr(__S(40))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
     case 2:
-      return S.Array(CoreTypesRegionCodenameEnum);
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
           bringYourOwnIp: S.optional(S.Boolean),
           campus: S.optional(S.NullOr(S.String)),
           canBeTerminated: S.optional(S.Boolean),
-          country: S.optional(S.NullOr(CoreTypesCountryEnum)),
+          country: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          iam: S.optional(S.NullOr(IamResourceMetadata)),
+          iam: S.optional(S.NullOr(__S(41))),
           ip: S.optional(S.String),
           isAdditionalIp: S.optional(S.Boolean),
           organisationId: S.optional(S.NullOr(S.String)),
-          regions: S.optional(S.NullOr(IpIpWithIAMRegionsList)),
+          regions: S.optional(S.NullOr(__S(42))),
           rir: S.optional(S.NullOr(S.String)),
-          routedTo: S.optional(S.NullOr(IpRoutedTo)),
-          type: S.optional(IpIpTypeEnum),
-          version: S.optional(IpIpVersionEnum),
+          routedTo: S.optional(S.NullOr(__S(3))),
+          type: S.optional(S.String),
+          version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IpIpWithIAM" });
     case 4:
@@ -3707,7 +3019,7 @@ function __c5(j: number): any {
           blockedSince: S.optional(S.String),
           ipBlocked: S.optional(S.String),
           logs: S.optional(S.NullOr(S.String)),
-          state: S.optional(IpBlockedIpStateEnum),
+          state: S.optional(S.String),
           time: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IpBlockedIp" });
@@ -3763,8 +3075,8 @@ function __c6(j: number): any {
           firewallModeEnabled: S.optional(S.Boolean),
           ipOnGame: S.optional(S.String),
           maxRules: S.optional(S.Number),
-          state: S.optional(IpGameMitigationStateEnum),
-          supportedProtocols: S.optional(IpGameMitigationSupportedProtocolsList),
+          state: S.optional(S.String),
+          supportedProtocols: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "IpGameMitigation" });
     case 4:
@@ -3822,7 +3134,7 @@ function __c7(j: number): any {
           creationDate: S.optional(S.String),
           id: S.optional(S.Number),
           ipOnAntiphishing: S.optional(S.String),
-          state: S.optional(IpAntiphishingStateEnum),
+          state: S.optional(S.String),
           urlPhishing: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpAntiphishing" });
@@ -3856,13 +3168,13 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           canBeTerminated: S.optional(S.Boolean),
-          country: S.optional(S.NullOr(CoreTypesCountryEnum)),
+          country: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          iam: S.optional(S.NullOr(IamResourceMetadata)),
+          iam: S.optional(S.NullOr(__S(41))),
           ip: S.optional(S.String),
           organisationId: S.optional(S.NullOr(S.String)),
-          routedTo: S.optional(S.NullOr(IpRoutedTo)),
-          type: S.optional(IpIpTypeEnum),
+          routedTo: S.optional(S.NullOr(__S(3))),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpServiceIpWithIAM" });
     case 7:
@@ -3900,11 +3212,11 @@ function __c8(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(ServicesServicePossibleRenewPeriodList)),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
-          renewalType: S.optional(ServiceRenewalTypeEnum),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(27))),
+          renew: S.optional(S.NullOr(__S(64))),
+          renewalType: S.optional(S.String),
           serviceId: S.optional(S.Number),
-          status: S.optional(ServiceStateEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServicesService" });
     case 2:
@@ -3919,7 +3231,7 @@ function __c8(j: number): any {
         S.Struct({
           date: S.optional(S.String),
           ipSpamming: S.optional(S.String),
-          state: S.optional(IpSpamStateEnum),
+          state: S.optional(S.String),
           time: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IpSpamIp" });
@@ -3931,20 +3243,20 @@ function __c8(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/ip/{ip}/task/{taskId}", code: 200 })),
       ).annotate({ identifier: "GetIpTaskRequest" });
     case 5:
-      return S.Array(IamResourceTagFilterInput);
+      return S.Array(__S(30));
     case 6:
-      return S.Record(S.String, ListIpRequestIamTagsValueList);
+      return S.Record(S.String, __S(69));
     case 7:
       return S.suspend(() =>
         S.Struct({
           campus: S.optional(S.String.pipe(T.Query())),
           description: S.optional(S.String.pipe(T.Query())),
-          iamTags: S.optional(ListIpRequestIamTagsMap.pipe(T.Query())),
+          iamTags: S.optional(__S(70).pipe(T.Query())),
           ip: S.optional(S.String.pipe(T.Query())),
           isAdditionalIp: S.optional(S.Boolean.pipe(T.Query())),
           routedTo_serviceName: S.optional(S.String.pipe(T.Query("routedTo.serviceName"))),
-          type: S.optional(IpIpTypeEnum.pipe(T.Query())),
-          version: S.optional(IpIpVersionEnum.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
+          version: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ip", code: 200 })),
       ).annotate({ identifier: "ListIpRequest" });
   }
@@ -3954,21 +3266,21 @@ function __c9(j: number): any {
     case 0:
       return S.Array(S.String);
     case 1:
-      return S.suspend(() => ListIpResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(72).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIpResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           ip: S.String.pipe(T.Label()),
-          state: S.optional(IpBlockedIpStateEnum.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ip/{ip}/antihack", code: 200 })),
       ).annotate({ identifier: "ListIpAntihackRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           ip: S.String.pipe(T.Label()),
-          state: S.optional(IpArpStateEnum.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ip/{ip}/arp", code: 200 })),
       ).annotate({ identifier: "ListIpArpRequest" });
     case 4:
@@ -3983,17 +3295,15 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           aggregationIp: S.optional(S.String),
-          childrenIps: S.optional(IpByoipAggregationPreviewChildrenIpsList),
+          childrenIps: S.optional(__S(72)),
         }),
       ).annotate({
         identifier: "IpByoipAggregationPreview",
       });
     case 6:
-      return S.Array(IpByoipAggregationPreview);
+      return S.Array(__S(77));
     case 7:
-      return S.suspend(() =>
-        ListIpBringYourOwnIpAggregateResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(78).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIpBringYourOwnIpAggregateResponse",
       });
   }
@@ -4011,16 +3321,14 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          childrenIps: S.optional(IpByoipSlicingPreviewChildrenIpsList),
+          childrenIps: S.optional(__S(72)),
           slicingSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IpByoipSlicingPreview" });
     case 2:
-      return S.Array(IpByoipSlicingPreview);
+      return S.Array(__S(81));
     case 3:
-      return S.suspend(() =>
-        ListIpBringYourOwnIpSliceResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(82).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIpBringYourOwnIpSliceResponse",
       });
     case 4:
@@ -4030,16 +3338,16 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          bringYourOwnIpSupportedRirForIp: S.optional(IpCampusBringYourOwnIpSupportedRirForIpList),
-          datacenters: S.optional(IpCampusDatacentersList),
+          bringYourOwnIpSupportedRirForIp: S.optional(__S(72)),
+          datacenters: S.optional(__S(42)),
           description: S.optional(S.String),
-          name: S.optional(IpCampusEnum),
+          name: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpCampus" });
     case 6:
-      return S.Array(IpCampus);
+      return S.Array(__S(85));
     case 7:
-      return S.suspend(() => ListIpCampusResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(86).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIpCampusResponse",
       });
   }
@@ -4057,7 +3365,7 @@ function __c11(j: number): any {
         S.Struct({
           ip: S.String.pipe(T.Label()),
           enabled: S.optional(S.Boolean.pipe(T.Query())),
-          state: S.optional(IpFirewallStateEnum.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ip/{ip}/firewall", code: 200 })),
       ).annotate({ identifier: "ListIpFirewallRequest" });
     case 2:
@@ -4065,7 +3373,7 @@ function __c11(j: number): any {
         S.Struct({
           ip: S.String.pipe(T.Label()),
           ipOnFirewall: S.String.pipe(T.Label()),
-          state: S.optional(IpFirewallRuleStateEnum.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ip/{ip}/firewall/{ipOnFirewall}/rule", code: 200 })),
       ).annotate({
         identifier: "ListIpFirewallRuleRequest",
@@ -4084,7 +3392,7 @@ function __c11(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/ip/{ip}/game/{ipOnGame}/rule", code: 200 })),
       ).annotate({ identifier: "ListIpGameRuleRequest" });
     case 5:
-      return S.suspend(() => ListIpGameRuleResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(27).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIpGameRuleResponse",
       });
     case 6:
@@ -4097,9 +3405,7 @@ function __c11(j: number): any {
         identifier: "ListIpLicenseCloudLinuxRequest",
       });
     case 7:
-      return S.suspend(() =>
-        ListIpLicenseCloudLinuxResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(72).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIpLicenseCloudLinuxResponse",
       });
   }
@@ -4174,7 +3480,7 @@ function __c12(j: number): any {
         S.Struct({
           ip: S.String.pipe(T.Label()),
           auto: S.optional(S.Boolean.pipe(T.Query())),
-          state: S.optional(IpMitigationStateEnum.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ip/{ip}/mitigation", code: 200 })),
       ).annotate({ identifier: "ListIpMitigationRequest" });
   }
@@ -4198,21 +3504,21 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          nexthop: S.optional(S.NullOr(IpDestinationNexthopList)),
+          nexthop: S.optional(S.NullOr(__S(72))),
           service: S.optional(S.String),
         }),
       ).annotate({ identifier: "IpDestination" });
     case 3:
-      return S.Array(IpDestination);
+      return S.Array(__S(106));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          cloudProject: S.optional(S.NullOr(IpDestinationsCloudProjectList)),
-          dedicatedCloud: S.optional(S.NullOr(IpDestinationsDedicatedCloudList)),
-          dedicatedServer: S.optional(S.NullOr(IpDestinationsDedicatedServerList)),
-          hostingReseller: S.optional(S.NullOr(IpDestinationsHostingResellerList)),
-          ipLoadbalancing: S.optional(S.NullOr(IpDestinationsIpLoadbalancingList)),
-          vps: S.optional(S.NullOr(IpDestinationsVpsList)),
+          cloudProject: S.optional(S.NullOr(__S(107))),
+          dedicatedCloud: S.optional(S.NullOr(__S(107))),
+          dedicatedServer: S.optional(S.NullOr(__S(107))),
+          hostingReseller: S.optional(S.NullOr(__S(107))),
+          ipLoadbalancing: S.optional(S.NullOr(__S(107))),
+          vps: S.optional(S.NullOr(__S(107))),
         }),
       ).annotate({ identifier: "IpDestinations" });
     case 5:
@@ -4220,7 +3526,7 @@ function __c13(j: number): any {
         S.Struct({
           ip: S.String.pipe(T.Label()),
           ipOnAntiphishing: S.optional(S.String.pipe(T.Query())),
-          state: S.optional(IpAntiphishingStateEnum.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ip/{ip}/phishing", code: 200 })),
       ).annotate({ identifier: "ListIpPhishingRequest" });
     case 6:
@@ -4232,7 +3538,7 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(ListIpServiceRequestIamTagsMap.pipe(T.Query())),
+          iamTags: S.optional(__S(70).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ip/service", code: 200 })),
       ).annotate({ identifier: "ListIpServiceRequest" });
   }
@@ -4243,7 +3549,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ip: S.String.pipe(T.Label()),
-          state: S.optional(IpSpamStateEnum.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ip/{ip}/spam", code: 200 })),
       ).annotate({ identifier: "ListIpSpamRequest" });
     case 1:
@@ -4265,29 +3571,29 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "IpSpamTarget" });
     case 3:
-      return S.Array(IpSpamTarget);
+      return S.Array(__S(114));
     case 4:
       return S.suspend(() =>
         S.Struct({
           averageSpamscore: S.optional(S.NullOr(S.Number)),
-          detectedSpams: S.optional(S.NullOr(IpSpamStatsDetectedSpamsList)),
+          detectedSpams: S.optional(S.NullOr(__S(115))),
           numberOfSpams: S.optional(S.Number),
           timestamp: S.optional(S.Number),
           total: S.optional(S.Number),
         }),
       ).annotate({ identifier: "IpSpamStats" });
     case 5:
-      return S.Array(IpSpamStats);
+      return S.Array(__S(116));
     case 6:
-      return S.suspend(() => ListIpSpamStatsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(117).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIpSpamStatsResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           ip: S.String.pipe(T.Label()),
-          function: S.optional(IpTaskFunctionEnum.pipe(T.Query())),
-          status: S.optional(IpTaskStatusEnum.pipe(T.Query())),
+          function: S.optional(S.String.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/ip/{ip}/task", code: 200 })),
       ).annotate({ identifier: "ListIpTaskRequest" });
   }
@@ -4338,7 +3644,7 @@ function __c15(j: number): any {
         S.Struct({
           ip: S.String.pipe(T.Label()),
           ipMitigationProfile: S.String.pipe(T.Label()),
-          autoMitigationTimeOut: S.optional(IpMitigationProfileAutoMitigationTimeOutEnum),
+          autoMitigationTimeOut: S.optional(S.Number),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -4372,7 +3678,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renew: S.optional(S.NullOr(__S(64))),
         }).pipe(
           T.Http({ method: "PUT", uri: "/ip/service/{serviceName}/serviceInfos", code: 200 }),
         ),
@@ -4410,5 +3716,48 @@ function __c16(j: number): any {
           ipSpamming: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/ip/{ip}/spam/{ipSpamming}/unblock", code: 200 })),
       ).annotate({ identifier: "UnblockIpSpamRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
   }
 }

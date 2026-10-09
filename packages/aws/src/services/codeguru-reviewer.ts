@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "CodeGuru Reviewer",
   serviceShapeName: "AWSGuruFrontendService",
@@ -120,7 +122,6 @@ export type Name = string;
 export interface CodeCommitRepository {
   Name: string;
 }
-const CodeCommitRepository = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CodeCommitRepository>;
 export type ConnectionArn = string;
 export type Owner = string;
 export interface ThirdPartySourceRepository {
@@ -128,47 +129,33 @@ export interface ThirdPartySourceRepository {
   ConnectionArn: string;
   Owner: string;
 }
-const ThirdPartySourceRepository = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ThirdPartySourceRepository>;
 export type S3BucketName = string;
 export interface S3Repository {
   Name: string;
   BucketName: string;
 }
-const S3Repository = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<S3Repository>;
 export interface Repository {
   CodeCommit?: CodeCommitRepository;
   Bitbucket?: ThirdPartySourceRepository;
   GitHubEnterpriseServer?: ThirdPartySourceRepository;
   S3Bucket?: S3Repository;
 }
-const Repository = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Repository>;
 export type ClientRequestToken = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c0, 4);
 export type KMSKeyId = string;
 export type EncryptionOption = "AWS_OWNED_CMK" | "CUSTOMER_MANAGED_CMK" | (string & {});
-const EncryptionOption = S.String;
-
 export interface KMSKeyDetails {
   KMSKeyId?: string;
   EncryptionOption?: EncryptionOption;
 }
-const KMSKeyDetails = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<KMSKeyDetails>;
 export interface AssociateRepositoryRequest {
   Repository: Repository;
   ClientRequestToken?: string;
   Tags?: { [key: string]: string | undefined };
   KMSKeyDetails?: KMSKeyDetails;
 }
-const AssociateRepositoryRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AssociateRepositoryRequest>;
 export type AssociationId = string;
 export type Arn = string;
 export type ProviderType =
@@ -178,8 +165,6 @@ export type ProviderType =
   | "GitHubEnterpriseServer"
   | "S3Bucket"
   | (string & {});
-const ProviderType = S.String;
-
 export type RepositoryAssociationState =
   | "Associated"
   | "Associating"
@@ -187,8 +172,6 @@ export type RepositoryAssociationState =
   | "Disassociating"
   | "Disassociated"
   | (string & {});
-const RepositoryAssociationState = S.String;
-
 export type StateReason = string;
 export type SourceCodeArtifactsObjectKey = string;
 export type BuildArtifactsObjectKey = string;
@@ -196,12 +179,10 @@ export interface CodeArtifacts {
   SourceCodeArtifactsObjectKey: string;
   BuildArtifactsObjectKey?: string;
 }
-const CodeArtifacts = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CodeArtifacts>;
 export interface S3RepositoryDetails {
   BucketName?: string;
   CodeArtifacts?: CodeArtifacts;
 }
-const S3RepositoryDetails = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<S3RepositoryDetails>;
 export interface RepositoryAssociation {
   AssociationId?: string;
   AssociationArn?: string;
@@ -216,51 +197,30 @@ export interface RepositoryAssociation {
   KMSKeyDetails?: KMSKeyDetails;
   S3RepositoryDetails?: S3RepositoryDetails;
 }
-const RepositoryAssociation = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<RepositoryAssociation>;
 export interface AssociateRepositoryResponse {
   RepositoryAssociation?: RepositoryAssociation;
   Tags?: { [key: string]: string | undefined };
 }
-const AssociateRepositoryResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AssociateRepositoryResponse>;
 export type CodeReviewName = string;
 export type AssociationArn = string;
 export type BranchName = string;
 export interface RepositoryHeadSourceCodeType {
   BranchName: string;
 }
-const RepositoryHeadSourceCodeType = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<RepositoryHeadSourceCodeType>;
 export type CommitId = string;
 export interface CommitDiffSourceCodeType {
   SourceCommit?: string;
   DestinationCommit?: string;
   MergeBaseCommit?: string;
 }
-const CommitDiffSourceCodeType = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CommitDiffSourceCodeType>;
 export interface BranchDiffSourceCodeType {
   SourceBranchName: string;
   DestinationBranchName: string;
 }
-const BranchDiffSourceCodeType = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<BranchDiffSourceCodeType>;
 export interface S3BucketRepository {
   Name: string;
   Details?: S3RepositoryDetails;
 }
-const S3BucketRepository = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<S3BucketRepository>;
 export type RequestId = string;
 export type Requester = string;
 export type EventName = string;
@@ -269,17 +229,13 @@ export interface EventInfo {
   Name?: string;
   State?: string;
 }
-const EventInfo = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<EventInfo>;
 export type VendorName = "GitHub" | "GitLab" | "NativeS3" | (string & {});
-const VendorName = S.String;
-
 export interface RequestMetadata {
   RequestId?: string;
   Requester?: string;
   EventInfo?: EventInfo;
   VendorName?: VendorName;
 }
-const RequestMetadata = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<RequestMetadata>;
 export interface SourceCodeType {
   CommitDiff?: CommitDiffSourceCodeType;
   RepositoryHead?: RepositoryHeadSourceCodeType;
@@ -287,38 +243,24 @@ export interface SourceCodeType {
   S3BucketRepository?: S3BucketRepository;
   RequestMetadata?: RequestMetadata;
 }
-const SourceCodeType = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SourceCodeType>;
 export interface RepositoryAnalysis {
   RepositoryHead?: RepositoryHeadSourceCodeType;
   SourceCodeType?: SourceCodeType;
 }
-const RepositoryAnalysis = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<RepositoryAnalysis>;
 export type AnalysisType = "Security" | "CodeQuality" | (string & {});
-const AnalysisType = S.String;
-
 export type AnalysisTypes = AnalysisType[];
-const AnalysisTypes = /*@__PURE__*/ __L.at(__c2, 3);
 export interface CodeReviewType {
   RepositoryAnalysis: RepositoryAnalysis;
   AnalysisTypes?: AnalysisType[];
 }
-const CodeReviewType = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CodeReviewType>;
 export interface CreateCodeReviewRequest {
   Name: string;
   RepositoryAssociationArn: string;
   Type: CodeReviewType;
   ClientRequestToken?: string;
 }
-const CreateCodeReviewRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateCodeReviewRequest>;
 export type JobState = "Completed" | "Pending" | "Failed" | "Deleting" | (string & {});
-const JobState = S.String;
-
 export type Type = "PullRequest" | "RepositoryAnalysis" | (string & {});
-const Type = S.String;
-
 export type PullRequestId = string;
 export type LinesOfCodeCount = number;
 export type FindingsCount = number;
@@ -327,10 +269,7 @@ export interface Metrics {
   SuppressedLinesOfCodeCount?: number;
   FindingsCount?: number;
 }
-const Metrics = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Metrics>;
 export type ConfigFileState = "Present" | "Absent" | "PresentWithErrors" | (string & {});
-const ConfigFileState = S.String;
-
 export interface CodeReview {
   Name?: string;
   CodeReviewArn?: string;
@@ -349,28 +288,15 @@ export interface CodeReview {
   AnalysisTypes?: AnalysisType[];
   ConfigFileState?: ConfigFileState;
 }
-const CodeReview = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<CodeReview>;
 export interface CreateCodeReviewResponse {
   CodeReview?: CodeReview;
 }
-const CreateCodeReviewResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateCodeReviewResponse>;
 export interface DescribeCodeReviewRequest {
   CodeReviewArn: string;
 }
-const DescribeCodeReviewRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DescribeCodeReviewRequest>;
 export interface DescribeCodeReviewResponse {
   CodeReview?: CodeReview;
 }
-const DescribeCodeReviewResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DescribeCodeReviewResponse>;
 export type RecommendationId = string;
 export type UserId = string;
 export interface DescribeRecommendationFeedbackRequest {
@@ -378,13 +304,8 @@ export interface DescribeRecommendationFeedbackRequest {
   RecommendationId: string;
   UserId?: string;
 }
-const DescribeRecommendationFeedbackRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DescribeRecommendationFeedbackRequest>;
 export type Reaction = "ThumbsUp" | "ThumbsDown" | (string & {});
 export type Reactions = Reaction[];
-const Reactions = AnalysisTypes as any as S.Schema<Reactions>;
 export interface RecommendationFeedback {
   CodeReviewArn?: string;
   RecommendationId?: string;
@@ -393,49 +314,26 @@ export interface RecommendationFeedback {
   CreatedTimeStamp?: Date;
   LastUpdatedTimeStamp?: Date;
 }
-const RecommendationFeedback = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<RecommendationFeedback>;
 export interface DescribeRecommendationFeedbackResponse {
   RecommendationFeedback?: RecommendationFeedback;
 }
-const DescribeRecommendationFeedbackResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DescribeRecommendationFeedbackResponse>;
 export interface DescribeRepositoryAssociationRequest {
   AssociationArn: string;
 }
-const DescribeRepositoryAssociationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DescribeRepositoryAssociationRequest>;
 export interface DescribeRepositoryAssociationResponse {
   RepositoryAssociation?: RepositoryAssociation;
   Tags?: { [key: string]: string | undefined };
 }
-const DescribeRepositoryAssociationResponse =
-  AssociateRepositoryResponse as any as S.Schema<DescribeRepositoryAssociationResponse>;
 export interface DisassociateRepositoryRequest {
   AssociationArn: string;
 }
-const DisassociateRepositoryRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DisassociateRepositoryRequest>;
 export interface DisassociateRepositoryResponse {
   RepositoryAssociation?: RepositoryAssociation;
   Tags?: { [key: string]: string | undefined };
 }
-const DisassociateRepositoryResponse =
-  AssociateRepositoryResponse as any as S.Schema<DisassociateRepositoryResponse>;
 export type ProviderTypes = ProviderType[];
-const ProviderTypes = AnalysisTypes as any as S.Schema<ProviderTypes>;
 export type JobStates = JobState[];
-const JobStates = AnalysisTypes as any as S.Schema<JobStates>;
 export type RepositoryNames = string[];
-const RepositoryNames = /*@__PURE__*/ __L.at(__c4, 0);
 export type ListCodeReviewsMaxResults = number;
 export type NextToken = string;
 export interface ListCodeReviewsRequest {
@@ -446,16 +344,11 @@ export interface ListCodeReviewsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListCodeReviewsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListCodeReviewsRequest>;
 export interface MetricsSummary {
   MeteredLinesOfCodeCount?: number;
   SuppressedLinesOfCodeCount?: number;
   FindingsCount?: number;
 }
-const MetricsSummary = Metrics as any as S.Schema<MetricsSummary>;
 export interface CodeReviewSummary {
   Name?: string;
   CodeReviewArn?: string;
@@ -470,22 +363,14 @@ export interface CodeReviewSummary {
   MetricsSummary?: MetricsSummary;
   SourceCodeType?: SourceCodeType;
 }
-const CodeReviewSummary = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<CodeReviewSummary>;
 export type CodeReviewSummaries = CodeReviewSummary[];
-const CodeReviewSummaries = /*@__PURE__*/ __L.at(__c4, 3);
 export interface ListCodeReviewsResponse {
   CodeReviewSummaries?: CodeReviewSummary[];
   NextToken?: string;
 }
-const ListCodeReviewsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListCodeReviewsResponse>;
 export type MaxResults = number;
 export type UserIds = string[];
-const UserIds = RepositoryNames as any as S.Schema<UserIds>;
 export type RecommendationIds = string[];
-const RecommendationIds = RepositoryNames as any as S.Schema<RecommendationIds>;
 export interface ListRecommendationFeedbackRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -493,39 +378,22 @@ export interface ListRecommendationFeedbackRequest {
   UserIds?: string[];
   RecommendationIds?: string[];
 }
-const ListRecommendationFeedbackRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListRecommendationFeedbackRequest>;
 export interface RecommendationFeedbackSummary {
   RecommendationId?: string;
   Reactions?: Reaction[];
   UserId?: string;
 }
-const RecommendationFeedbackSummary = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<RecommendationFeedbackSummary>;
 export type RecommendationFeedbackSummaries = RecommendationFeedbackSummary[];
-const RecommendationFeedbackSummaries = /*@__PURE__*/ __L.at(__c4, 7);
 export interface ListRecommendationFeedbackResponse {
   RecommendationFeedbackSummaries?: RecommendationFeedbackSummary[];
   NextToken?: string;
 }
-const ListRecommendationFeedbackResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListRecommendationFeedbackResponse>;
 export type ListRecommendationsMaxResults = number;
 export interface ListRecommendationsRequest {
   NextToken?: string;
   MaxResults?: number;
   CodeReviewArn: string;
 }
-const ListRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListRecommendationsRequest>;
 export type FilePath = string;
 export type LineNumber = number;
 export type Text = string;
@@ -542,15 +410,12 @@ export type RecommendationCategory =
   | "SecurityIssues"
   | "CodeInconsistencies"
   | (string & {});
-const RecommendationCategory = S.String;
-
 export type RuleId = string;
 export type RuleName = string;
 export type ShortDescription = string;
 export type LongDescription = string;
 export type RuleTag = string;
 export type RuleTags = string[];
-const RuleTags = RepositoryNames as any as S.Schema<RuleTags>;
 export interface RuleMetadata {
   RuleId?: string;
   RuleName?: string;
@@ -558,10 +423,7 @@ export interface RuleMetadata {
   LongDescription?: string;
   RuleTags?: string[];
 }
-const RuleMetadata = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<RuleMetadata>;
 export type Severity = "Info" | "Low" | "Medium" | "High" | "Critical" | (string & {});
-const Severity = S.String;
-
 export interface RecommendationSummary {
   FilePath?: string;
   RecommendationId?: string;
@@ -572,26 +434,14 @@ export interface RecommendationSummary {
   RuleMetadata?: RuleMetadata;
   Severity?: Severity;
 }
-const RecommendationSummary = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<RecommendationSummary>;
 export type RecommendationSummaries = RecommendationSummary[];
-const RecommendationSummaries = /*@__PURE__*/ __L.at(__c5, 4);
 export interface ListRecommendationsResponse {
   RecommendationSummaries?: RecommendationSummary[];
   NextToken?: string;
 }
-const ListRecommendationsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListRecommendationsResponse>;
 export type RepositoryAssociationStates = RepositoryAssociationState[];
-const RepositoryAssociationStates = AnalysisTypes as any as S.Schema<RepositoryAssociationStates>;
 export type Names = string[];
-const Names = RepositoryNames as any as S.Schema<Names>;
 export type Owners = string[];
-const Owners = RepositoryNames as any as S.Schema<Owners>;
 export interface ListRepositoryAssociationsRequest {
   ProviderTypes?: ProviderType[];
   States?: RepositoryAssociationState[];
@@ -600,10 +450,6 @@ export interface ListRepositoryAssociationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListRepositoryAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListRepositoryAssociationsRequest>;
 export interface RepositoryAssociationSummary {
   AssociationArn?: string;
   ConnectionArn?: string;
@@ -614,64 +460,34 @@ export interface RepositoryAssociationSummary {
   ProviderType?: ProviderType;
   State?: RepositoryAssociationState;
 }
-const RepositoryAssociationSummary = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<RepositoryAssociationSummary>;
 export type RepositoryAssociationSummaries = RepositoryAssociationSummary[];
-const RepositoryAssociationSummaries = /*@__PURE__*/ __L.at(__c6, 0);
 export interface ListRepositoryAssociationsResponse {
   RepositoryAssociationSummaries?: RepositoryAssociationSummary[];
   NextToken?: string;
 }
-const ListRepositoryAssociationsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListRepositoryAssociationsResponse>;
 export interface ListTagsForResourceRequest {
   resourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface PutRecommendationFeedbackRequest {
   CodeReviewArn: string;
   RecommendationId: string;
   Reactions: Reaction[];
 }
-const PutRecommendationFeedbackRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<PutRecommendationFeedbackRequest>;
 export interface PutRecommendationFeedbackResponse {}
-const PutRecommendationFeedbackResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<PutRecommendationFeedbackResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = RepositoryNames as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   resourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export type ErrorMessage = string;
 export type AssociateRepositoryError =
   | AccessDeniedException
@@ -706,8 +522,8 @@ export const associateRepository: API.OperationMethod<
   AssociateRepositoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateRepositoryRequest,
-  output: AssociateRepositoryResponse,
+  input: __S(6) as any as S.Schema<AssociateRepositoryRequest>,
+  output: __S(10) as any as S.Schema<AssociateRepositoryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -740,8 +556,8 @@ export const createCodeReview: API.OperationMethod<
   CreateCodeReviewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCodeReviewRequest,
-  output: CreateCodeReviewResponse,
+  input: __S(21) as any as S.Schema<CreateCodeReviewRequest>,
+  output: __S(24) as any as S.Schema<CreateCodeReviewResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -771,8 +587,8 @@ export const describeCodeReview: API.OperationMethod<
   DescribeCodeReviewError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeCodeReviewRequest,
-  output: DescribeCodeReviewResponse,
+  input: __S(25) as any as S.Schema<DescribeCodeReviewRequest>,
+  output: __S(26) as any as S.Schema<DescribeCodeReviewResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -801,8 +617,8 @@ export const describeRecommendationFeedback: API.OperationMethod<
   DescribeRecommendationFeedbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeRecommendationFeedbackRequest,
-  output: DescribeRecommendationFeedbackResponse,
+  input: __S(27) as any as S.Schema<DescribeRecommendationFeedbackRequest>,
+  output: __S(29) as any as S.Schema<DescribeRecommendationFeedbackResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -832,8 +648,8 @@ export const describeRepositoryAssociation: API.OperationMethod<
   DescribeRepositoryAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeRepositoryAssociationRequest,
-  output: DescribeRepositoryAssociationResponse,
+  input: __S(30) as any as S.Schema<DescribeRepositoryAssociationRequest>,
+  output: __S(10) as any as S.Schema<DescribeRepositoryAssociationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -863,8 +679,8 @@ export const disassociateRepository: API.OperationMethod<
   DisassociateRepositoryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateRepositoryRequest,
-  output: DisassociateRepositoryResponse,
+  input: __S(31) as any as S.Schema<DisassociateRepositoryRequest>,
+  output: __S(10) as any as S.Schema<DisassociateRepositoryResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -894,8 +710,8 @@ export const listCodeReviews: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCodeReviewsRequest,
-  output: ListCodeReviewsResponse,
+  input: __S(33) as any as S.Schema<ListCodeReviewsRequest>,
+  output: __S(36) as any as S.Schema<ListCodeReviewsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -930,8 +746,8 @@ export const listRecommendationFeedback: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRecommendationFeedbackRequest,
-  output: ListRecommendationFeedbackResponse,
+  input: __S(37) as any as S.Schema<ListRecommendationFeedbackRequest>,
+  output: __S(40) as any as S.Schema<ListRecommendationFeedbackResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -966,8 +782,8 @@ export const listRecommendations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRecommendationsRequest,
-  output: ListRecommendationsResponse,
+  input: __S(41) as any as S.Schema<ListRecommendationsRequest>,
+  output: __S(45) as any as S.Schema<ListRecommendationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1001,8 +817,8 @@ export const listRepositoryAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RepositoryAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRepositoryAssociationsRequest,
-  output: ListRepositoryAssociationsResponse,
+  input: __S(46) as any as S.Schema<ListRepositoryAssociationsRequest>,
+  output: __S(49) as any as S.Schema<ListRepositoryAssociationsResponse>,
   errors: [InternalServerException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1029,8 +845,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(50) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(51) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1054,8 +870,8 @@ export const putRecommendationFeedback: API.OperationMethod<
   PutRecommendationFeedbackError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutRecommendationFeedbackRequest,
-  output: PutRecommendationFeedbackResponse,
+  input: __S(52) as any as S.Schema<PutRecommendationFeedbackRequest>,
+  output: __S(53) as any as S.Schema<PutRecommendationFeedbackResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1082,8 +898,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(54) as any as S.Schema<TagResourceRequest>,
+  output: __S(55) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1104,8 +920,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(56) as any as S.Schema<UntagResourceRequest>,
+  output: __S(55) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1132,10 +948,10 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          CodeCommit: S.optional(CodeCommitRepository),
-          Bitbucket: S.optional(ThirdPartySourceRepository),
-          GitHubEnterpriseServer: S.optional(ThirdPartySourceRepository),
-          S3Bucket: S.optional(S3Repository),
+          CodeCommit: S.optional(__S(0)),
+          Bitbucket: S.optional(__S(1)),
+          GitHubEnterpriseServer: S.optional(__S(1)),
+          S3Bucket: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "Repository" });
     case 4:
@@ -1144,16 +960,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           KMSKeyId: S.optional(S.String),
-          EncryptionOption: S.optional(EncryptionOption),
+          EncryptionOption: S.optional(S.String),
         }),
       ).annotate({ identifier: "KMSKeyDetails" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Repository: Repository,
+          Repository: __S(3),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Tags: S.optional(TagMap),
-          KMSKeyDetails: S.optional(KMSKeyDetails),
+          Tags: S.optional(__S(4)),
+          KMSKeyDetails: S.optional(__S(5)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/associations" }), svc, auth, proto, ver, rules),
         ),
@@ -1173,7 +989,7 @@ function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ BucketName: S.optional(S.String), CodeArtifacts: S.optional(CodeArtifacts) }),
+        S.Struct({ BucketName: S.optional(S.String), CodeArtifacts: S.optional(__S(7)) }),
       ).annotate({ identifier: "S3RepositoryDetails" });
     case 1:
       return S.suspend(() =>
@@ -1183,20 +999,20 @@ function __c1(j: number): any {
           ConnectionArn: S.optional(S.String),
           Name: S.optional(S.String),
           Owner: S.optional(S.String),
-          ProviderType: S.optional(ProviderType),
-          State: S.optional(RepositoryAssociationState),
+          ProviderType: S.optional(S.String),
+          State: S.optional(S.String),
           StateReason: S.optional(S.String),
           LastUpdatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          KMSKeyDetails: S.optional(KMSKeyDetails),
-          S3RepositoryDetails: S.optional(S3RepositoryDetails),
+          KMSKeyDetails: S.optional(__S(5)),
+          S3RepositoryDetails: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "RepositoryAssociation" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          RepositoryAssociation: S.optional(RepositoryAssociation),
-          Tags: S.optional(TagMap),
+          RepositoryAssociation: S.optional(__S(9)),
+          Tags: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "AssociateRepositoryResponse",
@@ -1218,9 +1034,9 @@ function __c1(j: number): any {
         S.Struct({ SourceBranchName: S.String, DestinationBranchName: S.String }),
       ).annotate({ identifier: "BranchDiffSourceCodeType" });
     case 6:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String, Details: S.optional(S3RepositoryDetails) }),
-      ).annotate({ identifier: "S3BucketRepository" });
+      return S.suspend(() => S.Struct({ Name: S.String, Details: S.optional(__S(8)) })).annotate({
+        identifier: "S3BucketRepository",
+      });
     case 7:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), State: S.optional(S.String) }),
@@ -1234,34 +1050,34 @@ function __c2(j: number): any {
         S.Struct({
           RequestId: S.optional(S.String),
           Requester: S.optional(S.String),
-          EventInfo: S.optional(EventInfo),
-          VendorName: S.optional(VendorName),
+          EventInfo: S.optional(__S(15)),
+          VendorName: S.optional(S.String),
         }),
       ).annotate({ identifier: "RequestMetadata" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          CommitDiff: S.optional(CommitDiffSourceCodeType),
-          RepositoryHead: S.optional(RepositoryHeadSourceCodeType),
-          BranchDiff: S.optional(BranchDiffSourceCodeType),
-          S3BucketRepository: S.optional(S3BucketRepository),
-          RequestMetadata: S.optional(RequestMetadata),
+          CommitDiff: S.optional(__S(12)),
+          RepositoryHead: S.optional(__S(11)),
+          BranchDiff: S.optional(__S(13)),
+          S3BucketRepository: S.optional(__S(14)),
+          RequestMetadata: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "SourceCodeType" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          RepositoryHead: S.optional(RepositoryHeadSourceCodeType),
-          SourceCodeType: S.optional(SourceCodeType),
+          RepositoryHead: S.optional(__S(11)),
+          SourceCodeType: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "RepositoryAnalysis" });
     case 3:
-      return S.Array(AnalysisType);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          RepositoryAnalysis: RepositoryAnalysis,
-          AnalysisTypes: S.optional(AnalysisTypes),
+          RepositoryAnalysis: __S(18),
+          AnalysisTypes: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "CodeReviewType" });
     case 5:
@@ -1269,7 +1085,7 @@ function __c2(j: number): any {
         S.Struct({
           Name: S.String,
           RepositoryAssociationArn: S.String,
-          Type: CodeReviewType,
+          Type: __S(20),
           ClientRequestToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/codereviews" }), svc, auth, proto, ver, rules),
@@ -1290,18 +1106,18 @@ function __c2(j: number): any {
           CodeReviewArn: S.optional(S.String),
           RepositoryName: S.optional(S.String),
           Owner: S.optional(S.String),
-          ProviderType: S.optional(ProviderType),
-          State: S.optional(JobState),
+          ProviderType: S.optional(S.String),
+          State: S.optional(S.String),
           StateReason: S.optional(S.String),
           CreatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Type: S.optional(Type),
+          Type: S.optional(S.String),
           PullRequestId: S.optional(S.String),
-          SourceCodeType: S.optional(SourceCodeType),
+          SourceCodeType: S.optional(__S(17)),
           AssociationArn: S.optional(S.String),
-          Metrics: S.optional(Metrics),
-          AnalysisTypes: S.optional(AnalysisTypes),
-          ConfigFileState: S.optional(ConfigFileState),
+          Metrics: S.optional(__S(22)),
+          AnalysisTypes: S.optional(__S(19)),
+          ConfigFileState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CodeReview" });
   }
@@ -1309,7 +1125,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ CodeReview: S.optional(CodeReview) })).annotate({
+      return S.suspend(() => S.Struct({ CodeReview: S.optional(__S(23)) })).annotate({
         identifier: "CreateCodeReviewResponse",
       });
     case 1:
@@ -1328,7 +1144,7 @@ function __c3(j: number): any {
         identifier: "DescribeCodeReviewRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ CodeReview: S.optional(CodeReview) })).annotate({
+      return S.suspend(() => S.Struct({ CodeReview: S.optional(__S(23)) })).annotate({
         identifier: "DescribeCodeReviewResponse",
       });
     case 3:
@@ -1355,16 +1171,14 @@ function __c3(j: number): any {
         S.Struct({
           CodeReviewArn: S.optional(S.String),
           RecommendationId: S.optional(S.String),
-          Reactions: S.optional(Reactions),
+          Reactions: S.optional(__S(19)),
           UserId: S.optional(S.String),
           CreatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "RecommendationFeedback" });
     case 5:
-      return S.suspend(() =>
-        S.Struct({ RecommendationFeedback: S.optional(RecommendationFeedback) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ RecommendationFeedback: S.optional(__S(28)) })).annotate({
         identifier: "DescribeRecommendationFeedbackResponse",
       });
     case 6:
@@ -1406,10 +1220,10 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ProviderTypes: S.optional(ProviderTypes).pipe(T.HttpQuery("ProviderTypes")),
-          States: S.optional(JobStates).pipe(T.HttpQuery("States")),
-          RepositoryNames: S.optional(RepositoryNames).pipe(T.HttpQuery("RepositoryNames")),
-          Type: Type.pipe(T.HttpQuery("Type")),
+          ProviderTypes: S.optional(__S(19)).pipe(T.HttpQuery("ProviderTypes")),
+          States: S.optional(__S(19)).pipe(T.HttpQuery("States")),
+          RepositoryNames: S.optional(__S(32)).pipe(T.HttpQuery("RepositoryNames")),
+          Type: S.String.pipe(T.HttpQuery("Type")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
         }).pipe(
@@ -1423,22 +1237,22 @@ function __c4(j: number): any {
           CodeReviewArn: S.optional(S.String),
           RepositoryName: S.optional(S.String),
           Owner: S.optional(S.String),
-          ProviderType: S.optional(ProviderType),
-          State: S.optional(JobState),
+          ProviderType: S.optional(S.String),
+          State: S.optional(S.String),
           CreatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedTimeStamp: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Type: S.optional(Type),
+          Type: S.optional(S.String),
           PullRequestId: S.optional(S.String),
-          MetricsSummary: S.optional(MetricsSummary),
-          SourceCodeType: S.optional(SourceCodeType),
+          MetricsSummary: S.optional(__S(22)),
+          SourceCodeType: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "CodeReviewSummary" });
     case 3:
-      return S.Array(CodeReviewSummary);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          CodeReviewSummaries: S.optional(CodeReviewSummaries),
+          CodeReviewSummaries: S.optional(__S(35)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCodeReviewsResponse" });
@@ -1448,8 +1262,8 @@ function __c4(j: number): any {
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
           CodeReviewArn: S.String.pipe(T.HttpLabel("CodeReviewArn")),
-          UserIds: S.optional(UserIds).pipe(T.HttpQuery("UserIds")),
-          RecommendationIds: S.optional(RecommendationIds).pipe(T.HttpQuery("RecommendationIds")),
+          UserIds: S.optional(__S(32)).pipe(T.HttpQuery("UserIds")),
+          RecommendationIds: S.optional(__S(32)).pipe(T.HttpQuery("RecommendationIds")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/feedback/{CodeReviewArn}/RecommendationFeedback" }),
@@ -1467,14 +1281,14 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RecommendationId: S.optional(S.String),
-          Reactions: S.optional(Reactions),
+          Reactions: S.optional(__S(19)),
           UserId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RecommendationFeedbackSummary",
       });
     case 7:
-      return S.Array(RecommendationFeedbackSummary);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
@@ -1482,7 +1296,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          RecommendationFeedbackSummaries: S.optional(RecommendationFeedbackSummaries),
+          RecommendationFeedbackSummaries: S.optional(__S(39)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1514,7 +1328,7 @@ function __c5(j: number): any {
           RuleName: S.optional(S.String),
           ShortDescription: S.optional(S.String),
           LongDescription: S.optional(S.String),
-          RuleTags: S.optional(RuleTags),
+          RuleTags: S.optional(__S(32)),
         }),
       ).annotate({ identifier: "RuleMetadata" });
     case 3:
@@ -1525,17 +1339,17 @@ function __c5(j: number): any {
           StartLine: S.optional(S.Number),
           EndLine: S.optional(S.Number),
           Description: S.optional(S.String),
-          RecommendationCategory: S.optional(RecommendationCategory),
-          RuleMetadata: S.optional(RuleMetadata),
-          Severity: S.optional(Severity),
+          RecommendationCategory: S.optional(S.String),
+          RuleMetadata: S.optional(__S(42)),
+          Severity: S.optional(S.String),
         }),
       ).annotate({ identifier: "RecommendationSummary" });
     case 4:
-      return S.Array(RecommendationSummary);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          RecommendationSummaries: S.optional(RecommendationSummaries),
+          RecommendationSummaries: S.optional(__S(44)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1544,10 +1358,10 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ProviderTypes: S.optional(ProviderTypes).pipe(T.HttpQuery("ProviderType")),
-          States: S.optional(RepositoryAssociationStates).pipe(T.HttpQuery("State")),
-          Names: S.optional(Names).pipe(T.HttpQuery("Name")),
-          Owners: S.optional(Owners).pipe(T.HttpQuery("Owner")),
+          ProviderTypes: S.optional(__S(19)).pipe(T.HttpQuery("ProviderType")),
+          States: S.optional(__S(19)).pipe(T.HttpQuery("State")),
+          Names: S.optional(__S(32)).pipe(T.HttpQuery("Name")),
+          Owners: S.optional(__S(32)).pipe(T.HttpQuery("Owner")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
         }).pipe(
@@ -1565,8 +1379,8 @@ function __c5(j: number): any {
           AssociationId: S.optional(S.String),
           Name: S.optional(S.String),
           Owner: S.optional(S.String),
-          ProviderType: S.optional(ProviderType),
-          State: S.optional(RepositoryAssociationState),
+          ProviderType: S.optional(S.String),
+          State: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RepositoryAssociationSummary",
@@ -1576,11 +1390,11 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RepositoryAssociationSummary);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          RepositoryAssociationSummaries: S.optional(RepositoryAssociationSummaries),
+          RepositoryAssociationSummaries: S.optional(__S(48)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1602,7 +1416,7 @@ function __c6(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagMap) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(4)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 4:
@@ -1610,7 +1424,7 @@ function __c6(j: number): any {
         S.Struct({
           CodeReviewArn: S.String,
           RecommendationId: S.String,
-          Reactions: Reactions,
+          Reactions: __S(19),
         }).pipe(T.all(T.Http({ method: "PUT", uri: "/feedback" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "PutRecommendationFeedbackRequest",
@@ -1621,7 +1435,7 @@ function __c6(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), Tags: TagMap }).pipe(
+        S.Struct({ resourceArn: S.String.pipe(T.HttpLabel("resourceArn")), Tags: __S(4) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{resourceArn}" }),
             svc,
@@ -1644,7 +1458,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(32).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -1656,5 +1470,30 @@ function __c7(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UntagResourceRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
   }
 }

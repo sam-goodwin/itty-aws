@@ -5,16 +5,13 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 /** Arguments validated against the selected tool's schema. */
 export type CreateMcpToolRequestArgsMap = { [key: string]: unknown | undefined };
-const CreateMcpToolRequestArgsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateMcpToolRequestArgsMap>;
-
 export interface CreateMcpToolRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -22,12 +19,7 @@ export interface CreateMcpToolRequest {
   /** Arguments validated against the selected tool's schema. */
   args?: CreateMcpToolRequestArgsMap;
 }
-const CreateMcpToolRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateMcpToolRequest>;
-
 export type MCPToolResponseStructuredContentMap = { [key: string]: unknown | undefined };
-const MCPToolResponseStructuredContentMap =
-  CreateMcpToolRequestArgsMap as any as S.Schema<MCPToolResponseStructuredContentMap>;
-
 export type MCPToolResponseErrorType =
   | "validation"
   | "permission"
@@ -36,8 +28,6 @@ export type MCPToolResponseErrorType =
   | "rate_limited"
   | "api_5xx"
   | "internal";
-const MCPToolResponseErrorType = S.String;
-
 export interface MCPToolResponse {
   /** Formatted tool output for the model. */
   content: string;
@@ -48,8 +38,6 @@ export interface MCPToolResponse {
   /** Failure category for MCP analytics. */
   error_type?: MCPToolResponseErrorType | null;
 }
-const MCPToolResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<MCPToolResponse>;
-
 export type CreateMcpToolError = PosthogOpError;
 /** Invoke an MCP tool by name. This endpoint allows MCP callers to invoke Max AI tools directly without going through the full LangChain conversation flow. Scopes are resolved dynamically per tool via dangerously_get_required_scopes. */
 export const createMcpTool: API.OperationMethod<
@@ -58,8 +46,8 @@ export const createMcpTool: API.OperationMethod<
   CreateMcpToolError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMcpToolRequest,
-  output: MCPToolResponse,
+  input: __S(1) as any as S.Schema<CreateMcpToolRequest>,
+  output: __S(2) as any as S.Schema<MCPToolResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -75,7 +63,7 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           tool_name: S.String.pipe(T.Label()),
-          args: S.optional(CreateMcpToolRequestArgsMap),
+          args: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -88,10 +76,21 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           content: S.String,
-          structured_content: S.optional(S.NullOr(MCPToolResponseStructuredContentMap)),
+          structured_content: S.optional(S.NullOr(__S(0))),
           success: S.Boolean,
-          error_type: S.optional(S.NullOr(MCPToolResponseErrorType)),
+          error_type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "MCPToolResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 2) {
+    case 0:
+      return __c0(i & 3);
   }
 }

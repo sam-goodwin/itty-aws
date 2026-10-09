@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "Resource Groups", serviceShapeName: "Ardi" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "resource-groups" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2017-11-27");
@@ -129,55 +131,32 @@ export type TagSyncTaskArn = string;
 export interface CancelTagSyncTaskInput {
   TaskArn: string;
 }
-const CancelTagSyncTaskInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelTagSyncTaskInput>;
 export interface CancelTagSyncTaskResponse {}
-const CancelTagSyncTaskResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelTagSyncTaskResponse>;
 export type CreateGroupName = string;
 export type Description = string;
 export type QueryType = "TAG_FILTERS_1_0" | "CLOUDFORMATION_STACK_1_0" | (string & {});
-const QueryType = S.String;
-
 export type Query = string;
 export interface ResourceQuery {
   Type: QueryType;
   Query: string;
 }
-const ResourceQuery = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ResourceQuery>;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-const Tags = /*@__PURE__*/ __L.at(__c0, 3);
 export type GroupConfigurationType = string;
 export type GroupConfigurationParameterName = string;
 export type GroupConfigurationParameterValue = string;
 export type GroupConfigurationParameterValueList = string[];
-const GroupConfigurationParameterValueList = /*@__PURE__*/ __L.at(__c0, 4);
 export interface GroupConfigurationParameter {
   Name: string;
   Values?: string[];
 }
-const GroupConfigurationParameter = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GroupConfigurationParameter>;
 export type GroupParameterList = GroupConfigurationParameter[];
-const GroupParameterList = /*@__PURE__*/ __L.at(__c0, 6);
 export interface GroupConfigurationItem {
   Type: string;
   Parameters?: GroupConfigurationParameter[];
 }
-const GroupConfigurationItem = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GroupConfigurationItem>;
 export type GroupConfigurationList = GroupConfigurationItem[];
-const GroupConfigurationList = /*@__PURE__*/ __L.at(__c1, 0);
 export type Criticality = number;
 export type Owner = string;
 export type DisplayName = string;
@@ -191,13 +170,11 @@ export interface CreateGroupInput {
   Owner?: string;
   DisplayName?: string;
 }
-const CreateGroupInput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<CreateGroupInput>;
 export type GroupArnV2 = string;
 export type GroupName = string;
 export type ApplicationTagKey = string;
 export type ApplicationArn = string;
 export type ApplicationTag = { [key: string]: string | undefined };
-const ApplicationTag = /*@__PURE__*/ __L.at(__c1, 2);
 export interface Group {
   GroupArn: string;
   Name: string;
@@ -207,14 +184,11 @@ export interface Group {
   DisplayName?: string;
   ApplicationTag?: { [key: string]: string | undefined };
 }
-const Group = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<Group>;
 export type GroupConfigurationStatus =
   | "UPDATING"
   | "UPDATE_COMPLETE"
   | "UPDATE_FAILED"
   | (string & {});
-const GroupConfigurationStatus = S.String;
-
 export type GroupConfigurationFailureReason = string;
 export interface GroupConfiguration {
   Configuration?: GroupConfigurationItem[];
@@ -222,109 +196,74 @@ export interface GroupConfiguration {
   Status?: GroupConfigurationStatus;
   FailureReason?: string;
 }
-const GroupConfiguration = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GroupConfiguration>;
 export interface CreateGroupOutput {
   Group: Group;
   ResourceQuery?: ResourceQuery;
   Tags?: { [key: string]: string | undefined };
   GroupConfiguration?: GroupConfiguration;
 }
-const CreateGroupOutput = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CreateGroupOutput>;
 export type GroupStringV2 = string;
 export interface DeleteGroupInput {
   GroupName?: string;
   Group?: string;
 }
-const DeleteGroupInput = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DeleteGroupInput>;
 export interface DeleteGroupOutput {
   Group?: Group;
 }
-const DeleteGroupOutput = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteGroupOutput>;
 export interface GetAccountSettingsRequest {}
-const GetAccountSettingsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetAccountSettingsRequest>;
 export type GroupLifecycleEventsDesiredStatus = "ACTIVE" | "INACTIVE" | (string & {});
-const GroupLifecycleEventsDesiredStatus = S.String;
-
 export type GroupLifecycleEventsStatus =
   | "ACTIVE"
   | "INACTIVE"
   | "IN_PROGRESS"
   | "ERROR"
   | (string & {});
-const GroupLifecycleEventsStatus = S.String;
-
 export type GroupLifecycleEventsStatusMessage = string;
 export interface AccountSettings {
   GroupLifecycleEventsDesiredStatus?: GroupLifecycleEventsDesiredStatus;
   GroupLifecycleEventsStatus?: GroupLifecycleEventsStatus;
   GroupLifecycleEventsStatusMessage?: string;
 }
-const AccountSettings = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<AccountSettings>;
 export interface GetAccountSettingsOutput {
   AccountSettings?: AccountSettings;
 }
-const GetAccountSettingsOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetAccountSettingsOutput>;
 export interface GetGroupInput {
   GroupName?: string;
   Group?: string;
 }
-const GetGroupInput = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetGroupInput>;
 export interface GetGroupOutput {
   Group: Group;
 }
-const GetGroupOutput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetGroupOutput>;
 export type GroupString = string;
 export interface GetGroupConfigurationInput {
   Group?: string;
 }
-const GetGroupConfigurationInput = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetGroupConfigurationInput>;
 export interface GetGroupConfigurationOutput {
   GroupConfiguration?: GroupConfiguration;
 }
-const GetGroupConfigurationOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetGroupConfigurationOutput>;
 export interface GetGroupQueryInput {
   GroupName?: string;
   Group?: string;
 }
-const GetGroupQueryInput = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetGroupQueryInput>;
 export interface GroupQuery {
   GroupName: string;
   ResourceQuery: ResourceQuery;
 }
-const GroupQuery = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GroupQuery>;
 export interface GetGroupQueryOutput {
   GroupQuery?: GroupQuery;
 }
-const GetGroupQueryOutput = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GetGroupQueryOutput>;
 export interface GetTagsInput {
   Arn: string;
 }
-const GetTagsInput = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<GetTagsInput>;
 export interface GetTagsOutput {
   Arn?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const GetTagsOutput = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<GetTagsOutput>;
 export interface GetTagSyncTaskInput {
   TaskArn: string;
 }
-const GetTagSyncTaskInput = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetTagSyncTaskInput>;
 export type RoleArn = string;
 export type TagSyncTaskStatus = "ACTIVE" | "ERROR" | (string & {});
-const TagSyncTaskStatus = S.String;
-
 export type ErrorMessage = string;
 export interface GetTagSyncTaskOutput {
   GroupArn?: string;
@@ -338,54 +277,37 @@ export interface GetTagSyncTaskOutput {
   ErrorMessage?: string;
   CreatedAt?: Date;
 }
-const GetTagSyncTaskOutput = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetTagSyncTaskOutput>;
 export type ResourceArn = string;
 export type ResourceArnList = string[];
-const ResourceArnList = GroupConfigurationParameterValueList as any as S.Schema<ResourceArnList>;
 export interface GroupResourcesInput {
   Group: string;
   ResourceArns: string[];
 }
-const GroupResourcesInput = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GroupResourcesInput>;
 export type ErrorCode = string;
 export interface FailedResource {
   ResourceArn?: string;
   ErrorMessage?: string;
   ErrorCode?: string;
 }
-const FailedResource = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<FailedResource>;
 export type FailedResourceList = FailedResource[];
-const FailedResourceList = /*@__PURE__*/ __L.at(__c4, 0);
 export interface PendingResource {
   ResourceArn?: string;
 }
-const PendingResource = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<PendingResource>;
 export type PendingResourceList = PendingResource[];
-const PendingResourceList = /*@__PURE__*/ __L.at(__c4, 2);
 export interface GroupResourcesOutput {
   Succeeded?: string[];
   Failed?: FailedResource[];
   Pending?: PendingResource[];
 }
-const GroupResourcesOutput = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GroupResourcesOutput>;
 export type MaxResults = number;
 export type ListGroupingStatusesFilterName = "status" | "resource-arn" | (string & {});
-const ListGroupingStatusesFilterName = S.String;
-
 export type ListGroupingStatusesFilterValue = string;
 export type ListGroupingStatusesFilterValues = string[];
-const ListGroupingStatusesFilterValues =
-  GroupConfigurationParameterValueList as any as S.Schema<ListGroupingStatusesFilterValues>;
 export interface ListGroupingStatusesFilter {
   Name: ListGroupingStatusesFilterName;
   Values: string[];
 }
-const ListGroupingStatusesFilter = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListGroupingStatusesFilter>;
 export type ListGroupingStatusesFilterList = ListGroupingStatusesFilter[];
-const ListGroupingStatusesFilterList = /*@__PURE__*/ __L.at(__c4, 5);
 export type NextToken = string;
 export interface ListGroupingStatusesInput {
   Group: string;
@@ -393,16 +315,8 @@ export interface ListGroupingStatusesInput {
   Filters?: ListGroupingStatusesFilter[];
   NextToken?: string;
 }
-const ListGroupingStatusesInput = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListGroupingStatusesInput>;
 export type GroupingType = "GROUP" | "UNGROUP" | (string & {});
-const GroupingType = S.String;
-
 export type GroupingStatus = "SUCCESS" | "FAILED" | "IN_PROGRESS" | "SKIPPED" | (string & {});
-const GroupingStatus = S.String;
-
 export interface GroupingStatusesItem {
   ResourceArn?: string;
   Action?: GroupingType;
@@ -411,32 +325,20 @@ export interface GroupingStatusesItem {
   ErrorCode?: string;
   UpdatedAt?: Date;
 }
-const GroupingStatusesItem = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<GroupingStatusesItem>;
 export type GroupingStatusesList = GroupingStatusesItem[];
-const GroupingStatusesList = /*@__PURE__*/ __L.at(__c5, 0);
 export interface ListGroupingStatusesOutput {
   Group?: string;
   GroupingStatuses?: GroupingStatusesItem[];
   NextToken?: string;
 }
-const ListGroupingStatusesOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListGroupingStatusesOutput>;
 export type ResourceFilterName = "resource-type" | (string & {});
-const ResourceFilterName = S.String;
-
 export type ResourceFilterValue = string;
 export type ResourceFilterValues = string[];
-const ResourceFilterValues =
-  GroupConfigurationParameterValueList as any as S.Schema<ResourceFilterValues>;
 export interface ResourceFilter {
   Name: ResourceFilterName;
   Values: string[];
 }
-const ResourceFilter = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ResourceFilter>;
 export type ResourceFilterList = ResourceFilter[];
-const ResourceFilterList = /*@__PURE__*/ __L.at(__c5, 3);
 export interface ListGroupResourcesInput {
   GroupName?: string;
   Group?: string;
@@ -444,61 +346,39 @@ export interface ListGroupResourcesInput {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListGroupResourcesInput = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ListGroupResourcesInput>;
 export type ResourceType = string;
 export interface ResourceIdentifier {
   ResourceArn?: string;
   ResourceType?: string;
 }
-const ResourceIdentifier = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ResourceIdentifier>;
 export type ResourceStatusValue = "PENDING" | (string & {});
-const ResourceStatusValue = S.String;
-
 export interface ResourceStatus {
   Name?: ResourceStatusValue;
 }
-const ResourceStatus = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ResourceStatus>;
 export interface ListGroupResourcesItem {
   Identifier?: ResourceIdentifier;
   Status?: ResourceStatus;
 }
-const ListGroupResourcesItem = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListGroupResourcesItem>;
 export type ListGroupResourcesItemList = ListGroupResourcesItem[];
-const ListGroupResourcesItemList = /*@__PURE__*/ __L.at(__c6, 0);
 export type ResourceIdentifierList = ResourceIdentifier[];
-const ResourceIdentifierList = /*@__PURE__*/ __L.at(__c6, 1);
 export type QueryErrorCode =
   | "CLOUDFORMATION_STACK_INACTIVE"
   | "CLOUDFORMATION_STACK_NOT_EXISTING"
   | "CLOUDFORMATION_STACK_UNASSUMABLE_ROLE"
   | "RESOURCE_TYPE_NOT_SUPPORTED"
   | (string & {});
-const QueryErrorCode = S.String;
-
 export type QueryErrorMessage = string;
 export interface QueryError {
   ErrorCode?: QueryErrorCode;
   Message?: string;
 }
-const QueryError = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<QueryError>;
 export type QueryErrorList = QueryError[];
-const QueryErrorList = /*@__PURE__*/ __L.at(__c6, 3);
 export interface ListGroupResourcesOutput {
   Resources?: ListGroupResourcesItem[];
   ResourceIdentifiers?: ResourceIdentifier[];
   NextToken?: string;
   QueryErrors?: QueryError[];
 }
-const ListGroupResourcesOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListGroupResourcesOutput>;
 export type GroupFilterName =
   | "resource-type"
   | "configuration-type"
@@ -506,25 +386,18 @@ export type GroupFilterName =
   | "display-name"
   | "criticality"
   | (string & {});
-const GroupFilterName = S.String;
-
 export type GroupFilterValue = string;
 export type GroupFilterValues = string[];
-const GroupFilterValues =
-  GroupConfigurationParameterValueList as any as S.Schema<GroupFilterValues>;
 export interface GroupFilter {
   Name: GroupFilterName;
   Values: string[];
 }
-const GroupFilter = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<GroupFilter>;
 export type GroupFilterList = GroupFilter[];
-const GroupFilterList = /*@__PURE__*/ __L.at(__c6, 6);
 export interface ListGroupsInput {
   Filters?: GroupFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const ListGroupsInput = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ListGroupsInput>;
 export type GroupArn = string;
 export interface GroupIdentifier {
   GroupName?: string;
@@ -534,36 +407,23 @@ export interface GroupIdentifier {
   Owner?: string;
   DisplayName?: string;
 }
-const GroupIdentifier = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<GroupIdentifier>;
 export type GroupIdentifierList = GroupIdentifier[];
-const GroupIdentifierList = /*@__PURE__*/ __L.at(__c7, 1);
 export type GroupList = Group[];
-const GroupList = /*@__PURE__*/ __L.at(__c7, 2);
 export interface ListGroupsOutput {
   GroupIdentifiers?: GroupIdentifier[];
   Groups?: Group[];
   NextToken?: string;
 }
-const ListGroupsOutput = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<ListGroupsOutput>;
 export interface ListTagSyncTasksFilter {
   GroupArn?: string;
   GroupName?: string;
 }
-const ListTagSyncTasksFilter = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListTagSyncTasksFilter>;
 export type ListTagSyncTasksFilterList = ListTagSyncTasksFilter[];
-const ListTagSyncTasksFilterList = /*@__PURE__*/ __L.at(__c7, 5);
 export interface ListTagSyncTasksInput {
   Filters?: ListTagSyncTasksFilter[];
   MaxResults?: number;
   NextToken?: string;
 }
-const ListTagSyncTasksInput = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ListTagSyncTasksInput>;
 export interface TagSyncTaskItem {
   GroupArn?: string;
   GroupName?: string;
@@ -576,43 +436,26 @@ export interface TagSyncTaskItem {
   ErrorMessage?: string;
   CreatedAt?: Date;
 }
-const TagSyncTaskItem = GetTagSyncTaskOutput as any as S.Schema<TagSyncTaskItem>;
 export type TagSyncTaskList = TagSyncTaskItem[];
-const TagSyncTaskList = /*@__PURE__*/ __L.at(__c7, 7);
 export interface ListTagSyncTasksOutput {
   TagSyncTasks?: TagSyncTaskItem[];
   NextToken?: string;
 }
-const ListTagSyncTasksOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListTagSyncTasksOutput>;
 export interface PutGroupConfigurationInput {
   Group?: string;
   Configuration?: GroupConfigurationItem[];
 }
-const PutGroupConfigurationInput = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<PutGroupConfigurationInput>;
 export interface PutGroupConfigurationOutput {}
-const PutGroupConfigurationOutput =
-  CancelTagSyncTaskResponse as any as S.Schema<PutGroupConfigurationOutput>;
 export interface SearchResourcesInput {
   ResourceQuery: ResourceQuery;
   MaxResults?: number;
   NextToken?: string;
 }
-const SearchResourcesInput = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<SearchResourcesInput>;
 export interface SearchResourcesOutput {
   ResourceIdentifiers?: ResourceIdentifier[];
   NextToken?: string;
   QueryErrors?: QueryError[];
 }
-const SearchResourcesOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<SearchResourcesOutput>;
 export interface StartTagSyncTaskInput {
   Group: string;
   TagKey?: string;
@@ -620,10 +463,6 @@ export interface StartTagSyncTaskInput {
   ResourceQuery?: ResourceQuery;
   RoleArn: string;
 }
-const StartTagSyncTaskInput = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<StartTagSyncTaskInput>;
 export interface StartTagSyncTaskOutput {
   GroupArn?: string;
   GroupName?: string;
@@ -633,60 +472,38 @@ export interface StartTagSyncTaskOutput {
   ResourceQuery?: ResourceQuery;
   RoleArn?: string;
 }
-const StartTagSyncTaskOutput = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<StartTagSyncTaskOutput>;
 export interface TagInput {
   Arn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagInput = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<TagInput>;
 export interface TagOutput {
   Arn?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const TagOutput = GetTagsOutput as any as S.Schema<TagOutput>;
 export interface UngroupResourcesInput {
   Group: string;
   ResourceArns: string[];
 }
-const UngroupResourcesInput = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<UngroupResourcesInput>;
 export interface UngroupResourcesOutput {
   Succeeded?: string[];
   Failed?: FailedResource[];
   Pending?: PendingResource[];
 }
-const UngroupResourcesOutput = GroupResourcesOutput as any as S.Schema<UngroupResourcesOutput>;
 export type TagKeyList = string[];
-const TagKeyList = GroupConfigurationParameterValueList as any as S.Schema<TagKeyList>;
 export interface UntagInput {
   Arn: string;
   Keys: string[];
 }
-const UntagInput = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<UntagInput>;
 export interface UntagOutput {
   Arn?: string;
   Keys?: string[];
 }
-const UntagOutput = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<UntagOutput>;
 export interface UpdateAccountSettingsInput {
   GroupLifecycleEventsDesiredStatus?: GroupLifecycleEventsDesiredStatus;
 }
-const UpdateAccountSettingsInput = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<UpdateAccountSettingsInput>;
 export interface UpdateAccountSettingsOutput {
   AccountSettings?: AccountSettings;
 }
-const UpdateAccountSettingsOutput = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<UpdateAccountSettingsOutput>;
 export interface UpdateGroupInput {
   GroupName?: string;
   Group?: string;
@@ -695,24 +512,17 @@ export interface UpdateGroupInput {
   Owner?: string;
   DisplayName?: string;
 }
-const UpdateGroupInput = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<UpdateGroupInput>;
 export interface UpdateGroupOutput {
   Group?: Group;
 }
-const UpdateGroupOutput = DeleteGroupOutput as any as S.Schema<UpdateGroupOutput>;
 export interface UpdateGroupQueryInput {
   GroupName?: string;
   Group?: string;
   ResourceQuery: ResourceQuery;
 }
-const UpdateGroupQueryInput = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<UpdateGroupQueryInput>;
 export interface UpdateGroupQueryOutput {
   GroupQuery?: GroupQuery;
 }
-const UpdateGroupQueryOutput = GetGroupQueryOutput as any as S.Schema<UpdateGroupQueryOutput>;
 export type CancelTagSyncTaskError =
   | BadRequestException
   | ForbiddenException
@@ -738,8 +548,8 @@ export const cancelTagSyncTask: API.OperationMethod<
   CancelTagSyncTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelTagSyncTaskInput,
-  output: CancelTagSyncTaskResponse,
+  input: __S(0) as any as S.Schema<CancelTagSyncTaskInput>,
+  output: __S(1) as any as S.Schema<CancelTagSyncTaskResponse>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -780,8 +590,8 @@ export const createGroup: API.OperationMethod<
   CreateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGroupInput,
-  output: CreateGroupOutput,
+  input: __S(9) as any as S.Schema<CreateGroupInput>,
+  output: __S(13) as any as S.Schema<CreateGroupOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -819,8 +629,8 @@ export const deleteGroup: API.OperationMethod<
   DeleteGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGroupInput,
-  output: DeleteGroupOutput,
+  input: __S(14) as any as S.Schema<DeleteGroupInput>,
+  output: __S(15) as any as S.Schema<DeleteGroupOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -850,8 +660,8 @@ export const getAccountSettings: API.OperationMethod<
   GetAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountSettingsRequest,
-  output: GetAccountSettingsOutput,
+  input: __S(16) as any as S.Schema<GetAccountSettingsRequest>,
+  output: __S(18) as any as S.Schema<GetAccountSettingsOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -887,8 +697,8 @@ export const getGroup: API.OperationMethod<
   GetGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGroupInput,
-  output: GetGroupOutput,
+  input: __S(19) as any as S.Schema<GetGroupInput>,
+  output: __S(20) as any as S.Schema<GetGroupOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -926,8 +736,8 @@ export const getGroupConfiguration: API.OperationMethod<
   GetGroupConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGroupConfigurationInput,
-  output: GetGroupConfigurationOutput,
+  input: __S(21) as any as S.Schema<GetGroupConfigurationInput>,
+  output: __S(22) as any as S.Schema<GetGroupConfigurationOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -966,8 +776,8 @@ export const getGroupQuery: API.OperationMethod<
   GetGroupQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGroupQueryInput,
-  output: GetGroupQueryOutput,
+  input: __S(23) as any as S.Schema<GetGroupQueryInput>,
+  output: __S(25) as any as S.Schema<GetGroupQueryOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1005,8 +815,8 @@ export const getTags: API.OperationMethod<
   GetTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTagsInput,
-  output: GetTagsOutput,
+  input: __S(26) as any as S.Schema<GetTagsInput>,
+  output: __S(27) as any as S.Schema<GetTagsOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1044,8 +854,8 @@ export const getTagSyncTask: API.OperationMethod<
   GetTagSyncTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTagSyncTaskInput,
-  output: GetTagSyncTaskOutput,
+  input: __S(28) as any as S.Schema<GetTagSyncTaskInput>,
+  output: __S(29) as any as S.Schema<GetTagSyncTaskOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1094,8 +904,8 @@ export const groupResources: API.OperationMethod<
   GroupResourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GroupResourcesInput,
-  output: GroupResourcesOutput,
+  input: __S(30) as any as S.Schema<GroupResourcesInput>,
+  output: __S(35) as any as S.Schema<GroupResourcesOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1128,8 +938,8 @@ export const listGroupingStatuses: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupingStatusesItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListGroupingStatusesInput,
-  output: ListGroupingStatusesOutput,
+  input: __S(38) as any as S.Schema<ListGroupingStatusesInput>,
+  output: __S(41) as any as S.Schema<ListGroupingStatusesOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1181,8 +991,8 @@ export const listGroupResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceIdentifier
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListGroupResourcesInput,
-  output: ListGroupResourcesOutput,
+  input: __S(44) as any as S.Schema<ListGroupResourcesInput>,
+  output: __S(52) as any as S.Schema<ListGroupResourcesOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1226,8 +1036,8 @@ export const listGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   GroupIdentifier
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListGroupsInput,
-  output: ListGroupsOutput,
+  input: __S(55) as any as S.Schema<ListGroupsInput>,
+  output: __S(59) as any as S.Schema<ListGroupsOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1271,8 +1081,8 @@ export const listTagSyncTasks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TagSyncTaskItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListTagSyncTasksInput,
-  output: ListTagSyncTasksOutput,
+  input: __S(62) as any as S.Schema<ListTagSyncTasksInput>,
+  output: __S(64) as any as S.Schema<ListTagSyncTasksOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1317,8 +1127,8 @@ export const putGroupConfiguration: API.OperationMethod<
   PutGroupConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutGroupConfigurationInput,
-  output: PutGroupConfigurationOutput,
+  input: __S(65) as any as S.Schema<PutGroupConfigurationInput>,
+  output: __S(1) as any as S.Schema<PutGroupConfigurationOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1364,8 +1174,8 @@ export const searchResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceIdentifier
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchResourcesInput,
-  output: SearchResourcesOutput,
+  input: __S(66) as any as S.Schema<SearchResourcesInput>,
+  output: __S(67) as any as S.Schema<SearchResourcesOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1419,8 +1229,8 @@ export const startTagSyncTask: API.OperationMethod<
   StartTagSyncTaskError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartTagSyncTaskInput,
-  output: StartTagSyncTaskOutput,
+  input: __S(68) as any as S.Schema<StartTagSyncTaskInput>,
+  output: __S(69) as any as S.Schema<StartTagSyncTaskOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1464,8 +1274,8 @@ export const tag: API.OperationMethod<
   TagError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagInput,
-  output: TagOutput,
+  input: __S(70) as any as S.Schema<TagInput>,
+  output: __S(27) as any as S.Schema<TagOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1505,8 +1315,8 @@ export const ungroupResources: API.OperationMethod<
   UngroupResourcesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UngroupResourcesInput,
-  output: UngroupResourcesOutput,
+  input: __S(71) as any as S.Schema<UngroupResourcesInput>,
+  output: __S(35) as any as S.Schema<UngroupResourcesOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1543,8 +1353,8 @@ export const untag: API.OperationMethod<
   UntagError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagInput,
-  output: UntagOutput,
+  input: __S(72) as any as S.Schema<UntagInput>,
+  output: __S(73) as any as S.Schema<UntagOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1579,8 +1389,8 @@ export const updateAccountSettings: API.OperationMethod<
   UpdateAccountSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountSettingsInput,
-  output: UpdateAccountSettingsOutput,
+  input: __S(74) as any as S.Schema<UpdateAccountSettingsInput>,
+  output: __S(75) as any as S.Schema<UpdateAccountSettingsOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1617,8 +1427,8 @@ export const updateGroup: API.OperationMethod<
   UpdateGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGroupInput,
-  output: UpdateGroupOutput,
+  input: __S(76) as any as S.Schema<UpdateGroupInput>,
+  output: __S(15) as any as S.Schema<UpdateGroupOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1656,8 +1466,8 @@ export const updateGroupQuery: API.OperationMethod<
   UpdateGroupQueryError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGroupQueryInput,
-  output: UpdateGroupQueryOutput,
+  input: __S(77) as any as S.Schema<UpdateGroupQueryInput>,
+  output: __S(25) as any as S.Schema<UpdateGroupQueryOutput>,
   errors: [
     BadRequestException,
     ForbiddenException,
@@ -1692,7 +1502,7 @@ function __c0(j: number): any {
         identifier: "CancelTagSyncTaskResponse",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Type: QueryType, Query: S.String })).annotate({
+      return S.suspend(() => S.Struct({ Type: S.String, Query: S.String })).annotate({
         identifier: "ResourceQuery",
       });
     case 3:
@@ -1700,31 +1510,29 @@ function __c0(j: number): any {
     case 4:
       return S.Array(S.String);
     case 5:
-      return S.suspend(() =>
-        S.Struct({ Name: S.String, Values: S.optional(GroupConfigurationParameterValueList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Name: S.String, Values: S.optional(__S(4)) })).annotate({
         identifier: "GroupConfigurationParameter",
       });
     case 6:
-      return S.Array(GroupConfigurationParameter);
+      return S.Array(__S(5));
     case 7:
-      return S.suspend(() =>
-        S.Struct({ Type: S.String, Parameters: S.optional(GroupParameterList) }),
-      ).annotate({ identifier: "GroupConfigurationItem" });
+      return S.suspend(() => S.Struct({ Type: S.String, Parameters: S.optional(__S(6)) })).annotate(
+        { identifier: "GroupConfigurationItem" },
+      );
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GroupConfigurationItem);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.String,
           Description: S.optional(S.String),
-          ResourceQuery: S.optional(ResourceQuery),
-          Tags: S.optional(Tags),
-          Configuration: S.optional(GroupConfigurationList),
+          ResourceQuery: S.optional(__S(2)),
+          Tags: S.optional(__S(3)),
+          Configuration: S.optional(__S(8)),
           Criticality: S.optional(S.Number),
           Owner: S.optional(S.String),
           DisplayName: S.optional(S.String),
@@ -1741,25 +1549,25 @@ function __c1(j: number): any {
           Criticality: S.optional(S.Number),
           Owner: S.optional(S.String),
           DisplayName: S.optional(S.String),
-          ApplicationTag: S.optional(ApplicationTag),
+          ApplicationTag: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "Group" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Configuration: S.optional(GroupConfigurationList),
-          ProposedConfiguration: S.optional(GroupConfigurationList),
-          Status: S.optional(GroupConfigurationStatus),
+          Configuration: S.optional(__S(8)),
+          ProposedConfiguration: S.optional(__S(8)),
+          Status: S.optional(S.String),
           FailureReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupConfiguration" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Group: Group,
-          ResourceQuery: S.optional(ResourceQuery),
-          Tags: S.optional(Tags),
-          GroupConfiguration: S.optional(GroupConfiguration),
+          Group: __S(11),
+          ResourceQuery: S.optional(__S(2)),
+          Tags: S.optional(__S(3)),
+          GroupConfiguration: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "CreateGroupOutput" });
     case 6:
@@ -1769,7 +1577,7 @@ function __c1(j: number): any {
         ),
       ).annotate({ identifier: "DeleteGroupInput" });
     case 7:
-      return S.suspend(() => S.Struct({ Group: S.optional(Group) })).annotate({
+      return S.suspend(() => S.Struct({ Group: S.optional(__S(11)) })).annotate({
         identifier: "DeleteGroupOutput",
       });
   }
@@ -1794,13 +1602,13 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          GroupLifecycleEventsDesiredStatus: S.optional(GroupLifecycleEventsDesiredStatus),
-          GroupLifecycleEventsStatus: S.optional(GroupLifecycleEventsStatus),
+          GroupLifecycleEventsDesiredStatus: S.optional(S.String),
+          GroupLifecycleEventsStatus: S.optional(S.String),
           GroupLifecycleEventsStatusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "AccountSettings" });
     case 2:
-      return S.suspend(() => S.Struct({ AccountSettings: S.optional(AccountSettings) })).annotate({
+      return S.suspend(() => S.Struct({ AccountSettings: S.optional(__S(17)) })).annotate({
         identifier: "GetAccountSettingsOutput",
       });
     case 3:
@@ -1810,7 +1618,7 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "GetGroupInput" });
     case 4:
-      return S.suspend(() => S.Struct({ Group: Group })).annotate({
+      return S.suspend(() => S.Struct({ Group: __S(11) })).annotate({
         identifier: "GetGroupOutput",
       });
     case 5:
@@ -1829,9 +1637,7 @@ function __c2(j: number): any {
         identifier: "GetGroupConfigurationInput",
       });
     case 6:
-      return S.suspend(() =>
-        S.Struct({ GroupConfiguration: S.optional(GroupConfiguration) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ GroupConfiguration: S.optional(__S(12)) })).annotate({
         identifier: "GetGroupConfigurationOutput",
       });
     case 7:
@@ -1845,11 +1651,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ GroupName: S.String, ResourceQuery: ResourceQuery }),
-      ).annotate({ identifier: "GroupQuery" });
+      return S.suspend(() => S.Struct({ GroupName: S.String, ResourceQuery: __S(2) })).annotate({
+        identifier: "GroupQuery",
+      });
     case 1:
-      return S.suspend(() => S.Struct({ GroupQuery: S.optional(GroupQuery) })).annotate({
+      return S.suspend(() => S.Struct({ GroupQuery: S.optional(__S(24)) })).annotate({
         identifier: "GetGroupQueryOutput",
       });
     case 2:
@@ -1867,7 +1673,7 @@ function __c3(j: number): any {
       ).annotate({ identifier: "GetTagsInput" });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Arn: S.optional(S.String), Tags: S.optional(Tags) }),
+        S.Struct({ Arn: S.optional(S.String), Tags: S.optional(__S(3)) }),
       ).annotate({ identifier: "GetTagsOutput" });
     case 4:
       return S.suspend(() =>
@@ -1890,16 +1696,16 @@ function __c3(j: number): any {
           TaskArn: S.optional(S.String),
           TagKey: S.optional(S.String),
           TagValue: S.optional(S.String),
-          ResourceQuery: S.optional(ResourceQuery),
+          ResourceQuery: S.optional(__S(2)),
           RoleArn: S.optional(S.String),
-          Status: S.optional(TagSyncTaskStatus),
+          Status: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "GetTagSyncTaskOutput" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Group: S.String, ResourceArns: ResourceArnList }).pipe(
+        S.Struct({ Group: S.String, ResourceArns: __S(4) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/group-resources" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GroupResourcesInput" });
@@ -1916,38 +1722,38 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(FailedResource);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() => S.Struct({ ResourceArn: S.optional(S.String) })).annotate({
         identifier: "PendingResource",
       });
     case 2:
-      return S.Array(PendingResource);
+      return S.Array(__S(33));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Succeeded: S.optional(ResourceArnList),
-          Failed: S.optional(FailedResourceList),
-          Pending: S.optional(PendingResourceList),
+          Succeeded: S.optional(__S(4)),
+          Failed: S.optional(__S(32)),
+          Pending: S.optional(__S(34)),
         }),
       ).annotate({ identifier: "GroupResourcesOutput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Name: ListGroupingStatusesFilterName,
-          Values: ListGroupingStatusesFilterValues,
+          Name: S.String,
+          Values: __S(4),
         }),
       ).annotate({
         identifier: "ListGroupingStatusesFilter",
       });
     case 5:
-      return S.Array(ListGroupingStatusesFilter);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
           Group: S.String,
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(ListGroupingStatusesFilterList),
+          Filters: S.optional(__S(37)),
           NextToken: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1966,8 +1772,8 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.optional(S.String),
-          Action: S.optional(GroupingType),
-          Status: S.optional(GroupingStatus),
+          Action: S.optional(S.String),
+          Status: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
           ErrorCode: S.optional(S.String),
           UpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1978,29 +1784,29 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GroupingStatusesItem);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
           Group: S.optional(S.String),
-          GroupingStatuses: S.optional(GroupingStatusesList),
+          GroupingStatuses: S.optional(__S(40)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListGroupingStatusesOutput",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ Name: ResourceFilterName, Values: ResourceFilterValues }),
-      ).annotate({ identifier: "ResourceFilter" });
+      return S.suspend(() => S.Struct({ Name: S.String, Values: __S(4) })).annotate({
+        identifier: "ResourceFilter",
+      });
     case 3:
-      return S.Array(ResourceFilter);
+      return S.Array(__S(42));
     case 4:
       return S.suspend(() =>
         S.Struct({
           GroupName: S.optional(S.String),
           Group: S.optional(S.String),
-          Filters: S.optional(ResourceFilterList),
+          Filters: S.optional(__S(43)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -2019,14 +1825,14 @@ function __c5(j: number): any {
         S.Struct({ ResourceArn: S.optional(S.String), ResourceType: S.optional(S.String) }),
       ).annotate({ identifier: "ResourceIdentifier" });
     case 6:
-      return S.suspend(() => S.Struct({ Name: S.optional(ResourceStatusValue) })).annotate({
+      return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
         identifier: "ResourceStatus",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Identifier: S.optional(ResourceIdentifier),
-          Status: S.optional(ResourceStatus),
+          Identifier: S.optional(__S(45)),
+          Status: S.optional(__S(46)),
         }),
       ).annotate({ identifier: "ListGroupResourcesItem" });
   }
@@ -2034,34 +1840,34 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListGroupResourcesItem);
+      return S.Array(__S(47));
     case 1:
-      return S.Array(ResourceIdentifier);
+      return S.Array(__S(45));
     case 2:
       return S.suspend(() =>
-        S.Struct({ ErrorCode: S.optional(QueryErrorCode), Message: S.optional(S.String) }),
+        S.Struct({ ErrorCode: S.optional(S.String), Message: S.optional(S.String) }),
       ).annotate({ identifier: "QueryError" });
     case 3:
-      return S.Array(QueryError);
+      return S.Array(__S(50));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Resources: S.optional(ListGroupResourcesItemList),
-          ResourceIdentifiers: S.optional(ResourceIdentifierList),
+          Resources: S.optional(__S(48)),
+          ResourceIdentifiers: S.optional(__S(49)),
           NextToken: S.optional(S.String),
-          QueryErrors: S.optional(QueryErrorList),
+          QueryErrors: S.optional(__S(51)),
         }),
       ).annotate({ identifier: "ListGroupResourcesOutput" });
     case 5:
-      return S.suspend(() =>
-        S.Struct({ Name: GroupFilterName, Values: GroupFilterValues }),
-      ).annotate({ identifier: "GroupFilter" });
+      return S.suspend(() => S.Struct({ Name: S.String, Values: __S(4) })).annotate({
+        identifier: "GroupFilter",
+      });
     case 6:
-      return S.Array(GroupFilter);
+      return S.Array(__S(53));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(GroupFilterList),
+          Filters: S.optional(__S(54)),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
         }).pipe(
@@ -2084,14 +1890,14 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "GroupIdentifier" });
     case 1:
-      return S.Array(GroupIdentifier);
+      return S.Array(__S(56));
     case 2:
-      return S.Array(Group);
+      return S.Array(__S(11));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          GroupIdentifiers: S.optional(GroupIdentifierList),
-          Groups: S.optional(GroupList),
+          GroupIdentifiers: S.optional(__S(57)),
+          Groups: S.optional(__S(58)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListGroupsOutput" });
@@ -2100,11 +1906,11 @@ function __c7(j: number): any {
         S.Struct({ GroupArn: S.optional(S.String), GroupName: S.optional(S.String) }),
       ).annotate({ identifier: "ListTagSyncTasksFilter" });
     case 5:
-      return S.Array(ListTagSyncTasksFilter);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(ListTagSyncTasksFilterList),
+          Filters: S.optional(__S(61)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -2119,20 +1925,20 @@ function __c7(j: number): any {
         ),
       ).annotate({ identifier: "ListTagSyncTasksInput" });
     case 7:
-      return S.Array(TagSyncTaskItem);
+      return S.Array(__S(29));
   }
 }
 function __c8(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ TagSyncTasks: S.optional(TagSyncTaskList), NextToken: S.optional(S.String) }),
+        S.Struct({ TagSyncTasks: S.optional(__S(63)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListTagSyncTasksOutput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Group: S.optional(S.String),
-          Configuration: S.optional(GroupConfigurationList),
+          Configuration: S.optional(__S(8)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/put-group-configuration" }),
@@ -2149,7 +1955,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ResourceQuery: ResourceQuery,
+          ResourceQuery: __S(2),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -2159,9 +1965,9 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ResourceIdentifiers: S.optional(ResourceIdentifierList),
+          ResourceIdentifiers: S.optional(__S(49)),
           NextToken: S.optional(S.String),
-          QueryErrors: S.optional(QueryErrorList),
+          QueryErrors: S.optional(__S(51)),
         }),
       ).annotate({ identifier: "SearchResourcesOutput" });
     case 4:
@@ -2170,7 +1976,7 @@ function __c8(j: number): any {
           Group: S.String,
           TagKey: S.optional(S.String),
           TagValue: S.optional(S.String),
-          ResourceQuery: S.optional(ResourceQuery),
+          ResourceQuery: S.optional(__S(2)),
           RoleArn: S.String,
         }).pipe(
           T.all(
@@ -2191,13 +1997,13 @@ function __c8(j: number): any {
           TaskArn: S.optional(S.String),
           TagKey: S.optional(S.String),
           TagValue: S.optional(S.String),
-          ResourceQuery: S.optional(ResourceQuery),
+          ResourceQuery: S.optional(__S(2)),
           RoleArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "StartTagSyncTaskOutput" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Arn: S.String.pipe(T.HttpLabel("Arn")), Tags: Tags }).pipe(
+        S.Struct({ Arn: S.String.pipe(T.HttpLabel("Arn")), Tags: __S(3) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/resources/{Arn}/tags" }),
             svc,
@@ -2210,7 +2016,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "TagInput" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Group: S.String, ResourceArns: ResourceArnList }).pipe(
+        S.Struct({ Group: S.String, ResourceArns: __S(4) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/ungroup-resources" }),
             svc,
@@ -2227,7 +2033,7 @@ function __c9(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Arn: S.String.pipe(T.HttpLabel("Arn")), Keys: TagKeyList }).pipe(
+        S.Struct({ Arn: S.String.pipe(T.HttpLabel("Arn")), Keys: __S(4) }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/resources/{Arn}/tags" }),
             svc,
@@ -2240,12 +2046,12 @@ function __c9(j: number): any {
       ).annotate({ identifier: "UntagInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Arn: S.optional(S.String), Keys: S.optional(TagKeyList) }),
+        S.Struct({ Arn: S.optional(S.String), Keys: S.optional(__S(4)) }),
       ).annotate({ identifier: "UntagOutput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          GroupLifecycleEventsDesiredStatus: S.optional(GroupLifecycleEventsDesiredStatus),
+          GroupLifecycleEventsDesiredStatus: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/update-account-settings" }),
@@ -2260,7 +2066,7 @@ function __c9(j: number): any {
         identifier: "UpdateAccountSettingsInput",
       });
     case 3:
-      return S.suspend(() => S.Struct({ AccountSettings: S.optional(AccountSettings) })).annotate({
+      return S.suspend(() => S.Struct({ AccountSettings: S.optional(__S(17)) })).annotate({
         identifier: "UpdateAccountSettingsOutput",
       });
     case 4:
@@ -2281,7 +2087,7 @@ function __c9(j: number): any {
         S.Struct({
           GroupName: S.optional(S.String),
           Group: S.optional(S.String),
-          ResourceQuery: ResourceQuery,
+          ResourceQuery: __S(2),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/update-group-query" }),
@@ -2293,5 +2099,34 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateGroupQueryInput" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
   }
 }

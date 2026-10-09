@@ -5,20 +5,15 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
 /** * `GET` - GET * `POST` - POST * `PUT` - PUT * `PATCH` - PATCH * `DELETE` - DELETE */
 export type PostHogConnectionForwardMethodEnum = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
-const PostHogConnectionForwardMethodEnum = S.String;
-
 /** Query parameters to send to the target. */
 export type CreatePosthogConnectionsForwardRequestQueryMap = { [key: string]: string | undefined };
-const CreatePosthogConnectionsForwardRequestQueryMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreatePosthogConnectionsForwardRequestQueryMap>;
-
 export interface CreatePosthogConnectionsForwardRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -32,32 +27,17 @@ export interface CreatePosthogConnectionsForwardRequest {
   /** JSON request body for write methods. */
   data?: unknown;
 }
-const CreatePosthogConnectionsForwardRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreatePosthogConnectionsForwardRequest>;
-
 export interface PostHogConnectionForwardResponse {
   /** HTTP status the target project returned. */
   status: number;
   /** The target project's response body, passed through. */
   data: unknown;
 }
-const PostHogConnectionForwardResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<PostHogConnectionForwardResponse>;
-
 export interface GetPosthogConnectionsTargetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
-const GetPosthogConnectionsTargetRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetPosthogConnectionsTargetRequest>;
-
 export interface PostHogConnectionTarget {
   /** Project id to use in target API paths. It is the connected project's id, not this one's. */
   project_id: number;
@@ -72,11 +52,6 @@ export interface PostHogConnectionTarget {
   /** Base URL requests through this connection are sent to. */
   base_url: string;
 }
-const PostHogConnectionTarget = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<PostHogConnectionTarget>;
-
 export type CreatePosthogConnectionsForwardError = PosthogOpError;
 /** Forward a request through a PostHog connection Replay an API request against the connected PostHog project. The server injects the connection's token; the response is passed through. */
 export const createPosthogConnectionsForward: API.OperationMethod<
@@ -85,8 +60,8 @@ export const createPosthogConnectionsForward: API.OperationMethod<
   CreatePosthogConnectionsForwardError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePosthogConnectionsForwardRequest,
-  output: PostHogConnectionForwardResponse,
+  input: __S(1) as any as S.Schema<CreatePosthogConnectionsForwardRequest>,
+  output: __S(2) as any as S.Schema<PostHogConnectionForwardResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -100,8 +75,8 @@ export const getPosthogConnectionsTarget: API.OperationMethod<
   GetPosthogConnectionsTargetError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPosthogConnectionsTargetRequest,
-  output: PostHogConnectionTarget,
+  input: __S(3) as any as S.Schema<GetPosthogConnectionsTargetRequest>,
+  output: __S(4) as any as S.Schema<PostHogConnectionTarget>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -117,9 +92,9 @@ function __c0(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          method: PostHogConnectionForwardMethodEnum,
+          method: S.String,
           path: S.String,
-          query: S.optional(CreatePosthogConnectionsForwardRequestQueryMap),
+          query: S.optional(__S(0)),
           data: S.optional(S.Unknown),
         }).pipe(
           T.Http({
@@ -166,5 +141,16 @@ function __c0(j: number): any {
           base_url: S.String,
         }),
       ).annotate({ identifier: "PostHogConnectionTarget" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { VercelProtocol, type VercelOpError, type VercelOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { VercelOpError, VercelOpContext };
 
@@ -56,12 +58,8 @@ export class PaymentRequired
 
 /** The type of item to purchase. */
 export type BuyCreditsRequestItemType = "credits";
-const BuyCreditsRequestItemType = S.String;
-
 /** The type of credits to purchase. */
 export type BuyCreditsRequestItemCreditType = "v0" | "gateway" | "agent";
-const BuyCreditsRequestItemCreditType = S.String;
-
 export interface BuyCreditsRequestItem {
   /** The type of item to purchase. */
   type: BuyCreditsRequestItemType | (string & {});
@@ -70,11 +68,6 @@ export interface BuyCreditsRequestItem {
   /** The amount of credits to purchase. */
   amount: number;
 }
-const BuyCreditsRequestItem = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<BuyCreditsRequestItem>;
-
 export interface BuyCreditsRequest {
   /** The source of the purchase request. Defaults to `api` if not specified. */
   source?: string;
@@ -84,8 +77,6 @@ export interface BuyCreditsRequest {
   slug?: string;
   item: BuyCreditsRequestItem;
 }
-const BuyCreditsRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<BuyCreditsRequest>;
-
 export interface BuyCreditsResponseBodyCase0 {
   checkoutSessionId: string;
   checkoutSessionUrl: string;
@@ -929,11 +920,7 @@ export type BuyCreditsResponseBody =
   | BuyCreditsResponseBodyCase0
   | BuyCreditsResponseBodyCase1
   | BuyCreditsResponseBodyCase2;
-const BuyCreditsResponseBody = S.Unknown as any as S.Schema<BuyCreditsResponseBody>;
-
 export type BuyCreditsResponse = BuyCreditsResponseBody;
-const BuyCreditsResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<BuyCreditsResponse>;
-
 export interface ListBillingChargesRequest {
   /** Inclusive start of the date range as an ISO 8601 date-time string in UTC. */
   from: string;
@@ -944,34 +931,14 @@ export interface ListBillingChargesRequest {
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ListBillingChargesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ListBillingChargesRequest>;
-
 export interface ListBillingChargesResponse {}
-const ListBillingChargesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ListBillingChargesResponse>;
-
 export interface ListContractCommitmentsRequest {
   /** The Team identifier to perform the request on behalf of. */
   teamId?: string;
   /** The Team slug to perform the request on behalf of. */
   slug?: string;
 }
-const ListContractCommitmentsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListContractCommitmentsRequest>;
-
 export interface ListContractCommitmentsResponse {}
-const ListContractCommitmentsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ListContractCommitmentsResponse>;
-
 export type BuyCreditsError =
   | BadRequest
   | PaymentRequired
@@ -986,8 +953,8 @@ export const buyCredits: API.OperationMethod<
   BuyCreditsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BuyCreditsRequest,
-  output: BuyCreditsResponse,
+  input: __S(1) as any as S.Schema<BuyCreditsRequest>,
+  output: __S(2) as any as S.Schema<BuyCreditsResponse>,
   errors: [BadRequest, PaymentRequired, Forbidden, NotFound, Conflict],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1001,8 +968,8 @@ export const listBillingCharges: API.OperationMethod<
   ListBillingChargesError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBillingChargesRequest,
-  output: ListBillingChargesResponse,
+  input: __S(3) as any as S.Schema<ListBillingChargesRequest>,
+  output: __S(4) as any as S.Schema<ListBillingChargesResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1016,8 +983,8 @@ export const listContractCommitments: API.OperationMethod<
   ListContractCommitmentsError,
   VercelOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListContractCommitmentsRequest,
-  output: ListContractCommitmentsResponse,
+  input: __S(5) as any as S.Schema<ListContractCommitmentsRequest>,
+  output: __S(6) as any as S.Schema<ListContractCommitmentsResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: VercelProtocol,
   retry: Retry.Retry,
@@ -1029,8 +996,8 @@ function __c0(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: BuyCreditsRequestItemType,
-          creditType: BuyCreditsRequestItemCreditType,
+          type: S.String,
+          creditType: S.String,
           amount: S.Number,
         }),
       ).annotate({ identifier: "BuyCreditsRequestItem" });
@@ -1040,11 +1007,11 @@ function __c0(j: number): any {
           source: S.optional(S.String.pipe(T.Query())),
           teamId: S.optional(S.String.pipe(T.Query())),
           slug: S.optional(S.String.pipe(T.Query())),
-          item: BuyCreditsRequestItem,
+          item: __S(0),
         }).pipe(T.Http({ method: "POST", uri: "/v1/billing/buy", code: 200 })),
       ).annotate({ identifier: "BuyCreditsRequest" });
     case 2:
-      return S.suspend(() => BuyCreditsResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "BuyCreditsResponse",
       });
     case 3:
@@ -1075,5 +1042,16 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "ListContractCommitmentsResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

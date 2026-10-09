@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "MediaTailor",
   serviceShapeName: "MediaTailor",
@@ -117,29 +119,18 @@ export class ProgramNotFound
     /*@__PURE__*/ T.SyntheticError({ from: "NotFoundException", message: { matches: ".*" } }),
   ).pipe(C.withNotFoundError) {}
 export type LogType = "AS_RUN" | (string & {});
-const LogType = S.String;
-
 export type LogTypes = LogType[];
-const LogTypes = /*@__PURE__*/ __L.at(__c0, 0);
 export interface ConfigureLogsForChannelRequest {
   ChannelName: string;
   LogTypes: LogType[];
 }
-const ConfigureLogsForChannelRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ConfigureLogsForChannelRequest>;
 export interface ConfigureLogsForChannelResponse {
   ChannelName?: string;
   LogTypes?: LogType[];
 }
-const ConfigureLogsForChannelResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ConfigureLogsForChannelResponse>;
 export type LoggingStrategy = "VENDED_LOGS" | "LEGACY_CLOUDWATCH" | (string & {});
 export type __listOfLoggingStrategies = LoggingStrategy[];
-const __listOfLoggingStrategies = LogTypes as any as S.Schema<__listOfLoggingStrategies>;
+const __listOfLoggingStrategies = __S(0) as any as S.Schema<__listOfLoggingStrategies>;
 export type AdsInteractionPublishOptInEventType =
   | "RAW_ADS_RESPONSE"
   | "RAW_ADS_REQUEST"
@@ -152,8 +143,6 @@ export type AdsInteractionPublishOptInEventType =
   | "PRE_MANIFEST_INSERTION_HOOK_SUMMARY"
   | "PRE_MANIFEST_INSERTION_FUNCTION_COMPLETED"
   | (string & {});
-const AdsInteractionPublishOptInEventType = S.String;
-
 export type __adsInteractionPublishOptInEventTypesList = AdsInteractionPublishOptInEventType[];
 const __adsInteractionPublishOptInEventTypesList = /*@__PURE__*/ __L.at(__c0, 3);
 export type AdsInteractionExcludeEventType =
@@ -213,7 +202,6 @@ export interface AdsInteractionLog {
   PublishOptInEventTypes?: AdsInteractionPublishOptInEventType[];
   ExcludeEventTypes?: AdsInteractionExcludeEventType[];
 }
-const AdsInteractionLog = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AdsInteractionLog>;
 export type ManifestServicePublishOptInEventType =
   | "PRE_SESSION_INIT_HOOK_SUMMARY"
   | "PRE_SESSION_INIT_FUNCTION_COMPLETED"
@@ -264,10 +252,6 @@ export interface ManifestServiceInteractionLog {
   PublishOptInEventTypes?: ManifestServicePublishOptInEventType[];
   ExcludeEventTypes?: ManifestServiceExcludeEventType[];
 }
-const ManifestServiceInteractionLog = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ManifestServiceInteractionLog>;
 export interface ConfigureLogsForPlaybackConfigurationRequest {
   PercentEnabled: number;
   PlaybackConfigurationName: string;
@@ -275,10 +259,6 @@ export interface ConfigureLogsForPlaybackConfigurationRequest {
   AdsInteractionLog?: AdsInteractionLog;
   ManifestServiceInteractionLog?: ManifestServiceInteractionLog;
 }
-const ConfigureLogsForPlaybackConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ConfigureLogsForPlaybackConfigurationRequest>;
 export interface ConfigureLogsForPlaybackConfigurationResponse {
   PercentEnabled: number;
   PlaybackConfigurationName?: string;
@@ -286,56 +266,37 @@ export interface ConfigureLogsForPlaybackConfigurationResponse {
   AdsInteractionLog?: AdsInteractionLog;
   ManifestServiceInteractionLog?: ManifestServiceInteractionLog;
 }
-const ConfigureLogsForPlaybackConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ConfigureLogsForPlaybackConfigurationResponse>;
 export interface SlateSource {
   SourceLocationName?: string;
   VodSourceName?: string;
 }
-const SlateSource = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<SlateSource>;
 export interface DashPlaylistSettings {
   ManifestWindowSeconds?: number;
   MinBufferTimeSeconds?: number;
   MinUpdatePeriodSeconds?: number;
   SuggestedPresentationDelaySeconds?: number;
 }
-const DashPlaylistSettings = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DashPlaylistSettings>;
 export type AdMarkupType = "DATERANGE" | "SCTE35_ENHANCED" | (string & {});
 export type AdMarkupTypes = AdMarkupType[];
-const AdMarkupTypes = LogTypes as any as S.Schema<AdMarkupTypes>;
 export interface HlsPlaylistSettings {
   ManifestWindowSeconds?: number;
   AdMarkupType?: AdMarkupType[];
 }
-const HlsPlaylistSettings = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<HlsPlaylistSettings>;
 export interface RequestOutputItem {
   DashPlaylistSettings?: DashPlaylistSettings;
   HlsPlaylistSettings?: HlsPlaylistSettings;
   ManifestName: string;
   SourceGroup: string;
 }
-const RequestOutputItem = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<RequestOutputItem>;
 export type RequestOutputs = RequestOutputItem[];
-const RequestOutputs = /*@__PURE__*/ __L.at(__c1, 4);
 export type PlaybackMode = "LOOP" | "LINEAR" | (string & {});
-const PlaybackMode = S.String;
-
 export type __mapOf__string = { [key: string]: string | undefined };
 const __mapOf__string = /*@__PURE__*/ __L.at(__c1, 5);
 export type Tier = "BASIC" | "STANDARD" | (string & {});
-const Tier = S.String;
-
 export interface TimeShiftConfiguration {
   MaxTimeDelaySeconds: number;
 }
-const TimeShiftConfiguration = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<TimeShiftConfiguration>;
 export type Audiences = string[];
-const Audiences = /*@__PURE__*/ __L.at(__c1, 7);
 export interface CreateChannelRequest {
   ChannelName: string;
   FillerSlate?: SlateSource;
@@ -346,10 +307,7 @@ export interface CreateChannelRequest {
   TimeShiftConfiguration?: TimeShiftConfiguration;
   Audiences?: string[];
 }
-const CreateChannelRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CreateChannelRequest>;
 export type ChannelState = "RUNNING" | "STOPPED" | (string & {});
-const ChannelState = S.String;
-
 export type __timestampUnix = Date;
 export interface ResponseOutputItem {
   DashPlaylistSettings?: DashPlaylistSettings;
@@ -359,9 +317,7 @@ export interface ResponseOutputItem {
   DualStackPlaybackUrl?: string;
   SourceGroup: string;
 }
-const ResponseOutputItem = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ResponseOutputItem>;
 export type ResponseOutputs = ResponseOutputItem[];
-const ResponseOutputs = /*@__PURE__*/ __L.at(__c2, 2);
 export interface CreateChannelResponse {
   Arn?: string;
   ChannelName?: string;
@@ -376,34 +332,19 @@ export interface CreateChannelResponse {
   TimeShiftConfiguration?: TimeShiftConfiguration;
   Audiences?: string[];
 }
-const CreateChannelResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateChannelResponse>;
 export type Type = "DASH" | "HLS" | (string & {});
-const Type = S.String;
-
 export interface HttpPackageConfiguration {
   Path: string;
   SourceGroup: string;
   Type: Type;
 }
-const HttpPackageConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<HttpPackageConfiguration>;
 export type HttpPackageConfigurations = HttpPackageConfiguration[];
-const HttpPackageConfigurations = /*@__PURE__*/ __L.at(__c2, 5);
 export interface CreateLiveSourceRequest {
   HttpPackageConfigurations: HttpPackageConfiguration[];
   LiveSourceName: string;
   SourceLocationName: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateLiveSourceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateLiveSourceRequest>;
 export interface CreateLiveSourceResponse {
   Arn?: string;
   CreationTime?: Date;
@@ -413,21 +354,11 @@ export interface CreateLiveSourceResponse {
   SourceLocationName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateLiveSourceResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateLiveSourceResponse>;
 export type Operator = "EQUALS" | (string & {});
-const Operator = S.String;
-
 export interface AvailMatchingCriteria {
   DynamicVariable: string;
   Operator: Operator;
 }
-const AvailMatchingCriteria = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<AvailMatchingCriteria>;
 export type __listOfAvailMatchingCriteria = AvailMatchingCriteria[];
 const __listOfAvailMatchingCriteria = /*@__PURE__*/ __L.at(__c3, 1);
 export interface PrefetchConsumption {
@@ -435,25 +366,14 @@ export interface PrefetchConsumption {
   EndTime: Date;
   StartTime?: Date;
 }
-const PrefetchConsumption = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<PrefetchConsumption>;
 export type TrafficShapingType = "RETRIEVAL_WINDOW" | "TPS" | (string & {});
-const TrafficShapingType = S.String;
-
 export interface TrafficShapingRetrievalWindow {
   RetrievalWindowDurationSeconds?: number;
 }
-const TrafficShapingRetrievalWindow = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<TrafficShapingRetrievalWindow>;
 export interface TrafficShapingTpsConfiguration {
   PeakTps?: number;
   PeakConcurrentUsers?: number;
 }
-const TrafficShapingTpsConfiguration = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<TrafficShapingTpsConfiguration>;
 export interface PrefetchRetrieval {
   DynamicVariables?: { [key: string]: string | undefined };
   EndTime: Date;
@@ -462,12 +382,10 @@ export interface PrefetchRetrieval {
   TrafficShapingRetrievalWindow?: TrafficShapingRetrievalWindow;
   TrafficShapingTpsConfiguration?: TrafficShapingTpsConfiguration;
 }
-const PrefetchRetrieval = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<PrefetchRetrieval>;
 export interface RecurringConsumption {
   RetrievedAdExpirationSeconds?: number;
   AvailMatchingCriteria?: AvailMatchingCriteria[];
 }
-const RecurringConsumption = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<RecurringConsumption>;
 export interface RecurringRetrieval {
   DynamicVariables?: { [key: string]: string | undefined };
   DelayAfterAvailEndSeconds?: number;
@@ -475,20 +393,13 @@ export interface RecurringRetrieval {
   TrafficShapingRetrievalWindow?: TrafficShapingRetrievalWindow;
   TrafficShapingTpsConfiguration?: TrafficShapingTpsConfiguration;
 }
-const RecurringRetrieval = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<RecurringRetrieval>;
 export interface RecurringPrefetchConfiguration {
   StartTime?: Date;
   EndTime: Date;
   RecurringConsumption: RecurringConsumption;
   RecurringRetrieval: RecurringRetrieval;
 }
-const RecurringPrefetchConfiguration = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<RecurringPrefetchConfiguration>;
 export type PrefetchScheduleType = "SINGLE" | "RECURRING" | (string & {});
-const PrefetchScheduleType = S.String;
-
 export interface CreatePrefetchScheduleRequest {
   Consumption?: PrefetchConsumption;
   Name: string;
@@ -499,10 +410,6 @@ export interface CreatePrefetchScheduleRequest {
   StreamId?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreatePrefetchScheduleRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreatePrefetchScheduleRequest>;
 export interface CreatePrefetchScheduleResponse {
   Arn?: string;
   Consumption?: PrefetchConsumption;
@@ -514,20 +421,13 @@ export interface CreatePrefetchScheduleResponse {
   StreamId?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreatePrefetchScheduleResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreatePrefetchScheduleResponse>;
 export type MessageType = "SPLICE_INSERT" | "TIME_SIGNAL" | (string & {});
-const MessageType = S.String;
-
 export interface SpliceInsertMessage {
   AvailNum?: number;
   AvailsExpected?: number;
   SpliceEventId?: number;
   UniqueProgramId?: number;
 }
-const SpliceInsertMessage = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<SpliceInsertMessage>;
 export interface SegmentationDescriptor {
   SegmentationEventId?: number;
   SegmentationUpidType?: number;
@@ -538,23 +438,15 @@ export interface SegmentationDescriptor {
   SubSegmentNum?: number;
   SubSegmentsExpected?: number;
 }
-const SegmentationDescriptor = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<SegmentationDescriptor>;
 export type SegmentationDescriptorList = SegmentationDescriptor[];
-const SegmentationDescriptorList = /*@__PURE__*/ __L.at(__c4, 5);
 export interface TimeSignalMessage {
   SegmentationDescriptors?: SegmentationDescriptor[];
 }
-const TimeSignalMessage = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<TimeSignalMessage>;
 export interface KeyValuePair {
   Key: string;
   Value: string;
 }
-const KeyValuePair = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<KeyValuePair>;
 export type AdBreakMetadataList = KeyValuePair[];
-const AdBreakMetadataList = /*@__PURE__*/ __L.at(__c5, 0);
 export interface AdBreak {
   MessageType?: MessageType;
   OffsetMillis: number;
@@ -563,12 +455,9 @@ export interface AdBreak {
   TimeSignalMessage?: TimeSignalMessage;
   AdBreakMetadata?: KeyValuePair[];
 }
-const AdBreak = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<AdBreak>;
 export type __listOfAdBreak = AdBreak[];
 const __listOfAdBreak = /*@__PURE__*/ __L.at(__c5, 2);
 export type RelativePosition = "BEFORE_PROGRAM" | "AFTER_PROGRAM" | (string & {});
-const RelativePosition = S.String;
-
 export interface Transition {
   DurationMillis?: number;
   RelativePosition: RelativePosition;
@@ -576,20 +465,14 @@ export interface Transition {
   ScheduledStartTimeMillis?: number;
   Type: string;
 }
-const Transition = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Transition>;
 export interface ClipRange {
   EndOffsetMillis?: number;
   StartOffsetMillis?: number;
 }
-const ClipRange = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ClipRange>;
 export interface ScheduleConfiguration {
   Transition: Transition;
   ClipRange?: ClipRange;
 }
-const ScheduleConfiguration = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ScheduleConfiguration>;
 export interface AlternateMedia {
   SourceLocationName?: string;
   LiveSourceName?: string;
@@ -599,14 +482,12 @@ export interface AlternateMedia {
   AdBreaks?: AdBreak[];
   DurationMillis?: number;
 }
-const AlternateMedia = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<AlternateMedia>;
 export type __listOfAlternateMedia = AlternateMedia[];
 const __listOfAlternateMedia = /*@__PURE__*/ __L.at(__c5, 7);
 export interface AudienceMedia {
   Audience?: string;
   AlternateMedia?: AlternateMedia[];
 }
-const AudienceMedia = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<AudienceMedia>;
 export type __listOfAudienceMedia = AudienceMedia[];
 const __listOfAudienceMedia = /*@__PURE__*/ __L.at(__c6, 1);
 export interface CreateProgramRequest {
@@ -620,7 +501,6 @@ export interface CreateProgramRequest {
   AudienceMedia?: AudienceMedia[];
   Tags?: { [key: string]: string | undefined };
 }
-const CreateProgramRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<CreateProgramRequest>;
 export interface CreateProgramResponse {
   AdBreaks?: AdBreak[];
   Arn?: string;
@@ -636,50 +516,30 @@ export interface CreateProgramResponse {
   AudienceMedia?: AudienceMedia[];
   Tags?: { [key: string]: string | undefined };
 }
-const CreateProgramResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CreateProgramResponse>;
 export type AccessType =
   | "S3_SIGV4"
   | "SECRETS_MANAGER_ACCESS_TOKEN"
   | "AUTODETECT_SIGV4"
   | (string & {});
-const AccessType = S.String;
-
 export interface SecretsManagerAccessTokenConfiguration {
   HeaderName?: string;
   SecretArn?: string;
   SecretStringKey?: string;
 }
-const SecretsManagerAccessTokenConfiguration = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<SecretsManagerAccessTokenConfiguration>;
 export interface AccessConfiguration {
   AccessType?: AccessType;
   SecretsManagerAccessTokenConfiguration?: SecretsManagerAccessTokenConfiguration;
 }
-const AccessConfiguration = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<AccessConfiguration>;
 export interface DefaultSegmentDeliveryConfiguration {
   BaseUrl?: string;
 }
-const DefaultSegmentDeliveryConfiguration = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<DefaultSegmentDeliveryConfiguration>;
 export interface HttpConfiguration {
   BaseUrl: string;
 }
-const HttpConfiguration = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<HttpConfiguration>;
 export interface SegmentDeliveryConfiguration {
   BaseUrl?: string;
   Name?: string;
 }
-const SegmentDeliveryConfiguration = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<SegmentDeliveryConfiguration>;
 export type __listOfSegmentDeliveryConfiguration = SegmentDeliveryConfiguration[];
 const __listOfSegmentDeliveryConfiguration = /*@__PURE__*/ __L.at(__c7, 1);
 export interface CreateSourceLocationRequest {
@@ -690,10 +550,6 @@ export interface CreateSourceLocationRequest {
   SourceLocationName: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateSourceLocationRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreateSourceLocationRequest>;
 export interface CreateSourceLocationResponse {
   AccessConfiguration?: AccessConfiguration;
   Arn?: string;
@@ -705,20 +561,12 @@ export interface CreateSourceLocationResponse {
   SourceLocationName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateSourceLocationResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateSourceLocationResponse>;
 export interface CreateVodSourceRequest {
   HttpPackageConfigurations: HttpPackageConfiguration[];
   SourceLocationName: string;
   Tags?: { [key: string]: string | undefined };
   VodSourceName: string;
 }
-const CreateVodSourceRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateVodSourceRequest>;
 export interface CreateVodSourceResponse {
   Arn?: string;
   CreationTime?: Date;
@@ -728,112 +576,52 @@ export interface CreateVodSourceResponse {
   Tags?: { [key: string]: string | undefined };
   VodSourceName?: string;
 }
-const CreateVodSourceResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CreateVodSourceResponse>;
 export interface DeleteChannelRequest {
   ChannelName: string;
 }
-const DeleteChannelRequest = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<DeleteChannelRequest>;
 export interface DeleteChannelResponse {}
-const DeleteChannelResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DeleteChannelResponse>;
 export interface DeleteChannelPolicyRequest {
   ChannelName: string;
 }
-const DeleteChannelPolicyRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeleteChannelPolicyRequest>;
 export interface DeleteChannelPolicyResponse {}
-const DeleteChannelPolicyResponse =
-  DeleteChannelResponse as any as S.Schema<DeleteChannelPolicyResponse>;
 export interface DeleteFunctionRequest {
   FunctionId: string;
 }
-const DeleteFunctionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeleteFunctionRequest>;
 export interface DeleteFunctionResponse {}
-const DeleteFunctionResponse = DeleteChannelResponse as any as S.Schema<DeleteFunctionResponse>;
 export interface DeleteLiveSourceRequest {
   LiveSourceName: string;
   SourceLocationName: string;
 }
-const DeleteLiveSourceRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DeleteLiveSourceRequest>;
 export interface DeleteLiveSourceResponse {}
-const DeleteLiveSourceResponse = DeleteChannelResponse as any as S.Schema<DeleteLiveSourceResponse>;
 export interface DeletePlaybackConfigurationRequest {
   Name: string;
 }
-const DeletePlaybackConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DeletePlaybackConfigurationRequest>;
 export interface DeletePlaybackConfigurationResponse {}
-const DeletePlaybackConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeletePlaybackConfigurationResponse>;
 export interface DeletePrefetchScheduleRequest {
   Name: string;
   PlaybackConfigurationName: string;
 }
-const DeletePrefetchScheduleRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DeletePrefetchScheduleRequest>;
 export interface DeletePrefetchScheduleResponse {}
-const DeletePrefetchScheduleResponse =
-  DeleteChannelResponse as any as S.Schema<DeletePrefetchScheduleResponse>;
 export interface DeleteProgramRequest {
   ChannelName: string;
   ProgramName: string;
 }
-const DeleteProgramRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<DeleteProgramRequest>;
 export interface DeleteProgramResponse {}
-const DeleteProgramResponse = DeleteChannelResponse as any as S.Schema<DeleteProgramResponse>;
 export interface DeleteSourceLocationRequest {
   SourceLocationName: string;
 }
-const DeleteSourceLocationRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DeleteSourceLocationRequest>;
 export interface DeleteSourceLocationResponse {}
-const DeleteSourceLocationResponse =
-  DeleteChannelResponse as any as S.Schema<DeleteSourceLocationResponse>;
 export interface DeleteVodSourceRequest {
   SourceLocationName: string;
   VodSourceName: string;
 }
-const DeleteVodSourceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DeleteVodSourceRequest>;
 export interface DeleteVodSourceResponse {}
-const DeleteVodSourceResponse = DeleteChannelResponse as any as S.Schema<DeleteVodSourceResponse>;
 export interface DescribeChannelRequest {
   ChannelName: string;
 }
-const DescribeChannelRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DescribeChannelRequest>;
 export interface LogConfigurationForChannel {
   LogTypes?: LogType[];
 }
-const LogConfigurationForChannel = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<LogConfigurationForChannel>;
 export interface DescribeChannelResponse {
   Arn?: string;
   ChannelName?: string;
@@ -849,18 +637,10 @@ export interface DescribeChannelResponse {
   TimeShiftConfiguration?: TimeShiftConfiguration;
   Audiences?: string[];
 }
-const DescribeChannelResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DescribeChannelResponse>;
 export interface DescribeLiveSourceRequest {
   LiveSourceName: string;
   SourceLocationName: string;
 }
-const DescribeLiveSourceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DescribeLiveSourceRequest>;
 export interface DescribeLiveSourceResponse {
   Arn?: string;
   CreationTime?: Date;
@@ -870,18 +650,10 @@ export interface DescribeLiveSourceResponse {
   SourceLocationName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const DescribeLiveSourceResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DescribeLiveSourceResponse>;
 export interface DescribeProgramRequest {
   ChannelName: string;
   ProgramName: string;
 }
-const DescribeProgramRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<DescribeProgramRequest>;
 export interface DescribeProgramResponse {
   AdBreaks?: AdBreak[];
   Arn?: string;
@@ -897,14 +669,9 @@ export interface DescribeProgramResponse {
   AudienceMedia?: AudienceMedia[];
   Tags?: { [key: string]: string | undefined };
 }
-const DescribeProgramResponse = CreateProgramResponse as any as S.Schema<DescribeProgramResponse>;
 export interface DescribeSourceLocationRequest {
   SourceLocationName: string;
 }
-const DescribeSourceLocationRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DescribeSourceLocationRequest>;
 export interface DescribeSourceLocationResponse {
   AccessConfiguration?: AccessConfiguration;
   Arn?: string;
@@ -916,22 +683,14 @@ export interface DescribeSourceLocationResponse {
   SourceLocationName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const DescribeSourceLocationResponse =
-  CreateSourceLocationResponse as any as S.Schema<DescribeSourceLocationResponse>;
 export interface DescribeVodSourceRequest {
   SourceLocationName: string;
   VodSourceName: string;
 }
-const DescribeVodSourceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<DescribeVodSourceRequest>;
 export interface AdBreakOpportunity {
   OffsetMillis: number;
 }
-const AdBreakOpportunity = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<AdBreakOpportunity>;
 export type AdBreakOpportunities = AdBreakOpportunity[];
-const AdBreakOpportunities = /*@__PURE__*/ __L.at(__c10, 2);
 export interface DescribeVodSourceResponse {
   AdBreakOpportunities?: AdBreakOpportunity[];
   Arn?: string;
@@ -942,24 +701,12 @@ export interface DescribeVodSourceResponse {
   Tags?: { [key: string]: string | undefined };
   VodSourceName?: string;
 }
-const DescribeVodSourceResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DescribeVodSourceResponse>;
 export interface GetChannelPolicyRequest {
   ChannelName: string;
 }
-const GetChannelPolicyRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GetChannelPolicyRequest>;
 export interface GetChannelPolicyResponse {
   Policy?: string;
 }
-const GetChannelPolicyResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GetChannelPolicyResponse>;
 export type MaxResults = number;
 export interface GetChannelScheduleRequest {
   ChannelName: string;
@@ -968,22 +715,15 @@ export interface GetChannelScheduleRequest {
   NextToken?: string;
   Audience?: string;
 }
-const GetChannelScheduleRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetChannelScheduleRequest>;
 export interface ScheduleAdBreak {
   ApproximateDurationSeconds?: number;
   ApproximateStartTime?: Date;
   SourceLocationName?: string;
   VodSourceName?: string;
 }
-const ScheduleAdBreak = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<ScheduleAdBreak>;
 export type __listOfScheduleAdBreak = ScheduleAdBreak[];
 const __listOfScheduleAdBreak = /*@__PURE__*/ __L.at(__c11, 0);
 export type ScheduleEntryType = "PROGRAM" | "FILLER_SLATE" | "ALTERNATE_MEDIA" | (string & {});
-const ScheduleEntryType = S.String;
-
 export interface ScheduleEntry {
   ApproximateDurationSeconds?: number;
   ApproximateStartTime?: Date;
@@ -997,21 +737,15 @@ export interface ScheduleEntry {
   VodSourceName?: string;
   Audiences?: string[];
 }
-const ScheduleEntry = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<ScheduleEntry>;
 export type __listOfScheduleEntry = ScheduleEntry[];
 const __listOfScheduleEntry = /*@__PURE__*/ __L.at(__c11, 2);
 export interface GetChannelScheduleResponse {
   Items?: ScheduleEntry[];
   NextToken?: string;
 }
-const GetChannelScheduleResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<GetChannelScheduleResponse>;
 export interface GetFunctionRequest {
   FunctionId: string;
 }
-const GetFunctionRequest = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<GetFunctionRequest>;
 export type FunctionType =
   | "HTTP_REQUEST"
   | "AWS_SERVICE_REQUEST"
@@ -1020,14 +754,8 @@ export type FunctionType =
   | "SEQUENTIAL_EXECUTOR"
   | "VAST_REQUEST"
   | (string & {});
-const FunctionType = S.String;
-
 export type RuntimeType = "JSONATA" | (string & {});
-const RuntimeType = S.String;
-
 export type MethodType = "GET" | "POST" | (string & {});
-const MethodType = S.String;
-
 export interface HttpRequestConfiguration {
   Runtime: RuntimeType;
   Output?: { [key: string]: string | undefined };
@@ -1037,10 +765,6 @@ export interface HttpRequestConfiguration {
   Body?: string;
   Headers?: { [key: string]: string | undefined };
 }
-const HttpRequestConfiguration = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<HttpRequestConfiguration>;
 export type AwsTargetService = string;
 export interface AwsServiceRequestConfiguration {
   Runtime: RuntimeType;
@@ -1053,24 +777,15 @@ export interface AwsServiceRequestConfiguration {
   TargetService: string;
   TargetRegion: string;
 }
-const AwsServiceRequestConfiguration = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<AwsServiceRequestConfiguration>;
 export interface CustomOutputConfiguration {
   Runtime: RuntimeType;
   Output?: { [key: string]: string | undefined };
 }
-const CustomOutputConfiguration = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<CustomOutputConfiguration>;
 export interface FunctionRef {
   RunCondition?: string;
   FunctionId?: string;
   Alias?: string;
 }
-const FunctionRef = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<FunctionRef>;
 export type __listOfFunctionsRef = FunctionRef[];
 const __listOfFunctionsRef = /*@__PURE__*/ __L.at(__c12, 1);
 export interface ConcurrentExecutorConfiguration {
@@ -1080,20 +795,12 @@ export interface ConcurrentExecutorConfiguration {
   TimeoutMilliseconds: number;
   MaxConcurrency: number;
 }
-const ConcurrentExecutorConfiguration = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<ConcurrentExecutorConfiguration>;
 export interface SequentialExecutorConfiguration {
   Runtime: RuntimeType;
   Output?: { [key: string]: string | undefined };
   FunctionList: FunctionRef[];
   TimeoutMilliseconds: number;
 }
-const SequentialExecutorConfiguration = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<SequentialExecutorConfiguration>;
 export interface VastRequestConfiguration {
   Runtime: RuntimeType;
   Output?: { [key: string]: string | undefined };
@@ -1103,8 +810,6 @@ export interface VastRequestConfiguration {
   Body?: string;
   Headers?: { [key: string]: string | undefined };
 }
-const VastRequestConfiguration =
-  HttpRequestConfiguration as any as S.Schema<VastRequestConfiguration>;
 export interface GetFunctionResponse {
   FunctionId: string;
   FunctionType: FunctionType;
@@ -1118,125 +823,77 @@ export interface GetFunctionResponse {
   Tags?: { [key: string]: string | undefined };
   Arn?: string;
 }
-const GetFunctionResponse = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<GetFunctionResponse>;
 export interface GetPlaybackConfigurationRequest {
   Name: string;
 }
-const GetPlaybackConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GetPlaybackConfigurationRequest>;
 export type Mode = "OFF" | "BEHIND_LIVE_EDGE" | "AFTER_LIVE_EDGE" | (string & {});
-const Mode = S.String;
-
 export type FillPolicy = "FULL_AVAIL_ONLY" | "PARTIAL_AVAIL" | (string & {});
-const FillPolicy = S.String;
-
 export interface AvailSuppression {
   Mode?: Mode;
   Value?: string;
   FillPolicy?: FillPolicy;
 }
-const AvailSuppression = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<AvailSuppression>;
 export interface Bumper {
   EndUrl?: string;
   StartUrl?: string;
 }
-const Bumper = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<Bumper>;
 export interface CdnConfiguration {
   AdSegmentUrlPrefix?: string;
   ContentSegmentUrlPrefix?: string;
 }
-const CdnConfiguration = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<CdnConfiguration>;
 export type ConfigurationAliasesResponse = {
   [key: string]: { [key: string]: string | undefined } | undefined;
 };
-const ConfigurationAliasesResponse = /*@__PURE__*/ __L.at(__c13, 1);
 export type OriginManifestType = "SINGLE_PERIOD" | "MULTI_PERIOD" | (string & {});
-const OriginManifestType = S.String;
-
 export interface DashConfiguration {
   ManifestEndpointPrefix?: string;
   DualStackManifestEndpointPrefix?: string;
   MpdLocation?: string;
   OriginManifestType?: OriginManifestType;
 }
-const DashConfiguration = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<DashConfiguration>;
 export interface HlsConfiguration {
   ManifestEndpointPrefix?: string;
   DualStackManifestEndpointPrefix?: string;
 }
-const HlsConfiguration = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<HlsConfiguration>;
 export type InsertionMode = "STITCHED_ONLY" | "PLAYER_SELECT" | (string & {});
-const InsertionMode = S.String;
-
 export type PreRollAdSequencingMode = "FOLLOW_AD_SEQUENCE" | "IGNORE_AD_SEQUENCE" | (string & {});
-const PreRollAdSequencingMode = S.String;
-
 export interface PreRollVastResponse {
   AdSequencingMode?: PreRollAdSequencingMode;
 }
-const PreRollVastResponse = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<PreRollVastResponse>;
 export interface PreRollAdDecisionServerConfiguration {
   VastResponse?: PreRollVastResponse;
 }
-const PreRollAdDecisionServerConfiguration = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<PreRollAdDecisionServerConfiguration>;
 export interface LivePreRollConfiguration {
   AdDecisionServerUrl?: string;
   MaxDurationSeconds?: number;
   AdDecisionServerConfiguration?: PreRollAdDecisionServerConfiguration;
 }
-const LivePreRollConfiguration = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<LivePreRollConfiguration>;
 export interface LogConfiguration {
   PercentEnabled: number;
   EnabledLoggingStrategies?: LoggingStrategy[];
   AdsInteractionLog?: AdsInteractionLog;
   ManifestServiceInteractionLog?: ManifestServiceInteractionLog;
 }
-const LogConfiguration = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<LogConfiguration>;
 export interface AdMarkerPassthrough {
   Enabled?: boolean;
 }
-const AdMarkerPassthrough = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<AdMarkerPassthrough>;
 export interface ManifestProcessingRules {
   AdMarkerPassthrough?: AdMarkerPassthrough;
 }
-const ManifestProcessingRules = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<ManifestProcessingRules>;
 export type __integerMin1 = number;
 export type StreamingMediaFileConditioning = "TRANSCODE" | "NONE" | (string & {});
-const StreamingMediaFileConditioning = S.String;
-
 export interface AdConditioningConfiguration {
   StreamingMediaFileConditioning: StreamingMediaFileConditioning;
 }
-const AdConditioningConfiguration = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<AdConditioningConfiguration>;
 export type Method = "GET" | "POST" | (string & {});
-const Method = S.String;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c14, 3);
 export type CompressionMethod = "NONE" | "GZIP" | (string & {});
-const CompressionMethod = S.String;
-
 export interface HttpRequest {
   Method?: Method;
   Body?: string;
   Headers?: { [key: string]: string | undefined };
   CompressRequest?: CompressionMethod;
 }
-const HttpRequest = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<HttpRequest>;
 export type AdSequencingMode =
   | "FOLLOW_AD_SEQUENCE"
   | "IGNORE_AD_SEQUENCE"
@@ -1246,20 +903,13 @@ export type AdSequencingMode =
 export interface VastResponse {
   AdSequencingMode?: AdSequencingMode;
 }
-const VastResponse = PreRollVastResponse as any as S.Schema<VastResponse>;
 export interface AdDecisionServerConfiguration {
   HttpRequest?: HttpRequest;
   VastResponse?: VastResponse;
 }
-const AdDecisionServerConfiguration = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<AdDecisionServerConfiguration>;
 export type MinimumUnfilledDurationSeconds = number;
 export type ApsPublisherId = string;
 export type ApsRegion = "AMERICAS" | "EUROPE" | "ASIA_PACIFIC" | (string & {});
-const ApsRegion = S.String;
-
 export type OpenRtbTemplateString = string;
 export interface YieldOptimizationConfiguration {
   MinimumUnfilledDuration: number;
@@ -1267,20 +917,13 @@ export interface YieldOptimizationConfiguration {
   Region: ApsRegion;
   OpenRtbTemplate: string;
 }
-const YieldOptimizationConfiguration = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<YieldOptimizationConfiguration>;
 export type EventName =
   | "PRE_SESSION_INITIALIZATION"
   | "PRE_ADS_REQUEST"
   | "POST_ADS_RESPONSE"
   | "PRE_MANIFEST_INSERTION"
   | (string & {});
-const EventName = S.String;
-
 export type FunctionMapping = { [key in EventName]?: string };
-const FunctionMapping = /*@__PURE__*/ __L.at(__c14, 7);
 export interface AdsPersonalizationTimeouts {
   AdsRequestTimeoutMilliseconds?: number;
   LiveMaximumAdsPersonalizationTimeMilliseconds?: number;
@@ -1288,39 +931,20 @@ export interface AdsPersonalizationTimeouts {
   PrefetchAdsRequestTimeoutMilliseconds?: number;
   PrefetchMaximumAdsPersonalizationTimeMilliseconds?: number;
 }
-const AdsPersonalizationTimeouts = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<AdsPersonalizationTimeouts>;
 export interface AdsPersonalizationConcurrency {
   MaxConcurrentAdsRequests?: number;
   EnableVodVastParallelization?: boolean;
 }
-const AdsPersonalizationConcurrency = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<AdsPersonalizationConcurrency>;
 export type ClientSideBeaconingMode = "DISABLED" | "INSIGHTS" | (string & {});
-const ClientSideBeaconingMode = S.String;
-
 export type BeaconEventType = "MUTE" | "UNMUTE" | "PAUSE" | "SKIP" | (string & {});
 export type BeaconEventTypeList = BeaconEventType[];
-const BeaconEventTypeList = LogTypes as any as S.Schema<BeaconEventTypeList>;
 export interface ClientSideBeaconingConfiguration {
   ReportingMode: ClientSideBeaconingMode;
   AdditionalEventTypes?: BeaconEventType[];
 }
-const ClientSideBeaconingConfiguration = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<ClientSideBeaconingConfiguration>;
 export interface BeaconingConfiguration {
   ClientSide?: ClientSideBeaconingConfiguration;
 }
-const BeaconingConfiguration = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<BeaconingConfiguration>;
 export interface GetPlaybackConfigurationResponse {
   AdDecisionServerUrl?: string;
   AvailSuppression?: AvailSuppression;
@@ -1352,18 +976,10 @@ export interface GetPlaybackConfigurationResponse {
   AdsPersonalizationConcurrency?: AdsPersonalizationConcurrency;
   BeaconingConfiguration?: BeaconingConfiguration;
 }
-const GetPlaybackConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GetPlaybackConfigurationResponse>;
 export interface GetPrefetchScheduleRequest {
   Name: string;
   PlaybackConfigurationName: string;
 }
-const GetPrefetchScheduleRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GetPrefetchScheduleRequest>;
 export interface GetPrefetchScheduleResponse {
   Arn?: string;
   Consumption?: PrefetchConsumption;
@@ -1375,21 +991,14 @@ export interface GetPrefetchScheduleResponse {
   StreamId?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const GetPrefetchScheduleResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GetPrefetchScheduleResponse>;
 export interface ListAlertsRequest {
   MaxResults?: number;
   NextToken?: string;
   ResourceArn: string;
 }
-const ListAlertsRequest = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<ListAlertsRequest>;
 export type __listOf__string = string[];
-const __listOf__string = Audiences as any as S.Schema<__listOf__string>;
+const __listOf__string = __S(15) as any as S.Schema<__listOf__string>;
 export type AlertCategory = "SCHEDULING_ERROR" | "PLAYBACK_WARNING" | "INFO" | (string & {});
-const AlertCategory = S.String;
-
 export interface Alert {
   AlertCode: string;
   AlertMessage: string;
@@ -1398,19 +1007,16 @@ export interface Alert {
   ResourceArn: string;
   Category?: AlertCategory;
 }
-const Alert = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<Alert>;
 export type __listOfAlert = Alert[];
 const __listOfAlert = /*@__PURE__*/ __L.at(__c16, 1);
 export interface ListAlertsResponse {
   Items?: Alert[];
   NextToken?: string;
 }
-const ListAlertsResponse = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<ListAlertsResponse>;
 export interface ListChannelsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListChannelsRequest = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<ListChannelsRequest>;
 export interface Channel {
   Arn: string;
   ChannelName: string;
@@ -1425,25 +1031,16 @@ export interface Channel {
   LogConfiguration: LogConfigurationForChannel;
   Audiences?: string[];
 }
-const Channel = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<Channel>;
 export type __listOfChannel = Channel[];
 const __listOfChannel = /*@__PURE__*/ __L.at(__c16, 5);
 export interface ListChannelsResponse {
   Items?: Channel[];
   NextToken?: string;
 }
-const ListChannelsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ListChannelsResponse>;
 export interface ListFunctionsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListFunctionsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListFunctionsRequest>;
 export interface Function {
   FunctionId: string;
   FunctionType: FunctionType;
@@ -1457,26 +1054,17 @@ export interface Function {
   Tags?: { [key: string]: string | undefined };
   Arn?: string;
 }
-const Function = GetFunctionResponse as any as S.Schema<Function>;
 export type __listOfFunctionsResponse = Function[];
 const __listOfFunctionsResponse = /*@__PURE__*/ __L.at(__c17, 0);
 export interface ListFunctionsResponse {
   Items?: Function[];
   NextToken?: string;
 }
-const ListFunctionsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ListFunctionsResponse>;
 export interface ListLiveSourcesRequest {
   MaxResults?: number;
   NextToken?: string;
   SourceLocationName: string;
 }
-const ListLiveSourcesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ListLiveSourcesRequest>;
 export interface LiveSource {
   Arn: string;
   CreationTime?: Date;
@@ -1486,25 +1074,16 @@ export interface LiveSource {
   SourceLocationName: string;
   Tags?: { [key: string]: string | undefined };
 }
-const LiveSource = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<LiveSource>;
 export type __listOfLiveSource = LiveSource[];
 const __listOfLiveSource = /*@__PURE__*/ __L.at(__c17, 4);
 export interface ListLiveSourcesResponse {
   Items?: LiveSource[];
   NextToken?: string;
 }
-const ListLiveSourcesResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ListLiveSourcesResponse>;
 export interface ListPlaybackConfigurationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListPlaybackConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ListPlaybackConfigurationsRequest>;
 export interface PlaybackConfiguration {
   AdDecisionServerUrl?: string;
   AvailSuppression?: AvailSuppression;
@@ -1536,10 +1115,6 @@ export interface PlaybackConfiguration {
   AdsPersonalizationConcurrency?: AdsPersonalizationConcurrency;
   BeaconingConfiguration?: BeaconingConfiguration;
 }
-const PlaybackConfiguration = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<PlaybackConfiguration>;
 export type __listOfPlaybackConfiguration = PlaybackConfiguration[];
 const __listOfPlaybackConfiguration = /*@__PURE__*/ __L.at(__c18, 0);
 export interface ListPlaybackConfigurationsResponse {
@@ -1548,14 +1123,8 @@ export interface ListPlaybackConfigurationsResponse {
   })[];
   NextToken?: string;
 }
-const ListPlaybackConfigurationsResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ListPlaybackConfigurationsResponse>;
 export type __integerMin1Max100 = number;
 export type ListPrefetchScheduleType = "SINGLE" | "RECURRING" | "ALL" | (string & {});
-const ListPrefetchScheduleType = S.String;
-
 export interface ListPrefetchSchedulesRequest {
   MaxResults?: number;
   NextToken?: string;
@@ -1563,10 +1132,6 @@ export interface ListPrefetchSchedulesRequest {
   ScheduleType?: ListPrefetchScheduleType;
   StreamId?: string;
 }
-const ListPrefetchSchedulesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<ListPrefetchSchedulesRequest>;
 export interface PrefetchSchedule {
   Arn: string;
   Consumption?: PrefetchConsumption;
@@ -1578,25 +1143,16 @@ export interface PrefetchSchedule {
   StreamId?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const PrefetchSchedule = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<PrefetchSchedule>;
 export type __listOfPrefetchSchedule = PrefetchSchedule[];
 const __listOfPrefetchSchedule = /*@__PURE__*/ __L.at(__c18, 4);
 export interface ListPrefetchSchedulesResponse {
   Items?: PrefetchSchedule[];
   NextToken?: string;
 }
-const ListPrefetchSchedulesResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListPrefetchSchedulesResponse>;
 export interface ListSourceLocationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListSourceLocationsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ListSourceLocationsRequest>;
 export interface SourceLocation {
   AccessConfiguration?: AccessConfiguration;
   Arn: string;
@@ -1608,40 +1164,23 @@ export interface SourceLocation {
   SourceLocationName: string;
   Tags?: { [key: string]: string | undefined };
 }
-const SourceLocation = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<SourceLocation>;
 export type __listOfSourceLocation = SourceLocation[];
 const __listOfSourceLocation = /*@__PURE__*/ __L.at(__c19, 0);
 export interface ListSourceLocationsResponse {
   Items?: SourceLocation[];
   NextToken?: string;
 }
-const ListSourceLocationsResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ListSourceLocationsResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListVodSourcesRequest {
   MaxResults?: number;
   NextToken?: string;
   SourceLocationName: string;
 }
-const ListVodSourcesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ListVodSourcesRequest>;
 export interface VodSource {
   Arn: string;
   CreationTime?: Date;
@@ -1651,27 +1190,17 @@ export interface VodSource {
   Tags?: { [key: string]: string | undefined };
   VodSourceName: string;
 }
-const VodSource = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<VodSource>;
 export type __listOfVodSource = VodSource[];
 const __listOfVodSource = /*@__PURE__*/ __L.at(__c19, 6);
 export interface ListVodSourcesResponse {
   Items?: VodSource[];
   NextToken?: string;
 }
-const ListVodSourcesResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ListVodSourcesResponse>;
 export interface PutChannelPolicyRequest {
   ChannelName: string;
   Policy: string;
 }
-const PutChannelPolicyRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<PutChannelPolicyRequest>;
 export interface PutChannelPolicyResponse {}
-const PutChannelPolicyResponse = DeleteChannelResponse as any as S.Schema<PutChannelPolicyResponse>;
 export interface PutFunctionRequest {
   FunctionId: string;
   FunctionType: FunctionType;
@@ -1684,7 +1213,6 @@ export interface PutFunctionRequest {
   VastRequestConfiguration?: VastRequestConfiguration;
   Tags?: { [key: string]: string | undefined };
 }
-const PutFunctionRequest = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<PutFunctionRequest>;
 export interface PutFunctionResponse {
   FunctionId: string;
   FunctionType: FunctionType;
@@ -1698,20 +1226,13 @@ export interface PutFunctionResponse {
   Tags?: { [key: string]: string | undefined };
   Arn?: string;
 }
-const PutFunctionResponse = GetFunctionResponse as any as S.Schema<PutFunctionResponse>;
 export type ConfigurationAliasesRequest = {
   [key: string]: { [key: string]: string | undefined } | undefined;
 };
-const ConfigurationAliasesRequest =
-  ConfigurationAliasesResponse as any as S.Schema<ConfigurationAliasesRequest>;
 export interface DashConfigurationForPut {
   MpdLocation?: string;
   OriginManifestType?: OriginManifestType;
 }
-const DashConfigurationForPut = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<DashConfigurationForPut>;
 export interface PutPlaybackConfigurationRequest {
   AdDecisionServerUrl?: string;
   AvailSuppression?: AvailSuppression;
@@ -1736,10 +1257,6 @@ export interface PutPlaybackConfigurationRequest {
   AdsPersonalizationConcurrency?: AdsPersonalizationConcurrency;
   BeaconingConfiguration?: BeaconingConfiguration;
 }
-const PutPlaybackConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<PutPlaybackConfigurationRequest>;
 export interface PutPlaybackConfigurationResponse {
   AdDecisionServerUrl?: string;
   AvailSuppression?: AvailSuppression;
@@ -1771,37 +1288,24 @@ export interface PutPlaybackConfigurationResponse {
   AdsPersonalizationConcurrency?: AdsPersonalizationConcurrency;
   BeaconingConfiguration?: BeaconingConfiguration;
 }
-const PutPlaybackConfigurationResponse =
-  GetPlaybackConfigurationResponse as any as S.Schema<PutPlaybackConfigurationResponse>;
 export interface StartChannelRequest {
   ChannelName: string;
 }
-const StartChannelRequest = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<StartChannelRequest>;
 export interface StartChannelResponse {}
-const StartChannelResponse = DeleteChannelResponse as any as S.Schema<StartChannelResponse>;
 export interface StopChannelRequest {
   ChannelName: string;
 }
-const StopChannelRequest = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<StopChannelRequest>;
 export interface StopChannelResponse {}
-const StopChannelResponse = DeleteChannelResponse as any as S.Schema<StopChannelResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteChannelResponse as any as S.Schema<TagResourceResponse>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = DeleteChannelResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateChannelRequest {
   ChannelName: string;
   FillerSlate?: SlateSource;
@@ -1809,10 +1313,6 @@ export interface UpdateChannelRequest {
   TimeShiftConfiguration?: TimeShiftConfiguration;
   Audiences?: string[];
 }
-const UpdateChannelRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<UpdateChannelRequest>;
 export interface UpdateChannelResponse {
   Arn?: string;
   ChannelName?: string;
@@ -1827,16 +1327,11 @@ export interface UpdateChannelResponse {
   TimeShiftConfiguration?: TimeShiftConfiguration;
   Audiences?: string[];
 }
-const UpdateChannelResponse = CreateChannelResponse as any as S.Schema<UpdateChannelResponse>;
 export interface UpdateLiveSourceRequest {
   HttpPackageConfigurations: HttpPackageConfiguration[];
   LiveSourceName: string;
   SourceLocationName: string;
 }
-const UpdateLiveSourceRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<UpdateLiveSourceRequest>;
 export interface UpdateLiveSourceResponse {
   Arn?: string;
   CreationTime?: Date;
@@ -1846,24 +1341,14 @@ export interface UpdateLiveSourceResponse {
   SourceLocationName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const UpdateLiveSourceResponse =
-  CreateLiveSourceResponse as any as S.Schema<UpdateLiveSourceResponse>;
 export interface UpdateProgramTransition {
   ScheduledStartTimeMillis?: number;
   DurationMillis?: number;
 }
-const UpdateProgramTransition = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<UpdateProgramTransition>;
 export interface UpdateProgramScheduleConfiguration {
   Transition?: UpdateProgramTransition;
   ClipRange?: ClipRange;
 }
-const UpdateProgramScheduleConfiguration = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<UpdateProgramScheduleConfiguration>;
 export interface UpdateProgramRequest {
   AdBreaks?: AdBreak[];
   ChannelName: string;
@@ -1871,10 +1356,6 @@ export interface UpdateProgramRequest {
   ScheduleConfiguration: UpdateProgramScheduleConfiguration;
   AudienceMedia?: AudienceMedia[];
 }
-const UpdateProgramRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<UpdateProgramRequest>;
 export interface UpdateProgramResponse {
   AdBreaks?: AdBreak[];
   Arn?: string;
@@ -1890,10 +1371,6 @@ export interface UpdateProgramResponse {
   AudienceMedia?: AudienceMedia[];
   Tags?: { [key: string]: string | undefined };
 }
-const UpdateProgramResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<UpdateProgramResponse>;
 export interface UpdateSourceLocationRequest {
   AccessConfiguration?: AccessConfiguration;
   DefaultSegmentDeliveryConfiguration?: DefaultSegmentDeliveryConfiguration;
@@ -1901,10 +1378,6 @@ export interface UpdateSourceLocationRequest {
   SegmentDeliveryConfigurations?: SegmentDeliveryConfiguration[];
   SourceLocationName: string;
 }
-const UpdateSourceLocationRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<UpdateSourceLocationRequest>;
 export interface UpdateSourceLocationResponse {
   AccessConfiguration?: AccessConfiguration;
   Arn?: string;
@@ -1916,17 +1389,11 @@ export interface UpdateSourceLocationResponse {
   SourceLocationName?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const UpdateSourceLocationResponse =
-  CreateSourceLocationResponse as any as S.Schema<UpdateSourceLocationResponse>;
 export interface UpdateVodSourceRequest {
   HttpPackageConfigurations: HttpPackageConfiguration[];
   SourceLocationName: string;
   VodSourceName: string;
 }
-const UpdateVodSourceRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<UpdateVodSourceRequest>;
 export interface UpdateVodSourceResponse {
   Arn?: string;
   CreationTime?: Date;
@@ -1936,7 +1403,6 @@ export interface UpdateVodSourceResponse {
   Tags?: { [key: string]: string | undefined };
   VodSourceName?: string;
 }
-const UpdateVodSourceResponse = CreateVodSourceResponse as any as S.Schema<UpdateVodSourceResponse>;
 export type ConfigureLogsForChannelError = CommonErrors;
 /**
  * Configures Amazon CloudWatch log settings for a channel.
@@ -1947,8 +1413,8 @@ export const configureLogsForChannel: API.OperationMethod<
   ConfigureLogsForChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigureLogsForChannelRequest,
-  output: ConfigureLogsForChannelResponse,
+  input: __S(1) as any as S.Schema<ConfigureLogsForChannelRequest>,
+  output: __S(2) as any as S.Schema<ConfigureLogsForChannelResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1965,8 +1431,8 @@ export const configureLogsForPlaybackConfiguration: API.OperationMethod<
   ConfigureLogsForPlaybackConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigureLogsForPlaybackConfigurationRequest,
-  output: ConfigureLogsForPlaybackConfigurationResponse,
+  input: __S(6) as any as S.Schema<ConfigureLogsForPlaybackConfigurationRequest>,
+  output: __S(7) as any as S.Schema<ConfigureLogsForPlaybackConfigurationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1983,8 +1449,8 @@ export const createChannel: API.OperationMethod<
   CreateChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChannelRequest,
-  output: CreateChannelResponse,
+  input: __S(16) as any as S.Schema<CreateChannelRequest>,
+  output: __S(19) as any as S.Schema<CreateChannelResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2001,8 +1467,8 @@ export const createLiveSource: API.OperationMethod<
   CreateLiveSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLiveSourceRequest,
-  output: CreateLiveSourceResponse,
+  input: __S(22) as any as S.Schema<CreateLiveSourceRequest>,
+  output: __S(23) as any as S.Schema<CreateLiveSourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2022,8 +1488,8 @@ export const createPrefetchSchedule: API.OperationMethod<
   CreatePrefetchScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePrefetchScheduleRequest,
-  output: CreatePrefetchScheduleResponse,
+  input: __S(33) as any as S.Schema<CreatePrefetchScheduleRequest>,
+  output: __S(34) as any as S.Schema<CreatePrefetchScheduleResponse>,
   errors: [BadRequestException, PlaybackConfigurationNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2040,8 +1506,8 @@ export const createProgram: API.OperationMethod<
   CreateProgramError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProgramRequest,
-  output: CreateProgramResponse,
+  input: __S(50) as any as S.Schema<CreateProgramRequest>,
+  output: __S(51) as any as S.Schema<CreateProgramResponse>,
   errors: [BadRequestException, ChannelNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2058,8 +1524,8 @@ export const createSourceLocation: API.OperationMethod<
   CreateSourceLocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSourceLocationRequest,
-  output: CreateSourceLocationResponse,
+  input: __S(58) as any as S.Schema<CreateSourceLocationRequest>,
+  output: __S(59) as any as S.Schema<CreateSourceLocationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2076,8 +1542,8 @@ export const createVodSource: API.OperationMethod<
   CreateVodSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVodSourceRequest,
-  output: CreateVodSourceResponse,
+  input: __S(60) as any as S.Schema<CreateVodSourceRequest>,
+  output: __S(61) as any as S.Schema<CreateVodSourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2094,8 +1560,8 @@ export const deleteChannel: API.OperationMethod<
   DeleteChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChannelRequest,
-  output: DeleteChannelResponse,
+  input: __S(62) as any as S.Schema<DeleteChannelRequest>,
+  output: __S(63) as any as S.Schema<DeleteChannelResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2112,8 +1578,8 @@ export const deleteChannelPolicy: API.OperationMethod<
   DeleteChannelPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteChannelPolicyRequest,
-  output: DeleteChannelPolicyResponse,
+  input: __S(64) as any as S.Schema<DeleteChannelPolicyRequest>,
+  output: __S(63) as any as S.Schema<DeleteChannelPolicyResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2130,8 +1596,8 @@ export const deleteFunction: API.OperationMethod<
   DeleteFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFunctionRequest,
-  output: DeleteFunctionResponse,
+  input: __S(65) as any as S.Schema<DeleteFunctionRequest>,
+  output: __S(63) as any as S.Schema<DeleteFunctionResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2148,8 +1614,8 @@ export const deleteLiveSource: API.OperationMethod<
   DeleteLiveSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLiveSourceRequest,
-  output: DeleteLiveSourceResponse,
+  input: __S(66) as any as S.Schema<DeleteLiveSourceRequest>,
+  output: __S(63) as any as S.Schema<DeleteLiveSourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2166,8 +1632,8 @@ export const deletePlaybackConfiguration: API.OperationMethod<
   DeletePlaybackConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePlaybackConfigurationRequest,
-  output: DeletePlaybackConfigurationResponse,
+  input: __S(67) as any as S.Schema<DeletePlaybackConfigurationRequest>,
+  output: __S(68) as any as S.Schema<DeletePlaybackConfigurationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2187,8 +1653,8 @@ export const deletePrefetchSchedule: API.OperationMethod<
   DeletePrefetchScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrefetchScheduleRequest,
-  output: DeletePrefetchScheduleResponse,
+  input: __S(69) as any as S.Schema<DeletePrefetchScheduleRequest>,
+  output: __S(63) as any as S.Schema<DeletePrefetchScheduleResponse>,
   errors: [BadRequestException, PrefetchScheduleNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2205,8 +1671,8 @@ export const deleteProgram: API.OperationMethod<
   DeleteProgramError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProgramRequest,
-  output: DeleteProgramResponse,
+  input: __S(70) as any as S.Schema<DeleteProgramRequest>,
+  output: __S(63) as any as S.Schema<DeleteProgramResponse>,
   errors: [BadRequestException, ProgramNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2223,8 +1689,8 @@ export const deleteSourceLocation: API.OperationMethod<
   DeleteSourceLocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSourceLocationRequest,
-  output: DeleteSourceLocationResponse,
+  input: __S(71) as any as S.Schema<DeleteSourceLocationRequest>,
+  output: __S(63) as any as S.Schema<DeleteSourceLocationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2241,8 +1707,8 @@ export const deleteVodSource: API.OperationMethod<
   DeleteVodSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVodSourceRequest,
-  output: DeleteVodSourceResponse,
+  input: __S(72) as any as S.Schema<DeleteVodSourceRequest>,
+  output: __S(63) as any as S.Schema<DeleteVodSourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2259,8 +1725,8 @@ export const describeChannel: API.OperationMethod<
   DescribeChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeChannelRequest,
-  output: DescribeChannelResponse,
+  input: __S(73) as any as S.Schema<DescribeChannelRequest>,
+  output: __S(75) as any as S.Schema<DescribeChannelResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2277,8 +1743,8 @@ export const describeLiveSource: API.OperationMethod<
   DescribeLiveSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeLiveSourceRequest,
-  output: DescribeLiveSourceResponse,
+  input: __S(76) as any as S.Schema<DescribeLiveSourceRequest>,
+  output: __S(77) as any as S.Schema<DescribeLiveSourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2295,8 +1761,8 @@ export const describeProgram: API.OperationMethod<
   DescribeProgramError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeProgramRequest,
-  output: DescribeProgramResponse,
+  input: __S(78) as any as S.Schema<DescribeProgramRequest>,
+  output: __S(51) as any as S.Schema<DescribeProgramResponse>,
   errors: [BadRequestException, ProgramNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2313,8 +1779,8 @@ export const describeSourceLocation: API.OperationMethod<
   DescribeSourceLocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeSourceLocationRequest,
-  output: DescribeSourceLocationResponse,
+  input: __S(79) as any as S.Schema<DescribeSourceLocationRequest>,
+  output: __S(59) as any as S.Schema<DescribeSourceLocationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2331,8 +1797,8 @@ export const describeVodSource: API.OperationMethod<
   DescribeVodSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeVodSourceRequest,
-  output: DescribeVodSourceResponse,
+  input: __S(80) as any as S.Schema<DescribeVodSourceRequest>,
+  output: __S(83) as any as S.Schema<DescribeVodSourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2349,8 +1815,8 @@ export const getChannelPolicy: API.OperationMethod<
   GetChannelPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChannelPolicyRequest,
-  output: GetChannelPolicyResponse,
+  input: __S(84) as any as S.Schema<GetChannelPolicyRequest>,
+  output: __S(85) as any as S.Schema<GetChannelPolicyResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2368,8 +1834,8 @@ export const getChannelSchedule: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ScheduleEntry
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetChannelScheduleRequest,
-  output: GetChannelScheduleResponse,
+  input: __S(86) as any as S.Schema<GetChannelScheduleRequest>,
+  output: __S(91) as any as S.Schema<GetChannelScheduleResponse>,
   errors: [BadRequestException, ChannelNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2392,8 +1858,8 @@ export const getFunction: API.OperationMethod<
   GetFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFunctionRequest,
-  output: GetFunctionResponse,
+  input: __S(92) as any as S.Schema<GetFunctionRequest>,
+  output: __S(100) as any as S.Schema<GetFunctionResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2410,8 +1876,8 @@ export const getPlaybackConfiguration: API.OperationMethod<
   GetPlaybackConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPlaybackConfigurationRequest,
-  output: GetPlaybackConfigurationResponse,
+  input: __S(101) as any as S.Schema<GetPlaybackConfigurationRequest>,
+  output: __S(124) as any as S.Schema<GetPlaybackConfigurationResponse>,
   errors: [PlaybackConfigurationNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2431,8 +1897,8 @@ export const getPrefetchSchedule: API.OperationMethod<
   GetPrefetchScheduleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrefetchScheduleRequest,
-  output: GetPrefetchScheduleResponse,
+  input: __S(125) as any as S.Schema<GetPrefetchScheduleRequest>,
+  output: __S(126) as any as S.Schema<GetPrefetchScheduleResponse>,
   errors: [BadRequestException, PrefetchScheduleNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2450,8 +1916,8 @@ export const listAlerts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Alert
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAlertsRequest,
-  output: ListAlertsResponse,
+  input: __S(127) as any as S.Schema<ListAlertsRequest>,
+  output: __S(130) as any as S.Schema<ListAlertsResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2475,8 +1941,8 @@ export const listChannels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Channel
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListChannelsRequest,
-  output: ListChannelsResponse,
+  input: __S(131) as any as S.Schema<ListChannelsRequest>,
+  output: __S(134) as any as S.Schema<ListChannelsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2500,8 +1966,8 @@ export const listFunctions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Function
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFunctionsRequest,
-  output: ListFunctionsResponse,
+  input: __S(135) as any as S.Schema<ListFunctionsRequest>,
+  output: __S(137) as any as S.Schema<ListFunctionsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2525,8 +1991,8 @@ export const listLiveSources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LiveSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLiveSourcesRequest,
-  output: ListLiveSourcesResponse,
+  input: __S(138) as any as S.Schema<ListLiveSourcesRequest>,
+  output: __S(141) as any as S.Schema<ListLiveSourcesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2550,8 +2016,8 @@ export const listPlaybackConfigurations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PlaybackConfiguration
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPlaybackConfigurationsRequest,
-  output: ListPlaybackConfigurationsResponse,
+  input: __S(142) as any as S.Schema<ListPlaybackConfigurationsRequest>,
+  output: __S(145) as any as S.Schema<ListPlaybackConfigurationsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2578,8 +2044,8 @@ export const listPrefetchSchedules: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   PrefetchSchedule
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPrefetchSchedulesRequest,
-  output: ListPrefetchSchedulesResponse,
+  input: __S(146) as any as S.Schema<ListPrefetchSchedulesRequest>,
+  output: __S(149) as any as S.Schema<ListPrefetchSchedulesResponse>,
   errors: [BadRequestException, PlaybackConfigurationNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2603,8 +2069,8 @@ export const listSourceLocations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SourceLocation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSourceLocationsRequest,
-  output: ListSourceLocationsResponse,
+  input: __S(150) as any as S.Schema<ListSourceLocationsRequest>,
+  output: __S(153) as any as S.Schema<ListSourceLocationsResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2627,8 +2093,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(154) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(155) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2646,8 +2112,8 @@ export const listVodSources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VodSource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListVodSourcesRequest,
-  output: ListVodSourcesResponse,
+  input: __S(156) as any as S.Schema<ListVodSourcesRequest>,
+  output: __S(159) as any as S.Schema<ListVodSourcesResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2670,8 +2136,8 @@ export const putChannelPolicy: API.OperationMethod<
   PutChannelPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutChannelPolicyRequest,
-  output: PutChannelPolicyResponse,
+  input: __S(160) as any as S.Schema<PutChannelPolicyRequest>,
+  output: __S(63) as any as S.Schema<PutChannelPolicyResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2688,8 +2154,8 @@ export const putFunction: API.OperationMethod<
   PutFunctionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutFunctionRequest,
-  output: PutFunctionResponse,
+  input: __S(161) as any as S.Schema<PutFunctionRequest>,
+  output: __S(100) as any as S.Schema<PutFunctionResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2706,8 +2172,8 @@ export const putPlaybackConfiguration: API.OperationMethod<
   PutPlaybackConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutPlaybackConfigurationRequest,
-  output: PutPlaybackConfigurationResponse,
+  input: __S(163) as any as S.Schema<PutPlaybackConfigurationRequest>,
+  output: __S(124) as any as S.Schema<PutPlaybackConfigurationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2724,8 +2190,8 @@ export const startChannel: API.OperationMethod<
   StartChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartChannelRequest,
-  output: StartChannelResponse,
+  input: __S(164) as any as S.Schema<StartChannelRequest>,
+  output: __S(63) as any as S.Schema<StartChannelResponse>,
   errors: [BadRequestException, ChannelNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2742,8 +2208,8 @@ export const stopChannel: API.OperationMethod<
   StopChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopChannelRequest,
-  output: StopChannelResponse,
+  input: __S(165) as any as S.Schema<StopChannelRequest>,
+  output: __S(63) as any as S.Schema<StopChannelResponse>,
   errors: [BadRequestException, ChannelNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2760,8 +2226,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(166) as any as S.Schema<TagResourceRequest>,
+  output: __S(63) as any as S.Schema<TagResourceResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2778,8 +2244,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(167) as any as S.Schema<UntagResourceRequest>,
+  output: __S(63) as any as S.Schema<UntagResourceResponse>,
   errors: [BadRequestException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2796,8 +2262,8 @@ export const updateChannel: API.OperationMethod<
   UpdateChannelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateChannelRequest,
-  output: UpdateChannelResponse,
+  input: __S(168) as any as S.Schema<UpdateChannelRequest>,
+  output: __S(19) as any as S.Schema<UpdateChannelResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2814,8 +2280,8 @@ export const updateLiveSource: API.OperationMethod<
   UpdateLiveSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLiveSourceRequest,
-  output: UpdateLiveSourceResponse,
+  input: __S(169) as any as S.Schema<UpdateLiveSourceRequest>,
+  output: __S(23) as any as S.Schema<UpdateLiveSourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2832,8 +2298,8 @@ export const updateProgram: API.OperationMethod<
   UpdateProgramError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProgramRequest,
-  output: UpdateProgramResponse,
+  input: __S(172) as any as S.Schema<UpdateProgramRequest>,
+  output: __S(173) as any as S.Schema<UpdateProgramResponse>,
   errors: [BadRequestException, ProgramNotFound],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2850,8 +2316,8 @@ export const updateSourceLocation: API.OperationMethod<
   UpdateSourceLocationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSourceLocationRequest,
-  output: UpdateSourceLocationResponse,
+  input: __S(174) as any as S.Schema<UpdateSourceLocationRequest>,
+  output: __S(59) as any as S.Schema<UpdateSourceLocationResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2868,8 +2334,8 @@ export const updateVodSource: API.OperationMethod<
   UpdateVodSourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVodSourceRequest,
-  output: UpdateVodSourceResponse,
+  input: __S(175) as any as S.Schema<UpdateVodSourceRequest>,
+  output: __S(61) as any as S.Schema<UpdateVodSourceResponse>,
   errors: [],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2880,10 +2346,10 @@ export const updateVodSource: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(LogType);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
-        S.Struct({ ChannelName: S.String, LogTypes: LogTypes }).pipe(
+        S.Struct({ ChannelName: S.String, LogTypes: __S(0) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/configureLogs/channel" }),
             svc,
@@ -2898,12 +2364,12 @@ function __c0(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ChannelName: S.optional(S.String), LogTypes: S.optional(LogTypes) }),
+        S.Struct({ ChannelName: S.optional(S.String), LogTypes: S.optional(__S(0)) }),
       ).annotate({
         identifier: "ConfigureLogsForChannelResponse",
       });
     case 3:
-      return S.Array(AdsInteractionPublishOptInEventType);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2926,8 +2392,8 @@ function __c0(j: number): any {
           PercentEnabled: S.Number,
           PlaybackConfigurationName: S.String,
           EnabledLoggingStrategies: S.optional(__listOfLoggingStrategies),
-          AdsInteractionLog: S.optional(AdsInteractionLog),
-          ManifestServiceInteractionLog: S.optional(ManifestServiceInteractionLog),
+          AdsInteractionLog: S.optional(__S(4)),
+          ManifestServiceInteractionLog: S.optional(__S(5)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/configureLogs/playbackConfiguration" }),
@@ -2947,8 +2413,8 @@ function __c0(j: number): any {
           PercentEnabled: S.Number,
           PlaybackConfigurationName: S.optional(S.String),
           EnabledLoggingStrategies: S.optional(__listOfLoggingStrategies),
-          AdsInteractionLog: S.optional(AdsInteractionLog),
-          ManifestServiceInteractionLog: S.optional(ManifestServiceInteractionLog),
+          AdsInteractionLog: S.optional(__S(4)),
+          ManifestServiceInteractionLog: S.optional(__S(5)),
         }),
       ).annotate({
         identifier: "ConfigureLogsForPlaybackConfigurationResponse",
@@ -2974,20 +2440,20 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ManifestWindowSeconds: S.optional(S.Number),
-          AdMarkupType: S.optional(AdMarkupTypes),
+          AdMarkupType: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "HlsPlaylistSettings" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DashPlaylistSettings: S.optional(DashPlaylistSettings),
-          HlsPlaylistSettings: S.optional(HlsPlaylistSettings),
+          DashPlaylistSettings: S.optional(__S(9)),
+          HlsPlaylistSettings: S.optional(__S(10)),
           ManifestName: S.String,
           SourceGroup: S.String,
         }),
       ).annotate({ identifier: "RequestOutputItem" });
     case 4:
-      return S.Array(RequestOutputItem);
+      return S.Array(__S(11));
     case 5:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 6:
@@ -3004,13 +2470,13 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
-          FillerSlate: S.optional(SlateSource),
-          Outputs: RequestOutputs,
-          PlaybackMode: PlaybackMode,
+          FillerSlate: S.optional(__S(8)),
+          Outputs: __S(12),
+          PlaybackMode: S.String,
           Tags: S.optional(__mapOf__string),
-          Tier: S.optional(Tier),
-          TimeShiftConfiguration: S.optional(TimeShiftConfiguration),
-          Audiences: S.optional(Audiences),
+          Tier: S.optional(S.String),
+          TimeShiftConfiguration: S.optional(__S(14)),
+          Audiences: S.optional(__S(15)),
         })
           .pipe(S.encodeKeys({ Tags: "tags" }))
           .pipe(
@@ -3027,8 +2493,8 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DashPlaylistSettings: S.optional(DashPlaylistSettings),
-          HlsPlaylistSettings: S.optional(HlsPlaylistSettings),
+          DashPlaylistSettings: S.optional(__S(9)),
+          HlsPlaylistSettings: S.optional(__S(10)),
           ManifestName: S.String,
           PlaybackUrl: S.String,
           DualStackPlaybackUrl: S.optional(S.String),
@@ -3036,34 +2502,34 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ResponseOutputItem" });
     case 2:
-      return S.Array(ResponseOutputItem);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
           ChannelName: S.optional(S.String),
-          ChannelState: S.optional(ChannelState),
+          ChannelState: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FillerSlate: S.optional(SlateSource),
+          FillerSlate: S.optional(__S(8)),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Outputs: S.optional(ResponseOutputs),
+          Outputs: S.optional(__S(18)),
           PlaybackMode: S.optional(S.String),
           Tags: S.optional(__mapOf__string),
           Tier: S.optional(S.String),
-          TimeShiftConfiguration: S.optional(TimeShiftConfiguration),
-          Audiences: S.optional(Audiences),
+          TimeShiftConfiguration: S.optional(__S(14)),
+          Audiences: S.optional(__S(15)),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "CreateChannelResponse" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ Path: S.String, SourceGroup: S.String, Type: Type }),
+        S.Struct({ Path: S.String, SourceGroup: S.String, Type: S.String }),
       ).annotate({ identifier: "HttpPackageConfiguration" });
     case 5:
-      return S.Array(HttpPackageConfiguration);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          HttpPackageConfigurations: HttpPackageConfigurations,
+          HttpPackageConfigurations: __S(21),
           LiveSourceName: S.String.pipe(T.HttpLabel("LiveSourceName")),
           SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
           Tags: S.optional(__mapOf__string),
@@ -3088,7 +2554,7 @@ function __c2(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          HttpPackageConfigurations: S.optional(HttpPackageConfigurations),
+          HttpPackageConfigurations: S.optional(__S(21)),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LiveSourceName: S.optional(S.String),
           SourceLocationName: S.optional(S.String),
@@ -3100,11 +2566,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ DynamicVariable: S.String, Operator: Operator })).annotate({
+      return S.suspend(() => S.Struct({ DynamicVariable: S.String, Operator: S.String })).annotate({
         identifier: "AvailMatchingCriteria",
       });
     case 1:
-      return S.Array(AvailMatchingCriteria);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3131,9 +2597,9 @@ function __c3(j: number): any {
           DynamicVariables: S.optional(__mapOf__string),
           EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          TrafficShapingType: S.optional(TrafficShapingType),
-          TrafficShapingRetrievalWindow: S.optional(TrafficShapingRetrievalWindow),
-          TrafficShapingTpsConfiguration: S.optional(TrafficShapingTpsConfiguration),
+          TrafficShapingType: S.optional(S.String),
+          TrafficShapingRetrievalWindow: S.optional(__S(27)),
+          TrafficShapingTpsConfiguration: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "PrefetchRetrieval" });
     case 6:
@@ -3148,9 +2614,9 @@ function __c3(j: number): any {
         S.Struct({
           DynamicVariables: S.optional(__mapOf__string),
           DelayAfterAvailEndSeconds: S.optional(S.Number),
-          TrafficShapingType: S.optional(TrafficShapingType),
-          TrafficShapingRetrievalWindow: S.optional(TrafficShapingRetrievalWindow),
-          TrafficShapingTpsConfiguration: S.optional(TrafficShapingTpsConfiguration),
+          TrafficShapingType: S.optional(S.String),
+          TrafficShapingRetrievalWindow: S.optional(__S(27)),
+          TrafficShapingTpsConfiguration: S.optional(__S(28)),
         }),
       ).annotate({ identifier: "RecurringRetrieval" });
   }
@@ -3162,8 +2628,8 @@ function __c4(j: number): any {
         S.Struct({
           StartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           EndTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          RecurringConsumption: RecurringConsumption,
-          RecurringRetrieval: RecurringRetrieval,
+          RecurringConsumption: __S(30),
+          RecurringRetrieval: __S(31),
         }),
       ).annotate({
         identifier: "RecurringPrefetchConfiguration",
@@ -3171,12 +2637,12 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Consumption: S.optional(PrefetchConsumption),
+          Consumption: S.optional(__S(26)),
           Name: S.String.pipe(T.HttpLabel("Name")),
           PlaybackConfigurationName: S.String.pipe(T.HttpLabel("PlaybackConfigurationName")),
-          Retrieval: S.optional(PrefetchRetrieval),
-          RecurringPrefetchConfiguration: S.optional(RecurringPrefetchConfiguration),
-          ScheduleType: S.optional(PrefetchScheduleType),
+          Retrieval: S.optional(__S(29)),
+          RecurringPrefetchConfiguration: S.optional(__S(32)),
+          ScheduleType: S.optional(S.String),
           StreamId: S.optional(S.String),
           Tags: S.optional(__mapOf__string),
         })
@@ -3201,12 +2667,12 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
-          Consumption: S.optional(PrefetchConsumption),
+          Consumption: S.optional(__S(26)),
           Name: S.optional(S.String),
           PlaybackConfigurationName: S.optional(S.String),
-          Retrieval: S.optional(PrefetchRetrieval),
-          RecurringPrefetchConfiguration: S.optional(RecurringPrefetchConfiguration),
-          ScheduleType: S.optional(PrefetchScheduleType),
+          Retrieval: S.optional(__S(29)),
+          RecurringPrefetchConfiguration: S.optional(__S(32)),
+          ScheduleType: S.optional(S.String),
           StreamId: S.optional(S.String),
           Tags: S.optional(__mapOf__string),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
@@ -3236,11 +2702,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "SegmentationDescriptor" });
     case 5:
-      return S.Array(SegmentationDescriptor);
+      return S.Array(__S(36));
     case 6:
-      return S.suspend(() =>
-        S.Struct({ SegmentationDescriptors: S.optional(SegmentationDescriptorList) }),
-      ).annotate({ identifier: "TimeSignalMessage" });
+      return S.suspend(() => S.Struct({ SegmentationDescriptors: S.optional(__S(37)) })).annotate({
+        identifier: "TimeSignalMessage",
+      });
     case 7:
       return S.suspend(() => S.Struct({ Key: S.String, Value: S.String })).annotate({
         identifier: "KeyValuePair",
@@ -3250,25 +2716,25 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(KeyValuePair);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          MessageType: S.optional(MessageType),
+          MessageType: S.optional(S.String),
           OffsetMillis: S.Number,
-          Slate: S.optional(SlateSource),
-          SpliceInsertMessage: S.optional(SpliceInsertMessage),
-          TimeSignalMessage: S.optional(TimeSignalMessage),
-          AdBreakMetadata: S.optional(AdBreakMetadataList),
+          Slate: S.optional(__S(8)),
+          SpliceInsertMessage: S.optional(__S(35)),
+          TimeSignalMessage: S.optional(__S(38)),
+          AdBreakMetadata: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "AdBreak" });
     case 2:
-      return S.Array(AdBreak);
+      return S.Array(__S(41));
     case 3:
       return S.suspend(() =>
         S.Struct({
           DurationMillis: S.optional(S.Number),
-          RelativePosition: RelativePosition,
+          RelativePosition: S.String,
           RelativeProgram: S.optional(S.String),
           ScheduledStartTimeMillis: S.optional(S.Number),
           Type: S.String,
@@ -3283,7 +2749,7 @@ function __c5(j: number): any {
       ).annotate({ identifier: "ClipRange" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Transition: Transition, ClipRange: S.optional(ClipRange) }),
+        S.Struct({ Transition: __S(43), ClipRange: S.optional(__S(44)) }),
       ).annotate({ identifier: "ScheduleConfiguration" });
     case 6:
       return S.suspend(() =>
@@ -3291,14 +2757,14 @@ function __c5(j: number): any {
           SourceLocationName: S.optional(S.String),
           LiveSourceName: S.optional(S.String),
           VodSourceName: S.optional(S.String),
-          ClipRange: S.optional(ClipRange),
+          ClipRange: S.optional(__S(44)),
           ScheduledStartTimeMillis: S.optional(S.Number),
           AdBreaks: S.optional(__listOfAdBreak),
           DurationMillis: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AlternateMedia" });
     case 7:
-      return S.Array(AlternateMedia);
+      return S.Array(__S(46));
   }
 }
 function __c6(j: number): any {
@@ -3311,7 +2777,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "AudienceMedia" });
     case 1:
-      return S.Array(AudienceMedia);
+      return S.Array(__S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -3319,7 +2785,7 @@ function __c6(j: number): any {
           ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
           LiveSourceName: S.optional(S.String),
           ProgramName: S.String.pipe(T.HttpLabel("ProgramName")),
-          ScheduleConfiguration: ScheduleConfiguration,
+          ScheduleConfiguration: __S(45),
           SourceLocationName: S.String,
           VodSourceName: S.optional(S.String),
           AudienceMedia: S.optional(__listOfAudienceMedia),
@@ -3349,7 +2815,7 @@ function __c6(j: number): any {
           ScheduledStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SourceLocationName: S.optional(S.String),
           VodSourceName: S.optional(S.String),
-          ClipRange: S.optional(ClipRange),
+          ClipRange: S.optional(__S(44)),
           DurationMillis: S.optional(S.Number),
           AudienceMedia: S.optional(__listOfAudienceMedia),
           Tags: S.optional(__mapOf__string),
@@ -3368,10 +2834,8 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          AccessType: S.optional(AccessType),
-          SecretsManagerAccessTokenConfiguration: S.optional(
-            SecretsManagerAccessTokenConfiguration,
-          ),
+          AccessType: S.optional(S.String),
+          SecretsManagerAccessTokenConfiguration: S.optional(__S(52)),
         }),
       ).annotate({ identifier: "AccessConfiguration" });
     case 6:
@@ -3393,13 +2857,13 @@ function __c7(j: number): any {
         identifier: "SegmentDeliveryConfiguration",
       });
     case 1:
-      return S.Array(SegmentDeliveryConfiguration);
+      return S.Array(__S(56));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AccessConfiguration: S.optional(AccessConfiguration),
-          DefaultSegmentDeliveryConfiguration: S.optional(DefaultSegmentDeliveryConfiguration),
-          HttpConfiguration: HttpConfiguration,
+          AccessConfiguration: S.optional(__S(53)),
+          DefaultSegmentDeliveryConfiguration: S.optional(__S(54)),
+          HttpConfiguration: __S(55),
           SegmentDeliveryConfigurations: S.optional(__listOfSegmentDeliveryConfiguration),
           SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
           Tags: S.optional(__mapOf__string),
@@ -3421,11 +2885,11 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AccessConfiguration: S.optional(AccessConfiguration),
+          AccessConfiguration: S.optional(__S(53)),
           Arn: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DefaultSegmentDeliveryConfiguration: S.optional(DefaultSegmentDeliveryConfiguration),
-          HttpConfiguration: S.optional(HttpConfiguration),
+          DefaultSegmentDeliveryConfiguration: S.optional(__S(54)),
+          HttpConfiguration: S.optional(__S(55)),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SegmentDeliveryConfigurations: S.optional(__listOfSegmentDeliveryConfiguration),
           SourceLocationName: S.optional(S.String),
@@ -3437,7 +2901,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          HttpPackageConfigurations: HttpPackageConfigurations,
+          HttpPackageConfigurations: __S(21),
           SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
           Tags: S.optional(__mapOf__string),
           VodSourceName: S.String.pipe(T.HttpLabel("VodSourceName")),
@@ -3462,7 +2926,7 @@ function __c7(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          HttpPackageConfigurations: S.optional(HttpPackageConfigurations),
+          HttpPackageConfigurations: S.optional(__S(21)),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SourceLocationName: S.optional(S.String),
           Tags: S.optional(__mapOf__string),
@@ -3645,7 +3109,7 @@ function __c9(j: number): any {
         ),
       ).annotate({ identifier: "DescribeChannelRequest" });
     case 2:
-      return S.suspend(() => S.Struct({ LogTypes: S.optional(LogTypes) })).annotate({
+      return S.suspend(() => S.Struct({ LogTypes: S.optional(__S(0)) })).annotate({
         identifier: "LogConfigurationForChannel",
       });
     case 3:
@@ -3653,17 +3117,17 @@ function __c9(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           ChannelName: S.optional(S.String),
-          ChannelState: S.optional(ChannelState),
+          ChannelState: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FillerSlate: S.optional(SlateSource),
+          FillerSlate: S.optional(__S(8)),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Outputs: S.optional(ResponseOutputs),
+          Outputs: S.optional(__S(18)),
           PlaybackMode: S.optional(S.String),
           Tags: S.optional(__mapOf__string),
           Tier: S.optional(S.String),
-          LogConfiguration: LogConfigurationForChannel,
-          TimeShiftConfiguration: S.optional(TimeShiftConfiguration),
-          Audiences: S.optional(Audiences),
+          LogConfiguration: __S(74),
+          TimeShiftConfiguration: S.optional(__S(14)),
+          Audiences: S.optional(__S(15)),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "DescribeChannelResponse" });
     case 4:
@@ -3692,7 +3156,7 @@ function __c9(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          HttpPackageConfigurations: S.optional(HttpPackageConfigurations),
+          HttpPackageConfigurations: S.optional(__S(21)),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LiveSourceName: S.optional(S.String),
           SourceLocationName: S.optional(S.String),
@@ -3760,14 +3224,14 @@ function __c10(j: number): any {
         identifier: "AdBreakOpportunity",
       });
     case 2:
-      return S.Array(AdBreakOpportunity);
+      return S.Array(__S(81));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AdBreakOpportunities: S.optional(AdBreakOpportunities),
+          AdBreakOpportunities: S.optional(__S(82)),
           Arn: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          HttpPackageConfigurations: S.optional(HttpPackageConfigurations),
+          HttpPackageConfigurations: S.optional(__S(21)),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SourceLocationName: S.optional(S.String),
           Tags: S.optional(__mapOf__string),
@@ -3828,7 +3292,7 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ScheduleAdBreak);
+      return S.Array(__S(87));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -3839,14 +3303,14 @@ function __c11(j: number): any {
           LiveSourceName: S.optional(S.String),
           ProgramName: S.String,
           ScheduleAdBreaks: S.optional(__listOfScheduleAdBreak),
-          ScheduleEntryType: S.optional(ScheduleEntryType),
+          ScheduleEntryType: S.optional(S.String),
           SourceLocationName: S.String,
           VodSourceName: S.optional(S.String),
-          Audiences: S.optional(Audiences),
+          Audiences: S.optional(__S(15)),
         }),
       ).annotate({ identifier: "ScheduleEntry" });
     case 2:
-      return S.Array(ScheduleEntry);
+      return S.Array(__S(89));
     case 3:
       return S.suspend(() =>
         S.Struct({ Items: S.optional(__listOfScheduleEntry), NextToken: S.optional(S.String) }),
@@ -3869,9 +3333,9 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Runtime: RuntimeType,
+          Runtime: S.String,
           Output: S.optional(__mapOf__string),
-          MethodType: MethodType,
+          MethodType: S.String,
           RequestTimeoutMilliseconds: S.Number,
           Url: S.String,
           Body: S.optional(S.String),
@@ -3881,9 +3345,9 @@ function __c11(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Runtime: RuntimeType,
+          Runtime: S.String,
           Output: S.optional(__mapOf__string),
-          MethodType: MethodType,
+          MethodType: S.String,
           RequestTimeoutMilliseconds: S.Number,
           Url: S.String,
           Body: S.optional(S.String),
@@ -3896,7 +3360,7 @@ function __c11(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Runtime: RuntimeType, Output: S.optional(__mapOf__string) }),
+        S.Struct({ Runtime: S.String, Output: S.optional(__mapOf__string) }),
       ).annotate({
         identifier: "CustomOutputConfiguration",
       });
@@ -3913,11 +3377,11 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "FunctionRef" });
     case 1:
-      return S.Array(FunctionRef);
+      return S.Array(__S(96));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Runtime: RuntimeType,
+          Runtime: S.String,
           Output: __mapOf__string,
           FunctionList: __listOfFunctionsRef,
           TimeoutMilliseconds: S.Number,
@@ -3929,7 +3393,7 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Runtime: RuntimeType,
+          Runtime: S.String,
           Output: S.optional(__mapOf__string),
           FunctionList: __listOfFunctionsRef,
           TimeoutMilliseconds: S.Number,
@@ -3941,14 +3405,14 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FunctionId: S.String,
-          FunctionType: FunctionType,
+          FunctionType: S.String,
           Description: S.optional(S.String),
-          HttpRequestConfiguration: S.optional(HttpRequestConfiguration),
-          AwsServiceRequestConfiguration: S.optional(AwsServiceRequestConfiguration),
-          CustomOutputConfiguration: S.optional(CustomOutputConfiguration),
-          ConcurrentExecutorConfiguration: S.optional(ConcurrentExecutorConfiguration),
-          SequentialExecutorConfiguration: S.optional(SequentialExecutorConfiguration),
-          VastRequestConfiguration: S.optional(VastRequestConfiguration),
+          HttpRequestConfiguration: S.optional(__S(93)),
+          AwsServiceRequestConfiguration: S.optional(__S(94)),
+          CustomOutputConfiguration: S.optional(__S(95)),
+          ConcurrentExecutorConfiguration: S.optional(__S(98)),
+          SequentialExecutorConfiguration: S.optional(__S(99)),
+          VastRequestConfiguration: S.optional(__S(93)),
           Tags: S.optional(__mapOf__string),
           Arn: S.optional(S.String),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
@@ -3971,9 +3435,9 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Mode: S.optional(Mode),
+          Mode: S.optional(S.String),
           Value: S.optional(S.String),
-          FillPolicy: S.optional(FillPolicy),
+          FillPolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "AvailSuppression" });
     case 7:
@@ -3999,7 +3463,7 @@ function __c13(j: number): any {
           ManifestEndpointPrefix: S.optional(S.String),
           DualStackManifestEndpointPrefix: S.optional(S.String),
           MpdLocation: S.optional(S.String),
-          OriginManifestType: S.optional(OriginManifestType),
+          OriginManifestType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DashConfiguration" });
     case 3:
@@ -4010,11 +3474,11 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "HlsConfiguration" });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ AdSequencingMode: S.optional(PreRollAdSequencingMode) }),
-      ).annotate({ identifier: "PreRollVastResponse" });
+      return S.suspend(() => S.Struct({ AdSequencingMode: S.optional(S.String) })).annotate({
+        identifier: "PreRollVastResponse",
+      });
     case 5:
-      return S.suspend(() => S.Struct({ VastResponse: S.optional(PreRollVastResponse) })).annotate({
+      return S.suspend(() => S.Struct({ VastResponse: S.optional(__S(108)) })).annotate({
         identifier: "PreRollAdDecisionServerConfiguration",
       });
     case 6:
@@ -4022,7 +3486,7 @@ function __c13(j: number): any {
         S.Struct({
           AdDecisionServerUrl: S.optional(S.String),
           MaxDurationSeconds: S.optional(S.Number),
-          AdDecisionServerConfiguration: S.optional(PreRollAdDecisionServerConfiguration),
+          AdDecisionServerConfiguration: S.optional(__S(109)),
         }),
       ).annotate({ identifier: "LivePreRollConfiguration" });
     case 7:
@@ -4030,8 +3494,8 @@ function __c13(j: number): any {
         S.Struct({
           PercentEnabled: S.Number,
           EnabledLoggingStrategies: S.optional(__listOfLoggingStrategies),
-          AdsInteractionLog: S.optional(AdsInteractionLog),
-          ManifestServiceInteractionLog: S.optional(ManifestServiceInteractionLog),
+          AdsInteractionLog: S.optional(__S(4)),
+          ManifestServiceInteractionLog: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "LogConfiguration" });
   }
@@ -4043,13 +3507,11 @@ function __c14(j: number): any {
         identifier: "AdMarkerPassthrough",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ AdMarkerPassthrough: S.optional(AdMarkerPassthrough) }),
-      ).annotate({ identifier: "ManifestProcessingRules" });
+      return S.suspend(() => S.Struct({ AdMarkerPassthrough: S.optional(__S(112)) })).annotate({
+        identifier: "ManifestProcessingRules",
+      });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ StreamingMediaFileConditioning: StreamingMediaFileConditioning }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ StreamingMediaFileConditioning: S.String })).annotate({
         identifier: "AdConditioningConfiguration",
       });
     case 3:
@@ -4057,15 +3519,15 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Method: S.optional(Method),
+          Method: S.optional(S.String),
           Body: S.optional(S.String),
-          Headers: S.optional(StringMap),
-          CompressRequest: S.optional(CompressionMethod),
+          Headers: S.optional(__S(115)),
+          CompressRequest: S.optional(S.String),
         }),
       ).annotate({ identifier: "HttpRequest" });
     case 5:
       return S.suspend(() =>
-        S.Struct({ HttpRequest: S.optional(HttpRequest), VastResponse: S.optional(VastResponse) }),
+        S.Struct({ HttpRequest: S.optional(__S(116)), VastResponse: S.optional(__S(108)) }),
       ).annotate({
         identifier: "AdDecisionServerConfiguration",
       });
@@ -4074,14 +3536,14 @@ function __c14(j: number): any {
         S.Struct({
           MinimumUnfilledDuration: S.Number,
           PublisherId: S.String,
-          Region: ApsRegion,
+          Region: S.String,
           OpenRtbTemplate: S.String,
         }),
       ).annotate({
         identifier: "YieldOptimizationConfiguration",
       });
     case 7:
-      return S.Record(EventName, /*@__PURE__*/ S.String.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
   }
 }
 function __c15(j: number): any {
@@ -4110,30 +3572,30 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ReportingMode: ClientSideBeaconingMode,
-          AdditionalEventTypes: S.optional(BeaconEventTypeList),
+          ReportingMode: S.String,
+          AdditionalEventTypes: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "ClientSideBeaconingConfiguration",
       });
     case 3:
-      return S.suspend(() =>
-        S.Struct({ ClientSide: S.optional(ClientSideBeaconingConfiguration) }),
-      ).annotate({ identifier: "BeaconingConfiguration" });
+      return S.suspend(() => S.Struct({ ClientSide: S.optional(__S(122)) })).annotate({
+        identifier: "BeaconingConfiguration",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
           AdDecisionServerUrl: S.optional(S.String),
-          AvailSuppression: S.optional(AvailSuppression),
-          Bumper: S.optional(Bumper),
-          CdnConfiguration: S.optional(CdnConfiguration),
-          ConfigurationAliases: S.optional(ConfigurationAliasesResponse),
-          DashConfiguration: S.optional(DashConfiguration),
-          HlsConfiguration: S.optional(HlsConfiguration),
-          InsertionMode: S.optional(InsertionMode),
-          LivePreRollConfiguration: S.optional(LivePreRollConfiguration),
-          LogConfiguration: S.optional(LogConfiguration),
-          ManifestProcessingRules: S.optional(ManifestProcessingRules),
+          AvailSuppression: S.optional(__S(102)),
+          Bumper: S.optional(__S(103)),
+          CdnConfiguration: S.optional(__S(104)),
+          ConfigurationAliases: S.optional(__S(105)),
+          DashConfiguration: S.optional(__S(106)),
+          HlsConfiguration: S.optional(__S(107)),
+          InsertionMode: S.optional(S.String),
+          LivePreRollConfiguration: S.optional(__S(110)),
+          LogConfiguration: S.optional(__S(111)),
+          ManifestProcessingRules: S.optional(__S(113)),
           Name: S.optional(S.String),
           PersonalizationThresholdSeconds: S.optional(S.Number),
           PlaybackConfigurationArn: S.optional(S.String),
@@ -4145,13 +3607,13 @@ function __c15(j: number): any {
           Tags: S.optional(__mapOf__string),
           TranscodeProfileName: S.optional(S.String),
           VideoContentSourceUrl: S.optional(S.String),
-          AdConditioningConfiguration: S.optional(AdConditioningConfiguration),
-          AdDecisionServerConfiguration: S.optional(AdDecisionServerConfiguration),
-          YieldOptimizationConfiguration: S.optional(YieldOptimizationConfiguration),
-          FunctionMapping: S.optional(FunctionMapping),
-          AdsPersonalizationTimeouts: S.optional(AdsPersonalizationTimeouts),
-          AdsPersonalizationConcurrency: S.optional(AdsPersonalizationConcurrency),
-          BeaconingConfiguration: S.optional(BeaconingConfiguration),
+          AdConditioningConfiguration: S.optional(__S(114)),
+          AdDecisionServerConfiguration: S.optional(__S(117)),
+          YieldOptimizationConfiguration: S.optional(__S(118)),
+          FunctionMapping: S.optional(__S(119)),
+          AdsPersonalizationTimeouts: S.optional(__S(120)),
+          AdsPersonalizationConcurrency: S.optional(__S(121)),
+          BeaconingConfiguration: S.optional(__S(123)),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({
         identifier: "GetPlaybackConfigurationResponse",
@@ -4178,12 +3640,12 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
-          Consumption: S.optional(PrefetchConsumption),
+          Consumption: S.optional(__S(26)),
           Name: S.optional(S.String),
           PlaybackConfigurationName: S.optional(S.String),
-          Retrieval: S.optional(PrefetchRetrieval),
-          ScheduleType: S.optional(PrefetchScheduleType),
-          RecurringPrefetchConfiguration: S.optional(RecurringPrefetchConfiguration),
+          Retrieval: S.optional(__S(29)),
+          ScheduleType: S.optional(S.String),
+          RecurringPrefetchConfiguration: S.optional(__S(32)),
           StreamId: S.optional(S.String),
           Tags: S.optional(__mapOf__string),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
@@ -4210,11 +3672,11 @@ function __c16(j: number): any {
           LastModifiedTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           RelatedResourceArns: __listOf__string,
           ResourceArn: S.String,
-          Category: S.optional(AlertCategory),
+          Category: S.optional(S.String),
         }),
       ).annotate({ identifier: "Alert" });
     case 1:
-      return S.Array(Alert);
+      return S.Array(__S(128));
     case 2:
       return S.suspend(() =>
         S.Struct({ Items: S.optional(__listOfAlert), NextToken: S.optional(S.String) }),
@@ -4233,18 +3695,18 @@ function __c16(j: number): any {
           ChannelName: S.String,
           ChannelState: S.String,
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          FillerSlate: S.optional(SlateSource),
+          FillerSlate: S.optional(__S(8)),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          Outputs: ResponseOutputs,
+          Outputs: __S(18),
           PlaybackMode: S.String,
           Tags: S.optional(__mapOf__string),
           Tier: S.String,
-          LogConfiguration: LogConfigurationForChannel,
-          Audiences: S.optional(Audiences),
+          LogConfiguration: __S(74),
+          Audiences: S.optional(__S(15)),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "Channel" });
     case 5:
-      return S.Array(Channel);
+      return S.Array(__S(132));
     case 6:
       return S.suspend(() =>
         S.Struct({ Items: S.optional(__listOfChannel), NextToken: S.optional(S.String) }),
@@ -4261,7 +3723,7 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Function);
+      return S.Array(__S(100));
     case 1:
       return S.suspend(() =>
         S.Struct({ Items: S.optional(__listOfFunctionsResponse), NextToken: S.optional(S.String) }),
@@ -4288,7 +3750,7 @@ function __c17(j: number): any {
         S.Struct({
           Arn: S.String,
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          HttpPackageConfigurations: HttpPackageConfigurations,
+          HttpPackageConfigurations: __S(21),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LiveSourceName: S.String,
           SourceLocationName: S.String,
@@ -4296,7 +3758,7 @@ function __c17(j: number): any {
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "LiveSource" });
     case 4:
-      return S.Array(LiveSource);
+      return S.Array(__S(139));
     case 5:
       return S.suspend(() =>
         S.Struct({ Items: S.optional(__listOfLiveSource), NextToken: S.optional(S.String) }),
@@ -4323,16 +3785,16 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AdDecisionServerUrl: S.optional(S.String),
-          AvailSuppression: S.optional(AvailSuppression),
-          Bumper: S.optional(Bumper),
-          CdnConfiguration: S.optional(CdnConfiguration),
-          ConfigurationAliases: S.optional(ConfigurationAliasesResponse),
-          DashConfiguration: S.optional(DashConfiguration),
-          HlsConfiguration: S.optional(HlsConfiguration),
-          InsertionMode: S.optional(InsertionMode),
-          LivePreRollConfiguration: S.optional(LivePreRollConfiguration),
-          LogConfiguration: S.optional(LogConfiguration),
-          ManifestProcessingRules: S.optional(ManifestProcessingRules),
+          AvailSuppression: S.optional(__S(102)),
+          Bumper: S.optional(__S(103)),
+          CdnConfiguration: S.optional(__S(104)),
+          ConfigurationAliases: S.optional(__S(105)),
+          DashConfiguration: S.optional(__S(106)),
+          HlsConfiguration: S.optional(__S(107)),
+          InsertionMode: S.optional(S.String),
+          LivePreRollConfiguration: S.optional(__S(110)),
+          LogConfiguration: S.optional(__S(111)),
+          ManifestProcessingRules: S.optional(__S(113)),
           Name: S.optional(S.String),
           PersonalizationThresholdSeconds: S.optional(S.Number),
           PlaybackConfigurationArn: S.optional(S.String),
@@ -4344,13 +3806,13 @@ function __c17(j: number): any {
           Tags: S.optional(__mapOf__string),
           TranscodeProfileName: S.optional(S.String),
           VideoContentSourceUrl: S.optional(S.String),
-          AdConditioningConfiguration: S.optional(AdConditioningConfiguration),
-          AdDecisionServerConfiguration: S.optional(AdDecisionServerConfiguration),
-          YieldOptimizationConfiguration: S.optional(YieldOptimizationConfiguration),
-          FunctionMapping: S.optional(FunctionMapping),
-          AdsPersonalizationTimeouts: S.optional(AdsPersonalizationTimeouts),
-          AdsPersonalizationConcurrency: S.optional(AdsPersonalizationConcurrency),
-          BeaconingConfiguration: S.optional(BeaconingConfiguration),
+          AdConditioningConfiguration: S.optional(__S(114)),
+          AdDecisionServerConfiguration: S.optional(__S(117)),
+          YieldOptimizationConfiguration: S.optional(__S(118)),
+          FunctionMapping: S.optional(__S(119)),
+          AdsPersonalizationTimeouts: S.optional(__S(120)),
+          AdsPersonalizationConcurrency: S.optional(__S(121)),
+          BeaconingConfiguration: S.optional(__S(123)),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "PlaybackConfiguration" });
   }
@@ -4358,7 +3820,7 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PlaybackConfiguration);
+      return S.Array(__S(143));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4374,7 +3836,7 @@ function __c18(j: number): any {
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
           PlaybackConfigurationName: S.String.pipe(T.HttpLabel("PlaybackConfigurationName")),
-          ScheduleType: S.optional(ListPrefetchScheduleType),
+          ScheduleType: S.optional(S.String),
           StreamId: S.optional(S.String),
         }).pipe(
           T.all(
@@ -4393,18 +3855,18 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
-          Consumption: S.optional(PrefetchConsumption),
+          Consumption: S.optional(__S(26)),
           Name: S.String,
           PlaybackConfigurationName: S.String,
-          Retrieval: S.optional(PrefetchRetrieval),
-          ScheduleType: S.optional(PrefetchScheduleType),
-          RecurringPrefetchConfiguration: S.optional(RecurringPrefetchConfiguration),
+          Retrieval: S.optional(__S(29)),
+          ScheduleType: S.optional(S.String),
+          RecurringPrefetchConfiguration: S.optional(__S(32)),
           StreamId: S.optional(S.String),
           Tags: S.optional(__mapOf__string),
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "PrefetchSchedule" });
     case 4:
-      return S.Array(PrefetchSchedule);
+      return S.Array(__S(147));
     case 5:
       return S.suspend(() =>
         S.Struct({ Items: S.optional(__listOfPrefetchSchedule), NextToken: S.optional(S.String) }),
@@ -4425,11 +3887,11 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          AccessConfiguration: S.optional(AccessConfiguration),
+          AccessConfiguration: S.optional(__S(53)),
           Arn: S.String,
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          DefaultSegmentDeliveryConfiguration: S.optional(DefaultSegmentDeliveryConfiguration),
-          HttpConfiguration: HttpConfiguration,
+          DefaultSegmentDeliveryConfiguration: S.optional(__S(54)),
+          HttpConfiguration: __S(55),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SegmentDeliveryConfigurations: S.optional(__listOfSegmentDeliveryConfiguration),
           SourceLocationName: S.String,
@@ -4441,7 +3903,7 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SourceLocation);
+      return S.Array(__S(151));
     case 1:
       return S.suspend(() =>
         S.Struct({ Items: S.optional(__listOfSourceLocation), NextToken: S.optional(S.String) }),
@@ -4491,7 +3953,7 @@ function __c19(j: number): any {
         S.Struct({
           Arn: S.String,
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          HttpPackageConfigurations: HttpPackageConfigurations,
+          HttpPackageConfigurations: __S(21),
           LastModifiedTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           SourceLocationName: S.String,
           Tags: S.optional(__mapOf__string),
@@ -4499,7 +3961,7 @@ function __c19(j: number): any {
         }).pipe(S.encodeKeys({ Tags: "tags" })),
       ).annotate({ identifier: "VodSource" });
     case 6:
-      return S.Array(VodSource);
+      return S.Array(__S(157));
     case 7:
       return S.suspend(() =>
         S.Struct({ Items: S.optional(__listOfVodSource), NextToken: S.optional(S.String) }),
@@ -4525,14 +3987,14 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           FunctionId: S.String.pipe(T.HttpLabel("FunctionId")),
-          FunctionType: FunctionType,
+          FunctionType: S.String,
           Description: S.optional(S.String),
-          HttpRequestConfiguration: S.optional(HttpRequestConfiguration),
-          AwsServiceRequestConfiguration: S.optional(AwsServiceRequestConfiguration),
-          CustomOutputConfiguration: S.optional(CustomOutputConfiguration),
-          ConcurrentExecutorConfiguration: S.optional(ConcurrentExecutorConfiguration),
-          SequentialExecutorConfiguration: S.optional(SequentialExecutorConfiguration),
-          VastRequestConfiguration: S.optional(VastRequestConfiguration),
+          HttpRequestConfiguration: S.optional(__S(93)),
+          AwsServiceRequestConfiguration: S.optional(__S(94)),
+          CustomOutputConfiguration: S.optional(__S(95)),
+          ConcurrentExecutorConfiguration: S.optional(__S(98)),
+          SequentialExecutorConfiguration: S.optional(__S(99)),
+          VastRequestConfiguration: S.optional(__S(93)),
           Tags: S.optional(__mapOf__string),
         })
           .pipe(S.encodeKeys({ Tags: "tags" }))
@@ -4551,34 +4013,34 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           MpdLocation: S.optional(S.String),
-          OriginManifestType: S.optional(OriginManifestType),
+          OriginManifestType: S.optional(S.String),
         }),
       ).annotate({ identifier: "DashConfigurationForPut" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           AdDecisionServerUrl: S.optional(S.String),
-          AvailSuppression: S.optional(AvailSuppression),
-          Bumper: S.optional(Bumper),
-          CdnConfiguration: S.optional(CdnConfiguration),
-          ConfigurationAliases: S.optional(ConfigurationAliasesRequest),
-          DashConfiguration: S.optional(DashConfigurationForPut),
-          InsertionMode: S.optional(InsertionMode),
-          LivePreRollConfiguration: S.optional(LivePreRollConfiguration),
-          ManifestProcessingRules: S.optional(ManifestProcessingRules),
+          AvailSuppression: S.optional(__S(102)),
+          Bumper: S.optional(__S(103)),
+          CdnConfiguration: S.optional(__S(104)),
+          ConfigurationAliases: S.optional(__S(105)),
+          DashConfiguration: S.optional(__S(162)),
+          InsertionMode: S.optional(S.String),
+          LivePreRollConfiguration: S.optional(__S(110)),
+          ManifestProcessingRules: S.optional(__S(113)),
           Name: S.String,
           PersonalizationThresholdSeconds: S.optional(S.Number),
           SlateAdUrl: S.optional(S.String),
           Tags: S.optional(__mapOf__string),
           TranscodeProfileName: S.optional(S.String),
           VideoContentSourceUrl: S.optional(S.String),
-          AdConditioningConfiguration: S.optional(AdConditioningConfiguration),
-          AdDecisionServerConfiguration: S.optional(AdDecisionServerConfiguration),
-          YieldOptimizationConfiguration: S.optional(YieldOptimizationConfiguration),
-          FunctionMapping: S.optional(FunctionMapping),
-          AdsPersonalizationTimeouts: S.optional(AdsPersonalizationTimeouts),
-          AdsPersonalizationConcurrency: S.optional(AdsPersonalizationConcurrency),
-          BeaconingConfiguration: S.optional(BeaconingConfiguration),
+          AdConditioningConfiguration: S.optional(__S(114)),
+          AdDecisionServerConfiguration: S.optional(__S(117)),
+          YieldOptimizationConfiguration: S.optional(__S(118)),
+          FunctionMapping: S.optional(__S(119)),
+          AdsPersonalizationTimeouts: S.optional(__S(120)),
+          AdsPersonalizationConcurrency: S.optional(__S(121)),
+          BeaconingConfiguration: S.optional(__S(123)),
         })
           .pipe(S.encodeKeys({ Tags: "tags" }))
           .pipe(
@@ -4659,10 +4121,10 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
-          FillerSlate: S.optional(SlateSource),
-          Outputs: RequestOutputs,
-          TimeShiftConfiguration: S.optional(TimeShiftConfiguration),
-          Audiences: S.optional(Audiences),
+          FillerSlate: S.optional(__S(8)),
+          Outputs: __S(12),
+          TimeShiftConfiguration: S.optional(__S(14)),
+          Audiences: S.optional(__S(15)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/channel/{ChannelName}" }),
@@ -4677,7 +4139,7 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          HttpPackageConfigurations: HttpPackageConfigurations,
+          HttpPackageConfigurations: __S(21),
           LiveSourceName: S.String.pipe(T.HttpLabel("LiveSourceName")),
           SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
         }).pipe(
@@ -4704,8 +4166,8 @@ function __c21(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Transition: S.optional(UpdateProgramTransition),
-          ClipRange: S.optional(ClipRange),
+          Transition: S.optional(__S(170)),
+          ClipRange: S.optional(__S(44)),
         }),
       ).annotate({
         identifier: "UpdateProgramScheduleConfiguration",
@@ -4716,7 +4178,7 @@ function __c21(j: number): any {
           AdBreaks: S.optional(__listOfAdBreak),
           ChannelName: S.String.pipe(T.HttpLabel("ChannelName")),
           ProgramName: S.String.pipe(T.HttpLabel("ProgramName")),
-          ScheduleConfiguration: UpdateProgramScheduleConfiguration,
+          ScheduleConfiguration: __S(171),
           AudienceMedia: S.optional(__listOfAudienceMedia),
         }).pipe(
           T.all(
@@ -4740,7 +4202,7 @@ function __c21(j: number): any {
           SourceLocationName: S.optional(S.String),
           VodSourceName: S.optional(S.String),
           LiveSourceName: S.optional(S.String),
-          ClipRange: S.optional(ClipRange),
+          ClipRange: S.optional(__S(44)),
           DurationMillis: S.optional(S.Number),
           ScheduledStartTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           AudienceMedia: S.optional(__listOfAudienceMedia),
@@ -4750,9 +4212,9 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          AccessConfiguration: S.optional(AccessConfiguration),
-          DefaultSegmentDeliveryConfiguration: S.optional(DefaultSegmentDeliveryConfiguration),
-          HttpConfiguration: HttpConfiguration,
+          AccessConfiguration: S.optional(__S(53)),
+          DefaultSegmentDeliveryConfiguration: S.optional(__S(54)),
+          HttpConfiguration: __S(55),
           SegmentDeliveryConfigurations: S.optional(__listOfSegmentDeliveryConfiguration),
           SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
         }).pipe(
@@ -4771,7 +4233,7 @@ function __c21(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          HttpPackageConfigurations: HttpPackageConfigurations,
+          HttpPackageConfigurations: __S(21),
           SourceLocationName: S.String.pipe(T.HttpLabel("SourceLocationName")),
           VodSourceName: S.String.pipe(T.HttpLabel("VodSourceName")),
         }).pipe(
@@ -4788,5 +4250,58 @@ function __c21(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateVodSourceRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
   }
 }

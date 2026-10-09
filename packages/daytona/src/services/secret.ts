@@ -6,16 +6,13 @@ import { UnknownDaytonaError } from "../errors.ts";
 import { DaytonaProtocol, type DaytonaOpError, type DaytonaOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { DaytonaOpError, DaytonaOpContext };
 
 /** Allowed hosts this secret may be sent to */
 export type CreateSecretRequestHostsList = Array<string>;
-const CreateSecretRequestHostsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateSecretRequestHostsList>;
-
 export interface CreateSecretRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
@@ -28,12 +25,8 @@ export interface CreateSecretRequest {
   /** Allowed hosts this secret may be sent to */
   hosts?: CreateSecretRequestHostsList;
 }
-const CreateSecretRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateSecretRequest>;
-
 /** Allowed hosts this secret may be sent to */
 export type SecretHostsList = Array<string>;
-const SecretHostsList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SecretHostsList>;
-
 export interface Secret2 {
   /** Secret ID */
   id: string;
@@ -50,33 +43,21 @@ export interface Secret2 {
   /** Last update timestamp */
   updatedAt: string;
 }
-const Secret2 = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Secret2>;
-
 export interface DeleteSecretRequest {
   /** ID of the secret */
   secretId: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-const DeleteSecretRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DeleteSecretRequest>;
-
 export interface DeleteSecretResponse {}
-const DeleteSecretResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteSecretResponse>;
-
 export interface GetSecretRequest {
   /** ID of the secret */
   secretId: string;
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-const GetSecretRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetSecretRequest>;
-
 export type ListSecretsPaginatedRequestSort = "name" | "createdAt" | "updatedAt";
-const ListSecretsPaginatedRequestSort = S.String;
-
 export type ListSecretsPaginatedRequestOrder = "asc" | "desc";
-const ListSecretsPaginatedRequestOrder = S.String;
-
 export interface ListSecretsPaginatedRequest {
   /** Pagination cursor from a previous response */
   cursor?: string;
@@ -91,18 +72,8 @@ export interface ListSecretsPaginatedRequest {
   /** Use with JWT to specify the organization ID */
   xDaytonaOrganizationID?: string;
 }
-const ListSecretsPaginatedRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListSecretsPaginatedRequest>;
-
 /** List of results for the current page */
 export type ListSecretsResponseItemsList = Array<Secret2>;
-const ListSecretsResponseItemsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListSecretsResponseItemsList>;
-
 export interface ListSecretsResponse {
   /** List of results for the current page */
   items: ListSecretsResponseItemsList;
@@ -111,13 +82,8 @@ export interface ListSecretsResponse {
   /** Cursor for the next page of results */
   nextCursor: string | null;
 }
-const ListSecretsResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListSecretsResponse>;
-
 /** Allowed hosts this secret may be sent to */
 export type UpdateSecretRequestHostsList = Array<string>;
-const UpdateSecretRequestHostsList =
-  CreateSecretRequestHostsList as any as S.Schema<UpdateSecretRequestHostsList>;
-
 export interface UpdateSecretRequest {
   /** ID of the secret */
   secretId: string;
@@ -130,8 +96,6 @@ export interface UpdateSecretRequest {
   /** Allowed hosts this secret may be sent to */
   hosts?: UpdateSecretRequestHostsList;
 }
-const UpdateSecretRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<UpdateSecretRequest>;
-
 export type CreateSecretError = DaytonaOpError;
 /** Create secret */
 export const createSecret: API.OperationMethod<
@@ -140,8 +104,8 @@ export const createSecret: API.OperationMethod<
   CreateSecretError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSecretRequest,
-  output: Secret2,
+  input: __S(1) as any as S.Schema<CreateSecretRequest>,
+  output: __S(3) as any as S.Schema<Secret2>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -155,8 +119,8 @@ export const deleteSecret: API.OperationMethod<
   DeleteSecretError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSecretRequest,
-  output: DeleteSecretResponse,
+  input: __S(4) as any as S.Schema<DeleteSecretRequest>,
+  output: __S(5) as any as S.Schema<DeleteSecretResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -170,8 +134,8 @@ export const getSecret: API.OperationMethod<
   GetSecretError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecretRequest,
-  output: Secret2,
+  input: __S(6) as any as S.Schema<GetSecretRequest>,
+  output: __S(3) as any as S.Schema<Secret2>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -185,8 +149,8 @@ export const listSecretsPaginated: API.OperationMethod<
   ListSecretsPaginatedError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSecretsPaginatedRequest,
-  output: ListSecretsResponse,
+  input: __S(7) as any as S.Schema<ListSecretsPaginatedRequest>,
+  output: __S(9) as any as S.Schema<ListSecretsResponse>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -200,8 +164,8 @@ export const updateSecret: API.OperationMethod<
   UpdateSecretError,
   DaytonaOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSecretRequest,
-  output: Secret2,
+  input: __S(10) as any as S.Schema<UpdateSecretRequest>,
+  output: __S(3) as any as S.Schema<Secret2>,
   errors: [UnknownDaytonaError],
   protocol: DaytonaProtocol,
   retry: Retry.Retry,
@@ -219,7 +183,7 @@ function __c0(j: number): any {
           name: S.String,
           value: S.String,
           description: S.optional(S.String),
-          hosts: S.optional(CreateSecretRequestHostsList),
+          hosts: S.optional(__S(0)),
         }).pipe(T.Http({ method: "POST", uri: "/secret", code: 200 })),
       ).annotate({ identifier: "CreateSecretRequest" });
     case 2:
@@ -232,7 +196,7 @@ function __c0(j: number): any {
           description: S.optional(S.String),
           createdAt: S.String,
           placeholder: S.String,
-          hosts: SecretHostsList,
+          hosts: __S(2),
           updatedAt: S.String,
         }),
       ).annotate({ identifier: "Secret2" });
@@ -260,8 +224,8 @@ function __c0(j: number): any {
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
-          sort: S.optional(ListSecretsPaginatedRequestSort.pipe(T.Query())),
-          order: S.optional(ListSecretsPaginatedRequestOrder.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
         }).pipe(T.Http({ method: "GET", uri: "/secret/paginated", code: 200 })),
       ).annotate({
@@ -272,11 +236,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Secret2);
+      return S.Array(__S(3));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: ListSecretsResponseItemsList,
+          items: __S(8),
           total: S.Number,
           nextCursor: S.NullOr(S.String),
         }),
@@ -288,8 +252,21 @@ function __c1(j: number): any {
           xDaytonaOrganizationID: S.optional(S.String.pipe(T.Header("X-Daytona-Organization-ID"))),
           value: S.optional(S.String),
           description: S.optional(S.String),
-          hosts: S.optional(UpdateSecretRequestHostsList),
+          hosts: S.optional(__S(0)),
         }).pipe(T.Http({ method: "PATCH", uri: "/secret/{secretId}", code: 200 })),
       ).annotate({ identifier: "UpdateSecretRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "API Gateway",
   serviceShapeName: "BackplaneControlService",
@@ -137,11 +139,8 @@ export interface StageKey {
   restApiId?: string;
   stageName?: string;
 }
-const StageKey = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StageKey>;
 export type ListOfStageKeys = StageKey[];
-const ListOfStageKeys = /*@__PURE__*/ __L.at(__c0, 1);
 export type MapOfStringToString = { [key: string]: string | undefined };
-const MapOfStringToString = /*@__PURE__*/ __L.at(__c0, 2);
 export interface CreateApiKeyRequest {
   name?: string;
   description?: string;
@@ -152,9 +151,7 @@ export interface CreateApiKeyRequest {
   customerId?: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateApiKeyRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateApiKeyRequest>;
 export type ListOfString = string[];
-const ListOfString = /*@__PURE__*/ __L.at(__c0, 4);
 export interface ApiKey {
   id?: string;
   value?: string | redacted.Redacted<string>;
@@ -167,13 +164,9 @@ export interface ApiKey {
   stageKeys?: string[];
   tags?: { [key: string]: string | undefined };
 }
-const ApiKey = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ApiKey>;
 export type AuthorizerType = "TOKEN" | "REQUEST" | "COGNITO_USER_POOLS" | (string & {});
-const AuthorizerType = S.String;
-
 export type ProviderARN = string;
 export type ListOfARNs = string[];
-const ListOfARNs = ListOfString as any as S.Schema<ListOfARNs>;
 export interface CreateAuthorizerRequest {
   restApiId: string;
   name: string;
@@ -186,10 +179,6 @@ export interface CreateAuthorizerRequest {
   identityValidationExpression?: string;
   authorizerResultTtlInSeconds?: number;
 }
-const CreateAuthorizerRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateAuthorizerRequest>;
 export interface Authorizer {
   id?: string;
   name?: string;
@@ -202,7 +191,6 @@ export interface Authorizer {
   identityValidationExpression?: string;
   authorizerResultTtlInSeconds?: number;
 }
-const Authorizer = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Authorizer>;
 export interface CreateBasePathMappingRequest {
   domainName: string;
   domainNameId?: string;
@@ -210,16 +198,11 @@ export interface CreateBasePathMappingRequest {
   restApiId: string;
   stage?: string;
 }
-const CreateBasePathMappingRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateBasePathMappingRequest>;
 export interface BasePathMapping {
   basePath?: string;
   restApiId?: string;
   stage?: string;
 }
-const BasePathMapping = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<BasePathMapping>;
 export type CacheClusterSize =
   | "0.5"
   | "1.6"
@@ -230,17 +213,11 @@ export type CacheClusterSize =
   | "118"
   | "237"
   | (string & {});
-const CacheClusterSize = S.String;
-
 export interface DeploymentCanarySettings {
   percentTraffic?: number;
   stageVariableOverrides?: { [key: string]: string | undefined };
   useStageCache?: boolean;
 }
-const DeploymentCanarySettings = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeploymentCanarySettings>;
 export interface CreateDeploymentRequest {
   restApiId: string;
   stageName?: string;
@@ -252,28 +229,20 @@ export interface CreateDeploymentRequest {
   canarySettings?: DeploymentCanarySettings;
   tracingEnabled?: boolean;
 }
-const CreateDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateDeploymentRequest>;
 export interface MethodSnapshot {
   authorizationType?: string;
   apiKeyRequired?: boolean;
 }
-const MethodSnapshot = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<MethodSnapshot>;
 export type MapOfMethodSnapshot = { [key: string]: MethodSnapshot | undefined };
-const MapOfMethodSnapshot = /*@__PURE__*/ __L.at(__c1, 5);
 export type PathToMapOfMethodSnapshot = {
   [key: string]: { [key: string]: MethodSnapshot | undefined } | undefined;
 };
-const PathToMapOfMethodSnapshot = /*@__PURE__*/ __L.at(__c1, 6);
 export interface Deployment {
   id?: string;
   description?: string;
   createdDate?: Date;
   apiSummary?: { [key: string]: { [key: string]: MethodSnapshot | undefined } | undefined };
 }
-const Deployment = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Deployment>;
 export type DocumentationPartType =
   | "API"
   | "AUTHORIZER"
@@ -288,8 +257,6 @@ export type DocumentationPartType =
   | "RESPONSE_HEADER"
   | "RESPONSE_BODY"
   | (string & {});
-const DocumentationPartType = S.String;
-
 export type DocumentationPartLocationStatusCode = string;
 export interface DocumentationPartLocation {
   type: DocumentationPartType;
@@ -298,58 +265,35 @@ export interface DocumentationPartLocation {
   statusCode?: string;
   name?: string;
 }
-const DocumentationPartLocation = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DocumentationPartLocation>;
 export interface CreateDocumentationPartRequest {
   restApiId: string;
   location: DocumentationPartLocation;
   properties: string;
 }
-const CreateDocumentationPartRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateDocumentationPartRequest>;
 export interface DocumentationPart {
   id?: string;
   location?: DocumentationPartLocation;
   properties?: string;
 }
-const DocumentationPart = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DocumentationPart>;
 export interface CreateDocumentationVersionRequest {
   restApiId: string;
   documentationVersion: string;
   stageName?: string;
   description?: string;
 }
-const CreateDocumentationVersionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateDocumentationVersionRequest>;
 export interface DocumentationVersion {
   version?: string;
   createdDate?: Date;
   description?: string;
 }
-const DocumentationVersion = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DocumentationVersion>;
 export type EndpointType = "REGIONAL" | "EDGE" | "PRIVATE" | (string & {});
-const EndpointType = S.String;
-
 export type ListOfEndpointType = EndpointType[];
-const ListOfEndpointType = /*@__PURE__*/ __L.at(__c2, 5);
 export type IpAddressType = "ipv4" | "dualstack" | (string & {});
-const IpAddressType = S.String;
-
 export interface EndpointConfiguration {
   types?: EndpointType[];
   ipAddressType?: IpAddressType;
   vpcEndpointIds?: string[];
 }
-const EndpointConfiguration = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<EndpointConfiguration>;
 export type SecurityPolicy =
   | "TLS_1_0"
   | "TLS_1_2"
@@ -366,26 +310,16 @@ export type SecurityPolicy =
   | "SecurityPolicy_TLS12_PFS_2025_EDGE"
   | "SecurityPolicy_TLS12_2018_EDGE"
   | (string & {});
-const SecurityPolicy = S.String;
-
 export type EndpointAccessMode = "BASIC" | "STRICT" | (string & {});
-const EndpointAccessMode = S.String;
-
 export interface MutualTlsAuthenticationInput {
   truststoreUri?: string;
   truststoreVersion?: string;
 }
-const MutualTlsAuthenticationInput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<MutualTlsAuthenticationInput>;
 export type RoutingMode =
   | "BASE_PATH_MAPPING_ONLY"
   | "ROUTING_RULE_ONLY"
   | "ROUTING_RULE_THEN_BASE_PATH_MAPPING"
   | (string & {});
-const RoutingMode = S.String;
-
 export interface CreateDomainNameRequest {
   domainName: string;
   certificateName?: string;
@@ -404,10 +338,6 @@ export interface CreateDomainNameRequest {
   policy?: string;
   routingMode?: RoutingMode;
 }
-const CreateDomainNameRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateDomainNameRequest>;
 export type DomainNameStatus =
   | "AVAILABLE"
   | "UPDATING"
@@ -416,17 +346,11 @@ export type DomainNameStatus =
   | "PENDING_OWNERSHIP_VERIFICATION"
   | "FAILED"
   | (string & {});
-const DomainNameStatus = S.String;
-
 export interface MutualTlsAuthentication {
   truststoreUri?: string;
   truststoreVersion?: string;
   truststoreWarnings?: string[];
 }
-const MutualTlsAuthentication = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<MutualTlsAuthentication>;
 export interface DomainName {
   domainName?: string;
   domainNameId?: string;
@@ -452,20 +376,13 @@ export interface DomainName {
   policy?: string;
   routingMode?: RoutingMode;
 }
-const DomainName = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DomainName>;
 export type AccessAssociationSourceType = "VPCE" | (string & {});
-const AccessAssociationSourceType = S.String;
-
 export interface CreateDomainNameAccessAssociationRequest {
   domainNameArn: string;
   accessAssociationSourceType: AccessAssociationSourceType;
   accessAssociationSource: string;
   tags?: { [key: string]: string | undefined };
 }
-const CreateDomainNameAccessAssociationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateDomainNameAccessAssociationRequest>;
 export interface DomainNameAccessAssociation {
   domainNameAccessAssociationArn?: string;
   domainNameArn?: string;
@@ -473,10 +390,6 @@ export interface DomainNameAccessAssociation {
   accessAssociationSource?: string;
   tags?: { [key: string]: string | undefined };
 }
-const DomainNameAccessAssociation = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DomainNameAccessAssociation>;
 export interface CreateModelRequest {
   restApiId: string;
   name: string;
@@ -484,7 +397,6 @@ export interface CreateModelRequest {
   schema?: string;
   contentType: string;
 }
-const CreateModelRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CreateModelRequest>;
 export interface Model {
   id?: string;
   name?: string;
@@ -492,53 +404,34 @@ export interface Model {
   schema?: string;
   contentType?: string;
 }
-const Model = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Model>;
 export interface CreateRequestValidatorRequest {
   restApiId: string;
   name?: string;
   validateRequestBody?: boolean;
   validateRequestParameters?: boolean;
 }
-const CreateRequestValidatorRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateRequestValidatorRequest>;
 export interface RequestValidator {
   id?: string;
   name?: string;
   validateRequestBody?: boolean;
   validateRequestParameters?: boolean;
 }
-const RequestValidator = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<RequestValidator>;
 export interface CreateResourceRequest {
   restApiId: string;
   parentId: string;
   pathPart: string;
 }
-const CreateResourceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateResourceRequest>;
 export type MapOfStringToBoolean = { [key: string]: boolean | undefined };
-const MapOfStringToBoolean = /*@__PURE__*/ __L.at(__c4, 2);
 export type StatusCode = string;
 export interface MethodResponse {
   statusCode?: string;
   responseParameters?: { [key: string]: boolean | undefined };
   responseModels?: { [key: string]: string | undefined };
 }
-const MethodResponse = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<MethodResponse>;
 export type MapOfMethodResponse = { [key: string]: MethodResponse | undefined };
-const MapOfMethodResponse = /*@__PURE__*/ __L.at(__c4, 4);
 export type IntegrationType = "HTTP" | "AWS" | "MOCK" | "HTTP_PROXY" | "AWS_PROXY" | (string & {});
-const IntegrationType = S.String;
-
 export type ConnectionType = "INTERNET" | "VPC_LINK" | (string & {});
-const ConnectionType = S.String;
-
 export type ContentHandlingStrategy = "CONVERT_TO_BINARY" | "CONVERT_TO_TEXT" | (string & {});
-const ContentHandlingStrategy = S.String;
-
 export interface IntegrationResponse {
   statusCode?: string;
   selectionPattern?: string;
@@ -546,16 +439,11 @@ export interface IntegrationResponse {
   responseTemplates?: { [key: string]: string | undefined };
   contentHandling?: ContentHandlingStrategy;
 }
-const IntegrationResponse = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<IntegrationResponse>;
 export type MapOfIntegrationResponse = { [key: string]: IntegrationResponse | undefined };
-const MapOfIntegrationResponse = /*@__PURE__*/ __L.at(__c4, 6);
 export interface TlsConfig {
   insecureSkipVerification?: boolean;
 }
-const TlsConfig = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<TlsConfig>;
 export type ResponseTransferMode = "BUFFERED" | "STREAM" | (string & {});
-const ResponseTransferMode = S.String;
-
 export interface Integration {
   type?: IntegrationType;
   httpMethod?: string;
@@ -575,7 +463,6 @@ export interface Integration {
   responseTransferMode?: ResponseTransferMode;
   integrationTarget?: string;
 }
-const Integration = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Integration>;
 export interface Method {
   httpMethod?: string;
   authorizationType?: string;
@@ -589,9 +476,7 @@ export interface Method {
   methodIntegration?: Integration;
   authorizationScopes?: string[];
 }
-const Method = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<Method>;
 export type MapOfMethod = { [key: string]: Method | undefined };
-const MapOfMethod = /*@__PURE__*/ __L.at(__c5, 2);
 export interface Resource {
   id?: string;
   parentId?: string;
@@ -599,10 +484,7 @@ export interface Resource {
   path?: string;
   resourceMethods?: { [key: string]: Method | undefined };
 }
-const Resource = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Resource>;
 export type ApiKeySourceType = "HEADER" | "AUTHORIZER" | (string & {});
-const ApiKeySourceType = S.String;
-
 export interface CreateRestApiRequest {
   name: string;
   description?: string;
@@ -618,10 +500,7 @@ export interface CreateRestApiRequest {
   securityPolicy?: SecurityPolicy;
   endpointAccessMode?: EndpointAccessMode;
 }
-const CreateRestApiRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<CreateRestApiRequest>;
 export type ApiStatus = "UPDATING" | "AVAILABLE" | "PENDING" | "FAILED" | (string & {});
-const ApiStatus = S.String;
-
 export interface RestApi {
   id?: string;
   name?: string;
@@ -642,14 +521,12 @@ export interface RestApi {
   apiStatus?: ApiStatus;
   apiStatusMessage?: string;
 }
-const RestApi = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<RestApi>;
 export interface CanarySettings {
   percentTraffic?: number;
   deploymentId?: string;
   stageVariableOverrides?: { [key: string]: string | undefined };
   useStageCache?: boolean;
 }
-const CanarySettings = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<CanarySettings>;
 export interface CreateStageRequest {
   restApiId: string;
   stageName: string;
@@ -663,7 +540,6 @@ export interface CreateStageRequest {
   tracingEnabled?: boolean;
   tags?: { [key: string]: string | undefined };
 }
-const CreateStageRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<CreateStageRequest>;
 export type CacheClusterStatus =
   | "CREATE_IN_PROGRESS"
   | "AVAILABLE"
@@ -671,15 +547,11 @@ export type CacheClusterStatus =
   | "NOT_AVAILABLE"
   | "FLUSH_IN_PROGRESS"
   | (string & {});
-const CacheClusterStatus = S.String;
-
 export type UnauthorizedCacheControlHeaderStrategy =
   | "FAIL_WITH_403"
   | "SUCCEED_WITH_RESPONSE_HEADER"
   | "SUCCEED_WITHOUT_RESPONSE_HEADER"
   | (string & {});
-const UnauthorizedCacheControlHeaderStrategy = S.String;
-
 export interface MethodSetting {
   metricsEnabled?: boolean;
   loggingLevel?: string;
@@ -692,14 +564,11 @@ export interface MethodSetting {
   requireAuthorizationForCacheControl?: boolean;
   unauthorizedCacheControlHeaderStrategy?: UnauthorizedCacheControlHeaderStrategy;
 }
-const MethodSetting = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<MethodSetting>;
 export type MapOfMethodSettings = { [key: string]: MethodSetting | undefined };
-const MapOfMethodSettings = /*@__PURE__*/ __L.at(__c6, 1);
 export interface AccessLogSettings {
   format?: string;
   destinationArn?: string;
 }
-const AccessLogSettings = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<AccessLogSettings>;
 export interface Stage {
   deploymentId?: string;
   clientCertificateId?: string;
@@ -719,31 +588,23 @@ export interface Stage {
   createdDate?: Date;
   lastUpdatedDate?: Date;
 }
-const Stage = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<Stage>;
 export interface ThrottleSettings {
   burstLimit?: number;
   rateLimit?: number;
 }
-const ThrottleSettings = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ThrottleSettings>;
 export type MapOfApiStageThrottleSettings = { [key: string]: ThrottleSettings | undefined };
-const MapOfApiStageThrottleSettings = /*@__PURE__*/ __L.at(__c6, 5);
 export interface ApiStage {
   apiId?: string;
   stage?: string;
   throttle?: { [key: string]: ThrottleSettings | undefined };
 }
-const ApiStage = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ApiStage>;
 export type ListOfApiStage = ApiStage[];
-const ListOfApiStage = /*@__PURE__*/ __L.at(__c6, 7);
 export type QuotaPeriodType = "DAY" | "WEEK" | "MONTH" | (string & {});
-const QuotaPeriodType = S.String;
-
 export interface QuotaSettings {
   limit?: number;
   offset?: number;
   period?: QuotaPeriodType;
 }
-const QuotaSettings = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<QuotaSettings>;
 export interface CreateUsagePlanRequest {
   name: string;
   description?: string;
@@ -752,10 +613,6 @@ export interface CreateUsagePlanRequest {
   quota?: QuotaSettings;
   tags?: { [key: string]: string | undefined };
 }
-const CreateUsagePlanRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateUsagePlanRequest>;
 export interface UsagePlan {
   id?: string;
   name?: string;
@@ -766,33 +623,24 @@ export interface UsagePlan {
   productCode?: string;
   tags?: { [key: string]: string | undefined };
 }
-const UsagePlan = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<UsagePlan>;
 export interface CreateUsagePlanKeyRequest {
   usagePlanId: string;
   keyId: string;
   keyType: string;
 }
-const CreateUsagePlanKeyRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateUsagePlanKeyRequest>;
 export interface UsagePlanKey {
   id?: string;
   type?: string;
   value?: string;
   name?: string;
 }
-const UsagePlanKey = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<UsagePlanKey>;
 export interface CreateVpcLinkRequest {
   name: string;
   description?: string;
   targetArns: string[];
   tags?: { [key: string]: string | undefined };
 }
-const CreateVpcLinkRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<CreateVpcLinkRequest>;
 export type VpcLinkStatus = "AVAILABLE" | "PENDING" | "DELETING" | "FAILED" | (string & {});
-const VpcLinkStatus = S.String;
-
 export interface VpcLink {
   id?: string;
   name?: string;
@@ -802,101 +650,49 @@ export interface VpcLink {
   statusMessage?: string;
   tags?: { [key: string]: string | undefined };
 }
-const VpcLink = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<VpcLink>;
 export interface DeleteApiKeyRequest {
   apiKey: string;
 }
-const DeleteApiKeyRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<DeleteApiKeyRequest>;
 export interface DeleteApiKeyResponse {}
-const DeleteApiKeyResponse = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<DeleteApiKeyResponse>;
 export interface DeleteAuthorizerRequest {
   restApiId: string;
   authorizerId: string;
 }
-const DeleteAuthorizerRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeleteAuthorizerRequest>;
 export interface DeleteAuthorizerResponse {}
-const DeleteAuthorizerResponse = DeleteApiKeyResponse as any as S.Schema<DeleteAuthorizerResponse>;
 export interface DeleteBasePathMappingRequest {
   domainName: string;
   domainNameId?: string;
   basePath: string;
 }
-const DeleteBasePathMappingRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DeleteBasePathMappingRequest>;
 export interface DeleteBasePathMappingResponse {}
-const DeleteBasePathMappingResponse =
-  DeleteApiKeyResponse as any as S.Schema<DeleteBasePathMappingResponse>;
 export interface DeleteClientCertificateRequest {
   clientCertificateId: string;
 }
-const DeleteClientCertificateRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DeleteClientCertificateRequest>;
 export interface DeleteClientCertificateResponse {}
-const DeleteClientCertificateResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeleteClientCertificateResponse>;
 export interface DeleteDeploymentRequest {
   restApiId: string;
   deploymentId: string;
 }
-const DeleteDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<DeleteDeploymentRequest>;
 export interface DeleteDeploymentResponse {}
-const DeleteDeploymentResponse = DeleteApiKeyResponse as any as S.Schema<DeleteDeploymentResponse>;
 export interface DeleteDocumentationPartRequest {
   restApiId: string;
   documentationPartId: string;
 }
-const DeleteDocumentationPartRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DeleteDocumentationPartRequest>;
 export interface DeleteDocumentationPartResponse {}
-const DeleteDocumentationPartResponse =
-  DeleteClientCertificateResponse as any as S.Schema<DeleteDocumentationPartResponse>;
 export interface DeleteDocumentationVersionRequest {
   restApiId: string;
   documentationVersion: string;
 }
-const DeleteDocumentationVersionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<DeleteDocumentationVersionRequest>;
 export interface DeleteDocumentationVersionResponse {}
-const DeleteDocumentationVersionResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DeleteDocumentationVersionResponse>;
 export interface DeleteDomainNameRequest {
   domainName: string;
   domainNameId?: string;
 }
-const DeleteDomainNameRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DeleteDomainNameRequest>;
 export interface DeleteDomainNameResponse {}
-const DeleteDomainNameResponse = DeleteApiKeyResponse as any as S.Schema<DeleteDomainNameResponse>;
 export interface DeleteDomainNameAccessAssociationRequest {
   domainNameAccessAssociationArn: string;
 }
-const DeleteDomainNameAccessAssociationRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DeleteDomainNameAccessAssociationRequest>;
 export interface DeleteDomainNameAccessAssociationResponse {}
-const DeleteDomainNameAccessAssociationResponse =
-  DeleteDocumentationVersionResponse as any as S.Schema<DeleteDomainNameAccessAssociationResponse>;
 export type GatewayResponseType =
   | "DEFAULT_4XX"
   | "DEFAULT_5XX"
@@ -920,167 +716,88 @@ export type GatewayResponseType =
   | "QUOTA_EXCEEDED"
   | "WAF_FILTERED"
   | (string & {});
-const GatewayResponseType = S.String;
-
 export interface DeleteGatewayResponseRequest {
   restApiId: string;
   responseType: GatewayResponseType;
 }
-const DeleteGatewayResponseRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DeleteGatewayResponseRequest>;
 export interface DeleteGatewayResponseResponse {}
-const DeleteGatewayResponseResponse =
-  DeleteApiKeyResponse as any as S.Schema<DeleteGatewayResponseResponse>;
 export interface DeleteIntegrationRequest {
   restApiId: string;
   resourceId: string;
   httpMethod: string;
 }
-const DeleteIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DeleteIntegrationRequest>;
 export interface DeleteIntegrationResponse {}
-const DeleteIntegrationResponse =
-  DeleteApiKeyResponse as any as S.Schema<DeleteIntegrationResponse>;
 export interface DeleteIntegrationResponseRequest {
   restApiId: string;
   resourceId: string;
   httpMethod: string;
   statusCode: string;
 }
-const DeleteIntegrationResponseRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<DeleteIntegrationResponseRequest>;
 export interface DeleteIntegrationResponseResponse {}
-const DeleteIntegrationResponseResponse =
-  DeleteDocumentationVersionResponse as any as S.Schema<DeleteIntegrationResponseResponse>;
 export interface DeleteMethodRequest {
   restApiId: string;
   resourceId: string;
   httpMethod: string;
 }
-const DeleteMethodRequest = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<DeleteMethodRequest>;
 export interface DeleteMethodResponse {}
-const DeleteMethodResponse = DeleteApiKeyResponse as any as S.Schema<DeleteMethodResponse>;
 export interface DeleteMethodResponseRequest {
   restApiId: string;
   resourceId: string;
   httpMethod: string;
   statusCode: string;
 }
-const DeleteMethodResponseRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<DeleteMethodResponseRequest>;
 export interface DeleteMethodResponseResponse {}
-const DeleteMethodResponseResponse =
-  DeleteApiKeyResponse as any as S.Schema<DeleteMethodResponseResponse>;
 export interface DeleteModelRequest {
   restApiId: string;
   modelName: string;
 }
-const DeleteModelRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<DeleteModelRequest>;
 export interface DeleteModelResponse {}
-const DeleteModelResponse = DeleteApiKeyResponse as any as S.Schema<DeleteModelResponse>;
 export interface DeleteRequestValidatorRequest {
   restApiId: string;
   requestValidatorId: string;
 }
-const DeleteRequestValidatorRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<DeleteRequestValidatorRequest>;
 export interface DeleteRequestValidatorResponse {}
-const DeleteRequestValidatorResponse =
-  DeleteApiKeyResponse as any as S.Schema<DeleteRequestValidatorResponse>;
 export interface DeleteResourceRequest {
   restApiId: string;
   resourceId: string;
 }
-const DeleteResourceRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DeleteResourceRequest>;
 export interface DeleteResourceResponse {}
-const DeleteResourceResponse = DeleteApiKeyResponse as any as S.Schema<DeleteResourceResponse>;
 export interface DeleteRestApiRequest {
   restApiId: string;
 }
-const DeleteRestApiRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DeleteRestApiRequest>;
 export interface DeleteRestApiResponse {}
-const DeleteRestApiResponse = DeleteApiKeyResponse as any as S.Schema<DeleteRestApiResponse>;
 export interface DeleteStageRequest {
   restApiId: string;
   stageName: string;
 }
-const DeleteStageRequest = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<DeleteStageRequest>;
 export interface DeleteStageResponse {}
-const DeleteStageResponse = DeleteApiKeyResponse as any as S.Schema<DeleteStageResponse>;
 export interface DeleteUsagePlanRequest {
   usagePlanId: string;
 }
-const DeleteUsagePlanRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<DeleteUsagePlanRequest>;
 export interface DeleteUsagePlanResponse {}
-const DeleteUsagePlanResponse = DeleteApiKeyResponse as any as S.Schema<DeleteUsagePlanResponse>;
 export interface DeleteUsagePlanKeyRequest {
   usagePlanId: string;
   keyId: string;
 }
-const DeleteUsagePlanKeyRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DeleteUsagePlanKeyRequest>;
 export interface DeleteUsagePlanKeyResponse {}
-const DeleteUsagePlanKeyResponse =
-  DeleteApiKeyResponse as any as S.Schema<DeleteUsagePlanKeyResponse>;
 export interface DeleteVpcLinkRequest {
   vpcLinkId: string;
 }
-const DeleteVpcLinkRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<DeleteVpcLinkRequest>;
 export interface DeleteVpcLinkResponse {}
-const DeleteVpcLinkResponse = DeleteApiKeyResponse as any as S.Schema<DeleteVpcLinkResponse>;
 export interface FlushStageAuthorizersCacheRequest {
   restApiId: string;
   stageName: string;
 }
-const FlushStageAuthorizersCacheRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<FlushStageAuthorizersCacheRequest>;
 export interface FlushStageAuthorizersCacheResponse {}
-const FlushStageAuthorizersCacheResponse =
-  DeleteDocumentationVersionResponse as any as S.Schema<FlushStageAuthorizersCacheResponse>;
 export interface FlushStageCacheRequest {
   restApiId: string;
   stageName: string;
 }
-const FlushStageCacheRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<FlushStageCacheRequest>;
 export interface FlushStageCacheResponse {}
-const FlushStageCacheResponse = DeleteApiKeyResponse as any as S.Schema<FlushStageCacheResponse>;
 export interface GenerateClientCertificateRequest {
   description?: string;
   tags?: { [key: string]: string | undefined };
 }
-const GenerateClientCertificateRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GenerateClientCertificateRequest>;
 export interface ClientCertificate {
   clientCertificateId?: string;
   description?: string;
@@ -1089,21 +806,17 @@ export interface ClientCertificate {
   expirationDate?: Date;
   tags?: { [key: string]: string | undefined };
 }
-const ClientCertificate = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<ClientCertificate>;
 export interface GetAccountRequest {}
-const GetAccountRequest = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<GetAccountRequest>;
 export interface Account {
   cloudwatchRoleArn?: string;
   throttleSettings?: ThrottleSettings;
   features?: string[];
   apiKeyVersion?: string;
 }
-const Account = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<Account>;
 export interface GetApiKeyRequest {
   apiKey: string;
   includeValue?: boolean;
 }
-const GetApiKeyRequest = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<GetApiKeyRequest>;
 export interface GetApiKeysRequest {
   position?: string;
   limit?: number;
@@ -1111,123 +824,74 @@ export interface GetApiKeysRequest {
   customerId?: string;
   includeValues?: boolean;
 }
-const GetApiKeysRequest = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<GetApiKeysRequest>;
 export type ListOfApiKey = ApiKey[];
-const ListOfApiKey = /*@__PURE__*/ __L.at(__c12, 0);
 export interface ApiKeys {
   warnings?: string[];
   items?: ApiKey[];
   position?: string;
 }
-const ApiKeys = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<ApiKeys>;
 export interface GetAuthorizerRequest {
   restApiId: string;
   authorizerId: string;
 }
-const GetAuthorizerRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GetAuthorizerRequest>;
 export interface GetAuthorizersRequest {
   restApiId: string;
   position?: string;
   limit?: number;
 }
-const GetAuthorizersRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetAuthorizersRequest>;
 export type ListOfAuthorizer = Authorizer[];
-const ListOfAuthorizer = /*@__PURE__*/ __L.at(__c12, 4);
 export interface Authorizers {
   items?: Authorizer[];
   position?: string;
 }
-const Authorizers = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<Authorizers>;
 export interface GetBasePathMappingRequest {
   domainName: string;
   domainNameId?: string;
   basePath: string;
 }
-const GetBasePathMappingRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GetBasePathMappingRequest>;
 export interface GetBasePathMappingsRequest {
   domainName: string;
   domainNameId?: string;
   position?: string;
   limit?: number;
 }
-const GetBasePathMappingsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GetBasePathMappingsRequest>;
 export type ListOfBasePathMapping = BasePathMapping[];
-const ListOfBasePathMapping = /*@__PURE__*/ __L.at(__c13, 0);
 export interface BasePathMappings {
   items?: BasePathMapping[];
   position?: string;
 }
-const BasePathMappings = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<BasePathMappings>;
 export interface GetClientCertificateRequest {
   clientCertificateId: string;
 }
-const GetClientCertificateRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GetClientCertificateRequest>;
 export interface GetClientCertificatesRequest {
   position?: string;
   limit?: number;
 }
-const GetClientCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<GetClientCertificatesRequest>;
 export type ListOfClientCertificate = ClientCertificate[];
-const ListOfClientCertificate = /*@__PURE__*/ __L.at(__c13, 4);
 export interface ClientCertificates {
   items?: ClientCertificate[];
   position?: string;
 }
-const ClientCertificates = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<ClientCertificates>;
 export interface GetDeploymentRequest {
   restApiId: string;
   deploymentId: string;
   embed?: string[];
 }
-const GetDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<GetDeploymentRequest>;
 export interface GetDeploymentsRequest {
   restApiId: string;
   position?: string;
   limit?: number;
 }
-const GetDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetDeploymentsRequest>;
 export type ListOfDeployment = Deployment[];
-const ListOfDeployment = /*@__PURE__*/ __L.at(__c14, 0);
 export interface Deployments {
   items?: Deployment[];
   position?: string;
 }
-const Deployments = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<Deployments>;
 export interface GetDocumentationPartRequest {
   restApiId: string;
   documentationPartId: string;
 }
-const GetDocumentationPartRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GetDocumentationPartRequest>;
 export type LocationStatusType = "DOCUMENTED" | "UNDOCUMENTED" | (string & {});
-const LocationStatusType = S.String;
-
 export interface GetDocumentationPartsRequest {
   restApiId: string;
   type?: DocumentationPartType;
@@ -1237,90 +901,50 @@ export interface GetDocumentationPartsRequest {
   limit?: number;
   locationStatus?: LocationStatusType;
 }
-const GetDocumentationPartsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GetDocumentationPartsRequest>;
 export type ListOfDocumentationPart = DocumentationPart[];
-const ListOfDocumentationPart = /*@__PURE__*/ __L.at(__c14, 4);
 export interface DocumentationParts {
   items?: DocumentationPart[];
   position?: string;
 }
-const DocumentationParts = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<DocumentationParts>;
 export interface GetDocumentationVersionRequest {
   restApiId: string;
   documentationVersion: string;
 }
-const GetDocumentationVersionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GetDocumentationVersionRequest>;
 export interface GetDocumentationVersionsRequest {
   restApiId: string;
   position?: string;
   limit?: number;
 }
-const GetDocumentationVersionsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<GetDocumentationVersionsRequest>;
 export type ListOfDocumentationVersion = DocumentationVersion[];
-const ListOfDocumentationVersion = /*@__PURE__*/ __L.at(__c15, 0);
 export interface DocumentationVersions {
   items?: DocumentationVersion[];
   position?: string;
 }
-const DocumentationVersions = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<DocumentationVersions>;
 export interface GetDomainNameRequest {
   domainName: string;
   domainNameId?: string;
 }
-const GetDomainNameRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GetDomainNameRequest>;
 export type ResourceOwner = "SELF" | "OTHER_ACCOUNTS" | (string & {});
-const ResourceOwner = S.String;
-
 export interface GetDomainNameAccessAssociationsRequest {
   position?: string;
   limit?: number;
   resourceOwner?: ResourceOwner;
 }
-const GetDomainNameAccessAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<GetDomainNameAccessAssociationsRequest>;
 export type ListOfDomainNameAccessAssociation = DomainNameAccessAssociation[];
-const ListOfDomainNameAccessAssociation = /*@__PURE__*/ __L.at(__c15, 4);
 export interface DomainNameAccessAssociations {
   items?: DomainNameAccessAssociation[];
   position?: string;
 }
-const DomainNameAccessAssociations = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<DomainNameAccessAssociations>;
 export interface GetDomainNamesRequest {
   position?: string;
   limit?: number;
   resourceOwner?: ResourceOwner;
 }
-const GetDomainNamesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GetDomainNamesRequest>;
 export type ListOfDomainName = DomainName[];
-const ListOfDomainName = /*@__PURE__*/ __L.at(__c15, 7);
 export interface DomainNames {
   items?: DomainName[];
   position?: string;
 }
-const DomainNames = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<DomainNames>;
 export interface GetExportRequest {
   restApiId: string;
   stageName: string;
@@ -1328,21 +952,15 @@ export interface GetExportRequest {
   parameters?: { [key: string]: string | undefined };
   accepts?: string;
 }
-const GetExportRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<GetExportRequest>;
 export interface ExportResponse {
   contentType?: string;
   contentDisposition?: string;
   body?: T.StreamingOutputBody;
 }
-const ExportResponse = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<ExportResponse>;
 export interface GetGatewayResponseRequest {
   restApiId: string;
   responseType: GatewayResponseType;
 }
-const GetGatewayResponseRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<GetGatewayResponseRequest>;
 export interface GatewayResponse {
   responseType?: GatewayResponseType;
   statusCode?: string;
@@ -1350,166 +968,116 @@ export interface GatewayResponse {
   responseTemplates?: { [key: string]: string | undefined };
   defaultResponse?: boolean;
 }
-const GatewayResponse = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<GatewayResponse>;
 export interface GetGatewayResponsesRequest {
   restApiId: string;
   position?: string;
   limit?: number;
 }
-const GetGatewayResponsesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<GetGatewayResponsesRequest>;
 export type ListOfGatewayResponse = GatewayResponse[];
-const ListOfGatewayResponse = /*@__PURE__*/ __L.at(__c16, 6);
 export interface GatewayResponses {
   items?: GatewayResponse[];
   position?: string;
 }
-const GatewayResponses = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<GatewayResponses>;
 export interface GetIntegrationRequest {
   restApiId: string;
   resourceId: string;
   httpMethod: string;
 }
-const GetIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<GetIntegrationRequest>;
 export interface GetIntegrationResponseRequest {
   restApiId: string;
   resourceId: string;
   httpMethod: string;
   statusCode: string;
 }
-const GetIntegrationResponseRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<GetIntegrationResponseRequest>;
 export interface GetMethodRequest {
   restApiId: string;
   resourceId: string;
   httpMethod: string;
 }
-const GetMethodRequest = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<GetMethodRequest>;
 export interface GetMethodResponseRequest {
   restApiId: string;
   resourceId: string;
   httpMethod: string;
   statusCode: string;
 }
-const GetMethodResponseRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<GetMethodResponseRequest>;
 export interface GetModelRequest {
   restApiId: string;
   modelName: string;
   flatten?: boolean;
 }
-const GetModelRequest = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<GetModelRequest>;
 export interface GetModelsRequest {
   restApiId: string;
   position?: string;
   limit?: number;
 }
-const GetModelsRequest = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<GetModelsRequest>;
 export type ListOfModel = Model[];
-const ListOfModel = /*@__PURE__*/ __L.at(__c17, 6);
 export interface Models {
   items?: Model[];
   position?: string;
 }
-const Models = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<Models>;
 export interface GetModelTemplateRequest {
   restApiId: string;
   modelName: string;
 }
-const GetModelTemplateRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GetModelTemplateRequest>;
 export interface Template {
   value?: string;
 }
-const Template = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<Template>;
 export interface GetRequestValidatorRequest {
   restApiId: string;
   requestValidatorId: string;
 }
-const GetRequestValidatorRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GetRequestValidatorRequest>;
 export interface GetRequestValidatorsRequest {
   restApiId: string;
   position?: string;
   limit?: number;
 }
-const GetRequestValidatorsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<GetRequestValidatorsRequest>;
 export type ListOfRequestValidator = RequestValidator[];
-const ListOfRequestValidator = /*@__PURE__*/ __L.at(__c18, 4);
 export interface RequestValidators {
   items?: RequestValidator[];
   position?: string;
 }
-const RequestValidators = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<RequestValidators>;
 export interface GetResourceRequest {
   restApiId: string;
   resourceId: string;
   embed?: string[];
 }
-const GetResourceRequest = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<GetResourceRequest>;
 export interface GetResourcesRequest {
   restApiId: string;
   position?: string;
   limit?: number;
   embed?: string[];
 }
-const GetResourcesRequest = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<GetResourcesRequest>;
 export type ListOfResource = Resource[];
-const ListOfResource = /*@__PURE__*/ __L.at(__c19, 0);
 export interface Resources {
   items?: Resource[];
   position?: string;
 }
-const Resources = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<Resources>;
 export interface GetRestApiRequest {
   restApiId: string;
 }
-const GetRestApiRequest = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<GetRestApiRequest>;
 export interface GetRestApisRequest {
   position?: string;
   limit?: number;
 }
-const GetRestApisRequest = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<GetRestApisRequest>;
 export type ListOfRestApi = RestApi[];
-const ListOfRestApi = /*@__PURE__*/ __L.at(__c19, 4);
 export interface RestApis {
   items?: RestApi[];
   position?: string;
 }
-const RestApis = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<RestApis>;
 export interface GetSdkRequest {
   restApiId: string;
   stageName: string;
   sdkType: string;
   parameters?: { [key: string]: string | undefined };
 }
-const GetSdkRequest = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<GetSdkRequest>;
 export interface SdkResponse {
   contentType?: string;
   contentDisposition?: string;
   body?: T.StreamingOutputBody;
 }
-const SdkResponse = ExportResponse as any as S.Schema<SdkResponse>;
 export interface GetSdkTypeRequest {
   id: string;
 }
-const GetSdkTypeRequest = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<GetSdkTypeRequest>;
 export interface SdkConfigurationProperty {
   name?: string;
   friendlyName?: string;
@@ -1517,56 +1085,41 @@ export interface SdkConfigurationProperty {
   required?: boolean;
   defaultValue?: string;
 }
-const SdkConfigurationProperty = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<SdkConfigurationProperty>;
 export type ListOfSdkConfigurationProperty = SdkConfigurationProperty[];
-const ListOfSdkConfigurationProperty = /*@__PURE__*/ __L.at(__c20, 1);
 export interface SdkType {
   id?: string;
   friendlyName?: string;
   description?: string;
   configurationProperties?: SdkConfigurationProperty[];
 }
-const SdkType = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<SdkType>;
 export interface GetSdkTypesRequest {
   position?: string;
   limit?: number;
 }
-const GetSdkTypesRequest = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<GetSdkTypesRequest>;
 export type ListOfSdkType = SdkType[];
-const ListOfSdkType = /*@__PURE__*/ __L.at(__c20, 4);
 export interface SdkTypes {
   items?: SdkType[];
 }
-const SdkTypes = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<SdkTypes>;
 export interface GetStageRequest {
   restApiId: string;
   stageName: string;
 }
-const GetStageRequest = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<GetStageRequest>;
 export interface GetStagesRequest {
   restApiId: string;
   deploymentId?: string;
 }
-const GetStagesRequest = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<GetStagesRequest>;
 export type ListOfStage = Stage[];
-const ListOfStage = /*@__PURE__*/ __L.at(__c21, 0);
 export interface Stages {
   item?: Stage[];
 }
-const Stages = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<Stages>;
 export interface GetTagsRequest {
   resourceArn: string;
   position?: string;
   limit?: number;
 }
-const GetTagsRequest = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<GetTagsRequest>;
 export interface Tags {
   tags?: { [key: string]: string | undefined };
 }
-const Tags = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<Tags>;
 export interface GetUsageRequest {
   usagePlanId: string;
   keyId?: string;
@@ -1575,13 +1128,9 @@ export interface GetUsageRequest {
   position?: string;
   limit?: number;
 }
-const GetUsageRequest = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<GetUsageRequest>;
 export type ListOfLong = number[];
-const ListOfLong = /*@__PURE__*/ __L.at(__c21, 5);
 export type ListOfUsage = number[][];
-const ListOfUsage = /*@__PURE__*/ __L.at(__c21, 6);
 export type MapOfKeyUsages = { [key: string]: number[][] | undefined };
-const MapOfKeyUsages = /*@__PURE__*/ __L.at(__c21, 7);
 export interface Usage {
   usagePlanId?: string;
   startDate?: string;
@@ -1589,112 +1138,72 @@ export interface Usage {
   items?: { [key: string]: number[][] | undefined };
   position?: string;
 }
-const Usage = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<Usage>;
 export interface GetUsagePlanRequest {
   usagePlanId: string;
 }
-const GetUsagePlanRequest = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<GetUsagePlanRequest>;
 export interface GetUsagePlanKeyRequest {
   usagePlanId: string;
   keyId: string;
 }
-const GetUsagePlanKeyRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<GetUsagePlanKeyRequest>;
 export interface GetUsagePlanKeysRequest {
   usagePlanId: string;
   position?: string;
   limit?: number;
   nameQuery?: string;
 }
-const GetUsagePlanKeysRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<GetUsagePlanKeysRequest>;
 export type ListOfUsagePlanKey = UsagePlanKey[];
-const ListOfUsagePlanKey = /*@__PURE__*/ __L.at(__c22, 4);
 export interface UsagePlanKeys {
   items?: UsagePlanKey[];
   position?: string;
 }
-const UsagePlanKeys = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<UsagePlanKeys>;
 export interface GetUsagePlansRequest {
   position?: string;
   keyId?: string;
   limit?: number;
 }
-const GetUsagePlansRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<GetUsagePlansRequest>;
 export type ListOfUsagePlan = UsagePlan[];
-const ListOfUsagePlan = /*@__PURE__*/ __L.at(__c22, 7);
 export interface UsagePlans {
   items?: UsagePlan[];
   position?: string;
 }
-const UsagePlans = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<UsagePlans>;
 export interface GetVpcLinkRequest {
   vpcLinkId: string;
 }
-const GetVpcLinkRequest = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<GetVpcLinkRequest>;
 export interface GetVpcLinksRequest {
   position?: string;
   limit?: number;
 }
-const GetVpcLinksRequest = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<GetVpcLinksRequest>;
 export type ListOfVpcLink = VpcLink[];
-const ListOfVpcLink = /*@__PURE__*/ __L.at(__c23, 3);
 export interface VpcLinks {
   items?: VpcLink[];
   position?: string;
 }
-const VpcLinks = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<VpcLinks>;
 export type ApiKeysFormat = "csv" | (string & {});
-const ApiKeysFormat = S.String;
-
 export interface ImportApiKeysRequest {
   body: T.StreamingInputBody;
   format: ApiKeysFormat;
   failOnWarnings?: boolean;
 }
-const ImportApiKeysRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ImportApiKeysRequest>;
 export interface ApiKeyIds {
   ids?: string[];
   warnings?: string[];
 }
-const ApiKeyIds = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<ApiKeyIds>;
 export type PutMode = "merge" | "overwrite" | (string & {});
-const PutMode = S.String;
-
 export interface ImportDocumentationPartsRequest {
   restApiId: string;
   mode?: PutMode;
   failOnWarnings?: boolean;
   body: T.StreamingInputBody;
 }
-const ImportDocumentationPartsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<ImportDocumentationPartsRequest>;
 export interface DocumentationPartIds {
   ids?: string[];
   warnings?: string[];
 }
-const DocumentationPartIds = ApiKeyIds as any as S.Schema<DocumentationPartIds>;
 export interface ImportRestApiRequest {
   failOnWarnings?: boolean;
   parameters?: { [key: string]: string | undefined };
   body: T.StreamingInputBody;
 }
-const ImportRestApiRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<ImportRestApiRequest>;
 export interface PutGatewayResponseRequest {
   restApiId: string;
   responseType: GatewayResponseType;
@@ -1702,10 +1211,6 @@ export interface PutGatewayResponseRequest {
   responseParameters?: { [key: string]: string | undefined };
   responseTemplates?: { [key: string]: string | undefined };
 }
-const PutGatewayResponseRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<PutGatewayResponseRequest>;
 export interface PutIntegrationRequest {
   restApiId: string;
   resourceId: string;
@@ -1727,10 +1232,6 @@ export interface PutIntegrationRequest {
   responseTransferMode?: ResponseTransferMode;
   integrationTarget?: string;
 }
-const PutIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<PutIntegrationRequest>;
 export interface PutIntegrationResponseRequest {
   restApiId: string;
   resourceId: string;
@@ -1741,10 +1242,6 @@ export interface PutIntegrationResponseRequest {
   responseTemplates?: { [key: string]: string | undefined };
   contentHandling?: ContentHandlingStrategy;
 }
-const PutIntegrationResponseRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<PutIntegrationResponseRequest>;
 export interface PutMethodRequest {
   restApiId: string;
   resourceId: string;
@@ -1758,7 +1255,6 @@ export interface PutMethodRequest {
   requestValidatorId?: string;
   authorizationScopes?: string[];
 }
-const PutMethodRequest = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<PutMethodRequest>;
 export interface PutMethodResponseRequest {
   restApiId: string;
   resourceId: string;
@@ -1767,10 +1263,6 @@ export interface PutMethodResponseRequest {
   responseParameters?: { [key: string]: boolean | undefined };
   responseModels?: { [key: string]: string | undefined };
 }
-const PutMethodResponseRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<PutMethodResponseRequest>;
 export interface PutRestApiRequest {
   restApiId: string;
   mode?: PutMode;
@@ -1778,27 +1270,17 @@ export interface PutRestApiRequest {
   parameters?: { [key: string]: string | undefined };
   body: T.StreamingInputBody;
 }
-const PutRestApiRequest = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<PutRestApiRequest>;
 export interface RejectDomainNameAccessAssociationRequest {
   domainNameAccessAssociationArn: string;
   domainNameArn: string;
 }
-const RejectDomainNameAccessAssociationRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<RejectDomainNameAccessAssociationRequest>;
 export interface RejectDomainNameAccessAssociationResponse {}
-const RejectDomainNameAccessAssociationResponse =
-  DeleteDocumentationVersionResponse as any as S.Schema<RejectDomainNameAccessAssociationResponse>;
 export interface TagResourceRequest {
   resourceArn: string;
   tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteApiKeyResponse as any as S.Schema<TagResourceResponse>;
 export type MapOfStringToList = { [key: string]: string[] | undefined };
-const MapOfStringToList = /*@__PURE__*/ __L.at(__c25, 1);
 export interface TestInvokeAuthorizerRequest {
   restApiId: string;
   authorizerId: string;
@@ -1809,10 +1291,6 @@ export interface TestInvokeAuthorizerRequest {
   stageVariables?: { [key: string]: string | undefined };
   additionalContext?: { [key: string]: string | undefined };
 }
-const TestInvokeAuthorizerRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<TestInvokeAuthorizerRequest>;
 export interface TestInvokeAuthorizerResponse {
   clientStatus?: number;
   log?: string;
@@ -1822,10 +1300,6 @@ export interface TestInvokeAuthorizerResponse {
   authorization?: { [key: string]: string[] | undefined };
   claims?: { [key: string]: string | undefined };
 }
-const TestInvokeAuthorizerResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<TestInvokeAuthorizerResponse>;
 export interface TestInvokeMethodRequest {
   restApiId: string;
   resourceId: string;
@@ -1837,10 +1311,6 @@ export interface TestInvokeMethodRequest {
   clientCertificateId?: string;
   stageVariables?: { [key: string]: string | undefined };
 }
-const TestInvokeMethodRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<TestInvokeMethodRequest>;
 export interface TestInvokeMethodResponse {
   status?: number;
   body?: string;
@@ -1849,126 +1319,72 @@ export interface TestInvokeMethodResponse {
   log?: string;
   latency?: number;
 }
-const TestInvokeMethodResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<TestInvokeMethodResponse>;
 export interface UntagResourceRequest {
   resourceArn: string;
   tagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = DeleteApiKeyResponse as any as S.Schema<UntagResourceResponse>;
 export type Op = "add" | "remove" | "replace" | "move" | "copy" | "test" | (string & {});
-const Op = S.String;
-
 export interface PatchOperation {
   op?: Op;
   path?: string;
   value?: string;
   from?: string;
 }
-const PatchOperation = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<PatchOperation>;
 export type ListOfPatchOperation = PatchOperation[];
-const ListOfPatchOperation = /*@__PURE__*/ __L.at(__c26, 0);
 export interface UpdateAccountRequest {
   patchOperations?: PatchOperation[];
 }
-const UpdateAccountRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<UpdateAccountRequest>;
 export interface UpdateApiKeyRequest {
   apiKey: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateApiKeyRequest = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<UpdateApiKeyRequest>;
 export interface UpdateAuthorizerRequest {
   restApiId: string;
   authorizerId: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateAuthorizerRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<UpdateAuthorizerRequest>;
 export interface UpdateBasePathMappingRequest {
   domainName: string;
   domainNameId?: string;
   basePath: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateBasePathMappingRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<UpdateBasePathMappingRequest>;
 export interface UpdateClientCertificateRequest {
   clientCertificateId: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateClientCertificateRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<UpdateClientCertificateRequest>;
 export interface UpdateDeploymentRequest {
   restApiId: string;
   deploymentId: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<UpdateDeploymentRequest>;
 export interface UpdateDocumentationPartRequest {
   restApiId: string;
   documentationPartId: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateDocumentationPartRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<UpdateDocumentationPartRequest>;
 export interface UpdateDocumentationVersionRequest {
   restApiId: string;
   documentationVersion: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateDocumentationVersionRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<UpdateDocumentationVersionRequest>;
 export interface UpdateDomainNameRequest {
   domainName: string;
   domainNameId?: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateDomainNameRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<UpdateDomainNameRequest>;
 export interface UpdateGatewayResponseRequest {
   restApiId: string;
   responseType: GatewayResponseType;
   patchOperations?: PatchOperation[];
 }
-const UpdateGatewayResponseRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<UpdateGatewayResponseRequest>;
 export interface UpdateIntegrationRequest {
   restApiId: string;
   resourceId: string;
   httpMethod: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateIntegrationRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<UpdateIntegrationRequest>;
 export interface UpdateIntegrationResponseRequest {
   restApiId: string;
   resourceId: string;
@@ -1976,17 +1392,12 @@ export interface UpdateIntegrationResponseRequest {
   statusCode: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateIntegrationResponseRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<UpdateIntegrationResponseRequest>;
 export interface UpdateMethodRequest {
   restApiId: string;
   resourceId: string;
   httpMethod: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateMethodRequest = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<UpdateMethodRequest>;
 export interface UpdateMethodResponseRequest {
   restApiId: string;
   resourceId: string;
@@ -1994,70 +1405,43 @@ export interface UpdateMethodResponseRequest {
   statusCode: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateMethodResponseRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<UpdateMethodResponseRequest>;
 export interface UpdateModelRequest {
   restApiId: string;
   modelName: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateModelRequest = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<UpdateModelRequest>;
 export interface UpdateRequestValidatorRequest {
   restApiId: string;
   requestValidatorId: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateRequestValidatorRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<UpdateRequestValidatorRequest>;
 export interface UpdateResourceRequest {
   restApiId: string;
   resourceId: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateResourceRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<UpdateResourceRequest>;
 export interface UpdateRestApiRequest {
   restApiId: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateRestApiRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<UpdateRestApiRequest>;
 export interface UpdateStageRequest {
   restApiId: string;
   stageName: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateStageRequest = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<UpdateStageRequest>;
 export interface UpdateUsageRequest {
   usagePlanId: string;
   keyId: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateUsageRequest = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<UpdateUsageRequest>;
 export interface UpdateUsagePlanRequest {
   usagePlanId: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateUsagePlanRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<UpdateUsagePlanRequest>;
 export interface UpdateVpcLinkRequest {
   vpcLinkId: string;
   patchOperations?: PatchOperation[];
 }
-const UpdateVpcLinkRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<UpdateVpcLinkRequest>;
 export type CreateApiKeyError =
   | BadRequestException
   | ConflictException
@@ -2075,8 +1459,8 @@ export const createApiKey: API.OperationMethod<
   CreateApiKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateApiKeyRequest,
-  output: ApiKey,
+  input: __S(3) as any as S.Schema<CreateApiKeyRequest>,
+  output: __S(5) as any as S.Schema<ApiKey>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2107,8 +1491,8 @@ export const createAuthorizer: API.OperationMethod<
   CreateAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAuthorizerRequest,
-  output: Authorizer,
+  input: __S(6) as any as S.Schema<CreateAuthorizerRequest>,
+  output: __S(7) as any as S.Schema<Authorizer>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2139,8 +1523,8 @@ export const createBasePathMapping: API.OperationMethod<
   CreateBasePathMappingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBasePathMappingRequest,
-  output: BasePathMapping,
+  input: __S(8) as any as S.Schema<CreateBasePathMappingRequest>,
+  output: __S(9) as any as S.Schema<BasePathMapping>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2172,8 +1556,8 @@ export const createDeployment: API.OperationMethod<
   CreateDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeploymentRequest,
-  output: Deployment,
+  input: __S(11) as any as S.Schema<CreateDeploymentRequest>,
+  output: __S(15) as any as S.Schema<Deployment>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2205,8 +1589,8 @@ export const createDocumentationPart: API.OperationMethod<
   CreateDocumentationPartError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDocumentationPartRequest,
-  output: DocumentationPart,
+  input: __S(17) as any as S.Schema<CreateDocumentationPartRequest>,
+  output: __S(18) as any as S.Schema<DocumentationPart>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2237,8 +1621,8 @@ export const createDocumentationVersion: API.OperationMethod<
   CreateDocumentationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDocumentationVersionRequest,
-  output: DocumentationVersion,
+  input: __S(19) as any as S.Schema<CreateDocumentationVersionRequest>,
+  output: __S(20) as any as S.Schema<DocumentationVersion>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2268,8 +1652,8 @@ export const createDomainName: API.OperationMethod<
   CreateDomainNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDomainNameRequest,
-  output: DomainName,
+  input: __S(24) as any as S.Schema<CreateDomainNameRequest>,
+  output: __S(26) as any as S.Schema<DomainName>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2299,8 +1683,8 @@ export const createDomainNameAccessAssociation: API.OperationMethod<
   CreateDomainNameAccessAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDomainNameAccessAssociationRequest,
-  output: DomainNameAccessAssociation,
+  input: __S(27) as any as S.Schema<CreateDomainNameAccessAssociationRequest>,
+  output: __S(28) as any as S.Schema<DomainNameAccessAssociation>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2330,8 +1714,8 @@ export const createModel: API.OperationMethod<
   CreateModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateModelRequest,
-  output: Model,
+  input: __S(29) as any as S.Schema<CreateModelRequest>,
+  output: __S(30) as any as S.Schema<Model>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2362,8 +1746,8 @@ export const createRequestValidator: API.OperationMethod<
   CreateRequestValidatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequestValidatorRequest,
-  output: RequestValidator,
+  input: __S(31) as any as S.Schema<CreateRequestValidatorRequest>,
+  output: __S(32) as any as S.Schema<RequestValidator>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2394,8 +1778,8 @@ export const createResource: API.OperationMethod<
   CreateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateResourceRequest,
-  output: Resource,
+  input: __S(33) as any as S.Schema<CreateResourceRequest>,
+  output: __S(43) as any as S.Schema<Resource>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2425,8 +1809,8 @@ export const createRestApi: API.OperationMethod<
   CreateRestApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRestApiRequest,
-  output: RestApi,
+  input: __S(44) as any as S.Schema<CreateRestApiRequest>,
+  output: __S(45) as any as S.Schema<RestApi>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2456,8 +1840,8 @@ export const createStage: API.OperationMethod<
   CreateStageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStageRequest,
-  output: Stage,
+  input: __S(47) as any as S.Schema<CreateStageRequest>,
+  output: __S(51) as any as S.Schema<Stage>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2488,8 +1872,8 @@ export const createUsagePlan: API.OperationMethod<
   CreateUsagePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsagePlanRequest,
-  output: UsagePlan,
+  input: __S(57) as any as S.Schema<CreateUsagePlanRequest>,
+  output: __S(58) as any as S.Schema<UsagePlan>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2520,8 +1904,8 @@ export const createUsagePlanKey: API.OperationMethod<
   CreateUsagePlanKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUsagePlanKeyRequest,
-  output: UsagePlanKey,
+  input: __S(59) as any as S.Schema<CreateUsagePlanKeyRequest>,
+  output: __S(60) as any as S.Schema<UsagePlanKey>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2551,8 +1935,8 @@ export const createVpcLink: API.OperationMethod<
   CreateVpcLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVpcLinkRequest,
-  output: VpcLink,
+  input: __S(61) as any as S.Schema<CreateVpcLinkRequest>,
+  output: __S(62) as any as S.Schema<VpcLink>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2581,8 +1965,8 @@ export const deleteApiKey: API.OperationMethod<
   DeleteApiKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApiKeyRequest,
-  output: DeleteApiKeyResponse,
+  input: __S(63) as any as S.Schema<DeleteApiKeyRequest>,
+  output: __S(64) as any as S.Schema<DeleteApiKeyResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2611,8 +1995,8 @@ export const deleteAuthorizer: API.OperationMethod<
   DeleteAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAuthorizerRequest,
-  output: DeleteAuthorizerResponse,
+  input: __S(65) as any as S.Schema<DeleteAuthorizerRequest>,
+  output: __S(64) as any as S.Schema<DeleteAuthorizerResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2641,8 +2025,8 @@ export const deleteBasePathMapping: API.OperationMethod<
   DeleteBasePathMappingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBasePathMappingRequest,
-  output: DeleteBasePathMappingResponse,
+  input: __S(66) as any as S.Schema<DeleteBasePathMappingRequest>,
+  output: __S(64) as any as S.Schema<DeleteBasePathMappingResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2671,8 +2055,8 @@ export const deleteClientCertificate: API.OperationMethod<
   DeleteClientCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteClientCertificateRequest,
-  output: DeleteClientCertificateResponse,
+  input: __S(67) as any as S.Schema<DeleteClientCertificateRequest>,
+  output: __S(68) as any as S.Schema<DeleteClientCertificateResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2702,8 +2086,8 @@ export const deleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeploymentRequest,
-  output: DeleteDeploymentResponse,
+  input: __S(69) as any as S.Schema<DeleteDeploymentRequest>,
+  output: __S(64) as any as S.Schema<DeleteDeploymentResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2733,8 +2117,8 @@ export const deleteDocumentationPart: API.OperationMethod<
   DeleteDocumentationPartError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDocumentationPartRequest,
-  output: DeleteDocumentationPartResponse,
+  input: __S(70) as any as S.Schema<DeleteDocumentationPartRequest>,
+  output: __S(68) as any as S.Schema<DeleteDocumentationPartResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2763,8 +2147,8 @@ export const deleteDocumentationVersion: API.OperationMethod<
   DeleteDocumentationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDocumentationVersionRequest,
-  output: DeleteDocumentationVersionResponse,
+  input: __S(71) as any as S.Schema<DeleteDocumentationVersionRequest>,
+  output: __S(72) as any as S.Schema<DeleteDocumentationVersionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2793,8 +2177,8 @@ export const deleteDomainName: API.OperationMethod<
   DeleteDomainNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDomainNameRequest,
-  output: DeleteDomainNameResponse,
+  input: __S(73) as any as S.Schema<DeleteDomainNameRequest>,
+  output: __S(64) as any as S.Schema<DeleteDomainNameResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2825,8 +2209,8 @@ export const deleteDomainNameAccessAssociation: API.OperationMethod<
   DeleteDomainNameAccessAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDomainNameAccessAssociationRequest,
-  output: DeleteDomainNameAccessAssociationResponse,
+  input: __S(74) as any as S.Schema<DeleteDomainNameAccessAssociationRequest>,
+  output: __S(72) as any as S.Schema<DeleteDomainNameAccessAssociationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2855,8 +2239,8 @@ export const deleteGatewayResponse: API.OperationMethod<
   DeleteGatewayResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGatewayResponseRequest,
-  output: DeleteGatewayResponseResponse,
+  input: __S(75) as any as S.Schema<DeleteGatewayResponseRequest>,
+  output: __S(64) as any as S.Schema<DeleteGatewayResponseResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2885,8 +2269,8 @@ export const deleteIntegration: API.OperationMethod<
   DeleteIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIntegrationRequest,
-  output: DeleteIntegrationResponse,
+  input: __S(76) as any as S.Schema<DeleteIntegrationRequest>,
+  output: __S(64) as any as S.Schema<DeleteIntegrationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2915,8 +2299,8 @@ export const deleteIntegrationResponse: API.OperationMethod<
   DeleteIntegrationResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIntegrationResponseRequest,
-  output: DeleteIntegrationResponseResponse,
+  input: __S(77) as any as S.Schema<DeleteIntegrationResponseRequest>,
+  output: __S(72) as any as S.Schema<DeleteIntegrationResponseResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2944,8 +2328,8 @@ export const deleteMethod: API.OperationMethod<
   DeleteMethodError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMethodRequest,
-  output: DeleteMethodResponse,
+  input: __S(78) as any as S.Schema<DeleteMethodRequest>,
+  output: __S(64) as any as S.Schema<DeleteMethodResponse>,
   errors: [ConflictException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2968,8 +2352,8 @@ export const deleteMethodResponse: API.OperationMethod<
   DeleteMethodResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMethodResponseRequest,
-  output: DeleteMethodResponseResponse,
+  input: __S(79) as any as S.Schema<DeleteMethodResponseRequest>,
+  output: __S(64) as any as S.Schema<DeleteMethodResponseResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -2998,8 +2382,8 @@ export const deleteModel: API.OperationMethod<
   DeleteModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteModelRequest,
-  output: DeleteModelResponse,
+  input: __S(80) as any as S.Schema<DeleteModelRequest>,
+  output: __S(64) as any as S.Schema<DeleteModelResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3028,8 +2412,8 @@ export const deleteRequestValidator: API.OperationMethod<
   DeleteRequestValidatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequestValidatorRequest,
-  output: DeleteRequestValidatorResponse,
+  input: __S(81) as any as S.Schema<DeleteRequestValidatorRequest>,
+  output: __S(64) as any as S.Schema<DeleteRequestValidatorResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3058,8 +2442,8 @@ export const deleteResource: API.OperationMethod<
   DeleteResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteResourceRequest,
-  output: DeleteResourceResponse,
+  input: __S(82) as any as S.Schema<DeleteResourceRequest>,
+  output: __S(64) as any as S.Schema<DeleteResourceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3088,8 +2472,8 @@ export const deleteRestApi: API.OperationMethod<
   DeleteRestApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRestApiRequest,
-  output: DeleteRestApiResponse,
+  input: __S(83) as any as S.Schema<DeleteRestApiRequest>,
+  output: __S(64) as any as S.Schema<DeleteRestApiResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3119,8 +2503,8 @@ export const deleteStage: API.OperationMethod<
   DeleteStageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStageRequest,
-  output: DeleteStageResponse,
+  input: __S(84) as any as S.Schema<DeleteStageRequest>,
+  output: __S(64) as any as S.Schema<DeleteStageResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3150,8 +2534,8 @@ export const deleteUsagePlan: API.OperationMethod<
   DeleteUsagePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUsagePlanRequest,
-  output: DeleteUsagePlanResponse,
+  input: __S(85) as any as S.Schema<DeleteUsagePlanRequest>,
+  output: __S(64) as any as S.Schema<DeleteUsagePlanResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3180,8 +2564,8 @@ export const deleteUsagePlanKey: API.OperationMethod<
   DeleteUsagePlanKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUsagePlanKeyRequest,
-  output: DeleteUsagePlanKeyResponse,
+  input: __S(86) as any as S.Schema<DeleteUsagePlanKeyRequest>,
+  output: __S(64) as any as S.Schema<DeleteUsagePlanKeyResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3210,8 +2594,8 @@ export const deleteVpcLink: API.OperationMethod<
   DeleteVpcLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVpcLinkRequest,
-  output: DeleteVpcLinkResponse,
+  input: __S(87) as any as S.Schema<DeleteVpcLinkRequest>,
+  output: __S(64) as any as S.Schema<DeleteVpcLinkResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3241,8 +2625,8 @@ export const flushStageAuthorizersCache: API.OperationMethod<
   FlushStageAuthorizersCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: FlushStageAuthorizersCacheRequest,
-  output: FlushStageAuthorizersCacheResponse,
+  input: __S(88) as any as S.Schema<FlushStageAuthorizersCacheRequest>,
+  output: __S(72) as any as S.Schema<FlushStageAuthorizersCacheResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3273,8 +2657,8 @@ export const flushStageCache: API.OperationMethod<
   FlushStageCacheError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: FlushStageCacheRequest,
-  output: FlushStageCacheResponse,
+  input: __S(89) as any as S.Schema<FlushStageCacheRequest>,
+  output: __S(64) as any as S.Schema<FlushStageCacheResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3304,8 +2688,8 @@ export const generateClientCertificate: API.OperationMethod<
   GenerateClientCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateClientCertificateRequest,
-  output: ClientCertificate,
+  input: __S(90) as any as S.Schema<GenerateClientCertificateRequest>,
+  output: __S(91) as any as S.Schema<ClientCertificate>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3333,8 +2717,8 @@ export const getAccount: API.OperationMethod<
   GetAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountRequest,
-  output: Account,
+  input: __S(92) as any as S.Schema<GetAccountRequest>,
+  output: __S(93) as any as S.Schema<Account>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3356,8 +2740,8 @@ export const getApiKey: API.OperationMethod<
   GetApiKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiKeyRequest,
-  output: ApiKey,
+  input: __S(94) as any as S.Schema<GetApiKeyRequest>,
+  output: __S(5) as any as S.Schema<ApiKey>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3380,8 +2764,8 @@ export const getApiKeys: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApiKey
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetApiKeysRequest,
-  output: ApiKeys,
+  input: __S(95) as any as S.Schema<GetApiKeysRequest>,
+  output: __S(97) as any as S.Schema<ApiKeys>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3409,8 +2793,8 @@ export const getAuthorizer: API.OperationMethod<
   GetAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuthorizerRequest,
-  output: Authorizer,
+  input: __S(98) as any as S.Schema<GetAuthorizerRequest>,
+  output: __S(7) as any as S.Schema<Authorizer>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3432,8 +2816,8 @@ export const getAuthorizers: API.OperationMethod<
   GetAuthorizersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAuthorizersRequest,
-  output: Authorizers,
+  input: __S(99) as any as S.Schema<GetAuthorizersRequest>,
+  output: __S(101) as any as S.Schema<Authorizers>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3455,8 +2839,8 @@ export const getBasePathMapping: API.OperationMethod<
   GetBasePathMappingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBasePathMappingRequest,
-  output: BasePathMapping,
+  input: __S(102) as any as S.Schema<GetBasePathMappingRequest>,
+  output: __S(9) as any as S.Schema<BasePathMapping>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3479,8 +2863,8 @@ export const getBasePathMappings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   BasePathMapping
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetBasePathMappingsRequest,
-  output: BasePathMappings,
+  input: __S(103) as any as S.Schema<GetBasePathMappingsRequest>,
+  output: __S(105) as any as S.Schema<BasePathMappings>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3508,8 +2892,8 @@ export const getClientCertificate: API.OperationMethod<
   GetClientCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClientCertificateRequest,
-  output: ClientCertificate,
+  input: __S(106) as any as S.Schema<GetClientCertificateRequest>,
+  output: __S(91) as any as S.Schema<ClientCertificate>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3532,8 +2916,8 @@ export const getClientCertificates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ClientCertificate
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetClientCertificatesRequest,
-  output: ClientCertificates,
+  input: __S(107) as any as S.Schema<GetClientCertificatesRequest>,
+  output: __S(109) as any as S.Schema<ClientCertificates>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3562,8 +2946,8 @@ export const getDeployment: API.OperationMethod<
   GetDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeploymentRequest,
-  output: Deployment,
+  input: __S(110) as any as S.Schema<GetDeploymentRequest>,
+  output: __S(15) as any as S.Schema<Deployment>,
   errors: [
     BadRequestException,
     NotFoundException,
@@ -3593,8 +2977,8 @@ export const getDeployments: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Deployment
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetDeploymentsRequest,
-  output: Deployments,
+  input: __S(111) as any as S.Schema<GetDeploymentsRequest>,
+  output: __S(113) as any as S.Schema<Deployments>,
   errors: [
     BadRequestException,
     NotFoundException,
@@ -3628,8 +3012,8 @@ export const getDocumentationPart: API.OperationMethod<
   GetDocumentationPartError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDocumentationPartRequest,
-  output: DocumentationPart,
+  input: __S(114) as any as S.Schema<GetDocumentationPartRequest>,
+  output: __S(18) as any as S.Schema<DocumentationPart>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3651,8 +3035,8 @@ export const getDocumentationParts: API.OperationMethod<
   GetDocumentationPartsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDocumentationPartsRequest,
-  output: DocumentationParts,
+  input: __S(115) as any as S.Schema<GetDocumentationPartsRequest>,
+  output: __S(117) as any as S.Schema<DocumentationParts>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3673,8 +3057,8 @@ export const getDocumentationVersion: API.OperationMethod<
   GetDocumentationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDocumentationVersionRequest,
-  output: DocumentationVersion,
+  input: __S(118) as any as S.Schema<GetDocumentationVersionRequest>,
+  output: __S(20) as any as S.Schema<DocumentationVersion>,
   errors: [NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3696,8 +3080,8 @@ export const getDocumentationVersions: API.OperationMethod<
   GetDocumentationVersionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDocumentationVersionsRequest,
-  output: DocumentationVersions,
+  input: __S(119) as any as S.Schema<GetDocumentationVersionsRequest>,
+  output: __S(121) as any as S.Schema<DocumentationVersions>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3719,8 +3103,8 @@ export const getDomainName: API.OperationMethod<
   GetDomainNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainNameRequest,
-  output: DomainName,
+  input: __S(122) as any as S.Schema<GetDomainNameRequest>,
+  output: __S(26) as any as S.Schema<DomainName>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3742,8 +3126,8 @@ export const getDomainNameAccessAssociations: API.OperationMethod<
   GetDomainNameAccessAssociationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainNameAccessAssociationsRequest,
-  output: DomainNameAccessAssociations,
+  input: __S(123) as any as S.Schema<GetDomainNameAccessAssociationsRequest>,
+  output: __S(125) as any as S.Schema<DomainNameAccessAssociations>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3766,8 +3150,8 @@ export const getDomainNames: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DomainName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetDomainNamesRequest,
-  output: DomainNames,
+  input: __S(126) as any as S.Schema<GetDomainNamesRequest>,
+  output: __S(128) as any as S.Schema<DomainNames>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3797,8 +3181,8 @@ export const getExport: API.OperationMethod<
   GetExportError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExportRequest,
-  output: ExportResponse,
+  input: __S(129) as any as S.Schema<GetExportRequest>,
+  output: __S(130) as any as S.Schema<ExportResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -3827,8 +3211,8 @@ export const getGatewayResponse: API.OperationMethod<
   GetGatewayResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGatewayResponseRequest,
-  output: GatewayResponse,
+  input: __S(131) as any as S.Schema<GetGatewayResponseRequest>,
+  output: __S(132) as any as S.Schema<GatewayResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3850,8 +3234,8 @@ export const getGatewayResponses: API.OperationMethod<
   GetGatewayResponsesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGatewayResponsesRequest,
-  output: GatewayResponses,
+  input: __S(133) as any as S.Schema<GetGatewayResponsesRequest>,
+  output: __S(135) as any as S.Schema<GatewayResponses>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3873,8 +3257,8 @@ export const getIntegration: API.OperationMethod<
   GetIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationRequest,
-  output: Integration,
+  input: __S(136) as any as S.Schema<GetIntegrationRequest>,
+  output: __S(40) as any as S.Schema<Integration>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3896,8 +3280,8 @@ export const getIntegrationResponse: API.OperationMethod<
   GetIntegrationResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIntegrationResponseRequest,
-  output: IntegrationResponse,
+  input: __S(137) as any as S.Schema<GetIntegrationResponseRequest>,
+  output: __S(37) as any as S.Schema<IntegrationResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3918,8 +3302,8 @@ export const getMethod: API.OperationMethod<
   GetMethodError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMethodRequest,
-  output: Method,
+  input: __S(138) as any as S.Schema<GetMethodRequest>,
+  output: __S(41) as any as S.Schema<Method>,
   errors: [NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3940,8 +3324,8 @@ export const getMethodResponse: API.OperationMethod<
   GetMethodResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMethodResponseRequest,
-  output: MethodResponse,
+  input: __S(139) as any as S.Schema<GetMethodResponseRequest>,
+  output: __S(35) as any as S.Schema<MethodResponse>,
   errors: [NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3963,8 +3347,8 @@ export const getModel: API.OperationMethod<
   GetModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetModelRequest,
-  output: Model,
+  input: __S(140) as any as S.Schema<GetModelRequest>,
+  output: __S(30) as any as S.Schema<Model>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3987,8 +3371,8 @@ export const getModels: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Model
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetModelsRequest,
-  output: Models,
+  input: __S(141) as any as S.Schema<GetModelsRequest>,
+  output: __S(143) as any as S.Schema<Models>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4016,8 +3400,8 @@ export const getModelTemplate: API.OperationMethod<
   GetModelTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetModelTemplateRequest,
-  output: Template,
+  input: __S(144) as any as S.Schema<GetModelTemplateRequest>,
+  output: __S(145) as any as S.Schema<Template>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4039,8 +3423,8 @@ export const getRequestValidator: API.OperationMethod<
   GetRequestValidatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequestValidatorRequest,
-  output: RequestValidator,
+  input: __S(146) as any as S.Schema<GetRequestValidatorRequest>,
+  output: __S(32) as any as S.Schema<RequestValidator>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4062,8 +3446,8 @@ export const getRequestValidators: API.OperationMethod<
   GetRequestValidatorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequestValidatorsRequest,
-  output: RequestValidators,
+  input: __S(147) as any as S.Schema<GetRequestValidatorsRequest>,
+  output: __S(149) as any as S.Schema<RequestValidators>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4084,8 +3468,8 @@ export const getResource: API.OperationMethod<
   GetResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourceRequest,
-  output: Resource,
+  input: __S(150) as any as S.Schema<GetResourceRequest>,
+  output: __S(43) as any as S.Schema<Resource>,
   errors: [NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4108,8 +3492,8 @@ export const getResources: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Resource
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetResourcesRequest,
-  output: Resources,
+  input: __S(151) as any as S.Schema<GetResourcesRequest>,
+  output: __S(153) as any as S.Schema<Resources>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4137,8 +3521,8 @@ export const getRestApi: API.OperationMethod<
   GetRestApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRestApiRequest,
-  output: RestApi,
+  input: __S(154) as any as S.Schema<GetRestApiRequest>,
+  output: __S(45) as any as S.Schema<RestApi>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4161,8 +3545,8 @@ export const getRestApis: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RestApi
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetRestApisRequest,
-  output: RestApis,
+  input: __S(155) as any as S.Schema<GetRestApisRequest>,
+  output: __S(157) as any as S.Schema<RestApis>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4192,8 +3576,8 @@ export const getSdk: API.OperationMethod<
   GetSdkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSdkRequest,
-  output: SdkResponse,
+  input: __S(158) as any as S.Schema<GetSdkRequest>,
+  output: __S(130) as any as S.Schema<SdkResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4222,8 +3606,8 @@ export const getSdkType: API.OperationMethod<
   GetSdkTypeError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSdkTypeRequest,
-  output: SdkType,
+  input: __S(159) as any as S.Schema<GetSdkTypeRequest>,
+  output: __S(162) as any as S.Schema<SdkType>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4245,8 +3629,8 @@ export const getSdkTypes: API.OperationMethod<
   GetSdkTypesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSdkTypesRequest,
-  output: SdkTypes,
+  input: __S(163) as any as S.Schema<GetSdkTypesRequest>,
+  output: __S(165) as any as S.Schema<SdkTypes>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4270,8 +3654,8 @@ export const getStage: API.OperationMethod<
   GetStageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStageRequest,
-  output: Stage,
+  input: __S(166) as any as S.Schema<GetStageRequest>,
+  output: __S(51) as any as S.Schema<Stage>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4302,8 +3686,8 @@ export const getStages: API.OperationMethod<
   GetStagesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStagesRequest,
-  output: Stages,
+  input: __S(167) as any as S.Schema<GetStagesRequest>,
+  output: __S(169) as any as S.Schema<Stages>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4332,8 +3716,8 @@ export const getTags: API.OperationMethod<
   GetTagsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTagsRequest,
-  output: Tags,
+  input: __S(170) as any as S.Schema<GetTagsRequest>,
+  output: __S(171) as any as S.Schema<Tags>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4356,8 +3740,8 @@ export const getUsage: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetUsageRequest,
-  output: Usage,
+  input: __S(172) as any as S.Schema<GetUsageRequest>,
+  output: __S(176) as any as S.Schema<Usage>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4385,8 +3769,8 @@ export const getUsagePlan: API.OperationMethod<
   GetUsagePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsagePlanRequest,
-  output: UsagePlan,
+  input: __S(177) as any as S.Schema<GetUsagePlanRequest>,
+  output: __S(58) as any as S.Schema<UsagePlan>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4408,8 +3792,8 @@ export const getUsagePlanKey: API.OperationMethod<
   GetUsagePlanKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUsagePlanKeyRequest,
-  output: UsagePlanKey,
+  input: __S(178) as any as S.Schema<GetUsagePlanKeyRequest>,
+  output: __S(60) as any as S.Schema<UsagePlanKey>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4432,8 +3816,8 @@ export const getUsagePlanKeys: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UsagePlanKey
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetUsagePlanKeysRequest,
-  output: UsagePlanKeys,
+  input: __S(179) as any as S.Schema<GetUsagePlanKeysRequest>,
+  output: __S(181) as any as S.Schema<UsagePlanKeys>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4462,8 +3846,8 @@ export const getUsagePlans: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   UsagePlan
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetUsagePlansRequest,
-  output: UsagePlans,
+  input: __S(182) as any as S.Schema<GetUsagePlansRequest>,
+  output: __S(184) as any as S.Schema<UsagePlans>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4491,8 +3875,8 @@ export const getVpcLink: API.OperationMethod<
   GetVpcLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVpcLinkRequest,
-  output: VpcLink,
+  input: __S(185) as any as S.Schema<GetVpcLinkRequest>,
+  output: __S(62) as any as S.Schema<VpcLink>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4515,8 +3899,8 @@ export const getVpcLinks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VpcLink
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetVpcLinksRequest,
-  output: VpcLinks,
+  input: __S(186) as any as S.Schema<GetVpcLinksRequest>,
+  output: __S(188) as any as S.Schema<VpcLinks>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4546,8 +3930,8 @@ export const importApiKeys: API.OperationMethod<
   ImportApiKeysError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportApiKeysRequest,
-  output: ApiKeyIds,
+  input: __S(189) as any as S.Schema<ImportApiKeysRequest>,
+  output: __S(190) as any as S.Schema<ApiKeyIds>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4578,8 +3962,8 @@ export const importDocumentationParts: API.OperationMethod<
   ImportDocumentationPartsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportDocumentationPartsRequest,
-  output: DocumentationPartIds,
+  input: __S(191) as any as S.Schema<ImportDocumentationPartsRequest>,
+  output: __S(190) as any as S.Schema<DocumentationPartIds>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4610,8 +3994,8 @@ export const importRestApi: API.OperationMethod<
   ImportRestApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportRestApiRequest,
-  output: RestApi,
+  input: __S(192) as any as S.Schema<ImportRestApiRequest>,
+  output: __S(45) as any as S.Schema<RestApi>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4642,8 +4026,8 @@ export const putGatewayResponse: API.OperationMethod<
   PutGatewayResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutGatewayResponseRequest,
-  output: GatewayResponse,
+  input: __S(193) as any as S.Schema<PutGatewayResponseRequest>,
+  output: __S(132) as any as S.Schema<GatewayResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4674,8 +4058,8 @@ export const putIntegration: API.OperationMethod<
   PutIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIntegrationRequest,
-  output: Integration,
+  input: __S(194) as any as S.Schema<PutIntegrationRequest>,
+  output: __S(40) as any as S.Schema<Integration>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4706,8 +4090,8 @@ export const putIntegrationResponse: API.OperationMethod<
   PutIntegrationResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIntegrationResponseRequest,
-  output: IntegrationResponse,
+  input: __S(195) as any as S.Schema<PutIntegrationResponseRequest>,
+  output: __S(37) as any as S.Schema<IntegrationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4738,8 +4122,8 @@ export const putMethod: API.OperationMethod<
   PutMethodError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutMethodRequest,
-  output: Method,
+  input: __S(196) as any as S.Schema<PutMethodRequest>,
+  output: __S(41) as any as S.Schema<Method>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4770,8 +4154,8 @@ export const putMethodResponse: API.OperationMethod<
   PutMethodResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutMethodResponseRequest,
-  output: MethodResponse,
+  input: __S(197) as any as S.Schema<PutMethodResponseRequest>,
+  output: __S(35) as any as S.Schema<MethodResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4803,8 +4187,8 @@ export const putRestApi: API.OperationMethod<
   PutRestApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutRestApiRequest,
-  output: RestApi,
+  input: __S(198) as any as S.Schema<PutRestApiRequest>,
+  output: __S(45) as any as S.Schema<RestApi>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4836,8 +4220,8 @@ export const rejectDomainNameAccessAssociation: API.OperationMethod<
   RejectDomainNameAccessAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RejectDomainNameAccessAssociationRequest,
-  output: RejectDomainNameAccessAssociationResponse,
+  input: __S(199) as any as S.Schema<RejectDomainNameAccessAssociationRequest>,
+  output: __S(72) as any as S.Schema<RejectDomainNameAccessAssociationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4867,8 +4251,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(200) as any as S.Schema<TagResourceRequest>,
+  output: __S(64) as any as S.Schema<TagResourceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4897,8 +4281,8 @@ export const testInvokeAuthorizer: API.OperationMethod<
   TestInvokeAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestInvokeAuthorizerRequest,
-  output: TestInvokeAuthorizerResponse,
+  input: __S(202) as any as S.Schema<TestInvokeAuthorizerRequest>,
+  output: __S(203) as any as S.Schema<TestInvokeAuthorizerResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4920,8 +4304,8 @@ export const testInvokeMethod: API.OperationMethod<
   TestInvokeMethodError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestInvokeMethodRequest,
-  output: TestInvokeMethodResponse,
+  input: __S(204) as any as S.Schema<TestInvokeMethodRequest>,
+  output: __S(205) as any as S.Schema<TestInvokeMethodResponse>,
   errors: [BadRequestException, NotFoundException, TooManyRequestsException, UnauthorizedException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -4945,8 +4329,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(206) as any as S.Schema<UntagResourceRequest>,
+  output: __S(64) as any as S.Schema<UntagResourceResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -4977,8 +4361,8 @@ export const updateAccount: API.OperationMethod<
   UpdateAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountRequest,
-  output: Account,
+  input: __S(209) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(93) as any as S.Schema<Account>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5009,8 +4393,8 @@ export const updateApiKey: API.OperationMethod<
   UpdateApiKeyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApiKeyRequest,
-  output: ApiKey,
+  input: __S(210) as any as S.Schema<UpdateApiKeyRequest>,
+  output: __S(5) as any as S.Schema<ApiKey>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5041,8 +4425,8 @@ export const updateAuthorizer: API.OperationMethod<
   UpdateAuthorizerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAuthorizerRequest,
-  output: Authorizer,
+  input: __S(211) as any as S.Schema<UpdateAuthorizerRequest>,
+  output: __S(7) as any as S.Schema<Authorizer>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5073,8 +4457,8 @@ export const updateBasePathMapping: API.OperationMethod<
   UpdateBasePathMappingError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBasePathMappingRequest,
-  output: BasePathMapping,
+  input: __S(212) as any as S.Schema<UpdateBasePathMappingRequest>,
+  output: __S(9) as any as S.Schema<BasePathMapping>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5105,8 +4489,8 @@ export const updateClientCertificate: API.OperationMethod<
   UpdateClientCertificateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateClientCertificateRequest,
-  output: ClientCertificate,
+  input: __S(213) as any as S.Schema<UpdateClientCertificateRequest>,
+  output: __S(91) as any as S.Schema<ClientCertificate>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5138,8 +4522,8 @@ export const updateDeployment: API.OperationMethod<
   UpdateDeploymentError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDeploymentRequest,
-  output: Deployment,
+  input: __S(214) as any as S.Schema<UpdateDeploymentRequest>,
+  output: __S(15) as any as S.Schema<Deployment>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5171,8 +4555,8 @@ export const updateDocumentationPart: API.OperationMethod<
   UpdateDocumentationPartError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDocumentationPartRequest,
-  output: DocumentationPart,
+  input: __S(215) as any as S.Schema<UpdateDocumentationPartRequest>,
+  output: __S(18) as any as S.Schema<DocumentationPart>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5203,8 +4587,8 @@ export const updateDocumentationVersion: API.OperationMethod<
   UpdateDocumentationVersionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDocumentationVersionRequest,
-  output: DocumentationVersion,
+  input: __S(216) as any as S.Schema<UpdateDocumentationVersionRequest>,
+  output: __S(20) as any as S.Schema<DocumentationVersion>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5235,8 +4619,8 @@ export const updateDomainName: API.OperationMethod<
   UpdateDomainNameError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDomainNameRequest,
-  output: DomainName,
+  input: __S(217) as any as S.Schema<UpdateDomainNameRequest>,
+  output: __S(26) as any as S.Schema<DomainName>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5267,8 +4651,8 @@ export const updateGatewayResponse: API.OperationMethod<
   UpdateGatewayResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateGatewayResponseRequest,
-  output: GatewayResponse,
+  input: __S(218) as any as S.Schema<UpdateGatewayResponseRequest>,
+  output: __S(132) as any as S.Schema<GatewayResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5299,8 +4683,8 @@ export const updateIntegration: API.OperationMethod<
   UpdateIntegrationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIntegrationRequest,
-  output: Integration,
+  input: __S(219) as any as S.Schema<UpdateIntegrationRequest>,
+  output: __S(40) as any as S.Schema<Integration>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5331,8 +4715,8 @@ export const updateIntegrationResponse: API.OperationMethod<
   UpdateIntegrationResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIntegrationResponseRequest,
-  output: IntegrationResponse,
+  input: __S(220) as any as S.Schema<UpdateIntegrationResponseRequest>,
+  output: __S(37) as any as S.Schema<IntegrationResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5362,8 +4746,8 @@ export const updateMethod: API.OperationMethod<
   UpdateMethodError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMethodRequest,
-  output: Method,
+  input: __S(221) as any as S.Schema<UpdateMethodRequest>,
+  output: __S(41) as any as S.Schema<Method>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5393,8 +4777,8 @@ export const updateMethodResponse: API.OperationMethod<
   UpdateMethodResponseError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMethodResponseRequest,
-  output: MethodResponse,
+  input: __S(222) as any as S.Schema<UpdateMethodResponseRequest>,
+  output: __S(35) as any as S.Schema<MethodResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5425,8 +4809,8 @@ export const updateModel: API.OperationMethod<
   UpdateModelError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateModelRequest,
-  output: Model,
+  input: __S(223) as any as S.Schema<UpdateModelRequest>,
+  output: __S(30) as any as S.Schema<Model>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5457,8 +4841,8 @@ export const updateRequestValidator: API.OperationMethod<
   UpdateRequestValidatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequestValidatorRequest,
-  output: RequestValidator,
+  input: __S(224) as any as S.Schema<UpdateRequestValidatorRequest>,
+  output: __S(32) as any as S.Schema<RequestValidator>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5488,8 +4872,8 @@ export const updateResource: API.OperationMethod<
   UpdateResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateResourceRequest,
-  output: Resource,
+  input: __S(225) as any as S.Schema<UpdateResourceRequest>,
+  output: __S(43) as any as S.Schema<Resource>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5519,8 +4903,8 @@ export const updateRestApi: API.OperationMethod<
   UpdateRestApiError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRestApiRequest,
-  output: RestApi,
+  input: __S(226) as any as S.Schema<UpdateRestApiRequest>,
+  output: __S(45) as any as S.Schema<RestApi>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5551,8 +4935,8 @@ export const updateStage: API.OperationMethod<
   UpdateStageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStageRequest,
-  output: Stage,
+  input: __S(227) as any as S.Schema<UpdateStageRequest>,
+  output: __S(51) as any as S.Schema<Stage>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5583,8 +4967,8 @@ export const updateUsage: API.OperationMethod<
   UpdateUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUsageRequest,
-  output: Usage,
+  input: __S(228) as any as S.Schema<UpdateUsageRequest>,
+  output: __S(176) as any as S.Schema<Usage>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5615,8 +4999,8 @@ export const updateUsagePlan: API.OperationMethod<
   UpdateUsagePlanError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUsagePlanRequest,
-  output: UsagePlan,
+  input: __S(229) as any as S.Schema<UpdateUsagePlanRequest>,
+  output: __S(58) as any as S.Schema<UsagePlan>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5647,8 +5031,8 @@ export const updateVpcLink: API.OperationMethod<
   UpdateVpcLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVpcLinkRequest,
-  output: VpcLink,
+  input: __S(230) as any as S.Schema<UpdateVpcLinkRequest>,
+  output: __S(62) as any as S.Schema<VpcLink>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -5670,7 +5054,7 @@ function __c0(j: number): any {
         S.Struct({ restApiId: S.optional(S.String), stageName: S.optional(S.String) }),
       ).annotate({ identifier: "StageKey" });
     case 1:
-      return S.Array(StageKey);
+      return S.Array(__S(0));
     case 2:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 3:
@@ -5681,9 +5065,9 @@ function __c0(j: number): any {
           enabled: S.optional(S.Boolean),
           generateDistinctId: S.optional(S.Boolean),
           value: S.optional(SensitiveString),
-          stageKeys: S.optional(ListOfStageKeys),
+          stageKeys: S.optional(__S(1)),
           customerId: S.optional(S.String),
-          tags: S.optional(MapOfStringToString),
+          tags: S.optional(__S(2)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/apikeys" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateApiKeyRequest" });
     case 4:
@@ -5699,8 +5083,8 @@ function __c0(j: number): any {
           enabled: S.optional(S.Boolean),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          stageKeys: S.optional(ListOfString),
-          tags: S.optional(MapOfStringToString),
+          stageKeys: S.optional(__S(4)),
+          tags: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "ApiKey" });
     case 6:
@@ -5708,8 +5092,8 @@ function __c0(j: number): any {
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           name: S.String,
-          type: AuthorizerType,
-          providerARNs: S.optional(ListOfARNs),
+          type: S.String,
+          providerARNs: S.optional(__S(4)),
           authType: S.optional(S.String),
           authorizerUri: S.optional(S.String),
           authorizerCredentials: S.optional(S.String),
@@ -5732,8 +5116,8 @@ function __c0(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           name: S.optional(S.String),
-          type: S.optional(AuthorizerType),
-          providerARNs: S.optional(ListOfARNs),
+          type: S.optional(S.String),
+          providerARNs: S.optional(__S(4)),
           authType: S.optional(S.String),
           authorizerUri: S.optional(S.String),
           authorizerCredentials: S.optional(S.String),
@@ -5779,7 +5163,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           percentTraffic: S.optional(S.Number),
-          stageVariableOverrides: S.optional(MapOfStringToString),
+          stageVariableOverrides: S.optional(__S(2)),
           useStageCache: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "DeploymentCanarySettings" });
@@ -5791,9 +5175,9 @@ function __c1(j: number): any {
           stageDescription: S.optional(S.String),
           description: S.optional(S.String),
           cacheClusterEnabled: S.optional(S.Boolean),
-          cacheClusterSize: S.optional(CacheClusterSize),
-          variables: S.optional(MapOfStringToString),
-          canarySettings: S.optional(DeploymentCanarySettings),
+          cacheClusterSize: S.optional(S.String),
+          variables: S.optional(__S(2)),
+          canarySettings: S.optional(__S(10)),
           tracingEnabled: S.optional(S.Boolean),
         }).pipe(
           T.all(
@@ -5814,16 +5198,16 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "MethodSnapshot" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ MethodSnapshot.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(12).pipe(S.optional));
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ MapOfMethodSnapshot.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(13).pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           description: S.optional(S.String),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          apiSummary: S.optional(PathToMapOfMethodSnapshot),
+          apiSummary: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "Deployment" });
   }
@@ -5833,7 +5217,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: DocumentationPartType,
+          type: S.String,
           path: S.optional(S.String),
           method: S.optional(S.String),
           statusCode: S.optional(S.String),
@@ -5846,7 +5230,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          location: DocumentationPartLocation,
+          location: __S(16),
           properties: S.String,
         }).pipe(
           T.all(
@@ -5865,7 +5249,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          location: S.optional(DocumentationPartLocation),
+          location: S.optional(__S(16)),
           properties: S.optional(S.String),
         }),
       ).annotate({ identifier: "DocumentationPart" });
@@ -5898,13 +5282,13 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "DocumentationVersion" });
     case 5:
-      return S.Array(EndpointType);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
-          types: S.optional(ListOfEndpointType),
-          ipAddressType: S.optional(IpAddressType),
-          vpcEndpointIds: S.optional(ListOfString),
+          types: S.optional(__S(21)),
+          ipAddressType: S.optional(S.String),
+          vpcEndpointIds: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "EndpointConfiguration" });
     case 7:
@@ -5928,14 +5312,14 @@ function __c3(j: number): any {
           certificateArn: S.optional(S.String),
           regionalCertificateName: S.optional(S.String),
           regionalCertificateArn: S.optional(S.String),
-          endpointConfiguration: S.optional(EndpointConfiguration),
-          tags: S.optional(MapOfStringToString),
-          securityPolicy: S.optional(SecurityPolicy),
-          endpointAccessMode: S.optional(EndpointAccessMode),
-          mutualTlsAuthentication: S.optional(MutualTlsAuthenticationInput),
+          endpointConfiguration: S.optional(__S(22)),
+          tags: S.optional(__S(2)),
+          securityPolicy: S.optional(S.String),
+          endpointAccessMode: S.optional(S.String),
+          mutualTlsAuthentication: S.optional(__S(23)),
           ownershipVerificationCertificateArn: S.optional(S.String),
           policy: S.optional(S.String),
-          routingMode: S.optional(RoutingMode),
+          routingMode: S.optional(S.String),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/domainnames" }), svc, auth, proto, ver, rules),
         ),
@@ -5945,7 +5329,7 @@ function __c3(j: number): any {
         S.Struct({
           truststoreUri: S.optional(S.String),
           truststoreVersion: S.optional(S.String),
-          truststoreWarnings: S.optional(ListOfString),
+          truststoreWarnings: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "MutualTlsAuthentication" });
     case 2:
@@ -5963,26 +5347,26 @@ function __c3(j: number): any {
           regionalCertificateArn: S.optional(S.String),
           distributionDomainName: S.optional(S.String),
           distributionHostedZoneId: S.optional(S.String),
-          endpointConfiguration: S.optional(EndpointConfiguration),
-          domainNameStatus: S.optional(DomainNameStatus),
+          endpointConfiguration: S.optional(__S(22)),
+          domainNameStatus: S.optional(S.String),
           domainNameStatusMessage: S.optional(S.String),
-          securityPolicy: S.optional(SecurityPolicy),
-          endpointAccessMode: S.optional(EndpointAccessMode),
-          tags: S.optional(MapOfStringToString),
-          mutualTlsAuthentication: S.optional(MutualTlsAuthentication),
+          securityPolicy: S.optional(S.String),
+          endpointAccessMode: S.optional(S.String),
+          tags: S.optional(__S(2)),
+          mutualTlsAuthentication: S.optional(__S(25)),
           ownershipVerificationCertificateArn: S.optional(S.String),
           managementPolicy: S.optional(S.String),
           policy: S.optional(S.String),
-          routingMode: S.optional(RoutingMode),
+          routingMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "DomainName" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           domainNameArn: S.String,
-          accessAssociationSourceType: AccessAssociationSourceType,
+          accessAssociationSourceType: S.String,
           accessAssociationSource: S.String,
-          tags: S.optional(MapOfStringToString),
+          tags: S.optional(__S(2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/domainnameaccessassociations" }),
@@ -6001,9 +5385,9 @@ function __c3(j: number): any {
         S.Struct({
           domainNameAccessAssociationArn: S.optional(S.String),
           domainNameArn: S.optional(S.String),
-          accessAssociationSourceType: S.optional(AccessAssociationSourceType),
+          accessAssociationSourceType: S.optional(S.String),
           accessAssociationSource: S.optional(S.String),
-          tags: S.optional(MapOfStringToString),
+          tags: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "DomainNameAccessAssociation",
@@ -6093,24 +5477,24 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           statusCode: S.optional(S.String),
-          responseParameters: S.optional(MapOfStringToBoolean),
-          responseModels: S.optional(MapOfStringToString),
+          responseParameters: S.optional(__S(34)),
+          responseModels: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "MethodResponse" });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ MethodResponse.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(35).pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
           statusCode: S.optional(S.String),
           selectionPattern: S.optional(S.String),
-          responseParameters: S.optional(MapOfStringToString),
-          responseTemplates: S.optional(MapOfStringToString),
-          contentHandling: S.optional(ContentHandlingStrategy),
+          responseParameters: S.optional(__S(2)),
+          responseTemplates: S.optional(__S(2)),
+          contentHandling: S.optional(S.String),
         }),
       ).annotate({ identifier: "IntegrationResponse" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ IntegrationResponse.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(37).pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({ insecureSkipVerification: S.optional(S.Boolean) }),
@@ -6122,22 +5506,22 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(IntegrationType),
+          type: S.optional(S.String),
           httpMethod: S.optional(S.String),
           uri: S.optional(S.String),
-          connectionType: S.optional(ConnectionType),
+          connectionType: S.optional(S.String),
           connectionId: S.optional(S.String),
           credentials: S.optional(S.String),
-          requestParameters: S.optional(MapOfStringToString),
-          requestTemplates: S.optional(MapOfStringToString),
+          requestParameters: S.optional(__S(2)),
+          requestTemplates: S.optional(__S(2)),
           passthroughBehavior: S.optional(S.String),
-          contentHandling: S.optional(ContentHandlingStrategy),
+          contentHandling: S.optional(S.String),
           timeoutInMillis: S.optional(S.Number),
           cacheNamespace: S.optional(S.String),
-          cacheKeyParameters: S.optional(ListOfString),
-          integrationResponses: S.optional(MapOfIntegrationResponse),
-          tlsConfig: S.optional(TlsConfig),
-          responseTransferMode: S.optional(ResponseTransferMode),
+          cacheKeyParameters: S.optional(__S(4)),
+          integrationResponses: S.optional(__S(38)),
+          tlsConfig: S.optional(__S(39)),
+          responseTransferMode: S.optional(S.String),
           integrationTarget: S.optional(S.String),
         }),
       ).annotate({ identifier: "Integration" });
@@ -6150,15 +5534,15 @@ function __c5(j: number): any {
           apiKeyRequired: S.optional(S.Boolean),
           requestValidatorId: S.optional(S.String),
           operationName: S.optional(S.String),
-          requestParameters: S.optional(MapOfStringToBoolean),
-          requestModels: S.optional(MapOfStringToString),
-          methodResponses: S.optional(MapOfMethodResponse),
-          methodIntegration: S.optional(Integration),
-          authorizationScopes: S.optional(ListOfString),
+          requestParameters: S.optional(__S(34)),
+          requestModels: S.optional(__S(2)),
+          methodResponses: S.optional(__S(36)),
+          methodIntegration: S.optional(__S(40)),
+          authorizationScopes: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "Method" });
     case 2:
-      return S.Record(S.String, /*@__PURE__*/ Method.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(41).pipe(S.optional));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6166,7 +5550,7 @@ function __c5(j: number): any {
           parentId: S.optional(S.String),
           pathPart: S.optional(S.String),
           path: S.optional(S.String),
-          resourceMethods: S.optional(MapOfMethod),
+          resourceMethods: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "Resource" });
     case 4:
@@ -6176,15 +5560,15 @@ function __c5(j: number): any {
           description: S.optional(S.String),
           version: S.optional(S.String),
           cloneFrom: S.optional(S.String),
-          binaryMediaTypes: S.optional(ListOfString),
+          binaryMediaTypes: S.optional(__S(4)),
           minimumCompressionSize: S.optional(S.Number),
-          apiKeySource: S.optional(ApiKeySourceType),
-          endpointConfiguration: S.optional(EndpointConfiguration),
+          apiKeySource: S.optional(S.String),
+          endpointConfiguration: S.optional(__S(22)),
           policy: S.optional(S.String),
-          tags: S.optional(MapOfStringToString),
+          tags: S.optional(__S(2)),
           disableExecuteApiEndpoint: S.optional(S.Boolean),
-          securityPolicy: S.optional(SecurityPolicy),
-          endpointAccessMode: S.optional(EndpointAccessMode),
+          securityPolicy: S.optional(S.String),
+          endpointAccessMode: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/restapis" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateRestApiRequest" });
     case 5:
@@ -6195,18 +5579,18 @@ function __c5(j: number): any {
           description: S.optional(S.String),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           version: S.optional(S.String),
-          warnings: S.optional(ListOfString),
-          binaryMediaTypes: S.optional(ListOfString),
+          warnings: S.optional(__S(4)),
+          binaryMediaTypes: S.optional(__S(4)),
           minimumCompressionSize: S.optional(S.Number),
-          apiKeySource: S.optional(ApiKeySourceType),
-          endpointConfiguration: S.optional(EndpointConfiguration),
+          apiKeySource: S.optional(S.String),
+          endpointConfiguration: S.optional(__S(22)),
           policy: S.optional(S.String),
-          tags: S.optional(MapOfStringToString),
+          tags: S.optional(__S(2)),
           disableExecuteApiEndpoint: S.optional(S.Boolean),
           rootResourceId: S.optional(S.String),
-          securityPolicy: S.optional(SecurityPolicy),
-          endpointAccessMode: S.optional(EndpointAccessMode),
-          apiStatus: S.optional(ApiStatus),
+          securityPolicy: S.optional(S.String),
+          endpointAccessMode: S.optional(S.String),
+          apiStatus: S.optional(S.String),
           apiStatusMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "RestApi" });
@@ -6215,7 +5599,7 @@ function __c5(j: number): any {
         S.Struct({
           percentTraffic: S.optional(S.Number),
           deploymentId: S.optional(S.String),
-          stageVariableOverrides: S.optional(MapOfStringToString),
+          stageVariableOverrides: S.optional(__S(2)),
           useStageCache: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CanarySettings" });
@@ -6227,12 +5611,12 @@ function __c5(j: number): any {
           deploymentId: S.String,
           description: S.optional(S.String),
           cacheClusterEnabled: S.optional(S.Boolean),
-          cacheClusterSize: S.optional(CacheClusterSize),
-          variables: S.optional(MapOfStringToString),
+          cacheClusterSize: S.optional(S.String),
+          variables: S.optional(__S(2)),
           documentationVersion: S.optional(S.String),
-          canarySettings: S.optional(CanarySettings),
+          canarySettings: S.optional(__S(46)),
           tracingEnabled: S.optional(S.Boolean),
-          tags: S.optional(MapOfStringToString),
+          tags: S.optional(__S(2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/restapis/{restApiId}/stages" }),
@@ -6260,13 +5644,11 @@ function __c6(j: number): any {
           cacheTtlInSeconds: S.optional(S.Number),
           cacheDataEncrypted: S.optional(S.Boolean),
           requireAuthorizationForCacheControl: S.optional(S.Boolean),
-          unauthorizedCacheControlHeaderStrategy: S.optional(
-            UnauthorizedCacheControlHeaderStrategy,
-          ),
+          unauthorizedCacheControlHeaderStrategy: S.optional(S.String),
         }),
       ).annotate({ identifier: "MethodSetting" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ MethodSetting.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(48).pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({ format: S.optional(S.String), destinationArn: S.optional(S.String) }),
@@ -6279,16 +5661,16 @@ function __c6(j: number): any {
           stageName: S.optional(S.String),
           description: S.optional(S.String),
           cacheClusterEnabled: S.optional(S.Boolean),
-          cacheClusterSize: S.optional(CacheClusterSize),
-          cacheClusterStatus: S.optional(CacheClusterStatus),
-          methodSettings: S.optional(MapOfMethodSettings),
-          variables: S.optional(MapOfStringToString),
+          cacheClusterSize: S.optional(S.String),
+          cacheClusterStatus: S.optional(S.String),
+          methodSettings: S.optional(__S(49)),
+          variables: S.optional(__S(2)),
           documentationVersion: S.optional(S.String),
-          accessLogSettings: S.optional(AccessLogSettings),
-          canarySettings: S.optional(CanarySettings),
+          accessLogSettings: S.optional(__S(50)),
+          canarySettings: S.optional(__S(46)),
           tracingEnabled: S.optional(S.Boolean),
           webAclArn: S.optional(S.String),
-          tags: S.optional(MapOfStringToString),
+          tags: S.optional(__S(2)),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -6298,17 +5680,17 @@ function __c6(j: number): any {
         S.Struct({ burstLimit: S.optional(S.Number), rateLimit: S.optional(S.Number) }),
       ).annotate({ identifier: "ThrottleSettings" });
     case 5:
-      return S.Record(S.String, /*@__PURE__*/ ThrottleSettings.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(52).pipe(S.optional));
     case 6:
       return S.suspend(() =>
         S.Struct({
           apiId: S.optional(S.String),
           stage: S.optional(S.String),
-          throttle: S.optional(MapOfApiStageThrottleSettings),
+          throttle: S.optional(__S(53)),
         }),
       ).annotate({ identifier: "ApiStage" });
     case 7:
-      return S.Array(ApiStage);
+      return S.Array(__S(54));
   }
 }
 function __c7(j: number): any {
@@ -6318,7 +5700,7 @@ function __c7(j: number): any {
         S.Struct({
           limit: S.optional(S.Number),
           offset: S.optional(S.Number),
-          period: S.optional(QuotaPeriodType),
+          period: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaSettings" });
     case 1:
@@ -6326,10 +5708,10 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          apiStages: S.optional(ListOfApiStage),
-          throttle: S.optional(ThrottleSettings),
-          quota: S.optional(QuotaSettings),
-          tags: S.optional(MapOfStringToString),
+          apiStages: S.optional(__S(55)),
+          throttle: S.optional(__S(52)),
+          quota: S.optional(__S(56)),
+          tags: S.optional(__S(2)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/usageplans" }), svc, auth, proto, ver, rules),
         ),
@@ -6340,11 +5722,11 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          apiStages: S.optional(ListOfApiStage),
-          throttle: S.optional(ThrottleSettings),
-          quota: S.optional(QuotaSettings),
+          apiStages: S.optional(__S(55)),
+          throttle: S.optional(__S(52)),
+          quota: S.optional(__S(56)),
           productCode: S.optional(S.String),
-          tags: S.optional(MapOfStringToString),
+          tags: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "UsagePlan" });
     case 3:
@@ -6380,8 +5762,8 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          targetArns: ListOfString,
-          tags: S.optional(MapOfStringToString),
+          targetArns: __S(4),
+          tags: S.optional(__S(2)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/vpclinks" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateVpcLinkRequest" });
     case 6:
@@ -6390,10 +5772,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          targetArns: S.optional(ListOfString),
-          status: S.optional(VpcLinkStatus),
+          targetArns: S.optional(__S(4)),
+          status: S.optional(S.String),
           statusMessage: S.optional(S.String),
-          tags: S.optional(MapOfStringToString),
+          tags: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "VpcLink" });
     case 7:
@@ -6582,7 +5964,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          responseType: GatewayResponseType.pipe(T.HttpLabel("responseType")),
+          responseType: S.String.pipe(T.HttpLabel("responseType")),
         }).pipe(
           T.all(
             T.Http({
@@ -6861,7 +6243,7 @@ function __c11(j: number): any {
       ).annotate({ identifier: "FlushStageCacheRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ description: S.optional(S.String), tags: S.optional(MapOfStringToString) }).pipe(
+        S.Struct({ description: S.optional(S.String), tags: S.optional(__S(2)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/clientcertificates" }),
             svc,
@@ -6882,7 +6264,7 @@ function __c11(j: number): any {
           pemEncodedCertificate: S.optional(S.String),
           createdDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           expirationDate: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          tags: S.optional(MapOfStringToString),
+          tags: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "ClientCertificate" });
     case 4:
@@ -6895,8 +6277,8 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           cloudwatchRoleArn: S.optional(S.String),
-          throttleSettings: S.optional(ThrottleSettings),
-          features: S.optional(ListOfString),
+          throttleSettings: S.optional(__S(52)),
+          features: S.optional(__S(4)),
           apiKeyVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "Account" });
@@ -6924,12 +6306,12 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ApiKey);
+      return S.Array(__S(5));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          warnings: S.optional(ListOfString),
-          items: S.optional(ListOfApiKey),
+          warnings: S.optional(__S(4)),
+          items: S.optional(__S(96)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "ApiKeys" });
@@ -6967,11 +6349,11 @@ function __c12(j: number): any {
         ),
       ).annotate({ identifier: "GetAuthorizersRequest" });
     case 4:
-      return S.Array(Authorizer);
+      return S.Array(__S(7));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListOfAuthorizer),
+          items: S.optional(__S(100)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "Authorizers" });
@@ -7019,11 +6401,11 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BasePathMapping);
+      return S.Array(__S(9));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListOfBasePathMapping),
+          items: S.optional(__S(104)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "BasePathMappings" });
@@ -7061,11 +6443,11 @@ function __c13(j: number): any {
         identifier: "GetClientCertificatesRequest",
       });
     case 4:
-      return S.Array(ClientCertificate);
+      return S.Array(__S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListOfClientCertificate),
+          items: S.optional(__S(108)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "ClientCertificates" });
@@ -7074,7 +6456,7 @@ function __c13(j: number): any {
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           deploymentId: S.String.pipe(T.HttpLabel("deploymentId")),
-          embed: S.optional(ListOfString).pipe(T.HttpQuery("embed")),
+          embed: S.optional(__S(4)).pipe(T.HttpQuery("embed")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/restapis/{restApiId}/deployments/{deploymentId}" }),
@@ -7108,11 +6490,11 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Deployment);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListOfDeployment),
+          items: S.optional(__S(112)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "Deployments" });
@@ -7141,12 +6523,12 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          type: S.optional(DocumentationPartType).pipe(T.HttpQuery("type")),
+          type: S.optional(S.String).pipe(T.HttpQuery("type")),
           nameQuery: S.optional(S.String).pipe(T.HttpQuery("name")),
           path: S.optional(S.String).pipe(T.HttpQuery("path")),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
           limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
-          locationStatus: S.optional(LocationStatusType).pipe(T.HttpQuery("locationStatus")),
+          locationStatus: S.optional(S.String).pipe(T.HttpQuery("locationStatus")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/restapis/{restApiId}/documentation/parts" }),
@@ -7161,11 +6543,11 @@ function __c14(j: number): any {
         identifier: "GetDocumentationPartsRequest",
       });
     case 4:
-      return S.Array(DocumentationPart);
+      return S.Array(__S(18));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListOfDocumentationPart),
+          items: S.optional(__S(116)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "DocumentationParts" });
@@ -7214,11 +6596,11 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DocumentationVersion);
+      return S.Array(__S(20));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListOfDocumentationVersion),
+          items: S.optional(__S(120)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "DocumentationVersions" });
@@ -7243,7 +6625,7 @@ function __c15(j: number): any {
         S.Struct({
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
           limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
-          resourceOwner: S.optional(ResourceOwner).pipe(T.HttpQuery("resourceOwner")),
+          resourceOwner: S.optional(S.String).pipe(T.HttpQuery("resourceOwner")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/domainnameaccessassociations" }),
@@ -7258,11 +6640,11 @@ function __c15(j: number): any {
         identifier: "GetDomainNameAccessAssociationsRequest",
       });
     case 4:
-      return S.Array(DomainNameAccessAssociation);
+      return S.Array(__S(28));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListOfDomainNameAccessAssociation),
+          items: S.optional(__S(124)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({
@@ -7273,13 +6655,13 @@ function __c15(j: number): any {
         S.Struct({
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
           limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
-          resourceOwner: S.optional(ResourceOwner).pipe(T.HttpQuery("resourceOwner")),
+          resourceOwner: S.optional(S.String).pipe(T.HttpQuery("resourceOwner")),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/domainnames" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetDomainNamesRequest" });
     case 7:
-      return S.Array(DomainName);
+      return S.Array(__S(26));
   }
 }
 function __c16(j: number): any {
@@ -7287,7 +6669,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListOfDomainName),
+          items: S.optional(__S(127)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "DomainNames" });
@@ -7297,7 +6679,7 @@ function __c16(j: number): any {
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           stageName: S.String.pipe(T.HttpLabel("stageName")),
           exportType: S.String.pipe(T.HttpLabel("exportType")),
-          parameters: S.optional(MapOfStringToString).pipe(T.HttpQueryParams()),
+          parameters: S.optional(__S(2)).pipe(T.HttpQueryParams()),
           accepts: S.optional(S.String).pipe(T.HttpHeader("Accept")),
         }).pipe(
           T.all(
@@ -7325,7 +6707,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          responseType: GatewayResponseType.pipe(T.HttpLabel("responseType")),
+          responseType: S.String.pipe(T.HttpLabel("responseType")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/restapis/{restApiId}/gatewayresponses/{responseType}" }),
@@ -7342,10 +6724,10 @@ function __c16(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          responseType: S.optional(GatewayResponseType),
+          responseType: S.optional(S.String),
           statusCode: S.optional(S.String),
-          responseParameters: S.optional(MapOfStringToString),
-          responseTemplates: S.optional(MapOfStringToString),
+          responseParameters: S.optional(__S(2)),
+          responseTemplates: S.optional(__S(2)),
           defaultResponse: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "GatewayResponse" });
@@ -7369,11 +6751,11 @@ function __c16(j: number): any {
         identifier: "GetGatewayResponsesRequest",
       });
     case 6:
-      return S.Array(GatewayResponse);
+      return S.Array(__S(132));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListOfGatewayResponse),
+          items: S.optional(__S(134)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "GatewayResponses" });
@@ -7500,11 +6882,11 @@ function __c17(j: number): any {
         ),
       ).annotate({ identifier: "GetModelsRequest" });
     case 6:
-      return S.Array(Model);
+      return S.Array(__S(30));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListOfModel),
+          items: S.optional(__S(142)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "Models" });
@@ -7576,11 +6958,11 @@ function __c18(j: number): any {
         identifier: "GetRequestValidatorsRequest",
       });
     case 4:
-      return S.Array(RequestValidator);
+      return S.Array(__S(32));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListOfRequestValidator),
+          items: S.optional(__S(148)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "RequestValidators" });
@@ -7589,7 +6971,7 @@ function __c18(j: number): any {
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           resourceId: S.String.pipe(T.HttpLabel("resourceId")),
-          embed: S.optional(ListOfString).pipe(T.HttpQuery("embed")),
+          embed: S.optional(__S(4)).pipe(T.HttpQuery("embed")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/restapis/{restApiId}/resources/{resourceId}" }),
@@ -7607,7 +6989,7 @@ function __c18(j: number): any {
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
           limit: S.optional(S.Number).pipe(T.HttpQuery("limit")),
-          embed: S.optional(ListOfString).pipe(T.HttpQuery("embed")),
+          embed: S.optional(__S(4)).pipe(T.HttpQuery("embed")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/restapis/{restApiId}/resources" }),
@@ -7624,11 +7006,11 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Resource);
+      return S.Array(__S(43));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListOfResource),
+          items: S.optional(__S(152)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "Resources" });
@@ -7653,11 +7035,11 @@ function __c19(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/restapis" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetRestApisRequest" });
     case 4:
-      return S.Array(RestApi);
+      return S.Array(__S(45));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListOfRestApi),
+          items: S.optional(__S(156)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "RestApis" });
@@ -7667,7 +7049,7 @@ function __c19(j: number): any {
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           stageName: S.String.pipe(T.HttpLabel("stageName")),
           sdkType: S.String.pipe(T.HttpLabel("sdkType")),
-          parameters: S.optional(MapOfStringToString).pipe(T.HttpQueryParams()),
+          parameters: S.optional(__S(2)).pipe(T.HttpQueryParams()),
         }).pipe(
           T.all(
             T.Http({
@@ -7703,14 +7085,14 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "SdkConfigurationProperty" });
     case 1:
-      return S.Array(SdkConfigurationProperty);
+      return S.Array(__S(160));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           friendlyName: S.optional(S.String),
           description: S.optional(S.String),
-          configurationProperties: S.optional(ListOfSdkConfigurationProperty),
+          configurationProperties: S.optional(__S(161)),
         }),
       ).annotate({ identifier: "SdkType" });
     case 3:
@@ -7721,10 +7103,10 @@ function __c20(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/sdktypes" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetSdkTypesRequest" });
     case 4:
-      return S.Array(SdkType);
+      return S.Array(__S(162));
     case 5:
       return S.suspend(() =>
-        S.Struct({ items: S.optional(ListOfSdkType) }).pipe(S.encodeKeys({ items: "item" })),
+        S.Struct({ items: S.optional(__S(164)) }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "SdkTypes" });
     case 6:
       return S.suspend(() =>
@@ -7763,9 +7145,9 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Stage);
+      return S.Array(__S(51));
     case 1:
-      return S.suspend(() => S.Struct({ item: S.optional(ListOfStage) })).annotate({
+      return S.suspend(() => S.Struct({ item: S.optional(__S(168)) })).annotate({
         identifier: "Stages",
       });
     case 2:
@@ -7786,7 +7168,7 @@ function __c21(j: number): any {
         ),
       ).annotate({ identifier: "GetTagsRequest" });
     case 3:
-      return S.suspend(() => S.Struct({ tags: S.optional(MapOfStringToString) })).annotate({
+      return S.suspend(() => S.Struct({ tags: S.optional(__S(2)) })).annotate({
         identifier: "Tags",
       });
     case 4:
@@ -7812,9 +7194,9 @@ function __c21(j: number): any {
     case 5:
       return S.Array(S.Number);
     case 6:
-      return S.Array(ListOfLong);
+      return S.Array(__S(173));
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ ListOfUsage.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(174).pipe(S.optional));
   }
 }
 function __c22(j: number): any {
@@ -7825,7 +7207,7 @@ function __c22(j: number): any {
           usagePlanId: S.optional(S.String),
           startDate: S.optional(S.String),
           endDate: S.optional(S.String),
-          items: S.optional(MapOfKeyUsages),
+          items: S.optional(__S(175)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "values" })),
       ).annotate({ identifier: "Usage" });
@@ -7877,11 +7259,11 @@ function __c22(j: number): any {
         ),
       ).annotate({ identifier: "GetUsagePlanKeysRequest" });
     case 4:
-      return S.Array(UsagePlanKey);
+      return S.Array(__S(60));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListOfUsagePlanKey),
+          items: S.optional(__S(180)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "UsagePlanKeys" });
@@ -7894,7 +7276,7 @@ function __c22(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/usageplans" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetUsagePlansRequest" });
     case 7:
-      return S.Array(UsagePlan);
+      return S.Array(__S(58));
   }
 }
 function __c23(j: number): any {
@@ -7902,7 +7284,7 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListOfUsagePlan),
+          items: S.optional(__S(183)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "UsagePlans" });
@@ -7927,11 +7309,11 @@ function __c23(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/vpclinks" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetVpcLinksRequest" });
     case 3:
-      return S.Array(VpcLink);
+      return S.Array(__S(62));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListOfVpcLink),
+          items: S.optional(__S(187)),
           position: S.optional(S.String).pipe(T.HttpQuery("position")),
         }).pipe(S.encodeKeys({ items: "item" })),
       ).annotate({ identifier: "VpcLinks" });
@@ -7939,7 +7321,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           body: T.StreamingInput.pipe(T.HttpPayload()),
-          format: ApiKeysFormat.pipe(T.HttpQuery("format")),
+          format: S.String.pipe(T.HttpQuery("format")),
           failOnWarnings: S.optional(S.Boolean).pipe(T.HttpQuery("failonwarnings")),
         }).pipe(
           T.all(
@@ -7954,13 +7336,13 @@ function __c23(j: number): any {
       ).annotate({ identifier: "ImportApiKeysRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ids: S.optional(ListOfString), warnings: S.optional(ListOfString) }),
+        S.Struct({ ids: S.optional(__S(4)), warnings: S.optional(__S(4)) }),
       ).annotate({ identifier: "ApiKeyIds" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          mode: S.optional(PutMode).pipe(T.HttpQuery("mode")),
+          mode: S.optional(S.String).pipe(T.HttpQuery("mode")),
           failOnWarnings: S.optional(S.Boolean).pipe(T.HttpQuery("failonwarnings")),
           body: T.StreamingInput.pipe(T.HttpPayload()),
         }).pipe(
@@ -7984,7 +7366,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           failOnWarnings: S.optional(S.Boolean).pipe(T.HttpQuery("failonwarnings")),
-          parameters: S.optional(MapOfStringToString).pipe(T.HttpQueryParams()),
+          parameters: S.optional(__S(2)).pipe(T.HttpQueryParams()),
           body: T.StreamingInput.pipe(T.HttpPayload()),
         }).pipe(
           T.all(
@@ -8001,10 +7383,10 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          responseType: GatewayResponseType.pipe(T.HttpLabel("responseType")),
+          responseType: S.String.pipe(T.HttpLabel("responseType")),
           statusCode: S.optional(S.String),
-          responseParameters: S.optional(MapOfStringToString),
-          responseTemplates: S.optional(MapOfStringToString),
+          responseParameters: S.optional(__S(2)),
+          responseTemplates: S.optional(__S(2)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/restapis/{restApiId}/gatewayresponses/{responseType}" }),
@@ -8024,21 +7406,21 @@ function __c24(j: number): any {
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           resourceId: S.String.pipe(T.HttpLabel("resourceId")),
           httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
-          type: IntegrationType,
+          type: S.String,
           integrationHttpMethod: S.optional(S.String),
           uri: S.optional(S.String),
-          connectionType: S.optional(ConnectionType),
+          connectionType: S.optional(S.String),
           connectionId: S.optional(S.String),
           credentials: S.optional(S.String),
-          requestParameters: S.optional(MapOfStringToString),
-          requestTemplates: S.optional(MapOfStringToString),
+          requestParameters: S.optional(__S(2)),
+          requestTemplates: S.optional(__S(2)),
           passthroughBehavior: S.optional(S.String),
           cacheNamespace: S.optional(S.String),
-          cacheKeyParameters: S.optional(ListOfString),
-          contentHandling: S.optional(ContentHandlingStrategy),
+          cacheKeyParameters: S.optional(__S(4)),
+          contentHandling: S.optional(S.String),
           timeoutInMillis: S.optional(S.Number),
-          tlsConfig: S.optional(TlsConfig),
-          responseTransferMode: S.optional(ResponseTransferMode),
+          tlsConfig: S.optional(__S(39)),
+          responseTransferMode: S.optional(S.String),
           integrationTarget: S.optional(S.String),
         })
           .pipe(
@@ -8066,9 +7448,9 @@ function __c24(j: number): any {
           httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
           statusCode: S.String.pipe(T.HttpLabel("statusCode")),
           selectionPattern: S.optional(S.String),
-          responseParameters: S.optional(MapOfStringToString),
-          responseTemplates: S.optional(MapOfStringToString),
-          contentHandling: S.optional(ContentHandlingStrategy),
+          responseParameters: S.optional(__S(2)),
+          responseTemplates: S.optional(__S(2)),
+          contentHandling: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({
@@ -8095,10 +7477,10 @@ function __c24(j: number): any {
           authorizerId: S.optional(S.String),
           apiKeyRequired: S.optional(S.Boolean),
           operationName: S.optional(S.String),
-          requestParameters: S.optional(MapOfStringToBoolean),
-          requestModels: S.optional(MapOfStringToString),
+          requestParameters: S.optional(__S(34)),
+          requestModels: S.optional(__S(2)),
           requestValidatorId: S.optional(S.String),
-          authorizationScopes: S.optional(ListOfString),
+          authorizationScopes: S.optional(__S(4)),
         }).pipe(
           T.all(
             T.Http({
@@ -8120,8 +7502,8 @@ function __c24(j: number): any {
           resourceId: S.String.pipe(T.HttpLabel("resourceId")),
           httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
           statusCode: S.String.pipe(T.HttpLabel("statusCode")),
-          responseParameters: S.optional(MapOfStringToBoolean),
-          responseModels: S.optional(MapOfStringToString),
+          responseParameters: S.optional(__S(34)),
+          responseModels: S.optional(__S(2)),
         }).pipe(
           T.all(
             T.Http({
@@ -8140,9 +7522,9 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          mode: S.optional(PutMode).pipe(T.HttpQuery("mode")),
+          mode: S.optional(S.String).pipe(T.HttpQuery("mode")),
           failOnWarnings: S.optional(S.Boolean).pipe(T.HttpQuery("failonwarnings")),
-          parameters: S.optional(MapOfStringToString).pipe(T.HttpQueryParams()),
+          parameters: S.optional(__S(2)).pipe(T.HttpQueryParams()),
           body: T.StreamingInput.pipe(T.HttpPayload()),
         }).pipe(
           T.all(
@@ -8183,7 +7565,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tags: MapOfStringToString,
+          tags: __S(2),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/tags/{resourceArn}" }),
@@ -8196,18 +7578,18 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "TagResourceRequest" });
     case 1:
-      return S.Record(S.String, /*@__PURE__*/ ListOfString.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(4).pipe(S.optional));
     case 2:
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           authorizerId: S.String.pipe(T.HttpLabel("authorizerId")),
-          headers: S.optional(MapOfStringToString),
-          multiValueHeaders: S.optional(MapOfStringToList),
+          headers: S.optional(__S(2)),
+          multiValueHeaders: S.optional(__S(201)),
           pathWithQueryString: S.optional(S.String),
           body: S.optional(S.String),
-          stageVariables: S.optional(MapOfStringToString),
-          additionalContext: S.optional(MapOfStringToString),
+          stageVariables: S.optional(__S(2)),
+          additionalContext: S.optional(__S(2)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/restapis/{restApiId}/authorizers/{authorizerId}" }),
@@ -8229,8 +7611,8 @@ function __c25(j: number): any {
           latency: S.optional(S.Number),
           principalId: S.optional(S.String),
           policy: S.optional(S.String),
-          authorization: S.optional(MapOfStringToList),
-          claims: S.optional(MapOfStringToString),
+          authorization: S.optional(__S(201)),
+          claims: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "TestInvokeAuthorizerResponse",
@@ -8243,10 +7625,10 @@ function __c25(j: number): any {
           httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
           pathWithQueryString: S.optional(S.String),
           body: S.optional(S.String),
-          headers: S.optional(MapOfStringToString),
-          multiValueHeaders: S.optional(MapOfStringToList),
+          headers: S.optional(__S(2)),
+          multiValueHeaders: S.optional(__S(201)),
           clientCertificateId: S.optional(S.String),
-          stageVariables: S.optional(MapOfStringToString),
+          stageVariables: S.optional(__S(2)),
         }).pipe(
           T.all(
             T.Http({
@@ -8266,8 +7648,8 @@ function __c25(j: number): any {
         S.Struct({
           status: S.optional(S.Number),
           body: S.optional(S.String),
-          headers: S.optional(MapOfStringToString),
-          multiValueHeaders: S.optional(MapOfStringToList),
+          headers: S.optional(__S(2)),
+          multiValueHeaders: S.optional(__S(201)),
           log: S.optional(S.String),
           latency: S.optional(S.Number),
         }),
@@ -8276,7 +7658,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceArn: S.String.pipe(T.HttpLabel("resourceArn")),
-          tagKeys: ListOfString.pipe(T.HttpQuery("tagKeys")),
+          tagKeys: __S(4).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{resourceArn}" }),
@@ -8291,7 +7673,7 @@ function __c25(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          op: S.optional(Op),
+          op: S.optional(S.String),
           path: S.optional(S.String),
           value: S.optional(S.String),
           from: S.optional(S.String),
@@ -8302,10 +7684,10 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PatchOperation);
+      return S.Array(__S(207));
     case 1:
       return S.suspend(() =>
-        S.Struct({ patchOperations: S.optional(ListOfPatchOperation) }).pipe(
+        S.Struct({ patchOperations: S.optional(__S(208)) }).pipe(
           T.all(T.Http({ method: "PATCH", uri: "/account" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateAccountRequest" });
@@ -8313,7 +7695,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           apiKey: S.String.pipe(T.HttpLabel("apiKey")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/apikeys/{apiKey}" }),
@@ -8330,7 +7712,7 @@ function __c26(j: number): any {
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           authorizerId: S.String.pipe(T.HttpLabel("authorizerId")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/restapis/{restApiId}/authorizers/{authorizerId}" }),
@@ -8348,7 +7730,7 @@ function __c26(j: number): any {
           domainName: S.String.pipe(T.HttpLabel("domainName")),
           domainNameId: S.optional(S.String).pipe(T.HttpQuery("domainNameId")),
           basePath: S.String.pipe(T.HttpLabel("basePath")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({
@@ -8369,7 +7751,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clientCertificateId: S.String.pipe(T.HttpLabel("clientCertificateId")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/clientcertificates/{clientCertificateId}" }),
@@ -8388,7 +7770,7 @@ function __c26(j: number): any {
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           deploymentId: S.String.pipe(T.HttpLabel("deploymentId")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/restapis/{restApiId}/deployments/{deploymentId}" }),
@@ -8405,7 +7787,7 @@ function __c26(j: number): any {
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           documentationPartId: S.String.pipe(T.HttpLabel("documentationPartId")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({
@@ -8431,7 +7813,7 @@ function __c27(j: number): any {
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           documentationVersion: S.String.pipe(T.HttpLabel("documentationVersion")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({
@@ -8453,7 +7835,7 @@ function __c27(j: number): any {
         S.Struct({
           domainName: S.String.pipe(T.HttpLabel("domainName")),
           domainNameId: S.optional(S.String).pipe(T.HttpQuery("domainNameId")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/domainnames/{domainName}" }),
@@ -8469,8 +7851,8 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          responseType: GatewayResponseType.pipe(T.HttpLabel("responseType")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          responseType: S.String.pipe(T.HttpLabel("responseType")),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({
@@ -8493,7 +7875,7 @@ function __c27(j: number): any {
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           resourceId: S.String.pipe(T.HttpLabel("resourceId")),
           httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({
@@ -8515,7 +7897,7 @@ function __c27(j: number): any {
           resourceId: S.String.pipe(T.HttpLabel("resourceId")),
           httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
           statusCode: S.String.pipe(T.HttpLabel("statusCode")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({
@@ -8538,7 +7920,7 @@ function __c27(j: number): any {
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           resourceId: S.String.pipe(T.HttpLabel("resourceId")),
           httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({
@@ -8560,7 +7942,7 @@ function __c27(j: number): any {
           resourceId: S.String.pipe(T.HttpLabel("resourceId")),
           httpMethod: S.String.pipe(T.HttpLabel("httpMethod")),
           statusCode: S.String.pipe(T.HttpLabel("statusCode")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({
@@ -8582,7 +7964,7 @@ function __c27(j: number): any {
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           modelName: S.String.pipe(T.HttpLabel("modelName")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/restapis/{restApiId}/models/{modelName}" }),
@@ -8603,7 +7985,7 @@ function __c28(j: number): any {
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           requestValidatorId: S.String.pipe(T.HttpLabel("requestValidatorId")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({
@@ -8625,7 +8007,7 @@ function __c28(j: number): any {
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           resourceId: S.String.pipe(T.HttpLabel("resourceId")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/restapis/{restApiId}/resources/{resourceId}" }),
@@ -8641,7 +8023,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/restapis/{restApiId}" }),
@@ -8658,7 +8040,7 @@ function __c28(j: number): any {
         S.Struct({
           restApiId: S.String.pipe(T.HttpLabel("restApiId")),
           stageName: S.String.pipe(T.HttpLabel("stageName")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/restapis/{restApiId}/stages/{stageName}" }),
@@ -8675,7 +8057,7 @@ function __c28(j: number): any {
         S.Struct({
           usagePlanId: S.String.pipe(T.HttpLabel("usagePlanId")),
           keyId: S.String.pipe(T.HttpLabel("keyId")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/usageplans/{usagePlanId}/keys/{keyId}/usage" }),
@@ -8691,7 +8073,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           usagePlanId: S.String.pipe(T.HttpLabel("usagePlanId")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/usageplans/{usagePlanId}" }),
@@ -8707,7 +8089,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           vpcLinkId: S.String.pipe(T.HttpLabel("vpcLinkId")),
-          patchOperations: S.optional(ListOfPatchOperation),
+          patchOperations: S.optional(__S(208)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/vpclinks/{vpcLinkId}" }),
@@ -8719,5 +8101,72 @@ function __c28(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateVpcLinkRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
   }
 }

@@ -9,6 +9,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Transcribe Streaming",
   serviceShapeName: "Transcribe",
@@ -117,57 +119,33 @@ export type SessionId = string;
 export interface GetMedicalScribeStreamRequest {
   SessionId: string;
 }
-const GetMedicalScribeStreamRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetMedicalScribeStreamRequest>;
 export type MedicalScribeLanguageCode = "en-US" | (string & {});
-const MedicalScribeLanguageCode = S.String;
-
 export type MedicalScribeMediaSampleRateHertz = number;
 export type MedicalScribeMediaEncoding = "pcm" | "ogg-opus" | "flac" | (string & {});
-const MedicalScribeMediaEncoding = S.String;
-
 export type VocabularyName = string;
 export type VocabularyFilterName = string;
 export type MedicalScribeVocabularyFilterMethod = "remove" | "mask" | "tag" | (string & {});
-const MedicalScribeVocabularyFilterMethod = S.String;
-
 export type IamRoleArn = string;
 export type MedicalScribeChannelId = number;
 export type MedicalScribeParticipantRole = "PATIENT" | "CLINICIAN" | (string & {});
-const MedicalScribeParticipantRole = S.String;
-
 export interface MedicalScribeChannelDefinition {
   ChannelId: number;
   ParticipantRole: MedicalScribeParticipantRole;
 }
-const MedicalScribeChannelDefinition = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<MedicalScribeChannelDefinition>;
 export type MedicalScribeChannelDefinitions = MedicalScribeChannelDefinition[];
-const MedicalScribeChannelDefinitions = /*@__PURE__*/ __L.at(__c0, 2);
 export type NonEmptyString = string;
 export type KMSEncryptionContextMap = { [key: string]: string | undefined };
-const KMSEncryptionContextMap = /*@__PURE__*/ __L.at(__c0, 3);
 export type KMSKeyId = string;
 export interface MedicalScribeEncryptionSettings {
   KmsEncryptionContext?: { [key: string]: string | undefined };
   KmsKeyId: string;
 }
-const MedicalScribeEncryptionSettings = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<MedicalScribeEncryptionSettings>;
 export type MedicalScribeStreamStatus =
   | "IN_PROGRESS"
   | "PAUSED"
   | "FAILED"
   | "COMPLETED"
   | (string & {});
-const MedicalScribeStreamStatus = S.String;
-
 export type BucketName = string;
 export type MedicalScribeNoteTemplate =
   | "HISTORY_AND_PHYSICAL"
@@ -178,44 +156,24 @@ export type MedicalScribeNoteTemplate =
   | "BEHAVIORAL_SOAP"
   | "PHYSICAL_SOAP"
   | (string & {});
-const MedicalScribeNoteTemplate = S.String;
-
 export interface ClinicalNoteGenerationSettings {
   OutputBucketName: string;
   NoteTemplate?: MedicalScribeNoteTemplate;
 }
-const ClinicalNoteGenerationSettings = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ClinicalNoteGenerationSettings>;
 export interface MedicalScribePostStreamAnalyticsSettings {
   ClinicalNoteGenerationSettings: ClinicalNoteGenerationSettings;
 }
-const MedicalScribePostStreamAnalyticsSettings = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<MedicalScribePostStreamAnalyticsSettings>;
 export type Uri = string;
 export type ClinicalNoteGenerationStatus = "IN_PROGRESS" | "FAILED" | "COMPLETED" | (string & {});
-const ClinicalNoteGenerationStatus = S.String;
-
 export interface ClinicalNoteGenerationResult {
   ClinicalNoteOutputLocation?: string;
   TranscriptOutputLocation?: string;
   Status?: ClinicalNoteGenerationStatus;
   FailureReason?: string;
 }
-const ClinicalNoteGenerationResult = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ClinicalNoteGenerationResult>;
 export interface MedicalScribePostStreamAnalyticsResult {
   ClinicalNoteGenerationResult?: ClinicalNoteGenerationResult;
 }
-const MedicalScribePostStreamAnalyticsResult = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<MedicalScribePostStreamAnalyticsResult>;
 export interface MedicalScribeStreamDetails {
   SessionId?: string;
   StreamCreatedAt?: Date;
@@ -234,17 +192,9 @@ export interface MedicalScribeStreamDetails {
   PostStreamAnalyticsResult?: MedicalScribePostStreamAnalyticsResult;
   MedicalScribeContextProvided?: boolean;
 }
-const MedicalScribeStreamDetails = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<MedicalScribeStreamDetails>;
 export interface GetMedicalScribeStreamResponse {
   MedicalScribeStreamDetails?: MedicalScribeStreamDetails;
 }
-const GetMedicalScribeStreamResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetMedicalScribeStreamResponse>;
 export type CallAnalyticsLanguageCode =
   | "en-US"
   | "en-GB"
@@ -256,8 +206,6 @@ export type CallAnalyticsLanguageCode =
   | "de-DE"
   | "pt-BR"
   | (string & {});
-const CallAnalyticsLanguageCode = S.String;
-
 export type MediaSampleRateHertz = number;
 export type MediaEncoding =
   | "pcm"
@@ -267,64 +215,39 @@ export type MediaEncoding =
   | "g711-ulaw"
   | "g729"
   | (string & {});
-const MediaEncoding = S.String;
-
 export type AudioChunk = Uint8Array;
 export interface AudioEvent {
   AudioChunk?: Uint8Array;
 }
-const AudioEvent = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<AudioEvent>;
 export type ChannelId = number;
 export type ParticipantRole = "AGENT" | "CUSTOMER" | (string & {});
-const ParticipantRole = S.String;
-
 export interface ChannelDefinition {
   ChannelId: number;
   ParticipantRole: ParticipantRole;
 }
-const ChannelDefinition = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ChannelDefinition>;
 export type ChannelDefinitions = ChannelDefinition[];
-const ChannelDefinitions = /*@__PURE__*/ __L.at(__c1, 5);
 export type ContentRedactionOutput = "redacted" | "redacted_and_unredacted" | (string & {});
-const ContentRedactionOutput = S.String;
-
 export interface PostCallAnalyticsSettings {
   OutputLocation: string;
   DataAccessRoleArn: string;
   ContentRedactionOutput?: ContentRedactionOutput;
   OutputEncryptionKMSKeyId?: string;
 }
-const PostCallAnalyticsSettings = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<PostCallAnalyticsSettings>;
 export interface ConfigurationEvent {
   ChannelDefinitions?: ChannelDefinition[];
   PostCallAnalyticsSettings?: PostCallAnalyticsSettings;
 }
-const ConfigurationEvent = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ConfigurationEvent>;
 export type AudioStream =
   | { AudioEvent: AudioEvent; ConfigurationEvent?: never }
   | { AudioEvent?: never; ConfigurationEvent: ConfigurationEvent };
-const AudioStream = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<
-  stream.Stream<AudioStream, Error, never>
->;
 export type VocabularyFilterMethod = "remove" | "mask" | "tag" | (string & {});
-const VocabularyFilterMethod = S.String;
-
 export type ModelName = string;
 export type LanguageOptions = string;
 export type VocabularyNames = string;
 export type VocabularyFilterNames = string;
 export type PartialResultsStability = "high" | "medium" | "low" | (string & {});
-const PartialResultsStability = S.String;
-
 export type ContentIdentificationType = "PII" | (string & {});
-const ContentIdentificationType = S.String;
-
 export type ContentRedactionType = "PII" | (string & {});
-const ContentRedactionType = S.String;
-
 export type PiiEntityTypes = string;
 export interface StartCallAnalyticsStreamTranscriptionRequest {
   LanguageCode?: CallAnalyticsLanguageCode;
@@ -347,14 +270,8 @@ export interface StartCallAnalyticsStreamTranscriptionRequest {
   ContentRedactionType?: ContentRedactionType;
   PiiEntityTypes?: string;
 }
-const StartCallAnalyticsStreamTranscriptionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<StartCallAnalyticsStreamTranscriptionRequest>;
 export type RequestId = string;
 export type ItemType = "pronunciation" | "punctuation" | (string & {});
-const ItemType = S.String;
-
 export type Confidence = number;
 export type Stable = boolean;
 export interface CallAnalyticsItem {
@@ -366,9 +283,7 @@ export interface CallAnalyticsItem {
   VocabularyFilterMatch?: boolean;
   Stable?: boolean;
 }
-const CallAnalyticsItem = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CallAnalyticsItem>;
 export type CallAnalyticsItemList = CallAnalyticsItem[];
-const CallAnalyticsItemList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface CallAnalyticsEntity {
   BeginOffsetMillis?: number;
   EndOffsetMillis?: number;
@@ -377,33 +292,21 @@ export interface CallAnalyticsEntity {
   Content?: string;
   Confidence?: number;
 }
-const CallAnalyticsEntity = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CallAnalyticsEntity>;
 export type CallAnalyticsEntityList = CallAnalyticsEntity[];
-const CallAnalyticsEntityList = /*@__PURE__*/ __L.at(__c2, 5);
 export type Sentiment = "POSITIVE" | "NEGATIVE" | "MIXED" | "NEUTRAL" | (string & {});
-const Sentiment = S.String;
-
 export interface CharacterOffsets {
   Begin?: number;
   End?: number;
 }
-const CharacterOffsets = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CharacterOffsets>;
 export interface IssueDetected {
   CharacterOffsets?: CharacterOffsets;
 }
-const IssueDetected = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<IssueDetected>;
 export type IssuesDetected = IssueDetected[];
-const IssuesDetected = /*@__PURE__*/ __L.at(__c3, 0);
 export interface CallAnalyticsLanguageWithScore {
   LanguageCode?: CallAnalyticsLanguageCode;
   Score?: number;
 }
-const CallAnalyticsLanguageWithScore = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CallAnalyticsLanguageWithScore>;
 export type CallAnalyticsLanguageIdentification = CallAnalyticsLanguageWithScore[];
-const CallAnalyticsLanguageIdentification = /*@__PURE__*/ __L.at(__c3, 2);
 export interface UtteranceEvent {
   UtteranceId?: string;
   IsPartial?: boolean;
@@ -418,27 +321,20 @@ export interface UtteranceEvent {
   LanguageCode?: CallAnalyticsLanguageCode;
   LanguageIdentification?: CallAnalyticsLanguageWithScore[];
 }
-const UtteranceEvent = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<UtteranceEvent>;
 export type StringList = string[];
-const StringList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface TimestampRange {
   BeginOffsetMillis?: number;
   EndOffsetMillis?: number;
 }
-const TimestampRange = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<TimestampRange>;
 export type TimestampRanges = TimestampRange[];
-const TimestampRanges = /*@__PURE__*/ __L.at(__c3, 6);
 export interface PointsOfInterest {
   TimestampRanges?: TimestampRange[];
 }
-const PointsOfInterest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<PointsOfInterest>;
 export type MatchedCategoryDetails = { [key: string]: PointsOfInterest | undefined };
-const MatchedCategoryDetails = /*@__PURE__*/ __L.at(__c4, 0);
 export interface CategoryEvent {
   MatchedCategories?: string[];
   MatchedDetails?: { [key: string]: PointsOfInterest | undefined };
 }
-const CategoryEvent = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<CategoryEvent>;
 export type CallAnalyticsTranscriptResultStream =
   | {
       UtteranceEvent: UtteranceEvent;
@@ -503,9 +399,6 @@ export type CallAnalyticsTranscriptResultStream =
       ConflictException?: never;
       ServiceUnavailableException: ServiceUnavailableException;
     };
-const CallAnalyticsTranscriptResultStream = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<
-  stream.Stream<CallAnalyticsTranscriptResultStream, Error, never>
->;
 export interface StartCallAnalyticsStreamTranscriptionResponse {
   RequestId?: string;
   LanguageCode?: CallAnalyticsLanguageCode;
@@ -532,41 +425,20 @@ export interface StartCallAnalyticsStreamTranscriptionResponse {
   ContentRedactionType?: ContentRedactionType;
   PiiEntityTypes?: string;
 }
-const StartCallAnalyticsStreamTranscriptionResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<StartCallAnalyticsStreamTranscriptionResponse>;
 export interface MedicalScribeAudioEvent {
   AudioChunk: Uint8Array;
 }
-const MedicalScribeAudioEvent = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<MedicalScribeAudioEvent>;
 export type MedicalScribeSessionControlEventType = "END_OF_SESSION" | (string & {});
-const MedicalScribeSessionControlEventType = S.String;
-
 export interface MedicalScribeSessionControlEvent {
   Type: MedicalScribeSessionControlEventType;
 }
-const MedicalScribeSessionControlEvent = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<MedicalScribeSessionControlEvent>;
 export type Pronouns = "HE_HIM" | "SHE_HER" | "THEY_THEM" | (string & {});
-const Pronouns = S.String;
-
 export interface MedicalScribePatientContext {
   Pronouns?: Pronouns;
 }
-const MedicalScribePatientContext = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<MedicalScribePatientContext>;
 export interface MedicalScribeContext {
   PatientContext?: MedicalScribePatientContext;
 }
-const MedicalScribeContext = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<MedicalScribeContext>;
 export interface MedicalScribeConfigurationEvent {
   VocabularyName?: string;
   VocabularyFilterName?: string;
@@ -577,10 +449,6 @@ export interface MedicalScribeConfigurationEvent {
   PostStreamAnalyticsSettings: MedicalScribePostStreamAnalyticsSettings;
   MedicalScribeContext?: MedicalScribeContext;
 }
-const MedicalScribeConfigurationEvent = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<MedicalScribeConfigurationEvent>;
 export type MedicalScribeInputStream =
   | { AudioEvent: MedicalScribeAudioEvent; SessionControlEvent?: never; ConfigurationEvent?: never }
   | {
@@ -593,9 +461,6 @@ export type MedicalScribeInputStream =
       SessionControlEvent?: never;
       ConfigurationEvent: MedicalScribeConfigurationEvent;
     };
-const MedicalScribeInputStream = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<
-  stream.Stream<MedicalScribeInputStream, Error, never>
->;
 export interface StartMedicalScribeStreamRequest {
   SessionId?: string;
   LanguageCode: MedicalScribeLanguageCode;
@@ -603,13 +468,7 @@ export interface StartMedicalScribeStreamRequest {
   MediaEncoding: MedicalScribeMediaEncoding;
   InputStream: stream.Stream<MedicalScribeInputStream, Error, never>;
 }
-const StartMedicalScribeStreamRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<StartMedicalScribeStreamRequest>;
 export type MedicalScribeTranscriptItemType = "pronunciation" | "punctuation" | (string & {});
-const MedicalScribeTranscriptItemType = S.String;
-
 export interface MedicalScribeTranscriptItem {
   BeginAudioTime?: number;
   EndAudioTime?: number;
@@ -618,12 +477,7 @@ export interface MedicalScribeTranscriptItem {
   Content?: string;
   VocabularyFilterMatch?: boolean;
 }
-const MedicalScribeTranscriptItem = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<MedicalScribeTranscriptItem>;
 export type MedicalScribeTranscriptItemList = MedicalScribeTranscriptItem[];
-const MedicalScribeTranscriptItemList = /*@__PURE__*/ __L.at(__c5, 4);
 export interface MedicalScribeTranscriptSegment {
   SegmentId?: string;
   BeginAudioTime?: number;
@@ -633,17 +487,9 @@ export interface MedicalScribeTranscriptSegment {
   IsPartial?: boolean;
   ChannelId?: string;
 }
-const MedicalScribeTranscriptSegment = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<MedicalScribeTranscriptSegment>;
 export interface MedicalScribeTranscriptEvent {
   TranscriptSegment?: MedicalScribeTranscriptSegment;
 }
-const MedicalScribeTranscriptEvent = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<MedicalScribeTranscriptEvent>;
 export type MedicalScribeResultStream =
   | {
       TranscriptEvent: MedicalScribeTranscriptEvent;
@@ -693,9 +539,6 @@ export type MedicalScribeResultStream =
       ConflictException?: never;
       ServiceUnavailableException: ServiceUnavailableException;
     };
-const MedicalScribeResultStream = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<
-  stream.Stream<MedicalScribeResultStream, Error, never>
->;
 export interface StartMedicalScribeStreamResponse {
   SessionId?: string;
   RequestId?: string;
@@ -704,10 +547,6 @@ export interface StartMedicalScribeStreamResponse {
   MediaEncoding?: MedicalScribeMediaEncoding;
   ResultStream?: stream.Stream<MedicalScribeResultStream, Error, never>;
 }
-const StartMedicalScribeStreamResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<StartMedicalScribeStreamResponse>;
 export type LanguageCode =
   | "en-US"
   | "en-GB"
@@ -809,8 +648,6 @@ export type LanguageCode =
   | "tr-TR"
   | "uz-UZ"
   | (string & {});
-const LanguageCode = S.String;
-
 export type Specialty =
   | "PRIMARYCARE"
   | "CARDIOLOGY"
@@ -819,15 +656,9 @@ export type Specialty =
   | "RADIOLOGY"
   | "UROLOGY"
   | (string & {});
-const Specialty = S.String;
-
 export type Type = "CONVERSATION" | "DICTATION" | (string & {});
-const Type = S.String;
-
 export type NumberOfChannels = number;
 export type MedicalContentIdentificationType = "PHI" | (string & {});
-const MedicalContentIdentificationType = S.String;
-
 export interface StartMedicalStreamTranscriptionRequest {
   LanguageCode: LanguageCode;
   MediaSampleRateHertz: number;
@@ -842,10 +673,6 @@ export interface StartMedicalStreamTranscriptionRequest {
   NumberOfChannels?: number;
   ContentIdentificationType?: MedicalContentIdentificationType;
 }
-const StartMedicalStreamTranscriptionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<StartMedicalStreamTranscriptionRequest>;
 export interface MedicalItem {
   StartTime?: number;
   EndTime?: number;
@@ -854,9 +681,7 @@ export interface MedicalItem {
   Confidence?: number;
   Speaker?: string;
 }
-const MedicalItem = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<MedicalItem>;
 export type MedicalItemList = MedicalItem[];
-const MedicalItemList = /*@__PURE__*/ __L.at(__c6, 3);
 export interface MedicalEntity {
   StartTime?: number;
   EndTime?: number;
@@ -864,17 +689,13 @@ export interface MedicalEntity {
   Content?: string;
   Confidence?: number;
 }
-const MedicalEntity = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<MedicalEntity>;
 export type MedicalEntityList = MedicalEntity[];
-const MedicalEntityList = /*@__PURE__*/ __L.at(__c6, 5);
 export interface MedicalAlternative {
   Transcript?: string;
   Items?: MedicalItem[];
   Entities?: MedicalEntity[];
 }
-const MedicalAlternative = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<MedicalAlternative>;
 export type MedicalAlternativeList = MedicalAlternative[];
-const MedicalAlternativeList = /*@__PURE__*/ __L.at(__c6, 7);
 export interface MedicalResult {
   ResultId?: string;
   StartTime?: number;
@@ -883,20 +704,13 @@ export interface MedicalResult {
   Alternatives?: MedicalAlternative[];
   ChannelId?: string;
 }
-const MedicalResult = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<MedicalResult>;
 export type MedicalResultList = MedicalResult[];
-const MedicalResultList = /*@__PURE__*/ __L.at(__c7, 1);
 export interface MedicalTranscript {
   Results?: MedicalResult[];
 }
-const MedicalTranscript = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<MedicalTranscript>;
 export interface MedicalTranscriptEvent {
   Transcript?: MedicalTranscript;
 }
-const MedicalTranscriptEvent = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<MedicalTranscriptEvent>;
 export type MedicalTranscriptResultStream =
   | {
       TranscriptEvent: MedicalTranscriptEvent;
@@ -946,9 +760,6 @@ export type MedicalTranscriptResultStream =
       ConflictException?: never;
       ServiceUnavailableException: ServiceUnavailableException;
     };
-const MedicalTranscriptResultStream = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<
-  stream.Stream<MedicalTranscriptResultStream, Error, never>
->;
 export interface StartMedicalStreamTranscriptionResponse {
   RequestId?: string;
   LanguageCode?: LanguageCode;
@@ -964,14 +775,8 @@ export interface StartMedicalStreamTranscriptionResponse {
   NumberOfChannels?: number;
   ContentIdentificationType?: MedicalContentIdentificationType;
 }
-const StartMedicalStreamTranscriptionResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<StartMedicalStreamTranscriptionResponse>;
 export type SessionResumeWindow = number;
 export type TranscriptFormat = "spoken" | "written" | (string & {});
-const TranscriptFormat = S.String;
-
 export interface StartStreamTranscriptionRequest {
   LanguageCode?: LanguageCode;
   MediaSampleRateHertz: number;
@@ -999,10 +804,6 @@ export interface StartStreamTranscriptionRequest {
   SessionResumeWindow?: number;
   TranscriptFormat?: TranscriptFormat;
 }
-const StartStreamTranscriptionRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<StartStreamTranscriptionRequest>;
 export interface Item {
   StartTime?: number;
   EndTime?: number;
@@ -1013,9 +814,7 @@ export interface Item {
   Confidence?: number;
   Stable?: boolean;
 }
-const Item = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<Item>;
 export type ItemList = Item[];
-const ItemList = /*@__PURE__*/ __L.at(__c8, 0);
 export interface Entity {
   StartTime?: number;
   EndTime?: number;
@@ -1024,24 +823,18 @@ export interface Entity {
   Content?: string;
   Confidence?: number;
 }
-const Entity = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<Entity>;
 export type EntityList = Entity[];
-const EntityList = /*@__PURE__*/ __L.at(__c8, 2);
 export interface Alternative {
   Transcript?: string;
   Items?: Item[];
   Entities?: Entity[];
 }
-const Alternative = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<Alternative>;
 export type AlternativeList = Alternative[];
-const AlternativeList = /*@__PURE__*/ __L.at(__c8, 4);
 export interface LanguageWithScore {
   LanguageCode?: LanguageCode;
   Score?: number;
 }
-const LanguageWithScore = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<LanguageWithScore>;
 export type LanguageIdentification = LanguageWithScore[];
-const LanguageIdentification = /*@__PURE__*/ __L.at(__c8, 6);
 export interface Result {
   ResultId?: string;
   StartTime?: number;
@@ -1052,17 +845,13 @@ export interface Result {
   LanguageCode?: LanguageCode;
   LanguageIdentification?: LanguageWithScore[];
 }
-const Result = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Result>;
 export type ResultList = Result[];
-const ResultList = /*@__PURE__*/ __L.at(__c9, 0);
 export interface Transcript {
   Results?: Result[];
 }
-const Transcript = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<Transcript>;
 export interface TranscriptEvent {
   Transcript?: Transcript;
 }
-const TranscriptEvent = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<TranscriptEvent>;
 export type TranscriptResultStream =
   | {
       TranscriptEvent: TranscriptEvent;
@@ -1112,9 +901,6 @@ export type TranscriptResultStream =
       ConflictException?: never;
       ServiceUnavailableException: ServiceUnavailableException;
     };
-const TranscriptResultStream = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<
-  stream.Stream<TranscriptResultStream, Error, never>
->;
 export interface StartStreamTranscriptionResponse {
   RequestId?: string;
   LanguageCode?: LanguageCode;
@@ -1143,10 +929,6 @@ export interface StartStreamTranscriptionResponse {
   SessionResumeWindow?: number;
   TranscriptFormat?: TranscriptFormat;
 }
-const StartStreamTranscriptionResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<StartStreamTranscriptionResponse>;
 export type GetMedicalScribeStreamError =
   | BadRequestException
   | InternalFailureException
@@ -1164,8 +946,8 @@ export const getMedicalScribeStream: API.OperationMethod<
   GetMedicalScribeStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMedicalScribeStreamRequest,
-  output: GetMedicalScribeStreamResponse,
+  input: __S(0) as any as S.Schema<GetMedicalScribeStreamRequest>,
+  output: __S(10) as any as S.Schema<GetMedicalScribeStreamResponse>,
   errors: [
     BadRequestException,
     InternalFailureException,
@@ -1205,8 +987,8 @@ export const startCallAnalyticsStreamTranscription: API.OperationMethod<
   StartCallAnalyticsStreamTranscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartCallAnalyticsStreamTranscriptionRequest,
-  output: StartCallAnalyticsStreamTranscriptionResponse,
+  input: __S(17) as any as S.Schema<StartCallAnalyticsStreamTranscriptionRequest>,
+  output: __S(35) as any as S.Schema<StartCallAnalyticsStreamTranscriptionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1263,8 +1045,8 @@ export const startMedicalScribeStream: API.OperationMethod<
   StartMedicalScribeStreamError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartMedicalScribeStreamRequest,
-  output: StartMedicalScribeStreamResponse,
+  input: __S(42) as any as S.Schema<StartMedicalScribeStreamRequest>,
+  output: __S(48) as any as S.Schema<StartMedicalScribeStreamResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1307,8 +1089,8 @@ export const startMedicalStreamTranscription: API.OperationMethod<
   StartMedicalStreamTranscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartMedicalStreamTranscriptionRequest,
-  output: StartMedicalStreamTranscriptionResponse,
+  input: __S(49) as any as S.Schema<StartMedicalStreamTranscriptionRequest>,
+  output: __S(61) as any as S.Schema<StartMedicalStreamTranscriptionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1348,8 +1130,8 @@ export const startStreamTranscription: API.OperationMethod<
   StartStreamTranscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartStreamTranscriptionRequest,
-  output: StartStreamTranscriptionResponse,
+  input: __S(62) as any as S.Schema<StartStreamTranscriptionRequest>,
+  output: __S(76) as any as S.Schema<StartStreamTranscriptionResponse>,
   errors: [
     BadRequestException,
     ConflictException,
@@ -1381,18 +1163,18 @@ function __c0(j: number): any {
         identifier: "GetMedicalScribeStreamRequest",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ ChannelId: S.Number, ParticipantRole: MedicalScribeParticipantRole }),
-      ).annotate({
-        identifier: "MedicalScribeChannelDefinition",
-      });
+      return S.suspend(() => S.Struct({ ChannelId: S.Number, ParticipantRole: S.String })).annotate(
+        {
+          identifier: "MedicalScribeChannelDefinition",
+        },
+      );
     case 2:
-      return S.Array(MedicalScribeChannelDefinition);
+      return S.Array(__S(1));
     case 3:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 4:
       return S.suspend(() =>
-        S.Struct({ KmsEncryptionContext: S.optional(KMSEncryptionContextMap), KmsKeyId: S.String }),
+        S.Struct({ KmsEncryptionContext: S.optional(__S(3)), KmsKeyId: S.String }),
       ).annotate({
         identifier: "MedicalScribeEncryptionSettings",
       });
@@ -1400,15 +1182,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           OutputBucketName: S.String,
-          NoteTemplate: S.optional(MedicalScribeNoteTemplate),
+          NoteTemplate: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ClinicalNoteGenerationSettings",
       });
     case 6:
-      return S.suspend(() =>
-        S.Struct({ ClinicalNoteGenerationSettings: ClinicalNoteGenerationSettings }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ ClinicalNoteGenerationSettings: __S(5) })).annotate({
         identifier: "MedicalScribePostStreamAnalyticsSettings",
       });
     case 7:
@@ -1416,7 +1196,7 @@ function __c0(j: number): any {
         S.Struct({
           ClinicalNoteOutputLocation: S.optional(S.String),
           TranscriptOutputLocation: S.optional(S.String),
-          Status: S.optional(ClinicalNoteGenerationStatus),
+          Status: S.optional(S.String),
           FailureReason: S.optional(S.String),
         }),
       ).annotate({
@@ -1428,7 +1208,7 @@ function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ ClinicalNoteGenerationResult: S.optional(ClinicalNoteGenerationResult) }),
+        S.Struct({ ClinicalNoteGenerationResult: S.optional(__S(7)) }),
       ).annotate({
         identifier: "MedicalScribePostStreamAnalyticsResult",
       });
@@ -1438,45 +1218,45 @@ function __c1(j: number): any {
           SessionId: S.optional(S.String),
           StreamCreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           StreamEndedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          LanguageCode: S.optional(MedicalScribeLanguageCode),
+          LanguageCode: S.optional(S.String),
           MediaSampleRateHertz: S.optional(S.Number),
-          MediaEncoding: S.optional(MedicalScribeMediaEncoding),
+          MediaEncoding: S.optional(S.String),
           VocabularyName: S.optional(S.String),
           VocabularyFilterName: S.optional(S.String),
-          VocabularyFilterMethod: S.optional(MedicalScribeVocabularyFilterMethod),
+          VocabularyFilterMethod: S.optional(S.String),
           ResourceAccessRoleArn: S.optional(S.String),
-          ChannelDefinitions: S.optional(MedicalScribeChannelDefinitions),
-          EncryptionSettings: S.optional(MedicalScribeEncryptionSettings),
-          StreamStatus: S.optional(MedicalScribeStreamStatus),
-          PostStreamAnalyticsSettings: S.optional(MedicalScribePostStreamAnalyticsSettings),
-          PostStreamAnalyticsResult: S.optional(MedicalScribePostStreamAnalyticsResult),
+          ChannelDefinitions: S.optional(__S(2)),
+          EncryptionSettings: S.optional(__S(4)),
+          StreamStatus: S.optional(S.String),
+          PostStreamAnalyticsSettings: S.optional(__S(6)),
+          PostStreamAnalyticsResult: S.optional(__S(8)),
           MedicalScribeContextProvided: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "MedicalScribeStreamDetails",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ MedicalScribeStreamDetails: S.optional(MedicalScribeStreamDetails) }),
-      ).annotate({
-        identifier: "GetMedicalScribeStreamResponse",
-      });
+      return S.suspend(() => S.Struct({ MedicalScribeStreamDetails: S.optional(__S(9)) })).annotate(
+        {
+          identifier: "GetMedicalScribeStreamResponse",
+        },
+      );
     case 3:
       return S.suspend(() =>
         S.Struct({ AudioChunk: S.optional(T.Blob).pipe(T.EventPayload()) }),
       ).annotate({ identifier: "AudioEvent" });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ ChannelId: S.Number, ParticipantRole: ParticipantRole }),
-      ).annotate({ identifier: "ChannelDefinition" });
+      return S.suspend(() => S.Struct({ ChannelId: S.Number, ParticipantRole: S.String })).annotate(
+        { identifier: "ChannelDefinition" },
+      );
     case 5:
-      return S.Array(ChannelDefinition);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           OutputLocation: S.String,
           DataAccessRoleArn: S.String,
-          ContentRedactionOutput: S.optional(ContentRedactionOutput),
+          ContentRedactionOutput: S.optional(S.String),
           OutputEncryptionKMSKeyId: S.optional(S.String),
         }),
       ).annotate({
@@ -1485,8 +1265,8 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ChannelDefinitions: S.optional(ChannelDefinitions),
-          PostCallAnalyticsSettings: S.optional(PostCallAnalyticsSettings),
+          ChannelDefinitions: S.optional(__S(13)),
+          PostCallAnalyticsSettings: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "ConfigurationEvent" });
   }
@@ -1496,27 +1276,25 @@ function __c2(j: number): any {
     case 0:
       return T.InputEventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ AudioEvent: AudioEvent }),
-          /*@__PURE__*/ S.Struct({ ConfigurationEvent: ConfigurationEvent }),
+          /*@__PURE__*/ S.Struct({ AudioEvent: __S(11) }),
+          /*@__PURE__*/ S.Struct({ ConfigurationEvent: __S(15) }),
         ]),
       );
     case 1:
       return S.suspend(() =>
         S.Struct({
-          LanguageCode: S.optional(CallAnalyticsLanguageCode).pipe(
-            T.HttpHeader("x-amzn-transcribe-language-code"),
-          ),
+          LanguageCode: S.optional(S.String).pipe(T.HttpHeader("x-amzn-transcribe-language-code")),
           MediaSampleRateHertz: S.Number.pipe(T.HttpHeader("x-amzn-transcribe-sample-rate")),
-          MediaEncoding: MediaEncoding.pipe(T.HttpHeader("x-amzn-transcribe-media-encoding")),
+          MediaEncoding: S.String.pipe(T.HttpHeader("x-amzn-transcribe-media-encoding")),
           VocabularyName: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-vocabulary-name"),
           ),
           SessionId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-transcribe-session-id")),
-          AudioStream: AudioStream.pipe(T.HttpPayload()),
+          AudioStream: __S(16).pipe(T.HttpPayload()),
           VocabularyFilterName: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-vocabulary-filter-name"),
           ),
-          VocabularyFilterMethod: S.optional(VocabularyFilterMethod).pipe(
+          VocabularyFilterMethod: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-vocabulary-filter-method"),
           ),
           LanguageModelName: S.optional(S.String).pipe(
@@ -1528,7 +1306,7 @@ function __c2(j: number): any {
           LanguageOptions: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-language-options"),
           ),
-          PreferredLanguage: S.optional(CallAnalyticsLanguageCode).pipe(
+          PreferredLanguage: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-preferred-language"),
           ),
           VocabularyNames: S.optional(S.String).pipe(
@@ -1540,13 +1318,13 @@ function __c2(j: number): any {
           EnablePartialResultsStabilization: S.optional(S.Boolean).pipe(
             T.HttpHeader("x-amzn-transcribe-enable-partial-results-stabilization"),
           ),
-          PartialResultsStability: S.optional(PartialResultsStability).pipe(
+          PartialResultsStability: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-partial-results-stability"),
           ),
-          ContentIdentificationType: S.optional(ContentIdentificationType).pipe(
+          ContentIdentificationType: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-content-identification-type"),
           ),
-          ContentRedactionType: S.optional(ContentRedactionType).pipe(
+          ContentRedactionType: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-content-redaction-type"),
           ),
           PiiEntityTypes: S.optional(S.String).pipe(
@@ -1570,7 +1348,7 @@ function __c2(j: number): any {
         S.Struct({
           BeginOffsetMillis: S.optional(S.Number),
           EndOffsetMillis: S.optional(S.Number),
-          Type: S.optional(ItemType),
+          Type: S.optional(S.String),
           Content: S.optional(S.String),
           Confidence: S.optional(S.Number),
           VocabularyFilterMatch: S.optional(S.Boolean),
@@ -1578,7 +1356,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "CallAnalyticsItem" });
     case 3:
-      return S.Array(CallAnalyticsItem);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1591,47 +1369,47 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "CallAnalyticsEntity" });
     case 5:
-      return S.Array(CallAnalyticsEntity);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({ Begin: S.optional(S.Number), End: S.optional(S.Number) }),
       ).annotate({ identifier: "CharacterOffsets" });
     case 7:
-      return S.suspend(() => S.Struct({ CharacterOffsets: S.optional(CharacterOffsets) })).annotate(
-        { identifier: "IssueDetected" },
-      );
+      return S.suspend(() => S.Struct({ CharacterOffsets: S.optional(__S(22)) })).annotate({
+        identifier: "IssueDetected",
+      });
   }
 }
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IssueDetected);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          LanguageCode: S.optional(CallAnalyticsLanguageCode),
+          LanguageCode: S.optional(S.String),
           Score: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "CallAnalyticsLanguageWithScore",
       });
     case 2:
-      return S.Array(CallAnalyticsLanguageWithScore);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
           UtteranceId: S.optional(S.String),
           IsPartial: S.optional(S.Boolean),
-          ParticipantRole: S.optional(ParticipantRole),
+          ParticipantRole: S.optional(S.String),
           BeginOffsetMillis: S.optional(S.Number),
           EndOffsetMillis: S.optional(S.Number),
           Transcript: S.optional(S.String),
-          Items: S.optional(CallAnalyticsItemList),
-          Entities: S.optional(CallAnalyticsEntityList),
-          Sentiment: S.optional(Sentiment),
-          IssuesDetected: S.optional(IssuesDetected),
-          LanguageCode: S.optional(CallAnalyticsLanguageCode),
-          LanguageIdentification: S.optional(CallAnalyticsLanguageIdentification),
+          Items: S.optional(__S(19)),
+          Entities: S.optional(__S(21)),
+          Sentiment: S.optional(S.String),
+          IssuesDetected: S.optional(__S(24)),
+          LanguageCode: S.optional(S.String),
+          LanguageIdentification: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "UtteranceEvent" });
     case 4:
@@ -1644,9 +1422,9 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "TimestampRange" });
     case 6:
-      return S.Array(TimestampRange);
+      return S.Array(__S(29));
     case 7:
-      return S.suspend(() => S.Struct({ TimestampRanges: S.optional(TimestampRanges) })).annotate({
+      return S.suspend(() => S.Struct({ TimestampRanges: S.optional(__S(30)) })).annotate({
         identifier: "PointsOfInterest",
       });
   }
@@ -1654,19 +1432,19 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, /*@__PURE__*/ PointsOfInterest.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(31).pipe(S.optional));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          MatchedCategories: S.optional(StringList),
-          MatchedDetails: S.optional(MatchedCategoryDetails),
+          MatchedCategories: S.optional(__S(28)),
+          MatchedDetails: S.optional(__S(32)),
         }),
       ).annotate({ identifier: "CategoryEvent" });
     case 2:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ UtteranceEvent: UtteranceEvent }),
-          /*@__PURE__*/ S.Struct({ CategoryEvent: CategoryEvent }),
+          /*@__PURE__*/ S.Struct({ UtteranceEvent: __S(27) }),
+          /*@__PURE__*/ S.Struct({ CategoryEvent: __S(33) }),
           /*@__PURE__*/ S.Struct({
             BadRequestException: /*@__PURE__*/ S.suspend(() => BadRequestException).annotate({
               identifier: "BadRequestException",
@@ -1702,26 +1480,22 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RequestId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-request-id")),
-          LanguageCode: S.optional(CallAnalyticsLanguageCode).pipe(
-            T.HttpHeader("x-amzn-transcribe-language-code"),
-          ),
+          LanguageCode: S.optional(S.String).pipe(T.HttpHeader("x-amzn-transcribe-language-code")),
           MediaSampleRateHertz: S.optional(S.Number).pipe(
             T.HttpHeader("x-amzn-transcribe-sample-rate"),
           ),
-          MediaEncoding: S.optional(MediaEncoding).pipe(
+          MediaEncoding: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-media-encoding"),
           ),
           VocabularyName: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-vocabulary-name"),
           ),
           SessionId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-transcribe-session-id")),
-          CallAnalyticsTranscriptResultStream: S.optional(CallAnalyticsTranscriptResultStream).pipe(
-            T.HttpPayload(),
-          ),
+          CallAnalyticsTranscriptResultStream: S.optional(__S(34)).pipe(T.HttpPayload()),
           VocabularyFilterName: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-vocabulary-filter-name"),
           ),
-          VocabularyFilterMethod: S.optional(VocabularyFilterMethod).pipe(
+          VocabularyFilterMethod: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-vocabulary-filter-method"),
           ),
           LanguageModelName: S.optional(S.String).pipe(
@@ -1733,7 +1507,7 @@ function __c4(j: number): any {
           LanguageOptions: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-language-options"),
           ),
-          PreferredLanguage: S.optional(CallAnalyticsLanguageCode).pipe(
+          PreferredLanguage: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-preferred-language"),
           ),
           VocabularyNames: S.optional(S.String).pipe(
@@ -1745,13 +1519,13 @@ function __c4(j: number): any {
           EnablePartialResultsStabilization: S.optional(S.Boolean).pipe(
             T.HttpHeader("x-amzn-transcribe-enable-partial-results-stabilization"),
           ),
-          PartialResultsStability: S.optional(PartialResultsStability).pipe(
+          PartialResultsStability: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-partial-results-stability"),
           ),
-          ContentIdentificationType: S.optional(ContentIdentificationType).pipe(
+          ContentIdentificationType: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-content-identification-type"),
           ),
-          ContentRedactionType: S.optional(ContentRedactionType).pipe(
+          ContentRedactionType: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-content-redaction-type"),
           ),
           PiiEntityTypes: S.optional(S.String).pipe(
@@ -1766,17 +1540,17 @@ function __c4(j: number): any {
         identifier: "MedicalScribeAudioEvent",
       });
     case 5:
-      return S.suspend(() => S.Struct({ Type: MedicalScribeSessionControlEventType })).annotate({
+      return S.suspend(() => S.Struct({ Type: S.String })).annotate({
         identifier: "MedicalScribeSessionControlEvent",
       });
     case 6:
-      return S.suspend(() => S.Struct({ Pronouns: S.optional(Pronouns) })).annotate({
+      return S.suspend(() => S.Struct({ Pronouns: S.optional(S.String) })).annotate({
         identifier: "MedicalScribePatientContext",
       });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ PatientContext: S.optional(MedicalScribePatientContext) }),
-      ).annotate({ identifier: "MedicalScribeContext" });
+      return S.suspend(() => S.Struct({ PatientContext: S.optional(__S(38)) })).annotate({
+        identifier: "MedicalScribeContext",
+      });
   }
 }
 function __c5(j: number): any {
@@ -1786,12 +1560,12 @@ function __c5(j: number): any {
         S.Struct({
           VocabularyName: S.optional(S.String),
           VocabularyFilterName: S.optional(S.String),
-          VocabularyFilterMethod: S.optional(MedicalScribeVocabularyFilterMethod),
+          VocabularyFilterMethod: S.optional(S.String),
           ResourceAccessRoleArn: S.String,
-          ChannelDefinitions: S.optional(MedicalScribeChannelDefinitions),
-          EncryptionSettings: S.optional(MedicalScribeEncryptionSettings),
-          PostStreamAnalyticsSettings: MedicalScribePostStreamAnalyticsSettings,
-          MedicalScribeContext: S.optional(MedicalScribeContext),
+          ChannelDefinitions: S.optional(__S(2)),
+          EncryptionSettings: S.optional(__S(4)),
+          PostStreamAnalyticsSettings: __S(6),
+          MedicalScribeContext: S.optional(__S(39)),
         }),
       ).annotate({
         identifier: "MedicalScribeConfigurationEvent",
@@ -1799,23 +1573,19 @@ function __c5(j: number): any {
     case 1:
       return T.InputEventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ AudioEvent: MedicalScribeAudioEvent }),
-          /*@__PURE__*/ S.Struct({ SessionControlEvent: MedicalScribeSessionControlEvent }),
-          /*@__PURE__*/ S.Struct({ ConfigurationEvent: MedicalScribeConfigurationEvent }),
+          /*@__PURE__*/ S.Struct({ AudioEvent: __S(36) }),
+          /*@__PURE__*/ S.Struct({ SessionControlEvent: __S(37) }),
+          /*@__PURE__*/ S.Struct({ ConfigurationEvent: __S(40) }),
         ]),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
           SessionId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-transcribe-session-id")),
-          LanguageCode: MedicalScribeLanguageCode.pipe(
-            T.HttpHeader("x-amzn-transcribe-language-code"),
-          ),
+          LanguageCode: S.String.pipe(T.HttpHeader("x-amzn-transcribe-language-code")),
           MediaSampleRateHertz: S.Number.pipe(T.HttpHeader("x-amzn-transcribe-sample-rate")),
-          MediaEncoding: MedicalScribeMediaEncoding.pipe(
-            T.HttpHeader("x-amzn-transcribe-media-encoding"),
-          ),
-          InputStream: MedicalScribeInputStream.pipe(T.HttpPayload()),
+          MediaEncoding: S.String.pipe(T.HttpHeader("x-amzn-transcribe-media-encoding")),
+          InputStream: __S(41).pipe(T.HttpPayload()),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/medical-scribe-stream" }),
@@ -1834,7 +1604,7 @@ function __c5(j: number): any {
         S.Struct({
           BeginAudioTime: S.optional(S.Number),
           EndAudioTime: S.optional(S.Number),
-          Type: S.optional(MedicalScribeTranscriptItemType),
+          Type: S.optional(S.String),
           Confidence: S.optional(S.Number),
           Content: S.optional(S.String),
           VocabularyFilterMatch: S.optional(S.Boolean),
@@ -1843,7 +1613,7 @@ function __c5(j: number): any {
         identifier: "MedicalScribeTranscriptItem",
       });
     case 4:
-      return S.Array(MedicalScribeTranscriptItem);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1851,7 +1621,7 @@ function __c5(j: number): any {
           BeginAudioTime: S.optional(S.Number),
           EndAudioTime: S.optional(S.Number),
           Content: S.optional(S.String),
-          Items: S.optional(MedicalScribeTranscriptItemList),
+          Items: S.optional(__S(44)),
           IsPartial: S.optional(S.Boolean),
           ChannelId: S.optional(S.String),
         }),
@@ -1859,15 +1629,13 @@ function __c5(j: number): any {
         identifier: "MedicalScribeTranscriptSegment",
       });
     case 6:
-      return S.suspend(() =>
-        S.Struct({ TranscriptSegment: S.optional(MedicalScribeTranscriptSegment) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ TranscriptSegment: S.optional(__S(45)) })).annotate({
         identifier: "MedicalScribeTranscriptEvent",
       });
     case 7:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ TranscriptEvent: MedicalScribeTranscriptEvent }),
+          /*@__PURE__*/ S.Struct({ TranscriptEvent: __S(46) }),
           /*@__PURE__*/ S.Struct({
             BadRequestException: /*@__PURE__*/ S.suspend(() => BadRequestException).annotate({
               identifier: "BadRequestException",
@@ -1908,16 +1676,14 @@ function __c6(j: number): any {
         S.Struct({
           SessionId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-transcribe-session-id")),
           RequestId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-request-id")),
-          LanguageCode: S.optional(MedicalScribeLanguageCode).pipe(
-            T.HttpHeader("x-amzn-transcribe-language-code"),
-          ),
+          LanguageCode: S.optional(S.String).pipe(T.HttpHeader("x-amzn-transcribe-language-code")),
           MediaSampleRateHertz: S.optional(S.Number).pipe(
             T.HttpHeader("x-amzn-transcribe-sample-rate"),
           ),
-          MediaEncoding: S.optional(MedicalScribeMediaEncoding).pipe(
+          MediaEncoding: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-media-encoding"),
           ),
-          ResultStream: S.optional(MedicalScribeResultStream).pipe(T.HttpPayload()),
+          ResultStream: S.optional(__S(47)).pipe(T.HttpPayload()),
         }),
       ).annotate({
         identifier: "StartMedicalScribeStreamResponse",
@@ -1925,26 +1691,26 @@ function __c6(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          LanguageCode: LanguageCode.pipe(T.HttpHeader("x-amzn-transcribe-language-code")),
+          LanguageCode: S.String.pipe(T.HttpHeader("x-amzn-transcribe-language-code")),
           MediaSampleRateHertz: S.Number.pipe(T.HttpHeader("x-amzn-transcribe-sample-rate")),
-          MediaEncoding: MediaEncoding.pipe(T.HttpHeader("x-amzn-transcribe-media-encoding")),
+          MediaEncoding: S.String.pipe(T.HttpHeader("x-amzn-transcribe-media-encoding")),
           VocabularyName: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-vocabulary-name"),
           ),
-          Specialty: Specialty.pipe(T.HttpHeader("x-amzn-transcribe-specialty")),
-          Type: Type.pipe(T.HttpHeader("x-amzn-transcribe-type")),
+          Specialty: S.String.pipe(T.HttpHeader("x-amzn-transcribe-specialty")),
+          Type: S.String.pipe(T.HttpHeader("x-amzn-transcribe-type")),
           ShowSpeakerLabel: S.optional(S.Boolean).pipe(
             T.HttpHeader("x-amzn-transcribe-show-speaker-label"),
           ),
           SessionId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-transcribe-session-id")),
-          AudioStream: AudioStream.pipe(T.HttpPayload()),
+          AudioStream: __S(16).pipe(T.HttpPayload()),
           EnableChannelIdentification: S.optional(S.Boolean).pipe(
             T.HttpHeader("x-amzn-transcribe-enable-channel-identification"),
           ),
           NumberOfChannels: S.optional(S.Number).pipe(
             T.HttpHeader("x-amzn-transcribe-number-of-channels"),
           ),
-          ContentIdentificationType: S.optional(MedicalContentIdentificationType).pipe(
+          ContentIdentificationType: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-content-identification-type"),
           ),
         }).pipe(
@@ -1965,14 +1731,14 @@ function __c6(j: number): any {
         S.Struct({
           StartTime: S.optional(S.Number),
           EndTime: S.optional(S.Number),
-          Type: S.optional(ItemType),
+          Type: S.optional(S.String),
           Content: S.optional(S.String),
           Confidence: S.optional(S.Number),
           Speaker: S.optional(S.String),
         }),
       ).annotate({ identifier: "MedicalItem" });
     case 3:
-      return S.Array(MedicalItem);
+      return S.Array(__S(50));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -1984,17 +1750,17 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "MedicalEntity" });
     case 5:
-      return S.Array(MedicalEntity);
+      return S.Array(__S(52));
     case 6:
       return S.suspend(() =>
         S.Struct({
           Transcript: S.optional(S.String),
-          Items: S.optional(MedicalItemList),
-          Entities: S.optional(MedicalEntityList),
+          Items: S.optional(__S(51)),
+          Entities: S.optional(__S(53)),
         }),
       ).annotate({ identifier: "MedicalAlternative" });
     case 7:
-      return S.Array(MedicalAlternative);
+      return S.Array(__S(54));
   }
 }
 function __c7(j: number): any {
@@ -2006,24 +1772,24 @@ function __c7(j: number): any {
           StartTime: S.optional(S.Number),
           EndTime: S.optional(S.Number),
           IsPartial: S.optional(S.Boolean),
-          Alternatives: S.optional(MedicalAlternativeList),
+          Alternatives: S.optional(__S(55)),
           ChannelId: S.optional(S.String),
         }),
       ).annotate({ identifier: "MedicalResult" });
     case 1:
-      return S.Array(MedicalResult);
+      return S.Array(__S(56));
     case 2:
-      return S.suspend(() => S.Struct({ Results: S.optional(MedicalResultList) })).annotate({
+      return S.suspend(() => S.Struct({ Results: S.optional(__S(57)) })).annotate({
         identifier: "MedicalTranscript",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Transcript: S.optional(MedicalTranscript) })).annotate({
+      return S.suspend(() => S.Struct({ Transcript: S.optional(__S(58)) })).annotate({
         identifier: "MedicalTranscriptEvent",
       });
     case 4:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ TranscriptEvent: MedicalTranscriptEvent }),
+          /*@__PURE__*/ S.Struct({ TranscriptEvent: __S(59) }),
           /*@__PURE__*/ S.Struct({
             BadRequestException: /*@__PURE__*/ S.suspend(() => BadRequestException).annotate({
               identifier: "BadRequestException",
@@ -2059,32 +1825,30 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RequestId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-request-id")),
-          LanguageCode: S.optional(LanguageCode).pipe(
-            T.HttpHeader("x-amzn-transcribe-language-code"),
-          ),
+          LanguageCode: S.optional(S.String).pipe(T.HttpHeader("x-amzn-transcribe-language-code")),
           MediaSampleRateHertz: S.optional(S.Number).pipe(
             T.HttpHeader("x-amzn-transcribe-sample-rate"),
           ),
-          MediaEncoding: S.optional(MediaEncoding).pipe(
+          MediaEncoding: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-media-encoding"),
           ),
           VocabularyName: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-vocabulary-name"),
           ),
-          Specialty: S.optional(Specialty).pipe(T.HttpHeader("x-amzn-transcribe-specialty")),
-          Type: S.optional(Type).pipe(T.HttpHeader("x-amzn-transcribe-type")),
+          Specialty: S.optional(S.String).pipe(T.HttpHeader("x-amzn-transcribe-specialty")),
+          Type: S.optional(S.String).pipe(T.HttpHeader("x-amzn-transcribe-type")),
           ShowSpeakerLabel: S.optional(S.Boolean).pipe(
             T.HttpHeader("x-amzn-transcribe-show-speaker-label"),
           ),
           SessionId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-transcribe-session-id")),
-          TranscriptResultStream: S.optional(MedicalTranscriptResultStream).pipe(T.HttpPayload()),
+          TranscriptResultStream: S.optional(__S(60)).pipe(T.HttpPayload()),
           EnableChannelIdentification: S.optional(S.Boolean).pipe(
             T.HttpHeader("x-amzn-transcribe-enable-channel-identification"),
           ),
           NumberOfChannels: S.optional(S.Number).pipe(
             T.HttpHeader("x-amzn-transcribe-number-of-channels"),
           ),
-          ContentIdentificationType: S.optional(MedicalContentIdentificationType).pipe(
+          ContentIdentificationType: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-content-identification-type"),
           ),
         }),
@@ -2094,20 +1858,18 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          LanguageCode: S.optional(LanguageCode).pipe(
-            T.HttpHeader("x-amzn-transcribe-language-code"),
-          ),
+          LanguageCode: S.optional(S.String).pipe(T.HttpHeader("x-amzn-transcribe-language-code")),
           MediaSampleRateHertz: S.Number.pipe(T.HttpHeader("x-amzn-transcribe-sample-rate")),
-          MediaEncoding: MediaEncoding.pipe(T.HttpHeader("x-amzn-transcribe-media-encoding")),
+          MediaEncoding: S.String.pipe(T.HttpHeader("x-amzn-transcribe-media-encoding")),
           VocabularyName: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-vocabulary-name"),
           ),
           SessionId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-transcribe-session-id")),
-          AudioStream: AudioStream.pipe(T.HttpPayload()),
+          AudioStream: __S(16).pipe(T.HttpPayload()),
           VocabularyFilterName: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-vocabulary-filter-name"),
           ),
-          VocabularyFilterMethod: S.optional(VocabularyFilterMethod).pipe(
+          VocabularyFilterMethod: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-vocabulary-filter-method"),
           ),
           ShowSpeakerLabel: S.optional(S.Boolean).pipe(
@@ -2122,13 +1884,13 @@ function __c7(j: number): any {
           EnablePartialResultsStabilization: S.optional(S.Boolean).pipe(
             T.HttpHeader("x-amzn-transcribe-enable-partial-results-stabilization"),
           ),
-          PartialResultsStability: S.optional(PartialResultsStability).pipe(
+          PartialResultsStability: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-partial-results-stability"),
           ),
-          ContentIdentificationType: S.optional(ContentIdentificationType).pipe(
+          ContentIdentificationType: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-content-identification-type"),
           ),
-          ContentRedactionType: S.optional(ContentRedactionType).pipe(
+          ContentRedactionType: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-content-redaction-type"),
           ),
           PiiEntityTypes: S.optional(S.String).pipe(
@@ -2143,7 +1905,7 @@ function __c7(j: number): any {
           LanguageOptions: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-language-options"),
           ),
-          PreferredLanguage: S.optional(LanguageCode).pipe(
+          PreferredLanguage: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-preferred-language"),
           ),
           IdentifyMultipleLanguages: S.optional(S.Boolean).pipe(
@@ -2158,7 +1920,7 @@ function __c7(j: number): any {
           SessionResumeWindow: S.optional(S.Number).pipe(
             T.HttpHeader("x-amzn-transcribe-session-resume-window"),
           ),
-          TranscriptFormat: S.optional(TranscriptFormat).pipe(
+          TranscriptFormat: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-transcript-format"),
           ),
         }).pipe(
@@ -2179,7 +1941,7 @@ function __c7(j: number): any {
         S.Struct({
           StartTime: S.optional(S.Number),
           EndTime: S.optional(S.Number),
-          Type: S.optional(ItemType),
+          Type: S.optional(S.String),
           Content: S.optional(S.String),
           VocabularyFilterMatch: S.optional(S.Boolean),
           Speaker: S.optional(S.String),
@@ -2192,7 +1954,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Item);
+      return S.Array(__S(63));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -2205,23 +1967,23 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "Entity" });
     case 2:
-      return S.Array(Entity);
+      return S.Array(__S(65));
     case 3:
       return S.suspend(() =>
         S.Struct({
           Transcript: S.optional(S.String),
-          Items: S.optional(ItemList),
-          Entities: S.optional(EntityList),
+          Items: S.optional(__S(64)),
+          Entities: S.optional(__S(66)),
         }),
       ).annotate({ identifier: "Alternative" });
     case 4:
-      return S.Array(Alternative);
+      return S.Array(__S(67));
     case 5:
       return S.suspend(() =>
-        S.Struct({ LanguageCode: S.optional(LanguageCode), Score: S.optional(S.Number) }),
+        S.Struct({ LanguageCode: S.optional(S.String), Score: S.optional(S.Number) }),
       ).annotate({ identifier: "LanguageWithScore" });
     case 6:
-      return S.Array(LanguageWithScore);
+      return S.Array(__S(69));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2229,10 +1991,10 @@ function __c8(j: number): any {
           StartTime: S.optional(S.Number),
           EndTime: S.optional(S.Number),
           IsPartial: S.optional(S.Boolean),
-          Alternatives: S.optional(AlternativeList),
+          Alternatives: S.optional(__S(68)),
           ChannelId: S.optional(S.String),
-          LanguageCode: S.optional(LanguageCode),
-          LanguageIdentification: S.optional(LanguageIdentification),
+          LanguageCode: S.optional(S.String),
+          LanguageIdentification: S.optional(__S(70)),
         }),
       ).annotate({ identifier: "Result" });
   }
@@ -2240,19 +2002,19 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Result);
+      return S.Array(__S(71));
     case 1:
-      return S.suspend(() => S.Struct({ Results: S.optional(ResultList) })).annotate({
+      return S.suspend(() => S.Struct({ Results: S.optional(__S(72)) })).annotate({
         identifier: "Transcript",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Transcript: S.optional(Transcript) })).annotate({
+      return S.suspend(() => S.Struct({ Transcript: S.optional(__S(73)) })).annotate({
         identifier: "TranscriptEvent",
       });
     case 3:
       return T.EventStream(
         /*@__PURE__*/ S.Union([
-          /*@__PURE__*/ S.Struct({ TranscriptEvent: TranscriptEvent }),
+          /*@__PURE__*/ S.Struct({ TranscriptEvent: __S(74) }),
           /*@__PURE__*/ S.Struct({
             BadRequestException: /*@__PURE__*/ S.suspend(() => BadRequestException).annotate({
               identifier: "BadRequestException",
@@ -2288,24 +2050,22 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RequestId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-request-id")),
-          LanguageCode: S.optional(LanguageCode).pipe(
-            T.HttpHeader("x-amzn-transcribe-language-code"),
-          ),
+          LanguageCode: S.optional(S.String).pipe(T.HttpHeader("x-amzn-transcribe-language-code")),
           MediaSampleRateHertz: S.optional(S.Number).pipe(
             T.HttpHeader("x-amzn-transcribe-sample-rate"),
           ),
-          MediaEncoding: S.optional(MediaEncoding).pipe(
+          MediaEncoding: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-media-encoding"),
           ),
           VocabularyName: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-vocabulary-name"),
           ),
           SessionId: S.optional(S.String).pipe(T.HttpHeader("x-amzn-transcribe-session-id")),
-          TranscriptResultStream: S.optional(TranscriptResultStream).pipe(T.HttpPayload()),
+          TranscriptResultStream: S.optional(__S(75)).pipe(T.HttpPayload()),
           VocabularyFilterName: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-vocabulary-filter-name"),
           ),
-          VocabularyFilterMethod: S.optional(VocabularyFilterMethod).pipe(
+          VocabularyFilterMethod: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-vocabulary-filter-method"),
           ),
           ShowSpeakerLabel: S.optional(S.Boolean).pipe(
@@ -2320,13 +2080,13 @@ function __c9(j: number): any {
           EnablePartialResultsStabilization: S.optional(S.Boolean).pipe(
             T.HttpHeader("x-amzn-transcribe-enable-partial-results-stabilization"),
           ),
-          PartialResultsStability: S.optional(PartialResultsStability).pipe(
+          PartialResultsStability: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-partial-results-stability"),
           ),
-          ContentIdentificationType: S.optional(ContentIdentificationType).pipe(
+          ContentIdentificationType: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-content-identification-type"),
           ),
-          ContentRedactionType: S.optional(ContentRedactionType).pipe(
+          ContentRedactionType: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-content-redaction-type"),
           ),
           PiiEntityTypes: S.optional(S.String).pipe(
@@ -2341,7 +2101,7 @@ function __c9(j: number): any {
           LanguageOptions: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-language-options"),
           ),
-          PreferredLanguage: S.optional(LanguageCode).pipe(
+          PreferredLanguage: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-preferred-language"),
           ),
           IdentifyMultipleLanguages: S.optional(S.Boolean).pipe(
@@ -2356,12 +2116,41 @@ function __c9(j: number): any {
           SessionResumeWindow: S.optional(S.Number).pipe(
             T.HttpHeader("x-amzn-transcribe-session-resume-window"),
           ),
-          TranscriptFormat: S.optional(TranscriptFormat).pipe(
+          TranscriptFormat: S.optional(S.String).pipe(
             T.HttpHeader("x-amzn-transcribe-transcript-format"),
           ),
         }),
       ).annotate({
         identifier: "StartStreamTranscriptionResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
   }
 }

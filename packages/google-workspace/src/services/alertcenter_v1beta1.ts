@@ -11,6 +11,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GoogleWorkspaceOpError, GoogleWorkspaceOpContext };
 
@@ -67,8 +69,6 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 /** A request to perform batch delete on alerts. */
 export interface BatchDeleteAlertsRequest {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alerts are associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
@@ -76,26 +76,12 @@ export interface BatchDeleteAlertsRequest {
   /** Required. The list of alert IDs to delete. */
   alertId?: StringList;
 }
-const BatchDeleteAlertsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<BatchDeleteAlertsRequest>;
-
 export interface BatchDeleteAlertsRequest_ {
   /** Request body */
   body?: BatchDeleteAlertsRequest;
 }
-const BatchDeleteAlertsRequest_ = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BatchDeleteAlertsRequest_>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -105,11 +91,7 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Status>;
-
 export type StatusMap = { [key: string]: Status | undefined };
-const StatusMap = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StatusMap>;
-
 /** Response to batch delete operation on alerts. */
 export interface BatchDeleteAlertsResponse {
   /** The status details for each failed `alert_id`. */
@@ -117,11 +99,6 @@ export interface BatchDeleteAlertsResponse {
   /** The successful list of alert IDs. */
   successAlertIds?: StringList;
 }
-const BatchDeleteAlertsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BatchDeleteAlertsResponse>;
-
 /** A request to perform batch undelete on alerts. */
 export interface BatchUndeleteAlertsRequest {
   /** Required. The list of alert IDs to undelete. */
@@ -129,20 +106,10 @@ export interface BatchUndeleteAlertsRequest {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alerts are associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
 }
-const BatchUndeleteAlertsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<BatchUndeleteAlertsRequest>;
-
 export interface BatchUndeleteAlertsRequest_ {
   /** Request body */
   body?: BatchUndeleteAlertsRequest;
 }
-const BatchUndeleteAlertsRequest_ = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BatchUndeleteAlertsRequest_>;
-
 /** Response to batch undelete operation on alerts. */
 export interface BatchUndeleteAlertsResponse {
   /** The status details for each failed `alert_id`. */
@@ -150,16 +117,11 @@ export interface BatchUndeleteAlertsResponse {
   /** The successful list of alert IDs. */
   successAlertIds?: StringList;
 }
-const BatchUndeleteAlertsResponse =
-  BatchDeleteAlertsResponse as any as S.Schema<BatchUndeleteAlertsResponse>;
-
 export type AlertFeedbackTypeEnum =
   | "ALERT_FEEDBACK_TYPE_UNSPECIFIED"
   | "NOT_USEFUL"
   | "SOMEWHAT_USEFUL"
   | "VERY_USEFUL";
-const AlertFeedbackTypeEnum = S.String;
-
 /** A customer feedback about an alert. */
 export interface AlertFeedback {
   /** Output only. The alert identifier. */
@@ -175,8 +137,6 @@ export interface AlertFeedback {
   /** Output only. The email of the user that provided the feedback. */
   email?: string;
 }
-const AlertFeedback = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AlertFeedback>;
-
 export interface CreateAlertsFeedbackRequest {
   /** Required. The identifier of the alert this feedback belongs to. */
   alertId: string;
@@ -185,31 +145,20 @@ export interface CreateAlertsFeedbackRequest {
   /** Request body */
   body?: AlertFeedback;
 }
-const CreateAlertsFeedbackRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateAlertsFeedbackRequest>;
-
 export interface DeleteAlertsRequest {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alert is associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
   /** Required. The identifier of the alert to delete. */
   alertId: string;
 }
-const DeleteAlertsRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DeleteAlertsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Empty>;
-
 export interface GetAlertsRequest {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alert is associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
   /** Required. The identifier of the alert to retrieve. */
   alertId: string;
 }
-const GetAlertsRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetAlertsRequest>;
-
 /** An alert metadata. */
 export interface AlertMetadata {
   /** Output only. The time this metadata was last updated. */
@@ -227,8 +176,6 @@ export interface AlertMetadata {
   /** The email address of the user assigned to the alert. */
   assignee?: string;
 }
-const AlertMetadata = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<AlertMetadata>;
-
 /** An alert affecting a customer. */
 export interface Alert {
   /** Output only. The time this alert was last updated. */
@@ -258,31 +205,17 @@ export interface Alert {
   /** Output only. The time this alert was created. */
   createTime?: string;
 }
-const Alert = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Alert>;
-
 export interface GetMetadataAlertsRequest {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alert metadata is associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
   /** Required. The identifier of the alert this metadata belongs to. */
   alertId: string;
 }
-const GetMetadataAlertsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetMetadataAlertsRequest>;
-
 export interface GetSettingsV1beta1Request {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alert settings are associated with. The `customer_id` must/ have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
 }
-const GetSettingsV1beta1Request = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetSettingsV1beta1Request>;
-
 export type CloudPubsubTopicPayloadFormatEnum = "PAYLOAD_FORMAT_UNSPECIFIED" | "JSON";
-const CloudPubsubTopicPayloadFormatEnum = S.String;
-
 /** A reference to a Cloud Pubsub topic. To register for notifications, the owner of the topic must grant `alerts-api-push-notifications@system.gserviceaccount.com` the `projects.topics.publish` permission. */
 export interface CloudPubsubTopic {
   /** The `name` field of a Cloud Pubsub [Topic] (https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic). */
@@ -290,25 +223,17 @@ export interface CloudPubsubTopic {
   /** Optional. The format of the payload that would be sent. If not specified the format will be JSON. */
   payloadFormat?: CloudPubsubTopicPayloadFormatEnum | (string & {});
 }
-const CloudPubsubTopic = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CloudPubsubTopic>;
-
 /** Settings for callback notifications. For more details see [Google Workspace Alert Notification](https://developers.google.com/workspace/admin/alertcenter/guides/notifications). */
 export interface Notification {
   /** A Google Cloud Pub/sub topic destination. */
   cloudPubsubTopic?: CloudPubsubTopic;
 }
-const Notification = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Notification>;
-
 export type NotificationList = Array<Notification>;
-const NotificationList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<NotificationList>;
-
 /** Customer-level settings. */
 export interface Settings {
   /** The list of notifications. */
   notifications?: NotificationList;
 }
-const Settings = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Settings>;
-
 export interface ListAlertsRequest {
   /** Optional. The sort order of the list results. If not specified results may be returned in arbitrary order. You can sort the results in descending order based on the creation timestamp using `order_by="create_time desc"`. Currently, supported sorting are `create_time asc`, `create_time desc`, `update_time desc` */
   orderBy?: string;
@@ -321,11 +246,7 @@ export interface ListAlertsRequest {
   /** Optional. A query string for filtering alert results. For more details, see [Query filters](https://developers.google.com/workspace/admin/alertcenter/guides/query-filters) and [Supported query filter fields](https://developers.google.com/workspace/admin/alertcenter/reference/filter-fields#alerts.list). */
   filter?: string;
 }
-const ListAlertsRequest = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListAlertsRequest>;
-
 export type AlertList = Array<Alert>;
-const AlertList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<AlertList>;
-
 /** Response message for an alert listing request. */
 export interface ListAlertsResponse {
   /** The list of alerts. */
@@ -333,8 +254,6 @@ export interface ListAlertsResponse {
   /** The token for the next page. If not empty, indicates that there may be more alerts that match the listing request; this value can be used in a subsequent ListAlertsRequest to get alerts continuing from last result of the current list call. */
   nextPageToken?: string;
 }
-const ListAlertsResponse = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListAlertsResponse>;
-
 export interface ListAlertsFeedbackRequest {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alert is associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
@@ -343,53 +262,29 @@ export interface ListAlertsFeedbackRequest {
   /** Optional. A query string for filtering alert feedback results. For more details, see [Query filters](https://developers.google.com/workspace/admin/alertcenter/guides/query-filters) and [Supported query filter fields](https://developers.google.com/workspace/admin/alertcenter/reference/filter-fields#alerts.feedback.list). */
   filter?: string;
 }
-const ListAlertsFeedbackRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListAlertsFeedbackRequest>;
-
 export type AlertFeedbackList = Array<AlertFeedback>;
-const AlertFeedbackList = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<AlertFeedbackList>;
-
 /** Response message for an alert feedback listing request. */
 export interface ListAlertFeedbackResponse {
   /** The list of alert feedback. Feedback entries for each alert are ordered by creation time descending. */
   feedback?: AlertFeedbackList;
 }
-const ListAlertFeedbackResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListAlertFeedbackResponse>;
-
 /** A request to undelete a specific alert that was marked for deletion. */
 export interface UndeleteAlertRequest {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alert is associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
 }
-const UndeleteAlertRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<UndeleteAlertRequest>;
-
 export interface UndeleteAlertsRequest {
   /** Required. The identifier of the alert to undelete. */
   alertId: string;
   /** Request body */
   body?: UndeleteAlertRequest;
 }
-const UndeleteAlertsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<UndeleteAlertsRequest>;
-
 export interface UpdateSettingsV1beta1Request {
   /** Optional. The unique identifier of the Google Workspace account of the customer the alert settings are associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). */
   customerId?: string;
   /** Request body */
   body?: Settings;
 }
-const UpdateSettingsV1beta1Request = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<UpdateSettingsV1beta1Request>;
-
 export type BatchDeleteAlertsError =
   | NotFound
   | Forbidden
@@ -403,8 +298,8 @@ export const batchDeleteAlerts: API.OperationMethod<
   BatchDeleteAlertsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteAlertsRequest_,
-  output: BatchDeleteAlertsResponse,
+  input: __S(2) as any as S.Schema<BatchDeleteAlertsRequest_>,
+  output: __S(7) as any as S.Schema<BatchDeleteAlertsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -423,8 +318,8 @@ export const batchUndeleteAlerts: API.OperationMethod<
   BatchUndeleteAlertsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchUndeleteAlertsRequest_,
-  output: BatchUndeleteAlertsResponse,
+  input: __S(9) as any as S.Schema<BatchUndeleteAlertsRequest_>,
+  output: __S(7) as any as S.Schema<BatchUndeleteAlertsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -443,8 +338,8 @@ export const createAlertsFeedback: API.OperationMethod<
   CreateAlertsFeedbackError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAlertsFeedbackRequest,
-  output: AlertFeedback,
+  input: __S(11) as any as S.Schema<CreateAlertsFeedbackRequest>,
+  output: __S(10) as any as S.Schema<AlertFeedback>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -463,8 +358,8 @@ export const deleteAlerts: API.OperationMethod<
   DeleteAlertsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAlertsRequest,
-  output: Empty,
+  input: __S(12) as any as S.Schema<DeleteAlertsRequest>,
+  output: __S(13) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -478,8 +373,8 @@ export const getAlerts: API.OperationMethod<
   GetAlertsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAlertsRequest,
-  output: Alert,
+  input: __S(14) as any as S.Schema<GetAlertsRequest>,
+  output: __S(16) as any as S.Schema<Alert>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -493,8 +388,8 @@ export const getMetadataAlerts: API.OperationMethod<
   GetMetadataAlertsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetadataAlertsRequest,
-  output: AlertMetadata,
+  input: __S(17) as any as S.Schema<GetMetadataAlertsRequest>,
+  output: __S(15) as any as S.Schema<AlertMetadata>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -508,8 +403,8 @@ export const getSettingsV1beta1: API.OperationMethod<
   GetSettingsV1beta1Error,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingsV1beta1Request,
-  output: Settings,
+  input: __S(18) as any as S.Schema<GetSettingsV1beta1Request>,
+  output: __S(22) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -524,8 +419,8 @@ export const listAlerts: API.PaginatedOperationMethod<
   GoogleWorkspaceOpContext,
   ListAlertsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAlertsRequest,
-  output: ListAlertsResponse,
+  input: __S(23) as any as S.Schema<ListAlertsRequest>,
+  output: __S(25) as any as S.Schema<ListAlertsResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -540,8 +435,8 @@ export const listAlertsFeedback: API.OperationMethod<
   ListAlertsFeedbackError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAlertsFeedbackRequest,
-  output: ListAlertFeedbackResponse,
+  input: __S(26) as any as S.Schema<ListAlertsFeedbackRequest>,
+  output: __S(28) as any as S.Schema<ListAlertFeedbackResponse>,
   errors: [NotFound, Forbidden, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -560,8 +455,8 @@ export const undeleteAlerts: API.OperationMethod<
   UndeleteAlertsError,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeleteAlertsRequest,
-  output: Alert,
+  input: __S(30) as any as S.Schema<UndeleteAlertsRequest>,
+  output: __S(16) as any as S.Schema<Alert>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -580,8 +475,8 @@ export const updateSettingsV1beta1: API.OperationMethod<
   UpdateSettingsV1beta1Error,
   GoogleWorkspaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSettingsV1beta1Request,
-  output: Settings,
+  input: __S(31) as any as S.Schema<UpdateSettingsV1beta1Request>,
+  output: __S(22) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGoogleWorkspaceError],
   protocol: GoogleWorkspaceProtocol,
   retry: Retry.Retry,
@@ -596,13 +491,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customerId: S.optional(S.String),
-          alertId: S.optional(StringList),
+          alertId: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "BatchDeleteAlertsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(BatchDeleteAlertsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -616,22 +511,22 @@ function __c0(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(DocumentMap);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(4)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
     case 6:
-      return S.Record(S.String, Status);
+      return S.Record(S.String, __S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          failedAlertStatus: S.optional(StatusMap),
-          successAlertIds: S.optional(StringList),
+          failedAlertStatus: S.optional(__S(6)),
+          successAlertIds: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "BatchDeleteAlertsResponse",
@@ -643,7 +538,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          alertId: S.optional(StringList),
+          alertId: S.optional(__S(0)),
           customerId: S.optional(S.String),
         }),
       ).annotate({
@@ -652,7 +547,7 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(BatchUndeleteAlertsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -668,7 +563,7 @@ function __c1(j: number): any {
         S.Struct({
           alertId: S.optional(S.String),
           customerId: S.optional(S.String),
-          type: S.optional(AlertFeedbackTypeEnum),
+          type: S.optional(S.String),
           feedbackId: S.optional(S.String),
           createTime: S.optional(S.String),
           email: S.optional(S.String),
@@ -679,7 +574,7 @@ function __c1(j: number): any {
         S.Struct({
           alertId: S.String.pipe(T.Label()),
           customerId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(AlertFeedback.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -746,10 +641,10 @@ function __c2(j: number): any {
           securityInvestigationToolLink: S.optional(S.String),
           etag: S.optional(S.String),
           customerId: S.optional(S.String),
-          metadata: S.optional(AlertMetadata),
+          metadata: S.optional(__S(15)),
           type: S.optional(S.String),
           endTime: S.optional(S.String),
-          data: S.optional(DocumentMap),
+          data: S.optional(__S(3)),
           startTime: S.optional(S.String),
           createTime: S.optional(S.String),
         }),
@@ -785,21 +680,21 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           topicName: S.optional(S.String),
-          payloadFormat: S.optional(CloudPubsubTopicPayloadFormatEnum),
+          payloadFormat: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudPubsubTopic" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          cloudPubsubTopic: S.optional(CloudPubsubTopic),
+          cloudPubsubTopic: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "Notification" });
     case 5:
-      return S.Array(Notification);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          notifications: S.optional(NotificationList),
+          notifications: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "Settings" });
     case 7:
@@ -823,11 +718,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Alert);
+      return S.Array(__S(16));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          alerts: S.optional(AlertList),
+          alerts: S.optional(__S(24)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListAlertsResponse" });
@@ -848,11 +743,11 @@ function __c3(j: number): any {
         identifier: "ListAlertsFeedbackRequest",
       });
     case 3:
-      return S.Array(AlertFeedback);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          feedback: S.optional(AlertFeedbackList),
+          feedback: S.optional(__S(27)),
         }),
       ).annotate({
         identifier: "ListAlertFeedbackResponse",
@@ -867,7 +762,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           alertId: S.String.pipe(T.Label()),
-          body: S.optional(UndeleteAlertRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(29).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -880,7 +775,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customerId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Settings.pipe(T.HttpBody())),
+          body: S.optional(__S(22).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -891,5 +786,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "UpdateSettingsV1beta1Request",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

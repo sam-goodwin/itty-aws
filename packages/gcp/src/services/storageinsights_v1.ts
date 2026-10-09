@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,52 +66,29 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringList>;
-
 /** Collection of project numbers */
 export interface SourceProjects {
   /** Optional. The list of project numbers to include in the dataset. */
   projectNumbers?: StringList;
 }
-const SourceProjects = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<SourceProjects>;
-
 /** Collection of Cloud Storage locations. */
 export interface CloudStorageLocations {
   /** Optional. List of Cloud Storage locations. */
   locations?: StringList;
 }
-const CloudStorageLocations = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CloudStorageLocations>;
-
 export type IdentityTypeEnum =
   | "IDENTITY_TYPE_UNSPECIFIED"
   | "IDENTITY_TYPE_PER_CONFIG"
   | "IDENTITY_TYPE_PER_PROJECT";
-const IdentityTypeEnum = S.String;
-
 /** Identity lets the user provide the type of identity to use, and outputs the identity string that can be used for IAM policy changes. */
 export interface Identity {
   /** Output only. Name of the identity. */
@@ -117,8 +96,6 @@ export interface Identity {
   /** Optional. Type of identity to use for the datasetConfig. */
   type?: IdentityTypeEnum | (string & {});
 }
-const Identity = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Identity>;
-
 /** Defines the details about the linked dataset. */
 export interface Link {
   /** Output only. Dataset name for linked dataset. */
@@ -126,19 +103,13 @@ export interface Link {
   /** Output only. State of the linked dataset. */
   linked?: boolean;
 }
-const Link = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Link>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StringMap>;
-
 export type DatasetConfigDatasetConfigStateEnum =
   | "CONFIG_STATE_UNSPECIFIED"
   | "CONFIG_STATE_ACTIVE"
   | "CONFIG_STATE_VERIFICATION_IN_PROGRESS"
   | "CONFIG_STATE_CREATED"
   | "CONFIG_STATE_PROCESSING";
-const DatasetConfigDatasetConfigStateEnum = S.String;
-
 /** Defines the bucket by its name or a regex pattern to match buckets. */
 export interface CloudStorageBucket {
   /** Cloud Storage bucket name. */
@@ -146,34 +117,19 @@ export interface CloudStorageBucket {
   /** A regex pattern for bucket names matching the regex. Regex should follow the syntax specified in `google/re2` on GitHub. */
   bucketPrefixRegex?: string;
 }
-const CloudStorageBucket = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CloudStorageBucket>;
-
 export type CloudStorageBucketList = Array<CloudStorageBucket>;
-const CloudStorageBucketList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CloudStorageBucketList>;
-
 /** Collection of Cloud Storage buckets. */
 export interface CloudStorageBuckets {
   /** Optional. List of Cloud Storage buckets. */
   cloudStorageBuckets?: CloudStorageBucketList;
 }
-const CloudStorageBuckets = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<CloudStorageBuckets>;
-
 /** Specifies a set of folders to include in the dataset */
 export interface SourceFolders {
   /** Optional. The list of folder numbers to include in the dataset. */
   folderNumbers?: StringList;
 }
-const SourceFolders = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SourceFolders>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -183,8 +139,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Status>;
-
 /** Message describing the dataset configuration properties. For more information, see [Dataset configuration properties](https://cloud.google.com/storage/docs/insights/datasets#dataset-config). */
 export interface DatasetConfig {
   /** Defines the options for providing source projects for the dataset. */
@@ -234,8 +188,6 @@ export interface DatasetConfig {
   /** Output only. Status of the `datasetConfig`. */
   status?: Status;
 }
-const DatasetConfig = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DatasetConfig>;
-
 export interface CreateProjectsLocationsDatasetConfigsRequest {
   /** Required. ID of the requesting object. If auto-generating ID is enabled on the server-side, remove this field and `dataset_config_id` from the method_signature of Create RPC Note: The value should not contain any hyphens. */
   datasetConfigId?: string;
@@ -246,11 +198,6 @@ export interface CreateProjectsLocationsDatasetConfigsRequest {
   /** Request body */
   body?: DatasetConfig;
 }
-const CreateProjectsLocationsDatasetConfigsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateProjectsLocationsDatasetConfigsRequest>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -264,8 +211,6 @@ export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
   metadata?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Operation>;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Storageinsights_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
@@ -275,11 +220,7 @@ export interface Storageinsights_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
   month?: number;
 }
-const Storageinsights_Date = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Storageinsights_Date>;
-
 export type FrequencyOptionsFrequencyEnum = "FREQUENCY_UNSPECIFIED" | "DAILY" | "WEEKLY";
-const FrequencyOptionsFrequencyEnum = S.String;
-
 /** `FrequencyOptions` resource Frequency configuration for inventory report generation. */
 export interface FrequencyOptions {
   /** Optional. The UTC date to stop generating inventory reports. For example,`{"day": 15, "month": 8, "year": 2022}`. */
@@ -289,8 +230,6 @@ export interface FrequencyOptions {
   /** Optional. The UTC date to start generating inventory reports. For example,`{"day": 15, "month": 8, "year": 2022}`. */
   startDate?: Storageinsights_Date;
 }
-const FrequencyOptions = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<FrequencyOptions>;
-
 /** Options to configure inventory reports in CSV format. */
 export interface CSVOptions {
   /** Optional. Record separator characters in CSV. */
@@ -300,8 +239,6 @@ export interface CSVOptions {
   /** Optional. Delimiter characters in CSV. */
   delimiter?: string;
 }
-const CSVOptions = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CSVOptions>;
-
 /** Options to configure inventory reports in Parquet format. */
 export type ParquetOptions = CancelOperationRequest;
 /** Filters buckets to generate inventory reports for Cloud Storage. */
@@ -309,8 +246,6 @@ export interface CloudStorageFilters {
   /** Optional. Bucket for which the inventory report is generated. */
   bucket?: string;
 }
-const CloudStorageFilters = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<CloudStorageFilters>;
-
 /** Options to store inventory reports in Cloud Storage. */
 export interface CloudStorageDestinationOptions {
   /** Optional. The destination bucket for the inventory reports. */
@@ -318,11 +253,6 @@ export interface CloudStorageDestinationOptions {
   /** Optional. The destination path within the bucket where the inventory reports are stored. */
   destinationPath?: string;
 }
-const CloudStorageDestinationOptions = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CloudStorageDestinationOptions>;
-
 /** Options for including metadata in an inventory report. */
 export interface ObjectMetadataReportOptions {
   /** Optional. The metadata fields included in an inventory report. */
@@ -332,11 +262,6 @@ export interface ObjectMetadataReportOptions {
   /** Options to store reports in Cloud Storage. */
   storageDestinationOptions?: CloudStorageDestinationOptions;
 }
-const ObjectMetadataReportOptions = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ObjectMetadataReportOptions>;
-
 /** Message describing the `ReportConfig` object. `ReportConfig` is the configuration used to generate inventory reports. For information about how to set various fields, see [Create an inventory report configuration](https://cloud.google.com/storage/docs/insights/using-inventory-reports#create-report-config). */
 export interface ReportConfig {
   /** Optional. The frequency of the inventory report generation. */
@@ -358,8 +283,6 @@ export interface ReportConfig {
   /** Options for including object metadata in an inventory report. */
   objectMetadataReportOptions?: ObjectMetadataReportOptions;
 }
-const ReportConfig = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ReportConfig>;
-
 export interface CreateProjectsLocationsReportConfigsRequest {
   /** Required. Value for parent. */
   parent: string;
@@ -368,31 +291,16 @@ export interface CreateProjectsLocationsReportConfigsRequest {
   /** Request body */
   body?: ReportConfig;
 }
-const CreateProjectsLocationsReportConfigsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateProjectsLocationsReportConfigsRequest>;
-
 export interface DeleteProjectsLocationsDatasetConfigsRequest {
   /** Required. Name of the resource */
   name: string;
   /** Optional. A unique identifier for your request. Specify the request ID if you need to retry the request. If you retry the request with the same ID within 60 minutes, the server ignores the request if it has already completed the original request. For example, if your initial request times out and you retry the request using the same request ID, the server recognizes the original request and does not process the new request. The request ID must be a valid UUID and cannot be a zero UUID (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
-const DeleteProjectsLocationsDatasetConfigsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsDatasetConfigsRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 export interface DeleteProjectsLocationsReportConfigsRequest {
   /** Required. Name of the resource */
   name: string;
@@ -401,20 +309,10 @@ export interface DeleteProjectsLocationsReportConfigsRequest {
   /** Optional. If set, all the inventory report details associated with this report configuration are deleted. */
   force?: boolean;
 }
-const DeleteProjectsLocationsReportConfigsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsReportConfigsRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -428,44 +326,22 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsDatasetConfigsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-const GetProjectsLocationsDatasetConfigsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetProjectsLocationsDatasetConfigsRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsReportConfigsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-const GetProjectsLocationsReportConfigsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GetProjectsLocationsReportConfigsRequest>;
-
 export interface GetProjectsLocationsReportConfigsReportDetailsRequest {
   /** Required. Name of the resource */
   name: string;
 }
-const GetProjectsLocationsReportConfigsReportDetailsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetProjectsLocationsReportConfigsReportDetailsRequest>;
-
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -473,8 +349,6 @@ export interface TimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
   version?: string;
 }
-const TimeZone = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<TimeZone>;
-
 /** Represents civil time (or occasionally physical time). This type can represent a civil time in one of a few possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered not to have a specific year, month, or day respectively. This type may also be used to represent a physical time if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone, that can be done in another field. This type is more flexible than some applications may want. Make sure to document and validate your application's limitations. */
 export interface DateTime {
   /** Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds. */
@@ -496,15 +370,11 @@ export interface DateTime {
   /** Optional. Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a datetime without a day. */
   day?: number;
 }
-const DateTime = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<DateTime>;
-
 /** Metrics associated with the generated report. */
 export interface Metrics {
   /** Count of Cloud Storage objects that are part of the inventory report. */
   processedRecordsCount?: string;
 }
-const Metrics = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Metrics>;
-
 /** Message describing the `ReportDetail` object. `ReportDetail` represents the metadata of the generated inventory report for a report configuration. */
 export interface ReportDetail {
   /** The date and time of the inventory report generation. This field is auto-populated. The time part of `target_datetime` is always `0`. */
@@ -524,8 +394,6 @@ export interface ReportDetail {
   /** Labels as key value pairs */
   labels?: StringMap;
 }
-const ReportDetail = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ReportDetail>;
-
 /** Request message for `LinkDataset` */
 export type LinkDatasetRequest = CancelOperationRequest;
 export interface LinkDatasetProjectsLocationsDatasetConfigsRequest {
@@ -534,11 +402,6 @@ export interface LinkDatasetProjectsLocationsDatasetConfigsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const LinkDatasetProjectsLocationsDatasetConfigsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<LinkDatasetProjectsLocationsDatasetConfigsRequest>;
-
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
@@ -551,14 +414,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -566,11 +422,6 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsDatasetConfigsRequest {
   /** Optional. Filtering results */
   filter?: string;
@@ -583,14 +434,7 @@ export interface ListProjectsLocationsDatasetConfigsRequest {
   /** Required. Parent value for ListDatasetConfigsRequest */
   parent: string;
 }
-const ListProjectsLocationsDatasetConfigsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ListProjectsLocationsDatasetConfigsRequest>;
-
 export type DatasetConfigList = Array<DatasetConfig>;
-const DatasetConfigList = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DatasetConfigList>;
-
 /** Response message for `ListDatasetConfigs` */
 export interface ListDatasetConfigsResponse {
   /** A token identifying a page of results the server should return. */
@@ -600,11 +444,6 @@ export interface ListDatasetConfigsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListDatasetConfigsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListDatasetConfigsResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list page size. */
   pageSize?: number;
@@ -617,14 +456,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -634,11 +466,6 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListProjectsLocationsReportConfigsRequest {
   /** Required. Parent value for `ListReportConfigsRequest` */
   parent: string;
@@ -651,14 +478,7 @@ export interface ListProjectsLocationsReportConfigsRequest {
   /** Optional. Filtering results */
   filter?: string;
 }
-const ListProjectsLocationsReportConfigsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListProjectsLocationsReportConfigsRequest>;
-
 export type ReportConfigList = Array<ReportConfig>;
-const ReportConfigList = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<ReportConfigList>;
-
 /** Response message for `ListReportConfigs` */
 export interface ListReportConfigsResponse {
   /** The list of `ReportConfig` */
@@ -668,11 +488,6 @@ export interface ListReportConfigsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-const ListReportConfigsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListReportConfigsResponse>;
-
 export interface ListProjectsLocationsReportConfigsReportDetailsRequest {
   /** Optional. Filtering results */
   filter?: string;
@@ -685,14 +500,7 @@ export interface ListProjectsLocationsReportConfigsReportDetailsRequest {
   /** Optional. A token identifying a page of results the server should return. */
   pageToken?: string;
 }
-const ListProjectsLocationsReportConfigsReportDetailsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListProjectsLocationsReportConfigsReportDetailsRequest>;
-
 export type ReportDetailList = Array<ReportDetail>;
-const ReportDetailList = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<ReportDetailList>;
-
 /** Response message for `ListReportDetails`. */
 export interface ListReportDetailsResponse {
   /** Locations that could not be reached. */
@@ -702,11 +510,6 @@ export interface ListReportDetailsResponse {
   /** A token identifying a page of results the server should return. */
   nextPageToken?: string;
 }
-const ListReportDetailsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ListReportDetailsResponse>;
-
 export interface PatchProjectsLocationsDatasetConfigsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the `DatasetConfig` resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field is overwritten if it is in the mask. If the user does not provide a mask then it returns an "Invalid Argument" error. */
   updateMask?: string;
@@ -717,11 +520,6 @@ export interface PatchProjectsLocationsDatasetConfigsRequest {
   /** Request body */
   body?: DatasetConfig;
 }
-const PatchProjectsLocationsDatasetConfigsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<PatchProjectsLocationsDatasetConfigsRequest>;
-
 export interface PatchProjectsLocationsReportConfigsRequest {
   /** Identifier. Name of resource. Format: `projects/{project_id}/locations/{location}/reportConfigs/{report-config-id}`. */
   name: string;
@@ -732,11 +530,6 @@ export interface PatchProjectsLocationsReportConfigsRequest {
   /** Request body */
   body?: ReportConfig;
 }
-const PatchProjectsLocationsReportConfigsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<PatchProjectsLocationsReportConfigsRequest>;
-
 /** Request message for `UnlinkDataset` */
 export type UnlinkDatasetRequest = CancelOperationRequest;
 export interface UnlinkDatasetProjectsLocationsDatasetConfigsRequest {
@@ -745,11 +538,6 @@ export interface UnlinkDatasetProjectsLocationsDatasetConfigsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const UnlinkDatasetProjectsLocationsDatasetConfigsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<UnlinkDatasetProjectsLocationsDatasetConfigsRequest>;
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -763,8 +551,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -783,8 +571,8 @@ export const createProjectsLocationsDatasetConfigs: API.OperationMethod<
   CreateProjectsLocationsDatasetConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsDatasetConfigsRequest,
-  output: Operation,
+  input: __S(16) as any as S.Schema<CreateProjectsLocationsDatasetConfigsRequest>,
+  output: __S(17) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -803,8 +591,8 @@ export const createProjectsLocationsReportConfigs: API.OperationMethod<
   CreateProjectsLocationsReportConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsReportConfigsRequest,
-  output: ReportConfig,
+  input: __S(25) as any as S.Schema<CreateProjectsLocationsReportConfigsRequest>,
+  output: __S(24) as any as S.Schema<ReportConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -823,8 +611,8 @@ export const deleteProjectsLocationsDatasetConfigs: API.OperationMethod<
   DeleteProjectsLocationsDatasetConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsDatasetConfigsRequest,
-  output: Operation,
+  input: __S(26) as any as S.Schema<DeleteProjectsLocationsDatasetConfigsRequest>,
+  output: __S(17) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -843,8 +631,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(27) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -863,8 +651,8 @@ export const deleteProjectsLocationsReportConfigs: API.OperationMethod<
   DeleteProjectsLocationsReportConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsReportConfigsRequest,
-  output: Empty,
+  input: __S(28) as any as S.Schema<DeleteProjectsLocationsReportConfigsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -878,8 +666,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(29) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(30) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -893,8 +681,8 @@ export const getProjectsLocationsDatasetConfigs: API.OperationMethod<
   GetProjectsLocationsDatasetConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsDatasetConfigsRequest,
-  output: DatasetConfig,
+  input: __S(31) as any as S.Schema<GetProjectsLocationsDatasetConfigsRequest>,
+  output: __S(15) as any as S.Schema<DatasetConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -908,8 +696,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(32) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(17) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -923,8 +711,8 @@ export const getProjectsLocationsReportConfigs: API.OperationMethod<
   GetProjectsLocationsReportConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsReportConfigsRequest,
-  output: ReportConfig,
+  input: __S(33) as any as S.Schema<GetProjectsLocationsReportConfigsRequest>,
+  output: __S(24) as any as S.Schema<ReportConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -938,8 +726,8 @@ export const getProjectsLocationsReportConfigsReportDetails: API.OperationMethod
   GetProjectsLocationsReportConfigsReportDetailsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsReportConfigsReportDetailsRequest,
-  output: ReportDetail,
+  input: __S(34) as any as S.Schema<GetProjectsLocationsReportConfigsReportDetailsRequest>,
+  output: __S(38) as any as S.Schema<ReportDetail>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -958,8 +746,8 @@ export const linkDatasetProjectsLocationsDatasetConfigs: API.OperationMethod<
   LinkDatasetProjectsLocationsDatasetConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LinkDatasetProjectsLocationsDatasetConfigsRequest,
-  output: Operation,
+  input: __S(39) as any as S.Schema<LinkDatasetProjectsLocationsDatasetConfigsRequest>,
+  output: __S(17) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -974,8 +762,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(40) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(42) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -991,8 +779,8 @@ export const listProjectsLocationsDatasetConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDatasetConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsDatasetConfigsRequest,
-  output: ListDatasetConfigsResponse,
+  input: __S(43) as any as S.Schema<ListProjectsLocationsDatasetConfigsRequest>,
+  output: __S(45) as any as S.Schema<ListDatasetConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1008,8 +796,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(46) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(48) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1025,8 +813,8 @@ export const listProjectsLocationsReportConfigs: API.PaginatedOperationMethod<
   GcpOpContext,
   ListReportConfigsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsReportConfigsRequest,
-  output: ListReportConfigsResponse,
+  input: __S(49) as any as S.Schema<ListProjectsLocationsReportConfigsRequest>,
+  output: __S(51) as any as S.Schema<ListReportConfigsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1045,8 +833,8 @@ export const listProjectsLocationsReportConfigsReportDetails: API.PaginatedOpera
   GcpOpContext,
   ListReportDetailsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsReportConfigsReportDetailsRequest,
-  output: ListReportDetailsResponse,
+  input: __S(52) as any as S.Schema<ListProjectsLocationsReportConfigsReportDetailsRequest>,
+  output: __S(54) as any as S.Schema<ListReportDetailsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1066,8 +854,8 @@ export const patchProjectsLocationsDatasetConfigs: API.OperationMethod<
   PatchProjectsLocationsDatasetConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsDatasetConfigsRequest,
-  output: Operation,
+  input: __S(55) as any as S.Schema<PatchProjectsLocationsDatasetConfigsRequest>,
+  output: __S(17) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1086,8 +874,8 @@ export const patchProjectsLocationsReportConfigs: API.OperationMethod<
   PatchProjectsLocationsReportConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsReportConfigsRequest,
-  output: ReportConfig,
+  input: __S(56) as any as S.Schema<PatchProjectsLocationsReportConfigsRequest>,
+  output: __S(24) as any as S.Schema<ReportConfig>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1106,8 +894,8 @@ export const unlinkDatasetProjectsLocationsDatasetConfigs: API.OperationMethod<
   UnlinkDatasetProjectsLocationsDatasetConfigsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnlinkDatasetProjectsLocationsDatasetConfigsRequest,
-  output: Operation,
+  input: __S(57) as any as S.Schema<UnlinkDatasetProjectsLocationsDatasetConfigsRequest>,
+  output: __S(17) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1124,7 +912,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1140,20 +928,20 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          projectNumbers: S.optional(StringList),
+          projectNumbers: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "SourceProjects" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(StringList),
+          locations: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "CloudStorageLocations" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(IdentityTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Identity" });
     case 6:
@@ -1177,57 +965,57 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "CloudStorageBucket" });
     case 1:
-      return S.Array(CloudStorageBucket);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cloudStorageBuckets: S.optional(CloudStorageBucketList),
+          cloudStorageBuckets: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "CloudStorageBuckets" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          folderNumbers: S.optional(StringList),
+          folderNumbers: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "SourceFolders" });
     case 4:
       return S.Record(S.String, S.Unknown);
     case 5:
-      return S.Array(DocumentMap);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(13)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          sourceProjects: S.optional(SourceProjects),
-          excludeCloudStorageLocations: S.optional(CloudStorageLocations),
+          sourceProjects: S.optional(__S(3)),
+          excludeCloudStorageLocations: S.optional(__S(4)),
           skipVerificationAndIngest: S.optional(S.Boolean),
-          identity: S.optional(Identity),
-          includeCloudStorageLocations: S.optional(CloudStorageLocations),
-          link: S.optional(Link),
-          labels: S.optional(StringMap),
+          identity: S.optional(__S(5)),
+          includeCloudStorageLocations: S.optional(__S(4)),
+          link: S.optional(__S(6)),
+          labels: S.optional(__S(7)),
           createTime: S.optional(S.String),
-          datasetConfigState: S.optional(DatasetConfigDatasetConfigStateEnum),
-          includeCloudStorageBuckets: S.optional(CloudStorageBuckets),
+          datasetConfigState: S.optional(S.String),
+          includeCloudStorageBuckets: S.optional(__S(10)),
           uid: S.optional(S.String),
           description: S.optional(S.String),
           retentionPeriodDays: S.optional(S.Number),
           includeNewlyCreatedBuckets: S.optional(S.Boolean),
-          excludeCloudStorageBuckets: S.optional(CloudStorageBuckets),
+          excludeCloudStorageBuckets: S.optional(__S(10)),
           cloudStorageObjectPath: S.optional(S.String),
           organizationNumber: S.optional(S.String),
           activityDataRetentionPeriodDays: S.optional(S.Number),
           name: S.optional(S.String),
-          sourceFolders: S.optional(SourceFolders),
+          sourceFolders: S.optional(__S(11)),
           updateTime: S.optional(S.String),
           organizationScope: S.optional(S.Boolean),
-          status: S.optional(Status),
+          status: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "DatasetConfig" });
   }
@@ -1240,7 +1028,7 @@ function __c2(j: number): any {
           datasetConfigId: S.optional(S.String.pipe(T.Query())),
           requestId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(DatasetConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1254,11 +1042,11 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(DocumentMap),
+          response: S.optional(__S(12)),
           name: S.optional(S.String),
           done: S.optional(S.Boolean),
-          error: S.optional(Status),
-          metadata: S.optional(DocumentMap),
+          error: S.optional(__S(14)),
+          metadata: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "Operation" });
     case 2:
@@ -1272,9 +1060,9 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          endDate: S.optional(Storageinsights_Date),
-          frequency: S.optional(FrequencyOptionsFrequencyEnum),
-          startDate: S.optional(Storageinsights_Date),
+          endDate: S.optional(__S(18)),
+          frequency: S.optional(S.String),
+          startDate: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "FrequencyOptions" });
     case 4:
@@ -1303,9 +1091,9 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadataFields: S.optional(StringList),
-          storageFilters: S.optional(CloudStorageFilters),
-          storageDestinationOptions: S.optional(CloudStorageDestinationOptions),
+          metadataFields: S.optional(__S(2)),
+          storageFilters: S.optional(__S(21)),
+          storageDestinationOptions: S.optional(__S(22)),
         }),
       ).annotate({
         identifier: "ObjectMetadataReportOptions",
@@ -1317,15 +1105,15 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          frequencyOptions: S.optional(FrequencyOptions),
-          csvOptions: S.optional(CSVOptions),
-          parquetOptions: S.optional(CancelOperationRequest),
-          labels: S.optional(StringMap),
+          frequencyOptions: S.optional(__S(19)),
+          csvOptions: S.optional(__S(20)),
+          parquetOptions: S.optional(__S(0)),
+          labels: S.optional(__S(7)),
           displayName: S.optional(S.String),
           updateTime: S.optional(S.String),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          objectMetadataReportOptions: S.optional(ObjectMetadataReportOptions),
+          objectMetadataReportOptions: S.optional(__S(23)),
         }),
       ).annotate({ identifier: "ReportConfig" });
     case 1:
@@ -1333,7 +1121,7 @@ function __c3(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ReportConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(24).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1406,9 +1194,9 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(7)),
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(12)),
           displayName: S.optional(S.String),
           locationId: S.optional(S.String),
         }),
@@ -1487,7 +1275,7 @@ function __c4(j: number): any {
           month: S.optional(S.Number),
           minutes: S.optional(S.Number),
           nanos: S.optional(S.Number),
-          timeZone: S.optional(TimeZone),
+          timeZone: S.optional(__S(35)),
           hours: S.optional(S.Number),
           utcOffset: S.optional(S.String),
           year: S.optional(S.Number),
@@ -1503,21 +1291,21 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          targetDatetime: S.optional(DateTime),
+          targetDatetime: S.optional(__S(36)),
           snapshotTime: S.optional(S.String),
-          status: S.optional(Status),
+          status: S.optional(__S(14)),
           name: S.optional(S.String),
-          reportMetrics: S.optional(Metrics),
+          reportMetrics: S.optional(__S(37)),
           reportPathPrefix: S.optional(S.String),
           shardsCount: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "ReportDetail" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1535,7 +1323,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(2).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
@@ -1551,12 +1339,12 @@ function __c5(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 1:
-      return S.Array(Location);
+      return S.Array(__S(30));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(41)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 3:
@@ -1578,13 +1366,13 @@ function __c5(j: number): any {
         identifier: "ListProjectsLocationsDatasetConfigsRequest",
       });
     case 4:
-      return S.Array(DatasetConfig);
+      return S.Array(__S(15));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          datasetConfigs: S.optional(DatasetConfigList),
-          unreachable: S.optional(StringList),
+          datasetConfigs: S.optional(__S(44)),
+          unreachable: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "ListDatasetConfigsResponse",
@@ -1608,7 +1396,7 @@ function __c5(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 7:
-      return S.Array(Operation);
+      return S.Array(__S(17));
   }
 }
 function __c6(j: number): any {
@@ -1616,9 +1404,9 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(2)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(OperationList),
+          operations: S.optional(__S(47)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 1:
@@ -1640,12 +1428,12 @@ function __c6(j: number): any {
         identifier: "ListProjectsLocationsReportConfigsRequest",
       });
     case 2:
-      return S.Array(ReportConfig);
+      return S.Array(__S(24));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          reportConfigs: S.optional(ReportConfigList),
-          unreachable: S.optional(StringList),
+          reportConfigs: S.optional(__S(50)),
+          unreachable: S.optional(__S(2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1670,12 +1458,12 @@ function __c6(j: number): any {
         identifier: "ListProjectsLocationsReportConfigsReportDetailsRequest",
       });
     case 5:
-      return S.Array(ReportDetail);
+      return S.Array(__S(38));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          reportDetails: S.optional(ReportDetailList),
+          unreachable: S.optional(__S(2)),
+          reportDetails: S.optional(__S(53)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1687,7 +1475,7 @@ function __c6(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(DatasetConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1708,7 +1496,7 @@ function __c7(j: number): any {
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ReportConfig.pipe(T.HttpBody())),
+          body: S.optional(__S(24).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1723,7 +1511,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1734,5 +1522,30 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UnlinkDatasetProjectsLocationsDatasetConfigsRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
   }
 }

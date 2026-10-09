@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,26 +66,14 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 export type LifecycleStateStateEnum =
   | "STATE_UNSPECIFIED"
   | "ENABLING"
@@ -91,18 +81,12 @@ export type LifecycleStateStateEnum =
   | "DISABLING"
   | "UPDATING"
   | "SERVICE_UPDATING";
-const LifecycleStateStateEnum = S.String;
-
 /** LifecycleState describes the state of a MembershipFeature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the MembershipFeature. */
 export interface LifecycleState {
   /** Output only. The current state of the Feature resource in the Hub API. */
   state?: LifecycleStateStateEnum | (string & {});
 }
-const LifecycleState = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<LifecycleState>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringMap>;
-
 export type ClusterUpgradeUpgradeStatusCodeEnum =
   | "CODE_UNSPECIFIED"
   | "INELIGIBLE"
@@ -111,8 +95,6 @@ export type ClusterUpgradeUpgradeStatusCodeEnum =
   | "SOAKING"
   | "FORCED_SOAKING"
   | "COMPLETE";
-const ClusterUpgradeUpgradeStatusCodeEnum = S.String;
-
 /** UpgradeStatus provides status information for each upgrade. */
 export interface ClusterUpgradeUpgradeStatus {
   /** Reason for this status. */
@@ -122,11 +104,6 @@ export interface ClusterUpgradeUpgradeStatus {
   /** Status code of the upgrade. */
   code?: ClusterUpgradeUpgradeStatusCodeEnum | (string & {});
 }
-const ClusterUpgradeUpgradeStatus = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ClusterUpgradeUpgradeStatus>;
-
 /** GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade. */
 export interface ClusterUpgradeGKEUpgrade {
   /** Name of the upgrade, e.g., "k8s_control_plane". */
@@ -134,11 +111,6 @@ export interface ClusterUpgradeGKEUpgrade {
   /** Version of the upgrade, e.g., "1.22.1-gke.100". */
   version?: string;
 }
-const ClusterUpgradeGKEUpgrade = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ClusterUpgradeGKEUpgrade>;
-
 /** MembershipGKEUpgradeState is a GKEUpgrade and its state per-membership. */
 export interface ClusterUpgradeMembershipGKEUpgradeState {
   /** Status of the upgrade. */
@@ -146,18 +118,8 @@ export interface ClusterUpgradeMembershipGKEUpgradeState {
   /** Which upgrade to track the state. */
   upgrade?: ClusterUpgradeGKEUpgrade;
 }
-const ClusterUpgradeMembershipGKEUpgradeState = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ClusterUpgradeMembershipGKEUpgradeState>;
-
 export type ClusterUpgradeMembershipGKEUpgradeStateList =
   Array<ClusterUpgradeMembershipGKEUpgradeState>;
-const ClusterUpgradeMembershipGKEUpgradeStateList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ClusterUpgradeMembershipGKEUpgradeStateList>;
-
 /** IgnoredMembership represents a membership ignored by the feature. A membership can be ignored because it was manually upgraded to a newer version than RC default. */
 export interface ClusterUpgradeIgnoredMembership {
   /** Time when the membership was first set to ignored. */
@@ -165,11 +127,6 @@ export interface ClusterUpgradeIgnoredMembership {
   /** Reason why the membership is ignored. */
   reason?: string;
 }
-const ClusterUpgradeIgnoredMembership = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ClusterUpgradeIgnoredMembership>;
-
 /** Per-membership state for this feature. */
 export interface ClusterUpgradeState {
   /** Actual upgrade state against desired. */
@@ -177,8 +134,6 @@ export interface ClusterUpgradeState {
   /** Whether this membership is ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. */
   ignored?: ClusterUpgradeIgnoredMembership;
 }
-const ClusterUpgradeState = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ClusterUpgradeState>;
-
 export type PolicyControllerStateStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
@@ -190,8 +145,6 @@ export type PolicyControllerStateStateEnum =
   | "HUB_ERROR"
   | "SUSPENDED"
   | "DETACHED";
-const PolicyControllerStateStateEnum = S.String;
-
 export type PolicyControllerOnClusterStateStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
@@ -203,8 +156,6 @@ export type PolicyControllerOnClusterStateStateEnum =
   | "HUB_ERROR"
   | "SUSPENDED"
   | "DETACHED";
-const PolicyControllerOnClusterStateStateEnum = S.String;
-
 /** OnClusterState represents the state of a sub-component of Policy Controller. */
 export interface PolicyControllerOnClusterState {
   /** Surface potential errors or information logs. */
@@ -212,19 +163,9 @@ export interface PolicyControllerOnClusterState {
   /** The lifecycle state of this component. */
   state?: PolicyControllerOnClusterStateStateEnum | (string & {});
 }
-const PolicyControllerOnClusterState = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PolicyControllerOnClusterState>;
-
 export type PolicyControllerOnClusterStateMap = {
   [key: string]: PolicyControllerOnClusterState | undefined;
 };
-const PolicyControllerOnClusterStateMap = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<PolicyControllerOnClusterStateMap>;
-
 /** The state of the policy controller policy content */
 export interface PolicyControllerPolicyContentState {
   /** The state of the referential data sync configuration. This could represent the state of either the syncSet object(s) or the config object, depending on the version of PoCo configured by the user. */
@@ -234,11 +175,6 @@ export interface PolicyControllerPolicyContentState {
   /** The state of the template library */
   templateLibraryState?: PolicyControllerOnClusterState;
 }
-const PolicyControllerPolicyContentState = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<PolicyControllerPolicyContentState>;
-
 /** **Policy Controller**: State for a single cluster. */
 export interface PolicyControllerState {
   /** The overall Policy Controller lifecycle state observed by the Hub Feature controller. */
@@ -248,17 +184,10 @@ export interface PolicyControllerState {
   /** The overall content state observed by the Hub Feature controller. */
   policyContentState?: PolicyControllerPolicyContentState;
 }
-const PolicyControllerState = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<PolicyControllerState>;
-
 export type RBACRoleBindingActuationRBACRoleBindingStateStateEnum =
   | "ROLE_BINDING_STATE_UNSPECIFIED"
   | "OK"
   | "CUSTOM_ROLE_MISSING_FROM_CLUSTER";
-const RBACRoleBindingActuationRBACRoleBindingStateStateEnum = S.String;
-
 /** RBACRoleBindingState is the status of an RBACRoleBinding which exists on a membership. */
 export interface RBACRoleBindingActuationRBACRoleBindingState {
   /** The time the RBACRoleBinding status was last updated. */
@@ -268,29 +197,14 @@ export interface RBACRoleBindingActuationRBACRoleBindingState {
   /** Output only. The state of the RBACRoleBinding. */
   state?: RBACRoleBindingActuationRBACRoleBindingStateStateEnum | (string & {});
 }
-const RBACRoleBindingActuationRBACRoleBindingState = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<RBACRoleBindingActuationRBACRoleBindingState>;
-
 export type RBACRoleBindingActuationRBACRoleBindingStateMap = {
   [key: string]: RBACRoleBindingActuationRBACRoleBindingState | undefined;
 };
-const RBACRoleBindingActuationRBACRoleBindingStateMap = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<RBACRoleBindingActuationRBACRoleBindingStateMap>;
-
 /** **RBAC RoleBinding Actuation**: A membership-specific Feature state for the RBACRoleBindingActuation fleet feature. */
 export interface RBACRoleBindingActuationState {
   /** Output only. The state of RBACRoleBindings using custom roles that exist on the cluster, keyed by RBACRoleBinding resource name with format: projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}. */
   rbacrolebindingStates?: RBACRoleBindingActuationRBACRoleBindingStateMap;
 }
-const RBACRoleBindingActuationState = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<RBACRoleBindingActuationState>;
-
 /** **Metering**: State for a single membership, analyzed and reported by feature controller. */
 export interface MeteringState {
   /** The vCPUs capacity in the cluster according to the most recent measurement (1/1000 precision). */
@@ -298,11 +212,7 @@ export interface MeteringState {
   /** The time stamp of the most recent measurement of the number of vCPUs in the cluster. */
   lastMeasurementTime?: string;
 }
-const MeteringState = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<MeteringState>;
-
 export type IdentityServiceStateStateEnum = "DEPLOYMENT_STATE_UNSPECIFIED" | "OK" | "ERROR";
-const IdentityServiceStateStateEnum = S.String;
-
 /** Configuration options for the AIS diagnostic interface. */
 export interface IdentityServiceDiagnosticInterface {
   /** Determines the expiration time of the diagnostic interface enablement. When reached, requests to the interface would be automatically rejected. */
@@ -310,11 +220,6 @@ export interface IdentityServiceDiagnosticInterface {
   /** Determines whether to enable the diagnostic interface. */
   enabled?: boolean;
 }
-const IdentityServiceDiagnosticInterface = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<IdentityServiceDiagnosticInterface>;
-
 /** Holds non-protocol-related configuration options. */
 export interface IdentityServiceIdentityServiceOptions {
   /** Determines the lifespan of STS tokens issued by Anthos Identity Service. */
@@ -322,11 +227,6 @@ export interface IdentityServiceIdentityServiceOptions {
   /** Configuration options for the AIS diagnostic interface. */
   diagnosticInterface?: IdentityServiceDiagnosticInterface;
 }
-const IdentityServiceIdentityServiceOptions = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<IdentityServiceIdentityServiceOptions>;
-
 /** Configuration for the AzureAD Auth flow. */
 export interface IdentityServiceAzureADConfig {
   /** Optional. Claim in the AzureAD ID Token that holds the user details. */
@@ -344,11 +244,6 @@ export interface IdentityServiceAzureADConfig {
   /** The redirect URL that kubectl uses for authorization. */
   kubectlRedirectUri?: string;
 }
-const IdentityServiceAzureADConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<IdentityServiceAzureADConfig>;
-
 /** Configuration for OIDC Auth flow. */
 export interface IdentityServiceOidcConfig {
   /** Claim in OIDC ID token that holds username. */
@@ -380,11 +275,6 @@ export interface IdentityServiceOidcConfig {
   /** Input only. Unencrypted OIDC client secret will be passed to the GKE Hub CLH. */
   clientSecret?: string;
 }
-const IdentityServiceOidcConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<IdentityServiceOidcConfig>;
-
 /** Defines where users exist in the LDAP directory. */
 export interface IdentityServiceUserConfig {
   /** Required. The location of the subtree in the LDAP directory to search for user entries. */
@@ -396,11 +286,6 @@ export interface IdentityServiceUserConfig {
   /** Optional. Filter to apply when searching for the user. This can be used to further restrict the user accounts which are allowed to login. This defaults to "(objectClass=User)". */
   filter?: string;
 }
-const IdentityServiceUserConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<IdentityServiceUserConfig>;
-
 /** Contains the properties for locating and authenticating groups in the directory. */
 export interface IdentityServiceGroupConfig {
   /** Optional. Optional filter to be used when searching for groups a user belongs to. This can be used to explicitly match only certain groups in order to reduce the amount of groups returned for each user. This defaults to "(objectClass=Group)". */
@@ -410,11 +295,6 @@ export interface IdentityServiceGroupConfig {
   /** Required. The location of the subtree in the LDAP directory to search for group entries. */
   baseDn?: string;
 }
-const IdentityServiceGroupConfig = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<IdentityServiceGroupConfig>;
-
 /** Server settings for the external LDAP server. */
 export interface IdentityServiceServerConfig {
   /** Optional. Contains a Base64 encoded, PEM formatted certificate authority certificate for the LDAP server. This must be provided for the "ldaps" and "startTLS" connections. */
@@ -424,11 +304,6 @@ export interface IdentityServiceServerConfig {
   /** Optional. Defines the connection type to communicate with the LDAP server. If `starttls` or `ldaps` is specified, the certificate_authority_data should not be empty. */
   connectionType?: string;
 }
-const IdentityServiceServerConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<IdentityServiceServerConfig>;
-
 /** The structure holds the LDAP simple binding credential. */
 export interface IdentityServiceSimpleBindCredentials {
   /** Required. The distinguished name(DN) of the service account object/user. */
@@ -438,21 +313,11 @@ export interface IdentityServiceSimpleBindCredentials {
   /** Output only. The encrypted password of the service account object/user. */
   encryptedPassword?: string;
 }
-const IdentityServiceSimpleBindCredentials = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<IdentityServiceSimpleBindCredentials>;
-
 /** Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate. */
 export interface IdentityServiceServiceAccountConfig {
   /** Credentials for basic auth. */
   simpleBindCredentials?: IdentityServiceSimpleBindCredentials;
 }
-const IdentityServiceServiceAccountConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<IdentityServiceServiceAccountConfig>;
-
 /** Configuration for the LDAP Auth flow. */
 export interface IdentityServiceLdapConfig {
   /** Required. Defines where users exist in the LDAP directory. */
@@ -464,24 +329,12 @@ export interface IdentityServiceLdapConfig {
   /** Required. Contains the credentials of the service account which is authorized to perform the LDAP search in the directory. The credentials can be supplied by the combination of the DN and password or the client certificate. */
   serviceAccount?: IdentityServiceServiceAccountConfig;
 }
-const IdentityServiceLdapConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<IdentityServiceLdapConfig>;
-
 /** Configuration for the Google Plugin Auth flow. */
 export interface IdentityServiceGoogleConfig {
   /** Disable automatic configuration of Google Plugin on supported platforms. */
   disable?: boolean;
 }
-const IdentityServiceGoogleConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<IdentityServiceGoogleConfig>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<StringList>;
-
 /** Configuration for the SAML Auth flow. */
 export interface IdentityServiceSamlConfig {
   /** Optional. The SAML attribute to read username from. If unspecified, the username will be read from the NameID element of the assertion in SAML response. This value is expected to be a string and will be passed along as-is (with the option of being prefixed by the `user_prefix`). */
@@ -501,11 +354,6 @@ export interface IdentityServiceSamlConfig {
   /** Required. The entity ID of the SAML IdP. */
   identityProviderId?: string;
 }
-const IdentityServiceSamlConfig = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<IdentityServiceSamlConfig>;
-
 /** Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can be set per AuthMethod. */
 export interface IdentityServiceAuthMethod {
   /** AzureAD specific Configuration. */
@@ -523,17 +371,7 @@ export interface IdentityServiceAuthMethod {
   /** SAML specific configuration. */
   samlConfig?: IdentityServiceSamlConfig;
 }
-const IdentityServiceAuthMethod = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<IdentityServiceAuthMethod>;
-
 export type IdentityServiceAuthMethodList = Array<IdentityServiceAuthMethod>;
-const IdentityServiceAuthMethodList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<IdentityServiceAuthMethodList>;
-
 /** **IdentityService**: Configuration for a single membership. */
 export interface IdentityServiceSpec {
   /** Optional. non-protocol-related configuration options. */
@@ -541,8 +379,6 @@ export interface IdentityServiceSpec {
   /** A member may support multiple auth methods. */
   authMethods?: IdentityServiceAuthMethodList;
 }
-const IdentityServiceSpec = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<IdentityServiceSpec>;
-
 /** **IdentityService**: State for a single membership, analyzed and reported by feature controller. */
 export interface IdentityServiceState {
   /** The reason of the failure. */
@@ -554,32 +390,18 @@ export interface IdentityServiceState {
   /** Last reconciled membership configuration */
   memberConfig?: IdentityServiceSpec;
 }
-const IdentityServiceState = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<IdentityServiceState>;
-
 /** Errors pertaining to the installation of ACM. */
 export interface ConfigManagementInstallError {
   /** A string representing the user facing error message. */
   errorMessage?: string;
 }
-const ConfigManagementInstallError = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ConfigManagementInstallError>;
-
 export type ConfigManagementInstallErrorList = Array<ConfigManagementInstallError>;
-const ConfigManagementInstallErrorList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ConfigManagementInstallErrorList>;
-
 export type ConfigManagementOperatorStateDeploymentStateEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-const ConfigManagementOperatorStateDeploymentStateEnum = S.String;
-
 /** State information for an ACM's Operator. */
 export interface ConfigManagementOperatorState {
   /** The semenatic version number of the operator. */
@@ -589,29 +411,17 @@ export interface ConfigManagementOperatorState {
   /** The state of the Operator's deployment. */
   deploymentState?: ConfigManagementOperatorStateDeploymentStateEnum | (string & {});
 }
-const ConfigManagementOperatorState = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ConfigManagementOperatorState>;
-
 export type ConfigManagementBinauthzStateWebhookEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-const ConfigManagementBinauthzStateWebhookEnum = S.String;
-
 /** The version of binauthz. */
 export interface ConfigManagementBinauthzVersion {
   /** The version of the binauthz webhook. */
   webhookVersion?: string;
 }
-const ConfigManagementBinauthzVersion = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ConfigManagementBinauthzVersion>;
-
 /** State for Binauthz. */
 export interface ConfigManagementBinauthzState {
   /** The state of the binauthz webhook. */
@@ -619,17 +429,10 @@ export interface ConfigManagementBinauthzState {
   /** The version of binauthz that is installed. */
   version?: ConfigManagementBinauthzVersion;
 }
-const ConfigManagementBinauthzState = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ConfigManagementBinauthzState>;
-
 export type ConfigManagementPolicyControllerMigrationStageEnum =
   | "STAGE_UNSPECIFIED"
   | "ACM_MANAGED"
   | "POCO_MANAGED";
-const ConfigManagementPolicyControllerMigrationStageEnum = S.String;
-
 /** State for the migration of PolicyController from ACM -> PoCo Hub. */
 export interface ConfigManagementPolicyControllerMigration {
   /** Last time this membership spec was copied to PoCo feature. */
@@ -637,35 +440,24 @@ export interface ConfigManagementPolicyControllerMigration {
   /** Stage of the migration. */
   stage?: ConfigManagementPolicyControllerMigrationStageEnum | (string & {});
 }
-const ConfigManagementPolicyControllerMigration = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ConfigManagementPolicyControllerMigration>;
-
 export type ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManagerStateEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-const ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManagerStateEnum = S.String;
-
 export type ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-const ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum = S.String;
-
 export type ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-const ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum = S.String;
-
 /** State of Policy Controller installation. */
 export interface ConfigManagementGatekeeperDeploymentState {
   /** Status of gatekeeper-controller-manager pod. */
@@ -679,21 +471,11 @@ export interface ConfigManagementGatekeeperDeploymentState {
     | ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum
     | (string & {});
 }
-const ConfigManagementGatekeeperDeploymentState = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ConfigManagementGatekeeperDeploymentState>;
-
 /** The build version of Gatekeeper Policy Controller is using. */
 export interface ConfigManagementPolicyControllerVersion {
   /** The gatekeeper image tag that is composed of ACM version, git tag, build number. */
   version?: string;
 }
-const ConfigManagementPolicyControllerVersion = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ConfigManagementPolicyControllerVersion>;
-
 /** State for PolicyControllerState. */
 export interface ConfigManagementPolicyControllerState {
   /** Record state of ACM -> PoCo Hub migration for this feature. */
@@ -703,107 +485,78 @@ export interface ConfigManagementPolicyControllerState {
   /** The version of Gatekeeper Policy Controller deployed. */
   version?: ConfigManagementPolicyControllerVersion;
 }
-const ConfigManagementPolicyControllerState = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ConfigManagementPolicyControllerState>;
-
 export type ConfigManagementConfigSyncStateStateEnum =
   | "STATE_UNSPECIFIED"
   | "CONFIG_SYNC_NOT_INSTALLED"
   | "CONFIG_SYNC_INSTALLED"
   | "CONFIG_SYNC_ERROR"
   | "CONFIG_SYNC_PENDING";
-const ConfigManagementConfigSyncStateStateEnum = S.String;
-
 export type ConfigManagementConfigSyncStateReposyncCrdEnum =
   | "CRD_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "TERMINATING"
   | "INSTALLING";
-const ConfigManagementConfigSyncStateReposyncCrdEnum = S.String;
-
 export type ConfigManagementConfigSyncStateRootsyncCrdEnum =
   | "CRD_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "TERMINATING"
   | "INSTALLING";
-const ConfigManagementConfigSyncStateRootsyncCrdEnum = S.String;
-
 export type ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-const ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum = S.String;
-
 export type ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-const ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum = S.String;
-
 export type ConfigManagementConfigSyncDeploymentStateGitSyncEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-const ConfigManagementConfigSyncDeploymentStateGitSyncEnum = S.String;
-
 export type ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-const ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum = S.String;
-
 export type ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-const ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum = S.String;
-
 export type ConfigManagementConfigSyncDeploymentStateSyncerEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-const ConfigManagementConfigSyncDeploymentStateSyncerEnum = S.String;
-
 export type ConfigManagementConfigSyncDeploymentStateResourceGroupControllerManagerEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-const ConfigManagementConfigSyncDeploymentStateResourceGroupControllerManagerEnum = S.String;
-
 export type ConfigManagementConfigSyncDeploymentStateMonitorEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-const ConfigManagementConfigSyncDeploymentStateMonitorEnum = S.String;
-
 export type ConfigManagementConfigSyncDeploymentStateImporterEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-const ConfigManagementConfigSyncDeploymentStateImporterEnum = S.String;
-
 /** The state of ConfigSync's deployment on a cluster. */
 export interface ConfigManagementConfigSyncDeploymentState {
   /** Deployment state of root-reconciler. */
@@ -829,27 +582,17 @@ export interface ConfigManagementConfigSyncDeploymentState {
   /** Deployment state of the importer pod. */
   importer?: ConfigManagementConfigSyncDeploymentStateImporterEnum | (string & {});
 }
-const ConfigManagementConfigSyncDeploymentState = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ConfigManagementConfigSyncDeploymentState>;
-
 /** Errors pertaining to the installation of Config Sync */
 export interface ConfigManagementConfigSyncError {
   /** A string representing the user facing error message */
   errorMessage?: string;
 }
 export type ConfigManagementConfigSyncErrorList = Array<ConfigManagementConfigSyncError>;
-const ConfigManagementConfigSyncErrorList =
-  ConfigManagementInstallErrorList as any as S.Schema<ConfigManagementConfigSyncErrorList>;
-
 export type ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum =
   | "STOP_SYNCING_STATE_UNSPECIFIED"
   | "NOT_STOPPED"
   | "PENDING"
   | "STOPPED";
-const ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum = S.String;
-
 /** A Kubernetes object's GVK. */
 export interface ConfigManagementGroupVersionKind {
   /** Kubernetes Kind */
@@ -859,11 +602,6 @@ export interface ConfigManagementGroupVersionKind {
   /** Kubernetes Version */
   version?: string;
 }
-const ConfigManagementGroupVersionKind = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ConfigManagementGroupVersionKind>;
-
 /** Model for a config file in the git repo with an associated Sync error. */
 export interface ConfigManagementErrorResource {
   /** Group/version/kind of the resource that is causing an error */
@@ -875,17 +613,7 @@ export interface ConfigManagementErrorResource {
   /** Metadata name of the resource that is causing an error */
   resourceName?: string;
 }
-const ConfigManagementErrorResource = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ConfigManagementErrorResource>;
-
 export type ConfigManagementErrorResourceList = Array<ConfigManagementErrorResource>;
-const ConfigManagementErrorResourceList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ConfigManagementErrorResourceList>;
-
 /** An ACM created error representing a problem syncing configurations. */
 export interface ConfigManagementSyncError {
   /** A list of config(s) associated with the error, if any */
@@ -895,17 +623,7 @@ export interface ConfigManagementSyncError {
   /** An ACM defined error code */
   code?: string;
 }
-const ConfigManagementSyncError = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ConfigManagementSyncError>;
-
 export type ConfigManagementSyncErrorList = Array<ConfigManagementSyncError>;
-const ConfigManagementSyncErrorList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ConfigManagementSyncErrorList>;
-
 export type ConfigManagementSyncStateCodeEnum =
   | "SYNC_CODE_UNSPECIFIED"
   | "SYNCED"
@@ -915,8 +633,6 @@ export type ConfigManagementSyncStateCodeEnum =
   | "NOT_INSTALLED"
   | "UNAUTHORIZED"
   | "UNREACHABLE";
-const ConfigManagementSyncStateCodeEnum = S.String;
-
 /** State indicating an ACM's progress syncing configurations to a cluster. */
 export interface ConfigManagementSyncState {
   /** Timestamp type of when ACM last successfully synced the repo. */
@@ -934,11 +650,6 @@ export interface ConfigManagementSyncState {
   /** Sync status code. */
   code?: ConfigManagementSyncStateCodeEnum | (string & {});
 }
-const ConfigManagementSyncState = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ConfigManagementSyncState>;
-
 /** Specific versioning information pertaining to ConfigSync's Pods. */
 export interface ConfigManagementConfigSyncVersion {
   /** Version of the deployed reconciler-manager pod. */
@@ -960,11 +671,6 @@ export interface ConfigManagementConfigSyncVersion {
   /** Version of the deployed resource-group-controller-manager pod */
   resourceGroupControllerManager?: string;
 }
-const ConfigManagementConfigSyncVersion = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ConfigManagementConfigSyncVersion>;
-
 /** State information for ConfigSync. */
 export interface ConfigManagementConfigSyncState {
   /** Output only. The state of CS This field summarizes the other fields in this message. */
@@ -988,27 +694,18 @@ export interface ConfigManagementConfigSyncState {
   /** Output only. The version of ConfigSync deployed. */
   version?: ConfigManagementConfigSyncVersion;
 }
-const ConfigManagementConfigSyncState = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ConfigManagementConfigSyncState>;
-
 export type ConfigManagementHierarchyControllerDeploymentStateExtensionEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-const ConfigManagementHierarchyControllerDeploymentStateExtensionEnum = S.String;
-
 export type ConfigManagementHierarchyControllerDeploymentStateHncEnum =
   | "DEPLOYMENT_STATE_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "INSTALLED"
   | "ERROR"
   | "PENDING";
-const ConfigManagementHierarchyControllerDeploymentStateHncEnum = S.String;
-
 /** Deployment state for Hierarchy Controller */
 export interface ConfigManagementHierarchyControllerDeploymentState {
   /** The deployment state for Hierarchy Controller extension (e.g. v0.7.0-hc.1). */
@@ -1016,11 +713,6 @@ export interface ConfigManagementHierarchyControllerDeploymentState {
   /** The deployment state for open source HNC (e.g. v0.7.0-hc.0). */
   hnc?: ConfigManagementHierarchyControllerDeploymentStateHncEnum | (string & {});
 }
-const ConfigManagementHierarchyControllerDeploymentState = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ConfigManagementHierarchyControllerDeploymentState>;
-
 /** Version for Hierarchy Controller. */
 export interface ConfigManagementHierarchyControllerVersion {
   /** Version for open source HNC. */
@@ -1028,11 +720,6 @@ export interface ConfigManagementHierarchyControllerVersion {
   /** Version for Hierarchy Controller extension. */
   extension?: string;
 }
-const ConfigManagementHierarchyControllerVersion = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ConfigManagementHierarchyControllerVersion>;
-
 /** State for Hierarchy Controller. */
 export interface ConfigManagementHierarchyControllerState {
   /** The deployment state for Hierarchy Controller. */
@@ -1040,11 +727,6 @@ export interface ConfigManagementHierarchyControllerState {
   /** The version for Hierarchy Controller. */
   version?: ConfigManagementHierarchyControllerVersion;
 }
-const ConfigManagementHierarchyControllerState = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ConfigManagementHierarchyControllerState>;
-
 /** Configuration for a container override. */
 export interface ConfigManagementContainerOverride {
   /** Optional. The cpu limit of the container. Use the following CPU resource units: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu. */
@@ -1058,17 +740,7 @@ export interface ConfigManagementContainerOverride {
   /** Optional. The cpu request of the container. Use the following CPU resource units: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#meaning-of-cpu. */
   cpuRequest?: string;
 }
-const ConfigManagementContainerOverride = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ConfigManagementContainerOverride>;
-
 export type ConfigManagementContainerOverrideList = Array<ConfigManagementContainerOverride>;
-const ConfigManagementContainerOverrideList = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ConfigManagementContainerOverrideList>;
-
 /** Configuration for a deployment override. */
 export interface ConfigManagementDeploymentOverride {
   /** Required. The namespace of the deployment resource to be overridden. */
@@ -1078,17 +750,7 @@ export interface ConfigManagementDeploymentOverride {
   /** Optional. The containers of the deployment resource to be overridden. */
   containers?: ConfigManagementContainerOverrideList;
 }
-const ConfigManagementDeploymentOverride = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ConfigManagementDeploymentOverride>;
-
 export type ConfigManagementDeploymentOverrideList = Array<ConfigManagementDeploymentOverride>;
-const ConfigManagementDeploymentOverrideList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ConfigManagementDeploymentOverrideList>;
-
 /** Git repo configuration for a single cluster. */
 export interface ConfigManagementGitConfig {
   /** Optional. Git revision (tag or hash) to check out. Default HEAD. */
@@ -1108,11 +770,6 @@ export interface ConfigManagementGitConfig {
   /** Required. The URL of the Git repository to use as the source of truth. */
   syncRepo?: string;
 }
-const ConfigManagementGitConfig = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ConfigManagementGitConfig>;
-
 /** OCI repo configuration for a single cluster. */
 export interface ConfigManagementOciConfig {
   /** Optional. The absolute path of the directory that contains the local resources. Default: the root directory of the image. */
@@ -1126,11 +783,6 @@ export interface ConfigManagementOciConfig {
   /** Required. Type of secret configured for access to the OCI repo. Must be one of `gcenode`, `gcpserviceaccount`, `k8sserviceaccount` or `none`. The validation of this is case-sensitive. */
   secretType?: string;
 }
-const ConfigManagementOciConfig = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ConfigManagementOciConfig>;
-
 /** Configuration for Config Sync */
 export interface ConfigManagementConfigSync {
   /** Optional. Enables the installation of Config Sync. If set to true, the Feature will manage Config Sync resources, and apply the other ConfigSync fields if they exist. If set to false, the Feature will ignore all other ConfigSync fields and delete the Config Sync resources. If omitted, ConfigSync is considered enabled if the git or oci field is present. */
@@ -1150,11 +802,6 @@ export interface ConfigManagementConfigSync {
   /** Optional. Specifies whether the Config Sync repo is in `hierarchical` or `unstructured` mode. Defaults to `hierarchical`. See https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/concepts/configs#organize-configs for an explanation. */
   sourceFormat?: string;
 }
-const ConfigManagementConfigSync = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ConfigManagementConfigSync>;
-
 /** Configuration for Hierarchy Controller. */
 export interface ConfigManagementHierarchyControllerConfig {
   /** Whether pod tree labels are enabled in this cluster. */
@@ -1164,45 +811,23 @@ export interface ConfigManagementHierarchyControllerConfig {
   /** Whether hierarchical resource quota is enabled in this cluster. */
   enableHierarchicalResourceQuota?: boolean;
 }
-const ConfigManagementHierarchyControllerConfig = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ConfigManagementHierarchyControllerConfig>;
-
 /** Configuration for Binauthz. */
 export interface ConfigManagementBinauthzConfig {
   /** Whether binauthz is enabled in this cluster. */
   enabled?: boolean;
 }
-const ConfigManagementBinauthzConfig = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ConfigManagementBinauthzConfig>;
-
 export type ConfigManagementPolicyControllerMonitoringBackendsItemEnum =
   | "MONITORING_BACKEND_UNSPECIFIED"
   | "PROMETHEUS"
   | "CLOUD_MONITORING";
-const ConfigManagementPolicyControllerMonitoringBackendsItemEnum = S.String;
-
 export type ConfigManagementPolicyControllerMonitoringBackendsItemEnumList = Array<
   ConfigManagementPolicyControllerMonitoringBackendsItemEnum | (string & {})
 >;
-const ConfigManagementPolicyControllerMonitoringBackendsItemEnumList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ConfigManagementPolicyControllerMonitoringBackendsItemEnumList>;
-
 /** PolicyControllerMonitoring specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"] */
 export interface ConfigManagementPolicyControllerMonitoring {
   /** Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. */
   backends?: ConfigManagementPolicyControllerMonitoringBackendsItemEnumList;
 }
-const ConfigManagementPolicyControllerMonitoring = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ConfigManagementPolicyControllerMonitoring>;
-
 /** Configuration for Policy Controller */
 export interface ConfigManagementPolicyController {
   /** Output only. Last time this membership spec was updated. */
@@ -1224,17 +849,10 @@ export interface ConfigManagementPolicyController {
   /** The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster. */
   exemptableNamespaces?: StringList;
 }
-const ConfigManagementPolicyController = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ConfigManagementPolicyController>;
-
 export type ConfigManagementSpecManagementEnum =
   | "MANAGEMENT_UNSPECIFIED"
   | "MANAGEMENT_AUTOMATIC"
   | "MANAGEMENT_MANUAL";
-const ConfigManagementSpecManagementEnum = S.String;
-
 /** **Anthos Config Management**: Configuration for a single cluster. Intended to parallel the ConfigManagement CR. */
 export interface ConfigManagementSpec {
   /** Optional. Config Sync configuration for the cluster. */
@@ -1252,8 +870,6 @@ export interface ConfigManagementSpec {
   /** Optional. Deprecated: Automatic Feature management is in Preview and is unavailable in version 1.21.0 and later, after which Config Sync only supports manual upgrades. If set to manual upgrades, clear this field instead, which is behaviorally equivalent but helps prevent compatibility issues with newer fields. */
   management?: ConfigManagementSpecManagementEnum | (string & {});
 }
-const ConfigManagementSpec = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<ConfigManagementSpec>;
-
 /** **Anthos Config Management**: State for a single cluster. */
 export interface ConfigManagementState {
   /** Output only. Current install status of ACM's Operator. */
@@ -1273,14 +889,7 @@ export interface ConfigManagementState {
   /** Output only. Membership configuration in the cluster. This represents the actual state in the cluster, while the MembershipSpec in the FeatureSpec represents the intended state. */
   membershipSpec?: ConfigManagementSpec;
 }
-const ConfigManagementState = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<ConfigManagementState>;
-
 export type AppDevExperienceStatusCodeEnum = "CODE_UNSPECIFIED" | "OK" | "FAILED" | "UNKNOWN";
-const AppDevExperienceStatusCodeEnum = S.String;
-
 /** Status specifies state for the subcomponent. */
 export interface AppDevExperienceStatus {
   /** Code specifies AppDevExperienceFeature's subcomponent ready state. */
@@ -1288,28 +897,16 @@ export interface AppDevExperienceStatus {
   /** Description is populated if Code is Failed, explaining why it has failed. */
   description?: string;
 }
-const AppDevExperienceStatus = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<AppDevExperienceStatus>;
-
 /** State for App Dev Exp Feature. */
 export interface AppDevExperienceState {
   /** Status of subcomponent that detects configured Service Mesh resources. */
   networkingInstallSucceeded?: AppDevExperienceStatus;
 }
-const AppDevExperienceState = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<AppDevExperienceState>;
-
 export type ServiceMeshConditionSeverityEnum =
   | "SEVERITY_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
   | "INFO";
-const ServiceMeshConditionSeverityEnum = S.String;
-
 export type ServiceMeshConditionCodeEnum =
   | "CODE_UNSPECIFIED"
   | "MESH_IAM_PERMISSION_DENIED"
@@ -1376,8 +973,6 @@ export type ServiceMeshConditionCodeEnum =
   | "MODERNIZATION_INCOMPATIBLE"
   | "MODERNIZATION_INCOMPATIBLE_FLEET_SCALE"
   | "MODERNIZATION_INCOMPATIBLE_FLEET_QUOTA";
-const ServiceMeshConditionCodeEnum = S.String;
-
 /** Condition being reported. */
 export interface ServiceMeshCondition {
   /** A short summary about the issue. */
@@ -1389,17 +984,8 @@ export interface ServiceMeshCondition {
   /** Links contains actionable information. */
   documentationLink?: string;
 }
-const ServiceMeshCondition = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<ServiceMeshCondition>;
-
 export type ServiceMeshConditionList = Array<ServiceMeshCondition>;
-const ServiceMeshConditionList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ServiceMeshConditionList>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<DocumentMap>;
-
 /** A unique identifier for the type of message. Display_name is intended to be human-readable, code is intended to be machine readable. There should be a one-to-one mapping between display_name and code. (i.e. do not re-use display_names or codes between message types.) See istio.analysis.v1alpha1.AnalysisMessageBase.Type */
 export interface ServiceMeshType {
   /** A human-readable name for the message type. e.g. "InternalError", "PodMissingProxy". This should be the same for all messages of the same type. (This corresponds to the `name` field in open-source Istio.) */
@@ -1407,15 +993,11 @@ export interface ServiceMeshType {
   /** A 7 character code matching `^IST[0-9]{4}$` or `^ASM[0-9]{4}$`, intended to uniquely identify the message type. (e.g. "IST0001" is mapped to the "InternalError" message type.) */
   code?: string;
 }
-const ServiceMeshType = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<ServiceMeshType>;
-
 export type ServiceMeshAnalysisMessageBaseLevelEnum =
   | "LEVEL_UNSPECIFIED"
   | "ERROR"
   | "WARNING"
   | "INFO";
-const ServiceMeshAnalysisMessageBaseLevelEnum = S.String;
-
 /** AnalysisMessageBase describes some common information that is needed for all messages. */
 export interface ServiceMeshAnalysisMessageBase {
   /** Represents the specific type of a message. */
@@ -1425,11 +1007,6 @@ export interface ServiceMeshAnalysisMessageBase {
   /** Represents how severe a message is. */
   level?: ServiceMeshAnalysisMessageBaseLevelEnum | (string & {});
 }
-const ServiceMeshAnalysisMessageBase = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ServiceMeshAnalysisMessageBase>;
-
 /** AnalysisMessage is a single message produced by an analyzer, and it used to communicate to the end user about the state of their Service Mesh configuration. */
 export interface ServiceMeshAnalysisMessage {
   /** A list of strings specifying the resource identifiers that were the cause of message generation. A "path" here may be: * MEMBERSHIP_ID if the cause is a specific member cluster * MEMBERSHIP_ID/(NAMESPACE\/)?RESOURCETYPE/NAME if the cause is a resource in a cluster */
@@ -1441,17 +1018,7 @@ export interface ServiceMeshAnalysisMessage {
   /** Details common to all types of Istio and ServiceMesh analysis messages. */
   messageBase?: ServiceMeshAnalysisMessageBase;
 }
-const ServiceMeshAnalysisMessage = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ServiceMeshAnalysisMessage>;
-
 export type ServiceMeshAnalysisMessageList = Array<ServiceMeshAnalysisMessage>;
-const ServiceMeshAnalysisMessageList = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ServiceMeshAnalysisMessageList>;
-
 export type ServiceMeshDataPlaneManagementStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "DISABLED"
@@ -1462,8 +1029,6 @@ export type ServiceMeshDataPlaneManagementStateEnum =
   | "NEEDS_ATTENTION"
   | "DEGRADED"
   | "DEPROVISIONING";
-const ServiceMeshDataPlaneManagementStateEnum = S.String;
-
 /** Structured and human-readable details for a status. */
 export interface ServiceMeshStatusDetails {
   /** Human-readable explanation of code. */
@@ -1471,17 +1036,7 @@ export interface ServiceMeshStatusDetails {
   /** A machine-readable code that further describes a broad status. */
   code?: string;
 }
-const ServiceMeshStatusDetails = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<ServiceMeshStatusDetails>;
-
 export type ServiceMeshStatusDetailsList = Array<ServiceMeshStatusDetails>;
-const ServiceMeshStatusDetailsList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ServiceMeshStatusDetailsList>;
-
 /** Status of data plane management. Only reported per-member. */
 export interface ServiceMeshDataPlaneManagement {
   /** Lifecycle status of data plane management. */
@@ -1489,18 +1044,11 @@ export interface ServiceMeshDataPlaneManagement {
   /** Explanation of the status. */
   details?: ServiceMeshStatusDetailsList;
 }
-const ServiceMeshDataPlaneManagement = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ServiceMeshDataPlaneManagement>;
-
 export type ServiceMeshControlPlaneManagementImplementationEnum =
   | "IMPLEMENTATION_UNSPECIFIED"
   | "ISTIOD"
   | "TRAFFIC_DIRECTOR"
   | "UPDATING";
-const ServiceMeshControlPlaneManagementImplementationEnum = S.String;
-
 export type ServiceMeshControlPlaneManagementStateEnum =
   | "LIFECYCLE_STATE_UNSPECIFIED"
   | "DISABLED"
@@ -1511,8 +1059,6 @@ export type ServiceMeshControlPlaneManagementStateEnum =
   | "NEEDS_ATTENTION"
   | "DEGRADED"
   | "DEPROVISIONING";
-const ServiceMeshControlPlaneManagementStateEnum = S.String;
-
 /** Status of control plane management. */
 export interface ServiceMeshControlPlaneManagement {
   /** Output only. Implementation of managed control plane. */
@@ -1522,11 +1068,6 @@ export interface ServiceMeshControlPlaneManagement {
   /** Explanation of state. */
   details?: ServiceMeshStatusDetailsList;
 }
-const ServiceMeshControlPlaneManagement = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ServiceMeshControlPlaneManagement>;
-
 /** **Service Mesh**: State for a single Membership, as analyzed by the Service Mesh Hub Controller. */
 export interface ServiceMeshState {
   /** The API version (i.e. Istio CRD version) for configuring service mesh in this cluster. This version is influenced by the `default_channel` field. */
@@ -1540,14 +1081,10 @@ export interface ServiceMeshState {
   /** Output only. Status of control plane management */
   controlPlaneManagement?: ServiceMeshControlPlaneManagement;
 }
-const ServiceMeshState = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<ServiceMeshState>;
-
 export type WorkloadIdentityIdentityProviderStateDetailCodeEnum =
   | "IDENTITY_PROVIDER_STATE_UNSPECIFIED"
   | "IDENTITY_PROVIDER_STATE_OK"
   | "IDENTITY_PROVIDER_STATE_ERROR";
-const WorkloadIdentityIdentityProviderStateDetailCodeEnum = S.String;
-
 /** IdentityProviderStateDetail represents the state of an Identity Provider. */
 export interface WorkloadIdentityIdentityProviderStateDetail {
   /** A human-readable description of the current state or returned error. */
@@ -1555,19 +1092,9 @@ export interface WorkloadIdentityIdentityProviderStateDetail {
   /** The state of the Identity Provider. */
   code?: WorkloadIdentityIdentityProviderStateDetailCodeEnum | (string & {});
 }
-const WorkloadIdentityIdentityProviderStateDetail = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<WorkloadIdentityIdentityProviderStateDetail>;
-
 export type WorkloadIdentityIdentityProviderStateDetailMap = {
   [key: string]: WorkloadIdentityIdentityProviderStateDetail | undefined;
 };
-const WorkloadIdentityIdentityProviderStateDetailMap = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<WorkloadIdentityIdentityProviderStateDetailMap>;
-
 /** **WorkloadIdentity**: The membership-specific state for WorkloadIdentity feature. */
 export interface WorkloadIdentityState {
   /** Deprecated, this field will be erased after code is changed to use the new field. */
@@ -1575,14 +1102,7 @@ export interface WorkloadIdentityState {
   /** The state of the Identity Providers corresponding to the membership. */
   identityProviderStateDetails?: WorkloadIdentityIdentityProviderStateDetailMap;
 }
-const WorkloadIdentityState = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<WorkloadIdentityState>;
-
 export type StateCodeEnum = "CODE_UNSPECIFIED" | "OK" | "WARNING" | "ERROR";
-const StateCodeEnum = S.String;
-
 /** High-level state of a MembershipFeature. */
 export interface State {
   /** A human-readable description of the current status. */
@@ -1592,8 +1112,6 @@ export interface State {
   /** The time this status and any related Feature-specific details were updated. */
   updateTime?: string;
 }
-const State = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<State>;
-
 /** FeatureState contains high-level state information and per-feature state information for this MembershipFeature. */
 export interface FeatureState {
   /** Cluster upgrade state. */
@@ -1617,14 +1135,10 @@ export interface FeatureState {
   /** The high-level state of this MembershipFeature. */
   state?: State;
 }
-const FeatureState = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<FeatureState>;
-
 export type CloudBuildSpecSecurityPolicyEnum =
   | "SECURITY_POLICY_UNSPECIFIED"
   | "NON_PRIVILEGED"
   | "PRIVILEGED";
-const CloudBuildSpecSecurityPolicyEnum = S.String;
-
 /** **Cloud Build**: Configurations for each Cloud Build enabled cluster. */
 export interface CloudBuildSpec {
   /** Whether it is allowed to run the privileged builds on the cluster or not. */
@@ -1632,8 +1146,6 @@ export interface CloudBuildSpec {
   /** Version of the cloud build software on the cluster. */
   version?: string;
 }
-const CloudBuildSpec = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<CloudBuildSpec>;
-
 /** ResourceList contains container resource requirements. */
 export interface PolicyControllerResourceList {
   /** Memory requirement expressed in Kubernetes resource units. */
@@ -1641,11 +1153,6 @@ export interface PolicyControllerResourceList {
   /** CPU requirement expressed in Kubernetes resource units. */
   cpu?: string;
 }
-const PolicyControllerResourceList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<PolicyControllerResourceList>;
-
 /** ResourceRequirements describes the compute resource requirements. */
 export interface PolicyControllerResourceRequirements {
   /** Limits describes the maximum amount of compute resources allowed for use by the running container. */
@@ -1653,17 +1160,10 @@ export interface PolicyControllerResourceRequirements {
   /** Requests describes the amount of compute resources reserved for the container by the kube-scheduler. */
   requests?: PolicyControllerResourceList;
 }
-const PolicyControllerResourceRequirements = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<PolicyControllerResourceRequirements>;
-
 export type PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum =
   | "AFFINITY_UNSPECIFIED"
   | "NO_AFFINITY"
   | "ANTI_AFFINITY";
-const PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum = S.String;
-
 /** Toleration of a node taint. */
 export interface PolicyControllerToleration {
   /** Matches a taint value. */
@@ -1675,17 +1175,7 @@ export interface PolicyControllerToleration {
   /** Matches a taint operator. */
   operator?: string;
 }
-const PolicyControllerToleration = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<PolicyControllerToleration>;
-
 export type PolicyControllerTolerationList = Array<PolicyControllerToleration>;
-const PolicyControllerTolerationList = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<PolicyControllerTolerationList>;
-
 /** Deployment-specific configuration. */
 export interface PolicyControllerPolicyControllerDeploymentConfig {
   /** Container resource requirements. */
@@ -1699,53 +1189,26 @@ export interface PolicyControllerPolicyControllerDeploymentConfig {
   /** Pod tolerations of node taints. */
   podTolerations?: PolicyControllerTolerationList;
 }
-const PolicyControllerPolicyControllerDeploymentConfig = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<PolicyControllerPolicyControllerDeploymentConfig>;
-
 export type PolicyControllerPolicyControllerDeploymentConfigMap = {
   [key: string]: PolicyControllerPolicyControllerDeploymentConfig | undefined;
 };
-const PolicyControllerPolicyControllerDeploymentConfigMap = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<PolicyControllerPolicyControllerDeploymentConfigMap>;
-
 export type PolicyControllerTemplateLibraryConfigInstallationEnum =
   | "INSTALLATION_UNSPECIFIED"
   | "NOT_INSTALLED"
   | "ALL";
-const PolicyControllerTemplateLibraryConfigInstallationEnum = S.String;
-
 /** The config specifying which default library templates to install. */
 export interface PolicyControllerTemplateLibraryConfig {
   /** Configures the manner in which the template library is installed on the cluster. */
   installation?: PolicyControllerTemplateLibraryConfigInstallationEnum | (string & {});
 }
-const PolicyControllerTemplateLibraryConfig = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<PolicyControllerTemplateLibraryConfig>;
-
 /** BundleInstallSpec is the specification configuration for a single managed bundle. */
 export interface PolicyControllerBundleInstallSpec {
   /** the set of namespaces to be exempted from the bundle */
   exemptedNamespaces?: StringList;
 }
-const PolicyControllerBundleInstallSpec = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<PolicyControllerBundleInstallSpec>;
-
 export type PolicyControllerBundleInstallSpecMap = {
   [key: string]: PolicyControllerBundleInstallSpec | undefined;
 };
-const PolicyControllerBundleInstallSpecMap = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<PolicyControllerBundleInstallSpecMap>;
-
 /** PolicyContentSpec defines the user's desired content configuration on the cluster. */
 export interface PolicyControllerPolicyContentSpec {
   /** Configures the installation of the Template Library. */
@@ -1753,11 +1216,6 @@ export interface PolicyControllerPolicyContentSpec {
   /** map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint. */
   bundles?: PolicyControllerBundleInstallSpecMap;
 }
-const PolicyControllerPolicyContentSpec = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<PolicyControllerPolicyContentSpec>;
-
 export type PolicyControllerMonitoringConfigBackendsItemEnum =
   | "MONITORING_BACKEND_UNSPECIFIED"
   | "PROMETHEUS"
@@ -1770,17 +1228,12 @@ export interface PolicyControllerMonitoringConfig {
   /** Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. */
   backends?: PolicyControllerMonitoringConfigBackendsItemEnumList;
 }
-const PolicyControllerMonitoringConfig =
-  ConfigManagementPolicyControllerMonitoring as any as S.Schema<PolicyControllerMonitoringConfig>;
-
 export type PolicyControllerHubConfigInstallSpecEnum =
   | "INSTALL_SPEC_UNSPECIFIED"
   | "INSTALL_SPEC_NOT_INSTALLED"
   | "INSTALL_SPEC_ENABLED"
   | "INSTALL_SPEC_SUSPENDED"
   | "INSTALL_SPEC_DETACHED";
-const PolicyControllerHubConfigInstallSpecEnum = S.String;
-
 /** Configuration for Policy Controller */
 export interface PolicyControllerHubConfig {
   /** Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated. */
@@ -1804,11 +1257,6 @@ export interface PolicyControllerHubConfig {
   /** The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster. */
   exemptableNamespaces?: StringList;
 }
-const PolicyControllerHubConfig = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<PolicyControllerHubConfig>;
-
 /** **Policy Controller**: Configuration for a single cluster. Intended to parallel the PolicyController CR. */
 export interface PolicyControllerSpec {
   /** Policy Controller configuration for the cluster. */
@@ -1816,53 +1264,33 @@ export interface PolicyControllerSpec {
   /** Version of Policy Controller installed. */
   version?: string;
 }
-const PolicyControllerSpec = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<PolicyControllerSpec>;
-
 export type WorkloadCertificateSpecCertificateManagementEnum =
   | "CERTIFICATE_MANAGEMENT_UNSPECIFIED"
   | "DISABLED"
   | "ENABLED";
-const WorkloadCertificateSpecCertificateManagementEnum = S.String;
-
 /** **WorkloadCertificate**: The membership-specific input for WorkloadCertificate feature. */
 export interface WorkloadCertificateSpec {
   /** CertificateManagement specifies workload certificate management. */
   certificateManagement?: WorkloadCertificateSpecCertificateManagementEnum | (string & {});
 }
-const WorkloadCertificateSpec = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<WorkloadCertificateSpec>;
-
 export type ServiceMeshSpecDefaultChannelEnum =
   | "CHANNEL_UNSPECIFIED"
   | "RAPID"
   | "REGULAR"
   | "STABLE";
-const ServiceMeshSpecDefaultChannelEnum = S.String;
-
 export type ServiceMeshSpecManagementEnum =
   | "MANAGEMENT_UNSPECIFIED"
   | "MANAGEMENT_AUTOMATIC"
   | "MANAGEMENT_MANUAL"
   | "MANAGEMENT_NOT_INSTALLED";
-const ServiceMeshSpecManagementEnum = S.String;
-
 export type ServiceMeshSpecConfigApiEnum =
   | "CONFIG_API_UNSPECIFIED"
   | "CONFIG_API_ISTIO"
   | "CONFIG_API_GATEWAY";
-const ServiceMeshSpecConfigApiEnum = S.String;
-
 export type ServiceMeshSpecControlPlaneEnum =
   | "CONTROL_PLANE_MANAGEMENT_UNSPECIFIED"
   | "AUTOMATIC"
   | "MANUAL";
-const ServiceMeshSpecControlPlaneEnum = S.String;
-
 /** **Service Mesh**: Spec for a single Membership for the servicemesh feature */
 export interface ServiceMeshSpec {
   /** Determines which release channel to use for default injection and service mesh APIs. */
@@ -1874,20 +1302,14 @@ export interface ServiceMeshSpec {
   /** Deprecated: use `management` instead Enables automatic control plane management. */
   controlPlane?: ServiceMeshSpecControlPlaneEnum | (string & {});
 }
-const ServiceMeshSpec = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<ServiceMeshSpec>;
-
 /** **RBAC RoleBinding Actuation**: The membership-specific input for RBACRoleBindingActuation feature. */
 export type RBACRoleBindingActuationSpec = CancelOperationRequest;
 export type OriginTypeEnum = "TYPE_UNSPECIFIED" | "FLEET" | "FLEET_OUT_OF_SYNC" | "USER";
-const OriginTypeEnum = S.String;
-
 /** Origin defines where this FeatureSpec originated from. */
 export interface Origin {
   /** Type specifies which type of origin is set. */
   type?: OriginTypeEnum | (string & {});
 }
-const Origin = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<Origin>;
-
 /** FeatureSpec contains user input per-feature spec information. */
 export interface FeatureSpec {
   /** IdentityService FeatureSpec. */
@@ -1907,8 +1329,6 @@ export interface FeatureSpec {
   /** Whether this per-Feature spec was inherited from a fleet-level default. This field can be updated by users by either overriding a Feature config (updated to USER implicitly) or setting to FLEET explicitly. */
   origin?: Origin;
 }
-const FeatureSpec = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<FeatureSpec>;
-
 /** MembershipFeature represents the settings and status of a Fleet Feature enabled on a single Fleet Membership. */
 export interface MembershipFeature {
   /** Output only. When the MembershipFeature resource was last updated. */
@@ -1928,8 +1348,6 @@ export interface MembershipFeature {
   /** Optional. Spec of this membershipFeature. */
   spec?: FeatureSpec;
 }
-const MembershipFeature = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<MembershipFeature>;
-
 export interface CreateProjectsLocationsMembershipsFeaturesRequest {
   /** Idempotent request UUID. */
   requestId?: string;
@@ -1940,14 +1358,7 @@ export interface CreateProjectsLocationsMembershipsFeaturesRequest {
   /** Request body */
   body?: MembershipFeature;
 }
-const CreateProjectsLocationsMembershipsFeaturesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<CreateProjectsLocationsMembershipsFeaturesRequest>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -1957,8 +1368,6 @@ export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const GoogleRpcStatus = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<GoogleRpcStatus>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -1972,28 +1381,16 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
   name?: string;
 }
-const Operation = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<Operation>;
-
 export interface DeleteProjectsLocationsMembershipsFeaturesRequest {
   /** Required. The name of the membershipFeature to be deleted. Specified in the format `projects/*\/locations/*\/memberships/*\/features/*`. */
   name: string;
   /** Idempotent request UUID. */
   requestId?: string;
 }
-const DeleteProjectsLocationsMembershipsFeaturesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsMembershipsFeaturesRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
@@ -2007,26 +1404,14 @@ export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
   labels?: StringMap;
 }
-const Location = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<Location>;
-
 export interface GetProjectsLocationsMembershipsFeaturesRequest {
   /** Required. The MembershipFeature resource name in the format `projects/*\/locations/*\/memberships/*\/features/*`. */
   name: string;
 }
-const GetProjectsLocationsMembershipsFeaturesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GetProjectsLocationsMembershipsFeaturesRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface ListProjectsLocationsRequest {
   /** A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). */
   filter?: string;
@@ -2039,14 +1424,7 @@ export interface ListProjectsLocationsRequest {
   /** The resource that owns the locations collection, if applicable. */
   name: string;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -2054,11 +1432,6 @@ export interface ListLocationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ListLocationsResponse>;
-
 export interface ListProjectsLocationsMembershipsFeaturesRequest {
   /** When requesting a 'page' of resources, `page_size` specifies number of resources to return. If unspecified or set to 0, all resources will be returned. */
   pageSize?: number;
@@ -2071,17 +1444,7 @@ export interface ListProjectsLocationsMembershipsFeaturesRequest {
   /** Token returned by previous call to `ListFeatures` which specifies the position in the list from where to continue listing the resources. */
   pageToken?: string;
 }
-const ListProjectsLocationsMembershipsFeaturesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ListProjectsLocationsMembershipsFeaturesRequest>;
-
 export type MembershipFeatureList = Array<MembershipFeature>;
-const MembershipFeatureList = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<MembershipFeatureList>;
-
 /** Response message for the `GkeHubFeature.ListMembershipFeatures` method. */
 export interface ListMembershipFeaturesResponse {
   /** List of locations that could not be reached while fetching this list. */
@@ -2091,11 +1454,6 @@ export interface ListMembershipFeaturesResponse {
   /** A token to request the next page of resources from the `ListMembershipFeatures` method. The value of an empty string means that there are no more resources to return. */
   nextPageToken?: string;
 }
-const ListMembershipFeaturesResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<ListMembershipFeaturesResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
@@ -2108,14 +1466,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. */
   returnPartialSuccess?: boolean;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -2125,11 +1476,6 @@ export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
   operations?: OperationList;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface PatchProjectsLocationsMembershipsFeaturesRequest {
   /** Optional. If set to true, and the MembershipFeature is not found, a new MembershipFeature will be created. In this situation, `update_mask` is ignored. */
   allowMissing?: boolean;
@@ -2142,11 +1488,6 @@ export interface PatchProjectsLocationsMembershipsFeaturesRequest {
   /** Request body */
   body?: MembershipFeature;
 }
-const PatchProjectsLocationsMembershipsFeaturesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<PatchProjectsLocationsMembershipsFeaturesRequest>;
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -2160,8 +1501,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2180,8 +1521,8 @@ export const createProjectsLocationsMembershipsFeatures: API.OperationMethod<
   CreateProjectsLocationsMembershipsFeaturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsMembershipsFeaturesRequest,
-  output: Operation,
+  input: __S(107) as any as S.Schema<CreateProjectsLocationsMembershipsFeaturesRequest>,
+  output: __S(110) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2200,8 +1541,8 @@ export const deleteProjectsLocationsMembershipsFeatures: API.OperationMethod<
   DeleteProjectsLocationsMembershipsFeaturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsMembershipsFeaturesRequest,
-  output: Operation,
+  input: __S(111) as any as S.Schema<DeleteProjectsLocationsMembershipsFeaturesRequest>,
+  output: __S(110) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2215,8 +1556,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(112) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(113) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2230,8 +1571,8 @@ export const getProjectsLocationsMembershipsFeatures: API.OperationMethod<
   GetProjectsLocationsMembershipsFeaturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsMembershipsFeaturesRequest,
-  output: MembershipFeature,
+  input: __S(114) as any as S.Schema<GetProjectsLocationsMembershipsFeaturesRequest>,
+  output: __S(106) as any as S.Schema<MembershipFeature>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2245,8 +1586,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(115) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(110) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2261,8 +1602,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(116) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(118) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2278,8 +1619,8 @@ export const listProjectsLocationsMembershipsFeatures: API.PaginatedOperationMet
   GcpOpContext,
   ListMembershipFeaturesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsMembershipsFeaturesRequest,
-  output: ListMembershipFeaturesResponse,
+  input: __S(119) as any as S.Schema<ListProjectsLocationsMembershipsFeaturesRequest>,
+  output: __S(121) as any as S.Schema<ListMembershipFeaturesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2295,8 +1636,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(122) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(124) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2316,8 +1657,8 @@ export const patchProjectsLocationsMembershipsFeatures: API.OperationMethod<
   PatchProjectsLocationsMembershipsFeaturesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsMembershipsFeaturesRequest,
-  output: Operation,
+  input: __S(125) as any as S.Schema<PatchProjectsLocationsMembershipsFeaturesRequest>,
+  output: __S(110) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2334,7 +1675,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2348,7 +1689,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(LifecycleStateStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "LifecycleState" });
     case 3:
@@ -2358,7 +1699,7 @@ function __c0(j: number): any {
         S.Struct({
           reason: S.optional(S.String),
           updateTime: S.optional(S.String),
-          code: S.optional(ClusterUpgradeUpgradeStatusCodeEnum),
+          code: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ClusterUpgradeUpgradeStatus",
@@ -2373,14 +1714,14 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ClusterUpgradeUpgradeStatus),
-          upgrade: S.optional(ClusterUpgradeGKEUpgrade),
+          status: S.optional(__S(4)),
+          upgrade: S.optional(__S(5)),
         }),
       ).annotate({
         identifier: "ClusterUpgradeMembershipGKEUpgradeState",
       });
     case 7:
-      return S.Array(ClusterUpgradeMembershipGKEUpgradeState);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -2397,27 +1738,27 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          upgrades: S.optional(ClusterUpgradeMembershipGKEUpgradeStateList),
-          ignored: S.optional(ClusterUpgradeIgnoredMembership),
+          upgrades: S.optional(__S(7)),
+          ignored: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "ClusterUpgradeState" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           details: S.optional(S.String),
-          state: S.optional(PolicyControllerOnClusterStateStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PolicyControllerOnClusterState",
       });
     case 3:
-      return S.Record(S.String, PolicyControllerOnClusterState);
+      return S.Record(S.String, __S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          referentialSyncConfigState: S.optional(PolicyControllerOnClusterState),
-          bundleStates: S.optional(PolicyControllerOnClusterStateMap),
-          templateLibraryState: S.optional(PolicyControllerOnClusterState),
+          referentialSyncConfigState: S.optional(__S(10)),
+          bundleStates: S.optional(__S(11)),
+          templateLibraryState: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "PolicyControllerPolicyContentState",
@@ -2425,9 +1766,9 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(PolicyControllerStateStateEnum),
-          componentStates: S.optional(PolicyControllerOnClusterStateMap),
-          policyContentState: S.optional(PolicyControllerPolicyContentState),
+          state: S.optional(S.String),
+          componentStates: S.optional(__S(11)),
+          policyContentState: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "PolicyControllerState" });
     case 6:
@@ -2435,13 +1776,13 @@ function __c1(j: number): any {
         S.Struct({
           updateTime: S.optional(S.String),
           description: S.optional(S.String),
-          state: S.optional(RBACRoleBindingActuationRBACRoleBindingStateStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RBACRoleBindingActuationRBACRoleBindingState",
       });
     case 7:
-      return S.Record(S.String, RBACRoleBindingActuationRBACRoleBindingState);
+      return S.Record(S.String, __S(14));
   }
 }
 function __c2(j: number): any {
@@ -2449,7 +1790,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          rbacrolebindingStates: S.optional(RBACRoleBindingActuationRBACRoleBindingStateMap),
+          rbacrolebindingStates: S.optional(__S(15)),
         }),
       ).annotate({
         identifier: "RBACRoleBindingActuationState",
@@ -2474,7 +1815,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           sessionDuration: S.optional(S.String),
-          diagnosticInterface: S.optional(IdentityServiceDiagnosticInterface),
+          diagnosticInterface: S.optional(__S(18)),
         }),
       ).annotate({
         identifier: "IdentityServiceIdentityServiceOptions",
@@ -2562,7 +1903,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          simpleBindCredentials: S.optional(IdentityServiceSimpleBindCredentials),
+          simpleBindCredentials: S.optional(__S(25)),
         }),
       ).annotate({
         identifier: "IdentityServiceServiceAccountConfig",
@@ -2570,10 +1911,10 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          user: S.optional(IdentityServiceUserConfig),
-          group: S.optional(IdentityServiceGroupConfig),
-          server: S.optional(IdentityServiceServerConfig),
-          serviceAccount: S.optional(IdentityServiceServiceAccountConfig),
+          user: S.optional(__S(22)),
+          group: S.optional(__S(23)),
+          server: S.optional(__S(24)),
+          serviceAccount: S.optional(__S(26)),
         }),
       ).annotate({
         identifier: "IdentityServiceLdapConfig",
@@ -2593,11 +1934,11 @@ function __c3(j: number): any {
         S.Struct({
           userAttribute: S.optional(S.String),
           userPrefix: S.optional(S.String),
-          attributeMapping: S.optional(StringMap),
+          attributeMapping: S.optional(__S(3)),
           groupPrefix: S.optional(S.String),
           identityProviderSsoUri: S.optional(S.String),
           groupsAttribute: S.optional(S.String),
-          identityProviderCertificates: S.optional(StringList),
+          identityProviderCertificates: S.optional(__S(29)),
           identityProviderId: S.optional(S.String),
         }),
       ).annotate({
@@ -2606,13 +1947,13 @@ function __c3(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          azureadConfig: S.optional(IdentityServiceAzureADConfig),
-          oidcConfig: S.optional(IdentityServiceOidcConfig),
-          ldapConfig: S.optional(IdentityServiceLdapConfig),
+          azureadConfig: S.optional(__S(20)),
+          oidcConfig: S.optional(__S(21)),
+          ldapConfig: S.optional(__S(27)),
           name: S.optional(S.String),
-          googleConfig: S.optional(IdentityServiceGoogleConfig),
+          googleConfig: S.optional(__S(28)),
           proxy: S.optional(S.String),
-          samlConfig: S.optional(IdentityServiceSamlConfig),
+          samlConfig: S.optional(__S(30)),
         }),
       ).annotate({
         identifier: "IdentityServiceAuthMethod",
@@ -2622,12 +1963,12 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IdentityServiceAuthMethod);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          identityServiceOptions: S.optional(IdentityServiceIdentityServiceOptions),
-          authMethods: S.optional(IdentityServiceAuthMethodList),
+          identityServiceOptions: S.optional(__S(19)),
+          authMethods: S.optional(__S(32)),
         }),
       ).annotate({ identifier: "IdentityServiceSpec" });
     case 2:
@@ -2635,8 +1976,8 @@ function __c4(j: number): any {
         S.Struct({
           failureReason: S.optional(S.String),
           installedVersion: S.optional(S.String),
-          state: S.optional(IdentityServiceStateStateEnum),
-          memberConfig: S.optional(IdentityServiceSpec),
+          state: S.optional(S.String),
+          memberConfig: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "IdentityServiceState" });
     case 3:
@@ -2648,13 +1989,13 @@ function __c4(j: number): any {
         identifier: "ConfigManagementInstallError",
       });
     case 4:
-      return S.Array(ConfigManagementInstallError);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.String),
-          errors: S.optional(ConfigManagementInstallErrorList),
-          deploymentState: S.optional(ConfigManagementOperatorStateDeploymentStateEnum),
+          errors: S.optional(__S(36)),
+          deploymentState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConfigManagementOperatorState",
@@ -2670,8 +2011,8 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          webhook: S.optional(ConfigManagementBinauthzStateWebhookEnum),
-          version: S.optional(ConfigManagementBinauthzVersion),
+          webhook: S.optional(S.String),
+          version: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "ConfigManagementBinauthzState",
@@ -2684,7 +2025,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           copyTime: S.optional(S.String),
-          stage: S.optional(ConfigManagementPolicyControllerMigrationStageEnum),
+          stage: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConfigManagementPolicyControllerMigration",
@@ -2692,13 +2033,9 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          gatekeeperControllerManagerState: S.optional(
-            ConfigManagementGatekeeperDeploymentStateGatekeeperControllerManagerStateEnum,
-          ),
-          gatekeeperAudit: S.optional(ConfigManagementGatekeeperDeploymentStateGatekeeperAuditEnum),
-          gatekeeperMutation: S.optional(
-            ConfigManagementGatekeeperDeploymentStateGatekeeperMutationEnum,
-          ),
+          gatekeeperControllerManagerState: S.optional(S.String),
+          gatekeeperAudit: S.optional(S.String),
+          gatekeeperMutation: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConfigManagementGatekeeperDeploymentState",
@@ -2714,9 +2051,9 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          migration: S.optional(ConfigManagementPolicyControllerMigration),
-          deploymentState: S.optional(ConfigManagementGatekeeperDeploymentState),
-          version: S.optional(ConfigManagementPolicyControllerVersion),
+          migration: S.optional(__S(40)),
+          deploymentState: S.optional(__S(41)),
+          version: S.optional(__S(42)),
         }),
       ).annotate({
         identifier: "ConfigManagementPolicyControllerState",
@@ -2724,21 +2061,15 @@ function __c5(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          rootReconciler: S.optional(ConfigManagementConfigSyncDeploymentStateRootReconcilerEnum),
-          otelCollector: S.optional(ConfigManagementConfigSyncDeploymentStateOtelCollectorEnum),
-          gitSync: S.optional(ConfigManagementConfigSyncDeploymentStateGitSyncEnum),
-          reconcilerManager: S.optional(
-            ConfigManagementConfigSyncDeploymentStateReconcilerManagerEnum,
-          ),
-          admissionWebhook: S.optional(
-            ConfigManagementConfigSyncDeploymentStateAdmissionWebhookEnum,
-          ),
-          syncer: S.optional(ConfigManagementConfigSyncDeploymentStateSyncerEnum),
-          resourceGroupControllerManager: S.optional(
-            ConfigManagementConfigSyncDeploymentStateResourceGroupControllerManagerEnum,
-          ),
-          monitor: S.optional(ConfigManagementConfigSyncDeploymentStateMonitorEnum),
-          importer: S.optional(ConfigManagementConfigSyncDeploymentStateImporterEnum),
+          rootReconciler: S.optional(S.String),
+          otelCollector: S.optional(S.String),
+          gitSync: S.optional(S.String),
+          reconcilerManager: S.optional(S.String),
+          admissionWebhook: S.optional(S.String),
+          syncer: S.optional(S.String),
+          resourceGroupControllerManager: S.optional(S.String),
+          monitor: S.optional(S.String),
+          importer: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConfigManagementConfigSyncDeploymentState",
@@ -2756,7 +2087,7 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          resourceGvk: S.optional(ConfigManagementGroupVersionKind),
+          resourceGvk: S.optional(__S(45)),
           resourceNamespace: S.optional(S.String),
           sourcePath: S.optional(S.String),
           resourceName: S.optional(S.String),
@@ -2765,7 +2096,7 @@ function __c5(j: number): any {
         identifier: "ConfigManagementErrorResource",
       });
     case 7:
-      return S.Array(ConfigManagementErrorResource);
+      return S.Array(__S(46));
   }
 }
 function __c6(j: number): any {
@@ -2773,7 +2104,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          errorResources: S.optional(ConfigManagementErrorResourceList),
+          errorResources: S.optional(__S(47)),
           errorMessage: S.optional(S.String),
           code: S.optional(S.String),
         }),
@@ -2781,17 +2112,17 @@ function __c6(j: number): any {
         identifier: "ConfigManagementSyncError",
       });
     case 1:
-      return S.Array(ConfigManagementSyncError);
+      return S.Array(__S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
           lastSyncTime: S.optional(S.String),
-          errors: S.optional(ConfigManagementSyncErrorList),
+          errors: S.optional(__S(49)),
           syncToken: S.optional(S.String),
           sourceToken: S.optional(S.String),
           importToken: S.optional(S.String),
           lastSync: S.optional(S.String),
-          code: S.optional(ConfigManagementSyncStateCodeEnum),
+          code: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConfigManagementSyncState",
@@ -2815,17 +2146,15 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(ConfigManagementConfigSyncStateStateEnum),
-          reposyncCrd: S.optional(ConfigManagementConfigSyncStateReposyncCrdEnum),
-          rootsyncCrd: S.optional(ConfigManagementConfigSyncStateRootsyncCrdEnum),
-          deploymentState: S.optional(ConfigManagementConfigSyncDeploymentState),
-          errors: S.optional(ConfigManagementConfigSyncErrorList),
-          clusterLevelStopSyncingState: S.optional(
-            ConfigManagementConfigSyncStateClusterLevelStopSyncingStateEnum,
-          ),
+          state: S.optional(S.String),
+          reposyncCrd: S.optional(S.String),
+          rootsyncCrd: S.optional(S.String),
+          deploymentState: S.optional(__S(44)),
+          errors: S.optional(__S(36)),
+          clusterLevelStopSyncingState: S.optional(S.String),
           crCount: S.optional(S.Number),
-          syncState: S.optional(ConfigManagementSyncState),
-          version: S.optional(ConfigManagementConfigSyncVersion),
+          syncState: S.optional(__S(50)),
+          version: S.optional(__S(51)),
         }),
       ).annotate({
         identifier: "ConfigManagementConfigSyncState",
@@ -2833,8 +2162,8 @@ function __c6(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          extension: S.optional(ConfigManagementHierarchyControllerDeploymentStateExtensionEnum),
-          hnc: S.optional(ConfigManagementHierarchyControllerDeploymentStateHncEnum),
+          extension: S.optional(S.String),
+          hnc: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConfigManagementHierarchyControllerDeploymentState",
@@ -2851,8 +2180,8 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(ConfigManagementHierarchyControllerDeploymentState),
-          version: S.optional(ConfigManagementHierarchyControllerVersion),
+          state: S.optional(__S(53)),
+          version: S.optional(__S(54)),
         }),
       ).annotate({
         identifier: "ConfigManagementHierarchyControllerState",
@@ -2874,19 +2203,19 @@ function __c7(j: number): any {
         identifier: "ConfigManagementContainerOverride",
       });
     case 1:
-      return S.Array(ConfigManagementContainerOverride);
+      return S.Array(__S(56));
     case 2:
       return S.suspend(() =>
         S.Struct({
           deploymentNamespace: S.optional(S.String),
           deploymentName: S.optional(S.String),
-          containers: S.optional(ConfigManagementContainerOverrideList),
+          containers: S.optional(__S(57)),
         }),
       ).annotate({
         identifier: "ConfigManagementDeploymentOverride",
       });
     case 3:
-      return S.Array(ConfigManagementDeploymentOverride);
+      return S.Array(__S(58));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -2918,12 +2247,12 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          deploymentOverrides: S.optional(ConfigManagementDeploymentOverrideList),
-          git: S.optional(ConfigManagementGitConfig),
+          deploymentOverrides: S.optional(__S(59)),
+          git: S.optional(__S(60)),
           preventDrift: S.optional(S.Boolean),
           stopSyncing: S.optional(S.Boolean),
           metricsGcpServiceAccountEmail: S.optional(S.String),
-          oci: S.optional(ConfigManagementOciConfig),
+          oci: S.optional(__S(61)),
           sourceFormat: S.optional(S.String),
         }),
       ).annotate({
@@ -2952,11 +2281,11 @@ function __c8(j: number): any {
         identifier: "ConfigManagementBinauthzConfig",
       });
     case 1:
-      return S.Array(ConfigManagementPolicyControllerMonitoringBackendsItemEnum);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
-          backends: S.optional(ConfigManagementPolicyControllerMonitoringBackendsItemEnumList),
+          backends: S.optional(__S(65)),
         }),
       ).annotate({
         identifier: "ConfigManagementPolicyControllerMonitoring",
@@ -2971,8 +2300,8 @@ function __c8(j: number): any {
           templateLibraryInstalled: S.optional(S.Boolean),
           enabled: S.optional(S.Boolean),
           mutationEnabled: S.optional(S.Boolean),
-          monitoring: S.optional(ConfigManagementPolicyControllerMonitoring),
-          exemptableNamespaces: S.optional(StringList),
+          monitoring: S.optional(__S(66)),
+          exemptableNamespaces: S.optional(__S(29)),
         }),
       ).annotate({
         identifier: "ConfigManagementPolicyController",
@@ -2980,39 +2309,39 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          configSync: S.optional(ConfigManagementConfigSync),
-          hierarchyController: S.optional(ConfigManagementHierarchyControllerConfig),
+          configSync: S.optional(__S(62)),
+          hierarchyController: S.optional(__S(63)),
           cluster: S.optional(S.String),
-          binauthz: S.optional(ConfigManagementBinauthzConfig),
-          policyController: S.optional(ConfigManagementPolicyController),
+          binauthz: S.optional(__S(64)),
+          policyController: S.optional(__S(67)),
           version: S.optional(S.String),
-          management: S.optional(ConfigManagementSpecManagementEnum),
+          management: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigManagementSpec" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          operatorState: S.optional(ConfigManagementOperatorState),
+          operatorState: S.optional(__S(37)),
           clusterName: S.optional(S.String),
-          binauthzState: S.optional(ConfigManagementBinauthzState),
-          policyControllerState: S.optional(ConfigManagementPolicyControllerState),
+          binauthzState: S.optional(__S(39)),
+          policyControllerState: S.optional(__S(43)),
           kubernetesApiServerVersion: S.optional(S.String),
-          configSyncState: S.optional(ConfigManagementConfigSyncState),
-          hierarchyControllerState: S.optional(ConfigManagementHierarchyControllerState),
-          membershipSpec: S.optional(ConfigManagementSpec),
+          configSyncState: S.optional(__S(52)),
+          hierarchyControllerState: S.optional(__S(55)),
+          membershipSpec: S.optional(__S(68)),
         }),
       ).annotate({ identifier: "ConfigManagementState" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          code: S.optional(AppDevExperienceStatusCodeEnum),
+          code: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppDevExperienceStatus" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          networkingInstallSucceeded: S.optional(AppDevExperienceStatus),
+          networkingInstallSucceeded: S.optional(__S(70)),
         }),
       ).annotate({ identifier: "AppDevExperienceState" });
   }
@@ -3023,13 +2352,13 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           details: S.optional(S.String),
-          severity: S.optional(ServiceMeshConditionSeverityEnum),
-          code: S.optional(ServiceMeshConditionCodeEnum),
+          severity: S.optional(S.String),
+          code: S.optional(S.String),
           documentationLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceMeshCondition" });
     case 1:
-      return S.Array(ServiceMeshCondition);
+      return S.Array(__S(72));
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
@@ -3042,9 +2371,9 @@ function __c9(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ServiceMeshType),
+          type: S.optional(__S(75)),
           documentationUrl: S.optional(S.String),
-          level: S.optional(ServiceMeshAnalysisMessageBaseLevelEnum),
+          level: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ServiceMeshAnalysisMessageBase",
@@ -3052,16 +2381,16 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resourcePaths: S.optional(StringList),
+          resourcePaths: S.optional(__S(29)),
           description: S.optional(S.String),
-          args: S.optional(DocumentMap),
-          messageBase: S.optional(ServiceMeshAnalysisMessageBase),
+          args: S.optional(__S(74)),
+          messageBase: S.optional(__S(76)),
         }),
       ).annotate({
         identifier: "ServiceMeshAnalysisMessage",
       });
     case 6:
-      return S.Array(ServiceMeshAnalysisMessage);
+      return S.Array(__S(77));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -3074,12 +2403,12 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ServiceMeshStatusDetails);
+      return S.Array(__S(79));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(ServiceMeshDataPlaneManagementStateEnum),
-          details: S.optional(ServiceMeshStatusDetailsList),
+          state: S.optional(S.String),
+          details: S.optional(__S(80)),
         }),
       ).annotate({
         identifier: "ServiceMeshDataPlaneManagement",
@@ -3087,9 +2416,9 @@ function __c10(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          implementation: S.optional(ServiceMeshControlPlaneManagementImplementationEnum),
-          state: S.optional(ServiceMeshControlPlaneManagementStateEnum),
-          details: S.optional(ServiceMeshStatusDetailsList),
+          implementation: S.optional(S.String),
+          state: S.optional(S.String),
+          details: S.optional(__S(80)),
         }),
       ).annotate({
         identifier: "ServiceMeshControlPlaneManagement",
@@ -3098,35 +2427,35 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           configApiVersion: S.optional(S.String),
-          conditions: S.optional(ServiceMeshConditionList),
-          analysisMessages: S.optional(ServiceMeshAnalysisMessageList),
-          dataPlaneManagement: S.optional(ServiceMeshDataPlaneManagement),
-          controlPlaneManagement: S.optional(ServiceMeshControlPlaneManagement),
+          conditions: S.optional(__S(73)),
+          analysisMessages: S.optional(__S(78)),
+          dataPlaneManagement: S.optional(__S(81)),
+          controlPlaneManagement: S.optional(__S(82)),
         }),
       ).annotate({ identifier: "ServiceMeshState" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          code: S.optional(WorkloadIdentityIdentityProviderStateDetailCodeEnum),
+          code: S.optional(S.String),
         }),
       ).annotate({
         identifier: "WorkloadIdentityIdentityProviderStateDetail",
       });
     case 5:
-      return S.Record(S.String, WorkloadIdentityIdentityProviderStateDetail);
+      return S.Record(S.String, __S(84));
     case 6:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          identityProviderStateDetails: S.optional(WorkloadIdentityIdentityProviderStateDetailMap),
+          identityProviderStateDetails: S.optional(__S(85)),
         }),
       ).annotate({ identifier: "WorkloadIdentityState" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          code: S.optional(StateCodeEnum),
+          code: S.optional(S.String),
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "State" });
@@ -3137,22 +2466,22 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          clusterupgrade: S.optional(ClusterUpgradeState),
-          policycontroller: S.optional(PolicyControllerState),
-          rbacrolebindingactuation: S.optional(RBACRoleBindingActuationState),
-          metering: S.optional(MeteringState),
-          identityservice: S.optional(IdentityServiceState),
-          configmanagement: S.optional(ConfigManagementState),
-          appdevexperience: S.optional(AppDevExperienceState),
-          servicemesh: S.optional(ServiceMeshState),
-          workloadidentity: S.optional(WorkloadIdentityState),
-          state: S.optional(State),
+          clusterupgrade: S.optional(__S(9)),
+          policycontroller: S.optional(__S(13)),
+          rbacrolebindingactuation: S.optional(__S(16)),
+          metering: S.optional(__S(17)),
+          identityservice: S.optional(__S(34)),
+          configmanagement: S.optional(__S(69)),
+          appdevexperience: S.optional(__S(71)),
+          servicemesh: S.optional(__S(83)),
+          workloadidentity: S.optional(__S(86)),
+          state: S.optional(__S(87)),
         }),
       ).annotate({ identifier: "FeatureState" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          securityPolicy: S.optional(CloudBuildSpecSecurityPolicyEnum),
+          securityPolicy: S.optional(S.String),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudBuildSpec" });
@@ -3168,8 +2497,8 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          limits: S.optional(PolicyControllerResourceList),
-          requests: S.optional(PolicyControllerResourceList),
+          limits: S.optional(__S(90)),
+          requests: S.optional(__S(90)),
         }),
       ).annotate({
         identifier: "PolicyControllerResourceRequirements",
@@ -3186,21 +2515,21 @@ function __c11(j: number): any {
         identifier: "PolicyControllerToleration",
       });
     case 5:
-      return S.Array(PolicyControllerToleration);
+      return S.Array(__S(92));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          containerResources: S.optional(PolicyControllerResourceRequirements),
+          containerResources: S.optional(__S(91)),
           replicaCount: S.optional(S.String),
           podAntiAffinity: S.optional(S.Boolean),
-          podAffinity: S.optional(PolicyControllerPolicyControllerDeploymentConfigPodAffinityEnum),
-          podTolerations: S.optional(PolicyControllerTolerationList),
+          podAffinity: S.optional(S.String),
+          podTolerations: S.optional(__S(93)),
         }),
       ).annotate({
         identifier: "PolicyControllerPolicyControllerDeploymentConfig",
       });
     case 7:
-      return S.Record(S.String, PolicyControllerPolicyControllerDeploymentConfig);
+      return S.Record(S.String, __S(94));
   }
 }
 function __c12(j: number): any {
@@ -3208,7 +2537,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          installation: S.optional(PolicyControllerTemplateLibraryConfigInstallationEnum),
+          installation: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PolicyControllerTemplateLibraryConfig",
@@ -3216,18 +2545,18 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          exemptedNamespaces: S.optional(StringList),
+          exemptedNamespaces: S.optional(__S(29)),
         }),
       ).annotate({
         identifier: "PolicyControllerBundleInstallSpec",
       });
     case 2:
-      return S.Record(S.String, PolicyControllerBundleInstallSpec);
+      return S.Record(S.String, __S(97));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          templateLibrary: S.optional(PolicyControllerTemplateLibraryConfig),
-          bundles: S.optional(PolicyControllerBundleInstallSpecMap),
+          templateLibrary: S.optional(__S(96)),
+          bundles: S.optional(__S(98)),
         }),
       ).annotate({
         identifier: "PolicyControllerPolicyContentSpec",
@@ -3236,15 +2565,15 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           referentialRulesEnabled: S.optional(S.Boolean),
-          deploymentConfigs: S.optional(PolicyControllerPolicyControllerDeploymentConfigMap),
-          policyContent: S.optional(PolicyControllerPolicyContentSpec),
-          monitoring: S.optional(PolicyControllerMonitoringConfig),
+          deploymentConfigs: S.optional(__S(95)),
+          policyContent: S.optional(__S(99)),
+          monitoring: S.optional(__S(66)),
           auditIntervalSeconds: S.optional(S.String),
-          installSpec: S.optional(PolicyControllerHubConfigInstallSpecEnum),
+          installSpec: S.optional(S.String),
           mutationEnabled: S.optional(S.Boolean),
           constraintViolationLimit: S.optional(S.String),
           logDeniesEnabled: S.optional(S.Boolean),
-          exemptableNamespaces: S.optional(StringList),
+          exemptableNamespaces: S.optional(__S(29)),
         }),
       ).annotate({
         identifier: "PolicyControllerHubConfig",
@@ -3252,23 +2581,23 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          policyControllerHubConfig: S.optional(PolicyControllerHubConfig),
+          policyControllerHubConfig: S.optional(__S(100)),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "PolicyControllerSpec" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          certificateManagement: S.optional(WorkloadCertificateSpecCertificateManagementEnum),
+          certificateManagement: S.optional(S.String),
         }),
       ).annotate({ identifier: "WorkloadCertificateSpec" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          defaultChannel: S.optional(ServiceMeshSpecDefaultChannelEnum),
-          management: S.optional(ServiceMeshSpecManagementEnum),
-          configApi: S.optional(ServiceMeshSpecConfigApiEnum),
-          controlPlane: S.optional(ServiceMeshSpecControlPlaneEnum),
+          defaultChannel: S.optional(S.String),
+          management: S.optional(S.String),
+          configApi: S.optional(S.String),
+          controlPlane: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceMeshSpec" });
   }
@@ -3278,20 +2607,20 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(OriginTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Origin" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          identityservice: S.optional(IdentityServiceSpec),
-          cloudbuild: S.optional(CloudBuildSpec),
-          policycontroller: S.optional(PolicyControllerSpec),
-          workloadcertificate: S.optional(WorkloadCertificateSpec),
-          configmanagement: S.optional(ConfigManagementSpec),
-          servicemesh: S.optional(ServiceMeshSpec),
-          rbacrolebindingactuation: S.optional(CancelOperationRequest),
-          origin: S.optional(Origin),
+          identityservice: S.optional(__S(33)),
+          cloudbuild: S.optional(__S(89)),
+          policycontroller: S.optional(__S(101)),
+          workloadcertificate: S.optional(__S(102)),
+          configmanagement: S.optional(__S(68)),
+          servicemesh: S.optional(__S(103)),
+          rbacrolebindingactuation: S.optional(__S(0)),
+          origin: S.optional(__S(104)),
         }),
       ).annotate({ identifier: "FeatureSpec" });
     case 2:
@@ -3299,12 +2628,12 @@ function __c13(j: number): any {
         S.Struct({
           updateTime: S.optional(S.String),
           deleteTime: S.optional(S.String),
-          lifecycleState: S.optional(LifecycleState),
-          labels: S.optional(StringMap),
+          lifecycleState: S.optional(__S(2)),
+          labels: S.optional(__S(3)),
           name: S.optional(S.String),
-          state: S.optional(FeatureState),
+          state: S.optional(__S(88)),
           createTime: S.optional(S.String),
-          spec: S.optional(FeatureSpec),
+          spec: S.optional(__S(105)),
         }),
       ).annotate({ identifier: "MembershipFeature" });
     case 3:
@@ -3313,7 +2642,7 @@ function __c13(j: number): any {
           requestId: S.optional(S.String.pipe(T.Query())),
           featureId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(MembershipFeature.pipe(T.HttpBody())),
+          body: S.optional(__S(106).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3325,11 +2654,11 @@ function __c13(j: number): any {
         identifier: "CreateProjectsLocationsMembershipsFeaturesRequest",
       });
     case 4:
-      return S.Array(DocumentMap);
+      return S.Array(__S(74));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(108)),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
@@ -3338,9 +2667,9 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           done: S.optional(S.Boolean),
-          metadata: S.optional(DocumentMap),
-          error: S.optional(GoogleRpcStatus),
-          response: S.optional(DocumentMap),
+          metadata: S.optional(__S(74)),
+          error: S.optional(__S(109)),
+          response: S.optional(__S(74)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
@@ -3380,11 +2709,11 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(74)),
           locationId: S.optional(S.String),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "Location" });
     case 2:
@@ -3420,7 +2749,7 @@ function __c14(j: number): any {
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(29).pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
         }).pipe(
@@ -3434,11 +2763,11 @@ function __c14(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 5:
-      return S.Array(Location);
+      return S.Array(__S(113));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(117)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
@@ -3465,12 +2794,12 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MembershipFeature);
+      return S.Array(__S(106));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
-          membershipFeatures: S.optional(MembershipFeatureList),
+          unreachable: S.optional(__S(29)),
+          membershipFeatures: S.optional(__S(120)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -3495,13 +2824,13 @@ function __c15(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 3:
-      return S.Array(Operation);
+      return S.Array(__S(110));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(29)),
           nextPageToken: S.optional(S.String),
-          operations: S.optional(OperationList),
+          operations: S.optional(__S(123)),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
     case 5:
@@ -3511,7 +2840,7 @@ function __c15(j: number): any {
           name: S.String.pipe(T.Label()),
           requestId: S.optional(S.String.pipe(T.Query())),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(MembershipFeature.pipe(T.HttpBody())),
+          body: S.optional(__S(106).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -3522,5 +2851,46 @@ function __c15(j: number): any {
       ).annotate({
         identifier: "PatchProjectsLocationsMembershipsFeaturesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
   }
 }

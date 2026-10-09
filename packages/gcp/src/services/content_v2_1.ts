@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,36 +65,19 @@ export class NotFound
   ) {}
 
 export interface AuthinfoAccountsRequest {}
-const AuthinfoAccountsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AuthinfoAccountsRequest>;
-
 export interface AccountIdentifier {
   /** The aggregator ID, set for aggregators and subaccounts (in that case, it represents the aggregator of the subaccount). */
   aggregatorId?: string;
   /** The merchant account ID, set for individual accounts and subaccounts. */
   merchantId?: string;
 }
-const AccountIdentifier = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AccountIdentifier>;
-
 export type AccountIdentifierList = Array<AccountIdentifier>;
-const AccountIdentifierList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AccountIdentifierList>;
-
 export interface AccountsAuthInfoResponse {
   /** The account identifiers corresponding to the authenticated user. - For an individual account: only the merchant ID is defined - For an aggregator: only the aggregator ID is defined - For a subaccount of an MCA: both the merchant ID and the aggregator ID are defined. */
   accountIdentifiers?: AccountIdentifierList;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsAuthInfoResponse`". */
   kind?: string;
 }
-const AccountsAuthInfoResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AccountsAuthInfoResponse>;
-
 export interface ClaimwebsiteAccountsRequest {
   /** Only available to selected merchants, for example multi-client accounts (MCAs) and their sub-accounts. When set to `True`, this option removes any existing claim on the requested website and replaces it with a claim from the account that makes the request. */
   overwrite?: boolean;
@@ -101,26 +86,14 @@ export interface ClaimwebsiteAccountsRequest {
   /** The ID of the account whose website is claimed. */
   accountId: string;
 }
-const ClaimwebsiteAccountsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ClaimwebsiteAccountsRequest>;
-
 export interface AccountsClaimWebsiteResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsClaimWebsiteResponse`". */
   kind?: string;
 }
-const AccountsClaimWebsiteResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AccountsClaimWebsiteResponse>;
-
 export type AccountCredentialsPurposeEnum =
   | "ACCOUNT_CREDENTIALS_PURPOSE_UNSPECIFIED"
   | "SHOPIFY_ORDER_MANAGEMENT"
   | "SHOPIFY_INTEGRATION";
-const AccountCredentialsPurposeEnum = /*@__PURE__*/ S.String;
-
 /** Credentials allowing Google to call a partner's API on behalf of a merchant. */
 export interface AccountCredentials {
   /** Indicates to Google how Google should use these OAuth tokens. */
@@ -130,22 +103,13 @@ export interface AccountCredentials {
   /** The amount of time, in seconds, after which the access token is no longer valid. */
   expiresIn?: string;
 }
-const AccountCredentials = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AccountCredentials>;
-
 export interface CreateAccountsCredentialsRequest {
   /** Required. The merchant id of the account these credentials belong to. */
   accountId: string;
   /** Request body */
   body?: AccountCredentials;
 }
-const CreateAccountsCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateAccountsCredentialsRequest>;
-
 export type AccountLabelLabelTypeEnum = "LABEL_TYPE_UNSPECIFIED" | "MANUAL" | "AUTOMATIC";
-const AccountLabelLabelTypeEnum = /*@__PURE__*/ S.String;
-
 /** Label assigned by CSS domain or CSS group to one of its sub-accounts. */
 export interface AccountLabel {
   /** The description of this label. */
@@ -159,22 +123,13 @@ export interface AccountLabel {
   /** Immutable. The ID of account this label belongs to. */
   accountId?: string;
 }
-const AccountLabel = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AccountLabel>;
-
 export interface CreateAccountsLabelsRequest {
   /** Required. The id of the account this label belongs to. */
   accountId: string;
   /** Request body */
   body?: AccountLabel;
 }
-const CreateAccountsLabelsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateAccountsLabelsRequest>;
-
 export type AccountReturnCarrierCarrierCodeEnum = "CARRIER_CODE_UNSPECIFIED" | "FEDEX" | "UPS";
-const AccountReturnCarrierCarrierCodeEnum = /*@__PURE__*/ S.String;
-
 /** The return carrier information. This service is designed for merchants enrolled in the Buy on Google program. */
 export interface AccountReturnCarrier {
   /** Output only. Immutable. The Google-provided unique carrier ID, used to update the resource. */
@@ -186,22 +141,13 @@ export interface AccountReturnCarrier {
   /** Name of the carrier account. */
   carrierAccountName?: string;
 }
-const AccountReturnCarrier = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<AccountReturnCarrier>;
-
 export interface CreateAccountsReturncarrierRequest {
   /** Required. The Merchant Center Account Id under which the Return Carrier is to be linked. */
   accountId: string;
   /** Request body */
   body?: AccountReturnCarrier;
 }
-const CreateAccountsReturncarrierRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateAccountsReturncarrierRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<StringList>;
-
 /** The message for FeaturedProduct. [FeaturedProduct](https://support.google.com/merchants/answer/9703736) */
 export interface CollectionFeaturedProduct {
   /** Required. Y-coordinate of the product callout on the Shoppable Image. */
@@ -211,17 +157,7 @@ export interface CollectionFeaturedProduct {
   /** Required. X-coordinate of the product callout on the Shoppable Image. */
   x?: number;
 }
-const CollectionFeaturedProduct = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CollectionFeaturedProduct>;
-
 export type CollectionFeaturedProductList = Array<CollectionFeaturedProduct>;
-const CollectionFeaturedProductList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CollectionFeaturedProductList>;
-
 /** The collection message. */
 export interface Collection {
   /** Label that you assign to a collection to help organize bidding and reporting in Shopping campaigns. */
@@ -251,22 +187,13 @@ export interface Collection {
   /** [product_country attribute](https://support.google.com/merchants/answer/9674155) */
   productCountry?: string;
 }
-const Collection = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Collection>;
-
 export interface CreateCollectionsRequest {
   /** Required. The ID of the account that contains the collection. This account cannot be a multi-client account. */
   merchantId: string;
   /** Request body */
   body?: Collection;
 }
-const CreateCollectionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateCollectionsRequest>;
-
 export type ConversionSourceStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "ARCHIVED" | "PENDING";
-const ConversionSourceStateEnum = /*@__PURE__*/ S.String;
-
 /** Message representing a types of conversion events */
 export interface AttributionSettingsConversionType {
   /** Output only. Conversion event name, as it'll be reported by the client. */
@@ -274,17 +201,7 @@ export interface AttributionSettingsConversionType {
   /** Output only. Option indicating if the type should be included in Merchant Center reporting. */
   includeInReporting?: boolean;
 }
-const AttributionSettingsConversionType = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<AttributionSettingsConversionType>;
-
 export type AttributionSettingsConversionTypeList = Array<AttributionSettingsConversionType>;
-const AttributionSettingsConversionTypeList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<AttributionSettingsConversionTypeList>;
-
 export type AttributionSettingsAttributionModelEnum =
   | "ATTRIBUTION_MODEL_UNSPECIFIED"
   | "CROSS_CHANNEL_LAST_CLICK"
@@ -294,8 +211,6 @@ export type AttributionSettingsAttributionModelEnum =
   | "CROSS_CHANNEL_LINEAR"
   | "CROSS_CHANNEL_POSITION_BASED"
   | "CROSS_CHANNEL_TIME_DECAY";
-const AttributionSettingsAttributionModelEnum = /*@__PURE__*/ S.String;
-
 /** Represents attribution settings for conversion sources receiving pre-attribution data. */
 export interface AttributionSettings {
   /** Immutable. Unordered list. List of different conversion types a conversion event can be classified as. A standard "purchase" type will be automatically created if this list is empty at creation time. */
@@ -304,8 +219,6 @@ export interface AttributionSettings {
   attributionLookbackWindowInDays?: number;
   attributionModel?: AttributionSettingsAttributionModelEnum | (string & {});
 }
-const AttributionSettings = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<AttributionSettings>;
-
 /** "Merchant Center Destination" sources can be used to send conversion events from a website using a Google tag directly to a Merchant Center account where the source is created. */
 export interface MerchantCenterDestination {
   /** Required. Attribution settings being used for the Merchant Center Destination. */
@@ -317,11 +230,6 @@ export interface MerchantCenterDestination {
   /** Output only. Merchant Center Destination ID. */
   destinationId?: string;
 }
-const MerchantCenterDestination = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<MerchantCenterDestination>;
-
 /** "Google Analytics Link" sources can be used to get conversion data from an existing Google Analytics property into the linked Merchant Center account. */
 export interface GoogleAnalyticsLink {
   /** Output only. Name of the Google Analytics property the merchant is linked to. */
@@ -331,8 +239,6 @@ export interface GoogleAnalyticsLink {
   /** Required. Immutable. ID of the Google Analytics property the merchant is linked to. */
   propertyId?: string;
 }
-const GoogleAnalyticsLink = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GoogleAnalyticsLink>;
-
 /** Represents a conversion source owned by a Merchant account. A merchant account can have up to 200 conversion sources. */
 export interface ConversionSource {
   /** Output only. Current state of this conversion source. Can't be edited through the API. */
@@ -346,19 +252,12 @@ export interface ConversionSource {
   /** Immutable. Conversion Source of type "Link to Google Analytics Property". */
   googleAnalyticsLink?: GoogleAnalyticsLink;
 }
-const ConversionSource = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ConversionSource>;
-
 export interface CreateConversionsourcesRequest {
   /** Required. The ID of the account that owns the new conversion source. */
   merchantId: string;
   /** Request body */
   body?: ConversionSource;
 }
-const CreateConversionsourcesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateConversionsourcesRequest>;
-
 /** Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). */
 export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -366,8 +265,6 @@ export interface TimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
   version?: string;
 }
-const TimeZone = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<TimeZone>;
-
 /** Represents civil time (or occasionally physical time). This type can represent a civil time in one of a few possible ways: * When utc_offset is set and time_zone is unset: a civil time on a calendar day with a particular offset from UTC. * When time_zone is set and utc_offset is unset: a civil time on a calendar day in a particular time zone. * When neither time_zone nor utc_offset is set: a civil time on a calendar day in local time. The date is relative to the Proleptic Gregorian Calendar. If year, month, or day are 0, the DateTime is considered not to have a specific year, month, or day respectively. This type may also be used to represent a physical time if all the date and time fields are set and either case of the `time_offset` oneof is set. Consider using `Timestamp` message for physical time instead. If your use case also would like to store the user's timezone, that can be done in another field. This type is more flexible than some applications may want. Make sure to document and validate your application's limitations. */
 export interface DateTime {
   /** Optional. Seconds of minutes of the time. Must normally be from 0 to 59, defaults to 0. An API may allow the value 60 if it allows leap-seconds. */
@@ -389,8 +286,6 @@ export interface DateTime {
   /** UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }. */
   utcOffset?: string;
 }
-const DateTime = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<DateTime>;
-
 /** Represents how many items are in the shipment for the given shipment_id and line_item_id. */
 export interface OrderTrackingSignalShipmentLineItemMapping {
   /** The line item quantity in the shipment. */
@@ -400,18 +295,8 @@ export interface OrderTrackingSignalShipmentLineItemMapping {
   /** Required. The line item ID. */
   lineItemId?: string;
 }
-const OrderTrackingSignalShipmentLineItemMapping = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<OrderTrackingSignalShipmentLineItemMapping>;
-
 export type OrderTrackingSignalShipmentLineItemMappingList =
   Array<OrderTrackingSignalShipmentLineItemMapping>;
-const OrderTrackingSignalShipmentLineItemMappingList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<OrderTrackingSignalShipmentLineItemMappingList>;
-
 /** The price represented as a number and currency. */
 export interface PriceAmount {
   /** The currency of the price. */
@@ -419,8 +304,6 @@ export interface PriceAmount {
   /** The price represented as a number. */
   value?: string;
 }
-const PriceAmount = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<PriceAmount>;
-
 /** The line items of the order. */
 export interface OrderTrackingSignalLineItemDetails {
   /** Required. The ID for this line item. */
@@ -444,23 +327,11 @@ export interface OrderTrackingSignalLineItemDetails {
   /** Required. The Content API REST ID of the product, in the form channel:contentLanguage:targetCountry:offerId. */
   productId?: string;
 }
-const OrderTrackingSignalLineItemDetails = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<OrderTrackingSignalLineItemDetails>;
-
 export type OrderTrackingSignalLineItemDetailsList = Array<OrderTrackingSignalLineItemDetails>;
-const OrderTrackingSignalLineItemDetailsList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<OrderTrackingSignalLineItemDetailsList>;
-
 export type OrderTrackingSignalShippingInfoShippingStatusEnum =
   | "SHIPPING_STATE_UNSPECIFIED"
   | "SHIPPED"
   | "DELIVERED";
-const OrderTrackingSignalShippingInfoShippingStatusEnum = /*@__PURE__*/ S.String;
-
 /** The shipping information for the order. */
 export interface OrderTrackingSignalShippingInfo {
   /** The status of the shipment. */
@@ -486,17 +357,7 @@ export interface OrderTrackingSignalShippingInfo {
   /** The time when the shipment was actually delivered. Include the year and timezone string, if available. This field is required, if one of the following fields is absent: tracking_id or carrier_name. */
   actualDeliveryTime?: DateTime;
 }
-const OrderTrackingSignalShippingInfo = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<OrderTrackingSignalShippingInfo>;
-
 export type OrderTrackingSignalShippingInfoList = Array<OrderTrackingSignalShippingInfo>;
-const OrderTrackingSignalShippingInfoList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<OrderTrackingSignalShippingInfoList>;
-
 /** Represents a merchant trade from which signals are extracted, e.g. shipping. */
 export interface OrderTrackingSignal {
   /** Required. The time when the order was created on the merchant side. Include the year and timezone string, if available. */
@@ -520,26 +381,17 @@ export interface OrderTrackingSignal {
   /** The shipping information for the order. */
   shippingInfo?: OrderTrackingSignalShippingInfoList;
 }
-const OrderTrackingSignal = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<OrderTrackingSignal>;
-
 export interface CreateOrdertrackingsignalsRequest {
   /** The ID of the merchant for which the order signal is created. */
   merchantId: string;
   /** Request body */
   body?: OrderTrackingSignal;
 }
-const CreateOrdertrackingsignalsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateOrdertrackingsignalsRequest>;
-
 /** The Content API ID of the product. */
 export interface ProductId {
   /** The Content API ID of the product, in the form `channel:contentLanguage:targetCountry:offerId`. */
   productId?: string;
 }
-const ProductId = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<ProductId>;
-
 /** A range of postal codes that defines the delivery area. Only set `firstPostalCode` when specifying a single postal code. */
 export interface DeliveryAreaPostalCodeRange {
   /** Required. A postal code or a pattern of the form prefix* denoting the inclusive lower bound of the range defining the area. Examples values: `"94108"`, `"9410*"`, `"9*"`. */
@@ -547,11 +399,6 @@ export interface DeliveryAreaPostalCodeRange {
   /** A postal code or a pattern of the form prefix* denoting the inclusive upper bound of the range defining the area (for example [070* - 078*] results in the range [07000 - 07899]). It must have the same length as `firstPostalCode`: if `firstPostalCode` is a postal code then `lastPostalCode` must be a postal code too; if firstPostalCode is a pattern then `lastPostalCode` must be a pattern with the same prefix length. Ignored if not set, then the area is defined as being all the postal codes matching `firstPostalCode`. */
   lastPostalCode?: string;
 }
-const DeliveryAreaPostalCodeRange = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DeliveryAreaPostalCodeRange>;
-
 /** A delivery area for the product. Only one of `countryCode` or `postalCodeRange` must be set. */
 export interface DeliveryArea {
   /** Required. The country that the product can be delivered to. Submit a [unicode CLDR region](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) such as `US` or `CH`. */
@@ -561,8 +408,6 @@ export interface DeliveryArea {
   /** A postal code, postal code range or postal code prefix that defines this area. Limited to US and AUS. */
   postalCodeRange?: DeliveryAreaPostalCodeRange;
 }
-const DeliveryArea = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<DeliveryArea>;
-
 /** A delivery time for this product. */
 export interface ProductDeliveryTimeAreaDeliveryTimeDeliveryTime {
   /** Required. The maximum number of business days (inclusive) between when the product ships and when the product is delivered. */
@@ -574,11 +419,6 @@ export interface ProductDeliveryTimeAreaDeliveryTimeDeliveryTime {
   /** Required. The maximum number of business days (inclusive) between when an order is placed and when the product ships. If a product ships in the same day, set this value to 0. */
   maxHandlingTimeDays?: number;
 }
-const ProductDeliveryTimeAreaDeliveryTimeDeliveryTime = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ProductDeliveryTimeAreaDeliveryTimeDeliveryTime>;
-
 /** A pairing of `DeliveryArea` associated with a `DeliveryTime` for this product. */
 export interface ProductDeliveryTimeAreaDeliveryTime {
   /** Required. The delivery area associated with `deliveryTime` for this product. */
@@ -586,17 +426,7 @@ export interface ProductDeliveryTimeAreaDeliveryTime {
   /** Required. The delivery time associated with `deliveryArea` for this product. */
   deliveryTime?: ProductDeliveryTimeAreaDeliveryTimeDeliveryTime;
 }
-const ProductDeliveryTimeAreaDeliveryTime = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ProductDeliveryTimeAreaDeliveryTime>;
-
 export type ProductDeliveryTimeAreaDeliveryTimeList = Array<ProductDeliveryTimeAreaDeliveryTime>;
-const ProductDeliveryTimeAreaDeliveryTimeList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ProductDeliveryTimeAreaDeliveryTimeList>;
-
 /** The estimated days to deliver a product after an order is placed. Only authorized shipping signals partners working with a merchant can use this resource. Merchants should use the [`products`](https://developers.google.com/shopping-content/reference/rest/v2.1/products#productshipping) resource instead. */
 export interface ProductDeliveryTime {
   /** Required. The `id` of the product. */
@@ -604,19 +434,12 @@ export interface ProductDeliveryTime {
   /** Required. A set of associations between `DeliveryArea` and `DeliveryTime` entries. The total number of `areaDeliveryTimes` can be at most 100. */
   areaDeliveryTimes?: ProductDeliveryTimeAreaDeliveryTimeList;
 }
-const ProductDeliveryTime = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ProductDeliveryTime>;
-
 export interface CreateProductdeliverytimeRequest {
   /** The Google merchant ID of the account that contains the product. This account cannot be a multi-client account. */
   merchantId: string;
   /** Request body */
   body?: ProductDeliveryTime;
 }
-const CreateProductdeliverytimeRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CreateProductdeliverytimeRequest>;
-
 /** A message that represents a time period. */
 export interface TimePeriod {
   /** The starting timestamp. */
@@ -624,8 +447,6 @@ export interface TimePeriod {
   /** The ending timestamp. */
   endTime?: string;
 }
-const TimePeriod = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<TimePeriod>;
-
 export type PromotionPromotionStatusDestinationStatusStatusEnum =
   | "STATE_UNSPECIFIED"
   | "IN_REVIEW"
@@ -634,8 +455,6 @@ export type PromotionPromotionStatusDestinationStatusStatusEnum =
   | "STOPPED"
   | "EXPIRED"
   | "PENDING";
-const PromotionPromotionStatusDestinationStatusStatusEnum = /*@__PURE__*/ S.String;
-
 /** The destination status of the promotion. */
 export interface PromotionPromotionStatusDestinationStatus {
   /** The name of the destination. */
@@ -643,18 +462,8 @@ export interface PromotionPromotionStatusDestinationStatus {
   /** The status for the specified destination. */
   status?: PromotionPromotionStatusDestinationStatusStatusEnum | (string & {});
 }
-const PromotionPromotionStatusDestinationStatus = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<PromotionPromotionStatusDestinationStatus>;
-
 export type PromotionPromotionStatusDestinationStatusList =
   Array<PromotionPromotionStatusDestinationStatus>;
-const PromotionPromotionStatusDestinationStatusList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<PromotionPromotionStatusDestinationStatusList>;
-
 /** The issue associated with the promotion. */
 export interface PromotionPromotionStatusPromotionIssue {
   /** Explanation of the issue. */
@@ -662,18 +471,8 @@ export interface PromotionPromotionStatusPromotionIssue {
   /** Code of the issue. */
   code?: string;
 }
-const PromotionPromotionStatusPromotionIssue = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<PromotionPromotionStatusPromotionIssue>;
-
 export type PromotionPromotionStatusPromotionIssueList =
   Array<PromotionPromotionStatusPromotionIssue>;
-const PromotionPromotionStatusPromotionIssueList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<PromotionPromotionStatusPromotionIssueList>;
-
 /** The status of the promotion. */
 export interface PromotionPromotionStatus {
   /** The intended destinations for the promotion. */
@@ -685,34 +484,18 @@ export interface PromotionPromotionStatus {
   /** A list of issues associated with the promotion. */
   promotionIssue?: PromotionPromotionStatusPromotionIssueList;
 }
-const PromotionPromotionStatus = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<PromotionPromotionStatus>;
-
 export type PromotionProductApplicabilityEnum =
   | "PRODUCT_APPLICABILITY_UNSPECIFIED"
   | "ALL_PRODUCTS"
   | "SPECIFIC_PRODUCTS";
-const PromotionProductApplicabilityEnum = /*@__PURE__*/ S.String;
-
 export type PromotionOfferTypeEnum = "OFFER_TYPE_UNSPECIFIED" | "NO_CODE" | "GENERIC_CODE";
-const PromotionOfferTypeEnum = /*@__PURE__*/ S.String;
-
 export type PromotionRedemptionChannelItemEnum =
   | "REDEMPTION_CHANNEL_UNSPECIFIED"
   | "IN_STORE"
   | "ONLINE";
-const PromotionRedemptionChannelItemEnum = /*@__PURE__*/ S.String;
-
 export type PromotionRedemptionChannelItemEnumList = Array<
   PromotionRedemptionChannelItemEnum | (string & {})
 >;
-const PromotionRedemptionChannelItemEnumList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<PromotionRedemptionChannelItemEnumList>;
-
 export type PromotionRedemptionRestrictionEnum =
   | "REDEMPTION_RESTRICTION_UNSPECIFIED"
   | "SUBSCRIBE_AND_SAVE"
@@ -721,8 +504,6 @@ export type PromotionRedemptionRestrictionEnum =
   | "SIGN_UP_FOR_TEXT"
   | "FORMS_OF_PAYMENT"
   | "CUSTOM";
-const PromotionRedemptionRestrictionEnum = /*@__PURE__*/ S.String;
-
 export type PromotionCouponValueTypeEnum =
   | "COUPON_VALUE_TYPE_UNSPECIFIED"
   | "MONEY_OFF"
@@ -737,14 +518,10 @@ export type PromotionCouponValueTypeEnum =
   | "FREE_SHIPPING_STANDARD"
   | "FREE_SHIPPING_OVERNIGHT"
   | "FREE_SHIPPING_TWO_DAY";
-const PromotionCouponValueTypeEnum = /*@__PURE__*/ S.String;
-
 export type PromotionStoreApplicabilityEnum =
   | "STORE_APPLICABILITY_UNSPECIFIED"
   | "ALL_STORES"
   | "SPECIFIC_STORES";
-const PromotionStoreApplicabilityEnum = /*@__PURE__*/ S.String;
-
 /** Represents a promotion. See the following articles for more details. * [Promotions feed specification](https://support.google.com/merchants/answer/2906014) * [Local promotions feed specification](https://support.google.com/merchants/answer/10146130) * [Promotions on Buy on Google product data specification](https://support.google.com/merchants/answer/9173673) */
 export interface Promotion {
   /** URL to the page on the merchant's site where the promotion shows. Local Inventory ads promotions throw an error if no promo url is included. URL is used to confirm that the promotion is valid and can be redeemed. */
@@ -836,26 +613,17 @@ export interface Promotion {
   /** Store codes to exclude for the promotion. */
   storeCodeExclusion?: StringList;
 }
-const Promotion = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<Promotion>;
-
 export interface CreatePromotionsRequest {
   /** Required. The ID of the account that contains the collection. */
   merchantId: string;
   /** Request body */
   body?: Promotion;
 }
-const CreatePromotionsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CreatePromotionsRequest>;
-
 /** A list of geotargets that defines the region area. */
 export interface RegionGeoTargetArea {
   /** Required. A non-empty list of [location IDs](https://developers.google.com/adwords/api/docs/appendix/geotargeting). They must all be of the same location type (e.g., state). */
   geotargetCriteriaIds?: StringList;
 }
-const RegionGeoTargetArea = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<RegionGeoTargetArea>;
-
 /** A range of postal codes that defines the region area. */
 export interface RegionPostalCodeAreaPostalCodeRange {
   /** Required. A postal code or a pattern of the form prefix* denoting the inclusive lower bound of the range defining the area. Examples values: "94108", "9410*", "9*". */
@@ -863,17 +631,7 @@ export interface RegionPostalCodeAreaPostalCodeRange {
   /** Optional. A postal code or a pattern of the form prefix* denoting the inclusive upper bound of the range defining the area. It must have the same length as postalCodeRangeBegin: if postalCodeRangeBegin is a postal code then postalCodeRangeEnd must be a postal code too; if postalCodeRangeBegin is a pattern then postalCodeRangeEnd must be a pattern with the same prefix length. Optional: if not set, then the area is defined as being all the postal codes matching postalCodeRangeBegin. */
   end?: string;
 }
-const RegionPostalCodeAreaPostalCodeRange = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<RegionPostalCodeAreaPostalCodeRange>;
-
 export type RegionPostalCodeAreaPostalCodeRangeList = Array<RegionPostalCodeAreaPostalCodeRange>;
-const RegionPostalCodeAreaPostalCodeRangeList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<RegionPostalCodeAreaPostalCodeRangeList>;
-
 /** A list of postal codes that defines the region area. Note: All regions defined using postal codes are accessible via the account's `ShippingSettings.postalCodeGroups` resource. */
 export interface RegionPostalCodeArea {
   /** Required. CLDR territory code or the country the postal code group applies to. */
@@ -881,8 +639,6 @@ export interface RegionPostalCodeArea {
   /** Required. A range of postal codes. */
   postalCodes?: RegionPostalCodeAreaPostalCodeRangeList;
 }
-const RegionPostalCodeArea = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<RegionPostalCodeArea>;
-
 /** Represents a geographic region that you can use as a target with both the `RegionalInventory` and `ShippingSettings` services. You can define regions as collections of either postal codes or, in some countries, using predefined geotargets. */
 export interface Region {
   /** Output only. Indicates if the region is eligible to use in the Regional Inventory configuration. */
@@ -900,8 +656,6 @@ export interface Region {
   /** A list of postal codes that defines the region area. */
   postalCodeArea?: RegionPostalCodeArea;
 }
-const Region = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Region>;
-
 export interface CreateRegionsRequest {
   /** Required. The id of the region to create. */
   regionId?: string;
@@ -910,15 +664,11 @@ export interface CreateRegionsRequest {
   /** Request body */
   body?: Region;
 }
-const CreateRegionsRequest = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<CreateRegionsRequest>;
-
 export type ReturnPolicyOnlinePolicyTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "NUMBER_OF_DAYS_AFTER_DELIVERY"
   | "NO_RETURNS"
   | "LIFETIME_RETURNS";
-const ReturnPolicyOnlinePolicyTypeEnum = /*@__PURE__*/ S.String;
-
 /** The available policies. */
 export interface ReturnPolicyOnlinePolicy {
   /** Policy type. */
@@ -926,30 +676,19 @@ export interface ReturnPolicyOnlinePolicy {
   /** The number of days items can be returned after delivery, where one day is defined to be 24 hours after the delivery timestamp. Required for `numberOfDaysAfterDelivery` returns. */
   days?: string;
 }
-const ReturnPolicyOnlinePolicy = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ReturnPolicyOnlinePolicy>;
-
 export type ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum =
   | "RETURN_REASON_CATEGORY_UNSPECIFIED"
   | "BUYER_REMORSE"
   | "ITEM_DEFECT";
-const ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum = /*@__PURE__*/ S.String;
-
 export type ReturnPolicyOnlineReturnReasonCategoryInfoReturnLabelSourceEnum =
   | "RETURN_LABEL_SOURCE_UNSPECIFIED"
   | "DOWNLOAD_AND_PRINT"
   | "IN_THE_BOX"
   | "CUSTOMER_RESPONSIBILITY";
-const ReturnPolicyOnlineReturnReasonCategoryInfoReturnLabelSourceEnum = /*@__PURE__*/ S.String;
-
 export type ReturnPolicyOnlineReturnShippingFeeTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "FIXED"
   | "CUSTOMER_PAYING_ACTUAL_FEE";
-const ReturnPolicyOnlineReturnShippingFeeTypeEnum = /*@__PURE__*/ S.String;
-
 /** The return shipping fee. This can either be a fixed fee or a boolean to indicate that the customer pays the actual shipping cost. */
 export interface ReturnPolicyOnlineReturnShippingFee {
   /** Type of return shipping fee. */
@@ -957,11 +696,6 @@ export interface ReturnPolicyOnlineReturnShippingFee {
   /** Fixed return shipping fee amount. This value is only applicable when type is FIXED. We will treat the return shipping fee as free if type is FIXED and this value is not set. */
   fixedFee?: PriceAmount;
 }
-const ReturnPolicyOnlineReturnShippingFee = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ReturnPolicyOnlineReturnShippingFee>;
-
 /** The return reason category info wrapper. */
 export interface ReturnPolicyOnlineReturnReasonCategoryInfo {
   /** The return reason category. */
@@ -975,18 +709,8 @@ export interface ReturnPolicyOnlineReturnReasonCategoryInfo {
   /** The corresponding return shipping fee. This is only applicable when returnLabelSource is not the customer's responsibility. */
   returnShippingFee?: ReturnPolicyOnlineReturnShippingFee;
 }
-const ReturnPolicyOnlineReturnReasonCategoryInfo = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ReturnPolicyOnlineReturnReasonCategoryInfo>;
-
 export type ReturnPolicyOnlineReturnReasonCategoryInfoList =
   Array<ReturnPolicyOnlineReturnReasonCategoryInfo>;
-const ReturnPolicyOnlineReturnReasonCategoryInfoList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ReturnPolicyOnlineReturnReasonCategoryInfoList>;
-
 export type ReturnPolicyOnlineItemConditionsItemEnum =
   | "ITEM_CONDITION_UNSPECIFIED"
   | "NEW"
@@ -994,9 +718,6 @@ export type ReturnPolicyOnlineItemConditionsItemEnum =
 export type ReturnPolicyOnlineItemConditionsItemEnumList = Array<
   ReturnPolicyOnlineItemConditionsItemEnum | (string & {})
 >;
-const ReturnPolicyOnlineItemConditionsItemEnumList =
-  PromotionRedemptionChannelItemEnumList as any as S.Schema<ReturnPolicyOnlineItemConditionsItemEnumList>;
-
 /** The restocking fee. This can either be a fixed fee or a micro percent. */
 export interface ReturnPolicyOnlineRestockingFee {
   /** Fixed restocking fee. */
@@ -1004,11 +725,6 @@ export interface ReturnPolicyOnlineRestockingFee {
   /** Percent of total price in micros. 15,000,000 means 15% of the total price would be charged. */
   microPercent?: number;
 }
-const ReturnPolicyOnlineRestockingFee = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<ReturnPolicyOnlineRestockingFee>;
-
 export type ReturnPolicyOnlineReturnMethodsItemEnum =
   | "RETURN_METHOD_UNSPECIFIED"
   | "BY_MAIL"
@@ -1017,9 +733,6 @@ export type ReturnPolicyOnlineReturnMethodsItemEnum =
 export type ReturnPolicyOnlineReturnMethodsItemEnumList = Array<
   ReturnPolicyOnlineReturnMethodsItemEnum | (string & {})
 >;
-const ReturnPolicyOnlineReturnMethodsItemEnumList =
-  PromotionRedemptionChannelItemEnumList as any as S.Schema<ReturnPolicyOnlineReturnMethodsItemEnumList>;
-
 /** Return policy online object. This is currently used to represent return policies for ads and free listings programs. */
 export interface ReturnPolicyOnline {
   /** The return policy. */
@@ -1043,19 +756,12 @@ export interface ReturnPolicyOnline {
   /** The name of the policy as shown in Merchant Center. */
   name?: string;
 }
-const ReturnPolicyOnline = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ReturnPolicyOnline>;
-
 export interface CreateReturnpolicyonlineRequest {
   /** Required. The id of the merchant for which to retrieve the return policy online object. */
   merchantId: string;
   /** Request body */
   body?: ReturnPolicyOnline;
 }
-const CreateReturnpolicyonlineRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CreateReturnpolicyonlineRequest>;
-
 export interface AccountGoogleMyBusinessLink {
   /** Status of the link between this Merchant Center account and the Business Profile. Acceptable values are: - "`active`" - "`pending`" */
   status?: string;
@@ -1064,11 +770,6 @@ export interface AccountGoogleMyBusinessLink {
   /** The Business Profile email address of a specific account within a Business Profile. A sample account within a Business Profile could be a business account with set of locations, managed under the Business Profile. */
   gmbEmail?: string;
 }
-const AccountGoogleMyBusinessLink = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<AccountGoogleMyBusinessLink>;
-
 export interface AccountUser {
   /** This role is deprecated and can no longer be assigned. Any value set will be ignored. */
   orderManager?: boolean;
@@ -1085,49 +786,26 @@ export interface AccountUser {
   /** Optional. Whether user has standard read-only access. */
   readOnly?: boolean;
 }
-const AccountUser = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<AccountUser>;
-
 export type AccountUserList = Array<AccountUser>;
-const AccountUserList = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<AccountUserList>;
-
 export interface AccountAdsLink {
   /** Customer ID of the Ads account. */
   adsId?: string;
   /** Status of the link between this Merchant Center account and the Ads account. Upon retrieval, it represents the actual status of the link and can be either `active` if it was approved in Google Ads or `pending` if it's pending approval. Upon insertion, it represents the *intended* status of the link. Re-uploading a link with status `active` when it's still pending or with status `pending` when it's already active will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status `inactive` is equivalent to not submitting the link at all and will delete the link if it was active or cancel the link request if it was pending. Acceptable values are: - "`active`" - "`pending`" */
   status?: string;
 }
-const AccountAdsLink = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<AccountAdsLink>;
-
 export type AccountAdsLinkList = Array<AccountAdsLink>;
-const AccountAdsLinkList = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<AccountAdsLinkList>;
-
 export interface AccountYouTubeChannelLink {
   /** Status of the link between this Merchant Center account and the YouTube channel. Upon retrieval, it represents the actual status of the link and can be either `active` if it was approved in YT Creator Studio or `pending` if it's pending approval. Upon insertion, it represents the *intended* status of the link. Re-uploading a link with status `active` when it's still pending or with status `pending` when it's already active will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status `inactive` is equivalent to not submitting the link at all and will delete the link if it was active or cancel the link request if it was pending. */
   status?: string;
   /** Channel ID. */
   channelId?: string;
 }
-const AccountYouTubeChannelLink = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<AccountYouTubeChannelLink>;
-
 export type AccountYouTubeChannelLinkList = Array<AccountYouTubeChannelLink>;
-const AccountYouTubeChannelLinkList = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<AccountYouTubeChannelLinkList>;
-
 /** Settings for conversion tracking. */
 export interface AccountConversionSettings {
   /** When enabled, free listing URLs have a parameter to enable conversion tracking for products owned by the current merchant account. See [auto-tagging](https://support.google.com/merchants/answer/11127659). */
   freeListingsAutoTaggingEnabled?: boolean;
 }
-const AccountConversionSettings = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<AccountConversionSettings>;
-
 export interface AccountCustomerService {
   /** Customer service email. */
   email?: string;
@@ -1136,11 +814,6 @@ export interface AccountCustomerService {
   /** Customer service phone number. */
   phoneNumber?: string;
 }
-const AccountCustomerService = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<AccountCustomerService>;
-
 export interface AccountAddress {
   /** Top-level administrative subdivision of the country. For example, a state like California ("CA") or a province like Quebec ("QC"). */
   region?: string;
@@ -1153,8 +826,6 @@ export interface AccountAddress {
   /** CLDR country code (for example, "US"). All MCA sub-accounts inherit the country of their parent MCA by default, however the country can be updated for individual sub-accounts. */
   country?: string;
 }
-const AccountAddress = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<AccountAddress>;
-
 export interface AccountBusinessInformation {
   /** The 10-digit [Korean business registration number](https://support.google.com/merchants/answer/9037766) separated with dashes in the format: XXX-XX-XXXXX. This field will only be updated if explicitly set. */
   koreanBusinessRegistrationNumber?: string;
@@ -1167,21 +838,11 @@ export interface AccountBusinessInformation {
   /** The address of the business. Use `\n` to add a second address line. */
   address?: AccountAddress;
 }
-const AccountBusinessInformation = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<AccountBusinessInformation>;
-
 /** Settings for the Automatic Image Improvements. */
 export interface AccountImageImprovementsSettings {
   /** Enables automatic image improvements. */
   allowAutomaticImageImprovements?: boolean;
 }
-const AccountImageImprovementsSettings = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<AccountImageImprovementsSettings>;
-
 /** This improvement will attempt to automatically correct submitted images if they don't meet the [image requirements](https://support.google.com/merchants/answer/6324350), for example, removing overlays. If successful, the image will be replaced and approved. This improvement is only applied to images of disapproved offers. For more information see: [Automatic image improvements](https://support.google.com/merchants/answer/9242973) */
 export interface AccountImageImprovements {
   /** Determines how the images should be automatically updated. If this field is not present, then the settings will be deleted. If there are no settings for subaccount, they are inherited from aggregator. */
@@ -1189,21 +850,11 @@ export interface AccountImageImprovements {
   /** Output only. The effective value of allow_automatic_image_improvements. If account_image_improvements_settings is present, then this value is the same. Otherwise, it represents the inherited value of the parent account. Read-only. */
   effectiveAllowAutomaticImageImprovements?: boolean;
 }
-const AccountImageImprovements = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<AccountImageImprovements>;
-
 /** Not available for MCAs [accounts](https://support.google.com/merchants/answer/188487). By turning on [automatic shipping improvements](https://support.google.com/merchants/answer/10027038), you are allowing Google to improve the accuracy of your delivery times shown to shoppers using Google. More accurate delivery times, especially when faster, typically lead to better conversion rates. Google will improve your estimated delivery times based on various factors: * Delivery address of an order * Current handling time and shipping time settings * Estimated weekdays or business days * Parcel tracking data */
 export interface AccountShippingImprovements {
   /** Enables automatic shipping improvements. */
   allowShippingImprovements?: boolean;
 }
-const AccountShippingImprovements = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<AccountShippingImprovements>;
-
 /** Settings for the Automatic Item Updates. */
 export interface AccountItemUpdatesSettings {
   /** If condition updates are enabled, Google always updates item condition with the condition detected from the details of your product. */
@@ -1215,11 +866,6 @@ export interface AccountItemUpdatesSettings {
   /** If availability updates are enabled, any previous availability values get overwritten if Google finds an out-of-stock annotation on the offer's page. If additionally `allow_availability_updates` field is set to true, values get overwritten if Google finds an in-stock annotation on the offer's page. */
   allowAvailabilityUpdates?: boolean;
 }
-const AccountItemUpdatesSettings = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<AccountItemUpdatesSettings>;
-
 /** Turning on [item updates](https://support.google.com/merchants/answer/3246284) allows Google to automatically update items for you. When item updates are on, Google uses the structured data markup on the website and advanced data extractors to update the price and availability of the items. When the item updates are off, items with mismatched data aren't shown. */
 export interface AccountItemUpdates {
   /** Determines which attributes of the items should be automatically updated. If this field is not present, then the settings will be deleted. If there are no settings for subaccount, they are inherited from aggregator. */
@@ -1233,8 +879,6 @@ export interface AccountItemUpdates {
   /** Output only. The effective value of allow_strict_availability_updates. If account_item_updates_settings is present, then this value is the same. Otherwise, it represents the inherited value of the parent account. Read-only. */
   effectiveAllowStrictAvailabilityUpdates?: boolean;
 }
-const AccountItemUpdates = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<AccountItemUpdates>;
-
 /** The automatic improvements of the account can be used to automatically update items, improve images and shipping. */
 export interface AccountAutomaticImprovements {
   /** This improvement will attempt to automatically correct submitted images if they don't meet the [image requirements](https://support.google.com/merchants/answer/6324350), for example, removing overlays. If successful, the image will be replaced and approved. This improvement is only applied to images of disapproved offers. For more information see: [Automatic image improvements](https://support.google.com/merchants/answer/9242973) This field is only updated (cleared) if provided. */
@@ -1244,18 +888,11 @@ export interface AccountAutomaticImprovements {
   /** Turning on [item updates](https://support.google.com/merchants/answer/3246284) allows Google to automatically update items for you. When item updates are on, Google uses the structured data markup on the website and advanced data extractors to update the price and availability of the items. When the item updates are off, items with mismatched data aren't shown. This field is only updated (cleared) if provided. */
   itemUpdates?: AccountItemUpdates;
 }
-const AccountAutomaticImprovements = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<AccountAutomaticImprovements>;
-
 /** The account identity type used to specify attributes. */
 export interface AccountIdentityType {
   /** Optional. Indicates that the business identifies itself with a given identity type. Setting this field does not automatically mean eligibility for promotions. */
   selfIdentified?: boolean;
 }
-const AccountIdentityType = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<AccountIdentityType>;
-
 /** The [business identity attributes](https://support.google.com/merchants/answer/10342414) can be used to self-declare attributes that let customers know more about your business. */
 export interface AccountBusinessIdentity {
   /** Specifies whether the business identifies itself as a small business. This optional field is only available for merchants with a business country set to "US". It is also not allowed for marketplaces, but it is allowed to marketplace sellers. */
@@ -1271,11 +908,6 @@ export interface AccountBusinessIdentity {
   /** Required. By setting this field, your business may be included in promotions for all the selected attributes. If you clear this option, it won't affect your identification with any of the attributes. For this field to be set, the merchant must self identify with at least one of the `AccountIdentityType`. If none are included, the request will be considered invalid. */
   includeForPromotions?: boolean;
 }
-const AccountBusinessIdentity = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<AccountBusinessIdentity>;
-
 /** Account data. After the creation of a new account it may take a few minutes before it's fully operational. The methods delete, insert, and update require the admin role. */
 export interface Account {
   /** The merchant's website. */
@@ -1315,8 +947,6 @@ export interface Account {
   /** The business identity attributes can be used to self-declare attributes that let customers know more about your business. */
   businessIdentity?: AccountBusinessIdentity;
 }
-const Account = /*@__PURE__*/ __L.at(__c10, 4) as any as S.Schema<Account>;
-
 export interface AccountsCustomBatchRequestEntryLinkRequest {
   /** Type of the link between the two accounts. Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`" - "`paymentServiceProvider`" - "`localProductManager`" */
   linkType?: string;
@@ -1327,11 +957,6 @@ export interface AccountsCustomBatchRequestEntryLinkRequest {
   /** Provided services. Acceptable values are: - "`shoppingAdsProductManagement`" - "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`" - "`paymentProcessing`" - "`localProductManagement`" */
   services?: StringList;
 }
-const AccountsCustomBatchRequestEntryLinkRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<AccountsCustomBatchRequestEntryLinkRequest>;
-
 /** A batch entry encoding a single non-batch accounts request. */
 export interface AccountsCustomBatchRequestEntry {
   /** Whether the account should be deleted if the account has offers. Only applicable if the method is `delete`. */
@@ -1355,35 +980,15 @@ export interface AccountsCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
   batchId?: number;
 }
-const AccountsCustomBatchRequestEntry = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<AccountsCustomBatchRequestEntry>;
-
 export type AccountsCustomBatchRequestEntryList = Array<AccountsCustomBatchRequestEntry>;
-const AccountsCustomBatchRequestEntryList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<AccountsCustomBatchRequestEntryList>;
-
 export interface AccountsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: AccountsCustomBatchRequestEntryList;
 }
-const AccountsCustomBatchRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<AccountsCustomBatchRequest>;
-
 export interface CustombatchAccountsRequest {
   /** Request body */
   body?: AccountsCustomBatchRequest;
 }
-const CustombatchAccountsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<CustombatchAccountsRequest>;
-
 /** An error returned by the API. */
 export interface Content_Error {
   /** The error code. */
@@ -1393,11 +998,7 @@ export interface Content_Error {
   /** A description of the error. */
   message?: string;
 }
-const Content_Error = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<Content_Error>;
-
 export type Content_ErrorList = Array<Content_Error>;
-const Content_ErrorList = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<Content_ErrorList>;
-
 /** A list of errors returned by a failed batch entry. */
 export interface Errors {
   /** A list of errors. */
@@ -1407,8 +1008,6 @@ export interface Errors {
   /** The HTTP status of the first error in `errors`. */
   code?: number;
 }
-const Errors = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<Errors>;
-
 /** A batch entry encoding a single non-batch accounts response. */
 export interface AccountsCustomBatchResponseEntry {
   /** A list of errors for failed custombatch entries. *Note:* Schema errors fail the whole request. */
@@ -1420,28 +1019,13 @@ export interface AccountsCustomBatchResponseEntry {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsCustomBatchResponseEntry`" */
   kind?: string;
 }
-const AccountsCustomBatchResponseEntry = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<AccountsCustomBatchResponseEntry>;
-
 export type AccountsCustomBatchResponseEntryList = Array<AccountsCustomBatchResponseEntry>;
-const AccountsCustomBatchResponseEntryList = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<AccountsCustomBatchResponseEntryList>;
-
 export interface AccountsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   entries?: AccountsCustomBatchResponseEntryList;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsCustomBatchResponse`". */
   kind?: string;
 }
-const AccountsCustomBatchResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<AccountsCustomBatchResponse>;
-
 /** A batch entry encoding a single non-batch accountstatuses request. */
 export interface AccountstatusesCustomBatchRequestEntry {
   /** The ID of the managing account. */
@@ -1455,36 +1039,16 @@ export interface AccountstatusesCustomBatchRequestEntry {
   /** The ID of the (sub-)account whose status to get. */
   accountId?: string;
 }
-const AccountstatusesCustomBatchRequestEntry = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<AccountstatusesCustomBatchRequestEntry>;
-
 export type AccountstatusesCustomBatchRequestEntryList =
   Array<AccountstatusesCustomBatchRequestEntry>;
-const AccountstatusesCustomBatchRequestEntryList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<AccountstatusesCustomBatchRequestEntryList>;
-
 export interface AccountstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: AccountstatusesCustomBatchRequestEntryList;
 }
-const AccountstatusesCustomBatchRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<AccountstatusesCustomBatchRequest>;
-
 export interface CustombatchAccountstatusesRequest {
   /** Request body */
   body?: AccountstatusesCustomBatchRequest;
 }
-const CustombatchAccountstatusesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<CustombatchAccountstatusesRequest>;
-
 export interface AccountStatusItemLevelIssue {
   /** The attribute's name, if the issue is caused by a single attribute. */
   attributeName?: string;
@@ -1503,17 +1067,7 @@ export interface AccountStatusItemLevelIssue {
   /** A short issue description in English. */
   description?: string;
 }
-const AccountStatusItemLevelIssue = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<AccountStatusItemLevelIssue>;
-
 export type AccountStatusItemLevelIssueList = Array<AccountStatusItemLevelIssue>;
-const AccountStatusItemLevelIssueList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<AccountStatusItemLevelIssueList>;
-
 export interface AccountStatusStatistics {
   /** Number of disapproved offers. */
   disapproved?: string;
@@ -1524,11 +1078,6 @@ export interface AccountStatusStatistics {
   /** Number of pending offers. */
   pending?: string;
 }
-const AccountStatusStatistics = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<AccountStatusStatistics>;
-
 export interface AccountStatusProducts {
   /** List of item-level issues. */
   itemLevelIssues?: AccountStatusItemLevelIssueList;
@@ -1541,17 +1090,7 @@ export interface AccountStatusProducts {
   /** The destination the data applies to. */
   destination?: string;
 }
-const AccountStatusProducts = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<AccountStatusProducts>;
-
 export type AccountStatusProductsList = Array<AccountStatusProducts>;
-const AccountStatusProductsList = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<AccountStatusProductsList>;
-
 export interface AccountStatusAccountLevelIssue {
   /** The destination the issue applies to. If this field is empty then the issue applies to all available destinations. */
   destination?: string;
@@ -1568,17 +1107,7 @@ export interface AccountStatusAccountLevelIssue {
   /** Country for which this issue is reported. */
   country?: string;
 }
-const AccountStatusAccountLevelIssue = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<AccountStatusAccountLevelIssue>;
-
 export type AccountStatusAccountLevelIssueList = Array<AccountStatusAccountLevelIssue>;
-const AccountStatusAccountLevelIssueList = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<AccountStatusAccountLevelIssueList>;
-
 /** The status of an account, that is, information about its products, which is computed offline and not returned immediately at insertion time. */
 export interface AccountStatus {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountStatus`" */
@@ -1594,8 +1123,6 @@ export interface AccountStatus {
   /** The ID of the account for which the status is reported. */
   accountId?: string;
 }
-const AccountStatus = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<AccountStatus>;
-
 /** A batch entry encoding a single non-batch accountstatuses response. */
 export interface AccountstatusesCustomBatchResponseEntry {
   /** The ID of the request entry this entry responds to. */
@@ -1605,29 +1132,14 @@ export interface AccountstatusesCustomBatchResponseEntry {
   /** The requested account status. Defined if and only if the request was successful. */
   accountStatus?: AccountStatus;
 }
-const AccountstatusesCustomBatchResponseEntry = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<AccountstatusesCustomBatchResponseEntry>;
-
 export type AccountstatusesCustomBatchResponseEntryList =
   Array<AccountstatusesCustomBatchResponseEntry>;
-const AccountstatusesCustomBatchResponseEntryList = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<AccountstatusesCustomBatchResponseEntryList>;
-
 export interface AccountstatusesCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   entries?: AccountstatusesCustomBatchResponseEntryList;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountstatusesCustomBatchResponse`". */
   kind?: string;
 }
-const AccountstatusesCustomBatchResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<AccountstatusesCustomBatchResponse>;
-
 /** Tax calculation rule to apply in a state or province (US only). */
 export interface AccountTaxTaxRule {
   /** Required. State (or province) is which the tax is applicable, described by its location ID (also called criteria ID). */
@@ -1641,14 +1153,7 @@ export interface AccountTaxTaxRule {
   /** If true, shipping charges are also taxed. */
   shippingTaxed?: boolean;
 }
-const AccountTaxTaxRule = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<AccountTaxTaxRule>;
-
 export type AccountTaxTaxRuleList = Array<AccountTaxTaxRule>;
-const AccountTaxTaxRuleList = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<AccountTaxTaxRuleList>;
-
 /** The tax settings of a merchant account. All methods require the admin role. */
 export interface AccountTax {
   /** Tax rules. Updating the tax rules will enable "US" taxes (not reversible). Defining no rules is equivalent to not charging tax at all. */
@@ -1658,8 +1163,6 @@ export interface AccountTax {
   /** Required. The ID of the account to which these account tax settings belong. */
   accountId?: string;
 }
-const AccountTax = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<AccountTax>;
-
 /** A batch entry encoding a single non-batch accounttax request. */
 export interface AccounttaxCustomBatchRequestEntry {
   /** The ID of the managing account. */
@@ -1673,35 +1176,15 @@ export interface AccounttaxCustomBatchRequestEntry {
   /** The method of the batch entry. Acceptable values are: - "`get`" - "`update`" */
   method?: string;
 }
-const AccounttaxCustomBatchRequestEntry = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<AccounttaxCustomBatchRequestEntry>;
-
 export type AccounttaxCustomBatchRequestEntryList = Array<AccounttaxCustomBatchRequestEntry>;
-const AccounttaxCustomBatchRequestEntryList = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<AccounttaxCustomBatchRequestEntryList>;
-
 export interface AccounttaxCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: AccounttaxCustomBatchRequestEntryList;
 }
-const AccounttaxCustomBatchRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<AccounttaxCustomBatchRequest>;
-
 export interface CustombatchAccounttaxRequest {
   /** Request body */
   body?: AccounttaxCustomBatchRequest;
 }
-const CustombatchAccounttaxRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<CustombatchAccounttaxRequest>;
-
 /** A batch entry encoding a single non-batch accounttax response. */
 export interface AccounttaxCustomBatchResponseEntry {
   /** The retrieved or updated account tax settings. */
@@ -1713,28 +1196,13 @@ export interface AccounttaxCustomBatchResponseEntry {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accounttaxCustomBatchResponseEntry`" */
   kind?: string;
 }
-const AccounttaxCustomBatchResponseEntry = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<AccounttaxCustomBatchResponseEntry>;
-
 export type AccounttaxCustomBatchResponseEntryList = Array<AccounttaxCustomBatchResponseEntry>;
-const AccounttaxCustomBatchResponseEntryList = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<AccounttaxCustomBatchResponseEntryList>;
-
 export interface AccounttaxCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accounttaxCustomBatchResponse`". */
   kind?: string;
   /** The result of the execution of the batch requests. */
   entries?: AccounttaxCustomBatchResponseEntryList;
 }
-const AccounttaxCustomBatchResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<AccounttaxCustomBatchResponse>;
-
 /** The required fields vary based on the frequency of fetching. For a monthly fetch schedule, day_of_month and hour are required. For a weekly fetch schedule, weekday and hour are required. For a daily fetch schedule, only hour is required. */
 export interface DatafeedFetchSchedule {
   /** The minute of the hour the feed file should be fetched (0-59). Read-only. */
@@ -1756,11 +1224,6 @@ export interface DatafeedFetchSchedule {
   /** The hour of the day the feed file should be fetched (0-23). */
   hour?: number;
 }
-const DatafeedFetchSchedule = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<DatafeedFetchSchedule>;
-
 export interface DatafeedFormat {
   /** Delimiter for the separation of values in a delimiter-separated values feed. If not specified, the delimiter will be auto-detected. Ignored for non-DSV data feeds. Acceptable values are: - "`pipe`" - "`tab`" - "`tilde`" */
   columnDelimiter?: string;
@@ -1769,8 +1232,6 @@ export interface DatafeedFormat {
   /** Specifies how double quotes are interpreted. If not specified, the mode will be auto-detected. Ignored for non-DSV data feeds. Acceptable values are: - "`normal character`" - "`value quoting`" */
   quotingMode?: string;
 }
-const DatafeedFormat = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<DatafeedFormat>;
-
 export interface DatafeedTarget {
   /** Feed label for the DatafeedTarget. Either `country` or `feedLabel` is required. If both `feedLabel` and `country` is specified, the values must match. Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). */
   feedLabel?: string;
@@ -1785,11 +1246,7 @@ export interface DatafeedTarget {
   /** The countries where the items may be displayed. Represented as a CLDR territory code. Will be ignored for "product inventory" feeds. */
   targetCountries?: StringList;
 }
-const DatafeedTarget = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<DatafeedTarget>;
-
 export type DatafeedTargetList = Array<DatafeedTarget>;
-const DatafeedTargetList = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<DatafeedTargetList>;
-
 /** Datafeed configuration data. */
 export interface Datafeed {
   /** Required for insert. A descriptive name of the data feed. */
@@ -1811,8 +1268,6 @@ export interface Datafeed {
   /** Required. The type of data feed. For product inventory feeds, only feeds for local stores, not online stores, are supported. Acceptable values are: - "`local products`" - "`product inventory`" - "`products`" */
   contentType?: string;
 }
-const Datafeed = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<Datafeed>;
-
 /** A batch entry encoding a single non-batch datafeeds request. */
 export interface DatafeedsCustomBatchRequestEntry {
   /** The ID of the data feed to get, delete or fetch. */
@@ -1826,35 +1281,15 @@ export interface DatafeedsCustomBatchRequestEntry {
   /** The ID of the managing account. */
   merchantId?: string;
 }
-const DatafeedsCustomBatchRequestEntry = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<DatafeedsCustomBatchRequestEntry>;
-
 export type DatafeedsCustomBatchRequestEntryList = Array<DatafeedsCustomBatchRequestEntry>;
-const DatafeedsCustomBatchRequestEntryList = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<DatafeedsCustomBatchRequestEntryList>;
-
 export interface DatafeedsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: DatafeedsCustomBatchRequestEntryList;
 }
-const DatafeedsCustomBatchRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<DatafeedsCustomBatchRequest>;
-
 export interface CustombatchDatafeedsRequest {
   /** Request body */
   body?: DatafeedsCustomBatchRequest;
 }
-const CustombatchDatafeedsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<CustombatchDatafeedsRequest>;
-
 /** A batch entry encoding a single non-batch datafeeds response. */
 export interface DatafeedsCustomBatchResponseEntry {
   /** A list of errors for failed custombatch entries. *Note:* Schema errors fail the whole request. */
@@ -1864,28 +1299,13 @@ export interface DatafeedsCustomBatchResponseEntry {
   /** The requested data feed. Defined if and only if the request was successful. */
   datafeed?: Datafeed;
 }
-const DatafeedsCustomBatchResponseEntry = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<DatafeedsCustomBatchResponseEntry>;
-
 export type DatafeedsCustomBatchResponseEntryList = Array<DatafeedsCustomBatchResponseEntry>;
-const DatafeedsCustomBatchResponseEntryList = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<DatafeedsCustomBatchResponseEntryList>;
-
 export interface DatafeedsCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#datafeedsCustomBatchResponse`". */
   kind?: string;
   /** The result of the execution of the batch requests. */
   entries?: DatafeedsCustomBatchResponseEntryList;
 }
-const DatafeedsCustomBatchResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<DatafeedsCustomBatchResponse>;
-
 /** A batch entry encoding a single non-batch datafeedstatuses request. */
 export interface DatafeedstatusesCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
@@ -1903,36 +1323,16 @@ export interface DatafeedstatusesCustomBatchRequestEntry {
   /** The method of the batch entry. Acceptable values are: - "`get`" */
   method?: string;
 }
-const DatafeedstatusesCustomBatchRequestEntry = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<DatafeedstatusesCustomBatchRequestEntry>;
-
 export type DatafeedstatusesCustomBatchRequestEntryList =
   Array<DatafeedstatusesCustomBatchRequestEntry>;
-const DatafeedstatusesCustomBatchRequestEntryList = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<DatafeedstatusesCustomBatchRequestEntryList>;
-
 export interface DatafeedstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: DatafeedstatusesCustomBatchRequestEntryList;
 }
-const DatafeedstatusesCustomBatchRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<DatafeedstatusesCustomBatchRequest>;
-
 export interface CustombatchDatafeedstatusesRequest {
   /** Request body */
   body?: DatafeedstatusesCustomBatchRequest;
 }
-const CustombatchDatafeedstatusesRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<CustombatchDatafeedstatusesRequest>;
-
 /** An example occurrence for a particular error. */
 export interface DatafeedStatusExample {
   /** Line number in the data feed where the example is found. */
@@ -1942,17 +1342,7 @@ export interface DatafeedStatusExample {
   /** The ID of the example item. */
   itemId?: string;
 }
-const DatafeedStatusExample = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<DatafeedStatusExample>;
-
 export type DatafeedStatusExampleList = Array<DatafeedStatusExample>;
-const DatafeedStatusExampleList = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<DatafeedStatusExampleList>;
-
 /** An error occurring in the feed, like "invalid price". */
 export interface DatafeedStatusError {
   /** A list of example occurrences of the error, grouped by product. */
@@ -1964,14 +1354,7 @@ export interface DatafeedStatusError {
   /** The number of occurrences of the error in the feed. */
   count?: string;
 }
-const DatafeedStatusError = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<DatafeedStatusError>;
-
 export type DatafeedStatusErrorList = Array<DatafeedStatusError>;
-const DatafeedStatusErrorList = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<DatafeedStatusErrorList>;
-
 /** The status of a datafeed, that is, the result of the last retrieval of the datafeed computed asynchronously when the feed processing is finished. */
 export interface DatafeedStatus {
   /** The country for which the status is reported, represented as a CLDR territory code. */
@@ -1997,8 +1380,6 @@ export interface DatafeedStatus {
   /** The ID of the feed for which the status is reported. */
   datafeedId?: string;
 }
-const DatafeedStatus = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<DatafeedStatus>;
-
 /** A batch entry encoding a single non-batch datafeedstatuses response. */
 export interface DatafeedstatusesCustomBatchResponseEntry {
   /** A list of errors for failed custombatch entries. *Note:* Schema errors fail the whole request. */
@@ -2008,29 +1389,14 @@ export interface DatafeedstatusesCustomBatchResponseEntry {
   /** The ID of the request entry this entry responds to. */
   batchId?: number;
 }
-const DatafeedstatusesCustomBatchResponseEntry = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<DatafeedstatusesCustomBatchResponseEntry>;
-
 export type DatafeedstatusesCustomBatchResponseEntryList =
   Array<DatafeedstatusesCustomBatchResponseEntry>;
-const DatafeedstatusesCustomBatchResponseEntryList = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<DatafeedstatusesCustomBatchResponseEntryList>;
-
 export interface DatafeedstatusesCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#datafeedstatusesCustomBatchResponse`". */
   kind?: string;
   /** The result of the execution of the batch requests. */
   entries?: DatafeedstatusesCustomBatchResponseEntryList;
 }
-const DatafeedstatusesCustomBatchResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<DatafeedstatusesCustomBatchResponse>;
-
 /** Omnichannel experience details. */
 export interface LiaOmnichannelExperience {
   /** The Local Store Front (LSF) type for this country. Acceptable values are: - "`ghlsf`" (Google-Hosted Local Store Front) - "`mhlsfBasic`" (Merchant-Hosted Local Store Front Basic) - "`mhlsfFull`" (Merchant-Hosted Local Store Front Full) More details about these types can be found here. */
@@ -2040,41 +1406,24 @@ export interface LiaOmnichannelExperience {
   /** The Pickup types for this country. Acceptable values are: - "`pickupToday`" - "`pickupLater`" */
   pickupTypes?: StringList;
 }
-const LiaOmnichannelExperience = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<LiaOmnichannelExperience>;
-
 export interface LiaAboutPageSettings {
   /** The status of the verification process for the About page. Supported values are: - "`active`" - "`inactive`" - "`pending`" */
   status?: string;
   /** The URL for the About page. */
   url?: string;
 }
-const LiaAboutPageSettings = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<LiaAboutPageSettings>;
-
 export interface LiaOnDisplayToOrderSettings {
   /** The status of the ?On display to order? feature. Acceptable values are: - "`active`" - "`inactive`" - "`pending`" */
   status?: string;
   /** Shipping cost and policy URL. */
   shippingCostPolicyUrl?: string;
 }
-const LiaOnDisplayToOrderSettings = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<LiaOnDisplayToOrderSettings>;
-
 export interface LiaPosDataProvider {
   /** The account ID by which this merchant is known to the POS data provider. */
   posExternalAccountId?: string;
   /** The ID of the POS data provider. */
   posDataProviderId?: string;
 }
-const LiaPosDataProvider = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<LiaPosDataProvider>;
-
 export interface LiaInventorySettings {
   /** The email of the contact for the inventory verification process. */
   inventoryVerificationContactEmail?: string;
@@ -2085,11 +1434,6 @@ export interface LiaInventorySettings {
   /** The status of the verification contact. Acceptable values are: - "`active`" - "`inactive`" - "`pending`" */
   inventoryVerificationContactStatus?: string;
 }
-const LiaInventorySettings = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<LiaInventorySettings>;
-
 export interface LiaCountrySettings {
   /** The omnichannel experience configured for this country. */
   omnichannelExperience?: LiaOmnichannelExperience;
@@ -2108,14 +1452,7 @@ export interface LiaCountrySettings {
   /** LIA inventory verification settings. */
   inventory?: LiaInventorySettings;
 }
-const LiaCountrySettings = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<LiaCountrySettings>;
-
 export type LiaCountrySettingsList = Array<LiaCountrySettings>;
-const LiaCountrySettingsList = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<LiaCountrySettingsList>;
-
 /** Local Inventory ads (LIA) settings. All methods except listposdataproviders require the admin role. */
 export interface LiaSettings {
   /** The LIA settings for each country. */
@@ -2125,8 +1462,6 @@ export interface LiaSettings {
   /** The ID of the account to which these LIA settings belong. Ignored upon update, always present in get request responses. */
   accountId?: string;
 }
-const LiaSettings = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<LiaSettings>;
-
 export interface LiasettingsCustomBatchRequestEntry {
   /** The account ID by which this merchant is known to the POS provider. */
   posExternalAccountId?: string;
@@ -2153,35 +1488,15 @@ export interface LiasettingsCustomBatchRequestEntry {
   /** The ID of the managing account. */
   merchantId?: string;
 }
-const LiasettingsCustomBatchRequestEntry = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<LiasettingsCustomBatchRequestEntry>;
-
 export type LiasettingsCustomBatchRequestEntryList = Array<LiasettingsCustomBatchRequestEntry>;
-const LiasettingsCustomBatchRequestEntryList = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<LiasettingsCustomBatchRequestEntryList>;
-
 export interface LiasettingsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: LiasettingsCustomBatchRequestEntryList;
 }
-const LiasettingsCustomBatchRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<LiasettingsCustomBatchRequest>;
-
 export interface CustombatchLiasettingsRequest {
   /** Request body */
   body?: LiasettingsCustomBatchRequest;
 }
-const CustombatchLiasettingsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<CustombatchLiasettingsRequest>;
-
 export interface PosDataProvidersPosDataProvider {
   /** The ID of the account. */
   providerId?: string;
@@ -2190,31 +1505,14 @@ export interface PosDataProvidersPosDataProvider {
   /** The full name of this POS data Provider. */
   fullName?: string;
 }
-const PosDataProvidersPosDataProvider = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<PosDataProvidersPosDataProvider>;
-
 export type PosDataProvidersPosDataProviderList = Array<PosDataProvidersPosDataProvider>;
-const PosDataProvidersPosDataProviderList = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<PosDataProvidersPosDataProviderList>;
-
 export interface PosDataProviders {
   /** Country code. */
   country?: string;
   /** A list of POS data providers. */
   posDataProviders?: PosDataProvidersPosDataProviderList;
 }
-const PosDataProviders = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<PosDataProviders>;
-
 export type PosDataProvidersList = Array<PosDataProviders>;
-const PosDataProvidersList = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<PosDataProvidersList>;
-
 export interface GmbAccountsGmbAccount {
   /** The type of the Business Profile (User or Business). */
   type?: string;
@@ -2225,25 +1523,13 @@ export interface GmbAccountsGmbAccount {
   /** Number of listings under this account. */
   listingCount?: string;
 }
-const GmbAccountsGmbAccount = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<GmbAccountsGmbAccount>;
-
 export type GmbAccountsGmbAccountList = Array<GmbAccountsGmbAccount>;
-const GmbAccountsGmbAccountList = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<GmbAccountsGmbAccountList>;
-
 export interface GmbAccounts {
   /** A list of Business Profiles which are available to the merchant. */
   gmbAccounts?: GmbAccountsGmbAccountList;
   /** The ID of the Merchant Center account. */
   accountId?: string;
 }
-const GmbAccounts = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<GmbAccounts>;
-
 export interface LiasettingsCustomBatchResponseEntry {
   /** The list of POS data providers. */
   posDataProviders?: PosDataProvidersList;
@@ -2260,28 +1546,13 @@ export interface LiasettingsCustomBatchResponseEntry {
   /** The updated omnichannel experience for a country. */
   omnichannelExperience?: LiaOmnichannelExperience;
 }
-const LiasettingsCustomBatchResponseEntry = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<LiasettingsCustomBatchResponseEntry>;
-
 export type LiasettingsCustomBatchResponseEntryList = Array<LiasettingsCustomBatchResponseEntry>;
-const LiasettingsCustomBatchResponseEntryList = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<LiasettingsCustomBatchResponseEntryList>;
-
 export interface LiasettingsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   entries?: LiasettingsCustomBatchResponseEntryList;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsCustomBatchResponse`". */
   kind?: string;
 }
-const LiasettingsCustomBatchResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<LiasettingsCustomBatchResponse>;
-
 /** A message that represents custom attributes. Exactly one of `value` or `groupValues` must be provided. Maximum allowed number of characters for each custom attribute is 10240 (represents sum of characters for name and value). Maximum 2500 custom attributes can be set per merchant, with total size of 102.4kB. */
 export interface CustomAttribute {
   /** Subattributes within this attribute group. Exactly one of value or groupValues must be provided. */
@@ -2291,19 +1562,13 @@ export interface CustomAttribute {
   /** The name of the attribute. Underscores will be replaced by spaces upon insertion. */
   name?: string;
 }
-const CustomAttribute = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<CustomAttribute>;
-
 export type CustomAttributeList = Array<CustomAttribute>;
-const CustomAttributeList = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<CustomAttributeList>;
-
 export interface Price {
   /** The price represented as a number. */
   value?: string;
   /** The currency of the price. */
   currency?: string;
 }
-const Price = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<Price>;
-
 /** Local inventory resource. For accepted attribute values, see the local product inventory feed specification. */
 export interface LocalInventory {
   /** The supported pickup method for this offer. Unless the value is "not supported", this field must be submitted together with `pickupSla`. For accepted attribute values, see the local product inventory feed specification. */
@@ -2329,8 +1594,6 @@ export interface LocalInventory {
   /** The expected date that an order will be ready for pickup relative to the order date. Must be submitted together with `pickupMethod`. For accepted attribute values, see the local product inventory feed specification. */
   pickupSla?: string;
 }
-const LocalInventory = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<LocalInventory>;
-
 /** Batch entry encoding a single local inventory update request. */
 export interface LocalinventoryCustomBatchRequestEntry {
   /** Local inventory of the product. */
@@ -2344,36 +1607,16 @@ export interface LocalinventoryCustomBatchRequestEntry {
   /** Method of the batch request entry. Acceptable values are: - "`insert`" */
   method?: string;
 }
-const LocalinventoryCustomBatchRequestEntry = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<LocalinventoryCustomBatchRequestEntry>;
-
 export type LocalinventoryCustomBatchRequestEntryList =
   Array<LocalinventoryCustomBatchRequestEntry>;
-const LocalinventoryCustomBatchRequestEntryList = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<LocalinventoryCustomBatchRequestEntryList>;
-
 export interface LocalinventoryCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: LocalinventoryCustomBatchRequestEntryList;
 }
-const LocalinventoryCustomBatchRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<LocalinventoryCustomBatchRequest>;
-
 export interface CustombatchLocalinventoryRequest {
   /** Request body */
   body?: LocalinventoryCustomBatchRequest;
 }
-const CustombatchLocalinventoryRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<CustombatchLocalinventoryRequest>;
-
 /** Batch entry encoding a single local inventory update response. */
 export interface LocalinventoryCustomBatchResponseEntry {
   /** The ID of the request entry this entry responds to. */
@@ -2383,29 +1626,14 @@ export interface LocalinventoryCustomBatchResponseEntry {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#localinventoryCustomBatchResponseEntry`" */
   kind?: string;
 }
-const LocalinventoryCustomBatchResponseEntry = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<LocalinventoryCustomBatchResponseEntry>;
-
 export type LocalinventoryCustomBatchResponseEntryList =
   Array<LocalinventoryCustomBatchResponseEntry>;
-const LocalinventoryCustomBatchResponseEntryList = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<LocalinventoryCustomBatchResponseEntryList>;
-
 export interface LocalinventoryCustomBatchResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#localinventoryCustomBatchResponse`". */
   kind?: string;
   /** The result of the execution of the batch requests. */
   entries?: LocalinventoryCustomBatchResponseEntryList;
 }
-const LocalinventoryCustomBatchResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<LocalinventoryCustomBatchResponse>;
-
 /** The change of the available quantity of an item at the given store. */
 export interface PosSale {
   /** Required. The relative change of the available quantity. Negative for items returned. */
@@ -2429,8 +1657,6 @@ export interface PosSale {
   /** Required. The identifier of the merchant's store. Either a `storeCode` inserted through the API or the code of the store in a Business Profile. */
   storeCode?: string;
 }
-const PosSale = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<PosSale>;
-
 /** The absolute quantity of an item available at the given store. */
 export interface PosInventory {
   /** Optional. Supported pickup method for this offer. Unless the value is "not supported", this field must be submitted together with `pickupSla`. For accepted attribute values, see the [local product inventory feed specification](https://support.google.com/merchants/answer/3061342). */
@@ -2456,8 +1682,6 @@ export interface PosInventory {
   /** Required. The current price of the item. */
   price?: Price;
 }
-const PosInventory = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<PosInventory>;
-
 /** Store resource. */
 export interface PosStore {
   /** The store phone number. */
@@ -2481,8 +1705,6 @@ export interface PosStore {
   /** The Google Place Id of the store location. */
   placeId?: string;
 }
-const PosStore = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<PosStore>;
-
 export interface PosCustomBatchRequestEntry {
   /** The ID of the POS data provider. */
   merchantId?: string;
@@ -2501,35 +1723,15 @@ export interface PosCustomBatchRequestEntry {
   /** The store information to submit. This should be set only if the method is `insert`. */
   store?: PosStore;
 }
-const PosCustomBatchRequestEntry = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<PosCustomBatchRequestEntry>;
-
 export type PosCustomBatchRequestEntryList = Array<PosCustomBatchRequestEntry>;
-const PosCustomBatchRequestEntryList = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<PosCustomBatchRequestEntryList>;
-
 export interface PosCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: PosCustomBatchRequestEntryList;
 }
-const PosCustomBatchRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<PosCustomBatchRequest>;
-
 export interface CustombatchPosRequest {
   /** Request body */
   body?: PosCustomBatchRequest;
 }
-const CustombatchPosRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<CustombatchPosRequest>;
-
 export interface PosCustomBatchResponseEntry {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#posCustomBatchResponseEntry`" */
   kind?: string;
@@ -2544,47 +1746,25 @@ export interface PosCustomBatchResponseEntry {
   /** The retrieved or updated store information. */
   store?: PosStore;
 }
-const PosCustomBatchResponseEntry = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<PosCustomBatchResponseEntry>;
-
 export type PosCustomBatchResponseEntryList = Array<PosCustomBatchResponseEntry>;
-const PosCustomBatchResponseEntryList = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<PosCustomBatchResponseEntryList>;
-
 export interface PosCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   entries?: PosCustomBatchResponseEntryList;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#posCustomBatchResponse`". */
   kind?: string;
 }
-const PosCustomBatchResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<PosCustomBatchResponse>;
-
 export interface ProductDimension {
   /** Required. The length value represented as a number. The value can have a maximum precision of four decimal places. */
   value?: number;
   /** Required. The length units. Acceptable values are: - "`in`" - "`cm`" */
   unit?: string;
 }
-const ProductDimension = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<ProductDimension>;
-
 export interface ProductUnitPricingBaseMeasure {
   /** The denominator of the unit price. */
   value?: string;
   /** The unit of the denominator. */
   unit?: string;
 }
-const ProductUnitPricingBaseMeasure = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ProductUnitPricingBaseMeasure>;
-
 /** Product [certification](https://support.google.com/merchants/answer/13528839), introduced for EU energy efficiency labeling compliance using the [EU EPREL](https://eprel.ec.europa.eu/screen/home) database. */
 export interface ProductCertification {
   /** The certification value (also known as class, level or grade), for example "A+", "C", "gold". Maximum length is 2000 characters. */
@@ -2596,17 +1776,7 @@ export interface ProductCertification {
   /** The certification code, for eaxample "123456". Maximum length is 2000 characters. */
   certificationCode?: string;
 }
-const ProductCertification = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<ProductCertification>;
-
 export type ProductCertificationList = Array<ProductCertification>;
-const ProductCertificationList = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<ProductCertificationList>;
-
 /** Allows the setting up of loyalty program benefits (for example price or points). https://support.google.com/merchants/answer/12922446 */
 export interface LoyaltyProgram {
   /** Required. The label of the loyalty program. This is an internal label that uniquely identifies the relationship between a merchant entity and a loyalty program entity. It must be provided so that system can associate the assets below (for example, price and points) with a merchant. The corresponding program must be linked to the merchant account. */
@@ -2624,14 +1794,10 @@ export interface LoyaltyProgram {
   /** Optional. The shipping label for the loyalty program. You can use this label to indicate whether this offer has the loyalty shipping benefit. If not specified, the item is not eligible for loyalty shipping for the given loyalty tier. */
   shippingLabel?: string;
 }
-const LoyaltyProgram = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<LoyaltyProgram>;
-
 export type ProductSustainabilityIncentiveTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "EV_TAX_CREDIT"
   | "EV_PRICE_DISCOUNT";
-const ProductSustainabilityIncentiveTypeEnum = /*@__PURE__*/ S.String;
-
 /** Information regarding sustainability related incentive programs such as rebates or tax relief. */
 export interface ProductSustainabilityIncentive {
   /** Required. Sustainability incentive program. */
@@ -2641,25 +1807,13 @@ export interface ProductSustainabilityIncentive {
   /** Optional. The fixed amount of the incentive. */
   amount?: Price;
 }
-const ProductSustainabilityIncentive = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<ProductSustainabilityIncentive>;
-
 export type ProductSustainabilityIncentiveList = Array<ProductSustainabilityIncentive>;
-const ProductSustainabilityIncentiveList = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<ProductSustainabilityIncentiveList>;
-
 export interface ProductUnitPricingMeasure {
   /** The measure of an item. */
   value?: number;
   /** The unit of the measure. */
   unit?: string;
 }
-const ProductUnitPricingMeasure = ProductDimension as any as S.Schema<ProductUnitPricingMeasure>;
-
 /** Structured title, for algorithmically (AI)-generated titles. See [title](https://support.google.com/merchants/answer/6324415#Whentouse) for more information. */
 export interface ProductStructuredTitle {
   /** Required. The title text. Maximum length is 150 characters. */
@@ -2667,11 +1821,6 @@ export interface ProductStructuredTitle {
   /** Optional. The digital source type. Acceptable values are: - "`trained_algorithmic_media`" - "`default`" */
   digitalSourceType?: string;
 }
-const ProductStructuredTitle = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<ProductStructuredTitle>;
-
 /** Conditions to be met for a product to have free shipping. */
 export interface FreeShippingThreshold {
   /** Required. The [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the country to which an item will ship. */
@@ -2679,25 +1828,13 @@ export interface FreeShippingThreshold {
   /** Required. The minimum product price for the shipping cost to become free. Represented as a number. */
   priceThreshold?: Price;
 }
-const FreeShippingThreshold = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<FreeShippingThreshold>;
-
 export type FreeShippingThresholdList = Array<FreeShippingThreshold>;
-const FreeShippingThresholdList = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<FreeShippingThresholdList>;
-
 export interface ProductWeight {
   /** Required. The weight represented as a number. The weight can have a maximum precision of four decimal places. */
   value?: number;
   /** Required. The weight unit. Acceptable values are: - "`g`" - "`kg`" - "`oz`" - "`lb`" */
   unit?: string;
 }
-const ProductWeight = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<ProductWeight>;
-
 export interface ProductSubscriptionCost {
   /** The type of subscription period. - "`month`" - "`year`" */
   period?: string;
@@ -2706,14 +1843,7 @@ export interface ProductSubscriptionCost {
   /** The amount the buyer has to pay per subscription period. */
   amount?: Price;
 }
-const ProductSubscriptionCost = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<ProductSubscriptionCost>;
-
 export type DoubleList = Array<number>;
-const DoubleList = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<DoubleList>;
-
 /** Product property for the Cloud Retail API. For example, properties for a TV product could be "Screen-Resolution" or "Screen-Size". */
 export interface CloudExportAdditionalProperties {
   /** Minimum float value of the given property. For example for a TV product 1.00. */
@@ -2733,36 +1863,19 @@ export interface CloudExportAdditionalProperties {
   /** Float values of the given property. For example for a TV product 1.2345. Maximum number of specified values for this field is 400. Values are stored in an arbitrary but consistent order. */
   floatValue?: DoubleList;
 }
-const CloudExportAdditionalProperties = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<CloudExportAdditionalProperties>;
-
 export type CloudExportAdditionalPropertiesList = Array<CloudExportAdditionalProperties>;
-const CloudExportAdditionalPropertiesList = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<CloudExportAdditionalPropertiesList>;
-
 export interface ProductShippingDimension {
   /** The dimension of the product used to calculate the shipping cost of the item. */
   value?: number;
   /** The unit of value. */
   unit?: string;
 }
-const ProductShippingDimension = ProductDimension as any as S.Schema<ProductShippingDimension>;
-
 export interface ProductShippingWeight {
   /** The unit of value. */
   unit?: string;
   /** The weight of the product used to calculate the shipping cost of the item. */
   value?: number;
 }
-const ProductShippingWeight = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<ProductShippingWeight>;
-
 /** Structured description, for algorithmically (AI)-generated descriptions. See [description](https://support.google.com/merchants/answer/6324468#When_to_use) for more information. */
 export interface ProductStructuredDescription {
   /** Required. The description text. Maximum length is 5000 characters. */
@@ -2770,9 +1883,6 @@ export interface ProductStructuredDescription {
   /** Optional. The digital source type. Acceptable values are: - "`trained_algorithmic_media`" - "`default`" */
   digitalSourceType?: string;
 }
-const ProductStructuredDescription =
-  ProductStructuredTitle as any as S.Schema<ProductStructuredDescription>;
-
 export interface ProductTax {
   /** Should be set to true if tax is charged on shipping. */
   taxShip?: boolean;
@@ -2787,11 +1897,7 @@ export interface ProductTax {
   /** The country within which the item is taxed, specified as a CLDR territory code. */
   country?: string;
 }
-const ProductTax = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<ProductTax>;
-
 export type ProductTaxList = Array<ProductTax>;
-const ProductTaxList = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<ProductTaxList>;
-
 /** Details of a monthly installment payment offering. [Learn more](https://support.google.com/merchants/answer/6324474) about installments. */
 export interface Installment {
   /** Optional. The initial down payment amount the buyer has to pay. */
@@ -2803,8 +1909,6 @@ export interface Installment {
   /** The amount the buyer has to pay per month. */
   amount?: Price;
 }
-const Installment = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<Installment>;
-
 export interface ProductProductDetail {
   /** The section header used to group a set of product details. */
   sectionName?: string;
@@ -2813,17 +1917,7 @@ export interface ProductProductDetail {
   /** The value of the product detail. */
   attributeValue?: string;
 }
-const ProductProductDetail = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<ProductProductDetail>;
-
 export type ProductProductDetailList = Array<ProductProductDetail>;
-const ProductProductDetailList = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<ProductProductDetailList>;
-
 export interface ProductShipping {
   /** The location where the shipping is applicable, represented by a location group name. */
   locationGroupName?: string;
@@ -2848,14 +1942,8 @@ export interface ProductShipping {
   /** Maximum transit time (inclusive) between when the order has shipped and when it's delivered in business days. 0 means that the order is delivered on the same day as it ships. Both maxHandlingTime and maxTransitTime are required if providing shipping speeds. */
   maxTransitTime?: string;
 }
-const ProductShipping = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<ProductShipping>;
-
 export type ProductShippingList = Array<ProductShipping>;
-const ProductShippingList = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<ProductShippingList>;
-
 export type LoyaltyProgramList = Array<LoyaltyProgram>;
-const LoyaltyProgramList = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<LoyaltyProgramList>;
-
 /** Required product attributes are primarily defined by the product data specification. See the Product Data Specification Help Center article for information. Product data. After inserting, updating, or deleting a product, it may take several minutes before changes take effect. The following reference documentation lists the field names in the **camelCase** casing style while the Products Data Specification lists the names in the **snake_case** casing style. */
 export interface Product {
   /** Whether the item is a merchant-defined bundle. A bundle is a custom grouping of different products sold by a merchant for a single price. */
@@ -3067,8 +2155,6 @@ export interface Product {
   /** Custom label 2 for custom grouping of items in a Shopping campaign. */
   customLabel2?: string;
 }
-const Product = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<Product>;
-
 /** A batch entry encoding a single non-batch products request. */
 export interface ProductsCustomBatchRequestEntry {
   /** The product to insert or update. Only required if the method is `insert` or `update`. If the `update` method is used with `updateMask` only to delete a field, then this isn't required. For example, setting `salePrice` on the `updateMask` and not providing a `product` will result in an existing sale price on the product specified by `productId` being deleted. */
@@ -3086,35 +2172,15 @@ export interface ProductsCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
   batchId?: number;
 }
-const ProductsCustomBatchRequestEntry = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<ProductsCustomBatchRequestEntry>;
-
 export type ProductsCustomBatchRequestEntryList = Array<ProductsCustomBatchRequestEntry>;
-const ProductsCustomBatchRequestEntryList = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<ProductsCustomBatchRequestEntryList>;
-
 export interface ProductsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: ProductsCustomBatchRequestEntryList;
 }
-const ProductsCustomBatchRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<ProductsCustomBatchRequest>;
-
 export interface CustombatchProductsRequest {
   /** Request body */
   body?: ProductsCustomBatchRequest;
 }
-const CustombatchProductsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<CustombatchProductsRequest>;
-
 /** A batch entry encoding a single non-batch products response. */
 export interface ProductsCustomBatchResponseEntry {
   /** The inserted product. Only defined if the method is `insert` and if the request was successful. */
@@ -3126,28 +2192,13 @@ export interface ProductsCustomBatchResponseEntry {
   /** A list of errors for failed custombatch entries. *Note:* Schema errors fail the whole request. */
   errors?: Errors;
 }
-const ProductsCustomBatchResponseEntry = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<ProductsCustomBatchResponseEntry>;
-
 export type ProductsCustomBatchResponseEntryList = Array<ProductsCustomBatchResponseEntry>;
-const ProductsCustomBatchResponseEntryList = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<ProductsCustomBatchResponseEntryList>;
-
 export interface ProductsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   entries?: ProductsCustomBatchResponseEntryList;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#productsCustomBatchResponse`". */
   kind?: string;
 }
-const ProductsCustomBatchResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ProductsCustomBatchResponse>;
-
 /** A batch entry encoding a single non-batch productstatuses request. */
 export interface ProductstatusesCustomBatchRequestEntry {
   /** The ID of the product whose status to get. */
@@ -3163,36 +2214,16 @@ export interface ProductstatusesCustomBatchRequestEntry {
   /** The ID of the managing account. */
   merchantId?: string;
 }
-const ProductstatusesCustomBatchRequestEntry = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<ProductstatusesCustomBatchRequestEntry>;
-
 export type ProductstatusesCustomBatchRequestEntryList =
   Array<ProductstatusesCustomBatchRequestEntry>;
-const ProductstatusesCustomBatchRequestEntryList = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<ProductstatusesCustomBatchRequestEntryList>;
-
 export interface ProductstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: ProductstatusesCustomBatchRequestEntryList;
 }
-const ProductstatusesCustomBatchRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<ProductstatusesCustomBatchRequest>;
-
 export interface CustombatchProductstatusesRequest {
   /** Request body */
   body?: ProductstatusesCustomBatchRequest;
 }
-const CustombatchProductstatusesRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<CustombatchProductstatusesRequest>;
-
 export interface ProductStatusDestinationStatus {
   /** Deprecated. Destination approval status in `targetCountry` of the offer. */
   status?: string;
@@ -3207,17 +2238,7 @@ export interface ProductStatusDestinationStatus {
   /** List of country codes (ISO 3166-1 alpha-2) where the offer is pending approval. */
   pendingCountries?: StringList;
 }
-const ProductStatusDestinationStatus = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<ProductStatusDestinationStatus>;
-
 export type ProductStatusDestinationStatusList = Array<ProductStatusDestinationStatus>;
-const ProductStatusDestinationStatusList = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<ProductStatusDestinationStatusList>;
-
 export interface ProductStatusItemLevelIssue {
   /** A short issue description in English. */
   description?: string;
@@ -3238,17 +2259,7 @@ export interface ProductStatusItemLevelIssue {
   /** How this issue affects serving of the offer. */
   servability?: string;
 }
-const ProductStatusItemLevelIssue = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<ProductStatusItemLevelIssue>;
-
 export type ProductStatusItemLevelIssueList = Array<ProductStatusItemLevelIssue>;
-const ProductStatusItemLevelIssueList = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<ProductStatusItemLevelIssueList>;
-
 /** The status of a product, that is, information about a product computed asynchronously. */
 export interface ProductStatus {
   /** Date on which the item has been created, in ISO 8601 format. */
@@ -3270,8 +2281,6 @@ export interface ProductStatus {
   /** The title of the product. */
   title?: string;
 }
-const ProductStatus = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<ProductStatus>;
-
 /** A batch entry encoding a single non-batch productstatuses response. */
 export interface ProductstatusesCustomBatchResponseEntry {
   /** A list of errors for failed custombatch entries. *Note:* Schema errors fail the whole request. */
@@ -3283,29 +2292,14 @@ export interface ProductstatusesCustomBatchResponseEntry {
   /** The requested product status. Only defined if the request was successful. */
   productStatus?: ProductStatus;
 }
-const ProductstatusesCustomBatchResponseEntry = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<ProductstatusesCustomBatchResponseEntry>;
-
 export type ProductstatusesCustomBatchResponseEntryList =
   Array<ProductstatusesCustomBatchResponseEntry>;
-const ProductstatusesCustomBatchResponseEntryList = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<ProductstatusesCustomBatchResponseEntryList>;
-
 export interface ProductstatusesCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   entries?: ProductstatusesCustomBatchResponseEntryList;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#productstatusesCustomBatchResponse`". */
   kind?: string;
 }
-const ProductstatusesCustomBatchResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<ProductstatusesCustomBatchResponse>;
-
 /** Regional inventory resource. contains the regional name and all attributes which are overridden for the specified region. */
 export interface RegionalInventory {
   /** The ID uniquely identifying each region. */
@@ -3323,8 +2317,6 @@ export interface RegionalInventory {
   /** A date range represented by a pair of ISO 8601 dates separated by a space, comma, or slash. Both dates might be specified as 'null' if undecided. */
   salePriceEffectiveDate?: string;
 }
-const RegionalInventory = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<RegionalInventory>;
-
 /** A batch entry encoding a single non-batch regional inventory request. */
 export interface RegionalinventoryCustomBatchRequestEntry {
   /** The ID of the managing account. */
@@ -3338,36 +2330,16 @@ export interface RegionalinventoryCustomBatchRequestEntry {
   /** The ID of the product for which to update price and availability. */
   productId?: string;
 }
-const RegionalinventoryCustomBatchRequestEntry = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<RegionalinventoryCustomBatchRequestEntry>;
-
 export type RegionalinventoryCustomBatchRequestEntryList =
   Array<RegionalinventoryCustomBatchRequestEntry>;
-const RegionalinventoryCustomBatchRequestEntryList = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<RegionalinventoryCustomBatchRequestEntryList>;
-
 export interface RegionalinventoryCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: RegionalinventoryCustomBatchRequestEntryList;
 }
-const RegionalinventoryCustomBatchRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<RegionalinventoryCustomBatchRequest>;
-
 export interface CustombatchRegionalinventoryRequest {
   /** Request body */
   body?: RegionalinventoryCustomBatchRequest;
 }
-const CustombatchRegionalinventoryRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<CustombatchRegionalinventoryRequest>;
-
 /** A batch entry encoding a single non-batch regional inventory response. */
 export interface RegionalinventoryCustomBatchResponseEntry {
   /** Price and availability of the product. */
@@ -3379,40 +2351,21 @@ export interface RegionalinventoryCustomBatchResponseEntry {
   /** The ID of the request entry this entry responds to. */
   batchId?: number;
 }
-const RegionalinventoryCustomBatchResponseEntry = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<RegionalinventoryCustomBatchResponseEntry>;
-
 export type RegionalinventoryCustomBatchResponseEntryList =
   Array<RegionalinventoryCustomBatchResponseEntry>;
-const RegionalinventoryCustomBatchResponseEntryList = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<RegionalinventoryCustomBatchResponseEntryList>;
-
 export interface RegionalinventoryCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   entries?: RegionalinventoryCustomBatchResponseEntryList;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#regionalinventoryCustomBatchResponse`". */
   kind?: string;
 }
-const RegionalinventoryCustomBatchResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<RegionalinventoryCustomBatchResponse>;
-
 export interface PostalCodeRange {
   /** A postal code or a pattern of the form `prefix*` denoting the inclusive lower bound of the range defining the area. Examples values: `"94108"`, `"9410*"`, `"9*"`. Required. */
   postalCodeRangeBegin?: string;
   /** A postal code or a pattern of the form `prefix*` denoting the inclusive upper bound of the range defining the area. It must have the same length as `postalCodeRangeBegin`: if `postalCodeRangeBegin` is a postal code then `postalCodeRangeEnd` must be a postal code too; if `postalCodeRangeBegin` is a pattern then `postalCodeRangeEnd` must be a pattern with the same prefix length. Optional: if not set, then the area is defined as being all the postal codes matching `postalCodeRangeBegin`. */
   postalCodeRangeEnd?: string;
 }
-const PostalCodeRange = /*@__PURE__*/ __L.at(__c30, 0) as any as S.Schema<PostalCodeRange>;
-
 export type PostalCodeRangeList = Array<PostalCodeRange>;
-const PostalCodeRangeList = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<PostalCodeRangeList>;
-
 export interface PostalCodeGroup {
   /** The CLDR territory code of the country the postal code group applies to. Required. */
   country?: string;
@@ -3421,25 +2374,17 @@ export interface PostalCodeGroup {
   /** The name of the postal code group, referred to in headers. Required. */
   name?: string;
 }
-const PostalCodeGroup = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<PostalCodeGroup>;
-
 export type PostalCodeGroupList = Array<PostalCodeGroup>;
-const PostalCodeGroupList = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<PostalCodeGroupList>;
-
 export interface WarehouseCutoffTime {
   /** Required. Minute of the cutoff time until which an order has to be placed to be processed in the same day by the warehouse. Minute is based on the timezone of warehouse. */
   minute?: number;
   /** Required. Hour (24-hour clock) of the cutoff time until which an order has to be placed to be processed in the same day by the warehouse. Hour is based on the timezone of warehouse. */
   hour?: number;
 }
-const WarehouseCutoffTime = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<WarehouseCutoffTime>;
-
 export interface BusinessDayConfig {
   /** Regular business days, such as '"monday"'. May not be empty. */
   businessDays?: StringList;
 }
-const BusinessDayConfig = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<BusinessDayConfig>;
-
 export interface Address {
   /** Required. Top-level administrative subdivision of the country. For example, a state like California ("CA") or a province like Quebec ("QC"). */
   administrativeArea?: string;
@@ -3452,8 +2397,6 @@ export interface Address {
   /** Required. [CLDR country code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml) (for example, "US"). */
   country?: string;
 }
-const Address = /*@__PURE__*/ __L.at(__c30, 6) as any as S.Schema<Address>;
-
 /** A fulfillment warehouse, which stores and handles inventory. */
 export interface Warehouse {
   /** Required. The latest time of day that an order can be accepted and begin processing. Later orders will be processed in the next day. The time is based on the warehouse postal code. */
@@ -3467,34 +2410,20 @@ export interface Warehouse {
   /** Required. The number of days it takes for this warehouse to pack up and ship an item. This is on the warehouse level, but can be overridden on the offer level based on the attributes of an item. */
   handlingDays?: string;
 }
-const Warehouse = /*@__PURE__*/ __L.at(__c30, 7) as any as S.Schema<Warehouse>;
-
 export type WarehouseList = Array<Warehouse>;
-const WarehouseList = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<WarehouseList>;
-
 export type PriceList = Array<Price>;
-const PriceList = /*@__PURE__*/ __L.at(__c31, 1) as any as S.Schema<PriceList>;
-
 export interface Weight {
   /** Required. The weight represented as a number. The weight can have a maximum precision of four decimal places. */
   value?: string;
   /** Required. The weight unit. Acceptable values are: - "`kg`" - "`lb`" */
   unit?: string;
 }
-const Weight = /*@__PURE__*/ __L.at(__c31, 2) as any as S.Schema<Weight>;
-
 export type WeightList = Array<Weight>;
-const WeightList = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<WeightList>;
-
 export interface LocationIdSet {
   /** A non-empty list of location IDs. They must all be of the same location type (for example, state). */
   locationIds?: StringList;
 }
-const LocationIdSet = /*@__PURE__*/ __L.at(__c31, 4) as any as S.Schema<LocationIdSet>;
-
 export type LocationIdSetList = Array<LocationIdSet>;
-const LocationIdSetList = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<LocationIdSetList>;
-
 /** A non-empty list of row or column headers for a table. Exactly one of `prices`, `weights`, `numItems`, `postalCodeGroupNames`, or `location` must be set. */
 export interface Headers {
   /** A list of inclusive order price upper bounds. The last price's value can be `"infinity"`. For example `[{"value": "10", "currency": "USD"}, {"value": "500", "currency": "USD"}, {"value": "infinity", "currency": "USD"}]` represents the headers "<= $10", "<= $500", and "> $500". All prices within a service must have the same currency. Must be non-empty. Can only be set if all other fields are not set. */
@@ -3508,8 +2437,6 @@ export interface Headers {
   /** A list of location ID sets. Must be non-empty. Can only be set if all other fields are not set. */
   locations?: LocationIdSetList;
 }
-const Headers = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<Headers>;
-
 /** The single value of a rate group or the value of a rate group table's cell. Exactly one of `noShipping`, `flatRate`, `pricePercentage`, `carrierRateName`, `subtableName` must be set. */
 export interface Value {
   /** A percentage of the price represented as a number in decimal notation (for example, `"5.4"`). Can only be set if all other fields are not set. */
@@ -3523,20 +2450,12 @@ export interface Value {
   /** A flat rate. Can only be set if all other fields are not set. */
   flatRate?: Price;
 }
-const Value = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<Value>;
-
 export type ValueList = Array<Value>;
-const ValueList = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<ValueList>;
-
 export interface Row {
   /** The list of cells that constitute the row. Must have the same length as `columnHeaders` for two-dimensional tables, a length of 1 for one-dimensional tables. Required. */
   cells?: ValueList;
 }
-const Row = /*@__PURE__*/ __L.at(__c32, 1) as any as S.Schema<Row>;
-
 export type RowList = Array<Row>;
-const RowList = /*@__PURE__*/ __L.at(__c32, 2) as any as S.Schema<RowList>;
-
 export interface Table {
   /** Headers of the table's rows. Required. */
   rowHeaders?: Headers;
@@ -3547,11 +2466,7 @@ export interface Table {
   /** Headers of the table's columns. Optional: if not set then the table has only one dimension. */
   columnHeaders?: Headers;
 }
-const Table = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<Table>;
-
 export type TableList = Array<Table>;
-const TableList = /*@__PURE__*/ __L.at(__c32, 4) as any as S.Schema<TableList>;
-
 export interface CarrierRate {
   /** Name of the carrier rate. Must be unique per rate group. Required. */
   name?: string;
@@ -3566,11 +2481,7 @@ export interface CarrierRate {
   /** Carrier service, such as `"UPS"` or `"Fedex"`. The list of supported carriers can be retrieved through the `getSupportedCarriers` method. Required. */
   carrierName?: string;
 }
-const CarrierRate = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<CarrierRate>;
-
 export type CarrierRateList = Array<CarrierRate>;
-const CarrierRateList = /*@__PURE__*/ __L.at(__c32, 6) as any as S.Schema<CarrierRateList>;
-
 export interface RateGroup {
   /** A list of shipping labels defining the products to which this rate group applies to. This is a disjunction: only one of the labels has to match for the rate group to apply. May only be empty for the last rate group of a service. Required. */
   applicableShippingLabels?: StringList;
@@ -3585,11 +2496,7 @@ export interface RateGroup {
   /** Name of the rate group. Optional. If set has to be unique within shipping service. */
   name?: string;
 }
-const RateGroup = /*@__PURE__*/ __L.at(__c32, 7) as any as S.Schema<RateGroup>;
-
 export type RateGroupList = Array<RateGroup>;
-const RateGroupList = /*@__PURE__*/ __L.at(__c33, 0) as any as S.Schema<RateGroupList>;
-
 /** Time in hours and minutes in the local timezone when local delivery ends. */
 export interface ServiceStoreConfigCutoffConfigLocalCutoffTime {
   /** Hour local delivery orders must be placed by to process the same day. */
@@ -3597,11 +2504,6 @@ export interface ServiceStoreConfigCutoffConfigLocalCutoffTime {
   /** Minute local delivery orders must be placed by to process the same day. */
   minute?: string;
 }
-const ServiceStoreConfigCutoffConfigLocalCutoffTime = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<ServiceStoreConfigCutoffConfigLocalCutoffTime>;
-
 /** Time local delivery ends for the day based on the local timezone of the store. `local_cutoff_time` and `store_close_offset_hours` are mutually exclusive. */
 export interface ServiceStoreConfigCutoffConfig {
   /** Merchants can opt-out of showing n+1 day local delivery when they have a shipping service configured to n day local delivery. For example, if the shipping service defines same-day delivery, and it's past the cut-off, setting this field to `true` results in the calculated shipping service rate returning `NO_DELIVERY_POST_CUTOFF`. In the same example, setting this field to `false` results in the calculated shipping time being one day. This is only for local delivery. */
@@ -3611,11 +2513,6 @@ export interface ServiceStoreConfigCutoffConfig {
   /** Time in hours and minutes in the local timezone when local delivery ends. */
   localCutoffTime?: ServiceStoreConfigCutoffConfigLocalCutoffTime;
 }
-const ServiceStoreConfigCutoffConfig = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<ServiceStoreConfigCutoffConfig>;
-
 /** Distance represented by an integer and unit. */
 export interface Distance {
   /** The distance represented as a number. */
@@ -3623,8 +2520,6 @@ export interface Distance {
   /** The distance unit. Acceptable values are `None`, `Miles`, and `Kilometers`. */
   unit?: string;
 }
-const Distance = Weight as any as S.Schema<Distance>;
-
 /** Stores that provide local delivery. Only valid with local delivery fulfillment. */
 export interface ServiceStoreConfig {
   /** Time local delivery ends for the day. This can be either `local_cutoff_time` or `store_close_offset_hours`, if both are provided an error is thrown. */
@@ -3636,8 +2531,6 @@ export interface ServiceStoreConfig {
   /** A list of store codes that provide local delivery. If empty, then `store_service_type` must be `all_stores`, or an error is thrown. If not empty, then `store_service_type` must be `selected_stores`, or an error is thrown. */
   storeCodes?: StringList;
 }
-const ServiceStoreConfig = /*@__PURE__*/ __L.at(__c33, 3) as any as S.Schema<ServiceStoreConfig>;
-
 /** A list of store code sets sharing the same minimum order value. At least two sets are required and the last one must be empty, which signifies 'MOV for all other stores'. Each store code can only appear once across all the sets. All prices within a service must have the same currency. */
 export interface MinimumOrderValueTableStoreCodeSetWithMov {
   /** A list of unique store codes or empty for the catch all. */
@@ -3645,26 +2538,11 @@ export interface MinimumOrderValueTableStoreCodeSetWithMov {
   /** The minimum order value for the given stores. */
   value?: Price;
 }
-const MinimumOrderValueTableStoreCodeSetWithMov = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<MinimumOrderValueTableStoreCodeSetWithMov>;
-
 export type MinimumOrderValueTableStoreCodeSetWithMovList =
   Array<MinimumOrderValueTableStoreCodeSetWithMov>;
-const MinimumOrderValueTableStoreCodeSetWithMovList = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<MinimumOrderValueTableStoreCodeSetWithMovList>;
-
 export interface MinimumOrderValueTable {
   storeCodeSetWithMovs?: MinimumOrderValueTableStoreCodeSetWithMovList;
 }
-const MinimumOrderValueTable = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<MinimumOrderValueTable>;
-
 export interface HolidayCutoff {
   /** Timezone identifier for the deadline hour (for example, "Europe/Zurich"). List of identifiers. Required. */
   deadlineTimezone?: string;
@@ -3677,11 +2555,7 @@ export interface HolidayCutoff {
   /** Hour of the day on the deadline date until which the order has to be placed to qualify for the delivery guarantee. Possible values are: 0 (midnight), 1, ..., 12 (noon), 13, ..., 23. Required. */
   deadlineHour?: number;
 }
-const HolidayCutoff = /*@__PURE__*/ __L.at(__c33, 7) as any as S.Schema<HolidayCutoff>;
-
 export type HolidayCutoffList = Array<HolidayCutoff>;
-const HolidayCutoffList = /*@__PURE__*/ __L.at(__c34, 0) as any as S.Schema<HolidayCutoffList>;
-
 export interface WarehouseBasedDeliveryTime {
   /** Shipping origin's city. */
   originCity?: string;
@@ -3700,49 +2574,19 @@ export interface WarehouseBasedDeliveryTime {
   /** The name of the warehouse. Warehouse name need to be matched with name. If warehouseName is set, the below fields will be ignored. The warehouse info will be read from warehouse. */
   warehouseName?: string;
 }
-const WarehouseBasedDeliveryTime = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<WarehouseBasedDeliveryTime>;
-
 export type WarehouseBasedDeliveryTimeList = Array<WarehouseBasedDeliveryTime>;
-const WarehouseBasedDeliveryTimeList = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<WarehouseBasedDeliveryTimeList>;
-
 export interface TransitTableTransitTimeRowTransitTimeValue {
   /** Transit time range (min-max) in business days. 0 means same day delivery, 1 means next day delivery. */
   minTransitTimeInDays?: number;
   /** Must be greater than or equal to `minTransitTimeInDays`. */
   maxTransitTimeInDays?: number;
 }
-const TransitTableTransitTimeRowTransitTimeValue = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<TransitTableTransitTimeRowTransitTimeValue>;
-
 export type TransitTableTransitTimeRowTransitTimeValueList =
   Array<TransitTableTransitTimeRowTransitTimeValue>;
-const TransitTableTransitTimeRowTransitTimeValueList = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<TransitTableTransitTimeRowTransitTimeValueList>;
-
 export interface TransitTableTransitTimeRow {
   values?: TransitTableTransitTimeRowTransitTimeValueList;
 }
-const TransitTableTransitTimeRow = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<TransitTableTransitTimeRow>;
-
 export type TransitTableTransitTimeRowList = Array<TransitTableTransitTimeRow>;
-const TransitTableTransitTimeRowList = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<TransitTableTransitTimeRowList>;
-
 export interface TransitTable {
   rows?: TransitTableTransitTimeRowList;
   /** A list of transit time labels. The last value can be `"all other labels"`. Example: `["food", "electronics", "all other labels"]`. */
@@ -3750,8 +2594,6 @@ export interface TransitTable {
   /** A list of postal group names. The last value can be `"all other locations"`. Example: `["zone 1", "zone 2", "all other locations"]`. The referred postal code groups must match the delivery country of the service. */
   postalCodeGroupNames?: StringList;
 }
-const TransitTable = /*@__PURE__*/ __L.at(__c34, 7) as any as S.Schema<TransitTable>;
-
 export interface CutoffTime {
   /** Timezone identifier for the cutoff time (for example, "Europe/Zurich"). List of identifiers. Required. */
   timezone?: string;
@@ -3760,8 +2602,6 @@ export interface CutoffTime {
   /** Minute of the cutoff time until which an order has to be placed to be processed in the same day. Required. */
   minute?: number;
 }
-const CutoffTime = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<CutoffTime>;
-
 export interface DeliveryTime {
   /** Minimum number of business days spent before an order is shipped. 0 means same day shipped, 1 means next day shipped. */
   minHandlingTimeInDays?: number;
@@ -3784,19 +2624,12 @@ export interface DeliveryTime {
   /** Business days cutoff time definition. If not configured, the cutoff time will be defaulted to 8AM PST. If local delivery, use Service.StoreConfig.CutoffConfig. */
   cutoffTime?: CutoffTime;
 }
-const DeliveryTime = /*@__PURE__*/ __L.at(__c35, 1) as any as S.Schema<DeliveryTime>;
-
 export interface PickupCarrierService {
   /** The name of the pickup carrier (for example, `"UPS"`). Required. */
   carrierName?: string;
   /** The name of the pickup service (for example, `"Access point"`). Required. */
   serviceName?: string;
 }
-const PickupCarrierService = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<PickupCarrierService>;
-
 export interface Service {
   /** Shipping rate group definitions. Only the last one is allowed to have an empty `applicableShippingLabels`, which means "everything else". The other `applicableShippingLabels` must not overlap. */
   rateGroups?: RateGroupList;
@@ -3823,11 +2656,7 @@ export interface Service {
   /** Free-form name of the service. Must be unique within target account. Required. */
   name?: string;
 }
-const Service = /*@__PURE__*/ __L.at(__c35, 3) as any as S.Schema<Service>;
-
 export type ServiceList = Array<Service>;
-const ServiceList = /*@__PURE__*/ __L.at(__c35, 4) as any as S.Schema<ServiceList>;
-
 /** The merchant account's shipping settings. All methods except getsupportedcarriers and getsupportedholidays require the admin role. */
 export interface ShippingSettings {
   /** A list of postal code groups that can be referred to in `services`. Optional. */
@@ -3839,8 +2668,6 @@ export interface ShippingSettings {
   /** The target account's list of services. Optional. */
   services?: ServiceList;
 }
-const ShippingSettings = /*@__PURE__*/ __L.at(__c35, 5) as any as S.Schema<ShippingSettings>;
-
 /** A batch entry encoding a single non-batch shippingsettings request. */
 export interface ShippingsettingsCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
@@ -3854,36 +2681,16 @@ export interface ShippingsettingsCustomBatchRequestEntry {
   /** The method of the batch entry. Acceptable values are: - "`get`" - "`update`" */
   method?: string;
 }
-const ShippingsettingsCustomBatchRequestEntry = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<ShippingsettingsCustomBatchRequestEntry>;
-
 export type ShippingsettingsCustomBatchRequestEntryList =
   Array<ShippingsettingsCustomBatchRequestEntry>;
-const ShippingsettingsCustomBatchRequestEntryList = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<ShippingsettingsCustomBatchRequestEntryList>;
-
 export interface ShippingsettingsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: ShippingsettingsCustomBatchRequestEntryList;
 }
-const ShippingsettingsCustomBatchRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<ShippingsettingsCustomBatchRequest>;
-
 export interface CustombatchShippingsettingsRequest {
   /** Request body */
   body?: ShippingsettingsCustomBatchRequest;
 }
-const CustombatchShippingsettingsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<CustombatchShippingsettingsRequest>;
-
 /** A batch entry encoding a single non-batch shipping settings response. */
 export interface ShippingsettingsCustomBatchResponseEntry {
   /** A list of errors for failed custombatch entries. *Note:* Schema errors fail the whole request. */
@@ -3895,29 +2702,14 @@ export interface ShippingsettingsCustomBatchResponseEntry {
   /** The retrieved or updated account shipping settings. */
   shippingSettings?: ShippingSettings;
 }
-const ShippingsettingsCustomBatchResponseEntry = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<ShippingsettingsCustomBatchResponseEntry>;
-
 export type ShippingsettingsCustomBatchResponseEntryList =
   Array<ShippingsettingsCustomBatchResponseEntry>;
-const ShippingsettingsCustomBatchResponseEntryList = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<ShippingsettingsCustomBatchResponseEntryList>;
-
 export interface ShippingsettingsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
   entries?: ShippingsettingsCustomBatchResponseEntryList;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsCustomBatchResponse`". */
   kind?: string;
 }
-const ShippingsettingsCustomBatchResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<ShippingsettingsCustomBatchResponse>;
-
 export interface DeleteAccountsRequest {
   /** Option to delete sub-accounts with products. The default value is false. */
   force?: boolean;
@@ -3926,108 +2718,47 @@ export interface DeleteAccountsRequest {
   /** The ID of the account. */
   accountId: string;
 }
-const DeleteAccountsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<DeleteAccountsRequest>;
-
 export interface DeleteAccountsResponse {}
-const DeleteAccountsResponse = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<DeleteAccountsResponse>;
-
 export interface DeleteAccountsLabelsRequest {
   /** Required. The id of the account that owns the label. */
   accountId: string;
   /** Required. The id of the label to delete. */
   labelId: string;
 }
-const DeleteAccountsLabelsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<DeleteAccountsLabelsRequest>;
-
 export interface DeleteAccountsLabelsResponse {}
-const DeleteAccountsLabelsResponse =
-  DeleteAccountsResponse as any as S.Schema<DeleteAccountsLabelsResponse>;
-
 export interface DeleteAccountsReturncarrierRequest {
   /** Required. The Merchant Center Account Id under which the Return Carrier is to be linked. */
   accountId: string;
   /** Required. The Google-provided unique carrier ID, used to update the resource. */
   carrierAccountId: string;
 }
-const DeleteAccountsReturncarrierRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<DeleteAccountsReturncarrierRequest>;
-
 export interface DeleteAccountsReturncarrierResponse {}
-const DeleteAccountsReturncarrierResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<DeleteAccountsReturncarrierResponse>;
-
 export interface DeleteCollectionsRequest {
   /** Required. The ID of the account that contains the collection. This account cannot be a multi-client account. */
   merchantId: string;
   /** Required. The collectionId of the collection. CollectionId is the same as the REST ID of the collection. */
   collectionId: string;
 }
-const DeleteCollectionsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<DeleteCollectionsRequest>;
-
 export interface DeleteCollectionsResponse {}
-const DeleteCollectionsResponse =
-  DeleteAccountsResponse as any as S.Schema<DeleteCollectionsResponse>;
-
 export interface DeleteConversionsourcesRequest {
   /** Required. The ID of the conversion source to be deleted. */
   conversionSourceId: string;
   /** Required. The ID of the account that owns the new conversion source. */
   merchantId: string;
 }
-const DeleteConversionsourcesRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<DeleteConversionsourcesRequest>;
-
 export interface DeleteConversionsourcesResponse {}
-const DeleteConversionsourcesResponse = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<DeleteConversionsourcesResponse>;
-
 export interface DeleteDatafeedsRequest {
   /** The ID of the account that manages the datafeed. This account cannot be a multi-client account. */
   merchantId: string;
   /** The ID of the datafeed. */
   datafeedId: string;
 }
-const DeleteDatafeedsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<DeleteDatafeedsRequest>;
-
 export interface DeleteDatafeedsResponse {}
-const DeleteDatafeedsResponse = DeleteAccountsResponse as any as S.Schema<DeleteDatafeedsResponse>;
-
 export interface DeleteFreelistingsprogramCheckoutsettingsRequest {
   /** Required. The ID of the account. */
   merchantId: string;
 }
-const DeleteFreelistingsprogramCheckoutsettingsRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsRequest>;
-
 export interface DeleteFreelistingsprogramCheckoutsettingsResponse {}
-const DeleteFreelistingsprogramCheckoutsettingsResponse =
-  DeleteAccountsReturncarrierResponse as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsResponse>;
-
 export interface DeletePosRequest {
   /** The ID of the POS or inventory data provider. */
   merchantId: string;
@@ -4036,26 +2767,14 @@ export interface DeletePosRequest {
   /** A store code that is unique per merchant. */
   storeCode: string;
 }
-const DeletePosRequest = /*@__PURE__*/ __L.at(__c37, 7) as any as S.Schema<DeletePosRequest>;
-
 export interface DeletePosResponse {}
-const DeletePosResponse = DeleteAccountsResponse as any as S.Schema<DeletePosResponse>;
-
 export interface DeleteProductdeliverytimeRequest {
   /** Required. The Google merchant ID of the account that contains the product. This account cannot be a multi-client account. */
   merchantId: string;
   /** Required. The Content API ID of the product, in the form `channel:contentLanguage:targetCountry:offerId`. */
   productId: string;
 }
-const DeleteProductdeliverytimeRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<DeleteProductdeliverytimeRequest>;
-
 export interface DeleteProductdeliverytimeResponse {}
-const DeleteProductdeliverytimeResponse =
-  DeleteAccountsReturncarrierResponse as any as S.Schema<DeleteProductdeliverytimeResponse>;
-
 export interface DeleteProductsRequest {
   /** The REST ID of the product. */
   productId: string;
@@ -4064,61 +2783,31 @@ export interface DeleteProductsRequest {
   /** The Content API Supplemental Feed ID. If present then product deletion applies to the data in a supplemental feed. If absent, entire product will be deleted. */
   feedId?: string;
 }
-const DeleteProductsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<DeleteProductsRequest>;
-
 export interface DeleteProductsResponse {}
-const DeleteProductsResponse = DeleteAccountsResponse as any as S.Schema<DeleteProductsResponse>;
-
 export interface DeleteRegionsRequest {
   /** Required. The id of the region to delete. */
   regionId: string;
   /** Required. The id of the merchant for which to delete region definition. */
   merchantId: string;
 }
-const DeleteRegionsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<DeleteRegionsRequest>;
-
 export interface DeleteRegionsResponse {}
-const DeleteRegionsResponse = DeleteAccountsResponse as any as S.Schema<DeleteRegionsResponse>;
-
 export interface DeleteReturnpolicyonlineRequest {
   /** Required. The id of the merchant for which to retrieve the return policy online object. */
   merchantId: string;
   /** Required. The id of the return policy to delete. */
   returnPolicyId: string;
 }
-const DeleteReturnpolicyonlineRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<DeleteReturnpolicyonlineRequest>;
-
 export interface DeleteReturnpolicyonlineResponse {}
-const DeleteReturnpolicyonlineResponse =
-  DeleteAccountsReturncarrierResponse as any as S.Schema<DeleteReturnpolicyonlineResponse>;
-
 export interface FetchnowDatafeedsRequest {
   /** The ID of the datafeed to be fetched. */
   datafeedId: string;
   /** The ID of the account that manages the datafeed. This account cannot be a multi-client account. */
   merchantId: string;
 }
-const FetchnowDatafeedsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<FetchnowDatafeedsRequest>;
-
 export interface DatafeedsFetchNowResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#datafeedsFetchNowResponse`". */
   kind?: string;
 }
-const DatafeedsFetchNowResponse =
-  AccountsClaimWebsiteResponse as any as S.Schema<DatafeedsFetchNowResponse>;
-
 export interface GenerateRecommendationsRequest {
   /** Optional. Language code of the client. If not set, the result will be in default language (English). This language code affects all fields prefixed with "localized". This should be set to ISO 639-1 country code. List of currently verified supported language code: en, fr, cs, da, de, es, it, nl, no, pl, pt, pt, fi, sv, vi, tr, th, ko, zh-CN, zh-TW, ja, id, hi */
   languageCode?: string;
@@ -4127,14 +2816,7 @@ export interface GenerateRecommendationsRequest {
   /** Required. The ID of the account to fetch recommendations for. */
   merchantId: string;
 }
-const GenerateRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<GenerateRecommendationsRequest>;
-
 export type RecommendationCreativeTypeEnum = "CREATIVE_TYPE_UNSPECIFIED" | "VIDEO" | "PHOTO";
-const RecommendationCreativeTypeEnum = /*@__PURE__*/ S.String;
-
 /** Creative is a multimedia attachment to recommendation that can be used on the frontend. */
 export interface RecommendationCreative {
   /** URL of the creative. */
@@ -4142,17 +2824,7 @@ export interface RecommendationCreative {
   /** Type of the creative. */
   type?: RecommendationCreativeTypeEnum;
 }
-const RecommendationCreative = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<RecommendationCreative>;
-
 export type RecommendationCreativeList = Array<RecommendationCreative>;
-const RecommendationCreativeList = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<RecommendationCreativeList>;
-
 /** Call to action (CTA) that explains how a merchant can implement this recommendation */
 export interface RecommendationCallToAction {
   /** Optional. URL of the CTA. This field will only be set for some recommendations where there is a suggested landing URL. Otherwise it will be set to an empty string. We recommend developers to use their own custom landing page according to the description of the intent field above when this uri field is empty. */
@@ -4162,20 +2834,8 @@ export interface RecommendationCallToAction {
   /** Output only. Localized text of the CTA. Optional. */
   localizedText?: string;
 }
-const RecommendationCallToAction = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<RecommendationCallToAction>;
-
 export type RecommendationCallToActionList = Array<RecommendationCallToAction>;
-const RecommendationCallToActionList = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<RecommendationCallToActionList>;
-
 export type RecommendationDescriptionTypeEnum = "DESCRIPTION_TYPE_UNSPECIFIED" | "SHORT" | "LONG";
-const RecommendationDescriptionTypeEnum = /*@__PURE__*/ S.String;
-
 /** Google-provided description for the recommendation. */
 export interface RecommendationDescription {
   /** Output only. Text of the description. */
@@ -4183,17 +2843,7 @@ export interface RecommendationDescription {
   /** Output only. Type of the description. */
   type?: RecommendationDescriptionTypeEnum;
 }
-const RecommendationDescription = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<RecommendationDescription>;
-
 export type RecommendationDescriptionList = Array<RecommendationDescription>;
-const RecommendationDescriptionList = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<RecommendationDescriptionList>;
-
 /** Recommendations are suggested ways to improve your merchant account's performance. For example, to engage with a feature, or start using a new Google product. */
 export interface Recommendation {
   /** Optional. Localized recommendation description. The localization the {@link `GenerateRecommendationsRequest.language_code`} field in {@link `GenerateRecommendationsRequest`} requests. */
@@ -4219,11 +2869,7 @@ export interface Recommendation {
   /** Optional. Localized Recommendation Title. Localization uses the {@link `GenerateRecommendationsRequest.language_code`} field in {@link `GenerateRecommendationsRequest`} requests. */
   title?: string;
 }
-const Recommendation = /*@__PURE__*/ __L.at(__c39, 4) as any as S.Schema<Recommendation>;
-
 export type RecommendationList = Array<Recommendation>;
-const RecommendationList = /*@__PURE__*/ __L.at(__c39, 5) as any as S.Schema<RecommendationList>;
-
 /** Response containing generated recommendations. */
 export interface GenerateRecommendationsResponse {
   /** Recommendations generated for a request. */
@@ -4231,22 +2877,12 @@ export interface GenerateRecommendationsResponse {
   /** Output only. Response token is a string created for each `GenerateRecommendationsResponse`. This token doesn't expire, and is globally unique. This token must be used when reporting interactions for recommendations. */
   responseToken?: string;
 }
-const GenerateRecommendationsResponse = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<GenerateRecommendationsResponse>;
-
 export interface GetaccessiblegmbaccountsLiasettingsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
   merchantId: string;
   /** The ID of the account for which to retrieve accessible Business Profiles. */
   accountId: string;
 }
-const GetaccessiblegmbaccountsLiasettingsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<GetaccessiblegmbaccountsLiasettingsRequest>;
-
 export interface LiasettingsGetAccessibleGmbAccountsResponse {
   /** The ID of the Merchant Center account. */
   accountId?: string;
@@ -4255,14 +2891,7 @@ export interface LiasettingsGetAccessibleGmbAccountsResponse {
   /** A list of Business Profiles which are available to the merchant. */
   gmbAccounts?: GmbAccountsGmbAccountList;
 }
-const LiasettingsGetAccessibleGmbAccountsResponse = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<LiasettingsGetAccessibleGmbAccountsResponse>;
-
 export type GetAccountsViewEnum = "MERCHANT" | "CSS";
-const GetAccountsViewEnum = /*@__PURE__*/ S.String;
-
 export interface GetAccountsRequest {
   /** The ID of the account. */
   accountId: string;
@@ -4271,8 +2900,6 @@ export interface GetAccountsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
   merchantId: string;
 }
-const GetAccountsRequest = /*@__PURE__*/ __L.at(__c40, 1) as any as S.Schema<GetAccountsRequest>;
-
 export interface GetAccountstatusesRequest {
   /** The ID of the account. */
   accountId: string;
@@ -4281,44 +2908,24 @@ export interface GetAccountstatusesRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
   merchantId: string;
 }
-const GetAccountstatusesRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<GetAccountstatusesRequest>;
-
 export interface GetAccounttaxRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
   merchantId: string;
   /** The ID of the account for which to get/update account tax settings. */
   accountId: string;
 }
-const GetAccounttaxRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<GetAccounttaxRequest>;
-
 export interface GetCollectionsRequest {
   /** Required. The REST ID of the collection. */
   collectionId: string;
   /** Required. The ID of the account that contains the collection. This account cannot be a multi-client account. */
   merchantId: string;
 }
-const GetCollectionsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<GetCollectionsRequest>;
-
 export interface GetCollectionstatusesRequest {
   /** Required. The collectionId of the collection. CollectionId is the same as the REST ID of the collection. */
   collectionId: string;
   /** Required. The ID of the account that contains the collection. This account cannot be a multi-client account. */
   merchantId: string;
 }
-const GetCollectionstatusesRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<GetCollectionstatusesRequest>;
-
 /** Destination status message. */
 export interface CollectionStatusDestinationStatus {
   /** Country codes (ISO 3166-1 alpha-2) where the collection is approved. */
@@ -4332,17 +2939,7 @@ export interface CollectionStatusDestinationStatus {
   /** The name of the destination */
   destination?: string;
 }
-const CollectionStatusDestinationStatus = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<CollectionStatusDestinationStatus>;
-
 export type CollectionStatusDestinationStatusList = Array<CollectionStatusDestinationStatus>;
-const CollectionStatusDestinationStatusList = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<CollectionStatusDestinationStatusList>;
-
 /** Issue associated with the collection. */
 export interface CollectionStatusItemLevelIssue {
   /** A short issue description in English. */
@@ -4364,17 +2961,7 @@ export interface CollectionStatusItemLevelIssue {
   /** How this issue affects the serving of the collection. */
   servability?: string;
 }
-const CollectionStatusItemLevelIssue = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<CollectionStatusItemLevelIssue>;
-
 export type CollectionStatusItemLevelIssueList = Array<CollectionStatusItemLevelIssue>;
-const CollectionStatusItemLevelIssueList = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<CollectionStatusItemLevelIssueList>;
-
 /** The collectionstatus message. */
 export interface CollectionStatus {
   /** Date on which the collection has been created in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z" */
@@ -4388,27 +2975,18 @@ export interface CollectionStatus {
   /** Date on which the collection has been last updated in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format: Date, time, and offset, for example "2020-01-02T09:00:00+01:00" or "2020-01-02T09:00:00Z" */
   lastUpdateDate?: string;
 }
-const CollectionStatus = /*@__PURE__*/ __L.at(__c41, 2) as any as S.Schema<CollectionStatus>;
-
 export interface GetConversionsourcesRequest {
   /** Required. The ID of the account that owns the new conversion source. */
   merchantId: string;
   /** Required. The REST ID of the collection. */
   conversionSourceId: string;
 }
-const GetConversionsourcesRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<GetConversionsourcesRequest>;
-
 export interface GetCssesRequest {
   /** Required. The ID of the managing account. If this parameter is not the same as [cssDomainId](#cssDomainId), then this ID must be a CSS group ID and `cssDomainId` must be the ID of a CSS domain affiliated with this group. */
   cssGroupId: string;
   /** Required. The ID of the CSS domain to return. */
   cssDomainId: string;
 }
-const GetCssesRequest = /*@__PURE__*/ __L.at(__c41, 4) as any as S.Schema<GetCssesRequest>;
-
 /** Information about CSS domain. */
 export interface Css {
   /** Output only. Immutable. The CSS domain's display name, used when space is constrained. */
@@ -4424,16 +3002,12 @@ export interface Css {
   /** A list of label IDs that are assigned to this CSS domain by its CSS group. Only populated for CSS group users. */
   labelIds?: StringList;
 }
-const Css = /*@__PURE__*/ __L.at(__c41, 5) as any as S.Schema<Css>;
-
 export interface GetDatafeedsRequest {
   /** The ID of the account that manages the datafeed. This account cannot be a multi-client account. */
   merchantId: string;
   /** The ID of the datafeed. */
   datafeedId: string;
 }
-const GetDatafeedsRequest = /*@__PURE__*/ __L.at(__c41, 6) as any as S.Schema<GetDatafeedsRequest>;
-
 export interface GetDatafeedstatusesRequest {
   /** The ID of the account that manages the datafeed. This account cannot be a multi-client account. */
   merchantId: string;
@@ -4446,26 +3020,14 @@ export interface GetDatafeedstatusesRequest {
   /** The feed label to get the datafeed status for. If this parameter is provided then `language` must also be provided. Note that this parameter is required for feeds targeting multiple countries and languages, since a feed may have a different status for each target. */
   feedLabel?: string;
 }
-const GetDatafeedstatusesRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<GetDatafeedstatusesRequest>;
-
 export interface GetFreelistingsprogramRequest {
   /** Required. The ID of the account. */
   merchantId: string;
 }
-const GetFreelistingsprogramRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<GetFreelistingsprogramRequest>;
-
 export type FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum =
   | "REVIEW_ELIGIBILITY_UNSPECIFIED"
   | "ELIGIBLE"
   | "INELIGIBLE";
-const FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum = /*@__PURE__*/ S.String;
-
 export type FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
   | "REVIEW_INELIGIBILITY_REASON_UNSPECIFIED"
   | "ONBOARDING_ISSUES"
@@ -4476,18 +3038,11 @@ export type FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
   | "WILL_BE_REVIEWED_AUTOMATICALLY"
   | "IS_RETIRED"
   | "ALREADY_REVIEWED";
-const FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum = /*@__PURE__*/ S.String;
-
 /** Additional details for review ineligibility reasons. */
 export interface FreeListingsProgramStatusReviewIneligibilityReasonDetails {
   /** This timestamp represents end of cooldown period for review ineligbility reason `IN_COOLDOWN_PERIOD`. */
   cooldownTime?: string;
 }
-const FreeListingsProgramStatusReviewIneligibilityReasonDetails = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<FreeListingsProgramStatusReviewIneligibilityReasonDetails>;
-
 export type FreeListingsProgramStatusRegionStatusEligibilityStatusEnum =
   | "STATE_UNSPECIFIED"
   | "APPROVED"
@@ -4496,8 +3051,6 @@ export type FreeListingsProgramStatusRegionStatusEligibilityStatusEnum =
   | "UNDER_REVIEW"
   | "PENDING_REVIEW"
   | "ONBOARDING";
-const FreeListingsProgramStatusRegionStatusEligibilityStatusEnum = /*@__PURE__*/ S.String;
-
 /** Status of program and region. */
 export interface FreeListingsProgramStatusRegionStatus {
   /** Reason a program in a specific region isn't eligible for review. Only visible if `reviewEligibilityStatus` is `INELIGIBLE`. */
@@ -4519,25 +3072,13 @@ export interface FreeListingsProgramStatusRegionStatus {
   /** Date by which eligibilityStatus will go from `WARNING` to `DISAPPROVED`. Only visible when your eligibilityStatus is WARNING. In [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DD`. */
   disapprovalDate?: string;
 }
-const FreeListingsProgramStatusRegionStatus = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<FreeListingsProgramStatusRegionStatus>;
-
 export type FreeListingsProgramStatusRegionStatusList =
   Array<FreeListingsProgramStatusRegionStatus>;
-const FreeListingsProgramStatusRegionStatusList = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<FreeListingsProgramStatusRegionStatusList>;
-
 export type FreeListingsProgramStatusGlobalStateEnum =
   | "PROGRAM_STATE_UNSPECIFIED"
   | "NOT_ENABLED"
   | "NO_OFFERS_UPLOADED"
   | "ENABLED";
-const FreeListingsProgramStatusGlobalStateEnum = /*@__PURE__*/ S.String;
-
 /** Response message for GetFreeListingsProgramStatus. */
 export interface FreeListingsProgramStatus {
   /** Status of the program in each region. Regions with the same status and review eligibility are grouped together in `regionCodes`. */
@@ -4545,41 +3086,25 @@ export interface FreeListingsProgramStatus {
   /** State of the program. `ENABLED` if there are offers for at least one region. */
   globalState?: FreeListingsProgramStatusGlobalStateEnum;
 }
-const FreeListingsProgramStatus = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<FreeListingsProgramStatus>;
-
 export interface GetFreelistingsprogramCheckoutsettingsRequest {
   /** Required. The ID of the account. */
   merchantId: string;
 }
-const GetFreelistingsprogramCheckoutsettingsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<GetFreelistingsprogramCheckoutsettingsRequest>;
-
 export type CheckoutSettingsEffectiveEnrollmentStateEnum =
   | "CHECKOUT_ON_MERCHANT_ENROLLMENT_STATE_UNSPECIFIED"
   | "INACTIVE"
   | "ENROLLED"
   | "OPT_OUT";
-const CheckoutSettingsEffectiveEnrollmentStateEnum = /*@__PURE__*/ S.String;
-
 export type CheckoutSettingsEffectiveReviewStateEnum =
   | "CHECKOUT_ON_MERCHANT_REVIEW_STATE_UNSPECIFIED"
   | "IN_REVIEW"
   | "APPROVED"
   | "DISAPPROVED";
-const CheckoutSettingsEffectiveReviewStateEnum = /*@__PURE__*/ S.String;
-
 export type CheckoutSettingsReviewStateEnum =
   | "CHECKOUT_ON_MERCHANT_REVIEW_STATE_UNSPECIFIED"
   | "IN_REVIEW"
   | "APPROVED"
   | "DISAPPROVED";
-const CheckoutSettingsReviewStateEnum = /*@__PURE__*/ S.String;
-
 /** Specifications related to the `Checkout` URL. The `UriTemplate` is of the form `https://www.mystore.com/checkout?item_id={id}` where `{id}` will be automatically replaced with data from the merchant account with this attribute [offer_id](https://developers.google.com/shopping-content/reference/rest/v2.1/products#Product.FIELDS.offer_id) */
 export interface UrlSettings {
   /** URL template when the placeholders are expanded will redirect the buyer to the cart page on the merchant website with the selected item in cart. */
@@ -4587,15 +3112,11 @@ export interface UrlSettings {
   /** URL template when the placeholders are expanded will redirect the buyer to the merchant checkout page with the item in the cart. */
   checkoutUriTemplate?: string;
 }
-const UrlSettings = /*@__PURE__*/ __L.at(__c42, 6) as any as S.Schema<UrlSettings>;
-
 export type CheckoutSettingsEnrollmentStateEnum =
   | "CHECKOUT_ON_MERCHANT_ENROLLMENT_STATE_UNSPECIFIED"
   | "INACTIVE"
   | "ENROLLED"
   | "OPT_OUT";
-const CheckoutSettingsEnrollmentStateEnum = /*@__PURE__*/ S.String;
-
 /** `CheckoutSettings` for a specific merchant ID. */
 export interface CheckoutSettings {
   /** Output only. The effective value of enrollment state for a given merchant ID. If account level settings are present then this value will be a copy of the account level settings. Otherwise, it will have the value of the parent account. */
@@ -4613,19 +3134,12 @@ export interface CheckoutSettings {
   /** Output only. Reflects the merchant enrollment state in `Checkout` feature. */
   enrollmentState?: CheckoutSettingsEnrollmentStateEnum;
 }
-const CheckoutSettings = /*@__PURE__*/ __L.at(__c42, 7) as any as S.Schema<CheckoutSettings>;
-
 export interface GetLiasettingsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
   merchantId: string;
   /** The ID of the account for which to get or update LIA settings. */
   accountId: string;
 }
-const GetLiasettingsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<GetLiasettingsRequest>;
-
 export interface GetPosRequest {
   /** A store code that is unique per merchant. */
   storeCode: string;
@@ -4634,27 +3148,18 @@ export interface GetPosRequest {
   /** The ID of the target merchant. */
   targetMerchantId: string;
 }
-const GetPosRequest = /*@__PURE__*/ __L.at(__c43, 1) as any as S.Schema<GetPosRequest>;
-
 export interface GetProductdeliverytimeRequest {
   /** Required. The Google merchant ID of the account that contains the product. This account cannot be a multi-client account. */
   merchantId: string;
   /** Required. The Content API ID of the product, in the form `channel:contentLanguage:targetCountry:offerId`. */
   productId: string;
 }
-const GetProductdeliverytimeRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<GetProductdeliverytimeRequest>;
-
 export interface GetProductsRequest {
   /** The ID of the account that contains the product. This account cannot be a multi-client account. */
   merchantId: string;
   /** The REST ID of the product. */
   productId: string;
 }
-const GetProductsRequest = /*@__PURE__*/ __L.at(__c43, 3) as any as S.Schema<GetProductsRequest>;
-
 export interface GetProductstatusesRequest {
   /** The REST ID of the product. */
   productId: string;
@@ -4663,31 +3168,16 @@ export interface GetProductstatusesRequest {
   /** The ID of the account that contains the product. This account cannot be a multi-client account. */
   merchantId: string;
 }
-const GetProductstatusesRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<GetProductstatusesRequest>;
-
 export interface GetPromotionsRequest {
   /** Required. REST ID of the promotion to retrieve. */
   id: string;
   /** Required. The ID of the account that contains the collection. */
   merchantId: string;
 }
-const GetPromotionsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<GetPromotionsRequest>;
-
 export interface GetPubsubnotificationsettingsRequest {
   /** The ID of the account for which to get pubsub notification settings. */
   merchantId: string;
 }
-const GetPubsubnotificationsettingsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<GetPubsubnotificationsettingsRequest>;
-
 /** Settings for Pub/Sub notifications, all methods require that the caller is a direct user of the merchant center account. */
 export interface PubsubNotificationSettings {
   /** List of event types. Acceptable values are: - "`orderPendingShipment`" */
@@ -4697,57 +3187,33 @@ export interface PubsubNotificationSettings {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#pubsubNotificationSettings`" */
   kind?: string;
 }
-const PubsubNotificationSettings = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<PubsubNotificationSettings>;
-
 export interface GetRegionsRequest {
   /** Required. The id of the region to retrieve. */
   regionId: string;
   /** Required. The id of the merchant for which to retrieve region definition. */
   merchantId: string;
 }
-const GetRegionsRequest = /*@__PURE__*/ __L.at(__c44, 0) as any as S.Schema<GetRegionsRequest>;
-
 export interface GetReturnpolicyonlineRequest {
   /** Required. The id of the return policy to retrieve. */
   returnPolicyId: string;
   /** Required. The id of the merchant for which to retrieve the return policy online object. */
   merchantId: string;
 }
-const GetReturnpolicyonlineRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<GetReturnpolicyonlineRequest>;
-
 export interface GetShippingsettingsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
   merchantId: string;
   /** The ID of the account for which to get/update shipping settings. */
   accountId: string;
 }
-const GetShippingsettingsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<GetShippingsettingsRequest>;
-
 export interface GetShoppingadsprogramRequest {
   /** Required. The ID of the account. */
   merchantId: string;
 }
-const GetShoppingadsprogramRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<GetShoppingadsprogramRequest>;
-
 export type ShoppingAdsProgramStatusGlobalStateEnum =
   | "PROGRAM_STATE_UNSPECIFIED"
   | "NOT_ENABLED"
   | "NO_OFFERS_UPLOADED"
   | "ENABLED";
-const ShoppingAdsProgramStatusGlobalStateEnum = /*@__PURE__*/ S.String;
-
 /** Additional details for review ineligibility reasons. */
 export type ShoppingAdsProgramStatusReviewIneligibilityReasonDetails =
   FreeListingsProgramStatusReviewIneligibilityReasonDetails;
@@ -4759,14 +3225,10 @@ export type ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum =
   | "UNDER_REVIEW"
   | "PENDING_REVIEW"
   | "ONBOARDING";
-const ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum = /*@__PURE__*/ S.String;
-
 export type ShoppingAdsProgramStatusRegionStatusReviewEligibilityStatusEnum =
   | "REVIEW_ELIGIBILITY_UNSPECIFIED"
   | "ELIGIBLE"
   | "INELIGIBLE";
-const ShoppingAdsProgramStatusRegionStatusReviewEligibilityStatusEnum = /*@__PURE__*/ S.String;
-
 export type ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
   | "REVIEW_INELIGIBILITY_REASON_UNSPECIFIED"
   | "ONBOARDING_ISSUES"
@@ -4777,8 +3239,6 @@ export type ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum =
   | "WILL_BE_REVIEWED_AUTOMATICALLY"
   | "IS_RETIRED"
   | "ALREADY_REVIEWED";
-const ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum = /*@__PURE__*/ S.String;
-
 /** Status of program and region. */
 export interface ShoppingAdsProgramStatusRegionStatus {
   /** Date by which eligibilityStatus will go from `WARNING` to `DISAPPROVED`. Only visible when your eligibilityStatus is WARNING. In [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DD`. */
@@ -4800,17 +3260,7 @@ export interface ShoppingAdsProgramStatusRegionStatus {
   /** Review ineligibility reason if account is not eligible for review. */
   reviewIneligibilityReason?: ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum;
 }
-const ShoppingAdsProgramStatusRegionStatus = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<ShoppingAdsProgramStatusRegionStatus>;
-
 export type ShoppingAdsProgramStatusRegionStatusList = Array<ShoppingAdsProgramStatusRegionStatus>;
-const ShoppingAdsProgramStatusRegionStatusList = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<ShoppingAdsProgramStatusRegionStatusList>;
-
 /** Response message for GetShoppingAdsProgramStatus. */
 export interface ShoppingAdsProgramStatus {
   /** State of the program. `ENABLED` if there are offers for at least one region. */
@@ -4818,20 +3268,10 @@ export interface ShoppingAdsProgramStatus {
   /** Status of the program in each region. Regions with the same status and review eligibility are grouped together in `regionCodes`. */
   regionStatuses?: ShoppingAdsProgramStatusRegionStatusList;
 }
-const ShoppingAdsProgramStatus = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<ShoppingAdsProgramStatus>;
-
 export interface GetsupportedcarriersShippingsettingsRequest {
   /** The ID of the account for which to retrieve the supported carriers. */
   merchantId: string;
 }
-const GetsupportedcarriersShippingsettingsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<GetsupportedcarriersShippingsettingsRequest>;
-
 export interface CarriersCarrier {
   /** A list of supported services (for example, `"ground"`) for that carrier. Contains at least one service. This is the list of valid values for CarrierRate.carrierService. */
   services?: StringList;
@@ -4842,31 +3282,17 @@ export interface CarriersCarrier {
   /** The name of the carrier (for example, `"UPS"`). Always present. */
   name?: string;
 }
-const CarriersCarrier = /*@__PURE__*/ __L.at(__c45, 0) as any as S.Schema<CarriersCarrier>;
-
 export type CarriersCarrierList = Array<CarriersCarrier>;
-const CarriersCarrierList = /*@__PURE__*/ __L.at(__c45, 1) as any as S.Schema<CarriersCarrierList>;
-
 export interface ShippingsettingsGetSupportedCarriersResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsGetSupportedCarriersResponse`". */
   kind?: string;
   /** A list of supported carriers. May be empty. */
   carriers?: CarriersCarrierList;
 }
-const ShippingsettingsGetSupportedCarriersResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<ShippingsettingsGetSupportedCarriersResponse>;
-
 export interface GetsupportedholidaysShippingsettingsRequest {
   /** The ID of the account for which to retrieve the supported holidays. */
   merchantId: string;
 }
-const GetsupportedholidaysShippingsettingsRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<GetsupportedholidaysShippingsettingsRequest>;
-
 export interface HolidaysHoliday {
   /** The holiday type. Always present. Acceptable values are: - "`Christmas`" - "`Easter`" - "`Father's Day`" - "`Halloween`" - "`Independence Day (USA)`" - "`Mother's Day`" - "`Thanksgiving`" - "`Valentine's Day`" */
   type?: string;
@@ -4881,31 +3307,17 @@ export interface HolidaysHoliday {
   /** Date of the holiday, in ISO 8601 format. For example, "2016-12-25" for Christmas 2016. Always present. */
   date?: string;
 }
-const HolidaysHoliday = /*@__PURE__*/ __L.at(__c45, 4) as any as S.Schema<HolidaysHoliday>;
-
 export type HolidaysHolidayList = Array<HolidaysHoliday>;
-const HolidaysHolidayList = /*@__PURE__*/ __L.at(__c45, 5) as any as S.Schema<HolidaysHolidayList>;
-
 export interface ShippingsettingsGetSupportedHolidaysResponse {
   /** A list of holidays applicable for delivery guarantees. May be empty. */
   holidays?: HolidaysHolidayList;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsGetSupportedHolidaysResponse`". */
   kind?: string;
 }
-const ShippingsettingsGetSupportedHolidaysResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<ShippingsettingsGetSupportedHolidaysResponse>;
-
 export interface GetsupportedpickupservicesShippingsettingsRequest {
   /** The ID of the account for which to retrieve the supported pickup services. */
   merchantId: string;
 }
-const GetsupportedpickupservicesShippingsettingsRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<GetsupportedpickupservicesShippingsettingsRequest>;
-
 export interface PickupServicesPickupService {
   /** The CLDR country code of the carrier (for example, "US"). Always present. */
   country?: string;
@@ -4914,71 +3326,36 @@ export interface PickupServicesPickupService {
   /** The name of the pickup service (for example, `"Access point"`). Always present. */
   serviceName?: string;
 }
-const PickupServicesPickupService = /*@__PURE__*/ __L.at(
-  __c46,
-  0,
-) as any as S.Schema<PickupServicesPickupService>;
-
 export type PickupServicesPickupServiceList = Array<PickupServicesPickupService>;
-const PickupServicesPickupServiceList = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<PickupServicesPickupServiceList>;
-
 export interface ShippingsettingsGetSupportedPickupServicesResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsGetSupportedPickupServicesResponse`". */
   kind?: string;
   /** A list of supported pickup services. May be empty. */
   pickupServices?: PickupServicesPickupServiceList;
 }
-const ShippingsettingsGetSupportedPickupServicesResponse = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<ShippingsettingsGetSupportedPickupServicesResponse>;
-
 export interface InsertAccountsRequest {
   /** The ID of the managing account. This must be a multi-client account. */
   merchantId: string;
   /** Request body */
   body?: Account;
 }
-const InsertAccountsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  3,
-) as any as S.Schema<InsertAccountsRequest>;
-
 export interface InsertDatafeedsRequest {
   /** The ID of the account that manages the datafeed. This account cannot be a multi-client account. */
   merchantId: string;
   /** Request body */
   body?: Datafeed;
 }
-const InsertDatafeedsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<InsertDatafeedsRequest>;
-
 /** Request message for the `InsertCheckoutSettings` method. */
 export interface InsertCheckoutSettingsRequest {
   /** Required. The `UrlSettings` for the request. The presence of URL settings indicates `Checkout` enrollment. */
   uriSettings?: UrlSettings;
 }
-const InsertCheckoutSettingsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<InsertCheckoutSettingsRequest>;
-
 export interface InsertFreelistingsprogramCheckoutsettingsRequest {
   /** Required. The ID of the account. */
   merchantId: string;
   /** Request body */
   body?: InsertCheckoutSettingsRequest;
 }
-const InsertFreelistingsprogramCheckoutsettingsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<InsertFreelistingsprogramCheckoutsettingsRequest>;
-
 export interface InsertLocalinventoryRequest {
   /** The ID of the account that contains the product. This account cannot be a multi-client account. */
   merchantId: string;
@@ -4987,11 +3364,6 @@ export interface InsertLocalinventoryRequest {
   /** Request body */
   body?: LocalInventory;
 }
-const InsertLocalinventoryRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<InsertLocalinventoryRequest>;
-
 export interface InsertPosRequest {
   /** The ID of the POS or inventory data provider. */
   merchantId: string;
@@ -5000,8 +3372,6 @@ export interface InsertPosRequest {
   /** Request body */
   body?: PosStore;
 }
-const InsertPosRequest = /*@__PURE__*/ __L.at(__c47, 0) as any as S.Schema<InsertPosRequest>;
-
 export interface InsertProductsRequest {
   /** The ID of the account that contains the product. This account cannot be a multi-client account. */
   merchantId: string;
@@ -5010,11 +3380,6 @@ export interface InsertProductsRequest {
   /** Request body */
   body?: Product;
 }
-const InsertProductsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<InsertProductsRequest>;
-
 export interface InsertRegionalinventoryRequest {
   /** The ID of the account that contains the product. This account cannot be a multi-client account. */
   merchantId: string;
@@ -5023,11 +3388,6 @@ export interface InsertRegionalinventoryRequest {
   /** Request body */
   body?: RegionalInventory;
 }
-const InsertRegionalinventoryRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<InsertRegionalinventoryRequest>;
-
 export interface PosInventoryRequest {
   /** Required. The current price of the item. */
   price?: Price;
@@ -5050,8 +3410,6 @@ export interface PosInventoryRequest {
   /** Global Trade Item Number. */
   gtin?: string;
 }
-const PosInventoryRequest = /*@__PURE__*/ __L.at(__c47, 3) as any as S.Schema<PosInventoryRequest>;
-
 export interface InventoryPosRequest {
   /** The ID of the target merchant. */
   targetMerchantId: string;
@@ -5060,8 +3418,6 @@ export interface InventoryPosRequest {
   /** Request body */
   body?: PosInventoryRequest;
 }
-const InventoryPosRequest = /*@__PURE__*/ __L.at(__c47, 4) as any as S.Schema<InventoryPosRequest>;
-
 export interface PosInventoryResponse {
   /** Required. The available quantity of the item. */
   quantity?: string;
@@ -5086,11 +3442,6 @@ export interface PosInventoryResponse {
   /** Required. The two-letter ISO 639-1 language code for the item. */
   contentLanguage?: string;
 }
-const PosInventoryResponse = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<PosInventoryResponse>;
-
 /** Additional information required for PAYMENT_SERVICE_PROVIDER link type. */
 export interface PaymentServiceProviderLinkInfo {
   /** The id used by the third party service provider to identify the merchant. */
@@ -5098,21 +3449,11 @@ export interface PaymentServiceProviderLinkInfo {
   /** The business country of the merchant account as identified by the third party service provider. */
   externalAccountBusinessCountry?: string;
 }
-const PaymentServiceProviderLinkInfo = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<PaymentServiceProviderLinkInfo>;
-
 /** Additional information required for E_COMMERCE_PLATFORM link type. */
 export interface ECommercePlatformLinkInfo {
   /** The id used by the third party service provider to identify the merchant. */
   externalAccountId?: string;
 }
-const ECommercePlatformLinkInfo = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<ECommercePlatformLinkInfo>;
-
 export interface AccountsLinkRequest {
   /** Type of the link between the two accounts. Acceptable values are: - "`channelPartner`" - "`eCommercePlatform`" - "`paymentServiceProvider`" */
   linkType?: string;
@@ -5127,8 +3468,6 @@ export interface AccountsLinkRequest {
   /** Action to perform for this link. The `"request"` action is only available to select merchants. Acceptable values are: - "`approve`" - "`remove`" - "`request`" */
   action?: string;
 }
-const AccountsLinkRequest = /*@__PURE__*/ __L.at(__c48, 0) as any as S.Schema<AccountsLinkRequest>;
-
 export interface LinkAccountsRequest {
   /** The ID of the account that should be linked. */
   accountId: string;
@@ -5137,17 +3476,11 @@ export interface LinkAccountsRequest {
   /** Request body */
   body?: AccountsLinkRequest;
 }
-const LinkAccountsRequest = /*@__PURE__*/ __L.at(__c48, 1) as any as S.Schema<LinkAccountsRequest>;
-
 export interface AccountsLinkResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsLinkResponse`". */
   kind?: string;
 }
-const AccountsLinkResponse = AccountsClaimWebsiteResponse as any as S.Schema<AccountsLinkResponse>;
-
 export type ListAccountsViewEnum = "MERCHANT" | "CSS";
-const ListAccountsViewEnum = /*@__PURE__*/ S.String;
-
 export interface ListAccountsRequest {
   /** If set, only the accounts with the given name (case sensitive) will be returned. */
   name?: string;
@@ -5162,11 +3495,7 @@ export interface ListAccountsRequest {
   /** If view is set to "css", only return accounts that are assigned label with given ID. */
   label?: string;
 }
-const ListAccountsRequest = /*@__PURE__*/ __L.at(__c48, 2) as any as S.Schema<ListAccountsRequest>;
-
 export type AccountList = Array<Account>;
-const AccountList = /*@__PURE__*/ __L.at(__c48, 3) as any as S.Schema<AccountList>;
-
 export interface AccountsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsListResponse`". */
   kind?: string;
@@ -5174,11 +3503,6 @@ export interface AccountsListResponse {
   nextPageToken?: string;
   resources?: AccountList;
 }
-const AccountsListResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<AccountsListResponse>;
-
 export interface ListAccountsLabelsRequest {
   /** The maximum number of labels to return. The service may return fewer than this value. If unspecified, at most 50 labels will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -5187,14 +3511,7 @@ export interface ListAccountsLabelsRequest {
   /** A page token, received from a previous `ListAccountLabels` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountLabels` must match the call that provided the page token. */
   pageToken?: string;
 }
-const ListAccountsLabelsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<ListAccountsLabelsRequest>;
-
 export type AccountLabelList = Array<AccountLabel>;
-const AccountLabelList = /*@__PURE__*/ __L.at(__c48, 6) as any as S.Schema<AccountLabelList>;
-
 /** Response message for the `ListAccountLabels` method. */
 export interface ListAccountLabelsResponse {
   /** The labels from the specified account. */
@@ -5202,36 +3519,16 @@ export interface ListAccountLabelsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListAccountLabelsResponse = /*@__PURE__*/ __L.at(
-  __c48,
-  7,
-) as any as S.Schema<ListAccountLabelsResponse>;
-
 export interface ListAccountsReturncarrierRequest {
   /** Required. The Merchant Center Account Id under which the Return Carrier is to be linked. */
   accountId: string;
 }
-const ListAccountsReturncarrierRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<ListAccountsReturncarrierRequest>;
-
 export type AccountReturnCarrierList = Array<AccountReturnCarrier>;
-const AccountReturnCarrierList = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<AccountReturnCarrierList>;
-
 /** Response for listing account return carriers. */
 export interface ListAccountReturnCarrierResponse {
   /** List of all available account return carriers for the merchant. */
   accountReturnCarriers?: AccountReturnCarrierList;
 }
-const ListAccountReturnCarrierResponse = /*@__PURE__*/ __L.at(
-  __c49,
-  2,
-) as any as S.Schema<ListAccountReturnCarrierResponse>;
-
 export interface ListAccountstatusesRequest {
   /** If set, only issues for the specified destinations are returned, otherwise only issues for the Shopping destination. */
   destinations?: StringList;
@@ -5244,14 +3541,7 @@ export interface ListAccountstatusesRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
 }
-const ListAccountstatusesRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  3,
-) as any as S.Schema<ListAccountstatusesRequest>;
-
 export type AccountStatusList = Array<AccountStatus>;
-const AccountStatusList = /*@__PURE__*/ __L.at(__c49, 4) as any as S.Schema<AccountStatusList>;
-
 export interface AccountstatusesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountstatusesListResponse`". */
   kind?: string;
@@ -5259,11 +3549,6 @@ export interface AccountstatusesListResponse {
   /** The token for the retrieval of the next page of account statuses. */
   nextPageToken?: string;
 }
-const AccountstatusesListResponse = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<AccountstatusesListResponse>;
-
 export interface ListAccounttaxRequest {
   /** The ID of the managing account. This must be a multi-client account. */
   merchantId: string;
@@ -5272,14 +3557,7 @@ export interface ListAccounttaxRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
 }
-const ListAccounttaxRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<ListAccounttaxRequest>;
-
 export type AccountTaxList = Array<AccountTax>;
-const AccountTaxList = /*@__PURE__*/ __L.at(__c49, 7) as any as S.Schema<AccountTaxList>;
-
 export interface AccounttaxListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accounttaxListResponse`". */
   kind?: string;
@@ -5287,11 +3565,6 @@ export interface AccounttaxListResponse {
   /** The token for the retrieval of the next page of account tax settings. */
   nextPageToken?: string;
 }
-const AccounttaxListResponse = /*@__PURE__*/ __L.at(
-  __c50,
-  0,
-) as any as S.Schema<AccounttaxListResponse>;
-
 export interface ListCollectionsRequest {
   /** Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token. */
   pageToken?: string;
@@ -5300,14 +3573,7 @@ export interface ListCollectionsRequest {
   /** The maximum number of collections to return in the response, used for paging. Defaults to 50; values above 1000 will be coerced to 1000. */
   pageSize?: number;
 }
-const ListCollectionsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<ListCollectionsRequest>;
-
 export type CollectionList = Array<Collection>;
-const CollectionList = /*@__PURE__*/ __L.at(__c50, 2) as any as S.Schema<CollectionList>;
-
 /** Response message for the ListCollections method. */
 export interface ListCollectionsResponse {
   /** The collections listed. */
@@ -5315,11 +3581,6 @@ export interface ListCollectionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListCollectionsResponse = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<ListCollectionsResponse>;
-
 export interface ListCollectionstatusesRequest {
   /** The maximum number of collection statuses to return in the response, used for paging. Defaults to 50; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -5328,17 +3589,7 @@ export interface ListCollectionstatusesRequest {
   /** Required. The ID of the account that contains the collection. This account cannot be a multi-client account. */
   merchantId: string;
 }
-const ListCollectionstatusesRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<ListCollectionstatusesRequest>;
-
 export type CollectionStatusList = Array<CollectionStatus>;
-const CollectionStatusList = /*@__PURE__*/ __L.at(
-  __c50,
-  5,
-) as any as S.Schema<CollectionStatusList>;
-
 /** Response message for the ListCollectionStatuses method. */
 export interface ListCollectionStatusesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -5346,11 +3597,6 @@ export interface ListCollectionStatusesResponse {
   /** The collectionstatuses listed. */
   resources?: CollectionStatusList;
 }
-const ListCollectionStatusesResponse = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<ListCollectionStatusesResponse>;
-
 export interface ListConversionsourcesRequest {
   /** The maximum number of conversion sources to return in a page. If no `page_size` is specified, `100` is used as the default value. The maximum value is `200`. Values above `200` will be coerced to `200`. Regardless of pagination, at most `200` conversion sources are returned in total. */
   pageSize?: number;
@@ -5361,17 +3607,7 @@ export interface ListConversionsourcesRequest {
   /** If true, also returns archived conversion sources. */
   showDeleted?: boolean;
 }
-const ListConversionsourcesRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<ListConversionsourcesRequest>;
-
 export type ConversionSourceList = Array<ConversionSource>;
-const ConversionSourceList = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<ConversionSourceList>;
-
 /** Response message for the ListConversionSources method. */
 export interface ListConversionSourcesResponse {
   /** List of conversion sources. */
@@ -5379,11 +3615,6 @@ export interface ListConversionSourcesResponse {
   /** Token to be used to fetch the next results page. */
   nextPageToken?: string;
 }
-const ListConversionSourcesResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<ListConversionSourcesResponse>;
-
 export interface ListCssesRequest {
   /** A page token, received from a previous `ListCsses` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCsses` must match the call that provided the page token. */
   pageToken?: string;
@@ -5392,11 +3623,7 @@ export interface ListCssesRequest {
   /** Required. The CSS group ID of CSS domains to be listed. */
   cssGroupId: string;
 }
-const ListCssesRequest = /*@__PURE__*/ __L.at(__c51, 2) as any as S.Schema<ListCssesRequest>;
-
 export type CssList = Array<Css>;
-const CssList = /*@__PURE__*/ __L.at(__c51, 3) as any as S.Schema<CssList>;
-
 /** The response message for the `ListCsses` method */
 export interface ListCssesResponse {
   /** The CSS domains affiliated with the specified CSS group. */
@@ -5404,8 +3631,6 @@ export interface ListCssesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListCssesResponse = /*@__PURE__*/ __L.at(__c51, 4) as any as S.Schema<ListCssesResponse>;
-
 export interface ListDatafeedsRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
@@ -5414,14 +3639,7 @@ export interface ListDatafeedsRequest {
   /** The ID of the account that manages the datafeeds. This account cannot be a multi-client account. */
   merchantId: string;
 }
-const ListDatafeedsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<ListDatafeedsRequest>;
-
 export type DatafeedList = Array<Datafeed>;
-const DatafeedList = /*@__PURE__*/ __L.at(__c51, 6) as any as S.Schema<DatafeedList>;
-
 export interface DatafeedsListResponse {
   /** The token for the retrieval of the next page of datafeeds. */
   nextPageToken?: string;
@@ -5429,11 +3647,6 @@ export interface DatafeedsListResponse {
   kind?: string;
   resources?: DatafeedList;
 }
-const DatafeedsListResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<DatafeedsListResponse>;
-
 export interface ListDatafeedstatusesRequest {
   /** The ID of the account that manages the datafeeds. This account cannot be a multi-client account. */
   merchantId: string;
@@ -5442,14 +3655,7 @@ export interface ListDatafeedstatusesRequest {
   /** The maximum number of products to return in the response, used for paging. */
   maxResults?: number;
 }
-const ListDatafeedstatusesRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<ListDatafeedstatusesRequest>;
-
 export type DatafeedStatusList = Array<DatafeedStatus>;
-const DatafeedStatusList = /*@__PURE__*/ __L.at(__c52, 1) as any as S.Schema<DatafeedStatusList>;
-
 export interface DatafeedstatusesListResponse {
   resources?: DatafeedStatusList;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#datafeedstatusesListResponse`". */
@@ -5457,11 +3663,6 @@ export interface DatafeedstatusesListResponse {
   /** The token for the retrieval of the next page of datafeed statuses. */
   nextPageToken?: string;
 }
-const DatafeedstatusesListResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<DatafeedstatusesListResponse>;
-
 export interface ListLiasettingsRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
@@ -5470,14 +3671,7 @@ export interface ListLiasettingsRequest {
   /** The ID of the managing account. This must be a multi-client account. */
   merchantId: string;
 }
-const ListLiasettingsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<ListLiasettingsRequest>;
-
 export type LiaSettingsList = Array<LiaSettings>;
-const LiaSettingsList = /*@__PURE__*/ __L.at(__c52, 4) as any as S.Schema<LiaSettingsList>;
-
 export interface LiasettingsListResponse {
   resources?: LiaSettingsList;
   /** The token for the retrieval of the next page of LIA settings. */
@@ -5485,11 +3679,6 @@ export interface LiasettingsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsListResponse`". */
   kind?: string;
 }
-const LiasettingsListResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<LiasettingsListResponse>;
-
 export interface ListlinksAccountsRequest {
   /** The ID of the account for which to list links. */
   accountId: string;
@@ -5500,33 +3689,20 @@ export interface ListlinksAccountsRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
 }
-const ListlinksAccountsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<ListlinksAccountsRequest>;
-
 export interface LinkService {
   /** Service provided to or by the linked account. Acceptable values are: - "`shoppingActionsOrderManagement`" - "`shoppingActionsProductManagement`" - "`shoppingAdsProductManagement`" - "`paymentProcessing`" */
   service?: string;
   /** Status of the link Acceptable values are: - "`active`" - "`inactive`" - "`pending`" */
   status?: string;
 }
-const LinkService = /*@__PURE__*/ __L.at(__c52, 7) as any as S.Schema<LinkService>;
-
 export type LinkServiceList = Array<LinkService>;
-const LinkServiceList = /*@__PURE__*/ __L.at(__c53, 0) as any as S.Schema<LinkServiceList>;
-
 export interface LinkedAccount {
   /** The ID of the linked account. */
   linkedAccountId?: string;
   /** List of provided services. */
   services?: LinkServiceList;
 }
-const LinkedAccount = /*@__PURE__*/ __L.at(__c53, 1) as any as S.Schema<LinkedAccount>;
-
 export type LinkedAccountList = Array<LinkedAccount>;
-const LinkedAccountList = /*@__PURE__*/ __L.at(__c53, 2) as any as S.Schema<LinkedAccountList>;
-
 export interface AccountsListLinksResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsListLinksResponse`". */
   kind?: string;
@@ -5535,46 +3711,25 @@ export interface AccountsListLinksResponse {
   /** The token for the retrieval of the next page of links. */
   nextPageToken?: string;
 }
-const AccountsListLinksResponse = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<AccountsListLinksResponse>;
-
 export interface ListPosRequest {
   /** The ID of the target merchant. */
   targetMerchantId: string;
   /** The ID of the POS or inventory data provider. */
   merchantId: string;
 }
-const ListPosRequest = /*@__PURE__*/ __L.at(__c53, 4) as any as S.Schema<ListPosRequest>;
-
 export type PosStoreList = Array<PosStore>;
-const PosStoreList = /*@__PURE__*/ __L.at(__c53, 5) as any as S.Schema<PosStoreList>;
-
 export interface PosListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#posListResponse`". */
   kind?: string;
   resources?: PosStoreList;
 }
-const PosListResponse = /*@__PURE__*/ __L.at(__c53, 6) as any as S.Schema<PosListResponse>;
-
 export interface ListposdataprovidersLiasettingsRequest {}
-const ListposdataprovidersLiasettingsRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<ListposdataprovidersLiasettingsRequest>;
-
 export interface LiasettingsListPosDataProvidersResponse {
   /** The list of POS data providers for each eligible country */
   posDataProviders?: PosDataProvidersList;
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsListPosDataProvidersResponse`". */
   kind?: string;
 }
-const LiasettingsListPosDataProvidersResponse = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<LiasettingsListPosDataProvidersResponse>;
-
 export interface ListProductsRequest {
   /** The ID of the account that contains the products. This account cannot be a multi-client account. */
   merchantId: string;
@@ -5583,11 +3738,7 @@ export interface ListProductsRequest {
   /** The maximum number of products to return in the response, used for paging. The default value is 25. The maximum value is 250. */
   maxResults?: number;
 }
-const ListProductsRequest = /*@__PURE__*/ __L.at(__c54, 1) as any as S.Schema<ListProductsRequest>;
-
 export type ProductList = Array<Product>;
-const ProductList = /*@__PURE__*/ __L.at(__c54, 2) as any as S.Schema<ProductList>;
-
 export interface ProductsListResponse {
   /** The token for the retrieval of the next page of products. */
   nextPageToken?: string;
@@ -5595,11 +3746,6 @@ export interface ProductsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#productsListResponse`". */
   kind?: string;
 }
-const ProductsListResponse = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<ProductsListResponse>;
-
 export interface ListProductstatusesRequest {
   /** The token returned by the previous request. */
   pageToken?: string;
@@ -5610,14 +3756,7 @@ export interface ListProductstatusesRequest {
   /** The ID of the account that contains the products. This account cannot be a multi-client account. */
   merchantId: string;
 }
-const ListProductstatusesRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  4,
-) as any as S.Schema<ListProductstatusesRequest>;
-
 export type ProductStatusList = Array<ProductStatus>;
-const ProductStatusList = /*@__PURE__*/ __L.at(__c54, 5) as any as S.Schema<ProductStatusList>;
-
 export interface ProductstatusesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#productstatusesListResponse`". */
   kind?: string;
@@ -5625,11 +3764,6 @@ export interface ProductstatusesListResponse {
   nextPageToken?: string;
   resources?: ProductStatusList;
 }
-const ProductstatusesListResponse = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<ProductstatusesListResponse>;
-
 export interface ListPromotionsRequest {
   /** The maximum number of promotions to return. The service may return fewer than this value. If unspecified, at most 50 labels will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -5642,14 +3776,7 @@ export interface ListPromotionsRequest {
   /** The two-letter ISO 639-1 language code associated with the promotions, used as a filter. */
   languageCode?: string;
 }
-const ListPromotionsRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  7,
-) as any as S.Schema<ListPromotionsRequest>;
-
 export type PromotionList = Array<Promotion>;
-const PromotionList = /*@__PURE__*/ __L.at(__c55, 0) as any as S.Schema<PromotionList>;
-
 /** Response message for Promotions.List method. */
 export interface ListPromotionResponse {
   /** List of all available promotions for the merchant. */
@@ -5657,11 +3784,6 @@ export interface ListPromotionResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListPromotionResponse = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<ListPromotionResponse>;
-
 export interface ListQuotasRequest {
   /** The maximum number of quotas to return in the response, used for paging. Defaults to 500; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -5670,8 +3792,6 @@ export interface ListQuotasRequest {
   /** Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token. */
   pageToken?: string;
 }
-const ListQuotasRequest = /*@__PURE__*/ __L.at(__c55, 2) as any as S.Schema<ListQuotasRequest>;
-
 /** The quota information per method in the Content API. */
 export interface MethodQuota {
   /** Output only. The method name, for example `products.list`. Method name does not contain version because quota can be shared between different API versions of the same method. */
@@ -5683,11 +3803,7 @@ export interface MethodQuota {
   /** Output only. The maximum number of calls allowed per day for the method. */
   quotaLimit?: string;
 }
-const MethodQuota = /*@__PURE__*/ __L.at(__c55, 3) as any as S.Schema<MethodQuota>;
-
 export type MethodQuotaList = Array<MethodQuota>;
-const MethodQuotaList = /*@__PURE__*/ __L.at(__c55, 4) as any as S.Schema<MethodQuotaList>;
-
 /** Response message for the ListMethodQuotas method. */
 export interface ListMethodQuotasResponse {
   /** The current quota usage and limits per each method. */
@@ -5695,11 +3811,6 @@ export interface ListMethodQuotasResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
   nextPageToken?: string;
 }
-const ListMethodQuotasResponse = /*@__PURE__*/ __L.at(
-  __c55,
-  5,
-) as any as S.Schema<ListMethodQuotasResponse>;
-
 export interface ListRegionsRequest {
   /** The maximum number of regions to return. The service may return fewer than this value. If unspecified, at most 50 rules will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. */
   pageSize?: number;
@@ -5708,11 +3819,7 @@ export interface ListRegionsRequest {
   /** Required. The id of the merchant for which to list region definitions. */
   merchantId: string;
 }
-const ListRegionsRequest = /*@__PURE__*/ __L.at(__c55, 6) as any as S.Schema<ListRegionsRequest>;
-
 export type RegionList = Array<Region>;
-const RegionList = /*@__PURE__*/ __L.at(__c55, 7) as any as S.Schema<RegionList>;
-
 /** Response message for the `ListRegions` method. */
 export interface ListRegionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -5720,33 +3827,16 @@ export interface ListRegionsResponse {
   /** The regions from the specified merchant. */
   regions?: RegionList;
 }
-const ListRegionsResponse = /*@__PURE__*/ __L.at(__c56, 0) as any as S.Schema<ListRegionsResponse>;
-
 export interface ListReturnpolicyonlineRequest {
   /** Required. The id of the merchant for which to retrieve the return policy online object. */
   merchantId: string;
 }
-const ListReturnpolicyonlineRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<ListReturnpolicyonlineRequest>;
-
 export type ReturnPolicyOnlineList = Array<ReturnPolicyOnline>;
-const ReturnPolicyOnlineList = /*@__PURE__*/ __L.at(
-  __c56,
-  2,
-) as any as S.Schema<ReturnPolicyOnlineList>;
-
 /** Response message for the `ListReturnPolicyOnline` method. */
 export interface ListReturnPolicyOnlineResponse {
   /** The retrieved return policies. */
   returnPolicies?: ReturnPolicyOnlineList;
 }
-const ListReturnPolicyOnlineResponse = /*@__PURE__*/ __L.at(
-  __c56,
-  3,
-) as any as S.Schema<ListReturnPolicyOnlineResponse>;
-
 export interface ListShippingsettingsRequest {
   /** The maximum number of shipping settings to return in the response, used for paging. */
   maxResults?: number;
@@ -5755,17 +3845,7 @@ export interface ListShippingsettingsRequest {
   /** The ID of the managing account. This must be a multi-client account. */
   merchantId: string;
 }
-const ListShippingsettingsRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  4,
-) as any as S.Schema<ListShippingsettingsRequest>;
-
 export type ShippingSettingsList = Array<ShippingSettings>;
-const ShippingSettingsList = /*@__PURE__*/ __L.at(
-  __c56,
-  5,
-) as any as S.Schema<ShippingSettingsList>;
-
 export interface ShippingsettingsListResponse {
   /** The token for the retrieval of the next page of shipping settings. */
   nextPageToken?: string;
@@ -5773,11 +3853,6 @@ export interface ShippingsettingsListResponse {
   kind?: string;
   resources?: ShippingSettingsList;
 }
-const ShippingsettingsListResponse = /*@__PURE__*/ __L.at(
-  __c56,
-  6,
-) as any as S.Schema<ShippingsettingsListResponse>;
-
 export interface PatchAccountsLabelsRequest {
   /** Required. The id of the account this label belongs to. */
   accountId: string;
@@ -5786,11 +3861,6 @@ export interface PatchAccountsLabelsRequest {
   /** Request body */
   body?: AccountLabel;
 }
-const PatchAccountsLabelsRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  7,
-) as any as S.Schema<PatchAccountsLabelsRequest>;
-
 export interface PatchAccountsReturncarrierRequest {
   /** Required. The Merchant Center Account Id under which the Return Carrier is to be linked. */
   accountId: string;
@@ -5799,11 +3869,6 @@ export interface PatchAccountsReturncarrierRequest {
   /** Request body */
   body?: AccountReturnCarrier;
 }
-const PatchAccountsReturncarrierRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  0,
-) as any as S.Schema<PatchAccountsReturncarrierRequest>;
-
 export interface PatchConversionsourcesRequest {
   /** Required. The ID of the account that owns the new conversion source. */
   merchantId: string;
@@ -5814,11 +3879,6 @@ export interface PatchConversionsourcesRequest {
   /** Request body */
   body?: ConversionSource;
 }
-const PatchConversionsourcesRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  1,
-) as any as S.Schema<PatchConversionsourcesRequest>;
-
 export interface PatchRegionsRequest {
   /** Required. The id of the region to update. */
   regionId: string;
@@ -5829,8 +3889,6 @@ export interface PatchRegionsRequest {
   /** Request body */
   body?: Region;
 }
-const PatchRegionsRequest = /*@__PURE__*/ __L.at(__c57, 2) as any as S.Schema<PatchRegionsRequest>;
-
 export interface PatchReturnpolicyonlineRequest {
   /** Required. The id of the return policy to update. */
   returnPolicyId: string;
@@ -5839,22 +3897,13 @@ export interface PatchReturnpolicyonlineRequest {
   /** Request body */
   body?: ReturnPolicyOnline;
 }
-const PatchReturnpolicyonlineRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  3,
-) as any as S.Schema<PatchReturnpolicyonlineRequest>;
-
 export type RenderAccountIssuesRequestPayloadContentOptionEnum =
   | "CONTENT_OPTION_UNSPECIFIED"
   | "PRE_RENDERED_HTML";
-const RenderAccountIssuesRequestPayloadContentOptionEnum = /*@__PURE__*/ S.String;
-
 export type RenderAccountIssuesRequestPayloadUserInputActionOptionEnum =
   | "USER_INPUT_ACTION_RENDERING_OPTION_UNSPECIFIED"
   | "REDIRECT_TO_MERCHANT_CENTER"
   | "BUILT_IN_USER_INPUT_ACTIONS";
-const RenderAccountIssuesRequestPayloadUserInputActionOptionEnum = /*@__PURE__*/ S.String;
-
 /** The payload for configuring how the content should be rendered. */
 export interface RenderAccountIssuesRequestPayload {
   /** Optional. How the detailed content should be returned. Default option is to return the content as a pre-rendered HTML text. */
@@ -5864,11 +3913,6 @@ export interface RenderAccountIssuesRequestPayload {
     | RenderAccountIssuesRequestPayloadUserInputActionOptionEnum
     | (string & {});
 }
-const RenderAccountIssuesRequestPayload = /*@__PURE__*/ __L.at(
-  __c57,
-  4,
-) as any as S.Schema<RenderAccountIssuesRequestPayload>;
-
 export interface RenderaccountissuesMerchantsupportRequest {
   /** Optional. The [IANA](https://www.iana.org/time-zones) timezone used to localize times in support content. For example 'America/Los_Angeles'. If not set, results will use as a default UTC. */
   timeZone?: string;
@@ -5879,11 +3923,6 @@ export interface RenderaccountissuesMerchantsupportRequest {
   /** Request body */
   body?: RenderAccountIssuesRequestPayload;
 }
-const RenderaccountissuesMerchantsupportRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  5,
-) as any as S.Schema<RenderaccountissuesMerchantsupportRequest>;
-
 /** The Alternate Dispute Resolution (ADR) that may be available to merchants in some regions. If present, the link should be shown on the same page as the list of issues. */
 export interface AlternateDisputeResolution {
   /** The URL pointing to a page, where merchant can request alternative dispute resolution with an [external body](https://support.google.com/european-union-digital-services-act-redress-options/answer/13535501). */
@@ -5891,11 +3930,6 @@ export interface AlternateDisputeResolution {
   /** The label for the alternate dispute resolution link. */
   label?: string;
 }
-const AlternateDisputeResolution = /*@__PURE__*/ __L.at(
-  __c57,
-  6,
-) as any as S.Schema<AlternateDisputeResolution>;
-
 /** Region with code and localized name. */
 export interface BreakdownRegion {
   /** The [CLDR territory code] (http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) */
@@ -5903,11 +3937,7 @@ export interface BreakdownRegion {
   /** The localized name of the region. For region with code='001' the value is 'All countries' or the equivalent in other languages. */
   name?: string;
 }
-const BreakdownRegion = /*@__PURE__*/ __L.at(__c57, 7) as any as S.Schema<BreakdownRegion>;
-
 export type BreakdownRegionList = Array<BreakdownRegion>;
-const BreakdownRegionList = /*@__PURE__*/ __L.at(__c58, 0) as any as S.Schema<BreakdownRegionList>;
-
 /** A detailed impact breakdown for a group of regions where the impact of the issue on different shopping destinations is the same. */
 export interface Breakdown {
   /** Human readable, localized description of issue's effect on different targets. Should be rendered as a list. For example: * "Products not showing in ads" * "Products not showing organically" */
@@ -5915,14 +3945,8 @@ export interface Breakdown {
   /** Lists of regions. Should be rendered as a title for this group of details. The full list should be shown to merchant. If the list is too long, it is recommended to make it expandable. */
   regions?: BreakdownRegionList;
 }
-const Breakdown = /*@__PURE__*/ __L.at(__c58, 1) as any as S.Schema<Breakdown>;
-
 export type BreakdownList = Array<Breakdown>;
-const BreakdownList = /*@__PURE__*/ __L.at(__c58, 2) as any as S.Schema<BreakdownList>;
-
 export type AccountIssueImpactSeverityEnum = "SEVERITY_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
-const AccountIssueImpactSeverityEnum = /*@__PURE__*/ S.String;
-
 /** Overall impact of the issue. */
 export interface AccountIssueImpact {
   /** Detailed impact breakdown. Explains the types of restriction the issue has in different shopping destinations and territory. If present, it should be rendered to the merchant. Can be shown as a mouse over dropdown or a dialog. Each breakdown item represents a group of regions with the same impact details. */
@@ -5932,17 +3956,11 @@ export interface AccountIssueImpact {
   /** Optional. Message summarizing the overall impact of the issue. If present, it should be rendered to the merchant. For example: "Disapproves 90k offers in 25 countries" */
   message?: string;
 }
-const AccountIssueImpact = /*@__PURE__*/ __L.at(__c58, 3) as any as S.Schema<AccountIssueImpact>;
-
 export type CalloutStyleHintEnum = "CALLOUT_STYLE_HINT_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
-const CalloutStyleHintEnum = /*@__PURE__*/ S.String;
-
 export type TextWithTooltipTooltipIconStyleEnum =
   | "TOOLTIP_ICON_STYLE_UNSPECIFIED"
   | "INFO"
   | "QUESTION";
-const TextWithTooltipTooltipIconStyleEnum = /*@__PURE__*/ S.String;
-
 /** Block of text that may contain a tooltip with more information. */
 export interface TextWithTooltip {
   /** Value of the tooltip as a simple text. */
@@ -5952,8 +3970,6 @@ export interface TextWithTooltip {
   /** The suggested type of an icon for tooltip, if a tooltip is present. */
   tooltipIconStyle?: TextWithTooltipTooltipIconStyleEnum;
 }
-const TextWithTooltip = /*@__PURE__*/ __L.at(__c58, 4) as any as S.Schema<TextWithTooltip>;
-
 /** An important message that should be highlighted. Usually displayed as a banner. */
 export interface Callout {
   /** Can be used to render messages with different severity in different styles. Snippets off all types contain important information that should be displayed to merchants. */
@@ -5961,14 +3977,10 @@ export interface Callout {
   /** A full message that needs to be shown to the merchant. */
   fullMessage?: TextWithTooltip;
 }
-const Callout = /*@__PURE__*/ __L.at(__c58, 5) as any as S.Schema<Callout>;
-
 export type InputFieldTextInputTypeEnum =
   | "TEXT_INPUT_TYPE_UNSPECIFIED"
   | "GENERIC_SHORT_TEXT"
   | "GENERIC_LONG_TEXT";
-const InputFieldTextInputTypeEnum = /*@__PURE__*/ S.String;
-
 /** Text input allows merchants to provide a text value. */
 export interface InputFieldTextInput {
   /** Text to be used as the [aria-label](https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html) for the input. */
@@ -5980,8 +3992,6 @@ export interface InputFieldTextInput {
   /** Type of the text input */
   type?: InputFieldTextInputTypeEnum;
 }
-const InputFieldTextInput = /*@__PURE__*/ __L.at(__c58, 6) as any as S.Schema<InputFieldTextInput>;
-
 /** A choice that merchant can select. */
 export interface InputFieldChoiceInputChoiceInputOption {
   /** Short description of the choice option. There may be more information to be shown as a tooltip. */
@@ -5991,32 +4001,15 @@ export interface InputFieldChoiceInputChoiceInputOption {
   /** Not for display but need to be sent back for the selected choice option. */
   id?: string;
 }
-const InputFieldChoiceInputChoiceInputOption = /*@__PURE__*/ __L.at(
-  __c58,
-  7,
-) as any as S.Schema<InputFieldChoiceInputChoiceInputOption>;
-
 export type InputFieldChoiceInputChoiceInputOptionList =
   Array<InputFieldChoiceInputChoiceInputOption>;
-const InputFieldChoiceInputChoiceInputOptionList = /*@__PURE__*/ __L.at(
-  __c59,
-  0,
-) as any as S.Schema<InputFieldChoiceInputChoiceInputOptionList>;
-
 /** Choice input allows merchants to select one of the offered choices. Some choices may be linked to additional input fields that should be displayed under or next to the choice option. The value for the additional input field needs to be provided only when the specific choice is selected by the merchant. For example, additional input field can be hidden or disabled until the merchant selects the specific choice. */
 export interface InputFieldChoiceInput {
   /** A list of choices. Only one option can be selected. */
   options?: InputFieldChoiceInputChoiceInputOptionList;
 }
-const InputFieldChoiceInput = /*@__PURE__*/ __L.at(
-  __c59,
-  1,
-) as any as S.Schema<InputFieldChoiceInput>;
-
 /** Checkbox input allows merchants to provide a boolean value. Corresponds to the [html input type=checkbox](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.checkbox.html#input.checkbox). If merchant checks the box, the input value for the field is `true`, otherwise it is `false`. This type of input is often used as a confirmation that the merchant completed required steps before they are allowed to start the action. In such a case, the input field is marked as required and the button to trigger the action should stay disabled until the merchant checks the box. */
 export interface InputFieldCheckboxInput {}
-const InputFieldCheckboxInput = DeleteAccountsResponse as any as S.Schema<InputFieldCheckboxInput>;
-
 /** Input field that needs to be available to the merchant. If the field is marked as required, then a value needs to be provided for a successful processing of the request. */
 export interface InputField {
   /** Input field to provide text information. Corresponds to the [html input type=text](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.text.html#input.text) or [html textarea](https://www.w3.org/TR/2012/WD-html-markup-20121025/textarea.html#textarea). */
@@ -6032,11 +4025,7 @@ export interface InputField {
   /** Input field to provide a boolean value. Corresponds to the [html input type=checkbox](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.checkbox.html#input.checkbox). */
   checkboxInput?: InputFieldCheckboxInput;
 }
-const InputField = /*@__PURE__*/ __L.at(__c59, 2) as any as S.Schema<InputField>;
-
 export type InputFieldList = Array<InputField>;
-const InputFieldList = /*@__PURE__*/ __L.at(__c59, 3) as any as S.Schema<InputFieldList>;
-
 /** Flow that can be selected for an action. When merchant selects a flow, application should open a dialog with more information and input form. */
 export interface ActionFlow {
   /** Not for display but need to be sent back for the selected action flow. */
@@ -6054,11 +4043,7 @@ export interface ActionFlow {
   /** Label for the button to trigger the action from the action dialog. For example: "Request review" */
   dialogButtonLabel?: string;
 }
-const ActionFlow = /*@__PURE__*/ __L.at(__c59, 4) as any as S.Schema<ActionFlow>;
-
 export type ActionFlowList = Array<ActionFlow>;
-const ActionFlowList = /*@__PURE__*/ __L.at(__c59, 5) as any as S.Schema<ActionFlowList>;
-
 /** Action that is implemented and performed in (your) third-party application. The application needs to show an additional content and input form to the merchant. They can start the action only when they provided all required inputs. The application will request processing of the action by calling the [triggeraction method](https://developers.google.com/shopping-content/reference/rest/v2.1/merchantsupport/triggeraction). */
 export interface BuiltInUserInputAction {
   /** Actions may provide multiple different flows. Merchant selects one that fits best to their intent. Selecting the flow is the first step in user's interaction with the action. It affects what input fields will be available and required and also how the request will be processed. */
@@ -6066,11 +4051,6 @@ export interface BuiltInUserInputAction {
   /** Internal details. Not for display but need to be sent back when triggering the action. */
   actionContext?: string;
 }
-const BuiltInUserInputAction = /*@__PURE__*/ __L.at(
-  __c59,
-  6,
-) as any as S.Schema<BuiltInUserInputAction>;
-
 /** A single reason why the action is not available. */
 export interface ActionReason {
   /** Messages summarizing the reason, why the action is not available. For example: "Review requested on Jan 03. Review requests can take a few days to complete." */
@@ -6080,19 +4060,13 @@ export interface ActionReason {
   /** Detailed explanation of the reason. Should be displayed as a hint if present. */
   detail?: string;
 }
-const ActionReason = /*@__PURE__*/ __L.at(__c59, 7) as any as S.Schema<ActionReason>;
-
 export type ActionReasonList = Array<ActionReason>;
-const ActionReasonList = /*@__PURE__*/ __L.at(__c60, 0) as any as S.Schema<ActionReasonList>;
-
 export type ExternalActionTypeEnum =
   | "EXTERNAL_ACTION_TYPE_UNSPECIFIED"
   | "REVIEW_PRODUCT_ISSUE_IN_MERCHANT_CENTER"
   | "REVIEW_ACCOUNT_ISSUE_IN_MERCHANT_CENTER"
   | "LEGAL_APPEAL_IN_HELP_CENTER"
   | "VERIFY_IDENTITY_IN_MERCHANT_CENTER";
-const ExternalActionTypeEnum = /*@__PURE__*/ S.String;
-
 /** Action that is implemented and performed outside of the third-party application. It should redirect the merchant to the provided URL of an external system where they can perform the action. For example to request a review in the Merchant Center. */
 export interface ExternalAction {
   /** The type of external action. */
@@ -6100,8 +4074,6 @@ export interface ExternalAction {
   /** URL to external system, for example Merchant Center, where the merchant can perform the action. */
   uri?: string;
 }
-const ExternalAction = /*@__PURE__*/ __L.at(__c60, 1) as any as S.Schema<ExternalAction>;
-
 export type BuiltInSimpleActionTypeEnum =
   | "BUILT_IN_SIMPLE_ACTION_TYPE_UNSPECIFIED"
   | "VERIFY_PHONE"
@@ -6113,8 +4085,6 @@ export type BuiltInSimpleActionTypeEnum =
   | "EDIT_ITEM_ATTRIBUTE"
   | "FIX_ACCOUNT_ISSUE"
   | "SHOW_ADDITIONAL_CONTENT";
-const BuiltInSimpleActionTypeEnum = /*@__PURE__*/ S.String;
-
 /** Long text from external source. */
 export interface BuiltInSimpleActionAdditionalContent {
   /** Long text organized into paragraphs. */
@@ -6122,11 +4092,6 @@ export interface BuiltInSimpleActionAdditionalContent {
   /** Title of the additional content; */
   title?: string;
 }
-const BuiltInSimpleActionAdditionalContent = /*@__PURE__*/ __L.at(
-  __c60,
-  2,
-) as any as S.Schema<BuiltInSimpleActionAdditionalContent>;
-
 /** Action that is implemented and performed in (your) third-party application. Represents various functionality that is expected to be available to merchant and will help them with resolving the issue. The application should point the merchant to the place, where they can access the corresponding functionality. If the functionality is not supported, it is recommended to explain the situation to merchant and provide them with instructions how to solve the issue. */
 export interface BuiltInSimpleAction {
   /** The type of action that represents a functionality that is expected to be available in third-party application. */
@@ -6136,8 +4101,6 @@ export interface BuiltInSimpleAction {
   /** The attribute that needs to be updated. Present when the type is `EDIT_ITEM_ATTRIBUTE`. This field contains a code for attribute, represented in snake_case. You can find a list of product's attributes, with their codes [here](https://support.google.com/merchants/answer/7052112). */
   attributeCode?: string;
 }
-const BuiltInSimpleAction = /*@__PURE__*/ __L.at(__c60, 3) as any as S.Schema<BuiltInSimpleAction>;
-
 /** An actionable step that can be executed to solve the issue. */
 export interface Action {
   /** Label of the action button. */
@@ -6153,11 +4116,7 @@ export interface Action {
   /** Action implemented and performed in (your) third-party application. The application should point the merchant to the place, where they can access the corresponding functionality or provide instructions, if the specific functionality is not available. */
   builtinSimpleAction?: BuiltInSimpleAction;
 }
-const Action = /*@__PURE__*/ __L.at(__c60, 4) as any as S.Schema<Action>;
-
 export type ActionList = Array<Action>;
-const ActionList = /*@__PURE__*/ __L.at(__c60, 5) as any as S.Schema<ActionList>;
-
 /** An issue affecting specific merchant. */
 export interface AccountIssue {
   /** Pre-rendered HTML that contains a link to the external location where the ODS can be requested and instructions for how to request it. HTML elements contain CSS classes that can be used to customize the style of this snippet. Always sanitize the HTML before embedding it directly to your application. The sanitizer needs to allow basic HTML tags, such as: `div`, `span`, `p`, `a`, `ul`, `li`, `table`, `tr`, `td`. For example, you can use [DOMPurify](https://www.npmjs.com/package/dompurify). CSS classes: * `ods-section`* - wrapper around the out-of-court dispute resolution section * `ods-description`* - intro text for the out-of-court dispute resolution. It may contain multiple segments and a link. * `ods-param`* - wrapper around the header-value pair for parameters that merchant may need to provide during the ODS process. * `ods-routing-id`* - ods param for the Routing ID. * `ods-reference-id`* - ods param for the Routing ID. * `ods-param-header`* - header for the ODS parameter * `ods-param-value`* - value of the ODS parameter. This value should be rendered in a way that it is easy for merchants to identify and copy. * `segment` - section of the text, `span` inside paragraph * `segment-attribute` - section of the text that represents a product attribute, for example 'image\_link' * `segment-literal` - section of the text that contains a special value, for example '0-1000 kg' * `segment-bold` - section of the text that should be rendered as bold * `segment-italic` - section of the text that should be rendered as italic * `tooltip` - used on paragraphs that should be rendered with a tooltip. A section of the text in such a paragraph will have a class `tooltip-text` and is intended to be shown in a mouse over dialog. If the style is not used, the `tooltip-text` section would be shown on a new line, after the main part of the text. * `tooltip-text` - marks a section of the text within a `tooltip`, that is intended to be shown in a mouse over dialog. * `tooltip-icon` - marks a section of the text within a `tooltip`, that can be replaced with a tooltip icon, for example '?' or 'i'. By default, this section contains a `br` tag, that is separating the main text and the tooltip text when the style is not used. * `tooltip-style-question` - the tooltip shows helpful information, can use the '?' as an icon. * `tooltip-style-info` - the tooltip adds additional information fitting to the context, can use the 'i' as an icon. */
@@ -6171,11 +4130,7 @@ export interface AccountIssue {
   /** A list of actionable steps that can be executed to solve the issue. An example is requesting a re-review or providing arguments when merchant disagrees with the issue. Actions that are supported in (your) third-party application can be rendered as buttons and should be available to merchant when they expand the issue. */
   actions?: ActionList;
 }
-const AccountIssue = /*@__PURE__*/ __L.at(__c60, 6) as any as S.Schema<AccountIssue>;
-
 export type AccountIssueList = Array<AccountIssue>;
-const AccountIssueList = /*@__PURE__*/ __L.at(__c60, 7) as any as S.Schema<AccountIssueList>;
-
 /** Response containing support content and actions for listed account issues. */
 export interface RenderAccountIssuesResponse {
   /** Alternate Dispute Resolution (ADR) is deprecated. Use `prerendered_out_of_court_dispute_settlement` instead. */
@@ -6183,11 +4138,6 @@ export interface RenderAccountIssuesResponse {
   /** List of account issues for a given account. This list can be shown with compressed, expandable items. In the compressed form, the title and impact should be shown for each issue. Once the issue is expanded, the detailed content and available actions should be rendered. */
   issues?: AccountIssueList;
 }
-const RenderAccountIssuesResponse = /*@__PURE__*/ __L.at(
-  __c61,
-  0,
-) as any as S.Schema<RenderAccountIssuesResponse>;
-
 export type RenderProductIssuesRequestPayloadContentOptionEnum =
   | "CONTENT_OPTION_UNSPECIFIED"
   | "PRE_RENDERED_HTML";
@@ -6204,9 +4154,6 @@ export interface RenderProductIssuesRequestPayload {
     | RenderProductIssuesRequestPayloadUserInputActionOptionEnum
     | (string & {});
 }
-const RenderProductIssuesRequestPayload =
-  RenderAccountIssuesRequestPayload as any as S.Schema<RenderProductIssuesRequestPayload>;
-
 export interface RenderproductissuesMerchantsupportRequest {
   /** Optional. The [IANA](https://www.iana.org/time-zones) timezone used to localize times in support content. For example 'America/Los_Angeles'. If not set, results will use as a default UTC. */
   timeZone?: string;
@@ -6219,14 +4166,7 @@ export interface RenderproductissuesMerchantsupportRequest {
   /** Request body */
   body?: RenderProductIssuesRequestPayload;
 }
-const RenderproductissuesMerchantsupportRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  1,
-) as any as S.Schema<RenderproductissuesMerchantsupportRequest>;
-
 export type ProductIssueImpactSeverityEnum = "SEVERITY_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO";
-const ProductIssueImpactSeverityEnum = /*@__PURE__*/ S.String;
-
 /** Overall impact of product issue. */
 export interface ProductIssueImpact {
   /** The severity of the issue. */
@@ -6236,8 +4176,6 @@ export interface ProductIssueImpact {
   /** Detailed impact breakdown. Explains the types of restriction the issue has in different shopping destinations and territory. If present, it should be rendered to the merchant. Can be shown as a mouse over dropdown or a dialog. Each breakdown item represents a group of regions with the same impact details. */
   breakdowns?: BreakdownList;
 }
-const ProductIssueImpact = /*@__PURE__*/ __L.at(__c61, 2) as any as S.Schema<ProductIssueImpact>;
-
 /** An issue affecting specific product. */
 export interface ProductIssue {
   /** Title of the issue. */
@@ -6251,11 +4189,7 @@ export interface ProductIssue {
   /** Details of the issue as a pre-rendered HTML. HTML elements contain CSS classes that can be used to customize the style of the content. Always sanitize the HTML before embedding it directly to your application. The sanitizer needs to allow basic HTML tags, such as: `div`, `span`, `p`, `a`, `ul`, `li`, `table`, `tr`, `td`. For example, you can use [DOMPurify](https://www.npmjs.com/package/dompurify). CSS classes: * `issue-detail` - top level container for the detail of the issue * `callout-banners` - section of the `issue-detail` with callout banners * `callout-banner` - single callout banner, inside `callout-banners` * `callout-banner-info` - callout with important information (default) * `callout-banner-warning` - callout with a warning * `callout-banner-error` - callout informing about an error (most severe) * `issue-content` - section of the `issue-detail`, contains multiple `content-element` * `content-element` - content element such as a list, link or paragraph, inside `issue-content` * `root-causes` - unordered list with items describing root causes of the issue, inside `issue-content` * `root-causes-intro` - intro text before the `root-causes` list, inside `issue-content` * `segment` - section of the text, `span` inside paragraph * `segment-attribute` - section of the text that represents a product attribute, for example 'image\_link' * `segment-literal` - section of the text that contains a special value, for example '0-1000 kg' * `segment-bold` - section of the text that should be rendered as bold * `segment-italic` - section of the text that should be rendered as italic * `tooltip` - used on paragraphs that should be rendered with a tooltip. A section of the text in such a paragraph will have a class `tooltip-text` and is intended to be shown in a mouse over dialog. If the style is not used, the `tooltip-text` section would be shown on a new line, after the main part of the text. * `tooltip-text` - marks a section of the text within a `tooltip`, that is intended to be shown in a mouse over dialog. * `tooltip-icon` - marks a section of the text within a `tooltip`, that can be replaced with a tooltip icon, for example '?' or 'i'. By default, this section contains a `br` tag, that is separating the main text and the tooltip text when the style is not used. * `tooltip-style-question` - the tooltip shows helpful information, can use the '?' as an icon. * `tooltip-style-info` - the tooltip adds additional information fitting to the context, can use the 'i' as an icon. * `content-moderation` - marks the paragraph that explains how the issue was identified. * `list-intro` - marks the paragraph that contains an intro for a list. This paragraph will be always followed by a list. * `new-element` - Present for new elements added to the pre-rendered content in the future. To make sure that a new content element does not break your style, you can hide everything with this class. */
   prerenderedContent?: string;
 }
-const ProductIssue = /*@__PURE__*/ __L.at(__c61, 3) as any as S.Schema<ProductIssue>;
-
 export type ProductIssueList = Array<ProductIssue>;
-const ProductIssueList = /*@__PURE__*/ __L.at(__c61, 4) as any as S.Schema<ProductIssueList>;
-
 /** Response containing support content and actions for listed product issues. */
 export interface RenderProductIssuesResponse {
   /** List of issues for a given product. This list can be shown with compressed, expandable items. In the compressed form, the title and impact should be shown for each issue. Once the issue is expanded, the detailed content and available actions should be rendered. */
@@ -6263,17 +4197,10 @@ export interface RenderProductIssuesResponse {
   /** Alternate Dispute Resolution (ADR) is deprecated. Use `prerendered_out_of_court_dispute_settlement` instead. */
   alternateDisputeResolution?: AlternateDisputeResolution;
 }
-const RenderProductIssuesResponse = /*@__PURE__*/ __L.at(
-  __c61,
-  5,
-) as any as S.Schema<RenderProductIssuesResponse>;
-
 export type ReportInteractionRequestInteractionTypeEnum =
   | "INTERACTION_TYPE_UNSPECIFIED"
   | "INTERACTION_DISMISS"
   | "INTERACTION_CLICK";
-const ReportInteractionRequestInteractionTypeEnum = /*@__PURE__*/ S.String;
-
 /** Request to report interactions on a recommendation. */
 export interface ReportInteractionRequest {
   /** Required. Type of the interaction that is reported, for example INTERACTION_CLICK. */
@@ -6285,26 +4212,13 @@ export interface ReportInteractionRequest {
   /** Required. Token of the response when recommendation was returned. */
   responseToken?: string;
 }
-const ReportInteractionRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  6,
-) as any as S.Schema<ReportInteractionRequest>;
-
 export interface ReportInteractionRecommendationsRequest {
   /** Required. The ID of the account that wants to report an interaction. */
   merchantId: string;
   /** Request body */
   body?: ReportInteractionRequest;
 }
-const ReportInteractionRecommendationsRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  7,
-) as any as S.Schema<ReportInteractionRecommendationsRequest>;
-
 export interface ReportInteractionRecommendationsResponse {}
-const ReportInteractionRecommendationsResponse =
-  DeleteAccountsReturncarrierResponse as any as S.Schema<ReportInteractionRecommendationsResponse>;
-
 export interface RequestgmbaccessLiasettingsRequest {
   /** The email of the Business Profile. */
   gmbEmail: string;
@@ -6313,18 +4227,10 @@ export interface RequestgmbaccessLiasettingsRequest {
   /** The ID of the account for which Business Profile access is requested. */
   accountId: string;
 }
-const RequestgmbaccessLiasettingsRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  0,
-) as any as S.Schema<RequestgmbaccessLiasettingsRequest>;
-
 export interface LiasettingsRequestGmbAccessResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsRequestGmbAccessResponse`". */
   kind?: string;
 }
-const LiasettingsRequestGmbAccessResponse =
-  AccountsClaimWebsiteResponse as any as S.Schema<LiasettingsRequestGmbAccessResponse>;
-
 export interface RequestinventoryverificationLiasettingsRequest {
   /** The country for which inventory validation is requested. */
   country: string;
@@ -6333,24 +4239,14 @@ export interface RequestinventoryverificationLiasettingsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
   merchantId: string;
 }
-const RequestinventoryverificationLiasettingsRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  1,
-) as any as S.Schema<RequestinventoryverificationLiasettingsRequest>;
-
 export interface LiasettingsRequestInventoryVerificationResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsRequestInventoryVerificationResponse`". */
   kind?: string;
 }
-const LiasettingsRequestInventoryVerificationResponse =
-  AccountsClaimWebsiteResponse as any as S.Schema<LiasettingsRequestInventoryVerificationResponse>;
-
 export type RequestPhoneVerificationRequestPhoneVerificationMethodEnum =
   | "PHONE_VERIFICATION_METHOD_UNSPECIFIED"
   | "SMS"
   | "PHONE_CALL";
-const RequestPhoneVerificationRequestPhoneVerificationMethodEnum = /*@__PURE__*/ S.String;
-
 /** Request message for the RequestPhoneVerification method. */
 export interface RequestPhoneVerificationRequest {
   /** Verification method to receive verification code. */
@@ -6364,11 +4260,6 @@ export interface RequestPhoneVerificationRequest {
   /** Phone number to be verified. */
   phoneNumber?: string;
 }
-const RequestPhoneVerificationRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  2,
-) as any as S.Schema<RequestPhoneVerificationRequest>;
-
 export interface RequestphoneverificationAccountsRequest {
   /** Required. The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account. */
   merchantId: string;
@@ -6377,46 +4268,23 @@ export interface RequestphoneverificationAccountsRequest {
   /** Request body */
   body?: RequestPhoneVerificationRequest;
 }
-const RequestphoneverificationAccountsRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  3,
-) as any as S.Schema<RequestphoneverificationAccountsRequest>;
-
 /** Response message for the RequestPhoneVerification method. */
 export interface RequestPhoneVerificationResponse {
   /** The verification ID to use in subsequent calls to `verifyphonenumber`. */
   verificationId?: string;
 }
-const RequestPhoneVerificationResponse = /*@__PURE__*/ __L.at(
-  __c62,
-  4,
-) as any as S.Schema<RequestPhoneVerificationResponse>;
-
 /** Request message for the RequestReviewFreeListings Program method. */
 export interface RequestReviewFreeListingsRequest {
   /** The code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country for which review is to be requested. */
   regionCode?: string;
 }
-const RequestReviewFreeListingsRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  5,
-) as any as S.Schema<RequestReviewFreeListingsRequest>;
-
 export interface RequestreviewFreelistingsprogramRequest {
   /** Required. The ID of the account. */
   merchantId: string;
   /** Request body */
   body?: RequestReviewFreeListingsRequest;
 }
-const RequestreviewFreelistingsprogramRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  6,
-) as any as S.Schema<RequestreviewFreelistingsprogramRequest>;
-
 export interface RequestreviewFreelistingsprogramResponse {}
-const RequestreviewFreelistingsprogramResponse =
-  DeleteAccountsReturncarrierResponse as any as S.Schema<RequestreviewFreelistingsprogramResponse>;
-
 /** Request message for the RequestReviewShoppingAds program method. */
 export type RequestReviewShoppingAdsRequest = RequestReviewFreeListingsRequest;
 export interface RequestreviewShoppingadsprogramRequest {
@@ -6425,15 +4293,7 @@ export interface RequestreviewShoppingadsprogramRequest {
   /** Request body */
   body?: RequestReviewFreeListingsRequest;
 }
-const RequestreviewShoppingadsprogramRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  7,
-) as any as S.Schema<RequestreviewShoppingadsprogramRequest>;
-
 export interface RequestreviewShoppingadsprogramResponse {}
-const RequestreviewShoppingadsprogramResponse =
-  DeleteAccountsReturncarrierResponse as any as S.Schema<RequestreviewShoppingadsprogramResponse>;
-
 export interface PosSaleRequest {
   /** Global Trade Item Number. */
   gtin?: string;
@@ -6454,8 +4314,6 @@ export interface PosSaleRequest {
   /** Required. The two-letter ISO 639-1 language code for the item. */
   contentLanguage?: string;
 }
-const PosSaleRequest = /*@__PURE__*/ __L.at(__c63, 0) as any as S.Schema<PosSaleRequest>;
-
 export interface SalePosRequest {
   /** The ID of the target merchant. */
   targetMerchantId: string;
@@ -6464,8 +4322,6 @@ export interface SalePosRequest {
   /** Request body */
   body?: PosSaleRequest;
 }
-const SalePosRequest = /*@__PURE__*/ __L.at(__c63, 1) as any as S.Schema<SalePosRequest>;
-
 export interface PosSaleResponse {
   /** Required. A unique identifier for the item. */
   itemId?: string;
@@ -6488,8 +4344,6 @@ export interface PosSaleResponse {
   /** A unique ID to group items from the same sale event. */
   saleId?: string;
 }
-const PosSaleResponse = /*@__PURE__*/ __L.at(__c63, 2) as any as S.Schema<PosSaleResponse>;
-
 /** Request message for the ReportService.Search method. */
 export interface SearchRequest {
   /** Required. Query that defines performance metrics to retrieve and dimensions according to which the metrics are to be segmented. For details on how to construct your query, see the [Query Language guide](https://developers.google.com/shopping-content/guides/reports/query-language/overview). */
@@ -6499,19 +4353,12 @@ export interface SearchRequest {
   /** Number of ReportRows to retrieve in a single page. Defaults to 1000. Values above 5000 are coerced to 5000. */
   pageSize?: number;
 }
-const SearchRequest = /*@__PURE__*/ __L.at(__c63, 3) as any as S.Schema<SearchRequest>;
-
 export interface SearchReportsRequest {
   /** Required. Id of the merchant making the call. Must be a standalone account or an MCA subaccount. */
   merchantId: string;
   /** Request body */
   body?: SearchRequest;
 }
-const SearchReportsRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  4,
-) as any as S.Schema<SearchReportsRequest>;
-
 /** Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp */
 export interface Content_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -6521,8 +4368,6 @@ export interface Content_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
   day?: number;
 }
-const Content_Date = /*@__PURE__*/ __L.at(__c63, 5) as any as S.Schema<Content_Date>;
-
 /** Topic trends fields requested by the merchant in the query. Field values are only set if the merchant queries `TopicTrendsView`. Forecast data can be queried up to 13 weeks by passing a future date in the `date` field. Historical data is measured daily, and forecasted data is projected weekly. All data points are normalized based on the highest data points returned in the response. If you make separate queries with different date ranges, you might see different values for the same date in each response. The recommended way to get a trend score of a topic is `last7_days_search_interest / last{$day}_days_search_interest - 1`. You can view trends for up to eight topics at a time. */
 export interface TopicTrends {
   /** Date the trend score was retrieved. */
@@ -6544,22 +4389,16 @@ export interface TopicTrends {
   /** Search interest in the last 120 days, with the same normalization as search_interest. This field is only present for a past date. */
   last120DaysSearchInterest?: number;
 }
-const TopicTrends = /*@__PURE__*/ __L.at(__c63, 6) as any as S.Schema<TopicTrends>;
-
 export type ProductClusterBrandInventoryStatusEnum =
   | "INVENTORY_STATUS_UNSPECIFIED"
   | "IN_STOCK"
   | "OUT_OF_STOCK"
   | "NOT_IN_INVENTORY";
-const ProductClusterBrandInventoryStatusEnum = /*@__PURE__*/ S.String;
-
 export type ProductClusterInventoryStatusEnum =
   | "INVENTORY_STATUS_UNSPECIFIED"
   | "IN_STOCK"
   | "OUT_OF_STOCK"
   | "NOT_IN_INVENTORY";
-const ProductClusterInventoryStatusEnum = /*@__PURE__*/ S.String;
-
 /** Product cluster fields. A product cluster is a grouping for different offers that represent the same product. Values are only set for fields requested explicitly in the request's search query. */
 export interface ProductCluster {
   /** Title of the product cluster. */
@@ -6583,8 +4422,6 @@ export interface ProductCluster {
   /** GTINs of example variants of the product cluster. */
   variantGtins?: StringList;
 }
-const ProductCluster = /*@__PURE__*/ __L.at(__c63, 7) as any as S.Schema<ProductCluster>;
-
 export type BestSellersRelativeDemandEnum =
   | "RELATIVE_DEMAND_UNSPECIFIED"
   | "VERY_LOW"
@@ -6592,8 +4429,6 @@ export type BestSellersRelativeDemandEnum =
   | "MEDIUM"
   | "HIGH"
   | "VERY_HIGH";
-const BestSellersRelativeDemandEnum = /*@__PURE__*/ S.String;
-
 export type BestSellersPreviousRelativeDemandEnum =
   | "RELATIVE_DEMAND_UNSPECIFIED"
   | "VERY_LOW"
@@ -6601,21 +4436,15 @@ export type BestSellersPreviousRelativeDemandEnum =
   | "MEDIUM"
   | "HIGH"
   | "VERY_HIGH";
-const BestSellersPreviousRelativeDemandEnum = /*@__PURE__*/ S.String;
-
 export type BestSellersReportGranularityEnum =
   | "REPORT_GRANULARITY_UNSPECIFIED"
   | "WEEKLY"
   | "MONTHLY";
-const BestSellersReportGranularityEnum = /*@__PURE__*/ S.String;
-
 export type BestSellersRelativeDemandChangeEnum =
   | "RELATIVE_DEMAND_CHANGE_TYPE_UNSPECIFIED"
   | "SINKER"
   | "FLAT"
   | "RISER";
-const BestSellersRelativeDemandChangeEnum = /*@__PURE__*/ S.String;
-
 /** Fields related to the [Best sellers reports](https://support.google.com/merchants/answer/9488679). */
 export interface BestSellers {
   /** Estimated demand in relation to the item with the highest popularity rank in the same category and country. */
@@ -6637,11 +4466,7 @@ export interface BestSellers {
   /** Change in the estimated demand. Whether it rose, sank or remained flat. */
   relativeDemandChange?: BestSellersRelativeDemandChangeEnum;
 }
-const BestSellers = /*@__PURE__*/ __L.at(__c64, 0) as any as S.Schema<BestSellers>;
-
 export type CompetitiveVisibilityTrafficSourceEnum = "UNKNOWN" | "ORGANIC" | "ADS" | "ALL";
-const CompetitiveVisibilityTrafficSourceEnum = /*@__PURE__*/ S.String;
-
 /** Fields related to [competitive visibility reports] (https://support.google.com/merchants/answer/11366442). */
 export interface CompetitiveVisibility {
   /** Higher position rate shows how often a competitor's offer got placed in a higher position on the page than your offer. Available only in `CompetitiveVisibilityTopMerchantView` and `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the 'WHERE' clause. */
@@ -6671,11 +4496,6 @@ export interface CompetitiveVisibility {
   /** The country where impression appeared. Required in the `SELECT` clause. A `WHERE` condition on `competitive_visibility.country_code` is required in the query. */
   countryCode?: string;
 }
-const CompetitiveVisibility = /*@__PURE__*/ __L.at(
-  __c64,
-  1,
-) as any as S.Schema<CompetitiveVisibility>;
-
 /** Price competitiveness fields requested by the merchant in the query. Field values are only set if the merchant queries `PriceCompetitivenessProductView`. https://support.google.com/merchants/answer/9626903 */
 export interface PriceCompetitiveness {
   /** The latest available price benchmark in micros (1 millionth of a standard unit, 1 USD = 1000000 micros) for the product's catalog in the benchmark country. */
@@ -6685,11 +4505,6 @@ export interface PriceCompetitiveness {
   /** The country of the price benchmark (ISO 3166 code). */
   countryCode?: string;
 }
-const PriceCompetitiveness = /*@__PURE__*/ __L.at(
-  __c64,
-  2,
-) as any as S.Schema<PriceCompetitiveness>;
-
 /** Performance metrics. Values are only set for metrics requested explicitly in the request's search query. */
 export interface Metrics {
   /** Number of conversions divided by the number of clicks, reported on the impression date. The metric is currently available only for the `FREE_PRODUCT_LISTING` program. */
@@ -6739,15 +4554,11 @@ export interface Metrics {
   /** *Deprecated*: This field is no longer supported and retrieving it returns 0 starting from May 2024. Average order size - the average number of items in an order. **This metric cannot be segmented by product dimensions and customer_country_code.** */
   aos?: number;
 }
-const Metrics = /*@__PURE__*/ __L.at(__c64, 3) as any as S.Schema<Metrics>;
-
 export type PriceInsightsEffectivenessEnum =
   | "EFFECTIVENESS_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
   | "HIGH";
-const PriceInsightsEffectivenessEnum = /*@__PURE__*/ S.String;
-
 /** Price insights fields requested by the merchant in the query. Field values are only set if the merchant queries `PriceInsightsProductView`. https://support.google.com/merchants/answer/11916926 */
 export interface PriceInsights {
   /** The predicted effectiveness of applying the price suggestion, bucketed. */
@@ -6769,18 +4580,12 @@ export interface PriceInsights {
   /** The predicted change in conversions as a fraction after introducing the suggested price compared to current active price. For example, 0.05 is a 5% predicted increase in conversions). */
   predictedConversionsChangeFraction?: number;
 }
-const PriceInsights = /*@__PURE__*/ __L.at(__c64, 4) as any as S.Schema<PriceInsights>;
-
 /** Brand fields. Values are only set for fields requested explicitly in the request's search query. */
 export interface Brand {
   /** Name of the brand. */
   name?: string;
 }
-const Brand = /*@__PURE__*/ __L.at(__c64, 5) as any as S.Schema<Brand>;
-
 export type ProductViewChannelEnum = "CHANNEL_UNSPECIFIED" | "LOCAL" | "ONLINE";
-const ProductViewChannelEnum = /*@__PURE__*/ S.String;
-
 /** Type of the item issue. */
 export interface ProductViewItemIssueItemIssueType {
   /** Canonical attribute name for attribute-specific issues. */
@@ -6788,11 +4593,6 @@ export interface ProductViewItemIssueItemIssueType {
   /** Error code of the issue. */
   code?: string;
 }
-const ProductViewItemIssueItemIssueType = /*@__PURE__*/ __L.at(
-  __c64,
-  6,
-) as any as S.Schema<ProductViewItemIssueItemIssueType>;
-
 /** Issue severity for all affected regions in a destination. */
 export interface ProductViewItemIssueIssueSeverityPerDestination {
   /** List of disapproved countries in the destination. */
@@ -6802,25 +4602,13 @@ export interface ProductViewItemIssueIssueSeverityPerDestination {
   /** List of demoted countries in the destination. */
   demotedCountries?: StringList;
 }
-const ProductViewItemIssueIssueSeverityPerDestination = /*@__PURE__*/ __L.at(
-  __c64,
-  7,
-) as any as S.Schema<ProductViewItemIssueIssueSeverityPerDestination>;
-
 export type ProductViewItemIssueIssueSeverityPerDestinationList =
   Array<ProductViewItemIssueIssueSeverityPerDestination>;
-const ProductViewItemIssueIssueSeverityPerDestinationList = /*@__PURE__*/ __L.at(
-  __c65,
-  0,
-) as any as S.Schema<ProductViewItemIssueIssueSeverityPerDestinationList>;
-
 export type ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum =
   | "AGGREGATED_ISSUE_SEVERITY_UNSPECIFIED"
   | "DISAPPROVED"
   | "DEMOTED"
   | "PENDING";
-const ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum = /*@__PURE__*/ S.String;
-
 /** Severity of an issue per destination in a region, and aggregated severity. */
 export interface ProductViewItemIssueItemIssueSeverity {
   /** Item issue severity for every destination. */
@@ -6828,17 +4616,10 @@ export interface ProductViewItemIssueItemIssueSeverity {
   /** Severity of an issue aggregated for destination. */
   aggregatedSeverity?: ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum;
 }
-const ProductViewItemIssueItemIssueSeverity = /*@__PURE__*/ __L.at(
-  __c65,
-  1,
-) as any as S.Schema<ProductViewItemIssueItemIssueSeverity>;
-
 export type ProductViewItemIssueResolutionEnum =
   | "UNKNOWN"
   | "MERCHANT_ACTION"
   | "PENDING_PROCESSING";
-const ProductViewItemIssueResolutionEnum = /*@__PURE__*/ S.String;
-
 /** Item issue associated with the product. */
 export interface ProductViewItemIssue {
   /** Item issue type. */
@@ -6848,32 +4629,18 @@ export interface ProductViewItemIssue {
   /** Item issue resolution. */
   resolution?: ProductViewItemIssueResolutionEnum;
 }
-const ProductViewItemIssue = /*@__PURE__*/ __L.at(
-  __c65,
-  2,
-) as any as S.Schema<ProductViewItemIssue>;
-
 export type ProductViewItemIssueList = Array<ProductViewItemIssue>;
-const ProductViewItemIssueList = /*@__PURE__*/ __L.at(
-  __c65,
-  3,
-) as any as S.Schema<ProductViewItemIssueList>;
-
 export type ProductViewClickPotentialEnum =
   | "CLICK_POTENTIAL_UNSPECIFIED"
   | "LOW"
   | "MEDIUM"
   | "HIGH";
-const ProductViewClickPotentialEnum = /*@__PURE__*/ S.String;
-
 export type ProductViewAggregatedDestinationStatusEnum =
   | "AGGREGATED_STATUS_UNSPECIFIED"
   | "NOT_ELIGIBLE_OR_DISAPPROVED"
   | "PENDING"
   | "ELIGIBLE_LIMITED"
   | "ELIGIBLE";
-const ProductViewAggregatedDestinationStatusEnum = /*@__PURE__*/ S.String;
-
 /** Product fields. Values are only set for fields requested explicitly in the request's search query. */
 export interface ProductView {
   /** Fifth level of the product type in merchant's own [product taxonomy](https://support.google.com/merchants/answer/6324436). */
@@ -6935,16 +4702,12 @@ export interface ProductView {
   /** Aggregated destination status. */
   aggregatedDestinationStatus?: ProductViewAggregatedDestinationStatusEnum;
 }
-const ProductView = /*@__PURE__*/ __L.at(__c65, 4) as any as S.Schema<ProductView>;
-
 export type SegmentsProgramEnum =
   | "PROGRAM_UNSPECIFIED"
   | "SHOPPING_ADS"
   | "FREE_PRODUCT_LISTING"
   | "FREE_LOCAL_PRODUCT_LISTING"
   | "BUY_ON_GOOGLE_LISTING";
-const SegmentsProgramEnum = /*@__PURE__*/ S.String;
-
 /** Dimensions according to which metrics are segmented in the response. Values of product dimensions, such as `offer_id`, reflect the state of a product at the time of the corresponding event, for example, impression or order. Segment fields cannot be selected in queries without also selecting at least one metric field. Values are only set for dimensions requested explicitly in the request's search query. */
 export interface Segments {
   /** [Product category (2nd level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type) in Google's product taxonomy. */
@@ -6994,8 +4757,6 @@ export interface Segments {
   /** [Product category (5th level)](https://developers.google.com/shopping-content/guides/reports/segmentation#category_and_product_type) in Google's product taxonomy. */
   categoryL5?: string;
 }
-const Segments = /*@__PURE__*/ __L.at(__c65, 5) as any as S.Schema<Segments>;
-
 /** Result row returned from the search query. */
 export interface ReportRow {
   /** [Topic trends](https://support.google.com/merchants/answer/13542370) fields requested by the merchant in the query. Field values are only set if the merchant queries `TopicTrendsView`. */
@@ -7019,11 +4780,7 @@ export interface ReportRow {
   /** Segmentation dimensions requested by the merchant in the query. Dimension values are only set for dimensions requested explicitly in the query. */
   segments?: Segments;
 }
-const ReportRow = /*@__PURE__*/ __L.at(__c65, 6) as any as S.Schema<ReportRow>;
-
 export type ReportRowList = Array<ReportRow>;
-const ReportRowList = /*@__PURE__*/ __L.at(__c65, 7) as any as S.Schema<ReportRowList>;
-
 /** Response message for the ReportService.Search method. */
 export interface SearchResponse {
   /** Token which can be sent as `page_token` to retrieve the next page. If omitted, there are no subsequent pages. */
@@ -7031,8 +4788,6 @@ export interface SearchResponse {
   /** Rows that matched the search query. */
   results?: ReportRowList;
 }
-const SearchResponse = /*@__PURE__*/ __L.at(__c66, 0) as any as S.Schema<SearchResponse>;
-
 export interface SetinventoryverificationcontactLiasettingsRequest {
   /** The name of the inventory verification contact. */
   contactName: string;
@@ -7047,18 +4802,10 @@ export interface SetinventoryverificationcontactLiasettingsRequest {
   /** The country for which inventory verification is requested. */
   country: string;
 }
-const SetinventoryverificationcontactLiasettingsRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  1,
-) as any as S.Schema<SetinventoryverificationcontactLiasettingsRequest>;
-
 export interface LiasettingsSetInventoryVerificationContactResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsSetInventoryVerificationContactResponse`". */
   kind?: string;
 }
-const LiasettingsSetInventoryVerificationContactResponse =
-  AccountsClaimWebsiteResponse as any as S.Schema<LiasettingsSetInventoryVerificationContactResponse>;
-
 export interface SetomnichannelexperienceLiasettingsRequest {
   /** The ID of the account for which to retrieve accessible Business Profiles. */
   accountId: string;
@@ -7071,11 +4818,6 @@ export interface SetomnichannelexperienceLiasettingsRequest {
   /** The Pickup types for this country. Acceptable values are: - "`pickupToday`" - "`pickupLater`" */
   pickupTypes?: StringList;
 }
-const SetomnichannelexperienceLiasettingsRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  2,
-) as any as S.Schema<SetomnichannelexperienceLiasettingsRequest>;
-
 export interface SetposdataproviderLiasettingsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
   merchantId: string;
@@ -7088,48 +4830,25 @@ export interface SetposdataproviderLiasettingsRequest {
   /** The country for which the POS data provider is selected. */
   country: string;
 }
-const SetposdataproviderLiasettingsRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  3,
-) as any as S.Schema<SetposdataproviderLiasettingsRequest>;
-
 export interface LiasettingsSetPosDataProviderResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsSetPosDataProviderResponse`". */
   kind?: string;
 }
-const LiasettingsSetPosDataProviderResponse =
-  AccountsClaimWebsiteResponse as any as S.Schema<LiasettingsSetPosDataProviderResponse>;
-
 /** Value for choice input field. */
 export interface InputValueChoiceInputValue {
   /** Required. Id of the option that was selected by the merchant. */
   choiceInputOptionId?: string;
 }
-const InputValueChoiceInputValue = /*@__PURE__*/ __L.at(
-  __c66,
-  4,
-) as any as S.Schema<InputValueChoiceInputValue>;
-
 /** Value for text input field. */
 export interface InputValueTextInputValue {
   /** Required. Text provided by the merchant. */
   value?: string;
 }
-const InputValueTextInputValue = /*@__PURE__*/ __L.at(
-  __c66,
-  5,
-) as any as S.Schema<InputValueTextInputValue>;
-
 /** Value for checkbox input field. */
 export interface InputValueCheckboxInputValue {
   /** Required. True if the merchant checked the box field. False otherwise. */
   value?: boolean;
 }
-const InputValueCheckboxInputValue = /*@__PURE__*/ __L.at(
-  __c66,
-  6,
-) as any as S.Schema<InputValueCheckboxInputValue>;
-
 /** Input provided by the merchant for input field. */
 export interface InputValue {
   /** Value for choice input field. */
@@ -7141,11 +4860,7 @@ export interface InputValue {
   /** Value for checkbox input field. */
   checkboxInputValue?: InputValueCheckboxInputValue;
 }
-const InputValue = /*@__PURE__*/ __L.at(__c66, 7) as any as S.Schema<InputValue>;
-
 export type InputValueList = Array<InputValue>;
-const InputValueList = /*@__PURE__*/ __L.at(__c67, 0) as any as S.Schema<InputValueList>;
-
 /** Input provided by the merchant. */
 export interface ActionInput {
   /** Required. Id of the selected action flow. */
@@ -7153,8 +4868,6 @@ export interface ActionInput {
   /** Required. Values for input fields. */
   inputValues?: InputValueList;
 }
-const ActionInput = /*@__PURE__*/ __L.at(__c67, 1) as any as S.Schema<ActionInput>;
-
 /** The payload for the triggered action. */
 export interface TriggerActionPayload {
   /** Required. Input provided by the merchant. */
@@ -7162,11 +4875,6 @@ export interface TriggerActionPayload {
   /** Required. The context from the selected action. The value is obtained from rendered issues and needs to be sent back to identify the action that is being triggered. */
   actionContext?: string;
 }
-const TriggerActionPayload = /*@__PURE__*/ __L.at(
-  __c67,
-  2,
-) as any as S.Schema<TriggerActionPayload>;
-
 export interface TriggeractionMerchantsupportRequest {
   /** Required. The ID of the merchant's account. */
   merchantId: string;
@@ -7175,21 +4883,11 @@ export interface TriggeractionMerchantsupportRequest {
   /** Request body */
   body?: TriggerActionPayload;
 }
-const TriggeractionMerchantsupportRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  3,
-) as any as S.Schema<TriggeractionMerchantsupportRequest>;
-
 /** Response informing about the started action. */
 export interface TriggerActionResponse {
   /** The message for merchant. */
   message?: string;
 }
-const TriggerActionResponse = /*@__PURE__*/ __L.at(
-  __c67,
-  4,
-) as any as S.Schema<TriggerActionResponse>;
-
 /** Request message for the UndeleteConversionSource method. */
 export type UndeleteConversionSourceRequest = InputFieldCheckboxInput;
 export interface UndeleteConversionsourcesRequest {
@@ -7200,15 +4898,7 @@ export interface UndeleteConversionsourcesRequest {
   /** Request body */
   body?: InputFieldCheckboxInput;
 }
-const UndeleteConversionsourcesRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  5,
-) as any as S.Schema<UndeleteConversionsourcesRequest>;
-
 export interface UndeleteConversionsourcesResponse {}
-const UndeleteConversionsourcesResponse =
-  DeleteAccountsReturncarrierResponse as any as S.Schema<UndeleteConversionsourcesResponse>;
-
 export interface UpdateAccountsRequest {
   /** The ID of the account. */
   accountId: string;
@@ -7217,11 +4907,6 @@ export interface UpdateAccountsRequest {
   /** Request body */
   body?: Account;
 }
-const UpdateAccountsRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  6,
-) as any as S.Schema<UpdateAccountsRequest>;
-
 export interface UpdateAccounttaxRequest {
   /** The ID of the account for which to get/update account tax settings. */
   accountId: string;
@@ -7230,11 +4915,6 @@ export interface UpdateAccounttaxRequest {
   /** Request body */
   body?: AccountTax;
 }
-const UpdateAccounttaxRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  7,
-) as any as S.Schema<UpdateAccounttaxRequest>;
-
 export interface UpdateDatafeedsRequest {
   /** The ID of the account that manages the datafeed. This account cannot be a multi-client account. */
   merchantId: string;
@@ -7243,20 +4923,10 @@ export interface UpdateDatafeedsRequest {
   /** Request body */
   body?: Datafeed;
 }
-const UpdateDatafeedsRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  0,
-) as any as S.Schema<UpdateDatafeedsRequest>;
-
 export interface AccountsUpdateLabelsRequest {
   /** The IDs of labels that should be assigned to the account. */
   labelIds?: StringList;
 }
-const AccountsUpdateLabelsRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  1,
-) as any as S.Schema<AccountsUpdateLabelsRequest>;
-
 export interface UpdatelabelsAccountsRequest {
   /** The ID of the managing account. */
   merchantId: string;
@@ -7265,25 +4935,15 @@ export interface UpdatelabelsAccountsRequest {
   /** Request body */
   body?: AccountsUpdateLabelsRequest;
 }
-const UpdatelabelsAccountsRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  2,
-) as any as S.Schema<UpdatelabelsAccountsRequest>;
-
 export interface AccountsUpdateLabelsResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsUpdateLabelsResponse`". */
   kind?: string;
 }
-const AccountsUpdateLabelsResponse =
-  AccountsClaimWebsiteResponse as any as S.Schema<AccountsUpdateLabelsResponse>;
-
 /** The IDs of labels that should be assigned to the CSS domain. */
 export interface LabelIds {
   /** The list of label IDs. */
   labelIds?: StringList;
 }
-const LabelIds = /*@__PURE__*/ __L.at(__c68, 3) as any as S.Schema<LabelIds>;
-
 export interface UpdatelabelsCssesRequest {
   /** Required. The CSS group ID of the updated CSS domain. */
   cssGroupId: string;
@@ -7292,11 +4952,6 @@ export interface UpdatelabelsCssesRequest {
   /** Request body */
   body?: LabelIds;
 }
-const UpdatelabelsCssesRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  4,
-) as any as S.Schema<UpdatelabelsCssesRequest>;
-
 export interface UpdateLiasettingsRequest {
   /** The ID of the account for which to get or update LIA settings. */
   accountId: string;
@@ -7305,11 +4960,6 @@ export interface UpdateLiasettingsRequest {
   /** Request body */
   body?: LiaSettings;
 }
-const UpdateLiasettingsRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  5,
-) as any as S.Schema<UpdateLiasettingsRequest>;
-
 export interface UpdateProductsRequest {
   /** The REST ID of the product for which to update. */
   productId: string;
@@ -7320,22 +4970,12 @@ export interface UpdateProductsRequest {
   /** Request body */
   body?: Product;
 }
-const UpdateProductsRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  6,
-) as any as S.Schema<UpdateProductsRequest>;
-
 export interface UpdatePubsubnotificationsettingsRequest {
   /** The ID of the account. */
   merchantId: string;
   /** Request body */
   body?: PubsubNotificationSettings;
 }
-const UpdatePubsubnotificationsettingsRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  7,
-) as any as S.Schema<UpdatePubsubnotificationsettingsRequest>;
-
 export interface UpdateShippingsettingsRequest {
   /** The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. */
   merchantId: string;
@@ -7344,17 +4984,10 @@ export interface UpdateShippingsettingsRequest {
   /** Request body */
   body?: ShippingSettings;
 }
-const UpdateShippingsettingsRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  0,
-) as any as S.Schema<UpdateShippingsettingsRequest>;
-
 export type VerifyPhoneNumberRequestPhoneVerificationMethodEnum =
   | "PHONE_VERIFICATION_METHOD_UNSPECIFIED"
   | "SMS"
   | "PHONE_CALL";
-const VerifyPhoneNumberRequestPhoneVerificationMethodEnum = /*@__PURE__*/ S.String;
-
 /** Request message for the VerifyPhoneNumber method. */
 export interface VerifyPhoneNumberRequest {
   /** The verification code that was sent to the phone number for validation. */
@@ -7364,11 +4997,6 @@ export interface VerifyPhoneNumberRequest {
   /** The verification ID returned by `requestphoneverification`. */
   verificationId?: string;
 }
-const VerifyPhoneNumberRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  1,
-) as any as S.Schema<VerifyPhoneNumberRequest>;
-
 export interface VerifyphonenumberAccountsRequest {
   /** Required. The ID of the account. */
   accountId: string;
@@ -7377,21 +5005,11 @@ export interface VerifyphonenumberAccountsRequest {
   /** Request body */
   body?: VerifyPhoneNumberRequest;
 }
-const VerifyphonenumberAccountsRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  2,
-) as any as S.Schema<VerifyphonenumberAccountsRequest>;
-
 /** Response message for the VerifyPhoneNumber method. */
 export interface VerifyPhoneNumberResponse {
   /** Verified phone number if verification is successful. This phone number can only be replaced by another verified phone number. */
   verifiedPhoneNumber?: string;
 }
-const VerifyPhoneNumberResponse = /*@__PURE__*/ __L.at(
-  __c69,
-  3,
-) as any as S.Schema<VerifyPhoneNumberResponse>;
-
 export type AuthinfoAccountsError = NotFound | Forbidden | GcpOpError;
 /** Returns information about the authenticated user. */
 export const authinfoAccounts: API.OperationMethod<
@@ -7400,8 +5018,8 @@ export const authinfoAccounts: API.OperationMethod<
   AuthinfoAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AuthinfoAccountsRequest,
-  output: AccountsAuthInfoResponse,
+  input: __S(0) as any as S.Schema<AuthinfoAccountsRequest>,
+  output: __S(3) as any as S.Schema<AccountsAuthInfoResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7415,8 +5033,8 @@ export const claimwebsiteAccounts: API.OperationMethod<
   ClaimwebsiteAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClaimwebsiteAccountsRequest,
-  output: AccountsClaimWebsiteResponse,
+  input: __S(4) as any as S.Schema<ClaimwebsiteAccountsRequest>,
+  output: __S(5) as any as S.Schema<AccountsClaimWebsiteResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7435,8 +5053,8 @@ export const createAccountsCredentials: API.OperationMethod<
   CreateAccountsCredentialsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsCredentialsRequest,
-  output: AccountCredentials,
+  input: __S(7) as any as S.Schema<CreateAccountsCredentialsRequest>,
+  output: __S(6) as any as S.Schema<AccountCredentials>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7450,8 +5068,8 @@ export const createAccountsLabels: API.OperationMethod<
   CreateAccountsLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsLabelsRequest,
-  output: AccountLabel,
+  input: __S(9) as any as S.Schema<CreateAccountsLabelsRequest>,
+  output: __S(8) as any as S.Schema<AccountLabel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7470,8 +5088,8 @@ export const createAccountsReturncarrier: API.OperationMethod<
   CreateAccountsReturncarrierError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountsReturncarrierRequest,
-  output: AccountReturnCarrier,
+  input: __S(11) as any as S.Schema<CreateAccountsReturncarrierRequest>,
+  output: __S(10) as any as S.Schema<AccountReturnCarrier>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7485,8 +5103,8 @@ export const createCollections: API.OperationMethod<
   CreateCollectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCollectionsRequest,
-  output: Collection,
+  input: __S(16) as any as S.Schema<CreateCollectionsRequest>,
+  output: __S(15) as any as S.Schema<Collection>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7505,8 +5123,8 @@ export const createConversionsources: API.OperationMethod<
   CreateConversionsourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConversionsourcesRequest,
-  output: ConversionSource,
+  input: __S(23) as any as S.Schema<CreateConversionsourcesRequest>,
+  output: __S(22) as any as S.Schema<ConversionSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7525,8 +5143,8 @@ export const createOrdertrackingsignals: API.OperationMethod<
   CreateOrdertrackingsignalsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOrdertrackingsignalsRequest,
-  output: OrderTrackingSignal,
+  input: __S(34) as any as S.Schema<CreateOrdertrackingsignalsRequest>,
+  output: __S(33) as any as S.Schema<OrderTrackingSignal>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7545,8 +5163,8 @@ export const createProductdeliverytime: API.OperationMethod<
   CreateProductdeliverytimeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProductdeliverytimeRequest,
-  output: ProductDeliveryTime,
+  input: __S(42) as any as S.Schema<CreateProductdeliverytimeRequest>,
+  output: __S(41) as any as S.Schema<ProductDeliveryTime>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7560,8 +5178,8 @@ export const createPromotions: API.OperationMethod<
   CreatePromotionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePromotionsRequest,
-  output: Promotion,
+  input: __S(51) as any as S.Schema<CreatePromotionsRequest>,
+  output: __S(50) as any as S.Schema<Promotion>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7575,8 +5193,8 @@ export const createRegions: API.OperationMethod<
   CreateRegionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRegionsRequest,
-  output: Region,
+  input: __S(57) as any as S.Schema<CreateRegionsRequest>,
+  output: __S(56) as any as S.Schema<Region>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7595,8 +5213,8 @@ export const createReturnpolicyonline: API.OperationMethod<
   CreateReturnpolicyonlineError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateReturnpolicyonlineRequest,
-  output: ReturnPolicyOnline,
+  input: __S(64) as any as S.Schema<CreateReturnpolicyonlineRequest>,
+  output: __S(63) as any as S.Schema<ReturnPolicyOnline>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7610,8 +5228,8 @@ export const custombatchAccounts: API.OperationMethod<
   CustombatchAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustombatchAccountsRequest,
-  output: AccountsCustomBatchResponse,
+  input: __S(89) as any as S.Schema<CustombatchAccountsRequest>,
+  output: __S(95) as any as S.Schema<AccountsCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7630,8 +5248,8 @@ export const custombatchAccountstatuses: API.OperationMethod<
   CustombatchAccountstatusesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustombatchAccountstatusesRequest,
-  output: AccountstatusesCustomBatchResponse,
+  input: __S(99) as any as S.Schema<CustombatchAccountstatusesRequest>,
+  output: __S(110) as any as S.Schema<AccountstatusesCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7645,8 +5263,8 @@ export const custombatchAccounttax: API.OperationMethod<
   CustombatchAccounttaxError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustombatchAccounttaxRequest,
-  output: AccounttaxCustomBatchResponse,
+  input: __S(117) as any as S.Schema<CustombatchAccounttaxRequest>,
+  output: __S(120) as any as S.Schema<AccounttaxCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7660,8 +5278,8 @@ export const custombatchDatafeeds: API.OperationMethod<
   CustombatchDatafeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustombatchDatafeedsRequest,
-  output: DatafeedsCustomBatchResponse,
+  input: __S(129) as any as S.Schema<CustombatchDatafeedsRequest>,
+  output: __S(132) as any as S.Schema<DatafeedsCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7680,8 +5298,8 @@ export const custombatchDatafeedstatuses: API.OperationMethod<
   CustombatchDatafeedstatusesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustombatchDatafeedstatusesRequest,
-  output: DatafeedstatusesCustomBatchResponse,
+  input: __S(136) as any as S.Schema<CustombatchDatafeedstatusesRequest>,
+  output: __S(144) as any as S.Schema<DatafeedstatusesCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7695,8 +5313,8 @@ export const custombatchLiasettings: API.OperationMethod<
   CustombatchLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustombatchLiasettingsRequest,
-  output: LiasettingsCustomBatchResponse,
+  input: __S(156) as any as S.Schema<CustombatchLiasettingsRequest>,
+  output: __S(166) as any as S.Schema<LiasettingsCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7715,8 +5333,8 @@ export const custombatchLocalinventory: API.OperationMethod<
   CustombatchLocalinventoryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustombatchLocalinventoryRequest,
-  output: LocalinventoryCustomBatchResponse,
+  input: __S(174) as any as S.Schema<CustombatchLocalinventoryRequest>,
+  output: __S(177) as any as S.Schema<LocalinventoryCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7730,8 +5348,8 @@ export const custombatchPos: API.OperationMethod<
   CustombatchPosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustombatchPosRequest,
-  output: PosCustomBatchResponse,
+  input: __S(184) as any as S.Schema<CustombatchPosRequest>,
+  output: __S(187) as any as S.Schema<PosCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7745,8 +5363,8 @@ export const custombatchProducts: API.OperationMethod<
   CustombatchProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustombatchProductsRequest,
-  output: ProductsCustomBatchResponse,
+  input: __S(216) as any as S.Schema<CustombatchProductsRequest>,
+  output: __S(219) as any as S.Schema<ProductsCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7765,8 +5383,8 @@ export const custombatchProductstatuses: API.OperationMethod<
   CustombatchProductstatusesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustombatchProductstatusesRequest,
-  output: ProductstatusesCustomBatchResponse,
+  input: __S(223) as any as S.Schema<CustombatchProductstatusesRequest>,
+  output: __S(231) as any as S.Schema<ProductstatusesCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7785,8 +5403,8 @@ export const custombatchRegionalinventory: API.OperationMethod<
   CustombatchRegionalinventoryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustombatchRegionalinventoryRequest,
-  output: RegionalinventoryCustomBatchResponse,
+  input: __S(236) as any as S.Schema<CustombatchRegionalinventoryRequest>,
+  output: __S(239) as any as S.Schema<RegionalinventoryCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7805,8 +5423,8 @@ export const custombatchShippingsettings: API.OperationMethod<
   CustombatchShippingsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustombatchShippingsettingsRequest,
-  output: ShippingsettingsCustomBatchResponse,
+  input: __S(289) as any as S.Schema<CustombatchShippingsettingsRequest>,
+  output: __S(292) as any as S.Schema<ShippingsettingsCustomBatchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7820,8 +5438,8 @@ export const deleteAccounts: API.OperationMethod<
   DeleteAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsRequest,
-  output: DeleteAccountsResponse,
+  input: __S(293) as any as S.Schema<DeleteAccountsRequest>,
+  output: __S(294) as any as S.Schema<DeleteAccountsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7835,8 +5453,8 @@ export const deleteAccountsLabels: API.OperationMethod<
   DeleteAccountsLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsLabelsRequest,
-  output: DeleteAccountsLabelsResponse,
+  input: __S(295) as any as S.Schema<DeleteAccountsLabelsRequest>,
+  output: __S(294) as any as S.Schema<DeleteAccountsLabelsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7855,8 +5473,8 @@ export const deleteAccountsReturncarrier: API.OperationMethod<
   DeleteAccountsReturncarrierError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountsReturncarrierRequest,
-  output: DeleteAccountsReturncarrierResponse,
+  input: __S(296) as any as S.Schema<DeleteAccountsReturncarrierRequest>,
+  output: __S(297) as any as S.Schema<DeleteAccountsReturncarrierResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7870,8 +5488,8 @@ export const deleteCollections: API.OperationMethod<
   DeleteCollectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCollectionsRequest,
-  output: DeleteCollectionsResponse,
+  input: __S(298) as any as S.Schema<DeleteCollectionsRequest>,
+  output: __S(294) as any as S.Schema<DeleteCollectionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7890,8 +5508,8 @@ export const deleteConversionsources: API.OperationMethod<
   DeleteConversionsourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConversionsourcesRequest,
-  output: DeleteConversionsourcesResponse,
+  input: __S(299) as any as S.Schema<DeleteConversionsourcesRequest>,
+  output: __S(300) as any as S.Schema<DeleteConversionsourcesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7905,8 +5523,8 @@ export const deleteDatafeeds: API.OperationMethod<
   DeleteDatafeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatafeedsRequest,
-  output: DeleteDatafeedsResponse,
+  input: __S(301) as any as S.Schema<DeleteDatafeedsRequest>,
+  output: __S(294) as any as S.Schema<DeleteDatafeedsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7925,8 +5543,8 @@ export const deleteFreelistingsprogramCheckoutsettings: API.OperationMethod<
   DeleteFreelistingsprogramCheckoutsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFreelistingsprogramCheckoutsettingsRequest,
-  output: DeleteFreelistingsprogramCheckoutsettingsResponse,
+  input: __S(302) as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsRequest>,
+  output: __S(297) as any as S.Schema<DeleteFreelistingsprogramCheckoutsettingsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7940,8 +5558,8 @@ export const deletePos: API.OperationMethod<
   DeletePosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePosRequest,
-  output: DeletePosResponse,
+  input: __S(303) as any as S.Schema<DeletePosRequest>,
+  output: __S(294) as any as S.Schema<DeletePosResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7960,8 +5578,8 @@ export const deleteProductdeliverytime: API.OperationMethod<
   DeleteProductdeliverytimeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProductdeliverytimeRequest,
-  output: DeleteProductdeliverytimeResponse,
+  input: __S(304) as any as S.Schema<DeleteProductdeliverytimeRequest>,
+  output: __S(297) as any as S.Schema<DeleteProductdeliverytimeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7975,8 +5593,8 @@ export const deleteProducts: API.OperationMethod<
   DeleteProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProductsRequest,
-  output: DeleteProductsResponse,
+  input: __S(305) as any as S.Schema<DeleteProductsRequest>,
+  output: __S(294) as any as S.Schema<DeleteProductsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -7990,8 +5608,8 @@ export const deleteRegions: API.OperationMethod<
   DeleteRegionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegionsRequest,
-  output: DeleteRegionsResponse,
+  input: __S(306) as any as S.Schema<DeleteRegionsRequest>,
+  output: __S(294) as any as S.Schema<DeleteRegionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8010,8 +5628,8 @@ export const deleteReturnpolicyonline: API.OperationMethod<
   DeleteReturnpolicyonlineError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteReturnpolicyonlineRequest,
-  output: DeleteReturnpolicyonlineResponse,
+  input: __S(307) as any as S.Schema<DeleteReturnpolicyonlineRequest>,
+  output: __S(297) as any as S.Schema<DeleteReturnpolicyonlineResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8025,8 +5643,8 @@ export const fetchnowDatafeeds: API.OperationMethod<
   FetchnowDatafeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchnowDatafeedsRequest,
-  output: DatafeedsFetchNowResponse,
+  input: __S(308) as any as S.Schema<FetchnowDatafeedsRequest>,
+  output: __S(5) as any as S.Schema<DatafeedsFetchNowResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8040,8 +5658,8 @@ export const generateRecommendations: API.OperationMethod<
   GenerateRecommendationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateRecommendationsRequest,
-  output: GenerateRecommendationsResponse,
+  input: __S(309) as any as S.Schema<GenerateRecommendationsRequest>,
+  output: __S(318) as any as S.Schema<GenerateRecommendationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8055,8 +5673,8 @@ export const getaccessiblegmbaccountsLiasettings: API.OperationMethod<
   GetaccessiblegmbaccountsLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetaccessiblegmbaccountsLiasettingsRequest,
-  output: LiasettingsGetAccessibleGmbAccountsResponse,
+  input: __S(319) as any as S.Schema<GetaccessiblegmbaccountsLiasettingsRequest>,
+  output: __S(320) as any as S.Schema<LiasettingsGetAccessibleGmbAccountsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8070,8 +5688,8 @@ export const getAccounts: API.OperationMethod<
   GetAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountsRequest,
-  output: Account,
+  input: __S(321) as any as S.Schema<GetAccountsRequest>,
+  output: __S(84) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8085,8 +5703,8 @@ export const getAccountstatuses: API.OperationMethod<
   GetAccountstatusesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountstatusesRequest,
-  output: AccountStatus,
+  input: __S(322) as any as S.Schema<GetAccountstatusesRequest>,
+  output: __S(107) as any as S.Schema<AccountStatus>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8100,8 +5718,8 @@ export const getAccounttax: API.OperationMethod<
   GetAccounttaxError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccounttaxRequest,
-  output: AccountTax,
+  input: __S(323) as any as S.Schema<GetAccounttaxRequest>,
+  output: __S(113) as any as S.Schema<AccountTax>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8115,8 +5733,8 @@ export const getCollections: API.OperationMethod<
   GetCollectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionsRequest,
-  output: Collection,
+  input: __S(324) as any as S.Schema<GetCollectionsRequest>,
+  output: __S(15) as any as S.Schema<Collection>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8130,8 +5748,8 @@ export const getCollectionstatuses: API.OperationMethod<
   GetCollectionstatusesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionstatusesRequest,
-  output: CollectionStatus,
+  input: __S(325) as any as S.Schema<GetCollectionstatusesRequest>,
+  output: __S(330) as any as S.Schema<CollectionStatus>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8145,8 +5763,8 @@ export const getConversionsources: API.OperationMethod<
   GetConversionsourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConversionsourcesRequest,
-  output: ConversionSource,
+  input: __S(331) as any as S.Schema<GetConversionsourcesRequest>,
+  output: __S(22) as any as S.Schema<ConversionSource>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8156,8 +5774,8 @@ export type GetCssesError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a single CSS domain by ID. */
 export const getCsses: API.OperationMethod<GetCssesRequest, Css, GetCssesError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetCssesRequest,
-    output: Css,
+    input: __S(332) as any as S.Schema<GetCssesRequest>,
+    output: __S(333) as any as S.Schema<Css>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -8171,8 +5789,8 @@ export const getDatafeeds: API.OperationMethod<
   GetDatafeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatafeedsRequest,
-  output: Datafeed,
+  input: __S(334) as any as S.Schema<GetDatafeedsRequest>,
+  output: __S(125) as any as S.Schema<Datafeed>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8186,8 +5804,8 @@ export const getDatafeedstatuses: API.OperationMethod<
   GetDatafeedstatusesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatafeedstatusesRequest,
-  output: DatafeedStatus,
+  input: __S(335) as any as S.Schema<GetDatafeedstatusesRequest>,
+  output: __S(141) as any as S.Schema<DatafeedStatus>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8201,8 +5819,8 @@ export const getFreelistingsprogram: API.OperationMethod<
   GetFreelistingsprogramError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFreelistingsprogramRequest,
-  output: FreeListingsProgramStatus,
+  input: __S(336) as any as S.Schema<GetFreelistingsprogramRequest>,
+  output: __S(340) as any as S.Schema<FreeListingsProgramStatus>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8216,8 +5834,8 @@ export const getFreelistingsprogramCheckoutsettings: API.OperationMethod<
   GetFreelistingsprogramCheckoutsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFreelistingsprogramCheckoutsettingsRequest,
-  output: CheckoutSettings,
+  input: __S(341) as any as S.Schema<GetFreelistingsprogramCheckoutsettingsRequest>,
+  output: __S(343) as any as S.Schema<CheckoutSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8231,8 +5849,8 @@ export const getLiasettings: API.OperationMethod<
   GetLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLiasettingsRequest,
-  output: LiaSettings,
+  input: __S(344) as any as S.Schema<GetLiasettingsRequest>,
+  output: __S(152) as any as S.Schema<LiaSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8242,8 +5860,8 @@ export type GetPosError = NotFound | Forbidden | GcpOpError;
 /** Retrieves information about the given store. */
 export const getPos: API.OperationMethod<GetPosRequest, PosStore, GetPosError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetPosRequest,
-    output: PosStore,
+    input: __S(345) as any as S.Schema<GetPosRequest>,
+    output: __S(180) as any as S.Schema<PosStore>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -8257,8 +5875,8 @@ export const getProductdeliverytime: API.OperationMethod<
   GetProductdeliverytimeError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProductdeliverytimeRequest,
-  output: ProductDeliveryTime,
+  input: __S(346) as any as S.Schema<GetProductdeliverytimeRequest>,
+  output: __S(41) as any as S.Schema<ProductDeliveryTime>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8272,8 +5890,8 @@ export const getProducts: API.OperationMethod<
   GetProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProductsRequest,
-  output: Product,
+  input: __S(347) as any as S.Schema<GetProductsRequest>,
+  output: __S(212) as any as S.Schema<Product>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8287,8 +5905,8 @@ export const getProductstatuses: API.OperationMethod<
   GetProductstatusesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProductstatusesRequest,
-  output: ProductStatus,
+  input: __S(348) as any as S.Schema<GetProductstatusesRequest>,
+  output: __S(228) as any as S.Schema<ProductStatus>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8302,8 +5920,8 @@ export const getPromotions: API.OperationMethod<
   GetPromotionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPromotionsRequest,
-  output: Promotion,
+  input: __S(349) as any as S.Schema<GetPromotionsRequest>,
+  output: __S(50) as any as S.Schema<Promotion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8317,8 +5935,8 @@ export const getPubsubnotificationsettings: API.OperationMethod<
   GetPubsubnotificationsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPubsubnotificationsettingsRequest,
-  output: PubsubNotificationSettings,
+  input: __S(350) as any as S.Schema<GetPubsubnotificationsettingsRequest>,
+  output: __S(351) as any as S.Schema<PubsubNotificationSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8332,8 +5950,8 @@ export const getRegions: API.OperationMethod<
   GetRegionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegionsRequest,
-  output: Region,
+  input: __S(352) as any as S.Schema<GetRegionsRequest>,
+  output: __S(56) as any as S.Schema<Region>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8347,8 +5965,8 @@ export const getReturnpolicyonline: API.OperationMethod<
   GetReturnpolicyonlineError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReturnpolicyonlineRequest,
-  output: ReturnPolicyOnline,
+  input: __S(353) as any as S.Schema<GetReturnpolicyonlineRequest>,
+  output: __S(63) as any as S.Schema<ReturnPolicyOnline>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8362,8 +5980,8 @@ export const getShippingsettings: API.OperationMethod<
   GetShippingsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetShippingsettingsRequest,
-  output: ShippingSettings,
+  input: __S(354) as any as S.Schema<GetShippingsettingsRequest>,
+  output: __S(285) as any as S.Schema<ShippingSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8377,8 +5995,8 @@ export const getShoppingadsprogram: API.OperationMethod<
   GetShoppingadsprogramError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetShoppingadsprogramRequest,
-  output: ShoppingAdsProgramStatus,
+  input: __S(355) as any as S.Schema<GetShoppingadsprogramRequest>,
+  output: __S(358) as any as S.Schema<ShoppingAdsProgramStatus>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8392,8 +6010,8 @@ export const getsupportedcarriersShippingsettings: API.OperationMethod<
   GetsupportedcarriersShippingsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetsupportedcarriersShippingsettingsRequest,
-  output: ShippingsettingsGetSupportedCarriersResponse,
+  input: __S(359) as any as S.Schema<GetsupportedcarriersShippingsettingsRequest>,
+  output: __S(362) as any as S.Schema<ShippingsettingsGetSupportedCarriersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8407,8 +6025,8 @@ export const getsupportedholidaysShippingsettings: API.OperationMethod<
   GetsupportedholidaysShippingsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetsupportedholidaysShippingsettingsRequest,
-  output: ShippingsettingsGetSupportedHolidaysResponse,
+  input: __S(363) as any as S.Schema<GetsupportedholidaysShippingsettingsRequest>,
+  output: __S(366) as any as S.Schema<ShippingsettingsGetSupportedHolidaysResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8422,8 +6040,8 @@ export const getsupportedpickupservicesShippingsettings: API.OperationMethod<
   GetsupportedpickupservicesShippingsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetsupportedpickupservicesShippingsettingsRequest,
-  output: ShippingsettingsGetSupportedPickupServicesResponse,
+  input: __S(367) as any as S.Schema<GetsupportedpickupservicesShippingsettingsRequest>,
+  output: __S(370) as any as S.Schema<ShippingsettingsGetSupportedPickupServicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8437,8 +6055,8 @@ export const insertAccounts: API.OperationMethod<
   InsertAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertAccountsRequest,
-  output: Account,
+  input: __S(371) as any as S.Schema<InsertAccountsRequest>,
+  output: __S(84) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8452,8 +6070,8 @@ export const insertDatafeeds: API.OperationMethod<
   InsertDatafeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertDatafeedsRequest,
-  output: Datafeed,
+  input: __S(372) as any as S.Schema<InsertDatafeedsRequest>,
+  output: __S(125) as any as S.Schema<Datafeed>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8472,8 +6090,8 @@ export const insertFreelistingsprogramCheckoutsettings: API.OperationMethod<
   InsertFreelistingsprogramCheckoutsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertFreelistingsprogramCheckoutsettingsRequest,
-  output: CheckoutSettings,
+  input: __S(374) as any as S.Schema<InsertFreelistingsprogramCheckoutsettingsRequest>,
+  output: __S(343) as any as S.Schema<CheckoutSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8487,8 +6105,8 @@ export const insertLocalinventory: API.OperationMethod<
   InsertLocalinventoryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertLocalinventoryRequest,
-  output: LocalInventory,
+  input: __S(375) as any as S.Schema<InsertLocalinventoryRequest>,
+  output: __S(170) as any as S.Schema<LocalInventory>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8502,8 +6120,8 @@ export const insertPos: API.OperationMethod<
   InsertPosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertPosRequest,
-  output: PosStore,
+  input: __S(376) as any as S.Schema<InsertPosRequest>,
+  output: __S(180) as any as S.Schema<PosStore>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8517,8 +6135,8 @@ export const insertProducts: API.OperationMethod<
   InsertProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertProductsRequest,
-  output: Product,
+  input: __S(377) as any as S.Schema<InsertProductsRequest>,
+  output: __S(212) as any as S.Schema<Product>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8537,8 +6155,8 @@ export const insertRegionalinventory: API.OperationMethod<
   InsertRegionalinventoryError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertRegionalinventoryRequest,
-  output: RegionalInventory,
+  input: __S(378) as any as S.Schema<InsertRegionalinventoryRequest>,
+  output: __S(232) as any as S.Schema<RegionalInventory>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8552,8 +6170,8 @@ export const inventoryPos: API.OperationMethod<
   InventoryPosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InventoryPosRequest,
-  output: PosInventoryResponse,
+  input: __S(380) as any as S.Schema<InventoryPosRequest>,
+  output: __S(381) as any as S.Schema<PosInventoryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8567,8 +6185,8 @@ export const linkAccounts: API.OperationMethod<
   LinkAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LinkAccountsRequest,
-  output: AccountsLinkResponse,
+  input: __S(385) as any as S.Schema<LinkAccountsRequest>,
+  output: __S(5) as any as S.Schema<AccountsLinkResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8583,8 +6201,8 @@ export const listAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   AccountsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsRequest,
-  output: AccountsListResponse,
+  input: __S(386) as any as S.Schema<ListAccountsRequest>,
+  output: __S(388) as any as S.Schema<AccountsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8603,8 +6221,8 @@ export const listAccountsLabels: API.PaginatedOperationMethod<
   GcpOpContext,
   ListAccountLabelsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsLabelsRequest,
-  output: ListAccountLabelsResponse,
+  input: __S(389) as any as S.Schema<ListAccountsLabelsRequest>,
+  output: __S(391) as any as S.Schema<ListAccountLabelsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8622,8 +6240,8 @@ export const listAccountsReturncarrier: API.OperationMethod<
   ListAccountsReturncarrierError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountsReturncarrierRequest,
-  output: ListAccountReturnCarrierResponse,
+  input: __S(392) as any as S.Schema<ListAccountsReturncarrierRequest>,
+  output: __S(394) as any as S.Schema<ListAccountReturnCarrierResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8638,8 +6256,8 @@ export const listAccountstatuses: API.PaginatedOperationMethod<
   GcpOpContext,
   AccountstatusesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountstatusesRequest,
-  output: AccountstatusesListResponse,
+  input: __S(395) as any as S.Schema<ListAccountstatusesRequest>,
+  output: __S(397) as any as S.Schema<AccountstatusesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8658,8 +6276,8 @@ export const listAccounttax: API.PaginatedOperationMethod<
   GcpOpContext,
   AccounttaxListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccounttaxRequest,
-  output: AccounttaxListResponse,
+  input: __S(398) as any as S.Schema<ListAccounttaxRequest>,
+  output: __S(400) as any as S.Schema<AccounttaxListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8678,8 +6296,8 @@ export const listCollections: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCollectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCollectionsRequest,
-  output: ListCollectionsResponse,
+  input: __S(401) as any as S.Schema<ListCollectionsRequest>,
+  output: __S(403) as any as S.Schema<ListCollectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8698,8 +6316,8 @@ export const listCollectionstatuses: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCollectionStatusesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCollectionstatusesRequest,
-  output: ListCollectionStatusesResponse,
+  input: __S(404) as any as S.Schema<ListCollectionstatusesRequest>,
+  output: __S(406) as any as S.Schema<ListCollectionStatusesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8718,8 +6336,8 @@ export const listConversionsources: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConversionSourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListConversionsourcesRequest,
-  output: ListConversionSourcesResponse,
+  input: __S(407) as any as S.Schema<ListConversionsourcesRequest>,
+  output: __S(409) as any as S.Schema<ListConversionSourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8738,8 +6356,8 @@ export const listCsses: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCssesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCssesRequest,
-  output: ListCssesResponse,
+  input: __S(410) as any as S.Schema<ListCssesRequest>,
+  output: __S(412) as any as S.Schema<ListCssesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8758,8 +6376,8 @@ export const listDatafeeds: API.PaginatedOperationMethod<
   GcpOpContext,
   DatafeedsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDatafeedsRequest,
-  output: DatafeedsListResponse,
+  input: __S(413) as any as S.Schema<ListDatafeedsRequest>,
+  output: __S(415) as any as S.Schema<DatafeedsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8778,8 +6396,8 @@ export const listDatafeedstatuses: API.PaginatedOperationMethod<
   GcpOpContext,
   DatafeedstatusesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDatafeedstatusesRequest,
-  output: DatafeedstatusesListResponse,
+  input: __S(416) as any as S.Schema<ListDatafeedstatusesRequest>,
+  output: __S(418) as any as S.Schema<DatafeedstatusesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8798,8 +6416,8 @@ export const listLiasettings: API.PaginatedOperationMethod<
   GcpOpContext,
   LiasettingsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLiasettingsRequest,
-  output: LiasettingsListResponse,
+  input: __S(419) as any as S.Schema<ListLiasettingsRequest>,
+  output: __S(421) as any as S.Schema<LiasettingsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8818,8 +6436,8 @@ export const listlinksAccounts: API.PaginatedOperationMethod<
   GcpOpContext,
   AccountsListLinksResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListlinksAccountsRequest,
-  output: AccountsListLinksResponse,
+  input: __S(422) as any as S.Schema<ListlinksAccountsRequest>,
+  output: __S(427) as any as S.Schema<AccountsListLinksResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8837,8 +6455,8 @@ export const listPos: API.OperationMethod<
   ListPosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPosRequest,
-  output: PosListResponse,
+  input: __S(428) as any as S.Schema<ListPosRequest>,
+  output: __S(430) as any as S.Schema<PosListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8852,8 +6470,8 @@ export const listposdataprovidersLiasettings: API.OperationMethod<
   ListposdataprovidersLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListposdataprovidersLiasettingsRequest,
-  output: LiasettingsListPosDataProvidersResponse,
+  input: __S(431) as any as S.Schema<ListposdataprovidersLiasettingsRequest>,
+  output: __S(432) as any as S.Schema<LiasettingsListPosDataProvidersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8868,8 +6486,8 @@ export const listProducts: API.PaginatedOperationMethod<
   GcpOpContext,
   ProductsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProductsRequest,
-  output: ProductsListResponse,
+  input: __S(433) as any as S.Schema<ListProductsRequest>,
+  output: __S(435) as any as S.Schema<ProductsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8888,8 +6506,8 @@ export const listProductstatuses: API.PaginatedOperationMethod<
   GcpOpContext,
   ProductstatusesListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProductstatusesRequest,
-  output: ProductstatusesListResponse,
+  input: __S(436) as any as S.Schema<ListProductstatusesRequest>,
+  output: __S(438) as any as S.Schema<ProductstatusesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8908,8 +6526,8 @@ export const listPromotions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListPromotionResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPromotionsRequest,
-  output: ListPromotionResponse,
+  input: __S(439) as any as S.Schema<ListPromotionsRequest>,
+  output: __S(441) as any as S.Schema<ListPromotionResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8928,8 +6546,8 @@ export const listQuotas: API.PaginatedOperationMethod<
   GcpOpContext,
   ListMethodQuotasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListQuotasRequest,
-  output: ListMethodQuotasResponse,
+  input: __S(442) as any as S.Schema<ListQuotasRequest>,
+  output: __S(445) as any as S.Schema<ListMethodQuotasResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8948,8 +6566,8 @@ export const listRegions: API.PaginatedOperationMethod<
   GcpOpContext,
   ListRegionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListRegionsRequest,
-  output: ListRegionsResponse,
+  input: __S(446) as any as S.Schema<ListRegionsRequest>,
+  output: __S(448) as any as S.Schema<ListRegionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8967,8 +6585,8 @@ export const listReturnpolicyonline: API.OperationMethod<
   ListReturnpolicyonlineError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReturnpolicyonlineRequest,
-  output: ListReturnPolicyOnlineResponse,
+  input: __S(449) as any as S.Schema<ListReturnpolicyonlineRequest>,
+  output: __S(451) as any as S.Schema<ListReturnPolicyOnlineResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -8983,8 +6601,8 @@ export const listShippingsettings: API.PaginatedOperationMethod<
   GcpOpContext,
   ShippingsettingsListResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListShippingsettingsRequest,
-  output: ShippingsettingsListResponse,
+  input: __S(452) as any as S.Schema<ListShippingsettingsRequest>,
+  output: __S(454) as any as S.Schema<ShippingsettingsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9002,8 +6620,8 @@ export const patchAccountsLabels: API.OperationMethod<
   PatchAccountsLabelsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAccountsLabelsRequest,
-  output: AccountLabel,
+  input: __S(455) as any as S.Schema<PatchAccountsLabelsRequest>,
+  output: __S(8) as any as S.Schema<AccountLabel>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9022,8 +6640,8 @@ export const patchAccountsReturncarrier: API.OperationMethod<
   PatchAccountsReturncarrierError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchAccountsReturncarrierRequest,
-  output: AccountReturnCarrier,
+  input: __S(456) as any as S.Schema<PatchAccountsReturncarrierRequest>,
+  output: __S(10) as any as S.Schema<AccountReturnCarrier>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9037,8 +6655,8 @@ export const patchConversionsources: API.OperationMethod<
   PatchConversionsourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchConversionsourcesRequest,
-  output: ConversionSource,
+  input: __S(457) as any as S.Schema<PatchConversionsourcesRequest>,
+  output: __S(22) as any as S.Schema<ConversionSource>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9052,8 +6670,8 @@ export const patchRegions: API.OperationMethod<
   PatchRegionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchRegionsRequest,
-  output: Region,
+  input: __S(458) as any as S.Schema<PatchRegionsRequest>,
+  output: __S(56) as any as S.Schema<Region>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9072,8 +6690,8 @@ export const patchReturnpolicyonline: API.OperationMethod<
   PatchReturnpolicyonlineError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchReturnpolicyonlineRequest,
-  output: ReturnPolicyOnline,
+  input: __S(459) as any as S.Schema<PatchReturnpolicyonlineRequest>,
+  output: __S(63) as any as S.Schema<ReturnPolicyOnline>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9092,8 +6710,8 @@ export const renderaccountissuesMerchantsupport: API.OperationMethod<
   RenderaccountissuesMerchantsupportError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RenderaccountissuesMerchantsupportRequest,
-  output: RenderAccountIssuesResponse,
+  input: __S(461) as any as S.Schema<RenderaccountissuesMerchantsupportRequest>,
+  output: __S(488) as any as S.Schema<RenderAccountIssuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9112,8 +6730,8 @@ export const renderproductissuesMerchantsupport: API.OperationMethod<
   RenderproductissuesMerchantsupportError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RenderproductissuesMerchantsupportRequest,
-  output: RenderProductIssuesResponse,
+  input: __S(489) as any as S.Schema<RenderproductissuesMerchantsupportRequest>,
+  output: __S(493) as any as S.Schema<RenderProductIssuesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9132,8 +6750,8 @@ export const reportInteractionRecommendations: API.OperationMethod<
   ReportInteractionRecommendationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReportInteractionRecommendationsRequest,
-  output: ReportInteractionRecommendationsResponse,
+  input: __S(495) as any as S.Schema<ReportInteractionRecommendationsRequest>,
+  output: __S(297) as any as S.Schema<ReportInteractionRecommendationsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9152,8 +6770,8 @@ export const requestgmbaccessLiasettings: API.OperationMethod<
   RequestgmbaccessLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RequestgmbaccessLiasettingsRequest,
-  output: LiasettingsRequestGmbAccessResponse,
+  input: __S(496) as any as S.Schema<RequestgmbaccessLiasettingsRequest>,
+  output: __S(5) as any as S.Schema<LiasettingsRequestGmbAccessResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9172,8 +6790,8 @@ export const requestinventoryverificationLiasettings: API.OperationMethod<
   RequestinventoryverificationLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RequestinventoryverificationLiasettingsRequest,
-  output: LiasettingsRequestInventoryVerificationResponse,
+  input: __S(497) as any as S.Schema<RequestinventoryverificationLiasettingsRequest>,
+  output: __S(5) as any as S.Schema<LiasettingsRequestInventoryVerificationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9192,8 +6810,8 @@ export const requestphoneverificationAccounts: API.OperationMethod<
   RequestphoneverificationAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RequestphoneverificationAccountsRequest,
-  output: RequestPhoneVerificationResponse,
+  input: __S(499) as any as S.Schema<RequestphoneverificationAccountsRequest>,
+  output: __S(500) as any as S.Schema<RequestPhoneVerificationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9212,8 +6830,8 @@ export const requestreviewFreelistingsprogram: API.OperationMethod<
   RequestreviewFreelistingsprogramError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RequestreviewFreelistingsprogramRequest,
-  output: RequestreviewFreelistingsprogramResponse,
+  input: __S(502) as any as S.Schema<RequestreviewFreelistingsprogramRequest>,
+  output: __S(297) as any as S.Schema<RequestreviewFreelistingsprogramResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9232,8 +6850,8 @@ export const requestreviewShoppingadsprogram: API.OperationMethod<
   RequestreviewShoppingadsprogramError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RequestreviewShoppingadsprogramRequest,
-  output: RequestreviewShoppingadsprogramResponse,
+  input: __S(503) as any as S.Schema<RequestreviewShoppingadsprogramRequest>,
+  output: __S(297) as any as S.Schema<RequestreviewShoppingadsprogramResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9247,8 +6865,8 @@ export const salePos: API.OperationMethod<
   SalePosError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SalePosRequest,
-  output: PosSaleResponse,
+  input: __S(505) as any as S.Schema<SalePosRequest>,
+  output: __S(506) as any as S.Schema<PosSaleResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9262,8 +6880,8 @@ export const searchReports: API.OperationMethod<
   SearchReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchReportsRequest,
-  output: SearchResponse,
+  input: __S(508) as any as S.Schema<SearchReportsRequest>,
+  output: __S(528) as any as S.Schema<SearchResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9282,8 +6900,8 @@ export const setinventoryverificationcontactLiasettings: API.OperationMethod<
   SetinventoryverificationcontactLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetinventoryverificationcontactLiasettingsRequest,
-  output: LiasettingsSetInventoryVerificationContactResponse,
+  input: __S(529) as any as S.Schema<SetinventoryverificationcontactLiasettingsRequest>,
+  output: __S(5) as any as S.Schema<LiasettingsSetInventoryVerificationContactResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9302,8 +6920,8 @@ export const setomnichannelexperienceLiasettings: API.OperationMethod<
   SetomnichannelexperienceLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetomnichannelexperienceLiasettingsRequest,
-  output: LiaOmnichannelExperience,
+  input: __S(530) as any as S.Schema<SetomnichannelexperienceLiasettingsRequest>,
+  output: __S(145) as any as S.Schema<LiaOmnichannelExperience>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9322,8 +6940,8 @@ export const setposdataproviderLiasettings: API.OperationMethod<
   SetposdataproviderLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetposdataproviderLiasettingsRequest,
-  output: LiasettingsSetPosDataProviderResponse,
+  input: __S(531) as any as S.Schema<SetposdataproviderLiasettingsRequest>,
+  output: __S(5) as any as S.Schema<LiasettingsSetPosDataProviderResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9342,8 +6960,8 @@ export const triggeractionMerchantsupport: API.OperationMethod<
   TriggeractionMerchantsupportError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TriggeractionMerchantsupportRequest,
-  output: TriggerActionResponse,
+  input: __S(539) as any as S.Schema<TriggeractionMerchantsupportRequest>,
+  output: __S(540) as any as S.Schema<TriggerActionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9362,8 +6980,8 @@ export const undeleteConversionsources: API.OperationMethod<
   UndeleteConversionsourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UndeleteConversionsourcesRequest,
-  output: UndeleteConversionsourcesResponse,
+  input: __S(541) as any as S.Schema<UndeleteConversionsourcesRequest>,
+  output: __S(297) as any as S.Schema<UndeleteConversionsourcesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9377,8 +6995,8 @@ export const updateAccounts: API.OperationMethod<
   UpdateAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountsRequest,
-  output: Account,
+  input: __S(542) as any as S.Schema<UpdateAccountsRequest>,
+  output: __S(84) as any as S.Schema<Account>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9392,8 +7010,8 @@ export const updateAccounttax: API.OperationMethod<
   UpdateAccounttaxError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccounttaxRequest,
-  output: AccountTax,
+  input: __S(543) as any as S.Schema<UpdateAccounttaxRequest>,
+  output: __S(113) as any as S.Schema<AccountTax>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9407,8 +7025,8 @@ export const updateDatafeeds: API.OperationMethod<
   UpdateDatafeedsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDatafeedsRequest,
-  output: Datafeed,
+  input: __S(544) as any as S.Schema<UpdateDatafeedsRequest>,
+  output: __S(125) as any as S.Schema<Datafeed>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9422,8 +7040,8 @@ export const updatelabelsAccounts: API.OperationMethod<
   UpdatelabelsAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatelabelsAccountsRequest,
-  output: AccountsUpdateLabelsResponse,
+  input: __S(546) as any as S.Schema<UpdatelabelsAccountsRequest>,
+  output: __S(5) as any as S.Schema<AccountsUpdateLabelsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9437,8 +7055,8 @@ export const updatelabelsCsses: API.OperationMethod<
   UpdatelabelsCssesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatelabelsCssesRequest,
-  output: Css,
+  input: __S(548) as any as S.Schema<UpdatelabelsCssesRequest>,
+  output: __S(333) as any as S.Schema<Css>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9452,8 +7070,8 @@ export const updateLiasettings: API.OperationMethod<
   UpdateLiasettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLiasettingsRequest,
-  output: LiaSettings,
+  input: __S(549) as any as S.Schema<UpdateLiasettingsRequest>,
+  output: __S(152) as any as S.Schema<LiaSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9467,8 +7085,8 @@ export const updateProducts: API.OperationMethod<
   UpdateProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProductsRequest,
-  output: Product,
+  input: __S(550) as any as S.Schema<UpdateProductsRequest>,
+  output: __S(212) as any as S.Schema<Product>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9487,8 +7105,8 @@ export const updatePubsubnotificationsettings: API.OperationMethod<
   UpdatePubsubnotificationsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePubsubnotificationsettingsRequest,
-  output: PubsubNotificationSettings,
+  input: __S(551) as any as S.Schema<UpdatePubsubnotificationsettingsRequest>,
+  output: __S(351) as any as S.Schema<PubsubNotificationSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9502,8 +7120,8 @@ export const updateShippingsettings: API.OperationMethod<
   UpdateShippingsettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateShippingsettingsRequest,
-  output: ShippingSettings,
+  input: __S(552) as any as S.Schema<UpdateShippingsettingsRequest>,
+  output: __S(285) as any as S.Schema<ShippingSettings>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9522,8 +7140,8 @@ export const verifyphonenumberAccounts: API.OperationMethod<
   VerifyphonenumberAccountsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VerifyphonenumberAccountsRequest,
-  output: VerifyPhoneNumberResponse,
+  input: __S(554) as any as S.Schema<VerifyphonenumberAccountsRequest>,
+  output: __S(555) as any as S.Schema<VerifyPhoneNumberResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -9554,11 +7172,11 @@ function __c0(j: number): any {
         identifier: "AccountIdentifier",
       });
     case 2:
-      return S.Array(AccountIdentifier);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          accountIdentifiers: S.optional(AccountIdentifierList),
+          accountIdentifiers: S.optional(__S(2)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -9591,7 +7209,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          purpose: S.optional(AccountCredentialsPurposeEnum),
+          purpose: S.optional(S.String),
           accessToken: S.optional(S.String),
           expiresIn: S.optional(S.String),
         }),
@@ -9602,7 +7220,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(AccountCredentials.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9621,7 +7239,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          labelType: S.optional(AccountLabelLabelTypeEnum),
+          labelType: S.optional(S.String),
           name: S.optional(S.String),
           labelId: S.optional(S.String),
           accountId: S.optional(S.String),
@@ -9631,7 +7249,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(AccountLabel.pipe(T.HttpBody())),
+          body: S.optional(__S(8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9646,7 +7264,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           carrierAccountId: S.optional(S.String),
-          carrierCode: S.optional(AccountReturnCarrierCarrierCodeEnum),
+          carrierCode: S.optional(S.String),
           carrierAccountNumber: S.optional(S.String),
           carrierAccountName: S.optional(S.String),
         }),
@@ -9657,7 +7275,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(AccountReturnCarrier.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9681,20 +7299,20 @@ function __c1(j: number): any {
         identifier: "CollectionFeaturedProduct",
       });
     case 6:
-      return S.Array(CollectionFeaturedProduct);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
           customLabel2: S.optional(S.String),
           id: S.optional(S.String),
-          headline: S.optional(StringList),
+          headline: S.optional(__S(12)),
           customLabel1: S.optional(S.String),
-          imageLink: S.optional(StringList),
+          imageLink: S.optional(__S(12)),
           customLabel4: S.optional(S.String),
           link: S.optional(S.String),
           customLabel0: S.optional(S.String),
           customLabel3: S.optional(S.String),
-          featuredProduct: S.optional(CollectionFeaturedProductList),
+          featuredProduct: S.optional(__S(14)),
           language: S.optional(S.String),
           mobileLink: S.optional(S.String),
           productCountry: S.optional(S.String),
@@ -9708,7 +7326,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(Collection.pipe(T.HttpBody())),
+          body: S.optional(__S(15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9729,13 +7347,13 @@ function __c2(j: number): any {
         identifier: "AttributionSettingsConversionType",
       });
     case 2:
-      return S.Array(AttributionSettingsConversionType);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          conversionType: S.optional(AttributionSettingsConversionTypeList),
+          conversionType: S.optional(__S(18)),
           attributionLookbackWindowInDays: S.optional(S.Number),
-          attributionModel: S.optional(AttributionSettingsAttributionModelEnum),
+          attributionModel: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AttributionSettings",
@@ -9743,7 +7361,7 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          attributionSettings: S.optional(AttributionSettings),
+          attributionSettings: S.optional(__S(19)),
           currencyCode: S.optional(S.String),
           displayName: S.optional(S.String),
           destinationId: S.optional(S.String),
@@ -9755,7 +7373,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           propertyName: S.optional(S.String),
-          attributionSettings: S.optional(AttributionSettings),
+          attributionSettings: S.optional(__S(19)),
           propertyId: S.optional(S.String),
         }),
       ).annotate({
@@ -9764,11 +7382,11 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(ConversionSourceStateEnum),
+          state: S.optional(S.String),
           expireTime: S.optional(S.String),
           conversionSourceId: S.optional(S.String),
-          merchantCenterDestination: S.optional(MerchantCenterDestination),
-          googleAnalyticsLink: S.optional(GoogleAnalyticsLink),
+          merchantCenterDestination: S.optional(__S(20)),
+          googleAnalyticsLink: S.optional(__S(21)),
         }),
       ).annotate({
         identifier: "ConversionSource",
@@ -9777,7 +7395,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(ConversionSource.pipe(T.HttpBody())),
+          body: S.optional(__S(22).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9809,7 +7427,7 @@ function __c3(j: number): any {
           year: S.optional(S.Number),
           day: S.optional(S.Number),
           minutes: S.optional(S.Number),
-          timeZone: S.optional(TimeZone),
+          timeZone: S.optional(__S(24)),
           utcOffset: S.optional(S.String),
         }),
       ).annotate({ identifier: "DateTime" });
@@ -9824,7 +7442,7 @@ function __c3(j: number): any {
         identifier: "OrderTrackingSignalShipmentLineItemMapping",
       });
     case 3:
-      return S.Array(OrderTrackingSignalShipmentLineItemMapping);
+      return S.Array(__S(26));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -9850,21 +7468,21 @@ function __c3(j: number): any {
         identifier: "OrderTrackingSignalLineItemDetails",
       });
     case 6:
-      return S.Array(OrderTrackingSignalLineItemDetails);
+      return S.Array(__S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          shippingStatus: S.optional(OrderTrackingSignalShippingInfoShippingStatusEnum),
-          earliestDeliveryPromiseTime: S.optional(DateTime),
+          shippingStatus: S.optional(S.String),
+          earliestDeliveryPromiseTime: S.optional(__S(25)),
           carrierName: S.optional(S.String),
-          shippedTime: S.optional(DateTime),
+          shippedTime: S.optional(__S(25)),
           shipmentId: S.optional(S.String),
-          latestDeliveryPromiseTime: S.optional(DateTime),
+          latestDeliveryPromiseTime: S.optional(__S(25)),
           carrierServiceName: S.optional(S.String),
           originPostalCode: S.optional(S.String),
           trackingId: S.optional(S.String),
           originRegionCode: S.optional(S.String),
-          actualDeliveryTime: S.optional(DateTime),
+          actualDeliveryTime: S.optional(__S(25)),
         }),
       ).annotate({
         identifier: "OrderTrackingSignalShippingInfo",
@@ -9874,20 +7492,20 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OrderTrackingSignalShippingInfo);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          orderCreatedTime: S.optional(DateTime),
-          shipmentLineItemMapping: S.optional(OrderTrackingSignalShipmentLineItemMappingList),
+          orderCreatedTime: S.optional(__S(25)),
+          shipmentLineItemMapping: S.optional(__S(27)),
           deliveryPostalCode: S.optional(S.String),
           orderId: S.optional(S.String),
           merchantId: S.optional(S.String),
           orderTrackingSignalId: S.optional(S.String),
           deliveryRegionCode: S.optional(S.String),
-          customerShippingFee: S.optional(PriceAmount),
-          lineItems: S.optional(OrderTrackingSignalLineItemDetailsList),
-          shippingInfo: S.optional(OrderTrackingSignalShippingInfoList),
+          customerShippingFee: S.optional(__S(28)),
+          lineItems: S.optional(__S(30)),
+          shippingInfo: S.optional(__S(32)),
         }),
       ).annotate({
         identifier: "OrderTrackingSignal",
@@ -9896,7 +7514,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(OrderTrackingSignal.pipe(T.HttpBody())),
+          body: S.optional(__S(33).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9927,7 +7545,7 @@ function __c4(j: number): any {
         S.Struct({
           countryCode: S.optional(S.String),
           regionCode: S.optional(S.String),
-          postalCodeRange: S.optional(DeliveryAreaPostalCodeRange),
+          postalCodeRange: S.optional(__S(36)),
         }),
       ).annotate({ identifier: "DeliveryArea" });
     case 6:
@@ -9944,8 +7562,8 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          deliveryArea: S.optional(DeliveryArea),
-          deliveryTime: S.optional(ProductDeliveryTimeAreaDeliveryTimeDeliveryTime),
+          deliveryArea: S.optional(__S(37)),
+          deliveryTime: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "ProductDeliveryTimeAreaDeliveryTime",
@@ -9955,12 +7573,12 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ProductDeliveryTimeAreaDeliveryTime);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          productId: S.optional(ProductId),
-          areaDeliveryTimes: S.optional(ProductDeliveryTimeAreaDeliveryTimeList),
+          productId: S.optional(__S(35)),
+          areaDeliveryTimes: S.optional(__S(40)),
         }),
       ).annotate({
         identifier: "ProductDeliveryTime",
@@ -9969,7 +7587,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(ProductDeliveryTime.pipe(T.HttpBody())),
+          body: S.optional(__S(41).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9991,13 +7609,13 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           destination: S.optional(S.String),
-          status: S.optional(PromotionPromotionStatusDestinationStatusStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PromotionPromotionStatusDestinationStatus",
       });
     case 5:
-      return S.Array(PromotionPromotionStatusDestinationStatus);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -10008,7 +7626,7 @@ function __c5(j: number): any {
         identifier: "PromotionPromotionStatusPromotionIssue",
       });
     case 7:
-      return S.Array(PromotionPromotionStatusPromotionIssue);
+      return S.Array(__S(46));
   }
 }
 function __c6(j: number): any {
@@ -10016,16 +7634,16 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          destinationStatuses: S.optional(PromotionPromotionStatusDestinationStatusList),
+          destinationStatuses: S.optional(__S(45)),
           lastUpdateDate: S.optional(S.String),
           creationDate: S.optional(S.String),
-          promotionIssue: S.optional(PromotionPromotionStatusPromotionIssueList),
+          promotionIssue: S.optional(__S(47)),
         }),
       ).annotate({
         identifier: "PromotionPromotionStatus",
       });
     case 1:
-      return S.Array(PromotionRedemptionChannelItemEnum);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10033,53 +7651,53 @@ function __c6(j: number): any {
           longTitle: S.optional(S.String),
           limitQuantity: S.optional(S.Number),
           freeGiftItemId: S.optional(S.String),
-          promotionDisplayTimePeriod: S.optional(TimePeriod),
+          promotionDisplayTimePeriod: S.optional(__S(43)),
           freeGiftDescription: S.optional(S.String),
-          promotionStatus: S.optional(PromotionPromotionStatus),
-          itemGroupId: S.optional(StringList),
-          moneyBudget: S.optional(PriceAmount),
-          productApplicability: S.optional(PromotionProductApplicabilityEnum),
-          brandExclusion: S.optional(StringList),
+          promotionStatus: S.optional(__S(48)),
+          itemGroupId: S.optional(__S(12)),
+          moneyBudget: S.optional(__S(28)),
+          productApplicability: S.optional(S.String),
+          brandExclusion: S.optional(__S(12)),
           customRedemptionRestriction: S.optional(S.String),
           promotionEffectiveDates: S.optional(S.String),
           promotionDisplayDates: S.optional(S.String),
           id: S.optional(S.String),
-          maxDiscountAmount: S.optional(PriceAmount),
+          maxDiscountAmount: S.optional(__S(28)),
           orderLimit: S.optional(S.Number),
           percentOff: S.optional(S.Number),
           targetCountry: S.optional(S.String),
           minimumPurchaseQuantity: S.optional(S.Number),
-          offerType: S.optional(PromotionOfferTypeEnum),
-          productType: S.optional(StringList),
+          offerType: S.optional(S.String),
+          productType: S.optional(__S(12)),
           promotionId: S.optional(S.String),
-          itemId: S.optional(StringList),
-          moneyOffAmount: S.optional(PriceAmount),
+          itemId: S.optional(__S(12)),
+          moneyOffAmount: S.optional(__S(28)),
           genericRedemptionCode: S.optional(S.String),
           contentLanguage: S.optional(S.String),
-          redemptionChannel: S.optional(PromotionRedemptionChannelItemEnumList),
-          redemptionRestriction: S.optional(PromotionRedemptionRestrictionEnum),
-          limitValue: S.optional(PriceAmount),
-          promotionEffectiveTimePeriod: S.optional(TimePeriod),
-          brand: S.optional(StringList),
-          shippingServiceNames: S.optional(StringList),
-          couponValueType: S.optional(PromotionCouponValueTypeEnum),
-          promotionDestinationIds: S.optional(StringList),
-          storeCode: S.optional(StringList),
-          freeGiftValue: S.optional(PriceAmount),
-          storeApplicability: S.optional(PromotionStoreApplicabilityEnum),
-          minimumPurchaseAmount: S.optional(PriceAmount),
-          itemIdExclusion: S.optional(StringList),
-          productTypeExclusion: S.optional(StringList),
+          redemptionChannel: S.optional(__S(49)),
+          redemptionRestriction: S.optional(S.String),
+          limitValue: S.optional(__S(28)),
+          promotionEffectiveTimePeriod: S.optional(__S(43)),
+          brand: S.optional(__S(12)),
+          shippingServiceNames: S.optional(__S(12)),
+          couponValueType: S.optional(S.String),
+          promotionDestinationIds: S.optional(__S(12)),
+          storeCode: S.optional(__S(12)),
+          freeGiftValue: S.optional(__S(28)),
+          storeApplicability: S.optional(S.String),
+          minimumPurchaseAmount: S.optional(__S(28)),
+          itemIdExclusion: S.optional(__S(12)),
+          productTypeExclusion: S.optional(__S(12)),
           getThisQuantityDiscounted: S.optional(S.Number),
-          itemGroupIdExclusion: S.optional(StringList),
-          storeCodeExclusion: S.optional(StringList),
+          itemGroupIdExclusion: S.optional(__S(12)),
+          storeCodeExclusion: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "Promotion" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(Promotion.pipe(T.HttpBody())),
+          body: S.optional(__S(50).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10093,7 +7711,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          geotargetCriteriaIds: S.optional(StringList),
+          geotargetCriteriaIds: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "RegionGeoTargetArea",
@@ -10108,12 +7726,12 @@ function __c6(j: number): any {
         identifier: "RegionPostalCodeAreaPostalCodeRange",
       });
     case 6:
-      return S.Array(RegionPostalCodeAreaPostalCodeRange);
+      return S.Array(__S(53));
     case 7:
       return S.suspend(() =>
         S.Struct({
           regionCode: S.optional(S.String),
-          postalCodes: S.optional(RegionPostalCodeAreaPostalCodeRangeList),
+          postalCodes: S.optional(__S(54)),
         }),
       ).annotate({
         identifier: "RegionPostalCodeArea",
@@ -10129,9 +7747,9 @@ function __c7(j: number): any {
           regionId: S.optional(S.String),
           shippingEligible: S.optional(S.Boolean),
           displayName: S.optional(S.String),
-          geotargetArea: S.optional(RegionGeoTargetArea),
+          geotargetArea: S.optional(__S(52)),
           merchantId: S.optional(S.String),
-          postalCodeArea: S.optional(RegionPostalCodeArea),
+          postalCodeArea: S.optional(__S(55)),
         }),
       ).annotate({ identifier: "Region" });
     case 1:
@@ -10139,7 +7757,7 @@ function __c7(j: number): any {
         S.Struct({
           regionId: S.optional(S.String.pipe(T.Query())),
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(Region.pipe(T.HttpBody())),
+          body: S.optional(__S(56).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10153,7 +7771,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ReturnPolicyOnlinePolicyTypeEnum),
+          type: S.optional(S.String),
           days: S.optional(S.String),
         }),
       ).annotate({
@@ -10162,8 +7780,8 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ReturnPolicyOnlineReturnShippingFeeTypeEnum),
-          fixedFee: S.optional(PriceAmount),
+          type: S.optional(S.String),
+          fixedFee: S.optional(__S(28)),
         }),
       ).annotate({
         identifier: "ReturnPolicyOnlineReturnShippingFee",
@@ -10171,23 +7789,19 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          returnReasonCategory: S.optional(
-            ReturnPolicyOnlineReturnReasonCategoryInfoReturnReasonCategoryEnum,
-          ),
-          returnLabelSource: S.optional(
-            ReturnPolicyOnlineReturnReasonCategoryInfoReturnLabelSourceEnum,
-          ),
-          returnShippingFee: S.optional(ReturnPolicyOnlineReturnShippingFee),
+          returnReasonCategory: S.optional(S.String),
+          returnLabelSource: S.optional(S.String),
+          returnShippingFee: S.optional(__S(59)),
         }),
       ).annotate({
         identifier: "ReturnPolicyOnlineReturnReasonCategoryInfo",
       });
     case 5:
-      return S.Array(ReturnPolicyOnlineReturnReasonCategoryInfo);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          fixedFee: S.optional(PriceAmount),
+          fixedFee: S.optional(__S(28)),
           microPercent: S.optional(S.Number),
         }),
       ).annotate({
@@ -10196,13 +7810,13 @@ function __c7(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(ReturnPolicyOnlinePolicy),
-          returnReasonCategoryInfo: S.optional(ReturnPolicyOnlineReturnReasonCategoryInfoList),
-          itemConditions: S.optional(ReturnPolicyOnlineItemConditionsItemEnumList),
+          policy: S.optional(__S(58)),
+          returnReasonCategoryInfo: S.optional(__S(61)),
+          itemConditions: S.optional(__S(49)),
           label: S.optional(S.String),
-          countries: S.optional(StringList),
-          restockingFee: S.optional(ReturnPolicyOnlineRestockingFee),
-          returnMethods: S.optional(ReturnPolicyOnlineReturnMethodsItemEnumList),
+          countries: S.optional(__S(12)),
+          restockingFee: S.optional(__S(62)),
+          returnMethods: S.optional(__S(49)),
           returnPolicyUri: S.optional(S.String),
           returnPolicyId: S.optional(S.String),
           name: S.optional(S.String),
@@ -10218,7 +7832,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(ReturnPolicyOnline.pipe(T.HttpBody())),
+          body: S.optional(__S(63).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10252,7 +7866,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "AccountUser" });
     case 3:
-      return S.Array(AccountUser);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -10261,7 +7875,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "AccountAdsLink" });
     case 5:
-      return S.Array(AccountAdsLink);
+      return S.Array(__S(68));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -10272,7 +7886,7 @@ function __c8(j: number): any {
         identifier: "AccountYouTubeChannelLink",
       });
     case 7:
-      return S.Array(AccountYouTubeChannelLink);
+      return S.Array(__S(70));
   }
 }
 function __c9(j: number): any {
@@ -10310,9 +7924,9 @@ function __c9(j: number): any {
         S.Struct({
           koreanBusinessRegistrationNumber: S.optional(S.String),
           phoneVerificationStatus: S.optional(S.String),
-          customerService: S.optional(AccountCustomerService),
+          customerService: S.optional(__S(73)),
           phoneNumber: S.optional(S.String),
-          address: S.optional(AccountAddress),
+          address: S.optional(__S(74)),
         }),
       ).annotate({
         identifier: "AccountBusinessInformation",
@@ -10328,7 +7942,7 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          accountImageImprovementsSettings: S.optional(AccountImageImprovementsSettings),
+          accountImageImprovementsSettings: S.optional(__S(76)),
           effectiveAllowAutomaticImageImprovements: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -10360,7 +7974,7 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          accountItemUpdatesSettings: S.optional(AccountItemUpdatesSettings),
+          accountItemUpdatesSettings: S.optional(__S(79)),
           effectiveAllowAvailabilityUpdates: S.optional(S.Boolean),
           effectiveAllowPriceUpdates: S.optional(S.Boolean),
           effectiveAllowConditionUpdates: S.optional(S.Boolean),
@@ -10372,9 +7986,9 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          imageImprovements: S.optional(AccountImageImprovements),
-          shippingImprovements: S.optional(AccountShippingImprovements),
-          itemUpdates: S.optional(AccountItemUpdates),
+          imageImprovements: S.optional(__S(77)),
+          shippingImprovements: S.optional(__S(78)),
+          itemUpdates: S.optional(__S(80)),
         }),
       ).annotate({
         identifier: "AccountAutomaticImprovements",
@@ -10390,11 +8004,11 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          smallBusiness: S.optional(AccountIdentityType),
-          latinoOwned: S.optional(AccountIdentityType),
-          veteranOwned: S.optional(AccountIdentityType),
-          blackOwned: S.optional(AccountIdentityType),
-          womenOwned: S.optional(AccountIdentityType),
+          smallBusiness: S.optional(__S(82)),
+          latinoOwned: S.optional(__S(82)),
+          veteranOwned: S.optional(__S(82)),
+          blackOwned: S.optional(__S(82)),
+          womenOwned: S.optional(__S(82)),
           includeForPromotions: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -10405,22 +8019,22 @@ function __c10(j: number): any {
         S.Struct({
           websiteUrl: S.optional(S.String),
           kind: S.optional(S.String),
-          automaticLabelIds: S.optional(StringList),
-          googleMyBusinessLink: S.optional(AccountGoogleMyBusinessLink),
-          users: S.optional(AccountUserList),
-          adsLinks: S.optional(AccountAdsLinkList),
+          automaticLabelIds: S.optional(__S(12)),
+          googleMyBusinessLink: S.optional(__S(65)),
+          users: S.optional(__S(67)),
+          adsLinks: S.optional(__S(69)),
           name: S.optional(S.String),
           adultContent: S.optional(S.Boolean),
-          youtubeChannelLinks: S.optional(AccountYouTubeChannelLinkList),
+          youtubeChannelLinks: S.optional(__S(71)),
           cssId: S.optional(S.String),
-          conversionSettings: S.optional(AccountConversionSettings),
+          conversionSettings: S.optional(__S(72)),
           sellerId: S.optional(S.String),
-          businessInformation: S.optional(AccountBusinessInformation),
-          labelIds: S.optional(StringList),
+          businessInformation: S.optional(__S(75)),
+          labelIds: S.optional(__S(12)),
           id: S.optional(S.String),
-          automaticImprovements: S.optional(AccountAutomaticImprovements),
+          automaticImprovements: S.optional(__S(81)),
           accountManagement: S.optional(S.String),
-          businessIdentity: S.optional(AccountBusinessIdentity),
+          businessIdentity: S.optional(__S(83)),
         }),
       ).annotate({ identifier: "Account" });
     case 5:
@@ -10429,7 +8043,7 @@ function __c10(j: number): any {
           linkType: S.optional(S.String),
           action: S.optional(S.String),
           linkedAccountId: S.optional(S.String),
-          services: S.optional(StringList),
+          services: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "AccountsCustomBatchRequestEntryLinkRequest",
@@ -10441,18 +8055,18 @@ function __c10(j: number): any {
           merchantId: S.optional(S.String),
           overwrite: S.optional(S.Boolean),
           accountId: S.optional(S.String),
-          account: S.optional(Account),
+          account: S.optional(__S(84)),
           view: S.optional(S.String),
           method: S.optional(S.String),
-          labelIds: S.optional(StringList),
-          linkRequest: S.optional(AccountsCustomBatchRequestEntryLinkRequest),
+          labelIds: S.optional(__S(12)),
+          linkRequest: S.optional(__S(85)),
           batchId: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "AccountsCustomBatchRequestEntry",
       });
     case 7:
-      return S.Array(AccountsCustomBatchRequestEntry);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -10460,7 +8074,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(AccountsCustomBatchRequestEntryList),
+          entries: S.optional(__S(87)),
         }),
       ).annotate({
         identifier: "AccountsCustomBatchRequest",
@@ -10468,7 +8082,7 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(AccountsCustomBatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(88).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10488,11 +8102,11 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "Content_Error" });
     case 3:
-      return S.Array(Content_Error);
+      return S.Array(__S(90));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(Content_ErrorList),
+          errors: S.optional(__S(91)),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
@@ -10500,20 +8114,20 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(Errors),
+          errors: S.optional(__S(92)),
           batchId: S.optional(S.Number),
-          account: S.optional(Account),
+          account: S.optional(__S(84)),
           kind: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AccountsCustomBatchResponseEntry",
       });
     case 6:
-      return S.Array(AccountsCustomBatchResponseEntry);
+      return S.Array(__S(93));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(AccountsCustomBatchResponseEntryList),
+          entries: S.optional(__S(94)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -10527,7 +8141,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           merchantId: S.optional(S.String),
-          destinations: S.optional(StringList),
+          destinations: S.optional(__S(12)),
           batchId: S.optional(S.Number),
           method: S.optional(S.String),
           accountId: S.optional(S.String),
@@ -10536,11 +8150,11 @@ function __c12(j: number): any {
         identifier: "AccountstatusesCustomBatchRequestEntry",
       });
     case 1:
-      return S.Array(AccountstatusesCustomBatchRequestEntry);
+      return S.Array(__S(96));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(AccountstatusesCustomBatchRequestEntryList),
+          entries: S.optional(__S(97)),
         }),
       ).annotate({
         identifier: "AccountstatusesCustomBatchRequest",
@@ -10548,7 +8162,7 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(AccountstatusesCustomBatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(98).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10575,7 +8189,7 @@ function __c12(j: number): any {
         identifier: "AccountStatusItemLevelIssue",
       });
     case 5:
-      return S.Array(AccountStatusItemLevelIssue);
+      return S.Array(__S(100));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -10590,9 +8204,9 @@ function __c12(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          itemLevelIssues: S.optional(AccountStatusItemLevelIssueList),
+          itemLevelIssues: S.optional(__S(101)),
           country: S.optional(S.String),
-          statistics: S.optional(AccountStatusStatistics),
+          statistics: S.optional(__S(102)),
           channel: S.optional(S.String),
           destination: S.optional(S.String),
         }),
@@ -10604,7 +8218,7 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AccountStatusProducts);
+      return S.Array(__S(103));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -10620,13 +8234,13 @@ function __c13(j: number): any {
         identifier: "AccountStatusAccountLevelIssue",
       });
     case 2:
-      return S.Array(AccountStatusAccountLevelIssue);
+      return S.Array(__S(105));
     case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          products: S.optional(AccountStatusProductsList),
-          accountLevelIssues: S.optional(AccountStatusAccountLevelIssueList),
+          products: S.optional(__S(104)),
+          accountLevelIssues: S.optional(__S(106)),
           websiteClaimed: S.optional(S.Boolean),
           accountManagement: S.optional(S.String),
           accountId: S.optional(S.String),
@@ -10636,18 +8250,18 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           batchId: S.optional(S.Number),
-          errors: S.optional(Errors),
-          accountStatus: S.optional(AccountStatus),
+          errors: S.optional(__S(92)),
+          accountStatus: S.optional(__S(107)),
         }),
       ).annotate({
         identifier: "AccountstatusesCustomBatchResponseEntry",
       });
     case 5:
-      return S.Array(AccountstatusesCustomBatchResponseEntry);
+      return S.Array(__S(108));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(AccountstatusesCustomBatchResponseEntryList),
+          entries: S.optional(__S(109)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -10670,11 +8284,11 @@ function __c13(j: number): any {
 function __c14(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AccountTaxTaxRule);
+      return S.Array(__S(111));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          rules: S.optional(AccountTaxTaxRuleList),
+          rules: S.optional(__S(112)),
           kind: S.optional(S.String),
           accountId: S.optional(S.String),
         }),
@@ -10683,7 +8297,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           merchantId: S.optional(S.String),
-          accountTax: S.optional(AccountTax),
+          accountTax: S.optional(__S(113)),
           batchId: S.optional(S.Number),
           accountId: S.optional(S.String),
           method: S.optional(S.String),
@@ -10692,11 +8306,11 @@ function __c14(j: number): any {
         identifier: "AccounttaxCustomBatchRequestEntry",
       });
     case 3:
-      return S.Array(AccounttaxCustomBatchRequestEntry);
+      return S.Array(__S(114));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(AccounttaxCustomBatchRequestEntryList),
+          entries: S.optional(__S(115)),
         }),
       ).annotate({
         identifier: "AccounttaxCustomBatchRequest",
@@ -10704,7 +8318,7 @@ function __c14(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(AccounttaxCustomBatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(116).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10718,16 +8332,16 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          accountTax: S.optional(AccountTax),
+          accountTax: S.optional(__S(113)),
           batchId: S.optional(S.Number),
-          errors: S.optional(Errors),
+          errors: S.optional(__S(92)),
           kind: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AccounttaxCustomBatchResponseEntry",
       });
     case 7:
-      return S.Array(AccounttaxCustomBatchResponseEntry);
+      return S.Array(__S(118));
   }
 }
 function __c15(j: number): any {
@@ -10736,7 +8350,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          entries: S.optional(AccounttaxCustomBatchResponseEntryList),
+          entries: S.optional(__S(119)),
         }),
       ).annotate({
         identifier: "AccounttaxCustomBatchResponse",
@@ -10769,26 +8383,26 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           feedLabel: S.optional(S.String),
-          includedDestinations: S.optional(StringList),
-          excludedDestinations: S.optional(StringList),
+          includedDestinations: S.optional(__S(12)),
+          excludedDestinations: S.optional(__S(12)),
           language: S.optional(S.String),
           country: S.optional(S.String),
-          targetCountries: S.optional(StringList),
+          targetCountries: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "DatafeedTarget" });
     case 4:
-      return S.Array(DatafeedTarget);
+      return S.Array(__S(123));
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          fetchSchedule: S.optional(DatafeedFetchSchedule),
-          format: S.optional(DatafeedFormat),
+          fetchSchedule: S.optional(__S(121)),
+          format: S.optional(__S(122)),
           kind: S.optional(S.String),
           attributeLanguage: S.optional(S.String),
           id: S.optional(S.String),
           fileName: S.optional(S.String),
-          targets: S.optional(DatafeedTargetList),
+          targets: S.optional(__S(124)),
           contentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Datafeed" });
@@ -10797,7 +8411,7 @@ function __c15(j: number): any {
         S.Struct({
           datafeedId: S.optional(S.String),
           batchId: S.optional(S.Number),
-          datafeed: S.optional(Datafeed),
+          datafeed: S.optional(__S(125)),
           method: S.optional(S.String),
           merchantId: S.optional(S.String),
         }),
@@ -10805,7 +8419,7 @@ function __c15(j: number): any {
         identifier: "DatafeedsCustomBatchRequestEntry",
       });
     case 7:
-      return S.Array(DatafeedsCustomBatchRequestEntry);
+      return S.Array(__S(126));
   }
 }
 function __c16(j: number): any {
@@ -10813,7 +8427,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(DatafeedsCustomBatchRequestEntryList),
+          entries: S.optional(__S(127)),
         }),
       ).annotate({
         identifier: "DatafeedsCustomBatchRequest",
@@ -10821,7 +8435,7 @@ function __c16(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(DatafeedsCustomBatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(128).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10835,20 +8449,20 @@ function __c16(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(Errors),
+          errors: S.optional(__S(92)),
           batchId: S.optional(S.Number),
-          datafeed: S.optional(Datafeed),
+          datafeed: S.optional(__S(125)),
         }),
       ).annotate({
         identifier: "DatafeedsCustomBatchResponseEntry",
       });
     case 3:
-      return S.Array(DatafeedsCustomBatchResponseEntry);
+      return S.Array(__S(130));
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          entries: S.optional(DatafeedsCustomBatchResponseEntryList),
+          entries: S.optional(__S(131)),
         }),
       ).annotate({
         identifier: "DatafeedsCustomBatchResponse",
@@ -10868,11 +8482,11 @@ function __c16(j: number): any {
         identifier: "DatafeedstatusesCustomBatchRequestEntry",
       });
     case 6:
-      return S.Array(DatafeedstatusesCustomBatchRequestEntry);
+      return S.Array(__S(133));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(DatafeedstatusesCustomBatchRequestEntryList),
+          entries: S.optional(__S(134)),
         }),
       ).annotate({
         identifier: "DatafeedstatusesCustomBatchRequest",
@@ -10884,7 +8498,7 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(DatafeedstatusesCustomBatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(135).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10906,11 +8520,11 @@ function __c17(j: number): any {
         identifier: "DatafeedStatusExample",
       });
     case 2:
-      return S.Array(DatafeedStatusExample);
+      return S.Array(__S(137));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          examples: S.optional(DatafeedStatusExampleList),
+          examples: S.optional(__S(138)),
           message: S.optional(S.String),
           code: S.optional(S.String),
           count: S.optional(S.String),
@@ -10919,12 +8533,12 @@ function __c17(j: number): any {
         identifier: "DatafeedStatusError",
       });
     case 4:
-      return S.Array(DatafeedStatusError);
+      return S.Array(__S(139));
     case 5:
       return S.suspend(() =>
         S.Struct({
           country: S.optional(S.String),
-          errors: S.optional(DatafeedStatusErrorList),
+          errors: S.optional(__S(140)),
           language: S.optional(S.String),
           kind: S.optional(S.String),
           processingStatus: S.optional(S.String),
@@ -10932,22 +8546,22 @@ function __c17(j: number): any {
           itemsValid: S.optional(S.String),
           feedLabel: S.optional(S.String),
           lastUploadDate: S.optional(S.String),
-          warnings: S.optional(DatafeedStatusErrorList),
+          warnings: S.optional(__S(140)),
           datafeedId: S.optional(S.String),
         }),
       ).annotate({ identifier: "DatafeedStatus" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(Errors),
-          datafeedStatus: S.optional(DatafeedStatus),
+          errors: S.optional(__S(92)),
+          datafeedStatus: S.optional(__S(141)),
           batchId: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "DatafeedstatusesCustomBatchResponseEntry",
       });
     case 7:
-      return S.Array(DatafeedstatusesCustomBatchResponseEntry);
+      return S.Array(__S(142));
   }
 }
 function __c18(j: number): any {
@@ -10956,7 +8570,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          entries: S.optional(DatafeedstatusesCustomBatchResponseEntryList),
+          entries: S.optional(__S(143)),
         }),
       ).annotate({
         identifier: "DatafeedstatusesCustomBatchResponse",
@@ -10966,7 +8580,7 @@ function __c18(j: number): any {
         S.Struct({
           lsfType: S.optional(S.String),
           country: S.optional(S.String),
-          pickupTypes: S.optional(StringList),
+          pickupTypes: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "LiaOmnichannelExperience",
@@ -11012,20 +8626,20 @@ function __c18(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          omnichannelExperience: S.optional(LiaOmnichannelExperience),
+          omnichannelExperience: S.optional(__S(145)),
           country: S.optional(S.String),
           storePickupActive: S.optional(S.Boolean),
           hostedLocalStorefrontActive: S.optional(S.Boolean),
-          about: S.optional(LiaAboutPageSettings),
-          onDisplayToOrder: S.optional(LiaOnDisplayToOrderSettings),
-          posDataProvider: S.optional(LiaPosDataProvider),
-          inventory: S.optional(LiaInventorySettings),
+          about: S.optional(__S(146)),
+          onDisplayToOrder: S.optional(__S(147)),
+          posDataProvider: S.optional(__S(148)),
+          inventory: S.optional(__S(149)),
         }),
       ).annotate({
         identifier: "LiaCountrySettings",
       });
     case 7:
-      return S.Array(LiaCountrySettings);
+      return S.Array(__S(150));
   }
 }
 function __c19(j: number): any {
@@ -11033,7 +8647,7 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          countrySettings: S.optional(LiaCountrySettingsList),
+          countrySettings: S.optional(__S(151)),
           kind: S.optional(S.String),
           accountId: S.optional(S.String),
         }),
@@ -11046,10 +8660,10 @@ function __c19(j: number): any {
           contactEmail: S.optional(S.String),
           posDataProviderId: S.optional(S.String),
           country: S.optional(S.String),
-          omnichannelExperience: S.optional(LiaOmnichannelExperience),
+          omnichannelExperience: S.optional(__S(145)),
           accountId: S.optional(S.String),
           contactName: S.optional(S.String),
-          liaSettings: S.optional(LiaSettings),
+          liaSettings: S.optional(__S(152)),
           method: S.optional(S.String),
           batchId: S.optional(S.Number),
           merchantId: S.optional(S.String),
@@ -11058,11 +8672,11 @@ function __c19(j: number): any {
         identifier: "LiasettingsCustomBatchRequestEntry",
       });
     case 2:
-      return S.Array(LiasettingsCustomBatchRequestEntry);
+      return S.Array(__S(153));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(LiasettingsCustomBatchRequestEntryList),
+          entries: S.optional(__S(154)),
         }),
       ).annotate({
         identifier: "LiasettingsCustomBatchRequest",
@@ -11070,7 +8684,7 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(LiasettingsCustomBatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(155).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11092,12 +8706,12 @@ function __c19(j: number): any {
         identifier: "PosDataProvidersPosDataProvider",
       });
     case 6:
-      return S.Array(PosDataProvidersPosDataProvider);
+      return S.Array(__S(157));
     case 7:
       return S.suspend(() =>
         S.Struct({
           country: S.optional(S.String),
-          posDataProviders: S.optional(PosDataProvidersPosDataProviderList),
+          posDataProviders: S.optional(__S(158)),
         }),
       ).annotate({
         identifier: "PosDataProviders",
@@ -11107,7 +8721,7 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PosDataProviders);
+      return S.Array(__S(159));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11120,34 +8734,34 @@ function __c20(j: number): any {
         identifier: "GmbAccountsGmbAccount",
       });
     case 2:
-      return S.Array(GmbAccountsGmbAccount);
+      return S.Array(__S(161));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          gmbAccounts: S.optional(GmbAccountsGmbAccountList),
+          gmbAccounts: S.optional(__S(162)),
           accountId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GmbAccounts" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          posDataProviders: S.optional(PosDataProvidersList),
-          gmbAccounts: S.optional(GmbAccounts),
+          posDataProviders: S.optional(__S(160)),
+          gmbAccounts: S.optional(__S(163)),
           batchId: S.optional(S.Number),
           kind: S.optional(S.String),
-          errors: S.optional(Errors),
-          liaSettings: S.optional(LiaSettings),
-          omnichannelExperience: S.optional(LiaOmnichannelExperience),
+          errors: S.optional(__S(92)),
+          liaSettings: S.optional(__S(152)),
+          omnichannelExperience: S.optional(__S(145)),
         }),
       ).annotate({
         identifier: "LiasettingsCustomBatchResponseEntry",
       });
     case 5:
-      return S.Array(LiasettingsCustomBatchResponseEntry);
+      return S.Array(__S(164));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(LiasettingsCustomBatchResponseEntryList),
+          entries: S.optional(__S(165)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -11156,7 +8770,7 @@ function __c20(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          groupValues: S.optional(S.suspend(() => CustomAttributeList)),
+          groupValues: S.optional(S.suspend(() => __S(168))),
           value: S.optional(S.String),
           name: S.optional(S.String),
         }),
@@ -11168,7 +8782,7 @@ function __c20(j: number): any {
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CustomAttribute);
+      return S.Array(__S(167));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11181,21 +8795,21 @@ function __c21(j: number): any {
         S.Struct({
           pickupMethod: S.optional(S.String),
           storeCode: S.optional(S.String),
-          customAttributes: S.optional(CustomAttributeList),
+          customAttributes: S.optional(__S(168)),
           kind: S.optional(S.String),
           quantity: S.optional(S.Number),
           instoreProductLocation: S.optional(S.String),
-          price: S.optional(Price),
+          price: S.optional(__S(169)),
           availability: S.optional(S.String),
           salePriceEffectiveDate: S.optional(S.String),
-          salePrice: S.optional(Price),
+          salePrice: S.optional(__S(169)),
           pickupSla: S.optional(S.String),
         }),
       ).annotate({ identifier: "LocalInventory" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          localInventory: S.optional(LocalInventory),
+          localInventory: S.optional(__S(170)),
           merchantId: S.optional(S.String),
           batchId: S.optional(S.Number),
           productId: S.optional(S.String),
@@ -11205,11 +8819,11 @@ function __c21(j: number): any {
         identifier: "LocalinventoryCustomBatchRequestEntry",
       });
     case 4:
-      return S.Array(LocalinventoryCustomBatchRequestEntry);
+      return S.Array(__S(171));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(LocalinventoryCustomBatchRequestEntryList),
+          entries: S.optional(__S(172)),
         }),
       ).annotate({
         identifier: "LocalinventoryCustomBatchRequest",
@@ -11217,7 +8831,7 @@ function __c21(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(LocalinventoryCustomBatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(173).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11232,7 +8846,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           batchId: S.optional(S.Number),
-          errors: S.optional(Errors),
+          errors: S.optional(__S(92)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -11243,12 +8857,12 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(LocalinventoryCustomBatchResponseEntry);
+      return S.Array(__S(175));
     case 1:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          entries: S.optional(LocalinventoryCustomBatchResponseEntryList),
+          entries: S.optional(__S(176)),
         }),
       ).annotate({
         identifier: "LocalinventoryCustomBatchResponse",
@@ -11263,7 +8877,7 @@ function __c22(j: number): any {
           itemId: S.optional(S.String),
           kind: S.optional(S.String),
           gtin: S.optional(S.String),
-          price: S.optional(Price),
+          price: S.optional(__S(169)),
           targetCountry: S.optional(S.String),
           storeCode: S.optional(S.String),
         }),
@@ -11281,7 +8895,7 @@ function __c22(j: number): any {
           kind: S.optional(S.String),
           gtin: S.optional(S.String),
           timestamp: S.optional(S.String),
-          price: S.optional(Price),
+          price: S.optional(__S(169)),
         }),
       ).annotate({ identifier: "PosInventory" });
     case 4:
@@ -11293,7 +8907,7 @@ function __c22(j: number): any {
           kind: S.optional(S.String),
           storeCode: S.optional(S.String),
           websiteUrl: S.optional(S.String),
-          gcidCategory: S.optional(StringList),
+          gcidCategory: S.optional(__S(12)),
           matchingStatusHint: S.optional(S.String),
           matchingStatus: S.optional(S.String),
           placeId: S.optional(S.String),
@@ -11304,22 +8918,22 @@ function __c22(j: number): any {
         S.Struct({
           merchantId: S.optional(S.String),
           batchId: S.optional(S.Number),
-          sale: S.optional(PosSale),
+          sale: S.optional(__S(178)),
           targetMerchantId: S.optional(S.String),
           storeCode: S.optional(S.String),
-          inventory: S.optional(PosInventory),
+          inventory: S.optional(__S(179)),
           method: S.optional(S.String),
-          store: S.optional(PosStore),
+          store: S.optional(__S(180)),
         }),
       ).annotate({
         identifier: "PosCustomBatchRequestEntry",
       });
     case 6:
-      return S.Array(PosCustomBatchRequestEntry);
+      return S.Array(__S(181));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(PosCustomBatchRequestEntryList),
+          entries: S.optional(__S(182)),
         }),
       ).annotate({
         identifier: "PosCustomBatchRequest",
@@ -11331,7 +8945,7 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(PosCustomBatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(183).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11346,21 +8960,21 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          errors: S.optional(Errors),
+          errors: S.optional(__S(92)),
           batchId: S.optional(S.Number),
-          sale: S.optional(PosSale),
-          inventory: S.optional(PosInventory),
-          store: S.optional(PosStore),
+          sale: S.optional(__S(178)),
+          inventory: S.optional(__S(179)),
+          store: S.optional(__S(180)),
         }),
       ).annotate({
         identifier: "PosCustomBatchResponseEntry",
       });
     case 2:
-      return S.Array(PosCustomBatchResponseEntry);
+      return S.Array(__S(185));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(PosCustomBatchResponseEntryList),
+          entries: S.optional(__S(186)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -11396,7 +9010,7 @@ function __c23(j: number): any {
         identifier: "ProductCertification",
       });
     case 7:
-      return S.Array(ProductCertification);
+      return S.Array(__S(190));
   }
 }
 function __c24(j: number): any {
@@ -11408,23 +9022,23 @@ function __c24(j: number): any {
           tierLabel: S.optional(S.String),
           loyaltyPoints: S.optional(S.String),
           memberPriceEffectiveDate: S.optional(S.String),
-          price: S.optional(Price),
-          cashbackForFutureUse: S.optional(Price),
+          price: S.optional(__S(169)),
+          cashbackForFutureUse: S.optional(__S(169)),
           shippingLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoyaltyProgram" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ProductSustainabilityIncentiveTypeEnum),
+          type: S.optional(S.String),
           percentage: S.optional(S.Number),
-          amount: S.optional(Price),
+          amount: S.optional(__S(169)),
         }),
       ).annotate({
         identifier: "ProductSustainabilityIncentive",
       });
     case 2:
-      return S.Array(ProductSustainabilityIncentive);
+      return S.Array(__S(193));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -11438,13 +9052,13 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           country: S.optional(S.String),
-          priceThreshold: S.optional(Price),
+          priceThreshold: S.optional(__S(169)),
         }),
       ).annotate({
         identifier: "FreeShippingThreshold",
       });
     case 5:
-      return S.Array(FreeShippingThreshold);
+      return S.Array(__S(196));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -11457,7 +9071,7 @@ function __c24(j: number): any {
         S.Struct({
           period: S.optional(S.String),
           periodLength: S.optional(S.String),
-          amount: S.optional(Price),
+          amount: S.optional(__S(169)),
         }),
       ).annotate({
         identifier: "ProductSubscriptionCost",
@@ -11474,17 +9088,17 @@ function __c25(j: number): any {
           minValue: S.optional(S.Number),
           maxValue: S.optional(S.Number),
           unitCode: S.optional(S.String),
-          intValue: S.optional(StringList),
+          intValue: S.optional(__S(12)),
           boolValue: S.optional(S.Boolean),
           propertyName: S.optional(S.String),
-          textValue: S.optional(StringList),
-          floatValue: S.optional(DoubleList),
+          textValue: S.optional(__S(12)),
+          floatValue: S.optional(__S(200)),
         }),
       ).annotate({
         identifier: "CloudExportAdditionalProperties",
       });
     case 2:
-      return S.Array(CloudExportAdditionalProperties);
+      return S.Array(__S(201));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -11506,14 +9120,14 @@ function __c25(j: number): any {
         }),
       ).annotate({ identifier: "ProductTax" });
     case 5:
-      return S.Array(ProductTax);
+      return S.Array(__S(204));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          downpayment: S.optional(Price),
+          downpayment: S.optional(__S(169)),
           months: S.optional(S.String),
           creditType: S.optional(S.String),
-          amount: S.optional(Price),
+          amount: S.optional(__S(169)),
         }),
       ).annotate({ identifier: "Installment" });
     case 7:
@@ -11531,7 +9145,7 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ProductProductDetail);
+      return S.Array(__S(207));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11539,7 +9153,7 @@ function __c26(j: number): any {
           locationId: S.optional(S.String),
           postalCode: S.optional(S.String),
           minHandlingTime: S.optional(S.String),
-          price: S.optional(Price),
+          price: S.optional(__S(169)),
           minTransitTime: S.optional(S.String),
           maxHandlingTime: S.optional(S.String),
           region: S.optional(S.String),
@@ -11551,89 +9165,89 @@ function __c26(j: number): any {
         identifier: "ProductShipping",
       });
     case 2:
-      return S.Array(ProductShipping);
+      return S.Array(__S(209));
     case 3:
-      return S.Array(LoyaltyProgram);
+      return S.Array(__S(192));
     case 4:
       return S.suspend(() =>
         S.Struct({
           isBundle: S.optional(S.Boolean),
-          additionalImageLinks: S.optional(StringList),
+          additionalImageLinks: S.optional(__S(12)),
           id: S.optional(S.String),
           channel: S.optional(S.String),
           virtualModelLink: S.optional(S.String),
           ageGroup: S.optional(S.String),
           taxCategory: S.optional(S.String),
-          productWidth: S.optional(ProductDimension),
+          productWidth: S.optional(__S(188)),
           feedLabel: S.optional(S.String),
           maxEnergyEfficiencyClass: S.optional(S.String),
-          productHighlights: S.optional(StringList),
-          customAttributes: S.optional(CustomAttributeList),
-          displayAdsSimilarIds: S.optional(StringList),
-          unitPricingBaseMeasure: S.optional(ProductUnitPricingBaseMeasure),
+          productHighlights: S.optional(__S(12)),
+          customAttributes: S.optional(__S(168)),
+          displayAdsSimilarIds: S.optional(__S(12)),
+          unitPricingBaseMeasure: S.optional(__S(189)),
           targetCountry: S.optional(S.String),
           linkTemplate: S.optional(S.String),
-          certifications: S.optional(ProductCertificationList),
+          certifications: S.optional(__S(191)),
           expirationDate: S.optional(S.String),
-          loyaltyProgram: S.optional(LoyaltyProgram),
+          loyaltyProgram: S.optional(__S(192)),
           adult: S.optional(S.Boolean),
-          sustainabilityIncentives: S.optional(ProductSustainabilityIncentiveList),
+          sustainabilityIncentives: S.optional(__S(194)),
           mobileLink: S.optional(S.String),
           transitTimeLabel: S.optional(S.String),
-          unitPricingMeasure: S.optional(ProductUnitPricingMeasure),
+          unitPricingMeasure: S.optional(__S(188)),
           sizeType: S.optional(S.String),
           pickupSla: S.optional(S.String),
           multipack: S.optional(S.String),
           energyEfficiencyClass: S.optional(S.String),
           maxHandlingTime: S.optional(S.String),
-          structuredTitle: S.optional(ProductStructuredTitle),
+          structuredTitle: S.optional(__S(195)),
           disclosureDate: S.optional(S.String),
           availability: S.optional(S.String),
-          productTypes: S.optional(StringList),
+          productTypes: S.optional(__S(12)),
           adsGrouping: S.optional(S.String),
           gender: S.optional(S.String),
           customLabel0: S.optional(S.String),
-          freeShippingThreshold: S.optional(FreeShippingThresholdList),
+          freeShippingThreshold: S.optional(__S(197)),
           salePriceEffectiveDate: S.optional(S.String),
-          salePrice: S.optional(Price),
-          shoppingAdsExcludedCountries: S.optional(StringList),
+          salePrice: S.optional(__S(169)),
+          shoppingAdsExcludedCountries: S.optional(__S(12)),
           minHandlingTime: S.optional(S.String),
           source: S.optional(S.String),
-          productWeight: S.optional(ProductWeight),
+          productWeight: S.optional(__S(198)),
           displayAdsId: S.optional(S.String),
-          productLength: S.optional(ProductDimension),
-          subscriptionCost: S.optional(ProductSubscriptionCost),
-          cloudExportAdditionalProperties: S.optional(CloudExportAdditionalPropertiesList),
+          productLength: S.optional(__S(188)),
+          subscriptionCost: S.optional(__S(199)),
+          cloudExportAdditionalProperties: S.optional(__S(202)),
           externalSellerId: S.optional(S.String),
           link: S.optional(S.String),
-          autoPricingMinPrice: S.optional(Price),
-          sizes: S.optional(StringList),
+          autoPricingMinPrice: S.optional(__S(169)),
+          sizes: S.optional(__S(12)),
           displayAdsValue: S.optional(S.Number),
-          productHeight: S.optional(ProductDimension),
+          productHeight: S.optional(__S(188)),
           additionalSizeType: S.optional(S.String),
           material: S.optional(S.String),
           kind: S.optional(S.String),
           gtin: S.optional(S.String),
           availabilityDate: S.optional(S.String),
           displayAdsTitle: S.optional(S.String),
-          shippingWidth: S.optional(ProductShippingDimension),
-          excludedDestinations: S.optional(StringList),
-          maximumRetailPrice: S.optional(Price),
+          shippingWidth: S.optional(__S(188)),
+          excludedDestinations: S.optional(__S(12)),
+          maximumRetailPrice: S.optional(__S(169)),
           minEnergyEfficiencyClass: S.optional(S.String),
           pause: S.optional(S.String),
           brand: S.optional(S.String),
           identifierExists: S.optional(S.Boolean),
-          includedDestinations: S.optional(StringList),
+          includedDestinations: S.optional(__S(12)),
           offerId: S.optional(S.String),
           itemGroupId: S.optional(S.String),
           googleProductCategory: S.optional(S.String),
           customLabel4: S.optional(S.String),
-          costOfGoodsSold: S.optional(Price),
-          shippingWeight: S.optional(ProductShippingWeight),
+          costOfGoodsSold: S.optional(__S(169)),
+          shippingWeight: S.optional(__S(203)),
           sizeSystem: S.optional(S.String),
           pattern: S.optional(S.String),
           description: S.optional(S.String),
-          promotionIds: S.optional(StringList),
+          promotionIds: S.optional(__S(12)),
           mobileLinkTemplate: S.optional(S.String),
           shippingLabel: S.optional(S.String),
           mpn: S.optional(S.String),
@@ -11644,29 +9258,29 @@ function __c26(j: number): any {
           canonicalLink: S.optional(S.String),
           customLabel1: S.optional(S.String),
           adsRedirect: S.optional(S.String),
-          price: S.optional(Price),
-          adsLabels: S.optional(StringList),
-          structuredDescription: S.optional(ProductStructuredDescription),
-          taxes: S.optional(ProductTaxList),
+          price: S.optional(__S(169)),
+          adsLabels: S.optional(__S(12)),
+          structuredDescription: S.optional(__S(195)),
+          taxes: S.optional(__S(205)),
           color: S.optional(S.String),
-          lifestyleImageLinks: S.optional(StringList),
+          lifestyleImageLinks: S.optional(__S(12)),
           sellOnGoogleQuantity: S.optional(S.String),
-          shippingHeight: S.optional(ProductShippingDimension),
-          installment: S.optional(Installment),
-          productDetails: S.optional(ProductProductDetailList),
+          shippingHeight: S.optional(__S(188)),
+          installment: S.optional(__S(206)),
+          productDetails: S.optional(__S(208)),
           imageLink: S.optional(S.String),
-          shipping: S.optional(ProductShippingList),
+          shipping: S.optional(__S(210)),
           title: S.optional(S.String),
           displayAdsLink: S.optional(S.String),
-          loyaltyPrograms: S.optional(LoyaltyProgramList),
-          shippingLength: S.optional(ProductShippingDimension),
+          loyaltyPrograms: S.optional(__S(211)),
+          shippingLength: S.optional(__S(188)),
           customLabel2: S.optional(S.String),
         }),
       ).annotate({ identifier: "Product" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          product: S.optional(Product),
+          product: S.optional(__S(212)),
           productId: S.optional(S.String),
           feedId: S.optional(S.String),
           method: S.optional(S.String),
@@ -11678,11 +9292,11 @@ function __c26(j: number): any {
         identifier: "ProductsCustomBatchRequestEntry",
       });
     case 6:
-      return S.Array(ProductsCustomBatchRequestEntry);
+      return S.Array(__S(213));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(ProductsCustomBatchRequestEntryList),
+          entries: S.optional(__S(214)),
         }),
       ).annotate({
         identifier: "ProductsCustomBatchRequest",
@@ -11694,7 +9308,7 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(ProductsCustomBatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(215).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11708,20 +9322,20 @@ function __c27(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          product: S.optional(Product),
+          product: S.optional(__S(212)),
           kind: S.optional(S.String),
           batchId: S.optional(S.Number),
-          errors: S.optional(Errors),
+          errors: S.optional(__S(92)),
         }),
       ).annotate({
         identifier: "ProductsCustomBatchResponseEntry",
       });
     case 2:
-      return S.Array(ProductsCustomBatchResponseEntry);
+      return S.Array(__S(217));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(ProductsCustomBatchResponseEntryList),
+          entries: S.optional(__S(218)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -11733,7 +9347,7 @@ function __c27(j: number): any {
           productId: S.optional(S.String),
           batchId: S.optional(S.Number),
           method: S.optional(S.String),
-          destinations: S.optional(StringList),
+          destinations: S.optional(__S(12)),
           includeAttributes: S.optional(S.Boolean),
           merchantId: S.optional(S.String),
         }),
@@ -11741,11 +9355,11 @@ function __c27(j: number): any {
         identifier: "ProductstatusesCustomBatchRequestEntry",
       });
     case 5:
-      return S.Array(ProductstatusesCustomBatchRequestEntry);
+      return S.Array(__S(220));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(ProductstatusesCustomBatchRequestEntryList),
+          entries: S.optional(__S(221)),
         }),
       ).annotate({
         identifier: "ProductstatusesCustomBatchRequest",
@@ -11753,7 +9367,7 @@ function __c27(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(ProductstatusesCustomBatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(222).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11773,16 +9387,16 @@ function __c28(j: number): any {
         S.Struct({
           status: S.optional(S.String),
           channel: S.optional(S.String),
-          disapprovedCountries: S.optional(StringList),
+          disapprovedCountries: S.optional(__S(12)),
           destination: S.optional(S.String),
-          approvedCountries: S.optional(StringList),
-          pendingCountries: S.optional(StringList),
+          approvedCountries: S.optional(__S(12)),
+          pendingCountries: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "ProductStatusDestinationStatus",
       });
     case 1:
-      return S.Array(ProductStatusDestinationStatus);
+      return S.Array(__S(224));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -11793,14 +9407,14 @@ function __c28(j: number): any {
           destination: S.optional(S.String),
           resolution: S.optional(S.String),
           documentation: S.optional(S.String),
-          applicableCountries: S.optional(StringList),
+          applicableCountries: S.optional(__S(12)),
           servability: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ProductStatusItemLevelIssue",
       });
     case 3:
-      return S.Array(ProductStatusItemLevelIssue);
+      return S.Array(__S(226));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -11808,30 +9422,30 @@ function __c28(j: number): any {
           link: S.optional(S.String),
           lastUpdateDate: S.optional(S.String),
           productId: S.optional(S.String),
-          destinationStatuses: S.optional(ProductStatusDestinationStatusList),
+          destinationStatuses: S.optional(__S(225)),
           googleExpirationDate: S.optional(S.String),
           kind: S.optional(S.String),
-          itemLevelIssues: S.optional(ProductStatusItemLevelIssueList),
+          itemLevelIssues: S.optional(__S(227)),
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductStatus" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(Errors),
+          errors: S.optional(__S(92)),
           batchId: S.optional(S.Number),
           kind: S.optional(S.String),
-          productStatus: S.optional(ProductStatus),
+          productStatus: S.optional(__S(228)),
         }),
       ).annotate({
         identifier: "ProductstatusesCustomBatchResponseEntry",
       });
     case 6:
-      return S.Array(ProductstatusesCustomBatchResponseEntry);
+      return S.Array(__S(229));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(ProductstatusesCustomBatchResponseEntryList),
+          entries: S.optional(__S(230)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -11847,9 +9461,9 @@ function __c29(j: number): any {
           regionId: S.optional(S.String),
           availability: S.optional(S.String),
           kind: S.optional(S.String),
-          salePrice: S.optional(Price),
-          price: S.optional(Price),
-          customAttributes: S.optional(CustomAttributeList),
+          salePrice: S.optional(__S(169)),
+          price: S.optional(__S(169)),
+          customAttributes: S.optional(__S(168)),
           salePriceEffectiveDate: S.optional(S.String),
         }),
       ).annotate({
@@ -11861,18 +9475,18 @@ function __c29(j: number): any {
           merchantId: S.optional(S.String),
           method: S.optional(S.String),
           batchId: S.optional(S.Number),
-          regionalInventory: S.optional(RegionalInventory),
+          regionalInventory: S.optional(__S(232)),
           productId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RegionalinventoryCustomBatchRequestEntry",
       });
     case 2:
-      return S.Array(RegionalinventoryCustomBatchRequestEntry);
+      return S.Array(__S(233));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(RegionalinventoryCustomBatchRequestEntryList),
+          entries: S.optional(__S(234)),
         }),
       ).annotate({
         identifier: "RegionalinventoryCustomBatchRequest",
@@ -11880,7 +9494,7 @@ function __c29(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(RegionalinventoryCustomBatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(235).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11894,20 +9508,20 @@ function __c29(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          regionalInventory: S.optional(RegionalInventory),
+          regionalInventory: S.optional(__S(232)),
           kind: S.optional(S.String),
-          errors: S.optional(Errors),
+          errors: S.optional(__S(92)),
           batchId: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "RegionalinventoryCustomBatchResponseEntry",
       });
     case 6:
-      return S.Array(RegionalinventoryCustomBatchResponseEntry);
+      return S.Array(__S(237));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(RegionalinventoryCustomBatchResponseEntryList),
+          entries: S.optional(__S(238)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -11927,19 +9541,19 @@ function __c30(j: number): any {
         identifier: "PostalCodeRange",
       });
     case 1:
-      return S.Array(PostalCodeRange);
+      return S.Array(__S(240));
     case 2:
       return S.suspend(() =>
         S.Struct({
           country: S.optional(S.String),
-          postalCodeRanges: S.optional(PostalCodeRangeList),
+          postalCodeRanges: S.optional(__S(241)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PostalCodeGroup",
       });
     case 3:
-      return S.Array(PostalCodeGroup);
+      return S.Array(__S(242));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -11952,7 +9566,7 @@ function __c30(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          businessDays: S.optional(StringList),
+          businessDays: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "BusinessDayConfig",
@@ -11970,10 +9584,10 @@ function __c30(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          cutoffTime: S.optional(WarehouseCutoffTime),
+          cutoffTime: S.optional(__S(244)),
           name: S.optional(S.String),
-          businessDayConfig: S.optional(BusinessDayConfig),
-          shippingAddress: S.optional(Address),
+          businessDayConfig: S.optional(__S(245)),
+          shippingAddress: S.optional(__S(246)),
           handlingDays: S.optional(S.String),
         }),
       ).annotate({ identifier: "Warehouse" });
@@ -11982,9 +9596,9 @@ function __c30(j: number): any {
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Warehouse);
+      return S.Array(__S(247));
     case 1:
-      return S.Array(Price);
+      return S.Array(__S(169));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -11993,23 +9607,23 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "Weight" });
     case 3:
-      return S.Array(Weight);
+      return S.Array(__S(250));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          locationIds: S.optional(StringList),
+          locationIds: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "LocationIdSet" });
     case 5:
-      return S.Array(LocationIdSet);
+      return S.Array(__S(252));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          prices: S.optional(PriceList),
-          numberOfItems: S.optional(StringList),
-          weights: S.optional(WeightList),
-          postalCodeGroupNames: S.optional(StringList),
-          locations: S.optional(LocationIdSetList),
+          prices: S.optional(__S(249)),
+          numberOfItems: S.optional(__S(12)),
+          weights: S.optional(__S(251)),
+          postalCodeGroupNames: S.optional(__S(12)),
+          locations: S.optional(__S(253)),
         }),
       ).annotate({ identifier: "Headers" });
     case 7:
@@ -12019,7 +9633,7 @@ function __c31(j: number): any {
           subtableName: S.optional(S.String),
           noShipping: S.optional(S.Boolean),
           carrierRateName: S.optional(S.String),
-          flatRate: S.optional(Price),
+          flatRate: S.optional(__S(169)),
         }),
       ).annotate({ identifier: "Value" });
   }
@@ -12027,31 +9641,31 @@ function __c31(j: number): any {
 function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Value);
+      return S.Array(__S(255));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          cells: S.optional(ValueList),
+          cells: S.optional(__S(256)),
         }),
       ).annotate({ identifier: "Row" });
     case 2:
-      return S.Array(Row);
+      return S.Array(__S(257));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          rowHeaders: S.optional(Headers),
-          rows: S.optional(RowList),
+          rowHeaders: S.optional(__S(254)),
+          rows: S.optional(__S(258)),
           name: S.optional(S.String),
-          columnHeaders: S.optional(Headers),
+          columnHeaders: S.optional(__S(254)),
         }),
       ).annotate({ identifier: "Table" });
     case 4:
-      return S.Array(Table);
+      return S.Array(__S(259));
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          flatAdjustment: S.optional(Price),
+          flatAdjustment: S.optional(__S(169)),
           originPostalCode: S.optional(S.String),
           percentageAdjustment: S.optional(S.String),
           carrierService: S.optional(S.String),
@@ -12059,15 +9673,15 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "CarrierRate" });
     case 6:
-      return S.Array(CarrierRate);
+      return S.Array(__S(261));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          applicableShippingLabels: S.optional(StringList),
-          subtables: S.optional(TableList),
-          carrierRates: S.optional(CarrierRateList),
-          singleValue: S.optional(Value),
-          mainTable: S.optional(Table),
+          applicableShippingLabels: S.optional(__S(12)),
+          subtables: S.optional(__S(260)),
+          carrierRates: S.optional(__S(262)),
+          singleValue: S.optional(__S(255)),
+          mainTable: S.optional(__S(259)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "RateGroup" });
@@ -12076,7 +9690,7 @@ function __c32(j: number): any {
 function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RateGroup);
+      return S.Array(__S(263));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12091,7 +9705,7 @@ function __c33(j: number): any {
         S.Struct({
           noDeliveryPostCutoff: S.optional(S.Boolean),
           storeCloseOffsetHours: S.optional(S.String),
-          localCutoffTime: S.optional(ServiceStoreConfigCutoffConfigLocalCutoffTime),
+          localCutoffTime: S.optional(__S(265)),
         }),
       ).annotate({
         identifier: "ServiceStoreConfigCutoffConfig",
@@ -12099,10 +9713,10 @@ function __c33(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          cutoffConfig: S.optional(ServiceStoreConfigCutoffConfig),
+          cutoffConfig: S.optional(__S(266)),
           storeServiceType: S.optional(S.String),
-          serviceRadius: S.optional(Distance),
-          storeCodes: S.optional(StringList),
+          serviceRadius: S.optional(__S(250)),
+          storeCodes: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "ServiceStoreConfig",
@@ -12110,18 +9724,18 @@ function __c33(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          storeCodes: S.optional(StringList),
-          value: S.optional(Price),
+          storeCodes: S.optional(__S(12)),
+          value: S.optional(__S(169)),
         }),
       ).annotate({
         identifier: "MinimumOrderValueTableStoreCodeSetWithMov",
       });
     case 5:
-      return S.Array(MinimumOrderValueTableStoreCodeSetWithMov);
+      return S.Array(__S(268));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          storeCodeSetWithMovs: S.optional(MinimumOrderValueTableStoreCodeSetWithMovList),
+          storeCodeSetWithMovs: S.optional(__S(269)),
         }),
       ).annotate({
         identifier: "MinimumOrderValueTable",
@@ -12141,7 +9755,7 @@ function __c33(j: number): any {
 function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(HolidayCutoff);
+      return S.Array(__S(271));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -12158,7 +9772,7 @@ function __c34(j: number): any {
         identifier: "WarehouseBasedDeliveryTime",
       });
     case 2:
-      return S.Array(WarehouseBasedDeliveryTime);
+      return S.Array(__S(273));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -12169,23 +9783,23 @@ function __c34(j: number): any {
         identifier: "TransitTableTransitTimeRowTransitTimeValue",
       });
     case 4:
-      return S.Array(TransitTableTransitTimeRowTransitTimeValue);
+      return S.Array(__S(275));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(TransitTableTransitTimeRowTransitTimeValueList),
+          values: S.optional(__S(276)),
         }),
       ).annotate({
         identifier: "TransitTableTransitTimeRow",
       });
     case 6:
-      return S.Array(TransitTableTransitTimeRow);
+      return S.Array(__S(277));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          rows: S.optional(TransitTableTransitTimeRowList),
-          transitTimeLabels: S.optional(StringList),
-          postalCodeGroupNames: S.optional(StringList),
+          rows: S.optional(__S(278)),
+          transitTimeLabels: S.optional(__S(12)),
+          postalCodeGroupNames: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "TransitTable" });
   }
@@ -12204,15 +9818,15 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           minHandlingTimeInDays: S.optional(S.Number),
-          holidayCutoffs: S.optional(HolidayCutoffList),
-          transitBusinessDayConfig: S.optional(BusinessDayConfig),
+          holidayCutoffs: S.optional(__S(272)),
+          transitBusinessDayConfig: S.optional(__S(245)),
           maxHandlingTimeInDays: S.optional(S.Number),
           minTransitTimeInDays: S.optional(S.Number),
-          warehouseBasedDeliveryTimes: S.optional(WarehouseBasedDeliveryTimeList),
-          handlingBusinessDayConfig: S.optional(BusinessDayConfig),
-          transitTimeTable: S.optional(TransitTable),
+          warehouseBasedDeliveryTimes: S.optional(__S(274)),
+          handlingBusinessDayConfig: S.optional(__S(245)),
+          transitTimeTable: S.optional(__S(279)),
           maxTransitTimeInDays: S.optional(S.Number),
-          cutoffTime: S.optional(CutoffTime),
+          cutoffTime: S.optional(__S(280)),
         }),
       ).annotate({ identifier: "DeliveryTime" });
     case 2:
@@ -12227,14 +9841,14 @@ function __c35(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          rateGroups: S.optional(RateGroupList),
-          storeConfig: S.optional(ServiceStoreConfig),
+          rateGroups: S.optional(__S(264)),
+          storeConfig: S.optional(__S(267)),
           currency: S.optional(S.String),
           active: S.optional(S.Boolean),
-          minimumOrderValueTable: S.optional(MinimumOrderValueTable),
-          deliveryTime: S.optional(DeliveryTime),
-          minimumOrderValue: S.optional(Price),
-          pickupService: S.optional(PickupCarrierService),
+          minimumOrderValueTable: S.optional(__S(270)),
+          deliveryTime: S.optional(__S(281)),
+          minimumOrderValue: S.optional(__S(169)),
+          pickupService: S.optional(__S(282)),
           shipmentType: S.optional(S.String),
           eligibility: S.optional(S.String),
           deliveryCountry: S.optional(S.String),
@@ -12242,14 +9856,14 @@ function __c35(j: number): any {
         }),
       ).annotate({ identifier: "Service" });
     case 4:
-      return S.Array(Service);
+      return S.Array(__S(283));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          postalCodeGroups: S.optional(PostalCodeGroupList),
-          warehouses: S.optional(WarehouseList),
+          postalCodeGroups: S.optional(__S(243)),
+          warehouses: S.optional(__S(248)),
           accountId: S.optional(S.String),
-          services: S.optional(ServiceList),
+          services: S.optional(__S(284)),
         }),
       ).annotate({
         identifier: "ShippingSettings",
@@ -12260,14 +9874,14 @@ function __c35(j: number): any {
           batchId: S.optional(S.Number),
           accountId: S.optional(S.String),
           merchantId: S.optional(S.String),
-          shippingSettings: S.optional(ShippingSettings),
+          shippingSettings: S.optional(__S(285)),
           method: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ShippingsettingsCustomBatchRequestEntry",
       });
     case 7:
-      return S.Array(ShippingsettingsCustomBatchRequestEntry);
+      return S.Array(__S(286));
   }
 }
 function __c36(j: number): any {
@@ -12275,7 +9889,7 @@ function __c36(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(ShippingsettingsCustomBatchRequestEntryList),
+          entries: S.optional(__S(287)),
         }),
       ).annotate({
         identifier: "ShippingsettingsCustomBatchRequest",
@@ -12283,7 +9897,7 @@ function __c36(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(ShippingsettingsCustomBatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(288).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12297,20 +9911,20 @@ function __c36(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          errors: S.optional(Errors),
+          errors: S.optional(__S(92)),
           kind: S.optional(S.String),
           batchId: S.optional(S.Number),
-          shippingSettings: S.optional(ShippingSettings),
+          shippingSettings: S.optional(__S(285)),
         }),
       ).annotate({
         identifier: "ShippingsettingsCustomBatchResponseEntry",
       });
     case 3:
-      return S.Array(ShippingsettingsCustomBatchResponseEntry);
+      return S.Array(__S(290));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(ShippingsettingsCustomBatchResponseEntryList),
+          entries: S.optional(__S(291)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -12537,7 +10151,7 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           languageCode: S.optional(S.String.pipe(T.Query())),
-          allowedTag: S.optional(StringList.pipe(T.Query())),
+          allowedTag: S.optional(__S(12).pipe(T.Query())),
           merchantId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -12553,13 +10167,13 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uri: S.optional(S.String),
-          type: S.optional(RecommendationCreativeTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RecommendationCreative",
       });
     case 7:
-      return S.Array(RecommendationCreative);
+      return S.Array(__S(310));
   }
 }
 function __c39(j: number): any {
@@ -12575,40 +10189,40 @@ function __c39(j: number): any {
         identifier: "RecommendationCallToAction",
       });
     case 1:
-      return S.Array(RecommendationCallToAction);
+      return S.Array(__S(312));
     case 2:
       return S.suspend(() =>
         S.Struct({
           text: S.optional(S.String),
-          type: S.optional(RecommendationDescriptionTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RecommendationDescription",
       });
     case 3:
-      return S.Array(RecommendationDescription);
+      return S.Array(__S(314));
     case 4:
       return S.suspend(() =>
         S.Struct({
           defaultDescription: S.optional(S.String),
-          creative: S.optional(RecommendationCreativeList),
+          creative: S.optional(__S(311)),
           subType: S.optional(S.String),
-          defaultCallToAction: S.optional(RecommendationCallToAction),
+          defaultCallToAction: S.optional(__S(312)),
           type: S.optional(S.String),
-          additionalCallToAction: S.optional(RecommendationCallToActionList),
+          additionalCallToAction: S.optional(__S(313)),
           numericalImpact: S.optional(S.Number),
           paid: S.optional(S.Boolean),
-          additionalDescriptions: S.optional(RecommendationDescriptionList),
+          additionalDescriptions: S.optional(__S(315)),
           recommendationName: S.optional(S.String),
           title: S.optional(S.String),
         }),
       ).annotate({ identifier: "Recommendation" });
     case 5:
-      return S.Array(Recommendation);
+      return S.Array(__S(316));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          recommendations: S.optional(RecommendationList),
+          recommendations: S.optional(__S(317)),
           responseToken: S.optional(S.String),
         }),
       ).annotate({
@@ -12638,7 +10252,7 @@ function __c40(j: number): any {
         S.Struct({
           accountId: S.optional(S.String),
           kind: S.optional(S.String),
-          gmbAccounts: S.optional(GmbAccountsGmbAccountList),
+          gmbAccounts: S.optional(__S(162)),
         }),
       ).annotate({
         identifier: "LiasettingsGetAccessibleGmbAccountsResponse",
@@ -12647,7 +10261,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
-          view: S.optional(GetAccountsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           merchantId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -12663,7 +10277,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label()),
-          destinations: S.optional(StringList.pipe(T.Query())),
+          destinations: S.optional(__S(12).pipe(T.Query())),
           merchantId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -12723,17 +10337,17 @@ function __c40(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          approvedCountries: S.optional(StringList),
+          approvedCountries: S.optional(__S(12)),
           status: S.optional(S.String),
-          disapprovedCountries: S.optional(StringList),
-          pendingCountries: S.optional(StringList),
+          disapprovedCountries: S.optional(__S(12)),
+          pendingCountries: S.optional(__S(12)),
           destination: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CollectionStatusDestinationStatus",
       });
     case 7:
-      return S.Array(CollectionStatusDestinationStatus);
+      return S.Array(__S(326));
   }
 }
 function __c41(j: number): any {
@@ -12746,7 +10360,7 @@ function __c41(j: number): any {
           attributeName: S.optional(S.String),
           detail: S.optional(S.String),
           documentation: S.optional(S.String),
-          applicableCountries: S.optional(StringList),
+          applicableCountries: S.optional(__S(12)),
           code: S.optional(S.String),
           destination: S.optional(S.String),
           servability: S.optional(S.String),
@@ -12755,13 +10369,13 @@ function __c41(j: number): any {
         identifier: "CollectionStatusItemLevelIssue",
       });
     case 1:
-      return S.Array(CollectionStatusItemLevelIssue);
+      return S.Array(__S(328));
     case 2:
       return S.suspend(() =>
         S.Struct({
           creationDate: S.optional(S.String),
-          destinationStatuses: S.optional(CollectionStatusDestinationStatusList),
-          collectionLevelIssuses: S.optional(CollectionStatusItemLevelIssueList),
+          destinationStatuses: S.optional(__S(327)),
+          collectionLevelIssuses: S.optional(__S(329)),
           id: S.optional(S.String),
           lastUpdateDate: S.optional(S.String),
         }),
@@ -12806,7 +10420,7 @@ function __c41(j: number): any {
           cssDomainId: S.optional(S.String),
           cssGroupId: S.optional(S.String),
           fullName: S.optional(S.String),
-          labelIds: S.optional(StringList),
+          labelIds: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "Css" });
     case 6:
@@ -12872,31 +10486,25 @@ function __c42(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reviewIneligibilityReasonDescription: S.optional(S.String),
-          reviewEligibilityStatus: S.optional(
-            FreeListingsProgramStatusRegionStatusReviewEligibilityStatusEnum,
-          ),
-          reviewIneligibilityReason: S.optional(
-            FreeListingsProgramStatusRegionStatusReviewIneligibilityReasonEnum,
-          ),
-          reviewIneligibilityReasonDetails: S.optional(
-            FreeListingsProgramStatusReviewIneligibilityReasonDetails,
-          ),
-          reviewIssues: S.optional(StringList),
-          onboardingIssues: S.optional(StringList),
-          regionCodes: S.optional(StringList),
-          eligibilityStatus: S.optional(FreeListingsProgramStatusRegionStatusEligibilityStatusEnum),
+          reviewEligibilityStatus: S.optional(S.String),
+          reviewIneligibilityReason: S.optional(S.String),
+          reviewIneligibilityReasonDetails: S.optional(__S(337)),
+          reviewIssues: S.optional(__S(12)),
+          onboardingIssues: S.optional(__S(12)),
+          regionCodes: S.optional(__S(12)),
+          eligibilityStatus: S.optional(S.String),
           disapprovalDate: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FreeListingsProgramStatusRegionStatus",
       });
     case 3:
-      return S.Array(FreeListingsProgramStatusRegionStatus);
+      return S.Array(__S(338));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          regionStatuses: S.optional(FreeListingsProgramStatusRegionStatusList),
-          globalState: S.optional(FreeListingsProgramStatusGlobalStateEnum),
+          regionStatuses: S.optional(__S(339)),
+          globalState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FreeListingsProgramStatus",
@@ -12925,13 +10533,13 @@ function __c42(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          effectiveEnrollmentState: S.optional(CheckoutSettingsEffectiveEnrollmentStateEnum),
-          effectiveReviewState: S.optional(CheckoutSettingsEffectiveReviewStateEnum),
-          reviewState: S.optional(CheckoutSettingsReviewStateEnum),
-          uriSettings: S.optional(UrlSettings),
+          effectiveEnrollmentState: S.optional(S.String),
+          effectiveReviewState: S.optional(S.String),
+          reviewState: S.optional(S.String),
+          uriSettings: S.optional(__S(342)),
           merchantId: S.optional(S.String),
-          effectiveUriSettings: S.optional(UrlSettings),
-          enrollmentState: S.optional(CheckoutSettingsEnrollmentStateEnum),
+          effectiveUriSettings: S.optional(__S(342)),
+          enrollmentState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CheckoutSettings",
@@ -13003,7 +10611,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           productId: S.String.pipe(T.Label()),
-          destinations: S.optional(StringList.pipe(T.Query())),
+          destinations: S.optional(__S(12).pipe(T.Query())),
           merchantId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -13047,7 +10655,7 @@ function __c43(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          registeredEvents: S.optional(StringList),
+          registeredEvents: S.optional(__S(12)),
           cloudTopicName: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -13122,30 +10730,24 @@ function __c44(j: number): any {
         S.Struct({
           disapprovalDate: S.optional(S.String),
           reviewIneligibilityReasonDescription: S.optional(S.String),
-          reviewIneligibilityReasonDetails: S.optional(
-            FreeListingsProgramStatusReviewIneligibilityReasonDetails,
-          ),
-          eligibilityStatus: S.optional(ShoppingAdsProgramStatusRegionStatusEligibilityStatusEnum),
-          reviewEligibilityStatus: S.optional(
-            ShoppingAdsProgramStatusRegionStatusReviewEligibilityStatusEnum,
-          ),
-          regionCodes: S.optional(StringList),
-          onboardingIssues: S.optional(StringList),
-          reviewIssues: S.optional(StringList),
-          reviewIneligibilityReason: S.optional(
-            ShoppingAdsProgramStatusRegionStatusReviewIneligibilityReasonEnum,
-          ),
+          reviewIneligibilityReasonDetails: S.optional(__S(337)),
+          eligibilityStatus: S.optional(S.String),
+          reviewEligibilityStatus: S.optional(S.String),
+          regionCodes: S.optional(__S(12)),
+          onboardingIssues: S.optional(__S(12)),
+          reviewIssues: S.optional(__S(12)),
+          reviewIneligibilityReason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ShoppingAdsProgramStatusRegionStatus",
       });
     case 5:
-      return S.Array(ShoppingAdsProgramStatusRegionStatus);
+      return S.Array(__S(356));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          globalState: S.optional(ShoppingAdsProgramStatusGlobalStateEnum),
-          regionStatuses: S.optional(ShoppingAdsProgramStatusRegionStatusList),
+          globalState: S.optional(S.String),
+          regionStatuses: S.optional(__S(357)),
         }),
       ).annotate({
         identifier: "ShoppingAdsProgramStatus",
@@ -13171,21 +10773,21 @@ function __c45(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          services: S.optional(StringList),
+          services: S.optional(__S(12)),
           country: S.optional(S.String),
-          eddServices: S.optional(StringList),
+          eddServices: S.optional(__S(12)),
           name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CarriersCarrier",
       });
     case 1:
-      return S.Array(CarriersCarrier);
+      return S.Array(__S(360));
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          carriers: S.optional(CarriersCarrierList),
+          carriers: S.optional(__S(361)),
         }),
       ).annotate({
         identifier: "ShippingsettingsGetSupportedCarriersResponse",
@@ -13218,11 +10820,11 @@ function __c45(j: number): any {
         identifier: "HolidaysHoliday",
       });
     case 5:
-      return S.Array(HolidaysHoliday);
+      return S.Array(__S(364));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          holidays: S.optional(HolidaysHolidayList),
+          holidays: S.optional(__S(365)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -13257,12 +10859,12 @@ function __c46(j: number): any {
         identifier: "PickupServicesPickupService",
       });
     case 1:
-      return S.Array(PickupServicesPickupService);
+      return S.Array(__S(368));
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          pickupServices: S.optional(PickupServicesPickupServiceList),
+          pickupServices: S.optional(__S(369)),
         }),
       ).annotate({
         identifier: "ShippingsettingsGetSupportedPickupServicesResponse",
@@ -13271,7 +10873,7 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(Account.pipe(T.HttpBody())),
+          body: S.optional(__S(84).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13286,7 +10888,7 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(Datafeed.pipe(T.HttpBody())),
+          body: S.optional(__S(125).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13300,7 +10902,7 @@ function __c46(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          uriSettings: S.optional(UrlSettings),
+          uriSettings: S.optional(__S(342)),
         }),
       ).annotate({
         identifier: "InsertCheckoutSettingsRequest",
@@ -13309,7 +10911,7 @@ function __c46(j: number): any {
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(InsertCheckoutSettingsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(373).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13325,7 +10927,7 @@ function __c46(j: number): any {
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
           productId: S.String.pipe(T.Label()),
-          body: S.optional(LocalInventory.pipe(T.HttpBody())),
+          body: S.optional(__S(170).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13345,7 +10947,7 @@ function __c47(j: number): any {
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
           targetMerchantId: S.String.pipe(T.Label()),
-          body: S.optional(PosStore.pipe(T.HttpBody())),
+          body: S.optional(__S(180).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13361,7 +10963,7 @@ function __c47(j: number): any {
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
           feedId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Product.pipe(T.HttpBody())),
+          body: S.optional(__S(212).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13377,7 +10979,7 @@ function __c47(j: number): any {
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
           productId: S.String.pipe(T.Label()),
-          body: S.optional(RegionalInventory.pipe(T.HttpBody())),
+          body: S.optional(__S(232).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13391,7 +10993,7 @@ function __c47(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          price: S.optional(Price),
+          price: S.optional(__S(169)),
           storeCode: S.optional(S.String),
           pickupMethod: S.optional(S.String),
           itemId: S.optional(S.String),
@@ -13410,7 +11012,7 @@ function __c47(j: number): any {
         S.Struct({
           targetMerchantId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(PosInventoryRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(379).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13433,7 +11035,7 @@ function __c47(j: number): any {
           timestamp: S.optional(S.String),
           itemId: S.optional(S.String),
           storeCode: S.optional(S.String),
-          price: S.optional(Price),
+          price: S.optional(__S(169)),
           contentLanguage: S.optional(S.String),
         }),
       ).annotate({
@@ -13465,9 +11067,9 @@ function __c48(j: number): any {
         S.Struct({
           linkType: S.optional(S.String),
           linkedAccountId: S.optional(S.String),
-          paymentServiceProviderLinkInfo: S.optional(PaymentServiceProviderLinkInfo),
-          services: S.optional(StringList),
-          eCommercePlatformLinkInfo: S.optional(ECommercePlatformLinkInfo),
+          paymentServiceProviderLinkInfo: S.optional(__S(382)),
+          services: S.optional(__S(12)),
+          eCommercePlatformLinkInfo: S.optional(__S(383)),
           action: S.optional(S.String),
         }),
       ).annotate({
@@ -13478,7 +11080,7 @@ function __c48(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(AccountsLinkRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(384).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -13493,7 +11095,7 @@ function __c48(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(ListAccountsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           merchantId: S.String.pipe(T.Label()),
@@ -13509,13 +11111,13 @@ function __c48(j: number): any {
         identifier: "ListAccountsRequest",
       });
     case 3:
-      return S.Array(Account);
+      return S.Array(__S(84));
     case 4:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          resources: S.optional(AccountList),
+          resources: S.optional(__S(387)),
         }),
       ).annotate({
         identifier: "AccountsListResponse",
@@ -13537,11 +11139,11 @@ function __c48(j: number): any {
         identifier: "ListAccountsLabelsRequest",
       });
     case 6:
-      return S.Array(AccountLabel);
+      return S.Array(__S(8));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          accountLabels: S.optional(AccountLabelList),
+          accountLabels: S.optional(__S(390)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13566,11 +11168,11 @@ function __c49(j: number): any {
         identifier: "ListAccountsReturncarrierRequest",
       });
     case 1:
-      return S.Array(AccountReturnCarrier);
+      return S.Array(__S(10));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          accountReturnCarriers: S.optional(AccountReturnCarrierList),
+          accountReturnCarriers: S.optional(__S(393)),
         }),
       ).annotate({
         identifier: "ListAccountReturnCarrierResponse",
@@ -13578,7 +11180,7 @@ function __c49(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          destinations: S.optional(StringList.pipe(T.Query())),
+          destinations: S.optional(__S(12).pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
           merchantId: S.String.pipe(T.Label()),
           name: S.optional(S.String.pipe(T.Query())),
@@ -13594,12 +11196,12 @@ function __c49(j: number): any {
         identifier: "ListAccountstatusesRequest",
       });
     case 4:
-      return S.Array(AccountStatus);
+      return S.Array(__S(107));
     case 5:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          resources: S.optional(AccountStatusList),
+          resources: S.optional(__S(396)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13622,7 +11224,7 @@ function __c49(j: number): any {
         identifier: "ListAccounttaxRequest",
       });
     case 7:
-      return S.Array(AccountTax);
+      return S.Array(__S(113));
   }
 }
 function __c50(j: number): any {
@@ -13631,7 +11233,7 @@ function __c50(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          resources: S.optional(AccountTaxList),
+          resources: S.optional(__S(399)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13654,11 +11256,11 @@ function __c50(j: number): any {
         identifier: "ListCollectionsRequest",
       });
     case 2:
-      return S.Array(Collection);
+      return S.Array(__S(15));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(CollectionList),
+          resources: S.optional(__S(402)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13681,12 +11283,12 @@ function __c50(j: number): any {
         identifier: "ListCollectionstatusesRequest",
       });
     case 5:
-      return S.Array(CollectionStatus);
+      return S.Array(__S(330));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          resources: S.optional(CollectionStatusList),
+          resources: S.optional(__S(405)),
         }),
       ).annotate({
         identifier: "ListCollectionStatusesResponse",
@@ -13713,11 +11315,11 @@ function __c50(j: number): any {
 function __c51(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ConversionSource);
+      return S.Array(__S(22));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          conversionSources: S.optional(ConversionSourceList),
+          conversionSources: S.optional(__S(408)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13740,11 +11342,11 @@ function __c51(j: number): any {
         identifier: "ListCssesRequest",
       });
     case 3:
-      return S.Array(Css);
+      return S.Array(__S(333));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          csses: S.optional(CssList),
+          csses: S.optional(__S(411)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13767,13 +11369,13 @@ function __c51(j: number): any {
         identifier: "ListDatafeedsRequest",
       });
     case 6:
-      return S.Array(Datafeed);
+      return S.Array(__S(125));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
-          resources: S.optional(DatafeedList),
+          resources: S.optional(__S(414)),
         }),
       ).annotate({
         identifier: "DatafeedsListResponse",
@@ -13799,11 +11401,11 @@ function __c52(j: number): any {
         identifier: "ListDatafeedstatusesRequest",
       });
     case 1:
-      return S.Array(DatafeedStatus);
+      return S.Array(__S(141));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(DatafeedStatusList),
+          resources: S.optional(__S(417)),
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
         }),
@@ -13827,11 +11429,11 @@ function __c52(j: number): any {
         identifier: "ListLiasettingsRequest",
       });
     case 4:
-      return S.Array(LiaSettings);
+      return S.Array(__S(152));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          resources: S.optional(LiaSettingsList),
+          resources: S.optional(__S(420)),
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
         }),
@@ -13867,21 +11469,21 @@ function __c52(j: number): any {
 function __c53(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(LinkService);
+      return S.Array(__S(423));
     case 1:
       return S.suspend(() =>
         S.Struct({
           linkedAccountId: S.optional(S.String),
-          services: S.optional(LinkServiceList),
+          services: S.optional(__S(424)),
         }),
       ).annotate({ identifier: "LinkedAccount" });
     case 2:
-      return S.Array(LinkedAccount);
+      return S.Array(__S(425));
     case 3:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          links: S.optional(LinkedAccountList),
+          links: S.optional(__S(426)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -13901,12 +11503,12 @@ function __c53(j: number): any {
         ),
       ).annotate({ identifier: "ListPosRequest" });
     case 5:
-      return S.Array(PosStore);
+      return S.Array(__S(180));
     case 6:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          resources: S.optional(PosStoreList),
+          resources: S.optional(__S(429)),
         }),
       ).annotate({
         identifier: "PosListResponse",
@@ -13930,7 +11532,7 @@ function __c54(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          posDataProviders: S.optional(PosDataProvidersList),
+          posDataProviders: S.optional(__S(160)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -13953,12 +11555,12 @@ function __c54(j: number): any {
         identifier: "ListProductsRequest",
       });
     case 2:
-      return S.Array(Product);
+      return S.Array(__S(212));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          resources: S.optional(ProductList),
+          resources: S.optional(__S(434)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -13969,7 +11571,7 @@ function __c54(j: number): any {
         S.Struct({
           pageToken: S.optional(S.String.pipe(T.Query())),
           maxResults: S.optional(S.Number.pipe(T.Query())),
-          destinations: S.optional(StringList.pipe(T.Query())),
+          destinations: S.optional(__S(12).pipe(T.Query())),
           merchantId: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -13982,13 +11584,13 @@ function __c54(j: number): any {
         identifier: "ListProductstatusesRequest",
       });
     case 5:
-      return S.Array(ProductStatus);
+      return S.Array(__S(228));
     case 6:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
           nextPageToken: S.optional(S.String),
-          resources: S.optional(ProductStatusList),
+          resources: S.optional(__S(437)),
         }),
       ).annotate({
         identifier: "ProductstatusesListResponse",
@@ -14016,11 +11618,11 @@ function __c54(j: number): any {
 function __c55(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Promotion);
+      return S.Array(__S(50));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          promotions: S.optional(PromotionList),
+          promotions: S.optional(__S(440)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -14052,11 +11654,11 @@ function __c55(j: number): any {
         }),
       ).annotate({ identifier: "MethodQuota" });
     case 4:
-      return S.Array(MethodQuota);
+      return S.Array(__S(443));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          methodQuotas: S.optional(MethodQuotaList),
+          methodQuotas: S.optional(__S(444)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -14079,7 +11681,7 @@ function __c55(j: number): any {
         identifier: "ListRegionsRequest",
       });
     case 7:
-      return S.Array(Region);
+      return S.Array(__S(56));
   }
 }
 function __c56(j: number): any {
@@ -14088,7 +11690,7 @@ function __c56(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          regions: S.optional(RegionList),
+          regions: S.optional(__S(447)),
         }),
       ).annotate({
         identifier: "ListRegionsResponse",
@@ -14108,11 +11710,11 @@ function __c56(j: number): any {
         identifier: "ListReturnpolicyonlineRequest",
       });
     case 2:
-      return S.Array(ReturnPolicyOnline);
+      return S.Array(__S(63));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          returnPolicies: S.optional(ReturnPolicyOnlineList),
+          returnPolicies: S.optional(__S(450)),
         }),
       ).annotate({
         identifier: "ListReturnPolicyOnlineResponse",
@@ -14134,13 +11736,13 @@ function __c56(j: number): any {
         identifier: "ListShippingsettingsRequest",
       });
     case 5:
-      return S.Array(ShippingSettings);
+      return S.Array(__S(285));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
           kind: S.optional(S.String),
-          resources: S.optional(ShippingSettingsList),
+          resources: S.optional(__S(453)),
         }),
       ).annotate({
         identifier: "ShippingsettingsListResponse",
@@ -14150,7 +11752,7 @@ function __c56(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           labelId: S.String.pipe(T.Label()),
-          body: S.optional(AccountLabel.pipe(T.HttpBody())),
+          body: S.optional(__S(8).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14170,7 +11772,7 @@ function __c57(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           carrierAccountId: S.String.pipe(T.Label()),
-          body: S.optional(AccountReturnCarrier.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14187,7 +11789,7 @@ function __c57(j: number): any {
           merchantId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
           conversionSourceId: S.String.pipe(T.Label()),
-          body: S.optional(ConversionSource.pipe(T.HttpBody())),
+          body: S.optional(__S(22).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14204,7 +11806,7 @@ function __c57(j: number): any {
           regionId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Region.pipe(T.HttpBody())),
+          body: S.optional(__S(56).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14220,7 +11822,7 @@ function __c57(j: number): any {
         S.Struct({
           returnPolicyId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(ReturnPolicyOnline.pipe(T.HttpBody())),
+          body: S.optional(__S(63).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -14234,10 +11836,8 @@ function __c57(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          contentOption: S.optional(RenderAccountIssuesRequestPayloadContentOptionEnum),
-          userInputActionOption: S.optional(
-            RenderAccountIssuesRequestPayloadUserInputActionOptionEnum,
-          ),
+          contentOption: S.optional(S.String),
+          userInputActionOption: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RenderAccountIssuesRequestPayload",
@@ -14248,7 +11848,7 @@ function __c57(j: number): any {
           timeZone: S.optional(S.String.pipe(T.Query())),
           merchantId: S.String.pipe(T.Label()),
           languageCode: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(RenderAccountIssuesRequestPayload.pipe(T.HttpBody())),
+          body: S.optional(__S(460).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14282,21 +11882,21 @@ function __c57(j: number): any {
 function __c58(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BreakdownRegion);
+      return S.Array(__S(463));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(StringList),
-          regions: S.optional(BreakdownRegionList),
+          details: S.optional(__S(12)),
+          regions: S.optional(__S(464)),
         }),
       ).annotate({ identifier: "Breakdown" });
     case 2:
-      return S.Array(Breakdown);
+      return S.Array(__S(465));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          breakdowns: S.optional(BreakdownList),
-          severity: S.optional(AccountIssueImpactSeverityEnum),
+          breakdowns: S.optional(__S(466)),
+          severity: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({
@@ -14307,7 +11907,7 @@ function __c58(j: number): any {
         S.Struct({
           simpleTooltipValue: S.optional(S.String),
           simpleValue: S.optional(S.String),
-          tooltipIconStyle: S.optional(TextWithTooltipTooltipIconStyleEnum),
+          tooltipIconStyle: S.optional(S.String),
         }),
       ).annotate({
         identifier: "TextWithTooltip",
@@ -14315,17 +11915,17 @@ function __c58(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          styleHint: S.optional(CalloutStyleHintEnum),
-          fullMessage: S.optional(TextWithTooltip),
+          styleHint: S.optional(S.String),
+          fullMessage: S.optional(__S(468)),
         }),
       ).annotate({ identifier: "Callout" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           ariaLabel: S.optional(S.String),
-          additionalInfo: S.optional(TextWithTooltip),
+          additionalInfo: S.optional(__S(468)),
           formatInfo: S.optional(S.String),
-          type: S.optional(InputFieldTextInputTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "InputFieldTextInput",
@@ -14333,8 +11933,8 @@ function __c58(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          label: S.optional(TextWithTooltip),
-          additionalInput: S.optional(S.suspend(() => InputField)),
+          label: S.optional(__S(468)),
+          additionalInput: S.optional(S.suspend(() => __S(474))),
           id: S.optional(S.String),
         }),
       ).annotate({
@@ -14345,11 +11945,11 @@ function __c58(j: number): any {
 function __c59(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(InputFieldChoiceInputChoiceInputOption);
+      return S.Array(__S(471));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(InputFieldChoiceInputChoiceInputOptionList),
+          options: S.optional(__S(472)),
         }),
       ).annotate({
         identifier: "InputFieldChoiceInput",
@@ -14357,34 +11957,34 @@ function __c59(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          textInput: S.optional(InputFieldTextInput),
+          textInput: S.optional(__S(470)),
           id: S.optional(S.String),
-          choiceInput: S.optional(InputFieldChoiceInput),
+          choiceInput: S.optional(__S(473)),
           required: S.optional(S.Boolean),
-          label: S.optional(TextWithTooltip),
-          checkboxInput: S.optional(InputFieldCheckboxInput),
+          label: S.optional(__S(468)),
+          checkboxInput: S.optional(__S(294)),
         }),
       ).annotate({ identifier: "InputField" });
     case 3:
-      return S.Array(InputField);
+      return S.Array(__S(474));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          dialogCallout: S.optional(Callout),
+          dialogCallout: S.optional(__S(469)),
           label: S.optional(S.String),
-          dialogMessage: S.optional(TextWithTooltip),
-          inputs: S.optional(InputFieldList),
+          dialogMessage: S.optional(__S(468)),
+          inputs: S.optional(__S(475)),
           dialogTitle: S.optional(S.String),
           dialogButtonLabel: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActionFlow" });
     case 5:
-      return S.Array(ActionFlow);
+      return S.Array(__S(476));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          flows: S.optional(ActionFlowList),
+          flows: S.optional(__S(477)),
           actionContext: S.optional(S.String),
         }),
       ).annotate({
@@ -14394,7 +11994,7 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          action: S.optional(S.suspend(() => Action)),
+          action: S.optional(S.suspend(() => __S(484))),
           detail: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActionReason" });
@@ -14403,18 +12003,18 @@ function __c59(j: number): any {
 function __c60(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ActionReason);
+      return S.Array(__S(479));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ExternalActionTypeEnum),
+          type: S.optional(S.String),
           uri: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExternalAction" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          paragraphs: S.optional(StringList),
+          paragraphs: S.optional(__S(12)),
           title: S.optional(S.String),
         }),
       ).annotate({
@@ -14423,8 +12023,8 @@ function __c60(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(BuiltInSimpleActionTypeEnum),
-          additionalContent: S.optional(BuiltInSimpleActionAdditionalContent),
+          type: S.optional(S.String),
+          additionalContent: S.optional(__S(482)),
           attributeCode: S.optional(S.String),
         }),
       ).annotate({
@@ -14435,26 +12035,26 @@ function __c60(j: number): any {
         S.Struct({
           buttonLabel: S.optional(S.String),
           isAvailable: S.optional(S.Boolean),
-          builtinUserInputAction: S.optional(BuiltInUserInputAction),
-          reasons: S.optional(ActionReasonList),
-          externalAction: S.optional(ExternalAction),
-          builtinSimpleAction: S.optional(BuiltInSimpleAction),
+          builtinUserInputAction: S.optional(__S(478)),
+          reasons: S.optional(__S(480)),
+          externalAction: S.optional(__S(481)),
+          builtinSimpleAction: S.optional(__S(483)),
         }),
       ).annotate({ identifier: "Action" });
     case 5:
-      return S.Array(Action);
+      return S.Array(__S(484));
     case 6:
       return S.suspend(() =>
         S.Struct({
           prerenderedOutOfCourtDisputeSettlement: S.optional(S.String),
-          impact: S.optional(AccountIssueImpact),
+          impact: S.optional(__S(467)),
           title: S.optional(S.String),
           prerenderedContent: S.optional(S.String),
-          actions: S.optional(ActionList),
+          actions: S.optional(__S(485)),
         }),
       ).annotate({ identifier: "AccountIssue" });
     case 7:
-      return S.Array(AccountIssue);
+      return S.Array(__S(486));
   }
 }
 function __c61(j: number): any {
@@ -14462,8 +12062,8 @@ function __c61(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          alternateDisputeResolution: S.optional(AlternateDisputeResolution),
-          issues: S.optional(AccountIssueList),
+          alternateDisputeResolution: S.optional(__S(462)),
+          issues: S.optional(__S(487)),
         }),
       ).annotate({
         identifier: "RenderAccountIssuesResponse",
@@ -14475,7 +12075,7 @@ function __c61(j: number): any {
           productId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
           languageCode: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(RenderProductIssuesRequestPayload.pipe(T.HttpBody())),
+          body: S.optional(__S(460).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14489,9 +12089,9 @@ function __c61(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          severity: S.optional(ProductIssueImpactSeverityEnum),
+          severity: S.optional(S.String),
           message: S.optional(S.String),
-          breakdowns: S.optional(BreakdownList),
+          breakdowns: S.optional(__S(466)),
         }),
       ).annotate({
         identifier: "ProductIssueImpact",
@@ -14500,19 +12100,19 @@ function __c61(j: number): any {
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
-          actions: S.optional(ActionList),
+          actions: S.optional(__S(485)),
           prerenderedOutOfCourtDisputeSettlement: S.optional(S.String),
-          impact: S.optional(ProductIssueImpact),
+          impact: S.optional(__S(490)),
           prerenderedContent: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductIssue" });
     case 4:
-      return S.Array(ProductIssue);
+      return S.Array(__S(491));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          issues: S.optional(ProductIssueList),
-          alternateDisputeResolution: S.optional(AlternateDisputeResolution),
+          issues: S.optional(__S(492)),
+          alternateDisputeResolution: S.optional(__S(462)),
         }),
       ).annotate({
         identifier: "RenderProductIssuesResponse",
@@ -14520,7 +12120,7 @@ function __c61(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          interactionType: S.optional(ReportInteractionRequestInteractionTypeEnum),
+          interactionType: S.optional(S.String),
           type: S.optional(S.String),
           subtype: S.optional(S.String),
           responseToken: S.optional(S.String),
@@ -14532,7 +12132,7 @@ function __c61(j: number): any {
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(ReportInteractionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(494).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14582,9 +12182,7 @@ function __c62(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          phoneVerificationMethod: S.optional(
-            RequestPhoneVerificationRequestPhoneVerificationMethodEnum,
-          ),
+          phoneVerificationMethod: S.optional(S.String),
           phoneRegionCode: S.optional(S.String),
           languageCode: S.optional(S.String),
           phoneNumber: S.optional(S.String),
@@ -14597,7 +12195,7 @@ function __c62(j: number): any {
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(RequestPhoneVerificationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(498).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14628,7 +12226,7 @@ function __c62(j: number): any {
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(RequestReviewFreeListingsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(501).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14643,7 +12241,7 @@ function __c62(j: number): any {
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(RequestReviewFreeListingsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(501).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14667,7 +12265,7 @@ function __c63(j: number): any {
           targetCountry: S.optional(S.String),
           storeCode: S.optional(S.String),
           quantity: S.optional(S.String),
-          price: S.optional(Price),
+          price: S.optional(__S(169)),
           saleId: S.optional(S.String),
           contentLanguage: S.optional(S.String),
         }),
@@ -14677,7 +12275,7 @@ function __c63(j: number): any {
         S.Struct({
           targetMerchantId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(PosSaleRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(504).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14694,7 +12292,7 @@ function __c63(j: number): any {
           quantity: S.optional(S.String),
           kind: S.optional(S.String),
           gtin: S.optional(S.String),
-          price: S.optional(Price),
+          price: S.optional(__S(169)),
           targetCountry: S.optional(S.String),
           contentLanguage: S.optional(S.String),
           storeCode: S.optional(S.String),
@@ -14715,7 +12313,7 @@ function __c63(j: number): any {
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(SearchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(507).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -14737,7 +12335,7 @@ function __c63(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          date: S.optional(Content_Date),
+          date: S.optional(__S(509)),
           last90DaysSearchInterest: S.optional(S.Number),
           searchInterest: S.optional(S.Number),
           customerCountryCode: S.optional(S.String),
@@ -14752,15 +12350,15 @@ function __c63(j: number): any {
       return S.suspend(() =>
         S.Struct({
           title: S.optional(S.String),
-          brandInventoryStatus: S.optional(ProductClusterBrandInventoryStatusEnum),
+          brandInventoryStatus: S.optional(S.String),
           categoryL5: S.optional(S.String),
           brand: S.optional(S.String),
           categoryL1: S.optional(S.String),
           categoryL4: S.optional(S.String),
-          inventoryStatus: S.optional(ProductClusterInventoryStatusEnum),
+          inventoryStatus: S.optional(S.String),
           categoryL3: S.optional(S.String),
           categoryL2: S.optional(S.String),
-          variantGtins: S.optional(StringList),
+          variantGtins: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "ProductCluster" });
   }
@@ -14770,15 +12368,15 @@ function __c64(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          relativeDemand: S.optional(BestSellersRelativeDemandEnum),
+          relativeDemand: S.optional(S.String),
           categoryId: S.optional(S.String),
           rank: S.optional(S.String),
-          previousRelativeDemand: S.optional(BestSellersPreviousRelativeDemandEnum),
-          reportGranularity: S.optional(BestSellersReportGranularityEnum),
+          previousRelativeDemand: S.optional(S.String),
+          reportGranularity: S.optional(S.String),
           countryCode: S.optional(S.String),
-          reportDate: S.optional(Content_Date),
+          reportDate: S.optional(__S(509)),
           previousRank: S.optional(S.String),
-          relativeDemandChange: S.optional(BestSellersRelativeDemandChangeEnum),
+          relativeDemandChange: S.optional(S.String),
         }),
       ).annotate({ identifier: "BestSellers" });
     case 1:
@@ -14794,8 +12392,8 @@ function __c64(j: number): any {
           relativeVisibility: S.optional(S.Number),
           categoryId: S.optional(S.String),
           rank: S.optional(S.String),
-          date: S.optional(Content_Date),
-          trafficSource: S.optional(CompetitiveVisibilityTrafficSourceEnum),
+          date: S.optional(__S(509)),
+          trafficSource: S.optional(S.String),
           countryCode: S.optional(S.String),
         }),
       ).annotate({
@@ -14842,7 +12440,7 @@ function __c64(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          effectiveness: S.optional(PriceInsightsEffectivenessEnum),
+          effectiveness: S.optional(S.String),
           predictedMonthlyGrossProfitChangeCurrencyCode: S.optional(S.String),
           predictedClicksChangeFraction: S.optional(S.Number),
           predictedImpressionsChangeFraction: S.optional(S.Number),
@@ -14871,9 +12469,9 @@ function __c64(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          disapprovedCountries: S.optional(StringList),
+          disapprovedCountries: S.optional(__S(12)),
           destination: S.optional(S.String),
-          demotedCountries: S.optional(StringList),
+          demotedCountries: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "ProductViewItemIssueIssueSeverityPerDestination",
@@ -14883,14 +12481,12 @@ function __c64(j: number): any {
 function __c65(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ProductViewItemIssueIssueSeverityPerDestination);
+      return S.Array(__S(519));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          severityPerDestination: S.optional(ProductViewItemIssueIssueSeverityPerDestinationList),
-          aggregatedSeverity: S.optional(
-            ProductViewItemIssueItemIssueSeverityAggregatedSeverityEnum,
-          ),
+          severityPerDestination: S.optional(__S(520)),
+          aggregatedSeverity: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ProductViewItemIssueItemIssueSeverity",
@@ -14898,15 +12494,15 @@ function __c65(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          issueType: S.optional(ProductViewItemIssueItemIssueType),
-          severity: S.optional(ProductViewItemIssueItemIssueSeverity),
-          resolution: S.optional(ProductViewItemIssueResolutionEnum),
+          issueType: S.optional(__S(518)),
+          severity: S.optional(__S(521)),
+          resolution: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ProductViewItemIssue",
       });
     case 3:
-      return S.Array(ProductViewItemIssue);
+      return S.Array(__S(522));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -14914,9 +12510,9 @@ function __c65(j: number): any {
           categoryL1: S.optional(S.String),
           productTypeL2: S.optional(S.String),
           condition: S.optional(S.String),
-          channel: S.optional(ProductViewChannelEnum),
+          channel: S.optional(S.String),
           productTypeL3: S.optional(S.String),
-          itemIssues: S.optional(ProductViewItemIssueList),
+          itemIssues: S.optional(__S(523)),
           title: S.optional(S.String),
           categoryL5: S.optional(S.String),
           currencyCode: S.optional(S.String),
@@ -14925,20 +12521,20 @@ function __c65(j: number): any {
           categoryL3: S.optional(S.String),
           categoryL2: S.optional(S.String),
           id: S.optional(S.String),
-          gtin: S.optional(StringList),
+          gtin: S.optional(__S(12)),
           priceMicros: S.optional(S.String),
           offerId: S.optional(S.String),
-          clickPotential: S.optional(ProductViewClickPotentialEnum),
+          clickPotential: S.optional(S.String),
           productTypeL1: S.optional(S.String),
           languageCode: S.optional(S.String),
           brand: S.optional(S.String),
           shippingLabel: S.optional(S.String),
-          expirationDate: S.optional(Content_Date),
+          expirationDate: S.optional(__S(509)),
           itemGroupId: S.optional(S.String),
           creationTime: S.optional(S.String),
           availability: S.optional(S.String),
           productTypeL4: S.optional(S.String),
-          aggregatedDestinationStatus: S.optional(ProductViewAggregatedDestinationStatusEnum),
+          aggregatedDestinationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductView" });
     case 5:
@@ -14950,13 +12546,13 @@ function __c65(j: number): any {
           productTypeL4: S.optional(S.String),
           categoryL4: S.optional(S.String),
           categoryL3: S.optional(S.String),
-          week: S.optional(Content_Date),
+          week: S.optional(__S(509)),
           currencyCode: S.optional(S.String),
           brand: S.optional(S.String),
-          date: S.optional(Content_Date),
+          date: S.optional(__S(509)),
           title: S.optional(S.String),
           customLabel2: S.optional(S.String),
-          program: S.optional(SegmentsProgramEnum),
+          program: S.optional(S.String),
           productTypeL1: S.optional(S.String),
           categoryL1: S.optional(S.String),
           customerCountryCode: S.optional(S.String),
@@ -14972,20 +12568,20 @@ function __c65(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          topicTrends: S.optional(TopicTrends),
-          productCluster: S.optional(ProductCluster),
-          bestSellers: S.optional(BestSellers),
-          competitiveVisibility: S.optional(CompetitiveVisibility),
-          priceCompetitiveness: S.optional(PriceCompetitiveness),
-          metrics: S.optional(Metrics),
-          priceInsights: S.optional(PriceInsights),
-          brand: S.optional(Brand),
-          productView: S.optional(ProductView),
-          segments: S.optional(Segments),
+          topicTrends: S.optional(__S(510)),
+          productCluster: S.optional(__S(511)),
+          bestSellers: S.optional(__S(512)),
+          competitiveVisibility: S.optional(__S(513)),
+          priceCompetitiveness: S.optional(__S(514)),
+          metrics: S.optional(__S(515)),
+          priceInsights: S.optional(__S(516)),
+          brand: S.optional(__S(517)),
+          productView: S.optional(__S(524)),
+          segments: S.optional(__S(525)),
         }),
       ).annotate({ identifier: "ReportRow" });
     case 7:
-      return S.Array(ReportRow);
+      return S.Array(__S(526));
   }
 }
 function __c66(j: number): any {
@@ -14994,7 +12590,7 @@ function __c66(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          results: S.optional(ReportRowList),
+          results: S.optional(__S(527)),
         }),
       ).annotate({ identifier: "SearchResponse" });
     case 1:
@@ -15023,7 +12619,7 @@ function __c66(j: number): any {
           lsfType: S.optional(S.String.pipe(T.Query())),
           merchantId: S.String.pipe(T.Label()),
           country: S.optional(S.String.pipe(T.Query())),
-          pickupTypes: S.optional(StringList.pipe(T.Query())),
+          pickupTypes: S.optional(__S(12).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15079,10 +12675,10 @@ function __c66(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          choiceInputValue: S.optional(InputValueChoiceInputValue),
+          choiceInputValue: S.optional(__S(532)),
           inputFieldId: S.optional(S.String),
-          textInputValue: S.optional(InputValueTextInputValue),
-          checkboxInputValue: S.optional(InputValueCheckboxInputValue),
+          textInputValue: S.optional(__S(533)),
+          checkboxInputValue: S.optional(__S(534)),
         }),
       ).annotate({ identifier: "InputValue" });
   }
@@ -15090,18 +12686,18 @@ function __c66(j: number): any {
 function __c67(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(InputValue);
+      return S.Array(__S(535));
     case 1:
       return S.suspend(() =>
         S.Struct({
           actionFlowId: S.optional(S.String),
-          inputValues: S.optional(InputValueList),
+          inputValues: S.optional(__S(536)),
         }),
       ).annotate({ identifier: "ActionInput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          actionInput: S.optional(ActionInput),
+          actionInput: S.optional(__S(537)),
           actionContext: S.optional(S.String),
         }),
       ).annotate({
@@ -15112,7 +12708,7 @@ function __c67(j: number): any {
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
           languageCode: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(TriggerActionPayload.pipe(T.HttpBody())),
+          body: S.optional(__S(538).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15136,7 +12732,7 @@ function __c67(j: number): any {
         S.Struct({
           conversionSourceId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(InputFieldCheckboxInput.pipe(T.HttpBody())),
+          body: S.optional(__S(294).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15152,7 +12748,7 @@ function __c67(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(Account.pipe(T.HttpBody())),
+          body: S.optional(__S(84).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15168,7 +12764,7 @@ function __c67(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(AccountTax.pipe(T.HttpBody())),
+          body: S.optional(__S(113).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15188,7 +12784,7 @@ function __c68(j: number): any {
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
           datafeedId: S.String.pipe(T.Label()),
-          body: S.optional(Datafeed.pipe(T.HttpBody())),
+          body: S.optional(__S(125).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15202,7 +12798,7 @@ function __c68(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          labelIds: S.optional(StringList),
+          labelIds: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "AccountsUpdateLabelsRequest",
@@ -15212,7 +12808,7 @@ function __c68(j: number): any {
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(AccountsUpdateLabelsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(545).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15226,7 +12822,7 @@ function __c68(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          labelIds: S.optional(StringList),
+          labelIds: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "LabelIds" });
     case 4:
@@ -15234,7 +12830,7 @@ function __c68(j: number): any {
         S.Struct({
           cssGroupId: S.String.pipe(T.Label()),
           cssDomainId: S.String.pipe(T.Label()),
-          body: S.optional(LabelIds.pipe(T.HttpBody())),
+          body: S.optional(__S(547).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15250,7 +12846,7 @@ function __c68(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(LiaSettings.pipe(T.HttpBody())),
+          body: S.optional(__S(152).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15267,7 +12863,7 @@ function __c68(j: number): any {
           productId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Product.pipe(T.HttpBody())),
+          body: S.optional(__S(212).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15282,7 +12878,7 @@ function __c68(j: number): any {
       return S.suspend(() =>
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(PubsubNotificationSettings.pipe(T.HttpBody())),
+          body: S.optional(__S(351).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15302,7 +12898,7 @@ function __c69(j: number): any {
         S.Struct({
           merchantId: S.String.pipe(T.Label()),
           accountId: S.String.pipe(T.Label()),
-          body: S.optional(ShippingSettings.pipe(T.HttpBody())),
+          body: S.optional(__S(285).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15317,7 +12913,7 @@ function __c69(j: number): any {
       return S.suspend(() =>
         S.Struct({
           verificationCode: S.optional(S.String),
-          phoneVerificationMethod: S.optional(VerifyPhoneNumberRequestPhoneVerificationMethodEnum),
+          phoneVerificationMethod: S.optional(S.String),
           verificationId: S.optional(S.String),
         }),
       ).annotate({
@@ -15328,7 +12924,7 @@ function __c69(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label()),
           merchantId: S.String.pipe(T.Label()),
-          body: S.optional(VerifyPhoneNumberRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(553).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15347,5 +12943,154 @@ function __c69(j: number): any {
       ).annotate({
         identifier: "VerifyPhoneNumberResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
+    case 41:
+      return __c41(i & 7);
+    case 42:
+      return __c42(i & 7);
+    case 43:
+      return __c43(i & 7);
+    case 44:
+      return __c44(i & 7);
+    case 45:
+      return __c45(i & 7);
+    case 46:
+      return __c46(i & 7);
+    case 47:
+      return __c47(i & 7);
+    case 48:
+      return __c48(i & 7);
+    case 49:
+      return __c49(i & 7);
+    case 50:
+      return __c50(i & 7);
+    case 51:
+      return __c51(i & 7);
+    case 52:
+      return __c52(i & 7);
+    case 53:
+      return __c53(i & 7);
+    case 54:
+      return __c54(i & 7);
+    case 55:
+      return __c55(i & 7);
+    case 56:
+      return __c56(i & 7);
+    case 57:
+      return __c57(i & 7);
+    case 58:
+      return __c58(i & 7);
+    case 59:
+      return __c59(i & 7);
+    case 60:
+      return __c60(i & 7);
+    case 61:
+      return __c61(i & 7);
+    case 62:
+      return __c62(i & 7);
+    case 63:
+      return __c63(i & 7);
+    case 64:
+      return __c64(i & 7);
+    case 65:
+      return __c65(i & 7);
+    case 66:
+      return __c66(i & 7);
+    case 67:
+      return __c67(i & 7);
+    case 68:
+      return __c68(i & 7);
+    case 69:
+      return __c69(i & 7);
   }
 }

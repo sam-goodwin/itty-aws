@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -83,8 +85,6 @@ export type DeviceIdentifierDeviceTypeEnum =
   | "DEVICE_TYPE_UNSPECIFIED"
   | "DEVICE_TYPE_ANDROID"
   | "DEVICE_TYPE_CHROME_OS";
-const DeviceIdentifierDeviceTypeEnum = S.String;
-
 /** Encapsulates hardware and product IDs to identify a manufactured device. To understand requirements on identifier sets, read [Identifiers](https://developers.google.com/zero-touch/guides/identifiers). */
 export interface DeviceIdentifier {
   /** The device manufacturer's name. Matches the device's built-in value returned from `android.os.Build.MANUFACTURER`. Allowed values are listed in [Android manufacturers](/zero-touch/resources/manufacturer-names#manufacturers-names). */
@@ -106,8 +106,6 @@ export interface DeviceIdentifier {
   /** The manufacturer's serial number for the device. This value might not be unique across different device models. */
   serialNumber?: string;
 }
-const DeviceIdentifier = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeviceIdentifier>;
-
 /** A `DeviceReference` is an API abstraction that lets you supply a _device_ argument to a method using one of the following identifier types: * A numeric API resource ID. * Real-world hardware IDs, such as IMEI number, belonging to the manufactured device. Methods that operate on devices take a `DeviceReference` as a parameter type because it's more flexible for the caller. To learn more about device identifiers, read [Identifiers](https://developers.google.com/zero-touch/guides/identifiers). */
 export interface DeviceReference {
   /** The ID of the device. */
@@ -115,8 +113,6 @@ export interface DeviceReference {
   /** The hardware IDs of the device. */
   deviceIdentifier?: DeviceIdentifier;
 }
-const DeviceReference = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DeviceReference>;
-
 /** Request message for customer to assign a configuration to device. */
 export interface CustomerApplyConfigurationRequest {
   /** Required. The device the configuration is applied to. There are custom validations in ApplyConfigurationRequestValidator */
@@ -124,42 +120,24 @@ export interface CustomerApplyConfigurationRequest {
   /** Required. The configuration applied to the device in the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. */
   configuration?: string;
 }
-const CustomerApplyConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CustomerApplyConfigurationRequest>;
-
 export interface ApplyConfigurationCustomersDevicesRequest {
   /** Required. The customer managing the device. An API resource name in the format `customers/[CUSTOMER_ID]`. */
   parent: string;
   /** Request body */
   body?: CustomerApplyConfigurationRequest;
 }
-const ApplyConfigurationCustomersDevicesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ApplyConfigurationCustomersDevicesRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Empty>;
-
 export type PartnerClaimSectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"
   | "SECTION_TYPE_SIM_LOCK"
   | "SECTION_TYPE_ZERO_TOUCH";
-const PartnerClaimSectionTypeEnum = S.String;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StringMap>;
-
 /** Metadata entries that can be attached to a `Device`. To learn more, read [Device metadata](https://developers.google.com/zero-touch/guides/metadata). */
 export interface DeviceMetadata {
   /** Metadata entries recorded as key-value pairs. */
   entries?: StringMap;
 }
-const DeviceMetadata = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeviceMetadata>;
-
 /** Identifies one claim request. */
 export interface PartnerClaim {
   /** Optional. Must and can only be set for Chrome OS devices. */
@@ -179,35 +157,20 @@ export interface PartnerClaim {
   /** The Google Workspace customer ID. */
   googleWorkspaceCustomerId?: string;
 }
-const PartnerClaim = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<PartnerClaim>;
-
 export type PartnerClaimList = Array<PartnerClaim>;
-const PartnerClaimList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PartnerClaimList>;
-
 /** Request to claim devices asynchronously in batch. Claiming a device adds the device to zero-touch enrollment and shows the device in the customer's view of the portal. */
 export interface ClaimDevicesRequest {
   /** Required. A list of device claims. */
   claims?: PartnerClaimList;
 }
-const ClaimDevicesRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ClaimDevicesRequest>;
-
 export interface ClaimAsyncPartnersDevicesRequest {
   /** Required. The ID of the reseller partner. */
   partnerId: string;
   /** Request body */
   body?: ClaimDevicesRequest;
 }
-const ClaimAsyncPartnersDevicesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ClaimAsyncPartnersDevicesRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -217,8 +180,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -232,14 +193,10 @@ export interface Operation {
   /** This field will always be not set if the operation is created by `claimAsync`, `unclaimAsync`, or `updateMetadataAsync`. In this case, error information for each device is set in `response.perDeviceStatus.result.status`. */
   error?: Status;
 }
-const Operation = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Operation>;
-
 export type ClaimDeviceRequestSectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"
   | "SECTION_TYPE_SIM_LOCK"
   | "SECTION_TYPE_ZERO_TOUCH";
-const ClaimDeviceRequestSectionTypeEnum = S.String;
-
 /** Request message to claim a device on behalf of a customer. */
 export interface ClaimDeviceRequest {
   /** The Google Workspace customer ID. */
@@ -259,19 +216,12 @@ export interface ClaimDeviceRequest {
   /** Required. The section type of the device's provisioning record. */
   sectionType?: ClaimDeviceRequestSectionTypeEnum | (string & {});
 }
-const ClaimDeviceRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ClaimDeviceRequest>;
-
 export interface ClaimPartnersDevicesRequest {
   /** Required. The ID of the reseller partner. */
   partnerId: string;
   /** Request body */
   body?: ClaimDeviceRequest;
 }
-const ClaimPartnersDevicesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ClaimPartnersDevicesRequest>;
-
 /** Response message containing device id of the claim. */
 export interface ClaimDeviceResponse {
   /** The resource name of the device in the format `partners/[PARTNER_ID]/devices/[DEVICE_ID]`. */
@@ -279,8 +229,6 @@ export interface ClaimDeviceResponse {
   /** The device ID of the claimed device. */
   deviceId?: string;
 }
-const ClaimDeviceResponse = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ClaimDeviceResponse>;
-
 /** A configuration collects the provisioning options for Android devices. Each configuration combines the following: * The EMM device policy controller (DPC) installed on the devices. * EMM policies enforced on the devices. * Metadata displayed on the device to help users during setup. Customers can add as many configurations as they need. However, zero-touch enrollment works best when a customer sets a default configuration that's applied to any new devices the organization purchases. */
 export interface Configuration {
   /** Required. A short name that describes the configuration's purpose. For example, _Sales team_ or _Temporary employees_. The zero-touch enrollment portal displays this name to IT admins. */
@@ -306,22 +254,13 @@ export interface Configuration {
   /** Required. Whether this is the default configuration that zero-touch enrollment applies to any new devices the organization purchases in the future. Only one customer configuration can be the default. Setting this value to `true`, changes the previous default configuration's `isDefault` value to `false`. */
   isDefault?: boolean;
 }
-const Configuration = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Configuration>;
-
 export interface CreateCustomersConfigurationsRequest {
   /** Required. The customer that manages the configuration. An API resource name in the format `customers/[CUSTOMER_ID]`. This field has custom validation in CreateConfigurationRequestValidator */
   parent: string;
   /** Request body */
   body?: Configuration;
 }
-const CreateCustomersConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateCustomersConfigurationsRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<StringList>;
-
 /** A Google Workspace customer. */
 export interface GoogleWorkspaceAccount {
   /** Output only. The pre-provisioning tokens previously used to claim devices. */
@@ -329,18 +268,11 @@ export interface GoogleWorkspaceAccount {
   /** Required. The customer ID. */
   customerId?: string;
 }
-const GoogleWorkspaceAccount = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GoogleWorkspaceAccount>;
-
 export type CompanyTermsStatusEnum =
   | "TERMS_STATUS_UNSPECIFIED"
   | "TERMS_STATUS_NOT_ACCEPTED"
   | "TERMS_STATUS_ACCEPTED"
   | "TERMS_STATUS_STALE";
-const CompanyTermsStatusEnum = S.String;
-
 /** A reseller, vendor, or customer in the zero-touch reseller and customer APIs. */
 export interface Company {
   /** Input only. Deprecated: This field is no longer supported and is ignored by the server. */
@@ -362,38 +294,21 @@ export interface Company {
   /** Output only. Whether any user from the company has accepted the latest Terms of Service (ToS). See TermsStatus. */
   termsStatus?: CompanyTermsStatusEnum | (string & {});
 }
-const Company = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Company>;
-
 /** Request message to create a customer. */
 export interface CreateCustomerRequest {
   /** Required. The company data to populate the new customer. Must contain a value for `companyName` and at least one `owner_email` that's associated with a Google Account. The values for `companyId` and `name` must be empty. */
   customer?: Company;
 }
-const CreateCustomerRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateCustomerRequest>;
-
 export interface CreatePartnersCustomersRequest {
   /** Required. The parent resource ID in the format `partners/[PARTNER_ID]` that identifies the reseller. */
   parent: string;
   /** Request body */
   body?: CreateCustomerRequest;
 }
-const CreatePartnersCustomersRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreatePartnersCustomersRequest>;
-
 export interface DeleteCustomersConfigurationsRequest {
   /** Required. The configuration to delete. An API resource name in the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. If the configuration is applied to any devices, the API call fails. */
   name: string;
 }
-const DeleteCustomersConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteCustomersConfigurationsRequest>;
-
 /** Request to find devices. */
 export interface FindDevicesByDeviceIdentifierRequest {
   /** Required. The maximum number of devices to show in a page of results. Must be between 1 and 100 inclusive. */
@@ -403,33 +318,19 @@ export interface FindDevicesByDeviceIdentifierRequest {
   /** Required. Required. The device identifier to search for. If serial number is provided then case insensitive serial number matches are allowed. */
   deviceIdentifier?: DeviceIdentifier;
 }
-const FindDevicesByDeviceIdentifierRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<FindDevicesByDeviceIdentifierRequest>;
-
 export interface FindByIdentifierPartnersDevicesRequest {
   /** Required. The ID of the reseller partner. */
   partnerId: string;
   /** Request body */
   body?: FindDevicesByDeviceIdentifierRequest;
 }
-const FindByIdentifierPartnersDevicesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<FindByIdentifierPartnersDevicesRequest>;
-
 export type DeviceClaimSectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"
   | "SECTION_TYPE_SIM_LOCK"
   | "SECTION_TYPE_ZERO_TOUCH";
-const DeviceClaimSectionTypeEnum = S.String;
-
 export type DeviceClaimAdditionalServiceEnum =
   | "ADDITIONAL_SERVICE_UNSPECIFIED"
   | "DEVICE_PROTECTION";
-const DeviceClaimAdditionalServiceEnum = S.String;
-
 /** A record of a device claimed by a reseller for a customer. Devices claimed for zero-touch enrollment have a claim with the type `SECTION_TYPE_ZERO_TOUCH`. To learn more, read [Claim devices for customers](/zero-touch/guides/how-it-works#claim). */
 export interface DeviceClaim {
   /** The ID of the reseller that claimed the device. */
@@ -447,11 +348,7 @@ export interface DeviceClaim {
   /** The timestamp when the device will exit 'vacation mode'. This value is present iff the device is in 'vacation mode'. */
   vacationModeExpireTime?: string;
 }
-const DeviceClaim = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DeviceClaim>;
-
 export type DeviceClaimList = Array<DeviceClaim>;
-const DeviceClaimList = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<DeviceClaimList>;
-
 /** An Android or Chrome OS device registered for zero-touch enrollment. */
 export interface Device {
   /** Not available to resellers. */
@@ -467,11 +364,7 @@ export interface Device {
   /** Output only. The provisioning claims for a device. Devices claimed for zero-touch enrollment have a claim with the type `SECTION_TYPE_ZERO_TOUCH`. Call `partners.devices.unclaim` or `partners.devices.unclaimAsync` to remove the device from zero-touch enrollment. */
   claims?: DeviceClaimList;
 }
-const Device = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<Device>;
-
 export type DeviceList = Array<Device>;
-const DeviceList = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<DeviceList>;
-
 /** Response containing found devices. */
 export interface FindDevicesByDeviceIdentifierResponse {
   /** The total count of items in the list irrespective of pagination. */
@@ -481,17 +374,10 @@ export interface FindDevicesByDeviceIdentifierResponse {
   /** A token used to access the next page of results. Omitted if no further results are available. */
   nextPageToken?: string;
 }
-const FindDevicesByDeviceIdentifierResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<FindDevicesByDeviceIdentifierResponse>;
-
 export type FindDevicesByOwnerRequestSectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"
   | "SECTION_TYPE_SIM_LOCK"
   | "SECTION_TYPE_ZERO_TOUCH";
-const FindDevicesByOwnerRequestSectionTypeEnum = S.String;
-
 /** Request to find devices by customers. */
 export interface FindDevicesByOwnerRequest {
   /** The list of customer IDs to search for. */
@@ -505,22 +391,12 @@ export interface FindDevicesByOwnerRequest {
   /** Required. The maximum number of devices to show in a page of results. Must be between 1 and 100 inclusive. */
   limit?: string;
 }
-const FindDevicesByOwnerRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<FindDevicesByOwnerRequest>;
-
 export interface FindByOwnerPartnersDevicesRequest {
   /** Required. The ID of the reseller partner. */
   partnerId: string;
   /** Request body */
   body?: FindDevicesByOwnerRequest;
 }
-const FindByOwnerPartnersDevicesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<FindByOwnerPartnersDevicesRequest>;
-
 /** Response containing found devices. */
 export interface FindDevicesByOwnerResponse {
   /** A token used to access the next page of results. Omitted if no further results are available. */
@@ -530,92 +406,49 @@ export interface FindDevicesByOwnerResponse {
   /** The customer's devices. */
   devices?: DeviceList;
 }
-const FindDevicesByOwnerResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<FindDevicesByOwnerResponse>;
-
 export interface GetCustomersConfigurationsRequest {
   /** Required. The configuration to get. An API resource name in the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. */
   name: string;
 }
-const GetCustomersConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetCustomersConfigurationsRequest>;
-
 export interface GetCustomersDevicesRequest {
   /** Required. The device to get. An API resource name in the format `customers/[CUSTOMER_ID]/devices/[DEVICE_ID]`. */
   name: string;
 }
-const GetCustomersDevicesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetCustomersDevicesRequest>;
-
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetOperationsRequest = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<GetOperationsRequest>;
-
 export interface GetPartnersDevicesRequest {
   /** Required. The device API resource name in the format `partners/[PARTNER_ID]/devices/[DEVICE_ID]`. */
   name: string;
 }
-const GetPartnersDevicesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetPartnersDevicesRequest>;
-
 /** Request to get a device's SIM lock status. */
 export interface GetDeviceSimLockStateRequest {
   /** Required. Required. The device identifier to search for. */
   deviceIdentifier?: DeviceIdentifier;
 }
-const GetDeviceSimLockStateRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetDeviceSimLockStateRequest>;
-
 export interface GetSimLockStatePartnersDevicesRequest {
   /** Required. The ID of the partner. */
   partnerId: string;
   /** Request body */
   body?: GetDeviceSimLockStateRequest;
 }
-const GetSimLockStatePartnersDevicesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetSimLockStatePartnersDevicesRequest>;
-
 export type GetDeviceSimLockStateResponseSimLockStateEnum =
   | "SIM_LOCK_STATE_UNSPECIFIED"
   | "UNLOCKED"
   | "LOCKED_TO_PARTNER"
   | "LOCKED_TO_OTHER_PARTNER";
-const GetDeviceSimLockStateResponseSimLockStateEnum = S.String;
-
 /** Response containing a device's SimLock state. */
 export interface GetDeviceSimLockStateResponse {
   simLockState?: GetDeviceSimLockStateResponseSimLockStateEnum;
 }
-const GetDeviceSimLockStateResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GetDeviceSimLockStateResponse>;
-
 export interface ListCustomersRequest {
   /** Required. The maximum number of customers to show in a page of results. A number between 1 and 100 (inclusive). */
   pageSize?: number;
   /** A token specifying which result page to return. This field has custom validations in ListCustomersRequestValidator */
   pageToken?: string;
 }
-const ListCustomersRequest = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<ListCustomersRequest>;
-
 export type CompanyList = Array<Company>;
-const CompanyList = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<CompanyList>;
-
 /** Response message for listing my customers. */
 export interface CustomerListCustomersResponse {
   /** A token used to access the next page of results. Omitted if no further results are available. */
@@ -623,33 +456,16 @@ export interface CustomerListCustomersResponse {
   /** The customer accounts the calling user is a member of. */
   customers?: CompanyList;
 }
-const CustomerListCustomersResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CustomerListCustomersResponse>;
-
 export interface ListCustomersConfigurationsRequest {
   /** Required. The customer that manages the listed configurations. An API resource name in the format `customers/[CUSTOMER_ID]`. */
   parent: string;
 }
-const ListCustomersConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListCustomersConfigurationsRequest>;
-
 export type ConfigurationList = Array<Configuration>;
-const ConfigurationList = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ConfigurationList>;
-
 /** Response message of customer's listing configuration. */
 export interface CustomerListConfigurationsResponse {
   /** The configurations. */
   configurations?: ConfigurationList;
 }
-const CustomerListConfigurationsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CustomerListConfigurationsResponse>;
-
 export interface ListCustomersDevicesRequest {
   /** Required. The customer managing the devices. An API resource name in the format `customers/[CUSTOMER_ID]`. */
   parent: string;
@@ -658,11 +474,6 @@ export interface ListCustomersDevicesRequest {
   /** A token specifying which result page to return. */
   pageToken?: string;
 }
-const ListCustomersDevicesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListCustomersDevicesRequest>;
-
 /** Response message of customer's liting devices. */
 export interface CustomerListDevicesResponse {
   /** A token used to access the next page of results. Omitted if no further results are available. */
@@ -670,20 +481,10 @@ export interface CustomerListDevicesResponse {
   /** The customer's devices. */
   devices?: DeviceList;
 }
-const CustomerListDevicesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CustomerListDevicesResponse>;
-
 export interface ListCustomersDpcsRequest {
   /** Required. The customer that can use the DPCs in configurations. An API resource name in the format `customers/[CUSTOMER_ID]`. */
   parent: string;
 }
-const ListCustomersDpcsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListCustomersDpcsRequest>;
-
 /** An EMM's DPC ([device policy controller](http://developer.android.com/work/dpc/build-dpc.html)). Zero-touch enrollment installs a DPC (listed in the `Configuration`) on a device to maintain the customer's mobile policies. All the DPCs listed by the API support zero-touch enrollment and are available in Google Play. */
 export interface Dpc {
   /** Output only. The DPC's Android application ID that looks like a Java package name. Zero-touch enrollment installs the DPC app onto a device using this identifier. */
@@ -693,21 +494,12 @@ export interface Dpc {
   /** Output only. The API resource name in the format `customers/[CUSTOMER_ID]/dpcs/[DPC_ID]`. Assigned by the server. To maintain a reference to a DPC across customer accounts, persist and match the last path component (`DPC_ID`). */
   name?: string;
 }
-const Dpc = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Dpc>;
-
 export type DpcList = Array<Dpc>;
-const DpcList = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<DpcList>;
-
 /** Response message of customer's listing DPCs. */
 export interface CustomerListDpcsResponse {
   /** The list of DPCs available to the customer that support zero-touch enrollment. */
   dpcs?: DpcList;
 }
-const CustomerListDpcsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CustomerListDpcsResponse>;
-
 export interface ListPartnersCustomersRequest {
   /** The maximum number of results to be returned. If not specified or 0, all the records are returned. */
   pageSize?: number;
@@ -716,11 +508,6 @@ export interface ListPartnersCustomersRequest {
   /** A token identifying a page of results returned by the server. */
   pageToken?: string;
 }
-const ListPartnersCustomersRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListPartnersCustomersRequest>;
-
 /** Response message of all customers related to this partner. */
 export interface ListCustomersResponse {
   /** List of customers related to this reseller partner. */
@@ -730,11 +517,6 @@ export interface ListCustomersResponse {
   /** The total count of items in the list irrespective of pagination. */
   totalSize?: number;
 }
-const ListCustomersResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListCustomersResponse>;
-
 export interface ListPartnersVendorsRequest {
   /** Required. The resource name in the format `partners/[PARTNER_ID]`. */
   parent: string;
@@ -743,11 +525,6 @@ export interface ListPartnersVendorsRequest {
   /** The maximum number of results to be returned. */
   pageSize?: number;
 }
-const ListPartnersVendorsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListPartnersVendorsRequest>;
-
 /** Response message to list vendors of the partner. */
 export interface ListVendorsResponse {
   /** The total count of items in the list irrespective of pagination. */
@@ -757,8 +534,6 @@ export interface ListVendorsResponse {
   /** A token to retrieve the next page of results. Omitted if no further results are available. */
   nextPageToken?: string;
 }
-const ListVendorsResponse = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<ListVendorsResponse>;
-
 export interface ListPartnersVendorsCustomersRequest {
   /** Required. The resource name in the format `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`. */
   parent: string;
@@ -767,11 +542,6 @@ export interface ListPartnersVendorsCustomersRequest {
   /** A token identifying a page of results returned by the server. */
   pageToken?: string;
 }
-const ListPartnersVendorsCustomersRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListPartnersVendorsCustomersRequest>;
-
 /** Response message to list customers of the vendor. */
 export interface ListVendorCustomersResponse {
   /** List of customers of the vendor. */
@@ -781,21 +551,11 @@ export interface ListVendorCustomersResponse {
   /** The total count of items in the list irrespective of pagination. */
   totalSize?: number;
 }
-const ListVendorCustomersResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ListVendorCustomersResponse>;
-
 /** Request to set metadata for a device. */
 export interface UpdateDeviceMetadataRequest {
   /** Required. The metadata to attach to the device. */
   deviceMetadata?: DeviceMetadata;
 }
-const UpdateDeviceMetadataRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<UpdateDeviceMetadataRequest>;
-
 export interface MetadataPartnersDevicesRequest {
   /** Required. The owner of the newly set metadata. Set this to the partner ID. */
   metadataOwnerId: string;
@@ -804,11 +564,6 @@ export interface MetadataPartnersDevicesRequest {
   /** Request body */
   body?: UpdateDeviceMetadataRequest;
 }
-const MetadataPartnersDevicesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<MetadataPartnersDevicesRequest>;
-
 export interface PatchCustomersConfigurationsRequest {
   /** Required. The field mask applied to the target `Configuration` before updating the fields. To learn more about using field masks, read [FieldMask](/protocol-buffers/docs/reference/google.protobuf#fieldmask) in the Protocol Buffers documentation. */
   updateMask?: string;
@@ -817,38 +572,21 @@ export interface PatchCustomersConfigurationsRequest {
   /** Request body */
   body?: Configuration;
 }
-const PatchCustomersConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<PatchCustomersConfigurationsRequest>;
-
 /** Request message for customer to remove the configuration from device. */
 export interface CustomerRemoveConfigurationRequest {
   /** Required. The device to remove the configuration from. There are custom validations in RemoveConfigurationRequestValidator */
   device?: DeviceReference;
 }
-const CustomerRemoveConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CustomerRemoveConfigurationRequest>;
-
 export interface RemoveConfigurationCustomersDevicesRequest {
   /** Required. The customer managing the device in the format `customers/[CUSTOMER_ID]`. */
   parent: string;
   /** Request body */
   body?: CustomerRemoveConfigurationRequest;
 }
-const RemoveConfigurationCustomersDevicesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<RemoveConfigurationCustomersDevicesRequest>;
-
 export type PartnerUnclaimSectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"
   | "SECTION_TYPE_SIM_LOCK"
   | "SECTION_TYPE_ZERO_TOUCH";
-const PartnerUnclaimSectionTypeEnum = S.String;
-
 /** Identifies one unclaim request. */
 export interface PartnerUnclaim {
   /** Optional. The duration of the vacation unlock starting from when the request is processed. (1 day is treated as 24 hours) */
@@ -862,57 +600,33 @@ export interface PartnerUnclaim {
   /** Optional. The expiration time of the vacation unlock. */
   vacationModeExpireTime?: string;
 }
-const PartnerUnclaim = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<PartnerUnclaim>;
-
 export type PartnerUnclaimList = Array<PartnerUnclaim>;
-const PartnerUnclaimList = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<PartnerUnclaimList>;
-
 /** Request to unclaim devices asynchronously in batch. */
 export interface UnclaimDevicesRequest {
   /** Required. The list of devices to unclaim. */
   unclaims?: PartnerUnclaimList;
 }
-const UnclaimDevicesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<UnclaimDevicesRequest>;
-
 export interface UnclaimAsyncPartnersDevicesRequest {
   /** Required. The reseller partner ID. */
   partnerId: string;
   /** Request body */
   body?: UnclaimDevicesRequest;
 }
-const UnclaimAsyncPartnersDevicesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<UnclaimAsyncPartnersDevicesRequest>;
-
 /** Request message for customer to unclaim a device. */
 export interface CustomerUnclaimDeviceRequest {
   /** Required. The device to unclaim. There are custom validations in UnclaimDeviceRequestValidator. */
   device?: DeviceReference;
 }
-const CustomerUnclaimDeviceRequest =
-  CustomerRemoveConfigurationRequest as any as S.Schema<CustomerUnclaimDeviceRequest>;
-
 export interface UnclaimCustomersDevicesRequest {
   /** Required. The customer managing the device. An API resource name in the format `customers/[CUSTOMER_ID]`. */
   parent: string;
   /** Request body */
   body?: CustomerUnclaimDeviceRequest;
 }
-const UnclaimCustomersDevicesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<UnclaimCustomersDevicesRequest>;
-
 export type UnclaimDeviceRequestSectionTypeEnum =
   | "SECTION_TYPE_UNSPECIFIED"
   | "SECTION_TYPE_SIM_LOCK"
   | "SECTION_TYPE_ZERO_TOUCH";
-const UnclaimDeviceRequestSectionTypeEnum = S.String;
-
 /** Request message to unclaim a device. */
 export interface UnclaimDeviceRequest {
   /** Required. The device identifier you used when you claimed this device. */
@@ -926,19 +640,12 @@ export interface UnclaimDeviceRequest {
   /** Required. The section type of the device's provisioning record. */
   sectionType?: UnclaimDeviceRequestSectionTypeEnum | (string & {});
 }
-const UnclaimDeviceRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<UnclaimDeviceRequest>;
-
 export interface UnclaimPartnersDevicesRequest {
   /** Required. The ID of the reseller partner. */
   partnerId: string;
   /** Request body */
   body?: UnclaimDeviceRequest;
 }
-const UnclaimPartnersDevicesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<UnclaimPartnersDevicesRequest>;
-
 /** Identifies metadata updates to one device. */
 export interface UpdateMetadataArguments {
   /** Required. The metadata to update. */
@@ -948,38 +655,18 @@ export interface UpdateMetadataArguments {
   /** Required. Device ID of the device. */
   deviceId?: string;
 }
-const UpdateMetadataArguments = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<UpdateMetadataArguments>;
-
 export type UpdateMetadataArgumentsList = Array<UpdateMetadataArguments>;
-const UpdateMetadataArgumentsList = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<UpdateMetadataArgumentsList>;
-
 /** Request to update device metadata in batch. */
 export interface UpdateDeviceMetadataInBatchRequest {
   /** Required. The list of metadata updates. */
   updates?: UpdateMetadataArgumentsList;
 }
-const UpdateDeviceMetadataInBatchRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<UpdateDeviceMetadataInBatchRequest>;
-
 export interface UpdateMetadataAsyncPartnersDevicesRequest {
   /** Required. The reseller partner ID. */
   partnerId: string;
   /** Request body */
   body?: UpdateDeviceMetadataInBatchRequest;
 }
-const UpdateMetadataAsyncPartnersDevicesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<UpdateMetadataAsyncPartnersDevicesRequest>;
-
 export type ApplyConfigurationCustomersDevicesError =
   | NotFound
   | Forbidden
@@ -993,8 +680,8 @@ export const applyConfigurationCustomersDevices: API.OperationMethod<
   ApplyConfigurationCustomersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplyConfigurationCustomersDevicesRequest,
-  output: Empty,
+  input: __S(3) as any as S.Schema<ApplyConfigurationCustomersDevicesRequest>,
+  output: __S(4) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1013,8 +700,8 @@ export const claimAsyncPartnersDevices: API.OperationMethod<
   ClaimAsyncPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClaimAsyncPartnersDevicesRequest,
-  output: Operation,
+  input: __S(10) as any as S.Schema<ClaimAsyncPartnersDevicesRequest>,
+  output: __S(14) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1028,8 +715,8 @@ export const claimPartnersDevices: API.OperationMethod<
   ClaimPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClaimPartnersDevicesRequest,
-  output: ClaimDeviceResponse,
+  input: __S(16) as any as S.Schema<ClaimPartnersDevicesRequest>,
+  output: __S(17) as any as S.Schema<ClaimDeviceResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1049,8 +736,8 @@ export const createCustomersConfigurations: API.OperationMethod<
   CreateCustomersConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCustomersConfigurationsRequest,
-  output: Configuration,
+  input: __S(19) as any as S.Schema<CreateCustomersConfigurationsRequest>,
+  output: __S(18) as any as S.Schema<Configuration>,
   errors: [
     NotFound,
     Forbidden,
@@ -1076,8 +763,8 @@ export const createPartnersCustomers: API.OperationMethod<
   CreatePartnersCustomersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePartnersCustomersRequest,
-  output: Company,
+  input: __S(24) as any as S.Schema<CreatePartnersCustomersRequest>,
+  output: __S(22) as any as S.Schema<Company>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1097,8 +784,8 @@ export const deleteCustomersConfigurations: API.OperationMethod<
   DeleteCustomersConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCustomersConfigurationsRequest,
-  output: Empty,
+  input: __S(25) as any as S.Schema<DeleteCustomersConfigurationsRequest>,
+  output: __S(4) as any as S.Schema<Empty>,
   errors: [
     NotFound,
     Forbidden,
@@ -1124,8 +811,8 @@ export const findByIdentifierPartnersDevices: API.OperationMethod<
   FindByIdentifierPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FindByIdentifierPartnersDevicesRequest,
-  output: FindDevicesByDeviceIdentifierResponse,
+  input: __S(27) as any as S.Schema<FindByIdentifierPartnersDevicesRequest>,
+  output: __S(32) as any as S.Schema<FindDevicesByDeviceIdentifierResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1144,8 +831,8 @@ export const findByOwnerPartnersDevices: API.OperationMethod<
   FindByOwnerPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FindByOwnerPartnersDevicesRequest,
-  output: FindDevicesByOwnerResponse,
+  input: __S(34) as any as S.Schema<FindByOwnerPartnersDevicesRequest>,
+  output: __S(35) as any as S.Schema<FindDevicesByOwnerResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1163,8 +850,8 @@ export const getCustomersConfigurations: API.OperationMethod<
   GetCustomersConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomersConfigurationsRequest,
-  output: Configuration,
+  input: __S(36) as any as S.Schema<GetCustomersConfigurationsRequest>,
+  output: __S(18) as any as S.Schema<Configuration>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1178,8 +865,8 @@ export const getCustomersDevices: API.OperationMethod<
   GetCustomersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomersDevicesRequest,
-  output: Device,
+  input: __S(37) as any as S.Schema<GetCustomersDevicesRequest>,
+  output: __S(30) as any as S.Schema<Device>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1193,8 +880,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationsRequest,
-  output: Operation,
+  input: __S(38) as any as S.Schema<GetOperationsRequest>,
+  output: __S(14) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1208,8 +895,8 @@ export const getPartnersDevices: API.OperationMethod<
   GetPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPartnersDevicesRequest,
-  output: Device,
+  input: __S(39) as any as S.Schema<GetPartnersDevicesRequest>,
+  output: __S(30) as any as S.Schema<Device>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1228,8 +915,8 @@ export const getSimLockStatePartnersDevices: API.OperationMethod<
   GetSimLockStatePartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSimLockStatePartnersDevicesRequest,
-  output: GetDeviceSimLockStateResponse,
+  input: __S(41) as any as S.Schema<GetSimLockStatePartnersDevicesRequest>,
+  output: __S(42) as any as S.Schema<GetDeviceSimLockStateResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1248,8 +935,8 @@ export const listCustomers: API.PaginatedOperationMethod<
   GcpOpContext,
   CustomerListCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomersRequest,
-  output: CustomerListCustomersResponse,
+  input: __S(43) as any as S.Schema<ListCustomersRequest>,
+  output: __S(45) as any as S.Schema<CustomerListCustomersResponse>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1268,8 +955,8 @@ export const listCustomersConfigurations: API.OperationMethod<
   ListCustomersConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCustomersConfigurationsRequest,
-  output: CustomerListConfigurationsResponse,
+  input: __S(46) as any as S.Schema<ListCustomersConfigurationsRequest>,
+  output: __S(48) as any as S.Schema<CustomerListConfigurationsResponse>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1284,8 +971,8 @@ export const listCustomersDevices: API.PaginatedOperationMethod<
   GcpOpContext,
   CustomerListDevicesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCustomersDevicesRequest,
-  output: CustomerListDevicesResponse,
+  input: __S(49) as any as S.Schema<ListCustomersDevicesRequest>,
+  output: __S(50) as any as S.Schema<CustomerListDevicesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1304,8 +991,8 @@ export const listCustomersDpcs: API.OperationMethod<
   ListCustomersDpcsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCustomersDpcsRequest,
-  output: CustomerListDpcsResponse,
+  input: __S(51) as any as S.Schema<ListCustomersDpcsRequest>,
+  output: __S(54) as any as S.Schema<CustomerListDpcsResponse>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1320,8 +1007,8 @@ export const listPartnersCustomers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPartnersCustomersRequest,
-  output: ListCustomersResponse,
+  input: __S(55) as any as S.Schema<ListPartnersCustomersRequest>,
+  output: __S(56) as any as S.Schema<ListCustomersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1337,8 +1024,8 @@ export const listPartnersVendors: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVendorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPartnersVendorsRequest,
-  output: ListVendorsResponse,
+  input: __S(57) as any as S.Schema<ListPartnersVendorsRequest>,
+  output: __S(58) as any as S.Schema<ListVendorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1354,8 +1041,8 @@ export const listPartnersVendorsCustomers: API.PaginatedOperationMethod<
   GcpOpContext,
   ListVendorCustomersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListPartnersVendorsCustomersRequest,
-  output: ListVendorCustomersResponse,
+  input: __S(59) as any as S.Schema<ListPartnersVendorsCustomersRequest>,
+  output: __S(60) as any as S.Schema<ListVendorCustomersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1375,8 +1062,8 @@ export const metadataPartnersDevices: API.OperationMethod<
   MetadataPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MetadataPartnersDevicesRequest,
-  output: DeviceMetadata,
+  input: __S(62) as any as S.Schema<MetadataPartnersDevicesRequest>,
+  output: __S(6) as any as S.Schema<DeviceMetadata>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1396,8 +1083,8 @@ export const patchCustomersConfigurations: API.OperationMethod<
   PatchCustomersConfigurationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchCustomersConfigurationsRequest,
-  output: Configuration,
+  input: __S(63) as any as S.Schema<PatchCustomersConfigurationsRequest>,
+  output: __S(18) as any as S.Schema<Configuration>,
   errors: [
     NotFound,
     Forbidden,
@@ -1423,8 +1110,8 @@ export const removeConfigurationCustomersDevices: API.OperationMethod<
   RemoveConfigurationCustomersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveConfigurationCustomersDevicesRequest,
-  output: Empty,
+  input: __S(65) as any as S.Schema<RemoveConfigurationCustomersDevicesRequest>,
+  output: __S(4) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1443,8 +1130,8 @@ export const unclaimAsyncPartnersDevices: API.OperationMethod<
   UnclaimAsyncPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnclaimAsyncPartnersDevicesRequest,
-  output: Operation,
+  input: __S(69) as any as S.Schema<UnclaimAsyncPartnersDevicesRequest>,
+  output: __S(14) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1463,8 +1150,8 @@ export const unclaimCustomersDevices: API.OperationMethod<
   UnclaimCustomersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnclaimCustomersDevicesRequest,
-  output: Empty,
+  input: __S(70) as any as S.Schema<UnclaimCustomersDevicesRequest>,
+  output: __S(4) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1478,8 +1165,8 @@ export const unclaimPartnersDevices: API.OperationMethod<
   UnclaimPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnclaimPartnersDevicesRequest,
-  output: Empty,
+  input: __S(72) as any as S.Schema<UnclaimPartnersDevicesRequest>,
+  output: __S(4) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1498,8 +1185,8 @@ export const updateMetadataAsyncPartnersDevices: API.OperationMethod<
   UpdateMetadataAsyncPartnersDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMetadataAsyncPartnersDevicesRequest,
-  output: Operation,
+  input: __S(76) as any as S.Schema<UpdateMetadataAsyncPartnersDevicesRequest>,
+  output: __S(14) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1517,7 +1204,7 @@ function __c0(j: number): any {
           imei2: S.optional(S.String),
           imei: S.optional(S.String),
           meid: S.optional(S.String),
-          deviceType: S.optional(DeviceIdentifierDeviceTypeEnum),
+          deviceType: S.optional(S.String),
           model: S.optional(S.String),
           serialNumber: S.optional(S.String),
         }),
@@ -1526,13 +1213,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           deviceId: S.optional(S.String),
-          deviceIdentifier: S.optional(DeviceIdentifier),
+          deviceIdentifier: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "DeviceReference" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          device: S.optional(DeviceReference),
+          device: S.optional(__S(1)),
           configuration: S.optional(S.String),
         }),
       ).annotate({
@@ -1542,7 +1229,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CustomerApplyConfigurationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(2).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1562,7 +1249,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(StringMap),
+          entries: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "DeviceMetadata" });
     case 7:
@@ -1570,10 +1257,10 @@ function __c0(j: number): any {
         S.Struct({
           preProvisioningToken: S.optional(S.String),
           customerId: S.optional(S.String),
-          sectionType: S.optional(PartnerClaimSectionTypeEnum),
+          sectionType: S.optional(S.String),
           configurationId: S.optional(S.String),
-          deviceIdentifier: S.optional(DeviceIdentifier),
-          deviceMetadata: S.optional(DeviceMetadata),
+          deviceIdentifier: S.optional(__S(0)),
+          deviceMetadata: S.optional(__S(6)),
           simlockProfileId: S.optional(S.String),
           googleWorkspaceCustomerId: S.optional(S.String),
         }),
@@ -1583,18 +1270,18 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PartnerClaim);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          claims: S.optional(PartnerClaimList),
+          claims: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "ClaimDevicesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
-          body: S.optional(ClaimDevicesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1608,12 +1295,12 @@ function __c1(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(DocumentMap);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(12)),
           code: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Status" });
@@ -1621,23 +1308,23 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(11)),
           done: S.optional(S.Boolean),
-          response: S.optional(DocumentMap),
-          error: S.optional(Status),
+          response: S.optional(__S(11)),
+          error: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "Operation" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           googleWorkspaceCustomerId: S.optional(S.String),
-          deviceIdentifier: S.optional(DeviceIdentifier),
+          deviceIdentifier: S.optional(__S(0)),
           configurationId: S.optional(S.String),
           simlockProfileId: S.optional(S.String),
           preProvisioningToken: S.optional(S.String),
-          deviceMetadata: S.optional(DeviceMetadata),
+          deviceMetadata: S.optional(__S(6)),
           customerId: S.optional(S.String),
-          sectionType: S.optional(ClaimDeviceRequestSectionTypeEnum),
+          sectionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClaimDeviceRequest" });
   }
@@ -1648,7 +1335,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
-          body: S.optional(ClaimDeviceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1686,7 +1373,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Configuration.pipe(T.HttpBody())),
+          body: S.optional(__S(18).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1702,7 +1389,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          preProvisioningTokens: S.optional(StringList),
+          preProvisioningTokens: S.optional(__S(20)),
           customerId: S.optional(S.String),
         }),
       ).annotate({ identifier: "GoogleWorkspaceAccount" });
@@ -1711,19 +1398,19 @@ function __c2(j: number): any {
         S.Struct({
           skipWelcomeEmail: S.optional(S.Boolean),
           name: S.optional(S.String),
-          googleWorkspaceAccount: S.optional(GoogleWorkspaceAccount),
+          googleWorkspaceAccount: S.optional(__S(21)),
           companyId: S.optional(S.String),
-          adminEmails: S.optional(StringList),
+          adminEmails: S.optional(__S(20)),
           languageCode: S.optional(S.String),
           companyName: S.optional(S.String),
-          ownerEmails: S.optional(StringList),
-          termsStatus: S.optional(CompanyTermsStatusEnum),
+          ownerEmails: S.optional(__S(20)),
+          termsStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "Company" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          customer: S.optional(Company),
+          customer: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "CreateCustomerRequest" });
   }
@@ -1734,7 +1421,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CreateCustomerRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(23).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1764,7 +1451,7 @@ function __c3(j: number): any {
         S.Struct({
           limit: S.optional(S.String),
           pageToken: S.optional(S.String),
-          deviceIdentifier: S.optional(DeviceIdentifier),
+          deviceIdentifier: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "FindDevicesByDeviceIdentifierRequest",
@@ -1773,7 +1460,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
-          body: S.optional(FindDevicesByDeviceIdentifierRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(26).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1789,28 +1476,28 @@ function __c3(j: number): any {
         S.Struct({
           resellerId: S.optional(S.String),
           ownerCompanyId: S.optional(S.String),
-          sectionType: S.optional(DeviceClaimSectionTypeEnum),
-          additionalService: S.optional(DeviceClaimAdditionalServiceEnum),
+          sectionType: S.optional(S.String),
+          additionalService: S.optional(S.String),
           googleWorkspaceCustomerId: S.optional(S.String),
           vacationModeStartTime: S.optional(S.String),
           vacationModeExpireTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceClaim" });
     case 5:
-      return S.Array(DeviceClaim);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
           configuration: S.optional(S.String),
           deviceId: S.optional(S.String),
-          deviceIdentifier: S.optional(DeviceIdentifier),
-          deviceMetadata: S.optional(DeviceMetadata),
+          deviceIdentifier: S.optional(__S(0)),
+          deviceMetadata: S.optional(__S(6)),
           name: S.optional(S.String),
-          claims: S.optional(DeviceClaimList),
+          claims: S.optional(__S(29)),
         }),
       ).annotate({ identifier: "Device" });
     case 7:
-      return S.Array(Device);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
@@ -1819,7 +1506,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
-          devices: S.optional(DeviceList),
+          devices: S.optional(__S(31)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1828,10 +1515,10 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          customerId: S.optional(StringList),
+          customerId: S.optional(__S(20)),
           pageToken: S.optional(S.String),
-          googleWorkspaceCustomerId: S.optional(StringList),
-          sectionType: S.optional(FindDevicesByOwnerRequestSectionTypeEnum),
+          googleWorkspaceCustomerId: S.optional(__S(20)),
+          sectionType: S.optional(S.String),
           limit: S.optional(S.String),
         }),
       ).annotate({
@@ -1841,7 +1528,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
-          body: S.optional(FindDevicesByOwnerRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(33).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1857,7 +1544,7 @@ function __c4(j: number): any {
         S.Struct({
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
-          devices: S.optional(DeviceList),
+          devices: S.optional(__S(31)),
         }),
       ).annotate({
         identifier: "FindDevicesByOwnerResponse",
@@ -1923,7 +1610,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          deviceIdentifier: S.optional(DeviceIdentifier),
+          deviceIdentifier: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "GetDeviceSimLockStateRequest",
@@ -1932,7 +1619,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
-          body: S.optional(GetDeviceSimLockStateRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(40).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1946,7 +1633,7 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          simLockState: S.optional(GetDeviceSimLockStateResponseSimLockStateEnum),
+          simLockState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GetDeviceSimLockStateResponse",
@@ -1965,12 +1652,12 @@ function __c5(j: number): any {
         ),
       ).annotate({ identifier: "ListCustomersRequest" });
     case 4:
-      return S.Array(Company);
+      return S.Array(__S(22));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          customers: S.optional(CompanyList),
+          customers: S.optional(__S(44)),
         }),
       ).annotate({
         identifier: "CustomerListCustomersResponse",
@@ -1990,7 +1677,7 @@ function __c5(j: number): any {
         identifier: "ListCustomersConfigurationsRequest",
       });
     case 7:
-      return S.Array(Configuration);
+      return S.Array(__S(18));
   }
 }
 function __c6(j: number): any {
@@ -1998,7 +1685,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          configurations: S.optional(ConfigurationList),
+          configurations: S.optional(__S(47)),
         }),
       ).annotate({
         identifier: "CustomerListConfigurationsResponse",
@@ -2023,7 +1710,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          devices: S.optional(DeviceList),
+          devices: S.optional(__S(31)),
         }),
       ).annotate({
         identifier: "CustomerListDevicesResponse",
@@ -2049,11 +1736,11 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "Dpc" });
     case 5:
-      return S.Array(Dpc);
+      return S.Array(__S(52));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dpcs: S.optional(DpcList),
+          dpcs: S.optional(__S(53)),
         }),
       ).annotate({ identifier: "CustomerListDpcsResponse" });
     case 7:
@@ -2079,7 +1766,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          customers: S.optional(CompanyList),
+          customers: S.optional(__S(44)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
         }),
@@ -2104,7 +1791,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           totalSize: S.optional(S.Number),
-          vendors: S.optional(CompanyList),
+          vendors: S.optional(__S(44)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListVendorsResponse" });
@@ -2127,7 +1814,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          customers: S.optional(CompanyList),
+          customers: S.optional(__S(44)),
           nextPageToken: S.optional(S.String),
           totalSize: S.optional(S.Number),
         }),
@@ -2137,7 +1824,7 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          deviceMetadata: S.optional(DeviceMetadata),
+          deviceMetadata: S.optional(__S(6)),
         }),
       ).annotate({
         identifier: "UpdateDeviceMetadataRequest",
@@ -2147,7 +1834,7 @@ function __c7(j: number): any {
         S.Struct({
           metadataOwnerId: S.String.pipe(T.Label()),
           deviceId: S.String.pipe(T.Label()),
-          body: S.optional(UpdateDeviceMetadataRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(61).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2163,7 +1850,7 @@ function __c7(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Configuration.pipe(T.HttpBody())),
+          body: S.optional(__S(18).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2181,7 +1868,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          device: S.optional(DeviceReference),
+          device: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "CustomerRemoveConfigurationRequest",
@@ -2190,7 +1877,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CustomerRemoveConfigurationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(64).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2205,25 +1892,25 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           vacationModeDays: S.optional(S.Number),
-          sectionType: S.optional(PartnerUnclaimSectionTypeEnum),
-          deviceIdentifier: S.optional(DeviceIdentifier),
+          sectionType: S.optional(S.String),
+          deviceIdentifier: S.optional(__S(0)),
           deviceId: S.optional(S.String),
           vacationModeExpireTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "PartnerUnclaim" });
     case 3:
-      return S.Array(PartnerUnclaim);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          unclaims: S.optional(PartnerUnclaimList),
+          unclaims: S.optional(__S(67)),
         }),
       ).annotate({ identifier: "UnclaimDevicesRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
-          body: S.optional(UnclaimDevicesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(68).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2238,7 +1925,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CustomerUnclaimDeviceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(64).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2252,11 +1939,11 @@ function __c8(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          deviceIdentifier: S.optional(DeviceIdentifier),
+          deviceIdentifier: S.optional(__S(0)),
           vacationModeDays: S.optional(S.Number),
           vacationModeExpireTime: S.optional(S.String),
           deviceId: S.optional(S.String),
-          sectionType: S.optional(UnclaimDeviceRequestSectionTypeEnum),
+          sectionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "UnclaimDeviceRequest" });
   }
@@ -2267,7 +1954,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
-          body: S.optional(UnclaimDeviceRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(71).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2281,17 +1968,17 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          deviceMetadata: S.optional(DeviceMetadata),
-          deviceIdentifier: S.optional(DeviceIdentifier),
+          deviceMetadata: S.optional(__S(6)),
+          deviceIdentifier: S.optional(__S(0)),
           deviceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateMetadataArguments" });
     case 2:
-      return S.Array(UpdateMetadataArguments);
+      return S.Array(__S(73));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          updates: S.optional(UpdateMetadataArgumentsList),
+          updates: S.optional(__S(74)),
         }),
       ).annotate({
         identifier: "UpdateDeviceMetadataInBatchRequest",
@@ -2300,7 +1987,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           partnerId: S.String.pipe(T.Label()),
-          body: S.optional(UpdateDeviceMetadataInBatchRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(75).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2311,5 +1998,34 @@ function __c9(j: number): any {
       ).annotate({
         identifier: "UpdateMetadataAsyncPartnersDevicesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
   }
 }

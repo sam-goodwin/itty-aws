@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -50,11 +52,6 @@ export interface CreateFileSystemShortcutRequest {
   /** Display order within the user's shortcut list, ascending. */
   order?: number;
 }
-const CreateFileSystemShortcutRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateFileSystemShortcutRequest>;
-
 export interface FileSystemShortcut2 {
   id?: string;
   /** Display path of the shortcut in the sidebar. */
@@ -71,43 +68,21 @@ export interface FileSystemShortcut2 {
   /** Resolved access level the user has for the object this entry references ('none' means the user can't open it). Null when access controls don't apply to the entry type. */
   user_access_level?: string | null;
 }
-const FileSystemShortcut2 = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<FileSystemShortcut2>;
-
 /** IDs of the current user's shortcuts in the desired display order. */
 export type CreateFileSystemShortcutReorderRequestOrderedIdsList = Array<string>;
-const CreateFileSystemShortcutReorderRequestOrderedIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateFileSystemShortcutReorderRequestOrderedIdsList>;
-
 export interface CreateFileSystemShortcutReorderRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** IDs of the current user's shortcuts in the desired display order. */
   ordered_ids: CreateFileSystemShortcutReorderRequestOrderedIdsList;
 }
-const CreateFileSystemShortcutReorderRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateFileSystemShortcutReorderRequest>;
-
 export type PaginatedFileSystemShortcutListResultsList = Array<FileSystemShortcut2>;
-const PaginatedFileSystemShortcutListResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<PaginatedFileSystemShortcutListResultsList>;
-
 export interface PaginatedFileSystemShortcutList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedFileSystemShortcutListResultsList;
 }
-const PaginatedFileSystemShortcutList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PaginatedFileSystemShortcutList>;
-
 export interface FileSystemShortcutBulkItem {
   /** Display path of the shortcut in the sidebar. */
   path: string;
@@ -118,23 +93,10 @@ export interface FileSystemShortcutBulkItem {
   /** Destination URL the shortcut opens. Null when the shortcut points at an item by ref. */
   href?: string | null;
 }
-const FileSystemShortcutBulkItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<FileSystemShortcutBulkItem>;
-
 /** Shortcuts to create, appended to the end of the current order in the given sequence. An item identical to a shortcut the user already has is skipped. */
 export type FileSystemShortcutBulkUpdateCreateRequestAddList = Array<FileSystemShortcutBulkItem>;
-const FileSystemShortcutBulkUpdateCreateRequestAddList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<FileSystemShortcutBulkUpdateCreateRequestAddList>;
-
 /** IDs of the current user's shortcuts to delete. */
 export type FileSystemShortcutBulkUpdateCreateRequestRemoveIdsList = Array<string>;
-const FileSystemShortcutBulkUpdateCreateRequestRemoveIdsList =
-  CreateFileSystemShortcutReorderRequestOrderedIdsList as any as S.Schema<FileSystemShortcutBulkUpdateCreateRequestRemoveIdsList>;
-
 export interface FileSystemShortcutBulkUpdateCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -143,50 +105,22 @@ export interface FileSystemShortcutBulkUpdateCreateRequest {
   /** IDs of the current user's shortcuts to delete. */
   remove_ids?: FileSystemShortcutBulkUpdateCreateRequestRemoveIdsList;
 }
-const FileSystemShortcutBulkUpdateCreateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<FileSystemShortcutBulkUpdateCreateRequest>;
-
 export type FileSystemShortcutBulkUpdateCreateResponseBodyList = Array<FileSystemShortcut2>;
-const FileSystemShortcutBulkUpdateCreateResponseBodyList =
-  PaginatedFileSystemShortcutListResultsList as any as S.Schema<FileSystemShortcutBulkUpdateCreateResponseBodyList>;
-
 export type FileSystemShortcutBulkUpdateCreateResponse =
   FileSystemShortcutBulkUpdateCreateResponseBodyList;
-const FileSystemShortcutBulkUpdateCreateResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<FileSystemShortcutBulkUpdateCreateResponse>;
-
 export interface FileSystemShortcutDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this file system shortcut. */
   id: string;
 }
-const FileSystemShortcutDestroyRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<FileSystemShortcutDestroyRequest>;
-
 export interface FileSystemShortcutDestroyResponse {}
-const FileSystemShortcutDestroyResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<FileSystemShortcutDestroyResponse>;
-
 export interface GetFileSystemShortcutRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this file system shortcut. */
   id: string;
 }
-const GetFileSystemShortcutRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetFileSystemShortcutRequest>;
-
 export interface ListFileSystemShortcutRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -195,11 +129,6 @@ export interface ListFileSystemShortcutRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListFileSystemShortcutRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListFileSystemShortcutRequest>;
-
 export interface UpdateFileSystemShortcutRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -216,11 +145,6 @@ export interface UpdateFileSystemShortcutRequest {
   /** Display order within the user's shortcut list, ascending. */
   order?: number;
 }
-const UpdateFileSystemShortcutRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<UpdateFileSystemShortcutRequest>;
-
 export interface UpdateFileSystemShortcutPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -237,11 +161,6 @@ export interface UpdateFileSystemShortcutPartialRequest {
   /** Display order within the user's shortcut list, ascending. */
   order?: number;
 }
-const UpdateFileSystemShortcutPartialRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<UpdateFileSystemShortcutPartialRequest>;
-
 export type CreateFileSystemShortcutError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createFileSystemShortcut: API.OperationMethod<
   CreateFileSystemShortcutRequest,
@@ -249,8 +168,8 @@ export const createFileSystemShortcut: API.OperationMethod<
   CreateFileSystemShortcutError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFileSystemShortcutRequest,
-  output: FileSystemShortcut2,
+  input: __S(0) as any as S.Schema<CreateFileSystemShortcutRequest>,
+  output: __S(1) as any as S.Schema<FileSystemShortcut2>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -264,8 +183,8 @@ export const createFileSystemShortcutReorder: API.OperationMethod<
   CreateFileSystemShortcutReorderError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFileSystemShortcutReorderRequest,
-  output: PaginatedFileSystemShortcutList,
+  input: __S(3) as any as S.Schema<CreateFileSystemShortcutReorderRequest>,
+  output: __S(5) as any as S.Schema<PaginatedFileSystemShortcutList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -279,8 +198,8 @@ export const fileSystemShortcutBulkUpdateCreate: API.OperationMethod<
   FileSystemShortcutBulkUpdateCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FileSystemShortcutBulkUpdateCreateRequest,
-  output: FileSystemShortcutBulkUpdateCreateResponse,
+  input: __S(8) as any as S.Schema<FileSystemShortcutBulkUpdateCreateRequest>,
+  output: __S(9) as any as S.Schema<FileSystemShortcutBulkUpdateCreateResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -293,8 +212,8 @@ export const fileSystemShortcutDestroy: API.OperationMethod<
   FileSystemShortcutDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FileSystemShortcutDestroyRequest,
-  output: FileSystemShortcutDestroyResponse,
+  input: __S(10) as any as S.Schema<FileSystemShortcutDestroyRequest>,
+  output: __S(11) as any as S.Schema<FileSystemShortcutDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -307,8 +226,8 @@ export const getFileSystemShortcut: API.OperationMethod<
   GetFileSystemShortcutError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFileSystemShortcutRequest,
-  output: FileSystemShortcut2,
+  input: __S(12) as any as S.Schema<GetFileSystemShortcutRequest>,
+  output: __S(1) as any as S.Schema<FileSystemShortcut2>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -321,8 +240,8 @@ export const listFileSystemShortcut: API.OperationMethod<
   ListFileSystemShortcutError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFileSystemShortcutRequest,
-  output: PaginatedFileSystemShortcutList,
+  input: __S(13) as any as S.Schema<ListFileSystemShortcutRequest>,
+  output: __S(5) as any as S.Schema<PaginatedFileSystemShortcutList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -335,8 +254,8 @@ export const updateFileSystemShortcut: API.OperationMethod<
   UpdateFileSystemShortcutError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFileSystemShortcutRequest,
-  output: FileSystemShortcut2,
+  input: __S(14) as any as S.Schema<UpdateFileSystemShortcutRequest>,
+  output: __S(1) as any as S.Schema<FileSystemShortcut2>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -353,8 +272,8 @@ export const updateFileSystemShortcutPartial: API.OperationMethod<
   UpdateFileSystemShortcutPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFileSystemShortcutPartialRequest,
-  output: FileSystemShortcut2,
+  input: __S(15) as any as S.Schema<UpdateFileSystemShortcutPartialRequest>,
+  output: __S(1) as any as S.Schema<FileSystemShortcut2>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -401,7 +320,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          ordered_ids: CreateFileSystemShortcutReorderRequestOrderedIdsList,
+          ordered_ids: __S(2),
         }).pipe(
           T.Http({
             method: "POST",
@@ -413,14 +332,14 @@ function __c0(j: number): any {
         identifier: "CreateFileSystemShortcutReorderRequest",
       });
     case 4:
-      return S.Array(FileSystemShortcut2);
+      return S.Array(__S(1));
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedFileSystemShortcutListResultsList),
+          results: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "PaginatedFileSystemShortcutList",
@@ -437,7 +356,7 @@ function __c0(j: number): any {
         identifier: "FileSystemShortcutBulkItem",
       });
     case 7:
-      return S.Array(FileSystemShortcutBulkItem);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -446,8 +365,8 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          add: S.optional(FileSystemShortcutBulkUpdateCreateRequestAddList),
-          remove_ids: S.optional(FileSystemShortcutBulkUpdateCreateRequestRemoveIdsList),
+          add: S.optional(__S(7)),
+          remove_ids: S.optional(__S(2)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -459,9 +378,7 @@ function __c1(j: number): any {
         identifier: "FileSystemShortcutBulkUpdateCreateRequest",
       });
     case 1:
-      return S.suspend(() =>
-        FileSystemShortcutBulkUpdateCreateResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(4).pipe(T.RawResponseRoot())).annotate({
         identifier: "FileSystemShortcutBulkUpdateCreateResponse",
       });
     case 2:
@@ -554,5 +471,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateFileSystemShortcutPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

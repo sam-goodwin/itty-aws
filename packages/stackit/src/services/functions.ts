@@ -7,26 +7,16 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
 export type CreateFunctionRequestLabelsMap = { [key: string]: string | undefined };
-const CreateFunctionRequestLabelsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateFunctionRequestLabelsMap>;
-
 /** Status of this function's latest revision. */
 export type CreateFunctionRequestState = "CREATING" | "ACTIVE" | "FAILED";
-const CreateFunctionRequestState = S.String;
-
 /** URLs that resolve to the function. */
 export type CreateFunctionRequestUrlList = Array<string>;
-const CreateFunctionRequestUrlList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateFunctionRequestUrlList>;
-
 export interface CreateFunctionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -48,22 +38,11 @@ export interface CreateFunctionRequest {
   /** URLs that resolve to the function. */
   url?: CreateFunctionRequestUrlList;
 }
-const CreateFunctionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateFunctionRequest>;
-
 export type FunctionLabelsMap = { [key: string]: string | undefined };
-const FunctionLabelsMap = CreateFunctionRequestLabelsMap as any as S.Schema<FunctionLabelsMap>;
-
 /** Status of this function's latest revision. */
 export type FunctionState = "CREATING" | "ACTIVE" | "FAILED";
-const FunctionState = S.String;
-
 /** URLs that resolve to the function. */
 export type FunctionUrlList = Array<string>;
-const FunctionUrlList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<FunctionUrlList>;
-
 /** Represents a STACKIT Functions function. */
 export interface Function {
   /** Time the function was created. */
@@ -84,23 +63,14 @@ export interface Function {
   /** URLs that resolve to the function. */
   url?: FunctionUrlList;
 }
-const Function = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Function>;
-
 export type CreateFunctionRevisionRequestLabelsMap = { [key: string]: string | undefined };
-const CreateFunctionRevisionRequestLabelsMap =
-  CreateFunctionRequestLabelsMap as any as S.Schema<CreateFunctionRevisionRequestLabelsMap>;
-
 /** Resource utilization limitations */
 export interface ResourceLimits {
   concurrency: number;
   plan: string;
 }
-const ResourceLimits = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ResourceLimits>;
-
 /** Status of this revision. */
 export type CreateFunctionRevisionRequestState = "CANCELLED" | "CREATING" | "ACTIVE" | "FAILED";
-const CreateFunctionRevisionRequestState = S.String;
-
 /** Represents a variable value for a specific revision. */
 export interface RevisionVariable {
   /** Name of the variable (must match a variable definition on the function). */
@@ -110,15 +80,8 @@ export interface RevisionVariable {
   /** Reference to the vault secret. Only present for secret variables. */
   vault_reference?: string | null;
 }
-const RevisionVariable = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<RevisionVariable>;
-
 /** Variable values for this revision. Each variable must reference a variable definition on the function. */
 export type CreateFunctionRevisionRequestVariablesList = Array<RevisionVariable>;
-const CreateFunctionRevisionRequestVariablesList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateFunctionRevisionRequestVariablesList>;
-
 export interface CreateFunctionRevisionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -153,23 +116,11 @@ export interface CreateFunctionRevisionRequest {
   /** The version number of the revision. */
   version?: number;
 }
-const CreateFunctionRevisionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateFunctionRevisionRequest>;
-
 export type RevisionLabelsMap = { [key: string]: string | undefined };
-const RevisionLabelsMap = CreateFunctionRequestLabelsMap as any as S.Schema<RevisionLabelsMap>;
-
 /** Status of this revision. */
 export type RevisionState = "CANCELLED" | "CREATING" | "ACTIVE" | "FAILED";
-const RevisionState = S.String;
-
 /** Variable values for this revision. Each variable must reference a variable definition on the function. */
 export type RevisionVariablesList = Array<RevisionVariable>;
-const RevisionVariablesList =
-  CreateFunctionRevisionRequestVariablesList as any as S.Schema<RevisionVariablesList>;
-
 /** The function revision */
 export interface Revision {
   /** Time the function was created. */
@@ -201,12 +152,7 @@ export interface Revision {
   /** The version number of the revision. */
   version?: number;
 }
-const Revision = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Revision>;
-
 export type CreatePullCredentialRequestLabelsMap = { [key: string]: string | undefined };
-const CreatePullCredentialRequestLabelsMap =
-  CreateFunctionRequestLabelsMap as any as S.Schema<CreatePullCredentialRequestLabelsMap>;
-
 export interface CreatePullCredentialRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -222,15 +168,7 @@ export interface CreatePullCredentialRequest {
   /** The username for the OCI registry pull-credentials. */
   username: string;
 }
-const CreatePullCredentialRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreatePullCredentialRequest>;
-
 export type PullCredentialLabelsMap = { [key: string]: string | undefined };
-const PullCredentialLabelsMap =
-  CreateFunctionRequestLabelsMap as any as S.Schema<PullCredentialLabelsMap>;
-
 export interface PullCredential {
   /** The OCI registry address. */
   address: string;
@@ -244,40 +182,20 @@ export interface PullCredential {
   /** The username for the OCI registry pull-credentials. */
   username: string;
 }
-const PullCredential = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<PullCredential>;
-
 export interface DeleteFunctionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
   /** The STACKIT Functions functionId */
   functionId: string;
 }
-const DeleteFunctionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DeleteFunctionRequest>;
-
 export interface DeleteFunctionResponse {}
-const DeleteFunctionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DeleteFunctionResponse>;
-
 export interface DeletePullCredentialRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
   /** The identifier of the OCI registry pull credential configuration */
   pullCredentialId: string;
 }
-const DeletePullCredentialRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DeletePullCredentialRequest>;
-
 export interface DeletePullCredentialResponse {}
-const DeletePullCredentialResponse =
-  DeleteFunctionResponse as any as S.Schema<DeletePullCredentialResponse>;
-
 export interface DeleteRevisionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -286,33 +204,19 @@ export interface DeleteRevisionRequest {
   /** The identifier of the revision */
   revisionId: string;
 }
-const DeleteRevisionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DeleteRevisionRequest>;
-
 export interface DeleteRevisionResponse {}
-const DeleteRevisionResponse = DeleteFunctionResponse as any as S.Schema<DeleteRevisionResponse>;
-
 export interface GetFunctionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
   /** The STACKIT Functions functionId */
   functionId: string;
 }
-const GetFunctionRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GetFunctionRequest>;
-
 export interface GetPullCredentialRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
   /** The identifier of the OCI registry pull credential configuration */
   pullCredentialId: string;
 }
-const GetPullCredentialRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetPullCredentialRequest>;
-
 export interface GetRevisionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -321,68 +225,38 @@ export interface GetRevisionRequest {
   /** The identifier of the revision */
   revisionId: string;
 }
-const GetRevisionRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<GetRevisionRequest>;
-
 export interface ListFunctionsRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
 }
-const ListFunctionsRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListFunctionsRequest>;
-
 /** List of functions. */
 export type ListFunctionsFunctionsList = Array<Function>;
-const ListFunctionsFunctionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListFunctionsFunctionsList>;
-
 export interface ListFunctions {
   /** List of functions. */
   functions?: ListFunctionsFunctionsList;
   /** Token for the next page of results. */
   next_page_token?: string;
 }
-const ListFunctions = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ListFunctions>;
-
 export interface ListPullCredentialsRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
 }
-const ListPullCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListPullCredentialsRequest>;
-
 /** List of oci registries pull credentials associated with the project. */
 export type ListPullCredentialsPullCredentialsList = Array<PullCredential>;
-const ListPullCredentialsPullCredentialsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListPullCredentialsPullCredentialsList>;
-
 export interface ListPullCredentials {
   /** Token for the next page of results. */
   next_page_token?: string;
   /** List of oci registries pull credentials associated with the project. */
   pull_credentials?: ListPullCredentialsPullCredentialsList;
 }
-const ListPullCredentials = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListPullCredentials>;
-
 export interface ListRevisionsRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
   /** The STACKIT Functions functionId */
   functionId: string;
 }
-const ListRevisionsRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListRevisionsRequest>;
-
 /** List of revisions. */
 export type ListRevisionsRevisionListList = Array<Revision>;
-const ListRevisionsRevisionListList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListRevisionsRevisionListList>;
-
 export interface ListRevisions {
   /** Maximum number of items */
   maxItems?: number;
@@ -391,12 +265,7 @@ export interface ListRevisions {
   /** List of revisions. */
   revisionList?: ListRevisionsRevisionListList;
 }
-const ListRevisions = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListRevisions>;
-
 export type UpdateFunctionRequestLabelsMap = { [key: string]: string | undefined };
-const UpdateFunctionRequestLabelsMap =
-  CreateFunctionRequestLabelsMap as any as S.Schema<UpdateFunctionRequestLabelsMap>;
-
 export interface UpdateFunctionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -406,15 +275,7 @@ export interface UpdateFunctionRequest {
   /** User-defined name of the function. */
   name?: string;
 }
-const UpdateFunctionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<UpdateFunctionRequest>;
-
 export type UpdatePullCredentialRequestLabelsMap = { [key: string]: string | undefined };
-const UpdatePullCredentialRequestLabelsMap =
-  CreateFunctionRequestLabelsMap as any as S.Schema<UpdatePullCredentialRequestLabelsMap>;
-
 export interface UpdatePullCredentialRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -430,15 +291,7 @@ export interface UpdatePullCredentialRequest {
   /** The username for the OCI registry pull-credentials. */
   username?: string;
 }
-const UpdatePullCredentialRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<UpdatePullCredentialRequest>;
-
 export type UpdateRevisionRequestLabelsMap = { [key: string]: string | undefined };
-const UpdateRevisionRequestLabelsMap =
-  CreateFunctionRequestLabelsMap as any as S.Schema<UpdateRevisionRequestLabelsMap>;
-
 export interface UpdateRevisionRequest {
   /** The STACKIT portal project UUID the resource is located in. */
   projectId: string;
@@ -450,11 +303,6 @@ export interface UpdateRevisionRequest {
   /** The name of the the revision. Must be unique within the function. */
   name?: string;
 }
-const UpdateRevisionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<UpdateRevisionRequest>;
-
 export type CreateFunctionError = StackitOpError;
 /** Creates a new function. */
 export const createFunction: API.OperationMethod<
@@ -463,8 +311,8 @@ export const createFunction: API.OperationMethod<
   CreateFunctionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFunctionRequest,
-  output: Function,
+  input: __S(2) as any as S.Schema<CreateFunctionRequest>,
+  output: __S(4) as any as S.Schema<Function>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -478,8 +326,8 @@ export const createFunctionRevision: API.OperationMethod<
   CreateFunctionRevisionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFunctionRevisionRequest,
-  output: Revision,
+  input: __S(8) as any as S.Schema<CreateFunctionRevisionRequest>,
+  output: __S(9) as any as S.Schema<Revision>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -493,8 +341,8 @@ export const createPullCredential: API.OperationMethod<
   CreatePullCredentialError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePullCredentialRequest,
-  output: PullCredential,
+  input: __S(10) as any as S.Schema<CreatePullCredentialRequest>,
+  output: __S(11) as any as S.Schema<PullCredential>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -508,8 +356,8 @@ export const deleteFunction: API.OperationMethod<
   DeleteFunctionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFunctionRequest,
-  output: DeleteFunctionResponse,
+  input: __S(12) as any as S.Schema<DeleteFunctionRequest>,
+  output: __S(13) as any as S.Schema<DeleteFunctionResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -523,8 +371,8 @@ export const deletePullCredential: API.OperationMethod<
   DeletePullCredentialError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePullCredentialRequest,
-  output: DeletePullCredentialResponse,
+  input: __S(14) as any as S.Schema<DeletePullCredentialRequest>,
+  output: __S(13) as any as S.Schema<DeletePullCredentialResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -538,8 +386,8 @@ export const deleteRevision: API.OperationMethod<
   DeleteRevisionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRevisionRequest,
-  output: DeleteRevisionResponse,
+  input: __S(15) as any as S.Schema<DeleteRevisionRequest>,
+  output: __S(13) as any as S.Schema<DeleteRevisionResponse>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -553,8 +401,8 @@ export const getFunction: API.OperationMethod<
   GetFunctionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFunctionRequest,
-  output: Function,
+  input: __S(16) as any as S.Schema<GetFunctionRequest>,
+  output: __S(4) as any as S.Schema<Function>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -568,8 +416,8 @@ export const getPullCredential: API.OperationMethod<
   GetPullCredentialError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPullCredentialRequest,
-  output: PullCredential,
+  input: __S(17) as any as S.Schema<GetPullCredentialRequest>,
+  output: __S(11) as any as S.Schema<PullCredential>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -583,8 +431,8 @@ export const getRevision: API.OperationMethod<
   GetRevisionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRevisionRequest,
-  output: Revision,
+  input: __S(18) as any as S.Schema<GetRevisionRequest>,
+  output: __S(9) as any as S.Schema<Revision>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -598,8 +446,8 @@ export const listFunctions2: API.OperationMethod<
   ListFunctions2Error,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFunctionsRequest,
-  output: ListFunctions,
+  input: __S(19) as any as S.Schema<ListFunctionsRequest>,
+  output: __S(21) as any as S.Schema<ListFunctions>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -613,8 +461,8 @@ export const listPullCredentials2: API.OperationMethod<
   ListPullCredentials2Error,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPullCredentialsRequest,
-  output: ListPullCredentials,
+  input: __S(22) as any as S.Schema<ListPullCredentialsRequest>,
+  output: __S(24) as any as S.Schema<ListPullCredentials>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -628,8 +476,8 @@ export const listRevisions2: API.OperationMethod<
   ListRevisions2Error,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRevisionsRequest,
-  output: ListRevisions,
+  input: __S(25) as any as S.Schema<ListRevisionsRequest>,
+  output: __S(27) as any as S.Schema<ListRevisions>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -643,8 +491,8 @@ export const updateFunction: API.OperationMethod<
   UpdateFunctionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFunctionRequest,
-  output: Function,
+  input: __S(28) as any as S.Schema<UpdateFunctionRequest>,
+  output: __S(4) as any as S.Schema<Function>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -658,8 +506,8 @@ export const updatePullCredential: API.OperationMethod<
   UpdatePullCredentialError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePullCredentialRequest,
-  output: PullCredential,
+  input: __S(29) as any as S.Schema<UpdatePullCredentialRequest>,
+  output: __S(11) as any as S.Schema<PullCredential>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -673,8 +521,8 @@ export const updateRevision: API.OperationMethod<
   UpdateRevisionError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRevisionRequest,
-  output: Revision,
+  input: __S(30) as any as S.Schema<UpdateRevisionRequest>,
+  output: __S(9) as any as S.Schema<Revision>,
   errors: [UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -694,12 +542,12 @@ function __c0(j: number): any {
           created_at: S.optional(S.String),
           current_revision: S.optional(S.String),
           id: S.optional(S.String),
-          labels: S.optional(CreateFunctionRequestLabelsMap),
+          labels: S.optional(__S(0)),
           name: S.String,
-          state: S.optional(CreateFunctionRequestState),
+          state: S.optional(S.String),
           state_error: S.optional(S.String),
           updated_at: S.optional(S.String),
-          url: S.optional(CreateFunctionRequestUrlList),
+          url: S.optional(__S(1)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -717,12 +565,12 @@ function __c0(j: number): any {
           created_at: S.optional(S.String),
           current_revision: S.optional(S.String),
           id: S.optional(S.String),
-          labels: S.optional(FunctionLabelsMap),
+          labels: S.optional(__S(0)),
           name: S.String,
-          state: S.optional(FunctionState),
+          state: S.optional(S.String),
           state_error: S.optional(S.String),
           updated_at: S.optional(S.String),
-          url: S.optional(FunctionUrlList),
+          url: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "Function" });
     case 5:
@@ -741,7 +589,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "RevisionVariable" });
     case 7:
-      return S.Array(RevisionVariable);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -755,16 +603,16 @@ function __c1(j: number): any {
           digest: S.optional(S.String),
           function_id: S.optional(S.String),
           id: S.optional(S.String),
-          labels: S.optional(CreateFunctionRevisionRequestLabelsMap),
-          limits: ResourceLimits,
+          labels: S.optional(__S(0)),
+          limits: __S(5),
           message: S.optional(S.String),
           name: S.optional(S.String),
           oci_pull_credential_id: S.optional(S.String),
           oci_reference: S.String,
-          state: S.optional(CreateFunctionRevisionRequestState),
+          state: S.optional(S.String),
           state_error: S.optional(S.String),
           updated_at: S.optional(S.String),
-          variables: S.optional(CreateFunctionRevisionRequestVariablesList),
+          variables: S.optional(__S(7)),
           version: S.optional(S.Number),
         }).pipe(
           T.Http({
@@ -784,16 +632,16 @@ function __c1(j: number): any {
           digest: S.optional(S.String),
           function_id: S.optional(S.String),
           id: S.optional(S.String),
-          labels: S.optional(RevisionLabelsMap),
-          limits: ResourceLimits,
+          labels: S.optional(__S(0)),
+          limits: __S(5),
           message: S.optional(S.String),
           name: S.optional(S.String),
           oci_pull_credential_id: S.optional(S.String),
           oci_reference: S.String,
-          state: S.optional(RevisionState),
+          state: S.optional(S.String),
           state_error: S.optional(S.String),
           updated_at: S.optional(S.String),
-          variables: S.optional(RevisionVariablesList),
+          variables: S.optional(__S(7)),
           version: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Revision" });
@@ -803,7 +651,7 @@ function __c1(j: number): any {
           projectId: S.String.pipe(T.Label()),
           address: S.String,
           id: S.optional(S.String),
-          labels: S.optional(CreatePullCredentialRequestLabelsMap),
+          labels: S.optional(__S(0)),
           name: S.optional(S.String),
           password: S.String.pipe(T.SensitiveValue({})),
           username: S.String,
@@ -823,7 +671,7 @@ function __c1(j: number): any {
         S.Struct({
           address: S.String,
           id: S.optional(S.String),
-          labels: S.optional(PullCredentialLabelsMap),
+          labels: S.optional(__S(0)),
           name: S.optional(S.String),
           password: S.String.pipe(T.SensitiveValue({})),
           username: S.String,
@@ -939,11 +787,11 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListFunctionsRequest" });
     case 4:
-      return S.Array(Function);
+      return S.Array(__S(4));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          functions: S.optional(ListFunctionsFunctionsList),
+          functions: S.optional(__S(20)),
           next_page_token: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListFunctions" });
@@ -963,7 +811,7 @@ function __c2(j: number): any {
         identifier: "ListPullCredentialsRequest",
       });
     case 7:
-      return S.Array(PullCredential);
+      return S.Array(__S(11));
   }
 }
 function __c3(j: number): any {
@@ -972,7 +820,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           next_page_token: S.optional(S.String),
-          pull_credentials: S.optional(ListPullCredentialsPullCredentialsList),
+          pull_credentials: S.optional(__S(23)),
         }),
       ).annotate({ identifier: "ListPullCredentials" });
     case 1:
@@ -990,13 +838,13 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListRevisionsRequest" });
     case 2:
-      return S.Array(Revision);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
           maxItems: S.optional(S.Number),
           next_page_token: S.optional(S.String),
-          revisionList: S.optional(ListRevisionsRevisionListList),
+          revisionList: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "ListRevisions" });
     case 4:
@@ -1004,7 +852,7 @@ function __c3(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           functionId: S.String.pipe(T.Label()),
-          labels: S.optional(UpdateFunctionRequestLabelsMap),
+          labels: S.optional(__S(0)),
           name: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1021,7 +869,7 @@ function __c3(j: number): any {
           projectId: S.String.pipe(T.Label()),
           pullCredentialId: S.String.pipe(T.Label()),
           address: S.optional(S.String),
-          labels: S.optional(UpdatePullCredentialRequestLabelsMap),
+          labels: S.optional(__S(0)),
           name: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           username: S.optional(S.String),
@@ -1042,7 +890,7 @@ function __c3(j: number): any {
           projectId: S.String.pipe(T.Label()),
           functionId: S.String.pipe(T.Label()),
           revisionId: S.String.pipe(T.Label()),
-          labels: S.optional(UpdateRevisionRequestLabelsMap),
+          labels: S.optional(__S(0)),
           name: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -1053,5 +901,22 @@ function __c3(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRevisionRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

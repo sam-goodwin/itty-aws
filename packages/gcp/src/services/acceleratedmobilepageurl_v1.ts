@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,11 +65,7 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 export type BatchGetAmpUrlsRequestLookupStrategyEnum = "FETCH_LIVE_DOC" | "IN_INDEX_DOC";
-const BatchGetAmpUrlsRequestLookupStrategyEnum = S.String;
-
 /** AMP URL request for a batch of URLs. */
 export interface BatchGetAmpUrlsRequest {
   /** List of URLs to look up for the paired AMP URLs. The URLs are case-sensitive. Up to 50 URLs per lookup (see [Usage Limits](/amp/cache/reference/limits)). */
@@ -75,20 +73,10 @@ export interface BatchGetAmpUrlsRequest {
   /** The lookup_strategy being requested. */
   lookupStrategy?: BatchGetAmpUrlsRequestLookupStrategyEnum | (string & {});
 }
-const BatchGetAmpUrlsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<BatchGetAmpUrlsRequest>;
-
 export interface BatchGetAmpUrlsRequest_ {
   /** Request body */
   body?: BatchGetAmpUrlsRequest;
 }
-const BatchGetAmpUrlsRequest_ = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BatchGetAmpUrlsRequest_>;
-
 export type AmpUrlErrorErrorCodeEnum =
   | "ERROR_CODE_UNSPECIFIED"
   | "INPUT_URL_NOT_FOUND"
@@ -96,8 +84,6 @@ export type AmpUrlErrorErrorCodeEnum =
   | "APPLICATION_ERROR"
   | "URL_IS_VALID_AMP"
   | "URL_IS_INVALID_AMP";
-const AmpUrlErrorErrorCodeEnum = S.String;
-
 /** AMP URL Error resource for a requested URL that couldn't be found. */
 export interface AmpUrlError {
   /** An optional descriptive error message. */
@@ -107,11 +93,7 @@ export interface AmpUrlError {
   /** The error code of an API call. */
   errorCode?: AmpUrlErrorErrorCodeEnum;
 }
-const AmpUrlError = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<AmpUrlError>;
-
 export type AmpUrlErrorList = Array<AmpUrlError>;
-const AmpUrlErrorList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AmpUrlErrorList>;
-
 /** AMP URL response for a requested URL. */
 export interface AmpUrl {
   /** The AMP URL pointing to the publisher's web server. */
@@ -121,11 +103,7 @@ export interface AmpUrl {
   /** The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to the cached document in the Google AMP Cache. */
   cdnAmpUrl?: string;
 }
-const AmpUrl = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AmpUrl>;
-
 export type AmpUrlList = Array<AmpUrl>;
-const AmpUrlList = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AmpUrlList>;
-
 /** Batch AMP URL response. */
 export interface BatchGetAmpUrlsResponse {
   /** The errors for requested URLs that have no AMP URL. */
@@ -133,11 +111,6 @@ export interface BatchGetAmpUrlsResponse {
   /** For each URL in BatchAmpUrlsRequest, the URL response. The response might not be in the same order as URLs in the batch request. If BatchAmpUrlsRequest contains duplicate URLs, AmpUrl is generated only once. */
   ampUrls?: AmpUrlList;
 }
-const BatchGetAmpUrlsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<BatchGetAmpUrlsResponse>;
-
 export type BatchGetAmpUrlsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Returns AMP URL(s) and equivalent [AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format). */
 export const batchGetAmpUrls: API.OperationMethod<
@@ -146,8 +119,8 @@ export const batchGetAmpUrls: API.OperationMethod<
   BatchGetAmpUrlsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetAmpUrlsRequest_,
-  output: BatchGetAmpUrlsResponse,
+  input: __S(2) as any as S.Schema<BatchGetAmpUrlsRequest_>,
+  output: __S(7) as any as S.Schema<BatchGetAmpUrlsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -161,14 +134,14 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          urls: S.optional(StringList),
-          lookupStrategy: S.optional(BatchGetAmpUrlsRequestLookupStrategyEnum),
+          urls: S.optional(__S(0)),
+          lookupStrategy: S.optional(S.String),
         }),
       ).annotate({ identifier: "BatchGetAmpUrlsRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(BatchGetAmpUrlsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -182,11 +155,11 @@ function __c0(j: number): any {
         S.Struct({
           errorMessage: S.optional(S.String),
           originalUrl: S.optional(S.String),
-          errorCode: S.optional(AmpUrlErrorErrorCodeEnum),
+          errorCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "AmpUrlError" });
     case 4:
-      return S.Array(AmpUrlError);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -196,13 +169,24 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "AmpUrl" });
     case 6:
-      return S.Array(AmpUrl);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          urlErrors: S.optional(AmpUrlErrorList),
-          ampUrls: S.optional(AmpUrlList),
+          urlErrors: S.optional(__S(4)),
+          ampUrls: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "BatchGetAmpUrlsResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

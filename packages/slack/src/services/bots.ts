@@ -6,6 +6,8 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -15,8 +17,6 @@ export interface BotsInfoRequest {
   /** encoded team id or enterprise id where the bot exists, required if org token is used */
   team_id?: string;
 }
-const BotsInfoRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<BotsInfoRequest>;
-
 export interface BotsInfoResponseBotsItemIcons {
   emoji?: string;
   image_36?: string;
@@ -24,11 +24,6 @@ export interface BotsInfoResponseBotsItemIcons {
   image_64?: string;
   image_72?: string;
 }
-const BotsInfoResponseBotsItemIcons = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<BotsInfoResponseBotsItemIcons>;
-
 export interface BotsInfoResponseBotsItem {
   updated: number;
   name?: string;
@@ -41,17 +36,7 @@ export interface BotsInfoResponseBotsItem {
   is_legacy_workflow_bot?: boolean;
   user_id?: string;
 }
-const BotsInfoResponseBotsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<BotsInfoResponseBotsItem>;
-
 export type BotsInfoResponseBotsList = Array<BotsInfoResponseBotsItem>;
-const BotsInfoResponseBotsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<BotsInfoResponseBotsList>;
-
 export type BotsInfoResponseBotIcons = BotsInfoResponseBotsItemIcons;
 export interface BotsInfoResponseBot {
   updated: number;
@@ -65,16 +50,12 @@ export interface BotsInfoResponseBot {
   is_connector_bot?: boolean;
   is_legacy_workflow_bot?: boolean;
 }
-const BotsInfoResponseBot = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<BotsInfoResponseBot>;
-
 export interface BotsInfoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   bots?: BotsInfoResponseBotsList;
   bot?: BotsInfoResponseBot;
 }
-const BotsInfoResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<BotsInfoResponse>;
-
 export type BotsInfoError = SlackOpError;
 /** Gets information about a bot user. Required scopes -- bot: `users:read`; user: `users:read` Rate limit tier: 3 Method-specific errors (the `error` slug on the SlackError): - `bot_not_found` -- Value passed for `bot` was invalid. - `bots_not_found` -- At least one value passed for `bots` was invalid. - `missing_argument` -- A required argument is missing. - `team_not_found` -- Value passed for `team_id` was invalid. See https://docs.slack.dev/reference/methods/bots.info */
 export const botsInfo: API.OperationMethod<
@@ -83,8 +64,8 @@ export const botsInfo: API.OperationMethod<
   BotsInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BotsInfoRequest,
-  output: BotsInfoResponse,
+  input: __S(0) as any as S.Schema<BotsInfoRequest>,
+  output: __S(5) as any as S.Schema<BotsInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -117,7 +98,7 @@ function __c0(j: number): any {
         S.Struct({
           updated: S.Number,
           name: S.optional(S.String),
-          icons: S.optional(BotsInfoResponseBotsItemIcons),
+          icons: S.optional(__S(1)),
           deleted: S.Boolean,
           app_id: S.optional(S.String),
           id: S.String,
@@ -128,14 +109,14 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "BotsInfoResponseBotsItem" });
     case 3:
-      return S.Array(BotsInfoResponseBotsItem);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           updated: S.Number,
           user_id: S.optional(S.String),
           name: S.optional(S.String),
-          icons: S.optional(BotsInfoResponseBotsItemIcons),
+          icons: S.optional(__S(1)),
           deleted: S.Boolean,
           app_id: S.optional(S.String),
           id: S.String,
@@ -148,9 +129,20 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          bots: S.optional(BotsInfoResponseBotsList),
-          bot: S.optional(BotsInfoResponseBot),
+          bots: S.optional(__S(3)),
+          bot: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "BotsInfoResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

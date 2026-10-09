@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { RedisCloudOpError, RedisCloudOpContext };
 
@@ -68,50 +70,19 @@ export interface AcceptActiveActiveTgwResourceShareRequest {
   /** AWS transit gateway invitation ID. */
   tgwInvitationId: number;
 }
-const AcceptActiveActiveTgwResourceShareRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AcceptActiveActiveTgwResourceShareRequest>;
-
 export interface AcceptActiveActiveTgwResourceShareResponse {}
-const AcceptActiveActiveTgwResourceShareResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AcceptActiveActiveTgwResourceShareResponse>;
-
 export interface AcceptTgwResourceShareRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** AWS transit gateway invitation ID. */
   tgwInvitationId: number;
 }
-const AcceptTgwResourceShareRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AcceptTgwResourceShareRequest>;
-
 export interface AcceptTgwResourceShareResponse {}
-const AcceptTgwResourceShareResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AcceptTgwResourceShareResponse>;
-
 /** Optional. Enter a list of subnets identifiers that exists in the hosted AWS account. Subnet Identifier must exist within the hosting account. */
 export type AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList = Array<string>;
-const AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList>;
-
 /** Optional. List the zone IDs for your preferred availability zones for the cloud provider and region. */
 export type AddNewRegionToActiveActiveSubscriptionRequestPreferredAvailabilityZonesList =
   Array<string>;
-const AddNewRegionToActiveActiveSubscriptionRequestPreferredAvailabilityZonesList =
-  /*@__PURE__*/ __L.at(
-    __c0,
-    5,
-  ) as any as S.Schema<AddNewRegionToActiveActiveSubscriptionRequestPreferredAvailabilityZonesList>;
-
 /** Optional. Expected read and write throughput for this region. */
 export interface LocalThroughput {
   /** Specify one of the selected cloud provider regions for the subscription. */
@@ -121,27 +92,16 @@ export interface LocalThroughput {
   /** Read operations for this region per second. Default: 1000 ops/sec */
   readOperationsPerSecond?: number;
 }
-const LocalThroughput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<LocalThroughput>;
-
 /** List of databases in the subscription with local throughput details. Default: 1000 read and write ops/sec for each database */
 export interface CrdbRegionSpec {
   /** Database name. */
   name?: string;
   localThroughputMeasurement?: LocalThroughput;
 }
-const CrdbRegionSpec = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CrdbRegionSpec>;
-
 /** List of databases in the subscription with local throughput details. Default: 1000 read and write ops/sec for each database */
 export type AddNewRegionToActiveActiveSubscriptionRequestDatabasesList = Array<CrdbRegionSpec>;
-const AddNewRegionToActiveActiveSubscriptionRequestDatabasesList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AddNewRegionToActiveActiveSubscriptionRequestDatabasesList>;
-
 /** Optional. RESP version must be compatible with Redis version. */
 export type AddNewRegionToActiveActiveSubscriptionRequestRespVersion = "resp2" | "resp3";
-const AddNewRegionToActiveActiveSubscriptionRequestRespVersion = S.String;
-
 export interface AddNewRegionToActiveActiveSubscriptionRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -168,19 +128,12 @@ export interface AddNewRegionToActiveActiveSubscriptionRequest {
   /** Required for subscriptions where 'persistentStorageEncryptionType' is 'customer-managed-key'. The resource name of the customer-managed encryption key for the region. */
   customerManagedKeyResourceName?: string;
 }
-const AddNewRegionToActiveActiveSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AddNewRegionToActiveActiveSubscriptionRequest>;
-
 export type TaskStateUpdateStatus =
   | "initialized"
   | "received"
   | "processing-in-progress"
   | "processing-completed"
   | "processing-error";
-const TaskStateUpdateStatus = S.String;
-
 export type ProcessorResponseError =
   | "UNAUTHORIZED"
   | "ACCOUNT_POC_INACTIVE_PENDING"
@@ -811,8 +764,6 @@ export type ProcessorResponseError =
   | "AGENT_MEMORY_STORE_NOT_FOUND"
   | "AGENT_MEMORY_STORE_FORBIDDEN"
   | "AGENT_MEMORY_STORE_DEPENDENCY_FAILED";
-const ProcessorResponseError = S.String;
-
 export interface ProcessorResponse {
   resourceId?: number;
   additionalResourceId?: number;
@@ -820,20 +771,8 @@ export interface ProcessorResponse {
   error?: ProcessorResponseError;
   additionalInfo?: string;
 }
-const ProcessorResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ProcessorResponse>;
-
 export type TaskStateUpdateLinksItemMap = { [key: string]: string | undefined };
-const TaskStateUpdateLinksItemMap = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<TaskStateUpdateLinksItemMap>;
-
 export type TaskStateUpdateLinksList = Array<TaskStateUpdateLinksItemMap>;
-const TaskStateUpdateLinksList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<TaskStateUpdateLinksList>;
-
 export interface TaskStateUpdate {
   taskId?: string;
   commandType?: string;
@@ -843,8 +782,6 @@ export interface TaskStateUpdate {
   response?: ProcessorResponse;
   links?: TaskStateUpdateLinksList;
 }
-const TaskStateUpdate = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<TaskStateUpdate>;
-
 export interface BackupDatabaseRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -855,11 +792,6 @@ export interface BackupDatabaseRequest {
   /** Optional. Manually backs up data to this location, instead of the set 'remoteBackup' location. */
   adhocBackupPath?: string;
 }
-const BackupDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<BackupDatabaseRequest>;
-
 export interface BackupDatabase1Request {
   /** Subscription ID. */
   subscriptionId: number;
@@ -868,11 +800,6 @@ export interface BackupDatabase1Request {
   /** Optional. Manually backs up data to this location, instead of the set 'periodicBackupPath' location. */
   adhocBackupPath?: string;
 }
-const BackupDatabase1Request = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<BackupDatabase1Request>;
-
 /** Type of the principal */
 export type CreateActiveActivePrivateLinkRequestType =
   | "aws_account"
@@ -881,8 +808,6 @@ export type CreateActiveActivePrivateLinkRequestType =
   | "iam_role"
   | "iam_user"
   | "service_principal";
-const CreateActiveActivePrivateLinkRequestType = S.String;
-
 export interface CreateActiveActivePrivateLinkRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -897,11 +822,6 @@ export interface CreateActiveActivePrivateLinkRequest {
   /** Alias or friendly name for the principal */
   alias?: string;
 }
-const CreateActiveActivePrivateLinkRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateActiveActivePrivateLinkRequest>;
-
 /** Type of the principal */
 export type CreateActiveActivePrivateLinkPrincipalRequestType =
   | "aws_account"
@@ -910,8 +830,6 @@ export type CreateActiveActivePrivateLinkPrincipalRequestType =
   | "iam_role"
   | "iam_user"
   | "service_principal";
-const CreateActiveActivePrivateLinkPrincipalRequestType = S.String;
-
 export interface CreateActiveActivePrivateLinkPrincipalRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -924,26 +842,13 @@ export interface CreateActiveActivePrivateLinkPrincipalRequest {
   /** Alias or friendly name for the principal */
   alias?: string;
 }
-const CreateActiveActivePrivateLinkPrincipalRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateActiveActivePrivateLinkPrincipalRequest>;
-
 export interface CreateActiveActivePscServiceRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Region ID - required for Active-Active subscription */
   regionId: number;
 }
-const CreateActiveActivePscServiceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateActiveActivePscServiceRequest>;
-
 export interface CreateActiveActivePscServiceResponse {}
-const CreateActiveActivePscServiceResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<CreateActiveActivePscServiceResponse>;
-
 export interface CreateActiveActivePscServiceEndpointRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -960,15 +865,7 @@ export interface CreateActiveActivePscServiceEndpointRequest {
   /** Prefix used to create PSC endpoints in the consumer application VPC. Endpoint names appear in Google Cloud as endpoint name prefix + endpoint number. */
   endpointConnectionName: string;
 }
-const CreateActiveActivePscServiceEndpointRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateActiveActivePscServiceEndpointRequest>;
-
 export interface CreateActiveActivePscServiceEndpointResponse {}
-const CreateActiveActivePscServiceEndpointResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<CreateActiveActivePscServiceEndpointResponse>;
-
 export interface CreateActiveActiveTgwAttachmentRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -977,15 +874,7 @@ export interface CreateActiveActiveTgwAttachmentRequest {
   /** AWS transit gateway ID. */
   TgwId: number;
 }
-const CreateActiveActiveTgwAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateActiveActiveTgwAttachmentRequest>;
-
 export interface CreateActiveActiveTgwAttachmentResponse {}
-const CreateActiveActiveTgwAttachmentResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<CreateActiveActiveTgwAttachmentResponse>;
-
 export interface CreateActiveActiveVpcPeeringRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -993,15 +882,8 @@ export interface CreateActiveActiveVpcPeeringRequest {
   /** Name of region to create a VPC peering from. */
   sourceRegion: string;
 }
-const CreateActiveActiveVpcPeeringRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateActiveActiveVpcPeeringRequest>;
-
 /** Optional. Cloud provider. Default: 'AWS' */
 export type CreateCloudAccountRequestProvider = "AWS" | "GCP";
-const CreateCloudAccountRequestProvider = S.String;
-
 export interface CreateCloudAccountRequest {
   /** Cloud account display name. */
   name: string;
@@ -1018,40 +900,17 @@ export interface CreateCloudAccountRequest {
   /** Cloud provider management console login URL. */
   signInLoginUrl: string;
 }
-const CreateCloudAccountRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateCloudAccountRequest>;
-
 export interface CreateCloudAccountResponse {}
-const CreateCloudAccountResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<CreateCloudAccountResponse>;
-
 /** Output format for the cost report */
 export type CreateCostReportRequestFormat = "json" | "csv";
-const CreateCostReportRequestFormat = S.String;
-
 /** Array of subscriptionIDs to filter by */
 export type CreateCostReportRequestSubscriptionIdsList = Array<number>;
-const CreateCostReportRequestSubscriptionIdsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateCostReportRequestSubscriptionIdsList>;
-
 /** Array of database IDs to filter by */
 export type CreateCostReportRequestDatabaseIdsList = Array<number>;
-const CreateCostReportRequestDatabaseIdsList =
-  CreateCostReportRequestSubscriptionIdsList as any as S.Schema<CreateCostReportRequestDatabaseIdsList>;
-
 /** Filter by plan type */
 export type CreateCostReportRequestSubscriptionType = "pro" | "essentials";
-const CreateCostReportRequestSubscriptionType = S.String;
-
 /** Array of regions to filter by */
 export type CreateCostReportRequestRegionsList = Array<string>;
-const CreateCostReportRequestRegionsList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CreateCostReportRequestRegionsList>;
-
 /** Tag filter for cost report */
 export interface Tag {
   /** Tag key */
@@ -1059,15 +918,8 @@ export interface Tag {
   /** Tag value */
   value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Tag>;
-
 /** Array of key-value pairs for tag filtering */
 export type CreateCostReportRequestTagsList = Array<Tag>;
-const CreateCostReportRequestTagsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateCostReportRequestTagsList>;
-
 export interface CreateCostReportRequest {
   /** Filter for usage starting on or after this date. Must be in format YYYY-MM-DD */
   startDate: string;
@@ -1086,23 +938,11 @@ export interface CreateCostReportRequest {
   /** Array of key-value pairs for tag filtering */
   tags?: CreateCostReportRequestTagsList;
 }
-const CreateCostReportRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateCostReportRequest>;
-
 export interface CreateCostReportResponse {}
-const CreateCostReportResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<CreateCostReportResponse>;
-
 /** Optional. Database protocol. Only set to 'memcached' if you have a legacy application. Default: 'redis' */
 export type CreateDatabaseRequestProtocol = "redis" | "memcached";
-const CreateDatabaseRequestProtocol = S.String;
-
 /** Optional. Redis Serialization Protocol version. Must be compatible with Redis version. */
 export type CreateDatabaseRequestRespVersion = "resp2" | "resp3";
-const CreateDatabaseRequestRespVersion = S.String;
-
 /** Optional. Type and rate of data persistence in persistent storage. Default: 'none' */
 export type CreateDatabaseRequestDataPersistence =
   | "none"
@@ -1111,8 +951,6 @@ export type CreateDatabaseRequestDataPersistence =
   | "snapshot-every-1-hour"
   | "snapshot-every-6-hours"
   | "snapshot-every-12-hours";
-const CreateDatabaseRequestDataPersistence = S.String;
-
 /** Optional. Data eviction policy. Default: 'volatile-lru' */
 export type CreateDatabaseRequestDataEvictionPolicy =
   | "allkeys-lru"
@@ -1125,13 +963,8 @@ export type CreateDatabaseRequestDataEvictionPolicy =
   | "volatile-random"
   | "volatile-ttl"
   | "noeviction";
-const CreateDatabaseRequestDataEvictionPolicy = S.String;
-
 /** Optional. This database will be a replica of the specified Redis databases provided as one or more URI(s). Example: 'redis://user:password@host:port'. If the URI provided is a Redis Cloud database, only host and port should be provided. Example: ['redis://endpoint1:6379', 'redis://endpoint2:6380']. */
 export type CreateDatabaseRequestReplicaOfList = Array<string>;
-const CreateDatabaseRequestReplicaOfList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CreateDatabaseRequestReplicaOfList>;
-
 /** Optional. This database will be a replica of the specified Redis databases, provided as a list of objects with endpoint and certificate details. */
 export interface DatabaseSyncSourceSpec {
   /** Redis URI of a source database. Example format: 'redis://user:password@host:port'. If the URI provided is a Redis Cloud database, only host and port should be provided. Example: 'redis://endpoint1:6379'. */
@@ -1141,29 +974,15 @@ export interface DatabaseSyncSourceSpec {
   /** TLS/SSL certificate chain of the sync source. If not set and the source is a Redis Cloud database, it will automatically detect the certificate to use. */
   serverCert?: string;
 }
-const DatabaseSyncSourceSpec = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DatabaseSyncSourceSpec>;
-
 /** Optional. This database will be a replica of the specified Redis databases, provided as a list of objects with endpoint and certificate details. */
 export type ReplicaOfSpecSyncSourcesList = Array<DatabaseSyncSourceSpec>;
-const ReplicaOfSpecSyncSourcesList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ReplicaOfSpecSyncSourcesList>;
-
 /** Optional. Changes Replica Of (also known as Active-Passive) configuration details. */
 export interface ReplicaOfSpec {
   /** Optional. This database will be a replica of the specified Redis databases, provided as a list of objects with endpoint and certificate details. */
   syncSources: ReplicaOfSpecSyncSourcesList;
 }
-const ReplicaOfSpec = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<ReplicaOfSpec>;
-
 /** Throughput measurement method. Use 'operations-per-second' for all new databases. */
 export type DatabaseThroughputSpecBy = "operations-per-second" | "number-of-shards";
-const DatabaseThroughputSpecBy = S.String;
-
 /** Optional. Throughput measurement method. */
 export interface DatabaseThroughputSpec {
   /** Throughput measurement method. Use 'operations-per-second' for all new databases. */
@@ -1171,18 +990,8 @@ export interface DatabaseThroughputSpec {
   /** Throughput value in the selected measurement method. */
   value: number;
 }
-const DatabaseThroughputSpec = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DatabaseThroughputSpec>;
-
 /** Optional. Expected throughput per region for an Active-Active database. Default: 1000 read and write ops/sec for each region */
 export type CreateDatabaseRequestLocalThroughputMeasurementList = Array<LocalThroughput>;
-const CreateDatabaseRequestLocalThroughputMeasurementList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateDatabaseRequestLocalThroughputMeasurementList>;
-
 /** Optional. Changes Remote backup configuration details. */
 export interface DatabaseBackupConfigInput {
   /** Optional. Determine if backup should be active. Default: null */
@@ -1196,33 +1005,15 @@ export interface DatabaseBackupConfigInput {
   /** Required when active is 'true'. Path to the backup storage location. */
   storagePath?: string;
 }
-const DatabaseBackupConfigInput = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DatabaseBackupConfigInput>;
-
 /** Optional. List of source IP addresses or subnet masks to allow. If specified, Redis clients will be able to connect to this database only from within the specified source IP addresses ranges. Example: '['192.168.10.0/32', '192.168.12.0/24']' */
 export type CreateDatabaseRequestSourceIpList = Array<string>;
-const CreateDatabaseRequestSourceIpList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CreateDatabaseRequestSourceIpList>;
-
 /** Optional. A list of client TLS/SSL certificates. If specified, mTLS authentication will be required to authenticate user connections. If set to an empty list, TLS client certificates will be removed and mTLS will not be required. TLS connection may still apply, depending on the value of 'enableTls'. */
 export interface DatabaseCertificateSpec {
   /** Client certificate public key in PEM format, with new line characters replaced with '\n'. */
   publicCertificatePEMString: string;
 }
-const DatabaseCertificateSpec = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DatabaseCertificateSpec>;
-
 /** Optional. A list of client TLS/SSL certificates. If specified, mTLS authentication will be required to authenticate user connections. */
 export type CreateDatabaseRequestClientTlsCertificatesList = Array<DatabaseCertificateSpec>;
-const CreateDatabaseRequestClientTlsCertificatesList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateDatabaseRequestClientTlsCertificatesList>;
-
 /** Alert type. Available options depend on Plan type. See [Configure alerts](https://redis.io/docs/latest/operate/rc/databases/monitor-performance/#configure-metric-alerts) for more information. */
 export type DatabaseAlertSpecName =
   | "dataset-size"
@@ -1233,8 +1024,6 @@ export type DatabaseAlertSpecName =
   | "syncsource-error"
   | "syncsource-lag"
   | "connections-limit";
-const DatabaseAlertSpecName = S.String;
-
 /** Optional. Changes Redis database alert details. */
 export interface DatabaseAlertSpec {
   /** Alert type. Available options depend on Plan type. See [Configure alerts](https://redis.io/docs/latest/operate/rc/databases/monitor-performance/#configure-metric-alerts) for more information. */
@@ -1242,22 +1031,10 @@ export interface DatabaseAlertSpec {
   /** Value over which an alert will be sent. Default values and range depend on the alert type. See [Configure alerts](https://redis.io/docs/latest/operate/rc/databases/monitor-performance/#configure-metric-alerts) for more information. */
   value: number;
 }
-const DatabaseAlertSpec = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<DatabaseAlertSpec>;
-
 /** Optional. Redis database alert details. */
 export type CreateDatabaseRequestAlertsList = Array<DatabaseAlertSpec>;
-const CreateDatabaseRequestAlertsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateDatabaseRequestAlertsList>;
-
 /** Optional. Redis advanced capability parameters. Use GET /database-modules to get the available capabilities and their parameters. */
 export type DatabaseModuleSpecParametersMap = { [key: string]: unknown | undefined };
-const DatabaseModuleSpecParametersMap = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DatabaseModuleSpecParametersMap>;
-
 /** Optional. Redis advanced capabilities (also known as modules) to be provisioned in the database. Use GET /database-modules to get a list of available advanced capabilities. Don't specify modules for database versions 8 and above. All capabilities are bundled in the database by default. */
 export interface DatabaseModuleSpec {
   /** Redis advanced capability name. Use GET /database-modules for a list of available capabilities. */
@@ -1265,22 +1042,13 @@ export interface DatabaseModuleSpec {
   /** Optional. Redis advanced capability parameters. Use GET /database-modules to get the available capabilities and their parameters. */
   parameters?: DatabaseModuleSpecParametersMap;
 }
-const DatabaseModuleSpec = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<DatabaseModuleSpec>;
-
 /** Optional. Redis advanced capabilities (also known as modules) to be provisioned in the database. Use GET /database-modules to get a list of available advanced capabilities. Don't specify modules for database versions 8 and above. All capabilities are bundled in the database by default. */
 export type CreateDatabaseRequestModulesList = Array<DatabaseModuleSpec>;
-const CreateDatabaseRequestModulesList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateDatabaseRequestModulesList>;
-
 /** Optional. Database [Hashing policy](https://redis.io/docs/latest/operate/rc/databases/configuration/clustering/#manage-the-hashing-policy). */
 export type CreateDatabaseRequestShardingType =
   | "default-regex-rules"
   | "custom-regex-rules"
   | "redis-oss-hashing";
-const CreateDatabaseRequestShardingType = S.String;
-
 export interface CreateDatabaseRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -1348,19 +1116,9 @@ export interface CreateDatabaseRequest {
   /** Optional. The query performance factor adds extra compute power specifically for search and query databases. You can increase your queries per second by the selected factor. */
   queryPerformanceFactor?: string;
 }
-const CreateDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateDatabaseRequest>;
-
 export interface CreateDatabaseResponse {}
-const CreateDatabaseResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<CreateDatabaseResponse>;
-
 /** Type of endpoint to redirect. */
 export type CreateEndpointsRedirectionRequestEndpointTargetType = "public" | "private";
-const CreateEndpointsRedirectionRequestEndpointTargetType = S.String;
-
 export interface CreateEndpointsRedirectionRequest {
   /** ID of the source database to redirect the endpoint from. */
   sourceDatabaseId: number;
@@ -1373,11 +1131,6 @@ export interface CreateEndpointsRedirectionRequest {
   /** Must be explicitly set to true to start the migration. This is a protective measure to avoid accidental migrations. */
   migrationProtection: boolean;
 }
-const CreateEndpointsRedirectionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateEndpointsRedirectionRequest>;
-
 /** Current status of the dynamic endpoint redirection. */
 export type EndpointsRedirectionResponseStatus =
   | "initiated"
@@ -1386,16 +1139,10 @@ export type EndpointsRedirectionResponseStatus =
   | "completed"
   | "failed"
   | "reverted";
-const EndpointsRedirectionResponseStatus = S.String;
-
 /** Type of the source endpoint. */
 export type EndpointRedirectionDTOSourceEndpointType = "public" | "private";
-const EndpointRedirectionDTOSourceEndpointType = S.String;
-
 /** Type of the target endpoint. */
 export type EndpointRedirectionDTOTargetEndpointType = "public" | "private";
-const EndpointRedirectionDTOTargetEndpointType = S.String;
-
 /** Details of a single endpoint redirection. */
 export interface EndpointRedirectionDTO {
   /** Name of the source endpoint. */
@@ -1409,18 +1156,8 @@ export interface EndpointRedirectionDTO {
   /** Error message describing why this endpoint redirection failed, if applicable. */
   errorMessage?: string;
 }
-const EndpointRedirectionDTO = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<EndpointRedirectionDTO>;
-
 /** Details of the individual endpoint redirections performed. */
 export type EndpointsRedirectionResponseEndpointsList = Array<EndpointRedirectionDTO>;
-const EndpointsRedirectionResponseEndpointsList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<EndpointsRedirectionResponseEndpointsList>;
-
 /** Dynamic endpoint redirection status response message */
 export interface EndpointsRedirectionResponse {
   /** Unique identifier of the dynamic endpoint redirection. Use it to poll the redirection status. */
@@ -1446,19 +1183,10 @@ export interface EndpointsRedirectionResponse {
   /** Details of the individual endpoint redirections performed. */
   endpoints?: EndpointsRedirectionResponseEndpointsList;
 }
-const EndpointsRedirectionResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<EndpointsRedirectionResponse>;
-
 /** Optional. Database protocol. Use 'stack' to get all of Redis' advanced capabilities. Only use 'redis' for Pay-as-you-go or Redis Flex subscriptions. Default: 'stack' for most subscriptions, 'redis' for Redis Flex subscriptions. */
 export type CreateFixedDatabaseRequestProtocol = "redis" | "memcached" | "stack";
-const CreateFixedDatabaseRequestProtocol = S.String;
-
 /** Optional. Redis Serialization Protocol version. Must be compatible with Redis version. */
 export type CreateFixedDatabaseRequestRespVersion = "resp2" | "resp3";
-const CreateFixedDatabaseRequestRespVersion = S.String;
-
 /** Optional. Type and rate of data persistence in persistent storage. Use GET /fixed/plans/{planId} to see if your plan supports data persistence. */
 export type CreateFixedDatabaseRequestDataPersistence =
   | "none"
@@ -1467,8 +1195,6 @@ export type CreateFixedDatabaseRequestDataPersistence =
   | "snapshot-every-1-hour"
   | "snapshot-every-6-hours"
   | "snapshot-every-12-hours";
-const CreateFixedDatabaseRequestDataPersistence = S.String;
-
 /** Optional. Data eviction policy. */
 export type CreateFixedDatabaseRequestDataEvictionPolicy =
   | "allkeys-lru"
@@ -1481,38 +1207,18 @@ export type CreateFixedDatabaseRequestDataEvictionPolicy =
   | "volatile-random"
   | "volatile-ttl"
   | "noeviction";
-const CreateFixedDatabaseRequestDataEvictionPolicy = S.String;
-
 /** Optional. List of source IP addresses or subnet masks to allow. If specified, Redis clients will be able to connect to this database only from within the specified source IP addresses ranges. Use GET /fixed/plans/{planId} to see how many CIDR allow rules your plan supports. Example: '['192.168.10.0/32', '192.168.12.0/24']' */
 export type CreateFixedDatabaseRequestSourceIpsList = Array<string>;
-const CreateFixedDatabaseRequestSourceIpsList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CreateFixedDatabaseRequestSourceIpsList>;
-
 /** (Pay-as-you-go subscriptions only) Optional. Hashing policy Regex rules. Used only if 'enableDatabaseClustering' is set to 'true' and . */
 export type CreateFixedDatabaseRequestRegexRulesList = Array<string>;
-const CreateFixedDatabaseRequestRegexRulesList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CreateFixedDatabaseRequestRegexRulesList>;
-
 /** Optional. This database will be a replica of the specified Redis databases provided as one or more URI(s). Example: 'redis://user:password@host:port'. If the URI provided is a Redis Cloud database, only host and port should be provided. Example: ['redis://endpoint1:6379', 'redis://endpoint2:6380']. */
 export type CreateFixedDatabaseRequestReplicaOfList = Array<string>;
-const CreateFixedDatabaseRequestReplicaOfList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CreateFixedDatabaseRequestReplicaOfList>;
-
 /** Optional. A list of client TLS/SSL certificates. If specified, mTLS authentication will be required to authenticate user connections. */
 export type CreateFixedDatabaseRequestClientTlsCertificatesList = Array<DatabaseCertificateSpec>;
-const CreateFixedDatabaseRequestClientTlsCertificatesList =
-  CreateDatabaseRequestClientTlsCertificatesList as any as S.Schema<CreateFixedDatabaseRequestClientTlsCertificatesList>;
-
 /** Optional. Redis database alert details. */
 export type CreateFixedDatabaseRequestAlertsList = Array<DatabaseAlertSpec>;
-const CreateFixedDatabaseRequestAlertsList =
-  CreateDatabaseRequestAlertsList as any as S.Schema<CreateFixedDatabaseRequestAlertsList>;
-
 /** Optional. Redis advanced capabilities (also known as modules) to be provisioned in the database. Use GET /database-modules to get a list of available advanced capabilities. Can only be set if 'protocol' is 'redis'. Don't specify modules for database versions 8 and above. All capabilities are bundled in the database by default. */
 export type CreateFixedDatabaseRequestModulesList = Array<DatabaseModuleSpec>;
-const CreateFixedDatabaseRequestModulesList =
-  CreateDatabaseRequestModulesList as any as S.Schema<CreateFixedDatabaseRequestModulesList>;
-
 export interface CreateFixedDatabaseRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -1564,25 +1270,13 @@ export interface CreateFixedDatabaseRequest {
   /** Optional. Redis advanced capabilities (also known as modules) to be provisioned in the database. Use GET /database-modules to get a list of available advanced capabilities. Can only be set if 'protocol' is 'redis'. Don't specify modules for database versions 8 and above. All capabilities are bundled in the database by default. */
   modules?: CreateFixedDatabaseRequestModulesList;
 }
-const CreateFixedDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CreateFixedDatabaseRequest>;
-
 /** Short-term (working) memory configuration */
 export interface MemoryStoreShortMemoryConfig {
   /** Time-to-live of short-term memory entries, in seconds (1 second to 1 year). Required */
   ttlSeconds: number;
 }
-const MemoryStoreShortMemoryConfig = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<MemoryStoreShortMemoryConfig>;
-
 /** How the supplied secret is interpreted. Required */
 export type MemoryStoreModelCredentialsType = "apiKey";
-const MemoryStoreModelCredentialsType = S.String;
-
 /** Customer-supplied credential for a model provider. Write-only: never returned by any operation */
 export interface MemoryStoreModelCredentials {
   /** How the supplied secret is interpreted. Required */
@@ -1590,11 +1284,6 @@ export interface MemoryStoreModelCredentials {
   /** The provider API key. Required on create. On update an omitted or blank value keeps the current key, so only the key being rotated needs to be sent */
   apiKey?: string | Redacted.Redacted<string>;
 }
-const MemoryStoreModelCredentials = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<MemoryStoreModelCredentials>;
-
 /** Requested model selection for one purpose (LLM or embedding). On create, llm and longTermMemory.embedding must be supplied together to opt the store into customer-selected models; supplying only one is rejected. Omitting both keeps the platform-owned configuration, and such a store cannot be moved onto customer-selected models later: an update with llm is rejected with /errors/model-config-immutable */
 export interface MemoryStoreModelConfig {
   /** Model provider. Validated against the providers supported by the Agent Memory service. Immutable after creation */
@@ -1603,30 +1292,16 @@ export interface MemoryStoreModelConfig {
   model?: string;
   credentials?: MemoryStoreModelCredentials;
 }
-const MemoryStoreModelConfig = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<MemoryStoreModelConfig>;
-
 /** Long-term (persistent) memory configuration accepted on creation. When omitted, the store uses the default long-term memory TTL of 1 year */
 export interface MemoryStoreLongTermMemoryCreateConfig {
   /** Time-to-live of long-term memory entries, in seconds (1 second to 1 year). Required */
   ttlSeconds: number;
   embedding?: MemoryStoreModelConfig;
 }
-const MemoryStoreLongTermMemoryCreateConfig = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<MemoryStoreLongTermMemoryCreateConfig>;
-
 /** How long-term memories are extracted from sessions. INSTRUCT uses LLM tool calling to create, update and delete granular memories */
 export type CreateMemoryStoreRequestExtractionStrategy = "INSTRUCT";
-const CreateMemoryStoreRequestExtractionStrategy = S.String;
-
 /** What triggers a summarization cycle. Defaults to event_count */
 export type MemoryStoreSummarizationConfigTriggerStrategy = "event_count";
-const MemoryStoreSummarizationConfigTriggerStrategy = S.String;
-
 /** Event-count trigger for session summarization. threshold must be greater than retainCount */
 export interface MemoryStoreSummarizationThresholdConfig {
   /** Number of active session events that triggers a summarization cycle (0-10000). Must be greater than retainCount. Required */
@@ -1634,11 +1309,6 @@ export interface MemoryStoreSummarizationThresholdConfig {
   /** Number of most recent events kept unsummarized after each cycle (0-10000); everything older is condensed into the running summary. Must be less than threshold. Required */
   retainCount: number;
 }
-const MemoryStoreSummarizationThresholdConfig = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<MemoryStoreSummarizationThresholdConfig>;
-
 /** Session summarization. When enabled, long sessions are periodically condensed into a running summary while the most recent events are retained. When omitted on create, nothing is stored and the store uses the deployment's default summarization settings, which GET returns as the store's summarization */
 export interface MemoryStoreSummarizationConfig {
   /** Whether summarization is enabled for the store. Required */
@@ -1647,11 +1317,6 @@ export interface MemoryStoreSummarizationConfig {
   triggerStrategy?: MemoryStoreSummarizationConfigTriggerStrategy | (string & {});
   eventCount?: MemoryStoreSummarizationThresholdConfig;
 }
-const MemoryStoreSummarizationConfig = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<MemoryStoreSummarizationConfig>;
-
 /** Advisory, LLM-mediated exclusion of sensitive content from long-term memory */
 export interface MemoryStoreSemanticExclusionConfig {
   /** Whether semantic exclusion is enabled. Required */
@@ -1659,15 +1324,8 @@ export interface MemoryStoreSemanticExclusionConfig {
   /** Customer-authored instruction describing what must not be remembered (max 2000 characters). On update, omit to keep the stored prompt */
   prompt?: string;
 }
-const MemoryStoreSemanticExclusionConfig = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<MemoryStoreSemanticExclusionConfig>;
-
 /** What happens to a memory this detector matches. Defaults to redact. When several detectors disagree, drop wins */
 export type MemoryStoreDetectorSelectionAction = "redact" | "drop";
-const MemoryStoreDetectorSelectionAction = S.String;
-
 /** One selected platform built-in detector */
 export interface MemoryStoreDetectorSelection {
   /** Built-in detector ID from the Agent Memory detector catalog: credit-card, email, ip-address, phone or us-ssn. Unknown IDs are rejected. Required */
@@ -1677,18 +1335,8 @@ export interface MemoryStoreDetectorSelection {
   /** What happens to a memory this detector matches. Defaults to redact. When several detectors disagree, drop wins */
   action?: MemoryStoreDetectorSelectionAction | (string & {});
 }
-const MemoryStoreDetectorSelection = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<MemoryStoreDetectorSelection>;
-
 /** Selected detectors. On update, omitting this list keeps the stored selections; a non-empty list replaces them wholesale; an explicitly empty list clears them */
 export type MemoryStoreBuiltInDetectorsConfigDetectorsList = Array<MemoryStoreDetectorSelection>;
-const MemoryStoreBuiltInDetectorsConfigDetectorsList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<MemoryStoreBuiltInDetectorsConfigDetectorsList>;
-
 /** Deterministic detection using platform-owned built-in detectors. Nothing is selected by default */
 export interface MemoryStoreBuiltInDetectorsConfig {
   /** Toggle for the whole built-in group. False leaves the selections stored but inactive. Required */
@@ -1696,37 +1344,21 @@ export interface MemoryStoreBuiltInDetectorsConfig {
   /** Selected detectors. On update, omitting this list keeps the stored selections; a non-empty list replaces them wholesale; an explicitly empty list clears them */
   detectors?: MemoryStoreBuiltInDetectorsConfigDetectorsList;
 }
-const MemoryStoreBuiltInDetectorsConfig = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<MemoryStoreBuiltInDetectorsConfig>;
-
 /** What happens to a memory this detector matches. Defaults to redact */
 export type MemoryStoreCustomDetectorAction = "redact" | "drop";
-const MemoryStoreCustomDetectorAction = S.String;
-
 /** Matching technique. Required */
 export type MemoryStoreMatcherSpecKind = "regex";
-const MemoryStoreMatcherSpecKind = S.String;
-
 /** Regular expression matcher */
 export interface MemoryStoreRegexSpec {
   /** Pattern in RE2 syntax (1-512 characters). Lookaround and backreferences are not supported. Rejected if it does not compile or can match empty text. Required */
   pattern: string;
 }
-const MemoryStoreRegexSpec = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<MemoryStoreRegexSpec>;
-
 /** How a custom detector decides what to match. Exactly the block named by kind must be present */
 export interface MemoryStoreMatcherSpec {
   /** Matching technique. Required */
   kind: MemoryStoreMatcherSpecKind | (string & {});
   regex?: MemoryStoreRegexSpec;
 }
-const MemoryStoreMatcherSpec = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<MemoryStoreMatcherSpec>;
-
 /** One customer-authored detector */
 export interface MemoryStoreCustomDetector {
   /** Detector name (1-64 characters, starts with a letter, then letters, digits, underscores or dashes). Reported with every match; must be unique in the store and must not collide with a built-in detector ID. Required */
@@ -1737,18 +1369,8 @@ export interface MemoryStoreCustomDetector {
   action?: MemoryStoreCustomDetectorAction | (string & {});
   matcher: MemoryStoreMatcherSpec;
 }
-const MemoryStoreCustomDetector = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<MemoryStoreCustomDetector>;
-
 /** Authored detectors (at most 32). On update, omitting this list keeps the stored detectors; a non-empty list replaces them wholesale; an explicitly empty list clears them */
 export type MemoryStoreCustomDetectorsConfigDetectorsList = Array<MemoryStoreCustomDetector>;
-const MemoryStoreCustomDetectorsConfigDetectorsList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<MemoryStoreCustomDetectorsConfigDetectorsList>;
-
 /** Deterministic detection using customer-authored detectors stored on the store. Evaluated together with the built-in detectors as one set */
 export interface MemoryStoreCustomDetectorsConfig {
   /** Toggle for the whole custom group. False leaves the detectors stored but inactive. Required */
@@ -1756,11 +1378,6 @@ export interface MemoryStoreCustomDetectorsConfig {
   /** Authored detectors (at most 32). On update, omitting this list keeps the stored detectors; a non-empty list replaces them wholesale; an explicitly empty list clears them */
   detectors?: MemoryStoreCustomDetectorsConfigDetectorsList;
 }
-const MemoryStoreCustomDetectorsConfig = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<MemoryStoreCustomDetectorsConfig>;
-
 /** Store-level policy that keeps sensitive data out of long-term memory. When omitted on create, no policy is stored. On update, the policy is replaced as a whole but nested content that is omitted is preserved, so prefer read-modify-write of the complete policy. Disabling sets enabled=false; a stored policy cannot be removed */
 export interface MemoryStoreLongTermMemoryExclusions {
   /** Master toggle gating enforcement of all exclusion groups. Required */
@@ -1769,11 +1386,6 @@ export interface MemoryStoreLongTermMemoryExclusions {
   builtInDetectors?: MemoryStoreBuiltInDetectorsConfig;
   customDetectors?: MemoryStoreCustomDetectorsConfig;
 }
-const MemoryStoreLongTermMemoryExclusions = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<MemoryStoreLongTermMemoryExclusions>;
-
 /** Field data type. Required */
 export type MemoryStoreCustomFieldType =
   | "str"
@@ -1783,8 +1395,6 @@ export type MemoryStoreCustomFieldType =
   | "list[str]"
   | "list[float]"
   | "object";
-const MemoryStoreCustomFieldType = S.String;
-
 /** A structured field of a custom memory type */
 export interface MemoryStoreCustomField {
   /** Field name (1-64 characters, starts with a letter, then letters, digits, underscores or dashes). Required */
@@ -1794,18 +1404,8 @@ export interface MemoryStoreCustomField {
   /** Field data type. Required */
   type: MemoryStoreCustomFieldType | (string & {});
 }
-const MemoryStoreCustomField = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<MemoryStoreCustomField>;
-
 /** Structured fields of a record of this type. Optional; a type without fields accepts direct writes without structured attributes */
 export type MemoryStoreCustomMemoryTypeFieldsList = Array<MemoryStoreCustomField>;
-const MemoryStoreCustomMemoryTypeFieldsList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<MemoryStoreCustomMemoryTypeFieldsList>;
-
 /** How memories of a custom type are extracted from session events */
 export interface MemoryStoreCustomExtractionStrategy {
   /** Prompt used to extract memories of this type. Required */
@@ -1813,11 +1413,6 @@ export interface MemoryStoreCustomExtractionStrategy {
   /** Whether extraction for this type is active. Defaults to true */
   enabled?: boolean;
 }
-const MemoryStoreCustomExtractionStrategy = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<MemoryStoreCustomExtractionStrategy>;
-
 /** A custom category of long-term memory with its structured fields and optional extraction strategy. Name, description and fields are immutable once registered */
 export interface MemoryStoreCustomMemoryType {
   /** Unique type name within the store (1-64 characters, starts with a letter, then letters, digits, underscores or dashes). Must not collide with the built-in types semantic, episodic, message and session_summary_view. Required */
@@ -1828,28 +1423,13 @@ export interface MemoryStoreCustomMemoryType {
   fields?: MemoryStoreCustomMemoryTypeFieldsList;
   extractionStrategy?: MemoryStoreCustomExtractionStrategy;
 }
-const MemoryStoreCustomMemoryType = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<MemoryStoreCustomMemoryType>;
-
 /** Optional. Custom memory types to register on the store (at most 3 per store). When omitted only the built-in types are available */
 export type CreateMemoryStoreRequestCustomMemoryTypesList = Array<MemoryStoreCustomMemoryType>;
-const CreateMemoryStoreRequestCustomMemoryTypesList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CreateMemoryStoreRequestCustomMemoryTypesList>;
-
 /** How often the long-term memory extraction pipeline runs. Optional on both create and update */
 export interface MemoryStoreExtractionCadenceConfig {
   /** Interval in seconds between extraction runs while a session is active (60-600). Required */
   activeIntervalSeconds: number;
 }
-const MemoryStoreExtractionCadenceConfig = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<MemoryStoreExtractionCadenceConfig>;
-
 export interface CreateMemoryStoreRequest {
   /** Memory store name */
   name: string;
@@ -1866,36 +1446,18 @@ export interface CreateMemoryStoreRequest {
   customMemoryTypes?: CreateMemoryStoreRequestCustomMemoryTypesList;
   extractionCadence?: MemoryStoreExtractionCadenceConfig;
 }
-const CreateMemoryStoreRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateMemoryStoreRequest>;
-
 export interface CreateMemoryStoreResponse {}
-const CreateMemoryStoreResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<CreateMemoryStoreResponse>;
-
 export interface CreateMemoryStoreApiKeyRequest {
   /** Memory store ID. */
   storeId: string;
   /** Name of the API key. */
   keyName: string;
 }
-const CreateMemoryStoreApiKeyRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateMemoryStoreApiKeyRequest>;
-
 /** New memory store API key */
 export interface MemoryStoreApiKeyCreateResponse {
   /** Generated API key. Returned only once. */
   apiKey?: string | Redacted.Redacted<string>;
 }
-const MemoryStoreApiKeyCreateResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<MemoryStoreApiKeyCreateResponse>;
-
 /** Type of the principal */
 export type CreatePrivateLinkRequestType =
   | "aws_account"
@@ -1904,8 +1466,6 @@ export type CreatePrivateLinkRequestType =
   | "iam_role"
   | "iam_user"
   | "service_principal";
-const CreatePrivateLinkRequestType = S.String;
-
 export interface CreatePrivateLinkRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -1918,11 +1478,6 @@ export interface CreatePrivateLinkRequest {
   /** Alias or friendly name for the principal */
   alias?: string;
 }
-const CreatePrivateLinkRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<CreatePrivateLinkRequest>;
-
 /** Type of the principal */
 export type CreatePrivateLinkPrincipalRequestType =
   | "aws_account"
@@ -1931,8 +1486,6 @@ export type CreatePrivateLinkPrincipalRequestType =
   | "iam_role"
   | "iam_user"
   | "service_principal";
-const CreatePrivateLinkPrincipalRequestType = S.String;
-
 export interface CreatePrivateLinkPrincipalRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -1943,24 +1496,11 @@ export interface CreatePrivateLinkPrincipalRequest {
   /** Alias or friendly name for the principal */
   alias?: string;
 }
-const CreatePrivateLinkPrincipalRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<CreatePrivateLinkPrincipalRequest>;
-
 export interface CreatePscServiceRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const CreatePscServiceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CreatePscServiceRequest>;
-
 export interface CreatePscServiceResponse {}
-const CreatePscServiceResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<CreatePscServiceResponse>;
-
 export interface CreatePscServiceEndpointRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -1975,35 +1515,16 @@ export interface CreatePscServiceEndpointRequest {
   /** Prefix used to create PSC endpoints in the consumer application VPC. Endpoint names appear in Google Cloud as endpoint name prefix + endpoint number. */
   endpointConnectionName: string;
 }
-const CreatePscServiceEndpointRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<CreatePscServiceEndpointRequest>;
-
 export interface CreatePscServiceEndpointResponse {}
-const CreatePscServiceEndpointResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<CreatePscServiceEndpointResponse>;
-
 export interface CreateRedisRuleRequest {
   /** Redis ACL rule name. */
   name: string;
   /** Redis ACL rule pattern. See [ACL syntax](https://redis.io/docs/latest/operate/rc/security/access-control/data-access-control/configure-acls/#define-permissions-with-acl-syntax) to learn how to define rules. */
   redisRule: string;
 }
-const CreateRedisRuleRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CreateRedisRuleRequest>;
-
 export interface CreateRedisRuleResponse {}
-const CreateRedisRuleResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<CreateRedisRuleResponse>;
-
 /** (Active-Active databases only) Optional. A list of regions where this rule applies for this role. */
 export type AclRoleDatabaseSpecRegionsList = Array<string>;
-const AclRoleDatabaseSpecRegionsList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<AclRoleDatabaseSpecRegionsList>;
-
 /** A list of databases where the specified rule applies for this role. */
 export interface AclRoleDatabaseSpec {
   /** Subscription ID for the database's subscription. Use 'GET /subscriptions' or 'GET /fixed/subscriptions' to get a list of available subscriptions and their IDs. */
@@ -2013,15 +1534,8 @@ export interface AclRoleDatabaseSpec {
   /** (Active-Active databases only) Optional. A list of regions where this rule applies for this role. */
   regions?: AclRoleDatabaseSpecRegionsList;
 }
-const AclRoleDatabaseSpec = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<AclRoleDatabaseSpec>;
-
 /** A list of databases where the specified rule applies for this role. */
 export type AclRoleRedisRuleSpecDatabasesList = Array<AclRoleDatabaseSpec>;
-const AclRoleRedisRuleSpecDatabasesList = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<AclRoleRedisRuleSpecDatabasesList>;
-
 /** Optional. Changes the Redis ACL rules to assign to this database access role. */
 export interface AclRoleRedisRuleSpec {
   /** The name of a Redis ACL rule to assign to the role. Use 'GET /acl/redisRules' to get a list of available rules for your account. */
@@ -2029,44 +1543,25 @@ export interface AclRoleRedisRuleSpec {
   /** A list of databases where the specified rule applies for this role. */
   databases: AclRoleRedisRuleSpecDatabasesList;
 }
-const AclRoleRedisRuleSpec = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<AclRoleRedisRuleSpec>;
-
 /** A list of Redis ACL rules to assign to this database access role. */
 export type CreateRoleRequestRedisRulesList = Array<AclRoleRedisRuleSpec>;
-const CreateRoleRequestRedisRulesList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<CreateRoleRequestRedisRulesList>;
-
 export interface CreateRoleRequest {
   /** Database access role name. */
   name: string;
   /** A list of Redis ACL rules to assign to this database access role. */
   redisRules: CreateRoleRequestRedisRulesList;
 }
-const CreateRoleRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<CreateRoleRequest>;
-
 export interface CreateRoleResponse {}
-const CreateRoleResponse = AcceptTgwResourceShareResponse as any as S.Schema<CreateRoleResponse>;
-
 /** Optional. When 'single-region' or not set: Creates a single region subscription. When 'active-active': creates an Active-Active (multi-region) subscription. */
 export type CreateSubscriptionRequestDeploymentType = "single-region" | "active-active";
-const CreateSubscriptionRequestDeploymentType = S.String;
-
 /** Optional. The payment method for the subscription. If set to 'credit-card', 'paymentMethodId' must be defined. Default: 'credit-card' */
 export type CreateSubscriptionRequestPaymentMethod = "credit-card" | "marketplace";
-const CreateSubscriptionRequestPaymentMethod = S.String;
-
 /** Optional. Memory storage preference: either 'ram' or a combination of 'ram-and-flash' (also known as Auto Tiering). Default: 'ram' */
 export type CreateSubscriptionRequestMemoryStorage = "ram" | "ram-and-flash";
-const CreateSubscriptionRequestMemoryStorage = S.String;
-
 /** Optional. Persistent storage encryption secures data at rest for database persistence. By default, disk storage is encrypted by keys managed by the cloud provider. Use 'customer-managed-key' if you want to use self-managed persistent storage encryption keys. Default: 'cloud-provider-managed-key' */
 export type CreateSubscriptionRequestPersistentStorageEncryptionType =
   | "cloud-provider-managed-key"
   | "customer-managed-key";
-const CreateSubscriptionRequestPersistentStorageEncryptionType = S.String;
-
 /** Object representing a customer managed key (CMK), along with the region it is associated to. */
 export interface CustomerManagedKey {
   /** The resource name of the customer managed key. */
@@ -2074,15 +1569,8 @@ export interface CustomerManagedKey {
   /** (Required for Active-Active subscriptions only) Region for the customer managed key as defined by the cloud provider. */
   region?: string;
 }
-const CustomerManagedKey = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<CustomerManagedKey>;
-
 /** The customer managed keys (CMK) to use for this subscription. If is active-active subscription, must set a key for each region. */
 export type CustomerManagedKeyPropertiesCustomerManagedKeysList = Array<CustomerManagedKey>;
-const CustomerManagedKeyPropertiesCustomerManagedKeysList = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<CustomerManagedKeyPropertiesCustomerManagedKeysList>;
-
 /** Optional. The grace period for deleting the subscription if Redis cannot access the provided key. Required when applying customer managed keys for a new subscription. */
 export type CustomerManagedKeyPropertiesDeletionGracePeriod =
   | "alerts-only"
@@ -2094,8 +1582,6 @@ export type CustomerManagedKeyPropertiesDeletionGracePeriod =
   | "8-hours"
   | "12-hours"
   | "24-hours";
-const CustomerManagedKeyPropertiesDeletionGracePeriod = S.String;
-
 /** Optional. Contains information about the keys used for each region. Can be used only with external cloud account */
 export interface CustomerManagedKeyProperties {
   /** The customer managed keys (CMK) to use for this subscription. If is active-active subscription, must set a key for each region. */
@@ -2103,25 +1589,12 @@ export interface CustomerManagedKeyProperties {
   /** Optional. The grace period for deleting the subscription if Redis cannot access the provided key. Required when applying customer managed keys for a new subscription. */
   deletionGracePeriod?: CustomerManagedKeyPropertiesDeletionGracePeriod | (string & {});
 }
-const CustomerManagedKeyProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<CustomerManagedKeyProperties>;
-
 /** Optional. Cloud provider. Default: 'AWS' */
 export type SubscriptionSpecProvider = "AWS" | "GCP";
-const SubscriptionSpecProvider = S.String;
-
 /** Optional. List the zone ID(s) for your preferred availability zone(s) for the cloud provider and region. If 'multipleAvailabilityZones' is set to 'true', you must list three availability zones. Otherwise, list one availability zone. */
 export type SubscriptionRegionSpecPreferredAvailabilityZonesList = Array<string>;
-const SubscriptionRegionSpecPreferredAvailabilityZonesList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<SubscriptionRegionSpecPreferredAvailabilityZonesList>;
-
 /** Optional. Enter a list of subnets identifiers that exists in the hosted AWS account. Subnet Identifier must exist within the hosting account. */
 export type SubscriptionRegionNetworkingSpecSubnetIdsList = Array<string>;
-const SubscriptionRegionNetworkingSpecSubnetIdsList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<SubscriptionRegionNetworkingSpecSubnetIdsList>;
-
 /** Optional. Cloud networking details, per region. Required if creating an Active-Active subscription. */
 export interface SubscriptionRegionNetworkingSpec {
   /** Optional. Deployment CIDR mask. Must be a valid CIDR format with a range of 256 IP addresses. Default for single-region subscriptions: If using Redis internal cloud account, 192.168.0.0/24 */
@@ -2133,11 +1606,6 @@ export interface SubscriptionRegionNetworkingSpec {
   /** Optional. Enter a security group identifier that exists in the hosted AWS account. Security group Identifier must be in a valid format (for example: 'sg-0125be68a4625884ad') and must exist within the hosting account. */
   securityGroupId?: string;
 }
-const SubscriptionRegionNetworkingSpec = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<SubscriptionRegionNetworkingSpec>;
-
 /** The cloud provider region or list of regions (Active-Active only) and networking details. */
 export interface SubscriptionRegionSpec {
   /** Deployment region as defined by the cloud provider. */
@@ -2148,32 +1616,15 @@ export interface SubscriptionRegionSpec {
   preferredAvailabilityZones?: SubscriptionRegionSpecPreferredAvailabilityZonesList;
   networking?: SubscriptionRegionNetworkingSpec;
 }
-const SubscriptionRegionSpec = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<SubscriptionRegionSpec>;
-
 /** The cloud provider region or list of regions (Active-Active only) and networking details. */
 export type SubscriptionSpecRegionsList = Array<SubscriptionRegionSpec>;
-const SubscriptionSpecRegionsList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<SubscriptionSpecRegionsList>;
-
 /** List of resource tags to apply to the subscription. This will replace all existing tags. */
 export interface ResourceTag {
   key?: string;
   value?: string;
 }
-const ResourceTag = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<ResourceTag>;
-
 /** Optional. A list of resource tags to apply to the subscription. (max. 30 tags). */
 export type SubscriptionSpecResourceTagsList = Array<ResourceTag>;
-const SubscriptionSpecResourceTagsList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<SubscriptionSpecResourceTagsList>;
-
 /** Cloud provider, region, and networking details. */
 export interface SubscriptionSpec {
   /** Optional. Cloud provider. Default: 'AWS' */
@@ -2185,19 +1636,10 @@ export interface SubscriptionSpec {
   /** Optional. A list of resource tags to apply to the subscription. (max. 30 tags). */
   resourceTags?: SubscriptionSpecResourceTagsList;
 }
-const SubscriptionSpec = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<SubscriptionSpec>;
-
 /** Cloud provider, region, and networking details. */
 export type CreateSubscriptionRequestCloudProvidersList = Array<SubscriptionSpec>;
-const CreateSubscriptionRequestCloudProvidersList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<CreateSubscriptionRequestCloudProvidersList>;
-
 /** Optional. Database protocol. Only set to 'memcached' if you have a legacy application. Default: 'redis' */
 export type SubscriptionDatabaseSpecProtocol = "redis" | "memcached";
-const SubscriptionDatabaseSpecProtocol = S.String;
-
 /** Optional. Type and rate of data persistence in persistent storage. Default: 'none' */
 export type SubscriptionDatabaseSpecDataPersistence =
   | "none"
@@ -2206,29 +1648,17 @@ export type SubscriptionDatabaseSpecDataPersistence =
   | "snapshot-every-1-hour"
   | "snapshot-every-6-hours"
   | "snapshot-every-12-hours";
-const SubscriptionDatabaseSpecDataPersistence = S.String;
-
 /** Optional. Expected throughput per region for an Active-Active database. Default: 1000 read and write ops/sec for each region */
 export type SubscriptionDatabaseSpecLocalThroughputMeasurementList = Array<LocalThroughput>;
-const SubscriptionDatabaseSpecLocalThroughputMeasurementList =
-  CreateDatabaseRequestLocalThroughputMeasurementList as any as S.Schema<SubscriptionDatabaseSpecLocalThroughputMeasurementList>;
-
 /** Optional. Redis advanced capabilities (also known as modules) to be provisioned in the database. Use GET /database-modules to get a list of available advanced capabilities. Don't specify modules for database versions 8 and above. All capabilities are bundled in the database by default. */
 export type SubscriptionDatabaseSpecModulesList = Array<DatabaseModuleSpec>;
-const SubscriptionDatabaseSpecModulesList =
-  CreateDatabaseRequestModulesList as any as S.Schema<SubscriptionDatabaseSpecModulesList>;
-
 /** Optional. Redis Serialization Protocol version. Must be compatible with Redis version. */
 export type SubscriptionDatabaseSpecRespVersion = "resp2" | "resp3";
-const SubscriptionDatabaseSpecRespVersion = S.String;
-
 /** Optional. Database [Hashing policy](https://redis.io/docs/latest/operate/rc/databases/configuration/clustering/#manage-the-hashing-policy). */
 export type SubscriptionDatabaseSpecShardingType =
   | "default-regex-rules"
   | "custom-regex-rules"
   | "redis-oss-hashing";
-const SubscriptionDatabaseSpecShardingType = S.String;
-
 /** One or more database specification(s) to create in this subscription. */
 export interface SubscriptionDatabaseSpec {
   /** Name of the database. Database name is limited to 40 characters or less and must include only letters, digits, and hyphens ('-'). It must start with a letter and end with a letter or digit. */
@@ -2269,18 +1699,8 @@ export interface SubscriptionDatabaseSpec {
   /** Optional. The query performance factor adds extra compute power specifically for search and query databases. You can increase your queries per second by the selected factor. */
   queryPerformanceFactor?: string;
 }
-const SubscriptionDatabaseSpec = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<SubscriptionDatabaseSpec>;
-
 /** One or more database specification(s) to create in this subscription. */
 export type CreateSubscriptionRequestDatabasesList = Array<SubscriptionDatabaseSpec>;
-const CreateSubscriptionRequestDatabasesList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<CreateSubscriptionRequestDatabasesList>;
-
 export interface CreateSubscriptionRequest {
   /** Optional. New subscription name. */
   name?: string;
@@ -2308,19 +1728,9 @@ export interface CreateSubscriptionRequest {
   /** Optional. When 'false', all databases on this subscription will reject any connection attempt to the public endpoint and any connection attempt to the private endpoint that does not come from an IP address in the private address space defined in [RFC 1918](https://datatracker.ietf.org/doc/html/rfc1918#section-3 ). You must use a [private connectivity method](https://redis.io/docs/latest/operate/rc/security/database-security/block-public-endpoints/#private-connectivity-methods ) to connect to a database with a blocked public endpoint. Default: 'true'. */
   publicEndpointAccess?: boolean;
 }
-const CreateSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<CreateSubscriptionRequest>;
-
 export interface CreateSubscriptionResponse {}
-const CreateSubscriptionResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<CreateSubscriptionResponse>;
-
 /** Optional. The payment method for the subscription. If set to 'credit-card', 'paymentMethodId' must be defined. Default: 'credit-card' */
 export type CreateSubscription1RequestPaymentMethod = "credit-card" | "marketplace";
-const CreateSubscription1RequestPaymentMethod = S.String;
-
 export interface CreateSubscription1Request {
   /** New Essentials subscription name. */
   name: string;
@@ -2331,15 +1741,7 @@ export interface CreateSubscription1Request {
   /** Optional. A valid payment method ID for this account. Use GET /payment-methods to get a list of all payment methods for your account. This value is optional if 'paymentMethod' is 'marketplace', but required for all other account types. */
   paymentMethodId?: number;
 }
-const CreateSubscription1Request = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<CreateSubscription1Request>;
-
 export interface CreateSubscription1Response {}
-const CreateSubscription1Response =
-  AcceptTgwResourceShareResponse as any as S.Schema<CreateSubscription1Response>;
-
 export interface CreateTagRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -2350,12 +1752,8 @@ export interface CreateTagRequest {
   /** Database tag value. */
   value: string;
 }
-const CreateTagRequest = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<CreateTagRequest>;
-
 export type CloudTagLinksItemMap = { [key: string]: string | undefined };
 export type CloudTagLinksList = Array<CloudTagLinksItemMap>;
-const CloudTagLinksList = TaskStateUpdateLinksList as any as S.Schema<CloudTagLinksList>;
-
 /** Database tag */
 export interface CloudTag {
   links?: CloudTagLinksList;
@@ -2364,8 +1762,6 @@ export interface CloudTag {
   createdAt?: string;
   updatedAt?: string;
 }
-const CloudTag = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<CloudTag>;
-
 export interface CreateTag1Request {
   /** Subscription ID. */
   subscriptionId: number;
@@ -2376,23 +1772,13 @@ export interface CreateTag1Request {
   /** Database tag value. */
   value: string;
 }
-const CreateTag1Request = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<CreateTag1Request>;
-
 export interface CreateTgwAttachmentRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** AWS transit gateway ID. */
   TgwId: number;
 }
-const CreateTgwAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<CreateTgwAttachmentRequest>;
-
 export interface CreateTgwAttachmentResponse {}
-const CreateTgwAttachmentResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<CreateTgwAttachmentResponse>;
-
 export interface CreateUserRequest {
   /** Access control user name. */
   name: string;
@@ -2401,45 +1787,23 @@ export interface CreateUserRequest {
   /** The database password for this user. */
   password: string | Redacted.Redacted<string>;
 }
-const CreateUserRequest = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<CreateUserRequest>;
-
 export interface CreateUserResponse {}
-const CreateUserResponse = AcceptTgwResourceShareResponse as any as S.Schema<CreateUserResponse>;
-
 export interface CreateVpcPeeringRequest {
   /** Subscription ID. */
   subscriptionId: number;
   provider?: string;
 }
-const CreateVpcPeeringRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<CreateVpcPeeringRequest>;
-
 export interface CreateVpcPeeringResponse {}
-const CreateVpcPeeringResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<CreateVpcPeeringResponse>;
-
 export interface DeleteAclRoleRequest {
   /** Database access role ID. */
   aclRoleId: number;
 }
-const DeleteAclRoleRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<DeleteAclRoleRequest>;
-
 export interface DeleteActiveActivePrivateLinkRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Region ID - required for Active-Active subscription */
   regionId: number;
 }
-const DeleteActiveActivePrivateLinkRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<DeleteActiveActivePrivateLinkRequest>;
-
 export interface DeleteActiveActivePrivateLinkPrincipalsRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -2448,26 +1812,13 @@ export interface DeleteActiveActivePrivateLinkPrincipalsRequest {
   /** An AWS account ID or ARN to remove from the private link */
   principal: string;
 }
-const DeleteActiveActivePrivateLinkPrincipalsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DeleteActiveActivePrivateLinkPrincipalsRequest>;
-
 export interface DeleteActiveActivePscServiceRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Region ID - required for Active-Active subscription */
   regionId: number;
 }
-const DeleteActiveActivePscServiceRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<DeleteActiveActivePscServiceRequest>;
-
 export interface DeleteActiveActivePscServiceResponse {}
-const DeleteActiveActivePscServiceResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<DeleteActiveActivePscServiceResponse>;
-
 export interface DeleteActiveActivePscServiceEndpointRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -2478,15 +1829,7 @@ export interface DeleteActiveActivePscServiceEndpointRequest {
   /** Private Service Connect endpoint ID. */
   endpointId: number;
 }
-const DeleteActiveActivePscServiceEndpointRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<DeleteActiveActivePscServiceEndpointRequest>;
-
 export interface DeleteActiveActivePscServiceEndpointResponse {}
-const DeleteActiveActivePscServiceEndpointResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<DeleteActiveActivePscServiceEndpointResponse>;
-
 export interface DeleteActiveActiveTgwAttachmentRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -2495,50 +1838,25 @@ export interface DeleteActiveActiveTgwAttachmentRequest {
   /** AWS transit gateway ID. */
   TgwId: number;
 }
-const DeleteActiveActiveTgwAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<DeleteActiveActiveTgwAttachmentRequest>;
-
 export interface DeleteActiveActiveTgwAttachmentResponse {}
-const DeleteActiveActiveTgwAttachmentResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<DeleteActiveActiveTgwAttachmentResponse>;
-
 export interface DeleteActiveActiveVpcPeeringRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** VPC Peering ID. */
   peeringId: number;
 }
-const DeleteActiveActiveVpcPeeringRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<DeleteActiveActiveVpcPeeringRequest>;
-
 export interface DeleteCloudAccountRequest {
   /** Cloud Account Id */
   cloudAccountId: number;
 }
-const DeleteCloudAccountRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<DeleteCloudAccountRequest>;
-
 export interface DeleteDatabaseByIdRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const DeleteDatabaseByIdRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<DeleteDatabaseByIdRequest>;
-
 /** Optional. Redis Serialization Protocol version. Must be compatible with Redis version. */
 export type DeleteFixedDatabaseByIDRequestRespVersion = "resp2" | "resp3";
-const DeleteFixedDatabaseByIDRequestRespVersion = S.String;
-
 /** Optional. Type and rate of data persistence in persistent storage. Use GET /fixed/plans/{planId} to see if your plan supports data persistence. */
 export type DeleteFixedDatabaseByIDRequestDataPersistence =
   | "none"
@@ -2547,8 +1865,6 @@ export type DeleteFixedDatabaseByIDRequestDataPersistence =
   | "snapshot-every-1-hour"
   | "snapshot-every-6-hours"
   | "snapshot-every-12-hours";
-const DeleteFixedDatabaseByIDRequestDataPersistence = S.String;
-
 /** Optional. Turns database replication on or off. */
 export type DeleteFixedDatabaseByIDRequestDataEvictionPolicy =
   | "allkeys-lru"
@@ -2561,34 +1877,17 @@ export type DeleteFixedDatabaseByIDRequestDataEvictionPolicy =
   | "volatile-random"
   | "volatile-ttl"
   | "noeviction";
-const DeleteFixedDatabaseByIDRequestDataEvictionPolicy = S.String;
-
 /** Optional. List of source IP addresses or subnet masks to allow. If specified, Redis clients will be able to connect to this database only from within the specified source IP addresses ranges. Example: '['192.168.10.0/32', '192.168.12.0/24']' */
 export type DeleteFixedDatabaseByIDRequestSourceIpsList = Array<string>;
-const DeleteFixedDatabaseByIDRequestSourceIpsList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<DeleteFixedDatabaseByIDRequestSourceIpsList>;
-
 /** Optional. This database will be a replica of the specified Redis databases provided as one or more URI (sample format: 'redis://user:password@host:port)'. If the URI provided is Redis Cloud instance, only host and port should be provided (using the format: ['redis://endpoint1:6379', 'redis://endpoint2:6380'] ). */
 export type DeleteFixedDatabaseByIDRequestReplicaOfList = Array<string>;
-const DeleteFixedDatabaseByIDRequestReplicaOfList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<DeleteFixedDatabaseByIDRequestReplicaOfList>;
-
 /** (Pay-as-you-go subscriptions only) Optional. Hashing policy Regex rules. Used only if 'shardingType' is 'custom-regex-rules'. */
 export type DeleteFixedDatabaseByIDRequestRegexRulesList = Array<string>;
-const DeleteFixedDatabaseByIDRequestRegexRulesList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<DeleteFixedDatabaseByIDRequestRegexRulesList>;
-
 /** Optional. A list of client TLS/SSL certificates. If specified, mTLS authentication will be required to authenticate user connections. If set to an empty list, TLS client certificates will be removed and mTLS will not be required. TLS connection may still apply, depending on the value of 'enableTls'. */
 export type DeleteFixedDatabaseByIDRequestClientTlsCertificatesList =
   Array<DatabaseCertificateSpec>;
-const DeleteFixedDatabaseByIDRequestClientTlsCertificatesList =
-  CreateDatabaseRequestClientTlsCertificatesList as any as S.Schema<DeleteFixedDatabaseByIDRequestClientTlsCertificatesList>;
-
 /** Optional. Changes Redis database alert details. */
 export type DeleteFixedDatabaseByIDRequestAlertsList = Array<DatabaseAlertSpec>;
-const DeleteFixedDatabaseByIDRequestAlertsList =
-  CreateDatabaseRequestAlertsList as any as S.Schema<DeleteFixedDatabaseByIDRequestAlertsList>;
-
 export interface DeleteFixedDatabaseByIDRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -2638,87 +1937,41 @@ export interface DeleteFixedDatabaseByIDRequest {
   /** Optional. Changes Redis database alert details. */
   alerts?: DeleteFixedDatabaseByIDRequestAlertsList;
 }
-const DeleteFixedDatabaseByIDRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<DeleteFixedDatabaseByIDRequest>;
-
 export interface DeleteFixedDatabaseByID1Request {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const DeleteFixedDatabaseByID1Request = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<DeleteFixedDatabaseByID1Request>;
-
 export interface DeleteMemoryStoreRequest {
   /** Memory store ID. */
   storeId: string;
   /** Whether to flush all data from the database before deleting the memory store */
   flush?: boolean;
 }
-const DeleteMemoryStoreRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<DeleteMemoryStoreRequest>;
-
 export interface DeleteMemoryStoreResponse {}
-const DeleteMemoryStoreResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<DeleteMemoryStoreResponse>;
-
 export interface DeleteMemoryStoreApiKeyRequest {
   /** Memory store ID. */
   storeId: string;
   /** Memory store API key ID. */
   apiKeyId: string;
 }
-const DeleteMemoryStoreApiKeyRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<DeleteMemoryStoreApiKeyRequest>;
-
 export interface DeleteMemoryStoreApiKeyResponse {}
-const DeleteMemoryStoreApiKeyResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<DeleteMemoryStoreApiKeyResponse>;
-
 export interface DeletePrivateLinkRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const DeletePrivateLinkRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<DeletePrivateLinkRequest>;
-
 export interface DeletePrivateLinkPrincipalsRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** An AWS account ID or ARN to remove from the private link */
   principal: string;
 }
-const DeletePrivateLinkPrincipalsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<DeletePrivateLinkPrincipalsRequest>;
-
 export interface DeletePscServiceRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const DeletePscServiceRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<DeletePscServiceRequest>;
-
 export interface DeletePscServiceResponse {}
-const DeletePscServiceResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<DeletePscServiceResponse>;
-
 export interface DeletePscServiceEndpointRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -2727,46 +1980,20 @@ export interface DeletePscServiceEndpointRequest {
   /** Private Service Connect endpoint ID. */
   endpointId: number;
 }
-const DeletePscServiceEndpointRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<DeletePscServiceEndpointRequest>;
-
 export interface DeletePscServiceEndpointResponse {}
-const DeletePscServiceEndpointResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<DeletePscServiceEndpointResponse>;
-
 export interface DeleteRedisRuleRequest {
   /** Redis ACL rule ID. */
   aclRedisRuleId: number;
 }
-const DeleteRedisRuleRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<DeleteRedisRuleRequest>;
-
 export interface DeleteRedisRuleResponse {}
-const DeleteRedisRuleResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<DeleteRedisRuleResponse>;
-
 /** The names of the regions to delete. */
 export interface ActiveActiveRegionToDelete {
   /** Name of the cloud provider region to delete. */
   region?: string;
 }
-const ActiveActiveRegionToDelete = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ActiveActiveRegionToDelete>;
-
 /** The names of the regions to delete. */
 export type DeleteRegionsFromActiveActiveSubscriptionRequestRegionsList =
   Array<ActiveActiveRegionToDelete>;
-const DeleteRegionsFromActiveActiveSubscriptionRequestRegionsList = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<DeleteRegionsFromActiveActiveSubscriptionRequestRegionsList>;
-
 export interface DeleteRegionsFromActiveActiveSubscriptionRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -2775,29 +2002,14 @@ export interface DeleteRegionsFromActiveActiveSubscriptionRequest {
   /** Optional. When 'false': Creates a deployment plan and deploys it, deleting any resources required by the plan. When 'true': creates a read-only deployment plan and does not delete or modify any resources. Default: 'false' */
   dryRun?: boolean;
 }
-const DeleteRegionsFromActiveActiveSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<DeleteRegionsFromActiveActiveSubscriptionRequest>;
-
 export interface DeleteSubscriptionRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const DeleteSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<DeleteSubscriptionRequest>;
-
 export interface DeleteSubscriptionById1Request {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const DeleteSubscriptionById1Request = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<DeleteSubscriptionById1Request>;
-
 export interface DeleteTagRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -2806,11 +2018,7 @@ export interface DeleteTagRequest {
   /** Tag Key. */
   tagKey: string;
 }
-const DeleteTagRequest = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<DeleteTagRequest>;
-
 export type DeleteTagResponse = unknown;
-const DeleteTagResponse = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<DeleteTagResponse>;
-
 export interface DeleteTag1Request {
   /** Subscription ID. */
   subscriptionId: number;
@@ -2819,53 +2027,29 @@ export interface DeleteTag1Request {
   /** Tag Key. */
   tagKey: string;
 }
-const DeleteTag1Request = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<DeleteTag1Request>;
-
 export type DeleteTag1Response = unknown;
-const DeleteTag1Response = DeleteTagResponse as any as S.Schema<DeleteTag1Response>;
-
 export interface DeleteTgwAttachmentRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** AWS transit gateway ID. */
   TgwId: number;
 }
-const DeleteTgwAttachmentRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<DeleteTgwAttachmentRequest>;
-
 export interface DeleteTgwAttachmentResponse {}
-const DeleteTgwAttachmentResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<DeleteTgwAttachmentResponse>;
-
 export interface DeleteUserRequest {
   /** User ID. */
   userId: number;
 }
-const DeleteUserRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<DeleteUserRequest>;
-
 export interface DeleteUserRequest2 {
   /** Access control user ID. */
   aclUserId: number;
 }
-const DeleteUserRequest2 = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<DeleteUserRequest2>;
-
 export interface DeleteVpcPeeringRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** VPC Peering ID. */
   peeringId: number;
 }
-const DeleteVpcPeeringRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<DeleteVpcPeeringRequest>;
-
 export interface DeleteVpcPeeringResponse {}
-const DeleteVpcPeeringResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<DeleteVpcPeeringResponse>;
-
 /** Private link connection information for disassociation request */
 export interface PrivateLinkConnectionDisassociate {
   /** Resource share association ID */
@@ -2877,19 +2061,9 @@ export interface PrivateLinkConnectionDisassociate {
   /** Principal ID that owns the connection, e.g. AWS account ID */
   principalId: string;
 }
-const PrivateLinkConnectionDisassociate = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<PrivateLinkConnectionDisassociate>;
-
 /** List of connections to disassociate from the private link. Each connection must include associationId, type, and principalId. */
 export type DisassociateActiveActivePrivateLinkConnectionsRequestConnectionsList =
   Array<PrivateLinkConnectionDisassociate>;
-const DisassociateActiveActivePrivateLinkConnectionsRequestConnectionsList = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<DisassociateActiveActivePrivateLinkConnectionsRequestConnectionsList>;
-
 export interface DisassociateActiveActivePrivateLinkConnectionsRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -2898,90 +2072,41 @@ export interface DisassociateActiveActivePrivateLinkConnectionsRequest {
   /** List of connections to disassociate from the private link. Each connection must include associationId, type, and principalId. */
   connections: DisassociateActiveActivePrivateLinkConnectionsRequestConnectionsList;
 }
-const DisassociateActiveActivePrivateLinkConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<DisassociateActiveActivePrivateLinkConnectionsRequest>;
-
 export interface DisassociateActiveActivePrivateLinkConnectionsResponse {}
-const DisassociateActiveActivePrivateLinkConnectionsResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<DisassociateActiveActivePrivateLinkConnectionsResponse>;
-
 /** List of connections to disassociate from the private link. Each connection must include associationId, type, and principalId. */
 export type DisassociatePrivateLinkConnectionsRequestConnectionsList =
   Array<PrivateLinkConnectionDisassociate>;
-const DisassociatePrivateLinkConnectionsRequestConnectionsList = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<DisassociatePrivateLinkConnectionsRequestConnectionsList>;
-
 export interface DisassociatePrivateLinkConnectionsRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** List of connections to disassociate from the private link. Each connection must include associationId, type, and principalId. */
   connections: DisassociatePrivateLinkConnectionsRequestConnectionsList;
 }
-const DisassociatePrivateLinkConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<DisassociatePrivateLinkConnectionsRequest>;
-
 export interface DisassociatePrivateLinkConnectionsResponse {}
-const DisassociatePrivateLinkConnectionsResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<DisassociatePrivateLinkConnectionsResponse>;
-
 export interface EmptyMemoryStoreRequest {
   /** Memory store ID. */
   storeId: string;
 }
-const EmptyMemoryStoreRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<EmptyMemoryStoreRequest>;
-
 export interface EmptyMemoryStoreResponse {}
-const EmptyMemoryStoreResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<EmptyMemoryStoreResponse>;
-
 export interface FlushCrdbRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const FlushCrdbRequest = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<FlushCrdbRequest>;
-
 export interface FlushMemoryStoreRequest {
   /** Memory store ID. */
   storeId: string;
 }
-const FlushMemoryStoreRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<FlushMemoryStoreRequest>;
-
 export interface FlushMemoryStoreResponse {}
-const FlushMemoryStoreResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<FlushMemoryStoreResponse>;
-
 export interface GetAccountPaymentMethodsRequest {}
-const GetAccountPaymentMethodsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<GetAccountPaymentMethodsRequest>;
-
 export type PaymentMethodsLinksItemMap = { [key: string]: string | undefined };
 export type PaymentMethodsLinksList = Array<PaymentMethodsLinksItemMap>;
-const PaymentMethodsLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<PaymentMethodsLinksList>;
-
 /** RedisLabs Account payment methods */
 export interface PaymentMethods {
   accountId?: number;
   links?: PaymentMethodsLinksList;
 }
-const PaymentMethods = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<PaymentMethods>;
-
 export interface GetAccountSessionLogsRequest {
   /** Number of items to skip. */
   offset?: number;
@@ -2992,11 +2117,6 @@ export interface GetAccountSessionLogsRequest {
   /** Filter session logs with time <= endTime (UTC) */
   endTime?: string;
 }
-const GetAccountSessionLogsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GetAccountSessionLogsRequest>;
-
 /** Account session log entry */
 export interface AccountSessionLogEntry {
   id?: string;
@@ -3008,31 +2128,13 @@ export interface AccountSessionLogEntry {
   type?: string;
   action?: string;
 }
-const AccountSessionLogEntry = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<AccountSessionLogEntry>;
-
 export type AccountSessionLogEntriesEntriesList = Array<AccountSessionLogEntry>;
-const AccountSessionLogEntriesEntriesList = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<AccountSessionLogEntriesEntriesList>;
-
 export type AccountSessionLogEntriesLinksItemMap = { [key: string]: string | undefined };
 export type AccountSessionLogEntriesLinksList = Array<AccountSessionLogEntriesLinksItemMap>;
-const AccountSessionLogEntriesLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<AccountSessionLogEntriesLinksList>;
-
 export interface AccountSessionLogEntries {
   entries?: AccountSessionLogEntriesEntriesList;
   links?: AccountSessionLogEntriesLinksList;
 }
-const AccountSessionLogEntries = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<AccountSessionLogEntries>;
-
 export interface GetAccountSystemLogsRequest {
   /** Number of items to skip. */
   offset?: number;
@@ -3045,11 +2147,6 @@ export interface GetAccountSystemLogsRequest {
   /** Filter logs by resourceId */
   resourceId?: number;
 }
-const GetAccountSystemLogsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GetAccountSystemLogsRequest>;
-
 /** Account system log entry */
 export interface AccountSystemLogEntry {
   id?: number;
@@ -3061,76 +2158,34 @@ export interface AccountSystemLogEntry {
   type?: string;
   description?: string;
 }
-const AccountSystemLogEntry = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<AccountSystemLogEntry>;
-
 export type AccountSystemLogEntriesEntriesList = Array<AccountSystemLogEntry>;
-const AccountSystemLogEntriesEntriesList = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<AccountSystemLogEntriesEntriesList>;
-
 export type AccountSystemLogEntriesLinksItemMap = { [key: string]: string | undefined };
 export type AccountSystemLogEntriesLinksList = Array<AccountSystemLogEntriesLinksItemMap>;
-const AccountSystemLogEntriesLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<AccountSystemLogEntriesLinksList>;
-
 export interface AccountSystemLogEntries {
   entries?: AccountSystemLogEntriesEntriesList;
   links?: AccountSystemLogEntriesLinksList;
 }
-const AccountSystemLogEntries = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<AccountSystemLogEntries>;
-
 export interface GetActiveActivePrivateLinkRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Region ID - required for Active-Active subscription */
   regionId: number;
 }
-const GetActiveActivePrivateLinkRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<GetActiveActivePrivateLinkRequest>;
-
 export interface GetActiveActivePrivateLinkResponse {}
-const GetActiveActivePrivateLinkResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetActiveActivePrivateLinkResponse>;
-
 export interface GetActiveActivePrivateLinkEndpointScriptRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Region ID - required for Active-Active subscription */
   regionId: number;
 }
-const GetActiveActivePrivateLinkEndpointScriptRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<GetActiveActivePrivateLinkEndpointScriptRequest>;
-
 export interface GetActiveActivePrivateLinkEndpointScriptResponse {}
-const GetActiveActivePrivateLinkEndpointScriptResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetActiveActivePrivateLinkEndpointScriptResponse>;
-
 export interface GetActiveActivePscServiceRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Region ID - required for Active-Active subscription */
   regionId: number;
 }
-const GetActiveActivePscServiceRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<GetActiveActivePscServiceRequest>;
-
 export interface GetActiveActivePscServiceResponse {}
-const GetActiveActivePscServiceResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetActiveActivePscServiceResponse>;
-
 export interface GetActiveActivePscServiceEndpointsRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -3139,46 +2194,23 @@ export interface GetActiveActivePscServiceEndpointsRequest {
   /** Private Service Connect service ID. */
   pscServiceId: number;
 }
-const GetActiveActivePscServiceEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<GetActiveActivePscServiceEndpointsRequest>;
-
 export interface GetActiveActivePscServiceEndpointsResponse {}
-const GetActiveActivePscServiceEndpointsResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetActiveActivePscServiceEndpointsResponse>;
-
 export interface GetActiveActiveTgwsRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Region ID - required for Active-Active subscription */
   regionId: number;
 }
-const GetActiveActiveTgwsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetActiveActiveTgwsRequest>;
-
 export interface GetActiveActiveTgwSharedInvitationsRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Region ID - required for Active-Active subscription */
   regionId: number;
 }
-const GetActiveActiveTgwSharedInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GetActiveActiveTgwSharedInvitationsRequest>;
-
 export interface GetActiveActiveVpcPeeringsRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const GetActiveActiveVpcPeeringsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<GetActiveActiveVpcPeeringsRequest>;
-
 export interface GetActiveActivPscServiceEndpointCreationScriptRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -3189,15 +2221,7 @@ export interface GetActiveActivPscServiceEndpointCreationScriptRequest {
   /** Private Service Connect endpoint ID. */
   endpointId: number;
 }
-const GetActiveActivPscServiceEndpointCreationScriptRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<GetActiveActivPscServiceEndpointCreationScriptRequest>;
-
 export interface GetActiveActivPscServiceEndpointCreationScriptResponse {}
-const GetActiveActivPscServiceEndpointCreationScriptResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetActiveActivPscServiceEndpointCreationScriptResponse>;
-
 export interface GetActiveActivPscServiceEndpointDeletionScriptRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -3208,49 +2232,21 @@ export interface GetActiveActivPscServiceEndpointDeletionScriptRequest {
   /** Private Service Connect endpoint ID. */
   endpointId: number;
 }
-const GetActiveActivPscServiceEndpointDeletionScriptRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<GetActiveActivPscServiceEndpointDeletionScriptRequest>;
-
 export interface GetActiveActivPscServiceEndpointDeletionScriptResponse {}
-const GetActiveActivPscServiceEndpointDeletionScriptResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetActiveActivPscServiceEndpointDeletionScriptResponse>;
-
 export type GetAllFixedSubscriptionsPlansRequestProvider = "AWS" | "GCP" | "AZURE";
-const GetAllFixedSubscriptionsPlansRequestProvider = S.String;
-
 export interface GetAllFixedSubscriptionsPlansRequest {
   /** Returns plans supported by the specified Cloud Provider. */
   provider?: GetAllFixedSubscriptionsPlansRequestProvider | (string & {});
   /** Returns Redis Flex plans. */
   redisFlex?: boolean;
 }
-const GetAllFixedSubscriptionsPlansRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<GetAllFixedSubscriptionsPlansRequest>;
-
 export type FixedSubscriptionsPlansLinksItemMap = { [key: string]: string | undefined };
 export type FixedSubscriptionsPlansLinksList = Array<FixedSubscriptionsPlansLinksItemMap>;
-const FixedSubscriptionsPlansLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<FixedSubscriptionsPlansLinksList>;
-
 /** Redis list of Essentials subscriptions plans */
 export interface FixedSubscriptionsPlans {
   links?: FixedSubscriptionsPlansLinksList;
 }
-const FixedSubscriptionsPlans = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<FixedSubscriptionsPlans>;
-
 export interface GetAllRedisRulesRequest {}
-const GetAllRedisRulesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<GetAllRedisRulesRequest>;
-
 export type AccountACLRedisRulesLinksItemMap = { [key: string]: string | undefined };
 export type AccountACLRedisRulesLinksList = Array<AccountACLRedisRulesLinksItemMap>;
 /** Redis list of ACL redis rules in current account */
@@ -3258,14 +2254,7 @@ export interface AccountACLRedisRules {
   accountId?: number;
   links?: AccountACLRedisRulesLinksList;
 }
-const AccountACLRedisRules = PaymentMethods as any as S.Schema<AccountACLRedisRules>;
-
 export interface GetAllSubscriptionsRequest {}
-const GetAllSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<GetAllSubscriptionsRequest>;
-
 export type AccountSubscriptionsLinksItemMap = { [key: string]: string | undefined };
 export type AccountSubscriptionsLinksList = Array<AccountSubscriptionsLinksItemMap>;
 /** RedisLabs list of subscriptions in current account */
@@ -3273,14 +2262,7 @@ export interface AccountSubscriptions {
   accountId?: number;
   links?: AccountSubscriptionsLinksList;
 }
-const AccountSubscriptions = PaymentMethods as any as S.Schema<AccountSubscriptions>;
-
 export interface GetAllSubscriptions1Request {}
-const GetAllSubscriptions1Request = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<GetAllSubscriptions1Request>;
-
 export type FixedSubscriptionsLinksItemMap = { [key: string]: string | undefined };
 export type FixedSubscriptionsLinksList = Array<FixedSubscriptionsLinksItemMap>;
 /** Redis list of Essentials subscriptions in current account */
@@ -3288,26 +2270,14 @@ export interface FixedSubscriptions {
   accountId?: number;
   links?: FixedSubscriptionsLinksList;
 }
-const FixedSubscriptions = PaymentMethods as any as S.Schema<FixedSubscriptions>;
-
 export interface GetAllTasksRequest {}
-const GetAllTasksRequest = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<GetAllTasksRequest>;
-
 export interface GetAllTasksResponse {}
-const GetAllTasksResponse = AcceptTgwResourceShareResponse as any as S.Schema<GetAllTasksResponse>;
-
 export interface GetAllUsersRequest {}
-const GetAllUsersRequest = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<GetAllUsersRequest>;
-
 /** RedisLabs list of users in current account */
 export interface AccountUsers {
   account?: number;
 }
-const AccountUsers = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<AccountUsers>;
-
 export interface GetAllUsers1Request {}
-const GetAllUsers1Request = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<GetAllUsers1Request>;
-
 export type AccountACLUsersLinksItemMap = { [key: string]: string | undefined };
 export type AccountACLUsersLinksList = Array<AccountACLUsersLinksItemMap>;
 /** Redis list of ACL users in current account */
@@ -3315,37 +2285,18 @@ export interface AccountACLUsers {
   accountId?: number;
   links?: AccountACLUsersLinksList;
 }
-const AccountACLUsers = PaymentMethods as any as S.Schema<AccountACLUsers>;
-
 export interface GetCidrWhiteListRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const GetCidrWhiteListRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<GetCidrWhiteListRequest>;
-
 export interface GetCidrWhiteListResponse {}
-const GetCidrWhiteListResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<GetCidrWhiteListResponse>;
-
 export interface GetCloudAccountRequest {
   /** Cloud Account Id */
   cloudAccountId: number;
 }
-const GetCloudAccountRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<GetCloudAccountRequest>;
-
 export type CloudAccountLinksItemMap = { [key: string]: string | undefined };
 export type CloudAccountLinksList = Array<CloudAccountLinksItemMap>;
-const CloudAccountLinksList = TaskStateUpdateLinksList as any as S.Schema<CloudAccountLinksList>;
-
 export type CloudAccountProvider = "AWS" | "GCP";
-const CloudAccountProvider = S.String;
-
 /** RedisLabs Cloud Account information */
 export interface CloudAccount {
   id?: number;
@@ -3358,14 +2309,7 @@ export interface CloudAccount {
   links?: CloudAccountLinksList;
   provider?: CloudAccountProvider;
 }
-const CloudAccount = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<CloudAccount>;
-
 export interface GetCloudAccountsRequest {}
-const GetCloudAccountsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<GetCloudAccountsRequest>;
-
 export type CloudAccountsLinksItemMap = { [key: string]: string | undefined };
 export type CloudAccountsLinksList = Array<CloudAccountsLinksItemMap>;
 /** RedisLabs Cloud Accounts information */
@@ -3373,64 +2317,30 @@ export interface CloudAccounts {
   accountId?: number;
   links?: CloudAccountsLinksList;
 }
-const CloudAccounts = PaymentMethods as any as S.Schema<CloudAccounts>;
-
 export interface GetCostReportRequest {
   /** Cost Report ID. Returned from a Cost Report generation task. */
   costReportId: string;
 }
-const GetCostReportRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<GetCostReportRequest>;
-
 export interface GetCostReportResponse {}
-const GetCostReportResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<GetCostReportResponse>;
-
 export interface GetCurrentAccountRequest {}
-const GetCurrentAccountRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<GetCurrentAccountRequest>;
-
 export type RootAccountLinksItemMap = { [key: string]: string | undefined };
 export type RootAccountLinksList = Array<RootAccountLinksItemMap>;
 export interface RootAccount {
   links?: RootAccountLinksList;
 }
-const RootAccount = FixedSubscriptionsPlans as any as S.Schema<RootAccount>;
-
 export interface GetDatabaseAvailableVersionsRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const GetDatabaseAvailableVersionsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<GetDatabaseAvailableVersionsRequest>;
-
 export interface TargetVersion {
   redisVersion?: string;
 }
-const TargetVersion = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<TargetVersion>;
-
 export type DatabaseAvailableVersionsResponseTargetsList = Array<TargetVersion>;
-const DatabaseAvailableVersionsResponseTargetsList = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<DatabaseAvailableVersionsResponseTargetsList>;
-
 export interface DatabaseAvailableVersionsResponse {
   targets?: DatabaseAvailableVersionsResponseTargetsList;
 }
-const DatabaseAvailableVersionsResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<DatabaseAvailableVersionsResponse>;
-
 export interface GetDatabaseBackupStatusRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -3439,84 +2349,47 @@ export interface GetDatabaseBackupStatusRequest {
   /** Region name - required for Active-Active subscription */
   regionName?: string;
 }
-const GetDatabaseBackupStatusRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<GetDatabaseBackupStatusRequest>;
-
 export interface GetDatabaseBackupStatus1Request {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const GetDatabaseBackupStatus1Request = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<GetDatabaseBackupStatus1Request>;
-
 export interface GetDatabaseImportStatusRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const GetDatabaseImportStatusRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<GetDatabaseImportStatusRequest>;
-
 export interface GetDatabaseImportStatus1Request {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const GetDatabaseImportStatus1Request = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<GetDatabaseImportStatus1Request>;
-
 export interface GetDatabaseRedisVersionUpgradeStatusRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const GetDatabaseRedisVersionUpgradeStatusRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<GetDatabaseRedisVersionUpgradeStatusRequest>;
-
 export type DatabaseVersionUpgradeStatusUpgradeStatus =
   | "in-progress"
   | "in-progress-recovery-pending"
   | "done"
   | "failed";
-const DatabaseVersionUpgradeStatusUpgradeStatus = S.String;
-
 export interface DatabaseVersionUpgradeStatus {
   databaseId?: number;
   targetRedisVersion?: string;
   progress?: number;
   upgradeStatus?: DatabaseVersionUpgradeStatusUpgradeStatus;
 }
-const DatabaseVersionUpgradeStatus = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<DatabaseVersionUpgradeStatus>;
-
 export interface GetDatabaseTrafficRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const GetDatabaseTrafficRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<GetDatabaseTrafficRequest>;
-
 export interface DatabaseTrafficStateResponse {
   bdbId?: number;
   trafficStatus?: string;
@@ -3525,101 +2398,43 @@ export interface DatabaseTrafficStateResponse {
   stopReason?: string;
   resumeEligibleAt?: string;
 }
-const DatabaseTrafficStateResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<DatabaseTrafficStateResponse>;
-
 export interface GetDatabaseTraffic1Request {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const GetDatabaseTraffic1Request = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<GetDatabaseTraffic1Request>;
-
 export interface GetDataIntegrationWorkspacesRequest {}
-const GetDataIntegrationWorkspacesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<GetDataIntegrationWorkspacesRequest>;
-
 export type GetDataIntegrationWorkspacesResponse = unknown;
-const GetDataIntegrationWorkspacesResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<GetDataIntegrationWorkspacesResponse>;
-
 export interface GetDataPersistenceOptionsRequest {}
-const GetDataPersistenceOptionsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<GetDataPersistenceOptionsRequest>;
-
 /** RedisLabs data persistence information */
 export interface DataPersistenceEntry {
   name?: string;
   description?: string;
 }
-const DataPersistenceEntry = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<DataPersistenceEntry>;
-
 export type DataPersistenceOptionsDataPersistenceList = Array<DataPersistenceEntry>;
-const DataPersistenceOptionsDataPersistenceList = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<DataPersistenceOptionsDataPersistenceList>;
-
 export type DataPersistenceOptionsLinksItemMap = { [key: string]: string | undefined };
 export type DataPersistenceOptionsLinksList = Array<DataPersistenceOptionsLinksItemMap>;
-const DataPersistenceOptionsLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<DataPersistenceOptionsLinksList>;
-
 export interface DataPersistenceOptions {
   dataPersistence?: DataPersistenceOptionsDataPersistenceList;
   links?: DataPersistenceOptionsLinksList;
 }
-const DataPersistenceOptions = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<DataPersistenceOptions>;
-
 export interface GetEndpointsRedirectionStatusRequest {
   /** Dynamic endpoint redirection ID. */
   redirectionId: string;
 }
-const GetEndpointsRedirectionStatusRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<GetEndpointsRedirectionStatusRequest>;
-
 export interface GetEssentialsDatabaseAvailableVersionsRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const GetEssentialsDatabaseAvailableVersionsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<GetEssentialsDatabaseAvailableVersionsRequest>;
-
 export interface GetEssentialsDatabaseRedisVersionUpgradeStatusRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const GetEssentialsDatabaseRedisVersionUpgradeStatusRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<GetEssentialsDatabaseRedisVersionUpgradeStatusRequest>;
-
 export interface GetFixedSubscriptionDatabasesRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -3628,41 +2443,20 @@ export interface GetFixedSubscriptionDatabasesRequest {
   /** Maximum number of items to return. */
   limit?: number;
 }
-const GetFixedSubscriptionDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<GetFixedSubscriptionDatabasesRequest>;
-
 export type AccountFixedSubscriptionDatabasesLinksItemMap = { [key: string]: string | undefined };
 export type AccountFixedSubscriptionDatabasesLinksList =
   Array<AccountFixedSubscriptionDatabasesLinksItemMap>;
-const AccountFixedSubscriptionDatabasesLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<AccountFixedSubscriptionDatabasesLinksList>;
-
 /** RedisLabs Account Subscription Databases information */
 export interface AccountFixedSubscriptionDatabases {
   accountId?: number;
   links?: AccountFixedSubscriptionDatabasesLinksList;
 }
-const AccountFixedSubscriptionDatabases = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<AccountFixedSubscriptionDatabases>;
-
 export interface GetFixedSubscriptionsPlanByIdRequest {
   /** Essentials plan ID. */
   planId: number;
 }
-const GetFixedSubscriptionsPlanByIdRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<GetFixedSubscriptionsPlanByIdRequest>;
-
 export type FixedSubscriptionsPlanLinksItemMap = { [key: string]: string | undefined };
 export type FixedSubscriptionsPlanLinksList = Array<FixedSubscriptionsPlanLinksItemMap>;
-const FixedSubscriptionsPlanLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<FixedSubscriptionsPlanLinksList>;
-
 /** Redis Essentials subscription plan information */
 export interface FixedSubscriptionsPlan {
   id?: number;
@@ -3691,33 +2485,15 @@ export interface FixedSubscriptionsPlan {
   customerSupport?: string;
   links?: FixedSubscriptionsPlanLinksList;
 }
-const FixedSubscriptionsPlan = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<FixedSubscriptionsPlan>;
-
 export interface GetFixedSubscriptionsPlansBySubscriptionIdRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const GetFixedSubscriptionsPlansBySubscriptionIdRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<GetFixedSubscriptionsPlansBySubscriptionIdRequest>;
-
 export interface GetMemoryStoreRequest {
   /** Memory store ID. */
   storeId: string;
 }
-const GetMemoryStoreRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<GetMemoryStoreRequest>;
-
 export type MemoryStoreResponseDatabaseAccessCidrsList = Array<string>;
-const MemoryStoreResponseDatabaseAccessCidrsList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<MemoryStoreResponseDatabaseAccessCidrsList>;
-
 /** Resolved model in use for one purpose. Present only on stores with an explicit model selection */
 export interface MemoryStoreModelStatus {
   /** Model provider in use */
@@ -3725,27 +2501,14 @@ export interface MemoryStoreModelStatus {
   /** Model in use */
   model?: string;
 }
-const MemoryStoreModelStatus = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<MemoryStoreModelStatus>;
-
 /** Long-term memory configuration as stored */
 export interface MemoryStoreLongTermMemoryStatus {
   /** Time-to-live of long-term memory entries, in seconds */
   ttlSeconds?: number;
   embedding?: MemoryStoreModelStatus;
 }
-const MemoryStoreLongTermMemoryStatus = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<MemoryStoreLongTermMemoryStatus>;
-
 /** Egress IP addresses used by the endpoint */
 export type MemoryStoreEndpointEgressIpsList = Array<string>;
-const MemoryStoreEndpointEgressIpsList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<MemoryStoreEndpointEgressIpsList>;
-
 /** A regional endpoint through which the memory store is served */
 export interface MemoryStoreEndpoint {
   /** Endpoint URL */
@@ -3759,26 +2522,12 @@ export interface MemoryStoreEndpoint {
   /** Whether the endpoint is reachable from the store's database network */
   isAccessible?: boolean;
 }
-const MemoryStoreEndpoint = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<MemoryStoreEndpoint>;
-
 export type MemoryStoreResponseEndpointsList = Array<MemoryStoreEndpoint>;
-const MemoryStoreResponseEndpointsList = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<MemoryStoreResponseEndpointsList>;
-
 /** How long-term memories are extracted from sessions. INSTRUCT uses LLM tool calling to create, update and delete granular memories */
 export type MemoryStoreResponseExtractionStrategy = "INSTRUCT";
-const MemoryStoreResponseExtractionStrategy = S.String;
-
 export type MemoryStoreResponseCustomMemoryTypesList = Array<MemoryStoreCustomMemoryType>;
-const MemoryStoreResponseCustomMemoryTypesList =
-  CreateMemoryStoreRequestCustomMemoryTypesList as any as S.Schema<MemoryStoreResponseCustomMemoryTypesList>;
-
 /** Lifecycle status of the memory store */
 export type MemoryStoreResponseStatus = "PROVISIONING" | "READY" | "UNAVAILABLE";
-const MemoryStoreResponseStatus = S.String;
-
 /** Memory store configuration and status */
 export interface MemoryStoreResponse {
   storeId?: string;
@@ -3806,47 +2555,21 @@ export interface MemoryStoreResponse {
   errorMessage?: string;
   errorMessageTimestamp?: number;
 }
-const MemoryStoreResponse = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<MemoryStoreResponse>;
-
 export interface GetPrivateLinkRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const GetPrivateLinkRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<GetPrivateLinkRequest>;
-
 export interface GetPrivateLinkResponse {}
-const GetPrivateLinkResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<GetPrivateLinkResponse>;
-
 export interface GetPrivateLinkEndpointScriptRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const GetPrivateLinkEndpointScriptRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<GetPrivateLinkEndpointScriptRequest>;
-
 export interface GetPrivateLinkEndpointScriptResponse {}
-const GetPrivateLinkEndpointScriptResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetPrivateLinkEndpointScriptResponse>;
-
 export interface GetPscServiceRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const GetPscServiceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<GetPscServiceRequest>;
-
 export interface GetPscServiceResponse {}
-const GetPscServiceResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<GetPscServiceResponse>;
-
 export interface GetPscServiceEndpointCreationScriptRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -3855,15 +2578,7 @@ export interface GetPscServiceEndpointCreationScriptRequest {
   /** Private Service Connect endpoint ID. */
   endpointId: number;
 }
-const GetPscServiceEndpointCreationScriptRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<GetPscServiceEndpointCreationScriptRequest>;
-
 export interface GetPscServiceEndpointCreationScriptResponse {}
-const GetPscServiceEndpointCreationScriptResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetPscServiceEndpointCreationScriptResponse>;
-
 export interface GetPscServiceEndpointDeletionScriptRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -3872,95 +2587,45 @@ export interface GetPscServiceEndpointDeletionScriptRequest {
   /** Private Service Connect endpoint ID. */
   endpointId: number;
 }
-const GetPscServiceEndpointDeletionScriptRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<GetPscServiceEndpointDeletionScriptRequest>;
-
 export interface GetPscServiceEndpointDeletionScriptResponse {}
-const GetPscServiceEndpointDeletionScriptResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<GetPscServiceEndpointDeletionScriptResponse>;
-
 export interface GetPscServiceEndpointsRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Private Service Connect service ID. */
   pscServiceId: number;
 }
-const GetPscServiceEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<GetPscServiceEndpointsRequest>;
-
 export interface GetPscServiceEndpointsResponse {}
-const GetPscServiceEndpointsResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<GetPscServiceEndpointsResponse>;
-
 export interface GetRedisVersionsRequest {
   /** Subscription ID (required for an existing subscription) */
   subscriptionId?: number;
 }
-const GetRedisVersionsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<GetRedisVersionsRequest>;
-
 export interface RedisVersion {
   version?: string;
   eolDate?: string;
   isPreview?: boolean;
   isDefault?: boolean;
 }
-const RedisVersion = /*@__PURE__*/ __L.at(__c26, 6) as any as S.Schema<RedisVersion>;
-
 export type RedisVersionsRedisVersionsList = Array<RedisVersion>;
-const RedisVersionsRedisVersionsList = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<RedisVersionsRedisVersionsList>;
-
 export interface RedisVersions {
   redisVersions?: RedisVersionsRedisVersionsList;
 }
-const RedisVersions = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<RedisVersions>;
-
 export interface GetRedisVersions1Request {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const GetRedisVersions1Request = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<GetRedisVersions1Request>;
-
 export interface GetRegionsFromActiveActiveSubscriptionRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const GetRegionsFromActiveActiveSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<GetRegionsFromActiveActiveSubscriptionRequest>;
-
 export type ActiveActiveSubscriptionRegionsLinksItemMap = { [key: string]: string | undefined };
 export type ActiveActiveSubscriptionRegionsLinksList =
   Array<ActiveActiveSubscriptionRegionsLinksItemMap>;
-const ActiveActiveSubscriptionRegionsLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<ActiveActiveSubscriptionRegionsLinksList>;
-
 /** List of active-active subscription regions */
 export interface ActiveActiveSubscriptionRegions {
   subscriptionId?: number;
   links?: ActiveActiveSubscriptionRegionsLinksList;
 }
-const ActiveActiveSubscriptionRegions = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ActiveActiveSubscriptionRegions>;
-
 export interface GetRolesRequest {}
-const GetRolesRequest = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<GetRolesRequest>;
-
 export type AccountACLRolesLinksItemMap = { [key: string]: string | undefined };
 export type AccountACLRolesLinksList = Array<AccountACLRolesLinksItemMap>;
 /** Redis list of ACL roles in current account */
@@ -3968,8 +2633,6 @@ export interface AccountACLRoles {
   accountId?: number;
   links?: AccountACLRolesLinksList;
 }
-const AccountACLRoles = PaymentMethods as any as S.Schema<AccountACLRoles>;
-
 export interface GetSlowLogRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -3978,8 +2641,6 @@ export interface GetSlowLogRequest {
   /** Region name - required for Active-Active subscription */
   regionName?: string;
 }
-const GetSlowLogRequest = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<GetSlowLogRequest>;
-
 /** Database slowlog entry */
 export interface DatabaseSlowLogEntry {
   id?: number;
@@ -3987,70 +2648,30 @@ export interface DatabaseSlowLogEntry {
   duration?: number;
   arguments?: string;
 }
-const DatabaseSlowLogEntry = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<DatabaseSlowLogEntry>;
-
 export type DatabaseSlowLogEntriesEntriesList = Array<DatabaseSlowLogEntry>;
-const DatabaseSlowLogEntriesEntriesList = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<DatabaseSlowLogEntriesEntriesList>;
-
 export type DatabaseSlowLogEntriesLinksItemMap = { [key: string]: string | undefined };
 export type DatabaseSlowLogEntriesLinksList = Array<DatabaseSlowLogEntriesLinksItemMap>;
-const DatabaseSlowLogEntriesLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<DatabaseSlowLogEntriesLinksList>;
-
 export interface DatabaseSlowLogEntries {
   entries?: DatabaseSlowLogEntriesEntriesList;
   links?: DatabaseSlowLogEntriesLinksList;
 }
-const DatabaseSlowLogEntries = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<DatabaseSlowLogEntries>;
-
 export interface GetSlowLog1Request {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const GetSlowLog1Request = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<GetSlowLog1Request>;
-
 export interface GetSubscriptionRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const GetSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<GetSubscriptionRequest>;
-
 export type SubscriptionMemoryStorage = "ram" | "ram-and-flash";
-const SubscriptionMemoryStorage = S.String;
-
 export type SubscriptionPaymentMethodType = "credit-card" | "marketplace";
-const SubscriptionPaymentMethodType = S.String;
-
 export type SubscriptionLinksItemMap = { [key: string]: string | undefined };
 export type SubscriptionLinksList = Array<SubscriptionLinksItemMap>;
-const SubscriptionLinksList = TaskStateUpdateLinksList as any as S.Schema<SubscriptionLinksList>;
-
 export type CustomerManagedKeyAccessDetailsGooglePredefinedRolesList = Array<string>;
-const CustomerManagedKeyAccessDetailsGooglePredefinedRolesList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CustomerManagedKeyAccessDetailsGooglePredefinedRolesList>;
-
 export type CustomerManagedKeyAccessDetailsGoogleCustomPermissionsList = Array<string>;
-const CustomerManagedKeyAccessDetailsGoogleCustomPermissionsList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CustomerManagedKeyAccessDetailsGoogleCustomPermissionsList>;
-
 export type CustomerManagedKeyAccessDetailsDeletionGracePeriodOptionsList = Array<string>;
-const CustomerManagedKeyAccessDetailsDeletionGracePeriodOptionsList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<CustomerManagedKeyAccessDetailsDeletionGracePeriodOptionsList>;
-
 /** Configuration regarding customer managed persistent storage encryption */
 export interface CustomerManagedKeyAccessDetails {
   redisServiceAccount?: string;
@@ -4060,11 +2681,6 @@ export interface CustomerManagedKeyAccessDetails {
   requiredKeyPolicyStatements?: unknown;
   deletionGracePeriodOptions?: CustomerManagedKeyAccessDetailsDeletionGracePeriodOptionsList;
 }
-const CustomerManagedKeyAccessDetails = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<CustomerManagedKeyAccessDetails>;
-
 /** RedisLabs Subscription information */
 export interface Subscription {
   id?: number;
@@ -4080,22 +2696,12 @@ export interface Subscription {
   deletionGracePeriod?: string;
   customerManagedKeyAccessDetails?: CustomerManagedKeyAccessDetails;
 }
-const Subscription = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<Subscription>;
-
 export interface GetSubscriptionById1Request {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const GetSubscriptionById1Request = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<GetSubscriptionById1Request>;
-
 export type FixedSubscriptionLinksItemMap = { [key: string]: string | undefined };
 export type FixedSubscriptionLinksList = Array<FixedSubscriptionLinksItemMap>;
-const FixedSubscriptionLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<FixedSubscriptionLinksList>;
-
 /** Redis Essentials Subscription information */
 export interface FixedSubscription {
   id?: number;
@@ -4126,49 +2732,27 @@ export interface FixedSubscription {
   links?: FixedSubscriptionLinksList;
   databaseStatus?: string;
 }
-const FixedSubscription = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<FixedSubscription>;
-
 export interface GetSubscriptionDatabaseRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const GetSubscriptionDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<GetSubscriptionDatabaseRequest>;
-
 export type DatabaseLinksItemMap = { [key: string]: string | undefined };
 export type DatabaseLinksList = Array<DatabaseLinksItemMap>;
-const DatabaseLinksList = TaskStateUpdateLinksList as any as S.Schema<DatabaseLinksList>;
-
 export interface Database {
   databaseId?: number;
   links?: DatabaseLinksList;
 }
-const Database = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<Database>;
-
 export interface GetSubscriptionDatabaseByID1Request {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const GetSubscriptionDatabaseByID1Request = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<GetSubscriptionDatabaseByID1Request>;
-
 export type FixedDatabaseProtocol = "redis" | "memcached" | "stack";
-const FixedDatabaseProtocol = S.String;
-
 export type FixedDatabaseRespVersion = "resp2" | "resp3";
-const FixedDatabaseRespVersion = S.String;
-
 export type FixedDatabaseMemoryStorage = "ram" | "ram-and-flash";
-const FixedDatabaseMemoryStorage = S.String;
-
 export type FixedDatabaseDataPersistence =
   | "none"
   | "aof-every-1-second"
@@ -4176,8 +2760,6 @@ export type FixedDatabaseDataPersistence =
   | "snapshot-every-1-hour"
   | "snapshot-every-6-hours"
   | "snapshot-every-12-hours";
-const FixedDatabaseDataPersistence = S.String;
-
 export type FixedDatabaseDataEvictionPolicy =
   | "allkeys-lru"
   | "allkeys-lfu"
@@ -4189,8 +2771,6 @@ export type FixedDatabaseDataEvictionPolicy =
   | "volatile-random"
   | "volatile-ttl"
   | "noeviction";
-const FixedDatabaseDataEvictionPolicy = S.String;
-
 /** Database dynamic endpoints. This is available in private preview. */
 export interface DynamicEndpoints {
   /** Public dynamic endpoint of the database. This is available in private preview. */
@@ -4198,8 +2778,6 @@ export interface DynamicEndpoints {
   /** Private dynamic endpoint of the database. This is available in private preview. */
   private?: string;
 }
-const DynamicEndpoints = /*@__PURE__*/ __L.at(__c29, 2) as any as S.Schema<DynamicEndpoints>;
-
 /** Endpoints to use when configuring another database to replicate from this database (Make sure to use this instead of the dynamic endpoints). */
 export interface ReplicaAsSourceEndpoints {
   /** Public cluster endpoint that can be used as source for replication */
@@ -4207,12 +2785,8 @@ export interface ReplicaAsSourceEndpoints {
   /** Private cluster endpoint that can be used as source for replication */
   private?: string;
 }
-const ReplicaAsSourceEndpoints = DynamicEndpoints as any as S.Schema<ReplicaAsSourceEndpoints>;
-
 export type FixedDatabaseLinksItemMap = { [key: string]: string | undefined };
 export type FixedDatabaseLinksList = Array<FixedDatabaseLinksItemMap>;
-const FixedDatabaseLinksList = TaskStateUpdateLinksList as any as S.Schema<FixedDatabaseLinksList>;
-
 export interface FixedDatabase {
   databaseId?: number;
   name?: string;
@@ -4245,26 +2819,17 @@ export interface FixedDatabase {
   replicaAsSourceEndpoints?: ReplicaAsSourceEndpoints;
   links?: FixedDatabaseLinksList;
 }
-const FixedDatabase = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<FixedDatabase>;
-
 export interface GetSubscriptionDatabaseCertificateRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const GetSubscriptionDatabaseCertificateRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<GetSubscriptionDatabaseCertificateRequest>;
-
 /** Database certificate */
 export interface DatabaseCertificate {
   /** An X.509 PEM (base64) encoded server certificate with new line characters replaced by '\n'. */
   publicCertificatePEMString?: string;
 }
-const DatabaseCertificate = /*@__PURE__*/ __L.at(__c29, 5) as any as S.Schema<DatabaseCertificate>;
-
 export interface GetSubscriptionDatabasesRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -4273,11 +2838,6 @@ export interface GetSubscriptionDatabasesRequest {
   /** Maximum number of items to return. */
   limit?: number;
 }
-const GetSubscriptionDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<GetSubscriptionDatabasesRequest>;
-
 export type AccountSubscriptionDatabasesLinksItemMap = { [key: string]: string | undefined };
 export type AccountSubscriptionDatabasesLinksList = Array<AccountSubscriptionDatabasesLinksItemMap>;
 /** RedisLabs Account Subscription Databases information */
@@ -4285,67 +2845,32 @@ export interface AccountSubscriptionDatabases {
   accountId?: number;
   links?: AccountSubscriptionDatabasesLinksList;
 }
-const AccountSubscriptionDatabases =
-  AccountFixedSubscriptionDatabases as any as S.Schema<AccountSubscriptionDatabases>;
-
 export interface GetSubscriptionMaintenanceWindowsRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const GetSubscriptionMaintenanceWindowsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<GetSubscriptionMaintenanceWindowsRequest>;
-
 export type SubscriptionMaintenanceWindowsMode = "manual" | "automatic";
-const SubscriptionMaintenanceWindowsMode = S.String;
-
 export type MaintenanceWindowDaysList = Array<string>;
-const MaintenanceWindowDaysList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<MaintenanceWindowDaysList>;
-
 export interface MaintenanceWindow {
   days?: MaintenanceWindowDaysList;
   startHour?: number;
   durationInHours?: number;
 }
-const MaintenanceWindow = /*@__PURE__*/ __L.at(__c30, 0) as any as S.Schema<MaintenanceWindow>;
-
 export type SubscriptionMaintenanceWindowsWindowsList = Array<MaintenanceWindow>;
-const SubscriptionMaintenanceWindowsWindowsList = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<SubscriptionMaintenanceWindowsWindowsList>;
-
 export interface MaintenanceWindowSkipStatus {
   remainingSkips?: number;
   currentSkipEnd?: string;
 }
-const MaintenanceWindowSkipStatus = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<MaintenanceWindowSkipStatus>;
-
 export interface SubscriptionMaintenanceWindows {
   mode?: SubscriptionMaintenanceWindowsMode;
   timeZone?: string;
   windows?: SubscriptionMaintenanceWindowsWindowsList;
   skipStatus?: MaintenanceWindowSkipStatus;
 }
-const SubscriptionMaintenanceWindows = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<SubscriptionMaintenanceWindows>;
-
 export interface GetSubscriptionPricingRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const GetSubscriptionPricingRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<GetSubscriptionPricingRequest>;
-
 export interface SubscriptionPricing {
   type?: string;
   typeDetails?: string;
@@ -4356,166 +2881,86 @@ export interface SubscriptionPricing {
   pricePeriod?: string;
   region?: string;
 }
-const SubscriptionPricing = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<SubscriptionPricing>;
-
 export type SubscriptionPricingsPricingList = Array<SubscriptionPricing>;
-const SubscriptionPricingsPricingList = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<SubscriptionPricingsPricingList>;
-
 export interface SubscriptionPricings {
   pricing?: SubscriptionPricingsPricingList;
 }
-const SubscriptionPricings = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<SubscriptionPricings>;
-
 export interface GetSupportedDatabaseModulesRequest {}
-const GetSupportedDatabaseModulesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<GetSupportedDatabaseModulesRequest>;
-
 /** RedisLabs database module information */
 export interface Module {
   name?: string;
   capabilityName?: string;
   description?: string;
 }
-const Module = /*@__PURE__*/ __L.at(__c31, 1) as any as S.Schema<Module>;
-
 export type ModulesDataModulesList = Array<Module>;
-const ModulesDataModulesList = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<ModulesDataModulesList>;
-
 export type ModulesDataLinksItemMap = { [key: string]: string | undefined };
 export type ModulesDataLinksList = Array<ModulesDataLinksItemMap>;
-const ModulesDataLinksList = TaskStateUpdateLinksList as any as S.Schema<ModulesDataLinksList>;
-
 export interface ModulesData {
   modules?: ModulesDataModulesList;
   links?: ModulesDataLinksList;
 }
-const ModulesData = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<ModulesData>;
-
 export type GetSupportedRegionsRequestProvider = "AWS" | "GCP";
-const GetSupportedRegionsRequestProvider = S.String;
-
 export interface GetSupportedRegionsRequest {
   /** Filters results to the specified cloud provider. */
   provider?: GetSupportedRegionsRequestProvider | (string & {});
 }
-const GetSupportedRegionsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<GetSupportedRegionsRequest>;
-
 export type RegionProvider = "AWS" | "GCP";
-const RegionProvider = S.String;
-
 /** RedisLabs region information */
 export interface Region {
   id?: number;
   name?: string;
   provider?: RegionProvider;
 }
-const Region = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<Region>;
-
 export type RegionsRegionsList = Array<Region>;
-const RegionsRegionsList = /*@__PURE__*/ __L.at(__c31, 6) as any as S.Schema<RegionsRegionsList>;
-
 export type RegionsLinksItemMap = { [key: string]: string | undefined };
 export type RegionsLinksList = Array<RegionsLinksItemMap>;
-const RegionsLinksList = TaskStateUpdateLinksList as any as S.Schema<RegionsLinksList>;
-
 export interface Regions {
   regions?: RegionsRegionsList;
   links?: RegionsLinksList;
 }
-const Regions = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<Regions>;
-
 export interface GetSupportedSearchScalingFactorsRequest {}
-const GetSupportedSearchScalingFactorsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<GetSupportedSearchScalingFactorsRequest>;
-
 export type SearchScalingFactorsDataQueryPerformanceFactorsList = Array<string>;
-const SearchScalingFactorsDataQueryPerformanceFactorsList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<SearchScalingFactorsDataQueryPerformanceFactorsList>;
-
 export type SearchScalingFactorsDataLinksItemMap = { [key: string]: string | undefined };
 export type SearchScalingFactorsDataLinksList = Array<SearchScalingFactorsDataLinksItemMap>;
-const SearchScalingFactorsDataLinksList =
-  TaskStateUpdateLinksList as any as S.Schema<SearchScalingFactorsDataLinksList>;
-
 export interface SearchScalingFactorsData {
   queryPerformanceFactors?: SearchScalingFactorsDataQueryPerformanceFactorsList;
   links?: SearchScalingFactorsDataLinksList;
 }
-const SearchScalingFactorsData = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<SearchScalingFactorsData>;
-
 export interface GetTagsRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const GetTagsRequest = /*@__PURE__*/ __L.at(__c32, 2) as any as S.Schema<GetTagsRequest>;
-
 export type CloudTagsLinksItemMap = { [key: string]: string | undefined };
 export type CloudTagsLinksList = Array<CloudTagsLinksItemMap>;
-const CloudTagsLinksList = TaskStateUpdateLinksList as any as S.Schema<CloudTagsLinksList>;
-
 /** Redis list of database tags */
 export interface CloudTags {
   links?: CloudTagsLinksList;
   accountId?: number;
 }
-const CloudTags = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<CloudTags>;
-
 export interface GetTags1Request {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const GetTags1Request = /*@__PURE__*/ __L.at(__c32, 4) as any as S.Schema<GetTags1Request>;
-
 export interface GetTaskRequest {
   /** Task ID. */
   taskId: string;
 }
-const GetTaskRequest = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<GetTaskRequest>;
-
 export interface GetTgwsRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const GetTgwsRequest = /*@__PURE__*/ __L.at(__c32, 6) as any as S.Schema<GetTgwsRequest>;
-
 export interface GetTgwSharedInvitationsRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const GetTgwSharedInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<GetTgwSharedInvitationsRequest>;
-
 export interface GetUserRequest {
   /** User ID. */
   userId: number;
 }
-const GetUserRequest = /*@__PURE__*/ __L.at(__c33, 0) as any as S.Schema<GetUserRequest>;
-
 /** RedisLabs User options information */
 export interface AccountUserOptions {
   billing?: boolean;
@@ -4523,8 +2968,6 @@ export interface AccountUserOptions {
   operationalEmails?: boolean;
   mfaEnabled?: boolean;
 }
-const AccountUserOptions = /*@__PURE__*/ __L.at(__c33, 1) as any as S.Schema<AccountUserOptions>;
-
 /** RedisLabs User information */
 export interface AccountUser {
   id?: number;
@@ -4536,18 +2979,12 @@ export interface AccountUser {
   hasApiKey?: boolean;
   options?: AccountUserOptions;
 }
-const AccountUser = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<AccountUser>;
-
 export interface GetUserByIDRequest {
   /** Access control user ID. */
   aclUserId: number;
 }
-const GetUserByIDRequest = /*@__PURE__*/ __L.at(__c33, 3) as any as S.Schema<GetUserByIDRequest>;
-
 export type ACLUserLinksItemMap = { [key: string]: string | undefined };
 export type ACLUserLinksList = Array<ACLUserLinksItemMap>;
-const ACLUserLinksList = TaskStateUpdateLinksList as any as S.Schema<ACLUserLinksList>;
-
 /** Redis ACL user information */
 export interface ACLUser {
   id?: number;
@@ -4556,21 +2993,11 @@ export interface ACLUser {
   status?: string;
   links?: ACLUserLinksList;
 }
-const ACLUser = /*@__PURE__*/ __L.at(__c33, 4) as any as S.Schema<ACLUser>;
-
 export interface GetVpcPeeringRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const GetVpcPeeringRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<GetVpcPeeringRequest>;
-
 export interface GetVpcPeeringResponse {}
-const GetVpcPeeringResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<GetVpcPeeringResponse>;
-
 /** Type of storage from which to import the database RDB file or Redis data. */
 export type ImportDatabaseRequestSourceType =
   | "http"
@@ -4579,13 +3006,8 @@ export type ImportDatabaseRequestSourceType =
   | "aws-s3"
   | "azure-blob-storage"
   | "google-blob-storage";
-const ImportDatabaseRequestSourceType = S.String;
-
 /** One or more paths to source data files or Redis databases, as appropriate to specified source type. */
 export type ImportDatabaseRequestImportFromUriList = Array<string>;
-const ImportDatabaseRequestImportFromUriList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<ImportDatabaseRequestImportFromUriList>;
-
 export interface ImportDatabaseRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -4596,11 +3018,6 @@ export interface ImportDatabaseRequest {
   /** One or more paths to source data files or Redis databases, as appropriate to specified source type. */
   importFromUri: ImportDatabaseRequestImportFromUriList;
 }
-const ImportDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<ImportDatabaseRequest>;
-
 /** Type of storage from which to import the database RDB file or Redis data. */
 export type ImportDatabase1RequestSourceType =
   | "http"
@@ -4609,13 +3026,8 @@ export type ImportDatabase1RequestSourceType =
   | "aws-s3"
   | "azure-blob-storage"
   | "google-blob-storage";
-const ImportDatabase1RequestSourceType = S.String;
-
 /** One or more paths to source data files or Redis databases, as appropriate to specified source type. */
 export type ImportDatabase1RequestImportFromUriList = Array<string>;
-const ImportDatabase1RequestImportFromUriList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<ImportDatabase1RequestImportFromUriList>;
-
 export interface ImportDatabase1Request {
   /** Subscription ID. */
   subscriptionId: number;
@@ -4626,38 +3038,16 @@ export interface ImportDatabase1Request {
   /** One or more paths to source data files or Redis databases, as appropriate to specified source type. */
   importFromUri: ImportDatabase1RequestImportFromUriList;
 }
-const ImportDatabase1Request = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<ImportDatabase1Request>;
-
 export interface ListMemoryStoreApiKeysRequest {
   /** Memory store ID. */
   storeId: string;
 }
-const ListMemoryStoreApiKeysRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<ListMemoryStoreApiKeysRequest>;
-
 export interface ListMemoryStoreApiKeysResponse {}
-const ListMemoryStoreApiKeysResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<ListMemoryStoreApiKeysResponse>;
-
 export interface ListMemoryStoresRequest {}
-const ListMemoryStoresRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<ListMemoryStoresRequest>;
-
 /** How long-term memories are extracted from sessions. INSTRUCT uses LLM tool calling to create, update and delete granular memories */
 export type MemoryStoreSummaryExtractionStrategy = "INSTRUCT";
-const MemoryStoreSummaryExtractionStrategy = S.String;
-
 /** Lifecycle status of the memory store */
 export type MemoryStoreSummaryStatus = "PROVISIONING" | "READY" | "UNAVAILABLE";
-const MemoryStoreSummaryStatus = S.String;
-
 export interface MemoryStoreSummary {
   storeId?: string;
   name?: string;
@@ -4672,89 +3062,37 @@ export interface MemoryStoreSummary {
   /** Lifecycle status of the memory store */
   status?: MemoryStoreSummaryStatus;
 }
-const MemoryStoreSummary = /*@__PURE__*/ __L.at(__c34, 2) as any as S.Schema<MemoryStoreSummary>;
-
 export type MemoryStoreListResponseDataList = Array<MemoryStoreSummary>;
-const MemoryStoreListResponseDataList = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<MemoryStoreListResponseDataList>;
-
 /** List of memory stores */
 export interface MemoryStoreListResponse {
   data?: MemoryStoreListResponseDataList;
 }
-const MemoryStoreListResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<MemoryStoreListResponse>;
-
 export interface ProxyDataIntegrationWorkspace5Request {
   /** Subscription ID. */
   subscriptionId: number;
   requestBody: unknown;
 }
-const ProxyDataIntegrationWorkspace5Request = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<ProxyDataIntegrationWorkspace5Request>;
-
 export type ProxyDataIntegrationWorkspace5Response = unknown;
-const ProxyDataIntegrationWorkspace5Response =
-  GetDataIntegrationWorkspacesResponse as any as S.Schema<ProxyDataIntegrationWorkspace5Response>;
-
 export interface ProxyDataIntegrationWorkspace6Request {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const ProxyDataIntegrationWorkspace6Request = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<ProxyDataIntegrationWorkspace6Request>;
-
 export type ProxyDataIntegrationWorkspace6Response = unknown;
-const ProxyDataIntegrationWorkspace6Response =
-  GetDataIntegrationWorkspacesResponse as any as S.Schema<ProxyDataIntegrationWorkspace6Response>;
-
 export interface ProxyDataIntegrationWorkspace7Request {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const ProxyDataIntegrationWorkspace7Request = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<ProxyDataIntegrationWorkspace7Request>;
-
 export type ProxyDataIntegrationWorkspace7Response = unknown;
-const ProxyDataIntegrationWorkspace7Response =
-  GetDataIntegrationWorkspacesResponse as any as S.Schema<ProxyDataIntegrationWorkspace7Response>;
-
 export interface ProxyDataIntegrationWorkspace8Request {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const ProxyDataIntegrationWorkspace8Request = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<ProxyDataIntegrationWorkspace8Request>;
-
 export type ProxyDataIntegrationWorkspace8Response = unknown;
-const ProxyDataIntegrationWorkspace8Response =
-  GetDataIntegrationWorkspacesResponse as any as S.Schema<ProxyDataIntegrationWorkspace8Response>;
-
 export interface ProxyDataIntegrationWorkspace9Request {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const ProxyDataIntegrationWorkspace9Request = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<ProxyDataIntegrationWorkspace9Request>;
-
 export type ProxyDataIntegrationWorkspace9Response = unknown;
-const ProxyDataIntegrationWorkspace9Response =
-  GetDataIntegrationWorkspacesResponse as any as S.Schema<ProxyDataIntegrationWorkspace9Response>;
-
 export interface RejectActiveActiveTgwResourceShareRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -4763,73 +3101,34 @@ export interface RejectActiveActiveTgwResourceShareRequest {
   /** AWS transit gateway invitation ID. */
   tgwInvitationId: number;
 }
-const RejectActiveActiveTgwResourceShareRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<RejectActiveActiveTgwResourceShareRequest>;
-
 export interface RejectActiveActiveTgwResourceShareResponse {}
-const RejectActiveActiveTgwResourceShareResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<RejectActiveActiveTgwResourceShareResponse>;
-
 export interface RejectTgwResourceShareRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** AWS transit gateway invitation ID. */
   tgwInvitationId: number;
 }
-const RejectTgwResourceShareRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<RejectTgwResourceShareRequest>;
-
 export interface RejectTgwResourceShareResponse {}
-const RejectTgwResourceShareResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<RejectTgwResourceShareResponse>;
-
 export interface ResumeBdbTrafficRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const ResumeBdbTrafficRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<ResumeBdbTrafficRequest>;
-
 export interface ResumeBdbTrafficResponse {}
-const ResumeBdbTrafficResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<ResumeBdbTrafficResponse>;
-
 export interface ResumeBdbTraffic1Request {
   /** Subscription ID. */
   subscriptionId: number;
   /** Database ID. */
   databaseId: number;
 }
-const ResumeBdbTraffic1Request = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<ResumeBdbTraffic1Request>;
-
 export interface ResumeBdbTraffic1Response {}
-const ResumeBdbTraffic1Response =
-  AcceptTgwResourceShareResponse as any as S.Schema<ResumeBdbTraffic1Response>;
-
 export interface RevertEndpointsRedirectionRequest {
   /** Dynamic endpoint redirection ID. */
   redirectionId: string;
 }
-const RevertEndpointsRedirectionRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<RevertEndpointsRedirectionRequest>;
-
 /** Action to perform on the endpoint. */
 export type UpdateActiveActivePscServiceEndpointRequestAction = "accept" | "reject";
-const UpdateActiveActivePscServiceEndpointRequestAction = S.String;
-
 export interface UpdateActiveActivePscServiceEndpointRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -4850,28 +3149,13 @@ export interface UpdateActiveActivePscServiceEndpointRequest {
   /** Action to perform on the endpoint. */
   action?: UpdateActiveActivePscServiceEndpointRequestAction | (string & {});
 }
-const UpdateActiveActivePscServiceEndpointRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<UpdateActiveActivePscServiceEndpointRequest>;
-
 export interface UpdateActiveActivePscServiceEndpointResponse {}
-const UpdateActiveActivePscServiceEndpointResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<UpdateActiveActivePscServiceEndpointResponse>;
-
 /** Optional. List of transit gateway attachment CIDRs. */
 export interface Cidr {
   cidrAddress?: string;
 }
-const Cidr = /*@__PURE__*/ __L.at(__c36, 0) as any as S.Schema<Cidr>;
-
 /** Optional. List of transit gateway attachment CIDRs. */
 export type UpdateActiveActiveTgwAttachmentCidrsRequestCidrsList = Array<Cidr>;
-const UpdateActiveActiveTgwAttachmentCidrsRequestCidrsList = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<UpdateActiveActiveTgwAttachmentCidrsRequestCidrsList>;
-
 export interface UpdateActiveActiveTgwAttachmentCidrsRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -4882,20 +3166,9 @@ export interface UpdateActiveActiveTgwAttachmentCidrsRequest {
   /** Optional. List of transit gateway attachment CIDRs. */
   cidrs?: UpdateActiveActiveTgwAttachmentCidrsRequestCidrsList;
 }
-const UpdateActiveActiveTgwAttachmentCidrsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<UpdateActiveActiveTgwAttachmentCidrsRequest>;
-
 export interface UpdateActiveActiveTgwAttachmentCidrsResponse {}
-const UpdateActiveActiveTgwAttachmentCidrsResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<UpdateActiveActiveTgwAttachmentCidrsResponse>;
-
 /** Optional. List of VPC CIDRs. */
 export type UpdateActiveActiveVpcPeeringRequestVpcCidrsList = Array<string>;
-const UpdateActiveActiveVpcPeeringRequestVpcCidrsList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<UpdateActiveActiveVpcPeeringRequestVpcCidrsList>;
-
 export interface UpdateActiveActiveVpcPeeringRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -4906,11 +3179,6 @@ export interface UpdateActiveActiveVpcPeeringRequest {
   /** Optional. List of VPC CIDRs. */
   vpcCidrs?: UpdateActiveActiveVpcPeeringRequestVpcCidrsList;
 }
-const UpdateActiveActiveVpcPeeringRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<UpdateActiveActiveVpcPeeringRequest>;
-
 export interface UpdateCloudAccountRequest {
   /** Cloud Account Id */
   cloudAccountId: number;
@@ -4927,21 +3195,10 @@ export interface UpdateCloudAccountRequest {
   /** Optional. Cloud provider management console login URL. */
   signInLoginUrl?: string;
 }
-const UpdateCloudAccountRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<UpdateCloudAccountRequest>;
-
 export interface UpdateCloudAccountResponse {}
-const UpdateCloudAccountResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<UpdateCloudAccountResponse>;
-
 /** Optional. A list of client TLS/SSL certificates. If specified, mTLS authentication will be required to authenticate user connections. If set to an empty list, TLS client certificates will be removed and mTLS will not be required. TLS connection may still apply, depending on the value of 'enableTls'. */
 export type UpdateCrdbLocalPropertiesRequestClientTlsCertificatesList =
   Array<DatabaseCertificateSpec>;
-const UpdateCrdbLocalPropertiesRequestClientTlsCertificatesList =
-  CreateDatabaseRequestClientTlsCertificatesList as any as S.Schema<UpdateCrdbLocalPropertiesRequestClientTlsCertificatesList>;
-
 /** Optional. Type and rate of data persistence in all regions that don't set local 'dataPersistence'. */
 export type UpdateCrdbLocalPropertiesRequestGlobalDataPersistence =
   | "none"
@@ -4950,18 +3207,10 @@ export type UpdateCrdbLocalPropertiesRequestGlobalDataPersistence =
   | "snapshot-every-1-hour"
   | "snapshot-every-6-hours"
   | "snapshot-every-12-hours";
-const UpdateCrdbLocalPropertiesRequestGlobalDataPersistence = S.String;
-
 /** Optional. List of source IP addresses or subnet masks to whitelist in all regions that don't set local 'sourceIp' settings. If set, Redis clients will be able to connect to this database only from within the specified source IP addresses ranges. Example: ['192.168.10.0/32', '192.168.12.0/24'] */
 export type UpdateCrdbLocalPropertiesRequestGlobalSourceIpList = Array<string>;
-const UpdateCrdbLocalPropertiesRequestGlobalSourceIpList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<UpdateCrdbLocalPropertiesRequestGlobalSourceIpList>;
-
 /** Optional. Redis database alert settings in all regions that don't set local 'alerts'. */
 export type UpdateCrdbLocalPropertiesRequestGlobalAlertsList = Array<DatabaseAlertSpec>;
-const UpdateCrdbLocalPropertiesRequestGlobalAlertsList =
-  CreateDatabaseRequestAlertsList as any as S.Schema<UpdateCrdbLocalPropertiesRequestGlobalAlertsList>;
-
 /** Optional. Type and rate of data persistence for this region. If set, 'globalDataPersistence' will not apply to this region. */
 export type LocalRegionPropertiesInputDataPersistence =
   | "none"
@@ -4970,22 +3219,12 @@ export type LocalRegionPropertiesInputDataPersistence =
   | "snapshot-every-1-hour"
   | "snapshot-every-6-hours"
   | "snapshot-every-12-hours";
-const LocalRegionPropertiesInputDataPersistence = S.String;
-
 /** Optional. List of source IP addresses or subnet masks to whitelist in this region. If set, Redis clients will be able to connect to the database in this region only from within the specified source IP addresses ranges, and 'globalSourceIp' will not apply to this region. Example: ['192.168.10.0/32', '192.168.12.0/24'] */
 export type LocalRegionPropertiesInputSourceIpList = Array<string>;
-const LocalRegionPropertiesInputSourceIpList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<LocalRegionPropertiesInputSourceIpList>;
-
 /** Optional. Redis database alert settings for this region. If set, 'glboalAlerts' will not apply to this region. */
 export type LocalRegionPropertiesInputAlertsList = Array<DatabaseAlertSpec>;
-const LocalRegionPropertiesInputAlertsList =
-  CreateDatabaseRequestAlertsList as any as S.Schema<LocalRegionPropertiesInputAlertsList>;
-
 /** Optional. Redis Serialization Protocol version for this region. Must be compatible with Redis version. */
 export type LocalRegionPropertiesInputRespVersion = "resp2" | "resp3";
-const LocalRegionPropertiesInputRespVersion = S.String;
-
 /** Optional. A list of regions and local settings to update. */
 export interface LocalRegionPropertiesInput {
   /** Required. Name of the region to update. */
@@ -5005,18 +3244,8 @@ export interface LocalRegionPropertiesInput {
   /** Optional. When 'true', allows connecting to the database with the 'default' user. When 'false', only defined access control users can connect to the database. If set, 'globalEnableDefaultUser' will not apply to this region. */
   enableDefaultUser?: boolean;
 }
-const LocalRegionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<LocalRegionPropertiesInput>;
-
 /** Optional. A list of regions and local settings to update. */
 export type UpdateCrdbLocalPropertiesRequestRegionsList = Array<LocalRegionPropertiesInput>;
-const UpdateCrdbLocalPropertiesRequestRegionsList = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<UpdateCrdbLocalPropertiesRequestRegionsList>;
-
 /** Optional. Data eviction policy. */
 export type UpdateCrdbLocalPropertiesRequestDataEvictionPolicy =
   | "allkeys-lru"
@@ -5029,8 +3258,6 @@ export type UpdateCrdbLocalPropertiesRequestDataEvictionPolicy =
   | "volatile-random"
   | "volatile-ttl"
   | "noeviction";
-const UpdateCrdbLocalPropertiesRequestDataEvictionPolicy = S.String;
-
 export interface UpdateCrdbLocalPropertiesRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -5071,15 +3298,8 @@ export interface UpdateCrdbLocalPropertiesRequest {
   /** Optional. Automatically upgrades the database to newer minor versions within the same major release. Applies to version 8.4 and above. */
   autoMinorVersionUpgrade?: boolean;
 }
-const UpdateCrdbLocalPropertiesRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<UpdateCrdbLocalPropertiesRequest>;
-
 /** Optional. Redis Serialization Protocol version. Must be compatible with Redis version. */
 export type UpdateDatabaseRequestRespVersion = "resp2" | "resp3";
-const UpdateDatabaseRequestRespVersion = S.String;
-
 /** Optional. Type and rate of data persistence in persistent storage. */
 export type UpdateDatabaseRequestDataPersistence =
   | "none"
@@ -5088,8 +3308,6 @@ export type UpdateDatabaseRequestDataPersistence =
   | "snapshot-every-1-hour"
   | "snapshot-every-6-hours"
   | "snapshot-every-12-hours";
-const UpdateDatabaseRequestDataPersistence = S.String;
-
 /** Optional. Data eviction policy. */
 export type UpdateDatabaseRequestDataEvictionPolicy =
   | "allkeys-lru"
@@ -5102,33 +3320,16 @@ export type UpdateDatabaseRequestDataEvictionPolicy =
   | "volatile-random"
   | "volatile-ttl"
   | "noeviction";
-const UpdateDatabaseRequestDataEvictionPolicy = S.String;
-
 /** Optional. Hashing policy Regex rules. Used only if 'shardingType' is 'custom-regex-rules'. */
 export type UpdateDatabaseRequestRegexRulesList = Array<string>;
-const UpdateDatabaseRequestRegexRulesList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<UpdateDatabaseRequestRegexRulesList>;
-
 /** Optional. This database will be a replica of the specified Redis databases provided as one or more URI(s). Example: 'redis://user:password@host:port'. If the URI provided is a Redis Cloud database, only host and port should be provided. Example: ['redis://endpoint1:6379', 'redis://endpoint2:6380']. */
 export type UpdateDatabaseRequestReplicaOfList = Array<string>;
-const UpdateDatabaseRequestReplicaOfList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<UpdateDatabaseRequestReplicaOfList>;
-
 /** Optional. List of source IP addresses or subnet masks to allow. If specified, Redis clients will be able to connect to this database only from within the specified source IP addresses ranges. Example: '['192.168.10.0/32', '192.168.12.0/24']' */
 export type UpdateDatabaseRequestSourceIpList = Array<string>;
-const UpdateDatabaseRequestSourceIpList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<UpdateDatabaseRequestSourceIpList>;
-
 /** Optional. A list of client TLS/SSL certificates. If specified, mTLS authentication will be required to authenticate user connections. If set to an empty list, TLS client certificates will be removed and mTLS will not be required. TLS connection may still apply, depending on the value of 'enableTls'. */
 export type UpdateDatabaseRequestClientTlsCertificatesList = Array<DatabaseCertificateSpec>;
-const UpdateDatabaseRequestClientTlsCertificatesList =
-  CreateDatabaseRequestClientTlsCertificatesList as any as S.Schema<UpdateDatabaseRequestClientTlsCertificatesList>;
-
 /** Optional. Changes Redis database alert details. */
 export type UpdateDatabaseRequestAlertsList = Array<DatabaseAlertSpec>;
-const UpdateDatabaseRequestAlertsList =
-  CreateDatabaseRequestAlertsList as any as S.Schema<UpdateDatabaseRequestAlertsList>;
-
 export interface UpdateDatabaseRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -5188,27 +3389,14 @@ export interface UpdateDatabaseRequest {
   /** Optional. Changes the query performance factor. The query performance factor adds extra compute power specifically for search and query databases. You can increase your queries per second by the selected factor. */
   queryPerformanceFactor?: string;
 }
-const UpdateDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<UpdateDatabaseRequest>;
-
 /** Long-term memory configuration accepted on update. Only the TTL and the embedding credential can change */
 export interface MemoryStoreLongTermMemoryUpdateConfig {
   /** New time-to-live of long-term memory entries, in seconds (1 second to 1 year). Omit to leave unchanged */
   ttlSeconds?: number;
   embedding?: MemoryStoreModelConfig;
 }
-const MemoryStoreLongTermMemoryUpdateConfig = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<MemoryStoreLongTermMemoryUpdateConfig>;
-
 /** Optional. New custom memory types to append to the store's registry. A store may define at most 3 custom memory types in total, including those already registered. Existing types cannot be redefined */
 export type UpdateMemoryStoreRequestAddCustomMemoryTypesList = Array<MemoryStoreCustomMemoryType>;
-const UpdateMemoryStoreRequestAddCustomMemoryTypesList =
-  CreateMemoryStoreRequestCustomMemoryTypesList as any as S.Schema<UpdateMemoryStoreRequestAddCustomMemoryTypesList>;
-
 /** Edit of the extraction strategy of an existing custom memory type. Only the prompt and the enabled flag may change; the type's name, description and fields are immutable */
 export interface MemoryStoreTypeStrategyUpdate {
   /** Name of the existing custom memory type to edit. Required */
@@ -5218,19 +3406,9 @@ export interface MemoryStoreTypeStrategyUpdate {
   /** Replacement enabled flag. Omit to leave unchanged */
   enabled?: boolean;
 }
-const MemoryStoreTypeStrategyUpdate = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<MemoryStoreTypeStrategyUpdate>;
-
 /** Optional. Extraction strategy edits (prompt and enabled flag) for existing custom memory types */
 export type UpdateMemoryStoreRequestUpdateCustomMemoryTypeStrategiesList =
   Array<MemoryStoreTypeStrategyUpdate>;
-const UpdateMemoryStoreRequestUpdateCustomMemoryTypeStrategiesList = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<UpdateMemoryStoreRequestUpdateCustomMemoryTypeStrategiesList>;
-
 export interface UpdateMemoryStoreRequest {
   /** Memory store ID. */
   storeId: string;
@@ -5247,19 +3425,9 @@ export interface UpdateMemoryStoreRequest {
   updateCustomMemoryTypeStrategies?: UpdateMemoryStoreRequestUpdateCustomMemoryTypeStrategiesList;
   extractionCadence?: MemoryStoreExtractionCadenceConfig;
 }
-const UpdateMemoryStoreRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<UpdateMemoryStoreRequest>;
-
 export interface UpdateMemoryStoreResponse {}
-const UpdateMemoryStoreResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<UpdateMemoryStoreResponse>;
-
 /** Action to perform on the endpoint. */
 export type UpdatePscServiceEndpointRequestAction = "accept" | "reject";
-const UpdatePscServiceEndpointRequestAction = S.String;
-
 export interface UpdatePscServiceEndpointRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -5278,15 +3446,7 @@ export interface UpdatePscServiceEndpointRequest {
   /** Action to perform on the endpoint. */
   action?: UpdatePscServiceEndpointRequestAction | (string & {});
 }
-const UpdatePscServiceEndpointRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<UpdatePscServiceEndpointRequest>;
-
 export interface UpdatePscServiceEndpointResponse {}
-const UpdatePscServiceEndpointResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<UpdatePscServiceEndpointResponse>;
-
 export interface UpdateRedisRuleRequest {
   /** Redis ACL rule ID. */
   aclRedisRuleId: number;
@@ -5295,20 +3455,9 @@ export interface UpdateRedisRuleRequest {
   /** Optional. Changes the Redis ACL rule pattern. See [ACL syntax](https://redis.io/docs/latest/operate/rc/security/access-control/data-access-control/configure-acls/#define-permissions-with-acl-syntax) to learn how to define rules. */
   redisRule: string;
 }
-const UpdateRedisRuleRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<UpdateRedisRuleRequest>;
-
 export interface UpdateRedisRuleResponse {}
-const UpdateRedisRuleResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<UpdateRedisRuleResponse>;
-
 /** Optional. Changes the Redis ACL rules to assign to this database access role. */
 export type UpdateRoleRequestRedisRulesList = Array<AclRoleRedisRuleSpec>;
-const UpdateRoleRequestRedisRulesList =
-  CreateRoleRequestRedisRulesList as any as S.Schema<UpdateRoleRequestRedisRulesList>;
-
 export interface UpdateRoleRequest {
   /** Database access role ID. */
   aclRoleId: number;
@@ -5317,24 +3466,13 @@ export interface UpdateRoleRequest {
   /** Optional. Changes the Redis ACL rules to assign to this database access role. */
   redisRules?: UpdateRoleRequestRedisRulesList;
 }
-const UpdateRoleRequest = /*@__PURE__*/ __L.at(__c37, 7) as any as S.Schema<UpdateRoleRequest>;
-
 export interface UpdateRoleResponse {}
-const UpdateRoleResponse = AcceptTgwResourceShareResponse as any as S.Schema<UpdateRoleResponse>;
-
 export interface UpdateSubscriptionRequest {
   /** Subscription ID. */
   subscriptionId: number;
 }
-const UpdateSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<UpdateSubscriptionRequest>;
-
 /** Optional. The payment method for the subscription. If set to 'credit-card' , 'paymentMethodId' must be defined. */
 export type UpdateSubscription1RequestPaymentMethod = "credit-card" | "marketplace";
-const UpdateSubscription1RequestPaymentMethod = S.String;
-
 export interface UpdateSubscription1Request {
   subscriptionId: number;
   /** Optional. Updated subscription name. */
@@ -5346,25 +3484,11 @@ export interface UpdateSubscription1Request {
   /** Optional. The payment method ID you'd like to use for this subscription. Must be a valid payment method ID for this account. Use GET /payment-methods to get a list of payment methods for your account. This value is optional if 'paymentMethod' is 'marketplace', but required if 'paymentMethod' is 'credit-card'. */
   paymentMethodId?: number;
 }
-const UpdateSubscription1Request = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<UpdateSubscription1Request>;
-
 export interface UpdateSubscription1Response {}
-const UpdateSubscription1Response =
-  AcceptTgwResourceShareResponse as any as S.Schema<UpdateSubscription1Response>;
-
 /** List of CIDR values. Example: ['10.1.1.0/32'] */
 export type UpdateSubscriptionCidrWhiteListRequestCidrIpsList = Array<string>;
-const UpdateSubscriptionCidrWhiteListRequestCidrIpsList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<UpdateSubscriptionCidrWhiteListRequestCidrIpsList>;
-
 /** List of AWS Security group IDs. */
 export type UpdateSubscriptionCidrWhiteListRequestSecurityGroupIdsList = Array<string>;
-const UpdateSubscriptionCidrWhiteListRequestSecurityGroupIdsList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<UpdateSubscriptionCidrWhiteListRequestSecurityGroupIdsList>;
-
 export interface UpdateSubscriptionCidrWhiteListRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -5373,24 +3497,11 @@ export interface UpdateSubscriptionCidrWhiteListRequest {
   /** List of AWS Security group IDs. */
   securityGroupIds?: UpdateSubscriptionCidrWhiteListRequestSecurityGroupIdsList;
 }
-const UpdateSubscriptionCidrWhiteListRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<UpdateSubscriptionCidrWhiteListRequest>;
-
 export interface UpdateSubscriptionCidrWhiteListResponse {}
-const UpdateSubscriptionCidrWhiteListResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<UpdateSubscriptionCidrWhiteListResponse>;
-
 /** Maintenance window mode: either 'manual' or 'automatic'. Must provide 'windows' if manual. */
 export type UpdateSubscriptionMaintenanceWindowsRequestMode = "manual" | "automatic";
-const UpdateSubscriptionMaintenanceWindowsRequestMode = S.String;
-
 /** Days where this maintenance window applies. Can contain one or more of: "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", or "Sunday". */
 export type MaintenanceWindowSpecDaysList = Array<string>;
-const MaintenanceWindowSpecDaysList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<MaintenanceWindowSpecDaysList>;
-
 /** Maintenance window timeframes if mode is set to 'manual'. Up to 7 maintenance windows can be provided. */
 export interface MaintenanceWindowSpec {
   /** Starting hour of the maintenance window. Can be between '0' (12 AM in the deployment region's local time) and '23' (11 PM in the deployment region's local time). */
@@ -5400,18 +3511,8 @@ export interface MaintenanceWindowSpec {
   /** Days where this maintenance window applies. Can contain one or more of: "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", or "Sunday". */
   days: MaintenanceWindowSpecDaysList;
 }
-const MaintenanceWindowSpec = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<MaintenanceWindowSpec>;
-
 /** Maintenance window timeframes if mode is set to 'manual'. Up to 7 maintenance windows can be provided. */
 export type UpdateSubscriptionMaintenanceWindowsRequestWindowsList = Array<MaintenanceWindowSpec>;
-const UpdateSubscriptionMaintenanceWindowsRequestWindowsList = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<UpdateSubscriptionMaintenanceWindowsRequestWindowsList>;
-
 export interface UpdateSubscriptionMaintenanceWindowsRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -5420,31 +3521,15 @@ export interface UpdateSubscriptionMaintenanceWindowsRequest {
   /** Maintenance window timeframes if mode is set to 'manual'. Up to 7 maintenance windows can be provided. */
   windows?: UpdateSubscriptionMaintenanceWindowsRequestWindowsList;
 }
-const UpdateSubscriptionMaintenanceWindowsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<UpdateSubscriptionMaintenanceWindowsRequest>;
-
 /** List of resource tags to apply to the subscription. This will replace all existing tags. */
 export type UpdateSubscriptionResourceTagsRequestResourceTagsList = Array<ResourceTag>;
-const UpdateSubscriptionResourceTagsRequestResourceTagsList =
-  SubscriptionSpecResourceTagsList as any as S.Schema<UpdateSubscriptionResourceTagsRequestResourceTagsList>;
-
 export interface UpdateSubscriptionResourceTagsRequest {
   /** Subscription ID. */
   subscriptionId: number;
   /** List of resource tags to apply to the subscription. This will replace all existing tags. */
   resourceTags: UpdateSubscriptionResourceTagsRequestResourceTagsList;
 }
-const UpdateSubscriptionResourceTagsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<UpdateSubscriptionResourceTagsRequest>;
-
 export interface UpdateSubscriptionResourceTagsResponse {}
-const UpdateSubscriptionResourceTagsResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<UpdateSubscriptionResourceTagsResponse>;
-
 export interface UpdateTagRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -5455,8 +3540,6 @@ export interface UpdateTagRequest {
   /** Database tag value */
   value: string;
 }
-const UpdateTagRequest = /*@__PURE__*/ __L.at(__c38, 7) as any as S.Schema<UpdateTagRequest>;
-
 export interface UpdateTag1Request {
   /** Subscription ID. */
   subscriptionId: number;
@@ -5467,8 +3550,6 @@ export interface UpdateTag1Request {
   /** Database tag value */
   value: string;
 }
-const UpdateTag1Request = /*@__PURE__*/ __L.at(__c39, 0) as any as S.Schema<UpdateTag1Request>;
-
 /** Database tag */
 export interface TagInput {
   /** Database tag key. */
@@ -5478,9 +3559,6 @@ export interface TagInput {
 }
 /** List of database tags. */
 export type UpdateTagsRequestTagsList = Array<TagInput>;
-const UpdateTagsRequestTagsList =
-  CreateCostReportRequestTagsList as any as S.Schema<UpdateTagsRequestTagsList>;
-
 export interface UpdateTagsRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -5489,13 +3567,8 @@ export interface UpdateTagsRequest {
   /** List of database tags. */
   tags: UpdateTagsRequestTagsList;
 }
-const UpdateTagsRequest = /*@__PURE__*/ __L.at(__c39, 1) as any as S.Schema<UpdateTagsRequest>;
-
 /** List of database tags. */
 export type UpdateTags1RequestTagsList = Array<TagInput>;
-const UpdateTags1RequestTagsList =
-  CreateCostReportRequestTagsList as any as S.Schema<UpdateTags1RequestTagsList>;
-
 export interface UpdateTags1Request {
   /** Subscription ID. */
   subscriptionId: number;
@@ -5504,13 +3577,8 @@ export interface UpdateTags1Request {
   /** List of database tags. */
   tags: UpdateTags1RequestTagsList;
 }
-const UpdateTags1Request = /*@__PURE__*/ __L.at(__c39, 2) as any as S.Schema<UpdateTags1Request>;
-
 /** Optional. List of transit gateway attachment CIDRs. */
 export type UpdateTgwAttachmentCidrsRequestCidrsList = Array<Cidr>;
-const UpdateTgwAttachmentCidrsRequestCidrsList =
-  UpdateActiveActiveTgwAttachmentCidrsRequestCidrsList as any as S.Schema<UpdateTgwAttachmentCidrsRequestCidrsList>;
-
 export interface UpdateTgwAttachmentCidrsRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -5519,15 +3587,7 @@ export interface UpdateTgwAttachmentCidrsRequest {
   /** Optional. List of transit gateway attachment CIDRs. */
   cidrs?: UpdateTgwAttachmentCidrsRequestCidrsList;
 }
-const UpdateTgwAttachmentCidrsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<UpdateTgwAttachmentCidrsRequest>;
-
 export interface UpdateTgwAttachmentCidrsResponse {}
-const UpdateTgwAttachmentCidrsResponse =
-  AcceptActiveActiveTgwResourceShareResponse as any as S.Schema<UpdateTgwAttachmentCidrsResponse>;
-
 /** Changes the account user's role. See [Team management roles](https://redis.io/docs/latest/operate/rc/security/access-control/access-management/#team-management-roles) to learn about available account roles. */
 export type UpdateUserRequestRole =
   | "Owner"
@@ -5536,8 +3596,6 @@ export type UpdateUserRequestRole =
   | "Logs Viewer (API use only)"
   | "Manager"
   | "Billing Admin";
-const UpdateUserRequestRole = S.String;
-
 export interface UpdateUserRequest {
   /** User ID. */
   userId: number;
@@ -5546,8 +3604,6 @@ export interface UpdateUserRequest {
   /** Changes the account user's role. See [Team management roles](https://redis.io/docs/latest/operate/rc/security/access-control/access-management/#team-management-roles) to learn about available account roles. */
   role?: UpdateUserRequestRole | (string & {});
 }
-const UpdateUserRequest = /*@__PURE__*/ __L.at(__c39, 4) as any as S.Schema<UpdateUserRequest>;
-
 export interface UpdateUser1Request {
   /** Access control user ID. */
   aclUserId: number;
@@ -5556,13 +3612,8 @@ export interface UpdateUser1Request {
   /** Optional. Changes the user's database password. */
   password?: string | Redacted.Redacted<string>;
 }
-const UpdateUser1Request = /*@__PURE__*/ __L.at(__c39, 5) as any as S.Schema<UpdateUser1Request>;
-
 /** Optional. List of VPC CIDRs. */
 export type UpdateVpcPeeringRequestVpcCidrsList = Array<string>;
-const UpdateVpcPeeringRequestVpcCidrsList =
-  AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList as any as S.Schema<UpdateVpcPeeringRequestVpcCidrsList>;
-
 export interface UpdateVpcPeeringRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -5573,15 +3624,7 @@ export interface UpdateVpcPeeringRequest {
   /** Optional. List of VPC CIDRs. */
   vpcCidrs?: UpdateVpcPeeringRequestVpcCidrsList;
 }
-const UpdateVpcPeeringRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<UpdateVpcPeeringRequest>;
-
 export interface UpdateVpcPeeringResponse {}
-const UpdateVpcPeeringResponse =
-  AcceptTgwResourceShareResponse as any as S.Schema<UpdateVpcPeeringResponse>;
-
 export interface UpgradeDatabaseRedisVersionRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -5590,11 +3633,6 @@ export interface UpgradeDatabaseRedisVersionRequest {
   /** The target Redis version the database will be upgraded to. Use GET /subscriptions/redis-versions to get a list of available Redis versions. */
   targetRedisVersion: string;
 }
-const UpgradeDatabaseRedisVersionRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<UpgradeDatabaseRedisVersionRequest>;
-
 export interface UpgradeEssentialsDatabaseRedisVersionRequest {
   /** Subscription ID. */
   subscriptionId: number;
@@ -5603,11 +3641,6 @@ export interface UpgradeEssentialsDatabaseRedisVersionRequest {
   /** The target Redis version the database will be upgraded to. Use GET /subscriptions/redis-versions to get a list of available Redis versions. */
   targetRedisVersion: string;
 }
-const UpgradeEssentialsDatabaseRedisVersionRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<UpgradeEssentialsDatabaseRedisVersionRequest>;
-
 export type AcceptActiveActiveTgwResourceShareError =
   | BadRequest
   | Forbidden
@@ -5621,8 +3654,8 @@ export const acceptActiveActiveTgwResourceShare: API.OperationMethod<
   AcceptActiveActiveTgwResourceShareError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptActiveActiveTgwResourceShareRequest,
-  output: AcceptActiveActiveTgwResourceShareResponse,
+  input: __S(0) as any as S.Schema<AcceptActiveActiveTgwResourceShareRequest>,
+  output: __S(1) as any as S.Schema<AcceptActiveActiveTgwResourceShareResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5641,8 +3674,8 @@ export const acceptTgwResourceShare: API.OperationMethod<
   AcceptTgwResourceShareError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptTgwResourceShareRequest,
-  output: AcceptTgwResourceShareResponse,
+  input: __S(2) as any as S.Schema<AcceptTgwResourceShareRequest>,
+  output: __S(3) as any as S.Schema<AcceptTgwResourceShareResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5661,8 +3694,8 @@ export const addNewRegionToActiveActiveSubscription: API.OperationMethod<
   AddNewRegionToActiveActiveSubscriptionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddNewRegionToActiveActiveSubscriptionRequest,
-  output: TaskStateUpdate,
+  input: __S(9) as any as S.Schema<AddNewRegionToActiveActiveSubscriptionRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5676,8 +3709,8 @@ export const backupDatabase: API.OperationMethod<
   BackupDatabaseError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BackupDatabaseRequest,
-  output: TaskStateUpdate,
+  input: __S(14) as any as S.Schema<BackupDatabaseRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5691,8 +3724,8 @@ export const backupDatabase1: API.OperationMethod<
   BackupDatabase1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BackupDatabase1Request,
-  output: TaskStateUpdate,
+  input: __S(15) as any as S.Schema<BackupDatabase1Request>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5712,8 +3745,8 @@ export const createActiveActivePrivateLink: API.OperationMethod<
   CreateActiveActivePrivateLinkError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateActiveActivePrivateLinkRequest,
-  output: TaskStateUpdate,
+  input: __S(16) as any as S.Schema<CreateActiveActivePrivateLinkRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5733,8 +3766,8 @@ export const createActiveActivePrivateLinkPrincipal: API.OperationMethod<
   CreateActiveActivePrivateLinkPrincipalError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateActiveActivePrivateLinkPrincipalRequest,
-  output: TaskStateUpdate,
+  input: __S(17) as any as S.Schema<CreateActiveActivePrivateLinkPrincipalRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5754,8 +3787,8 @@ export const createActiveActivePscService: API.OperationMethod<
   CreateActiveActivePscServiceError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateActiveActivePscServiceRequest,
-  output: CreateActiveActivePscServiceResponse,
+  input: __S(18) as any as S.Schema<CreateActiveActivePscServiceRequest>,
+  output: __S(1) as any as S.Schema<CreateActiveActivePscServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5775,8 +3808,8 @@ export const createActiveActivePscServiceEndpoint: API.OperationMethod<
   CreateActiveActivePscServiceEndpointError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateActiveActivePscServiceEndpointRequest,
-  output: CreateActiveActivePscServiceEndpointResponse,
+  input: __S(19) as any as S.Schema<CreateActiveActivePscServiceEndpointRequest>,
+  output: __S(1) as any as S.Schema<CreateActiveActivePscServiceEndpointResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5796,8 +3829,8 @@ export const createActiveActiveTgwAttachment: API.OperationMethod<
   CreateActiveActiveTgwAttachmentError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateActiveActiveTgwAttachmentRequest,
-  output: CreateActiveActiveTgwAttachmentResponse,
+  input: __S(20) as any as S.Schema<CreateActiveActiveTgwAttachmentRequest>,
+  output: __S(1) as any as S.Schema<CreateActiveActiveTgwAttachmentResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5817,8 +3850,8 @@ export const createActiveActiveVpcPeering: API.OperationMethod<
   CreateActiveActiveVpcPeeringError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateActiveActiveVpcPeeringRequest,
-  output: TaskStateUpdate,
+  input: __S(21) as any as S.Schema<CreateActiveActiveVpcPeeringRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5838,8 +3871,8 @@ export const createCloudAccount: API.OperationMethod<
   CreateCloudAccountError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCloudAccountRequest,
-  output: CreateCloudAccountResponse,
+  input: __S(22) as any as S.Schema<CreateCloudAccountRequest>,
+  output: __S(3) as any as S.Schema<CreateCloudAccountResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5859,8 +3892,8 @@ export const createCostReport: API.OperationMethod<
   CreateCostReportError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCostReportRequest,
-  output: CreateCostReportResponse,
+  input: __S(26) as any as S.Schema<CreateCostReportRequest>,
+  output: __S(3) as any as S.Schema<CreateCostReportResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5880,8 +3913,8 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatabaseRequest,
-  output: CreateDatabaseResponse,
+  input: __S(40) as any as S.Schema<CreateDatabaseRequest>,
+  output: __S(3) as any as S.Schema<CreateDatabaseResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5901,8 +3934,8 @@ export const createEndpointsRedirection: API.OperationMethod<
   CreateEndpointsRedirectionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEndpointsRedirectionRequest,
-  output: EndpointsRedirectionResponse,
+  input: __S(41) as any as S.Schema<CreateEndpointsRedirectionRequest>,
+  output: __S(44) as any as S.Schema<EndpointsRedirectionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5922,8 +3955,8 @@ export const createFixedDatabase: API.OperationMethod<
   CreateFixedDatabaseError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFixedDatabaseRequest,
-  output: TaskStateUpdate,
+  input: __S(45) as any as S.Schema<CreateFixedDatabaseRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5943,8 +3976,8 @@ export const createMemoryStore: API.OperationMethod<
   CreateMemoryStoreError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMemoryStoreRequest,
-  output: CreateMemoryStoreResponse,
+  input: __S(68) as any as S.Schema<CreateMemoryStoreRequest>,
+  output: __S(3) as any as S.Schema<CreateMemoryStoreResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5964,8 +3997,8 @@ export const createMemoryStoreApiKey: API.OperationMethod<
   CreateMemoryStoreApiKeyError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMemoryStoreApiKeyRequest,
-  output: MemoryStoreApiKeyCreateResponse,
+  input: __S(69) as any as S.Schema<CreateMemoryStoreApiKeyRequest>,
+  output: __S(70) as any as S.Schema<MemoryStoreApiKeyCreateResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -5985,8 +4018,8 @@ export const createPrivateLink: API.OperationMethod<
   CreatePrivateLinkError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePrivateLinkRequest,
-  output: TaskStateUpdate,
+  input: __S(71) as any as S.Schema<CreatePrivateLinkRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6006,8 +4039,8 @@ export const createPrivateLinkPrincipal: API.OperationMethod<
   CreatePrivateLinkPrincipalError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePrivateLinkPrincipalRequest,
-  output: TaskStateUpdate,
+  input: __S(72) as any as S.Schema<CreatePrivateLinkPrincipalRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6027,8 +4060,8 @@ export const createPscService: API.OperationMethod<
   CreatePscServiceError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePscServiceRequest,
-  output: CreatePscServiceResponse,
+  input: __S(73) as any as S.Schema<CreatePscServiceRequest>,
+  output: __S(3) as any as S.Schema<CreatePscServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6048,8 +4081,8 @@ export const createPscServiceEndpoint: API.OperationMethod<
   CreatePscServiceEndpointError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePscServiceEndpointRequest,
-  output: CreatePscServiceEndpointResponse,
+  input: __S(74) as any as S.Schema<CreatePscServiceEndpointRequest>,
+  output: __S(1) as any as S.Schema<CreatePscServiceEndpointResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6069,8 +4102,8 @@ export const createRedisRule: API.OperationMethod<
   CreateRedisRuleError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRedisRuleRequest,
-  output: CreateRedisRuleResponse,
+  input: __S(75) as any as S.Schema<CreateRedisRuleRequest>,
+  output: __S(3) as any as S.Schema<CreateRedisRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6090,8 +4123,8 @@ export const createRole: API.OperationMethod<
   CreateRoleError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRoleRequest,
-  output: CreateRoleResponse,
+  input: __S(80) as any as S.Schema<CreateRoleRequest>,
+  output: __S(3) as any as S.Schema<CreateRoleResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6111,8 +4144,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSubscriptionRequest,
-  output: CreateSubscriptionResponse,
+  input: __S(93) as any as S.Schema<CreateSubscriptionRequest>,
+  output: __S(3) as any as S.Schema<CreateSubscriptionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6132,8 +4165,8 @@ export const createSubscription1: API.OperationMethod<
   CreateSubscription1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSubscription1Request,
-  output: CreateSubscription1Response,
+  input: __S(94) as any as S.Schema<CreateSubscription1Request>,
+  output: __S(3) as any as S.Schema<CreateSubscription1Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6153,8 +4186,8 @@ export const createTag: API.OperationMethod<
   CreateTagError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTagRequest,
-  output: CloudTag,
+  input: __S(95) as any as S.Schema<CreateTagRequest>,
+  output: __S(96) as any as S.Schema<CloudTag>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6174,8 +4207,8 @@ export const createTag1: API.OperationMethod<
   CreateTag1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTag1Request,
-  output: CloudTag,
+  input: __S(97) as any as S.Schema<CreateTag1Request>,
+  output: __S(96) as any as S.Schema<CloudTag>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6195,8 +4228,8 @@ export const createTgwAttachment: API.OperationMethod<
   CreateTgwAttachmentError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTgwAttachmentRequest,
-  output: CreateTgwAttachmentResponse,
+  input: __S(98) as any as S.Schema<CreateTgwAttachmentRequest>,
+  output: __S(3) as any as S.Schema<CreateTgwAttachmentResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6216,8 +4249,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUserRequest,
-  output: CreateUserResponse,
+  input: __S(99) as any as S.Schema<CreateUserRequest>,
+  output: __S(3) as any as S.Schema<CreateUserResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6237,8 +4270,8 @@ export const createVpcPeering: API.OperationMethod<
   CreateVpcPeeringError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVpcPeeringRequest,
-  output: CreateVpcPeeringResponse,
+  input: __S(100) as any as S.Schema<CreateVpcPeeringRequest>,
+  output: __S(3) as any as S.Schema<CreateVpcPeeringResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnprocessableEntity, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6252,8 +4285,8 @@ export const deleteAclRole: API.OperationMethod<
   DeleteAclRoleError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAclRoleRequest,
-  output: TaskStateUpdate,
+  input: __S(101) as any as S.Schema<DeleteAclRoleRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6272,8 +4305,8 @@ export const deleteActiveActivePrivateLink: API.OperationMethod<
   DeleteActiveActivePrivateLinkError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteActiveActivePrivateLinkRequest,
-  output: TaskStateUpdate,
+  input: __S(102) as any as S.Schema<DeleteActiveActivePrivateLinkRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6292,8 +4325,8 @@ export const deleteActiveActivePrivateLinkPrincipals: API.OperationMethod<
   DeleteActiveActivePrivateLinkPrincipalsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteActiveActivePrivateLinkPrincipalsRequest,
-  output: TaskStateUpdate,
+  input: __S(103) as any as S.Schema<DeleteActiveActivePrivateLinkPrincipalsRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6312,8 +4345,8 @@ export const deleteActiveActivePscService: API.OperationMethod<
   DeleteActiveActivePscServiceError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteActiveActivePscServiceRequest,
-  output: DeleteActiveActivePscServiceResponse,
+  input: __S(104) as any as S.Schema<DeleteActiveActivePscServiceRequest>,
+  output: __S(1) as any as S.Schema<DeleteActiveActivePscServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6332,8 +4365,8 @@ export const deleteActiveActivePscServiceEndpoint: API.OperationMethod<
   DeleteActiveActivePscServiceEndpointError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteActiveActivePscServiceEndpointRequest,
-  output: DeleteActiveActivePscServiceEndpointResponse,
+  input: __S(105) as any as S.Schema<DeleteActiveActivePscServiceEndpointRequest>,
+  output: __S(1) as any as S.Schema<DeleteActiveActivePscServiceEndpointResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6352,8 +4385,8 @@ export const deleteActiveActiveTgwAttachment: API.OperationMethod<
   DeleteActiveActiveTgwAttachmentError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteActiveActiveTgwAttachmentRequest,
-  output: DeleteActiveActiveTgwAttachmentResponse,
+  input: __S(106) as any as S.Schema<DeleteActiveActiveTgwAttachmentRequest>,
+  output: __S(1) as any as S.Schema<DeleteActiveActiveTgwAttachmentResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6372,8 +4405,8 @@ export const deleteActiveActiveVpcPeering: API.OperationMethod<
   DeleteActiveActiveVpcPeeringError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteActiveActiveVpcPeeringRequest,
-  output: TaskStateUpdate,
+  input: __S(107) as any as S.Schema<DeleteActiveActiveVpcPeeringRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6392,8 +4425,8 @@ export const deleteCloudAccount: API.OperationMethod<
   DeleteCloudAccountError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCloudAccountRequest,
-  output: TaskStateUpdate,
+  input: __S(108) as any as S.Schema<DeleteCloudAccountRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6412,8 +4445,8 @@ export const deleteDatabaseById: API.OperationMethod<
   DeleteDatabaseByIdError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatabaseByIdRequest,
-  output: TaskStateUpdate,
+  input: __S(109) as any as S.Schema<DeleteDatabaseByIdRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6432,8 +4465,8 @@ export const deleteFixedDatabaseByID: API.OperationMethod<
   DeleteFixedDatabaseByIDError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFixedDatabaseByIDRequest,
-  output: TaskStateUpdate,
+  input: __S(110) as any as S.Schema<DeleteFixedDatabaseByIDRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6452,8 +4485,8 @@ export const deleteFixedDatabaseByID1: API.OperationMethod<
   DeleteFixedDatabaseByID1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFixedDatabaseByID1Request,
-  output: TaskStateUpdate,
+  input: __S(111) as any as S.Schema<DeleteFixedDatabaseByID1Request>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6472,8 +4505,8 @@ export const deleteMemoryStore: API.OperationMethod<
   DeleteMemoryStoreError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMemoryStoreRequest,
-  output: DeleteMemoryStoreResponse,
+  input: __S(112) as any as S.Schema<DeleteMemoryStoreRequest>,
+  output: __S(3) as any as S.Schema<DeleteMemoryStoreResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6492,8 +4525,8 @@ export const deleteMemoryStoreApiKey: API.OperationMethod<
   DeleteMemoryStoreApiKeyError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMemoryStoreApiKeyRequest,
-  output: DeleteMemoryStoreApiKeyResponse,
+  input: __S(113) as any as S.Schema<DeleteMemoryStoreApiKeyRequest>,
+  output: __S(114) as any as S.Schema<DeleteMemoryStoreApiKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6512,8 +4545,8 @@ export const deletePrivateLink: API.OperationMethod<
   DeletePrivateLinkError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateLinkRequest,
-  output: TaskStateUpdate,
+  input: __S(115) as any as S.Schema<DeletePrivateLinkRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6532,8 +4565,8 @@ export const deletePrivateLinkPrincipals: API.OperationMethod<
   DeletePrivateLinkPrincipalsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateLinkPrincipalsRequest,
-  output: TaskStateUpdate,
+  input: __S(116) as any as S.Schema<DeletePrivateLinkPrincipalsRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6552,8 +4585,8 @@ export const deletePscService: API.OperationMethod<
   DeletePscServiceError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePscServiceRequest,
-  output: DeletePscServiceResponse,
+  input: __S(117) as any as S.Schema<DeletePscServiceRequest>,
+  output: __S(3) as any as S.Schema<DeletePscServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6572,8 +4605,8 @@ export const deletePscServiceEndpoint: API.OperationMethod<
   DeletePscServiceEndpointError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePscServiceEndpointRequest,
-  output: DeletePscServiceEndpointResponse,
+  input: __S(118) as any as S.Schema<DeletePscServiceEndpointRequest>,
+  output: __S(1) as any as S.Schema<DeletePscServiceEndpointResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6587,8 +4620,8 @@ export const deleteRedisRule: API.OperationMethod<
   DeleteRedisRuleError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRedisRuleRequest,
-  output: DeleteRedisRuleResponse,
+  input: __S(119) as any as S.Schema<DeleteRedisRuleRequest>,
+  output: __S(3) as any as S.Schema<DeleteRedisRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6607,8 +4640,8 @@ export const deleteRegionsFromActiveActiveSubscription: API.OperationMethod<
   DeleteRegionsFromActiveActiveSubscriptionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegionsFromActiveActiveSubscriptionRequest,
-  output: TaskStateUpdate,
+  input: __S(122) as any as S.Schema<DeleteRegionsFromActiveActiveSubscriptionRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6627,8 +4660,8 @@ export const deleteSubscription: API.OperationMethod<
   DeleteSubscriptionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSubscriptionRequest,
-  output: TaskStateUpdate,
+  input: __S(123) as any as S.Schema<DeleteSubscriptionRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6647,8 +4680,8 @@ export const deleteSubscriptionById1: API.OperationMethod<
   DeleteSubscriptionById1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSubscriptionById1Request,
-  output: TaskStateUpdate,
+  input: __S(124) as any as S.Schema<DeleteSubscriptionById1Request>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6662,8 +4695,8 @@ export const deleteTag: API.OperationMethod<
   DeleteTagError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTagRequest,
-  output: DeleteTagResponse,
+  input: __S(125) as any as S.Schema<DeleteTagRequest>,
+  output: __S(126) as any as S.Schema<DeleteTagResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6677,8 +4710,8 @@ export const deleteTag1: API.OperationMethod<
   DeleteTag1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTag1Request,
-  output: DeleteTag1Response,
+  input: __S(127) as any as S.Schema<DeleteTag1Request>,
+  output: __S(126) as any as S.Schema<DeleteTag1Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6697,8 +4730,8 @@ export const deleteTgwAttachment: API.OperationMethod<
   DeleteTgwAttachmentError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTgwAttachmentRequest,
-  output: DeleteTgwAttachmentResponse,
+  input: __S(128) as any as S.Schema<DeleteTgwAttachmentRequest>,
+  output: __S(3) as any as S.Schema<DeleteTgwAttachmentResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6712,8 +4745,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserRequest,
-  output: TaskStateUpdate,
+  input: __S(129) as any as S.Schema<DeleteUserRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6727,8 +4760,8 @@ export const deleteUser2: API.OperationMethod<
   DeleteUser2Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserRequest2,
-  output: TaskStateUpdate,
+  input: __S(130) as any as S.Schema<DeleteUserRequest2>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6747,8 +4780,8 @@ export const deleteVpcPeering: API.OperationMethod<
   DeleteVpcPeeringError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVpcPeeringRequest,
-  output: DeleteVpcPeeringResponse,
+  input: __S(131) as any as S.Schema<DeleteVpcPeeringRequest>,
+  output: __S(3) as any as S.Schema<DeleteVpcPeeringResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6767,8 +4800,8 @@ export const disassociateActiveActivePrivateLinkConnections: API.OperationMethod
   DisassociateActiveActivePrivateLinkConnectionsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateActiveActivePrivateLinkConnectionsRequest,
-  output: DisassociateActiveActivePrivateLinkConnectionsResponse,
+  input: __S(134) as any as S.Schema<DisassociateActiveActivePrivateLinkConnectionsRequest>,
+  output: __S(1) as any as S.Schema<DisassociateActiveActivePrivateLinkConnectionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6787,8 +4820,8 @@ export const disassociatePrivateLinkConnections: API.OperationMethod<
   DisassociatePrivateLinkConnectionsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociatePrivateLinkConnectionsRequest,
-  output: DisassociatePrivateLinkConnectionsResponse,
+  input: __S(136) as any as S.Schema<DisassociatePrivateLinkConnectionsRequest>,
+  output: __S(1) as any as S.Schema<DisassociatePrivateLinkConnectionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6807,8 +4840,8 @@ export const emptyMemoryStore: API.OperationMethod<
   EmptyMemoryStoreError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EmptyMemoryStoreRequest,
-  output: EmptyMemoryStoreResponse,
+  input: __S(137) as any as S.Schema<EmptyMemoryStoreRequest>,
+  output: __S(3) as any as S.Schema<EmptyMemoryStoreResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6822,8 +4855,8 @@ export const flushCrdb: API.OperationMethod<
   FlushCrdbError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FlushCrdbRequest,
-  output: TaskStateUpdate,
+  input: __S(138) as any as S.Schema<FlushCrdbRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6842,8 +4875,8 @@ export const flushMemoryStore: API.OperationMethod<
   FlushMemoryStoreError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FlushMemoryStoreRequest,
-  output: FlushMemoryStoreResponse,
+  input: __S(139) as any as S.Schema<FlushMemoryStoreRequest>,
+  output: __S(3) as any as S.Schema<FlushMemoryStoreResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6857,8 +4890,8 @@ export const getAccountPaymentMethods: API.OperationMethod<
   GetAccountPaymentMethodsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountPaymentMethodsRequest,
-  output: PaymentMethods,
+  input: __S(140) as any as S.Schema<GetAccountPaymentMethodsRequest>,
+  output: __S(141) as any as S.Schema<PaymentMethods>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6872,8 +4905,8 @@ export const getAccountSessionLogs: API.OperationMethod<
   GetAccountSessionLogsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountSessionLogsRequest,
-  output: AccountSessionLogEntries,
+  input: __S(142) as any as S.Schema<GetAccountSessionLogsRequest>,
+  output: __S(145) as any as S.Schema<AccountSessionLogEntries>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6887,8 +4920,8 @@ export const getAccountSystemLogs: API.OperationMethod<
   GetAccountSystemLogsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountSystemLogsRequest,
-  output: AccountSystemLogEntries,
+  input: __S(146) as any as S.Schema<GetAccountSystemLogsRequest>,
+  output: __S(149) as any as S.Schema<AccountSystemLogEntries>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6902,8 +4935,8 @@ export const getActiveActivePrivateLink: API.OperationMethod<
   GetActiveActivePrivateLinkError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActiveActivePrivateLinkRequest,
-  output: GetActiveActivePrivateLinkResponse,
+  input: __S(150) as any as S.Schema<GetActiveActivePrivateLinkRequest>,
+  output: __S(1) as any as S.Schema<GetActiveActivePrivateLinkResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6921,8 +4954,8 @@ export const getActiveActivePrivateLinkEndpointScript: API.OperationMethod<
   GetActiveActivePrivateLinkEndpointScriptError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActiveActivePrivateLinkEndpointScriptRequest,
-  output: GetActiveActivePrivateLinkEndpointScriptResponse,
+  input: __S(151) as any as S.Schema<GetActiveActivePrivateLinkEndpointScriptRequest>,
+  output: __S(1) as any as S.Schema<GetActiveActivePrivateLinkEndpointScriptResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6936,8 +4969,8 @@ export const getActiveActivePscService: API.OperationMethod<
   GetActiveActivePscServiceError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActiveActivePscServiceRequest,
-  output: GetActiveActivePscServiceResponse,
+  input: __S(152) as any as S.Schema<GetActiveActivePscServiceRequest>,
+  output: __S(1) as any as S.Schema<GetActiveActivePscServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6955,8 +4988,8 @@ export const getActiveActivePscServiceEndpoints: API.OperationMethod<
   GetActiveActivePscServiceEndpointsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActiveActivePscServiceEndpointsRequest,
-  output: GetActiveActivePscServiceEndpointsResponse,
+  input: __S(153) as any as S.Schema<GetActiveActivePscServiceEndpointsRequest>,
+  output: __S(1) as any as S.Schema<GetActiveActivePscServiceEndpointsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6970,8 +5003,8 @@ export const getActiveActiveTgws: API.OperationMethod<
   GetActiveActiveTgwsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActiveActiveTgwsRequest,
-  output: TaskStateUpdate,
+  input: __S(154) as any as S.Schema<GetActiveActiveTgwsRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -6989,8 +5022,8 @@ export const getActiveActiveTgwSharedInvitations: API.OperationMethod<
   GetActiveActiveTgwSharedInvitationsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActiveActiveTgwSharedInvitationsRequest,
-  output: TaskStateUpdate,
+  input: __S(155) as any as S.Schema<GetActiveActiveTgwSharedInvitationsRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7004,8 +5037,8 @@ export const getActiveActiveVpcPeerings: API.OperationMethod<
   GetActiveActiveVpcPeeringsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActiveActiveVpcPeeringsRequest,
-  output: TaskStateUpdate,
+  input: __S(156) as any as S.Schema<GetActiveActiveVpcPeeringsRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7023,8 +5056,8 @@ export const getActiveActivPscServiceEndpointCreationScript: API.OperationMethod
   GetActiveActivPscServiceEndpointCreationScriptError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActiveActivPscServiceEndpointCreationScriptRequest,
-  output: GetActiveActivPscServiceEndpointCreationScriptResponse,
+  input: __S(157) as any as S.Schema<GetActiveActivPscServiceEndpointCreationScriptRequest>,
+  output: __S(1) as any as S.Schema<GetActiveActivPscServiceEndpointCreationScriptResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7042,8 +5075,8 @@ export const getActiveActivPscServiceEndpointDeletionScript: API.OperationMethod
   GetActiveActivPscServiceEndpointDeletionScriptError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActiveActivPscServiceEndpointDeletionScriptRequest,
-  output: GetActiveActivPscServiceEndpointDeletionScriptResponse,
+  input: __S(158) as any as S.Schema<GetActiveActivPscServiceEndpointDeletionScriptRequest>,
+  output: __S(1) as any as S.Schema<GetActiveActivPscServiceEndpointDeletionScriptResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7061,8 +5094,8 @@ export const getAllFixedSubscriptionsPlans: API.OperationMethod<
   GetAllFixedSubscriptionsPlansError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllFixedSubscriptionsPlansRequest,
-  output: FixedSubscriptionsPlans,
+  input: __S(159) as any as S.Schema<GetAllFixedSubscriptionsPlansRequest>,
+  output: __S(160) as any as S.Schema<FixedSubscriptionsPlans>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7076,8 +5109,8 @@ export const getAllRedisRules: API.OperationMethod<
   GetAllRedisRulesError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllRedisRulesRequest,
-  output: AccountACLRedisRules,
+  input: __S(161) as any as S.Schema<GetAllRedisRulesRequest>,
+  output: __S(141) as any as S.Schema<AccountACLRedisRules>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7091,8 +5124,8 @@ export const getAllSubscriptions: API.OperationMethod<
   GetAllSubscriptionsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllSubscriptionsRequest,
-  output: AccountSubscriptions,
+  input: __S(162) as any as S.Schema<GetAllSubscriptionsRequest>,
+  output: __S(141) as any as S.Schema<AccountSubscriptions>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7106,8 +5139,8 @@ export const getAllSubscriptions1: API.OperationMethod<
   GetAllSubscriptions1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllSubscriptions1Request,
-  output: FixedSubscriptions,
+  input: __S(163) as any as S.Schema<GetAllSubscriptions1Request>,
+  output: __S(141) as any as S.Schema<FixedSubscriptions>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7121,8 +5154,8 @@ export const getAllTasks: API.OperationMethod<
   GetAllTasksError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllTasksRequest,
-  output: GetAllTasksResponse,
+  input: __S(164) as any as S.Schema<GetAllTasksRequest>,
+  output: __S(3) as any as S.Schema<GetAllTasksResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7136,8 +5169,8 @@ export const getAllUsers: API.OperationMethod<
   GetAllUsersError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllUsersRequest,
-  output: AccountUsers,
+  input: __S(165) as any as S.Schema<GetAllUsersRequest>,
+  output: __S(166) as any as S.Schema<AccountUsers>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7151,8 +5184,8 @@ export const getAllUsers1: API.OperationMethod<
   GetAllUsers1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAllUsers1Request,
-  output: AccountACLUsers,
+  input: __S(167) as any as S.Schema<GetAllUsers1Request>,
+  output: __S(141) as any as S.Schema<AccountACLUsers>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7166,8 +5199,8 @@ export const getCidrWhiteList: API.OperationMethod<
   GetCidrWhiteListError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCidrWhiteListRequest,
-  output: GetCidrWhiteListResponse,
+  input: __S(168) as any as S.Schema<GetCidrWhiteListRequest>,
+  output: __S(3) as any as S.Schema<GetCidrWhiteListResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7181,8 +5214,8 @@ export const getCloudAccount: API.OperationMethod<
   GetCloudAccountError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCloudAccountRequest,
-  output: CloudAccount,
+  input: __S(169) as any as S.Schema<GetCloudAccountRequest>,
+  output: __S(170) as any as S.Schema<CloudAccount>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7196,8 +5229,8 @@ export const getCloudAccounts: API.OperationMethod<
   GetCloudAccountsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCloudAccountsRequest,
-  output: CloudAccounts,
+  input: __S(171) as any as S.Schema<GetCloudAccountsRequest>,
+  output: __S(141) as any as S.Schema<CloudAccounts>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7211,8 +5244,8 @@ export const getCostReport: API.OperationMethod<
   GetCostReportError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCostReportRequest,
-  output: GetCostReportResponse,
+  input: __S(172) as any as S.Schema<GetCostReportRequest>,
+  output: __S(3) as any as S.Schema<GetCostReportResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7226,8 +5259,8 @@ export const getCurrentAccount: API.OperationMethod<
   GetCurrentAccountError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCurrentAccountRequest,
-  output: RootAccount,
+  input: __S(173) as any as S.Schema<GetCurrentAccountRequest>,
+  output: __S(160) as any as S.Schema<RootAccount>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7245,8 +5278,8 @@ export const getDatabaseAvailableVersions: API.OperationMethod<
   GetDatabaseAvailableVersionsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseAvailableVersionsRequest,
-  output: DatabaseAvailableVersionsResponse,
+  input: __S(174) as any as S.Schema<GetDatabaseAvailableVersionsRequest>,
+  output: __S(177) as any as S.Schema<DatabaseAvailableVersionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7260,8 +5293,8 @@ export const getDatabaseBackupStatus: API.OperationMethod<
   GetDatabaseBackupStatusError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseBackupStatusRequest,
-  output: TaskStateUpdate,
+  input: __S(178) as any as S.Schema<GetDatabaseBackupStatusRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7275,8 +5308,8 @@ export const getDatabaseBackupStatus1: API.OperationMethod<
   GetDatabaseBackupStatus1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseBackupStatus1Request,
-  output: TaskStateUpdate,
+  input: __S(179) as any as S.Schema<GetDatabaseBackupStatus1Request>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7290,8 +5323,8 @@ export const getDatabaseImportStatus: API.OperationMethod<
   GetDatabaseImportStatusError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseImportStatusRequest,
-  output: TaskStateUpdate,
+  input: __S(180) as any as S.Schema<GetDatabaseImportStatusRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7305,8 +5338,8 @@ export const getDatabaseImportStatus1: API.OperationMethod<
   GetDatabaseImportStatus1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseImportStatus1Request,
-  output: TaskStateUpdate,
+  input: __S(181) as any as S.Schema<GetDatabaseImportStatus1Request>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7324,8 +5357,8 @@ export const getDatabaseRedisVersionUpgradeStatus: API.OperationMethod<
   GetDatabaseRedisVersionUpgradeStatusError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseRedisVersionUpgradeStatusRequest,
-  output: DatabaseVersionUpgradeStatus,
+  input: __S(182) as any as S.Schema<GetDatabaseRedisVersionUpgradeStatusRequest>,
+  output: __S(183) as any as S.Schema<DatabaseVersionUpgradeStatus>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7339,8 +5372,8 @@ export const getDatabaseTraffic: API.OperationMethod<
   GetDatabaseTrafficError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseTrafficRequest,
-  output: DatabaseTrafficStateResponse,
+  input: __S(184) as any as S.Schema<GetDatabaseTrafficRequest>,
+  output: __S(185) as any as S.Schema<DatabaseTrafficStateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7354,8 +5387,8 @@ export const getDatabaseTraffic1: API.OperationMethod<
   GetDatabaseTraffic1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseTraffic1Request,
-  output: DatabaseTrafficStateResponse,
+  input: __S(186) as any as S.Schema<GetDatabaseTraffic1Request>,
+  output: __S(185) as any as S.Schema<DatabaseTrafficStateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7373,8 +5406,8 @@ export const getDataIntegrationWorkspaces: API.OperationMethod<
   GetDataIntegrationWorkspacesError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataIntegrationWorkspacesRequest,
-  output: GetDataIntegrationWorkspacesResponse,
+  input: __S(187) as any as S.Schema<GetDataIntegrationWorkspacesRequest>,
+  output: __S(188) as any as S.Schema<GetDataIntegrationWorkspacesResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7388,8 +5421,8 @@ export const getDataPersistenceOptions: API.OperationMethod<
   GetDataPersistenceOptionsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataPersistenceOptionsRequest,
-  output: DataPersistenceOptions,
+  input: __S(189) as any as S.Schema<GetDataPersistenceOptionsRequest>,
+  output: __S(192) as any as S.Schema<DataPersistenceOptions>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7407,8 +5440,8 @@ export const getEndpointsRedirectionStatus: API.OperationMethod<
   GetEndpointsRedirectionStatusError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEndpointsRedirectionStatusRequest,
-  output: EndpointsRedirectionResponse,
+  input: __S(193) as any as S.Schema<GetEndpointsRedirectionStatusRequest>,
+  output: __S(44) as any as S.Schema<EndpointsRedirectionResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7426,8 +5459,8 @@ export const getEssentialsDatabaseAvailableVersions: API.OperationMethod<
   GetEssentialsDatabaseAvailableVersionsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEssentialsDatabaseAvailableVersionsRequest,
-  output: DatabaseAvailableVersionsResponse,
+  input: __S(194) as any as S.Schema<GetEssentialsDatabaseAvailableVersionsRequest>,
+  output: __S(177) as any as S.Schema<DatabaseAvailableVersionsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7445,8 +5478,8 @@ export const getEssentialsDatabaseRedisVersionUpgradeStatus: API.OperationMethod
   GetEssentialsDatabaseRedisVersionUpgradeStatusError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEssentialsDatabaseRedisVersionUpgradeStatusRequest,
-  output: DatabaseVersionUpgradeStatus,
+  input: __S(195) as any as S.Schema<GetEssentialsDatabaseRedisVersionUpgradeStatusRequest>,
+  output: __S(183) as any as S.Schema<DatabaseVersionUpgradeStatus>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7464,8 +5497,8 @@ export const getFixedSubscriptionDatabases: API.OperationMethod<
   GetFixedSubscriptionDatabasesError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFixedSubscriptionDatabasesRequest,
-  output: AccountFixedSubscriptionDatabases,
+  input: __S(196) as any as S.Schema<GetFixedSubscriptionDatabasesRequest>,
+  output: __S(197) as any as S.Schema<AccountFixedSubscriptionDatabases>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7483,8 +5516,8 @@ export const getFixedSubscriptionsPlanById: API.OperationMethod<
   GetFixedSubscriptionsPlanByIdError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFixedSubscriptionsPlanByIdRequest,
-  output: FixedSubscriptionsPlan,
+  input: __S(198) as any as S.Schema<GetFixedSubscriptionsPlanByIdRequest>,
+  output: __S(199) as any as S.Schema<FixedSubscriptionsPlan>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7502,8 +5535,8 @@ export const getFixedSubscriptionsPlansBySubscriptionId: API.OperationMethod<
   GetFixedSubscriptionsPlansBySubscriptionIdError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFixedSubscriptionsPlansBySubscriptionIdRequest,
-  output: FixedSubscriptionsPlans,
+  input: __S(200) as any as S.Schema<GetFixedSubscriptionsPlansBySubscriptionIdRequest>,
+  output: __S(160) as any as S.Schema<FixedSubscriptionsPlans>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7517,8 +5550,8 @@ export const getMemoryStore: API.OperationMethod<
   GetMemoryStoreError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMemoryStoreRequest,
-  output: MemoryStoreResponse,
+  input: __S(201) as any as S.Schema<GetMemoryStoreRequest>,
+  output: __S(206) as any as S.Schema<MemoryStoreResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7532,8 +5565,8 @@ export const getPrivateLink: API.OperationMethod<
   GetPrivateLinkError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateLinkRequest,
-  output: GetPrivateLinkResponse,
+  input: __S(207) as any as S.Schema<GetPrivateLinkRequest>,
+  output: __S(3) as any as S.Schema<GetPrivateLinkResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7551,8 +5584,8 @@ export const getPrivateLinkEndpointScript: API.OperationMethod<
   GetPrivateLinkEndpointScriptError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateLinkEndpointScriptRequest,
-  output: GetPrivateLinkEndpointScriptResponse,
+  input: __S(208) as any as S.Schema<GetPrivateLinkEndpointScriptRequest>,
+  output: __S(1) as any as S.Schema<GetPrivateLinkEndpointScriptResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7566,8 +5599,8 @@ export const getPscService: API.OperationMethod<
   GetPscServiceError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPscServiceRequest,
-  output: GetPscServiceResponse,
+  input: __S(209) as any as S.Schema<GetPscServiceRequest>,
+  output: __S(3) as any as S.Schema<GetPscServiceResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7585,8 +5618,8 @@ export const getPscServiceEndpointCreationScript: API.OperationMethod<
   GetPscServiceEndpointCreationScriptError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPscServiceEndpointCreationScriptRequest,
-  output: GetPscServiceEndpointCreationScriptResponse,
+  input: __S(210) as any as S.Schema<GetPscServiceEndpointCreationScriptRequest>,
+  output: __S(1) as any as S.Schema<GetPscServiceEndpointCreationScriptResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7604,8 +5637,8 @@ export const getPscServiceEndpointDeletionScript: API.OperationMethod<
   GetPscServiceEndpointDeletionScriptError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPscServiceEndpointDeletionScriptRequest,
-  output: GetPscServiceEndpointDeletionScriptResponse,
+  input: __S(211) as any as S.Schema<GetPscServiceEndpointDeletionScriptRequest>,
+  output: __S(1) as any as S.Schema<GetPscServiceEndpointDeletionScriptResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7619,8 +5652,8 @@ export const getPscServiceEndpoints: API.OperationMethod<
   GetPscServiceEndpointsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPscServiceEndpointsRequest,
-  output: GetPscServiceEndpointsResponse,
+  input: __S(212) as any as S.Schema<GetPscServiceEndpointsRequest>,
+  output: __S(3) as any as S.Schema<GetPscServiceEndpointsResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7634,8 +5667,8 @@ export const getRedisVersions: API.OperationMethod<
   GetRedisVersionsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRedisVersionsRequest,
-  output: RedisVersions,
+  input: __S(213) as any as S.Schema<GetRedisVersionsRequest>,
+  output: __S(216) as any as S.Schema<RedisVersions>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7649,8 +5682,8 @@ export const getRedisVersions1: API.OperationMethod<
   GetRedisVersions1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRedisVersions1Request,
-  output: RedisVersions,
+  input: __S(217) as any as S.Schema<GetRedisVersions1Request>,
+  output: __S(216) as any as S.Schema<RedisVersions>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7668,8 +5701,8 @@ export const getRegionsFromActiveActiveSubscription: API.OperationMethod<
   GetRegionsFromActiveActiveSubscriptionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegionsFromActiveActiveSubscriptionRequest,
-  output: ActiveActiveSubscriptionRegions,
+  input: __S(218) as any as S.Schema<GetRegionsFromActiveActiveSubscriptionRequest>,
+  output: __S(219) as any as S.Schema<ActiveActiveSubscriptionRegions>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7683,8 +5716,8 @@ export const getRoles: API.OperationMethod<
   GetRolesError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRolesRequest,
-  output: AccountACLRoles,
+  input: __S(220) as any as S.Schema<GetRolesRequest>,
+  output: __S(141) as any as S.Schema<AccountACLRoles>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7698,8 +5731,8 @@ export const getSlowLog: API.OperationMethod<
   GetSlowLogError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSlowLogRequest,
-  output: DatabaseSlowLogEntries,
+  input: __S(221) as any as S.Schema<GetSlowLogRequest>,
+  output: __S(224) as any as S.Schema<DatabaseSlowLogEntries>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7713,8 +5746,8 @@ export const getSlowLog1: API.OperationMethod<
   GetSlowLog1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSlowLog1Request,
-  output: DatabaseSlowLogEntries,
+  input: __S(225) as any as S.Schema<GetSlowLog1Request>,
+  output: __S(224) as any as S.Schema<DatabaseSlowLogEntries>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7728,8 +5761,8 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionRequest,
-  output: Subscription,
+  input: __S(226) as any as S.Schema<GetSubscriptionRequest>,
+  output: __S(228) as any as S.Schema<Subscription>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7743,8 +5776,8 @@ export const getSubscriptionById1: API.OperationMethod<
   GetSubscriptionById1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionById1Request,
-  output: FixedSubscription,
+  input: __S(229) as any as S.Schema<GetSubscriptionById1Request>,
+  output: __S(230) as any as S.Schema<FixedSubscription>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7758,8 +5791,8 @@ export const getSubscriptionDatabase: API.OperationMethod<
   GetSubscriptionDatabaseError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionDatabaseRequest,
-  output: Database,
+  input: __S(231) as any as S.Schema<GetSubscriptionDatabaseRequest>,
+  output: __S(232) as any as S.Schema<Database>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7777,8 +5810,8 @@ export const getSubscriptionDatabaseByID1: API.OperationMethod<
   GetSubscriptionDatabaseByID1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionDatabaseByID1Request,
-  output: FixedDatabase,
+  input: __S(233) as any as S.Schema<GetSubscriptionDatabaseByID1Request>,
+  output: __S(235) as any as S.Schema<FixedDatabase>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7796,8 +5829,8 @@ export const getSubscriptionDatabaseCertificate: API.OperationMethod<
   GetSubscriptionDatabaseCertificateError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionDatabaseCertificateRequest,
-  output: DatabaseCertificate,
+  input: __S(236) as any as S.Schema<GetSubscriptionDatabaseCertificateRequest>,
+  output: __S(237) as any as S.Schema<DatabaseCertificate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7811,8 +5844,8 @@ export const getSubscriptionDatabases: API.OperationMethod<
   GetSubscriptionDatabasesError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionDatabasesRequest,
-  output: AccountSubscriptionDatabases,
+  input: __S(238) as any as S.Schema<GetSubscriptionDatabasesRequest>,
+  output: __S(197) as any as S.Schema<AccountSubscriptionDatabases>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7830,8 +5863,8 @@ export const getSubscriptionMaintenanceWindows: API.OperationMethod<
   GetSubscriptionMaintenanceWindowsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionMaintenanceWindowsRequest,
-  output: SubscriptionMaintenanceWindows,
+  input: __S(239) as any as S.Schema<GetSubscriptionMaintenanceWindowsRequest>,
+  output: __S(243) as any as S.Schema<SubscriptionMaintenanceWindows>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7845,8 +5878,8 @@ export const getSubscriptionPricing: API.OperationMethod<
   GetSubscriptionPricingError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionPricingRequest,
-  output: SubscriptionPricings,
+  input: __S(244) as any as S.Schema<GetSubscriptionPricingRequest>,
+  output: __S(247) as any as S.Schema<SubscriptionPricings>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7864,8 +5897,8 @@ export const getSupportedDatabaseModules: API.OperationMethod<
   GetSupportedDatabaseModulesError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSupportedDatabaseModulesRequest,
-  output: ModulesData,
+  input: __S(248) as any as S.Schema<GetSupportedDatabaseModulesRequest>,
+  output: __S(251) as any as S.Schema<ModulesData>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7879,8 +5912,8 @@ export const getSupportedRegions: API.OperationMethod<
   GetSupportedRegionsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSupportedRegionsRequest,
-  output: Regions,
+  input: __S(252) as any as S.Schema<GetSupportedRegionsRequest>,
+  output: __S(255) as any as S.Schema<Regions>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7898,8 +5931,8 @@ export const getSupportedSearchScalingFactors: API.OperationMethod<
   GetSupportedSearchScalingFactorsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSupportedSearchScalingFactorsRequest,
-  output: SearchScalingFactorsData,
+  input: __S(256) as any as S.Schema<GetSupportedSearchScalingFactorsRequest>,
+  output: __S(257) as any as S.Schema<SearchScalingFactorsData>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7913,8 +5946,8 @@ export const getTags: API.OperationMethod<
   GetTagsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTagsRequest,
-  output: CloudTags,
+  input: __S(258) as any as S.Schema<GetTagsRequest>,
+  output: __S(259) as any as S.Schema<CloudTags>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7928,8 +5961,8 @@ export const getTags1: API.OperationMethod<
   GetTags1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTags1Request,
-  output: CloudTags,
+  input: __S(260) as any as S.Schema<GetTags1Request>,
+  output: __S(259) as any as S.Schema<CloudTags>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7943,8 +5976,8 @@ export const getTask: API.OperationMethod<
   GetTaskError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTaskRequest,
-  output: TaskStateUpdate,
+  input: __S(261) as any as S.Schema<GetTaskRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7958,8 +5991,8 @@ export const getTgws: API.OperationMethod<
   GetTgwsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTgwsRequest,
-  output: TaskStateUpdate,
+  input: __S(262) as any as S.Schema<GetTgwsRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7973,8 +6006,8 @@ export const getTgwSharedInvitations: API.OperationMethod<
   GetTgwSharedInvitationsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTgwSharedInvitationsRequest,
-  output: TaskStateUpdate,
+  input: __S(263) as any as S.Schema<GetTgwSharedInvitationsRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -7988,8 +6021,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserRequest,
-  output: AccountUser,
+  input: __S(264) as any as S.Schema<GetUserRequest>,
+  output: __S(266) as any as S.Schema<AccountUser>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8003,8 +6036,8 @@ export const getUserByID: API.OperationMethod<
   GetUserByIDError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserByIDRequest,
-  output: ACLUser,
+  input: __S(267) as any as S.Schema<GetUserByIDRequest>,
+  output: __S(268) as any as S.Schema<ACLUser>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8018,8 +6051,8 @@ export const getVpcPeering: API.OperationMethod<
   GetVpcPeeringError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVpcPeeringRequest,
-  output: GetVpcPeeringResponse,
+  input: __S(269) as any as S.Schema<GetVpcPeeringRequest>,
+  output: __S(3) as any as S.Schema<GetVpcPeeringResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8033,8 +6066,8 @@ export const importDatabase: API.OperationMethod<
   ImportDatabaseError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportDatabaseRequest,
-  output: TaskStateUpdate,
+  input: __S(270) as any as S.Schema<ImportDatabaseRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8048,8 +6081,8 @@ export const importDatabase1: API.OperationMethod<
   ImportDatabase1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportDatabase1Request,
-  output: TaskStateUpdate,
+  input: __S(271) as any as S.Schema<ImportDatabase1Request>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8068,8 +6101,8 @@ export const listMemoryStoreApiKeys: API.OperationMethod<
   ListMemoryStoreApiKeysError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMemoryStoreApiKeysRequest,
-  output: ListMemoryStoreApiKeysResponse,
+  input: __S(272) as any as S.Schema<ListMemoryStoreApiKeysRequest>,
+  output: __S(3) as any as S.Schema<ListMemoryStoreApiKeysResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8088,8 +6121,8 @@ export const listMemoryStores: API.OperationMethod<
   ListMemoryStoresError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMemoryStoresRequest,
-  output: MemoryStoreListResponse,
+  input: __S(273) as any as S.Schema<ListMemoryStoresRequest>,
+  output: __S(276) as any as S.Schema<MemoryStoreListResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8108,8 +6141,8 @@ export const proxyDataIntegrationWorkspace5: API.OperationMethod<
   ProxyDataIntegrationWorkspace5Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProxyDataIntegrationWorkspace5Request,
-  output: ProxyDataIntegrationWorkspace5Response,
+  input: __S(277) as any as S.Schema<ProxyDataIntegrationWorkspace5Request>,
+  output: __S(188) as any as S.Schema<ProxyDataIntegrationWorkspace5Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8128,8 +6161,8 @@ export const proxyDataIntegrationWorkspace6: API.OperationMethod<
   ProxyDataIntegrationWorkspace6Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProxyDataIntegrationWorkspace6Request,
-  output: ProxyDataIntegrationWorkspace6Response,
+  input: __S(278) as any as S.Schema<ProxyDataIntegrationWorkspace6Request>,
+  output: __S(188) as any as S.Schema<ProxyDataIntegrationWorkspace6Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8148,8 +6181,8 @@ export const proxyDataIntegrationWorkspace7: API.OperationMethod<
   ProxyDataIntegrationWorkspace7Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProxyDataIntegrationWorkspace7Request,
-  output: ProxyDataIntegrationWorkspace7Response,
+  input: __S(279) as any as S.Schema<ProxyDataIntegrationWorkspace7Request>,
+  output: __S(188) as any as S.Schema<ProxyDataIntegrationWorkspace7Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8168,8 +6201,8 @@ export const proxyDataIntegrationWorkspace8: API.OperationMethod<
   ProxyDataIntegrationWorkspace8Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProxyDataIntegrationWorkspace8Request,
-  output: ProxyDataIntegrationWorkspace8Response,
+  input: __S(280) as any as S.Schema<ProxyDataIntegrationWorkspace8Request>,
+  output: __S(188) as any as S.Schema<ProxyDataIntegrationWorkspace8Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8188,8 +6221,8 @@ export const proxyDataIntegrationWorkspace9: API.OperationMethod<
   ProxyDataIntegrationWorkspace9Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProxyDataIntegrationWorkspace9Request,
-  output: ProxyDataIntegrationWorkspace9Response,
+  input: __S(281) as any as S.Schema<ProxyDataIntegrationWorkspace9Request>,
+  output: __S(188) as any as S.Schema<ProxyDataIntegrationWorkspace9Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8208,8 +6241,8 @@ export const rejectActiveActiveTgwResourceShare: API.OperationMethod<
   RejectActiveActiveTgwResourceShareError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RejectActiveActiveTgwResourceShareRequest,
-  output: RejectActiveActiveTgwResourceShareResponse,
+  input: __S(282) as any as S.Schema<RejectActiveActiveTgwResourceShareRequest>,
+  output: __S(1) as any as S.Schema<RejectActiveActiveTgwResourceShareResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8228,8 +6261,8 @@ export const rejectTgwResourceShare: API.OperationMethod<
   RejectTgwResourceShareError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RejectTgwResourceShareRequest,
-  output: RejectTgwResourceShareResponse,
+  input: __S(283) as any as S.Schema<RejectTgwResourceShareRequest>,
+  output: __S(3) as any as S.Schema<RejectTgwResourceShareResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8248,8 +6281,8 @@ export const resumeBdbTraffic: API.OperationMethod<
   ResumeBdbTrafficError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumeBdbTrafficRequest,
-  output: ResumeBdbTrafficResponse,
+  input: __S(284) as any as S.Schema<ResumeBdbTrafficRequest>,
+  output: __S(3) as any as S.Schema<ResumeBdbTrafficResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8268,8 +6301,8 @@ export const resumeBdbTraffic1: API.OperationMethod<
   ResumeBdbTraffic1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumeBdbTraffic1Request,
-  output: ResumeBdbTraffic1Response,
+  input: __S(285) as any as S.Schema<ResumeBdbTraffic1Request>,
+  output: __S(3) as any as S.Schema<ResumeBdbTraffic1Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8288,8 +6321,8 @@ export const revertEndpointsRedirection: API.OperationMethod<
   RevertEndpointsRedirectionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevertEndpointsRedirectionRequest,
-  output: EndpointsRedirectionResponse,
+  input: __S(286) as any as S.Schema<RevertEndpointsRedirectionRequest>,
+  output: __S(44) as any as S.Schema<EndpointsRedirectionResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8308,8 +6341,8 @@ export const updateActiveActivePscServiceEndpoint: API.OperationMethod<
   UpdateActiveActivePscServiceEndpointError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateActiveActivePscServiceEndpointRequest,
-  output: UpdateActiveActivePscServiceEndpointResponse,
+  input: __S(287) as any as S.Schema<UpdateActiveActivePscServiceEndpointRequest>,
+  output: __S(1) as any as S.Schema<UpdateActiveActivePscServiceEndpointResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8328,8 +6361,8 @@ export const updateActiveActiveTgwAttachmentCidrs: API.OperationMethod<
   UpdateActiveActiveTgwAttachmentCidrsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateActiveActiveTgwAttachmentCidrsRequest,
-  output: UpdateActiveActiveTgwAttachmentCidrsResponse,
+  input: __S(290) as any as S.Schema<UpdateActiveActiveTgwAttachmentCidrsRequest>,
+  output: __S(1) as any as S.Schema<UpdateActiveActiveTgwAttachmentCidrsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8348,8 +6381,8 @@ export const updateActiveActiveVpcPeering: API.OperationMethod<
   UpdateActiveActiveVpcPeeringError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateActiveActiveVpcPeeringRequest,
-  output: TaskStateUpdate,
+  input: __S(291) as any as S.Schema<UpdateActiveActiveVpcPeeringRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8368,8 +6401,8 @@ export const updateCloudAccount: API.OperationMethod<
   UpdateCloudAccountError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCloudAccountRequest,
-  output: UpdateCloudAccountResponse,
+  input: __S(292) as any as S.Schema<UpdateCloudAccountRequest>,
+  output: __S(3) as any as S.Schema<UpdateCloudAccountResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8388,8 +6421,8 @@ export const updateCrdbLocalProperties: API.OperationMethod<
   UpdateCrdbLocalPropertiesError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCrdbLocalPropertiesRequest,
-  output: TaskStateUpdate,
+  input: __S(295) as any as S.Schema<UpdateCrdbLocalPropertiesRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8403,8 +6436,8 @@ export const updateDatabase: API.OperationMethod<
   UpdateDatabaseError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDatabaseRequest,
-  output: TaskStateUpdate,
+  input: __S(296) as any as S.Schema<UpdateDatabaseRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8423,8 +6456,8 @@ export const updateMemoryStore: API.OperationMethod<
   UpdateMemoryStoreError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMemoryStoreRequest,
-  output: UpdateMemoryStoreResponse,
+  input: __S(300) as any as S.Schema<UpdateMemoryStoreRequest>,
+  output: __S(3) as any as S.Schema<UpdateMemoryStoreResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8443,8 +6476,8 @@ export const updatePscServiceEndpoint: API.OperationMethod<
   UpdatePscServiceEndpointError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePscServiceEndpointRequest,
-  output: UpdatePscServiceEndpointResponse,
+  input: __S(301) as any as S.Schema<UpdatePscServiceEndpointRequest>,
+  output: __S(1) as any as S.Schema<UpdatePscServiceEndpointResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8458,8 +6491,8 @@ export const updateRedisRule: API.OperationMethod<
   UpdateRedisRuleError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRedisRuleRequest,
-  output: UpdateRedisRuleResponse,
+  input: __S(302) as any as S.Schema<UpdateRedisRuleRequest>,
+  output: __S(3) as any as S.Schema<UpdateRedisRuleResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8473,8 +6506,8 @@ export const updateRole: API.OperationMethod<
   UpdateRoleError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRoleRequest,
-  output: UpdateRoleResponse,
+  input: __S(303) as any as S.Schema<UpdateRoleRequest>,
+  output: __S(3) as any as S.Schema<UpdateRoleResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8493,8 +6526,8 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSubscriptionRequest,
-  output: TaskStateUpdate,
+  input: __S(304) as any as S.Schema<UpdateSubscriptionRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8513,8 +6546,8 @@ export const updateSubscription1: API.OperationMethod<
   UpdateSubscription1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSubscription1Request,
-  output: UpdateSubscription1Response,
+  input: __S(305) as any as S.Schema<UpdateSubscription1Request>,
+  output: __S(3) as any as S.Schema<UpdateSubscription1Response>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8533,8 +6566,8 @@ export const updateSubscriptionCidrWhiteList: API.OperationMethod<
   UpdateSubscriptionCidrWhiteListError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSubscriptionCidrWhiteListRequest,
-  output: UpdateSubscriptionCidrWhiteListResponse,
+  input: __S(306) as any as S.Schema<UpdateSubscriptionCidrWhiteListRequest>,
+  output: __S(1) as any as S.Schema<UpdateSubscriptionCidrWhiteListResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8553,8 +6586,8 @@ export const updateSubscriptionMaintenanceWindows: API.OperationMethod<
   UpdateSubscriptionMaintenanceWindowsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSubscriptionMaintenanceWindowsRequest,
-  output: TaskStateUpdate,
+  input: __S(309) as any as S.Schema<UpdateSubscriptionMaintenanceWindowsRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8573,8 +6606,8 @@ export const updateSubscriptionResourceTags: API.OperationMethod<
   UpdateSubscriptionResourceTagsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSubscriptionResourceTagsRequest,
-  output: UpdateSubscriptionResourceTagsResponse,
+  input: __S(310) as any as S.Schema<UpdateSubscriptionResourceTagsRequest>,
+  output: __S(1) as any as S.Schema<UpdateSubscriptionResourceTagsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8588,8 +6621,8 @@ export const updateTag: API.OperationMethod<
   UpdateTagError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTagRequest,
-  output: CloudTag,
+  input: __S(311) as any as S.Schema<UpdateTagRequest>,
+  output: __S(96) as any as S.Schema<CloudTag>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8603,8 +6636,8 @@ export const updateTag1: API.OperationMethod<
   UpdateTag1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTag1Request,
-  output: CloudTag,
+  input: __S(312) as any as S.Schema<UpdateTag1Request>,
+  output: __S(96) as any as S.Schema<CloudTag>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8618,8 +6651,8 @@ export const updateTags: API.OperationMethod<
   UpdateTagsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTagsRequest,
-  output: CloudTags,
+  input: __S(313) as any as S.Schema<UpdateTagsRequest>,
+  output: __S(259) as any as S.Schema<CloudTags>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8633,8 +6666,8 @@ export const updateTags1: API.OperationMethod<
   UpdateTags1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTags1Request,
-  output: CloudTags,
+  input: __S(314) as any as S.Schema<UpdateTags1Request>,
+  output: __S(259) as any as S.Schema<CloudTags>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8653,8 +6686,8 @@ export const updateTgwAttachmentCidrs: API.OperationMethod<
   UpdateTgwAttachmentCidrsError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTgwAttachmentCidrsRequest,
-  output: UpdateTgwAttachmentCidrsResponse,
+  input: __S(315) as any as S.Schema<UpdateTgwAttachmentCidrsRequest>,
+  output: __S(1) as any as S.Schema<UpdateTgwAttachmentCidrsResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8668,8 +6701,8 @@ export const updateUser: API.OperationMethod<
   UpdateUserError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUserRequest,
-  output: TaskStateUpdate,
+  input: __S(316) as any as S.Schema<UpdateUserRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8683,8 +6716,8 @@ export const updateUser1: API.OperationMethod<
   UpdateUser1Error,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUser1Request,
-  output: TaskStateUpdate,
+  input: __S(317) as any as S.Schema<UpdateUser1Request>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8703,8 +6736,8 @@ export const updateVpcPeering: API.OperationMethod<
   UpdateVpcPeeringError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVpcPeeringRequest,
-  output: UpdateVpcPeeringResponse,
+  input: __S(318) as any as S.Schema<UpdateVpcPeeringRequest>,
+  output: __S(3) as any as S.Schema<UpdateVpcPeeringResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8723,8 +6756,8 @@ export const upgradeDatabaseRedisVersion: API.OperationMethod<
   UpgradeDatabaseRedisVersionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpgradeDatabaseRedisVersionRequest,
-  output: TaskStateUpdate,
+  input: __S(319) as any as S.Schema<UpgradeDatabaseRedisVersionRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8743,8 +6776,8 @@ export const upgradeEssentialsDatabaseRedisVersion: API.OperationMethod<
   UpgradeEssentialsDatabaseRedisVersionError,
   RedisCloudOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpgradeEssentialsDatabaseRedisVersionRequest,
-  output: TaskStateUpdate,
+  input: __S(320) as any as S.Schema<UpgradeEssentialsDatabaseRedisVersionRequest>,
+  output: __S(13) as any as S.Schema<TaskStateUpdate>,
   errors: [BadRequest, Forbidden, NotFound, Conflict, UnknownRedisCloudError],
   protocol: RedisCloudProtocol,
   retry: Retry.Retry,
@@ -8808,7 +6841,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          localThroughputMeasurement: S.optional(LocalThroughput),
+          localThroughputMeasurement: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "CrdbRegionSpec" });
   }
@@ -8816,7 +6849,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CrdbRegionSpec);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8824,15 +6857,13 @@ function __c1(j: number): any {
           region: S.optional(S.String),
           vpcId: S.optional(S.String),
           deploymentCIDR: S.optional(S.String),
-          subnetIds: S.optional(AddNewRegionToActiveActiveSubscriptionRequestSubnetIdsList),
+          subnetIds: S.optional(__S(4)),
           securityGroupId: S.optional(S.String),
           multipleAvailabilityZones: S.optional(S.Boolean),
-          preferredAvailabilityZones: S.optional(
-            AddNewRegionToActiveActiveSubscriptionRequestPreferredAvailabilityZonesList,
-          ),
+          preferredAvailabilityZones: S.optional(__S(5)),
           dryRun: S.optional(S.Boolean),
-          databases: S.optional(AddNewRegionToActiveActiveSubscriptionRequestDatabasesList),
-          respVersion: S.optional(AddNewRegionToActiveActiveSubscriptionRequestRespVersion),
+          databases: S.optional(__S(8)),
+          respVersion: S.optional(S.String),
           customerManagedKeyResourceName: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/subscriptions/{subscriptionId}/regions", code: 200 }),
@@ -8846,24 +6877,24 @@ function __c1(j: number): any {
           resourceId: S.optional(S.Number),
           additionalResourceId: S.optional(S.Number),
           resource: S.optional(S.Unknown),
-          error: S.optional(ProcessorResponseError),
+          error: S.optional(S.String),
           additionalInfo: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProcessorResponse" });
     case 3:
       return S.Record(S.String, S.String);
     case 4:
-      return S.Array(TaskStateUpdateLinksItemMap);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
           taskId: S.optional(S.String),
           commandType: S.optional(S.String),
-          status: S.optional(TaskStateUpdateStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
           timestamp: S.optional(S.String),
-          response: S.optional(ProcessorResponse),
-          links: S.optional(TaskStateUpdateLinksList),
+          response: S.optional(__S(10)),
+          links: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "TaskStateUpdate" });
     case 6:
@@ -8906,7 +6937,7 @@ function __c2(j: number): any {
           regionId: S.Number.pipe(T.Label()),
           shareName: S.String,
           principal: S.String,
-          type: CreateActiveActivePrivateLinkRequestType,
+          type: S.String,
           alias: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -8924,7 +6955,7 @@ function __c2(j: number): any {
           subscriptionId: S.Number.pipe(T.Label()),
           regionId: S.Number.pipe(T.Label()),
           principal: S.String,
-          type: S.optional(CreateActiveActivePrivateLinkPrincipalRequestType),
+          type: S.optional(S.String),
           alias: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9007,7 +7038,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          provider: S.optional(CreateCloudAccountRequestProvider),
+          provider: S.optional(S.String),
           accessKeyId: S.String.pipe(T.SensitiveValue({})),
           accessSecretKey: S.String.pipe(T.SensitiveValue({})),
           consoleUsername: S.String,
@@ -9031,18 +7062,18 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Tag" });
     case 1:
-      return S.Array(Tag);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
           startDate: S.String,
           endDate: S.String,
-          format: S.optional(CreateCostReportRequestFormat),
-          subscriptionIds: S.optional(CreateCostReportRequestSubscriptionIdsList),
-          databaseIds: S.optional(CreateCostReportRequestDatabaseIdsList),
-          subscriptionType: S.optional(CreateCostReportRequestSubscriptionType),
-          regions: S.optional(CreateCostReportRequestRegionsList),
-          tags: S.optional(CreateCostReportRequestTagsList),
+          format: S.optional(S.String),
+          subscriptionIds: S.optional(__S(23)),
+          databaseIds: S.optional(__S(23)),
+          subscriptionType: S.optional(S.String),
+          regions: S.optional(__S(4)),
+          tags: S.optional(__S(25)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/cost-report", code: 200 })),
       ).annotate({ identifier: "CreateCostReportRequest" });
     case 3:
@@ -9054,22 +7085,22 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "DatabaseSyncSourceSpec" });
     case 4:
-      return S.Array(DatabaseSyncSourceSpec);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          syncSources: ReplicaOfSpecSyncSourcesList,
+          syncSources: __S(28),
         }),
       ).annotate({ identifier: "ReplicaOfSpec" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          by: DatabaseThroughputSpecBy,
+          by: S.String,
           value: S.Number,
         }),
       ).annotate({ identifier: "DatabaseThroughputSpec" });
     case 7:
-      return S.Array(LocalThroughput);
+      return S.Array(__S(6));
   }
 }
 function __c4(j: number): any {
@@ -9093,27 +7124,27 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "DatabaseCertificateSpec" });
     case 2:
-      return S.Array(DatabaseCertificateSpec);
+      return S.Array(__S(33));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: DatabaseAlertSpecName,
+          name: S.String,
           value: S.Number,
         }),
       ).annotate({ identifier: "DatabaseAlertSpec" });
     case 4:
-      return S.Array(DatabaseAlertSpec);
+      return S.Array(__S(35));
     case 5:
       return S.Record(S.String, S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          parameters: S.optional(DatabaseModuleSpecParametersMap),
+          parameters: S.optional(__S(37)),
         }),
       ).annotate({ identifier: "DatabaseModuleSpec" });
     case 7:
-      return S.Array(DatabaseModuleSpec);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
@@ -9124,38 +7155,36 @@ function __c5(j: number): any {
           subscriptionId: S.Number.pipe(T.Label()),
           dryRun: S.optional(S.Boolean),
           name: S.String,
-          protocol: S.optional(CreateDatabaseRequestProtocol),
+          protocol: S.optional(S.String),
           port: S.optional(S.Number),
           memoryLimitInGb: S.optional(S.Number),
           datasetSizeInGb: S.optional(S.Number),
           redisVersion: S.optional(S.String),
           autoMinorVersionUpgrade: S.optional(S.Boolean),
-          respVersion: S.optional(CreateDatabaseRequestRespVersion),
+          respVersion: S.optional(S.String),
           supportOSSClusterApi: S.optional(S.Boolean),
           useExternalEndpointForOSSClusterApi: S.optional(S.Boolean),
-          dataPersistence: S.optional(CreateDatabaseRequestDataPersistence),
-          dataEvictionPolicy: S.optional(CreateDatabaseRequestDataEvictionPolicy),
+          dataPersistence: S.optional(S.String),
+          dataEvictionPolicy: S.optional(S.String),
           replication: S.optional(S.Boolean),
-          replicaOf: S.optional(CreateDatabaseRequestReplicaOfList),
-          replica: S.optional(ReplicaOfSpec),
-          throughputMeasurement: S.optional(DatabaseThroughputSpec),
-          localThroughputMeasurement: S.optional(
-            CreateDatabaseRequestLocalThroughputMeasurementList,
-          ),
+          replicaOf: S.optional(__S(4)),
+          replica: S.optional(__S(29)),
+          throughputMeasurement: S.optional(__S(30)),
+          localThroughputMeasurement: S.optional(__S(31)),
           averageItemSizeInBytes: S.optional(S.Number),
           ramPercentage: S.optional(S.Number),
           periodicBackupPath: S.optional(S.String),
-          remoteBackup: S.optional(DatabaseBackupConfigInput),
-          sourceIp: S.optional(CreateDatabaseRequestSourceIpList),
+          remoteBackup: S.optional(__S(32)),
+          sourceIp: S.optional(__S(4)),
           clientSslCertificate: S.optional(S.String),
-          clientTlsCertificates: S.optional(CreateDatabaseRequestClientTlsCertificatesList),
+          clientTlsCertificates: S.optional(__S(34)),
           enableTls: S.optional(S.Boolean),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           saslUsername: S.optional(S.String),
           saslPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          alerts: S.optional(CreateDatabaseRequestAlertsList),
-          modules: S.optional(CreateDatabaseRequestModulesList),
-          shardingType: S.optional(CreateDatabaseRequestShardingType),
+          alerts: S.optional(__S(36)),
+          modules: S.optional(__S(39)),
+          shardingType: S.optional(S.String),
           queryPerformanceFactor: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9170,7 +7199,7 @@ function __c5(j: number): any {
         S.Struct({
           sourceDatabaseId: S.Number,
           targetDatabaseId: S.Number,
-          endpointTargetType: CreateEndpointsRedirectionRequestEndpointTargetType,
+          endpointTargetType: S.String,
           duplicateACLs: S.optional(S.Boolean),
           migrationProtection: S.Boolean,
         }).pipe(T.Http({ method: "POST", uri: "/v1/endpoint-redirections", code: 200 })),
@@ -9182,18 +7211,18 @@ function __c5(j: number): any {
         S.Struct({
           sourceEndpointName: S.optional(S.String),
           targetEndpointName: S.optional(S.String),
-          sourceEndpointType: S.optional(EndpointRedirectionDTOSourceEndpointType),
-          targetEndpointType: S.optional(EndpointRedirectionDTOTargetEndpointType),
+          sourceEndpointType: S.optional(S.String),
+          targetEndpointType: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndpointRedirectionDTO" });
     case 3:
-      return S.Array(EndpointRedirectionDTO);
+      return S.Array(__S(42));
     case 4:
       return S.suspend(() =>
         S.Struct({
           redirectionId: S.optional(S.String),
-          status: S.optional(EndpointsRedirectionResponseStatus),
+          status: S.optional(S.String),
           sourceDatabaseId: S.optional(S.Number),
           targetDatabaseId: S.optional(S.Number),
           isRevert: S.optional(S.Boolean),
@@ -9202,7 +7231,7 @@ function __c5(j: number): any {
           completedAt: S.optional(S.String),
           revertedAt: S.optional(S.String),
           errorMessage: S.optional(S.String),
-          endpoints: S.optional(EndpointsRedirectionResponseEndpointsList),
+          endpoints: S.optional(__S(43)),
         }),
       ).annotate({
         identifier: "EndpointsRedirectionResponse",
@@ -9212,29 +7241,29 @@ function __c5(j: number): any {
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           name: S.String,
-          protocol: S.optional(CreateFixedDatabaseRequestProtocol),
+          protocol: S.optional(S.String),
           memoryLimitInGb: S.optional(S.Number),
           datasetSizeInGb: S.optional(S.Number),
           supportOSSClusterApi: S.optional(S.Boolean),
           redisVersion: S.optional(S.String),
-          respVersion: S.optional(CreateFixedDatabaseRequestRespVersion),
+          respVersion: S.optional(S.String),
           useExternalEndpointForOSSClusterApi: S.optional(S.Boolean),
           enableDatabaseClustering: S.optional(S.Boolean),
           numberOfShards: S.optional(S.Number),
-          dataPersistence: S.optional(CreateFixedDatabaseRequestDataPersistence),
-          dataEvictionPolicy: S.optional(CreateFixedDatabaseRequestDataEvictionPolicy),
+          dataPersistence: S.optional(S.String),
+          dataEvictionPolicy: S.optional(S.String),
           replication: S.optional(S.Boolean),
           periodicBackupPath: S.optional(S.String),
-          sourceIps: S.optional(CreateFixedDatabaseRequestSourceIpsList),
-          regexRules: S.optional(CreateFixedDatabaseRequestRegexRulesList),
-          replicaOf: S.optional(CreateFixedDatabaseRequestReplicaOfList),
-          replica: S.optional(ReplicaOfSpec),
+          sourceIps: S.optional(__S(4)),
+          regexRules: S.optional(__S(4)),
+          replicaOf: S.optional(__S(4)),
+          replica: S.optional(__S(29)),
           clientSslCertificate: S.optional(S.String),
-          clientTlsCertificates: S.optional(CreateFixedDatabaseRequestClientTlsCertificatesList),
+          clientTlsCertificates: S.optional(__S(34)),
           enableTls: S.optional(S.Boolean),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          alerts: S.optional(CreateFixedDatabaseRequestAlertsList),
-          modules: S.optional(CreateFixedDatabaseRequestModulesList),
+          alerts: S.optional(__S(36)),
+          modules: S.optional(__S(39)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -9256,7 +7285,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: MemoryStoreModelCredentialsType,
+          type: S.String,
           apiKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
       ).annotate({
@@ -9271,14 +7300,14 @@ function __c6(j: number): any {
         S.Struct({
           provider: S.optional(S.String),
           model: S.optional(S.String),
-          credentials: S.optional(MemoryStoreModelCredentials),
+          credentials: S.optional(__S(47)),
         }),
       ).annotate({ identifier: "MemoryStoreModelConfig" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           ttlSeconds: S.Number,
-          embedding: S.optional(MemoryStoreModelConfig),
+          embedding: S.optional(__S(48)),
         }),
       ).annotate({
         identifier: "MemoryStoreLongTermMemoryCreateConfig",
@@ -9296,8 +7325,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          triggerStrategy: S.optional(MemoryStoreSummarizationConfigTriggerStrategy),
-          eventCount: S.optional(MemoryStoreSummarizationThresholdConfig),
+          triggerStrategy: S.optional(S.String),
+          eventCount: S.optional(__S(50)),
         }),
       ).annotate({
         identifier: "MemoryStoreSummarizationConfig",
@@ -9316,18 +7345,18 @@ function __c6(j: number): any {
         S.Struct({
           id: S.String,
           enabled: S.Boolean,
-          action: S.optional(MemoryStoreDetectorSelectionAction),
+          action: S.optional(S.String),
         }),
       ).annotate({
         identifier: "MemoryStoreDetectorSelection",
       });
     case 6:
-      return S.Array(MemoryStoreDetectorSelection);
+      return S.Array(__S(53));
     case 7:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          detectors: S.optional(MemoryStoreBuiltInDetectorsConfigDetectorsList),
+          detectors: S.optional(__S(54)),
         }),
       ).annotate({
         identifier: "MemoryStoreBuiltInDetectorsConfig",
@@ -9345,8 +7374,8 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          kind: MemoryStoreMatcherSpecKind,
-          regex: S.optional(MemoryStoreRegexSpec),
+          kind: S.String,
+          regex: S.optional(__S(56)),
         }),
       ).annotate({ identifier: "MemoryStoreMatcherSpec" });
     case 2:
@@ -9354,19 +7383,19 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String,
           enabled: S.Boolean,
-          action: S.optional(MemoryStoreCustomDetectorAction),
-          matcher: MemoryStoreMatcherSpec,
+          action: S.optional(S.String),
+          matcher: __S(57),
         }),
       ).annotate({
         identifier: "MemoryStoreCustomDetector",
       });
     case 3:
-      return S.Array(MemoryStoreCustomDetector);
+      return S.Array(__S(58));
     case 4:
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          detectors: S.optional(MemoryStoreCustomDetectorsConfigDetectorsList),
+          detectors: S.optional(__S(59)),
         }),
       ).annotate({
         identifier: "MemoryStoreCustomDetectorsConfig",
@@ -9375,9 +7404,9 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          semantic: S.optional(MemoryStoreSemanticExclusionConfig),
-          builtInDetectors: S.optional(MemoryStoreBuiltInDetectorsConfig),
-          customDetectors: S.optional(MemoryStoreCustomDetectorsConfig),
+          semantic: S.optional(__S(52)),
+          builtInDetectors: S.optional(__S(55)),
+          customDetectors: S.optional(__S(60)),
         }),
       ).annotate({
         identifier: "MemoryStoreLongTermMemoryExclusions",
@@ -9387,11 +7416,11 @@ function __c7(j: number): any {
         S.Struct({
           name: S.String,
           description: S.String,
-          type: MemoryStoreCustomFieldType,
+          type: S.String,
         }),
       ).annotate({ identifier: "MemoryStoreCustomField" });
     case 7:
-      return S.Array(MemoryStoreCustomField);
+      return S.Array(__S(62));
   }
 }
 function __c8(j: number): any {
@@ -9410,14 +7439,14 @@ function __c8(j: number): any {
         S.Struct({
           name: S.String,
           description: S.String,
-          fields: S.optional(MemoryStoreCustomMemoryTypeFieldsList),
-          extractionStrategy: S.optional(MemoryStoreCustomExtractionStrategy),
+          fields: S.optional(__S(63)),
+          extractionStrategy: S.optional(__S(64)),
         }),
       ).annotate({
         identifier: "MemoryStoreCustomMemoryType",
       });
     case 2:
-      return S.Array(MemoryStoreCustomMemoryType);
+      return S.Array(__S(65));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -9431,14 +7460,14 @@ function __c8(j: number): any {
         S.Struct({
           name: S.String,
           databaseId: S.Number,
-          shortMemory: S.optional(MemoryStoreShortMemoryConfig),
-          longTermMemory: S.optional(MemoryStoreLongTermMemoryCreateConfig),
-          llm: S.optional(MemoryStoreModelConfig),
-          extractionStrategy: S.optional(CreateMemoryStoreRequestExtractionStrategy),
-          summarization: S.optional(MemoryStoreSummarizationConfig),
-          longTermMemoryExclusions: S.optional(MemoryStoreLongTermMemoryExclusions),
-          customMemoryTypes: S.optional(CreateMemoryStoreRequestCustomMemoryTypesList),
-          extractionCadence: S.optional(MemoryStoreExtractionCadenceConfig),
+          shortMemory: S.optional(__S(46)),
+          longTermMemory: S.optional(__S(49)),
+          llm: S.optional(__S(48)),
+          extractionStrategy: S.optional(S.String),
+          summarization: S.optional(__S(51)),
+          longTermMemoryExclusions: S.optional(__S(61)),
+          customMemoryTypes: S.optional(__S(66)),
+          extractionCadence: S.optional(__S(67)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/memory-stores", code: 200 })),
       ).annotate({ identifier: "CreateMemoryStoreRequest" });
     case 5:
@@ -9464,7 +7493,7 @@ function __c8(j: number): any {
           subscriptionId: S.Number.pipe(T.Label()),
           shareName: S.String,
           principal: S.String,
-          type: CreatePrivateLinkRequestType,
+          type: S.String,
           alias: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9483,7 +7512,7 @@ function __c9(j: number): any {
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           principal: S.String,
-          type: S.optional(CreatePrivateLinkPrincipalRequestType),
+          type: S.optional(S.String),
           alias: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -9538,20 +7567,20 @@ function __c9(j: number): any {
         S.Struct({
           subscriptionId: S.Number,
           databaseId: S.Number,
-          regions: S.optional(AclRoleDatabaseSpecRegionsList),
+          regions: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "AclRoleDatabaseSpec" });
     case 5:
-      return S.Array(AclRoleDatabaseSpec);
+      return S.Array(__S(76));
     case 6:
       return S.suspend(() =>
         S.Struct({
           ruleName: S.String,
-          databases: AclRoleRedisRuleSpecDatabasesList,
+          databases: __S(77),
         }),
       ).annotate({ identifier: "AclRoleRedisRuleSpec" });
     case 7:
-      return S.Array(AclRoleRedisRuleSpec);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
@@ -9560,7 +7589,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          redisRules: CreateRoleRequestRedisRulesList,
+          redisRules: __S(79),
         }).pipe(T.Http({ method: "POST", uri: "/v1/acl/roles", code: 200 })),
       ).annotate({ identifier: "CreateRoleRequest" });
     case 1:
@@ -9571,12 +7600,12 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "CustomerManagedKey" });
     case 2:
-      return S.Array(CustomerManagedKey);
+      return S.Array(__S(81));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          customerManagedKeys: CustomerManagedKeyPropertiesCustomerManagedKeysList,
-          deletionGracePeriod: S.optional(CustomerManagedKeyPropertiesDeletionGracePeriod),
+          customerManagedKeys: __S(82),
+          deletionGracePeriod: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CustomerManagedKeyProperties",
@@ -9586,7 +7615,7 @@ function __c10(j: number): any {
         S.Struct({
           deploymentCIDR: S.optional(S.String),
           vpcId: S.optional(S.String),
-          subnetIds: S.optional(SubscriptionRegionNetworkingSpecSubnetIdsList),
+          subnetIds: S.optional(__S(4)),
           securityGroupId: S.optional(S.String),
         }),
       ).annotate({
@@ -9597,14 +7626,12 @@ function __c10(j: number): any {
         S.Struct({
           region: S.String,
           multipleAvailabilityZones: S.optional(S.Boolean),
-          preferredAvailabilityZones: S.optional(
-            SubscriptionRegionSpecPreferredAvailabilityZonesList,
-          ),
-          networking: S.optional(SubscriptionRegionNetworkingSpec),
+          preferredAvailabilityZones: S.optional(__S(4)),
+          networking: S.optional(__S(84)),
         }),
       ).annotate({ identifier: "SubscriptionRegionSpec" });
     case 6:
-      return S.Array(SubscriptionRegionSpec);
+      return S.Array(__S(85));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -9617,61 +7644,57 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ResourceTag);
+      return S.Array(__S(87));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provider: S.optional(SubscriptionSpecProvider),
+          provider: S.optional(S.String),
           cloudAccountId: S.optional(S.Number),
-          regions: SubscriptionSpecRegionsList,
-          resourceTags: S.optional(SubscriptionSpecResourceTagsList),
+          regions: __S(86),
+          resourceTags: S.optional(__S(88)),
         }),
       ).annotate({ identifier: "SubscriptionSpec" });
     case 2:
-      return S.Array(SubscriptionSpec);
+      return S.Array(__S(89));
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          protocol: SubscriptionDatabaseSpecProtocol,
+          protocol: S.String,
           port: S.optional(S.Number),
           memoryLimitInGb: S.optional(S.Number),
           datasetSizeInGb: S.optional(S.Number),
           supportOSSClusterApi: S.optional(S.Boolean),
-          dataPersistence: S.optional(SubscriptionDatabaseSpecDataPersistence),
+          dataPersistence: S.optional(S.String),
           replication: S.optional(S.Boolean),
-          throughputMeasurement: S.optional(DatabaseThroughputSpec),
-          localThroughputMeasurement: S.optional(
-            SubscriptionDatabaseSpecLocalThroughputMeasurementList,
-          ),
-          modules: S.optional(SubscriptionDatabaseSpecModulesList),
+          throughputMeasurement: S.optional(__S(30)),
+          localThroughputMeasurement: S.optional(__S(31)),
+          modules: S.optional(__S(39)),
           quantity: S.optional(S.Number),
           averageItemSizeInBytes: S.optional(S.Number),
           ramPercentage: S.optional(S.Number),
-          respVersion: S.optional(SubscriptionDatabaseSpecRespVersion),
+          respVersion: S.optional(S.String),
           redisVersion: S.optional(S.String),
           autoMinorVersionUpgrade: S.optional(S.Boolean),
-          shardingType: S.optional(SubscriptionDatabaseSpecShardingType),
+          shardingType: S.optional(S.String),
           queryPerformanceFactor: S.optional(S.String),
         }),
       ).annotate({ identifier: "SubscriptionDatabaseSpec" });
     case 4:
-      return S.Array(SubscriptionDatabaseSpec);
+      return S.Array(__S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           dryRun: S.optional(S.Boolean),
-          deploymentType: S.optional(CreateSubscriptionRequestDeploymentType),
-          paymentMethod: S.optional(CreateSubscriptionRequestPaymentMethod),
+          deploymentType: S.optional(S.String),
+          paymentMethod: S.optional(S.String),
           paymentMethodId: S.optional(S.Number),
-          memoryStorage: S.optional(CreateSubscriptionRequestMemoryStorage),
-          persistentStorageEncryptionType: S.optional(
-            CreateSubscriptionRequestPersistentStorageEncryptionType,
-          ),
-          persistentStorageEncryptionKeys: S.optional(CustomerManagedKeyProperties),
-          cloudProviders: CreateSubscriptionRequestCloudProvidersList,
-          databases: CreateSubscriptionRequestDatabasesList,
+          memoryStorage: S.optional(S.String),
+          persistentStorageEncryptionType: S.optional(S.String),
+          persistentStorageEncryptionKeys: S.optional(__S(83)),
+          cloudProviders: __S(90),
+          databases: __S(92),
           redisVersion: S.optional(S.String),
           publicEndpointAccess: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/v1/subscriptions", code: 200 })),
@@ -9683,7 +7706,7 @@ function __c11(j: number): any {
         S.Struct({
           name: S.String,
           planId: S.Number,
-          paymentMethod: S.optional(CreateSubscription1RequestPaymentMethod),
+          paymentMethod: S.optional(S.String),
           paymentMethodId: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/v1/fixed/subscriptions", code: 200 })),
       ).annotate({
@@ -9711,7 +7734,7 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(CloudTagLinksList),
+          links: S.optional(__S(12)),
           key: S.optional(S.String),
           value: S.optional(S.String),
           createdAt: S.optional(S.String),
@@ -9903,26 +7926,24 @@ function __c13(j: number): any {
           memoryLimitInGb: S.optional(S.Number),
           datasetSizeInGb: S.optional(S.Number),
           supportOSSClusterApi: S.optional(S.Boolean),
-          respVersion: S.optional(DeleteFixedDatabaseByIDRequestRespVersion),
+          respVersion: S.optional(S.String),
           useExternalEndpointForOSSClusterApi: S.optional(S.Boolean),
           enableDatabaseClustering: S.optional(S.Boolean),
           numberOfShards: S.optional(S.Number),
-          dataPersistence: S.optional(DeleteFixedDatabaseByIDRequestDataPersistence),
-          dataEvictionPolicy: S.optional(DeleteFixedDatabaseByIDRequestDataEvictionPolicy),
+          dataPersistence: S.optional(S.String),
+          dataEvictionPolicy: S.optional(S.String),
           replication: S.optional(S.Boolean),
           periodicBackupPath: S.optional(S.String),
-          sourceIps: S.optional(DeleteFixedDatabaseByIDRequestSourceIpsList),
-          replicaOf: S.optional(DeleteFixedDatabaseByIDRequestReplicaOfList),
-          replica: S.optional(ReplicaOfSpec),
-          regexRules: S.optional(DeleteFixedDatabaseByIDRequestRegexRulesList),
+          sourceIps: S.optional(__S(4)),
+          replicaOf: S.optional(__S(4)),
+          replica: S.optional(__S(29)),
+          regexRules: S.optional(__S(4)),
           clientSslCertificate: S.optional(S.String),
-          clientTlsCertificates: S.optional(
-            DeleteFixedDatabaseByIDRequestClientTlsCertificatesList,
-          ),
+          clientTlsCertificates: S.optional(__S(34)),
           enableTls: S.optional(S.Boolean),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           enableDefaultUser: S.optional(S.Boolean),
-          alerts: S.optional(DeleteFixedDatabaseByIDRequestAlertsList),
+          alerts: S.optional(__S(36)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10054,12 +8075,12 @@ function __c15(j: number): any {
         identifier: "ActiveActiveRegionToDelete",
       });
     case 1:
-      return S.Array(ActiveActiveRegionToDelete);
+      return S.Array(__S(120));
     case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
-          regions: S.optional(DeleteRegionsFromActiveActiveSubscriptionRequestRegionsList),
+          regions: S.optional(__S(121)),
           dryRun: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -10177,13 +8198,13 @@ function __c16(j: number): any {
         identifier: "PrivateLinkConnectionDisassociate",
       });
     case 5:
-      return S.Array(PrivateLinkConnectionDisassociate);
+      return S.Array(__S(132));
     case 6:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           regionId: S.Number.pipe(T.Label()),
-          connections: DisassociateActiveActivePrivateLinkConnectionsRequestConnectionsList,
+          connections: __S(133),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10195,7 +8216,7 @@ function __c16(j: number): any {
         identifier: "DisassociateActiveActivePrivateLinkConnectionsRequest",
       });
     case 7:
-      return S.Array(PrivateLinkConnectionDisassociate);
+      return S.Array(__S(132));
   }
 }
 function __c17(j: number): any {
@@ -10204,7 +8225,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
-          connections: DisassociatePrivateLinkConnectionsRequestConnectionsList,
+          connections: __S(135),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10258,7 +8279,7 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.Number),
-          links: S.optional(PaymentMethodsLinksList),
+          links: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "PaymentMethods" });
     case 6:
@@ -10290,12 +8311,12 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AccountSessionLogEntry);
+      return S.Array(__S(143));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(AccountSessionLogEntriesEntriesList),
-          links: S.optional(AccountSessionLogEntriesLinksList),
+          entries: S.optional(__S(144)),
+          links: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "AccountSessionLogEntries" });
     case 2:
@@ -10324,12 +8345,12 @@ function __c18(j: number): any {
         }),
       ).annotate({ identifier: "AccountSystemLogEntry" });
     case 4:
-      return S.Array(AccountSystemLogEntry);
+      return S.Array(__S(147));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(AccountSystemLogEntriesEntriesList),
-          links: S.optional(AccountSystemLogEntriesLinksList),
+          entries: S.optional(__S(148)),
+          links: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "AccountSystemLogEntries" });
     case 6:
@@ -10478,7 +8499,7 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provider: S.optional(GetAllFixedSubscriptionsPlansRequestProvider.pipe(T.Query())),
+          provider: S.optional(S.String.pipe(T.Query())),
           redisFlex: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/fixed/plans", code: 200 })),
       ).annotate({
@@ -10491,7 +8512,7 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(FixedSubscriptionsPlansLinksList),
+          links: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "FixedSubscriptionsPlans" });
     case 1:
@@ -10556,8 +8577,8 @@ function __c21(j: number): any {
           signInLoginUrl: S.optional(S.String),
           awsUserArn: S.optional(S.String),
           awsConsoleRoleArn: S.optional(S.String),
-          links: S.optional(CloudAccountLinksList),
-          provider: S.optional(CloudAccountProvider),
+          links: S.optional(__S(12)),
+          provider: S.optional(S.String),
         }),
       ).annotate({ identifier: "CloudAccount" });
     case 3:
@@ -10600,11 +8621,11 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TargetVersion);
+      return S.Array(__S(175));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          targets: S.optional(DatabaseAvailableVersionsResponseTargetsList),
+          targets: S.optional(__S(176)),
         }),
       ).annotate({
         identifier: "DatabaseAvailableVersionsResponse",
@@ -10691,7 +8712,7 @@ function __c22(j: number): any {
           databaseId: S.optional(S.Number),
           targetRedisVersion: S.optional(S.String),
           progress: S.optional(S.Number),
-          upgradeStatus: S.optional(DatabaseVersionUpgradeStatusUpgradeStatus),
+          upgradeStatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DatabaseVersionUpgradeStatus",
@@ -10769,7 +8790,7 @@ function __c23(j: number): any {
         }),
       ).annotate({ identifier: "DataPersistenceEntry" });
     case 7:
-      return S.Array(DataPersistenceEntry);
+      return S.Array(__S(190));
   }
 }
 function __c24(j: number): any {
@@ -10777,8 +8798,8 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dataPersistence: S.optional(DataPersistenceOptionsDataPersistenceList),
-          links: S.optional(DataPersistenceOptionsLinksList),
+          dataPersistence: S.optional(__S(191)),
+          links: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "DataPersistenceOptions" });
     case 1:
@@ -10841,7 +8862,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.Number),
-          links: S.optional(AccountFixedSubscriptionDatabasesLinksList),
+          links: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "AccountFixedSubscriptionDatabases",
@@ -10881,7 +8902,7 @@ function __c24(j: number): any {
           supportClustering: S.optional(S.Boolean),
           supportSsl: S.optional(S.Boolean),
           customerSupport: S.optional(S.String),
-          links: S.optional(FixedSubscriptionsPlanLinksList),
+          links: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "FixedSubscriptionsPlan" });
   }
@@ -10919,7 +8940,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ttlSeconds: S.optional(S.Number),
-          embedding: S.optional(MemoryStoreModelStatus),
+          embedding: S.optional(__S(202)),
         }),
       ).annotate({
         identifier: "MemoryStoreLongTermMemoryStatus",
@@ -10930,12 +8951,12 @@ function __c25(j: number): any {
           url: S.optional(S.String),
           provider: S.optional(S.String),
           region: S.optional(S.String),
-          egressIps: S.optional(MemoryStoreEndpointEgressIpsList),
+          egressIps: S.optional(__S(4)),
           isAccessible: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MemoryStoreEndpoint" });
     case 5:
-      return S.Array(MemoryStoreEndpoint);
+      return S.Array(__S(204));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -10946,19 +8967,19 @@ function __c25(j: number): any {
           databaseName: S.optional(S.String),
           databaseProvider: S.optional(S.String),
           databaseRegion: S.optional(S.String),
-          databaseAccessCidrs: S.optional(MemoryStoreResponseDatabaseAccessCidrsList),
+          databaseAccessCidrs: S.optional(__S(4)),
           subscriptionId: S.optional(S.String),
-          shortMemory: S.optional(MemoryStoreShortMemoryConfig),
-          longTermMemory: S.optional(MemoryStoreLongTermMemoryStatus),
-          llm: S.optional(MemoryStoreModelStatus),
+          shortMemory: S.optional(__S(46)),
+          longTermMemory: S.optional(__S(203)),
+          llm: S.optional(__S(202)),
           endpoint: S.optional(S.String),
-          endpoints: S.optional(MemoryStoreResponseEndpointsList),
-          extractionStrategy: S.optional(MemoryStoreResponseExtractionStrategy),
-          summarization: S.optional(MemoryStoreSummarizationConfig),
-          longTermMemoryExclusions: S.optional(MemoryStoreLongTermMemoryExclusions),
-          customMemoryTypes: S.optional(MemoryStoreResponseCustomMemoryTypesList),
-          extractionCadence: S.optional(MemoryStoreExtractionCadenceConfig),
-          status: S.optional(MemoryStoreResponseStatus),
+          endpoints: S.optional(__S(205)),
+          extractionStrategy: S.optional(S.String),
+          summarization: S.optional(__S(51)),
+          longTermMemoryExclusions: S.optional(__S(61)),
+          customMemoryTypes: S.optional(__S(66)),
+          extractionCadence: S.optional(__S(67)),
+          status: S.optional(S.String),
           errorMessage: S.optional(S.String),
           errorMessageTimestamp: S.optional(S.Number),
         }),
@@ -11068,7 +9089,7 @@ function __c26(j: number): any {
         }),
       ).annotate({ identifier: "RedisVersion" });
     case 7:
-      return S.Array(RedisVersion);
+      return S.Array(__S(214));
   }
 }
 function __c27(j: number): any {
@@ -11076,7 +9097,7 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          redisVersions: S.optional(RedisVersionsRedisVersionsList),
+          redisVersions: S.optional(__S(215)),
         }),
       ).annotate({ identifier: "RedisVersions" });
     case 1:
@@ -11099,7 +9120,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.optional(S.Number),
-          links: S.optional(ActiveActiveSubscriptionRegionsLinksList),
+          links: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "ActiveActiveSubscriptionRegions",
@@ -11132,7 +9153,7 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "DatabaseSlowLogEntry" });
     case 7:
-      return S.Array(DatabaseSlowLogEntry);
+      return S.Array(__S(222));
   }
 }
 function __c28(j: number): any {
@@ -11140,8 +9161,8 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entries: S.optional(DatabaseSlowLogEntriesEntriesList),
-          links: S.optional(DatabaseSlowLogEntriesLinksList),
+          entries: S.optional(__S(223)),
+          links: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "DatabaseSlowLogEntries" });
     case 1:
@@ -11167,17 +9188,11 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           redisServiceAccount: S.optional(S.String),
-          googlePredefinedRoles: S.optional(
-            CustomerManagedKeyAccessDetailsGooglePredefinedRolesList,
-          ),
-          googleCustomPermissions: S.optional(
-            CustomerManagedKeyAccessDetailsGoogleCustomPermissionsList,
-          ),
+          googlePredefinedRoles: S.optional(__S(4)),
+          googleCustomPermissions: S.optional(__S(4)),
           redisIamRole: S.optional(S.String),
           requiredKeyPolicyStatements: S.optional(S.Unknown),
-          deletionGracePeriodOptions: S.optional(
-            CustomerManagedKeyAccessDetailsDeletionGracePeriodOptionsList,
-          ),
+          deletionGracePeriodOptions: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "CustomerManagedKeyAccessDetails",
@@ -11190,13 +9205,13 @@ function __c28(j: number): any {
           paymentMethodId: S.optional(S.Number),
           status: S.optional(S.String),
           publicEndpointAccess: S.optional(S.Boolean),
-          memoryStorage: S.optional(SubscriptionMemoryStorage),
+          memoryStorage: S.optional(S.String),
           numberOfDatabases: S.optional(S.Number),
-          paymentMethodType: S.optional(SubscriptionPaymentMethodType),
-          links: S.optional(SubscriptionLinksList),
+          paymentMethodType: S.optional(S.String),
+          links: S.optional(__S(12)),
           persistentStorageEncryptionType: S.optional(S.String),
           deletionGracePeriod: S.optional(S.String),
-          customerManagedKeyAccessDetails: S.optional(CustomerManagedKeyAccessDetails),
+          customerManagedKeyAccessDetails: S.optional(__S(227)),
         }),
       ).annotate({ identifier: "Subscription" });
     case 5:
@@ -11237,7 +9252,7 @@ function __c28(j: number): any {
           supportClustering: S.optional(S.Boolean),
           customerSupport: S.optional(S.String),
           creationDate: S.optional(S.String),
-          links: S.optional(FixedSubscriptionLinksList),
+          links: S.optional(__S(12)),
           databaseStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "FixedSubscription" });
@@ -11264,7 +9279,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           databaseId: S.optional(S.Number),
-          links: S.optional(DatabaseLinksList),
+          links: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "Database" });
     case 1:
@@ -11294,12 +9309,12 @@ function __c29(j: number): any {
         S.Struct({
           databaseId: S.optional(S.Number),
           name: S.optional(S.String),
-          protocol: S.optional(FixedDatabaseProtocol),
+          protocol: S.optional(S.String),
           provider: S.optional(S.String),
           region: S.optional(S.String),
           redisVersion: S.optional(S.String),
           redisVersionCompliance: S.optional(S.String),
-          respVersion: S.optional(FixedDatabaseRespVersion),
+          respVersion: S.optional(S.String),
           status: S.optional(S.String),
           planMemoryLimit: S.optional(S.Number),
           planDatasetSize: S.optional(S.Number),
@@ -11308,20 +9323,20 @@ function __c29(j: number): any {
           datasetSizeInGb: S.optional(S.Number),
           memoryUsedInMb: S.optional(S.Number),
           networkMonthlyUsageInByte: S.optional(S.Number),
-          memoryStorage: S.optional(FixedDatabaseMemoryStorage),
+          memoryStorage: S.optional(S.String),
           redisFlex: S.optional(S.Boolean),
           supportOSSClusterApi: S.optional(S.Boolean),
           useExternalEndpointForOSSClusterApi: S.optional(S.Boolean),
-          dataPersistence: S.optional(FixedDatabaseDataPersistence),
+          dataPersistence: S.optional(S.String),
           replication: S.optional(S.Boolean),
-          dataEvictionPolicy: S.optional(FixedDatabaseDataEvictionPolicy),
+          dataEvictionPolicy: S.optional(S.String),
           activatedOn: S.optional(S.String),
           lastModified: S.optional(S.String),
           publicEndpoint: S.optional(S.String),
           privateEndpoint: S.optional(S.String),
-          dynamicEndpoints: S.optional(DynamicEndpoints),
-          replicaAsSourceEndpoints: S.optional(ReplicaAsSourceEndpoints),
-          links: S.optional(FixedDatabaseLinksList),
+          dynamicEndpoints: S.optional(__S(234)),
+          replicaAsSourceEndpoints: S.optional(__S(234)),
+          links: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "FixedDatabase" });
     case 4:
@@ -11378,13 +9393,13 @@ function __c30(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          days: S.optional(MaintenanceWindowDaysList),
+          days: S.optional(__S(4)),
           startHour: S.optional(S.Number),
           durationInHours: S.optional(S.Number),
         }),
       ).annotate({ identifier: "MaintenanceWindow" });
     case 1:
-      return S.Array(MaintenanceWindow);
+      return S.Array(__S(240));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -11397,10 +9412,10 @@ function __c30(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(SubscriptionMaintenanceWindowsMode),
+          mode: S.optional(S.String),
           timeZone: S.optional(S.String),
-          windows: S.optional(SubscriptionMaintenanceWindowsWindowsList),
-          skipStatus: S.optional(MaintenanceWindowSkipStatus),
+          windows: S.optional(__S(241)),
+          skipStatus: S.optional(__S(242)),
         }),
       ).annotate({
         identifier: "SubscriptionMaintenanceWindows",
@@ -11429,11 +9444,11 @@ function __c30(j: number): any {
         }),
       ).annotate({ identifier: "SubscriptionPricing" });
     case 6:
-      return S.Array(SubscriptionPricing);
+      return S.Array(__S(245));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          pricing: S.optional(SubscriptionPricingsPricingList),
+          pricing: S.optional(__S(246)),
         }),
       ).annotate({ identifier: "SubscriptionPricings" });
   }
@@ -11455,18 +9470,18 @@ function __c31(j: number): any {
         }),
       ).annotate({ identifier: "Module" });
     case 2:
-      return S.Array(Module);
+      return S.Array(__S(249));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          modules: S.optional(ModulesDataModulesList),
-          links: S.optional(ModulesDataLinksList),
+          modules: S.optional(__S(250)),
+          links: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "ModulesData" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provider: S.optional(GetSupportedRegionsRequestProvider.pipe(T.Query())),
+          provider: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/v1/regions", code: 200 })),
       ).annotate({
         identifier: "GetSupportedRegionsRequest",
@@ -11476,16 +9491,16 @@ function __c31(j: number): any {
         S.Struct({
           id: S.optional(S.Number),
           name: S.optional(S.String),
-          provider: S.optional(RegionProvider),
+          provider: S.optional(S.String),
         }),
       ).annotate({ identifier: "Region" });
     case 6:
-      return S.Array(Region);
+      return S.Array(__S(253));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          regions: S.optional(RegionsRegionsList),
-          links: S.optional(RegionsLinksList),
+          regions: S.optional(__S(254)),
+          links: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "Regions" });
   }
@@ -11503,8 +9518,8 @@ function __c32(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          queryPerformanceFactors: S.optional(SearchScalingFactorsDataQueryPerformanceFactorsList),
-          links: S.optional(SearchScalingFactorsDataLinksList),
+          queryPerformanceFactors: S.optional(__S(4)),
+          links: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "SearchScalingFactorsData" });
     case 2:
@@ -11523,7 +9538,7 @@ function __c32(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          links: S.optional(CloudTagsLinksList),
+          links: S.optional(__S(12)),
           accountId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "CloudTags" });
@@ -11601,7 +9616,7 @@ function __c33(j: number): any {
           signUp: S.optional(S.String),
           userType: S.optional(S.String),
           hasApiKey: S.optional(S.Boolean),
-          options: S.optional(AccountUserOptions),
+          options: S.optional(__S(265)),
         }),
       ).annotate({ identifier: "AccountUser" });
     case 3:
@@ -11617,7 +9632,7 @@ function __c33(j: number): any {
           name: S.optional(S.String),
           role: S.optional(S.String),
           status: S.optional(S.String),
-          links: S.optional(ACLUserLinksList),
+          links: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "ACLUser" });
     case 5:
@@ -11633,8 +9648,8 @@ function __c33(j: number): any {
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           databaseId: S.Number.pipe(T.Label()),
-          sourceType: ImportDatabaseRequestSourceType,
-          importFromUri: ImportDatabaseRequestImportFromUriList,
+          sourceType: S.String,
+          importFromUri: __S(4),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11648,8 +9663,8 @@ function __c33(j: number): any {
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           databaseId: S.Number.pipe(T.Label()),
-          sourceType: ImportDatabase1RequestSourceType,
-          importFromUri: ImportDatabase1RequestImportFromUriList,
+          sourceType: S.String,
+          importFromUri: __S(4),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11683,18 +9698,18 @@ function __c34(j: number): any {
           databaseId: S.optional(S.String),
           databaseName: S.optional(S.String),
           subscriptionId: S.optional(S.String),
-          extractionStrategy: S.optional(MemoryStoreSummaryExtractionStrategy),
-          summarization: S.optional(MemoryStoreSummarizationConfig),
-          llm: S.optional(MemoryStoreModelStatus),
-          status: S.optional(MemoryStoreSummaryStatus),
+          extractionStrategy: S.optional(S.String),
+          summarization: S.optional(__S(51)),
+          llm: S.optional(__S(202)),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "MemoryStoreSummary" });
     case 3:
-      return S.Array(MemoryStoreSummary);
+      return S.Array(__S(274));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(MemoryStoreListResponseDataList),
+          data: S.optional(__S(275)),
         }),
       ).annotate({ identifier: "MemoryStoreListResponse" });
     case 5:
@@ -11854,7 +9869,7 @@ function __c35(j: number): any {
           gcpVpcName: S.optional(S.String),
           gcpVpcSubnetName: S.optional(S.String),
           endpointConnectionName: S.optional(S.String),
-          action: S.optional(UpdateActiveActivePscServiceEndpointRequestAction),
+          action: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11876,14 +9891,14 @@ function __c36(j: number): any {
         }),
       ).annotate({ identifier: "Cidr" });
     case 1:
-      return S.Array(Cidr);
+      return S.Array(__S(288));
     case 2:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           regionId: S.Number.pipe(T.Label()),
           TgwId: S.Number.pipe(T.Label()),
-          cidrs: S.optional(UpdateActiveActiveTgwAttachmentCidrsRequestCidrsList),
+          cidrs: S.optional(__S(289)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11900,7 +9915,7 @@ function __c36(j: number): any {
           subscriptionId: S.Number.pipe(T.Label()),
           peeringId: S.Number.pipe(T.Label()),
           vpcCidr: S.optional(S.String),
-          vpcCidrs: S.optional(UpdateActiveActiveVpcPeeringRequestVpcCidrsList),
+          vpcCidrs: S.optional(__S(4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11929,20 +9944,20 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           region: S.optional(S.String),
-          remoteBackup: S.optional(DatabaseBackupConfigInput),
-          localThroughputMeasurement: S.optional(LocalThroughput),
-          dataPersistence: S.optional(LocalRegionPropertiesInputDataPersistence),
+          remoteBackup: S.optional(__S(32)),
+          localThroughputMeasurement: S.optional(__S(6)),
+          dataPersistence: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          sourceIp: S.optional(LocalRegionPropertiesInputSourceIpList),
-          alerts: S.optional(LocalRegionPropertiesInputAlertsList),
-          respVersion: S.optional(LocalRegionPropertiesInputRespVersion),
+          sourceIp: S.optional(__S(4)),
+          alerts: S.optional(__S(36)),
+          respVersion: S.optional(S.String),
           enableDefaultUser: S.optional(S.Boolean),
         }),
       ).annotate({
         identifier: "LocalRegionPropertiesInput",
       });
     case 6:
-      return S.Array(LocalRegionPropertiesInput);
+      return S.Array(__S(293));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -11955,17 +9970,15 @@ function __c36(j: number): any {
           supportOSSClusterApi: S.optional(S.Boolean),
           useExternalEndpointForOSSClusterApi: S.optional(S.Boolean),
           clientSslCertificate: S.optional(S.String),
-          clientTlsCertificates: S.optional(
-            UpdateCrdbLocalPropertiesRequestClientTlsCertificatesList,
-          ),
+          clientTlsCertificates: S.optional(__S(34)),
           enableTls: S.optional(S.Boolean),
-          globalDataPersistence: S.optional(UpdateCrdbLocalPropertiesRequestGlobalDataPersistence),
+          globalDataPersistence: S.optional(S.String),
           globalPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
           globalEnableDefaultUser: S.optional(S.Boolean),
-          globalSourceIp: S.optional(UpdateCrdbLocalPropertiesRequestGlobalSourceIpList),
-          globalAlerts: S.optional(UpdateCrdbLocalPropertiesRequestGlobalAlertsList),
-          regions: S.optional(UpdateCrdbLocalPropertiesRequestRegionsList),
-          dataEvictionPolicy: S.optional(UpdateCrdbLocalPropertiesRequestDataEvictionPolicy),
+          globalSourceIp: S.optional(__S(4)),
+          globalAlerts: S.optional(__S(36)),
+          regions: S.optional(__S(294)),
+          dataEvictionPolicy: S.optional(S.String),
           autoMinorVersionUpgrade: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -11990,27 +10003,27 @@ function __c37(j: number): any {
           name: S.optional(S.String),
           memoryLimitInGb: S.optional(S.Number),
           datasetSizeInGb: S.optional(S.Number),
-          respVersion: S.optional(UpdateDatabaseRequestRespVersion),
-          throughputMeasurement: S.optional(DatabaseThroughputSpec),
-          dataPersistence: S.optional(UpdateDatabaseRequestDataPersistence),
-          dataEvictionPolicy: S.optional(UpdateDatabaseRequestDataEvictionPolicy),
+          respVersion: S.optional(S.String),
+          throughputMeasurement: S.optional(__S(30)),
+          dataPersistence: S.optional(S.String),
+          dataEvictionPolicy: S.optional(S.String),
           replication: S.optional(S.Boolean),
-          regexRules: S.optional(UpdateDatabaseRequestRegexRulesList),
-          replicaOf: S.optional(UpdateDatabaseRequestReplicaOfList),
-          replica: S.optional(ReplicaOfSpec),
+          regexRules: S.optional(__S(4)),
+          replicaOf: S.optional(__S(4)),
+          replica: S.optional(__S(29)),
           supportOSSClusterApi: S.optional(S.Boolean),
           useExternalEndpointForOSSClusterApi: S.optional(S.Boolean),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
           saslUsername: S.optional(S.String),
           saslPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          sourceIp: S.optional(UpdateDatabaseRequestSourceIpList),
+          sourceIp: S.optional(__S(4)),
           clientSslCertificate: S.optional(S.String),
-          clientTlsCertificates: S.optional(UpdateDatabaseRequestClientTlsCertificatesList),
+          clientTlsCertificates: S.optional(__S(34)),
           enableTls: S.optional(S.Boolean),
           enableDefaultUser: S.optional(S.Boolean),
           periodicBackupPath: S.optional(S.String),
-          remoteBackup: S.optional(DatabaseBackupConfigInput),
-          alerts: S.optional(UpdateDatabaseRequestAlertsList),
+          remoteBackup: S.optional(__S(32)),
+          alerts: S.optional(__S(36)),
           ramPercentage: S.optional(S.Number),
           autoMinorVersionUpgrade: S.optional(S.Boolean),
           queryPerformanceFactor: S.optional(S.String),
@@ -12026,7 +10039,7 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ttlSeconds: S.optional(S.Number),
-          embedding: S.optional(MemoryStoreModelConfig),
+          embedding: S.optional(__S(48)),
         }),
       ).annotate({
         identifier: "MemoryStoreLongTermMemoryUpdateConfig",
@@ -12042,22 +10055,20 @@ function __c37(j: number): any {
         identifier: "MemoryStoreTypeStrategyUpdate",
       });
     case 3:
-      return S.Array(MemoryStoreTypeStrategyUpdate);
+      return S.Array(__S(298));
     case 4:
       return S.suspend(() =>
         S.Struct({
           storeId: S.String.pipe(T.Label()),
           name: S.optional(S.String),
-          shortMemory: S.optional(MemoryStoreShortMemoryConfig),
-          longTermMemory: S.optional(MemoryStoreLongTermMemoryUpdateConfig),
-          llm: S.optional(MemoryStoreModelConfig),
-          summarization: S.optional(MemoryStoreSummarizationConfig),
-          longTermMemoryExclusions: S.optional(MemoryStoreLongTermMemoryExclusions),
-          addCustomMemoryTypes: S.optional(UpdateMemoryStoreRequestAddCustomMemoryTypesList),
-          updateCustomMemoryTypeStrategies: S.optional(
-            UpdateMemoryStoreRequestUpdateCustomMemoryTypeStrategiesList,
-          ),
-          extractionCadence: S.optional(MemoryStoreExtractionCadenceConfig),
+          shortMemory: S.optional(__S(46)),
+          longTermMemory: S.optional(__S(297)),
+          llm: S.optional(__S(48)),
+          summarization: S.optional(__S(51)),
+          longTermMemoryExclusions: S.optional(__S(61)),
+          addCustomMemoryTypes: S.optional(__S(66)),
+          updateCustomMemoryTypeStrategies: S.optional(__S(299)),
+          extractionCadence: S.optional(__S(67)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/memory-stores/{storeId}", code: 200 })),
       ).annotate({ identifier: "UpdateMemoryStoreRequest" });
     case 5:
@@ -12070,7 +10081,7 @@ function __c37(j: number): any {
           gcpVpcName: S.optional(S.String),
           gcpVpcSubnetName: S.optional(S.String),
           endpointConnectionName: S.optional(S.String),
-          action: S.optional(UpdatePscServiceEndpointRequestAction),
+          action: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12094,7 +10105,7 @@ function __c37(j: number): any {
         S.Struct({
           aclRoleId: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
-          redisRules: S.optional(UpdateRoleRequestRedisRulesList),
+          redisRules: S.optional(__S(79)),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/acl/roles/{aclRoleId}", code: 200 })),
       ).annotate({ identifier: "UpdateRoleRequest" });
   }
@@ -12115,7 +10126,7 @@ function __c38(j: number): any {
           subscriptionId: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           planId: S.optional(S.Number),
-          paymentMethod: S.optional(UpdateSubscription1RequestPaymentMethod),
+          paymentMethod: S.optional(S.String),
           paymentMethodId: S.optional(S.Number),
         }).pipe(
           T.Http({ method: "PUT", uri: "/v1/fixed/subscriptions/{subscriptionId}", code: 200 }),
@@ -12127,8 +10138,8 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
-          cidrIps: S.optional(UpdateSubscriptionCidrWhiteListRequestCidrIpsList),
-          securityGroupIds: S.optional(UpdateSubscriptionCidrWhiteListRequestSecurityGroupIdsList),
+          cidrIps: S.optional(__S(4)),
+          securityGroupIds: S.optional(__S(4)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/v1/subscriptions/{subscriptionId}/cidr", code: 200 }),
         ),
@@ -12140,17 +10151,17 @@ function __c38(j: number): any {
         S.Struct({
           startHour: S.Number,
           durationInHours: S.Number,
-          days: MaintenanceWindowSpecDaysList,
+          days: __S(4),
         }),
       ).annotate({ identifier: "MaintenanceWindowSpec" });
     case 4:
-      return S.Array(MaintenanceWindowSpec);
+      return S.Array(__S(307));
     case 5:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
-          mode: UpdateSubscriptionMaintenanceWindowsRequestMode,
-          windows: S.optional(UpdateSubscriptionMaintenanceWindowsRequestWindowsList),
+          mode: S.String,
+          windows: S.optional(__S(308)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12165,7 +10176,7 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
-          resourceTags: UpdateSubscriptionResourceTagsRequestResourceTagsList,
+          resourceTags: __S(88),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12215,7 +10226,7 @@ function __c39(j: number): any {
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           databaseId: S.Number.pipe(T.Label()),
-          tags: UpdateTagsRequestTagsList,
+          tags: __S(25),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12229,7 +10240,7 @@ function __c39(j: number): any {
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           databaseId: S.Number.pipe(T.Label()),
-          tags: UpdateTags1RequestTagsList,
+          tags: __S(25),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12243,7 +10254,7 @@ function __c39(j: number): any {
         S.Struct({
           subscriptionId: S.Number.pipe(T.Label()),
           TgwId: S.Number.pipe(T.Label()),
-          cidrs: S.optional(UpdateTgwAttachmentCidrsRequestCidrsList),
+          cidrs: S.optional(__S(289)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12259,7 +10270,7 @@ function __c39(j: number): any {
         S.Struct({
           userId: S.Number.pipe(T.Label()),
           name: S.String,
-          role: S.optional(UpdateUserRequestRole),
+          role: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/v1/users/{userId}", code: 200 })),
       ).annotate({ identifier: "UpdateUserRequest" });
     case 5:
@@ -12276,7 +10287,7 @@ function __c39(j: number): any {
           subscriptionId: S.Number.pipe(T.Label()),
           peeringId: S.Number.pipe(T.Label()),
           vpcCidr: S.optional(S.String),
-          vpcCidrs: S.optional(UpdateVpcPeeringRequestVpcCidrsList),
+          vpcCidrs: S.optional(__S(4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12321,5 +10332,96 @@ function __c40(j: number): any {
       ).annotate({
         identifier: "UpgradeEssentialsDatabaseRedisVersionRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
   }
 }

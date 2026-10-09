@@ -8,6 +8,8 @@ import { paginateCursor } from "../pagination.ts";
 import { NotionProtocol, type NotionOpError, type NotionOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { NotionOpError, NotionOpContext };
 
@@ -17,27 +19,12 @@ export interface ParentOfDataSourceRequest {
   /** The ID of the parent database (with or without dashes), for example, 195de9221179449fab8075a27c979105 */
   database_id: string;
 }
-const ParentOfDataSourceRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ParentOfDataSourceRequest>;
-
 export interface PropertyConfigurationRequestNumber {
   format?: string;
 }
-const PropertyConfigurationRequestNumber = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<PropertyConfigurationRequestNumber>;
-
 export interface PropertyConfigurationRequestFormula {
   expression?: string;
 }
-const PropertyConfigurationRequestFormula = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<PropertyConfigurationRequestFormula>;
-
 /** One of: `default`, `gray`, `brown`, `orange`, `yellow`, `green`, `blue`, `purple`, `pink`, `red` */
 export type SelectColor =
   | "default"
@@ -50,33 +37,16 @@ export type SelectColor =
   | "purple"
   | "pink"
   | "red";
-const SelectColor = S.String;
-
 export interface PropertyConfigurationRequestSelectOptionsItem {
   name: string;
   color?: SelectColor | (string & {});
   description?: string | null;
 }
-const PropertyConfigurationRequestSelectOptionsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<PropertyConfigurationRequestSelectOptionsItem>;
-
 export type PropertyConfigurationRequestSelectOptionsList =
   Array<PropertyConfigurationRequestSelectOptionsItem>;
-const PropertyConfigurationRequestSelectOptionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<PropertyConfigurationRequestSelectOptionsList>;
-
 export interface PropertyConfigurationRequestSelect {
   options?: PropertyConfigurationRequestSelectOptionsList;
 }
-const PropertyConfigurationRequestSelect = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<PropertyConfigurationRequestSelect>;
-
 export type PropertyConfigurationRequestMultiSelectOptionsItem =
   PropertyConfigurationRequestSelectOptionsItem;
 export type PropertyConfigurationRequestMultiSelectOptionsList =
@@ -84,45 +54,23 @@ export type PropertyConfigurationRequestMultiSelectOptionsList =
 export interface PropertyConfigurationRequestMultiSelect {
   options?: PropertyConfigurationRequestMultiSelectOptionsList;
 }
-const PropertyConfigurationRequestMultiSelect =
-  PropertyConfigurationRequestSelect as any as S.Schema<PropertyConfigurationRequestMultiSelect>;
-
 /** One of: `To-do`, `In progress`, `Complete` */
 export type StatusOptionGroup = "To-do" | "In progress" | "Complete";
-const StatusOptionGroup = S.String;
-
 export interface StatusOptionRequest {
   name: string;
   color?: SelectColor | (string & {});
   description?: string | null;
   group?: StatusOptionGroup | (string & {});
 }
-const StatusOptionRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StatusOptionRequest>;
-
 export type StatusOptionRequestArray = Array<StatusOptionRequest>;
-const StatusOptionRequestArray = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<StatusOptionRequestArray>;
-
 export interface StatusPropertyConfigRequest {
   /** The initial status options. If not provided, defaults are created. */
   options?: StatusOptionRequestArray;
 }
-const StatusPropertyConfigRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<StatusPropertyConfigRequest>;
-
 export interface PropertyConfigurationRequestRelationDualProperty {
   synced_property_id?: string;
   synced_property_name?: string;
 }
-const PropertyConfigurationRequestRelationDualProperty = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<PropertyConfigurationRequestRelationDualProperty>;
-
 export interface PropertyConfigurationRequestRelation {
   data_source_id: string;
   /** Always `single_property` */
@@ -130,11 +78,6 @@ export interface PropertyConfigurationRequestRelation {
   single_property?: unknown;
   dual_property?: PropertyConfigurationRequestRelationDualProperty;
 }
-const PropertyConfigurationRequestRelation = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<PropertyConfigurationRequestRelation>;
-
 export type RollupFunction =
   | "count"
   | "count_values"
@@ -160,8 +103,6 @@ export type RollupFunction =
   | "count_per_group"
   | "percent_per_group"
   | "show_original";
-const RollupFunction = S.String;
-
 export interface PropertyConfigurationRequestRollup {
   /** The function to use for the rollup, e.g. count, count_values, percent_not_empty, max. */
   function: RollupFunction | (string & {});
@@ -170,19 +111,9 @@ export interface PropertyConfigurationRequestRollup {
   relation_property_id?: string;
   rollup_property_id?: string;
 }
-const PropertyConfigurationRequestRollup = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<PropertyConfigurationRequestRollup>;
-
 export interface PropertyConfigurationRequestUniqueId {
   prefix?: string | null;
 }
-const PropertyConfigurationRequestUniqueId = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<PropertyConfigurationRequestUniqueId>;
-
 export interface PropertyConfigurationRequest {
   /** The description of the property. */
   description?: string | null;
@@ -215,20 +146,10 @@ export interface PropertyConfigurationRequest {
   last_visited_time?: unknown;
   place?: unknown;
 }
-const PropertyConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<PropertyConfigurationRequest>;
-
 /** Property schema of data source. */
 export type CreateDataSourceRequestPropertiesMap = {
   [key: string]: PropertyConfigurationRequest | undefined;
 };
-const CreateDataSourceRequestPropertiesMap = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateDataSourceRequestPropertiesMap>;
-
 /** One of: `default`, `gray`, `brown`, `orange`, `yellow`, `green`, `blue`, `purple`, `pink`, `red`, `default_background`, `gray_background`, `brown_background`, `orange_background`, `yellow_background`, `green_background`, `blue_background`, `purple_background`, `pink_background`, `red_background` */
 export type ApiColor =
   | "default"
@@ -251,8 +172,6 @@ export type ApiColor =
   | "purple_background"
   | "pink_background"
   | "red_background";
-const ApiColor = S.String;
-
 export interface AnnotationRequest {
   /** Whether the text is formatted as bold. */
   bold?: boolean;
@@ -267,17 +186,10 @@ export interface AnnotationRequest {
   /** The color of the text. */
   color?: ApiColor | (string & {});
 }
-const AnnotationRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<AnnotationRequest>;
-
 export interface RichTextItemRequestTextLink {
   /** The URL of the link. */
   url: string;
 }
-const RichTextItemRequestTextLink = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<RichTextItemRequestTextLink>;
-
 /** If a rich text object's type value is `text`, then the corresponding text field contains an object including the text content and any inline link. */
 export interface RichTextItemRequestText {
   /** The actual text content of the text. */
@@ -285,11 +197,6 @@ export interface RichTextItemRequestText {
   /** An object with information about any inline link in this text, if included. */
   link?: RichTextItemRequestTextLink | null;
 }
-const RichTextItemRequestText = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<RichTextItemRequestText>;
-
 export interface PartialUserObjectRequest {
   /** The ID of the user. */
   id: string;
@@ -386,19 +293,11 @@ export type RichTextItemRequestMention =
   | RichTextItemRequestMentionCase3
   | RichTextItemRequestMentionCase4
   | RichTextItemRequestMentionCase5;
-const RichTextItemRequestMention =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<RichTextItemRequestMention>;
-
 /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
 export interface RichTextItemRequestEquation {
   /** A KaTeX compatible string. */
   expression: string;
 }
-const RichTextItemRequestEquation = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<RichTextItemRequestEquation>;
-
 export interface RichTextItemRequest {
   /** All rich text objects contain an annotations object that sets the styling for the rich text. */
   annotations?: AnnotationRequest;
@@ -411,15 +310,8 @@ export interface RichTextItemRequest {
   /** Notion supports inline LaTeX equations as rich text objects with a type value of `equation`. */
   equation?: RichTextItemRequestEquation;
 }
-const RichTextItemRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<RichTextItemRequest>;
-
 /** Title of data source as it appears in Notion. */
 export type CreateDataSourceRequestTitleList = Array<RichTextItemRequest>;
-const CreateDataSourceRequestTitleList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateDataSourceRequestTitleList>;
-
 export interface FileUploadPageIconRequestFileUpload {
   /** ID of a FileUpload object that has the status `uploaded`. */
   id: string;
@@ -481,8 +373,6 @@ export type PageIconRequest =
   | ExternalPageIconRequest
   | CustomEmojiPageIconRequest
   | IconPageIconRequest;
-const PageIconRequest = /*@__PURE__*/ S.Unknown as any as S.Schema<PageIconRequest>;
-
 export interface CreateDataSourceRequest {
   /** An object specifying the parent of the new data source to be created. */
   parent: ParentOfDataSourceRequest;
@@ -493,11 +383,6 @@ export interface CreateDataSourceRequest {
   /** Page icon. */
   icon?: PageIconRequest | null;
 }
-const CreateDataSourceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateDataSourceRequest>;
-
 export interface DatabasePropertyConfigResponseNumber {
   /** The number format for the property. */
   format: string;
@@ -533,11 +418,6 @@ export interface StatusPropertyResponse {
 export type DatabasePropertyConfigResponseStatusOptionsList = Array<StatusPropertyResponse>;
 /** The IDs of the status options in this group. */
 export type DatabasePropertyConfigResponseStatusGroupsItemOptionIdsList = Array<string>;
-const DatabasePropertyConfigResponseStatusGroupsItemOptionIdsList = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DatabasePropertyConfigResponseStatusGroupsItemOptionIdsList>;
-
 export interface DatabasePropertyConfigResponseStatusGroupsItem {
   /** The ID of the status group. */
   id: string;
@@ -1028,41 +908,18 @@ export interface DataSourceObjectResponse {
 export type CreateDataSourceResponseBody =
   | PartialDataSourceObjectResponse
   | DataSourceObjectResponse;
-const CreateDataSourceResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<CreateDataSourceResponseBody>;
-
 export type CreateDataSourceResponse = CreateDataSourceResponseBody;
-const CreateDataSourceResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateDataSourceResponse>;
-
 export interface GetDataSourceRequest {
   data_source_id: string;
 }
-const GetDataSourceRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetDataSourceRequest>;
-
 export type GetDataSourceResponseBody = PartialDataSourceObjectResponse | DataSourceObjectResponse;
-const GetDataSourceResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<GetDataSourceResponseBody>;
-
 export type GetDataSourceResponse = GetDataSourceResponseBody;
-const GetDataSourceResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetDataSourceResponse>;
-
 export interface ListDataSourceTemplatesRequest {
   data_source_id: string;
   name?: string;
   start_cursor?: string;
   page_size?: number;
 }
-const ListDataSourceTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListDataSourceTemplatesRequest>;
-
 export interface ListDataSourceTemplatesResponseTemplatesItem {
   /** ID of the template page. */
   id: string;
@@ -1071,19 +928,9 @@ export interface ListDataSourceTemplatesResponseTemplatesItem {
   /** Whether this template is the default template for the data source. */
   is_default: boolean;
 }
-const ListDataSourceTemplatesResponseTemplatesItem = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListDataSourceTemplatesResponseTemplatesItem>;
-
 /** Array of templates available in this data source. */
 export type ListDataSourceTemplatesResponseTemplatesList =
   Array<ListDataSourceTemplatesResponseTemplatesItem>;
-const ListDataSourceTemplatesResponseTemplatesList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListDataSourceTemplatesResponseTemplatesList>;
-
 export interface ListDataSourceTemplatesResponse {
   /** Array of templates available in this data source. */
   templates: ListDataSourceTemplatesResponseTemplatesList;
@@ -1092,15 +939,7 @@ export interface ListDataSourceTemplatesResponse {
   /** Cursor to use for the next page of results. Null if there are no more results. */
   next_cursor: string | null;
 }
-const ListDataSourceTemplatesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListDataSourceTemplatesResponse>;
-
 export type QueryDataSourceRequestFilterPropertiesList = Array<string>;
-const QueryDataSourceRequestFilterPropertiesList =
-  DatabasePropertyConfigResponseStatusGroupsItemOptionIdsList as any as S.Schema<QueryDataSourceRequestFilterPropertiesList>;
-
 export type QueryDataSourceRequestSortsItemCase0Direction = "ascending" | "descending";
 export interface QueryDataSourceRequestSortsItemCase0 {
   property: string;
@@ -1115,15 +954,7 @@ export interface QueryDataSourceRequestSortsItemCase1 {
 export type QueryDataSourceRequestSortsItem =
   | QueryDataSourceRequestSortsItemCase0
   | QueryDataSourceRequestSortsItemCase1;
-const QueryDataSourceRequestSortsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryDataSourceRequestSortsItem>;
-
 export type QueryDataSourceRequestSortsList = Array<QueryDataSourceRequestSortsItem>;
-const QueryDataSourceRequestSortsList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<QueryDataSourceRequestSortsList>;
-
 export interface TextPropertyFilterCase0Case0 {
   equals: string;
 }
@@ -1553,13 +1384,8 @@ export type QueryDataSourceRequestFilter =
   | QueryDataSourceRequestFilterCase0
   | PropertyFilter
   | TimestampFilter;
-const QueryDataSourceRequestFilter =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryDataSourceRequestFilter>;
-
 /** Optionally filter the results to only include pages or data sources. Regular, non-wiki databases only support page children. The default behavior is no result type filtering, in other words, returning both pages and data sources for wikis. */
 export type QueryDataSourceRequestResultType = "page" | "data_source";
-const QueryDataSourceRequestResultType = S.String;
-
 export interface QueryDataSourceRequest {
   data_source_id: string;
   filter_properties?: QueryDataSourceRequestFilterPropertiesList;
@@ -1572,11 +1398,6 @@ export interface QueryDataSourceRequest {
   /** Optionally filter the results to only include pages or data sources. Regular, non-wiki databases only support page children. The default behavior is no result type filtering, in other words, returning both pages and data sources for wikis. */
   result_type?: QueryDataSourceRequestResultType | (string & {});
 }
-const QueryDataSourceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<QueryDataSourceRequest>;
-
 export interface AgentIdParentForBlockBasedObjectResponse {
   /** The parent type. */
   type: string;
@@ -1940,30 +1761,13 @@ export type QueryDataSourceResponseResultsItemCase1 =
 export type QueryDataSourceResponseResultsItem =
   | QueryDataSourceResponseResultsItemCase0
   | QueryDataSourceResponseResultsItemCase1;
-const QueryDataSourceResponseResultsItem =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<QueryDataSourceResponseResultsItem>;
-
 export type QueryDataSourceResponseResultsList = Array<QueryDataSourceResponseResultsItem>;
-const QueryDataSourceResponseResultsList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<QueryDataSourceResponseResultsList>;
-
 export type QueryDataSourceResponseRequestStatusType = "complete" | "incomplete";
-const QueryDataSourceResponseRequestStatusType = S.String;
-
 export type QueryDataSourceResponseRequestStatusIncompleteReason = "query_result_limit_reached";
-const QueryDataSourceResponseRequestStatusIncompleteReason = S.String;
-
 export interface QueryDataSourceResponseRequestStatus {
   type: QueryDataSourceResponseRequestStatusType;
   incomplete_reason?: QueryDataSourceResponseRequestStatusIncompleteReason;
 }
-const QueryDataSourceResponseRequestStatus = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<QueryDataSourceResponseRequestStatus>;
-
 export interface QueryDataSourceResponse {
   type: string;
   page_or_data_source: unknown;
@@ -1973,16 +1777,8 @@ export interface QueryDataSourceResponse {
   results: QueryDataSourceResponseResultsList;
   request_status?: QueryDataSourceResponseRequestStatus;
 }
-const QueryDataSourceResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<QueryDataSourceResponse>;
-
 /** Title of data source as it appears in Notion. */
 export type UpdateDataSourceRequestTitleList = Array<RichTextItemRequest>;
-const UpdateDataSourceRequestTitleList =
-  CreateDataSourceRequestTitleList as any as S.Schema<UpdateDataSourceRequestTitleList>;
-
 export type UpdateDataSourceRequestPropertiesValueCase0Number = PropertyConfigurationRequestNumber;
 export type UpdateDataSourceRequestPropertiesValueCase0Formula =
   PropertyConfigurationRequestFormula;
@@ -2060,18 +1856,10 @@ export interface UpdateDataSourceRequestPropertiesValueCase1 {
 export type UpdateDataSourceRequestPropertiesValue =
   | UpdateDataSourceRequestPropertiesValueCase0
   | UpdateDataSourceRequestPropertiesValueCase1;
-const UpdateDataSourceRequestPropertiesValue =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateDataSourceRequestPropertiesValue>;
-
 /** The property schema of the data source. The keys are property names or IDs, and the values are property configuration objects. Properties set to null will be removed. */
 export type UpdateDataSourceRequestPropertiesMap = {
   [key: string]: UpdateDataSourceRequestPropertiesValue | null | undefined;
 };
-const UpdateDataSourceRequestPropertiesMap = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<UpdateDataSourceRequestPropertiesMap>;
-
 export interface UpdateDataSourceRequest {
   data_source_id: string;
   /** Title of data source as it appears in Notion. */
@@ -2085,23 +1873,10 @@ export interface UpdateDataSourceRequest {
   /** The parent of the data source, when moving it to a different database. If not provided, the parent will not be updated. */
   parent?: ParentOfDataSourceRequest;
 }
-const UpdateDataSourceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<UpdateDataSourceRequest>;
-
 export type UpdateDataSourceResponseBody =
   | PartialDataSourceObjectResponse
   | DataSourceObjectResponse;
-const UpdateDataSourceResponseBody =
-  /*@__PURE__*/ S.Unknown as any as S.Schema<UpdateDataSourceResponseBody>;
-
 export type UpdateDataSourceResponse = UpdateDataSourceResponseBody;
-const UpdateDataSourceResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<UpdateDataSourceResponse>;
-
 export type CreateDataSourceError = NotionOpError;
 /** Create a data source */
 export const createDataSource: API.OperationMethod<
@@ -2110,8 +1885,8 @@ export const createDataSource: API.OperationMethod<
   CreateDataSourceError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataSourceRequest,
-  output: CreateDataSourceResponse,
+  input: __S(21) as any as S.Schema<CreateDataSourceRequest>,
+  output: __S(23) as any as S.Schema<CreateDataSourceResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2125,8 +1900,8 @@ export const getDataSource: API.OperationMethod<
   GetDataSourceError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDataSourceRequest,
-  output: GetDataSourceResponse,
+  input: __S(24) as any as S.Schema<GetDataSourceRequest>,
+  output: __S(25) as any as S.Schema<GetDataSourceResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2142,8 +1917,8 @@ export const listDataSourceTemplates: API.PaginatedOperationMethod<
   ListDataSourceTemplatesResponseTemplatesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListDataSourceTemplatesRequest,
-    output: ListDataSourceTemplatesResponse,
+    input: __S(26) as any as S.Schema<ListDataSourceTemplatesRequest>,
+    output: __S(29) as any as S.Schema<ListDataSourceTemplatesResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -2167,8 +1942,8 @@ export const queryDataSource: API.PaginatedOperationMethod<
   QueryDataSourceResponseResultsItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: QueryDataSourceRequest,
-    output: QueryDataSourceResponse,
+    input: __S(31) as any as S.Schema<QueryDataSourceRequest>,
+    output: __S(34) as any as S.Schema<QueryDataSourceResponse>,
     errors: [UnknownNotionError],
     protocol: NotionProtocol,
     retry: Retry.Retry,
@@ -2190,8 +1965,8 @@ export const updateDataSource: API.OperationMethod<
   UpdateDataSourceError,
   NotionOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDataSourceRequest,
-  output: UpdateDataSourceResponse,
+  input: __S(36) as any as S.Schema<UpdateDataSourceRequest>,
+  output: __S(37) as any as S.Schema<UpdateDataSourceResponse>,
   errors: [UnknownNotionError],
   protocol: NotionProtocol,
   retry: Retry.Retry,
@@ -2229,18 +2004,18 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          color: S.optional(SelectColor),
+          color: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "PropertyConfigurationRequestSelectOptionsItem",
       });
     case 4:
-      return S.Array(PropertyConfigurationRequestSelectOptionsItem);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(PropertyConfigurationRequestSelectOptionsList),
+          options: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "PropertyConfigurationRequestSelect",
@@ -2249,13 +2024,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          color: S.optional(SelectColor),
+          color: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          group: S.optional(StatusOptionGroup),
+          group: S.optional(S.String),
         }),
       ).annotate({ identifier: "StatusOptionRequest" });
     case 7:
-      return S.Array(StatusOptionRequest);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -2263,7 +2038,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(StatusOptionRequestArray),
+          options: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "StatusPropertyConfigRequest",
@@ -2283,7 +2058,7 @@ function __c1(j: number): any {
           data_source_id: S.String,
           type: S.optional(S.String),
           single_property: S.optional(S.Unknown),
-          dual_property: S.optional(PropertyConfigurationRequestRelationDualProperty),
+          dual_property: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "PropertyConfigurationRequestRelation",
@@ -2291,7 +2066,7 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          function: RollupFunction,
+          function: S.String,
           relation_property_name: S.optional(S.String),
           rollup_property_name: S.optional(S.String),
           relation_property_id: S.optional(S.String),
@@ -2313,14 +2088,14 @@ function __c1(j: number): any {
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           type: S.optional(S.String),
-          number: S.optional(PropertyConfigurationRequestNumber),
-          formula: S.optional(PropertyConfigurationRequestFormula),
-          select: S.optional(PropertyConfigurationRequestSelect),
-          multi_select: S.optional(PropertyConfigurationRequestMultiSelect),
-          status: S.optional(StatusPropertyConfigRequest),
-          relation: S.optional(PropertyConfigurationRequestRelation),
-          rollup: S.optional(PropertyConfigurationRequestRollup),
-          unique_id: S.optional(PropertyConfigurationRequestUniqueId),
+          number: S.optional(__S(1)),
+          formula: S.optional(__S(2)),
+          select: S.optional(__S(5)),
+          multi_select: S.optional(__S(5)),
+          status: S.optional(__S(8)),
+          relation: S.optional(__S(10)),
+          rollup: S.optional(__S(11)),
+          unique_id: S.optional(__S(12)),
           title: S.optional(S.Unknown),
           rich_text: S.optional(S.Unknown),
           url: S.optional(S.Unknown),
@@ -2344,7 +2119,7 @@ function __c1(j: number): any {
         identifier: "PropertyConfigurationRequest",
       });
     case 6:
-      return S.Record(S.String, PropertyConfigurationRequest);
+      return S.Record(S.String, __S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2353,7 +2128,7 @@ function __c1(j: number): any {
           strikethrough: S.optional(S.Boolean),
           underline: S.optional(S.Boolean),
           code: S.optional(S.Boolean),
-          color: S.optional(ApiColor),
+          color: S.optional(S.String),
         }),
       ).annotate({ identifier: "AnnotationRequest" });
   }
@@ -2372,7 +2147,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           content: S.String,
-          link: S.optional(S.NullOr(RichTextItemRequestTextLink)),
+          link: S.optional(S.NullOr(__S(16))),
         }),
       ).annotate({ identifier: "RichTextItemRequestText" });
     case 2:
@@ -2386,28 +2161,28 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          annotations: S.optional(AnnotationRequest),
+          annotations: S.optional(__S(15)),
           type: S.optional(S.String),
-          text: S.optional(RichTextItemRequestText),
-          mention: S.optional(RichTextItemRequestMention),
-          equation: S.optional(RichTextItemRequestEquation),
+          text: S.optional(__S(17)),
+          mention: S.optional(S.Unknown),
+          equation: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "RichTextItemRequest" });
     case 4:
-      return S.Array(RichTextItemRequest);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          parent: ParentOfDataSourceRequest,
-          properties: CreateDataSourceRequestPropertiesMap,
-          title: S.optional(CreateDataSourceRequestTitleList),
-          icon: S.optional(S.NullOr(PageIconRequest)),
+          parent: __S(0),
+          properties: __S(14),
+          title: S.optional(__S(20)),
+          icon: S.optional(S.NullOr(S.Unknown)),
         }).pipe(T.Http({ method: "POST", uri: "/v1/data_sources", code: 200 })),
       ).annotate({ identifier: "CreateDataSourceRequest" });
     case 6:
       return S.Array(S.String);
     case 7:
-      return S.suspend(() => CreateDataSourceResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateDataSourceResponse",
       });
   }
@@ -2421,7 +2196,7 @@ function __c3(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/v1/data_sources/{data_source_id}", code: 200 })),
       ).annotate({ identifier: "GetDataSourceRequest" });
     case 1:
-      return S.suspend(() => GetDataSourceResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "GetDataSourceResponse",
       });
     case 2:
@@ -2448,11 +2223,11 @@ function __c3(j: number): any {
         identifier: "ListDataSourceTemplatesResponseTemplatesItem",
       });
     case 4:
-      return S.Array(ListDataSourceTemplatesResponseTemplatesItem);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          templates: ListDataSourceTemplatesResponseTemplatesList,
+          templates: __S(28),
           has_more: S.Boolean,
           next_cursor: S.NullOr(S.String),
         }),
@@ -2460,18 +2235,18 @@ function __c3(j: number): any {
         identifier: "ListDataSourceTemplatesResponse",
       });
     case 6:
-      return S.Array(QueryDataSourceRequestSortsItem);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
           data_source_id: S.String.pipe(T.Label()),
-          filter_properties: S.optional(QueryDataSourceRequestFilterPropertiesList.pipe(T.Query())),
-          sorts: S.optional(QueryDataSourceRequestSortsList),
-          filter: S.optional(QueryDataSourceRequestFilter),
+          filter_properties: S.optional(__S(22).pipe(T.Query())),
+          sorts: S.optional(__S(30)),
+          filter: S.optional(S.Unknown),
           start_cursor: S.optional(S.String),
           page_size: S.optional(S.Number),
           is_archived: S.optional(S.Boolean),
-          result_type: S.optional(QueryDataSourceRequestResultType),
+          result_type: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/v1/data_sources/{data_source_id}/query", code: 200 }),
         ),
@@ -2481,12 +2256,12 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(QueryDataSourceResponseResultsItem);
+      return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          type: QueryDataSourceResponseRequestStatusType,
-          incomplete_reason: S.optional(QueryDataSourceResponseRequestStatusIncompleteReason),
+          type: S.String,
+          incomplete_reason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "QueryDataSourceResponseRequestStatus",
@@ -2499,26 +2274,45 @@ function __c4(j: number): any {
           object: S.String,
           next_cursor: S.NullOr(S.String),
           has_more: S.Boolean,
-          results: QueryDataSourceResponseResultsList,
-          request_status: S.optional(QueryDataSourceResponseRequestStatus),
+          results: __S(32),
+          request_status: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "QueryDataSourceResponse" });
     case 3:
-      return S.Record(S.String, /*@__PURE__*/ S.NullOr(UpdateDataSourceRequestPropertiesValue));
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 4:
       return S.suspend(() =>
         S.Struct({
           data_source_id: S.String.pipe(T.Label()),
-          title: S.optional(UpdateDataSourceRequestTitleList),
-          icon: S.optional(S.NullOr(PageIconRequest)),
-          properties: S.optional(UpdateDataSourceRequestPropertiesMap),
+          title: S.optional(__S(20)),
+          icon: S.optional(S.NullOr(S.Unknown)),
+          properties: S.optional(__S(35)),
           in_trash: S.optional(S.Boolean),
-          parent: S.optional(ParentOfDataSourceRequest),
+          parent: S.optional(__S(0)),
         }).pipe(T.Http({ method: "PATCH", uri: "/v1/data_sources/{data_source_id}", code: 200 })),
       ).annotate({ identifier: "UpdateDataSourceRequest" });
     case 5:
-      return S.suspend(() => UpdateDataSourceResponseBody.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => S.Unknown.pipe(T.RawResponseRoot())).annotate({
         identifier: "UpdateDataSourceResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

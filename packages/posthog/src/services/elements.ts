@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -37,11 +39,6 @@ export class NotFound
   ) {}
 
 export type CreateElementRequestAttrClassList = Array<string>;
-const CreateElementRequestAttrClassList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateElementRequestAttrClassList>;
-
 export interface CreateElementRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -55,12 +52,7 @@ export interface CreateElementRequest {
   attributes?: unknown;
   order?: number | null;
 }
-const CreateElementRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateElementRequest>;
-
 export type ElementAttrClassList = Array<string>;
-const ElementAttrClassList =
-  CreateElementRequestAttrClassList as any as S.Schema<ElementAttrClassList>;
-
 export interface Element {
   text?: string | null;
   tag_name?: string | null;
@@ -72,37 +64,20 @@ export interface Element {
   attributes?: unknown;
   order?: number | null;
 }
-const Element = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Element>;
-
 export interface ElementsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this element. */
   id: number;
 }
-const ElementsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ElementsDestroyRequest>;
-
 export interface ElementsDestroyResponse {}
-const ElementsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ElementsDestroyResponse>;
-
 export interface GetElementRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this element. */
   id: number;
 }
-const GetElementRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetElementRequest>;
-
 export type GetElementsStatRequestIncludeList = Array<string>;
-const GetElementsStatRequestIncludeList =
-  CreateElementRequestAttrClassList as any as S.Schema<GetElementsStatRequestIncludeList>;
-
 export interface GetElementsStatRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -125,18 +100,8 @@ export interface GetElementsStatRequest {
   /** Sampling factor between 0 and 1 */
   sampling_factor?: number;
 }
-const GetElementsStatRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetElementsStatRequest>;
-
 /** Parsed elements of the chain, clicked element first */
 export type ElementStatsElementsList = Array<Element>;
-const ElementStatsElementsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ElementStatsElementsList>;
-
 export interface ElementStats {
   /** Number of events matching this element chain */
   count: number;
@@ -147,15 +112,8 @@ export interface ElementStats {
   /** Parsed elements of the chain, clicked element first */
   elements: ElementStatsElementsList;
 }
-const ElementStats = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ElementStats>;
-
 /** Element chains with event counts, ordered by count */
 export type ElementStatsResponseResultsList = Array<ElementStats>;
-const ElementStatsResponseResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ElementStatsResponseResultsList>;
-
 export interface ElementStatsResponse {
   /** Element chains with event counts, ordered by count */
   results: ElementStatsResponseResultsList;
@@ -164,8 +122,6 @@ export interface ElementStatsResponse {
   /** URL for the previous page of results, if any */
   previous: string | null;
 }
-const ElementStatsResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ElementStatsResponse>;
-
 export interface ListElementsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -174,20 +130,13 @@ export interface ListElementsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListElementsRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListElementsRequest>;
-
 export type PaginatedElementListResultsList = Array<Element>;
-const PaginatedElementListResultsList =
-  ElementStatsElementsList as any as S.Schema<PaginatedElementListResultsList>;
-
 export interface PaginatedElementList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedElementListResultsList;
 }
-const PaginatedElementList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<PaginatedElementList>;
-
 export interface ListElementsValuesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -196,33 +145,13 @@ export interface ListElementsValuesRequest {
   /** Optional substring to filter values by (case-sensitive contains match). */
   value?: string;
 }
-const ListElementsValuesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListElementsValuesRequest>;
-
 export interface ElementValue {
   /** A distinct value of the requested element property */
   name: string;
 }
-const ElementValue = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ElementValue>;
-
 export type ListElementsValuesResponseBodyList = Array<ElementValue>;
-const ListElementsValuesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListElementsValuesResponseBodyList>;
-
 export type ListElementsValuesResponse = ListElementsValuesResponseBodyList;
-const ListElementsValuesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListElementsValuesResponse>;
-
 export type UpdateElementRequestAttrClassList = Array<string>;
-const UpdateElementRequestAttrClassList =
-  CreateElementRequestAttrClassList as any as S.Schema<UpdateElementRequestAttrClassList>;
-
 export interface UpdateElementRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -238,12 +167,7 @@ export interface UpdateElementRequest {
   attributes?: unknown;
   order?: number | null;
 }
-const UpdateElementRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<UpdateElementRequest>;
-
 export type UpdateElementsPartialRequestAttrClassList = Array<string>;
-const UpdateElementsPartialRequestAttrClassList =
-  CreateElementRequestAttrClassList as any as S.Schema<UpdateElementsPartialRequestAttrClassList>;
-
 export interface UpdateElementsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -259,11 +183,6 @@ export interface UpdateElementsPartialRequest {
   attributes?: unknown;
   order?: number | null;
 }
-const UpdateElementsPartialRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<UpdateElementsPartialRequest>;
-
 export type CreateElementError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createElement: API.OperationMethod<
   CreateElementRequest,
@@ -271,8 +190,8 @@ export const createElement: API.OperationMethod<
   CreateElementError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateElementRequest,
-  output: Element,
+  input: __S(1) as any as S.Schema<CreateElementRequest>,
+  output: __S(2) as any as S.Schema<Element>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -285,8 +204,8 @@ export const elementsDestroy: API.OperationMethod<
   ElementsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ElementsDestroyRequest,
-  output: ElementsDestroyResponse,
+  input: __S(3) as any as S.Schema<ElementsDestroyRequest>,
+  output: __S(4) as any as S.Schema<ElementsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -299,8 +218,8 @@ export const getElement: API.OperationMethod<
   GetElementError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetElementRequest,
-  output: Element,
+  input: __S(5) as any as S.Schema<GetElementRequest>,
+  output: __S(2) as any as S.Schema<Element>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -314,8 +233,8 @@ export const getElementsStat: API.OperationMethod<
   GetElementsStatError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetElementsStatRequest,
-  output: ElementStatsResponse,
+  input: __S(6) as any as S.Schema<GetElementsStatRequest>,
+  output: __S(10) as any as S.Schema<ElementStatsResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -328,8 +247,8 @@ export const listElements: API.OperationMethod<
   ListElementsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListElementsRequest,
-  output: PaginatedElementList,
+  input: __S(11) as any as S.Schema<ListElementsRequest>,
+  output: __S(12) as any as S.Schema<PaginatedElementList>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -342,8 +261,8 @@ export const listElementsValues: API.OperationMethod<
   ListElementsValuesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListElementsValuesRequest,
-  output: ListElementsValuesResponse,
+  input: __S(13) as any as S.Schema<ListElementsValuesRequest>,
+  output: __S(16) as any as S.Schema<ListElementsValuesResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -356,8 +275,8 @@ export const updateElement: API.OperationMethod<
   UpdateElementError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateElementRequest,
-  output: Element,
+  input: __S(17) as any as S.Schema<UpdateElementRequest>,
+  output: __S(2) as any as S.Schema<Element>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -370,8 +289,8 @@ export const updateElementsPartial: API.OperationMethod<
   UpdateElementsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateElementsPartialRequest,
-  output: Element,
+  input: __S(18) as any as S.Schema<UpdateElementsPartialRequest>,
+  output: __S(2) as any as S.Schema<Element>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -388,7 +307,7 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           text: S.optional(S.NullOr(S.String)),
           tag_name: S.optional(S.NullOr(S.String)),
-          attr_class: S.optional(S.NullOr(CreateElementRequestAttrClassList)),
+          attr_class: S.optional(S.NullOr(__S(0))),
           href: S.optional(S.NullOr(S.String)),
           attr_id: S.optional(S.NullOr(S.String)),
           nth_child: S.optional(S.NullOr(S.Number)),
@@ -402,7 +321,7 @@ function __c0(j: number): any {
         S.Struct({
           text: S.optional(S.NullOr(S.String)),
           tag_name: S.optional(S.NullOr(S.String)),
-          attr_class: S.optional(S.NullOr(ElementAttrClassList)),
+          attr_class: S.optional(S.NullOr(__S(0))),
           href: S.optional(S.NullOr(S.String)),
           attr_id: S.optional(S.NullOr(S.String)),
           nth_child: S.optional(S.NullOr(S.Number)),
@@ -441,7 +360,7 @@ function __c0(j: number): any {
           date_from: S.optional(S.String.pipe(T.Query())),
           date_to: S.optional(S.String.pipe(T.Query())),
           filter_test_accounts: S.optional(S.Boolean.pipe(T.Query())),
-          include: S.optional(GetElementsStatRequestIncludeList.pipe(T.Query())),
+          include: S.optional(__S(0).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           properties: S.optional(S.String.pipe(T.Query())),
@@ -451,7 +370,7 @@ function __c0(j: number): any {
         ),
       ).annotate({ identifier: "GetElementsStatRequest" });
     case 7:
-      return S.Array(Element);
+      return S.Array(__S(2));
   }
 }
 function __c1(j: number): any {
@@ -462,15 +381,15 @@ function __c1(j: number): any {
           count: S.Number,
           hash: S.NullOr(S.String),
           type: S.String,
-          elements: ElementStatsElementsList,
+          elements: __S(7),
         }),
       ).annotate({ identifier: "ElementStats" });
     case 1:
-      return S.Array(ElementStats);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          results: ElementStatsResponseResultsList,
+          results: __S(9),
           next: S.NullOr(S.String),
           previous: S.NullOr(S.String),
         }),
@@ -489,7 +408,7 @@ function __c1(j: number): any {
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedElementListResultsList),
+          results: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "PaginatedElementList" });
     case 5:
@@ -511,17 +430,15 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ElementValue" });
     case 7:
-      return S.Array(ElementValue);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => ListElementsValuesResponseBodyList.pipe(T.RawResponseRoot())).annotate(
-        {
-          identifier: "ListElementsValuesResponse",
-        },
-      );
+      return S.suspend(() => __S(15).pipe(T.RawResponseRoot())).annotate({
+        identifier: "ListElementsValuesResponse",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -529,7 +446,7 @@ function __c2(j: number): any {
           id: S.Number.pipe(T.Label()),
           text: S.optional(S.NullOr(S.String)),
           tag_name: S.optional(S.NullOr(S.String)),
-          attr_class: S.optional(S.NullOr(UpdateElementRequestAttrClassList)),
+          attr_class: S.optional(S.NullOr(__S(0))),
           href: S.optional(S.NullOr(S.String)),
           attr_id: S.optional(S.NullOr(S.String)),
           nth_child: S.optional(S.NullOr(S.Number)),
@@ -547,7 +464,7 @@ function __c2(j: number): any {
           id: S.Number.pipe(T.Label()),
           text: S.optional(S.NullOr(S.String)),
           tag_name: S.optional(S.NullOr(S.String)),
-          attr_class: S.optional(S.NullOr(UpdateElementsPartialRequestAttrClassList)),
+          attr_class: S.optional(S.NullOr(__S(0))),
           href: S.optional(S.NullOr(S.String)),
           attr_id: S.optional(S.NullOr(S.String)),
           nth_child: S.optional(S.NullOr(S.Number)),
@@ -560,5 +477,20 @@ function __c2(j: number): any {
       ).annotate({
         identifier: "UpdateElementsPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

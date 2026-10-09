@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -44,11 +46,6 @@ export interface ListAccountsQuotasRequest {
   /** Required. The merchant account who owns the collection of method quotas Format: accounts/{account} */
   parent: string;
 }
-const ListAccountsQuotasRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ListAccountsQuotasRequest>;
-
 /** The method details per method in the Merchant API. */
 export interface MethodDetails {
   /** Output only. The API version that the method belongs to. */
@@ -60,11 +57,7 @@ export interface MethodDetails {
   /** Output only. The path for the method such as `products/v1/productInputs.insert` */
   path?: string;
 }
-const MethodDetails = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<MethodDetails>;
-
 export type MethodDetailsList = Array<MethodDetails>;
-const MethodDetailsList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<MethodDetailsList>;
-
 /** The group information for methods in the Merchant API. The quota is shared between all methods in the group. Even if none of the methods within the group have usage the information for the group is returned. */
 export interface QuotaGroup {
   /** Output only. The maximum number of calls allowed per minute for the group. */
@@ -78,11 +71,7 @@ export interface QuotaGroup {
   /** Output only. List of all methods group quota applies to. */
   methodDetails?: MethodDetailsList;
 }
-const QuotaGroup = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<QuotaGroup>;
-
 export type QuotaGroupList = Array<QuotaGroup>;
-const QuotaGroupList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<QuotaGroupList>;
-
 /** Response message for the ListMethodGroups method. */
 export interface ListQuotaGroupsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -90,11 +79,6 @@ export interface ListQuotaGroupsResponse {
   /** The methods, current quota usage and limits per each group. The quota is shared between all methods in the group. The groups are sorted in descending order based on quota_usage. */
   quotaGroups?: QuotaGroupList;
 }
-const ListQuotaGroupsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListQuotaGroupsResponse>;
-
 export type ListAccountsQuotasError = NotFound | Forbidden | GcpOpError;
 /** Lists the daily call quota and usage per group for your Merchant Center account. */
 export const listAccountsQuotas: API.PaginatedOperationMethod<
@@ -104,8 +88,8 @@ export const listAccountsQuotas: API.PaginatedOperationMethod<
   GcpOpContext,
   ListQuotaGroupsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAccountsQuotasRequest,
-  output: ListQuotaGroupsResponse,
+  input: __S(0) as any as S.Schema<ListAccountsQuotasRequest>,
+  output: __S(5) as any as S.Schema<ListQuotaGroupsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -141,7 +125,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "MethodDetails" });
     case 2:
-      return S.Array(MethodDetails);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -149,17 +133,28 @@ function __c0(j: number): any {
           quotaUsage: S.optional(S.String),
           quotaLimit: S.optional(S.String),
           name: S.optional(S.String),
-          methodDetails: S.optional(MethodDetailsList),
+          methodDetails: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "QuotaGroup" });
     case 4:
-      return S.Array(QuotaGroup);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          quotaGroups: S.optional(QuotaGroupList),
+          quotaGroups: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "ListQuotaGroupsResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

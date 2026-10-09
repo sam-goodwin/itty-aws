@@ -7,6 +7,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -17,26 +19,11 @@ export interface ApplicationUserAssignedIdentity {
   /** The principal id of user assigned identity. */
   principalId: string;
 }
-const ApplicationUserAssignedIdentity = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ApplicationUserAssignedIdentity>;
-
 /** List of user assigned identities for the application, each mapped to a friendly name. */
 export type ApplicationResourcePropertiesInputManagedIdentitiesList =
   Array<ApplicationUserAssignedIdentity>;
-const ApplicationResourcePropertiesInputManagedIdentitiesList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ApplicationResourcePropertiesInputManagedIdentitiesList>;
-
 /** List of application parameters with overridden values from their default values specified in the application manifest. */
 export type ApplicationResourcePropertiesInputParametersMap = { [key: string]: string | undefined };
-const ApplicationResourcePropertiesInputParametersMap = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ApplicationResourcePropertiesInputParametersMap>;
-
 /** Represents the health policy used to evaluate the health of services belonging to a service type. */
 export interface ServiceTypeHealthPolicy {
   /** The maximum allowed percentage of unhealthy services. The percentage represents the maximum tolerated percentage of services that can be unhealthy before the application is considered in error. If the percentage is respected but there is at least one unhealthy service, the health is evaluated as Warning. This is calculated by dividing the number of unhealthy services of the specific service type over the total number of services of the specific service type. The computation rounds up to tolerate one failure on small numbers of services. */
@@ -46,20 +33,10 @@ export interface ServiceTypeHealthPolicy {
   /** The maximum allowed percentage of unhealthy replicas per partition. The percentage represents the maximum tolerated percentage of replicas that can be unhealthy before the partition is considered in error. If the percentage is respected but there is at least one unhealthy replica, the health is evaluated as Warning. The percentage is calculated by dividing the number of unhealthy replicas over the total number of replicas in the partition. The computation rounds up to tolerate one failure on small numbers of replicas. */
   maxPercentUnhealthyReplicasPerPartition: number;
 }
-const ServiceTypeHealthPolicy = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ServiceTypeHealthPolicy>;
-
 /** The map with service type health policy per service type name. The map is empty by default. */
 export type ApplicationHealthPolicyServiceTypeHealthPolicyMapMap = {
   [key: string]: ServiceTypeHealthPolicy | undefined;
 };
-const ApplicationHealthPolicyServiceTypeHealthPolicyMapMap = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ApplicationHealthPolicyServiceTypeHealthPolicyMapMap>;
-
 /** Defines a health policy used to evaluate the health of an application or one of its children entities. */
 export interface ApplicationHealthPolicy {
   /** Indicates whether warnings are treated with the same severity as errors. */
@@ -71,15 +48,8 @@ export interface ApplicationHealthPolicy {
   /** The map with service type health policy per service type name. The map is empty by default. */
   serviceTypeHealthPolicyMap?: ApplicationHealthPolicyServiceTypeHealthPolicyMapMap;
 }
-const ApplicationHealthPolicy = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ApplicationHealthPolicy>;
-
 /** The compensating action to perform when a Monitored upgrade encounters monitoring policy or health policy violations. Invalid indicates the failure action is invalid. Rollback specifies that the upgrade will start rolling back automatically. Manual indicates that the upgrade will switch to UnmonitoredManual upgrade mode. */
 export type FailureAction = "Rollback" | "Manual";
-const FailureAction = S.String;
-
 /** The policy used for monitoring the application upgrade */
 export interface RollingUpgradeMonitoringPolicy {
   /** The compensating action to perform when a Monitored upgrade encounters monitoring policy or health policy violations. Invalid indicates the failure action is invalid. Rollback specifies that the upgrade will start rolling back automatically. Manual indicates that the upgrade will switch to UnmonitoredManual upgrade mode. */
@@ -95,15 +65,8 @@ export interface RollingUpgradeMonitoringPolicy {
   /** The amount of time each upgrade domain has to complete before FailureAction is executed. Cannot be larger than 12 hours. It is interpreted as a string representing an ISO 8601 duration with following format "hh:mm:ss.fff". */
   upgradeDomainTimeout: string;
 }
-const RollingUpgradeMonitoringPolicy = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<RollingUpgradeMonitoringPolicy>;
-
 /** The mode used to monitor health during a rolling upgrade. The values are Monitored, and UnmonitoredAuto. */
 export type RollingUpgradeMode = "Monitored" | "UnmonitoredAuto";
-const RollingUpgradeMode = S.String;
-
 /** Describes the policy for a monitored application upgrade. */
 export interface ApplicationUpgradePolicy {
   /** Defines a health policy used to evaluate the health of an application or one of its children entities. */
@@ -121,11 +84,6 @@ export interface ApplicationUpgradePolicy {
   /** Determines whether the application should be recreated on update. If value=true, the rest of the upgrade policy parameters are not allowed. */
   recreateApplication?: boolean;
 }
-const ApplicationUpgradePolicy = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ApplicationUpgradePolicy>;
-
 /** The application resource properties. */
 export interface ApplicationResourcePropertiesInput {
   /** List of user assigned identities for the application, each mapped to a friendly name. */
@@ -137,40 +95,20 @@ export interface ApplicationResourcePropertiesInput {
   /** Describes the policy for a monitored application upgrade. */
   upgradePolicy?: ApplicationUpgradePolicy;
 }
-const ApplicationResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ApplicationResourcePropertiesInput>;
-
 /** Resource tags. */
 export type ApplicationsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ApplicationsCreateOrUpdateRequestTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<ApplicationsCreateOrUpdateRequestTagsMap>;
-
 /** The type of managed identity for the resource. */
 export type ManagedIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned";
-const ManagedIdentityType = S.String;
-
 /** User assigned identity. */
 export interface UserAssignedIdentityInput {}
-const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<UserAssignedIdentityInput>;
-
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type ManagedIdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-const ManagedIdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ManagedIdentityInputUserAssignedIdentitiesMap>;
-
 /** Describes the managed identities for an Azure resource. */
 export interface ManagedIdentityInput {
   /** The type of managed identity for the resource. */
@@ -178,8 +116,6 @@ export interface ManagedIdentityInput {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: ManagedIdentityInputUserAssignedIdentitiesMap;
 }
-const ManagedIdentityInput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ManagedIdentityInput>;
-
 export interface ApplicationsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -198,19 +134,10 @@ export interface ApplicationsCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ApplicationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<ApplicationsCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -226,19 +153,11 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<SystemData>;
-
 /** List of user assigned identities for the application, each mapped to a friendly name. */
 export type ApplicationResourcePropertiesManagedIdentitiesList =
   Array<ApplicationUserAssignedIdentity>;
-const ApplicationResourcePropertiesManagedIdentitiesList =
-  ApplicationResourcePropertiesInputManagedIdentitiesList as any as S.Schema<ApplicationResourcePropertiesManagedIdentitiesList>;
-
 /** List of application parameters with overridden values from their default values specified in the application manifest. */
 export type ApplicationResourcePropertiesParametersMap = { [key: string]: string | undefined };
-const ApplicationResourcePropertiesParametersMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<ApplicationResourcePropertiesParametersMap>;
-
 /** The application resource properties. */
 export interface ApplicationResourceProperties {
   /** List of user assigned identities for the application, each mapped to a friendly name. */
@@ -252,16 +171,8 @@ export interface ApplicationResourceProperties {
   /** Describes the policy for a monitored application upgrade. */
   upgradePolicy?: ApplicationUpgradePolicy;
 }
-const ApplicationResourceProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ApplicationResourceProperties>;
-
 /** Resource tags. */
 export type ApplicationsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ApplicationsCreateOrUpdateResponseTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<ApplicationsCreateOrUpdateResponseTagsMap>;
-
 /** User assigned identity. */
 export interface UserAssignedIdentity {
   /** The principal id of user assigned identity. */
@@ -269,17 +180,10 @@ export interface UserAssignedIdentity {
   /** The client id of user assigned identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<UserAssignedIdentity>;
-
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type ManagedIdentityUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentity | undefined;
 };
-const ManagedIdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ManagedIdentityUserAssignedIdentitiesMap>;
-
 /** Describes the managed identities for an Azure resource. */
 export interface ManagedIdentity {
   /** The principal id of the managed identity. This property will only be provided for a system assigned identity. */
@@ -291,8 +195,6 @@ export interface ManagedIdentity {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: ManagedIdentityUserAssignedIdentitiesMap;
 }
-const ManagedIdentity = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ManagedIdentity>;
-
 export interface ApplicationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -311,18 +213,10 @@ export interface ApplicationsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ApplicationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ApplicationsCreateOrUpdateResponse>;
-
 /** The application type name properties */
 export type ApplicationTypeResourcePropertiesInput = UserAssignedIdentityInput;
 /** Resource tags. */
 export type ApplicationTypesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ApplicationTypesCreateOrUpdateRequestTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<ApplicationTypesCreateOrUpdateRequestTagsMap>;
-
 export interface ApplicationTypesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -339,26 +233,13 @@ export interface ApplicationTypesCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ApplicationTypesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ApplicationTypesCreateOrUpdateRequest>;
-
 /** The application type name properties */
 export interface ApplicationTypeResourceProperties {
   /** The current deployment or provisioning state, which only appears in the response. */
   provisioningState?: string;
 }
-const ApplicationTypeResourceProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ApplicationTypeResourceProperties>;
-
 /** Resource tags. */
 export type ApplicationTypesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ApplicationTypesCreateOrUpdateResponseTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<ApplicationTypesCreateOrUpdateResponseTagsMap>;
-
 export interface ApplicationTypesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -375,28 +256,15 @@ export interface ApplicationTypesCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ApplicationTypesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ApplicationTypesCreateOrUpdateResponse>;
-
 /** The properties of the application type version resource. */
 export interface ApplicationTypeVersionResourcePropertiesInput {
   /** The URL to the application package */
   appPackageUrl: string;
 }
-const ApplicationTypeVersionResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ApplicationTypeVersionResourcePropertiesInput>;
-
 /** Resource tags. */
 export type ApplicationTypeVersionsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const ApplicationTypeVersionsCreateOrUpdateRequestTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateRequestTagsMap>;
-
 export interface ApplicationTypeVersionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -415,11 +283,6 @@ export interface ApplicationTypeVersionsCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ApplicationTypeVersionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateRequest>;
-
 /** The properties of the application type version resource. */
 export interface ApplicationTypeVersionResourceProperties {
   /** The current deployment or provisioning state, which only appears in the response */
@@ -427,18 +290,10 @@ export interface ApplicationTypeVersionResourceProperties {
   /** The URL to the application package */
   appPackageUrl: string;
 }
-const ApplicationTypeVersionResourceProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ApplicationTypeVersionResourceProperties>;
-
 /** Resource tags. */
 export type ApplicationTypeVersionsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const ApplicationTypeVersionsCreateOrUpdateResponseTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateResponseTagsMap>;
-
 export interface ApplicationTypeVersionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -455,11 +310,6 @@ export interface ApplicationTypeVersionsCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ApplicationTypeVersionsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateResponse>;
-
 export interface DeleteApplicationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -470,15 +320,7 @@ export interface DeleteApplicationRequest {
   /** The name of the application resource. */
   applicationName: string;
 }
-const DeleteApplicationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeleteApplicationRequest>;
-
 export interface DeleteApplicationResponse {}
-const DeleteApplicationResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteApplicationResponse>;
-
 export interface DeleteApplicationTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -489,15 +331,7 @@ export interface DeleteApplicationTypeRequest {
   /** The name of the application type name resource. */
   applicationTypeName: string;
 }
-const DeleteApplicationTypeRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<DeleteApplicationTypeRequest>;
-
 export interface DeleteApplicationTypeResponse {}
-const DeleteApplicationTypeResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteApplicationTypeResponse>;
-
 export interface DeleteApplicationTypeVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -510,17 +344,7 @@ export interface DeleteApplicationTypeVersionRequest {
   /** The application type version. */
   version: string;
 }
-const DeleteApplicationTypeVersionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<DeleteApplicationTypeVersionRequest>;
-
 export interface DeleteApplicationTypeVersionResponse {}
-const DeleteApplicationTypeVersionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeleteApplicationTypeVersionResponse>;
-
 export interface DeleteManagedClusterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -529,15 +353,7 @@ export interface DeleteManagedClusterRequest {
   /** The name of the cluster resource. */
   clusterName: string;
 }
-const DeleteManagedClusterRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeleteManagedClusterRequest>;
-
 export interface DeleteManagedClusterResponse {}
-const DeleteManagedClusterResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteManagedClusterResponse>;
-
 export interface DeleteNodeTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -548,25 +364,11 @@ export interface DeleteNodeTypeRequest {
   /** The name of the node type. */
   nodeTypeName: string;
 }
-const DeleteNodeTypeRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DeleteNodeTypeRequest>;
-
 export interface DeleteNodeTypeResponse {}
-const DeleteNodeTypeResponse = UserAssignedIdentityInput as any as S.Schema<DeleteNodeTypeResponse>;
-
 /** List of node names from the node type. */
 export type DeleteNodeTypeNodeRequestNodesList = Array<string>;
-const DeleteNodeTypeNodeRequestNodesList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DeleteNodeTypeNodeRequestNodesList>;
-
 /** Specifies the way the operation will be performed. */
 export type UpdateType = "Default" | "ByUpgradeDomain";
-const UpdateType = S.String;
-
 export interface DeleteNodeTypeNodeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -583,15 +385,7 @@ export interface DeleteNodeTypeNodeRequest {
   /** Specifies the way the operation will be performed. */
   updateType?: UpdateType | (string & {});
 }
-const DeleteNodeTypeNodeRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DeleteNodeTypeNodeRequest>;
-
 export interface DeleteNodeTypeNodeResponse {}
-const DeleteNodeTypeNodeResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteNodeTypeNodeResponse>;
-
 export interface DeleteServiceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -604,15 +398,9 @@ export interface DeleteServiceRequest {
   /** The name of the service resource in the format of {applicationName}~{serviceName}. */
   serviceName: string;
 }
-const DeleteServiceRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DeleteServiceRequest>;
-
 export interface DeleteServiceResponse {}
-const DeleteServiceResponse = UserAssignedIdentityInput as any as S.Schema<DeleteServiceResponse>;
-
 /** Enum for filtering health events. */
 export type HealthFilter = "Default" | "None" | "Ok" | "Warning" | "Error" | "All";
-const HealthFilter = S.String;
-
 export interface FetchApplicationHealthRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -633,15 +421,7 @@ export interface FetchApplicationHealthRequest {
   /** Request timeout for the health query in seconds. The default value is 60 seconds. */
   timeout?: number;
 }
-const FetchApplicationHealthRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<FetchApplicationHealthRequest>;
-
 export interface FetchApplicationHealthResponse {}
-const FetchApplicationHealthResponse =
-  UserAssignedIdentityInput as any as S.Schema<FetchApplicationHealthResponse>;
-
 export interface GetApplicationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -652,16 +432,8 @@ export interface GetApplicationRequest {
   /** The name of the application resource. */
   applicationName: string;
 }
-const GetApplicationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetApplicationRequest>;
-
 /** Resource tags. */
 export type GetApplicationResponseTagsMap = { [key: string]: string | undefined };
-const GetApplicationResponseTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<GetApplicationResponseTagsMap>;
-
 export interface GetApplicationResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -680,11 +452,6 @@ export interface GetApplicationResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetApplicationResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetApplicationResponse>;
-
 export interface GetApplicationTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -695,11 +462,6 @@ export interface GetApplicationTypeRequest {
   /** The name of the application type name resource. */
   applicationTypeName: string;
 }
-const GetApplicationTypeRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetApplicationTypeRequest>;
-
 /** Resource tags. */
 export type GetApplicationTypeResponseTagsMap = { [key: string]: string | undefined };
 export interface GetApplicationTypeResponse {
@@ -718,9 +480,6 @@ export interface GetApplicationTypeResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetApplicationTypeResponse =
-  ApplicationTypesCreateOrUpdateResponse as any as S.Schema<GetApplicationTypeResponse>;
-
 export interface GetApplicationTypeVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -733,11 +492,6 @@ export interface GetApplicationTypeVersionRequest {
   /** The application type version. */
   version: string;
 }
-const GetApplicationTypeVersionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetApplicationTypeVersionRequest>;
-
 /** Resource tags. */
 export type GetApplicationTypeVersionResponseTagsMap = { [key: string]: string | undefined };
 export interface GetApplicationTypeVersionResponse {
@@ -756,9 +510,6 @@ export interface GetApplicationTypeVersionResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetApplicationTypeVersionResponse =
-  ApplicationTypeVersionsCreateOrUpdateResponse as any as S.Schema<GetApplicationTypeVersionResponse>;
-
 export interface GetManagedAzResiliencyStatusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -767,11 +518,6 @@ export interface GetManagedAzResiliencyStatusRequest {
   /** The name of the cluster resource. */
   clusterName: string;
 }
-const GetManagedAzResiliencyStatusRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetManagedAzResiliencyStatusRequest>;
-
 /** Describes Az Resiliency status of Base resources */
 export interface ResourceAzStatus {
   /** VM Size properties. */
@@ -783,15 +529,8 @@ export interface ResourceAzStatus {
   /** Zone resiliency status details for the resource. */
   details?: string;
 }
-const ResourceAzStatus = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ResourceAzStatus>;
-
 /** List of Managed VM Sizes for Service Fabric Managed Clusters. */
 export type ManagedAzResiliencyStatusBaseResourceStatusList = Array<ResourceAzStatus>;
-const ManagedAzResiliencyStatusBaseResourceStatusList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ManagedAzResiliencyStatusBaseResourceStatusList>;
-
 /** Describes the result of the request to list Managed VM Sizes for Service Fabric Managed Clusters. */
 export interface ManagedAzResiliencyStatus {
   /** List of Managed VM Sizes for Service Fabric Managed Clusters. */
@@ -799,11 +538,6 @@ export interface ManagedAzResiliencyStatus {
   /** URL to get the next set of Managed VM Sizes if there are any. */
   isClusterZoneResilient?: boolean;
 }
-const ManagedAzResiliencyStatus = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ManagedAzResiliencyStatus>;
-
 export interface GetManagedClusterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -812,16 +546,8 @@ export interface GetManagedClusterRequest {
   /** The name of the cluster resource. */
   clusterName: string;
 }
-const GetManagedClusterRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<GetManagedClusterRequest>;
-
 /** Resource tags. */
 export type GetManagedClusterResponseTagsMap = { [key: string]: string | undefined };
-const GetManagedClusterResponseTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<GetManagedClusterResponseTagsMap>;
-
 /** The current state of the cluster. */
 export type ClusterState =
   | "WaitingForNodes"
@@ -830,21 +556,12 @@ export type ClusterState =
   | "Upgrading"
   | "UpgradeFailed"
   | "Ready";
-const ClusterState = S.String;
-
 /** List of thumbprints of the cluster certificates. */
 export type ManagedClusterPropertiesClusterCertificateThumbprintsList = Array<string>;
-const ManagedClusterPropertiesClusterCertificateThumbprintsList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<ManagedClusterPropertiesClusterCertificateThumbprintsList>;
-
 /** The reference to the transport protocol used by the load balancing rule. */
 export type Protocol = "tcp" | "udp";
-const Protocol = S.String;
-
 /** The reference to the load balancer probe used by the load balancing rule. */
 export type ProbeProtocol = "tcp" | "http" | "https";
-const ProbeProtocol = S.String;
-
 /** Describes a load balancing rule. */
 export interface LoadBalancingRule {
   /** The port for the external endpoint. Port numbers for each rule must be unique within the Load Balancer. Acceptable values are between 1 and 65534. */
@@ -862,47 +579,22 @@ export interface LoadBalancingRule {
   /** The load distribution policy for this rule. */
   loadDistribution?: string;
 }
-const LoadBalancingRule = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<LoadBalancingRule>;
-
 /** Load balancing rules that are applied to the public load balancer of the cluster. */
 export type ManagedClusterPropertiesLoadBalancingRulesList = Array<LoadBalancingRule>;
-const ManagedClusterPropertiesLoadBalancingRulesList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ManagedClusterPropertiesLoadBalancingRulesList>;
-
 /** Network protocol this rule applies to. */
 export type NsgProtocol = "http" | "https" | "tcp" | "udp" | "icmp" | "ah" | "esp";
-const NsgProtocol = S.String;
-
 /** The CIDR or source IP ranges. */
 export type NetworkSecurityRuleSourceAddressPrefixesList = Array<string>;
-const NetworkSecurityRuleSourceAddressPrefixesList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<NetworkSecurityRuleSourceAddressPrefixesList>;
-
 /** The destination address prefixes. CIDR or destination IP ranges. */
 export type NetworkSecurityRuleDestinationAddressPrefixesList = Array<string>;
-const NetworkSecurityRuleDestinationAddressPrefixesList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<NetworkSecurityRuleDestinationAddressPrefixesList>;
-
 /** The source port ranges. */
 export type NetworkSecurityRuleSourcePortRangesList = Array<string>;
-const NetworkSecurityRuleSourcePortRangesList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<NetworkSecurityRuleSourcePortRangesList>;
-
 /** The destination port ranges. */
 export type NetworkSecurityRuleDestinationPortRangesList = Array<string>;
-const NetworkSecurityRuleDestinationPortRangesList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<NetworkSecurityRuleDestinationPortRangesList>;
-
 /** The network traffic is allowed or denied. */
 export type Access = "allow" | "deny";
-const Access = S.String;
-
 /** Network security rule direction. */
 export type Direction = "inbound" | "outbound";
-const Direction = S.String;
-
 /** Describes a network security rule. */
 export interface NetworkSecurityRule {
   /** Network security rule name. */
@@ -934,15 +626,8 @@ export interface NetworkSecurityRule {
   /** Network security rule direction. */
   direction: Direction | (string & {});
 }
-const NetworkSecurityRule = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<NetworkSecurityRule>;
-
 /** Custom Network Security Rules that are applied to the Virtual Network of the cluster. */
 export type ManagedClusterPropertiesNetworkSecurityRulesList = Array<NetworkSecurityRule>;
-const ManagedClusterPropertiesNetworkSecurityRulesList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ManagedClusterPropertiesNetworkSecurityRulesList>;
-
 /** Client certificate definition. */
 export interface ClientCertificate {
   /** Indicates if the client certificate has admin access to the cluster. Non admin clients can perform only read only operations on the cluster. */
@@ -954,15 +639,8 @@ export interface ClientCertificate {
   /** Issuer thumbprint for the certificate. Only used together with CommonName. */
   issuerThumbprint?: string;
 }
-const ClientCertificate = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ClientCertificate>;
-
 /** Client certificates that are allowed to manage the cluster. */
 export type ManagedClusterPropertiesClientsList = Array<ClientCertificate>;
-const ManagedClusterPropertiesClientsList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<ManagedClusterPropertiesClientsList>;
-
 /** The settings to enable AAD authentication on the cluster. */
 export interface AzureActiveDirectory {
   /** Azure active directory tenant id. */
@@ -972,8 +650,6 @@ export interface AzureActiveDirectory {
   /** Azure active directory client application id. */
   clientApplication?: string;
 }
-const AzureActiveDirectory = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<AzureActiveDirectory>;
-
 /** Describes a parameter in fabric settings of the cluster. */
 export interface SettingsParameterDescription {
   /** The parameter name of fabric setting. */
@@ -981,18 +657,8 @@ export interface SettingsParameterDescription {
   /** The parameter value of fabric setting. */
   value: string;
 }
-const SettingsParameterDescription = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<SettingsParameterDescription>;
-
 /** The collection of parameters in the section. */
 export type SettingsSectionDescriptionParametersList = Array<SettingsParameterDescription>;
-const SettingsSectionDescriptionParametersList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<SettingsSectionDescriptionParametersList>;
-
 /** Describes a section in the fabric settings of the cluster. */
 export interface SettingsSectionDescription {
   /** The section name of the fabric settings. */
@@ -1000,18 +666,8 @@ export interface SettingsSectionDescription {
   /** The collection of parameters in the section. */
   parameters: SettingsSectionDescriptionParametersList;
 }
-const SettingsSectionDescription = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<SettingsSectionDescription>;
-
 /** The list of custom fabric settings to configure the cluster. */
 export type ManagedClusterPropertiesFabricSettingsList = Array<SettingsSectionDescription>;
-const ManagedClusterPropertiesFabricSettingsList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ManagedClusterPropertiesFabricSettingsList>;
-
 /** The provisioning state of the managed resource. */
 export type ManagedResourceProvisioningState =
   | "None"
@@ -1024,40 +680,22 @@ export type ManagedResourceProvisioningState =
   | "Deleting"
   | "Deleted"
   | "Other";
-const ManagedResourceProvisioningState = S.String;
-
 /** The upgrade mode of the cluster when new Service Fabric runtime version is available. */
 export type ManagedClusterPropertiesClusterUpgradeMode = "Automatic" | "Manual";
-const ManagedClusterPropertiesClusterUpgradeMode = S.String;
-
 /** Indicates when new cluster runtime version upgrades will be applied after they are released. By default is Wave0. */
 export type ClusterUpgradeCadence = "Wave0" | "Wave1" | "Wave2";
-const ClusterUpgradeCadence = S.String;
-
 /** Available cluster add-on features */
 export type ManagedClusterAddOnFeature =
   | "DnsService"
   | "BackupRestoreService"
   | "ResourceMonitorService";
-const ManagedClusterAddOnFeature = S.String;
-
 /** List of add-on features to enable on the cluster. */
 export type ManagedClusterPropertiesAddonFeaturesList = Array<ManagedClusterAddOnFeature>;
-const ManagedClusterPropertiesAddonFeaturesList = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ManagedClusterPropertiesAddonFeaturesList>;
-
 /** The policy used to clean up unused versions. When the policy is not specified explicitly, the default unused application versions to keep will be 3. */
 export interface ApplicationTypeVersionsCleanupPolicy {
   /** Number of unused versions per application type to keep. */
   maxUnusedVersionsToKeep: number;
 }
-const ApplicationTypeVersionsCleanupPolicy = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ApplicationTypeVersionsCleanupPolicy>;
-
 /** The IP tag associated with the public IP address. */
 export interface IpTag {
   /** IP tag type. Example: FirstPartyUsage. */
@@ -1065,23 +703,12 @@ export interface IpTag {
   /** IP tag associated with the public IP. Example: SQL, Storage etc. */
   tag: string;
 }
-const IpTag = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<IpTag>;
-
 /** The list of IP tags associated with the default public IP address of the cluster. */
 export type ManagedClusterPropertiesIpTagsList = Array<IpTag>;
-const ManagedClusterPropertiesIpTagsList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ManagedClusterPropertiesIpTagsList>;
-
 /** Enable or Disable apply network policies on private end point in the subnet. */
 export type PrivateEndpointNetworkPolicies = "enabled" | "disabled";
-const PrivateEndpointNetworkPolicies = S.String;
-
 /** Enable or Disable apply network policies on private link service in the subnet. */
 export type PrivateLinkServiceNetworkPolicies = "enabled" | "disabled";
-const PrivateLinkServiceNetworkPolicies = S.String;
-
 /** Describes a Subnet. */
 export interface Subnet {
   /** Subnet name. */
@@ -1095,20 +722,10 @@ export interface Subnet {
   /** Full resource id for the network security group. */
   networkSecurityGroupId?: string;
 }
-const Subnet = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<Subnet>;
-
 /** Auxiliary subnets for the cluster. */
 export type ManagedClusterPropertiesAuxiliarySubnetsList = Array<Subnet>;
-const ManagedClusterPropertiesAuxiliarySubnetsList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<ManagedClusterPropertiesAuxiliarySubnetsList>;
-
 /** A list of locations. */
 export type ServiceEndpointLocationsList = Array<string>;
-const ServiceEndpointLocationsList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<ServiceEndpointLocationsList>;
-
 /** The service endpoint properties. */
 export interface ServiceEndpoint {
   /** The type of the endpoint service. */
@@ -1118,19 +735,10 @@ export interface ServiceEndpoint {
   /** Specifies the resource id of the service endpoint to be used in the cluster. */
   networkIdentifier?: string;
 }
-const ServiceEndpoint = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ServiceEndpoint>;
-
 /** Service endpoints for subnets in the cluster. */
 export type ManagedClusterPropertiesServiceEndpointsList = Array<ServiceEndpoint>;
-const ManagedClusterPropertiesServiceEndpointsList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ManagedClusterPropertiesServiceEndpointsList>;
-
 /** Indicates the update mode for Cross Az clusters. */
 export type ZonalUpdateMode = "Standard" | "Fast";
-const ZonalUpdateMode = S.String;
-
 /** Defines a health policy used to evaluate the health of the cluster or of a cluster node. */
 export interface ClusterHealthPolicy {
   /** The maximum allowed percentage of unhealthy nodes before reporting an error. For example, to allow 10% of nodes to be unhealthy, this value would be 10. The percentage represents the maximum tolerated percentage of nodes that can be unhealthy before the cluster is considered in error. If the percentage is respected but there is at least one unhealthy node, the health is evaluated as Warning. The percentage is calculated by dividing the number of unhealthy nodes over the total number of nodes in the cluster. The computation rounds up to tolerate one failure on small numbers of nodes. Default percentage is zero. In large clusters, some nodes will always be down or out for repairs, so this percentage should be configured to tolerate that. */
@@ -1138,8 +746,6 @@ export interface ClusterHealthPolicy {
   /** The maximum allowed percentage of unhealthy applications before reporting an error. For example, to allow 10% of applications to be unhealthy, this value would be 10. The percentage represents the maximum tolerated percentage of applications that can be unhealthy before the cluster is considered in error. If the percentage is respected but there is at least one unhealthy application, the health is evaluated as Warning. This is calculated by dividing the number of unhealthy applications over the total number of application instances in the cluster, excluding applications of application types that are included in the ApplicationTypeHealthPolicyMap. The computation rounds up to tolerate one failure on small numbers of applications. Default percentage is zero. */
   maxPercentUnhealthyApplications: number;
 }
-const ClusterHealthPolicy = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<ClusterHealthPolicy>;
-
 /** Describes the delta health policies for the cluster upgrade. */
 export interface ClusterUpgradeDeltaHealthPolicy {
   /** The maximum allowed percentage of nodes health degradation allowed during cluster upgrades. The delta is measured between the state of the nodes at the beginning of upgrade and the state of the nodes at the time of the health evaluation. The check is performed after every upgrade domain upgrade completion to make sure the global state of the cluster is within tolerated limits. */
@@ -1149,11 +755,6 @@ export interface ClusterUpgradeDeltaHealthPolicy {
   /** The maximum allowed percentage of applications health degradation allowed during cluster upgrades. The delta is measured between the state of the applications at the beginning of upgrade and the state of the applications at the time of the health evaluation. The check is performed after every upgrade domain upgrade completion to make sure the global state of the cluster is within tolerated limits. System services are not included in this. NOTE: This value will overwrite the value specified in properties.UpgradeDescription.HealthPolicy.MaxPercentUnhealthyApplications */
   maxPercentDeltaUnhealthyApplications?: number;
 }
-const ClusterUpgradeDeltaHealthPolicy = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ClusterUpgradeDeltaHealthPolicy>;
-
 /** Describes the monitoring policies for the cluster upgrade. */
 export interface ClusterMonitoringPolicy {
   /** The length of time to wait after completing an upgrade domain before performing health checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms format. */
@@ -1167,11 +768,6 @@ export interface ClusterMonitoringPolicy {
   /** The amount of time each upgrade domain has to complete before the upgrade rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format. */
   upgradeDomainTimeout: string;
 }
-const ClusterMonitoringPolicy = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<ClusterMonitoringPolicy>;
-
 /** Describes the policy used when upgrading the cluster. */
 export interface ClusterUpgradePolicy {
   /** If true, then processes are forcefully restarted during upgrade even when the code version has not changed (the upgrade only changes configuration or data). */
@@ -1185,16 +781,12 @@ export interface ClusterUpgradePolicy {
   /** The maximum amount of time to block processing of an upgrade domain and prevent loss of availability when there are unexpected issues. When this timeout expires, processing of the upgrade domain will proceed regardless of availability loss issues. The timeout is reset at the start of each upgrade domain. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format. This value must be between 00:00:00 and 49710.06:28:15 (unsigned 32 bit integer for seconds) */
   upgradeReplicaSetCheckTimeout?: string;
 }
-const ClusterUpgradePolicy = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ClusterUpgradePolicy>;
-
 /** This enum is the entrypoint to using a certificate from a public CA for your cluster. This property was introduced to solve the domain squatting problem with new domains. A domain name will be generated in the following format: {clustername}.{hash}.{regionname}.sfmcdomain. The hash portion comes from Azure DNS' Deterministic Name Library. The library creates a hash using the cluster's Tenant, Subscription, Resource Group and Resource Name using the AutoGeneratedDomainNameLabelScope/reuse policy chosen. */
 export type AutoGeneratedDomainNameLabelScope =
   | "TenantReuse"
   | "SubscriptionReuse"
   | "ResourceGroupReuse"
   | "NoReuse";
-const AutoGeneratedDomainNameLabelScope = S.String;
-
 /** Describes the managed cluster resource properties. */
 export interface ManagedClusterProperties {
   /** The cluster dns name. */
@@ -1286,22 +878,13 @@ export interface ManagedClusterProperties {
   /** Determines whether to skip the assignment of the managed network security group (SF-NSG) to the cluster subnet when using a bring-your-own virtual network (BYOVNET) configuration. The default value is false. */
   skipManagedNsgAssignment?: boolean;
 }
-const ManagedClusterProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ManagedClusterProperties>;
-
 /** Sku Name. */
 export type SkuName = "Basic" | "Standard";
-const SkuName = S.String;
-
 /** Service Fabric managed cluster Sku definition */
 export interface Sku {
   /** Sku Name. */
   name: SkuName | (string & {});
 }
-const Sku = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<Sku>;
-
 export interface GetManagedClusterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1322,11 +905,6 @@ export interface GetManagedClusterResponse {
   /** The sku of the managed cluster */
   sku: Sku;
 }
-const GetManagedClusterResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<GetManagedClusterResponse>;
-
 export interface GetManagedClusterVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1335,15 +913,8 @@ export interface GetManagedClusterVersionRequest {
   /** The cluster code version. */
   clusterVersion: string;
 }
-const GetManagedClusterVersionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetManagedClusterVersionRequest>;
-
 /** Cluster operating system, the default will be Windows */
 export type OsType = "Windows";
-const OsType = S.String;
-
 /** The detail of the Service Fabric runtime version result */
 export interface ManagedClusterVersionDetails {
   /** The Service Fabric runtime version of the cluster. */
@@ -1353,11 +924,6 @@ export interface ManagedClusterVersionDetails {
   /** Cluster operating system, the default will be Windows */
   osType?: OsType;
 }
-const ManagedClusterVersionDetails = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ManagedClusterVersionDetails>;
-
 /** The result of the Service Fabric runtime versions */
 export interface ManagedClusterCodeVersionResult {
   /** The identification of the result */
@@ -1369,14 +935,7 @@ export interface ManagedClusterCodeVersionResult {
   /** The detail of the Service Fabric runtime version result */
   properties?: ManagedClusterVersionDetails;
 }
-const ManagedClusterCodeVersionResult = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ManagedClusterCodeVersionResult>;
-
 export type GetManagedClusterVersionByEnvironmentRequestEnvironment = "Windows";
-const GetManagedClusterVersionByEnvironmentRequestEnvironment = S.String;
-
 export interface GetManagedClusterVersionByEnvironmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1387,11 +946,6 @@ export interface GetManagedClusterVersionByEnvironmentRequest {
   /** The cluster code version. */
   clusterVersion: string;
 }
-const GetManagedClusterVersionByEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetManagedClusterVersionByEnvironmentRequest>;
-
 export interface GetManagedMaintenanceWindowStatusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1400,11 +954,6 @@ export interface GetManagedMaintenanceWindowStatusRequest {
   /** The name of the cluster resource. */
   clusterName: string;
 }
-const GetManagedMaintenanceWindowStatusRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<GetManagedMaintenanceWindowStatusRequest>;
-
 /** Describes the maintenance window status of the Service Fabric Managed Cluster. */
 export interface ManagedMaintenanceWindowStatus {
   /** If maintenance window is enabled on this cluster. */
@@ -1422,11 +971,6 @@ export interface ManagedMaintenanceWindowStatus {
   /** Last window end time in UTC. */
   lastWindowEndTimeUTC?: string;
 }
-const ManagedMaintenanceWindowStatus = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ManagedMaintenanceWindowStatus>;
-
 export interface GetManagedUnsupportedVMSizRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1435,18 +979,11 @@ export interface GetManagedUnsupportedVMSizRequest {
   /** VM Size name. */
   vmSize: string;
 }
-const GetManagedUnsupportedVMSizRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<GetManagedUnsupportedVMSizRequest>;
-
 /** VM Sizes properties. */
 export interface VMSize {
   /** VM Size name. */
   size?: string;
 }
-const VMSize = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<VMSize>;
-
 /** Describes a VM Sizes. */
 export interface ManagedVMSize {
   /** VM Size properties. */
@@ -1458,8 +995,6 @@ export interface ManagedVMSize {
   /** VM Size type. */
   type?: string;
 }
-const ManagedVMSize = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ManagedVMSize>;
-
 export interface GetNodeTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1470,8 +1005,6 @@ export interface GetNodeTypeRequest {
   /** The name of the node type. */
   nodeTypeName: string;
 }
-const GetNodeTypeRequest = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<GetNodeTypeRequest>;
-
 /** Managed data disk type. Specifies the storage account type for the managed disk */
 export type NodeTypePropertiesDataDiskType =
   | "Standard_LRS"
@@ -1480,18 +1013,10 @@ export type NodeTypePropertiesDataDiskType =
   | "PremiumV2_LRS"
   | "StandardSSD_ZRS"
   | "Premium_ZRS";
-const NodeTypePropertiesDataDiskType = S.String;
-
 /** The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run. */
 export type NodeTypePropertiesPlacementPropertiesMap = { [key: string]: string | undefined };
-const NodeTypePropertiesPlacementPropertiesMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<NodeTypePropertiesPlacementPropertiesMap>;
-
 /** The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has. */
 export type NodeTypePropertiesCapacitiesMap = { [key: string]: string | undefined };
-const NodeTypePropertiesCapacitiesMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<NodeTypePropertiesCapacitiesMap>;
-
 /** Port range details */
 export interface EndpointRangeDescription {
   /** Starting port of a range of ports */
@@ -1499,18 +1024,11 @@ export interface EndpointRangeDescription {
   /** End port of a range of ports */
   endPort: number;
 }
-const EndpointRangeDescription = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<EndpointRangeDescription>;
-
 /** Azure resource identifier. */
 export interface SubResource {
   /** Azure resource identifier. */
   id?: string;
 }
-const SubResource = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<SubResource>;
-
 /** Describes a single certificate reference in a Key Vault, and where the certificate should reside on the VM. */
 export interface VaultCertificate {
   /** This is the URL of a certificate that has been uploaded to Key Vault as a secret. For adding a secret to the Key Vault, see [Add a key or secret to the key vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started/#add). */
@@ -1518,15 +1036,8 @@ export interface VaultCertificate {
   /** For Windows VMs, specifies the certificate store on the Virtual Machine to which the certificate should be added. The specified certificate store is implicitly in the LocalMachine account. For Linux VMs, the certificate file is placed under the /var/lib/waagent directory, with the file name {UppercaseThumbprint}.crt for the X509 certificate file and {UppercaseThumbprint}.prv for private key. Both of these files are .pem formatted. */
   certificateStore: string;
 }
-const VaultCertificate = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<VaultCertificate>;
-
 /** The list of key vault references in SourceVault which contain certificates. */
 export type VaultSecretGroupVaultCertificatesList = Array<VaultCertificate>;
-const VaultSecretGroupVaultCertificatesList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<VaultSecretGroupVaultCertificatesList>;
-
 /** Specifies set of certificates that should be installed onto the virtual machines. */
 export interface VaultSecretGroup {
   /** The relative URL of the Key Vault containing all of the certificates in VaultCertificates. */
@@ -1534,27 +1045,14 @@ export interface VaultSecretGroup {
   /** The list of key vault references in SourceVault which contain certificates. */
   vaultCertificates: VaultSecretGroupVaultCertificatesList;
 }
-const VaultSecretGroup = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<VaultSecretGroup>;
-
 /** The secrets to install in the virtual machines. */
 export type NodeTypePropertiesVmSecretsList = Array<VaultSecretGroup>;
-const NodeTypePropertiesVmSecretsList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<NodeTypePropertiesVmSecretsList>;
-
 /** Collection of extension names after which this extension needs to be provisioned. */
 export type VMSSExtensionPropertiesProvisionAfterExtensionsList = Array<string>;
-const VMSSExtensionPropertiesProvisionAfterExtensionsList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<VMSSExtensionPropertiesProvisionAfterExtensionsList>;
-
 /** Vm extension setup order. */
 export type VmssExtensionSetupOrder = "BeforeSFRuntime";
 /** Indicates the setup order for the extension. */
 export type VMSSExtensionPropertiesSetupOrderList = Array<VmssExtensionSetupOrder>;
-const VMSSExtensionPropertiesSetupOrderList =
-  ManagedClusterPropertiesAddonFeaturesList as any as S.Schema<VMSSExtensionPropertiesSetupOrderList>;
-
 /** Describes the properties of a Virtual Machine Scale Set Extension. */
 export interface VMSSExtensionProperties {
   /** The name of the extension handler publisher. */
@@ -1580,11 +1078,6 @@ export interface VMSSExtensionProperties {
   /** Indicates the setup order for the extension. */
   setupOrder?: VMSSExtensionPropertiesSetupOrderList;
 }
-const VMSSExtensionProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<VMSSExtensionProperties>;
-
 /** Specifies set of extensions that should be installed onto the virtual machines. */
 export interface VMSSExtension {
   /** The name of the extension. */
@@ -1592,31 +1085,17 @@ export interface VMSSExtension {
   /** Describes the properties of a Virtual Machine Scale Set Extension. */
   properties: VMSSExtensionProperties;
 }
-const VMSSExtension = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<VMSSExtension>;
-
 /** Set of extensions that should be installed onto the virtual machines. */
 export type NodeTypePropertiesVmExtensionsList = Array<VMSSExtension>;
-const NodeTypePropertiesVmExtensionsList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<NodeTypePropertiesVmExtensionsList>;
-
 /** The list of user identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type VmManagedIdentityUserAssignedIdentitiesList = Array<string>;
-const VmManagedIdentityUserAssignedIdentitiesList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<VmManagedIdentityUserAssignedIdentitiesList>;
-
 /** Identities for the virtual machine scale set under the node type. */
 export interface VmManagedIdentity {
   /** The list of user identities associated with the virtual machine scale set under the node type. Each entry will be an ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: VmManagedIdentityUserAssignedIdentitiesList;
 }
-const VmManagedIdentity = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<VmManagedIdentity>;
-
 /** The IP address type of this frontend configuration. If omitted the default value is IPv4. */
 export type FrontendConfigurationIpAddressType = "IPv4" | "IPv6";
-const FrontendConfigurationIpAddressType = S.String;
-
 /** Describes the frontend configurations for the node type. */
 export interface FrontendConfiguration {
   /** The IP address type of this frontend configuration. If omitted the default value is IPv4. */
@@ -1628,23 +1107,10 @@ export interface FrontendConfiguration {
   /** The resource Id of application gateway backend address pool. The format of the resource Id is '/subscriptions/<subscriptionId>/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{backendAddressPoolName}'. */
   applicationGatewayBackendAddressPoolId?: string;
 }
-const FrontendConfiguration = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<FrontendConfiguration>;
-
 /** Indicates the node type uses its own frontend configurations instead of the default one for the cluster. This setting can only be specified for non-primary node types and can not be added or removed after the node type is created. */
 export type NodeTypePropertiesFrontendConfigurationsList = Array<FrontendConfiguration>;
-const NodeTypePropertiesFrontendConfigurationsList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<NodeTypePropertiesFrontendConfigurationsList>;
-
 /** The Network Security Rules for this node type. This setting can only be specified for node types that are configured with frontend configurations. */
 export type NodeTypePropertiesNetworkSecurityRulesList = Array<NetworkSecurityRule>;
-const NodeTypePropertiesNetworkSecurityRulesList =
-  ManagedClusterPropertiesNetworkSecurityRulesList as any as S.Schema<NodeTypePropertiesNetworkSecurityRulesList>;
-
 /** Managed data disk type. Specifies the storage account type for the managed disk */
 export type VmssDataDiskDiskType =
   | "Standard_LRS"
@@ -1653,8 +1119,6 @@ export type VmssDataDiskDiskType =
   | "PremiumV2_LRS"
   | "StandardSSD_ZRS"
   | "Premium_ZRS";
-const VmssDataDiskDiskType = S.String;
-
 /** Managed data disk description. */
 export interface VmssDataDisk {
   /** Specifies the logical unit number of the data disk. This value is used to identify data disks within the VM and therefore must be unique for each data disk attached to a VM. Lun 0 is reserved for the service fabric data disk. */
@@ -1666,39 +1130,20 @@ export interface VmssDataDisk {
   /** Managed data disk letter. It can not use the reserved letter C or D and it can not change after created. */
   diskLetter: string;
 }
-const VmssDataDisk = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<VmssDataDisk>;
-
 /** Additional managed data disks. */
 export type NodeTypePropertiesAdditionalDataDisksList = Array<VmssDataDisk>;
-const NodeTypePropertiesAdditionalDataDisksList = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<NodeTypePropertiesAdditionalDataDisksList>;
-
 /** Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster. */
 export type NodeTypePropertiesZonesList = Array<string>;
-const NodeTypePropertiesZonesList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<NodeTypePropertiesZonesList>;
-
 /** Specifies the eviction policy for virtual machines in a SPOT node type. */
 export type EvictionPolicyType = "Delete" | "Deallocate";
-const EvictionPolicyType = S.String;
-
 /** action to be performed on the vms before bootstrapping the service fabric runtime. */
 export type VmSetupAction = "EnableContainers" | "EnableHyperV";
 /** Specifies the actions to be performed on the vms before bootstrapping the service fabric runtime. */
 export type NodeTypePropertiesVmSetupActionsList = Array<VmSetupAction>;
-const NodeTypePropertiesVmSetupActionsList =
-  ManagedClusterPropertiesAddonFeaturesList as any as S.Schema<NodeTypePropertiesVmSetupActionsList>;
-
 /** Specifies the security type of the nodeType. Only Standard and TrustedLaunch are currently supported */
 export type SecurityType = "TrustedLaunch" | "Standard" | "ConfidentialVM";
-const SecurityType = S.String;
-
 /** Specifies the securityEncryptionType type of the nodeType. Only DiskWithVMGuestState and VMGuestStateOnly are currently supported */
 export type SecurityEncryptionType = "DiskWithVMGuestState" | "VMGuestStateOnly";
-const SecurityEncryptionType = S.String;
-
 /** Provides information about NAT configuration on the default public Load Balancer for the node type. */
 export interface NodeTypeNatConfig {
   /** The internal port for the NAT configuration. */
@@ -1708,15 +1153,8 @@ export interface NodeTypeNatConfig {
   /** The port range end for the external endpoint. */
   frontendPortRangeEnd?: number;
 }
-const NodeTypeNatConfig = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<NodeTypeNatConfig>;
-
 /** Specifies the NAT configuration on default public Load Balancer for the node type. This is only supported for node types use the default public Load Balancer. */
 export type NodeTypePropertiesNatConfigurationsList = Array<NodeTypeNatConfig>;
-const NodeTypePropertiesNatConfigurationsList = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<NodeTypePropertiesNatConfigurationsList>;
-
 /** Specifies information about the marketplace image used to create the virtual machine. This element is only used for marketplace images. Before you can use a marketplace image from an API, you must enable the image for programmatic use. In the Azure portal, find the marketplace image that you want to use and then click Want to deploy programmatically, Get Started. Enter any required information and then click Save. */
 export interface VmImagePlan {
   /** The plan ID. */
@@ -1728,38 +1166,18 @@ export interface VmImagePlan {
   /** The publisher ID. */
   publisher?: string;
 }
-const VmImagePlan = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<VmImagePlan>;
-
 /** Specifies an array of references to backend address pools of application gateways. A node type can reference backend address pools of multiple application gateways. Multiple node types cannot use the same application gateway. */
 export type IpConfigurationApplicationGatewayBackendAddressPoolsList = Array<SubResource>;
-const IpConfigurationApplicationGatewayBackendAddressPoolsList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<IpConfigurationApplicationGatewayBackendAddressPoolsList>;
-
 /** Specifies an array of references to backend address pools of load balancers. A node type can reference backend address pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer. */
 export type IpConfigurationLoadBalancerBackendAddressPoolsList = Array<SubResource>;
-const IpConfigurationLoadBalancerBackendAddressPoolsList =
-  IpConfigurationApplicationGatewayBackendAddressPoolsList as any as S.Schema<IpConfigurationLoadBalancerBackendAddressPoolsList>;
-
 /** Specifies an array of references to inbound Nat pools of the load balancers. A node type can reference inbound nat pools of one public and one internal load balancer. Multiple node types cannot use the same basic sku load balancer. */
 export type IpConfigurationLoadBalancerInboundNatPoolsList = Array<SubResource>;
-const IpConfigurationLoadBalancerInboundNatPoolsList =
-  IpConfigurationApplicationGatewayBackendAddressPoolsList as any as S.Schema<IpConfigurationLoadBalancerInboundNatPoolsList>;
-
 /** Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4. */
 export type IpConfigurationPrivateIPAddressVersion = "IPv4" | "IPv6";
-const IpConfigurationPrivateIPAddressVersion = S.String;
-
 /** Specifies the list of IP tags associated with the public IP address. */
 export type PublicIPAddressConfigurationIpTagsList = Array<IpTag>;
-const PublicIPAddressConfigurationIpTagsList =
-  ManagedClusterPropertiesIpTagsList as any as S.Schema<PublicIPAddressConfigurationIpTagsList>;
-
 /** Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4. */
 export type PublicIPAddressConfigurationPublicIPAddressVersion = "IPv4" | "IPv6";
-const PublicIPAddressConfigurationPublicIPAddressVersion = S.String;
-
 /** The public IP address configuration of the network interface. */
 export interface PublicIPAddressConfiguration {
   /** Name of the network interface. */
@@ -1769,11 +1187,6 @@ export interface PublicIPAddressConfiguration {
   /** Specifies whether the IP configuration's public IP is IPv4 or IPv6. Default is IPv4. */
   publicIPAddressVersion?: PublicIPAddressConfigurationPublicIPAddressVersion | (string & {});
 }
-const PublicIPAddressConfiguration = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<PublicIPAddressConfiguration>;
-
 /** Specifies an IP configuration of the network interface. */
 export interface IpConfiguration {
   /** Name of the network interface. */
@@ -1791,15 +1204,8 @@ export interface IpConfiguration {
   /** The public IP address configuration of the network interface. */
   publicIPAddressConfiguration?: PublicIPAddressConfiguration;
 }
-const IpConfiguration = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<IpConfiguration>;
-
 /** Specifies the IP configurations of the network interface. */
 export type AdditionalNetworkInterfaceConfigurationIpConfigurationsList = Array<IpConfiguration>;
-const AdditionalNetworkInterfaceConfigurationIpConfigurationsList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<AdditionalNetworkInterfaceConfigurationIpConfigurationsList>;
-
 /** Specifies the settings for a network interface to attach to the node type. */
 export interface AdditionalNetworkInterfaceConfiguration {
   /** Name of the network interface. */
@@ -1811,19 +1217,9 @@ export interface AdditionalNetworkInterfaceConfiguration {
   /** Specifies the IP configurations of the network interface. */
   ipConfigurations: AdditionalNetworkInterfaceConfigurationIpConfigurationsList;
 }
-const AdditionalNetworkInterfaceConfiguration = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<AdditionalNetworkInterfaceConfiguration>;
-
 /** Specifies the settings for any additional secondary network interfaces to attach to the node type. */
 export type NodeTypePropertiesAdditionalNetworkInterfaceConfigurationsList =
   Array<AdditionalNetworkInterfaceConfiguration>;
-const NodeTypePropertiesAdditionalNetworkInterfaceConfigurationsList = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<NodeTypePropertiesAdditionalNetworkInterfaceConfigurationsList>;
-
 /** Specifies the gallery application that should be made available to the underlying VMSS. */
 export interface VmApplication {
   /** Optional, Specifies the uri to an azure blob that will replace the default configuration for the package if provided. */
@@ -1839,15 +1235,8 @@ export interface VmApplication {
   /** Optional, If true, any failure for any operation in the VmApplication will fail the deployment. */
   treatFailureAsDeploymentFailure?: boolean;
 }
-const VmApplication = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<VmApplication>;
-
 /** Specifies the gallery applications that should be made available to the underlying VMSS. */
 export type NodeTypePropertiesVmApplicationsList = Array<VmApplication>;
-const NodeTypePropertiesVmApplicationsList = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<NodeTypePropertiesVmApplicationsList>;
-
 /** Describes a node type in the cluster, each node type represents sub set of nodes in the cluster. */
 export interface NodeTypeProperties {
   /** Indicates the Service Fabric system services for the cluster will run on this node type. This setting cannot be changed once the node type is created. */
@@ -1959,13 +1348,8 @@ export interface NodeTypeProperties {
   /** Specifies whether the node type should use a resilient ephemeral OS disk when using a supported SKU size. A resilient ephemeral OS disk provides improved reliability for ephemeral OS disks by enabling full caching. */
   enableResilientEphemeralOsDisk?: boolean;
 }
-const NodeTypeProperties = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<NodeTypeProperties>;
-
 /** Resource tags. */
 export type GetNodeTypeResponseTagsMap = { [key: string]: string | undefined };
-const GetNodeTypeResponseTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<GetNodeTypeResponseTagsMap>;
-
 /** Describes a node type sku. */
 export interface NodeTypeSku {
   /** The sku name. Name is internally generated and is used in auto-scale scenarios. Property does not allow to be changed to other values than generated. To avoid deployment errors please omit the property. */
@@ -1975,8 +1359,6 @@ export interface NodeTypeSku {
   /** The number of nodes in the node type. If present in request it will override properties.vmInstanceCount. */
   capacity: number;
 }
-const NodeTypeSku = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<NodeTypeSku>;
-
 export interface GetNodeTypeResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1993,8 +1375,6 @@ export interface GetNodeTypeResponse {
   /** The node type sku. */
   sku?: NodeTypeSku;
 }
-const GetNodeTypeResponse = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<GetNodeTypeResponse>;
-
 export interface GetOperationResultRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2003,15 +1383,7 @@ export interface GetOperationResultRequest {
   /** operation identifier. */
   operationId: string;
 }
-const GetOperationResultRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<GetOperationResultRequest>;
-
 export interface GetOperationResultResponse {}
-const GetOperationResultResponse =
-  UserAssignedIdentityInput as any as S.Schema<GetOperationResultResponse>;
-
 export interface GetOperationStatusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2020,11 +1392,6 @@ export interface GetOperationStatusRequest {
   /** operation identifier. */
   operationId: string;
 }
-const GetOperationStatusRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<GetOperationStatusRequest>;
-
 /** The error details. */
 export interface ErrorModelError {
   /** The error code. */
@@ -2032,8 +1399,6 @@ export interface ErrorModelError {
   /** The error message. */
   message?: string;
 }
-const ErrorModelError = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<ErrorModelError>;
-
 /** Long running operation result. */
 export interface LongRunningOperationResult {
   /** The name of the operation. */
@@ -2049,11 +1414,6 @@ export interface LongRunningOperationResult {
   /** The operation error. */
   error?: ErrorModelError;
 }
-const LongRunningOperationResult = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<LongRunningOperationResult>;
-
 export interface GetServiceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2066,12 +1426,8 @@ export interface GetServiceRequest {
   /** The name of the service resource in the format of {applicationName}~{serviceName}. */
   serviceName: string;
 }
-const GetServiceRequest = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<GetServiceRequest>;
-
 /** The service correlation scheme. */
 export type ServiceCorrelationScheme = "AlignedAffinity" | "NonAlignedAffinity";
-const ServiceCorrelationScheme = S.String;
-
 /** Creates a particular correlation between services. */
 export interface ServiceCorrelation {
   /** The ServiceCorrelationScheme which describes the relationship between this service and the service specified via ServiceName. */
@@ -2079,19 +1435,10 @@ export interface ServiceCorrelation {
   /** The Arm Resource ID of the service that the correlation relationship is established with. */
   serviceName: string;
 }
-const ServiceCorrelation = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<ServiceCorrelation>;
-
 /** A list that describes the correlation of the service with other services. */
 export type ServiceResourcePropertiesCorrelationSchemeList = Array<ServiceCorrelation>;
-const ServiceResourcePropertiesCorrelationSchemeList = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<ServiceResourcePropertiesCorrelationSchemeList>;
-
 /** Determines the metric weight relative to the other metrics that are configured for this service. During runtime, if two metrics end up in conflict, the Cluster Resource Manager prefers the metric with the higher weight. */
 export type ServiceLoadMetricWeight = "Zero" | "Low" | "Medium" | "High";
-const ServiceLoadMetricWeight = S.String;
-
 /** Specifies a metric to load balance a service during runtime. */
 export interface ServiceLoadMetric {
   /** The name of the metric. If the service chooses to report load during runtime, the load metric name should match the name that is specified in Name exactly. Note that metric names are case sensitive. */
@@ -2105,15 +1452,8 @@ export interface ServiceLoadMetric {
   /** Used only for Stateless services. The default amount of load, as a number, that this service creates for this metric. */
   defaultLoad?: number;
 }
-const ServiceLoadMetric = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<ServiceLoadMetric>;
-
 /** The service load metrics is given as an array of ServiceLoadMetric objects. */
 export type ServiceResourcePropertiesServiceLoadMetricsList = Array<ServiceLoadMetric>;
-const ServiceResourcePropertiesServiceLoadMetricsList = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<ServiceResourcePropertiesServiceLoadMetricsList>;
-
 /** The type of placement policy for a service fabric service. Following are the possible values. */
 export type ServicePlacementPolicyType =
   | "InvalidDomain"
@@ -2121,48 +1461,28 @@ export type ServicePlacementPolicyType =
   | "PreferredPrimaryDomain"
   | "RequiredDomainDistribution"
   | "NonPartiallyPlaceService";
-const ServicePlacementPolicyType = S.String;
-
 /** Describes the policy to be used for placement of a Service Fabric service. */
 export interface ServicePlacementPolicy {
   type: ServicePlacementPolicyType | (string & {});
 }
-const ServicePlacementPolicy = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<ServicePlacementPolicy>;
-
 /** A list that describes the correlation of the service with other services. */
 export type ServiceResourcePropertiesServicePlacementPoliciesList = Array<ServicePlacementPolicy>;
-const ServiceResourcePropertiesServicePlacementPoliciesList = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<ServiceResourcePropertiesServicePlacementPoliciesList>;
-
 /** Specifies the move cost for the service. */
 export type MoveCost = "Zero" | "Low" | "Medium" | "High";
-const MoveCost = S.String;
-
 /** Enumerates the ways that a service can be partitioned. */
 export type ServiceScalingMechanismKind =
   | "ScalePartitionInstanceCount"
   | "AddRemoveIncrementalNamedPartition";
-const ServiceScalingMechanismKind = S.String;
-
 /** Describes the mechanism for performing a scaling operation. */
 export interface ScalingMechanism {
   kind: ServiceScalingMechanismKind | (string & {});
 }
-const ScalingMechanism = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<ScalingMechanism>;
-
 /** Enumerates the ways that a service can be partitioned. */
 export type ServiceScalingTriggerKind = "AveragePartitionLoadTrigger" | "AverageServiceLoadTrigger";
 /** Describes the trigger for performing a scaling operation. */
 export interface ScalingTrigger {
   kind: ServiceScalingTriggerKind | (string & {});
 }
-const ScalingTrigger = ScalingMechanism as any as S.Schema<ScalingTrigger>;
-
 /** Specifies a metric to load balance a service during runtime. */
 export interface ScalingPolicy {
   /** Specifies the mechanism associated with this scaling policy */
@@ -2170,28 +1490,14 @@ export interface ScalingPolicy {
   /** Specifies the trigger associated with this scaling policy. */
   scalingTrigger: ScalingTrigger;
 }
-const ScalingPolicy = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<ScalingPolicy>;
-
 /** Scaling policies for this service. */
 export type ServiceResourcePropertiesScalingPoliciesList = Array<ScalingPolicy>;
-const ServiceResourcePropertiesScalingPoliciesList = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<ServiceResourcePropertiesScalingPoliciesList>;
-
 /** The kind of service (Stateless or Stateful). */
 export type ServiceKind = "Stateless" | "Stateful";
-const ServiceKind = S.String;
-
 /** Enumerates the ways that a service can be partitioned. */
 export type PartitionScheme = "Singleton" | "UniformInt64Range" | "Named";
-const PartitionScheme = S.String;
-
 /** Partition names (Named scheme). */
 export type PartitionNamesList = Array<string>;
-const PartitionNamesList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<PartitionNamesList>;
-
 /** Describes how the service is partitioned. */
 export interface Partition {
   partitionScheme: PartitionScheme | (string & {});
@@ -2204,12 +1510,8 @@ export interface Partition {
   /** Partition names (Named). */
   names?: PartitionNamesList;
 }
-const Partition = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<Partition>;
-
 /** The activation Mode of the service package */
 export type ServicePackageActivationMode = "SharedProcess" | "ExclusiveProcess";
-const ServicePackageActivationMode = S.String;
-
 /** The service resource properties. */
 export interface ServiceResourceProperties {
   /** The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)". */
@@ -2257,16 +1559,8 @@ export interface ServiceResourceProperties {
   /** Stateful: ISO 8601 service placement time limit. */
   servicePlacementTimeLimit?: string;
 }
-const ServiceResourceProperties = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<ServiceResourceProperties>;
-
 /** Resource tags. */
 export type GetServiceResponseTagsMap = { [key: string]: string | undefined };
-const GetServiceResponseTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<GetServiceResponseTagsMap>;
-
 export interface GetServiceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2283,8 +1577,6 @@ export interface GetServiceResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const GetServiceResponse = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<GetServiceResponse>;
-
 export interface ListApplicationsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2293,11 +1585,6 @@ export interface ListApplicationsRequest {
   /** The name of the cluster resource. */
   clusterName: string;
 }
-const ListApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ListApplicationsRequest>;
-
 /** Resource tags. */
 export type ApplicationResourceTagsMap = { [key: string]: string | undefined };
 /** The application resource. */
@@ -2319,15 +1606,8 @@ export interface ApplicationResource {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ApplicationResource = GetApplicationResponse as any as S.Schema<ApplicationResource>;
-
 /** The ApplicationResource items on this page */
 export type ApplicationResourceListValueList = Array<ApplicationResource>;
-const ApplicationResourceListValueList = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ApplicationResourceListValueList>;
-
 /** The list of application resources. */
 export interface ApplicationResourceList {
   /** The ApplicationResource items on this page */
@@ -2335,11 +1615,6 @@ export interface ApplicationResourceList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ApplicationResourceList = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<ApplicationResourceList>;
-
 export interface ListApplicationTypesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2348,16 +1623,8 @@ export interface ListApplicationTypesRequest {
   /** The name of the cluster resource. */
   clusterName: string;
 }
-const ListApplicationTypesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ListApplicationTypesRequest>;
-
 /** Resource tags. */
 export type ApplicationTypeResourceTagsMap = { [key: string]: string | undefined };
-const ApplicationTypeResourceTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<ApplicationTypeResourceTagsMap>;
-
 /** The application type name resource */
 export interface ApplicationTypeResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2375,18 +1642,8 @@ export interface ApplicationTypeResource {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ApplicationTypeResource = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ApplicationTypeResource>;
-
 /** The ApplicationTypeResource items on this page */
 export type ApplicationTypeResourceListValueList = Array<ApplicationTypeResource>;
-const ApplicationTypeResourceListValueList = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ApplicationTypeResourceListValueList>;
-
 /** The list of application type names. */
 export interface ApplicationTypeResourceList {
   /** The ApplicationTypeResource items on this page */
@@ -2394,11 +1651,6 @@ export interface ApplicationTypeResourceList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ApplicationTypeResourceList = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ApplicationTypeResourceList>;
-
 export interface ListApplicationTypeVersionByApplicationTypesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2409,11 +1661,6 @@ export interface ListApplicationTypeVersionByApplicationTypesRequest {
   /** The name of the application type name resource. */
   applicationTypeName: string;
 }
-const ListApplicationTypeVersionByApplicationTypesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ListApplicationTypeVersionByApplicationTypesRequest>;
-
 /** Resource tags. */
 export type ApplicationTypeVersionResourceTagsMap = { [key: string]: string | undefined };
 /** An application type version resource for the specified application type name resource. */
@@ -2433,16 +1680,8 @@ export interface ApplicationTypeVersionResource {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ApplicationTypeVersionResource =
-  ApplicationTypeVersionsCreateOrUpdateResponse as any as S.Schema<ApplicationTypeVersionResource>;
-
 /** The ApplicationTypeVersionResource items on this page */
 export type ApplicationTypeVersionResourceListValueList = Array<ApplicationTypeVersionResource>;
-const ApplicationTypeVersionResourceListValueList = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ApplicationTypeVersionResourceListValueList>;
-
 /** The list of application type version resources for the specified application type name resource. */
 export interface ApplicationTypeVersionResourceList {
   /** The ApplicationTypeVersionResource items on this page */
@@ -2450,27 +1689,14 @@ export interface ApplicationTypeVersionResourceList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ApplicationTypeVersionResourceList = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ApplicationTypeVersionResourceList>;
-
 export interface ListManagedClusterByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListManagedClusterByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListManagedClusterByResourceGroupRequest>;
-
 /** Resource tags. */
 export type ManagedClusterTagsMap = { [key: string]: string | undefined };
-const ManagedClusterTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<ManagedClusterTagsMap>;
-
 /** The managed cluster resource */
 export interface ManagedCluster {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2492,15 +1718,8 @@ export interface ManagedCluster {
   /** The sku of the managed cluster */
   sku: Sku;
 }
-const ManagedCluster = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<ManagedCluster>;
-
 /** The ManagedCluster items on this page */
 export type ManagedClusterListResultValueList = Array<ManagedCluster>;
-const ManagedClusterListResultValueList = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ManagedClusterListResultValueList>;
-
 /** The response of a ManagedCluster list operation. */
 export interface ManagedClusterListResult {
   /** The ManagedCluster items on this page */
@@ -2508,46 +1727,19 @@ export interface ManagedClusterListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ManagedClusterListResult = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ManagedClusterListResult>;
-
 export interface ListManagedClusterBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListManagedClusterBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ListManagedClusterBySubscriptionRequest>;
-
 export interface ListManagedClusterVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The location for the cluster code versions. This is different from cluster location. */
   location: string;
 }
-const ListManagedClusterVersionRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ListManagedClusterVersionRequest>;
-
 export type ListManagedClusterVersionResponseBodyList = Array<ManagedClusterCodeVersionResult>;
-const ListManagedClusterVersionResponseBodyList = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ListManagedClusterVersionResponseBodyList>;
-
 export type ListManagedClusterVersionResponse = ListManagedClusterVersionResponseBodyList;
-const ListManagedClusterVersionResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<ListManagedClusterVersionResponse>;
-
 export type ListManagedClusterVersionByEnvironmentRequestEnvironment = "Windows";
-const ListManagedClusterVersionByEnvironmentRequestEnvironment = S.String;
-
 export interface ListManagedClusterVersionByEnvironmentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2556,36 +1748,18 @@ export interface ListManagedClusterVersionByEnvironmentRequest {
   /** The operating system of the cluster. */
   environment: ListManagedClusterVersionByEnvironmentRequestEnvironment | (string & {});
 }
-const ListManagedClusterVersionByEnvironmentRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ListManagedClusterVersionByEnvironmentRequest>;
-
 export type ListManagedClusterVersionByEnvironmentResponseBodyList =
   Array<ManagedClusterCodeVersionResult>;
 export type ListManagedClusterVersionByEnvironmentResponse =
   ListManagedClusterVersionByEnvironmentResponseBodyList;
-const ListManagedClusterVersionByEnvironmentResponse =
-  ListManagedClusterVersionResponse as any as S.Schema<ListManagedClusterVersionByEnvironmentResponse>;
-
 export interface ListManagedUnsupportedVMSizesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The location for the unsupported VM sizes. This is different from cluster location. */
   location: string;
 }
-const ListManagedUnsupportedVMSizesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<ListManagedUnsupportedVMSizesRequest>;
-
 /** The ManagedVMSize items on this page */
 export type ManagedVMSizesResultValueList = Array<ManagedVMSize>;
-const ManagedVMSizesResultValueList = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<ManagedVMSizesResultValueList>;
-
 /** Describes the result of the request to list Managed VM Sizes for Service Fabric Managed Clusters. */
 export interface ManagedVMSizesResult {
   /** The ManagedVMSize items on this page */
@@ -2593,11 +1767,6 @@ export interface ManagedVMSizesResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ManagedVMSizesResult = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<ManagedVMSizesResult>;
-
 export interface ListNodeTypeByManagedClustersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2606,11 +1775,6 @@ export interface ListNodeTypeByManagedClustersRequest {
   /** The name of the cluster resource. */
   clusterName: string;
 }
-const ListNodeTypeByManagedClustersRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ListNodeTypeByManagedClustersRequest>;
-
 /** Resource tags. */
 export type NodeTypeTagsMap = { [key: string]: string | undefined };
 /** Describes a node type in the cluster, each node type represents sub set of nodes in the cluster. */
@@ -2630,15 +1794,8 @@ export interface NodeType {
   /** The node type sku. */
   sku?: NodeTypeSku;
 }
-const NodeType = GetNodeTypeResponse as any as S.Schema<NodeType>;
-
 /** The NodeType items on this page */
 export type NodeTypeListResultValueList = Array<NodeType>;
-const NodeTypeListResultValueList = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<NodeTypeListResultValueList>;
-
 /** The response of a NodeType list operation. */
 export interface NodeTypeListResult {
   /** The NodeType items on this page */
@@ -2646,8 +1803,6 @@ export interface NodeTypeListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NodeTypeListResult = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<NodeTypeListResult>;
-
 export interface ListNodeTypeSkusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2658,11 +1813,6 @@ export interface ListNodeTypeSkusRequest {
   /** The name of the node type. */
   nodeTypeName: string;
 }
-const ListNodeTypeSkusRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<ListNodeTypeSkusRequest>;
-
 /** Describes a node type supported sku. */
 export interface NodeTypeSupportedSku {
   /** The sku name. */
@@ -2670,15 +1820,8 @@ export interface NodeTypeSupportedSku {
   /** Specifies the tier of the node type. Possible Values: **Standard** */
   tier?: string;
 }
-const NodeTypeSupportedSku = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<NodeTypeSupportedSku>;
-
 /** Node type capacity scale type. */
 export type NodeTypeSkuCapacityScaleType = "None" | "Manual" | "Automatic";
-const NodeTypeSkuCapacityScaleType = S.String;
-
 /** Provides information about how node type can be scaled. */
 export interface NodeTypeSkuCapacity {
   /** Lowest permitted node count in a node type. */
@@ -2690,8 +1833,6 @@ export interface NodeTypeSkuCapacity {
   /** Node type capacity scale type. */
   scaleType?: NodeTypeSkuCapacityScaleType;
 }
-const NodeTypeSkuCapacity = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<NodeTypeSkuCapacity>;
-
 /** Defines the type of sku available for a node type */
 export interface NodeTypeAvailableSku {
   /** The type of resource the sku applies to. Value: Microsoft.ServiceFabric/managedClusters/nodeTypes. */
@@ -2701,18 +1842,8 @@ export interface NodeTypeAvailableSku {
   /** Provides information about how the node count can be scaled. */
   capacity?: NodeTypeSkuCapacity;
 }
-const NodeTypeAvailableSku = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<NodeTypeAvailableSku>;
-
 /** The NodeTypeAvailableSku items on this page */
 export type NodeTypeListSkuResultValueList = Array<NodeTypeAvailableSku>;
-const NodeTypeListSkuResultValueList = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<NodeTypeListSkuResultValueList>;
-
 /** Node type available sku list results */
 export interface NodeTypeListSkuResult {
   /** The NodeTypeAvailableSku items on this page */
@@ -2720,17 +1851,7 @@ export interface NodeTypeListSkuResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NodeTypeListSkuResult = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<NodeTypeListSkuResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Operation supported by the Service Fabric resource provider */
 export interface AvailableOperationDisplay {
   /** The name of the provider. */
@@ -2742,11 +1863,6 @@ export interface AvailableOperationDisplay {
   /** Operation description */
   description?: string;
 }
-const AvailableOperationDisplay = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<AvailableOperationDisplay>;
-
 /** Available operation list result */
 export interface OperationResult {
   /** The name of the operation. */
@@ -2760,15 +1876,8 @@ export interface OperationResult {
   /** The URL to use for getting the next set of results. */
   nextLink?: string;
 }
-const OperationResult = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<OperationResult>;
-
 /** The OperationResult items on this page */
 export type OperationListResultValueList = Array<OperationResult>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** Describes the result of the request to list Service Fabric resource provider operations. */
 export interface OperationListResult {
   /** The OperationResult items on this page */
@@ -2776,8 +1885,6 @@ export interface OperationListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<OperationListResult>;
-
 export interface ListServiceByApplicationsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2788,11 +1895,6 @@ export interface ListServiceByApplicationsRequest {
   /** The name of the application resource. */
   applicationName: string;
 }
-const ListServiceByApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListServiceByApplicationsRequest>;
-
 /** Resource tags. */
 export type ServiceResourceTagsMap = { [key: string]: string | undefined };
 /** The service resource. */
@@ -2812,15 +1914,8 @@ export interface ServiceResource {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ServiceResource = GetServiceResponse as any as S.Schema<ServiceResource>;
-
 /** The ServiceResource items on this page */
 export type ServiceResourceListValueList = Array<ServiceResource>;
-const ServiceResourceListValueList = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ServiceResourceListValueList>;
-
 /** The list of service resources. */
 export interface ServiceResourceList {
   /** The ServiceResource items on this page */
@@ -2828,59 +1923,28 @@ export interface ServiceResourceList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ServiceResourceList = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<ServiceResourceList>;
-
 /** Resource tags. */
 export type ManagedClustersCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ManagedClustersCreateOrUpdateRequestTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<ManagedClustersCreateOrUpdateRequestTagsMap>;
-
 /** Load balancing rules that are applied to the public load balancer of the cluster. */
 export type ManagedClusterPropertiesInputLoadBalancingRulesList = Array<LoadBalancingRule>;
-const ManagedClusterPropertiesInputLoadBalancingRulesList =
-  ManagedClusterPropertiesLoadBalancingRulesList as any as S.Schema<ManagedClusterPropertiesInputLoadBalancingRulesList>;
-
 /** Custom Network Security Rules that are applied to the Virtual Network of the cluster. */
 export type ManagedClusterPropertiesInputNetworkSecurityRulesList = Array<NetworkSecurityRule>;
-const ManagedClusterPropertiesInputNetworkSecurityRulesList =
-  ManagedClusterPropertiesNetworkSecurityRulesList as any as S.Schema<ManagedClusterPropertiesInputNetworkSecurityRulesList>;
-
 /** Client certificates that are allowed to manage the cluster. */
 export type ManagedClusterPropertiesInputClientsList = Array<ClientCertificate>;
-const ManagedClusterPropertiesInputClientsList =
-  ManagedClusterPropertiesClientsList as any as S.Schema<ManagedClusterPropertiesInputClientsList>;
-
 /** The list of custom fabric settings to configure the cluster. */
 export type ManagedClusterPropertiesInputFabricSettingsList = Array<SettingsSectionDescription>;
-const ManagedClusterPropertiesInputFabricSettingsList =
-  ManagedClusterPropertiesFabricSettingsList as any as S.Schema<ManagedClusterPropertiesInputFabricSettingsList>;
-
 /** The upgrade mode of the cluster when new Service Fabric runtime version is available. */
 export type ManagedClusterPropertiesInputClusterUpgradeMode = "Automatic" | "Manual";
-const ManagedClusterPropertiesInputClusterUpgradeMode = S.String;
-
 /** List of add-on features to enable on the cluster. */
 export type ManagedClusterPropertiesInputAddonFeaturesList = Array<
   ManagedClusterAddOnFeature | (string & {})
 >;
-const ManagedClusterPropertiesInputAddonFeaturesList =
-  ManagedClusterPropertiesAddonFeaturesList as any as S.Schema<ManagedClusterPropertiesInputAddonFeaturesList>;
-
 /** The list of IP tags associated with the default public IP address of the cluster. */
 export type ManagedClusterPropertiesInputIpTagsList = Array<IpTag>;
-const ManagedClusterPropertiesInputIpTagsList =
-  ManagedClusterPropertiesIpTagsList as any as S.Schema<ManagedClusterPropertiesInputIpTagsList>;
-
 /** Auxiliary subnets for the cluster. */
 export type ManagedClusterPropertiesInputAuxiliarySubnetsList = Array<Subnet>;
-const ManagedClusterPropertiesInputAuxiliarySubnetsList =
-  ManagedClusterPropertiesAuxiliarySubnetsList as any as S.Schema<ManagedClusterPropertiesInputAuxiliarySubnetsList>;
-
 /** Service endpoints for subnets in the cluster. */
 export type ManagedClusterPropertiesInputServiceEndpointsList = Array<ServiceEndpoint>;
-const ManagedClusterPropertiesInputServiceEndpointsList =
-  ManagedClusterPropertiesServiceEndpointsList as any as S.Schema<ManagedClusterPropertiesInputServiceEndpointsList>;
-
 /** Describes the managed cluster resource properties. */
 export interface ManagedClusterPropertiesInput {
   /** The cluster dns name. */
@@ -2958,11 +2022,6 @@ export interface ManagedClusterPropertiesInput {
   /** Determines whether to skip the assignment of the managed network security group (SF-NSG) to the cluster subnet when using a bring-your-own virtual network (BYOVNET) configuration. The default value is false. */
   skipManagedNsgAssignment?: boolean;
 }
-const ManagedClusterPropertiesInput = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ManagedClusterPropertiesInput>;
-
 export interface ManagedClustersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2979,11 +2038,6 @@ export interface ManagedClustersCreateOrUpdateRequest {
   /** The sku of the managed cluster */
   sku: Sku;
 }
-const ManagedClustersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<ManagedClustersCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type ManagedClustersCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface ManagedClustersCreateOrUpdateResponse {
@@ -3006,9 +2060,6 @@ export interface ManagedClustersCreateOrUpdateResponse {
   /** The sku of the managed cluster */
   sku: Sku;
 }
-const ManagedClustersCreateOrUpdateResponse =
-  GetManagedClusterResponse as any as S.Schema<ManagedClustersCreateOrUpdateResponse>;
-
 /** Managed data disk type. Specifies the storage account type for the managed disk */
 export type NodeTypePropertiesInputDataDiskType =
   | "Standard_LRS"
@@ -3017,35 +2068,18 @@ export type NodeTypePropertiesInputDataDiskType =
   | "PremiumV2_LRS"
   | "StandardSSD_ZRS"
   | "Premium_ZRS";
-const NodeTypePropertiesInputDataDiskType = S.String;
-
 /** The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run. */
 export type NodeTypePropertiesInputPlacementPropertiesMap = { [key: string]: string | undefined };
-const NodeTypePropertiesInputPlacementPropertiesMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<NodeTypePropertiesInputPlacementPropertiesMap>;
-
 /** The capacity tags applied to the nodes in the node type, the cluster resource manager uses these tags to understand how much resource a node has. */
 export type NodeTypePropertiesInputCapacitiesMap = { [key: string]: string | undefined };
-const NodeTypePropertiesInputCapacitiesMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<NodeTypePropertiesInputCapacitiesMap>;
-
 /** The secrets to install in the virtual machines. */
 export type NodeTypePropertiesInputVmSecretsList = Array<VaultSecretGroup>;
-const NodeTypePropertiesInputVmSecretsList =
-  NodeTypePropertiesVmSecretsList as any as S.Schema<NodeTypePropertiesInputVmSecretsList>;
-
 /** Collection of extension names after which this extension needs to be provisioned. */
 export type VMSSExtensionPropertiesInputProvisionAfterExtensionsList = Array<string>;
-const VMSSExtensionPropertiesInputProvisionAfterExtensionsList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<VMSSExtensionPropertiesInputProvisionAfterExtensionsList>;
-
 /** Indicates the setup order for the extension. */
 export type VMSSExtensionPropertiesInputSetupOrderList = Array<
   VmssExtensionSetupOrder | (string & {})
 >;
-const VMSSExtensionPropertiesInputSetupOrderList =
-  VMSSExtensionPropertiesSetupOrderList as any as S.Schema<VMSSExtensionPropertiesInputSetupOrderList>;
-
 /** Describes the properties of a Virtual Machine Scale Set Extension. */
 export interface VMSSExtensionPropertiesInput {
   /** The name of the extension handler publisher. */
@@ -3069,11 +2103,6 @@ export interface VMSSExtensionPropertiesInput {
   /** Indicates the setup order for the extension. */
   setupOrder?: VMSSExtensionPropertiesInputSetupOrderList;
 }
-const VMSSExtensionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<VMSSExtensionPropertiesInput>;
-
 /** Specifies set of extensions that should be installed onto the virtual machines. */
 export interface VMSSExtensionInput {
   /** The name of the extension. */
@@ -3081,58 +2110,25 @@ export interface VMSSExtensionInput {
   /** Describes the properties of a Virtual Machine Scale Set Extension. */
   properties: VMSSExtensionPropertiesInput;
 }
-const VMSSExtensionInput = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<VMSSExtensionInput>;
-
 /** Set of extensions that should be installed onto the virtual machines. */
 export type NodeTypePropertiesInputVmExtensionsList = Array<VMSSExtensionInput>;
-const NodeTypePropertiesInputVmExtensionsList = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<NodeTypePropertiesInputVmExtensionsList>;
-
 /** Indicates the node type uses its own frontend configurations instead of the default one for the cluster. This setting can only be specified for non-primary node types and can not be added or removed after the node type is created. */
 export type NodeTypePropertiesInputFrontendConfigurationsList = Array<FrontendConfiguration>;
-const NodeTypePropertiesInputFrontendConfigurationsList =
-  NodeTypePropertiesFrontendConfigurationsList as any as S.Schema<NodeTypePropertiesInputFrontendConfigurationsList>;
-
 /** The Network Security Rules for this node type. This setting can only be specified for node types that are configured with frontend configurations. */
 export type NodeTypePropertiesInputNetworkSecurityRulesList = Array<NetworkSecurityRule>;
-const NodeTypePropertiesInputNetworkSecurityRulesList =
-  ManagedClusterPropertiesNetworkSecurityRulesList as any as S.Schema<NodeTypePropertiesInputNetworkSecurityRulesList>;
-
 /** Additional managed data disks. */
 export type NodeTypePropertiesInputAdditionalDataDisksList = Array<VmssDataDisk>;
-const NodeTypePropertiesInputAdditionalDataDisksList =
-  NodeTypePropertiesAdditionalDataDisksList as any as S.Schema<NodeTypePropertiesInputAdditionalDataDisksList>;
-
 /** Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster. */
 export type NodeTypePropertiesInputZonesList = Array<string>;
-const NodeTypePropertiesInputZonesList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<NodeTypePropertiesInputZonesList>;
-
 /** Specifies the actions to be performed on the vms before bootstrapping the service fabric runtime. */
 export type NodeTypePropertiesInputVmSetupActionsList = Array<VmSetupAction | (string & {})>;
-const NodeTypePropertiesInputVmSetupActionsList =
-  NodeTypePropertiesVmSetupActionsList as any as S.Schema<NodeTypePropertiesInputVmSetupActionsList>;
-
 /** Specifies the NAT configuration on default public Load Balancer for the node type. This is only supported for node types use the default public Load Balancer. */
 export type NodeTypePropertiesInputNatConfigurationsList = Array<NodeTypeNatConfig>;
-const NodeTypePropertiesInputNatConfigurationsList =
-  NodeTypePropertiesNatConfigurationsList as any as S.Schema<NodeTypePropertiesInputNatConfigurationsList>;
-
 /** Specifies the settings for any additional secondary network interfaces to attach to the node type. */
 export type NodeTypePropertiesInputAdditionalNetworkInterfaceConfigurationsList =
   Array<AdditionalNetworkInterfaceConfiguration>;
-const NodeTypePropertiesInputAdditionalNetworkInterfaceConfigurationsList = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<NodeTypePropertiesInputAdditionalNetworkInterfaceConfigurationsList>;
-
 /** Specifies the gallery applications that should be made available to the underlying VMSS. */
 export type NodeTypePropertiesInputVmApplicationsList = Array<VmApplication>;
-const NodeTypePropertiesInputVmApplicationsList =
-  NodeTypePropertiesVmApplicationsList as any as S.Schema<NodeTypePropertiesInputVmApplicationsList>;
-
 /** Describes a node type in the cluster, each node type represents sub set of nodes in the cluster. */
 export interface NodeTypePropertiesInput {
   /** Indicates the Service Fabric system services for the cluster will run on this node type. This setting cannot be changed once the node type is created. */
@@ -3242,16 +2238,8 @@ export interface NodeTypePropertiesInput {
   /** Specifies whether the node type should use a resilient ephemeral OS disk when using a supported SKU size. A resilient ephemeral OS disk provides improved reliability for ephemeral OS disks by enabling full caching. */
   enableResilientEphemeralOsDisk?: boolean;
 }
-const NodeTypePropertiesInput = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<NodeTypePropertiesInput>;
-
 /** Resource tags. */
 export type NodeTypesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const NodeTypesCreateOrUpdateRequestTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<NodeTypesCreateOrUpdateRequestTagsMap>;
-
 export interface NodeTypesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3268,16 +2256,8 @@ export interface NodeTypesCreateOrUpdateRequest {
   /** The node type sku. */
   sku?: NodeTypeSku;
 }
-const NodeTypesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<NodeTypesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type NodeTypesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const NodeTypesCreateOrUpdateResponseTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<NodeTypesCreateOrUpdateResponseTagsMap>;
-
 export interface NodeTypesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3294,16 +2274,8 @@ export interface NodeTypesCreateOrUpdateResponse {
   /** The node type sku. */
   sku?: NodeTypeSku;
 }
-const NodeTypesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<NodeTypesCreateOrUpdateResponse>;
-
 /** List of node names from the node type. */
 export type NodeTypesDeallocateRequestNodesList = Array<string>;
-const NodeTypesDeallocateRequestNodesList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<NodeTypesDeallocateRequestNodesList>;
-
 export interface NodeTypesDeallocateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3320,20 +2292,9 @@ export interface NodeTypesDeallocateRequest {
   /** Specifies the way the operation will be performed. */
   updateType?: UpdateType | (string & {});
 }
-const NodeTypesDeallocateRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<NodeTypesDeallocateRequest>;
-
 export interface NodeTypesDeallocateResponse {}
-const NodeTypesDeallocateResponse =
-  UserAssignedIdentityInput as any as S.Schema<NodeTypesDeallocateResponse>;
-
 /** List of node names from the node type. */
 export type NodeTypesReimageRequestNodesList = Array<string>;
-const NodeTypesReimageRequestNodesList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<NodeTypesReimageRequestNodesList>;
-
 export interface NodeTypesReimageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3350,15 +2311,7 @@ export interface NodeTypesReimageRequest {
   /** Specifies the way the operation will be performed. */
   updateType?: UpdateType | (string & {});
 }
-const NodeTypesReimageRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<NodeTypesReimageRequest>;
-
 export interface NodeTypesReimageResponse {}
-const NodeTypesReimageResponse =
-  UserAssignedIdentityInput as any as S.Schema<NodeTypesReimageResponse>;
-
 export interface PostManagedApplyMaintenanceWindowRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3367,15 +2320,7 @@ export interface PostManagedApplyMaintenanceWindowRequest {
   /** The name of the cluster resource. */
   clusterName: string;
 }
-const PostManagedApplyMaintenanceWindowRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<PostManagedApplyMaintenanceWindowRequest>;
-
 export interface PostManagedApplyMaintenanceWindowResponse {}
-const PostManagedApplyMaintenanceWindowResponse =
-  DeleteApplicationTypeVersionResponse as any as S.Schema<PostManagedApplyMaintenanceWindowResponse>;
-
 export interface ReadApplicationUpgradeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3386,20 +2331,9 @@ export interface ReadApplicationUpgradeRequest {
   /** The name of the application resource. */
   applicationName: string;
 }
-const ReadApplicationUpgradeRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<ReadApplicationUpgradeRequest>;
-
 export interface ReadApplicationUpgradeResponse {}
-const ReadApplicationUpgradeResponse =
-  UserAssignedIdentityInput as any as S.Schema<ReadApplicationUpgradeResponse>;
-
 /** List of node names from the node type. */
 export type RedeployNodeTypeRequestNodesList = Array<string>;
-const RedeployNodeTypeRequestNodesList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<RedeployNodeTypeRequestNodesList>;
-
 export interface RedeployNodeTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3416,15 +2350,7 @@ export interface RedeployNodeTypeRequest {
   /** Specifies the way the operation will be performed. */
   updateType?: UpdateType | (string & {});
 }
-const RedeployNodeTypeRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<RedeployNodeTypeRequest>;
-
 export interface RedeployNodeTypeResponse {}
-const RedeployNodeTypeResponse =
-  UserAssignedIdentityInput as any as S.Schema<RedeployNodeTypeResponse>;
-
 export interface RestartApplicationDeployedCodePackageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3445,20 +2371,9 @@ export interface RestartApplicationDeployedCodePackageRequest {
   /** The activation id of a deployed service package. If ServicePackageActivationMode specified at the time of creating the service is 'SharedProcess' (or if it is not specified, in which case it defaults to 'SharedProcess'), then value of ServicePackageActivationId is always an empty string. */
   servicePackageActivationId?: string;
 }
-const RestartApplicationDeployedCodePackageRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<RestartApplicationDeployedCodePackageRequest>;
-
 export interface RestartApplicationDeployedCodePackageResponse {}
-const RestartApplicationDeployedCodePackageResponse =
-  DeleteApplicationTypeVersionResponse as any as S.Schema<RestartApplicationDeployedCodePackageResponse>;
-
 /** List of node names from the node type. */
 export type RestartNodeTypeRequestNodesList = Array<string>;
-const RestartNodeTypeRequestNodesList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<RestartNodeTypeRequestNodesList>;
-
 export interface RestartNodeTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3475,26 +2390,11 @@ export interface RestartNodeTypeRequest {
   /** Specifies the way the operation will be performed. */
   updateType?: UpdateType | (string & {});
 }
-const RestartNodeTypeRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<RestartNodeTypeRequest>;
-
 export interface RestartNodeTypeResponse {}
-const RestartNodeTypeResponse =
-  UserAssignedIdentityInput as any as S.Schema<RestartNodeTypeResponse>;
-
 /** The IDs of the replicas to be restarted. */
 export type RestartServiceReplicaRequestReplicaIdsList = Array<number>;
-const RestartServiceReplicaRequestReplicaIdsList = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<RestartServiceReplicaRequestReplicaIdsList>;
-
 /** The kind of restart to perform. */
 export type RestartKind = "Simultaneous";
-const RestartKind = S.String;
-
 export interface RestartServiceReplicaRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3517,15 +2417,7 @@ export interface RestartServiceReplicaRequest {
   /** The server timeout for performing the operation in seconds. This timeout specifies the time duration that the client is willing to wait for the requested operation to complete. The default value for this parameter is 60 seconds. */
   timeout?: number;
 }
-const RestartServiceReplicaRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<RestartServiceReplicaRequest>;
-
 export interface RestartServiceReplicaResponse {}
-const RestartServiceReplicaResponse =
-  UserAssignedIdentityInput as any as S.Schema<RestartServiceReplicaResponse>;
-
 export interface ResumeApplicationUpgradeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3538,36 +2430,16 @@ export interface ResumeApplicationUpgradeRequest {
   /** The upgrade domain name. Expected to be the next upgrade domain if the application is upgrading. */
   upgradeDomainName?: string;
 }
-const ResumeApplicationUpgradeRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ResumeApplicationUpgradeRequest>;
-
 export interface ResumeApplicationUpgradeResponse {}
-const ResumeApplicationUpgradeResponse =
-  DeleteApplicationTypeVersionResponse as any as S.Schema<ResumeApplicationUpgradeResponse>;
-
 /** A list that describes the correlation of the service with other services. */
 export type ServiceResourcePropertiesInputCorrelationSchemeList = Array<ServiceCorrelation>;
-const ServiceResourcePropertiesInputCorrelationSchemeList =
-  ServiceResourcePropertiesCorrelationSchemeList as any as S.Schema<ServiceResourcePropertiesInputCorrelationSchemeList>;
-
 /** The service load metrics is given as an array of ServiceLoadMetric objects. */
 export type ServiceResourcePropertiesInputServiceLoadMetricsList = Array<ServiceLoadMetric>;
-const ServiceResourcePropertiesInputServiceLoadMetricsList =
-  ServiceResourcePropertiesServiceLoadMetricsList as any as S.Schema<ServiceResourcePropertiesInputServiceLoadMetricsList>;
-
 /** A list that describes the correlation of the service with other services. */
 export type ServiceResourcePropertiesInputServicePlacementPoliciesList =
   Array<ServicePlacementPolicy>;
-const ServiceResourcePropertiesInputServicePlacementPoliciesList =
-  ServiceResourcePropertiesServicePlacementPoliciesList as any as S.Schema<ServiceResourcePropertiesInputServicePlacementPoliciesList>;
-
 /** Scaling policies for this service. */
 export type ServiceResourcePropertiesInputScalingPoliciesList = Array<ScalingPolicy>;
-const ServiceResourcePropertiesInputScalingPoliciesList =
-  ServiceResourcePropertiesScalingPoliciesList as any as S.Schema<ServiceResourcePropertiesInputScalingPoliciesList>;
-
 /** The service resource properties. */
 export interface ServiceResourcePropertiesInput {
   /** The placement constraints as a string. Placement constraints are boolean expressions on node properties and allow for restricting a service to particular nodes based on the service requirements. For example, to place a service on nodes where NodeType is blue specify the following: "NodeColor == blue)". */
@@ -3613,16 +2485,8 @@ export interface ServiceResourcePropertiesInput {
   /** Stateful: ISO 8601 service placement time limit. */
   servicePlacementTimeLimit?: string;
 }
-const ServiceResourcePropertiesInput = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<ServiceResourcePropertiesInput>;
-
 /** Resource tags. */
 export type ServicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const ServicesCreateOrUpdateRequestTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<ServicesCreateOrUpdateRequestTagsMap>;
-
 export interface ServicesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3641,16 +2505,8 @@ export interface ServicesCreateOrUpdateRequest {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ServicesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<ServicesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type ServicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const ServicesCreateOrUpdateResponseTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<ServicesCreateOrUpdateResponseTagsMap>;
-
 export interface ServicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3667,11 +2523,6 @@ export interface ServicesCreateOrUpdateResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const ServicesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ServicesCreateOrUpdateResponse>;
-
 export interface StartApplicationRollbackRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3682,20 +2533,9 @@ export interface StartApplicationRollbackRequest {
   /** The name of the application resource. */
   applicationName: string;
 }
-const StartApplicationRollbackRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<StartApplicationRollbackRequest>;
-
 export interface StartApplicationRollbackResponse {}
-const StartApplicationRollbackResponse =
-  DeleteApplicationTypeVersionResponse as any as S.Schema<StartApplicationRollbackResponse>;
-
 /** List of node names from the node type. */
 export type StartNodeTypeRequestNodesList = Array<string>;
-const StartNodeTypeRequestNodesList =
-  DeleteNodeTypeNodeRequestNodesList as any as S.Schema<StartNodeTypeRequestNodesList>;
-
 export interface StartNodeTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3712,36 +2552,18 @@ export interface StartNodeTypeRequest {
   /** Specifies the way the operation will be performed. */
   updateType?: UpdateType | (string & {});
 }
-const StartNodeTypeRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<StartNodeTypeRequest>;
-
 export interface StartNodeTypeResponse {}
-const StartNodeTypeResponse = UserAssignedIdentityInput as any as S.Schema<StartNodeTypeResponse>;
-
 /** Application update parameters */
 export type UpdateApplicationRequestTagsMap = { [key: string]: string | undefined };
-const UpdateApplicationRequestTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<UpdateApplicationRequestTagsMap>;
-
 /** List of application parameters with overridden values from their default values specified in the application manifest. */
 export type ApplicationUpdateParametersPropertiesParametersMap = {
   [key: string]: string | undefined;
 };
-const ApplicationUpdateParametersPropertiesParametersMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<ApplicationUpdateParametersPropertiesParametersMap>;
-
 /** Properties for application update request. */
 export interface ApplicationUpdateParametersProperties {
   /** List of application parameters with overridden values from their default values specified in the application manifest. */
   parameters?: ApplicationUpdateParametersPropertiesParametersMap;
 }
-const ApplicationUpdateParametersProperties = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ApplicationUpdateParametersProperties>;
-
 export interface UpdateApplicationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3756,11 +2578,6 @@ export interface UpdateApplicationRequest {
   /** Application update parameters properties. */
   properties?: ApplicationUpdateParametersProperties;
 }
-const UpdateApplicationRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<UpdateApplicationRequest>;
-
 /** Resource tags. */
 export type UpdateApplicationResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateApplicationResponse {
@@ -3781,14 +2598,8 @@ export interface UpdateApplicationResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateApplicationResponse =
-  ApplicationsCreateOrUpdateResponse as any as S.Schema<UpdateApplicationResponse>;
-
 /** Application type update parameters */
 export type UpdateApplicationTypeRequestTagsMap = { [key: string]: string | undefined };
-const UpdateApplicationTypeRequestTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<UpdateApplicationTypeRequestTagsMap>;
-
 export interface UpdateApplicationTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3801,11 +2612,6 @@ export interface UpdateApplicationTypeRequest {
   /** Application type update parameters */
   tags?: UpdateApplicationTypeRequestTagsMap;
 }
-const UpdateApplicationTypeRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<UpdateApplicationTypeRequest>;
-
 /** Resource tags. */
 export type UpdateApplicationTypeResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateApplicationTypeResponse {
@@ -3824,14 +2630,8 @@ export interface UpdateApplicationTypeResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateApplicationTypeResponse =
-  ApplicationTypesCreateOrUpdateResponse as any as S.Schema<UpdateApplicationTypeResponse>;
-
 /** Application type version update parameters */
 export type UpdateApplicationTypeVersionRequestTagsMap = { [key: string]: string | undefined };
-const UpdateApplicationTypeVersionRequestTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<UpdateApplicationTypeVersionRequestTagsMap>;
-
 export interface UpdateApplicationTypeVersionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3846,11 +2646,6 @@ export interface UpdateApplicationTypeVersionRequest {
   /** Application type version update parameters */
   tags?: UpdateApplicationTypeVersionRequestTagsMap;
 }
-const UpdateApplicationTypeVersionRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<UpdateApplicationTypeVersionRequest>;
-
 /** Resource tags. */
 export type UpdateApplicationTypeVersionResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateApplicationTypeVersionResponse {
@@ -3869,22 +2664,14 @@ export interface UpdateApplicationTypeVersionResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateApplicationTypeVersionResponse =
-  ApplicationTypeVersionsCreateOrUpdateResponse as any as S.Schema<UpdateApplicationTypeVersionResponse>;
-
 /** Cluster level definition for the kind of upgrade. */
 export type RuntimeUpgradeKind = "Rolling";
-const RuntimeUpgradeKind = S.String;
-
 /** Cluster level definition that represents the health policy used to evaluate the health of services belonging to a service type. */
 export type RuntimeServiceTypeHealthPolicy = ServiceTypeHealthPolicy;
 /** The map with service type health policy per service type name. The map is empty by default. */
 export type RuntimeApplicationHealthPolicyServiceTypeHealthPolicyMapMap = {
   [key: string]: ServiceTypeHealthPolicy | undefined;
 };
-const RuntimeApplicationHealthPolicyServiceTypeHealthPolicyMapMap =
-  ApplicationHealthPolicyServiceTypeHealthPolicyMapMap as any as S.Schema<RuntimeApplicationHealthPolicyServiceTypeHealthPolicyMapMap>;
-
 /** Cluster level definition for a health policy used to evaluate the health of an application or one of its children entities. */
 export interface RuntimeApplicationHealthPolicy {
   /** Indicates whether warnings are treated with the same severity as errors. */
@@ -3896,19 +2683,10 @@ export interface RuntimeApplicationHealthPolicy {
   /** The map with service type health policy per service type name. The map is empty by default. */
   serviceTypeHealthPolicyMap?: RuntimeApplicationHealthPolicyServiceTypeHealthPolicyMapMap;
 }
-const RuntimeApplicationHealthPolicy = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<RuntimeApplicationHealthPolicy>;
-
 /** Cluster level definition for the mode used to monitor health during a rolling upgrade. */
 export type RuntimeRollingUpgradeMode = "UnmonitoredAuto" | "UnmonitoredManual" | "Monitored";
-const RuntimeRollingUpgradeMode = S.String;
-
 /** Cluster level definition for the compensating action to perform when a Monitored upgrade encounters monitoring policy or health policy violations. */
 export type RuntimeFailureAction = "Rollback" | "Manual";
-const RuntimeFailureAction = S.String;
-
 /** Describes the parameters for updating a rolling upgrade of application or cluster. */
 export interface RuntimeRollingUpgradeUpdateMonitoringPolicy {
   /** The mode used to monitor health during a rolling upgrade. */
@@ -3932,11 +2710,6 @@ export interface RuntimeRollingUpgradeUpdateMonitoringPolicy {
   /** Duration in seconds, to wait before a stateless instance is closed, to allow the active requests to drain gracefully. This would be effective when the instance is closing during the application/cluster upgrade, only for those instances which have a non-zero delay duration configured in the service description. */
   instanceCloseDelayDurationInSeconds?: number;
 }
-const RuntimeRollingUpgradeUpdateMonitoringPolicy = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<RuntimeRollingUpgradeUpdateMonitoringPolicy>;
-
 export interface UpdateApplicationUpgradeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3955,20 +2728,9 @@ export interface UpdateApplicationUpgradeRequest {
   /** Describes the parameters for updating a rolling upgrade of application or cluster and a monitoring policy. */
   updateDescription?: RuntimeRollingUpgradeUpdateMonitoringPolicy;
 }
-const UpdateApplicationUpgradeRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<UpdateApplicationUpgradeRequest>;
-
 export interface UpdateApplicationUpgradeResponse {}
-const UpdateApplicationUpgradeResponse =
-  DeleteApplicationTypeVersionResponse as any as S.Schema<UpdateApplicationUpgradeResponse>;
-
 /** Managed cluster update parameters */
 export type UpdateManagedClusterRequestTagsMap = { [key: string]: string | undefined };
-const UpdateManagedClusterRequestTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<UpdateManagedClusterRequestTagsMap>;
-
 export interface UpdateManagedClusterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3979,11 +2741,6 @@ export interface UpdateManagedClusterRequest {
   /** Managed cluster update parameters */
   tags?: UpdateManagedClusterRequestTagsMap;
 }
-const UpdateManagedClusterRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<UpdateManagedClusterRequest>;
-
 /** Resource tags. */
 export type UpdateManagedClusterResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateManagedClusterResponse {
@@ -4006,14 +2763,8 @@ export interface UpdateManagedClusterResponse {
   /** The sku of the managed cluster */
   sku: Sku;
 }
-const UpdateManagedClusterResponse =
-  GetManagedClusterResponse as any as S.Schema<UpdateManagedClusterResponse>;
-
 /** Node type update parameters */
 export type UpdateNodeTypeRequestTagsMap = { [key: string]: string | undefined };
-const UpdateNodeTypeRequestTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<UpdateNodeTypeRequestTagsMap>;
-
 export interface UpdateNodeTypeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4028,11 +2779,6 @@ export interface UpdateNodeTypeRequest {
   /** The node type sku. */
   sku?: NodeTypeSku;
 }
-const UpdateNodeTypeRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<UpdateNodeTypeRequest>;
-
 /** Resource tags. */
 export type UpdateNodeTypeResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateNodeTypeResponse {
@@ -4051,13 +2797,8 @@ export interface UpdateNodeTypeResponse {
   /** The node type sku. */
   sku?: NodeTypeSku;
 }
-const UpdateNodeTypeResponse = GetNodeTypeResponse as any as S.Schema<UpdateNodeTypeResponse>;
-
 /** Service update parameters */
 export type UpdateServiceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateServiceRequestTagsMap =
-  ApplicationResourcePropertiesInputParametersMap as any as S.Schema<UpdateServiceRequestTagsMap>;
-
 export interface UpdateServiceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4072,11 +2813,6 @@ export interface UpdateServiceRequest {
   /** Service update parameters */
   tags?: UpdateServiceRequestTagsMap;
 }
-const UpdateServiceRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<UpdateServiceRequest>;
-
 /** Resource tags. */
 export type UpdateServiceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateServiceResponse {
@@ -4095,8 +2831,6 @@ export interface UpdateServiceResponse {
   /** The geo-location where the resource lives */
   location?: string;
 }
-const UpdateServiceResponse = GetServiceResponse as any as S.Schema<UpdateServiceResponse>;
-
 export type ApplicationsCreateOrUpdateError = AzureOpError;
 /** Create or update a Service Fabric managed application resource with the specified name. */
 export const ApplicationsCreateOrUpdate: API.OperationMethod<
@@ -4105,8 +2839,8 @@ export const ApplicationsCreateOrUpdate: API.OperationMethod<
   ApplicationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplicationsCreateOrUpdateRequest,
-  output: ApplicationsCreateOrUpdateResponse,
+  input: __S(12) as any as S.Schema<ApplicationsCreateOrUpdateRequest>,
+  output: __S(18) as any as S.Schema<ApplicationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4120,8 +2854,8 @@ export const ApplicationTypesCreateOrUpdate: API.OperationMethod<
   ApplicationTypesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplicationTypesCreateOrUpdateRequest,
-  output: ApplicationTypesCreateOrUpdateResponse,
+  input: __S(19) as any as S.Schema<ApplicationTypesCreateOrUpdateRequest>,
+  output: __S(21) as any as S.Schema<ApplicationTypesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4135,8 +2869,8 @@ export const ApplicationTypeVersionsCreateOrUpdate: API.OperationMethod<
   ApplicationTypeVersionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApplicationTypeVersionsCreateOrUpdateRequest,
-  output: ApplicationTypeVersionsCreateOrUpdateResponse,
+  input: __S(23) as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateRequest>,
+  output: __S(25) as any as S.Schema<ApplicationTypeVersionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4150,8 +2884,8 @@ export const DeleteApplication: API.OperationMethod<
   DeleteApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationRequest,
-  output: DeleteApplicationResponse,
+  input: __S(26) as any as S.Schema<DeleteApplicationRequest>,
+  output: __S(9) as any as S.Schema<DeleteApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4165,8 +2899,8 @@ export const DeleteApplicationType: API.OperationMethod<
   DeleteApplicationTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationTypeRequest,
-  output: DeleteApplicationTypeResponse,
+  input: __S(27) as any as S.Schema<DeleteApplicationTypeRequest>,
+  output: __S(9) as any as S.Schema<DeleteApplicationTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4180,8 +2914,8 @@ export const DeleteApplicationTypeVersion: API.OperationMethod<
   DeleteApplicationTypeVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationTypeVersionRequest,
-  output: DeleteApplicationTypeVersionResponse,
+  input: __S(28) as any as S.Schema<DeleteApplicationTypeVersionRequest>,
+  output: __S(29) as any as S.Schema<DeleteApplicationTypeVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4195,8 +2929,8 @@ export const DeleteManagedCluster: API.OperationMethod<
   DeleteManagedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteManagedClusterRequest,
-  output: DeleteManagedClusterResponse,
+  input: __S(30) as any as S.Schema<DeleteManagedClusterRequest>,
+  output: __S(9) as any as S.Schema<DeleteManagedClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4210,8 +2944,8 @@ export const DeleteNodeType: API.OperationMethod<
   DeleteNodeTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNodeTypeRequest,
-  output: DeleteNodeTypeResponse,
+  input: __S(31) as any as S.Schema<DeleteNodeTypeRequest>,
+  output: __S(9) as any as S.Schema<DeleteNodeTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4225,8 +2959,8 @@ export const DeleteNodeTypeNode: API.OperationMethod<
   DeleteNodeTypeNodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteNodeTypeNodeRequest,
-  output: DeleteNodeTypeNodeResponse,
+  input: __S(33) as any as S.Schema<DeleteNodeTypeNodeRequest>,
+  output: __S(9) as any as S.Schema<DeleteNodeTypeNodeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4240,8 +2974,8 @@ export const DeleteService: API.OperationMethod<
   DeleteServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceRequest,
-  output: DeleteServiceResponse,
+  input: __S(34) as any as S.Schema<DeleteServiceRequest>,
+  output: __S(9) as any as S.Schema<DeleteServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4255,8 +2989,8 @@ export const FetchApplicationHealth: API.OperationMethod<
   FetchApplicationHealthError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchApplicationHealthRequest,
-  output: FetchApplicationHealthResponse,
+  input: __S(35) as any as S.Schema<FetchApplicationHealthRequest>,
+  output: __S(9) as any as S.Schema<FetchApplicationHealthResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4270,8 +3004,8 @@ export const GetApplication: API.OperationMethod<
   GetApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationRequest,
-  output: GetApplicationResponse,
+  input: __S(36) as any as S.Schema<GetApplicationRequest>,
+  output: __S(37) as any as S.Schema<GetApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4285,8 +3019,8 @@ export const GetApplicationType: API.OperationMethod<
   GetApplicationTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationTypeRequest,
-  output: GetApplicationTypeResponse,
+  input: __S(38) as any as S.Schema<GetApplicationTypeRequest>,
+  output: __S(21) as any as S.Schema<GetApplicationTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4300,8 +3034,8 @@ export const GetApplicationTypeVersion: API.OperationMethod<
   GetApplicationTypeVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationTypeVersionRequest,
-  output: GetApplicationTypeVersionResponse,
+  input: __S(39) as any as S.Schema<GetApplicationTypeVersionRequest>,
+  output: __S(25) as any as S.Schema<GetApplicationTypeVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4315,8 +3049,8 @@ export const GetManagedAzResiliencyStatus: API.OperationMethod<
   GetManagedAzResiliencyStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedAzResiliencyStatusRequest,
-  output: ManagedAzResiliencyStatus,
+  input: __S(40) as any as S.Schema<GetManagedAzResiliencyStatusRequest>,
+  output: __S(43) as any as S.Schema<ManagedAzResiliencyStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4330,8 +3064,8 @@ export const GetManagedCluster: API.OperationMethod<
   GetManagedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedClusterRequest,
-  output: GetManagedClusterResponse,
+  input: __S(44) as any as S.Schema<GetManagedClusterRequest>,
+  output: __S(70) as any as S.Schema<GetManagedClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4345,8 +3079,8 @@ export const GetManagedClusterVersion: API.OperationMethod<
   GetManagedClusterVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedClusterVersionRequest,
-  output: ManagedClusterCodeVersionResult,
+  input: __S(71) as any as S.Schema<GetManagedClusterVersionRequest>,
+  output: __S(73) as any as S.Schema<ManagedClusterCodeVersionResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4360,8 +3094,8 @@ export const GetManagedClusterVersionByEnvironment: API.OperationMethod<
   GetManagedClusterVersionByEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedClusterVersionByEnvironmentRequest,
-  output: ManagedClusterCodeVersionResult,
+  input: __S(74) as any as S.Schema<GetManagedClusterVersionByEnvironmentRequest>,
+  output: __S(73) as any as S.Schema<ManagedClusterCodeVersionResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4375,8 +3109,8 @@ export const GetManagedMaintenanceWindowStatus: API.OperationMethod<
   GetManagedMaintenanceWindowStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedMaintenanceWindowStatusRequest,
-  output: ManagedMaintenanceWindowStatus,
+  input: __S(75) as any as S.Schema<GetManagedMaintenanceWindowStatusRequest>,
+  output: __S(76) as any as S.Schema<ManagedMaintenanceWindowStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4390,8 +3124,8 @@ export const GetManagedUnsupportedVMSiz: API.OperationMethod<
   GetManagedUnsupportedVMSizError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedUnsupportedVMSizRequest,
-  output: ManagedVMSize,
+  input: __S(77) as any as S.Schema<GetManagedUnsupportedVMSizRequest>,
+  output: __S(79) as any as S.Schema<ManagedVMSize>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4405,8 +3139,8 @@ export const GetNodeType: API.OperationMethod<
   GetNodeTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNodeTypeRequest,
-  output: GetNodeTypeResponse,
+  input: __S(80) as any as S.Schema<GetNodeTypeRequest>,
+  output: __S(108) as any as S.Schema<GetNodeTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4420,8 +3154,8 @@ export const GetOperationResult: API.OperationMethod<
   GetOperationResultError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationResultRequest,
-  output: GetOperationResultResponse,
+  input: __S(109) as any as S.Schema<GetOperationResultRequest>,
+  output: __S(9) as any as S.Schema<GetOperationResultResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4435,8 +3169,8 @@ export const GetOperationStatus: API.OperationMethod<
   GetOperationStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationStatusRequest,
-  output: LongRunningOperationResult,
+  input: __S(110) as any as S.Schema<GetOperationStatusRequest>,
+  output: __S(112) as any as S.Schema<LongRunningOperationResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4450,8 +3184,8 @@ export const GetService: API.OperationMethod<
   GetServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceRequest,
-  output: GetServiceResponse,
+  input: __S(113) as any as S.Schema<GetServiceRequest>,
+  output: __S(125) as any as S.Schema<GetServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4465,8 +3199,8 @@ export const ListApplications: API.OperationMethod<
   ListApplicationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApplicationsRequest,
-  output: ApplicationResourceList,
+  input: __S(126) as any as S.Schema<ListApplicationsRequest>,
+  output: __S(128) as any as S.Schema<ApplicationResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4480,8 +3214,8 @@ export const ListApplicationTypes: API.OperationMethod<
   ListApplicationTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApplicationTypesRequest,
-  output: ApplicationTypeResourceList,
+  input: __S(129) as any as S.Schema<ListApplicationTypesRequest>,
+  output: __S(132) as any as S.Schema<ApplicationTypeResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4495,8 +3229,8 @@ export const ListApplicationTypeVersionByApplicationTypes: API.OperationMethod<
   ListApplicationTypeVersionByApplicationTypesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApplicationTypeVersionByApplicationTypesRequest,
-  output: ApplicationTypeVersionResourceList,
+  input: __S(133) as any as S.Schema<ListApplicationTypeVersionByApplicationTypesRequest>,
+  output: __S(135) as any as S.Schema<ApplicationTypeVersionResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4510,8 +3244,8 @@ export const ListManagedClusterByResourceGroup: API.OperationMethod<
   ListManagedClusterByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedClusterByResourceGroupRequest,
-  output: ManagedClusterListResult,
+  input: __S(136) as any as S.Schema<ListManagedClusterByResourceGroupRequest>,
+  output: __S(139) as any as S.Schema<ManagedClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4525,8 +3259,8 @@ export const ListManagedClusterBySubscription: API.OperationMethod<
   ListManagedClusterBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedClusterBySubscriptionRequest,
-  output: ManagedClusterListResult,
+  input: __S(140) as any as S.Schema<ListManagedClusterBySubscriptionRequest>,
+  output: __S(139) as any as S.Schema<ManagedClusterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4540,8 +3274,8 @@ export const ListManagedClusterVersion: API.OperationMethod<
   ListManagedClusterVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedClusterVersionRequest,
-  output: ListManagedClusterVersionResponse,
+  input: __S(141) as any as S.Schema<ListManagedClusterVersionRequest>,
+  output: __S(143) as any as S.Schema<ListManagedClusterVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4555,8 +3289,8 @@ export const ListManagedClusterVersionByEnvironment: API.OperationMethod<
   ListManagedClusterVersionByEnvironmentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedClusterVersionByEnvironmentRequest,
-  output: ListManagedClusterVersionByEnvironmentResponse,
+  input: __S(144) as any as S.Schema<ListManagedClusterVersionByEnvironmentRequest>,
+  output: __S(143) as any as S.Schema<ListManagedClusterVersionByEnvironmentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4570,8 +3304,8 @@ export const ListManagedUnsupportedVMSizes: API.OperationMethod<
   ListManagedUnsupportedVMSizesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedUnsupportedVMSizesRequest,
-  output: ManagedVMSizesResult,
+  input: __S(145) as any as S.Schema<ListManagedUnsupportedVMSizesRequest>,
+  output: __S(147) as any as S.Schema<ManagedVMSizesResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4585,8 +3319,8 @@ export const ListNodeTypeByManagedClusters: API.OperationMethod<
   ListNodeTypeByManagedClustersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNodeTypeByManagedClustersRequest,
-  output: NodeTypeListResult,
+  input: __S(148) as any as S.Schema<ListNodeTypeByManagedClustersRequest>,
+  output: __S(150) as any as S.Schema<NodeTypeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4600,8 +3334,8 @@ export const ListNodeTypeSkus: API.OperationMethod<
   ListNodeTypeSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNodeTypeSkusRequest,
-  output: NodeTypeListSkuResult,
+  input: __S(151) as any as S.Schema<ListNodeTypeSkusRequest>,
+  output: __S(156) as any as S.Schema<NodeTypeListSkuResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4615,8 +3349,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(157) as any as S.Schema<ListOperationsRequest>,
+  output: __S(161) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4630,8 +3364,8 @@ export const ListServiceByApplications: API.OperationMethod<
   ListServiceByApplicationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceByApplicationsRequest,
-  output: ServiceResourceList,
+  input: __S(162) as any as S.Schema<ListServiceByApplicationsRequest>,
+  output: __S(164) as any as S.Schema<ServiceResourceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4645,8 +3379,8 @@ export const ManagedClustersCreateOrUpdate: API.OperationMethod<
   ManagedClustersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ManagedClustersCreateOrUpdateRequest,
-  output: ManagedClustersCreateOrUpdateResponse,
+  input: __S(166) as any as S.Schema<ManagedClustersCreateOrUpdateRequest>,
+  output: __S(70) as any as S.Schema<ManagedClustersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4660,8 +3394,8 @@ export const NodeTypesCreateOrUpdate: API.OperationMethod<
   NodeTypesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NodeTypesCreateOrUpdateRequest,
-  output: NodeTypesCreateOrUpdateResponse,
+  input: __S(172) as any as S.Schema<NodeTypesCreateOrUpdateRequest>,
+  output: __S(173) as any as S.Schema<NodeTypesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4675,8 +3409,8 @@ export const NodeTypesDeallocate: API.OperationMethod<
   NodeTypesDeallocateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NodeTypesDeallocateRequest,
-  output: NodeTypesDeallocateResponse,
+  input: __S(174) as any as S.Schema<NodeTypesDeallocateRequest>,
+  output: __S(9) as any as S.Schema<NodeTypesDeallocateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4690,8 +3424,8 @@ export const NodeTypesReimage: API.OperationMethod<
   NodeTypesReimageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NodeTypesReimageRequest,
-  output: NodeTypesReimageResponse,
+  input: __S(175) as any as S.Schema<NodeTypesReimageRequest>,
+  output: __S(9) as any as S.Schema<NodeTypesReimageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4705,8 +3439,8 @@ export const PostManagedApplyMaintenanceWindow: API.OperationMethod<
   PostManagedApplyMaintenanceWindowError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostManagedApplyMaintenanceWindowRequest,
-  output: PostManagedApplyMaintenanceWindowResponse,
+  input: __S(176) as any as S.Schema<PostManagedApplyMaintenanceWindowRequest>,
+  output: __S(29) as any as S.Schema<PostManagedApplyMaintenanceWindowResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4720,8 +3454,8 @@ export const ReadApplicationUpgrade: API.OperationMethod<
   ReadApplicationUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReadApplicationUpgradeRequest,
-  output: ReadApplicationUpgradeResponse,
+  input: __S(177) as any as S.Schema<ReadApplicationUpgradeRequest>,
+  output: __S(9) as any as S.Schema<ReadApplicationUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4735,8 +3469,8 @@ export const RedeployNodeType: API.OperationMethod<
   RedeployNodeTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RedeployNodeTypeRequest,
-  output: RedeployNodeTypeResponse,
+  input: __S(178) as any as S.Schema<RedeployNodeTypeRequest>,
+  output: __S(9) as any as S.Schema<RedeployNodeTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4750,8 +3484,8 @@ export const RestartApplicationDeployedCodePackage: API.OperationMethod<
   RestartApplicationDeployedCodePackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartApplicationDeployedCodePackageRequest,
-  output: RestartApplicationDeployedCodePackageResponse,
+  input: __S(179) as any as S.Schema<RestartApplicationDeployedCodePackageRequest>,
+  output: __S(29) as any as S.Schema<RestartApplicationDeployedCodePackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4765,8 +3499,8 @@ export const RestartNodeType: API.OperationMethod<
   RestartNodeTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartNodeTypeRequest,
-  output: RestartNodeTypeResponse,
+  input: __S(180) as any as S.Schema<RestartNodeTypeRequest>,
+  output: __S(9) as any as S.Schema<RestartNodeTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4780,8 +3514,8 @@ export const RestartServiceReplica: API.OperationMethod<
   RestartServiceReplicaError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartServiceReplicaRequest,
-  output: RestartServiceReplicaResponse,
+  input: __S(182) as any as S.Schema<RestartServiceReplicaRequest>,
+  output: __S(9) as any as S.Schema<RestartServiceReplicaResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4795,8 +3529,8 @@ export const ResumeApplicationUpgrade: API.OperationMethod<
   ResumeApplicationUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumeApplicationUpgradeRequest,
-  output: ResumeApplicationUpgradeResponse,
+  input: __S(183) as any as S.Schema<ResumeApplicationUpgradeRequest>,
+  output: __S(29) as any as S.Schema<ResumeApplicationUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4810,8 +3544,8 @@ export const ServicesCreateOrUpdate: API.OperationMethod<
   ServicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServicesCreateOrUpdateRequest,
-  output: ServicesCreateOrUpdateResponse,
+  input: __S(185) as any as S.Schema<ServicesCreateOrUpdateRequest>,
+  output: __S(186) as any as S.Schema<ServicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4825,8 +3559,8 @@ export const StartApplicationRollback: API.OperationMethod<
   StartApplicationRollbackError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartApplicationRollbackRequest,
-  output: StartApplicationRollbackResponse,
+  input: __S(187) as any as S.Schema<StartApplicationRollbackRequest>,
+  output: __S(29) as any as S.Schema<StartApplicationRollbackResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4840,8 +3574,8 @@ export const StartNodeType: API.OperationMethod<
   StartNodeTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartNodeTypeRequest,
-  output: StartNodeTypeResponse,
+  input: __S(188) as any as S.Schema<StartNodeTypeRequest>,
+  output: __S(9) as any as S.Schema<StartNodeTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4855,8 +3589,8 @@ export const UpdateApplication: API.OperationMethod<
   UpdateApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationRequest,
-  output: UpdateApplicationResponse,
+  input: __S(190) as any as S.Schema<UpdateApplicationRequest>,
+  output: __S(18) as any as S.Schema<UpdateApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4870,8 +3604,8 @@ export const UpdateApplicationType: API.OperationMethod<
   UpdateApplicationTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationTypeRequest,
-  output: UpdateApplicationTypeResponse,
+  input: __S(191) as any as S.Schema<UpdateApplicationTypeRequest>,
+  output: __S(21) as any as S.Schema<UpdateApplicationTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4885,8 +3619,8 @@ export const UpdateApplicationTypeVersion: API.OperationMethod<
   UpdateApplicationTypeVersionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationTypeVersionRequest,
-  output: UpdateApplicationTypeVersionResponse,
+  input: __S(192) as any as S.Schema<UpdateApplicationTypeVersionRequest>,
+  output: __S(25) as any as S.Schema<UpdateApplicationTypeVersionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4900,8 +3634,8 @@ export const UpdateApplicationUpgrade: API.OperationMethod<
   UpdateApplicationUpgradeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationUpgradeRequest,
-  output: UpdateApplicationUpgradeResponse,
+  input: __S(195) as any as S.Schema<UpdateApplicationUpgradeRequest>,
+  output: __S(29) as any as S.Schema<UpdateApplicationUpgradeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4915,8 +3649,8 @@ export const UpdateManagedCluster: API.OperationMethod<
   UpdateManagedClusterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateManagedClusterRequest,
-  output: UpdateManagedClusterResponse,
+  input: __S(196) as any as S.Schema<UpdateManagedClusterRequest>,
+  output: __S(70) as any as S.Schema<UpdateManagedClusterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4930,8 +3664,8 @@ export const UpdateNodeType: API.OperationMethod<
   UpdateNodeTypeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNodeTypeRequest,
-  output: UpdateNodeTypeResponse,
+  input: __S(197) as any as S.Schema<UpdateNodeTypeRequest>,
+  output: __S(108) as any as S.Schema<UpdateNodeTypeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4945,8 +3679,8 @@ export const UpdateService: API.OperationMethod<
   UpdateServiceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServiceRequest,
-  output: UpdateServiceResponse,
+  input: __S(198) as any as S.Schema<UpdateServiceRequest>,
+  output: __S(125) as any as S.Schema<UpdateServiceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4965,7 +3699,7 @@ function __c0(j: number): any {
         identifier: "ApplicationUserAssignedIdentity",
       });
     case 1:
-      return S.Array(ApplicationUserAssignedIdentity);
+      return S.Array(__S(0));
     case 2:
       return S.Record(S.String, S.String);
     case 3:
@@ -4977,22 +3711,20 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ServiceTypeHealthPolicy" });
     case 4:
-      return S.Record(S.String, ServiceTypeHealthPolicy);
+      return S.Record(S.String, __S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
           considerWarningAsError: S.Boolean,
           maxPercentUnhealthyDeployedApplications: S.Number,
-          defaultServiceTypeHealthPolicy: S.optional(ServiceTypeHealthPolicy),
-          serviceTypeHealthPolicyMap: S.optional(
-            ApplicationHealthPolicyServiceTypeHealthPolicyMapMap,
-          ),
+          defaultServiceTypeHealthPolicy: S.optional(__S(3)),
+          serviceTypeHealthPolicyMap: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "ApplicationHealthPolicy" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          failureAction: FailureAction,
+          failureAction: S.String,
           healthCheckWaitDuration: S.String,
           healthCheckStableDuration: S.String,
           healthCheckRetryTimeout: S.String,
@@ -5005,11 +3737,11 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          applicationHealthPolicy: S.optional(ApplicationHealthPolicy),
+          applicationHealthPolicy: S.optional(__S(5)),
           forceRestart: S.optional(S.Boolean),
-          rollingUpgradeMonitoringPolicy: S.optional(RollingUpgradeMonitoringPolicy),
+          rollingUpgradeMonitoringPolicy: S.optional(__S(6)),
           instanceCloseDelayDuration: S.optional(S.Number),
-          upgradeMode: S.optional(RollingUpgradeMode),
+          upgradeMode: S.optional(S.String),
           upgradeReplicaSetCheckTimeout: S.optional(S.Number),
           recreateApplication: S.optional(S.Boolean),
         }),
@@ -5021,10 +3753,10 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          managedIdentities: S.optional(ApplicationResourcePropertiesInputManagedIdentitiesList),
+          managedIdentities: S.optional(__S(1)),
           version: S.optional(S.String),
-          parameters: S.optional(ApplicationResourcePropertiesInputParametersMap),
-          upgradePolicy: S.optional(ApplicationUpgradePolicy),
+          parameters: S.optional(__S(2)),
+          upgradePolicy: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "ApplicationResourcePropertiesInput",
@@ -5034,12 +3766,12 @@ function __c1(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 2:
-      return S.Record(S.String, UserAssignedIdentityInput);
+      return S.Record(S.String, __S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ManagedIdentityType),
-          userAssignedIdentities: S.optional(ManagedIdentityInputUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "ManagedIdentityInput" });
     case 4:
@@ -5049,9 +3781,9 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
-          properties: S.optional(ApplicationResourcePropertiesInput),
-          tags: S.optional(ApplicationsCreateOrUpdateRequestTagsMap),
-          identity: S.optional(ManagedIdentityInput),
+          properties: S.optional(__S(8)),
+          tags: S.optional(__S(2)),
+          identity: S.optional(__S(11)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -5068,21 +3800,21 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          managedIdentities: S.optional(ApplicationResourcePropertiesManagedIdentitiesList),
+          managedIdentities: S.optional(__S(1)),
           provisioningState: S.optional(S.String),
           version: S.optional(S.String),
-          parameters: S.optional(ApplicationResourcePropertiesParametersMap),
-          upgradePolicy: S.optional(ApplicationUpgradePolicy),
+          parameters: S.optional(__S(2)),
+          upgradePolicy: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "ApplicationResourceProperties",
@@ -5099,14 +3831,14 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, UserAssignedIdentity);
+      return S.Record(S.String, __S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(ManagedIdentityType),
-          userAssignedIdentities: S.optional(ManagedIdentityUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "ManagedIdentity" });
     case 2:
@@ -5115,10 +3847,10 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApplicationResourceProperties),
-          tags: S.optional(ApplicationsCreateOrUpdateResponseTagsMap),
-          identity: S.optional(ManagedIdentity),
+          systemData: S.optional(__S(13)),
+          properties: S.optional(__S(14)),
+          tags: S.optional(__S(2)),
+          identity: S.optional(__S(17)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -5131,8 +3863,8 @@ function __c2(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           applicationTypeName: S.String.pipe(T.Label()),
-          properties: S.optional(UserAssignedIdentityInput),
-          tags: S.optional(ApplicationTypesCreateOrUpdateRequestTagsMap),
+          properties: S.optional(__S(9)),
+          tags: S.optional(__S(2)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -5159,9 +3891,9 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApplicationTypeResourceProperties),
-          tags: S.optional(ApplicationTypesCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(13)),
+          properties: S.optional(__S(20)),
+          tags: S.optional(__S(2)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -5183,8 +3915,8 @@ function __c2(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           applicationTypeName: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          properties: S.optional(ApplicationTypeVersionResourcePropertiesInput),
-          tags: S.optional(ApplicationTypeVersionsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(__S(22)),
+          tags: S.optional(__S(2)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -5216,9 +3948,9 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApplicationTypeVersionResourceProperties),
-          tags: S.optional(ApplicationTypeVersionsCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(13)),
+          properties: S.optional(__S(24)),
+          tags: S.optional(__S(2)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -5327,9 +4059,9 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           nodeTypeName: S.String.pipe(T.Label()),
-          nodes: S.optional(DeleteNodeTypeNodeRequestNodesList),
+          nodes: S.optional(__S(32)),
           force: S.optional(S.Boolean),
-          updateType: S.optional(UpdateType),
+          updateType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5365,9 +4097,9 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
-          eventsHealthStateFilter: S.optional(HealthFilter),
-          deployedApplicationsHealthStateFilter: S.optional(HealthFilter),
-          servicesHealthStateFilter: S.optional(HealthFilter),
+          eventsHealthStateFilter: S.optional(S.String),
+          deployedApplicationsHealthStateFilter: S.optional(S.String),
+          servicesHealthStateFilter: S.optional(S.String),
           excludeHealthStatistics: S.optional(S.Boolean),
           timeout: S.optional(S.Number),
         }).pipe(
@@ -5403,10 +4135,10 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApplicationResourceProperties),
-          tags: S.optional(GetApplicationResponseTagsMap),
-          identity: S.optional(ManagedIdentity),
+          systemData: S.optional(__S(13)),
+          properties: S.optional(__S(14)),
+          tags: S.optional(__S(2)),
+          identity: S.optional(__S(17)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetApplicationResponse" });
@@ -5478,11 +4210,11 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ResourceAzStatus" });
     case 2:
-      return S.Array(ResourceAzStatus);
+      return S.Array(__S(41));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          baseResourceStatus: S.optional(ManagedAzResiliencyStatusBaseResourceStatusList),
+          baseResourceStatus: S.optional(__S(42)),
           isClusterZoneResilient: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -5508,32 +4240,32 @@ function __c5(j: number): any {
         S.Struct({
           frontendPort: S.Number,
           backendPort: S.Number,
-          protocol: Protocol,
+          protocol: S.String,
           probePort: S.optional(S.Number),
-          probeProtocol: ProbeProtocol,
+          probeProtocol: S.String,
           probeRequestPath: S.optional(S.String),
           loadDistribution: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoadBalancingRule" });
     case 6:
-      return S.Array(LoadBalancingRule);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          protocol: NsgProtocol,
-          sourceAddressPrefixes: S.optional(NetworkSecurityRuleSourceAddressPrefixesList),
-          destinationAddressPrefixes: S.optional(NetworkSecurityRuleDestinationAddressPrefixesList),
-          sourcePortRanges: S.optional(NetworkSecurityRuleSourcePortRangesList),
-          destinationPortRanges: S.optional(NetworkSecurityRuleDestinationPortRangesList),
+          protocol: S.String,
+          sourceAddressPrefixes: S.optional(__S(32)),
+          destinationAddressPrefixes: S.optional(__S(32)),
+          sourcePortRanges: S.optional(__S(32)),
+          destinationPortRanges: S.optional(__S(32)),
           sourceAddressPrefix: S.optional(S.String),
           destinationAddressPrefix: S.optional(S.String),
           sourcePortRange: S.optional(S.String),
           destinationPortRange: S.optional(S.String),
-          access: Access,
+          access: S.String,
           priority: S.Number,
-          direction: Direction,
+          direction: S.String,
         }),
       ).annotate({ identifier: "NetworkSecurityRule" });
   }
@@ -5541,7 +4273,7 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(NetworkSecurityRule);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5552,7 +4284,7 @@ function __c6(j: number): any {
         }),
       ).annotate({ identifier: "ClientCertificate" });
     case 2:
-      return S.Array(ClientCertificate);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -5571,24 +4303,24 @@ function __c6(j: number): any {
         identifier: "SettingsParameterDescription",
       });
     case 5:
-      return S.Array(SettingsParameterDescription);
+      return S.Array(__S(52));
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          parameters: SettingsSectionDescriptionParametersList,
+          parameters: __S(53),
         }),
       ).annotate({
         identifier: "SettingsSectionDescription",
       });
     case 7:
-      return S.Array(SettingsSectionDescription);
+      return S.Array(__S(54));
   }
 }
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ManagedClusterAddOnFeature);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5605,29 +4337,29 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "IpTag" });
     case 3:
-      return S.Array(IpTag);
+      return S.Array(__S(58));
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           enableIpv6: S.optional(S.Boolean),
-          privateEndpointNetworkPolicies: S.optional(PrivateEndpointNetworkPolicies),
-          privateLinkServiceNetworkPolicies: S.optional(PrivateLinkServiceNetworkPolicies),
+          privateEndpointNetworkPolicies: S.optional(S.String),
+          privateLinkServiceNetworkPolicies: S.optional(S.String),
           networkSecurityGroupId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Subnet" });
     case 5:
-      return S.Array(Subnet);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
         S.Struct({
           service: S.String,
-          locations: S.optional(ServiceEndpointLocationsList),
+          locations: S.optional(__S(32)),
           networkIdentifier: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceEndpoint" });
     case 7:
-      return S.Array(ServiceEndpoint);
+      return S.Array(__S(62));
   }
 }
 function __c8(j: number): any {
@@ -5663,9 +4395,9 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           forceRestart: S.optional(S.Boolean),
-          healthPolicy: S.optional(ClusterHealthPolicy),
-          deltaHealthPolicy: S.optional(ClusterUpgradeDeltaHealthPolicy),
-          monitoringPolicy: S.optional(ClusterMonitoringPolicy),
+          healthPolicy: S.optional(__S(64)),
+          deltaHealthPolicy: S.optional(__S(65)),
+          monitoringPolicy: S.optional(__S(66)),
           upgradeReplicaSetCheckTimeout: S.optional(S.String),
         }),
       ).annotate({ identifier: "ClusterUpgradePolicy" });
@@ -5676,44 +4408,42 @@ function __c8(j: number): any {
           fqdn: S.optional(S.String),
           ipv4Address: S.optional(S.String),
           clusterId: S.optional(S.String),
-          clusterState: S.optional(ClusterState),
-          clusterCertificateThumbprints: S.optional(
-            ManagedClusterPropertiesClusterCertificateThumbprintsList,
-          ),
+          clusterState: S.optional(S.String),
+          clusterCertificateThumbprints: S.optional(__S(32)),
           clientConnectionPort: S.optional(S.Number),
           httpGatewayConnectionPort: S.optional(S.Number),
           adminUserName: S.String,
           adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          loadBalancingRules: S.optional(ManagedClusterPropertiesLoadBalancingRulesList),
+          loadBalancingRules: S.optional(__S(46)),
           allowRdpAccess: S.optional(S.Boolean),
-          networkSecurityRules: S.optional(ManagedClusterPropertiesNetworkSecurityRulesList),
-          clients: S.optional(ManagedClusterPropertiesClientsList),
-          azureActiveDirectory: S.optional(AzureActiveDirectory),
-          fabricSettings: S.optional(ManagedClusterPropertiesFabricSettingsList),
-          provisioningState: S.optional(ManagedResourceProvisioningState),
+          networkSecurityRules: S.optional(__S(48)),
+          clients: S.optional(__S(50)),
+          azureActiveDirectory: S.optional(__S(51)),
+          fabricSettings: S.optional(__S(55)),
+          provisioningState: S.optional(S.String),
           clusterCodeVersion: S.optional(S.String),
-          clusterUpgradeMode: S.optional(ManagedClusterPropertiesClusterUpgradeMode),
-          clusterUpgradeCadence: S.optional(ClusterUpgradeCadence),
-          addonFeatures: S.optional(ManagedClusterPropertiesAddonFeaturesList),
+          clusterUpgradeMode: S.optional(S.String),
+          clusterUpgradeCadence: S.optional(S.String),
+          addonFeatures: S.optional(__S(56)),
           enableAutoOSUpgrade: S.optional(S.Boolean),
           zonalResiliency: S.optional(S.Boolean),
-          applicationTypeVersionsCleanupPolicy: S.optional(ApplicationTypeVersionsCleanupPolicy),
+          applicationTypeVersionsCleanupPolicy: S.optional(__S(57)),
           enableIpv6: S.optional(S.Boolean),
           subnetId: S.optional(S.String),
-          ipTags: S.optional(ManagedClusterPropertiesIpTagsList),
+          ipTags: S.optional(__S(59)),
           ipv6Address: S.optional(S.String),
           enableServicePublicIP: S.optional(S.Boolean),
-          auxiliarySubnets: S.optional(ManagedClusterPropertiesAuxiliarySubnetsList),
-          serviceEndpoints: S.optional(ManagedClusterPropertiesServiceEndpointsList),
-          zonalUpdateMode: S.optional(ZonalUpdateMode),
+          auxiliarySubnets: S.optional(__S(61)),
+          serviceEndpoints: S.optional(__S(63)),
+          zonalUpdateMode: S.optional(S.String),
           useCustomVnet: S.optional(S.Boolean),
           publicIPPrefixId: S.optional(S.String),
           publicIPv6PrefixId: S.optional(S.String),
           ddosProtectionPlanId: S.optional(S.String),
-          upgradeDescription: S.optional(ClusterUpgradePolicy),
+          upgradeDescription: S.optional(__S(67)),
           httpGatewayTokenAuthConnectionPort: S.optional(S.Number),
           enableHttpGatewayExclusiveAuthMode: S.optional(S.Boolean),
-          autoGeneratedDomainNameLabelScope: S.optional(AutoGeneratedDomainNameLabelScope),
+          autoGeneratedDomainNameLabelScope: S.optional(S.String),
           allocatedOutboundPorts: S.optional(S.Number),
           VMImage: S.optional(S.String),
           enableOutboundOnlyNodeTypes: S.optional(S.Boolean),
@@ -5723,7 +4453,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          name: SkuName,
+          name: S.String,
         }),
       ).annotate({ identifier: "Sku" });
     case 6:
@@ -5732,12 +4462,12 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetManagedClusterResponseTagsMap),
+          systemData: S.optional(__S(13)),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(ManagedClusterProperties),
+          properties: S.optional(__S(68)),
           etag: S.optional(S.String),
-          sku: Sku,
+          sku: __S(69),
         }),
       ).annotate({
         identifier: "GetManagedClusterResponse",
@@ -5768,7 +4498,7 @@ function __c9(j: number): any {
         S.Struct({
           clusterCodeVersion: S.optional(S.String),
           supportExpiryUtc: S.optional(S.String),
-          osType: S.optional(OsType),
+          osType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedClusterVersionDetails",
@@ -5779,7 +4509,7 @@ function __c9(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(ManagedClusterVersionDetails),
+          properties: S.optional(__S(72)),
         }),
       ).annotate({
         identifier: "ManagedClusterCodeVersionResult",
@@ -5789,7 +4519,7 @@ function __c9(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          environment: GetManagedClusterVersionByEnvironmentRequestEnvironment.pipe(T.Label()),
+          environment: S.String.pipe(T.Label()),
           clusterVersion: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -5859,7 +4589,7 @@ function __c9(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(VMSize),
+          properties: S.optional(__S(78)),
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
@@ -5906,16 +4636,16 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "VaultCertificate" });
     case 4:
-      return S.Array(VaultCertificate);
+      return S.Array(__S(83));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          sourceVault: SubResource,
-          vaultCertificates: VaultSecretGroupVaultCertificatesList,
+          sourceVault: __S(82),
+          vaultCertificates: __S(84),
         }),
       ).annotate({ identifier: "VaultSecretGroup" });
     case 6:
-      return S.Array(VaultSecretGroup);
+      return S.Array(__S(85));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -5926,10 +4656,10 @@ function __c10(j: number): any {
           settings: S.optional(S.Unknown),
           protectedSettings: S.optional(S.Unknown),
           forceUpdateTag: S.optional(S.String),
-          provisionAfterExtensions: S.optional(VMSSExtensionPropertiesProvisionAfterExtensionsList),
+          provisionAfterExtensions: S.optional(__S(32)),
           provisioningState: S.optional(S.String),
           enableAutomaticUpgrade: S.optional(S.Boolean),
-          setupOrder: S.optional(VMSSExtensionPropertiesSetupOrderList),
+          setupOrder: S.optional(__S(56)),
         }),
       ).annotate({ identifier: "VMSSExtensionProperties" });
   }
@@ -5940,39 +4670,39 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: VMSSExtensionProperties,
+          properties: __S(87),
         }),
       ).annotate({ identifier: "VMSSExtension" });
     case 1:
-      return S.Array(VMSSExtension);
+      return S.Array(__S(88));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          userAssignedIdentities: S.optional(VmManagedIdentityUserAssignedIdentitiesList),
+          userAssignedIdentities: S.optional(__S(32)),
         }),
       ).annotate({ identifier: "VmManagedIdentity" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ipAddressType: S.optional(FrontendConfigurationIpAddressType),
+          ipAddressType: S.optional(S.String),
           loadBalancerBackendAddressPoolId: S.optional(S.String),
           loadBalancerInboundNatPoolId: S.optional(S.String),
           applicationGatewayBackendAddressPoolId: S.optional(S.String),
         }),
       ).annotate({ identifier: "FrontendConfiguration" });
     case 4:
-      return S.Array(FrontendConfiguration);
+      return S.Array(__S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
           lun: S.Number,
           diskSizeGB: S.Number,
-          diskType: VmssDataDiskDiskType,
+          diskType: S.String,
           diskLetter: S.String,
         }),
       ).annotate({ identifier: "VmssDataDisk" });
     case 6:
-      return S.Array(VmssDataDisk);
+      return S.Array(__S(93));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -5986,7 +4716,7 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(NodeTypeNatConfig);
+      return S.Array(__S(95));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -5997,13 +4727,13 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "VmImagePlan" });
     case 2:
-      return S.Array(SubResource);
+      return S.Array(__S(82));
     case 3:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          ipTags: S.optional(PublicIPAddressConfigurationIpTagsList),
-          publicIPAddressVersion: S.optional(PublicIPAddressConfigurationPublicIPAddressVersion),
+          ipTags: S.optional(__S(59)),
+          publicIPAddressVersion: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PublicIPAddressConfiguration",
@@ -6012,33 +4742,29 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          applicationGatewayBackendAddressPools: S.optional(
-            IpConfigurationApplicationGatewayBackendAddressPoolsList,
-          ),
-          loadBalancerBackendAddressPools: S.optional(
-            IpConfigurationLoadBalancerBackendAddressPoolsList,
-          ),
-          loadBalancerInboundNatPools: S.optional(IpConfigurationLoadBalancerInboundNatPoolsList),
-          subnet: S.optional(SubResource),
-          privateIPAddressVersion: S.optional(IpConfigurationPrivateIPAddressVersion),
-          publicIPAddressConfiguration: S.optional(PublicIPAddressConfiguration),
+          applicationGatewayBackendAddressPools: S.optional(__S(98)),
+          loadBalancerBackendAddressPools: S.optional(__S(98)),
+          loadBalancerInboundNatPools: S.optional(__S(98)),
+          subnet: S.optional(__S(82)),
+          privateIPAddressVersion: S.optional(S.String),
+          publicIPAddressConfiguration: S.optional(__S(99)),
         }),
       ).annotate({ identifier: "IpConfiguration" });
     case 5:
-      return S.Array(IpConfiguration);
+      return S.Array(__S(100));
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           enableAcceleratedNetworking: S.optional(S.Boolean),
-          dscpConfiguration: S.optional(SubResource),
-          ipConfigurations: AdditionalNetworkInterfaceConfigurationIpConfigurationsList,
+          dscpConfiguration: S.optional(__S(82)),
+          ipConfigurations: __S(101),
         }),
       ).annotate({
         identifier: "AdditionalNetworkInterfaceConfiguration",
       });
     case 7:
-      return S.Array(AdditionalNetworkInterfaceConfiguration);
+      return S.Array(__S(102));
   }
 }
 function __c13(j: number): any {
@@ -6055,63 +4781,61 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "VmApplication" });
     case 1:
-      return S.Array(VmApplication);
+      return S.Array(__S(104));
     case 2:
       return S.suspend(() =>
         S.Struct({
           isPrimary: S.Boolean,
           vmInstanceCount: S.Number,
           dataDiskSizeGB: S.optional(S.Number),
-          dataDiskType: S.optional(NodeTypePropertiesDataDiskType),
+          dataDiskType: S.optional(S.String),
           dataDiskLetter: S.optional(S.String),
-          placementProperties: S.optional(NodeTypePropertiesPlacementPropertiesMap),
-          capacities: S.optional(NodeTypePropertiesCapacitiesMap),
-          applicationPorts: S.optional(EndpointRangeDescription),
-          ephemeralPorts: S.optional(EndpointRangeDescription),
+          placementProperties: S.optional(__S(2)),
+          capacities: S.optional(__S(2)),
+          applicationPorts: S.optional(__S(81)),
+          ephemeralPorts: S.optional(__S(81)),
           vmSize: S.optional(S.String),
           vmImagePublisher: S.optional(S.String),
           vmImageOffer: S.optional(S.String),
           vmImageSku: S.optional(S.String),
           vmImageVersion: S.optional(S.String),
-          vmSecrets: S.optional(NodeTypePropertiesVmSecretsList),
-          vmExtensions: S.optional(NodeTypePropertiesVmExtensionsList),
-          vmManagedIdentity: S.optional(VmManagedIdentity),
+          vmSecrets: S.optional(__S(86)),
+          vmExtensions: S.optional(__S(89)),
+          vmManagedIdentity: S.optional(__S(90)),
           isStateless: S.optional(S.Boolean),
           multiplePlacementGroups: S.optional(S.Boolean),
-          frontendConfigurations: S.optional(NodeTypePropertiesFrontendConfigurationsList),
-          networkSecurityRules: S.optional(NodeTypePropertiesNetworkSecurityRulesList),
-          additionalDataDisks: S.optional(NodeTypePropertiesAdditionalDataDisksList),
+          frontendConfigurations: S.optional(__S(92)),
+          networkSecurityRules: S.optional(__S(48)),
+          additionalDataDisks: S.optional(__S(94)),
           enableEncryptionAtHost: S.optional(S.Boolean),
-          provisioningState: S.optional(ManagedResourceProvisioningState),
+          provisioningState: S.optional(S.String),
           enableAcceleratedNetworking: S.optional(S.Boolean),
           useDefaultPublicLoadBalancer: S.optional(S.Boolean),
           useTempDataDisk: S.optional(S.Boolean),
           enableOverProvisioning: S.optional(S.Boolean),
-          zones: S.optional(NodeTypePropertiesZonesList),
+          zones: S.optional(__S(32)),
           isSpotVM: S.optional(S.Boolean),
           hostGroupId: S.optional(S.String),
           useEphemeralOSDisk: S.optional(S.Boolean),
           spotRestoreTimeout: S.optional(S.String),
-          evictionPolicy: S.optional(EvictionPolicyType),
+          evictionPolicy: S.optional(S.String),
           vmImageResourceId: S.optional(S.String),
           subnetId: S.optional(S.String),
-          vmSetupActions: S.optional(NodeTypePropertiesVmSetupActionsList),
-          securityType: S.optional(SecurityType),
-          securityEncryptionType: S.optional(SecurityEncryptionType),
+          vmSetupActions: S.optional(__S(56)),
+          securityType: S.optional(S.String),
+          securityEncryptionType: S.optional(S.String),
           secureBootEnabled: S.optional(S.Boolean),
           enableNodePublicIP: S.optional(S.Boolean),
           enableNodePublicIPv6: S.optional(S.Boolean),
           vmSharedGalleryImageId: S.optional(S.String),
           natGatewayId: S.optional(S.String),
-          natConfigurations: S.optional(NodeTypePropertiesNatConfigurationsList),
-          vmImagePlan: S.optional(VmImagePlan),
+          natConfigurations: S.optional(__S(96)),
+          vmImagePlan: S.optional(__S(97)),
           serviceArtifactReferenceId: S.optional(S.String),
           dscpConfigurationId: S.optional(S.String),
-          additionalNetworkInterfaceConfigurations: S.optional(
-            NodeTypePropertiesAdditionalNetworkInterfaceConfigurationsList,
-          ),
+          additionalNetworkInterfaceConfigurations: S.optional(__S(103)),
           computerNamePrefix: S.optional(S.String),
-          vmApplications: S.optional(NodeTypePropertiesVmApplicationsList),
+          vmApplications: S.optional(__S(105)),
           zoneBalance: S.optional(S.Boolean),
           isOutboundOnly: S.optional(S.Boolean),
           enableResilientEphemeralOsDisk: S.optional(S.Boolean),
@@ -6131,10 +4855,10 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(NodeTypeProperties),
-          tags: S.optional(GetNodeTypeResponseTagsMap),
-          sku: S.optional(NodeTypeSku),
+          systemData: S.optional(__S(13)),
+          properties: S.optional(__S(106)),
+          tags: S.optional(__S(2)),
+          sku: S.optional(__S(107)),
         }),
       ).annotate({ identifier: "GetNodeTypeResponse" });
     case 5:
@@ -6190,7 +4914,7 @@ function __c14(j: number): any {
           endTime: S.optional(S.String),
           percentComplete: S.optional(S.Number),
           status: S.optional(S.String),
-          error: S.optional(ErrorModelError),
+          error: S.optional(__S(111)),
         }),
       ).annotate({
         identifier: "LongRunningOperationResult",
@@ -6215,32 +4939,32 @@ function __c14(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          scheme: ServiceCorrelationScheme,
+          scheme: S.String,
           serviceName: S.String,
         }),
       ).annotate({ identifier: "ServiceCorrelation" });
     case 3:
-      return S.Array(ServiceCorrelation);
+      return S.Array(__S(114));
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          weight: S.optional(ServiceLoadMetricWeight),
+          weight: S.optional(S.String),
           primaryDefaultLoad: S.optional(S.Number),
           secondaryDefaultLoad: S.optional(S.Number),
           defaultLoad: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ServiceLoadMetric" });
     case 5:
-      return S.Array(ServiceLoadMetric);
+      return S.Array(__S(116));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          type: ServicePlacementPolicyType,
+          type: S.String,
         }),
       ).annotate({ identifier: "ServicePlacementPolicy" });
     case 7:
-      return S.Array(ServicePlacementPolicy);
+      return S.Array(__S(118));
   }
 }
 function __c15(j: number): any {
@@ -6248,44 +4972,42 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          kind: ServiceScalingMechanismKind,
+          kind: S.String,
         }),
       ).annotate({ identifier: "ScalingMechanism" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          scalingMechanism: ScalingMechanism,
-          scalingTrigger: ScalingTrigger,
+          scalingMechanism: __S(120),
+          scalingTrigger: __S(120),
         }),
       ).annotate({ identifier: "ScalingPolicy" });
     case 2:
-      return S.Array(ScalingPolicy);
+      return S.Array(__S(121));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          partitionScheme: PartitionScheme,
+          partitionScheme: S.String,
           count: S.optional(S.Number),
           lowKey: S.optional(S.Number),
           highKey: S.optional(S.Number),
-          names: S.optional(PartitionNamesList),
+          names: S.optional(__S(32)),
         }),
       ).annotate({ identifier: "Partition" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           placementConstraints: S.optional(S.String),
-          correlationScheme: S.optional(ServiceResourcePropertiesCorrelationSchemeList),
-          serviceLoadMetrics: S.optional(ServiceResourcePropertiesServiceLoadMetricsList),
-          servicePlacementPolicies: S.optional(
-            ServiceResourcePropertiesServicePlacementPoliciesList,
-          ),
-          defaultMoveCost: S.optional(MoveCost),
-          scalingPolicies: S.optional(ServiceResourcePropertiesScalingPoliciesList),
+          correlationScheme: S.optional(__S(115)),
+          serviceLoadMetrics: S.optional(__S(117)),
+          servicePlacementPolicies: S.optional(__S(119)),
+          defaultMoveCost: S.optional(S.String),
+          scalingPolicies: S.optional(__S(122)),
           provisioningState: S.optional(S.String),
-          serviceKind: ServiceKind,
+          serviceKind: S.String,
           serviceTypeName: S.String,
-          partitionDescription: Partition,
-          servicePackageActivationMode: S.optional(ServicePackageActivationMode),
+          partitionDescription: __S(123),
+          servicePackageActivationMode: S.optional(S.String),
           serviceDnsName: S.optional(S.String),
           instanceCount: S.optional(S.Number),
           minInstanceCount: S.optional(S.Number),
@@ -6307,9 +5029,9 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ServiceResourceProperties),
-          tags: S.optional(GetServiceResponseTagsMap),
+          systemData: S.optional(__S(13)),
+          properties: S.optional(__S(124)),
+          tags: S.optional(__S(2)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetServiceResponse" });
@@ -6329,7 +5051,7 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListApplicationsRequest" });
     case 7:
-      return S.Array(ApplicationResource);
+      return S.Array(__S(37));
   }
 }
 function __c16(j: number): any {
@@ -6337,7 +5059,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: ApplicationResourceListValueList,
+          value: __S(127),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationResourceList" });
@@ -6364,18 +5086,18 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ApplicationTypeResourceProperties),
-          tags: S.optional(ApplicationTypeResourceTagsMap),
+          systemData: S.optional(__S(13)),
+          properties: S.optional(__S(20)),
+          tags: S.optional(__S(2)),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "ApplicationTypeResource" });
     case 3:
-      return S.Array(ApplicationTypeResource);
+      return S.Array(__S(130));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: ApplicationTypeResourceListValueList,
+          value: __S(131),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6400,11 +5122,11 @@ function __c16(j: number): any {
         identifier: "ListApplicationTypeVersionByApplicationTypesRequest",
       });
     case 6:
-      return S.Array(ApplicationTypeVersionResource);
+      return S.Array(__S(25));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: ApplicationTypeVersionResourceListValueList,
+          value: __S(134),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -6436,20 +5158,20 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(ManagedClusterTagsMap),
+          systemData: S.optional(__S(13)),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(ManagedClusterProperties),
+          properties: S.optional(__S(68)),
           etag: S.optional(S.String),
-          sku: Sku,
+          sku: __S(69),
         }),
       ).annotate({ identifier: "ManagedCluster" });
     case 2:
-      return S.Array(ManagedCluster);
+      return S.Array(__S(137));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: ManagedClusterListResultValueList,
+          value: __S(138),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedClusterListResult" });
@@ -6485,11 +5207,9 @@ function __c17(j: number): any {
         identifier: "ListManagedClusterVersionRequest",
       });
     case 6:
-      return S.Array(ManagedClusterCodeVersionResult);
+      return S.Array(__S(73));
     case 7:
-      return S.suspend(() =>
-        ListManagedClusterVersionResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(142).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListManagedClusterVersionResponse",
       });
   }
@@ -6501,7 +5221,7 @@ function __c18(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          environment: ListManagedClusterVersionByEnvironmentRequestEnvironment.pipe(T.Label()),
+          environment: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6530,11 +5250,11 @@ function __c18(j: number): any {
         identifier: "ListManagedUnsupportedVMSizesRequest",
       });
     case 2:
-      return S.Array(ManagedVMSize);
+      return S.Array(__S(79));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: ManagedVMSizesResultValueList,
+          value: __S(146),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ManagedVMSizesResult" });
@@ -6556,11 +5276,11 @@ function __c18(j: number): any {
         identifier: "ListNodeTypeByManagedClustersRequest",
       });
     case 5:
-      return S.Array(NodeType);
+      return S.Array(__S(108));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: NodeTypeListResultValueList,
+          value: __S(149),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodeTypeListResult" });
@@ -6597,23 +5317,23 @@ function __c19(j: number): any {
           minimum: S.optional(S.Number),
           maximum: S.optional(S.Number),
           default: S.optional(S.Number),
-          scaleType: S.optional(NodeTypeSkuCapacityScaleType),
+          scaleType: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodeTypeSkuCapacity" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          sku: S.optional(NodeTypeSupportedSku),
-          capacity: S.optional(NodeTypeSkuCapacity),
+          sku: S.optional(__S(152)),
+          capacity: S.optional(__S(153)),
         }),
       ).annotate({ identifier: "NodeTypeAvailableSku" });
     case 3:
-      return S.Array(NodeTypeAvailableSku);
+      return S.Array(__S(154));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: NodeTypeListSkuResultValueList,
+          value: __S(155),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodeTypeListSkuResult" });
@@ -6644,7 +5364,7 @@ function __c19(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(AvailableOperationDisplay),
+          display: S.optional(__S(158)),
           origin: S.optional(S.String),
           nextLink: S.optional(S.String),
         }),
@@ -6654,11 +5374,11 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OperationResult);
+      return S.Array(__S(159));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: OperationListResultValueList,
+          value: __S(160),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -6681,11 +5401,11 @@ function __c20(j: number): any {
         identifier: "ListServiceByApplicationsRequest",
       });
     case 3:
-      return S.Array(ServiceResource);
+      return S.Array(__S(125));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: ServiceResourceListValueList,
+          value: __S(163),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceResourceList" });
@@ -6697,34 +5417,34 @@ function __c20(j: number): any {
           httpGatewayConnectionPort: S.optional(S.Number),
           adminUserName: S.String,
           adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          loadBalancingRules: S.optional(ManagedClusterPropertiesInputLoadBalancingRulesList),
+          loadBalancingRules: S.optional(__S(46)),
           allowRdpAccess: S.optional(S.Boolean),
-          networkSecurityRules: S.optional(ManagedClusterPropertiesInputNetworkSecurityRulesList),
-          clients: S.optional(ManagedClusterPropertiesInputClientsList),
-          azureActiveDirectory: S.optional(AzureActiveDirectory),
-          fabricSettings: S.optional(ManagedClusterPropertiesInputFabricSettingsList),
+          networkSecurityRules: S.optional(__S(48)),
+          clients: S.optional(__S(50)),
+          azureActiveDirectory: S.optional(__S(51)),
+          fabricSettings: S.optional(__S(55)),
           clusterCodeVersion: S.optional(S.String),
-          clusterUpgradeMode: S.optional(ManagedClusterPropertiesInputClusterUpgradeMode),
-          clusterUpgradeCadence: S.optional(ClusterUpgradeCadence),
-          addonFeatures: S.optional(ManagedClusterPropertiesInputAddonFeaturesList),
+          clusterUpgradeMode: S.optional(S.String),
+          clusterUpgradeCadence: S.optional(S.String),
+          addonFeatures: S.optional(__S(56)),
           enableAutoOSUpgrade: S.optional(S.Boolean),
           zonalResiliency: S.optional(S.Boolean),
-          applicationTypeVersionsCleanupPolicy: S.optional(ApplicationTypeVersionsCleanupPolicy),
+          applicationTypeVersionsCleanupPolicy: S.optional(__S(57)),
           enableIpv6: S.optional(S.Boolean),
           subnetId: S.optional(S.String),
-          ipTags: S.optional(ManagedClusterPropertiesInputIpTagsList),
+          ipTags: S.optional(__S(59)),
           enableServicePublicIP: S.optional(S.Boolean),
-          auxiliarySubnets: S.optional(ManagedClusterPropertiesInputAuxiliarySubnetsList),
-          serviceEndpoints: S.optional(ManagedClusterPropertiesInputServiceEndpointsList),
-          zonalUpdateMode: S.optional(ZonalUpdateMode),
+          auxiliarySubnets: S.optional(__S(61)),
+          serviceEndpoints: S.optional(__S(63)),
+          zonalUpdateMode: S.optional(S.String),
           useCustomVnet: S.optional(S.Boolean),
           publicIPPrefixId: S.optional(S.String),
           publicIPv6PrefixId: S.optional(S.String),
           ddosProtectionPlanId: S.optional(S.String),
-          upgradeDescription: S.optional(ClusterUpgradePolicy),
+          upgradeDescription: S.optional(__S(67)),
           httpGatewayTokenAuthConnectionPort: S.optional(S.Number),
           enableHttpGatewayExclusiveAuthMode: S.optional(S.Boolean),
-          autoGeneratedDomainNameLabelScope: S.optional(AutoGeneratedDomainNameLabelScope),
+          autoGeneratedDomainNameLabelScope: S.optional(S.String),
           allocatedOutboundPorts: S.optional(S.Number),
           VMImage: S.optional(S.String),
           enableOutboundOnlyNodeTypes: S.optional(S.Boolean),
@@ -6739,10 +5459,10 @@ function __c20(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          tags: S.optional(ManagedClustersCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(2)),
           location: S.String,
-          properties: S.optional(ManagedClusterPropertiesInput),
-          sku: Sku,
+          properties: S.optional(__S(165)),
+          sku: __S(69),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6764,11 +5484,9 @@ function __c20(j: number): any {
           settings: S.optional(S.Unknown),
           protectedSettings: S.optional(S.Unknown),
           forceUpdateTag: S.optional(S.String),
-          provisionAfterExtensions: S.optional(
-            VMSSExtensionPropertiesInputProvisionAfterExtensionsList,
-          ),
+          provisionAfterExtensions: S.optional(__S(32)),
           enableAutomaticUpgrade: S.optional(S.Boolean),
-          setupOrder: S.optional(VMSSExtensionPropertiesInputSetupOrderList),
+          setupOrder: S.optional(__S(56)),
         }),
       ).annotate({
         identifier: "VMSSExtensionPropertiesInput",
@@ -6781,68 +5499,66 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          properties: VMSSExtensionPropertiesInput,
+          properties: __S(167),
         }),
       ).annotate({ identifier: "VMSSExtensionInput" });
     case 1:
-      return S.Array(VMSSExtensionInput);
+      return S.Array(__S(168));
     case 2:
-      return S.Array(AdditionalNetworkInterfaceConfiguration);
+      return S.Array(__S(102));
     case 3:
       return S.suspend(() =>
         S.Struct({
           isPrimary: S.Boolean,
           vmInstanceCount: S.Number,
           dataDiskSizeGB: S.optional(S.Number),
-          dataDiskType: S.optional(NodeTypePropertiesInputDataDiskType),
+          dataDiskType: S.optional(S.String),
           dataDiskLetter: S.optional(S.String),
-          placementProperties: S.optional(NodeTypePropertiesInputPlacementPropertiesMap),
-          capacities: S.optional(NodeTypePropertiesInputCapacitiesMap),
-          applicationPorts: S.optional(EndpointRangeDescription),
-          ephemeralPorts: S.optional(EndpointRangeDescription),
+          placementProperties: S.optional(__S(2)),
+          capacities: S.optional(__S(2)),
+          applicationPorts: S.optional(__S(81)),
+          ephemeralPorts: S.optional(__S(81)),
           vmSize: S.optional(S.String),
           vmImagePublisher: S.optional(S.String),
           vmImageOffer: S.optional(S.String),
           vmImageSku: S.optional(S.String),
           vmImageVersion: S.optional(S.String),
-          vmSecrets: S.optional(NodeTypePropertiesInputVmSecretsList),
-          vmExtensions: S.optional(NodeTypePropertiesInputVmExtensionsList),
-          vmManagedIdentity: S.optional(VmManagedIdentity),
+          vmSecrets: S.optional(__S(86)),
+          vmExtensions: S.optional(__S(169)),
+          vmManagedIdentity: S.optional(__S(90)),
           isStateless: S.optional(S.Boolean),
           multiplePlacementGroups: S.optional(S.Boolean),
-          frontendConfigurations: S.optional(NodeTypePropertiesInputFrontendConfigurationsList),
-          networkSecurityRules: S.optional(NodeTypePropertiesInputNetworkSecurityRulesList),
-          additionalDataDisks: S.optional(NodeTypePropertiesInputAdditionalDataDisksList),
+          frontendConfigurations: S.optional(__S(92)),
+          networkSecurityRules: S.optional(__S(48)),
+          additionalDataDisks: S.optional(__S(94)),
           enableEncryptionAtHost: S.optional(S.Boolean),
           enableAcceleratedNetworking: S.optional(S.Boolean),
           useDefaultPublicLoadBalancer: S.optional(S.Boolean),
           useTempDataDisk: S.optional(S.Boolean),
           enableOverProvisioning: S.optional(S.Boolean),
-          zones: S.optional(NodeTypePropertiesInputZonesList),
+          zones: S.optional(__S(32)),
           isSpotVM: S.optional(S.Boolean),
           hostGroupId: S.optional(S.String),
           useEphemeralOSDisk: S.optional(S.Boolean),
           spotRestoreTimeout: S.optional(S.String),
-          evictionPolicy: S.optional(EvictionPolicyType),
+          evictionPolicy: S.optional(S.String),
           vmImageResourceId: S.optional(S.String),
           subnetId: S.optional(S.String),
-          vmSetupActions: S.optional(NodeTypePropertiesInputVmSetupActionsList),
-          securityType: S.optional(SecurityType),
-          securityEncryptionType: S.optional(SecurityEncryptionType),
+          vmSetupActions: S.optional(__S(56)),
+          securityType: S.optional(S.String),
+          securityEncryptionType: S.optional(S.String),
           secureBootEnabled: S.optional(S.Boolean),
           enableNodePublicIP: S.optional(S.Boolean),
           enableNodePublicIPv6: S.optional(S.Boolean),
           vmSharedGalleryImageId: S.optional(S.String),
           natGatewayId: S.optional(S.String),
-          natConfigurations: S.optional(NodeTypePropertiesInputNatConfigurationsList),
-          vmImagePlan: S.optional(VmImagePlan),
+          natConfigurations: S.optional(__S(96)),
+          vmImagePlan: S.optional(__S(97)),
           serviceArtifactReferenceId: S.optional(S.String),
           dscpConfigurationId: S.optional(S.String),
-          additionalNetworkInterfaceConfigurations: S.optional(
-            NodeTypePropertiesInputAdditionalNetworkInterfaceConfigurationsList,
-          ),
+          additionalNetworkInterfaceConfigurations: S.optional(__S(170)),
           computerNamePrefix: S.optional(S.String),
-          vmApplications: S.optional(NodeTypePropertiesInputVmApplicationsList),
+          vmApplications: S.optional(__S(105)),
           zoneBalance: S.optional(S.Boolean),
           isOutboundOnly: S.optional(S.Boolean),
           enableResilientEphemeralOsDisk: S.optional(S.Boolean),
@@ -6855,9 +5571,9 @@ function __c21(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           nodeTypeName: S.String.pipe(T.Label()),
-          properties: S.optional(NodeTypePropertiesInput),
-          tags: S.optional(NodeTypesCreateOrUpdateRequestTagsMap),
-          sku: S.optional(NodeTypeSku),
+          properties: S.optional(__S(171)),
+          tags: S.optional(__S(2)),
+          sku: S.optional(__S(107)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6875,10 +5591,10 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(NodeTypeProperties),
-          tags: S.optional(NodeTypesCreateOrUpdateResponseTagsMap),
-          sku: S.optional(NodeTypeSku),
+          systemData: S.optional(__S(13)),
+          properties: S.optional(__S(106)),
+          tags: S.optional(__S(2)),
+          sku: S.optional(__S(107)),
         }),
       ).annotate({
         identifier: "NodeTypesCreateOrUpdateResponse",
@@ -6890,9 +5606,9 @@ function __c21(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           nodeTypeName: S.String.pipe(T.Label()),
-          nodes: S.optional(NodeTypesDeallocateRequestNodesList),
+          nodes: S.optional(__S(32)),
           force: S.optional(S.Boolean),
-          updateType: S.optional(UpdateType),
+          updateType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6911,9 +5627,9 @@ function __c21(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           nodeTypeName: S.String.pipe(T.Label()),
-          nodes: S.optional(NodeTypesReimageRequestNodesList),
+          nodes: S.optional(__S(32)),
           force: S.optional(S.Boolean),
-          updateType: S.optional(UpdateType),
+          updateType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6969,9 +5685,9 @@ function __c22(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           nodeTypeName: S.String.pipe(T.Label()),
-          nodes: S.optional(RedeployNodeTypeRequestNodesList),
+          nodes: S.optional(__S(32)),
           force: S.optional(S.Boolean),
-          updateType: S.optional(UpdateType),
+          updateType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7011,9 +5727,9 @@ function __c22(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           nodeTypeName: S.String.pipe(T.Label()),
-          nodes: S.optional(RestartNodeTypeRequestNodesList),
+          nodes: S.optional(__S(32)),
           force: S.optional(S.Boolean),
-          updateType: S.optional(UpdateType),
+          updateType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7034,8 +5750,8 @@ function __c22(j: number): any {
           applicationName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
           partitionId: S.String,
-          replicaIds: RestartServiceReplicaRequestReplicaIdsList,
-          restartKind: RestartKind,
+          replicaIds: __S(181),
+          restartKind: S.String,
           forceRestart: S.optional(S.Boolean),
           timeout: S.optional(S.Number),
         }).pipe(
@@ -7076,17 +5792,15 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           placementConstraints: S.optional(S.String),
-          correlationScheme: S.optional(ServiceResourcePropertiesInputCorrelationSchemeList),
-          serviceLoadMetrics: S.optional(ServiceResourcePropertiesInputServiceLoadMetricsList),
-          servicePlacementPolicies: S.optional(
-            ServiceResourcePropertiesInputServicePlacementPoliciesList,
-          ),
-          defaultMoveCost: S.optional(MoveCost),
-          scalingPolicies: S.optional(ServiceResourcePropertiesInputScalingPoliciesList),
-          serviceKind: ServiceKind,
+          correlationScheme: S.optional(__S(115)),
+          serviceLoadMetrics: S.optional(__S(117)),
+          servicePlacementPolicies: S.optional(__S(119)),
+          defaultMoveCost: S.optional(S.String),
+          scalingPolicies: S.optional(__S(122)),
+          serviceKind: S.String,
           serviceTypeName: S.String,
-          partitionDescription: Partition,
-          servicePackageActivationMode: S.optional(ServicePackageActivationMode),
+          partitionDescription: __S(123),
+          servicePackageActivationMode: S.optional(S.String),
           serviceDnsName: S.optional(S.String),
           instanceCount: S.optional(S.Number),
           minInstanceCount: S.optional(S.Number),
@@ -7110,8 +5824,8 @@ function __c23(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          properties: S.optional(ServiceResourcePropertiesInput),
-          tags: S.optional(ServicesCreateOrUpdateRequestTagsMap),
+          properties: S.optional(__S(184)),
+          tags: S.optional(__S(2)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -7130,9 +5844,9 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ServiceResourceProperties),
-          tags: S.optional(ServicesCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(13)),
+          properties: S.optional(__S(124)),
+          tags: S.optional(__S(2)),
           location: S.optional(S.String),
         }),
       ).annotate({
@@ -7163,9 +5877,9 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           nodeTypeName: S.String.pipe(T.Label()),
-          nodes: S.optional(StartNodeTypeRequestNodesList),
+          nodes: S.optional(__S(32)),
           force: S.optional(S.Boolean),
-          updateType: S.optional(UpdateType),
+          updateType: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7178,7 +5892,7 @@ function __c23(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(ApplicationUpdateParametersPropertiesParametersMap),
+          parameters: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "ApplicationUpdateParametersProperties",
@@ -7190,8 +5904,8 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateApplicationRequestTagsMap),
-          properties: S.optional(ApplicationUpdateParametersProperties),
+          tags: S.optional(__S(2)),
+          properties: S.optional(__S(189)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7208,7 +5922,7 @@ function __c23(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           applicationTypeName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateApplicationTypeRequestTagsMap),
+          tags: S.optional(__S(2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7232,7 +5946,7 @@ function __c24(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           applicationTypeName: S.String.pipe(T.Label()),
           version: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateApplicationTypeVersionRequestTagsMap),
+          tags: S.optional(__S(2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7249,10 +5963,8 @@ function __c24(j: number): any {
         S.Struct({
           considerWarningAsError: S.Boolean,
           maxPercentUnhealthyDeployedApplications: S.Number,
-          defaultServiceTypeHealthPolicy: S.optional(ServiceTypeHealthPolicy),
-          serviceTypeHealthPolicyMap: S.optional(
-            RuntimeApplicationHealthPolicyServiceTypeHealthPolicyMapMap,
-          ),
+          defaultServiceTypeHealthPolicy: S.optional(__S(3)),
+          serviceTypeHealthPolicyMap: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "RuntimeApplicationHealthPolicy",
@@ -7260,10 +5972,10 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          rollingUpgradeMode: RuntimeRollingUpgradeMode,
+          rollingUpgradeMode: S.String,
           forceRestart: S.optional(S.Boolean),
           replicaSetCheckTimeoutInMilliseconds: S.optional(S.Number),
-          failureAction: S.optional(RuntimeFailureAction),
+          failureAction: S.optional(S.String),
           healthCheckWaitDurationInMilliseconds: S.optional(S.String),
           healthCheckStableDurationInMilliseconds: S.optional(S.String),
           healthCheckRetryTimeoutInMilliseconds: S.optional(S.String),
@@ -7282,9 +5994,9 @@ function __c24(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
           name: S.String,
-          upgradeKind: RuntimeUpgradeKind,
-          applicationHealthPolicy: S.optional(RuntimeApplicationHealthPolicy),
-          updateDescription: S.optional(RuntimeRollingUpgradeUpdateMonitoringPolicy),
+          upgradeKind: S.String,
+          applicationHealthPolicy: S.optional(__S(193)),
+          updateDescription: S.optional(__S(194)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7302,7 +6014,7 @@ function __c24(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateManagedClusterRequestTagsMap),
+          tags: S.optional(__S(2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7321,8 +6033,8 @@ function __c24(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           clusterName: S.String.pipe(T.Label()),
           nodeTypeName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateNodeTypeRequestTagsMap),
-          sku: S.optional(NodeTypeSku),
+          tags: S.optional(__S(2)),
+          sku: S.optional(__S(107)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7340,7 +6052,7 @@ function __c24(j: number): any {
           clusterName: S.String.pipe(T.Label()),
           applicationName: S.String.pipe(T.Label()),
           serviceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateServiceRequestTagsMap),
+          tags: S.optional(__S(2)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7350,5 +6062,64 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateServiceRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
   }
 }

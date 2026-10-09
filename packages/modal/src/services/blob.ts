@@ -6,6 +6,8 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
@@ -15,32 +17,20 @@ export interface CreateBlobRequest {
   contentSha256Base64?: string;
   contentLength?: string;
 }
-const CreateBlobRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateBlobRequest>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<StringList>;
-
 export interface MultiPartUpload {
   partLength?: string;
   /** split upload based on this part length - all except the last part must have this length */
   uploadUrls?: StringList;
   completionUrl?: string;
 }
-const MultiPartUpload = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<MultiPartUpload>;
-
 export interface UploadUrlList {
   items?: StringList;
 }
-const UploadUrlList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<UploadUrlList>;
-
 export type MultiPartUploadList2 = Array<MultiPartUpload>;
-const MultiPartUploadList2 = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<MultiPartUploadList2>;
-
 export interface MultiPartUploadList {
   items?: MultiPartUploadList2;
 }
-const MultiPartUploadList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<MultiPartUploadList>;
-
 export interface CreateBlobResponse {
   blobId?: string;
   uploadUrl?: string;
@@ -49,18 +39,12 @@ export interface CreateBlobResponse {
   uploadUrls?: UploadUrlList;
   multiparts?: MultiPartUploadList;
 }
-const CreateBlobResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateBlobResponse>;
-
 export interface GetBlobRequest {
   blobId?: string;
 }
-const GetBlobRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetBlobRequest>;
-
 export interface GetBlobResponse {
   downloadUrl?: string;
 }
-const GetBlobResponse = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetBlobResponse>;
-
 export type CreateBlobError = ModalOpError;
 /** Blobs */
 export const createBlob: API.OperationMethod<
@@ -69,8 +53,8 @@ export const createBlob: API.OperationMethod<
   CreateBlobError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBlobRequest,
-  output: CreateBlobResponse,
+  input: __S(0) as any as S.Schema<CreateBlobRequest>,
+  output: __S(6) as any as S.Schema<CreateBlobResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -83,8 +67,8 @@ export const getBlob: API.OperationMethod<
   GetBlobError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBlobRequest,
-  output: GetBlobResponse,
+  input: __S(7) as any as S.Schema<GetBlobRequest>,
+  output: __S(8) as any as S.Schema<GetBlobResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -107,22 +91,22 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           partLength: S.optional(S.String),
-          uploadUrls: S.optional(StringList),
+          uploadUrls: S.optional(__S(1)),
           completionUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "MultiPartUpload" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(StringList),
+          items: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "UploadUrlList" });
     case 4:
-      return S.Array(MultiPartUpload);
+      return S.Array(__S(2));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(MultiPartUploadList2),
+          items: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "MultiPartUploadList" });
     case 6:
@@ -130,10 +114,10 @@ function __c0(j: number): any {
         S.Struct({
           blobId: S.optional(S.String),
           uploadUrl: S.optional(S.String),
-          multipart: S.optional(MultiPartUpload),
-          blobIds: S.optional(StringList),
-          uploadUrls: S.optional(UploadUrlList),
-          multiparts: S.optional(MultiPartUploadList),
+          multipart: S.optional(__S(2)),
+          blobIds: S.optional(__S(1)),
+          uploadUrls: S.optional(__S(3)),
+          multiparts: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "CreateBlobResponse" });
     case 7:
@@ -152,5 +136,18 @@ function __c1(j: number): any {
           downloadUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetBlobResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

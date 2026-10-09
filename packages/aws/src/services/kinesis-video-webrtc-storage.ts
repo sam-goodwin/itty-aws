@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Kinesis Video WebRTC Storage",
   serviceShapeName: "AWSAcuityRoutingServiceLambda",
@@ -102,29 +104,13 @@ export type ChannelArn = string;
 export interface JoinStorageSessionInput {
   channelArn: string;
 }
-const JoinStorageSessionInput = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<JoinStorageSessionInput>;
 export interface JoinStorageSessionResponse {}
-const JoinStorageSessionResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<JoinStorageSessionResponse>;
 export type ClientId = string;
 export interface JoinStorageSessionAsViewerInput {
   channelArn: string;
   clientId: string;
 }
-const JoinStorageSessionAsViewerInput = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<JoinStorageSessionAsViewerInput>;
 export interface JoinStorageSessionAsViewerResponse {}
-const JoinStorageSessionAsViewerResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<JoinStorageSessionAsViewerResponse>;
 export type JoinStorageSessionError =
   | AccessDeniedException
   | ClientLimitExceededException
@@ -182,8 +168,8 @@ export const joinStorageSession: API.OperationMethod<
   JoinStorageSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: JoinStorageSessionInput,
-  output: JoinStorageSessionResponse,
+  input: __S(0) as any as S.Schema<JoinStorageSessionInput>,
+  output: __S(1) as any as S.Schema<JoinStorageSessionResponse>,
   errors: [
     AccessDeniedException,
     ClientLimitExceededException,
@@ -226,8 +212,8 @@ export const joinStorageSessionAsViewer: API.OperationMethod<
   JoinStorageSessionAsViewerError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: JoinStorageSessionAsViewerInput,
-  output: JoinStorageSessionAsViewerResponse,
+  input: __S(2) as any as S.Schema<JoinStorageSessionAsViewerInput>,
+  output: __S(3) as any as S.Schema<JoinStorageSessionAsViewerResponse>,
   errors: [
     AccessDeniedException,
     ClientLimitExceededException,
@@ -278,5 +264,16 @@ function __c0(j: number): any {
       return S.suspend(() => S.Struct({})).annotate({
         identifier: "JoinStorageSessionAsViewerResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 2) {
+    case 0:
+      return __c0(i & 3);
   }
 }

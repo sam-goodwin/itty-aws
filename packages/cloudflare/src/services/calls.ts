@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -51,8 +53,6 @@ export interface CreateSfuRequest {
   /** A short description of a Realtime SFU app, not shown to end users. */
   name?: string;
 }
-const CreateSfuRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateSfuRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSfuResponse {
   /** The date and time the item was created. */
@@ -66,16 +66,12 @@ export interface CreateSfuResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-const CreateSfuResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateSfuResponse>;
-
 export interface CreateTurnRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A short description of a TURN key, not shown to end users. */
   name?: string;
 }
-const CreateTurnRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CreateTurnRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateTurnResponse {
   /** The date and time the item was created. */
@@ -89,16 +85,12 @@ export interface CreateTurnResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-const CreateTurnResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CreateTurnResponse>;
-
 export interface DeleteSfuRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A Cloudflare-generated unique identifier for a item. */
   appId: string;
 }
-const DeleteSfuRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DeleteSfuRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteSfuResponse {
   /** The date and time the item was created. */
@@ -110,16 +102,12 @@ export interface DeleteSfuResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-const DeleteSfuResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeleteSfuResponse>;
-
 export interface DeleteTurnRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A Cloudflare-generated unique identifier for a item. */
   keyId: string;
 }
-const DeleteTurnRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<DeleteTurnRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteTurnResponse {
   /** The date and time the item was created. */
@@ -131,16 +119,12 @@ export interface DeleteTurnResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-const DeleteTurnResponse = DeleteSfuResponse as any as S.Schema<DeleteTurnResponse>;
-
 export interface GetSfuRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A Cloudflare-generated unique identifier for a item. */
   appId: string;
 }
-const GetSfuRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetSfuRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSfuResponse {
   /** The date and time the item was created. */
@@ -152,16 +136,12 @@ export interface GetSfuResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-const GetSfuResponse = DeleteSfuResponse as any as S.Schema<GetSfuResponse>;
-
 export interface GetTurnRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A Cloudflare-generated unique identifier for a item. */
   keyId: string;
 }
-const GetTurnRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetTurnRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetTurnResponse {
   /** The date and time the item was created. */
@@ -173,14 +153,10 @@ export interface GetTurnResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-const GetTurnResponse = DeleteSfuResponse as any as S.Schema<GetTurnResponse>;
-
 export interface ListSfusRequest {
   /** The account identifier tag. */
   accountId: string;
 }
-const ListSfusRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListSfusRequest>;
-
 export interface SfuListResultItem {
   /** The date and time the item was created. */
   created: string;
@@ -191,25 +167,17 @@ export interface SfuListResultItem {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-const SfuListResultItem = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SfuListResultItem>;
-
 export type SfuListResultList = Array<SfuListResultItem>;
-const SfuListResultList = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SfuListResultList>;
-
 export interface ListSfusResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: SfuListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListSfusResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ListSfusResponse>;
-
 export interface ListTurnsRequest {
   /** The account identifier tag. */
   accountId: string;
 }
-const ListTurnsRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ListTurnsRequest>;
-
 export type TurnListResultItem = SfuListResultItem;
 export type TurnListResultList = Array<SfuListResultItem>;
 export interface ListTurnsResponse {
@@ -218,8 +186,6 @@ export interface ListTurnsResponse {
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListTurnsResponse = ListSfusResponse as any as S.Schema<ListTurnsResponse>;
-
 export interface UpdateSfuRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -228,8 +194,6 @@ export interface UpdateSfuRequest {
   /** A short description of a Realtime SFU app, not shown to end users. */
   name?: string;
 }
-const UpdateSfuRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<UpdateSfuRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateSfuResponse {
   /** The date and time the item was created. */
@@ -241,8 +205,6 @@ export interface UpdateSfuResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-const UpdateSfuResponse = DeleteSfuResponse as any as S.Schema<UpdateSfuResponse>;
-
 export interface UpdateTurnRequest {
   /** The account identifier tag. */
   accountId: string;
@@ -251,8 +213,6 @@ export interface UpdateTurnRequest {
   /** A short description of a TURN key, not shown to end users. */
   name?: string;
 }
-const UpdateTurnRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<UpdateTurnRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateTurnResponse {
   /** The date and time the item was created. */
@@ -264,8 +224,6 @@ export interface UpdateTurnResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid: string;
 }
-const UpdateTurnResponse = DeleteSfuResponse as any as S.Schema<UpdateTurnResponse>;
-
 export type CreateSfuError = Forbidden | CloudflareOpError;
 /** Creates a Realtime SFU app. An app is an isolated namespace in which sessions can access the app's tracks. */
 export const createSfu: API.OperationMethod<
@@ -274,8 +232,8 @@ export const createSfu: API.OperationMethod<
   CreateSfuError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSfuRequest,
-  output: CreateSfuResponse,
+  input: __S(0) as any as S.Schema<CreateSfuRequest>,
+  output: __S(1) as any as S.Schema<CreateSfuResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -289,8 +247,8 @@ export const createTurn: API.OperationMethod<
   CreateTurnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTurnRequest,
-  output: CreateTurnResponse,
+  input: __S(2) as any as S.Schema<CreateTurnRequest>,
+  output: __S(3) as any as S.Schema<CreateTurnResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -304,8 +262,8 @@ export const deleteSfu: API.OperationMethod<
   DeleteSfuError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSfuRequest,
-  output: DeleteSfuResponse,
+  input: __S(4) as any as S.Schema<DeleteSfuRequest>,
+  output: __S(5) as any as S.Schema<DeleteSfuResponse>,
   errors: [CallsAppNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -319,8 +277,8 @@ export const deleteTurn: API.OperationMethod<
   DeleteTurnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTurnRequest,
-  output: DeleteTurnResponse,
+  input: __S(6) as any as S.Schema<DeleteTurnRequest>,
+  output: __S(5) as any as S.Schema<DeleteTurnResponse>,
   errors: [TurnKeyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -334,8 +292,8 @@ export const getSfu: API.OperationMethod<
   GetSfuError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSfuRequest,
-  output: GetSfuResponse,
+  input: __S(7) as any as S.Schema<GetSfuRequest>,
+  output: __S(5) as any as S.Schema<GetSfuResponse>,
   errors: [CallsAppNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -349,8 +307,8 @@ export const getTurn: API.OperationMethod<
   GetTurnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTurnRequest,
-  output: GetTurnResponse,
+  input: __S(8) as any as S.Schema<GetTurnRequest>,
+  output: __S(5) as any as S.Schema<GetTurnResponse>,
   errors: [TurnKeyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -366,8 +324,8 @@ export const listSfus: API.PaginatedOperationMethod<
   SfuListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListSfusRequest,
-    output: ListSfusResponse,
+    input: __S(9) as any as S.Schema<ListSfusRequest>,
+    output: __S(12) as any as S.Schema<ListSfusResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -386,8 +344,8 @@ export const listTurns: API.PaginatedOperationMethod<
   SfuListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListTurnsRequest,
-    output: ListTurnsResponse,
+    input: __S(13) as any as S.Schema<ListTurnsRequest>,
+    output: __S(12) as any as S.Schema<ListTurnsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -404,8 +362,8 @@ export const updateSfu: API.OperationMethod<
   UpdateSfuError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSfuRequest,
-  output: UpdateSfuResponse,
+  input: __S(14) as any as S.Schema<UpdateSfuRequest>,
+  output: __S(5) as any as S.Schema<UpdateSfuResponse>,
   errors: [CallsAppNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -419,8 +377,8 @@ export const updateTurn: API.OperationMethod<
   UpdateTurnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTurnRequest,
-  output: UpdateTurnResponse,
+  input: __S(15) as any as S.Schema<UpdateTurnRequest>,
+  output: __S(5) as any as S.Schema<UpdateTurnResponse>,
   errors: [TurnKeyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -556,11 +514,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "SfuListResultItem" });
     case 3:
-      return S.Array(SfuListResultItem);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: SfuListResultList.pipe(T.EnvelopePayload()),
+          result: __S(11).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSfusResponse" });
@@ -600,5 +558,18 @@ function __c1(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateTurnRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

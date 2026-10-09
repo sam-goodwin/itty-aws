@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "SecurityHub",
   serviceShapeName: "SecurityHubAPIService",
@@ -214,68 +216,31 @@ export interface AcceptAdministratorInvitationRequest {
   AdministratorId?: string;
   InvitationId?: string;
 }
-const AcceptAdministratorInvitationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AcceptAdministratorInvitationRequest>;
 export interface AcceptAdministratorInvitationResponse {}
-const AcceptAdministratorInvitationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AcceptAdministratorInvitationResponse>;
 export interface AcceptInvitationRequest {
   MasterId?: string;
   InvitationId?: string;
 }
-const AcceptInvitationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AcceptInvitationRequest>;
 export interface AcceptInvitationResponse {}
-const AcceptInvitationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AcceptInvitationResponse>;
 export type AutomationRulesArnsList = string[];
-const AutomationRulesArnsList = /*@__PURE__*/ __L.at(__c0, 4);
 export interface BatchDeleteAutomationRulesRequest {
   AutomationRulesArns?: string[];
 }
-const BatchDeleteAutomationRulesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<BatchDeleteAutomationRulesRequest>;
 export interface UnprocessedAutomationRule {
   RuleArn?: string;
   ErrorCode?: number;
   ErrorMessage?: string;
 }
-const UnprocessedAutomationRule = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<UnprocessedAutomationRule>;
 export type UnprocessedAutomationRulesList = UnprocessedAutomationRule[];
-const UnprocessedAutomationRulesList = /*@__PURE__*/ __L.at(__c0, 7);
 export interface BatchDeleteAutomationRulesResponse {
   ProcessedAutomationRules?: string[];
   UnprocessedAutomationRules?: UnprocessedAutomationRule[];
 }
-const BatchDeleteAutomationRulesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<BatchDeleteAutomationRulesResponse>;
 export type StandardsSubscriptionArns = string[];
-const StandardsSubscriptionArns =
-  AutomationRulesArnsList as any as S.Schema<StandardsSubscriptionArns>;
 export interface BatchDisableStandardsRequest {
   StandardsSubscriptionArns?: string[];
 }
-const BatchDisableStandardsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<BatchDisableStandardsRequest>;
 export type StandardsInputParameterMap = { [key: string]: string | undefined };
-const StandardsInputParameterMap = /*@__PURE__*/ __L.at(__c1, 2);
 export type StandardsStatus =
   | "PENDING"
   | "READY"
@@ -283,32 +248,20 @@ export type StandardsStatus =
   | "DELETING"
   | "INCOMPLETE"
   | (string & {});
-const StandardsStatus = S.String;
-
 export type StandardsControlsUpdatable =
   | "READY_FOR_UPDATES"
   | "NOT_READY_FOR_UPDATES"
   | (string & {});
-const StandardsControlsUpdatable = S.String;
-
 export type StatusReasonCode =
   | "NO_AVAILABLE_CONFIGURATION_RECORDER"
   | "MAXIMUM_NUMBER_OF_CONFIG_RULES_EXCEEDED"
   | "NO_AVAILABLE_MULTICLOUD_CONNECTOR"
   | "INTERNAL_ERROR"
   | (string & {});
-const StatusReasonCode = S.String;
-
 export interface StandardsStatusReason {
   StatusReasonCode?: StatusReasonCode;
 }
-const StandardsStatusReason = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<StandardsStatusReason>;
 export type StandardsProvider = "AWS" | "Azure" | (string & {});
-const StandardsProvider = S.String;
-
 export interface StandardsSubscription {
   StandardsSubscriptionArn?: string;
   StandardsArn?: string;
@@ -318,12 +271,7 @@ export interface StandardsSubscription {
   StandardsStatusReason?: StandardsStatusReason;
   Provider?: StandardsProvider;
 }
-const StandardsSubscription = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<StandardsSubscription>;
 export type StandardsSubscriptions = StandardsSubscription[];
-const StandardsSubscriptions = /*@__PURE__*/ __L.at(__c1, 5);
 export interface BatchDisableStandardsResponse {
   StandardsSubscriptions?: (StandardsSubscription & {
     StandardsSubscriptionArn: NonEmptyString;
@@ -333,27 +281,14 @@ export interface BatchDisableStandardsResponse {
     StandardsStatusReason: StandardsStatusReason & { StatusReasonCode: StatusReasonCode };
   })[];
 }
-const BatchDisableStandardsResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<BatchDisableStandardsResponse>;
 export interface StandardsSubscriptionRequest {
   StandardsArn?: string;
   StandardsInput?: { [key: string]: string | undefined };
 }
-const StandardsSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<StandardsSubscriptionRequest>;
 export type StandardsSubscriptionRequests = StandardsSubscriptionRequest[];
-const StandardsSubscriptionRequests = /*@__PURE__*/ __L.at(__c2, 0);
 export interface BatchEnableStandardsRequest {
   StandardsSubscriptionRequests?: StandardsSubscriptionRequest[];
 }
-const BatchEnableStandardsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<BatchEnableStandardsRequest>;
 export interface BatchEnableStandardsResponse {
   StandardsSubscriptions?: (StandardsSubscription & {
     StandardsSubscriptionArn: NonEmptyString;
@@ -363,18 +298,10 @@ export interface BatchEnableStandardsResponse {
     StandardsStatusReason: StandardsStatusReason & { StatusReasonCode: StatusReasonCode };
   })[];
 }
-const BatchEnableStandardsResponse =
-  BatchDisableStandardsResponse as any as S.Schema<BatchEnableStandardsResponse>;
 export interface BatchGetAutomationRulesRequest {
   AutomationRulesArns?: string[];
 }
-const BatchGetAutomationRulesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<BatchGetAutomationRulesRequest>;
 export type RuleStatus = "ENABLED" | "DISABLED" | (string & {});
-const RuleStatus = S.String;
-
 export type RuleOrderValue = number;
 export type StringFilterComparison =
   | "EQUALS"
@@ -385,35 +312,24 @@ export type StringFilterComparison =
   | "NOT_CONTAINS"
   | "CONTAINS_WORD"
   | (string & {});
-const StringFilterComparison = S.String;
-
 export interface StringFilter {
   Value?: string;
   Comparison?: StringFilterComparison;
 }
-const StringFilter = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<StringFilter>;
 export type StringFilterList = StringFilter[];
-const StringFilterList = /*@__PURE__*/ __L.at(__c2, 4);
 export type DateRangeUnit = "DAYS" | (string & {});
-const DateRangeUnit = S.String;
-
 export type DateRangeComparison = "WITHIN" | "OLDER_THAN" | (string & {});
-const DateRangeComparison = S.String;
-
 export interface DateRange {
   Value?: number;
   Unit?: DateRangeUnit;
   Comparison?: DateRangeComparison;
 }
-const DateRange = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<DateRange>;
 export interface DateFilter {
   Start?: string;
   End?: string;
   DateRange?: DateRange;
 }
-const DateFilter = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<DateFilter>;
 export type DateFilterList = DateFilter[];
-const DateFilterList = /*@__PURE__*/ __L.at(__c2, 7);
 export interface NumberFilter {
   Gte?: number;
   Lte?: number;
@@ -421,25 +337,19 @@ export interface NumberFilter {
   Gt?: number;
   Lt?: number;
 }
-const NumberFilter = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<NumberFilter>;
 export type NumberFilterList = NumberFilter[];
-const NumberFilterList = /*@__PURE__*/ __L.at(__c3, 1);
 export type MapFilterComparison =
   | "EQUALS"
   | "NOT_EQUALS"
   | "CONTAINS"
   | "NOT_CONTAINS"
   | (string & {});
-const MapFilterComparison = S.String;
-
 export interface MapFilter {
   Key?: string;
   Value?: string;
   Comparison?: MapFilterComparison;
 }
-const MapFilter = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<MapFilter>;
 export type MapFilterList = MapFilter[];
-const MapFilterList = /*@__PURE__*/ __L.at(__c3, 3);
 export interface AutomationRulesFindingFilters {
   ProductArn?: StringFilter[];
   AwsAccountId?: StringFilter[];
@@ -483,18 +393,11 @@ export interface AutomationRulesFindingFilters {
   ResourceOwnerAccountId?: StringFilter[];
   ResourceOwnerOrgId?: StringFilter[];
 }
-const AutomationRulesFindingFilters = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<AutomationRulesFindingFilters>;
 export type AutomationRulesActionType = "FINDING_FIELDS_UPDATE" | (string & {});
-const AutomationRulesActionType = S.String;
-
 export interface NoteUpdate {
   Text?: string;
   UpdatedBy?: string;
 }
-const NoteUpdate = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<NoteUpdate>;
 export type RatioScale = number;
 export type SeverityLabel =
   | "INFORMATIONAL"
@@ -503,40 +406,28 @@ export type SeverityLabel =
   | "HIGH"
   | "CRITICAL"
   | (string & {});
-const SeverityLabel = S.String;
-
 export interface SeverityUpdate {
   Normalized?: number;
   Product?: number;
   Label?: SeverityLabel;
 }
-const SeverityUpdate = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<SeverityUpdate>;
 export type VerificationState =
   | "UNKNOWN"
   | "TRUE_POSITIVE"
   | "FALSE_POSITIVE"
   | "BENIGN_POSITIVE"
   | (string & {});
-const VerificationState = S.String;
-
 export type TypeList = string[];
-const TypeList = AutomationRulesArnsList as any as S.Schema<TypeList>;
 export type FieldMap = { [key: string]: string | undefined };
-const FieldMap = /*@__PURE__*/ __L.at(__c3, 7);
 export type WorkflowStatus = "NEW" | "NOTIFIED" | "RESOLVED" | "SUPPRESSED" | (string & {});
-const WorkflowStatus = S.String;
-
 export interface WorkflowUpdate {
   Status?: WorkflowStatus;
 }
-const WorkflowUpdate = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<WorkflowUpdate>;
 export interface RelatedFinding {
   ProductArn?: string;
   Id?: string;
 }
-const RelatedFinding = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<RelatedFinding>;
 export type RelatedFindingList = RelatedFinding[];
-const RelatedFindingList = /*@__PURE__*/ __L.at(__c4, 2);
 export interface AutomationRulesFindingFieldsUpdate {
   Note?: NoteUpdate;
   Severity?: SeverityUpdate;
@@ -548,20 +439,11 @@ export interface AutomationRulesFindingFieldsUpdate {
   Workflow?: WorkflowUpdate;
   RelatedFindings?: RelatedFinding[];
 }
-const AutomationRulesFindingFieldsUpdate = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<AutomationRulesFindingFieldsUpdate>;
 export interface AutomationRulesAction {
   Type?: AutomationRulesActionType;
   FindingFieldsUpdate?: AutomationRulesFindingFieldsUpdate;
 }
-const AutomationRulesAction = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<AutomationRulesAction>;
 export type ActionList = AutomationRulesAction[];
-const ActionList = /*@__PURE__*/ __L.at(__c4, 5);
 export interface AutomationRulesConfig {
   RuleArn?: string;
   RuleStatus?: RuleStatus;
@@ -575,12 +457,7 @@ export interface AutomationRulesConfig {
   UpdatedAt?: Date;
   CreatedBy?: string;
 }
-const AutomationRulesConfig = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<AutomationRulesConfig>;
 export type AutomationRulesConfigList = AutomationRulesConfig[];
-const AutomationRulesConfigList = /*@__PURE__*/ __L.at(__c4, 7);
 export interface BatchGetAutomationRulesResponse {
   Rules?: (AutomationRulesConfig & {
     Actions: (AutomationRulesAction & {
@@ -592,40 +469,20 @@ export interface BatchGetAutomationRulesResponse {
   })[];
   UnprocessedAutomationRules?: UnprocessedAutomationRule[];
 }
-const BatchGetAutomationRulesResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<BatchGetAutomationRulesResponse>;
 export type Target =
   | { AccountId: string; OrganizationalUnitId?: never; RootId?: never }
   | { AccountId?: never; OrganizationalUnitId: string; RootId?: never }
   | { AccountId?: never; OrganizationalUnitId?: never; RootId: string };
-const Target = /*@__PURE__*/ __L.at(__c5, 1);
 export interface ConfigurationPolicyAssociation {
   Target?: Target;
 }
-const ConfigurationPolicyAssociation = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ConfigurationPolicyAssociation>;
 export type ConfigurationPolicyAssociationsList = ConfigurationPolicyAssociation[];
-const ConfigurationPolicyAssociationsList = /*@__PURE__*/ __L.at(__c5, 3);
 export interface BatchGetConfigurationPolicyAssociationsRequest {
   ConfigurationPolicyAssociationIdentifiers?: ConfigurationPolicyAssociation[];
 }
-const BatchGetConfigurationPolicyAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<BatchGetConfigurationPolicyAssociationsRequest>;
 export type TargetType = "ACCOUNT" | "ORGANIZATIONAL_UNIT" | "ROOT" | (string & {});
-const TargetType = S.String;
-
 export type AssociationType = "INHERITED" | "APPLIED" | (string & {});
-const AssociationType = S.String;
-
 export type ConfigurationPolicyAssociationStatus = "PENDING" | "SUCCESS" | "FAILED" | (string & {});
-const ConfigurationPolicyAssociationStatus = S.String;
-
 export interface ConfigurationPolicyAssociationSummary {
   ConfigurationPolicyId?: string;
   TargetId?: string;
@@ -635,55 +492,27 @@ export interface ConfigurationPolicyAssociationSummary {
   AssociationStatus?: ConfigurationPolicyAssociationStatus;
   AssociationStatusMessage?: string;
 }
-const ConfigurationPolicyAssociationSummary = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ConfigurationPolicyAssociationSummary>;
 export type ConfigurationPolicyAssociationList = ConfigurationPolicyAssociationSummary[];
-const ConfigurationPolicyAssociationList = /*@__PURE__*/ __L.at(__c5, 6);
 export interface UnprocessedConfigurationPolicyAssociation {
   ConfigurationPolicyAssociationIdentifiers?: ConfigurationPolicyAssociation;
   ErrorCode?: string;
   ErrorReason?: string;
 }
-const UnprocessedConfigurationPolicyAssociation = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<UnprocessedConfigurationPolicyAssociation>;
 export type UnprocessedConfigurationPolicyAssociationList =
   UnprocessedConfigurationPolicyAssociation[];
-const UnprocessedConfigurationPolicyAssociationList = /*@__PURE__*/ __L.at(__c6, 0);
 export interface BatchGetConfigurationPolicyAssociationsResponse {
   ConfigurationPolicyAssociations?: ConfigurationPolicyAssociationSummary[];
   UnprocessedConfigurationPolicyAssociations?: UnprocessedConfigurationPolicyAssociation[];
 }
-const BatchGetConfigurationPolicyAssociationsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<BatchGetConfigurationPolicyAssociationsResponse>;
 export type StringList = string[];
-const StringList = AutomationRulesArnsList as any as S.Schema<StringList>;
 export interface BatchGetSecurityControlsRequest {
   SecurityControlIds?: string[];
 }
-const BatchGetSecurityControlsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<BatchGetSecurityControlsRequest>;
 export type SeverityRating = "LOW" | "MEDIUM" | "HIGH" | "CRITICAL" | (string & {});
-const SeverityRating = S.String;
-
 export type ControlStatus = "ENABLED" | "DISABLED" | (string & {});
-const ControlStatus = S.String;
-
 export type UpdateStatus = "READY" | "UPDATING" | (string & {});
-const UpdateStatus = S.String;
-
 export type ParameterValueType = "DEFAULT" | "CUSTOM" | (string & {});
-const ParameterValueType = S.String;
-
 export type IntegerList = number[];
-const IntegerList = /*@__PURE__*/ __L.at(__c6, 3);
 export type ParameterValue =
   | {
       Integer: number;
@@ -765,21 +594,13 @@ export type ParameterValue =
       Enum?: never;
       EnumList: string[];
     };
-const ParameterValue = /*@__PURE__*/ __L.at(__c6, 4);
 export interface ParameterConfiguration {
   ValueType?: ParameterValueType;
   Value?: ParameterValue;
 }
-const ParameterConfiguration = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ParameterConfiguration>;
 export type Parameters = { [key: string]: ParameterConfiguration | undefined };
-const Parameters = /*@__PURE__*/ __L.at(__c6, 6);
 export type AlphaNumericNonEmptyString = string;
 export type SecurityControlsProvider = "AWS" | "Azure" | (string & {});
-const SecurityControlsProvider = S.String;
-
 export interface SecurityControl {
   SecurityControlId?: string;
   SecurityControlArn?: string;
@@ -793,9 +614,7 @@ export interface SecurityControl {
   LastUpdateReason?: string;
   Provider?: SecurityControlsProvider;
 }
-const SecurityControl = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<SecurityControl>;
 export type SecurityControls = SecurityControl[];
-const SecurityControls = /*@__PURE__*/ __L.at(__c7, 0);
 export type UnprocessedErrorCode =
   | "INVALID_INPUT"
   | "ACCESS_DENIED"
@@ -803,19 +622,12 @@ export type UnprocessedErrorCode =
   | "RESOURCE_NOT_FOUND"
   | "LIMIT_EXCEEDED"
   | (string & {});
-const UnprocessedErrorCode = S.String;
-
 export interface UnprocessedSecurityControl {
   SecurityControlId?: string;
   ErrorCode?: UnprocessedErrorCode;
   ErrorReason?: string;
 }
-const UnprocessedSecurityControl = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<UnprocessedSecurityControl>;
 export type UnprocessedSecurityControls = UnprocessedSecurityControl[];
-const UnprocessedSecurityControls = /*@__PURE__*/ __L.at(__c7, 2);
 export interface BatchGetSecurityControlsResponse {
   SecurityControls: (SecurityControl & {
     SecurityControlId: NonEmptyString;
@@ -834,34 +646,17 @@ export interface BatchGetSecurityControlsResponse {
     ErrorCode: UnprocessedErrorCode;
   })[];
 }
-const BatchGetSecurityControlsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<BatchGetSecurityControlsResponse>;
 export interface StandardsControlAssociationId {
   SecurityControlId?: string;
   StandardsArn?: string;
 }
-const StandardsControlAssociationId = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<StandardsControlAssociationId>;
 export type StandardsControlAssociationIds = StandardsControlAssociationId[];
-const StandardsControlAssociationIds = /*@__PURE__*/ __L.at(__c7, 5);
 export interface BatchGetStandardsControlAssociationsRequest {
   StandardsControlAssociationIds?: StandardsControlAssociationId[];
 }
-const BatchGetStandardsControlAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<BatchGetStandardsControlAssociationsRequest>;
 export type AssociationStatus = "ENABLED" | "DISABLED" | (string & {});
-const AssociationStatus = S.String;
-
 export type RelatedRequirementsList = string[];
-const RelatedRequirementsList = AutomationRulesArnsList as any as S.Schema<RelatedRequirementsList>;
 export type StandardsControlArnList = string[];
-const StandardsControlArnList = AutomationRulesArnsList as any as S.Schema<StandardsControlArnList>;
 export interface StandardsControlAssociationDetail {
   StandardsArn?: string;
   SecurityControlId?: string;
@@ -874,23 +669,13 @@ export interface StandardsControlAssociationDetail {
   StandardsControlDescription?: string;
   StandardsControlArns?: string[];
 }
-const StandardsControlAssociationDetail = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<StandardsControlAssociationDetail>;
 export type StandardsControlAssociationDetails = StandardsControlAssociationDetail[];
-const StandardsControlAssociationDetails = /*@__PURE__*/ __L.at(__c8, 0);
 export interface UnprocessedStandardsControlAssociation {
   StandardsControlAssociationId?: StandardsControlAssociationId;
   ErrorCode?: UnprocessedErrorCode;
   ErrorReason?: string;
 }
-const UnprocessedStandardsControlAssociation = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<UnprocessedStandardsControlAssociation>;
 export type UnprocessedStandardsControlAssociations = UnprocessedStandardsControlAssociation[];
-const UnprocessedStandardsControlAssociations = /*@__PURE__*/ __L.at(__c8, 2);
 export interface BatchGetStandardsControlAssociationsResponse {
   StandardsControlAssociationDetails: (StandardsControlAssociationDetail & {
     StandardsArn: NonEmptyString;
@@ -906,26 +691,19 @@ export interface BatchGetStandardsControlAssociationsResponse {
     ErrorCode: UnprocessedErrorCode;
   })[];
 }
-const BatchGetStandardsControlAssociationsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<BatchGetStandardsControlAssociationsResponse>;
 export interface Severity {
   Product?: number;
   Label?: SeverityLabel;
   Normalized?: number;
   Original?: string;
 }
-const Severity = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<Severity>;
 export interface Recommendation {
   Text?: string;
   Url?: string;
 }
-const Recommendation = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<Recommendation>;
 export interface Remediation {
   Recommendation?: Recommendation;
 }
-const Remediation = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<Remediation>;
 export type MalwareType =
   | "ADWARE"
   | "BLENDED_THREAT"
@@ -943,28 +721,19 @@ export type MalwareType =
   | "VIRUS"
   | "WORM"
   | (string & {});
-const MalwareType = S.String;
-
 export type MalwareState = "OBSERVED" | "REMOVAL_FAILED" | "REMOVED" | (string & {});
-const MalwareState = S.String;
-
 export interface Malware {
   Name?: string;
   Type?: MalwareType;
   Path?: string;
   State?: MalwareState;
 }
-const Malware = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<Malware>;
 export type MalwareList = Malware[];
-const MalwareList = /*@__PURE__*/ __L.at(__c9, 0);
 export type NetworkDirection = "IN" | "OUT" | (string & {});
-const NetworkDirection = S.String;
-
 export interface PortRange {
   Begin?: number;
   End?: number;
 }
-const PortRange = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<PortRange>;
 export interface Network {
   Direction?: NetworkDirection;
   Protocol?: string;
@@ -979,32 +748,23 @@ export interface Network {
   DestinationPort?: number;
   DestinationDomain?: string;
 }
-const Network = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<Network>;
 export type PortRangeList = PortRange[];
-const PortRangeList = /*@__PURE__*/ __L.at(__c9, 3);
 export interface NetworkPathComponentDetails {
   Address?: string[];
   PortRanges?: PortRange[];
 }
-const NetworkPathComponentDetails = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<NetworkPathComponentDetails>;
 export interface NetworkHeader {
   Protocol?: string;
   Destination?: NetworkPathComponentDetails;
   Source?: NetworkPathComponentDetails;
 }
-const NetworkHeader = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<NetworkHeader>;
 export interface NetworkPathComponent {
   ComponentId?: string;
   ComponentType?: string;
   Egress?: NetworkHeader;
   Ingress?: NetworkHeader;
 }
-const NetworkPathComponent = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<NetworkPathComponent>;
 export type NetworkPathList = NetworkPathComponent[];
-const NetworkPathList = /*@__PURE__*/ __L.at(__c9, 7);
 export interface ProcessDetails {
   Name?: string;
   Path?: string;
@@ -1013,25 +773,20 @@ export interface ProcessDetails {
   LaunchedAt?: string;
   TerminatedAt?: string;
 }
-const ProcessDetails = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<ProcessDetails>;
 export interface FilePaths {
   FilePath?: string;
   FileName?: string;
   ResourceId?: string;
   Hash?: string;
 }
-const FilePaths = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<FilePaths>;
 export type FilePathList = FilePaths[];
-const FilePathList = /*@__PURE__*/ __L.at(__c10, 2);
 export interface Threat {
   Name?: string;
   Severity?: string;
   ItemCount?: number;
   FilePaths?: FilePaths[];
 }
-const Threat = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<Threat>;
 export type ThreatList = Threat[];
-const ThreatList = /*@__PURE__*/ __L.at(__c10, 4);
 export type ThreatIntelIndicatorType =
   | "DOMAIN"
   | "EMAIL_ADDRESS"
@@ -1045,8 +800,6 @@ export type ThreatIntelIndicatorType =
   | "PROCESS"
   | "URL"
   | (string & {});
-const ThreatIntelIndicatorType = S.String;
-
 export type ThreatIntelIndicatorCategory =
   | "BACKDOOR"
   | "CARD_STEALER"
@@ -1055,8 +808,6 @@ export type ThreatIntelIndicatorCategory =
   | "EXPLOIT_SITE"
   | "KEYLOGGER"
   | (string & {});
-const ThreatIntelIndicatorCategory = S.String;
-
 export interface ThreatIntelIndicator {
   Type?: ThreatIntelIndicatorType;
   Value?: string;
@@ -1065,12 +816,7 @@ export interface ThreatIntelIndicator {
   Source?: string;
   SourceUrl?: string;
 }
-const ThreatIntelIndicator = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ThreatIntelIndicator>;
 export type ThreatIntelIndicatorList = ThreatIntelIndicator[];
-const ThreatIntelIndicatorList = /*@__PURE__*/ __L.at(__c10, 6);
 export type Partition =
   | "aws"
   | "aws-cn"
@@ -1079,67 +825,45 @@ export type Partition =
   | "aws-us-iso-b"
   | "AzureCloud"
   | (string & {});
-const Partition = S.String;
-
 export type CloudProviderName = "Azure" | "AWS" | (string & {});
-const CloudProviderName = S.String;
-
 export interface ResourceOwnerAccount {
   Id?: string;
 }
-const ResourceOwnerAccount = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ResourceOwnerAccount>;
 export interface ResourceOwnerOrg {
   Id?: string;
 }
-const ResourceOwnerOrg = ResourceOwnerAccount as any as S.Schema<ResourceOwnerOrg>;
 export interface ResourceOwner {
   Account?: ResourceOwnerAccount;
   Org?: ResourceOwnerOrg;
 }
-const ResourceOwner = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<ResourceOwner>;
 export interface ClassificationStatus {
   Code?: string;
   Reason?: string;
 }
-const ClassificationStatus = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ClassificationStatus>;
 export interface Range {
   Start?: number;
   End?: number;
   StartColumn?: number;
 }
-const Range = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<Range>;
 export type Ranges = Range[];
-const Ranges = /*@__PURE__*/ __L.at(__c11, 3);
 export interface Page {
   PageNumber?: number;
   LineRange?: Range;
   OffsetRange?: Range;
 }
-const Page = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<Page>;
 export type Pages = Page[];
-const Pages = /*@__PURE__*/ __L.at(__c11, 5);
 export interface Record {
   JsonPath?: string;
   RecordIndex?: number;
 }
-const Record = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<Record>;
 export type Records = Record[];
-const Records = /*@__PURE__*/ __L.at(__c11, 7);
 export interface Cell {
   Column?: number;
   Row?: number;
   ColumnName?: string;
   CellReference?: string;
 }
-const Cell = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<Cell>;
 export type Cells = Cell[];
-const Cells = /*@__PURE__*/ __L.at(__c12, 1);
 export interface Occurrences {
   LineRanges?: Range[];
   OffsetRanges?: Range[];
@@ -1147,46 +871,29 @@ export interface Occurrences {
   Records?: Record[];
   Cells?: Cell[];
 }
-const Occurrences = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<Occurrences>;
 export interface SensitiveDataDetections {
   Count?: number;
   Type?: string;
   Occurrences?: Occurrences;
 }
-const SensitiveDataDetections = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<SensitiveDataDetections>;
 export type SensitiveDataDetectionsList = SensitiveDataDetections[];
-const SensitiveDataDetectionsList = /*@__PURE__*/ __L.at(__c12, 4);
 export interface SensitiveDataResult {
   Category?: string;
   Detections?: SensitiveDataDetections[];
   TotalCount?: number;
 }
-const SensitiveDataResult = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<SensitiveDataResult>;
 export type SensitiveDataResultList = SensitiveDataResult[];
-const SensitiveDataResultList = /*@__PURE__*/ __L.at(__c12, 6);
 export interface CustomDataIdentifiersDetections {
   Count?: number;
   Arn?: string;
   Name?: string;
   Occurrences?: Occurrences;
 }
-const CustomDataIdentifiersDetections = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<CustomDataIdentifiersDetections>;
 export type CustomDataIdentifiersDetectionsList = CustomDataIdentifiersDetections[];
-const CustomDataIdentifiersDetectionsList = /*@__PURE__*/ __L.at(__c13, 0);
 export interface CustomDataIdentifiersResult {
   Detections?: CustomDataIdentifiersDetections[];
   TotalCount?: number;
 }
-const CustomDataIdentifiersResult = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<CustomDataIdentifiersResult>;
 export interface ClassificationResult {
   MimeType?: string;
   SizeClassified?: number;
@@ -1195,18 +902,10 @@ export interface ClassificationResult {
   SensitiveData?: SensitiveDataResult[];
   CustomDataIdentifiers?: CustomDataIdentifiersResult;
 }
-const ClassificationResult = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ClassificationResult>;
 export interface DataClassificationDetails {
   DetailedResultsLocation?: string;
   Result?: ClassificationResult;
 }
-const DataClassificationDetails = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<DataClassificationDetails>;
 export interface AwsAutoScalingAutoScalingGroupMixedInstancesPolicyInstancesDistributionDetails {
   OnDemandAllocationStrategy?: string;
   OnDemandBaseCapacity?: number;
@@ -1215,71 +914,35 @@ export interface AwsAutoScalingAutoScalingGroupMixedInstancesPolicyInstancesDist
   SpotInstancePools?: number;
   SpotMaxPrice?: string;
 }
-const AwsAutoScalingAutoScalingGroupMixedInstancesPolicyInstancesDistributionDetails =
-  /*@__PURE__*/ __L.at(
-    __c13,
-    4,
-  ) as any as S.Schema<AwsAutoScalingAutoScalingGroupMixedInstancesPolicyInstancesDistributionDetails>;
 export interface AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification {
   LaunchTemplateId?: string;
   LaunchTemplateName?: string;
   Version?: string;
 }
-const AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification =
-  /*@__PURE__*/ __L.at(
-    __c13,
-    5,
-  ) as any as S.Schema<AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification>;
 export interface AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails {
   InstanceType?: string;
   WeightedCapacity?: string;
 }
-const AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails =
-  /*@__PURE__*/ __L.at(
-    __c13,
-    6,
-  ) as any as S.Schema<AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails>;
 export type AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesList =
   AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails[];
-const AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesList =
-  /*@__PURE__*/ __L.at(__c13, 7);
 export interface AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateDetails {
   LaunchTemplateSpecification?: AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification;
   Overrides?: AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails[];
 }
-const AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateDetails =
-  /*@__PURE__*/ __L.at(
-    __c14,
-    0,
-  ) as any as S.Schema<AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateDetails>;
 export interface AwsAutoScalingAutoScalingGroupMixedInstancesPolicyDetails {
   InstancesDistribution?: AwsAutoScalingAutoScalingGroupMixedInstancesPolicyInstancesDistributionDetails;
   LaunchTemplate?: AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateDetails;
 }
-const AwsAutoScalingAutoScalingGroupMixedInstancesPolicyDetails = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<AwsAutoScalingAutoScalingGroupMixedInstancesPolicyDetails>;
 export interface AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails {
   Value?: string;
 }
-const AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails>;
 export type AwsAutoScalingAutoScalingGroupAvailabilityZonesList =
   AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails[];
-const AwsAutoScalingAutoScalingGroupAvailabilityZonesList = /*@__PURE__*/ __L.at(__c14, 3);
 export interface AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification {
   LaunchTemplateId?: string;
   LaunchTemplateName?: string;
   Version?: string;
 }
-const AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification =
-  /*@__PURE__*/ __L.at(
-    __c14,
-    4,
-  ) as any as S.Schema<AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification>;
 export interface AwsAutoScalingAutoScalingGroupDetails {
   LaunchConfigurationName?: string;
   LoadBalancerNames?: string[];
@@ -1291,10 +954,6 @@ export interface AwsAutoScalingAutoScalingGroupDetails {
   LaunchTemplate?: AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification;
   CapacityRebalance?: boolean;
 }
-const AwsAutoScalingAutoScalingGroupDetails = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<AwsAutoScalingAutoScalingGroupDetails>;
 export interface AwsCodeBuildProjectArtifactsDetails {
   ArtifactIdentifier?: string;
   EncryptionDisabled?: boolean;
@@ -1306,32 +965,18 @@ export interface AwsCodeBuildProjectArtifactsDetails {
   Path?: string;
   Type?: string;
 }
-const AwsCodeBuildProjectArtifactsDetails = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<AwsCodeBuildProjectArtifactsDetails>;
 export type AwsCodeBuildProjectArtifactsList = AwsCodeBuildProjectArtifactsDetails[];
-const AwsCodeBuildProjectArtifactsList = /*@__PURE__*/ __L.at(__c14, 7);
 export interface AwsCodeBuildProjectEnvironmentEnvironmentVariablesDetails {
   Name?: string;
   Type?: string;
   Value?: string;
 }
-const AwsCodeBuildProjectEnvironmentEnvironmentVariablesDetails = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<AwsCodeBuildProjectEnvironmentEnvironmentVariablesDetails>;
 export type AwsCodeBuildProjectEnvironmentEnvironmentVariablesList =
   AwsCodeBuildProjectEnvironmentEnvironmentVariablesDetails[];
-const AwsCodeBuildProjectEnvironmentEnvironmentVariablesList = /*@__PURE__*/ __L.at(__c15, 1);
 export interface AwsCodeBuildProjectEnvironmentRegistryCredential {
   Credential?: string;
   CredentialProvider?: string;
 }
-const AwsCodeBuildProjectEnvironmentRegistryCredential = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<AwsCodeBuildProjectEnvironmentRegistryCredential>;
 export interface AwsCodeBuildProjectEnvironment {
   Certificate?: string;
   EnvironmentVariables?: AwsCodeBuildProjectEnvironmentEnvironmentVariablesDetails[];
@@ -1340,57 +985,32 @@ export interface AwsCodeBuildProjectEnvironment {
   RegistryCredential?: AwsCodeBuildProjectEnvironmentRegistryCredential;
   Type?: string;
 }
-const AwsCodeBuildProjectEnvironment = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<AwsCodeBuildProjectEnvironment>;
 export interface AwsCodeBuildProjectSource {
   Type?: string;
   Location?: string;
   GitCloneDepth?: number;
   InsecureSsl?: boolean;
 }
-const AwsCodeBuildProjectSource = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<AwsCodeBuildProjectSource>;
 export interface AwsCodeBuildProjectLogsConfigCloudWatchLogsDetails {
   GroupName?: string;
   Status?: string;
   StreamName?: string;
 }
-const AwsCodeBuildProjectLogsConfigCloudWatchLogsDetails = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<AwsCodeBuildProjectLogsConfigCloudWatchLogsDetails>;
 export interface AwsCodeBuildProjectLogsConfigS3LogsDetails {
   EncryptionDisabled?: boolean;
   Location?: string;
   Status?: string;
 }
-const AwsCodeBuildProjectLogsConfigS3LogsDetails = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<AwsCodeBuildProjectLogsConfigS3LogsDetails>;
 export interface AwsCodeBuildProjectLogsConfigDetails {
   CloudWatchLogs?: AwsCodeBuildProjectLogsConfigCloudWatchLogsDetails;
   S3Logs?: AwsCodeBuildProjectLogsConfigS3LogsDetails;
 }
-const AwsCodeBuildProjectLogsConfigDetails = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<AwsCodeBuildProjectLogsConfigDetails>;
 export type NonEmptyStringList = string[];
-const NonEmptyStringList = AutomationRulesArnsList as any as S.Schema<NonEmptyStringList>;
 export interface AwsCodeBuildProjectVpcConfig {
   VpcId?: string;
   Subnets?: string[];
   SecurityGroupIds?: string[];
 }
-const AwsCodeBuildProjectVpcConfig = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<AwsCodeBuildProjectVpcConfig>;
 export interface AwsCodeBuildProjectDetails {
   EncryptionKey?: string;
   Artifacts?: AwsCodeBuildProjectArtifactsDetails[];
@@ -1402,57 +1022,30 @@ export interface AwsCodeBuildProjectDetails {
   VpcConfig?: AwsCodeBuildProjectVpcConfig;
   SecondaryArtifacts?: AwsCodeBuildProjectArtifactsDetails[];
 }
-const AwsCodeBuildProjectDetails = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<AwsCodeBuildProjectDetails>;
 export interface AwsCloudFrontDistributionCacheBehavior {
   ViewerProtocolPolicy?: string;
 }
-const AwsCloudFrontDistributionCacheBehavior = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<AwsCloudFrontDistributionCacheBehavior>;
 export type AwsCloudFrontDistributionCacheBehaviorsItemList =
   AwsCloudFrontDistributionCacheBehavior[];
-const AwsCloudFrontDistributionCacheBehaviorsItemList = /*@__PURE__*/ __L.at(__c16, 3);
 export interface AwsCloudFrontDistributionCacheBehaviors {
   Items?: AwsCloudFrontDistributionCacheBehavior[];
 }
-const AwsCloudFrontDistributionCacheBehaviors = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<AwsCloudFrontDistributionCacheBehaviors>;
 export interface AwsCloudFrontDistributionDefaultCacheBehavior {
   ViewerProtocolPolicy?: string;
 }
-const AwsCloudFrontDistributionDefaultCacheBehavior =
-  AwsCloudFrontDistributionCacheBehavior as any as S.Schema<AwsCloudFrontDistributionDefaultCacheBehavior>;
 export interface AwsCloudFrontDistributionLogging {
   Bucket?: string;
   Enabled?: boolean;
   IncludeCookies?: boolean;
   Prefix?: string;
 }
-const AwsCloudFrontDistributionLogging = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<AwsCloudFrontDistributionLogging>;
 export interface AwsCloudFrontDistributionOriginS3OriginConfig {
   OriginAccessIdentity?: string;
 }
-const AwsCloudFrontDistributionOriginS3OriginConfig = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<AwsCloudFrontDistributionOriginS3OriginConfig>;
 export interface AwsCloudFrontDistributionOriginSslProtocols {
   Items?: string[];
   Quantity?: number;
 }
-const AwsCloudFrontDistributionOriginSslProtocols = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<AwsCloudFrontDistributionOriginSslProtocols>;
 export interface AwsCloudFrontDistributionOriginCustomOriginConfig {
   HttpPort?: number;
   HttpsPort?: number;
@@ -1461,10 +1054,6 @@ export interface AwsCloudFrontDistributionOriginCustomOriginConfig {
   OriginReadTimeout?: number;
   OriginSslProtocols?: AwsCloudFrontDistributionOriginSslProtocols;
 }
-const AwsCloudFrontDistributionOriginCustomOriginConfig = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<AwsCloudFrontDistributionOriginCustomOriginConfig>;
 export interface AwsCloudFrontDistributionOriginItem {
   DomainName?: string;
   Id?: string;
@@ -1472,53 +1061,25 @@ export interface AwsCloudFrontDistributionOriginItem {
   S3OriginConfig?: AwsCloudFrontDistributionOriginS3OriginConfig;
   CustomOriginConfig?: AwsCloudFrontDistributionOriginCustomOriginConfig;
 }
-const AwsCloudFrontDistributionOriginItem = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<AwsCloudFrontDistributionOriginItem>;
 export type AwsCloudFrontDistributionOriginItemList = AwsCloudFrontDistributionOriginItem[];
-const AwsCloudFrontDistributionOriginItemList = /*@__PURE__*/ __L.at(__c17, 2);
 export interface AwsCloudFrontDistributionOrigins {
   Items?: AwsCloudFrontDistributionOriginItem[];
 }
-const AwsCloudFrontDistributionOrigins = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<AwsCloudFrontDistributionOrigins>;
 export type AwsCloudFrontDistributionOriginGroupFailoverStatusCodesItemList = number[];
-const AwsCloudFrontDistributionOriginGroupFailoverStatusCodesItemList =
-  IntegerList as any as S.Schema<AwsCloudFrontDistributionOriginGroupFailoverStatusCodesItemList>;
 export interface AwsCloudFrontDistributionOriginGroupFailoverStatusCodes {
   Items?: number[];
   Quantity?: number;
 }
-const AwsCloudFrontDistributionOriginGroupFailoverStatusCodes = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<AwsCloudFrontDistributionOriginGroupFailoverStatusCodes>;
 export interface AwsCloudFrontDistributionOriginGroupFailover {
   StatusCodes?: AwsCloudFrontDistributionOriginGroupFailoverStatusCodes;
 }
-const AwsCloudFrontDistributionOriginGroupFailover = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<AwsCloudFrontDistributionOriginGroupFailover>;
 export interface AwsCloudFrontDistributionOriginGroup {
   FailoverCriteria?: AwsCloudFrontDistributionOriginGroupFailover;
 }
-const AwsCloudFrontDistributionOriginGroup = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<AwsCloudFrontDistributionOriginGroup>;
 export type AwsCloudFrontDistributionOriginGroupsItemList = AwsCloudFrontDistributionOriginGroup[];
-const AwsCloudFrontDistributionOriginGroupsItemList = /*@__PURE__*/ __L.at(__c17, 7);
 export interface AwsCloudFrontDistributionOriginGroups {
   Items?: AwsCloudFrontDistributionOriginGroup[];
 }
-const AwsCloudFrontDistributionOriginGroups = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<AwsCloudFrontDistributionOriginGroups>;
 export interface AwsCloudFrontDistributionViewerCertificate {
   AcmCertificateArn?: string;
   Certificate?: string;
@@ -1528,10 +1089,6 @@ export interface AwsCloudFrontDistributionViewerCertificate {
   MinimumProtocolVersion?: string;
   SslSupportMethod?: string;
 }
-const AwsCloudFrontDistributionViewerCertificate = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<AwsCloudFrontDistributionViewerCertificate>;
 export interface AwsCloudFrontDistributionDetails {
   CacheBehaviors?: AwsCloudFrontDistributionCacheBehaviors;
   DefaultCacheBehavior?: AwsCloudFrontDistributionDefaultCacheBehavior;
@@ -1546,19 +1103,10 @@ export interface AwsCloudFrontDistributionDetails {
   Status?: string;
   WebAclId?: string;
 }
-const AwsCloudFrontDistributionDetails = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<AwsCloudFrontDistributionDetails>;
 export interface AwsEc2InstanceNetworkInterfacesDetails {
   NetworkInterfaceId?: string;
 }
-const AwsEc2InstanceNetworkInterfacesDetails = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<AwsEc2InstanceNetworkInterfacesDetails>;
 export type AwsEc2InstanceNetworkInterfacesList = AwsEc2InstanceNetworkInterfacesDetails[];
-const AwsEc2InstanceNetworkInterfacesList = /*@__PURE__*/ __L.at(__c18, 4);
 export interface AwsEc2InstanceMetadataOptions {
   HttpEndpoint?: string;
   HttpProtocolIpv6?: string;
@@ -1566,17 +1114,9 @@ export interface AwsEc2InstanceMetadataOptions {
   HttpTokens?: string;
   InstanceMetadataTags?: string;
 }
-const AwsEc2InstanceMetadataOptions = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<AwsEc2InstanceMetadataOptions>;
 export interface AwsEc2InstanceMonitoringDetails {
   State?: string;
 }
-const AwsEc2InstanceMonitoringDetails = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<AwsEc2InstanceMonitoringDetails>;
 export interface AwsEc2InstanceDetails {
   Type?: string;
   ImageId?: string;
@@ -1592,10 +1132,6 @@ export interface AwsEc2InstanceDetails {
   MetadataOptions?: AwsEc2InstanceMetadataOptions;
   Monitoring?: AwsEc2InstanceMonitoringDetails;
 }
-const AwsEc2InstanceDetails = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<AwsEc2InstanceDetails>;
 export interface AwsEc2NetworkInterfaceAttachment {
   AttachTime?: string;
   AttachmentId?: string;
@@ -1605,40 +1141,21 @@ export interface AwsEc2NetworkInterfaceAttachment {
   InstanceOwnerId?: string;
   Status?: string;
 }
-const AwsEc2NetworkInterfaceAttachment = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<AwsEc2NetworkInterfaceAttachment>;
 export interface AwsEc2NetworkInterfaceSecurityGroup {
   GroupName?: string;
   GroupId?: string;
 }
-const AwsEc2NetworkInterfaceSecurityGroup = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<AwsEc2NetworkInterfaceSecurityGroup>;
 export type AwsEc2NetworkInterfaceSecurityGroupList = AwsEc2NetworkInterfaceSecurityGroup[];
-const AwsEc2NetworkInterfaceSecurityGroupList = /*@__PURE__*/ __L.at(__c19, 2);
 export interface AwsEc2NetworkInterfaceIpV6AddressDetail {
   IpV6Address?: string;
 }
-const AwsEc2NetworkInterfaceIpV6AddressDetail = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<AwsEc2NetworkInterfaceIpV6AddressDetail>;
 export type AwsEc2NetworkInterfaceIpV6AddressList = AwsEc2NetworkInterfaceIpV6AddressDetail[];
-const AwsEc2NetworkInterfaceIpV6AddressList = /*@__PURE__*/ __L.at(__c19, 4);
 export interface AwsEc2NetworkInterfacePrivateIpAddressDetail {
   PrivateIpAddress?: string;
   PrivateDnsName?: string;
 }
-const AwsEc2NetworkInterfacePrivateIpAddressDetail = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<AwsEc2NetworkInterfacePrivateIpAddressDetail>;
 export type AwsEc2NetworkInterfacePrivateIpAddressList =
   AwsEc2NetworkInterfacePrivateIpAddressDetail[];
-const AwsEc2NetworkInterfacePrivateIpAddressList = /*@__PURE__*/ __L.at(__c19, 6);
 export interface AwsEc2NetworkInterfaceDetails {
   Attachment?: AwsEc2NetworkInterfaceAttachment;
   NetworkInterfaceId?: string;
@@ -1649,10 +1166,6 @@ export interface AwsEc2NetworkInterfaceDetails {
   PublicDnsName?: string;
   PublicIp?: string;
 }
-const AwsEc2NetworkInterfaceDetails = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<AwsEc2NetworkInterfaceDetails>;
 export interface AwsEc2SecurityGroupUserIdGroupPair {
   GroupId?: string;
   GroupName?: string;
@@ -1661,39 +1174,19 @@ export interface AwsEc2SecurityGroupUserIdGroupPair {
   VpcId?: string;
   VpcPeeringConnectionId?: string;
 }
-const AwsEc2SecurityGroupUserIdGroupPair = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<AwsEc2SecurityGroupUserIdGroupPair>;
 export type AwsEc2SecurityGroupUserIdGroupPairList = AwsEc2SecurityGroupUserIdGroupPair[];
-const AwsEc2SecurityGroupUserIdGroupPairList = /*@__PURE__*/ __L.at(__c20, 1);
 export interface AwsEc2SecurityGroupIpRange {
   CidrIp?: string;
 }
-const AwsEc2SecurityGroupIpRange = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<AwsEc2SecurityGroupIpRange>;
 export type AwsEc2SecurityGroupIpRangeList = AwsEc2SecurityGroupIpRange[];
-const AwsEc2SecurityGroupIpRangeList = /*@__PURE__*/ __L.at(__c20, 3);
 export interface AwsEc2SecurityGroupIpv6Range {
   CidrIpv6?: string;
 }
-const AwsEc2SecurityGroupIpv6Range = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<AwsEc2SecurityGroupIpv6Range>;
 export type AwsEc2SecurityGroupIpv6RangeList = AwsEc2SecurityGroupIpv6Range[];
-const AwsEc2SecurityGroupIpv6RangeList = /*@__PURE__*/ __L.at(__c20, 5);
 export interface AwsEc2SecurityGroupPrefixListId {
   PrefixListId?: string;
 }
-const AwsEc2SecurityGroupPrefixListId = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<AwsEc2SecurityGroupPrefixListId>;
 export type AwsEc2SecurityGroupPrefixListIdList = AwsEc2SecurityGroupPrefixListId[];
-const AwsEc2SecurityGroupPrefixListIdList = /*@__PURE__*/ __L.at(__c20, 7);
 export interface AwsEc2SecurityGroupIpPermission {
   IpProtocol?: string;
   FromPort?: number;
@@ -1703,12 +1196,7 @@ export interface AwsEc2SecurityGroupIpPermission {
   Ipv6Ranges?: AwsEc2SecurityGroupIpv6Range[];
   PrefixListIds?: AwsEc2SecurityGroupPrefixListId[];
 }
-const AwsEc2SecurityGroupIpPermission = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<AwsEc2SecurityGroupIpPermission>;
 export type AwsEc2SecurityGroupIpPermissionList = AwsEc2SecurityGroupIpPermission[];
-const AwsEc2SecurityGroupIpPermissionList = /*@__PURE__*/ __L.at(__c21, 1);
 export interface AwsEc2SecurityGroupDetails {
   GroupName?: string;
   GroupId?: string;
@@ -1717,22 +1205,13 @@ export interface AwsEc2SecurityGroupDetails {
   IpPermissions?: AwsEc2SecurityGroupIpPermission[];
   IpPermissionsEgress?: AwsEc2SecurityGroupIpPermission[];
 }
-const AwsEc2SecurityGroupDetails = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<AwsEc2SecurityGroupDetails>;
 export interface AwsEc2VolumeAttachment {
   AttachTime?: string;
   DeleteOnTermination?: boolean;
   InstanceId?: string;
   Status?: string;
 }
-const AwsEc2VolumeAttachment = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<AwsEc2VolumeAttachment>;
 export type AwsEc2VolumeAttachmentList = AwsEc2VolumeAttachment[];
-const AwsEc2VolumeAttachmentList = /*@__PURE__*/ __L.at(__c21, 4);
 export interface AwsEc2VolumeDetails {
   CreateTime?: string;
   DeviceName?: string;
@@ -1746,36 +1225,24 @@ export interface AwsEc2VolumeDetails {
   VolumeType?: string;
   VolumeScanStatus?: string;
 }
-const AwsEc2VolumeDetails = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<AwsEc2VolumeDetails>;
 export interface CidrBlockAssociation {
   AssociationId?: string;
   CidrBlock?: string;
   CidrBlockState?: string;
 }
-const CidrBlockAssociation = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<CidrBlockAssociation>;
 export type CidrBlockAssociationList = CidrBlockAssociation[];
-const CidrBlockAssociationList = /*@__PURE__*/ __L.at(__c21, 7);
 export interface Ipv6CidrBlockAssociation {
   AssociationId?: string;
   Ipv6CidrBlock?: string;
   CidrBlockState?: string;
 }
-const Ipv6CidrBlockAssociation = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<Ipv6CidrBlockAssociation>;
 export type Ipv6CidrBlockAssociationList = Ipv6CidrBlockAssociation[];
-const Ipv6CidrBlockAssociationList = /*@__PURE__*/ __L.at(__c22, 1);
 export interface AwsEc2VpcDetails {
   CidrBlockAssociationSet?: CidrBlockAssociation[];
   Ipv6CidrBlockAssociationSet?: Ipv6CidrBlockAssociation[];
   DhcpOptionsId?: string;
   State?: string;
 }
-const AwsEc2VpcDetails = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<AwsEc2VpcDetails>;
 export interface AwsEc2EipDetails {
   InstanceId?: string;
   PublicIp?: string;
@@ -1788,7 +1255,6 @@ export interface AwsEc2EipDetails {
   NetworkInterfaceOwnerId?: string;
   PrivateIpAddress?: string;
 }
-const AwsEc2EipDetails = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<AwsEc2EipDetails>;
 export interface AwsEc2SubnetDetails {
   AssignIpv6AddressOnCreation?: boolean;
   AvailabilityZone?: string;
@@ -1804,28 +1270,20 @@ export interface AwsEc2SubnetDetails {
   VpcId?: string;
   Ipv6CidrBlockAssociationSet?: Ipv6CidrBlockAssociation[];
 }
-const AwsEc2SubnetDetails = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<AwsEc2SubnetDetails>;
 export interface AwsEc2NetworkAclAssociation {
   NetworkAclAssociationId?: string;
   NetworkAclId?: string;
   SubnetId?: string;
 }
-const AwsEc2NetworkAclAssociation = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<AwsEc2NetworkAclAssociation>;
 export type AwsEc2NetworkAclAssociationList = AwsEc2NetworkAclAssociation[];
-const AwsEc2NetworkAclAssociationList = /*@__PURE__*/ __L.at(__c22, 6);
 export interface IcmpTypeCode {
   Code?: number;
   Type?: number;
 }
-const IcmpTypeCode = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<IcmpTypeCode>;
 export interface PortRangeFromTo {
   From?: number;
   To?: number;
 }
-const PortRangeFromTo = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<PortRangeFromTo>;
 export interface AwsEc2NetworkAclEntry {
   CidrBlock?: string;
   Egress?: boolean;
@@ -1836,12 +1294,7 @@ export interface AwsEc2NetworkAclEntry {
   RuleAction?: string;
   RuleNumber?: number;
 }
-const AwsEc2NetworkAclEntry = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<AwsEc2NetworkAclEntry>;
 export type AwsEc2NetworkAclEntryList = AwsEc2NetworkAclEntry[];
-const AwsEc2NetworkAclEntryList = /*@__PURE__*/ __L.at(__c23, 2);
 export interface AwsEc2NetworkAclDetails {
   IsDefault?: boolean;
   NetworkAclId?: string;
@@ -1850,34 +1303,21 @@ export interface AwsEc2NetworkAclDetails {
   Associations?: AwsEc2NetworkAclAssociation[];
   Entries?: AwsEc2NetworkAclEntry[];
 }
-const AwsEc2NetworkAclDetails = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<AwsEc2NetworkAclDetails>;
 export interface AvailabilityZone {
   ZoneName?: string;
   SubnetId?: string;
 }
-const AvailabilityZone = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<AvailabilityZone>;
 export type AvailabilityZones = AvailabilityZone[];
-const AvailabilityZones = /*@__PURE__*/ __L.at(__c23, 5);
 export type SecurityGroups = string[];
-const SecurityGroups = AutomationRulesArnsList as any as S.Schema<SecurityGroups>;
 export interface LoadBalancerState {
   Code?: string;
   Reason?: string;
 }
-const LoadBalancerState = ClassificationStatus as any as S.Schema<LoadBalancerState>;
 export interface AwsElbv2LoadBalancerAttribute {
   Key?: string;
   Value?: string;
 }
-const AwsElbv2LoadBalancerAttribute = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<AwsElbv2LoadBalancerAttribute>;
 export type AwsElbv2LoadBalancerAttributes = AwsElbv2LoadBalancerAttribute[];
-const AwsElbv2LoadBalancerAttributes = /*@__PURE__*/ __L.at(__c23, 7);
 export interface AwsElbv2LoadBalancerDetails {
   AvailabilityZones?: AvailabilityZone[];
   CanonicalHostedZoneId?: string;
@@ -1891,43 +1331,25 @@ export interface AwsElbv2LoadBalancerDetails {
   VpcId?: string;
   LoadBalancerAttributes?: AwsElbv2LoadBalancerAttribute[];
 }
-const AwsElbv2LoadBalancerDetails = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<AwsElbv2LoadBalancerDetails>;
 export interface AwsElasticBeanstalkEnvironmentEnvironmentLink {
   EnvironmentName?: string;
   LinkName?: string;
 }
-const AwsElasticBeanstalkEnvironmentEnvironmentLink = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<AwsElasticBeanstalkEnvironmentEnvironmentLink>;
 export type AwsElasticBeanstalkEnvironmentEnvironmentLinks =
   AwsElasticBeanstalkEnvironmentEnvironmentLink[];
-const AwsElasticBeanstalkEnvironmentEnvironmentLinks = /*@__PURE__*/ __L.at(__c24, 2);
 export interface AwsElasticBeanstalkEnvironmentOptionSetting {
   Namespace?: string;
   OptionName?: string;
   ResourceName?: string;
   Value?: string;
 }
-const AwsElasticBeanstalkEnvironmentOptionSetting = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<AwsElasticBeanstalkEnvironmentOptionSetting>;
 export type AwsElasticBeanstalkEnvironmentOptionSettings =
   AwsElasticBeanstalkEnvironmentOptionSetting[];
-const AwsElasticBeanstalkEnvironmentOptionSettings = /*@__PURE__*/ __L.at(__c24, 4);
 export interface AwsElasticBeanstalkEnvironmentTier {
   Name?: string;
   Type?: string;
   Version?: string;
 }
-const AwsElasticBeanstalkEnvironmentTier = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<AwsElasticBeanstalkEnvironmentTier>;
 export interface AwsElasticBeanstalkEnvironmentDetails {
   ApplicationName?: string;
   Cname?: string;
@@ -1946,26 +1368,13 @@ export interface AwsElasticBeanstalkEnvironmentDetails {
   Tier?: AwsElasticBeanstalkEnvironmentTier;
   VersionLabel?: string;
 }
-const AwsElasticBeanstalkEnvironmentDetails = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<AwsElasticBeanstalkEnvironmentDetails>;
 export interface AwsElasticsearchDomainDomainEndpointOptions {
   EnforceHTTPS?: boolean;
   TLSSecurityPolicy?: string;
 }
-const AwsElasticsearchDomainDomainEndpointOptions = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<AwsElasticsearchDomainDomainEndpointOptions>;
 export interface AwsElasticsearchDomainElasticsearchClusterConfigZoneAwarenessConfigDetails {
   AvailabilityZoneCount?: number;
 }
-const AwsElasticsearchDomainElasticsearchClusterConfigZoneAwarenessConfigDetails =
-  /*@__PURE__*/ __L.at(
-    __c25,
-    0,
-  ) as any as S.Schema<AwsElasticsearchDomainElasticsearchClusterConfigZoneAwarenessConfigDetails>;
 export interface AwsElasticsearchDomainElasticsearchClusterConfigDetails {
   DedicatedMasterCount?: number;
   DedicatedMasterEnabled?: boolean;
@@ -1975,42 +1384,22 @@ export interface AwsElasticsearchDomainElasticsearchClusterConfigDetails {
   ZoneAwarenessConfig?: AwsElasticsearchDomainElasticsearchClusterConfigZoneAwarenessConfigDetails;
   ZoneAwarenessEnabled?: boolean;
 }
-const AwsElasticsearchDomainElasticsearchClusterConfigDetails = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<AwsElasticsearchDomainElasticsearchClusterConfigDetails>;
 export interface AwsElasticsearchDomainEncryptionAtRestOptions {
   Enabled?: boolean;
   KmsKeyId?: string;
 }
-const AwsElasticsearchDomainEncryptionAtRestOptions = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<AwsElasticsearchDomainEncryptionAtRestOptions>;
 export interface AwsElasticsearchDomainLogPublishingOptionsLogConfig {
   CloudWatchLogsLogGroupArn?: string;
   Enabled?: boolean;
 }
-const AwsElasticsearchDomainLogPublishingOptionsLogConfig = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<AwsElasticsearchDomainLogPublishingOptionsLogConfig>;
 export interface AwsElasticsearchDomainLogPublishingOptions {
   IndexSlowLogs?: AwsElasticsearchDomainLogPublishingOptionsLogConfig;
   SearchSlowLogs?: AwsElasticsearchDomainLogPublishingOptionsLogConfig;
   AuditLogs?: AwsElasticsearchDomainLogPublishingOptionsLogConfig;
 }
-const AwsElasticsearchDomainLogPublishingOptions = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<AwsElasticsearchDomainLogPublishingOptions>;
 export interface AwsElasticsearchDomainNodeToNodeEncryptionOptions {
   Enabled?: boolean;
 }
-const AwsElasticsearchDomainNodeToNodeEncryptionOptions = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<AwsElasticsearchDomainNodeToNodeEncryptionOptions>;
 export interface AwsElasticsearchDomainServiceSoftwareOptions {
   AutomatedUpdateDate?: string;
   Cancellable?: boolean;
@@ -2020,20 +1409,12 @@ export interface AwsElasticsearchDomainServiceSoftwareOptions {
   UpdateAvailable?: boolean;
   UpdateStatus?: string;
 }
-const AwsElasticsearchDomainServiceSoftwareOptions = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<AwsElasticsearchDomainServiceSoftwareOptions>;
 export interface AwsElasticsearchDomainVPCOptions {
   AvailabilityZones?: string[];
   SecurityGroupIds?: string[];
   SubnetIds?: string[];
   VPCId?: string;
 }
-const AwsElasticsearchDomainVPCOptions = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<AwsElasticsearchDomainVPCOptions>;
 export interface AwsElasticsearchDomainDetails {
   AccessPolicies?: string;
   DomainEndpointOptions?: AwsElasticsearchDomainDomainEndpointOptions;
@@ -2049,113 +1430,57 @@ export interface AwsElasticsearchDomainDetails {
   ServiceSoftwareOptions?: AwsElasticsearchDomainServiceSoftwareOptions;
   VPCOptions?: AwsElasticsearchDomainVPCOptions;
 }
-const AwsElasticsearchDomainDetails = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<AwsElasticsearchDomainDetails>;
 export interface AwsS3BucketServerSideEncryptionByDefault {
   SSEAlgorithm?: string;
   KMSMasterKeyID?: string;
 }
-const AwsS3BucketServerSideEncryptionByDefault = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<AwsS3BucketServerSideEncryptionByDefault>;
 export interface AwsS3BucketServerSideEncryptionRule {
   ApplyServerSideEncryptionByDefault?: AwsS3BucketServerSideEncryptionByDefault;
 }
-const AwsS3BucketServerSideEncryptionRule = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<AwsS3BucketServerSideEncryptionRule>;
 export type AwsS3BucketServerSideEncryptionRules = AwsS3BucketServerSideEncryptionRule[];
-const AwsS3BucketServerSideEncryptionRules = /*@__PURE__*/ __L.at(__c26, 3);
 export interface AwsS3BucketServerSideEncryptionConfiguration {
   Rules?: AwsS3BucketServerSideEncryptionRule[];
 }
-const AwsS3BucketServerSideEncryptionConfiguration = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<AwsS3BucketServerSideEncryptionConfiguration>;
 export interface AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails {
   DaysAfterInitiation?: number;
 }
-const AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails =
-  /*@__PURE__*/ __L.at(
-    __c26,
-    5,
-  ) as any as S.Schema<AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails>;
 export interface AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsTagDetails {
   Key?: string;
   Value?: string;
 }
-const AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsTagDetails =
-  /*@__PURE__*/ __L.at(
-    __c26,
-    6,
-  ) as any as S.Schema<AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsTagDetails>;
 export interface AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsDetails {
   Prefix?: string;
   Tag?: AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsTagDetails;
   Type?: string;
 }
-const AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsDetails =
-  /*@__PURE__*/ __L.at(
-    __c26,
-    7,
-  ) as any as S.Schema<AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsDetails>;
 export type AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsList =
   AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsDetails[];
-const AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsList =
-  /*@__PURE__*/ __L.at(__c27, 0);
 export interface AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateTagDetails {
   Key?: string;
   Value?: string;
 }
-const AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateTagDetails =
-  AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsTagDetails as any as S.Schema<AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateTagDetails>;
 export interface AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateDetails {
   Operands?: AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsDetails[];
   Prefix?: string;
   Tag?: AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateTagDetails;
   Type?: string;
 }
-const AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateDetails = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateDetails>;
 export interface AwsS3BucketBucketLifecycleConfigurationRulesFilterDetails {
   Predicate?: AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateDetails;
 }
-const AwsS3BucketBucketLifecycleConfigurationRulesFilterDetails = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<AwsS3BucketBucketLifecycleConfigurationRulesFilterDetails>;
 export interface AwsS3BucketBucketLifecycleConfigurationRulesNoncurrentVersionTransitionsDetails {
   Days?: number;
   StorageClass?: string;
 }
-const AwsS3BucketBucketLifecycleConfigurationRulesNoncurrentVersionTransitionsDetails =
-  /*@__PURE__*/ __L.at(
-    __c27,
-    3,
-  ) as any as S.Schema<AwsS3BucketBucketLifecycleConfigurationRulesNoncurrentVersionTransitionsDetails>;
 export type AwsS3BucketBucketLifecycleConfigurationRulesNoncurrentVersionTransitionsList =
   AwsS3BucketBucketLifecycleConfigurationRulesNoncurrentVersionTransitionsDetails[];
-const AwsS3BucketBucketLifecycleConfigurationRulesNoncurrentVersionTransitionsList =
-  /*@__PURE__*/ __L.at(__c27, 4);
 export interface AwsS3BucketBucketLifecycleConfigurationRulesTransitionsDetails {
   Date?: string;
   Days?: number;
   StorageClass?: string;
 }
-const AwsS3BucketBucketLifecycleConfigurationRulesTransitionsDetails = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<AwsS3BucketBucketLifecycleConfigurationRulesTransitionsDetails>;
 export type AwsS3BucketBucketLifecycleConfigurationRulesTransitionsList =
   AwsS3BucketBucketLifecycleConfigurationRulesTransitionsDetails[];
-const AwsS3BucketBucketLifecycleConfigurationRulesTransitionsList = /*@__PURE__*/ __L.at(__c27, 6);
 export interface AwsS3BucketBucketLifecycleConfigurationRulesDetails {
   AbortIncompleteMultipartUpload?: AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails;
   ExpirationDate?: string;
@@ -2169,54 +1494,29 @@ export interface AwsS3BucketBucketLifecycleConfigurationRulesDetails {
   Status?: string;
   Transitions?: AwsS3BucketBucketLifecycleConfigurationRulesTransitionsDetails[];
 }
-const AwsS3BucketBucketLifecycleConfigurationRulesDetails = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<AwsS3BucketBucketLifecycleConfigurationRulesDetails>;
 export type AwsS3BucketBucketLifecycleConfigurationRulesList =
   AwsS3BucketBucketLifecycleConfigurationRulesDetails[];
-const AwsS3BucketBucketLifecycleConfigurationRulesList = /*@__PURE__*/ __L.at(__c28, 0);
 export interface AwsS3BucketBucketLifecycleConfigurationDetails {
   Rules?: AwsS3BucketBucketLifecycleConfigurationRulesDetails[];
 }
-const AwsS3BucketBucketLifecycleConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<AwsS3BucketBucketLifecycleConfigurationDetails>;
 export interface AwsS3AccountPublicAccessBlockDetails {
   BlockPublicAcls?: boolean;
   BlockPublicPolicy?: boolean;
   IgnorePublicAcls?: boolean;
   RestrictPublicBuckets?: boolean;
 }
-const AwsS3AccountPublicAccessBlockDetails = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<AwsS3AccountPublicAccessBlockDetails>;
 export interface AwsS3BucketLoggingConfiguration {
   DestinationBucketName?: string;
   LogFilePrefix?: string;
 }
-const AwsS3BucketLoggingConfiguration = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<AwsS3BucketLoggingConfiguration>;
 export interface AwsS3BucketWebsiteConfigurationRedirectTo {
   Hostname?: string;
   Protocol?: string;
 }
-const AwsS3BucketWebsiteConfigurationRedirectTo = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<AwsS3BucketWebsiteConfigurationRedirectTo>;
 export interface AwsS3BucketWebsiteConfigurationRoutingRuleCondition {
   HttpErrorCodeReturnedEquals?: string;
   KeyPrefixEquals?: string;
 }
-const AwsS3BucketWebsiteConfigurationRoutingRuleCondition = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<AwsS3BucketWebsiteConfigurationRoutingRuleCondition>;
 export interface AwsS3BucketWebsiteConfigurationRoutingRuleRedirect {
   Hostname?: string;
   HttpRedirectCode?: string;
@@ -2224,117 +1524,62 @@ export interface AwsS3BucketWebsiteConfigurationRoutingRuleRedirect {
   ReplaceKeyPrefixWith?: string;
   ReplaceKeyWith?: string;
 }
-const AwsS3BucketWebsiteConfigurationRoutingRuleRedirect = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<AwsS3BucketWebsiteConfigurationRoutingRuleRedirect>;
 export interface AwsS3BucketWebsiteConfigurationRoutingRule {
   Condition?: AwsS3BucketWebsiteConfigurationRoutingRuleCondition;
   Redirect?: AwsS3BucketWebsiteConfigurationRoutingRuleRedirect;
 }
-const AwsS3BucketWebsiteConfigurationRoutingRule = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<AwsS3BucketWebsiteConfigurationRoutingRule>;
 export type AwsS3BucketWebsiteConfigurationRoutingRules =
   AwsS3BucketWebsiteConfigurationRoutingRule[];
-const AwsS3BucketWebsiteConfigurationRoutingRules = /*@__PURE__*/ __L.at(__c29, 0);
 export interface AwsS3BucketWebsiteConfiguration {
   ErrorDocument?: string;
   IndexDocumentSuffix?: string;
   RedirectAllRequestsTo?: AwsS3BucketWebsiteConfigurationRedirectTo;
   RoutingRules?: AwsS3BucketWebsiteConfigurationRoutingRule[];
 }
-const AwsS3BucketWebsiteConfiguration = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<AwsS3BucketWebsiteConfiguration>;
 export type AwsS3BucketNotificationConfigurationEvents = string[];
-const AwsS3BucketNotificationConfigurationEvents =
-  AutomationRulesArnsList as any as S.Schema<AwsS3BucketNotificationConfigurationEvents>;
 export type AwsS3BucketNotificationConfigurationS3KeyFilterRuleName =
   | "Prefix"
   | "Suffix"
   | (string & {});
-const AwsS3BucketNotificationConfigurationS3KeyFilterRuleName = S.String;
-
 export interface AwsS3BucketNotificationConfigurationS3KeyFilterRule {
   Name?: AwsS3BucketNotificationConfigurationS3KeyFilterRuleName;
   Value?: string;
 }
-const AwsS3BucketNotificationConfigurationS3KeyFilterRule = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<AwsS3BucketNotificationConfigurationS3KeyFilterRule>;
 export type AwsS3BucketNotificationConfigurationS3KeyFilterRules =
   AwsS3BucketNotificationConfigurationS3KeyFilterRule[];
-const AwsS3BucketNotificationConfigurationS3KeyFilterRules = /*@__PURE__*/ __L.at(__c29, 3);
 export interface AwsS3BucketNotificationConfigurationS3KeyFilter {
   FilterRules?: AwsS3BucketNotificationConfigurationS3KeyFilterRule[];
 }
-const AwsS3BucketNotificationConfigurationS3KeyFilter = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<AwsS3BucketNotificationConfigurationS3KeyFilter>;
 export interface AwsS3BucketNotificationConfigurationFilter {
   S3KeyFilter?: AwsS3BucketNotificationConfigurationS3KeyFilter;
 }
-const AwsS3BucketNotificationConfigurationFilter = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<AwsS3BucketNotificationConfigurationFilter>;
 export interface AwsS3BucketNotificationConfigurationDetail {
   Events?: string[];
   Filter?: AwsS3BucketNotificationConfigurationFilter;
   Destination?: string;
   Type?: string;
 }
-const AwsS3BucketNotificationConfigurationDetail = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<AwsS3BucketNotificationConfigurationDetail>;
 export type AwsS3BucketNotificationConfigurationDetails =
   AwsS3BucketNotificationConfigurationDetail[];
-const AwsS3BucketNotificationConfigurationDetails = /*@__PURE__*/ __L.at(__c29, 7);
 export interface AwsS3BucketNotificationConfiguration {
   Configurations?: AwsS3BucketNotificationConfigurationDetail[];
 }
-const AwsS3BucketNotificationConfiguration = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<AwsS3BucketNotificationConfiguration>;
 export interface AwsS3BucketBucketVersioningConfiguration {
   IsMfaDeleteEnabled?: boolean;
   Status?: string;
 }
-const AwsS3BucketBucketVersioningConfiguration = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<AwsS3BucketBucketVersioningConfiguration>;
 export interface AwsS3BucketObjectLockConfigurationRuleDefaultRetentionDetails {
   Days?: number;
   Mode?: string;
   Years?: number;
 }
-const AwsS3BucketObjectLockConfigurationRuleDefaultRetentionDetails = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<AwsS3BucketObjectLockConfigurationRuleDefaultRetentionDetails>;
 export interface AwsS3BucketObjectLockConfigurationRuleDetails {
   DefaultRetention?: AwsS3BucketObjectLockConfigurationRuleDefaultRetentionDetails;
 }
-const AwsS3BucketObjectLockConfigurationRuleDetails = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<AwsS3BucketObjectLockConfigurationRuleDetails>;
 export interface AwsS3BucketObjectLockConfiguration {
   ObjectLockEnabled?: string;
   Rule?: AwsS3BucketObjectLockConfigurationRuleDetails;
 }
-const AwsS3BucketObjectLockConfiguration = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<AwsS3BucketObjectLockConfiguration>;
 export interface AwsS3BucketDetails {
   OwnerId?: string;
   OwnerName?: string;
@@ -2351,7 +1596,6 @@ export interface AwsS3BucketDetails {
   ObjectLockConfiguration?: AwsS3BucketObjectLockConfiguration;
   Name?: string;
 }
-const AwsS3BucketDetails = /*@__PURE__*/ __L.at(__c30, 5) as any as S.Schema<AwsS3BucketDetails>;
 export interface AwsS3ObjectDetails {
   LastModified?: string;
   ETag?: string;
@@ -2360,14 +1604,9 @@ export interface AwsS3ObjectDetails {
   ServerSideEncryption?: string;
   SSEKMSKeyId?: string;
 }
-const AwsS3ObjectDetails = /*@__PURE__*/ __L.at(__c30, 6) as any as S.Schema<AwsS3ObjectDetails>;
 export interface AwsSecretsManagerSecretRotationRules {
   AutomaticallyAfterDays?: number;
 }
-const AwsSecretsManagerSecretRotationRules = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<AwsSecretsManagerSecretRotationRules>;
 export interface AwsSecretsManagerSecretDetails {
   RotationRules?: AwsSecretsManagerSecretRotationRules;
   RotationOccurredWithinFrequency?: boolean;
@@ -2378,21 +1617,11 @@ export interface AwsSecretsManagerSecretDetails {
   Name?: string;
   Description?: string;
 }
-const AwsSecretsManagerSecretDetails = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<AwsSecretsManagerSecretDetails>;
 export type AwsIamAccessKeyStatus = "Active" | "Inactive" | (string & {});
-const AwsIamAccessKeyStatus = S.String;
-
 export interface AwsIamAccessKeySessionContextAttributes {
   MfaAuthenticated?: boolean;
   CreationDate?: string;
 }
-const AwsIamAccessKeySessionContextAttributes = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<AwsIamAccessKeySessionContextAttributes>;
 export interface AwsIamAccessKeySessionContextSessionIssuer {
   Type?: string;
   PrincipalId?: string;
@@ -2400,18 +1629,10 @@ export interface AwsIamAccessKeySessionContextSessionIssuer {
   AccountId?: string;
   UserName?: string;
 }
-const AwsIamAccessKeySessionContextSessionIssuer = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<AwsIamAccessKeySessionContextSessionIssuer>;
 export interface AwsIamAccessKeySessionContext {
   Attributes?: AwsIamAccessKeySessionContextAttributes;
   SessionIssuer?: AwsIamAccessKeySessionContextSessionIssuer;
 }
-const AwsIamAccessKeySessionContext = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<AwsIamAccessKeySessionContext>;
 export interface AwsIamAccessKeyDetails {
   UserName?: string;
   Status?: AwsIamAccessKeyStatus;
@@ -2423,34 +1644,19 @@ export interface AwsIamAccessKeyDetails {
   AccessKeyId?: string;
   SessionContext?: AwsIamAccessKeySessionContext;
 }
-const AwsIamAccessKeyDetails = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<AwsIamAccessKeyDetails>;
 export interface AwsIamAttachedManagedPolicy {
   PolicyName?: string;
   PolicyArn?: string;
 }
-const AwsIamAttachedManagedPolicy = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<AwsIamAttachedManagedPolicy>;
 export type AwsIamAttachedManagedPolicyList = AwsIamAttachedManagedPolicy[];
-const AwsIamAttachedManagedPolicyList = /*@__PURE__*/ __L.at(__c31, 6);
 export interface AwsIamPermissionsBoundary {
   PermissionsBoundaryArn?: string;
   PermissionsBoundaryType?: string;
 }
-const AwsIamPermissionsBoundary = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<AwsIamPermissionsBoundary>;
 export interface AwsIamUserPolicy {
   PolicyName?: string;
 }
-const AwsIamUserPolicy = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<AwsIamUserPolicy>;
 export type AwsIamUserPolicyList = AwsIamUserPolicy[];
-const AwsIamUserPolicyList = /*@__PURE__*/ __L.at(__c32, 1);
 export interface AwsIamUserDetails {
   AttachedManagedPolicies?: AwsIamAttachedManagedPolicy[];
   CreateDate?: string;
@@ -2461,15 +1667,12 @@ export interface AwsIamUserDetails {
   UserName?: string;
   UserPolicyList?: AwsIamUserPolicy[];
 }
-const AwsIamUserDetails = /*@__PURE__*/ __L.at(__c32, 2) as any as S.Schema<AwsIamUserDetails>;
 export interface AwsIamPolicyVersion {
   VersionId?: string;
   IsDefaultVersion?: boolean;
   CreateDate?: string;
 }
-const AwsIamPolicyVersion = /*@__PURE__*/ __L.at(__c32, 3) as any as S.Schema<AwsIamPolicyVersion>;
 export type AwsIamPolicyVersionList = AwsIamPolicyVersion[];
-const AwsIamPolicyVersionList = /*@__PURE__*/ __L.at(__c32, 4);
 export interface AwsIamPolicyDetails {
   AttachmentCount?: number;
   CreateDate?: string;
@@ -2483,7 +1686,6 @@ export interface AwsIamPolicyDetails {
   PolicyVersionList?: AwsIamPolicyVersion[];
   UpdateDate?: string;
 }
-const AwsIamPolicyDetails = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<AwsIamPolicyDetails>;
 export interface AwsApiGatewayV2RouteSettings {
   DetailedMetricsEnabled?: boolean;
   LoggingLevel?: string;
@@ -2491,18 +1693,10 @@ export interface AwsApiGatewayV2RouteSettings {
   ThrottlingBurstLimit?: number;
   ThrottlingRateLimit?: number;
 }
-const AwsApiGatewayV2RouteSettings = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<AwsApiGatewayV2RouteSettings>;
 export interface AwsApiGatewayAccessLogSettings {
   Format?: string;
   DestinationArn?: string;
 }
-const AwsApiGatewayAccessLogSettings = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<AwsApiGatewayAccessLogSettings>;
 export interface AwsApiGatewayV2StageDetails {
   ClientCertificateId?: string;
   CreatedDate?: string;
@@ -2518,10 +1712,6 @@ export interface AwsApiGatewayV2StageDetails {
   LastDeploymentStatusMessage?: string;
   ApiGatewayManaged?: boolean;
 }
-const AwsApiGatewayV2StageDetails = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<AwsApiGatewayV2StageDetails>;
 export interface AwsCorsConfiguration {
   AllowOrigins?: string[];
   AllowCredentials?: boolean;
@@ -2530,10 +1720,6 @@ export interface AwsCorsConfiguration {
   AllowMethods?: string[];
   AllowHeaders?: string[];
 }
-const AwsCorsConfiguration = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<AwsCorsConfiguration>;
 export interface AwsApiGatewayV2ApiDetails {
   ApiEndpoint?: string;
   ApiId?: string;
@@ -2546,47 +1732,25 @@ export interface AwsApiGatewayV2ApiDetails {
   RouteSelectionExpression?: string;
   CorsConfiguration?: AwsCorsConfiguration;
 }
-const AwsApiGatewayV2ApiDetails = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<AwsApiGatewayV2ApiDetails>;
 export interface AwsDynamoDbTableAttributeDefinition {
   AttributeName?: string;
   AttributeType?: string;
 }
-const AwsDynamoDbTableAttributeDefinition = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<AwsDynamoDbTableAttributeDefinition>;
 export type AwsDynamoDbTableAttributeDefinitionList = AwsDynamoDbTableAttributeDefinition[];
-const AwsDynamoDbTableAttributeDefinitionList = /*@__PURE__*/ __L.at(__c33, 4);
 export interface AwsDynamoDbTableBillingModeSummary {
   BillingMode?: string;
   LastUpdateToPayPerRequestDateTime?: string;
 }
-const AwsDynamoDbTableBillingModeSummary = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<AwsDynamoDbTableBillingModeSummary>;
 export type SizeBytes = number;
 export interface AwsDynamoDbTableKeySchema {
   AttributeName?: string;
   KeyType?: string;
 }
-const AwsDynamoDbTableKeySchema = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<AwsDynamoDbTableKeySchema>;
 export type AwsDynamoDbTableKeySchemaList = AwsDynamoDbTableKeySchema[];
-const AwsDynamoDbTableKeySchemaList = /*@__PURE__*/ __L.at(__c33, 7);
 export interface AwsDynamoDbTableProjection {
   NonKeyAttributes?: string[];
   ProjectionType?: string;
 }
-const AwsDynamoDbTableProjection = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<AwsDynamoDbTableProjection>;
 export interface AwsDynamoDbTableProvisionedThroughput {
   LastDecreaseDateTime?: string;
   LastIncreaseDateTime?: string;
@@ -2594,10 +1758,6 @@ export interface AwsDynamoDbTableProvisionedThroughput {
   ReadCapacityUnits?: number;
   WriteCapacityUnits?: number;
 }
-const AwsDynamoDbTableProvisionedThroughput = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<AwsDynamoDbTableProvisionedThroughput>;
 export interface AwsDynamoDbTableGlobalSecondaryIndex {
   Backfilling?: boolean;
   IndexArn?: string;
@@ -2609,42 +1769,23 @@ export interface AwsDynamoDbTableGlobalSecondaryIndex {
   Projection?: AwsDynamoDbTableProjection;
   ProvisionedThroughput?: AwsDynamoDbTableProvisionedThroughput;
 }
-const AwsDynamoDbTableGlobalSecondaryIndex = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<AwsDynamoDbTableGlobalSecondaryIndex>;
 export type AwsDynamoDbTableGlobalSecondaryIndexList = AwsDynamoDbTableGlobalSecondaryIndex[];
-const AwsDynamoDbTableGlobalSecondaryIndexList = /*@__PURE__*/ __L.at(__c34, 3);
 export interface AwsDynamoDbTableLocalSecondaryIndex {
   IndexArn?: string;
   IndexName?: string;
   KeySchema?: AwsDynamoDbTableKeySchema[];
   Projection?: AwsDynamoDbTableProjection;
 }
-const AwsDynamoDbTableLocalSecondaryIndex = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<AwsDynamoDbTableLocalSecondaryIndex>;
 export type AwsDynamoDbTableLocalSecondaryIndexList = AwsDynamoDbTableLocalSecondaryIndex[];
-const AwsDynamoDbTableLocalSecondaryIndexList = /*@__PURE__*/ __L.at(__c34, 5);
 export interface AwsDynamoDbTableProvisionedThroughputOverride {
   ReadCapacityUnits?: number;
 }
-const AwsDynamoDbTableProvisionedThroughputOverride = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<AwsDynamoDbTableProvisionedThroughputOverride>;
 export interface AwsDynamoDbTableReplicaGlobalSecondaryIndex {
   IndexName?: string;
   ProvisionedThroughputOverride?: AwsDynamoDbTableProvisionedThroughputOverride;
 }
-const AwsDynamoDbTableReplicaGlobalSecondaryIndex = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<AwsDynamoDbTableReplicaGlobalSecondaryIndex>;
 export type AwsDynamoDbTableReplicaGlobalSecondaryIndexList =
   AwsDynamoDbTableReplicaGlobalSecondaryIndex[];
-const AwsDynamoDbTableReplicaGlobalSecondaryIndexList = /*@__PURE__*/ __L.at(__c35, 0);
 export interface AwsDynamoDbTableReplica {
   GlobalSecondaryIndexes?: AwsDynamoDbTableReplicaGlobalSecondaryIndex[];
   KmsMasterKeyId?: string;
@@ -2653,40 +1794,23 @@ export interface AwsDynamoDbTableReplica {
   ReplicaStatus?: string;
   ReplicaStatusDescription?: string;
 }
-const AwsDynamoDbTableReplica = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<AwsDynamoDbTableReplica>;
 export type AwsDynamoDbTableReplicaList = AwsDynamoDbTableReplica[];
-const AwsDynamoDbTableReplicaList = /*@__PURE__*/ __L.at(__c35, 2);
 export interface AwsDynamoDbTableRestoreSummary {
   SourceBackupArn?: string;
   SourceTableArn?: string;
   RestoreDateTime?: string;
   RestoreInProgress?: boolean;
 }
-const AwsDynamoDbTableRestoreSummary = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<AwsDynamoDbTableRestoreSummary>;
 export interface AwsDynamoDbTableSseDescription {
   InaccessibleEncryptionDateTime?: string;
   Status?: string;
   SseType?: string;
   KmsMasterKeyArn?: string;
 }
-const AwsDynamoDbTableSseDescription = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<AwsDynamoDbTableSseDescription>;
 export interface AwsDynamoDbTableStreamSpecification {
   StreamEnabled?: boolean;
   StreamViewType?: string;
 }
-const AwsDynamoDbTableStreamSpecification = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<AwsDynamoDbTableStreamSpecification>;
 export interface AwsDynamoDbTableDetails {
   AttributeDefinitions?: AwsDynamoDbTableAttributeDefinition[];
   BillingModeSummary?: AwsDynamoDbTableBillingModeSummary;
@@ -2709,10 +1833,6 @@ export interface AwsDynamoDbTableDetails {
   TableStatus?: string;
   DeletionProtectionEnabled?: boolean;
 }
-const AwsDynamoDbTableDetails = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<AwsDynamoDbTableDetails>;
 export interface AwsApiGatewayMethodSettings {
   MetricsEnabled?: boolean;
   LoggingLevel?: string;
@@ -2727,22 +1847,13 @@ export interface AwsApiGatewayMethodSettings {
   HttpMethod?: string;
   ResourcePath?: string;
 }
-const AwsApiGatewayMethodSettings = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<AwsApiGatewayMethodSettings>;
 export type AwsApiGatewayMethodSettingsList = AwsApiGatewayMethodSettings[];
-const AwsApiGatewayMethodSettingsList = /*@__PURE__*/ __L.at(__c36, 0);
 export interface AwsApiGatewayCanarySettings {
   PercentTraffic?: number;
   DeploymentId?: string;
   StageVariableOverrides?: { [key: string]: string | undefined };
   UseStageCache?: boolean;
 }
-const AwsApiGatewayCanarySettings = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<AwsApiGatewayCanarySettings>;
 export interface AwsApiGatewayStageDetails {
   DeploymentId?: string;
   ClientCertificateId?: string;
@@ -2761,17 +1872,9 @@ export interface AwsApiGatewayStageDetails {
   LastUpdatedDate?: string;
   WebAclArn?: string;
 }
-const AwsApiGatewayStageDetails = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<AwsApiGatewayStageDetails>;
 export interface AwsApiGatewayEndpointConfiguration {
   Types?: string[];
 }
-const AwsApiGatewayEndpointConfiguration = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<AwsApiGatewayEndpointConfiguration>;
 export interface AwsApiGatewayRestApiDetails {
   Id?: string;
   Name?: string;
@@ -2783,10 +1886,6 @@ export interface AwsApiGatewayRestApiDetails {
   ApiKeySource?: string;
   EndpointConfiguration?: AwsApiGatewayEndpointConfiguration;
 }
-const AwsApiGatewayRestApiDetails = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<AwsApiGatewayRestApiDetails>;
 export interface AwsCloudTrailTrailDetails {
   CloudWatchLogsLogGroupArn?: string;
   CloudWatchLogsRoleArn?: string;
@@ -2804,10 +1903,6 @@ export interface AwsCloudTrailTrailDetails {
   SnsTopicName?: string;
   TrailArn?: string;
 }
-const AwsCloudTrailTrailDetails = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<AwsCloudTrailTrailDetails>;
 export interface AwsSsmComplianceSummary {
   Status?: string;
   CompliantCriticalCount?: number;
@@ -2828,30 +1923,17 @@ export interface AwsSsmComplianceSummary {
   NonCompliantUnspecifiedCount?: number;
   PatchGroup?: string;
 }
-const AwsSsmComplianceSummary = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<AwsSsmComplianceSummary>;
 export interface AwsSsmPatch {
   ComplianceSummary?: AwsSsmComplianceSummary;
 }
-const AwsSsmPatch = /*@__PURE__*/ __L.at(__c36, 7) as any as S.Schema<AwsSsmPatch>;
 export interface AwsSsmPatchComplianceDetails {
   Patch?: AwsSsmPatch;
 }
-const AwsSsmPatchComplianceDetails = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<AwsSsmPatchComplianceDetails>;
 export interface AwsCertificateManagerCertificateResourceRecord {
   Name?: string;
   Type?: string;
   Value?: string;
 }
-const AwsCertificateManagerCertificateResourceRecord = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<AwsCertificateManagerCertificateResourceRecord>;
 export interface AwsCertificateManagerCertificateDomainValidationOption {
   DomainName?: string;
   ResourceRecord?: AwsCertificateManagerCertificateResourceRecord;
@@ -2860,50 +1942,27 @@ export interface AwsCertificateManagerCertificateDomainValidationOption {
   ValidationMethod?: string;
   ValidationStatus?: string;
 }
-const AwsCertificateManagerCertificateDomainValidationOption = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<AwsCertificateManagerCertificateDomainValidationOption>;
 export type AwsCertificateManagerCertificateDomainValidationOptions =
   AwsCertificateManagerCertificateDomainValidationOption[];
-const AwsCertificateManagerCertificateDomainValidationOptions = /*@__PURE__*/ __L.at(__c37, 3);
 export interface AwsCertificateManagerCertificateExtendedKeyUsage {
   Name?: string;
   OId?: string;
 }
-const AwsCertificateManagerCertificateExtendedKeyUsage = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<AwsCertificateManagerCertificateExtendedKeyUsage>;
 export type AwsCertificateManagerCertificateExtendedKeyUsages =
   AwsCertificateManagerCertificateExtendedKeyUsage[];
-const AwsCertificateManagerCertificateExtendedKeyUsages = /*@__PURE__*/ __L.at(__c37, 5);
 export interface AwsCertificateManagerCertificateKeyUsage {
   Name?: string;
 }
-const AwsCertificateManagerCertificateKeyUsage = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<AwsCertificateManagerCertificateKeyUsage>;
 export type AwsCertificateManagerCertificateKeyUsages = AwsCertificateManagerCertificateKeyUsage[];
-const AwsCertificateManagerCertificateKeyUsages = /*@__PURE__*/ __L.at(__c37, 7);
 export interface AwsCertificateManagerCertificateOptions {
   CertificateTransparencyLoggingPreference?: string;
 }
-const AwsCertificateManagerCertificateOptions = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<AwsCertificateManagerCertificateOptions>;
 export interface AwsCertificateManagerCertificateRenewalSummary {
   DomainValidationOptions?: AwsCertificateManagerCertificateDomainValidationOption[];
   RenewalStatus?: string;
   RenewalStatusReason?: string;
   UpdatedAt?: string;
 }
-const AwsCertificateManagerCertificateRenewalSummary = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<AwsCertificateManagerCertificateRenewalSummary>;
 export interface AwsCertificateManagerCertificateDetails {
   CertificateAuthorityArn?: string;
   CreatedAt?: string;
@@ -2929,111 +1988,61 @@ export interface AwsCertificateManagerCertificateDetails {
   SubjectAlternativeNames?: string[];
   Type?: string;
 }
-const AwsCertificateManagerCertificateDetails = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<AwsCertificateManagerCertificateDetails>;
 export interface AwsRedshiftClusterClusterNode {
   NodeRole?: string;
   PrivateIpAddress?: string;
   PublicIpAddress?: string;
 }
-const AwsRedshiftClusterClusterNode = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<AwsRedshiftClusterClusterNode>;
 export type AwsRedshiftClusterClusterNodes = AwsRedshiftClusterClusterNode[];
-const AwsRedshiftClusterClusterNodes = /*@__PURE__*/ __L.at(__c38, 4);
 export interface AwsRedshiftClusterClusterParameterStatus {
   ParameterName?: string;
   ParameterApplyStatus?: string;
   ParameterApplyErrorDescription?: string;
 }
-const AwsRedshiftClusterClusterParameterStatus = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<AwsRedshiftClusterClusterParameterStatus>;
 export type AwsRedshiftClusterClusterParameterStatusList =
   AwsRedshiftClusterClusterParameterStatus[];
-const AwsRedshiftClusterClusterParameterStatusList = /*@__PURE__*/ __L.at(__c38, 6);
 export interface AwsRedshiftClusterClusterParameterGroup {
   ClusterParameterStatusList?: AwsRedshiftClusterClusterParameterStatus[];
   ParameterApplyStatus?: string;
   ParameterGroupName?: string;
 }
-const AwsRedshiftClusterClusterParameterGroup = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<AwsRedshiftClusterClusterParameterGroup>;
 export type AwsRedshiftClusterClusterParameterGroups = AwsRedshiftClusterClusterParameterGroup[];
-const AwsRedshiftClusterClusterParameterGroups = /*@__PURE__*/ __L.at(__c39, 0);
 export interface AwsRedshiftClusterClusterSecurityGroup {
   ClusterSecurityGroupName?: string;
   Status?: string;
 }
-const AwsRedshiftClusterClusterSecurityGroup = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<AwsRedshiftClusterClusterSecurityGroup>;
 export type AwsRedshiftClusterClusterSecurityGroups = AwsRedshiftClusterClusterSecurityGroup[];
-const AwsRedshiftClusterClusterSecurityGroups = /*@__PURE__*/ __L.at(__c39, 2);
 export interface AwsRedshiftClusterClusterSnapshotCopyStatus {
   DestinationRegion?: string;
   ManualSnapshotRetentionPeriod?: number;
   RetentionPeriod?: number;
   SnapshotCopyGrantName?: string;
 }
-const AwsRedshiftClusterClusterSnapshotCopyStatus = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<AwsRedshiftClusterClusterSnapshotCopyStatus>;
 export interface AwsRedshiftClusterDeferredMaintenanceWindow {
   DeferMaintenanceEndTime?: string;
   DeferMaintenanceIdentifier?: string;
   DeferMaintenanceStartTime?: string;
 }
-const AwsRedshiftClusterDeferredMaintenanceWindow = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<AwsRedshiftClusterDeferredMaintenanceWindow>;
 export type AwsRedshiftClusterDeferredMaintenanceWindows =
   AwsRedshiftClusterDeferredMaintenanceWindow[];
-const AwsRedshiftClusterDeferredMaintenanceWindows = /*@__PURE__*/ __L.at(__c39, 5);
 export interface AwsRedshiftClusterElasticIpStatus {
   ElasticIp?: string;
   Status?: string;
 }
-const AwsRedshiftClusterElasticIpStatus = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<AwsRedshiftClusterElasticIpStatus>;
 export interface AwsRedshiftClusterEndpoint {
   Address?: string;
   Port?: number;
 }
-const AwsRedshiftClusterEndpoint = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<AwsRedshiftClusterEndpoint>;
 export interface AwsRedshiftClusterHsmStatus {
   HsmClientCertificateIdentifier?: string;
   HsmConfigurationIdentifier?: string;
   Status?: string;
 }
-const AwsRedshiftClusterHsmStatus = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<AwsRedshiftClusterHsmStatus>;
 export interface AwsRedshiftClusterIamRole {
   ApplyStatus?: string;
   IamRoleArn?: string;
 }
-const AwsRedshiftClusterIamRole = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<AwsRedshiftClusterIamRole>;
 export type AwsRedshiftClusterIamRoles = AwsRedshiftClusterIamRole[];
-const AwsRedshiftClusterIamRoles = /*@__PURE__*/ __L.at(__c40, 2);
 export interface AwsRedshiftClusterPendingModifiedValues {
   AutomatedSnapshotRetentionPeriod?: number;
   ClusterIdentifier?: string;
@@ -3047,18 +2056,10 @@ export interface AwsRedshiftClusterPendingModifiedValues {
   NumberOfNodes?: number;
   PubliclyAccessible?: boolean;
 }
-const AwsRedshiftClusterPendingModifiedValues = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<AwsRedshiftClusterPendingModifiedValues>;
 export interface AwsRedshiftClusterResizeInfo {
   AllowCancelResize?: boolean;
   ResizeType?: string;
 }
-const AwsRedshiftClusterResizeInfo = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<AwsRedshiftClusterResizeInfo>;
 export interface AwsRedshiftClusterRestoreStatus {
   CurrentRestoreRateInMegaBytesPerSecond?: number;
   ElapsedTimeInSeconds?: number;
@@ -3067,20 +2068,11 @@ export interface AwsRedshiftClusterRestoreStatus {
   SnapshotSizeInMegaBytes?: number;
   Status?: string;
 }
-const AwsRedshiftClusterRestoreStatus = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<AwsRedshiftClusterRestoreStatus>;
 export interface AwsRedshiftClusterVpcSecurityGroup {
   Status?: string;
   VpcSecurityGroupId?: string;
 }
-const AwsRedshiftClusterVpcSecurityGroup = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<AwsRedshiftClusterVpcSecurityGroup>;
 export type AwsRedshiftClusterVpcSecurityGroups = AwsRedshiftClusterVpcSecurityGroup[];
-const AwsRedshiftClusterVpcSecurityGroups = /*@__PURE__*/ __L.at(__c40, 7);
 export interface AwsRedshiftClusterLoggingStatus {
   BucketName?: string;
   LastFailureMessage?: string;
@@ -3089,10 +2081,6 @@ export interface AwsRedshiftClusterLoggingStatus {
   LoggingEnabled?: boolean;
   S3KeyPrefix?: string;
 }
-const AwsRedshiftClusterLoggingStatus = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<AwsRedshiftClusterLoggingStatus>;
 export interface AwsRedshiftClusterDetails {
   AllowVersionUpgrade?: boolean;
   AutomatedSnapshotRetentionPeriod?: number;
@@ -3139,21 +2127,12 @@ export interface AwsRedshiftClusterDetails {
   VpcSecurityGroups?: AwsRedshiftClusterVpcSecurityGroup[];
   LoggingStatus?: AwsRedshiftClusterLoggingStatus;
 }
-const AwsRedshiftClusterDetails = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<AwsRedshiftClusterDetails>;
 export interface AwsElbLoadBalancerBackendServerDescription {
   InstancePort?: number;
   PolicyNames?: string[];
 }
-const AwsElbLoadBalancerBackendServerDescription = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<AwsElbLoadBalancerBackendServerDescription>;
 export type AwsElbLoadBalancerBackendServerDescriptions =
   AwsElbLoadBalancerBackendServerDescription[];
-const AwsElbLoadBalancerBackendServerDescriptions = /*@__PURE__*/ __L.at(__c41, 3);
 export interface AwsElbLoadBalancerHealthCheck {
   HealthyThreshold?: number;
   Interval?: number;
@@ -3161,19 +2140,10 @@ export interface AwsElbLoadBalancerHealthCheck {
   Timeout?: number;
   UnhealthyThreshold?: number;
 }
-const AwsElbLoadBalancerHealthCheck = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<AwsElbLoadBalancerHealthCheck>;
 export interface AwsElbLoadBalancerInstance {
   InstanceId?: string;
 }
-const AwsElbLoadBalancerInstance = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<AwsElbLoadBalancerInstance>;
 export type AwsElbLoadBalancerInstances = AwsElbLoadBalancerInstance[];
-const AwsElbLoadBalancerInstances = /*@__PURE__*/ __L.at(__c41, 6);
 export interface AwsElbLoadBalancerListener {
   InstancePort?: number;
   InstanceProtocol?: string;
@@ -3181,58 +2151,32 @@ export interface AwsElbLoadBalancerListener {
   Protocol?: string;
   SslCertificateId?: string;
 }
-const AwsElbLoadBalancerListener = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<AwsElbLoadBalancerListener>;
 export interface AwsElbLoadBalancerListenerDescription {
   Listener?: AwsElbLoadBalancerListener;
   PolicyNames?: string[];
 }
-const AwsElbLoadBalancerListenerDescription = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<AwsElbLoadBalancerListenerDescription>;
 export type AwsElbLoadBalancerListenerDescriptions = AwsElbLoadBalancerListenerDescription[];
-const AwsElbLoadBalancerListenerDescriptions = /*@__PURE__*/ __L.at(__c42, 1);
 export interface AwsElbLoadBalancerAccessLog {
   EmitInterval?: number;
   Enabled?: boolean;
   S3BucketName?: string;
   S3BucketPrefix?: string;
 }
-const AwsElbLoadBalancerAccessLog = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<AwsElbLoadBalancerAccessLog>;
 export interface AwsElbLoadBalancerConnectionDraining {
   Enabled?: boolean;
   Timeout?: number;
 }
-const AwsElbLoadBalancerConnectionDraining = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<AwsElbLoadBalancerConnectionDraining>;
 export interface AwsElbLoadBalancerConnectionSettings {
   IdleTimeout?: number;
 }
-const AwsElbLoadBalancerConnectionSettings = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<AwsElbLoadBalancerConnectionSettings>;
 export interface AwsElbLoadBalancerCrossZoneLoadBalancing {
   Enabled?: boolean;
 }
-const AwsElbLoadBalancerCrossZoneLoadBalancing =
-  AwsElasticsearchDomainNodeToNodeEncryptionOptions as any as S.Schema<AwsElbLoadBalancerCrossZoneLoadBalancing>;
 export interface AwsElbLoadBalancerAdditionalAttribute {
   Key?: string;
   Value?: string;
 }
-const AwsElbLoadBalancerAdditionalAttribute =
-  AwsElbv2LoadBalancerAttribute as any as S.Schema<AwsElbLoadBalancerAdditionalAttribute>;
 export type AwsElbLoadBalancerAdditionalAttributeList = AwsElbLoadBalancerAdditionalAttribute[];
-const AwsElbLoadBalancerAdditionalAttributeList = /*@__PURE__*/ __L.at(__c42, 5);
 export interface AwsElbLoadBalancerAttributes {
   AccessLog?: AwsElbLoadBalancerAccessLog;
   ConnectionDraining?: AwsElbLoadBalancerConnectionDraining;
@@ -3240,47 +2184,25 @@ export interface AwsElbLoadBalancerAttributes {
   CrossZoneLoadBalancing?: AwsElbLoadBalancerCrossZoneLoadBalancing;
   AdditionalAttributes?: AwsElbLoadBalancerAdditionalAttribute[];
 }
-const AwsElbLoadBalancerAttributes = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<AwsElbLoadBalancerAttributes>;
 export interface AwsElbAppCookieStickinessPolicy {
   CookieName?: string;
   PolicyName?: string;
 }
-const AwsElbAppCookieStickinessPolicy = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<AwsElbAppCookieStickinessPolicy>;
 export type AwsElbAppCookieStickinessPolicies = AwsElbAppCookieStickinessPolicy[];
-const AwsElbAppCookieStickinessPolicies = /*@__PURE__*/ __L.at(__c43, 0);
 export interface AwsElbLbCookieStickinessPolicy {
   CookieExpirationPeriod?: number;
   PolicyName?: string;
 }
-const AwsElbLbCookieStickinessPolicy = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<AwsElbLbCookieStickinessPolicy>;
 export type AwsElbLbCookieStickinessPolicies = AwsElbLbCookieStickinessPolicy[];
-const AwsElbLbCookieStickinessPolicies = /*@__PURE__*/ __L.at(__c43, 2);
 export interface AwsElbLoadBalancerPolicies {
   AppCookieStickinessPolicies?: AwsElbAppCookieStickinessPolicy[];
   LbCookieStickinessPolicies?: AwsElbLbCookieStickinessPolicy[];
   OtherPolicies?: string[];
 }
-const AwsElbLoadBalancerPolicies = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<AwsElbLoadBalancerPolicies>;
 export interface AwsElbLoadBalancerSourceSecurityGroup {
   GroupName?: string;
   OwnerAlias?: string;
 }
-const AwsElbLoadBalancerSourceSecurityGroup = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<AwsElbLoadBalancerSourceSecurityGroup>;
 export interface AwsElbLoadBalancerDetails {
   AvailabilityZones?: string[];
   BackendServerDescriptions?: AwsElbLoadBalancerBackendServerDescription[];
@@ -3300,15 +2222,10 @@ export interface AwsElbLoadBalancerDetails {
   Subnets?: string[];
   VpcId?: string;
 }
-const AwsElbLoadBalancerDetails = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<AwsElbLoadBalancerDetails>;
 export interface AwsIamGroupPolicy {
   PolicyName?: string;
 }
 export type AwsIamGroupPolicyList = AwsIamGroupPolicy[];
-const AwsIamGroupPolicyList = AwsIamUserPolicyList as any as S.Schema<AwsIamGroupPolicyList>;
 export interface AwsIamGroupDetails {
   AttachedManagedPolicies?: AwsIamAttachedManagedPolicy[];
   CreateDate?: string;
@@ -3317,7 +2234,6 @@ export interface AwsIamGroupDetails {
   GroupPolicyList?: AwsIamGroupPolicy[];
   Path?: string;
 }
-const AwsIamGroupDetails = /*@__PURE__*/ __L.at(__c43, 6) as any as S.Schema<AwsIamGroupDetails>;
 export type AwsIamRoleAssumeRolePolicyDocument = string;
 export interface AwsIamInstanceProfileRole {
   Arn?: string;
@@ -3327,12 +2243,7 @@ export interface AwsIamInstanceProfileRole {
   RoleId?: string;
   RoleName?: string;
 }
-const AwsIamInstanceProfileRole = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<AwsIamInstanceProfileRole>;
 export type AwsIamInstanceProfileRoles = AwsIamInstanceProfileRole[];
-const AwsIamInstanceProfileRoles = /*@__PURE__*/ __L.at(__c44, 0);
 export interface AwsIamInstanceProfile {
   Arn?: string;
   CreateDate?: string;
@@ -3341,17 +2252,11 @@ export interface AwsIamInstanceProfile {
   Path?: string;
   Roles?: AwsIamInstanceProfileRole[];
 }
-const AwsIamInstanceProfile = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<AwsIamInstanceProfile>;
 export type AwsIamInstanceProfileList = AwsIamInstanceProfile[];
-const AwsIamInstanceProfileList = /*@__PURE__*/ __L.at(__c44, 2);
 export interface AwsIamRolePolicy {
   PolicyName?: string;
 }
 export type AwsIamRolePolicyList = AwsIamRolePolicy[];
-const AwsIamRolePolicyList = AwsIamUserPolicyList as any as S.Schema<AwsIamRolePolicyList>;
 export interface AwsIamRoleDetails {
   AssumeRolePolicyDocument?: string;
   AttachedManagedPolicies?: AwsIamAttachedManagedPolicy[];
@@ -3364,7 +2269,6 @@ export interface AwsIamRoleDetails {
   MaxSessionDuration?: number;
   Path?: string;
 }
-const AwsIamRoleDetails = /*@__PURE__*/ __L.at(__c44, 3) as any as S.Schema<AwsIamRoleDetails>;
 export interface AwsKmsKeyDetails {
   AWSAccountId?: string;
   CreationDate?: number;
@@ -3375,66 +2279,36 @@ export interface AwsKmsKeyDetails {
   Description?: string;
   KeyRotationStatus?: boolean;
 }
-const AwsKmsKeyDetails = /*@__PURE__*/ __L.at(__c44, 4) as any as S.Schema<AwsKmsKeyDetails>;
 export interface AwsLambdaFunctionCode {
   S3Bucket?: string;
   S3Key?: string;
   S3ObjectVersion?: string;
   ZipFile?: string;
 }
-const AwsLambdaFunctionCode = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<AwsLambdaFunctionCode>;
 export interface AwsLambdaFunctionDeadLetterConfig {
   TargetArn?: string;
 }
-const AwsLambdaFunctionDeadLetterConfig = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<AwsLambdaFunctionDeadLetterConfig>;
 export interface AwsLambdaFunctionEnvironmentError {
   ErrorCode?: string;
   Message?: string;
 }
-const AwsLambdaFunctionEnvironmentError = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<AwsLambdaFunctionEnvironmentError>;
 export interface AwsLambdaFunctionEnvironment {
   Variables?: { [key: string]: string | undefined };
   Error?: AwsLambdaFunctionEnvironmentError;
 }
-const AwsLambdaFunctionEnvironment = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<AwsLambdaFunctionEnvironment>;
 export interface AwsLambdaFunctionLayer {
   Arn?: string;
   CodeSize?: number;
 }
-const AwsLambdaFunctionLayer = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<AwsLambdaFunctionLayer>;
 export type AwsLambdaFunctionLayerList = AwsLambdaFunctionLayer[];
-const AwsLambdaFunctionLayerList = /*@__PURE__*/ __L.at(__c45, 2);
 export interface AwsLambdaFunctionTracingConfig {
   Mode?: string;
 }
-const AwsLambdaFunctionTracingConfig = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<AwsLambdaFunctionTracingConfig>;
 export interface AwsLambdaFunctionVpcConfig {
   SecurityGroupIds?: string[];
   SubnetIds?: string[];
   VpcId?: string;
 }
-const AwsLambdaFunctionVpcConfig = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<AwsLambdaFunctionVpcConfig>;
 export interface AwsLambdaFunctionDetails {
   Code?: AwsLambdaFunctionCode;
   CodeSha256?: string;
@@ -3457,76 +2331,42 @@ export interface AwsLambdaFunctionDetails {
   Architectures?: string[];
   PackageType?: string;
 }
-const AwsLambdaFunctionDetails = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<AwsLambdaFunctionDetails>;
 export type AwsLambdaLayerVersionNumber = number;
 export interface AwsLambdaLayerVersionDetails {
   Version?: number;
   CompatibleRuntimes?: string[];
   CreatedDate?: string;
 }
-const AwsLambdaLayerVersionDetails = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<AwsLambdaLayerVersionDetails>;
 export interface AwsRdsDbInstanceAssociatedRole {
   RoleArn?: string;
   FeatureName?: string;
   Status?: string;
 }
-const AwsRdsDbInstanceAssociatedRole = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<AwsRdsDbInstanceAssociatedRole>;
 export type AwsRdsDbInstanceAssociatedRoles = AwsRdsDbInstanceAssociatedRole[];
-const AwsRdsDbInstanceAssociatedRoles = /*@__PURE__*/ __L.at(__c46, 0);
 export interface AwsRdsDbInstanceEndpoint {
   Address?: string;
   Port?: number;
   HostedZoneId?: string;
 }
-const AwsRdsDbInstanceEndpoint = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<AwsRdsDbInstanceEndpoint>;
 export interface AwsRdsDbInstanceVpcSecurityGroup {
   VpcSecurityGroupId?: string;
   Status?: string;
 }
-const AwsRdsDbInstanceVpcSecurityGroup = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<AwsRdsDbInstanceVpcSecurityGroup>;
 export type AwsRdsDbInstanceVpcSecurityGroups = AwsRdsDbInstanceVpcSecurityGroup[];
-const AwsRdsDbInstanceVpcSecurityGroups = /*@__PURE__*/ __L.at(__c46, 3);
 export interface AwsRdsDbParameterGroup {
   DbParameterGroupName?: string;
   ParameterApplyStatus?: string;
 }
-const AwsRdsDbParameterGroup = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<AwsRdsDbParameterGroup>;
 export type AwsRdsDbParameterGroups = AwsRdsDbParameterGroup[];
-const AwsRdsDbParameterGroups = /*@__PURE__*/ __L.at(__c46, 5);
 export interface AwsRdsDbSubnetGroupSubnetAvailabilityZone {
   Name?: string;
 }
-const AwsRdsDbSubnetGroupSubnetAvailabilityZone =
-  AwsCertificateManagerCertificateKeyUsage as any as S.Schema<AwsRdsDbSubnetGroupSubnetAvailabilityZone>;
 export interface AwsRdsDbSubnetGroupSubnet {
   SubnetIdentifier?: string;
   SubnetAvailabilityZone?: AwsRdsDbSubnetGroupSubnetAvailabilityZone;
   SubnetStatus?: string;
 }
-const AwsRdsDbSubnetGroupSubnet = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<AwsRdsDbSubnetGroupSubnet>;
 export type AwsRdsDbSubnetGroupSubnets = AwsRdsDbSubnetGroupSubnet[];
-const AwsRdsDbSubnetGroupSubnets = /*@__PURE__*/ __L.at(__c46, 7);
 export interface AwsRdsDbSubnetGroup {
   DbSubnetGroupName?: string;
   DbSubnetGroupDescription?: string;
@@ -3535,25 +2375,15 @@ export interface AwsRdsDbSubnetGroup {
   Subnets?: AwsRdsDbSubnetGroupSubnet[];
   DbSubnetGroupArn?: string;
 }
-const AwsRdsDbSubnetGroup = /*@__PURE__*/ __L.at(__c47, 0) as any as S.Schema<AwsRdsDbSubnetGroup>;
 export interface AwsRdsPendingCloudWatchLogsExports {
   LogTypesToEnable?: string[];
   LogTypesToDisable?: string[];
 }
-const AwsRdsPendingCloudWatchLogsExports = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<AwsRdsPendingCloudWatchLogsExports>;
 export interface AwsRdsDbProcessorFeature {
   Name?: string;
   Value?: string;
 }
-const AwsRdsDbProcessorFeature = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<AwsRdsDbProcessorFeature>;
 export type AwsRdsDbProcessorFeatures = AwsRdsDbProcessorFeature[];
-const AwsRdsDbProcessorFeatures = /*@__PURE__*/ __L.at(__c47, 3);
 export interface AwsRdsDbPendingModifiedValues {
   DbInstanceClass?: string;
   AllocatedStorage?: number;
@@ -3571,41 +2401,25 @@ export interface AwsRdsDbPendingModifiedValues {
   PendingCloudWatchLogsExports?: AwsRdsPendingCloudWatchLogsExports;
   ProcessorFeatures?: AwsRdsDbProcessorFeature[];
 }
-const AwsRdsDbPendingModifiedValues = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<AwsRdsDbPendingModifiedValues>;
 export interface AwsRdsDbOptionGroupMembership {
   OptionGroupName?: string;
   Status?: string;
 }
-const AwsRdsDbOptionGroupMembership = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<AwsRdsDbOptionGroupMembership>;
 export type AwsRdsDbOptionGroupMemberships = AwsRdsDbOptionGroupMembership[];
-const AwsRdsDbOptionGroupMemberships = /*@__PURE__*/ __L.at(__c47, 6);
 export interface AwsRdsDbStatusInfo {
   StatusType?: string;
   Normal?: boolean;
   Status?: string;
   Message?: string;
 }
-const AwsRdsDbStatusInfo = /*@__PURE__*/ __L.at(__c47, 7) as any as S.Schema<AwsRdsDbStatusInfo>;
 export type AwsRdsDbStatusInfos = AwsRdsDbStatusInfo[];
-const AwsRdsDbStatusInfos = /*@__PURE__*/ __L.at(__c48, 0);
 export interface AwsRdsDbDomainMembership {
   Domain?: string;
   Status?: string;
   Fqdn?: string;
   IamRoleName?: string;
 }
-const AwsRdsDbDomainMembership = /*@__PURE__*/ __L.at(
-  __c48,
-  1,
-) as any as S.Schema<AwsRdsDbDomainMembership>;
 export type AwsRdsDbDomainMemberships = AwsRdsDbDomainMembership[];
-const AwsRdsDbDomainMemberships = /*@__PURE__*/ __L.at(__c48, 2);
 export interface AwsRdsDbInstanceDetails {
   AssociatedRoles?: AwsRdsDbInstanceAssociatedRole[];
   CACertificateIdentifier?: string;
@@ -3665,20 +2479,11 @@ export interface AwsRdsDbInstanceDetails {
   ListenerEndpoint?: AwsRdsDbInstanceEndpoint;
   MaxAllocatedStorage?: number;
 }
-const AwsRdsDbInstanceDetails = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<AwsRdsDbInstanceDetails>;
 export interface AwsSnsTopicSubscription {
   Endpoint?: string;
   Protocol?: string;
 }
-const AwsSnsTopicSubscription = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<AwsSnsTopicSubscription>;
 export type AwsSnsTopicSubscriptionList = AwsSnsTopicSubscription[];
-const AwsSnsTopicSubscriptionList = /*@__PURE__*/ __L.at(__c48, 5);
 export interface AwsSnsTopicDetails {
   KmsMasterKeyId?: string;
   Subscription?: AwsSnsTopicSubscription[];
@@ -3692,28 +2497,22 @@ export interface AwsSnsTopicDetails {
   HttpSuccessFeedbackRoleArn?: string;
   HttpFailureFeedbackRoleArn?: string;
 }
-const AwsSnsTopicDetails = /*@__PURE__*/ __L.at(__c48, 6) as any as S.Schema<AwsSnsTopicDetails>;
 export interface AwsSqsQueueDetails {
   KmsDataKeyReusePeriodSeconds?: number;
   KmsMasterKeyId?: string;
   QueueName?: string;
   DeadLetterTargetArn?: string;
 }
-const AwsSqsQueueDetails = /*@__PURE__*/ __L.at(__c48, 7) as any as S.Schema<AwsSqsQueueDetails>;
 export interface WafAction {
   Type?: string;
 }
-const WafAction = /*@__PURE__*/ __L.at(__c49, 0) as any as S.Schema<WafAction>;
 export interface WafExcludedRule {
   RuleId?: string;
 }
-const WafExcludedRule = /*@__PURE__*/ __L.at(__c49, 1) as any as S.Schema<WafExcludedRule>;
 export type WafExcludedRuleList = WafExcludedRule[];
-const WafExcludedRuleList = /*@__PURE__*/ __L.at(__c49, 2);
 export interface WafOverrideAction {
   Type?: string;
 }
-const WafOverrideAction = WafAction as any as S.Schema<WafOverrideAction>;
 export interface AwsWafWebAclRule {
   Action?: WafAction;
   ExcludedRules?: WafExcludedRule[];
@@ -3722,16 +2521,13 @@ export interface AwsWafWebAclRule {
   RuleId?: string;
   Type?: string;
 }
-const AwsWafWebAclRule = /*@__PURE__*/ __L.at(__c49, 3) as any as S.Schema<AwsWafWebAclRule>;
 export type AwsWafWebAclRuleList = AwsWafWebAclRule[];
-const AwsWafWebAclRuleList = /*@__PURE__*/ __L.at(__c49, 4);
 export interface AwsWafWebAclDetails {
   Name?: string;
   DefaultAction?: string;
   Rules?: AwsWafWebAclRule[];
   WebAclId?: string;
 }
-const AwsWafWebAclDetails = /*@__PURE__*/ __L.at(__c49, 5) as any as S.Schema<AwsWafWebAclDetails>;
 export interface AwsRdsDbSnapshotDetails {
   DbSnapshotIdentifier?: string;
   DbInstanceIdentifier?: string;
@@ -3761,21 +2557,12 @@ export interface AwsRdsDbSnapshotDetails {
   ProcessorFeatures?: AwsRdsDbProcessorFeature[];
   DbiResourceId?: string;
 }
-const AwsRdsDbSnapshotDetails = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<AwsRdsDbSnapshotDetails>;
 export interface AwsRdsDbClusterSnapshotDbClusterSnapshotAttribute {
   AttributeName?: string;
   AttributeValues?: string[];
 }
-const AwsRdsDbClusterSnapshotDbClusterSnapshotAttribute = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<AwsRdsDbClusterSnapshotDbClusterSnapshotAttribute>;
 export type AwsRdsDbClusterSnapshotDbClusterSnapshotAttributes =
   AwsRdsDbClusterSnapshotDbClusterSnapshotAttribute[];
-const AwsRdsDbClusterSnapshotDbClusterSnapshotAttributes = /*@__PURE__*/ __L.at(__c50, 0);
 export interface AwsRdsDbClusterSnapshotDetails {
   AvailabilityZones?: string[];
   SnapshotCreateTime?: string;
@@ -3797,42 +2584,23 @@ export interface AwsRdsDbClusterSnapshotDetails {
   IamDatabaseAuthenticationEnabled?: boolean;
   DbClusterSnapshotAttributes?: AwsRdsDbClusterSnapshotDbClusterSnapshotAttribute[];
 }
-const AwsRdsDbClusterSnapshotDetails = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<AwsRdsDbClusterSnapshotDetails>;
 export interface AwsRdsDbClusterAssociatedRole {
   RoleArn?: string;
   Status?: string;
 }
-const AwsRdsDbClusterAssociatedRole = /*@__PURE__*/ __L.at(
-  __c50,
-  2,
-) as any as S.Schema<AwsRdsDbClusterAssociatedRole>;
 export type AwsRdsDbClusterAssociatedRoles = AwsRdsDbClusterAssociatedRole[];
-const AwsRdsDbClusterAssociatedRoles = /*@__PURE__*/ __L.at(__c50, 3);
 export interface AwsRdsDbClusterOptionGroupMembership {
   DbClusterOptionGroupName?: string;
   Status?: string;
 }
-const AwsRdsDbClusterOptionGroupMembership = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<AwsRdsDbClusterOptionGroupMembership>;
 export type AwsRdsDbClusterOptionGroupMemberships = AwsRdsDbClusterOptionGroupMembership[];
-const AwsRdsDbClusterOptionGroupMemberships = /*@__PURE__*/ __L.at(__c50, 5);
 export interface AwsRdsDbClusterMember {
   IsClusterWriter?: boolean;
   PromotionTier?: number;
   DbInstanceIdentifier?: string;
   DbClusterParameterGroupStatus?: string;
 }
-const AwsRdsDbClusterMember = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<AwsRdsDbClusterMember>;
 export type AwsRdsDbClusterMembers = AwsRdsDbClusterMember[];
-const AwsRdsDbClusterMembers = /*@__PURE__*/ __L.at(__c50, 7);
 export interface AwsRdsDbClusterDetails {
   AllocatedStorage?: number;
   AvailabilityZones?: string[];
@@ -3873,20 +2641,11 @@ export interface AwsRdsDbClusterDetails {
   IamDatabaseAuthenticationEnabled?: boolean;
   AutoMinorVersionUpgrade?: boolean;
 }
-const AwsRdsDbClusterDetails = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<AwsRdsDbClusterDetails>;
 export interface AwsEcsClusterClusterSettingsDetails {
   Name?: string;
   Value?: string;
 }
-const AwsEcsClusterClusterSettingsDetails = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<AwsEcsClusterClusterSettingsDetails>;
 export type AwsEcsClusterClusterSettingsList = AwsEcsClusterClusterSettingsDetails[];
-const AwsEcsClusterClusterSettingsList = /*@__PURE__*/ __L.at(__c51, 2);
 export interface AwsEcsClusterConfigurationExecuteCommandConfigurationLogConfigurationDetails {
   CloudWatchEncryptionEnabled?: boolean;
   CloudWatchLogGroupName?: string;
@@ -3894,39 +2653,21 @@ export interface AwsEcsClusterConfigurationExecuteCommandConfigurationLogConfigu
   S3EncryptionEnabled?: boolean;
   S3KeyPrefix?: string;
 }
-const AwsEcsClusterConfigurationExecuteCommandConfigurationLogConfigurationDetails =
-  /*@__PURE__*/ __L.at(
-    __c51,
-    3,
-  ) as any as S.Schema<AwsEcsClusterConfigurationExecuteCommandConfigurationLogConfigurationDetails>;
 export interface AwsEcsClusterConfigurationExecuteCommandConfigurationDetails {
   KmsKeyId?: string;
   LogConfiguration?: AwsEcsClusterConfigurationExecuteCommandConfigurationLogConfigurationDetails;
   Logging?: string;
 }
-const AwsEcsClusterConfigurationExecuteCommandConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<AwsEcsClusterConfigurationExecuteCommandConfigurationDetails>;
 export interface AwsEcsClusterConfigurationDetails {
   ExecuteCommandConfiguration?: AwsEcsClusterConfigurationExecuteCommandConfigurationDetails;
 }
-const AwsEcsClusterConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<AwsEcsClusterConfigurationDetails>;
 export interface AwsEcsClusterDefaultCapacityProviderStrategyDetails {
   Base?: number;
   CapacityProvider?: string;
   Weight?: number;
 }
-const AwsEcsClusterDefaultCapacityProviderStrategyDetails = /*@__PURE__*/ __L.at(
-  __c51,
-  6,
-) as any as S.Schema<AwsEcsClusterDefaultCapacityProviderStrategyDetails>;
 export type AwsEcsClusterDefaultCapacityProviderStrategyList =
   AwsEcsClusterDefaultCapacityProviderStrategyDetails[];
-const AwsEcsClusterDefaultCapacityProviderStrategyList = /*@__PURE__*/ __L.at(__c51, 7);
 export interface AwsEcsClusterDetails {
   ClusterArn?: string;
   ActiveServicesCount?: number;
@@ -3939,79 +2680,45 @@ export interface AwsEcsClusterDetails {
   RunningTasksCount?: number;
   Status?: string;
 }
-const AwsEcsClusterDetails = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<AwsEcsClusterDetails>;
 export interface AwsMountPoint {
   SourceVolume?: string;
   ContainerPath?: string;
 }
-const AwsMountPoint = /*@__PURE__*/ __L.at(__c52, 1) as any as S.Schema<AwsMountPoint>;
 export type AwsMountPointList = AwsMountPoint[];
-const AwsMountPointList = /*@__PURE__*/ __L.at(__c52, 2);
 export interface AwsEcsContainerDetails {
   Name?: string;
   Image?: string;
   MountPoints?: AwsMountPoint[];
   Privileged?: boolean;
 }
-const AwsEcsContainerDetails = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<AwsEcsContainerDetails>;
 export interface AwsEcsTaskDefinitionContainerDefinitionsDependsOnDetails {
   Condition?: string;
   ContainerName?: string;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsDependsOnDetails = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsDependsOnDetails>;
 export type AwsEcsTaskDefinitionContainerDefinitionsDependsOnList =
   AwsEcsTaskDefinitionContainerDefinitionsDependsOnDetails[];
-const AwsEcsTaskDefinitionContainerDefinitionsDependsOnList = /*@__PURE__*/ __L.at(__c52, 5);
 export interface AwsEcsTaskDefinitionContainerDefinitionsEnvironmentDetails {
   Name?: string;
   Value?: string;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsEnvironmentDetails = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsEnvironmentDetails>;
 export type AwsEcsTaskDefinitionContainerDefinitionsEnvironmentList =
   AwsEcsTaskDefinitionContainerDefinitionsEnvironmentDetails[];
-const AwsEcsTaskDefinitionContainerDefinitionsEnvironmentList = /*@__PURE__*/ __L.at(__c52, 7);
 export interface AwsEcsTaskDefinitionContainerDefinitionsEnvironmentFilesDetails {
   Type?: string;
   Value?: string;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsEnvironmentFilesDetails = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsEnvironmentFilesDetails>;
 export type AwsEcsTaskDefinitionContainerDefinitionsEnvironmentFilesList =
   AwsEcsTaskDefinitionContainerDefinitionsEnvironmentFilesDetails[];
-const AwsEcsTaskDefinitionContainerDefinitionsEnvironmentFilesList = /*@__PURE__*/ __L.at(__c53, 1);
 export interface AwsEcsTaskDefinitionContainerDefinitionsExtraHostsDetails {
   Hostname?: string;
   IpAddress?: string;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsExtraHostsDetails = /*@__PURE__*/ __L.at(
-  __c53,
-  2,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsExtraHostsDetails>;
 export type AwsEcsTaskDefinitionContainerDefinitionsExtraHostsList =
   AwsEcsTaskDefinitionContainerDefinitionsExtraHostsDetails[];
-const AwsEcsTaskDefinitionContainerDefinitionsExtraHostsList = /*@__PURE__*/ __L.at(__c53, 3);
 export interface AwsEcsTaskDefinitionContainerDefinitionsFirelensConfigurationDetails {
   Options?: { [key: string]: string | undefined };
   Type?: string;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsFirelensConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsFirelensConfigurationDetails>;
 export interface AwsEcsTaskDefinitionContainerDefinitionsHealthCheckDetails {
   Command?: string[];
   Interval?: number;
@@ -4019,49 +2726,24 @@ export interface AwsEcsTaskDefinitionContainerDefinitionsHealthCheckDetails {
   StartPeriod?: number;
   Timeout?: number;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsHealthCheckDetails = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsHealthCheckDetails>;
 export interface AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersCapabilitiesDetails {
   Add?: string[];
   Drop?: string[];
 }
-const AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersCapabilitiesDetails =
-  /*@__PURE__*/ __L.at(
-    __c53,
-    6,
-  ) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersCapabilitiesDetails>;
 export interface AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersDevicesDetails {
   ContainerPath?: string;
   HostPath?: string;
   Permissions?: string[];
 }
-const AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersDevicesDetails = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersDevicesDetails>;
 export type AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersDevicesList =
   AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersDevicesDetails[];
-const AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersDevicesList = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-);
 export interface AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersTmpfsDetails {
   ContainerPath?: string;
   MountOptions?: string[];
   Size?: number;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersTmpfsDetails = /*@__PURE__*/ __L.at(
-  __c54,
-  1,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersTmpfsDetails>;
 export type AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersTmpfsList =
   AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersTmpfsDetails[];
-const AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersTmpfsList = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-);
 export interface AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersDetails {
   Capabilities?: AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersCapabilitiesDetails;
   Devices?: AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersDevicesDetails[];
@@ -4071,120 +2753,65 @@ export interface AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersDetails 
   Swappiness?: number;
   Tmpfs?: AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersTmpfsDetails[];
 }
-const AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersDetails = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersDetails>;
 export interface AwsEcsTaskDefinitionContainerDefinitionsLogConfigurationSecretOptionsDetails {
   Name?: string;
   ValueFrom?: string;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsLogConfigurationSecretOptionsDetails =
-  /*@__PURE__*/ __L.at(
-    __c54,
-    4,
-  ) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsLogConfigurationSecretOptionsDetails>;
 export type AwsEcsTaskDefinitionContainerDefinitionsLogConfigurationSecretOptionsList =
   AwsEcsTaskDefinitionContainerDefinitionsLogConfigurationSecretOptionsDetails[];
-const AwsEcsTaskDefinitionContainerDefinitionsLogConfigurationSecretOptionsList =
-  /*@__PURE__*/ __L.at(__c54, 5);
 export interface AwsEcsTaskDefinitionContainerDefinitionsLogConfigurationDetails {
   LogDriver?: string;
   Options?: { [key: string]: string | undefined };
   SecretOptions?: AwsEcsTaskDefinitionContainerDefinitionsLogConfigurationSecretOptionsDetails[];
 }
-const AwsEcsTaskDefinitionContainerDefinitionsLogConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsLogConfigurationDetails>;
 export interface AwsEcsTaskDefinitionContainerDefinitionsMountPointsDetails {
   ContainerPath?: string;
   ReadOnly?: boolean;
   SourceVolume?: string;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsMountPointsDetails = /*@__PURE__*/ __L.at(
-  __c54,
-  7,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsMountPointsDetails>;
 export type AwsEcsTaskDefinitionContainerDefinitionsMountPointsList =
   AwsEcsTaskDefinitionContainerDefinitionsMountPointsDetails[];
-const AwsEcsTaskDefinitionContainerDefinitionsMountPointsList = /*@__PURE__*/ __L.at(__c55, 0);
 export interface AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails {
   ContainerPort?: number;
   HostPort?: number;
   Protocol?: string;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails>;
 export type AwsEcsTaskDefinitionContainerDefinitionsPortMappingsList =
   AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails[];
-const AwsEcsTaskDefinitionContainerDefinitionsPortMappingsList = /*@__PURE__*/ __L.at(__c55, 2);
 export interface AwsEcsTaskDefinitionContainerDefinitionsRepositoryCredentialsDetails {
   CredentialsParameter?: string;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsRepositoryCredentialsDetails = /*@__PURE__*/ __L.at(
-  __c55,
-  3,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsRepositoryCredentialsDetails>;
 export interface AwsEcsTaskDefinitionContainerDefinitionsResourceRequirementsDetails {
   Type?: string;
   Value?: string;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsResourceRequirementsDetails =
-  AwsEcsTaskDefinitionContainerDefinitionsEnvironmentFilesDetails as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsResourceRequirementsDetails>;
 export type AwsEcsTaskDefinitionContainerDefinitionsResourceRequirementsList =
   AwsEcsTaskDefinitionContainerDefinitionsResourceRequirementsDetails[];
-const AwsEcsTaskDefinitionContainerDefinitionsResourceRequirementsList = /*@__PURE__*/ __L.at(
-  __c55,
-  4,
-);
 export interface AwsEcsTaskDefinitionContainerDefinitionsSecretsDetails {
   Name?: string;
   ValueFrom?: string;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsSecretsDetails = /*@__PURE__*/ __L.at(
-  __c55,
-  5,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsSecretsDetails>;
 export type AwsEcsTaskDefinitionContainerDefinitionsSecretsList =
   AwsEcsTaskDefinitionContainerDefinitionsSecretsDetails[];
-const AwsEcsTaskDefinitionContainerDefinitionsSecretsList = /*@__PURE__*/ __L.at(__c55, 6);
 export interface AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails {
   Namespace?: string;
   Value?: string;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails = /*@__PURE__*/ __L.at(
-  __c55,
-  7,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails>;
 export type AwsEcsTaskDefinitionContainerDefinitionsSystemControlsList =
   AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails[];
-const AwsEcsTaskDefinitionContainerDefinitionsSystemControlsList = /*@__PURE__*/ __L.at(__c56, 0);
 export interface AwsEcsTaskDefinitionContainerDefinitionsUlimitsDetails {
   HardLimit?: number;
   Name?: string;
   SoftLimit?: number;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsUlimitsDetails = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsUlimitsDetails>;
 export type AwsEcsTaskDefinitionContainerDefinitionsUlimitsList =
   AwsEcsTaskDefinitionContainerDefinitionsUlimitsDetails[];
-const AwsEcsTaskDefinitionContainerDefinitionsUlimitsList = /*@__PURE__*/ __L.at(__c56, 2);
 export interface AwsEcsTaskDefinitionContainerDefinitionsVolumesFromDetails {
   ReadOnly?: boolean;
   SourceContainer?: string;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsVolumesFromDetails = /*@__PURE__*/ __L.at(
-  __c56,
-  3,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsVolumesFromDetails>;
 export type AwsEcsTaskDefinitionContainerDefinitionsVolumesFromList =
   AwsEcsTaskDefinitionContainerDefinitionsVolumesFromDetails[];
-const AwsEcsTaskDefinitionContainerDefinitionsVolumesFromList = /*@__PURE__*/ __L.at(__c56, 4);
 export interface AwsEcsTaskDefinitionContainerDefinitionsDetails {
   Command?: string[];
   Cpu?: number;
@@ -4226,59 +2853,31 @@ export interface AwsEcsTaskDefinitionContainerDefinitionsDetails {
   VolumesFrom?: AwsEcsTaskDefinitionContainerDefinitionsVolumesFromDetails[];
   WorkingDirectory?: string;
 }
-const AwsEcsTaskDefinitionContainerDefinitionsDetails = /*@__PURE__*/ __L.at(
-  __c56,
-  5,
-) as any as S.Schema<AwsEcsTaskDefinitionContainerDefinitionsDetails>;
 export type AwsEcsTaskDefinitionContainerDefinitionsList =
   AwsEcsTaskDefinitionContainerDefinitionsDetails[];
-const AwsEcsTaskDefinitionContainerDefinitionsList = /*@__PURE__*/ __L.at(__c56, 6);
 export interface AwsEcsTaskDefinitionInferenceAcceleratorsDetails {
   DeviceName?: string;
   DeviceType?: string;
 }
-const AwsEcsTaskDefinitionInferenceAcceleratorsDetails = /*@__PURE__*/ __L.at(
-  __c56,
-  7,
-) as any as S.Schema<AwsEcsTaskDefinitionInferenceAcceleratorsDetails>;
 export type AwsEcsTaskDefinitionInferenceAcceleratorsList =
   AwsEcsTaskDefinitionInferenceAcceleratorsDetails[];
-const AwsEcsTaskDefinitionInferenceAcceleratorsList = /*@__PURE__*/ __L.at(__c57, 0);
 export interface AwsEcsTaskDefinitionPlacementConstraintsDetails {
   Expression?: string;
   Type?: string;
 }
-const AwsEcsTaskDefinitionPlacementConstraintsDetails = /*@__PURE__*/ __L.at(
-  __c57,
-  1,
-) as any as S.Schema<AwsEcsTaskDefinitionPlacementConstraintsDetails>;
 export type AwsEcsTaskDefinitionPlacementConstraintsList =
   AwsEcsTaskDefinitionPlacementConstraintsDetails[];
-const AwsEcsTaskDefinitionPlacementConstraintsList = /*@__PURE__*/ __L.at(__c57, 2);
 export interface AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesDetails {
   Name?: string;
   Value?: string;
 }
-const AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesDetails =
-  /*@__PURE__*/ __L.at(
-    __c57,
-    3,
-  ) as any as S.Schema<AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesDetails>;
 export type AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesList =
   AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesDetails[];
-const AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesList = /*@__PURE__*/ __L.at(
-  __c57,
-  4,
-);
 export interface AwsEcsTaskDefinitionProxyConfigurationDetails {
   ContainerName?: string;
   ProxyConfigurationProperties?: AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesDetails[];
   Type?: string;
 }
-const AwsEcsTaskDefinitionProxyConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c57,
-  5,
-) as any as S.Schema<AwsEcsTaskDefinitionProxyConfigurationDetails>;
 export interface AwsEcsTaskDefinitionVolumesDockerVolumeConfigurationDetails {
   Autoprovision?: boolean;
   Driver?: string;
@@ -4286,19 +2885,10 @@ export interface AwsEcsTaskDefinitionVolumesDockerVolumeConfigurationDetails {
   Labels?: { [key: string]: string | undefined };
   Scope?: string;
 }
-const AwsEcsTaskDefinitionVolumesDockerVolumeConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c57,
-  6,
-) as any as S.Schema<AwsEcsTaskDefinitionVolumesDockerVolumeConfigurationDetails>;
 export interface AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationAuthorizationConfigDetails {
   AccessPointId?: string;
   Iam?: string;
 }
-const AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationAuthorizationConfigDetails =
-  /*@__PURE__*/ __L.at(
-    __c57,
-    7,
-  ) as any as S.Schema<AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationAuthorizationConfigDetails>;
 export interface AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationDetails {
   AuthorizationConfig?: AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationAuthorizationConfigDetails;
   FilesystemId?: string;
@@ -4306,29 +2896,16 @@ export interface AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationDetails {
   TransitEncryption?: string;
   TransitEncryptionPort?: number;
 }
-const AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c58,
-  0,
-) as any as S.Schema<AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationDetails>;
 export interface AwsEcsTaskDefinitionVolumesHostDetails {
   SourcePath?: string;
 }
-const AwsEcsTaskDefinitionVolumesHostDetails = /*@__PURE__*/ __L.at(
-  __c58,
-  1,
-) as any as S.Schema<AwsEcsTaskDefinitionVolumesHostDetails>;
 export interface AwsEcsTaskDefinitionVolumesDetails {
   DockerVolumeConfiguration?: AwsEcsTaskDefinitionVolumesDockerVolumeConfigurationDetails;
   EfsVolumeConfiguration?: AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationDetails;
   Host?: AwsEcsTaskDefinitionVolumesHostDetails;
   Name?: string;
 }
-const AwsEcsTaskDefinitionVolumesDetails = /*@__PURE__*/ __L.at(
-  __c58,
-  2,
-) as any as S.Schema<AwsEcsTaskDefinitionVolumesDetails>;
 export type AwsEcsTaskDefinitionVolumesList = AwsEcsTaskDefinitionVolumesDetails[];
-const AwsEcsTaskDefinitionVolumesList = /*@__PURE__*/ __L.at(__c58, 3);
 export interface AwsEcsTaskDefinitionDetails {
   ContainerDefinitions?: AwsEcsTaskDefinitionContainerDefinitionsDetails[];
   Cpu?: string;
@@ -4346,17 +2923,11 @@ export interface AwsEcsTaskDefinitionDetails {
   Volumes?: AwsEcsTaskDefinitionVolumesDetails[];
   Status?: string;
 }
-const AwsEcsTaskDefinitionDetails = /*@__PURE__*/ __L.at(
-  __c58,
-  4,
-) as any as S.Schema<AwsEcsTaskDefinitionDetails>;
 export interface VolumeMount {
   Name?: string;
   MountPath?: string;
 }
-const VolumeMount = /*@__PURE__*/ __L.at(__c58, 5) as any as S.Schema<VolumeMount>;
 export type VolumeMountList = VolumeMount[];
-const VolumeMountList = /*@__PURE__*/ __L.at(__c58, 6);
 export interface ContainerDetails {
   ContainerRuntime?: string;
   Name?: string;
@@ -4366,7 +2937,6 @@ export interface ContainerDetails {
   VolumeMounts?: VolumeMount[];
   Privileged?: boolean;
 }
-const ContainerDetails = /*@__PURE__*/ __L.at(__c58, 7) as any as S.Schema<ContainerDetails>;
 export interface AwsRdsEventSubscriptionDetails {
   CustSubscriptionId?: string;
   CustomerAwsId?: string;
@@ -4379,10 +2949,6 @@ export interface AwsRdsEventSubscriptionDetails {
   Status?: string;
   SubscriptionCreationTime?: string;
 }
-const AwsRdsEventSubscriptionDetails = /*@__PURE__*/ __L.at(
-  __c59,
-  0,
-) as any as S.Schema<AwsRdsEventSubscriptionDetails>;
 export interface AwsEcsServiceCapacityProviderStrategyDetails {
   Base?: number;
   CapacityProvider?: string;
@@ -4390,89 +2956,50 @@ export interface AwsEcsServiceCapacityProviderStrategyDetails {
 }
 export type AwsEcsServiceCapacityProviderStrategyList =
   AwsEcsServiceCapacityProviderStrategyDetails[];
-const AwsEcsServiceCapacityProviderStrategyList =
-  AwsEcsClusterDefaultCapacityProviderStrategyList as any as S.Schema<AwsEcsServiceCapacityProviderStrategyList>;
 export interface AwsEcsServiceDeploymentConfigurationDeploymentCircuitBreakerDetails {
   Enable?: boolean;
   Rollback?: boolean;
 }
-const AwsEcsServiceDeploymentConfigurationDeploymentCircuitBreakerDetails = /*@__PURE__*/ __L.at(
-  __c59,
-  1,
-) as any as S.Schema<AwsEcsServiceDeploymentConfigurationDeploymentCircuitBreakerDetails>;
 export interface AwsEcsServiceDeploymentConfigurationDetails {
   DeploymentCircuitBreaker?: AwsEcsServiceDeploymentConfigurationDeploymentCircuitBreakerDetails;
   MaximumPercent?: number;
   MinimumHealthyPercent?: number;
 }
-const AwsEcsServiceDeploymentConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c59,
-  2,
-) as any as S.Schema<AwsEcsServiceDeploymentConfigurationDetails>;
 export interface AwsEcsServiceDeploymentControllerDetails {
   Type?: string;
 }
-const AwsEcsServiceDeploymentControllerDetails = /*@__PURE__*/ __L.at(
-  __c59,
-  3,
-) as any as S.Schema<AwsEcsServiceDeploymentControllerDetails>;
 export interface AwsEcsServiceLoadBalancersDetails {
   ContainerName?: string;
   ContainerPort?: number;
   LoadBalancerName?: string;
   TargetGroupArn?: string;
 }
-const AwsEcsServiceLoadBalancersDetails = /*@__PURE__*/ __L.at(
-  __c59,
-  4,
-) as any as S.Schema<AwsEcsServiceLoadBalancersDetails>;
 export type AwsEcsServiceLoadBalancersList = AwsEcsServiceLoadBalancersDetails[];
-const AwsEcsServiceLoadBalancersList = /*@__PURE__*/ __L.at(__c59, 5);
 export interface AwsEcsServiceNetworkConfigurationAwsVpcConfigurationDetails {
   AssignPublicIp?: string;
   SecurityGroups?: string[];
   Subnets?: string[];
 }
-const AwsEcsServiceNetworkConfigurationAwsVpcConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c59,
-  6,
-) as any as S.Schema<AwsEcsServiceNetworkConfigurationAwsVpcConfigurationDetails>;
 export interface AwsEcsServiceNetworkConfigurationDetails {
   AwsVpcConfiguration?: AwsEcsServiceNetworkConfigurationAwsVpcConfigurationDetails;
 }
-const AwsEcsServiceNetworkConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c59,
-  7,
-) as any as S.Schema<AwsEcsServiceNetworkConfigurationDetails>;
 export interface AwsEcsServicePlacementConstraintsDetails {
   Expression?: string;
   Type?: string;
 }
 export type AwsEcsServicePlacementConstraintsList = AwsEcsServicePlacementConstraintsDetails[];
-const AwsEcsServicePlacementConstraintsList =
-  AwsEcsTaskDefinitionPlacementConstraintsList as any as S.Schema<AwsEcsServicePlacementConstraintsList>;
 export interface AwsEcsServicePlacementStrategiesDetails {
   Field?: string;
   Type?: string;
 }
-const AwsEcsServicePlacementStrategiesDetails = /*@__PURE__*/ __L.at(
-  __c60,
-  0,
-) as any as S.Schema<AwsEcsServicePlacementStrategiesDetails>;
 export type AwsEcsServicePlacementStrategiesList = AwsEcsServicePlacementStrategiesDetails[];
-const AwsEcsServicePlacementStrategiesList = /*@__PURE__*/ __L.at(__c60, 1);
 export interface AwsEcsServiceServiceRegistriesDetails {
   ContainerName?: string;
   ContainerPort?: number;
   Port?: number;
   RegistryArn?: string;
 }
-const AwsEcsServiceServiceRegistriesDetails = /*@__PURE__*/ __L.at(
-  __c60,
-  2,
-) as any as S.Schema<AwsEcsServiceServiceRegistriesDetails>;
 export type AwsEcsServiceServiceRegistriesList = AwsEcsServiceServiceRegistriesDetails[];
-const AwsEcsServiceServiceRegistriesList = /*@__PURE__*/ __L.at(__c60, 3);
 export interface AwsEcsServiceDetails {
   CapacityProviderStrategy?: AwsEcsServiceCapacityProviderStrategyDetails[];
   Cluster?: string;
@@ -4497,10 +3024,6 @@ export interface AwsEcsServiceDetails {
   ServiceRegistries?: AwsEcsServiceServiceRegistriesDetails[];
   TaskDefinition?: string;
 }
-const AwsEcsServiceDetails = /*@__PURE__*/ __L.at(
-  __c60,
-  4,
-) as any as S.Schema<AwsEcsServiceDetails>;
 export interface AwsAutoScalingLaunchConfigurationBlockDeviceMappingsEbsDetails {
   DeleteOnTermination?: boolean;
   Encrypted?: boolean;
@@ -4509,39 +3032,22 @@ export interface AwsAutoScalingLaunchConfigurationBlockDeviceMappingsEbsDetails 
   VolumeSize?: number;
   VolumeType?: string;
 }
-const AwsAutoScalingLaunchConfigurationBlockDeviceMappingsEbsDetails = /*@__PURE__*/ __L.at(
-  __c60,
-  5,
-) as any as S.Schema<AwsAutoScalingLaunchConfigurationBlockDeviceMappingsEbsDetails>;
 export interface AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails {
   DeviceName?: string;
   Ebs?: AwsAutoScalingLaunchConfigurationBlockDeviceMappingsEbsDetails;
   NoDevice?: boolean;
   VirtualName?: string;
 }
-const AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails = /*@__PURE__*/ __L.at(
-  __c60,
-  6,
-) as any as S.Schema<AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails>;
 export type AwsAutoScalingLaunchConfigurationBlockDeviceMappingsList =
   AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails[];
-const AwsAutoScalingLaunchConfigurationBlockDeviceMappingsList = /*@__PURE__*/ __L.at(__c60, 7);
 export interface AwsAutoScalingLaunchConfigurationInstanceMonitoringDetails {
   Enabled?: boolean;
 }
-const AwsAutoScalingLaunchConfigurationInstanceMonitoringDetails = /*@__PURE__*/ __L.at(
-  __c61,
-  0,
-) as any as S.Schema<AwsAutoScalingLaunchConfigurationInstanceMonitoringDetails>;
 export interface AwsAutoScalingLaunchConfigurationMetadataOptions {
   HttpEndpoint?: string;
   HttpPutResponseHopLimit?: number;
   HttpTokens?: string;
 }
-const AwsAutoScalingLaunchConfigurationMetadataOptions = /*@__PURE__*/ __L.at(
-  __c61,
-  1,
-) as any as S.Schema<AwsAutoScalingLaunchConfigurationMetadataOptions>;
 export interface AwsAutoScalingLaunchConfigurationDetails {
   AssociatePublicIpAddress?: boolean;
   BlockDeviceMappings?: AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails[];
@@ -4563,10 +3069,6 @@ export interface AwsAutoScalingLaunchConfigurationDetails {
   UserData?: string;
   MetadataOptions?: AwsAutoScalingLaunchConfigurationMetadataOptions;
 }
-const AwsAutoScalingLaunchConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c61,
-  2,
-) as any as S.Schema<AwsAutoScalingLaunchConfigurationDetails>;
 export interface AwsEc2VpnConnectionVgwTelemetryDetails {
   AcceptedRouteCount?: number;
   CertificateArn?: string;
@@ -4575,12 +3077,7 @@ export interface AwsEc2VpnConnectionVgwTelemetryDetails {
   Status?: string;
   StatusMessage?: string;
 }
-const AwsEc2VpnConnectionVgwTelemetryDetails = /*@__PURE__*/ __L.at(
-  __c61,
-  3,
-) as any as S.Schema<AwsEc2VpnConnectionVgwTelemetryDetails>;
 export type AwsEc2VpnConnectionVgwTelemetryList = AwsEc2VpnConnectionVgwTelemetryDetails[];
-const AwsEc2VpnConnectionVgwTelemetryList = /*@__PURE__*/ __L.at(__c61, 4);
 export interface AwsEc2VpnConnectionOptionsTunnelOptionsDetails {
   DpdTimeoutSeconds?: number;
   IkeVersions?: string[];
@@ -4599,31 +3096,17 @@ export interface AwsEc2VpnConnectionOptionsTunnelOptionsDetails {
   ReplayWindowSize?: number;
   TunnelInsideCidr?: string;
 }
-const AwsEc2VpnConnectionOptionsTunnelOptionsDetails = /*@__PURE__*/ __L.at(
-  __c61,
-  5,
-) as any as S.Schema<AwsEc2VpnConnectionOptionsTunnelOptionsDetails>;
 export type AwsEc2VpnConnectionOptionsTunnelOptionsList =
   AwsEc2VpnConnectionOptionsTunnelOptionsDetails[];
-const AwsEc2VpnConnectionOptionsTunnelOptionsList = /*@__PURE__*/ __L.at(__c61, 6);
 export interface AwsEc2VpnConnectionOptionsDetails {
   StaticRoutesOnly?: boolean;
   TunnelOptions?: AwsEc2VpnConnectionOptionsTunnelOptionsDetails[];
 }
-const AwsEc2VpnConnectionOptionsDetails = /*@__PURE__*/ __L.at(
-  __c61,
-  7,
-) as any as S.Schema<AwsEc2VpnConnectionOptionsDetails>;
 export interface AwsEc2VpnConnectionRoutesDetails {
   DestinationCidrBlock?: string;
   State?: string;
 }
-const AwsEc2VpnConnectionRoutesDetails = /*@__PURE__*/ __L.at(
-  __c62,
-  0,
-) as any as S.Schema<AwsEc2VpnConnectionRoutesDetails>;
 export type AwsEc2VpnConnectionRoutesList = AwsEc2VpnConnectionRoutesDetails[];
-const AwsEc2VpnConnectionRoutesList = /*@__PURE__*/ __L.at(__c62, 1);
 export interface AwsEc2VpnConnectionDetails {
   VpnConnectionId?: string;
   State?: string;
@@ -4637,10 +3120,6 @@ export interface AwsEc2VpnConnectionDetails {
   Routes?: AwsEc2VpnConnectionRoutesDetails[];
   TransitGatewayId?: string;
 }
-const AwsEc2VpnConnectionDetails = /*@__PURE__*/ __L.at(
-  __c62,
-  2,
-) as any as S.Schema<AwsEc2VpnConnectionDetails>;
 export interface AwsEcrContainerImageDetails {
   RegistryId?: string;
   RepositoryName?: string;
@@ -4649,23 +3128,13 @@ export interface AwsEcrContainerImageDetails {
   ImageTags?: string[];
   ImagePublishedAt?: string;
 }
-const AwsEcrContainerImageDetails = /*@__PURE__*/ __L.at(
-  __c62,
-  3,
-) as any as S.Schema<AwsEcrContainerImageDetails>;
 export interface AwsOpenSearchServiceDomainEncryptionAtRestOptionsDetails {
   Enabled?: boolean;
   KmsKeyId?: string;
 }
-const AwsOpenSearchServiceDomainEncryptionAtRestOptionsDetails = /*@__PURE__*/ __L.at(
-  __c62,
-  4,
-) as any as S.Schema<AwsOpenSearchServiceDomainEncryptionAtRestOptionsDetails>;
 export interface AwsOpenSearchServiceDomainNodeToNodeEncryptionOptionsDetails {
   Enabled?: boolean;
 }
-const AwsOpenSearchServiceDomainNodeToNodeEncryptionOptionsDetails =
-  AwsAutoScalingLaunchConfigurationInstanceMonitoringDetails as any as S.Schema<AwsOpenSearchServiceDomainNodeToNodeEncryptionOptionsDetails>;
 export interface AwsOpenSearchServiceDomainServiceSoftwareOptionsDetails {
   AutomatedUpdateDate?: string;
   Cancellable?: boolean;
@@ -4676,15 +3145,9 @@ export interface AwsOpenSearchServiceDomainServiceSoftwareOptionsDetails {
   UpdateStatus?: string;
   OptionalDeployment?: boolean;
 }
-const AwsOpenSearchServiceDomainServiceSoftwareOptionsDetails = /*@__PURE__*/ __L.at(
-  __c62,
-  5,
-) as any as S.Schema<AwsOpenSearchServiceDomainServiceSoftwareOptionsDetails>;
 export interface AwsOpenSearchServiceDomainClusterConfigZoneAwarenessConfigDetails {
   AvailabilityZoneCount?: number;
 }
-const AwsOpenSearchServiceDomainClusterConfigZoneAwarenessConfigDetails =
-  AwsElasticsearchDomainElasticsearchClusterConfigZoneAwarenessConfigDetails as any as S.Schema<AwsOpenSearchServiceDomainClusterConfigZoneAwarenessConfigDetails>;
 export interface AwsOpenSearchServiceDomainClusterConfigDetails {
   InstanceCount?: number;
   WarmEnabled?: boolean;
@@ -4697,10 +3160,6 @@ export interface AwsOpenSearchServiceDomainClusterConfigDetails {
   ZoneAwarenessEnabled?: boolean;
   DedicatedMasterType?: string;
 }
-const AwsOpenSearchServiceDomainClusterConfigDetails = /*@__PURE__*/ __L.at(
-  __c62,
-  6,
-) as any as S.Schema<AwsOpenSearchServiceDomainClusterConfigDetails>;
 export interface AwsOpenSearchServiceDomainDomainEndpointOptionsDetails {
   CustomEndpointCertificateArn?: string;
   CustomEndpointEnabled?: boolean;
@@ -4708,18 +3167,10 @@ export interface AwsOpenSearchServiceDomainDomainEndpointOptionsDetails {
   CustomEndpoint?: string;
   TLSSecurityPolicy?: string;
 }
-const AwsOpenSearchServiceDomainDomainEndpointOptionsDetails = /*@__PURE__*/ __L.at(
-  __c62,
-  7,
-) as any as S.Schema<AwsOpenSearchServiceDomainDomainEndpointOptionsDetails>;
 export interface AwsOpenSearchServiceDomainVpcOptionsDetails {
   SecurityGroupIds?: string[];
   SubnetIds?: string[];
 }
-const AwsOpenSearchServiceDomainVpcOptionsDetails = /*@__PURE__*/ __L.at(
-  __c63,
-  0,
-) as any as S.Schema<AwsOpenSearchServiceDomainVpcOptionsDetails>;
 export interface AwsOpenSearchServiceDomainLogPublishingOption {
   CloudWatchLogsLogGroupArn?: string;
   Enabled?: boolean;
@@ -4729,26 +3180,16 @@ export interface AwsOpenSearchServiceDomainLogPublishingOptionsDetails {
   SearchSlowLogs?: AwsOpenSearchServiceDomainLogPublishingOption;
   AuditLogs?: AwsOpenSearchServiceDomainLogPublishingOption;
 }
-const AwsOpenSearchServiceDomainLogPublishingOptionsDetails =
-  AwsElasticsearchDomainLogPublishingOptions as any as S.Schema<AwsOpenSearchServiceDomainLogPublishingOptionsDetails>;
 export interface AwsOpenSearchServiceDomainMasterUserOptionsDetails {
   MasterUserArn?: string;
   MasterUserName?: string;
   MasterUserPassword?: string;
 }
-const AwsOpenSearchServiceDomainMasterUserOptionsDetails = /*@__PURE__*/ __L.at(
-  __c63,
-  1,
-) as any as S.Schema<AwsOpenSearchServiceDomainMasterUserOptionsDetails>;
 export interface AwsOpenSearchServiceDomainAdvancedSecurityOptionsDetails {
   Enabled?: boolean;
   InternalUserDatabaseEnabled?: boolean;
   MasterUserOptions?: AwsOpenSearchServiceDomainMasterUserOptionsDetails;
 }
-const AwsOpenSearchServiceDomainAdvancedSecurityOptionsDetails = /*@__PURE__*/ __L.at(
-  __c63,
-  2,
-) as any as S.Schema<AwsOpenSearchServiceDomainAdvancedSecurityOptionsDetails>;
 export interface AwsOpenSearchServiceDomainDetails {
   Arn?: string;
   AccessPolicies?: string;
@@ -4766,19 +3207,10 @@ export interface AwsOpenSearchServiceDomainDetails {
   DomainEndpoints?: { [key: string]: string | undefined };
   AdvancedSecurityOptions?: AwsOpenSearchServiceDomainAdvancedSecurityOptionsDetails;
 }
-const AwsOpenSearchServiceDomainDetails = /*@__PURE__*/ __L.at(
-  __c63,
-  3,
-) as any as S.Schema<AwsOpenSearchServiceDomainDetails>;
 export interface AwsEc2VpcEndpointServiceServiceTypeDetails {
   ServiceType?: string;
 }
-const AwsEc2VpcEndpointServiceServiceTypeDetails = /*@__PURE__*/ __L.at(
-  __c63,
-  4,
-) as any as S.Schema<AwsEc2VpcEndpointServiceServiceTypeDetails>;
 export type AwsEc2VpcEndpointServiceServiceTypeList = AwsEc2VpcEndpointServiceServiceTypeDetails[];
-const AwsEc2VpcEndpointServiceServiceTypeList = /*@__PURE__*/ __L.at(__c63, 5);
 export interface AwsEc2VpcEndpointServiceDetails {
   AcceptanceRequired?: boolean;
   AvailabilityZones?: string[];
@@ -4792,30 +3224,17 @@ export interface AwsEc2VpcEndpointServiceDetails {
   ServiceState?: string;
   ServiceType?: AwsEc2VpcEndpointServiceServiceTypeDetails[];
 }
-const AwsEc2VpcEndpointServiceDetails = /*@__PURE__*/ __L.at(
-  __c63,
-  6,
-) as any as S.Schema<AwsEc2VpcEndpointServiceDetails>;
 export interface AwsXrayEncryptionConfigDetails {
   KeyId?: string;
   Status?: string;
   Type?: string;
 }
-const AwsXrayEncryptionConfigDetails = /*@__PURE__*/ __L.at(
-  __c63,
-  7,
-) as any as S.Schema<AwsXrayEncryptionConfigDetails>;
 export interface AwsWafRateBasedRuleMatchPredicate {
   DataId?: string;
   Negated?: boolean;
   Type?: string;
 }
-const AwsWafRateBasedRuleMatchPredicate = /*@__PURE__*/ __L.at(
-  __c64,
-  0,
-) as any as S.Schema<AwsWafRateBasedRuleMatchPredicate>;
 export type AwsWafRateBasedRuleMatchPredicateList = AwsWafRateBasedRuleMatchPredicate[];
-const AwsWafRateBasedRuleMatchPredicateList = /*@__PURE__*/ __L.at(__c64, 1);
 export interface AwsWafRateBasedRuleDetails {
   MetricName?: string;
   Name?: string;
@@ -4824,10 +3243,6 @@ export interface AwsWafRateBasedRuleDetails {
   RuleId?: string;
   MatchPredicates?: AwsWafRateBasedRuleMatchPredicate[];
 }
-const AwsWafRateBasedRuleDetails = /*@__PURE__*/ __L.at(
-  __c64,
-  2,
-) as any as S.Schema<AwsWafRateBasedRuleDetails>;
 export interface AwsWafRegionalRateBasedRuleMatchPredicate {
   DataId?: string;
   Negated?: boolean;
@@ -4843,23 +3258,13 @@ export interface AwsWafRegionalRateBasedRuleDetails {
   RuleId?: string;
   MatchPredicates?: AwsWafRegionalRateBasedRuleMatchPredicate[];
 }
-const AwsWafRegionalRateBasedRuleDetails =
-  AwsWafRateBasedRuleDetails as any as S.Schema<AwsWafRegionalRateBasedRuleDetails>;
 export interface AwsEcrRepositoryImageScanningConfigurationDetails {
   ScanOnPush?: boolean;
 }
-const AwsEcrRepositoryImageScanningConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c64,
-  3,
-) as any as S.Schema<AwsEcrRepositoryImageScanningConfigurationDetails>;
 export interface AwsEcrRepositoryLifecyclePolicyDetails {
   LifecyclePolicyText?: string;
   RegistryId?: string;
 }
-const AwsEcrRepositoryLifecyclePolicyDetails = /*@__PURE__*/ __L.at(
-  __c64,
-  4,
-) as any as S.Schema<AwsEcrRepositoryLifecyclePolicyDetails>;
 export interface AwsEcrRepositoryDetails {
   Arn?: string;
   ImageScanningConfiguration?: AwsEcrRepositoryImageScanningConfigurationDetails;
@@ -4868,36 +3273,19 @@ export interface AwsEcrRepositoryDetails {
   RepositoryName?: string;
   RepositoryPolicyText?: string;
 }
-const AwsEcrRepositoryDetails = /*@__PURE__*/ __L.at(
-  __c64,
-  5,
-) as any as S.Schema<AwsEcrRepositoryDetails>;
 export interface AwsEksClusterResourcesVpcConfigDetails {
   SecurityGroupIds?: string[];
   SubnetIds?: string[];
   EndpointPublicAccess?: boolean;
 }
-const AwsEksClusterResourcesVpcConfigDetails = /*@__PURE__*/ __L.at(
-  __c64,
-  6,
-) as any as S.Schema<AwsEksClusterResourcesVpcConfigDetails>;
 export interface AwsEksClusterLoggingClusterLoggingDetails {
   Enabled?: boolean;
   Types?: string[];
 }
-const AwsEksClusterLoggingClusterLoggingDetails = /*@__PURE__*/ __L.at(
-  __c64,
-  7,
-) as any as S.Schema<AwsEksClusterLoggingClusterLoggingDetails>;
 export type AwsEksClusterLoggingClusterLoggingList = AwsEksClusterLoggingClusterLoggingDetails[];
-const AwsEksClusterLoggingClusterLoggingList = /*@__PURE__*/ __L.at(__c65, 0);
 export interface AwsEksClusterLoggingDetails {
   ClusterLogging?: AwsEksClusterLoggingClusterLoggingDetails[];
 }
-const AwsEksClusterLoggingDetails = /*@__PURE__*/ __L.at(
-  __c65,
-  1,
-) as any as S.Schema<AwsEksClusterLoggingDetails>;
 export interface AwsEksClusterDetails {
   Arn?: string;
   CertificateAuthorityData?: string;
@@ -4909,66 +3297,34 @@ export interface AwsEksClusterDetails {
   Version?: string;
   Logging?: AwsEksClusterLoggingDetails;
 }
-const AwsEksClusterDetails = /*@__PURE__*/ __L.at(
-  __c65,
-  2,
-) as any as S.Schema<AwsEksClusterDetails>;
 export interface FirewallPolicyStatefulRuleGroupReferencesDetails {
   ResourceArn?: string;
 }
-const FirewallPolicyStatefulRuleGroupReferencesDetails = /*@__PURE__*/ __L.at(
-  __c65,
-  3,
-) as any as S.Schema<FirewallPolicyStatefulRuleGroupReferencesDetails>;
 export type FirewallPolicyStatefulRuleGroupReferencesList =
   FirewallPolicyStatefulRuleGroupReferencesDetails[];
-const FirewallPolicyStatefulRuleGroupReferencesList = /*@__PURE__*/ __L.at(__c65, 4);
 export interface StatelessCustomPublishMetricActionDimension {
   Value?: string;
 }
-const StatelessCustomPublishMetricActionDimension = /*@__PURE__*/ __L.at(
-  __c65,
-  5,
-) as any as S.Schema<StatelessCustomPublishMetricActionDimension>;
 export type StatelessCustomPublishMetricActionDimensionsList =
   StatelessCustomPublishMetricActionDimension[];
-const StatelessCustomPublishMetricActionDimensionsList = /*@__PURE__*/ __L.at(__c65, 6);
 export interface StatelessCustomPublishMetricAction {
   Dimensions?: StatelessCustomPublishMetricActionDimension[];
 }
-const StatelessCustomPublishMetricAction = /*@__PURE__*/ __L.at(
-  __c65,
-  7,
-) as any as S.Schema<StatelessCustomPublishMetricAction>;
 export interface StatelessCustomActionDefinition {
   PublishMetricAction?: StatelessCustomPublishMetricAction;
 }
-const StatelessCustomActionDefinition = /*@__PURE__*/ __L.at(
-  __c66,
-  0,
-) as any as S.Schema<StatelessCustomActionDefinition>;
 export interface FirewallPolicyStatelessCustomActionsDetails {
   ActionDefinition?: StatelessCustomActionDefinition;
   ActionName?: string;
 }
-const FirewallPolicyStatelessCustomActionsDetails = /*@__PURE__*/ __L.at(
-  __c66,
-  1,
-) as any as S.Schema<FirewallPolicyStatelessCustomActionsDetails>;
 export type FirewallPolicyStatelessCustomActionsList =
   FirewallPolicyStatelessCustomActionsDetails[];
-const FirewallPolicyStatelessCustomActionsList = /*@__PURE__*/ __L.at(__c66, 2);
 export interface FirewallPolicyStatelessRuleGroupReferencesDetails {
   Priority?: number;
   ResourceArn?: string;
 }
-const FirewallPolicyStatelessRuleGroupReferencesDetails = /*@__PURE__*/ __L.at(
-  __c66,
-  3,
-) as any as S.Schema<FirewallPolicyStatelessRuleGroupReferencesDetails>;
 export type FirewallPolicyStatelessRuleGroupReferencesList =
   FirewallPolicyStatelessRuleGroupReferencesDetails[];
-const FirewallPolicyStatelessRuleGroupReferencesList = /*@__PURE__*/ __L.at(__c66, 4);
 export interface FirewallPolicyDetails {
   StatefulRuleGroupReferences?: FirewallPolicyStatefulRuleGroupReferencesDetails[];
   StatelessCustomActions?: FirewallPolicyStatelessCustomActionsDetails[];
@@ -4976,10 +3332,6 @@ export interface FirewallPolicyDetails {
   StatelessFragmentDefaultActions?: string[];
   StatelessRuleGroupReferences?: FirewallPolicyStatelessRuleGroupReferencesDetails[];
 }
-const FirewallPolicyDetails = /*@__PURE__*/ __L.at(
-  __c66,
-  5,
-) as any as S.Schema<FirewallPolicyDetails>;
 export interface AwsNetworkFirewallFirewallPolicyDetails {
   FirewallPolicy?: FirewallPolicyDetails;
   FirewallPolicyArn?: string;
@@ -4987,20 +3339,11 @@ export interface AwsNetworkFirewallFirewallPolicyDetails {
   FirewallPolicyName?: string;
   Description?: string;
 }
-const AwsNetworkFirewallFirewallPolicyDetails = /*@__PURE__*/ __L.at(
-  __c66,
-  6,
-) as any as S.Schema<AwsNetworkFirewallFirewallPolicyDetails>;
 export interface AwsNetworkFirewallFirewallSubnetMappingsDetails {
   SubnetId?: string;
 }
-const AwsNetworkFirewallFirewallSubnetMappingsDetails = /*@__PURE__*/ __L.at(
-  __c66,
-  7,
-) as any as S.Schema<AwsNetworkFirewallFirewallSubnetMappingsDetails>;
 export type AwsNetworkFirewallFirewallSubnetMappingsList =
   AwsNetworkFirewallFirewallSubnetMappingsDetails[];
-const AwsNetworkFirewallFirewallSubnetMappingsList = /*@__PURE__*/ __L.at(__c67, 0);
 export interface AwsNetworkFirewallFirewallDetails {
   DeleteProtection?: boolean;
   Description?: string;
@@ -5013,36 +3356,21 @@ export interface AwsNetworkFirewallFirewallDetails {
   SubnetMappings?: AwsNetworkFirewallFirewallSubnetMappingsDetails[];
   VpcId?: string;
 }
-const AwsNetworkFirewallFirewallDetails = /*@__PURE__*/ __L.at(
-  __c67,
-  1,
-) as any as S.Schema<AwsNetworkFirewallFirewallDetails>;
 export interface RuleGroupVariablesIpSetsDetails {
   Definition?: string[];
 }
-const RuleGroupVariablesIpSetsDetails = /*@__PURE__*/ __L.at(
-  __c67,
-  2,
-) as any as S.Schema<RuleGroupVariablesIpSetsDetails>;
 export interface RuleGroupVariablesPortSetsDetails {
   Definition?: string[];
 }
-const RuleGroupVariablesPortSetsDetails =
-  RuleGroupVariablesIpSetsDetails as any as S.Schema<RuleGroupVariablesPortSetsDetails>;
 export interface RuleGroupVariables {
   IpSets?: RuleGroupVariablesIpSetsDetails;
   PortSets?: RuleGroupVariablesPortSetsDetails;
 }
-const RuleGroupVariables = /*@__PURE__*/ __L.at(__c67, 3) as any as S.Schema<RuleGroupVariables>;
 export interface RuleGroupSourceListDetails {
   GeneratedRulesType?: string;
   TargetTypes?: string[];
   Targets?: string[];
 }
-const RuleGroupSourceListDetails = /*@__PURE__*/ __L.at(
-  __c67,
-  4,
-) as any as S.Schema<RuleGroupSourceListDetails>;
 export interface RuleGroupSourceStatefulRulesHeaderDetails {
   Destination?: string;
   DestinationPort?: string;
@@ -5051,96 +3379,52 @@ export interface RuleGroupSourceStatefulRulesHeaderDetails {
   Source?: string;
   SourcePort?: string;
 }
-const RuleGroupSourceStatefulRulesHeaderDetails = /*@__PURE__*/ __L.at(
-  __c67,
-  5,
-) as any as S.Schema<RuleGroupSourceStatefulRulesHeaderDetails>;
 export type RuleGroupSourceStatefulRulesRuleOptionsSettingsList = string[];
-const RuleGroupSourceStatefulRulesRuleOptionsSettingsList =
-  AutomationRulesArnsList as any as S.Schema<RuleGroupSourceStatefulRulesRuleOptionsSettingsList>;
 export interface RuleGroupSourceStatefulRulesOptionsDetails {
   Keyword?: string;
   Settings?: string[];
 }
-const RuleGroupSourceStatefulRulesOptionsDetails = /*@__PURE__*/ __L.at(
-  __c67,
-  6,
-) as any as S.Schema<RuleGroupSourceStatefulRulesOptionsDetails>;
 export type RuleGroupSourceStatefulRulesOptionsList = RuleGroupSourceStatefulRulesOptionsDetails[];
-const RuleGroupSourceStatefulRulesOptionsList = /*@__PURE__*/ __L.at(__c67, 7);
 export interface RuleGroupSourceStatefulRulesDetails {
   Action?: string;
   Header?: RuleGroupSourceStatefulRulesHeaderDetails;
   RuleOptions?: RuleGroupSourceStatefulRulesOptionsDetails[];
 }
-const RuleGroupSourceStatefulRulesDetails = /*@__PURE__*/ __L.at(
-  __c68,
-  0,
-) as any as S.Schema<RuleGroupSourceStatefulRulesDetails>;
 export type RuleGroupSourceStatefulRulesList = RuleGroupSourceStatefulRulesDetails[];
-const RuleGroupSourceStatefulRulesList = /*@__PURE__*/ __L.at(__c68, 1);
 export interface RuleGroupSourceCustomActionsDetails {
   ActionDefinition?: StatelessCustomActionDefinition;
   ActionName?: string;
 }
 export type RuleGroupSourceCustomActionsList = RuleGroupSourceCustomActionsDetails[];
-const RuleGroupSourceCustomActionsList =
-  FirewallPolicyStatelessCustomActionsList as any as S.Schema<RuleGroupSourceCustomActionsList>;
 export interface RuleGroupSourceStatelessRuleMatchAttributesDestinationPorts {
   FromPort?: number;
   ToPort?: number;
 }
-const RuleGroupSourceStatelessRuleMatchAttributesDestinationPorts = /*@__PURE__*/ __L.at(
-  __c68,
-  2,
-) as any as S.Schema<RuleGroupSourceStatelessRuleMatchAttributesDestinationPorts>;
 export type RuleGroupSourceStatelessRuleMatchAttributesDestinationPortsList =
   RuleGroupSourceStatelessRuleMatchAttributesDestinationPorts[];
-const RuleGroupSourceStatelessRuleMatchAttributesDestinationPortsList = /*@__PURE__*/ __L.at(
-  __c68,
-  3,
-);
 export interface RuleGroupSourceStatelessRuleMatchAttributesDestinations {
   AddressDefinition?: string;
 }
-const RuleGroupSourceStatelessRuleMatchAttributesDestinations = /*@__PURE__*/ __L.at(
-  __c68,
-  4,
-) as any as S.Schema<RuleGroupSourceStatelessRuleMatchAttributesDestinations>;
 export type RuleGroupSourceStatelessRuleMatchAttributesDestinationsList =
   RuleGroupSourceStatelessRuleMatchAttributesDestinations[];
-const RuleGroupSourceStatelessRuleMatchAttributesDestinationsList = /*@__PURE__*/ __L.at(__c68, 5);
 export type RuleGroupSourceStatelessRuleMatchAttributesProtocolsList = number[];
-const RuleGroupSourceStatelessRuleMatchAttributesProtocolsList = /*@__PURE__*/ __L.at(__c68, 6);
 export interface RuleGroupSourceStatelessRuleMatchAttributesSourcePorts {
   FromPort?: number;
   ToPort?: number;
 }
-const RuleGroupSourceStatelessRuleMatchAttributesSourcePorts = /*@__PURE__*/ __L.at(
-  __c68,
-  7,
-) as any as S.Schema<RuleGroupSourceStatelessRuleMatchAttributesSourcePorts>;
 export type RuleGroupSourceStatelessRuleMatchAttributesSourcePortsList =
   RuleGroupSourceStatelessRuleMatchAttributesSourcePorts[];
-const RuleGroupSourceStatelessRuleMatchAttributesSourcePortsList = /*@__PURE__*/ __L.at(__c69, 0);
 export interface RuleGroupSourceStatelessRuleMatchAttributesSources {
   AddressDefinition?: string;
 }
 export type RuleGroupSourceStatelessRuleMatchAttributesSourcesList =
   RuleGroupSourceStatelessRuleMatchAttributesSources[];
-const RuleGroupSourceStatelessRuleMatchAttributesSourcesList =
-  RuleGroupSourceStatelessRuleMatchAttributesDestinationsList as any as S.Schema<RuleGroupSourceStatelessRuleMatchAttributesSourcesList>;
 export interface RuleGroupSourceStatelessRuleMatchAttributesTcpFlags {
   Flags?: string[];
   Masks?: string[];
 }
-const RuleGroupSourceStatelessRuleMatchAttributesTcpFlags = /*@__PURE__*/ __L.at(
-  __c69,
-  1,
-) as any as S.Schema<RuleGroupSourceStatelessRuleMatchAttributesTcpFlags>;
 export type RuleGroupSourceStatelessRuleMatchAttributesTcpFlagsList =
   RuleGroupSourceStatelessRuleMatchAttributesTcpFlags[];
-const RuleGroupSourceStatelessRuleMatchAttributesTcpFlagsList = /*@__PURE__*/ __L.at(__c69, 2);
 export interface RuleGroupSourceStatelessRuleMatchAttributes {
   DestinationPorts?: RuleGroupSourceStatelessRuleMatchAttributesDestinationPorts[];
   Destinations?: RuleGroupSourceStatelessRuleMatchAttributesDestinations[];
@@ -5149,48 +3433,29 @@ export interface RuleGroupSourceStatelessRuleMatchAttributes {
   Sources?: RuleGroupSourceStatelessRuleMatchAttributesSources[];
   TcpFlags?: RuleGroupSourceStatelessRuleMatchAttributesTcpFlags[];
 }
-const RuleGroupSourceStatelessRuleMatchAttributes = /*@__PURE__*/ __L.at(
-  __c69,
-  3,
-) as any as S.Schema<RuleGroupSourceStatelessRuleMatchAttributes>;
 export interface RuleGroupSourceStatelessRuleDefinition {
   Actions?: string[];
   MatchAttributes?: RuleGroupSourceStatelessRuleMatchAttributes;
 }
-const RuleGroupSourceStatelessRuleDefinition = /*@__PURE__*/ __L.at(
-  __c69,
-  4,
-) as any as S.Schema<RuleGroupSourceStatelessRuleDefinition>;
 export interface RuleGroupSourceStatelessRulesDetails {
   Priority?: number;
   RuleDefinition?: RuleGroupSourceStatelessRuleDefinition;
 }
-const RuleGroupSourceStatelessRulesDetails = /*@__PURE__*/ __L.at(
-  __c69,
-  5,
-) as any as S.Schema<RuleGroupSourceStatelessRulesDetails>;
 export type RuleGroupSourceStatelessRulesList = RuleGroupSourceStatelessRulesDetails[];
-const RuleGroupSourceStatelessRulesList = /*@__PURE__*/ __L.at(__c69, 6);
 export interface RuleGroupSourceStatelessRulesAndCustomActionsDetails {
   CustomActions?: RuleGroupSourceCustomActionsDetails[];
   StatelessRules?: RuleGroupSourceStatelessRulesDetails[];
 }
-const RuleGroupSourceStatelessRulesAndCustomActionsDetails = /*@__PURE__*/ __L.at(
-  __c69,
-  7,
-) as any as S.Schema<RuleGroupSourceStatelessRulesAndCustomActionsDetails>;
 export interface RuleGroupSource {
   RulesSourceList?: RuleGroupSourceListDetails;
   RulesString?: string;
   StatefulRules?: RuleGroupSourceStatefulRulesDetails[];
   StatelessRulesAndCustomActions?: RuleGroupSourceStatelessRulesAndCustomActionsDetails;
 }
-const RuleGroupSource = /*@__PURE__*/ __L.at(__c70, 0) as any as S.Schema<RuleGroupSource>;
 export interface RuleGroupDetails {
   RuleVariables?: RuleGroupVariables;
   RulesSource?: RuleGroupSource;
 }
-const RuleGroupDetails = /*@__PURE__*/ __L.at(__c70, 1) as any as S.Schema<RuleGroupDetails>;
 export interface AwsNetworkFirewallRuleGroupDetails {
   Capacity?: number;
   Description?: string;
@@ -5200,32 +3465,18 @@ export interface AwsNetworkFirewallRuleGroupDetails {
   RuleGroupName?: string;
   Type?: string;
 }
-const AwsNetworkFirewallRuleGroupDetails = /*@__PURE__*/ __L.at(
-  __c70,
-  2,
-) as any as S.Schema<AwsNetworkFirewallRuleGroupDetails>;
 export interface AwsRdsDbSecurityGroupEc2SecurityGroup {
   Ec2SecurityGroupId?: string;
   Ec2SecurityGroupName?: string;
   Ec2SecurityGroupOwnerId?: string;
   Status?: string;
 }
-const AwsRdsDbSecurityGroupEc2SecurityGroup = /*@__PURE__*/ __L.at(
-  __c70,
-  3,
-) as any as S.Schema<AwsRdsDbSecurityGroupEc2SecurityGroup>;
 export type AwsRdsDbSecurityGroupEc2SecurityGroups = AwsRdsDbSecurityGroupEc2SecurityGroup[];
-const AwsRdsDbSecurityGroupEc2SecurityGroups = /*@__PURE__*/ __L.at(__c70, 4);
 export interface AwsRdsDbSecurityGroupIpRange {
   CidrIp?: string;
   Status?: string;
 }
-const AwsRdsDbSecurityGroupIpRange = /*@__PURE__*/ __L.at(
-  __c70,
-  5,
-) as any as S.Schema<AwsRdsDbSecurityGroupIpRange>;
 export type AwsRdsDbSecurityGroupIpRanges = AwsRdsDbSecurityGroupIpRange[];
-const AwsRdsDbSecurityGroupIpRanges = /*@__PURE__*/ __L.at(__c70, 6);
 export interface AwsRdsDbSecurityGroupDetails {
   DbSecurityGroupArn?: string;
   DbSecurityGroupDescription?: string;
@@ -5235,18 +3486,10 @@ export interface AwsRdsDbSecurityGroupDetails {
   OwnerId?: string;
   VpcId?: string;
 }
-const AwsRdsDbSecurityGroupDetails = /*@__PURE__*/ __L.at(
-  __c70,
-  7,
-) as any as S.Schema<AwsRdsDbSecurityGroupDetails>;
 export interface AwsKinesisStreamStreamEncryptionDetails {
   EncryptionType?: string;
   KeyId?: string;
 }
-const AwsKinesisStreamStreamEncryptionDetails = /*@__PURE__*/ __L.at(
-  __c71,
-  0,
-) as any as S.Schema<AwsKinesisStreamStreamEncryptionDetails>;
 export interface AwsKinesisStreamDetails {
   Name?: string;
   Arn?: string;
@@ -5254,10 +3497,6 @@ export interface AwsKinesisStreamDetails {
   ShardCount?: number;
   RetentionPeriodHours?: number;
 }
-const AwsKinesisStreamDetails = /*@__PURE__*/ __L.at(
-  __c71,
-  1,
-) as any as S.Schema<AwsKinesisStreamDetails>;
 export interface AwsEc2TransitGatewayDetails {
   Id?: string;
   Description?: string;
@@ -5272,36 +3511,20 @@ export interface AwsEc2TransitGatewayDetails {
   MulticastSupport?: string;
   AmazonSideAsn?: number;
 }
-const AwsEc2TransitGatewayDetails = /*@__PURE__*/ __L.at(
-  __c71,
-  2,
-) as any as S.Schema<AwsEc2TransitGatewayDetails>;
 export interface AwsEfsAccessPointPosixUserDetails {
   Gid?: string;
   SecondaryGids?: string[];
   Uid?: string;
 }
-const AwsEfsAccessPointPosixUserDetails = /*@__PURE__*/ __L.at(
-  __c71,
-  3,
-) as any as S.Schema<AwsEfsAccessPointPosixUserDetails>;
 export interface AwsEfsAccessPointRootDirectoryCreationInfoDetails {
   OwnerGid?: string;
   OwnerUid?: string;
   Permissions?: string;
 }
-const AwsEfsAccessPointRootDirectoryCreationInfoDetails = /*@__PURE__*/ __L.at(
-  __c71,
-  4,
-) as any as S.Schema<AwsEfsAccessPointRootDirectoryCreationInfoDetails>;
 export interface AwsEfsAccessPointRootDirectoryDetails {
   CreationInfo?: AwsEfsAccessPointRootDirectoryCreationInfoDetails;
   Path?: string;
 }
-const AwsEfsAccessPointRootDirectoryDetails = /*@__PURE__*/ __L.at(
-  __c71,
-  5,
-) as any as S.Schema<AwsEfsAccessPointRootDirectoryDetails>;
 export interface AwsEfsAccessPointDetails {
   AccessPointId?: string;
   Arn?: string;
@@ -5310,28 +3533,15 @@ export interface AwsEfsAccessPointDetails {
   PosixUser?: AwsEfsAccessPointPosixUserDetails;
   RootDirectory?: AwsEfsAccessPointRootDirectoryDetails;
 }
-const AwsEfsAccessPointDetails = /*@__PURE__*/ __L.at(
-  __c71,
-  6,
-) as any as S.Schema<AwsEfsAccessPointDetails>;
 export interface AwsCloudFormationStackDriftInformationDetails {
   StackDriftStatus?: string;
 }
-const AwsCloudFormationStackDriftInformationDetails = /*@__PURE__*/ __L.at(
-  __c71,
-  7,
-) as any as S.Schema<AwsCloudFormationStackDriftInformationDetails>;
 export interface AwsCloudFormationStackOutputsDetails {
   Description?: string;
   OutputKey?: string;
   OutputValue?: string;
 }
-const AwsCloudFormationStackOutputsDetails = /*@__PURE__*/ __L.at(
-  __c72,
-  0,
-) as any as S.Schema<AwsCloudFormationStackOutputsDetails>;
 export type AwsCloudFormationStackOutputsList = AwsCloudFormationStackOutputsDetails[];
-const AwsCloudFormationStackOutputsList = /*@__PURE__*/ __L.at(__c72, 1);
 export interface AwsCloudFormationStackDetails {
   Capabilities?: string[];
   CreationTime?: string;
@@ -5349,17 +3559,11 @@ export interface AwsCloudFormationStackDetails {
   StackStatusReason?: string;
   TimeoutInMinutes?: number;
 }
-const AwsCloudFormationStackDetails = /*@__PURE__*/ __L.at(
-  __c72,
-  2,
-) as any as S.Schema<AwsCloudFormationStackDetails>;
 export interface AwsCloudWatchAlarmDimensionsDetails {
   Name?: string;
   Value?: string;
 }
 export type AwsCloudWatchAlarmDimensionsList = AwsCloudWatchAlarmDimensionsDetails[];
-const AwsCloudWatchAlarmDimensionsList =
-  AwsEcsClusterClusterSettingsList as any as S.Schema<AwsCloudWatchAlarmDimensionsList>;
 export interface AwsCloudWatchAlarmDetails {
   ActionsEnabled?: boolean;
   AlarmActions?: string[];
@@ -5384,37 +3588,19 @@ export interface AwsCloudWatchAlarmDetails {
   TreatMissingData?: string;
   Unit?: string;
 }
-const AwsCloudWatchAlarmDetails = /*@__PURE__*/ __L.at(
-  __c72,
-  3,
-) as any as S.Schema<AwsCloudWatchAlarmDetails>;
 export interface VpcInfoCidrBlockSetDetails {
   CidrBlock?: string;
 }
-const VpcInfoCidrBlockSetDetails = /*@__PURE__*/ __L.at(
-  __c72,
-  4,
-) as any as S.Schema<VpcInfoCidrBlockSetDetails>;
 export type VpcInfoCidrBlockSetList = VpcInfoCidrBlockSetDetails[];
-const VpcInfoCidrBlockSetList = /*@__PURE__*/ __L.at(__c72, 5);
 export interface VpcInfoIpv6CidrBlockSetDetails {
   Ipv6CidrBlock?: string;
 }
-const VpcInfoIpv6CidrBlockSetDetails = /*@__PURE__*/ __L.at(
-  __c72,
-  6,
-) as any as S.Schema<VpcInfoIpv6CidrBlockSetDetails>;
 export type VpcInfoIpv6CidrBlockSetList = VpcInfoIpv6CidrBlockSetDetails[];
-const VpcInfoIpv6CidrBlockSetList = /*@__PURE__*/ __L.at(__c72, 7);
 export interface VpcInfoPeeringOptionsDetails {
   AllowDnsResolutionFromRemoteVpc?: boolean;
   AllowEgressFromLocalClassicLinkToRemoteVpc?: boolean;
   AllowEgressFromLocalVpcToRemoteClassicLink?: boolean;
 }
-const VpcInfoPeeringOptionsDetails = /*@__PURE__*/ __L.at(
-  __c73,
-  0,
-) as any as S.Schema<VpcInfoPeeringOptionsDetails>;
 export interface AwsEc2VpcPeeringConnectionVpcInfoDetails {
   CidrBlock?: string;
   CidrBlockSet?: VpcInfoCidrBlockSetDetails[];
@@ -5424,18 +3610,10 @@ export interface AwsEc2VpcPeeringConnectionVpcInfoDetails {
   Region?: string;
   VpcId?: string;
 }
-const AwsEc2VpcPeeringConnectionVpcInfoDetails = /*@__PURE__*/ __L.at(
-  __c73,
-  1,
-) as any as S.Schema<AwsEc2VpcPeeringConnectionVpcInfoDetails>;
 export interface AwsEc2VpcPeeringConnectionStatusDetails {
   Code?: string;
   Message?: string;
 }
-const AwsEc2VpcPeeringConnectionStatusDetails = /*@__PURE__*/ __L.at(
-  __c73,
-  2,
-) as any as S.Schema<AwsEc2VpcPeeringConnectionStatusDetails>;
 export interface AwsEc2VpcPeeringConnectionDetails {
   AccepterVpcInfo?: AwsEc2VpcPeeringConnectionVpcInfoDetails;
   ExpirationTime?: string;
@@ -5443,65 +3621,40 @@ export interface AwsEc2VpcPeeringConnectionDetails {
   Status?: AwsEc2VpcPeeringConnectionStatusDetails;
   VpcPeeringConnectionId?: string;
 }
-const AwsEc2VpcPeeringConnectionDetails = /*@__PURE__*/ __L.at(
-  __c73,
-  3,
-) as any as S.Schema<AwsEc2VpcPeeringConnectionDetails>;
 export interface AwsWafRegionalRuleGroupRulesActionDetails {
   Type?: string;
 }
-const AwsWafRegionalRuleGroupRulesActionDetails =
-  AwsEcsServiceDeploymentControllerDetails as any as S.Schema<AwsWafRegionalRuleGroupRulesActionDetails>;
 export interface AwsWafRegionalRuleGroupRulesDetails {
   Action?: AwsWafRegionalRuleGroupRulesActionDetails;
   Priority?: number;
   RuleId?: string;
   Type?: string;
 }
-const AwsWafRegionalRuleGroupRulesDetails = /*@__PURE__*/ __L.at(
-  __c73,
-  4,
-) as any as S.Schema<AwsWafRegionalRuleGroupRulesDetails>;
 export type AwsWafRegionalRuleGroupRulesList = AwsWafRegionalRuleGroupRulesDetails[];
-const AwsWafRegionalRuleGroupRulesList = /*@__PURE__*/ __L.at(__c73, 5);
 export interface AwsWafRegionalRuleGroupDetails {
   MetricName?: string;
   Name?: string;
   RuleGroupId?: string;
   Rules?: AwsWafRegionalRuleGroupRulesDetails[];
 }
-const AwsWafRegionalRuleGroupDetails = /*@__PURE__*/ __L.at(
-  __c73,
-  6,
-) as any as S.Schema<AwsWafRegionalRuleGroupDetails>;
 export interface AwsWafRegionalRulePredicateListDetails {
   DataId?: string;
   Negated?: boolean;
   Type?: string;
 }
 export type AwsWafRegionalRulePredicateList = AwsWafRegionalRulePredicateListDetails[];
-const AwsWafRegionalRulePredicateList =
-  AwsWafRateBasedRuleMatchPredicateList as any as S.Schema<AwsWafRegionalRulePredicateList>;
 export interface AwsWafRegionalRuleDetails {
   MetricName?: string;
   Name?: string;
   PredicateList?: AwsWafRegionalRulePredicateListDetails[];
   RuleId?: string;
 }
-const AwsWafRegionalRuleDetails = /*@__PURE__*/ __L.at(
-  __c73,
-  7,
-) as any as S.Schema<AwsWafRegionalRuleDetails>;
 export interface AwsWafRegionalWebAclRulesListActionDetails {
   Type?: string;
 }
-const AwsWafRegionalWebAclRulesListActionDetails =
-  AwsEcsServiceDeploymentControllerDetails as any as S.Schema<AwsWafRegionalWebAclRulesListActionDetails>;
 export interface AwsWafRegionalWebAclRulesListOverrideActionDetails {
   Type?: string;
 }
-const AwsWafRegionalWebAclRulesListOverrideActionDetails =
-  AwsEcsServiceDeploymentControllerDetails as any as S.Schema<AwsWafRegionalWebAclRulesListOverrideActionDetails>;
 export interface AwsWafRegionalWebAclRulesListDetails {
   Action?: AwsWafRegionalWebAclRulesListActionDetails;
   OverrideAction?: AwsWafRegionalWebAclRulesListOverrideActionDetails;
@@ -5509,12 +3662,7 @@ export interface AwsWafRegionalWebAclRulesListDetails {
   RuleId?: string;
   Type?: string;
 }
-const AwsWafRegionalWebAclRulesListDetails = /*@__PURE__*/ __L.at(
-  __c74,
-  0,
-) as any as S.Schema<AwsWafRegionalWebAclRulesListDetails>;
 export type AwsWafRegionalWebAclRulesList = AwsWafRegionalWebAclRulesListDetails[];
-const AwsWafRegionalWebAclRulesList = /*@__PURE__*/ __L.at(__c74, 1);
 export interface AwsWafRegionalWebAclDetails {
   DefaultAction?: string;
   MetricName?: string;
@@ -5522,26 +3670,18 @@ export interface AwsWafRegionalWebAclDetails {
   RulesList?: AwsWafRegionalWebAclRulesListDetails[];
   WebAclId?: string;
 }
-const AwsWafRegionalWebAclDetails = /*@__PURE__*/ __L.at(
-  __c74,
-  2,
-) as any as S.Schema<AwsWafRegionalWebAclDetails>;
 export interface AwsWafRulePredicateListDetails {
   DataId?: string;
   Negated?: boolean;
   Type?: string;
 }
-const AwsWafRulePredicateListDetails =
-  AwsWafRateBasedRuleMatchPredicate as any as S.Schema<AwsWafRulePredicateListDetails>;
 export type AwsWafRulePredicateList = AwsWafRulePredicateListDetails[];
-const AwsWafRulePredicateList = /*@__PURE__*/ __L.at(__c74, 3);
 export interface AwsWafRuleDetails {
   MetricName?: string;
   Name?: string;
   PredicateList?: AwsWafRulePredicateListDetails[];
   RuleId?: string;
 }
-const AwsWafRuleDetails = /*@__PURE__*/ __L.at(__c74, 4) as any as S.Schema<AwsWafRuleDetails>;
 export interface AwsWafRuleGroupRulesActionDetails {
   Type?: string;
 }
@@ -5551,37 +3691,22 @@ export interface AwsWafRuleGroupRulesDetails {
   RuleId?: string;
   Type?: string;
 }
-const AwsWafRuleGroupRulesDetails =
-  AwsWafRegionalRuleGroupRulesDetails as any as S.Schema<AwsWafRuleGroupRulesDetails>;
 export type AwsWafRuleGroupRulesList = AwsWafRuleGroupRulesDetails[];
-const AwsWafRuleGroupRulesList = /*@__PURE__*/ __L.at(__c74, 5);
 export interface AwsWafRuleGroupDetails {
   MetricName?: string;
   Name?: string;
   RuleGroupId?: string;
   Rules?: AwsWafRuleGroupRulesDetails[];
 }
-const AwsWafRuleGroupDetails = /*@__PURE__*/ __L.at(
-  __c74,
-  6,
-) as any as S.Schema<AwsWafRuleGroupDetails>;
 export interface AwsEcsTaskVolumeHostDetails {
   SourcePath?: string;
 }
-const AwsEcsTaskVolumeHostDetails =
-  AwsEcsTaskDefinitionVolumesHostDetails as any as S.Schema<AwsEcsTaskVolumeHostDetails>;
 export interface AwsEcsTaskVolumeDetails {
   Name?: string;
   Host?: AwsEcsTaskVolumeHostDetails;
 }
-const AwsEcsTaskVolumeDetails = /*@__PURE__*/ __L.at(
-  __c74,
-  7,
-) as any as S.Schema<AwsEcsTaskVolumeDetails>;
 export type AwsEcsTaskVolumeDetailsList = AwsEcsTaskVolumeDetails[];
-const AwsEcsTaskVolumeDetailsList = /*@__PURE__*/ __L.at(__c75, 0);
 export type AwsEcsContainerDetailsList = AwsEcsContainerDetails[];
-const AwsEcsContainerDetailsList = /*@__PURE__*/ __L.at(__c75, 1);
 export interface AwsEcsTaskDetails {
   ClusterArn?: string;
   TaskDefinitionArn?: string;
@@ -5593,15 +3718,10 @@ export interface AwsEcsTaskDetails {
   Volumes?: AwsEcsTaskVolumeDetails[];
   Containers?: AwsEcsContainerDetails[];
 }
-const AwsEcsTaskDetails = /*@__PURE__*/ __L.at(__c75, 2) as any as S.Schema<AwsEcsTaskDetails>;
 export interface AwsBackupBackupVaultNotificationsDetails {
   BackupVaultEvents?: string[];
   SnsTopicArn?: string;
 }
-const AwsBackupBackupVaultNotificationsDetails = /*@__PURE__*/ __L.at(
-  __c75,
-  3,
-) as any as S.Schema<AwsBackupBackupVaultNotificationsDetails>;
 export interface AwsBackupBackupVaultDetails {
   BackupVaultArn?: string;
   BackupVaultName?: string;
@@ -5609,39 +3729,21 @@ export interface AwsBackupBackupVaultDetails {
   Notifications?: AwsBackupBackupVaultNotificationsDetails;
   AccessPolicy?: string;
 }
-const AwsBackupBackupVaultDetails = /*@__PURE__*/ __L.at(
-  __c75,
-  4,
-) as any as S.Schema<AwsBackupBackupVaultDetails>;
 export interface AwsBackupBackupPlanAdvancedBackupSettingsDetails {
   BackupOptions?: { [key: string]: string | undefined };
   ResourceType?: string;
 }
-const AwsBackupBackupPlanAdvancedBackupSettingsDetails = /*@__PURE__*/ __L.at(
-  __c75,
-  5,
-) as any as S.Schema<AwsBackupBackupPlanAdvancedBackupSettingsDetails>;
 export type AwsBackupBackupPlanAdvancedBackupSettingsList =
   AwsBackupBackupPlanAdvancedBackupSettingsDetails[];
-const AwsBackupBackupPlanAdvancedBackupSettingsList = /*@__PURE__*/ __L.at(__c75, 6);
 export interface AwsBackupBackupPlanLifecycleDetails {
   DeleteAfterDays?: number;
   MoveToColdStorageAfterDays?: number;
 }
-const AwsBackupBackupPlanLifecycleDetails = /*@__PURE__*/ __L.at(
-  __c75,
-  7,
-) as any as S.Schema<AwsBackupBackupPlanLifecycleDetails>;
 export interface AwsBackupBackupPlanRuleCopyActionsDetails {
   DestinationBackupVaultArn?: string;
   Lifecycle?: AwsBackupBackupPlanLifecycleDetails;
 }
-const AwsBackupBackupPlanRuleCopyActionsDetails = /*@__PURE__*/ __L.at(
-  __c76,
-  0,
-) as any as S.Schema<AwsBackupBackupPlanRuleCopyActionsDetails>;
 export type AwsBackupBackupPlanRuleCopyActionsList = AwsBackupBackupPlanRuleCopyActionsDetails[];
-const AwsBackupBackupPlanRuleCopyActionsList = /*@__PURE__*/ __L.at(__c76, 1);
 export interface AwsBackupBackupPlanRuleDetails {
   TargetBackupVault?: string;
   StartWindowMinutes?: number;
@@ -5653,55 +3755,32 @@ export interface AwsBackupBackupPlanRuleDetails {
   CopyActions?: AwsBackupBackupPlanRuleCopyActionsDetails[];
   Lifecycle?: AwsBackupBackupPlanLifecycleDetails;
 }
-const AwsBackupBackupPlanRuleDetails = /*@__PURE__*/ __L.at(
-  __c76,
-  2,
-) as any as S.Schema<AwsBackupBackupPlanRuleDetails>;
 export type AwsBackupBackupPlanRuleList = AwsBackupBackupPlanRuleDetails[];
-const AwsBackupBackupPlanRuleList = /*@__PURE__*/ __L.at(__c76, 3);
 export interface AwsBackupBackupPlanBackupPlanDetails {
   BackupPlanName?: string;
   AdvancedBackupSettings?: AwsBackupBackupPlanAdvancedBackupSettingsDetails[];
   BackupPlanRule?: AwsBackupBackupPlanRuleDetails[];
 }
-const AwsBackupBackupPlanBackupPlanDetails = /*@__PURE__*/ __L.at(
-  __c76,
-  4,
-) as any as S.Schema<AwsBackupBackupPlanBackupPlanDetails>;
 export interface AwsBackupBackupPlanDetails {
   BackupPlan?: AwsBackupBackupPlanBackupPlanDetails;
   BackupPlanArn?: string;
   BackupPlanId?: string;
   VersionId?: string;
 }
-const AwsBackupBackupPlanDetails = /*@__PURE__*/ __L.at(
-  __c76,
-  5,
-) as any as S.Schema<AwsBackupBackupPlanDetails>;
 export interface AwsBackupRecoveryPointCalculatedLifecycleDetails {
   DeleteAt?: string;
   MoveToColdStorageAt?: string;
 }
-const AwsBackupRecoveryPointCalculatedLifecycleDetails = /*@__PURE__*/ __L.at(
-  __c76,
-  6,
-) as any as S.Schema<AwsBackupRecoveryPointCalculatedLifecycleDetails>;
 export interface AwsBackupRecoveryPointCreatedByDetails {
   BackupPlanArn?: string;
   BackupPlanId?: string;
   BackupPlanVersion?: string;
   BackupRuleId?: string;
 }
-const AwsBackupRecoveryPointCreatedByDetails = /*@__PURE__*/ __L.at(
-  __c76,
-  7,
-) as any as S.Schema<AwsBackupRecoveryPointCreatedByDetails>;
 export interface AwsBackupRecoveryPointLifecycleDetails {
   DeleteAfterDays?: number;
   MoveToColdStorageAfterDays?: number;
 }
-const AwsBackupRecoveryPointLifecycleDetails =
-  AwsBackupBackupPlanLifecycleDetails as any as S.Schema<AwsBackupRecoveryPointLifecycleDetails>;
 export interface AwsBackupRecoveryPointDetails {
   BackupSizeInBytes?: number;
   BackupVaultArn?: string;
@@ -5723,10 +3802,6 @@ export interface AwsBackupRecoveryPointDetails {
   StatusMessage?: string;
   StorageClass?: string;
 }
-const AwsBackupRecoveryPointDetails = /*@__PURE__*/ __L.at(
-  __c77,
-  0,
-) as any as S.Schema<AwsBackupRecoveryPointDetails>;
 export interface AwsEc2LaunchTemplateDataBlockDeviceMappingSetEbsDetails {
   DeleteOnTermination?: boolean;
   Encrypted?: boolean;
@@ -5737,96 +3812,50 @@ export interface AwsEc2LaunchTemplateDataBlockDeviceMappingSetEbsDetails {
   VolumeSize?: number;
   VolumeType?: string;
 }
-const AwsEc2LaunchTemplateDataBlockDeviceMappingSetEbsDetails = /*@__PURE__*/ __L.at(
-  __c77,
-  1,
-) as any as S.Schema<AwsEc2LaunchTemplateDataBlockDeviceMappingSetEbsDetails>;
 export interface AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails {
   DeviceName?: string;
   Ebs?: AwsEc2LaunchTemplateDataBlockDeviceMappingSetEbsDetails;
   NoDevice?: string;
   VirtualName?: string;
 }
-const AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails = /*@__PURE__*/ __L.at(
-  __c77,
-  2,
-) as any as S.Schema<AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails>;
 export type AwsEc2LaunchTemplateDataBlockDeviceMappingSetList =
   AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails[];
-const AwsEc2LaunchTemplateDataBlockDeviceMappingSetList = /*@__PURE__*/ __L.at(__c77, 3);
 export interface AwsEc2LaunchTemplateDataCapacityReservationSpecificationCapacityReservationTargetDetails {
   CapacityReservationId?: string;
   CapacityReservationResourceGroupArn?: string;
 }
-const AwsEc2LaunchTemplateDataCapacityReservationSpecificationCapacityReservationTargetDetails =
-  /*@__PURE__*/ __L.at(
-    __c77,
-    4,
-  ) as any as S.Schema<AwsEc2LaunchTemplateDataCapacityReservationSpecificationCapacityReservationTargetDetails>;
 export interface AwsEc2LaunchTemplateDataCapacityReservationSpecificationDetails {
   CapacityReservationPreference?: string;
   CapacityReservationTarget?: AwsEc2LaunchTemplateDataCapacityReservationSpecificationCapacityReservationTargetDetails;
 }
-const AwsEc2LaunchTemplateDataCapacityReservationSpecificationDetails = /*@__PURE__*/ __L.at(
-  __c77,
-  5,
-) as any as S.Schema<AwsEc2LaunchTemplateDataCapacityReservationSpecificationDetails>;
 export interface AwsEc2LaunchTemplateDataCpuOptionsDetails {
   CoreCount?: number;
   ThreadsPerCore?: number;
 }
-const AwsEc2LaunchTemplateDataCpuOptionsDetails = /*@__PURE__*/ __L.at(
-  __c77,
-  6,
-) as any as S.Schema<AwsEc2LaunchTemplateDataCpuOptionsDetails>;
 export interface AwsEc2LaunchTemplateDataCreditSpecificationDetails {
   CpuCredits?: string;
 }
-const AwsEc2LaunchTemplateDataCreditSpecificationDetails = /*@__PURE__*/ __L.at(
-  __c77,
-  7,
-) as any as S.Schema<AwsEc2LaunchTemplateDataCreditSpecificationDetails>;
 export interface AwsEc2LaunchTemplateDataElasticGpuSpecificationSetDetails {
   Type?: string;
 }
-const AwsEc2LaunchTemplateDataElasticGpuSpecificationSetDetails = /*@__PURE__*/ __L.at(
-  __c78,
-  0,
-) as any as S.Schema<AwsEc2LaunchTemplateDataElasticGpuSpecificationSetDetails>;
 export type AwsEc2LaunchTemplateDataElasticGpuSpecificationSetList =
   AwsEc2LaunchTemplateDataElasticGpuSpecificationSetDetails[];
-const AwsEc2LaunchTemplateDataElasticGpuSpecificationSetList = /*@__PURE__*/ __L.at(__c78, 1);
 export interface AwsEc2LaunchTemplateDataElasticInferenceAcceleratorSetDetails {
   Count?: number;
   Type?: string;
 }
-const AwsEc2LaunchTemplateDataElasticInferenceAcceleratorSetDetails = /*@__PURE__*/ __L.at(
-  __c78,
-  2,
-) as any as S.Schema<AwsEc2LaunchTemplateDataElasticInferenceAcceleratorSetDetails>;
 export type AwsEc2LaunchTemplateDataElasticInferenceAcceleratorSetList =
   AwsEc2LaunchTemplateDataElasticInferenceAcceleratorSetDetails[];
-const AwsEc2LaunchTemplateDataElasticInferenceAcceleratorSetList = /*@__PURE__*/ __L.at(__c78, 3);
 export interface AwsEc2LaunchTemplateDataEnclaveOptionsDetails {
   Enabled?: boolean;
 }
-const AwsEc2LaunchTemplateDataEnclaveOptionsDetails =
-  AwsElasticsearchDomainNodeToNodeEncryptionOptions as any as S.Schema<AwsEc2LaunchTemplateDataEnclaveOptionsDetails>;
 export interface AwsEc2LaunchTemplateDataHibernationOptionsDetails {
   Configured?: boolean;
 }
-const AwsEc2LaunchTemplateDataHibernationOptionsDetails = /*@__PURE__*/ __L.at(
-  __c78,
-  4,
-) as any as S.Schema<AwsEc2LaunchTemplateDataHibernationOptionsDetails>;
 export interface AwsEc2LaunchTemplateDataIamInstanceProfileDetails {
   Arn?: string;
   Name?: string;
 }
-const AwsEc2LaunchTemplateDataIamInstanceProfileDetails = /*@__PURE__*/ __L.at(
-  __c78,
-  5,
-) as any as S.Schema<AwsEc2LaunchTemplateDataIamInstanceProfileDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceMarketOptionsSpotOptionsDetails {
   BlockDurationMinutes?: number;
   InstanceInterruptionBehavior?: string;
@@ -5834,70 +3863,42 @@ export interface AwsEc2LaunchTemplateDataInstanceMarketOptionsSpotOptionsDetails
   SpotInstanceType?: string;
   ValidUntil?: string;
 }
-const AwsEc2LaunchTemplateDataInstanceMarketOptionsSpotOptionsDetails = /*@__PURE__*/ __L.at(
-  __c78,
-  6,
-) as any as S.Schema<AwsEc2LaunchTemplateDataInstanceMarketOptionsSpotOptionsDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceMarketOptionsDetails {
   MarketType?: string;
   SpotOptions?: AwsEc2LaunchTemplateDataInstanceMarketOptionsSpotOptionsDetails;
 }
-const AwsEc2LaunchTemplateDataInstanceMarketOptionsDetails = /*@__PURE__*/ __L.at(
-  __c78,
-  7,
-) as any as S.Schema<AwsEc2LaunchTemplateDataInstanceMarketOptionsDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorCountDetails {
   Max?: number;
   Min?: number;
 }
-const AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorCountDetails = /*@__PURE__*/ __L.at(
-  __c79,
-  0,
-) as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorCountDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorTotalMemoryMiBDetails {
   Max?: number;
   Min?: number;
 }
-const AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorTotalMemoryMiBDetails =
-  AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorCountDetails as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorTotalMemoryMiBDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceRequirementsBaselineEbsBandwidthMbpsDetails {
   Max?: number;
   Min?: number;
 }
-const AwsEc2LaunchTemplateDataInstanceRequirementsBaselineEbsBandwidthMbpsDetails =
-  AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorCountDetails as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsBaselineEbsBandwidthMbpsDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceRequirementsMemoryGiBPerVCpuDetails {
   Max?: number;
   Min?: number;
 }
-const AwsEc2LaunchTemplateDataInstanceRequirementsMemoryGiBPerVCpuDetails =
-  AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorCountDetails as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsMemoryGiBPerVCpuDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceRequirementsMemoryMiBDetails {
   Max?: number;
   Min?: number;
 }
-const AwsEc2LaunchTemplateDataInstanceRequirementsMemoryMiBDetails = /*@__PURE__*/ __L.at(
-  __c79,
-  1,
-) as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsMemoryMiBDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceRequirementsNetworkInterfaceCountDetails {
   Max?: number;
   Min?: number;
 }
-const AwsEc2LaunchTemplateDataInstanceRequirementsNetworkInterfaceCountDetails =
-  AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorCountDetails as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsNetworkInterfaceCountDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceRequirementsTotalLocalStorageGBDetails {
   Max?: number;
   Min?: number;
 }
-const AwsEc2LaunchTemplateDataInstanceRequirementsTotalLocalStorageGBDetails =
-  AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorCountDetails as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsTotalLocalStorageGBDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails {
   Max?: number;
   Min?: number;
 }
-const AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails =
-  AwsEc2LaunchTemplateDataInstanceRequirementsMemoryMiBDetails as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails>;
 export interface AwsEc2LaunchTemplateDataInstanceRequirementsDetails {
   AcceleratorCount?: AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorCountDetails;
   AcceleratorManufacturers?: string[];
@@ -5921,26 +3922,13 @@ export interface AwsEc2LaunchTemplateDataInstanceRequirementsDetails {
   TotalLocalStorageGB?: AwsEc2LaunchTemplateDataInstanceRequirementsTotalLocalStorageGBDetails;
   VCpuCount?: AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails;
 }
-const AwsEc2LaunchTemplateDataInstanceRequirementsDetails = /*@__PURE__*/ __L.at(
-  __c79,
-  2,
-) as any as S.Schema<AwsEc2LaunchTemplateDataInstanceRequirementsDetails>;
 export interface AwsEc2LaunchTemplateDataLicenseSetDetails {
   LicenseConfigurationArn?: string;
 }
-const AwsEc2LaunchTemplateDataLicenseSetDetails = /*@__PURE__*/ __L.at(
-  __c79,
-  3,
-) as any as S.Schema<AwsEc2LaunchTemplateDataLicenseSetDetails>;
 export type AwsEc2LaunchTemplateDataLicenseSetList = AwsEc2LaunchTemplateDataLicenseSetDetails[];
-const AwsEc2LaunchTemplateDataLicenseSetList = /*@__PURE__*/ __L.at(__c79, 4);
 export interface AwsEc2LaunchTemplateDataMaintenanceOptionsDetails {
   AutoRecovery?: string;
 }
-const AwsEc2LaunchTemplateDataMaintenanceOptionsDetails = /*@__PURE__*/ __L.at(
-  __c79,
-  5,
-) as any as S.Schema<AwsEc2LaunchTemplateDataMaintenanceOptionsDetails>;
 export interface AwsEc2LaunchTemplateDataMetadataOptionsDetails {
   HttpEndpoint?: string;
   HttpProtocolIpv6?: string;
@@ -5948,59 +3936,30 @@ export interface AwsEc2LaunchTemplateDataMetadataOptionsDetails {
   HttpPutResponseHopLimit?: number;
   InstanceMetadataTags?: string;
 }
-const AwsEc2LaunchTemplateDataMetadataOptionsDetails = /*@__PURE__*/ __L.at(
-  __c79,
-  6,
-) as any as S.Schema<AwsEc2LaunchTemplateDataMetadataOptionsDetails>;
 export interface AwsEc2LaunchTemplateDataMonitoringDetails {
   Enabled?: boolean;
 }
-const AwsEc2LaunchTemplateDataMonitoringDetails =
-  AwsElasticsearchDomainNodeToNodeEncryptionOptions as any as S.Schema<AwsEc2LaunchTemplateDataMonitoringDetails>;
 export interface AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv4PrefixesDetails {
   Ipv4Prefix?: string;
 }
-const AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv4PrefixesDetails = /*@__PURE__*/ __L.at(
-  __c79,
-  7,
-) as any as S.Schema<AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv4PrefixesDetails>;
 export type AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv4PrefixesList =
   AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv4PrefixesDetails[];
-const AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv4PrefixesList = /*@__PURE__*/ __L.at(__c80, 0);
 export interface AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6AddressesDetails {
   Ipv6Address?: string;
 }
-const AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6AddressesDetails = /*@__PURE__*/ __L.at(
-  __c80,
-  1,
-) as any as S.Schema<AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6AddressesDetails>;
 export type AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6AddressesList =
   AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6AddressesDetails[];
-const AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6AddressesList = /*@__PURE__*/ __L.at(__c80, 2);
 export interface AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6PrefixesDetails {
   Ipv6Prefix?: string;
 }
-const AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6PrefixesDetails = /*@__PURE__*/ __L.at(
-  __c80,
-  3,
-) as any as S.Schema<AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6PrefixesDetails>;
 export type AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6PrefixesList =
   AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6PrefixesDetails[];
-const AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6PrefixesList = /*@__PURE__*/ __L.at(__c80, 4);
 export interface AwsEc2LaunchTemplateDataNetworkInterfaceSetPrivateIpAddressesDetails {
   Primary?: boolean;
   PrivateIpAddress?: string;
 }
-const AwsEc2LaunchTemplateDataNetworkInterfaceSetPrivateIpAddressesDetails = /*@__PURE__*/ __L.at(
-  __c80,
-  5,
-) as any as S.Schema<AwsEc2LaunchTemplateDataNetworkInterfaceSetPrivateIpAddressesDetails>;
 export type AwsEc2LaunchTemplateDataNetworkInterfaceSetPrivateIpAddressesList =
   AwsEc2LaunchTemplateDataNetworkInterfaceSetPrivateIpAddressesDetails[];
-const AwsEc2LaunchTemplateDataNetworkInterfaceSetPrivateIpAddressesList = /*@__PURE__*/ __L.at(
-  __c80,
-  6,
-);
 export interface AwsEc2LaunchTemplateDataNetworkInterfaceSetDetails {
   AssociateCarrierIpAddress?: boolean;
   AssociatePublicIpAddress?: boolean;
@@ -6022,13 +3981,8 @@ export interface AwsEc2LaunchTemplateDataNetworkInterfaceSetDetails {
   SecondaryPrivateIpAddressCount?: number;
   SubnetId?: string;
 }
-const AwsEc2LaunchTemplateDataNetworkInterfaceSetDetails = /*@__PURE__*/ __L.at(
-  __c80,
-  7,
-) as any as S.Schema<AwsEc2LaunchTemplateDataNetworkInterfaceSetDetails>;
 export type AwsEc2LaunchTemplateDataNetworkInterfaceSetList =
   AwsEc2LaunchTemplateDataNetworkInterfaceSetDetails[];
-const AwsEc2LaunchTemplateDataNetworkInterfaceSetList = /*@__PURE__*/ __L.at(__c81, 0);
 export interface AwsEc2LaunchTemplateDataPlacementDetails {
   Affinity?: string;
   AvailabilityZone?: string;
@@ -6039,19 +3993,11 @@ export interface AwsEc2LaunchTemplateDataPlacementDetails {
   SpreadDomain?: string;
   Tenancy?: string;
 }
-const AwsEc2LaunchTemplateDataPlacementDetails = /*@__PURE__*/ __L.at(
-  __c81,
-  1,
-) as any as S.Schema<AwsEc2LaunchTemplateDataPlacementDetails>;
 export interface AwsEc2LaunchTemplateDataPrivateDnsNameOptionsDetails {
   EnableResourceNameDnsAAAARecord?: boolean;
   EnableResourceNameDnsARecord?: boolean;
   HostnameType?: string;
 }
-const AwsEc2LaunchTemplateDataPrivateDnsNameOptionsDetails = /*@__PURE__*/ __L.at(
-  __c81,
-  2,
-) as any as S.Schema<AwsEc2LaunchTemplateDataPrivateDnsNameOptionsDetails>;
 export interface AwsEc2LaunchTemplateDataDetails {
   BlockDeviceMappingSet?: AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails[];
   CapacityReservationSpecification?: AwsEc2LaunchTemplateDataCapacityReservationSpecificationDetails;
@@ -6084,10 +4030,6 @@ export interface AwsEc2LaunchTemplateDataDetails {
   SecurityGroupSet?: string[];
   UserData?: string;
 }
-const AwsEc2LaunchTemplateDataDetails = /*@__PURE__*/ __L.at(
-  __c81,
-  3,
-) as any as S.Schema<AwsEc2LaunchTemplateDataDetails>;
 export interface AwsEc2LaunchTemplateDetails {
   LaunchTemplateName?: string;
   Id?: string;
@@ -6095,17 +4037,9 @@ export interface AwsEc2LaunchTemplateDetails {
   DefaultVersionNumber?: number;
   LatestVersionNumber?: number;
 }
-const AwsEc2LaunchTemplateDetails = /*@__PURE__*/ __L.at(
-  __c81,
-  4,
-) as any as S.Schema<AwsEc2LaunchTemplateDetails>;
 export interface AwsSageMakerNotebookInstanceMetadataServiceConfigurationDetails {
   MinimumInstanceMetadataServiceVersion?: string;
 }
-const AwsSageMakerNotebookInstanceMetadataServiceConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c81,
-  5,
-) as any as S.Schema<AwsSageMakerNotebookInstanceMetadataServiceConfigurationDetails>;
 export interface AwsSageMakerNotebookInstanceDetails {
   AcceleratorTypes?: string[];
   AdditionalCodeRepositories?: string[];
@@ -6128,98 +4062,52 @@ export interface AwsSageMakerNotebookInstanceDetails {
   Url?: string;
   VolumeSizeInGB?: number;
 }
-const AwsSageMakerNotebookInstanceDetails = /*@__PURE__*/ __L.at(
-  __c81,
-  6,
-) as any as S.Schema<AwsSageMakerNotebookInstanceDetails>;
 export interface AwsWafv2WebAclCaptchaConfigImmunityTimePropertyDetails {
   ImmunityTime?: number;
 }
-const AwsWafv2WebAclCaptchaConfigImmunityTimePropertyDetails = /*@__PURE__*/ __L.at(
-  __c81,
-  7,
-) as any as S.Schema<AwsWafv2WebAclCaptchaConfigImmunityTimePropertyDetails>;
 export interface AwsWafv2WebAclCaptchaConfigDetails {
   ImmunityTimeProperty?: AwsWafv2WebAclCaptchaConfigImmunityTimePropertyDetails;
 }
-const AwsWafv2WebAclCaptchaConfigDetails = /*@__PURE__*/ __L.at(
-  __c82,
-  0,
-) as any as S.Schema<AwsWafv2WebAclCaptchaConfigDetails>;
 export interface AwsWafv2CustomHttpHeader {
   Name?: string;
   Value?: string;
 }
 export type AwsWafv2InsertHeadersList = AwsWafv2CustomHttpHeader[];
-const AwsWafv2InsertHeadersList =
-  AwsRdsDbProcessorFeatures as any as S.Schema<AwsWafv2InsertHeadersList>;
 export interface AwsWafv2CustomRequestHandlingDetails {
   InsertHeaders?: AwsWafv2CustomHttpHeader[];
 }
-const AwsWafv2CustomRequestHandlingDetails = /*@__PURE__*/ __L.at(
-  __c82,
-  1,
-) as any as S.Schema<AwsWafv2CustomRequestHandlingDetails>;
 export interface AwsWafv2ActionAllowDetails {
   CustomRequestHandling?: AwsWafv2CustomRequestHandlingDetails;
 }
-const AwsWafv2ActionAllowDetails = /*@__PURE__*/ __L.at(
-  __c82,
-  2,
-) as any as S.Schema<AwsWafv2ActionAllowDetails>;
 export interface AwsWafv2CustomResponseDetails {
   CustomResponseBodyKey?: string;
   ResponseCode?: number;
   ResponseHeaders?: AwsWafv2CustomHttpHeader[];
 }
-const AwsWafv2CustomResponseDetails = /*@__PURE__*/ __L.at(
-  __c82,
-  3,
-) as any as S.Schema<AwsWafv2CustomResponseDetails>;
 export interface AwsWafv2ActionBlockDetails {
   CustomResponse?: AwsWafv2CustomResponseDetails;
 }
-const AwsWafv2ActionBlockDetails = /*@__PURE__*/ __L.at(
-  __c82,
-  4,
-) as any as S.Schema<AwsWafv2ActionBlockDetails>;
 export interface AwsWafv2WebAclActionDetails {
   Allow?: AwsWafv2ActionAllowDetails;
   Block?: AwsWafv2ActionBlockDetails;
 }
-const AwsWafv2WebAclActionDetails = /*@__PURE__*/ __L.at(
-  __c82,
-  5,
-) as any as S.Schema<AwsWafv2WebAclActionDetails>;
 export interface AwsWafv2RulesActionCaptchaDetails {
   CustomRequestHandling?: AwsWafv2CustomRequestHandlingDetails;
 }
-const AwsWafv2RulesActionCaptchaDetails =
-  AwsWafv2ActionAllowDetails as any as S.Schema<AwsWafv2RulesActionCaptchaDetails>;
 export interface AwsWafv2RulesActionCountDetails {
   CustomRequestHandling?: AwsWafv2CustomRequestHandlingDetails;
 }
-const AwsWafv2RulesActionCountDetails =
-  AwsWafv2ActionAllowDetails as any as S.Schema<AwsWafv2RulesActionCountDetails>;
 export interface AwsWafv2RulesActionDetails {
   Allow?: AwsWafv2ActionAllowDetails;
   Block?: AwsWafv2ActionBlockDetails;
   Captcha?: AwsWafv2RulesActionCaptchaDetails;
   Count?: AwsWafv2RulesActionCountDetails;
 }
-const AwsWafv2RulesActionDetails = /*@__PURE__*/ __L.at(
-  __c82,
-  6,
-) as any as S.Schema<AwsWafv2RulesActionDetails>;
 export interface AwsWafv2VisibilityConfigDetails {
   CloudWatchMetricsEnabled?: boolean;
   MetricName?: string;
   SampledRequestsEnabled?: boolean;
 }
-const AwsWafv2VisibilityConfigDetails = /*@__PURE__*/ __L.at(
-  __c82,
-  7,
-) as any as S.Schema<AwsWafv2VisibilityConfigDetails>;
 export interface AwsWafv2RulesDetails {
   Action?: AwsWafv2RulesActionDetails;
   Name?: string;
@@ -6227,12 +4115,7 @@ export interface AwsWafv2RulesDetails {
   Priority?: number;
   VisibilityConfig?: AwsWafv2VisibilityConfigDetails;
 }
-const AwsWafv2RulesDetails = /*@__PURE__*/ __L.at(
-  __c83,
-  0,
-) as any as S.Schema<AwsWafv2RulesDetails>;
 export type AwsWafv2RulesList = AwsWafv2RulesDetails[];
-const AwsWafv2RulesList = /*@__PURE__*/ __L.at(__c83, 1);
 export interface AwsWafv2WebAclDetails {
   Name?: string;
   Arn?: string;
@@ -6245,10 +4128,6 @@ export interface AwsWafv2WebAclDetails {
   Rules?: AwsWafv2RulesDetails[];
   VisibilityConfig?: AwsWafv2VisibilityConfigDetails;
 }
-const AwsWafv2WebAclDetails = /*@__PURE__*/ __L.at(
-  __c83,
-  2,
-) as any as S.Schema<AwsWafv2WebAclDetails>;
 export interface AwsWafv2RuleGroupDetails {
   Capacity?: number;
   Description?: string;
@@ -6259,18 +4138,10 @@ export interface AwsWafv2RuleGroupDetails {
   Scope?: string;
   VisibilityConfig?: AwsWafv2VisibilityConfigDetails;
 }
-const AwsWafv2RuleGroupDetails = /*@__PURE__*/ __L.at(
-  __c83,
-  3,
-) as any as S.Schema<AwsWafv2RuleGroupDetails>;
 export interface AssociationStateDetails {
   State?: string;
   StatusMessage?: string;
 }
-const AssociationStateDetails = /*@__PURE__*/ __L.at(
-  __c83,
-  4,
-) as any as S.Schema<AssociationStateDetails>;
 export interface AssociationSetDetails {
   AssociationState?: AssociationStateDetails;
   GatewayId?: string;
@@ -6279,21 +4150,11 @@ export interface AssociationSetDetails {
   RouteTableId?: string;
   SubnetId?: string;
 }
-const AssociationSetDetails = /*@__PURE__*/ __L.at(
-  __c83,
-  5,
-) as any as S.Schema<AssociationSetDetails>;
 export type AssociationSetList = AssociationSetDetails[];
-const AssociationSetList = /*@__PURE__*/ __L.at(__c83, 6);
 export interface PropagatingVgwSetDetails {
   GatewayId?: string;
 }
-const PropagatingVgwSetDetails = /*@__PURE__*/ __L.at(
-  __c83,
-  7,
-) as any as S.Schema<PropagatingVgwSetDetails>;
 export type PropagatingVgwSetList = PropagatingVgwSetDetails[];
-const PropagatingVgwSetList = /*@__PURE__*/ __L.at(__c84, 0);
 export interface RouteSetDetails {
   CarrierGatewayId?: string;
   CoreNetworkArn?: string;
@@ -6312,9 +4173,7 @@ export interface RouteSetDetails {
   TransitGatewayId?: string;
   VpcPeeringConnectionId?: string;
 }
-const RouteSetDetails = /*@__PURE__*/ __L.at(__c84, 1) as any as S.Schema<RouteSetDetails>;
 export type RouteSetList = RouteSetDetails[];
-const RouteSetList = /*@__PURE__*/ __L.at(__c84, 2);
 export interface AwsEc2RouteTableDetails {
   AssociationSet?: AssociationSetDetails[];
   OwnerId?: string;
@@ -6323,18 +4182,10 @@ export interface AwsEc2RouteTableDetails {
   RouteSet?: RouteSetDetails[];
   VpcId?: string;
 }
-const AwsEc2RouteTableDetails = /*@__PURE__*/ __L.at(
-  __c84,
-  3,
-) as any as S.Schema<AwsEc2RouteTableDetails>;
 export interface AwsAmazonMqBrokerEncryptionOptionsDetails {
   KmsKeyId?: string;
   UseAwsOwnedKey?: boolean;
 }
-const AwsAmazonMqBrokerEncryptionOptionsDetails = /*@__PURE__*/ __L.at(
-  __c84,
-  4,
-) as any as S.Schema<AwsAmazonMqBrokerEncryptionOptionsDetails>;
 export interface AwsAmazonMqBrokerLdapServerMetadataDetails {
   Hosts?: string[];
   RoleBase?: string;
@@ -6347,18 +4198,10 @@ export interface AwsAmazonMqBrokerLdapServerMetadataDetails {
   UserSearchMatching?: string;
   UserSearchSubtree?: boolean;
 }
-const AwsAmazonMqBrokerLdapServerMetadataDetails = /*@__PURE__*/ __L.at(
-  __c84,
-  5,
-) as any as S.Schema<AwsAmazonMqBrokerLdapServerMetadataDetails>;
 export interface AwsAmazonMqBrokerLogsPendingDetails {
   Audit?: boolean;
   General?: boolean;
 }
-const AwsAmazonMqBrokerLogsPendingDetails = /*@__PURE__*/ __L.at(
-  __c84,
-  6,
-) as any as S.Schema<AwsAmazonMqBrokerLogsPendingDetails>;
 export interface AwsAmazonMqBrokerLogsDetails {
   Audit?: boolean;
   General?: boolean;
@@ -6366,29 +4209,16 @@ export interface AwsAmazonMqBrokerLogsDetails {
   GeneralLogGroup?: string;
   Pending?: AwsAmazonMqBrokerLogsPendingDetails;
 }
-const AwsAmazonMqBrokerLogsDetails = /*@__PURE__*/ __L.at(
-  __c84,
-  7,
-) as any as S.Schema<AwsAmazonMqBrokerLogsDetails>;
 export interface AwsAmazonMqBrokerMaintenanceWindowStartTimeDetails {
   DayOfWeek?: string;
   TimeOfDay?: string;
   TimeZone?: string;
 }
-const AwsAmazonMqBrokerMaintenanceWindowStartTimeDetails = /*@__PURE__*/ __L.at(
-  __c85,
-  0,
-) as any as S.Schema<AwsAmazonMqBrokerMaintenanceWindowStartTimeDetails>;
 export interface AwsAmazonMqBrokerUsersDetails {
   PendingChange?: string;
   Username?: string;
 }
-const AwsAmazonMqBrokerUsersDetails = /*@__PURE__*/ __L.at(
-  __c85,
-  1,
-) as any as S.Schema<AwsAmazonMqBrokerUsersDetails>;
 export type AwsAmazonMqBrokerUsersList = AwsAmazonMqBrokerUsersDetails[];
-const AwsAmazonMqBrokerUsersList = /*@__PURE__*/ __L.at(__c85, 2);
 export interface AwsAmazonMqBrokerDetails {
   AuthenticationStrategy?: string;
   AutoMinorVersionUpgrade?: boolean;
@@ -6409,61 +4239,36 @@ export interface AwsAmazonMqBrokerDetails {
   SubnetIds?: string[];
   Users?: AwsAmazonMqBrokerUsersDetails[];
 }
-const AwsAmazonMqBrokerDetails = /*@__PURE__*/ __L.at(
-  __c85,
-  3,
-) as any as S.Schema<AwsAmazonMqBrokerDetails>;
 export interface AwsAppSyncGraphQlApiOpenIdConnectConfigDetails {
   AuthTtL?: number;
   ClientId?: string;
   IatTtL?: number;
   Issuer?: string;
 }
-const AwsAppSyncGraphQlApiOpenIdConnectConfigDetails = /*@__PURE__*/ __L.at(
-  __c85,
-  4,
-) as any as S.Schema<AwsAppSyncGraphQlApiOpenIdConnectConfigDetails>;
 export interface AwsAppSyncGraphQlApiLambdaAuthorizerConfigDetails {
   AuthorizerResultTtlInSeconds?: number;
   AuthorizerUri?: string;
   IdentityValidationExpression?: string;
 }
-const AwsAppSyncGraphQlApiLambdaAuthorizerConfigDetails = /*@__PURE__*/ __L.at(
-  __c85,
-  5,
-) as any as S.Schema<AwsAppSyncGraphQlApiLambdaAuthorizerConfigDetails>;
 export interface AwsAppSyncGraphQlApiUserPoolConfigDetails {
   AppIdClientRegex?: string;
   AwsRegion?: string;
   DefaultAction?: string;
   UserPoolId?: string;
 }
-const AwsAppSyncGraphQlApiUserPoolConfigDetails = /*@__PURE__*/ __L.at(
-  __c85,
-  6,
-) as any as S.Schema<AwsAppSyncGraphQlApiUserPoolConfigDetails>;
 export interface AwsAppSyncGraphQlApiLogConfigDetails {
   CloudWatchLogsRoleArn?: string;
   ExcludeVerboseContent?: boolean;
   FieldLogLevel?: string;
 }
-const AwsAppSyncGraphQlApiLogConfigDetails = /*@__PURE__*/ __L.at(
-  __c85,
-  7,
-) as any as S.Schema<AwsAppSyncGraphQlApiLogConfigDetails>;
 export interface AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails {
   AuthenticationType?: string;
   LambdaAuthorizerConfig?: AwsAppSyncGraphQlApiLambdaAuthorizerConfigDetails;
   OpenIdConnectConfig?: AwsAppSyncGraphQlApiOpenIdConnectConfigDetails;
   UserPoolConfig?: AwsAppSyncGraphQlApiUserPoolConfigDetails;
 }
-const AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails = /*@__PURE__*/ __L.at(
-  __c86,
-  0,
-) as any as S.Schema<AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails>;
 export type AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersList =
   AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails[];
-const AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersList = /*@__PURE__*/ __L.at(__c86, 1);
 export interface AwsAppSyncGraphQlApiDetails {
   ApiId?: string;
   Id?: string;
@@ -6478,80 +4283,40 @@ export interface AwsAppSyncGraphQlApiDetails {
   AdditionalAuthenticationProviders?: AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails[];
   WafWebAclArn?: string;
 }
-const AwsAppSyncGraphQlApiDetails = /*@__PURE__*/ __L.at(
-  __c86,
-  2,
-) as any as S.Schema<AwsAppSyncGraphQlApiDetails>;
 export interface AwsEventSchemasRegistryDetails {
   Description?: string;
   RegistryArn?: string;
   RegistryName?: string;
 }
-const AwsEventSchemasRegistryDetails = /*@__PURE__*/ __L.at(
-  __c86,
-  3,
-) as any as S.Schema<AwsEventSchemasRegistryDetails>;
 export interface AwsGuardDutyDetectorDataSourcesCloudTrailDetails {
   Status?: string;
 }
-const AwsGuardDutyDetectorDataSourcesCloudTrailDetails = /*@__PURE__*/ __L.at(
-  __c86,
-  4,
-) as any as S.Schema<AwsGuardDutyDetectorDataSourcesCloudTrailDetails>;
 export interface AwsGuardDutyDetectorDataSourcesDnsLogsDetails {
   Status?: string;
 }
-const AwsGuardDutyDetectorDataSourcesDnsLogsDetails =
-  AwsGuardDutyDetectorDataSourcesCloudTrailDetails as any as S.Schema<AwsGuardDutyDetectorDataSourcesDnsLogsDetails>;
 export interface AwsGuardDutyDetectorDataSourcesFlowLogsDetails {
   Status?: string;
 }
-const AwsGuardDutyDetectorDataSourcesFlowLogsDetails =
-  AwsGuardDutyDetectorDataSourcesCloudTrailDetails as any as S.Schema<AwsGuardDutyDetectorDataSourcesFlowLogsDetails>;
 export interface AwsGuardDutyDetectorDataSourcesKubernetesAuditLogsDetails {
   Status?: string;
 }
-const AwsGuardDutyDetectorDataSourcesKubernetesAuditLogsDetails = /*@__PURE__*/ __L.at(
-  __c86,
-  5,
-) as any as S.Schema<AwsGuardDutyDetectorDataSourcesKubernetesAuditLogsDetails>;
 export interface AwsGuardDutyDetectorDataSourcesKubernetesDetails {
   AuditLogs?: AwsGuardDutyDetectorDataSourcesKubernetesAuditLogsDetails;
 }
-const AwsGuardDutyDetectorDataSourcesKubernetesDetails = /*@__PURE__*/ __L.at(
-  __c86,
-  6,
-) as any as S.Schema<AwsGuardDutyDetectorDataSourcesKubernetesDetails>;
 export interface AwsGuardDutyDetectorDataSourcesMalwareProtectionScanEc2InstanceWithFindingsEbsVolumesDetails {
   Reason?: string;
   Status?: string;
 }
-const AwsGuardDutyDetectorDataSourcesMalwareProtectionScanEc2InstanceWithFindingsEbsVolumesDetails =
-  /*@__PURE__*/ __L.at(
-    __c86,
-    7,
-  ) as any as S.Schema<AwsGuardDutyDetectorDataSourcesMalwareProtectionScanEc2InstanceWithFindingsEbsVolumesDetails>;
 export interface AwsGuardDutyDetectorDataSourcesMalwareProtectionScanEc2InstanceWithFindingsDetails {
   EbsVolumes?: AwsGuardDutyDetectorDataSourcesMalwareProtectionScanEc2InstanceWithFindingsEbsVolumesDetails;
 }
-const AwsGuardDutyDetectorDataSourcesMalwareProtectionScanEc2InstanceWithFindingsDetails =
-  /*@__PURE__*/ __L.at(
-    __c87,
-    0,
-  ) as any as S.Schema<AwsGuardDutyDetectorDataSourcesMalwareProtectionScanEc2InstanceWithFindingsDetails>;
 export interface AwsGuardDutyDetectorDataSourcesMalwareProtectionDetails {
   ScanEc2InstanceWithFindings?: AwsGuardDutyDetectorDataSourcesMalwareProtectionScanEc2InstanceWithFindingsDetails;
   ServiceRole?: string;
 }
-const AwsGuardDutyDetectorDataSourcesMalwareProtectionDetails = /*@__PURE__*/ __L.at(
-  __c87,
-  1,
-) as any as S.Schema<AwsGuardDutyDetectorDataSourcesMalwareProtectionDetails>;
 export interface AwsGuardDutyDetectorDataSourcesS3LogsDetails {
   Status?: string;
 }
-const AwsGuardDutyDetectorDataSourcesS3LogsDetails =
-  AwsGuardDutyDetectorDataSourcesCloudTrailDetails as any as S.Schema<AwsGuardDutyDetectorDataSourcesS3LogsDetails>;
 export interface AwsGuardDutyDetectorDataSourcesDetails {
   CloudTrail?: AwsGuardDutyDetectorDataSourcesCloudTrailDetails;
   DnsLogs?: AwsGuardDutyDetectorDataSourcesDnsLogsDetails;
@@ -6560,20 +4325,11 @@ export interface AwsGuardDutyDetectorDataSourcesDetails {
   MalwareProtection?: AwsGuardDutyDetectorDataSourcesMalwareProtectionDetails;
   S3Logs?: AwsGuardDutyDetectorDataSourcesS3LogsDetails;
 }
-const AwsGuardDutyDetectorDataSourcesDetails = /*@__PURE__*/ __L.at(
-  __c87,
-  2,
-) as any as S.Schema<AwsGuardDutyDetectorDataSourcesDetails>;
 export interface AwsGuardDutyDetectorFeaturesDetails {
   Name?: string;
   Status?: string;
 }
-const AwsGuardDutyDetectorFeaturesDetails = /*@__PURE__*/ __L.at(
-  __c87,
-  3,
-) as any as S.Schema<AwsGuardDutyDetectorFeaturesDetails>;
 export type AwsGuardDutyDetectorFeaturesList = AwsGuardDutyDetectorFeaturesDetails[];
-const AwsGuardDutyDetectorFeaturesList = /*@__PURE__*/ __L.at(__c87, 4);
 export interface AwsGuardDutyDetectorDetails {
   DataSources?: AwsGuardDutyDetectorDataSourcesDetails;
   Features?: AwsGuardDutyDetectorFeaturesDetails[];
@@ -6581,45 +4337,22 @@ export interface AwsGuardDutyDetectorDetails {
   ServiceRole?: string;
   Status?: string;
 }
-const AwsGuardDutyDetectorDetails = /*@__PURE__*/ __L.at(
-  __c87,
-  5,
-) as any as S.Schema<AwsGuardDutyDetectorDetails>;
 export interface AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails {
   LogGroupArn?: string;
 }
-const AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails =
-  /*@__PURE__*/ __L.at(
-    __c87,
-    6,
-  ) as any as S.Schema<AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails>;
 export interface AwsStepFunctionStateMachineLoggingConfigurationDestinationsDetails {
   CloudWatchLogsLogGroup?: AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails;
 }
-const AwsStepFunctionStateMachineLoggingConfigurationDestinationsDetails = /*@__PURE__*/ __L.at(
-  __c87,
-  7,
-) as any as S.Schema<AwsStepFunctionStateMachineLoggingConfigurationDestinationsDetails>;
 export type AwsStepFunctionStateMachineLoggingConfigurationDestinationsList =
   AwsStepFunctionStateMachineLoggingConfigurationDestinationsDetails[];
-const AwsStepFunctionStateMachineLoggingConfigurationDestinationsList = /*@__PURE__*/ __L.at(
-  __c88,
-  0,
-);
 export interface AwsStepFunctionStateMachineLoggingConfigurationDetails {
   Destinations?: AwsStepFunctionStateMachineLoggingConfigurationDestinationsDetails[];
   IncludeExecutionData?: boolean;
   Level?: string;
 }
-const AwsStepFunctionStateMachineLoggingConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c88,
-  1,
-) as any as S.Schema<AwsStepFunctionStateMachineLoggingConfigurationDetails>;
 export interface AwsStepFunctionStateMachineTracingConfigurationDetails {
   Enabled?: boolean;
 }
-const AwsStepFunctionStateMachineTracingConfigurationDetails =
-  AwsElasticsearchDomainNodeToNodeEncryptionOptions as any as S.Schema<AwsStepFunctionStateMachineTracingConfigurationDetails>;
 export interface AwsStepFunctionStateMachineDetails {
   Label?: string;
   LoggingConfiguration?: AwsStepFunctionStateMachineLoggingConfigurationDetails;
@@ -6630,52 +4363,27 @@ export interface AwsStepFunctionStateMachineDetails {
   TracingConfiguration?: AwsStepFunctionStateMachineTracingConfigurationDetails;
   Type?: string;
 }
-const AwsStepFunctionStateMachineDetails = /*@__PURE__*/ __L.at(
-  __c88,
-  2,
-) as any as S.Schema<AwsStepFunctionStateMachineDetails>;
 export interface AwsAthenaWorkGroupConfigurationResultConfigurationEncryptionConfigurationDetails {
   EncryptionOption?: string;
   KmsKey?: string;
 }
-const AwsAthenaWorkGroupConfigurationResultConfigurationEncryptionConfigurationDetails =
-  /*@__PURE__*/ __L.at(
-    __c88,
-    3,
-  ) as any as S.Schema<AwsAthenaWorkGroupConfigurationResultConfigurationEncryptionConfigurationDetails>;
 export interface AwsAthenaWorkGroupConfigurationResultConfigurationDetails {
   EncryptionConfiguration?: AwsAthenaWorkGroupConfigurationResultConfigurationEncryptionConfigurationDetails;
 }
-const AwsAthenaWorkGroupConfigurationResultConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c88,
-  4,
-) as any as S.Schema<AwsAthenaWorkGroupConfigurationResultConfigurationDetails>;
 export interface AwsAthenaWorkGroupConfigurationDetails {
   ResultConfiguration?: AwsAthenaWorkGroupConfigurationResultConfigurationDetails;
 }
-const AwsAthenaWorkGroupConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c88,
-  5,
-) as any as S.Schema<AwsAthenaWorkGroupConfigurationDetails>;
 export interface AwsAthenaWorkGroupDetails {
   Name?: string;
   Description?: string;
   State?: string;
   Configuration?: AwsAthenaWorkGroupConfigurationDetails;
 }
-const AwsAthenaWorkGroupDetails = /*@__PURE__*/ __L.at(
-  __c88,
-  6,
-) as any as S.Schema<AwsAthenaWorkGroupDetails>;
 export interface AwsEventsEventbusDetails {
   Arn?: string;
   Name?: string;
   Policy?: string;
 }
-const AwsEventsEventbusDetails = /*@__PURE__*/ __L.at(
-  __c88,
-  7,
-) as any as S.Schema<AwsEventsEventbusDetails>;
 export interface AwsDmsEndpointDetails {
   CertificateArn?: string;
   DatabaseName?: string;
@@ -6691,53 +4399,26 @@ export interface AwsDmsEndpointDetails {
   SslMode?: string;
   Username?: string;
 }
-const AwsDmsEndpointDetails = /*@__PURE__*/ __L.at(
-  __c89,
-  0,
-) as any as S.Schema<AwsDmsEndpointDetails>;
 export interface AwsEventsEndpointEventBusesDetails {
   EventBusArn?: string;
 }
-const AwsEventsEndpointEventBusesDetails = /*@__PURE__*/ __L.at(
-  __c89,
-  1,
-) as any as S.Schema<AwsEventsEndpointEventBusesDetails>;
 export type AwsEventsEndpointEventBusesList = AwsEventsEndpointEventBusesDetails[];
-const AwsEventsEndpointEventBusesList = /*@__PURE__*/ __L.at(__c89, 2);
 export interface AwsEventsEndpointReplicationConfigDetails {
   State?: string;
 }
-const AwsEventsEndpointReplicationConfigDetails =
-  AwsEc2InstanceMonitoringDetails as any as S.Schema<AwsEventsEndpointReplicationConfigDetails>;
 export interface AwsEventsEndpointRoutingConfigFailoverConfigPrimaryDetails {
   HealthCheck?: string;
 }
-const AwsEventsEndpointRoutingConfigFailoverConfigPrimaryDetails = /*@__PURE__*/ __L.at(
-  __c89,
-  3,
-) as any as S.Schema<AwsEventsEndpointRoutingConfigFailoverConfigPrimaryDetails>;
 export interface AwsEventsEndpointRoutingConfigFailoverConfigSecondaryDetails {
   Route?: string;
 }
-const AwsEventsEndpointRoutingConfigFailoverConfigSecondaryDetails = /*@__PURE__*/ __L.at(
-  __c89,
-  4,
-) as any as S.Schema<AwsEventsEndpointRoutingConfigFailoverConfigSecondaryDetails>;
 export interface AwsEventsEndpointRoutingConfigFailoverConfigDetails {
   Primary?: AwsEventsEndpointRoutingConfigFailoverConfigPrimaryDetails;
   Secondary?: AwsEventsEndpointRoutingConfigFailoverConfigSecondaryDetails;
 }
-const AwsEventsEndpointRoutingConfigFailoverConfigDetails = /*@__PURE__*/ __L.at(
-  __c89,
-  5,
-) as any as S.Schema<AwsEventsEndpointRoutingConfigFailoverConfigDetails>;
 export interface AwsEventsEndpointRoutingConfigDetails {
   FailoverConfig?: AwsEventsEndpointRoutingConfigFailoverConfigDetails;
 }
-const AwsEventsEndpointRoutingConfigDetails = /*@__PURE__*/ __L.at(
-  __c89,
-  6,
-) as any as S.Schema<AwsEventsEndpointRoutingConfigDetails>;
 export interface AwsEventsEndpointDetails {
   Arn?: string;
   Description?: string;
@@ -6751,10 +4432,6 @@ export interface AwsEventsEndpointDetails {
   State?: string;
   StateReason?: string;
 }
-const AwsEventsEndpointDetails = /*@__PURE__*/ __L.at(
-  __c89,
-  7,
-) as any as S.Schema<AwsEventsEndpointDetails>;
 export interface AwsDmsReplicationTaskDetails {
   CdcStartPosition?: string;
   CdcStartTime?: string;
@@ -6770,27 +4447,14 @@ export interface AwsDmsReplicationTaskDetails {
   TargetEndpointArn?: string;
   TaskData?: string;
 }
-const AwsDmsReplicationTaskDetails = /*@__PURE__*/ __L.at(
-  __c90,
-  0,
-) as any as S.Schema<AwsDmsReplicationTaskDetails>;
 export interface AwsDmsReplicationInstanceReplicationSubnetGroupDetails {
   ReplicationSubnetGroupIdentifier?: string;
 }
-const AwsDmsReplicationInstanceReplicationSubnetGroupDetails = /*@__PURE__*/ __L.at(
-  __c90,
-  1,
-) as any as S.Schema<AwsDmsReplicationInstanceReplicationSubnetGroupDetails>;
 export interface AwsDmsReplicationInstanceVpcSecurityGroupsDetails {
   VpcSecurityGroupId?: string;
 }
-const AwsDmsReplicationInstanceVpcSecurityGroupsDetails = /*@__PURE__*/ __L.at(
-  __c90,
-  2,
-) as any as S.Schema<AwsDmsReplicationInstanceVpcSecurityGroupsDetails>;
 export type AwsDmsReplicationInstanceVpcSecurityGroupsList =
   AwsDmsReplicationInstanceVpcSecurityGroupsDetails[];
-const AwsDmsReplicationInstanceVpcSecurityGroupsList = /*@__PURE__*/ __L.at(__c90, 3);
 export interface AwsDmsReplicationInstanceDetails {
   AllocatedStorage?: number;
   AutoMinorVersionUpgrade?: boolean;
@@ -6805,130 +4469,67 @@ export interface AwsDmsReplicationInstanceDetails {
   ReplicationSubnetGroup?: AwsDmsReplicationInstanceReplicationSubnetGroupDetails;
   VpcSecurityGroups?: AwsDmsReplicationInstanceVpcSecurityGroupsDetails[];
 }
-const AwsDmsReplicationInstanceDetails = /*@__PURE__*/ __L.at(
-  __c90,
-  4,
-) as any as S.Schema<AwsDmsReplicationInstanceDetails>;
 export interface AwsRoute53HostedZoneConfigDetails {
   Comment?: string;
 }
-const AwsRoute53HostedZoneConfigDetails = /*@__PURE__*/ __L.at(
-  __c90,
-  5,
-) as any as S.Schema<AwsRoute53HostedZoneConfigDetails>;
 export interface AwsRoute53HostedZoneObjectDetails {
   Id?: string;
   Name?: string;
   Config?: AwsRoute53HostedZoneConfigDetails;
 }
-const AwsRoute53HostedZoneObjectDetails = /*@__PURE__*/ __L.at(
-  __c90,
-  6,
-) as any as S.Schema<AwsRoute53HostedZoneObjectDetails>;
 export interface AwsRoute53HostedZoneVpcDetails {
   Id?: string;
   Region?: string;
 }
-const AwsRoute53HostedZoneVpcDetails = /*@__PURE__*/ __L.at(
-  __c90,
-  7,
-) as any as S.Schema<AwsRoute53HostedZoneVpcDetails>;
 export type AwsRoute53HostedZoneVpcsList = AwsRoute53HostedZoneVpcDetails[];
-const AwsRoute53HostedZoneVpcsList = /*@__PURE__*/ __L.at(__c91, 0);
 export type AwsRoute53HostedZoneNameServersList = string[];
-const AwsRoute53HostedZoneNameServersList =
-  AutomationRulesArnsList as any as S.Schema<AwsRoute53HostedZoneNameServersList>;
 export interface CloudWatchLogsLogGroupArnConfigDetails {
   CloudWatchLogsLogGroupArn?: string;
   HostedZoneId?: string;
   Id?: string;
 }
-const CloudWatchLogsLogGroupArnConfigDetails = /*@__PURE__*/ __L.at(
-  __c91,
-  1,
-) as any as S.Schema<CloudWatchLogsLogGroupArnConfigDetails>;
 export interface AwsRoute53QueryLoggingConfigDetails {
   CloudWatchLogsLogGroupArn?: CloudWatchLogsLogGroupArnConfigDetails;
 }
-const AwsRoute53QueryLoggingConfigDetails = /*@__PURE__*/ __L.at(
-  __c91,
-  2,
-) as any as S.Schema<AwsRoute53QueryLoggingConfigDetails>;
 export interface AwsRoute53HostedZoneDetails {
   HostedZone?: AwsRoute53HostedZoneObjectDetails;
   Vpcs?: AwsRoute53HostedZoneVpcDetails[];
   NameServers?: string[];
   QueryLoggingConfig?: AwsRoute53QueryLoggingConfigDetails;
 }
-const AwsRoute53HostedZoneDetails = /*@__PURE__*/ __L.at(
-  __c91,
-  3,
-) as any as S.Schema<AwsRoute53HostedZoneDetails>;
 export interface AwsMskClusterClusterInfoEncryptionInfoEncryptionInTransitDetails {
   InCluster?: boolean;
   ClientBroker?: string;
 }
-const AwsMskClusterClusterInfoEncryptionInfoEncryptionInTransitDetails = /*@__PURE__*/ __L.at(
-  __c91,
-  4,
-) as any as S.Schema<AwsMskClusterClusterInfoEncryptionInfoEncryptionInTransitDetails>;
 export interface AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails {
   DataVolumeKMSKeyId?: string;
 }
-const AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails = /*@__PURE__*/ __L.at(
-  __c91,
-  5,
-) as any as S.Schema<AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails>;
 export interface AwsMskClusterClusterInfoEncryptionInfoDetails {
   EncryptionInTransit?: AwsMskClusterClusterInfoEncryptionInfoEncryptionInTransitDetails;
   EncryptionAtRest?: AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails;
 }
-const AwsMskClusterClusterInfoEncryptionInfoDetails = /*@__PURE__*/ __L.at(
-  __c91,
-  6,
-) as any as S.Schema<AwsMskClusterClusterInfoEncryptionInfoDetails>;
 export interface AwsMskClusterClusterInfoClientAuthenticationSaslIamDetails {
   Enabled?: boolean;
 }
-const AwsMskClusterClusterInfoClientAuthenticationSaslIamDetails =
-  AwsAutoScalingLaunchConfigurationInstanceMonitoringDetails as any as S.Schema<AwsMskClusterClusterInfoClientAuthenticationSaslIamDetails>;
 export interface AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails {
   Enabled?: boolean;
 }
-const AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails =
-  AwsAutoScalingLaunchConfigurationInstanceMonitoringDetails as any as S.Schema<AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails>;
 export interface AwsMskClusterClusterInfoClientAuthenticationSaslDetails {
   Iam?: AwsMskClusterClusterInfoClientAuthenticationSaslIamDetails;
   Scram?: AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails;
 }
-const AwsMskClusterClusterInfoClientAuthenticationSaslDetails = /*@__PURE__*/ __L.at(
-  __c91,
-  7,
-) as any as S.Schema<AwsMskClusterClusterInfoClientAuthenticationSaslDetails>;
 export interface AwsMskClusterClusterInfoClientAuthenticationUnauthenticatedDetails {
   Enabled?: boolean;
 }
-const AwsMskClusterClusterInfoClientAuthenticationUnauthenticatedDetails = /*@__PURE__*/ __L.at(
-  __c92,
-  0,
-) as any as S.Schema<AwsMskClusterClusterInfoClientAuthenticationUnauthenticatedDetails>;
 export interface AwsMskClusterClusterInfoClientAuthenticationTlsDetails {
   CertificateAuthorityArnList?: string[];
   Enabled?: boolean;
 }
-const AwsMskClusterClusterInfoClientAuthenticationTlsDetails = /*@__PURE__*/ __L.at(
-  __c92,
-  1,
-) as any as S.Schema<AwsMskClusterClusterInfoClientAuthenticationTlsDetails>;
 export interface AwsMskClusterClusterInfoClientAuthenticationDetails {
   Sasl?: AwsMskClusterClusterInfoClientAuthenticationSaslDetails;
   Unauthenticated?: AwsMskClusterClusterInfoClientAuthenticationUnauthenticatedDetails;
   Tls?: AwsMskClusterClusterInfoClientAuthenticationTlsDetails;
 }
-const AwsMskClusterClusterInfoClientAuthenticationDetails = /*@__PURE__*/ __L.at(
-  __c92,
-  2,
-) as any as S.Schema<AwsMskClusterClusterInfoClientAuthenticationDetails>;
 export interface AwsMskClusterClusterInfoDetails {
   EncryptionInfo?: AwsMskClusterClusterInfoEncryptionInfoDetails;
   CurrentVersion?: string;
@@ -6937,24 +4538,12 @@ export interface AwsMskClusterClusterInfoDetails {
   ClientAuthentication?: AwsMskClusterClusterInfoClientAuthenticationDetails;
   EnhancedMonitoring?: string;
 }
-const AwsMskClusterClusterInfoDetails = /*@__PURE__*/ __L.at(
-  __c92,
-  3,
-) as any as S.Schema<AwsMskClusterClusterInfoDetails>;
 export interface AwsMskClusterDetails {
   ClusterInfo?: AwsMskClusterClusterInfoDetails;
 }
-const AwsMskClusterDetails = /*@__PURE__*/ __L.at(
-  __c92,
-  4,
-) as any as S.Schema<AwsMskClusterDetails>;
 export interface AwsS3AccessPointVpcConfigurationDetails {
   VpcId?: string;
 }
-const AwsS3AccessPointVpcConfigurationDetails = /*@__PURE__*/ __L.at(
-  __c92,
-  5,
-) as any as S.Schema<AwsS3AccessPointVpcConfigurationDetails>;
 export interface AwsS3AccessPointDetails {
   AccessPointArn?: string;
   Alias?: string;
@@ -6965,81 +4554,42 @@ export interface AwsS3AccessPointDetails {
   PublicAccessBlockConfiguration?: AwsS3AccountPublicAccessBlockDetails;
   VpcConfiguration?: AwsS3AccessPointVpcConfigurationDetails;
 }
-const AwsS3AccessPointDetails = /*@__PURE__*/ __L.at(
-  __c92,
-  6,
-) as any as S.Schema<AwsS3AccessPointDetails>;
 export interface AwsEc2ClientVpnEndpointAuthenticationOptionsActiveDirectoryDetails {
   DirectoryId?: string;
 }
-const AwsEc2ClientVpnEndpointAuthenticationOptionsActiveDirectoryDetails = /*@__PURE__*/ __L.at(
-  __c92,
-  7,
-) as any as S.Schema<AwsEc2ClientVpnEndpointAuthenticationOptionsActiveDirectoryDetails>;
 export interface AwsEc2ClientVpnEndpointAuthenticationOptionsMutualAuthenticationDetails {
   ClientRootCertificateChain?: string;
 }
-const AwsEc2ClientVpnEndpointAuthenticationOptionsMutualAuthenticationDetails =
-  /*@__PURE__*/ __L.at(
-    __c93,
-    0,
-  ) as any as S.Schema<AwsEc2ClientVpnEndpointAuthenticationOptionsMutualAuthenticationDetails>;
 export interface AwsEc2ClientVpnEndpointAuthenticationOptionsFederatedAuthenticationDetails {
   SamlProviderArn?: string;
   SelfServiceSamlProviderArn?: string;
 }
-const AwsEc2ClientVpnEndpointAuthenticationOptionsFederatedAuthenticationDetails =
-  /*@__PURE__*/ __L.at(
-    __c93,
-    1,
-  ) as any as S.Schema<AwsEc2ClientVpnEndpointAuthenticationOptionsFederatedAuthenticationDetails>;
 export interface AwsEc2ClientVpnEndpointAuthenticationOptionsDetails {
   Type?: string;
   ActiveDirectory?: AwsEc2ClientVpnEndpointAuthenticationOptionsActiveDirectoryDetails;
   MutualAuthentication?: AwsEc2ClientVpnEndpointAuthenticationOptionsMutualAuthenticationDetails;
   FederatedAuthentication?: AwsEc2ClientVpnEndpointAuthenticationOptionsFederatedAuthenticationDetails;
 }
-const AwsEc2ClientVpnEndpointAuthenticationOptionsDetails = /*@__PURE__*/ __L.at(
-  __c93,
-  2,
-) as any as S.Schema<AwsEc2ClientVpnEndpointAuthenticationOptionsDetails>;
 export type AwsEc2ClientVpnEndpointAuthenticationOptionsList =
   AwsEc2ClientVpnEndpointAuthenticationOptionsDetails[];
-const AwsEc2ClientVpnEndpointAuthenticationOptionsList = /*@__PURE__*/ __L.at(__c93, 3);
 export interface AwsEc2ClientVpnEndpointConnectionLogOptionsDetails {
   Enabled?: boolean;
   CloudwatchLogGroup?: string;
   CloudwatchLogStream?: string;
 }
-const AwsEc2ClientVpnEndpointConnectionLogOptionsDetails = /*@__PURE__*/ __L.at(
-  __c93,
-  4,
-) as any as S.Schema<AwsEc2ClientVpnEndpointConnectionLogOptionsDetails>;
 export interface AwsEc2ClientVpnEndpointClientConnectOptionsStatusDetails {
   Code?: string;
   Message?: string;
 }
-const AwsEc2ClientVpnEndpointClientConnectOptionsStatusDetails = /*@__PURE__*/ __L.at(
-  __c93,
-  5,
-) as any as S.Schema<AwsEc2ClientVpnEndpointClientConnectOptionsStatusDetails>;
 export interface AwsEc2ClientVpnEndpointClientConnectOptionsDetails {
   Enabled?: boolean;
   LambdaFunctionArn?: string;
   Status?: AwsEc2ClientVpnEndpointClientConnectOptionsStatusDetails;
 }
-const AwsEc2ClientVpnEndpointClientConnectOptionsDetails = /*@__PURE__*/ __L.at(
-  __c93,
-  6,
-) as any as S.Schema<AwsEc2ClientVpnEndpointClientConnectOptionsDetails>;
 export interface AwsEc2ClientVpnEndpointClientLoginBannerOptionsDetails {
   Enabled?: boolean;
   BannerText?: string;
 }
-const AwsEc2ClientVpnEndpointClientLoginBannerOptionsDetails = /*@__PURE__*/ __L.at(
-  __c93,
-  7,
-) as any as S.Schema<AwsEc2ClientVpnEndpointClientLoginBannerOptionsDetails>;
 export interface AwsEc2ClientVpnEndpointDetails {
   ClientVpnEndpointId?: string;
   Description?: string;
@@ -7058,19 +4608,11 @@ export interface AwsEc2ClientVpnEndpointDetails {
   SessionTimeoutHours?: number;
   ClientLoginBannerOptions?: AwsEc2ClientVpnEndpointClientLoginBannerOptionsDetails;
 }
-const AwsEc2ClientVpnEndpointDetails = /*@__PURE__*/ __L.at(
-  __c94,
-  0,
-) as any as S.Schema<AwsEc2ClientVpnEndpointDetails>;
 export interface CodeRepositoryDetails {
   ProviderType?: string;
   ProjectName?: string;
   CodeSecurityIntegrationArn?: string;
 }
-const CodeRepositoryDetails = /*@__PURE__*/ __L.at(
-  __c94,
-  1,
-) as any as S.Schema<CodeRepositoryDetails>;
 export type AzureResourceDetails = unknown;
 export interface ResourceDetails {
   AwsAutoScalingAutoScalingGroup?: AwsAutoScalingAutoScalingGroupDetails;
@@ -7175,7 +4717,6 @@ export interface ResourceDetails {
   CodeRepository?: CodeRepositoryDetails;
   AzureResource?: any;
 }
-const ResourceDetails = /*@__PURE__*/ __L.at(__c94, 2) as any as S.Schema<ResourceDetails>;
 export interface Resource {
   Type?: string;
   Id?: string;
@@ -7190,35 +4731,22 @@ export interface Resource {
   ApplicationName?: string;
   ApplicationArn?: string;
 }
-const Resource = /*@__PURE__*/ __L.at(__c94, 3) as any as S.Schema<Resource>;
 export type ResourceList = Resource[];
-const ResourceList = /*@__PURE__*/ __L.at(__c94, 4);
 export type ComplianceStatus = "PASSED" | "WARNING" | "FAILED" | "NOT_AVAILABLE" | (string & {});
-const ComplianceStatus = S.String;
-
 export interface StatusReason {
   ReasonCode?: string;
   Description?: string;
 }
-const StatusReason = /*@__PURE__*/ __L.at(__c94, 5) as any as S.Schema<StatusReason>;
 export type StatusReasonsList = StatusReason[];
-const StatusReasonsList = /*@__PURE__*/ __L.at(__c94, 6);
 export interface AssociatedStandard {
   StandardsId?: string;
 }
-const AssociatedStandard = /*@__PURE__*/ __L.at(__c94, 7) as any as S.Schema<AssociatedStandard>;
 export type AssociatedStandardsList = AssociatedStandard[];
-const AssociatedStandardsList = /*@__PURE__*/ __L.at(__c95, 0);
 export interface SecurityControlParameter {
   Name?: string;
   Value?: string[];
 }
-const SecurityControlParameter = /*@__PURE__*/ __L.at(
-  __c95,
-  1,
-) as any as S.Schema<SecurityControlParameter>;
 export type SecurityControlParametersList = SecurityControlParameter[];
-const SecurityControlParametersList = /*@__PURE__*/ __L.at(__c95, 2);
 export interface Compliance {
   Status?: ComplianceStatus;
   RelatedRequirements?: string[];
@@ -7227,7 +4755,6 @@ export interface Compliance {
   AssociatedStandards?: AssociatedStandard[];
   SecurityControlParameters?: SecurityControlParameter[];
 }
-const Compliance = /*@__PURE__*/ __L.at(__c95, 3) as any as S.Schema<Compliance>;
 export type WorkflowState =
   | "NEW"
   | "ASSIGNED"
@@ -7235,21 +4762,15 @@ export type WorkflowState =
   | "DEFERRED"
   | "RESOLVED"
   | (string & {});
-const WorkflowState = S.String;
-
 export interface Workflow {
   Status?: WorkflowStatus;
 }
-const Workflow = WorkflowUpdate as any as S.Schema<Workflow>;
 export type RecordState = "ACTIVE" | "ARCHIVED" | (string & {});
-const RecordState = S.String;
-
 export interface Note {
   Text?: string;
   UpdatedBy?: string;
   UpdatedAt?: string;
 }
-const Note = /*@__PURE__*/ __L.at(__c95, 4) as any as S.Schema<Note>;
 export interface SoftwarePackage {
   Name?: string;
   Version?: string;
@@ -7263,16 +4784,12 @@ export interface SoftwarePackage {
   SourceLayerHash?: string;
   SourceLayerArn?: string;
 }
-const SoftwarePackage = /*@__PURE__*/ __L.at(__c95, 5) as any as S.Schema<SoftwarePackage>;
 export type SoftwarePackageList = SoftwarePackage[];
-const SoftwarePackageList = /*@__PURE__*/ __L.at(__c95, 6);
 export interface Adjustment {
   Metric?: string;
   Reason?: string;
 }
-const Adjustment = /*@__PURE__*/ __L.at(__c95, 7) as any as S.Schema<Adjustment>;
 export type AdjustmentList = Adjustment[];
-const AdjustmentList = /*@__PURE__*/ __L.at(__c96, 0);
 export interface Cvss {
   Version?: string;
   BaseScore?: number;
@@ -7280,9 +4797,7 @@ export interface Cvss {
   Source?: string;
   Adjustments?: Adjustment[];
 }
-const Cvss = /*@__PURE__*/ __L.at(__c96, 1) as any as S.Schema<Cvss>;
 export type CvssList = Cvss[];
-const CvssList = /*@__PURE__*/ __L.at(__c96, 2);
 export interface VulnerabilityVendor {
   Name?: string;
   Url?: string;
@@ -7290,34 +4805,20 @@ export interface VulnerabilityVendor {
   VendorCreatedAt?: string;
   VendorUpdatedAt?: string;
 }
-const VulnerabilityVendor = /*@__PURE__*/ __L.at(__c96, 3) as any as S.Schema<VulnerabilityVendor>;
 export type VulnerabilityFixAvailable = "YES" | "NO" | "PARTIAL" | (string & {});
-const VulnerabilityFixAvailable = S.String;
-
 export type VulnerabilityExploitAvailable = "YES" | "NO" | (string & {});
-const VulnerabilityExploitAvailable = S.String;
-
 export interface CodeVulnerabilitiesFilePath {
   EndLine?: number;
   FileName?: string;
   FilePath?: string;
   StartLine?: number;
 }
-const CodeVulnerabilitiesFilePath = /*@__PURE__*/ __L.at(
-  __c96,
-  4,
-) as any as S.Schema<CodeVulnerabilitiesFilePath>;
 export interface VulnerabilityCodeVulnerabilities {
   Cwes?: string[];
   FilePath?: CodeVulnerabilitiesFilePath;
   SourceArn?: string;
 }
-const VulnerabilityCodeVulnerabilities = /*@__PURE__*/ __L.at(
-  __c96,
-  5,
-) as any as S.Schema<VulnerabilityCodeVulnerabilities>;
 export type VulnerabilityCodeVulnerabilitiesList = VulnerabilityCodeVulnerabilities[];
-const VulnerabilityCodeVulnerabilitiesList = /*@__PURE__*/ __L.at(__c96, 6);
 export interface Vulnerability {
   Id?: string;
   VulnerablePackages?: SoftwarePackage[];
@@ -7331,9 +4832,7 @@ export interface Vulnerability {
   LastKnownExploitAt?: string;
   CodeVulnerabilities?: VulnerabilityCodeVulnerabilities[];
 }
-const Vulnerability = /*@__PURE__*/ __L.at(__c96, 7) as any as S.Schema<Vulnerability>;
 export type VulnerabilityList = Vulnerability[];
-const VulnerabilityList = /*@__PURE__*/ __L.at(__c97, 0);
 export interface PatchSummary {
   Id?: string;
   InstalledCount?: number;
@@ -7347,31 +4846,23 @@ export interface PatchSummary {
   RebootOption?: string;
   Operation?: string;
 }
-const PatchSummary = /*@__PURE__*/ __L.at(__c97, 1) as any as S.Schema<PatchSummary>;
 export interface IpOrganizationDetails {
   Asn?: number;
   AsnOrg?: string;
   Isp?: string;
   Org?: string;
 }
-const IpOrganizationDetails = /*@__PURE__*/ __L.at(
-  __c97,
-  2,
-) as any as S.Schema<IpOrganizationDetails>;
 export interface Country {
   CountryCode?: string;
   CountryName?: string;
 }
-const Country = /*@__PURE__*/ __L.at(__c97, 3) as any as S.Schema<Country>;
 export interface City {
   CityName?: string;
 }
-const City = /*@__PURE__*/ __L.at(__c97, 4) as any as S.Schema<City>;
 export interface GeoLocation {
   Lon?: number;
   Lat?: number;
 }
-const GeoLocation = /*@__PURE__*/ __L.at(__c97, 5) as any as S.Schema<GeoLocation>;
 export interface ActionRemoteIpDetails {
   IpAddressV4?: string;
   Organization?: IpOrganizationDetails;
@@ -7379,23 +4870,14 @@ export interface ActionRemoteIpDetails {
   City?: City;
   GeoLocation?: GeoLocation;
 }
-const ActionRemoteIpDetails = /*@__PURE__*/ __L.at(
-  __c97,
-  6,
-) as any as S.Schema<ActionRemoteIpDetails>;
 export interface ActionRemotePortDetails {
   Port?: number;
   PortName?: string;
 }
-const ActionRemotePortDetails = /*@__PURE__*/ __L.at(
-  __c97,
-  7,
-) as any as S.Schema<ActionRemotePortDetails>;
 export interface ActionLocalPortDetails {
   Port?: number;
   PortName?: string;
 }
-const ActionLocalPortDetails = ActionRemotePortDetails as any as S.Schema<ActionLocalPortDetails>;
 export interface NetworkConnectionAction {
   ConnectionDirection?: string;
   RemoteIpDetails?: ActionRemoteIpDetails;
@@ -7404,17 +4886,9 @@ export interface NetworkConnectionAction {
   Protocol?: string;
   Blocked?: boolean;
 }
-const NetworkConnectionAction = /*@__PURE__*/ __L.at(
-  __c98,
-  0,
-) as any as S.Schema<NetworkConnectionAction>;
 export interface AwsApiCallActionDomainDetails {
   Domain?: string;
 }
-const AwsApiCallActionDomainDetails = /*@__PURE__*/ __L.at(
-  __c98,
-  1,
-) as any as S.Schema<AwsApiCallActionDomainDetails>;
 export interface AwsApiCallAction {
   Api?: string;
   ServiceName?: string;
@@ -7425,33 +4899,24 @@ export interface AwsApiCallAction {
   FirstSeen?: string;
   LastSeen?: string;
 }
-const AwsApiCallAction = /*@__PURE__*/ __L.at(__c98, 2) as any as S.Schema<AwsApiCallAction>;
 export interface DnsRequestAction {
   Domain?: string;
   Protocol?: string;
   Blocked?: boolean;
 }
-const DnsRequestAction = /*@__PURE__*/ __L.at(__c98, 3) as any as S.Schema<DnsRequestAction>;
 export interface ActionLocalIpDetails {
   IpAddressV4?: string;
 }
-const ActionLocalIpDetails = /*@__PURE__*/ __L.at(
-  __c98,
-  4,
-) as any as S.Schema<ActionLocalIpDetails>;
 export interface PortProbeDetail {
   LocalPortDetails?: ActionLocalPortDetails;
   LocalIpDetails?: ActionLocalIpDetails;
   RemoteIpDetails?: ActionRemoteIpDetails;
 }
-const PortProbeDetail = /*@__PURE__*/ __L.at(__c98, 5) as any as S.Schema<PortProbeDetail>;
 export type PortProbeDetailList = PortProbeDetail[];
-const PortProbeDetailList = /*@__PURE__*/ __L.at(__c98, 6);
 export interface PortProbeAction {
   PortProbeDetails?: PortProbeDetail[];
   Blocked?: boolean;
 }
-const PortProbeAction = /*@__PURE__*/ __L.at(__c98, 7) as any as S.Schema<PortProbeAction>;
 export interface Action {
   ActionType?: string;
   NetworkConnectionAction?: NetworkConnectionAction;
@@ -7459,15 +4924,10 @@ export interface Action {
   DnsRequestAction?: DnsRequestAction;
   PortProbeAction?: PortProbeAction;
 }
-const Action = /*@__PURE__*/ __L.at(__c99, 0) as any as S.Schema<Action>;
 export interface FindingProviderSeverity {
   Label?: SeverityLabel;
   Original?: string;
 }
-const FindingProviderSeverity = /*@__PURE__*/ __L.at(
-  __c99,
-  1,
-) as any as S.Schema<FindingProviderSeverity>;
 export interface FindingProviderFields {
   Confidence?: number;
   Criticality?: number;
@@ -7475,21 +4935,15 @@ export interface FindingProviderFields {
   Severity?: FindingProviderSeverity;
   Types?: string[];
 }
-const FindingProviderFields = /*@__PURE__*/ __L.at(
-  __c99,
-  2,
-) as any as S.Schema<FindingProviderFields>;
 export interface GeneratorDetails {
   Name?: string;
   Description?: string;
   Labels?: string[];
 }
-const GeneratorDetails = /*@__PURE__*/ __L.at(__c99, 3) as any as S.Schema<GeneratorDetails>;
 export interface UserAccount {
   Uid?: string;
   Name?: string;
 }
-const UserAccount = /*@__PURE__*/ __L.at(__c99, 4) as any as S.Schema<UserAccount>;
 export interface ActorUser {
   Name?: string;
   Uid?: string;
@@ -7497,47 +4951,33 @@ export interface ActorUser {
   CredentialUid?: string;
   Account?: UserAccount;
 }
-const ActorUser = /*@__PURE__*/ __L.at(__c99, 5) as any as S.Schema<ActorUser>;
 export type ActorSessionMfaStatus = "ENABLED" | "DISABLED" | (string & {});
-const ActorSessionMfaStatus = S.String;
-
 export interface ActorSession {
   Uid?: string;
   MfaStatus?: ActorSessionMfaStatus;
   CreatedTime?: number;
   Issuer?: string;
 }
-const ActorSession = /*@__PURE__*/ __L.at(__c99, 6) as any as S.Schema<ActorSession>;
 export interface Actor {
   Id?: string;
   User?: ActorUser;
   Session?: ActorSession;
 }
-const Actor = /*@__PURE__*/ __L.at(__c99, 7) as any as S.Schema<Actor>;
 export type ActorsList = Actor[];
-const ActorsList = /*@__PURE__*/ __L.at(__c100, 0);
 export interface NetworkGeoLocation {
   City?: string;
   Country?: string;
   Lat?: number;
   Lon?: number;
 }
-const NetworkGeoLocation = /*@__PURE__*/ __L.at(__c100, 1) as any as S.Schema<NetworkGeoLocation>;
 export interface NetworkAutonomousSystem {
   Name?: string;
   Number?: number;
 }
-const NetworkAutonomousSystem = /*@__PURE__*/ __L.at(
-  __c100,
-  2,
-) as any as S.Schema<NetworkAutonomousSystem>;
 export type ConnectionDirection = "INBOUND" | "OUTBOUND" | (string & {});
-const ConnectionDirection = S.String;
-
 export interface NetworkConnection {
   Direction?: ConnectionDirection;
 }
-const NetworkConnection = /*@__PURE__*/ __L.at(__c100, 3) as any as S.Schema<NetworkConnection>;
 export interface NetworkEndpoint {
   Id?: string;
   Ip?: string;
@@ -7547,18 +4987,14 @@ export interface NetworkEndpoint {
   AutonomousSystem?: NetworkAutonomousSystem;
   Connection?: NetworkConnection;
 }
-const NetworkEndpoint = /*@__PURE__*/ __L.at(__c100, 4) as any as S.Schema<NetworkEndpoint>;
 export type NetworkEndpointsList = NetworkEndpoint[];
-const NetworkEndpointsList = /*@__PURE__*/ __L.at(__c100, 5);
 export interface Indicator {
   Key?: string;
   Values?: string[];
   Title?: string;
   Type?: string;
 }
-const Indicator = /*@__PURE__*/ __L.at(__c100, 6) as any as S.Schema<Indicator>;
 export type IndicatorsList = Indicator[];
-const IndicatorsList = /*@__PURE__*/ __L.at(__c100, 7);
 export interface Signal {
   Type?: string;
   Id?: string;
@@ -7576,9 +5012,7 @@ export interface Signal {
   ActorIds?: string[];
   EndpointIds?: string[];
 }
-const Signal = /*@__PURE__*/ __L.at(__c101, 0) as any as S.Schema<Signal>;
 export type SignalsList = Signal[];
-const SignalsList = /*@__PURE__*/ __L.at(__c101, 1);
 export interface Sequence {
   Uid?: string;
   Actors?: Actor[];
@@ -7586,11 +5020,9 @@ export interface Sequence {
   Signals?: Signal[];
   SequenceIndicators?: Indicator[];
 }
-const Sequence = /*@__PURE__*/ __L.at(__c101, 2) as any as S.Schema<Sequence>;
 export interface Detection {
   Sequence?: Sequence;
 }
-const Detection = /*@__PURE__*/ __L.at(__c101, 3) as any as S.Schema<Detection>;
 export interface AwsSecurityFinding {
   SchemaVersion?: string;
   Id?: string;
@@ -7638,24 +5070,16 @@ export interface AwsSecurityFinding {
   AwsAccountName?: string;
   Detection?: Detection;
 }
-const AwsSecurityFinding = /*@__PURE__*/ __L.at(__c101, 4) as any as S.Schema<AwsSecurityFinding>;
 export type BatchImportFindingsRequestFindingList = AwsSecurityFinding[];
-const BatchImportFindingsRequestFindingList = /*@__PURE__*/ __L.at(__c101, 5);
 export interface BatchImportFindingsRequest {
   Findings?: AwsSecurityFinding[];
 }
-const BatchImportFindingsRequest = /*@__PURE__*/ __L.at(
-  __c101,
-  6,
-) as any as S.Schema<BatchImportFindingsRequest>;
 export interface ImportFindingsError {
   Id?: string;
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-const ImportFindingsError = /*@__PURE__*/ __L.at(__c101, 7) as any as S.Schema<ImportFindingsError>;
 export type ImportFindingsErrorList = ImportFindingsError[];
-const ImportFindingsErrorList = /*@__PURE__*/ __L.at(__c102, 0);
 export interface BatchImportFindingsResponse {
   FailedCount: number;
   SuccessCount: number;
@@ -7665,10 +5089,6 @@ export interface BatchImportFindingsResponse {
     ErrorMessage: NonEmptyString;
   })[];
 }
-const BatchImportFindingsResponse = /*@__PURE__*/ __L.at(
-  __c102,
-  1,
-) as any as S.Schema<BatchImportFindingsResponse>;
 export interface UpdateAutomationRulesRequestItem {
   RuleArn?: string;
   RuleStatus?: RuleStatus;
@@ -7679,35 +5099,19 @@ export interface UpdateAutomationRulesRequestItem {
   Criteria?: AutomationRulesFindingFilters;
   Actions?: AutomationRulesAction[];
 }
-const UpdateAutomationRulesRequestItem = /*@__PURE__*/ __L.at(
-  __c102,
-  2,
-) as any as S.Schema<UpdateAutomationRulesRequestItem>;
 export type UpdateAutomationRulesRequestItemsList = UpdateAutomationRulesRequestItem[];
-const UpdateAutomationRulesRequestItemsList = /*@__PURE__*/ __L.at(__c102, 3);
 export interface BatchUpdateAutomationRulesRequest {
   UpdateAutomationRulesRequestItems?: UpdateAutomationRulesRequestItem[];
 }
-const BatchUpdateAutomationRulesRequest = /*@__PURE__*/ __L.at(
-  __c102,
-  4,
-) as any as S.Schema<BatchUpdateAutomationRulesRequest>;
 export interface BatchUpdateAutomationRulesResponse {
   ProcessedAutomationRules?: string[];
   UnprocessedAutomationRules?: UnprocessedAutomationRule[];
 }
-const BatchUpdateAutomationRulesResponse =
-  BatchDeleteAutomationRulesResponse as any as S.Schema<BatchUpdateAutomationRulesResponse>;
 export interface AwsSecurityFindingIdentifier {
   Id?: string;
   ProductArn?: string;
 }
-const AwsSecurityFindingIdentifier = /*@__PURE__*/ __L.at(
-  __c102,
-  5,
-) as any as S.Schema<AwsSecurityFindingIdentifier>;
 export type AwsSecurityFindingIdentifierList = AwsSecurityFindingIdentifier[];
-const AwsSecurityFindingIdentifierList = /*@__PURE__*/ __L.at(__c102, 6);
 export interface BatchUpdateFindingsRequest {
   FindingIdentifiers?: AwsSecurityFindingIdentifier[];
   Note?: NoteUpdate;
@@ -7720,21 +5124,12 @@ export interface BatchUpdateFindingsRequest {
   Workflow?: WorkflowUpdate;
   RelatedFindings?: RelatedFinding[];
 }
-const BatchUpdateFindingsRequest = /*@__PURE__*/ __L.at(
-  __c102,
-  7,
-) as any as S.Schema<BatchUpdateFindingsRequest>;
 export interface BatchUpdateFindingsUnprocessedFinding {
   FindingIdentifier?: AwsSecurityFindingIdentifier;
   ErrorCode?: string;
   ErrorMessage?: string;
 }
-const BatchUpdateFindingsUnprocessedFinding = /*@__PURE__*/ __L.at(
-  __c103,
-  0,
-) as any as S.Schema<BatchUpdateFindingsUnprocessedFinding>;
 export type BatchUpdateFindingsUnprocessedFindingsList = BatchUpdateFindingsUnprocessedFinding[];
-const BatchUpdateFindingsUnprocessedFindingsList = /*@__PURE__*/ __L.at(__c103, 1);
 export interface BatchUpdateFindingsResponse {
   ProcessedFindings: (AwsSecurityFindingIdentifier & {
     Id: NonEmptyString;
@@ -7749,23 +5144,13 @@ export interface BatchUpdateFindingsResponse {
     ErrorMessage: NonEmptyString;
   })[];
 }
-const BatchUpdateFindingsResponse = /*@__PURE__*/ __L.at(
-  __c103,
-  2,
-) as any as S.Schema<BatchUpdateFindingsResponse>;
 export type MetadataUidList = string[];
-const MetadataUidList = AutomationRulesArnsList as any as S.Schema<MetadataUidList>;
 export interface OcsfFindingIdentifier {
   CloudAccountUid?: string;
   FindingInfoUid?: string;
   MetadataProductUid?: string;
 }
-const OcsfFindingIdentifier = /*@__PURE__*/ __L.at(
-  __c103,
-  3,
-) as any as S.Schema<OcsfFindingIdentifier>;
 export type OcsfFindingIdentifierList = OcsfFindingIdentifier[];
-const OcsfFindingIdentifierList = /*@__PURE__*/ __L.at(__c103, 4);
 export interface BatchUpdateFindingsV2Request {
   MetadataUids?: string[];
   FindingIdentifiers?: OcsfFindingIdentifier[];
@@ -7773,41 +5158,25 @@ export interface BatchUpdateFindingsV2Request {
   SeverityId?: number;
   StatusId?: number;
 }
-const BatchUpdateFindingsV2Request = /*@__PURE__*/ __L.at(
-  __c103,
-  5,
-) as any as S.Schema<BatchUpdateFindingsV2Request>;
 export interface BatchUpdateFindingsV2ProcessedFinding {
   FindingIdentifier?: OcsfFindingIdentifier;
   MetadataUid?: string;
 }
-const BatchUpdateFindingsV2ProcessedFinding = /*@__PURE__*/ __L.at(
-  __c103,
-  6,
-) as any as S.Schema<BatchUpdateFindingsV2ProcessedFinding>;
 export type BatchUpdateFindingsV2ProcessedFindingsList = BatchUpdateFindingsV2ProcessedFinding[];
-const BatchUpdateFindingsV2ProcessedFindingsList = /*@__PURE__*/ __L.at(__c103, 7);
 export type BatchUpdateFindingsV2UnprocessedFindingErrorCode =
   | "ResourceNotFoundException"
   | "ValidationException"
   | "InternalServerException"
   | "ConflictException"
   | (string & {});
-const BatchUpdateFindingsV2UnprocessedFindingErrorCode = S.String;
-
 export interface BatchUpdateFindingsV2UnprocessedFinding {
   FindingIdentifier?: OcsfFindingIdentifier;
   MetadataUid?: string;
   ErrorCode?: BatchUpdateFindingsV2UnprocessedFindingErrorCode;
   ErrorMessage?: string;
 }
-const BatchUpdateFindingsV2UnprocessedFinding = /*@__PURE__*/ __L.at(
-  __c104,
-  0,
-) as any as S.Schema<BatchUpdateFindingsV2UnprocessedFinding>;
 export type BatchUpdateFindingsV2UnprocessedFindingsList =
   BatchUpdateFindingsV2UnprocessedFinding[];
-const BatchUpdateFindingsV2UnprocessedFindingsList = /*@__PURE__*/ __L.at(__c104, 1);
 export interface BatchUpdateFindingsV2Response {
   ProcessedFindings: (BatchUpdateFindingsV2ProcessedFinding & {
     FindingIdentifier: OcsfFindingIdentifier & {
@@ -7824,41 +5193,23 @@ export interface BatchUpdateFindingsV2Response {
     };
   })[];
 }
-const BatchUpdateFindingsV2Response = /*@__PURE__*/ __L.at(
-  __c104,
-  2,
-) as any as S.Schema<BatchUpdateFindingsV2Response>;
 export interface StandardsControlAssociationUpdate {
   StandardsArn?: string;
   SecurityControlId?: string;
   AssociationStatus?: AssociationStatus;
   UpdatedReason?: string;
 }
-const StandardsControlAssociationUpdate = /*@__PURE__*/ __L.at(
-  __c104,
-  3,
-) as any as S.Schema<StandardsControlAssociationUpdate>;
 export type StandardsControlAssociationUpdates = StandardsControlAssociationUpdate[];
-const StandardsControlAssociationUpdates = /*@__PURE__*/ __L.at(__c104, 4);
 export interface BatchUpdateStandardsControlAssociationsRequest {
   StandardsControlAssociationUpdates?: StandardsControlAssociationUpdate[];
 }
-const BatchUpdateStandardsControlAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c104,
-  5,
-) as any as S.Schema<BatchUpdateStandardsControlAssociationsRequest>;
 export interface UnprocessedStandardsControlAssociationUpdate {
   StandardsControlAssociationUpdate?: StandardsControlAssociationUpdate;
   ErrorCode?: UnprocessedErrorCode;
   ErrorReason?: string;
 }
-const UnprocessedStandardsControlAssociationUpdate = /*@__PURE__*/ __L.at(
-  __c104,
-  6,
-) as any as S.Schema<UnprocessedStandardsControlAssociationUpdate>;
 export type UnprocessedStandardsControlAssociationUpdates =
   UnprocessedStandardsControlAssociationUpdate[];
-const UnprocessedStandardsControlAssociationUpdates = /*@__PURE__*/ __L.at(__c104, 7);
 export interface BatchUpdateStandardsControlAssociationsResponse {
   UnprocessedAssociationUpdates?: (UnprocessedStandardsControlAssociationUpdate & {
     StandardsControlAssociationUpdate: StandardsControlAssociationUpdate & {
@@ -7869,30 +5220,17 @@ export interface BatchUpdateStandardsControlAssociationsResponse {
     ErrorCode: UnprocessedErrorCode;
   })[];
 }
-const BatchUpdateStandardsControlAssociationsResponse = /*@__PURE__*/ __L.at(
-  __c105,
-  0,
-) as any as S.Schema<BatchUpdateStandardsControlAssociationsResponse>;
 export interface CreateActionTargetRequest {
   Name?: string;
   Description?: string;
   Id?: string;
 }
-const CreateActionTargetRequest = /*@__PURE__*/ __L.at(
-  __c105,
-  1,
-) as any as S.Schema<CreateActionTargetRequest>;
 export interface CreateActionTargetResponse {
   ActionTargetArn: string;
 }
-const CreateActionTargetResponse = /*@__PURE__*/ __L.at(
-  __c105,
-  2,
-) as any as S.Schema<CreateActionTargetResponse>;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = FieldMap as any as S.Schema<TagMap>;
 export type ClientToken = string;
 export interface CreateAggregatorV2Request {
   RegionLinkingMode?: string;
@@ -7900,20 +5238,12 @@ export interface CreateAggregatorV2Request {
   Tags?: { [key: string]: string | undefined };
   ClientToken?: string;
 }
-const CreateAggregatorV2Request = /*@__PURE__*/ __L.at(
-  __c105,
-  3,
-) as any as S.Schema<CreateAggregatorV2Request>;
 export interface CreateAggregatorV2Response {
   AggregatorV2Arn?: string;
   AggregationRegion?: string;
   RegionLinkingMode?: string;
   LinkedRegions?: string[];
 }
-const CreateAggregatorV2Response = /*@__PURE__*/ __L.at(
-  __c105,
-  4,
-) as any as S.Schema<CreateAggregatorV2Response>;
 export interface CreateAutomationRuleRequest {
   Tags?: { [key: string]: string | undefined };
   RuleStatus?: RuleStatus;
@@ -7924,20 +5254,10 @@ export interface CreateAutomationRuleRequest {
   Criteria?: AutomationRulesFindingFilters;
   Actions?: AutomationRulesAction[];
 }
-const CreateAutomationRuleRequest = /*@__PURE__*/ __L.at(
-  __c105,
-  5,
-) as any as S.Schema<CreateAutomationRuleRequest>;
 export interface CreateAutomationRuleResponse {
   RuleArn?: string;
 }
-const CreateAutomationRuleResponse = /*@__PURE__*/ __L.at(
-  __c105,
-  6,
-) as any as S.Schema<CreateAutomationRuleResponse>;
 export type RuleStatusV2 = "ENABLED" | "DISABLED" | (string & {});
-const RuleStatusV2 = S.String;
-
 export type RuleOrderValueV2 = number;
 export type OcsfStringField =
   | "metadata.uid"
@@ -8017,15 +5337,11 @@ export type OcsfStringField =
   | "cloud.account.name"
   | "vendor_attributes.severity"
   | (string & {});
-const OcsfStringField = S.String;
-
 export interface OcsfStringFilter {
   FieldName?: OcsfStringField;
   Filter?: StringFilter;
 }
-const OcsfStringFilter = /*@__PURE__*/ __L.at(__c105, 7) as any as S.Schema<OcsfStringFilter>;
 export type OcsfStringFilterList = OcsfStringFilter[];
-const OcsfStringFilterList = /*@__PURE__*/ __L.at(__c106, 0);
 export type OcsfDateField =
   | "finding_info.created_time_dt"
   | "finding_info.first_seen_time_dt"
@@ -8035,33 +5351,24 @@ export type OcsfDateField =
   | "resources.image.last_used_time_dt"
   | "resources.modified_time_dt"
   | (string & {});
-const OcsfDateField = S.String;
-
 export interface OcsfDateFilter {
   FieldName?: OcsfDateField;
   Filter?: DateFilter;
 }
-const OcsfDateFilter = /*@__PURE__*/ __L.at(__c106, 1) as any as S.Schema<OcsfDateFilter>;
 export type OcsfDateFilterList = OcsfDateFilter[];
-const OcsfDateFilterList = /*@__PURE__*/ __L.at(__c106, 2);
 export type OcsfBooleanField =
   | "compliance.assessments.meets_criteria"
   | "vulnerabilities.is_exploit_available"
   | "vulnerabilities.is_fix_available"
   | (string & {});
-const OcsfBooleanField = S.String;
-
 export interface BooleanFilter {
   Value?: boolean;
 }
-const BooleanFilter = /*@__PURE__*/ __L.at(__c106, 3) as any as S.Schema<BooleanFilter>;
 export interface OcsfBooleanFilter {
   FieldName?: OcsfBooleanField;
   Filter?: BooleanFilter;
 }
-const OcsfBooleanFilter = /*@__PURE__*/ __L.at(__c106, 4) as any as S.Schema<OcsfBooleanFilter>;
 export type OcsfBooleanFilterList = OcsfBooleanFilter[];
-const OcsfBooleanFilterList = /*@__PURE__*/ __L.at(__c106, 5);
 export type OcsfNumberField =
   | "activity_id"
   | "compliance.status_id"
@@ -8078,47 +5385,32 @@ export type OcsfNumberField =
   | "vulnerabilities.cve.cvss.base_score"
   | "vendor_attributes.severity_id"
   | (string & {});
-const OcsfNumberField = S.String;
-
 export interface OcsfNumberFilter {
   FieldName?: OcsfNumberField;
   Filter?: NumberFilter;
 }
-const OcsfNumberFilter = /*@__PURE__*/ __L.at(__c106, 6) as any as S.Schema<OcsfNumberFilter>;
 export type OcsfNumberFilterList = OcsfNumberFilter[];
-const OcsfNumberFilterList = /*@__PURE__*/ __L.at(__c106, 7);
 export type OcsfMapField =
   | "resources.tags"
   | "compliance.control_parameters"
   | "databucket.tags"
   | "finding_info.tags"
   | (string & {});
-const OcsfMapField = S.String;
-
 export interface OcsfMapFilter {
   FieldName?: OcsfMapField;
   Filter?: MapFilter;
 }
-const OcsfMapFilter = /*@__PURE__*/ __L.at(__c107, 0) as any as S.Schema<OcsfMapFilter>;
 export type OcsfMapFilterList = OcsfMapFilter[];
-const OcsfMapFilterList = /*@__PURE__*/ __L.at(__c107, 1);
 export type OcsfIpField = "evidences.dst_endpoint.ip" | "evidences.src_endpoint.ip" | (string & {});
-const OcsfIpField = S.String;
-
 export interface IpFilter {
   Cidr?: string;
 }
-const IpFilter = /*@__PURE__*/ __L.at(__c107, 2) as any as S.Schema<IpFilter>;
 export interface OcsfIpFilter {
   FieldName?: OcsfIpField;
   Filter?: IpFilter;
 }
-const OcsfIpFilter = /*@__PURE__*/ __L.at(__c107, 3) as any as S.Schema<OcsfIpFilter>;
 export type OcsfIpFilterList = OcsfIpFilter[];
-const OcsfIpFilterList = /*@__PURE__*/ __L.at(__c107, 4);
 export type AllowedOperators = "AND" | "OR" | (string & {});
-const AllowedOperators = S.String;
-
 export interface CompositeFilter {
   StringFilters?: OcsfStringFilter[];
   DateFilters?: OcsfDateFilter[];
@@ -8129,49 +5421,30 @@ export interface CompositeFilter {
   NestedCompositeFilters?: CompositeFilter[];
   Operator?: AllowedOperators;
 }
-const CompositeFilter = /*@__PURE__*/ __L.at(__c107, 5) as any as S.Schema<CompositeFilter>;
 export type CompositeFilterList = CompositeFilter[];
-const CompositeFilterList = /*@__PURE__*/ __L.at(__c107, 6) as any as S.Schema<CompositeFilterList>;
 export interface OcsfFindingFilters {
   CompositeFilters?: CompositeFilter[];
   CompositeOperator?: AllowedOperators;
 }
-const OcsfFindingFilters = /*@__PURE__*/ __L.at(__c107, 7) as any as S.Schema<OcsfFindingFilters>;
 export type Criteria = { OcsfFindingCriteria: OcsfFindingFilters };
-const Criteria = /*@__PURE__*/ __L.at(__c108, 0);
 export type AutomationRulesActionTypeV2 =
   | "FINDING_FIELDS_UPDATE"
   | "EXTERNAL_INTEGRATION"
   | (string & {});
-const AutomationRulesActionTypeV2 = S.String;
-
 export interface AutomationRulesFindingFieldsUpdateV2 {
   SeverityId?: number;
   Comment?: string;
   StatusId?: number;
 }
-const AutomationRulesFindingFieldsUpdateV2 = /*@__PURE__*/ __L.at(
-  __c108,
-  1,
-) as any as S.Schema<AutomationRulesFindingFieldsUpdateV2>;
 export interface ExternalIntegrationConfiguration {
   ConnectorArn?: string;
 }
-const ExternalIntegrationConfiguration = /*@__PURE__*/ __L.at(
-  __c108,
-  2,
-) as any as S.Schema<ExternalIntegrationConfiguration>;
 export interface AutomationRulesActionV2 {
   Type?: AutomationRulesActionTypeV2;
   FindingFieldsUpdate?: AutomationRulesFindingFieldsUpdateV2;
   ExternalIntegrationConfiguration?: ExternalIntegrationConfiguration;
 }
-const AutomationRulesActionV2 = /*@__PURE__*/ __L.at(
-  __c108,
-  3,
-) as any as S.Schema<AutomationRulesActionV2>;
 export type AutomationRulesActionListV2 = AutomationRulesActionV2[];
-const AutomationRulesActionListV2 = /*@__PURE__*/ __L.at(__c108, 4);
 export interface CreateAutomationRuleV2Request {
   RuleName?: string;
   RuleStatus?: RuleStatusV2;
@@ -8182,64 +5455,35 @@ export interface CreateAutomationRuleV2Request {
   Tags?: { [key: string]: string | undefined };
   ClientToken?: string;
 }
-const CreateAutomationRuleV2Request = /*@__PURE__*/ __L.at(
-  __c108,
-  5,
-) as any as S.Schema<CreateAutomationRuleV2Request>;
 export interface CreateAutomationRuleV2Response {
   RuleArn?: string;
   RuleId?: string;
 }
-const CreateAutomationRuleV2Response = /*@__PURE__*/ __L.at(
-  __c108,
-  6,
-) as any as S.Schema<CreateAutomationRuleV2Response>;
 export type EnabledStandardIdentifierList = string[];
-const EnabledStandardIdentifierList =
-  AutomationRulesArnsList as any as S.Schema<EnabledStandardIdentifierList>;
 export type EnabledSecurityControlIdentifierList = string[];
-const EnabledSecurityControlIdentifierList =
-  AutomationRulesArnsList as any as S.Schema<EnabledSecurityControlIdentifierList>;
 export type DisabledSecurityControlIdentifierList = string[];
-const DisabledSecurityControlIdentifierList =
-  AutomationRulesArnsList as any as S.Schema<DisabledSecurityControlIdentifierList>;
 export interface SecurityControlCustomParameter {
   SecurityControlId?: string;
   Parameters?: { [key: string]: ParameterConfiguration | undefined };
 }
-const SecurityControlCustomParameter = /*@__PURE__*/ __L.at(
-  __c108,
-  7,
-) as any as S.Schema<SecurityControlCustomParameter>;
 export type SecurityControlCustomParametersList = SecurityControlCustomParameter[];
-const SecurityControlCustomParametersList = /*@__PURE__*/ __L.at(__c109, 0);
 export interface SecurityControlsConfiguration {
   EnabledSecurityControlIdentifiers?: string[];
   DisabledSecurityControlIdentifiers?: string[];
   SecurityControlCustomParameters?: SecurityControlCustomParameter[];
 }
-const SecurityControlsConfiguration = /*@__PURE__*/ __L.at(
-  __c109,
-  1,
-) as any as S.Schema<SecurityControlsConfiguration>;
 export interface SecurityHubPolicy {
   ServiceEnabled?: boolean;
   EnabledStandardIdentifiers?: string[];
   SecurityControlsConfiguration?: SecurityControlsConfiguration;
 }
-const SecurityHubPolicy = /*@__PURE__*/ __L.at(__c109, 2) as any as S.Schema<SecurityHubPolicy>;
 export type Policy = { SecurityHub: SecurityHubPolicy };
-const Policy = /*@__PURE__*/ __L.at(__c109, 3);
 export interface CreateConfigurationPolicyRequest {
   Name?: string;
   Description?: string;
   ConfigurationPolicy?: Policy;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateConfigurationPolicyRequest = /*@__PURE__*/ __L.at(
-  __c109,
-  4,
-) as any as S.Schema<CreateConfigurationPolicyRequest>;
 export interface CreateConfigurationPolicyResponse {
   Arn?: string;
   Id?: string;
@@ -8249,36 +5493,19 @@ export interface CreateConfigurationPolicyResponse {
   CreatedAt?: Date;
   ConfigurationPolicy?: Policy;
 }
-const CreateConfigurationPolicyResponse = /*@__PURE__*/ __L.at(
-  __c109,
-  5,
-) as any as S.Schema<CreateConfigurationPolicyResponse>;
 export type ScopeType = "TENANT" | "SUBSCRIPTION" | (string & {});
-const ScopeType = S.String;
-
 export type ScopeValueList = string[];
-const ScopeValueList = AutomationRulesArnsList as any as S.Schema<ScopeValueList>;
 export interface AzureScopeConfiguration {
   ScopeType?: ScopeType;
   ScopeValues?: string[];
 }
-const AzureScopeConfiguration = /*@__PURE__*/ __L.at(
-  __c109,
-  6,
-) as any as S.Schema<AzureScopeConfiguration>;
 export type AzureRegionList = string[];
-const AzureRegionList = AutomationRulesArnsList as any as S.Schema<AzureRegionList>;
 export interface AzureProviderConfiguration {
   AWSConfigConnectorArn?: string;
   ScopeConfiguration?: AzureScopeConfiguration;
   AzureRegions?: string[];
 }
-const AzureProviderConfiguration = /*@__PURE__*/ __L.at(
-  __c109,
-  7,
-) as any as S.Schema<AzureProviderConfiguration>;
 export type CspmProviderConfiguration = { Azure: AzureProviderConfiguration };
-const CspmProviderConfiguration = /*@__PURE__*/ __L.at(__c110, 0);
 export interface CreateConnectorRequest {
   Name?: string;
   Description?: string;
@@ -8286,56 +5513,35 @@ export interface CreateConnectorRequest {
   Tags?: { [key: string]: string | undefined };
   ClientToken?: string;
 }
-const CreateConnectorRequest = /*@__PURE__*/ __L.at(
-  __c110,
-  1,
-) as any as S.Schema<CreateConnectorRequest>;
 export type CspmConnectorStatus =
   | "CONNECTED"
   | "DEGRADED"
   | "FAILED_TO_CONNECT"
   | "UNKNOWN"
   | (string & {});
-const CspmConnectorStatus = S.String;
-
 export type CspmEnablementStatus =
   | "ENABLED"
   | "PENDING_ENABLEMENT"
   | "PENDING_UPDATE"
   | "PENDING_DELETION"
   | (string & {});
-const CspmEnablementStatus = S.String;
-
 export interface CreateConnectorResponse {
   ConnectorArn: string;
   ConnectorId: string;
   ConnectorStatus?: CspmConnectorStatus;
   EnablementStatus?: CspmEnablementStatus;
 }
-const CreateConnectorResponse = /*@__PURE__*/ __L.at(
-  __c110,
-  2,
-) as any as S.Schema<CreateConnectorResponse>;
 export interface JiraCloudProviderConfiguration {
   ProjectKey?: string;
 }
-const JiraCloudProviderConfiguration = /*@__PURE__*/ __L.at(
-  __c110,
-  3,
-) as any as S.Schema<JiraCloudProviderConfiguration>;
 export interface ServiceNowProviderConfiguration {
   InstanceName?: string;
   SecretArn?: string;
 }
-const ServiceNowProviderConfiguration = /*@__PURE__*/ __L.at(
-  __c110,
-  4,
-) as any as S.Schema<ServiceNowProviderConfiguration>;
 export type ProviderConfiguration =
   | { JiraCloud: JiraCloudProviderConfiguration; ServiceNow?: never; Azure?: never }
   | { JiraCloud?: never; ServiceNow: ServiceNowProviderConfiguration; Azure?: never }
   | { JiraCloud?: never; ServiceNow?: never; Azure: AzureProviderConfiguration };
-const ProviderConfiguration = /*@__PURE__*/ __L.at(__c110, 5);
 export interface CreateConnectorV2Request {
   Name?: string;
   Description?: string;
@@ -8344,10 +5550,6 @@ export interface CreateConnectorV2Request {
   Tags?: { [key: string]: string | undefined };
   ClientToken?: string;
 }
-const CreateConnectorV2Request = /*@__PURE__*/ __L.at(
-  __c110,
-  6,
-) as any as S.Schema<CreateConnectorV2Request>;
 export type ConnectorStatus =
   | "CONNECTED"
   | "DEGRADED"
@@ -8356,8 +5558,6 @@ export type ConnectorStatus =
   | "PENDING_CONFIGURATION"
   | "UNKNOWN"
   | (string & {});
-const ConnectorStatus = S.String;
-
 export type EnablementStatus =
   | "ENABLED"
   | "PENDING_ENABLEMENT"
@@ -8367,8 +5567,6 @@ export type EnablementStatus =
   | "PENDING_DELETION"
   | "FAILED_TO_DELETE"
   | (string & {});
-const EnablementStatus = S.String;
-
 export interface CreateConnectorV2Response {
   ConnectorArn: string;
   ConnectorId: string;
@@ -8376,38 +5574,22 @@ export interface CreateConnectorV2Response {
   ConnectorStatus?: ConnectorStatus;
   EnablementStatus?: EnablementStatus;
 }
-const CreateConnectorV2Response = /*@__PURE__*/ __L.at(
-  __c110,
-  7,
-) as any as S.Schema<CreateConnectorV2Response>;
 export interface CreateFindingAggregatorRequest {
   RegionLinkingMode?: string;
   Regions?: string[];
 }
-const CreateFindingAggregatorRequest = /*@__PURE__*/ __L.at(
-  __c111,
-  0,
-) as any as S.Schema<CreateFindingAggregatorRequest>;
 export interface CreateFindingAggregatorResponse {
   FindingAggregatorArn?: string;
   FindingAggregationRegion?: string;
   RegionLinkingMode?: string;
   Regions?: string[];
 }
-const CreateFindingAggregatorResponse = /*@__PURE__*/ __L.at(
-  __c111,
-  1,
-) as any as S.Schema<CreateFindingAggregatorResponse>;
 export type IpFilterList = IpFilter[];
-const IpFilterList = /*@__PURE__*/ __L.at(__c111, 2);
 export interface KeywordFilter {
   Value?: string;
 }
-const KeywordFilter = /*@__PURE__*/ __L.at(__c111, 3) as any as S.Schema<KeywordFilter>;
 export type KeywordFilterList = KeywordFilter[];
-const KeywordFilterList = /*@__PURE__*/ __L.at(__c111, 4);
 export type BooleanFilterList = BooleanFilter[];
-const BooleanFilterList = /*@__PURE__*/ __L.at(__c111, 5);
 export interface AwsSecurityFindingFilters {
   ProductArn?: StringFilter[];
   AwsAccountId?: StringFilter[];
@@ -8517,210 +5699,102 @@ export interface AwsSecurityFindingFilters {
   ResourceOwnerOrgId?: StringFilter[];
   ResourceProvider?: StringFilter[];
 }
-const AwsSecurityFindingFilters = /*@__PURE__*/ __L.at(
-  __c111,
-  6,
-) as any as S.Schema<AwsSecurityFindingFilters>;
 export interface CreateInsightRequest {
   Name?: string;
   Filters?: AwsSecurityFindingFilters;
   GroupByAttribute?: string;
 }
-const CreateInsightRequest = /*@__PURE__*/ __L.at(
-  __c111,
-  7,
-) as any as S.Schema<CreateInsightRequest>;
 export interface CreateInsightResponse {
   InsightArn: string;
 }
-const CreateInsightResponse = /*@__PURE__*/ __L.at(
-  __c112,
-  0,
-) as any as S.Schema<CreateInsightResponse>;
 export type AccountId = string;
 export interface AccountDetails {
   AccountId?: string;
   Email?: string;
 }
-const AccountDetails = /*@__PURE__*/ __L.at(__c112, 1) as any as S.Schema<AccountDetails>;
 export type AccountDetailsList = AccountDetails[];
-const AccountDetailsList = /*@__PURE__*/ __L.at(__c112, 2);
 export interface CreateMembersRequest {
   AccountDetails?: AccountDetails[];
 }
-const CreateMembersRequest = /*@__PURE__*/ __L.at(
-  __c112,
-  3,
-) as any as S.Schema<CreateMembersRequest>;
 export interface Result {
   AccountId?: string;
   ProcessingResult?: string;
 }
-const Result = /*@__PURE__*/ __L.at(__c112, 4) as any as S.Schema<Result>;
 export type ResultList = Result[];
-const ResultList = /*@__PURE__*/ __L.at(__c112, 5);
 export interface CreateMembersResponse {
   UnprocessedAccounts?: Result[];
 }
-const CreateMembersResponse = /*@__PURE__*/ __L.at(
-  __c112,
-  6,
-) as any as S.Schema<CreateMembersResponse>;
 export type TicketCreationMode = "DRYRUN" | (string & {});
-const TicketCreationMode = S.String;
-
 export interface CreateTicketV2Request {
   ConnectorId?: string;
   FindingMetadataUid?: string;
   ClientToken?: string;
   Mode?: TicketCreationMode;
 }
-const CreateTicketV2Request = /*@__PURE__*/ __L.at(
-  __c112,
-  7,
-) as any as S.Schema<CreateTicketV2Request>;
 export interface CreateTicketV2Response {
   TicketId: string;
   TicketSrcUrl?: string;
 }
-const CreateTicketV2Response = /*@__PURE__*/ __L.at(
-  __c113,
-  0,
-) as any as S.Schema<CreateTicketV2Response>;
 export type AccountIdList = string[];
-const AccountIdList = AutomationRulesArnsList as any as S.Schema<AccountIdList>;
 export interface DeclineInvitationsRequest {
   AccountIds?: string[];
 }
-const DeclineInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c113,
-  1,
-) as any as S.Schema<DeclineInvitationsRequest>;
 export interface DeclineInvitationsResponse {
   UnprocessedAccounts?: Result[];
 }
-const DeclineInvitationsResponse = /*@__PURE__*/ __L.at(
-  __c113,
-  2,
-) as any as S.Schema<DeclineInvitationsResponse>;
 export interface DeleteActionTargetRequest {
   ActionTargetArn: string;
 }
-const DeleteActionTargetRequest = /*@__PURE__*/ __L.at(
-  __c113,
-  3,
-) as any as S.Schema<DeleteActionTargetRequest>;
 export interface DeleteActionTargetResponse {
   ActionTargetArn: string;
 }
-const DeleteActionTargetResponse =
-  CreateActionTargetResponse as any as S.Schema<DeleteActionTargetResponse>;
 export interface DeleteAggregatorV2Request {
   AggregatorV2Arn: string;
 }
-const DeleteAggregatorV2Request = /*@__PURE__*/ __L.at(
-  __c113,
-  4,
-) as any as S.Schema<DeleteAggregatorV2Request>;
 export interface DeleteAggregatorV2Response {}
-const DeleteAggregatorV2Response =
-  AcceptInvitationResponse as any as S.Schema<DeleteAggregatorV2Response>;
 export interface DeleteAutomationRuleV2Request {
   Identifier: string;
 }
-const DeleteAutomationRuleV2Request = /*@__PURE__*/ __L.at(
-  __c113,
-  5,
-) as any as S.Schema<DeleteAutomationRuleV2Request>;
 export interface DeleteAutomationRuleV2Response {}
-const DeleteAutomationRuleV2Response =
-  AcceptInvitationResponse as any as S.Schema<DeleteAutomationRuleV2Response>;
 export interface DeleteConfigurationPolicyRequest {
   Identifier: string;
 }
-const DeleteConfigurationPolicyRequest = /*@__PURE__*/ __L.at(
-  __c113,
-  6,
-) as any as S.Schema<DeleteConfigurationPolicyRequest>;
 export interface DeleteConfigurationPolicyResponse {}
-const DeleteConfigurationPolicyResponse =
-  AcceptAdministratorInvitationResponse as any as S.Schema<DeleteConfigurationPolicyResponse>;
 export interface DeleteConnectorRequest {
   ConnectorId: string;
 }
-const DeleteConnectorRequest = /*@__PURE__*/ __L.at(
-  __c113,
-  7,
-) as any as S.Schema<DeleteConnectorRequest>;
 export interface DeleteConnectorResponse {
   EnablementStatus?: CspmEnablementStatus;
 }
-const DeleteConnectorResponse = /*@__PURE__*/ __L.at(
-  __c114,
-  0,
-) as any as S.Schema<DeleteConnectorResponse>;
 export interface DeleteConnectorV2Request {
   ConnectorId: string;
 }
-const DeleteConnectorV2Request = /*@__PURE__*/ __L.at(
-  __c114,
-  1,
-) as any as S.Schema<DeleteConnectorV2Request>;
 export interface DeleteConnectorV2Response {
   EnablementStatus?: EnablementStatus;
 }
-const DeleteConnectorV2Response = /*@__PURE__*/ __L.at(
-  __c114,
-  2,
-) as any as S.Schema<DeleteConnectorV2Response>;
 export interface DeleteFindingAggregatorRequest {
   FindingAggregatorArn: string;
 }
-const DeleteFindingAggregatorRequest = /*@__PURE__*/ __L.at(
-  __c114,
-  3,
-) as any as S.Schema<DeleteFindingAggregatorRequest>;
 export interface DeleteFindingAggregatorResponse {}
-const DeleteFindingAggregatorResponse = /*@__PURE__*/ __L.at(
-  __c114,
-  4,
-) as any as S.Schema<DeleteFindingAggregatorResponse>;
 export interface DeleteInsightRequest {
   InsightArn: string;
 }
-const DeleteInsightRequest = /*@__PURE__*/ __L.at(
-  __c114,
-  5,
-) as any as S.Schema<DeleteInsightRequest>;
 export interface DeleteInsightResponse {
   InsightArn: string;
 }
-const DeleteInsightResponse = CreateInsightResponse as any as S.Schema<DeleteInsightResponse>;
 export interface DeleteInvitationsRequest {
   AccountIds?: string[];
 }
-const DeleteInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c114,
-  6,
-) as any as S.Schema<DeleteInvitationsRequest>;
 export interface DeleteInvitationsResponse {
   UnprocessedAccounts?: Result[];
 }
-const DeleteInvitationsResponse =
-  DeclineInvitationsResponse as any as S.Schema<DeleteInvitationsResponse>;
 export interface DeleteMembersRequest {
   AccountIds?: string[];
 }
-const DeleteMembersRequest = /*@__PURE__*/ __L.at(
-  __c114,
-  7,
-) as any as S.Schema<DeleteMembersRequest>;
 export interface DeleteMembersResponse {
   UnprocessedAccounts?: Result[];
 }
-const DeleteMembersResponse = CreateMembersResponse as any as S.Schema<DeleteMembersResponse>;
 export type ArnList = string[];
-const ArnList = AutomationRulesArnsList as any as S.Schema<ArnList>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface DescribeActionTargetsRequest {
@@ -8728,18 +5802,12 @@ export interface DescribeActionTargetsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const DescribeActionTargetsRequest = /*@__PURE__*/ __L.at(
-  __c115,
-  0,
-) as any as S.Schema<DescribeActionTargetsRequest>;
 export interface ActionTarget {
   ActionTargetArn?: string;
   Name?: string;
   Description?: string;
 }
-const ActionTarget = /*@__PURE__*/ __L.at(__c115, 1) as any as S.Schema<ActionTarget>;
 export type ActionTargetList = ActionTarget[];
-const ActionTargetList = /*@__PURE__*/ __L.at(__c115, 2);
 export interface DescribeActionTargetsResponse {
   ActionTargets: (ActionTarget & {
     ActionTargetArn: NonEmptyString;
@@ -8748,77 +5816,43 @@ export interface DescribeActionTargetsResponse {
   })[];
   NextToken?: string;
 }
-const DescribeActionTargetsResponse = /*@__PURE__*/ __L.at(
-  __c115,
-  3,
-) as any as S.Schema<DescribeActionTargetsResponse>;
 export interface DescribeHubRequest {
   HubArn?: string;
 }
-const DescribeHubRequest = /*@__PURE__*/ __L.at(__c115, 4) as any as S.Schema<DescribeHubRequest>;
 export type ControlFindingGenerator = "STANDARD_CONTROL" | "SECURITY_CONTROL" | (string & {});
-const ControlFindingGenerator = S.String;
-
 export interface DescribeHubResponse {
   HubArn?: string;
   SubscribedAt?: string;
   AutoEnableControls?: boolean;
   ControlFindingGenerator?: ControlFindingGenerator;
 }
-const DescribeHubResponse = /*@__PURE__*/ __L.at(__c115, 5) as any as S.Schema<DescribeHubResponse>;
 export interface DescribeOrganizationConfigurationRequest {}
-const DescribeOrganizationConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c115,
-  6,
-) as any as S.Schema<DescribeOrganizationConfigurationRequest>;
 export type AutoEnableStandards = "NONE" | "DEFAULT" | (string & {});
-const AutoEnableStandards = S.String;
-
 export type OrganizationConfigurationConfigurationType = "CENTRAL" | "LOCAL" | (string & {});
-const OrganizationConfigurationConfigurationType = S.String;
-
 export type OrganizationConfigurationStatus = "PENDING" | "ENABLED" | "FAILED" | (string & {});
-const OrganizationConfigurationStatus = S.String;
-
 export interface OrganizationConfiguration {
   ConfigurationType?: OrganizationConfigurationConfigurationType;
   Status?: OrganizationConfigurationStatus;
   StatusMessage?: string;
 }
-const OrganizationConfiguration = /*@__PURE__*/ __L.at(
-  __c115,
-  7,
-) as any as S.Schema<OrganizationConfiguration>;
 export interface DescribeOrganizationConfigurationResponse {
   AutoEnable?: boolean;
   MemberAccountLimitReached?: boolean;
   AutoEnableStandards?: AutoEnableStandards;
   OrganizationConfiguration?: OrganizationConfiguration;
 }
-const DescribeOrganizationConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c116,
-  0,
-) as any as S.Schema<DescribeOrganizationConfigurationResponse>;
 export interface DescribeProductsRequest {
   NextToken?: string;
   MaxResults?: number;
   ProductArn?: string;
 }
-const DescribeProductsRequest = /*@__PURE__*/ __L.at(
-  __c116,
-  1,
-) as any as S.Schema<DescribeProductsRequest>;
 export type CategoryList = string[];
-const CategoryList = AutomationRulesArnsList as any as S.Schema<CategoryList>;
 export type IntegrationType =
   | "SEND_FINDINGS_TO_SECURITY_HUB"
   | "RECEIVE_FINDINGS_FROM_SECURITY_HUB"
   | "UPDATE_FINDINGS_IN_SECURITY_HUB"
   | (string & {});
-const IntegrationType = S.String;
-
 export type IntegrationTypeList = IntegrationType[];
-const IntegrationTypeList = /*@__PURE__*/ __L.at(__c116, 2);
 export interface Product {
   ProductArn?: string;
   ProductName?: string;
@@ -8830,25 +5864,15 @@ export interface Product {
   ActivationUrl?: string;
   ProductSubscriptionResourcePolicy?: string;
 }
-const Product = /*@__PURE__*/ __L.at(__c116, 3) as any as S.Schema<Product>;
 export type ProductsList = Product[];
-const ProductsList = /*@__PURE__*/ __L.at(__c116, 4);
 export interface DescribeProductsResponse {
   Products: (Product & { ProductArn: NonEmptyString })[];
   NextToken?: string;
 }
-const DescribeProductsResponse = /*@__PURE__*/ __L.at(
-  __c116,
-  5,
-) as any as S.Schema<DescribeProductsResponse>;
 export interface DescribeProductsV2Request {
   NextToken?: string;
   MaxResults?: number;
 }
-const DescribeProductsV2Request = /*@__PURE__*/ __L.at(
-  __c116,
-  6,
-) as any as S.Schema<DescribeProductsV2Request>;
 export type IntegrationV2Type =
   | "SEND_FINDINGS_TO_SECURITY_HUB"
   | "RECEIVE_FINDINGS_FROM_SECURITY_HUB"
@@ -8856,7 +5880,6 @@ export type IntegrationV2Type =
   | "EXTENDED_PLAN"
   | (string & {});
 export type IntegrationV2TypeList = IntegrationV2Type[];
-const IntegrationV2TypeList = IntegrationTypeList as any as S.Schema<IntegrationV2TypeList>;
 export interface ProductV2 {
   ProductV2Name?: string;
   CompanyName?: string;
@@ -8867,59 +5890,35 @@ export interface ProductV2 {
   ActivationUrl?: string;
   MarketplaceProductId?: string;
 }
-const ProductV2 = /*@__PURE__*/ __L.at(__c116, 7) as any as S.Schema<ProductV2>;
 export type ProductsV2List = ProductV2[];
-const ProductsV2List = /*@__PURE__*/ __L.at(__c117, 0);
 export interface DescribeProductsV2Response {
   ProductsV2: ProductV2[];
   NextToken?: string;
 }
-const DescribeProductsV2Response = /*@__PURE__*/ __L.at(
-  __c117,
-  1,
-) as any as S.Schema<DescribeProductsV2Response>;
 export interface DescribeSecurityHubV2Request {}
-const DescribeSecurityHubV2Request = /*@__PURE__*/ __L.at(
-  __c117,
-  2,
-) as any as S.Schema<DescribeSecurityHubV2Request>;
 export type IsoString = string;
 export type FeatureNameKey = string;
 export type FeatureStatus = "ENABLED" | "DISABLED" | (string & {});
-const FeatureStatus = S.String;
-
 export interface FeatureDetail {
   FeatureStatus?: FeatureStatus;
   UpdatedAt?: Date;
 }
-const FeatureDetail = /*@__PURE__*/ __L.at(__c117, 3) as any as S.Schema<FeatureDetail>;
 export type Features = { [key: string]: FeatureDetail | undefined };
-const Features = /*@__PURE__*/ __L.at(__c117, 4);
 export interface DescribeSecurityHubV2Response {
   HubV2Arn?: string;
   SubscribedAt?: string;
   Features?: { [key: string]: FeatureDetail | undefined };
 }
-const DescribeSecurityHubV2Response = /*@__PURE__*/ __L.at(
-  __c117,
-  5,
-) as any as S.Schema<DescribeSecurityHubV2Response>;
 export type StandardsProviders = StandardsProvider[];
-const StandardsProviders = IntegrationTypeList as any as S.Schema<StandardsProviders>;
 export interface DescribeStandardsRequest {
   NextToken?: string;
   MaxResults?: number;
   Providers?: StandardsProvider[];
 }
-const DescribeStandardsRequest = /*@__PURE__*/ __L.at(
-  __c117,
-  6,
-) as any as S.Schema<DescribeStandardsRequest>;
 export interface StandardsManagedBy {
   Company?: string;
   Product?: string;
 }
-const StandardsManagedBy = /*@__PURE__*/ __L.at(__c117, 7) as any as S.Schema<StandardsManagedBy>;
 export interface Standard {
   StandardsArn?: string;
   Name?: string;
@@ -8928,26 +5927,16 @@ export interface Standard {
   Provider?: StandardsProvider;
   StandardsManagedBy?: StandardsManagedBy;
 }
-const Standard = /*@__PURE__*/ __L.at(__c118, 0) as any as S.Schema<Standard>;
 export type Standards = Standard[];
-const Standards = /*@__PURE__*/ __L.at(__c118, 1);
 export interface DescribeStandardsResponse {
   Standards?: Standard[];
   NextToken?: string;
 }
-const DescribeStandardsResponse = /*@__PURE__*/ __L.at(
-  __c118,
-  2,
-) as any as S.Schema<DescribeStandardsResponse>;
 export interface DescribeStandardsControlsRequest {
   StandardsSubscriptionArn: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const DescribeStandardsControlsRequest = /*@__PURE__*/ __L.at(
-  __c118,
-  3,
-) as any as S.Schema<DescribeStandardsControlsRequest>;
 export interface StandardsControl {
   StandardsControlArn?: string;
   ControlStatus?: ControlStatus;
@@ -8960,215 +5949,94 @@ export interface StandardsControl {
   SeverityRating?: SeverityRating;
   RelatedRequirements?: string[];
 }
-const StandardsControl = /*@__PURE__*/ __L.at(__c118, 4) as any as S.Schema<StandardsControl>;
 export type StandardsControls = StandardsControl[];
-const StandardsControls = /*@__PURE__*/ __L.at(__c118, 5);
 export interface DescribeStandardsControlsResponse {
   Controls?: StandardsControl[];
   NextToken?: string;
 }
-const DescribeStandardsControlsResponse = /*@__PURE__*/ __L.at(
-  __c118,
-  6,
-) as any as S.Schema<DescribeStandardsControlsResponse>;
 export interface DisableImportFindingsForProductRequest {
   ProductSubscriptionArn: string;
 }
-const DisableImportFindingsForProductRequest = /*@__PURE__*/ __L.at(
-  __c118,
-  7,
-) as any as S.Schema<DisableImportFindingsForProductRequest>;
 export interface DisableImportFindingsForProductResponse {}
-const DisableImportFindingsForProductResponse =
-  AcceptAdministratorInvitationResponse as any as S.Schema<DisableImportFindingsForProductResponse>;
 export type SecurityHubFeature = "SecurityHub" | "SecurityHubV2" | (string & {});
-const SecurityHubFeature = S.String;
-
 export interface DisableOrganizationAdminAccountRequest {
   AdminAccountId?: string;
   Feature?: SecurityHubFeature;
 }
-const DisableOrganizationAdminAccountRequest = /*@__PURE__*/ __L.at(
-  __c119,
-  0,
-) as any as S.Schema<DisableOrganizationAdminAccountRequest>;
 export interface DisableOrganizationAdminAccountResponse {}
-const DisableOrganizationAdminAccountResponse =
-  AcceptAdministratorInvitationResponse as any as S.Schema<DisableOrganizationAdminAccountResponse>;
 export interface DisableSecurityHubRequest {}
-const DisableSecurityHubRequest = /*@__PURE__*/ __L.at(
-  __c119,
-  1,
-) as any as S.Schema<DisableSecurityHubRequest>;
 export interface DisableSecurityHubResponse {}
-const DisableSecurityHubResponse =
-  AcceptInvitationResponse as any as S.Schema<DisableSecurityHubResponse>;
 export type FeatureName = "NETWORK_SCANNING" | (string & {});
-const FeatureName = S.String;
-
 export interface DisableSecurityHubFeatureV2Request {
   FeatureName: FeatureName;
 }
-const DisableSecurityHubFeatureV2Request = /*@__PURE__*/ __L.at(
-  __c119,
-  2,
-) as any as S.Schema<DisableSecurityHubFeatureV2Request>;
 export interface DisableSecurityHubFeatureV2Response {}
-const DisableSecurityHubFeatureV2Response =
-  AcceptAdministratorInvitationResponse as any as S.Schema<DisableSecurityHubFeatureV2Response>;
 export interface DisableSecurityHubV2Request {}
-const DisableSecurityHubV2Request = /*@__PURE__*/ __L.at(
-  __c119,
-  3,
-) as any as S.Schema<DisableSecurityHubV2Request>;
 export interface DisableSecurityHubV2Response {}
-const DisableSecurityHubV2Response =
-  AcceptInvitationResponse as any as S.Schema<DisableSecurityHubV2Response>;
 export interface DisassociateFromAdministratorAccountRequest {}
-const DisassociateFromAdministratorAccountRequest = /*@__PURE__*/ __L.at(
-  __c119,
-  4,
-) as any as S.Schema<DisassociateFromAdministratorAccountRequest>;
 export interface DisassociateFromAdministratorAccountResponse {}
-const DisassociateFromAdministratorAccountResponse =
-  AcceptAdministratorInvitationResponse as any as S.Schema<DisassociateFromAdministratorAccountResponse>;
 export interface DisassociateFromMasterAccountRequest {}
-const DisassociateFromMasterAccountRequest = /*@__PURE__*/ __L.at(
-  __c119,
-  5,
-) as any as S.Schema<DisassociateFromMasterAccountRequest>;
 export interface DisassociateFromMasterAccountResponse {}
-const DisassociateFromMasterAccountResponse =
-  AcceptAdministratorInvitationResponse as any as S.Schema<DisassociateFromMasterAccountResponse>;
 export interface DisassociateMembersRequest {
   AccountIds?: string[];
 }
-const DisassociateMembersRequest = /*@__PURE__*/ __L.at(
-  __c119,
-  6,
-) as any as S.Schema<DisassociateMembersRequest>;
 export interface DisassociateMembersResponse {}
-const DisassociateMembersResponse =
-  AcceptInvitationResponse as any as S.Schema<DisassociateMembersResponse>;
 export interface EnableImportFindingsForProductRequest {
   ProductArn?: string;
 }
-const EnableImportFindingsForProductRequest = /*@__PURE__*/ __L.at(
-  __c119,
-  7,
-) as any as S.Schema<EnableImportFindingsForProductRequest>;
 export interface EnableImportFindingsForProductResponse {
   ProductSubscriptionArn?: string;
 }
-const EnableImportFindingsForProductResponse = /*@__PURE__*/ __L.at(
-  __c120,
-  0,
-) as any as S.Schema<EnableImportFindingsForProductResponse>;
 export interface EnableOrganizationAdminAccountRequest {
   AdminAccountId?: string;
   Feature?: SecurityHubFeature;
 }
-const EnableOrganizationAdminAccountRequest = /*@__PURE__*/ __L.at(
-  __c120,
-  1,
-) as any as S.Schema<EnableOrganizationAdminAccountRequest>;
 export interface EnableOrganizationAdminAccountResponse {
   AdminAccountId?: string;
   Feature?: SecurityHubFeature;
 }
-const EnableOrganizationAdminAccountResponse = /*@__PURE__*/ __L.at(
-  __c120,
-  2,
-) as any as S.Schema<EnableOrganizationAdminAccountResponse>;
 export interface EnableSecurityHubRequest {
   Tags?: { [key: string]: string | undefined };
   EnableDefaultStandards?: boolean;
   ControlFindingGenerator?: ControlFindingGenerator;
 }
-const EnableSecurityHubRequest = /*@__PURE__*/ __L.at(
-  __c120,
-  3,
-) as any as S.Schema<EnableSecurityHubRequest>;
 export interface EnableSecurityHubResponse {}
-const EnableSecurityHubResponse =
-  AcceptInvitationResponse as any as S.Schema<EnableSecurityHubResponse>;
 export interface EnableSecurityHubFeatureV2Request {
   FeatureName: FeatureName;
 }
-const EnableSecurityHubFeatureV2Request = /*@__PURE__*/ __L.at(
-  __c120,
-  4,
-) as any as S.Schema<EnableSecurityHubFeatureV2Request>;
 export interface EnableSecurityHubFeatureV2Response {}
-const EnableSecurityHubFeatureV2Response =
-  AcceptAdministratorInvitationResponse as any as S.Schema<EnableSecurityHubFeatureV2Response>;
 export interface EnableSecurityHubV2Request {
   Tags?: { [key: string]: string | undefined };
 }
-const EnableSecurityHubV2Request = /*@__PURE__*/ __L.at(
-  __c120,
-  5,
-) as any as S.Schema<EnableSecurityHubV2Request>;
 export interface EnableSecurityHubV2Response {
   HubV2Arn?: string;
 }
-const EnableSecurityHubV2Response = /*@__PURE__*/ __L.at(
-  __c120,
-  6,
-) as any as S.Schema<EnableSecurityHubV2Response>;
 export interface GenerateRecommendedPolicyV2Request {
   MetadataUid: string;
 }
-const GenerateRecommendedPolicyV2Request = /*@__PURE__*/ __L.at(
-  __c120,
-  7,
-) as any as S.Schema<GenerateRecommendedPolicyV2Request>;
 export interface GenerateRecommendedPolicyV2Response {}
-const GenerateRecommendedPolicyV2Response =
-  AcceptAdministratorInvitationResponse as any as S.Schema<GenerateRecommendedPolicyV2Response>;
 export interface GetAdministratorAccountRequest {}
-const GetAdministratorAccountRequest = /*@__PURE__*/ __L.at(
-  __c121,
-  0,
-) as any as S.Schema<GetAdministratorAccountRequest>;
 export interface Invitation {
   AccountId?: string;
   InvitationId?: string;
   InvitedAt?: Date;
   MemberStatus?: string;
 }
-const Invitation = /*@__PURE__*/ __L.at(__c121, 1) as any as S.Schema<Invitation>;
 export interface GetAdministratorAccountResponse {
   Administrator?: Invitation;
 }
-const GetAdministratorAccountResponse = /*@__PURE__*/ __L.at(
-  __c121,
-  2,
-) as any as S.Schema<GetAdministratorAccountResponse>;
 export interface GetAggregatorV2Request {
   AggregatorV2Arn: string;
 }
-const GetAggregatorV2Request = /*@__PURE__*/ __L.at(
-  __c121,
-  3,
-) as any as S.Schema<GetAggregatorV2Request>;
 export interface GetAggregatorV2Response {
   AggregatorV2Arn?: string;
   AggregationRegion?: string;
   RegionLinkingMode?: string;
   LinkedRegions?: string[];
 }
-const GetAggregatorV2Response = /*@__PURE__*/ __L.at(
-  __c121,
-  4,
-) as any as S.Schema<GetAggregatorV2Response>;
 export interface GetAutomationRuleV2Request {
   Identifier: string;
 }
-const GetAutomationRuleV2Request = /*@__PURE__*/ __L.at(
-  __c121,
-  5,
-) as any as S.Schema<GetAutomationRuleV2Request>;
 export interface GetAutomationRuleV2Response {
   RuleArn?: string;
   RuleId?: string;
@@ -9181,17 +6049,9 @@ export interface GetAutomationRuleV2Response {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const GetAutomationRuleV2Response = /*@__PURE__*/ __L.at(
-  __c121,
-  6,
-) as any as S.Schema<GetAutomationRuleV2Response>;
 export interface GetConfigurationPolicyRequest {
   Identifier: string;
 }
-const GetConfigurationPolicyRequest = /*@__PURE__*/ __L.at(
-  __c121,
-  7,
-) as any as S.Schema<GetConfigurationPolicyRequest>;
 export interface GetConfigurationPolicyResponse {
   Arn?: string;
   Id?: string;
@@ -9201,15 +6061,9 @@ export interface GetConfigurationPolicyResponse {
   CreatedAt?: Date;
   ConfigurationPolicy?: Policy;
 }
-const GetConfigurationPolicyResponse =
-  CreateConfigurationPolicyResponse as any as S.Schema<GetConfigurationPolicyResponse>;
 export interface GetConfigurationPolicyAssociationRequest {
   Target?: Target;
 }
-const GetConfigurationPolicyAssociationRequest = /*@__PURE__*/ __L.at(
-  __c122,
-  0,
-) as any as S.Schema<GetConfigurationPolicyAssociationRequest>;
 export interface GetConfigurationPolicyAssociationResponse {
   ConfigurationPolicyId?: string;
   TargetId?: string;
@@ -9219,12 +6073,9 @@ export interface GetConfigurationPolicyAssociationResponse {
   AssociationStatus?: ConfigurationPolicyAssociationStatus;
   AssociationStatusMessage?: string;
 }
-const GetConfigurationPolicyAssociationResponse =
-  ConfigurationPolicyAssociationSummary as any as S.Schema<GetConfigurationPolicyAssociationResponse>;
 export interface GetConnectorRequest {
   ConnectorId: string;
 }
-const GetConnectorRequest = /*@__PURE__*/ __L.at(__c122, 1) as any as S.Schema<GetConnectorRequest>;
 export type HealthIssueCode =
   | "AUTHENTICATION_FAILURE"
   | "STREAM_AUTHORIZATION_FAILURE"
@@ -9234,30 +6085,23 @@ export type HealthIssueCode =
   | "RECORDING_FAILURE"
   | "NO_HEALTH_DATA"
   | (string & {});
-const HealthIssueCode = S.String;
-
 export interface HealthIssue {
   Code?: HealthIssueCode;
   Message?: string;
 }
-const HealthIssue = /*@__PURE__*/ __L.at(__c122, 2) as any as S.Schema<HealthIssue>;
 export type HealthIssueList = HealthIssue[];
-const HealthIssueList = /*@__PURE__*/ __L.at(__c122, 3);
 export interface CspmHealthCheck {
   ConnectorStatus?: CspmConnectorStatus;
   Message?: string;
   LastCheckedAt?: Date;
   Issues?: HealthIssue[];
 }
-const CspmHealthCheck = /*@__PURE__*/ __L.at(__c122, 4) as any as S.Schema<CspmHealthCheck>;
 export interface AzureDetail {
   AWSConfigConnectorArn?: string;
   ScopeConfiguration?: AzureScopeConfiguration;
   AzureRegions?: string[];
 }
-const AzureDetail = /*@__PURE__*/ __L.at(__c122, 5) as any as S.Schema<AzureDetail>;
 export type CspmProviderDetail = { Azure: AzureDetail };
-const CspmProviderDetail = /*@__PURE__*/ __L.at(__c122, 6);
 export interface GetConnectorResponse {
   ConnectorArn?: string;
   ConnectorId: string;
@@ -9274,27 +6118,16 @@ export interface GetConnectorResponse {
   CreatedBy?: string;
   EnablementStatus?: CspmEnablementStatus;
 }
-const GetConnectorResponse = /*@__PURE__*/ __L.at(
-  __c122,
-  7,
-) as any as S.Schema<GetConnectorResponse>;
 export interface GetConnectorV2Request {
   ConnectorId: string;
 }
-const GetConnectorV2Request = /*@__PURE__*/ __L.at(
-  __c123,
-  0,
-) as any as S.Schema<GetConnectorV2Request>;
 export interface HealthCheck {
   ConnectorStatus?: ConnectorStatus;
   Message?: string;
   LastCheckedAt?: Date;
   Issues?: HealthIssue[];
 }
-const HealthCheck = CspmHealthCheck as any as S.Schema<HealthCheck>;
 export type ConnectorAuthStatus = "ACTIVE" | "FAILED" | (string & {});
-const ConnectorAuthStatus = S.String;
-
 export interface JiraCloudDetail {
   CloudId?: string;
   ProjectKey?: string;
@@ -9302,18 +6135,15 @@ export interface JiraCloudDetail {
   AuthUrl?: string;
   AuthStatus?: ConnectorAuthStatus;
 }
-const JiraCloudDetail = /*@__PURE__*/ __L.at(__c123, 1) as any as S.Schema<JiraCloudDetail>;
 export interface ServiceNowDetail {
   InstanceName?: string;
   SecretArn?: string;
   AuthStatus?: ConnectorAuthStatus;
 }
-const ServiceNowDetail = /*@__PURE__*/ __L.at(__c123, 2) as any as S.Schema<ServiceNowDetail>;
 export type ProviderDetail =
   | { JiraCloud: JiraCloudDetail; ServiceNow?: never; Azure?: never }
   | { JiraCloud?: never; ServiceNow: ServiceNowDetail; Azure?: never }
   | { JiraCloud?: never; ServiceNow?: never; Azure: AzureDetail };
-const ProviderDetail = /*@__PURE__*/ __L.at(__c123, 3);
 export interface GetConnectorV2Response {
   ConnectorArn?: string;
   ConnectorId: string;
@@ -9331,20 +6161,12 @@ export interface GetConnectorV2Response {
   EnablementStatus?: EnablementStatus;
   EnablementStatusReason?: string;
 }
-const GetConnectorV2Response = /*@__PURE__*/ __L.at(
-  __c123,
-  4,
-) as any as S.Schema<GetConnectorV2Response>;
 export interface GetEnabledStandardsRequest {
   StandardsSubscriptionArns?: string[];
   NextToken?: string;
   MaxResults?: number;
   Providers?: StandardsProvider[];
 }
-const GetEnabledStandardsRequest = /*@__PURE__*/ __L.at(
-  __c123,
-  5,
-) as any as S.Schema<GetEnabledStandardsRequest>;
 export interface GetEnabledStandardsResponse {
   StandardsSubscriptions?: (StandardsSubscription & {
     StandardsSubscriptionArn: NonEmptyString;
@@ -9355,25 +6177,15 @@ export interface GetEnabledStandardsResponse {
   })[];
   NextToken?: string;
 }
-const GetEnabledStandardsResponse = /*@__PURE__*/ __L.at(
-  __c123,
-  6,
-) as any as S.Schema<GetEnabledStandardsResponse>;
 export interface GetFindingAggregatorRequest {
   FindingAggregatorArn: string;
 }
-const GetFindingAggregatorRequest = /*@__PURE__*/ __L.at(
-  __c123,
-  7,
-) as any as S.Schema<GetFindingAggregatorRequest>;
 export interface GetFindingAggregatorResponse {
   FindingAggregatorArn?: string;
   FindingAggregationRegion?: string;
   RegionLinkingMode?: string;
   Regions?: string[];
 }
-const GetFindingAggregatorResponse =
-  CreateFindingAggregatorResponse as any as S.Schema<GetFindingAggregatorResponse>;
 export interface GetFindingHistoryRequest {
   FindingIdentifier?: AwsSecurityFindingIdentifier;
   StartTime?: Date;
@@ -9381,35 +6193,20 @@ export interface GetFindingHistoryRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const GetFindingHistoryRequest = /*@__PURE__*/ __L.at(
-  __c124,
-  0,
-) as any as S.Schema<GetFindingHistoryRequest>;
 export type FindingHistoryUpdateSourceType =
   | "BATCH_UPDATE_FINDINGS"
   | "BATCH_IMPORT_FINDINGS"
   | (string & {});
-const FindingHistoryUpdateSourceType = S.String;
-
 export interface FindingHistoryUpdateSource {
   Type?: FindingHistoryUpdateSourceType;
   Identity?: string;
 }
-const FindingHistoryUpdateSource = /*@__PURE__*/ __L.at(
-  __c124,
-  1,
-) as any as S.Schema<FindingHistoryUpdateSource>;
 export interface FindingHistoryUpdate {
   UpdatedField?: string;
   OldValue?: string;
   NewValue?: string;
 }
-const FindingHistoryUpdate = /*@__PURE__*/ __L.at(
-  __c124,
-  2,
-) as any as S.Schema<FindingHistoryUpdate>;
 export type FindingHistoryUpdatesList = FindingHistoryUpdate[];
-const FindingHistoryUpdatesList = /*@__PURE__*/ __L.at(__c124, 3);
 export interface FindingHistoryRecord {
   FindingIdentifier?: AwsSecurityFindingIdentifier;
   UpdateTime?: Date;
@@ -9418,12 +6215,7 @@ export interface FindingHistoryRecord {
   Updates?: FindingHistoryUpdate[];
   NextToken?: string;
 }
-const FindingHistoryRecord = /*@__PURE__*/ __L.at(
-  __c124,
-  4,
-) as any as S.Schema<FindingHistoryRecord>;
 export type FindingHistoryRecordList = FindingHistoryRecord[];
-const FindingHistoryRecordList = /*@__PURE__*/ __L.at(__c124, 5);
 export interface GetFindingHistoryResponse {
   Records?: (FindingHistoryRecord & {
     FindingIdentifier: AwsSecurityFindingIdentifier & {
@@ -9433,30 +6225,19 @@ export interface GetFindingHistoryResponse {
   })[];
   NextToken?: string;
 }
-const GetFindingHistoryResponse = /*@__PURE__*/ __L.at(
-  __c124,
-  6,
-) as any as S.Schema<GetFindingHistoryResponse>;
 export type SortOrder = "asc" | "desc" | (string & {});
-const SortOrder = S.String;
-
 export interface SortCriterion {
   Field?: string;
   SortOrder?: SortOrder;
 }
-const SortCriterion = /*@__PURE__*/ __L.at(__c124, 7) as any as S.Schema<SortCriterion>;
 export type SortCriteria = SortCriterion[];
-const SortCriteria = /*@__PURE__*/ __L.at(__c125, 0);
 export interface GetFindingsRequest {
   Filters?: AwsSecurityFindingFilters;
   SortCriteria?: SortCriterion[];
   NextToken?: string;
   MaxResults?: number;
 }
-const GetFindingsRequest = /*@__PURE__*/ __L.at(__c125, 1) as any as S.Schema<GetFindingsRequest>;
 export type AwsSecurityFindingList = AwsSecurityFinding[];
-const AwsSecurityFindingList =
-  BatchImportFindingsRequestFindingList as any as S.Schema<AwsSecurityFindingList>;
 export interface GetFindingsResponse {
   Findings: (AwsSecurityFinding & {
     SchemaVersion: NonEmptyString;
@@ -9484,7 +6265,6 @@ export interface GetFindingsResponse {
   })[];
   NextToken?: string;
 }
-const GetFindingsResponse = /*@__PURE__*/ __L.at(__c125, 2) as any as S.Schema<GetFindingsResponse>;
 export type GroupByField =
   | "activity_name"
   | "cloud.account.uid"
@@ -9518,29 +6298,19 @@ export type GroupByField =
   | "vendor_attributes.severity"
   | "metadata.product.vendor_name"
   | (string & {});
-const GroupByField = S.String;
-
 export interface GroupByRule {
   Filters?: OcsfFindingFilters;
   GroupByField?: GroupByField;
 }
-const GroupByRule = /*@__PURE__*/ __L.at(__c125, 3) as any as S.Schema<GroupByRule>;
 export type GroupByRules = GroupByRule[];
-const GroupByRules = /*@__PURE__*/ __L.at(__c125, 4);
 export interface AwsOrganizationScope {
   OrganizationId?: string;
   OrganizationalUnitId?: string;
 }
-const AwsOrganizationScope = /*@__PURE__*/ __L.at(
-  __c125,
-  5,
-) as any as S.Schema<AwsOrganizationScope>;
 export type AwsOrganizationScopeList = AwsOrganizationScope[];
-const AwsOrganizationScopeList = /*@__PURE__*/ __L.at(__c125, 6);
 export interface FindingScopes {
   AwsOrganizations?: AwsOrganizationScope[];
 }
-const FindingScopes = /*@__PURE__*/ __L.at(__c125, 7) as any as S.Schema<FindingScopes>;
 export type MaxStatisticResults = number;
 export interface GetFindingStatisticsV2Request {
   GroupByRules?: GroupByRule[];
@@ -9548,31 +6318,19 @@ export interface GetFindingStatisticsV2Request {
   SortOrder?: SortOrder;
   MaxStatisticResults?: number;
 }
-const GetFindingStatisticsV2Request = /*@__PURE__*/ __L.at(
-  __c126,
-  0,
-) as any as S.Schema<GetFindingStatisticsV2Request>;
 export interface GroupByValue {
   FieldValue?: string;
   Count?: number;
 }
-const GroupByValue = /*@__PURE__*/ __L.at(__c126, 1) as any as S.Schema<GroupByValue>;
 export type GroupByValues = GroupByValue[];
-const GroupByValues = /*@__PURE__*/ __L.at(__c126, 2);
 export interface GroupByResult {
   GroupByField?: string;
   GroupByValues?: GroupByValue[];
 }
-const GroupByResult = /*@__PURE__*/ __L.at(__c126, 3) as any as S.Schema<GroupByResult>;
 export type GroupByResults = GroupByResult[];
-const GroupByResults = /*@__PURE__*/ __L.at(__c126, 4);
 export interface GetFindingStatisticsV2Response {
   GroupByResults?: GroupByResult[];
 }
-const GetFindingStatisticsV2Response = /*@__PURE__*/ __L.at(
-  __c126,
-  5,
-) as any as S.Schema<GetFindingStatisticsV2Response>;
 export type FindingsTrendsStringField =
   | "account_id"
   | "region"
@@ -9589,40 +6347,21 @@ export type FindingsTrendsStringField =
   | "resource_owner_ids"
   | "resource_owner_organization_ids"
   | (string & {});
-const FindingsTrendsStringField = S.String;
-
 export interface FindingsTrendsStringFilter {
   FieldName?: FindingsTrendsStringField;
   Filter?: StringFilter;
 }
-const FindingsTrendsStringFilter = /*@__PURE__*/ __L.at(
-  __c126,
-  6,
-) as any as S.Schema<FindingsTrendsStringFilter>;
 export type FindingsTrendsStringFilterList = FindingsTrendsStringFilter[];
-const FindingsTrendsStringFilterList = /*@__PURE__*/ __L.at(__c126, 7);
 export interface FindingsTrendsCompositeFilter {
   StringFilters?: FindingsTrendsStringFilter[];
   NestedCompositeFilters?: FindingsTrendsCompositeFilter[];
   Operator?: AllowedOperators;
 }
-const FindingsTrendsCompositeFilter = /*@__PURE__*/ __L.at(
-  __c127,
-  0,
-) as any as S.Schema<FindingsTrendsCompositeFilter>;
 export type FindingsTrendsCompositeFilterList = FindingsTrendsCompositeFilter[];
-const FindingsTrendsCompositeFilterList = /*@__PURE__*/ __L.at(
-  __c127,
-  1,
-) as any as S.Schema<FindingsTrendsCompositeFilterList>;
 export interface FindingsTrendsFilters {
   CompositeFilters?: FindingsTrendsCompositeFilter[];
   CompositeOperator?: AllowedOperators;
 }
-const FindingsTrendsFilters = /*@__PURE__*/ __L.at(
-  __c127,
-  2,
-) as any as S.Schema<FindingsTrendsFilters>;
 export interface GetFindingsTrendsV2Request {
   Filters?: FindingsTrendsFilters;
   StartTime?: Date;
@@ -9630,13 +6369,7 @@ export interface GetFindingsTrendsV2Request {
   NextToken?: string;
   MaxResults?: number;
 }
-const GetFindingsTrendsV2Request = /*@__PURE__*/ __L.at(
-  __c127,
-  3,
-) as any as S.Schema<GetFindingsTrendsV2Request>;
 export type GranularityField = "Daily" | "Weekly" | "Monthly" | (string & {});
-const GranularityField = S.String;
-
 export type TrendsValueCount = number;
 export interface SeverityTrendsCount {
   Unknown?: number;
@@ -9648,18 +6381,14 @@ export interface SeverityTrendsCount {
   Fatal?: number;
   Other?: number;
 }
-const SeverityTrendsCount = /*@__PURE__*/ __L.at(__c127, 4) as any as S.Schema<SeverityTrendsCount>;
 export interface TrendsValues {
   SeverityTrends?: SeverityTrendsCount;
 }
-const TrendsValues = /*@__PURE__*/ __L.at(__c127, 5) as any as S.Schema<TrendsValues>;
 export interface TrendsMetricsResult {
   Timestamp?: Date;
   TrendsValues?: TrendsValues;
 }
-const TrendsMetricsResult = /*@__PURE__*/ __L.at(__c127, 6) as any as S.Schema<TrendsMetricsResult>;
 export type TrendsMetrics = TrendsMetricsResult[];
-const TrendsMetrics = /*@__PURE__*/ __L.at(__c127, 7);
 export interface GetFindingsTrendsV2Response {
   Granularity: GranularityField;
   TrendsMetrics: (TrendsMetricsResult & {
@@ -9679,10 +6408,6 @@ export interface GetFindingsTrendsV2Response {
   })[];
   NextToken?: string;
 }
-const GetFindingsTrendsV2Response = /*@__PURE__*/ __L.at(
-  __c128,
-  0,
-) as any as S.Schema<GetFindingsTrendsV2Response>;
 export interface GetFindingsV2Request {
   Filters?: OcsfFindingFilters;
   Scopes?: FindingScopes;
@@ -9690,41 +6415,25 @@ export interface GetFindingsV2Request {
   NextToken?: string;
   MaxResults?: number;
 }
-const GetFindingsV2Request = /*@__PURE__*/ __L.at(
-  __c128,
-  1,
-) as any as S.Schema<GetFindingsV2Request>;
 export type OcsfFinding = unknown;
 export type OcsfFindingsList = any[];
-const OcsfFindingsList = /*@__PURE__*/ __L.at(__c128, 2);
 export interface GetFindingsV2Response {
   Findings?: any[];
   NextToken?: string;
 }
-const GetFindingsV2Response = /*@__PURE__*/ __L.at(
-  __c128,
-  3,
-) as any as S.Schema<GetFindingsV2Response>;
 export interface GetInsightResultsRequest {
   InsightArn: string;
 }
-const GetInsightResultsRequest = /*@__PURE__*/ __L.at(
-  __c128,
-  4,
-) as any as S.Schema<GetInsightResultsRequest>;
 export interface InsightResultValue {
   GroupByAttributeValue?: string;
   Count?: number;
 }
-const InsightResultValue = /*@__PURE__*/ __L.at(__c128, 5) as any as S.Schema<InsightResultValue>;
 export type InsightResultValueList = InsightResultValue[];
-const InsightResultValueList = /*@__PURE__*/ __L.at(__c128, 6);
 export interface InsightResults {
   InsightArn?: string;
   GroupByAttribute?: string;
   ResultValues?: InsightResultValue[];
 }
-const InsightResults = /*@__PURE__*/ __L.at(__c128, 7) as any as S.Schema<InsightResults>;
 export interface GetInsightResultsResponse {
   InsightResults: InsightResults & {
     InsightArn: NonEmptyString;
@@ -9732,25 +6441,18 @@ export interface GetInsightResultsResponse {
     ResultValues: (InsightResultValue & { GroupByAttributeValue: NonEmptyString; Count: number })[];
   };
 }
-const GetInsightResultsResponse = /*@__PURE__*/ __L.at(
-  __c129,
-  0,
-) as any as S.Schema<GetInsightResultsResponse>;
 export interface GetInsightsRequest {
   InsightArns?: string[];
   NextToken?: string;
   MaxResults?: number;
 }
-const GetInsightsRequest = /*@__PURE__*/ __L.at(__c129, 1) as any as S.Schema<GetInsightsRequest>;
 export interface Insight {
   InsightArn?: string;
   Name?: string;
   Filters?: AwsSecurityFindingFilters;
   GroupByAttribute?: string;
 }
-const Insight = /*@__PURE__*/ __L.at(__c129, 2) as any as S.Schema<Insight>;
 export type InsightList = Insight[];
-const InsightList = /*@__PURE__*/ __L.at(__c129, 3);
 export interface GetInsightsResponse {
   Insights: (Insight & {
     InsightArn: NonEmptyString;
@@ -9760,35 +6462,17 @@ export interface GetInsightsResponse {
   })[];
   NextToken?: string;
 }
-const GetInsightsResponse = /*@__PURE__*/ __L.at(__c129, 4) as any as S.Schema<GetInsightsResponse>;
 export interface GetInvitationsCountRequest {}
-const GetInvitationsCountRequest = /*@__PURE__*/ __L.at(
-  __c129,
-  5,
-) as any as S.Schema<GetInvitationsCountRequest>;
 export interface GetInvitationsCountResponse {
   InvitationsCount?: number;
 }
-const GetInvitationsCountResponse = /*@__PURE__*/ __L.at(
-  __c129,
-  6,
-) as any as S.Schema<GetInvitationsCountResponse>;
 export interface GetMasterAccountRequest {}
-const GetMasterAccountRequest = /*@__PURE__*/ __L.at(
-  __c129,
-  7,
-) as any as S.Schema<GetMasterAccountRequest>;
 export interface GetMasterAccountResponse {
   Master?: Invitation;
 }
-const GetMasterAccountResponse = /*@__PURE__*/ __L.at(
-  __c130,
-  0,
-) as any as S.Schema<GetMasterAccountResponse>;
 export interface GetMembersRequest {
   AccountIds?: string[];
 }
-const GetMembersRequest = /*@__PURE__*/ __L.at(__c130, 1) as any as S.Schema<GetMembersRequest>;
 export interface Member {
   AccountId?: string;
   Email?: string;
@@ -9798,26 +6482,17 @@ export interface Member {
   InvitedAt?: Date;
   UpdatedAt?: Date;
 }
-const Member = /*@__PURE__*/ __L.at(__c130, 2) as any as S.Schema<Member>;
 export type MemberList = Member[];
-const MemberList = /*@__PURE__*/ __L.at(__c130, 3);
 export interface GetMembersResponse {
   Members?: Member[];
   UnprocessedAccounts?: Result[];
 }
-const GetMembersResponse = /*@__PURE__*/ __L.at(__c130, 4) as any as S.Schema<GetMembersResponse>;
 export interface GetRecommendedPolicyV2Request {
   MetadataUid: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const GetRecommendedPolicyV2Request = /*@__PURE__*/ __L.at(
-  __c130,
-  5,
-) as any as S.Schema<GetRecommendedPolicyV2Request>;
 export type RecommendationType = "UNUSED_PERMISSION_RECOMMENDATION" | (string & {});
-const RecommendationType = S.String;
-
 export interface UnusedPermissionsRecommendationStep {
   RecommendedAction?: string;
   ExistingPolicy?: string;
@@ -9825,22 +6500,13 @@ export interface UnusedPermissionsRecommendationStep {
   PolicyUpdatedAt?: Date;
   RecommendedPolicy?: string;
 }
-const UnusedPermissionsRecommendationStep = /*@__PURE__*/ __L.at(
-  __c130,
-  6,
-) as any as S.Schema<UnusedPermissionsRecommendationStep>;
 export type RecommendationStep = { UnusedPermissions: UnusedPermissionsRecommendationStep };
-const RecommendationStep = /*@__PURE__*/ __L.at(__c130, 7);
 export type RecommendationSteps = RecommendationStep[];
-const RecommendationSteps = /*@__PURE__*/ __L.at(__c131, 0);
 export interface RecommendationError {
   Code?: string;
   Message?: string;
 }
-const RecommendationError = /*@__PURE__*/ __L.at(__c131, 1) as any as S.Schema<RecommendationError>;
 export type RecommendationStatus = "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | (string & {});
-const RecommendationStatus = S.String;
-
 export interface GetRecommendedPolicyV2Response {
   NextToken?: string;
   RecommendationType?: RecommendationType;
@@ -9849,10 +6515,6 @@ export interface GetRecommendedPolicyV2Response {
   Status?: RecommendationStatus;
   ResourceArn?: string;
 }
-const GetRecommendedPolicyV2Response = /*@__PURE__*/ __L.at(
-  __c131,
-  2,
-) as any as S.Schema<GetRecommendedPolicyV2Response>;
 export type RemediationStringUid = string;
 export type RemediationStringField =
   | "Resource.Type"
@@ -9862,36 +6524,21 @@ export type RemediationStringField =
   | "Resource.ResourceOwnerAccountId"
   | "Resource.CloudProvider"
   | (string & {});
-const RemediationStringField = S.String;
-
 export interface RemediationStringFilterCondition {
   Value?: string;
 }
-const RemediationStringFilterCondition =
-  StatelessCustomPublishMetricActionDimension as any as S.Schema<RemediationStringFilterCondition>;
 export interface RemediationStringFilter {
   FieldName?: RemediationStringField;
   Filter?: RemediationStringFilterCondition;
 }
-const RemediationStringFilter = /*@__PURE__*/ __L.at(
-  __c131,
-  3,
-) as any as S.Schema<RemediationStringFilter>;
 export type RemediationStringFilterList = RemediationStringFilter[];
-const RemediationStringFilterList = /*@__PURE__*/ __L.at(__c131, 4);
 export interface RemediationCompositeFilter {
   StringFilters?: RemediationStringFilter[];
 }
-const RemediationCompositeFilter = /*@__PURE__*/ __L.at(
-  __c131,
-  5,
-) as any as S.Schema<RemediationCompositeFilter>;
 export type RemediationCompositeFilterList = RemediationCompositeFilter[];
-const RemediationCompositeFilterList = /*@__PURE__*/ __L.at(__c131, 6);
 export interface RemediationFilters {
   CompositeFilters?: RemediationCompositeFilter[];
 }
-const RemediationFilters = /*@__PURE__*/ __L.at(__c131, 7) as any as S.Schema<RemediationFilters>;
 export type GuidanceFormat =
   | "All"
   | "AwsCli"
@@ -9903,8 +6550,6 @@ export type GuidanceFormat =
   | "IaC"
   | "Template"
   | (string & {});
-const GuidanceFormat = S.String;
-
 export interface GetRemediationsV2Request {
   TargetUid?: string;
   MetadataUid?: string;
@@ -9914,28 +6559,18 @@ export interface GetRemediationsV2Request {
   MaxResults?: number;
   NextToken?: string;
 }
-const GetRemediationsV2Request = /*@__PURE__*/ __L.at(
-  __c132,
-  0,
-) as any as S.Schema<GetRemediationsV2Request>;
 export interface RemediationOutcome {
   ResolvedFindingsCount?: number;
   SeverityReductionFindingsCount?: number;
   SeverityUnchangedCount?: number;
 }
-const RemediationOutcome = /*@__PURE__*/ __L.at(__c132, 1) as any as S.Schema<RemediationOutcome>;
 export type RemediationPriority = "Critical" | "High" | "Medium" | "Low" | (string & {});
-const RemediationPriority = S.String;
-
 export type RemediationStringList = string[];
-const RemediationStringList = AutomationRulesArnsList as any as S.Schema<RemediationStringList>;
 export interface KbArticle {
   Title?: string;
   Url?: string;
 }
-const KbArticle = /*@__PURE__*/ __L.at(__c132, 2) as any as S.Schema<KbArticle>;
 export type KbArticleList = KbArticle[];
-const KbArticleList = /*@__PURE__*/ __L.at(__c132, 3);
 export interface RemediationSummaryDetail {
   Action?: string;
   Description?: string;
@@ -9943,10 +6578,6 @@ export interface RemediationSummaryDetail {
   PostRemediationSteps?: string[];
   KbArticles?: KbArticle[];
 }
-const RemediationSummaryDetail = /*@__PURE__*/ __L.at(
-  __c132,
-  4,
-) as any as S.Schema<RemediationSummaryDetail>;
 export interface RemediationResource {
   AccountId?: string;
   Region?: string;
@@ -9959,37 +6590,24 @@ export interface RemediationResource {
   ResourceRegion?: string;
   CloudProvider?: CloudProviderName;
 }
-const RemediationResource = /*@__PURE__*/ __L.at(__c132, 5) as any as S.Schema<RemediationResource>;
 export type RemediationStatus = "New" | "Updated" | "Resolved" | (string & {});
-const RemediationStatus = S.String;
-
 export interface RemediationTrait {
   Type?: string;
   Title?: string;
 }
-const RemediationTrait = /*@__PURE__*/ __L.at(__c132, 6) as any as S.Schema<RemediationTrait>;
 export interface RemediationGuidanceContext {
   ProblemStatement?: string;
   RiskAssessment?: string;
   AffectedScope?: string;
   Prerequisites?: string[];
 }
-const RemediationGuidanceContext = /*@__PURE__*/ __L.at(
-  __c132,
-  7,
-) as any as S.Schema<RemediationGuidanceContext>;
 export interface RemediationParameter {
   Name?: string;
   Type?: string;
   Description?: string;
   Required?: boolean;
 }
-const RemediationParameter = /*@__PURE__*/ __L.at(
-  __c133,
-  0,
-) as any as S.Schema<RemediationParameter>;
 export type RemediationParameterList = RemediationParameter[];
-const RemediationParameterList = /*@__PURE__*/ __L.at(__c133, 1);
 export interface RemediationStep {
   Phase?: string;
   Description?: string;
@@ -9999,19 +6617,13 @@ export interface RemediationStep {
   Inverse?: string;
   VerifyAfter?: string;
 }
-const RemediationStep = /*@__PURE__*/ __L.at(__c133, 2) as any as S.Schema<RemediationStep>;
 export type RemediationStepList = RemediationStep[];
-const RemediationStepList = /*@__PURE__*/ __L.at(__c133, 3);
 export interface RemediationGuidanceSpecification {
   Parameters?: RemediationParameter[];
   Steps?: RemediationStep[];
   ExpectedEndState?: string;
   RequiredPermissions?: string[];
 }
-const RemediationGuidanceSpecification = /*@__PURE__*/ __L.at(
-  __c133,
-  4,
-) as any as S.Schema<RemediationGuidanceSpecification>;
 export interface RemediationGuidanceExamples {
   AwsCli?: string;
   Cli?: string;
@@ -10022,10 +6634,6 @@ export interface RemediationGuidanceExamples {
   IaC?: string;
   Template?: string;
 }
-const RemediationGuidanceExamples = /*@__PURE__*/ __L.at(
-  __c133,
-  5,
-) as any as S.Schema<RemediationGuidanceExamples>;
 export interface RemediationGuidanceMetadata {
   ResourceType?: string;
   ExposureType?: string;
@@ -10038,10 +6646,6 @@ export interface RemediationGuidanceMetadata {
   GeneratedAt?: Date;
   VerificationStatus?: string;
 }
-const RemediationGuidanceMetadata = /*@__PURE__*/ __L.at(
-  __c133,
-  6,
-) as any as S.Schema<RemediationGuidanceMetadata>;
 export interface RemediationGuidance {
   TargetTypeName?: string;
   Pattern?: string;
@@ -10051,7 +6655,6 @@ export interface RemediationGuidance {
   Examples?: RemediationGuidanceExamples;
   Metadata?: RemediationGuidanceMetadata;
 }
-const RemediationGuidance = /*@__PURE__*/ __L.at(__c133, 7) as any as S.Schema<RemediationGuidance>;
 export interface RemediationV2Item {
   TargetUid?: string;
   Outcome?: RemediationOutcome;
@@ -10063,9 +6666,7 @@ export interface RemediationV2Item {
   Guidance?: RemediationGuidance;
   UpdatedAt?: Date;
 }
-const RemediationV2Item = /*@__PURE__*/ __L.at(__c134, 0) as any as S.Schema<RemediationV2Item>;
 export type RemediationV2ItemList = RemediationV2Item[];
-const RemediationV2ItemList = /*@__PURE__*/ __L.at(__c134, 1);
 export interface GetRemediationsV2Response {
   Items: (RemediationV2Item & {
     TargetUid: NonEmptyString;
@@ -10121,10 +6722,6 @@ export interface GetRemediationsV2Response {
   })[];
   NextToken?: string;
 }
-const GetRemediationsV2Response = /*@__PURE__*/ __L.at(
-  __c134,
-  2,
-) as any as S.Schema<GetRemediationsV2Response>;
 export type ResourceGroupByField =
   | "AccountId"
   | "AccountName"
@@ -10143,8 +6740,6 @@ export type ResourceGroupByField =
   | "ResourceInfo.AIDetails.HostResourceType"
   | "ResourceInfo.AIDetails.CanonicalId"
   | (string & {});
-const ResourceGroupByField = S.String;
-
 export type ResourcesStringField =
   | "ResourceGuid"
   | "ResourceId"
@@ -10172,8 +6767,6 @@ export interface ResourcesStringFilter {
   Filter?: StringFilter;
 }
 export type ResourcesStringFilterList = ResourcesStringFilter[];
-const ResourcesStringFilterList =
-  OcsfStringFilterList as any as S.Schema<ResourcesStringFilterList>;
 export type ResourcesDateField =
   | "ResourceDetailCaptureTime"
   | "ResourceCreationTime"
@@ -10183,7 +6776,6 @@ export interface ResourcesDateFilter {
   Filter?: DateFilter;
 }
 export type ResourcesDateFilterList = ResourcesDateFilter[];
-const ResourcesDateFilterList = OcsfDateFilterList as any as S.Schema<ResourcesDateFilterList>;
 export type ResourcesNumberField =
   | "FindingsSummary.TotalFindings"
   | "FindingsSummary.Severities.Other"
@@ -10208,15 +6800,12 @@ export interface ResourcesNumberFilter {
   Filter?: NumberFilter;
 }
 export type ResourcesNumberFilterList = ResourcesNumberFilter[];
-const ResourcesNumberFilterList =
-  OcsfNumberFilterList as any as S.Schema<ResourcesNumberFilterList>;
 export type ResourcesMapField = "ResourceTags" | (string & {});
 export interface ResourcesMapFilter {
   FieldName?: ResourcesMapField;
   Filter?: MapFilter;
 }
 export type ResourcesMapFilterList = ResourcesMapFilter[];
-const ResourcesMapFilterList = OcsfMapFilterList as any as S.Schema<ResourcesMapFilterList>;
 export interface ResourcesCompositeFilter {
   StringFilters?: ResourcesStringFilter[];
   DateFilters?: ResourcesDateFilter[];
@@ -10225,46 +6814,28 @@ export interface ResourcesCompositeFilter {
   NestedCompositeFilters?: ResourcesCompositeFilter[];
   Operator?: AllowedOperators;
 }
-const ResourcesCompositeFilter = /*@__PURE__*/ __L.at(
-  __c134,
-  3,
-) as any as S.Schema<ResourcesCompositeFilter>;
 export type ResourcesCompositeFilterList = ResourcesCompositeFilter[];
-const ResourcesCompositeFilterList = /*@__PURE__*/ __L.at(
-  __c134,
-  4,
-) as any as S.Schema<ResourcesCompositeFilterList>;
 export interface ResourcesFilters {
   CompositeFilters?: ResourcesCompositeFilter[];
   CompositeOperator?: AllowedOperators;
 }
-const ResourcesFilters = /*@__PURE__*/ __L.at(__c134, 5) as any as S.Schema<ResourcesFilters>;
 export interface ResourceGroupByRule {
   GroupByField?: ResourceGroupByField;
   Filters?: ResourcesFilters;
 }
-const ResourceGroupByRule = /*@__PURE__*/ __L.at(__c134, 6) as any as S.Schema<ResourceGroupByRule>;
 export type ResourceGroupByRules = ResourceGroupByRule[];
-const ResourceGroupByRules = /*@__PURE__*/ __L.at(__c134, 7);
 export interface ResourceScopes {
   AwsOrganizations?: AwsOrganizationScope[];
 }
-const ResourceScopes = FindingScopes as any as S.Schema<ResourceScopes>;
 export interface GetResourcesStatisticsV2Request {
   GroupByRules?: ResourceGroupByRule[];
   Scopes?: ResourceScopes;
   SortOrder?: SortOrder;
   MaxStatisticResults?: number;
 }
-const GetResourcesStatisticsV2Request = /*@__PURE__*/ __L.at(
-  __c135,
-  0,
-) as any as S.Schema<GetResourcesStatisticsV2Request>;
 export interface GetResourcesStatisticsV2Response {
   GroupByResults: GroupByResult[];
 }
-const GetResourcesStatisticsV2Response =
-  GetFindingStatisticsV2Response as any as S.Schema<GetResourcesStatisticsV2Response>;
 export type ResourcesTrendsStringField =
   | "account_id"
   | "region"
@@ -10280,30 +6851,16 @@ export interface ResourcesTrendsStringFilter {
   Filter?: StringFilter;
 }
 export type ResourcesTrendsStringFilterList = ResourcesTrendsStringFilter[];
-const ResourcesTrendsStringFilterList =
-  FindingsTrendsStringFilterList as any as S.Schema<ResourcesTrendsStringFilterList>;
 export interface ResourcesTrendsCompositeFilter {
   StringFilters?: ResourcesTrendsStringFilter[];
   NestedCompositeFilters?: ResourcesTrendsCompositeFilter[];
   Operator?: AllowedOperators;
 }
-const ResourcesTrendsCompositeFilter = /*@__PURE__*/ __L.at(
-  __c135,
-  1,
-) as any as S.Schema<ResourcesTrendsCompositeFilter>;
 export type ResourcesTrendsCompositeFilterList = ResourcesTrendsCompositeFilter[];
-const ResourcesTrendsCompositeFilterList = /*@__PURE__*/ __L.at(
-  __c135,
-  2,
-) as any as S.Schema<ResourcesTrendsCompositeFilterList>;
 export interface ResourcesTrendsFilters {
   CompositeFilters?: ResourcesTrendsCompositeFilter[];
   CompositeOperator?: AllowedOperators;
 }
-const ResourcesTrendsFilters = /*@__PURE__*/ __L.at(
-  __c135,
-  3,
-) as any as S.Schema<ResourcesTrendsFilters>;
 export interface GetResourcesTrendsV2Request {
   Filters?: ResourcesTrendsFilters;
   StartTime?: Date;
@@ -10311,31 +6868,17 @@ export interface GetResourcesTrendsV2Request {
   NextToken?: string;
   MaxResults?: number;
 }
-const GetResourcesTrendsV2Request = /*@__PURE__*/ __L.at(
-  __c135,
-  4,
-) as any as S.Schema<GetResourcesTrendsV2Request>;
 export interface ResourcesCount {
   AllResources?: number;
 }
-const ResourcesCount = /*@__PURE__*/ __L.at(__c135, 5) as any as S.Schema<ResourcesCount>;
 export interface ResourcesTrendsValues {
   ResourcesCount?: ResourcesCount;
 }
-const ResourcesTrendsValues = /*@__PURE__*/ __L.at(
-  __c135,
-  6,
-) as any as S.Schema<ResourcesTrendsValues>;
 export interface ResourcesTrendsMetricsResult {
   Timestamp?: Date;
   TrendsValues?: ResourcesTrendsValues;
 }
-const ResourcesTrendsMetricsResult = /*@__PURE__*/ __L.at(
-  __c135,
-  7,
-) as any as S.Schema<ResourcesTrendsMetricsResult>;
 export type ResourcesTrendsMetrics = ResourcesTrendsMetricsResult[];
-const ResourcesTrendsMetrics = /*@__PURE__*/ __L.at(__c136, 0);
 export interface GetResourcesTrendsV2Response {
   Granularity: GranularityField;
   TrendsMetrics: (ResourcesTrendsMetricsResult & {
@@ -10346,10 +6889,6 @@ export interface GetResourcesTrendsV2Response {
   })[];
   NextToken?: string;
 }
-const GetResourcesTrendsV2Response = /*@__PURE__*/ __L.at(
-  __c136,
-  1,
-) as any as S.Schema<GetResourcesTrendsV2Response>;
 export interface GetResourcesV2Request {
   Filters?: ResourcesFilters;
   Scopes?: ResourceScopes;
@@ -10357,10 +6896,6 @@ export interface GetResourcesV2Request {
   NextToken?: string;
   MaxResults?: number;
 }
-const GetResourcesV2Request = /*@__PURE__*/ __L.at(
-  __c136,
-  2,
-) as any as S.Schema<GetResourcesV2Request>;
 export type ResourceCategory =
   | "Compute"
   | "Database"
@@ -10372,8 +6907,6 @@ export type ResourceCategory =
   | "Messaging"
   | "Other"
   | (string & {});
-const ResourceCategory = S.String;
-
 export interface ResourceSeverityBreakdown {
   Other?: number;
   Fatal?: number;
@@ -10384,29 +6917,18 @@ export interface ResourceSeverityBreakdown {
   Informational?: number;
   Unknown?: number;
 }
-const ResourceSeverityBreakdown = /*@__PURE__*/ __L.at(
-  __c136,
-  3,
-) as any as S.Schema<ResourceSeverityBreakdown>;
 export interface ResourceFindingsSummary {
   FindingType?: string;
   ProductName?: string;
   TotalFindings?: number;
   Severities?: ResourceSeverityBreakdown;
 }
-const ResourceFindingsSummary = /*@__PURE__*/ __L.at(
-  __c136,
-  4,
-) as any as S.Schema<ResourceFindingsSummary>;
 export type ResourceFindingsSummaryList = ResourceFindingsSummary[];
-const ResourceFindingsSummaryList = /*@__PURE__*/ __L.at(__c136, 5);
 export interface ResourceTag {
   Key?: string;
   Value?: string;
 }
-const ResourceTag = /*@__PURE__*/ __L.at(__c136, 6) as any as S.Schema<ResourceTag>;
 export type ResourceTagList = ResourceTag[];
-const ResourceTagList = /*@__PURE__*/ __L.at(__c136, 7);
 export type ResourceConfig = unknown;
 export type ResourceSubCategory =
   | "Model"
@@ -10421,11 +6943,7 @@ export type ResourceSubCategory =
   | "Development"
   | "Other"
   | (string & {});
-const ResourceSubCategory = S.String;
-
 export type DiscoveryType = "Managed" | "SelfHosted" | (string & {});
-const DiscoveryType = S.String;
-
 export interface AIDetails {
   HostResourceGuid?: string;
   HostResourceType?: string;
@@ -10439,11 +6957,9 @@ export interface AIDetails {
   SelfHostedAIAgentToolsAndIdentityResourceCount?: number;
   SelfHostedTotalAIResourceCount?: number;
 }
-const AIDetails = /*@__PURE__*/ __L.at(__c137, 0) as any as S.Schema<AIDetails>;
 export interface ResourceInfo {
   AIDetails?: AIDetails;
 }
-const ResourceInfo = /*@__PURE__*/ __L.at(__c137, 1) as any as S.Schema<ResourceInfo>;
 export interface ResourceResult {
   ResourceGuid?: string;
   ResourceId?: string;
@@ -10467,9 +6983,7 @@ export interface ResourceResult {
   DiscoveryType?: DiscoveryType;
   ResourceInfo?: ResourceInfo;
 }
-const ResourceResult = /*@__PURE__*/ __L.at(__c137, 2) as any as S.Schema<ResourceResult>;
 export type Resources = ResourceResult[];
-const Resources = /*@__PURE__*/ __L.at(__c137, 3);
 export interface GetResourcesV2Response {
   Resources: (ResourceResult & {
     ResourceId: NonEmptyString;
@@ -10487,92 +7001,51 @@ export interface GetResourcesV2Response {
   })[];
   NextToken?: string;
 }
-const GetResourcesV2Response = /*@__PURE__*/ __L.at(
-  __c137,
-  4,
-) as any as S.Schema<GetResourcesV2Response>;
 export interface GetSecurityControlDefinitionRequest {
   SecurityControlId?: string;
 }
-const GetSecurityControlDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c137,
-  5,
-) as any as S.Schema<GetSecurityControlDefinitionRequest>;
 export type RegionAvailabilityStatus = "AVAILABLE" | "UNAVAILABLE" | (string & {});
-const RegionAvailabilityStatus = S.String;
-
 export type SecurityControlProperty = "Parameters" | (string & {});
 export type CustomizableProperties = SecurityControlProperty[];
-const CustomizableProperties = IntegrationTypeList as any as S.Schema<CustomizableProperties>;
 export interface IntegerConfigurationOptions {
   DefaultValue?: number;
   Min?: number;
   Max?: number;
 }
-const IntegerConfigurationOptions = /*@__PURE__*/ __L.at(
-  __c137,
-  6,
-) as any as S.Schema<IntegerConfigurationOptions>;
 export interface IntegerListConfigurationOptions {
   DefaultValue?: number[];
   Min?: number;
   Max?: number;
   MaxItems?: number;
 }
-const IntegerListConfigurationOptions = /*@__PURE__*/ __L.at(
-  __c137,
-  7,
-) as any as S.Schema<IntegerListConfigurationOptions>;
 export interface DoubleConfigurationOptions {
   DefaultValue?: number;
   Min?: number;
   Max?: number;
 }
-const DoubleConfigurationOptions =
-  IntegerConfigurationOptions as any as S.Schema<DoubleConfigurationOptions>;
 export interface StringConfigurationOptions {
   DefaultValue?: string;
   Re2Expression?: string;
   ExpressionDescription?: string;
 }
-const StringConfigurationOptions = /*@__PURE__*/ __L.at(
-  __c138,
-  0,
-) as any as S.Schema<StringConfigurationOptions>;
 export interface StringListConfigurationOptions {
   DefaultValue?: string[];
   Re2Expression?: string;
   MaxItems?: number;
   ExpressionDescription?: string;
 }
-const StringListConfigurationOptions = /*@__PURE__*/ __L.at(
-  __c138,
-  1,
-) as any as S.Schema<StringListConfigurationOptions>;
 export interface BooleanConfigurationOptions {
   DefaultValue?: boolean;
 }
-const BooleanConfigurationOptions = /*@__PURE__*/ __L.at(
-  __c138,
-  2,
-) as any as S.Schema<BooleanConfigurationOptions>;
 export interface EnumConfigurationOptions {
   DefaultValue?: string;
   AllowedValues?: string[];
 }
-const EnumConfigurationOptions = /*@__PURE__*/ __L.at(
-  __c138,
-  3,
-) as any as S.Schema<EnumConfigurationOptions>;
 export interface EnumListConfigurationOptions {
   DefaultValue?: string[];
   MaxItems?: number;
   AllowedValues?: string[];
 }
-const EnumListConfigurationOptions = /*@__PURE__*/ __L.at(
-  __c138,
-  4,
-) as any as S.Schema<EnumListConfigurationOptions>;
 export type ConfigurationOptions =
   | {
       Integer: IntegerConfigurationOptions;
@@ -10654,14 +7127,11 @@ export type ConfigurationOptions =
       Enum?: never;
       EnumList: EnumListConfigurationOptions;
     };
-const ConfigurationOptions = /*@__PURE__*/ __L.at(__c138, 5);
 export interface ParameterDefinition {
   Description?: string;
   ConfigurationOptions?: ConfigurationOptions;
 }
-const ParameterDefinition = /*@__PURE__*/ __L.at(__c138, 6) as any as S.Schema<ParameterDefinition>;
 export type ParameterDefinitions = { [key: string]: ParameterDefinition | undefined };
-const ParameterDefinitions = /*@__PURE__*/ __L.at(__c138, 7);
 export interface SecurityControlDefinition {
   SecurityControlId?: string;
   Title?: string;
@@ -10673,10 +7143,6 @@ export interface SecurityControlDefinition {
   ParameterDefinitions?: { [key: string]: ParameterDefinition | undefined };
   Provider?: SecurityControlsProvider;
 }
-const SecurityControlDefinition = /*@__PURE__*/ __L.at(
-  __c139,
-  0,
-) as any as S.Schema<SecurityControlDefinition>;
 export interface GetSecurityControlDefinitionResponse {
   SecurityControlDefinition: SecurityControlDefinition & {
     SecurityControlId: NonEmptyString;
@@ -10695,51 +7161,28 @@ export interface GetSecurityControlDefinitionResponse {
     };
   };
 }
-const GetSecurityControlDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c139,
-  1,
-) as any as S.Schema<GetSecurityControlDefinitionResponse>;
 export interface InviteMembersRequest {
   AccountIds?: string[];
 }
-const InviteMembersRequest = /*@__PURE__*/ __L.at(
-  __c139,
-  2,
-) as any as S.Schema<InviteMembersRequest>;
 export interface InviteMembersResponse {
   UnprocessedAccounts?: Result[];
 }
-const InviteMembersResponse = CreateMembersResponse as any as S.Schema<InviteMembersResponse>;
 export interface ListAggregatorsV2Request {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListAggregatorsV2Request = /*@__PURE__*/ __L.at(
-  __c139,
-  3,
-) as any as S.Schema<ListAggregatorsV2Request>;
 export interface AggregatorV2 {
   AggregatorV2Arn?: string;
 }
-const AggregatorV2 = /*@__PURE__*/ __L.at(__c139, 4) as any as S.Schema<AggregatorV2>;
 export type AggregatorV2List = AggregatorV2[];
-const AggregatorV2List = /*@__PURE__*/ __L.at(__c139, 5);
 export interface ListAggregatorsV2Response {
   AggregatorsV2?: AggregatorV2[];
   NextToken?: string;
 }
-const ListAggregatorsV2Response = /*@__PURE__*/ __L.at(
-  __c139,
-  6,
-) as any as S.Schema<ListAggregatorsV2Response>;
 export interface ListAutomationRulesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListAutomationRulesRequest = /*@__PURE__*/ __L.at(
-  __c139,
-  7,
-) as any as S.Schema<ListAutomationRulesRequest>;
 export interface AutomationRulesMetadata {
   RuleArn?: string;
   RuleStatus?: RuleStatus;
@@ -10751,37 +7194,19 @@ export interface AutomationRulesMetadata {
   UpdatedAt?: Date;
   CreatedBy?: string;
 }
-const AutomationRulesMetadata = /*@__PURE__*/ __L.at(
-  __c140,
-  0,
-) as any as S.Schema<AutomationRulesMetadata>;
 export type AutomationRulesMetadataList = AutomationRulesMetadata[];
-const AutomationRulesMetadataList = /*@__PURE__*/ __L.at(__c140, 1);
 export interface ListAutomationRulesResponse {
   AutomationRulesMetadata?: AutomationRulesMetadata[];
   NextToken?: string;
 }
-const ListAutomationRulesResponse = /*@__PURE__*/ __L.at(
-  __c140,
-  2,
-) as any as S.Schema<ListAutomationRulesResponse>;
 export interface ListAutomationRulesV2Request {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListAutomationRulesV2Request = /*@__PURE__*/ __L.at(
-  __c140,
-  3,
-) as any as S.Schema<ListAutomationRulesV2Request>;
 export interface AutomationRulesActionTypeObjectV2 {
   Type?: AutomationRulesActionTypeV2;
 }
-const AutomationRulesActionTypeObjectV2 = /*@__PURE__*/ __L.at(
-  __c140,
-  4,
-) as any as S.Schema<AutomationRulesActionTypeObjectV2>;
 export type AutomationRulesActionTypeListV2 = AutomationRulesActionTypeObjectV2[];
-const AutomationRulesActionTypeListV2 = /*@__PURE__*/ __L.at(__c140, 5);
 export interface AutomationRulesMetadataV2 {
   RuleArn?: string;
   RuleId?: string;
@@ -10793,28 +7218,15 @@ export interface AutomationRulesMetadataV2 {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-const AutomationRulesMetadataV2 = /*@__PURE__*/ __L.at(
-  __c140,
-  6,
-) as any as S.Schema<AutomationRulesMetadataV2>;
 export type AutomationRulesMetadataListV2 = AutomationRulesMetadataV2[];
-const AutomationRulesMetadataListV2 = /*@__PURE__*/ __L.at(__c140, 7);
 export interface ListAutomationRulesV2Response {
   Rules?: AutomationRulesMetadataV2[];
   NextToken?: string;
 }
-const ListAutomationRulesV2Response = /*@__PURE__*/ __L.at(
-  __c141,
-  0,
-) as any as S.Schema<ListAutomationRulesV2Response>;
 export interface ListConfigurationPoliciesRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListConfigurationPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c141,
-  1,
-) as any as S.Schema<ListConfigurationPoliciesRequest>;
 export interface ConfigurationPolicySummary {
   Arn?: string;
   Id?: string;
@@ -10823,49 +7235,27 @@ export interface ConfigurationPolicySummary {
   UpdatedAt?: Date;
   ServiceEnabled?: boolean;
 }
-const ConfigurationPolicySummary = /*@__PURE__*/ __L.at(
-  __c141,
-  2,
-) as any as S.Schema<ConfigurationPolicySummary>;
 export type ConfigurationPolicySummaryList = ConfigurationPolicySummary[];
-const ConfigurationPolicySummaryList = /*@__PURE__*/ __L.at(__c141, 3);
 export interface ListConfigurationPoliciesResponse {
   ConfigurationPolicySummaries?: ConfigurationPolicySummary[];
   NextToken?: string;
 }
-const ListConfigurationPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c141,
-  4,
-) as any as S.Schema<ListConfigurationPoliciesResponse>;
 export interface AssociationFilters {
   ConfigurationPolicyId?: string;
   AssociationType?: AssociationType;
   AssociationStatus?: ConfigurationPolicyAssociationStatus;
 }
-const AssociationFilters = /*@__PURE__*/ __L.at(__c141, 5) as any as S.Schema<AssociationFilters>;
 export interface ListConfigurationPolicyAssociationsRequest {
   NextToken?: string;
   MaxResults?: number;
   Filters?: AssociationFilters;
 }
-const ListConfigurationPolicyAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c141,
-  6,
-) as any as S.Schema<ListConfigurationPolicyAssociationsRequest>;
 export type ConfigurationPolicyAssociationSummaryList = ConfigurationPolicyAssociationSummary[];
-const ConfigurationPolicyAssociationSummaryList =
-  ConfigurationPolicyAssociationList as any as S.Schema<ConfigurationPolicyAssociationSummaryList>;
 export interface ListConfigurationPolicyAssociationsResponse {
   ConfigurationPolicyAssociationSummaries?: ConfigurationPolicyAssociationSummary[];
   NextToken?: string;
 }
-const ListConfigurationPolicyAssociationsResponse = /*@__PURE__*/ __L.at(
-  __c141,
-  7,
-) as any as S.Schema<ListConfigurationPolicyAssociationsResponse>;
 export type CspmConnectorProviderName = "AZURE" | (string & {});
-const CspmConnectorProviderName = S.String;
-
 export interface ListConnectorsRequest {
   NextToken?: string;
   MaxResults?: number;
@@ -10873,16 +7263,11 @@ export interface ListConnectorsRequest {
   ConnectorStatus?: CspmConnectorStatus;
   EnablementStatus?: CspmEnablementStatus;
 }
-const ListConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c142,
-  0,
-) as any as S.Schema<ListConnectorsRequest>;
 export interface CspmProviderSummary {
   ProviderName?: CspmConnectorProviderName;
   ConnectorStatus?: CspmConnectorStatus;
   ProviderConfiguration?: CspmProviderDetail;
 }
-const CspmProviderSummary = /*@__PURE__*/ __L.at(__c142, 1) as any as S.Schema<CspmProviderSummary>;
 export interface CspmConnectorSummary {
   ConnectorArn?: string;
   ConnectorId?: string;
@@ -10893,23 +7278,12 @@ export interface CspmConnectorSummary {
   CreatedBy?: string;
   EnablementStatus?: CspmEnablementStatus;
 }
-const CspmConnectorSummary = /*@__PURE__*/ __L.at(
-  __c142,
-  2,
-) as any as S.Schema<CspmConnectorSummary>;
 export type CspmConnectorSummaryList = CspmConnectorSummary[];
-const CspmConnectorSummaryList = /*@__PURE__*/ __L.at(__c142, 3);
 export interface ListConnectorsResponse {
   NextToken?: string;
   Connectors: CspmConnectorSummary[];
 }
-const ListConnectorsResponse = /*@__PURE__*/ __L.at(
-  __c142,
-  4,
-) as any as S.Schema<ListConnectorsResponse>;
 export type ConnectorProviderName = "JIRA_CLOUD" | "SERVICENOW" | "AZURE" | (string & {});
-const ConnectorProviderName = S.String;
-
 export interface ListConnectorsV2Request {
   NextToken?: string;
   MaxResults?: number;
@@ -10917,16 +7291,11 @@ export interface ListConnectorsV2Request {
   ConnectorStatus?: ConnectorStatus;
   EnablementStatus?: EnablementStatus;
 }
-const ListConnectorsV2Request = /*@__PURE__*/ __L.at(
-  __c142,
-  5,
-) as any as S.Schema<ListConnectorsV2Request>;
 export interface ProviderSummary {
   ProviderName?: ConnectorProviderName;
   ConnectorStatus?: ConnectorStatus;
   ProviderConfiguration?: ProviderDetail;
 }
-const ProviderSummary = /*@__PURE__*/ __L.at(__c142, 6) as any as S.Schema<ProviderSummary>;
 export interface ConnectorSummary {
   ConnectorArn?: string;
   ConnectorId?: string;
@@ -10937,9 +7306,7 @@ export interface ConnectorSummary {
   EnablementStatus?: EnablementStatus;
   EnablementStatusReason?: string;
 }
-const ConnectorSummary = /*@__PURE__*/ __L.at(__c142, 7) as any as S.Schema<ConnectorSummary>;
 export type ConnectorSummaryList = ConnectorSummary[];
-const ConnectorSummaryList = /*@__PURE__*/ __L.at(__c143, 0);
 export interface ListConnectorsV2Response {
   NextToken?: string;
   Connectors: (ConnectorSummary & {
@@ -10949,38 +7316,20 @@ export interface ListConnectorsV2Response {
     CreatedAt: Date;
   })[];
 }
-const ListConnectorsV2Response = /*@__PURE__*/ __L.at(
-  __c143,
-  1,
-) as any as S.Schema<ListConnectorsV2Response>;
 export interface ListEnabledProductsForImportRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListEnabledProductsForImportRequest = /*@__PURE__*/ __L.at(
-  __c143,
-  2,
-) as any as S.Schema<ListEnabledProductsForImportRequest>;
 export type ProductSubscriptionArnList = string[];
-const ProductSubscriptionArnList =
-  AutomationRulesArnsList as any as S.Schema<ProductSubscriptionArnList>;
 export interface ListEnabledProductsForImportResponse {
   ProductSubscriptions?: string[];
   NextToken?: string;
 }
-const ListEnabledProductsForImportResponse = /*@__PURE__*/ __L.at(
-  __c143,
-  3,
-) as any as S.Schema<ListEnabledProductsForImportResponse>;
 export interface ListExposuresByRemediationV2Request {
   TargetUid?: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListExposuresByRemediationV2Request = /*@__PURE__*/ __L.at(
-  __c143,
-  4,
-) as any as S.Schema<ListExposuresByRemediationV2Request>;
 export type ExposureSeverity =
   | "Informational"
   | "Low"
@@ -10988,11 +7337,7 @@ export type ExposureSeverity =
   | "High"
   | "Critical"
   | (string & {});
-const ExposureSeverity = S.String;
-
 export type ExposureImpact = "Reduces" | "Resolves" | "Unchanged" | (string & {});
-const ExposureImpact = S.String;
-
 export interface ExposureFinding {
   MetadataUid?: string;
   Title?: string;
@@ -11000,9 +7345,7 @@ export interface ExposureFinding {
   ProjectedSeverity?: ExposureSeverity;
   Impact?: ExposureImpact;
 }
-const ExposureFinding = /*@__PURE__*/ __L.at(__c143, 5) as any as S.Schema<ExposureFinding>;
 export type ExposureFindingItemsList = ExposureFinding[];
-const ExposureFindingItemsList = /*@__PURE__*/ __L.at(__c143, 6);
 export interface ListExposuresByRemediationV2Response {
   Items: (ExposureFinding & {
     MetadataUid: NonEmptyString;
@@ -11024,73 +7367,42 @@ export interface ListExposuresByRemediationV2Response {
   Trait: RemediationTrait & { Type: NonEmptyString; Title: NonEmptyString };
   NextToken?: string;
 }
-const ListExposuresByRemediationV2Response = /*@__PURE__*/ __L.at(
-  __c143,
-  7,
-) as any as S.Schema<ListExposuresByRemediationV2Response>;
 export interface ListFindingAggregatorsRequest {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListFindingAggregatorsRequest = /*@__PURE__*/ __L.at(
-  __c144,
-  0,
-) as any as S.Schema<ListFindingAggregatorsRequest>;
 export interface FindingAggregator {
   FindingAggregatorArn?: string;
 }
-const FindingAggregator = /*@__PURE__*/ __L.at(__c144, 1) as any as S.Schema<FindingAggregator>;
 export type FindingAggregatorList = FindingAggregator[];
-const FindingAggregatorList = /*@__PURE__*/ __L.at(__c144, 2);
 export interface ListFindingAggregatorsResponse {
   FindingAggregators?: FindingAggregator[];
   NextToken?: string;
 }
-const ListFindingAggregatorsResponse = /*@__PURE__*/ __L.at(
-  __c144,
-  3,
-) as any as S.Schema<ListFindingAggregatorsResponse>;
 export type FreeTrialAccountId = string;
 export type FreeTrialAccountIdList = string[];
-const FreeTrialAccountIdList = AutomationRulesArnsList as any as S.Schema<FreeTrialAccountIdList>;
 export type FreeTrialStatusValue = "ACTIVE" | "INACTIVE" | (string & {});
-const FreeTrialStatusValue = S.String;
-
 export type FreeTrialStatusValueList = FreeTrialStatusValue[];
-const FreeTrialStatusValueList = IntegrationTypeList as any as S.Schema<FreeTrialStatusValueList>;
 export interface ListFreeTrialStatusesV2Request {
   AccountIds?: string[];
   Statuses?: FreeTrialStatusValue[];
   MaxResults?: number;
   NextToken?: string;
 }
-const ListFreeTrialStatusesV2Request = /*@__PURE__*/ __L.at(
-  __c144,
-  4,
-) as any as S.Schema<ListFreeTrialStatusesV2Request>;
 export type FreeTrialType = "SECURITY_HUB_V2" | "SECURITY_HUB_V2_MULTI_CLOUD_AZURE" | (string & {});
-const FreeTrialType = S.String;
-
 export interface FreeTrialStatus {
   FeatureType?: FreeTrialType;
   Status?: FreeTrialStatusValue;
   StartedAt?: Date;
   ExpiresAt?: Date;
 }
-const FreeTrialStatus = /*@__PURE__*/ __L.at(__c144, 5) as any as S.Schema<FreeTrialStatus>;
 export type FreeTrialStatusList = FreeTrialStatus[];
-const FreeTrialStatusList = /*@__PURE__*/ __L.at(__c144, 6);
 export interface AccountFreeTrialStatus {
   AccountId?: string;
   EvaluatedAt?: Date;
   FreeTrialStatuses?: FreeTrialStatus[];
 }
-const AccountFreeTrialStatus = /*@__PURE__*/ __L.at(
-  __c144,
-  7,
-) as any as S.Schema<AccountFreeTrialStatus>;
 export type AccountFreeTrialStatusList = AccountFreeTrialStatus[];
-const AccountFreeTrialStatusList = /*@__PURE__*/ __L.at(__c145, 0);
 export interface ListFreeTrialStatusesV2Response {
   AccountFreeTrialStatuses: (AccountFreeTrialStatus & {
     AccountId: FreeTrialAccountId;
@@ -11104,83 +7416,50 @@ export interface ListFreeTrialStatusesV2Response {
   })[];
   NextToken?: string;
 }
-const ListFreeTrialStatusesV2Response = /*@__PURE__*/ __L.at(
-  __c145,
-  1,
-) as any as S.Schema<ListFreeTrialStatusesV2Response>;
 export type CrossAccountMaxResults = number;
 export interface ListInvitationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c145,
-  2,
-) as any as S.Schema<ListInvitationsRequest>;
 export type InvitationList = Invitation[];
-const InvitationList = /*@__PURE__*/ __L.at(__c145, 3);
 export interface ListInvitationsResponse {
   Invitations?: Invitation[];
   NextToken?: string;
 }
-const ListInvitationsResponse = /*@__PURE__*/ __L.at(
-  __c145,
-  4,
-) as any as S.Schema<ListInvitationsResponse>;
 export interface ListMembersRequest {
   OnlyAssociated?: boolean;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListMembersRequest = /*@__PURE__*/ __L.at(__c145, 5) as any as S.Schema<ListMembersRequest>;
 export interface ListMembersResponse {
   Members?: Member[];
   NextToken?: string;
 }
-const ListMembersResponse = /*@__PURE__*/ __L.at(__c145, 6) as any as S.Schema<ListMembersResponse>;
 export type AdminsMaxResults = number;
 export interface ListOrganizationAdminAccountsRequest {
   MaxResults?: number;
   NextToken?: string;
   Feature?: SecurityHubFeature;
 }
-const ListOrganizationAdminAccountsRequest = /*@__PURE__*/ __L.at(
-  __c145,
-  7,
-) as any as S.Schema<ListOrganizationAdminAccountsRequest>;
 export type AdminStatus = "ENABLED" | "DISABLE_IN_PROGRESS" | (string & {});
-const AdminStatus = S.String;
-
 export interface AdminAccount {
   AccountId?: string;
   Status?: AdminStatus;
 }
-const AdminAccount = /*@__PURE__*/ __L.at(__c146, 0) as any as S.Schema<AdminAccount>;
 export type AdminAccounts = AdminAccount[];
-const AdminAccounts = /*@__PURE__*/ __L.at(__c146, 1);
 export interface ListOrganizationAdminAccountsResponse {
   AdminAccounts?: AdminAccount[];
   NextToken?: string;
   Feature?: SecurityHubFeature;
 }
-const ListOrganizationAdminAccountsResponse = /*@__PURE__*/ __L.at(
-  __c146,
-  2,
-) as any as S.Schema<ListOrganizationAdminAccountsResponse>;
 export type SecurityControlsProviders = SecurityControlsProvider[];
-const SecurityControlsProviders = IntegrationTypeList as any as S.Schema<SecurityControlsProviders>;
 export interface ListSecurityControlDefinitionsRequest {
   StandardsArn?: string;
   NextToken?: string;
   MaxResults?: number;
   Providers?: SecurityControlsProvider[];
 }
-const ListSecurityControlDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c146,
-  3,
-) as any as S.Schema<ListSecurityControlDefinitionsRequest>;
 export type SecurityControlDefinitions = SecurityControlDefinition[];
-const SecurityControlDefinitions = /*@__PURE__*/ __L.at(__c146, 4);
 export interface ListSecurityControlDefinitionsResponse {
   SecurityControlDefinitions: (SecurityControlDefinition & {
     SecurityControlId: NonEmptyString;
@@ -11200,19 +7479,11 @@ export interface ListSecurityControlDefinitionsResponse {
   })[];
   NextToken?: string;
 }
-const ListSecurityControlDefinitionsResponse = /*@__PURE__*/ __L.at(
-  __c146,
-  5,
-) as any as S.Schema<ListSecurityControlDefinitionsResponse>;
 export interface ListStandardsControlAssociationsRequest {
   SecurityControlId?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListStandardsControlAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c146,
-  6,
-) as any as S.Schema<ListStandardsControlAssociationsRequest>;
 export interface StandardsControlAssociationSummary {
   StandardsArn?: string;
   SecurityControlId?: string;
@@ -11224,12 +7495,7 @@ export interface StandardsControlAssociationSummary {
   StandardsControlTitle?: string;
   StandardsControlDescription?: string;
 }
-const StandardsControlAssociationSummary = /*@__PURE__*/ __L.at(
-  __c146,
-  7,
-) as any as S.Schema<StandardsControlAssociationSummary>;
 export type StandardsControlAssociationSummaries = StandardsControlAssociationSummary[];
-const StandardsControlAssociationSummaries = /*@__PURE__*/ __L.at(__c147, 0);
 export interface ListStandardsControlAssociationsResponse {
   StandardsControlAssociationSummaries: (StandardsControlAssociationSummary & {
     StandardsArn: NonEmptyString;
@@ -11239,49 +7505,25 @@ export interface ListStandardsControlAssociationsResponse {
   })[];
   NextToken?: string;
 }
-const ListStandardsControlAssociationsResponse = /*@__PURE__*/ __L.at(
-  __c147,
-  1,
-) as any as S.Schema<ListStandardsControlAssociationsResponse>;
 export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c147,
-  2,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c147,
-  3,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface RegisterConnectorV2Request {
   AuthCode?: string;
   AuthState?: string;
 }
-const RegisterConnectorV2Request = /*@__PURE__*/ __L.at(
-  __c147,
-  4,
-) as any as S.Schema<RegisterConnectorV2Request>;
 export interface RegisterConnectorV2Response {
   ConnectorArn?: string;
   ConnectorId: string;
 }
-const RegisterConnectorV2Response = /*@__PURE__*/ __L.at(
-  __c147,
-  5,
-) as any as S.Schema<RegisterConnectorV2Response>;
 export interface StartConfigurationPolicyAssociationRequest {
   ConfigurationPolicyIdentifier?: string;
   Target?: Target;
 }
-const StartConfigurationPolicyAssociationRequest = /*@__PURE__*/ __L.at(
-  __c147,
-  6,
-) as any as S.Schema<StartConfigurationPolicyAssociationRequest>;
 export interface StartConfigurationPolicyAssociationResponse {
   ConfigurationPolicyId?: string;
   TargetId?: string;
@@ -11291,67 +7533,39 @@ export interface StartConfigurationPolicyAssociationResponse {
   AssociationStatus?: ConfigurationPolicyAssociationStatus;
   AssociationStatusMessage?: string;
 }
-const StartConfigurationPolicyAssociationResponse =
-  ConfigurationPolicyAssociationSummary as any as S.Schema<StartConfigurationPolicyAssociationResponse>;
 export interface StartConfigurationPolicyDisassociationRequest {
   Target?: Target;
   ConfigurationPolicyIdentifier?: string;
 }
-const StartConfigurationPolicyDisassociationRequest = /*@__PURE__*/ __L.at(
-  __c147,
-  7,
-) as any as S.Schema<StartConfigurationPolicyDisassociationRequest>;
 export interface StartConfigurationPolicyDisassociationResponse {}
-const StartConfigurationPolicyDisassociationResponse =
-  AcceptAdministratorInvitationResponse as any as S.Schema<StartConfigurationPolicyDisassociationResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags?: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c148, 0) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = AcceptInvitationResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = AutomationRulesArnsList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys?: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c148,
-  1,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = AcceptInvitationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateActionTargetRequest {
   ActionTargetArn: string;
   Name?: string;
   Description?: string;
 }
-const UpdateActionTargetRequest = /*@__PURE__*/ __L.at(
-  __c148,
-  2,
-) as any as S.Schema<UpdateActionTargetRequest>;
 export interface UpdateActionTargetResponse {}
-const UpdateActionTargetResponse =
-  AcceptInvitationResponse as any as S.Schema<UpdateActionTargetResponse>;
 export interface UpdateAggregatorV2Request {
   AggregatorV2Arn: string;
   RegionLinkingMode?: string;
   LinkedRegions?: string[];
 }
-const UpdateAggregatorV2Request = /*@__PURE__*/ __L.at(
-  __c148,
-  3,
-) as any as S.Schema<UpdateAggregatorV2Request>;
 export interface UpdateAggregatorV2Response {
   AggregatorV2Arn?: string;
   AggregationRegion?: string;
   RegionLinkingMode?: string;
   LinkedRegions?: string[];
 }
-const UpdateAggregatorV2Response =
-  CreateAggregatorV2Response as any as S.Schema<UpdateAggregatorV2Response>;
 export interface UpdateAutomationRuleV2Request {
   Identifier: string;
   RuleStatus?: RuleStatusV2;
@@ -11361,13 +7575,7 @@ export interface UpdateAutomationRuleV2Request {
   Criteria?: Criteria;
   Actions?: AutomationRulesActionV2[];
 }
-const UpdateAutomationRuleV2Request = /*@__PURE__*/ __L.at(
-  __c148,
-  4,
-) as any as S.Schema<UpdateAutomationRuleV2Request>;
 export interface UpdateAutomationRuleV2Response {}
-const UpdateAutomationRuleV2Response =
-  AcceptInvitationResponse as any as S.Schema<UpdateAutomationRuleV2Response>;
 export interface UpdateConfigurationPolicyRequest {
   Identifier: string;
   Name?: string;
@@ -11375,10 +7583,6 @@ export interface UpdateConfigurationPolicyRequest {
   UpdatedReason?: string;
   ConfigurationPolicy?: Policy;
 }
-const UpdateConfigurationPolicyRequest = /*@__PURE__*/ __L.at(
-  __c148,
-  5,
-) as any as S.Schema<UpdateConfigurationPolicyRequest>;
 export interface UpdateConfigurationPolicyResponse {
   Arn?: string;
   Id?: string;
@@ -11388,156 +7592,86 @@ export interface UpdateConfigurationPolicyResponse {
   CreatedAt?: Date;
   ConfigurationPolicy?: Policy;
 }
-const UpdateConfigurationPolicyResponse =
-  CreateConfigurationPolicyResponse as any as S.Schema<UpdateConfigurationPolicyResponse>;
 export interface AzureUpdateConfiguration {
   ScopeConfiguration?: AzureScopeConfiguration;
   AzureRegions?: string[];
 }
-const AzureUpdateConfiguration = /*@__PURE__*/ __L.at(
-  __c148,
-  6,
-) as any as S.Schema<AzureUpdateConfiguration>;
 export type CspmProviderUpdateConfiguration = { Azure: AzureUpdateConfiguration };
-const CspmProviderUpdateConfiguration = /*@__PURE__*/ __L.at(__c148, 7);
 export interface UpdateConnectorRequest {
   ConnectorId: string;
   Description?: string;
   Provider?: CspmProviderUpdateConfiguration;
 }
-const UpdateConnectorRequest = /*@__PURE__*/ __L.at(
-  __c149,
-  0,
-) as any as S.Schema<UpdateConnectorRequest>;
 export interface UpdateConnectorResponse {
   ConnectorStatus?: CspmConnectorStatus;
   EnablementStatus?: CspmEnablementStatus;
 }
-const UpdateConnectorResponse = /*@__PURE__*/ __L.at(
-  __c149,
-  1,
-) as any as S.Schema<UpdateConnectorResponse>;
 export interface JiraCloudUpdateConfiguration {
   ProjectKey?: string;
 }
-const JiraCloudUpdateConfiguration =
-  JiraCloudProviderConfiguration as any as S.Schema<JiraCloudUpdateConfiguration>;
 export interface ServiceNowUpdateConfiguration {
   SecretArn?: string;
 }
-const ServiceNowUpdateConfiguration = /*@__PURE__*/ __L.at(
-  __c149,
-  2,
-) as any as S.Schema<ServiceNowUpdateConfiguration>;
 export type ProviderUpdateConfiguration =
   | { JiraCloud: JiraCloudUpdateConfiguration; ServiceNow?: never; Azure?: never }
   | { JiraCloud?: never; ServiceNow: ServiceNowUpdateConfiguration; Azure?: never }
   | { JiraCloud?: never; ServiceNow?: never; Azure: AzureUpdateConfiguration };
-const ProviderUpdateConfiguration = /*@__PURE__*/ __L.at(__c149, 3);
 export interface UpdateConnectorV2Request {
   ConnectorId: string;
   Description?: string;
   Provider?: ProviderUpdateConfiguration;
 }
-const UpdateConnectorV2Request = /*@__PURE__*/ __L.at(
-  __c149,
-  4,
-) as any as S.Schema<UpdateConnectorV2Request>;
 export interface UpdateConnectorV2Response {
   ConnectorStatus?: ConnectorStatus;
   EnablementStatus?: EnablementStatus;
 }
-const UpdateConnectorV2Response = /*@__PURE__*/ __L.at(
-  __c149,
-  5,
-) as any as S.Schema<UpdateConnectorV2Response>;
 export interface UpdateFindingAggregatorRequest {
   FindingAggregatorArn?: string;
   RegionLinkingMode?: string;
   Regions?: string[];
 }
-const UpdateFindingAggregatorRequest = /*@__PURE__*/ __L.at(
-  __c149,
-  6,
-) as any as S.Schema<UpdateFindingAggregatorRequest>;
 export interface UpdateFindingAggregatorResponse {
   FindingAggregatorArn?: string;
   FindingAggregationRegion?: string;
   RegionLinkingMode?: string;
   Regions?: string[];
 }
-const UpdateFindingAggregatorResponse =
-  CreateFindingAggregatorResponse as any as S.Schema<UpdateFindingAggregatorResponse>;
 export interface UpdateFindingsRequest {
   Filters?: AwsSecurityFindingFilters;
   Note?: NoteUpdate;
   RecordState?: RecordState;
 }
-const UpdateFindingsRequest = /*@__PURE__*/ __L.at(
-  __c149,
-  7,
-) as any as S.Schema<UpdateFindingsRequest>;
 export interface UpdateFindingsResponse {}
-const UpdateFindingsResponse = AcceptInvitationResponse as any as S.Schema<UpdateFindingsResponse>;
 export interface UpdateInsightRequest {
   InsightArn: string;
   Name?: string;
   Filters?: AwsSecurityFindingFilters;
   GroupByAttribute?: string;
 }
-const UpdateInsightRequest = /*@__PURE__*/ __L.at(
-  __c150,
-  0,
-) as any as S.Schema<UpdateInsightRequest>;
 export interface UpdateInsightResponse {}
-const UpdateInsightResponse = AcceptInvitationResponse as any as S.Schema<UpdateInsightResponse>;
 export interface UpdateOrganizationConfigurationRequest {
   AutoEnable?: boolean;
   AutoEnableStandards?: AutoEnableStandards;
   OrganizationConfiguration?: OrganizationConfiguration;
 }
-const UpdateOrganizationConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c150,
-  1,
-) as any as S.Schema<UpdateOrganizationConfigurationRequest>;
 export interface UpdateOrganizationConfigurationResponse {}
-const UpdateOrganizationConfigurationResponse =
-  AcceptAdministratorInvitationResponse as any as S.Schema<UpdateOrganizationConfigurationResponse>;
 export interface UpdateSecurityControlRequest {
   SecurityControlId?: string;
   Parameters?: { [key: string]: ParameterConfiguration | undefined };
   LastUpdateReason?: string;
 }
-const UpdateSecurityControlRequest = /*@__PURE__*/ __L.at(
-  __c150,
-  2,
-) as any as S.Schema<UpdateSecurityControlRequest>;
 export interface UpdateSecurityControlResponse {}
-const UpdateSecurityControlResponse =
-  AcceptInvitationResponse as any as S.Schema<UpdateSecurityControlResponse>;
 export interface UpdateSecurityHubConfigurationRequest {
   AutoEnableControls?: boolean;
   ControlFindingGenerator?: ControlFindingGenerator;
 }
-const UpdateSecurityHubConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c150,
-  3,
-) as any as S.Schema<UpdateSecurityHubConfigurationRequest>;
 export interface UpdateSecurityHubConfigurationResponse {}
-const UpdateSecurityHubConfigurationResponse =
-  AcceptAdministratorInvitationResponse as any as S.Schema<UpdateSecurityHubConfigurationResponse>;
 export interface UpdateStandardsControlRequest {
   StandardsControlArn: string;
   ControlStatus?: ControlStatus;
   DisabledReason?: string;
 }
-const UpdateStandardsControlRequest = /*@__PURE__*/ __L.at(
-  __c150,
-  4,
-) as any as S.Schema<UpdateStandardsControlRequest>;
 export interface UpdateStandardsControlResponse {}
-const UpdateStandardsControlResponse =
-  AcceptInvitationResponse as any as S.Schema<UpdateStandardsControlResponse>;
 export type AcceptAdministratorInvitationError =
   | InternalException
   | InvalidAccessException
@@ -11565,8 +7699,8 @@ export const acceptAdministratorInvitation: API.OperationMethod<
   AcceptAdministratorInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptAdministratorInvitationRequest,
-  output: AcceptAdministratorInvitationResponse,
+  input: __S(0) as any as S.Schema<AcceptAdministratorInvitationRequest>,
+  output: __S(1) as any as S.Schema<AcceptAdministratorInvitationResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -11606,8 +7740,8 @@ export const acceptInvitation: API.OperationMethod<
   AcceptInvitationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcceptInvitationRequest,
-  output: AcceptInvitationResponse,
+  input: __S(2) as any as S.Schema<AcceptInvitationRequest>,
+  output: __S(3) as any as S.Schema<AcceptInvitationResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -11636,8 +7770,8 @@ export const batchDeleteAutomationRules: API.OperationMethod<
   BatchDeleteAutomationRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchDeleteAutomationRulesRequest,
-  output: BatchDeleteAutomationRulesResponse,
+  input: __S(5) as any as S.Schema<BatchDeleteAutomationRulesRequest>,
+  output: __S(8) as any as S.Schema<BatchDeleteAutomationRulesResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -11670,8 +7804,8 @@ export const batchDisableStandards: API.OperationMethod<
   BatchDisableStandardsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchDisableStandardsRequest,
-  output: BatchDisableStandardsResponse,
+  input: __S(9) as any as S.Schema<BatchDisableStandardsRequest>,
+  output: __S(14) as any as S.Schema<BatchDisableStandardsResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -11705,8 +7839,8 @@ export const batchEnableStandards: API.OperationMethod<
   BatchEnableStandardsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchEnableStandardsRequest,
-  output: BatchEnableStandardsResponse,
+  input: __S(17) as any as S.Schema<BatchEnableStandardsRequest>,
+  output: __S(14) as any as S.Schema<BatchEnableStandardsResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -11737,8 +7871,8 @@ export const batchGetAutomationRules: API.OperationMethod<
   BatchGetAutomationRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetAutomationRulesRequest,
-  output: BatchGetAutomationRulesResponse,
+  input: __S(18) as any as S.Schema<BatchGetAutomationRulesRequest>,
+  output: __S(40) as any as S.Schema<BatchGetAutomationRulesResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -11771,8 +7905,8 @@ export const batchGetConfigurationPolicyAssociations: API.OperationMethod<
   BatchGetConfigurationPolicyAssociationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetConfigurationPolicyAssociationsRequest,
-  output: BatchGetConfigurationPolicyAssociationsResponse,
+  input: __S(44) as any as S.Schema<BatchGetConfigurationPolicyAssociationsRequest>,
+  output: __S(49) as any as S.Schema<BatchGetConfigurationPolicyAssociationsResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -11801,8 +7935,8 @@ export const batchGetSecurityControls: API.OperationMethod<
   BatchGetSecurityControlsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetSecurityControlsRequest,
-  output: BatchGetSecurityControlsResponse,
+  input: __S(50) as any as S.Schema<BatchGetSecurityControlsRequest>,
+  output: __S(59) as any as S.Schema<BatchGetSecurityControlsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -11831,8 +7965,8 @@ export const batchGetStandardsControlAssociations: API.OperationMethod<
   BatchGetStandardsControlAssociationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchGetStandardsControlAssociationsRequest,
-  output: BatchGetStandardsControlAssociationsResponse,
+  input: __S(62) as any as S.Schema<BatchGetStandardsControlAssociationsRequest>,
+  output: __S(67) as any as S.Schema<BatchGetStandardsControlAssociationsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -11902,8 +8036,8 @@ export const batchImportFindings: API.OperationMethod<
   BatchImportFindingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchImportFindingsRequest,
-  output: BatchImportFindingsResponse,
+  input: __S(814) as any as S.Schema<BatchImportFindingsRequest>,
+  output: __S(817) as any as S.Schema<BatchImportFindingsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -11932,8 +8066,8 @@ export const batchUpdateAutomationRules: API.OperationMethod<
   BatchUpdateAutomationRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateAutomationRulesRequest,
-  output: BatchUpdateAutomationRulesResponse,
+  input: __S(820) as any as S.Schema<BatchUpdateAutomationRulesRequest>,
+  output: __S(8) as any as S.Schema<BatchUpdateAutomationRulesResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -11990,8 +8124,8 @@ export const batchUpdateFindings: API.OperationMethod<
   BatchUpdateFindingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateFindingsRequest,
-  output: BatchUpdateFindingsResponse,
+  input: __S(823) as any as S.Schema<BatchUpdateFindingsRequest>,
+  output: __S(826) as any as S.Schema<BatchUpdateFindingsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -12028,8 +8162,8 @@ export const batchUpdateFindingsV2: API.OperationMethod<
   BatchUpdateFindingsV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateFindingsV2Request,
-  output: BatchUpdateFindingsV2Response,
+  input: __S(829) as any as S.Schema<BatchUpdateFindingsV2Request>,
+  output: __S(834) as any as S.Schema<BatchUpdateFindingsV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -12058,8 +8192,8 @@ export const batchUpdateStandardsControlAssociations: API.OperationMethod<
   BatchUpdateStandardsControlAssociationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateStandardsControlAssociationsRequest,
-  output: BatchUpdateStandardsControlAssociationsResponse,
+  input: __S(837) as any as S.Schema<BatchUpdateStandardsControlAssociationsRequest>,
+  output: __S(840) as any as S.Schema<BatchUpdateStandardsControlAssociationsResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -12091,8 +8225,8 @@ export const createActionTarget: API.OperationMethod<
   CreateActionTargetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateActionTargetRequest,
-  output: CreateActionTargetResponse,
+  input: __S(841) as any as S.Schema<CreateActionTargetRequest>,
+  output: __S(842) as any as S.Schema<CreateActionTargetResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -12123,8 +8257,8 @@ export const createAggregatorV2: API.OperationMethod<
   CreateAggregatorV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAggregatorV2Request,
-  output: CreateAggregatorV2Response,
+  input: __S(843) as any as S.Schema<CreateAggregatorV2Request>,
+  output: __S(844) as any as S.Schema<CreateAggregatorV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -12155,8 +8289,8 @@ export const createAutomationRule: API.OperationMethod<
   CreateAutomationRuleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAutomationRuleRequest,
-  output: CreateAutomationRuleResponse,
+  input: __S(845) as any as S.Schema<CreateAutomationRuleRequest>,
+  output: __S(846) as any as S.Schema<CreateAutomationRuleResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -12186,8 +8320,8 @@ export const createAutomationRuleV2: API.OperationMethod<
   CreateAutomationRuleV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAutomationRuleV2Request,
-  output: CreateAutomationRuleV2Response,
+  input: __S(869) as any as S.Schema<CreateAutomationRuleV2Request>,
+  output: __S(870) as any as S.Schema<CreateAutomationRuleV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -12219,8 +8353,8 @@ export const createConfigurationPolicy: API.OperationMethod<
   CreateConfigurationPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConfigurationPolicyRequest,
-  output: CreateConfigurationPolicyResponse,
+  input: __S(876) as any as S.Schema<CreateConfigurationPolicyRequest>,
+  output: __S(877) as any as S.Schema<CreateConfigurationPolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -12253,8 +8387,8 @@ export const createConnector: API.OperationMethod<
   CreateConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConnectorRequest,
-  output: CreateConnectorResponse,
+  input: __S(881) as any as S.Schema<CreateConnectorRequest>,
+  output: __S(882) as any as S.Schema<CreateConnectorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -12288,8 +8422,8 @@ export const createConnectorV2: API.OperationMethod<
   CreateConnectorV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConnectorV2Request,
-  output: CreateConnectorV2Response,
+  input: __S(886) as any as S.Schema<CreateConnectorV2Request>,
+  output: __S(887) as any as S.Schema<CreateConnectorV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -12324,8 +8458,8 @@ export const createFindingAggregator: API.OperationMethod<
   CreateFindingAggregatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFindingAggregatorRequest,
-  output: CreateFindingAggregatorResponse,
+  input: __S(888) as any as S.Schema<CreateFindingAggregatorRequest>,
+  output: __S(889) as any as S.Schema<CreateFindingAggregatorResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -12358,8 +8492,8 @@ export const createInsight: API.OperationMethod<
   CreateInsightError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInsightRequest,
-  output: CreateInsightResponse,
+  input: __S(895) as any as S.Schema<CreateInsightRequest>,
+  output: __S(896) as any as S.Schema<CreateInsightResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -12421,8 +8555,8 @@ export const createMembers: API.OperationMethod<
   CreateMembersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMembersRequest,
-  output: CreateMembersResponse,
+  input: __S(899) as any as S.Schema<CreateMembersRequest>,
+  output: __S(902) as any as S.Schema<CreateMembersResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -12453,8 +8587,8 @@ export const createTicketV2: API.OperationMethod<
   CreateTicketV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTicketV2Request,
-  output: CreateTicketV2Response,
+  input: __S(903) as any as S.Schema<CreateTicketV2Request>,
+  output: __S(904) as any as S.Schema<CreateTicketV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -12492,8 +8626,8 @@ export const declineInvitations: API.OperationMethod<
   DeclineInvitationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeclineInvitationsRequest,
-  output: DeclineInvitationsResponse,
+  input: __S(905) as any as S.Schema<DeclineInvitationsRequest>,
+  output: __S(906) as any as S.Schema<DeclineInvitationsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -12523,8 +8657,8 @@ export const deleteActionTarget: API.OperationMethod<
   DeleteActionTargetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteActionTargetRequest,
-  output: DeleteActionTargetResponse,
+  input: __S(907) as any as S.Schema<DeleteActionTargetRequest>,
+  output: __S(842) as any as S.Schema<DeleteActionTargetResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -12553,8 +8687,8 @@ export const deleteAggregatorV2: API.OperationMethod<
   DeleteAggregatorV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAggregatorV2Request,
-  output: DeleteAggregatorV2Response,
+  input: __S(908) as any as S.Schema<DeleteAggregatorV2Request>,
+  output: __S(3) as any as S.Schema<DeleteAggregatorV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -12585,8 +8719,8 @@ export const deleteAutomationRuleV2: API.OperationMethod<
   DeleteAutomationRuleV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAutomationRuleV2Request,
-  output: DeleteAutomationRuleV2Response,
+  input: __S(909) as any as S.Schema<DeleteAutomationRuleV2Request>,
+  output: __S(3) as any as S.Schema<DeleteAutomationRuleV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -12620,8 +8754,8 @@ export const deleteConfigurationPolicy: API.OperationMethod<
   DeleteConfigurationPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConfigurationPolicyRequest,
-  output: DeleteConfigurationPolicyResponse,
+  input: __S(910) as any as S.Schema<DeleteConfigurationPolicyRequest>,
+  output: __S(1) as any as S.Schema<DeleteConfigurationPolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -12654,8 +8788,8 @@ export const deleteConnector: API.OperationMethod<
   DeleteConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConnectorRequest,
-  output: DeleteConnectorResponse,
+  input: __S(911) as any as S.Schema<DeleteConnectorRequest>,
+  output: __S(912) as any as S.Schema<DeleteConnectorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -12687,8 +8821,8 @@ export const deleteConnectorV2: API.OperationMethod<
   DeleteConnectorV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConnectorV2Request,
-  output: DeleteConnectorV2Response,
+  input: __S(913) as any as S.Schema<DeleteConnectorV2Request>,
+  output: __S(914) as any as S.Schema<DeleteConnectorV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -12725,8 +8859,8 @@ export const deleteFindingAggregator: API.OperationMethod<
   DeleteFindingAggregatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFindingAggregatorRequest,
-  output: DeleteFindingAggregatorResponse,
+  input: __S(915) as any as S.Schema<DeleteFindingAggregatorRequest>,
+  output: __S(916) as any as S.Schema<DeleteFindingAggregatorResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -12756,8 +8890,8 @@ export const deleteInsight: API.OperationMethod<
   DeleteInsightError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInsightRequest,
-  output: DeleteInsightResponse,
+  input: __S(917) as any as S.Schema<DeleteInsightRequest>,
+  output: __S(896) as any as S.Schema<DeleteInsightResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -12795,8 +8929,8 @@ export const deleteInvitations: API.OperationMethod<
   DeleteInvitationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInvitationsRequest,
-  output: DeleteInvitationsResponse,
+  input: __S(918) as any as S.Schema<DeleteInvitationsRequest>,
+  output: __S(906) as any as S.Schema<DeleteInvitationsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -12828,8 +8962,8 @@ export const deleteMembers: API.OperationMethod<
   DeleteMembersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMembersRequest,
-  output: DeleteMembersResponse,
+  input: __S(919) as any as S.Schema<DeleteMembersRequest>,
+  output: __S(902) as any as S.Schema<DeleteMembersResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -12858,8 +8992,8 @@ export const describeActionTargets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ActionTarget
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeActionTargetsRequest,
-  output: DescribeActionTargetsResponse,
+  input: __S(920) as any as S.Schema<DescribeActionTargetsRequest>,
+  output: __S(923) as any as S.Schema<DescribeActionTargetsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -12894,8 +9028,8 @@ export const describeHub: API.OperationMethod<
   DescribeHubError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeHubRequest,
-  output: DescribeHubResponse,
+  input: __S(924) as any as S.Schema<DescribeHubRequest>,
+  output: __S(925) as any as S.Schema<DescribeHubResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -12924,8 +9058,8 @@ export const describeOrganizationConfiguration: API.OperationMethod<
   DescribeOrganizationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeOrganizationConfigurationRequest,
-  output: DescribeOrganizationConfigurationResponse,
+  input: __S(926) as any as S.Schema<DescribeOrganizationConfigurationRequest>,
+  output: __S(928) as any as S.Schema<DescribeOrganizationConfigurationResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -12959,8 +9093,8 @@ export const describeProducts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Product
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeProductsRequest,
-  output: DescribeProductsResponse,
+  input: __S(929) as any as S.Schema<DescribeProductsRequest>,
+  output: __S(933) as any as S.Schema<DescribeProductsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -12995,8 +9129,8 @@ export const describeProductsV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProductV2
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeProductsV2Request,
-  output: DescribeProductsV2Response,
+  input: __S(934) as any as S.Schema<DescribeProductsV2Request>,
+  output: __S(937) as any as S.Schema<DescribeProductsV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -13030,8 +9164,8 @@ export const describeSecurityHubV2: API.OperationMethod<
   DescribeSecurityHubV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DescribeSecurityHubV2Request,
-  output: DescribeSecurityHubV2Response,
+  input: __S(938) as any as S.Schema<DescribeSecurityHubV2Request>,
+  output: __S(941) as any as S.Schema<DescribeSecurityHubV2Response>,
   errors: [
     InternalServerException,
     ResourceNotFoundException,
@@ -13060,8 +9194,8 @@ export const describeStandards: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Standard
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeStandardsRequest,
-  output: DescribeStandardsResponse,
+  input: __S(942) as any as S.Schema<DescribeStandardsRequest>,
+  output: __S(946) as any as S.Schema<DescribeStandardsResponse>,
   errors: [InternalException, InvalidAccessException, InvalidInputException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -13095,8 +9229,8 @@ export const describeStandardsControls: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StandardsControl
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: DescribeStandardsControlsRequest,
-  output: DescribeStandardsControlsResponse,
+  input: __S(947) as any as S.Schema<DescribeStandardsControlsRequest>,
+  output: __S(950) as any as S.Schema<DescribeStandardsControlsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -13131,8 +9265,8 @@ export const disableImportFindingsForProduct: API.OperationMethod<
   DisableImportFindingsForProductError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableImportFindingsForProductRequest,
-  output: DisableImportFindingsForProductResponse,
+  input: __S(951) as any as S.Schema<DisableImportFindingsForProductRequest>,
+  output: __S(1) as any as S.Schema<DisableImportFindingsForProductResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -13162,8 +9296,8 @@ export const disableOrganizationAdminAccount: API.OperationMethod<
   DisableOrganizationAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableOrganizationAdminAccountRequest,
-  output: DisableOrganizationAdminAccountResponse,
+  input: __S(952) as any as S.Schema<DisableOrganizationAdminAccountRequest>,
+  output: __S(1) as any as S.Schema<DisableOrganizationAdminAccountResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -13202,8 +9336,8 @@ export const disableSecurityHub: API.OperationMethod<
   DisableSecurityHubError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableSecurityHubRequest,
-  output: DisableSecurityHubResponse,
+  input: __S(953) as any as S.Schema<DisableSecurityHubRequest>,
+  output: __S(3) as any as S.Schema<DisableSecurityHubResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -13232,8 +9366,8 @@ export const disableSecurityHubFeatureV2: API.OperationMethod<
   DisableSecurityHubFeatureV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableSecurityHubFeatureV2Request,
-  output: DisableSecurityHubFeatureV2Response,
+  input: __S(954) as any as S.Schema<DisableSecurityHubFeatureV2Request>,
+  output: __S(1) as any as S.Schema<DisableSecurityHubFeatureV2Response>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -13261,8 +9395,8 @@ export const disableSecurityHubV2: API.OperationMethod<
   DisableSecurityHubV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableSecurityHubV2Request,
-  output: DisableSecurityHubV2Response,
+  input: __S(955) as any as S.Schema<DisableSecurityHubV2Request>,
+  output: __S(3) as any as S.Schema<DisableSecurityHubV2Response>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -13295,8 +9429,8 @@ export const disassociateFromAdministratorAccount: API.OperationMethod<
   DisassociateFromAdministratorAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateFromAdministratorAccountRequest,
-  output: DisassociateFromAdministratorAccountResponse,
+  input: __S(956) as any as S.Schema<DisassociateFromAdministratorAccountRequest>,
+  output: __S(1) as any as S.Schema<DisassociateFromAdministratorAccountResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -13334,8 +9468,8 @@ export const disassociateFromMasterAccount: API.OperationMethod<
   DisassociateFromMasterAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateFromMasterAccountRequest,
-  output: DisassociateFromMasterAccountResponse,
+  input: __S(957) as any as S.Schema<DisassociateFromMasterAccountRequest>,
+  output: __S(1) as any as S.Schema<DisassociateFromMasterAccountResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -13368,8 +9502,8 @@ export const disassociateMembers: API.OperationMethod<
   DisassociateMembersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateMembersRequest,
-  output: DisassociateMembersResponse,
+  input: __S(958) as any as S.Schema<DisassociateMembersRequest>,
+  output: __S(3) as any as S.Schema<DisassociateMembersResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -13403,8 +9537,8 @@ export const enableImportFindingsForProduct: API.OperationMethod<
   EnableImportFindingsForProductError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableImportFindingsForProductRequest,
-  output: EnableImportFindingsForProductResponse,
+  input: __S(959) as any as S.Schema<EnableImportFindingsForProductRequest>,
+  output: __S(960) as any as S.Schema<EnableImportFindingsForProductResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -13434,8 +9568,8 @@ export const enableOrganizationAdminAccount: API.OperationMethod<
   EnableOrganizationAdminAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableOrganizationAdminAccountRequest,
-  output: EnableOrganizationAdminAccountResponse,
+  input: __S(961) as any as S.Schema<EnableOrganizationAdminAccountRequest>,
+  output: __S(962) as any as S.Schema<EnableOrganizationAdminAccountResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -13485,8 +9619,8 @@ export const enableSecurityHub: API.OperationMethod<
   EnableSecurityHubError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableSecurityHubRequest,
-  output: EnableSecurityHubResponse,
+  input: __S(963) as any as S.Schema<EnableSecurityHubRequest>,
+  output: __S(3) as any as S.Schema<EnableSecurityHubResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -13515,8 +9649,8 @@ export const enableSecurityHubFeatureV2: API.OperationMethod<
   EnableSecurityHubFeatureV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableSecurityHubFeatureV2Request,
-  output: EnableSecurityHubFeatureV2Response,
+  input: __S(964) as any as S.Schema<EnableSecurityHubFeatureV2Request>,
+  output: __S(1) as any as S.Schema<EnableSecurityHubFeatureV2Response>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -13544,8 +9678,8 @@ export const enableSecurityHubV2: API.OperationMethod<
   EnableSecurityHubV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableSecurityHubV2Request,
-  output: EnableSecurityHubV2Response,
+  input: __S(965) as any as S.Schema<EnableSecurityHubV2Request>,
+  output: __S(966) as any as S.Schema<EnableSecurityHubV2Response>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -13575,8 +9709,8 @@ export const generateRecommendedPolicyV2: API.OperationMethod<
   GenerateRecommendedPolicyV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateRecommendedPolicyV2Request,
-  output: GenerateRecommendedPolicyV2Response,
+  input: __S(967) as any as S.Schema<GenerateRecommendedPolicyV2Request>,
+  output: __S(1) as any as S.Schema<GenerateRecommendedPolicyV2Response>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -13609,8 +9743,8 @@ export const getAdministratorAccount: API.OperationMethod<
   GetAdministratorAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAdministratorAccountRequest,
-  output: GetAdministratorAccountResponse,
+  input: __S(968) as any as S.Schema<GetAdministratorAccountRequest>,
+  output: __S(970) as any as S.Schema<GetAdministratorAccountResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -13640,8 +9774,8 @@ export const getAggregatorV2: API.OperationMethod<
   GetAggregatorV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAggregatorV2Request,
-  output: GetAggregatorV2Response,
+  input: __S(971) as any as S.Schema<GetAggregatorV2Request>,
+  output: __S(972) as any as S.Schema<GetAggregatorV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -13672,8 +9806,8 @@ export const getAutomationRuleV2: API.OperationMethod<
   GetAutomationRuleV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutomationRuleV2Request,
-  output: GetAutomationRuleV2Response,
+  input: __S(973) as any as S.Schema<GetAutomationRuleV2Request>,
+  output: __S(974) as any as S.Schema<GetAutomationRuleV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -13705,8 +9839,8 @@ export const getConfigurationPolicy: API.OperationMethod<
   GetConfigurationPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationPolicyRequest,
-  output: GetConfigurationPolicyResponse,
+  input: __S(975) as any as S.Schema<GetConfigurationPolicyRequest>,
+  output: __S(877) as any as S.Schema<GetConfigurationPolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -13739,8 +9873,8 @@ export const getConfigurationPolicyAssociation: API.OperationMethod<
   GetConfigurationPolicyAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConfigurationPolicyAssociationRequest,
-  output: GetConfigurationPolicyAssociationResponse,
+  input: __S(976) as any as S.Schema<GetConfigurationPolicyAssociationRequest>,
+  output: __S(45) as any as S.Schema<GetConfigurationPolicyAssociationResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -13772,8 +9906,8 @@ export const getConnector: API.OperationMethod<
   GetConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectorRequest,
-  output: GetConnectorResponse,
+  input: __S(977) as any as S.Schema<GetConnectorRequest>,
+  output: __S(983) as any as S.Schema<GetConnectorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -13805,8 +9939,8 @@ export const getConnectorV2: API.OperationMethod<
   GetConnectorV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectorV2Request,
-  output: GetConnectorV2Response,
+  input: __S(984) as any as S.Schema<GetConnectorV2Request>,
+  output: __S(988) as any as S.Schema<GetConnectorV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -13836,8 +9970,8 @@ export const getEnabledStandards: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StandardsSubscription
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetEnabledStandardsRequest,
-  output: GetEnabledStandardsResponse,
+  input: __S(989) as any as S.Schema<GetEnabledStandardsRequest>,
+  output: __S(990) as any as S.Schema<GetEnabledStandardsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -13875,8 +10009,8 @@ export const getFindingAggregator: API.OperationMethod<
   GetFindingAggregatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFindingAggregatorRequest,
-  output: GetFindingAggregatorResponse,
+  input: __S(991) as any as S.Schema<GetFindingAggregatorRequest>,
+  output: __S(889) as any as S.Schema<GetFindingAggregatorResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -13914,8 +10048,8 @@ export const getFindingHistory: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FindingHistoryRecord
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetFindingHistoryRequest,
-  output: GetFindingHistoryResponse,
+  input: __S(992) as any as S.Schema<GetFindingHistoryRequest>,
+  output: __S(998) as any as S.Schema<GetFindingHistoryResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -13951,8 +10085,8 @@ export const getFindings: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AwsSecurityFinding
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetFindingsRequest,
-  output: GetFindingsResponse,
+  input: __S(1001) as any as S.Schema<GetFindingsRequest>,
+  output: __S(1002) as any as S.Schema<GetFindingsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -13993,8 +10127,8 @@ export const getFindingStatisticsV2: API.OperationMethod<
   GetFindingStatisticsV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFindingStatisticsV2Request,
-  output: GetFindingStatisticsV2Response,
+  input: __S(1008) as any as S.Schema<GetFindingStatisticsV2Request>,
+  output: __S(1013) as any as S.Schema<GetFindingStatisticsV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -14025,8 +10159,8 @@ export const getFindingsTrendsV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   TrendsMetricsResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetFindingsTrendsV2Request,
-  output: GetFindingsTrendsV2Response,
+  input: __S(1019) as any as S.Schema<GetFindingsTrendsV2Request>,
+  output: __S(1024) as any as S.Schema<GetFindingsTrendsV2Response>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -14070,8 +10204,8 @@ export const getFindingsV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   unknown
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetFindingsV2Request,
-  output: GetFindingsV2Response,
+  input: __S(1025) as any as S.Schema<GetFindingsV2Request>,
+  output: __S(1027) as any as S.Schema<GetFindingsV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -14108,8 +10242,8 @@ export const getInsightResults: API.OperationMethod<
   GetInsightResultsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInsightResultsRequest,
-  output: GetInsightResultsResponse,
+  input: __S(1028) as any as S.Schema<GetInsightResultsRequest>,
+  output: __S(1032) as any as S.Schema<GetInsightResultsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -14139,8 +10273,8 @@ export const getInsights: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Insight
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetInsightsRequest,
-  output: GetInsightsResponse,
+  input: __S(1033) as any as S.Schema<GetInsightsRequest>,
+  output: __S(1036) as any as S.Schema<GetInsightsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -14179,8 +10313,8 @@ export const getInvitationsCount: API.OperationMethod<
   GetInvitationsCountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInvitationsCountRequest,
-  output: GetInvitationsCountResponse,
+  input: __S(1037) as any as S.Schema<GetInvitationsCountRequest>,
+  output: __S(1038) as any as S.Schema<GetInvitationsCountResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -14215,8 +10349,8 @@ export const getMasterAccount: API.OperationMethod<
   GetMasterAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMasterAccountRequest,
-  output: GetMasterAccountResponse,
+  input: __S(1039) as any as S.Schema<GetMasterAccountRequest>,
+  output: __S(1040) as any as S.Schema<GetMasterAccountResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -14251,8 +10385,8 @@ export const getMembers: API.OperationMethod<
   GetMembersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMembersRequest,
-  output: GetMembersResponse,
+  input: __S(1041) as any as S.Schema<GetMembersRequest>,
+  output: __S(1044) as any as S.Schema<GetMembersResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -14284,8 +10418,8 @@ export const getRecommendedPolicyV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RecommendationStep
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetRecommendedPolicyV2Request,
-  output: GetRecommendedPolicyV2Response,
+  input: __S(1045) as any as S.Schema<GetRecommendedPolicyV2Request>,
+  output: __S(1050) as any as S.Schema<GetRecommendedPolicyV2Response>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -14325,8 +10459,8 @@ export const getRemediationsV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   RemediationV2Item
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetRemediationsV2Request,
-  output: GetRemediationsV2Response,
+  input: __S(1056) as any as S.Schema<GetRemediationsV2Request>,
+  output: __S(1074) as any as S.Schema<GetRemediationsV2Response>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -14368,8 +10502,8 @@ export const getResourcesStatisticsV2: API.OperationMethod<
   GetResourcesStatisticsV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourcesStatisticsV2Request,
-  output: GetResourcesStatisticsV2Response,
+  input: __S(1080) as any as S.Schema<GetResourcesStatisticsV2Request>,
+  output: __S(1013) as any as S.Schema<GetResourcesStatisticsV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -14401,8 +10535,8 @@ export const getResourcesTrendsV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourcesTrendsMetricsResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetResourcesTrendsV2Request,
-  output: GetResourcesTrendsV2Response,
+  input: __S(1084) as any as S.Schema<GetResourcesTrendsV2Request>,
+  output: __S(1089) as any as S.Schema<GetResourcesTrendsV2Response>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -14448,8 +10582,8 @@ export const getResourcesV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ResourceResult
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetResourcesV2Request,
-  output: GetResourcesV2Response,
+  input: __S(1090) as any as S.Schema<GetResourcesV2Request>,
+  output: __S(1100) as any as S.Schema<GetResourcesV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -14487,8 +10621,8 @@ export const getSecurityControlDefinition: API.OperationMethod<
   GetSecurityControlDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSecurityControlDefinitionRequest,
-  output: GetSecurityControlDefinitionResponse,
+  input: __S(1101) as any as S.Schema<GetSecurityControlDefinitionRequest>,
+  output: __S(1113) as any as S.Schema<GetSecurityControlDefinitionResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -14530,8 +10664,8 @@ export const inviteMembers: API.OperationMethod<
   InviteMembersError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: InviteMembersRequest,
-  output: InviteMembersResponse,
+  input: __S(1114) as any as S.Schema<InviteMembersRequest>,
+  output: __S(902) as any as S.Schema<InviteMembersResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -14562,8 +10696,8 @@ export const listAggregatorsV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AggregatorV2
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAggregatorsV2Request,
-  output: ListAggregatorsV2Response,
+  input: __S(1115) as any as S.Schema<ListAggregatorsV2Request>,
+  output: __S(1118) as any as S.Schema<ListAggregatorsV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -14599,8 +10733,8 @@ export const listAutomationRules: API.OperationMethod<
   ListAutomationRulesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAutomationRulesRequest,
-  output: ListAutomationRulesResponse,
+  input: __S(1119) as any as S.Schema<ListAutomationRulesRequest>,
+  output: __S(1122) as any as S.Schema<ListAutomationRulesResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -14629,8 +10763,8 @@ export const listAutomationRulesV2: API.OperationMethod<
   ListAutomationRulesV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAutomationRulesV2Request,
-  output: ListAutomationRulesV2Response,
+  input: __S(1123) as any as S.Schema<ListAutomationRulesV2Request>,
+  output: __S(1128) as any as S.Schema<ListAutomationRulesV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -14661,8 +10795,8 @@ export const listConfigurationPolicies: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfigurationPolicySummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListConfigurationPoliciesRequest,
-  output: ListConfigurationPoliciesResponse,
+  input: __S(1129) as any as S.Schema<ListConfigurationPoliciesRequest>,
+  output: __S(1132) as any as S.Schema<ListConfigurationPoliciesResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -14699,8 +10833,8 @@ export const listConfigurationPolicyAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ConfigurationPolicyAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListConfigurationPolicyAssociationsRequest,
-  output: ListConfigurationPolicyAssociationsResponse,
+  input: __S(1134) as any as S.Schema<ListConfigurationPolicyAssociationsRequest>,
+  output: __S(1135) as any as S.Schema<ListConfigurationPolicyAssociationsResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -14737,8 +10871,8 @@ export const listConnectors: API.OperationMethod<
   ListConnectorsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConnectorsRequest,
-  output: ListConnectorsResponse,
+  input: __S(1136) as any as S.Schema<ListConnectorsRequest>,
+  output: __S(1140) as any as S.Schema<ListConnectorsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -14770,8 +10904,8 @@ export const listConnectorsV2: API.OperationMethod<
   ListConnectorsV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConnectorsV2Request,
-  output: ListConnectorsV2Response,
+  input: __S(1141) as any as S.Schema<ListConnectorsV2Request>,
+  output: __S(1145) as any as S.Schema<ListConnectorsV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -14801,8 +10935,8 @@ export const listEnabledProductsForImport: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NonEmptyString
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEnabledProductsForImportRequest,
-  output: ListEnabledProductsForImportResponse,
+  input: __S(1146) as any as S.Schema<ListEnabledProductsForImportRequest>,
+  output: __S(1147) as any as S.Schema<ListEnabledProductsForImportResponse>,
   errors: [InternalException, InvalidAccessException, LimitExceededException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -14833,8 +10967,8 @@ export const listExposuresByRemediationV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ExposureFinding
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListExposuresByRemediationV2Request,
-  output: ListExposuresByRemediationV2Response,
+  input: __S(1148) as any as S.Schema<ListExposuresByRemediationV2Request>,
+  output: __S(1151) as any as S.Schema<ListExposuresByRemediationV2Response>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -14871,8 +11005,8 @@ export const listFindingAggregators: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FindingAggregator
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFindingAggregatorsRequest,
-  output: ListFindingAggregatorsResponse,
+  input: __S(1152) as any as S.Schema<ListFindingAggregatorsRequest>,
+  output: __S(1155) as any as S.Schema<ListFindingAggregatorsResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -14908,8 +11042,8 @@ export const listFreeTrialStatusesV2: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AccountFreeTrialStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFreeTrialStatusesV2Request,
-  output: ListFreeTrialStatusesV2Response,
+  input: __S(1156) as any as S.Schema<ListFreeTrialStatusesV2Request>,
+  output: __S(1161) as any as S.Schema<ListFreeTrialStatusesV2Response>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -14951,8 +11085,8 @@ export const listInvitations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Invitation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListInvitationsRequest,
-  output: ListInvitationsResponse,
+  input: __S(1162) as any as S.Schema<ListInvitationsRequest>,
+  output: __S(1164) as any as S.Schema<ListInvitationsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -14990,8 +11124,8 @@ export const listMembers: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Member
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListMembersRequest,
-  output: ListMembersResponse,
+  input: __S(1165) as any as S.Schema<ListMembersRequest>,
+  output: __S(1166) as any as S.Schema<ListMembersResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -15026,8 +11160,8 @@ export const listOrganizationAdminAccounts: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   AdminAccount
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListOrganizationAdminAccountsRequest,
-  output: ListOrganizationAdminAccountsResponse,
+  input: __S(1167) as any as S.Schema<ListOrganizationAdminAccountsRequest>,
+  output: __S(1170) as any as S.Schema<ListOrganizationAdminAccountsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -15061,8 +11195,8 @@ export const listSecurityControlDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SecurityControlDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSecurityControlDefinitionsRequest,
-  output: ListSecurityControlDefinitionsResponse,
+  input: __S(1171) as any as S.Schema<ListSecurityControlDefinitionsRequest>,
+  output: __S(1173) as any as S.Schema<ListSecurityControlDefinitionsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -15098,8 +11232,8 @@ export const listStandardsControlAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StandardsControlAssociationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListStandardsControlAssociationsRequest,
-  output: ListStandardsControlAssociationsResponse,
+  input: __S(1174) as any as S.Schema<ListStandardsControlAssociationsRequest>,
+  output: __S(1177) as any as S.Schema<ListStandardsControlAssociationsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -15131,8 +11265,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(1178) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(1179) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -15156,8 +11290,8 @@ export const registerConnectorV2: API.OperationMethod<
   RegisterConnectorV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterConnectorV2Request,
-  output: RegisterConnectorV2Response,
+  input: __S(1180) as any as S.Schema<RegisterConnectorV2Request>,
+  output: __S(1181) as any as S.Schema<RegisterConnectorV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -15190,8 +11324,8 @@ export const startConfigurationPolicyAssociation: API.OperationMethod<
   StartConfigurationPolicyAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartConfigurationPolicyAssociationRequest,
-  output: StartConfigurationPolicyAssociationResponse,
+  input: __S(1182) as any as S.Schema<StartConfigurationPolicyAssociationRequest>,
+  output: __S(45) as any as S.Schema<StartConfigurationPolicyAssociationResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -15226,8 +11360,8 @@ export const startConfigurationPolicyDisassociation: API.OperationMethod<
   StartConfigurationPolicyDisassociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartConfigurationPolicyDisassociationRequest,
-  output: StartConfigurationPolicyDisassociationResponse,
+  input: __S(1183) as any as S.Schema<StartConfigurationPolicyDisassociationRequest>,
+  output: __S(1) as any as S.Schema<StartConfigurationPolicyDisassociationResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -15255,8 +11389,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(1184) as any as S.Schema<TagResourceRequest>,
+  output: __S(3) as any as S.Schema<TagResourceResponse>,
   errors: [InternalException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -15277,8 +11411,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(1185) as any as S.Schema<UntagResourceRequest>,
+  output: __S(3) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalException, InvalidInputException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -15300,8 +11434,8 @@ export const updateActionTarget: API.OperationMethod<
   UpdateActionTargetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateActionTargetRequest,
-  output: UpdateActionTargetResponse,
+  input: __S(1186) as any as S.Schema<UpdateActionTargetRequest>,
+  output: __S(3) as any as S.Schema<UpdateActionTargetResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -15330,8 +11464,8 @@ export const updateAggregatorV2: API.OperationMethod<
   UpdateAggregatorV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAggregatorV2Request,
-  output: UpdateAggregatorV2Response,
+  input: __S(1187) as any as S.Schema<UpdateAggregatorV2Request>,
+  output: __S(844) as any as S.Schema<UpdateAggregatorV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -15362,8 +11496,8 @@ export const updateAutomationRuleV2: API.OperationMethod<
   UpdateAutomationRuleV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAutomationRuleV2Request,
-  output: UpdateAutomationRuleV2Response,
+  input: __S(1188) as any as S.Schema<UpdateAutomationRuleV2Request>,
+  output: __S(3) as any as S.Schema<UpdateAutomationRuleV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -15396,8 +11530,8 @@ export const updateConfigurationPolicy: API.OperationMethod<
   UpdateConfigurationPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConfigurationPolicyRequest,
-  output: UpdateConfigurationPolicyResponse,
+  input: __S(1189) as any as S.Schema<UpdateConfigurationPolicyRequest>,
+  output: __S(877) as any as S.Schema<UpdateConfigurationPolicyResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -15430,8 +11564,8 @@ export const updateConnector: API.OperationMethod<
   UpdateConnectorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConnectorRequest,
-  output: UpdateConnectorResponse,
+  input: __S(1192) as any as S.Schema<UpdateConnectorRequest>,
+  output: __S(1193) as any as S.Schema<UpdateConnectorResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -15463,8 +11597,8 @@ export const updateConnectorV2: API.OperationMethod<
   UpdateConnectorV2Error,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConnectorV2Request,
-  output: UpdateConnectorV2Response,
+  input: __S(1196) as any as S.Schema<UpdateConnectorV2Request>,
+  output: __S(1197) as any as S.Schema<UpdateConnectorV2Response>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -15500,8 +11634,8 @@ export const updateFindingAggregator: API.OperationMethod<
   UpdateFindingAggregatorError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFindingAggregatorRequest,
-  output: UpdateFindingAggregatorResponse,
+  input: __S(1198) as any as S.Schema<UpdateFindingAggregatorRequest>,
+  output: __S(889) as any as S.Schema<UpdateFindingAggregatorResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -15540,8 +11674,8 @@ export const updateFindings: API.OperationMethod<
   UpdateFindingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFindingsRequest,
-  output: UpdateFindingsResponse,
+  input: __S(1199) as any as S.Schema<UpdateFindingsRequest>,
+  output: __S(3) as any as S.Schema<UpdateFindingsResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -15570,8 +11704,8 @@ export const updateInsight: API.OperationMethod<
   UpdateInsightError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInsightRequest,
-  output: UpdateInsightResponse,
+  input: __S(1200) as any as S.Schema<UpdateInsightRequest>,
+  output: __S(3) as any as S.Schema<UpdateInsightResponse>,
   errors: [
     InternalException,
     InvalidAccessException,
@@ -15603,8 +11737,8 @@ export const updateOrganizationConfiguration: API.OperationMethod<
   UpdateOrganizationConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateOrganizationConfigurationRequest,
-  output: UpdateOrganizationConfigurationResponse,
+  input: __S(1201) as any as S.Schema<UpdateOrganizationConfigurationRequest>,
+  output: __S(1) as any as S.Schema<UpdateOrganizationConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -15637,8 +11771,8 @@ export const updateSecurityControl: API.OperationMethod<
   UpdateSecurityControlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSecurityControlRequest,
-  output: UpdateSecurityControlResponse,
+  input: __S(1202) as any as S.Schema<UpdateSecurityControlRequest>,
+  output: __S(3) as any as S.Schema<UpdateSecurityControlResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -15670,8 +11804,8 @@ export const updateSecurityHubConfiguration: API.OperationMethod<
   UpdateSecurityHubConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSecurityHubConfigurationRequest,
-  output: UpdateSecurityHubConfigurationResponse,
+  input: __S(1203) as any as S.Schema<UpdateSecurityHubConfigurationRequest>,
+  output: __S(1) as any as S.Schema<UpdateSecurityHubConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -15704,8 +11838,8 @@ export const updateStandardsControl: API.OperationMethod<
   UpdateStandardsControlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStandardsControlRequest,
-  output: UpdateStandardsControlResponse,
+  input: __S(1204) as any as S.Schema<UpdateStandardsControlRequest>,
+  output: __S(3) as any as S.Schema<UpdateStandardsControlResponse>,
   errors: [
     AccessDeniedException,
     InternalException,
@@ -15750,7 +11884,7 @@ function __c0(j: number): any {
       return S.Array(S.String);
     case 5:
       return S.suspend(() =>
-        S.Struct({ AutomationRulesArns: S.optional(AutomationRulesArnsList) }).pipe(
+        S.Struct({ AutomationRulesArns: S.optional(__S(4)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/automationrules/delete" }),
             svc,
@@ -15774,7 +11908,7 @@ function __c0(j: number): any {
         identifier: "UnprocessedAutomationRule",
       });
     case 7:
-      return S.Array(UnprocessedAutomationRule);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -15782,15 +11916,15 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ProcessedAutomationRules: S.optional(AutomationRulesArnsList),
-          UnprocessedAutomationRules: S.optional(UnprocessedAutomationRulesList),
+          ProcessedAutomationRules: S.optional(__S(4)),
+          UnprocessedAutomationRules: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "BatchDeleteAutomationRulesResponse",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ StandardsSubscriptionArns: S.optional(StandardsSubscriptionArns) }).pipe(
+        S.Struct({ StandardsSubscriptionArns: S.optional(__S(4)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/standards/deregister" }),
             svc,
@@ -15806,34 +11940,32 @@ function __c1(j: number): any {
     case 2:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 3:
-      return S.suspend(() => S.Struct({ StatusReasonCode: S.optional(StatusReasonCode) })).annotate(
-        { identifier: "StandardsStatusReason" },
-      );
+      return S.suspend(() => S.Struct({ StatusReasonCode: S.optional(S.String) })).annotate({
+        identifier: "StandardsStatusReason",
+      });
     case 4:
       return S.suspend(() =>
         S.Struct({
           StandardsSubscriptionArn: S.optional(S.String),
           StandardsArn: S.optional(S.String),
-          StandardsInput: S.optional(StandardsInputParameterMap),
-          StandardsStatus: S.optional(StandardsStatus),
-          StandardsControlsUpdatable: S.optional(StandardsControlsUpdatable),
-          StandardsStatusReason: S.optional(StandardsStatusReason),
-          Provider: S.optional(StandardsProvider),
+          StandardsInput: S.optional(__S(10)),
+          StandardsStatus: S.optional(S.String),
+          StandardsControlsUpdatable: S.optional(S.String),
+          StandardsStatusReason: S.optional(__S(11)),
+          Provider: S.optional(S.String),
         }),
       ).annotate({ identifier: "StandardsSubscription" });
     case 5:
-      return S.Array(StandardsSubscription);
+      return S.Array(__S(12));
     case 6:
-      return S.suspend(() =>
-        S.Struct({ StandardsSubscriptions: S.optional(StandardsSubscriptions) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ StandardsSubscriptions: S.optional(__S(13)) })).annotate({
         identifier: "BatchDisableStandardsResponse",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           StandardsArn: S.optional(S.String),
-          StandardsInput: S.optional(StandardsInputParameterMap),
+          StandardsInput: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "StandardsSubscriptionRequest",
@@ -15843,10 +11975,10 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(StandardsSubscriptionRequest);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
-        S.Struct({ StandardsSubscriptionRequests: S.optional(StandardsSubscriptionRequests) }).pipe(
+        S.Struct({ StandardsSubscriptionRequests: S.optional(__S(16)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/standards/register" }),
             svc,
@@ -15861,7 +11993,7 @@ function __c2(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ AutomationRulesArns: S.optional(AutomationRulesArnsList) }).pipe(
+        S.Struct({ AutomationRulesArns: S.optional(__S(4)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/automationrules/get" }),
             svc,
@@ -15876,16 +12008,16 @@ function __c2(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Value: S.optional(S.String), Comparison: S.optional(StringFilterComparison) }),
+        S.Struct({ Value: S.optional(S.String), Comparison: S.optional(S.String) }),
       ).annotate({ identifier: "StringFilter" });
     case 4:
-      return S.Array(StringFilter);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
           Value: S.optional(S.Number),
-          Unit: S.optional(DateRangeUnit),
-          Comparison: S.optional(DateRangeComparison),
+          Unit: S.optional(S.String),
+          Comparison: S.optional(S.String),
         }),
       ).annotate({ identifier: "DateRange" });
     case 6:
@@ -15893,11 +12025,11 @@ function __c2(j: number): any {
         S.Struct({
           Start: S.optional(S.String),
           End: S.optional(S.String),
-          DateRange: S.optional(DateRange),
+          DateRange: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "DateFilter" });
     case 7:
-      return S.Array(DateFilter);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -15913,61 +12045,61 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "NumberFilter" });
     case 1:
-      return S.Array(NumberFilter);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
           Key: S.optional(S.String),
           Value: S.optional(S.String),
-          Comparison: S.optional(MapFilterComparison),
+          Comparison: S.optional(S.String),
         }),
       ).annotate({ identifier: "MapFilter" });
     case 3:
-      return S.Array(MapFilter);
+      return S.Array(__S(26));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ProductArn: S.optional(StringFilterList),
-          AwsAccountId: S.optional(StringFilterList),
-          Id: S.optional(StringFilterList),
-          GeneratorId: S.optional(StringFilterList),
-          Type: S.optional(StringFilterList),
-          FirstObservedAt: S.optional(DateFilterList),
-          LastObservedAt: S.optional(DateFilterList),
-          CreatedAt: S.optional(DateFilterList),
-          UpdatedAt: S.optional(DateFilterList),
-          Confidence: S.optional(NumberFilterList),
-          Criticality: S.optional(NumberFilterList),
-          Title: S.optional(StringFilterList),
-          Description: S.optional(StringFilterList),
-          SourceUrl: S.optional(StringFilterList),
-          ProductName: S.optional(StringFilterList),
-          CompanyName: S.optional(StringFilterList),
-          SeverityLabel: S.optional(StringFilterList),
-          ResourceType: S.optional(StringFilterList),
-          ResourceId: S.optional(StringFilterList),
-          ResourcePartition: S.optional(StringFilterList),
-          ResourceRegion: S.optional(StringFilterList),
-          ResourceTags: S.optional(MapFilterList),
-          ResourceDetailsOther: S.optional(MapFilterList),
-          ComplianceStatus: S.optional(StringFilterList),
-          ComplianceSecurityControlId: S.optional(StringFilterList),
-          ComplianceAssociatedStandardsId: S.optional(StringFilterList),
-          VerificationState: S.optional(StringFilterList),
-          WorkflowStatus: S.optional(StringFilterList),
-          RecordState: S.optional(StringFilterList),
-          RelatedFindingsProductArn: S.optional(StringFilterList),
-          RelatedFindingsId: S.optional(StringFilterList),
-          NoteText: S.optional(StringFilterList),
-          NoteUpdatedAt: S.optional(DateFilterList),
-          NoteUpdatedBy: S.optional(StringFilterList),
-          UserDefinedFields: S.optional(MapFilterList),
-          ResourceApplicationArn: S.optional(StringFilterList),
-          ResourceApplicationName: S.optional(StringFilterList),
-          AwsAccountName: S.optional(StringFilterList),
-          ResourceProvider: S.optional(StringFilterList),
-          ResourceOwnerAccountId: S.optional(StringFilterList),
-          ResourceOwnerOrgId: S.optional(StringFilterList),
+          ProductArn: S.optional(__S(20)),
+          AwsAccountId: S.optional(__S(20)),
+          Id: S.optional(__S(20)),
+          GeneratorId: S.optional(__S(20)),
+          Type: S.optional(__S(20)),
+          FirstObservedAt: S.optional(__S(23)),
+          LastObservedAt: S.optional(__S(23)),
+          CreatedAt: S.optional(__S(23)),
+          UpdatedAt: S.optional(__S(23)),
+          Confidence: S.optional(__S(25)),
+          Criticality: S.optional(__S(25)),
+          Title: S.optional(__S(20)),
+          Description: S.optional(__S(20)),
+          SourceUrl: S.optional(__S(20)),
+          ProductName: S.optional(__S(20)),
+          CompanyName: S.optional(__S(20)),
+          SeverityLabel: S.optional(__S(20)),
+          ResourceType: S.optional(__S(20)),
+          ResourceId: S.optional(__S(20)),
+          ResourcePartition: S.optional(__S(20)),
+          ResourceRegion: S.optional(__S(20)),
+          ResourceTags: S.optional(__S(27)),
+          ResourceDetailsOther: S.optional(__S(27)),
+          ComplianceStatus: S.optional(__S(20)),
+          ComplianceSecurityControlId: S.optional(__S(20)),
+          ComplianceAssociatedStandardsId: S.optional(__S(20)),
+          VerificationState: S.optional(__S(20)),
+          WorkflowStatus: S.optional(__S(20)),
+          RecordState: S.optional(__S(20)),
+          RelatedFindingsProductArn: S.optional(__S(20)),
+          RelatedFindingsId: S.optional(__S(20)),
+          NoteText: S.optional(__S(20)),
+          NoteUpdatedAt: S.optional(__S(23)),
+          NoteUpdatedBy: S.optional(__S(20)),
+          UserDefinedFields: S.optional(__S(27)),
+          ResourceApplicationArn: S.optional(__S(20)),
+          ResourceApplicationName: S.optional(__S(20)),
+          AwsAccountName: S.optional(__S(20)),
+          ResourceProvider: S.optional(__S(20)),
+          ResourceOwnerAccountId: S.optional(__S(20)),
+          ResourceOwnerOrgId: S.optional(__S(20)),
         }),
       ).annotate({
         identifier: "AutomationRulesFindingFilters",
@@ -15981,7 +12113,7 @@ function __c3(j: number): any {
         S.Struct({
           Normalized: S.optional(S.Number),
           Product: S.optional(S.Number),
-          Label: S.optional(SeverityLabel),
+          Label: S.optional(S.String),
         }),
       ).annotate({ identifier: "SeverityUpdate" });
     case 7:
@@ -15991,7 +12123,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Status: S.optional(WorkflowStatus) })).annotate({
+      return S.suspend(() => S.Struct({ Status: S.optional(S.String) })).annotate({
         identifier: "WorkflowUpdate",
       });
     case 1:
@@ -15999,19 +12131,19 @@ function __c4(j: number): any {
         S.Struct({ ProductArn: S.optional(S.String), Id: S.optional(S.String) }),
       ).annotate({ identifier: "RelatedFinding" });
     case 2:
-      return S.Array(RelatedFinding);
+      return S.Array(__S(33));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Note: S.optional(NoteUpdate),
-          Severity: S.optional(SeverityUpdate),
-          VerificationState: S.optional(VerificationState),
+          Note: S.optional(__S(29)),
+          Severity: S.optional(__S(30)),
+          VerificationState: S.optional(S.String),
           Confidence: S.optional(S.Number),
           Criticality: S.optional(S.Number),
-          Types: S.optional(TypeList),
-          UserDefinedFields: S.optional(FieldMap),
-          Workflow: S.optional(WorkflowUpdate),
-          RelatedFindings: S.optional(RelatedFindingList),
+          Types: S.optional(__S(4)),
+          UserDefinedFields: S.optional(__S(31)),
+          Workflow: S.optional(__S(32)),
+          RelatedFindings: S.optional(__S(34)),
         }),
       ).annotate({
         identifier: "AutomationRulesFindingFieldsUpdate",
@@ -16019,30 +12151,30 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(AutomationRulesActionType),
-          FindingFieldsUpdate: S.optional(AutomationRulesFindingFieldsUpdate),
+          Type: S.optional(S.String),
+          FindingFieldsUpdate: S.optional(__S(35)),
         }),
       ).annotate({ identifier: "AutomationRulesAction" });
     case 5:
-      return S.Array(AutomationRulesAction);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
           RuleArn: S.optional(S.String),
-          RuleStatus: S.optional(RuleStatus),
+          RuleStatus: S.optional(S.String),
           RuleOrder: S.optional(S.Number),
           RuleName: S.optional(S.String),
           Description: S.optional(S.String),
           IsTerminal: S.optional(S.Boolean),
-          Criteria: S.optional(AutomationRulesFindingFilters),
-          Actions: S.optional(ActionList),
+          Criteria: S.optional(__S(28)),
+          Actions: S.optional(__S(37)),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           CreatedBy: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutomationRulesConfig" });
     case 7:
-      return S.Array(AutomationRulesConfig);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
@@ -16050,8 +12182,8 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Rules: S.optional(AutomationRulesConfigList),
-          UnprocessedAutomationRules: S.optional(UnprocessedAutomationRulesList),
+          Rules: S.optional(__S(39)),
+          UnprocessedAutomationRules: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "BatchGetAutomationRulesResponse",
@@ -16063,17 +12195,15 @@ function __c5(j: number): any {
         /*@__PURE__*/ S.Struct({ RootId: S.String }),
       ]);
     case 2:
-      return S.suspend(() => S.Struct({ Target: S.optional(Target) })).annotate({
+      return S.suspend(() => S.Struct({ Target: S.optional(__S(41)) })).annotate({
         identifier: "ConfigurationPolicyAssociation",
       });
     case 3:
-      return S.Array(ConfigurationPolicyAssociation);
+      return S.Array(__S(42));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationPolicyAssociationIdentifiers: S.optional(
-            ConfigurationPolicyAssociationsList,
-          ),
+          ConfigurationPolicyAssociationIdentifiers: S.optional(__S(43)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/configurationPolicyAssociation/batchget" }),
@@ -16092,21 +12222,21 @@ function __c5(j: number): any {
         S.Struct({
           ConfigurationPolicyId: S.optional(S.String),
           TargetId: S.optional(S.String),
-          TargetType: S.optional(TargetType),
-          AssociationType: S.optional(AssociationType),
+          TargetType: S.optional(S.String),
+          AssociationType: S.optional(S.String),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          AssociationStatus: S.optional(ConfigurationPolicyAssociationStatus),
+          AssociationStatus: S.optional(S.String),
           AssociationStatusMessage: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ConfigurationPolicyAssociationSummary",
       });
     case 6:
-      return S.Array(ConfigurationPolicyAssociationSummary);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationPolicyAssociationIdentifiers: S.optional(ConfigurationPolicyAssociation),
+          ConfigurationPolicyAssociationIdentifiers: S.optional(__S(42)),
           ErrorCode: S.optional(S.String),
           ErrorReason: S.optional(S.String),
         }),
@@ -16118,21 +12248,19 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UnprocessedConfigurationPolicyAssociation);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationPolicyAssociations: S.optional(ConfigurationPolicyAssociationList),
-          UnprocessedConfigurationPolicyAssociations: S.optional(
-            UnprocessedConfigurationPolicyAssociationList,
-          ),
+          ConfigurationPolicyAssociations: S.optional(__S(46)),
+          UnprocessedConfigurationPolicyAssociations: S.optional(__S(48)),
         }),
       ).annotate({
         identifier: "BatchGetConfigurationPolicyAssociationsResponse",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ SecurityControlIds: S.optional(StringList) }).pipe(
+        S.Struct({ SecurityControlIds: S.optional(__S(4)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/securityControls/batchGet" }),
             svc,
@@ -16150,20 +12278,20 @@ function __c6(j: number): any {
     case 4:
       return S.Union([
         /*@__PURE__*/ S.Struct({ Integer: S.Number }),
-        /*@__PURE__*/ S.Struct({ IntegerList: IntegerList }),
+        /*@__PURE__*/ S.Struct({ IntegerList: __S(51) }),
         /*@__PURE__*/ S.Struct({ Double: S.Number }),
         /*@__PURE__*/ S.Struct({ String: S.String }),
-        /*@__PURE__*/ S.Struct({ StringList: StringList }),
+        /*@__PURE__*/ S.Struct({ StringList: __S(4) }),
         /*@__PURE__*/ S.Struct({ Boolean: S.Boolean }),
         /*@__PURE__*/ S.Struct({ Enum: S.String }),
-        /*@__PURE__*/ S.Struct({ EnumList: StringList }),
+        /*@__PURE__*/ S.Struct({ EnumList: __S(4) }),
       ]);
     case 5:
       return S.suspend(() =>
-        S.Struct({ ValueType: S.optional(ParameterValueType), Value: S.optional(ParameterValue) }),
+        S.Struct({ ValueType: S.optional(S.String), Value: S.optional(__S(52)) }),
       ).annotate({ identifier: "ParameterConfiguration" });
     case 6:
-      return S.Record(S.String, /*@__PURE__*/ ParameterConfiguration.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(53).pipe(S.optional));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -16172,12 +12300,12 @@ function __c6(j: number): any {
           Title: S.optional(S.String),
           Description: S.optional(S.String),
           RemediationUrl: S.optional(S.String),
-          SeverityRating: S.optional(SeverityRating),
-          SecurityControlStatus: S.optional(ControlStatus),
-          UpdateStatus: S.optional(UpdateStatus),
-          Parameters: S.optional(Parameters),
+          SeverityRating: S.optional(S.String),
+          SecurityControlStatus: S.optional(S.String),
+          UpdateStatus: S.optional(S.String),
+          Parameters: S.optional(__S(54)),
           LastUpdateReason: S.optional(S.String),
-          Provider: S.optional(SecurityControlsProvider),
+          Provider: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecurityControl" });
   }
@@ -16185,24 +12313,24 @@ function __c6(j: number): any {
 function __c7(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SecurityControl);
+      return S.Array(__S(55));
     case 1:
       return S.suspend(() =>
         S.Struct({
           SecurityControlId: S.optional(S.String),
-          ErrorCode: S.optional(UnprocessedErrorCode),
+          ErrorCode: S.optional(S.String),
           ErrorReason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UnprocessedSecurityControl",
       });
     case 2:
-      return S.Array(UnprocessedSecurityControl);
+      return S.Array(__S(57));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          SecurityControls: S.optional(SecurityControls),
-          UnprocessedIds: S.optional(UnprocessedSecurityControls),
+          SecurityControls: S.optional(__S(56)),
+          UnprocessedIds: S.optional(__S(58)),
         }),
       ).annotate({
         identifier: "BatchGetSecurityControlsResponse",
@@ -16214,11 +12342,11 @@ function __c7(j: number): any {
         identifier: "StandardsControlAssociationId",
       });
     case 5:
-      return S.Array(StandardsControlAssociationId);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          StandardsControlAssociationIds: S.optional(StandardsControlAssociationIds),
+          StandardsControlAssociationIds: S.optional(__S(61)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/associations/batchGet" }),
@@ -16238,13 +12366,13 @@ function __c7(j: number): any {
           StandardsArn: S.optional(S.String),
           SecurityControlId: S.optional(S.String),
           SecurityControlArn: S.optional(S.String),
-          AssociationStatus: S.optional(AssociationStatus),
-          RelatedRequirements: S.optional(RelatedRequirementsList),
+          AssociationStatus: S.optional(S.String),
+          RelatedRequirements: S.optional(__S(4)),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedReason: S.optional(S.String),
           StandardsControlTitle: S.optional(S.String),
           StandardsControlDescription: S.optional(S.String),
-          StandardsControlArns: S.optional(StandardsControlArnList),
+          StandardsControlArns: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "StandardsControlAssociationDetail",
@@ -16254,24 +12382,24 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(StandardsControlAssociationDetail);
+      return S.Array(__S(63));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          StandardsControlAssociationId: S.optional(StandardsControlAssociationId),
-          ErrorCode: S.optional(UnprocessedErrorCode),
+          StandardsControlAssociationId: S.optional(__S(60)),
+          ErrorCode: S.optional(S.String),
           ErrorReason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UnprocessedStandardsControlAssociation",
       });
     case 2:
-      return S.Array(UnprocessedStandardsControlAssociation);
+      return S.Array(__S(65));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          StandardsControlAssociationDetails: S.optional(StandardsControlAssociationDetails),
-          UnprocessedAssociations: S.optional(UnprocessedStandardsControlAssociations),
+          StandardsControlAssociationDetails: S.optional(__S(64)),
+          UnprocessedAssociations: S.optional(__S(66)),
         }),
       ).annotate({
         identifier: "BatchGetStandardsControlAssociationsResponse",
@@ -16280,7 +12408,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Product: S.optional(S.Number),
-          Label: S.optional(SeverityLabel),
+          Label: S.optional(S.String),
           Normalized: S.optional(S.Number),
           Original: S.optional(S.String),
         }),
@@ -16290,16 +12418,16 @@ function __c8(j: number): any {
         S.Struct({ Text: S.optional(S.String), Url: S.optional(S.String) }),
       ).annotate({ identifier: "Recommendation" });
     case 6:
-      return S.suspend(() => S.Struct({ Recommendation: S.optional(Recommendation) })).annotate({
+      return S.suspend(() => S.Struct({ Recommendation: S.optional(__S(69)) })).annotate({
         identifier: "Remediation",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Type: S.optional(MalwareType),
+          Type: S.optional(S.String),
           Path: S.optional(S.String),
-          State: S.optional(MalwareState),
+          State: S.optional(S.String),
         }),
       ).annotate({ identifier: "Malware" });
   }
@@ -16307,7 +12435,7 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Malware);
+      return S.Array(__S(71));
     case 1:
       return S.suspend(() =>
         S.Struct({ Begin: S.optional(S.Number), End: S.optional(S.Number) }),
@@ -16315,9 +12443,9 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Direction: S.optional(NetworkDirection),
+          Direction: S.optional(S.String),
           Protocol: S.optional(S.String),
-          OpenPortRange: S.optional(PortRange),
+          OpenPortRange: S.optional(__S(73)),
           SourceIpV4: S.optional(S.String),
           SourceIpV6: S.optional(S.String),
           SourcePort: S.optional(S.Number),
@@ -16330,10 +12458,10 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "Network" });
     case 3:
-      return S.Array(PortRange);
+      return S.Array(__S(73));
     case 4:
       return S.suspend(() =>
-        S.Struct({ Address: S.optional(StringList), PortRanges: S.optional(PortRangeList) }),
+        S.Struct({ Address: S.optional(__S(4)), PortRanges: S.optional(__S(75)) }),
       ).annotate({
         identifier: "NetworkPathComponentDetails",
       });
@@ -16341,8 +12469,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Protocol: S.optional(S.String),
-          Destination: S.optional(NetworkPathComponentDetails),
-          Source: S.optional(NetworkPathComponentDetails),
+          Destination: S.optional(__S(76)),
+          Source: S.optional(__S(76)),
         }),
       ).annotate({ identifier: "NetworkHeader" });
     case 6:
@@ -16350,12 +12478,12 @@ function __c9(j: number): any {
         S.Struct({
           ComponentId: S.optional(S.String),
           ComponentType: S.optional(S.String),
-          Egress: S.optional(NetworkHeader),
-          Ingress: S.optional(NetworkHeader),
+          Egress: S.optional(__S(77)),
+          Ingress: S.optional(__S(77)),
         }),
       ).annotate({ identifier: "NetworkPathComponent" });
     case 7:
-      return S.Array(NetworkPathComponent);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
@@ -16381,31 +12509,31 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "FilePaths" });
     case 2:
-      return S.Array(FilePaths);
+      return S.Array(__S(81));
     case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Severity: S.optional(S.String),
           ItemCount: S.optional(S.Number),
-          FilePaths: S.optional(FilePathList),
+          FilePaths: S.optional(__S(82)),
         }),
       ).annotate({ identifier: "Threat" });
     case 4:
-      return S.Array(Threat);
+      return S.Array(__S(83));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(ThreatIntelIndicatorType),
+          Type: S.optional(S.String),
           Value: S.optional(S.String),
-          Category: S.optional(ThreatIntelIndicatorCategory),
+          Category: S.optional(S.String),
           LastObservedAt: S.optional(S.String),
           Source: S.optional(S.String),
           SourceUrl: S.optional(S.String),
         }),
       ).annotate({ identifier: "ThreatIntelIndicator" });
     case 6:
-      return S.Array(ThreatIntelIndicator);
+      return S.Array(__S(85));
     case 7:
       return S.suspend(() => S.Struct({ Id: S.optional(S.String) })).annotate({
         identifier: "ResourceOwnerAccount",
@@ -16416,7 +12544,7 @@ function __c11(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Account: S.optional(ResourceOwnerAccount), Org: S.optional(ResourceOwnerOrg) }),
+        S.Struct({ Account: S.optional(__S(87)), Org: S.optional(__S(87)) }),
       ).annotate({ identifier: "ResourceOwner" });
     case 1:
       return S.suspend(() =>
@@ -16431,23 +12559,23 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "Range" });
     case 3:
-      return S.Array(Range);
+      return S.Array(__S(90));
     case 4:
       return S.suspend(() =>
         S.Struct({
           PageNumber: S.optional(S.Number),
-          LineRange: S.optional(Range),
-          OffsetRange: S.optional(Range),
+          LineRange: S.optional(__S(90)),
+          OffsetRange: S.optional(__S(90)),
         }),
       ).annotate({ identifier: "Page" });
     case 5:
-      return S.Array(Page);
+      return S.Array(__S(92));
     case 6:
       return S.suspend(() =>
         S.Struct({ JsonPath: S.optional(S.String), RecordIndex: S.optional(S.Number) }),
       ).annotate({ identifier: "Record" });
     case 7:
-      return S.Array(Record);
+      return S.Array(__S(94));
   }
 }
 function __c12(j: number): any {
@@ -16462,15 +12590,15 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "Cell" });
     case 1:
-      return S.Array(Cell);
+      return S.Array(__S(96));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          LineRanges: S.optional(Ranges),
-          OffsetRanges: S.optional(Ranges),
-          Pages: S.optional(Pages),
-          Records: S.optional(Records),
-          Cells: S.optional(Cells),
+          LineRanges: S.optional(__S(91)),
+          OffsetRanges: S.optional(__S(91)),
+          Pages: S.optional(__S(93)),
+          Records: S.optional(__S(95)),
+          Cells: S.optional(__S(97)),
         }),
       ).annotate({ identifier: "Occurrences" });
     case 3:
@@ -16478,28 +12606,28 @@ function __c12(j: number): any {
         S.Struct({
           Count: S.optional(S.Number),
           Type: S.optional(S.String),
-          Occurrences: S.optional(Occurrences),
+          Occurrences: S.optional(__S(98)),
         }),
       ).annotate({ identifier: "SensitiveDataDetections" });
     case 4:
-      return S.Array(SensitiveDataDetections);
+      return S.Array(__S(99));
     case 5:
       return S.suspend(() =>
         S.Struct({
           Category: S.optional(S.String),
-          Detections: S.optional(SensitiveDataDetectionsList),
+          Detections: S.optional(__S(100)),
           TotalCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SensitiveDataResult" });
     case 6:
-      return S.Array(SensitiveDataResult);
+      return S.Array(__S(101));
     case 7:
       return S.suspend(() =>
         S.Struct({
           Count: S.optional(S.Number),
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
-          Occurrences: S.optional(Occurrences),
+          Occurrences: S.optional(__S(98)),
         }),
       ).annotate({
         identifier: "CustomDataIdentifiersDetections",
@@ -16509,11 +12637,11 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CustomDataIdentifiersDetections);
+      return S.Array(__S(103));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Detections: S.optional(CustomDataIdentifiersDetectionsList),
+          Detections: S.optional(__S(104)),
           TotalCount: S.optional(S.Number),
         }),
       ).annotate({
@@ -16525,16 +12653,16 @@ function __c13(j: number): any {
           MimeType: S.optional(S.String),
           SizeClassified: S.optional(S.Number),
           AdditionalOccurrences: S.optional(S.Boolean),
-          Status: S.optional(ClassificationStatus),
-          SensitiveData: S.optional(SensitiveDataResultList),
-          CustomDataIdentifiers: S.optional(CustomDataIdentifiersResult),
+          Status: S.optional(__S(89)),
+          SensitiveData: S.optional(__S(102)),
+          CustomDataIdentifiers: S.optional(__S(105)),
         }),
       ).annotate({ identifier: "ClassificationResult" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           DetailedResultsLocation: S.optional(S.String),
-          Result: S.optional(ClassificationResult),
+          Result: S.optional(__S(106)),
         }),
       ).annotate({
         identifier: "DataClassificationDetails",
@@ -16572,9 +12700,7 @@ function __c13(j: number): any {
           "AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails",
       });
     case 7:
-      return S.Array(
-        AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesListDetails,
-      );
+      return S.Array(__S(110));
   }
 }
 function __c14(j: number): any {
@@ -16582,12 +12708,8 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          LaunchTemplateSpecification: S.optional(
-            AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecification,
-          ),
-          Overrides: S.optional(
-            AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateOverridesList,
-          ),
+          LaunchTemplateSpecification: S.optional(__S(109)),
+          Overrides: S.optional(__S(111)),
         }),
       ).annotate({
         identifier: "AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateDetails",
@@ -16595,12 +12717,8 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          InstancesDistribution: S.optional(
-            AwsAutoScalingAutoScalingGroupMixedInstancesPolicyInstancesDistributionDetails,
-          ),
-          LaunchTemplate: S.optional(
-            AwsAutoScalingAutoScalingGroupMixedInstancesPolicyLaunchTemplateDetails,
-          ),
+          InstancesDistribution: S.optional(__S(108)),
+          LaunchTemplate: S.optional(__S(112)),
         }),
       ).annotate({
         identifier: "AwsAutoScalingAutoScalingGroupMixedInstancesPolicyDetails",
@@ -16610,7 +12728,7 @@ function __c14(j: number): any {
         identifier: "AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails",
       });
     case 3:
-      return S.Array(AwsAutoScalingAutoScalingGroupAvailabilityZonesListDetails);
+      return S.Array(__S(114));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -16625,17 +12743,13 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           LaunchConfigurationName: S.optional(S.String),
-          LoadBalancerNames: S.optional(StringList),
+          LoadBalancerNames: S.optional(__S(4)),
           HealthCheckType: S.optional(S.String),
           HealthCheckGracePeriod: S.optional(S.Number),
           CreatedTime: S.optional(S.String),
-          MixedInstancesPolicy: S.optional(
-            AwsAutoScalingAutoScalingGroupMixedInstancesPolicyDetails,
-          ),
-          AvailabilityZones: S.optional(AwsAutoScalingAutoScalingGroupAvailabilityZonesList),
-          LaunchTemplate: S.optional(
-            AwsAutoScalingAutoScalingGroupLaunchTemplateLaunchTemplateSpecification,
-          ),
+          MixedInstancesPolicy: S.optional(__S(113)),
+          AvailabilityZones: S.optional(__S(115)),
+          LaunchTemplate: S.optional(__S(116)),
           CapacityRebalance: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -16658,7 +12772,7 @@ function __c14(j: number): any {
         identifier: "AwsCodeBuildProjectArtifactsDetails",
       });
     case 7:
-      return S.Array(AwsCodeBuildProjectArtifactsDetails);
+      return S.Array(__S(118));
   }
 }
 function __c15(j: number): any {
@@ -16674,7 +12788,7 @@ function __c15(j: number): any {
         identifier: "AwsCodeBuildProjectEnvironmentEnvironmentVariablesDetails",
       });
     case 1:
-      return S.Array(AwsCodeBuildProjectEnvironmentEnvironmentVariablesDetails);
+      return S.Array(__S(120));
     case 2:
       return S.suspend(() =>
         S.Struct({ Credential: S.optional(S.String), CredentialProvider: S.optional(S.String) }),
@@ -16685,10 +12799,10 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Certificate: S.optional(S.String),
-          EnvironmentVariables: S.optional(AwsCodeBuildProjectEnvironmentEnvironmentVariablesList),
+          EnvironmentVariables: S.optional(__S(121)),
           PrivilegedMode: S.optional(S.Boolean),
           ImagePullCredentialsType: S.optional(S.String),
-          RegistryCredential: S.optional(AwsCodeBuildProjectEnvironmentRegistryCredential),
+          RegistryCredential: S.optional(__S(122)),
           Type: S.optional(S.String),
         }),
       ).annotate({
@@ -16728,8 +12842,8 @@ function __c15(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          CloudWatchLogs: S.optional(AwsCodeBuildProjectLogsConfigCloudWatchLogsDetails),
-          S3Logs: S.optional(AwsCodeBuildProjectLogsConfigS3LogsDetails),
+          CloudWatchLogs: S.optional(__S(125)),
+          S3Logs: S.optional(__S(126)),
         }),
       ).annotate({
         identifier: "AwsCodeBuildProjectLogsConfigDetails",
@@ -16742,8 +12856,8 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           VpcId: S.optional(S.String),
-          Subnets: S.optional(NonEmptyStringList),
-          SecurityGroupIds: S.optional(NonEmptyStringList),
+          Subnets: S.optional(__S(4)),
+          SecurityGroupIds: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "AwsCodeBuildProjectVpcConfig",
@@ -16752,14 +12866,14 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           EncryptionKey: S.optional(S.String),
-          Artifacts: S.optional(AwsCodeBuildProjectArtifactsList),
-          Environment: S.optional(AwsCodeBuildProjectEnvironment),
+          Artifacts: S.optional(__S(119)),
+          Environment: S.optional(__S(123)),
           Name: S.optional(S.String),
-          Source: S.optional(AwsCodeBuildProjectSource),
+          Source: S.optional(__S(124)),
           ServiceRole: S.optional(S.String),
-          LogsConfig: S.optional(AwsCodeBuildProjectLogsConfigDetails),
-          VpcConfig: S.optional(AwsCodeBuildProjectVpcConfig),
-          SecondaryArtifacts: S.optional(AwsCodeBuildProjectArtifactsList),
+          LogsConfig: S.optional(__S(127)),
+          VpcConfig: S.optional(__S(128)),
+          SecondaryArtifacts: S.optional(__S(119)),
         }),
       ).annotate({
         identifier: "AwsCodeBuildProjectDetails",
@@ -16769,11 +12883,9 @@ function __c16(j: number): any {
         identifier: "AwsCloudFrontDistributionCacheBehavior",
       });
     case 3:
-      return S.Array(AwsCloudFrontDistributionCacheBehavior);
+      return S.Array(__S(130));
     case 4:
-      return S.suspend(() =>
-        S.Struct({ Items: S.optional(AwsCloudFrontDistributionCacheBehaviorsItemList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Items: S.optional(__S(131)) })).annotate({
         identifier: "AwsCloudFrontDistributionCacheBehaviors",
       });
     case 5:
@@ -16793,7 +12905,7 @@ function __c16(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(NonEmptyStringList), Quantity: S.optional(S.Number) }),
+        S.Struct({ Items: S.optional(__S(4)), Quantity: S.optional(S.Number) }),
       ).annotate({
         identifier: "AwsCloudFrontDistributionOriginSslProtocols",
       });
@@ -16809,7 +12921,7 @@ function __c17(j: number): any {
           OriginKeepaliveTimeout: S.optional(S.Number),
           OriginProtocolPolicy: S.optional(S.String),
           OriginReadTimeout: S.optional(S.Number),
-          OriginSslProtocols: S.optional(AwsCloudFrontDistributionOriginSslProtocols),
+          OriginSslProtocols: S.optional(__S(135)),
         }),
       ).annotate({
         identifier: "AwsCloudFrontDistributionOriginCustomOriginConfig",
@@ -16820,24 +12932,22 @@ function __c17(j: number): any {
           DomainName: S.optional(S.String),
           Id: S.optional(S.String),
           OriginPath: S.optional(S.String),
-          S3OriginConfig: S.optional(AwsCloudFrontDistributionOriginS3OriginConfig),
-          CustomOriginConfig: S.optional(AwsCloudFrontDistributionOriginCustomOriginConfig),
+          S3OriginConfig: S.optional(__S(134)),
+          CustomOriginConfig: S.optional(__S(136)),
         }),
       ).annotate({
         identifier: "AwsCloudFrontDistributionOriginItem",
       });
     case 2:
-      return S.Array(AwsCloudFrontDistributionOriginItem);
+      return S.Array(__S(137));
     case 3:
-      return S.suspend(() =>
-        S.Struct({ Items: S.optional(AwsCloudFrontDistributionOriginItemList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Items: S.optional(__S(138)) })).annotate({
         identifier: "AwsCloudFrontDistributionOrigins",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Items: S.optional(AwsCloudFrontDistributionOriginGroupFailoverStatusCodesItemList),
+          Items: S.optional(__S(51)),
           Quantity: S.optional(S.Number),
         }),
       ).annotate({
@@ -16846,27 +12956,23 @@ function __c17(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          StatusCodes: S.optional(AwsCloudFrontDistributionOriginGroupFailoverStatusCodes),
+          StatusCodes: S.optional(__S(140)),
         }),
       ).annotate({
         identifier: "AwsCloudFrontDistributionOriginGroupFailover",
       });
     case 6:
-      return S.suspend(() =>
-        S.Struct({ FailoverCriteria: S.optional(AwsCloudFrontDistributionOriginGroupFailover) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ FailoverCriteria: S.optional(__S(141)) })).annotate({
         identifier: "AwsCloudFrontDistributionOriginGroup",
       });
     case 7:
-      return S.Array(AwsCloudFrontDistributionOriginGroup);
+      return S.Array(__S(142));
   }
 }
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ Items: S.optional(AwsCloudFrontDistributionOriginGroupsItemList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Items: S.optional(__S(143)) })).annotate({
         identifier: "AwsCloudFrontDistributionOriginGroups",
       });
     case 1:
@@ -16886,16 +12992,16 @@ function __c18(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          CacheBehaviors: S.optional(AwsCloudFrontDistributionCacheBehaviors),
-          DefaultCacheBehavior: S.optional(AwsCloudFrontDistributionDefaultCacheBehavior),
+          CacheBehaviors: S.optional(__S(132)),
+          DefaultCacheBehavior: S.optional(__S(130)),
           DefaultRootObject: S.optional(S.String),
           DomainName: S.optional(S.String),
           ETag: S.optional(S.String),
           LastModifiedTime: S.optional(S.String),
-          Logging: S.optional(AwsCloudFrontDistributionLogging),
-          Origins: S.optional(AwsCloudFrontDistributionOrigins),
-          OriginGroups: S.optional(AwsCloudFrontDistributionOriginGroups),
-          ViewerCertificate: S.optional(AwsCloudFrontDistributionViewerCertificate),
+          Logging: S.optional(__S(133)),
+          Origins: S.optional(__S(139)),
+          OriginGroups: S.optional(__S(144)),
+          ViewerCertificate: S.optional(__S(145)),
           Status: S.optional(S.String),
           WebAclId: S.optional(S.String),
         }),
@@ -16907,7 +13013,7 @@ function __c18(j: number): any {
         identifier: "AwsEc2InstanceNetworkInterfacesDetails",
       });
     case 4:
-      return S.Array(AwsEc2InstanceNetworkInterfacesDetails);
+      return S.Array(__S(147));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -16929,17 +13035,17 @@ function __c18(j: number): any {
         S.Struct({
           Type: S.optional(S.String),
           ImageId: S.optional(S.String),
-          IpV4Addresses: S.optional(StringList),
-          IpV6Addresses: S.optional(StringList),
+          IpV4Addresses: S.optional(__S(4)),
+          IpV6Addresses: S.optional(__S(4)),
           KeyName: S.optional(S.String),
           IamInstanceProfileArn: S.optional(S.String),
           VpcId: S.optional(S.String),
           SubnetId: S.optional(S.String),
           LaunchedAt: S.optional(S.String),
-          NetworkInterfaces: S.optional(AwsEc2InstanceNetworkInterfacesList),
+          NetworkInterfaces: S.optional(__S(148)),
           VirtualizationType: S.optional(S.String),
-          MetadataOptions: S.optional(AwsEc2InstanceMetadataOptions),
-          Monitoring: S.optional(AwsEc2InstanceMonitoringDetails),
+          MetadataOptions: S.optional(__S(149)),
+          Monitoring: S.optional(__S(150)),
         }),
       ).annotate({ identifier: "AwsEc2InstanceDetails" });
   }
@@ -16967,13 +13073,13 @@ function __c19(j: number): any {
         identifier: "AwsEc2NetworkInterfaceSecurityGroup",
       });
     case 2:
-      return S.Array(AwsEc2NetworkInterfaceSecurityGroup);
+      return S.Array(__S(153));
     case 3:
       return S.suspend(() => S.Struct({ IpV6Address: S.optional(S.String) })).annotate({
         identifier: "AwsEc2NetworkInterfaceIpV6AddressDetail",
       });
     case 4:
-      return S.Array(AwsEc2NetworkInterfaceIpV6AddressDetail);
+      return S.Array(__S(155));
     case 5:
       return S.suspend(() =>
         S.Struct({ PrivateIpAddress: S.optional(S.String), PrivateDnsName: S.optional(S.String) }),
@@ -16981,16 +13087,16 @@ function __c19(j: number): any {
         identifier: "AwsEc2NetworkInterfacePrivateIpAddressDetail",
       });
     case 6:
-      return S.Array(AwsEc2NetworkInterfacePrivateIpAddressDetail);
+      return S.Array(__S(157));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Attachment: S.optional(AwsEc2NetworkInterfaceAttachment),
+          Attachment: S.optional(__S(152)),
           NetworkInterfaceId: S.optional(S.String),
-          SecurityGroups: S.optional(AwsEc2NetworkInterfaceSecurityGroupList),
+          SecurityGroups: S.optional(__S(154)),
           SourceDestCheck: S.optional(S.Boolean),
-          IpV6Addresses: S.optional(AwsEc2NetworkInterfaceIpV6AddressList),
-          PrivateIpAddresses: S.optional(AwsEc2NetworkInterfacePrivateIpAddressList),
+          IpV6Addresses: S.optional(__S(156)),
+          PrivateIpAddresses: S.optional(__S(158)),
           PublicDnsName: S.optional(S.String),
           PublicIp: S.optional(S.String),
         }),
@@ -17015,25 +13121,25 @@ function __c20(j: number): any {
         identifier: "AwsEc2SecurityGroupUserIdGroupPair",
       });
     case 1:
-      return S.Array(AwsEc2SecurityGroupUserIdGroupPair);
+      return S.Array(__S(160));
     case 2:
       return S.suspend(() => S.Struct({ CidrIp: S.optional(S.String) })).annotate({
         identifier: "AwsEc2SecurityGroupIpRange",
       });
     case 3:
-      return S.Array(AwsEc2SecurityGroupIpRange);
+      return S.Array(__S(162));
     case 4:
       return S.suspend(() => S.Struct({ CidrIpv6: S.optional(S.String) })).annotate({
         identifier: "AwsEc2SecurityGroupIpv6Range",
       });
     case 5:
-      return S.Array(AwsEc2SecurityGroupIpv6Range);
+      return S.Array(__S(164));
     case 6:
       return S.suspend(() => S.Struct({ PrefixListId: S.optional(S.String) })).annotate({
         identifier: "AwsEc2SecurityGroupPrefixListId",
       });
     case 7:
-      return S.Array(AwsEc2SecurityGroupPrefixListId);
+      return S.Array(__S(166));
   }
 }
 function __c21(j: number): any {
@@ -17044,16 +13150,16 @@ function __c21(j: number): any {
           IpProtocol: S.optional(S.String),
           FromPort: S.optional(S.Number),
           ToPort: S.optional(S.Number),
-          UserIdGroupPairs: S.optional(AwsEc2SecurityGroupUserIdGroupPairList),
-          IpRanges: S.optional(AwsEc2SecurityGroupIpRangeList),
-          Ipv6Ranges: S.optional(AwsEc2SecurityGroupIpv6RangeList),
-          PrefixListIds: S.optional(AwsEc2SecurityGroupPrefixListIdList),
+          UserIdGroupPairs: S.optional(__S(161)),
+          IpRanges: S.optional(__S(163)),
+          Ipv6Ranges: S.optional(__S(165)),
+          PrefixListIds: S.optional(__S(167)),
         }),
       ).annotate({
         identifier: "AwsEc2SecurityGroupIpPermission",
       });
     case 1:
-      return S.Array(AwsEc2SecurityGroupIpPermission);
+      return S.Array(__S(168));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -17061,8 +13167,8 @@ function __c21(j: number): any {
           GroupId: S.optional(S.String),
           OwnerId: S.optional(S.String),
           VpcId: S.optional(S.String),
-          IpPermissions: S.optional(AwsEc2SecurityGroupIpPermissionList),
-          IpPermissionsEgress: S.optional(AwsEc2SecurityGroupIpPermissionList),
+          IpPermissions: S.optional(__S(169)),
+          IpPermissionsEgress: S.optional(__S(169)),
         }),
       ).annotate({
         identifier: "AwsEc2SecurityGroupDetails",
@@ -17077,7 +13183,7 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "AwsEc2VolumeAttachment" });
     case 4:
-      return S.Array(AwsEc2VolumeAttachment);
+      return S.Array(__S(171));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -17088,7 +13194,7 @@ function __c21(j: number): any {
           SnapshotId: S.optional(S.String),
           Status: S.optional(S.String),
           KmsKeyId: S.optional(S.String),
-          Attachments: S.optional(AwsEc2VolumeAttachmentList),
+          Attachments: S.optional(__S(172)),
           VolumeId: S.optional(S.String),
           VolumeType: S.optional(S.String),
           VolumeScanStatus: S.optional(S.String),
@@ -17103,7 +13209,7 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "CidrBlockAssociation" });
     case 7:
-      return S.Array(CidrBlockAssociation);
+      return S.Array(__S(174));
   }
 }
 function __c22(j: number): any {
@@ -17117,12 +13223,12 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "Ipv6CidrBlockAssociation" });
     case 1:
-      return S.Array(Ipv6CidrBlockAssociation);
+      return S.Array(__S(176));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          CidrBlockAssociationSet: S.optional(CidrBlockAssociationList),
-          Ipv6CidrBlockAssociationSet: S.optional(Ipv6CidrBlockAssociationList),
+          CidrBlockAssociationSet: S.optional(__S(175)),
+          Ipv6CidrBlockAssociationSet: S.optional(__S(177)),
           DhcpOptionsId: S.optional(S.String),
           State: S.optional(S.String),
         }),
@@ -17157,7 +13263,7 @@ function __c22(j: number): any {
           SubnetArn: S.optional(S.String),
           SubnetId: S.optional(S.String),
           VpcId: S.optional(S.String),
-          Ipv6CidrBlockAssociationSet: S.optional(Ipv6CidrBlockAssociationList),
+          Ipv6CidrBlockAssociationSet: S.optional(__S(177)),
         }),
       ).annotate({ identifier: "AwsEc2SubnetDetails" });
     case 5:
@@ -17171,7 +13277,7 @@ function __c22(j: number): any {
         identifier: "AwsEc2NetworkAclAssociation",
       });
     case 6:
-      return S.Array(AwsEc2NetworkAclAssociation);
+      return S.Array(__S(181));
     case 7:
       return S.suspend(() =>
         S.Struct({ Code: S.optional(S.Number), Type: S.optional(S.Number) }),
@@ -17189,16 +13295,16 @@ function __c23(j: number): any {
         S.Struct({
           CidrBlock: S.optional(S.String),
           Egress: S.optional(S.Boolean),
-          IcmpTypeCode: S.optional(IcmpTypeCode),
+          IcmpTypeCode: S.optional(__S(183)),
           Ipv6CidrBlock: S.optional(S.String),
-          PortRange: S.optional(PortRangeFromTo),
+          PortRange: S.optional(__S(184)),
           Protocol: S.optional(S.String),
           RuleAction: S.optional(S.String),
           RuleNumber: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AwsEc2NetworkAclEntry" });
     case 2:
-      return S.Array(AwsEc2NetworkAclEntry);
+      return S.Array(__S(185));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -17206,8 +13312,8 @@ function __c23(j: number): any {
           NetworkAclId: S.optional(S.String),
           OwnerId: S.optional(S.String),
           VpcId: S.optional(S.String),
-          Associations: S.optional(AwsEc2NetworkAclAssociationList),
-          Entries: S.optional(AwsEc2NetworkAclEntryList),
+          Associations: S.optional(__S(182)),
+          Entries: S.optional(__S(186)),
         }),
       ).annotate({ identifier: "AwsEc2NetworkAclDetails" });
     case 4:
@@ -17215,7 +13321,7 @@ function __c23(j: number): any {
         S.Struct({ ZoneName: S.optional(S.String), SubnetId: S.optional(S.String) }),
       ).annotate({ identifier: "AvailabilityZone" });
     case 5:
-      return S.Array(AvailabilityZone);
+      return S.Array(__S(188));
     case 6:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
@@ -17223,7 +13329,7 @@ function __c23(j: number): any {
         identifier: "AwsElbv2LoadBalancerAttribute",
       });
     case 7:
-      return S.Array(AwsElbv2LoadBalancerAttribute);
+      return S.Array(__S(190));
   }
 }
 function __c24(j: number): any {
@@ -17231,17 +13337,17 @@ function __c24(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AvailabilityZones: S.optional(AvailabilityZones),
+          AvailabilityZones: S.optional(__S(189)),
           CanonicalHostedZoneId: S.optional(S.String),
           CreatedTime: S.optional(S.String),
           DNSName: S.optional(S.String),
           IpAddressType: S.optional(S.String),
           Scheme: S.optional(S.String),
-          SecurityGroups: S.optional(SecurityGroups),
-          State: S.optional(LoadBalancerState),
+          SecurityGroups: S.optional(__S(4)),
+          State: S.optional(__S(89)),
           Type: S.optional(S.String),
           VpcId: S.optional(S.String),
-          LoadBalancerAttributes: S.optional(AwsElbv2LoadBalancerAttributes),
+          LoadBalancerAttributes: S.optional(__S(191)),
         }),
       ).annotate({
         identifier: "AwsElbv2LoadBalancerDetails",
@@ -17253,7 +13359,7 @@ function __c24(j: number): any {
         identifier: "AwsElasticBeanstalkEnvironmentEnvironmentLink",
       });
     case 2:
-      return S.Array(AwsElasticBeanstalkEnvironmentEnvironmentLink);
+      return S.Array(__S(193));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -17266,7 +13372,7 @@ function __c24(j: number): any {
         identifier: "AwsElasticBeanstalkEnvironmentOptionSetting",
       });
     case 4:
-      return S.Array(AwsElasticBeanstalkEnvironmentOptionSetting);
+      return S.Array(__S(195));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -17288,13 +13394,13 @@ function __c24(j: number): any {
           EndpointUrl: S.optional(S.String),
           EnvironmentArn: S.optional(S.String),
           EnvironmentId: S.optional(S.String),
-          EnvironmentLinks: S.optional(AwsElasticBeanstalkEnvironmentEnvironmentLinks),
+          EnvironmentLinks: S.optional(__S(194)),
           EnvironmentName: S.optional(S.String),
-          OptionSettings: S.optional(AwsElasticBeanstalkEnvironmentOptionSettings),
+          OptionSettings: S.optional(__S(196)),
           PlatformArn: S.optional(S.String),
           SolutionStackName: S.optional(S.String),
           Status: S.optional(S.String),
-          Tier: S.optional(AwsElasticBeanstalkEnvironmentTier),
+          Tier: S.optional(__S(197)),
           VersionLabel: S.optional(S.String),
         }),
       ).annotate({
@@ -17322,9 +13428,7 @@ function __c25(j: number): any {
           DedicatedMasterType: S.optional(S.String),
           InstanceCount: S.optional(S.Number),
           InstanceType: S.optional(S.String),
-          ZoneAwarenessConfig: S.optional(
-            AwsElasticsearchDomainElasticsearchClusterConfigZoneAwarenessConfigDetails,
-          ),
+          ZoneAwarenessConfig: S.optional(__S(200)),
           ZoneAwarenessEnabled: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -17348,9 +13452,9 @@ function __c25(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          IndexSlowLogs: S.optional(AwsElasticsearchDomainLogPublishingOptionsLogConfig),
-          SearchSlowLogs: S.optional(AwsElasticsearchDomainLogPublishingOptionsLogConfig),
-          AuditLogs: S.optional(AwsElasticsearchDomainLogPublishingOptionsLogConfig),
+          IndexSlowLogs: S.optional(__S(203)),
+          SearchSlowLogs: S.optional(__S(203)),
+          AuditLogs: S.optional(__S(203)),
         }),
       ).annotate({
         identifier: "AwsElasticsearchDomainLogPublishingOptions",
@@ -17376,9 +13480,9 @@ function __c25(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          AvailabilityZones: S.optional(NonEmptyStringList),
-          SecurityGroupIds: S.optional(NonEmptyStringList),
-          SubnetIds: S.optional(NonEmptyStringList),
+          AvailabilityZones: S.optional(__S(4)),
+          SecurityGroupIds: S.optional(__S(4)),
+          SubnetIds: S.optional(__S(4)),
           VPCId: S.optional(S.String),
         }),
       ).annotate({
@@ -17392,22 +13496,18 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AccessPolicies: S.optional(S.String),
-          DomainEndpointOptions: S.optional(AwsElasticsearchDomainDomainEndpointOptions),
+          DomainEndpointOptions: S.optional(__S(199)),
           DomainId: S.optional(S.String),
           DomainName: S.optional(S.String),
           Endpoint: S.optional(S.String),
-          Endpoints: S.optional(FieldMap),
+          Endpoints: S.optional(__S(31)),
           ElasticsearchVersion: S.optional(S.String),
-          ElasticsearchClusterConfig: S.optional(
-            AwsElasticsearchDomainElasticsearchClusterConfigDetails,
-          ),
-          EncryptionAtRestOptions: S.optional(AwsElasticsearchDomainEncryptionAtRestOptions),
-          LogPublishingOptions: S.optional(AwsElasticsearchDomainLogPublishingOptions),
-          NodeToNodeEncryptionOptions: S.optional(
-            AwsElasticsearchDomainNodeToNodeEncryptionOptions,
-          ),
-          ServiceSoftwareOptions: S.optional(AwsElasticsearchDomainServiceSoftwareOptions),
-          VPCOptions: S.optional(AwsElasticsearchDomainVPCOptions),
+          ElasticsearchClusterConfig: S.optional(__S(201)),
+          EncryptionAtRestOptions: S.optional(__S(202)),
+          LogPublishingOptions: S.optional(__S(204)),
+          NodeToNodeEncryptionOptions: S.optional(__S(205)),
+          ServiceSoftwareOptions: S.optional(__S(206)),
+          VPCOptions: S.optional(__S(207)),
         }),
       ).annotate({
         identifier: "AwsElasticsearchDomainDetails",
@@ -17421,17 +13521,15 @@ function __c26(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ApplyServerSideEncryptionByDefault: S.optional(AwsS3BucketServerSideEncryptionByDefault),
+          ApplyServerSideEncryptionByDefault: S.optional(__S(209)),
         }),
       ).annotate({
         identifier: "AwsS3BucketServerSideEncryptionRule",
       });
     case 3:
-      return S.Array(AwsS3BucketServerSideEncryptionRule);
+      return S.Array(__S(210));
     case 4:
-      return S.suspend(() =>
-        S.Struct({ Rules: S.optional(AwsS3BucketServerSideEncryptionRules) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Rules: S.optional(__S(211)) })).annotate({
         identifier: "AwsS3BucketServerSideEncryptionConfiguration",
       });
     case 5:
@@ -17449,9 +13547,7 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Prefix: S.optional(S.String),
-          Tag: S.optional(
-            AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsTagDetails,
-          ),
+          Tag: S.optional(__S(214)),
           Type: S.optional(S.String),
         }),
       ).annotate({
@@ -17462,15 +13558,13 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsDetails);
+      return S.Array(__S(215));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Operands: S.optional(
-            AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateOperandsList,
-          ),
+          Operands: S.optional(__S(216)),
           Prefix: S.optional(S.String),
-          Tag: S.optional(AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateTagDetails),
+          Tag: S.optional(__S(214)),
           Type: S.optional(S.String),
         }),
       ).annotate({
@@ -17479,7 +13573,7 @@ function __c27(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Predicate: S.optional(AwsS3BucketBucketLifecycleConfigurationRulesFilterPredicateDetails),
+          Predicate: S.optional(__S(217)),
         }),
       ).annotate({
         identifier: "AwsS3BucketBucketLifecycleConfigurationRulesFilterDetails",
@@ -17492,9 +13586,7 @@ function __c27(j: number): any {
           "AwsS3BucketBucketLifecycleConfigurationRulesNoncurrentVersionTransitionsDetails",
       });
     case 4:
-      return S.Array(
-        AwsS3BucketBucketLifecycleConfigurationRulesNoncurrentVersionTransitionsDetails,
-      );
+      return S.Array(__S(219));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -17506,25 +13598,21 @@ function __c27(j: number): any {
         identifier: "AwsS3BucketBucketLifecycleConfigurationRulesTransitionsDetails",
       });
     case 6:
-      return S.Array(AwsS3BucketBucketLifecycleConfigurationRulesTransitionsDetails);
+      return S.Array(__S(221));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          AbortIncompleteMultipartUpload: S.optional(
-            AwsS3BucketBucketLifecycleConfigurationRulesAbortIncompleteMultipartUploadDetails,
-          ),
+          AbortIncompleteMultipartUpload: S.optional(__S(213)),
           ExpirationDate: S.optional(S.String),
           ExpirationInDays: S.optional(S.Number),
           ExpiredObjectDeleteMarker: S.optional(S.Boolean),
-          Filter: S.optional(AwsS3BucketBucketLifecycleConfigurationRulesFilterDetails),
+          Filter: S.optional(__S(218)),
           ID: S.optional(S.String),
           NoncurrentVersionExpirationInDays: S.optional(S.Number),
-          NoncurrentVersionTransitions: S.optional(
-            AwsS3BucketBucketLifecycleConfigurationRulesNoncurrentVersionTransitionsList,
-          ),
+          NoncurrentVersionTransitions: S.optional(__S(220)),
           Prefix: S.optional(S.String),
           Status: S.optional(S.String),
-          Transitions: S.optional(AwsS3BucketBucketLifecycleConfigurationRulesTransitionsList),
+          Transitions: S.optional(__S(222)),
         }),
       ).annotate({
         identifier: "AwsS3BucketBucketLifecycleConfigurationRulesDetails",
@@ -17534,11 +13622,9 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsS3BucketBucketLifecycleConfigurationRulesDetails);
+      return S.Array(__S(223));
     case 1:
-      return S.suspend(() =>
-        S.Struct({ Rules: S.optional(AwsS3BucketBucketLifecycleConfigurationRulesList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Rules: S.optional(__S(224)) })).annotate({
         identifier: "AwsS3BucketBucketLifecycleConfigurationDetails",
       });
     case 2:
@@ -17591,8 +13677,8 @@ function __c28(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Condition: S.optional(AwsS3BucketWebsiteConfigurationRoutingRuleCondition),
-          Redirect: S.optional(AwsS3BucketWebsiteConfigurationRoutingRuleRedirect),
+          Condition: S.optional(__S(229)),
+          Redirect: S.optional(__S(230)),
         }),
       ).annotate({
         identifier: "AwsS3BucketWebsiteConfigurationRoutingRule",
@@ -17602,14 +13688,14 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsS3BucketWebsiteConfigurationRoutingRule);
+      return S.Array(__S(231));
     case 1:
       return S.suspend(() =>
         S.Struct({
           ErrorDocument: S.optional(S.String),
           IndexDocumentSuffix: S.optional(S.String),
-          RedirectAllRequestsTo: S.optional(AwsS3BucketWebsiteConfigurationRedirectTo),
-          RoutingRules: S.optional(AwsS3BucketWebsiteConfigurationRoutingRules),
+          RedirectAllRequestsTo: S.optional(__S(228)),
+          RoutingRules: S.optional(__S(232)),
         }),
       ).annotate({
         identifier: "AwsS3BucketWebsiteConfiguration",
@@ -17617,31 +13703,27 @@ function __c29(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Name: S.optional(AwsS3BucketNotificationConfigurationS3KeyFilterRuleName),
+          Name: S.optional(S.String),
           Value: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AwsS3BucketNotificationConfigurationS3KeyFilterRule",
       });
     case 3:
-      return S.Array(AwsS3BucketNotificationConfigurationS3KeyFilterRule);
+      return S.Array(__S(234));
     case 4:
-      return S.suspend(() =>
-        S.Struct({ FilterRules: S.optional(AwsS3BucketNotificationConfigurationS3KeyFilterRules) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ FilterRules: S.optional(__S(235)) })).annotate({
         identifier: "AwsS3BucketNotificationConfigurationS3KeyFilter",
       });
     case 5:
-      return S.suspend(() =>
-        S.Struct({ S3KeyFilter: S.optional(AwsS3BucketNotificationConfigurationS3KeyFilter) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ S3KeyFilter: S.optional(__S(236)) })).annotate({
         identifier: "AwsS3BucketNotificationConfigurationFilter",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Events: S.optional(AwsS3BucketNotificationConfigurationEvents),
-          Filter: S.optional(AwsS3BucketNotificationConfigurationFilter),
+          Events: S.optional(__S(4)),
+          Filter: S.optional(__S(237)),
           Destination: S.optional(S.String),
           Type: S.optional(S.String),
         }),
@@ -17649,15 +13731,13 @@ function __c29(j: number): any {
         identifier: "AwsS3BucketNotificationConfigurationDetail",
       });
     case 7:
-      return S.Array(AwsS3BucketNotificationConfigurationDetail);
+      return S.Array(__S(238));
   }
 }
 function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ Configurations: S.optional(AwsS3BucketNotificationConfigurationDetails) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Configurations: S.optional(__S(239)) })).annotate({
         identifier: "AwsS3BucketNotificationConfiguration",
       });
     case 1:
@@ -17679,9 +13759,7 @@ function __c30(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DefaultRetention: S.optional(
-            AwsS3BucketObjectLockConfigurationRuleDefaultRetentionDetails,
-          ),
+          DefaultRetention: S.optional(__S(242)),
         }),
       ).annotate({
         identifier: "AwsS3BucketObjectLockConfigurationRuleDetails",
@@ -17690,7 +13768,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ObjectLockEnabled: S.optional(S.String),
-          Rule: S.optional(AwsS3BucketObjectLockConfigurationRuleDetails),
+          Rule: S.optional(__S(243)),
         }),
       ).annotate({
         identifier: "AwsS3BucketObjectLockConfiguration",
@@ -17702,17 +13780,15 @@ function __c30(j: number): any {
           OwnerName: S.optional(S.String),
           OwnerAccountId: S.optional(S.String),
           CreatedAt: S.optional(S.String),
-          ServerSideEncryptionConfiguration: S.optional(
-            AwsS3BucketServerSideEncryptionConfiguration,
-          ),
-          BucketLifecycleConfiguration: S.optional(AwsS3BucketBucketLifecycleConfigurationDetails),
-          PublicAccessBlockConfiguration: S.optional(AwsS3AccountPublicAccessBlockDetails),
+          ServerSideEncryptionConfiguration: S.optional(__S(212)),
+          BucketLifecycleConfiguration: S.optional(__S(225)),
+          PublicAccessBlockConfiguration: S.optional(__S(226)),
           AccessControlList: S.optional(S.String),
-          BucketLoggingConfiguration: S.optional(AwsS3BucketLoggingConfiguration),
-          BucketWebsiteConfiguration: S.optional(AwsS3BucketWebsiteConfiguration),
-          BucketNotificationConfiguration: S.optional(AwsS3BucketNotificationConfiguration),
-          BucketVersioningConfiguration: S.optional(AwsS3BucketBucketVersioningConfiguration),
-          ObjectLockConfiguration: S.optional(AwsS3BucketObjectLockConfiguration),
+          BucketLoggingConfiguration: S.optional(__S(227)),
+          BucketWebsiteConfiguration: S.optional(__S(233)),
+          BucketNotificationConfiguration: S.optional(__S(240)),
+          BucketVersioningConfiguration: S.optional(__S(241)),
+          ObjectLockConfiguration: S.optional(__S(244)),
           Name: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsS3BucketDetails" });
@@ -17738,7 +13814,7 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          RotationRules: S.optional(AwsSecretsManagerSecretRotationRules),
+          RotationRules: S.optional(__S(247)),
           RotationOccurredWithinFrequency: S.optional(S.Boolean),
           KmsKeyId: S.optional(S.String),
           RotationEnabled: S.optional(S.Boolean),
@@ -17771,8 +13847,8 @@ function __c31(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Attributes: S.optional(AwsIamAccessKeySessionContextAttributes),
-          SessionIssuer: S.optional(AwsIamAccessKeySessionContextSessionIssuer),
+          Attributes: S.optional(__S(249)),
+          SessionIssuer: S.optional(__S(250)),
         }),
       ).annotate({
         identifier: "AwsIamAccessKeySessionContext",
@@ -17781,14 +13857,14 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           UserName: S.optional(S.String),
-          Status: S.optional(AwsIamAccessKeyStatus),
+          Status: S.optional(S.String),
           CreatedAt: S.optional(S.String),
           PrincipalId: S.optional(S.String),
           PrincipalType: S.optional(S.String),
           PrincipalName: S.optional(S.String),
           AccountId: S.optional(S.String),
           AccessKeyId: S.optional(S.String),
-          SessionContext: S.optional(AwsIamAccessKeySessionContext),
+          SessionContext: S.optional(__S(251)),
         }),
       ).annotate({ identifier: "AwsIamAccessKeyDetails" });
     case 5:
@@ -17798,7 +13874,7 @@ function __c31(j: number): any {
         identifier: "AwsIamAttachedManagedPolicy",
       });
     case 6:
-      return S.Array(AwsIamAttachedManagedPolicy);
+      return S.Array(__S(253));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -17817,18 +13893,18 @@ function __c32(j: number): any {
         identifier: "AwsIamUserPolicy",
       });
     case 1:
-      return S.Array(AwsIamUserPolicy);
+      return S.Array(__S(256));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AttachedManagedPolicies: S.optional(AwsIamAttachedManagedPolicyList),
+          AttachedManagedPolicies: S.optional(__S(254)),
           CreateDate: S.optional(S.String),
-          GroupList: S.optional(StringList),
+          GroupList: S.optional(__S(4)),
           Path: S.optional(S.String),
-          PermissionsBoundary: S.optional(AwsIamPermissionsBoundary),
+          PermissionsBoundary: S.optional(__S(255)),
           UserId: S.optional(S.String),
           UserName: S.optional(S.String),
-          UserPolicyList: S.optional(AwsIamUserPolicyList),
+          UserPolicyList: S.optional(__S(257)),
         }),
       ).annotate({ identifier: "AwsIamUserDetails" });
     case 3:
@@ -17840,7 +13916,7 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "AwsIamPolicyVersion" });
     case 4:
-      return S.Array(AwsIamPolicyVersion);
+      return S.Array(__S(259));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -17853,7 +13929,7 @@ function __c32(j: number): any {
           PermissionsBoundaryUsageCount: S.optional(S.Number),
           PolicyId: S.optional(S.String),
           PolicyName: S.optional(S.String),
-          PolicyVersionList: S.optional(AwsIamPolicyVersionList),
+          PolicyVersionList: S.optional(__S(260)),
           UpdateDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsIamPolicyDetails" });
@@ -17885,13 +13961,13 @@ function __c33(j: number): any {
           ClientCertificateId: S.optional(S.String),
           CreatedDate: S.optional(S.String),
           Description: S.optional(S.String),
-          DefaultRouteSettings: S.optional(AwsApiGatewayV2RouteSettings),
+          DefaultRouteSettings: S.optional(__S(262)),
           DeploymentId: S.optional(S.String),
           LastUpdatedDate: S.optional(S.String),
-          RouteSettings: S.optional(AwsApiGatewayV2RouteSettings),
+          RouteSettings: S.optional(__S(262)),
           StageName: S.optional(S.String),
-          StageVariables: S.optional(FieldMap),
-          AccessLogSettings: S.optional(AwsApiGatewayAccessLogSettings),
+          StageVariables: S.optional(__S(31)),
+          AccessLogSettings: S.optional(__S(263)),
           AutoDeploy: S.optional(S.Boolean),
           LastDeploymentStatusMessage: S.optional(S.String),
           ApiGatewayManaged: S.optional(S.Boolean),
@@ -17902,12 +13978,12 @@ function __c33(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AllowOrigins: S.optional(NonEmptyStringList),
+          AllowOrigins: S.optional(__S(4)),
           AllowCredentials: S.optional(S.Boolean),
-          ExposeHeaders: S.optional(NonEmptyStringList),
+          ExposeHeaders: S.optional(__S(4)),
           MaxAge: S.optional(S.Number),
-          AllowMethods: S.optional(NonEmptyStringList),
-          AllowHeaders: S.optional(NonEmptyStringList),
+          AllowMethods: S.optional(__S(4)),
+          AllowHeaders: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "AwsCorsConfiguration" });
     case 2:
@@ -17922,7 +13998,7 @@ function __c33(j: number): any {
           Name: S.optional(S.String),
           ProtocolType: S.optional(S.String),
           RouteSelectionExpression: S.optional(S.String),
-          CorsConfiguration: S.optional(AwsCorsConfiguration),
+          CorsConfiguration: S.optional(__S(265)),
         }),
       ).annotate({
         identifier: "AwsApiGatewayV2ApiDetails",
@@ -17934,7 +14010,7 @@ function __c33(j: number): any {
         identifier: "AwsDynamoDbTableAttributeDefinition",
       });
     case 4:
-      return S.Array(AwsDynamoDbTableAttributeDefinition);
+      return S.Array(__S(267));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -17951,7 +14027,7 @@ function __c33(j: number): any {
         identifier: "AwsDynamoDbTableKeySchema",
       });
     case 7:
-      return S.Array(AwsDynamoDbTableKeySchema);
+      return S.Array(__S(270));
   }
 }
 function __c34(j: number): any {
@@ -17959,7 +14035,7 @@ function __c34(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          NonKeyAttributes: S.optional(StringList),
+          NonKeyAttributes: S.optional(__S(4)),
           ProjectionType: S.optional(S.String),
         }),
       ).annotate({
@@ -17986,28 +14062,28 @@ function __c34(j: number): any {
           IndexSizeBytes: S.optional(S.Number),
           IndexStatus: S.optional(S.String),
           ItemCount: S.optional(S.Number),
-          KeySchema: S.optional(AwsDynamoDbTableKeySchemaList),
-          Projection: S.optional(AwsDynamoDbTableProjection),
-          ProvisionedThroughput: S.optional(AwsDynamoDbTableProvisionedThroughput),
+          KeySchema: S.optional(__S(271)),
+          Projection: S.optional(__S(272)),
+          ProvisionedThroughput: S.optional(__S(273)),
         }),
       ).annotate({
         identifier: "AwsDynamoDbTableGlobalSecondaryIndex",
       });
     case 3:
-      return S.Array(AwsDynamoDbTableGlobalSecondaryIndex);
+      return S.Array(__S(274));
     case 4:
       return S.suspend(() =>
         S.Struct({
           IndexArn: S.optional(S.String),
           IndexName: S.optional(S.String),
-          KeySchema: S.optional(AwsDynamoDbTableKeySchemaList),
-          Projection: S.optional(AwsDynamoDbTableProjection),
+          KeySchema: S.optional(__S(271)),
+          Projection: S.optional(__S(272)),
         }),
       ).annotate({
         identifier: "AwsDynamoDbTableLocalSecondaryIndex",
       });
     case 5:
-      return S.Array(AwsDynamoDbTableLocalSecondaryIndex);
+      return S.Array(__S(276));
     case 6:
       return S.suspend(() => S.Struct({ ReadCapacityUnits: S.optional(S.Number) })).annotate({
         identifier: "AwsDynamoDbTableProvisionedThroughputOverride",
@@ -18016,7 +14092,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IndexName: S.optional(S.String),
-          ProvisionedThroughputOverride: S.optional(AwsDynamoDbTableProvisionedThroughputOverride),
+          ProvisionedThroughputOverride: S.optional(__S(278)),
         }),
       ).annotate({
         identifier: "AwsDynamoDbTableReplicaGlobalSecondaryIndex",
@@ -18026,20 +14102,20 @@ function __c34(j: number): any {
 function __c35(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsDynamoDbTableReplicaGlobalSecondaryIndex);
+      return S.Array(__S(279));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          GlobalSecondaryIndexes: S.optional(AwsDynamoDbTableReplicaGlobalSecondaryIndexList),
+          GlobalSecondaryIndexes: S.optional(__S(280)),
           KmsMasterKeyId: S.optional(S.String),
-          ProvisionedThroughputOverride: S.optional(AwsDynamoDbTableProvisionedThroughputOverride),
+          ProvisionedThroughputOverride: S.optional(__S(278)),
           RegionName: S.optional(S.String),
           ReplicaStatus: S.optional(S.String),
           ReplicaStatusDescription: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsDynamoDbTableReplica" });
     case 2:
-      return S.Array(AwsDynamoDbTableReplica);
+      return S.Array(__S(281));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -18071,21 +14147,21 @@ function __c35(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          AttributeDefinitions: S.optional(AwsDynamoDbTableAttributeDefinitionList),
-          BillingModeSummary: S.optional(AwsDynamoDbTableBillingModeSummary),
+          AttributeDefinitions: S.optional(__S(268)),
+          BillingModeSummary: S.optional(__S(269)),
           CreationDateTime: S.optional(S.String),
-          GlobalSecondaryIndexes: S.optional(AwsDynamoDbTableGlobalSecondaryIndexList),
+          GlobalSecondaryIndexes: S.optional(__S(275)),
           GlobalTableVersion: S.optional(S.String),
           ItemCount: S.optional(S.Number),
-          KeySchema: S.optional(AwsDynamoDbTableKeySchemaList),
+          KeySchema: S.optional(__S(271)),
           LatestStreamArn: S.optional(S.String),
           LatestStreamLabel: S.optional(S.String),
-          LocalSecondaryIndexes: S.optional(AwsDynamoDbTableLocalSecondaryIndexList),
-          ProvisionedThroughput: S.optional(AwsDynamoDbTableProvisionedThroughput),
-          Replicas: S.optional(AwsDynamoDbTableReplicaList),
-          RestoreSummary: S.optional(AwsDynamoDbTableRestoreSummary),
-          SseDescription: S.optional(AwsDynamoDbTableSseDescription),
-          StreamSpecification: S.optional(AwsDynamoDbTableStreamSpecification),
+          LocalSecondaryIndexes: S.optional(__S(277)),
+          ProvisionedThroughput: S.optional(__S(273)),
+          Replicas: S.optional(__S(282)),
+          RestoreSummary: S.optional(__S(283)),
+          SseDescription: S.optional(__S(284)),
+          StreamSpecification: S.optional(__S(285)),
           TableId: S.optional(S.String),
           TableName: S.optional(S.String),
           TableSizeBytes: S.optional(S.Number),
@@ -18117,13 +14193,13 @@ function __c35(j: number): any {
 function __c36(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsApiGatewayMethodSettings);
+      return S.Array(__S(287));
     case 1:
       return S.suspend(() =>
         S.Struct({
           PercentTraffic: S.optional(S.Number),
           DeploymentId: S.optional(S.String),
-          StageVariableOverrides: S.optional(FieldMap),
+          StageVariableOverrides: S.optional(__S(31)),
           UseStageCache: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -18139,11 +14215,11 @@ function __c36(j: number): any {
           CacheClusterEnabled: S.optional(S.Boolean),
           CacheClusterSize: S.optional(S.String),
           CacheClusterStatus: S.optional(S.String),
-          MethodSettings: S.optional(AwsApiGatewayMethodSettingsList),
-          Variables: S.optional(FieldMap),
+          MethodSettings: S.optional(__S(288)),
+          Variables: S.optional(__S(31)),
           DocumentationVersion: S.optional(S.String),
-          AccessLogSettings: S.optional(AwsApiGatewayAccessLogSettings),
-          CanarySettings: S.optional(AwsApiGatewayCanarySettings),
+          AccessLogSettings: S.optional(__S(263)),
+          CanarySettings: S.optional(__S(289)),
           TracingEnabled: S.optional(S.Boolean),
           CreatedDate: S.optional(S.String),
           LastUpdatedDate: S.optional(S.String),
@@ -18153,7 +14229,7 @@ function __c36(j: number): any {
         identifier: "AwsApiGatewayStageDetails",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Types: S.optional(NonEmptyStringList) })).annotate({
+      return S.suspend(() => S.Struct({ Types: S.optional(__S(4)) })).annotate({
         identifier: "AwsApiGatewayEndpointConfiguration",
       });
     case 4:
@@ -18164,10 +14240,10 @@ function __c36(j: number): any {
           Description: S.optional(S.String),
           CreatedDate: S.optional(S.String),
           Version: S.optional(S.String),
-          BinaryMediaTypes: S.optional(NonEmptyStringList),
+          BinaryMediaTypes: S.optional(__S(4)),
           MinimumCompressionSize: S.optional(S.Number),
           ApiKeySource: S.optional(S.String),
-          EndpointConfiguration: S.optional(AwsApiGatewayEndpointConfiguration),
+          EndpointConfiguration: S.optional(__S(291)),
         }),
       ).annotate({
         identifier: "AwsApiGatewayRestApiDetails",
@@ -18218,15 +14294,15 @@ function __c36(j: number): any {
         }),
       ).annotate({ identifier: "AwsSsmComplianceSummary" });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ ComplianceSummary: S.optional(AwsSsmComplianceSummary) }),
-      ).annotate({ identifier: "AwsSsmPatch" });
+      return S.suspend(() => S.Struct({ ComplianceSummary: S.optional(__S(294)) })).annotate({
+        identifier: "AwsSsmPatch",
+      });
   }
 }
 function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Patch: S.optional(AwsSsmPatch) })).annotate({
+      return S.suspend(() => S.Struct({ Patch: S.optional(__S(295)) })).annotate({
         identifier: "AwsSsmPatchComplianceDetails",
       });
     case 1:
@@ -18243,9 +14319,9 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DomainName: S.optional(S.String),
-          ResourceRecord: S.optional(AwsCertificateManagerCertificateResourceRecord),
+          ResourceRecord: S.optional(__S(297)),
           ValidationDomain: S.optional(S.String),
-          ValidationEmails: S.optional(StringList),
+          ValidationEmails: S.optional(__S(4)),
           ValidationMethod: S.optional(S.String),
           ValidationStatus: S.optional(S.String),
         }),
@@ -18253,7 +14329,7 @@ function __c37(j: number): any {
         identifier: "AwsCertificateManagerCertificateDomainValidationOption",
       });
     case 3:
-      return S.Array(AwsCertificateManagerCertificateDomainValidationOption);
+      return S.Array(__S(298));
     case 4:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), OId: S.optional(S.String) }),
@@ -18261,13 +14337,13 @@ function __c37(j: number): any {
         identifier: "AwsCertificateManagerCertificateExtendedKeyUsage",
       });
     case 5:
-      return S.Array(AwsCertificateManagerCertificateExtendedKeyUsage);
+      return S.Array(__S(300));
     case 6:
       return S.suspend(() => S.Struct({ Name: S.optional(S.String) })).annotate({
         identifier: "AwsCertificateManagerCertificateKeyUsage",
       });
     case 7:
-      return S.Array(AwsCertificateManagerCertificateKeyUsage);
+      return S.Array(__S(302));
   }
 }
 function __c38(j: number): any {
@@ -18281,9 +14357,7 @@ function __c38(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DomainValidationOptions: S.optional(
-            AwsCertificateManagerCertificateDomainValidationOptions,
-          ),
+          DomainValidationOptions: S.optional(__S(299)),
           RenewalStatus: S.optional(S.String),
           RenewalStatusReason: S.optional(S.String),
           UpdatedAt: S.optional(S.String),
@@ -18297,27 +14371,25 @@ function __c38(j: number): any {
           CertificateAuthorityArn: S.optional(S.String),
           CreatedAt: S.optional(S.String),
           DomainName: S.optional(S.String),
-          DomainValidationOptions: S.optional(
-            AwsCertificateManagerCertificateDomainValidationOptions,
-          ),
-          ExtendedKeyUsages: S.optional(AwsCertificateManagerCertificateExtendedKeyUsages),
+          DomainValidationOptions: S.optional(__S(299)),
+          ExtendedKeyUsages: S.optional(__S(301)),
           FailureReason: S.optional(S.String),
           ImportedAt: S.optional(S.String),
-          InUseBy: S.optional(StringList),
+          InUseBy: S.optional(__S(4)),
           IssuedAt: S.optional(S.String),
           Issuer: S.optional(S.String),
           KeyAlgorithm: S.optional(S.String),
-          KeyUsages: S.optional(AwsCertificateManagerCertificateKeyUsages),
+          KeyUsages: S.optional(__S(303)),
           NotAfter: S.optional(S.String),
           NotBefore: S.optional(S.String),
-          Options: S.optional(AwsCertificateManagerCertificateOptions),
+          Options: S.optional(__S(304)),
           RenewalEligibility: S.optional(S.String),
-          RenewalSummary: S.optional(AwsCertificateManagerCertificateRenewalSummary),
+          RenewalSummary: S.optional(__S(305)),
           Serial: S.optional(S.String),
           SignatureAlgorithm: S.optional(S.String),
           Status: S.optional(S.String),
           Subject: S.optional(S.String),
-          SubjectAlternativeNames: S.optional(StringList),
+          SubjectAlternativeNames: S.optional(__S(4)),
           Type: S.optional(S.String),
         }),
       ).annotate({
@@ -18334,7 +14406,7 @@ function __c38(j: number): any {
         identifier: "AwsRedshiftClusterClusterNode",
       });
     case 4:
-      return S.Array(AwsRedshiftClusterClusterNode);
+      return S.Array(__S(307));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -18346,11 +14418,11 @@ function __c38(j: number): any {
         identifier: "AwsRedshiftClusterClusterParameterStatus",
       });
     case 6:
-      return S.Array(AwsRedshiftClusterClusterParameterStatus);
+      return S.Array(__S(309));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ClusterParameterStatusList: S.optional(AwsRedshiftClusterClusterParameterStatusList),
+          ClusterParameterStatusList: S.optional(__S(310)),
           ParameterApplyStatus: S.optional(S.String),
           ParameterGroupName: S.optional(S.String),
         }),
@@ -18362,7 +14434,7 @@ function __c38(j: number): any {
 function __c39(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsRedshiftClusterClusterParameterGroup);
+      return S.Array(__S(311));
     case 1:
       return S.suspend(() =>
         S.Struct({ ClusterSecurityGroupName: S.optional(S.String), Status: S.optional(S.String) }),
@@ -18370,7 +14442,7 @@ function __c39(j: number): any {
         identifier: "AwsRedshiftClusterClusterSecurityGroup",
       });
     case 2:
-      return S.Array(AwsRedshiftClusterClusterSecurityGroup);
+      return S.Array(__S(313));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -18393,7 +14465,7 @@ function __c39(j: number): any {
         identifier: "AwsRedshiftClusterDeferredMaintenanceWindow",
       });
     case 5:
-      return S.Array(AwsRedshiftClusterDeferredMaintenanceWindow);
+      return S.Array(__S(316));
     case 6:
       return S.suspend(() =>
         S.Struct({ ElasticIp: S.optional(S.String), Status: S.optional(S.String) }),
@@ -18427,7 +14499,7 @@ function __c40(j: number): any {
         identifier: "AwsRedshiftClusterIamRole",
       });
     case 2:
-      return S.Array(AwsRedshiftClusterIamRole);
+      return S.Array(__S(321));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -18472,7 +14544,7 @@ function __c40(j: number): any {
         identifier: "AwsRedshiftClusterVpcSecurityGroup",
       });
     case 7:
-      return S.Array(AwsRedshiftClusterVpcSecurityGroup);
+      return S.Array(__S(326));
   }
 }
 function __c41(j: number): any {
@@ -18499,26 +14571,26 @@ function __c41(j: number): any {
           ClusterAvailabilityStatus: S.optional(S.String),
           ClusterCreateTime: S.optional(S.String),
           ClusterIdentifier: S.optional(S.String),
-          ClusterNodes: S.optional(AwsRedshiftClusterClusterNodes),
-          ClusterParameterGroups: S.optional(AwsRedshiftClusterClusterParameterGroups),
+          ClusterNodes: S.optional(__S(308)),
+          ClusterParameterGroups: S.optional(__S(312)),
           ClusterPublicKey: S.optional(S.String),
           ClusterRevisionNumber: S.optional(S.String),
-          ClusterSecurityGroups: S.optional(AwsRedshiftClusterClusterSecurityGroups),
-          ClusterSnapshotCopyStatus: S.optional(AwsRedshiftClusterClusterSnapshotCopyStatus),
+          ClusterSecurityGroups: S.optional(__S(314)),
+          ClusterSnapshotCopyStatus: S.optional(__S(315)),
           ClusterStatus: S.optional(S.String),
           ClusterSubnetGroupName: S.optional(S.String),
           ClusterVersion: S.optional(S.String),
           DBName: S.optional(S.String),
-          DeferredMaintenanceWindows: S.optional(AwsRedshiftClusterDeferredMaintenanceWindows),
-          ElasticIpStatus: S.optional(AwsRedshiftClusterElasticIpStatus),
+          DeferredMaintenanceWindows: S.optional(__S(317)),
+          ElasticIpStatus: S.optional(__S(318)),
           ElasticResizeNumberOfNodeOptions: S.optional(S.String),
           Encrypted: S.optional(S.Boolean),
-          Endpoint: S.optional(AwsRedshiftClusterEndpoint),
+          Endpoint: S.optional(__S(319)),
           EnhancedVpcRouting: S.optional(S.Boolean),
           ExpectedNextSnapshotScheduleTime: S.optional(S.String),
           ExpectedNextSnapshotScheduleTimeStatus: S.optional(S.String),
-          HsmStatus: S.optional(AwsRedshiftClusterHsmStatus),
-          IamRoles: S.optional(AwsRedshiftClusterIamRoles),
+          HsmStatus: S.optional(__S(320)),
+          IamRoles: S.optional(__S(322)),
           KmsKeyId: S.optional(S.String),
           MaintenanceTrackName: S.optional(S.String),
           ManualSnapshotRetentionPeriod: S.optional(S.Number),
@@ -18526,29 +14598,29 @@ function __c41(j: number): any {
           NextMaintenanceWindowStartTime: S.optional(S.String),
           NodeType: S.optional(S.String),
           NumberOfNodes: S.optional(S.Number),
-          PendingActions: S.optional(StringList),
-          PendingModifiedValues: S.optional(AwsRedshiftClusterPendingModifiedValues),
+          PendingActions: S.optional(__S(4)),
+          PendingModifiedValues: S.optional(__S(323)),
           PreferredMaintenanceWindow: S.optional(S.String),
           PubliclyAccessible: S.optional(S.Boolean),
-          ResizeInfo: S.optional(AwsRedshiftClusterResizeInfo),
-          RestoreStatus: S.optional(AwsRedshiftClusterRestoreStatus),
+          ResizeInfo: S.optional(__S(324)),
+          RestoreStatus: S.optional(__S(325)),
           SnapshotScheduleIdentifier: S.optional(S.String),
           SnapshotScheduleState: S.optional(S.String),
           VpcId: S.optional(S.String),
-          VpcSecurityGroups: S.optional(AwsRedshiftClusterVpcSecurityGroups),
-          LoggingStatus: S.optional(AwsRedshiftClusterLoggingStatus),
+          VpcSecurityGroups: S.optional(__S(327)),
+          LoggingStatus: S.optional(__S(328)),
         }),
       ).annotate({
         identifier: "AwsRedshiftClusterDetails",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ InstancePort: S.optional(S.Number), PolicyNames: S.optional(StringList) }),
+        S.Struct({ InstancePort: S.optional(S.Number), PolicyNames: S.optional(__S(4)) }),
       ).annotate({
         identifier: "AwsElbLoadBalancerBackendServerDescription",
       });
     case 3:
-      return S.Array(AwsElbLoadBalancerBackendServerDescription);
+      return S.Array(__S(330));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -18566,7 +14638,7 @@ function __c41(j: number): any {
         identifier: "AwsElbLoadBalancerInstance",
       });
     case 6:
-      return S.Array(AwsElbLoadBalancerInstance);
+      return S.Array(__S(333));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -18586,14 +14658,14 @@ function __c42(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Listener: S.optional(AwsElbLoadBalancerListener),
-          PolicyNames: S.optional(StringList),
+          Listener: S.optional(__S(335)),
+          PolicyNames: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "AwsElbLoadBalancerListenerDescription",
       });
     case 1:
-      return S.Array(AwsElbLoadBalancerListenerDescription);
+      return S.Array(__S(336));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -18616,15 +14688,15 @@ function __c42(j: number): any {
         identifier: "AwsElbLoadBalancerConnectionSettings",
       });
     case 5:
-      return S.Array(AwsElbLoadBalancerAdditionalAttribute);
+      return S.Array(__S(190));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          AccessLog: S.optional(AwsElbLoadBalancerAccessLog),
-          ConnectionDraining: S.optional(AwsElbLoadBalancerConnectionDraining),
-          ConnectionSettings: S.optional(AwsElbLoadBalancerConnectionSettings),
-          CrossZoneLoadBalancing: S.optional(AwsElbLoadBalancerCrossZoneLoadBalancing),
-          AdditionalAttributes: S.optional(AwsElbLoadBalancerAdditionalAttributeList),
+          AccessLog: S.optional(__S(338)),
+          ConnectionDraining: S.optional(__S(339)),
+          ConnectionSettings: S.optional(__S(340)),
+          CrossZoneLoadBalancing: S.optional(__S(205)),
+          AdditionalAttributes: S.optional(__S(341)),
         }),
       ).annotate({
         identifier: "AwsElbLoadBalancerAttributes",
@@ -18640,7 +14712,7 @@ function __c42(j: number): any {
 function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsElbAppCookieStickinessPolicy);
+      return S.Array(__S(343));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -18651,13 +14723,13 @@ function __c43(j: number): any {
         identifier: "AwsElbLbCookieStickinessPolicy",
       });
     case 2:
-      return S.Array(AwsElbLbCookieStickinessPolicy);
+      return S.Array(__S(345));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AppCookieStickinessPolicies: S.optional(AwsElbAppCookieStickinessPolicies),
-          LbCookieStickinessPolicies: S.optional(AwsElbLbCookieStickinessPolicies),
-          OtherPolicies: S.optional(StringList),
+          AppCookieStickinessPolicies: S.optional(__S(344)),
+          LbCookieStickinessPolicies: S.optional(__S(346)),
+          OtherPolicies: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "AwsElbLoadBalancerPolicies",
@@ -18671,22 +14743,22 @@ function __c43(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          AvailabilityZones: S.optional(StringList),
-          BackendServerDescriptions: S.optional(AwsElbLoadBalancerBackendServerDescriptions),
+          AvailabilityZones: S.optional(__S(4)),
+          BackendServerDescriptions: S.optional(__S(331)),
           CanonicalHostedZoneName: S.optional(S.String),
           CanonicalHostedZoneNameID: S.optional(S.String),
           CreatedTime: S.optional(S.String),
           DnsName: S.optional(S.String),
-          HealthCheck: S.optional(AwsElbLoadBalancerHealthCheck),
-          Instances: S.optional(AwsElbLoadBalancerInstances),
-          ListenerDescriptions: S.optional(AwsElbLoadBalancerListenerDescriptions),
-          LoadBalancerAttributes: S.optional(AwsElbLoadBalancerAttributes),
+          HealthCheck: S.optional(__S(332)),
+          Instances: S.optional(__S(334)),
+          ListenerDescriptions: S.optional(__S(337)),
+          LoadBalancerAttributes: S.optional(__S(342)),
           LoadBalancerName: S.optional(S.String),
-          Policies: S.optional(AwsElbLoadBalancerPolicies),
+          Policies: S.optional(__S(347)),
           Scheme: S.optional(S.String),
-          SecurityGroups: S.optional(StringList),
-          SourceSecurityGroup: S.optional(AwsElbLoadBalancerSourceSecurityGroup),
-          Subnets: S.optional(StringList),
+          SecurityGroups: S.optional(__S(4)),
+          SourceSecurityGroup: S.optional(__S(348)),
+          Subnets: S.optional(__S(4)),
           VpcId: S.optional(S.String),
         }),
       ).annotate({
@@ -18695,11 +14767,11 @@ function __c43(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          AttachedManagedPolicies: S.optional(AwsIamAttachedManagedPolicyList),
+          AttachedManagedPolicies: S.optional(__S(254)),
           CreateDate: S.optional(S.String),
           GroupId: S.optional(S.String),
           GroupName: S.optional(S.String),
-          GroupPolicyList: S.optional(AwsIamGroupPolicyList),
+          GroupPolicyList: S.optional(__S(257)),
           Path: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsIamGroupDetails" });
@@ -18721,7 +14793,7 @@ function __c43(j: number): any {
 function __c44(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsIamInstanceProfileRole);
+      return S.Array(__S(351));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -18730,22 +14802,22 @@ function __c44(j: number): any {
           InstanceProfileId: S.optional(S.String),
           InstanceProfileName: S.optional(S.String),
           Path: S.optional(S.String),
-          Roles: S.optional(AwsIamInstanceProfileRoles),
+          Roles: S.optional(__S(352)),
         }),
       ).annotate({ identifier: "AwsIamInstanceProfile" });
     case 2:
-      return S.Array(AwsIamInstanceProfile);
+      return S.Array(__S(353));
     case 3:
       return S.suspend(() =>
         S.Struct({
           AssumeRolePolicyDocument: S.optional(S.String),
-          AttachedManagedPolicies: S.optional(AwsIamAttachedManagedPolicyList),
+          AttachedManagedPolicies: S.optional(__S(254)),
           CreateDate: S.optional(S.String),
-          InstanceProfileList: S.optional(AwsIamInstanceProfileList),
-          PermissionsBoundary: S.optional(AwsIamPermissionsBoundary),
+          InstanceProfileList: S.optional(__S(354)),
+          PermissionsBoundary: S.optional(__S(255)),
           RoleId: S.optional(S.String),
           RoleName: S.optional(S.String),
-          RolePolicyList: S.optional(AwsIamRolePolicyList),
+          RolePolicyList: S.optional(__S(257)),
           MaxSessionDuration: S.optional(S.Number),
           Path: S.optional(S.String),
         }),
@@ -18789,8 +14861,8 @@ function __c45(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Variables: S.optional(FieldMap),
-          Error: S.optional(AwsLambdaFunctionEnvironmentError),
+          Variables: S.optional(__S(31)),
+          Error: S.optional(__S(359)),
         }),
       ).annotate({
         identifier: "AwsLambdaFunctionEnvironment",
@@ -18800,7 +14872,7 @@ function __c45(j: number): any {
         S.Struct({ Arn: S.optional(S.String), CodeSize: S.optional(S.Number) }),
       ).annotate({ identifier: "AwsLambdaFunctionLayer" });
     case 2:
-      return S.Array(AwsLambdaFunctionLayer);
+      return S.Array(__S(361));
     case 3:
       return S.suspend(() => S.Struct({ Mode: S.optional(S.String) })).annotate({
         identifier: "AwsLambdaFunctionTracingConfig",
@@ -18808,8 +14880,8 @@ function __c45(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          SecurityGroupIds: S.optional(NonEmptyStringList),
-          SubnetIds: S.optional(NonEmptyStringList),
+          SecurityGroupIds: S.optional(__S(4)),
+          SubnetIds: S.optional(__S(4)),
           VpcId: S.optional(S.String),
         }),
       ).annotate({
@@ -18818,25 +14890,25 @@ function __c45(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Code: S.optional(AwsLambdaFunctionCode),
+          Code: S.optional(__S(357)),
           CodeSha256: S.optional(S.String),
-          DeadLetterConfig: S.optional(AwsLambdaFunctionDeadLetterConfig),
-          Environment: S.optional(AwsLambdaFunctionEnvironment),
+          DeadLetterConfig: S.optional(__S(358)),
+          Environment: S.optional(__S(360)),
           FunctionName: S.optional(S.String),
           Handler: S.optional(S.String),
           KmsKeyArn: S.optional(S.String),
           LastModified: S.optional(S.String),
-          Layers: S.optional(AwsLambdaFunctionLayerList),
+          Layers: S.optional(__S(362)),
           MasterArn: S.optional(S.String),
           MemorySize: S.optional(S.Number),
           RevisionId: S.optional(S.String),
           Role: S.optional(S.String),
           Runtime: S.optional(S.String),
           Timeout: S.optional(S.Number),
-          TracingConfig: S.optional(AwsLambdaFunctionTracingConfig),
-          VpcConfig: S.optional(AwsLambdaFunctionVpcConfig),
+          TracingConfig: S.optional(__S(363)),
+          VpcConfig: S.optional(__S(364)),
           Version: S.optional(S.String),
-          Architectures: S.optional(NonEmptyStringList),
+          Architectures: S.optional(__S(4)),
           PackageType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsLambdaFunctionDetails" });
@@ -18844,7 +14916,7 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Version: S.optional(S.Number),
-          CompatibleRuntimes: S.optional(NonEmptyStringList),
+          CompatibleRuntimes: S.optional(__S(4)),
           CreatedDate: S.optional(S.String),
         }),
       ).annotate({
@@ -18865,7 +14937,7 @@ function __c45(j: number): any {
 function __c46(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsRdsDbInstanceAssociatedRole);
+      return S.Array(__S(367));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -18881,7 +14953,7 @@ function __c46(j: number): any {
         identifier: "AwsRdsDbInstanceVpcSecurityGroup",
       });
     case 3:
-      return S.Array(AwsRdsDbInstanceVpcSecurityGroup);
+      return S.Array(__S(370));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -18890,19 +14962,19 @@ function __c46(j: number): any {
         }),
       ).annotate({ identifier: "AwsRdsDbParameterGroup" });
     case 5:
-      return S.Array(AwsRdsDbParameterGroup);
+      return S.Array(__S(372));
     case 6:
       return S.suspend(() =>
         S.Struct({
           SubnetIdentifier: S.optional(S.String),
-          SubnetAvailabilityZone: S.optional(AwsRdsDbSubnetGroupSubnetAvailabilityZone),
+          SubnetAvailabilityZone: S.optional(__S(302)),
           SubnetStatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AwsRdsDbSubnetGroupSubnet",
       });
     case 7:
-      return S.Array(AwsRdsDbSubnetGroupSubnet);
+      return S.Array(__S(374));
   }
 }
 function __c47(j: number): any {
@@ -18914,15 +14986,15 @@ function __c47(j: number): any {
           DbSubnetGroupDescription: S.optional(S.String),
           VpcId: S.optional(S.String),
           SubnetGroupStatus: S.optional(S.String),
-          Subnets: S.optional(AwsRdsDbSubnetGroupSubnets),
+          Subnets: S.optional(__S(375)),
           DbSubnetGroupArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsRdsDbSubnetGroup" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          LogTypesToEnable: S.optional(StringList),
-          LogTypesToDisable: S.optional(StringList),
+          LogTypesToEnable: S.optional(__S(4)),
+          LogTypesToDisable: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "AwsRdsPendingCloudWatchLogsExports",
@@ -18932,7 +15004,7 @@ function __c47(j: number): any {
         S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "AwsRdsDbProcessorFeature" });
     case 3:
-      return S.Array(AwsRdsDbProcessorFeature);
+      return S.Array(__S(378));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -18949,8 +15021,8 @@ function __c47(j: number): any {
           StorageType: S.optional(S.String),
           CaCertificateIdentifier: S.optional(S.String),
           DbSubnetGroupName: S.optional(S.String),
-          PendingCloudWatchLogsExports: S.optional(AwsRdsPendingCloudWatchLogsExports),
-          ProcessorFeatures: S.optional(AwsRdsDbProcessorFeatures),
+          PendingCloudWatchLogsExports: S.optional(__S(377)),
+          ProcessorFeatures: S.optional(__S(379)),
         }),
       ).annotate({
         identifier: "AwsRdsDbPendingModifiedValues",
@@ -18962,7 +15034,7 @@ function __c47(j: number): any {
         identifier: "AwsRdsDbOptionGroupMembership",
       });
     case 6:
-      return S.Array(AwsRdsDbOptionGroupMembership);
+      return S.Array(__S(381));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -18977,7 +15049,7 @@ function __c47(j: number): any {
 function __c48(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsRdsDbStatusInfo);
+      return S.Array(__S(383));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -18988,11 +15060,11 @@ function __c48(j: number): any {
         }),
       ).annotate({ identifier: "AwsRdsDbDomainMembership" });
     case 2:
-      return S.Array(AwsRdsDbDomainMembership);
+      return S.Array(__S(385));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AssociatedRoles: S.optional(AwsRdsDbInstanceAssociatedRoles),
+          AssociatedRoles: S.optional(__S(368)),
           CACertificateIdentifier: S.optional(S.String),
           DBClusterIdentifier: S.optional(S.String),
           DBInstanceIdentifier: S.optional(S.String),
@@ -19001,7 +15073,7 @@ function __c48(j: number): any {
           DbiResourceId: S.optional(S.String),
           DBName: S.optional(S.String),
           DeletionProtection: S.optional(S.Boolean),
-          Endpoint: S.optional(AwsRdsDbInstanceEndpoint),
+          Endpoint: S.optional(__S(369)),
           Engine: S.optional(S.String),
           EngineVersion: S.optional(S.String),
           IAMDatabaseAuthenticationEnabled: S.optional(S.Boolean),
@@ -19010,7 +15082,7 @@ function __c48(j: number): any {
           PubliclyAccessible: S.optional(S.Boolean),
           StorageEncrypted: S.optional(S.Boolean),
           TdeCredentialArn: S.optional(S.String),
-          VpcSecurityGroups: S.optional(AwsRdsDbInstanceVpcSecurityGroups),
+          VpcSecurityGroups: S.optional(__S(371)),
           MultiAz: S.optional(S.Boolean),
           EnhancedMonitoringResourceArn: S.optional(S.String),
           DbInstanceStatus: S.optional(S.String),
@@ -19018,25 +15090,25 @@ function __c48(j: number): any {
           AllocatedStorage: S.optional(S.Number),
           PreferredBackupWindow: S.optional(S.String),
           BackupRetentionPeriod: S.optional(S.Number),
-          DbSecurityGroups: S.optional(StringList),
-          DbParameterGroups: S.optional(AwsRdsDbParameterGroups),
+          DbSecurityGroups: S.optional(__S(4)),
+          DbParameterGroups: S.optional(__S(373)),
           AvailabilityZone: S.optional(S.String),
-          DbSubnetGroup: S.optional(AwsRdsDbSubnetGroup),
+          DbSubnetGroup: S.optional(__S(376)),
           PreferredMaintenanceWindow: S.optional(S.String),
-          PendingModifiedValues: S.optional(AwsRdsDbPendingModifiedValues),
+          PendingModifiedValues: S.optional(__S(380)),
           LatestRestorableTime: S.optional(S.String),
           AutoMinorVersionUpgrade: S.optional(S.Boolean),
           ReadReplicaSourceDBInstanceIdentifier: S.optional(S.String),
-          ReadReplicaDBInstanceIdentifiers: S.optional(StringList),
-          ReadReplicaDBClusterIdentifiers: S.optional(StringList),
+          ReadReplicaDBInstanceIdentifiers: S.optional(__S(4)),
+          ReadReplicaDBClusterIdentifiers: S.optional(__S(4)),
           LicenseModel: S.optional(S.String),
           Iops: S.optional(S.Number),
-          OptionGroupMemberships: S.optional(AwsRdsDbOptionGroupMemberships),
+          OptionGroupMemberships: S.optional(__S(382)),
           CharacterSetName: S.optional(S.String),
           SecondaryAvailabilityZone: S.optional(S.String),
-          StatusInfos: S.optional(AwsRdsDbStatusInfos),
+          StatusInfos: S.optional(__S(384)),
           StorageType: S.optional(S.String),
-          DomainMemberships: S.optional(AwsRdsDbDomainMemberships),
+          DomainMemberships: S.optional(__S(386)),
           CopyTagsToSnapshot: S.optional(S.Boolean),
           MonitoringInterval: S.optional(S.Number),
           MonitoringRoleArn: S.optional(S.String),
@@ -19045,9 +15117,9 @@ function __c48(j: number): any {
           PerformanceInsightsEnabled: S.optional(S.Boolean),
           PerformanceInsightsKmsKeyId: S.optional(S.String),
           PerformanceInsightsRetentionPeriod: S.optional(S.Number),
-          EnabledCloudWatchLogsExports: S.optional(StringList),
-          ProcessorFeatures: S.optional(AwsRdsDbProcessorFeatures),
-          ListenerEndpoint: S.optional(AwsRdsDbInstanceEndpoint),
+          EnabledCloudWatchLogsExports: S.optional(__S(4)),
+          ProcessorFeatures: S.optional(__S(379)),
+          ListenerEndpoint: S.optional(__S(369)),
           MaxAllocatedStorage: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AwsRdsDbInstanceDetails" });
@@ -19056,12 +15128,12 @@ function __c48(j: number): any {
         S.Struct({ Endpoint: S.optional(S.String), Protocol: S.optional(S.String) }),
       ).annotate({ identifier: "AwsSnsTopicSubscription" });
     case 5:
-      return S.Array(AwsSnsTopicSubscription);
+      return S.Array(__S(388));
     case 6:
       return S.suspend(() =>
         S.Struct({
           KmsMasterKeyId: S.optional(S.String),
-          Subscription: S.optional(AwsSnsTopicSubscriptionList),
+          Subscription: S.optional(__S(389)),
           TopicName: S.optional(S.String),
           Owner: S.optional(S.String),
           SqsSuccessFeedbackRoleArn: S.optional(S.String),
@@ -19095,26 +15167,26 @@ function __c49(j: number): any {
         identifier: "WafExcludedRule",
       });
     case 2:
-      return S.Array(WafExcludedRule);
+      return S.Array(__S(393));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(WafAction),
-          ExcludedRules: S.optional(WafExcludedRuleList),
-          OverrideAction: S.optional(WafOverrideAction),
+          Action: S.optional(__S(392)),
+          ExcludedRules: S.optional(__S(394)),
+          OverrideAction: S.optional(__S(392)),
           Priority: S.optional(S.Number),
           RuleId: S.optional(S.String),
           Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsWafWebAclRule" });
     case 4:
-      return S.Array(AwsWafWebAclRule);
+      return S.Array(__S(395));
     case 5:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           DefaultAction: S.optional(S.String),
-          Rules: S.optional(AwsWafWebAclRuleList),
+          Rules: S.optional(__S(396)),
           WebAclId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsWafWebAclDetails" });
@@ -19146,7 +15218,7 @@ function __c49(j: number): any {
           KmsKeyId: S.optional(S.String),
           Timezone: S.optional(S.String),
           IamDatabaseAuthenticationEnabled: S.optional(S.Boolean),
-          ProcessorFeatures: S.optional(AwsRdsDbProcessorFeatures),
+          ProcessorFeatures: S.optional(__S(379)),
           DbiResourceId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsRdsDbSnapshotDetails" });
@@ -19154,7 +15226,7 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AttributeName: S.optional(S.String),
-          AttributeValues: S.optional(NonEmptyStringList),
+          AttributeValues: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "AwsRdsDbClusterSnapshotDbClusterSnapshotAttribute",
@@ -19164,11 +15236,11 @@ function __c49(j: number): any {
 function __c50(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsRdsDbClusterSnapshotDbClusterSnapshotAttribute);
+      return S.Array(__S(399));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AvailabilityZones: S.optional(StringList),
+          AvailabilityZones: S.optional(__S(4)),
           SnapshotCreateTime: S.optional(S.String),
           Engine: S.optional(S.String),
           AllocatedStorage: S.optional(S.Number),
@@ -19186,9 +15258,7 @@ function __c50(j: number): any {
           DbClusterIdentifier: S.optional(S.String),
           DbClusterSnapshotIdentifier: S.optional(S.String),
           IamDatabaseAuthenticationEnabled: S.optional(S.Boolean),
-          DbClusterSnapshotAttributes: S.optional(
-            AwsRdsDbClusterSnapshotDbClusterSnapshotAttributes,
-          ),
+          DbClusterSnapshotAttributes: S.optional(__S(400)),
         }),
       ).annotate({
         identifier: "AwsRdsDbClusterSnapshotDetails",
@@ -19200,7 +15270,7 @@ function __c50(j: number): any {
         identifier: "AwsRdsDbClusterAssociatedRole",
       });
     case 3:
-      return S.Array(AwsRdsDbClusterAssociatedRole);
+      return S.Array(__S(402));
     case 4:
       return S.suspend(() =>
         S.Struct({ DbClusterOptionGroupName: S.optional(S.String), Status: S.optional(S.String) }),
@@ -19208,7 +15278,7 @@ function __c50(j: number): any {
         identifier: "AwsRdsDbClusterOptionGroupMembership",
       });
     case 5:
-      return S.Array(AwsRdsDbClusterOptionGroupMembership);
+      return S.Array(__S(404));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -19219,7 +15289,7 @@ function __c50(j: number): any {
         }),
       ).annotate({ identifier: "AwsRdsDbClusterMember" });
     case 7:
-      return S.Array(AwsRdsDbClusterMember);
+      return S.Array(__S(406));
   }
 }
 function __c51(j: number): any {
@@ -19228,13 +15298,13 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AllocatedStorage: S.optional(S.Number),
-          AvailabilityZones: S.optional(StringList),
+          AvailabilityZones: S.optional(__S(4)),
           BackupRetentionPeriod: S.optional(S.Number),
           DatabaseName: S.optional(S.String),
           Status: S.optional(S.String),
           Endpoint: S.optional(S.String),
           ReaderEndpoint: S.optional(S.String),
-          CustomEndpoints: S.optional(StringList),
+          CustomEndpoints: S.optional(__S(4)),
           MultiAz: S.optional(S.Boolean),
           Engine: S.optional(S.String),
           EngineVersion: S.optional(S.String),
@@ -19242,27 +15312,27 @@ function __c51(j: number): any {
           MasterUsername: S.optional(S.String),
           PreferredBackupWindow: S.optional(S.String),
           PreferredMaintenanceWindow: S.optional(S.String),
-          ReadReplicaIdentifiers: S.optional(StringList),
-          VpcSecurityGroups: S.optional(AwsRdsDbInstanceVpcSecurityGroups),
+          ReadReplicaIdentifiers: S.optional(__S(4)),
+          VpcSecurityGroups: S.optional(__S(371)),
           HostedZoneId: S.optional(S.String),
           StorageEncrypted: S.optional(S.Boolean),
           KmsKeyId: S.optional(S.String),
           DbClusterResourceId: S.optional(S.String),
-          AssociatedRoles: S.optional(AwsRdsDbClusterAssociatedRoles),
+          AssociatedRoles: S.optional(__S(403)),
           ClusterCreateTime: S.optional(S.String),
-          EnabledCloudWatchLogsExports: S.optional(StringList),
+          EnabledCloudWatchLogsExports: S.optional(__S(4)),
           EngineMode: S.optional(S.String),
           DeletionProtection: S.optional(S.Boolean),
           HttpEndpointEnabled: S.optional(S.Boolean),
           ActivityStreamStatus: S.optional(S.String),
           CopyTagsToSnapshot: S.optional(S.Boolean),
           CrossAccountClone: S.optional(S.Boolean),
-          DomainMemberships: S.optional(AwsRdsDbDomainMemberships),
+          DomainMemberships: S.optional(__S(386)),
           DbClusterParameterGroup: S.optional(S.String),
           DbSubnetGroup: S.optional(S.String),
-          DbClusterOptionGroupMemberships: S.optional(AwsRdsDbClusterOptionGroupMemberships),
+          DbClusterOptionGroupMemberships: S.optional(__S(405)),
           DbClusterIdentifier: S.optional(S.String),
-          DbClusterMembers: S.optional(AwsRdsDbClusterMembers),
+          DbClusterMembers: S.optional(__S(407)),
           IamDatabaseAuthenticationEnabled: S.optional(S.Boolean),
           AutoMinorVersionUpgrade: S.optional(S.Boolean),
         }),
@@ -19274,7 +15344,7 @@ function __c51(j: number): any {
         identifier: "AwsEcsClusterClusterSettingsDetails",
       });
     case 2:
-      return S.Array(AwsEcsClusterClusterSettingsDetails);
+      return S.Array(__S(409));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -19291,9 +15361,7 @@ function __c51(j: number): any {
       return S.suspend(() =>
         S.Struct({
           KmsKeyId: S.optional(S.String),
-          LogConfiguration: S.optional(
-            AwsEcsClusterConfigurationExecuteCommandConfigurationLogConfigurationDetails,
-          ),
+          LogConfiguration: S.optional(__S(411)),
           Logging: S.optional(S.String),
         }),
       ).annotate({
@@ -19302,9 +15370,7 @@ function __c51(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ExecuteCommandConfiguration: S.optional(
-            AwsEcsClusterConfigurationExecuteCommandConfigurationDetails,
-          ),
+          ExecuteCommandConfiguration: S.optional(__S(412)),
         }),
       ).annotate({
         identifier: "AwsEcsClusterConfigurationDetails",
@@ -19320,7 +15386,7 @@ function __c51(j: number): any {
         identifier: "AwsEcsClusterDefaultCapacityProviderStrategyDetails",
       });
     case 7:
-      return S.Array(AwsEcsClusterDefaultCapacityProviderStrategyDetails);
+      return S.Array(__S(414));
   }
 }
 function __c52(j: number): any {
@@ -19330,12 +15396,10 @@ function __c52(j: number): any {
         S.Struct({
           ClusterArn: S.optional(S.String),
           ActiveServicesCount: S.optional(S.Number),
-          CapacityProviders: S.optional(NonEmptyStringList),
-          ClusterSettings: S.optional(AwsEcsClusterClusterSettingsList),
-          Configuration: S.optional(AwsEcsClusterConfigurationDetails),
-          DefaultCapacityProviderStrategy: S.optional(
-            AwsEcsClusterDefaultCapacityProviderStrategyList,
-          ),
+          CapacityProviders: S.optional(__S(4)),
+          ClusterSettings: S.optional(__S(410)),
+          Configuration: S.optional(__S(413)),
+          DefaultCapacityProviderStrategy: S.optional(__S(415)),
           ClusterName: S.optional(S.String),
           RegisteredContainerInstancesCount: S.optional(S.Number),
           RunningTasksCount: S.optional(S.Number),
@@ -19347,13 +15411,13 @@ function __c52(j: number): any {
         S.Struct({ SourceVolume: S.optional(S.String), ContainerPath: S.optional(S.String) }),
       ).annotate({ identifier: "AwsMountPoint" });
     case 2:
-      return S.Array(AwsMountPoint);
+      return S.Array(__S(417));
     case 3:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Image: S.optional(S.String),
-          MountPoints: S.optional(AwsMountPointList),
+          MountPoints: S.optional(__S(418)),
           Privileged: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AwsEcsContainerDetails" });
@@ -19364,7 +15428,7 @@ function __c52(j: number): any {
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsDependsOnDetails",
       });
     case 5:
-      return S.Array(AwsEcsTaskDefinitionContainerDefinitionsDependsOnDetails);
+      return S.Array(__S(420));
     case 6:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
@@ -19372,7 +15436,7 @@ function __c52(j: number): any {
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsEnvironmentDetails",
       });
     case 7:
-      return S.Array(AwsEcsTaskDefinitionContainerDefinitionsEnvironmentDetails);
+      return S.Array(__S(422));
   }
 }
 function __c53(j: number): any {
@@ -19384,7 +15448,7 @@ function __c53(j: number): any {
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsEnvironmentFilesDetails",
       });
     case 1:
-      return S.Array(AwsEcsTaskDefinitionContainerDefinitionsEnvironmentFilesDetails);
+      return S.Array(__S(424));
     case 2:
       return S.suspend(() =>
         S.Struct({ Hostname: S.optional(S.String), IpAddress: S.optional(S.String) }),
@@ -19392,17 +15456,17 @@ function __c53(j: number): any {
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsExtraHostsDetails",
       });
     case 3:
-      return S.Array(AwsEcsTaskDefinitionContainerDefinitionsExtraHostsDetails);
+      return S.Array(__S(426));
     case 4:
       return S.suspend(() =>
-        S.Struct({ Options: S.optional(FieldMap), Type: S.optional(S.String) }),
+        S.Struct({ Options: S.optional(__S(31)), Type: S.optional(S.String) }),
       ).annotate({
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsFirelensConfigurationDetails",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Command: S.optional(NonEmptyStringList),
+          Command: S.optional(__S(4)),
           Interval: S.optional(S.Number),
           Retries: S.optional(S.Number),
           StartPeriod: S.optional(S.Number),
@@ -19413,7 +15477,7 @@ function __c53(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Add: S.optional(NonEmptyStringList), Drop: S.optional(NonEmptyStringList) }),
+        S.Struct({ Add: S.optional(__S(4)), Drop: S.optional(__S(4)) }),
       ).annotate({
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersCapabilitiesDetails",
       });
@@ -19422,7 +15486,7 @@ function __c53(j: number): any {
         S.Struct({
           ContainerPath: S.optional(S.String),
           HostPath: S.optional(S.String),
-          Permissions: S.optional(NonEmptyStringList),
+          Permissions: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersDevicesDetails",
@@ -19432,31 +15496,29 @@ function __c53(j: number): any {
 function __c54(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersDevicesDetails);
+      return S.Array(__S(431));
     case 1:
       return S.suspend(() =>
         S.Struct({
           ContainerPath: S.optional(S.String),
-          MountOptions: S.optional(NonEmptyStringList),
+          MountOptions: S.optional(__S(4)),
           Size: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersTmpfsDetails",
       });
     case 2:
-      return S.Array(AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersTmpfsDetails);
+      return S.Array(__S(433));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Capabilities: S.optional(
-            AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersCapabilitiesDetails,
-          ),
-          Devices: S.optional(AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersDevicesList),
+          Capabilities: S.optional(__S(430)),
+          Devices: S.optional(__S(432)),
           InitProcessEnabled: S.optional(S.Boolean),
           MaxSwap: S.optional(S.Number),
           SharedMemorySize: S.optional(S.Number),
           Swappiness: S.optional(S.Number),
-          Tmpfs: S.optional(AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersTmpfsList),
+          Tmpfs: S.optional(__S(434)),
         }),
       ).annotate({
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersDetails",
@@ -19468,15 +15530,13 @@ function __c54(j: number): any {
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsLogConfigurationSecretOptionsDetails",
       });
     case 5:
-      return S.Array(AwsEcsTaskDefinitionContainerDefinitionsLogConfigurationSecretOptionsDetails);
+      return S.Array(__S(436));
     case 6:
       return S.suspend(() =>
         S.Struct({
           LogDriver: S.optional(S.String),
-          Options: S.optional(FieldMap),
-          SecretOptions: S.optional(
-            AwsEcsTaskDefinitionContainerDefinitionsLogConfigurationSecretOptionsList,
-          ),
+          Options: S.optional(__S(31)),
+          SecretOptions: S.optional(__S(437)),
         }),
       ).annotate({
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsLogConfigurationDetails",
@@ -19496,7 +15556,7 @@ function __c54(j: number): any {
 function __c55(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsEcsTaskDefinitionContainerDefinitionsMountPointsDetails);
+      return S.Array(__S(439));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -19508,13 +15568,13 @@ function __c55(j: number): any {
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails",
       });
     case 2:
-      return S.Array(AwsEcsTaskDefinitionContainerDefinitionsPortMappingsDetails);
+      return S.Array(__S(441));
     case 3:
       return S.suspend(() => S.Struct({ CredentialsParameter: S.optional(S.String) })).annotate({
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsRepositoryCredentialsDetails",
       });
     case 4:
-      return S.Array(AwsEcsTaskDefinitionContainerDefinitionsResourceRequirementsDetails);
+      return S.Array(__S(424));
     case 5:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), ValueFrom: S.optional(S.String) }),
@@ -19522,7 +15582,7 @@ function __c55(j: number): any {
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsSecretsDetails",
       });
     case 6:
-      return S.Array(AwsEcsTaskDefinitionContainerDefinitionsSecretsDetails);
+      return S.Array(__S(445));
     case 7:
       return S.suspend(() =>
         S.Struct({ Namespace: S.optional(S.String), Value: S.optional(S.String) }),
@@ -19534,7 +15594,7 @@ function __c55(j: number): any {
 function __c56(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsEcsTaskDefinitionContainerDefinitionsSystemControlsDetails);
+      return S.Array(__S(447));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -19546,7 +15606,7 @@ function __c56(j: number): any {
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsUlimitsDetails",
       });
     case 2:
-      return S.Array(AwsEcsTaskDefinitionContainerDefinitionsUlimitsDetails);
+      return S.Array(__S(449));
     case 3:
       return S.suspend(() =>
         S.Struct({ ReadOnly: S.optional(S.Boolean), SourceContainer: S.optional(S.String) }),
@@ -19554,67 +15614,55 @@ function __c56(j: number): any {
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsVolumesFromDetails",
       });
     case 4:
-      return S.Array(AwsEcsTaskDefinitionContainerDefinitionsVolumesFromDetails);
+      return S.Array(__S(451));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Command: S.optional(NonEmptyStringList),
+          Command: S.optional(__S(4)),
           Cpu: S.optional(S.Number),
-          DependsOn: S.optional(AwsEcsTaskDefinitionContainerDefinitionsDependsOnList),
+          DependsOn: S.optional(__S(421)),
           DisableNetworking: S.optional(S.Boolean),
-          DnsSearchDomains: S.optional(NonEmptyStringList),
-          DnsServers: S.optional(NonEmptyStringList),
-          DockerLabels: S.optional(FieldMap),
-          DockerSecurityOptions: S.optional(NonEmptyStringList),
-          EntryPoint: S.optional(NonEmptyStringList),
-          Environment: S.optional(AwsEcsTaskDefinitionContainerDefinitionsEnvironmentList),
-          EnvironmentFiles: S.optional(
-            AwsEcsTaskDefinitionContainerDefinitionsEnvironmentFilesList,
-          ),
+          DnsSearchDomains: S.optional(__S(4)),
+          DnsServers: S.optional(__S(4)),
+          DockerLabels: S.optional(__S(31)),
+          DockerSecurityOptions: S.optional(__S(4)),
+          EntryPoint: S.optional(__S(4)),
+          Environment: S.optional(__S(423)),
+          EnvironmentFiles: S.optional(__S(425)),
           Essential: S.optional(S.Boolean),
-          ExtraHosts: S.optional(AwsEcsTaskDefinitionContainerDefinitionsExtraHostsList),
-          FirelensConfiguration: S.optional(
-            AwsEcsTaskDefinitionContainerDefinitionsFirelensConfigurationDetails,
-          ),
-          HealthCheck: S.optional(AwsEcsTaskDefinitionContainerDefinitionsHealthCheckDetails),
+          ExtraHosts: S.optional(__S(427)),
+          FirelensConfiguration: S.optional(__S(428)),
+          HealthCheck: S.optional(__S(429)),
           Hostname: S.optional(S.String),
           Image: S.optional(S.String),
           Interactive: S.optional(S.Boolean),
-          Links: S.optional(NonEmptyStringList),
-          LinuxParameters: S.optional(
-            AwsEcsTaskDefinitionContainerDefinitionsLinuxParametersDetails,
-          ),
-          LogConfiguration: S.optional(
-            AwsEcsTaskDefinitionContainerDefinitionsLogConfigurationDetails,
-          ),
+          Links: S.optional(__S(4)),
+          LinuxParameters: S.optional(__S(435)),
+          LogConfiguration: S.optional(__S(438)),
           Memory: S.optional(S.Number),
           MemoryReservation: S.optional(S.Number),
-          MountPoints: S.optional(AwsEcsTaskDefinitionContainerDefinitionsMountPointsList),
+          MountPoints: S.optional(__S(440)),
           Name: S.optional(S.String),
-          PortMappings: S.optional(AwsEcsTaskDefinitionContainerDefinitionsPortMappingsList),
+          PortMappings: S.optional(__S(442)),
           Privileged: S.optional(S.Boolean),
           PseudoTerminal: S.optional(S.Boolean),
           ReadonlyRootFilesystem: S.optional(S.Boolean),
-          RepositoryCredentials: S.optional(
-            AwsEcsTaskDefinitionContainerDefinitionsRepositoryCredentialsDetails,
-          ),
-          ResourceRequirements: S.optional(
-            AwsEcsTaskDefinitionContainerDefinitionsResourceRequirementsList,
-          ),
-          Secrets: S.optional(AwsEcsTaskDefinitionContainerDefinitionsSecretsList),
+          RepositoryCredentials: S.optional(__S(443)),
+          ResourceRequirements: S.optional(__S(444)),
+          Secrets: S.optional(__S(446)),
           StartTimeout: S.optional(S.Number),
           StopTimeout: S.optional(S.Number),
-          SystemControls: S.optional(AwsEcsTaskDefinitionContainerDefinitionsSystemControlsList),
-          Ulimits: S.optional(AwsEcsTaskDefinitionContainerDefinitionsUlimitsList),
+          SystemControls: S.optional(__S(448)),
+          Ulimits: S.optional(__S(450)),
           User: S.optional(S.String),
-          VolumesFrom: S.optional(AwsEcsTaskDefinitionContainerDefinitionsVolumesFromList),
+          VolumesFrom: S.optional(__S(452)),
           WorkingDirectory: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AwsEcsTaskDefinitionContainerDefinitionsDetails",
       });
     case 6:
-      return S.Array(AwsEcsTaskDefinitionContainerDefinitionsDetails);
+      return S.Array(__S(453));
     case 7:
       return S.suspend(() =>
         S.Struct({ DeviceName: S.optional(S.String), DeviceType: S.optional(S.String) }),
@@ -19626,7 +15674,7 @@ function __c56(j: number): any {
 function __c57(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsEcsTaskDefinitionInferenceAcceleratorsDetails);
+      return S.Array(__S(455));
     case 1:
       return S.suspend(() =>
         S.Struct({ Expression: S.optional(S.String), Type: S.optional(S.String) }),
@@ -19634,7 +15682,7 @@ function __c57(j: number): any {
         identifier: "AwsEcsTaskDefinitionPlacementConstraintsDetails",
       });
     case 2:
-      return S.Array(AwsEcsTaskDefinitionPlacementConstraintsDetails);
+      return S.Array(__S(457));
     case 3:
       return S.suspend(() =>
         S.Struct({ Name: S.optional(S.String), Value: S.optional(S.String) }),
@@ -19642,14 +15690,12 @@ function __c57(j: number): any {
         identifier: "AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesDetails",
       });
     case 4:
-      return S.Array(AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesDetails);
+      return S.Array(__S(459));
     case 5:
       return S.suspend(() =>
         S.Struct({
           ContainerName: S.optional(S.String),
-          ProxyConfigurationProperties: S.optional(
-            AwsEcsTaskDefinitionProxyConfigurationProxyConfigurationPropertiesList,
-          ),
+          ProxyConfigurationProperties: S.optional(__S(460)),
           Type: S.optional(S.String),
         }),
       ).annotate({
@@ -19660,8 +15706,8 @@ function __c57(j: number): any {
         S.Struct({
           Autoprovision: S.optional(S.Boolean),
           Driver: S.optional(S.String),
-          DriverOpts: S.optional(FieldMap),
-          Labels: S.optional(FieldMap),
+          DriverOpts: S.optional(__S(31)),
+          Labels: S.optional(__S(31)),
           Scope: S.optional(S.String),
         }),
       ).annotate({
@@ -19680,9 +15726,7 @@ function __c58(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          AuthorizationConfig: S.optional(
-            AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationAuthorizationConfigDetails,
-          ),
+          AuthorizationConfig: S.optional(__S(463)),
           FilesystemId: S.optional(S.String),
           RootDirectory: S.optional(S.String),
           TransitEncryption: S.optional(S.String),
@@ -19698,37 +15742,33 @@ function __c58(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DockerVolumeConfiguration: S.optional(
-            AwsEcsTaskDefinitionVolumesDockerVolumeConfigurationDetails,
-          ),
-          EfsVolumeConfiguration: S.optional(
-            AwsEcsTaskDefinitionVolumesEfsVolumeConfigurationDetails,
-          ),
-          Host: S.optional(AwsEcsTaskDefinitionVolumesHostDetails),
+          DockerVolumeConfiguration: S.optional(__S(462)),
+          EfsVolumeConfiguration: S.optional(__S(464)),
+          Host: S.optional(__S(465)),
           Name: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AwsEcsTaskDefinitionVolumesDetails",
       });
     case 3:
-      return S.Array(AwsEcsTaskDefinitionVolumesDetails);
+      return S.Array(__S(466));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ContainerDefinitions: S.optional(AwsEcsTaskDefinitionContainerDefinitionsList),
+          ContainerDefinitions: S.optional(__S(454)),
           Cpu: S.optional(S.String),
           ExecutionRoleArn: S.optional(S.String),
           Family: S.optional(S.String),
-          InferenceAccelerators: S.optional(AwsEcsTaskDefinitionInferenceAcceleratorsList),
+          InferenceAccelerators: S.optional(__S(456)),
           IpcMode: S.optional(S.String),
           Memory: S.optional(S.String),
           NetworkMode: S.optional(S.String),
           PidMode: S.optional(S.String),
-          PlacementConstraints: S.optional(AwsEcsTaskDefinitionPlacementConstraintsList),
-          ProxyConfiguration: S.optional(AwsEcsTaskDefinitionProxyConfigurationDetails),
-          RequiresCompatibilities: S.optional(NonEmptyStringList),
+          PlacementConstraints: S.optional(__S(458)),
+          ProxyConfiguration: S.optional(__S(461)),
+          RequiresCompatibilities: S.optional(__S(4)),
           TaskRoleArn: S.optional(S.String),
-          Volumes: S.optional(AwsEcsTaskDefinitionVolumesList),
+          Volumes: S.optional(__S(467)),
           Status: S.optional(S.String),
         }),
       ).annotate({
@@ -19739,7 +15779,7 @@ function __c58(j: number): any {
         S.Struct({ Name: S.optional(S.String), MountPath: S.optional(S.String) }),
       ).annotate({ identifier: "VolumeMount" });
     case 6:
-      return S.Array(VolumeMount);
+      return S.Array(__S(469));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -19748,7 +15788,7 @@ function __c58(j: number): any {
           ImageId: S.optional(S.String),
           ImageName: S.optional(S.String),
           LaunchedAt: S.optional(S.String),
-          VolumeMounts: S.optional(VolumeMountList),
+          VolumeMounts: S.optional(__S(470)),
           Privileged: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ContainerDetails" });
@@ -19762,10 +15802,10 @@ function __c59(j: number): any {
           CustSubscriptionId: S.optional(S.String),
           CustomerAwsId: S.optional(S.String),
           Enabled: S.optional(S.Boolean),
-          EventCategoriesList: S.optional(NonEmptyStringList),
+          EventCategoriesList: S.optional(__S(4)),
           EventSubscriptionArn: S.optional(S.String),
           SnsTopicArn: S.optional(S.String),
-          SourceIdsList: S.optional(NonEmptyStringList),
+          SourceIdsList: S.optional(__S(4)),
           SourceType: S.optional(S.String),
           Status: S.optional(S.String),
           SubscriptionCreationTime: S.optional(S.String),
@@ -19782,9 +15822,7 @@ function __c59(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          DeploymentCircuitBreaker: S.optional(
-            AwsEcsServiceDeploymentConfigurationDeploymentCircuitBreakerDetails,
-          ),
+          DeploymentCircuitBreaker: S.optional(__S(473)),
           MaximumPercent: S.optional(S.Number),
           MinimumHealthyPercent: S.optional(S.Number),
         }),
@@ -19807,13 +15845,13 @@ function __c59(j: number): any {
         identifier: "AwsEcsServiceLoadBalancersDetails",
       });
     case 5:
-      return S.Array(AwsEcsServiceLoadBalancersDetails);
+      return S.Array(__S(476));
     case 6:
       return S.suspend(() =>
         S.Struct({
           AssignPublicIp: S.optional(S.String),
-          SecurityGroups: S.optional(NonEmptyStringList),
-          Subnets: S.optional(NonEmptyStringList),
+          SecurityGroups: S.optional(__S(4)),
+          Subnets: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "AwsEcsServiceNetworkConfigurationAwsVpcConfigurationDetails",
@@ -19821,9 +15859,7 @@ function __c59(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          AwsVpcConfiguration: S.optional(
-            AwsEcsServiceNetworkConfigurationAwsVpcConfigurationDetails,
-          ),
+          AwsVpcConfiguration: S.optional(__S(478)),
         }),
       ).annotate({
         identifier: "AwsEcsServiceNetworkConfigurationDetails",
@@ -19839,7 +15875,7 @@ function __c60(j: number): any {
         identifier: "AwsEcsServicePlacementStrategiesDetails",
       });
     case 1:
-      return S.Array(AwsEcsServicePlacementStrategiesDetails);
+      return S.Array(__S(480));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -19852,31 +15888,31 @@ function __c60(j: number): any {
         identifier: "AwsEcsServiceServiceRegistriesDetails",
       });
     case 3:
-      return S.Array(AwsEcsServiceServiceRegistriesDetails);
+      return S.Array(__S(482));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          CapacityProviderStrategy: S.optional(AwsEcsServiceCapacityProviderStrategyList),
+          CapacityProviderStrategy: S.optional(__S(415)),
           Cluster: S.optional(S.String),
-          DeploymentConfiguration: S.optional(AwsEcsServiceDeploymentConfigurationDetails),
-          DeploymentController: S.optional(AwsEcsServiceDeploymentControllerDetails),
+          DeploymentConfiguration: S.optional(__S(474)),
+          DeploymentController: S.optional(__S(475)),
           DesiredCount: S.optional(S.Number),
           EnableEcsManagedTags: S.optional(S.Boolean),
           EnableExecuteCommand: S.optional(S.Boolean),
           HealthCheckGracePeriodSeconds: S.optional(S.Number),
           LaunchType: S.optional(S.String),
-          LoadBalancers: S.optional(AwsEcsServiceLoadBalancersList),
+          LoadBalancers: S.optional(__S(477)),
           Name: S.optional(S.String),
-          NetworkConfiguration: S.optional(AwsEcsServiceNetworkConfigurationDetails),
-          PlacementConstraints: S.optional(AwsEcsServicePlacementConstraintsList),
-          PlacementStrategies: S.optional(AwsEcsServicePlacementStrategiesList),
+          NetworkConfiguration: S.optional(__S(479)),
+          PlacementConstraints: S.optional(__S(458)),
+          PlacementStrategies: S.optional(__S(481)),
           PlatformVersion: S.optional(S.String),
           PropagateTags: S.optional(S.String),
           Role: S.optional(S.String),
           SchedulingStrategy: S.optional(S.String),
           ServiceArn: S.optional(S.String),
           ServiceName: S.optional(S.String),
-          ServiceRegistries: S.optional(AwsEcsServiceServiceRegistriesList),
+          ServiceRegistries: S.optional(__S(483)),
           TaskDefinition: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsEcsServiceDetails" });
@@ -19897,7 +15933,7 @@ function __c60(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DeviceName: S.optional(S.String),
-          Ebs: S.optional(AwsAutoScalingLaunchConfigurationBlockDeviceMappingsEbsDetails),
+          Ebs: S.optional(__S(485)),
           NoDevice: S.optional(S.Boolean),
           VirtualName: S.optional(S.String),
         }),
@@ -19905,7 +15941,7 @@ function __c60(j: number): any {
         identifier: "AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails",
       });
     case 7:
-      return S.Array(AwsAutoScalingLaunchConfigurationBlockDeviceMappingsDetails);
+      return S.Array(__S(486));
   }
 }
 function __c61(j: number): any {
@@ -19928,26 +15964,24 @@ function __c61(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AssociatePublicIpAddress: S.optional(S.Boolean),
-          BlockDeviceMappings: S.optional(AwsAutoScalingLaunchConfigurationBlockDeviceMappingsList),
+          BlockDeviceMappings: S.optional(__S(487)),
           ClassicLinkVpcId: S.optional(S.String),
-          ClassicLinkVpcSecurityGroups: S.optional(NonEmptyStringList),
+          ClassicLinkVpcSecurityGroups: S.optional(__S(4)),
           CreatedTime: S.optional(S.String),
           EbsOptimized: S.optional(S.Boolean),
           IamInstanceProfile: S.optional(S.String),
           ImageId: S.optional(S.String),
-          InstanceMonitoring: S.optional(
-            AwsAutoScalingLaunchConfigurationInstanceMonitoringDetails,
-          ),
+          InstanceMonitoring: S.optional(__S(488)),
           InstanceType: S.optional(S.String),
           KernelId: S.optional(S.String),
           KeyName: S.optional(S.String),
           LaunchConfigurationName: S.optional(S.String),
           PlacementTenancy: S.optional(S.String),
           RamdiskId: S.optional(S.String),
-          SecurityGroups: S.optional(NonEmptyStringList),
+          SecurityGroups: S.optional(__S(4)),
           SpotPrice: S.optional(S.String),
           UserData: S.optional(S.String),
-          MetadataOptions: S.optional(AwsAutoScalingLaunchConfigurationMetadataOptions),
+          MetadataOptions: S.optional(__S(489)),
         }),
       ).annotate({
         identifier: "AwsAutoScalingLaunchConfigurationDetails",
@@ -19966,20 +16000,20 @@ function __c61(j: number): any {
         identifier: "AwsEc2VpnConnectionVgwTelemetryDetails",
       });
     case 4:
-      return S.Array(AwsEc2VpnConnectionVgwTelemetryDetails);
+      return S.Array(__S(491));
     case 5:
       return S.suspend(() =>
         S.Struct({
           DpdTimeoutSeconds: S.optional(S.Number),
-          IkeVersions: S.optional(NonEmptyStringList),
+          IkeVersions: S.optional(__S(4)),
           OutsideIpAddress: S.optional(S.String),
-          Phase1DhGroupNumbers: S.optional(IntegerList),
-          Phase1EncryptionAlgorithms: S.optional(NonEmptyStringList),
-          Phase1IntegrityAlgorithms: S.optional(NonEmptyStringList),
+          Phase1DhGroupNumbers: S.optional(__S(51)),
+          Phase1EncryptionAlgorithms: S.optional(__S(4)),
+          Phase1IntegrityAlgorithms: S.optional(__S(4)),
           Phase1LifetimeSeconds: S.optional(S.Number),
-          Phase2DhGroupNumbers: S.optional(IntegerList),
-          Phase2EncryptionAlgorithms: S.optional(NonEmptyStringList),
-          Phase2IntegrityAlgorithms: S.optional(NonEmptyStringList),
+          Phase2DhGroupNumbers: S.optional(__S(51)),
+          Phase2EncryptionAlgorithms: S.optional(__S(4)),
+          Phase2IntegrityAlgorithms: S.optional(__S(4)),
           Phase2LifetimeSeconds: S.optional(S.Number),
           PreSharedKey: S.optional(S.String),
           RekeyFuzzPercentage: S.optional(S.Number),
@@ -19991,12 +16025,12 @@ function __c61(j: number): any {
         identifier: "AwsEc2VpnConnectionOptionsTunnelOptionsDetails",
       });
     case 6:
-      return S.Array(AwsEc2VpnConnectionOptionsTunnelOptionsDetails);
+      return S.Array(__S(493));
     case 7:
       return S.suspend(() =>
         S.Struct({
           StaticRoutesOnly: S.optional(S.Boolean),
-          TunnelOptions: S.optional(AwsEc2VpnConnectionOptionsTunnelOptionsList),
+          TunnelOptions: S.optional(__S(494)),
         }),
       ).annotate({
         identifier: "AwsEc2VpnConnectionOptionsDetails",
@@ -20012,7 +16046,7 @@ function __c62(j: number): any {
         identifier: "AwsEc2VpnConnectionRoutesDetails",
       });
     case 1:
-      return S.Array(AwsEc2VpnConnectionRoutesDetails);
+      return S.Array(__S(496));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -20023,9 +16057,9 @@ function __c62(j: number): any {
           Type: S.optional(S.String),
           VpnGatewayId: S.optional(S.String),
           Category: S.optional(S.String),
-          VgwTelemetry: S.optional(AwsEc2VpnConnectionVgwTelemetryList),
-          Options: S.optional(AwsEc2VpnConnectionOptionsDetails),
-          Routes: S.optional(AwsEc2VpnConnectionRoutesList),
+          VgwTelemetry: S.optional(__S(492)),
+          Options: S.optional(__S(495)),
+          Routes: S.optional(__S(497)),
           TransitGatewayId: S.optional(S.String),
         }),
       ).annotate({
@@ -20038,7 +16072,7 @@ function __c62(j: number): any {
           RepositoryName: S.optional(S.String),
           Architecture: S.optional(S.String),
           ImageDigest: S.optional(S.String),
-          ImageTags: S.optional(NonEmptyStringList),
+          ImageTags: S.optional(__S(4)),
           ImagePublishedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -20072,9 +16106,7 @@ function __c62(j: number): any {
           WarmEnabled: S.optional(S.Boolean),
           WarmCount: S.optional(S.Number),
           DedicatedMasterEnabled: S.optional(S.Boolean),
-          ZoneAwarenessConfig: S.optional(
-            AwsOpenSearchServiceDomainClusterConfigZoneAwarenessConfigDetails,
-          ),
+          ZoneAwarenessConfig: S.optional(__S(200)),
           DedicatedMasterCount: S.optional(S.Number),
           InstanceType: S.optional(S.String),
           WarmType: S.optional(S.String),
@@ -20103,8 +16135,8 @@ function __c63(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          SecurityGroupIds: S.optional(NonEmptyStringList),
-          SubnetIds: S.optional(NonEmptyStringList),
+          SecurityGroupIds: S.optional(__S(4)),
+          SubnetIds: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "AwsOpenSearchServiceDomainVpcOptionsDetails",
@@ -20124,7 +16156,7 @@ function __c63(j: number): any {
         S.Struct({
           Enabled: S.optional(S.Boolean),
           InternalUserDatabaseEnabled: S.optional(S.Boolean),
-          MasterUserOptions: S.optional(AwsOpenSearchServiceDomainMasterUserOptionsDetails),
+          MasterUserOptions: S.optional(__S(505)),
         }),
       ).annotate({
         identifier: "AwsOpenSearchServiceDomainAdvancedSecurityOptionsDetails",
@@ -20138,23 +16170,15 @@ function __c63(j: number): any {
           Id: S.optional(S.String),
           DomainEndpoint: S.optional(S.String),
           EngineVersion: S.optional(S.String),
-          EncryptionAtRestOptions: S.optional(
-            AwsOpenSearchServiceDomainEncryptionAtRestOptionsDetails,
-          ),
-          NodeToNodeEncryptionOptions: S.optional(
-            AwsOpenSearchServiceDomainNodeToNodeEncryptionOptionsDetails,
-          ),
-          ServiceSoftwareOptions: S.optional(
-            AwsOpenSearchServiceDomainServiceSoftwareOptionsDetails,
-          ),
-          ClusterConfig: S.optional(AwsOpenSearchServiceDomainClusterConfigDetails),
-          DomainEndpointOptions: S.optional(AwsOpenSearchServiceDomainDomainEndpointOptionsDetails),
-          VpcOptions: S.optional(AwsOpenSearchServiceDomainVpcOptionsDetails),
-          LogPublishingOptions: S.optional(AwsOpenSearchServiceDomainLogPublishingOptionsDetails),
-          DomainEndpoints: S.optional(FieldMap),
-          AdvancedSecurityOptions: S.optional(
-            AwsOpenSearchServiceDomainAdvancedSecurityOptionsDetails,
-          ),
+          EncryptionAtRestOptions: S.optional(__S(500)),
+          NodeToNodeEncryptionOptions: S.optional(__S(488)),
+          ServiceSoftwareOptions: S.optional(__S(501)),
+          ClusterConfig: S.optional(__S(502)),
+          DomainEndpointOptions: S.optional(__S(503)),
+          VpcOptions: S.optional(__S(504)),
+          LogPublishingOptions: S.optional(__S(204)),
+          DomainEndpoints: S.optional(__S(31)),
+          AdvancedSecurityOptions: S.optional(__S(506)),
         }),
       ).annotate({
         identifier: "AwsOpenSearchServiceDomainDetails",
@@ -20164,21 +16188,21 @@ function __c63(j: number): any {
         identifier: "AwsEc2VpcEndpointServiceServiceTypeDetails",
       });
     case 5:
-      return S.Array(AwsEc2VpcEndpointServiceServiceTypeDetails);
+      return S.Array(__S(508));
     case 6:
       return S.suspend(() =>
         S.Struct({
           AcceptanceRequired: S.optional(S.Boolean),
-          AvailabilityZones: S.optional(NonEmptyStringList),
-          BaseEndpointDnsNames: S.optional(NonEmptyStringList),
+          AvailabilityZones: S.optional(__S(4)),
+          BaseEndpointDnsNames: S.optional(__S(4)),
           ManagesVpcEndpoints: S.optional(S.Boolean),
-          GatewayLoadBalancerArns: S.optional(NonEmptyStringList),
-          NetworkLoadBalancerArns: S.optional(NonEmptyStringList),
+          GatewayLoadBalancerArns: S.optional(__S(4)),
+          NetworkLoadBalancerArns: S.optional(__S(4)),
           PrivateDnsName: S.optional(S.String),
           ServiceId: S.optional(S.String),
           ServiceName: S.optional(S.String),
           ServiceState: S.optional(S.String),
-          ServiceType: S.optional(AwsEc2VpcEndpointServiceServiceTypeList),
+          ServiceType: S.optional(__S(509)),
         }),
       ).annotate({
         identifier: "AwsEc2VpcEndpointServiceDetails",
@@ -20208,7 +16232,7 @@ function __c64(j: number): any {
         identifier: "AwsWafRateBasedRuleMatchPredicate",
       });
     case 1:
-      return S.Array(AwsWafRateBasedRuleMatchPredicate);
+      return S.Array(__S(512));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -20217,7 +16241,7 @@ function __c64(j: number): any {
           RateKey: S.optional(S.String),
           RateLimit: S.optional(S.Number),
           RuleId: S.optional(S.String),
-          MatchPredicates: S.optional(AwsWafRateBasedRuleMatchPredicateList),
+          MatchPredicates: S.optional(__S(513)),
         }),
       ).annotate({
         identifier: "AwsWafRateBasedRuleDetails",
@@ -20236,9 +16260,9 @@ function __c64(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Arn: S.optional(S.String),
-          ImageScanningConfiguration: S.optional(AwsEcrRepositoryImageScanningConfigurationDetails),
+          ImageScanningConfiguration: S.optional(__S(515)),
           ImageTagMutability: S.optional(S.String),
-          LifecyclePolicy: S.optional(AwsEcrRepositoryLifecyclePolicyDetails),
+          LifecyclePolicy: S.optional(__S(516)),
           RepositoryName: S.optional(S.String),
           RepositoryPolicyText: S.optional(S.String),
         }),
@@ -20246,8 +16270,8 @@ function __c64(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          SecurityGroupIds: S.optional(NonEmptyStringList),
-          SubnetIds: S.optional(NonEmptyStringList),
+          SecurityGroupIds: S.optional(__S(4)),
+          SubnetIds: S.optional(__S(4)),
           EndpointPublicAccess: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -20255,7 +16279,7 @@ function __c64(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Enabled: S.optional(S.Boolean), Types: S.optional(NonEmptyStringList) }),
+        S.Struct({ Enabled: S.optional(S.Boolean), Types: S.optional(__S(4)) }),
       ).annotate({
         identifier: "AwsEksClusterLoggingClusterLoggingDetails",
       });
@@ -20264,11 +16288,9 @@ function __c64(j: number): any {
 function __c65(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsEksClusterLoggingClusterLoggingDetails);
+      return S.Array(__S(519));
     case 1:
-      return S.suspend(() =>
-        S.Struct({ ClusterLogging: S.optional(AwsEksClusterLoggingClusterLoggingList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ ClusterLogging: S.optional(__S(520)) })).annotate({
         identifier: "AwsEksClusterLoggingDetails",
       });
     case 2:
@@ -20279,10 +16301,10 @@ function __c65(j: number): any {
           ClusterStatus: S.optional(S.String),
           Endpoint: S.optional(S.String),
           Name: S.optional(S.String),
-          ResourcesVpcConfig: S.optional(AwsEksClusterResourcesVpcConfigDetails),
+          ResourcesVpcConfig: S.optional(__S(518)),
           RoleArn: S.optional(S.String),
           Version: S.optional(S.String),
-          Logging: S.optional(AwsEksClusterLoggingDetails),
+          Logging: S.optional(__S(521)),
         }),
       ).annotate({ identifier: "AwsEksClusterDetails" });
     case 3:
@@ -20290,17 +16312,15 @@ function __c65(j: number): any {
         identifier: "FirewallPolicyStatefulRuleGroupReferencesDetails",
       });
     case 4:
-      return S.Array(FirewallPolicyStatefulRuleGroupReferencesDetails);
+      return S.Array(__S(523));
     case 5:
       return S.suspend(() => S.Struct({ Value: S.optional(S.String) })).annotate({
         identifier: "StatelessCustomPublishMetricActionDimension",
       });
     case 6:
-      return S.Array(StatelessCustomPublishMetricActionDimension);
+      return S.Array(__S(525));
     case 7:
-      return S.suspend(() =>
-        S.Struct({ Dimensions: S.optional(StatelessCustomPublishMetricActionDimensionsList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Dimensions: S.optional(__S(526)) })).annotate({
         identifier: "StatelessCustomPublishMetricAction",
       });
   }
@@ -20308,22 +16328,20 @@ function __c65(j: number): any {
 function __c66(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ PublishMetricAction: S.optional(StatelessCustomPublishMetricAction) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ PublishMetricAction: S.optional(__S(527)) })).annotate({
         identifier: "StatelessCustomActionDefinition",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ActionDefinition: S.optional(StatelessCustomActionDefinition),
+          ActionDefinition: S.optional(__S(528)),
           ActionName: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FirewallPolicyStatelessCustomActionsDetails",
       });
     case 2:
-      return S.Array(FirewallPolicyStatelessCustomActionsDetails);
+      return S.Array(__S(529));
     case 3:
       return S.suspend(() =>
         S.Struct({ Priority: S.optional(S.Number), ResourceArn: S.optional(S.String) }),
@@ -20331,21 +16349,21 @@ function __c66(j: number): any {
         identifier: "FirewallPolicyStatelessRuleGroupReferencesDetails",
       });
     case 4:
-      return S.Array(FirewallPolicyStatelessRuleGroupReferencesDetails);
+      return S.Array(__S(531));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          StatefulRuleGroupReferences: S.optional(FirewallPolicyStatefulRuleGroupReferencesList),
-          StatelessCustomActions: S.optional(FirewallPolicyStatelessCustomActionsList),
-          StatelessDefaultActions: S.optional(NonEmptyStringList),
-          StatelessFragmentDefaultActions: S.optional(NonEmptyStringList),
-          StatelessRuleGroupReferences: S.optional(FirewallPolicyStatelessRuleGroupReferencesList),
+          StatefulRuleGroupReferences: S.optional(__S(524)),
+          StatelessCustomActions: S.optional(__S(530)),
+          StatelessDefaultActions: S.optional(__S(4)),
+          StatelessFragmentDefaultActions: S.optional(__S(4)),
+          StatelessRuleGroupReferences: S.optional(__S(532)),
         }),
       ).annotate({ identifier: "FirewallPolicyDetails" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          FirewallPolicy: S.optional(FirewallPolicyDetails),
+          FirewallPolicy: S.optional(__S(533)),
           FirewallPolicyArn: S.optional(S.String),
           FirewallPolicyId: S.optional(S.String),
           FirewallPolicyName: S.optional(S.String),
@@ -20363,7 +16381,7 @@ function __c66(j: number): any {
 function __c67(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsNetworkFirewallFirewallSubnetMappingsDetails);
+      return S.Array(__S(535));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -20375,29 +16393,29 @@ function __c67(j: number): any {
           FirewallPolicyArn: S.optional(S.String),
           FirewallPolicyChangeProtection: S.optional(S.Boolean),
           SubnetChangeProtection: S.optional(S.Boolean),
-          SubnetMappings: S.optional(AwsNetworkFirewallFirewallSubnetMappingsList),
+          SubnetMappings: S.optional(__S(536)),
           VpcId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AwsNetworkFirewallFirewallDetails",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Definition: S.optional(NonEmptyStringList) })).annotate({
+      return S.suspend(() => S.Struct({ Definition: S.optional(__S(4)) })).annotate({
         identifier: "RuleGroupVariablesIpSetsDetails",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          IpSets: S.optional(RuleGroupVariablesIpSetsDetails),
-          PortSets: S.optional(RuleGroupVariablesPortSetsDetails),
+          IpSets: S.optional(__S(538)),
+          PortSets: S.optional(__S(538)),
         }),
       ).annotate({ identifier: "RuleGroupVariables" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           GeneratedRulesType: S.optional(S.String),
-          TargetTypes: S.optional(NonEmptyStringList),
-          Targets: S.optional(NonEmptyStringList),
+          TargetTypes: S.optional(__S(4)),
+          Targets: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "RuleGroupSourceListDetails",
@@ -20419,13 +16437,13 @@ function __c67(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Keyword: S.optional(S.String),
-          Settings: S.optional(RuleGroupSourceStatefulRulesRuleOptionsSettingsList),
+          Settings: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "RuleGroupSourceStatefulRulesOptionsDetails",
       });
     case 7:
-      return S.Array(RuleGroupSourceStatefulRulesOptionsDetails);
+      return S.Array(__S(542));
   }
 }
 function __c68(j: number): any {
@@ -20434,14 +16452,14 @@ function __c68(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Action: S.optional(S.String),
-          Header: S.optional(RuleGroupSourceStatefulRulesHeaderDetails),
-          RuleOptions: S.optional(RuleGroupSourceStatefulRulesOptionsList),
+          Header: S.optional(__S(541)),
+          RuleOptions: S.optional(__S(543)),
         }),
       ).annotate({
         identifier: "RuleGroupSourceStatefulRulesDetails",
       });
     case 1:
-      return S.Array(RuleGroupSourceStatefulRulesDetails);
+      return S.Array(__S(544));
     case 2:
       return S.suspend(() =>
         S.Struct({ FromPort: S.optional(S.Number), ToPort: S.optional(S.Number) }),
@@ -20449,13 +16467,13 @@ function __c68(j: number): any {
         identifier: "RuleGroupSourceStatelessRuleMatchAttributesDestinationPorts",
       });
     case 3:
-      return S.Array(RuleGroupSourceStatelessRuleMatchAttributesDestinationPorts);
+      return S.Array(__S(546));
     case 4:
       return S.suspend(() => S.Struct({ AddressDefinition: S.optional(S.String) })).annotate({
         identifier: "RuleGroupSourceStatelessRuleMatchAttributesDestinations",
       });
     case 5:
-      return S.Array(RuleGroupSourceStatelessRuleMatchAttributesDestinations);
+      return S.Array(__S(548));
     case 6:
       return S.Array(S.Number);
     case 7:
@@ -20469,26 +16487,24 @@ function __c68(j: number): any {
 function __c69(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RuleGroupSourceStatelessRuleMatchAttributesSourcePorts);
+      return S.Array(__S(551));
     case 1:
       return S.suspend(() =>
-        S.Struct({ Flags: S.optional(NonEmptyStringList), Masks: S.optional(NonEmptyStringList) }),
+        S.Struct({ Flags: S.optional(__S(4)), Masks: S.optional(__S(4)) }),
       ).annotate({
         identifier: "RuleGroupSourceStatelessRuleMatchAttributesTcpFlags",
       });
     case 2:
-      return S.Array(RuleGroupSourceStatelessRuleMatchAttributesTcpFlags);
+      return S.Array(__S(553));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          DestinationPorts: S.optional(
-            RuleGroupSourceStatelessRuleMatchAttributesDestinationPortsList,
-          ),
-          Destinations: S.optional(RuleGroupSourceStatelessRuleMatchAttributesDestinationsList),
-          Protocols: S.optional(RuleGroupSourceStatelessRuleMatchAttributesProtocolsList),
-          SourcePorts: S.optional(RuleGroupSourceStatelessRuleMatchAttributesSourcePortsList),
-          Sources: S.optional(RuleGroupSourceStatelessRuleMatchAttributesSourcesList),
-          TcpFlags: S.optional(RuleGroupSourceStatelessRuleMatchAttributesTcpFlagsList),
+          DestinationPorts: S.optional(__S(547)),
+          Destinations: S.optional(__S(549)),
+          Protocols: S.optional(__S(550)),
+          SourcePorts: S.optional(__S(552)),
+          Sources: S.optional(__S(549)),
+          TcpFlags: S.optional(__S(554)),
         }),
       ).annotate({
         identifier: "RuleGroupSourceStatelessRuleMatchAttributes",
@@ -20496,8 +16512,8 @@ function __c69(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Actions: S.optional(NonEmptyStringList),
-          MatchAttributes: S.optional(RuleGroupSourceStatelessRuleMatchAttributes),
+          Actions: S.optional(__S(4)),
+          MatchAttributes: S.optional(__S(555)),
         }),
       ).annotate({
         identifier: "RuleGroupSourceStatelessRuleDefinition",
@@ -20506,18 +16522,18 @@ function __c69(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Priority: S.optional(S.Number),
-          RuleDefinition: S.optional(RuleGroupSourceStatelessRuleDefinition),
+          RuleDefinition: S.optional(__S(556)),
         }),
       ).annotate({
         identifier: "RuleGroupSourceStatelessRulesDetails",
       });
     case 6:
-      return S.Array(RuleGroupSourceStatelessRulesDetails);
+      return S.Array(__S(557));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          CustomActions: S.optional(RuleGroupSourceCustomActionsList),
-          StatelessRules: S.optional(RuleGroupSourceStatelessRulesList),
+          CustomActions: S.optional(__S(530)),
+          StatelessRules: S.optional(__S(558)),
         }),
       ).annotate({
         identifier: "RuleGroupSourceStatelessRulesAndCustomActionsDetails",
@@ -20529,19 +16545,17 @@ function __c70(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          RulesSourceList: S.optional(RuleGroupSourceListDetails),
+          RulesSourceList: S.optional(__S(540)),
           RulesString: S.optional(S.String),
-          StatefulRules: S.optional(RuleGroupSourceStatefulRulesList),
-          StatelessRulesAndCustomActions: S.optional(
-            RuleGroupSourceStatelessRulesAndCustomActionsDetails,
-          ),
+          StatefulRules: S.optional(__S(545)),
+          StatelessRulesAndCustomActions: S.optional(__S(559)),
         }),
       ).annotate({ identifier: "RuleGroupSource" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          RuleVariables: S.optional(RuleGroupVariables),
-          RulesSource: S.optional(RuleGroupSource),
+          RuleVariables: S.optional(__S(539)),
+          RulesSource: S.optional(__S(560)),
         }),
       ).annotate({ identifier: "RuleGroupDetails" });
     case 2:
@@ -20549,7 +16563,7 @@ function __c70(j: number): any {
         S.Struct({
           Capacity: S.optional(S.Number),
           Description: S.optional(S.String),
-          RuleGroup: S.optional(RuleGroupDetails),
+          RuleGroup: S.optional(__S(561)),
           RuleGroupArn: S.optional(S.String),
           RuleGroupId: S.optional(S.String),
           RuleGroupName: S.optional(S.String),
@@ -20570,7 +16584,7 @@ function __c70(j: number): any {
         identifier: "AwsRdsDbSecurityGroupEc2SecurityGroup",
       });
     case 4:
-      return S.Array(AwsRdsDbSecurityGroupEc2SecurityGroup);
+      return S.Array(__S(563));
     case 5:
       return S.suspend(() =>
         S.Struct({ CidrIp: S.optional(S.String), Status: S.optional(S.String) }),
@@ -20578,15 +16592,15 @@ function __c70(j: number): any {
         identifier: "AwsRdsDbSecurityGroupIpRange",
       });
     case 6:
-      return S.Array(AwsRdsDbSecurityGroupIpRange);
+      return S.Array(__S(565));
     case 7:
       return S.suspend(() =>
         S.Struct({
           DbSecurityGroupArn: S.optional(S.String),
           DbSecurityGroupDescription: S.optional(S.String),
           DbSecurityGroupName: S.optional(S.String),
-          Ec2SecurityGroups: S.optional(AwsRdsDbSecurityGroupEc2SecurityGroups),
-          IpRanges: S.optional(AwsRdsDbSecurityGroupIpRanges),
+          Ec2SecurityGroups: S.optional(__S(564)),
+          IpRanges: S.optional(__S(566)),
           OwnerId: S.optional(S.String),
           VpcId: S.optional(S.String),
         }),
@@ -20608,7 +16622,7 @@ function __c71(j: number): any {
         S.Struct({
           Name: S.optional(S.String),
           Arn: S.optional(S.String),
-          StreamEncryption: S.optional(AwsKinesisStreamStreamEncryptionDetails),
+          StreamEncryption: S.optional(__S(568)),
           ShardCount: S.optional(S.Number),
           RetentionPeriodHours: S.optional(S.Number),
         }),
@@ -20621,7 +16635,7 @@ function __c71(j: number): any {
           DefaultRouteTablePropagation: S.optional(S.String),
           AutoAcceptSharedAttachments: S.optional(S.String),
           DefaultRouteTableAssociation: S.optional(S.String),
-          TransitGatewayCidrBlocks: S.optional(NonEmptyStringList),
+          TransitGatewayCidrBlocks: S.optional(__S(4)),
           AssociationDefaultRouteTableId: S.optional(S.String),
           PropagationDefaultRouteTableId: S.optional(S.String),
           VpnEcmpSupport: S.optional(S.String),
@@ -20636,7 +16650,7 @@ function __c71(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Gid: S.optional(S.String),
-          SecondaryGids: S.optional(NonEmptyStringList),
+          SecondaryGids: S.optional(__S(4)),
           Uid: S.optional(S.String),
         }),
       ).annotate({
@@ -20655,7 +16669,7 @@ function __c71(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          CreationInfo: S.optional(AwsEfsAccessPointRootDirectoryCreationInfoDetails),
+          CreationInfo: S.optional(__S(572)),
           Path: S.optional(S.String),
         }),
       ).annotate({
@@ -20668,8 +16682,8 @@ function __c71(j: number): any {
           Arn: S.optional(S.String),
           ClientToken: S.optional(S.String),
           FileSystemId: S.optional(S.String),
-          PosixUser: S.optional(AwsEfsAccessPointPosixUserDetails),
-          RootDirectory: S.optional(AwsEfsAccessPointRootDirectoryDetails),
+          PosixUser: S.optional(__S(571)),
+          RootDirectory: S.optional(__S(573)),
         }),
       ).annotate({ identifier: "AwsEfsAccessPointDetails" });
     case 7:
@@ -20691,19 +16705,19 @@ function __c72(j: number): any {
         identifier: "AwsCloudFormationStackOutputsDetails",
       });
     case 1:
-      return S.Array(AwsCloudFormationStackOutputsDetails);
+      return S.Array(__S(576));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Capabilities: S.optional(NonEmptyStringList),
+          Capabilities: S.optional(__S(4)),
           CreationTime: S.optional(S.String),
           Description: S.optional(S.String),
           DisableRollback: S.optional(S.Boolean),
-          DriftInformation: S.optional(AwsCloudFormationStackDriftInformationDetails),
+          DriftInformation: S.optional(__S(575)),
           EnableTerminationProtection: S.optional(S.Boolean),
           LastUpdatedTime: S.optional(S.String),
-          NotificationArns: S.optional(NonEmptyStringList),
-          Outputs: S.optional(AwsCloudFormationStackOutputsList),
+          NotificationArns: S.optional(__S(4)),
+          Outputs: S.optional(__S(577)),
           RoleArn: S.optional(S.String),
           StackId: S.optional(S.String),
           StackName: S.optional(S.String),
@@ -20718,21 +16732,21 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ActionsEnabled: S.optional(S.Boolean),
-          AlarmActions: S.optional(NonEmptyStringList),
+          AlarmActions: S.optional(__S(4)),
           AlarmArn: S.optional(S.String),
           AlarmConfigurationUpdatedTimestamp: S.optional(S.String),
           AlarmDescription: S.optional(S.String),
           AlarmName: S.optional(S.String),
           ComparisonOperator: S.optional(S.String),
           DatapointsToAlarm: S.optional(S.Number),
-          Dimensions: S.optional(AwsCloudWatchAlarmDimensionsList),
+          Dimensions: S.optional(__S(410)),
           EvaluateLowSampleCountPercentile: S.optional(S.String),
           EvaluationPeriods: S.optional(S.Number),
           ExtendedStatistic: S.optional(S.String),
-          InsufficientDataActions: S.optional(NonEmptyStringList),
+          InsufficientDataActions: S.optional(__S(4)),
           MetricName: S.optional(S.String),
           Namespace: S.optional(S.String),
-          OkActions: S.optional(NonEmptyStringList),
+          OkActions: S.optional(__S(4)),
           Period: S.optional(S.Number),
           Statistic: S.optional(S.String),
           Threshold: S.optional(S.Number),
@@ -20748,13 +16762,13 @@ function __c72(j: number): any {
         identifier: "VpcInfoCidrBlockSetDetails",
       });
     case 5:
-      return S.Array(VpcInfoCidrBlockSetDetails);
+      return S.Array(__S(580));
     case 6:
       return S.suspend(() => S.Struct({ Ipv6CidrBlock: S.optional(S.String) })).annotate({
         identifier: "VpcInfoIpv6CidrBlockSetDetails",
       });
     case 7:
-      return S.Array(VpcInfoIpv6CidrBlockSetDetails);
+      return S.Array(__S(582));
   }
 }
 function __c73(j: number): any {
@@ -20773,10 +16787,10 @@ function __c73(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CidrBlock: S.optional(S.String),
-          CidrBlockSet: S.optional(VpcInfoCidrBlockSetList),
-          Ipv6CidrBlockSet: S.optional(VpcInfoIpv6CidrBlockSetList),
+          CidrBlockSet: S.optional(__S(581)),
+          Ipv6CidrBlockSet: S.optional(__S(583)),
           OwnerId: S.optional(S.String),
-          PeeringOptions: S.optional(VpcInfoPeeringOptionsDetails),
+          PeeringOptions: S.optional(__S(584)),
           Region: S.optional(S.String),
           VpcId: S.optional(S.String),
         }),
@@ -20792,10 +16806,10 @@ function __c73(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AccepterVpcInfo: S.optional(AwsEc2VpcPeeringConnectionVpcInfoDetails),
+          AccepterVpcInfo: S.optional(__S(585)),
           ExpirationTime: S.optional(S.String),
-          RequesterVpcInfo: S.optional(AwsEc2VpcPeeringConnectionVpcInfoDetails),
-          Status: S.optional(AwsEc2VpcPeeringConnectionStatusDetails),
+          RequesterVpcInfo: S.optional(__S(585)),
+          Status: S.optional(__S(586)),
           VpcPeeringConnectionId: S.optional(S.String),
         }),
       ).annotate({
@@ -20804,7 +16818,7 @@ function __c73(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(AwsWafRegionalRuleGroupRulesActionDetails),
+          Action: S.optional(__S(475)),
           Priority: S.optional(S.Number),
           RuleId: S.optional(S.String),
           Type: S.optional(S.String),
@@ -20813,14 +16827,14 @@ function __c73(j: number): any {
         identifier: "AwsWafRegionalRuleGroupRulesDetails",
       });
     case 5:
-      return S.Array(AwsWafRegionalRuleGroupRulesDetails);
+      return S.Array(__S(588));
     case 6:
       return S.suspend(() =>
         S.Struct({
           MetricName: S.optional(S.String),
           Name: S.optional(S.String),
           RuleGroupId: S.optional(S.String),
-          Rules: S.optional(AwsWafRegionalRuleGroupRulesList),
+          Rules: S.optional(__S(589)),
         }),
       ).annotate({
         identifier: "AwsWafRegionalRuleGroupDetails",
@@ -20830,7 +16844,7 @@ function __c73(j: number): any {
         S.Struct({
           MetricName: S.optional(S.String),
           Name: S.optional(S.String),
-          PredicateList: S.optional(AwsWafRegionalRulePredicateList),
+          PredicateList: S.optional(__S(513)),
           RuleId: S.optional(S.String),
         }),
       ).annotate({
@@ -20843,8 +16857,8 @@ function __c74(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(AwsWafRegionalWebAclRulesListActionDetails),
-          OverrideAction: S.optional(AwsWafRegionalWebAclRulesListOverrideActionDetails),
+          Action: S.optional(__S(475)),
+          OverrideAction: S.optional(__S(475)),
           Priority: S.optional(S.Number),
           RuleId: S.optional(S.String),
           Type: S.optional(S.String),
@@ -20853,53 +16867,53 @@ function __c74(j: number): any {
         identifier: "AwsWafRegionalWebAclRulesListDetails",
       });
     case 1:
-      return S.Array(AwsWafRegionalWebAclRulesListDetails);
+      return S.Array(__S(592));
     case 2:
       return S.suspend(() =>
         S.Struct({
           DefaultAction: S.optional(S.String),
           MetricName: S.optional(S.String),
           Name: S.optional(S.String),
-          RulesList: S.optional(AwsWafRegionalWebAclRulesList),
+          RulesList: S.optional(__S(593)),
           WebAclId: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AwsWafRegionalWebAclDetails",
       });
     case 3:
-      return S.Array(AwsWafRulePredicateListDetails);
+      return S.Array(__S(512));
     case 4:
       return S.suspend(() =>
         S.Struct({
           MetricName: S.optional(S.String),
           Name: S.optional(S.String),
-          PredicateList: S.optional(AwsWafRulePredicateList),
+          PredicateList: S.optional(__S(595)),
           RuleId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsWafRuleDetails" });
     case 5:
-      return S.Array(AwsWafRuleGroupRulesDetails);
+      return S.Array(__S(588));
     case 6:
       return S.suspend(() =>
         S.Struct({
           MetricName: S.optional(S.String),
           Name: S.optional(S.String),
           RuleGroupId: S.optional(S.String),
-          Rules: S.optional(AwsWafRuleGroupRulesList),
+          Rules: S.optional(__S(597)),
         }),
       ).annotate({ identifier: "AwsWafRuleGroupDetails" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Host: S.optional(AwsEcsTaskVolumeHostDetails) }),
+        S.Struct({ Name: S.optional(S.String), Host: S.optional(__S(465)) }),
       ).annotate({ identifier: "AwsEcsTaskVolumeDetails" });
   }
 }
 function __c75(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsEcsTaskVolumeDetails);
+      return S.Array(__S(599));
     case 1:
-      return S.Array(AwsEcsContainerDetails);
+      return S.Array(__S(419));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -20910,14 +16924,14 @@ function __c75(j: number): any {
           StartedAt: S.optional(S.String),
           StartedBy: S.optional(S.String),
           Group: S.optional(S.String),
-          Volumes: S.optional(AwsEcsTaskVolumeDetailsList),
-          Containers: S.optional(AwsEcsContainerDetailsList),
+          Volumes: S.optional(__S(600)),
+          Containers: S.optional(__S(601)),
         }),
       ).annotate({ identifier: "AwsEcsTaskDetails" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          BackupVaultEvents: S.optional(NonEmptyStringList),
+          BackupVaultEvents: S.optional(__S(4)),
           SnsTopicArn: S.optional(S.String),
         }),
       ).annotate({
@@ -20929,7 +16943,7 @@ function __c75(j: number): any {
           BackupVaultArn: S.optional(S.String),
           BackupVaultName: S.optional(S.String),
           EncryptionKeyArn: S.optional(S.String),
-          Notifications: S.optional(AwsBackupBackupVaultNotificationsDetails),
+          Notifications: S.optional(__S(603)),
           AccessPolicy: S.optional(S.String),
         }),
       ).annotate({
@@ -20937,12 +16951,12 @@ function __c75(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ BackupOptions: S.optional(FieldMap), ResourceType: S.optional(S.String) }),
+        S.Struct({ BackupOptions: S.optional(__S(31)), ResourceType: S.optional(S.String) }),
       ).annotate({
         identifier: "AwsBackupBackupPlanAdvancedBackupSettingsDetails",
       });
     case 6:
-      return S.Array(AwsBackupBackupPlanAdvancedBackupSettingsDetails);
+      return S.Array(__S(605));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -20960,13 +16974,13 @@ function __c76(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DestinationBackupVaultArn: S.optional(S.String),
-          Lifecycle: S.optional(AwsBackupBackupPlanLifecycleDetails),
+          Lifecycle: S.optional(__S(607)),
         }),
       ).annotate({
         identifier: "AwsBackupBackupPlanRuleCopyActionsDetails",
       });
     case 1:
-      return S.Array(AwsBackupBackupPlanRuleCopyActionsDetails);
+      return S.Array(__S(608));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -20977,20 +16991,20 @@ function __c76(j: number): any {
           RuleId: S.optional(S.String),
           EnableContinuousBackup: S.optional(S.Boolean),
           CompletionWindowMinutes: S.optional(S.Number),
-          CopyActions: S.optional(AwsBackupBackupPlanRuleCopyActionsList),
-          Lifecycle: S.optional(AwsBackupBackupPlanLifecycleDetails),
+          CopyActions: S.optional(__S(609)),
+          Lifecycle: S.optional(__S(607)),
         }),
       ).annotate({
         identifier: "AwsBackupBackupPlanRuleDetails",
       });
     case 3:
-      return S.Array(AwsBackupBackupPlanRuleDetails);
+      return S.Array(__S(610));
     case 4:
       return S.suspend(() =>
         S.Struct({
           BackupPlanName: S.optional(S.String),
-          AdvancedBackupSettings: S.optional(AwsBackupBackupPlanAdvancedBackupSettingsList),
-          BackupPlanRule: S.optional(AwsBackupBackupPlanRuleList),
+          AdvancedBackupSettings: S.optional(__S(606)),
+          BackupPlanRule: S.optional(__S(611)),
         }),
       ).annotate({
         identifier: "AwsBackupBackupPlanBackupPlanDetails",
@@ -20998,7 +17012,7 @@ function __c76(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          BackupPlan: S.optional(AwsBackupBackupPlanBackupPlanDetails),
+          BackupPlan: S.optional(__S(612)),
           BackupPlanArn: S.optional(S.String),
           BackupPlanId: S.optional(S.String),
           VersionId: S.optional(S.String),
@@ -21033,15 +17047,15 @@ function __c77(j: number): any {
           BackupSizeInBytes: S.optional(S.Number),
           BackupVaultArn: S.optional(S.String),
           BackupVaultName: S.optional(S.String),
-          CalculatedLifecycle: S.optional(AwsBackupRecoveryPointCalculatedLifecycleDetails),
+          CalculatedLifecycle: S.optional(__S(614)),
           CompletionDate: S.optional(S.String),
-          CreatedBy: S.optional(AwsBackupRecoveryPointCreatedByDetails),
+          CreatedBy: S.optional(__S(615)),
           CreationDate: S.optional(S.String),
           EncryptionKeyArn: S.optional(S.String),
           IamRoleArn: S.optional(S.String),
           IsEncrypted: S.optional(S.Boolean),
           LastRestoreTime: S.optional(S.String),
-          Lifecycle: S.optional(AwsBackupRecoveryPointLifecycleDetails),
+          Lifecycle: S.optional(__S(607)),
           RecoveryPointArn: S.optional(S.String),
           ResourceArn: S.optional(S.String),
           ResourceType: S.optional(S.String),
@@ -21072,7 +17086,7 @@ function __c77(j: number): any {
       return S.suspend(() =>
         S.Struct({
           DeviceName: S.optional(S.String),
-          Ebs: S.optional(AwsEc2LaunchTemplateDataBlockDeviceMappingSetEbsDetails),
+          Ebs: S.optional(__S(617)),
           NoDevice: S.optional(S.String),
           VirtualName: S.optional(S.String),
         }),
@@ -21080,7 +17094,7 @@ function __c77(j: number): any {
         identifier: "AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails",
       });
     case 3:
-      return S.Array(AwsEc2LaunchTemplateDataBlockDeviceMappingSetDetails);
+      return S.Array(__S(618));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -21095,9 +17109,7 @@ function __c77(j: number): any {
       return S.suspend(() =>
         S.Struct({
           CapacityReservationPreference: S.optional(S.String),
-          CapacityReservationTarget: S.optional(
-            AwsEc2LaunchTemplateDataCapacityReservationSpecificationCapacityReservationTargetDetails,
-          ),
+          CapacityReservationTarget: S.optional(__S(620)),
         }),
       ).annotate({
         identifier: "AwsEc2LaunchTemplateDataCapacityReservationSpecificationDetails",
@@ -21121,7 +17133,7 @@ function __c78(j: number): any {
         identifier: "AwsEc2LaunchTemplateDataElasticGpuSpecificationSetDetails",
       });
     case 1:
-      return S.Array(AwsEc2LaunchTemplateDataElasticGpuSpecificationSetDetails);
+      return S.Array(__S(624));
     case 2:
       return S.suspend(() =>
         S.Struct({ Count: S.optional(S.Number), Type: S.optional(S.String) }),
@@ -21129,7 +17141,7 @@ function __c78(j: number): any {
         identifier: "AwsEc2LaunchTemplateDataElasticInferenceAcceleratorSetDetails",
       });
     case 3:
-      return S.Array(AwsEc2LaunchTemplateDataElasticInferenceAcceleratorSetDetails);
+      return S.Array(__S(626));
     case 4:
       return S.suspend(() => S.Struct({ Configured: S.optional(S.Boolean) })).annotate({
         identifier: "AwsEc2LaunchTemplateDataHibernationOptionsDetails",
@@ -21156,7 +17168,7 @@ function __c78(j: number): any {
       return S.suspend(() =>
         S.Struct({
           MarketType: S.optional(S.String),
-          SpotOptions: S.optional(AwsEc2LaunchTemplateDataInstanceMarketOptionsSpotOptionsDetails),
+          SpotOptions: S.optional(__S(630)),
         }),
       ).annotate({
         identifier: "AwsEc2LaunchTemplateDataInstanceMarketOptionsDetails",
@@ -21180,39 +17192,27 @@ function __c79(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AcceleratorCount: S.optional(
-            AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorCountDetails,
-          ),
-          AcceleratorManufacturers: S.optional(NonEmptyStringList),
-          AcceleratorNames: S.optional(NonEmptyStringList),
-          AcceleratorTotalMemoryMiB: S.optional(
-            AwsEc2LaunchTemplateDataInstanceRequirementsAcceleratorTotalMemoryMiBDetails,
-          ),
-          AcceleratorTypes: S.optional(NonEmptyStringList),
+          AcceleratorCount: S.optional(__S(632)),
+          AcceleratorManufacturers: S.optional(__S(4)),
+          AcceleratorNames: S.optional(__S(4)),
+          AcceleratorTotalMemoryMiB: S.optional(__S(632)),
+          AcceleratorTypes: S.optional(__S(4)),
           BareMetal: S.optional(S.String),
-          BaselineEbsBandwidthMbps: S.optional(
-            AwsEc2LaunchTemplateDataInstanceRequirementsBaselineEbsBandwidthMbpsDetails,
-          ),
+          BaselineEbsBandwidthMbps: S.optional(__S(632)),
           BurstablePerformance: S.optional(S.String),
-          CpuManufacturers: S.optional(NonEmptyStringList),
-          ExcludedInstanceTypes: S.optional(NonEmptyStringList),
-          InstanceGenerations: S.optional(NonEmptyStringList),
+          CpuManufacturers: S.optional(__S(4)),
+          ExcludedInstanceTypes: S.optional(__S(4)),
+          InstanceGenerations: S.optional(__S(4)),
           LocalStorage: S.optional(S.String),
-          LocalStorageTypes: S.optional(NonEmptyStringList),
-          MemoryGiBPerVCpu: S.optional(
-            AwsEc2LaunchTemplateDataInstanceRequirementsMemoryGiBPerVCpuDetails,
-          ),
-          MemoryMiB: S.optional(AwsEc2LaunchTemplateDataInstanceRequirementsMemoryMiBDetails),
-          NetworkInterfaceCount: S.optional(
-            AwsEc2LaunchTemplateDataInstanceRequirementsNetworkInterfaceCountDetails,
-          ),
+          LocalStorageTypes: S.optional(__S(4)),
+          MemoryGiBPerVCpu: S.optional(__S(632)),
+          MemoryMiB: S.optional(__S(633)),
+          NetworkInterfaceCount: S.optional(__S(632)),
           OnDemandMaxPricePercentageOverLowestPrice: S.optional(S.Number),
           RequireHibernateSupport: S.optional(S.Boolean),
           SpotMaxPricePercentageOverLowestPrice: S.optional(S.Number),
-          TotalLocalStorageGB: S.optional(
-            AwsEc2LaunchTemplateDataInstanceRequirementsTotalLocalStorageGBDetails,
-          ),
-          VCpuCount: S.optional(AwsEc2LaunchTemplateDataInstanceRequirementsVCpuCountDetails),
+          TotalLocalStorageGB: S.optional(__S(632)),
+          VCpuCount: S.optional(__S(633)),
         }),
       ).annotate({
         identifier: "AwsEc2LaunchTemplateDataInstanceRequirementsDetails",
@@ -21222,7 +17222,7 @@ function __c79(j: number): any {
         identifier: "AwsEc2LaunchTemplateDataLicenseSetDetails",
       });
     case 4:
-      return S.Array(AwsEc2LaunchTemplateDataLicenseSetDetails);
+      return S.Array(__S(635));
     case 5:
       return S.suspend(() => S.Struct({ AutoRecovery: S.optional(S.String) })).annotate({
         identifier: "AwsEc2LaunchTemplateDataMaintenanceOptionsDetails",
@@ -21248,19 +17248,19 @@ function __c79(j: number): any {
 function __c80(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv4PrefixesDetails);
+      return S.Array(__S(639));
     case 1:
       return S.suspend(() => S.Struct({ Ipv6Address: S.optional(S.String) })).annotate({
         identifier: "AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6AddressesDetails",
       });
     case 2:
-      return S.Array(AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6AddressesDetails);
+      return S.Array(__S(641));
     case 3:
       return S.suspend(() => S.Struct({ Ipv6Prefix: S.optional(S.String) })).annotate({
         identifier: "AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6PrefixesDetails",
       });
     case 4:
-      return S.Array(AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6PrefixesDetails);
+      return S.Array(__S(643));
     case 5:
       return S.suspend(() =>
         S.Struct({ Primary: S.optional(S.Boolean), PrivateIpAddress: S.optional(S.String) }),
@@ -21268,7 +17268,7 @@ function __c80(j: number): any {
         identifier: "AwsEc2LaunchTemplateDataNetworkInterfaceSetPrivateIpAddressesDetails",
       });
     case 6:
-      return S.Array(AwsEc2LaunchTemplateDataNetworkInterfaceSetPrivateIpAddressesDetails);
+      return S.Array(__S(645));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -21277,20 +17277,18 @@ function __c80(j: number): any {
           DeleteOnTermination: S.optional(S.Boolean),
           Description: S.optional(S.String),
           DeviceIndex: S.optional(S.Number),
-          Groups: S.optional(NonEmptyStringList),
+          Groups: S.optional(__S(4)),
           InterfaceType: S.optional(S.String),
           Ipv4PrefixCount: S.optional(S.Number),
-          Ipv4Prefixes: S.optional(AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv4PrefixesList),
+          Ipv4Prefixes: S.optional(__S(640)),
           Ipv6AddressCount: S.optional(S.Number),
-          Ipv6Addresses: S.optional(AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6AddressesList),
+          Ipv6Addresses: S.optional(__S(642)),
           Ipv6PrefixCount: S.optional(S.Number),
-          Ipv6Prefixes: S.optional(AwsEc2LaunchTemplateDataNetworkInterfaceSetIpv6PrefixesList),
+          Ipv6Prefixes: S.optional(__S(644)),
           NetworkCardIndex: S.optional(S.Number),
           NetworkInterfaceId: S.optional(S.String),
           PrivateIpAddress: S.optional(S.String),
-          PrivateIpAddresses: S.optional(
-            AwsEc2LaunchTemplateDataNetworkInterfaceSetPrivateIpAddressesList,
-          ),
+          PrivateIpAddresses: S.optional(__S(646)),
           SecondaryPrivateIpAddressCount: S.optional(S.Number),
           SubnetId: S.optional(S.String),
         }),
@@ -21302,7 +17300,7 @@ function __c80(j: number): any {
 function __c81(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsEc2LaunchTemplateDataNetworkInterfaceSetDetails);
+      return S.Array(__S(647));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -21331,41 +17329,35 @@ function __c81(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          BlockDeviceMappingSet: S.optional(AwsEc2LaunchTemplateDataBlockDeviceMappingSetList),
-          CapacityReservationSpecification: S.optional(
-            AwsEc2LaunchTemplateDataCapacityReservationSpecificationDetails,
-          ),
-          CpuOptions: S.optional(AwsEc2LaunchTemplateDataCpuOptionsDetails),
-          CreditSpecification: S.optional(AwsEc2LaunchTemplateDataCreditSpecificationDetails),
+          BlockDeviceMappingSet: S.optional(__S(619)),
+          CapacityReservationSpecification: S.optional(__S(621)),
+          CpuOptions: S.optional(__S(622)),
+          CreditSpecification: S.optional(__S(623)),
           DisableApiStop: S.optional(S.Boolean),
           DisableApiTermination: S.optional(S.Boolean),
           EbsOptimized: S.optional(S.Boolean),
-          ElasticGpuSpecificationSet: S.optional(
-            AwsEc2LaunchTemplateDataElasticGpuSpecificationSetList,
-          ),
-          ElasticInferenceAcceleratorSet: S.optional(
-            AwsEc2LaunchTemplateDataElasticInferenceAcceleratorSetList,
-          ),
-          EnclaveOptions: S.optional(AwsEc2LaunchTemplateDataEnclaveOptionsDetails),
-          HibernationOptions: S.optional(AwsEc2LaunchTemplateDataHibernationOptionsDetails),
-          IamInstanceProfile: S.optional(AwsEc2LaunchTemplateDataIamInstanceProfileDetails),
+          ElasticGpuSpecificationSet: S.optional(__S(625)),
+          ElasticInferenceAcceleratorSet: S.optional(__S(627)),
+          EnclaveOptions: S.optional(__S(205)),
+          HibernationOptions: S.optional(__S(628)),
+          IamInstanceProfile: S.optional(__S(629)),
           ImageId: S.optional(S.String),
           InstanceInitiatedShutdownBehavior: S.optional(S.String),
-          InstanceMarketOptions: S.optional(AwsEc2LaunchTemplateDataInstanceMarketOptionsDetails),
-          InstanceRequirements: S.optional(AwsEc2LaunchTemplateDataInstanceRequirementsDetails),
+          InstanceMarketOptions: S.optional(__S(631)),
+          InstanceRequirements: S.optional(__S(634)),
           InstanceType: S.optional(S.String),
           KernelId: S.optional(S.String),
           KeyName: S.optional(S.String),
-          LicenseSet: S.optional(AwsEc2LaunchTemplateDataLicenseSetList),
-          MaintenanceOptions: S.optional(AwsEc2LaunchTemplateDataMaintenanceOptionsDetails),
-          MetadataOptions: S.optional(AwsEc2LaunchTemplateDataMetadataOptionsDetails),
-          Monitoring: S.optional(AwsEc2LaunchTemplateDataMonitoringDetails),
-          NetworkInterfaceSet: S.optional(AwsEc2LaunchTemplateDataNetworkInterfaceSetList),
-          Placement: S.optional(AwsEc2LaunchTemplateDataPlacementDetails),
-          PrivateDnsNameOptions: S.optional(AwsEc2LaunchTemplateDataPrivateDnsNameOptionsDetails),
+          LicenseSet: S.optional(__S(636)),
+          MaintenanceOptions: S.optional(__S(637)),
+          MetadataOptions: S.optional(__S(638)),
+          Monitoring: S.optional(__S(205)),
+          NetworkInterfaceSet: S.optional(__S(648)),
+          Placement: S.optional(__S(649)),
+          PrivateDnsNameOptions: S.optional(__S(650)),
           RamDiskId: S.optional(S.String),
-          SecurityGroupIdSet: S.optional(NonEmptyStringList),
-          SecurityGroupSet: S.optional(NonEmptyStringList),
+          SecurityGroupIdSet: S.optional(__S(4)),
+          SecurityGroupSet: S.optional(__S(4)),
           UserData: S.optional(S.String),
         }),
       ).annotate({
@@ -21376,7 +17368,7 @@ function __c81(j: number): any {
         S.Struct({
           LaunchTemplateName: S.optional(S.String),
           Id: S.optional(S.String),
-          LaunchTemplateData: S.optional(AwsEc2LaunchTemplateDataDetails),
+          LaunchTemplateData: S.optional(__S(651)),
           DefaultVersionNumber: S.optional(S.Number),
           LatestVersionNumber: S.optional(S.Number),
         }),
@@ -21392,14 +17384,12 @@ function __c81(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          AcceleratorTypes: S.optional(NonEmptyStringList),
-          AdditionalCodeRepositories: S.optional(NonEmptyStringList),
+          AcceleratorTypes: S.optional(__S(4)),
+          AdditionalCodeRepositories: S.optional(__S(4)),
           DefaultCodeRepository: S.optional(S.String),
           DirectInternetAccess: S.optional(S.String),
           FailureReason: S.optional(S.String),
-          InstanceMetadataServiceConfiguration: S.optional(
-            AwsSageMakerNotebookInstanceMetadataServiceConfigurationDetails,
-          ),
+          InstanceMetadataServiceConfiguration: S.optional(__S(653)),
           InstanceType: S.optional(S.String),
           KmsKeyId: S.optional(S.String),
           NetworkInterfaceId: S.optional(S.String),
@@ -21410,7 +17400,7 @@ function __c81(j: number): any {
           PlatformIdentifier: S.optional(S.String),
           RoleArn: S.optional(S.String),
           RootAccess: S.optional(S.String),
-          SecurityGroups: S.optional(NonEmptyStringList),
+          SecurityGroups: S.optional(__S(4)),
           SubnetId: S.optional(S.String),
           Url: S.optional(S.String),
           VolumeSizeInGB: S.optional(S.Number),
@@ -21429,21 +17419,17 @@ function __c82(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ImmunityTimeProperty: S.optional(AwsWafv2WebAclCaptchaConfigImmunityTimePropertyDetails),
+          ImmunityTimeProperty: S.optional(__S(655)),
         }),
       ).annotate({
         identifier: "AwsWafv2WebAclCaptchaConfigDetails",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ InsertHeaders: S.optional(AwsWafv2InsertHeadersList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ InsertHeaders: S.optional(__S(379)) })).annotate({
         identifier: "AwsWafv2CustomRequestHandlingDetails",
       });
     case 2:
-      return S.suspend(() =>
-        S.Struct({ CustomRequestHandling: S.optional(AwsWafv2CustomRequestHandlingDetails) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ CustomRequestHandling: S.optional(__S(657)) })).annotate({
         identifier: "AwsWafv2ActionAllowDetails",
       });
     case 3:
@@ -21451,22 +17437,20 @@ function __c82(j: number): any {
         S.Struct({
           CustomResponseBodyKey: S.optional(S.String),
           ResponseCode: S.optional(S.Number),
-          ResponseHeaders: S.optional(AwsWafv2InsertHeadersList),
+          ResponseHeaders: S.optional(__S(379)),
         }),
       ).annotate({
         identifier: "AwsWafv2CustomResponseDetails",
       });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ CustomResponse: S.optional(AwsWafv2CustomResponseDetails) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ CustomResponse: S.optional(__S(659)) })).annotate({
         identifier: "AwsWafv2ActionBlockDetails",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Allow: S.optional(AwsWafv2ActionAllowDetails),
-          Block: S.optional(AwsWafv2ActionBlockDetails),
+          Allow: S.optional(__S(658)),
+          Block: S.optional(__S(660)),
         }),
       ).annotate({
         identifier: "AwsWafv2WebAclActionDetails",
@@ -21474,10 +17458,10 @@ function __c82(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Allow: S.optional(AwsWafv2ActionAllowDetails),
-          Block: S.optional(AwsWafv2ActionBlockDetails),
-          Captcha: S.optional(AwsWafv2RulesActionCaptchaDetails),
-          Count: S.optional(AwsWafv2RulesActionCountDetails),
+          Allow: S.optional(__S(658)),
+          Block: S.optional(__S(660)),
+          Captcha: S.optional(__S(658)),
+          Count: S.optional(__S(658)),
         }),
       ).annotate({
         identifier: "AwsWafv2RulesActionDetails",
@@ -21499,15 +17483,15 @@ function __c83(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Action: S.optional(AwsWafv2RulesActionDetails),
+          Action: S.optional(__S(662)),
           Name: S.optional(S.String),
           OverrideAction: S.optional(S.String),
           Priority: S.optional(S.Number),
-          VisibilityConfig: S.optional(AwsWafv2VisibilityConfigDetails),
+          VisibilityConfig: S.optional(__S(663)),
         }),
       ).annotate({ identifier: "AwsWafv2RulesDetails" });
     case 1:
-      return S.Array(AwsWafv2RulesDetails);
+      return S.Array(__S(664));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -21516,11 +17500,11 @@ function __c83(j: number): any {
           ManagedbyFirewallManager: S.optional(S.Boolean),
           Id: S.optional(S.String),
           Capacity: S.optional(S.Number),
-          CaptchaConfig: S.optional(AwsWafv2WebAclCaptchaConfigDetails),
-          DefaultAction: S.optional(AwsWafv2WebAclActionDetails),
+          CaptchaConfig: S.optional(__S(656)),
+          DefaultAction: S.optional(__S(661)),
           Description: S.optional(S.String),
-          Rules: S.optional(AwsWafv2RulesList),
-          VisibilityConfig: S.optional(AwsWafv2VisibilityConfigDetails),
+          Rules: S.optional(__S(665)),
+          VisibilityConfig: S.optional(__S(663)),
         }),
       ).annotate({ identifier: "AwsWafv2WebAclDetails" });
     case 3:
@@ -21531,9 +17515,9 @@ function __c83(j: number): any {
           Id: S.optional(S.String),
           Name: S.optional(S.String),
           Arn: S.optional(S.String),
-          Rules: S.optional(AwsWafv2RulesList),
+          Rules: S.optional(__S(665)),
           Scope: S.optional(S.String),
-          VisibilityConfig: S.optional(AwsWafv2VisibilityConfigDetails),
+          VisibilityConfig: S.optional(__S(663)),
         }),
       ).annotate({ identifier: "AwsWafv2RuleGroupDetails" });
     case 4:
@@ -21543,7 +17527,7 @@ function __c83(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          AssociationState: S.optional(AssociationStateDetails),
+          AssociationState: S.optional(__S(668)),
           GatewayId: S.optional(S.String),
           Main: S.optional(S.Boolean),
           RouteTableAssociationId: S.optional(S.String),
@@ -21552,7 +17536,7 @@ function __c83(j: number): any {
         }),
       ).annotate({ identifier: "AssociationSetDetails" });
     case 6:
-      return S.Array(AssociationSetDetails);
+      return S.Array(__S(669));
     case 7:
       return S.suspend(() => S.Struct({ GatewayId: S.optional(S.String) })).annotate({
         identifier: "PropagatingVgwSetDetails",
@@ -21562,7 +17546,7 @@ function __c83(j: number): any {
 function __c84(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(PropagatingVgwSetDetails);
+      return S.Array(__S(671));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -21585,15 +17569,15 @@ function __c84(j: number): any {
         }),
       ).annotate({ identifier: "RouteSetDetails" });
     case 2:
-      return S.Array(RouteSetDetails);
+      return S.Array(__S(673));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          AssociationSet: S.optional(AssociationSetList),
+          AssociationSet: S.optional(__S(670)),
           OwnerId: S.optional(S.String),
-          PropagatingVgwSet: S.optional(PropagatingVgwSetList),
+          PropagatingVgwSet: S.optional(__S(672)),
           RouteTableId: S.optional(S.String),
-          RouteSet: S.optional(RouteSetList),
+          RouteSet: S.optional(__S(674)),
           VpcId: S.optional(S.String),
         }),
       ).annotate({ identifier: "AwsEc2RouteTableDetails" });
@@ -21606,7 +17590,7 @@ function __c84(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Hosts: S.optional(StringList),
+          Hosts: S.optional(__S(4)),
           RoleBase: S.optional(S.String),
           RoleName: S.optional(S.String),
           RoleSearchMatching: S.optional(S.String),
@@ -21633,7 +17617,7 @@ function __c84(j: number): any {
           General: S.optional(S.Boolean),
           AuditLogGroup: S.optional(S.String),
           GeneralLogGroup: S.optional(S.String),
-          Pending: S.optional(AwsAmazonMqBrokerLogsPendingDetails),
+          Pending: S.optional(__S(678)),
         }),
       ).annotate({
         identifier: "AwsAmazonMqBrokerLogsDetails",
@@ -21659,7 +17643,7 @@ function __c85(j: number): any {
         identifier: "AwsAmazonMqBrokerUsersDetails",
       });
     case 2:
-      return S.Array(AwsAmazonMqBrokerUsersDetails);
+      return S.Array(__S(681));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -21668,21 +17652,19 @@ function __c85(j: number): any {
           BrokerArn: S.optional(S.String),
           BrokerName: S.optional(S.String),
           DeploymentMode: S.optional(S.String),
-          EncryptionOptions: S.optional(AwsAmazonMqBrokerEncryptionOptionsDetails),
+          EncryptionOptions: S.optional(__S(676)),
           EngineType: S.optional(S.String),
           EngineVersion: S.optional(S.String),
           HostInstanceType: S.optional(S.String),
           BrokerId: S.optional(S.String),
-          LdapServerMetadata: S.optional(AwsAmazonMqBrokerLdapServerMetadataDetails),
-          Logs: S.optional(AwsAmazonMqBrokerLogsDetails),
-          MaintenanceWindowStartTime: S.optional(
-            AwsAmazonMqBrokerMaintenanceWindowStartTimeDetails,
-          ),
+          LdapServerMetadata: S.optional(__S(677)),
+          Logs: S.optional(__S(679)),
+          MaintenanceWindowStartTime: S.optional(__S(680)),
           PubliclyAccessible: S.optional(S.Boolean),
-          SecurityGroups: S.optional(StringList),
+          SecurityGroups: S.optional(__S(4)),
           StorageType: S.optional(S.String),
-          SubnetIds: S.optional(StringList),
-          Users: S.optional(AwsAmazonMqBrokerUsersList),
+          SubnetIds: S.optional(__S(4)),
+          Users: S.optional(__S(682)),
         }),
       ).annotate({ identifier: "AwsAmazonMqBrokerDetails" });
     case 4:
@@ -21735,31 +17717,29 @@ function __c86(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AuthenticationType: S.optional(S.String),
-          LambdaAuthorizerConfig: S.optional(AwsAppSyncGraphQlApiLambdaAuthorizerConfigDetails),
-          OpenIdConnectConfig: S.optional(AwsAppSyncGraphQlApiOpenIdConnectConfigDetails),
-          UserPoolConfig: S.optional(AwsAppSyncGraphQlApiUserPoolConfigDetails),
+          LambdaAuthorizerConfig: S.optional(__S(685)),
+          OpenIdConnectConfig: S.optional(__S(684)),
+          UserPoolConfig: S.optional(__S(686)),
         }),
       ).annotate({
         identifier: "AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails",
       });
     case 1:
-      return S.Array(AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersDetails);
+      return S.Array(__S(688));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ApiId: S.optional(S.String),
           Id: S.optional(S.String),
-          OpenIdConnectConfig: S.optional(AwsAppSyncGraphQlApiOpenIdConnectConfigDetails),
+          OpenIdConnectConfig: S.optional(__S(684)),
           Name: S.optional(S.String),
-          LambdaAuthorizerConfig: S.optional(AwsAppSyncGraphQlApiLambdaAuthorizerConfigDetails),
+          LambdaAuthorizerConfig: S.optional(__S(685)),
           XrayEnabled: S.optional(S.Boolean),
           Arn: S.optional(S.String),
-          UserPoolConfig: S.optional(AwsAppSyncGraphQlApiUserPoolConfigDetails),
+          UserPoolConfig: S.optional(__S(686)),
           AuthenticationType: S.optional(S.String),
-          LogConfig: S.optional(AwsAppSyncGraphQlApiLogConfigDetails),
-          AdditionalAuthenticationProviders: S.optional(
-            AwsAppSyncGraphQlApiAdditionalAuthenticationProvidersList,
-          ),
+          LogConfig: S.optional(__S(687)),
+          AdditionalAuthenticationProviders: S.optional(__S(689)),
           WafWebAclArn: S.optional(S.String),
         }),
       ).annotate({
@@ -21786,7 +17766,7 @@ function __c86(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          AuditLogs: S.optional(AwsGuardDutyDetectorDataSourcesKubernetesAuditLogsDetails),
+          AuditLogs: S.optional(__S(693)),
         }),
       ).annotate({
         identifier: "AwsGuardDutyDetectorDataSourcesKubernetesDetails",
@@ -21805,9 +17785,7 @@ function __c87(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          EbsVolumes: S.optional(
-            AwsGuardDutyDetectorDataSourcesMalwareProtectionScanEc2InstanceWithFindingsEbsVolumesDetails,
-          ),
+          EbsVolumes: S.optional(__S(695)),
         }),
       ).annotate({
         identifier:
@@ -21816,9 +17794,7 @@ function __c87(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ScanEc2InstanceWithFindings: S.optional(
-            AwsGuardDutyDetectorDataSourcesMalwareProtectionScanEc2InstanceWithFindingsDetails,
-          ),
+          ScanEc2InstanceWithFindings: S.optional(__S(696)),
           ServiceRole: S.optional(S.String),
         }),
       ).annotate({
@@ -21827,12 +17803,12 @@ function __c87(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          CloudTrail: S.optional(AwsGuardDutyDetectorDataSourcesCloudTrailDetails),
-          DnsLogs: S.optional(AwsGuardDutyDetectorDataSourcesDnsLogsDetails),
-          FlowLogs: S.optional(AwsGuardDutyDetectorDataSourcesFlowLogsDetails),
-          Kubernetes: S.optional(AwsGuardDutyDetectorDataSourcesKubernetesDetails),
-          MalwareProtection: S.optional(AwsGuardDutyDetectorDataSourcesMalwareProtectionDetails),
-          S3Logs: S.optional(AwsGuardDutyDetectorDataSourcesS3LogsDetails),
+          CloudTrail: S.optional(__S(692)),
+          DnsLogs: S.optional(__S(692)),
+          FlowLogs: S.optional(__S(692)),
+          Kubernetes: S.optional(__S(694)),
+          MalwareProtection: S.optional(__S(697)),
+          S3Logs: S.optional(__S(692)),
         }),
       ).annotate({
         identifier: "AwsGuardDutyDetectorDataSourcesDetails",
@@ -21844,12 +17820,12 @@ function __c87(j: number): any {
         identifier: "AwsGuardDutyDetectorFeaturesDetails",
       });
     case 4:
-      return S.Array(AwsGuardDutyDetectorFeaturesDetails);
+      return S.Array(__S(699));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          DataSources: S.optional(AwsGuardDutyDetectorDataSourcesDetails),
-          Features: S.optional(AwsGuardDutyDetectorFeaturesList),
+          DataSources: S.optional(__S(698)),
+          Features: S.optional(__S(700)),
           FindingPublishingFrequency: S.optional(S.String),
           ServiceRole: S.optional(S.String),
           Status: S.optional(S.String),
@@ -21865,9 +17841,7 @@ function __c87(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          CloudWatchLogsLogGroup: S.optional(
-            AwsStepFunctionStateMachineLoggingConfigurationDestinationsCloudWatchLogsLogGroupDetails,
-          ),
+          CloudWatchLogsLogGroup: S.optional(__S(702)),
         }),
       ).annotate({
         identifier: "AwsStepFunctionStateMachineLoggingConfigurationDestinationsDetails",
@@ -21877,11 +17851,11 @@ function __c87(j: number): any {
 function __c88(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsStepFunctionStateMachineLoggingConfigurationDestinationsDetails);
+      return S.Array(__S(703));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Destinations: S.optional(AwsStepFunctionStateMachineLoggingConfigurationDestinationsList),
+          Destinations: S.optional(__S(704)),
           IncludeExecutionData: S.optional(S.Boolean),
           Level: S.optional(S.String),
         }),
@@ -21892,12 +17866,12 @@ function __c88(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Label: S.optional(S.String),
-          LoggingConfiguration: S.optional(AwsStepFunctionStateMachineLoggingConfigurationDetails),
+          LoggingConfiguration: S.optional(__S(705)),
           Name: S.optional(S.String),
           RoleArn: S.optional(S.String),
           StateMachineArn: S.optional(S.String),
           Status: S.optional(S.String),
-          TracingConfiguration: S.optional(AwsStepFunctionStateMachineTracingConfigurationDetails),
+          TracingConfiguration: S.optional(__S(205)),
           Type: S.optional(S.String),
         }),
       ).annotate({
@@ -21913,9 +17887,7 @@ function __c88(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          EncryptionConfiguration: S.optional(
-            AwsAthenaWorkGroupConfigurationResultConfigurationEncryptionConfigurationDetails,
-          ),
+          EncryptionConfiguration: S.optional(__S(707)),
         }),
       ).annotate({
         identifier: "AwsAthenaWorkGroupConfigurationResultConfigurationDetails",
@@ -21923,9 +17895,7 @@ function __c88(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ResultConfiguration: S.optional(
-            AwsAthenaWorkGroupConfigurationResultConfigurationDetails,
-          ),
+          ResultConfiguration: S.optional(__S(708)),
         }),
       ).annotate({
         identifier: "AwsAthenaWorkGroupConfigurationDetails",
@@ -21936,7 +17906,7 @@ function __c88(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           State: S.optional(S.String),
-          Configuration: S.optional(AwsAthenaWorkGroupConfigurationDetails),
+          Configuration: S.optional(__S(709)),
         }),
       ).annotate({
         identifier: "AwsAthenaWorkGroupDetails",
@@ -21976,7 +17946,7 @@ function __c89(j: number): any {
         identifier: "AwsEventsEndpointEventBusesDetails",
       });
     case 2:
-      return S.Array(AwsEventsEndpointEventBusesDetails);
+      return S.Array(__S(713));
     case 3:
       return S.suspend(() => S.Struct({ HealthCheck: S.optional(S.String) })).annotate({
         identifier: "AwsEventsEndpointRoutingConfigFailoverConfigPrimaryDetails",
@@ -21988,8 +17958,8 @@ function __c89(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Primary: S.optional(AwsEventsEndpointRoutingConfigFailoverConfigPrimaryDetails),
-          Secondary: S.optional(AwsEventsEndpointRoutingConfigFailoverConfigSecondaryDetails),
+          Primary: S.optional(__S(715)),
+          Secondary: S.optional(__S(716)),
         }),
       ).annotate({
         identifier: "AwsEventsEndpointRoutingConfigFailoverConfigDetails",
@@ -21997,7 +17967,7 @@ function __c89(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          FailoverConfig: S.optional(AwsEventsEndpointRoutingConfigFailoverConfigDetails),
+          FailoverConfig: S.optional(__S(717)),
         }),
       ).annotate({
         identifier: "AwsEventsEndpointRoutingConfigDetails",
@@ -22009,11 +17979,11 @@ function __c89(j: number): any {
           Description: S.optional(S.String),
           EndpointId: S.optional(S.String),
           EndpointUrl: S.optional(S.String),
-          EventBuses: S.optional(AwsEventsEndpointEventBusesList),
+          EventBuses: S.optional(__S(714)),
           Name: S.optional(S.String),
-          ReplicationConfig: S.optional(AwsEventsEndpointReplicationConfigDetails),
+          ReplicationConfig: S.optional(__S(150)),
           RoleArn: S.optional(S.String),
-          RoutingConfig: S.optional(AwsEventsEndpointRoutingConfigDetails),
+          RoutingConfig: S.optional(__S(718)),
           State: S.optional(S.String),
           StateReason: S.optional(S.String),
         }),
@@ -22053,7 +18023,7 @@ function __c90(j: number): any {
         identifier: "AwsDmsReplicationInstanceVpcSecurityGroupsDetails",
       });
     case 3:
-      return S.Array(AwsDmsReplicationInstanceVpcSecurityGroupsDetails);
+      return S.Array(__S(722));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -22067,10 +18037,8 @@ function __c90(j: number): any {
           PubliclyAccessible: S.optional(S.Boolean),
           ReplicationInstanceClass: S.optional(S.String),
           ReplicationInstanceIdentifier: S.optional(S.String),
-          ReplicationSubnetGroup: S.optional(
-            AwsDmsReplicationInstanceReplicationSubnetGroupDetails,
-          ),
-          VpcSecurityGroups: S.optional(AwsDmsReplicationInstanceVpcSecurityGroupsList),
+          ReplicationSubnetGroup: S.optional(__S(721)),
+          VpcSecurityGroups: S.optional(__S(723)),
         }),
       ).annotate({
         identifier: "AwsDmsReplicationInstanceDetails",
@@ -22084,7 +18052,7 @@ function __c90(j: number): any {
         S.Struct({
           Id: S.optional(S.String),
           Name: S.optional(S.String),
-          Config: S.optional(AwsRoute53HostedZoneConfigDetails),
+          Config: S.optional(__S(725)),
         }),
       ).annotate({
         identifier: "AwsRoute53HostedZoneObjectDetails",
@@ -22100,7 +18068,7 @@ function __c90(j: number): any {
 function __c91(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AwsRoute53HostedZoneVpcDetails);
+      return S.Array(__S(727));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -22113,17 +18081,17 @@ function __c91(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ CloudWatchLogsLogGroupArn: S.optional(CloudWatchLogsLogGroupArnConfigDetails) }),
+        S.Struct({ CloudWatchLogsLogGroupArn: S.optional(__S(729)) }),
       ).annotate({
         identifier: "AwsRoute53QueryLoggingConfigDetails",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          HostedZone: S.optional(AwsRoute53HostedZoneObjectDetails),
-          Vpcs: S.optional(AwsRoute53HostedZoneVpcsList),
-          NameServers: S.optional(AwsRoute53HostedZoneNameServersList),
-          QueryLoggingConfig: S.optional(AwsRoute53QueryLoggingConfigDetails),
+          HostedZone: S.optional(__S(726)),
+          Vpcs: S.optional(__S(728)),
+          NameServers: S.optional(__S(4)),
+          QueryLoggingConfig: S.optional(__S(730)),
         }),
       ).annotate({
         identifier: "AwsRoute53HostedZoneDetails",
@@ -22141,12 +18109,8 @@ function __c91(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          EncryptionInTransit: S.optional(
-            AwsMskClusterClusterInfoEncryptionInfoEncryptionInTransitDetails,
-          ),
-          EncryptionAtRest: S.optional(
-            AwsMskClusterClusterInfoEncryptionInfoEncryptionAtRestDetails,
-          ),
+          EncryptionInTransit: S.optional(__S(732)),
+          EncryptionAtRest: S.optional(__S(733)),
         }),
       ).annotate({
         identifier: "AwsMskClusterClusterInfoEncryptionInfoDetails",
@@ -22154,8 +18118,8 @@ function __c91(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Iam: S.optional(AwsMskClusterClusterInfoClientAuthenticationSaslIamDetails),
-          Scram: S.optional(AwsMskClusterClusterInfoClientAuthenticationSaslScramDetails),
+          Iam: S.optional(__S(488)),
+          Scram: S.optional(__S(488)),
         }),
       ).annotate({
         identifier: "AwsMskClusterClusterInfoClientAuthenticationSaslDetails",
@@ -22171,7 +18135,7 @@ function __c92(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          CertificateAuthorityArnList: S.optional(StringList),
+          CertificateAuthorityArnList: S.optional(__S(4)),
           Enabled: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -22180,11 +18144,9 @@ function __c92(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Sasl: S.optional(AwsMskClusterClusterInfoClientAuthenticationSaslDetails),
-          Unauthenticated: S.optional(
-            AwsMskClusterClusterInfoClientAuthenticationUnauthenticatedDetails,
-          ),
-          Tls: S.optional(AwsMskClusterClusterInfoClientAuthenticationTlsDetails),
+          Sasl: S.optional(__S(735)),
+          Unauthenticated: S.optional(__S(736)),
+          Tls: S.optional(__S(737)),
         }),
       ).annotate({
         identifier: "AwsMskClusterClusterInfoClientAuthenticationDetails",
@@ -22192,20 +18154,20 @@ function __c92(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          EncryptionInfo: S.optional(AwsMskClusterClusterInfoEncryptionInfoDetails),
+          EncryptionInfo: S.optional(__S(734)),
           CurrentVersion: S.optional(S.String),
           NumberOfBrokerNodes: S.optional(S.Number),
           ClusterName: S.optional(S.String),
-          ClientAuthentication: S.optional(AwsMskClusterClusterInfoClientAuthenticationDetails),
+          ClientAuthentication: S.optional(__S(738)),
           EnhancedMonitoring: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AwsMskClusterClusterInfoDetails",
       });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ ClusterInfo: S.optional(AwsMskClusterClusterInfoDetails) }),
-      ).annotate({ identifier: "AwsMskClusterDetails" });
+      return S.suspend(() => S.Struct({ ClusterInfo: S.optional(__S(739)) })).annotate({
+        identifier: "AwsMskClusterDetails",
+      });
     case 5:
       return S.suspend(() => S.Struct({ VpcId: S.optional(S.String) })).annotate({
         identifier: "AwsS3AccessPointVpcConfigurationDetails",
@@ -22219,8 +18181,8 @@ function __c92(j: number): any {
           BucketAccountId: S.optional(S.String),
           Name: S.optional(S.String),
           NetworkOrigin: S.optional(S.String),
-          PublicAccessBlockConfiguration: S.optional(AwsS3AccountPublicAccessBlockDetails),
-          VpcConfiguration: S.optional(AwsS3AccessPointVpcConfigurationDetails),
+          PublicAccessBlockConfiguration: S.optional(__S(226)),
+          VpcConfiguration: S.optional(__S(741)),
         }),
       ).annotate({ identifier: "AwsS3AccessPointDetails" });
     case 7:
@@ -22250,21 +18212,15 @@ function __c93(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Type: S.optional(S.String),
-          ActiveDirectory: S.optional(
-            AwsEc2ClientVpnEndpointAuthenticationOptionsActiveDirectoryDetails,
-          ),
-          MutualAuthentication: S.optional(
-            AwsEc2ClientVpnEndpointAuthenticationOptionsMutualAuthenticationDetails,
-          ),
-          FederatedAuthentication: S.optional(
-            AwsEc2ClientVpnEndpointAuthenticationOptionsFederatedAuthenticationDetails,
-          ),
+          ActiveDirectory: S.optional(__S(743)),
+          MutualAuthentication: S.optional(__S(744)),
+          FederatedAuthentication: S.optional(__S(745)),
         }),
       ).annotate({
         identifier: "AwsEc2ClientVpnEndpointAuthenticationOptionsDetails",
       });
     case 3:
-      return S.Array(AwsEc2ClientVpnEndpointAuthenticationOptionsDetails);
+      return S.Array(__S(746));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -22286,7 +18242,7 @@ function __c93(j: number): any {
         S.Struct({
           Enabled: S.optional(S.Boolean),
           LambdaFunctionArn: S.optional(S.String),
-          Status: S.optional(AwsEc2ClientVpnEndpointClientConnectOptionsStatusDetails),
+          Status: S.optional(__S(749)),
         }),
       ).annotate({
         identifier: "AwsEc2ClientVpnEndpointClientConnectOptionsDetails",
@@ -22307,21 +18263,19 @@ function __c94(j: number): any {
           ClientVpnEndpointId: S.optional(S.String),
           Description: S.optional(S.String),
           ClientCidrBlock: S.optional(S.String),
-          DnsServer: S.optional(StringList),
+          DnsServer: S.optional(__S(4)),
           SplitTunnel: S.optional(S.Boolean),
           TransportProtocol: S.optional(S.String),
           VpnPort: S.optional(S.Number),
           ServerCertificateArn: S.optional(S.String),
-          AuthenticationOptions: S.optional(AwsEc2ClientVpnEndpointAuthenticationOptionsList),
-          ConnectionLogOptions: S.optional(AwsEc2ClientVpnEndpointConnectionLogOptionsDetails),
-          SecurityGroupIdSet: S.optional(StringList),
+          AuthenticationOptions: S.optional(__S(747)),
+          ConnectionLogOptions: S.optional(__S(748)),
+          SecurityGroupIdSet: S.optional(__S(4)),
           VpcId: S.optional(S.String),
           SelfServicePortalUrl: S.optional(S.String),
-          ClientConnectOptions: S.optional(AwsEc2ClientVpnEndpointClientConnectOptionsDetails),
+          ClientConnectOptions: S.optional(__S(750)),
           SessionTimeoutHours: S.optional(S.Number),
-          ClientLoginBannerOptions: S.optional(
-            AwsEc2ClientVpnEndpointClientLoginBannerOptionsDetails,
-          ),
+          ClientLoginBannerOptions: S.optional(__S(751)),
         }),
       ).annotate({
         identifier: "AwsEc2ClientVpnEndpointDetails",
@@ -22337,106 +18291,106 @@ function __c94(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AwsAutoScalingAutoScalingGroup: S.optional(AwsAutoScalingAutoScalingGroupDetails),
-          AwsCodeBuildProject: S.optional(AwsCodeBuildProjectDetails),
-          AwsCloudFrontDistribution: S.optional(AwsCloudFrontDistributionDetails),
-          AwsEc2Instance: S.optional(AwsEc2InstanceDetails),
-          AwsEc2NetworkInterface: S.optional(AwsEc2NetworkInterfaceDetails),
-          AwsEc2SecurityGroup: S.optional(AwsEc2SecurityGroupDetails),
-          AwsEc2Volume: S.optional(AwsEc2VolumeDetails),
-          AwsEc2Vpc: S.optional(AwsEc2VpcDetails),
-          AwsEc2Eip: S.optional(AwsEc2EipDetails),
-          AwsEc2Subnet: S.optional(AwsEc2SubnetDetails),
-          AwsEc2NetworkAcl: S.optional(AwsEc2NetworkAclDetails),
-          AwsElbv2LoadBalancer: S.optional(AwsElbv2LoadBalancerDetails),
-          AwsElasticBeanstalkEnvironment: S.optional(AwsElasticBeanstalkEnvironmentDetails),
-          AwsElasticsearchDomain: S.optional(AwsElasticsearchDomainDetails),
-          AwsS3Bucket: S.optional(AwsS3BucketDetails),
-          AwsS3AccountPublicAccessBlock: S.optional(AwsS3AccountPublicAccessBlockDetails),
-          AwsS3Object: S.optional(AwsS3ObjectDetails),
-          AwsSecretsManagerSecret: S.optional(AwsSecretsManagerSecretDetails),
-          AwsIamAccessKey: S.optional(AwsIamAccessKeyDetails),
-          AwsIamUser: S.optional(AwsIamUserDetails),
-          AwsIamPolicy: S.optional(AwsIamPolicyDetails),
-          AwsApiGatewayV2Stage: S.optional(AwsApiGatewayV2StageDetails),
-          AwsApiGatewayV2Api: S.optional(AwsApiGatewayV2ApiDetails),
-          AwsDynamoDbTable: S.optional(AwsDynamoDbTableDetails),
-          AwsApiGatewayStage: S.optional(AwsApiGatewayStageDetails),
-          AwsApiGatewayRestApi: S.optional(AwsApiGatewayRestApiDetails),
-          AwsCloudTrailTrail: S.optional(AwsCloudTrailTrailDetails),
-          AwsSsmPatchCompliance: S.optional(AwsSsmPatchComplianceDetails),
-          AwsCertificateManagerCertificate: S.optional(AwsCertificateManagerCertificateDetails),
-          AwsRedshiftCluster: S.optional(AwsRedshiftClusterDetails),
-          AwsElbLoadBalancer: S.optional(AwsElbLoadBalancerDetails),
-          AwsIamGroup: S.optional(AwsIamGroupDetails),
-          AwsIamRole: S.optional(AwsIamRoleDetails),
-          AwsKmsKey: S.optional(AwsKmsKeyDetails),
-          AwsLambdaFunction: S.optional(AwsLambdaFunctionDetails),
-          AwsLambdaLayerVersion: S.optional(AwsLambdaLayerVersionDetails),
-          AwsRdsDbInstance: S.optional(AwsRdsDbInstanceDetails),
-          AwsSnsTopic: S.optional(AwsSnsTopicDetails),
-          AwsSqsQueue: S.optional(AwsSqsQueueDetails),
-          AwsWafWebAcl: S.optional(AwsWafWebAclDetails),
-          AwsRdsDbSnapshot: S.optional(AwsRdsDbSnapshotDetails),
-          AwsRdsDbClusterSnapshot: S.optional(AwsRdsDbClusterSnapshotDetails),
-          AwsRdsDbCluster: S.optional(AwsRdsDbClusterDetails),
-          AwsEcsCluster: S.optional(AwsEcsClusterDetails),
-          AwsEcsContainer: S.optional(AwsEcsContainerDetails),
-          AwsEcsTaskDefinition: S.optional(AwsEcsTaskDefinitionDetails),
-          Container: S.optional(ContainerDetails),
-          Other: S.optional(FieldMap),
-          AwsRdsEventSubscription: S.optional(AwsRdsEventSubscriptionDetails),
-          AwsEcsService: S.optional(AwsEcsServiceDetails),
-          AwsAutoScalingLaunchConfiguration: S.optional(AwsAutoScalingLaunchConfigurationDetails),
-          AwsEc2VpnConnection: S.optional(AwsEc2VpnConnectionDetails),
-          AwsEcrContainerImage: S.optional(AwsEcrContainerImageDetails),
-          AwsOpenSearchServiceDomain: S.optional(AwsOpenSearchServiceDomainDetails),
-          AwsEc2VpcEndpointService: S.optional(AwsEc2VpcEndpointServiceDetails),
-          AwsXrayEncryptionConfig: S.optional(AwsXrayEncryptionConfigDetails),
-          AwsWafRateBasedRule: S.optional(AwsWafRateBasedRuleDetails),
-          AwsWafRegionalRateBasedRule: S.optional(AwsWafRegionalRateBasedRuleDetails),
-          AwsEcrRepository: S.optional(AwsEcrRepositoryDetails),
-          AwsEksCluster: S.optional(AwsEksClusterDetails),
-          AwsNetworkFirewallFirewallPolicy: S.optional(AwsNetworkFirewallFirewallPolicyDetails),
-          AwsNetworkFirewallFirewall: S.optional(AwsNetworkFirewallFirewallDetails),
-          AwsNetworkFirewallRuleGroup: S.optional(AwsNetworkFirewallRuleGroupDetails),
-          AwsRdsDbSecurityGroup: S.optional(AwsRdsDbSecurityGroupDetails),
-          AwsKinesisStream: S.optional(AwsKinesisStreamDetails),
-          AwsEc2TransitGateway: S.optional(AwsEc2TransitGatewayDetails),
-          AwsEfsAccessPoint: S.optional(AwsEfsAccessPointDetails),
-          AwsCloudFormationStack: S.optional(AwsCloudFormationStackDetails),
-          AwsCloudWatchAlarm: S.optional(AwsCloudWatchAlarmDetails),
-          AwsEc2VpcPeeringConnection: S.optional(AwsEc2VpcPeeringConnectionDetails),
-          AwsWafRegionalRuleGroup: S.optional(AwsWafRegionalRuleGroupDetails),
-          AwsWafRegionalRule: S.optional(AwsWafRegionalRuleDetails),
-          AwsWafRegionalWebAcl: S.optional(AwsWafRegionalWebAclDetails),
-          AwsWafRule: S.optional(AwsWafRuleDetails),
-          AwsWafRuleGroup: S.optional(AwsWafRuleGroupDetails),
-          AwsEcsTask: S.optional(AwsEcsTaskDetails),
-          AwsBackupBackupVault: S.optional(AwsBackupBackupVaultDetails),
-          AwsBackupBackupPlan: S.optional(AwsBackupBackupPlanDetails),
-          AwsBackupRecoveryPoint: S.optional(AwsBackupRecoveryPointDetails),
-          AwsEc2LaunchTemplate: S.optional(AwsEc2LaunchTemplateDetails),
-          AwsSageMakerNotebookInstance: S.optional(AwsSageMakerNotebookInstanceDetails),
-          AwsWafv2WebAcl: S.optional(AwsWafv2WebAclDetails),
-          AwsWafv2RuleGroup: S.optional(AwsWafv2RuleGroupDetails),
-          AwsEc2RouteTable: S.optional(AwsEc2RouteTableDetails),
-          AwsAmazonMqBroker: S.optional(AwsAmazonMqBrokerDetails),
-          AwsAppSyncGraphQlApi: S.optional(AwsAppSyncGraphQlApiDetails),
-          AwsEventSchemasRegistry: S.optional(AwsEventSchemasRegistryDetails),
-          AwsGuardDutyDetector: S.optional(AwsGuardDutyDetectorDetails),
-          AwsStepFunctionStateMachine: S.optional(AwsStepFunctionStateMachineDetails),
-          AwsAthenaWorkGroup: S.optional(AwsAthenaWorkGroupDetails),
-          AwsEventsEventbus: S.optional(AwsEventsEventbusDetails),
-          AwsDmsEndpoint: S.optional(AwsDmsEndpointDetails),
-          AwsEventsEndpoint: S.optional(AwsEventsEndpointDetails),
-          AwsDmsReplicationTask: S.optional(AwsDmsReplicationTaskDetails),
-          AwsDmsReplicationInstance: S.optional(AwsDmsReplicationInstanceDetails),
-          AwsRoute53HostedZone: S.optional(AwsRoute53HostedZoneDetails),
-          AwsMskCluster: S.optional(AwsMskClusterDetails),
-          AwsS3AccessPoint: S.optional(AwsS3AccessPointDetails),
-          AwsEc2ClientVpnEndpoint: S.optional(AwsEc2ClientVpnEndpointDetails),
-          CodeRepository: S.optional(CodeRepositoryDetails),
+          AwsAutoScalingAutoScalingGroup: S.optional(__S(117)),
+          AwsCodeBuildProject: S.optional(__S(129)),
+          AwsCloudFrontDistribution: S.optional(__S(146)),
+          AwsEc2Instance: S.optional(__S(151)),
+          AwsEc2NetworkInterface: S.optional(__S(159)),
+          AwsEc2SecurityGroup: S.optional(__S(170)),
+          AwsEc2Volume: S.optional(__S(173)),
+          AwsEc2Vpc: S.optional(__S(178)),
+          AwsEc2Eip: S.optional(__S(179)),
+          AwsEc2Subnet: S.optional(__S(180)),
+          AwsEc2NetworkAcl: S.optional(__S(187)),
+          AwsElbv2LoadBalancer: S.optional(__S(192)),
+          AwsElasticBeanstalkEnvironment: S.optional(__S(198)),
+          AwsElasticsearchDomain: S.optional(__S(208)),
+          AwsS3Bucket: S.optional(__S(245)),
+          AwsS3AccountPublicAccessBlock: S.optional(__S(226)),
+          AwsS3Object: S.optional(__S(246)),
+          AwsSecretsManagerSecret: S.optional(__S(248)),
+          AwsIamAccessKey: S.optional(__S(252)),
+          AwsIamUser: S.optional(__S(258)),
+          AwsIamPolicy: S.optional(__S(261)),
+          AwsApiGatewayV2Stage: S.optional(__S(264)),
+          AwsApiGatewayV2Api: S.optional(__S(266)),
+          AwsDynamoDbTable: S.optional(__S(286)),
+          AwsApiGatewayStage: S.optional(__S(290)),
+          AwsApiGatewayRestApi: S.optional(__S(292)),
+          AwsCloudTrailTrail: S.optional(__S(293)),
+          AwsSsmPatchCompliance: S.optional(__S(296)),
+          AwsCertificateManagerCertificate: S.optional(__S(306)),
+          AwsRedshiftCluster: S.optional(__S(329)),
+          AwsElbLoadBalancer: S.optional(__S(349)),
+          AwsIamGroup: S.optional(__S(350)),
+          AwsIamRole: S.optional(__S(355)),
+          AwsKmsKey: S.optional(__S(356)),
+          AwsLambdaFunction: S.optional(__S(365)),
+          AwsLambdaLayerVersion: S.optional(__S(366)),
+          AwsRdsDbInstance: S.optional(__S(387)),
+          AwsSnsTopic: S.optional(__S(390)),
+          AwsSqsQueue: S.optional(__S(391)),
+          AwsWafWebAcl: S.optional(__S(397)),
+          AwsRdsDbSnapshot: S.optional(__S(398)),
+          AwsRdsDbClusterSnapshot: S.optional(__S(401)),
+          AwsRdsDbCluster: S.optional(__S(408)),
+          AwsEcsCluster: S.optional(__S(416)),
+          AwsEcsContainer: S.optional(__S(419)),
+          AwsEcsTaskDefinition: S.optional(__S(468)),
+          Container: S.optional(__S(471)),
+          Other: S.optional(__S(31)),
+          AwsRdsEventSubscription: S.optional(__S(472)),
+          AwsEcsService: S.optional(__S(484)),
+          AwsAutoScalingLaunchConfiguration: S.optional(__S(490)),
+          AwsEc2VpnConnection: S.optional(__S(498)),
+          AwsEcrContainerImage: S.optional(__S(499)),
+          AwsOpenSearchServiceDomain: S.optional(__S(507)),
+          AwsEc2VpcEndpointService: S.optional(__S(510)),
+          AwsXrayEncryptionConfig: S.optional(__S(511)),
+          AwsWafRateBasedRule: S.optional(__S(514)),
+          AwsWafRegionalRateBasedRule: S.optional(__S(514)),
+          AwsEcrRepository: S.optional(__S(517)),
+          AwsEksCluster: S.optional(__S(522)),
+          AwsNetworkFirewallFirewallPolicy: S.optional(__S(534)),
+          AwsNetworkFirewallFirewall: S.optional(__S(537)),
+          AwsNetworkFirewallRuleGroup: S.optional(__S(562)),
+          AwsRdsDbSecurityGroup: S.optional(__S(567)),
+          AwsKinesisStream: S.optional(__S(569)),
+          AwsEc2TransitGateway: S.optional(__S(570)),
+          AwsEfsAccessPoint: S.optional(__S(574)),
+          AwsCloudFormationStack: S.optional(__S(578)),
+          AwsCloudWatchAlarm: S.optional(__S(579)),
+          AwsEc2VpcPeeringConnection: S.optional(__S(587)),
+          AwsWafRegionalRuleGroup: S.optional(__S(590)),
+          AwsWafRegionalRule: S.optional(__S(591)),
+          AwsWafRegionalWebAcl: S.optional(__S(594)),
+          AwsWafRule: S.optional(__S(596)),
+          AwsWafRuleGroup: S.optional(__S(598)),
+          AwsEcsTask: S.optional(__S(602)),
+          AwsBackupBackupVault: S.optional(__S(604)),
+          AwsBackupBackupPlan: S.optional(__S(613)),
+          AwsBackupRecoveryPoint: S.optional(__S(616)),
+          AwsEc2LaunchTemplate: S.optional(__S(652)),
+          AwsSageMakerNotebookInstance: S.optional(__S(654)),
+          AwsWafv2WebAcl: S.optional(__S(666)),
+          AwsWafv2RuleGroup: S.optional(__S(667)),
+          AwsEc2RouteTable: S.optional(__S(675)),
+          AwsAmazonMqBroker: S.optional(__S(683)),
+          AwsAppSyncGraphQlApi: S.optional(__S(690)),
+          AwsEventSchemasRegistry: S.optional(__S(691)),
+          AwsGuardDutyDetector: S.optional(__S(701)),
+          AwsStepFunctionStateMachine: S.optional(__S(706)),
+          AwsAthenaWorkGroup: S.optional(__S(710)),
+          AwsEventsEventbus: S.optional(__S(711)),
+          AwsDmsEndpoint: S.optional(__S(712)),
+          AwsEventsEndpoint: S.optional(__S(719)),
+          AwsDmsReplicationTask: S.optional(__S(720)),
+          AwsDmsReplicationInstance: S.optional(__S(724)),
+          AwsRoute53HostedZone: S.optional(__S(731)),
+          AwsMskCluster: S.optional(__S(740)),
+          AwsS3AccessPoint: S.optional(__S(742)),
+          AwsEc2ClientVpnEndpoint: S.optional(__S(752)),
+          CodeRepository: S.optional(__S(753)),
           AzureResource: S.optional(S.Any),
         }),
       ).annotate({ identifier: "ResourceDetails" });
@@ -22445,26 +18399,26 @@ function __c94(j: number): any {
         S.Struct({
           Type: S.optional(S.String),
           Id: S.optional(S.String),
-          Partition: S.optional(Partition),
+          Partition: S.optional(S.String),
           Region: S.optional(S.String),
-          Provider: S.optional(CloudProviderName),
-          Owner: S.optional(ResourceOwner),
+          Provider: S.optional(S.String),
+          Owner: S.optional(__S(88)),
           ResourceRole: S.optional(S.String),
-          Tags: S.optional(FieldMap),
-          DataClassification: S.optional(DataClassificationDetails),
-          Details: S.optional(ResourceDetails),
+          Tags: S.optional(__S(31)),
+          DataClassification: S.optional(__S(107)),
+          Details: S.optional(__S(754)),
           ApplicationName: S.optional(S.String),
           ApplicationArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "Resource" });
     case 4:
-      return S.Array(Resource);
+      return S.Array(__S(755));
     case 5:
       return S.suspend(() =>
         S.Struct({ ReasonCode: S.optional(S.String), Description: S.optional(S.String) }),
       ).annotate({ identifier: "StatusReason" });
     case 6:
-      return S.Array(StatusReason);
+      return S.Array(__S(757));
     case 7:
       return S.suspend(() => S.Struct({ StandardsId: S.optional(S.String) })).annotate({
         identifier: "AssociatedStandard",
@@ -22474,22 +18428,22 @@ function __c94(j: number): any {
 function __c95(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AssociatedStandard);
+      return S.Array(__S(759));
     case 1:
       return S.suspend(() =>
-        S.Struct({ Name: S.optional(S.String), Value: S.optional(TypeList) }),
+        S.Struct({ Name: S.optional(S.String), Value: S.optional(__S(4)) }),
       ).annotate({ identifier: "SecurityControlParameter" });
     case 2:
-      return S.Array(SecurityControlParameter);
+      return S.Array(__S(761));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(ComplianceStatus),
-          RelatedRequirements: S.optional(RelatedRequirementsList),
-          StatusReasons: S.optional(StatusReasonsList),
+          Status: S.optional(S.String),
+          RelatedRequirements: S.optional(__S(4)),
+          StatusReasons: S.optional(__S(758)),
           SecurityControlId: S.optional(S.String),
-          AssociatedStandards: S.optional(AssociatedStandardsList),
-          SecurityControlParameters: S.optional(SecurityControlParametersList),
+          AssociatedStandards: S.optional(__S(760)),
+          SecurityControlParameters: S.optional(__S(762)),
         }),
       ).annotate({ identifier: "Compliance" });
     case 4:
@@ -22517,7 +18471,7 @@ function __c95(j: number): any {
         }),
       ).annotate({ identifier: "SoftwarePackage" });
     case 6:
-      return S.Array(SoftwarePackage);
+      return S.Array(__S(765));
     case 7:
       return S.suspend(() =>
         S.Struct({ Metric: S.optional(S.String), Reason: S.optional(S.String) }),
@@ -22527,7 +18481,7 @@ function __c95(j: number): any {
 function __c96(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Adjustment);
+      return S.Array(__S(767));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -22535,11 +18489,11 @@ function __c96(j: number): any {
           BaseScore: S.optional(S.Number),
           BaseVector: S.optional(S.String),
           Source: S.optional(S.String),
-          Adjustments: S.optional(AdjustmentList),
+          Adjustments: S.optional(__S(768)),
         }),
       ).annotate({ identifier: "Cvss" });
     case 2:
-      return S.Array(Cvss);
+      return S.Array(__S(769));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -22564,29 +18518,29 @@ function __c96(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Cwes: S.optional(TypeList),
-          FilePath: S.optional(CodeVulnerabilitiesFilePath),
+          Cwes: S.optional(__S(4)),
+          FilePath: S.optional(__S(772)),
           SourceArn: S.optional(S.String),
         }),
       ).annotate({
         identifier: "VulnerabilityCodeVulnerabilities",
       });
     case 6:
-      return S.Array(VulnerabilityCodeVulnerabilities);
+      return S.Array(__S(773));
     case 7:
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          VulnerablePackages: S.optional(SoftwarePackageList),
-          Cvss: S.optional(CvssList),
-          RelatedVulnerabilities: S.optional(StringList),
-          Vendor: S.optional(VulnerabilityVendor),
-          ReferenceUrls: S.optional(StringList),
-          FixAvailable: S.optional(VulnerabilityFixAvailable),
+          VulnerablePackages: S.optional(__S(766)),
+          Cvss: S.optional(__S(770)),
+          RelatedVulnerabilities: S.optional(__S(4)),
+          Vendor: S.optional(__S(771)),
+          ReferenceUrls: S.optional(__S(4)),
+          FixAvailable: S.optional(S.String),
           EpssScore: S.optional(S.Number),
-          ExploitAvailable: S.optional(VulnerabilityExploitAvailable),
+          ExploitAvailable: S.optional(S.String),
           LastKnownExploitAt: S.optional(S.String),
-          CodeVulnerabilities: S.optional(VulnerabilityCodeVulnerabilitiesList),
+          CodeVulnerabilities: S.optional(__S(774)),
         }),
       ).annotate({ identifier: "Vulnerability" });
   }
@@ -22594,7 +18548,7 @@ function __c96(j: number): any {
 function __c97(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Vulnerability);
+      return S.Array(__S(775));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -22636,10 +18590,10 @@ function __c97(j: number): any {
       return S.suspend(() =>
         S.Struct({
           IpAddressV4: S.optional(S.String),
-          Organization: S.optional(IpOrganizationDetails),
-          Country: S.optional(Country),
-          City: S.optional(City),
-          GeoLocation: S.optional(GeoLocation),
+          Organization: S.optional(__S(778)),
+          Country: S.optional(__S(779)),
+          City: S.optional(__S(780)),
+          GeoLocation: S.optional(__S(781)),
         }),
       ).annotate({ identifier: "ActionRemoteIpDetails" });
     case 7:
@@ -22654,9 +18608,9 @@ function __c98(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConnectionDirection: S.optional(S.String),
-          RemoteIpDetails: S.optional(ActionRemoteIpDetails),
-          RemotePortDetails: S.optional(ActionRemotePortDetails),
-          LocalPortDetails: S.optional(ActionLocalPortDetails),
+          RemoteIpDetails: S.optional(__S(782)),
+          RemotePortDetails: S.optional(__S(783)),
+          LocalPortDetails: S.optional(__S(783)),
           Protocol: S.optional(S.String),
           Blocked: S.optional(S.Boolean),
         }),
@@ -22671,9 +18625,9 @@ function __c98(j: number): any {
           Api: S.optional(S.String),
           ServiceName: S.optional(S.String),
           CallerType: S.optional(S.String),
-          RemoteIpDetails: S.optional(ActionRemoteIpDetails),
-          DomainDetails: S.optional(AwsApiCallActionDomainDetails),
-          AffectedResources: S.optional(FieldMap),
+          RemoteIpDetails: S.optional(__S(782)),
+          DomainDetails: S.optional(__S(785)),
+          AffectedResources: S.optional(__S(31)),
           FirstSeen: S.optional(S.String),
           LastSeen: S.optional(S.String),
         }),
@@ -22693,17 +18647,17 @@ function __c98(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          LocalPortDetails: S.optional(ActionLocalPortDetails),
-          LocalIpDetails: S.optional(ActionLocalIpDetails),
-          RemoteIpDetails: S.optional(ActionRemoteIpDetails),
+          LocalPortDetails: S.optional(__S(783)),
+          LocalIpDetails: S.optional(__S(788)),
+          RemoteIpDetails: S.optional(__S(782)),
         }),
       ).annotate({ identifier: "PortProbeDetail" });
     case 6:
-      return S.Array(PortProbeDetail);
+      return S.Array(__S(789));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          PortProbeDetails: S.optional(PortProbeDetailList),
+          PortProbeDetails: S.optional(__S(790)),
           Blocked: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "PortProbeAction" });
@@ -22715,24 +18669,24 @@ function __c99(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ActionType: S.optional(S.String),
-          NetworkConnectionAction: S.optional(NetworkConnectionAction),
-          AwsApiCallAction: S.optional(AwsApiCallAction),
-          DnsRequestAction: S.optional(DnsRequestAction),
-          PortProbeAction: S.optional(PortProbeAction),
+          NetworkConnectionAction: S.optional(__S(784)),
+          AwsApiCallAction: S.optional(__S(786)),
+          DnsRequestAction: S.optional(__S(787)),
+          PortProbeAction: S.optional(__S(791)),
         }),
       ).annotate({ identifier: "Action" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Label: S.optional(SeverityLabel), Original: S.optional(S.String) }),
+        S.Struct({ Label: S.optional(S.String), Original: S.optional(S.String) }),
       ).annotate({ identifier: "FindingProviderSeverity" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           Confidence: S.optional(S.Number),
           Criticality: S.optional(S.Number),
-          RelatedFindings: S.optional(RelatedFindingList),
-          Severity: S.optional(FindingProviderSeverity),
-          Types: S.optional(TypeList),
+          RelatedFindings: S.optional(__S(34)),
+          Severity: S.optional(__S(793)),
+          Types: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "FindingProviderFields" });
     case 3:
@@ -22740,7 +18694,7 @@ function __c99(j: number): any {
         S.Struct({
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          Labels: S.optional(TypeList),
+          Labels: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "GeneratorDetails" });
     case 4:
@@ -22754,14 +18708,14 @@ function __c99(j: number): any {
           Uid: S.optional(S.String),
           Type: S.optional(S.String),
           CredentialUid: S.optional(S.String),
-          Account: S.optional(UserAccount),
+          Account: S.optional(__S(796)),
         }),
       ).annotate({ identifier: "ActorUser" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           Uid: S.optional(S.String),
-          MfaStatus: S.optional(ActorSessionMfaStatus),
+          MfaStatus: S.optional(S.String),
           CreatedTime: S.optional(S.Number),
           Issuer: S.optional(S.String),
         }),
@@ -22770,8 +18724,8 @@ function __c99(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Id: S.optional(S.String),
-          User: S.optional(ActorUser),
-          Session: S.optional(ActorSession),
+          User: S.optional(__S(797)),
+          Session: S.optional(__S(798)),
         }),
       ).annotate({ identifier: "Actor" });
   }
@@ -22779,7 +18733,7 @@ function __c99(j: number): any {
 function __c100(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Actor);
+      return S.Array(__S(799));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -22794,7 +18748,7 @@ function __c100(j: number): any {
         S.Struct({ Name: S.optional(S.String), Number: S.optional(S.Number) }),
       ).annotate({ identifier: "NetworkAutonomousSystem" });
     case 3:
-      return S.suspend(() => S.Struct({ Direction: S.optional(ConnectionDirection) })).annotate({
+      return S.suspend(() => S.Struct({ Direction: S.optional(S.String) })).annotate({
         identifier: "NetworkConnection",
       });
     case 4:
@@ -22804,24 +18758,24 @@ function __c100(j: number): any {
           Ip: S.optional(S.String),
           Domain: S.optional(S.String),
           Port: S.optional(S.Number),
-          Location: S.optional(NetworkGeoLocation),
-          AutonomousSystem: S.optional(NetworkAutonomousSystem),
-          Connection: S.optional(NetworkConnection),
+          Location: S.optional(__S(801)),
+          AutonomousSystem: S.optional(__S(802)),
+          Connection: S.optional(__S(803)),
         }),
       ).annotate({ identifier: "NetworkEndpoint" });
     case 5:
-      return S.Array(NetworkEndpoint);
+      return S.Array(__S(804));
     case 6:
       return S.suspend(() =>
         S.Struct({
           Key: S.optional(S.String),
-          Values: S.optional(NonEmptyStringList),
+          Values: S.optional(__S(4)),
           Title: S.optional(S.String),
           Type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Indicator" });
     case 7:
-      return S.Array(Indicator);
+      return S.Array(__S(806));
   }
 }
 function __c101(j: number): any {
@@ -22833,8 +18787,8 @@ function __c101(j: number): any {
           Id: S.optional(S.String),
           Title: S.optional(S.String),
           ProductArn: S.optional(S.String),
-          ResourceIds: S.optional(NonEmptyStringList),
-          SignalIndicators: S.optional(IndicatorsList),
+          ResourceIds: S.optional(__S(4)),
+          SignalIndicators: S.optional(__S(807)),
           Name: S.optional(S.String),
           CreatedAt: S.optional(S.Number),
           UpdatedAt: S.optional(S.Number),
@@ -22842,24 +18796,24 @@ function __c101(j: number): any {
           LastSeenAt: S.optional(S.Number),
           Severity: S.optional(S.Number),
           Count: S.optional(S.Number),
-          ActorIds: S.optional(NonEmptyStringList),
-          EndpointIds: S.optional(NonEmptyStringList),
+          ActorIds: S.optional(__S(4)),
+          EndpointIds: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "Signal" });
     case 1:
-      return S.Array(Signal);
+      return S.Array(__S(808));
     case 2:
       return S.suspend(() =>
         S.Struct({
           Uid: S.optional(S.String),
-          Actors: S.optional(ActorsList),
-          Endpoints: S.optional(NetworkEndpointsList),
-          Signals: S.optional(SignalsList),
-          SequenceIndicators: S.optional(IndicatorsList),
+          Actors: S.optional(__S(800)),
+          Endpoints: S.optional(__S(805)),
+          Signals: S.optional(__S(809)),
+          SequenceIndicators: S.optional(__S(807)),
         }),
       ).annotate({ identifier: "Sequence" });
     case 3:
-      return S.suspend(() => S.Struct({ Sequence: S.optional(Sequence) })).annotate({
+      return S.suspend(() => S.Struct({ Sequence: S.optional(__S(810)) })).annotate({
         identifier: "Detection",
       });
     case 4:
@@ -22873,50 +18827,50 @@ function __c101(j: number): any {
           Region: S.optional(S.String),
           GeneratorId: S.optional(S.String),
           AwsAccountId: S.optional(S.String),
-          Types: S.optional(TypeList),
+          Types: S.optional(__S(4)),
           FirstObservedAt: S.optional(S.String),
           LastObservedAt: S.optional(S.String),
           CreatedAt: S.optional(S.String),
           UpdatedAt: S.optional(S.String),
-          Severity: S.optional(Severity),
+          Severity: S.optional(__S(68)),
           Confidence: S.optional(S.Number),
           Criticality: S.optional(S.Number),
           Title: S.optional(S.String),
           Description: S.optional(S.String),
-          Remediation: S.optional(Remediation),
+          Remediation: S.optional(__S(70)),
           SourceUrl: S.optional(S.String),
-          ProductFields: S.optional(FieldMap),
-          UserDefinedFields: S.optional(FieldMap),
-          Malware: S.optional(MalwareList),
-          Network: S.optional(Network),
-          NetworkPath: S.optional(NetworkPathList),
-          Process: S.optional(ProcessDetails),
-          Threats: S.optional(ThreatList),
-          ThreatIntelIndicators: S.optional(ThreatIntelIndicatorList),
-          Resources: S.optional(ResourceList),
-          Compliance: S.optional(Compliance),
-          VerificationState: S.optional(VerificationState),
-          WorkflowState: S.optional(WorkflowState),
-          Workflow: S.optional(Workflow),
-          RecordState: S.optional(RecordState),
-          RelatedFindings: S.optional(RelatedFindingList),
-          Note: S.optional(Note),
-          Vulnerabilities: S.optional(VulnerabilityList),
-          PatchSummary: S.optional(PatchSummary),
-          Action: S.optional(Action),
-          FindingProviderFields: S.optional(FindingProviderFields),
+          ProductFields: S.optional(__S(31)),
+          UserDefinedFields: S.optional(__S(31)),
+          Malware: S.optional(__S(72)),
+          Network: S.optional(__S(74)),
+          NetworkPath: S.optional(__S(79)),
+          Process: S.optional(__S(80)),
+          Threats: S.optional(__S(84)),
+          ThreatIntelIndicators: S.optional(__S(86)),
+          Resources: S.optional(__S(756)),
+          Compliance: S.optional(__S(763)),
+          VerificationState: S.optional(S.String),
+          WorkflowState: S.optional(S.String),
+          Workflow: S.optional(__S(32)),
+          RecordState: S.optional(S.String),
+          RelatedFindings: S.optional(__S(34)),
+          Note: S.optional(__S(764)),
+          Vulnerabilities: S.optional(__S(776)),
+          PatchSummary: S.optional(__S(777)),
+          Action: S.optional(__S(792)),
+          FindingProviderFields: S.optional(__S(794)),
           Sample: S.optional(S.Boolean),
-          GeneratorDetails: S.optional(GeneratorDetails),
+          GeneratorDetails: S.optional(__S(795)),
           ProcessedAt: S.optional(S.String),
           AwsAccountName: S.optional(S.String),
-          Detection: S.optional(Detection),
+          Detection: S.optional(__S(811)),
         }),
       ).annotate({ identifier: "AwsSecurityFinding" });
     case 5:
-      return S.Array(AwsSecurityFinding);
+      return S.Array(__S(812));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Findings: S.optional(BatchImportFindingsRequestFindingList) }).pipe(
+        S.Struct({ Findings: S.optional(__S(813)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/findings/import" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -22935,13 +18889,13 @@ function __c101(j: number): any {
 function __c102(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ImportFindingsError);
+      return S.Array(__S(815));
     case 1:
       return S.suspend(() =>
         S.Struct({
           FailedCount: S.optional(S.Number),
           SuccessCount: S.optional(S.Number),
-          FailedFindings: S.optional(ImportFindingsErrorList),
+          FailedFindings: S.optional(__S(816)),
         }),
       ).annotate({
         identifier: "BatchImportFindingsResponse",
@@ -22950,23 +18904,23 @@ function __c102(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RuleArn: S.optional(S.String),
-          RuleStatus: S.optional(RuleStatus),
+          RuleStatus: S.optional(S.String),
           RuleOrder: S.optional(S.Number),
           Description: S.optional(S.String),
           RuleName: S.optional(S.String),
           IsTerminal: S.optional(S.Boolean),
-          Criteria: S.optional(AutomationRulesFindingFilters),
-          Actions: S.optional(ActionList),
+          Criteria: S.optional(__S(28)),
+          Actions: S.optional(__S(37)),
         }),
       ).annotate({
         identifier: "UpdateAutomationRulesRequestItem",
       });
     case 3:
-      return S.Array(UpdateAutomationRulesRequestItem);
+      return S.Array(__S(818));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          UpdateAutomationRulesRequestItems: S.optional(UpdateAutomationRulesRequestItemsList),
+          UpdateAutomationRulesRequestItems: S.optional(__S(819)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/automationrules/update" }),
@@ -22987,20 +18941,20 @@ function __c102(j: number): any {
         identifier: "AwsSecurityFindingIdentifier",
       });
     case 6:
-      return S.Array(AwsSecurityFindingIdentifier);
+      return S.Array(__S(821));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          FindingIdentifiers: S.optional(AwsSecurityFindingIdentifierList),
-          Note: S.optional(NoteUpdate),
-          Severity: S.optional(SeverityUpdate),
-          VerificationState: S.optional(VerificationState),
+          FindingIdentifiers: S.optional(__S(822)),
+          Note: S.optional(__S(29)),
+          Severity: S.optional(__S(30)),
+          VerificationState: S.optional(S.String),
           Confidence: S.optional(S.Number),
           Criticality: S.optional(S.Number),
-          Types: S.optional(TypeList),
-          UserDefinedFields: S.optional(FieldMap),
-          Workflow: S.optional(WorkflowUpdate),
-          RelatedFindings: S.optional(RelatedFindingList),
+          Types: S.optional(__S(4)),
+          UserDefinedFields: S.optional(__S(31)),
+          Workflow: S.optional(__S(32)),
+          RelatedFindings: S.optional(__S(34)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/findings/batchupdate" }),
@@ -23021,7 +18975,7 @@ function __c103(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          FindingIdentifier: S.optional(AwsSecurityFindingIdentifier),
+          FindingIdentifier: S.optional(__S(821)),
           ErrorCode: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
         }),
@@ -23029,12 +18983,12 @@ function __c103(j: number): any {
         identifier: "BatchUpdateFindingsUnprocessedFinding",
       });
     case 1:
-      return S.Array(BatchUpdateFindingsUnprocessedFinding);
+      return S.Array(__S(824));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ProcessedFindings: S.optional(AwsSecurityFindingIdentifierList),
-          UnprocessedFindings: S.optional(BatchUpdateFindingsUnprocessedFindingsList),
+          ProcessedFindings: S.optional(__S(822)),
+          UnprocessedFindings: S.optional(__S(825)),
         }),
       ).annotate({
         identifier: "BatchUpdateFindingsResponse",
@@ -23048,12 +19002,12 @@ function __c103(j: number): any {
         }),
       ).annotate({ identifier: "OcsfFindingIdentifier" });
     case 4:
-      return S.Array(OcsfFindingIdentifier);
+      return S.Array(__S(827));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          MetadataUids: S.optional(MetadataUidList),
-          FindingIdentifiers: S.optional(OcsfFindingIdentifierList),
+          MetadataUids: S.optional(__S(4)),
+          FindingIdentifiers: S.optional(__S(828)),
           Comment: S.optional(S.String),
           SeverityId: S.optional(S.Number),
           StatusId: S.optional(S.Number),
@@ -23073,14 +19027,14 @@ function __c103(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          FindingIdentifier: S.optional(OcsfFindingIdentifier),
+          FindingIdentifier: S.optional(__S(827)),
           MetadataUid: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BatchUpdateFindingsV2ProcessedFinding",
       });
     case 7:
-      return S.Array(BatchUpdateFindingsV2ProcessedFinding);
+      return S.Array(__S(830));
   }
 }
 function __c104(j: number): any {
@@ -23088,21 +19042,21 @@ function __c104(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          FindingIdentifier: S.optional(OcsfFindingIdentifier),
+          FindingIdentifier: S.optional(__S(827)),
           MetadataUid: S.optional(S.String),
-          ErrorCode: S.optional(BatchUpdateFindingsV2UnprocessedFindingErrorCode),
+          ErrorCode: S.optional(S.String),
           ErrorMessage: S.optional(S.String),
         }),
       ).annotate({
         identifier: "BatchUpdateFindingsV2UnprocessedFinding",
       });
     case 1:
-      return S.Array(BatchUpdateFindingsV2UnprocessedFinding);
+      return S.Array(__S(832));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ProcessedFindings: S.optional(BatchUpdateFindingsV2ProcessedFindingsList),
-          UnprocessedFindings: S.optional(BatchUpdateFindingsV2UnprocessedFindingsList),
+          ProcessedFindings: S.optional(__S(831)),
+          UnprocessedFindings: S.optional(__S(833)),
         }),
       ).annotate({
         identifier: "BatchUpdateFindingsV2Response",
@@ -23112,18 +19066,18 @@ function __c104(j: number): any {
         S.Struct({
           StandardsArn: S.optional(S.String),
           SecurityControlId: S.optional(S.String),
-          AssociationStatus: S.optional(AssociationStatus),
+          AssociationStatus: S.optional(S.String),
           UpdatedReason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StandardsControlAssociationUpdate",
       });
     case 4:
-      return S.Array(StandardsControlAssociationUpdate);
+      return S.Array(__S(835));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          StandardsControlAssociationUpdates: S.optional(StandardsControlAssociationUpdates),
+          StandardsControlAssociationUpdates: S.optional(__S(836)),
         }).pipe(
           T.all(T.Http({ method: "PATCH", uri: "/associations" }), svc, auth, proto, ver, rules),
         ),
@@ -23133,15 +19087,15 @@ function __c104(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          StandardsControlAssociationUpdate: S.optional(StandardsControlAssociationUpdate),
-          ErrorCode: S.optional(UnprocessedErrorCode),
+          StandardsControlAssociationUpdate: S.optional(__S(835)),
+          ErrorCode: S.optional(S.String),
           ErrorReason: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UnprocessedStandardsControlAssociationUpdate",
       });
     case 7:
-      return S.Array(UnprocessedStandardsControlAssociationUpdate);
+      return S.Array(__S(838));
   }
 }
 function __c105(j: number): any {
@@ -23149,7 +19103,7 @@ function __c105(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          UnprocessedAssociationUpdates: S.optional(UnprocessedStandardsControlAssociationUpdates),
+          UnprocessedAssociationUpdates: S.optional(__S(839)),
         }),
       ).annotate({
         identifier: "BatchUpdateStandardsControlAssociationsResponse",
@@ -23174,8 +19128,8 @@ function __c105(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RegionLinkingMode: S.optional(S.String),
-          LinkedRegions: S.optional(StringList),
-          Tags: S.optional(TagMap),
+          LinkedRegions: S.optional(__S(4)),
+          Tags: S.optional(__S(31)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -23196,7 +19150,7 @@ function __c105(j: number): any {
           AggregatorV2Arn: S.optional(S.String),
           AggregationRegion: S.optional(S.String),
           RegionLinkingMode: S.optional(S.String),
-          LinkedRegions: S.optional(StringList),
+          LinkedRegions: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "CreateAggregatorV2Response",
@@ -23204,14 +19158,14 @@ function __c105(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          Tags: S.optional(TagMap),
-          RuleStatus: S.optional(RuleStatus),
+          Tags: S.optional(__S(31)),
+          RuleStatus: S.optional(S.String),
           RuleOrder: S.optional(S.Number),
           RuleName: S.optional(S.String),
           Description: S.optional(S.String),
           IsTerminal: S.optional(S.Boolean),
-          Criteria: S.optional(AutomationRulesFindingFilters),
-          Actions: S.optional(ActionList),
+          Criteria: S.optional(__S(28)),
+          Actions: S.optional(__S(37)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/automationrules/create" }),
@@ -23231,82 +19185,82 @@ function __c105(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ FieldName: S.optional(OcsfStringField), Filter: S.optional(StringFilter) }),
+        S.Struct({ FieldName: S.optional(S.String), Filter: S.optional(__S(19)) }),
       ).annotate({ identifier: "OcsfStringFilter" });
   }
 }
 function __c106(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OcsfStringFilter);
+      return S.Array(__S(847));
     case 1:
       return S.suspend(() =>
-        S.Struct({ FieldName: S.optional(OcsfDateField), Filter: S.optional(DateFilter) }),
+        S.Struct({ FieldName: S.optional(S.String), Filter: S.optional(__S(22)) }),
       ).annotate({ identifier: "OcsfDateFilter" });
     case 2:
-      return S.Array(OcsfDateFilter);
+      return S.Array(__S(849));
     case 3:
       return S.suspend(() => S.Struct({ Value: S.optional(S.Boolean) })).annotate({
         identifier: "BooleanFilter",
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ FieldName: S.optional(OcsfBooleanField), Filter: S.optional(BooleanFilter) }),
+        S.Struct({ FieldName: S.optional(S.String), Filter: S.optional(__S(851)) }),
       ).annotate({ identifier: "OcsfBooleanFilter" });
     case 5:
-      return S.Array(OcsfBooleanFilter);
+      return S.Array(__S(852));
     case 6:
       return S.suspend(() =>
-        S.Struct({ FieldName: S.optional(OcsfNumberField), Filter: S.optional(NumberFilter) }),
+        S.Struct({ FieldName: S.optional(S.String), Filter: S.optional(__S(24)) }),
       ).annotate({ identifier: "OcsfNumberFilter" });
     case 7:
-      return S.Array(OcsfNumberFilter);
+      return S.Array(__S(854));
   }
 }
 function __c107(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ FieldName: S.optional(OcsfMapField), Filter: S.optional(MapFilter) }),
+        S.Struct({ FieldName: S.optional(S.String), Filter: S.optional(__S(26)) }),
       ).annotate({ identifier: "OcsfMapFilter" });
     case 1:
-      return S.Array(OcsfMapFilter);
+      return S.Array(__S(856));
     case 2:
       return S.suspend(() => S.Struct({ Cidr: S.optional(S.String) })).annotate({
         identifier: "IpFilter",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ FieldName: S.optional(OcsfIpField), Filter: S.optional(IpFilter) }),
+        S.Struct({ FieldName: S.optional(S.String), Filter: S.optional(__S(858)) }),
       ).annotate({ identifier: "OcsfIpFilter" });
     case 4:
-      return S.Array(OcsfIpFilter);
+      return S.Array(__S(859));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          StringFilters: S.optional(OcsfStringFilterList),
-          DateFilters: S.optional(OcsfDateFilterList),
-          BooleanFilters: S.optional(OcsfBooleanFilterList),
-          NumberFilters: S.optional(OcsfNumberFilterList),
-          MapFilters: S.optional(OcsfMapFilterList),
-          IpFilters: S.optional(OcsfIpFilterList),
+          StringFilters: S.optional(__S(848)),
+          DateFilters: S.optional(__S(850)),
+          BooleanFilters: S.optional(__S(853)),
+          NumberFilters: S.optional(__S(855)),
+          MapFilters: S.optional(__S(857)),
+          IpFilters: S.optional(__S(860)),
           NestedCompositeFilters: S.optional(
-            S.suspend(() => CompositeFilterList).annotate({ identifier: "CompositeFilterList" }),
+            S.suspend(() => __S(862)).annotate({ identifier: "CompositeFilterList" }),
           ),
-          Operator: S.optional(AllowedOperators),
+          Operator: S.optional(S.String),
         }),
       ).annotate({ identifier: "CompositeFilter" });
     case 6:
       return S.Array(
-        /*@__PURE__*/ S.suspend((): S.Schema<CompositeFilter> => CompositeFilter).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<CompositeFilter> => __S(861)).annotate({
           identifier: "CompositeFilter",
         }),
       );
     case 7:
       return S.suspend(() =>
         S.Struct({
-          CompositeFilters: S.optional(CompositeFilterList),
-          CompositeOperator: S.optional(AllowedOperators),
+          CompositeFilters: S.optional(__S(862)),
+          CompositeOperator: S.optional(S.String),
         }),
       ).annotate({ identifier: "OcsfFindingFilters" });
   }
@@ -23314,7 +19268,7 @@ function __c107(j: number): any {
 function __c108(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ OcsfFindingCriteria: OcsfFindingFilters })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ OcsfFindingCriteria: __S(863) })]);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -23332,23 +19286,23 @@ function __c108(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(AutomationRulesActionTypeV2),
-          FindingFieldsUpdate: S.optional(AutomationRulesFindingFieldsUpdateV2),
-          ExternalIntegrationConfiguration: S.optional(ExternalIntegrationConfiguration),
+          Type: S.optional(S.String),
+          FindingFieldsUpdate: S.optional(__S(865)),
+          ExternalIntegrationConfiguration: S.optional(__S(866)),
         }),
       ).annotate({ identifier: "AutomationRulesActionV2" });
     case 4:
-      return S.Array(AutomationRulesActionV2);
+      return S.Array(__S(867));
     case 5:
       return S.suspend(() =>
         S.Struct({
           RuleName: S.optional(S.String),
-          RuleStatus: S.optional(RuleStatusV2),
+          RuleStatus: S.optional(S.String),
           Description: S.optional(S.String),
           RuleOrder: S.optional(S.Number),
-          Criteria: S.optional(Criteria),
-          Actions: S.optional(AutomationRulesActionListV2),
-          Tags: S.optional(TagMap),
+          Criteria: S.optional(__S(864)),
+          Actions: S.optional(__S(868)),
+          Tags: S.optional(__S(31)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -23371,7 +19325,7 @@ function __c108(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ SecurityControlId: S.optional(S.String), Parameters: S.optional(Parameters) }),
+        S.Struct({ SecurityControlId: S.optional(S.String), Parameters: S.optional(__S(54)) }),
       ).annotate({
         identifier: "SecurityControlCustomParameter",
       });
@@ -23380,13 +19334,13 @@ function __c108(j: number): any {
 function __c109(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SecurityControlCustomParameter);
+      return S.Array(__S(871));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          EnabledSecurityControlIdentifiers: S.optional(EnabledSecurityControlIdentifierList),
-          DisabledSecurityControlIdentifiers: S.optional(DisabledSecurityControlIdentifierList),
-          SecurityControlCustomParameters: S.optional(SecurityControlCustomParametersList),
+          EnabledSecurityControlIdentifiers: S.optional(__S(4)),
+          DisabledSecurityControlIdentifiers: S.optional(__S(4)),
+          SecurityControlCustomParameters: S.optional(__S(872)),
         }),
       ).annotate({
         identifier: "SecurityControlsConfiguration",
@@ -23395,19 +19349,19 @@ function __c109(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ServiceEnabled: S.optional(S.Boolean),
-          EnabledStandardIdentifiers: S.optional(EnabledStandardIdentifierList),
-          SecurityControlsConfiguration: S.optional(SecurityControlsConfiguration),
+          EnabledStandardIdentifiers: S.optional(__S(4)),
+          SecurityControlsConfiguration: S.optional(__S(873)),
         }),
       ).annotate({ identifier: "SecurityHubPolicy" });
     case 3:
-      return S.Union([/*@__PURE__*/ S.Struct({ SecurityHub: SecurityHubPolicy })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ SecurityHub: __S(874) })]);
     case 4:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          ConfigurationPolicy: S.optional(Policy),
-          Tags: S.optional(TagMap),
+          ConfigurationPolicy: S.optional(__S(875)),
+          Tags: S.optional(__S(31)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/configurationPolicy/create" }),
@@ -23430,21 +19384,21 @@ function __c109(j: number): any {
           Description: S.optional(S.String),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          ConfigurationPolicy: S.optional(Policy),
+          ConfigurationPolicy: S.optional(__S(875)),
         }),
       ).annotate({
         identifier: "CreateConfigurationPolicyResponse",
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ScopeType: S.optional(ScopeType), ScopeValues: S.optional(ScopeValueList) }),
+        S.Struct({ ScopeType: S.optional(S.String), ScopeValues: S.optional(__S(4)) }),
       ).annotate({ identifier: "AzureScopeConfiguration" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           AWSConfigConnectorArn: S.optional(S.String),
-          ScopeConfiguration: S.optional(AzureScopeConfiguration),
-          AzureRegions: S.optional(AzureRegionList),
+          ScopeConfiguration: S.optional(__S(878)),
+          AzureRegions: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "AzureProviderConfiguration",
@@ -23454,14 +19408,14 @@ function __c109(j: number): any {
 function __c110(j: number): any {
   switch (j) {
     case 0:
-      return S.Union([/*@__PURE__*/ S.Struct({ Azure: AzureProviderConfiguration })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ Azure: __S(879) })]);
     case 1:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          Provider: S.optional(CspmProviderConfiguration),
-          Tags: S.optional(TagMap),
+          Provider: S.optional(__S(880)),
+          Tags: S.optional(__S(31)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/connectors" }), svc, auth, proto, ver, rules),
@@ -23472,8 +19426,8 @@ function __c110(j: number): any {
         S.Struct({
           ConnectorArn: S.optional(S.String),
           ConnectorId: S.optional(S.String),
-          ConnectorStatus: S.optional(CspmConnectorStatus),
-          EnablementStatus: S.optional(CspmEnablementStatus),
+          ConnectorStatus: S.optional(S.String),
+          EnablementStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateConnectorResponse" });
     case 3:
@@ -23488,18 +19442,18 @@ function __c110(j: number): any {
       });
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ JiraCloud: JiraCloudProviderConfiguration }),
-        /*@__PURE__*/ S.Struct({ ServiceNow: ServiceNowProviderConfiguration }),
-        /*@__PURE__*/ S.Struct({ Azure: AzureProviderConfiguration }),
+        /*@__PURE__*/ S.Struct({ JiraCloud: __S(883) }),
+        /*@__PURE__*/ S.Struct({ ServiceNow: __S(884) }),
+        /*@__PURE__*/ S.Struct({ Azure: __S(879) }),
       ]);
     case 6:
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          Provider: S.optional(ProviderConfiguration),
+          Provider: S.optional(__S(885)),
           KmsKeyArn: S.optional(S.String),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(31)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/connectorsv2" }), svc, auth, proto, ver, rules),
@@ -23511,8 +19465,8 @@ function __c110(j: number): any {
           ConnectorArn: S.optional(S.String),
           ConnectorId: S.optional(S.String),
           AuthUrl: S.optional(S.String),
-          ConnectorStatus: S.optional(ConnectorStatus),
-          EnablementStatus: S.optional(EnablementStatus),
+          ConnectorStatus: S.optional(S.String),
+          EnablementStatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateConnectorV2Response",
@@ -23523,7 +19477,7 @@ function __c111(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ RegionLinkingMode: S.optional(S.String), Regions: S.optional(StringList) }).pipe(
+        S.Struct({ RegionLinkingMode: S.optional(S.String), Regions: S.optional(__S(4)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/findingAggregator/create" }),
             svc,
@@ -23542,131 +19496,131 @@ function __c111(j: number): any {
           FindingAggregatorArn: S.optional(S.String),
           FindingAggregationRegion: S.optional(S.String),
           RegionLinkingMode: S.optional(S.String),
-          Regions: S.optional(StringList),
+          Regions: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "CreateFindingAggregatorResponse",
       });
     case 2:
-      return S.Array(IpFilter);
+      return S.Array(__S(858));
     case 3:
       return S.suspend(() => S.Struct({ Value: S.optional(S.String) })).annotate({
         identifier: "KeywordFilter",
       });
     case 4:
-      return S.Array(KeywordFilter);
+      return S.Array(__S(891));
     case 5:
-      return S.Array(BooleanFilter);
+      return S.Array(__S(851));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ProductArn: S.optional(StringFilterList),
-          AwsAccountId: S.optional(StringFilterList),
-          Id: S.optional(StringFilterList),
-          GeneratorId: S.optional(StringFilterList),
-          Region: S.optional(StringFilterList),
-          Type: S.optional(StringFilterList),
-          FirstObservedAt: S.optional(DateFilterList),
-          LastObservedAt: S.optional(DateFilterList),
-          CreatedAt: S.optional(DateFilterList),
-          UpdatedAt: S.optional(DateFilterList),
-          SeverityProduct: S.optional(NumberFilterList),
-          SeverityNormalized: S.optional(NumberFilterList),
-          SeverityLabel: S.optional(StringFilterList),
-          Confidence: S.optional(NumberFilterList),
-          Criticality: S.optional(NumberFilterList),
-          Title: S.optional(StringFilterList),
-          Description: S.optional(StringFilterList),
-          RecommendationText: S.optional(StringFilterList),
-          SourceUrl: S.optional(StringFilterList),
-          ProductFields: S.optional(MapFilterList),
-          ProductName: S.optional(StringFilterList),
-          CompanyName: S.optional(StringFilterList),
-          UserDefinedFields: S.optional(MapFilterList),
-          MalwareName: S.optional(StringFilterList),
-          MalwareType: S.optional(StringFilterList),
-          MalwarePath: S.optional(StringFilterList),
-          MalwareState: S.optional(StringFilterList),
-          NetworkDirection: S.optional(StringFilterList),
-          NetworkProtocol: S.optional(StringFilterList),
-          NetworkSourceIpV4: S.optional(IpFilterList),
-          NetworkSourceIpV6: S.optional(IpFilterList),
-          NetworkSourcePort: S.optional(NumberFilterList),
-          NetworkSourceDomain: S.optional(StringFilterList),
-          NetworkSourceMac: S.optional(StringFilterList),
-          NetworkDestinationIpV4: S.optional(IpFilterList),
-          NetworkDestinationIpV6: S.optional(IpFilterList),
-          NetworkDestinationPort: S.optional(NumberFilterList),
-          NetworkDestinationDomain: S.optional(StringFilterList),
-          ProcessName: S.optional(StringFilterList),
-          ProcessPath: S.optional(StringFilterList),
-          ProcessPid: S.optional(NumberFilterList),
-          ProcessParentPid: S.optional(NumberFilterList),
-          ProcessLaunchedAt: S.optional(DateFilterList),
-          ProcessTerminatedAt: S.optional(DateFilterList),
-          ThreatIntelIndicatorType: S.optional(StringFilterList),
-          ThreatIntelIndicatorValue: S.optional(StringFilterList),
-          ThreatIntelIndicatorCategory: S.optional(StringFilterList),
-          ThreatIntelIndicatorLastObservedAt: S.optional(DateFilterList),
-          ThreatIntelIndicatorSource: S.optional(StringFilterList),
-          ThreatIntelIndicatorSourceUrl: S.optional(StringFilterList),
-          ResourceType: S.optional(StringFilterList),
-          ResourceId: S.optional(StringFilterList),
-          ResourcePartition: S.optional(StringFilterList),
-          ResourceRegion: S.optional(StringFilterList),
-          ResourceTags: S.optional(MapFilterList),
-          ResourceAwsEc2InstanceType: S.optional(StringFilterList),
-          ResourceAwsEc2InstanceImageId: S.optional(StringFilterList),
-          ResourceAwsEc2InstanceIpV4Addresses: S.optional(IpFilterList),
-          ResourceAwsEc2InstanceIpV6Addresses: S.optional(IpFilterList),
-          ResourceAwsEc2InstanceKeyName: S.optional(StringFilterList),
-          ResourceAwsEc2InstanceIamInstanceProfileArn: S.optional(StringFilterList),
-          ResourceAwsEc2InstanceVpcId: S.optional(StringFilterList),
-          ResourceAwsEc2InstanceSubnetId: S.optional(StringFilterList),
-          ResourceAwsEc2InstanceLaunchedAt: S.optional(DateFilterList),
-          ResourceAwsS3BucketOwnerId: S.optional(StringFilterList),
-          ResourceAwsS3BucketOwnerName: S.optional(StringFilterList),
-          ResourceAwsIamAccessKeyUserName: S.optional(StringFilterList),
-          ResourceAwsIamAccessKeyPrincipalName: S.optional(StringFilterList),
-          ResourceAwsIamAccessKeyStatus: S.optional(StringFilterList),
-          ResourceAwsIamAccessKeyCreatedAt: S.optional(DateFilterList),
-          ResourceAwsIamUserUserName: S.optional(StringFilterList),
-          ResourceContainerName: S.optional(StringFilterList),
-          ResourceContainerImageId: S.optional(StringFilterList),
-          ResourceContainerImageName: S.optional(StringFilterList),
-          ResourceContainerLaunchedAt: S.optional(DateFilterList),
-          ResourceDetailsOther: S.optional(MapFilterList),
-          ComplianceStatus: S.optional(StringFilterList),
-          VerificationState: S.optional(StringFilterList),
-          WorkflowState: S.optional(StringFilterList),
-          WorkflowStatus: S.optional(StringFilterList),
-          RecordState: S.optional(StringFilterList),
-          RelatedFindingsProductArn: S.optional(StringFilterList),
-          RelatedFindingsId: S.optional(StringFilterList),
-          NoteText: S.optional(StringFilterList),
-          NoteUpdatedAt: S.optional(DateFilterList),
-          NoteUpdatedBy: S.optional(StringFilterList),
-          Keyword: S.optional(KeywordFilterList),
-          FindingProviderFieldsConfidence: S.optional(NumberFilterList),
-          FindingProviderFieldsCriticality: S.optional(NumberFilterList),
-          FindingProviderFieldsRelatedFindingsId: S.optional(StringFilterList),
-          FindingProviderFieldsRelatedFindingsProductArn: S.optional(StringFilterList),
-          FindingProviderFieldsSeverityLabel: S.optional(StringFilterList),
-          FindingProviderFieldsSeverityOriginal: S.optional(StringFilterList),
-          FindingProviderFieldsTypes: S.optional(StringFilterList),
-          Sample: S.optional(BooleanFilterList),
-          ComplianceSecurityControlId: S.optional(StringFilterList),
-          ComplianceAssociatedStandardsId: S.optional(StringFilterList),
-          VulnerabilitiesExploitAvailable: S.optional(StringFilterList),
-          VulnerabilitiesFixAvailable: S.optional(StringFilterList),
-          ComplianceSecurityControlParametersName: S.optional(StringFilterList),
-          ComplianceSecurityControlParametersValue: S.optional(StringFilterList),
-          AwsAccountName: S.optional(StringFilterList),
-          ResourceApplicationName: S.optional(StringFilterList),
-          ResourceApplicationArn: S.optional(StringFilterList),
-          ResourceOwnerAccountId: S.optional(StringFilterList),
-          ResourceOwnerOrgId: S.optional(StringFilterList),
-          ResourceProvider: S.optional(StringFilterList),
+          ProductArn: S.optional(__S(20)),
+          AwsAccountId: S.optional(__S(20)),
+          Id: S.optional(__S(20)),
+          GeneratorId: S.optional(__S(20)),
+          Region: S.optional(__S(20)),
+          Type: S.optional(__S(20)),
+          FirstObservedAt: S.optional(__S(23)),
+          LastObservedAt: S.optional(__S(23)),
+          CreatedAt: S.optional(__S(23)),
+          UpdatedAt: S.optional(__S(23)),
+          SeverityProduct: S.optional(__S(25)),
+          SeverityNormalized: S.optional(__S(25)),
+          SeverityLabel: S.optional(__S(20)),
+          Confidence: S.optional(__S(25)),
+          Criticality: S.optional(__S(25)),
+          Title: S.optional(__S(20)),
+          Description: S.optional(__S(20)),
+          RecommendationText: S.optional(__S(20)),
+          SourceUrl: S.optional(__S(20)),
+          ProductFields: S.optional(__S(27)),
+          ProductName: S.optional(__S(20)),
+          CompanyName: S.optional(__S(20)),
+          UserDefinedFields: S.optional(__S(27)),
+          MalwareName: S.optional(__S(20)),
+          MalwareType: S.optional(__S(20)),
+          MalwarePath: S.optional(__S(20)),
+          MalwareState: S.optional(__S(20)),
+          NetworkDirection: S.optional(__S(20)),
+          NetworkProtocol: S.optional(__S(20)),
+          NetworkSourceIpV4: S.optional(__S(890)),
+          NetworkSourceIpV6: S.optional(__S(890)),
+          NetworkSourcePort: S.optional(__S(25)),
+          NetworkSourceDomain: S.optional(__S(20)),
+          NetworkSourceMac: S.optional(__S(20)),
+          NetworkDestinationIpV4: S.optional(__S(890)),
+          NetworkDestinationIpV6: S.optional(__S(890)),
+          NetworkDestinationPort: S.optional(__S(25)),
+          NetworkDestinationDomain: S.optional(__S(20)),
+          ProcessName: S.optional(__S(20)),
+          ProcessPath: S.optional(__S(20)),
+          ProcessPid: S.optional(__S(25)),
+          ProcessParentPid: S.optional(__S(25)),
+          ProcessLaunchedAt: S.optional(__S(23)),
+          ProcessTerminatedAt: S.optional(__S(23)),
+          ThreatIntelIndicatorType: S.optional(__S(20)),
+          ThreatIntelIndicatorValue: S.optional(__S(20)),
+          ThreatIntelIndicatorCategory: S.optional(__S(20)),
+          ThreatIntelIndicatorLastObservedAt: S.optional(__S(23)),
+          ThreatIntelIndicatorSource: S.optional(__S(20)),
+          ThreatIntelIndicatorSourceUrl: S.optional(__S(20)),
+          ResourceType: S.optional(__S(20)),
+          ResourceId: S.optional(__S(20)),
+          ResourcePartition: S.optional(__S(20)),
+          ResourceRegion: S.optional(__S(20)),
+          ResourceTags: S.optional(__S(27)),
+          ResourceAwsEc2InstanceType: S.optional(__S(20)),
+          ResourceAwsEc2InstanceImageId: S.optional(__S(20)),
+          ResourceAwsEc2InstanceIpV4Addresses: S.optional(__S(890)),
+          ResourceAwsEc2InstanceIpV6Addresses: S.optional(__S(890)),
+          ResourceAwsEc2InstanceKeyName: S.optional(__S(20)),
+          ResourceAwsEc2InstanceIamInstanceProfileArn: S.optional(__S(20)),
+          ResourceAwsEc2InstanceVpcId: S.optional(__S(20)),
+          ResourceAwsEc2InstanceSubnetId: S.optional(__S(20)),
+          ResourceAwsEc2InstanceLaunchedAt: S.optional(__S(23)),
+          ResourceAwsS3BucketOwnerId: S.optional(__S(20)),
+          ResourceAwsS3BucketOwnerName: S.optional(__S(20)),
+          ResourceAwsIamAccessKeyUserName: S.optional(__S(20)),
+          ResourceAwsIamAccessKeyPrincipalName: S.optional(__S(20)),
+          ResourceAwsIamAccessKeyStatus: S.optional(__S(20)),
+          ResourceAwsIamAccessKeyCreatedAt: S.optional(__S(23)),
+          ResourceAwsIamUserUserName: S.optional(__S(20)),
+          ResourceContainerName: S.optional(__S(20)),
+          ResourceContainerImageId: S.optional(__S(20)),
+          ResourceContainerImageName: S.optional(__S(20)),
+          ResourceContainerLaunchedAt: S.optional(__S(23)),
+          ResourceDetailsOther: S.optional(__S(27)),
+          ComplianceStatus: S.optional(__S(20)),
+          VerificationState: S.optional(__S(20)),
+          WorkflowState: S.optional(__S(20)),
+          WorkflowStatus: S.optional(__S(20)),
+          RecordState: S.optional(__S(20)),
+          RelatedFindingsProductArn: S.optional(__S(20)),
+          RelatedFindingsId: S.optional(__S(20)),
+          NoteText: S.optional(__S(20)),
+          NoteUpdatedAt: S.optional(__S(23)),
+          NoteUpdatedBy: S.optional(__S(20)),
+          Keyword: S.optional(__S(892)),
+          FindingProviderFieldsConfidence: S.optional(__S(25)),
+          FindingProviderFieldsCriticality: S.optional(__S(25)),
+          FindingProviderFieldsRelatedFindingsId: S.optional(__S(20)),
+          FindingProviderFieldsRelatedFindingsProductArn: S.optional(__S(20)),
+          FindingProviderFieldsSeverityLabel: S.optional(__S(20)),
+          FindingProviderFieldsSeverityOriginal: S.optional(__S(20)),
+          FindingProviderFieldsTypes: S.optional(__S(20)),
+          Sample: S.optional(__S(893)),
+          ComplianceSecurityControlId: S.optional(__S(20)),
+          ComplianceAssociatedStandardsId: S.optional(__S(20)),
+          VulnerabilitiesExploitAvailable: S.optional(__S(20)),
+          VulnerabilitiesFixAvailable: S.optional(__S(20)),
+          ComplianceSecurityControlParametersName: S.optional(__S(20)),
+          ComplianceSecurityControlParametersValue: S.optional(__S(20)),
+          AwsAccountName: S.optional(__S(20)),
+          ResourceApplicationName: S.optional(__S(20)),
+          ResourceApplicationArn: S.optional(__S(20)),
+          ResourceOwnerAccountId: S.optional(__S(20)),
+          ResourceOwnerOrgId: S.optional(__S(20)),
+          ResourceProvider: S.optional(__S(20)),
         }),
       ).annotate({
         identifier: "AwsSecurityFindingFilters",
@@ -23675,7 +19629,7 @@ function __c111(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Name: S.optional(S.String),
-          Filters: S.optional(AwsSecurityFindingFilters),
+          Filters: S.optional(__S(894)),
           GroupByAttribute: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/insights" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateInsightRequest" });
@@ -23692,10 +19646,10 @@ function __c112(j: number): any {
         S.Struct({ AccountId: S.optional(S.String), Email: S.optional(S.String) }),
       ).annotate({ identifier: "AccountDetails" });
     case 2:
-      return S.Array(AccountDetails);
+      return S.Array(__S(897));
     case 3:
       return S.suspend(() =>
-        S.Struct({ AccountDetails: S.optional(AccountDetailsList) }).pipe(
+        S.Struct({ AccountDetails: S.optional(__S(898)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/members" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateMembersRequest" });
@@ -23704,9 +19658,9 @@ function __c112(j: number): any {
         S.Struct({ AccountId: S.optional(S.String), ProcessingResult: S.optional(S.String) }),
       ).annotate({ identifier: "Result" });
     case 5:
-      return S.Array(Result);
+      return S.Array(__S(900));
     case 6:
-      return S.suspend(() => S.Struct({ UnprocessedAccounts: S.optional(ResultList) })).annotate({
+      return S.suspend(() => S.Struct({ UnprocessedAccounts: S.optional(__S(901)) })).annotate({
         identifier: "CreateMembersResponse",
       });
     case 7:
@@ -23715,7 +19669,7 @@ function __c112(j: number): any {
           ConnectorId: S.optional(S.String),
           FindingMetadataUid: S.optional(S.String),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
-          Mode: S.optional(TicketCreationMode),
+          Mode: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/ticketsv2" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateTicketV2Request" });
   }
@@ -23728,7 +19682,7 @@ function __c113(j: number): any {
       ).annotate({ identifier: "CreateTicketV2Response" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ AccountIds: S.optional(AccountIdList) }).pipe(
+        S.Struct({ AccountIds: S.optional(__S(4)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/invitations/decline" }),
             svc,
@@ -23742,7 +19696,7 @@ function __c113(j: number): any {
         identifier: "DeclineInvitationsRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ UnprocessedAccounts: S.optional(ResultList) })).annotate({
+      return S.suspend(() => S.Struct({ UnprocessedAccounts: S.optional(__S(901)) })).annotate({
         identifier: "DeclineInvitationsResponse",
       });
     case 3:
@@ -23823,9 +19777,9 @@ function __c113(j: number): any {
 function __c114(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ EnablementStatus: S.optional(CspmEnablementStatus) }),
-      ).annotate({ identifier: "DeleteConnectorResponse" });
+      return S.suspend(() => S.Struct({ EnablementStatus: S.optional(S.String) })).annotate({
+        identifier: "DeleteConnectorResponse",
+      });
     case 1:
       return S.suspend(() =>
         S.Struct({ ConnectorId: S.String.pipe(T.HttpLabel("ConnectorId")) }).pipe(
@@ -23840,11 +19794,9 @@ function __c114(j: number): any {
         ),
       ).annotate({ identifier: "DeleteConnectorV2Request" });
     case 2:
-      return S.suspend(() => S.Struct({ EnablementStatus: S.optional(EnablementStatus) })).annotate(
-        {
-          identifier: "DeleteConnectorV2Response",
-        },
-      );
+      return S.suspend(() => S.Struct({ EnablementStatus: S.optional(S.String) })).annotate({
+        identifier: "DeleteConnectorV2Response",
+      });
     case 3:
       return S.suspend(() =>
         S.Struct({ FindingAggregatorArn: S.String.pipe(T.HttpLabel("FindingAggregatorArn")) }).pipe(
@@ -23879,7 +19831,7 @@ function __c114(j: number): any {
       ).annotate({ identifier: "DeleteInsightRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ AccountIds: S.optional(AccountIdList) }).pipe(
+        S.Struct({ AccountIds: S.optional(__S(4)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/invitations/delete" }),
             svc,
@@ -23892,7 +19844,7 @@ function __c114(j: number): any {
       ).annotate({ identifier: "DeleteInvitationsRequest" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ AccountIds: S.optional(AccountIdList) }).pipe(
+        S.Struct({ AccountIds: S.optional(__S(4)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/members/delete" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "DeleteMembersRequest" });
@@ -23903,7 +19855,7 @@ function __c115(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ActionTargetArns: S.optional(ArnList),
+          ActionTargetArns: S.optional(__S(4)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(
@@ -23928,10 +19880,10 @@ function __c115(j: number): any {
         }),
       ).annotate({ identifier: "ActionTarget" });
     case 2:
-      return S.Array(ActionTarget);
+      return S.Array(__S(921));
     case 3:
       return S.suspend(() =>
-        S.Struct({ ActionTargets: S.optional(ActionTargetList), NextToken: S.optional(S.String) }),
+        S.Struct({ ActionTargets: S.optional(__S(922)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeActionTargetsResponse",
       });
@@ -23947,7 +19899,7 @@ function __c115(j: number): any {
           HubArn: S.optional(S.String),
           SubscribedAt: S.optional(S.String),
           AutoEnableControls: S.optional(S.Boolean),
-          ControlFindingGenerator: S.optional(ControlFindingGenerator),
+          ControlFindingGenerator: S.optional(S.String),
         }),
       ).annotate({ identifier: "DescribeHubResponse" });
     case 6:
@@ -23968,8 +19920,8 @@ function __c115(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationType: S.optional(OrganizationConfigurationConfigurationType),
-          Status: S.optional(OrganizationConfigurationStatus),
+          ConfigurationType: S.optional(S.String),
+          Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
         }),
       ).annotate({
@@ -23984,8 +19936,8 @@ function __c116(j: number): any {
         S.Struct({
           AutoEnable: S.optional(S.Boolean),
           MemberAccountLimitReached: S.optional(S.Boolean),
-          AutoEnableStandards: S.optional(AutoEnableStandards),
-          OrganizationConfiguration: S.optional(OrganizationConfiguration),
+          AutoEnableStandards: S.optional(S.String),
+          OrganizationConfiguration: S.optional(__S(927)),
         }),
       ).annotate({
         identifier: "DescribeOrganizationConfigurationResponse",
@@ -23999,7 +19951,7 @@ function __c116(j: number): any {
         }).pipe(T.all(T.Http({ method: "GET", uri: "/products" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeProductsRequest" });
     case 2:
-      return S.Array(IntegrationType);
+      return S.Array(S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -24007,18 +19959,18 @@ function __c116(j: number): any {
           ProductName: S.optional(S.String),
           CompanyName: S.optional(S.String),
           Description: S.optional(S.String),
-          Categories: S.optional(CategoryList),
-          IntegrationTypes: S.optional(IntegrationTypeList),
+          Categories: S.optional(__S(4)),
+          IntegrationTypes: S.optional(__S(930)),
           MarketplaceUrl: S.optional(S.String),
           ActivationUrl: S.optional(S.String),
           ProductSubscriptionResourcePolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "Product" });
     case 4:
-      return S.Array(Product);
+      return S.Array(__S(931));
     case 5:
       return S.suspend(() =>
-        S.Struct({ Products: S.optional(ProductsList), NextToken: S.optional(S.String) }),
+        S.Struct({ Products: S.optional(__S(932)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "DescribeProductsResponse" });
     case 6:
       return S.suspend(() =>
@@ -24035,8 +19987,8 @@ function __c116(j: number): any {
           ProductV2Name: S.optional(S.String),
           CompanyName: S.optional(S.String),
           Description: S.optional(S.String),
-          Categories: S.optional(CategoryList),
-          IntegrationV2Types: S.optional(IntegrationV2TypeList),
+          Categories: S.optional(__S(4)),
+          IntegrationV2Types: S.optional(__S(930)),
           MarketplaceUrl: S.optional(S.String),
           ActivationUrl: S.optional(S.String),
           MarketplaceProductId: S.optional(S.String),
@@ -24047,10 +19999,10 @@ function __c116(j: number): any {
 function __c117(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ProductV2);
+      return S.Array(__S(935));
     case 1:
       return S.suspend(() =>
-        S.Struct({ ProductsV2: S.optional(ProductsV2List), NextToken: S.optional(S.String) }),
+        S.Struct({ ProductsV2: S.optional(__S(936)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeProductsV2Response",
       });
@@ -24065,18 +20017,18 @@ function __c117(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          FeatureStatus: S.optional(FeatureStatus),
+          FeatureStatus: S.optional(S.String),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "FeatureDetail" });
     case 4:
-      return S.Record(S.String, /*@__PURE__*/ FeatureDetail.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(939).pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
           HubV2Arn: S.optional(S.String),
           SubscribedAt: S.optional(S.String),
-          Features: S.optional(Features),
+          Features: S.optional(__S(940)),
         }),
       ).annotate({
         identifier: "DescribeSecurityHubV2Response",
@@ -24086,7 +20038,7 @@ function __c117(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-          Providers: S.optional(StandardsProviders).pipe(T.HttpQuery("Providers")),
+          Providers: S.optional(__S(930)).pipe(T.HttpQuery("Providers")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/standards" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "DescribeStandardsRequest" });
     case 7:
@@ -24104,15 +20056,15 @@ function __c118(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           EnabledByDefault: S.optional(S.Boolean),
-          Provider: S.optional(StandardsProvider),
-          StandardsManagedBy: S.optional(StandardsManagedBy),
+          Provider: S.optional(S.String),
+          StandardsManagedBy: S.optional(__S(943)),
         }),
       ).annotate({ identifier: "Standard" });
     case 1:
-      return S.Array(Standard);
+      return S.Array(__S(944));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Standards: S.optional(Standards), NextToken: S.optional(S.String) }),
+        S.Struct({ Standards: S.optional(__S(945)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeStandardsResponse",
       });
@@ -24139,22 +20091,22 @@ function __c118(j: number): any {
       return S.suspend(() =>
         S.Struct({
           StandardsControlArn: S.optional(S.String),
-          ControlStatus: S.optional(ControlStatus),
+          ControlStatus: S.optional(S.String),
           DisabledReason: S.optional(S.String),
           ControlStatusUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           ControlId: S.optional(S.String),
           Title: S.optional(S.String),
           Description: S.optional(S.String),
           RemediationUrl: S.optional(S.String),
-          SeverityRating: S.optional(SeverityRating),
-          RelatedRequirements: S.optional(RelatedRequirementsList),
+          SeverityRating: S.optional(S.String),
+          RelatedRequirements: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "StandardsControl" });
     case 5:
-      return S.Array(StandardsControl);
+      return S.Array(__S(948));
     case 6:
       return S.suspend(() =>
-        S.Struct({ Controls: S.optional(StandardsControls), NextToken: S.optional(S.String) }),
+        S.Struct({ Controls: S.optional(__S(949)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "DescribeStandardsControlsResponse",
       });
@@ -24183,7 +20135,7 @@ function __c119(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AdminAccountId: S.optional(S.String),
-          Feature: S.optional(SecurityHubFeature),
+          Feature: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/organization/admin/disable" }),
@@ -24207,7 +20159,7 @@ function __c119(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ FeatureName: FeatureName.pipe(T.HttpLabel("FeatureName")) }).pipe(
+        S.Struct({ FeatureName: S.String.pipe(T.HttpLabel("FeatureName")) }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/hubv2/feature/{FeatureName}" }),
             svc,
@@ -24260,7 +20212,7 @@ function __c119(j: number): any {
       });
     case 6:
       return S.suspend(() =>
-        S.Struct({ AccountIds: S.optional(AccountIdList) }).pipe(
+        S.Struct({ AccountIds: S.optional(__S(4)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/members/disassociate" }),
             svc,
@@ -24300,7 +20252,7 @@ function __c120(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AdminAccountId: S.optional(S.String),
-          Feature: S.optional(SecurityHubFeature),
+          Feature: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/organization/admin/enable" }),
@@ -24316,21 +20268,21 @@ function __c120(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ AdminAccountId: S.optional(S.String), Feature: S.optional(SecurityHubFeature) }),
+        S.Struct({ AdminAccountId: S.optional(S.String), Feature: S.optional(S.String) }),
       ).annotate({
         identifier: "EnableOrganizationAdminAccountResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(31)),
           EnableDefaultStandards: S.optional(S.Boolean),
-          ControlFindingGenerator: S.optional(ControlFindingGenerator),
+          ControlFindingGenerator: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/accounts" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "EnableSecurityHubRequest" });
     case 4:
       return S.suspend(() =>
-        S.Struct({ FeatureName: FeatureName.pipe(T.HttpLabel("FeatureName")) }).pipe(
+        S.Struct({ FeatureName: S.String.pipe(T.HttpLabel("FeatureName")) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/hubv2/feature/{FeatureName}" }),
             svc,
@@ -24345,7 +20297,7 @@ function __c120(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ Tags: S.optional(TagMap) }).pipe(
+        S.Struct({ Tags: S.optional(__S(31)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/hubv2" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -24392,7 +20344,7 @@ function __c121(j: number): any {
         }),
       ).annotate({ identifier: "Invitation" });
     case 2:
-      return S.suspend(() => S.Struct({ Administrator: S.optional(Invitation) })).annotate({
+      return S.suspend(() => S.Struct({ Administrator: S.optional(__S(969)) })).annotate({
         identifier: "GetAdministratorAccountResponse",
       });
     case 3:
@@ -24414,7 +20366,7 @@ function __c121(j: number): any {
           AggregatorV2Arn: S.optional(S.String),
           AggregationRegion: S.optional(S.String),
           RegionLinkingMode: S.optional(S.String),
-          LinkedRegions: S.optional(StringList),
+          LinkedRegions: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "GetAggregatorV2Response" });
     case 5:
@@ -24439,10 +20391,10 @@ function __c121(j: number): any {
           RuleId: S.optional(S.String),
           RuleOrder: S.optional(S.Number),
           RuleName: S.optional(S.String),
-          RuleStatus: S.optional(RuleStatusV2),
+          RuleStatus: S.optional(S.String),
           Description: S.optional(S.String),
-          Criteria: S.optional(Criteria),
-          Actions: S.optional(AutomationRulesActionListV2),
+          Criteria: S.optional(__S(864)),
+          Actions: S.optional(__S(868)),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -24470,7 +20422,7 @@ function __c122(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ Target: S.optional(Target) }).pipe(
+        S.Struct({ Target: S.optional(__S(41)) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/configurationPolicyAssociation/get" }),
             svc,
@@ -24498,29 +20450,29 @@ function __c122(j: number): any {
       ).annotate({ identifier: "GetConnectorRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Code: S.optional(HealthIssueCode), Message: S.optional(S.String) }),
+        S.Struct({ Code: S.optional(S.String), Message: S.optional(S.String) }),
       ).annotate({ identifier: "HealthIssue" });
     case 3:
-      return S.Array(HealthIssue);
+      return S.Array(__S(978));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ConnectorStatus: S.optional(CspmConnectorStatus),
+          ConnectorStatus: S.optional(S.String),
           Message: S.optional(S.String),
           LastCheckedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Issues: S.optional(HealthIssueList),
+          Issues: S.optional(__S(979)),
         }),
       ).annotate({ identifier: "CspmHealthCheck" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           AWSConfigConnectorArn: S.optional(S.String),
-          ScopeConfiguration: S.optional(AzureScopeConfiguration),
-          AzureRegions: S.optional(AzureRegionList),
+          ScopeConfiguration: S.optional(__S(878)),
+          AzureRegions: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "AzureDetail" });
     case 6:
-      return S.Union([/*@__PURE__*/ S.Struct({ Azure: AzureDetail })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ Azure: __S(981) })]);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -24530,10 +20482,10 @@ function __c122(j: number): any {
           Description: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           LastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Health: S.optional(CspmHealthCheck),
-          ProviderDetail: S.optional(CspmProviderDetail),
+          Health: S.optional(__S(980)),
+          ProviderDetail: S.optional(__S(982)),
           CreatedBy: S.optional(S.String),
-          EnablementStatus: S.optional(CspmEnablementStatus),
+          EnablementStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetConnectorResponse" });
   }
@@ -24560,7 +20512,7 @@ function __c123(j: number): any {
           ProjectKey: S.optional(S.String),
           Domain: S.optional(S.String),
           AuthUrl: S.optional(S.String),
-          AuthStatus: S.optional(ConnectorAuthStatus),
+          AuthStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "JiraCloudDetail" });
     case 2:
@@ -24568,14 +20520,14 @@ function __c123(j: number): any {
         S.Struct({
           InstanceName: S.optional(S.String),
           SecretArn: S.optional(S.String),
-          AuthStatus: S.optional(ConnectorAuthStatus),
+          AuthStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceNowDetail" });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ JiraCloud: JiraCloudDetail }),
-        /*@__PURE__*/ S.Struct({ ServiceNow: ServiceNowDetail }),
-        /*@__PURE__*/ S.Struct({ Azure: AzureDetail }),
+        /*@__PURE__*/ S.Struct({ JiraCloud: __S(985) }),
+        /*@__PURE__*/ S.Struct({ ServiceNow: __S(986) }),
+        /*@__PURE__*/ S.Struct({ Azure: __S(981) }),
       ]);
     case 4:
       return S.suspend(() =>
@@ -24587,19 +20539,19 @@ function __c123(j: number): any {
           KmsKeyArn: S.optional(S.String),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           LastUpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          Health: S.optional(HealthCheck),
-          ProviderDetail: S.optional(ProviderDetail),
-          EnablementStatus: S.optional(EnablementStatus),
+          Health: S.optional(__S(980)),
+          ProviderDetail: S.optional(__S(987)),
+          EnablementStatus: S.optional(S.String),
           EnablementStatusReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetConnectorV2Response" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          StandardsSubscriptionArns: S.optional(StandardsSubscriptionArns),
+          StandardsSubscriptionArns: S.optional(__S(4)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Providers: S.optional(StandardsProviders),
+          Providers: S.optional(__S(930)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/standards/get" }), svc, auth, proto, ver, rules),
         ),
@@ -24609,7 +20561,7 @@ function __c123(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          StandardsSubscriptions: S.optional(StandardsSubscriptions),
+          StandardsSubscriptions: S.optional(__S(13)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -24637,7 +20589,7 @@ function __c124(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          FindingIdentifier: S.optional(AwsSecurityFindingIdentifier),
+          FindingIdentifier: S.optional(__S(821)),
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           NextToken: S.optional(S.String),
@@ -24656,7 +20608,7 @@ function __c124(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Type: S.optional(FindingHistoryUpdateSourceType),
+          Type: S.optional(S.String),
           Identity: S.optional(S.String),
         }),
       ).annotate({
@@ -24671,24 +20623,24 @@ function __c124(j: number): any {
         }),
       ).annotate({ identifier: "FindingHistoryUpdate" });
     case 3:
-      return S.Array(FindingHistoryUpdate);
+      return S.Array(__S(994));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          FindingIdentifier: S.optional(AwsSecurityFindingIdentifier),
+          FindingIdentifier: S.optional(__S(821)),
           UpdateTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           FindingCreated: S.optional(S.Boolean),
-          UpdateSource: S.optional(FindingHistoryUpdateSource),
-          Updates: S.optional(FindingHistoryUpdatesList),
+          UpdateSource: S.optional(__S(993)),
+          Updates: S.optional(__S(995)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "FindingHistoryRecord" });
     case 5:
-      return S.Array(FindingHistoryRecord);
+      return S.Array(__S(996));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Records: S.optional(FindingHistoryRecordList),
+          Records: S.optional(__S(997)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -24696,36 +20648,36 @@ function __c124(j: number): any {
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Field: S.optional(S.String), SortOrder: S.optional(SortOrder) }),
+        S.Struct({ Field: S.optional(S.String), SortOrder: S.optional(S.String) }),
       ).annotate({ identifier: "SortCriterion" });
   }
 }
 function __c125(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SortCriterion);
+      return S.Array(__S(999));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(AwsSecurityFindingFilters),
-          SortCriteria: S.optional(SortCriteria),
+          Filters: S.optional(__S(894)),
+          SortCriteria: S.optional(__S(1000)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/findings" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "GetFindingsRequest" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Findings: S.optional(AwsSecurityFindingList), NextToken: S.optional(S.String) }),
+        S.Struct({ Findings: S.optional(__S(813)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetFindingsResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(OcsfFindingFilters),
-          GroupByField: S.optional(GroupByField),
+          Filters: S.optional(__S(863)),
+          GroupByField: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupByRule" });
     case 4:
-      return S.Array(GroupByRule);
+      return S.Array(__S(1003));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -24734,11 +20686,11 @@ function __c125(j: number): any {
         }),
       ).annotate({ identifier: "AwsOrganizationScope" });
     case 6:
-      return S.Array(AwsOrganizationScope);
+      return S.Array(__S(1005));
     case 7:
-      return S.suspend(() =>
-        S.Struct({ AwsOrganizations: S.optional(AwsOrganizationScopeList) }),
-      ).annotate({ identifier: "FindingScopes" });
+      return S.suspend(() => S.Struct({ AwsOrganizations: S.optional(__S(1006)) })).annotate({
+        identifier: "FindingScopes",
+      });
   }
 }
 function __c126(j: number): any {
@@ -24746,9 +20698,9 @@ function __c126(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          GroupByRules: S.optional(GroupByRules),
-          Scopes: S.optional(FindingScopes),
-          SortOrder: S.optional(SortOrder),
+          GroupByRules: S.optional(__S(1004)),
+          Scopes: S.optional(__S(1007)),
+          SortOrder: S.optional(S.String),
           MaxStatisticResults: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -24768,28 +20720,28 @@ function __c126(j: number): any {
         S.Struct({ FieldValue: S.optional(S.String), Count: S.optional(S.Number) }),
       ).annotate({ identifier: "GroupByValue" });
     case 2:
-      return S.Array(GroupByValue);
+      return S.Array(__S(1009));
     case 3:
       return S.suspend(() =>
-        S.Struct({ GroupByField: S.optional(S.String), GroupByValues: S.optional(GroupByValues) }),
+        S.Struct({ GroupByField: S.optional(S.String), GroupByValues: S.optional(__S(1010)) }),
       ).annotate({ identifier: "GroupByResult" });
     case 4:
-      return S.Array(GroupByResult);
+      return S.Array(__S(1011));
     case 5:
-      return S.suspend(() => S.Struct({ GroupByResults: S.optional(GroupByResults) })).annotate({
+      return S.suspend(() => S.Struct({ GroupByResults: S.optional(__S(1012)) })).annotate({
         identifier: "GetFindingStatisticsV2Response",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          FieldName: S.optional(FindingsTrendsStringField),
-          Filter: S.optional(StringFilter),
+          FieldName: S.optional(S.String),
+          Filter: S.optional(__S(19)),
         }),
       ).annotate({
         identifier: "FindingsTrendsStringFilter",
       });
     case 7:
-      return S.Array(FindingsTrendsStringFilter);
+      return S.Array(__S(1014));
   }
 }
 function __c127(j: number): any {
@@ -24797,36 +20749,34 @@ function __c127(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          StringFilters: S.optional(FindingsTrendsStringFilterList),
+          StringFilters: S.optional(__S(1015)),
           NestedCompositeFilters: S.optional(
-            S.suspend(() => FindingsTrendsCompositeFilterList).annotate({
+            S.suspend(() => __S(1017)).annotate({
               identifier: "FindingsTrendsCompositeFilterList",
             }),
           ),
-          Operator: S.optional(AllowedOperators),
+          Operator: S.optional(S.String),
         }),
       ).annotate({
         identifier: "FindingsTrendsCompositeFilter",
       });
     case 1:
       return S.Array(
-        /*@__PURE__*/ S.suspend(
-          (): S.Schema<FindingsTrendsCompositeFilter> => FindingsTrendsCompositeFilter,
-        ).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<FindingsTrendsCompositeFilter> => __S(1016)).annotate({
           identifier: "FindingsTrendsCompositeFilter",
         }),
       );
     case 2:
       return S.suspend(() =>
         S.Struct({
-          CompositeFilters: S.optional(FindingsTrendsCompositeFilterList),
-          CompositeOperator: S.optional(AllowedOperators),
+          CompositeFilters: S.optional(__S(1017)),
+          CompositeOperator: S.optional(S.String),
         }),
       ).annotate({ identifier: "FindingsTrendsFilters" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(FindingsTrendsFilters),
+          Filters: S.optional(__S(1018)),
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           NextToken: S.optional(S.String),
@@ -24851,18 +20801,18 @@ function __c127(j: number): any {
         }),
       ).annotate({ identifier: "SeverityTrendsCount" });
     case 5:
-      return S.suspend(() =>
-        S.Struct({ SeverityTrends: S.optional(SeverityTrendsCount) }),
-      ).annotate({ identifier: "TrendsValues" });
+      return S.suspend(() => S.Struct({ SeverityTrends: S.optional(__S(1020)) })).annotate({
+        identifier: "TrendsValues",
+      });
     case 6:
       return S.suspend(() =>
         S.Struct({
           Timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          TrendsValues: S.optional(TrendsValues),
+          TrendsValues: S.optional(__S(1021)),
         }),
       ).annotate({ identifier: "TrendsMetricsResult" });
     case 7:
-      return S.Array(TrendsMetricsResult);
+      return S.Array(__S(1022));
   }
 }
 function __c128(j: number): any {
@@ -24870,8 +20820,8 @@ function __c128(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Granularity: S.optional(GranularityField),
-          TrendsMetrics: S.optional(TrendsMetrics),
+          Granularity: S.optional(S.String),
+          TrendsMetrics: S.optional(__S(1023)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -24880,9 +20830,9 @@ function __c128(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(OcsfFindingFilters),
-          Scopes: S.optional(FindingScopes),
-          SortCriteria: S.optional(SortCriteria),
+          Filters: S.optional(__S(863)),
+          Scopes: S.optional(__S(1007)),
+          SortCriteria: S.optional(__S(1000)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(
@@ -24893,7 +20843,7 @@ function __c128(j: number): any {
       return S.Array(S.Any);
     case 3:
       return S.suspend(() =>
-        S.Struct({ Findings: S.optional(OcsfFindingsList), NextToken: S.optional(S.String) }),
+        S.Struct({ Findings: S.optional(__S(1026)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetFindingsV2Response" });
     case 4:
       return S.suspend(() =>
@@ -24913,13 +20863,13 @@ function __c128(j: number): any {
         S.Struct({ GroupByAttributeValue: S.optional(S.String), Count: S.optional(S.Number) }),
       ).annotate({ identifier: "InsightResultValue" });
     case 6:
-      return S.Array(InsightResultValue);
+      return S.Array(__S(1029));
     case 7:
       return S.suspend(() =>
         S.Struct({
           InsightArn: S.optional(S.String),
           GroupByAttribute: S.optional(S.String),
-          ResultValues: S.optional(InsightResultValueList),
+          ResultValues: S.optional(__S(1030)),
         }),
       ).annotate({ identifier: "InsightResults" });
   }
@@ -24927,13 +20877,13 @@ function __c128(j: number): any {
 function __c129(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ InsightResults: S.optional(InsightResults) })).annotate({
+      return S.suspend(() => S.Struct({ InsightResults: S.optional(__S(1031)) })).annotate({
         identifier: "GetInsightResultsResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          InsightArns: S.optional(ArnList),
+          InsightArns: S.optional(__S(4)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(
@@ -24945,15 +20895,15 @@ function __c129(j: number): any {
         S.Struct({
           InsightArn: S.optional(S.String),
           Name: S.optional(S.String),
-          Filters: S.optional(AwsSecurityFindingFilters),
+          Filters: S.optional(__S(894)),
           GroupByAttribute: S.optional(S.String),
         }),
       ).annotate({ identifier: "Insight" });
     case 3:
-      return S.Array(Insight);
+      return S.Array(__S(1034));
     case 4:
       return S.suspend(() =>
-        S.Struct({ Insights: S.optional(InsightList), NextToken: S.optional(S.String) }),
+        S.Struct({ Insights: S.optional(__S(1035)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetInsightsResponse" });
     case 5:
       return S.suspend(() =>
@@ -24978,12 +20928,12 @@ function __c129(j: number): any {
 function __c130(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => S.Struct({ Master: S.optional(Invitation) })).annotate({
+      return S.suspend(() => S.Struct({ Master: S.optional(__S(969)) })).annotate({
         identifier: "GetMasterAccountResponse",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ AccountIds: S.optional(AccountIdList) }).pipe(
+        S.Struct({ AccountIds: S.optional(__S(4)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/members/get" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "GetMembersRequest" });
@@ -25000,10 +20950,10 @@ function __c130(j: number): any {
         }),
       ).annotate({ identifier: "Member" });
     case 3:
-      return S.Array(Member);
+      return S.Array(__S(1042));
     case 4:
       return S.suspend(() =>
-        S.Struct({ Members: S.optional(MemberList), UnprocessedAccounts: S.optional(ResultList) }),
+        S.Struct({ Members: S.optional(__S(1043)), UnprocessedAccounts: S.optional(__S(901)) }),
       ).annotate({ identifier: "GetMembersResponse" });
     case 5:
       return S.suspend(() =>
@@ -25037,15 +20987,13 @@ function __c130(j: number): any {
         identifier: "UnusedPermissionsRecommendationStep",
       });
     case 7:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ UnusedPermissions: UnusedPermissionsRecommendationStep }),
-      ]);
+      return S.Union([/*@__PURE__*/ S.Struct({ UnusedPermissions: __S(1046) })]);
   }
 }
 function __c131(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RecommendationStep);
+      return S.Array(__S(1047));
     case 1:
       return S.suspend(() =>
         S.Struct({ Code: S.optional(S.String), Message: S.optional(S.String) }),
@@ -25054,10 +21002,10 @@ function __c131(j: number): any {
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          RecommendationType: S.optional(RecommendationType),
-          RecommendationSteps: S.optional(RecommendationSteps),
-          Error: S.optional(RecommendationError),
-          Status: S.optional(RecommendationStatus),
+          RecommendationType: S.optional(S.String),
+          RecommendationSteps: S.optional(__S(1048)),
+          Error: S.optional(__S(1049)),
+          Status: S.optional(S.String),
           ResourceArn: S.optional(S.String),
         }),
       ).annotate({
@@ -25066,24 +21014,22 @@ function __c131(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          FieldName: S.optional(RemediationStringField),
-          Filter: S.optional(RemediationStringFilterCondition),
+          FieldName: S.optional(S.String),
+          Filter: S.optional(__S(525)),
         }),
       ).annotate({ identifier: "RemediationStringFilter" });
     case 4:
-      return S.Array(RemediationStringFilter);
+      return S.Array(__S(1051));
     case 5:
-      return S.suspend(() =>
-        S.Struct({ StringFilters: S.optional(RemediationStringFilterList) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ StringFilters: S.optional(__S(1052)) })).annotate({
         identifier: "RemediationCompositeFilter",
       });
     case 6:
-      return S.Array(RemediationCompositeFilter);
+      return S.Array(__S(1053));
     case 7:
-      return S.suspend(() =>
-        S.Struct({ CompositeFilters: S.optional(RemediationCompositeFilterList) }),
-      ).annotate({ identifier: "RemediationFilters" });
+      return S.suspend(() => S.Struct({ CompositeFilters: S.optional(__S(1054)) })).annotate({
+        identifier: "RemediationFilters",
+      });
   }
 }
 function __c132(j: number): any {
@@ -25093,9 +21039,9 @@ function __c132(j: number): any {
         S.Struct({
           TargetUid: S.optional(S.String),
           MetadataUid: S.optional(S.String),
-          Filters: S.optional(RemediationFilters),
+          Filters: S.optional(__S(1055)),
           ShowGuidance: S.optional(S.Boolean),
-          GuidanceFormat: S.optional(GuidanceFormat),
+          GuidanceFormat: S.optional(S.String),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -25122,15 +21068,15 @@ function __c132(j: number): any {
         S.Struct({ Title: S.optional(S.String), Url: S.optional(S.String) }),
       ).annotate({ identifier: "KbArticle" });
     case 3:
-      return S.Array(KbArticle);
+      return S.Array(__S(1058));
     case 4:
       return S.suspend(() =>
         S.Struct({
           Action: S.optional(S.String),
           Description: S.optional(S.String),
           IsImmediate: S.optional(S.Boolean),
-          PostRemediationSteps: S.optional(RemediationStringList),
-          KbArticles: S.optional(KbArticleList),
+          PostRemediationSteps: S.optional(__S(4)),
+          KbArticles: S.optional(__S(1059)),
         }),
       ).annotate({ identifier: "RemediationSummaryDetail" });
     case 5:
@@ -25145,7 +21091,7 @@ function __c132(j: number): any {
           Id: S.optional(S.String),
           ResourceGuid: S.optional(S.String),
           ResourceRegion: S.optional(S.String),
-          CloudProvider: S.optional(CloudProviderName),
+          CloudProvider: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemediationResource" });
     case 6:
@@ -25158,7 +21104,7 @@ function __c132(j: number): any {
           ProblemStatement: S.optional(S.String),
           RiskAssessment: S.optional(S.String),
           AffectedScope: S.optional(S.String),
-          Prerequisites: S.optional(RemediationStringList),
+          Prerequisites: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "RemediationGuidanceContext",
@@ -25177,7 +21123,7 @@ function __c133(j: number): any {
         }),
       ).annotate({ identifier: "RemediationParameter" });
     case 1:
-      return S.Array(RemediationParameter);
+      return S.Array(__S(1064));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -25191,14 +21137,14 @@ function __c133(j: number): any {
         }),
       ).annotate({ identifier: "RemediationStep" });
     case 3:
-      return S.Array(RemediationStep);
+      return S.Array(__S(1066));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Parameters: S.optional(RemediationParameterList),
-          Steps: S.optional(RemediationStepList),
+          Parameters: S.optional(__S(1065)),
+          Steps: S.optional(__S(1067)),
           ExpectedEndState: S.optional(S.String),
-          RequiredPermissions: S.optional(RemediationStringList),
+          RequiredPermissions: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "RemediationGuidanceSpecification",
@@ -25223,7 +21169,7 @@ function __c133(j: number): any {
         S.Struct({
           ResourceType: S.optional(S.String),
           ExposureType: S.optional(S.String),
-          TraitTitles: S.optional(RemediationStringList),
+          TraitTitles: S.optional(__S(4)),
           Reversibility: S.optional(S.String),
           FixEffect: S.optional(S.String),
           RiskLevel: S.optional(S.String),
@@ -25241,10 +21187,10 @@ function __c133(j: number): any {
           TargetTypeName: S.optional(S.String),
           Pattern: S.optional(S.String),
           Version: S.optional(S.String),
-          Context: S.optional(RemediationGuidanceContext),
-          Specification: S.optional(RemediationGuidanceSpecification),
-          Examples: S.optional(RemediationGuidanceExamples),
-          Metadata: S.optional(RemediationGuidanceMetadata),
+          Context: S.optional(__S(1063)),
+          Specification: S.optional(__S(1068)),
+          Examples: S.optional(__S(1069)),
+          Metadata: S.optional(__S(1070)),
         }),
       ).annotate({ identifier: "RemediationGuidance" });
   }
@@ -25255,63 +21201,61 @@ function __c134(j: number): any {
       return S.suspend(() =>
         S.Struct({
           TargetUid: S.optional(S.String),
-          Outcome: S.optional(RemediationOutcome),
-          Priority: S.optional(RemediationPriority),
-          RemediationSummary: S.optional(RemediationSummaryDetail),
-          Resource: S.optional(RemediationResource),
-          Status: S.optional(RemediationStatus),
-          Trait: S.optional(RemediationTrait),
-          Guidance: S.optional(RemediationGuidance),
+          Outcome: S.optional(__S(1057)),
+          Priority: S.optional(S.String),
+          RemediationSummary: S.optional(__S(1060)),
+          Resource: S.optional(__S(1061)),
+          Status: S.optional(S.String),
+          Trait: S.optional(__S(1062)),
+          Guidance: S.optional(__S(1071)),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "RemediationV2Item" });
     case 1:
-      return S.Array(RemediationV2Item);
+      return S.Array(__S(1072));
     case 2:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(RemediationV2ItemList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(1073)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "GetRemediationsV2Response",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          StringFilters: S.optional(ResourcesStringFilterList),
-          DateFilters: S.optional(ResourcesDateFilterList),
-          NumberFilters: S.optional(ResourcesNumberFilterList),
-          MapFilters: S.optional(ResourcesMapFilterList),
+          StringFilters: S.optional(__S(848)),
+          DateFilters: S.optional(__S(850)),
+          NumberFilters: S.optional(__S(855)),
+          MapFilters: S.optional(__S(857)),
           NestedCompositeFilters: S.optional(
-            S.suspend(() => ResourcesCompositeFilterList).annotate({
+            S.suspend(() => __S(1076)).annotate({
               identifier: "ResourcesCompositeFilterList",
             }),
           ),
-          Operator: S.optional(AllowedOperators),
+          Operator: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourcesCompositeFilter" });
     case 4:
       return S.Array(
-        /*@__PURE__*/ S.suspend(
-          (): S.Schema<ResourcesCompositeFilter> => ResourcesCompositeFilter,
-        ).annotate({
+        /*@__PURE__*/ S.suspend((): S.Schema<ResourcesCompositeFilter> => __S(1075)).annotate({
           identifier: "ResourcesCompositeFilter",
         }),
       );
     case 5:
       return S.suspend(() =>
         S.Struct({
-          CompositeFilters: S.optional(ResourcesCompositeFilterList),
-          CompositeOperator: S.optional(AllowedOperators),
+          CompositeFilters: S.optional(__S(1076)),
+          CompositeOperator: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourcesFilters" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          GroupByField: S.optional(ResourceGroupByField),
-          Filters: S.optional(ResourcesFilters),
+          GroupByField: S.optional(S.String),
+          Filters: S.optional(__S(1077)),
         }),
       ).annotate({ identifier: "ResourceGroupByRule" });
     case 7:
-      return S.Array(ResourceGroupByRule);
+      return S.Array(__S(1078));
   }
 }
 function __c135(j: number): any {
@@ -25319,9 +21263,9 @@ function __c135(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          GroupByRules: S.optional(ResourceGroupByRules),
-          Scopes: S.optional(ResourceScopes),
-          SortOrder: S.optional(SortOrder),
+          GroupByRules: S.optional(__S(1079)),
+          Scopes: S.optional(__S(1007)),
+          SortOrder: S.optional(S.String),
           MaxStatisticResults: S.optional(S.Number),
         }).pipe(
           T.all(
@@ -25339,34 +21283,34 @@ function __c135(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          StringFilters: S.optional(ResourcesTrendsStringFilterList),
+          StringFilters: S.optional(__S(1015)),
           NestedCompositeFilters: S.optional(
-            S.suspend(() => ResourcesTrendsCompositeFilterList).annotate({
+            S.suspend(() => __S(1082)).annotate({
               identifier: "ResourcesTrendsCompositeFilterList",
             }),
           ),
-          Operator: S.optional(AllowedOperators),
+          Operator: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ResourcesTrendsCompositeFilter",
       });
     case 2:
       return S.Array(
-        /*@__PURE__*/ S.suspend(
-          (): S.Schema<ResourcesTrendsCompositeFilter> => ResourcesTrendsCompositeFilter,
-        ).annotate({ identifier: "ResourcesTrendsCompositeFilter" }),
+        /*@__PURE__*/ S.suspend((): S.Schema<ResourcesTrendsCompositeFilter> => __S(1081)).annotate(
+          { identifier: "ResourcesTrendsCompositeFilter" },
+        ),
       );
     case 3:
       return S.suspend(() =>
         S.Struct({
-          CompositeFilters: S.optional(ResourcesTrendsCompositeFilterList),
-          CompositeOperator: S.optional(AllowedOperators),
+          CompositeFilters: S.optional(__S(1082)),
+          CompositeOperator: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourcesTrendsFilters" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(ResourcesTrendsFilters),
+          Filters: S.optional(__S(1083)),
           StartTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           EndTime: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           NextToken: S.optional(S.String),
@@ -25389,14 +21333,14 @@ function __c135(j: number): any {
         identifier: "ResourcesCount",
       });
     case 6:
-      return S.suspend(() => S.Struct({ ResourcesCount: S.optional(ResourcesCount) })).annotate({
+      return S.suspend(() => S.Struct({ ResourcesCount: S.optional(__S(1085)) })).annotate({
         identifier: "ResourcesTrendsValues",
       });
     case 7:
       return S.suspend(() =>
         S.Struct({
           Timestamp: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          TrendsValues: S.optional(ResourcesTrendsValues),
+          TrendsValues: S.optional(__S(1086)),
         }),
       ).annotate({
         identifier: "ResourcesTrendsMetricsResult",
@@ -25406,12 +21350,12 @@ function __c135(j: number): any {
 function __c136(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ResourcesTrendsMetricsResult);
+      return S.Array(__S(1087));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          Granularity: S.optional(GranularityField),
-          TrendsMetrics: S.optional(ResourcesTrendsMetrics),
+          Granularity: S.optional(S.String),
+          TrendsMetrics: S.optional(__S(1088)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -25420,9 +21364,9 @@ function __c136(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(ResourcesFilters),
-          Scopes: S.optional(ResourceScopes),
-          SortCriteria: S.optional(SortCriteria),
+          Filters: S.optional(__S(1077)),
+          Scopes: S.optional(__S(1007)),
+          SortCriteria: S.optional(__S(1000)),
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
         }).pipe(
@@ -25450,17 +21394,17 @@ function __c136(j: number): any {
           FindingType: S.optional(S.String),
           ProductName: S.optional(S.String),
           TotalFindings: S.optional(S.Number),
-          Severities: S.optional(ResourceSeverityBreakdown),
+          Severities: S.optional(__S(1091)),
         }),
       ).annotate({ identifier: "ResourceFindingsSummary" });
     case 5:
-      return S.Array(ResourceFindingsSummary);
+      return S.Array(__S(1092));
     case 6:
       return S.suspend(() =>
         S.Struct({ Key: S.optional(S.String), Value: S.optional(S.String) }),
       ).annotate({ identifier: "ResourceTag" });
     case 7:
-      return S.Array(ResourceTag);
+      return S.Array(__S(1094));
   }
 }
 function __c137(j: number): any {
@@ -25482,7 +21426,7 @@ function __c137(j: number): any {
         }),
       ).annotate({ identifier: "AIDetails" });
     case 1:
-      return S.suspend(() => S.Struct({ AIDetails: S.optional(AIDetails) })).annotate({
+      return S.suspend(() => S.Struct({ AIDetails: S.optional(__S(1096)) })).annotate({
         identifier: "ResourceInfo",
       });
     case 2:
@@ -25498,24 +21442,24 @@ function __c137(j: number): any {
           ResourceOwnerOrgId: S.optional(S.String),
           ResourceCloudPartition: S.optional(S.String),
           ResourceRegion: S.optional(S.String),
-          ResourceCategory: S.optional(ResourceCategory),
+          ResourceCategory: S.optional(S.String),
           ResourceType: S.optional(S.String),
           ResourceName: S.optional(S.String),
           ResourceCreationTimeDt: S.optional(S.String),
           ResourceDetailCaptureTimeDt: S.optional(S.String),
-          FindingsSummary: S.optional(ResourceFindingsSummaryList),
-          ResourceTags: S.optional(ResourceTagList),
+          FindingsSummary: S.optional(__S(1093)),
+          ResourceTags: S.optional(__S(1095)),
           ResourceConfig: S.optional(S.Any),
-          ResourceSubCategory: S.optional(ResourceSubCategory),
-          DiscoveryType: S.optional(DiscoveryType),
-          ResourceInfo: S.optional(ResourceInfo),
+          ResourceSubCategory: S.optional(S.String),
+          DiscoveryType: S.optional(S.String),
+          ResourceInfo: S.optional(__S(1097)),
         }),
       ).annotate({ identifier: "ResourceResult" });
     case 3:
-      return S.Array(ResourceResult);
+      return S.Array(__S(1098));
     case 4:
       return S.suspend(() =>
-        S.Struct({ Resources: S.optional(Resources), NextToken: S.optional(S.String) }),
+        S.Struct({ Resources: S.optional(__S(1099)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetResourcesV2Response" });
     case 5:
       return S.suspend(() =>
@@ -25547,7 +21491,7 @@ function __c137(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          DefaultValue: S.optional(IntegerList),
+          DefaultValue: S.optional(__S(51)),
           Min: S.optional(S.Number),
           Max: S.optional(S.Number),
           MaxItems: S.optional(S.Number),
@@ -25572,7 +21516,7 @@ function __c138(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          DefaultValue: S.optional(StringList),
+          DefaultValue: S.optional(__S(4)),
           Re2Expression: S.optional(S.String),
           MaxItems: S.optional(S.Number),
           ExpressionDescription: S.optional(S.String),
@@ -25586,38 +21530,38 @@ function __c138(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ DefaultValue: S.optional(S.String), AllowedValues: S.optional(StringList) }),
+        S.Struct({ DefaultValue: S.optional(S.String), AllowedValues: S.optional(__S(4)) }),
       ).annotate({ identifier: "EnumConfigurationOptions" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          DefaultValue: S.optional(StringList),
+          DefaultValue: S.optional(__S(4)),
           MaxItems: S.optional(S.Number),
-          AllowedValues: S.optional(StringList),
+          AllowedValues: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "EnumListConfigurationOptions",
       });
     case 5:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ Integer: IntegerConfigurationOptions }),
-        /*@__PURE__*/ S.Struct({ IntegerList: IntegerListConfigurationOptions }),
-        /*@__PURE__*/ S.Struct({ Double: DoubleConfigurationOptions }),
-        /*@__PURE__*/ S.Struct({ String: StringConfigurationOptions }),
-        /*@__PURE__*/ S.Struct({ StringList: StringListConfigurationOptions }),
-        /*@__PURE__*/ S.Struct({ Boolean: BooleanConfigurationOptions }),
-        /*@__PURE__*/ S.Struct({ Enum: EnumConfigurationOptions }),
-        /*@__PURE__*/ S.Struct({ EnumList: EnumListConfigurationOptions }),
+        /*@__PURE__*/ S.Struct({ Integer: __S(1102) }),
+        /*@__PURE__*/ S.Struct({ IntegerList: __S(1103) }),
+        /*@__PURE__*/ S.Struct({ Double: __S(1102) }),
+        /*@__PURE__*/ S.Struct({ String: __S(1104) }),
+        /*@__PURE__*/ S.Struct({ StringList: __S(1105) }),
+        /*@__PURE__*/ S.Struct({ Boolean: __S(1106) }),
+        /*@__PURE__*/ S.Struct({ Enum: __S(1107) }),
+        /*@__PURE__*/ S.Struct({ EnumList: __S(1108) }),
       ]);
     case 6:
       return S.suspend(() =>
         S.Struct({
           Description: S.optional(S.String),
-          ConfigurationOptions: S.optional(ConfigurationOptions),
+          ConfigurationOptions: S.optional(__S(1109)),
         }),
       ).annotate({ identifier: "ParameterDefinition" });
     case 7:
-      return S.Record(S.String, /*@__PURE__*/ ParameterDefinition.pipe(S.optional));
+      return S.Record(S.String, /*@__PURE__*/ __S(1110).pipe(S.optional));
   }
 }
 function __c139(j: number): any {
@@ -25629,24 +21573,24 @@ function __c139(j: number): any {
           Title: S.optional(S.String),
           Description: S.optional(S.String),
           RemediationUrl: S.optional(S.String),
-          SeverityRating: S.optional(SeverityRating),
-          CurrentRegionAvailability: S.optional(RegionAvailabilityStatus),
-          CustomizableProperties: S.optional(CustomizableProperties),
-          ParameterDefinitions: S.optional(ParameterDefinitions),
-          Provider: S.optional(SecurityControlsProvider),
+          SeverityRating: S.optional(S.String),
+          CurrentRegionAvailability: S.optional(S.String),
+          CustomizableProperties: S.optional(__S(930)),
+          ParameterDefinitions: S.optional(__S(1111)),
+          Provider: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityControlDefinition",
       });
     case 1:
       return S.suspend(() =>
-        S.Struct({ SecurityControlDefinition: S.optional(SecurityControlDefinition) }),
+        S.Struct({ SecurityControlDefinition: S.optional(__S(1112)) }),
       ).annotate({
         identifier: "GetSecurityControlDefinitionResponse",
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ AccountIds: S.optional(AccountIdList) }).pipe(
+        S.Struct({ AccountIds: S.optional(__S(4)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/members/invite" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "InviteMembersRequest" });
@@ -25664,10 +21608,10 @@ function __c139(j: number): any {
         identifier: "AggregatorV2",
       });
     case 5:
-      return S.Array(AggregatorV2);
+      return S.Array(__S(1116));
     case 6:
       return S.suspend(() =>
-        S.Struct({ AggregatorsV2: S.optional(AggregatorV2List), NextToken: S.optional(S.String) }),
+        S.Struct({ AggregatorsV2: S.optional(__S(1117)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListAggregatorsV2Response",
       });
@@ -25697,7 +21641,7 @@ function __c140(j: number): any {
       return S.suspend(() =>
         S.Struct({
           RuleArn: S.optional(S.String),
-          RuleStatus: S.optional(RuleStatus),
+          RuleStatus: S.optional(S.String),
           RuleOrder: S.optional(S.Number),
           RuleName: S.optional(S.String),
           Description: S.optional(S.String),
@@ -25708,11 +21652,11 @@ function __c140(j: number): any {
         }),
       ).annotate({ identifier: "AutomationRulesMetadata" });
     case 1:
-      return S.Array(AutomationRulesMetadata);
+      return S.Array(__S(1120));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AutomationRulesMetadata: S.optional(AutomationRulesMetadataList),
+          AutomationRulesMetadata: S.optional(__S(1121)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -25737,11 +21681,11 @@ function __c140(j: number): any {
         identifier: "ListAutomationRulesV2Request",
       });
     case 4:
-      return S.suspend(() => S.Struct({ Type: S.optional(AutomationRulesActionTypeV2) })).annotate({
+      return S.suspend(() => S.Struct({ Type: S.optional(S.String) })).annotate({
         identifier: "AutomationRulesActionTypeObjectV2",
       });
     case 5:
-      return S.Array(AutomationRulesActionTypeObjectV2);
+      return S.Array(__S(1124));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -25749,9 +21693,9 @@ function __c140(j: number): any {
           RuleId: S.optional(S.String),
           RuleOrder: S.optional(S.Number),
           RuleName: S.optional(S.String),
-          RuleStatus: S.optional(RuleStatusV2),
+          RuleStatus: S.optional(S.String),
           Description: S.optional(S.String),
-          Actions: S.optional(AutomationRulesActionTypeListV2),
+          Actions: S.optional(__S(1125)),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
@@ -25759,7 +21703,7 @@ function __c140(j: number): any {
         identifier: "AutomationRulesMetadataV2",
       });
     case 7:
-      return S.Array(AutomationRulesMetadataV2);
+      return S.Array(__S(1126));
   }
 }
 function __c141(j: number): any {
@@ -25767,7 +21711,7 @@ function __c141(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Rules: S.optional(AutomationRulesMetadataListV2),
+          Rules: S.optional(__S(1127)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -25805,11 +21749,11 @@ function __c141(j: number): any {
         identifier: "ConfigurationPolicySummary",
       });
     case 3:
-      return S.Array(ConfigurationPolicySummary);
+      return S.Array(__S(1130));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationPolicySummaries: S.optional(ConfigurationPolicySummaryList),
+          ConfigurationPolicySummaries: S.optional(__S(1131)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -25819,8 +21763,8 @@ function __c141(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConfigurationPolicyId: S.optional(S.String),
-          AssociationType: S.optional(AssociationType),
-          AssociationStatus: S.optional(ConfigurationPolicyAssociationStatus),
+          AssociationType: S.optional(S.String),
+          AssociationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssociationFilters" });
     case 6:
@@ -25828,7 +21772,7 @@ function __c141(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(AssociationFilters),
+          Filters: S.optional(__S(1133)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/configurationPolicyAssociation/list" }),
@@ -25845,9 +21789,7 @@ function __c141(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ConfigurationPolicyAssociationSummaries: S.optional(
-            ConfigurationPolicyAssociationSummaryList,
-          ),
+          ConfigurationPolicyAssociationSummaries: S.optional(__S(46)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -25862,17 +21804,17 @@ function __c142(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-          ProviderName: S.optional(CspmConnectorProviderName).pipe(T.HttpQuery("ProviderName")),
-          ConnectorStatus: S.optional(CspmConnectorStatus).pipe(T.HttpQuery("ConnectorStatus")),
-          EnablementStatus: S.optional(CspmEnablementStatus).pipe(T.HttpQuery("EnablementStatus")),
+          ProviderName: S.optional(S.String).pipe(T.HttpQuery("ProviderName")),
+          ConnectorStatus: S.optional(S.String).pipe(T.HttpQuery("ConnectorStatus")),
+          EnablementStatus: S.optional(S.String).pipe(T.HttpQuery("EnablementStatus")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/connectors" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListConnectorsRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ProviderName: S.optional(CspmConnectorProviderName),
-          ConnectorStatus: S.optional(CspmConnectorStatus),
-          ProviderConfiguration: S.optional(CspmProviderDetail),
+          ProviderName: S.optional(S.String),
+          ConnectorStatus: S.optional(S.String),
+          ProviderConfiguration: S.optional(__S(982)),
         }),
       ).annotate({ identifier: "CspmProviderSummary" });
     case 2:
@@ -25882,19 +21824,19 @@ function __c142(j: number): any {
           ConnectorId: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          ProviderSummary: S.optional(CspmProviderSummary),
+          ProviderSummary: S.optional(__S(1137)),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           CreatedBy: S.optional(S.String),
-          EnablementStatus: S.optional(CspmEnablementStatus),
+          EnablementStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "CspmConnectorSummary" });
     case 3:
-      return S.Array(CspmConnectorSummary);
+      return S.Array(__S(1138));
     case 4:
       return S.suspend(() =>
         S.Struct({
           NextToken: S.optional(S.String),
-          Connectors: S.optional(CspmConnectorSummaryList),
+          Connectors: S.optional(__S(1139)),
         }),
       ).annotate({ identifier: "ListConnectorsResponse" });
     case 5:
@@ -25902,9 +21844,9 @@ function __c142(j: number): any {
         S.Struct({
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-          ProviderName: S.optional(ConnectorProviderName).pipe(T.HttpQuery("ProviderName")),
-          ConnectorStatus: S.optional(ConnectorStatus).pipe(T.HttpQuery("ConnectorStatus")),
-          EnablementStatus: S.optional(EnablementStatus).pipe(T.HttpQuery("EnablementStatus")),
+          ProviderName: S.optional(S.String).pipe(T.HttpQuery("ProviderName")),
+          ConnectorStatus: S.optional(S.String).pipe(T.HttpQuery("ConnectorStatus")),
+          EnablementStatus: S.optional(S.String).pipe(T.HttpQuery("EnablementStatus")),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/connectorsv2" }), svc, auth, proto, ver, rules),
         ),
@@ -25912,9 +21854,9 @@ function __c142(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ProviderName: S.optional(ConnectorProviderName),
-          ConnectorStatus: S.optional(ConnectorStatus),
-          ProviderConfiguration: S.optional(ProviderDetail),
+          ProviderName: S.optional(S.String),
+          ConnectorStatus: S.optional(S.String),
+          ProviderConfiguration: S.optional(__S(987)),
         }),
       ).annotate({ identifier: "ProviderSummary" });
     case 7:
@@ -25924,9 +21866,9 @@ function __c142(j: number): any {
           ConnectorId: S.optional(S.String),
           Name: S.optional(S.String),
           Description: S.optional(S.String),
-          ProviderSummary: S.optional(ProviderSummary),
+          ProviderSummary: S.optional(__S(1142)),
           CreatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          EnablementStatus: S.optional(EnablementStatus),
+          EnablementStatus: S.optional(S.String),
           EnablementStatusReason: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectorSummary" });
@@ -25935,10 +21877,10 @@ function __c142(j: number): any {
 function __c143(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ConnectorSummary);
+      return S.Array(__S(1143));
     case 1:
       return S.suspend(() =>
-        S.Struct({ NextToken: S.optional(S.String), Connectors: S.optional(ConnectorSummaryList) }),
+        S.Struct({ NextToken: S.optional(S.String), Connectors: S.optional(__S(1144)) }),
       ).annotate({ identifier: "ListConnectorsV2Response" });
     case 2:
       return S.suspend(() =>
@@ -25961,7 +21903,7 @@ function __c143(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ProductSubscriptions: S.optional(ProductSubscriptionArnList),
+          ProductSubscriptions: S.optional(__S(4)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -25991,21 +21933,21 @@ function __c143(j: number): any {
         S.Struct({
           MetadataUid: S.optional(S.String),
           Title: S.optional(S.String),
-          PreviousSeverity: S.optional(ExposureSeverity),
-          ProjectedSeverity: S.optional(ExposureSeverity),
-          Impact: S.optional(ExposureImpact),
+          PreviousSeverity: S.optional(S.String),
+          ProjectedSeverity: S.optional(S.String),
+          Impact: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExposureFinding" });
     case 6:
-      return S.Array(ExposureFinding);
+      return S.Array(__S(1149));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Items: S.optional(ExposureFindingItemsList),
+          Items: S.optional(__S(1150)),
           TargetUid: S.optional(S.String),
-          Resource: S.optional(RemediationResource),
+          Resource: S.optional(__S(1061)),
           TotalCount: S.optional(S.Number),
-          Trait: S.optional(RemediationTrait),
+          Trait: S.optional(__S(1062)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -26038,11 +21980,11 @@ function __c144(j: number): any {
         identifier: "FindingAggregator",
       });
     case 2:
-      return S.Array(FindingAggregator);
+      return S.Array(__S(1153));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          FindingAggregators: S.optional(FindingAggregatorList),
+          FindingAggregators: S.optional(__S(1154)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -26051,8 +21993,8 @@ function __c144(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          AccountIds: S.optional(FreeTrialAccountIdList),
-          Statuses: S.optional(FreeTrialStatusValueList),
+          AccountIds: S.optional(__S(4)),
+          Statuses: S.optional(__S(930)),
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
         }).pipe(
@@ -26071,20 +22013,20 @@ function __c144(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          FeatureType: S.optional(FreeTrialType),
-          Status: S.optional(FreeTrialStatusValue),
+          FeatureType: S.optional(S.String),
+          Status: S.optional(S.String),
           StartedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           ExpiresAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
         }),
       ).annotate({ identifier: "FreeTrialStatus" });
     case 6:
-      return S.Array(FreeTrialStatus);
+      return S.Array(__S(1157));
     case 7:
       return S.suspend(() =>
         S.Struct({
           AccountId: S.optional(S.String),
           EvaluatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
-          FreeTrialStatuses: S.optional(FreeTrialStatusList),
+          FreeTrialStatuses: S.optional(__S(1158)),
         }),
       ).annotate({ identifier: "AccountFreeTrialStatus" });
   }
@@ -26092,11 +22034,11 @@ function __c144(j: number): any {
 function __c145(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AccountFreeTrialStatus);
+      return S.Array(__S(1159));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          AccountFreeTrialStatuses: S.optional(AccountFreeTrialStatusList),
+          AccountFreeTrialStatuses: S.optional(__S(1160)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -26112,10 +22054,10 @@ function __c145(j: number): any {
         ),
       ).annotate({ identifier: "ListInvitationsRequest" });
     case 3:
-      return S.Array(Invitation);
+      return S.Array(__S(969));
     case 4:
       return S.suspend(() =>
-        S.Struct({ Invitations: S.optional(InvitationList), NextToken: S.optional(S.String) }),
+        S.Struct({ Invitations: S.optional(__S(1163)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListInvitationsResponse" });
     case 5:
       return S.suspend(() =>
@@ -26127,14 +22069,14 @@ function __c145(j: number): any {
       ).annotate({ identifier: "ListMembersRequest" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Members: S.optional(MemberList), NextToken: S.optional(S.String) }),
+        S.Struct({ Members: S.optional(__S(1043)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListMembersResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
-          Feature: S.optional(SecurityHubFeature).pipe(T.HttpQuery("Feature")),
+          Feature: S.optional(S.String).pipe(T.HttpQuery("Feature")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/organization/admin" }),
@@ -26154,16 +22096,16 @@ function __c146(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ AccountId: S.optional(S.String), Status: S.optional(AdminStatus) }),
+        S.Struct({ AccountId: S.optional(S.String), Status: S.optional(S.String) }),
       ).annotate({ identifier: "AdminAccount" });
     case 1:
-      return S.Array(AdminAccount);
+      return S.Array(__S(1168));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          AdminAccounts: S.optional(AdminAccounts),
+          AdminAccounts: S.optional(__S(1169)),
           NextToken: S.optional(S.String),
-          Feature: S.optional(SecurityHubFeature),
+          Feature: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ListOrganizationAdminAccountsResponse",
@@ -26174,7 +22116,7 @@ function __c146(j: number): any {
           StandardsArn: S.optional(S.String).pipe(T.HttpQuery("StandardsArn")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
-          Providers: S.optional(SecurityControlsProviders).pipe(T.HttpQuery("Providers")),
+          Providers: S.optional(__S(930)).pipe(T.HttpQuery("Providers")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/securityControls/definitions" }),
@@ -26189,11 +22131,11 @@ function __c146(j: number): any {
         identifier: "ListSecurityControlDefinitionsRequest",
       });
     case 4:
-      return S.Array(SecurityControlDefinition);
+      return S.Array(__S(1112));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          SecurityControlDefinitions: S.optional(SecurityControlDefinitions),
+          SecurityControlDefinitions: S.optional(__S(1172)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -26217,8 +22159,8 @@ function __c146(j: number): any {
           StandardsArn: S.optional(S.String),
           SecurityControlId: S.optional(S.String),
           SecurityControlArn: S.optional(S.String),
-          AssociationStatus: S.optional(AssociationStatus),
-          RelatedRequirements: S.optional(RelatedRequirementsList),
+          AssociationStatus: S.optional(S.String),
+          RelatedRequirements: S.optional(__S(4)),
           UpdatedAt: S.optional(T.DateFromString.pipe(T.TimestampFormat("date-time"))),
           UpdatedReason: S.optional(S.String),
           StandardsControlTitle: S.optional(S.String),
@@ -26232,11 +22174,11 @@ function __c146(j: number): any {
 function __c147(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(StandardsControlAssociationSummary);
+      return S.Array(__S(1175));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          StandardsControlAssociationSummaries: S.optional(StandardsControlAssociationSummaries),
+          StandardsControlAssociationSummaries: S.optional(__S(1176)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -26258,7 +22200,7 @@ function __c147(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 3:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagMap) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(31)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 4:
@@ -26286,7 +22228,7 @@ function __c147(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ConfigurationPolicyIdentifier: S.optional(S.String),
-          Target: S.optional(Target),
+          Target: S.optional(__S(41)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/configurationPolicyAssociation/associate" }),
@@ -26303,7 +22245,7 @@ function __c147(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Target: S.optional(Target),
+          Target: S.optional(__S(41)),
           ConfigurationPolicyIdentifier: S.optional(S.String),
         }).pipe(
           T.all(
@@ -26326,7 +22268,7 @@ function __c148(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: S.optional(TagMap),
+          Tags: S.optional(__S(31)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
@@ -26342,7 +22284,7 @@ function __c148(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: S.optional(TagKeyList).pipe(T.HttpQuery("tagKeys")),
+          TagKeys: S.optional(__S(4)).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -26378,7 +22320,7 @@ function __c148(j: number): any {
         S.Struct({
           AggregatorV2Arn: S.String.pipe(T.HttpLabel("AggregatorV2Arn")),
           RegionLinkingMode: S.optional(S.String),
-          LinkedRegions: S.optional(StringList),
+          LinkedRegions: S.optional(__S(4)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/aggregatorv2/update/{AggregatorV2Arn+}" }),
@@ -26396,12 +22338,12 @@ function __c148(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          RuleStatus: S.optional(RuleStatusV2),
+          RuleStatus: S.optional(S.String),
           RuleOrder: S.optional(S.Number),
           Description: S.optional(S.String),
           RuleName: S.optional(S.String),
-          Criteria: S.optional(Criteria),
-          Actions: S.optional(AutomationRulesActionListV2),
+          Criteria: S.optional(__S(864)),
+          Actions: S.optional(__S(868)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/automationrulesv2/{Identifier}" }),
@@ -26422,7 +22364,7 @@ function __c148(j: number): any {
           Name: S.optional(S.String),
           Description: S.optional(S.String),
           UpdatedReason: S.optional(S.String),
-          ConfigurationPolicy: S.optional(Policy),
+          ConfigurationPolicy: S.optional(__S(875)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/configurationPolicy/{Identifier}" }),
@@ -26439,12 +22381,12 @@ function __c148(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ScopeConfiguration: S.optional(AzureScopeConfiguration),
-          AzureRegions: S.optional(AzureRegionList),
+          ScopeConfiguration: S.optional(__S(878)),
+          AzureRegions: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "AzureUpdateConfiguration" });
     case 7:
-      return S.Union([/*@__PURE__*/ S.Struct({ Azure: AzureUpdateConfiguration })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ Azure: __S(1190) })]);
   }
 }
 function __c149(j: number): any {
@@ -26454,7 +22396,7 @@ function __c149(j: number): any {
         S.Struct({
           ConnectorId: S.String.pipe(T.HttpLabel("ConnectorId")),
           Description: S.optional(S.String),
-          Provider: S.optional(CspmProviderUpdateConfiguration),
+          Provider: S.optional(__S(1191)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/connectors/{ConnectorId+}" }),
@@ -26469,8 +22411,8 @@ function __c149(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          ConnectorStatus: S.optional(CspmConnectorStatus),
-          EnablementStatus: S.optional(CspmEnablementStatus),
+          ConnectorStatus: S.optional(S.String),
+          EnablementStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateConnectorResponse" });
     case 2:
@@ -26479,16 +22421,16 @@ function __c149(j: number): any {
       });
     case 3:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ JiraCloud: JiraCloudUpdateConfiguration }),
-        /*@__PURE__*/ S.Struct({ ServiceNow: ServiceNowUpdateConfiguration }),
-        /*@__PURE__*/ S.Struct({ Azure: AzureUpdateConfiguration }),
+        /*@__PURE__*/ S.Struct({ JiraCloud: __S(883) }),
+        /*@__PURE__*/ S.Struct({ ServiceNow: __S(1194) }),
+        /*@__PURE__*/ S.Struct({ Azure: __S(1190) }),
       ]);
     case 4:
       return S.suspend(() =>
         S.Struct({
           ConnectorId: S.String.pipe(T.HttpLabel("ConnectorId")),
           Description: S.optional(S.String),
-          Provider: S.optional(ProviderUpdateConfiguration),
+          Provider: S.optional(__S(1195)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/connectorsv2/{ConnectorId+}" }),
@@ -26503,8 +22445,8 @@ function __c149(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          ConnectorStatus: S.optional(ConnectorStatus),
-          EnablementStatus: S.optional(EnablementStatus),
+          ConnectorStatus: S.optional(S.String),
+          EnablementStatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateConnectorV2Response",
@@ -26514,7 +22456,7 @@ function __c149(j: number): any {
         S.Struct({
           FindingAggregatorArn: S.optional(S.String),
           RegionLinkingMode: S.optional(S.String),
-          Regions: S.optional(StringList),
+          Regions: S.optional(__S(4)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/findingAggregator/update" }),
@@ -26531,9 +22473,9 @@ function __c149(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          Filters: S.optional(AwsSecurityFindingFilters),
-          Note: S.optional(NoteUpdate),
-          RecordState: S.optional(RecordState),
+          Filters: S.optional(__S(894)),
+          Note: S.optional(__S(29)),
+          RecordState: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "PATCH", uri: "/findings" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UpdateFindingsRequest" });
   }
@@ -26545,7 +22487,7 @@ function __c150(j: number): any {
         S.Struct({
           InsightArn: S.String.pipe(T.HttpLabel("InsightArn")),
           Name: S.optional(S.String),
-          Filters: S.optional(AwsSecurityFindingFilters),
+          Filters: S.optional(__S(894)),
           GroupByAttribute: S.optional(S.String),
         }).pipe(
           T.all(
@@ -26562,8 +22504,8 @@ function __c150(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AutoEnable: S.optional(S.Boolean),
-          AutoEnableStandards: S.optional(AutoEnableStandards),
-          OrganizationConfiguration: S.optional(OrganizationConfiguration),
+          AutoEnableStandards: S.optional(S.String),
+          OrganizationConfiguration: S.optional(__S(927)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/organization/configuration" }),
@@ -26581,7 +22523,7 @@ function __c150(j: number): any {
       return S.suspend(() =>
         S.Struct({
           SecurityControlId: S.optional(S.String),
-          Parameters: S.optional(Parameters),
+          Parameters: S.optional(__S(54)),
           LastUpdateReason: S.optional(S.String),
         }).pipe(
           T.all(
@@ -26600,7 +22542,7 @@ function __c150(j: number): any {
       return S.suspend(() =>
         S.Struct({
           AutoEnableControls: S.optional(S.Boolean),
-          ControlFindingGenerator: S.optional(ControlFindingGenerator),
+          ControlFindingGenerator: S.optional(S.String),
         }).pipe(T.all(T.Http({ method: "PATCH", uri: "/accounts" }), svc, auth, proto, ver, rules)),
       ).annotate({
         identifier: "UpdateSecurityHubConfigurationRequest",
@@ -26609,7 +22551,7 @@ function __c150(j: number): any {
       return S.suspend(() =>
         S.Struct({
           StandardsControlArn: S.String.pipe(T.HttpLabel("StandardsControlArn")),
-          ControlStatus: S.optional(ControlStatus),
+          ControlStatus: S.optional(S.String),
           DisabledReason: S.optional(S.String),
         }).pipe(
           T.all(
@@ -26624,5 +22566,316 @@ function __c150(j: number): any {
       ).annotate({
         identifier: "UpdateStandardsControlRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
+    case 41:
+      return __c41(i & 7);
+    case 42:
+      return __c42(i & 7);
+    case 43:
+      return __c43(i & 7);
+    case 44:
+      return __c44(i & 7);
+    case 45:
+      return __c45(i & 7);
+    case 46:
+      return __c46(i & 7);
+    case 47:
+      return __c47(i & 7);
+    case 48:
+      return __c48(i & 7);
+    case 49:
+      return __c49(i & 7);
+    case 50:
+      return __c50(i & 7);
+    case 51:
+      return __c51(i & 7);
+    case 52:
+      return __c52(i & 7);
+    case 53:
+      return __c53(i & 7);
+    case 54:
+      return __c54(i & 7);
+    case 55:
+      return __c55(i & 7);
+    case 56:
+      return __c56(i & 7);
+    case 57:
+      return __c57(i & 7);
+    case 58:
+      return __c58(i & 7);
+    case 59:
+      return __c59(i & 7);
+    case 60:
+      return __c60(i & 7);
+    case 61:
+      return __c61(i & 7);
+    case 62:
+      return __c62(i & 7);
+    case 63:
+      return __c63(i & 7);
+    case 64:
+      return __c64(i & 7);
+    case 65:
+      return __c65(i & 7);
+    case 66:
+      return __c66(i & 7);
+    case 67:
+      return __c67(i & 7);
+    case 68:
+      return __c68(i & 7);
+    case 69:
+      return __c69(i & 7);
+    case 70:
+      return __c70(i & 7);
+    case 71:
+      return __c71(i & 7);
+    case 72:
+      return __c72(i & 7);
+    case 73:
+      return __c73(i & 7);
+    case 74:
+      return __c74(i & 7);
+    case 75:
+      return __c75(i & 7);
+    case 76:
+      return __c76(i & 7);
+    case 77:
+      return __c77(i & 7);
+    case 78:
+      return __c78(i & 7);
+    case 79:
+      return __c79(i & 7);
+    case 80:
+      return __c80(i & 7);
+    case 81:
+      return __c81(i & 7);
+    case 82:
+      return __c82(i & 7);
+    case 83:
+      return __c83(i & 7);
+    case 84:
+      return __c84(i & 7);
+    case 85:
+      return __c85(i & 7);
+    case 86:
+      return __c86(i & 7);
+    case 87:
+      return __c87(i & 7);
+    case 88:
+      return __c88(i & 7);
+    case 89:
+      return __c89(i & 7);
+    case 90:
+      return __c90(i & 7);
+    case 91:
+      return __c91(i & 7);
+    case 92:
+      return __c92(i & 7);
+    case 93:
+      return __c93(i & 7);
+    case 94:
+      return __c94(i & 7);
+    case 95:
+      return __c95(i & 7);
+    case 96:
+      return __c96(i & 7);
+    case 97:
+      return __c97(i & 7);
+    case 98:
+      return __c98(i & 7);
+    case 99:
+      return __c99(i & 7);
+    case 100:
+      return __c100(i & 7);
+    case 101:
+      return __c101(i & 7);
+    case 102:
+      return __c102(i & 7);
+    case 103:
+      return __c103(i & 7);
+    case 104:
+      return __c104(i & 7);
+    case 105:
+      return __c105(i & 7);
+    case 106:
+      return __c106(i & 7);
+    case 107:
+      return __c107(i & 7);
+    case 108:
+      return __c108(i & 7);
+    case 109:
+      return __c109(i & 7);
+    case 110:
+      return __c110(i & 7);
+    case 111:
+      return __c111(i & 7);
+    case 112:
+      return __c112(i & 7);
+    case 113:
+      return __c113(i & 7);
+    case 114:
+      return __c114(i & 7);
+    case 115:
+      return __c115(i & 7);
+    case 116:
+      return __c116(i & 7);
+    case 117:
+      return __c117(i & 7);
+    case 118:
+      return __c118(i & 7);
+    case 119:
+      return __c119(i & 7);
+    case 120:
+      return __c120(i & 7);
+    case 121:
+      return __c121(i & 7);
+    case 122:
+      return __c122(i & 7);
+    case 123:
+      return __c123(i & 7);
+    case 124:
+      return __c124(i & 7);
+    case 125:
+      return __c125(i & 7);
+    case 126:
+      return __c126(i & 7);
+    case 127:
+      return __c127(i & 7);
+    case 128:
+      return __c128(i & 7);
+    case 129:
+      return __c129(i & 7);
+    case 130:
+      return __c130(i & 7);
+    case 131:
+      return __c131(i & 7);
+    case 132:
+      return __c132(i & 7);
+    case 133:
+      return __c133(i & 7);
+    case 134:
+      return __c134(i & 7);
+    case 135:
+      return __c135(i & 7);
+    case 136:
+      return __c136(i & 7);
+    case 137:
+      return __c137(i & 7);
+    case 138:
+      return __c138(i & 7);
+    case 139:
+      return __c139(i & 7);
+    case 140:
+      return __c140(i & 7);
+    case 141:
+      return __c141(i & 7);
+    case 142:
+      return __c142(i & 7);
+    case 143:
+      return __c143(i & 7);
+    case 144:
+      return __c144(i & 7);
+    case 145:
+      return __c145(i & 7);
+    case 146:
+      return __c146(i & 7);
+    case 147:
+      return __c147(i & 7);
+    case 148:
+      return __c148(i & 7);
+    case 149:
+      return __c149(i & 7);
+    case 150:
+      return __c150(i & 7);
   }
 }

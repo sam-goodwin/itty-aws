@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -181,58 +183,19 @@ export class IndicatorFeedsNotEntitled
   ) {}
 
 export type AttackSurfaceReportIssuesClassRequestIssueClassList = Array<string>;
-const AttackSurfaceReportIssuesClassRequestIssueClassList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AttackSurfaceReportIssuesClassRequestIssueClassList>;
-
 export type AttackSurfaceReportIssuesClassRequestIssueClassNeqList = Array<string>;
-const AttackSurfaceReportIssuesClassRequestIssueClassNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesClassRequestIssueClassNeqList>;
-
 export type AttackSurfaceReportIssuesClassRequestIssueTypeList = Array<string>;
-const AttackSurfaceReportIssuesClassRequestIssueTypeList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesClassRequestIssueTypeList>;
-
 export type AttackSurfaceReportIssuesClassRequestIssueTypeNeqList = Array<string>;
-const AttackSurfaceReportIssuesClassRequestIssueTypeNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesClassRequestIssueTypeNeqList>;
-
 export type AttackSurfaceReportIssuesClassRequestProductList = Array<string>;
-const AttackSurfaceReportIssuesClassRequestProductList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesClassRequestProductList>;
-
 export type AttackSurfaceReportIssuesClassRequestProductNeqList = Array<string>;
-const AttackSurfaceReportIssuesClassRequestProductNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesClassRequestProductNeqList>;
-
 export type AttackSurfaceReportIssuesClassRequestSeverityList = Array<string>;
-const AttackSurfaceReportIssuesClassRequestSeverityList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesClassRequestSeverityList>;
-
 export type AttackSurfaceReportIssuesClassRequestSeverityNeqList = Array<string>;
-const AttackSurfaceReportIssuesClassRequestSeverityNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesClassRequestSeverityNeqList>;
-
 export type AttackSurfaceReportIssuesClassRequestSource = "cloudflare" | "riskrecon";
-const AttackSurfaceReportIssuesClassRequestSource = S.String;
-
 export type AttackSurfaceReportIssuesClassRequestSourceList = Array<
   AttackSurfaceReportIssuesClassRequestSource | (string & {})
 >;
-const AttackSurfaceReportIssuesClassRequestSourceList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AttackSurfaceReportIssuesClassRequestSourceList>;
-
 export type AttackSurfaceReportIssuesClassRequestSubjectList = Array<string>;
-const AttackSurfaceReportIssuesClassRequestSubjectList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesClassRequestSubjectList>;
-
 export type AttackSurfaceReportIssuesClassRequestSubjectNeqList = Array<string>;
-const AttackSurfaceReportIssuesClassRequestSubjectNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesClassRequestSubjectNeqList>;
-
 export interface ClassAttackSurfaceReportIssueRequest {
   /** Identifier. */
   accountId: string;
@@ -249,33 +212,13 @@ export interface ClassAttackSurfaceReportIssueRequest {
   subject?: AttackSurfaceReportIssuesClassRequestSubjectList;
   subjectNeq?: AttackSurfaceReportIssuesClassRequestSubjectNeqList;
 }
-const ClassAttackSurfaceReportIssueRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ClassAttackSurfaceReportIssueRequest>;
-
 export interface AttackSurfaceReportIssuesClassResultItem {
   count?: number | null;
   value?: string | null;
 }
-const AttackSurfaceReportIssuesClassResultItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AttackSurfaceReportIssuesClassResultItem>;
-
 export type AttackSurfaceReportIssuesClassResultList =
   Array<AttackSurfaceReportIssuesClassResultItem>;
-const AttackSurfaceReportIssuesClassResultList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AttackSurfaceReportIssuesClassResultList>;
-
 export type ClassAttackSurfaceReportIssueResponse = AttackSurfaceReportIssuesClassResultList;
-const ClassAttackSurfaceReportIssueResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ClassAttackSurfaceReportIssueResponse>;
-
 export interface CreateIndicatorFeedRequest {
   /** Identifier */
   accountId: string;
@@ -284,11 +227,6 @@ export interface CreateIndicatorFeedRequest {
   /** The name of the indicator feed */
   name?: string;
 }
-const CreateIndicatorFeedRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateIndicatorFeedRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateIndicatorFeedResponse {
   /** The unique identifier for the indicator feed */
@@ -308,11 +246,6 @@ export interface CreateIndicatorFeedResponse {
   /** The name of the indicator feed */
   name?: string | null;
 }
-const CreateIndicatorFeedResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateIndicatorFeedResponse>;
-
 export interface CreateIndicatorFeedPermissionRequest {
   /** Identifier */
   accountId: string;
@@ -321,42 +254,16 @@ export interface CreateIndicatorFeedPermissionRequest {
   /** The ID of the feed to add/remove permissions on */
   feedId?: number;
 }
-const CreateIndicatorFeedPermissionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateIndicatorFeedPermissionRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateIndicatorFeedPermissionResponse {
   /** Whether the update succeeded or not */
   success?: boolean | null;
 }
-const CreateIndicatorFeedPermissionResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateIndicatorFeedPermissionResponse>;
-
 export type MiscategorizationsCreateRequestContentAddsList = Array<number>;
-const MiscategorizationsCreateRequestContentAddsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<MiscategorizationsCreateRequestContentAddsList>;
-
 export type MiscategorizationsCreateRequestContentRemovesList = Array<number>;
-const MiscategorizationsCreateRequestContentRemovesList =
-  MiscategorizationsCreateRequestContentAddsList as any as S.Schema<MiscategorizationsCreateRequestContentRemovesList>;
-
 export type MiscategorizationsCreateRequestIndicatorType = "domain" | "ipv4" | "ipv6" | "url";
-const MiscategorizationsCreateRequestIndicatorType = S.String;
-
 export type MiscategorizationsCreateRequestSecurityAddsList = Array<number>;
-const MiscategorizationsCreateRequestSecurityAddsList =
-  MiscategorizationsCreateRequestContentAddsList as any as S.Schema<MiscategorizationsCreateRequestSecurityAddsList>;
-
 export type MiscategorizationsCreateRequestSecurityRemovesList = Array<number>;
-const MiscategorizationsCreateRequestSecurityRemovesList =
-  MiscategorizationsCreateRequestContentAddsList as any as S.Schema<MiscategorizationsCreateRequestSecurityRemovesList>;
-
 export interface CreateMiscategorizationRequest {
   /** Identifier. */
   accountId: string;
@@ -374,17 +281,7 @@ export interface CreateMiscategorizationRequest {
   /** Provide only if indicator_type is `domain` or `url`. Example if indicator_type is `domain`: `example.com`. Example if indicator_type is `url`: `https://example.com/news/`. */
   url?: string;
 }
-const CreateMiscategorizationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateMiscategorizationRequest>;
-
 export interface CreateMiscategorizationResponse {}
-const CreateMiscategorizationResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateMiscategorizationResponse>;
-
 export interface CreateSinkholeRequest {
   /** An identifier for the resource. */
   accountId: string;
@@ -397,11 +294,6 @@ export interface CreateSinkholeRequest {
   /** The secret key for the R2 API token. Required if you want to store large request bodies in R2. */
   r2Secret?: string;
 }
-const CreateSinkholeRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateSinkholeRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSinkholeResponse {
   /** The unique identifier for the sinkhole. */
@@ -419,11 +311,6 @@ export interface CreateSinkholeResponse {
   /** The id of the R2 instance. */
   r2Id?: string | null;
 }
-const CreateSinkholeResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateSinkholeResponse>;
-
 export interface CreateSinkholesIngressRequest {
   /** An identifier for the resource. */
   zoneId: string;
@@ -431,11 +318,6 @@ export interface CreateSinkholesIngressRequest {
   /** The CIDR block for the ingress rule in IPv4 or IPv6 notation (e.g., 192.0.2.0/24). Provide a Cloudflare BYOIP CIDR that your account owns. */
   cidr: string;
 }
-const CreateSinkholesIngressRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateSinkholesIngressRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateSinkholesIngressResponse {
   /** The unique identifier for the ingress rule. */
@@ -451,26 +333,13 @@ export interface CreateSinkholesIngressResponse {
   /** The zone tag associated with this ingress rule. */
   zoneTag?: string | null;
 }
-const CreateSinkholesIngressResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateSinkholesIngressResponse>;
-
 export interface DataIndicatorFeedRequest {
   /** Identifier */
   accountId: string;
   /** Indicator feed ID */
   feedId: number;
 }
-const DataIndicatorFeedRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<DataIndicatorFeedRequest>;
-
 export interface DataIndicatorFeedResponse {}
-const DataIndicatorFeedResponse =
-  CreateMiscategorizationResponse as any as S.Schema<DataIndicatorFeedResponse>;
-
 export interface DeleteIndicatorFeedPermissionRequest {
   /** Identifier */
   accountId: string;
@@ -479,88 +348,43 @@ export interface DeleteIndicatorFeedPermissionRequest {
   /** The ID of the feed to add/remove permissions on */
   feedId?: number;
 }
-const DeleteIndicatorFeedPermissionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<DeleteIndicatorFeedPermissionRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteIndicatorFeedPermissionResponse {
   /** Whether the update succeeded or not */
   success?: boolean | null;
 }
-const DeleteIndicatorFeedPermissionResponse =
-  CreateIndicatorFeedPermissionResponse as any as S.Schema<DeleteIndicatorFeedPermissionResponse>;
-
 export interface DeleteSinkholeRequest {
   /** An identifier for the resource. */
   accountId: string;
   sinkholeId: string;
 }
-const DeleteSinkholeRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<DeleteSinkholeRequest>;
-
 export type DeleteSinkholeResponse = unknown;
-const DeleteSinkholeResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteSinkholeResponse>;
-
 export interface DeleteSinkholesIngressRequest {
   /** An identifier for the resource. */
   zoneId: string;
   sinkholeId: string;
   ingressId: string;
 }
-const DeleteSinkholesIngressRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteSinkholesIngressRequest>;
-
 export type DeleteSinkholesIngressResponse = unknown;
-const DeleteSinkholesIngressResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteSinkholesIngressResponse>;
-
 export interface DismissAttackSurfaceReportIssueRequest {
   /** Identifier. */
   accountId: string;
   issueId: string;
   dismiss?: boolean;
 }
-const DismissAttackSurfaceReportIssueRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DismissAttackSurfaceReportIssueRequest>;
-
 export interface DismissAttackSurfaceReportIssueResponse {}
-const DismissAttackSurfaceReportIssueResponse =
-  CreateMiscategorizationResponse as any as S.Schema<DismissAttackSurfaceReportIssueResponse>;
-
 export interface GetAsnRequest {
   /** Identifier. */
   accountId: string;
   asn: string;
 }
-const GetAsnRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetAsnRequest>;
-
 export type GetAsnResponse = unknown;
-const GetAsnResponse = DeleteSinkholeResponse as any as S.Schema<GetAsnResponse>;
-
 export interface GetAsnSubnetRequest {
   /** Identifier. */
   accountId: string;
   asn: string;
 }
-const GetAsnSubnetRequest = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GetAsnSubnetRequest>;
-
 export type AsnSubnetsGetResponseSubnetsList = Array<string>;
-const AsnSubnetsGetResponseSubnetsList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AsnSubnetsGetResponseSubnetsList>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface GetAsnSubnetResponse {
   asn?: unknown | null;
@@ -573,32 +397,17 @@ export interface GetAsnSubnetResponse {
   perPage?: number | null;
   subnets?: AsnSubnetsGetResponseSubnetsList | null;
 }
-const GetAsnSubnetResponse = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<GetAsnSubnetResponse>;
-
 export interface GetAttackSurfaceReportIssueTypeRequest {
   /** Identifier. */
   accountId: string;
 }
-const GetAttackSurfaceReportIssueTypeRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetAttackSurfaceReportIssueTypeRequest>;
-
 export type AttackSurfaceReportIssueTypesGetResultList = Array<string>;
-const AttackSurfaceReportIssueTypesGetResultList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssueTypesGetResultList>;
-
 export interface GetAttackSurfaceReportIssueTypeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: AttackSurfaceReportIssueTypesGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const GetAttackSurfaceReportIssueTypeResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetAttackSurfaceReportIssueTypeResponse>;
-
 export interface GetDomainRequest {
   /** Identifier. */
   accountId: string;
@@ -608,78 +417,37 @@ export interface GetDomainRequest {
   /** Skip the domain ranking lookup for faster responses. Defaults to `false` (ranking is included). Set to `true` to opt out -- primarily used by callers like Cloudflare Radar that need to avoid a circular dependency when building the domain details page. Note: the bulk endpoint (`/intel/domain/bulk`) uses opposite defaults -- see `include_ranking` there. */
   skipRanking?: boolean;
 }
-const GetDomainRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<GetDomainRequest>;
-
 export interface DomainsGetResponseAdditionalInformation {
   /** Suspected DGA malware family. */
   suspectedMalwareFamily?: string | null;
 }
-const DomainsGetResponseAdditionalInformation = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DomainsGetResponseAdditionalInformation>;
-
 export interface DomainsGetResponseApplication {
   id?: number | null;
   name?: string | null;
 }
-const DomainsGetResponseApplication = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DomainsGetResponseApplication>;
-
 export interface DomainsGetResponseContentCategoriesItem {
   id?: number | null;
   name?: string | null;
   superCategoryId?: number | null;
 }
-const DomainsGetResponseContentCategoriesItem = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DomainsGetResponseContentCategoriesItem>;
-
 export type DomainsGetResponseContentCategoriesList =
   Array<DomainsGetResponseContentCategoriesItem>;
-const DomainsGetResponseContentCategoriesList = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DomainsGetResponseContentCategoriesList>;
-
 export type DomainsGetResponseInheritedContentCategoriesItem =
   DomainsGetResponseContentCategoriesItem;
 export type DomainsGetResponseInheritedContentCategoriesList =
   Array<DomainsGetResponseContentCategoriesItem>;
-const DomainsGetResponseInheritedContentCategoriesList =
-  DomainsGetResponseContentCategoriesList as any as S.Schema<DomainsGetResponseInheritedContentCategoriesList>;
-
 export type DomainsGetResponseInheritedRiskTypesItem = DomainsGetResponseContentCategoriesItem;
 export type DomainsGetResponseInheritedRiskTypesList =
   Array<DomainsGetResponseContentCategoriesItem>;
-const DomainsGetResponseInheritedRiskTypesList =
-  DomainsGetResponseContentCategoriesList as any as S.Schema<DomainsGetResponseInheritedRiskTypesList>;
-
 export interface DomainsGetResponseResolvesToRefsItem {
   /** STIX 2.1 identifier: https://docs.oasis-open.org/cti/stix/v2.1/cs02/stix-v2.1-cs02.html#_64yvzeku5a5c. */
   id?: string | null;
   /** IP address or domain name. */
   value?: string | null;
 }
-const DomainsGetResponseResolvesToRefsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DomainsGetResponseResolvesToRefsItem>;
-
 export type DomainsGetResponseResolvesToRefsList = Array<DomainsGetResponseResolvesToRefsItem>;
-const DomainsGetResponseResolvesToRefsList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DomainsGetResponseResolvesToRefsList>;
-
 export type DomainsGetResponseRiskTypesItem = DomainsGetResponseContentCategoriesItem;
 export type DomainsGetResponseRiskTypesList = Array<DomainsGetResponseContentCategoriesItem>;
-const DomainsGetResponseRiskTypesList =
-  DomainsGetResponseContentCategoriesList as any as S.Schema<DomainsGetResponseRiskTypesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDomainResponse {
   /** Additional information related to the host name. */
@@ -700,12 +468,7 @@ export interface GetDomainResponse {
   riskScore?: number | null;
   riskTypes?: DomainsGetResponseRiskTypesList | null;
 }
-const GetDomainResponse = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<GetDomainResponse>;
-
 export type DomainsBulksGetRequestDomainList = Array<string>;
-const DomainsBulksGetRequestDomainList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<DomainsBulksGetRequestDomainList>;
-
 export interface GetDomainBulkRequest {
   /** Identifier. */
   accountId: string;
@@ -716,8 +479,6 @@ export interface GetDomainBulkRequest {
   /** **Deprecated.** Previously controlled whether the ranking lookup was skipped (defaulted to `false`, meaning ranking ran). The endpoint's default behavior is being flipped -- ranking is now opt-in via `include_ranking=true` -- and this parameter will be silently ignored. Remove it from your callers and use `include_ranking` instead. */
   skipRanking?: boolean;
 }
-const GetDomainBulkRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<GetDomainBulkRequest>;
-
 export type DomainsBulksGetResultItemAdditionalInformation =
   DomainsGetResponseAdditionalInformation;
 export type DomainsBulksGetResultItemApplication = DomainsGetResponseApplication;
@@ -725,28 +486,16 @@ export type DomainsBulksGetResultItemContentCategoriesItem =
   DomainsGetResponseContentCategoriesItem;
 export type DomainsBulksGetResultItemContentCategoriesList =
   Array<DomainsGetResponseContentCategoriesItem>;
-const DomainsBulksGetResultItemContentCategoriesList =
-  DomainsGetResponseContentCategoriesList as any as S.Schema<DomainsBulksGetResultItemContentCategoriesList>;
-
 export type DomainsBulksGetResultItemInheritedContentCategoriesItem =
   DomainsGetResponseContentCategoriesItem;
 export type DomainsBulksGetResultItemInheritedContentCategoriesList =
   Array<DomainsGetResponseContentCategoriesItem>;
-const DomainsBulksGetResultItemInheritedContentCategoriesList =
-  DomainsGetResponseContentCategoriesList as any as S.Schema<DomainsBulksGetResultItemInheritedContentCategoriesList>;
-
 export type DomainsBulksGetResultItemInheritedRiskTypesItem =
   DomainsGetResponseContentCategoriesItem;
 export type DomainsBulksGetResultItemInheritedRiskTypesList =
   Array<DomainsGetResponseContentCategoriesItem>;
-const DomainsBulksGetResultItemInheritedRiskTypesList =
-  DomainsGetResponseContentCategoriesList as any as S.Schema<DomainsBulksGetResultItemInheritedRiskTypesList>;
-
 export type DomainsBulksGetResultItemRiskTypesItem = DomainsGetResponseContentCategoriesItem;
 export type DomainsBulksGetResultItemRiskTypesList = Array<DomainsGetResponseContentCategoriesItem>;
-const DomainsBulksGetResultItemRiskTypesList =
-  DomainsGetResponseContentCategoriesList as any as S.Schema<DomainsBulksGetResultItemRiskTypesList>;
-
 export interface DomainsBulksGetResultItem {
   /** Additional information related to the host name. */
   additionalInformation?: DomainsGetResponseAdditionalInformation | null;
@@ -764,91 +513,36 @@ export interface DomainsBulksGetResultItem {
   riskScore?: number | null;
   riskTypes?: DomainsBulksGetResultItemRiskTypesList | null;
 }
-const DomainsBulksGetResultItem = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DomainsBulksGetResultItem>;
-
 export type DomainsBulksGetResultList = Array<DomainsBulksGetResultItem>;
-const DomainsBulksGetResultList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DomainsBulksGetResultList>;
-
 export type GetDomainBulkResponse = DomainsBulksGetResultList;
-const GetDomainBulkResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GetDomainBulkResponse>;
-
 export interface GetDomainHistoryRequest {
   /** Identifier. */
   accountId: string;
   domain?: string;
 }
-const GetDomainHistoryRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<GetDomainHistoryRequest>;
-
 export type DomainHistoryGetResultItemCategorizationsItemCategoriesItem =
   DomainsGetResponseApplication;
 export type DomainHistoryGetResultItemCategorizationsItemCategoriesList =
   Array<DomainsGetResponseApplication>;
-const DomainHistoryGetResultItemCategorizationsItemCategoriesList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DomainHistoryGetResultItemCategorizationsItemCategoriesList>;
-
 export interface DomainHistoryGetResultItemCategorizationsItem {
   categories?: DomainHistoryGetResultItemCategorizationsItemCategoriesList | null;
   end?: string | null;
   start?: string | null;
 }
-const DomainHistoryGetResultItemCategorizationsItem = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DomainHistoryGetResultItemCategorizationsItem>;
-
 export type DomainHistoryGetResultItemCategorizationsList =
   Array<DomainHistoryGetResultItemCategorizationsItem>;
-const DomainHistoryGetResultItemCategorizationsList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DomainHistoryGetResultItemCategorizationsList>;
-
 export interface DomainHistoryGetResultItem {
   categorizations?: DomainHistoryGetResultItemCategorizationsList | null;
   domain?: string | null;
 }
-const DomainHistoryGetResultItem = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<DomainHistoryGetResultItem>;
-
 export type DomainHistoryGetResultList = Array<DomainHistoryGetResultItem>;
-const DomainHistoryGetResultList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<DomainHistoryGetResultList>;
-
 export type GetDomainHistoryResponse = DomainHistoryGetResultList;
-const GetDomainHistoryResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<GetDomainHistoryResponse>;
-
 export interface GetIndicatorFeedRequest {
   /** Identifier */
   accountId: string;
   /** Indicator feed ID */
   feedId: number;
 }
-const GetIndicatorFeedRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<GetIndicatorFeedRequest>;
-
 export interface IndicatorFeedsGetResponseLastUploadSummaryPersisted {
   domainsAdded?: number | null;
   domainsRemoved?: number | null;
@@ -857,11 +551,6 @@ export interface IndicatorFeedsGetResponseLastUploadSummaryPersisted {
   urlsAdded?: number | null;
   urlsRemoved?: number | null;
 }
-const IndicatorFeedsGetResponseLastUploadSummaryPersisted = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<IndicatorFeedsGetResponseLastUploadSummaryPersisted>;
-
 export interface IndicatorFeedsGetResponseLastUploadSummarySkipped {
   /** Domains filtered by the global popularity allowlist at QS provisioning time. Popular domains (bing.com, naver.com, etc.) are protected from custom-threat-feed enforcement. */
   allowlistedDomains?: number | null;
@@ -870,11 +559,6 @@ export interface IndicatorFeedsGetResponseLastUploadSummarySkipped {
   /** Reserved for future use. Currently always 0 -- the unifier aborts the entire upload on a single bad indicator. */
   invalidIndicators?: number | null;
 }
-const IndicatorFeedsGetResponseLastUploadSummarySkipped = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<IndicatorFeedsGetResponseLastUploadSummarySkipped>;
-
 export interface IndicatorFeedsGetResponseLastUploadSummaryUploaded {
   /** Number of domain indicators in the upload */
   domains?: number | null;
@@ -883,11 +567,6 @@ export interface IndicatorFeedsGetResponseLastUploadSummaryUploaded {
   /** Number of URL indicators in the upload */
   urls?: number | null;
 }
-const IndicatorFeedsGetResponseLastUploadSummaryUploaded = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<IndicatorFeedsGetResponseLastUploadSummaryUploaded>;
-
 export interface IndicatorFeedsGetResponseLastUploadSummary {
   /** Net delta applied to feed indicators by this upload. Snapshot uploads emit both *_added and *_removed; delta-add emits only *_added; delta-remove emits only *_removed. */
   persisted?: IndicatorFeedsGetResponseLastUploadSummaryPersisted | null;
@@ -896,11 +575,6 @@ export interface IndicatorFeedsGetResponseLastUploadSummary {
   /** Indicator counts from the unified file the loader received */
   uploaded?: IndicatorFeedsGetResponseLastUploadSummaryUploaded | null;
 }
-const IndicatorFeedsGetResponseLastUploadSummary = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<IndicatorFeedsGetResponseLastUploadSummary>;
-
 export type IndicatorFeedsGetResponseLatestUploadStatus =
   | "Mirroring"
   | "Unifying"
@@ -908,8 +582,6 @@ export type IndicatorFeedsGetResponseLatestUploadStatus =
   | "Provisioning"
   | "Complete"
   | "Error";
-const IndicatorFeedsGetResponseLatestUploadStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetIndicatorFeedResponse {
   /** The unique identifier for the indicator feed */
@@ -939,22 +611,13 @@ export interface GetIndicatorFeedResponse {
   /** The provider of the indicator feed */
   providerName?: string | null;
 }
-const GetIndicatorFeedResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetIndicatorFeedResponse>;
-
 export interface GetIpRequest {
   /** Identifier. */
   accountId: string;
   ipv4?: string;
   ipv6?: string;
 }
-const GetIpRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<GetIpRequest>;
-
 export type IpsGetResultItemBelongsToRefType = "hosting_provider" | "isp" | "organization";
-const IpsGetResultItemBelongsToRefType = S.String;
-
 export interface IpsGetResultItemBelongsToRef {
   id?: string | null;
   country?: string | null;
@@ -963,37 +626,21 @@ export interface IpsGetResultItemBelongsToRef {
   type?: IpsGetResultItemBelongsToRefType | null;
   value?: string | null;
 }
-const IpsGetResultItemBelongsToRef = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<IpsGetResultItemBelongsToRef>;
-
 export type IpsGetResultItemRiskTypesItem = DomainsGetResponseContentCategoriesItem;
 export type IpsGetResultItemRiskTypesList = Array<DomainsGetResponseContentCategoriesItem>;
-const IpsGetResultItemRiskTypesList =
-  DomainsGetResponseContentCategoriesList as any as S.Schema<IpsGetResultItemRiskTypesList>;
-
 export interface IpsGetResultItem {
   /** Specifies a reference to the autonomous systems (AS) that the IP address belongs to. */
   belongsToRef?: IpsGetResultItemBelongsToRef | null;
   ip?: string | null;
   riskTypes?: IpsGetResultItemRiskTypesList | null;
 }
-const IpsGetResultItem = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<IpsGetResultItem>;
-
 export type IpsGetResultList = Array<IpsGetResultItem>;
-const IpsGetResultList = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<IpsGetResultList>;
-
 export type GetIpResponse = IpsGetResultList;
-const GetIpResponse = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<GetIpResponse>;
-
 export interface GetSinkholeRequest {
   /** An identifier for the resource. */
   accountId: string;
   sinkholeId: string;
 }
-const GetSinkholeRequest = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<GetSinkholeRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSinkholeResponse {
   /** The unique identifier for the sinkhole. */
@@ -1011,19 +658,12 @@ export interface GetSinkholeResponse {
   /** The id of the R2 instance. */
   r2Id?: string | null;
 }
-const GetSinkholeResponse = CreateSinkholeResponse as any as S.Schema<GetSinkholeResponse>;
-
 export interface GetSinkholesIngressRequest {
   /** An identifier for the resource. */
   zoneId: string;
   sinkholeId: string;
   ingressId: string;
 }
-const GetSinkholesIngressRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetSinkholesIngressRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSinkholesIngressResponse {
   /** The unique identifier for the ingress rule. */
@@ -1039,39 +679,21 @@ export interface GetSinkholesIngressResponse {
   /** The zone tag associated with this ingress rule. */
   zoneTag?: string | null;
 }
-const GetSinkholesIngressResponse =
-  CreateSinkholesIngressResponse as any as S.Schema<GetSinkholesIngressResponse>;
-
 export interface GetUrlRequest {
   /** Identifier. */
   accountId: string;
   /** The URL to look up. */
   url: string;
 }
-const GetUrlRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GetUrlRequest>;
-
 export interface GetUrlResponseContentCategoriesItem {
   id?: number | null;
   name?: string | null;
   sourceId?: number | null;
   superCategoryId?: number | null;
 }
-const GetUrlResponseContentCategoriesItem = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GetUrlResponseContentCategoriesItem>;
-
 export type GetUrlResponseContentCategoriesList = Array<GetUrlResponseContentCategoriesItem>;
-const GetUrlResponseContentCategoriesList = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GetUrlResponseContentCategoriesList>;
-
 export type GetUrlResponseRiskTypeItem = GetUrlResponseContentCategoriesItem;
 export type GetUrlResponseRiskTypeList = Array<GetUrlResponseContentCategoriesItem>;
-const GetUrlResponseRiskTypeList =
-  GetUrlResponseContentCategoriesList as any as S.Schema<GetUrlResponseRiskTypeList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetUrlResponse {
   /** Content categories associated with this URL. */
@@ -1085,23 +707,13 @@ export interface GetUrlResponse {
   /** The path component of the URL. */
   urlPath: string;
 }
-const GetUrlResponse = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<GetUrlResponse>;
-
 export interface GetWhoiRequest {
   /** Use to uniquely identify or reference the resource. */
   accountId: string;
   domain?: string;
 }
-const GetWhoiRequest = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<GetWhoiRequest>;
-
 export type WhoisGetResponseNameserversList = Array<string>;
-const WhoisGetResponseNameserversList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<WhoisGetResponseNameserversList>;
-
 export type WhoisGetResponseStatusList = Array<string>;
-const WhoisGetResponseStatusList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<WhoisGetResponseStatusList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetWhoiResponse {
   dnssec: boolean;
@@ -1192,55 +804,20 @@ export interface GetWhoiResponse {
   updatedDateRaw?: string | null;
   whoisServer?: string | null;
 }
-const GetWhoiResponse = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GetWhoiResponse>;
-
 export type AttackSurfaceReportIssuesListRequestIssueClassList = Array<string>;
-const AttackSurfaceReportIssuesListRequestIssueClassList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesListRequestIssueClassList>;
-
 export type AttackSurfaceReportIssuesListRequestIssueClassNeqList = Array<string>;
-const AttackSurfaceReportIssuesListRequestIssueClassNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesListRequestIssueClassNeqList>;
-
 export type AttackSurfaceReportIssuesListRequestIssueTypeList = Array<string>;
-const AttackSurfaceReportIssuesListRequestIssueTypeList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesListRequestIssueTypeList>;
-
 export type AttackSurfaceReportIssuesListRequestIssueTypeNeqList = Array<string>;
-const AttackSurfaceReportIssuesListRequestIssueTypeNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesListRequestIssueTypeNeqList>;
-
 export type AttackSurfaceReportIssuesListRequestProductList = Array<string>;
-const AttackSurfaceReportIssuesListRequestProductList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesListRequestProductList>;
-
 export type AttackSurfaceReportIssuesListRequestProductNeqList = Array<string>;
-const AttackSurfaceReportIssuesListRequestProductNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesListRequestProductNeqList>;
-
 export type AttackSurfaceReportIssuesListRequestSeverityList = Array<string>;
-const AttackSurfaceReportIssuesListRequestSeverityList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesListRequestSeverityList>;
-
 export type AttackSurfaceReportIssuesListRequestSeverityNeqList = Array<string>;
-const AttackSurfaceReportIssuesListRequestSeverityNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesListRequestSeverityNeqList>;
-
 export type AttackSurfaceReportIssuesListRequestSource = "cloudflare" | "riskrecon";
 export type AttackSurfaceReportIssuesListRequestSourceList = Array<
   AttackSurfaceReportIssuesListRequestSource | (string & {})
 >;
-const AttackSurfaceReportIssuesListRequestSourceList =
-  AttackSurfaceReportIssuesClassRequestSourceList as any as S.Schema<AttackSurfaceReportIssuesListRequestSourceList>;
-
 export type AttackSurfaceReportIssuesListRequestSubjectList = Array<string>;
-const AttackSurfaceReportIssuesListRequestSubjectList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesListRequestSubjectList>;
-
 export type AttackSurfaceReportIssuesListRequestSubjectNeqList = Array<string>;
-const AttackSurfaceReportIssuesListRequestSubjectNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesListRequestSubjectNeqList>;
-
 export interface ListAttackSurfaceReportIssuesRequest {
   /** Identifier. */
   accountId: string;
@@ -1261,11 +838,6 @@ export interface ListAttackSurfaceReportIssuesRequest {
   subject?: AttackSurfaceReportIssuesListRequestSubjectList;
   subjectNeq?: AttackSurfaceReportIssuesListRequestSubjectNeqList;
 }
-const ListAttackSurfaceReportIssuesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ListAttackSurfaceReportIssuesRequest>;
-
 export type AttackSurfaceReportIssuesListResponseIssuesItemIssueType =
   | "compliance_violation"
   | "email_security"
@@ -1273,33 +845,20 @@ export type AttackSurfaceReportIssuesListResponseIssuesItemIssueType =
   | "insecure_configuration"
   | "weak_authentication"
   | "configuration_suggestion";
-const AttackSurfaceReportIssuesListResponseIssuesItemIssueType = S.String;
-
 export interface AttackSurfaceReportIssuesListResponseIssuesItemPayload {
   /** Describes the method used to detect insight. */
   detectionMethod?: string | null;
   zoneTag?: string | null;
 }
-const AttackSurfaceReportIssuesListResponseIssuesItemPayload = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<AttackSurfaceReportIssuesListResponseIssuesItemPayload>;
-
 export type AttackSurfaceReportIssuesListResponseIssuesItemSeverity =
   | "Low"
   | "Moderate"
   | "Critical";
-const AttackSurfaceReportIssuesListResponseIssuesItemSeverity = S.String;
-
 export type AttackSurfaceReportIssuesListResponseIssuesItemStatus = "active" | "resolved";
-const AttackSurfaceReportIssuesListResponseIssuesItemStatus = S.String;
-
 export type AttackSurfaceReportIssuesListResponseIssuesItemUserClassification =
   | "false_positive"
   | "accept_risk"
   | "other";
-const AttackSurfaceReportIssuesListResponseIssuesItemUserClassification = S.String;
-
 export interface AttackSurfaceReportIssuesListResponseIssuesItem {
   id?: string | null;
   dismissed?: boolean | null;
@@ -1319,18 +878,8 @@ export interface AttackSurfaceReportIssuesListResponseIssuesItem {
   /** User-defined classification for the insight. Can be 'false_positive', 'accept_risk', 'other', or null. */
   userClassification?: AttackSurfaceReportIssuesListResponseIssuesItemUserClassification | null;
 }
-const AttackSurfaceReportIssuesListResponseIssuesItem = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<AttackSurfaceReportIssuesListResponseIssuesItem>;
-
 export type AttackSurfaceReportIssuesListResponseIssuesList =
   Array<AttackSurfaceReportIssuesListResponseIssuesItem>;
-const AttackSurfaceReportIssuesListResponseIssuesList = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<AttackSurfaceReportIssuesListResponseIssuesList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListAttackSurfaceReportIssuesResponse {
   /** Indicates the total number of results. */
@@ -1341,22 +890,12 @@ export interface ListAttackSurfaceReportIssuesResponse {
   /** Sets the number of results per page of results. */
   perPage?: number | null;
 }
-const ListAttackSurfaceReportIssuesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListAttackSurfaceReportIssuesResponse>;
-
 export interface DnsListRequestStartEndParams {
   /** Defaults to the current date. */
   end?: string;
   /** Defaults to 30 days before the end parameter value. */
   start?: string;
 }
-const DnsListRequestStartEndParams = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<DnsListRequestStartEndParams>;
-
 export interface ListDnsRequest {
   /** Identifier. */
   accountId: string;
@@ -1367,8 +906,6 @@ export interface ListDnsRequest {
   perPage?: number;
   startEndParams?: DnsListRequestStartEndParams;
 }
-const ListDnsRequest = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ListDnsRequest>;
-
 export interface DnsListResponseReverseRecordsItem {
   /** First seen date of the DNS record during the time period. */
   firstSeen?: string | null;
@@ -1377,17 +914,7 @@ export interface DnsListResponseReverseRecordsItem {
   /** Last seen date of the DNS record during the time period. */
   lastSeen?: string | null;
 }
-const DnsListResponseReverseRecordsItem = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<DnsListResponseReverseRecordsItem>;
-
 export type DnsListResponseReverseRecordsList = Array<DnsListResponseReverseRecordsItem>;
-const DnsListResponseReverseRecordsList = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<DnsListResponseReverseRecordsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface ListDnsResponse {
   /** Total results returned based on your search parameters. */
@@ -1399,17 +926,10 @@ export interface ListDnsResponse {
   /** Reverse DNS look-ups observed during the time period. */
   reverseRecords?: DnsListResponseReverseRecordsList | null;
 }
-const ListDnsResponse = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<ListDnsResponse>;
-
 export interface ListIndicatorFeedPermissionsRequest {
   /** Identifier */
   accountId: string;
 }
-const ListIndicatorFeedPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListIndicatorFeedPermissionsRequest>;
-
 export interface IndicatorFeedsPermissionsListResultItem {
   /** The unique identifier for the indicator feed */
   id?: number | null;
@@ -1424,33 +944,13 @@ export interface IndicatorFeedsPermissionsListResultItem {
   /** The name of the indicator feed */
   name?: string | null;
 }
-const IndicatorFeedsPermissionsListResultItem = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<IndicatorFeedsPermissionsListResultItem>;
-
 export type IndicatorFeedsPermissionsListResultList =
   Array<IndicatorFeedsPermissionsListResultItem>;
-const IndicatorFeedsPermissionsListResultList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<IndicatorFeedsPermissionsListResultList>;
-
 export type ListIndicatorFeedPermissionsResponse = IndicatorFeedsPermissionsListResultList;
-const ListIndicatorFeedPermissionsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<ListIndicatorFeedPermissionsResponse>;
-
 export interface ListIndicatorFeedsRequest {
   /** Identifier */
   accountId: string;
 }
-const ListIndicatorFeedsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ListIndicatorFeedsRequest>;
-
 export interface IndicatorFeedsListResultItem {
   /** The unique identifier for the indicator feed */
   id?: number | null;
@@ -1469,37 +969,17 @@ export interface IndicatorFeedsListResultItem {
   /** The name of the indicator feed */
   name?: string | null;
 }
-const IndicatorFeedsListResultItem = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<IndicatorFeedsListResultItem>;
-
 export type IndicatorFeedsListResultList = Array<IndicatorFeedsListResultItem>;
-const IndicatorFeedsListResultList = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<IndicatorFeedsListResultList>;
-
 export interface ListIndicatorFeedsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: IndicatorFeedsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListIndicatorFeedsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ListIndicatorFeedsResponse>;
-
 export interface ListSinkholesRequest {
   /** An identifier for the resource. */
   accountId: string;
 }
-const ListSinkholesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ListSinkholesRequest>;
-
 export interface SinkholesListResultItem {
   /** The unique identifier for the sinkhole. */
   id?: string | null;
@@ -1516,31 +996,14 @@ export interface SinkholesListResultItem {
   /** The id of the R2 instance. */
   r2Id?: string | null;
 }
-const SinkholesListResultItem = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<SinkholesListResultItem>;
-
 export type SinkholesListResultList = Array<SinkholesListResultItem>;
-const SinkholesListResultList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<SinkholesListResultList>;
-
 export interface ListSinkholesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: SinkholesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListSinkholesResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ListSinkholesResponse>;
-
 export type IndicatorFeedsSnapshotsUpdateRequestCfAsyncUpload = "1";
-const IndicatorFeedsSnapshotsUpdateRequestCfAsyncUpload = S.String;
-
 export interface PutIndicatorFeedSnapshotRequest {
   /** Identifier */
   accountId: string;
@@ -1550,11 +1013,6 @@ export interface PutIndicatorFeedSnapshotRequest {
   /** The file to upload. Either a plain STIX2/CRDF body or a gzipped one (recognised by 0x1f 0x8b magic bytes or a .gz filename suffix). */
   source?: string;
 }
-const PutIndicatorFeedSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<PutIndicatorFeedSnapshotRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutIndicatorFeedSnapshotResponse {
   /** Feed id */
@@ -1568,58 +1026,20 @@ export interface PutIndicatorFeedSnapshotResponse {
   /** Identifier of the upload row, for polling this upload to a terminal state via `poll_url`. */
   uploadId?: number | null;
 }
-const PutIndicatorFeedSnapshotResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<PutIndicatorFeedSnapshotResponse>;
-
 export type AttackSurfaceReportIssuesSeverityRequestIssueClassList = Array<string>;
-const AttackSurfaceReportIssuesSeverityRequestIssueClassList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestIssueClassList>;
-
 export type AttackSurfaceReportIssuesSeverityRequestIssueClassNeqList = Array<string>;
-const AttackSurfaceReportIssuesSeverityRequestIssueClassNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestIssueClassNeqList>;
-
 export type AttackSurfaceReportIssuesSeverityRequestIssueTypeList = Array<string>;
-const AttackSurfaceReportIssuesSeverityRequestIssueTypeList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestIssueTypeList>;
-
 export type AttackSurfaceReportIssuesSeverityRequestIssueTypeNeqList = Array<string>;
-const AttackSurfaceReportIssuesSeverityRequestIssueTypeNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestIssueTypeNeqList>;
-
 export type AttackSurfaceReportIssuesSeverityRequestProductList = Array<string>;
-const AttackSurfaceReportIssuesSeverityRequestProductList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestProductList>;
-
 export type AttackSurfaceReportIssuesSeverityRequestProductNeqList = Array<string>;
-const AttackSurfaceReportIssuesSeverityRequestProductNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestProductNeqList>;
-
 export type AttackSurfaceReportIssuesSeverityRequestSeverityList = Array<string>;
-const AttackSurfaceReportIssuesSeverityRequestSeverityList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestSeverityList>;
-
 export type AttackSurfaceReportIssuesSeverityRequestSeverityNeqList = Array<string>;
-const AttackSurfaceReportIssuesSeverityRequestSeverityNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestSeverityNeqList>;
-
 export type AttackSurfaceReportIssuesSeverityRequestSource = "cloudflare" | "riskrecon";
 export type AttackSurfaceReportIssuesSeverityRequestSourceList = Array<
   AttackSurfaceReportIssuesSeverityRequestSource | (string & {})
 >;
-const AttackSurfaceReportIssuesSeverityRequestSourceList =
-  AttackSurfaceReportIssuesClassRequestSourceList as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestSourceList>;
-
 export type AttackSurfaceReportIssuesSeverityRequestSubjectList = Array<string>;
-const AttackSurfaceReportIssuesSeverityRequestSubjectList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestSubjectList>;
-
 export type AttackSurfaceReportIssuesSeverityRequestSubjectNeqList = Array<string>;
-const AttackSurfaceReportIssuesSeverityRequestSubjectNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesSeverityRequestSubjectNeqList>;
-
 export interface SeverityAttackSurfaceReportIssueRequest {
   /** Identifier. */
   accountId: string;
@@ -1636,65 +1056,24 @@ export interface SeverityAttackSurfaceReportIssueRequest {
   subject?: AttackSurfaceReportIssuesSeverityRequestSubjectList;
   subjectNeq?: AttackSurfaceReportIssuesSeverityRequestSubjectNeqList;
 }
-const SeverityAttackSurfaceReportIssueRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<SeverityAttackSurfaceReportIssueRequest>;
-
 export type AttackSurfaceReportIssuesSeverityResultItem = AttackSurfaceReportIssuesClassResultItem;
 export type AttackSurfaceReportIssuesSeverityResultList =
   Array<AttackSurfaceReportIssuesClassResultItem>;
 export type SeverityAttackSurfaceReportIssueResponse = AttackSurfaceReportIssuesSeverityResultList;
-const SeverityAttackSurfaceReportIssueResponse =
-  ClassAttackSurfaceReportIssueResponse as any as S.Schema<SeverityAttackSurfaceReportIssueResponse>;
-
 export type AttackSurfaceReportIssuesTypeRequestIssueClassList = Array<string>;
-const AttackSurfaceReportIssuesTypeRequestIssueClassList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesTypeRequestIssueClassList>;
-
 export type AttackSurfaceReportIssuesTypeRequestIssueClassNeqList = Array<string>;
-const AttackSurfaceReportIssuesTypeRequestIssueClassNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesTypeRequestIssueClassNeqList>;
-
 export type AttackSurfaceReportIssuesTypeRequestIssueTypeList = Array<string>;
-const AttackSurfaceReportIssuesTypeRequestIssueTypeList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesTypeRequestIssueTypeList>;
-
 export type AttackSurfaceReportIssuesTypeRequestIssueTypeNeqList = Array<string>;
-const AttackSurfaceReportIssuesTypeRequestIssueTypeNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesTypeRequestIssueTypeNeqList>;
-
 export type AttackSurfaceReportIssuesTypeRequestProductList = Array<string>;
-const AttackSurfaceReportIssuesTypeRequestProductList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesTypeRequestProductList>;
-
 export type AttackSurfaceReportIssuesTypeRequestProductNeqList = Array<string>;
-const AttackSurfaceReportIssuesTypeRequestProductNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesTypeRequestProductNeqList>;
-
 export type AttackSurfaceReportIssuesTypeRequestSeverityList = Array<string>;
-const AttackSurfaceReportIssuesTypeRequestSeverityList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesTypeRequestSeverityList>;
-
 export type AttackSurfaceReportIssuesTypeRequestSeverityNeqList = Array<string>;
-const AttackSurfaceReportIssuesTypeRequestSeverityNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesTypeRequestSeverityNeqList>;
-
 export type AttackSurfaceReportIssuesTypeRequestSource = "cloudflare" | "riskrecon";
 export type AttackSurfaceReportIssuesTypeRequestSourceList = Array<
   AttackSurfaceReportIssuesTypeRequestSource | (string & {})
 >;
-const AttackSurfaceReportIssuesTypeRequestSourceList =
-  AttackSurfaceReportIssuesClassRequestSourceList as any as S.Schema<AttackSurfaceReportIssuesTypeRequestSourceList>;
-
 export type AttackSurfaceReportIssuesTypeRequestSubjectList = Array<string>;
-const AttackSurfaceReportIssuesTypeRequestSubjectList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesTypeRequestSubjectList>;
-
 export type AttackSurfaceReportIssuesTypeRequestSubjectNeqList = Array<string>;
-const AttackSurfaceReportIssuesTypeRequestSubjectNeqList =
-  AttackSurfaceReportIssuesClassRequestIssueClassList as any as S.Schema<AttackSurfaceReportIssuesTypeRequestSubjectNeqList>;
-
 export interface TypeAttackSurfaceReportIssueRequest {
   /** Identifier. */
   accountId: string;
@@ -1711,18 +1090,10 @@ export interface TypeAttackSurfaceReportIssueRequest {
   subject?: AttackSurfaceReportIssuesTypeRequestSubjectList;
   subjectNeq?: AttackSurfaceReportIssuesTypeRequestSubjectNeqList;
 }
-const TypeAttackSurfaceReportIssueRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<TypeAttackSurfaceReportIssueRequest>;
-
 export type AttackSurfaceReportIssuesTypeResultItem = AttackSurfaceReportIssuesClassResultItem;
 export type AttackSurfaceReportIssuesTypeResultList =
   Array<AttackSurfaceReportIssuesClassResultItem>;
 export type TypeAttackSurfaceReportIssueResponse = AttackSurfaceReportIssuesTypeResultList;
-const TypeAttackSurfaceReportIssueResponse =
-  ClassAttackSurfaceReportIssueResponse as any as S.Schema<TypeAttackSurfaceReportIssueResponse>;
-
 export interface UpdateIndicatorFeedRequest {
   /** Identifier */
   accountId: string;
@@ -1739,11 +1110,6 @@ export interface UpdateIndicatorFeedRequest {
   /** The new name of the feed */
   name?: string;
 }
-const UpdateIndicatorFeedRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<UpdateIndicatorFeedRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateIndicatorFeedResponse {
   /** The unique identifier for the indicator feed */
@@ -1763,9 +1129,6 @@ export interface UpdateIndicatorFeedResponse {
   /** The name of the indicator feed */
   name?: string | null;
 }
-const UpdateIndicatorFeedResponse =
-  CreateIndicatorFeedResponse as any as S.Schema<UpdateIndicatorFeedResponse>;
-
 export interface UpdateSinkholeRequest {
   /** An identifier for the resource. */
   accountId: string;
@@ -1779,14 +1142,7 @@ export interface UpdateSinkholeRequest {
   /** The secret key for the R2 API token. Required if you want to store large request bodies in R2. */
   r2Secret?: string;
 }
-const UpdateSinkholeRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<UpdateSinkholeRequest>;
-
 export type UpdateSinkholeResponse = unknown;
-const UpdateSinkholeResponse = DeleteSinkholeResponse as any as S.Schema<UpdateSinkholeResponse>;
-
 export interface UpdateSinkholesIngressRequest {
   /** An identifier for the resource. */
   zoneId: string;
@@ -1795,15 +1151,7 @@ export interface UpdateSinkholesIngressRequest {
   /** The CIDR block for the ingress rule in IPv4 or IPv6 notation (e.g., 192.0.2.0/24). Provide a Cloudflare BYOIP CIDR that your account owns. */
   cidr: string;
 }
-const UpdateSinkholesIngressRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<UpdateSinkholesIngressRequest>;
-
 export type UpdateSinkholesIngressResponse = unknown;
-const UpdateSinkholesIngressResponse =
-  DeleteSinkholesIngressResponse as any as S.Schema<UpdateSinkholesIngressResponse>;
-
 export type ClassAttackSurfaceReportIssueError = CloudflareOpError;
 /** Retrieves Security Center issue counts aggregated by classification class. */
 export const classAttackSurfaceReportIssue: API.OperationMethod<
@@ -1812,8 +1160,8 @@ export const classAttackSurfaceReportIssue: API.OperationMethod<
   ClassAttackSurfaceReportIssueError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClassAttackSurfaceReportIssueRequest,
-  output: ClassAttackSurfaceReportIssueResponse,
+  input: __S(2) as any as S.Schema<ClassAttackSurfaceReportIssueRequest>,
+  output: __S(5) as any as S.Schema<ClassAttackSurfaceReportIssueResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1827,8 +1175,8 @@ export const createIndicatorFeed: API.OperationMethod<
   CreateIndicatorFeedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIndicatorFeedRequest,
-  output: CreateIndicatorFeedResponse,
+  input: __S(6) as any as S.Schema<CreateIndicatorFeedRequest>,
+  output: __S(7) as any as S.Schema<CreateIndicatorFeedResponse>,
   errors: [IndicatorFeedsNotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1845,8 +1193,8 @@ export const createIndicatorFeedPermission: API.OperationMethod<
   CreateIndicatorFeedPermissionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIndicatorFeedPermissionRequest,
-  output: CreateIndicatorFeedPermissionResponse,
+  input: __S(8) as any as S.Schema<CreateIndicatorFeedPermissionRequest>,
+  output: __S(9) as any as S.Schema<CreateIndicatorFeedPermissionResponse>,
   errors: [IndicatorFeedNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1860,8 +1208,8 @@ export const createMiscategorization: API.OperationMethod<
   CreateMiscategorizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMiscategorizationRequest,
-  output: CreateMiscategorizationResponse,
+  input: __S(11) as any as S.Schema<CreateMiscategorizationRequest>,
+  output: __S(12) as any as S.Schema<CreateMiscategorizationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1875,8 +1223,8 @@ export const createSinkhole: API.OperationMethod<
   CreateSinkholeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSinkholeRequest,
-  output: CreateSinkholeResponse,
+  input: __S(13) as any as S.Schema<CreateSinkholeRequest>,
+  output: __S(14) as any as S.Schema<CreateSinkholeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1890,8 +1238,8 @@ export const createSinkholesIngress: API.OperationMethod<
   CreateSinkholesIngressError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSinkholesIngressRequest,
-  output: CreateSinkholesIngressResponse,
+  input: __S(15) as any as S.Schema<CreateSinkholesIngressRequest>,
+  output: __S(16) as any as S.Schema<CreateSinkholesIngressResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1905,8 +1253,8 @@ export const dataIndicatorFeed: API.OperationMethod<
   DataIndicatorFeedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DataIndicatorFeedRequest,
-  output: DataIndicatorFeedResponse,
+  input: __S(17) as any as S.Schema<DataIndicatorFeedRequest>,
+  output: __S(12) as any as S.Schema<DataIndicatorFeedResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1923,8 +1271,8 @@ export const deleteIndicatorFeedPermission: API.OperationMethod<
   DeleteIndicatorFeedPermissionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIndicatorFeedPermissionRequest,
-  output: DeleteIndicatorFeedPermissionResponse,
+  input: __S(18) as any as S.Schema<DeleteIndicatorFeedPermissionRequest>,
+  output: __S(9) as any as S.Schema<DeleteIndicatorFeedPermissionResponse>,
   errors: [IndicatorFeedNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1938,8 +1286,8 @@ export const deleteSinkhole: API.OperationMethod<
   DeleteSinkholeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSinkholeRequest,
-  output: DeleteSinkholeResponse,
+  input: __S(19) as any as S.Schema<DeleteSinkholeRequest>,
+  output: __S(20) as any as S.Schema<DeleteSinkholeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1953,8 +1301,8 @@ export const deleteSinkholesIngress: API.OperationMethod<
   DeleteSinkholesIngressError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSinkholesIngressRequest,
-  output: DeleteSinkholesIngressResponse,
+  input: __S(21) as any as S.Schema<DeleteSinkholesIngressRequest>,
+  output: __S(22) as any as S.Schema<DeleteSinkholesIngressResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1968,8 +1316,8 @@ export const dismissAttackSurfaceReportIssue: API.OperationMethod<
   DismissAttackSurfaceReportIssueError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DismissAttackSurfaceReportIssueRequest,
-  output: DismissAttackSurfaceReportIssueResponse,
+  input: __S(23) as any as S.Schema<DismissAttackSurfaceReportIssueRequest>,
+  output: __S(12) as any as S.Schema<DismissAttackSurfaceReportIssueResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1983,8 +1331,8 @@ export const getAsn: API.OperationMethod<
   GetAsnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAsnRequest,
-  output: GetAsnResponse,
+  input: __S(24) as any as S.Schema<GetAsnRequest>,
+  output: __S(20) as any as S.Schema<GetAsnResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1998,8 +1346,8 @@ export const getAsnSubnet: API.OperationMethod<
   GetAsnSubnetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAsnSubnetRequest,
-  output: GetAsnSubnetResponse,
+  input: __S(25) as any as S.Schema<GetAsnSubnetRequest>,
+  output: __S(26) as any as S.Schema<GetAsnSubnetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2015,8 +1363,8 @@ export const getAttackSurfaceReportIssueType: API.PaginatedOperationMethod<
   string
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: GetAttackSurfaceReportIssueTypeRequest,
-    output: GetAttackSurfaceReportIssueTypeResponse,
+    input: __S(27) as any as S.Schema<GetAttackSurfaceReportIssueTypeRequest>,
+    output: __S(28) as any as S.Schema<GetAttackSurfaceReportIssueTypeResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2033,8 +1381,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainRequest,
-  output: GetDomainResponse,
+  input: __S(29) as any as S.Schema<GetDomainRequest>,
+  output: __S(36) as any as S.Schema<GetDomainResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2048,8 +1396,8 @@ export const getDomainBulk: API.OperationMethod<
   GetDomainBulkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainBulkRequest,
-  output: GetDomainBulkResponse,
+  input: __S(37) as any as S.Schema<GetDomainBulkRequest>,
+  output: __S(40) as any as S.Schema<GetDomainBulkResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2063,8 +1411,8 @@ export const getDomainHistory: API.OperationMethod<
   GetDomainHistoryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainHistoryRequest,
-  output: GetDomainHistoryResponse,
+  input: __S(41) as any as S.Schema<GetDomainHistoryRequest>,
+  output: __S(47) as any as S.Schema<GetDomainHistoryResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2078,8 +1426,8 @@ export const getIndicatorFeed: API.OperationMethod<
   GetIndicatorFeedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIndicatorFeedRequest,
-  output: GetIndicatorFeedResponse,
+  input: __S(48) as any as S.Schema<GetIndicatorFeedRequest>,
+  output: __S(53) as any as S.Schema<GetIndicatorFeedResponse>,
   errors: [IndicatorFeedNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2093,8 +1441,8 @@ export const getIp: API.OperationMethod<
   GetIpError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIpRequest,
-  output: GetIpResponse,
+  input: __S(54) as any as S.Schema<GetIpRequest>,
+  output: __S(58) as any as S.Schema<GetIpResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2108,8 +1456,8 @@ export const getSinkhole: API.OperationMethod<
   GetSinkholeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSinkholeRequest,
-  output: GetSinkholeResponse,
+  input: __S(59) as any as S.Schema<GetSinkholeRequest>,
+  output: __S(14) as any as S.Schema<GetSinkholeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2123,8 +1471,8 @@ export const getSinkholesIngress: API.OperationMethod<
   GetSinkholesIngressError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSinkholesIngressRequest,
-  output: GetSinkholesIngressResponse,
+  input: __S(60) as any as S.Schema<GetSinkholesIngressRequest>,
+  output: __S(16) as any as S.Schema<GetSinkholesIngressResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2138,8 +1486,8 @@ export const getUrl: API.OperationMethod<
   GetUrlError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUrlRequest,
-  output: GetUrlResponse,
+  input: __S(61) as any as S.Schema<GetUrlRequest>,
+  output: __S(64) as any as S.Schema<GetUrlResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2153,8 +1501,8 @@ export const getWhoi: API.OperationMethod<
   GetWhoiError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWhoiRequest,
-  output: GetWhoiResponse,
+  input: __S(65) as any as S.Schema<GetWhoiRequest>,
+  output: __S(66) as any as S.Schema<GetWhoiResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2168,8 +1516,8 @@ export const listAttackSurfaceReportIssues: API.OperationMethod<
   ListAttackSurfaceReportIssuesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAttackSurfaceReportIssuesRequest,
-  output: ListAttackSurfaceReportIssuesResponse,
+  input: __S(67) as any as S.Schema<ListAttackSurfaceReportIssuesRequest>,
+  output: __S(71) as any as S.Schema<ListAttackSurfaceReportIssuesResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2183,8 +1531,8 @@ export const listDns: API.OperationMethod<
   ListDnsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDnsRequest,
-  output: ListDnsResponse,
+  input: __S(73) as any as S.Schema<ListDnsRequest>,
+  output: __S(76) as any as S.Schema<ListDnsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2198,8 +1546,8 @@ export const listIndicatorFeedPermissions: API.OperationMethod<
   ListIndicatorFeedPermissionsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIndicatorFeedPermissionsRequest,
-  output: ListIndicatorFeedPermissionsResponse,
+  input: __S(77) as any as S.Schema<ListIndicatorFeedPermissionsRequest>,
+  output: __S(80) as any as S.Schema<ListIndicatorFeedPermissionsResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2215,8 +1563,8 @@ export const listIndicatorFeeds: API.PaginatedOperationMethod<
   IndicatorFeedsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListIndicatorFeedsRequest,
-    output: ListIndicatorFeedsResponse,
+    input: __S(81) as any as S.Schema<ListIndicatorFeedsRequest>,
+    output: __S(84) as any as S.Schema<ListIndicatorFeedsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2235,8 +1583,8 @@ export const listSinkholes: API.PaginatedOperationMethod<
   SinkholesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListSinkholesRequest,
-    output: ListSinkholesResponse,
+    input: __S(85) as any as S.Schema<ListSinkholesRequest>,
+    output: __S(88) as any as S.Schema<ListSinkholesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -2253,8 +1601,8 @@ export const putIndicatorFeedSnapshot: API.OperationMethod<
   PutIndicatorFeedSnapshotError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutIndicatorFeedSnapshotRequest,
-  output: PutIndicatorFeedSnapshotResponse,
+  input: __S(89) as any as S.Schema<PutIndicatorFeedSnapshotRequest>,
+  output: __S(90) as any as S.Schema<PutIndicatorFeedSnapshotResponse>,
   errors: [IndicatorFeedNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2268,8 +1616,8 @@ export const severityAttackSurfaceReportIssue: API.OperationMethod<
   SeverityAttackSurfaceReportIssueError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SeverityAttackSurfaceReportIssueRequest,
-  output: SeverityAttackSurfaceReportIssueResponse,
+  input: __S(91) as any as S.Schema<SeverityAttackSurfaceReportIssueRequest>,
+  output: __S(5) as any as S.Schema<SeverityAttackSurfaceReportIssueResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2283,8 +1631,8 @@ export const typeAttackSurfaceReportIssue: API.OperationMethod<
   TypeAttackSurfaceReportIssueError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TypeAttackSurfaceReportIssueRequest,
-  output: TypeAttackSurfaceReportIssueResponse,
+  input: __S(92) as any as S.Schema<TypeAttackSurfaceReportIssueRequest>,
+  output: __S(5) as any as S.Schema<TypeAttackSurfaceReportIssueResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2298,8 +1646,8 @@ export const updateIndicatorFeed: API.OperationMethod<
   UpdateIndicatorFeedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIndicatorFeedRequest,
-  output: UpdateIndicatorFeedResponse,
+  input: __S(93) as any as S.Schema<UpdateIndicatorFeedRequest>,
+  output: __S(7) as any as S.Schema<UpdateIndicatorFeedResponse>,
   errors: [IndicatorFeedNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2313,8 +1661,8 @@ export const updateSinkhole: API.OperationMethod<
   UpdateSinkholeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSinkholeRequest,
-  output: UpdateSinkholeResponse,
+  input: __S(94) as any as S.Schema<UpdateSinkholeRequest>,
+  output: __S(20) as any as S.Schema<UpdateSinkholeResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2328,8 +1676,8 @@ export const updateSinkholesIngress: API.OperationMethod<
   UpdateSinkholesIngressError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSinkholesIngressRequest,
-  output: UpdateSinkholesIngressResponse,
+  input: __S(95) as any as S.Schema<UpdateSinkholesIngressRequest>,
+  output: __S(22) as any as S.Schema<UpdateSinkholesIngressResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -2341,37 +1689,23 @@ function __c0(j: number): any {
     case 0:
       return S.Array(S.String);
     case 1:
-      return S.Array(AttackSurfaceReportIssuesClassRequestSource);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           dismissed: S.optional(S.Boolean.pipe(T.Query())),
-          issueClass: S.optional(
-            AttackSurfaceReportIssuesClassRequestIssueClassList.pipe(T.Query("issue_class")),
-          ),
-          issueClassNeq: S.optional(
-            AttackSurfaceReportIssuesClassRequestIssueClassNeqList.pipe(T.Query("issue_class~neq")),
-          ),
-          issueType: S.optional(
-            AttackSurfaceReportIssuesClassRequestIssueTypeList.pipe(T.Query("issue_type")),
-          ),
-          issueTypeNeq: S.optional(
-            AttackSurfaceReportIssuesClassRequestIssueTypeNeqList.pipe(T.Query("issue_type~neq")),
-          ),
-          product: S.optional(AttackSurfaceReportIssuesClassRequestProductList.pipe(T.Query())),
-          productNeq: S.optional(
-            AttackSurfaceReportIssuesClassRequestProductNeqList.pipe(T.Query("product~neq")),
-          ),
-          severity: S.optional(AttackSurfaceReportIssuesClassRequestSeverityList.pipe(T.Query())),
-          severityNeq: S.optional(
-            AttackSurfaceReportIssuesClassRequestSeverityNeqList.pipe(T.Query("severity~neq")),
-          ),
-          source: S.optional(AttackSurfaceReportIssuesClassRequestSourceList.pipe(T.Query())),
-          subject: S.optional(AttackSurfaceReportIssuesClassRequestSubjectList.pipe(T.Query())),
-          subjectNeq: S.optional(
-            AttackSurfaceReportIssuesClassRequestSubjectNeqList.pipe(T.Query("subject~neq")),
-          ),
+          issueClass: S.optional(__S(0).pipe(T.Query("issue_class"))),
+          issueClassNeq: S.optional(__S(0).pipe(T.Query("issue_class~neq"))),
+          issueType: S.optional(__S(0).pipe(T.Query("issue_type"))),
+          issueTypeNeq: S.optional(__S(0).pipe(T.Query("issue_type~neq"))),
+          product: S.optional(__S(0).pipe(T.Query())),
+          productNeq: S.optional(__S(0).pipe(T.Query("product~neq"))),
+          severity: S.optional(__S(0).pipe(T.Query())),
+          severityNeq: S.optional(__S(0).pipe(T.Query("severity~neq"))),
+          source: S.optional(__S(1).pipe(T.Query())),
+          subject: S.optional(__S(0).pipe(T.Query())),
+          subjectNeq: S.optional(__S(0).pipe(T.Query("subject~neq"))),
         })
           .pipe(
             T.Http({
@@ -2394,13 +1728,10 @@ function __c0(j: number): any {
         identifier: "AttackSurfaceReportIssuesClassResultItem",
       });
     case 4:
-      return S.Array(AttackSurfaceReportIssuesClassResultItem);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
-        AttackSurfaceReportIssuesClassResultList.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(4).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ClassAttackSurfaceReportIssueResponse",
       });
@@ -2473,22 +1804,12 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          contentAdds: S.optional(
-            MiscategorizationsCreateRequestContentAddsList.pipe(T.Body("content_adds")),
-          ),
-          contentRemoves: S.optional(
-            MiscategorizationsCreateRequestContentRemovesList.pipe(T.Body("content_removes")),
-          ),
-          indicatorType: S.optional(
-            MiscategorizationsCreateRequestIndicatorType.pipe(T.Body("indicator_type")),
-          ),
+          contentAdds: S.optional(__S(10).pipe(T.Body("content_adds"))),
+          contentRemoves: S.optional(__S(10).pipe(T.Body("content_removes"))),
+          indicatorType: S.optional(S.String.pipe(T.Body("indicator_type"))),
           ip: S.optional(S.String),
-          securityAdds: S.optional(
-            MiscategorizationsCreateRequestSecurityAddsList.pipe(T.Body("security_adds")),
-          ),
-          securityRemoves: S.optional(
-            MiscategorizationsCreateRequestSecurityRemovesList.pipe(T.Body("security_removes")),
-          ),
+          securityAdds: S.optional(__S(10).pipe(T.Body("security_adds"))),
+          securityRemoves: S.optional(__S(10).pipe(T.Body("security_removes"))),
           url: S.optional(S.String),
         })
           .pipe(
@@ -2697,7 +2018,7 @@ function __c3(j: number): any {
           ipCountTotal: S.optional(S.NullOr(S.Number).pipe(T.Body("ip_count_total"))),
           page: S.optional(S.NullOr(S.Number)),
           perPage: S.optional(S.NullOr(S.Number).pipe(T.Body("per_page"))),
-          subnets: S.optional(S.NullOr(AsnSubnetsGetResponseSubnetsList)),
+          subnets: S.optional(S.NullOr(__S(0))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetAsnSubnetResponse" });
     case 3:
@@ -2719,7 +2040,7 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: AttackSurfaceReportIssueTypesGetResultList.pipe(T.EnvelopePayload()),
+          result: __S(0).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -2770,7 +2091,7 @@ function __c4(j: number): any {
         identifier: "DomainsGetResponseContentCategoriesItem",
       });
     case 1:
-      return S.Array(DomainsGetResponseContentCategoriesItem);
+      return S.Array(__S(32));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2781,44 +2102,32 @@ function __c4(j: number): any {
         identifier: "DomainsGetResponseResolvesToRefsItem",
       });
     case 3:
-      return S.Array(DomainsGetResponseResolvesToRefsItem);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
           additionalInformation: S.optional(
-            S.NullOr(DomainsGetResponseAdditionalInformation).pipe(
-              T.Body("additional_information"),
-            ),
+            S.NullOr(__S(30)).pipe(T.Body("additional_information")),
           ),
-          application: S.optional(S.NullOr(DomainsGetResponseApplication)),
-          contentCategories: S.optional(
-            S.NullOr(DomainsGetResponseContentCategoriesList).pipe(T.Body("content_categories")),
-          ),
+          application: S.optional(S.NullOr(__S(31))),
+          contentCategories: S.optional(S.NullOr(__S(33)).pipe(T.Body("content_categories"))),
           domain: S.optional(S.NullOr(S.String)),
           inheritedContentCategories: S.optional(
-            S.NullOr(DomainsGetResponseInheritedContentCategoriesList).pipe(
-              T.Body("inherited_content_categories"),
-            ),
+            S.NullOr(__S(33)).pipe(T.Body("inherited_content_categories")),
           ),
           inheritedFrom: S.optional(S.NullOr(S.String).pipe(T.Body("inherited_from"))),
-          inheritedRiskTypes: S.optional(
-            S.NullOr(DomainsGetResponseInheritedRiskTypesList).pipe(T.Body("inherited_risk_types")),
-          ),
+          inheritedRiskTypes: S.optional(S.NullOr(__S(33)).pipe(T.Body("inherited_risk_types"))),
           popularityRank: S.optional(S.NullOr(S.Number).pipe(T.Body("popularity_rank"))),
-          resolvesToRefs: S.optional(
-            S.NullOr(DomainsGetResponseResolvesToRefsList).pipe(T.Body("resolves_to_refs")),
-          ),
+          resolvesToRefs: S.optional(S.NullOr(__S(35)).pipe(T.Body("resolves_to_refs"))),
           riskScore: S.optional(S.NullOr(S.Number).pipe(T.Body("risk_score"))),
-          riskTypes: S.optional(
-            S.NullOr(DomainsGetResponseRiskTypesList).pipe(T.Body("risk_types")),
-          ),
+          riskTypes: S.optional(S.NullOr(__S(33)).pipe(T.Body("risk_types"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDomainResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          domain: S.optional(DomainsBulksGetRequestDomainList.pipe(T.Query())),
+          domain: S.optional(__S(0).pipe(T.Query())),
           includeRanking: S.optional(S.Boolean.pipe(T.Query("include_ranking"))),
           skipRanking: S.optional(S.Boolean.pipe(T.Query("skip_ranking"))),
         })
@@ -2831,46 +2140,32 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           additionalInformation: S.optional(
-            S.NullOr(DomainsGetResponseAdditionalInformation).pipe(
-              T.Body("additional_information"),
-            ),
+            S.NullOr(__S(30)).pipe(T.Body("additional_information")),
           ),
-          application: S.optional(S.NullOr(DomainsGetResponseApplication)),
-          contentCategories: S.optional(
-            S.NullOr(DomainsBulksGetResultItemContentCategoriesList).pipe(
-              T.Body("content_categories"),
-            ),
-          ),
+          application: S.optional(S.NullOr(__S(31))),
+          contentCategories: S.optional(S.NullOr(__S(33)).pipe(T.Body("content_categories"))),
           domain: S.optional(S.NullOr(S.String)),
           inheritedContentCategories: S.optional(
-            S.NullOr(DomainsBulksGetResultItemInheritedContentCategoriesList).pipe(
-              T.Body("inherited_content_categories"),
-            ),
+            S.NullOr(__S(33)).pipe(T.Body("inherited_content_categories")),
           ),
           inheritedFrom: S.optional(S.NullOr(S.String).pipe(T.Body("inherited_from"))),
-          inheritedRiskTypes: S.optional(
-            S.NullOr(DomainsBulksGetResultItemInheritedRiskTypesList).pipe(
-              T.Body("inherited_risk_types"),
-            ),
-          ),
+          inheritedRiskTypes: S.optional(S.NullOr(__S(33)).pipe(T.Body("inherited_risk_types"))),
           popularityRank: S.optional(S.NullOr(S.Number).pipe(T.Body("popularity_rank"))),
           riskScore: S.optional(S.NullOr(S.Number).pipe(T.Body("risk_score"))),
-          riskTypes: S.optional(
-            S.NullOr(DomainsBulksGetResultItemRiskTypesList).pipe(T.Body("risk_types")),
-          ),
+          riskTypes: S.optional(S.NullOr(__S(33)).pipe(T.Body("risk_types"))),
         }),
       ).annotate({
         identifier: "DomainsBulksGetResultItem",
       });
     case 7:
-      return S.Array(DomainsBulksGetResultItem);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        DomainsBulksGetResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(39).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDomainBulkResponse" });
     case 1:
       return S.suspend(() =>
@@ -2888,13 +2183,11 @@ function __c5(j: number): any {
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDomainHistoryRequest" });
     case 2:
-      return S.Array(DomainsGetResponseApplication);
+      return S.Array(__S(31));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          categories: S.optional(
-            S.NullOr(DomainHistoryGetResultItemCategorizationsItemCategoriesList),
-          ),
+          categories: S.optional(S.NullOr(__S(42))),
           end: S.optional(S.NullOr(S.String)),
           start: S.optional(S.NullOr(S.String)),
         }),
@@ -2902,21 +2195,21 @@ function __c5(j: number): any {
         identifier: "DomainHistoryGetResultItemCategorizationsItem",
       });
     case 4:
-      return S.Array(DomainHistoryGetResultItemCategorizationsItem);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          categorizations: S.optional(S.NullOr(DomainHistoryGetResultItemCategorizationsList)),
+          categorizations: S.optional(S.NullOr(__S(44))),
           domain: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DomainHistoryGetResultItem",
       });
     case 6:
-      return S.Array(DomainHistoryGetResultItem);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
-        DomainHistoryGetResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(46).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetDomainHistoryResponse" });
   }
 }
@@ -2973,9 +2266,9 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          persisted: S.optional(S.NullOr(IndicatorFeedsGetResponseLastUploadSummaryPersisted)),
-          skipped: S.optional(S.NullOr(IndicatorFeedsGetResponseLastUploadSummarySkipped)),
-          uploaded: S.optional(S.NullOr(IndicatorFeedsGetResponseLastUploadSummaryUploaded)),
+          persisted: S.optional(S.NullOr(__S(49))),
+          skipped: S.optional(S.NullOr(__S(50))),
+          uploaded: S.optional(S.NullOr(__S(51))),
         }),
       ).annotate({
         identifier: "IndicatorFeedsGetResponseLastUploadSummary",
@@ -2989,17 +2282,9 @@ function __c6(j: number): any {
           isAttributable: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_attributable"))),
           isDownloadable: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_downloadable"))),
           isPublic: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_public"))),
-          lastUploadSummary: S.optional(
-            S.NullOr(IndicatorFeedsGetResponseLastUploadSummary).pipe(
-              T.Body("last_upload_summary"),
-            ),
-          ),
+          lastUploadSummary: S.optional(S.NullOr(__S(52)).pipe(T.Body("last_upload_summary"))),
           latestUploadError: S.optional(S.NullOr(S.String).pipe(T.Body("latest_upload_error"))),
-          latestUploadStatus: S.optional(
-            S.NullOr(IndicatorFeedsGetResponseLatestUploadStatus).pipe(
-              T.Body("latest_upload_status"),
-            ),
-          ),
+          latestUploadStatus: S.optional(S.NullOr(S.String).pipe(T.Body("latest_upload_status"))),
           modifiedOn: S.optional(S.NullOr(S.String).pipe(T.Body("modified_on"))),
           name: S.optional(S.NullOr(S.String)),
           providerId: S.optional(S.NullOr(S.Number).pipe(T.Body("provider_id"))),
@@ -3022,7 +2307,7 @@ function __c6(j: number): any {
           id: S.optional(S.NullOr(S.String)),
           country: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
-          type: S.optional(S.NullOr(IpsGetResultItemBelongsToRefType)),
+          type: S.optional(S.NullOr(S.String)),
           value: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -3035,18 +2320,16 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          belongsToRef: S.optional(
-            S.NullOr(IpsGetResultItemBelongsToRef).pipe(T.Body("belongs_to_ref")),
-          ),
+          belongsToRef: S.optional(S.NullOr(__S(55)).pipe(T.Body("belongs_to_ref"))),
           ip: S.optional(S.NullOr(S.String)),
-          riskTypes: S.optional(S.NullOr(IpsGetResultItemRiskTypesList).pipe(T.Body("risk_types"))),
+          riskTypes: S.optional(S.NullOr(__S(33)).pipe(T.Body("risk_types"))),
         }),
       ).annotate({ identifier: "IpsGetResultItem" });
     case 1:
-      return S.Array(IpsGetResultItem);
+      return S.Array(__S(56));
     case 2:
       return S.suspend(() =>
-        IpsGetResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(57).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetIpResponse" });
     case 3:
       return S.suspend(() =>
@@ -3102,7 +2385,7 @@ function __c7(j: number): any {
         identifier: "GetUrlResponseContentCategoriesItem",
       });
     case 7:
-      return S.Array(GetUrlResponseContentCategoriesItem);
+      return S.Array(__S(62));
   }
 }
 function __c8(j: number): any {
@@ -3110,10 +2393,10 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          contentCategories: GetUrlResponseContentCategoriesList.pipe(T.Body("content_categories")),
+          contentCategories: __S(63).pipe(T.Body("content_categories")),
           fullUrl: S.String.pipe(T.Body("full_url")),
           hostname: S.String,
-          riskType: GetUrlResponseRiskTypeList.pipe(T.Body("risk_type")),
+          riskType: __S(63).pipe(T.Body("risk_type")),
           urlPath: S.String.pipe(T.Body("url_path")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetUrlResponse" });
@@ -3133,7 +2416,7 @@ function __c8(j: number): any {
           domain: S.String,
           extension: S.String,
           found: S.Boolean,
-          nameservers: WhoisGetResponseNameserversList,
+          nameservers: __S(0),
           punycode: S.String,
           registrant: S.String,
           registrar: S.String,
@@ -3218,7 +2501,7 @@ function __c8(j: number): any {
             S.NullOr(S.String).pipe(T.Body("registrar_referral_url")),
           ),
           registrarStreet: S.optional(S.NullOr(S.String).pipe(T.Body("registrar_street"))),
-          status: S.optional(S.NullOr(WhoisGetResponseStatusList)),
+          status: S.optional(S.NullOr(__S(0))),
           technicalCity: S.optional(S.NullOr(S.String).pipe(T.Body("technical_city"))),
           technicalCountry: S.optional(S.NullOr(S.String).pipe(T.Body("technical_country"))),
           technicalEmail: S.optional(S.NullOr(S.String).pipe(T.Body("technical_email"))),
@@ -3245,33 +2528,19 @@ function __c8(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           dismissed: S.optional(S.Boolean.pipe(T.Query())),
-          issueClass: S.optional(
-            AttackSurfaceReportIssuesListRequestIssueClassList.pipe(T.Query("issue_class")),
-          ),
-          issueClassNeq: S.optional(
-            AttackSurfaceReportIssuesListRequestIssueClassNeqList.pipe(T.Query("issue_class~neq")),
-          ),
-          issueType: S.optional(
-            AttackSurfaceReportIssuesListRequestIssueTypeList.pipe(T.Query("issue_type")),
-          ),
-          issueTypeNeq: S.optional(
-            AttackSurfaceReportIssuesListRequestIssueTypeNeqList.pipe(T.Query("issue_type~neq")),
-          ),
+          issueClass: S.optional(__S(0).pipe(T.Query("issue_class"))),
+          issueClassNeq: S.optional(__S(0).pipe(T.Query("issue_class~neq"))),
+          issueType: S.optional(__S(0).pipe(T.Query("issue_type"))),
+          issueTypeNeq: S.optional(__S(0).pipe(T.Query("issue_type~neq"))),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          product: S.optional(AttackSurfaceReportIssuesListRequestProductList.pipe(T.Query())),
-          productNeq: S.optional(
-            AttackSurfaceReportIssuesListRequestProductNeqList.pipe(T.Query("product~neq")),
-          ),
-          severity: S.optional(AttackSurfaceReportIssuesListRequestSeverityList.pipe(T.Query())),
-          severityNeq: S.optional(
-            AttackSurfaceReportIssuesListRequestSeverityNeqList.pipe(T.Query("severity~neq")),
-          ),
-          source: S.optional(AttackSurfaceReportIssuesListRequestSourceList.pipe(T.Query())),
-          subject: S.optional(AttackSurfaceReportIssuesListRequestSubjectList.pipe(T.Query())),
-          subjectNeq: S.optional(
-            AttackSurfaceReportIssuesListRequestSubjectNeqList.pipe(T.Query("subject~neq")),
-          ),
+          product: S.optional(__S(0).pipe(T.Query())),
+          productNeq: S.optional(__S(0).pipe(T.Query("product~neq"))),
+          severity: S.optional(__S(0).pipe(T.Query())),
+          severityNeq: S.optional(__S(0).pipe(T.Query("severity~neq"))),
+          source: S.optional(__S(1).pipe(T.Query())),
+          subject: S.optional(__S(0).pipe(T.Query())),
+          subjectNeq: S.optional(__S(0).pipe(T.Query("subject~neq"))),
         })
           .pipe(
             T.Http({
@@ -3300,35 +2569,27 @@ function __c8(j: number): any {
           dismissed: S.optional(S.NullOr(S.Boolean)),
           hasExtendedContext: S.optional(S.NullOr(S.Boolean).pipe(T.Body("has_extended_context"))),
           issueClass: S.optional(S.NullOr(S.String).pipe(T.Body("issue_class"))),
-          issueType: S.optional(
-            S.NullOr(AttackSurfaceReportIssuesListResponseIssuesItemIssueType).pipe(
-              T.Body("issue_type"),
-            ),
-          ),
-          payload: S.optional(S.NullOr(AttackSurfaceReportIssuesListResponseIssuesItemPayload)),
+          issueType: S.optional(S.NullOr(S.String).pipe(T.Body("issue_type"))),
+          payload: S.optional(S.NullOr(__S(68))),
           resolveLink: S.optional(S.NullOr(S.String).pipe(T.Body("resolve_link"))),
           resolveText: S.optional(S.NullOr(S.String).pipe(T.Body("resolve_text"))),
-          severity: S.optional(S.NullOr(AttackSurfaceReportIssuesListResponseIssuesItemSeverity)),
+          severity: S.optional(S.NullOr(S.String)),
           since: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(AttackSurfaceReportIssuesListResponseIssuesItemStatus)),
+          status: S.optional(S.NullOr(S.String)),
           subject: S.optional(S.NullOr(S.String)),
           timestamp: S.optional(S.NullOr(S.String)),
-          userClassification: S.optional(
-            S.NullOr(AttackSurfaceReportIssuesListResponseIssuesItemUserClassification).pipe(
-              T.Body("user_classification"),
-            ),
-          ),
+          userClassification: S.optional(S.NullOr(S.String).pipe(T.Body("user_classification"))),
         }),
       ).annotate({
         identifier: "AttackSurfaceReportIssuesListResponseIssuesItem",
       });
     case 6:
-      return S.Array(AttackSurfaceReportIssuesListResponseIssuesItem);
+      return S.Array(__S(69));
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.NullOr(S.Number)),
-          issues: S.optional(S.NullOr(AttackSurfaceReportIssuesListResponseIssuesList)),
+          issues: S.optional(S.NullOr(__S(70))),
           page: S.optional(S.NullOr(S.Number)),
           perPage: S.optional(S.NullOr(S.Number).pipe(T.Body("per_page"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -3356,10 +2617,7 @@ function __c9(j: number): any {
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           startEndParams: S.optional(
-            DnsListRequestStartEndParams.pipe(
-              T.Body("start_end_params"),
-              T.DeepQuery("start_end_params"),
-            ),
+            __S(72).pipe(T.Body("start_end_params"), T.DeepQuery("start_end_params")),
           ),
         })
           .pipe(T.Http({ method: "GET", uri: "/accounts/{account_id}/intel/dns", code: 200 }))
@@ -3376,16 +2634,14 @@ function __c9(j: number): any {
         identifier: "DnsListResponseReverseRecordsItem",
       });
     case 3:
-      return S.Array(DnsListResponseReverseRecordsItem);
+      return S.Array(__S(74));
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.NullOr(S.Number)),
           page: S.optional(S.NullOr(S.Number)),
           perPage: S.optional(S.NullOr(S.Number).pipe(T.Body("per_page"))),
-          reverseRecords: S.optional(
-            S.NullOr(DnsListResponseReverseRecordsList).pipe(T.Body("reverse_records")),
-          ),
+          reverseRecords: S.optional(S.NullOr(__S(75)).pipe(T.Body("reverse_records"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListDnsResponse" });
     case 5:
@@ -3418,17 +2674,14 @@ function __c9(j: number): any {
         identifier: "IndicatorFeedsPermissionsListResultItem",
       });
     case 7:
-      return S.Array(IndicatorFeedsPermissionsListResultItem);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        IndicatorFeedsPermissionsListResultList.pipe(
-          T.EnvelopePayloadRoot(),
-          T.KeyDictionary(KEY_DICTIONARY),
-        ),
+        __S(79).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListIndicatorFeedPermissionsResponse",
       });
@@ -3464,11 +2717,11 @@ function __c10(j: number): any {
         identifier: "IndicatorFeedsListResultItem",
       });
     case 3:
-      return S.Array(IndicatorFeedsListResultItem);
+      return S.Array(__S(82));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          result: IndicatorFeedsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(83).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -3495,7 +2748,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "SinkholesListResultItem" });
     case 7:
-      return S.Array(SinkholesListResultItem);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -3503,7 +2756,7 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          result: SinkholesListResultList.pipe(T.EnvelopePayload()),
+          result: __S(87).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSinkholesResponse" });
@@ -3512,9 +2765,7 @@ function __c11(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           feedId: S.Number.pipe(T.Label("feed_id")),
-          cfAsyncUpload: S.optional(
-            IndicatorFeedsSnapshotsUpdateRequestCfAsyncUpload.pipe(T.Header("Cf-Async-Upload")),
-          ),
+          cfAsyncUpload: S.optional(S.String.pipe(T.Header("Cf-Async-Upload"))),
           source: S.optional(S.String),
         })
           .pipe(
@@ -3546,37 +2797,17 @@ function __c11(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           dismissed: S.optional(S.Boolean.pipe(T.Query())),
-          issueClass: S.optional(
-            AttackSurfaceReportIssuesSeverityRequestIssueClassList.pipe(T.Query("issue_class")),
-          ),
-          issueClassNeq: S.optional(
-            AttackSurfaceReportIssuesSeverityRequestIssueClassNeqList.pipe(
-              T.Query("issue_class~neq"),
-            ),
-          ),
-          issueType: S.optional(
-            AttackSurfaceReportIssuesSeverityRequestIssueTypeList.pipe(T.Query("issue_type")),
-          ),
-          issueTypeNeq: S.optional(
-            AttackSurfaceReportIssuesSeverityRequestIssueTypeNeqList.pipe(
-              T.Query("issue_type~neq"),
-            ),
-          ),
-          product: S.optional(AttackSurfaceReportIssuesSeverityRequestProductList.pipe(T.Query())),
-          productNeq: S.optional(
-            AttackSurfaceReportIssuesSeverityRequestProductNeqList.pipe(T.Query("product~neq")),
-          ),
-          severity: S.optional(
-            AttackSurfaceReportIssuesSeverityRequestSeverityList.pipe(T.Query()),
-          ),
-          severityNeq: S.optional(
-            AttackSurfaceReportIssuesSeverityRequestSeverityNeqList.pipe(T.Query("severity~neq")),
-          ),
-          source: S.optional(AttackSurfaceReportIssuesSeverityRequestSourceList.pipe(T.Query())),
-          subject: S.optional(AttackSurfaceReportIssuesSeverityRequestSubjectList.pipe(T.Query())),
-          subjectNeq: S.optional(
-            AttackSurfaceReportIssuesSeverityRequestSubjectNeqList.pipe(T.Query("subject~neq")),
-          ),
+          issueClass: S.optional(__S(0).pipe(T.Query("issue_class"))),
+          issueClassNeq: S.optional(__S(0).pipe(T.Query("issue_class~neq"))),
+          issueType: S.optional(__S(0).pipe(T.Query("issue_type"))),
+          issueTypeNeq: S.optional(__S(0).pipe(T.Query("issue_type~neq"))),
+          product: S.optional(__S(0).pipe(T.Query())),
+          productNeq: S.optional(__S(0).pipe(T.Query("product~neq"))),
+          severity: S.optional(__S(0).pipe(T.Query())),
+          severityNeq: S.optional(__S(0).pipe(T.Query("severity~neq"))),
+          source: S.optional(__S(1).pipe(T.Query())),
+          subject: S.optional(__S(0).pipe(T.Query())),
+          subjectNeq: S.optional(__S(0).pipe(T.Query("subject~neq"))),
         })
           .pipe(
             T.Http({
@@ -3594,31 +2825,17 @@ function __c11(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           dismissed: S.optional(S.Boolean.pipe(T.Query())),
-          issueClass: S.optional(
-            AttackSurfaceReportIssuesTypeRequestIssueClassList.pipe(T.Query("issue_class")),
-          ),
-          issueClassNeq: S.optional(
-            AttackSurfaceReportIssuesTypeRequestIssueClassNeqList.pipe(T.Query("issue_class~neq")),
-          ),
-          issueType: S.optional(
-            AttackSurfaceReportIssuesTypeRequestIssueTypeList.pipe(T.Query("issue_type")),
-          ),
-          issueTypeNeq: S.optional(
-            AttackSurfaceReportIssuesTypeRequestIssueTypeNeqList.pipe(T.Query("issue_type~neq")),
-          ),
-          product: S.optional(AttackSurfaceReportIssuesTypeRequestProductList.pipe(T.Query())),
-          productNeq: S.optional(
-            AttackSurfaceReportIssuesTypeRequestProductNeqList.pipe(T.Query("product~neq")),
-          ),
-          severity: S.optional(AttackSurfaceReportIssuesTypeRequestSeverityList.pipe(T.Query())),
-          severityNeq: S.optional(
-            AttackSurfaceReportIssuesTypeRequestSeverityNeqList.pipe(T.Query("severity~neq")),
-          ),
-          source: S.optional(AttackSurfaceReportIssuesTypeRequestSourceList.pipe(T.Query())),
-          subject: S.optional(AttackSurfaceReportIssuesTypeRequestSubjectList.pipe(T.Query())),
-          subjectNeq: S.optional(
-            AttackSurfaceReportIssuesTypeRequestSubjectNeqList.pipe(T.Query("subject~neq")),
-          ),
+          issueClass: S.optional(__S(0).pipe(T.Query("issue_class"))),
+          issueClassNeq: S.optional(__S(0).pipe(T.Query("issue_class~neq"))),
+          issueType: S.optional(__S(0).pipe(T.Query("issue_type"))),
+          issueTypeNeq: S.optional(__S(0).pipe(T.Query("issue_type~neq"))),
+          product: S.optional(__S(0).pipe(T.Query())),
+          productNeq: S.optional(__S(0).pipe(T.Query("product~neq"))),
+          severity: S.optional(__S(0).pipe(T.Query())),
+          severityNeq: S.optional(__S(0).pipe(T.Query("severity~neq"))),
+          source: S.optional(__S(1).pipe(T.Query())),
+          subject: S.optional(__S(0).pipe(T.Query())),
+          subjectNeq: S.optional(__S(0).pipe(T.Query("subject~neq"))),
         })
           .pipe(
             T.Http({
@@ -3691,5 +2908,38 @@ function __c11(j: number): any {
       ).annotate({
         identifier: "UpdateSinkholesIngressRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
   }
 }

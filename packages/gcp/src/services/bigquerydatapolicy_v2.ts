@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -63,36 +65,23 @@ export class NotFound
   ) {}
 
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<StringList>;
-
 /** Request message for the AddGrantees method. */
 export interface AddGranteesRequest {
   /** Required. IAM principal that should be granted Fine Grained Access to the underlying data goverened by the data policy. The target data policy is determined by the `data_policy` field. Uses the [IAM V2 principal syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2). Supported principal types: * User * Group * Service account */
   grantees?: StringList;
 }
-const AddGranteesRequest = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddGranteesRequest>;
-
 export interface AddGranteesProjectsLocationsDataPoliciesRequest {
   /** Required. Resource name of this data policy, in the format of `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`. */
   dataPolicy: string;
   /** Request body */
   body?: AddGranteesRequest;
 }
-const AddGranteesProjectsLocationsDataPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddGranteesProjectsLocationsDataPoliciesRequest>;
-
 export type DataPolicyDataPolicyTypeEnum =
   | "DATA_POLICY_TYPE_UNSPECIFIED"
   | "DATA_MASKING_POLICY"
   | "RAW_DATA_ACCESS_POLICY"
   | "COLUMN_LEVEL_SECURITY_POLICY";
-const DataPolicyDataPolicyTypeEnum = S.String;
-
 export type DataPolicyVersionEnum = "VERSION_UNSPECIFIED" | "V1" | "V2";
-const DataPolicyVersionEnum = S.String;
-
 /** This is a namespaced name specifying the key and the value. For example: `project-id/pii/sensitive`. */
 export interface DataGovernanceTag {
   /** Optional. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example `parent-id/pii` where `parent-id` is the ID of the parent organization or project resource for this tag key. */
@@ -100,8 +89,6 @@ export interface DataGovernanceTag {
   /** Optional. Specifies the tag value as the short name, for example `sensitive`. */
   value?: string;
 }
-const DataGovernanceTag = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DataGovernanceTag>;
-
 export type DataMaskingPolicyPredefinedExpressionEnum =
   | "PREDEFINED_EXPRESSION_UNSPECIFIED"
   | "SHA256"
@@ -112,8 +99,6 @@ export type DataMaskingPolicyPredefinedExpressionEnum =
   | "EMAIL_MASK"
   | "DATE_YEAR_MASK"
   | "RANDOM_HASH";
-const DataMaskingPolicyPredefinedExpressionEnum = S.String;
-
 /** The policy used to specify data masking rule. */
 export interface DataMaskingPolicy {
   /** Optional. The name of the BigQuery routine that contains the custom masking routine, in the format of `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`. */
@@ -121,8 +106,6 @@ export interface DataMaskingPolicy {
   /** Optional. A predefined masking expression. */
   predefinedExpression?: DataMaskingPolicyPredefinedExpressionEnum | (string & {});
 }
-const DataMaskingPolicy = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DataMaskingPolicy>;
-
 /** Represents the label-policy binding. */
 export interface DataPolicy {
   /** Required. Type of data policy. */
@@ -144,8 +127,6 @@ export interface DataPolicy {
   /** Output only. Policy tag resource name, in the format of `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`. policy_tag is supported only for V1 data policies. */
   policyTag?: string;
 }
-const DataPolicy = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DataPolicy>;
-
 /** Request message for the CreateDataPolicy method. */
 export interface CreateDataPolicyRequest {
   /** Required. The data policy to create. The `name` field does not need to be provided for the data policy creation. */
@@ -153,67 +134,39 @@ export interface CreateDataPolicyRequest {
   /** Required. User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as {data_policy_id} in part of the resource name. */
   dataPolicyId?: string;
 }
-const CreateDataPolicyRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateDataPolicyRequest>;
-
 export interface CreateProjectsLocationsDataPoliciesRequest {
   /** Required. Resource name of the project that the data policy will belong to. The format is `projects/{project_number}/locations/{location_id}`. */
   parent: string;
   /** Request body */
   body?: CreateDataPolicyRequest;
 }
-const CreateProjectsLocationsDataPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateProjectsLocationsDataPoliciesRequest>;
-
 export interface DeleteProjectsLocationsDataPoliciesRequest {
   /** Required. Resource name of the data policy to delete. Format is `projects/{project_number}/locations/{location_id}/dataPolicies/{id}`. */
   name: string;
 }
-const DeleteProjectsLocationsDataPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsDataPoliciesRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Empty>;
-
 /** Encapsulates settings provided to GetIamPolicy. */
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
-const GetPolicyOptions = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetPolicyOptions>;
-
 /** Request message for `GetIamPolicy` method. */
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
-const GetIamPolicyRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetIamPolicyRequest>;
-
 export interface GetIamPolicyProjectsLocationsDataPoliciesRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: GetIamPolicyRequest;
 }
-const GetIamPolicyProjectsLocationsDataPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetIamPolicyProjectsLocationsDataPoliciesRequest>;
-
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-const AuditLogConfigLogTypeEnum = S.String;
-
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -221,11 +174,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-const AuditLogConfig = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<AuditLogConfig>;
-
 export type AuditLogConfigList = Array<AuditLogConfig>;
-const AuditLogConfigList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AuditLogConfigList>;
-
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -233,11 +182,7 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
-const AuditConfig = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<AuditConfig>;
-
 export type AuditConfigList = Array<AuditConfig>;
-const AuditConfigList = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<AuditConfigList>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -249,8 +194,6 @@ export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
   location?: string;
 }
-const Expr = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Expr>;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
@@ -260,11 +203,7 @@ export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   condition?: Expr;
 }
-const Binding = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Binding>;
-
 export type BindingList = Array<Binding>;
-const BindingList = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<BindingList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -276,17 +215,10 @@ export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
   etag?: string;
 }
-const Policy = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Policy>;
-
 export interface GetProjectsLocationsDataPoliciesRequest {
   /** Required. Resource name of the requested data policy. Format is `projects/{project_number}/locations/{location_id}/dataPolicies/{id}`. */
   name: string;
 }
-const GetProjectsLocationsDataPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetProjectsLocationsDataPoliciesRequest>;
-
 export interface ListProjectsLocationsDataPoliciesRequest {
   /** Required. Resource name of the project for which to list data policies. Format is `projects/{project_number}/locations/{location_id}`. */
   parent: string;
@@ -297,14 +229,7 @@ export interface ListProjectsLocationsDataPoliciesRequest {
   /** Optional. Filters the data policies by policy tags that they are associated with. Currently filter only supports "policy_tag" based filtering and OR based predicates. Sample filter can be "policy_tag: projects/1/locations/us/taxonomies/2/policyTags/3". You may also use wildcard such as "policy_tag: projects/1/locations/us/taxonomies/2*". Please note that OR predicates cannot be used with wildcard filters. */
   filter?: string;
 }
-const ListProjectsLocationsDataPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListProjectsLocationsDataPoliciesRequest>;
-
 export type DataPolicyList = Array<DataPolicy>;
-const DataPolicyList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<DataPolicyList>;
-
 /** Response message for the ListDataPolicies method. */
 export interface ListDataPoliciesResponse {
   /** Data policies that belong to the requested project. */
@@ -312,11 +237,6 @@ export interface ListDataPoliciesResponse {
   /** Token used to retrieve the next page of results, or empty if there are no more results. */
   nextPageToken?: string;
 }
-const ListDataPoliciesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListDataPoliciesResponse>;
-
 export interface PatchProjectsLocationsDataPoliciesRequest {
   /** Optional. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If not set, defaults to all of the fields that are allowed to update. Updates to the `name` and `dataPolicyId` fields are not allowed. */
   updateMask?: string;
@@ -327,29 +247,17 @@ export interface PatchProjectsLocationsDataPoliciesRequest {
   /** Request body */
   body?: DataPolicy;
 }
-const PatchProjectsLocationsDataPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<PatchProjectsLocationsDataPoliciesRequest>;
-
 /** Request message for the RemoveGrantees method. */
 export interface RemoveGranteesRequest {
   /** Required. IAM principal that should be revoked from Fine Grained Access to the underlying data goverened by the data policy. The target data policy is determined by the `data_policy` field. Uses the [IAM V2 principal syntax](https://cloud.google.com/iam/docs/principal-identifiers#v2). Supported principal types: * User * Group * Service account */
   grantees?: StringList;
 }
-const RemoveGranteesRequest = AddGranteesRequest as any as S.Schema<RemoveGranteesRequest>;
-
 export interface RemoveGranteesProjectsLocationsDataPoliciesRequest {
   /** Required. Resource name of this data policy, in the format of `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`. */
   dataPolicy: string;
   /** Request body */
   body?: RemoveGranteesRequest;
 }
-const RemoveGranteesProjectsLocationsDataPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<RemoveGranteesProjectsLocationsDataPoliciesRequest>;
-
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -357,48 +265,28 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<SetIamPolicyRequest>;
-
 export interface SetIamPolicyProjectsLocationsDataPoliciesRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsDataPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<SetIamPolicyProjectsLocationsDataPoliciesRequest>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsDataPoliciesRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsDataPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsDataPoliciesRequest>;
-
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-const TestIamPermissionsResponse =
-  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
-
 export type AddGranteesProjectsLocationsDataPoliciesError =
   | NotFound
   | Forbidden
@@ -412,8 +300,8 @@ export const addGranteesProjectsLocationsDataPolicies: API.OperationMethod<
   AddGranteesProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddGranteesProjectsLocationsDataPoliciesRequest,
-  output: DataPolicy,
+  input: __S(2) as any as S.Schema<AddGranteesProjectsLocationsDataPoliciesRequest>,
+  output: __S(5) as any as S.Schema<DataPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -432,8 +320,8 @@ export const createProjectsLocationsDataPolicies: API.OperationMethod<
   CreateProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsDataPoliciesRequest,
-  output: DataPolicy,
+  input: __S(7) as any as S.Schema<CreateProjectsLocationsDataPoliciesRequest>,
+  output: __S(5) as any as S.Schema<DataPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -452,8 +340,8 @@ export const deleteProjectsLocationsDataPolicies: API.OperationMethod<
   DeleteProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsDataPoliciesRequest,
-  output: Empty,
+  input: __S(8) as any as S.Schema<DeleteProjectsLocationsDataPoliciesRequest>,
+  output: __S(9) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -472,8 +360,8 @@ export const getIamPolicyProjectsLocationsDataPolicies: API.OperationMethod<
   GetIamPolicyProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsDataPoliciesRequest,
-  output: Policy,
+  input: __S(12) as any as S.Schema<GetIamPolicyProjectsLocationsDataPoliciesRequest>,
+  output: __S(20) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -487,8 +375,8 @@ export const getProjectsLocationsDataPolicies: API.OperationMethod<
   GetProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsDataPoliciesRequest,
-  output: DataPolicy,
+  input: __S(21) as any as S.Schema<GetProjectsLocationsDataPoliciesRequest>,
+  output: __S(5) as any as S.Schema<DataPolicy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -503,8 +391,8 @@ export const listProjectsLocationsDataPolicies: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDataPoliciesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsDataPoliciesRequest,
-  output: ListDataPoliciesResponse,
+  input: __S(22) as any as S.Schema<ListProjectsLocationsDataPoliciesRequest>,
+  output: __S(24) as any as S.Schema<ListDataPoliciesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -524,8 +412,8 @@ export const patchProjectsLocationsDataPolicies: API.OperationMethod<
   PatchProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsDataPoliciesRequest,
-  output: DataPolicy,
+  input: __S(25) as any as S.Schema<PatchProjectsLocationsDataPoliciesRequest>,
+  output: __S(5) as any as S.Schema<DataPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -544,8 +432,8 @@ export const removeGranteesProjectsLocationsDataPolicies: API.OperationMethod<
   RemoveGranteesProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveGranteesProjectsLocationsDataPoliciesRequest,
-  output: DataPolicy,
+  input: __S(26) as any as S.Schema<RemoveGranteesProjectsLocationsDataPoliciesRequest>,
+  output: __S(5) as any as S.Schema<DataPolicy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -564,8 +452,8 @@ export const setIamPolicyProjectsLocationsDataPolicies: API.OperationMethod<
   SetIamPolicyProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsDataPoliciesRequest,
-  output: Policy,
+  input: __S(28) as any as S.Schema<SetIamPolicyProjectsLocationsDataPoliciesRequest>,
+  output: __S(20) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -584,8 +472,8 @@ export const testIamPermissionsProjectsLocationsDataPolicies: API.OperationMetho
   TestIamPermissionsProjectsLocationsDataPoliciesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsDataPoliciesRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(30) as any as S.Schema<TestIamPermissionsProjectsLocationsDataPoliciesRequest>,
+  output: __S(29) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -599,14 +487,14 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          grantees: S.optional(StringList),
+          grantees: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "AddGranteesRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           dataPolicy: S.String.pipe(T.Label()),
-          body: S.optional(AddGranteesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -628,27 +516,27 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           routine: S.optional(S.String),
-          predefinedExpression: S.optional(DataMaskingPolicyPredefinedExpressionEnum),
+          predefinedExpression: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataMaskingPolicy" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          dataPolicyType: S.optional(DataPolicyDataPolicyTypeEnum),
+          dataPolicyType: S.optional(S.String),
           name: S.optional(S.String),
           dataPolicyId: S.optional(S.String),
-          version: S.optional(DataPolicyVersionEnum),
-          grantees: S.optional(StringList),
-          dataGovernanceTag: S.optional(DataGovernanceTag),
+          version: S.optional(S.String),
+          grantees: S.optional(__S(0)),
+          dataGovernanceTag: S.optional(__S(3)),
           etag: S.optional(S.String),
-          dataMaskingPolicy: S.optional(DataMaskingPolicy),
+          dataMaskingPolicy: S.optional(__S(4)),
           policyTag: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataPolicy" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dataPolicy: S.optional(DataPolicy),
+          dataPolicy: S.optional(__S(5)),
           dataPolicyId: S.optional(S.String),
         }),
       ).annotate({ identifier: "CreateDataPolicyRequest" });
@@ -656,7 +544,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(CreateDataPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -698,14 +586,14 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          options: S.optional(GetPolicyOptions),
+          options: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "GetIamPolicyRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(GetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(11).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -719,17 +607,17 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(AuditLogConfigLogTypeEnum),
-          exemptedMembers: S.optional(StringList),
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 6:
-      return S.Array(AuditLogConfig);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(AuditLogConfigList),
+          auditLogConfigs: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "AuditConfig" });
   }
@@ -737,7 +625,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AuditConfig);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -750,19 +638,19 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(StringList),
+          members: S.optional(__S(0)),
           role: S.optional(S.String),
-          condition: S.optional(Expr),
+          condition: S.optional(__S(17)),
         }),
       ).annotate({ identifier: "Binding" });
     case 3:
-      return S.Array(Binding);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
           version: S.optional(S.Number),
-          auditConfigs: S.optional(AuditConfigList),
-          bindings: S.optional(BindingList),
+          auditConfigs: S.optional(__S(16)),
+          bindings: S.optional(__S(19)),
           etag: S.optional(S.String),
         }),
       ).annotate({ identifier: "Policy" });
@@ -798,7 +686,7 @@ function __c2(j: number): any {
         identifier: "ListProjectsLocationsDataPoliciesRequest",
       });
     case 7:
-      return S.Array(DataPolicy);
+      return S.Array(__S(5));
   }
 }
 function __c3(j: number): any {
@@ -806,7 +694,7 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          dataPolicies: S.optional(DataPolicyList),
+          dataPolicies: S.optional(__S(23)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListDataPoliciesResponse" });
@@ -816,7 +704,7 @@ function __c3(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           allowMissing: S.optional(S.Boolean.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(DataPolicy.pipe(T.HttpBody())),
+          body: S.optional(__S(5).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -831,7 +719,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           dataPolicy: S.String.pipe(T.Label()),
-          body: S.optional(RemoveGranteesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(1).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -845,7 +733,7 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(Policy),
+          policy: S.optional(__S(20)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
@@ -853,7 +741,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(27).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -867,7 +755,7 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -876,7 +764,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(29).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -887,5 +775,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "TestIamPermissionsProjectsLocationsDataPoliciesRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

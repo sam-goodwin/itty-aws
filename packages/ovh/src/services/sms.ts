@@ -7,6 +7,8 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -16,11 +18,6 @@ export interface CancelSmsBatchRequest {
   /** Id */
   id: string;
 }
-const CancelSmsBatchRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelSmsBatchRequest>;
-
 /** Batch error details */
 export interface SmsBatchError {
   /** Error message */
@@ -28,19 +25,10 @@ export interface SmsBatchError {
   /** Receiver that triggered the error */
   receiver?: string;
 }
-const SmsBatchError = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SmsBatchError>;
-
 /** Details on error(s) on the batch, if any */
 export type SmsBatchErrorsList = Array<SmsBatchError>;
-const SmsBatchErrorsList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<SmsBatchErrorsList>;
-
 /** SMS receivers list */
 export type SmsBatchReceiversList = Array<string>;
-const SmsBatchReceiversList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<SmsBatchReceiversList>;
-
 /** Batch statuses */
 export type SmsBatchStatusEnum =
   | "CANCELED"
@@ -51,8 +39,6 @@ export type SmsBatchStatusEnum =
   | "INSERTING"
   | "PENDING"
   | "TO_CANCEL";
-const SmsBatchStatusEnum = S.String;
-
 /** Batch of SMS to send */
 export interface SmsBatch {
   /** SMS account ID */
@@ -90,17 +76,10 @@ export interface SmsBatch {
   /** Last update datetime */
   updatedAt?: string;
 }
-const SmsBatch = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<SmsBatch>;
-
 /** SMS classes */
 export type SmsBatchClassEnum = "FLASH" | "PHONE" | "SIM";
-const SmsBatchClassEnum = S.String;
-
 /** SMS receivers list. Either "to" or "slotID" must be passed */
 export type CreateSmsBatchRequestToList = Array<string>;
-const CreateSmsBatchRequestToList =
-  SmsBatchReceiversList as any as S.Schema<CreateSmsBatchRequestToList>;
-
 export interface CreateSmsBatchRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -125,15 +104,8 @@ export interface CreateSmsBatchRequest {
   /** SMS receivers list. Either "to" or "slotID" must be passed */
   to?: CreateSmsBatchRequestToList;
 }
-const CreateSmsBatchRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateSmsBatchRequest>;
-
 /** All existing types for a given sender */
 export type SmsTypeSenderEnum = "alpha" | "numeric" | "shortcode" | "virtual";
-const SmsTypeSenderEnum = S.String;
-
 export interface CreateSmsEstimateRequest {
   /** The message to send */
   message: string;
@@ -142,15 +114,8 @@ export interface CreateSmsEstimateRequest {
   /** Sender type that will be used to send the message */
   senderType: SmsTypeSenderEnum | (string & {});
 }
-const CreateSmsEstimateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateSmsEstimateRequest>;
-
 /** The SMS available characters class */
 export type SmsEncodingEnum = "7bits" | "unicode";
-const SmsEncodingEnum = S.String;
-
 /** A structure describing the encoding, length and number of SMS parts of a text message */
 export interface SmsJobEstimate {
   /** The number of characters the message contains, including invisible escaped characters */
@@ -162,13 +127,8 @@ export interface SmsJobEstimate {
   /** The quantity of SMS parts the message will be split in */
   parts?: number;
 }
-const SmsJobEstimate = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<SmsJobEstimate>;
-
 /** The receivers */
 export type CreateSmsHlrRequestReceiversList = Array<string>;
-const CreateSmsHlrRequestReceiversList =
-  SmsBatchReceiversList as any as S.Schema<CreateSmsHlrRequestReceiversList>;
-
 export interface CreateSmsHlrRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -177,22 +137,9 @@ export interface CreateSmsHlrRequest {
   /** The receivers document url link in csv format */
   receiversDocumentUrl?: string;
 }
-const CreateSmsHlrRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateSmsHlrRequest>;
-
 export type SmsSmsSendingReportIdsList = Array<number>;
-const SmsSmsSendingReportIdsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<SmsSmsSendingReportIdsList>;
-
 export type SmsSmsSendingReportInvalidReceiversList = Array<string>;
-const SmsSmsSendingReportInvalidReceiversList =
-  SmsBatchReceiversList as any as S.Schema<SmsSmsSendingReportInvalidReceiversList>;
-
 export type SmsSmsSendingReportValidReceiversList = Array<string>;
-const SmsSmsSendingReportValidReceiversList =
-  SmsBatchReceiversList as any as S.Schema<SmsSmsSendingReportValidReceiversList>;
-
 /** A structure describing all information about quota informations */
 export interface SmsSmsSendingReport {
   ids?: SmsSmsSendingReportIdsList;
@@ -201,29 +148,16 @@ export interface SmsSmsSendingReport {
   totalCreditsRemoved?: number;
   validReceivers?: SmsSmsSendingReportValidReceiversList;
 }
-const SmsSmsSendingReport = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SmsSmsSendingReport>;
-
 /** The charset format */
 export type SmsCharsetEnum = "UTF-8";
-const SmsCharsetEnum = S.String;
-
 /** Deprecated: The sms class of sms sending job */
 export type SmsClassEnum = "flash" | "phoneDisplay" | "sim" | "toolkit";
-const SmsClassEnum = S.String;
-
 /** The sms coding */
 export type SmsCodingEnum = "7bit" | "8bit";
-const SmsCodingEnum = S.String;
-
 /** The priority of an sms sending */
 export type SmsPriorityEnum = "high" | "low" | "medium" | "veryLow";
-const SmsPriorityEnum = S.String;
-
 /** The receivers list */
 export type CreateSmsJobRequestReceiversList = Array<string>;
-const CreateSmsJobRequestReceiversList =
-  SmsBatchReceiversList as any as S.Schema<CreateSmsJobRequestReceiversList>;
-
 export interface CreateSmsJobRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -256,25 +190,13 @@ export interface CreateSmsJobRequest {
   /** The maximum time -in minute(s)- before the message is dropped */
   validityPeriod?: number;
 }
-const CreateSmsJobRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateSmsJobRequest>;
-
 export interface CreateSmsPhonebookRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Name of the wanted phonebook */
   name: string;
 }
-const CreateSmsPhonebookRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateSmsPhonebookRequest>;
-
 export type CreateSmsPhonebookResponse = string;
-const CreateSmsPhonebookResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateSmsPhonebookResponse>;
-
 export interface CreateSmsPhonebookPhonebookContactRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -295,17 +217,7 @@ export interface CreateSmsPhonebookPhonebookContactRequest {
   /** Landline phone office number of the contact */
   workPhone?: string;
 }
-const CreateSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateSmsPhonebookPhonebookContactRequest>;
-
 export type CreateSmsPhonebookPhonebookContactResponse = number;
-const CreateSmsPhonebookPhonebookContactResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateSmsPhonebookPhonebookContactResponse>;
-
 export interface CreateSmsReceiverRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -320,11 +232,6 @@ export interface CreateSmsReceiverRequest {
   /** Slot number id used to handle the document */
   slotId: number;
 }
-const CreateSmsReceiverRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateSmsReceiverRequest>;
-
 /** Sms receivers preloaded */
 export interface SmsReceiver {
   /** Download file from URL before sending to contacts (works only with csvUrl and not document ID) */
@@ -340,8 +247,6 @@ export interface SmsReceiver {
   /** Slot number id */
   slotId?: number;
 }
-const SmsReceiver = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SmsReceiver>;
-
 export interface CreateSmsReceiverCleanRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -352,21 +257,11 @@ export interface CreateSmsReceiverCleanRequest {
   /** Only get action's price in credits without executing it */
   priceOnly: boolean;
 }
-const CreateSmsReceiverCleanRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateSmsReceiverCleanRequest>;
-
 /** A structure giving operation price and asynchronous task ID */
 export interface SmsReceiversAsynchronousCleanReport {
   taskId?: number;
   totalCreditsRemoved?: number;
 }
-const SmsReceiversAsynchronousCleanReport = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<SmsReceiversAsynchronousCleanReport>;
-
 export interface CreateSmsSenderRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -377,17 +272,7 @@ export interface CreateSmsSenderRequest {
   /** The sender (alpha or phone number) */
   sender: string;
 }
-const CreateSmsSenderRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateSmsSenderRequest>;
-
 export type CreateSmsSenderResponse = string;
-const CreateSmsSenderResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateSmsSenderResponse>;
-
 export interface CreateSmsSenderDocumentRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -398,11 +283,6 @@ export interface CreateSmsSenderDocumentRequest {
   /** Document name */
   name: string;
 }
-const CreateSmsSenderDocumentRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateSmsSenderDocumentRequest>;
-
 /** SMS senders' document */
 export interface SmsSenderDocument {
   /** Creation datetime */
@@ -420,27 +300,13 @@ export interface SmsSenderDocument {
   /** Document size (in bytes) */
   size?: number;
 }
-const SmsSenderDocument = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<SmsSenderDocument>;
-
 export interface CreateSmsSmppPasswordRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-const CreateSmsSmppPasswordRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateSmsSmppPasswordRequest>;
-
 export interface CreateSmsSmppPasswordResponse {}
-const CreateSmsSmppPasswordResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateSmsSmppPasswordResponse>;
-
 /** All existing types for a given template */
 export type SmsTypeTemplateEnum = "alerting" | "authentification" | "transactional";
-const SmsTypeTemplateEnum = S.String;
-
 export interface CreateSmsTemplatesControlRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -455,17 +321,7 @@ export interface CreateSmsTemplatesControlRequest {
   /** Message seen by the moderator */
   reason?: string;
 }
-const CreateSmsTemplatesControlRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateSmsTemplatesControlRequest>;
-
 export interface CreateSmsTemplatesControlResponse {}
-const CreateSmsTemplatesControlResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateSmsTemplatesControlResponse>;
-
 export interface CreateSmsTemplatesControlRelaunchValidationRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -476,15 +332,7 @@ export interface CreateSmsTemplatesControlRelaunchValidationRequest {
   /** Message pattern to be moderated. Use "#VALUE#" format for dynamic text area */
   message: string;
 }
-const CreateSmsTemplatesControlRelaunchValidationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateSmsTemplatesControlRelaunchValidationRequest>;
-
 export interface CreateSmsTemplatesControlRelaunchValidationResponse {}
-const CreateSmsTemplatesControlRelaunchValidationResponse =
-  CreateSmsTemplatesControlResponse as any as S.Schema<CreateSmsTemplatesControlRelaunchValidationResponse>;
-
 export interface CreateSmsUserRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -493,17 +341,9 @@ export interface CreateSmsUserRequest {
   /** The sms password */
   password: string | Redacted.Redacted<string>;
 }
-const CreateSmsUserRequest = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<CreateSmsUserRequest>;
-
 export interface CreateSmsUserResponse {}
-const CreateSmsUserResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<CreateSmsUserResponse>;
-
 /** The receivers list */
 export type CreateSmsUserJobRequestReceiversList = Array<string>;
-const CreateSmsUserJobRequestReceiversList =
-  SmsBatchReceiversList as any as S.Schema<CreateSmsUserJobRequestReceiversList>;
-
 export interface CreateSmsUserJobRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -538,11 +378,6 @@ export interface CreateSmsUserJobRequest {
   /** The maximum time -in minute(s)- before the message is dropped */
   validityPeriod?: number;
 }
-const CreateSmsUserJobRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateSmsUserJobRequest>;
-
 export interface CreateSmsUserReceiverRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -559,11 +394,6 @@ export interface CreateSmsUserReceiverRequest {
   /** Slot number id used to handle the document */
   slotId: number;
 }
-const CreateSmsUserReceiverRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateSmsUserReceiverRequest>;
-
 export interface CreateSmsUserReceiverCleanRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -576,22 +406,12 @@ export interface CreateSmsUserReceiverCleanRequest {
   /** Only get action's price in credits without executing it */
   priceOnly: boolean;
 }
-const CreateSmsUserReceiverCleanRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateSmsUserReceiverCleanRequest>;
-
 export interface CreateSmsVirtualNumberChatAccessRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** The virtual number */
   number: string;
 }
-const CreateSmsVirtualNumberChatAccessRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateSmsVirtualNumberChatAccessRequest>;
-
 /** The web access for your virtual number chat application */
 export interface SmsChatAccess {
   /** The creation date of this access */
@@ -600,13 +420,8 @@ export interface SmsChatAccess {
   /** The url of the web access */
   url?: string;
 }
-const SmsChatAccess = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<SmsChatAccess>;
-
 /** The receivers list */
 export type CreateSmsVirtualNumberJobRequestReceiversList = Array<string>;
-const CreateSmsVirtualNumberJobRequestReceiversList =
-  SmsBatchReceiversList as any as S.Schema<CreateSmsVirtualNumberJobRequestReceiversList>;
-
 export interface CreateSmsVirtualNumberJobRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -635,97 +450,48 @@ export interface CreateSmsVirtualNumberJobRequest {
   /** The maximum time -in minute(s)- before the message is dropped */
   validityPeriod?: number;
 }
-const CreateSmsVirtualNumberJobRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateSmsVirtualNumberJobRequest>;
-
 export interface DeleteSmsBatchRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Id */
   id: string;
 }
-const DeleteSmsBatchRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DeleteSmsBatchRequest>;
-
 export interface DeleteSmsBatchResponse {}
-const DeleteSmsBatchResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsBatchResponse>;
-
 export interface DeleteSmsBlacklistRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** The sms number blacklisted */
   number: string;
 }
-const DeleteSmsBlacklistRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<DeleteSmsBlacklistRequest>;
-
 export interface DeleteSmsBlacklistResponse {}
-const DeleteSmsBlacklistResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsBlacklistResponse>;
-
 export interface DeleteSmsIncomingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Id of the object */
   id: number;
 }
-const DeleteSmsIncomingRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DeleteSmsIncomingRequest>;
-
 export interface DeleteSmsIncomingResponse {}
-const DeleteSmsIncomingResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsIncomingResponse>;
-
 export interface DeleteSmsJobRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Id of the object */
   id: number;
 }
-const DeleteSmsJobRequest = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<DeleteSmsJobRequest>;
-
 export interface DeleteSmsJobResponse {}
-const DeleteSmsJobResponse = CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsJobResponse>;
-
 export interface DeleteSmsOutgoingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Id */
   id: number;
 }
-const DeleteSmsOutgoingRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<DeleteSmsOutgoingRequest>;
-
 export interface DeleteSmsOutgoingResponse {}
-const DeleteSmsOutgoingResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsOutgoingResponse>;
-
 export interface DeleteSmsPhonebookRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Identifier of the phonebook */
   bookKey: string;
 }
-const DeleteSmsPhonebookRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DeleteSmsPhonebookRequest>;
-
 export interface DeleteSmsPhonebookResponse {}
-const DeleteSmsPhonebookResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsPhonebookResponse>;
-
 export interface DeleteSmsPhonebookPhonebookContactRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -734,72 +500,35 @@ export interface DeleteSmsPhonebookPhonebookContactRequest {
   /** Contact identifier */
   id: number;
 }
-const DeleteSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<DeleteSmsPhonebookPhonebookContactRequest>;
-
 export interface DeleteSmsPhonebookPhonebookContactResponse {}
-const DeleteSmsPhonebookPhonebookContactResponse =
-  CreateSmsTemplatesControlResponse as any as S.Schema<DeleteSmsPhonebookPhonebookContactResponse>;
-
 export interface DeleteSmsReceiverRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Slot number id */
   slotId: number;
 }
-const DeleteSmsReceiverRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<DeleteSmsReceiverRequest>;
-
 export interface DeleteSmsReceiverResponse {}
-const DeleteSmsReceiverResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsReceiverResponse>;
-
 export interface DeleteSmsSenderRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** The sms sender */
   sender: string;
 }
-const DeleteSmsSenderRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DeleteSmsSenderRequest>;
-
 export interface DeleteSmsSenderResponse {}
-const DeleteSmsSenderResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsSenderResponse>;
-
 export interface DeleteSmsTemplatesControlRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Name of the template */
   name: string;
 }
-const DeleteSmsTemplatesControlRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<DeleteSmsTemplatesControlRequest>;
-
 export interface DeleteSmsTemplatesControlResponse {}
-const DeleteSmsTemplatesControlResponse =
-  CreateSmsTemplatesControlResponse as any as S.Schema<DeleteSmsTemplatesControlResponse>;
-
 export interface DeleteSmsUserRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** The sms user login */
   login: string;
 }
-const DeleteSmsUserRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<DeleteSmsUserRequest>;
-
 export interface DeleteSmsUserResponse {}
-const DeleteSmsUserResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsUserResponse>;
-
 export interface DeleteSmsUserIncomingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -808,15 +537,7 @@ export interface DeleteSmsUserIncomingRequest {
   /** Id of the object */
   id: number;
 }
-const DeleteSmsUserIncomingRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<DeleteSmsUserIncomingRequest>;
-
 export interface DeleteSmsUserIncomingResponse {}
-const DeleteSmsUserIncomingResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsUserIncomingResponse>;
-
 export interface DeleteSmsUserJobRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -825,15 +546,7 @@ export interface DeleteSmsUserJobRequest {
   /** Id of the object */
   id: number;
 }
-const DeleteSmsUserJobRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DeleteSmsUserJobRequest>;
-
 export interface DeleteSmsUserJobResponse {}
-const DeleteSmsUserJobResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsUserJobResponse>;
-
 export interface DeleteSmsUserOutgoingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -842,15 +555,7 @@ export interface DeleteSmsUserOutgoingRequest {
   /** Id of the object */
   id: number;
 }
-const DeleteSmsUserOutgoingRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<DeleteSmsUserOutgoingRequest>;
-
 export interface DeleteSmsUserOutgoingResponse {}
-const DeleteSmsUserOutgoingResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsUserOutgoingResponse>;
-
 export interface DeleteSmsUserReceiverRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -859,30 +564,14 @@ export interface DeleteSmsUserReceiverRequest {
   /** Slot number id */
   slotId: number;
 }
-const DeleteSmsUserReceiverRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DeleteSmsUserReceiverRequest>;
-
 export interface DeleteSmsUserReceiverResponse {}
-const DeleteSmsUserReceiverResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<DeleteSmsUserReceiverResponse>;
-
 export interface DeleteSmsVirtualNumberChatAccessRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** The virtual number */
   number: string;
 }
-const DeleteSmsVirtualNumberChatAccessRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DeleteSmsVirtualNumberChatAccessRequest>;
-
 export interface DeleteSmsVirtualNumberChatAccessResponse {}
-const DeleteSmsVirtualNumberChatAccessResponse =
-  CreateSmsTemplatesControlResponse as any as S.Schema<DeleteSmsVirtualNumberChatAccessResponse>;
-
 export interface DeleteSmsVirtualNumberIncomingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -891,15 +580,7 @@ export interface DeleteSmsVirtualNumberIncomingRequest {
   /** Id of the object */
   id: number;
 }
-const DeleteSmsVirtualNumberIncomingRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DeleteSmsVirtualNumberIncomingRequest>;
-
 export interface DeleteSmsVirtualNumberIncomingResponse {}
-const DeleteSmsVirtualNumberIncomingResponse =
-  CreateSmsTemplatesControlResponse as any as S.Schema<DeleteSmsVirtualNumberIncomingResponse>;
-
 export interface DeleteSmsVirtualNumberJobRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -908,15 +589,7 @@ export interface DeleteSmsVirtualNumberJobRequest {
   /** Id of the object */
   id: number;
 }
-const DeleteSmsVirtualNumberJobRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<DeleteSmsVirtualNumberJobRequest>;
-
 export interface DeleteSmsVirtualNumberJobResponse {}
-const DeleteSmsVirtualNumberJobResponse =
-  CreateSmsTemplatesControlResponse as any as S.Schema<DeleteSmsVirtualNumberJobResponse>;
-
 export interface DeleteSmsVirtualNumberOutgoingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -925,36 +598,17 @@ export interface DeleteSmsVirtualNumberOutgoingRequest {
   /** Id of the object */
   id: number;
 }
-const DeleteSmsVirtualNumberOutgoingRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<DeleteSmsVirtualNumberOutgoingRequest>;
-
 export interface DeleteSmsVirtualNumberOutgoingResponse {}
-const DeleteSmsVirtualNumberOutgoingResponse =
-  CreateSmsTemplatesControlResponse as any as S.Schema<DeleteSmsVirtualNumberOutgoingResponse>;
-
 export interface GetSmsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-const GetSmsRequest = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<GetSmsRequest>;
-
 /** Pack quantity automatic recredit possibilities */
 export type SmsPackQuantityAutomaticRecreditEnum = 100 | 200 | 250 | 500 | 1000 | 5000 | 10000;
-const SmsPackQuantityAutomaticRecreditEnum = S.Number;
-
 /** In case of smpp the channel can not be "both" */
 export type SmsChannelEnum = "both" | "marketing" | "transactional";
-const SmsChannelEnum = S.String;
-
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-const IamResourceMetadataTagsMap = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<IamResourceMetadataTagsMap>;
-
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
   /** Resource display name */
@@ -966,33 +620,17 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-const IamResourceMetadata = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<IamResourceMetadata>;
-
 /** Response type */
 export type SmsResponseTypeEnum = "cgi" | "none" | "text";
-const SmsResponseTypeEnum = S.String;
-
 /** The tracking media response */
 export type SmsResponseTrackingMediaEnum = "email" | "sms" | "voice";
-const SmsResponseTrackingMediaEnum = S.String;
-
 /** The tracking media response */
 export interface SmsResponseTrackingOptions {
   media?: SmsResponseTrackingMediaEnum | (string & {});
   sender?: string;
   target?: string;
 }
-const SmsResponseTrackingOptions = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<SmsResponseTrackingOptions>;
-
 export type SmsResponseTrackingOptionsList = Array<SmsResponseTrackingOptions>;
-const SmsResponseTrackingOptionsList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<SmsResponseTrackingOptionsList>;
-
 /** A structure describing how to manage an sms Response */
 export interface SmsResponse {
   /** Default url callback used for a given response. */
@@ -1003,12 +641,8 @@ export interface SmsResponse {
   trackingDefaultSmsSender?: string | null;
   trackingOptions?: SmsResponseTrackingOptionsList | null;
 }
-const SmsResponse = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<SmsResponse>;
-
 /** Account status */
 export type SmsStatusAccountEnum = "disable" | "enable";
-const SmsStatusAccountEnum = S.String;
-
 /** A structure describing all information about templates informations */
 export interface SmsTemplates {
   customizedEmailMode?: boolean;
@@ -1019,8 +653,6 @@ export interface SmsTemplates {
   smsBody?: string | null;
   time2chatAutomaticResponse?: string | null;
 }
-const SmsTemplates = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<SmsTemplates>;
-
 /** SMS details */
 export interface SmsAccountWithIAM {
   automaticRecreditAmount?: SmsPackQuantityAutomaticRecreditEnum | null;
@@ -1045,27 +677,18 @@ export interface SmsAccountWithIAM {
   templates?: SmsTemplates;
   userQuantityWithQuota?: number;
 }
-const SmsAccountWithIAM = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<SmsAccountWithIAM>;
-
 export interface GetSmsBatchRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Id */
   id: string;
 }
-const GetSmsBatchRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<GetSmsBatchRequest>;
-
 export interface GetSmsBatchStatisticsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Id */
   id: string;
 }
-const GetSmsBatchStatisticsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<GetSmsBatchStatisticsRequest>;
-
 /** Batch's statistics */
 export interface SmsBatchStatistics {
   /** The cost of the batch in credits, computed during batch processing */
@@ -1085,19 +708,12 @@ export interface SmsBatchStatistics {
   /** Number of SMS that received a STOP by the receiver */
   stoplisted?: number;
 }
-const SmsBatchStatistics = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<SmsBatchStatistics>;
-
 export interface GetSmsBlacklistRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** The sms number blacklisted */
   number: string;
 }
-const GetSmsBlacklistRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<GetSmsBlacklistRequest>;
-
 /** SMS blacklist */
 export interface SmsBlacklist {
   /** ID of the batch responsible of the blacklist */
@@ -1108,12 +724,8 @@ export interface SmsBlacklist {
   /** ID of the outgoing SMS responsible of the blacklist */
   smsOutgoingID?: number | null;
 }
-const SmsBlacklist = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<SmsBlacklist>;
-
 /** Way type */
 export type SmsDocumentWayTypeEnum = "incoming" | "outgoing";
-const SmsDocumentWayTypeEnum = S.String;
-
 export interface GetSmsDocumentRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -1128,26 +740,15 @@ export interface GetSmsDocumentRequest {
   /** specify outgoing or incoming sms */
   wayType: SmsDocumentWayTypeEnum | (string & {});
 }
-const GetSmsDocumentRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<GetSmsDocumentRequest>;
-
 export type GetSmsDocumentResponse = string;
-const GetSmsDocumentResponse = CreateSmsSenderResponse as any as S.Schema<GetSmsDocumentResponse>;
-
 export interface GetSmsHlrRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** HLR id */
   id: number;
 }
-const GetSmsHlrRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<GetSmsHlrRequest>;
-
 /** The sms coding */
 export type SmsHlrStatuses = "doing" | "done" | "error" | "todo";
-const SmsHlrStatuses = S.String;
-
 /** Home Location Register informations. Give informations about a given cellular phone. */
 export interface SmsHlrLookupNumber {
   /** HLR creation datetime */
@@ -1169,19 +770,12 @@ export interface SmsHlrLookupNumber {
   /** Is the MSISDN valid */
   valid?: boolean;
 }
-const SmsHlrLookupNumber = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<SmsHlrLookupNumber>;
-
 export interface GetSmsHlrOperatorRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** HLR id */
   id: number;
 }
-const GetSmsHlrOperatorRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetSmsHlrOperatorRequest>;
-
 /** Sms operator informations */
 export interface SmsHlr {
   /** The country */
@@ -1195,19 +789,12 @@ export interface SmsHlr {
   /** The region */
   region?: string;
 }
-const SmsHlr = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<SmsHlr>;
-
 export interface GetSmsIncomingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Id of the object */
   id: number;
 }
-const GetSmsIncomingRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<GetSmsIncomingRequest>;
-
 /** Sms history of sms incoming received */
 export interface SmsIncoming {
   creationDatetime?: string;
@@ -1217,16 +804,12 @@ export interface SmsIncoming {
   sender?: string;
   tag?: string;
 }
-const SmsIncoming = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<SmsIncoming>;
-
 export interface GetSmsJobRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Id of the object */
   id: number;
 }
-const GetSmsJobRequest = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<GetSmsJobRequest>;
-
 /** Sms job */
 export interface SmsJob {
   creationDatetime?: string;
@@ -1243,19 +826,12 @@ export interface SmsJob {
   sender?: string;
   sentAt?: string | null;
 }
-const SmsJob = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<SmsJob>;
-
 export interface GetSmsOutgoingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Id */
   id: number;
 }
-const GetSmsOutgoingRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<GetSmsOutgoingRequest>;
-
 /** Sent SMS */
 export interface SmsOutgoing {
   /** ID of batch linked to the SMS */
@@ -1293,30 +869,18 @@ export interface SmsOutgoing {
   /** Tariff code applied on the sms */
   tariffCode?: string;
 }
-const SmsOutgoing = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<SmsOutgoing>;
-
 export interface GetSmsOutgoingHlrRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Id of the object */
   id: number;
 }
-const GetSmsOutgoingHlrRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GetSmsOutgoingHlrRequest>;
-
 export interface GetSmsPhonebookRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Identifier of the phonebook */
   bookKey: string;
 }
-const GetSmsPhonebookRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetSmsPhonebookRequest>;
-
 /** Phone book */
 export interface SmsPhonebook {
   /** Identifier of the phonebook */
@@ -1326,12 +890,8 @@ export interface SmsPhonebook {
   /** Phone key identifier between the phone and phonebooks */
   phoneKey?: string;
 }
-const SmsPhonebook = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<SmsPhonebook>;
-
 /** Export file format */
 export type TelephonyContactsExportFormatsEnum = "csv";
-const TelephonyContactsExportFormatsEnum = S.String;
-
 export interface GetSmsPhonebookExportRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -1340,15 +900,8 @@ export interface GetSmsPhonebookExportRequest {
   /** Format of the file */
   format: TelephonyContactsExportFormatsEnum | (string & {});
 }
-const GetSmsPhonebookExportRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GetSmsPhonebookExportRequest>;
-
 /** File providing task status */
 export type TelephonyPcsFileStatusEnum = "doing" | "done" | "error" | "todo";
-const TelephonyPcsFileStatusEnum = S.String;
-
 /** Telephony API related file hosted */
 export interface TelephonyPcsFile {
   filename?: string;
@@ -1356,8 +909,6 @@ export interface TelephonyPcsFile {
   url?: string;
   urlExpirationDatetime?: string;
 }
-const TelephonyPcsFile = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<TelephonyPcsFile>;
-
 export interface GetSmsPhonebookPhonebookContactRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -1366,11 +917,6 @@ export interface GetSmsPhonebookPhonebookContactRequest {
   /** Contact identifier */
   id: number;
 }
-const GetSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GetSmsPhonebookPhonebookContactRequest>;
-
 /** Phone book contact */
 export interface SmsPhonebookContact {
   /** Group name of the phonebook */
@@ -1390,18 +936,12 @@ export interface SmsPhonebookContact {
   /** Landline phone office number of the contact */
   workPhone?: string | null;
 }
-const SmsPhonebookContact = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<SmsPhonebookContact>;
-
 export interface GetSmsPttsRequest {
   /** The premium transaction tracking code */
   ptt: number;
 }
-const GetSmsPttsRequest = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<GetSmsPttsRequest>;
-
 /** All typology of ptt duration */
 export type SmsPttDurationTypeEnum = "indeterminated" | "permanent" | "temporary";
-const SmsPttDurationTypeEnum = S.String;
-
 /** A structure describing ptt details */
 export interface SmsPttDetails {
   /** Ptt informations */
@@ -1411,12 +951,8 @@ export interface SmsPttDetails {
   /** Ptt volatility type */
   duration?: SmsPttDurationTypeEnum;
 }
-const SmsPttDetails = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<SmsPttDetails>;
-
 /** Countries where we sell SMS credits */
 export type SmsBillingCountryEnum = "es" | "fr" | "gb" | "ie" | "it" | "pl";
-const SmsBillingCountryEnum = S.String;
-
 /** All country suffixes accessible for sms services and "all" available */
 export type SmsCountryEnum =
   | "ad"
@@ -1627,19 +1163,12 @@ export type SmsCountryEnum =
   | "za"
   | "zm"
   | "zw";
-const SmsCountryEnum = S.String;
-
 export interface GetSmsRateDestinationsRequest {
   /** Country where you buy credits */
   billingCountry?: SmsBillingCountryEnum | (string & {});
   /** Country where you send SMS */
   country: SmsCountryEnum | (string & {});
 }
-const GetSmsRateDestinationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<GetSmsRateDestinationsRequest>;
-
 export type OrderCurrencyCodeEnum =
   | "AUD"
   | "CAD"
@@ -1656,16 +1185,12 @@ export type OrderCurrencyCodeEnum =
   | "USD"
   | "XOF"
   | "points";
-const OrderCurrencyCodeEnum = S.String;
-
 /** Price with it's currency and textual representation */
 export interface OrderPrice {
   currencyCode?: OrderCurrencyCodeEnum;
   text?: string;
   value?: number;
 }
-const OrderPrice = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<OrderPrice>;
-
 /** Rates of a given destination */
 export interface SmsDestinationRates {
   /** The country full name */
@@ -1677,50 +1202,29 @@ export interface SmsDestinationRates {
   /** Price of one SMS sent towards the given destination */
   price?: OrderPrice;
 }
-const SmsDestinationRates = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<SmsDestinationRates>;
-
 export interface GetSmsReceiverRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Slot number id */
   slotId: number;
 }
-const GetSmsReceiverRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<GetSmsReceiverRequest>;
-
 export interface GetSmsReceiverCsvRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Slot number id */
   slotId: number;
 }
-const GetSmsReceiverCsvRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GetSmsReceiverCsvRequest>;
-
 export type GetSmsReceiverCsvResponse = string;
-const GetSmsReceiverCsvResponse =
-  CreateSmsPhonebookResponse as any as S.Schema<GetSmsReceiverCsvResponse>;
-
 export interface GetSmsSenderRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** The sms sender */
   sender: string;
 }
-const GetSmsSenderRequest = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<GetSmsSenderRequest>;
-
 /** All tyoplogy of senders */
 export type SmsRefererSenderEnum = "custom" | "domain" | "line" | "nic" | "owner" | "virtual";
-const SmsRefererSenderEnum = S.String;
-
 /** All existing status for a given referer */
 export type SmsStatusSenderEnum = "disable" | "enable" | "refused" | "waitingValidation";
-const SmsStatusSenderEnum = S.String;
-
 /** SMS senders */
 export interface SmsSender {
   /** Message sent by the moderator */
@@ -1738,8 +1242,6 @@ export interface SmsSender {
   /** Validation media identifier */
   validationMedia?: string | null;
 }
-const SmsSender = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<SmsSender>;
-
 export interface GetSmsSenderDocumentRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -1748,25 +1250,12 @@ export interface GetSmsSenderDocumentRequest {
   /** Document ID */
   documentID: string;
 }
-const GetSmsSenderDocumentRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetSmsSenderDocumentRequest>;
-
 export interface GetSmsServiceInfosRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-const GetSmsServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GetSmsServiceInfosRequest>;
-
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-const ServicesServicePossibleRenewPeriodList =
-  SmsSmsSendingReportIdsList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
-
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
   /** The service is automatically renewed */
@@ -1780,8 +1269,6 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-const ServiceRenewType = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<ServiceRenewType>;
-
 /** Detailed renewal type of a service */
 export type ServiceRenewalTypeEnum =
   | "automaticForcedProduct"
@@ -1792,8 +1279,6 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-const ServiceRenewalTypeEnum = S.String;
-
 export type ServiceStateEnum =
   | "autorenewInProgress"
   | "expired"
@@ -1801,8 +1286,6 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-const ServiceStateEnum = S.String;
-
 /** Details about a Service */
 export interface ServicesService {
   /** Indicates that the service can be set up to be deleted at expiration */
@@ -1822,17 +1305,10 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-const ServicesService = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<ServicesService>;
-
 export interface GetSmsSmppSettingsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-const GetSmsSmppSettingsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetSmsSmppSettingsRequest>;
-
 /** SMPP Settings Endpoints */
 export interface SmsSettingsEndpoints {
   /** address of the TLS endpoint: domain:port */
@@ -1840,18 +1316,8 @@ export interface SmsSettingsEndpoints {
   /** address of the non-TLS endpoint: domain:port */
   unsecured?: string;
 }
-const SmsSettingsEndpoints = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<SmsSettingsEndpoints>;
-
 /** Addresses of the TLS and non-TLS endpoints */
 export type SmsSettingsEndpointsList = Array<SmsSettingsEndpoints>;
-const SmsSettingsEndpointsList = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<SmsSettingsEndpointsList>;
-
 /** Smpp Settings Statuses */
 export type SmsSettingsStatusEnum =
   | "DELETED"
@@ -1860,8 +1326,6 @@ export type SmsSettingsStatusEnum =
   | "UNKNOWN"
   | "UPDATING_IP"
   | "WAITING_IP";
-const SmsSettingsStatusEnum = S.String;
-
 /** SMPP settings */
 export interface SmsSettings {
   /** Addresses of the TLS and non-TLS endpoints */
@@ -1875,23 +1339,15 @@ export interface SmsSettings {
   /** Number of messages treated simultaneously */
   windowing?: number;
 }
-const SmsSettings = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<SmsSettings>;
-
 export interface GetSmsTaskRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   taskId: number;
 }
-const GetSmsTaskRequest = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<GetSmsTaskRequest>;
-
 /** The task function */
 export type SmsTodoGeneralPublicFunctionsEnum = "cleanSmsReceivers";
-const SmsTodoGeneralPublicFunctionsEnum = S.String;
-
 /** Task status */
 export type TelephonyTaskStatusEnum = "doing" | "done" | "error" | "pause" | "todo";
-const TelephonyTaskStatusEnum = S.String;
-
 /** The task step */
 export type SmsTodoGeneralPublicStepsEnum =
   | "checkOrder"
@@ -1900,8 +1356,6 @@ export type SmsTodoGeneralPublicStepsEnum =
   | "sendMailReport"
   | "starting"
   | "waitForHlrs";
-const SmsTodoGeneralPublicStepsEnum = S.String;
-
 /** Operation on a SMS service */
 export interface SmsTask {
   function?: SmsTodoGeneralPublicFunctionsEnum;
@@ -1909,19 +1363,12 @@ export interface SmsTask {
   step?: SmsTodoGeneralPublicStepsEnum;
   taskId?: number;
 }
-const SmsTask = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<SmsTask>;
-
 export interface GetSmsTemplatesControlRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Name of the template */
   name: string;
 }
-const GetSmsTemplatesControlRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GetSmsTemplatesControlRequest>;
-
 /** Sms template for moderation (Needed to send in US country) */
 export interface SmsTemplateControl {
   /** Specify the kind of template */
@@ -1939,20 +1386,14 @@ export interface SmsTemplateControl {
   /** Template status */
   status?: SmsStatusSenderEnum;
 }
-const SmsTemplateControl = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<SmsTemplateControl>;
-
 export interface GetSmsUserRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** The sms user login */
   login: string;
 }
-const GetSmsUserRequest = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<GetSmsUserRequest>;
-
 /** The media support used to be contacted in case of alert */
 export type SmsSupportEnum = "both" | "mail" | "sms";
-const SmsSupportEnum = S.String;
-
 /** A structure describing all information about alert threshold informations */
 export interface SmsAlertThreshold {
   alertEmail?: string;
@@ -1960,23 +1401,14 @@ export interface SmsAlertThreshold {
   alertThreshold?: number;
   support?: SmsSupportEnum | (string & {});
 }
-const SmsAlertThreshold = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<SmsAlertThreshold>;
-
 export type SmsUserIpRestrictionsList = Array<string>;
-const SmsUserIpRestrictionsList =
-  SmsBatchReceiversList as any as S.Schema<SmsUserIpRestrictionsList>;
-
 /** Current quota status */
 export type SmsQuotaStatusUserEnum = "active" | "inactive";
-const SmsQuotaStatusUserEnum = S.String;
-
 /** A structure describing all information about quota informations */
 export interface SmsQuota {
   quotaLeft?: number;
   quotaStatus?: SmsQuotaStatusUserEnum | (string & {});
 }
-const SmsQuota = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<SmsQuota>;
-
 /** SMS users */
 export interface SmsUser {
   alertThresholdInformations?: SmsAlertThreshold;
@@ -1990,8 +1422,6 @@ export interface SmsUser {
   /** URL called when a STOP is received after a receiver replied stop to a SMS */
   stopCallBack?: string | null;
 }
-const SmsUser = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<SmsUser>;
-
 export interface GetSmsUserDocumentRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2006,15 +1436,7 @@ export interface GetSmsUserDocumentRequest {
   /** specify outgoing or incoming sms */
   wayType: SmsDocumentWayTypeEnum | (string & {});
 }
-const GetSmsUserDocumentRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetSmsUserDocumentRequest>;
-
 export type GetSmsUserDocumentResponse = string;
-const GetSmsUserDocumentResponse =
-  CreateSmsPhonebookResponse as any as S.Schema<GetSmsUserDocumentResponse>;
-
 export interface GetSmsUserIncomingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2023,11 +1445,6 @@ export interface GetSmsUserIncomingRequest {
   /** Id of the object */
   id: number;
 }
-const GetSmsUserIncomingRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetSmsUserIncomingRequest>;
-
 export interface GetSmsUserJobRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2036,11 +1453,6 @@ export interface GetSmsUserJobRequest {
   /** Id of the object */
   id: number;
 }
-const GetSmsUserJobRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GetSmsUserJobRequest>;
-
 export interface GetSmsUserOutgoingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2049,11 +1461,6 @@ export interface GetSmsUserOutgoingRequest {
   /** Id of the object */
   id: number;
 }
-const GetSmsUserOutgoingRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GetSmsUserOutgoingRequest>;
-
 export interface GetSmsUserOutgoingHlrRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2062,11 +1469,6 @@ export interface GetSmsUserOutgoingHlrRequest {
   /** Id of the object */
   id: number;
 }
-const GetSmsUserOutgoingHlrRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GetSmsUserOutgoingHlrRequest>;
-
 export interface GetSmsUserReceiverRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2075,11 +1477,6 @@ export interface GetSmsUserReceiverRequest {
   /** Slot number id */
   slotId: number;
 }
-const GetSmsUserReceiverRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GetSmsUserReceiverRequest>;
-
 export interface GetSmsUserReceiverCsvRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2088,28 +1485,13 @@ export interface GetSmsUserReceiverCsvRequest {
   /** Slot number id */
   slotId: number;
 }
-const GetSmsUserReceiverCsvRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<GetSmsUserReceiverCsvRequest>;
-
 export type GetSmsUserReceiverCsvResponse = string;
-const GetSmsUserReceiverCsvResponse =
-  CreateSmsPhonebookResponse as any as S.Schema<GetSmsUserReceiverCsvResponse>;
-
 export interface GetSmsVirtualNumberRequest {
   /** Your virtual number */
   number: string;
 }
-const GetSmsVirtualNumberRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<GetSmsVirtualNumberRequest>;
-
 /** The ISO formated country code of the number */
 export type SmsVirtualNumberIsoCountryCodeEnum = "be" | "ch" | "de" | "es" | "fr" | "uk";
-const SmsVirtualNumberIsoCountryCodeEnum = S.String;
-
 /** Virtual numbers */
 export interface SmsVirtualNumberGenericServiceWithIAM {
   /** The ISO formated country code of the number */
@@ -2119,22 +1501,12 @@ export interface SmsVirtualNumberGenericServiceWithIAM {
   /** The virtual number */
   number?: string;
 }
-const SmsVirtualNumberGenericServiceWithIAM = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<SmsVirtualNumberGenericServiceWithIAM>;
-
 export interface GetSmsVirtualNumberByNumberRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** The virtual number */
   number: string;
 }
-const GetSmsVirtualNumberByNumberRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<GetSmsVirtualNumberByNumberRequest>;
-
 /** Virtual numbers */
 export interface SmsVirtualNumber {
   /** The ISO formated country code of the number */
@@ -2142,19 +1514,12 @@ export interface SmsVirtualNumber {
   /** The virtual number */
   number?: string;
 }
-const SmsVirtualNumber = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<SmsVirtualNumber>;
-
 export interface GetSmsVirtualNumberChatAccessRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** The virtual number */
   number: string;
 }
-const GetSmsVirtualNumberChatAccessRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GetSmsVirtualNumberChatAccessRequest>;
-
 export interface GetSmsVirtualNumberIncomingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2163,11 +1528,6 @@ export interface GetSmsVirtualNumberIncomingRequest {
   /** Id of the object */
   id: number;
 }
-const GetSmsVirtualNumberIncomingRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<GetSmsVirtualNumberIncomingRequest>;
-
 export interface GetSmsVirtualNumberJobRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2176,11 +1536,6 @@ export interface GetSmsVirtualNumberJobRequest {
   /** Id of the object */
   id: number;
 }
-const GetSmsVirtualNumberJobRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GetSmsVirtualNumberJobRequest>;
-
 /** Sms job */
 export interface SmsVirtualNumberJob {
   creationDatetime?: string;
@@ -2194,8 +1549,6 @@ export interface SmsVirtualNumberJob {
   ptt?: number;
   receiver?: string;
 }
-const SmsVirtualNumberJob = /*@__PURE__*/ __L.at(__c15, 5) as any as S.Schema<SmsVirtualNumberJob>;
-
 export interface GetSmsVirtualNumberOutgoingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2204,11 +1557,6 @@ export interface GetSmsVirtualNumberOutgoingRequest {
   /** Id of the object */
   id: number;
 }
-const GetSmsVirtualNumberOutgoingRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GetSmsVirtualNumberOutgoingRequest>;
-
 export interface GetSmsVirtualNumberOutgoingHlrRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2217,20 +1565,10 @@ export interface GetSmsVirtualNumberOutgoingHlrRequest {
   /** Id of the object */
   id: number;
 }
-const GetSmsVirtualNumberOutgoingHlrRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GetSmsVirtualNumberOutgoingHlrRequest>;
-
 export interface GetSmsVirtualNumberServiceInfosRequest {
   /** Your virtual number */
   number: string;
 }
-const GetSmsVirtualNumberServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<GetSmsVirtualNumberServiceInfosRequest>;
-
 export interface ImportSmsPhonebookRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2239,11 +1577,6 @@ export interface ImportSmsPhonebookRequest {
   /** ID of the /me/document file you want to import */
   documentId: string;
 }
-const ImportSmsPhonebookRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ImportSmsPhonebookRequest>;
-
 /** Operation on a telephony service */
 export interface TelephonyTask {
   /** Action associated with the task */
@@ -2257,60 +1590,24 @@ export interface TelephonyTask {
   status?: TelephonyTaskStatusEnum;
   taskId?: number;
 }
-const TelephonyTask = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<TelephonyTask>;
-
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-const IamResourceTagFilterInput =
-  CreateSmsSmppPasswordResponse as any as S.Schema<IamResourceTagFilterInput>;
-
 export type ListSmsRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-const ListSmsRequestIamTagsValueList = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<ListSmsRequestIamTagsValueList>;
-
 export type ListSmsRequestIamTagsMap = {
   [key: string]: ListSmsRequestIamTagsValueList | undefined;
 };
-const ListSmsRequestIamTagsMap = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ListSmsRequestIamTagsMap>;
-
 export interface ListSmsRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListSmsRequestIamTagsMap;
 }
-const ListSmsRequest = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<ListSmsRequest>;
-
 export type ListSmsResponseBodyList = Array<string>;
-const ListSmsResponseBodyList = SmsBatchReceiversList as any as S.Schema<ListSmsResponseBodyList>;
-
 export type ListSmsResponse = ListSmsResponseBodyList;
-const ListSmsResponse = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<ListSmsResponse>;
-
 export interface ListSmsBatchesRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-const ListSmsBatchesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListSmsBatchesRequest>;
-
 export type ListSmsBatchesResponseBodyList = Array<SmsBatch>;
-const ListSmsBatchesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListSmsBatchesResponseBodyList>;
-
 export type ListSmsBatchesResponse = ListSmsBatchesResponseBodyList;
-const ListSmsBatchesResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ListSmsBatchesResponse>;
-
 export interface ListSmsBlacklistsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2319,36 +1616,16 @@ export interface ListSmsBlacklistsRequest {
   /** Filter the value of smsOutgoingID property (=) */
   smsOutgoingID?: number;
 }
-const ListSmsBlacklistsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ListSmsBlacklistsRequest>;
-
 export type ListSmsBlacklistsResponseBodyList = Array<string>;
-const ListSmsBlacklistsResponseBodyList =
-  SmsBatchReceiversList as any as S.Schema<ListSmsBlacklistsResponseBodyList>;
-
 export type ListSmsBlacklistsResponse = ListSmsBlacklistsResponseBodyList;
-const ListSmsBlacklistsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListSmsBlacklistsResponse>;
-
 export interface ListSmsExceptionsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** The receiver number to check */
   receiver: string;
 }
-const ListSmsExceptionsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ListSmsExceptionsRequest>;
-
 /** The exception message */
 export type SmsExceptionMessagesList = Array<string>;
-const SmsExceptionMessagesList = SmsBatchReceiversList as any as S.Schema<SmsExceptionMessagesList>;
-
 /** Restriction type used by the operator to filter sms. */
 export type SmsRestrictionCodeEnum =
   | "ALPHA"
@@ -2358,8 +1635,6 @@ export type SmsRestrictionCodeEnum =
   | "DLR"
   | "FLASHONLY"
   | "MSISDN";
-const SmsRestrictionCodeEnum = S.String;
-
 /** Sms reach list */
 export interface SmsException {
   /** The abreviated country code. */
@@ -2373,33 +1648,14 @@ export interface SmsException {
   /** The substitution sender used to bypass operator filter */
   substitution?: string | null;
 }
-const SmsException = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<SmsException>;
-
 export type ListSmsExceptionsResponseBodyList = Array<SmsException>;
-const ListSmsExceptionsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ListSmsExceptionsResponseBodyList>;
-
 export type ListSmsExceptionsResponse = ListSmsExceptionsResponseBodyList;
-const ListSmsExceptionsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<ListSmsExceptionsResponse>;
-
 export interface ListSmsHlrRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-const ListSmsHlrRequest = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<ListSmsHlrRequest>;
-
 export type ListSmsHlrResponseBodyList = Array<number>;
-const ListSmsHlrResponseBodyList =
-  SmsSmsSendingReportIdsList as any as S.Schema<ListSmsHlrResponseBodyList>;
-
 export type ListSmsHlrResponse = ListSmsHlrResponseBodyList;
-const ListSmsHlrResponse = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<ListSmsHlrResponse>;
-
 export interface ListSmsIncomingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2412,25 +1668,14 @@ export interface ListSmsIncomingRequest {
   /** Filter the value of tag property (=) */
   tag?: string;
 }
-const ListSmsIncomingRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<ListSmsIncomingRequest>;
-
 export type ListSmsIncomingResponseBodyList = Array<number>;
 export type ListSmsIncomingResponse = ListSmsIncomingResponseBodyList;
-const ListSmsIncomingResponse = ListSmsHlrResponse as any as S.Schema<ListSmsIncomingResponse>;
-
 export interface ListSmsJobsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-const ListSmsJobsRequest = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<ListSmsJobsRequest>;
-
 export type ListSmsJobsResponseBodyList = Array<number>;
 export type ListSmsJobsResponse = ListSmsJobsResponseBodyList;
-const ListSmsJobsResponse = ListSmsHlrResponse as any as S.Schema<ListSmsJobsResponse>;
-
 export interface ListSmsOutgoingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2455,62 +1700,29 @@ export interface ListSmsOutgoingRequest {
   /** Filter on tag property (=) */
   tag?: string;
 }
-const ListSmsOutgoingRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ListSmsOutgoingRequest>;
-
 export type ListSmsOutgoingResponseBodyList = Array<number>;
 export type ListSmsOutgoingResponse = ListSmsOutgoingResponseBodyList;
-const ListSmsOutgoingResponse = ListSmsHlrResponse as any as S.Schema<ListSmsOutgoingResponse>;
-
 export interface ListSmsPhonebookPhonebookContactRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Identifier of the phonebook */
   bookKey: string;
 }
-const ListSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListSmsPhonebookPhonebookContactRequest>;
-
 export type ListSmsPhonebookPhonebookContactResponseBodyList = Array<number>;
-const ListSmsPhonebookPhonebookContactResponseBodyList =
-  SmsSmsSendingReportIdsList as any as S.Schema<ListSmsPhonebookPhonebookContactResponseBodyList>;
-
 export type ListSmsPhonebookPhonebookContactResponse =
   ListSmsPhonebookPhonebookContactResponseBodyList;
-const ListSmsPhonebookPhonebookContactResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ListSmsPhonebookPhonebookContactResponse>;
-
 export interface ListSmsPhonebooksRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-const ListSmsPhonebooksRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<ListSmsPhonebooksRequest>;
-
 export type ListSmsPhonebooksResponseBodyList = Array<string>;
 export type ListSmsPhonebooksResponse = ListSmsPhonebooksResponseBodyList;
-const ListSmsPhonebooksResponse =
-  ListSmsBlacklistsResponse as any as S.Schema<ListSmsPhonebooksResponse>;
-
 export interface ListSmsRatePacksRequest {
   /** Country where you buy credits */
   billingCountry?: SmsBillingCountryEnum | (string & {});
   /** Country where you send SMS */
   country: SmsCountryEnum | (string & {});
 }
-const ListSmsRatePacksRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ListSmsRatePacksRequest>;
-
 /** Details about a SMS pack */
 export interface SmsPackDetails {
   /** Destination country code */
@@ -2536,33 +1748,14 @@ export interface SmsPackDetails {
   /** Minimum quantity (included) of SMS you can obtain with this pack */
   smsQuantityMin?: number;
 }
-const SmsPackDetails = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<SmsPackDetails>;
-
 export type ListSmsRatePacksResponseBodyList = Array<SmsPackDetails>;
-const ListSmsRatePacksResponseBodyList = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<ListSmsRatePacksResponseBodyList>;
-
 export type ListSmsRatePacksResponse = ListSmsRatePacksResponseBodyList;
-const ListSmsRatePacksResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ListSmsRatePacksResponse>;
-
 export interface ListSmsReceiversRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-const ListSmsReceiversRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<ListSmsReceiversRequest>;
-
 export type ListSmsReceiversResponseBodyList = Array<number>;
 export type ListSmsReceiversResponse = ListSmsReceiversResponseBodyList;
-const ListSmsReceiversResponse = ListSmsHlrResponse as any as S.Schema<ListSmsReceiversResponse>;
-
 /** All country prices accessible from a reference */
 export type ReferenceCountryEnum =
   | "all"
@@ -2588,8 +1781,6 @@ export type ReferenceCountryEnum =
   | "sn"
   | "tn"
   | "we";
-const ReferenceCountryEnum = S.String;
-
 /** Pack quantity levels */
 export type SmsPackQuantityEnum =
   | 100
@@ -2604,8 +1795,6 @@ export type SmsPackQuantityEnum =
   | 50000
   | 100000
   | 1000000;
-const SmsPackQuantityEnum = S.Number;
-
 export interface ListSmsSeeOffersRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2616,11 +1805,6 @@ export interface ListSmsSeeOffersRequest {
   /** Sms pack offer quantity */
   quantity: SmsPackQuantityEnum | (number & {});
 }
-const ListSmsSeeOffersRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ListSmsSeeOffersRequest>;
-
 /** A structure describing all information about an sms pack offer */
 export interface SmsPackOffer {
   countryDestination?: string;
@@ -2632,124 +1816,58 @@ export interface SmsPackOffer {
   smsQuantity?: number;
   totalPrice?: number | null;
 }
-const SmsPackOffer = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<SmsPackOffer>;
-
 export type ListSmsSeeOffersResponseBodyList = Array<SmsPackOffer>;
-const ListSmsSeeOffersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ListSmsSeeOffersResponseBodyList>;
-
 export type ListSmsSeeOffersResponse = ListSmsSeeOffersResponseBodyList;
-const ListSmsSeeOffersResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<ListSmsSeeOffersResponse>;
-
 export interface ListSmsSenderDocumentsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** The sms sender */
   sender: string;
 }
-const ListSmsSenderDocumentsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<ListSmsSenderDocumentsRequest>;
-
 export type ListSmsSenderDocumentsResponseBodyList = Array<string>;
 export type ListSmsSenderDocumentsResponse = ListSmsSenderDocumentsResponseBodyList;
-const ListSmsSenderDocumentsResponse =
-  ListSmsBlacklistsResponse as any as S.Schema<ListSmsSenderDocumentsResponse>;
-
 export interface ListSmsSendersRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-const ListSmsSendersRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListSmsSendersRequest>;
-
 export type ListSmsSendersResponseBodyList = Array<string>;
 export type ListSmsSendersResponse = ListSmsSendersResponseBodyList;
-const ListSmsSendersResponse = ListSmsResponse as any as S.Schema<ListSmsSendersResponse>;
-
 /** The referer of the available sender */
 export type SmsSenderRefererEnum = "domain" | "nichandle";
-const SmsSenderRefererEnum = S.String;
-
 export interface ListSmsSendersAvailableForValidationRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Information type */
   referer?: SmsSenderRefererEnum | (string & {});
 }
-const ListSmsSendersAvailableForValidationRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ListSmsSendersAvailableForValidationRequest>;
-
 /** A structure describing all information about senders available */
 export interface SmsSenderAvailable {
   referer?: SmsSenderRefererEnum;
   sender?: string;
 }
-const SmsSenderAvailable = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<SmsSenderAvailable>;
-
 export type ListSmsSendersAvailableForValidationResponseBodyList = Array<SmsSenderAvailable>;
-const ListSmsSendersAvailableForValidationResponseBodyList = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListSmsSendersAvailableForValidationResponseBodyList>;
-
 export type ListSmsSendersAvailableForValidationResponse =
   ListSmsSendersAvailableForValidationResponseBodyList;
-const ListSmsSendersAvailableForValidationResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<ListSmsSendersAvailableForValidationResponse>;
-
 export interface ListSmsSmppAllowedIPsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-const ListSmsSmppAllowedIPsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<ListSmsSmppAllowedIPsRequest>;
-
 export type ListSmsSmppAllowedIPsResponseBodyList = Array<string>;
 export type ListSmsSmppAllowedIPsResponse = ListSmsSmppAllowedIPsResponseBodyList;
-const ListSmsSmppAllowedIPsResponse =
-  ListSmsBlacklistsResponse as any as S.Schema<ListSmsSmppAllowedIPsResponse>;
-
 export interface ListSmsTaskRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Filter the value of status property (=) */
   status?: TelephonyTaskStatusEnum | (string & {});
 }
-const ListSmsTaskRequest = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<ListSmsTaskRequest>;
-
 export type ListSmsTaskResponseBodyList = Array<number>;
 export type ListSmsTaskResponse = ListSmsTaskResponseBodyList;
-const ListSmsTaskResponse = ListSmsHlrResponse as any as S.Schema<ListSmsTaskResponse>;
-
 export interface ListSmsTemplatesControlRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-const ListSmsTemplatesControlRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ListSmsTemplatesControlRequest>;
-
 export type ListSmsTemplatesControlResponseBodyList = Array<string>;
 export type ListSmsTemplatesControlResponse = ListSmsTemplatesControlResponseBodyList;
-const ListSmsTemplatesControlResponse =
-  ListSmsBlacklistsResponse as any as S.Schema<ListSmsTemplatesControlResponse>;
-
 export interface ListSmsUserIncomingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2760,31 +1878,16 @@ export interface ListSmsUserIncomingRequest {
   /** Filter the value of tag property (=) */
   tag?: string;
 }
-const ListSmsUserIncomingRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ListSmsUserIncomingRequest>;
-
 export type ListSmsUserIncomingResponseBodyList = Array<number>;
 export type ListSmsUserIncomingResponse = ListSmsUserIncomingResponseBodyList;
-const ListSmsUserIncomingResponse =
-  ListSmsPhonebookPhonebookContactResponse as any as S.Schema<ListSmsUserIncomingResponse>;
-
 export interface ListSmsUserJobsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** The sms user login */
   login: string;
 }
-const ListSmsUserJobsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ListSmsUserJobsRequest>;
-
 export type ListSmsUserJobsResponseBodyList = Array<number>;
 export type ListSmsUserJobsResponse = ListSmsUserJobsResponseBodyList;
-const ListSmsUserJobsResponse = ListSmsHlrResponse as any as S.Schema<ListSmsUserJobsResponse>;
-
 export interface ListSmsUserOutgoingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2803,42 +1906,22 @@ export interface ListSmsUserOutgoingRequest {
   /** Filter the value of tag property (=) */
   tag?: string;
 }
-const ListSmsUserOutgoingRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ListSmsUserOutgoingRequest>;
-
 export type ListSmsUserOutgoingResponseBodyList = Array<number>;
 export type ListSmsUserOutgoingResponse = ListSmsUserOutgoingResponseBodyList;
-const ListSmsUserOutgoingResponse =
-  ListSmsPhonebookPhonebookContactResponse as any as S.Schema<ListSmsUserOutgoingResponse>;
-
 export interface ListSmsUserReceiversRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** The sms user login */
   login: string;
 }
-const ListSmsUserReceiversRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<ListSmsUserReceiversRequest>;
-
 export type ListSmsUserReceiversResponseBodyList = Array<number>;
 export type ListSmsUserReceiversResponse = ListSmsUserReceiversResponseBodyList;
-const ListSmsUserReceiversResponse =
-  ListSmsPhonebookPhonebookContactResponse as any as S.Schema<ListSmsUserReceiversResponse>;
-
 export interface ListSmsUsersRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-const ListSmsUsersRequest = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<ListSmsUsersRequest>;
-
 export type ListSmsUsersResponseBodyList = Array<string>;
 export type ListSmsUsersResponse = ListSmsUsersResponseBodyList;
-const ListSmsUsersResponse = ListSmsResponse as any as S.Schema<ListSmsUsersResponse>;
-
 export interface ListSmsVirtualNumberIncomingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2853,32 +1936,16 @@ export interface ListSmsVirtualNumberIncomingRequest {
   /** Filter the value of tag property (=) */
   tag?: string;
 }
-const ListSmsVirtualNumberIncomingRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<ListSmsVirtualNumberIncomingRequest>;
-
 export type ListSmsVirtualNumberIncomingResponseBodyList = Array<number>;
 export type ListSmsVirtualNumberIncomingResponse = ListSmsVirtualNumberIncomingResponseBodyList;
-const ListSmsVirtualNumberIncomingResponse =
-  ListSmsPhonebookPhonebookContactResponse as any as S.Schema<ListSmsVirtualNumberIncomingResponse>;
-
 export interface ListSmsVirtualNumberJobsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** The virtual number */
   number: string;
 }
-const ListSmsVirtualNumberJobsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<ListSmsVirtualNumberJobsRequest>;
-
 export type ListSmsVirtualNumberJobsResponseBodyList = Array<number>;
 export type ListSmsVirtualNumberJobsResponse = ListSmsVirtualNumberJobsResponseBodyList;
-const ListSmsVirtualNumberJobsResponse =
-  ListSmsPhonebookPhonebookContactResponse as any as S.Schema<ListSmsVirtualNumberJobsResponse>;
-
 export interface ListSmsVirtualNumberOutgoingRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2901,51 +1968,24 @@ export interface ListSmsVirtualNumberOutgoingRequest {
   /** Filter the value of tag property (=) */
   tag?: string;
 }
-const ListSmsVirtualNumberOutgoingRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<ListSmsVirtualNumberOutgoingRequest>;
-
 export type ListSmsVirtualNumberOutgoingResponseBodyList = Array<number>;
 export type ListSmsVirtualNumberOutgoingResponse = ListSmsVirtualNumberOutgoingResponseBodyList;
-const ListSmsVirtualNumberOutgoingResponse =
-  ListSmsPhonebookPhonebookContactResponse as any as S.Schema<ListSmsVirtualNumberOutgoingResponse>;
-
 export type ListSmsVirtualNumbersRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
 export type ListSmsVirtualNumbersRequestIamTagsMap = {
   [key: string]: ListSmsVirtualNumbersRequestIamTagsValueList | undefined;
 };
-const ListSmsVirtualNumbersRequestIamTagsMap =
-  ListSmsRequestIamTagsMap as any as S.Schema<ListSmsVirtualNumbersRequestIamTagsMap>;
-
 export interface ListSmsVirtualNumbersRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListSmsVirtualNumbersRequestIamTagsMap;
 }
-const ListSmsVirtualNumbersRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<ListSmsVirtualNumbersRequest>;
-
 export type ListSmsVirtualNumbersResponseBodyList = Array<string>;
 export type ListSmsVirtualNumbersResponse = ListSmsVirtualNumbersResponseBodyList;
-const ListSmsVirtualNumbersResponse =
-  ListSmsBlacklistsResponse as any as S.Schema<ListSmsVirtualNumbersResponse>;
-
 export interface ListSmsVirtualNumbersRequest2 {
   /** The internal name of your SMS offer */
   serviceName: string;
 }
-const ListSmsVirtualNumbersRequest2 = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<ListSmsVirtualNumbersRequest2>;
-
 export type ListSmsVirtualNumbersResponseBodyList2 = Array<string>;
 export type ListSmsVirtualNumbersResponse2 = ListSmsVirtualNumbersResponseBodyList2;
-const ListSmsVirtualNumbersResponse2 =
-  ListSmsBlacklistsResponse as any as S.Schema<ListSmsVirtualNumbersResponse2>;
-
 export interface PutSmsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2960,11 +2000,7 @@ export interface PutSmsRequest {
   stopCallBack?: string | null;
   templates?: SmsTemplates;
 }
-const PutSmsRequest = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<PutSmsRequest>;
-
 export interface PutSmsResponse {}
-const PutSmsResponse = CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsResponse>;
-
 export interface PutSmsBatchRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2973,8 +2009,6 @@ export interface PutSmsBatchRequest {
   /** Batch name */
   name: string;
 }
-const PutSmsBatchRequest = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<PutSmsBatchRequest>;
-
 export interface PutSmsPhonebookRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -2983,15 +2017,7 @@ export interface PutSmsPhonebookRequest {
   /** Phonebook name */
   name?: string;
 }
-const PutSmsPhonebookRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<PutSmsPhonebookRequest>;
-
 export interface PutSmsPhonebookResponse {}
-const PutSmsPhonebookResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsPhonebookResponse>;
-
 export interface PutSmsPhonebookPhonebookContactRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -3014,15 +2040,7 @@ export interface PutSmsPhonebookPhonebookContactRequest {
   /** Landline phone office number of the contact */
   workPhone?: string | null;
 }
-const PutSmsPhonebookPhonebookContactRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<PutSmsPhonebookPhonebookContactRequest>;
-
 export interface PutSmsPhonebookPhonebookContactResponse {}
-const PutSmsPhonebookPhonebookContactResponse =
-  CreateSmsTemplatesControlResponse as any as S.Schema<PutSmsPhonebookPhonebookContactResponse>;
-
 export interface PutSmsReceiverRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -3033,15 +2051,7 @@ export interface PutSmsReceiverRequest {
   /** Description name of the document */
   description?: string;
 }
-const PutSmsReceiverRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<PutSmsReceiverRequest>;
-
 export interface PutSmsReceiverResponse {}
-const PutSmsReceiverResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsReceiverResponse>;
-
 export interface PutSmsSenderRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -3052,11 +2062,7 @@ export interface PutSmsSenderRequest {
   /** Sender status */
   status?: SmsStatusSenderEnum | (string & {});
 }
-const PutSmsSenderRequest = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<PutSmsSenderRequest>;
-
 export interface PutSmsSenderResponse {}
-const PutSmsSenderResponse = CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsSenderResponse>;
-
 export interface PutSmsSenderDocumentRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -3069,39 +2075,18 @@ export interface PutSmsSenderDocumentRequest {
   /** Document name */
   name?: string;
 }
-const PutSmsSenderDocumentRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<PutSmsSenderDocumentRequest>;
-
 export interface PutSmsSenderDocumentResponse {}
-const PutSmsSenderDocumentResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsSenderDocumentResponse>;
-
 export interface PutSmsServiceInfosRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-const PutSmsServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<PutSmsServiceInfosRequest>;
-
 export interface PutSmsServiceInfosResponse {}
-const PutSmsServiceInfosResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsServiceInfosResponse>;
-
 /** Smpp allowed IPs action */
 export type SmsAllowedIPsActionEnum = "add" | "remove";
-const SmsAllowedIPsActionEnum = S.String;
-
 /** List of IPs to add or remove */
 export type PutSmsSmppAllowedIPsRequestIpsList = Array<string>;
-const PutSmsSmppAllowedIPsRequestIpsList =
-  SmsBatchReceiversList as any as S.Schema<PutSmsSmppAllowedIPsRequestIpsList>;
-
 export interface PutSmsSmppAllowedIPsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -3110,16 +2095,8 @@ export interface PutSmsSmppAllowedIPsRequest {
   /** List of IPs to add or remove */
   ips: PutSmsSmppAllowedIPsRequestIpsList;
 }
-const PutSmsSmppAllowedIPsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<PutSmsSmppAllowedIPsRequest>;
-
 export type PutSmsSmppAllowedIPsResponseBodyList = Array<string>;
 export type PutSmsSmppAllowedIPsResponse = PutSmsSmppAllowedIPsResponseBodyList;
-const PutSmsSmppAllowedIPsResponse =
-  ListSmsBlacklistsResponse as any as S.Schema<PutSmsSmppAllowedIPsResponse>;
-
 export interface PutSmsTemplatesControlRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -3134,19 +2111,8 @@ export interface PutSmsTemplatesControlRequest {
   /** Template status */
   status?: SmsStatusSenderEnum | (string & {});
 }
-const PutSmsTemplatesControlRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<PutSmsTemplatesControlRequest>;
-
 export interface PutSmsTemplatesControlResponse {}
-const PutSmsTemplatesControlResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsTemplatesControlResponse>;
-
 export type PutSmsUserRequestIpRestrictionsList = Array<string>;
-const PutSmsUserRequestIpRestrictionsList =
-  SmsBatchReceiversList as any as S.Schema<PutSmsUserRequestIpRestrictionsList>;
-
 export interface PutSmsUserRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -3161,11 +2127,7 @@ export interface PutSmsUserRequest {
   /** URL called when a STOP is received after a receiver replied stop to a SMS */
   stopCallBack?: string | null;
 }
-const PutSmsUserRequest = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<PutSmsUserRequest>;
-
 export interface PutSmsUserResponse {}
-const PutSmsUserResponse = CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsUserResponse>;
-
 export interface PutSmsUserReceiverRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -3178,30 +2140,14 @@ export interface PutSmsUserReceiverRequest {
   /** Description name of the document */
   description?: string;
 }
-const PutSmsUserReceiverRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<PutSmsUserReceiverRequest>;
-
 export interface PutSmsUserReceiverResponse {}
-const PutSmsUserReceiverResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<PutSmsUserReceiverResponse>;
-
 export interface PutSmsVirtualNumberServiceInfosRequest {
   /** Your virtual number */
   number: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-const PutSmsVirtualNumberServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<PutSmsVirtualNumberServiceInfosRequest>;
-
 export interface PutSmsVirtualNumberServiceInfosResponse {}
-const PutSmsVirtualNumberServiceInfosResponse =
-  CreateSmsTemplatesControlResponse as any as S.Schema<PutSmsVirtualNumberServiceInfosResponse>;
-
 export interface TransferSmsCreditsRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -3210,15 +2156,7 @@ export interface TransferSmsCreditsRequest {
   /** Sms account destination. */
   smsAccountTarget: string;
 }
-const TransferSmsCreditsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<TransferSmsCreditsRequest>;
-
 export interface TransferSmsCreditsResponse {}
-const TransferSmsCreditsResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<TransferSmsCreditsResponse>;
-
 export interface ValidateSmsSenderRequest {
   /** The internal name of your SMS offer */
   serviceName: string;
@@ -3227,15 +2165,7 @@ export interface ValidateSmsSenderRequest {
   /** The validation code */
   code: string;
 }
-const ValidateSmsSenderRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<ValidateSmsSenderRequest>;
-
 export interface ValidateSmsSenderResponse {}
-const ValidateSmsSenderResponse =
-  CreateSmsSmppPasswordResponse as any as S.Schema<ValidateSmsSenderResponse>;
-
 export type CancelSmsBatchError = OvhOpError;
 /** Cancel a deferred batch (no SMS must have been sent) */
 export const cancelSmsBatch: API.OperationMethod<
@@ -3244,8 +2174,8 @@ export const cancelSmsBatch: API.OperationMethod<
   CancelSmsBatchError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelSmsBatchRequest,
-  output: SmsBatch,
+  input: __S(0) as any as S.Schema<CancelSmsBatchRequest>,
+  output: __S(4) as any as S.Schema<SmsBatch>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3259,8 +2189,8 @@ export const createSmsBatch: API.OperationMethod<
   CreateSmsBatchError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsBatchRequest,
-  output: SmsBatch,
+  input: __S(5) as any as S.Schema<CreateSmsBatchRequest>,
+  output: __S(4) as any as S.Schema<SmsBatch>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3274,8 +2204,8 @@ export const createSmsEstimate: API.OperationMethod<
   CreateSmsEstimateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsEstimateRequest,
-  output: SmsJobEstimate,
+  input: __S(6) as any as S.Schema<CreateSmsEstimateRequest>,
+  output: __S(7) as any as S.Schema<SmsJobEstimate>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3289,8 +2219,8 @@ export const createSmsHlr: API.OperationMethod<
   CreateSmsHlrError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsHlrRequest,
-  output: SmsSmsSendingReport,
+  input: __S(8) as any as S.Schema<CreateSmsHlrRequest>,
+  output: __S(10) as any as S.Schema<SmsSmsSendingReport>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3304,8 +2234,8 @@ export const createSmsJob: API.OperationMethod<
   CreateSmsJobError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsJobRequest,
-  output: SmsSmsSendingReport,
+  input: __S(11) as any as S.Schema<CreateSmsJobRequest>,
+  output: __S(10) as any as S.Schema<SmsSmsSendingReport>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3319,8 +2249,8 @@ export const createSmsPhonebook: API.OperationMethod<
   CreateSmsPhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsPhonebookRequest,
-  output: CreateSmsPhonebookResponse,
+  input: __S(12) as any as S.Schema<CreateSmsPhonebookRequest>,
+  output: __S(13) as any as S.Schema<CreateSmsPhonebookResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3334,8 +2264,8 @@ export const createSmsPhonebookPhonebookContact: API.OperationMethod<
   CreateSmsPhonebookPhonebookContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsPhonebookPhonebookContactRequest,
-  output: CreateSmsPhonebookPhonebookContactResponse,
+  input: __S(14) as any as S.Schema<CreateSmsPhonebookPhonebookContactRequest>,
+  output: __S(15) as any as S.Schema<CreateSmsPhonebookPhonebookContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3349,8 +2279,8 @@ export const createSmsReceiver: API.OperationMethod<
   CreateSmsReceiverError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsReceiverRequest,
-  output: SmsReceiver,
+  input: __S(16) as any as S.Schema<CreateSmsReceiverRequest>,
+  output: __S(17) as any as S.Schema<SmsReceiver>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3364,8 +2294,8 @@ export const createSmsReceiverClean: API.OperationMethod<
   CreateSmsReceiverCleanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsReceiverCleanRequest,
-  output: SmsReceiversAsynchronousCleanReport,
+  input: __S(18) as any as S.Schema<CreateSmsReceiverCleanRequest>,
+  output: __S(19) as any as S.Schema<SmsReceiversAsynchronousCleanReport>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3379,8 +2309,8 @@ export const createSmsSender: API.OperationMethod<
   CreateSmsSenderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsSenderRequest,
-  output: CreateSmsSenderResponse,
+  input: __S(20) as any as S.Schema<CreateSmsSenderRequest>,
+  output: __S(21) as any as S.Schema<CreateSmsSenderResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3394,8 +2324,8 @@ export const createSmsSenderDocument: API.OperationMethod<
   CreateSmsSenderDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsSenderDocumentRequest,
-  output: SmsSenderDocument,
+  input: __S(22) as any as S.Schema<CreateSmsSenderDocumentRequest>,
+  output: __S(23) as any as S.Schema<SmsSenderDocument>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3409,8 +2339,8 @@ export const createSmsSmppPassword: API.OperationMethod<
   CreateSmsSmppPasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsSmppPasswordRequest,
-  output: CreateSmsSmppPasswordResponse,
+  input: __S(24) as any as S.Schema<CreateSmsSmppPasswordRequest>,
+  output: __S(25) as any as S.Schema<CreateSmsSmppPasswordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3424,8 +2354,8 @@ export const createSmsTemplatesControl: API.OperationMethod<
   CreateSmsTemplatesControlError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsTemplatesControlRequest,
-  output: CreateSmsTemplatesControlResponse,
+  input: __S(26) as any as S.Schema<CreateSmsTemplatesControlRequest>,
+  output: __S(27) as any as S.Schema<CreateSmsTemplatesControlResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3439,8 +2369,8 @@ export const createSmsTemplatesControlRelaunchValidation: API.OperationMethod<
   CreateSmsTemplatesControlRelaunchValidationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsTemplatesControlRelaunchValidationRequest,
-  output: CreateSmsTemplatesControlRelaunchValidationResponse,
+  input: __S(28) as any as S.Schema<CreateSmsTemplatesControlRelaunchValidationRequest>,
+  output: __S(27) as any as S.Schema<CreateSmsTemplatesControlRelaunchValidationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3454,8 +2384,8 @@ export const createSmsUser: API.OperationMethod<
   CreateSmsUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsUserRequest,
-  output: CreateSmsUserResponse,
+  input: __S(29) as any as S.Schema<CreateSmsUserRequest>,
+  output: __S(25) as any as S.Schema<CreateSmsUserResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3469,8 +2399,8 @@ export const createSmsUserJob: API.OperationMethod<
   CreateSmsUserJobError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsUserJobRequest,
-  output: SmsSmsSendingReport,
+  input: __S(30) as any as S.Schema<CreateSmsUserJobRequest>,
+  output: __S(10) as any as S.Schema<SmsSmsSendingReport>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3484,8 +2414,8 @@ export const createSmsUserReceiver: API.OperationMethod<
   CreateSmsUserReceiverError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsUserReceiverRequest,
-  output: SmsReceiver,
+  input: __S(31) as any as S.Schema<CreateSmsUserReceiverRequest>,
+  output: __S(17) as any as S.Schema<SmsReceiver>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3499,8 +2429,8 @@ export const createSmsUserReceiverClean: API.OperationMethod<
   CreateSmsUserReceiverCleanError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsUserReceiverCleanRequest,
-  output: SmsReceiversAsynchronousCleanReport,
+  input: __S(32) as any as S.Schema<CreateSmsUserReceiverCleanRequest>,
+  output: __S(19) as any as S.Schema<SmsReceiversAsynchronousCleanReport>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3514,8 +2444,8 @@ export const createSmsVirtualNumberChatAccess: API.OperationMethod<
   CreateSmsVirtualNumberChatAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsVirtualNumberChatAccessRequest,
-  output: SmsChatAccess,
+  input: __S(33) as any as S.Schema<CreateSmsVirtualNumberChatAccessRequest>,
+  output: __S(34) as any as S.Schema<SmsChatAccess>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3529,8 +2459,8 @@ export const createSmsVirtualNumberJob: API.OperationMethod<
   CreateSmsVirtualNumberJobError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSmsVirtualNumberJobRequest,
-  output: SmsSmsSendingReport,
+  input: __S(35) as any as S.Schema<CreateSmsVirtualNumberJobRequest>,
+  output: __S(10) as any as S.Schema<SmsSmsSendingReport>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3544,8 +2474,8 @@ export const deleteSmsBatch: API.OperationMethod<
   DeleteSmsBatchError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsBatchRequest,
-  output: DeleteSmsBatchResponse,
+  input: __S(36) as any as S.Schema<DeleteSmsBatchRequest>,
+  output: __S(25) as any as S.Schema<DeleteSmsBatchResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3559,8 +2489,8 @@ export const deleteSmsBlacklist: API.OperationMethod<
   DeleteSmsBlacklistError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsBlacklistRequest,
-  output: DeleteSmsBlacklistResponse,
+  input: __S(37) as any as S.Schema<DeleteSmsBlacklistRequest>,
+  output: __S(25) as any as S.Schema<DeleteSmsBlacklistResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3574,8 +2504,8 @@ export const deleteSmsIncoming: API.OperationMethod<
   DeleteSmsIncomingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsIncomingRequest,
-  output: DeleteSmsIncomingResponse,
+  input: __S(38) as any as S.Schema<DeleteSmsIncomingRequest>,
+  output: __S(25) as any as S.Schema<DeleteSmsIncomingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3589,8 +2519,8 @@ export const deleteSmsJob: API.OperationMethod<
   DeleteSmsJobError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsJobRequest,
-  output: DeleteSmsJobResponse,
+  input: __S(39) as any as S.Schema<DeleteSmsJobRequest>,
+  output: __S(25) as any as S.Schema<DeleteSmsJobResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3604,8 +2534,8 @@ export const deleteSmsOutgoing: API.OperationMethod<
   DeleteSmsOutgoingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsOutgoingRequest,
-  output: DeleteSmsOutgoingResponse,
+  input: __S(40) as any as S.Schema<DeleteSmsOutgoingRequest>,
+  output: __S(25) as any as S.Schema<DeleteSmsOutgoingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3619,8 +2549,8 @@ export const deleteSmsPhonebook: API.OperationMethod<
   DeleteSmsPhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsPhonebookRequest,
-  output: DeleteSmsPhonebookResponse,
+  input: __S(41) as any as S.Schema<DeleteSmsPhonebookRequest>,
+  output: __S(25) as any as S.Schema<DeleteSmsPhonebookResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3634,8 +2564,8 @@ export const deleteSmsPhonebookPhonebookContact: API.OperationMethod<
   DeleteSmsPhonebookPhonebookContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsPhonebookPhonebookContactRequest,
-  output: DeleteSmsPhonebookPhonebookContactResponse,
+  input: __S(42) as any as S.Schema<DeleteSmsPhonebookPhonebookContactRequest>,
+  output: __S(27) as any as S.Schema<DeleteSmsPhonebookPhonebookContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3649,8 +2579,8 @@ export const deleteSmsReceiver: API.OperationMethod<
   DeleteSmsReceiverError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsReceiverRequest,
-  output: DeleteSmsReceiverResponse,
+  input: __S(43) as any as S.Schema<DeleteSmsReceiverRequest>,
+  output: __S(25) as any as S.Schema<DeleteSmsReceiverResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3664,8 +2594,8 @@ export const deleteSmsSender: API.OperationMethod<
   DeleteSmsSenderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsSenderRequest,
-  output: DeleteSmsSenderResponse,
+  input: __S(44) as any as S.Schema<DeleteSmsSenderRequest>,
+  output: __S(25) as any as S.Schema<DeleteSmsSenderResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3679,8 +2609,8 @@ export const deleteSmsTemplatesControl: API.OperationMethod<
   DeleteSmsTemplatesControlError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsTemplatesControlRequest,
-  output: DeleteSmsTemplatesControlResponse,
+  input: __S(45) as any as S.Schema<DeleteSmsTemplatesControlRequest>,
+  output: __S(27) as any as S.Schema<DeleteSmsTemplatesControlResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3694,8 +2624,8 @@ export const deleteSmsUser: API.OperationMethod<
   DeleteSmsUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsUserRequest,
-  output: DeleteSmsUserResponse,
+  input: __S(46) as any as S.Schema<DeleteSmsUserRequest>,
+  output: __S(25) as any as S.Schema<DeleteSmsUserResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3709,8 +2639,8 @@ export const deleteSmsUserIncoming: API.OperationMethod<
   DeleteSmsUserIncomingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsUserIncomingRequest,
-  output: DeleteSmsUserIncomingResponse,
+  input: __S(47) as any as S.Schema<DeleteSmsUserIncomingRequest>,
+  output: __S(25) as any as S.Schema<DeleteSmsUserIncomingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3724,8 +2654,8 @@ export const deleteSmsUserJob: API.OperationMethod<
   DeleteSmsUserJobError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsUserJobRequest,
-  output: DeleteSmsUserJobResponse,
+  input: __S(48) as any as S.Schema<DeleteSmsUserJobRequest>,
+  output: __S(25) as any as S.Schema<DeleteSmsUserJobResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3739,8 +2669,8 @@ export const deleteSmsUserOutgoing: API.OperationMethod<
   DeleteSmsUserOutgoingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsUserOutgoingRequest,
-  output: DeleteSmsUserOutgoingResponse,
+  input: __S(49) as any as S.Schema<DeleteSmsUserOutgoingRequest>,
+  output: __S(25) as any as S.Schema<DeleteSmsUserOutgoingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3754,8 +2684,8 @@ export const deleteSmsUserReceiver: API.OperationMethod<
   DeleteSmsUserReceiverError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsUserReceiverRequest,
-  output: DeleteSmsUserReceiverResponse,
+  input: __S(50) as any as S.Schema<DeleteSmsUserReceiverRequest>,
+  output: __S(25) as any as S.Schema<DeleteSmsUserReceiverResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3769,8 +2699,8 @@ export const deleteSmsVirtualNumberChatAccess: API.OperationMethod<
   DeleteSmsVirtualNumberChatAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsVirtualNumberChatAccessRequest,
-  output: DeleteSmsVirtualNumberChatAccessResponse,
+  input: __S(51) as any as S.Schema<DeleteSmsVirtualNumberChatAccessRequest>,
+  output: __S(27) as any as S.Schema<DeleteSmsVirtualNumberChatAccessResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3784,8 +2714,8 @@ export const deleteSmsVirtualNumberIncoming: API.OperationMethod<
   DeleteSmsVirtualNumberIncomingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsVirtualNumberIncomingRequest,
-  output: DeleteSmsVirtualNumberIncomingResponse,
+  input: __S(52) as any as S.Schema<DeleteSmsVirtualNumberIncomingRequest>,
+  output: __S(27) as any as S.Schema<DeleteSmsVirtualNumberIncomingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3799,8 +2729,8 @@ export const deleteSmsVirtualNumberJob: API.OperationMethod<
   DeleteSmsVirtualNumberJobError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsVirtualNumberJobRequest,
-  output: DeleteSmsVirtualNumberJobResponse,
+  input: __S(53) as any as S.Schema<DeleteSmsVirtualNumberJobRequest>,
+  output: __S(27) as any as S.Schema<DeleteSmsVirtualNumberJobResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3814,8 +2744,8 @@ export const deleteSmsVirtualNumberOutgoing: API.OperationMethod<
   DeleteSmsVirtualNumberOutgoingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSmsVirtualNumberOutgoingRequest,
-  output: DeleteSmsVirtualNumberOutgoingResponse,
+  input: __S(54) as any as S.Schema<DeleteSmsVirtualNumberOutgoingRequest>,
+  output: __S(27) as any as S.Schema<DeleteSmsVirtualNumberOutgoingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3829,8 +2759,8 @@ export const getSms: API.OperationMethod<
   GetSmsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsRequest,
-  output: SmsAccountWithIAM,
+  input: __S(55) as any as S.Schema<GetSmsRequest>,
+  output: __S(62) as any as S.Schema<SmsAccountWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3844,8 +2774,8 @@ export const getSmsBatch: API.OperationMethod<
   GetSmsBatchError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsBatchRequest,
-  output: SmsBatch,
+  input: __S(63) as any as S.Schema<GetSmsBatchRequest>,
+  output: __S(4) as any as S.Schema<SmsBatch>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3859,8 +2789,8 @@ export const getSmsBatchStatistics: API.OperationMethod<
   GetSmsBatchStatisticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsBatchStatisticsRequest,
-  output: SmsBatchStatistics,
+  input: __S(64) as any as S.Schema<GetSmsBatchStatisticsRequest>,
+  output: __S(65) as any as S.Schema<SmsBatchStatistics>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3874,8 +2804,8 @@ export const getSmsBlacklist: API.OperationMethod<
   GetSmsBlacklistError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsBlacklistRequest,
-  output: SmsBlacklist,
+  input: __S(66) as any as S.Schema<GetSmsBlacklistRequest>,
+  output: __S(67) as any as S.Schema<SmsBlacklist>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3889,8 +2819,8 @@ export const getSmsDocument: API.OperationMethod<
   GetSmsDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsDocumentRequest,
-  output: GetSmsDocumentResponse,
+  input: __S(68) as any as S.Schema<GetSmsDocumentRequest>,
+  output: __S(21) as any as S.Schema<GetSmsDocumentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3904,8 +2834,8 @@ export const getSmsHlr: API.OperationMethod<
   GetSmsHlrError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsHlrRequest,
-  output: SmsHlrLookupNumber,
+  input: __S(69) as any as S.Schema<GetSmsHlrRequest>,
+  output: __S(70) as any as S.Schema<SmsHlrLookupNumber>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3919,8 +2849,8 @@ export const getSmsHlrOperator: API.OperationMethod<
   GetSmsHlrOperatorError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsHlrOperatorRequest,
-  output: SmsHlr,
+  input: __S(71) as any as S.Schema<GetSmsHlrOperatorRequest>,
+  output: __S(72) as any as S.Schema<SmsHlr>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3934,8 +2864,8 @@ export const getSmsIncoming: API.OperationMethod<
   GetSmsIncomingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsIncomingRequest,
-  output: SmsIncoming,
+  input: __S(73) as any as S.Schema<GetSmsIncomingRequest>,
+  output: __S(74) as any as S.Schema<SmsIncoming>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3949,8 +2879,8 @@ export const getSmsJob: API.OperationMethod<
   GetSmsJobError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsJobRequest,
-  output: SmsJob,
+  input: __S(75) as any as S.Schema<GetSmsJobRequest>,
+  output: __S(76) as any as S.Schema<SmsJob>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3964,8 +2894,8 @@ export const getSmsOutgoing: API.OperationMethod<
   GetSmsOutgoingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsOutgoingRequest,
-  output: SmsOutgoing,
+  input: __S(77) as any as S.Schema<GetSmsOutgoingRequest>,
+  output: __S(78) as any as S.Schema<SmsOutgoing>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3979,8 +2909,8 @@ export const getSmsOutgoingHlr: API.OperationMethod<
   GetSmsOutgoingHlrError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsOutgoingHlrRequest,
-  output: SmsHlr,
+  input: __S(79) as any as S.Schema<GetSmsOutgoingHlrRequest>,
+  output: __S(72) as any as S.Schema<SmsHlr>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -3994,8 +2924,8 @@ export const getSmsPhonebook: API.OperationMethod<
   GetSmsPhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsPhonebookRequest,
-  output: SmsPhonebook,
+  input: __S(80) as any as S.Schema<GetSmsPhonebookRequest>,
+  output: __S(81) as any as S.Schema<SmsPhonebook>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4009,8 +2939,8 @@ export const getSmsPhonebookExport: API.OperationMethod<
   GetSmsPhonebookExportError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsPhonebookExportRequest,
-  output: TelephonyPcsFile,
+  input: __S(82) as any as S.Schema<GetSmsPhonebookExportRequest>,
+  output: __S(83) as any as S.Schema<TelephonyPcsFile>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4024,8 +2954,8 @@ export const getSmsPhonebookPhonebookContact: API.OperationMethod<
   GetSmsPhonebookPhonebookContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsPhonebookPhonebookContactRequest,
-  output: SmsPhonebookContact,
+  input: __S(84) as any as S.Schema<GetSmsPhonebookPhonebookContactRequest>,
+  output: __S(85) as any as S.Schema<SmsPhonebookContact>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4039,8 +2969,8 @@ export const getSmsPtts: API.OperationMethod<
   GetSmsPttsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsPttsRequest,
-  output: SmsPttDetails,
+  input: __S(86) as any as S.Schema<GetSmsPttsRequest>,
+  output: __S(87) as any as S.Schema<SmsPttDetails>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4054,8 +2984,8 @@ export const getSmsRateDestinations: API.OperationMethod<
   GetSmsRateDestinationsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsRateDestinationsRequest,
-  output: SmsDestinationRates,
+  input: __S(88) as any as S.Schema<GetSmsRateDestinationsRequest>,
+  output: __S(90) as any as S.Schema<SmsDestinationRates>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4069,8 +2999,8 @@ export const getSmsReceiver: API.OperationMethod<
   GetSmsReceiverError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsReceiverRequest,
-  output: SmsReceiver,
+  input: __S(91) as any as S.Schema<GetSmsReceiverRequest>,
+  output: __S(17) as any as S.Schema<SmsReceiver>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4084,8 +3014,8 @@ export const getSmsReceiverCsv: API.OperationMethod<
   GetSmsReceiverCsvError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsReceiverCsvRequest,
-  output: GetSmsReceiverCsvResponse,
+  input: __S(92) as any as S.Schema<GetSmsReceiverCsvRequest>,
+  output: __S(13) as any as S.Schema<GetSmsReceiverCsvResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4099,8 +3029,8 @@ export const getSmsSender: API.OperationMethod<
   GetSmsSenderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsSenderRequest,
-  output: SmsSender,
+  input: __S(93) as any as S.Schema<GetSmsSenderRequest>,
+  output: __S(94) as any as S.Schema<SmsSender>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4114,8 +3044,8 @@ export const getSmsSenderDocument: API.OperationMethod<
   GetSmsSenderDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsSenderDocumentRequest,
-  output: SmsSenderDocument,
+  input: __S(95) as any as S.Schema<GetSmsSenderDocumentRequest>,
+  output: __S(23) as any as S.Schema<SmsSenderDocument>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4129,8 +3059,8 @@ export const getSmsServiceInfos: API.OperationMethod<
   GetSmsServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsServiceInfosRequest,
-  output: ServicesService,
+  input: __S(96) as any as S.Schema<GetSmsServiceInfosRequest>,
+  output: __S(98) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4144,8 +3074,8 @@ export const getSmsSmppSettings: API.OperationMethod<
   GetSmsSmppSettingsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsSmppSettingsRequest,
-  output: SmsSettings,
+  input: __S(99) as any as S.Schema<GetSmsSmppSettingsRequest>,
+  output: __S(102) as any as S.Schema<SmsSettings>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4159,8 +3089,8 @@ export const getSmsTask: API.OperationMethod<
   GetSmsTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsTaskRequest,
-  output: SmsTask,
+  input: __S(103) as any as S.Schema<GetSmsTaskRequest>,
+  output: __S(104) as any as S.Schema<SmsTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4174,8 +3104,8 @@ export const getSmsTemplatesControl: API.OperationMethod<
   GetSmsTemplatesControlError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsTemplatesControlRequest,
-  output: SmsTemplateControl,
+  input: __S(105) as any as S.Schema<GetSmsTemplatesControlRequest>,
+  output: __S(106) as any as S.Schema<SmsTemplateControl>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4189,8 +3119,8 @@ export const getSmsUser: API.OperationMethod<
   GetSmsUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsUserRequest,
-  output: SmsUser,
+  input: __S(107) as any as S.Schema<GetSmsUserRequest>,
+  output: __S(110) as any as S.Schema<SmsUser>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4204,8 +3134,8 @@ export const getSmsUserDocument: API.OperationMethod<
   GetSmsUserDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsUserDocumentRequest,
-  output: GetSmsUserDocumentResponse,
+  input: __S(111) as any as S.Schema<GetSmsUserDocumentRequest>,
+  output: __S(13) as any as S.Schema<GetSmsUserDocumentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4219,8 +3149,8 @@ export const getSmsUserIncoming: API.OperationMethod<
   GetSmsUserIncomingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsUserIncomingRequest,
-  output: SmsIncoming,
+  input: __S(112) as any as S.Schema<GetSmsUserIncomingRequest>,
+  output: __S(74) as any as S.Schema<SmsIncoming>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4234,8 +3164,8 @@ export const getSmsUserJob: API.OperationMethod<
   GetSmsUserJobError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsUserJobRequest,
-  output: SmsJob,
+  input: __S(113) as any as S.Schema<GetSmsUserJobRequest>,
+  output: __S(76) as any as S.Schema<SmsJob>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4249,8 +3179,8 @@ export const getSmsUserOutgoing: API.OperationMethod<
   GetSmsUserOutgoingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsUserOutgoingRequest,
-  output: SmsOutgoing,
+  input: __S(114) as any as S.Schema<GetSmsUserOutgoingRequest>,
+  output: __S(78) as any as S.Schema<SmsOutgoing>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4264,8 +3194,8 @@ export const getSmsUserOutgoingHlr: API.OperationMethod<
   GetSmsUserOutgoingHlrError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsUserOutgoingHlrRequest,
-  output: SmsHlr,
+  input: __S(115) as any as S.Schema<GetSmsUserOutgoingHlrRequest>,
+  output: __S(72) as any as S.Schema<SmsHlr>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4279,8 +3209,8 @@ export const getSmsUserReceiver: API.OperationMethod<
   GetSmsUserReceiverError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsUserReceiverRequest,
-  output: SmsReceiver,
+  input: __S(116) as any as S.Schema<GetSmsUserReceiverRequest>,
+  output: __S(17) as any as S.Schema<SmsReceiver>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4294,8 +3224,8 @@ export const getSmsUserReceiverCsv: API.OperationMethod<
   GetSmsUserReceiverCsvError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsUserReceiverCsvRequest,
-  output: GetSmsUserReceiverCsvResponse,
+  input: __S(117) as any as S.Schema<GetSmsUserReceiverCsvRequest>,
+  output: __S(13) as any as S.Schema<GetSmsUserReceiverCsvResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4309,8 +3239,8 @@ export const getSmsVirtualNumber: API.OperationMethod<
   GetSmsVirtualNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsVirtualNumberRequest,
-  output: SmsVirtualNumberGenericServiceWithIAM,
+  input: __S(118) as any as S.Schema<GetSmsVirtualNumberRequest>,
+  output: __S(119) as any as S.Schema<SmsVirtualNumberGenericServiceWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4324,8 +3254,8 @@ export const getSmsVirtualNumberByNumber: API.OperationMethod<
   GetSmsVirtualNumberByNumberError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsVirtualNumberByNumberRequest,
-  output: SmsVirtualNumber,
+  input: __S(120) as any as S.Schema<GetSmsVirtualNumberByNumberRequest>,
+  output: __S(121) as any as S.Schema<SmsVirtualNumber>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4339,8 +3269,8 @@ export const getSmsVirtualNumberChatAccess: API.OperationMethod<
   GetSmsVirtualNumberChatAccessError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsVirtualNumberChatAccessRequest,
-  output: SmsChatAccess,
+  input: __S(122) as any as S.Schema<GetSmsVirtualNumberChatAccessRequest>,
+  output: __S(34) as any as S.Schema<SmsChatAccess>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4354,8 +3284,8 @@ export const getSmsVirtualNumberIncoming: API.OperationMethod<
   GetSmsVirtualNumberIncomingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsVirtualNumberIncomingRequest,
-  output: SmsIncoming,
+  input: __S(123) as any as S.Schema<GetSmsVirtualNumberIncomingRequest>,
+  output: __S(74) as any as S.Schema<SmsIncoming>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4369,8 +3299,8 @@ export const getSmsVirtualNumberJob: API.OperationMethod<
   GetSmsVirtualNumberJobError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsVirtualNumberJobRequest,
-  output: SmsVirtualNumberJob,
+  input: __S(124) as any as S.Schema<GetSmsVirtualNumberJobRequest>,
+  output: __S(125) as any as S.Schema<SmsVirtualNumberJob>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4384,8 +3314,8 @@ export const getSmsVirtualNumberOutgoing: API.OperationMethod<
   GetSmsVirtualNumberOutgoingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsVirtualNumberOutgoingRequest,
-  output: SmsOutgoing,
+  input: __S(126) as any as S.Schema<GetSmsVirtualNumberOutgoingRequest>,
+  output: __S(78) as any as S.Schema<SmsOutgoing>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4399,8 +3329,8 @@ export const getSmsVirtualNumberOutgoingHlr: API.OperationMethod<
   GetSmsVirtualNumberOutgoingHlrError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsVirtualNumberOutgoingHlrRequest,
-  output: SmsHlr,
+  input: __S(127) as any as S.Schema<GetSmsVirtualNumberOutgoingHlrRequest>,
+  output: __S(72) as any as S.Schema<SmsHlr>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4414,8 +3344,8 @@ export const getSmsVirtualNumberServiceInfos: API.OperationMethod<
   GetSmsVirtualNumberServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSmsVirtualNumberServiceInfosRequest,
-  output: ServicesService,
+  input: __S(128) as any as S.Schema<GetSmsVirtualNumberServiceInfosRequest>,
+  output: __S(98) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4429,8 +3359,8 @@ export const importSmsPhonebook: API.OperationMethod<
   ImportSmsPhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportSmsPhonebookRequest,
-  output: TelephonyTask,
+  input: __S(129) as any as S.Schema<ImportSmsPhonebookRequest>,
+  output: __S(130) as any as S.Schema<TelephonyTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4444,8 +3374,8 @@ export const listSms: API.OperationMethod<
   ListSmsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsRequest,
-  output: ListSmsResponse,
+  input: __S(133) as any as S.Schema<ListSmsRequest>,
+  output: __S(134) as any as S.Schema<ListSmsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4459,8 +3389,8 @@ export const listSmsBatches: API.OperationMethod<
   ListSmsBatchesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsBatchesRequest,
-  output: ListSmsBatchesResponse,
+  input: __S(135) as any as S.Schema<ListSmsBatchesRequest>,
+  output: __S(137) as any as S.Schema<ListSmsBatchesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4474,8 +3404,8 @@ export const listSmsBlacklists: API.OperationMethod<
   ListSmsBlacklistsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsBlacklistsRequest,
-  output: ListSmsBlacklistsResponse,
+  input: __S(138) as any as S.Schema<ListSmsBlacklistsRequest>,
+  output: __S(139) as any as S.Schema<ListSmsBlacklistsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4489,8 +3419,8 @@ export const listSmsExceptions: API.OperationMethod<
   ListSmsExceptionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsExceptionsRequest,
-  output: ListSmsExceptionsResponse,
+  input: __S(140) as any as S.Schema<ListSmsExceptionsRequest>,
+  output: __S(143) as any as S.Schema<ListSmsExceptionsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4504,8 +3434,8 @@ export const listSmsHlr: API.OperationMethod<
   ListSmsHlrError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsHlrRequest,
-  output: ListSmsHlrResponse,
+  input: __S(144) as any as S.Schema<ListSmsHlrRequest>,
+  output: __S(145) as any as S.Schema<ListSmsHlrResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4519,8 +3449,8 @@ export const listSmsIncoming: API.OperationMethod<
   ListSmsIncomingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsIncomingRequest,
-  output: ListSmsIncomingResponse,
+  input: __S(146) as any as S.Schema<ListSmsIncomingRequest>,
+  output: __S(145) as any as S.Schema<ListSmsIncomingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4534,8 +3464,8 @@ export const listSmsJobs: API.OperationMethod<
   ListSmsJobsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsJobsRequest,
-  output: ListSmsJobsResponse,
+  input: __S(147) as any as S.Schema<ListSmsJobsRequest>,
+  output: __S(145) as any as S.Schema<ListSmsJobsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4549,8 +3479,8 @@ export const listSmsOutgoing: API.OperationMethod<
   ListSmsOutgoingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsOutgoingRequest,
-  output: ListSmsOutgoingResponse,
+  input: __S(148) as any as S.Schema<ListSmsOutgoingRequest>,
+  output: __S(145) as any as S.Schema<ListSmsOutgoingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4564,8 +3494,8 @@ export const listSmsPhonebookPhonebookContact: API.OperationMethod<
   ListSmsPhonebookPhonebookContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsPhonebookPhonebookContactRequest,
-  output: ListSmsPhonebookPhonebookContactResponse,
+  input: __S(149) as any as S.Schema<ListSmsPhonebookPhonebookContactRequest>,
+  output: __S(150) as any as S.Schema<ListSmsPhonebookPhonebookContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4579,8 +3509,8 @@ export const listSmsPhonebooks: API.OperationMethod<
   ListSmsPhonebooksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsPhonebooksRequest,
-  output: ListSmsPhonebooksResponse,
+  input: __S(151) as any as S.Schema<ListSmsPhonebooksRequest>,
+  output: __S(139) as any as S.Schema<ListSmsPhonebooksResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4594,8 +3524,8 @@ export const listSmsRatePacks: API.OperationMethod<
   ListSmsRatePacksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsRatePacksRequest,
-  output: ListSmsRatePacksResponse,
+  input: __S(152) as any as S.Schema<ListSmsRatePacksRequest>,
+  output: __S(155) as any as S.Schema<ListSmsRatePacksResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4609,8 +3539,8 @@ export const listSmsReceivers: API.OperationMethod<
   ListSmsReceiversError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsReceiversRequest,
-  output: ListSmsReceiversResponse,
+  input: __S(156) as any as S.Schema<ListSmsReceiversRequest>,
+  output: __S(145) as any as S.Schema<ListSmsReceiversResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4624,8 +3554,8 @@ export const listSmsSeeOffers: API.OperationMethod<
   ListSmsSeeOffersError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsSeeOffersRequest,
-  output: ListSmsSeeOffersResponse,
+  input: __S(157) as any as S.Schema<ListSmsSeeOffersRequest>,
+  output: __S(160) as any as S.Schema<ListSmsSeeOffersResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4639,8 +3569,8 @@ export const listSmsSenderDocuments: API.OperationMethod<
   ListSmsSenderDocumentsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsSenderDocumentsRequest,
-  output: ListSmsSenderDocumentsResponse,
+  input: __S(161) as any as S.Schema<ListSmsSenderDocumentsRequest>,
+  output: __S(139) as any as S.Schema<ListSmsSenderDocumentsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4654,8 +3584,8 @@ export const listSmsSenders: API.OperationMethod<
   ListSmsSendersError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsSendersRequest,
-  output: ListSmsSendersResponse,
+  input: __S(162) as any as S.Schema<ListSmsSendersRequest>,
+  output: __S(134) as any as S.Schema<ListSmsSendersResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4669,8 +3599,8 @@ export const listSmsSendersAvailableForValidation: API.OperationMethod<
   ListSmsSendersAvailableForValidationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsSendersAvailableForValidationRequest,
-  output: ListSmsSendersAvailableForValidationResponse,
+  input: __S(163) as any as S.Schema<ListSmsSendersAvailableForValidationRequest>,
+  output: __S(166) as any as S.Schema<ListSmsSendersAvailableForValidationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4684,8 +3614,8 @@ export const listSmsSmppAllowedIPs: API.OperationMethod<
   ListSmsSmppAllowedIPsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsSmppAllowedIPsRequest,
-  output: ListSmsSmppAllowedIPsResponse,
+  input: __S(167) as any as S.Schema<ListSmsSmppAllowedIPsRequest>,
+  output: __S(139) as any as S.Schema<ListSmsSmppAllowedIPsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4699,8 +3629,8 @@ export const listSmsTask: API.OperationMethod<
   ListSmsTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsTaskRequest,
-  output: ListSmsTaskResponse,
+  input: __S(168) as any as S.Schema<ListSmsTaskRequest>,
+  output: __S(145) as any as S.Schema<ListSmsTaskResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4714,8 +3644,8 @@ export const listSmsTemplatesControl: API.OperationMethod<
   ListSmsTemplatesControlError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsTemplatesControlRequest,
-  output: ListSmsTemplatesControlResponse,
+  input: __S(169) as any as S.Schema<ListSmsTemplatesControlRequest>,
+  output: __S(139) as any as S.Schema<ListSmsTemplatesControlResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4729,8 +3659,8 @@ export const listSmsUserIncoming: API.OperationMethod<
   ListSmsUserIncomingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsUserIncomingRequest,
-  output: ListSmsUserIncomingResponse,
+  input: __S(170) as any as S.Schema<ListSmsUserIncomingRequest>,
+  output: __S(150) as any as S.Schema<ListSmsUserIncomingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4744,8 +3674,8 @@ export const listSmsUserJobs: API.OperationMethod<
   ListSmsUserJobsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsUserJobsRequest,
-  output: ListSmsUserJobsResponse,
+  input: __S(171) as any as S.Schema<ListSmsUserJobsRequest>,
+  output: __S(145) as any as S.Schema<ListSmsUserJobsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4759,8 +3689,8 @@ export const listSmsUserOutgoing: API.OperationMethod<
   ListSmsUserOutgoingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsUserOutgoingRequest,
-  output: ListSmsUserOutgoingResponse,
+  input: __S(172) as any as S.Schema<ListSmsUserOutgoingRequest>,
+  output: __S(150) as any as S.Schema<ListSmsUserOutgoingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4774,8 +3704,8 @@ export const listSmsUserReceivers: API.OperationMethod<
   ListSmsUserReceiversError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsUserReceiversRequest,
-  output: ListSmsUserReceiversResponse,
+  input: __S(173) as any as S.Schema<ListSmsUserReceiversRequest>,
+  output: __S(150) as any as S.Schema<ListSmsUserReceiversResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4789,8 +3719,8 @@ export const listSmsUsers: API.OperationMethod<
   ListSmsUsersError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsUsersRequest,
-  output: ListSmsUsersResponse,
+  input: __S(174) as any as S.Schema<ListSmsUsersRequest>,
+  output: __S(134) as any as S.Schema<ListSmsUsersResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4804,8 +3734,8 @@ export const listSmsVirtualNumberIncoming: API.OperationMethod<
   ListSmsVirtualNumberIncomingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsVirtualNumberIncomingRequest,
-  output: ListSmsVirtualNumberIncomingResponse,
+  input: __S(175) as any as S.Schema<ListSmsVirtualNumberIncomingRequest>,
+  output: __S(150) as any as S.Schema<ListSmsVirtualNumberIncomingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4819,8 +3749,8 @@ export const listSmsVirtualNumberJobs: API.OperationMethod<
   ListSmsVirtualNumberJobsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsVirtualNumberJobsRequest,
-  output: ListSmsVirtualNumberJobsResponse,
+  input: __S(176) as any as S.Schema<ListSmsVirtualNumberJobsRequest>,
+  output: __S(150) as any as S.Schema<ListSmsVirtualNumberJobsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4834,8 +3764,8 @@ export const listSmsVirtualNumberOutgoing: API.OperationMethod<
   ListSmsVirtualNumberOutgoingError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsVirtualNumberOutgoingRequest,
-  output: ListSmsVirtualNumberOutgoingResponse,
+  input: __S(177) as any as S.Schema<ListSmsVirtualNumberOutgoingRequest>,
+  output: __S(150) as any as S.Schema<ListSmsVirtualNumberOutgoingResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4849,8 +3779,8 @@ export const listSmsVirtualNumbers: API.OperationMethod<
   ListSmsVirtualNumbersError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsVirtualNumbersRequest,
-  output: ListSmsVirtualNumbersResponse,
+  input: __S(178) as any as S.Schema<ListSmsVirtualNumbersRequest>,
+  output: __S(139) as any as S.Schema<ListSmsVirtualNumbersResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4864,8 +3794,8 @@ export const listSmsVirtualNumbers2: API.OperationMethod<
   ListSmsVirtualNumbers2Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSmsVirtualNumbersRequest2,
-  output: ListSmsVirtualNumbersResponse2,
+  input: __S(179) as any as S.Schema<ListSmsVirtualNumbersRequest2>,
+  output: __S(139) as any as S.Schema<ListSmsVirtualNumbersResponse2>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4875,8 +3805,8 @@ export type PutSmsError = OvhOpError;
 /** Alter this object properties */
 export const putSms: API.OperationMethod<PutSmsRequest, PutSmsResponse, PutSmsError, OvhOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: PutSmsRequest,
-    output: PutSmsResponse,
+    input: __S(180) as any as S.Schema<PutSmsRequest>,
+    output: __S(25) as any as S.Schema<PutSmsResponse>,
     errors: [UnknownOvhError],
     protocol: OvhProtocol,
     retry: Retry.Retry,
@@ -4890,8 +3820,8 @@ export const putSmsBatch: API.OperationMethod<
   PutSmsBatchError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSmsBatchRequest,
-  output: SmsBatch,
+  input: __S(181) as any as S.Schema<PutSmsBatchRequest>,
+  output: __S(4) as any as S.Schema<SmsBatch>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4905,8 +3835,8 @@ export const putSmsPhonebook: API.OperationMethod<
   PutSmsPhonebookError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSmsPhonebookRequest,
-  output: PutSmsPhonebookResponse,
+  input: __S(182) as any as S.Schema<PutSmsPhonebookRequest>,
+  output: __S(25) as any as S.Schema<PutSmsPhonebookResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4920,8 +3850,8 @@ export const putSmsPhonebookPhonebookContact: API.OperationMethod<
   PutSmsPhonebookPhonebookContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSmsPhonebookPhonebookContactRequest,
-  output: PutSmsPhonebookPhonebookContactResponse,
+  input: __S(183) as any as S.Schema<PutSmsPhonebookPhonebookContactRequest>,
+  output: __S(27) as any as S.Schema<PutSmsPhonebookPhonebookContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4935,8 +3865,8 @@ export const putSmsReceiver: API.OperationMethod<
   PutSmsReceiverError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSmsReceiverRequest,
-  output: PutSmsReceiverResponse,
+  input: __S(184) as any as S.Schema<PutSmsReceiverRequest>,
+  output: __S(25) as any as S.Schema<PutSmsReceiverResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4950,8 +3880,8 @@ export const putSmsSender: API.OperationMethod<
   PutSmsSenderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSmsSenderRequest,
-  output: PutSmsSenderResponse,
+  input: __S(185) as any as S.Schema<PutSmsSenderRequest>,
+  output: __S(25) as any as S.Schema<PutSmsSenderResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4965,8 +3895,8 @@ export const putSmsSenderDocument: API.OperationMethod<
   PutSmsSenderDocumentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSmsSenderDocumentRequest,
-  output: PutSmsSenderDocumentResponse,
+  input: __S(186) as any as S.Schema<PutSmsSenderDocumentRequest>,
+  output: __S(25) as any as S.Schema<PutSmsSenderDocumentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4980,8 +3910,8 @@ export const putSmsServiceInfos: API.OperationMethod<
   PutSmsServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSmsServiceInfosRequest,
-  output: PutSmsServiceInfosResponse,
+  input: __S(187) as any as S.Schema<PutSmsServiceInfosRequest>,
+  output: __S(25) as any as S.Schema<PutSmsServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -4995,8 +3925,8 @@ export const putSmsSmppAllowedIPs: API.OperationMethod<
   PutSmsSmppAllowedIPsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSmsSmppAllowedIPsRequest,
-  output: PutSmsSmppAllowedIPsResponse,
+  input: __S(188) as any as S.Schema<PutSmsSmppAllowedIPsRequest>,
+  output: __S(139) as any as S.Schema<PutSmsSmppAllowedIPsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5010,8 +3940,8 @@ export const putSmsTemplatesControl: API.OperationMethod<
   PutSmsTemplatesControlError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSmsTemplatesControlRequest,
-  output: PutSmsTemplatesControlResponse,
+  input: __S(189) as any as S.Schema<PutSmsTemplatesControlRequest>,
+  output: __S(25) as any as S.Schema<PutSmsTemplatesControlResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5025,8 +3955,8 @@ export const putSmsUser: API.OperationMethod<
   PutSmsUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSmsUserRequest,
-  output: PutSmsUserResponse,
+  input: __S(190) as any as S.Schema<PutSmsUserRequest>,
+  output: __S(25) as any as S.Schema<PutSmsUserResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5040,8 +3970,8 @@ export const putSmsUserReceiver: API.OperationMethod<
   PutSmsUserReceiverError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSmsUserReceiverRequest,
-  output: PutSmsUserReceiverResponse,
+  input: __S(191) as any as S.Schema<PutSmsUserReceiverRequest>,
+  output: __S(25) as any as S.Schema<PutSmsUserReceiverResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5055,8 +3985,8 @@ export const putSmsVirtualNumberServiceInfos: API.OperationMethod<
   PutSmsVirtualNumberServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSmsVirtualNumberServiceInfosRequest,
-  output: PutSmsVirtualNumberServiceInfosResponse,
+  input: __S(192) as any as S.Schema<PutSmsVirtualNumberServiceInfosRequest>,
+  output: __S(27) as any as S.Schema<PutSmsVirtualNumberServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5070,8 +4000,8 @@ export const transferSmsCredits: API.OperationMethod<
   TransferSmsCreditsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransferSmsCreditsRequest,
-  output: TransferSmsCreditsResponse,
+  input: __S(193) as any as S.Schema<TransferSmsCreditsRequest>,
+  output: __S(25) as any as S.Schema<TransferSmsCreditsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5085,8 +4015,8 @@ export const validateSmsSender: API.OperationMethod<
   ValidateSmsSenderError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateSmsSenderRequest,
-  output: ValidateSmsSenderResponse,
+  input: __S(194) as any as S.Schema<ValidateSmsSenderRequest>,
+  output: __S(25) as any as S.Schema<ValidateSmsSenderResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5112,7 +4042,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "SmsBatchError" });
     case 2:
-      return S.Array(SmsBatchError);
+      return S.Array(__S(1));
     case 3:
       return S.Array(S.String);
     case 4:
@@ -5120,7 +4050,7 @@ function __c0(j: number): any {
         S.Struct({
           accountID: S.optional(S.Number),
           createdAt: S.optional(S.String),
-          errors: S.optional(SmsBatchErrorsList),
+          errors: S.optional(__S(2)),
           estimatedCredits: S.optional(S.Number),
           finishedAt: S.optional(S.NullOr(S.String)),
           from: S.optional(S.NullOr(S.String)),
@@ -5128,11 +4058,11 @@ function __c0(j: number): any {
           message: S.optional(S.String),
           name: S.optional(S.String),
           processedRecords: S.optional(S.Number),
-          receivers: S.optional(S.NullOr(SmsBatchReceiversList)),
+          receivers: S.optional(S.NullOr(__S(3))),
           sentAt: S.optional(S.NullOr(S.String)),
           slotID: S.optional(S.NullOr(S.String)),
           startedAt: S.optional(S.NullOr(S.String)),
-          status: S.optional(SmsBatchStatusEnum),
+          status: S.optional(S.String),
           totalRecords: S.optional(S.Number),
           updatedAt: S.optional(S.String),
         }),
@@ -5141,7 +4071,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          class: S.optional(SmsBatchClassEnum),
+          class: S.optional(S.String),
           deferred: S.optional(S.String),
           from: S.optional(S.String),
           message: S.String,
@@ -5150,7 +4080,7 @@ function __c0(j: number): any {
           senderForResponse: S.optional(S.Boolean),
           slotID: S.optional(S.String),
           tag: S.optional(S.String),
-          to: S.optional(CreateSmsBatchRequestToList),
+          to: S.optional(__S(3)),
         }).pipe(T.Http({ method: "POST", uri: "/sms/{serviceName}/batches", code: 200 })),
       ).annotate({ identifier: "CreateSmsBatchRequest" });
     case 6:
@@ -5158,14 +4088,14 @@ function __c0(j: number): any {
         S.Struct({
           message: S.String,
           noStopClause: S.Boolean,
-          senderType: SmsTypeSenderEnum,
+          senderType: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/sms/estimate", code: 200 })),
       ).annotate({ identifier: "CreateSmsEstimateRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           characters: S.optional(S.Number),
-          charactersClass: S.optional(SmsEncodingEnum),
+          charactersClass: S.optional(S.String),
           maxCharactersPerPart: S.optional(S.Number),
           parts: S.optional(S.Number),
         }),
@@ -5178,7 +4108,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          receivers: S.optional(CreateSmsHlrRequestReceiversList),
+          receivers: S.optional(__S(3)),
           receiversDocumentUrl: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/sms/{serviceName}/hlr", code: 200 })),
       ).annotate({ identifier: "CreateSmsHlrRequest" });
@@ -5187,25 +4117,25 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ids: S.optional(SmsSmsSendingReportIdsList),
-          invalidReceivers: S.optional(SmsSmsSendingReportInvalidReceiversList),
+          ids: S.optional(__S(9)),
+          invalidReceivers: S.optional(__S(3)),
           tag: S.optional(S.String),
           totalCreditsRemoved: S.optional(S.Number),
-          validReceivers: S.optional(SmsSmsSendingReportValidReceiversList),
+          validReceivers: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "SmsSmsSendingReport" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          charset: S.optional(SmsCharsetEnum),
-          class: S.optional(SmsClassEnum),
-          coding: S.optional(SmsCodingEnum),
+          charset: S.optional(S.String),
+          class: S.optional(S.String),
+          coding: S.optional(S.String),
           differedPeriod: S.optional(S.Number),
           message: S.String,
           noStopClause: S.optional(S.Boolean),
-          priority: S.optional(SmsPriorityEnum),
-          receivers: S.optional(CreateSmsJobRequestReceiversList),
+          priority: S.optional(S.String),
+          receivers: S.optional(__S(3)),
           receiversDocumentUrl: S.optional(S.String),
           receiversSlotId: S.optional(S.String),
           sender: S.optional(S.String),
@@ -5363,7 +4293,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          activity: SmsTypeTemplateEnum,
+          activity: S.String,
           description: S.optional(S.String),
           message: S.String,
           name: S.String,
@@ -5406,14 +4336,14 @@ function __c3(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           login: S.String.pipe(T.Label()),
-          charset: S.optional(SmsCharsetEnum),
-          class: S.optional(SmsClassEnum),
-          coding: S.optional(SmsCodingEnum),
+          charset: S.optional(S.String),
+          class: S.optional(S.String),
+          coding: S.optional(S.String),
           differedPeriod: S.optional(S.Number),
           message: S.String,
           noStopClause: S.optional(S.Boolean),
-          priority: S.optional(SmsPriorityEnum),
-          receivers: S.optional(CreateSmsUserJobRequestReceiversList),
+          priority: S.optional(S.String),
+          receivers: S.optional(__S(3)),
           receiversDocumentUrl: S.optional(S.String),
           receiversSlotId: S.optional(S.String),
           sender: S.optional(S.String),
@@ -5490,13 +4420,13 @@ function __c4(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           number: S.String.pipe(T.Label()),
-          charset: S.optional(SmsCharsetEnum),
-          class: S.optional(SmsClassEnum),
-          coding: S.optional(SmsCodingEnum),
+          charset: S.optional(S.String),
+          class: S.optional(S.String),
+          coding: S.optional(S.String),
           differedPeriod: S.optional(S.Number),
           message: S.String,
-          priority: S.optional(SmsPriorityEnum),
-          receivers: S.optional(CreateSmsVirtualNumberJobRequestReceiversList),
+          priority: S.optional(S.String),
+          receivers: S.optional(__S(3)),
           receiversDocumentUrl: S.optional(S.String),
           receiversSlotId: S.optional(S.String),
           tag: S.optional(S.String),
@@ -5767,14 +4697,14 @@ function __c7(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(IamResourceMetadataTagsMap)),
+          tags: S.optional(S.NullOr(__S(56))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          media: S.optional(SmsResponseTrackingMediaEnum),
+          media: S.optional(S.String),
           sender: S.optional(S.String),
           target: S.optional(S.String),
         }),
@@ -5782,15 +4712,15 @@ function __c7(j: number): any {
         identifier: "SmsResponseTrackingOptions",
       });
     case 3:
-      return S.Array(SmsResponseTrackingOptions);
+      return S.Array(__S(58));
     case 4:
       return S.suspend(() =>
         S.Struct({
           cgiUrl: S.optional(S.NullOr(S.String)),
-          responseType: S.optional(SmsResponseTypeEnum),
+          responseType: S.optional(S.String),
           text: S.optional(S.NullOr(S.String)),
           trackingDefaultSmsSender: S.optional(S.NullOr(S.String)),
-          trackingOptions: S.optional(S.NullOr(SmsResponseTrackingOptionsList)),
+          trackingOptions: S.optional(S.NullOr(__S(59))),
         }),
       ).annotate({ identifier: "SmsResponse" });
     case 5:
@@ -5808,20 +4738,20 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          automaticRecreditAmount: S.optional(S.NullOr(SmsPackQuantityAutomaticRecreditEnum)),
+          automaticRecreditAmount: S.optional(S.NullOr(S.Number)),
           callBack: S.optional(S.NullOr(S.String)),
-          channel: S.optional(SmsChannelEnum),
+          channel: S.optional(S.String),
           creditThresholdForAutomaticRecredit: S.optional(S.Number),
           creditsHoldByQuota: S.optional(S.Number),
           creditsLeft: S.optional(S.Number),
           description: S.optional(S.String),
-          iam: S.optional(S.NullOr(IamResourceMetadata)),
+          iam: S.optional(S.NullOr(__S(57))),
           name: S.optional(S.String),
           smpp: S.optional(S.Boolean),
-          smsResponse: S.optional(SmsResponse),
-          status: S.optional(SmsStatusAccountEnum),
+          smsResponse: S.optional(__S(60)),
+          status: S.optional(S.String),
           stopCallBack: S.optional(S.NullOr(S.String)),
-          templates: S.optional(SmsTemplates),
+          templates: S.optional(__S(61)),
           userQuantityWithQuota: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SmsAccountWithIAM" });
@@ -5886,7 +4816,7 @@ function __c8(j: number): any {
           creationDatetime_from: S.optional(S.String.pipe(T.Query("creationDatetime.from"))),
           creationDatetime_to: S.optional(S.String.pipe(T.Query("creationDatetime.to"))),
           tag: S.optional(S.String.pipe(T.Query())),
-          wayType: SmsDocumentWayTypeEnum.pipe(T.Query()),
+          wayType: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/document", code: 200 })),
       ).annotate({ identifier: "GetSmsDocumentRequest" });
     case 5:
@@ -5906,7 +4836,7 @@ function __c8(j: number): any {
           ported: S.optional(S.Boolean),
           reachable: S.optional(S.Boolean),
           roaming: S.optional(S.Boolean),
-          status: S.optional(SmsHlrStatuses),
+          status: S.optional(S.String),
           valid: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "SmsHlrLookupNumber" });
@@ -6036,7 +4966,7 @@ function __c10(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           bookKey: S.String.pipe(T.Label()),
-          format: TelephonyContactsExportFormatsEnum.pipe(T.Query()),
+          format: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6051,7 +4981,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filename: S.optional(S.String),
-          status: S.optional(TelephonyPcsFileStatusEnum),
+          status: S.optional(S.String),
           url: S.optional(S.String),
           urlExpirationDatetime: S.optional(S.String),
         }),
@@ -6096,7 +5026,7 @@ function __c10(j: number): any {
         S.Struct({
           comment: S.optional(S.String),
           description: S.optional(S.String),
-          duration: S.optional(SmsPttDurationTypeEnum),
+          duration: S.optional(S.String),
         }),
       ).annotate({ identifier: "SmsPttDetails" });
   }
@@ -6106,8 +5036,8 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          billingCountry: S.optional(SmsBillingCountryEnum.pipe(T.Query())),
-          country: SmsCountryEnum.pipe(T.Query()),
+          billingCountry: S.optional(S.String.pipe(T.Query())),
+          country: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/sms/rates/destinations", code: 200 })),
       ).annotate({
         identifier: "GetSmsRateDestinationsRequest",
@@ -6115,7 +5045,7 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          currencyCode: S.optional(OrderCurrencyCodeEnum),
+          currencyCode: S.optional(S.String),
           text: S.optional(S.String),
           value: S.optional(S.Number),
         }),
@@ -6124,9 +5054,9 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           country: S.optional(S.String),
-          countryCode: S.optional(SmsCountryEnum),
+          countryCode: S.optional(S.String),
           credit: S.optional(S.Number),
-          price: S.optional(OrderPrice),
+          price: S.optional(__S(89)),
         }),
       ).annotate({ identifier: "SmsDestinationRates" });
     case 3:
@@ -6157,10 +5087,10 @@ function __c11(j: number): any {
         S.Struct({
           comment: S.optional(S.NullOr(S.String)),
           description: S.optional(S.String),
-          referer: S.optional(SmsRefererSenderEnum),
+          referer: S.optional(S.String),
           sender: S.optional(S.String),
-          status: S.optional(SmsStatusSenderEnum),
-          type: S.optional(S.NullOr(SmsTypeSenderEnum)),
+          status: S.optional(S.String),
+          type: S.optional(S.NullOr(S.String)),
           validationMedia: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SmsSender" });
@@ -6213,11 +5143,11 @@ function __c12(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(ServicesServicePossibleRenewPeriodList)),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
-          renewalType: S.optional(ServiceRenewalTypeEnum),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(9))),
+          renew: S.optional(S.NullOr(__S(97))),
+          renewalType: S.optional(S.String),
           serviceId: S.optional(S.Number),
-          status: S.optional(ServiceStateEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServicesService" });
     case 3:
@@ -6236,12 +5166,12 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "SmsSettingsEndpoints" });
     case 5:
-      return S.Array(SmsSettingsEndpoints);
+      return S.Array(__S(100));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          endpoints: S.optional(SmsSettingsEndpointsList),
-          status: S.optional(SmsSettingsStatusEnum),
+          endpoints: S.optional(__S(101)),
+          status: S.optional(S.String),
           systemID: S.optional(S.String),
           throughput: S.optional(S.Number),
           windowing: S.optional(S.Number),
@@ -6261,9 +5191,9 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          function: S.optional(SmsTodoGeneralPublicFunctionsEnum),
-          status: S.optional(TelephonyTaskStatusEnum),
-          step: S.optional(SmsTodoGeneralPublicStepsEnum),
+          function: S.optional(S.String),
+          status: S.optional(S.String),
+          step: S.optional(S.String),
           taskId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SmsTask" });
@@ -6281,13 +5211,13 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          activity: S.optional(SmsTypeTemplateEnum),
+          activity: S.optional(S.String),
           comment: S.optional(S.String),
           datetime: S.optional(S.String),
           description: S.optional(S.String),
           message: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(SmsStatusSenderEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "SmsTemplateControl" });
     case 3:
@@ -6303,25 +5233,25 @@ function __c13(j: number): any {
           alertEmail: S.optional(S.String),
           alertNumber: S.optional(S.String),
           alertThreshold: S.optional(S.Number),
-          support: S.optional(SmsSupportEnum),
+          support: S.optional(S.String),
         }),
       ).annotate({ identifier: "SmsAlertThreshold" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           quotaLeft: S.optional(S.Number),
-          quotaStatus: S.optional(SmsQuotaStatusUserEnum),
+          quotaStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "SmsQuota" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          alertThresholdInformations: S.optional(SmsAlertThreshold),
+          alertThresholdInformations: S.optional(__S(108)),
           callBack: S.optional(S.NullOr(S.String)),
-          ipRestrictions: S.optional(SmsUserIpRestrictionsList),
+          ipRestrictions: S.optional(__S(3)),
           login: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          quotaInformations: S.optional(SmsQuota),
+          quotaInformations: S.optional(__S(109)),
           stopCallBack: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SmsUser" });
@@ -6333,7 +5263,7 @@ function __c13(j: number): any {
           creationDatetime_from: S.optional(S.String.pipe(T.Query("creationDatetime.from"))),
           creationDatetime_to: S.optional(S.String.pipe(T.Query("creationDatetime.to"))),
           tag: S.optional(S.String.pipe(T.Query())),
-          wayType: SmsDocumentWayTypeEnum.pipe(T.Query()),
+          wayType: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({ method: "GET", uri: "/sms/{serviceName}/users/{login}/document", code: 200 }),
         ),
@@ -6445,8 +5375,8 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          countryCode: S.optional(SmsVirtualNumberIsoCountryCodeEnum),
-          iam: S.optional(S.NullOr(IamResourceMetadata)),
+          countryCode: S.optional(S.String),
+          iam: S.optional(S.NullOr(__S(57))),
           number: S.optional(S.String),
         }),
       ).annotate({
@@ -6470,7 +5400,7 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          countryCode: S.optional(SmsVirtualNumberIsoCountryCodeEnum),
+          countryCode: S.optional(S.String),
           number: S.optional(S.String),
         }),
       ).annotate({ identifier: "SmsVirtualNumber" });
@@ -6605,22 +5535,22 @@ function __c16(j: number): any {
           message: S.optional(S.NullOr(S.String)),
           objectCreated: S.optional(S.NullOr(S.String)),
           serviceType: S.optional(S.String),
-          status: S.optional(TelephonyTaskStatusEnum),
+          status: S.optional(S.String),
           taskId: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TelephonyTask" });
     case 3:
-      return S.Array(IamResourceTagFilterInput);
+      return S.Array(__S(25));
     case 4:
-      return S.Record(S.String, ListSmsRequestIamTagsValueList);
+      return S.Record(S.String, __S(131));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(ListSmsRequestIamTagsMap.pipe(T.Query())),
+          iamTags: S.optional(__S(132).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/sms", code: 200 })),
       ).annotate({ identifier: "ListSmsRequest" });
     case 6:
-      return S.suspend(() => ListSmsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSmsResponse",
       });
     case 7:
@@ -6634,9 +5564,9 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SmsBatch);
+      return S.Array(__S(4));
     case 1:
-      return S.suspend(() => ListSmsBatchesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(136).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSmsBatchesResponse",
       });
     case 2:
@@ -6648,7 +5578,7 @@ function __c17(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/blacklists", code: 200 })),
       ).annotate({ identifier: "ListSmsBlacklistsRequest" });
     case 3:
-      return S.suspend(() => ListSmsBlacklistsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(3).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSmsBlacklistsResponse",
       });
     case 4:
@@ -6662,16 +5592,16 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           countrySuffixe: S.optional(S.String),
-          messages: S.optional(SmsExceptionMessagesList),
+          messages: S.optional(__S(3)),
           operators: S.optional(S.String),
-          restrictionCode: S.optional(SmsRestrictionCodeEnum),
+          restrictionCode: S.optional(S.String),
           substitution: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SmsException" });
     case 6:
-      return S.Array(SmsException);
+      return S.Array(__S(141));
     case 7:
-      return S.suspend(() => ListSmsExceptionsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(142).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSmsExceptionsResponse",
       });
   }
@@ -6685,7 +5615,7 @@ function __c18(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/hlr", code: 200 })),
       ).annotate({ identifier: "ListSmsHlrRequest" });
     case 1:
-      return S.suspend(() => ListSmsHlrResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(9).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSmsHlrResponse",
       });
     case 2:
@@ -6736,9 +5666,7 @@ function __c18(j: number): any {
         identifier: "ListSmsPhonebookPhonebookContactRequest",
       });
     case 6:
-      return S.suspend(() =>
-        ListSmsPhonebookPhonebookContactResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(9).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSmsPhonebookPhonebookContactResponse",
       });
     case 7:
@@ -6754,30 +5682,30 @@ function __c19(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          billingCountry: S.optional(SmsBillingCountryEnum.pipe(T.Query())),
-          country: SmsCountryEnum.pipe(T.Query()),
+          billingCountry: S.optional(S.String.pipe(T.Query())),
+          country: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/sms/rates/packs", code: 200 })),
       ).annotate({ identifier: "ListSmsRatePacksRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          countryCode: S.optional(SmsCountryEnum),
+          countryCode: S.optional(S.String),
           credit: S.optional(S.Number),
-          creditPrice: S.optional(OrderPrice),
+          creditPrice: S.optional(__S(89)),
           creditQuantityMax: S.optional(S.NullOr(S.Number)),
           creditQuantityMin: S.optional(S.Number),
-          discountCreditPrice: S.optional(S.NullOr(OrderPrice)),
+          discountCreditPrice: S.optional(S.NullOr(__S(89))),
           discountPercentage: S.optional(S.NullOr(S.Number)),
-          discountSmsPrice: S.optional(S.NullOr(OrderPrice)),
-          smsPrice: S.optional(OrderPrice),
+          discountSmsPrice: S.optional(S.NullOr(__S(89))),
+          smsPrice: S.optional(__S(89)),
           smsQuantityMax: S.optional(S.NullOr(S.Number)),
           smsQuantityMin: S.optional(S.Number),
         }),
       ).annotate({ identifier: "SmsPackDetails" });
     case 2:
-      return S.Array(SmsPackDetails);
+      return S.Array(__S(153));
     case 3:
-      return S.suspend(() => ListSmsRatePacksResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(154).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSmsRatePacksResponse",
       });
     case 4:
@@ -6790,9 +5718,9 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          countryCurrencyPrice: ReferenceCountryEnum.pipe(T.Query()),
-          countryDestination: SmsCountryEnum.pipe(T.Query()),
-          quantity: SmsPackQuantityEnum.pipe(T.Query()),
+          countryCurrencyPrice: S.String.pipe(T.Query()),
+          countryDestination: S.String.pipe(T.Query()),
+          quantity: S.Number.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/seeOffers", code: 200 })),
       ).annotate({ identifier: "ListSmsSeeOffersRequest" });
     case 6:
@@ -6809,13 +5737,13 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "SmsPackOffer" });
     case 7:
-      return S.Array(SmsPackOffer);
+      return S.Array(__S(158));
   }
 }
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => ListSmsSeeOffersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(159).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSmsSeeOffersResponse",
       });
     case 1:
@@ -6843,7 +5771,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          referer: S.optional(SmsSenderRefererEnum.pipe(T.Query())),
+          referer: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -6857,16 +5785,14 @@ function __c20(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          referer: S.optional(SmsSenderRefererEnum),
+          referer: S.optional(S.String),
           sender: S.optional(S.String),
         }),
       ).annotate({ identifier: "SmsSenderAvailable" });
     case 5:
-      return S.Array(SmsSenderAvailable);
+      return S.Array(__S(164));
     case 6:
-      return S.suspend(() =>
-        ListSmsSendersAvailableForValidationResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(165).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListSmsSendersAvailableForValidationResponse",
       });
     case 7:
@@ -6885,7 +5811,7 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          status: S.optional(TelephonyTaskStatusEnum.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/sms/{serviceName}/task", code: 200 })),
       ).annotate({ identifier: "ListSmsTaskRequest" });
     case 1:
@@ -7014,7 +5940,7 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(ListSmsVirtualNumbersRequestIamTagsMap.pipe(T.Query())),
+          iamTags: S.optional(__S(132).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/sms/virtualNumbers", code: 200 })),
       ).annotate({
         identifier: "ListSmsVirtualNumbersRequest",
@@ -7031,13 +5957,13 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          automaticRecreditAmount: S.optional(S.NullOr(SmsPackQuantityAutomaticRecreditEnum)),
+          automaticRecreditAmount: S.optional(S.NullOr(S.Number)),
           callBack: S.optional(S.NullOr(S.String)),
           creditThresholdForAutomaticRecredit: S.optional(S.Number),
           description: S.optional(S.String),
-          smsResponse: S.optional(SmsResponse),
+          smsResponse: S.optional(__S(60)),
           stopCallBack: S.optional(S.NullOr(S.String)),
-          templates: S.optional(SmsTemplates),
+          templates: S.optional(__S(61)),
         }).pipe(T.Http({ method: "PUT", uri: "/sms/{serviceName}", code: 200 })),
       ).annotate({ identifier: "PutSmsRequest" });
     case 5:
@@ -7100,7 +6026,7 @@ function __c23(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           sender: S.String.pipe(T.Label()),
           description: S.optional(S.String),
-          status: S.optional(SmsStatusSenderEnum),
+          status: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/sms/{serviceName}/senders/{sender}", code: 200 })),
       ).annotate({ identifier: "PutSmsSenderRequest" });
     case 2:
@@ -7125,7 +6051,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renew: S.optional(S.NullOr(__S(97))),
         }).pipe(T.Http({ method: "PUT", uri: "/sms/{serviceName}/serviceInfos", code: 200 })),
       ).annotate({
         identifier: "PutSmsServiceInfosRequest",
@@ -7134,8 +6060,8 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          action: SmsAllowedIPsActionEnum,
-          ips: PutSmsSmppAllowedIPsRequestIpsList,
+          action: S.String,
+          ips: __S(3),
         }).pipe(T.Http({ method: "PUT", uri: "/sms/{serviceName}/smpp/allowedIPs", code: 200 })),
       ).annotate({
         identifier: "PutSmsSmppAllowedIPsRequest",
@@ -7145,10 +6071,10 @@ function __c23(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          activity: S.optional(SmsTypeTemplateEnum),
+          activity: S.optional(S.String),
           description: S.optional(S.String),
           message: S.optional(S.String),
-          status: S.optional(SmsStatusSenderEnum),
+          status: S.optional(S.String),
         }).pipe(
           T.Http({ method: "PUT", uri: "/sms/{serviceName}/templatesControl/{name}", code: 200 }),
         ),
@@ -7160,11 +6086,11 @@ function __c23(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           login: S.String.pipe(T.Label()),
-          alertThresholdInformations: S.optional(SmsAlertThreshold),
+          alertThresholdInformations: S.optional(__S(108)),
           callBack: S.optional(S.NullOr(S.String)),
-          ipRestrictions: S.optional(PutSmsUserRequestIpRestrictionsList),
+          ipRestrictions: S.optional(__S(3)),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          quotaInformations: S.optional(SmsQuota),
+          quotaInformations: S.optional(__S(109)),
           stopCallBack: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/sms/{serviceName}/users/{login}", code: 200 })),
       ).annotate({ identifier: "PutSmsUserRequest" });
@@ -7194,7 +6120,7 @@ function __c24(j: number): any {
       return S.suspend(() =>
         S.Struct({
           number: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renew: S.optional(S.NullOr(__S(97))),
         }).pipe(
           T.Http({ method: "PUT", uri: "/sms/virtualNumbers/{number}/serviceInfos", code: 200 }),
         ),
@@ -7225,5 +6151,64 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "ValidateSmsSenderRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
   }
 }

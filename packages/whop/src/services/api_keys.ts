@@ -8,6 +8,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -99,25 +101,12 @@ export type CreateApiKeyRequestApiVersionDate =
   | "2026-09-24"
   | "2026-09-24-1"
   | "2026-09-25";
-const CreateApiKeyRequestApiVersionDate = S.String;
-
 /** IPv4/IPv6 CIDR ranges allowed to use this key, for example `["203.0.113.0/24"]`. Empty or `null` allows any IP. */
 export type CreateApiKeyRequestIpAllowlistList = Array<string>;
-const CreateApiKeyRequestIpAllowlistList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateApiKeyRequestIpAllowlistList>;
-
 /** Permission actions covered by this statement, for example `company:basic:read`. */
 export type CreateApiKeyRequestPermissionsStatementsItemActionsList = Array<string>;
-const CreateApiKeyRequestPermissionsStatementsItemActionsList =
-  CreateApiKeyRequestIpAllowlistList as any as S.Schema<CreateApiKeyRequestPermissionsStatementsItemActionsList>;
-
 /** Resource identifiers the statement applies to, for example `biz_xxx` or `biz_xxx|pass_*`. Defaults to the key's owning resource when omitted. */
 export type CreateApiKeyRequestPermissionsStatementsItemResourcesList = Array<string>;
-const CreateApiKeyRequestPermissionsStatementsItemResourcesList =
-  CreateApiKeyRequestIpAllowlistList as any as S.Schema<CreateApiKeyRequestPermissionsStatementsItemResourcesList>;
-
 export interface CreateApiKeyRequestPermissionsStatementsItem {
   /** Permission actions covered by this statement, for example `company:basic:read`. */
   actions: CreateApiKeyRequestPermissionsStatementsItemActionsList;
@@ -126,19 +115,9 @@ export interface CreateApiKeyRequestPermissionsStatementsItem {
   /** Resource identifiers the statement applies to, for example `biz_xxx` or `biz_xxx|pass_*`. Defaults to the key's owning resource when omitted. */
   resources?: CreateApiKeyRequestPermissionsStatementsItemResourcesList;
 }
-const CreateApiKeyRequestPermissionsStatementsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateApiKeyRequestPermissionsStatementsItem>;
-
 /** Explicit permission statements. Required unless `system_role` is set. */
 export type CreateApiKeyRequestPermissionsStatementsList =
   Array<CreateApiKeyRequestPermissionsStatementsItem>;
-const CreateApiKeyRequestPermissionsStatementsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateApiKeyRequestPermissionsStatementsList>;
-
 /** A system role to inherit permissions from. Only Account API keys can use a system role. */
 export type CreateApiKeyRequestPermissionsSystemRole =
   | "owner"
@@ -146,8 +125,6 @@ export type CreateApiKeyRequestPermissionsSystemRole =
   | "moderator"
   | "sales_manager"
   | "advertiser";
-const CreateApiKeyRequestPermissionsSystemRole = S.String;
-
 /** The permissions policy for the API key: explicit permission statements, or a system role to inherit from. Statements without a `resources` array default to the owning account (Account API keys) or every key-addressable resource (App API keys). */
 export interface CreateApiKeyRequestPermissions {
   /** Explicit permission statements. Required unless `system_role` is set. */
@@ -155,15 +132,8 @@ export interface CreateApiKeyRequestPermissions {
   /** A system role to inherit permissions from. Only Account API keys can use a system role. */
   system_role?: CreateApiKeyRequestPermissionsSystemRole | (string & {}) | null;
 }
-const CreateApiKeyRequestPermissions = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateApiKeyRequestPermissions>;
-
 /** The type of resource that will own this API key. */
 export type CreateApiKeyRequestResourceType = "account" | "app";
-const CreateApiKeyRequestResourceType = S.String;
-
 export interface CreateApiKeyRequest {
   /** Dated API version used when requests authenticated with this key omit the `Api-Version-Date` header. New keys default to the latest version. */
   api_version_date?: CreateApiKeyRequestApiVersionDate | (string & {});
@@ -182,8 +152,6 @@ export interface CreateApiKeyRequest {
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const CreateApiKeyRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateApiKeyRequest>;
-
 /** Dated API version used when requests authenticated with this key omit the `Api-Version-Date` header. */
 export type ApiKeyApiVersionDate =
   | "2025-01-01"
@@ -236,22 +204,13 @@ export type ApiKeyApiVersionDate =
   | "2026-09-24"
   | "2026-09-24-1"
   | "2026-09-25";
-const ApiKeyApiVersionDate = S.String;
-
 export interface ApiKeyGrantAction {
   /** The permission action's identifier, for example `company:basic:read`. */
   action: string;
   /** Whether the key holds the action on the grant's resource. */
   granted: boolean;
 }
-const ApiKeyGrantAction = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ApiKeyGrantAction>;
-
 export type ApiKeyGrantActionsList = Array<ApiKeyGrantAction>;
-const ApiKeyGrantActionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ApiKeyGrantActionsList>;
-
 export interface ApiKeyGrant {
   actions: ApiKeyGrantActionsList;
   /** ID of the resource the actions apply to. */
@@ -259,19 +218,10 @@ export interface ApiKeyGrant {
   /** The type of resource the actions apply to, such as `account`, `product`, or `app`. */
   resource_type: string;
 }
-const ApiKeyGrant = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ApiKeyGrant>;
-
 export type ApiKeyGrantsList = Array<ApiKeyGrant>;
-const ApiKeyGrantsList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ApiKeyGrantsList>;
-
 export type ApiKeyIpAllowlistList = Array<string>;
-const ApiKeyIpAllowlistList =
-  CreateApiKeyRequestIpAllowlistList as any as S.Schema<ApiKeyIpAllowlistList>;
-
 /** System role the key inherits its permissions from, or `null` when it uses an explicit permissions policy. Only account API keys can use a system role. */
 export type ApiKeySystemRole = "owner" | "admin" | "moderator" | "sales_manager" | "advertiser";
-const ApiKeySystemRole = S.String;
-
 export interface ApiKey {
   /** Dated API version used when requests authenticated with this key omit the `Api-Version-Date` header. */
   api_version_date: ApiKeyApiVersionDate;
@@ -296,34 +246,21 @@ export interface ApiKey {
   /** When the API key was last updated, as an ISO 8601 timestamp. */
   updated_at: string;
 }
-const ApiKey = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ApiKey>;
-
 export interface DeleteApiKeyRequest {
   /** API key ID, prefixed `apik_`. */
   id: string;
 }
-const DeleteApiKeyRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeleteApiKeyRequest>;
-
 export interface DeleteApiKeyResponse {
   /** Always `true`: the key was revoked. */
   deleted: boolean;
   /** The ID of the revoked key. */
   id: string;
 }
-const DeleteApiKeyResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteApiKeyResponse>;
-
 export interface GetApiKeyRequest {
   /** API key ID, prefixed `apik_`. */
   id: string;
 }
-const GetApiKeyRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetApiKeyRequest>;
-
 export interface ListApiKeyPermissionsRequest {}
-const ListApiKeyPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListApiKeyPermissionsRequest>;
-
 /** System roles that include the permission. */
 export type PermissionGrantedToSystemRolesItem =
   | "owner"
@@ -332,14 +269,7 @@ export type PermissionGrantedToSystemRolesItem =
   | "sales_manager"
   | "advertiser"
   | "partner";
-const PermissionGrantedToSystemRolesItem = S.String;
-
 export type PermissionGrantedToSystemRolesList = Array<PermissionGrantedToSystemRolesItem>;
-const PermissionGrantedToSystemRolesList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<PermissionGrantedToSystemRolesList>;
-
 export interface Permission {
   /** The permission action's identifier, for example `company:basic:read`. */
   action: string;
@@ -357,43 +287,20 @@ export interface Permission {
   /** Human-readable name of the action. */
   name: string;
 }
-const Permission = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Permission>;
-
 export type ListApiKeyPermissionsResponseDataList = Array<Permission>;
-const ListApiKeyPermissionsResponseDataList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListApiKeyPermissionsResponseDataList>;
-
 export interface ListApiKeyPermissionsResponsePageInfo {
   end_cursor: string | null;
   has_next_page: boolean;
   has_previous_page: boolean;
   start_cursor: string | null;
 }
-const ListApiKeyPermissionsResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListApiKeyPermissionsResponsePageInfo>;
-
 export interface ListApiKeyPermissionsResponse {
   data: ListApiKeyPermissionsResponseDataList;
   page_info: ListApiKeyPermissionsResponsePageInfo;
 }
-const ListApiKeyPermissionsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListApiKeyPermissionsResponse>;
-
 export type ListApiKeysRequestResourceType = "account" | "app";
-const ListApiKeysRequestResourceType = S.String;
-
 export type ListApiKeysRequestOrder = "created_at";
-const ListApiKeysRequestOrder = S.String;
-
 export type ListApiKeysRequestDirection = "asc" | "desc";
-const ListApiKeysRequestDirection = S.String;
-
 export interface ListApiKeysRequest {
   /** The account (`biz_`) or app (`app_`) tag to list API keys for. */
   resource_id: string;
@@ -416,29 +323,18 @@ export interface ListApiKeysRequest {
   /** Sort direction. */
   direction?: ListApiKeysRequestDirection | (string & {});
 }
-const ListApiKeysRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListApiKeysRequest>;
-
 export type ListApiKeysResponseDataList = Array<ApiKey>;
-const ListApiKeysResponseDataList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListApiKeysResponseDataList>;
-
 export type ListApiKeysResponsePageInfo = ListApiKeyPermissionsResponsePageInfo;
 export interface ListApiKeysResponse {
   data: ListApiKeysResponseDataList;
   page_info: ListApiKeyPermissionsResponsePageInfo;
 }
-const ListApiKeysResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ListApiKeysResponse>;
-
 export interface RotateApiKeyRequest {
   /** API key ID, prefixed `apik_`. */
   id: string;
   /** A unique key that makes this request safe to retry. See [Idempotent requests](https://docs.whop.com/developer/api/idempotency). */
   idempotency_key?: string;
 }
-const RotateApiKeyRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<RotateApiKeyRequest>;
-
 /** Dated API version used when requests authenticated with this key omit the `Api-Version-Date` header. New keys default to the latest version. */
 export type UpdateApiKeyRequestApiVersionDate =
   | "2025-01-01"
@@ -491,13 +387,8 @@ export type UpdateApiKeyRequestApiVersionDate =
   | "2026-09-24"
   | "2026-09-24-1"
   | "2026-09-25";
-const UpdateApiKeyRequestApiVersionDate = S.String;
-
 /** IPv4/IPv6 CIDR ranges allowed to use this key, for example `["203.0.113.0/24"]`. Empty or `null` allows any IP. */
 export type UpdateApiKeyRequestIpAllowlistList = Array<string>;
-const UpdateApiKeyRequestIpAllowlistList =
-  CreateApiKeyRequestIpAllowlistList as any as S.Schema<UpdateApiKeyRequestIpAllowlistList>;
-
 /** Permission actions covered by this statement, for example `company:basic:read`. */
 export type UpdateApiKeyRequestPermissionsStatementsItemActionsList = Array<string>;
 /** Resource identifiers the statement applies to, for example `biz_xxx` or `biz_xxx|pass_*`. Defaults to the key's owning resource when omitted. */
@@ -513,9 +404,6 @@ export interface UpdateApiKeyRequestPermissionsStatementsItem {
 /** Explicit permission statements. Required unless `system_role` is set. */
 export type UpdateApiKeyRequestPermissionsStatementsList =
   Array<UpdateApiKeyRequestPermissionsStatementsItem>;
-const UpdateApiKeyRequestPermissionsStatementsList =
-  CreateApiKeyRequestPermissionsStatementsList as any as S.Schema<UpdateApiKeyRequestPermissionsStatementsList>;
-
 /** A system role to inherit permissions from. Only Account API keys can use a system role. */
 export type UpdateApiKeyRequestPermissionsSystemRole =
   | "owner"
@@ -523,8 +411,6 @@ export type UpdateApiKeyRequestPermissionsSystemRole =
   | "moderator"
   | "sales_manager"
   | "advertiser";
-const UpdateApiKeyRequestPermissionsSystemRole = S.String;
-
 /** The permissions policy for the API key: explicit permission statements, or a system role to inherit from. Statements without a `resources` array default to the owning account (Account API keys) or every key-addressable resource (App API keys). */
 export interface UpdateApiKeyRequestPermissions {
   /** Explicit permission statements. Required unless `system_role` is set. */
@@ -532,11 +418,6 @@ export interface UpdateApiKeyRequestPermissions {
   /** A system role to inherit permissions from. Only Account API keys can use a system role. */
   system_role?: UpdateApiKeyRequestPermissionsSystemRole | (string & {}) | null;
 }
-const UpdateApiKeyRequestPermissions = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<UpdateApiKeyRequestPermissions>;
-
 export interface UpdateApiKeyRequest {
   /** API key ID, prefixed `apik_`. */
   id: string;
@@ -551,8 +432,6 @@ export interface UpdateApiKeyRequest {
   /** The permissions policy for the API key: explicit permission statements, or a system role to inherit from. Statements without a `resources` array default to the owning account (Account API keys) or every key-addressable resource (App API keys). */
   permissions?: UpdateApiKeyRequestPermissions;
 }
-const UpdateApiKeyRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<UpdateApiKeyRequest>;
-
 export type CreateApiKeyError = BadRequest | Forbidden | Conflict | WhopOpError;
 /** Create API Key Creates an API key for an account or app. The response is the only place the full `secret_key` is returned -- store it immediately. Requires a user session; API keys cannot manage API keys. */
 export const createApiKey: API.OperationMethod<
@@ -561,8 +440,8 @@ export const createApiKey: API.OperationMethod<
   CreateApiKeyError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateApiKeyRequest,
-  output: ApiKey,
+  input: __S(4) as any as S.Schema<CreateApiKeyRequest>,
+  output: __S(9) as any as S.Schema<ApiKey>,
   errors: [BadRequest, Forbidden, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -576,8 +455,8 @@ export const deleteApiKey: API.OperationMethod<
   DeleteApiKeyError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApiKeyRequest,
-  output: DeleteApiKeyResponse,
+  input: __S(10) as any as S.Schema<DeleteApiKeyRequest>,
+  output: __S(11) as any as S.Schema<DeleteApiKeyResponse>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -591,8 +470,8 @@ export const getApiKey: API.OperationMethod<
   GetApiKeyError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiKeyRequest,
-  output: ApiKey,
+  input: __S(12) as any as S.Schema<GetApiKeyRequest>,
+  output: __S(9) as any as S.Schema<ApiKey>,
   errors: [Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -606,8 +485,8 @@ export const listApiKeyPermissions: API.OperationMethod<
   ListApiKeyPermissionsError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApiKeyPermissionsRequest,
-  output: ListApiKeyPermissionsResponse,
+  input: __S(13) as any as S.Schema<ListApiKeyPermissionsRequest>,
+  output: __S(18) as any as S.Schema<ListApiKeyPermissionsResponse>,
   errors: [],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -623,8 +502,8 @@ export const listApiKeys: API.PaginatedOperationMethod<
   ApiKey
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListApiKeysRequest,
-    output: ListApiKeysResponse,
+    input: __S(19) as any as S.Schema<ListApiKeysRequest>,
+    output: __S(21) as any as S.Schema<ListApiKeysResponse>,
     errors: [BadRequest, Forbidden, NotFound],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -648,8 +527,8 @@ export const rotateApiKey: API.OperationMethod<
   RotateApiKeyError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RotateApiKeyRequest,
-  output: ApiKey,
+  input: __S(22) as any as S.Schema<RotateApiKeyRequest>,
+  output: __S(9) as any as S.Schema<ApiKey>,
   errors: [Forbidden, NotFound, Conflict],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -663,8 +542,8 @@ export const updateApiKey: API.OperationMethod<
   UpdateApiKeyError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApiKeyRequest,
-  output: ApiKey,
+  input: __S(24) as any as S.Schema<UpdateApiKeyRequest>,
+  output: __S(9) as any as S.Schema<ApiKey>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -678,20 +557,20 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          actions: CreateApiKeyRequestPermissionsStatementsItemActionsList,
+          actions: __S(0),
           grant: S.Boolean,
-          resources: S.optional(CreateApiKeyRequestPermissionsStatementsItemResourcesList),
+          resources: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "CreateApiKeyRequestPermissionsStatementsItem",
       });
     case 2:
-      return S.Array(CreateApiKeyRequestPermissionsStatementsItem);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          statements: S.optional(CreateApiKeyRequestPermissionsStatementsList),
-          system_role: S.optional(S.NullOr(CreateApiKeyRequestPermissionsSystemRole)),
+          statements: S.optional(__S(2)),
+          system_role: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "CreateApiKeyRequestPermissions",
@@ -699,13 +578,13 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          api_version_date: S.optional(CreateApiKeyRequestApiVersionDate),
+          api_version_date: S.optional(S.String),
           expires_at: S.optional(S.NullOr(S.String)),
-          ip_allowlist: S.optional(S.NullOr(CreateApiKeyRequestIpAllowlistList)),
+          ip_allowlist: S.optional(S.NullOr(__S(0))),
           name: S.String,
-          permissions: CreateApiKeyRequestPermissions,
+          permissions: __S(3),
           resource_id: S.String,
-          resource_type: CreateApiKeyRequestResourceType,
+          resource_type: S.String,
           idempotency_key: S.optional(S.String.pipe(T.Header("Idempotency-Key"))),
         }).pipe(T.Http({ method: "POST", uri: "/api_keys", code: 200 })),
       ).annotate({ identifier: "CreateApiKeyRequest" });
@@ -717,11 +596,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ApiKeyGrantAction" });
     case 6:
-      return S.Array(ApiKeyGrantAction);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          actions: ApiKeyGrantActionsList,
+          actions: __S(6),
           resource_id: S.String,
           resource_type: S.String,
         }),
@@ -731,21 +610,21 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ApiKeyGrant);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          api_version_date: ApiKeyApiVersionDate,
+          api_version_date: S.String,
           created_at: S.String,
           expires_at: S.NullOr(S.String),
-          grants: S.optional(ApiKeyGrantsList),
+          grants: S.optional(__S(8)),
           id: S.String,
-          ip_allowlist: S.NullOr(ApiKeyIpAllowlistList),
+          ip_allowlist: S.NullOr(__S(0)),
           is_default_for_resource: S.Boolean,
           name: S.NullOr(S.String),
           obfuscated_secret_key: S.String.pipe(T.SensitiveValue({})),
           secret_key: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          system_role: S.NullOr(ApiKeySystemRole),
+          system_role: S.NullOr(S.String),
           updated_at: S.String,
         }),
       ).annotate({ identifier: "ApiKey" });
@@ -775,7 +654,7 @@ function __c1(j: number): any {
         identifier: "ListApiKeyPermissionsRequest",
       });
     case 6:
-      return S.Array(PermissionGrantedToSystemRolesItem);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -785,7 +664,7 @@ function __c1(j: number): any {
           allowed_on_user: S.Boolean,
           category: S.NullOr(S.String),
           description: S.String,
-          granted_to_system_roles: PermissionGrantedToSystemRolesList,
+          granted_to_system_roles: __S(14),
           name: S.String,
         }),
       ).annotate({ identifier: "Permission" });
@@ -794,7 +673,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Permission);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -809,8 +688,8 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data: ListApiKeyPermissionsResponseDataList,
-          page_info: ListApiKeyPermissionsResponsePageInfo,
+          data: __S(16),
+          page_info: __S(17),
         }),
       ).annotate({
         identifier: "ListApiKeyPermissionsResponse",
@@ -819,24 +698,24 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource_id: S.String.pipe(T.Query()),
-          resource_type: ListApiKeysRequestResourceType.pipe(T.Query()),
+          resource_type: S.String.pipe(T.Query()),
           created_before: S.optional(S.Unknown.pipe(T.Query())),
           created_after: S.optional(S.Unknown.pipe(T.Query())),
           first: S.optional(S.Number.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
           last: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
-          order: S.optional(ListApiKeysRequestOrder.pipe(T.Query())),
-          direction: S.optional(ListApiKeysRequestDirection.pipe(T.Query())),
+          order: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api_keys", code: 200 })),
       ).annotate({ identifier: "ListApiKeysRequest" });
     case 4:
-      return S.Array(ApiKey);
+      return S.Array(__S(9));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: ListApiKeysResponseDataList,
-          page_info: ListApiKeyPermissionsResponsePageInfo,
+          data: __S(20),
+          page_info: __S(17),
         }),
       ).annotate({ identifier: "ListApiKeysResponse" });
     case 6:
@@ -849,8 +728,8 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          statements: S.optional(UpdateApiKeyRequestPermissionsStatementsList),
-          system_role: S.optional(S.NullOr(UpdateApiKeyRequestPermissionsSystemRole)),
+          statements: S.optional(__S(2)),
+          system_role: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "UpdateApiKeyRequestPermissions",
@@ -863,12 +742,29 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          api_version_date: S.optional(UpdateApiKeyRequestApiVersionDate),
+          api_version_date: S.optional(S.String),
           expires_at: S.optional(S.NullOr(S.String)),
-          ip_allowlist: S.optional(S.NullOr(UpdateApiKeyRequestIpAllowlistList)),
+          ip_allowlist: S.optional(S.NullOr(__S(0))),
           name: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(UpdateApiKeyRequestPermissions),
+          permissions: S.optional(__S(23)),
         }).pipe(T.Http({ method: "PATCH", uri: "/api_keys/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateApiKeyRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

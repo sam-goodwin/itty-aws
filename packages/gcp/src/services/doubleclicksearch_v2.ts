@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -85,11 +87,7 @@ export interface ReportApiColumnSpec {
   /** Text used to identify this column in the report output; defaults to `columnName` or `savedColumnName` when not specified. This can be used to prevent collisions between DoubleClick Search columns and saved columns with the same name. */
   headerText?: string;
 }
-const ReportApiColumnSpec = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ReportApiColumnSpec>;
-
 export type DocumentList = Array<unknown>;
-const DocumentList = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<DocumentList>;
-
 export interface ReportRequestFiltersItem {
   /** Operator to use in the filter. See the filter reference for a list of available operators. */
   operator?: string;
@@ -98,17 +96,7 @@ export interface ReportRequestFiltersItem {
   /** A list of values to filter the column value against.\ The maximum number of filter values per request is 300. */
   values?: DocumentList;
 }
-const ReportRequestFiltersItem = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<ReportRequestFiltersItem>;
-
 export type ReportRequestFiltersItemList = Array<ReportRequestFiltersItem>;
-const ReportRequestFiltersItemList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ReportRequestFiltersItemList>;
-
 export interface ReportRequestTimeRange {
   /** Inclusive UTC timestamp in RFC format, e.g., `2013-07-16T10:16:23.555Z`. See additional references on how changed attribute reports work. */
   changedAttributesSinceTimestamp?: string;
@@ -119,34 +107,14 @@ export interface ReportRequestTimeRange {
   /** Inclusive date in YYYY-MM-DD format. */
   startDate?: string;
 }
-const ReportRequestTimeRange = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ReportRequestTimeRange>;
-
 export type ReportApiColumnSpecList = Array<ReportApiColumnSpec>;
-const ReportApiColumnSpecList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ReportApiColumnSpecList>;
-
 export interface ReportRequestOrderByItem {
   /** The sort direction, which is either `ascending` or `descending`. */
   sortOrder?: string;
   /** Column to perform the sort on. This can be a DoubleClick Search-defined column or a saved column. */
   column?: ReportApiColumnSpec;
 }
-const ReportRequestOrderByItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ReportRequestOrderByItem>;
-
 export type ReportRequestOrderByItemList = Array<ReportRequestOrderByItem>;
-const ReportRequestOrderByItemList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ReportRequestOrderByItemList>;
-
 export interface ReportRequestReportScope {
   /** DS advertiser ID. */
   advertiserId?: string;
@@ -163,11 +131,6 @@ export interface ReportRequestReportScope {
   /** DS agency ID. */
   agencyId?: string;
 }
-const ReportRequestReportScope = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ReportRequestReportScope>;
-
 /** A request object used to create a DoubleClick Search report. */
 export interface ReportRequest {
   /** Format that the report should be returned in. Currently `csv` or `tsv` is supported. */
@@ -199,35 +162,20 @@ export interface ReportRequest {
   /** Synchronous report only. The maximum number of rows to return; additional rows are dropped. Acceptable values are `0` to `10000`, inclusive. Defaults to `10000`. */
   rowCount?: number;
 }
-const ReportRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ReportRequest>;
-
 export interface GenerateReportsRequest {
   /** Request body */
   body?: ReportRequest;
 }
-const GenerateReportsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GenerateReportsRequest>;
-
 /** A row in a DoubleClick Search report. */
 export type ReportRow = { [key: string]: unknown | undefined };
-const ReportRow = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ReportRow>;
-
 export type ReportRowList = Array<ReportRow>;
-const ReportRowList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ReportRowList>;
-
 export interface ReportFilesItem {
   /** The size of this report file in bytes. */
   byteCount?: string;
   /** Use this url to download the report file. */
   url?: string;
 }
-const ReportFilesItem = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ReportFilesItem>;
-
 export type ReportFilesItemList = Array<ReportFilesItem>;
-const ReportFilesItemList = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ReportFilesItemList>;
-
 /** A DoubleClick Search report. This object contains the report request, some report metadata such as currency code, and the generated report rows or report files. */
 export interface Report {
   /** If all statistics of the report are sourced from the same time zone, this would be it. Otherwise the field is unset. */
@@ -249,8 +197,6 @@ export interface Report {
   /** Asynchronous report only. True if and only if the report has completed successfully and the report files are ready to be downloaded. */
   isReportReady?: boolean;
 }
-const Report = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<Report>;
-
 export interface GetByCustomerIdConversionRequest {
   /** Numeric ID of the agency. */
   agencyId?: string;
@@ -277,11 +223,6 @@ export interface GetByCustomerIdConversionRequest {
   /** The number of conversions to return per call. */
   rowCount: number;
 }
-const GetByCustomerIdConversionRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetByCustomerIdConversionRequest>;
-
 /** A message containing the custom dimension. */
 export interface CustomDimension {
   /** Custom dimension name. */
@@ -289,14 +230,8 @@ export interface CustomDimension {
   /** Custom dimension value. */
   value?: string;
 }
-const CustomDimension = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<CustomDimension>;
-
 export type CustomDimensionList = Array<CustomDimension>;
-const CustomDimensionList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<CustomDimensionList>;
-
 export type ConversionAdUserDataConsentEnum = "UNKNOWN" | "GRANTED" | "DENIED";
-const ConversionAdUserDataConsentEnum = S.String;
-
 /** A message containing the custom metric. */
 export interface CustomMetric {
   /** Custom metric name. */
@@ -304,11 +239,7 @@ export interface CustomMetric {
   /** Custom metric numeric value. */
   value?: number;
 }
-const CustomMetric = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CustomMetric>;
-
 export type CustomMetricList = Array<CustomMetric>;
-const CustomMetricList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CustomMetricList>;
-
 /** A conversion containing data relevant to DoubleClick Search. Common DS3 API conversion fields: Id Range [1 - 2800]. Next Id to use: 33 */
 export interface Conversion {
   /** The friendly segmentation identifier (for example, DoubleClick Search Floodlight activity name). */
@@ -382,11 +313,7 @@ export interface Conversion {
   /** DS ad group ID. */
   adGroupId?: string;
 }
-const Conversion = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Conversion>;
-
 export type ConversionList_ = Array<Conversion>;
-const ConversionList_ = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ConversionList_>;
-
 /** A list of conversions. */
 export interface ConversionList {
   /** Identifies this as a ConversionList resource. Value: the fixed string doubleclicksearch#conversionList. */
@@ -394,8 +321,6 @@ export interface ConversionList {
   /** The conversions being requested. */
   conversion?: ConversionList_;
 }
-const ConversionList = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ConversionList>;
-
 export interface GetConversionRequest {
   /** The 0-based starting index for retrieving conversions results. */
   startRow: number;
@@ -422,66 +347,35 @@ export interface GetConversionRequest {
   /** Numeric ID of the ad group. */
   adGroupId?: string;
 }
-const GetConversionRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GetConversionRequest>;
-
 export interface GetFileReportsRequest {
   /** The index of the report fragment to download. */
   reportFragment: number;
   /** ID of the report. */
   reportId: string;
 }
-const GetFileReportsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetFileReportsRequest>;
-
 export interface GetFileReportsResponse {}
-const GetFileReportsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetFileReportsResponse>;
-
 export interface GetIdMappingFileReportsRequest {
   /** Legacy SA360 advertiser ID. */
   advertiserId: string;
   /** Legacy SA360 agency ID. */
   agencyId: string;
 }
-const GetIdMappingFileReportsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetIdMappingFileReportsRequest>;
-
 /** File returned to https://developers.google.com/search-ads/v2/reference/reports/getIdMappingFile. */
 export interface IdMappingFile {}
-const IdMappingFile = GetFileReportsResponse as any as S.Schema<IdMappingFile>;
-
 export interface GetReportsRequest {
   /** ID of the report request being polled. */
   reportId: string;
 }
-const GetReportsRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetReportsRequest>;
-
 export interface InsertConversionRequest {
   /** Request body */
   body?: ConversionList;
 }
-const InsertConversionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<InsertConversionRequest>;
-
 export interface ListSavedColumnsRequest {
   /** DS ID of the advertiser. */
   advertiserId: string;
   /** DS ID of the agency. */
   agencyId: string;
 }
-const ListSavedColumnsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListSavedColumnsRequest>;
-
 /** A saved column */
 export interface SavedColumn {
   /** Identifies this as a SavedColumn resource. Value: the fixed string doubleclicksearch#savedColumn. */
@@ -491,11 +385,7 @@ export interface SavedColumn {
   /** The type of data this saved column will produce. */
   type?: string;
 }
-const SavedColumn = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<SavedColumn>;
-
 export type SavedColumnList_ = Array<SavedColumn>;
-const SavedColumnList_ = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<SavedColumnList_>;
-
 /** A list of saved columns. Advertisers create saved columns to report on Floodlight activities, Google Analytics goals, or custom KPIs. To request reports with saved columns, you'll need the saved column names that are available from this list. */
 export interface SavedColumnList {
   /** The saved columns being requested. */
@@ -503,17 +393,10 @@ export interface SavedColumnList {
   /** Identifies this as a SavedColumnList resource. Value: the fixed string doubleclicksearch#savedColumnList. */
   kind?: string;
 }
-const SavedColumnList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<SavedColumnList>;
-
 export interface RequestReportsRequest {
   /** Request body */
   body?: ReportRequest;
 }
-const RequestReportsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<RequestReportsRequest>;
-
 /** A message containing availability data relevant to DoubleClick Search. */
 export interface Availability {
   /** The friendly segmentation identifier (for example, DoubleClick Search Floodlight activity name). */
@@ -531,47 +414,25 @@ export interface Availability {
   /** Customer ID of a client account in the new Search Ads 360 experience. */
   customerId?: string;
 }
-const Availability = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<Availability>;
-
 export type AvailabilityList = Array<Availability>;
-const AvailabilityList = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<AvailabilityList>;
-
 /** The request to update availability. */
 export interface UpdateAvailabilityRequest {
   /** The availabilities being requested. */
   availabilities?: AvailabilityList;
 }
-const UpdateAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<UpdateAvailabilityRequest>;
-
 export interface UpdateAvailabilityConversionRequest {
   /** Request body */
   body?: UpdateAvailabilityRequest;
 }
-const UpdateAvailabilityConversionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<UpdateAvailabilityConversionRequest>;
-
 /** The response to a update availability request. */
 export interface UpdateAvailabilityResponse {
   /** The availabilities being returned. */
   availabilities?: AvailabilityList;
 }
-const UpdateAvailabilityResponse =
-  UpdateAvailabilityRequest as any as S.Schema<UpdateAvailabilityResponse>;
-
 export interface UpdateConversionRequest {
   /** Request body */
   body?: ConversionList;
 }
-const UpdateConversionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<UpdateConversionRequest>;
-
 export type GenerateReportsError = NotFound | Forbidden | BadRequest | Conflict | GcpOpError;
 /** Generates and returns a report immediately. */
 export const generateReports: API.OperationMethod<
@@ -580,8 +441,8 @@ export const generateReports: API.OperationMethod<
   GenerateReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateReportsRequest,
-  output: Report,
+  input: __S(10) as any as S.Schema<GenerateReportsRequest>,
+  output: __S(15) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -595,8 +456,8 @@ export const getByCustomerIdConversion: API.OperationMethod<
   GetByCustomerIdConversionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetByCustomerIdConversionRequest,
-  output: ConversionList,
+  input: __S(16) as any as S.Schema<GetByCustomerIdConversionRequest>,
+  output: __S(23) as any as S.Schema<ConversionList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -610,8 +471,8 @@ export const getConversion: API.OperationMethod<
   GetConversionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConversionRequest,
-  output: ConversionList,
+  input: __S(24) as any as S.Schema<GetConversionRequest>,
+  output: __S(23) as any as S.Schema<ConversionList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -625,8 +486,8 @@ export const getFileReports: API.OperationMethod<
   GetFileReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFileReportsRequest,
-  output: GetFileReportsResponse,
+  input: __S(25) as any as S.Schema<GetFileReportsRequest>,
+  output: __S(26) as any as S.Schema<GetFileReportsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -640,8 +501,8 @@ export const getIdMappingFileReports: API.OperationMethod<
   GetIdMappingFileReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIdMappingFileReportsRequest,
-  output: IdMappingFile,
+  input: __S(27) as any as S.Schema<GetIdMappingFileReportsRequest>,
+  output: __S(26) as any as S.Schema<IdMappingFile>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -655,8 +516,8 @@ export const getReports: API.OperationMethod<
   GetReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReportsRequest,
-  output: Report,
+  input: __S(28) as any as S.Schema<GetReportsRequest>,
+  output: __S(15) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -670,8 +531,8 @@ export const insertConversion: API.OperationMethod<
   InsertConversionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertConversionRequest,
-  output: ConversionList,
+  input: __S(29) as any as S.Schema<InsertConversionRequest>,
+  output: __S(23) as any as S.Schema<ConversionList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -685,8 +546,8 @@ export const listSavedColumns: API.OperationMethod<
   ListSavedColumnsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSavedColumnsRequest,
-  output: SavedColumnList,
+  input: __S(30) as any as S.Schema<ListSavedColumnsRequest>,
+  output: __S(33) as any as S.Schema<SavedColumnList>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -700,8 +561,8 @@ export const requestReports: API.OperationMethod<
   RequestReportsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RequestReportsRequest,
-  output: Report,
+  input: __S(34) as any as S.Schema<RequestReportsRequest>,
+  output: __S(15) as any as S.Schema<Report>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -720,8 +581,8 @@ export const updateAvailabilityConversion: API.OperationMethod<
   UpdateAvailabilityConversionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAvailabilityConversionRequest,
-  output: UpdateAvailabilityResponse,
+  input: __S(38) as any as S.Schema<UpdateAvailabilityConversionRequest>,
+  output: __S(37) as any as S.Schema<UpdateAvailabilityResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -735,8 +596,8 @@ export const updateConversion: API.OperationMethod<
   UpdateConversionError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConversionRequest,
-  output: ConversionList,
+  input: __S(39) as any as S.Schema<UpdateConversionRequest>,
+  output: __S(23) as any as S.Schema<ConversionList>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -766,12 +627,12 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           operator: S.optional(S.String),
-          column: S.optional(ReportApiColumnSpec),
-          values: S.optional(DocumentList),
+          column: S.optional(__S(0)),
+          values: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "ReportRequestFiltersItem" });
     case 3:
-      return S.Array(ReportRequestFiltersItem);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -782,16 +643,16 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "ReportRequestTimeRange" });
     case 5:
-      return S.Array(ReportApiColumnSpec);
+      return S.Array(__S(0));
     case 6:
       return S.suspend(() =>
         S.Struct({
           sortOrder: S.optional(S.String),
-          column: S.optional(ReportApiColumnSpec),
+          column: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "ReportRequestOrderByItem" });
     case 7:
-      return S.Array(ReportRequestOrderByItem);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -814,15 +675,15 @@ function __c1(j: number): any {
           downloadFormat: S.optional(S.String),
           maxRowsPerFile: S.optional(S.Number),
           verifySingleTimeZone: S.optional(S.Boolean),
-          filters: S.optional(ReportRequestFiltersItemList),
+          filters: S.optional(__S(3)),
           reportType: S.optional(S.String),
-          timeRange: S.optional(ReportRequestTimeRange),
-          columns: S.optional(ReportApiColumnSpecList),
+          timeRange: S.optional(__S(4)),
+          columns: S.optional(__S(5)),
           includeRemovedEntities: S.optional(S.Boolean),
           statisticsCurrency: S.optional(S.String),
-          orderBy: S.optional(ReportRequestOrderByItemList),
+          orderBy: S.optional(__S(7)),
           startRow: S.optional(S.Number),
-          reportScope: S.optional(ReportRequestReportScope),
+          reportScope: S.optional(__S(8)),
           includeDeletedEntities: S.optional(S.Boolean),
           rowCount: S.optional(S.Number),
         }),
@@ -830,7 +691,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(ReportRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -842,7 +703,7 @@ function __c1(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Array(ReportRow);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -851,18 +712,18 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ReportFilesItem" });
     case 6:
-      return S.Array(ReportFilesItem);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
           statisticsTimeZone: S.optional(S.String),
           statisticsCurrencyCode: S.optional(S.String),
-          rows: S.optional(ReportRowList),
+          rows: S.optional(__S(12)),
           kind: S.optional(S.String),
           rowCount: S.optional(S.Number),
           id: S.optional(S.String),
-          request: S.optional(ReportRequest),
-          files: S.optional(ReportFilesItemList),
+          request: S.optional(__S(9)),
+          files: S.optional(__S(14)),
           isReportReady: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "Report" });
@@ -903,7 +764,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "CustomDimension" });
     case 2:
-      return S.Array(CustomDimension);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -912,7 +773,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "CustomMetric" });
     case 4:
-      return S.Array(CustomMetric);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -920,7 +781,7 @@ function __c2(j: number): any {
           type: S.optional(S.String),
           campaignId: S.optional(S.String),
           productCountry: S.optional(S.String),
-          customDimension: S.optional(CustomDimensionList),
+          customDimension: S.optional(__S(18)),
           currencyCode: S.optional(S.String),
           productId: S.optional(S.String),
           customerId: S.optional(S.String),
@@ -945,21 +806,21 @@ function __c2(j: number): any {
           conversionTimestamp: S.optional(S.String),
           segmentationId: S.optional(S.String),
           storeId: S.optional(S.String),
-          adUserDataConsent: S.optional(ConversionAdUserDataConsentEnum),
+          adUserDataConsent: S.optional(S.String),
           criterionId: S.optional(S.String),
           quantityMillis: S.optional(S.String),
-          customMetric: S.optional(CustomMetricList),
+          customMetric: S.optional(__S(20)),
           conversionModifiedTimestamp: S.optional(S.String),
           adGroupId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Conversion" });
     case 6:
-      return S.Array(Conversion);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          conversion: S.optional(ConversionList_),
+          conversion: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "ConversionList" });
   }
@@ -1036,7 +897,7 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(ConversionList.pipe(T.HttpBody())),
+          body: S.optional(__S(23).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1071,18 +932,18 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SavedColumn);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(SavedColumnList_),
+          items: S.optional(__S(32)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "SavedColumnList" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(ReportRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(9).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1104,11 +965,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "Availability" });
     case 4:
-      return S.Array(Availability);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          availabilities: S.optional(AvailabilityList),
+          availabilities: S.optional(__S(36)),
         }),
       ).annotate({
         identifier: "UpdateAvailabilityRequest",
@@ -1116,7 +977,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(UpdateAvailabilityRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(37).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1130,7 +991,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(ConversionList.pipe(T.HttpBody())),
+          body: S.optional(__S(23).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1139,5 +1000,24 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateConversionRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

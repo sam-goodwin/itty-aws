@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -79,39 +81,18 @@ export class NotFound
 export interface CheckReadinessProjectsLocationsConnectionsRequest {
   name: string;
 }
-const CheckReadinessProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckReadinessProjectsLocationsConnectionsRequest>;
-
 /** Response containing status of the connector for readiness prober. */
 export interface CheckReadinessResponse {
   status?: string;
 }
-const CheckReadinessResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CheckReadinessResponse>;
-
 export interface CheckStatusProjectsLocationsConnectionsRequest {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
   name: string;
 }
-const CheckStatusProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CheckStatusProjectsLocationsConnectionsRequest>;
-
 export type CheckStatusResponseStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "ERROR" | "AUTH_ERROR";
-const CheckStatusResponseStateEnum = S.String;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapMap = { [key: string]: DocumentMap | undefined };
-const DocumentMapMap = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DocumentMapMap>;
-
 /** The status of the connector. */
 export interface CheckStatusResponse {
   /** State of the connector. */
@@ -121,8 +102,6 @@ export interface CheckStatusResponse {
   /** Metadata like service latency, etc. */
   metadata?: DocumentMapMap;
 }
-const CheckStatusResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CheckStatusResponse>;
-
 /** 'Entity row'/ 'Entity' refers to a single row of an entity type. */
 export interface Entity {
   /** Output only. Resource name of the Entity. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} */
@@ -132,8 +111,6 @@ export interface Entity {
   /** Fields of the entity. The key is name of the field and the value contains the applicable `google.protobuf.Value` entry for this field. */
   fields?: DocumentMap;
 }
-const Entity = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Entity>;
-
 export interface CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
@@ -142,11 +119,6 @@ export interface CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** Request body */
   body?: Entity;
 }
-const CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
-
 export interface DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** Required. Conditions to be used when deleting entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. Note: If this conditions field is left empty, an exception is thrown. We don't want to consider 'empty conditions' to be a match-all case. Connector developers can determine and document what a match-all case constraint would be. */
   conditions?: string;
@@ -155,33 +127,18 @@ export interface DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityT
   /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} */
   entityType: string;
 }
-const DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest =
-  /*@__PURE__*/ __L.at(
-    __c1,
-    0,
-  ) as any as S.Schema<DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Empty>;
-
 export interface DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
   /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} */
   name: string;
 }
-const DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
-
 export interface ExecutionConfig {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   headers?: string;
 }
-const ExecutionConfig = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ExecutionConfig>;
-
 export interface OAuth2Config {
   /** Client secret for the OAuth2 flow. */
   clientSecret?: string;
@@ -190,11 +147,7 @@ export interface OAuth2Config {
   /** Authorization Server URL/Token Endpoint for Authorization Code Flow */
   authUri?: string;
 }
-const OAuth2Config = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<OAuth2Config>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<StringList>;
-
 /** AuthCodeData contains the data the runtime plane will give the connector backend in exchange for access and refresh tokens. */
 export interface AuthCodeData {
   /** Scopes the connection will request when the user performs the auth code flow. */
@@ -206,8 +159,6 @@ export interface AuthCodeData {
   /** OAuth PKCE verifier, needed if PKCE is enabled for this particular connection. */
   pkceVerifier?: string;
 }
-const AuthCodeData = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<AuthCodeData>;
-
 /** ExchangeAuthCodeRequest currently includes the auth code data. */
 export interface ExchangeAuthCodeRequest {
   /** ExecutionConfig contains the configuration for the execution of the request. */
@@ -217,21 +168,11 @@ export interface ExchangeAuthCodeRequest {
   /** Optional. AuthCodeData contains the data the runtime requires to exchange for access and refresh tokens. If the data is not provided, the runtime will read the data from the secret manager. */
   authCodeData?: AuthCodeData;
 }
-const ExchangeAuthCodeRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ExchangeAuthCodeRequest>;
-
 export interface ExchangeAuthCodeProjectsLocationsConnectionsRequest {
   name: string;
   /** Request body */
   body?: ExchangeAuthCodeRequest;
 }
-const ExchangeAuthCodeProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ExchangeAuthCodeProjectsLocationsConnectionsRequest>;
-
 /** AccessCredentials includes the OAuth access token, and the other fields returned along with it. */
 export interface AccessCredentials {
   /** OAuth refresh token. */
@@ -241,19 +182,12 @@ export interface AccessCredentials {
   /** Duration till the access token expires. */
   expiresIn?: string;
 }
-const AccessCredentials = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<AccessCredentials>;
-
 /** ExchangeAuthCodeResponse includes the returned access token and its associated credentials. */
 export interface ExchangeAuthCodeResponse {
   accessCredentials?: AccessCredentials;
   /** Metadata like service latency, etc. */
   metadata?: DocumentMapMap;
 }
-const ExchangeAuthCodeResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ExchangeAuthCodeResponse>;
-
 export type ExecuteHttpRequestRequestHttpMethodEnum =
   | "HTTP_METHOD_UNSPECIFIED"
   | "HTTP_METHOD_GET"
@@ -263,8 +197,6 @@ export type ExecuteHttpRequestRequestHttpMethodEnum =
   | "HTTP_METHOD_DELETE"
   | "HTTP_METHOD_HEAD"
   | "HTTP_METHOD_OPTIONS";
-const ExecuteHttpRequestRequestHttpMethodEnum = S.String;
-
 /** A single HTTP header. Keys are case-insensitive. Multiple headers with the same key may be present. */
 export interface HttpHeader {
   /** The header value. */
@@ -272,11 +204,7 @@ export interface HttpHeader {
   /** The header name. */
   key?: string;
 }
-const HttpHeader = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<HttpHeader>;
-
 export type HttpHeaderList = Array<HttpHeader>;
-const HttpHeaderList = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<HttpHeaderList>;
-
 export interface ExecuteHttpRequestRequest {
   /** Required. The HTTP method to use for the request. */
   httpMethod?: ExecuteHttpRequestRequestHttpMethodEnum | (string & {});
@@ -287,22 +215,12 @@ export interface ExecuteHttpRequestRequest {
   /** HTTP headers to send with the request (e.g., Content-Type: application/json). Order is preserved and duplicate keys are allowed. */
   headers?: HttpHeaderList;
 }
-const ExecuteHttpRequestRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ExecuteHttpRequestRequest>;
-
 export interface ExecuteHttpRequestProjectsLocationsConnectionsRequest {
   /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
   name: string;
   /** Request body */
   body?: ExecuteHttpRequestRequest;
 }
-const ExecuteHttpRequestProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ExecuteHttpRequestProjectsLocationsConnectionsRequest>;
-
 export interface ExecuteHttpRequestResponse {
   /** HTTP headers received in the response. Order is preserved and duplicate keys are allowed (e.g., multiple Set-Cookie headers). */
   headers?: HttpHeaderList;
@@ -313,11 +231,6 @@ export interface ExecuteHttpRequestResponse {
   /** The HTTP status code received from the backend. */
   statusCode?: number;
 }
-const ExecuteHttpRequestResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ExecuteHttpRequestResponse>;
-
 /** Request message for ActionService.ExecuteAction */
 export interface ExecuteActionRequest {
   /** Execution config for the request. */
@@ -325,22 +238,13 @@ export interface ExecuteActionRequest {
   /** Parameters for executing the action. The parameters can be key/value pairs or nested structs. */
   parameters?: DocumentMap;
 }
-const ExecuteActionRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ExecuteActionRequest>;
-
 export interface ExecuteProjectsLocationsConnectionsActionsRequest {
   /** Required. Resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection}/actions/{action} */
   name: string;
   /** Request body */
   body?: ExecuteActionRequest;
 }
-const ExecuteProjectsLocationsConnectionsActionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ExecuteProjectsLocationsConnectionsActionsRequest>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DocumentMapList>;
-
 /** Response message for ActionService.ExecuteAction */
 export interface ExecuteActionResponse {
   /** Metadata like service latency, etc. */
@@ -348,11 +252,6 @@ export interface ExecuteActionResponse {
   /** In the case of successful invocation of the specified action, the results Struct contains values based on the response of the action invoked. 1. If the action execution produces any entities as a result, they are returned as an array of Structs with the 'key' being the field name and the 'value' being the value of that field in each result row. { 'results': [{'key': 'value'}, ...] } */
   results?: DocumentMapList;
 }
-const ExecuteActionResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ExecuteActionResponse>;
-
 /** Request message for ConnectorAgentService.ExecuteTool */
 export interface ExecuteToolRequest {
   /** execution config for the request. */
@@ -362,19 +261,12 @@ export interface ExecuteToolRequest {
   /** Tool definition for the tool to be executed. */
   toolDefinition?: DocumentMap;
 }
-const ExecuteToolRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<ExecuteToolRequest>;
-
 export interface ExecuteProjectsLocationsConnectionsToolsRequest {
   /** Required. Resource name of the Tool. Format: projects/{project}/locations/{location}/connections/{connection}/tools/{tool} */
   name: string;
   /** Request body */
   body?: ExecuteToolRequest;
 }
-const ExecuteProjectsLocationsConnectionsToolsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ExecuteProjectsLocationsConnectionsToolsRequest>;
-
 /** Response message for ConnectorAgentService.ExecuteTool */
 export interface ExecuteToolResponse {
   /** Output from the tool execution. */
@@ -384,8 +276,6 @@ export interface ExecuteToolResponse {
   /** Metadata for the tool execution result. */
   _meta?: DocumentMap;
 }
-const ExecuteToolResponse = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<ExecuteToolResponse>;
-
 export type QueryParameterDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "INT"
@@ -432,18 +322,12 @@ export type QueryParameterDataTypeEnum =
   | "REF_CURSOR"
   | "TIME_WITH_TIMEZONE"
   | "TIMESTAMP_WITH_TIMEZONE";
-const QueryParameterDataTypeEnum = S.String;
-
 /** Query parameter definition */
 export interface QueryParameter {
   value?: unknown;
   dataType?: QueryParameterDataTypeEnum | (string & {});
 }
-const QueryParameter = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<QueryParameter>;
-
 export type QueryParameterList = Array<QueryParameter>;
-const QueryParameterList = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<QueryParameterList>;
-
 /** A wrapper around the SQL query statement. This is needed so that the JSON representation of ExecuteSqlQueryRequest has the following format: `{"query":"select *"}`. */
 export interface Query {
   /** Required. Sql query to execute. */
@@ -455,39 +339,22 @@ export interface Query {
   /** Sets the limit for the maximum number of rows returned after the query execution. */
   maxRows?: string;
 }
-const Query = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<Query>;
-
 /** An execute sql query request containing the query and the connection to execute it on. */
 export interface ExecuteSqlQueryRequest {
   /** Required. SQL statement passed by clients like Integration Platform, the query is passed as-is to the driver used for interfacing with external systems. */
   query?: Query;
 }
-const ExecuteSqlQueryRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ExecuteSqlQueryRequest>;
-
 export interface ExecuteSqlQueryProjectsLocationsConnectionsRequest {
   /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
   connection: string;
   /** Request body */
   body?: ExecuteSqlQueryRequest;
 }
-const ExecuteSqlQueryProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ExecuteSqlQueryProjectsLocationsConnectionsRequest>;
-
 /** A response returned by the connection after executing the sql query. */
 export interface ExecuteSqlQueryResponse {
   /** In the case of successful execution of the query the response contains results returned by the external system. For example, the result rows of the query are contained in the 'results' Struct list - "results": [ { "field1": "val1", "field2": "val2",.. },.. ] Each Struct row can contain fields any type of like nested Structs or lists. */
   results?: DocumentMapList;
 }
-const ExecuteSqlQueryResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ExecuteSqlQueryResponse>;
-
 export type ToolNameOperationEnum =
   | "OPERATION_UNSPECIFIED"
   | "LIST"
@@ -495,8 +362,6 @@ export type ToolNameOperationEnum =
   | "CREATE"
   | "UPDATE"
   | "DELETE";
-const ToolNameOperationEnum = S.String;
-
 export interface ToolName {
   /** Operation for which the tool was generated. */
   operation?: ToolNameOperationEnum | (string & {});
@@ -505,54 +370,31 @@ export interface ToolName {
   /** Entity name for which the tool was generated. */
   entityName?: string;
 }
-const ToolName = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ToolName>;
-
 export type ToolNameList = Array<ToolName>;
-const ToolNameList = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ToolNameList>;
-
 export interface GenerateCustomToolspecRequest {
   /** list of tools to be generated. */
   toolNames?: ToolNameList;
 }
-const GenerateCustomToolspecRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GenerateCustomToolspecRequest>;
-
 export interface GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest {
   /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
   name: string;
   /** Request body */
   body?: GenerateCustomToolspecRequest;
 }
-const GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest>;
-
 export interface ToolSpec {
   /** List of tool definitions. */
   toolDefinitions?: DocumentMapList;
   /** Version of the tool spec. Format: providerId/connectorId/versionId/toolSpecId */
   toolSpecVersion?: string;
 }
-const ToolSpec = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ToolSpec>;
-
 export interface GenerateCustomToolspecResponse {
   /** tool spec that has tool_defitions array containing the tools for all sted tool_names. */
   toolSpec?: ToolSpec;
 }
-const GenerateCustomToolspecResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<GenerateCustomToolspecResponse>;
-
 export type GetProjectsLocationsConnectionsActionsViewEnum =
   | "ACTION_SCHEMA_VIEW_UNSPECIFIED"
   | "ACTION_SCHEMA_VIEW_BASIC"
   | "ACTION_SCHEMA_VIEW_ENRICHED";
-const GetProjectsLocationsConnectionsActionsViewEnum = S.String;
-
 export interface GetProjectsLocationsConnectionsActionsRequest {
   /** Specified view of the action schema. */
   view?: GetProjectsLocationsConnectionsActionsViewEnum | (string & {});
@@ -561,17 +403,8 @@ export interface GetProjectsLocationsConnectionsActionsRequest {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
 }
-const GetProjectsLocationsConnectionsActionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetProjectsLocationsConnectionsActionsRequest>;
-
 export type JsonSchemaMap = { [key: string]: JsonSchema | undefined };
-const JsonSchemaMap = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<JsonSchemaMap>;
-
 export type JsonSchemaList = Array<JsonSchema>;
-const JsonSchemaList = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<JsonSchemaList>;
-
 export type JsonSchemaJdbcTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "INT"
@@ -618,11 +451,7 @@ export type JsonSchemaJdbcTypeEnum =
   | "REF_CURSOR"
   | "TIME_WITH_TIMEZONE"
   | "TIMESTAMP_WITH_TIMEZONE";
-const JsonSchemaJdbcTypeEnum = S.String;
-
 export type DocumentList = Array<unknown>;
-const DocumentList = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<DocumentList>;
-
 /** JsonSchema representation of schema metadata */
 export interface JsonSchema {
   /** A description of this schema. */
@@ -724,8 +553,6 @@ export interface JsonSchema {
   /** Minimum length of the string field. */
   minLength?: number;
 }
-const JsonSchema = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<JsonSchema>;
-
 export type ResultMetadataDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "INT"
@@ -772,8 +599,6 @@ export type ResultMetadataDataTypeEnum =
   | "REF_CURSOR"
   | "TIME_WITH_TIMEZONE"
   | "TIMESTAMP_WITH_TIMEZONE";
-const ResultMetadataDataTypeEnum = S.String;
-
 /** Result Metadata message contains metadata about the result returned after executing an Action. */
 export interface ResultMetadata {
   /** The following field specifies the default value of the Parameter provided by the external system if a value is not provided. */
@@ -789,11 +614,7 @@ export interface ResultMetadata {
   /** Name of the metadata field. */
   name?: string;
 }
-const ResultMetadata = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<ResultMetadata>;
-
 export type ResultMetadataList = Array<ResultMetadata>;
-const ResultMetadataList = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ResultMetadataList>;
-
 export type InputParameterDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "INT"
@@ -840,8 +661,6 @@ export type InputParameterDataTypeEnum =
   | "REF_CURSOR"
   | "TIME_WITH_TIMEZONE"
   | "TIMESTAMP_WITH_TIMEZONE";
-const InputParameterDataTypeEnum = S.String;
-
 /** Input Parameter message contains metadata about the parameters required for executing an Action. */
 export interface InputParameter {
   /** Specifies whether a null value is allowed. */
@@ -859,11 +678,7 @@ export interface InputParameter {
   /** JsonSchema of the parameter, applicable only if parameter is of type `STRUCT` */
   jsonSchema?: JsonSchema;
 }
-const InputParameter = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<InputParameter>;
-
 export type InputParameterList = Array<InputParameter>;
-const InputParameterList = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<InputParameterList>;
-
 /** Action message contains metadata information about a single action present in the external system. */
 export interface Action {
   /** List containing the metadata of result fields. */
@@ -883,14 +698,10 @@ export interface Action {
   /** Display Name of action to be shown on client side */
   displayName?: string;
 }
-const Action = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<Action>;
-
 export type GetProjectsLocationsConnectionsEntityTypesViewEnum =
   | "ENTITY_TYPE_SCHEMA_VIEW_UNSPECIFIED"
   | "ENTITY_TYPE_SCHEMA_VIEW_BASIC"
   | "ENTITY_TYPE_SCHEMA_VIEW_ENRICHED";
-const GetProjectsLocationsConnectionsEntityTypesViewEnum = S.String;
-
 export interface GetProjectsLocationsConnectionsEntityTypesRequest {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
@@ -901,11 +712,6 @@ export interface GetProjectsLocationsConnectionsEntityTypesRequest {
   /** Context metadata for request could be used to fetch customization of entity type schema. */
   contextMetadata?: string;
 }
-const GetProjectsLocationsConnectionsEntityTypesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<GetProjectsLocationsConnectionsEntityTypesRequest>;
-
 export type EntityTypeOperationsItemEnum =
   | "OPERATION_UNSPECIFIED"
   | "LIST"
@@ -913,14 +719,7 @@ export type EntityTypeOperationsItemEnum =
   | "CREATE"
   | "UPDATE"
   | "DELETE";
-const EntityTypeOperationsItemEnum = S.String;
-
 export type EntityTypeOperationsItemEnumList = Array<EntityTypeOperationsItemEnum>;
-const EntityTypeOperationsItemEnumList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<EntityTypeOperationsItemEnumList>;
-
 export type FieldDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "INT"
@@ -967,16 +766,12 @@ export type FieldDataTypeEnum =
   | "REF_CURSOR"
   | "TIME_WITH_TIMEZONE"
   | "TIMESTAMP_WITH_TIMEZONE";
-const FieldDataTypeEnum = S.String;
-
 export interface Reference {
   /** Name of reference entity type. */
   type?: string;
   /** Name of the reference field. */
   name?: string;
 }
-const Reference = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<Reference>;
-
 /** Message contains EntityType's Field metadata. */
 export interface Field {
   /** The following boolean field specifies if the current Field acts as a primary key or id if the parent is of type entity. */
@@ -998,11 +793,7 @@ export interface Field {
   /** Reference captures the association between two different entity types. Value links to the reference of another entity type. */
   reference?: Reference;
 }
-const Field = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<Field>;
-
 export type FieldList = Array<Field>;
-const FieldList = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<FieldList>;
-
 /** EntityType message contains metadata information about a single entity type present in the external system. */
 export interface EntityType {
   operations?: EntityTypeOperationsItemEnumList;
@@ -1016,30 +807,18 @@ export interface EntityType {
   /** JsonSchema representation of this entity's schema */
   jsonSchema?: JsonSchema;
 }
-const EntityType = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<EntityType>;
-
 export interface GetProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
   /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} */
   name: string;
 }
-const GetProjectsLocationsConnectionsEntityTypesEntitiesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GetProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
-
 export interface GetProjectsLocationsConnectionsResourcesRequest {
   /** Required. Resource name of the Resource. Format: projects/{project}/locations/{location}/connections/{connection}/resources/{resource} */
   name: string;
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
 }
-const GetProjectsLocationsConnectionsResourcesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<GetProjectsLocationsConnectionsResourcesRequest>;
-
 export interface GetResourceResponse {
   /** Metadata like service latency, etc. */
   metadata?: DocumentMapMap;
@@ -1050,8 +829,6 @@ export interface GetResourceResponse {
   /** Metadata for the resource. */
   _meta?: DocumentMap;
 }
-const GetResourceResponse = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GetResourceResponse>;
-
 /** Request message for ConnectorAgentService.GetResourcePost */
 export interface GetResourcePostRequest {
   /** List of tool specifications. */
@@ -1059,44 +836,24 @@ export interface GetResourcePostRequest {
   /** execution config for the request. */
   executionConfig?: ExecutionConfig;
 }
-const GetResourcePostRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<GetResourcePostRequest>;
-
 export interface GetResourcePostProjectsLocationsConnectionsResourcesRequest {
   /** Required. Resource name of the Resource. Format: projects/{project}/locations/{location}/connections/{connection}/resources/{resource} */
   name: string;
   /** Request body */
   body?: GetResourcePostRequest;
 }
-const GetResourcePostProjectsLocationsConnectionsResourcesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<GetResourcePostProjectsLocationsConnectionsResourcesRequest>;
-
 export interface ListCustomToolNamesProjectsLocationsConnectionsRequest {
   /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
   name: string;
 }
-const ListCustomToolNamesProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListCustomToolNamesProjectsLocationsConnectionsRequest>;
-
 export interface ListCustomToolNamesResponse {
   /** List of custom tools. */
   toolNames?: ToolNameList;
 }
-const ListCustomToolNamesResponse =
-  GenerateCustomToolspecRequest as any as S.Schema<ListCustomToolNamesResponse>;
-
 export type ListProjectsLocationsConnectionsActionsViewEnum =
   | "ACTION_VIEW_UNSPECIFIED"
   | "ACTION_VIEW_BASIC"
   | "ACTION_VIEW_FULL";
-const ListProjectsLocationsConnectionsActionsViewEnum = S.String;
-
 export interface ListProjectsLocationsConnectionsActionsRequest {
   /** Number of Actions to return. Defaults to 25. */
   pageSize?: number;
@@ -1109,14 +866,7 @@ export interface ListProjectsLocationsConnectionsActionsRequest {
   /** Specifies which fields of the Action are returned in the response. */
   view?: ListProjectsLocationsConnectionsActionsViewEnum | (string & {});
 }
-const ListProjectsLocationsConnectionsActionsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ListProjectsLocationsConnectionsActionsRequest>;
-
 export type ActionList = Array<Action>;
-const ActionList = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<ActionList>;
-
 /** Response message for ActionService.ListActions */
 export interface ListActionsResponse {
   /** Next page token if more actions available. */
@@ -1128,14 +878,10 @@ export interface ListActionsResponse {
   /** List of action metadata. */
   actions?: ActionList;
 }
-const ListActionsResponse = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ListActionsResponse>;
-
 export type ListProjectsLocationsConnectionsEntityTypesViewEnum =
   | "ENTITY_TYPE_VIEW_UNSPECIFIED"
   | "ENTITY_TYPE_VIEW_BASIC"
   | "ENTITY_TYPE_VIEW_FULL";
-const ListProjectsLocationsConnectionsEntityTypesViewEnum = S.String;
-
 export interface ListProjectsLocationsConnectionsEntityTypesRequest {
   /** Number of entity types to return. Defaults to 25. */
   pageSize?: number;
@@ -1148,14 +894,7 @@ export interface ListProjectsLocationsConnectionsEntityTypesRequest {
   /** Page token, return from a previous ListEntityTypes call, that can be used retrieve the next page of content. If unspecified, the request returns the first page of entity types. */
   pageToken?: string;
 }
-const ListProjectsLocationsConnectionsEntityTypesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<ListProjectsLocationsConnectionsEntityTypesRequest>;
-
 export type EntityTypeList = Array<EntityType>;
-const EntityTypeList = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<EntityTypeList>;
-
 /** Response message for EntityService.ListEntityTypes */
 export interface ListEntityTypesResponse {
   /** List of entity type names which contain unsupported Datatypes. Check datatype.proto for more information. */
@@ -1167,11 +906,6 @@ export interface ListEntityTypesResponse {
   /** Metadata like service latency, etc. */
   metadata?: DocumentMapMap;
 }
-const ListEntityTypesResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<ListEntityTypesResponse>;
-
 export interface ListProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** Conditions to be used when listing entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. */
   conditions?: string;
@@ -1188,14 +922,7 @@ export interface ListProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} */
   parent: string;
 }
-const ListProjectsLocationsConnectionsEntityTypesEntitiesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<ListProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
-
 export type EntityList = Array<Entity>;
-const EntityList = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<EntityList>;
-
 /** Response message for EntityService.ListEntities */
 export interface ListEntitiesResponse {
   /** Next page token if more records are available. */
@@ -1205,8 +932,6 @@ export interface ListEntitiesResponse {
   /** Metadata like service latency, etc. */
   metadata?: DocumentMapMap;
 }
-const ListEntitiesResponse = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ListEntitiesResponse>;
-
 export interface ListProjectsLocationsConnectionsResourcesRequest {
   /** Required. Resource name of the connection. Format: projects/{project}/locations/{location}/connections/{connection} */
   parent: string;
@@ -1217,11 +942,6 @@ export interface ListProjectsLocationsConnectionsResourcesRequest {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
 }
-const ListProjectsLocationsConnectionsResourcesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<ListProjectsLocationsConnectionsResourcesRequest>;
-
 export interface Resource {
   /** A description of what this resource represents. */
   description?: string;
@@ -1236,11 +956,7 @@ export interface Resource {
   /** Metadata for the resource. */
   _meta?: DocumentMap;
 }
-const Resource = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<Resource>;
-
 export type ResourceList = Array<Resource>;
-const ResourceList = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<ResourceList>;
-
 export interface ListResourcesResponse {
   /** Metadata like service latency, etc. */
   metadata?: DocumentMapMap;
@@ -1249,11 +965,6 @@ export interface ListResourcesResponse {
   /** Next page token if more resources available. */
   nextPageToken?: string;
 }
-const ListResourcesResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ListResourcesResponse>;
-
 export interface ListProjectsLocationsConnectionsToolsRequest {
   /** Page size. */
   pageSize?: number;
@@ -1266,11 +977,6 @@ export interface ListProjectsLocationsConnectionsToolsRequest {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
 }
-const ListProjectsLocationsConnectionsToolsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<ListProjectsLocationsConnectionsToolsRequest>;
-
 /** ToolAnnotations holds annotations for a tool. */
 export interface ToolAnnotations {
   /** If true, the tool may perform destructive updates to its environment. If false, the tool performs only additive updates. (This property is meaningful only when `read_only_hint == false`) */
@@ -1284,8 +990,6 @@ export interface ToolAnnotations {
   /** If true, calling the tool repeatedly with the same arguments will have no additional effect on the environment. (This property is meaningful only when `read_only_hint == false`) */
   idempotentHint?: boolean;
 }
-const ToolAnnotations = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<ToolAnnotations>;
-
 /** Message representing a single tool. */
 export interface Tool {
   /** Description of the tool. */
@@ -1303,11 +1007,7 @@ export interface Tool {
   /** JSON schema for the input parameters of the tool. */
   inputSchema?: JsonSchema;
 }
-const Tool = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<Tool>;
-
 export type ToolList = Array<Tool>;
-const ToolList = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<ToolList>;
-
 /** Response message for ConnectorAgentService.ListTools */
 export interface ListToolsResponse {
   /** List of available tools. */
@@ -1317,8 +1017,6 @@ export interface ListToolsResponse {
   /** Metadata like service latency, etc. */
   metadata?: DocumentMapMap;
 }
-const ListToolsResponse = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<ListToolsResponse>;
-
 export interface PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' */
   "executionConfig.headers"?: string;
@@ -1327,11 +1025,6 @@ export interface PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** Request body */
   body?: Entity;
 }
-const PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
-
 /** RefreshAccessTokenRequest includes the refresh token. */
 export interface RefreshAccessTokenRequest {
   /** Optional. Refresh Token String. If the Refresh Token is not provided, the runtime will read the data from the secret manager. */
@@ -1341,32 +1034,17 @@ export interface RefreshAccessTokenRequest {
   /** OAuth2Config contains the OAuth2 config for the connection. */
   oauth2Config?: OAuth2Config;
 }
-const RefreshAccessTokenRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<RefreshAccessTokenRequest>;
-
 export interface RefreshAccessTokenProjectsLocationsConnectionsRequest {
   name: string;
   /** Request body */
   body?: RefreshAccessTokenRequest;
 }
-const RefreshAccessTokenProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<RefreshAccessTokenProjectsLocationsConnectionsRequest>;
-
 /** RefreshAccessTokenResponse includes the returned access token and its associated credentials. */
 export interface RefreshAccessTokenResponse {
   accessCredentials?: AccessCredentials;
   /** Metadata like service latency, etc. */
   metadata?: DocumentMapMap;
 }
-const RefreshAccessTokenResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<RefreshAccessTokenResponse>;
-
 /** Request message for ConnectorAgentService.ListToolsPost */
 export interface ListToolsPostRequest {
   /** Page token. */
@@ -1380,22 +1058,12 @@ export interface ListToolsPostRequest {
   /** Page size. */
   pageSize?: number;
 }
-const ListToolsPostRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<ListToolsPostRequest>;
-
 export interface ToolsProjectsLocationsConnectionsRequest {
   /** Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
   parent: string;
   /** Request body */
   body?: ListToolsPostRequest;
 }
-const ToolsProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ToolsProjectsLocationsConnectionsRequest>;
-
 export interface UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest {
   /** Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} */
   entityType: string;
@@ -1406,12 +1074,6 @@ export interface UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityT
   /** Request body */
   body?: Entity;
 }
-const UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest =
-  /*@__PURE__*/ __L.at(
-    __c11,
-    1,
-  ) as any as S.Schema<UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest>;
-
 /** Response message for EntityService.UpdateEntitiesWithConditions */
 export interface UpdateEntitiesWithConditionsResponse {
   /** Response returned by the external system. */
@@ -1419,11 +1081,6 @@ export interface UpdateEntitiesWithConditionsResponse {
   /** Metadata like service latency, etc. */
   metadata?: DocumentMapMap;
 }
-const UpdateEntitiesWithConditionsResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<UpdateEntitiesWithConditionsResponse>;
-
 export type CheckReadinessProjectsLocationsConnectionsError = NotFound | Forbidden | GcpOpError;
 /** Reports readiness status of the connector. Similar logic to GetStatus but modified for kubernetes health check to understand. */
 export const checkReadinessProjectsLocationsConnections: API.OperationMethod<
@@ -1432,8 +1089,8 @@ export const checkReadinessProjectsLocationsConnections: API.OperationMethod<
   CheckReadinessProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckReadinessProjectsLocationsConnectionsRequest,
-  output: CheckReadinessResponse,
+  input: __S(0) as any as S.Schema<CheckReadinessProjectsLocationsConnectionsRequest>,
+  output: __S(1) as any as S.Schema<CheckReadinessResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1447,8 +1104,8 @@ export const checkStatusProjectsLocationsConnections: API.OperationMethod<
   CheckStatusProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckStatusProjectsLocationsConnectionsRequest,
-  output: CheckStatusResponse,
+  input: __S(2) as any as S.Schema<CheckStatusProjectsLocationsConnectionsRequest>,
+  output: __S(5) as any as S.Schema<CheckStatusResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1468,8 +1125,8 @@ export const createProjectsLocationsConnectionsEntityTypesEntities: API.Operatio
   CreateProjectsLocationsConnectionsEntityTypesEntitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest,
-  output: Entity,
+  input: __S(7) as any as S.Schema<CreateProjectsLocationsConnectionsEntityTypesEntitiesRequest>,
+  output: __S(6) as any as S.Schema<Entity>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, EntitiesNotImplemented, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1488,8 +1145,10 @@ export const deleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypes
   DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
-  output: Empty,
+  input: __S(
+    8,
+  ) as any as S.Schema<DeleteEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest>,
+  output: __S(9) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1509,8 +1168,8 @@ export const deleteProjectsLocationsConnectionsEntityTypesEntities: API.Operatio
   DeleteProjectsLocationsConnectionsEntityTypesEntitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest,
-  output: Empty,
+  input: __S(10) as any as S.Schema<DeleteProjectsLocationsConnectionsEntityTypesEntitiesRequest>,
+  output: __S(9) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, EntitiesNotImplemented, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1529,8 +1188,8 @@ export const exchangeAuthCodeProjectsLocationsConnections: API.OperationMethod<
   ExchangeAuthCodeProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExchangeAuthCodeProjectsLocationsConnectionsRequest,
-  output: ExchangeAuthCodeResponse,
+  input: __S(16) as any as S.Schema<ExchangeAuthCodeProjectsLocationsConnectionsRequest>,
+  output: __S(18) as any as S.Schema<ExchangeAuthCodeResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1549,8 +1208,8 @@ export const executeHttpRequestProjectsLocationsConnections: API.OperationMethod
   ExecuteHttpRequestProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteHttpRequestProjectsLocationsConnectionsRequest,
-  output: ExecuteHttpRequestResponse,
+  input: __S(22) as any as S.Schema<ExecuteHttpRequestProjectsLocationsConnectionsRequest>,
+  output: __S(23) as any as S.Schema<ExecuteHttpRequestResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1569,8 +1228,8 @@ export const executeProjectsLocationsConnectionsActions: API.OperationMethod<
   ExecuteProjectsLocationsConnectionsActionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteProjectsLocationsConnectionsActionsRequest,
-  output: ExecuteActionResponse,
+  input: __S(25) as any as S.Schema<ExecuteProjectsLocationsConnectionsActionsRequest>,
+  output: __S(27) as any as S.Schema<ExecuteActionResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1589,8 +1248,8 @@ export const executeProjectsLocationsConnectionsTools: API.OperationMethod<
   ExecuteProjectsLocationsConnectionsToolsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteProjectsLocationsConnectionsToolsRequest,
-  output: ExecuteToolResponse,
+  input: __S(29) as any as S.Schema<ExecuteProjectsLocationsConnectionsToolsRequest>,
+  output: __S(30) as any as S.Schema<ExecuteToolResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1609,8 +1268,8 @@ export const executeSqlQueryProjectsLocationsConnections: API.OperationMethod<
   ExecuteSqlQueryProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExecuteSqlQueryProjectsLocationsConnectionsRequest,
-  output: ExecuteSqlQueryResponse,
+  input: __S(35) as any as S.Schema<ExecuteSqlQueryProjectsLocationsConnectionsRequest>,
+  output: __S(36) as any as S.Schema<ExecuteSqlQueryResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1629,8 +1288,10 @@ export const generateConnectionToolspecOverrideProjectsLocationsConnections: API
   GenerateConnectionToolspecOverrideProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest,
-  output: GenerateCustomToolspecResponse,
+  input: __S(
+    40,
+  ) as any as S.Schema<GenerateConnectionToolspecOverrideProjectsLocationsConnectionsRequest>,
+  output: __S(42) as any as S.Schema<GenerateCustomToolspecResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1644,8 +1305,8 @@ export const getProjectsLocationsConnectionsActions: API.OperationMethod<
   GetProjectsLocationsConnectionsActionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConnectionsActionsRequest,
-  output: Action,
+  input: __S(43) as any as S.Schema<GetProjectsLocationsConnectionsActionsRequest>,
+  output: __S(52) as any as S.Schema<Action>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1659,8 +1320,8 @@ export const getProjectsLocationsConnectionsEntityTypes: API.OperationMethod<
   GetProjectsLocationsConnectionsEntityTypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConnectionsEntityTypesRequest,
-  output: EntityType,
+  input: __S(53) as any as S.Schema<GetProjectsLocationsConnectionsEntityTypesRequest>,
+  output: __S(58) as any as S.Schema<EntityType>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1678,8 +1339,8 @@ export const getProjectsLocationsConnectionsEntityTypesEntities: API.OperationMe
   GetProjectsLocationsConnectionsEntityTypesEntitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConnectionsEntityTypesEntitiesRequest,
-  output: Entity,
+  input: __S(59) as any as S.Schema<GetProjectsLocationsConnectionsEntityTypesEntitiesRequest>,
+  output: __S(6) as any as S.Schema<Entity>,
   errors: [NotFound, Forbidden, EntitiesNotImplemented, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1693,8 +1354,8 @@ export const getProjectsLocationsConnectionsResources: API.OperationMethod<
   GetProjectsLocationsConnectionsResourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConnectionsResourcesRequest,
-  output: GetResourceResponse,
+  input: __S(60) as any as S.Schema<GetProjectsLocationsConnectionsResourcesRequest>,
+  output: __S(61) as any as S.Schema<GetResourceResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1713,8 +1374,8 @@ export const getResourcePostProjectsLocationsConnectionsResources: API.Operation
   GetResourcePostProjectsLocationsConnectionsResourcesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetResourcePostProjectsLocationsConnectionsResourcesRequest,
-  output: GetResourceResponse,
+  input: __S(63) as any as S.Schema<GetResourcePostProjectsLocationsConnectionsResourcesRequest>,
+  output: __S(61) as any as S.Schema<GetResourceResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1731,8 +1392,8 @@ export const listCustomToolNamesProjectsLocationsConnections: API.OperationMetho
   ListCustomToolNamesProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCustomToolNamesProjectsLocationsConnectionsRequest,
-  output: ListCustomToolNamesResponse,
+  input: __S(64) as any as S.Schema<ListCustomToolNamesProjectsLocationsConnectionsRequest>,
+  output: __S(39) as any as S.Schema<ListCustomToolNamesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1747,8 +1408,8 @@ export const listProjectsLocationsConnectionsActions: API.PaginatedOperationMeth
   GcpOpContext,
   ListActionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectionsActionsRequest,
-  output: ListActionsResponse,
+  input: __S(65) as any as S.Schema<ListProjectsLocationsConnectionsActionsRequest>,
+  output: __S(67) as any as S.Schema<ListActionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1764,8 +1425,8 @@ export const listProjectsLocationsConnectionsEntityTypes: API.PaginatedOperation
   GcpOpContext,
   ListEntityTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectionsEntityTypesRequest,
-  output: ListEntityTypesResponse,
+  input: __S(68) as any as S.Schema<ListProjectsLocationsConnectionsEntityTypesRequest>,
+  output: __S(70) as any as S.Schema<ListEntityTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1785,8 +1446,8 @@ export const listProjectsLocationsConnectionsEntityTypesEntities: API.PaginatedO
   GcpOpContext,
   ListEntitiesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectionsEntityTypesEntitiesRequest,
-  output: ListEntitiesResponse,
+  input: __S(71) as any as S.Schema<ListProjectsLocationsConnectionsEntityTypesEntitiesRequest>,
+  output: __S(73) as any as S.Schema<ListEntitiesResponse>,
   errors: [NotFound, Forbidden, EntitiesNotImplemented, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1802,8 +1463,8 @@ export const listProjectsLocationsConnectionsResources: API.PaginatedOperationMe
   GcpOpContext,
   ListResourcesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectionsResourcesRequest,
-  output: ListResourcesResponse,
+  input: __S(74) as any as S.Schema<ListProjectsLocationsConnectionsResourcesRequest>,
+  output: __S(77) as any as S.Schema<ListResourcesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1819,8 +1480,8 @@ export const listProjectsLocationsConnectionsTools: API.PaginatedOperationMethod
   GcpOpContext,
   ListToolsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectionsToolsRequest,
-  output: ListToolsResponse,
+  input: __S(78) as any as S.Schema<ListProjectsLocationsConnectionsToolsRequest>,
+  output: __S(82) as any as S.Schema<ListToolsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1841,8 +1502,8 @@ export const patchProjectsLocationsConnectionsEntityTypesEntities: API.Operation
   PatchProjectsLocationsConnectionsEntityTypesEntitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest,
-  output: Entity,
+  input: __S(83) as any as S.Schema<PatchProjectsLocationsConnectionsEntityTypesEntitiesRequest>,
+  output: __S(6) as any as S.Schema<Entity>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, EntitiesNotImplemented, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1861,8 +1522,8 @@ export const refreshAccessTokenProjectsLocationsConnections: API.OperationMethod
   RefreshAccessTokenProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RefreshAccessTokenProjectsLocationsConnectionsRequest,
-  output: RefreshAccessTokenResponse,
+  input: __S(85) as any as S.Schema<RefreshAccessTokenProjectsLocationsConnectionsRequest>,
+  output: __S(86) as any as S.Schema<RefreshAccessTokenResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1881,8 +1542,8 @@ export const toolsProjectsLocationsConnections: API.OperationMethod<
   ToolsProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ToolsProjectsLocationsConnectionsRequest,
-  output: ListToolsResponse,
+  input: __S(88) as any as S.Schema<ToolsProjectsLocationsConnectionsRequest>,
+  output: __S(82) as any as S.Schema<ListToolsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1901,8 +1562,10 @@ export const updateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypes
   UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest,
-  output: UpdateEntitiesWithConditionsResponse,
+  input: __S(
+    89,
+  ) as any as S.Schema<UpdateEntitiesWithConditionsProjectsLocationsConnectionsEntityTypesEntitiesRequest>,
+  output: __S(90) as any as S.Schema<UpdateEntitiesWithConditionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1949,21 +1612,21 @@ function __c0(j: number): any {
     case 3:
       return S.Record(S.String, S.Unknown);
     case 4:
-      return S.Record(S.String, DocumentMap);
+      return S.Record(S.String, __S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(CheckStatusResponseStateEnum),
+          state: S.optional(S.String),
           description: S.optional(S.String),
-          metadata: S.optional(DocumentMapMap),
+          metadata: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "CheckStatusResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMapMap),
-          fields: S.optional(DocumentMap),
+          metadata: S.optional(__S(4)),
+          fields: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "Entity" });
     case 7:
@@ -1971,7 +1634,7 @@ function __c0(j: number): any {
         S.Struct({
           "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Entity.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2041,7 +1704,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          scopes: S.optional(StringList),
+          scopes: S.optional(__S(13)),
           authCode: S.optional(S.String),
           redirectUri: S.optional(S.String),
           pkceVerifier: S.optional(S.String),
@@ -2050,9 +1713,9 @@ function __c1(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          executionConfig: S.optional(ExecutionConfig),
-          oauth2Config: S.optional(OAuth2Config),
-          authCodeData: S.optional(AuthCodeData),
+          executionConfig: S.optional(__S(11)),
+          oauth2Config: S.optional(__S(12)),
+          authCodeData: S.optional(__S(14)),
         }),
       ).annotate({ identifier: "ExchangeAuthCodeRequest" });
   }
@@ -2063,7 +1726,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ExchangeAuthCodeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(15).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2085,8 +1748,8 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          accessCredentials: S.optional(AccessCredentials),
-          metadata: S.optional(DocumentMapMap),
+          accessCredentials: S.optional(__S(17)),
+          metadata: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "ExchangeAuthCodeResponse" });
     case 3:
@@ -2097,14 +1760,14 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "HttpHeader" });
     case 4:
-      return S.Array(HttpHeader);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          httpMethod: S.optional(ExecuteHttpRequestRequestHttpMethodEnum),
+          httpMethod: S.optional(S.String),
           url: S.optional(S.String),
           rawBody: S.optional(S.String),
-          headers: S.optional(HttpHeaderList),
+          headers: S.optional(__S(20)),
         }),
       ).annotate({
         identifier: "ExecuteHttpRequestRequest",
@@ -2113,7 +1776,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ExecuteHttpRequestRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(21).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2127,7 +1790,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          headers: S.optional(HttpHeaderList),
+          headers: S.optional(__S(20)),
           reason: S.optional(S.String),
           body: S.optional(S.String),
           statusCode: S.optional(S.Number),
@@ -2142,15 +1805,15 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          executionConfig: S.optional(ExecutionConfig),
-          parameters: S.optional(DocumentMap),
+          executionConfig: S.optional(__S(11)),
+          parameters: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "ExecuteActionRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ExecuteActionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(24).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2162,27 +1825,27 @@ function __c3(j: number): any {
         identifier: "ExecuteProjectsLocationsConnectionsActionsRequest",
       });
     case 2:
-      return S.Array(DocumentMap);
+      return S.Array(__S(3));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMapMap),
-          results: S.optional(DocumentMapList),
+          metadata: S.optional(__S(4)),
+          results: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "ExecuteActionResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          executionConfig: S.optional(ExecutionConfig),
-          parameters: S.optional(DocumentMap),
-          toolDefinition: S.optional(DocumentMap),
+          executionConfig: S.optional(__S(11)),
+          parameters: S.optional(__S(3)),
+          toolDefinition: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "ExecuteToolRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ExecuteToolRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(28).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2196,16 +1859,16 @@ function __c3(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(DocumentMap),
-          metadata: S.optional(DocumentMapMap),
-          _meta: S.optional(DocumentMap),
+          result: S.optional(__S(3)),
+          metadata: S.optional(__S(4)),
+          _meta: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "ExecuteToolResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.Unknown),
-          dataType: S.optional(QueryParameterDataTypeEnum),
+          dataType: S.optional(S.String),
         }),
       ).annotate({ identifier: "QueryParameter" });
   }
@@ -2213,12 +1876,12 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(QueryParameter);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() =>
         S.Struct({
           query: S.optional(S.String),
-          queryParameters: S.optional(QueryParameterList),
+          queryParameters: S.optional(__S(32)),
           timeout: S.optional(S.String),
           maxRows: S.optional(S.String),
         }),
@@ -2226,14 +1889,14 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          query: S.optional(Query),
+          query: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "ExecuteSqlQueryRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           connection: S.String.pipe(T.Label()),
-          body: S.optional(ExecuteSqlQueryRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(34).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2247,23 +1910,23 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          results: S.optional(DocumentMapList),
+          results: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "ExecuteSqlQueryResponse" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          operation: S.optional(ToolNameOperationEnum),
+          operation: S.optional(S.String),
           name: S.optional(S.String),
           entityName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ToolName" });
     case 6:
-      return S.Array(ToolName);
+      return S.Array(__S(37));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          toolNames: S.optional(ToolNameList),
+          toolNames: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "GenerateCustomToolspecRequest",
@@ -2276,7 +1939,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GenerateCustomToolspecRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(39).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2290,14 +1953,14 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          toolDefinitions: S.optional(DocumentMapList),
+          toolDefinitions: S.optional(__S(26)),
           toolSpecVersion: S.optional(S.String),
         }),
       ).annotate({ identifier: "ToolSpec" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          toolSpec: S.optional(ToolSpec),
+          toolSpec: S.optional(__S(41)),
         }),
       ).annotate({
         identifier: "GenerateCustomToolspecResponse",
@@ -2305,7 +1968,7 @@ function __c5(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(GetProjectsLocationsConnectionsActionsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -2321,10 +1984,10 @@ function __c5(j: number): any {
     case 4:
       return S.Record(
         S.String,
-        /*@__PURE__*/ S.suspend(() => JsonSchema),
+        /*@__PURE__*/ S.suspend(() => __S(47)),
       );
     case 5:
-      return S.Array(/*@__PURE__*/ S.suspend(() => JsonSchema));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(47)));
     case 6:
       return S.Array(S.Unknown);
     case 7:
@@ -2332,52 +1995,52 @@ function __c5(j: number): any {
         S.Struct({
           description: S.optional(S.String),
           $id: S.optional(S.String),
-          items: S.optional(JsonSchema),
-          properties: S.optional(JsonSchemaMap),
-          additionalProperties: S.optional(JsonSchema),
+          items: S.optional(__S(47)),
+          properties: S.optional(__S(44)),
+          additionalProperties: S.optional(__S(47)),
           pattern: S.optional(S.String),
-          definitions: S.optional(JsonSchemaMap),
+          definitions: S.optional(__S(44)),
           minItems: S.optional(S.Number),
           format: S.optional(S.String),
-          type: S.optional(StringList),
+          type: S.optional(__S(13)),
           maximum: S.optional(S.Unknown),
           default: S.optional(S.Unknown),
-          else: S.optional(JsonSchema),
+          else: S.optional(__S(47)),
           $ref: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
-          not: S.optional(JsonSchema),
-          oneOf: S.optional(JsonSchemaList),
-          dependencies: S.optional(DocumentMap),
+          not: S.optional(__S(47)),
+          oneOf: S.optional(__S(45)),
+          dependencies: S.optional(__S(3)),
           minimum: S.optional(S.Unknown),
-          $defs: S.optional(JsonSchemaMap),
+          $defs: S.optional(__S(44)),
           exclusiveMinimum: S.optional(S.Unknown),
           contentEncoding: S.optional(S.String),
           maxProperties: S.optional(S.Number),
-          allOf: S.optional(JsonSchemaList),
+          allOf: S.optional(__S(45)),
           maxItems: S.optional(S.Number),
           title: S.optional(S.String),
-          if: S.optional(JsonSchema),
-          then: S.optional(JsonSchema),
-          patternProperties: S.optional(JsonSchemaMap),
-          jdbcType: S.optional(JsonSchemaJdbcTypeEnum),
+          if: S.optional(__S(47)),
+          then: S.optional(__S(47)),
+          patternProperties: S.optional(__S(44)),
+          jdbcType: S.optional(S.String),
           maxLength: S.optional(S.Number),
-          anyOf: S.optional(JsonSchemaList),
-          enum: S.optional(DocumentList),
+          anyOf: S.optional(__S(45)),
+          enum: S.optional(__S(46)),
           writeOnly: S.optional(S.Boolean),
-          additionalDetails: S.optional(DocumentMap),
-          propertyNames: S.optional(JsonSchema),
-          examples: S.optional(DocumentList),
+          additionalDetails: S.optional(__S(3)),
+          propertyNames: S.optional(__S(47)),
+          examples: S.optional(__S(46)),
           $comment: S.optional(S.String),
           uniqueItems: S.optional(S.Boolean),
           exclusiveMaximum: S.optional(S.Unknown),
           $schema: S.optional(S.String),
           minProperties: S.optional(S.Number),
           const: S.optional(S.Unknown),
-          required: S.optional(StringList),
-          contains: S.optional(JsonSchema),
+          required: S.optional(__S(13)),
+          contains: S.optional(__S(47)),
           multipleOf: S.optional(S.Number),
           contentMediaType: S.optional(S.String),
-          additionalItems: S.optional(JsonSchema),
+          additionalItems: S.optional(__S(47)),
           minLength: S.optional(S.Number),
         }),
       ).annotate({ identifier: "JsonSchema" });
@@ -2389,39 +2052,39 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           defaultValue: S.optional(S.Unknown),
-          jsonSchema: S.optional(JsonSchema),
-          dataType: S.optional(ResultMetadataDataTypeEnum),
+          jsonSchema: S.optional(__S(47)),
+          dataType: S.optional(S.String),
           description: S.optional(S.String),
           nullable: S.optional(S.Boolean),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResultMetadata" });
     case 1:
-      return S.Array(ResultMetadata);
+      return S.Array(__S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nullable: S.optional(S.Boolean),
           defaultValue: S.optional(S.Unknown),
           description: S.optional(S.String),
-          dataType: S.optional(InputParameterDataTypeEnum),
+          dataType: S.optional(S.String),
           name: S.optional(S.String),
-          additionalDetails: S.optional(DocumentMap),
-          jsonSchema: S.optional(JsonSchema),
+          additionalDetails: S.optional(__S(3)),
+          jsonSchema: S.optional(__S(47)),
         }),
       ).annotate({ identifier: "InputParameter" });
     case 3:
-      return S.Array(InputParameter);
+      return S.Array(__S(50));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          resultMetadata: S.optional(ResultMetadataList),
-          resultJsonSchema: S.optional(JsonSchema),
-          inputJsonSchema: S.optional(JsonSchema),
-          metadata: S.optional(DocumentMapMap),
+          resultMetadata: S.optional(__S(49)),
+          resultJsonSchema: S.optional(__S(47)),
+          inputJsonSchema: S.optional(__S(47)),
+          metadata: S.optional(__S(4)),
           description: S.optional(S.String),
           name: S.optional(S.String),
-          inputParameters: S.optional(InputParameterList),
+          inputParameters: S.optional(__S(51)),
           displayName: S.optional(S.String),
         }),
       ).annotate({ identifier: "Action" });
@@ -2429,7 +2092,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-          view: S.optional(GetProjectsLocationsConnectionsEntityTypesViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           contextMetadata: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -2443,7 +2106,7 @@ function __c6(j: number): any {
         identifier: "GetProjectsLocationsConnectionsEntityTypesRequest",
       });
     case 6:
-      return S.Array(EntityTypeOperationsItemEnum);
+      return S.Array(S.String);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -2460,26 +2123,26 @@ function __c7(j: number): any {
         S.Struct({
           key: S.optional(S.Boolean),
           name: S.optional(S.String),
-          dataType: S.optional(FieldDataTypeEnum),
+          dataType: S.optional(S.String),
           nullable: S.optional(S.Boolean),
-          jsonSchema: S.optional(JsonSchema),
+          jsonSchema: S.optional(__S(47)),
           defaultValue: S.optional(S.Unknown),
           description: S.optional(S.String),
-          additionalDetails: S.optional(DocumentMap),
-          reference: S.optional(Reference),
+          additionalDetails: S.optional(__S(3)),
+          reference: S.optional(__S(55)),
         }),
       ).annotate({ identifier: "Field" });
     case 1:
-      return S.Array(Field);
+      return S.Array(__S(56));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(EntityTypeOperationsItemEnumList),
-          fields: S.optional(FieldList),
-          metadata: S.optional(DocumentMapMap),
+          operations: S.optional(__S(54)),
+          fields: S.optional(__S(57)),
+          metadata: S.optional(__S(4)),
           name: S.optional(S.String),
           defaultSortBy: S.optional(S.String),
-          jsonSchema: S.optional(JsonSchema),
+          jsonSchema: S.optional(__S(47)),
         }),
       ).annotate({ identifier: "EntityType" });
     case 3:
@@ -2515,24 +2178,24 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMapMap),
+          metadata: S.optional(__S(4)),
           mimeType: S.optional(S.String),
           data: S.optional(S.String),
-          _meta: S.optional(DocumentMap),
+          _meta: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "GetResourceResponse" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          toolSpec: S.optional(ToolSpec),
-          executionConfig: S.optional(ExecutionConfig),
+          toolSpec: S.optional(__S(41)),
+          executionConfig: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "GetResourcePostRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(GetResourcePostRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(62).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2568,7 +2231,7 @@ function __c8(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-          view: S.optional(ListProjectsLocationsConnectionsActionsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -2580,14 +2243,14 @@ function __c8(j: number): any {
         identifier: "ListProjectsLocationsConnectionsActionsRequest",
       });
     case 2:
-      return S.Array(Action);
+      return S.Array(__S(52));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          metadata: S.optional(DocumentMapMap),
-          unsupportedActionNames: S.optional(StringList),
-          actions: S.optional(ActionList),
+          metadata: S.optional(__S(4)),
+          unsupportedActionNames: S.optional(__S(13)),
+          actions: S.optional(__S(66)),
         }),
       ).annotate({ identifier: "ListActionsResponse" });
     case 4:
@@ -2595,7 +2258,7 @@ function __c8(j: number): any {
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          view: S.optional(ListProjectsLocationsConnectionsEntityTypesViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -2609,22 +2272,22 @@ function __c8(j: number): any {
         identifier: "ListProjectsLocationsConnectionsEntityTypesRequest",
       });
     case 5:
-      return S.Array(EntityType);
+      return S.Array(__S(58));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          unsupportedTypeNames: S.optional(StringList),
-          types: S.optional(EntityTypeList),
+          unsupportedTypeNames: S.optional(__S(13)),
+          types: S.optional(__S(69)),
           nextPageToken: S.optional(S.String),
-          metadata: S.optional(DocumentMapMap),
+          metadata: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "ListEntityTypesResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           conditions: S.optional(S.String.pipe(T.Query())),
-          sortBy: S.optional(StringList.pipe(T.Query())),
-          sortOrder: S.optional(StringList.pipe(T.Query())),
+          sortBy: S.optional(__S(13).pipe(T.Query())),
+          sortOrder: S.optional(__S(13).pipe(T.Query())),
           "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
@@ -2644,13 +2307,13 @@ function __c8(j: number): any {
 function __c9(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Entity);
+      return S.Array(__S(6));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          entities: S.optional(EntityList),
-          metadata: S.optional(DocumentMapMap),
+          entities: S.optional(__S(72)),
+          metadata: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "ListEntitiesResponse" });
     case 2:
@@ -2678,16 +2341,16 @@ function __c9(j: number): any {
           mimeType: S.optional(S.String),
           uri: S.optional(S.String),
           name: S.optional(S.String),
-          _meta: S.optional(DocumentMap),
+          _meta: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "Resource" });
     case 4:
-      return S.Array(Resource);
+      return S.Array(__S(75));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metadata: S.optional(DocumentMapMap),
-          resources: S.optional(ResourceList),
+          metadata: S.optional(__S(4)),
+          resources: S.optional(__S(76)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListResourcesResponse" });
@@ -2696,7 +2359,7 @@ function __c9(j: number): any {
         S.Struct({
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
-          toolNames: S.optional(StringList.pipe(T.Query())),
+          toolNames: S.optional(__S(13).pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -2727,22 +2390,22 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          _meta: S.optional(DocumentMap),
+          _meta: S.optional(__S(3)),
           name: S.optional(S.String),
-          annotations: S.optional(ToolAnnotations),
-          dependsOn: S.optional(StringList),
-          outputSchema: S.optional(JsonSchema),
-          inputSchema: S.optional(JsonSchema),
+          annotations: S.optional(__S(79)),
+          dependsOn: S.optional(__S(13)),
+          outputSchema: S.optional(__S(47)),
+          inputSchema: S.optional(__S(47)),
         }),
       ).annotate({ identifier: "Tool" });
     case 1:
-      return S.Array(Tool);
+      return S.Array(__S(80));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          tools: S.optional(ToolList),
+          tools: S.optional(__S(81)),
           nextPageToken: S.optional(S.String),
-          metadata: S.optional(DocumentMapMap),
+          metadata: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "ListToolsResponse" });
     case 3:
@@ -2750,7 +2413,7 @@ function __c10(j: number): any {
         S.Struct({
           "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(Entity.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2765,8 +2428,8 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           refreshToken: S.optional(S.String),
-          executionConfig: S.optional(ExecutionConfig),
-          oauth2Config: S.optional(OAuth2Config),
+          executionConfig: S.optional(__S(11)),
+          oauth2Config: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "RefreshAccessTokenRequest",
@@ -2775,7 +2438,7 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(RefreshAccessTokenRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(84).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2789,8 +2452,8 @@ function __c10(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          accessCredentials: S.optional(AccessCredentials),
-          metadata: S.optional(DocumentMapMap),
+          accessCredentials: S.optional(__S(17)),
+          metadata: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "RefreshAccessTokenResponse",
@@ -2799,9 +2462,9 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pageToken: S.optional(S.String),
-          toolNames: S.optional(StringList),
-          toolSpec: S.optional(ToolSpec),
-          executionConfig: S.optional(ExecutionConfig),
+          toolNames: S.optional(__S(13)),
+          toolSpec: S.optional(__S(41)),
+          executionConfig: S.optional(__S(11)),
           pageSize: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ListToolsPostRequest" });
@@ -2813,7 +2476,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(ListToolsPostRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(87).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2830,7 +2493,7 @@ function __c11(j: number): any {
           entityType: S.String.pipe(T.Label()),
           conditions: S.optional(S.String.pipe(T.Query())),
           "executionConfig.headers": S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Entity.pipe(T.HttpBody())),
+          body: S.optional(__S(6).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2845,11 +2508,44 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          response: S.optional(DocumentMap),
-          metadata: S.optional(DocumentMapMap),
+          response: S.optional(__S(3)),
+          metadata: S.optional(__S(4)),
         }),
       ).annotate({
         identifier: "UpdateEntitiesWithConditionsResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
   }
 }

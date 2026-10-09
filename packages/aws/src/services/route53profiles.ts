@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "Route53Profiles",
   serviceShapeName: "Route53Profiles",
@@ -127,19 +129,13 @@ export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c0, 1);
 export interface AssociateProfileRequest {
   ProfileId: string;
   ResourceId: string;
   Name: string;
   Tags?: Tag[];
 }
-const AssociateProfileRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AssociateProfileRequest>;
 export type AccountId = string;
 export type ProfileStatus =
   | "COMPLETE"
@@ -149,8 +145,6 @@ export type ProfileStatus =
   | "DELETED"
   | "FAILED"
   | (string & {});
-const ProfileStatus = S.String;
-
 export type Rfc3339Timestamp = Date;
 export interface ProfileAssociation {
   Id?: string;
@@ -163,14 +157,9 @@ export interface ProfileAssociation {
   CreationTime?: Date;
   ModificationTime?: Date;
 }
-const ProfileAssociation = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<ProfileAssociation>;
 export interface AssociateProfileResponse {
   ProfileAssociation?: ProfileAssociation;
 }
-const AssociateProfileResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AssociateProfileResponse>;
 export type Arn = string;
 export type ResourceProperties = string;
 export interface AssociateResourceToProfileRequest {
@@ -179,10 +168,6 @@ export interface AssociateResourceToProfileRequest {
   Name: string;
   ResourceProperties?: string;
 }
-const AssociateResourceToProfileRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<AssociateResourceToProfileRequest>;
 export interface ProfileResourceAssociation {
   Id?: string;
   Name?: string;
@@ -196,27 +181,16 @@ export interface ProfileResourceAssociation {
   CreationTime?: Date;
   ModificationTime?: Date;
 }
-const ProfileResourceAssociation = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ProfileResourceAssociation>;
 export interface AssociateResourceToProfileResponse {
   ProfileResourceAssociation?: ProfileResourceAssociation;
 }
-const AssociateResourceToProfileResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<AssociateResourceToProfileResponse>;
 export type CreatorRequestId = string;
 export interface CreateProfileRequest {
   Name: string;
   ClientToken: string;
   Tags?: Tag[];
 }
-const CreateProfileRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateProfileRequest>;
 export type ShareStatus = "NOT_SHARED" | "SHARED_WITH_ME" | "SHARED_BY_ME" | (string & {});
-const ShareStatus = S.String;
-
 export interface Profile {
   Id?: string;
   Arn?: string;
@@ -229,82 +203,47 @@ export interface Profile {
   ModificationTime?: Date;
   ClientToken?: string;
 }
-const Profile = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Profile>;
 export interface CreateProfileResponse {
   Profile?: Profile;
 }
-const CreateProfileResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateProfileResponse>;
 export interface DeleteProfileRequest {
   ProfileId: string;
 }
-const DeleteProfileRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteProfileRequest>;
 export interface DeleteProfileResponse {
   Profile?: Profile;
 }
-const DeleteProfileResponse = CreateProfileResponse as any as S.Schema<DeleteProfileResponse>;
 export interface DisassociateProfileRequest {
   ProfileId: string;
   ResourceId: string;
 }
-const DisassociateProfileRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<DisassociateProfileRequest>;
 export interface DisassociateProfileResponse {
   ProfileAssociation?: ProfileAssociation;
 }
-const DisassociateProfileResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<DisassociateProfileResponse>;
 export interface DisassociateResourceFromProfileRequest {
   ProfileId: string;
   ResourceArn: string;
 }
-const DisassociateResourceFromProfileRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<DisassociateResourceFromProfileRequest>;
 export interface DisassociateResourceFromProfileResponse {
   ProfileResourceAssociation?: ProfileResourceAssociation;
 }
-const DisassociateResourceFromProfileResponse =
-  AssociateResourceToProfileResponse as any as S.Schema<DisassociateResourceFromProfileResponse>;
 export interface GetProfileRequest {
   ProfileId: string;
 }
-const GetProfileRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetProfileRequest>;
 export interface GetProfileResponse {
   Profile?: Profile;
 }
-const GetProfileResponse = CreateProfileResponse as any as S.Schema<GetProfileResponse>;
 export interface GetProfileAssociationRequest {
   ProfileAssociationId: string;
 }
-const GetProfileAssociationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetProfileAssociationRequest>;
 export interface GetProfileAssociationResponse {
   ProfileAssociation?: ProfileAssociation;
 }
-const GetProfileAssociationResponse =
-  DisassociateProfileResponse as any as S.Schema<GetProfileAssociationResponse>;
 export interface GetProfileResourceAssociationRequest {
   ProfileResourceAssociationId: string;
 }
-const GetProfileResourceAssociationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetProfileResourceAssociationRequest>;
 export interface GetProfileResourceAssociationResponse {
   ProfileResourceAssociation?: ProfileResourceAssociation;
 }
-const GetProfileResourceAssociationResponse =
-  AssociateResourceToProfileResponse as any as S.Schema<GetProfileResourceAssociationResponse>;
 export type MaxResults = number;
 export type NextToken = string;
 export interface ListProfileAssociationsRequest {
@@ -313,105 +252,63 @@ export interface ListProfileAssociationsRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListProfileAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListProfileAssociationsRequest>;
 export type ProfileAssociations = ProfileAssociation[];
-const ProfileAssociations = /*@__PURE__*/ __L.at(__c2, 3);
 export interface ListProfileAssociationsResponse {
   ProfileAssociations?: ProfileAssociation[];
   NextToken?: string;
 }
-const ListProfileAssociationsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListProfileAssociationsResponse>;
 export interface ListProfileResourceAssociationsRequest {
   ProfileId: string;
   ResourceType?: string;
   MaxResults?: number;
   NextToken?: string;
 }
-const ListProfileResourceAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<ListProfileResourceAssociationsRequest>;
 export type ProfileResourceAssociations = ProfileResourceAssociation[];
-const ProfileResourceAssociations = /*@__PURE__*/ __L.at(__c2, 6);
 export interface ListProfileResourceAssociationsResponse {
   ProfileResourceAssociations?: ProfileResourceAssociation[];
   NextToken?: string;
 }
-const ListProfileResourceAssociationsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListProfileResourceAssociationsResponse>;
 export interface ListProfilesRequest {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListProfilesRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListProfilesRequest>;
 export interface ProfileSummary {
   Id?: string;
   Arn?: string;
   Name?: string;
   ShareStatus?: ShareStatus;
 }
-const ProfileSummary = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ProfileSummary>;
 export type ProfileSummaryList = ProfileSummary[];
-const ProfileSummaryList = /*@__PURE__*/ __L.at(__c3, 2);
 export interface ListProfilesResponse {
   ProfileSummaries?: ProfileSummary[];
   NextToken?: string;
 }
-const ListProfilesResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListProfilesResponse>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export type TagMap = { [key: string]: string | undefined };
-const TagMap = /*@__PURE__*/ __L.at(__c3, 5);
 export interface ListTagsForResourceResponse {
   Tags: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = /*@__PURE__*/ __L.at(__c4, 1);
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateProfileResourceAssociationRequest {
   ProfileResourceAssociationId: string;
   Name?: string;
   ResourceProperties?: string;
 }
-const UpdateProfileResourceAssociationRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<UpdateProfileResourceAssociationRequest>;
 export interface UpdateProfileResourceAssociationResponse {
   ProfileResourceAssociation?: ProfileResourceAssociation;
 }
-const UpdateProfileResourceAssociationResponse =
-  AssociateResourceToProfileResponse as any as S.Schema<UpdateProfileResourceAssociationResponse>;
 export type ExceptionMessage = string;
 export type AssociateProfileError =
   | AccessDeniedException
@@ -433,8 +330,8 @@ export const associateProfile: API.OperationMethod<
   AssociateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateProfileRequest,
-  output: AssociateProfileResponse,
+  input: __S(2) as any as S.Schema<AssociateProfileRequest>,
+  output: __S(4) as any as S.Schema<AssociateProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -469,8 +366,8 @@ export const associateResourceToProfile: API.OperationMethod<
   AssociateResourceToProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateResourceToProfileRequest,
-  output: AssociateResourceToProfileResponse,
+  input: __S(5) as any as S.Schema<AssociateResourceToProfileRequest>,
+  output: __S(7) as any as S.Schema<AssociateResourceToProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -502,8 +399,8 @@ export const createProfile: API.OperationMethod<
   CreateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProfileRequest,
-  output: CreateProfileResponse,
+  input: __S(8) as any as S.Schema<CreateProfileRequest>,
+  output: __S(10) as any as S.Schema<CreateProfileResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -532,8 +429,8 @@ export const deleteProfile: API.OperationMethod<
   DeleteProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProfileRequest,
-  output: DeleteProfileResponse,
+  input: __S(11) as any as S.Schema<DeleteProfileRequest>,
+  output: __S(10) as any as S.Schema<DeleteProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -563,8 +460,8 @@ export const disassociateProfile: API.OperationMethod<
   DisassociateProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateProfileRequest,
-  output: DisassociateProfileResponse,
+  input: __S(12) as any as S.Schema<DisassociateProfileRequest>,
+  output: __S(13) as any as S.Schema<DisassociateProfileResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -597,8 +494,8 @@ export const disassociateResourceFromProfile: API.OperationMethod<
   DisassociateResourceFromProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateResourceFromProfileRequest,
-  output: DisassociateResourceFromProfileResponse,
+  input: __S(14) as any as S.Schema<DisassociateResourceFromProfileRequest>,
+  output: __S(7) as any as S.Schema<DisassociateResourceFromProfileResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -629,8 +526,8 @@ export const getProfile: API.OperationMethod<
   GetProfileError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProfileRequest,
-  output: GetProfileResponse,
+  input: __S(15) as any as S.Schema<GetProfileRequest>,
+  output: __S(10) as any as S.Schema<GetProfileResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -657,8 +554,8 @@ export const getProfileAssociation: API.OperationMethod<
   GetProfileAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProfileAssociationRequest,
-  output: GetProfileAssociationResponse,
+  input: __S(16) as any as S.Schema<GetProfileAssociationRequest>,
+  output: __S(13) as any as S.Schema<GetProfileAssociationResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -686,8 +583,8 @@ export const getProfileResourceAssociation: API.OperationMethod<
   GetProfileResourceAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProfileResourceAssociationRequest,
-  output: GetProfileResourceAssociationResponse,
+  input: __S(17) as any as S.Schema<GetProfileResourceAssociationRequest>,
+  output: __S(7) as any as S.Schema<GetProfileResourceAssociationResponse>,
   errors: [
     AccessDeniedException,
     InvalidParameterException,
@@ -717,8 +614,8 @@ export const listProfileAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProfileAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProfileAssociationsRequest,
-  output: ListProfileAssociationsResponse,
+  input: __S(18) as any as S.Schema<ListProfileAssociationsRequest>,
+  output: __S(20) as any as S.Schema<ListProfileAssociationsResponse>,
   errors: [
     AccessDeniedException,
     InvalidNextTokenException,
@@ -756,8 +653,8 @@ export const listProfileResourceAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProfileResourceAssociation
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProfileResourceAssociationsRequest,
-  output: ListProfileResourceAssociationsResponse,
+  input: __S(21) as any as S.Schema<ListProfileResourceAssociationsRequest>,
+  output: __S(23) as any as S.Schema<ListProfileResourceAssociationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServiceErrorException,
@@ -795,8 +692,8 @@ export const listProfiles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProfileSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProfilesRequest,
-  output: ListProfilesResponse,
+  input: __S(24) as any as S.Schema<ListProfilesRequest>,
+  output: __S(27) as any as S.Schema<ListProfilesResponse>,
   errors: [
     AccessDeniedException,
     InvalidNextTokenException,
@@ -831,8 +728,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(28) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(30) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -860,8 +757,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(31) as any as S.Schema<TagResourceRequest>,
+  output: __S(32) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -889,8 +786,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(34) as any as S.Schema<UntagResourceRequest>,
+  output: __S(32) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -922,8 +819,8 @@ export const updateProfileResourceAssociation: API.OperationMethod<
   UpdateProfileResourceAssociationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProfileResourceAssociationRequest,
-  output: UpdateProfileResourceAssociationResponse,
+  input: __S(35) as any as S.Schema<UpdateProfileResourceAssociationRequest>,
+  output: __S(7) as any as S.Schema<UpdateProfileResourceAssociationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -947,14 +844,14 @@ function __c0(j: number): any {
         identifier: "Tag",
       });
     case 1:
-      return S.Array(Tag);
+      return S.Array(__S(0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           ProfileId: S.String,
           ResourceId: S.String,
           Name: S.String,
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(1)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/profileassociation" }),
@@ -974,16 +871,16 @@ function __c0(j: number): any {
           OwnerId: S.optional(S.String),
           ProfileId: S.optional(S.String),
           ResourceId: S.optional(S.String),
-          Status: S.optional(ProfileStatus),
+          Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ProfileAssociation" });
     case 4:
-      return S.suspend(() =>
-        S.Struct({ ProfileAssociation: S.optional(ProfileAssociation) }),
-      ).annotate({ identifier: "AssociateProfileResponse" });
+      return S.suspend(() => S.Struct({ ProfileAssociation: S.optional(__S(3)) })).annotate({
+        identifier: "AssociateProfileResponse",
+      });
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -1014,7 +911,7 @@ function __c0(j: number): any {
           ResourceArn: S.optional(S.String),
           ResourceType: S.optional(S.String),
           ResourceProperties: S.optional(S.String),
-          Status: S.optional(ProfileStatus),
+          Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -1023,11 +920,11 @@ function __c0(j: number): any {
         identifier: "ProfileResourceAssociation",
       });
     case 7:
-      return S.suspend(() =>
-        S.Struct({ ProfileResourceAssociation: S.optional(ProfileResourceAssociation) }),
-      ).annotate({
-        identifier: "AssociateResourceToProfileResponse",
-      });
+      return S.suspend(() => S.Struct({ ProfileResourceAssociation: S.optional(__S(6)) })).annotate(
+        {
+          identifier: "AssociateResourceToProfileResponse",
+        },
+      );
   }
 }
 function __c1(j: number): any {
@@ -1037,7 +934,7 @@ function __c1(j: number): any {
         S.Struct({
           Name: S.String,
           ClientToken: S.String.pipe(T.IdempotencyToken()),
-          Tags: S.optional(TagList),
+          Tags: S.optional(__S(1)),
         }).pipe(T.all(T.Http({ method: "POST", uri: "/profile" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "CreateProfileRequest" });
     case 1:
@@ -1047,16 +944,16 @@ function __c1(j: number): any {
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
           OwnerId: S.optional(S.String),
-          Status: S.optional(ProfileStatus),
+          Status: S.optional(S.String),
           StatusMessage: S.optional(S.String),
-          ShareStatus: S.optional(ShareStatus),
+          ShareStatus: S.optional(S.String),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ClientToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "Profile" });
     case 2:
-      return S.suspend(() => S.Struct({ Profile: S.optional(Profile) })).annotate({
+      return S.suspend(() => S.Struct({ Profile: S.optional(__S(9)) })).annotate({
         identifier: "CreateProfileResponse",
       });
     case 3:
@@ -1094,9 +991,7 @@ function __c1(j: number): any {
         identifier: "DisassociateProfileRequest",
       });
     case 5:
-      return S.suspend(() =>
-        S.Struct({ ProfileAssociation: S.optional(ProfileAssociation) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ ProfileAssociation: S.optional(__S(3)) })).annotate({
         identifier: "DisassociateProfileResponse",
       });
     case 6:
@@ -1193,11 +1088,11 @@ function __c2(j: number): any {
         identifier: "ListProfileAssociationsRequest",
       });
     case 3:
-      return S.Array(ProfileAssociation);
+      return S.Array(__S(3));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          ProfileAssociations: S.optional(ProfileAssociations),
+          ProfileAssociations: S.optional(__S(19)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1224,11 +1119,11 @@ function __c2(j: number): any {
         identifier: "ListProfileResourceAssociationsRequest",
       });
     case 6:
-      return S.Array(ProfileResourceAssociation);
+      return S.Array(__S(6));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          ProfileResourceAssociations: S.optional(ProfileResourceAssociations),
+          ProfileResourceAssociations: S.optional(__S(22)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1251,15 +1146,15 @@ function __c3(j: number): any {
           Id: S.optional(S.String),
           Arn: S.optional(S.String),
           Name: S.optional(S.String),
-          ShareStatus: S.optional(ShareStatus),
+          ShareStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProfileSummary" });
     case 2:
-      return S.Array(ProfileSummary);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          ProfileSummaries: S.optional(ProfileSummaryList),
+          ProfileSummaries: S.optional(__S(26)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListProfilesResponse" });
@@ -1281,12 +1176,12 @@ function __c3(j: number): any {
     case 5:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 6:
-      return S.suspend(() => S.Struct({ Tags: TagMap })).annotate({
+      return S.suspend(() => S.Struct({ Tags: __S(29) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 7:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: TagMap }).pipe(
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: __S(29) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
             svc,
@@ -1311,7 +1206,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(33).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -1345,5 +1240,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UpdateProfileResourceAssociationRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

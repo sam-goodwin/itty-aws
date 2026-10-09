@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -71,25 +73,14 @@ export interface MonitoredProject {
   /** Immutable. The resource name of the MonitoredProject. On input, the resource name includes the scoping project ID and monitored project ID. On output, it contains the equivalent project numbers. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER} */
   name?: string;
 }
-const MonitoredProject = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<MonitoredProject>;
-
 export interface CreateLocationsGlobalMetricsScopesProjectsRequest {
   /** Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER} */
   parent: string;
   /** Request body */
   body?: MonitoredProject;
 }
-const CreateLocationsGlobalMetricsScopesProjectsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateLocationsGlobalMetricsScopesProjectsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DocumentMapList>;
-
 /** The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces of data: error code, error message, and error details.You can find out more about this error model and how to work with it in the API Design Guide (https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -99,8 +90,6 @@ export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
   code?: number;
 }
-const Status = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -114,14 +103,8 @@ export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should be a resource name ending with operations/{unique_id}. */
   name?: string;
 }
-const Operation = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<Operation>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<StringMap>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<StringList>;
-
 /** An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples include virtual machine instances, databases, and storage devices such as disks. The type field identifies a MonitoredResourceDescriptor object that describes the resource's schema. Information in the labels field identifies the actual resource and its attributes according to the schema. For example, a particular Compute Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for "gce_instance" has labels "project_id", "instance_id" and "zone": { "type": "gce_instance", "labels": { "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }} */
 export interface MonitoredResource {
   /** Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list). */
@@ -129,14 +112,7 @@ export interface MonitoredResource {
   /** Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone". */
   labels?: StringMap;
 }
-const MonitoredResource = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<MonitoredResource>;
-
 export type MonitoredResourceList = Array<MonitoredResource>;
-const MonitoredResourceList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<MonitoredResourceList>;
-
 /** A widget that displays a list of incidents */
 export interface IncidentList {
   /** Optional. A list of alert policy names to filter the incident list by. Don't include the project ID prefix in the policy name. For example, use alertPolicies/utilization. */
@@ -144,18 +120,12 @@ export interface IncidentList {
   /** Optional. The monitored resource for which incidents are listed. The resource doesn't need to be fully specified. That is, you can specify the resource type but not the values of the resource labels. The resource type and labels are used for filtering. */
   monitoredResources?: MonitoredResourceList;
 }
-const IncidentList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<IncidentList>;
-
 /** A widget that displays an input field to change the value of a template variable. */
 export interface FilterControl {
   /** Name of the template variable the widget affects. */
   templateVariable?: string;
 }
-const FilterControl = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<FilterControl>;
-
 export type TemplateVariableConditionComparatorEnum = "COMPARATOR_UNSPECIFIED" | "REGEX_FULL_MATCH";
-const TemplateVariableConditionComparatorEnum = S.String;
-
 /** A condition whose evaluation is based on the value of a template variable. */
 export interface TemplateVariableCondition {
   /** Comparator to use to evaluate whether the value of the template variable matches the template_variable_value. For example, if the comparator is REGEX_FULL_MATCH, template_variable_value would contain a regex that is matched against the value of the template variable. */
@@ -165,18 +135,11 @@ export interface TemplateVariableCondition {
   /** The value to compare the template variable to. For example, if the comparator is REGEX_FULL_MATCH, this field should contain a regex. */
   templateVariableValue?: string;
 }
-const TemplateVariableCondition = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<TemplateVariableCondition>;
-
 /** Condition that determines whether the widget should be displayed. */
 export interface VisibilityCondition {
   /** A condition whose evaluation is based on the value of a template variable. */
   templateVariableCondition?: TemplateVariableCondition;
 }
-const VisibilityCondition = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<VisibilityCondition>;
-
 /** Preview: Parameter value applied to the aggregation function. This is a preview feature and may be subject to change before final release. */
 export interface Parameter {
   /** An integer parameter value. */
@@ -184,11 +147,7 @@ export interface Parameter {
   /** A floating-point parameter value. */
   doubleValue?: number;
 }
-const Parameter = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Parameter>;
-
 export type ParameterList = Array<Parameter>;
-const ParameterList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ParameterList>;
-
 /** Preview: An identifier for an aggregation function. Aggregation functions are SQL functions that group or transform data from multiple points to a single point. This is a preview feature and may be subject to change before final release. */
 export interface AggregationFunction {
   /** Required. The type of aggregation function, must be one of the following: "none" - no function. "percentile" - APPROX_QUANTILES() - 1 parameter numeric value "average" - AVG() "count" - COUNT() "count-distinct" - COUNT(DISTINCT) "count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "sum" - SUM() */
@@ -196,8 +155,6 @@ export interface AggregationFunction {
   /** Optional. Parameters applied to the aggregation function. Only used for functions that require them. */
   parameters?: ParameterList;
 }
-const AggregationFunction = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<AggregationFunction>;
-
 /** A chart measure. Measures represent a measured property in your chart data such as rainfall in inches, number of units sold, revenue gained, etc. */
 export interface Measure {
   /** Required. The column name within in the dataset used for the measure. */
@@ -205,18 +162,12 @@ export interface Measure {
   /** Required. The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins. */
   aggregationFunction?: AggregationFunction;
 }
-const Measure = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<Measure>;
-
 export type MeasureList = Array<Measure>;
-const MeasureList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<MeasureList>;
-
 /** Preview: A query that produces an aggregated response and supporting data. This is a preview feature and may be subject to change before final release. */
 export interface OpsAnalyticsQuery {
   /** A SQL query to fetch time series, category series, or numeric series data. */
   sql?: string;
 }
-const OpsAnalyticsQuery = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<OpsAnalyticsQuery>;
-
 export type AggregationPerSeriesAlignerEnum =
   | "ALIGN_NONE"
   | "ALIGN_DELTA"
@@ -237,8 +188,6 @@ export type AggregationPerSeriesAlignerEnum =
   | "ALIGN_PERCENTILE_50"
   | "ALIGN_PERCENTILE_05"
   | "ALIGN_PERCENT_CHANGE";
-const AggregationPerSeriesAlignerEnum = S.String;
-
 export type AggregationCrossSeriesReducerEnum =
   | "REDUCE_NONE"
   | "REDUCE_MEAN"
@@ -254,8 +203,6 @@ export type AggregationCrossSeriesReducerEnum =
   | "REDUCE_PERCENTILE_95"
   | "REDUCE_PERCENTILE_50"
   | "REDUCE_PERCENTILE_05";
-const AggregationCrossSeriesReducerEnum = S.String;
-
 /** Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation). */
 export interface Aggregation {
   /** An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned. */
@@ -267,13 +214,9 @@ export interface Aggregation {
   /** The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored. */
   groupByFields?: StringList;
 }
-const Aggregation = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Aggregation>;
-
 export type StatisticalTimeSeriesFilterRankingMethodEnum =
   | "METHOD_UNSPECIFIED"
   | "METHOD_CLUSTER_OUTLIER";
-const StatisticalTimeSeriesFilterRankingMethodEnum = S.String;
-
 /** A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API. */
 export interface StatisticalTimeSeriesFilter {
   /** How many time series to output. */
@@ -281,11 +224,6 @@ export interface StatisticalTimeSeriesFilter {
   /** rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series. */
   rankingMethod?: StatisticalTimeSeriesFilterRankingMethodEnum | (string & {});
 }
-const StatisticalTimeSeriesFilter = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<StatisticalTimeSeriesFilter>;
-
 export type PickTimeSeriesFilterRankingMethodEnum =
   | "METHOD_UNSPECIFIED"
   | "METHOD_MEAN"
@@ -293,8 +231,6 @@ export type PickTimeSeriesFilterRankingMethodEnum =
   | "METHOD_MIN"
   | "METHOD_SUM"
   | "METHOD_LATEST";
-const PickTimeSeriesFilterRankingMethodEnum = S.String;
-
 /** Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive).The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time. */
 export interface Interval {
   /** Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be the same or after the start. */
@@ -302,11 +238,7 @@ export interface Interval {
   /** Optional. Exclusive end of the interval.If specified, a Timestamp matching this interval will have to be before the end. */
   endTime?: string;
 }
-const Interval = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<Interval>;
-
 export type PickTimeSeriesFilterDirectionEnum = "DIRECTION_UNSPECIFIED" | "TOP" | "BOTTOM";
-const PickTimeSeriesFilterDirectionEnum = S.String;
-
 /** Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter. */
 export interface PickTimeSeriesFilter {
   /** ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series. */
@@ -318,8 +250,6 @@ export interface PickTimeSeriesFilter {
   /** How to use the ranking to select time series that pass through the filter. */
   direction?: PickTimeSeriesFilterDirectionEnum | (string & {});
 }
-const PickTimeSeriesFilter = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<PickTimeSeriesFilter>;
-
 /** A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method. */
 export interface TimeSeriesFilter {
   /** By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data. */
@@ -333,8 +263,6 @@ export interface TimeSeriesFilter {
   /** Apply a second aggregation after aggregation is applied. */
   secondaryAggregation?: Aggregation;
 }
-const TimeSeriesFilter = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<TimeSeriesFilter>;
-
 /** Span attribute key and list of values to be used for filtering. */
 export interface SpanAttributeFilter {
   /** List of attribute values for given key. Multiple values will be OR'd together. */
@@ -342,14 +270,7 @@ export interface SpanAttributeFilter {
   /** Key of the attribute */
   key?: string;
 }
-const SpanAttributeFilter = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<SpanAttributeFilter>;
-
 export type SpanAttributeFilterList = Array<SpanAttributeFilter>;
-const SpanAttributeFilterList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<SpanAttributeFilterList>;
-
 /** First version of span filtering that is supported by the Trace component. */
 export interface SpanFilters {
   /** Optional. Filtering for spans containing one of the span display names in the list. Multiple values will be OR'd together. */
@@ -375,15 +296,11 @@ export interface SpanFilters {
   /** Optional. List of span attribute filters. Each SpanAttributeFilter key must be unique. Multiple attribute filters will be AND'd together. */
   attributes?: SpanAttributeFilterList;
 }
-const SpanFilters = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<SpanFilters>;
-
 export type TraceQuerySpanDataValueEnum =
   | "SPAN_DATA_VALUE_UNSPECIFIED"
   | "SPAN_COUNT"
   | "SPAN_DURATION"
   | "SPAN_DURATION_PERCENTILES";
-const TraceQuerySpanDataValueEnum = S.String;
-
 /** LINT.IfChange Preview: Query for traces. This is a preview feature and may be subject to change before final release. */
 export interface TraceQuery {
   /** First version of span filtering that we will support. Required. */
@@ -393,8 +310,6 @@ export interface TraceQuery {
   /** Optional. The resource name of the project or Trace scope to fetch data from. If empty, the widget will default to the project's default Trace scope. If scope cannot be determined, then we fallback to the current project. Optional. */
   resourceContainer?: string;
 }
-const TraceQuery = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<TraceQuery>;
-
 /** Describes a query to build the numerator or denominator of a TimeSeriesFilterRatio. */
 export interface RatioPart {
   /** Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query. */
@@ -402,8 +317,6 @@ export interface RatioPart {
   /** By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data. */
   aggregation?: Aggregation;
 }
-const RatioPart = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<RatioPart>;
-
 /** A pair of time series filters that define a ratio computation. The output time series is the pair-wise division of each aligned element from the numerator and denominator time series. */
 export interface TimeSeriesFilterRatio {
   /** Ranking based time series filter. */
@@ -417,11 +330,6 @@ export interface TimeSeriesFilterRatio {
   /** Statistics based time series filter. Note: This field is deprecated and completely ignored by the API. */
   statisticalTimeSeriesFilter?: StatisticalTimeSeriesFilter;
 }
-const TimeSeriesFilterRatio = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<TimeSeriesFilterRatio>;
-
 /** TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API. */
 export interface TimeSeriesQuery {
   /** A query used to fetch time series with MQL. */
@@ -441,15 +349,11 @@ export interface TimeSeriesQuery {
   /** Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there will be only 1 output value.*Note: This could override the configured alignment period except for the cases where a series of data points are expected, like - XyChart - Scorecard's spark chart */
   outputFullDuration?: boolean;
 }
-const TimeSeriesQuery = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<TimeSeriesQuery>;
-
 export type BreakdownSortOrderEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "SORT_ORDER_NONE"
   | "SORT_ORDER_ASCENDING"
   | "SORT_ORDER_DESCENDING";
-const BreakdownSortOrderEnum = S.String;
-
 /** Preview: A breakdown is an aggregation applied to the measures over a specified column. A breakdown can result in multiple series across a category for the provided measure. This is a preview feature and may be subject to change before final release. */
 export interface Breakdown {
   /** Required. A limit to the number of breakdowns. If set to zero then all possible breakdowns are applied. The list of breakdowns is dependent on the value of the sort_order field. */
@@ -461,11 +365,7 @@ export interface Breakdown {
   /** Required. The name of the column in the dataset containing the breakdown values. */
   column?: string;
 }
-const Breakdown = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<Breakdown>;
-
 export type BreakdownList = Array<Breakdown>;
-const BreakdownList = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<BreakdownList>;
-
 /** The data represented by the treemap. Needs to include the data itself, plus rules on how to organize it hierarchically. */
 export interface TreemapDataSet {
   /** Optional. A collection of measures. A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc. */
@@ -475,11 +375,7 @@ export interface TreemapDataSet {
   /** Optional. The collection of breakdowns to be applied to the dataset. A breakdown is a way to slice the data. For example, you can break down the data by region. */
   breakdowns?: BreakdownList;
 }
-const TreemapDataSet = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<TreemapDataSet>;
-
 export type TreemapDataSetList = Array<TreemapDataSet>;
-const TreemapDataSetList = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<TreemapDataSetList>;
-
 /** A widget that displays hierarchical data as a treemap. */
 export interface Treemap {
   /** Required. The collection of datasets used to construct and populate the treemap. For the rendered treemap rectangles: Color is determined by the aggregated value for each grouping. Size is proportional to the count of time series aggregated within that rectangle's segment. */
@@ -487,8 +383,6 @@ export interface Treemap {
   /** Required. Ordered labels representing the hierarchical treemap structure. */
   treemapHierarchy?: StringList;
 }
-const Treemap = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<Treemap>;
-
 /** A widget that displays a stream of log. */
 export interface LogsPanel {
   /** A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries. */
@@ -496,8 +390,6 @@ export interface LogsPanel {
   /** The names of logging resources to collect logs for. Currently projects and storage views are supported. If empty, the widget will default to the host project. */
   resourceNames?: StringList;
 }
-const LogsPanel = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<LogsPanel>;
-
 /** A widget that displays a list of error groups. */
 export interface ErrorReportingPanel {
   /** An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to version, which can be changed whenever new code is deployed.Contains the service name for error reports extracted from Google App Engine logs or default if the App Engine default service is used. */
@@ -507,24 +399,14 @@ export interface ErrorReportingPanel {
   /** Represents the source code version that the developer provided, which could represent a version label or a Git SHA-1 hash, for example. For App Engine standard environment, the version is set to the version of the app. */
   versions?: StringList;
 }
-const ErrorReportingPanel = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ErrorReportingPanel>;
-
 /** A chart that displays alert policy data. */
 export interface AlertChart {
   /** Required. The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] */
   name?: string;
 }
-const AlertChart = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<AlertChart>;
-
 export type ThresholdTargetAxisEnum = "TARGET_AXIS_UNSPECIFIED" | "Y1" | "Y2";
-const ThresholdTargetAxisEnum = S.String;
-
 export type ThresholdColorEnum = "COLOR_UNSPECIFIED" | "YELLOW" | "RED";
-const ThresholdColorEnum = S.String;
-
 export type ThresholdDirectionEnum = "DIRECTION_UNSPECIFIED" | "ABOVE" | "BELOW";
-const ThresholdDirectionEnum = S.String;
-
 /** Defines a threshold for categorizing time series values. */
 export interface Threshold {
   /** A label for the threshold. */
@@ -538,14 +420,8 @@ export interface Threshold {
   /** The direction for the current threshold. Direction is not allowed in a XyChart. */
   direction?: ThresholdDirectionEnum | (string & {});
 }
-const Threshold = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<Threshold>;
-
 export type ThresholdList = Array<Threshold>;
-const ThresholdList = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ThresholdList>;
-
 export type AxisScaleEnum = "SCALE_UNSPECIFIED" | "LINEAR" | "LOG10";
-const AxisScaleEnum = S.String;
-
 /** A chart axis. */
 export interface Axis {
   /** The label of the axis. */
@@ -553,15 +429,11 @@ export interface Axis {
   /** The axis scale. By default, a linear scale is used. */
   scale?: AxisScaleEnum | (string & {});
 }
-const Axis = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<Axis>;
-
 export type DimensionSortOrderEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "SORT_ORDER_NONE"
   | "SORT_ORDER_ASCENDING"
   | "SORT_ORDER_DESCENDING";
-const DimensionSortOrderEnum = S.String;
-
 /** A chart dimension. Dimensions are a structured label, class, or category for a set of measurements in your data. */
 export interface Dimension {
   /** Optional. The type of the dimension column. This is relevant only if one of the bin_size fields is set. If it is empty, the type TIMESTAMP or INT64 will be assumed based on which bin_size field is set. If populated, this should be set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC, INT64, NUMERIC, FLOAT64. */
@@ -585,29 +457,19 @@ export interface Dimension {
   /** For widgets that use SQL queries, the limit to the number of bins to generate. When 0 is specified, the maximum count is not enforced. For a histogram that uses a time series query, the exact number of bins to generate. If not specified or the value is 0, then the histogram determines the number of bins to use. */
   maxBinCount?: number;
 }
-const Dimension = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Dimension>;
-
 export type DimensionList = Array<Dimension>;
-const DimensionList = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<DimensionList>;
-
 export type DataSetTargetAxisEnum = "TARGET_AXIS_UNSPECIFIED" | "Y1" | "Y2";
-const DataSetTargetAxisEnum = S.String;
-
 export type DataSetPlotTypeEnum =
   | "PLOT_TYPE_UNSPECIFIED"
   | "LINE"
   | "STACKED_AREA"
   | "STACKED_BAR"
   | "HEATMAP";
-const DataSetPlotTypeEnum = S.String;
-
 export type ColumnSortingOptionsDirectionEnum =
   | "SORT_ORDER_UNSPECIFIED"
   | "SORT_ORDER_NONE"
   | "SORT_ORDER_ASCENDING"
   | "SORT_ORDER_DESCENDING";
-const ColumnSortingOptionsDirectionEnum = S.String;
-
 /** Data structure to storing column's sort strategy */
 export interface ColumnSortingOptions {
   /** Optional. Column name to sort data by */
@@ -615,14 +477,7 @@ export interface ColumnSortingOptions {
   /** Optional. A sorting direction that determines ascending or descending order. This is a legacy field kept for backwards compatibility with table. */
   direction?: ColumnSortingOptionsDirectionEnum | (string & {});
 }
-const ColumnSortingOptions = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ColumnSortingOptions>;
-
 export type ColumnSortingOptionsList = Array<ColumnSortingOptions>;
-const ColumnSortingOptionsList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ColumnSortingOptionsList>;
-
 /** Groups a time series query definition with charting options. */
 export interface DataSet {
   /** Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.For PromQL queries, this field is used to set the minimum interval for the query step, controlling data granularity. Larger values can improve performance on long time ranges. See Querying Basics and Range Queries for more details on the PromQL step. */
@@ -644,14 +499,8 @@ export interface DataSet {
   /** Optional. A collection of measures. */
   measures?: MeasureList;
 }
-const DataSet = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<DataSet>;
-
 export type DataSetList = Array<DataSet>;
-const DataSetList = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<DataSetList>;
-
 export type ChartOptionsModeEnum = "MODE_UNSPECIFIED" | "COLOR" | "X_RAY" | "STATS";
-const ChartOptionsModeEnum = S.String;
-
 /** Options to control visual rendering of a chart. */
 export interface ChartOptions {
   /** The chart mode. */
@@ -659,8 +508,6 @@ export interface ChartOptions {
   /** Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release. */
   displayHorizontal?: boolean;
 }
-const ChartOptions = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ChartOptions>;
-
 /** A chart that displays data on a 2D (X and Y axes) plane. */
 export interface XyChart {
   /** Threshold lines drawn horizontally across the chart. */
@@ -678,21 +525,15 @@ export interface XyChart {
   /** Display options for the chart. */
   chartOptions?: ChartOptions;
 }
-const XyChart = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<XyChart>;
-
 export type TimeSeriesTableMetricVisualizationEnum =
   | "METRIC_VISUALIZATION_UNSPECIFIED"
   | "NUMBER"
   | "BAR";
-const TimeSeriesTableMetricVisualizationEnum = S.String;
-
 /** Table display options that can be reused. */
 export interface TableDisplayOptions {
   /** Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings */
   shownColumns?: StringList;
 }
-const TableDisplayOptions = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<TableDisplayOptions>;
-
 /** Groups a time series query definition with table options. */
 export interface TableDataSet {
   /** Required. Fields for querying time series data from the Stackdriver metrics API. */
@@ -704,18 +545,12 @@ export interface TableDataSet {
   /** Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value i.e. "${resource.labels.project_id}." */
   tableTemplate?: string;
 }
-const TableDataSet = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<TableDataSet>;
-
 export type TableDataSetList = Array<TableDataSet>;
-const TableDataSetList = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<TableDataSetList>;
-
 export type ColumnSettingsAlignmentEnum =
   | "CELL_ALIGNMENT_UNSPECIFIED"
   | "LEFT"
   | "CENTER"
   | "RIGHT";
-const ColumnSettingsAlignmentEnum = S.String;
-
 /** The persistent settings for a table's columns. */
 export interface ColumnSettings {
   /** Optional. The thresholds used to determine how the table cell should be rendered given the time series' current value. */
@@ -729,11 +564,7 @@ export interface ColumnSettings {
   /** Required. The id of the column. */
   column?: string;
 }
-const ColumnSettings = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<ColumnSettings>;
-
 export type ColumnSettingsList = Array<ColumnSettings>;
-const ColumnSettingsList = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<ColumnSettingsList>;
-
 /** A table that displays time series data. */
 export interface TimeSeriesTable {
   /** Optional. Store rendering strategy */
@@ -743,15 +574,11 @@ export interface TimeSeriesTable {
   /** Optional. The list of the persistent column settings for the table. */
   columnSettings?: ColumnSettingsList;
 }
-const TimeSeriesTable = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<TimeSeriesTable>;
-
 /** A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets. */
 export interface CollapsibleGroup {
   /** The collapsed state of the widget on first page load. */
   collapsed?: boolean;
 }
-const CollapsibleGroup = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<CollapsibleGroup>;
-
 /** Represents a time range. */
 export interface TimeRange {
   /** Optional. Represents a time range with absolute start and end times. The start time is inclusive, and the end time is exclusive. */
@@ -759,8 +586,6 @@ export interface TimeRange {
   /** Optional. Specifies the duration used to shift the data relative to current time as the end time. The duration must be positive. */
   relativeDuration?: string;
 }
-const TimeRange = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<TimeRange>;
-
 /** A widget that defines a new section header. Sections populate a table of contents and allow easier navigation of long-form content. */
 export interface SectionHeader {
   /** The subtitle of the section */
@@ -768,12 +593,8 @@ export interface SectionHeader {
   /** Whether to insert a divider below the section in the table of contents */
   dividerBelow?: boolean;
 }
-const SectionHeader = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<SectionHeader>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<Empty>;
-
 /** A gauge chart shows where the current value sits within a pre-defined range. The upper and lower bounds should define the possible range of values for the scorecard's query (inclusive). */
 export interface GaugeView {
   /** The lower bound for this gauge chart. The value of the chart should always be greater than or equal to this. */
@@ -781,14 +602,10 @@ export interface GaugeView {
   /** The upper bound for this gauge chart. The value of the chart should always be less than or equal to this. */
   upperBound?: number;
 }
-const GaugeView = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GaugeView>;
-
 export type SparkChartViewSparkChartTypeEnum =
   | "SPARK_CHART_TYPE_UNSPECIFIED"
   | "SPARK_LINE"
   | "SPARK_BAR";
-const SparkChartViewSparkChartTypeEnum = S.String;
-
 /** A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries. */
 export interface SparkChartView {
   /** Required. The type of sparkchart to show in this chartView. */
@@ -796,8 +613,6 @@ export interface SparkChartView {
   /** The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.For PromQL queries, this field is used to set the minimum interval for the query step, controlling data granularity. Larger values can improve performance on long time ranges. See Querying Basics and Range Queries for more details on the PromQL step. */
   minAlignmentPeriod?: string;
 }
-const SparkChartView = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<SparkChartView>;
-
 /** A widget showing the latest value of a metric, and how this value relates to one or more thresholds. */
 export interface Scorecard {
   /** Optional. A dimension is a structured label, class, or category for a set of measurements in your data. */
@@ -817,11 +632,7 @@ export interface Scorecard {
   /** Optional. The collection of breakdowns to be applied to the dataset. A breakdown is a way to slice the data. For example, you can break down the data by region. */
   breakdowns?: BreakdownList;
 }
-const Scorecard = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<Scorecard>;
-
 export type PieChartChartTypeEnum = "PIE_CHART_TYPE_UNSPECIFIED" | "PIE" | "DONUT";
-const PieChartChartTypeEnum = S.String;
-
 /** Groups a time series query definition. */
 export interface PieChartDataSet {
   /** Required. The query for the PieChart. See, google.monitoring.dashboard.v1.TimeSeriesQuery. */
@@ -835,11 +646,7 @@ export interface PieChartDataSet {
   /** Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name. */
   sliceNameTemplate?: string;
 }
-const PieChartDataSet = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<PieChartDataSet>;
-
 export type PieChartDataSetList = Array<PieChartDataSet>;
-const PieChartDataSetList = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<PieChartDataSetList>;
-
 /** A widget that displays timeseries data as a pie or a donut. */
 export interface PieChart {
   /** Optional. Indicates whether or not the pie chart should show slices' labels */
@@ -849,8 +656,6 @@ export interface PieChart {
   /** Required. The queries for the chart's data. */
   dataSets?: PieChartDataSetList;
 }
-const PieChart = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<PieChart>;
-
 export type TextStylePointerLocationEnum =
   | "POINTER_LOCATION_UNSPECIFIED"
   | "PL_TOP"
@@ -865,15 +670,11 @@ export type TextStylePointerLocationEnum =
   | "PL_BOTTOM_LEFT"
   | "PL_LEFT_BOTTOM"
   | "PL_LEFT_TOP";
-const TextStylePointerLocationEnum = S.String;
-
 export type TextStyleVerticalAlignmentEnum =
   | "VERTICAL_ALIGNMENT_UNSPECIFIED"
   | "V_TOP"
   | "V_CENTER"
   | "V_BOTTOM";
-const TextStyleVerticalAlignmentEnum = S.String;
-
 export type TextStylePaddingEnum =
   | "PADDING_SIZE_UNSPECIFIED"
   | "P_EXTRA_SMALL"
@@ -881,8 +682,6 @@ export type TextStylePaddingEnum =
   | "P_MEDIUM"
   | "P_LARGE"
   | "P_EXTRA_LARGE";
-const TextStylePaddingEnum = S.String;
-
 export type TextStyleFontSizeEnum =
   | "FONT_SIZE_UNSPECIFIED"
   | "FS_EXTRA_SMALL"
@@ -890,15 +689,11 @@ export type TextStyleFontSizeEnum =
   | "FS_MEDIUM"
   | "FS_LARGE"
   | "FS_EXTRA_LARGE";
-const TextStyleFontSizeEnum = S.String;
-
 export type TextStyleHorizontalAlignmentEnum =
   | "HORIZONTAL_ALIGNMENT_UNSPECIFIED"
   | "H_LEFT"
   | "H_CENTER"
   | "H_RIGHT";
-const TextStyleHorizontalAlignmentEnum = S.String;
-
 /** Properties that determine how the title and content are styled */
 export interface TextStyle {
   /** The pointer location for this widget (also sometimes called a "tail") */
@@ -916,11 +711,7 @@ export interface TextStyle {
   /** The background color as a hex string. "#RRGGBB" or "#RGB" */
   backgroundColor?: string;
 }
-const TextStyle = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<TextStyle>;
-
 export type TextFormatEnum = "FORMAT_UNSPECIFIED" | "MARKDOWN" | "RAW";
-const TextFormatEnum = S.String;
-
 /** A widget that displays textual content. */
 export interface Text {
   /** The text content to be displayed. */
@@ -930,18 +721,12 @@ export interface Text {
   /** How the text content is formatted. */
   format?: TextFormatEnum | (string & {});
 }
-const Text = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<Text>;
-
 export type SingleViewGroupDisplayTypeEnum = "DISPLAY_TYPE_UNSPECIFIED" | "DROPDOWN" | "TAB";
-const SingleViewGroupDisplayTypeEnum = S.String;
-
 /** A widget that groups the other widgets by using a dropdown menu. All widgets that are within the area spanned by the grouping widget are considered member widgets. */
 export interface SingleViewGroup {
   /** Optional. Determines how the widget selector will be displayed. */
   displayType?: SingleViewGroupDisplayTypeEnum | (string & {});
 }
-const SingleViewGroup = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<SingleViewGroup>;
-
 /** Widget contains a single dashboard component and configuration of how to present the component in the dashboard. */
 export interface Widget {
   /** A widget that shows list of incidents. */
@@ -983,11 +768,7 @@ export interface Widget {
   /** A blank space. */
   blank?: Empty;
 }
-const Widget = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<Widget>;
-
 export type WidgetList = Array<Widget>;
-const WidgetList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<WidgetList>;
-
 /** Defines the layout properties and content for a column. */
 export interface Column {
   /** The relative weight of this column. The column weight is used to adjust the width of columns on the screen (relative to peers). Greater the weight, greater the width of the column on the screen. If omitted, a value of 1 is used while rendering. */
@@ -995,18 +776,12 @@ export interface Column {
   /** The display widgets arranged vertically in this column. */
   widgets?: WidgetList;
 }
-const Column = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<Column>;
-
 export type ColumnList = Array<Column>;
-const ColumnList = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<ColumnList>;
-
 /** A simplified layout that divides the available space into vertical columns and arranges a set of widgets vertically in each column. */
 export interface ColumnLayout {
   /** The columns of content to display. */
   columns?: ColumnList;
 }
-const ColumnLayout = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ColumnLayout>;
-
 /** A single tile in the mosaic. The placement and size of the tile are configurable. */
 export interface Tile {
   /** The zero-indexed position of the tile in grid blocks relative to the top edge of the grid. y_pos cannot be negative. */
@@ -1020,11 +795,7 @@ export interface Tile {
   /** The zero-indexed position of the tile in grid blocks relative to the left edge of the grid. Tiles must be contained within the specified number of columns. x_pos cannot be negative. */
   xPos?: number;
 }
-const Tile = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<Tile>;
-
 export type TileList = Array<Tile>;
-const TileList = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<TileList>;
-
 /** A mosaic layout divides the available space into a grid of blocks, and overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid blocks and can be placed at arbitrary locations in the grid. */
 export interface MosaicLayout {
   /** The number of columns in the mosaic grid. The number of columns must be between 1 and 48, inclusive. */
@@ -1032,8 +803,6 @@ export interface MosaicLayout {
   /** The tiles to display. */
   tiles?: TileList;
 }
-const MosaicLayout = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<MosaicLayout>;
-
 /** Defines the layout properties and content for a row. */
 export interface Row {
   /** The display widgets arranged horizontally in this row. */
@@ -1041,18 +810,12 @@ export interface Row {
   /** The relative weight of this row. The row weight is used to adjust the height of rows on the screen (relative to peers). Greater the weight, greater the height of the row on the screen. If omitted, a value of 1 is used while rendering. */
   weight?: string;
 }
-const Row = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<Row>;
-
 export type RowList = Array<Row>;
-const RowList = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<RowList>;
-
 /** A simplified layout that divides the available space into rows and arranges a set of widgets horizontally in each row. */
 export interface RowLayout {
   /** The rows of content to display. */
   rows?: RowList;
 }
-const RowLayout = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<RowLayout>;
-
 /** A basic layout divides the available space into vertical columns of equal width and arranges a list of widgets using a row-first strategy. */
 export interface GridLayout {
   /** The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering. */
@@ -1060,8 +823,6 @@ export interface GridLayout {
   /** The informational elements that are arranged into the columns row-first. */
   widgets?: WidgetList;
 }
-const GridLayout = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<GridLayout>;
-
 export type EventAnnotationEventTypeEnum =
   | "EVENT_TYPE_UNSPECIFIED"
   | "GKE_WORKLOAD_DEPLOYMENT"
@@ -1092,8 +853,6 @@ export type EventAnnotationEventTypeEnum =
   | "INTERCONNECT_MAINTENANCE_COMPLETED"
   | "VPN_TRAFFIC_SELECTOR_NARROWING"
   | "VPN_MAINTENANCE";
-const EventAnnotationEventTypeEnum = S.String;
-
 /** Annotation configuration for one event type on a dashboard */
 export interface EventAnnotation {
   /** Whether or not to show the events on the dashboard by default */
@@ -1107,11 +866,7 @@ export interface EventAnnotation {
   /** The type of event to display. */
   eventType?: EventAnnotationEventTypeEnum | (string & {});
 }
-const EventAnnotation = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<EventAnnotation>;
-
 export type EventAnnotationList = Array<EventAnnotation>;
-const EventAnnotationList = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<EventAnnotationList>;
-
 /** Dashboard-level configuration for annotations */
 export interface DashboardAnnotations {
   /** Dashboard level defaults for names of logging resources to search for events. Currently only projects are supported. Each individual EventAnnotation may have its own overrides. If both this field and the per annotation field is empty, then the scoping project is used. Limit: 50 projects. For example: "projects/some-project-id" */
@@ -1119,11 +874,6 @@ export interface DashboardAnnotations {
   /** List of annotation configurations for this dashboard. Each entry specifies one event type. */
   eventAnnotations?: EventAnnotationList;
 }
-const DashboardAnnotations = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DashboardAnnotations>;
-
 export type DashboardFilterFilterTypeEnum =
   | "FILTER_TYPE_UNSPECIFIED"
   | "RESOURCE_LABEL"
@@ -1132,18 +882,12 @@ export type DashboardFilterFilterTypeEnum =
   | "SYSTEM_METADATA_LABEL"
   | "GROUP"
   | "VALUE_ONLY";
-const DashboardFilterFilterTypeEnum = S.String;
-
 export type DashboardFilterValueTypeEnum = "VALUE_TYPE_UNSPECIFIED" | "STRING" | "STRING_ARRAY";
-const DashboardFilterValueTypeEnum = S.String;
-
 /** An array of strings */
 export interface StringArray {
   /** The values of the array */
   values?: StringList;
 }
-const StringArray = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<StringArray>;
-
 /** A filter to reduce the amount of data charted in relevant widgets. */
 export interface DashboardFilter {
   /** The specified filter type */
@@ -1163,11 +907,7 @@ export interface DashboardFilter {
   /** A list of possible string values for the filter */
   stringArray?: StringArray;
 }
-const DashboardFilter = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<DashboardFilter>;
-
 export type DashboardFilterList = Array<DashboardFilter>;
-const DashboardFilterList = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<DashboardFilterList>;
-
 /** A Google Stackdriver dashboard. Dashboards define the content and layout of pages in the Stackdriver web application. */
 export interface Dashboard {
   /** Labels applied to the dashboard */
@@ -1191,8 +931,6 @@ export interface Dashboard {
   /** Filters to reduce the amount of data charted based on the filter criteria. */
   dashboardFilters?: DashboardFilterList;
 }
-const Dashboard = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<Dashboard>;
-
 export interface CreateProjectsDashboardsRequest {
   /** If set, validate the request and preview the review, but do not actually save it. */
   validateOnly?: boolean;
@@ -1201,44 +939,19 @@ export interface CreateProjectsDashboardsRequest {
   /** Request body */
   body?: Dashboard;
 }
-const CreateProjectsDashboardsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<CreateProjectsDashboardsRequest>;
-
 export interface DeleteLocationsGlobalMetricsScopesProjectsRequest {
   /** Required. The resource name of the MonitoredProject. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER}/projects/{MONITORED_PROJECT_ID_OR_NUMBER}Authorization requires the following Google IAM (https://cloud.google.com/iam) permissions on both the Metrics Scope and on the MonitoredProject: monitoring.metricsScopes.link */
   name: string;
 }
-const DeleteLocationsGlobalMetricsScopesProjectsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<DeleteLocationsGlobalMetricsScopesProjectsRequest>;
-
 export interface DeleteProjectsDashboardsRequest {
   /** Required. The resource name of the Dashboard. The format is: projects/[PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID] */
   name: string;
 }
-const DeleteProjectsDashboardsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<DeleteProjectsDashboardsRequest>;
-
 export interface GetLocationsGlobalMetricsScopesRequest {
   /** Required. The resource name of the Metrics Scope. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER} */
   name: string;
 }
-const GetLocationsGlobalMetricsScopesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GetLocationsGlobalMetricsScopesRequest>;
-
 export type MonitoredProjectList = Array<MonitoredProject>;
-const MonitoredProjectList = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<MonitoredProjectList>;
-
 /** Represents a Metrics Scope (https://cloud.google.com/monitoring/settings#concept-scope) in Cloud Monitoring, which specifies one or more Google projects and zero or more AWS accounts to monitor together. */
 export interface MetricsScope {
   /** Output only. The time when this Metrics Scope record was last updated. */
@@ -1250,26 +963,14 @@ export interface MetricsScope {
   /** Output only. The time when this Metrics Scope was created. */
   createTime?: string;
 }
-const MetricsScope = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<MetricsScope>;
-
 export interface GetOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetOperationsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<GetOperationsRequest>;
-
 export interface GetProjectsDashboardsRequest {
   /** Required. The resource name of the Dashboard. The format is one of: dashboards/[DASHBOARD_ID] (for system dashboards) projects/[PROJECT_ID_OR_NUMBER]/dashboards/[DASHBOARD_ID] (for custom dashboards). */
   name: string;
 }
-const GetProjectsDashboardsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GetProjectsDashboardsRequest>;
-
 /** QueryLabelsRequest holds all parameters of the Prometheus upstream API for returning a list of label names. */
 export interface QueryLabelsRequest {
   /** The end time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
@@ -1279,8 +980,6 @@ export interface QueryLabelsRequest {
   /** The start time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
   start?: string;
 }
-const QueryLabelsRequest = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<QueryLabelsRequest>;
-
 export interface LabelsProjectsLocationPrometheusApiV1Request {
   /** Required. The workspace on which to execute the request. It is not part of the open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER. */
   name: string;
@@ -1289,11 +988,6 @@ export interface LabelsProjectsLocationPrometheusApiV1Request {
   /** Request body */
   body?: QueryLabelsRequest;
 }
-const LabelsProjectsLocationPrometheusApiV1Request = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<LabelsProjectsLocationPrometheusApiV1Request>;
-
 /** Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be represented as JSON, such as raw binary or an HTML page.This message can be used both in streaming and non-streaming API methods in the request as well as the response.It can be used as a top-level request field, which is convenient if one wants to extract parameters from either the URL or HTTP template into the request fields and also want access to the raw HTTP body.Example: message GetResourceRequest { // A unique request id. string request_id = 1; // The raw HTTP body is bound to this field. google.api.HttpBody http_body = 2; } service ResourceService { rpc GetResource(GetResourceRequest) returns (google.api.HttpBody); rpc UpdateResource(google.api.HttpBody) returns (google.protobuf.Empty); } Example with streaming methods: service CaldavService { rpc GetCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); rpc UpdateCalendar(stream google.api.HttpBody) returns (stream google.api.HttpBody); } Use of this type only changes how the request and response bodies are handled, all other features will continue to work unchanged. */
 export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
@@ -1303,30 +997,16 @@ export interface HttpBody {
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
   extensions?: DocumentMapList;
 }
-const HttpBody = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<HttpBody>;
-
 export interface ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequest {
   /** Required. The resource name of the Monitored Project being requested. Example: projects/{MONITORED_PROJECT_ID_OR_NUMBER} */
   monitoredResourceContainer?: string;
 }
-const ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequest>;
-
 export type MetricsScopeList = Array<MetricsScope>;
-const MetricsScopeList = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<MetricsScopeList>;
-
 /** Response for the ListMetricsScopesByMonitoredProject method. */
 export interface ListMetricsScopesByMonitoredProjectResponse {
   /** A set of all metrics scopes that the specified monitored project has been added to. */
   metricsScopes?: MetricsScopeList;
 }
-const ListMetricsScopesByMonitoredProjectResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ListMetricsScopesByMonitoredProjectResponse>;
-
 export interface ListProjectsDashboardsRequest {
   /** Required. The scope of the dashboards to list. The format is: projects/[PROJECT_ID_OR_NUMBER] */
   parent: string;
@@ -1335,14 +1015,7 @@ export interface ListProjectsDashboardsRequest {
   /** A positive number that is the maximum number of results to return. If unspecified, a default of 1000 is used. */
   pageSize?: number;
 }
-const ListProjectsDashboardsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ListProjectsDashboardsRequest>;
-
 export type DashboardList = Array<Dashboard>;
-const DashboardList = /*@__PURE__*/ __L.at(__c13, 0) as any as S.Schema<DashboardList>;
-
 /** The ListDashboards request. */
 export interface ListDashboardsResponse {
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
@@ -1350,11 +1023,6 @@ export interface ListDashboardsResponse {
   /** The list of requested dashboards. */
   dashboards?: DashboardList;
 }
-const ListDashboardsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<ListDashboardsResponse>;
-
 export interface ListProjectsLocationPrometheusApiV1MetadataRequest {
   /** Location of the resource information. Has to be "global" for now. */
   location: string;
@@ -1365,11 +1033,6 @@ export interface ListProjectsLocationPrometheusApiV1MetadataRequest {
   /** The metric name for which to query metadata. If unset, all metric metadata is returned. */
   metric?: string;
 }
-const ListProjectsLocationPrometheusApiV1MetadataRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<ListProjectsLocationPrometheusApiV1MetadataRequest>;
-
 export interface PatchProjectsDashboardsRequest {
   /** Identifier. The resource name of the dashboard. */
   name: string;
@@ -1378,11 +1041,6 @@ export interface PatchProjectsDashboardsRequest {
   /** Request body */
   body?: Dashboard;
 }
-const PatchProjectsDashboardsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<PatchProjectsDashboardsRequest>;
-
 /** QueryExemplarsRequest holds all parameters of the Prometheus upstream API for querying exemplars. */
 export interface QueryExemplarsRequest {
   /** The start time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
@@ -1392,11 +1050,6 @@ export interface QueryExemplarsRequest {
   /** The end time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
   end?: string;
 }
-const QueryExemplarsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<QueryExemplarsRequest>;
-
 export interface Query_exemplarsProjectsLocationPrometheusApiV1Request {
   /** Required. The project on which to execute the request. Data associcated with the project's workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine. */
   name: string;
@@ -1405,11 +1058,6 @@ export interface Query_exemplarsProjectsLocationPrometheusApiV1Request {
   /** Request body */
   body?: QueryExemplarsRequest;
 }
-const Query_exemplarsProjectsLocationPrometheusApiV1Request = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<Query_exemplarsProjectsLocationPrometheusApiV1Request>;
-
 /** QueryRangeRequest holds all parameters of the Prometheus upstream range query API plus GCM specific parameters. */
 export interface QueryRangeRequest {
   /** The end time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
@@ -1423,8 +1071,6 @@ export interface QueryRangeRequest {
   /** An upper bound timeout for the query. Either a Prometheus duration string (https://prometheus.io/docs/prometheus/latest/querying/basics/#time-durations) or floating point seconds. This non-standard encoding must be used for compatibility with the open source API. Clients may still implement timeouts at the connection level while ignoring this field. */
   timeout?: string;
 }
-const QueryRangeRequest = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<QueryRangeRequest>;
-
 export interface Query_rangeProjectsLocationPrometheusApiV1Request {
   /** Location of the resource information. Has to be "global" now. */
   location: string;
@@ -1433,11 +1079,6 @@ export interface Query_rangeProjectsLocationPrometheusApiV1Request {
   /** Request body */
   body?: QueryRangeRequest;
 }
-const Query_rangeProjectsLocationPrometheusApiV1Request = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<Query_rangeProjectsLocationPrometheusApiV1Request>;
-
 /** QueryInstantRequest holds all parameters of the Prometheus upstream instant query API plus GCM specific parameters. */
 export interface QueryInstantRequest {
   /** A PromQL query string. Query language documentation: https://prometheus.io/docs/prometheus/latest/querying/basics/. */
@@ -1447,8 +1088,6 @@ export interface QueryInstantRequest {
   /** An upper bound timeout for the query. Either a Prometheus duration string (https://prometheus.io/docs/prometheus/latest/querying/basics/#time-durations) or floating point seconds. This non-standard encoding must be used for compatibility with the open source API. Clients may still implement timeouts at the connection level while ignoring this field. */
   timeout?: string;
 }
-const QueryInstantRequest = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<QueryInstantRequest>;
-
 export interface QueryProjectsLocationPrometheusApiV1Request {
   /** Required. The project on which to execute the request. Data associcated with the project's workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine. */
   name: string;
@@ -1457,11 +1096,6 @@ export interface QueryProjectsLocationPrometheusApiV1Request {
   /** Request body */
   body?: QueryInstantRequest;
 }
-const QueryProjectsLocationPrometheusApiV1Request = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<QueryProjectsLocationPrometheusApiV1Request>;
-
 /** QuerySeries holds all parameters of the Prometheus upstream API for querying series. */
 export interface QuerySeriesRequest {
   /** The end time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
@@ -1469,8 +1103,6 @@ export interface QuerySeriesRequest {
   /** The start time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
   start?: string;
 }
-const QuerySeriesRequest = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<QuerySeriesRequest>;
-
 export interface SeriesProjectsLocationPrometheusApiV1Request {
   /** Location of the resource information. Has to be "global" for now. */
   location: string;
@@ -1479,11 +1111,6 @@ export interface SeriesProjectsLocationPrometheusApiV1Request {
   /** Request body */
   body?: QuerySeriesRequest;
 }
-const SeriesProjectsLocationPrometheusApiV1Request = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<SeriesProjectsLocationPrometheusApiV1Request>;
-
 export interface ValuesProjectsLocationPrometheusApiV1LabelRequest {
   /** The end time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
   end?: string;
@@ -1498,11 +1125,6 @@ export interface ValuesProjectsLocationPrometheusApiV1LabelRequest {
   /** Location of the resource information. Has to be "global" now. */
   location: string;
 }
-const ValuesProjectsLocationPrometheusApiV1LabelRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ValuesProjectsLocationPrometheusApiV1LabelRequest>;
-
 export type CreateLocationsGlobalMetricsScopesProjectsError =
   | NotFound
   | Forbidden
@@ -1516,8 +1138,8 @@ export const createLocationsGlobalMetricsScopesProjects: API.OperationMethod<
   CreateLocationsGlobalMetricsScopesProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLocationsGlobalMetricsScopesProjectsRequest,
-  output: Operation,
+  input: __S(1) as any as S.Schema<CreateLocationsGlobalMetricsScopesProjectsRequest>,
+  output: __S(5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1536,8 +1158,8 @@ export const createProjectsDashboards: API.OperationMethod<
   CreateProjectsDashboardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsDashboardsRequest,
-  output: Dashboard,
+  input: __S(89) as any as S.Schema<CreateProjectsDashboardsRequest>,
+  output: __S(88) as any as S.Schema<Dashboard>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1556,8 +1178,8 @@ export const deleteLocationsGlobalMetricsScopesProjects: API.OperationMethod<
   DeleteLocationsGlobalMetricsScopesProjectsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLocationsGlobalMetricsScopesProjectsRequest,
-  output: Operation,
+  input: __S(90) as any as S.Schema<DeleteLocationsGlobalMetricsScopesProjectsRequest>,
+  output: __S(5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1576,8 +1198,8 @@ export const deleteProjectsDashboards: API.OperationMethod<
   DeleteProjectsDashboardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsDashboardsRequest,
-  output: Empty,
+  input: __S(91) as any as S.Schema<DeleteProjectsDashboardsRequest>,
+  output: __S(60) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1591,8 +1213,8 @@ export const getLocationsGlobalMetricsScopes: API.OperationMethod<
   GetLocationsGlobalMetricsScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLocationsGlobalMetricsScopesRequest,
-  output: MetricsScope,
+  input: __S(92) as any as S.Schema<GetLocationsGlobalMetricsScopesRequest>,
+  output: __S(94) as any as S.Schema<MetricsScope>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1606,8 +1228,8 @@ export const getOperations: API.OperationMethod<
   GetOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationsRequest,
-  output: Operation,
+  input: __S(95) as any as S.Schema<GetOperationsRequest>,
+  output: __S(5) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1621,8 +1243,8 @@ export const getProjectsDashboards: API.OperationMethod<
   GetProjectsDashboardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsDashboardsRequest,
-  output: Dashboard,
+  input: __S(96) as any as S.Schema<GetProjectsDashboardsRequest>,
+  output: __S(88) as any as S.Schema<Dashboard>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1641,8 +1263,8 @@ export const labelsProjectsLocationPrometheusApiV1: API.OperationMethod<
   LabelsProjectsLocationPrometheusApiV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LabelsProjectsLocationPrometheusApiV1Request,
-  output: HttpBody,
+  input: __S(98) as any as S.Schema<LabelsProjectsLocationPrometheusApiV1Request>,
+  output: __S(99) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1659,8 +1281,10 @@ export const listMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopes: AP
   ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequest,
-  output: ListMetricsScopesByMonitoredProjectResponse,
+  input: __S(
+    100,
+  ) as any as S.Schema<ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequest>,
+  output: __S(102) as any as S.Schema<ListMetricsScopesByMonitoredProjectResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1675,8 +1299,8 @@ export const listProjectsDashboards: API.PaginatedOperationMethod<
   GcpOpContext,
   ListDashboardsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsDashboardsRequest,
-  output: ListDashboardsResponse,
+  input: __S(103) as any as S.Schema<ListProjectsDashboardsRequest>,
+  output: __S(105) as any as S.Schema<ListDashboardsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1691,8 +1315,8 @@ export const listProjectsLocationPrometheusApiV1Metadata: API.OperationMethod<
   ListProjectsLocationPrometheusApiV1MetadataError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsLocationPrometheusApiV1MetadataRequest,
-  output: HttpBody,
+  input: __S(106) as any as S.Schema<ListProjectsLocationPrometheusApiV1MetadataRequest>,
+  output: __S(99) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1711,8 +1335,8 @@ export const patchProjectsDashboards: API.OperationMethod<
   PatchProjectsDashboardsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsDashboardsRequest,
-  output: Dashboard,
+  input: __S(107) as any as S.Schema<PatchProjectsDashboardsRequest>,
+  output: __S(88) as any as S.Schema<Dashboard>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1731,8 +1355,8 @@ export const query_exemplarsProjectsLocationPrometheusApiV1: API.OperationMethod
   Query_exemplarsProjectsLocationPrometheusApiV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: Query_exemplarsProjectsLocationPrometheusApiV1Request,
-  output: HttpBody,
+  input: __S(109) as any as S.Schema<Query_exemplarsProjectsLocationPrometheusApiV1Request>,
+  output: __S(99) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1751,8 +1375,8 @@ export const query_rangeProjectsLocationPrometheusApiV1: API.OperationMethod<
   Query_rangeProjectsLocationPrometheusApiV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: Query_rangeProjectsLocationPrometheusApiV1Request,
-  output: HttpBody,
+  input: __S(111) as any as S.Schema<Query_rangeProjectsLocationPrometheusApiV1Request>,
+  output: __S(99) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1771,8 +1395,8 @@ export const queryProjectsLocationPrometheusApiV1: API.OperationMethod<
   QueryProjectsLocationPrometheusApiV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueryProjectsLocationPrometheusApiV1Request,
-  output: HttpBody,
+  input: __S(113) as any as S.Schema<QueryProjectsLocationPrometheusApiV1Request>,
+  output: __S(99) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1791,8 +1415,8 @@ export const seriesProjectsLocationPrometheusApiV1: API.OperationMethod<
   SeriesProjectsLocationPrometheusApiV1Error,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SeriesProjectsLocationPrometheusApiV1Request,
-  output: HttpBody,
+  input: __S(115) as any as S.Schema<SeriesProjectsLocationPrometheusApiV1Request>,
+  output: __S(99) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1806,8 +1430,8 @@ export const valuesProjectsLocationPrometheusApiV1Label: API.OperationMethod<
   ValuesProjectsLocationPrometheusApiV1LabelError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValuesProjectsLocationPrometheusApiV1LabelRequest,
-  output: HttpBody,
+  input: __S(116) as any as S.Schema<ValuesProjectsLocationPrometheusApiV1LabelRequest>,
+  output: __S(99) as any as S.Schema<HttpBody>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -1828,7 +1452,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(MonitoredProject.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1842,11 +1466,11 @@ function __c0(j: number): any {
     case 2:
       return S.Record(S.String, S.Unknown);
     case 3:
-      return S.Array(DocumentMap);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(3)),
           message: S.optional(S.String),
           code: S.optional(S.Number),
         }),
@@ -1854,10 +1478,10 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          error: S.optional(Status),
+          error: S.optional(__S(4)),
           done: S.optional(S.Boolean),
-          response: S.optional(DocumentMap),
-          metadata: S.optional(DocumentMap),
+          response: S.optional(__S(2)),
+          metadata: S.optional(__S(2)),
           name: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
@@ -1873,16 +1497,16 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "MonitoredResource" });
     case 1:
-      return S.Array(MonitoredResource);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          policyNames: S.optional(StringList),
-          monitoredResources: S.optional(MonitoredResourceList),
+          policyNames: S.optional(__S(7)),
+          monitoredResources: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "IncidentList" });
     case 3:
@@ -1894,7 +1518,7 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          comparator: S.optional(TemplateVariableConditionComparatorEnum),
+          comparator: S.optional(S.String),
           templateVariable: S.optional(S.String),
           templateVariableValue: S.optional(S.String),
         }),
@@ -1904,7 +1528,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          templateVariableCondition: S.optional(TemplateVariableCondition),
+          templateVariableCondition: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "VisibilityCondition" });
     case 6:
@@ -1915,7 +1539,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Parameter" });
     case 7:
-      return S.Array(Parameter);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -1924,18 +1548,18 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           type: S.optional(S.String),
-          parameters: S.optional(ParameterList),
+          parameters: S.optional(__S(15)),
         }),
       ).annotate({ identifier: "AggregationFunction" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           column: S.optional(S.String),
-          aggregationFunction: S.optional(AggregationFunction),
+          aggregationFunction: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "Measure" });
     case 2:
-      return S.Array(Measure);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1945,17 +1569,17 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          perSeriesAligner: S.optional(AggregationPerSeriesAlignerEnum),
+          perSeriesAligner: S.optional(S.String),
           alignmentPeriod: S.optional(S.String),
-          crossSeriesReducer: S.optional(AggregationCrossSeriesReducerEnum),
-          groupByFields: S.optional(StringList),
+          crossSeriesReducer: S.optional(S.String),
+          groupByFields: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "Aggregation" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           numTimeSeries: S.optional(S.Number),
-          rankingMethod: S.optional(StatisticalTimeSeriesFilterRankingMethodEnum),
+          rankingMethod: S.optional(S.String),
         }),
       ).annotate({
         identifier: "StatisticalTimeSeriesFilter",
@@ -1970,10 +1594,10 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          rankingMethod: S.optional(PickTimeSeriesFilterRankingMethodEnum),
-          interval: S.optional(Interval),
+          rankingMethod: S.optional(S.String),
+          interval: S.optional(__S(22)),
           numTimeSeries: S.optional(S.Number),
-          direction: S.optional(PickTimeSeriesFilterDirectionEnum),
+          direction: S.optional(S.String),
         }),
       ).annotate({ identifier: "PickTimeSeriesFilter" });
   }
@@ -1983,43 +1607,43 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          aggregation: S.optional(Aggregation),
-          statisticalTimeSeriesFilter: S.optional(StatisticalTimeSeriesFilter),
+          aggregation: S.optional(__S(20)),
+          statisticalTimeSeriesFilter: S.optional(__S(21)),
           filter: S.optional(S.String),
-          pickTimeSeriesFilter: S.optional(PickTimeSeriesFilter),
-          secondaryAggregation: S.optional(Aggregation),
+          pickTimeSeriesFilter: S.optional(__S(23)),
+          secondaryAggregation: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "TimeSeriesFilter" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(StringList),
+          value: S.optional(__S(7)),
           key: S.optional(S.String),
         }),
       ).annotate({ identifier: "SpanAttributeFilter" });
     case 2:
-      return S.Array(SpanAttributeFilter);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          displayNames: S.optional(StringList),
-          applicationIds: S.optional(StringList),
-          apphubWorkloads: S.optional(StringList),
+          displayNames: S.optional(__S(7)),
+          applicationIds: S.optional(__S(7)),
+          apphubWorkloads: S.optional(__S(7)),
           isRootSpan: S.optional(S.Boolean),
-          services: S.optional(StringList),
-          kinds: S.optional(StringList),
+          services: S.optional(__S(7)),
+          kinds: S.optional(__S(7)),
           maxDuration: S.optional(S.String),
-          status: S.optional(StringList),
-          apphubServices: S.optional(StringList),
+          status: S.optional(__S(7)),
+          apphubServices: S.optional(__S(7)),
           minDuration: S.optional(S.String),
-          attributes: S.optional(SpanAttributeFilterList),
+          attributes: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "SpanFilters" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          spanFilters: S.optional(SpanFilters),
-          spanDataValue: S.optional(TraceQuerySpanDataValueEnum),
+          spanFilters: S.optional(__S(27)),
+          spanDataValue: S.optional(S.String),
           resourceContainer: S.optional(S.String),
         }),
       ).annotate({ identifier: "TraceQuery" });
@@ -2027,17 +1651,17 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          aggregation: S.optional(Aggregation),
+          aggregation: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "RatioPart" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          pickTimeSeriesFilter: S.optional(PickTimeSeriesFilter),
-          secondaryAggregation: S.optional(Aggregation),
-          denominator: S.optional(RatioPart),
-          numerator: S.optional(RatioPart),
-          statisticalTimeSeriesFilter: S.optional(StatisticalTimeSeriesFilter),
+          pickTimeSeriesFilter: S.optional(__S(23)),
+          secondaryAggregation: S.optional(__S(20)),
+          denominator: S.optional(__S(29)),
+          numerator: S.optional(__S(29)),
+          statisticalTimeSeriesFilter: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "TimeSeriesFilterRatio" });
     case 7:
@@ -2045,11 +1669,11 @@ function __c3(j: number): any {
         S.Struct({
           timeSeriesQueryLanguage: S.optional(S.String),
           prometheusQuery: S.optional(S.String),
-          opsAnalyticsQuery: S.optional(OpsAnalyticsQuery),
-          timeSeriesFilter: S.optional(TimeSeriesFilter),
-          traceQuery: S.optional(TraceQuery),
+          opsAnalyticsQuery: S.optional(__S(19)),
+          timeSeriesFilter: S.optional(__S(24)),
+          traceQuery: S.optional(__S(28)),
           unitOverride: S.optional(S.String),
-          timeSeriesFilterRatio: S.optional(TimeSeriesFilterRatio),
+          timeSeriesFilterRatio: S.optional(__S(30)),
           outputFullDuration: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "TimeSeriesQuery" });
@@ -2061,43 +1685,43 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           limit: S.optional(S.Number),
-          aggregationFunction: S.optional(AggregationFunction),
-          sortOrder: S.optional(BreakdownSortOrderEnum),
+          aggregationFunction: S.optional(__S(16)),
+          sortOrder: S.optional(S.String),
           column: S.optional(S.String),
         }),
       ).annotate({ identifier: "Breakdown" });
     case 1:
-      return S.Array(Breakdown);
+      return S.Array(__S(32));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          measures: S.optional(MeasureList),
-          timeSeriesQuery: S.optional(TimeSeriesQuery),
-          breakdowns: S.optional(BreakdownList),
+          measures: S.optional(__S(18)),
+          timeSeriesQuery: S.optional(__S(31)),
+          breakdowns: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "TreemapDataSet" });
     case 3:
-      return S.Array(TreemapDataSet);
+      return S.Array(__S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dataSets: S.optional(TreemapDataSetList),
-          treemapHierarchy: S.optional(StringList),
+          dataSets: S.optional(__S(35)),
+          treemapHierarchy: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "Treemap" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           filter: S.optional(S.String),
-          resourceNames: S.optional(StringList),
+          resourceNames: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "LogsPanel" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          services: S.optional(StringList),
-          projectNames: S.optional(StringList),
-          versions: S.optional(StringList),
+          services: S.optional(__S(7)),
+          projectNames: S.optional(__S(7)),
+          versions: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "ErrorReportingPanel" });
     case 7:
@@ -2114,19 +1738,19 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
-          targetAxis: S.optional(ThresholdTargetAxisEnum),
+          targetAxis: S.optional(S.String),
           value: S.optional(S.Number),
-          color: S.optional(ThresholdColorEnum),
-          direction: S.optional(ThresholdDirectionEnum),
+          color: S.optional(S.String),
+          direction: S.optional(S.String),
         }),
       ).annotate({ identifier: "Threshold" });
     case 1:
-      return S.Array(Threshold);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
           label: S.optional(S.String),
-          scale: S.optional(AxisScaleEnum),
+          scale: S.optional(S.String),
         }),
       ).annotate({ identifier: "Axis" });
     case 3:
@@ -2136,7 +1760,7 @@ function __c5(j: number): any {
           sortColumn: S.optional(S.String),
           xMax: S.optional(S.Number),
           timeBinSize: S.optional(S.String),
-          sortOrder: S.optional(DimensionSortOrderEnum),
+          sortOrder: S.optional(S.String),
           numericBinSize: S.optional(S.Number),
           xMin: S.optional(S.Number),
           column: S.optional(S.String),
@@ -2145,28 +1769,28 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "Dimension" });
     case 4:
-      return S.Array(Dimension);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
         S.Struct({
           column: S.optional(S.String),
-          direction: S.optional(ColumnSortingOptionsDirectionEnum),
+          direction: S.optional(S.String),
         }),
       ).annotate({ identifier: "ColumnSortingOptions" });
     case 6:
-      return S.Array(ColumnSortingOptions);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
         S.Struct({
           minAlignmentPeriod: S.optional(S.String),
-          timeSeriesQuery: S.optional(TimeSeriesQuery),
+          timeSeriesQuery: S.optional(__S(31)),
           legendTemplate: S.optional(S.String),
-          dimensions: S.optional(DimensionList),
-          targetAxis: S.optional(DataSetTargetAxisEnum),
-          plotType: S.optional(DataSetPlotTypeEnum),
-          breakdowns: S.optional(BreakdownList),
-          sort: S.optional(ColumnSortingOptionsList),
-          measures: S.optional(MeasureList),
+          dimensions: S.optional(__S(44)),
+          targetAxis: S.optional(S.String),
+          plotType: S.optional(S.String),
+          breakdowns: S.optional(__S(33)),
+          sort: S.optional(__S(46)),
+          measures: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "DataSet" });
   }
@@ -2174,55 +1798,55 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DataSet);
+      return S.Array(__S(47));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(ChartOptionsModeEnum),
+          mode: S.optional(S.String),
           displayHorizontal: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ChartOptions" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          thresholds: S.optional(ThresholdList),
-          xAxis: S.optional(Axis),
-          yAxis: S.optional(Axis),
-          dataSets: S.optional(DataSetList),
-          y2Axis: S.optional(Axis),
+          thresholds: S.optional(__S(41)),
+          xAxis: S.optional(__S(42)),
+          yAxis: S.optional(__S(42)),
+          dataSets: S.optional(__S(48)),
+          y2Axis: S.optional(__S(42)),
           timeshiftDuration: S.optional(S.String),
-          chartOptions: S.optional(ChartOptions),
+          chartOptions: S.optional(__S(49)),
         }),
       ).annotate({ identifier: "XyChart" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          shownColumns: S.optional(StringList),
+          shownColumns: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "TableDisplayOptions" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          timeSeriesQuery: S.optional(TimeSeriesQuery),
-          tableDisplayOptions: S.optional(TableDisplayOptions),
+          timeSeriesQuery: S.optional(__S(31)),
+          tableDisplayOptions: S.optional(__S(51)),
           minAlignmentPeriod: S.optional(S.String),
           tableTemplate: S.optional(S.String),
         }),
       ).annotate({ identifier: "TableDataSet" });
     case 5:
-      return S.Array(TableDataSet);
+      return S.Array(__S(52));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          thresholds: S.optional(ThresholdList),
+          thresholds: S.optional(__S(41)),
           displayName: S.optional(S.String),
-          alignment: S.optional(ColumnSettingsAlignmentEnum),
+          alignment: S.optional(S.String),
           visible: S.optional(S.Boolean),
           column: S.optional(S.String),
         }),
       ).annotate({ identifier: "ColumnSettings" });
     case 7:
-      return S.Array(ColumnSettings);
+      return S.Array(__S(54));
   }
 }
 function __c7(j: number): any {
@@ -2230,9 +1854,9 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          metricVisualization: S.optional(TimeSeriesTableMetricVisualizationEnum),
-          dataSets: S.optional(TableDataSetList),
-          columnSettings: S.optional(ColumnSettingsList),
+          metricVisualization: S.optional(S.String),
+          dataSets: S.optional(__S(53)),
+          columnSettings: S.optional(__S(55)),
         }),
       ).annotate({ identifier: "TimeSeriesTable" });
     case 1:
@@ -2244,7 +1868,7 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          absoluteWindow: S.optional(Interval),
+          absoluteWindow: S.optional(__S(22)),
           relativeDuration: S.optional(S.String),
         }),
       ).annotate({ identifier: "TimeRange" });
@@ -2269,21 +1893,21 @@ function __c7(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sparkChartType: S.optional(SparkChartViewSparkChartTypeEnum),
+          sparkChartType: S.optional(S.String),
           minAlignmentPeriod: S.optional(S.String),
         }),
       ).annotate({ identifier: "SparkChartView" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          dimensions: S.optional(DimensionList),
-          timeSeriesQuery: S.optional(TimeSeriesQuery),
-          blankView: S.optional(Empty),
-          gaugeView: S.optional(GaugeView),
-          sparkChartView: S.optional(SparkChartView),
-          measures: S.optional(MeasureList),
-          thresholds: S.optional(ThresholdList),
-          breakdowns: S.optional(BreakdownList),
+          dimensions: S.optional(__S(44)),
+          timeSeriesQuery: S.optional(__S(31)),
+          blankView: S.optional(__S(60)),
+          gaugeView: S.optional(__S(61)),
+          sparkChartView: S.optional(__S(62)),
+          measures: S.optional(__S(18)),
+          thresholds: S.optional(__S(41)),
+          breakdowns: S.optional(__S(33)),
         }),
       ).annotate({ identifier: "Scorecard" });
   }
@@ -2293,32 +1917,32 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          timeSeriesQuery: S.optional(TimeSeriesQuery),
-          dimensions: S.optional(DimensionList),
-          measures: S.optional(MeasureList),
+          timeSeriesQuery: S.optional(__S(31)),
+          dimensions: S.optional(__S(44)),
+          measures: S.optional(__S(18)),
           minAlignmentPeriod: S.optional(S.String),
           sliceNameTemplate: S.optional(S.String),
         }),
       ).annotate({ identifier: "PieChartDataSet" });
     case 1:
-      return S.Array(PieChartDataSet);
+      return S.Array(__S(64));
     case 2:
       return S.suspend(() =>
         S.Struct({
           showLabels: S.optional(S.Boolean),
-          chartType: S.optional(PieChartChartTypeEnum),
-          dataSets: S.optional(PieChartDataSetList),
+          chartType: S.optional(S.String),
+          dataSets: S.optional(__S(65)),
         }),
       ).annotate({ identifier: "PieChart" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          pointerLocation: S.optional(TextStylePointerLocationEnum),
+          pointerLocation: S.optional(S.String),
           textColor: S.optional(S.String),
-          verticalAlignment: S.optional(TextStyleVerticalAlignmentEnum),
-          padding: S.optional(TextStylePaddingEnum),
-          fontSize: S.optional(TextStyleFontSizeEnum),
-          horizontalAlignment: S.optional(TextStyleHorizontalAlignmentEnum),
+          verticalAlignment: S.optional(S.String),
+          padding: S.optional(S.String),
+          fontSize: S.optional(S.String),
+          horizontalAlignment: S.optional(S.String),
           backgroundColor: S.optional(S.String),
         }),
       ).annotate({ identifier: "TextStyle" });
@@ -2326,42 +1950,42 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
-          style: S.optional(TextStyle),
-          format: S.optional(TextFormatEnum),
+          style: S.optional(__S(67)),
+          format: S.optional(S.String),
         }),
       ).annotate({ identifier: "Text" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          displayType: S.optional(SingleViewGroupDisplayTypeEnum),
+          displayType: S.optional(S.String),
         }),
       ).annotate({ identifier: "SingleViewGroup" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          incidentList: S.optional(IncidentList),
+          incidentList: S.optional(__S(10)),
           id: S.optional(S.String),
-          filterControl: S.optional(FilterControl),
-          visibilityCondition: S.optional(VisibilityCondition),
-          treemap: S.optional(Treemap),
-          logsPanel: S.optional(LogsPanel),
-          errorReportingPanel: S.optional(ErrorReportingPanel),
-          alertChart: S.optional(AlertChart),
-          xyChart: S.optional(XyChart),
-          timeSeriesTable: S.optional(TimeSeriesTable),
-          collapsibleGroup: S.optional(CollapsibleGroup),
-          timeRange: S.optional(TimeRange),
-          sectionHeader: S.optional(SectionHeader),
-          scorecard: S.optional(Scorecard),
-          pieChart: S.optional(PieChart),
-          text: S.optional(Text),
+          filterControl: S.optional(__S(11)),
+          visibilityCondition: S.optional(__S(13)),
+          treemap: S.optional(__S(36)),
+          logsPanel: S.optional(__S(37)),
+          errorReportingPanel: S.optional(__S(38)),
+          alertChart: S.optional(__S(39)),
+          xyChart: S.optional(__S(50)),
+          timeSeriesTable: S.optional(__S(56)),
+          collapsibleGroup: S.optional(__S(57)),
+          timeRange: S.optional(__S(58)),
+          sectionHeader: S.optional(__S(59)),
+          scorecard: S.optional(__S(63)),
+          pieChart: S.optional(__S(66)),
+          text: S.optional(__S(68)),
           title: S.optional(S.String),
-          singleViewGroup: S.optional(SingleViewGroup),
-          blank: S.optional(Empty),
+          singleViewGroup: S.optional(__S(69)),
+          blank: S.optional(__S(60)),
         }),
       ).annotate({ identifier: "Widget" });
     case 7:
-      return S.Array(Widget);
+      return S.Array(__S(70));
   }
 }
 function __c9(j: number): any {
@@ -2370,15 +1994,15 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           weight: S.optional(S.String),
-          widgets: S.optional(WidgetList),
+          widgets: S.optional(__S(71)),
         }),
       ).annotate({ identifier: "Column" });
     case 1:
-      return S.Array(Column);
+      return S.Array(__S(72));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          columns: S.optional(ColumnList),
+          columns: S.optional(__S(73)),
         }),
       ).annotate({ identifier: "ColumnLayout" });
     case 3:
@@ -2387,28 +2011,28 @@ function __c9(j: number): any {
           yPos: S.optional(S.Number),
           height: S.optional(S.Number),
           width: S.optional(S.Number),
-          widget: S.optional(Widget),
+          widget: S.optional(__S(70)),
           xPos: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Tile" });
     case 4:
-      return S.Array(Tile);
+      return S.Array(__S(75));
     case 5:
       return S.suspend(() =>
         S.Struct({
           columns: S.optional(S.Number),
-          tiles: S.optional(TileList),
+          tiles: S.optional(__S(76)),
         }),
       ).annotate({ identifier: "MosaicLayout" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          widgets: S.optional(WidgetList),
+          widgets: S.optional(__S(71)),
           weight: S.optional(S.String),
         }),
       ).annotate({ identifier: "Row" });
     case 7:
-      return S.Array(Row);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
@@ -2416,14 +2040,14 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          rows: S.optional(RowList),
+          rows: S.optional(__S(79)),
         }),
       ).annotate({ identifier: "RowLayout" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           columns: S.optional(S.String),
-          widgets: S.optional(WidgetList),
+          widgets: S.optional(__S(71)),
         }),
       ).annotate({ identifier: "GridLayout" });
     case 2:
@@ -2432,40 +2056,40 @@ function __c10(j: number): any {
           enabled: S.optional(S.Boolean),
           filter: S.optional(S.String),
           displayName: S.optional(S.String),
-          resourceNames: S.optional(StringList),
-          eventType: S.optional(EventAnnotationEventTypeEnum),
+          resourceNames: S.optional(__S(7)),
+          eventType: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventAnnotation" });
     case 3:
-      return S.Array(EventAnnotation);
+      return S.Array(__S(82));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          defaultResourceNames: S.optional(StringList),
-          eventAnnotations: S.optional(EventAnnotationList),
+          defaultResourceNames: S.optional(__S(7)),
+          eventAnnotations: S.optional(__S(83)),
         }),
       ).annotate({ identifier: "DashboardAnnotations" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(StringList),
+          values: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "StringArray" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          filterType: S.optional(DashboardFilterFilterTypeEnum),
+          filterType: S.optional(S.String),
           labelKey: S.optional(S.String),
-          valueType: S.optional(DashboardFilterValueTypeEnum),
-          stringArrayValue: S.optional(StringArray),
+          valueType: S.optional(S.String),
+          stringArrayValue: S.optional(__S(85)),
           stringValue: S.optional(S.String),
-          timeSeriesQuery: S.optional(TimeSeriesQuery),
+          timeSeriesQuery: S.optional(__S(31)),
           templateVariable: S.optional(S.String),
-          stringArray: S.optional(StringArray),
+          stringArray: S.optional(__S(85)),
         }),
       ).annotate({ identifier: "DashboardFilter" });
     case 7:
-      return S.Array(DashboardFilter);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -2473,16 +2097,16 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(6)),
           etag: S.optional(S.String),
-          columnLayout: S.optional(ColumnLayout),
-          mosaicLayout: S.optional(MosaicLayout),
-          rowLayout: S.optional(RowLayout),
+          columnLayout: S.optional(__S(74)),
+          mosaicLayout: S.optional(__S(77)),
+          rowLayout: S.optional(__S(80)),
           name: S.optional(S.String),
           displayName: S.optional(S.String),
-          gridLayout: S.optional(GridLayout),
-          annotations: S.optional(DashboardAnnotations),
-          dashboardFilters: S.optional(DashboardFilterList),
+          gridLayout: S.optional(__S(81)),
+          annotations: S.optional(__S(84)),
+          dashboardFilters: S.optional(__S(87)),
         }),
       ).annotate({ identifier: "Dashboard" });
     case 1:
@@ -2490,7 +2114,7 @@ function __c11(j: number): any {
         S.Struct({
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Dashboard.pipe(T.HttpBody())),
+          body: S.optional(__S(88).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2544,12 +2168,12 @@ function __c11(j: number): any {
         identifier: "GetLocationsGlobalMetricsScopesRequest",
       });
     case 5:
-      return S.Array(MonitoredProject);
+      return S.Array(__S(0));
     case 6:
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          monitoredProjects: S.optional(MonitoredProjectList),
+          monitoredProjects: S.optional(__S(93)),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
         }),
@@ -2597,7 +2221,7 @@ function __c12(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          body: S.optional(QueryLabelsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(97).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2613,7 +2237,7 @@ function __c12(j: number): any {
         S.Struct({
           contentType: S.optional(S.String),
           data: S.optional(S.String),
-          extensions: S.optional(DocumentMapList),
+          extensions: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "HttpBody" });
     case 4:
@@ -2631,11 +2255,11 @@ function __c12(j: number): any {
         identifier: "ListMetricsScopesByMonitoredProjectLocationsGlobalMetricsScopesRequest",
       });
     case 5:
-      return S.Array(MetricsScope);
+      return S.Array(__S(94));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metricsScopes: S.optional(MetricsScopeList),
+          metricsScopes: S.optional(__S(101)),
         }),
       ).annotate({
         identifier: "ListMetricsScopesByMonitoredProjectResponse",
@@ -2661,12 +2285,12 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Dashboard);
+      return S.Array(__S(88));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          dashboards: S.optional(DashboardList),
+          dashboards: S.optional(__S(104)),
         }),
       ).annotate({ identifier: "ListDashboardsResponse" });
     case 2:
@@ -2691,7 +2315,7 @@ function __c13(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           validateOnly: S.optional(S.Boolean.pipe(T.Query())),
-          body: S.optional(Dashboard.pipe(T.HttpBody())),
+          body: S.optional(__S(88).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2715,7 +2339,7 @@ function __c13(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          body: S.optional(QueryExemplarsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(108).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2741,7 +2365,7 @@ function __c13(j: number): any {
         S.Struct({
           location: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          body: S.optional(QueryRangeRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(110).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2769,7 +2393,7 @@ function __c14(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          body: S.optional(QueryInstantRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(112).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2792,7 +2416,7 @@ function __c14(j: number): any {
         S.Struct({
           location: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          body: S.optional(QuerySeriesRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(114).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2822,5 +2446,44 @@ function __c14(j: number): any {
       ).annotate({
         identifier: "ValuesProjectsLocationPrometheusApiV1LabelRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
   }
 }

@@ -6,6 +6,8 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -21,89 +23,52 @@ export interface AddReminderRequest {
   /** Specify the repeating behavior of a reminder. Available options: `daily`, `weekly`, `monthly`, or `yearly`. If `weekly`, may further specify the days of the week. */
   recurrence?: unknown;
 }
-const AddReminderRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<AddReminderRequest>;
-
 export interface AddReminderResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   reminder: unknown;
 }
-const AddReminderResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AddReminderResponse>;
-
 export interface CompleteReminderRequest {
   /** The ID of the reminder to be marked as complete */
   reminder: string;
   /** Encoded team id, required if org token is used */
   team_id?: string;
 }
-const CompleteReminderRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CompleteReminderRequest>;
-
 export interface CompleteReminderResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const CompleteReminderResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CompleteReminderResponse>;
-
 export interface DeleteReminderRequest {
   /** The ID of the reminder */
   reminder: string;
   /** Encoded team id, required if org token is used */
   team_id?: string;
 }
-const DeleteReminderRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeleteReminderRequest>;
-
 export interface DeleteReminderResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
 }
-const DeleteReminderResponse = CompleteReminderResponse as any as S.Schema<DeleteReminderResponse>;
-
 export interface ListRemindersRequest {
   /** Encoded team id, required if org token is passed */
   team_id?: string;
 }
-const ListRemindersRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ListRemindersRequest>;
-
 export type ListRemindersResponseRemindersList = Array<unknown>;
-const ListRemindersResponseRemindersList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ListRemindersResponseRemindersList>;
-
 export interface ListRemindersResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   reminders?: ListRemindersResponseRemindersList;
 }
-const ListRemindersResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListRemindersResponse>;
-
 export interface RemindersInfoRequest {
   /** The ID of the reminder */
   reminder: string;
   /** Encoded team id, required if org token is passed */
   team_id?: string;
 }
-const RemindersInfoRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<RemindersInfoRequest>;
-
 export interface RemindersInfoResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   reminder: unknown;
 }
-const RemindersInfoResponse = AddReminderResponse as any as S.Schema<RemindersInfoResponse>;
-
 export type AddReminderError = SlackOpError;
 /** Creates a reminder. Required scopes -- user: `reminders:write` Rate limit tier: 2 Method-specific errors (the `error` slug on the SlackError): - `cannot_add_bot` -- Reminders can't be sent to bots. - `cannot_add_others` -- Guests can't set reminders for other team members. - `cannot_add_others_recurring` -- Recurring reminders can't be set for other team members. - `cannot_add_profile_only_user` -- Reminders can't be sent to profile only users. - `cannot_add_slackbot` -- Reminders can't be sent to Slackbot. - `cannot_parse` -- The phrasing of the timing for this reminder is unclear. You must include a complete time description. Some examples that work: `1458678068`, `20`, `in 5 minutes`, `tomorrow`, `at 3:30pm`, `on Tuesday`, or `next week`. - `missing_argument` -- An argument is missing. - `user_not_found` -- That user can't be found. See https://docs.slack.dev/reference/methods/reminders.add */
 export const addReminder: API.OperationMethod<
@@ -112,8 +77,8 @@ export const addReminder: API.OperationMethod<
   AddReminderError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddReminderRequest,
-  output: AddReminderResponse,
+  input: __S(0) as any as S.Schema<AddReminderRequest>,
+  output: __S(1) as any as S.Schema<AddReminderResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -127,8 +92,8 @@ export const completeReminder: API.OperationMethod<
   CompleteReminderError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CompleteReminderRequest,
-  output: CompleteReminderResponse,
+  input: __S(2) as any as S.Schema<CompleteReminderRequest>,
+  output: __S(3) as any as S.Schema<CompleteReminderResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -142,8 +107,8 @@ export const deleteReminder: API.OperationMethod<
   DeleteReminderError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteReminderRequest,
-  output: DeleteReminderResponse,
+  input: __S(4) as any as S.Schema<DeleteReminderRequest>,
+  output: __S(3) as any as S.Schema<DeleteReminderResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -157,8 +122,8 @@ export const listReminders: API.OperationMethod<
   ListRemindersError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRemindersRequest,
-  output: ListRemindersResponse,
+  input: __S(5) as any as S.Schema<ListRemindersRequest>,
+  output: __S(7) as any as S.Schema<ListRemindersResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -172,8 +137,8 @@ export const remindersInfo: API.OperationMethod<
   RemindersInfoError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemindersInfoRequest,
-  output: RemindersInfoResponse,
+  input: __S(8) as any as S.Schema<RemindersInfoRequest>,
+  output: __S(1) as any as S.Schema<RemindersInfoResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -231,7 +196,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          reminders: S.optional(ListRemindersResponseRemindersList),
+          reminders: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "ListRemindersResponse" });
   }
@@ -245,5 +210,18 @@ function __c1(j: number): any {
           team_id: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/reminders.info", code: 200 })),
       ).annotate({ identifier: "RemindersInfoRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

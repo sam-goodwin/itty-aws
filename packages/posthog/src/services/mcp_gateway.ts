@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -14,33 +16,15 @@ export interface CreateMcpGatewayConfigSetAllServersEnabledRequest {
   /** True enables every MCP server for the team; false disables them all. Applies to every registered server and becomes the default for untouched and future catalog servers. */
   enabled: boolean;
 }
-const CreateMcpGatewayConfigSetAllServersEnabledRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateMcpGatewayConfigSetAllServersEnabledRequest>;
-
 /** * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
 export type MCPPolicyPresetEnum = "allow" | "user" | "ask" | "block";
-const MCPPolicyPresetEnum = S.String;
-
 export type BlankEnum = "";
 /** Baseline preset for members. Empty until an admin applies one from Team settings. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
 export type TeamMCPGatewayConfigMemberDefaultPreset = MCPPolicyPresetEnum | BlankEnum;
-const TeamMCPGatewayConfigMemberDefaultPreset =
-  S.Unknown as any as S.Schema<TeamMCPGatewayConfigMemberDefaultPreset>;
-
 /** Baseline preset deriving default policies for tools an agent has no explicit row for. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
 export type TeamMCPGatewayConfigAgentDefaultPreset = MCPPolicyPresetEnum | BlankEnum;
-const TeamMCPGatewayConfigAgentDefaultPreset =
-  S.Unknown as any as S.Schema<TeamMCPGatewayConfigAgentDefaultPreset>;
-
 /** Catalog template ids that already have a gateway registration, including registrations hidden from the requesting member. Clients use this list to avoid presenting disabled or revoked templates as new. */
 export type TeamMCPGatewayConfigRegisteredTemplateIdsList = Array<string>;
-const TeamMCPGatewayConfigRegisteredTemplateIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<TeamMCPGatewayConfigRegisteredTemplateIdsList>;
-
 export interface TeamMCPGatewayConfig {
   /** Whether non-admin members may register custom MCP servers with the gateway. */
   allow_custom_servers?: boolean;
@@ -57,8 +41,6 @@ export interface TeamMCPGatewayConfig {
   /** Whether the requesting user can administer the gateway (org admin or explicit project admin). */
   is_admin: boolean;
 }
-const TeamMCPGatewayConfig = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<TeamMCPGatewayConfig>;
-
 export interface CreateMcpGatewayMembersSetAccessRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -68,25 +50,11 @@ export interface CreateMcpGatewayMembersSetAccessRequest {
   /** False turns the server off for the member; true restores it. */
   enabled: boolean;
 }
-const CreateMcpGatewayMembersSetAccessRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateMcpGatewayMembersSetAccessRequest>;
-
 export interface CreateMcpGatewayMembersSetAccessResponse {}
-const CreateMcpGatewayMembersSetAccessResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateMcpGatewayMembersSetAccessResponse>;
-
 /** * `everyone` - Everyone * `members` - Members * `agents` - Agents */
 export type AppliesToEnum = "everyone" | "members" | "agents";
-const AppliesToEnum = S.String;
-
 /** * `needs_approval` - Require approval * `do_not_use` - Block */
 export type EffectEnum = "needs_approval" | "do_not_use";
-const EffectEnum = S.String;
-
 export interface CreateMcpGatewayRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -103,11 +71,6 @@ export interface CreateMcpGatewayRuleRequest {
   /** Disabled rules are kept but not evaluated. */
   enabled?: boolean;
 }
-const CreateMcpGatewayRuleRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateMcpGatewayRuleRequest>;
-
 export interface MCPOrgRule {
   id: string;
   /** Short rule name shown wherever the rule locks a tool. */
@@ -125,31 +88,18 @@ export interface MCPOrgRule {
   created_at: string;
   updated_at: string;
 }
-const MCPOrgRule = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<MCPOrgRule>;
-
 /** * `team` - Team default * `member` - Member * `agent` - Agent */
 export type ScopeTypeEnum = "team" | "member" | "agent";
-const ScopeTypeEnum = S.String;
-
 /** * `approved` - Approved * `needs_approval` - Needs approval * `do_not_use` - Do not use */
 export type MCPToolApprovalStateEnum = "approved" | "needs_approval" | "do_not_use";
-const MCPToolApprovalStateEnum = S.String;
-
 export interface ToolPolicyEntry {
   /** Tool to set the policy for, up to 200 characters. */
   tool_name: string;
   /** State to apply for this scope. * `approved` - Approved * `needs_approval` - Needs approval * `do_not_use` - Do not use */
   policy_state: MCPToolApprovalStateEnum | (string & {});
 }
-const ToolPolicyEntry = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ToolPolicyEntry>;
-
 /** Per-tool states to upsert for the scope. At most 1,000 entries per request. */
 export type CreateMcpGatewayServersPolicyRequestPoliciesList = Array<ToolPolicyEntry>;
-const CreateMcpGatewayServersPolicyRequestPoliciesList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateMcpGatewayServersPolicyRequestPoliciesList>;
-
 export interface CreateMcpGatewayServersPolicyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -164,22 +114,10 @@ export interface CreateMcpGatewayServersPolicyRequest {
   /** Per-tool states to upsert for the scope. At most 1,000 entries per request. */
   policies: CreateMcpGatewayServersPolicyRequestPoliciesList;
 }
-const CreateMcpGatewayServersPolicyRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateMcpGatewayServersPolicyRequest>;
-
 /** JSON Schema describing the tool's input arguments. */
 export type ResolvedToolPolicyInputSchemaMap = { [key: string]: unknown | undefined };
-const ResolvedToolPolicyInputSchemaMap = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ResolvedToolPolicyInputSchemaMap>;
-
 /** * `rule` - rule * `scope` - scope * `team` - team * `preset` - preset * `legacy` - legacy * `default` - default */
 export type DecidedByEnum = "rule" | "scope" | "team" | "preset" | "legacy" | "default";
-const DecidedByEnum = S.String;
-
 /** One tool with its effective policy for the requested scope. */
 export interface ResolvedToolPolicy {
   /** Tool name as exposed by the upstream server. */
@@ -203,25 +141,13 @@ export interface ResolvedToolPolicy {
   /** Matching org rule description, when decided_by is rule. */
   rule_description: string;
 }
-const ResolvedToolPolicy = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ResolvedToolPolicy>;
-
 export type PaginatedResolvedToolPolicyListResultsList = Array<ResolvedToolPolicy>;
-const PaginatedResolvedToolPolicyListResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<PaginatedResolvedToolPolicyListResultsList>;
-
 export interface PaginatedResolvedToolPolicyList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedResolvedToolPolicyListResultsList;
 }
-const PaginatedResolvedToolPolicyList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<PaginatedResolvedToolPolicyList>;
-
 export interface CreateMcpGatewayServersSetTemplateEnabledRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -230,11 +156,6 @@ export interface CreateMcpGatewayServersSetTemplateEnabledRequest {
   /** True lets the team see and call the server; false hides it from members and blocks connections. */
   enabled: boolean;
 }
-const CreateMcpGatewayServersSetTemplateEnabledRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateMcpGatewayServersSetTemplateEnabledRequest>;
-
 /** * `business` - Business Operations * `data` - Data & Analytics * `design` - Design & Content * `dev` - Developer Tools & APIs * `infra` - Infrastructure * `productivity` - Productivity & Collaboration */
 export type MCPServerCategoryEnum =
   | "business"
@@ -243,16 +164,9 @@ export type MCPServerCategoryEnum =
   | "dev"
   | "infra"
   | "productivity";
-const MCPServerCategoryEnum = S.String;
-
 /** * `api_key` - API Key * `oauth` - OAuth */
 export type MCPAuthTypeEnum = "api_key" | "oauth";
-const MCPAuthTypeEnum = S.String;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap =
-  ResolvedToolPolicyInputSchemaMap as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -265,8 +179,6 @@ export type RoleAtOrganizationEnum =
   | "student"
   | "other";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -278,8 +190,6 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<UserBasic>;
-
 /** One member's personal connection to a gateway server. */
 export interface GatewayConnection {
   /** Installation row backing this connection. */
@@ -293,15 +203,8 @@ export interface GatewayConnection {
   /** True when the stored token was invalidated and needs reauth. */
   needs_reauth: boolean;
 }
-const GatewayConnection = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<GatewayConnection>;
-
 /** Members with a connection to this server. Only project admins receive this list. */
 export type MCPGatewayServerConnectionsList = Array<GatewayConnection>;
-const MCPGatewayServerConnectionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<MCPGatewayServerConnectionsList>;
-
 /** The requesting user's own connection to a gateway server. */
 export interface GatewayYourConnection {
   /** The caller's installation row for this server. */
@@ -315,19 +218,10 @@ export interface GatewayYourConnection {
   /** When the caller last proxied a call through this connection. */
   last_used_at: string | null;
 }
-const GatewayYourConnection = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GatewayYourConnection>;
-
 /** * `personal` - Personal * `team` - Team */
 export type MCPAgentGrantScopeEnum = "personal" | "team";
-const MCPAgentGrantScopeEnum = S.String;
-
 /** * `active` - Active * `paused` - Paused */
 export type MCPServiceAccountStatusEnum = "active" | "paused";
-const MCPServiceAccountStatusEnum = S.String;
-
 /** One agent's access to a gateway server, on behalf of one member. */
 export interface GatewayAgentAccess {
   /** Service account granted access. */
@@ -347,22 +241,10 @@ export interface GatewayAgentAccess {
   /** Member who shared this server with the agent. */
   granted_by: UserBasic | null;
 }
-const GatewayAgentAccess = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GatewayAgentAccess>;
-
 /** Agents this server is shared with. */
 export type MCPGatewayServerAgentsList = Array<GatewayAgentAccess>;
-const MCPGatewayServerAgentsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<MCPGatewayServerAgentsList>;
-
 /** Ids of members whose access an admin has turned off. Only project admins receive this list. */
 export type MCPGatewayServerRevokedUserIdsList = Array<number>;
-const MCPGatewayServerRevokedUserIdsList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<MCPGatewayServerRevokedUserIdsList>;
-
 /** A server registered in the team's gateway, with connection summary. */
 export interface MCPGatewayServer {
   id: string;
@@ -401,13 +283,8 @@ export interface MCPGatewayServer {
   created_at: string;
   updated_at: string;
 }
-const MCPGatewayServer = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<MCPGatewayServer>;
-
 /** Optional agent-scope tool policies to set alongside the grant. At most 1,000 entries per request. */
 export type CreateMcpGatewayServiceAccountsAccessRequestPoliciesList = Array<ToolPolicyEntry>;
-const CreateMcpGatewayServiceAccountsAccessRequestPoliciesList =
-  CreateMcpGatewayServersPolicyRequestPoliciesList as any as S.Schema<CreateMcpGatewayServiceAccountsAccessRequestPoliciesList>;
-
 export interface CreateMcpGatewayServiceAccountsAccessRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -424,19 +301,9 @@ export interface CreateMcpGatewayServiceAccountsAccessRequest {
   /** Optional agent-scope tool policies to set alongside the grant. At most 1,000 entries per request. */
   policies?: CreateMcpGatewayServiceAccountsAccessRequestPoliciesList;
 }
-const CreateMcpGatewayServiceAccountsAccessRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateMcpGatewayServiceAccountsAccessRequest>;
-
 export type AgentKeyEnum = "support" | "scout" | "workflow";
-const AgentKeyEnum = S.String;
-
 /** Gateway servers configured for this agent. */
 export type MCPServiceAccountServerIdsList = Array<string>;
-const MCPServiceAccountServerIdsList =
-  TeamMCPGatewayConfigRegisteredTemplateIdsList as any as S.Schema<MCPServiceAccountServerIdsList>;
-
 /** * `ready` - ready * `pending_oauth` - pending_oauth * `needs_reauth` - needs_reauth * `disabled` - disabled * `missing_credential` - missing_credential */
 export type ConnectionStateEnum =
   | "ready"
@@ -444,8 +311,6 @@ export type ConnectionStateEnum =
   | "needs_reauth"
   | "disabled"
   | "missing_credential";
-const ConnectionStateEnum = S.String;
-
 /** A credential-safe summary of a server configured for an agent. */
 export interface MCPServiceAccountServer {
   /** Gateway server granted to the agent. */
@@ -469,18 +334,8 @@ export interface MCPServiceAccountServer {
   /** Whether agent runs can use this grant: the server is enabled for the project and an admin has not revoked the sharing member's access. Independent of connection_state, which reports credential health. */
   reachable: boolean;
 }
-const MCPServiceAccountServer = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<MCPServiceAccountServer>;
-
 /** Credential-safe summaries of the gateway servers configured for this agent. */
 export type MCPServiceAccountServersList = Array<MCPServiceAccountServer>;
-const MCPServiceAccountServersList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<MCPServiceAccountServersList>;
-
 export interface MCPServiceAccount {
   id: string;
   name: string;
@@ -500,23 +355,14 @@ export interface MCPServiceAccount {
   created_at: string;
   updated_at: string;
 }
-const MCPServiceAccount = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<MCPServiceAccount>;
-
 export interface GetMcpGatewayAuditRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this mcp audit event. */
   id: string;
 }
-const GetMcpGatewayAuditRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetMcpGatewayAuditRequest>;
-
 /** * `auto` - Auto-approved * `approved` - Approved * `pending` - Awaiting approval * `blocked` - Blocked */
 export type MCPAuditDecisionEnum = "auto" | "approved" | "pending" | "blocked";
-const MCPAuditDecisionEnum = S.String;
-
 export interface AuditActorServiceAccount {
   /** Service account id. */
   id: string;
@@ -525,15 +371,8 @@ export interface AuditActorServiceAccount {
   /** Agent identity handle. */
   handle: string;
 }
-const AuditActorServiceAccount = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<AuditActorServiceAccount>;
-
 /** Scope of the agent grant the call used. Blank for member calls. * `personal` - Personal * `team` - Team */
 export type MCPAuditEventGrantScope = MCPAgentGrantScopeEnum | BlankEnum;
-const MCPAuditEventGrantScope = S.Unknown as any as S.Schema<MCPAuditEventGrantScope>;
-
 export interface MCPAuditEvent {
   id: string;
   created_at: string;
@@ -554,19 +393,12 @@ export interface MCPAuditEvent {
   /** Scope of the agent grant the call used. Blank for member calls. * `personal` - Personal * `team` - Team */
   grant_scope: MCPAuditEventGrantScope;
 }
-const MCPAuditEvent = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<MCPAuditEvent>;
-
 export interface GetMcpGatewayAuditCountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** Only count calls made by this service account. */
   actor_service_account_id?: string;
 }
-const GetMcpGatewayAuditCountRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetMcpGatewayAuditCountRequest>;
-
 export interface AuditCounts {
   /** Every audited tool call visible to the requesting user. */
   all: number;
@@ -577,28 +409,15 @@ export interface AuditCounts {
   /** Visible calls the gateway blocked. */
   blocked: number;
 }
-const AuditCounts = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<AuditCounts>;
-
 export interface GetMcpGatewayMemberRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
-const GetMcpGatewayMemberRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<GetMcpGatewayMemberRequest>;
-
 /** Gateway servers the member has a personal connection to. */
 export type GatewayMemberSummaryConnectedServerIdsList = Array<string>;
-const GatewayMemberSummaryConnectedServerIdsList =
-  TeamMCPGatewayConfigRegisteredTemplateIdsList as any as S.Schema<GatewayMemberSummaryConnectedServerIdsList>;
-
 /** Gateway servers an admin turned off for this member. */
 export type GatewayMemberSummaryRevokedServerIdsList = Array<string>;
-const GatewayMemberSummaryRevokedServerIdsList =
-  TeamMCPGatewayConfigRegisteredTemplateIdsList as any as S.Schema<GatewayMemberSummaryRevokedServerIdsList>;
-
 /** One team member's gateway posture (admin overview). */
 export interface GatewayMemberSummary {
   /** The member. */
@@ -610,33 +429,19 @@ export interface GatewayMemberSummary {
   /** Gateway servers an admin turned off for this member. */
   revoked_server_ids: GatewayMemberSummaryRevokedServerIdsList;
 }
-const GatewayMemberSummary = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GatewayMemberSummary>;
-
 export interface GetMcpGatewayRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this mcp org rule. */
   id: string;
 }
-const GetMcpGatewayRuleRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<GetMcpGatewayRuleRequest>;
-
 export interface GetMcpGatewayServerRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this mcp gateway server. */
   id: string;
 }
-const GetMcpGatewayServerRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GetMcpGatewayServerRequest>;
-
 export type GetMcpGatewayServersToolRequestScopeType = "team" | "member" | "agent";
-const GetMcpGatewayServersToolRequestScopeType = S.String;
-
 export interface GetMcpGatewayServersToolRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -649,25 +454,13 @@ export interface GetMcpGatewayServersToolRequest {
   /** Member scope target. Defaults to the requesting user. */
   scope_user_id?: number;
 }
-const GetMcpGatewayServersToolRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetMcpGatewayServersToolRequest>;
-
 export interface GetMcpGatewayServiceAccountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this mcp service account. */
   id: string;
 }
-const GetMcpGatewayServiceAccountRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<GetMcpGatewayServiceAccountRequest>;
-
 export type ListMcpGatewayAuditRequestQuickFilter = "all" | "agents" | "approvals" | "blocked";
-const ListMcpGatewayAuditRequestQuickFilter = S.String;
-
 export interface ListMcpGatewayAuditRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -680,37 +473,17 @@ export interface ListMcpGatewayAuditRequest {
   /** all, agents (agent calls only), approvals (approved or pending), or blocked. * `all` - all * `agents` - agents * `approvals` - approvals * `blocked` - blocked */
   quick_filter?: ListMcpGatewayAuditRequestQuickFilter | (string & {});
 }
-const ListMcpGatewayAuditRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListMcpGatewayAuditRequest>;
-
 export type PaginatedMCPAuditEventListResultsList = Array<MCPAuditEvent>;
-const PaginatedMCPAuditEventListResultsList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<PaginatedMCPAuditEventListResultsList>;
-
 export interface PaginatedMCPAuditEventList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedMCPAuditEventListResultsList;
 }
-const PaginatedMCPAuditEventList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<PaginatedMCPAuditEventList>;
-
 export interface ListMcpGatewayConfigRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const ListMcpGatewayConfigRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListMcpGatewayConfigRequest>;
-
 export interface ListMcpGatewayMembersRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -719,28 +492,13 @@ export interface ListMcpGatewayMembersRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListMcpGatewayMembersRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ListMcpGatewayMembersRequest>;
-
 export type PaginatedGatewayMemberSummaryListResultsList = Array<GatewayMemberSummary>;
-const PaginatedGatewayMemberSummaryListResultsList = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<PaginatedGatewayMemberSummaryListResultsList>;
-
 export interface PaginatedGatewayMemberSummaryList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedGatewayMemberSummaryListResultsList;
 }
-const PaginatedGatewayMemberSummaryList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<PaginatedGatewayMemberSummaryList>;
-
 export interface ListMcpGatewayRulesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -749,28 +507,13 @@ export interface ListMcpGatewayRulesRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListMcpGatewayRulesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListMcpGatewayRulesRequest>;
-
 export type PaginatedMCPOrgRuleListResultsList = Array<MCPOrgRule>;
-const PaginatedMCPOrgRuleListResultsList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<PaginatedMCPOrgRuleListResultsList>;
-
 export interface PaginatedMCPOrgRuleList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedMCPOrgRuleListResultsList;
 }
-const PaginatedMCPOrgRuleList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<PaginatedMCPOrgRuleList>;
-
 export interface ListMcpGatewayServersRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -779,28 +522,13 @@ export interface ListMcpGatewayServersRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListMcpGatewayServersRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListMcpGatewayServersRequest>;
-
 export type PaginatedMCPGatewayServerListResultsList = Array<MCPGatewayServer>;
-const PaginatedMCPGatewayServerListResultsList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<PaginatedMCPGatewayServerListResultsList>;
-
 export interface PaginatedMCPGatewayServerList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedMCPGatewayServerListResultsList;
 }
-const PaginatedMCPGatewayServerList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<PaginatedMCPGatewayServerList>;
-
 export interface ListMcpGatewayServiceAccountsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -809,32 +537,15 @@ export interface ListMcpGatewayServiceAccountsRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListMcpGatewayServiceAccountsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListMcpGatewayServiceAccountsRequest>;
-
 export type PaginatedMCPServiceAccountListResultsList = Array<MCPServiceAccount>;
-const PaginatedMCPServiceAccountListResultsList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<PaginatedMCPServiceAccountListResultsList>;
-
 export interface PaginatedMCPServiceAccountList {
   count: number;
   next?: string | null;
   previous?: string | null;
   results: PaginatedMCPServiceAccountListResultsList;
 }
-const PaginatedMCPServiceAccountList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<PaginatedMCPServiceAccountList>;
-
 /** * `members` - members * `agents` - agents */
 export type AudienceEnum = "members" | "agents";
-const AudienceEnum = S.String;
-
 export interface McpGatewayConfigApplyPresetCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -843,25 +554,14 @@ export interface McpGatewayConfigApplyPresetCreateRequest {
   /** Preset to apply. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
   preset: MCPPolicyPresetEnum | (string & {});
 }
-const McpGatewayConfigApplyPresetCreateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<McpGatewayConfigApplyPresetCreateRequest>;
-
 /** Baseline preset for members. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
 export type McpGatewayConfigUpdateSettingsCreateRequestMemberDefaultPreset =
   | MCPPolicyPresetEnum
   | BlankEnum;
-const McpGatewayConfigUpdateSettingsCreateRequestMemberDefaultPreset =
-  S.Unknown as any as S.Schema<McpGatewayConfigUpdateSettingsCreateRequestMemberDefaultPreset>;
-
 /** Baseline preset for agents. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
 export type McpGatewayConfigUpdateSettingsCreateRequestAgentDefaultPreset =
   | MCPPolicyPresetEnum
   | BlankEnum;
-const McpGatewayConfigUpdateSettingsCreateRequestAgentDefaultPreset =
-  S.Unknown as any as S.Schema<McpGatewayConfigUpdateSettingsCreateRequestAgentDefaultPreset>;
-
 export interface McpGatewayConfigUpdateSettingsCreateRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -876,43 +576,20 @@ export interface McpGatewayConfigUpdateSettingsCreateRequest {
   /** Baseline preset for agents. * `allow` - Allow all * `user` - Member decides * `ask` - Ask for destructive * `block` - Block destructive */
   agent_default_preset?: McpGatewayConfigUpdateSettingsCreateRequestAgentDefaultPreset;
 }
-const McpGatewayConfigUpdateSettingsCreateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<McpGatewayConfigUpdateSettingsCreateRequest>;
-
 export interface McpGatewayRulesDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this mcp org rule. */
   id: string;
 }
-const McpGatewayRulesDestroyRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<McpGatewayRulesDestroyRequest>;
-
 export interface McpGatewayRulesDestroyResponse {}
-const McpGatewayRulesDestroyResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<McpGatewayRulesDestroyResponse>;
-
 export interface McpGatewayServersDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A UUID string identifying this mcp gateway server. */
   id: string;
 }
-const McpGatewayServersDestroyRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<McpGatewayServersDestroyRequest>;
-
 export interface McpGatewayServersDestroyResponse {}
-const McpGatewayServersDestroyResponse =
-  CreateMcpGatewayMembersSetAccessResponse as any as S.Schema<McpGatewayServersDestroyResponse>;
-
 export interface UpdateMcpGatewayRuleRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -931,11 +608,6 @@ export interface UpdateMcpGatewayRuleRequest {
   /** Disabled rules are kept but not evaluated. */
   enabled?: boolean;
 }
-const UpdateMcpGatewayRuleRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<UpdateMcpGatewayRuleRequest>;
-
 export interface UpdateMcpGatewayRulesPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -954,11 +626,6 @@ export interface UpdateMcpGatewayRulesPartialRequest {
   /** Disabled rules are kept but not evaluated. */
   enabled?: boolean;
 }
-const UpdateMcpGatewayRulesPartialRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<UpdateMcpGatewayRulesPartialRequest>;
-
 export interface UpdateMcpGatewayServerRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -973,11 +640,6 @@ export interface UpdateMcpGatewayServerRequest {
   /** Whether the team can see and call the server. Turning it off also blocks agent access. */
   is_team_enabled?: boolean;
 }
-const UpdateMcpGatewayServerRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<UpdateMcpGatewayServerRequest>;
-
 export interface MCPGatewayServerUpdate {
   /** Display name shown across the gateway. */
   name?: string;
@@ -988,11 +650,6 @@ export interface MCPGatewayServerUpdate {
   /** Whether the team can see and call the server. Turning it off also blocks agent access. */
   is_team_enabled?: boolean;
 }
-const MCPGatewayServerUpdate = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<MCPGatewayServerUpdate>;
-
 export interface UpdateMcpGatewayServersPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1007,11 +664,6 @@ export interface UpdateMcpGatewayServersPartialRequest {
   /** Whether the team can see and call the server. Turning it off also blocks agent access. */
   is_team_enabled?: boolean;
 }
-const UpdateMcpGatewayServersPartialRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<UpdateMcpGatewayServersPartialRequest>;
-
 export interface UpdateMcpGatewayServiceAccountRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1020,20 +672,10 @@ export interface UpdateMcpGatewayServiceAccountRequest {
   /** active, or paused (all MCP access off). * `active` - Active * `paused` - Paused */
   status?: MCPServiceAccountStatusEnum | (string & {});
 }
-const UpdateMcpGatewayServiceAccountRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<UpdateMcpGatewayServiceAccountRequest>;
-
 export interface MCPServiceAccountUpdate {
   /** active, or paused (all MCP access off). * `active` - Active * `paused` - Paused */
   status?: MCPServiceAccountStatusEnum;
 }
-const MCPServiceAccountUpdate = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<MCPServiceAccountUpdate>;
-
 export interface UpdateMcpGatewayServiceAccountsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -1042,11 +684,6 @@ export interface UpdateMcpGatewayServiceAccountsPartialRequest {
   /** active, or paused (all MCP access off). * `active` - Active * `paused` - Paused */
   status?: MCPServiceAccountStatusEnum | (string & {});
 }
-const UpdateMcpGatewayServiceAccountsPartialRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<UpdateMcpGatewayServiceAccountsPartialRequest>;
-
 export type CreateMcpGatewayConfigSetAllServersEnabledError = PosthogOpError;
 /** Enable or disable every MCP server for the team (admin-only): flips each registered server and the default for untouched catalog servers, so newly published templates follow the same posture. */
 export const createMcpGatewayConfigSetAllServersEnabled: API.OperationMethod<
@@ -1055,8 +692,8 @@ export const createMcpGatewayConfigSetAllServersEnabled: API.OperationMethod<
   CreateMcpGatewayConfigSetAllServersEnabledError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMcpGatewayConfigSetAllServersEnabledRequest,
-  output: TeamMCPGatewayConfig,
+  input: __S(0) as any as S.Schema<CreateMcpGatewayConfigSetAllServersEnabledRequest>,
+  output: __S(2) as any as S.Schema<TeamMCPGatewayConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1070,8 +707,8 @@ export const createMcpGatewayMembersSetAccess: API.OperationMethod<
   CreateMcpGatewayMembersSetAccessError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMcpGatewayMembersSetAccessRequest,
-  output: CreateMcpGatewayMembersSetAccessResponse,
+  input: __S(3) as any as S.Schema<CreateMcpGatewayMembersSetAccessRequest>,
+  output: __S(4) as any as S.Schema<CreateMcpGatewayMembersSetAccessResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1085,8 +722,8 @@ export const createMcpGatewayRule: API.OperationMethod<
   CreateMcpGatewayRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMcpGatewayRuleRequest,
-  output: MCPOrgRule,
+  input: __S(5) as any as S.Schema<CreateMcpGatewayRuleRequest>,
+  output: __S(6) as any as S.Schema<MCPOrgRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1100,8 +737,8 @@ export const createMcpGatewayServersPolicy: API.OperationMethod<
   CreateMcpGatewayServersPolicyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMcpGatewayServersPolicyRequest,
-  output: PaginatedResolvedToolPolicyList,
+  input: __S(9) as any as S.Schema<CreateMcpGatewayServersPolicyRequest>,
+  output: __S(13) as any as S.Schema<PaginatedResolvedToolPolicyList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1115,8 +752,8 @@ export const createMcpGatewayServersSetTemplateEnabled: API.OperationMethod<
   CreateMcpGatewayServersSetTemplateEnabledError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMcpGatewayServersSetTemplateEnabledRequest,
-  output: MCPGatewayServer,
+  input: __S(14) as any as S.Schema<CreateMcpGatewayServersSetTemplateEnabledRequest>,
+  output: __S(22) as any as S.Schema<MCPGatewayServer>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1130,8 +767,8 @@ export const createMcpGatewayServiceAccountsAccess: API.OperationMethod<
   CreateMcpGatewayServiceAccountsAccessError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMcpGatewayServiceAccountsAccessRequest,
-  output: MCPServiceAccount,
+  input: __S(23) as any as S.Schema<CreateMcpGatewayServiceAccountsAccessRequest>,
+  output: __S(26) as any as S.Schema<MCPServiceAccount>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1145,8 +782,8 @@ export const getMcpGatewayAudit: API.OperationMethod<
   GetMcpGatewayAuditError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMcpGatewayAuditRequest,
-  output: MCPAuditEvent,
+  input: __S(27) as any as S.Schema<GetMcpGatewayAuditRequest>,
+  output: __S(29) as any as S.Schema<MCPAuditEvent>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1160,8 +797,8 @@ export const getMcpGatewayAuditCount: API.OperationMethod<
   GetMcpGatewayAuditCountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMcpGatewayAuditCountRequest,
-  output: AuditCounts,
+  input: __S(30) as any as S.Schema<GetMcpGatewayAuditCountRequest>,
+  output: __S(31) as any as S.Schema<AuditCounts>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1175,8 +812,8 @@ export const getMcpGatewayMember: API.OperationMethod<
   GetMcpGatewayMemberError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMcpGatewayMemberRequest,
-  output: GatewayMemberSummary,
+  input: __S(32) as any as S.Schema<GetMcpGatewayMemberRequest>,
+  output: __S(33) as any as S.Schema<GatewayMemberSummary>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1190,8 +827,8 @@ export const getMcpGatewayRule: API.OperationMethod<
   GetMcpGatewayRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMcpGatewayRuleRequest,
-  output: MCPOrgRule,
+  input: __S(34) as any as S.Schema<GetMcpGatewayRuleRequest>,
+  output: __S(6) as any as S.Schema<MCPOrgRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1205,8 +842,8 @@ export const getMcpGatewayServer: API.OperationMethod<
   GetMcpGatewayServerError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMcpGatewayServerRequest,
-  output: MCPGatewayServer,
+  input: __S(35) as any as S.Schema<GetMcpGatewayServerRequest>,
+  output: __S(22) as any as S.Schema<MCPGatewayServer>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1220,8 +857,8 @@ export const getMcpGatewayServersTool: API.OperationMethod<
   GetMcpGatewayServersToolError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMcpGatewayServersToolRequest,
-  output: PaginatedResolvedToolPolicyList,
+  input: __S(36) as any as S.Schema<GetMcpGatewayServersToolRequest>,
+  output: __S(13) as any as S.Schema<PaginatedResolvedToolPolicyList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1235,8 +872,8 @@ export const getMcpGatewayServiceAccount: API.OperationMethod<
   GetMcpGatewayServiceAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMcpGatewayServiceAccountRequest,
-  output: MCPServiceAccount,
+  input: __S(37) as any as S.Schema<GetMcpGatewayServiceAccountRequest>,
+  output: __S(26) as any as S.Schema<MCPServiceAccount>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1250,8 +887,8 @@ export const listMcpGatewayAudit: API.OperationMethod<
   ListMcpGatewayAuditError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMcpGatewayAuditRequest,
-  output: PaginatedMCPAuditEventList,
+  input: __S(38) as any as S.Schema<ListMcpGatewayAuditRequest>,
+  output: __S(40) as any as S.Schema<PaginatedMCPAuditEventList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1265,8 +902,8 @@ export const listMcpGatewayConfig: API.OperationMethod<
   ListMcpGatewayConfigError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMcpGatewayConfigRequest,
-  output: TeamMCPGatewayConfig,
+  input: __S(41) as any as S.Schema<ListMcpGatewayConfigRequest>,
+  output: __S(2) as any as S.Schema<TeamMCPGatewayConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1280,8 +917,8 @@ export const listMcpGatewayMembers: API.OperationMethod<
   ListMcpGatewayMembersError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMcpGatewayMembersRequest,
-  output: PaginatedGatewayMemberSummaryList,
+  input: __S(42) as any as S.Schema<ListMcpGatewayMembersRequest>,
+  output: __S(44) as any as S.Schema<PaginatedGatewayMemberSummaryList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1295,8 +932,8 @@ export const listMcpGatewayRules: API.OperationMethod<
   ListMcpGatewayRulesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMcpGatewayRulesRequest,
-  output: PaginatedMCPOrgRuleList,
+  input: __S(45) as any as S.Schema<ListMcpGatewayRulesRequest>,
+  output: __S(47) as any as S.Schema<PaginatedMCPOrgRuleList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1310,8 +947,8 @@ export const listMcpGatewayServers: API.OperationMethod<
   ListMcpGatewayServersError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMcpGatewayServersRequest,
-  output: PaginatedMCPGatewayServerList,
+  input: __S(48) as any as S.Schema<ListMcpGatewayServersRequest>,
+  output: __S(50) as any as S.Schema<PaginatedMCPGatewayServerList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1325,8 +962,8 @@ export const listMcpGatewayServiceAccounts: API.OperationMethod<
   ListMcpGatewayServiceAccountsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMcpGatewayServiceAccountsRequest,
-  output: PaginatedMCPServiceAccountList,
+  input: __S(51) as any as S.Schema<ListMcpGatewayServiceAccountsRequest>,
+  output: __S(53) as any as S.Schema<PaginatedMCPServiceAccountList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1340,8 +977,8 @@ export const mcpGatewayConfigApplyPresetCreate: API.OperationMethod<
   McpGatewayConfigApplyPresetCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayConfigApplyPresetCreateRequest,
-  output: TeamMCPGatewayConfig,
+  input: __S(54) as any as S.Schema<McpGatewayConfigApplyPresetCreateRequest>,
+  output: __S(2) as any as S.Schema<TeamMCPGatewayConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1355,8 +992,8 @@ export const mcpGatewayConfigUpdateSettingsCreate: API.OperationMethod<
   McpGatewayConfigUpdateSettingsCreateError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayConfigUpdateSettingsCreateRequest,
-  output: TeamMCPGatewayConfig,
+  input: __S(55) as any as S.Schema<McpGatewayConfigUpdateSettingsCreateRequest>,
+  output: __S(2) as any as S.Schema<TeamMCPGatewayConfig>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1370,8 +1007,8 @@ export const mcpGatewayRulesDestroy: API.OperationMethod<
   McpGatewayRulesDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayRulesDestroyRequest,
-  output: McpGatewayRulesDestroyResponse,
+  input: __S(56) as any as S.Schema<McpGatewayRulesDestroyRequest>,
+  output: __S(57) as any as S.Schema<McpGatewayRulesDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1385,8 +1022,8 @@ export const mcpGatewayServersDestroy: API.OperationMethod<
   McpGatewayServersDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: McpGatewayServersDestroyRequest,
-  output: McpGatewayServersDestroyResponse,
+  input: __S(58) as any as S.Schema<McpGatewayServersDestroyRequest>,
+  output: __S(4) as any as S.Schema<McpGatewayServersDestroyResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1400,8 +1037,8 @@ export const updateMcpGatewayRule: API.OperationMethod<
   UpdateMcpGatewayRuleError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMcpGatewayRuleRequest,
-  output: MCPOrgRule,
+  input: __S(59) as any as S.Schema<UpdateMcpGatewayRuleRequest>,
+  output: __S(6) as any as S.Schema<MCPOrgRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1415,8 +1052,8 @@ export const updateMcpGatewayRulesPartial: API.OperationMethod<
   UpdateMcpGatewayRulesPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMcpGatewayRulesPartialRequest,
-  output: MCPOrgRule,
+  input: __S(60) as any as S.Schema<UpdateMcpGatewayRulesPartialRequest>,
+  output: __S(6) as any as S.Schema<MCPOrgRule>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1430,8 +1067,8 @@ export const updateMcpGatewayServer: API.OperationMethod<
   UpdateMcpGatewayServerError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMcpGatewayServerRequest,
-  output: MCPGatewayServerUpdate,
+  input: __S(61) as any as S.Schema<UpdateMcpGatewayServerRequest>,
+  output: __S(62) as any as S.Schema<MCPGatewayServerUpdate>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1445,8 +1082,8 @@ export const updateMcpGatewayServersPartial: API.OperationMethod<
   UpdateMcpGatewayServersPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMcpGatewayServersPartialRequest,
-  output: MCPGatewayServerUpdate,
+  input: __S(63) as any as S.Schema<UpdateMcpGatewayServersPartialRequest>,
+  output: __S(62) as any as S.Schema<MCPGatewayServerUpdate>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1460,8 +1097,8 @@ export const updateMcpGatewayServiceAccount: API.OperationMethod<
   UpdateMcpGatewayServiceAccountError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMcpGatewayServiceAccountRequest,
-  output: MCPServiceAccountUpdate,
+  input: __S(64) as any as S.Schema<UpdateMcpGatewayServiceAccountRequest>,
+  output: __S(65) as any as S.Schema<MCPServiceAccountUpdate>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1475,8 +1112,8 @@ export const updateMcpGatewayServiceAccountsPartial: API.OperationMethod<
   UpdateMcpGatewayServiceAccountsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMcpGatewayServiceAccountsPartialRequest,
-  output: MCPServiceAccountUpdate,
+  input: __S(66) as any as S.Schema<UpdateMcpGatewayServiceAccountsPartialRequest>,
+  output: __S(65) as any as S.Schema<MCPServiceAccountUpdate>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -1508,9 +1145,9 @@ function __c0(j: number): any {
           allow_custom_servers: S.optional(S.Boolean),
           allow_member_agent_access: S.optional(S.Boolean),
           default_servers_enabled: S.optional(S.Boolean),
-          member_default_preset: S.optional(TeamMCPGatewayConfigMemberDefaultPreset),
-          agent_default_preset: S.optional(TeamMCPGatewayConfigAgentDefaultPreset),
-          registered_template_ids: TeamMCPGatewayConfigRegisteredTemplateIdsList,
+          member_default_preset: S.optional(S.Unknown),
+          agent_default_preset: S.optional(S.Unknown),
+          registered_template_ids: __S(1),
           is_admin: S.Boolean,
         }),
       ).annotate({ identifier: "TeamMCPGatewayConfig" });
@@ -1541,8 +1178,8 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           name: S.String,
           description: S.optional(S.String),
-          applies_to: S.optional(AppliesToEnum),
-          effect: S.optional(EffectEnum),
+          applies_to: S.optional(S.String),
+          effect: S.optional(S.String),
           tool_pattern: S.optional(S.String),
           enabled: S.optional(S.Boolean),
         }).pipe(
@@ -1561,8 +1198,8 @@ function __c0(j: number): any {
           id: S.String,
           name: S.String,
           description: S.optional(S.String),
-          applies_to: S.optional(AppliesToEnum),
-          effect: S.optional(EffectEnum),
+          applies_to: S.optional(S.String),
+          effect: S.optional(S.String),
           tool_pattern: S.optional(S.String),
           enabled: S.optional(S.Boolean),
           created_at: S.String,
@@ -1573,7 +1210,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           tool_name: S.String,
-          policy_state: MCPToolApprovalStateEnum,
+          policy_state: S.String,
         }),
       ).annotate({ identifier: "ToolPolicyEntry" });
   }
@@ -1581,16 +1218,16 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ToolPolicyEntry);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          scope_type: S.optional(ScopeTypeEnum),
+          scope_type: S.optional(S.String),
           scope_user_id: S.optional(S.Number),
           scope_service_account_id: S.optional(S.String),
-          policies: CreateMcpGatewayServersPolicyRequestPoliciesList,
+          policies: __S(8),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1608,25 +1245,25 @@ function __c1(j: number): any {
         S.Struct({
           tool_name: S.String,
           description: S.String,
-          input_schema: ResolvedToolPolicyInputSchemaMap,
+          input_schema: __S(10),
           is_destructive: S.Boolean,
-          policy_state: MCPToolApprovalStateEnum,
-          team_state: S.NullOr(MCPToolApprovalStateEnum),
+          policy_state: S.String,
+          team_state: S.NullOr(S.String),
           locked: S.Boolean,
-          decided_by: DecidedByEnum,
+          decided_by: S.String,
           rule_name: S.String,
           rule_description: S.String,
         }),
       ).annotate({ identifier: "ResolvedToolPolicy" });
     case 4:
-      return S.Array(ResolvedToolPolicy);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedResolvedToolPolicyListResultsList,
+          results: __S(12),
         }),
       ).annotate({
         identifier: "PaginatedResolvedToolPolicyList",
@@ -1657,8 +1294,8 @@ function __c1(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(10))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
   }
@@ -1669,14 +1306,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           installation_id: S.String,
-          user: UserBasic,
+          user: __S(15),
           last_used_at: S.NullOr(S.String),
           pending_oauth: S.Boolean,
           needs_reauth: S.Boolean,
         }),
       ).annotate({ identifier: "GatewayConnection" });
     case 1:
-      return S.Array(GatewayConnection);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1691,17 +1328,17 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           service_account_id: S.String,
-          user: UserBasic,
-          scope: MCPAgentGrantScopeEnum,
+          user: __S(15),
+          scope: S.String,
           name: S.String,
           handle: S.String,
-          status: MCPServiceAccountStatusEnum,
+          status: S.String,
           last_active_at: S.NullOr(S.String),
-          granted_by: S.NullOr(UserBasic),
+          granted_by: S.NullOr(__S(15)),
         }),
       ).annotate({ identifier: "GatewayAgentAccess" });
     case 4:
-      return S.Array(GatewayAgentAccess);
+      return S.Array(__S(19));
     case 5:
       return S.Array(S.Number);
     case 6:
@@ -1711,21 +1348,21 @@ function __c2(j: number): any {
           name: S.String,
           url: S.String,
           description: S.String,
-          category: MCPServerCategoryEnum,
-          template_auth_type: S.NullOr(MCPAuthTypeEnum),
-          auth_type: S.NullOr(MCPAuthTypeEnum),
+          category: S.String,
+          template_auth_type: S.NullOr(S.String),
+          auth_type: S.NullOr(S.String),
           is_team_enabled: S.Boolean,
           icon_key: S.String,
           icon_domain: S.String,
           docs_url: S.String,
           template_id: S.NullOr(S.String),
           tool_count: S.Number,
-          connections: MCPGatewayServerConnectionsList,
-          your_connection: S.NullOr(GatewayYourConnection),
-          agents: MCPGatewayServerAgentsList,
-          revoked_user_ids: MCPGatewayServerRevokedUserIdsList,
+          connections: __S(17),
+          your_connection: S.NullOr(__S(18)),
+          agents: __S(20),
+          revoked_user_ids: __S(21),
           is_revoked_for_you: S.Boolean,
-          created_by: S.NullOr(UserBasic),
+          created_by: S.NullOr(__S(15)),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -1737,9 +1374,9 @@ function __c2(j: number): any {
           id: S.String.pipe(T.Label()),
           gateway_server_id: S.String,
           enabled: S.Boolean,
-          scope: S.optional(MCPAgentGrantScopeEnum),
+          scope: S.optional(S.String),
           all: S.optional(S.Boolean),
-          policies: S.optional(CreateMcpGatewayServiceAccountsAccessRequestPoliciesList),
+          policies: S.optional(__S(8)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1758,19 +1395,19 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          shared_by: UserBasic,
-          scope: MCPAgentGrantScopeEnum,
+          shared_by: __S(15),
+          scope: S.String,
           name: S.String,
           description: S.String,
           url: S.String,
           icon_key: S.String,
           icon_domain: S.String,
-          connection_state: ConnectionStateEnum,
+          connection_state: S.String,
           reachable: S.Boolean,
         }),
       ).annotate({ identifier: "MCPServiceAccountServer" });
     case 1:
-      return S.Array(MCPServiceAccountServer);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1778,10 +1415,10 @@ function __c3(j: number): any {
           name: S.String,
           description: S.String,
           handle: S.String,
-          agent_key: AgentKeyEnum,
-          status: MCPServiceAccountStatusEnum,
-          server_ids: MCPServiceAccountServerIdsList,
-          servers: MCPServiceAccountServersList,
+          agent_key: S.String,
+          status: S.String,
+          server_ids: __S(1),
+          servers: __S(25),
           last_active_at: S.NullOr(S.String),
           created_at: S.String,
           updated_at: S.String,
@@ -1817,12 +1454,12 @@ function __c3(j: number): any {
           created_at: S.String,
           server_name: S.String,
           tool_name: S.String,
-          decision: MCPAuditDecisionEnum,
-          actor_user: S.NullOr(UserBasic),
-          actor_service_account: S.NullOr(AuditActorServiceAccount),
+          decision: S.String,
+          actor_user: S.NullOr(__S(15)),
+          actor_service_account: S.NullOr(__S(28)),
           actor_label: S.String,
-          credential_owner: S.NullOr(UserBasic),
-          grant_scope: MCPAuditEventGrantScope,
+          credential_owner: S.NullOr(__S(15)),
+          grant_scope: S.Unknown,
         }),
       ).annotate({ identifier: "MCPAuditEvent" });
     case 6:
@@ -1871,10 +1508,10 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          user: UserBasic,
+          user: __S(15),
           is_org_admin: S.Boolean,
-          connected_server_ids: GatewayMemberSummaryConnectedServerIdsList,
-          revoked_server_ids: GatewayMemberSummaryRevokedServerIdsList,
+          connected_server_ids: __S(1),
+          revoked_server_ids: __S(1),
         }),
       ).annotate({ identifier: "GatewayMemberSummary" });
     case 2:
@@ -1911,7 +1548,7 @@ function __c4(j: number): any {
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
           scope_service_account_id: S.optional(S.String.pipe(T.Query())),
-          scope_type: S.optional(GetMcpGatewayServersToolRequestScopeType.pipe(T.Query())),
+          scope_type: S.optional(S.String.pipe(T.Query())),
           scope_user_id: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -1945,7 +1582,7 @@ function __c4(j: number): any {
           actor_service_account_id: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
-          quick_filter: S.optional(ListMcpGatewayAuditRequestQuickFilter.pipe(T.Query())),
+          quick_filter: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1957,7 +1594,7 @@ function __c4(j: number): any {
         identifier: "ListMcpGatewayAuditRequest",
       });
     case 7:
-      return S.Array(MCPAuditEvent);
+      return S.Array(__S(29));
   }
 }
 function __c5(j: number): any {
@@ -1968,7 +1605,7 @@ function __c5(j: number): any {
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedMCPAuditEventListResultsList,
+          results: __S(39),
         }),
       ).annotate({
         identifier: "PaginatedMCPAuditEventList",
@@ -2004,14 +1641,14 @@ function __c5(j: number): any {
         identifier: "ListMcpGatewayMembersRequest",
       });
     case 3:
-      return S.Array(GatewayMemberSummary);
+      return S.Array(__S(33));
     case 4:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedGatewayMemberSummaryListResultsList,
+          results: __S(43),
         }),
       ).annotate({
         identifier: "PaginatedGatewayMemberSummaryList",
@@ -2033,14 +1670,14 @@ function __c5(j: number): any {
         identifier: "ListMcpGatewayRulesRequest",
       });
     case 6:
-      return S.Array(MCPOrgRule);
+      return S.Array(__S(6));
     case 7:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedMCPOrgRuleListResultsList,
+          results: __S(46),
         }),
       ).annotate({ identifier: "PaginatedMCPOrgRuleList" });
   }
@@ -2064,14 +1701,14 @@ function __c6(j: number): any {
         identifier: "ListMcpGatewayServersRequest",
       });
     case 1:
-      return S.Array(MCPGatewayServer);
+      return S.Array(__S(22));
     case 2:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedMCPGatewayServerListResultsList,
+          results: __S(49),
         }),
       ).annotate({
         identifier: "PaginatedMCPGatewayServerList",
@@ -2093,14 +1730,14 @@ function __c6(j: number): any {
         identifier: "ListMcpGatewayServiceAccountsRequest",
       });
     case 4:
-      return S.Array(MCPServiceAccount);
+      return S.Array(__S(26));
     case 5:
       return S.suspend(() =>
         S.Struct({
           count: S.Number,
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: PaginatedMCPServiceAccountListResultsList,
+          results: __S(52),
         }),
       ).annotate({
         identifier: "PaginatedMCPServiceAccountList",
@@ -2109,8 +1746,8 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          audience: AudienceEnum,
-          preset: MCPPolicyPresetEnum,
+          audience: S.String,
+          preset: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -2128,12 +1765,8 @@ function __c6(j: number): any {
           allow_custom_servers: S.optional(S.Boolean),
           allow_member_agent_access: S.optional(S.Boolean),
           default_servers_enabled: S.optional(S.Boolean),
-          member_default_preset: S.optional(
-            McpGatewayConfigUpdateSettingsCreateRequestMemberDefaultPreset,
-          ),
-          agent_default_preset: S.optional(
-            McpGatewayConfigUpdateSettingsCreateRequestAgentDefaultPreset,
-          ),
+          member_default_preset: S.optional(S.Unknown),
+          agent_default_preset: S.optional(S.Unknown),
         }).pipe(
           T.Http({
             method: "POST",
@@ -2189,8 +1822,8 @@ function __c7(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.String,
           description: S.optional(S.String),
-          applies_to: S.optional(AppliesToEnum),
-          effect: S.optional(EffectEnum),
+          applies_to: S.optional(S.String),
+          effect: S.optional(S.String),
           tool_pattern: S.optional(S.String),
           enabled: S.optional(S.Boolean),
         }).pipe(
@@ -2210,8 +1843,8 @@ function __c7(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          applies_to: S.optional(AppliesToEnum),
-          effect: S.optional(EffectEnum),
+          applies_to: S.optional(S.String),
+          effect: S.optional(S.String),
           tool_pattern: S.optional(S.String),
           enabled: S.optional(S.Boolean),
         }).pipe(
@@ -2231,7 +1864,7 @@ function __c7(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          category: S.optional(MCPServerCategoryEnum),
+          category: S.optional(S.String),
           is_team_enabled: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -2248,7 +1881,7 @@ function __c7(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           description: S.optional(S.String),
-          category: S.optional(MCPServerCategoryEnum),
+          category: S.optional(S.String),
           is_team_enabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "MCPGatewayServerUpdate" });
@@ -2259,7 +1892,7 @@ function __c7(j: number): any {
           id: S.String.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.String),
-          category: S.optional(MCPServerCategoryEnum),
+          category: S.optional(S.String),
           is_team_enabled: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -2280,7 +1913,7 @@ function __c8(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          status: S.optional(MCPServiceAccountStatusEnum),
+          status: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -2294,7 +1927,7 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(MCPServiceAccountStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "MCPServiceAccountUpdate" });
     case 2:
@@ -2302,7 +1935,7 @@ function __c8(j: number): any {
         S.Struct({
           project_id: S.String.pipe(T.Label()),
           id: S.String.pipe(T.Label()),
-          status: S.optional(MCPServiceAccountStatusEnum),
+          status: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -2313,5 +1946,32 @@ function __c8(j: number): any {
       ).annotate({
         identifier: "UpdateMcpGatewayServiceAccountsPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
   }
 }

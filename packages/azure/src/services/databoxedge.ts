@@ -7,13 +7,13 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Addon type. */
 export type AddonType = "IotEdge" | "ArcForKubernetes";
-const AddonType = S.String;
-
 export interface AddonsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -28,19 +28,10 @@ export interface AddonsCreateOrUpdateRequest {
   /** Addon type. */
   kind: AddonType | (string & {});
 }
-const AddonsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AddonsCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -56,8 +47,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<SystemData>;
-
 export interface AddonsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -70,11 +59,6 @@ export interface AddonsCreateOrUpdateResponse {
   /** Addon type. */
   kind: AddonType;
 }
-const AddonsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AddonsCreateOrUpdateResponse>;
-
 export type DayOfWeek =
   | "Sunday"
   | "Monday"
@@ -83,15 +67,8 @@ export type DayOfWeek =
   | "Thursday"
   | "Friday"
   | "Saturday";
-const DayOfWeek = S.String;
-
 /** The days of the week when this schedule is applicable. */
 export type BandwidthSchedulePropertiesDaysList = Array<DayOfWeek | (string & {})>;
-const BandwidthSchedulePropertiesDaysList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<BandwidthSchedulePropertiesDaysList>;
-
 /** The properties of the bandwidth schedule. */
 export interface BandwidthScheduleProperties {
   /** The start time of the schedule in UTC. */
@@ -103,11 +80,6 @@ export interface BandwidthScheduleProperties {
   /** The days of the week when this schedule is applicable. */
   days: BandwidthSchedulePropertiesDaysList;
 }
-const BandwidthScheduleProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<BandwidthScheduleProperties>;
-
 export interface BandwidthSchedulesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -120,11 +92,6 @@ export interface BandwidthSchedulesCreateOrUpdateRequest {
   /** The properties of the bandwidth schedule. */
   properties: BandwidthScheduleProperties;
 }
-const BandwidthSchedulesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<BandwidthSchedulesCreateOrUpdateRequest>;
-
 export interface BandwidthSchedulesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -137,30 +104,12 @@ export interface BandwidthSchedulesCreateOrUpdateResponse {
   /** The properties of the bandwidth schedule. */
   properties: BandwidthScheduleProperties;
 }
-const BandwidthSchedulesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<BandwidthSchedulesCreateOrUpdateResponse>;
-
 export type DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList = Array<string>;
-const DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList>;
-
 /** Array containing the sizes of the VMs for checking if its feasible to create them on the appliance. */
 export type DeviceCapacityRequestInfoPropertiesVmPlacementQueryList =
   Array<DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList>;
-const DeviceCapacityRequestInfoPropertiesVmPlacementQueryList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeviceCapacityRequestInfoPropertiesVmPlacementQueryList>;
-
 /** List of VM sizes being checked. */
 export type VmPlacementRequestResultVmSizeList = Array<string>;
-const VmPlacementRequestResultVmSizeList =
-  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<VmPlacementRequestResultVmSizeList>;
-
 /** List of VM sizes being checked for creation on appliance along with corresponding result. */
 export interface VmPlacementRequestResult {
   /** List of VM sizes being checked. */
@@ -172,19 +121,9 @@ export interface VmPlacementRequestResult {
   /** Localized message to be displayed to the user to explain the check result. */
   message?: string;
 }
-const VmPlacementRequestResult = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<VmPlacementRequestResult>;
-
 /** Array of the VMs of the sizes in VmSizes can be provisioned on the appliance. */
 export type DeviceCapacityRequestInfoPropertiesVmPlacementResultsList =
   Array<VmPlacementRequestResult>;
-const DeviceCapacityRequestInfoPropertiesVmPlacementResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<DeviceCapacityRequestInfoPropertiesVmPlacementResultsList>;
-
 /** Properties of Device Capacity Request Info containing VM's to be checked and their corresponding results. */
 export interface DeviceCapacityRequestInfoProperties {
   /** Array containing the sizes of the VMs for checking if its feasible to create them on the appliance. */
@@ -192,11 +131,6 @@ export interface DeviceCapacityRequestInfoProperties {
   /** Array of the VMs of the sizes in VmSizes can be provisioned on the appliance. */
   vmPlacementResults?: DeviceCapacityRequestInfoPropertiesVmPlacementResultsList;
 }
-const DeviceCapacityRequestInfoProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<DeviceCapacityRequestInfoProperties>;
-
 export interface CheckDeviceCapacityCheckResourceCreationFeasibilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -209,31 +143,14 @@ export interface CheckDeviceCapacityCheckResourceCreationFeasibilityRequest {
   /** The properties of the Device Capacity Request. */
   properties: DeviceCapacityRequestInfoProperties;
 }
-const CheckDeviceCapacityCheckResourceCreationFeasibilityRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CheckDeviceCapacityCheckResourceCreationFeasibilityRequest>;
-
 export interface CheckDeviceCapacityCheckResourceCreationFeasibilityResponse {}
-const CheckDeviceCapacityCheckResourceCreationFeasibilityResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CheckDeviceCapacityCheckResourceCreationFeasibilityResponse>;
-
 /** Storage format used for the file represented by the share. */
 export type AzureContainerDataFormat = "BlockBlob" | "PageBlob" | "AzureFile";
-const AzureContainerDataFormat = S.String;
-
 /** The container properties. */
 export interface ContainerPropertiesInput {
   /** DataFormat for Container */
   dataFormat: AzureContainerDataFormat | (string & {});
 }
-const ContainerPropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ContainerPropertiesInput>;
-
 export interface ContainersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -248,15 +165,8 @@ export interface ContainersCreateOrUpdateRequest {
   /** The container properties. */
   properties: ContainerPropertiesInput;
 }
-const ContainersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ContainersCreateOrUpdateRequest>;
-
 /** Current status of the container. */
 export type ContainerStatus = "OK" | "Offline" | "Unknown" | "Updating" | "NeedsAttention";
-const ContainerStatus = S.String;
-
 /** Fields for tracking refresh job on the share or container. */
 export interface RefreshDetails {
   /** If a refresh job is currently in progress on this share or container, this field indicates the ARM resource ID of that job. The field is empty if no job is in progress. */
@@ -268,8 +178,6 @@ export interface RefreshDetails {
   /** Indicates the id of the last refresh job on this particular share or container,if any. This could be a failed job or a successful job. */
   lastJob?: string;
 }
-const RefreshDetails = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<RefreshDetails>;
-
 /** The container properties. */
 export interface ContainerProperties {
   /** Current status of the container. */
@@ -281,8 +189,6 @@ export interface ContainerProperties {
   /** The UTC time when container got created. */
   createdDateTime?: string;
 }
-const ContainerProperties = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ContainerProperties>;
-
 export interface ContainersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -295,11 +201,6 @@ export interface ContainersCreateOrUpdateResponse {
   /** The container properties. */
   properties: ContainerProperties;
 }
-const ContainersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ContainersCreateOrUpdateResponse>;
-
 export interface DeleteAddonRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -312,11 +213,7 @@ export interface DeleteAddonRequest {
   /** The name of the addon. */
   addonName: string;
 }
-const DeleteAddonRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<DeleteAddonRequest>;
-
 export interface DeleteAddonResponse {}
-const DeleteAddonResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<DeleteAddonResponse>;
-
 export interface DeleteBandwidthScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -327,17 +224,7 @@ export interface DeleteBandwidthScheduleRequest {
   /** The bandwidth schedule name. */
   name: string;
 }
-const DeleteBandwidthScheduleRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteBandwidthScheduleRequest>;
-
 export interface DeleteBandwidthScheduleResponse {}
-const DeleteBandwidthScheduleResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteBandwidthScheduleResponse>;
-
 export interface DeleteContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -350,14 +237,7 @@ export interface DeleteContainerRequest {
   /** The container Name */
   containerName: string;
 }
-const DeleteContainerRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DeleteContainerRequest>;
-
 export interface DeleteContainerResponse {}
-const DeleteContainerResponse = DeleteAddonResponse as any as S.Schema<DeleteContainerResponse>;
-
 export interface DeleteDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -366,11 +246,7 @@ export interface DeleteDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-const DeleteDeviceRequest = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<DeleteDeviceRequest>;
-
 export interface DeleteDeviceResponse {}
-const DeleteDeviceResponse = DeleteAddonResponse as any as S.Schema<DeleteDeviceResponse>;
-
 export interface DeleteMonitoringConfigRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -381,15 +257,7 @@ export interface DeleteMonitoringConfigRequest {
   /** The name of the role. */
   roleName: string;
 }
-const DeleteMonitoringConfigRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteMonitoringConfigRequest>;
-
 export interface DeleteMonitoringConfigResponse {}
-const DeleteMonitoringConfigResponse =
-  DeleteAddonResponse as any as S.Schema<DeleteMonitoringConfigResponse>;
-
 export interface DeleteOrderRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -398,11 +266,7 @@ export interface DeleteOrderRequest {
   /** The device name. */
   deviceName: string;
 }
-const DeleteOrderRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DeleteOrderRequest>;
-
 export interface DeleteOrderResponse {}
-const DeleteOrderResponse = DeleteAddonResponse as any as S.Schema<DeleteOrderResponse>;
-
 export interface DeleteRoleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -413,11 +277,7 @@ export interface DeleteRoleRequest {
   /** The role name. */
   name: string;
 }
-const DeleteRoleRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DeleteRoleRequest>;
-
 export interface DeleteRoleResponse {}
-const DeleteRoleResponse = DeleteAddonResponse as any as S.Schema<DeleteRoleResponse>;
-
 export interface DeleteShareRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -428,11 +288,7 @@ export interface DeleteShareRequest {
   /** The share name. */
   name: string;
 }
-const DeleteShareRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DeleteShareRequest>;
-
 export interface DeleteShareResponse {}
-const DeleteShareResponse = DeleteAddonResponse as any as S.Schema<DeleteShareResponse>;
-
 export interface DeleteStorageAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -443,15 +299,7 @@ export interface DeleteStorageAccountRequest {
   /** The storage account name. */
   storageAccountName: string;
 }
-const DeleteStorageAccountRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeleteStorageAccountRequest>;
-
 export interface DeleteStorageAccountResponse {}
-const DeleteStorageAccountResponse =
-  DeleteAddonResponse as any as S.Schema<DeleteStorageAccountResponse>;
-
 export interface DeleteStorageAccountCredentialsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -462,17 +310,7 @@ export interface DeleteStorageAccountCredentialsRequest {
   /** The storage account credential name. */
   name: string;
 }
-const DeleteStorageAccountCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeleteStorageAccountCredentialsRequest>;
-
 export interface DeleteStorageAccountCredentialsResponse {}
-const DeleteStorageAccountCredentialsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DeleteStorageAccountCredentialsResponse>;
-
 export interface DeleteTriggerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -483,11 +321,7 @@ export interface DeleteTriggerRequest {
   /** The trigger name. */
   name: string;
 }
-const DeleteTriggerRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<DeleteTriggerRequest>;
-
 export interface DeleteTriggerResponse {}
-const DeleteTriggerResponse = DeleteAddonResponse as any as S.Schema<DeleteTriggerResponse>;
-
 export interface DeleteUserRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -498,39 +332,21 @@ export interface DeleteUserRequest {
   /** The user name. */
   name: string;
 }
-const DeleteUserRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DeleteUserRequest>;
-
 export interface DeleteUserResponse {}
-const DeleteUserResponse = DeleteAddonResponse as any as S.Schema<DeleteUserResponse>;
-
 /** Resource tags. */
 export type DevicesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const DevicesCreateOrUpdateRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DevicesCreateOrUpdateRequestTagsMap>;
-
 /** DataResidencyType enum */
 export type DataResidencyType = "GeoZoneReplication" | "ZoneReplication";
-const DataResidencyType = S.String;
-
 /** Wraps data-residency related information for edge-resource and this should be used with ARM layer. */
 export interface DataResidency {
   /** DataResidencyType enum */
   type?: DataResidencyType | (string & {});
 }
-const DataResidency = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<DataResidency>;
-
 /** The properties of the Data Box Edge/Gateway device. */
 export interface DataBoxEdgeDevicePropertiesInput {
   /** The details of data-residency related properties for this resource */
   dataResidency?: DataResidency;
 }
-const DataBoxEdgeDevicePropertiesInput = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DataBoxEdgeDevicePropertiesInput>;
-
 /** The Sku name. */
 export type SkuName =
   | "Gateway"
@@ -562,12 +378,8 @@ export type SkuName =
   | "EP2_128_GPU1_Mx1_W"
   | "EP2_256_GPU2_Mx1"
   | "EdgeMR_TCP";
-const SkuName = S.String;
-
 /** The Sku tier. */
 export type SkuTier = "Standard";
-const SkuTier = S.String;
-
 /** The SKU type. */
 export interface Sku {
   /** SKU name. */
@@ -575,19 +387,13 @@ export interface Sku {
   /** The SKU tier. This is based on the SKU name. */
   tier?: SkuTier | (string & {});
 }
-const Sku = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<Sku>;
-
 /** Identity type */
 export type MsiIdentityType = "None" | "SystemAssigned" | "UserAssigned";
-const MsiIdentityType = S.String;
-
 /** Msi identity details of the resource */
 export interface ResourceIdentityInput {
   /** Identity type */
   type?: MsiIdentityType | (string & {});
 }
-const ResourceIdentityInput = DataResidency as any as S.Schema<ResourceIdentityInput>;
-
 export interface DevicesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -608,32 +414,20 @@ export interface DevicesCreateOrUpdateRequest {
   /** Msi identity of the resource */
   identity?: ResourceIdentityInput;
 }
-const DevicesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DevicesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type DevicesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const DevicesCreateOrUpdateResponseTagsMap =
-  DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<DevicesCreateOrUpdateResponseTagsMap>;
-
 /** The type of identity that created the resource. */
 export type DataBoxEdgeDevicePropertiesSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const DataBoxEdgeDevicePropertiesSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type DataBoxEdgeDevicePropertiesSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const DataBoxEdgeDevicePropertiesSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface DataBoxEdgeDevicePropertiesSystemData {
   /** The identity that created the resource. */
@@ -649,11 +443,6 @@ export interface DataBoxEdgeDevicePropertiesSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const DataBoxEdgeDevicePropertiesSystemData = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DataBoxEdgeDevicePropertiesSystemData>;
-
 /** The status of the Data Box Edge/Gateway device. */
 export type DataBoxEdgeDeviceStatus =
   | "ReadyToSetup"
@@ -663,12 +452,8 @@ export type DataBoxEdgeDeviceStatus =
   | "Disconnected"
   | "PartiallyDisconnected"
   | "Maintenance";
-const DataBoxEdgeDeviceStatus = S.String;
-
 /** The type of the Data Box Edge/Gateway device. */
 export type DeviceType = "DataBoxEdgeDevice";
-const DeviceType = S.String;
-
 export type RoleTypes =
   | "IOT"
   | "ASA"
@@ -677,17 +462,10 @@ export type RoleTypes =
   | "MEC"
   | "CloudEdgeManagement"
   | "Kubernetes";
-const RoleTypes = S.String;
-
 /** Type of compute roles configured. */
 export type DataBoxEdgeDevicePropertiesConfiguredRoleTypesList = Array<RoleTypes>;
-const DataBoxEdgeDevicePropertiesConfiguredRoleTypesList =
-  BandwidthSchedulePropertiesDaysList as any as S.Schema<DataBoxEdgeDevicePropertiesConfiguredRoleTypesList>;
-
 /** Denotes whether move operation is in progress */
 export type ResourceMoveStatus = "None" | "ResourceMoveInProgress" | "ResourceMoveFailed";
-const ResourceMoveStatus = S.String;
-
 /** Fields for tracking resource move */
 export interface ResourceMoveDetails {
   /** Denotes whether move operation is in progress */
@@ -695,26 +473,12 @@ export interface ResourceMoveDetails {
   /** Denotes the timeout of the operation to finish */
   operationInProgressLockTimeoutInUTC?: string;
 }
-const ResourceMoveDetails = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ResourceMoveDetails>;
-
 export type SubscriptionState = "Registered" | "Warned" | "Suspended" | "Deleted" | "Unregistered";
-const SubscriptionState = S.String;
-
 export interface SubscriptionRegisteredFeatures {
   name?: string;
   state?: string;
 }
-const SubscriptionRegisteredFeatures = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<SubscriptionRegisteredFeatures>;
-
 export type SubscriptionPropertiesRegisteredFeaturesList = Array<SubscriptionRegisteredFeatures>;
-const SubscriptionPropertiesRegisteredFeaturesList = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<SubscriptionPropertiesRegisteredFeaturesList>;
-
 export interface SubscriptionProperties {
   tenantId?: string;
   locationPlacementId?: string;
@@ -722,11 +486,6 @@ export interface SubscriptionProperties {
   serializedDetails?: string;
   registeredFeatures?: SubscriptionPropertiesRegisteredFeaturesList;
 }
-const SubscriptionProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<SubscriptionProperties>;
-
 /** Subscription details for the Edge Profile */
 export interface EdgeProfileSubscription {
   /** Edge Subscription Registration ID */
@@ -738,18 +497,11 @@ export interface EdgeProfileSubscription {
   subscriptionId?: string;
   properties?: SubscriptionProperties;
 }
-const EdgeProfileSubscription = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<EdgeProfileSubscription>;
-
 /** Details about Edge Profile for the resource */
 export interface EdgeProfile {
   /** Edge Profile Subscription */
   subscription?: EdgeProfileSubscription;
 }
-const EdgeProfile = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<EdgeProfile>;
-
 /** The properties of the Data Box Edge/Gateway device. */
 export interface DataBoxEdgeDeviceProperties {
   /** Metadata pertaining to creation and last modification of the resource. */
@@ -791,11 +543,6 @@ export interface DataBoxEdgeDeviceProperties {
   /** Kubernetes Workload Profile */
   kubernetesWorkloadProfile?: string;
 }
-const DataBoxEdgeDeviceProperties = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<DataBoxEdgeDeviceProperties>;
-
 /** Msi identity details of the resource */
 export interface ResourceIdentity {
   /** Identity type */
@@ -805,16 +552,12 @@ export interface ResourceIdentity {
   /** Home Tenant Id */
   tenantId?: string;
 }
-const ResourceIdentity = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<ResourceIdentity>;
-
 /** The kind of the device. */
 export type DataBoxEdgeDeviceKind =
   | "AzureDataBoxGateway"
   | "AzureStackEdge"
   | "AzureStackHub"
   | "AzureModularDataCentre";
-const DataBoxEdgeDeviceKind = S.String;
-
 export interface DevicesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -839,15 +582,8 @@ export interface DevicesCreateOrUpdateResponse {
   /** The kind of the device. */
   kind?: DataBoxEdgeDeviceKind;
 }
-const DevicesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<DevicesCreateOrUpdateResponse>;
-
 /** The algorithm used to encrypt "Value". */
 export type EncryptionAlgorithm = "None" | "AES256" | "RSAES_PKCS1_v_1_5";
-const EncryptionAlgorithm = S.String;
-
 /** Represent the secrets intended for encryption with asymmetric key pair. */
 export interface AsymmetricEncryptedSecret {
   /** The value of the secret. */
@@ -857,21 +593,11 @@ export interface AsymmetricEncryptedSecret {
   /** The algorithm used to encrypt "Value". */
   encryptionAlgorithm: EncryptionAlgorithm | (string & {});
 }
-const AsymmetricEncryptedSecret = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<AsymmetricEncryptedSecret>;
-
 /** The properties of security settings. */
 export interface SecuritySettingsProperties {
   /** Device administrator password as an encrypted string (encrypted using RSA PKCS #1) is used to sign into the local web UI of the device. The Actual password should have at least 8 characters that are a combination of uppercase, lowercase, numeric, and special characters. */
   deviceAdminPassword: AsymmetricEncryptedSecret;
 }
-const SecuritySettingsProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<SecuritySettingsProperties>;
-
 export interface DevicesCreateOrUpdateSecuritySettingsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -882,15 +608,7 @@ export interface DevicesCreateOrUpdateSecuritySettingsRequest {
   /** Properties of the security settings. */
   properties: SecuritySettingsProperties;
 }
-const DevicesCreateOrUpdateSecuritySettingsRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DevicesCreateOrUpdateSecuritySettingsRequest>;
-
 export interface DevicesCreateOrUpdateSecuritySettingsResponse {}
-const DevicesCreateOrUpdateSecuritySettingsResponse =
-  DeleteStorageAccountCredentialsResponse as any as S.Schema<DevicesCreateOrUpdateSecuritySettingsResponse>;
-
 export interface DevicesGetUpdateSummaryRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -899,11 +617,6 @@ export interface DevicesGetUpdateSummaryRequest {
   /** The device name. */
   deviceName: string;
 }
-const DevicesGetUpdateSummaryRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DevicesGetUpdateSummaryRequest>;
-
 /** The current status of the job. */
 export type JobStatus =
   | "Invalid"
@@ -913,29 +626,16 @@ export type JobStatus =
   | "Canceled"
   | "Paused"
   | "Scheduled";
-const JobStatus = S.String;
-
 /** Indicates if updates are available and at least one of the updates needs a reboot. */
 export type InstallRebootBehavior = "NeverReboots" | "RequiresReboot" | "RequestReboot";
-const InstallRebootBehavior = S.String;
-
 /** The current update operation. */
 export type UpdateOperation = "None" | "Scan" | "Download" | "Install";
-const UpdateOperation = S.String;
-
 /** The list of updates available for install. */
 export type UpdateSummaryPropertiesUpdateTitlesList = Array<string>;
-const UpdateSummaryPropertiesUpdateTitlesList =
-  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<UpdateSummaryPropertiesUpdateTitlesList>;
-
 /** Type of the Update */
 export type UpdateType = "Software" | "Kubernetes" | "Firmware";
-const UpdateType = S.String;
-
 /** Impact of Installing an updateType */
 export type InstallationImpact = "None" | "DeviceRebooted" | "KubernetesWorkloadsDown";
-const InstallationImpact = S.String;
-
 /** Status of the update. */
 export type UpdateStatus =
   | "DownloadPending"
@@ -943,8 +643,6 @@ export type UpdateStatus =
   | "DownloadCompleted"
   | "InstallStarted"
   | "InstallCompleted";
-const UpdateStatus = S.String;
-
 /** Update Specific attributes */
 export interface UpdateDetails {
   /** Title of the Update */
@@ -966,15 +664,8 @@ export interface UpdateDetails {
   /** Status of the update. */
   status?: UpdateStatus;
 }
-const UpdateDetails = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<UpdateDetails>;
-
 /** The list of updates available for install. */
 export type UpdateSummaryPropertiesUpdatesList = Array<UpdateDetails>;
-const UpdateSummaryPropertiesUpdatesList = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<UpdateSummaryPropertiesUpdatesList>;
-
 /** The device update information summary. */
 export interface UpdateSummaryProperties {
   /** The current version of the device in format: 1.2.17312.13.", */
@@ -1028,11 +719,6 @@ export interface UpdateSummaryProperties {
   /** The total time in Minutes */
   totalTimeInMinutes?: number;
 }
-const UpdateSummaryProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<UpdateSummaryProperties>;
-
 export interface DevicesGetUpdateSummaryResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1045,11 +731,6 @@ export interface DevicesGetUpdateSummaryResponse {
   /** The device update information summary. */
   properties?: UpdateSummaryProperties;
 }
-const DevicesGetUpdateSummaryResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<DevicesGetUpdateSummaryResponse>;
-
 export interface DevicesScanForUpdatesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1058,15 +739,7 @@ export interface DevicesScanForUpdatesRequest {
   /** The device name. */
   deviceName: string;
 }
-const DevicesScanForUpdatesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<DevicesScanForUpdatesRequest>;
-
 export interface DevicesScanForUpdatesResponse {}
-const DevicesScanForUpdatesResponse =
-  DeleteAddonResponse as any as S.Schema<DevicesScanForUpdatesResponse>;
-
 export interface DownloadDeviceUpdatesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1075,15 +748,7 @@ export interface DownloadDeviceUpdatesRequest {
   /** The device name. */
   deviceName: string;
 }
-const DownloadDeviceUpdatesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DownloadDeviceUpdatesRequest>;
-
 export interface DownloadDeviceUpdatesResponse {}
-const DownloadDeviceUpdatesResponse =
-  DeleteAddonResponse as any as S.Schema<DownloadDeviceUpdatesResponse>;
-
 export interface GenerateDeviceCertificateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1092,11 +757,6 @@ export interface GenerateDeviceCertificateRequest {
   /** The device name. */
   deviceName: string;
 }
-const GenerateDeviceCertificateRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<GenerateDeviceCertificateRequest>;
-
 /** Used in activation key generation flow. */
 export interface GenerateCertResponse {
   /** Gets or sets base64 encoded certificate raw data, this is the public part needed to be uploaded to cert vault */
@@ -1106,8 +766,6 @@ export interface GenerateCertResponse {
   /** Gets or sets expiry time in UTC */
   expiryTimeInUTC?: string;
 }
-const GenerateCertResponse = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<GenerateCertResponse>;
-
 export interface GetAddonRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1120,8 +778,6 @@ export interface GetAddonRequest {
   /** The name of the addon. */
   addonName: string;
 }
-const GetAddonRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<GetAddonRequest>;
-
 export interface GetAddonResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1134,8 +790,6 @@ export interface GetAddonResponse {
   /** Addon type. */
   kind: AddonType;
 }
-const GetAddonResponse = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<GetAddonResponse>;
-
 export interface GetAlertRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1146,12 +800,8 @@ export interface GetAlertRequest {
   /** The alert name. */
   name: string;
 }
-const GetAlertRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<GetAlertRequest>;
-
 /** Severity of the alert. */
 export type AlertSeverity = "Informational" | "Warning" | "Critical";
-const AlertSeverity = S.String;
-
 /** Error details for the alert. */
 export interface AlertErrorDetails {
   /** Error code. */
@@ -1161,13 +811,8 @@ export interface AlertErrorDetails {
   /** Number of occurrences. */
   occurrences?: number;
 }
-const AlertErrorDetails = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<AlertErrorDetails>;
-
 /** Alert details. */
 export type AlertPropertiesDetailedInformationMap = { [key: string]: string | undefined };
-const AlertPropertiesDetailedInformationMap =
-  DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<AlertPropertiesDetailedInformationMap>;
-
 /** Properties of alert. */
 export interface AlertProperties {
   /** Alert title. */
@@ -1185,8 +830,6 @@ export interface AlertProperties {
   /** Alert details. */
   detailedInformation?: AlertPropertiesDetailedInformationMap;
 }
-const AlertProperties = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<AlertProperties>;
-
 export interface GetAlertResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1199,8 +842,6 @@ export interface GetAlertResponse {
   /** Properties of alert. */
   properties?: AlertProperties;
 }
-const GetAlertResponse = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GetAlertResponse>;
-
 export interface GetBandwidthScheduleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1211,11 +852,6 @@ export interface GetBandwidthScheduleRequest {
   /** The bandwidth schedule name. */
   name: string;
 }
-const GetBandwidthScheduleRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<GetBandwidthScheduleRequest>;
-
 export interface GetBandwidthScheduleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1228,9 +864,6 @@ export interface GetBandwidthScheduleResponse {
   /** The properties of the bandwidth schedule. */
   properties: BandwidthScheduleProperties;
 }
-const GetBandwidthScheduleResponse =
-  BandwidthSchedulesCreateOrUpdateResponse as any as S.Schema<GetBandwidthScheduleResponse>;
-
 export interface GetContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1243,8 +876,6 @@ export interface GetContainerRequest {
   /** The container Name */
   containerName: string;
 }
-const GetContainerRequest = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<GetContainerRequest>;
-
 export interface GetContainerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1257,8 +888,6 @@ export interface GetContainerResponse {
   /** The container properties. */
   properties: ContainerProperties;
 }
-const GetContainerResponse = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<GetContainerResponse>;
-
 export interface GetDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1267,13 +896,8 @@ export interface GetDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-const GetDeviceRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<GetDeviceRequest>;
-
 /** Resource tags. */
 export type GetDeviceResponseTagsMap = { [key: string]: string | undefined };
-const GetDeviceResponseTagsMap =
-  DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<GetDeviceResponseTagsMap>;
-
 export interface GetDeviceResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1298,8 +922,6 @@ export interface GetDeviceResponse {
   /** The kind of the device. */
   kind?: DataBoxEdgeDeviceKind;
 }
-const GetDeviceResponse = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<GetDeviceResponse>;
-
 export interface GetDeviceCapacityInfoDeviceCapacityInfoRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1308,11 +930,6 @@ export interface GetDeviceCapacityInfoDeviceCapacityInfoRequest {
   /** The device name. */
   deviceName: string;
 }
-const GetDeviceCapacityInfoDeviceCapacityInfoRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GetDeviceCapacityInfoDeviceCapacityInfoRequest>;
-
 /** Cluster Storage Data. */
 export interface ClusterStorageViewData {
   /** Total storage on the cluster in MB. */
@@ -1320,11 +937,6 @@ export interface ClusterStorageViewData {
   /** The available or free storage on the cluster in MB. */
   clusterFreeStorageMb?: number;
 }
-const ClusterStorageViewData = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<ClusterStorageViewData>;
-
 /** Cluster GPU Data. */
 export interface ClusterGpuCapacity {
   /** The cluster GPU Type. */
@@ -1338,8 +950,6 @@ export interface ClusterGpuCapacity {
   /** The total GPU units count in the cluster. */
   gpuTotalUnitsCount?: number;
 }
-const ClusterGpuCapacity = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<ClusterGpuCapacity>;
-
 /** NodeCapacityInfo defines the required information to determine the placement of a VM. */
 export interface ClusterMemoryCapacity {
   /** The free memory in the cluster in MB. */
@@ -1361,11 +971,6 @@ export interface ClusterMemoryCapacity {
   /** The memory used by VMs in the cluster in MB. */
   clusterMemoryUsedByVmsMb?: number;
 }
-const ClusterMemoryCapacity = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<ClusterMemoryCapacity>;
-
 /** Cluster Compute Data. */
 export interface ClusterCapacityViewData {
   /** The FQDN of the cluster. */
@@ -1379,11 +984,6 @@ export interface ClusterCapacityViewData {
   /** The total # of vCPUs provisioned by non-HPN VM per appliance. */
   totalProvisionedNonHpnCores?: number;
 }
-const ClusterCapacityViewData = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ClusterCapacityViewData>;
-
 /** VmMemory Data. */
 export interface VmMemory {
   /** The total amount of RAM in the virtual machine, as seen by the guest operating system. For a virtual machine with dynamic memory enabled, this represents the initial memory available at startup. */
@@ -1391,32 +991,14 @@ export interface VmMemory {
   /** The current memory used by the virtual machine. */
   currentMemoryUsageMB?: number;
 }
-const VmMemory = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<VmMemory>;
-
 /** The VM used memory per VmId. */
 export type HostCapacityVmUsedMemoryMap = { [key: string]: VmMemory | undefined };
-const HostCapacityVmUsedMemoryMap = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<HostCapacityVmUsedMemoryMap>;
-
 /** The free VCPU indices for the Hpn VMs. */
 export type NumaNodeDataFreeVCpuIndexesForHpnList = Array<number>;
-const NumaNodeDataFreeVCpuIndexesForHpnList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<NumaNodeDataFreeVCpuIndexesForHpnList>;
-
 /** The VCPU indices for Hpn VMs */
 export type NumaNodeDataVCpuIndexesForHpnList = Array<number>;
-const NumaNodeDataVCpuIndexesForHpnList =
-  NumaNodeDataFreeVCpuIndexesForHpnList as any as S.Schema<NumaNodeDataVCpuIndexesForHpnList>;
-
 /** The VCPU indices for the root. */
 export type NumaNodeDataVCpuIndexesForRootList = Array<number>;
-const NumaNodeDataVCpuIndexesForRootList =
-  NumaNodeDataFreeVCpuIndexesForHpnList as any as S.Schema<NumaNodeDataVCpuIndexesForRootList>;
-
 /** NUMA node data. */
 export interface NumaNodeData {
   /** The NUMA node index. */
@@ -1434,15 +1016,8 @@ export interface NumaNodeData {
   /** The VCPU indices for the root. */
   vCpuIndexesForRoot?: NumaNodeDataVCpuIndexesForRootList;
 }
-const NumaNodeData = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<NumaNodeData>;
-
 /** The numa nodes information for Hpn VMs. */
 export type HostCapacityNumaNodesDataList = Array<NumaNodeData>;
-const HostCapacityNumaNodesDataList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<HostCapacityNumaNodesDataList>;
-
 /** Host Capacity Data. */
 export interface HostCapacity {
   /** The name of the host. */
@@ -1458,17 +1033,10 @@ export interface HostCapacity {
   /** The numa nodes information for Hpn VMs. */
   numaNodesData?: HostCapacityNumaNodesDataList;
 }
-const HostCapacity = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<HostCapacity>;
-
 /** The dictionary of individual node names and node capacities in the cluster. */
 export type DeviceCapacityInfoPropertiesNodeCapacityInfosMap = {
   [key: string]: HostCapacity | undefined;
 };
-const DeviceCapacityInfoPropertiesNodeCapacityInfosMap = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<DeviceCapacityInfoPropertiesNodeCapacityInfosMap>;
-
 /** The properties of Device Capacity Info */
 export interface DeviceCapacityInfoProperties {
   /** Timestamp of request in UTC */
@@ -1480,11 +1048,6 @@ export interface DeviceCapacityInfoProperties {
   /** The dictionary of individual node names and node capacities in the cluster. */
   nodeCapacityInfos?: DeviceCapacityInfoPropertiesNodeCapacityInfosMap;
 }
-const DeviceCapacityInfoProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DeviceCapacityInfoProperties>;
-
 export interface GetDeviceCapacityInfoDeviceCapacityInfoResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1497,11 +1060,6 @@ export interface GetDeviceCapacityInfoDeviceCapacityInfoResponse {
   /** The device capacity properties. */
   properties?: DeviceCapacityInfoProperties;
 }
-const GetDeviceCapacityInfoDeviceCapacityInfoResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<GetDeviceCapacityInfoDeviceCapacityInfoResponse>;
-
 export interface GetDeviceExtendedInformationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1510,11 +1068,6 @@ export interface GetDeviceExtendedInformationRequest {
   /** The device name. */
   deviceName: string;
 }
-const GetDeviceExtendedInformationRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<GetDeviceExtendedInformationRequest>;
-
 /** For changing or to initiate the resync to key-vault set the status to KeyVaultSyncPending, rest of the status will not be applicable. */
 export type KeyVaultSyncStatus =
   | "KeyVaultSynced"
@@ -1523,8 +1076,6 @@ export type KeyVaultSyncStatus =
   | "KeyVaultSyncPending"
   | "KeyVaultSyncing"
   | "KeyVaultNotSynced";
-const KeyVaultSyncStatus = S.String;
-
 /** Holds device secret either as a KeyVault reference or as an encrypted value. */
 export interface Secret {
   /** Encrypted (using device public key) secret value. */
@@ -1532,21 +1083,12 @@ export interface Secret {
   /** Id of the Key-Vault where secret is stored (ex: secrets/AuthClientSecret/82ef4346187a4033a10d629cde07d740). */
   keyVaultId?: string;
 }
-const Secret = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<Secret>;
-
 /** Device secrets, will be returned only with ODataFilter $expand=deviceSecrets */
 export type DataBoxEdgeDeviceExtendedInfoPropertiesDeviceSecretsMap = {
   [key: string]: Secret | undefined;
 };
-const DataBoxEdgeDeviceExtendedInfoPropertiesDeviceSecretsMap = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<DataBoxEdgeDeviceExtendedInfoPropertiesDeviceSecretsMap>;
-
 /** Cluster Witness Type */
 export type ClusterWitnessType = "None" | "Cloud" | "FileShare";
-const ClusterWitnessType = S.String;
-
 /** The properties of the Data Box Edge/Gateway device extended info. */
 export interface DataBoxEdgeDeviceExtendedInfoProperties {
   /** The digital signature of encrypted certificate. */
@@ -1580,27 +1122,18 @@ export interface DataBoxEdgeDeviceExtendedInfoProperties {
   /** The Azure service endpoint of the cloud witness storage account. */
   cloudWitnessStorageEndpoint?: string;
 }
-const DataBoxEdgeDeviceExtendedInfoProperties = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<DataBoxEdgeDeviceExtendedInfoProperties>;
-
 /** The type of identity that created the resource. */
 export type GetDeviceExtendedInformationResponseSystemDataCreatedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const GetDeviceExtendedInformationResponseSystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type GetDeviceExtendedInformationResponseSystemDataLastModifiedByType =
   | "User"
   | "Application"
   | "ManagedIdentity"
   | "Key";
-const GetDeviceExtendedInformationResponseSystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface GetDeviceExtendedInformationResponseSystemData {
   /** The identity that created the resource. */
@@ -1616,11 +1149,6 @@ export interface GetDeviceExtendedInformationResponseSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const GetDeviceExtendedInformationResponseSystemData = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GetDeviceExtendedInformationResponseSystemData>;
-
 export interface GetDeviceExtendedInformationResponse {
   /** The path ID that uniquely identifies the object. */
   id?: string;
@@ -1633,11 +1161,6 @@ export interface GetDeviceExtendedInformationResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: GetDeviceExtendedInformationResponseSystemData;
 }
-const GetDeviceExtendedInformationResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<GetDeviceExtendedInformationResponse>;
-
 export interface GetDeviceNetworkSettingsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1646,15 +1169,8 @@ export interface GetDeviceNetworkSettingsRequest {
   /** The device name. */
   deviceName: string;
 }
-const GetDeviceNetworkSettingsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GetDeviceNetworkSettingsRequest>;
-
 /** The network group. */
 export type NetworkGroup = "None" | "NonRDMA" | "RDMA";
-const NetworkGroup = S.String;
-
 /** The network adapter position. */
 export interface NetworkAdapterPosition {
   /** The network group. */
@@ -1662,23 +1178,12 @@ export interface NetworkAdapterPosition {
   /** The port. */
   port?: number;
 }
-const NetworkAdapterPosition = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<NetworkAdapterPosition>;
-
 /** Value indicating whether this adapter is valid. */
 export type NetworkAdapterStatus = "Inactive" | "Active";
-const NetworkAdapterStatus = S.String;
-
 /** Value indicating whether this adapter is RDMA capable. */
 export type NetworkAdapterRDMAStatus = "Incapable" | "Capable";
-const NetworkAdapterRDMAStatus = S.String;
-
 /** Value indicating whether this adapter has DHCP enabled. */
 export type NetworkAdapterDHCPStatus = "Disabled" | "Enabled";
-const NetworkAdapterDHCPStatus = S.String;
-
 /** Details related to the IPv4 address configuration. */
 export interface Ipv4Config {
   /** The IPv4 address of the network adapter. */
@@ -1688,8 +1193,6 @@ export interface Ipv4Config {
   /** The IPv4 gateway of the network adapter. */
   gateway?: string;
 }
-const Ipv4Config = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<Ipv4Config>;
-
 /** Details related to the IPv6 address configuration. */
 export interface Ipv6Config {
   /** The IPv6 address of the network adapter. */
@@ -1699,13 +1202,8 @@ export interface Ipv6Config {
   /** The IPv6 gateway of the network adapter. */
   gateway?: string;
 }
-const Ipv6Config = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<Ipv6Config>;
-
 /** The list of DNS Servers of the device. */
 export type NetworkAdapterDnsServersList = Array<string>;
-const NetworkAdapterDnsServersList =
-  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<NetworkAdapterDnsServersList>;
-
 /** Represents the networkAdapter on a device. */
 export interface NetworkAdapter {
   /** Instance ID of network adapter. */
@@ -1739,25 +1237,13 @@ export interface NetworkAdapter {
   /** The list of DNS Servers of the device. */
   dnsServers?: NetworkAdapterDnsServersList;
 }
-const NetworkAdapter = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<NetworkAdapter>;
-
 /** The network adapter list on the device. */
 export type NetworkSettingsPropertiesNetworkAdaptersList = Array<NetworkAdapter>;
-const NetworkSettingsPropertiesNetworkAdaptersList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<NetworkSettingsPropertiesNetworkAdaptersList>;
-
 /** The properties of network settings. */
 export interface NetworkSettingsProperties {
   /** The network adapter list on the device. */
   networkAdapters?: NetworkSettingsPropertiesNetworkAdaptersList;
 }
-const NetworkSettingsProperties = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<NetworkSettingsProperties>;
-
 export interface GetDeviceNetworkSettingsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1770,11 +1256,6 @@ export interface GetDeviceNetworkSettingsResponse {
   /** The properties of network settings of a device. */
   properties?: NetworkSettingsProperties;
 }
-const GetDeviceNetworkSettingsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetDeviceNetworkSettingsResponse>;
-
 export interface GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1783,25 +1264,13 @@ export interface GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRe
   /** The device name. */
   deviceName: string;
 }
-const GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest>;
-
 /** Proactive diagnostic collection consent flag */
 export type ProactiveDiagnosticsConsent = "Enabled" | "Disabled";
-const ProactiveDiagnosticsConsent = S.String;
-
 /** The properties of proactive log collection settings. */
 export interface ProactiveLogCollectionSettingsProperties {
   /** Proactive diagnostic collection consent flag */
   userConsent: ProactiveDiagnosticsConsent | (string & {});
 }
-const ProactiveLogCollectionSettingsProperties = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<ProactiveLogCollectionSettingsProperties>;
-
 export interface GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1814,11 +1283,6 @@ export interface GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRe
   /** Properties of the diagnostic proactive log collection settings. */
   properties: ProactiveLogCollectionSettingsProperties;
 }
-const GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse>;
-
 export interface GetDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1827,19 +1291,10 @@ export interface GetDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest {
   /** The device name. */
   deviceName: string;
 }
-const GetDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GetDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest>;
-
 /** Remote application type */
 export type RemoteApplicationType = "Powershell" | "WAC" | "LocalUI" | "AllApplications";
-const RemoteApplicationType = S.String;
-
 /** Access level allowed for this remote application type */
 export type AccessLevel = "None" | "ReadOnly" | "ReadWrite" | "FullAccess";
-const AccessLevel = S.String;
-
 /** RemoteApplicationType for which remote support settings is being modified */
 export interface RemoteSupportSettings {
   /** Remote application type */
@@ -1849,29 +1304,14 @@ export interface RemoteSupportSettings {
   /** Expiration time stamp */
   expirationTimeStampInUTC?: string;
 }
-const RemoteSupportSettings = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<RemoteSupportSettings>;
-
 /** Remote support settings list according to the RemoteApplicationType */
 export type DiagnosticRemoteSupportSettingsPropertiesRemoteSupportSettingsListList =
   Array<RemoteSupportSettings>;
-const DiagnosticRemoteSupportSettingsPropertiesRemoteSupportSettingsListList = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<DiagnosticRemoteSupportSettingsPropertiesRemoteSupportSettingsListList>;
-
 /** The properties of remote support settings. */
 export interface DiagnosticRemoteSupportSettingsProperties {
   /** Remote support settings list according to the RemoteApplicationType */
   remoteSupportSettingsList?: DiagnosticRemoteSupportSettingsPropertiesRemoteSupportSettingsListList;
 }
-const DiagnosticRemoteSupportSettingsProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<DiagnosticRemoteSupportSettingsProperties>;
-
 export interface GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1884,11 +1324,6 @@ export interface GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse {
   /** Properties of the remote support settings. */
   properties: DiagnosticRemoteSupportSettingsProperties;
 }
-const GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse>;
-
 export interface GetJobRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1899,8 +1334,6 @@ export interface GetJobRequest {
   /** The job name. */
   name: string;
 }
-const GetJobRequest = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<GetJobRequest>;
-
 /** The type of the job. */
 export type JobType =
   | "Invalid"
@@ -1912,8 +1345,6 @@ export type JobType =
   | "Backup"
   | "Restore"
   | "TriggerSupportPackage";
-const JobType = S.String;
-
 /** Current stage of the update operation. */
 export type UpdateOperationStage =
   | "Unknown"
@@ -1933,12 +1364,8 @@ export type UpdateOperationStage =
   | "RescanStarted"
   | "RescanComplete"
   | "RescanFailed";
-const UpdateOperationStage = S.String;
-
 /** The download phase. */
 export type DownloadPhase = "Unknown" | "Initializing" | "Downloading" | "Verifying";
-const DownloadPhase = S.String;
-
 /** Details about the download progress of update. */
 export interface UpdateDownloadProgress {
   /** The download phase. */
@@ -1954,11 +1381,6 @@ export interface UpdateDownloadProgress {
   /** Number of updates downloaded. */
   numberOfUpdatesDownloaded?: number;
 }
-const UpdateDownloadProgress = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<UpdateDownloadProgress>;
-
 /** Progress details during installation of updates. */
 export interface UpdateInstallProgress {
   /** Percentage completed. */
@@ -1968,11 +1390,6 @@ export interface UpdateInstallProgress {
   /** Number of updates installed. */
   numberOfUpdatesInstalled?: number;
 }
-const UpdateInstallProgress = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<UpdateInstallProgress>;
-
 /** The properties for the job. */
 export interface JobProperties {
   /** The type of the job. */
@@ -1992,13 +1409,8 @@ export interface JobProperties {
   /** If only subfolders need to be refreshed, then the subfolder path inside the share or container. (The path is empty if there are no subfolders.) */
   folder?: string;
 }
-const JobProperties = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<JobProperties>;
-
 /** The recommended actions. */
 export type JobErrorItemRecommendationsList = Array<string>;
-const JobErrorItemRecommendationsList =
-  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<JobErrorItemRecommendationsList>;
-
 /** The job error items. */
 export interface JobErrorItem {
   /** The recommended actions. */
@@ -2008,15 +1420,8 @@ export interface JobErrorItem {
   /** The message that describes the error in detail. */
   message?: string;
 }
-const JobErrorItem = /*@__PURE__*/ __L.at(__c14, 0) as any as S.Schema<JobErrorItem>;
-
 /** The error details. */
 export type JobErrorDetailsErrorDetailsList = Array<JobErrorItem>;
-const JobErrorDetailsErrorDetailsList = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<JobErrorDetailsErrorDetailsList>;
-
 /** The job error information containing the list of job errors. */
 export interface JobErrorDetails {
   /** The error details. */
@@ -2026,8 +1431,6 @@ export interface JobErrorDetails {
   /** The message that describes the error in detail. */
   message?: string;
 }
-const JobErrorDetails = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<JobErrorDetails>;
-
 export interface GetJobResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2050,8 +1453,6 @@ export interface GetJobResponse {
   /** The error details. */
   error?: JobErrorDetails;
 }
-const GetJobResponse = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<GetJobResponse>;
-
 export interface GetMonitoringConfigRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2062,11 +1463,6 @@ export interface GetMonitoringConfigRequest {
   /** The name of the role. */
   roleName: string;
 }
-const GetMonitoringConfigRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GetMonitoringConfigRequest>;
-
 /** The metric dimension */
 export interface MetricDimension {
   /** The dimension type. */
@@ -2074,20 +1470,10 @@ export interface MetricDimension {
   /** The dimension value. */
   sourceName: string;
 }
-const MetricDimension = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<MetricDimension>;
-
 /** The dimension filter. */
 export type MetricCounterDimensionFilterList = Array<MetricDimension>;
-const MetricCounterDimensionFilterList = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<MetricCounterDimensionFilterList>;
-
 /** The additional dimensions to be added to metric. */
 export type MetricCounterAdditionalDimensionsList = Array<MetricDimension>;
-const MetricCounterAdditionalDimensionsList =
-  MetricCounterDimensionFilterList as any as S.Schema<MetricCounterAdditionalDimensionsList>;
-
 /** The metric counter */
 export interface MetricCounter {
   /** The counter name. */
@@ -2099,29 +1485,15 @@ export interface MetricCounter {
   /** The additional dimensions to be added to metric. */
   additionalDimensions?: MetricCounterAdditionalDimensionsList;
 }
-const MetricCounter = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<MetricCounter>;
-
 /** The counters that should be collected in this set. */
 export type MetricCounterSetCountersList = Array<MetricCounter>;
-const MetricCounterSetCountersList = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<MetricCounterSetCountersList>;
-
 /** The metric counter set */
 export interface MetricCounterSet {
   /** The counters that should be collected in this set. */
   counters: MetricCounterSetCountersList;
 }
-const MetricCounterSet = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<MetricCounterSet>;
-
 /** Host name for the IoT hub associated to the device. */
 export type MetricConfigurationCounterSetsList = Array<MetricCounterSet>;
-const MetricConfigurationCounterSetsList = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<MetricConfigurationCounterSetsList>;
-
 /** Metric configuration. */
 export interface MetricConfiguration {
   /** The Resource ID on which the metrics should be pushed. */
@@ -2133,26 +1505,14 @@ export interface MetricConfiguration {
   /** Host name for the IoT hub associated to the device. */
   counterSets: MetricConfigurationCounterSetsList;
 }
-const MetricConfiguration = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<MetricConfiguration>;
-
 /** The metrics configuration details */
 export type MonitoringMetricConfigurationPropertiesMetricConfigurationsList =
   Array<MetricConfiguration>;
-const MonitoringMetricConfigurationPropertiesMetricConfigurationsList = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<MonitoringMetricConfigurationPropertiesMetricConfigurationsList>;
-
 /** Metrics properties */
 export interface MonitoringMetricConfigurationProperties {
   /** The metrics configuration details */
   metricConfigurations: MonitoringMetricConfigurationPropertiesMetricConfigurationsList;
 }
-const MonitoringMetricConfigurationProperties = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<MonitoringMetricConfigurationProperties>;
-
 export interface GetMonitoringConfigResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2165,11 +1525,6 @@ export interface GetMonitoringConfigResponse {
   /** The metric setting properties. */
   properties: MonitoringMetricConfigurationProperties;
 }
-const GetMonitoringConfigResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GetMonitoringConfigResponse>;
-
 export interface GetOperationsStatusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2180,11 +1535,6 @@ export interface GetOperationsStatusRequest {
   /** The job name. */
   name: string;
 }
-const GetOperationsStatusRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GetOperationsStatusRequest>;
-
 export interface GetOperationsStatusResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2207,11 +1557,6 @@ export interface GetOperationsStatusResponse {
   /** The error details. */
   error?: JobErrorDetails;
 }
-const GetOperationsStatusResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<GetOperationsStatusResponse>;
-
 export interface GetOrderRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2220,13 +1565,8 @@ export interface GetOrderRequest {
   /** The device name. */
   deviceName: string;
 }
-const GetOrderRequest = /*@__PURE__*/ __L.at(__c16, 1) as any as S.Schema<GetOrderRequest>;
-
 /** The email list. */
 export type ContactDetailsEmailListList = Array<string>;
-const ContactDetailsEmailListList =
-  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<ContactDetailsEmailListList>;
-
 /** Contains all the contact details of the customer. */
 export interface ContactDetails {
   /** The contact person name. */
@@ -2238,8 +1578,6 @@ export interface ContactDetails {
   /** The email list. */
   emailList: ContactDetailsEmailListList;
 }
-const ContactDetails = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<ContactDetails>;
-
 /** The shipping address of the customer. */
 export interface Address {
   /** The address line1. */
@@ -2257,8 +1595,6 @@ export interface Address {
   /** The country name. */
   country: string;
 }
-const Address = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<Address>;
-
 /** Status of the order as per the allowed status types. */
 export type OrderState =
   | "Untracked"
@@ -2278,8 +1614,6 @@ export type OrderState =
   | "AwaitingPickup"
   | "PickupCompleted"
   | "AwaitingDrop";
-const OrderState = S.String;
-
 /** Tracking courier information. */
 export interface TrackingInfo {
   /** Serial number of the device being tracked. */
@@ -2291,13 +1625,8 @@ export interface TrackingInfo {
   /** Tracking URL of the shipment. */
   trackingUrl?: string;
 }
-const TrackingInfo = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<TrackingInfo>;
-
 /** Dictionary to hold generic information which is not stored by the already existing properties */
 export type OrderStatusAdditionalOrderDetailsMap = { [key: string]: string | undefined };
-const OrderStatusAdditionalOrderDetailsMap =
-  DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<OrderStatusAdditionalOrderDetailsMap>;
-
 /** Represents a single status change. */
 export interface OrderStatus {
   /** Status of the order as per the allowed status types. */
@@ -2311,30 +1640,13 @@ export interface OrderStatus {
   /** Dictionary to hold generic information which is not stored by the already existing properties */
   additionalOrderDetails?: OrderStatusAdditionalOrderDetailsMap;
 }
-const OrderStatus = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<OrderStatus>;
-
 /** List of status changes in the order. */
 export type OrderPropertiesOrderHistoryList = Array<OrderStatus>;
-const OrderPropertiesOrderHistoryList = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<OrderPropertiesOrderHistoryList>;
-
 /** Tracking information for the package delivered to the customer whether it has an original or a replacement device. */
 export type OrderPropertiesDeliveryTrackingInfoList = Array<TrackingInfo>;
-const OrderPropertiesDeliveryTrackingInfoList = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<OrderPropertiesDeliveryTrackingInfoList>;
-
 /** Tracking information for the package returned from the customer whether it has an original or a replacement device. */
 export type OrderPropertiesReturnTrackingInfoList = Array<TrackingInfo>;
-const OrderPropertiesReturnTrackingInfoList =
-  OrderPropertiesDeliveryTrackingInfoList as any as S.Schema<OrderPropertiesReturnTrackingInfoList>;
-
 export type ShipmentType = "NotApplicable" | "ShippedToCustomer" | "SelfPickup";
-const ShipmentType = S.String;
-
 /** Order properties. */
 export interface OrderProperties {
   /** It specify the order resource id. */
@@ -2356,8 +1668,6 @@ export interface OrderProperties {
   /** ShipmentType of the order */
   shipmentType?: ShipmentType;
 }
-const OrderProperties = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<OrderProperties>;
-
 export interface GetOrderResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2372,8 +1682,6 @@ export interface GetOrderResponse {
   /** It specify the order api version. */
   kind?: string;
 }
-const GetOrderResponse = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<GetOrderResponse>;
-
 export interface GetRoleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2384,8 +1692,6 @@ export interface GetRoleRequest {
   /** The role name. */
   name: string;
 }
-const GetRoleRequest = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<GetRoleRequest>;
-
 export interface GetRoleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2398,8 +1704,6 @@ export interface GetRoleResponse {
   /** Role type. */
   kind: RoleTypes;
 }
-const GetRoleResponse = GetAddonResponse as any as S.Schema<GetRoleResponse>;
-
 export interface GetShareRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2410,16 +1714,10 @@ export interface GetShareRequest {
   /** The share name. */
   name: string;
 }
-const GetShareRequest = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<GetShareRequest>;
-
 /** Current status of the share. */
 export type ShareStatus = "Offline" | "Unknown" | "OK" | "Updating" | "NeedsAttention";
-const ShareStatus = S.String;
-
 /** Current monitoring status of the share. */
 export type MonitoringStatus = "Enabled" | "Disabled";
-const MonitoringStatus = S.String;
-
 /** Azure container mapping of the endpoint. */
 export interface AzureContainerInfo {
   /** ID of the storage account credential used to access storage. */
@@ -2429,16 +1727,10 @@ export interface AzureContainerInfo {
   /** Storage format used for the file represented by the share. */
   dataFormat: AzureContainerDataFormat | (string & {});
 }
-const AzureContainerInfo = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<AzureContainerInfo>;
-
 /** Access protocol to be used by the share. */
 export type ShareAccessProtocol = "SMB" | "NFS";
-const ShareAccessProtocol = S.String;
-
 /** Type of access to be allowed on the share for this user. */
 export type ShareAccessType = "Change" | "Read" | "Custom";
-const ShareAccessType = S.String;
-
 /** The mapping between a particular user and the access type on the SMB share. */
 export interface UserAccessRight {
   /** User ID (already existing in the device). */
@@ -2446,19 +1738,10 @@ export interface UserAccessRight {
   /** Type of access to be allowed for the user. */
   accessType: ShareAccessType | (string & {});
 }
-const UserAccessRight = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<UserAccessRight>;
-
 /** Mapping of users and corresponding access rights on the share (required for SMB protocol). */
 export type SharePropertiesUserAccessRightsList = Array<UserAccessRight>;
-const SharePropertiesUserAccessRightsList = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<SharePropertiesUserAccessRightsList>;
-
 /** Type of access to be allowed for the client. */
 export type ClientPermissionType = "NoAccess" | "ReadOnly" | "ReadWrite";
-const ClientPermissionType = S.String;
-
 /** The mapping between a particular client IP and the type of access client has on the NFS share. */
 export interface ClientAccessRight {
   /** IP of the client. */
@@ -2466,19 +1749,10 @@ export interface ClientAccessRight {
   /** Type of access to be allowed for the client. */
   accessPermission: ClientPermissionType | (string & {});
 }
-const ClientAccessRight = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<ClientAccessRight>;
-
 /** List of IP addresses and corresponding access rights on the share(required for NFS protocol). */
 export type SharePropertiesClientAccessRightsList = Array<ClientAccessRight>;
-const SharePropertiesClientAccessRightsList = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<SharePropertiesClientAccessRightsList>;
-
 /** Mounting type. */
 export type MountType = "Volume" | "HostPath";
-const MountType = S.String;
-
 /** The share mount point. */
 export interface MountPointMap {
   /** ID of the share mounted to the role VM. */
@@ -2492,19 +1766,10 @@ export interface MountPointMap {
   /** Role type. */
   roleType?: RoleTypes;
 }
-const MountPointMap = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<MountPointMap>;
-
 /** Share mount point to the role. */
 export type SharePropertiesShareMappingsList = Array<MountPointMap>;
-const SharePropertiesShareMappingsList = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<SharePropertiesShareMappingsList>;
-
 /** Data policy of the share. */
 export type DataPolicy = "Cloud" | "Local";
-const DataPolicy = S.String;
-
 /** The share properties. */
 export interface ShareProperties {
   /** Description for the share. */
@@ -2528,8 +1793,6 @@ export interface ShareProperties {
   /** Data policy of the share. */
   dataPolicy?: DataPolicy;
 }
-const ShareProperties = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<ShareProperties>;
-
 export interface GetShareResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2542,8 +1805,6 @@ export interface GetShareResponse {
   /** The share properties. */
   properties: ShareProperties;
 }
-const GetShareResponse = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<GetShareResponse>;
-
 export interface GetStorageAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2554,15 +1815,8 @@ export interface GetStorageAccountRequest {
   /** The storage account name. */
   storageAccountName: string;
 }
-const GetStorageAccountRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GetStorageAccountRequest>;
-
 /** Current status of the storage account */
 export type StorageAccountStatus = "OK" | "Offline" | "Unknown" | "Updating" | "NeedsAttention";
-const StorageAccountStatus = S.String;
-
 /** The storage account properties. */
 export interface StorageAccountProperties {
   /** Description for the storage Account. */
@@ -2578,11 +1832,6 @@ export interface StorageAccountProperties {
   /** The Container Count. Present only for Storage Accounts with DataPolicy set to Cloud. */
   containerCount?: number;
 }
-const StorageAccountProperties = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<StorageAccountProperties>;
-
 export interface GetStorageAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2595,11 +1844,6 @@ export interface GetStorageAccountResponse {
   /** The Storage Account properties. */
   properties: StorageAccountProperties;
 }
-const GetStorageAccountResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<GetStorageAccountResponse>;
-
 export interface GetStorageAccountCredentialsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2610,19 +1854,10 @@ export interface GetStorageAccountCredentialsRequest {
   /** The storage account credential name. */
   name: string;
 }
-const GetStorageAccountCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<GetStorageAccountCredentialsRequest>;
-
 /** Signifies whether SSL needs to be enabled or not. */
 export type SSLStatus = "Enabled" | "Disabled";
-const SSLStatus = S.String;
-
 /** Type of storage accessed on the storage account. */
 export type AccountType = "GeneralPurposeStorage" | "BlobStorage";
-const AccountType = S.String;
-
 /** The storage account credential properties. */
 export interface StorageAccountCredentialProperties {
   /** Alias for the storage account. */
@@ -2642,11 +1877,6 @@ export interface StorageAccountCredentialProperties {
   /** Id of the storage account. */
   storageAccountId?: string;
 }
-const StorageAccountCredentialProperties = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<StorageAccountCredentialProperties>;
-
 export interface GetStorageAccountCredentialsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2659,11 +1889,6 @@ export interface GetStorageAccountCredentialsResponse {
   /** The storage account credential properties. */
   properties: StorageAccountCredentialProperties;
 }
-const GetStorageAccountCredentialsResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetStorageAccountCredentialsResponse>;
-
 export interface GetTriggerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2674,12 +1899,8 @@ export interface GetTriggerRequest {
   /** The trigger name. */
   name: string;
 }
-const GetTriggerRequest = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<GetTriggerRequest>;
-
 /** Trigger Kind. */
 export type TriggerEventType = "FileEvent" | "PeriodicTimerEvent";
-const TriggerEventType = S.String;
-
 export interface GetTriggerResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2692,8 +1913,6 @@ export interface GetTriggerResponse {
   /** Trigger Kind. */
   kind: TriggerEventType;
 }
-const GetTriggerResponse = GetAddonResponse as any as S.Schema<GetTriggerResponse>;
-
 export interface GetUserRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2704,8 +1923,6 @@ export interface GetUserRequest {
   /** The user name. */
   name: string;
 }
-const GetUserRequest = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<GetUserRequest>;
-
 /** Specifies the mapping between this particular user and the type of access he has on shares on this device. */
 export interface ShareAccessRight {
   /** The share ID. */
@@ -2713,19 +1930,10 @@ export interface ShareAccessRight {
   /** Type of access to be allowed on the share for this user. */
   accessType: ShareAccessType;
 }
-const ShareAccessRight = /*@__PURE__*/ __L.at(__c19, 5) as any as S.Schema<ShareAccessRight>;
-
 /** List of shares that the user has rights on. This field should not be specified during user creation. */
 export type UserPropertiesShareAccessRightsList = Array<ShareAccessRight>;
-const UserPropertiesShareAccessRightsList = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<UserPropertiesShareAccessRightsList>;
-
 /** Type of the user. */
 export type UserType = "Share" | "LocalManagement" | "ARM";
-const UserType = S.String;
-
 /** The user properties. */
 export interface UserProperties {
   /** The password details. */
@@ -2735,8 +1943,6 @@ export interface UserProperties {
   /** Type of the user. */
   userType: UserType;
 }
-const UserProperties = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<UserProperties>;
-
 export interface GetUserResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2749,8 +1955,6 @@ export interface GetUserResponse {
   /** The storage account credential properties. */
   properties: UserProperties;
 }
-const GetUserResponse = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<GetUserResponse>;
-
 export interface InstallDeviceUpdatesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2759,15 +1963,7 @@ export interface InstallDeviceUpdatesRequest {
   /** The device name. */
   deviceName: string;
 }
-const InstallDeviceUpdatesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<InstallDeviceUpdatesRequest>;
-
 export interface InstallDeviceUpdatesResponse {}
-const InstallDeviceUpdatesResponse =
-  DeleteAddonResponse as any as S.Schema<InstallDeviceUpdatesResponse>;
-
 export interface ListAddonByRoleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2778,11 +1974,6 @@ export interface ListAddonByRoleRequest {
   /** The name of the role. */
   roleName: string;
 }
-const ListAddonByRoleRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListAddonByRoleRequest>;
-
 /** Role Addon */
 export interface Addon {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2796,12 +1987,8 @@ export interface Addon {
   /** Addon type. */
   kind: AddonType;
 }
-const Addon = GetAddonResponse as any as S.Schema<Addon>;
-
 /** The Addon items on this page */
 export type AddonListValueList = Array<Addon>;
-const AddonListValueList = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<AddonListValueList>;
-
 /** Collection of all the Role addon on the Azure Stack Edge device. */
 export interface AddonList {
   /** The Addon items on this page */
@@ -2809,8 +1996,6 @@ export interface AddonList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const AddonList = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<AddonList>;
-
 export interface ListAlertByDataBoxEdgeDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2819,11 +2004,6 @@ export interface ListAlertByDataBoxEdgeDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-const ListAlertByDataBoxEdgeDeviceRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListAlertByDataBoxEdgeDeviceRequest>;
-
 /** Alert on the data box edge/gateway device. */
 export interface Alert {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -2837,12 +2017,8 @@ export interface Alert {
   /** Properties of alert. */
   properties?: AlertProperties;
 }
-const Alert = GetAlertResponse as any as S.Schema<Alert>;
-
 /** The Alert items on this page */
 export type AlertListValueList = Array<Alert>;
-const AlertListValueList = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<AlertListValueList>;
-
 /** Collection of alerts. */
 export interface AlertList {
   /** The Alert items on this page */
@@ -2850,37 +2026,18 @@ export interface AlertList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const AlertList = /*@__PURE__*/ __L.at(__c20, 7) as any as S.Schema<AlertList>;
-
 export interface ListAvailableSkusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListAvailableSkusRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<ListAvailableSkusRequest>;
-
 /** Availability of the Sku for the region. */
 export type DataBoxEdgeSkuLocationsList = Array<string>;
-const DataBoxEdgeSkuLocationsList =
-  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<DataBoxEdgeSkuLocationsList>;
-
 /** The API versions in which Sku is available. */
 export type DataBoxEdgeSkuApiVersionsList = Array<string>;
-const DataBoxEdgeSkuApiVersionsList =
-  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<DataBoxEdgeSkuApiVersionsList>;
-
 /** The zones. */
 export type SkuLocationInfoZonesList = Array<string>;
-const SkuLocationInfoZonesList =
-  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<SkuLocationInfoZonesList>;
-
 /** The sites. */
 export type SkuLocationInfoSitesList = Array<string>;
-const SkuLocationInfoSitesList =
-  DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList as any as S.Schema<SkuLocationInfoSitesList>;
-
 /** The location info. */
 export interface SkuLocationInfo {
   /** The location. */
@@ -2890,15 +2047,8 @@ export interface SkuLocationInfo {
   /** The sites. */
   sites?: SkuLocationInfoSitesList;
 }
-const SkuLocationInfo = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<SkuLocationInfo>;
-
 /** Availability of the Sku for the location/zone/site. */
 export type DataBoxEdgeSkuLocationInfoList = Array<SkuLocationInfo>;
-const DataBoxEdgeSkuLocationInfoList = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<DataBoxEdgeSkuLocationInfoList>;
-
 /** The metadata for retrieving price info. */
 export interface SkuCost {
   /** Used for querying price from commerce. */
@@ -2908,32 +2058,16 @@ export interface SkuCost {
   /** The extended unit. */
   extendedUnit?: string;
 }
-const SkuCost = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<SkuCost>;
-
 /** The pricing info of the Sku. */
 export type DataBoxEdgeSkuCostsList = Array<SkuCost>;
-const DataBoxEdgeSkuCostsList = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<DataBoxEdgeSkuCostsList>;
-
 /** Sku can be signed up by customer or not. */
 export type SkuSignupOption = "None" | "Available";
-const SkuSignupOption = S.String;
-
 /** Availability of the Sku as preview/stable. */
 export type SkuVersion = "Stable" | "Preview";
-const SkuVersion = S.String;
-
 /** Links to the next set of results */
 export type SkuAvailability = "Available" | "Unavailable";
-const SkuAvailability = S.String;
-
 /** List of Shipment Types supported by this SKU */
 export type DataBoxEdgeSkuShipmentTypesList = Array<ShipmentType>;
-const DataBoxEdgeSkuShipmentTypesList =
-  BandwidthSchedulePropertiesDaysList as any as S.Schema<DataBoxEdgeSkuShipmentTypesList>;
-
 /** The metadata to describe the capability. */
 export interface SkuCapability {
   /** An invariant to describe the feature. */
@@ -2941,15 +2075,8 @@ export interface SkuCapability {
   /** An invariant if the feature is measured by quantity. */
   value?: string;
 }
-const SkuCapability = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<SkuCapability>;
-
 /** The capability info of the SKU. */
 export type DataBoxEdgeSkuCapabilitiesList = Array<SkuCapability>;
-const DataBoxEdgeSkuCapabilitiesList = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<DataBoxEdgeSkuCapabilitiesList>;
-
 /** The Sku information. */
 export interface DataBoxEdgeSku {
   /** The type of the resource. */
@@ -2983,15 +2110,8 @@ export interface DataBoxEdgeSku {
   /** The capability info of the SKU. */
   capabilities?: DataBoxEdgeSkuCapabilitiesList;
 }
-const DataBoxEdgeSku = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<DataBoxEdgeSku>;
-
 /** The DataBoxEdgeSku items on this page */
 export type DataBoxEdgeSkuListValueList = Array<DataBoxEdgeSku>;
-const DataBoxEdgeSkuListValueList = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<DataBoxEdgeSkuListValueList>;
-
 /** List of SKU Information objects. */
 export interface DataBoxEdgeSkuList {
   /** The DataBoxEdgeSku items on this page */
@@ -2999,8 +2119,6 @@ export interface DataBoxEdgeSkuList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DataBoxEdgeSkuList = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<DataBoxEdgeSkuList>;
-
 export interface ListBandwidthScheduleByDataBoxEdgeDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3009,11 +2127,6 @@ export interface ListBandwidthScheduleByDataBoxEdgeDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-const ListBandwidthScheduleByDataBoxEdgeDeviceRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<ListBandwidthScheduleByDataBoxEdgeDeviceRequest>;
-
 /** The bandwidth schedule details. */
 export interface BandwidthSchedule {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3027,15 +2140,8 @@ export interface BandwidthSchedule {
   /** The properties of the bandwidth schedule. */
   properties: BandwidthScheduleProperties;
 }
-const BandwidthSchedule = /*@__PURE__*/ __L.at(__c22, 3) as any as S.Schema<BandwidthSchedule>;
-
 /** The BandwidthSchedule items on this page */
 export type BandwidthSchedulesListValueList = Array<BandwidthSchedule>;
-const BandwidthSchedulesListValueList = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<BandwidthSchedulesListValueList>;
-
 /** The collection of bandwidth schedules. */
 export interface BandwidthSchedulesList {
   /** The BandwidthSchedule items on this page */
@@ -3043,11 +2149,6 @@ export interface BandwidthSchedulesList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const BandwidthSchedulesList = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<BandwidthSchedulesList>;
-
 export interface ListContainerByStorageAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3058,11 +2159,6 @@ export interface ListContainerByStorageAccountRequest {
   /** The storage account name. */
   storageAccountName: string;
 }
-const ListContainerByStorageAccountRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<ListContainerByStorageAccountRequest>;
-
 /** Represents a container on the Data Box Edge/Gateway device. */
 export interface Container {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3076,15 +2172,8 @@ export interface Container {
   /** The container properties. */
   properties: ContainerProperties;
 }
-const Container = GetContainerResponse as any as S.Schema<Container>;
-
 /** The Container items on this page */
 export type ContainerListValueList = Array<Container>;
-const ContainerListValueList = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ContainerListValueList>;
-
 /** Collection of all the containers on the Data Box Edge/Gateway device. */
 export interface ContainerList {
   /** The Container items on this page */
@@ -3092,8 +2181,6 @@ export interface ContainerList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ContainerList = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<ContainerList>;
-
 export interface ListDeviceByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3102,11 +2189,6 @@ export interface ListDeviceByResourceGroupRequest {
   /** Specify $expand=details to populate additional fields related to the resource or Specify $skipToken=<token> to populate the next page in the list. */
   _expand?: string;
 }
-const ListDeviceByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<ListDeviceByResourceGroupRequest>;
-
 /** Resource tags. */
 export type DataBoxEdgeDeviceTagsMap = { [key: string]: string | undefined };
 /** The Data Box Edge/Gateway device. */
@@ -3134,15 +2216,8 @@ export interface DataBoxEdgeDevice {
   /** The kind of the device. */
   kind?: DataBoxEdgeDeviceKind;
 }
-const DataBoxEdgeDevice = GetDeviceResponse as any as S.Schema<DataBoxEdgeDevice>;
-
 /** The DataBoxEdgeDevice items on this page */
 export type DataBoxEdgeDeviceListValueList = Array<DataBoxEdgeDevice>;
-const DataBoxEdgeDeviceListValueList = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<DataBoxEdgeDeviceListValueList>;
-
 /** The collection of Data Box Edge/Gateway devices. */
 export interface DataBoxEdgeDeviceList {
   /** The DataBoxEdgeDevice items on this page */
@@ -3150,22 +2225,12 @@ export interface DataBoxEdgeDeviceList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const DataBoxEdgeDeviceList = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<DataBoxEdgeDeviceList>;
-
 export interface ListDeviceBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Specify $expand=details to populate additional fields related to the resource or Specify $skipToken=<token> to populate the next page in the list. */
   _expand?: string;
 }
-const ListDeviceBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<ListDeviceBySubscriptionRequest>;
-
 export interface ListMonitoringConfigRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3176,11 +2241,6 @@ export interface ListMonitoringConfigRequest {
   /** The name of the role. */
   roleName: string;
 }
-const ListMonitoringConfigRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ListMonitoringConfigRequest>;
-
 /** The metric setting details for the role */
 export interface MonitoringMetricConfiguration {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3194,16 +2254,8 @@ export interface MonitoringMetricConfiguration {
   /** The metric setting properties. */
   properties: MonitoringMetricConfigurationProperties;
 }
-const MonitoringMetricConfiguration =
-  GetMonitoringConfigResponse as any as S.Schema<MonitoringMetricConfiguration>;
-
 /** The MonitoringMetricConfiguration items on this page */
 export type MonitoringMetricConfigurationListValueList = Array<MonitoringMetricConfiguration>;
-const MonitoringMetricConfigurationListValueList = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<MonitoringMetricConfigurationListValueList>;
-
 /** Collection of metric configurations. */
 export interface MonitoringMetricConfigurationList {
   /** The MonitoringMetricConfiguration items on this page */
@@ -3211,11 +2263,6 @@ export interface MonitoringMetricConfigurationList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const MonitoringMetricConfigurationList = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<MonitoringMetricConfigurationList>;
-
 export interface ListNodeByDataBoxEdgeDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3224,15 +2271,8 @@ export interface ListNodeByDataBoxEdgeDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-const ListNodeByDataBoxEdgeDeviceRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<ListNodeByDataBoxEdgeDeviceRequest>;
-
 /** The current status of the individual node */
 export type NodeStatus = "Unknown" | "Up" | "Down" | "Rebooting" | "ShuttingDown";
-const NodeStatus = S.String;
-
 /** This class represents the nodes in a highly available cluster */
 export interface NodeProperties {
   /** The current status of the individual node */
@@ -3250,8 +2290,6 @@ export interface NodeProperties {
   /** Guid instance id of the node */
   nodeInstanceId?: string;
 }
-const NodeProperties = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<NodeProperties>;
-
 /** Represents a single node in a Data box Edge/Gateway device Gateway devices, standalone Edge devices and a single node cluster Edge device will all have 1 node Multi-node Edge devices will have more than 1 nodes */
 export interface Node {
   /** The path ID that uniquely identifies the object. */
@@ -3263,12 +2301,8 @@ export interface Node {
   /** The properties of the node */
   properties?: NodeProperties;
 }
-const Node = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<Node>;
-
 /** The Node items on this page */
 export type NodeListValueList = Array<Node>;
-const NodeListValueList = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<NodeListValueList>;
-
 /** Collection of Nodes. */
 export interface NodeList {
   /** The Node items on this page */
@@ -3276,14 +2310,7 @@ export interface NodeList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const NodeList = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<NodeList>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Operation display properties. */
 export interface OperationDisplay {
   /** Provider name. */
@@ -3295,8 +2322,6 @@ export interface OperationDisplay {
   /** Description of the operation to be performed. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<OperationDisplay>;
-
 /** Metric units. */
 export type MetricUnit =
   | "NotSpecified"
@@ -3307,8 +2332,6 @@ export type MetricUnit =
   | "Bytes"
   | "BytesPerSecond"
   | "CountPerSecond";
-const MetricUnit = S.String;
-
 /** Metric aggregation type. */
 export type MetricAggregationType =
   | "NotSpecified"
@@ -3318,8 +2341,6 @@ export type MetricAggregationType =
   | "Maximum"
   | "Total"
   | "Count";
-const MetricAggregationType = S.String;
-
 /** Metric Dimension v1. */
 export interface MetricDimensionV1 {
   /** Name of the metrics dimension. */
@@ -3329,29 +2350,14 @@ export interface MetricDimensionV1 {
   /** To be exported to shoe box. */
   toBeExportedForShoebox?: boolean;
 }
-const MetricDimensionV1 = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<MetricDimensionV1>;
-
 /** Metric dimensions, other than default dimension which is resource. */
 export type MetricSpecificationV1DimensionsList = Array<MetricDimensionV1>;
-const MetricSpecificationV1DimensionsList = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<MetricSpecificationV1DimensionsList>;
-
 /** Metric category. */
 export type MetricCategory = "Capacity" | "Transaction";
-const MetricCategory = S.String;
-
 export type TimeGrain = "PT1M" | "PT5M" | "PT15M" | "PT30M" | "PT1H" | "PT6H" | "PT12H" | "PT1D";
 /** Support granularity of metrics. */
 export type MetricSpecificationV1SupportedTimeGrainTypesList = Array<TimeGrain>;
-const MetricSpecificationV1SupportedTimeGrainTypesList =
-  BandwidthSchedulePropertiesDaysList as any as S.Schema<MetricSpecificationV1SupportedTimeGrainTypesList>;
-
 export type MetricSpecificationV1SupportedAggregationTypesList = Array<MetricAggregationType>;
-const MetricSpecificationV1SupportedAggregationTypesList =
-  BandwidthSchedulePropertiesDaysList as any as S.Schema<MetricSpecificationV1SupportedAggregationTypesList>;
-
 /** Metric specification version 1. */
 export interface MetricSpecificationV1 {
   /** Name of the metric. */
@@ -3376,35 +2382,18 @@ export interface MetricSpecificationV1 {
   supportedTimeGrainTypes?: MetricSpecificationV1SupportedTimeGrainTypesList;
   supportedAggregationTypes?: MetricSpecificationV1SupportedAggregationTypesList;
 }
-const MetricSpecificationV1 = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<MetricSpecificationV1>;
-
 /** Metric specification as defined by shoebox. */
 export type ServiceSpecificationMetricSpecificationsList = Array<MetricSpecificationV1>;
-const ServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<ServiceSpecificationMetricSpecificationsList>;
-
 /** Service specification. */
 export interface ServiceSpecification {
   /** Metric specification as defined by shoebox. */
   metricSpecifications?: ServiceSpecificationMetricSpecificationsList;
 }
-const ServiceSpecification = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<ServiceSpecification>;
-
 /** Operation properties. */
 export interface OperationProperties {
   /** Service specification. */
   serviceSpecification?: ServiceSpecification;
 }
-const OperationProperties = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<OperationProperties>;
-
 /** Operations. */
 export interface Operation {
   /** Name of the operation. */
@@ -3418,15 +2407,8 @@ export interface Operation {
   /** Operation properties. */
   properties?: OperationProperties;
 }
-const Operation = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<Operation>;
-
 /** The list of operations. */
 export type OperationsListValueList = Array<Operation>;
-const OperationsListValueList = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<OperationsListValueList>;
-
 /** The list of operations supported by Microsoft.DataBoxEdge resource provider. */
 export interface OperationsList {
   /** The list of operations. */
@@ -3434,8 +2416,6 @@ export interface OperationsList {
   /** The URL to get the next page of operations. */
   nextLink?: string;
 }
-const OperationsList = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<OperationsList>;
-
 export interface ListOrderByDataBoxEdgeDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3444,11 +2424,6 @@ export interface ListOrderByDataBoxEdgeDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-const ListOrderByDataBoxEdgeDeviceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<ListOrderByDataBoxEdgeDeviceRequest>;
-
 /** The order details. */
 export interface Order {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3464,12 +2439,8 @@ export interface Order {
   /** It specify the order api version. */
   kind?: string;
 }
-const Order = GetOrderResponse as any as S.Schema<Order>;
-
 /** The Order items on this page */
 export type OrderListValueList = Array<Order>;
-const OrderListValueList = /*@__PURE__*/ __L.at(__c26, 1) as any as S.Schema<OrderListValueList>;
-
 /** List of order entities. */
 export interface OrderList {
   /** The Order items on this page */
@@ -3477,8 +2448,6 @@ export interface OrderList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const OrderList = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<OrderList>;
-
 export interface ListOrderDCAccessCodeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3487,28 +2456,16 @@ export interface ListOrderDCAccessCodeRequest {
   /** The device name. */
   deviceName: string;
 }
-const ListOrderDCAccessCodeRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<ListOrderDCAccessCodeRequest>;
-
 /** DCAccessCode Properties. */
 export interface DCAccessCodeProperties {
   /** DCAccess Code for the Self Managed shipment. */
   authCode?: string;
 }
-const DCAccessCodeProperties = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<DCAccessCodeProperties>;
-
 /** DC Access code in the case of Self Managed Shipping. */
 export interface DCAccessCode {
   /** DCAccessCode properties. */
   properties?: DCAccessCodeProperties;
 }
-const DCAccessCode = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<DCAccessCode>;
-
 export interface ListRoleByDataBoxEdgeDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3517,11 +2474,6 @@ export interface ListRoleByDataBoxEdgeDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-const ListRoleByDataBoxEdgeDeviceRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<ListRoleByDataBoxEdgeDeviceRequest>;
-
 /** Compute role. */
 export interface Role {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3535,12 +2487,8 @@ export interface Role {
   /** Role type. */
   kind: RoleTypes;
 }
-const Role = GetRoleResponse as any as S.Schema<Role>;
-
 /** The Role items on this page */
 export type RoleListValueList = Array<Role>;
-const RoleListValueList = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<RoleListValueList>;
-
 /** Collection of all the roles on the Data Box Edge device. */
 export interface RoleList {
   /** The Role items on this page */
@@ -3548,8 +2496,6 @@ export interface RoleList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const RoleList = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<RoleList>;
-
 export interface ListShareByDataBoxEdgeDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3558,11 +2504,6 @@ export interface ListShareByDataBoxEdgeDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-const ListShareByDataBoxEdgeDeviceRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<ListShareByDataBoxEdgeDeviceRequest>;
-
 /** Represents a share on the Data Box Edge/Gateway device. */
 export interface Share {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3576,12 +2517,8 @@ export interface Share {
   /** The share properties. */
   properties: ShareProperties;
 }
-const Share = GetShareResponse as any as S.Schema<Share>;
-
 /** The Share items on this page */
 export type ShareListValueList = Array<Share>;
-const ShareListValueList = /*@__PURE__*/ __L.at(__c27, 2) as any as S.Schema<ShareListValueList>;
-
 /** Collection of all the shares on the Data Box Edge/Gateway device. */
 export interface ShareList {
   /** The Share items on this page */
@@ -3589,8 +2526,6 @@ export interface ShareList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ShareList = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<ShareList>;
-
 export interface ListStorageAccountByDataBoxEdgeDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3599,11 +2534,6 @@ export interface ListStorageAccountByDataBoxEdgeDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-const ListStorageAccountByDataBoxEdgeDeviceRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<ListStorageAccountByDataBoxEdgeDeviceRequest>;
-
 /** Represents a Storage Account on the Data Box Edge/Gateway device. */
 export interface StorageAccount {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3617,15 +2547,8 @@ export interface StorageAccount {
   /** The Storage Account properties. */
   properties: StorageAccountProperties;
 }
-const StorageAccount = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<StorageAccount>;
-
 /** The StorageAccount items on this page */
 export type StorageAccountListValueList = Array<StorageAccount>;
-const StorageAccountListValueList = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<StorageAccountListValueList>;
-
 /** Collection of all the Storage Accounts on the Data Box Edge/Gateway device. */
 export interface StorageAccountList {
   /** The StorageAccount items on this page */
@@ -3633,8 +2556,6 @@ export interface StorageAccountList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const StorageAccountList = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<StorageAccountList>;
-
 export interface ListStorageAccountCredentialsByDataBoxEdgeDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3643,11 +2564,6 @@ export interface ListStorageAccountCredentialsByDataBoxEdgeDeviceRequest {
   /** The device name. */
   deviceName: string;
 }
-const ListStorageAccountCredentialsByDataBoxEdgeDeviceRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<ListStorageAccountCredentialsByDataBoxEdgeDeviceRequest>;
-
 /** The storage account credential. */
 export interface StorageAccountCredential {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3661,18 +2577,8 @@ export interface StorageAccountCredential {
   /** The storage account credential properties. */
   properties: StorageAccountCredentialProperties;
 }
-const StorageAccountCredential = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<StorageAccountCredential>;
-
 /** The StorageAccountCredential items on this page */
 export type StorageAccountCredentialListValueList = Array<StorageAccountCredential>;
-const StorageAccountCredentialListValueList = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<StorageAccountCredentialListValueList>;
-
 /** The collection of storage account credentials. */
 export interface StorageAccountCredentialList {
   /** The StorageAccountCredential items on this page */
@@ -3680,11 +2586,6 @@ export interface StorageAccountCredentialList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const StorageAccountCredentialList = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<StorageAccountCredentialList>;
-
 export interface ListTriggerByDataBoxEdgeDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3695,11 +2596,6 @@ export interface ListTriggerByDataBoxEdgeDeviceRequest {
   /** Specify $filter='CustomContextTag eq <tag>' to filter on custom context tag property */
   _filter?: string;
 }
-const ListTriggerByDataBoxEdgeDeviceRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<ListTriggerByDataBoxEdgeDeviceRequest>;
-
 /** Trigger details. */
 export interface Trigger {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3713,15 +2609,8 @@ export interface Trigger {
   /** Trigger Kind. */
   kind: TriggerEventType;
 }
-const Trigger = GetTriggerResponse as any as S.Schema<Trigger>;
-
 /** The Trigger items on this page */
 export type TriggerListValueList = Array<Trigger>;
-const TriggerListValueList = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<TriggerListValueList>;
-
 /** Collection of all trigger on the data box edge device. */
 export interface TriggerList {
   /** The Trigger items on this page */
@@ -3729,8 +2618,6 @@ export interface TriggerList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const TriggerList = /*@__PURE__*/ __L.at(__c28, 6) as any as S.Schema<TriggerList>;
-
 export interface ListUserByDataBoxEdgeDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3741,11 +2628,6 @@ export interface ListUserByDataBoxEdgeDeviceRequest {
   /** Specify $filter='Type eq <type>' to filter on user type property */
   _filter?: string;
 }
-const ListUserByDataBoxEdgeDeviceRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<ListUserByDataBoxEdgeDeviceRequest>;
-
 /** Represents a user who has access to one or more shares on the Data Box Edge/Gateway device. */
 export interface User {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -3759,12 +2641,8 @@ export interface User {
   /** The storage account credential properties. */
   properties: UserProperties;
 }
-const User = GetUserResponse as any as S.Schema<User>;
-
 /** The User items on this page */
 export type UserListValueList = Array<User>;
-const UserListValueList = /*@__PURE__*/ __L.at(__c29, 0) as any as S.Schema<UserListValueList>;
-
 /** Collection of users. */
 export interface UserList {
   /** The User items on this page */
@@ -3772,8 +2650,6 @@ export interface UserList {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const UserList = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<UserList>;
-
 export interface MonitoringConfigCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3786,11 +2662,6 @@ export interface MonitoringConfigCreateOrUpdateRequest {
   /** The metric setting properties. */
   properties: MonitoringMetricConfigurationProperties;
 }
-const MonitoringConfigCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<MonitoringConfigCreateOrUpdateRequest>;
-
 export interface MonitoringConfigCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3803,9 +2674,6 @@ export interface MonitoringConfigCreateOrUpdateResponse {
   /** The metric setting properties. */
   properties: MonitoringMetricConfigurationProperties;
 }
-const MonitoringConfigCreateOrUpdateResponse =
-  GetMonitoringConfigResponse as any as S.Schema<MonitoringConfigCreateOrUpdateResponse>;
-
 /** Order properties. */
 export interface OrderPropertiesInput {
   /** The contact details. */
@@ -3815,11 +2683,6 @@ export interface OrderPropertiesInput {
   /** ShipmentType of the order */
   shipmentType?: ShipmentType | (string & {});
 }
-const OrderPropertiesInput = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<OrderPropertiesInput>;
-
 export interface OrdersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3830,11 +2693,6 @@ export interface OrdersCreateOrUpdateRequest {
   /** The order properties. */
   properties?: OrderPropertiesInput;
 }
-const OrdersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<OrdersCreateOrUpdateRequest>;
-
 export interface OrdersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3849,11 +2707,6 @@ export interface OrdersCreateOrUpdateResponse {
   /** It specify the order api version. */
   kind?: string;
 }
-const OrdersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<OrdersCreateOrUpdateResponse>;
-
 export interface RefreshContainerRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3866,14 +2719,7 @@ export interface RefreshContainerRequest {
   /** The container Name */
   containerName: string;
 }
-const RefreshContainerRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<RefreshContainerRequest>;
-
 export interface RefreshContainerResponse {}
-const RefreshContainerResponse = DeleteAddonResponse as any as S.Schema<RefreshContainerResponse>;
-
 export interface RefreshShareRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3884,11 +2730,7 @@ export interface RefreshShareRequest {
   /** The share name. */
   name: string;
 }
-const RefreshShareRequest = /*@__PURE__*/ __L.at(__c29, 7) as any as S.Schema<RefreshShareRequest>;
-
 export interface RefreshShareResponse {}
-const RefreshShareResponse = DeleteAddonResponse as any as S.Schema<RefreshShareResponse>;
-
 export interface RolesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3901,11 +2743,6 @@ export interface RolesCreateOrUpdateRequest {
   /** Role type. */
   kind: RoleTypes | (string & {});
 }
-const RolesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<RolesCreateOrUpdateRequest>;
-
 export interface RolesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3918,19 +2755,10 @@ export interface RolesCreateOrUpdateResponse {
   /** Role type. */
   kind: RoleTypes;
 }
-const RolesCreateOrUpdateResponse =
-  AddonsCreateOrUpdateResponse as any as S.Schema<RolesCreateOrUpdateResponse>;
-
 /** Mapping of users and corresponding access rights on the share (required for SMB protocol). */
 export type SharePropertiesInputUserAccessRightsList = Array<UserAccessRight>;
-const SharePropertiesInputUserAccessRightsList =
-  SharePropertiesUserAccessRightsList as any as S.Schema<SharePropertiesInputUserAccessRightsList>;
-
 /** List of IP addresses and corresponding access rights on the share(required for NFS protocol). */
 export type SharePropertiesInputClientAccessRightsList = Array<ClientAccessRight>;
-const SharePropertiesInputClientAccessRightsList =
-  SharePropertiesClientAccessRightsList as any as S.Schema<SharePropertiesInputClientAccessRightsList>;
-
 /** The share properties. */
 export interface SharePropertiesInput {
   /** Description for the share. */
@@ -3952,11 +2780,6 @@ export interface SharePropertiesInput {
   /** Data policy of the share. */
   dataPolicy?: DataPolicy | (string & {});
 }
-const SharePropertiesInput = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<SharePropertiesInput>;
-
 export interface SharesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3969,11 +2792,6 @@ export interface SharesCreateOrUpdateRequest {
   /** The share properties. */
   properties: SharePropertiesInput;
 }
-const SharesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<SharesCreateOrUpdateRequest>;
-
 export interface SharesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3986,11 +2804,6 @@ export interface SharesCreateOrUpdateResponse {
   /** The share properties. */
   properties: ShareProperties;
 }
-const SharesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<SharesCreateOrUpdateResponse>;
-
 export interface StorageAccountCredentialsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4003,11 +2816,6 @@ export interface StorageAccountCredentialsCreateOrUpdateRequest {
   /** The storage account credential properties. */
   properties: StorageAccountCredentialProperties;
 }
-const StorageAccountCredentialsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<StorageAccountCredentialsCreateOrUpdateRequest>;
-
 export interface StorageAccountCredentialsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4020,9 +2828,6 @@ export interface StorageAccountCredentialsCreateOrUpdateResponse {
   /** The storage account credential properties. */
   properties: StorageAccountCredentialProperties;
 }
-const StorageAccountCredentialsCreateOrUpdateResponse =
-  GetStorageAccountCredentialsResponse as any as S.Schema<StorageAccountCredentialsCreateOrUpdateResponse>;
-
 /** The storage account properties. */
 export interface StorageAccountPropertiesInput {
   /** Description for the storage Account. */
@@ -4034,11 +2839,6 @@ export interface StorageAccountPropertiesInput {
   /** Storage Account Credential Id */
   storageAccountCredentialId?: string;
 }
-const StorageAccountPropertiesInput = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<StorageAccountPropertiesInput>;
-
 export interface StorageAccountsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4051,11 +2851,6 @@ export interface StorageAccountsCreateOrUpdateRequest {
   /** The Storage Account properties. */
   properties: StorageAccountPropertiesInput;
 }
-const StorageAccountsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<StorageAccountsCreateOrUpdateRequest>;
-
 export interface StorageAccountsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4068,9 +2863,6 @@ export interface StorageAccountsCreateOrUpdateResponse {
   /** The Storage Account properties. */
   properties: StorageAccountProperties;
 }
-const StorageAccountsCreateOrUpdateResponse =
-  GetStorageAccountResponse as any as S.Schema<StorageAccountsCreateOrUpdateResponse>;
-
 export interface TriggersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4083,11 +2875,6 @@ export interface TriggersCreateOrUpdateRequest {
   /** Trigger Kind. */
   kind: TriggerEventType | (string & {});
 }
-const TriggersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<TriggersCreateOrUpdateRequest>;
-
 export interface TriggersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4100,9 +2887,6 @@ export interface TriggersCreateOrUpdateResponse {
   /** Trigger Kind. */
   kind: TriggerEventType;
 }
-const TriggersCreateOrUpdateResponse =
-  AddonsCreateOrUpdateResponse as any as S.Schema<TriggersCreateOrUpdateResponse>;
-
 /** The share properties. */
 export interface SupportPackageRequestProperties {
   /** MinimumTimeStamp from where logs need to be collected */
@@ -4112,11 +2896,6 @@ export interface SupportPackageRequestProperties {
   /** Type of files, which need to be included in the logs This will contain the type of logs (Default/DefaultWithDumps/None/All/DefaultWithArchived) or a comma separated list of log types that are required */
   include?: string;
 }
-const SupportPackageRequestProperties = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<SupportPackageRequestProperties>;
-
 export interface TriggerSupportPackageSupportPackageRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4127,47 +2906,24 @@ export interface TriggerSupportPackageSupportPackageRequest {
   /** The TriggerSupportPackageRequest properties. */
   properties: SupportPackageRequestProperties;
 }
-const TriggerSupportPackageSupportPackageRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<TriggerSupportPackageSupportPackageRequest>;
-
 export interface TriggerSupportPackageSupportPackageResponse {}
-const TriggerSupportPackageSupportPackageResponse =
-  DeleteStorageAccountCredentialsResponse as any as S.Schema<TriggerSupportPackageSupportPackageResponse>;
-
 /** The tags attached to the Data Box Edge/Gateway resource. */
 export type UpdateDeviceRequestTagsMap = { [key: string]: string | undefined };
-const UpdateDeviceRequestTagsMap =
-  DevicesCreateOrUpdateRequestTagsMap as any as S.Schema<UpdateDeviceRequestTagsMap>;
-
 /** The Data Box Edge/Gateway Edge Profile Subscription patch. */
 export interface EdgeProfileSubscriptionPatch {
   /** The path ID that uniquely identifies the subscription of the edge profile. */
   id?: string;
 }
-const EdgeProfileSubscriptionPatch = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<EdgeProfileSubscriptionPatch>;
-
 /** The Data Box Edge/Gateway Edge Profile patch. */
 export interface EdgeProfilePatch {
   /** The Data Box Edge/Gateway Edge Profile Subscription patch */
   subscription?: EdgeProfileSubscriptionPatch;
 }
-const EdgeProfilePatch = /*@__PURE__*/ __L.at(__c31, 3) as any as S.Schema<EdgeProfilePatch>;
-
 /** The Data Box Edge/Gateway device properties patch. */
 export interface DataBoxEdgeDevicePropertiesPatch {
   /** Edge Profile property of the Data Box Edge/Gateway device */
   edgeProfile?: EdgeProfilePatch;
 }
-const DataBoxEdgeDevicePropertiesPatch = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<DataBoxEdgeDevicePropertiesPatch>;
-
 export interface UpdateDeviceRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4182,8 +2938,6 @@ export interface UpdateDeviceRequest {
   /** The properties associated with the Data Box Edge/Gateway resource */
   properties?: DataBoxEdgeDevicePropertiesPatch;
 }
-const UpdateDeviceRequest = /*@__PURE__*/ __L.at(__c31, 5) as any as S.Schema<UpdateDeviceRequest>;
-
 /** Resource tags. */
 export type UpdateDeviceResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDeviceResponse {
@@ -4210,8 +2964,6 @@ export interface UpdateDeviceResponse {
   /** The kind of the device. */
   kind?: DataBoxEdgeDeviceKind;
 }
-const UpdateDeviceResponse = GetDeviceResponse as any as S.Schema<UpdateDeviceResponse>;
-
 export interface UpdateDeviceExtendedInformationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4230,11 +2982,6 @@ export interface UpdateDeviceExtendedInformationRequest {
   /** For changing or to initiate the resync to key-vault set the status to KeyVaultSyncPending, rest of the status will not be applicable. */
   syncStatus?: KeyVaultSyncStatus | (string & {});
 }
-const UpdateDeviceExtendedInformationRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<UpdateDeviceExtendedInformationRequest>;
-
 /** The type of identity that created the resource. */
 export type UpdateDeviceExtendedInformationResponseSystemDataCreatedByType =
   | "User"
@@ -4274,9 +3021,6 @@ export interface UpdateDeviceExtendedInformationResponse {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: UpdateDeviceExtendedInformationResponseSystemData;
 }
-const UpdateDeviceExtendedInformationResponse =
-  GetDeviceExtendedInformationResponse as any as S.Schema<UpdateDeviceExtendedInformationResponse>;
-
 export interface UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4287,12 +3031,6 @@ export interface UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSetting
   /** Properties of the diagnostic proactive log collection settings. */
   properties: ProactiveLogCollectionSettingsProperties;
 }
-const UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest =
-  /*@__PURE__*/ __L.at(
-    __c31,
-    7,
-  ) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest>;
-
 export interface UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4305,9 +3043,6 @@ export interface UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSetting
   /** Properties of the diagnostic proactive log collection settings. */
   properties: ProactiveLogCollectionSettingsProperties;
 }
-const UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse =
-  GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse as any as S.Schema<UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse>;
-
 export interface UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4318,11 +3053,6 @@ export interface UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest 
   /** Properties of the remote support settings. */
   properties: DiagnosticRemoteSupportSettingsProperties;
 }
-const UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest>;
-
 export interface UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4335,15 +3065,8 @@ export interface UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse
   /** Properties of the remote support settings. */
   properties: DiagnosticRemoteSupportSettingsProperties;
 }
-const UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse>;
-
 /** The authentication type. */
 export type AuthenticationType = "Invalid" | "AzureActiveDirectory";
-const AuthenticationType = S.String;
-
 /** Raw Certificate Data. */
 export interface RawCertificateData {
   /** The authentication type. */
@@ -4351,8 +3074,6 @@ export interface RawCertificateData {
   /** The base64 encoded certificate raw data. */
   certificate: string;
 }
-const RawCertificateData = /*@__PURE__*/ __L.at(__c32, 2) as any as S.Schema<RawCertificateData>;
-
 export interface UploadDeviceCertificateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4363,11 +3084,6 @@ export interface UploadDeviceCertificateRequest {
   /** The Base 64 encoded certificate raw data. */
   properties: RawCertificateData;
 }
-const UploadDeviceCertificateRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<UploadDeviceCertificateRequest>;
-
 /** The upload registration certificate response. */
 export interface UploadCertificateResponse {
   /** Specifies authentication type. */
@@ -4387,11 +3103,6 @@ export interface UploadCertificateResponse {
   /** Identifier of the target resource that is the recipient of the requested token. */
   aadAudience?: string;
 }
-const UploadCertificateResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<UploadCertificateResponse>;
-
 /** The user properties. */
 export interface UserPropertiesInput {
   /** The password details. */
@@ -4399,8 +3110,6 @@ export interface UserPropertiesInput {
   /** Type of the user. */
   userType: UserType | (string & {});
 }
-const UserPropertiesInput = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<UserPropertiesInput>;
-
 export interface UsersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4413,11 +3122,6 @@ export interface UsersCreateOrUpdateRequest {
   /** The storage account credential properties. */
   properties: UserPropertiesInput;
 }
-const UsersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<UsersCreateOrUpdateRequest>;
-
 export interface UsersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4430,11 +3134,6 @@ export interface UsersCreateOrUpdateResponse {
   /** The storage account credential properties. */
   properties: UserProperties;
 }
-const UsersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<UsersCreateOrUpdateResponse>;
-
 export type AddonsCreateOrUpdateError = AzureOpError;
 /** Create or update a addon. */
 export const AddonsCreateOrUpdate: API.OperationMethod<
@@ -4443,8 +3142,8 @@ export const AddonsCreateOrUpdate: API.OperationMethod<
   AddonsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddonsCreateOrUpdateRequest,
-  output: AddonsCreateOrUpdateResponse,
+  input: __S(0) as any as S.Schema<AddonsCreateOrUpdateRequest>,
+  output: __S(2) as any as S.Schema<AddonsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4458,8 +3157,8 @@ export const BandwidthSchedulesCreateOrUpdate: API.OperationMethod<
   BandwidthSchedulesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BandwidthSchedulesCreateOrUpdateRequest,
-  output: BandwidthSchedulesCreateOrUpdateResponse,
+  input: __S(5) as any as S.Schema<BandwidthSchedulesCreateOrUpdateRequest>,
+  output: __S(6) as any as S.Schema<BandwidthSchedulesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4473,8 +3172,8 @@ export const CheckDeviceCapacityCheckResourceCreationFeasibility: API.OperationM
   CheckDeviceCapacityCheckResourceCreationFeasibilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckDeviceCapacityCheckResourceCreationFeasibilityRequest,
-  output: CheckDeviceCapacityCheckResourceCreationFeasibilityResponse,
+  input: __S(12) as any as S.Schema<CheckDeviceCapacityCheckResourceCreationFeasibilityRequest>,
+  output: __S(13) as any as S.Schema<CheckDeviceCapacityCheckResourceCreationFeasibilityResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4488,8 +3187,8 @@ export const ContainersCreateOrUpdate: API.OperationMethod<
   ContainersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ContainersCreateOrUpdateRequest,
-  output: ContainersCreateOrUpdateResponse,
+  input: __S(15) as any as S.Schema<ContainersCreateOrUpdateRequest>,
+  output: __S(18) as any as S.Schema<ContainersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4503,8 +3202,8 @@ export const DeleteAddon: API.OperationMethod<
   DeleteAddonError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAddonRequest,
-  output: DeleteAddonResponse,
+  input: __S(19) as any as S.Schema<DeleteAddonRequest>,
+  output: __S(20) as any as S.Schema<DeleteAddonResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4518,8 +3217,8 @@ export const DeleteBandwidthSchedule: API.OperationMethod<
   DeleteBandwidthScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBandwidthScheduleRequest,
-  output: DeleteBandwidthScheduleResponse,
+  input: __S(21) as any as S.Schema<DeleteBandwidthScheduleRequest>,
+  output: __S(22) as any as S.Schema<DeleteBandwidthScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4533,8 +3232,8 @@ export const DeleteContainer: API.OperationMethod<
   DeleteContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteContainerRequest,
-  output: DeleteContainerResponse,
+  input: __S(23) as any as S.Schema<DeleteContainerRequest>,
+  output: __S(20) as any as S.Schema<DeleteContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4548,8 +3247,8 @@ export const DeleteDevice: API.OperationMethod<
   DeleteDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeviceRequest,
-  output: DeleteDeviceResponse,
+  input: __S(24) as any as S.Schema<DeleteDeviceRequest>,
+  output: __S(20) as any as S.Schema<DeleteDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4563,8 +3262,8 @@ export const DeleteMonitoringConfig: API.OperationMethod<
   DeleteMonitoringConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMonitoringConfigRequest,
-  output: DeleteMonitoringConfigResponse,
+  input: __S(25) as any as S.Schema<DeleteMonitoringConfigRequest>,
+  output: __S(20) as any as S.Schema<DeleteMonitoringConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4578,8 +3277,8 @@ export const DeleteOrder: API.OperationMethod<
   DeleteOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOrderRequest,
-  output: DeleteOrderResponse,
+  input: __S(26) as any as S.Schema<DeleteOrderRequest>,
+  output: __S(20) as any as S.Schema<DeleteOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4593,8 +3292,8 @@ export const DeleteRole: API.OperationMethod<
   DeleteRoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRoleRequest,
-  output: DeleteRoleResponse,
+  input: __S(27) as any as S.Schema<DeleteRoleRequest>,
+  output: __S(20) as any as S.Schema<DeleteRoleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4608,8 +3307,8 @@ export const DeleteShare: API.OperationMethod<
   DeleteShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteShareRequest,
-  output: DeleteShareResponse,
+  input: __S(28) as any as S.Schema<DeleteShareRequest>,
+  output: __S(20) as any as S.Schema<DeleteShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4623,8 +3322,8 @@ export const DeleteStorageAccount: API.OperationMethod<
   DeleteStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageAccountRequest,
-  output: DeleteStorageAccountResponse,
+  input: __S(29) as any as S.Schema<DeleteStorageAccountRequest>,
+  output: __S(20) as any as S.Schema<DeleteStorageAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4638,8 +3337,8 @@ export const DeleteStorageAccountCredentials: API.OperationMethod<
   DeleteStorageAccountCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorageAccountCredentialsRequest,
-  output: DeleteStorageAccountCredentialsResponse,
+  input: __S(30) as any as S.Schema<DeleteStorageAccountCredentialsRequest>,
+  output: __S(31) as any as S.Schema<DeleteStorageAccountCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4653,8 +3352,8 @@ export const DeleteTrigger: API.OperationMethod<
   DeleteTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTriggerRequest,
-  output: DeleteTriggerResponse,
+  input: __S(32) as any as S.Schema<DeleteTriggerRequest>,
+  output: __S(20) as any as S.Schema<DeleteTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4668,8 +3367,8 @@ export const DeleteUser: API.OperationMethod<
   DeleteUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserRequest,
-  output: DeleteUserResponse,
+  input: __S(33) as any as S.Schema<DeleteUserRequest>,
+  output: __S(20) as any as S.Schema<DeleteUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4683,8 +3382,8 @@ export const DevicesCreateOrUpdate: API.OperationMethod<
   DevicesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DevicesCreateOrUpdateRequest,
-  output: DevicesCreateOrUpdateResponse,
+  input: __S(38) as any as S.Schema<DevicesCreateOrUpdateRequest>,
+  output: __S(48) as any as S.Schema<DevicesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4698,8 +3397,8 @@ export const DevicesCreateOrUpdateSecuritySettings: API.OperationMethod<
   DevicesCreateOrUpdateSecuritySettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DevicesCreateOrUpdateSecuritySettingsRequest,
-  output: DevicesCreateOrUpdateSecuritySettingsResponse,
+  input: __S(51) as any as S.Schema<DevicesCreateOrUpdateSecuritySettingsRequest>,
+  output: __S(31) as any as S.Schema<DevicesCreateOrUpdateSecuritySettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4713,8 +3412,8 @@ export const DevicesGetUpdateSummary: API.OperationMethod<
   DevicesGetUpdateSummaryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DevicesGetUpdateSummaryRequest,
-  output: DevicesGetUpdateSummaryResponse,
+  input: __S(52) as any as S.Schema<DevicesGetUpdateSummaryRequest>,
+  output: __S(56) as any as S.Schema<DevicesGetUpdateSummaryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4728,8 +3427,8 @@ export const DevicesScanForUpdates: API.OperationMethod<
   DevicesScanForUpdatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DevicesScanForUpdatesRequest,
-  output: DevicesScanForUpdatesResponse,
+  input: __S(57) as any as S.Schema<DevicesScanForUpdatesRequest>,
+  output: __S(20) as any as S.Schema<DevicesScanForUpdatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4743,8 +3442,8 @@ export const DownloadDeviceUpdates: API.OperationMethod<
   DownloadDeviceUpdatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadDeviceUpdatesRequest,
-  output: DownloadDeviceUpdatesResponse,
+  input: __S(58) as any as S.Schema<DownloadDeviceUpdatesRequest>,
+  output: __S(20) as any as S.Schema<DownloadDeviceUpdatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4758,8 +3457,8 @@ export const GenerateDeviceCertificate: API.OperationMethod<
   GenerateDeviceCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateDeviceCertificateRequest,
-  output: GenerateCertResponse,
+  input: __S(59) as any as S.Schema<GenerateDeviceCertificateRequest>,
+  output: __S(60) as any as S.Schema<GenerateCertResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4773,8 +3472,8 @@ export const GetAddon: API.OperationMethod<
   GetAddonError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAddonRequest,
-  output: GetAddonResponse,
+  input: __S(61) as any as S.Schema<GetAddonRequest>,
+  output: __S(62) as any as S.Schema<GetAddonResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4788,8 +3487,8 @@ export const GetAlert: API.OperationMethod<
   GetAlertError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAlertRequest,
-  output: GetAlertResponse,
+  input: __S(63) as any as S.Schema<GetAlertRequest>,
+  output: __S(66) as any as S.Schema<GetAlertResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4803,8 +3502,8 @@ export const GetBandwidthSchedule: API.OperationMethod<
   GetBandwidthScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBandwidthScheduleRequest,
-  output: GetBandwidthScheduleResponse,
+  input: __S(67) as any as S.Schema<GetBandwidthScheduleRequest>,
+  output: __S(6) as any as S.Schema<GetBandwidthScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4818,8 +3517,8 @@ export const GetContainer: API.OperationMethod<
   GetContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContainerRequest,
-  output: GetContainerResponse,
+  input: __S(68) as any as S.Schema<GetContainerRequest>,
+  output: __S(69) as any as S.Schema<GetContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4833,8 +3532,8 @@ export const GetDevice: API.OperationMethod<
   GetDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeviceRequest,
-  output: GetDeviceResponse,
+  input: __S(70) as any as S.Schema<GetDeviceRequest>,
+  output: __S(71) as any as S.Schema<GetDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4848,8 +3547,8 @@ export const GetDeviceCapacityInfoDeviceCapacityInfo: API.OperationMethod<
   GetDeviceCapacityInfoDeviceCapacityInfoError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeviceCapacityInfoDeviceCapacityInfoRequest,
-  output: GetDeviceCapacityInfoDeviceCapacityInfoResponse,
+  input: __S(72) as any as S.Schema<GetDeviceCapacityInfoDeviceCapacityInfoRequest>,
+  output: __S(85) as any as S.Schema<GetDeviceCapacityInfoDeviceCapacityInfoResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4863,8 +3562,8 @@ export const GetDeviceExtendedInformation: API.OperationMethod<
   GetDeviceExtendedInformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeviceExtendedInformationRequest,
-  output: GetDeviceExtendedInformationResponse,
+  input: __S(86) as any as S.Schema<GetDeviceExtendedInformationRequest>,
+  output: __S(91) as any as S.Schema<GetDeviceExtendedInformationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4878,8 +3577,8 @@ export const GetDeviceNetworkSettings: API.OperationMethod<
   GetDeviceNetworkSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeviceNetworkSettingsRequest,
-  output: GetDeviceNetworkSettingsResponse,
+  input: __S(92) as any as S.Schema<GetDeviceNetworkSettingsRequest>,
+  output: __S(99) as any as S.Schema<GetDeviceNetworkSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4893,8 +3592,12 @@ export const GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettings: API.
   GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest,
-  output: GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse,
+  input: __S(
+    100,
+  ) as any as S.Schema<GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest>,
+  output: __S(
+    102,
+  ) as any as S.Schema<GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4908,8 +3611,8 @@ export const GetDiagnosticSettingsDiagnosticRemoteSupportSettings: API.Operation
   GetDiagnosticSettingsDiagnosticRemoteSupportSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest,
-  output: GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse,
+  input: __S(103) as any as S.Schema<GetDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest>,
+  output: __S(107) as any as S.Schema<GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4923,8 +3626,8 @@ export const GetJob: API.OperationMethod<
   GetJobError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJobRequest,
-  output: GetJobResponse,
+  input: __S(108) as any as S.Schema<GetJobRequest>,
+  output: __S(115) as any as S.Schema<GetJobResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4938,8 +3641,8 @@ export const GetMonitoringConfig: API.OperationMethod<
   GetMonitoringConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMonitoringConfigRequest,
-  output: GetMonitoringConfigResponse,
+  input: __S(116) as any as S.Schema<GetMonitoringConfigRequest>,
+  output: __S(126) as any as S.Schema<GetMonitoringConfigResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4953,8 +3656,8 @@ export const GetOperationsStatus: API.OperationMethod<
   GetOperationsStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOperationsStatusRequest,
-  output: GetOperationsStatusResponse,
+  input: __S(127) as any as S.Schema<GetOperationsStatusRequest>,
+  output: __S(128) as any as S.Schema<GetOperationsStatusResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4968,8 +3671,8 @@ export const GetOrder: API.OperationMethod<
   GetOrderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrderRequest,
-  output: GetOrderResponse,
+  input: __S(129) as any as S.Schema<GetOrderRequest>,
+  output: __S(137) as any as S.Schema<GetOrderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4983,8 +3686,8 @@ export const GetRole: API.OperationMethod<
   GetRoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRoleRequest,
-  output: GetRoleResponse,
+  input: __S(138) as any as S.Schema<GetRoleRequest>,
+  output: __S(62) as any as S.Schema<GetRoleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4998,8 +3701,8 @@ export const GetShare: API.OperationMethod<
   GetShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetShareRequest,
-  output: GetShareResponse,
+  input: __S(139) as any as S.Schema<GetShareRequest>,
+  output: __S(148) as any as S.Schema<GetShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5013,8 +3716,8 @@ export const GetStorageAccount: API.OperationMethod<
   GetStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStorageAccountRequest,
-  output: GetStorageAccountResponse,
+  input: __S(149) as any as S.Schema<GetStorageAccountRequest>,
+  output: __S(151) as any as S.Schema<GetStorageAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5028,8 +3731,8 @@ export const GetStorageAccountCredentials: API.OperationMethod<
   GetStorageAccountCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStorageAccountCredentialsRequest,
-  output: GetStorageAccountCredentialsResponse,
+  input: __S(152) as any as S.Schema<GetStorageAccountCredentialsRequest>,
+  output: __S(154) as any as S.Schema<GetStorageAccountCredentialsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5043,8 +3746,8 @@ export const GetTrigger: API.OperationMethod<
   GetTriggerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTriggerRequest,
-  output: GetTriggerResponse,
+  input: __S(155) as any as S.Schema<GetTriggerRequest>,
+  output: __S(62) as any as S.Schema<GetTriggerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5058,8 +3761,8 @@ export const GetUser: API.OperationMethod<
   GetUserError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserRequest,
-  output: GetUserResponse,
+  input: __S(156) as any as S.Schema<GetUserRequest>,
+  output: __S(160) as any as S.Schema<GetUserResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5073,8 +3776,8 @@ export const InstallDeviceUpdates: API.OperationMethod<
   InstallDeviceUpdatesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InstallDeviceUpdatesRequest,
-  output: InstallDeviceUpdatesResponse,
+  input: __S(161) as any as S.Schema<InstallDeviceUpdatesRequest>,
+  output: __S(20) as any as S.Schema<InstallDeviceUpdatesResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5088,8 +3791,8 @@ export const ListAddonByRole: API.OperationMethod<
   ListAddonByRoleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAddonByRoleRequest,
-  output: AddonList,
+  input: __S(162) as any as S.Schema<ListAddonByRoleRequest>,
+  output: __S(164) as any as S.Schema<AddonList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5103,8 +3806,8 @@ export const ListAlertByDataBoxEdgeDevice: API.OperationMethod<
   ListAlertByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAlertByDataBoxEdgeDeviceRequest,
-  output: AlertList,
+  input: __S(165) as any as S.Schema<ListAlertByDataBoxEdgeDeviceRequest>,
+  output: __S(167) as any as S.Schema<AlertList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5118,8 +3821,8 @@ export const ListAvailableSkus: API.OperationMethod<
   ListAvailableSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAvailableSkusRequest,
-  output: DataBoxEdgeSkuList,
+  input: __S(168) as any as S.Schema<ListAvailableSkusRequest>,
+  output: __S(177) as any as S.Schema<DataBoxEdgeSkuList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5133,8 +3836,8 @@ export const ListBandwidthScheduleByDataBoxEdgeDevice: API.OperationMethod<
   ListBandwidthScheduleByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBandwidthScheduleByDataBoxEdgeDeviceRequest,
-  output: BandwidthSchedulesList,
+  input: __S(178) as any as S.Schema<ListBandwidthScheduleByDataBoxEdgeDeviceRequest>,
+  output: __S(181) as any as S.Schema<BandwidthSchedulesList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5148,8 +3851,8 @@ export const ListContainerByStorageAccount: API.OperationMethod<
   ListContainerByStorageAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListContainerByStorageAccountRequest,
-  output: ContainerList,
+  input: __S(182) as any as S.Schema<ListContainerByStorageAccountRequest>,
+  output: __S(184) as any as S.Schema<ContainerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5163,8 +3866,8 @@ export const ListDeviceByResourceGroup: API.OperationMethod<
   ListDeviceByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeviceByResourceGroupRequest,
-  output: DataBoxEdgeDeviceList,
+  input: __S(185) as any as S.Schema<ListDeviceByResourceGroupRequest>,
+  output: __S(187) as any as S.Schema<DataBoxEdgeDeviceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5178,8 +3881,8 @@ export const ListDeviceBySubscription: API.OperationMethod<
   ListDeviceBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeviceBySubscriptionRequest,
-  output: DataBoxEdgeDeviceList,
+  input: __S(188) as any as S.Schema<ListDeviceBySubscriptionRequest>,
+  output: __S(187) as any as S.Schema<DataBoxEdgeDeviceList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5193,8 +3896,8 @@ export const ListMonitoringConfig: API.OperationMethod<
   ListMonitoringConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMonitoringConfigRequest,
-  output: MonitoringMetricConfigurationList,
+  input: __S(189) as any as S.Schema<ListMonitoringConfigRequest>,
+  output: __S(191) as any as S.Schema<MonitoringMetricConfigurationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5208,8 +3911,8 @@ export const ListNodeByDataBoxEdgeDevice: API.OperationMethod<
   ListNodeByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNodeByDataBoxEdgeDeviceRequest,
-  output: NodeList,
+  input: __S(192) as any as S.Schema<ListNodeByDataBoxEdgeDeviceRequest>,
+  output: __S(196) as any as S.Schema<NodeList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5223,8 +3926,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationsList,
+  input: __S(197) as any as S.Schema<ListOperationsRequest>,
+  output: __S(207) as any as S.Schema<OperationsList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5238,8 +3941,8 @@ export const ListOrderByDataBoxEdgeDevice: API.OperationMethod<
   ListOrderByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrderByDataBoxEdgeDeviceRequest,
-  output: OrderList,
+  input: __S(208) as any as S.Schema<ListOrderByDataBoxEdgeDeviceRequest>,
+  output: __S(210) as any as S.Schema<OrderList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5253,8 +3956,8 @@ export const ListOrderDCAccessCode: API.OperationMethod<
   ListOrderDCAccessCodeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrderDCAccessCodeRequest,
-  output: DCAccessCode,
+  input: __S(211) as any as S.Schema<ListOrderDCAccessCodeRequest>,
+  output: __S(213) as any as S.Schema<DCAccessCode>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5268,8 +3971,8 @@ export const ListRoleByDataBoxEdgeDevice: API.OperationMethod<
   ListRoleByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRoleByDataBoxEdgeDeviceRequest,
-  output: RoleList,
+  input: __S(214) as any as S.Schema<ListRoleByDataBoxEdgeDeviceRequest>,
+  output: __S(216) as any as S.Schema<RoleList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5283,8 +3986,8 @@ export const ListShareByDataBoxEdgeDevice: API.OperationMethod<
   ListShareByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListShareByDataBoxEdgeDeviceRequest,
-  output: ShareList,
+  input: __S(217) as any as S.Schema<ListShareByDataBoxEdgeDeviceRequest>,
+  output: __S(219) as any as S.Schema<ShareList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5298,8 +4001,8 @@ export const ListStorageAccountByDataBoxEdgeDevice: API.OperationMethod<
   ListStorageAccountByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorageAccountByDataBoxEdgeDeviceRequest,
-  output: StorageAccountList,
+  input: __S(220) as any as S.Schema<ListStorageAccountByDataBoxEdgeDeviceRequest>,
+  output: __S(223) as any as S.Schema<StorageAccountList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5313,8 +4016,8 @@ export const ListStorageAccountCredentialsByDataBoxEdgeDevice: API.OperationMeth
   ListStorageAccountCredentialsByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorageAccountCredentialsByDataBoxEdgeDeviceRequest,
-  output: StorageAccountCredentialList,
+  input: __S(224) as any as S.Schema<ListStorageAccountCredentialsByDataBoxEdgeDeviceRequest>,
+  output: __S(227) as any as S.Schema<StorageAccountCredentialList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5328,8 +4031,8 @@ export const ListTriggerByDataBoxEdgeDevice: API.OperationMethod<
   ListTriggerByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTriggerByDataBoxEdgeDeviceRequest,
-  output: TriggerList,
+  input: __S(228) as any as S.Schema<ListTriggerByDataBoxEdgeDeviceRequest>,
+  output: __S(230) as any as S.Schema<TriggerList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5343,8 +4046,8 @@ export const ListUserByDataBoxEdgeDevice: API.OperationMethod<
   ListUserByDataBoxEdgeDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUserByDataBoxEdgeDeviceRequest,
-  output: UserList,
+  input: __S(231) as any as S.Schema<ListUserByDataBoxEdgeDeviceRequest>,
+  output: __S(233) as any as S.Schema<UserList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5358,8 +4061,8 @@ export const MonitoringConfigCreateOrUpdate: API.OperationMethod<
   MonitoringConfigCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MonitoringConfigCreateOrUpdateRequest,
-  output: MonitoringConfigCreateOrUpdateResponse,
+  input: __S(234) as any as S.Schema<MonitoringConfigCreateOrUpdateRequest>,
+  output: __S(126) as any as S.Schema<MonitoringConfigCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5373,8 +4076,8 @@ export const OrdersCreateOrUpdate: API.OperationMethod<
   OrdersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OrdersCreateOrUpdateRequest,
-  output: OrdersCreateOrUpdateResponse,
+  input: __S(236) as any as S.Schema<OrdersCreateOrUpdateRequest>,
+  output: __S(237) as any as S.Schema<OrdersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5388,8 +4091,8 @@ export const RefreshContainer: API.OperationMethod<
   RefreshContainerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RefreshContainerRequest,
-  output: RefreshContainerResponse,
+  input: __S(238) as any as S.Schema<RefreshContainerRequest>,
+  output: __S(20) as any as S.Schema<RefreshContainerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5403,8 +4106,8 @@ export const RefreshShare: API.OperationMethod<
   RefreshShareError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RefreshShareRequest,
-  output: RefreshShareResponse,
+  input: __S(239) as any as S.Schema<RefreshShareRequest>,
+  output: __S(20) as any as S.Schema<RefreshShareResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5418,8 +4121,8 @@ export const RolesCreateOrUpdate: API.OperationMethod<
   RolesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RolesCreateOrUpdateRequest,
-  output: RolesCreateOrUpdateResponse,
+  input: __S(240) as any as S.Schema<RolesCreateOrUpdateRequest>,
+  output: __S(2) as any as S.Schema<RolesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5433,8 +4136,8 @@ export const SharesCreateOrUpdate: API.OperationMethod<
   SharesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SharesCreateOrUpdateRequest,
-  output: SharesCreateOrUpdateResponse,
+  input: __S(242) as any as S.Schema<SharesCreateOrUpdateRequest>,
+  output: __S(243) as any as S.Schema<SharesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5448,8 +4151,8 @@ export const StorageAccountCredentialsCreateOrUpdate: API.OperationMethod<
   StorageAccountCredentialsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StorageAccountCredentialsCreateOrUpdateRequest,
-  output: StorageAccountCredentialsCreateOrUpdateResponse,
+  input: __S(244) as any as S.Schema<StorageAccountCredentialsCreateOrUpdateRequest>,
+  output: __S(154) as any as S.Schema<StorageAccountCredentialsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5463,8 +4166,8 @@ export const StorageAccountsCreateOrUpdate: API.OperationMethod<
   StorageAccountsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StorageAccountsCreateOrUpdateRequest,
-  output: StorageAccountsCreateOrUpdateResponse,
+  input: __S(246) as any as S.Schema<StorageAccountsCreateOrUpdateRequest>,
+  output: __S(151) as any as S.Schema<StorageAccountsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5478,8 +4181,8 @@ export const TriggersCreateOrUpdate: API.OperationMethod<
   TriggersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TriggersCreateOrUpdateRequest,
-  output: TriggersCreateOrUpdateResponse,
+  input: __S(247) as any as S.Schema<TriggersCreateOrUpdateRequest>,
+  output: __S(2) as any as S.Schema<TriggersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5493,8 +4196,8 @@ export const TriggerSupportPackageSupportPackage: API.OperationMethod<
   TriggerSupportPackageSupportPackageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TriggerSupportPackageSupportPackageRequest,
-  output: TriggerSupportPackageSupportPackageResponse,
+  input: __S(249) as any as S.Schema<TriggerSupportPackageSupportPackageRequest>,
+  output: __S(31) as any as S.Schema<TriggerSupportPackageSupportPackageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5508,8 +4211,8 @@ export const UpdateDevice: API.OperationMethod<
   UpdateDeviceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDeviceRequest,
-  output: UpdateDeviceResponse,
+  input: __S(253) as any as S.Schema<UpdateDeviceRequest>,
+  output: __S(71) as any as S.Schema<UpdateDeviceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5523,8 +4226,8 @@ export const UpdateDeviceExtendedInformation: API.OperationMethod<
   UpdateDeviceExtendedInformationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDeviceExtendedInformationRequest,
-  output: UpdateDeviceExtendedInformationResponse,
+  input: __S(254) as any as S.Schema<UpdateDeviceExtendedInformationRequest>,
+  output: __S(91) as any as S.Schema<UpdateDeviceExtendedInformationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5538,8 +4241,12 @@ export const UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettings: A
   UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest,
-  output: UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse,
+  input: __S(
+    255,
+  ) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsRequest>,
+  output: __S(
+    102,
+  ) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5553,8 +4260,12 @@ export const UpdateDiagnosticSettingsDiagnosticRemoteSupportSettings: API.Operat
   UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest,
-  output: UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse,
+  input: __S(
+    256,
+  ) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsRequest>,
+  output: __S(
+    257,
+  ) as any as S.Schema<UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5568,8 +4279,8 @@ export const UploadDeviceCertificate: API.OperationMethod<
   UploadDeviceCertificateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UploadDeviceCertificateRequest,
-  output: UploadCertificateResponse,
+  input: __S(259) as any as S.Schema<UploadDeviceCertificateRequest>,
+  output: __S(260) as any as S.Schema<UploadCertificateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5583,8 +4294,8 @@ export const UsersCreateOrUpdate: API.OperationMethod<
   UsersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsersCreateOrUpdateRequest,
-  output: UsersCreateOrUpdateResponse,
+  input: __S(262) as any as S.Schema<UsersCreateOrUpdateRequest>,
+  output: __S(263) as any as S.Schema<UsersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5601,7 +4312,7 @@ function __c0(j: number): any {
           deviceName: S.String.pipe(T.Label()),
           roleName: S.String.pipe(T.Label()),
           addonName: S.String.pipe(T.Label()),
-          kind: AddonType,
+          kind: S.String,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5617,10 +4328,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -5630,21 +4341,21 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          kind: AddonType,
+          systemData: S.optional(__S(1)),
+          kind: S.String,
         }),
       ).annotate({
         identifier: "AddonsCreateOrUpdateResponse",
       });
     case 3:
-      return S.Array(DayOfWeek);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
           start: S.String,
           stop: S.String,
           rateInMbps: S.Number,
-          days: BandwidthSchedulePropertiesDaysList,
+          days: __S(3),
         }),
       ).annotate({
         identifier: "BandwidthScheduleProperties",
@@ -5656,7 +4367,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: BandwidthScheduleProperties,
+          properties: __S(4),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5674,8 +4385,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: BandwidthScheduleProperties,
+          systemData: S.optional(__S(1)),
+          properties: __S(4),
         }),
       ).annotate({
         identifier: "BandwidthSchedulesCreateOrUpdateResponse",
@@ -5687,23 +4398,23 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DeviceCapacityRequestInfoPropertiesVmPlacementQueryItemList);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          vmSize: S.optional(VmPlacementRequestResultVmSizeList),
+          vmSize: S.optional(__S(7)),
           isFeasible: S.optional(S.Boolean),
           messageCode: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "VmPlacementRequestResult" });
     case 2:
-      return S.Array(VmPlacementRequestResult);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          vmPlacementQuery: DeviceCapacityRequestInfoPropertiesVmPlacementQueryList,
-          vmPlacementResults: S.optional(DeviceCapacityRequestInfoPropertiesVmPlacementResultsList),
+          vmPlacementQuery: __S(8),
+          vmPlacementResults: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "DeviceCapacityRequestInfoProperties",
@@ -5715,7 +4426,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           capacityName: S.optional(S.String.pipe(T.Query())),
-          properties: DeviceCapacityRequestInfoProperties,
+          properties: __S(11),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5734,7 +4445,7 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          dataFormat: AzureContainerDataFormat,
+          dataFormat: S.String,
         }),
       ).annotate({ identifier: "ContainerPropertiesInput" });
     case 7:
@@ -5745,7 +4456,7 @@ function __c1(j: number): any {
           deviceName: S.String.pipe(T.Label()),
           storageAccountName: S.String.pipe(T.Label()),
           containerName: S.String.pipe(T.Label()),
-          properties: ContainerPropertiesInput,
+          properties: __S(14),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5773,9 +4484,9 @@ function __c2(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          containerStatus: S.optional(ContainerStatus),
-          dataFormat: AzureContainerDataFormat,
-          refreshDetails: S.optional(RefreshDetails),
+          containerStatus: S.optional(S.String),
+          dataFormat: S.String,
+          refreshDetails: S.optional(__S(16)),
           createdDateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerProperties" });
@@ -5785,8 +4496,8 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ContainerProperties,
+          systemData: S.optional(__S(1)),
+          properties: __S(17),
         }),
       ).annotate({
         identifier: "ContainersCreateOrUpdateResponse",
@@ -6016,13 +4727,13 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(DataResidencyType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataResidency" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dataResidency: S.optional(DataResidency),
+          dataResidency: S.optional(__S(35)),
         }),
       ).annotate({
         identifier: "DataBoxEdgeDevicePropertiesInput",
@@ -6030,8 +4741,8 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(SkuName),
-          tier: S.optional(SkuTier),
+          name: S.optional(S.String),
+          tier: S.optional(S.String),
         }),
       ).annotate({ identifier: "Sku" });
     case 6:
@@ -6040,12 +4751,12 @@ function __c4(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          tags: S.optional(DevicesCreateOrUpdateRequestTagsMap),
+          tags: S.optional(__S(34)),
           location: S.String,
-          properties: S.optional(DataBoxEdgeDevicePropertiesInput),
-          sku: S.optional(Sku),
+          properties: S.optional(__S(36)),
+          sku: S.optional(__S(37)),
           etag: S.optional(S.String),
-          identity: S.optional(ResourceIdentityInput),
+          identity: S.optional(__S(35)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6061,10 +4772,10 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(DataBoxEdgeDevicePropertiesSystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(DataBoxEdgeDevicePropertiesSystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -6077,7 +4788,7 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          operationInProgress: S.optional(ResourceMoveStatus),
+          operationInProgress: S.optional(S.String),
           operationInProgressLockTimeoutInUTC: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceMoveDetails" });
@@ -6091,7 +4802,7 @@ function __c5(j: number): any {
         identifier: "SubscriptionRegisteredFeatures",
       });
     case 2:
-      return S.Array(SubscriptionRegisteredFeatures);
+      return S.Array(__S(41));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6099,7 +4810,7 @@ function __c5(j: number): any {
           locationPlacementId: S.optional(S.String),
           quotaId: S.optional(S.String),
           serializedDetails: S.optional(S.String),
-          registeredFeatures: S.optional(SubscriptionPropertiesRegisteredFeaturesList),
+          registeredFeatures: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "SubscriptionProperties" });
     case 4:
@@ -6107,27 +4818,27 @@ function __c5(j: number): any {
         S.Struct({
           registrationId: S.optional(S.String),
           id: S.optional(S.String),
-          state: S.optional(SubscriptionState),
+          state: S.optional(S.String),
           registrationDate: S.optional(S.String),
           subscriptionId: S.optional(S.String),
-          properties: S.optional(SubscriptionProperties),
+          properties: S.optional(__S(43)),
         }),
       ).annotate({ identifier: "EdgeProfileSubscription" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          subscription: S.optional(EdgeProfileSubscription),
+          subscription: S.optional(__S(44)),
         }),
       ).annotate({ identifier: "EdgeProfile" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          systemData: S.optional(DataBoxEdgeDevicePropertiesSystemData),
-          dataBoxEdgeDeviceStatus: S.optional(DataBoxEdgeDeviceStatus),
+          systemData: S.optional(__S(39)),
+          dataBoxEdgeDeviceStatus: S.optional(S.String),
           serialNumber: S.optional(S.String),
           description: S.optional(S.String),
           modelDescription: S.optional(S.String),
-          deviceType: S.optional(DeviceType),
+          deviceType: S.optional(S.String),
           friendlyName: S.optional(S.String),
           culture: S.optional(S.String),
           deviceModel: S.optional(S.String),
@@ -6135,11 +4846,11 @@ function __c5(j: number): any {
           deviceLocalCapacity: S.optional(S.Number),
           timeZone: S.optional(S.String),
           deviceHcsVersion: S.optional(S.String),
-          configuredRoleTypes: S.optional(DataBoxEdgeDevicePropertiesConfiguredRoleTypesList),
+          configuredRoleTypes: S.optional(__S(3)),
           nodeCount: S.optional(S.Number),
-          resourceMoveDetails: S.optional(ResourceMoveDetails),
-          edgeProfile: S.optional(EdgeProfile),
-          dataResidency: S.optional(DataResidency),
+          resourceMoveDetails: S.optional(__S(40)),
+          edgeProfile: S.optional(__S(45)),
+          dataResidency: S.optional(__S(35)),
           kubernetesWorkloadProfile: S.optional(S.String),
         }),
       ).annotate({
@@ -6148,7 +4859,7 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(MsiIdentityType),
+          type: S.optional(S.String),
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
         }),
@@ -6163,14 +4874,14 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(DevicesCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(1)),
+          tags: S.optional(__S(34)),
           location: S.String,
-          properties: S.optional(DataBoxEdgeDeviceProperties),
-          sku: S.optional(Sku),
+          properties: S.optional(__S(46)),
+          sku: S.optional(__S(37)),
           etag: S.optional(S.String),
-          identity: S.optional(ResourceIdentity),
-          kind: S.optional(DataBoxEdgeDeviceKind),
+          identity: S.optional(__S(47)),
+          kind: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DevicesCreateOrUpdateResponse",
@@ -6180,7 +4891,7 @@ function __c6(j: number): any {
         S.Struct({
           value: S.String,
           encryptionCertThumbprint: S.optional(S.String),
-          encryptionAlgorithm: EncryptionAlgorithm,
+          encryptionAlgorithm: S.String,
         }),
       ).annotate({
         identifier: "AsymmetricEncryptedSecret",
@@ -6188,7 +4899,7 @@ function __c6(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          deviceAdminPassword: AsymmetricEncryptedSecret,
+          deviceAdminPassword: __S(49),
         }),
       ).annotate({
         identifier: "SecuritySettingsProperties",
@@ -6199,7 +4910,7 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: SecuritySettingsProperties,
+          properties: __S(50),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6233,17 +4944,17 @@ function __c6(j: number): any {
         S.Struct({
           updateTitle: S.optional(S.String),
           updateSize: S.optional(S.Number),
-          updateType: S.optional(UpdateType),
+          updateType: S.optional(S.String),
           targetVersion: S.optional(S.String),
           friendlyVersionNumber: S.optional(S.String),
           estimatedInstallTimeInMins: S.optional(S.Number),
-          rebootBehavior: S.optional(InstallRebootBehavior),
-          installationImpact: S.optional(InstallationImpact),
-          status: S.optional(UpdateStatus),
+          rebootBehavior: S.optional(S.String),
+          installationImpact: S.optional(S.String),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateDetails" });
     case 6:
-      return S.Array(UpdateDetails);
+      return S.Array(__S(53));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -6254,22 +4965,22 @@ function __c6(j: number): any {
           lastSuccessfulScanJobTime: S.optional(S.String),
           lastCompletedDownloadJobDateTime: S.optional(S.String),
           lastCompletedDownloadJobId: S.optional(S.String),
-          lastDownloadJobStatus: S.optional(JobStatus),
+          lastDownloadJobStatus: S.optional(S.String),
           lastSuccessfulInstallJobDateTime: S.optional(S.String),
           lastCompletedInstallJobDateTime: S.optional(S.String),
           lastCompletedInstallJobId: S.optional(S.String),
-          lastInstallJobStatus: S.optional(JobStatus),
+          lastInstallJobStatus: S.optional(S.String),
           totalNumberOfUpdatesAvailable: S.optional(S.Number),
           totalNumberOfUpdatesPendingDownload: S.optional(S.Number),
           totalNumberOfUpdatesPendingInstall: S.optional(S.Number),
-          rebootBehavior: S.optional(InstallRebootBehavior),
-          ongoingUpdateOperation: S.optional(UpdateOperation),
+          rebootBehavior: S.optional(S.String),
+          ongoingUpdateOperation: S.optional(S.String),
           inProgressDownloadJobId: S.optional(S.String),
           inProgressInstallJobId: S.optional(S.String),
           inProgressDownloadJobStartedDateTime: S.optional(S.String),
           inProgressInstallJobStartedDateTime: S.optional(S.String),
-          updateTitles: S.optional(UpdateSummaryPropertiesUpdateTitlesList),
-          updates: S.optional(UpdateSummaryPropertiesUpdatesList),
+          updateTitles: S.optional(__S(7)),
+          updates: S.optional(__S(54)),
           totalUpdateSizeInBytes: S.optional(S.Number),
           totalTimeInMinutes: S.optional(S.Number),
         }),
@@ -6284,8 +4995,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(UpdateSummaryProperties),
+          systemData: S.optional(__S(1)),
+          properties: S.optional(__S(55)),
         }),
       ).annotate({
         identifier: "DevicesGetUpdateSummaryResponse",
@@ -6372,8 +5083,8 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          kind: AddonType,
+          systemData: S.optional(__S(1)),
+          kind: S.String,
         }),
       ).annotate({ identifier: "GetAddonResponse" });
     case 7:
@@ -6411,9 +5122,9 @@ function __c8(j: number): any {
           alertType: S.optional(S.String),
           appearedAtDateTime: S.optional(S.String),
           recommendation: S.optional(S.String),
-          severity: S.optional(AlertSeverity),
-          errorDetails: S.optional(AlertErrorDetails),
-          detailedInformation: S.optional(AlertPropertiesDetailedInformationMap),
+          severity: S.optional(S.String),
+          errorDetails: S.optional(__S(64)),
+          detailedInformation: S.optional(__S(34)),
         }),
       ).annotate({ identifier: "AlertProperties" });
     case 2:
@@ -6422,8 +5133,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(AlertProperties),
+          systemData: S.optional(__S(1)),
+          properties: S.optional(__S(65)),
         }),
       ).annotate({ identifier: "GetAlertResponse" });
     case 3:
@@ -6467,8 +5178,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ContainerProperties,
+          systemData: S.optional(__S(1)),
+          properties: __S(17),
         }),
       ).annotate({ identifier: "GetContainerResponse" });
     case 6:
@@ -6492,14 +5203,14 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetDeviceResponseTagsMap),
+          systemData: S.optional(__S(1)),
+          tags: S.optional(__S(34)),
           location: S.String,
-          properties: S.optional(DataBoxEdgeDeviceProperties),
-          sku: S.optional(Sku),
+          properties: S.optional(__S(46)),
+          sku: S.optional(__S(37)),
           etag: S.optional(S.String),
-          identity: S.optional(ResourceIdentity),
-          kind: S.optional(DataBoxEdgeDeviceKind),
+          identity: S.optional(__S(47)),
+          kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetDeviceResponse" });
   }
@@ -6558,8 +5269,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fqdn: S.optional(S.String),
-          gpuCapacity: S.optional(ClusterGpuCapacity),
-          memoryCapacity: S.optional(ClusterMemoryCapacity),
+          gpuCapacity: S.optional(__S(74)),
+          memoryCapacity: S.optional(__S(75)),
           lastRefreshedTime: S.optional(S.String),
           totalProvisionedNonHpnCores: S.optional(S.Number),
         }),
@@ -6572,7 +5283,7 @@ function __c9(j: number): any {
         }),
       ).annotate({ identifier: "VmMemory" });
     case 6:
-      return S.Record(S.String, VmMemory);
+      return S.Record(S.String, __S(77));
     case 7:
       return S.Array(S.Number);
   }
@@ -6586,33 +5297,33 @@ function __c10(j: number): any {
           totalMemoryInMb: S.optional(S.Number),
           logicalCoreCountPerCore: S.optional(S.Number),
           effectiveAvailableMemoryInMb: S.optional(S.Number),
-          freeVCpuIndexesForHpn: S.optional(NumaNodeDataFreeVCpuIndexesForHpnList),
-          vCpuIndexesForHpn: S.optional(NumaNodeDataVCpuIndexesForHpnList),
-          vCpuIndexesForRoot: S.optional(NumaNodeDataVCpuIndexesForRootList),
+          freeVCpuIndexesForHpn: S.optional(__S(79)),
+          vCpuIndexesForHpn: S.optional(__S(79)),
+          vCpuIndexesForRoot: S.optional(__S(79)),
         }),
       ).annotate({ identifier: "NumaNodeData" });
     case 1:
-      return S.Array(NumaNodeData);
+      return S.Array(__S(80));
     case 2:
       return S.suspend(() =>
         S.Struct({
           hostName: S.optional(S.String),
           effectiveAvailableMemoryMbOnHost: S.optional(S.Number),
           availableGpuCount: S.optional(S.Number),
-          vmUsedMemory: S.optional(HostCapacityVmUsedMemoryMap),
+          vmUsedMemory: S.optional(__S(78)),
           gpuType: S.optional(S.String),
-          numaNodesData: S.optional(HostCapacityNumaNodesDataList),
+          numaNodesData: S.optional(__S(81)),
         }),
       ).annotate({ identifier: "HostCapacity" });
     case 3:
-      return S.Record(S.String, HostCapacity);
+      return S.Record(S.String, __S(82));
     case 4:
       return S.suspend(() =>
         S.Struct({
           timeStamp: S.optional(S.String),
-          clusterStorageCapacityInfo: S.optional(ClusterStorageViewData),
-          clusterComputeCapacityInfo: S.optional(ClusterCapacityViewData),
-          nodeCapacityInfos: S.optional(DeviceCapacityInfoPropertiesNodeCapacityInfosMap),
+          clusterStorageCapacityInfo: S.optional(__S(73)),
+          clusterComputeCapacityInfo: S.optional(__S(76)),
+          nodeCapacityInfos: S.optional(__S(83)),
         }),
       ).annotate({
         identifier: "DeviceCapacityInfoProperties",
@@ -6623,8 +5334,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeviceCapacityInfoProperties),
+          systemData: S.optional(__S(1)),
+          properties: S.optional(__S(84)),
         }),
       ).annotate({
         identifier: "GetDeviceCapacityInfoDeviceCapacityInfoResponse",
@@ -6649,7 +5360,7 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          encryptedSecret: S.optional(AsymmetricEncryptedSecret),
+          encryptedSecret: S.optional(__S(49)),
           keyVaultId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Secret" });
@@ -6658,7 +5369,7 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, Secret);
+      return S.Record(S.String, __S(87));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6669,9 +5380,9 @@ function __c11(j: number): any {
           clientSecretStoreUrl: S.optional(S.String),
           channelIntegrityKeyName: S.optional(S.String),
           channelIntegrityKeyVersion: S.optional(S.String),
-          keyVaultSyncStatus: S.optional(KeyVaultSyncStatus),
-          deviceSecrets: S.optional(DataBoxEdgeDeviceExtendedInfoPropertiesDeviceSecretsMap),
-          clusterWitnessType: S.optional(ClusterWitnessType),
+          keyVaultSyncStatus: S.optional(S.String),
+          deviceSecrets: S.optional(__S(88)),
+          clusterWitnessType: S.optional(S.String),
           fileShareWitnessLocation: S.optional(S.String),
           fileShareWitnessUsername: S.optional(S.String),
           cloudWitnessStorageAccountName: S.optional(S.String),
@@ -6685,12 +5396,10 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(GetDeviceExtendedInformationResponseSystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(
-            GetDeviceExtendedInformationResponseSystemDataLastModifiedByType,
-          ),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({
@@ -6702,8 +5411,8 @@ function __c11(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(DataBoxEdgeDeviceExtendedInfoProperties),
-          systemData: S.optional(GetDeviceExtendedInformationResponseSystemData),
+          properties: S.optional(__S(89)),
+          systemData: S.optional(__S(90)),
         }),
       ).annotate({
         identifier: "GetDeviceExtendedInformationResponse",
@@ -6728,7 +5437,7 @@ function __c11(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          networkGroup: S.optional(NetworkGroup),
+          networkGroup: S.optional(S.String),
           port: S.optional(S.Number),
         }),
       ).annotate({ identifier: "NetworkAdapterPosition" });
@@ -6756,28 +5465,28 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           adapterId: S.optional(S.String),
-          adapterPosition: S.optional(NetworkAdapterPosition),
+          adapterPosition: S.optional(__S(93)),
           index: S.optional(S.Number),
           nodeId: S.optional(S.String),
           networkAdapterName: S.optional(S.String),
           label: S.optional(S.String),
           macAddress: S.optional(S.String),
           linkSpeed: S.optional(S.Number),
-          status: S.optional(NetworkAdapterStatus),
-          rdmaStatus: S.optional(NetworkAdapterRDMAStatus),
-          dhcpStatus: S.optional(NetworkAdapterDHCPStatus),
-          ipv4Configuration: S.optional(Ipv4Config),
-          ipv6Configuration: S.optional(Ipv6Config),
+          status: S.optional(S.String),
+          rdmaStatus: S.optional(S.String),
+          dhcpStatus: S.optional(S.String),
+          ipv4Configuration: S.optional(__S(94)),
+          ipv6Configuration: S.optional(__S(95)),
           ipv6LinkLocalAddress: S.optional(S.String),
-          dnsServers: S.optional(NetworkAdapterDnsServersList),
+          dnsServers: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "NetworkAdapter" });
     case 1:
-      return S.Array(NetworkAdapter);
+      return S.Array(__S(96));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          networkAdapters: S.optional(NetworkSettingsPropertiesNetworkAdaptersList),
+          networkAdapters: S.optional(__S(97)),
         }),
       ).annotate({
         identifier: "NetworkSettingsProperties",
@@ -6788,8 +5497,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(NetworkSettingsProperties),
+          systemData: S.optional(__S(1)),
+          properties: S.optional(__S(98)),
         }),
       ).annotate({
         identifier: "GetDeviceNetworkSettingsResponse",
@@ -6814,7 +5523,7 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          userConsent: ProactiveDiagnosticsConsent,
+          userConsent: S.String,
         }),
       ).annotate({
         identifier: "ProactiveLogCollectionSettingsProperties",
@@ -6825,8 +5534,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ProactiveLogCollectionSettingsProperties,
+          systemData: S.optional(__S(1)),
+          properties: __S(101),
         }),
       ).annotate({
         identifier: "GetDiagnosticSettingsDiagnosticProactiveLogCollectionSettingsResponse",
@@ -6855,19 +5564,17 @@ function __c13(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          remoteApplicationType: S.optional(RemoteApplicationType),
-          accessLevel: S.optional(AccessLevel),
+          remoteApplicationType: S.optional(S.String),
+          accessLevel: S.optional(S.String),
           expirationTimeStampInUTC: S.optional(S.String),
         }),
       ).annotate({ identifier: "RemoteSupportSettings" });
     case 1:
-      return S.Array(RemoteSupportSettings);
+      return S.Array(__S(104));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          remoteSupportSettingsList: S.optional(
-            DiagnosticRemoteSupportSettingsPropertiesRemoteSupportSettingsListList,
-          ),
+          remoteSupportSettingsList: S.optional(__S(105)),
         }),
       ).annotate({
         identifier: "DiagnosticRemoteSupportSettingsProperties",
@@ -6878,8 +5585,8 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: DiagnosticRemoteSupportSettingsProperties,
+          systemData: S.optional(__S(1)),
+          properties: __S(106),
         }),
       ).annotate({
         identifier: "GetDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse",
@@ -6903,7 +5610,7 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          downloadPhase: S.optional(DownloadPhase),
+          downloadPhase: S.optional(S.String),
           percentComplete: S.optional(S.Number),
           totalBytesToDownload: S.optional(S.Number),
           totalBytesDownloaded: S.optional(S.Number),
@@ -6922,10 +5629,10 @@ function __c13(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          jobType: S.optional(JobType),
-          currentStage: S.optional(UpdateOperationStage),
-          downloadProgress: S.optional(UpdateDownloadProgress),
-          installProgress: S.optional(UpdateInstallProgress),
+          jobType: S.optional(S.String),
+          currentStage: S.optional(S.String),
+          downloadProgress: S.optional(__S(109)),
+          installProgress: S.optional(__S(110)),
           totalRefreshErrors: S.optional(S.Number),
           errorManifestFile: S.optional(S.String),
           refreshedEntityId: S.optional(S.String),
@@ -6939,17 +5646,17 @@ function __c14(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          recommendations: S.optional(JobErrorItemRecommendationsList),
+          recommendations: S.optional(__S(7)),
           code: S.optional(S.String),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "JobErrorItem" });
     case 1:
-      return S.Array(JobErrorItem);
+      return S.Array(__S(112));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          errorDetails: S.optional(JobErrorDetailsErrorDetailsList),
+          errorDetails: S.optional(__S(113)),
           code: S.optional(S.String),
           message: S.optional(S.String),
         }),
@@ -6960,13 +5667,13 @@ function __c14(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(JobProperties),
-          status: S.optional(JobStatus),
+          systemData: S.optional(__S(1)),
+          properties: S.optional(__S(111)),
+          status: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           percentComplete: S.optional(S.Number),
-          error: S.optional(JobErrorDetails),
+          error: S.optional(__S(114)),
         }),
       ).annotate({ identifier: "GetJobResponse" });
     case 4:
@@ -6995,14 +5702,14 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "MetricDimension" });
     case 6:
-      return S.Array(MetricDimension);
+      return S.Array(__S(117));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           instance: S.optional(S.String),
-          dimensionFilter: S.optional(MetricCounterDimensionFilterList),
-          additionalDimensions: S.optional(MetricCounterAdditionalDimensionsList),
+          dimensionFilter: S.optional(__S(118)),
+          additionalDimensions: S.optional(__S(118)),
         }),
       ).annotate({ identifier: "MetricCounter" });
   }
@@ -7010,30 +5717,30 @@ function __c14(j: number): any {
 function __c15(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MetricCounter);
+      return S.Array(__S(119));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          counters: MetricCounterSetCountersList,
+          counters: __S(120),
         }),
       ).annotate({ identifier: "MetricCounterSet" });
     case 2:
-      return S.Array(MetricCounterSet);
+      return S.Array(__S(121));
     case 3:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
           mdmAccount: S.optional(S.String),
           metricNameSpace: S.optional(S.String),
-          counterSets: MetricConfigurationCounterSetsList,
+          counterSets: __S(122),
         }),
       ).annotate({ identifier: "MetricConfiguration" });
     case 4:
-      return S.Array(MetricConfiguration);
+      return S.Array(__S(123));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          metricConfigurations: MonitoringMetricConfigurationPropertiesMetricConfigurationsList,
+          metricConfigurations: __S(124),
         }),
       ).annotate({
         identifier: "MonitoringMetricConfigurationProperties",
@@ -7044,8 +5751,8 @@ function __c15(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: MonitoringMetricConfigurationProperties,
+          systemData: S.optional(__S(1)),
+          properties: __S(125),
         }),
       ).annotate({
         identifier: "GetMonitoringConfigResponse",
@@ -7078,13 +5785,13 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(JobProperties),
-          status: S.optional(JobStatus),
+          systemData: S.optional(__S(1)),
+          properties: S.optional(__S(111)),
+          status: S.optional(S.String),
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           percentComplete: S.optional(S.Number),
-          error: S.optional(JobErrorDetails),
+          error: S.optional(__S(114)),
         }),
       ).annotate({
         identifier: "GetOperationsStatusResponse",
@@ -7110,7 +5817,7 @@ function __c16(j: number): any {
           contactPerson: S.String,
           companyName: S.String,
           phone: S.String,
-          emailList: ContactDetailsEmailListList,
+          emailList: __S(7),
         }),
       ).annotate({ identifier: "ContactDetails" });
     case 3:
@@ -7137,17 +5844,17 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          status: OrderState,
+          status: S.String,
           updateDateTime: S.optional(S.String),
           comments: S.optional(S.String),
-          trackingInformation: S.optional(TrackingInfo),
-          additionalOrderDetails: S.optional(OrderStatusAdditionalOrderDetailsMap),
+          trackingInformation: S.optional(__S(132)),
+          additionalOrderDetails: S.optional(__S(34)),
         }),
       ).annotate({ identifier: "OrderStatus" });
     case 6:
-      return S.Array(OrderStatus);
+      return S.Array(__S(133));
     case 7:
-      return S.Array(TrackingInfo);
+      return S.Array(__S(132));
   }
 }
 function __c17(j: number): any {
@@ -7156,14 +5863,14 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           orderId: S.optional(S.String),
-          contactInformation: ContactDetails,
-          shippingAddress: S.optional(Address),
-          currentStatus: S.optional(OrderStatus),
-          orderHistory: S.optional(OrderPropertiesOrderHistoryList),
+          contactInformation: __S(130),
+          shippingAddress: S.optional(__S(131)),
+          currentStatus: S.optional(__S(133)),
+          orderHistory: S.optional(__S(134)),
           serialNumber: S.optional(S.String),
-          deliveryTrackingInfo: S.optional(OrderPropertiesDeliveryTrackingInfoList),
-          returnTrackingInfo: S.optional(OrderPropertiesReturnTrackingInfoList),
-          shipmentType: S.optional(ShipmentType),
+          deliveryTrackingInfo: S.optional(__S(135)),
+          returnTrackingInfo: S.optional(__S(135)),
+          shipmentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrderProperties" });
     case 1:
@@ -7172,8 +5879,8 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(OrderProperties),
+          systemData: S.optional(__S(1)),
+          properties: S.optional(__S(136)),
           kind: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetOrderResponse" });
@@ -7214,23 +5921,23 @@ function __c17(j: number): any {
         S.Struct({
           storageAccountCredentialId: S.String,
           containerName: S.String,
-          dataFormat: AzureContainerDataFormat,
+          dataFormat: S.String,
         }),
       ).annotate({ identifier: "AzureContainerInfo" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           userId: S.String,
-          accessType: ShareAccessType,
+          accessType: S.String,
         }),
       ).annotate({ identifier: "UserAccessRight" });
     case 6:
-      return S.Array(UserAccessRight);
+      return S.Array(__S(141));
     case 7:
       return S.suspend(() =>
         S.Struct({
           client: S.String,
-          accessPermission: ClientPermissionType,
+          accessPermission: S.String,
         }),
       ).annotate({ identifier: "ClientAccessRight" });
   }
@@ -7238,32 +5945,32 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ClientAccessRight);
+      return S.Array(__S(143));
     case 1:
       return S.suspend(() =>
         S.Struct({
           shareId: S.String,
           roleId: S.optional(S.String),
           mountPoint: S.optional(S.String),
-          mountType: S.optional(MountType),
-          roleType: S.optional(RoleTypes),
+          mountType: S.optional(S.String),
+          roleType: S.optional(S.String),
         }),
       ).annotate({ identifier: "MountPointMap" });
     case 2:
-      return S.Array(MountPointMap);
+      return S.Array(__S(145));
     case 3:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          shareStatus: ShareStatus,
-          monitoringStatus: MonitoringStatus,
-          azureContainerInfo: S.optional(AzureContainerInfo),
-          accessProtocol: ShareAccessProtocol,
-          userAccessRights: S.optional(SharePropertiesUserAccessRightsList),
-          clientAccessRights: S.optional(SharePropertiesClientAccessRightsList),
-          refreshDetails: S.optional(RefreshDetails),
-          shareMappings: S.optional(SharePropertiesShareMappingsList),
-          dataPolicy: S.optional(DataPolicy),
+          shareStatus: S.String,
+          monitoringStatus: S.String,
+          azureContainerInfo: S.optional(__S(140)),
+          accessProtocol: S.String,
+          userAccessRights: S.optional(__S(142)),
+          clientAccessRights: S.optional(__S(144)),
+          refreshDetails: S.optional(__S(16)),
+          shareMappings: S.optional(__S(146)),
+          dataPolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShareProperties" });
     case 4:
@@ -7272,8 +5979,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ShareProperties,
+          systemData: S.optional(__S(1)),
+          properties: __S(147),
         }),
       ).annotate({ identifier: "GetShareResponse" });
     case 5:
@@ -7296,8 +6003,8 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          storageAccountStatus: S.optional(StorageAccountStatus),
-          dataPolicy: DataPolicy,
+          storageAccountStatus: S.optional(S.String),
+          dataPolicy: S.String,
           storageAccountCredentialId: S.optional(S.String),
           blobEndpoint: S.optional(S.String),
           containerCount: S.optional(S.Number),
@@ -7309,8 +6016,8 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: StorageAccountProperties,
+          systemData: S.optional(__S(1)),
+          properties: __S(150),
         }),
       ).annotate({
         identifier: "GetStorageAccountResponse",
@@ -7342,11 +6049,11 @@ function __c19(j: number): any {
         S.Struct({
           alias: S.String,
           userName: S.optional(S.String),
-          accountKey: S.optional(AsymmetricEncryptedSecret),
+          accountKey: S.optional(__S(49)),
           connectionString: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          sslStatus: SSLStatus,
+          sslStatus: S.String,
           blobDomainName: S.optional(S.String),
-          accountType: AccountType,
+          accountType: S.String,
           storageAccountId: S.optional(S.String),
         }),
       ).annotate({
@@ -7358,8 +6065,8 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: StorageAccountCredentialProperties,
+          systemData: S.optional(__S(1)),
+          properties: __S(153),
         }),
       ).annotate({
         identifier: "GetStorageAccountCredentialsResponse",
@@ -7400,17 +6107,17 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           shareId: S.String,
-          accessType: ShareAccessType,
+          accessType: S.String,
         }),
       ).annotate({ identifier: "ShareAccessRight" });
     case 6:
-      return S.Array(ShareAccessRight);
+      return S.Array(__S(157));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          encryptedPassword: S.optional(AsymmetricEncryptedSecret),
-          shareAccessRights: S.optional(UserPropertiesShareAccessRightsList),
-          userType: UserType,
+          encryptedPassword: S.optional(__S(49)),
+          shareAccessRights: S.optional(__S(158)),
+          userType: S.String,
         }),
       ).annotate({ identifier: "UserProperties" });
   }
@@ -7423,8 +6130,8 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: UserProperties,
+          systemData: S.optional(__S(1)),
+          properties: __S(159),
         }),
       ).annotate({ identifier: "GetUserResponse" });
     case 1:
@@ -7461,11 +6168,11 @@ function __c20(j: number): any {
         ),
       ).annotate({ identifier: "ListAddonByRoleRequest" });
     case 3:
-      return S.Array(Addon);
+      return S.Array(__S(62));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: AddonListValueList,
+          value: __S(163),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AddonList" });
@@ -7487,11 +6194,11 @@ function __c20(j: number): any {
         identifier: "ListAlertByDataBoxEdgeDeviceRequest",
       });
     case 6:
-      return S.Array(Alert);
+      return S.Array(__S(66));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: AlertListValueList,
+          value: __S(166),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "AlertList" });
@@ -7516,12 +6223,12 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.optional(S.String),
-          zones: S.optional(SkuLocationInfoZonesList),
-          sites: S.optional(SkuLocationInfoSitesList),
+          zones: S.optional(__S(7)),
+          sites: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "SkuLocationInfo" });
     case 2:
-      return S.Array(SkuLocationInfo);
+      return S.Array(__S(169));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7531,7 +6238,7 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "SkuCost" });
     case 4:
-      return S.Array(SkuCost);
+      return S.Array(__S(171));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -7540,25 +6247,25 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "SkuCapability" });
     case 6:
-      return S.Array(SkuCapability);
+      return S.Array(__S(173));
     case 7:
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          name: S.optional(SkuName),
+          name: S.optional(S.String),
           kind: S.optional(S.String),
-          tier: S.optional(SkuTier),
+          tier: S.optional(S.String),
           size: S.optional(S.String),
           family: S.optional(S.String),
-          locations: S.optional(DataBoxEdgeSkuLocationsList),
-          apiVersions: S.optional(DataBoxEdgeSkuApiVersionsList),
-          locationInfo: S.optional(DataBoxEdgeSkuLocationInfoList),
-          costs: S.optional(DataBoxEdgeSkuCostsList),
-          signupOption: S.optional(SkuSignupOption),
-          version: S.optional(SkuVersion),
-          availability: S.optional(SkuAvailability),
-          shipmentTypes: S.optional(DataBoxEdgeSkuShipmentTypesList),
-          capabilities: S.optional(DataBoxEdgeSkuCapabilitiesList),
+          locations: S.optional(__S(7)),
+          apiVersions: S.optional(__S(7)),
+          locationInfo: S.optional(__S(170)),
+          costs: S.optional(__S(172)),
+          signupOption: S.optional(S.String),
+          version: S.optional(S.String),
+          availability: S.optional(S.String),
+          shipmentTypes: S.optional(__S(3)),
+          capabilities: S.optional(__S(174)),
         }),
       ).annotate({ identifier: "DataBoxEdgeSku" });
   }
@@ -7566,11 +6273,11 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DataBoxEdgeSku);
+      return S.Array(__S(175));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: DataBoxEdgeSkuListValueList,
+          value: __S(176),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataBoxEdgeSkuList" });
@@ -7597,16 +6304,16 @@ function __c22(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: BandwidthScheduleProperties,
+          systemData: S.optional(__S(1)),
+          properties: __S(4),
         }),
       ).annotate({ identifier: "BandwidthSchedule" });
     case 4:
-      return S.Array(BandwidthSchedule);
+      return S.Array(__S(179));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: BandwidthSchedulesListValueList,
+          value: __S(180),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "BandwidthSchedulesList" });
@@ -7629,7 +6336,7 @@ function __c22(j: number): any {
         identifier: "ListContainerByStorageAccountRequest",
       });
     case 7:
-      return S.Array(Container);
+      return S.Array(__S(69));
   }
 }
 function __c23(j: number): any {
@@ -7637,7 +6344,7 @@ function __c23(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: ContainerListValueList,
+          value: __S(183),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ContainerList" });
@@ -7659,11 +6366,11 @@ function __c23(j: number): any {
         identifier: "ListDeviceByResourceGroupRequest",
       });
     case 2:
-      return S.Array(DataBoxEdgeDevice);
+      return S.Array(__S(71));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: DataBoxEdgeDeviceListValueList,
+          value: __S(186),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "DataBoxEdgeDeviceList" });
@@ -7702,11 +6409,11 @@ function __c23(j: number): any {
         identifier: "ListMonitoringConfigRequest",
       });
     case 6:
-      return S.Array(MonitoringMetricConfiguration);
+      return S.Array(__S(126));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: MonitoringMetricConfigurationListValueList,
+          value: __S(190),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -7736,7 +6443,7 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          nodeStatus: S.optional(NodeStatus),
+          nodeStatus: S.optional(S.String),
           nodeChassisSerialNumber: S.optional(S.String),
           nodeSerialNumber: S.optional(S.String),
           nodeDisplayName: S.optional(S.String),
@@ -7751,15 +6458,15 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(NodeProperties),
+          properties: S.optional(__S(193)),
         }),
       ).annotate({ identifier: "Node" });
     case 3:
-      return S.Array(Node);
+      return S.Array(__S(194));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: NodeListValueList,
+          value: __S(195),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "NodeList" });
@@ -7796,35 +6503,35 @@ function __c24(j: number): any {
 function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MetricDimensionV1);
+      return S.Array(__S(199));
     case 1:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           displayName: S.optional(S.String),
           displayDescription: S.optional(S.String),
-          unit: S.optional(MetricUnit),
-          aggregationType: S.optional(MetricAggregationType),
-          dimensions: S.optional(MetricSpecificationV1DimensionsList),
+          unit: S.optional(S.String),
+          aggregationType: S.optional(S.String),
+          dimensions: S.optional(__S(200)),
           fillGapWithZero: S.optional(S.Boolean),
-          category: S.optional(MetricCategory),
+          category: S.optional(S.String),
           resourceIdDimensionNameOverride: S.optional(S.String),
-          supportedTimeGrainTypes: S.optional(MetricSpecificationV1SupportedTimeGrainTypesList),
-          supportedAggregationTypes: S.optional(MetricSpecificationV1SupportedAggregationTypesList),
+          supportedTimeGrainTypes: S.optional(__S(3)),
+          supportedAggregationTypes: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "MetricSpecificationV1" });
     case 2:
-      return S.Array(MetricSpecificationV1);
+      return S.Array(__S(201));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(ServiceSpecificationMetricSpecificationsList),
+          metricSpecifications: S.optional(__S(202)),
         }),
       ).annotate({ identifier: "ServiceSpecification" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(ServiceSpecification),
+          serviceSpecification: S.optional(__S(203)),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 5:
@@ -7832,17 +6539,17 @@ function __c25(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
+          display: S.optional(__S(198)),
           origin: S.optional(S.String),
-          properties: S.optional(OperationProperties),
+          properties: S.optional(__S(204)),
         }),
       ).annotate({ identifier: "Operation" });
     case 6:
-      return S.Array(Operation);
+      return S.Array(__S(205));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: OperationsListValueList,
+          value: __S(206),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationsList" });
@@ -7868,11 +6575,11 @@ function __c26(j: number): any {
         identifier: "ListOrderByDataBoxEdgeDeviceRequest",
       });
     case 1:
-      return S.Array(Order);
+      return S.Array(__S(137));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: OrderListValueList,
+          value: __S(209),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrderList" });
@@ -7902,7 +6609,7 @@ function __c26(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          properties: S.optional(DCAccessCodeProperties),
+          properties: S.optional(__S(212)),
         }),
       ).annotate({ identifier: "DCAccessCode" });
     case 6:
@@ -7923,7 +6630,7 @@ function __c26(j: number): any {
         identifier: "ListRoleByDataBoxEdgeDeviceRequest",
       });
     case 7:
-      return S.Array(Role);
+      return S.Array(__S(62));
   }
 }
 function __c27(j: number): any {
@@ -7931,7 +6638,7 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: RoleListValueList,
+          value: __S(215),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleList" });
@@ -7953,11 +6660,11 @@ function __c27(j: number): any {
         identifier: "ListShareByDataBoxEdgeDeviceRequest",
       });
     case 2:
-      return S.Array(Share);
+      return S.Array(__S(148));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: ShareListValueList,
+          value: __S(218),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ShareList" });
@@ -7984,16 +6691,16 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: StorageAccountProperties,
+          systemData: S.optional(__S(1)),
+          properties: __S(150),
         }),
       ).annotate({ identifier: "StorageAccount" });
     case 6:
-      return S.Array(StorageAccount);
+      return S.Array(__S(221));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: StorageAccountListValueList,
+          value: __S(222),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "StorageAccountList" });
@@ -8024,16 +6731,16 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: StorageAccountCredentialProperties,
+          systemData: S.optional(__S(1)),
+          properties: __S(153),
         }),
       ).annotate({ identifier: "StorageAccountCredential" });
     case 2:
-      return S.Array(StorageAccountCredential);
+      return S.Array(__S(225));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: StorageAccountCredentialListValueList,
+          value: __S(226),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -8058,11 +6765,11 @@ function __c28(j: number): any {
         identifier: "ListTriggerByDataBoxEdgeDeviceRequest",
       });
     case 5:
-      return S.Array(Trigger);
+      return S.Array(__S(62));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: TriggerListValueList,
+          value: __S(229),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TriggerList" });
@@ -8089,11 +6796,11 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(User);
+      return S.Array(__S(160));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: UserListValueList,
+          value: __S(232),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserList" });
@@ -8104,7 +6811,7 @@ function __c29(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           roleName: S.String.pipe(T.Label()),
-          properties: MonitoringMetricConfigurationProperties,
+          properties: __S(125),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8119,9 +6826,9 @@ function __c29(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          contactInformation: ContactDetails,
-          shippingAddress: S.optional(Address),
-          shipmentType: S.optional(ShipmentType),
+          contactInformation: __S(130),
+          shippingAddress: S.optional(__S(131)),
+          shipmentType: S.optional(S.String),
         }),
       ).annotate({ identifier: "OrderPropertiesInput" });
     case 4:
@@ -8130,7 +6837,7 @@ function __c29(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: S.optional(OrderPropertiesInput),
+          properties: S.optional(__S(235)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8148,8 +6855,8 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(OrderProperties),
+          systemData: S.optional(__S(1)),
+          properties: S.optional(__S(136)),
           kind: S.optional(S.String),
         }),
       ).annotate({
@@ -8199,7 +6906,7 @@ function __c30(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          kind: RoleTypes,
+          kind: S.String,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8215,14 +6922,14 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          shareStatus: ShareStatus,
-          monitoringStatus: MonitoringStatus,
-          azureContainerInfo: S.optional(AzureContainerInfo),
-          accessProtocol: ShareAccessProtocol,
-          userAccessRights: S.optional(SharePropertiesInputUserAccessRightsList),
-          clientAccessRights: S.optional(SharePropertiesInputClientAccessRightsList),
-          refreshDetails: S.optional(RefreshDetails),
-          dataPolicy: S.optional(DataPolicy),
+          shareStatus: S.String,
+          monitoringStatus: S.String,
+          azureContainerInfo: S.optional(__S(140)),
+          accessProtocol: S.String,
+          userAccessRights: S.optional(__S(142)),
+          clientAccessRights: S.optional(__S(144)),
+          refreshDetails: S.optional(__S(16)),
+          dataPolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "SharePropertiesInput" });
     case 2:
@@ -8232,7 +6939,7 @@ function __c30(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: SharePropertiesInput,
+          properties: __S(241),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8250,8 +6957,8 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ShareProperties,
+          systemData: S.optional(__S(1)),
+          properties: __S(147),
         }),
       ).annotate({
         identifier: "SharesCreateOrUpdateResponse",
@@ -8263,7 +6970,7 @@ function __c30(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: StorageAccountCredentialProperties,
+          properties: __S(153),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8279,8 +6986,8 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          storageAccountStatus: S.optional(StorageAccountStatus),
-          dataPolicy: DataPolicy,
+          storageAccountStatus: S.optional(S.String),
+          dataPolicy: S.String,
           storageAccountCredentialId: S.optional(S.String),
         }),
       ).annotate({
@@ -8293,7 +7000,7 @@ function __c30(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           storageAccountName: S.String.pipe(T.Label()),
-          properties: StorageAccountPropertiesInput,
+          properties: __S(245),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8312,7 +7019,7 @@ function __c30(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          kind: TriggerEventType,
+          kind: S.String,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8344,7 +7051,7 @@ function __c31(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: SupportPackageRequestProperties,
+          properties: __S(248),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8367,13 +7074,13 @@ function __c31(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          subscription: S.optional(EdgeProfileSubscriptionPatch),
+          subscription: S.optional(__S(250)),
         }),
       ).annotate({ identifier: "EdgeProfilePatch" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          edgeProfile: S.optional(EdgeProfilePatch),
+          edgeProfile: S.optional(__S(251)),
         }),
       ).annotate({
         identifier: "DataBoxEdgeDevicePropertiesPatch",
@@ -8384,9 +7091,9 @@ function __c31(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateDeviceRequestTagsMap),
-          identity: S.optional(ResourceIdentityInput),
-          properties: S.optional(DataBoxEdgeDevicePropertiesPatch),
+          tags: S.optional(__S(34)),
+          identity: S.optional(__S(35)),
+          properties: S.optional(__S(252)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8406,7 +7113,7 @@ function __c31(j: number): any {
           clientSecretStoreUrl: S.optional(S.String),
           channelIntegrityKeyName: S.optional(S.String),
           channelIntegrityKeyVersion: S.optional(S.String),
-          syncStatus: S.optional(KeyVaultSyncStatus),
+          syncStatus: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8424,7 +7131,7 @@ function __c31(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: ProactiveLogCollectionSettingsProperties,
+          properties: __S(101),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8446,7 +7153,7 @@ function __c32(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: DiagnosticRemoteSupportSettingsProperties,
+          properties: __S(106),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8464,8 +7171,8 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: DiagnosticRemoteSupportSettingsProperties,
+          systemData: S.optional(__S(1)),
+          properties: __S(106),
         }),
       ).annotate({
         identifier: "UpdateDiagnosticSettingsDiagnosticRemoteSupportSettingsResponse",
@@ -8473,7 +7180,7 @@ function __c32(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          authenticationType: S.optional(AuthenticationType),
+          authenticationType: S.optional(S.String),
           certificate: S.String,
         }),
       ).annotate({ identifier: "RawCertificateData" });
@@ -8483,7 +7190,7 @@ function __c32(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
-          properties: RawCertificateData,
+          properties: __S(258),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8498,7 +7205,7 @@ function __c32(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          authType: S.optional(AuthenticationType),
+          authType: S.optional(S.String),
           resourceId: S.optional(S.String),
           aadAuthority: S.optional(S.String),
           aadTenantId: S.optional(S.String),
@@ -8513,8 +7220,8 @@ function __c32(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          encryptedPassword: S.optional(AsymmetricEncryptedSecret),
-          userType: UserType,
+          encryptedPassword: S.optional(__S(49)),
+          userType: S.String,
         }),
       ).annotate({ identifier: "UserPropertiesInput" });
     case 6:
@@ -8524,7 +7231,7 @@ function __c32(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           deviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: UserPropertiesInput,
+          properties: __S(261),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8542,11 +7249,86 @@ function __c32(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: UserProperties,
+          systemData: S.optional(__S(1)),
+          properties: __S(159),
         }),
       ).annotate({
         identifier: "UsersCreateOrUpdateResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
   }
 }

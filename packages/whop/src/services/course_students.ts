@@ -7,6 +7,8 @@ import { paginateRelay } from "../pagination.ts";
 import { WhopProtocol, type WhopOpError, type WhopOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { WhopOpError, WhopOpContext };
 
@@ -50,21 +52,11 @@ export interface GetCourseStudentRequest {
   /** The unique identifier of the course student record to retrieve. */
   id: string;
 }
-const GetCourseStudentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetCourseStudentRequest>;
-
 /** The parent experience that this course belongs to. */
 export interface CourseStudentCourseExperience {
   /** The unique identifier for the experience. */
   id: string;
 }
-const CourseStudentCourseExperience = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CourseStudentCourseExperience>;
-
 /** The course this student is enrolled in. */
 export interface CourseStudentCourse {
   /** The parent experience that this course belongs to. */
@@ -74,8 +66,6 @@ export interface CourseStudentCourse {
   /** The display name of the course shown to students. Null if no title has been set. */
   title: string | null;
 }
-const CourseStudentCourse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<CourseStudentCourse>;
-
 /** The user profile of the enrolled student. */
 export interface CourseStudentUser {
   /** The unique identifier for the user. */
@@ -85,8 +75,6 @@ export interface CourseStudentUser {
   /** The user's unique username shown on their public profile. */
   username: string;
 }
-const CourseStudentUser = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<CourseStudentUser>;
-
 /** An enrollment record for a student in a course, including progress and completion metrics. */
 export interface CourseStudent {
   /** The total number of lessons this student has marked as completed in the course. */
@@ -106,8 +94,6 @@ export interface CourseStudent {
   /** The user profile of the enrolled student. */
   user: CourseStudentUser;
 }
-const CourseStudent = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CourseStudent>;
-
 export interface ListCourseStudentRequest {
   after?: string;
   before?: string;
@@ -116,11 +102,6 @@ export interface ListCourseStudentRequest {
   course_id: string;
   keyword?: string;
 }
-const ListCourseStudentRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ListCourseStudentRequest>;
-
 /** The user profile of the enrolled student. */
 export type CourseStudentListItemUser = CourseStudentUser;
 /** An enrollment record for a student in a course, including progress and completion metrics. */
@@ -140,18 +121,8 @@ export interface CourseStudentListItem {
   /** The user profile of the enrolled student. */
   user: CourseStudentUser;
 }
-const CourseStudentListItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CourseStudentListItem>;
-
 /** A list of nodes. */
 export type ListCourseStudentResponseDataList = Array<CourseStudentListItem>;
-const ListCourseStudentResponseDataList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListCourseStudentResponseDataList>;
-
 /** Information about pagination in a connection. */
 export interface PageInfo {
   /** When paginating forwards, the cursor to continue. */
@@ -163,19 +134,12 @@ export interface PageInfo {
   /** When paginating backwards, the cursor to continue. */
   start_cursor: string | null;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<PageInfo>;
-
 export interface ListCourseStudentResponse {
   /** A list of nodes. */
   data: ListCourseStudentResponseDataList;
   /** Information to aid in pagination. */
   page_info: PageInfo;
 }
-const ListCourseStudentResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListCourseStudentResponse>;
-
 export type GetCourseStudentError =
   | BadRequest
   | Forbidden
@@ -189,8 +153,8 @@ export const getCourseStudent: API.OperationMethod<
   GetCourseStudentError,
   WhopOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCourseStudentRequest,
-  output: CourseStudent,
+  input: __S(0) as any as S.Schema<GetCourseStudentRequest>,
+  output: __S(4) as any as S.Schema<CourseStudent>,
   errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
   protocol: WhopProtocol,
   retry: Retry.Retry,
@@ -211,8 +175,8 @@ export const listCourseStudent: API.PaginatedOperationMethod<
   CourseStudentListItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListCourseStudentRequest,
-    output: ListCourseStudentResponse,
+    input: __S(5) as any as S.Schema<ListCourseStudentRequest>,
+    output: __S(9) as any as S.Schema<ListCourseStudentResponse>,
     errors: [BadRequest, Forbidden, NotFound, UnprocessableEntity],
     protocol: WhopProtocol,
     retry: Retry.Retry,
@@ -248,7 +212,7 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          experience: CourseStudentCourseExperience,
+          experience: __S(1),
           id: S.String,
           title: S.NullOr(S.String),
         }),
@@ -266,12 +230,12 @@ function __c0(j: number): any {
         S.Struct({
           completed_lessons_count: S.Number,
           completion_rate: S.Number,
-          course: CourseStudentCourse,
+          course: __S(2),
           first_interaction_at: S.String,
           id: S.String,
           last_interaction_at: S.String,
           total_lessons_count: S.Number,
-          user: CourseStudentUser,
+          user: __S(3),
         }),
       ).annotate({ identifier: "CourseStudent" });
     case 5:
@@ -294,11 +258,11 @@ function __c0(j: number): any {
           id: S.String,
           last_interaction_at: S.String,
           total_lessons_count: S.Number,
-          user: CourseStudentUser,
+          user: __S(3),
         }),
       ).annotate({ identifier: "CourseStudentListItem" });
     case 7:
-      return S.Array(CourseStudentListItem);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -315,11 +279,24 @@ function __c1(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          data: ListCourseStudentResponseDataList,
-          page_info: PageInfo,
+          data: __S(7),
+          page_info: __S(8),
         }),
       ).annotate({
         identifier: "ListCourseStudentResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

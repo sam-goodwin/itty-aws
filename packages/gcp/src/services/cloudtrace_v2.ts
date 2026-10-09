@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -69,8 +71,6 @@ export interface TruncatableString {
   /** Optional. The number of bytes removed from the original string. If this value is 0, then the string was not shortened. */
   truncatedByteCount?: number;
 }
-const TruncatableString = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<TruncatableString>;
-
 /** Binary module. */
 export interface Module {
   /** Optional. For example: main binary, kernel modules, and dynamic libraries such as libc.so, sharedlib.so (up to 256 bytes). */
@@ -78,8 +78,6 @@ export interface Module {
   /** Optional. A unique identifier for the module, usually a hash of its contents (up to 128 bytes). */
   buildId?: TruncatableString;
 }
-const Module = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<Module>;
-
 /** Represents a single stack frame in a stack trace. */
 export interface StackFrame {
   /** Optional. The line number in `file_name` where the function call appears. */
@@ -97,11 +95,7 @@ export interface StackFrame {
   /** Optional. The binary module from where the code was loaded. */
   loadModule?: Module;
 }
-const StackFrame = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StackFrame>;
-
 export type StackFrameList = Array<StackFrame>;
-const StackFrameList = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StackFrameList>;
-
 /** A collection of stack frames, which can be truncated. */
 export interface StackFrames {
   /** Optional. Stack frames in this call stack. */
@@ -109,8 +103,6 @@ export interface StackFrames {
   /** Optional. The number of stack frames that were dropped because there were too many stack frames. If this value is 0, then no stack frames were dropped. */
   droppedFramesCount?: number;
 }
-const StackFrames = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<StackFrames>;
-
 /** A call stack appearing in a trace. */
 export interface StackTrace {
   /** Optional. Stack frames in this stack trace. A maximum of 128 frames are allowed. */
@@ -118,8 +110,6 @@ export interface StackTrace {
   /** Optional. The hash ID is used to conserve network bandwidth for duplicate stack traces within a single trace. Often multiple spans will have identical stack traces. The first occurrence of a stack trace should contain both the `stackFrame` content and a value in `stackTraceHashId`. Subsequent spans within the same request can refer to that stack trace by only setting `stackTraceHashId`. */
   stackTraceHashId?: string;
 }
-const StackTrace = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<StackTrace>;
-
 /** The allowed types for `[VALUE]` in a `[KEY]:[VALUE]` attribute. */
 export interface AttributeValue {
   /** Optional. A Boolean value represented by `true` or `false`. */
@@ -129,11 +119,7 @@ export interface AttributeValue {
   /** Optional. A string up to 256 bytes long. */
   stringValue?: TruncatableString;
 }
-const AttributeValue = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<AttributeValue>;
-
 export type AttributeValueMap = { [key: string]: AttributeValue | undefined };
-const AttributeValueMap = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AttributeValueMap>;
-
 /** A set of attributes as key-value pairs. */
 export interface Attributes {
   /** Optional. The number of attributes that were discarded. Attributes can be discarded because their keys are too long or because there are too many attributes. If this value is 0 then all attributes are valid. */
@@ -141,8 +127,6 @@ export interface Attributes {
   /** Optional. A set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string up to 256 bytes, a signed 64-bit integer, or the boolean values `true` or `false`. For example: "/instance_id": { "string_value": { "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 } "example.com/myattribute": { "bool_value": false } */
   attributeMap?: AttributeValueMap;
 }
-const Attributes = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Attributes>;
-
 /** Text annotation with a set of attributes. */
 export interface Annotation {
   /** Optional. A user-supplied message describing the event. The maximum length for the description is 256 bytes. */
@@ -150,11 +134,7 @@ export interface Annotation {
   /** Optional. A set of attributes on the annotation. You can have up to 4 attributes per Annotation. */
   attributes?: Attributes;
 }
-const Annotation = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<Annotation>;
-
 export type MessageEventTypeEnum = "TYPE_UNSPECIFIED" | "SENT" | "RECEIVED";
-const MessageEventTypeEnum = S.String;
-
 /** An event describing a message sent/received between Spans. */
 export interface MessageEvent {
   /** Optional. Type of MessageEvent. Indicates whether the message was sent or received. */
@@ -166,8 +146,6 @@ export interface MessageEvent {
   /** Optional. An identifier for the MessageEvent's message that can be used to match `SENT` and `RECEIVED` MessageEvents. */
   id?: string;
 }
-const MessageEvent = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<MessageEvent>;
-
 /** A time-stamped annotation or message event in the Span. */
 export interface TimeEvent {
   /** Text annotation with a set of attributes. */
@@ -177,11 +155,7 @@ export interface TimeEvent {
   /** Optional. The timestamp indicating the time the event occurred. */
   time?: string;
 }
-const TimeEvent = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<TimeEvent>;
-
 export type TimeEventList = Array<TimeEvent>;
-const TimeEventList = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<TimeEventList>;
-
 /** A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation on the span, consisting of either user-supplied key:value pairs, or details of a message sent/received between Spans. */
 export interface TimeEvents {
   /** Optional. The number of dropped annotations in all the included time events. If the value is 0, then no annotations were dropped. */
@@ -191,11 +165,7 @@ export interface TimeEvents {
   /** Optional. A collection of `TimeEvent`s. */
   timeEvent?: TimeEventList;
 }
-const TimeEvents = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<TimeEvents>;
-
 export type LinkTypeEnum = "TYPE_UNSPECIFIED" | "CHILD_LINKED_SPAN" | "PARENT_LINKED_SPAN";
-const LinkTypeEnum = S.String;
-
 /** A pointer from the current span to another span in the same trace or in a different trace. For example, this can be used in batching operations, where a single batch handler processes multiple requests from different traces or when the handler receives a request from a different project. */
 export interface Link {
   /** Optional. The `[TRACE_ID]` for a trace within a project. */
@@ -207,11 +177,7 @@ export interface Link {
   /** Optional. The `[SPAN_ID]` for a span within a trace. */
   spanId?: string;
 }
-const Link = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<Link>;
-
 export type LinkList = Array<Link>;
-const LinkList = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<LinkList>;
-
 /** A collection of links, which are references from this span to a span in the same or different trace. */
 export interface Links {
   /** Optional. A collection of links. */
@@ -219,14 +185,8 @@ export interface Links {
   /** Optional. The number of dropped links after the maximum size was enforced. If this value is 0, then no links were dropped. */
   droppedLinksCount?: number;
 }
-const Links = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<Links>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -236,8 +196,6 @@ export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
   message?: string;
 }
-const Status = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<Status>;
-
 export type SpanSpanKindEnum =
   | "SPAN_KIND_UNSPECIFIED"
   | "INTERNAL"
@@ -245,8 +203,6 @@ export type SpanSpanKindEnum =
   | "CLIENT"
   | "PRODUCER"
   | "CONSUMER";
-const SpanSpanKindEnum = S.String;
-
 /** A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a trace contains a root span that describes the end-to-end latency, and one or more subspans for its sub-operations. A trace can also contain multiple root spans, or none at all. Spans do not need to be contiguous. There might be gaps or overlaps between spans in a trace. */
 export interface Span {
   /** Required. The end time of the span. On the client side, this is the time kept by the local machine where the span execution ends. On the server side, this is the time when the server application handler stops running. */
@@ -278,47 +234,26 @@ export interface Span {
   /** Required. The start time of the span. On the client side, this is the time kept by the local machine where the span execution starts. On the server side, this is the time when the server's application handler starts running. */
   startTime?: string;
 }
-const Span = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<Span>;
-
 export type SpanList = Array<Span>;
-const SpanList = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<SpanList>;
-
 /** The request message for the `BatchWriteSpans` method. */
 export interface BatchWriteSpansRequest {
   /** Required. A list of new spans. The span names must not match existing spans, otherwise the results are undefined. */
   spans?: SpanList;
 }
-const BatchWriteSpansRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<BatchWriteSpansRequest>;
-
 export interface BatchWriteProjectsTracesRequest {
   /** Required. The name of the project where the spans belong. The format is `projects/[PROJECT_ID]`. */
   name: string;
   /** Request body */
   body?: BatchWriteSpansRequest;
 }
-const BatchWriteProjectsTracesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<BatchWriteProjectsTracesRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<Empty>;
-
 export interface CreateSpanProjectsTracesSpansRequest {
   /** Identifier. The resource name of the span in the following format: * `projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/[SPAN_ID]` `[TRACE_ID]` is a unique identifier for a trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array. It should not be zero. `[SPAN_ID]` is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte array. It should not be zero. . */
   name: string;
   /** Request body */
   body?: Span;
 }
-const CreateSpanProjectsTracesSpansRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateSpanProjectsTracesSpansRequest>;
-
 export type BatchWriteProjectsTracesError =
   | NotFound
   | Forbidden
@@ -332,8 +267,8 @@ export const batchWriteProjectsTraces: API.OperationMethod<
   BatchWriteProjectsTracesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchWriteProjectsTracesRequest,
-  output: Empty,
+  input: __S(23) as any as S.Schema<BatchWriteProjectsTracesRequest>,
+  output: __S(24) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -352,8 +287,8 @@ export const createSpanProjectsTracesSpans: API.OperationMethod<
   CreateSpanProjectsTracesSpansError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSpanProjectsTracesSpansRequest,
-  output: Span,
+  input: __S(25) as any as S.Schema<CreateSpanProjectsTracesSpansRequest>,
+  output: __S(20) as any as S.Schema<Span>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -372,35 +307,35 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          module: S.optional(TruncatableString),
-          buildId: S.optional(TruncatableString),
+          module: S.optional(__S(0)),
+          buildId: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "Module" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           lineNumber: S.optional(S.String),
-          originalFunctionName: S.optional(TruncatableString),
-          functionName: S.optional(TruncatableString),
+          originalFunctionName: S.optional(__S(0)),
+          functionName: S.optional(__S(0)),
           columnNumber: S.optional(S.String),
-          fileName: S.optional(TruncatableString),
-          sourceVersion: S.optional(TruncatableString),
-          loadModule: S.optional(Module),
+          fileName: S.optional(__S(0)),
+          sourceVersion: S.optional(__S(0)),
+          loadModule: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "StackFrame" });
     case 3:
-      return S.Array(StackFrame);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          frame: S.optional(StackFrameList),
+          frame: S.optional(__S(3)),
           droppedFramesCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "StackFrames" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          stackFrames: S.optional(StackFrames),
+          stackFrames: S.optional(__S(4)),
           stackTraceHashId: S.optional(S.String),
         }),
       ).annotate({ identifier: "StackTrace" });
@@ -409,11 +344,11 @@ function __c0(j: number): any {
         S.Struct({
           boolValue: S.optional(S.Boolean),
           intValue: S.optional(S.String),
-          stringValue: S.optional(TruncatableString),
+          stringValue: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "AttributeValue" });
     case 7:
-      return S.Record(S.String, AttributeValue);
+      return S.Record(S.String, __S(6));
   }
 }
 function __c1(j: number): any {
@@ -422,20 +357,20 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           droppedAttributesCount: S.optional(S.Number),
-          attributeMap: S.optional(AttributeValueMap),
+          attributeMap: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "Attributes" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          description: S.optional(TruncatableString),
-          attributes: S.optional(Attributes),
+          description: S.optional(__S(0)),
+          attributes: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "Annotation" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(MessageEventTypeEnum),
+          type: S.optional(S.String),
           uncompressedSizeBytes: S.optional(S.String),
           compressedSizeBytes: S.optional(S.String),
           id: S.optional(S.String),
@@ -444,32 +379,32 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          annotation: S.optional(Annotation),
-          messageEvent: S.optional(MessageEvent),
+          annotation: S.optional(__S(9)),
+          messageEvent: S.optional(__S(10)),
           time: S.optional(S.String),
         }),
       ).annotate({ identifier: "TimeEvent" });
     case 4:
-      return S.Array(TimeEvent);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
           droppedAnnotationsCount: S.optional(S.Number),
           droppedMessageEventsCount: S.optional(S.Number),
-          timeEvent: S.optional(TimeEventList),
+          timeEvent: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "TimeEvents" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           traceId: S.optional(S.String),
-          type: S.optional(LinkTypeEnum),
-          attributes: S.optional(Attributes),
+          type: S.optional(S.String),
+          attributes: S.optional(__S(8)),
           spanId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Link" });
     case 7:
-      return S.Array(Link);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -477,18 +412,18 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          link: S.optional(LinkList),
+          link: S.optional(__S(15)),
           droppedLinksCount: S.optional(S.Number),
         }),
       ).annotate({ identifier: "Links" });
     case 1:
       return S.Record(S.String, S.Unknown);
     case 2:
-      return S.Array(DocumentMap);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(18)),
           code: S.optional(S.Number),
           message: S.optional(S.String),
         }),
@@ -499,32 +434,32 @@ function __c2(j: number): any {
           endTime: S.optional(S.String),
           sameProcessAsParentSpan: S.optional(S.Boolean),
           parentSpanId: S.optional(S.String),
-          displayName: S.optional(TruncatableString),
-          stackTrace: S.optional(StackTrace),
-          timeEvents: S.optional(TimeEvents),
+          displayName: S.optional(__S(0)),
+          stackTrace: S.optional(__S(5)),
+          timeEvents: S.optional(__S(13)),
           childSpanCount: S.optional(S.Number),
-          links: S.optional(Links),
-          status: S.optional(Status),
-          spanKind: S.optional(SpanSpanKindEnum),
+          links: S.optional(__S(16)),
+          status: S.optional(__S(19)),
+          spanKind: S.optional(S.String),
           name: S.optional(S.String),
-          attributes: S.optional(Attributes),
+          attributes: S.optional(__S(8)),
           spanId: S.optional(S.String),
           startTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "Span" });
     case 5:
-      return S.Array(Span);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          spans: S.optional(SpanList),
+          spans: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "BatchWriteSpansRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(BatchWriteSpansRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(22).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -547,7 +482,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(Span.pipe(T.HttpBody())),
+          body: S.optional(__S(20).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -558,5 +493,22 @@ function __c3(j: number): any {
       ).annotate({
         identifier: "CreateSpanProjectsTracesSpansRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
   }
 }

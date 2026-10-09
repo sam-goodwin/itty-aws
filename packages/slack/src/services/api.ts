@@ -6,6 +6,8 @@ import { SlackError, SlackRateLimited } from "../errors.ts";
 import { SlackProtocol, type SlackOpError, type SlackOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SlackOpError, SlackOpContext };
 
@@ -13,21 +15,12 @@ export interface TestApiRequest {
   /** Error response to return */
   error?: string;
 }
-const TestApiRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<TestApiRequest>;
-
 export type TestApiResponseArgsMap = { [key: string]: unknown | undefined };
-const TestApiResponseArgsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<TestApiResponseArgsMap>;
-
 export interface TestApiResponse {
   /** Always `true` (a failed call raises a typed error instead). */
   ok: boolean;
   args?: TestApiResponseArgsMap;
 }
-const TestApiResponse = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<TestApiResponse>;
-
 export type TestApiError = SlackOpError;
 /** Checks API calling code. Rate limit tier: 4 See https://docs.slack.dev/reference/methods/api.test */
 export const testApi: API.OperationMethod<
@@ -36,8 +29,8 @@ export const testApi: API.OperationMethod<
   TestApiError,
   SlackOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestApiRequest,
-  output: TestApiResponse,
+  input: __S(0) as any as S.Schema<TestApiRequest>,
+  output: __S(2) as any as S.Schema<TestApiResponse>,
   errors: [SlackError, SlackRateLimited],
   protocol: SlackProtocol,
   retry: Retry.Retry,
@@ -58,8 +51,19 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ok: S.Boolean,
-          args: S.optional(TestApiResponseArgsMap),
+          args: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "TestApiResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 2) {
+    case 0:
+      return __c0(i & 3);
   }
 }

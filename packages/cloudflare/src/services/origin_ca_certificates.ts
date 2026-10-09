@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -72,17 +74,8 @@ export class HostnameNotAuthorized
   ) {}
 
 export type CreateRequestHostnamesList = Array<string>;
-const CreateRequestHostnamesList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateRequestHostnamesList>;
-
 export type CreateRequestRequestType = "origin-rsa" | "origin-ecc" | "keyless-certificate";
-const CreateRequestRequestType = S.String;
-
 export type CreateRequestRequestedValidity = 7 | 30 | 90 | 365 | 730 | 1095 | 5475;
-const CreateRequestRequestedValidity = S.Number;
-
 export interface CreateOriginCaCertificateRequest {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
   csr: string;
@@ -93,21 +86,9 @@ export interface CreateOriginCaCertificateRequest {
   /** The number of days for which the certificate should be valid. */
   requestedValidity?: CreateRequestRequestedValidity | (number & {});
 }
-const CreateOriginCaCertificateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateOriginCaCertificateRequest>;
-
 export type CreateResponseHostnamesList = Array<string>;
-const CreateResponseHostnamesList =
-  CreateRequestHostnamesList as any as S.Schema<CreateResponseHostnamesList>;
-
 export type CreateResponseRequestType = "origin-rsa" | "origin-ecc" | "keyless-certificate";
-const CreateResponseRequestType = S.String;
-
 export type CreateResponseRequestedValidity = 7 | 30 | 90 | 365 | 730 | 1095 | 5475;
-const CreateResponseRequestedValidity = S.Number;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateOriginCaCertificateResponse {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
@@ -127,20 +108,10 @@ export interface CreateOriginCaCertificateResponse {
   /** When the certificate was revoked; absent while the certificate is live. */
   revokedAt?: string | null;
 }
-const CreateOriginCaCertificateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateOriginCaCertificateResponse>;
-
 export interface DeleteOriginCaCertificateRequest {
   /** The x509 serial number of the Origin CA certificate. */
   certificateId: string;
 }
-const DeleteOriginCaCertificateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteOriginCaCertificateRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteOriginCaCertificateResponse {
   /** The x509 serial number of the Origin CA certificate. */
@@ -148,30 +119,13 @@ export interface DeleteOriginCaCertificateResponse {
   /** When the certificate was revoked. */
   revokedAt?: string | null;
 }
-const DeleteOriginCaCertificateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<DeleteOriginCaCertificateResponse>;
-
 export interface GetOriginCaCertificateRequest {
   /** The x509 serial number of the Origin CA certificate. */
   certificateId: string;
 }
-const GetOriginCaCertificateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetOriginCaCertificateRequest>;
-
 export type GetResponseHostnamesList = Array<string>;
-const GetResponseHostnamesList =
-  CreateRequestHostnamesList as any as S.Schema<GetResponseHostnamesList>;
-
 export type GetResponseRequestType = "origin-rsa" | "origin-ecc" | "keyless-certificate";
-const GetResponseRequestType = S.String;
-
 export type GetResponseRequestedValidity = 7 | 30 | 90 | 365 | 730 | 1095 | 5475;
-const GetResponseRequestedValidity = S.Number;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetOriginCaCertificateResponse {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
@@ -191,11 +145,6 @@ export interface GetOriginCaCertificateResponse {
   /** When the certificate was revoked; absent while the certificate is live. */
   revokedAt?: string | null;
 }
-const GetOriginCaCertificateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetOriginCaCertificateResponse>;
-
 export interface ListOriginCaCertificatesRequest {
   /** Identifier. */
   zoneId: string;
@@ -208,21 +157,9 @@ export interface ListOriginCaCertificatesRequest {
   /** Number of records per page. */
   perPage?: number;
 }
-const ListOriginCaCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListOriginCaCertificatesRequest>;
-
 export type ListResultItemHostnamesList = Array<string>;
-const ListResultItemHostnamesList =
-  CreateRequestHostnamesList as any as S.Schema<ListResultItemHostnamesList>;
-
 export type ListResultItemRequestType = "origin-rsa" | "origin-ecc" | "keyless-certificate";
-const ListResultItemRequestType = S.String;
-
 export type ListResultItemRequestedValidity = 7 | 30 | 90 | 365 | 730 | 1095 | 5475;
-const ListResultItemRequestedValidity = S.Number;
-
 export interface ListResultItem {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
   csr: string;
@@ -241,22 +178,13 @@ export interface ListResultItem {
   /** When the certificate was revoked; absent while the certificate is live. */
   revokedAt?: string | null;
 }
-const ListResultItem = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<ListResultItem>;
-
 export type ListResultList = Array<ListResultItem>;
-const ListResultList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ListResultList>;
-
 export interface ListOriginCaCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListOriginCaCertificatesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListOriginCaCertificatesResponse>;
-
 export type CreateOriginCaCertificateError = HostnameNotAuthorized | Forbidden | CloudflareOpError;
 /** Create an Origin CA certificate. You can use an Origin CA Key as your User Service Key or an API token when calling this endpoint ([see above](#requests)). */
 export const createOriginCaCertificate: API.OperationMethod<
@@ -265,8 +193,8 @@ export const createOriginCaCertificate: API.OperationMethod<
   CreateOriginCaCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOriginCaCertificateRequest,
-  output: CreateOriginCaCertificateResponse,
+  input: __S(1) as any as S.Schema<CreateOriginCaCertificateRequest>,
+  output: __S(2) as any as S.Schema<CreateOriginCaCertificateResponse>,
   errors: [HostnameNotAuthorized, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -285,8 +213,8 @@ export const deleteOriginCaCertificate: API.OperationMethod<
   DeleteOriginCaCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOriginCaCertificateRequest,
-  output: DeleteOriginCaCertificateResponse,
+  input: __S(3) as any as S.Schema<DeleteOriginCaCertificateRequest>,
+  output: __S(4) as any as S.Schema<DeleteOriginCaCertificateResponse>,
   errors: [
     CertificateNotFound,
     CertificateAlreadyRevoked,
@@ -307,8 +235,8 @@ export const getOriginCaCertificate: API.OperationMethod<
   GetOriginCaCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOriginCaCertificateRequest,
-  output: GetOriginCaCertificateResponse,
+  input: __S(5) as any as S.Schema<GetOriginCaCertificateRequest>,
+  output: __S(6) as any as S.Schema<GetOriginCaCertificateResponse>,
   errors: [CertificateNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -324,8 +252,8 @@ export const listOriginCaCertificates: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListOriginCaCertificatesRequest,
-    output: ListOriginCaCertificatesResponse,
+    input: __S(7) as any as S.Schema<ListOriginCaCertificatesRequest>,
+    output: __S(10) as any as S.Schema<ListOriginCaCertificatesResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -349,11 +277,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           csr: S.String,
-          hostnames: CreateRequestHostnamesList,
-          requestType: CreateRequestRequestType.pipe(T.Body("request_type")),
-          requestedValidity: S.optional(
-            CreateRequestRequestedValidity.pipe(T.Body("requested_validity")),
-          ),
+          hostnames: __S(0),
+          requestType: S.String.pipe(T.Body("request_type")),
+          requestedValidity: S.optional(S.Number.pipe(T.Body("requested_validity"))),
         })
           .pipe(T.Http({ method: "POST", uri: "/certificates", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -364,9 +290,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           csr: S.String,
-          hostnames: CreateResponseHostnamesList,
-          requestType: CreateResponseRequestType.pipe(T.Body("request_type")),
-          requestedValidity: CreateResponseRequestedValidity.pipe(T.Body("requested_validity")),
+          hostnames: __S(0),
+          requestType: S.String.pipe(T.Body("request_type")),
+          requestedValidity: S.Number.pipe(T.Body("requested_validity")),
           id: S.optional(S.NullOr(S.String)),
           certificate: S.optional(S.NullOr(S.String)),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
@@ -408,9 +334,9 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           csr: S.String,
-          hostnames: GetResponseHostnamesList,
-          requestType: GetResponseRequestType.pipe(T.Body("request_type")),
-          requestedValidity: GetResponseRequestedValidity.pipe(T.Body("requested_validity")),
+          hostnames: __S(0),
+          requestType: S.String.pipe(T.Body("request_type")),
+          requestedValidity: S.Number.pipe(T.Body("requested_validity")),
           id: S.optional(S.NullOr(S.String)),
           certificate: S.optional(S.NullOr(S.String)),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
@@ -441,9 +367,9 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           csr: S.String,
-          hostnames: ListResultItemHostnamesList,
-          requestType: ListResultItemRequestType.pipe(T.Body("request_type")),
-          requestedValidity: ListResultItemRequestedValidity.pipe(T.Body("requested_validity")),
+          hostnames: __S(0),
+          requestType: S.String.pipe(T.Body("request_type")),
+          requestedValidity: S.Number.pipe(T.Body("requested_validity")),
           id: S.optional(S.NullOr(S.String)),
           certificate: S.optional(S.NullOr(S.String)),
           expiresOn: S.optional(S.NullOr(S.String).pipe(T.Body("expires_on"))),
@@ -451,15 +377,28 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 1:
-      return S.Array(ListResultItem);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: ListResultList.pipe(T.EnvelopePayload()),
+          result: __S(9).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListOriginCaCertificatesResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

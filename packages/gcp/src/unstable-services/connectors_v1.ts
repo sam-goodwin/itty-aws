@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -64,39 +66,21 @@ export class NotFound
 
 /** The request message for Operations.CancelOperation. */
 export interface CancelOperationRequest {}
-const CancelOperationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CancelOperationRequest>;
-
 export interface CancelProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be cancelled. */
   name: string;
   /** Request body */
   body?: CancelOperationRequest;
 }
-const CancelProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CancelProjectsLocationsOperationsRequest>;
-
 /** A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } */
 export interface Empty {}
-const Empty = CancelOperationRequest as any as S.Schema<Empty>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<StringList>;
-
 /** StringListValues is a message to store a list of string values. */
 export interface StringListValues {
   /** Required. The list of string values. */
   listValues?: StringList;
 }
-const StringListValues = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<StringListValues>;
-
 export type AdminFiltersFilterTypeEnum = "FILTER_TYPE_UNSPECIFIED" | "INCLUSION" | "EXCLUSION";
-const AdminFiltersFilterTypeEnum = S.String;
-
 /** * AdminFilters defines a set of filters that can be applied to a connection. These are currently used by Gemini Enterprise connections. */
 export interface AdminFilters {
   /** Optional. List of string values. */
@@ -110,11 +94,7 @@ export interface AdminFilters {
   /** Required. Unique name for the filter, e.g., "SharePointSiteURL", "DocumentType", "ChatSpaceName". */
   filterKey?: string;
 }
-const AdminFilters = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<AdminFilters>;
-
 export type AdminFiltersList = Array<AdminFilters>;
-const AdminFiltersList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<AdminFiltersList>;
-
 /** Node configuration for the connection. */
 export interface NodeConfig {
   /** Optional. Minimum number of nodes in the runtime nodes. */
@@ -122,21 +102,13 @@ export interface NodeConfig {
   /** Optional. Maximum number of nodes in the runtime nodes. */
   maxNodeCount?: number;
 }
-const NodeConfig = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<NodeConfig>;
-
 export type SslConfigTypeEnum = "SSL_TYPE_UNSPECIFIED" | "TLS" | "MTLS";
-const SslConfigTypeEnum = S.String;
-
 /** Secret provides a reference to entries in Secret Manager. */
 export interface Secret {
   /** Optional. The resource name of the secret version in the format, format as: `projects/*\/secrets/*\/versions/*`. */
   secretVersion?: string;
 }
-const Secret = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Secret>;
-
 export type EncryptionKeyTypeEnum = "TYPE_UNSPECIFIED" | "GOOGLE_MANAGED" | "CUSTOMER_MANAGED";
-const EncryptionKeyTypeEnum = S.String;
-
 /** Encryption Key value. */
 export interface EncryptionKey {
   /** Optional. Specifies the type of the encryption key. */
@@ -144,8 +116,6 @@ export interface EncryptionKey {
   /** Optional. The [KMS key name] with which the content of the Operation is encrypted. The expected format: `projects/*\/locations/*\/keyRings/*\/cryptoKeys/*`. Will be empty string if google managed. */
   kmsKeyName?: string;
 }
-const EncryptionKey = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<EncryptionKey>;
-
 /** ConfigVariable represents a configuration variable present in a Connection. or AuthConfig. */
 export interface ConfigVariable {
   /** Optional. Key of the config variable. */
@@ -161,20 +131,10 @@ export interface ConfigVariable {
   /** Optional. Value is a bool. */
   boolValue?: boolean;
 }
-const ConfigVariable = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ConfigVariable>;
-
 export type ConfigVariableList = Array<ConfigVariable>;
-const ConfigVariableList = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ConfigVariableList>;
-
 export type SslConfigClientCertTypeEnum = "CERT_TYPE_UNSPECIFIED" | "PEM";
-const SslConfigClientCertTypeEnum = S.String;
-
 export type SslConfigServerCertTypeEnum = "CERT_TYPE_UNSPECIFIED" | "PEM";
-const SslConfigServerCertTypeEnum = S.String;
-
 export type SslConfigTrustModelEnum = "PUBLIC" | "PRIVATE" | "INSECURE";
-const SslConfigTrustModelEnum = S.String;
-
 /** SSL Configuration of a connection */
 export interface SslConfig {
   /** Optional. Controls the ssl type for the given connector version. */
@@ -198,8 +158,6 @@ export interface SslConfig {
   /** Optional. Trust Model of the SSL connection */
   trustModel?: SslConfigTrustModelEnum | (string & {});
 }
-const SslConfig = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<SslConfig>;
-
 export interface Destination {
   /** Optional. The port is the target port number that is accepted by the destination. */
   port?: number;
@@ -208,11 +166,7 @@ export interface Destination {
   /** PSC service attachments. Format: projects/*\/regions/*\/serviceAttachments/* */
   serviceAttachment?: string;
 }
-const Destination = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<Destination>;
-
 export type DestinationList = Array<Destination>;
-const DestinationList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DestinationList>;
-
 /** Define the Connectors target endpoint. */
 export interface DestinationConfig {
   /** Optional. The key is the destination identifier that is supported by the Connector. */
@@ -220,20 +174,9 @@ export interface DestinationConfig {
   /** Optional. The destinations for the key. */
   destinations?: DestinationList;
 }
-const DestinationConfig = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<DestinationConfig>;
-
 export type DestinationConfigList = Array<DestinationConfig>;
-const DestinationConfigList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<DestinationConfigList>;
-
 export type StringMap = { [key: string]: string | undefined };
-const StringMap = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<StringMap>;
-
 export type ConnectorsLogConfigLevelEnum = "LOG_LEVEL_UNSPECIFIED" | "ERROR" | "INFO" | "DEBUG";
-const ConnectorsLogConfigLevelEnum = S.String;
-
 /** Log configuration for the connection. */
 export interface ConnectorsLogConfig {
   /** Optional. Enabled represents whether logging is enabled or not for a connection. */
@@ -241,11 +184,7 @@ export interface ConnectorsLogConfig {
   /** Optional. Log configuration level. */
   level?: ConnectorsLogConfigLevelEnum | (string & {});
 }
-const ConnectorsLogConfig = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ConnectorsLogConfig>;
-
 export type ConnectionSubscriptionTypeEnum = "SUBSCRIPTION_TYPE_UNSPECIFIED" | "PAY_G" | "PAID";
-const ConnectionSubscriptionTypeEnum = S.String;
-
 /** * TrafficShapingConfig defines the configuration for shaping API traffic by specifying a quota limit and the duration over which this limit is enforced. This configuration helps to control and manage the rate at which API calls are made on the client side, preventing service overload on the backend. For example: - if the quota limit is 100 calls per 10 seconds, then the message would be: { quota_limit: 100 duration: { seconds: 10 } } - if the quota limit is 100 calls per 5 minutes, then the message would be: { quota_limit: 100 duration: { seconds: 300 } } - if the quota limit is 10000 calls per day, then the message would be: { quota_limit: 10000 duration: { seconds: 86400 } and so on. */
 export interface TrafficShapingConfig {
   /** Required. Maximum number of api calls allowed. */
@@ -253,14 +192,7 @@ export interface TrafficShapingConfig {
   /** Required. Specifies the duration over which the API call quota limits are calculated. This duration is used to define the time window for evaluating if the number of API calls made by a user is within the allowed quota limits. For example: - To define a quota sampled over 16 seconds, set `seconds` to 16 - To define a quota sampled over 5 minutes, set `seconds` to 300 (5 * 60) - To define a quota sampled over 1 day, set `seconds` to 86400 (24 * 60 * 60) and so on. It is important to note that this duration is not the time the quota is valid for, but rather the time window over which the quota is evaluated. For example, if the quota is 100 calls per 10 seconds, then this duration field would be set to 10 seconds. */
   duration?: string;
 }
-const TrafficShapingConfig = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<TrafficShapingConfig>;
-
 export type TrafficShapingConfigList = Array<TrafficShapingConfig>;
-const TrafficShapingConfigList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<TrafficShapingConfigList>;
-
 /** Parameters to support Username and Password Authentication. */
 export interface UserPassword {
   /** Optional. Secret version reference containing the password. */
@@ -268,8 +200,6 @@ export interface UserPassword {
   /** Optional. Username. */
   username?: string;
 }
-const UserPassword = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<UserPassword>;
-
 /** Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details. */
 export interface Oauth2AuthCodeFlow {
   /** Optional. Whether to enable PKCE when the user performs the auth code flow. */
@@ -289,8 +219,6 @@ export interface Oauth2AuthCodeFlow {
   /** Optional. Client secret for user-provided OAuth app. */
   clientSecret?: Secret;
 }
-const Oauth2AuthCodeFlow = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<Oauth2AuthCodeFlow>;
-
 /** Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google Provided OAuth Client. See https://tools.ietf.org/html/rfc6749#section-1.3.1 for more details. */
 export interface Oauth2AuthCodeFlowGoogleManaged {
   /** Optional. Authorization code to be exchanged for access and refresh tokens. */
@@ -300,11 +228,6 @@ export interface Oauth2AuthCodeFlowGoogleManaged {
   /** Required. Scopes the connection will request when the user performs the auth code flow. */
   scopes?: StringList;
 }
-const Oauth2AuthCodeFlowGoogleManaged = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<Oauth2AuthCodeFlowGoogleManaged>;
-
 /** Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details. */
 export interface Oauth2ClientCredentials {
   /** Optional. The client identifier. */
@@ -312,11 +235,6 @@ export interface Oauth2ClientCredentials {
   /** Optional. Secret version reference containing the client secret. */
   clientSecret?: Secret;
 }
-const Oauth2ClientCredentials = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<Oauth2ClientCredentials>;
-
 /** Parameters to support Ssh public key Authentication. */
 export interface SshPublicKey {
   /** Optional. SSH Client Cert. It should contain both public and private key. */
@@ -328,8 +246,6 @@ export interface SshPublicKey {
   /** Optional. Format of SSH Client cert. */
   certType?: string;
 }
-const SshPublicKey = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<SshPublicKey>;
-
 export type AuthConfigAuthTypeEnum =
   | "AUTH_TYPE_UNSPECIFIED"
   | "USER_PASSWORD"
@@ -339,8 +255,6 @@ export type AuthConfigAuthTypeEnum =
   | "OAUTH2_AUTH_CODE_FLOW"
   | "GOOGLE_AUTHENTICATION"
   | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
-const AuthConfigAuthTypeEnum = S.String;
-
 /** JWT claims used for the jwt-bearer authorization grant. */
 export interface JwtClaims {
   /** Optional. Value for the "iss" claim. */
@@ -350,8 +264,6 @@ export interface JwtClaims {
   /** Optional. Value for the "aud" claim. */
   audience?: string;
 }
-const JwtClaims = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<JwtClaims>;
-
 /** Parameters to support JSON Web Token (JWT) Profile for Oauth 2.0 Authorization Grant based authentication. See https://tools.ietf.org/html/rfc7523 for more details. */
 export interface Oauth2JwtBearer {
   /** Optional. JwtClaims providers fields to generate the token. */
@@ -359,8 +271,6 @@ export interface Oauth2JwtBearer {
   /** Optional. Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the form as: `projects/*\/secrets/*\/versions/*`. */
   clientKey?: Secret;
 }
-const Oauth2JwtBearer = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<Oauth2JwtBearer>;
-
 /** AuthConfig defines details of a authentication type. */
 export interface AuthConfig {
   /** Optional. Identifier key for auth config */
@@ -382,8 +292,6 @@ export interface AuthConfig {
   /** Oauth2JwtBearer. */
   oauth2JwtBearer?: Oauth2JwtBearer;
 }
-const AuthConfig = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<AuthConfig>;
-
 /** Determines whether or no a connection is locked. If locked, a reason must be specified. */
 export interface LockConfig {
   /** Optional. Indicates whether or not the connection is locked. */
@@ -391,15 +299,11 @@ export interface LockConfig {
   /** Optional. Describes why a connection is locked. */
   reason?: string;
 }
-const LockConfig = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<LockConfig>;
-
 export type EventingStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "ERROR"
   | "INGRESS_ENDPOINT_REQUIRED";
-const EventingStatusStateEnum = S.String;
-
 /** EventingStatus indicates the state of eventing. */
 export interface EventingStatus {
   /** Output only. State. */
@@ -407,8 +311,6 @@ export interface EventingStatus {
   /** Output only. Description of error if State is set to "ERROR". */
   description?: string;
 }
-const EventingStatus = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<EventingStatus>;
-
 /** WebhookData has details of webhook configuration. */
 export interface WebhookData {
   /** Output only. Timestamp when the webhook was last updated. */
@@ -428,18 +330,12 @@ export interface WebhookData {
   /** Output only. List of event types for the webhook. This is the event types subscribed by the current webhook. */
   eventTypes?: StringList;
 }
-const WebhookData = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<WebhookData>;
-
 export type WebhookDataList = Array<WebhookData>;
-const WebhookDataList = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<WebhookDataList>;
-
 /** WebhookSubscriptions has details of webhook subscriptions. */
 export interface WebhookSubscriptions {
   /** Output only. Webhook data. */
   webhookData?: WebhookDataList;
 }
-const WebhookSubscriptions = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<WebhookSubscriptions>;
-
 /** Eventing runtime data has the details related to eventing managed by the system. */
 export interface EventingRuntimeData {
   /** Output only. Current status of eventing. */
@@ -453,8 +349,6 @@ export interface EventingRuntimeData {
   /** Output only. Webhook data. */
   webhookData?: WebhookData;
 }
-const EventingRuntimeData = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<EventingRuntimeData>;
-
 /** Dead Letter configuration details provided by the user. */
 export interface DeadLetterConfig {
   /** Optional. Topic to push events which couldn't be processed. */
@@ -462,15 +356,11 @@ export interface DeadLetterConfig {
   /** Optional. Project which has the topic given. */
   projectId?: string;
 }
-const DeadLetterConfig = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<DeadLetterConfig>;
-
 /** Data enrichment configuration. */
 export interface EnrichmentConfig {
   /** Optional. Append ACL to the event. */
   appendAcl?: boolean;
 }
-const EnrichmentConfig = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<EnrichmentConfig>;
-
 /** Eventing Configuration of a connection next: 21 */
 export interface EventingConfig {
   /** Optional. Additional eventing related field values */
@@ -502,14 +392,10 @@ export interface EventingConfig {
   /** Optional. Auth details for the event listener. */
   listenerAuthConfig?: AuthConfig;
 }
-const EventingConfig = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<EventingConfig>;
-
 export type ConnectionEventingEnablementTypeEnum =
   | "EVENTING_ENABLEMENT_TYPE_UNSPECIFIED"
   | "EVENTING_AND_CONNECTION"
   | "ONLY_EVENTING";
-const ConnectionEventingEnablementTypeEnum = S.String;
-
 export type ConnectionConnectorVersionLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "PREVIEW"
@@ -517,28 +403,20 @@ export type ConnectionConnectorVersionLaunchStageEnum =
   | "DEPRECATED"
   | "TEST"
   | "PRIVATE_PREVIEW";
-const ConnectionConnectorVersionLaunchStageEnum = S.String;
-
 export type ConnectorVersionInfraConfigTlsMigrationStateEnum =
   | "TLS_MIGRATION_STATE_UNSPECIFIED"
   | "TLS_MIGRATION_NOT_STARTED"
   | "TLS_MIGRATION_COMPLETED";
-const ConnectorVersionInfraConfigTlsMigrationStateEnum = S.String;
-
 export type ConnectorVersionInfraConfigDeploymentModelEnum =
   | "DEPLOYMENT_MODEL_UNSPECIFIED"
   | "GKE_MST"
   | "CLOUD_RUN_MST";
-const ConnectorVersionInfraConfigDeploymentModelEnum = S.String;
-
 export type ConnectorVersionInfraConfigDeploymentModelMigrationStateEnum =
   | "DEPLOYMENT_MODEL_MIGRATION_STATE_UNSPECIFIED"
   | "IN_PROGRESS"
   | "COMPLETED"
   | "ROLLEDBACK"
   | "ROLLBACK_IN_PROGRESS";
-const ConnectorVersionInfraConfigDeploymentModelMigrationStateEnum = S.String;
-
 /** Resource requests defined for connection pods of a given connector type. */
 export interface ResourceRequests {
   /** Output only. CPU request. */
@@ -546,8 +424,6 @@ export interface ResourceRequests {
   /** Output only. Memory request. */
   memory?: string;
 }
-const ResourceRequests = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ResourceRequests>;
-
 /** Autoscaling config for connector deployment system metrics. */
 export interface HPAConfig {
   /** Output only. Percent Memory utilization where HPA triggers autoscaling. */
@@ -555,8 +431,6 @@ export interface HPAConfig {
   /** Output only. Percent CPU utilization where HPA triggers autoscaling. */
   cpuUtilizationThreshold?: string;
 }
-const HPAConfig = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<HPAConfig>;
-
 /** Resource limits defined for connection pods of a given connector type. */
 export interface ResourceLimits {
   /** Output only. Memory limit. */
@@ -564,8 +438,6 @@ export interface ResourceLimits {
   /** Output only. CPU limit. */
   cpu?: string;
 }
-const ResourceLimits = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<ResourceLimits>;
-
 /** This configuration provides infra configs like rate limit threshold which need to be configurable for every connector version */
 export interface ConnectorVersionInfraConfig {
   /** Output only. The window used for ratelimiting runtime requests to connections. */
@@ -593,11 +465,6 @@ export interface ConnectorVersionInfraConfig {
   /** Output only. System resource limits. */
   resourceLimits?: ResourceLimits;
 }
-const ConnectorVersionInfraConfig = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ConnectorVersionInfraConfig>;
-
 export type ConnectionStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -607,8 +474,6 @@ export type ConnectionStatusStateEnum =
   | "UPDATING"
   | "ERROR"
   | "AUTHORIZATION_REQUIRED";
-const ConnectionStatusStateEnum = S.String;
-
 /** ConnectionStatus indicates the state of the connection. */
 export interface ConnectionStatus {
   /** State. */
@@ -618,21 +483,15 @@ export interface ConnectionStatus {
   /** Description. */
   description?: string;
 }
-const ConnectionStatus = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ConnectionStatus>;
-
 export type BillingConfigBillingCategoryEnum =
   | "BILLING_CATEGORY_UNSPECIFIED"
   | "GCP_AND_TECHNICAL_CONNECTOR"
   | "NON_GCP_CONNECTOR";
-const BillingConfigBillingCategoryEnum = S.String;
-
 /** Billing config for the connection. */
 export interface BillingConfig {
   /** Output only. Billing category for the connector. */
   billingCategory?: BillingConfigBillingCategoryEnum | (string & {});
 }
-const BillingConfig = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<BillingConfig>;
-
 /** Connection represents an instance of connector. */
 export interface Connection {
   /** Optional. Admin filters for the connection. These are used by Gemini Enterprise. */
@@ -708,8 +567,6 @@ export interface Connection {
   /** Output only. Billing config for the connection. */
   billingConfig?: BillingConfig;
 }
-const Connection = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<Connection>;
-
 export interface CreateProjectsLocationsConnectionsRequest {
   /** Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource. */
   connectionId?: string;
@@ -718,17 +575,8 @@ export interface CreateProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: Connection;
 }
-const CreateProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateProjectsLocationsConnectionsRequest>;
-
 export type DocumentMap = { [key: string]: unknown | undefined };
-const DocumentMap = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<DocumentMap>;
-
 export type DocumentMapList = Array<DocumentMap>;
-const DocumentMapList = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<DocumentMapList>;
-
 /** The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). */
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -738,8 +586,6 @@ export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
   details?: DocumentMapList;
 }
-const Status = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<Status>;
-
 /** This resource represents a long-running operation that is the result of a network API call. */
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -753,22 +599,13 @@ export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
   response?: DocumentMap;
 }
-const Operation = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Operation>;
-
 export type EndUserAuthenticationRolesItemEnum =
   | "ROLE_UNSPECIFIED"
   | "READER"
   | "READER_DOMAIN_WIDE_ACCESSIBLE";
-const EndUserAuthenticationRolesItemEnum = S.String;
-
 export type EndUserAuthenticationRolesItemEnumList = Array<
   EndUserAuthenticationRolesItemEnum | (string & {})
 >;
-const EndUserAuthenticationRolesItemEnumList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<EndUserAuthenticationRolesItemEnumList>;
-
 /** EUASecret provides a reference to entries in Secret Manager. */
 export interface EUASecret {
   /** Optional. The resource name of the secret version in the format, format as: `projects/*\/secrets/*\/versions/*`. */
@@ -776,8 +613,6 @@ export interface EUASecret {
   /** Optional. The plain string value of the secret. */
   secretValue?: string;
 }
-const EUASecret = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<EUASecret>;
-
 /** EndUserAuthenticationConfigVariable represents a configuration variable present in a EndUserAuthentication. */
 export interface EndUserAuthenticationConfigVariable {
   /** Required. Key of the config variable. */
@@ -791,17 +626,7 @@ export interface EndUserAuthenticationConfigVariable {
   /** Value is a secret */
   secretValue?: EUASecret;
 }
-const EndUserAuthenticationConfigVariable = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<EndUserAuthenticationConfigVariable>;
-
 export type EndUserAuthenticationConfigVariableList = Array<EndUserAuthenticationConfigVariable>;
-const EndUserAuthenticationConfigVariableList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<EndUserAuthenticationConfigVariableList>;
-
 export type EndUserAuthenticationConfigAuthTypeEnum =
   | "AUTH_TYPE_UNSPECIFIED"
   | "USER_PASSWORD"
@@ -811,8 +636,6 @@ export type EndUserAuthenticationConfigAuthTypeEnum =
   | "OAUTH2_AUTH_CODE_FLOW"
   | "GOOGLE_AUTHENTICATION"
   | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
-const EndUserAuthenticationConfigAuthTypeEnum = S.String;
-
 /** pass only at create and not update using updateMask Auth Code Data */
 export interface OAuthTokenData {
   /** Optional. Refresh token for the connection. */
@@ -824,8 +647,6 @@ export interface OAuthTokenData {
   /** Optional. Access token for the connection. */
   accessToken?: EUASecret;
 }
-const OAuthTokenData = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<OAuthTokenData>;
-
 /** Parameters to support Oauth 2.0 Auth Code Grant Authentication. See https://www.rfc-editor.org/rfc/rfc6749#section-1.3.1 for more details. */
 export interface EndUserAuthenticationConfigOauth2AuthCodeFlow {
   /** Optional. PKCE verifier to be used during the auth code exchange. */
@@ -847,11 +668,6 @@ export interface EndUserAuthenticationConfigOauth2AuthCodeFlow {
   /** Optional. Client ID for user-provided OAuth app. */
   clientId?: string;
 }
-const EndUserAuthenticationConfigOauth2AuthCodeFlow = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<EndUserAuthenticationConfigOauth2AuthCodeFlow>;
-
 /** Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details. */
 export interface EndUserAuthenticationConfigOauth2ClientCredentials {
   /** The client identifier. */
@@ -859,11 +675,6 @@ export interface EndUserAuthenticationConfigOauth2ClientCredentials {
   /** Required. string value or secret version containing the client secret. */
   clientSecret?: EUASecret;
 }
-const EndUserAuthenticationConfigOauth2ClientCredentials = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<EndUserAuthenticationConfigOauth2ClientCredentials>;
-
 /** Parameters to support Oauth 2.0 Auth Code Grant Authentication using Google Provided OAuth Client. See https://tools.ietf.org/html/rfc6749#section-1.3.1 for more details. */
 export interface EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged {
   /** Auth Code Data */
@@ -875,11 +686,6 @@ export interface EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged {
   /** Required. Scopes the connection will request when the user performs the auth code flow. */
   scopes?: StringList;
 }
-const EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged>;
-
 /** Parameters to support Ssh public key Authentication. */
 export interface EndUserAuthenticationConfigSshPublicKey {
   /** The user account used to authenticate. */
@@ -891,11 +697,6 @@ export interface EndUserAuthenticationConfigSshPublicKey {
   /** Required. Password (passphrase) for ssh client certificate if it has one. */
   sshClientCertPass?: EUASecret;
 }
-const EndUserAuthenticationConfigSshPublicKey = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<EndUserAuthenticationConfigSshPublicKey>;
-
 /** JWT claims used for the jwt-bearer authorization grant. */
 export interface EndUserAuthenticationConfigOauth2JwtBearerJwtClaims {
   /** Value for the "aud" claim. */
@@ -905,11 +706,6 @@ export interface EndUserAuthenticationConfigOauth2JwtBearerJwtClaims {
   /** Value for the "iss" claim. */
   issuer?: string;
 }
-const EndUserAuthenticationConfigOauth2JwtBearerJwtClaims = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<EndUserAuthenticationConfigOauth2JwtBearerJwtClaims>;
-
 /** Parameters to support JSON Web Token (JWT) Profile for Oauth 2.0 Authorization Grant based authentication. See https://tools.ietf.org/html/rfc7523 for more details. */
 export interface EndUserAuthenticationConfigOauth2JwtBearer {
   /** Required. secret version/value reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the form as: `projects/*\/strings/*\/versions/*`. */
@@ -917,11 +713,6 @@ export interface EndUserAuthenticationConfigOauth2JwtBearer {
   /** JwtClaims providers fields to generate the token. */
   jwtClaims?: EndUserAuthenticationConfigOauth2JwtBearerJwtClaims;
 }
-const EndUserAuthenticationConfigOauth2JwtBearer = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<EndUserAuthenticationConfigOauth2JwtBearer>;
-
 /** Parameters to support Username and Password Authentication. */
 export interface EndUserAuthenticationConfigUserPassword {
   /** Username. */
@@ -929,11 +720,6 @@ export interface EndUserAuthenticationConfigUserPassword {
   /** Required. string value or secret version reference containing the password. */
   password?: EUASecret;
 }
-const EndUserAuthenticationConfigUserPassword = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<EndUserAuthenticationConfigUserPassword>;
-
 /** EndUserAuthenticationConfig defines details of a authentication configuration for EUC */
 export interface EndUserAuthenticationConfig {
   /** The type of authentication configured. */
@@ -955,17 +741,10 @@ export interface EndUserAuthenticationConfig {
   /** Identifier key for auth config */
   authKey?: string;
 }
-const EndUserAuthenticationConfig = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<EndUserAuthenticationConfig>;
-
 export type EndUserAuthenticationEndUserAuthenticationStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "ACTIVE"
   | "ERROR";
-const EndUserAuthenticationEndUserAuthenticationStatusStateEnum = S.String;
-
 /** EndUserAuthentication Status denotes the status of the EndUserAuthentication resource. */
 export interface EndUserAuthenticationEndUserAuthenticationStatus {
   /** Output only. Description of the state. */
@@ -973,11 +752,6 @@ export interface EndUserAuthenticationEndUserAuthenticationStatus {
   /** Output only. State of Event Subscription resource. */
   state?: EndUserAuthenticationEndUserAuthenticationStatusStateEnum | (string & {});
 }
-const EndUserAuthenticationEndUserAuthenticationStatus = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<EndUserAuthenticationEndUserAuthenticationStatus>;
-
 /** Header details for a given header to be added to Endpoint. */
 export interface EndUserAuthenticationNotifyEndpointDestinationEndPointHeader {
   /** Required. Key of Header. */
@@ -985,18 +759,8 @@ export interface EndUserAuthenticationNotifyEndpointDestinationEndPointHeader {
   /** Required. Value of Header. */
   value?: string;
 }
-const EndUserAuthenticationNotifyEndpointDestinationEndPointHeader = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<EndUserAuthenticationNotifyEndpointDestinationEndPointHeader>;
-
 export type EndUserAuthenticationNotifyEndpointDestinationEndPointHeaderList =
   Array<EndUserAuthenticationNotifyEndpointDestinationEndPointHeader>;
-const EndUserAuthenticationNotifyEndpointDestinationEndPointHeaderList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<EndUserAuthenticationNotifyEndpointDestinationEndPointHeaderList>;
-
 /** Endpoint message includes details of the Destination endpoint. */
 export interface EndUserAuthenticationNotifyEndpointDestinationEndPoint {
   /** Required. The URI of the Endpoint. */
@@ -1004,16 +768,9 @@ export interface EndUserAuthenticationNotifyEndpointDestinationEndPoint {
   /** Optional. List of Header to be added to the Endpoint. */
   headers?: EndUserAuthenticationNotifyEndpointDestinationEndPointHeaderList;
 }
-const EndUserAuthenticationNotifyEndpointDestinationEndPoint = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<EndUserAuthenticationNotifyEndpointDestinationEndPoint>;
-
 export type EndUserAuthenticationNotifyEndpointDestinationTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ENDPOINT";
-const EndUserAuthenticationNotifyEndpointDestinationTypeEnum = S.String;
-
 /** Message for NotifyEndpointDestination Destination to hit when the refresh token is expired. */
 export interface EndUserAuthenticationNotifyEndpointDestination {
   /** Optional. OPTION 1: Hit an endpoint when the refresh token is expired. */
@@ -1023,11 +780,6 @@ export interface EndUserAuthenticationNotifyEndpointDestination {
   /** Required. type of the destination */
   type?: EndUserAuthenticationNotifyEndpointDestinationTypeEnum | (string & {});
 }
-const EndUserAuthenticationNotifyEndpointDestination = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<EndUserAuthenticationNotifyEndpointDestination>;
-
 /** AuthConfig defines details of a authentication type. */
 export interface EndUserAuthentication {
   /** Optional. Roles for the EndUserAuthentication. */
@@ -1053,11 +805,6 @@ export interface EndUserAuthentication {
   /** Output only. Updated time. */
   updateTime?: string;
 }
-const EndUserAuthentication = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<EndUserAuthentication>;
-
 export interface CreateProjectsLocationsConnectionsEndUserAuthenticationsRequest {
   /** Required. Parent resource of the EndUserAuthentication, of the form: `projects/*\/locations/*\/connections/*` */
   parent: string;
@@ -1066,11 +813,6 @@ export interface CreateProjectsLocationsConnectionsEndUserAuthenticationsRequest
   /** Request body */
   body?: EndUserAuthentication;
 }
-const CreateProjectsLocationsConnectionsEndUserAuthenticationsRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
-
 export type EventSubscriptionStatusStateEnum =
   | "STATE_UNSPECIFIED"
   | "CREATING"
@@ -1085,11 +827,7 @@ export interface EventSubscriptionStatus {
   /** Output only. Description of the state. */
   description?: string;
 }
-const EventSubscriptionStatus = EventingStatus as any as S.Schema<EventSubscriptionStatus>;
-
 export type JMSTypeEnum = "TYPE_UNSPECIFIED" | "QUEUE" | "TOPIC";
-const JMSTypeEnum = S.String;
-
 /** JMS message denotes the source of the event */
 export interface JMS {
   /** Optional. Name of the JMS source. i.e. queueName or topicName */
@@ -1097,8 +835,6 @@ export interface JMS {
   /** Optional. Type of the JMS Source. i.e. Queue or Topic */
   type?: JMSTypeEnum | (string & {});
 }
-const JMS = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<JMS>;
-
 /** Header details for a given header to be added to Endpoint. */
 export interface Header {
   /** Optional. Value of Header. */
@@ -1106,11 +842,7 @@ export interface Header {
   /** Optional. Key of Header. */
   key?: string;
 }
-const Header = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<Header>;
-
 export type HeaderList = Array<Header>;
-const HeaderList = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<HeaderList>;
-
 /** Endpoint message includes details of the Destination endpoint. */
 export interface EndPoint {
   /** Optional. The URI of the Endpoint. */
@@ -1118,15 +850,11 @@ export interface EndPoint {
   /** Optional. List of Header to be added to the Endpoint. */
   headers?: HeaderList;
 }
-const EndPoint = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<EndPoint>;
-
 export type EventSubscriptionDestinationTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "ENDPOINT"
   | "GCS"
   | "PUBSUB";
-const EventSubscriptionDestinationTypeEnum = S.String;
-
 /** Pub/Sub message includes details of the Destination Pub/Sub topic. */
 export interface PubSub {
   /** Optional. Pub/Sub message attributes to be added to the Pub/Sub message. */
@@ -1138,8 +866,6 @@ export interface PubSub {
   /** Required. The topic id of the Pub/Sub topic. */
   topicId?: string;
 }
-const PubSub = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<PubSub>;
-
 /** Message for EventSubscription Destination to act on receiving an event */
 export interface EventSubscriptionDestination {
   /** Optional. Service account needed for runtime plane to trigger IP workflow. */
@@ -1151,11 +877,6 @@ export interface EventSubscriptionDestination {
   /** OPTION 3: Write the event to Pub/Sub topic. */
   pubsub?: PubSub;
 }
-const EventSubscriptionDestination = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<EventSubscriptionDestination>;
-
 /** represents the Connector's EventSubscription resource */
 export interface EventSubscription {
   /** Output only. Updated time. */
@@ -1181,8 +902,6 @@ export interface EventSubscription {
   /** Optional. The destination to hit when we receive an event */
   destinations?: EventSubscriptionDestination;
 }
-const EventSubscription = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<EventSubscription>;
-
 export interface CreateProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Required. Parent resource of the EventSubscription, of the form: `projects/*\/locations/*\/connections/*` */
   parent: string;
@@ -1191,11 +910,6 @@ export interface CreateProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Request body */
   body?: EventSubscription;
 }
-const CreateProjectsLocationsConnectionsEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<CreateProjectsLocationsConnectionsEventSubscriptionsRequest>;
-
 export type EndpointAttachmentStateEnum =
   | "STATE_UNSPECIFIED"
   | "PENDING"
@@ -1205,8 +919,6 @@ export type EndpointAttachmentStateEnum =
   | "FROZEN"
   | "NEEDS_ATTENTION"
   | "ACCEPTED_NOT_PROGRAMMED";
-const EndpointAttachmentStateEnum = S.String;
-
 /** represents the Connector's Endpoint Attachment resource */
 export interface EndpointAttachment {
   /** Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources */
@@ -1228,8 +940,6 @@ export interface EndpointAttachment {
   /** Output only. Updated time. */
   updateTime?: string;
 }
-const EndpointAttachment = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<EndpointAttachment>;
-
 export interface CreateProjectsLocationsEndpointAttachmentsRequest {
   /** Required. Parent resource of the EndpointAttachment, of the form: `projects/*\/locations/*` */
   parent: string;
@@ -1238,18 +948,11 @@ export interface CreateProjectsLocationsEndpointAttachmentsRequest {
   /** Request body */
   body?: EndpointAttachment;
 }
-const CreateProjectsLocationsEndpointAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<CreateProjectsLocationsEndpointAttachmentsRequest>;
-
 export type CustomConnectorCustomConnectorTypeEnum =
   | "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"
   | "OPEN_API"
   | "PROTO"
   | "SDK";
-const CustomConnectorCustomConnectorTypeEnum = S.String;
-
 /** CustomConnector represents the custom connector defined by the customer as part of byoc. */
 export interface CustomConnector {
   /** Optional. Description of the resource. */
@@ -1277,8 +980,6 @@ export interface CustomConnector {
   /** Output only. Created time. */
   createTime?: string;
 }
-const CustomConnector = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<CustomConnector>;
-
 export interface CreateProjectsLocationsGlobalCustomConnectorsRequest {
   /** Required. Parent resource of the CreateCustomConnector, of the form: `projects/{project}/locations/*` */
   parent: string;
@@ -1287,11 +988,6 @@ export interface CreateProjectsLocationsGlobalCustomConnectorsRequest {
   /** Request body */
   body?: CustomConnector;
 }
-const CreateProjectsLocationsGlobalCustomConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<CreateProjectsLocationsGlobalCustomConnectorsRequest>;
-
 /** Partner metadata details. This will be populated when publishing the custom connector as a partner connector version. On publishing, parntner connector version will be created using the fields in PartnerMetadata. */
 export interface PartnerMetadata {
   /** Required. Public URL for the demo video. */
@@ -1329,8 +1025,6 @@ export interface PartnerMetadata {
   /** Required. Marketplace product ID. */
   marketplaceProductId?: string;
 }
-const PartnerMetadata = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<PartnerMetadata>;
-
 /** This configuration captures the details required to render an authorization link for the OAuth Authorization Code Flow. */
 export interface AuthorizationCodeLink {
   /** Optional. Omit query params from the redirect URI. */
@@ -1346,11 +1040,6 @@ export interface AuthorizationCodeLink {
   /** Optional. The client secret assigned to the Google Cloud Connectors OAuth app for the connector data source. */
   clientSecret?: Secret;
 }
-const AuthorizationCodeLink = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<AuthorizationCodeLink>;
-
 /** MultiplSelecteOption represents the single option for a config variable. */
 export interface MultipleSelectOption {
   /** Required. Display name of the option. */
@@ -1362,17 +1051,7 @@ export interface MultipleSelectOption {
   /** Optional. Indicates if the option is preselected. */
   preselected?: boolean;
 }
-const MultipleSelectOption = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<MultipleSelectOption>;
-
 export type MultipleSelectOptionList = Array<MultipleSelectOption>;
-const MultipleSelectOptionList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<MultipleSelectOptionList>;
-
 /** MultipleSelectConfig represents the multiple options for a config variable. */
 export interface MultipleSelectConfig {
   /** Required. Multiple select options. */
@@ -1382,11 +1061,6 @@ export interface MultipleSelectConfig {
   /** Optional. Allow custom values. */
   allowCustomValues?: boolean;
 }
-const MultipleSelectConfig = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<MultipleSelectConfig>;
-
 /** EnumOption definition */
 export interface EnumOption {
   /** Optional. Id of the option. */
@@ -1394,19 +1068,13 @@ export interface EnumOption {
   /** Optional. Display name of the option. */
   displayName?: string;
 }
-const EnumOption = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<EnumOption>;
-
 export type EnumOptionList = Array<EnumOption>;
-const EnumOptionList = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<EnumOptionList>;
-
 export type ConfigVariableTemplateLocationTypeEnum =
   | "LOCATION_TYPE_UNSPECIFIED"
   | "HEADER"
   | "PAYLOAD"
   | "QUERY_PARAM"
   | "PATH_PARAM";
-const ConfigVariableTemplateLocationTypeEnum = S.String;
-
 export type ConfigVariableTemplateValueTypeEnum =
   | "VALUE_TYPE_UNSPECIFIED"
   | "STRING"
@@ -1417,25 +1085,15 @@ export type ConfigVariableTemplateValueTypeEnum =
   | "AUTHORIZATION_CODE"
   | "ENCRYPTION_KEY"
   | "MULTIPLE_SELECT";
-const ConfigVariableTemplateValueTypeEnum = S.String;
-
 export type ConfigVariableTemplateEnumSourceEnum = "ENUM_SOURCE_UNSPECIFIED" | "EVENT_TYPES_API";
-const ConfigVariableTemplateEnumSourceEnum = S.String;
-
 export type ConfigVariableTemplateStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DEPRECATED";
-const ConfigVariableTemplateStateEnum = S.String;
-
 export type RoleGrantPrincipalEnum = "PRINCIPAL_UNSPECIFIED" | "CONNECTOR_SA";
-const RoleGrantPrincipalEnum = S.String;
-
 export type ResourceTypeEnum =
   | "TYPE_UNSPECIFIED"
   | "GCP_PROJECT"
   | "GCP_RESOURCE"
   | "GCP_SECRETMANAGER_SECRET"
   | "GCP_SECRETMANAGER_SECRET_VERSION";
-const ResourceTypeEnum = S.String;
-
 /** Resource definition */
 export interface Resource {
   /** Optional. Template to uniquely represent a Google Cloud resource in a format IAM expects This is a template that can have references to other values provided in the config variable template. */
@@ -1443,8 +1101,6 @@ export interface Resource {
   /** Optional. Different types of resource supported. */
   type?: ResourceTypeEnum | (string & {});
 }
-const Resource = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<Resource>;
-
 /** This configuration defines all the Cloud IAM roles that needs to be granted to a particular Google Cloud resource for the selected principal like service account. These configurations will let UI display to customers what IAM roles need to be granted by them. Or these configurations can be used by the UI to render a 'grant' button to do the same on behalf of the user. */
 export interface RoleGrant {
   /** Optional. Principal/Identity for whom the role need to assigned. */
@@ -1456,20 +1112,9 @@ export interface RoleGrant {
   /** Optional. Template that UI can use to provide helper text to customers. */
   helperTextTemplate?: string;
 }
-const RoleGrant = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<RoleGrant>;
-
 export type LogicalExpressionList = Array<LogicalExpression>;
-const LogicalExpressionList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<LogicalExpressionList>;
-
 export type LogicalExpressionLogicalOperatorEnum = "OPERATOR_UNSPECIFIED" | "AND" | "OR";
-const LogicalExpressionLogicalOperatorEnum = S.String;
-
 export type FieldComparisonComparatorEnum = "COMPARATOR_UNSPECIFIED" | "EQUALS" | "NOT_EQUALS";
-const FieldComparisonComparatorEnum = S.String;
-
 /** Field that needs to be compared. */
 export interface FieldComparison {
   /** Optional. Key of the field. */
@@ -1483,11 +1128,7 @@ export interface FieldComparison {
   /** Integer value */
   intValue?: string;
 }
-const FieldComparison = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<FieldComparison>;
-
 export type FieldComparisonList = Array<FieldComparison>;
-const FieldComparisonList = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<FieldComparisonList>;
-
 /** Struct for representing boolean expressions. */
 export interface LogicalExpression {
   /** Optional. A list of nested conditions to be compared. */
@@ -1497,8 +1138,6 @@ export interface LogicalExpression {
   /** Optional. A list of fields to be compared. */
   fieldComparisons?: FieldComparisonList;
 }
-const LogicalExpression = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<LogicalExpression>;
-
 /** ConfigVariableTemplate provides metadata about a `ConfigVariable` that is used in a Connection. */
 export interface ConfigVariableTemplate {
   /** Optional. Authorization code link options. To be populated if `ValueType` is `AUTHORIZATION_CODE` */
@@ -1532,27 +1171,13 @@ export interface ConfigVariableTemplate {
   /** Optional. Condition under which a field would be required. The condition can be represented in the form of a logical expression. */
   requiredCondition?: LogicalExpression;
 }
-const ConfigVariableTemplate = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<ConfigVariableTemplate>;
-
 export type ConfigVariableTemplateList = Array<ConfigVariableTemplate>;
-const ConfigVariableTemplateList = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ConfigVariableTemplateList>;
-
 export type CustomConnectorVersionStateEnum = "STATE_UNSPECIFIED" | "ACTIVE" | "DEPRECATED";
-const CustomConnectorVersionStateEnum = S.String;
-
 export type PublishStatusPublishStateEnum =
   | "PUBLISH_STATE_UNSPECIFIED"
   | "PUBLISHED"
   | "PUBLISH_IN_PROGRESS"
   | "UNPUBLISHED";
-const PublishStatusPublishStateEnum = S.String;
-
 /** Publish status of a custom connector. */
 export interface PublishStatus {
   /** Output only. Custom connector name. Will be set on the partner connector. Format: providers/customconnectors/connectors//versions/ */
@@ -1564,8 +1189,6 @@ export interface PublishStatus {
   /** Output only. Partner connector name. Will be set on the custom connector. Format: providers/partner/connectors//versions/ */
   publishedAs?: string;
 }
-const PublishStatus = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<PublishStatus>;
-
 export type AuthConfigTemplateAuthTypeEnum =
   | "AUTH_TYPE_UNSPECIFIED"
   | "USER_PASSWORD"
@@ -1575,8 +1198,6 @@ export type AuthConfigTemplateAuthTypeEnum =
   | "OAUTH2_AUTH_CODE_FLOW"
   | "GOOGLE_AUTHENTICATION"
   | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
-const AuthConfigTemplateAuthTypeEnum = S.String;
-
 /** AuthConfigTemplate defines required field over an authentication type. */
 export interface AuthConfigTemplate {
   /** Connector specific description for an authentication template. */
@@ -1592,14 +1213,7 @@ export interface AuthConfigTemplate {
   /** Whether the auth config is the default one. */
   isDefault?: boolean;
 }
-const AuthConfigTemplate = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<AuthConfigTemplate>;
-
 export type AuthConfigTemplateList = Array<AuthConfigTemplate>;
-const AuthConfigTemplateList = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<AuthConfigTemplateList>;
-
 /** CustomConnectorVersion indicates a specific version of a connector. */
 export interface CustomConnectorVersion {
   /** Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources */
@@ -1637,11 +1251,6 @@ export interface CustomConnectorVersion {
   /** Output only. Updated time. */
   updateTime?: string;
 }
-const CustomConnectorVersion = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<CustomConnectorVersion>;
-
 export interface CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest {
   /** Required. Parent resource of the CreateCustomConnector, of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}` */
   parent: string;
@@ -1650,12 +1259,6 @@ export interface CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVer
   /** Request body */
   body?: CustomConnectorVersion;
 }
-const CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest =
-  /*@__PURE__*/ __L.at(
-    __c12,
-    4,
-  ) as any as S.Schema<CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest>;
-
 /** represents the Connector's Managed Zone resource */
 export interface ManagedZone {
   /** Required. The name of the Target Project VPC Network */
@@ -1675,8 +1278,6 @@ export interface ManagedZone {
   /** Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources */
   labels?: StringMap;
 }
-const ManagedZone = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<ManagedZone>;
-
 export interface CreateProjectsLocationsGlobalManagedZonesRequest {
   /** Required. Parent resource of the ManagedZone, of the form: `projects/*\/locations/global` */
   parent: string;
@@ -1685,87 +1286,42 @@ export interface CreateProjectsLocationsGlobalManagedZonesRequest {
   /** Request body */
   body?: ManagedZone;
 }
-const CreateProjectsLocationsGlobalManagedZonesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<CreateProjectsLocationsGlobalManagedZonesRequest>;
-
 export interface DeleteProjectsLocationsConnectionsRequest {
   /** Optional. If set to true, any child EndUserAuthentication/EventSubscription resources will also be deleted. Otherwise, the request will fail if the connection has any children. Followed the best practice from https://aip.dev/135#cascading-delete */
   force?: boolean;
   /** Required. Resource name of the form: `projects/*\/locations/*\/connections/*` */
   name: string;
 }
-const DeleteProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DeleteProjectsLocationsConnectionsRequest>;
-
 export interface DeleteProjectsLocationsConnectionsEndUserAuthenticationsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/connections/*\/endUserAuthentication/*` */
   name: string;
 }
-const DeleteProjectsLocationsConnectionsEndUserAuthenticationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<DeleteProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
-
 export interface DeleteProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/connections/*\/eventsubscriptions/*` */
   name: string;
 }
-const DeleteProjectsLocationsConnectionsEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<DeleteProjectsLocationsConnectionsEventSubscriptionsRequest>;
-
 export interface DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest {
   /** Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` */
   name: string;
 }
-const DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
-
 export interface DeleteProjectsLocationsEndpointAttachmentsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/endpointAttachments/*` */
   name: string;
 }
-const DeleteProjectsLocationsEndpointAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<DeleteProjectsLocationsEndpointAttachmentsRequest>;
-
 export interface DeleteProjectsLocationsGlobalCustomConnectorsRequest {
   /** Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{connector}` */
   name: string;
   /** Optional. If set to true, any customConnectorVersion which is a child resource will also be deleted. https://aip.dev/135#cascading-delete */
   force?: boolean;
 }
-const DeleteProjectsLocationsGlobalCustomConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<DeleteProjectsLocationsGlobalCustomConnectorsRequest>;
-
 export interface DeleteProjectsLocationsGlobalManagedZonesRequest {
   /** Required. Resource name of the form: `projects/*\/locations/global/managedZones/*` */
   name: string;
 }
-const DeleteProjectsLocationsGlobalManagedZonesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<DeleteProjectsLocationsGlobalManagedZonesRequest>;
-
 export interface DeleteProjectsLocationsOperationsRequest {
   /** The name of the operation resource to be deleted. */
   name: string;
 }
-const DeleteProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>;
-
 /** Request message for ConnectorsService.DeprecateCustomConnectorVersion */
 export type DeprecateCustomConnectorVersionRequest = CancelOperationRequest;
 export interface DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest {
@@ -1774,30 +1330,17 @@ export interface DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersio
   /** Request body */
   body?: CancelOperationRequest;
 }
-const DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest =
-  /*@__PURE__*/ __L.at(
-    __c13,
-    7,
-  ) as any as S.Schema<DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
-
 export type FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsViewEnum =
   | "AUTH_SCHEMA_VIEW_UNSPECIFIED"
   | "BASIC"
   | "JSON_SCHEMA"
   | "EUA_SCHEMA";
-const FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsViewEnum = S.String;
-
 export interface FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsRequest {
   /** Required. Parent resource of the Connector Version, of the form: `projects/*\/locations/*\/providers/*\/connectors/*\/versions/*` */
   name: string;
   /** Optional. View of the AuthSchema. The default value is BASIC. */
   view?: FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsViewEnum | (string & {});
 }
-const FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsRequest>;
-
 /** AuthProperty defines a property of an authentication type. */
 export interface AuthProperty {
   /** Description of the property. */
@@ -1805,11 +1348,7 @@ export interface AuthProperty {
   /** Type of the property. */
   type?: string;
 }
-const AuthProperty = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<AuthProperty>;
-
 export type AuthPropertyMap = { [key: string]: AuthProperty | undefined };
-const AuthPropertyMap = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<AuthPropertyMap>;
-
 /** AuthObject defines a JSON schema of an authentication type. */
 export interface AuthObject {
   /** Auth key of the object. */
@@ -1827,11 +1366,7 @@ export interface AuthObject {
   /** Auth type of the object. */
   authType?: string;
 }
-const AuthObject = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<AuthObject>;
-
 export type AuthObjectList = Array<AuthObject>;
-const AuthObjectList = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<AuthObjectList>;
-
 /** JsonAuthSchema defines the JSON schema of all authentication types. */
 export interface JsonAuthSchema {
   /** JSON schema of the AuthSchemas. */
@@ -1839,8 +1374,6 @@ export interface JsonAuthSchema {
   /** List of AuthObjects. */
   oneOf?: AuthObjectList;
 }
-const JsonAuthSchema = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<JsonAuthSchema>;
-
 export type AuthSchemaAuthTypeEnum =
   | "AUTH_TYPE_UNSPECIFIED"
   | "USER_PASSWORD"
@@ -1850,8 +1383,6 @@ export type AuthSchemaAuthTypeEnum =
   | "OAUTH2_AUTH_CODE_FLOW"
   | "GOOGLE_AUTHENTICATION"
   | "OAUTH2_AUTH_CODE_FLOW_GOOGLE_MANAGED";
-const AuthSchemaAuthTypeEnum = S.String;
-
 /** AuthField defines a field in an authentication type. */
 export interface AuthField {
   /** Key of the field. */
@@ -1861,11 +1392,7 @@ export interface AuthField {
   /** Description of the field. */
   description?: string;
 }
-const AuthField = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<AuthField>;
-
 export type AuthFieldList = Array<AuthField>;
-const AuthFieldList = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<AuthFieldList>;
-
 /** AuthSchema defines the schema of an authentication type. */
 export interface AuthSchema {
   /** Whether the auth schema is the default one. */
@@ -1881,11 +1408,7 @@ export interface AuthSchema {
   /** List of AuthFields. */
   authFields?: AuthFieldList;
 }
-const AuthSchema = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<AuthSchema>;
-
 export type AuthSchemaList = Array<AuthSchema>;
-const AuthSchemaList = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<AuthSchemaList>;
-
 /** Response message for Connectors.GetAuthSchema. */
 export interface FetchAuthSchemaResponse {
   /** JSON schema of the AuthSchemas. This is only populated if the view is JSON_SCHEMA. The schema is in draft-07 format. */
@@ -1893,11 +1416,6 @@ export interface FetchAuthSchemaResponse {
   /** List of AuthSchemas. */
   authSchemas?: AuthSchemaList;
 }
-const FetchAuthSchemaResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<FetchAuthSchemaResponse>;
-
 export type ToolNameOperationEnum =
   | "OPERATION_UNSPECIFIED"
   | "LIST"
@@ -1905,8 +1423,6 @@ export type ToolNameOperationEnum =
   | "CREATE"
   | "UPDATE"
   | "DELETE";
-const ToolNameOperationEnum = S.String;
-
 /** Tool name for which the tool spec override is to be generated. */
 export interface ToolName {
   /** Required. Tool name that was generated in the list tools call. */
@@ -1916,32 +1432,18 @@ export interface ToolName {
   /** Optional. Operation for which the tool was generated. */
   operation?: ToolNameOperationEnum | (string & {});
 }
-const ToolName = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<ToolName>;
-
 export type ToolNameList = Array<ToolName>;
-const ToolNameList = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<ToolNameList>;
-
 /** Request message for FetchConnectionToolspecOverride API. */
 export interface FetchConnectionToolspecOverrideRequest {
   /** Required. List of tools for which the tool spec override is to be generated. */
   toolNames?: ToolNameList;
 }
-const FetchConnectionToolspecOverrideRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<FetchConnectionToolspecOverrideRequest>;
-
 export interface FetchToolspecOverrideProjectsLocationsConnectionsRequest {
   /** Required. Resource name format: projects/{project}/locations/{location}/connections/{connection} */
   name: string;
   /** Request body */
   body?: FetchConnectionToolspecOverrideRequest;
 }
-const FetchToolspecOverrideProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<FetchToolspecOverrideProjectsLocationsConnectionsRequest>;
-
 /** Toolspec overrides for a connection only holds the information that is to be displayed in the UI for admins. */
 export interface ToolspecOverride {
   /** Output only. Created time. */
@@ -1953,18 +1455,11 @@ export interface ToolspecOverride {
   /** Output only. Updated time. */
   updateTime?: string;
 }
-const ToolspecOverride = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<ToolspecOverride>;
-
 /** Response message for FetchConnectionToolspecOverride API. */
 export interface FetchConnectionToolspecOverrideResponse {
   /** Toolspec overrides for the connection. */
   toolspecOverride?: ToolspecOverride;
 }
-const FetchConnectionToolspecOverrideResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<FetchConnectionToolspecOverrideResponse>;
-
 /** Request message for GenerateConnectionToolspecOverride API. */
 export type GenerateConnectionToolspecOverrideRequest = FetchConnectionToolspecOverrideRequest;
 export interface GenerateToolspecOverrideProjectsLocationsConnectionsRequest {
@@ -1973,39 +1468,21 @@ export interface GenerateToolspecOverrideProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: FetchConnectionToolspecOverrideRequest;
 }
-const GenerateToolspecOverrideProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GenerateToolspecOverrideProjectsLocationsConnectionsRequest>;
-
 /** Response message for GenerateConnectionToolspecOverride API. */
 export interface GenerateConnectionToolspecOverrideResponse {
   /** Toolspec overrides for the connection. */
   toolspecOverride?: ToolspecOverride;
 }
-const GenerateConnectionToolspecOverrideResponse =
-  FetchConnectionToolspecOverrideResponse as any as S.Schema<GenerateConnectionToolspecOverrideResponse>;
-
 export interface GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRequest {
   /** Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata */
   name: string;
   /** Required. Id of the action. */
   actionId?: string;
 }
-const GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
-
 export interface GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest {
   /** Required. Connection name Format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata */
   name: string;
 }
-const GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest>;
-
 export type ConnectionSchemaMetadataStateEnum =
   | "STATE_UNSPECIFIED"
   | "REFRESHING"
@@ -2015,8 +1492,6 @@ export type ConnectionSchemaMetadataStateEnum =
   | "REFRESH_SCHEMA_METADATA_FAILED"
   | "REFRESHING_FULL_SCHEMA"
   | "UPDATED_FULL_SCHEMA";
-const ConnectionSchemaMetadataStateEnum = S.String;
-
 /** ConnectionSchemaMetadata is the singleton resource of each connection. It includes the entity and action names of runtime resources exposed by a connection backend. */
 export interface ConnectionSchemaMetadata {
   /** Output only. Timestamp when the connection runtime schema was updated. */
@@ -2034,34 +1509,18 @@ export interface ConnectionSchemaMetadata {
   /** Error message for users. */
   errorMessage?: string;
 }
-const ConnectionSchemaMetadata = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<ConnectionSchemaMetadata>;
-
 export interface GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRequest {
   /** Required. Id of the entity type. */
   entityId?: string;
   /** Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata */
   name: string;
 }
-const GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRequest =
-  /*@__PURE__*/ __L.at(
-    __c16,
-    5,
-  ) as any as S.Schema<GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
-
 export interface GetIamPolicyProjectsLocationsConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
 }
-const GetIamPolicyProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>;
-
 /** Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information. */
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -2073,8 +1532,6 @@ export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
   description?: string;
 }
-const Expr = /*@__PURE__*/ __L.at(__c16, 7) as any as S.Schema<Expr>;
-
 /** Associates `members`, or principals, with a `role`. */
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -2084,18 +1541,12 @@ export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
   members?: StringList;
 }
-const Binding = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<Binding>;
-
 export type BindingList = Array<Binding>;
-const BindingList = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<BindingList>;
-
 export type AuditLogConfigLogTypeEnum =
   | "LOG_TYPE_UNSPECIFIED"
   | "ADMIN_READ"
   | "DATA_WRITE"
   | "DATA_READ";
-const AuditLogConfigLogTypeEnum = S.String;
-
 /** Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging. */
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -2103,11 +1554,7 @@ export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
   exemptedMembers?: StringList;
 }
-const AuditLogConfig = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<AuditLogConfig>;
-
 export type AuditLogConfigList = Array<AuditLogConfig>;
-const AuditLogConfigList = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<AuditLogConfigList>;
-
 /** Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging. */
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -2115,11 +1562,7 @@ export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
   auditLogConfigs?: AuditLogConfigList;
 }
-const AuditConfig = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<AuditConfig>;
-
 export type AuditConfigList = Array<AuditConfig>;
-const AuditConfigList = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<AuditConfigList>;
-
 /** An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role. For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical expression that allows access to a resource only if the expression evaluates to `true`. A condition can add constraints based on attributes of the request, the resource, or both. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` { "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": { "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin - members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable access description: Does not grant access after Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features, see the [IAM documentation](https://cloud.google.com/iam/docs/). */
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -2131,28 +1574,16 @@ export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
   auditConfigs?: AuditConfigList;
 }
-const Policy = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<Policy>;
-
 export interface GetIamPolicyProjectsLocationsProvidersRequest {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   "options.requestedPolicyVersion"?: number;
   /** REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
 }
-const GetIamPolicyProjectsLocationsProvidersRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<GetIamPolicyProjectsLocationsProvidersRequest>;
-
 export interface GetProjectsLocationsRequest {
   /** Resource name for the location. */
   name: string;
 }
-const GetProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GetProjectsLocationsRequest>;
-
 /** A resource that represents a Google Cloud location. */
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -2166,114 +1597,60 @@ export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
   locationId?: string;
 }
-const Location = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<Location>;
-
 export type GetProjectsLocationsConnectionsViewEnum =
   | "CONNECTION_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-const GetProjectsLocationsConnectionsViewEnum = S.String;
-
 export interface GetProjectsLocationsConnectionsRequest {
   /** Specifies which fields of the Connection are returned in the response. Defaults to `BASIC` view. */
   view?: GetProjectsLocationsConnectionsViewEnum | (string & {});
   /** Required. Resource name of the form: `projects/*\/locations/*\/connections/*` */
   name: string;
 }
-const GetProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GetProjectsLocationsConnectionsRequest>;
-
 export type GetProjectsLocationsConnectionsEndUserAuthenticationsViewEnum =
   | "END_USER_AUTHENTICATION_VIEW_UNSPECIFIED"
   | "BASIC_VIEW"
   | "FULL_VIEW";
-const GetProjectsLocationsConnectionsEndUserAuthenticationsViewEnum = S.String;
-
 export interface GetProjectsLocationsConnectionsEndUserAuthenticationsRequest {
   /** Optional. View of the EndUserAuthentication to return. */
   view?: GetProjectsLocationsConnectionsEndUserAuthenticationsViewEnum | (string & {});
   /** Required. Resource name of the form: `projects/*\/locations/*\/connections/*\/EndUserAuthentications/*` */
   name: string;
 }
-const GetProjectsLocationsConnectionsEndUserAuthenticationsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<GetProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
-
 export interface GetProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/connections/*\/eventSubscriptions/*` */
   name: string;
 }
-const GetProjectsLocationsConnectionsEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GetProjectsLocationsConnectionsEventSubscriptionsRequest>;
-
 export type GetProjectsLocationsEndpointAttachmentsViewEnum =
   | "ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED"
   | "ENDPOINT_ATTACHMENT_VIEW_BASIC"
   | "ENDPOINT_ATTACHMENT_VIEW_FULL";
-const GetProjectsLocationsEndpointAttachmentsViewEnum = S.String;
-
 export interface GetProjectsLocationsEndpointAttachmentsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/endpointAttachments/*` */
   name: string;
   /** Optional. Specifies which fields of the EndpointAttachment are returned in the response. Defaults to `ENDPOINT_ATTACHMENT_VIEW_BASIC` view. */
   view?: GetProjectsLocationsEndpointAttachmentsViewEnum | (string & {});
 }
-const GetProjectsLocationsEndpointAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GetProjectsLocationsEndpointAttachmentsRequest>;
-
 export interface GetProjectsLocationsGlobalCustomConnectorsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/customConnectors/*` */
   name: string;
 }
-const GetProjectsLocationsGlobalCustomConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<GetProjectsLocationsGlobalCustomConnectorsRequest>;
-
 export interface GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/{location}/customConnectors/*\/customConnectorVersions/*` */
   name: string;
 }
-const GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest =
-  /*@__PURE__*/ __L.at(
-    __c18,
-    7,
-  ) as any as S.Schema<GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest>;
-
 export interface GetProjectsLocationsGlobalManagedZonesRequest {
   /** Required. Resource name of the form: `projects/*\/locations/global/managedZones/*` */
   name: string;
 }
-const GetProjectsLocationsGlobalManagedZonesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<GetProjectsLocationsGlobalManagedZonesRequest>;
-
 export interface GetProjectsLocationsOperationsRequest {
   /** The name of the operation resource. */
   name: string;
 }
-const GetProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<GetProjectsLocationsOperationsRequest>;
-
 export interface GetProjectsLocationsProvidersRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/providers/*` Only global location is supported for Provider resource. */
   name: string;
 }
-const GetProjectsLocationsProvidersRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetProjectsLocationsProvidersRequest>;
-
 export type ProviderLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "PREVIEW"
@@ -2281,8 +1658,6 @@ export type ProviderLaunchStageEnum =
   | "DEPRECATED"
   | "TEST"
   | "PRIVATE_PREVIEW";
-const ProviderLaunchStageEnum = S.String;
-
 /** Provider indicates the owner who provides the connectors. */
 export interface Provider {
   /** Output only. Created time. */
@@ -2306,24 +1681,15 @@ export interface Provider {
   /** Output only. Flag to mark the version indicating the launch stage. */
   launchStage?: ProviderLaunchStageEnum;
 }
-const Provider = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<Provider>;
-
 export interface GetProjectsLocationsProvidersConnectorsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/providers/*\/connectors/*` Only global location is supported for Connector resource. */
   name: string;
 }
-const GetProjectsLocationsProvidersConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<GetProjectsLocationsProvidersConnectorsRequest>;
-
 export type ConnectorConnectorTypeEnum =
   | "CONNECTOR_TYPE_UNSPECIFIED"
   | "CONNECTOR_TYPE_GOOGLE"
   | "CONNECTOR_TYPE_TECHNICAL"
   | "CONNECTOR_TYPE_THIRD_PARTY";
-const ConnectorConnectorTypeEnum = S.String;
-
 export type ConnectorLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "PREVIEW"
@@ -2331,8 +1697,6 @@ export type ConnectorLaunchStageEnum =
   | "DEPRECATED"
   | "TEST"
   | "PRIVATE_PREVIEW";
-const ConnectorLaunchStageEnum = S.String;
-
 /** Marketplace connector details. */
 export interface MarketplaceConnectorDetails {
   /** Marketplace product URL. */
@@ -2344,17 +1708,10 @@ export interface MarketplaceConnectorDetails {
   /** Marketplace product name. */
   marketplaceProduct?: string;
 }
-const MarketplaceConnectorDetails = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<MarketplaceConnectorDetails>;
-
 export type EventingDetailsSubscriptionTypeEnum =
   | "SUBSCRIPTION_TYPE_UNSPECIFIED"
   | "SHARED"
   | "USER_SPECIFIC";
-const EventingDetailsSubscriptionTypeEnum = S.String;
-
 export type EventingDetailsLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "PREVIEW"
@@ -2362,11 +1719,7 @@ export type EventingDetailsLaunchStageEnum =
   | "DEPRECATED"
   | "TEST"
   | "PRIVATE_PREVIEW";
-const EventingDetailsLaunchStageEnum = S.String;
-
 export type EventingDetailsTypeEnum = "TYPE_UNSPECIFIED" | "WEBHOOK" | "JMS";
-const EventingDetailsTypeEnum = S.String;
-
 /** Eventing Details message. */
 export interface EventingDetails {
   /** Output only. Name of the Eventing trigger. */
@@ -2388,8 +1741,6 @@ export interface EventingDetails {
   /** Output only. The type of the event listener for a specific connector. */
   type?: EventingDetailsTypeEnum;
 }
-const EventingDetails = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<EventingDetails>;
-
 /** Connectors indicates a specific connector type, e.x. Salesforce, SAP etc. */
 export interface Connector {
   /** Output only. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources */
@@ -2423,25 +1774,16 @@ export interface Connector {
   /** Output only. Eventing details. Will be null if eventing is not supported. */
   eventingDetails?: EventingDetails;
 }
-const Connector = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<Connector>;
-
 export type GetProjectsLocationsProvidersConnectorsVersionsViewEnum =
   | "CONNECTOR_VERSION_VIEW_UNSPECIFIED"
   | "CONNECTOR_VERSION_VIEW_BASIC"
   | "CONNECTOR_VERSION_VIEW_FULL";
-const GetProjectsLocationsProvidersConnectorsVersionsViewEnum = S.String;
-
 export interface GetProjectsLocationsProvidersConnectorsVersionsRequest {
   /** Specifies which fields of the ConnectorVersion are returned in the response. Defaults to `CUSTOMER` view. */
   view?: GetProjectsLocationsProvidersConnectorsVersionsViewEnum | (string & {});
   /** Required. Resource name of the form: `projects/*\/locations/*\/providers/*\/connectors/*\/versions/*` Only global location is supported for ConnectorVersion resource. */
   name: string;
 }
-const GetProjectsLocationsProvidersConnectorsVersionsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<GetProjectsLocationsProvidersConnectorsVersionsRequest>;
-
 /** This configuration provides VPCSC config for a connector. */
 export interface VpcscConfig {
   /** Whether to disable firewall VPCSC flow. */
@@ -2449,27 +1791,17 @@ export interface VpcscConfig {
   /** The list of allowlisted FQDNs for VPCSC. */
   defaultAllowlistedHost?: StringList;
 }
-const VpcscConfig = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<VpcscConfig>;
-
 /** Standard action */
 export interface StandardAction {
   /** Name of the standard action. */
   name?: string;
 }
-const StandardAction = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<StandardAction>;
-
 export type StandardActionList = Array<StandardAction>;
-const StandardActionList = /*@__PURE__*/ __L.at(__c20, 3) as any as S.Schema<StandardActionList>;
-
 export type RoleGrantList = Array<RoleGrant>;
-const RoleGrantList = /*@__PURE__*/ __L.at(__c20, 4) as any as S.Schema<RoleGrantList>;
-
 export type NetworkEgressModeOverrideNetworkEgressModeEnum =
   | "NETWORK_EGRESS_MODE_UNSPECIFIED"
   | "SERVERLESS_VPC_ACCESS_CONNECTOR"
   | "DIRECT_VPC_EGRESS";
-const NetworkEgressModeOverrideNetworkEgressModeEnum = S.String;
-
 /** NetworkEgressModeOverride provides the network egress mode override for a connector. */
 export interface NetworkEgressModeOverride {
   /** boolean should be set to true to make sure only eventing enabled connections are migrated to direct vpc egress. */
@@ -2479,17 +1811,10 @@ export interface NetworkEgressModeOverride {
   /** boolean should be set to true to make sure only async operations enabled connections are migrated to direct vpc egress. */
   isJobsOverrideEnabled?: boolean;
 }
-const NetworkEgressModeOverride = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<NetworkEgressModeOverride>;
-
 export type ConnectorInfraConfigDeploymentModelEnum =
   | "DEPLOYMENT_MODEL_UNSPECIFIED"
   | "GKE_MST"
   | "CLOUD_RUN_MST";
-const ConnectorInfraConfigDeploymentModelEnum = S.String;
-
 /** This cofiguration provides infra configs like rate limit threshold which need to be configurable for every connector version */
 export interface ConnectorInfraConfig {
   /** Indicate whether memstore is required for connector job. */
@@ -2529,11 +1854,6 @@ export interface ConnectorInfraConfig {
   /** Indicate whether connector versioning is enabled. */
   connectorVersioningEnabled?: boolean;
 }
-const ConnectorInfraConfig = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<ConnectorInfraConfig>;
-
 export type ConnectorVersionUnsupportedConnectionTypesItemEnum =
   | "CONNECTION_TYPE_UNSPECIFIED"
   | "CONNECTION_WITH_EVENTING"
@@ -2541,17 +1861,12 @@ export type ConnectorVersionUnsupportedConnectionTypesItemEnum =
   | "ONLY_EVENTING";
 export type ConnectorVersionUnsupportedConnectionTypesItemEnumList =
   Array<ConnectorVersionUnsupportedConnectionTypesItemEnum>;
-const ConnectorVersionUnsupportedConnectionTypesItemEnumList =
-  EndUserAuthenticationRolesItemEnumList as any as S.Schema<ConnectorVersionUnsupportedConnectionTypesItemEnumList>;
-
 /** Standard entity */
 export interface StandardEntity {
   /** Name of the standard entity. */
   name?: string;
 }
 export type StandardEntityList = Array<StandardEntity>;
-const StandardEntityList = StandardActionList as any as S.Schema<StandardEntityList>;
-
 /** Supported runtime features of a connector version. */
 export interface SupportedRuntimeFeatures {
   /** Specifies if the connector supports entity apis like 'createEntity'. */
@@ -2563,18 +1878,11 @@ export interface SupportedRuntimeFeatures {
   /** Specifies if the connector supports action apis like 'executeAction'. */
   actionApis?: boolean;
 }
-const SupportedRuntimeFeatures = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<SupportedRuntimeFeatures>;
-
 export type DestinationConfigTemplatePortFieldTypeEnum =
   | "FIELD_TYPE_UNSPECIFIED"
   | "REQUIRED"
   | "OPTIONAL"
   | "NOT_USED";
-const DestinationConfigTemplatePortFieldTypeEnum = S.String;
-
 /** DestinationConfigTemplate defines required destinations supported by the Connector. */
 export interface DestinationConfigTemplate {
   /** Whether the current destination tempalate is part of Advanced settings */
@@ -2598,32 +1906,17 @@ export interface DestinationConfigTemplate {
   /** Display name of the parameter. */
   displayName?: string;
 }
-const DestinationConfigTemplate = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<DestinationConfigTemplate>;
-
 export type EventingConfigTemplateEventListenerTypeEnum =
   | "EVENT_LISTENER_TYPE_UNSPECIFIED"
   | "WEBHOOK_LISTENER"
   | "JMS_LISTENER";
-const EventingConfigTemplateEventListenerTypeEnum = S.String;
-
 export type SslConfigTemplateClientCertTypeItemEnum = "CERT_TYPE_UNSPECIFIED" | "PEM";
 export type SslConfigTemplateClientCertTypeItemEnumList =
   Array<SslConfigTemplateClientCertTypeItemEnum>;
-const SslConfigTemplateClientCertTypeItemEnumList =
-  EndUserAuthenticationRolesItemEnumList as any as S.Schema<SslConfigTemplateClientCertTypeItemEnumList>;
-
 export type SslConfigTemplateSslTypeEnum = "SSL_TYPE_UNSPECIFIED" | "TLS" | "MTLS";
-const SslConfigTemplateSslTypeEnum = S.String;
-
 export type SslConfigTemplateServerCertTypeItemEnum = "CERT_TYPE_UNSPECIFIED" | "PEM";
 export type SslConfigTemplateServerCertTypeItemEnumList =
   Array<SslConfigTemplateServerCertTypeItemEnum>;
-const SslConfigTemplateServerCertTypeItemEnumList =
-  EndUserAuthenticationRolesItemEnumList as any as S.Schema<SslConfigTemplateServerCertTypeItemEnumList>;
-
 /** Ssl config details of a connector version */
 export interface SslConfigTemplate {
   /** List of supported Client Cert Types */
@@ -2637,8 +1930,6 @@ export interface SslConfigTemplate {
   /** Any additional fields that need to be rendered */
   additionalVariables?: ConfigVariableTemplateList;
 }
-const SslConfigTemplate = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<SslConfigTemplate>;
-
 /** Eventing Config details of a connector version. next: 14 */
 export interface EventingConfigTemplate {
   /** Trigger Config fields that needs to be rendered */
@@ -2668,30 +1959,19 @@ export interface EventingConfigTemplate {
   /** Enrichment Supported. */
   enrichmentSupported?: boolean;
 }
-const EventingConfigTemplate = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<EventingConfigTemplate>;
-
 export type EgressControlConfigAccessModeEnum =
   | "ACCESS_MODE_UNSPECIFIED"
   | "RESTRICTED"
   | "ALLOW_ALL";
-const EgressControlConfigAccessModeEnum = S.String;
-
 export type EgressControlConfigLaunchEnvironmentEnum =
   | "LAUNCH_ENVIRONMENT_UNSPECIFIED"
   | "AUTOPUSH"
   | "STAGING"
   | "PROD";
-const EgressControlConfigLaunchEnvironmentEnum = S.String;
-
 export type SourceSourceTypeEnum =
   | "SOURCE_TYPE_UNSPECIFIED"
   | "CONFIG_VARIABLE"
   | "AUTH_CONFIG_VARIABLE";
-const SourceSourceTypeEnum = S.String;
-
 /** Source to extract the backend from. */
 export interface Source {
   /** Field identifier. For example config variable name. */
@@ -2699,8 +1979,6 @@ export interface Source {
   /** Type of the source. */
   sourceType?: SourceSourceTypeEnum;
 }
-const Source = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<Source>;
-
 /** Extraction Rule. */
 export interface ExtractionRule {
   /** Regex used to extract backend details from source. If empty, whole source value will be used. */
@@ -2710,18 +1988,12 @@ export interface ExtractionRule {
   /** Format string used to format the extracted backend details. If empty, extracted backend details will be returned as it is. */
   formatString?: string;
 }
-const ExtractionRule = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<ExtractionRule>;
-
 export type ExtractionRuleList = Array<ExtractionRule>;
-const ExtractionRuleList = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<ExtractionRuleList>;
-
 /** Extraction Rules to identity the backends from customer provided configuration in Connection resource. */
 export interface ExtractionRules {
   /** Collection of Extraction Rule. */
   extractionRule?: ExtractionRuleList;
 }
-const ExtractionRules = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<ExtractionRules>;
-
 /** Egress control config for connector runtime. These configurations define the rules to identify which outbound domains/hosts needs to be whitelisted. It may be a static information for a particular connector version or it is derived from the configurations provided by the customer in Connection resource. */
 export interface EgressControlConfig {
   /** Static Comma separated backends which are common for all Connection resources. Supported formats for each backend are host:port or just host (host can be ip address or domain name). */
@@ -2737,14 +2009,7 @@ export interface EgressControlConfig {
   /** Extractions Rules to extract the backends from customer provided configuration. */
   extractionRules?: ExtractionRules;
 }
-const EgressControlConfig = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<EgressControlConfig>;
-
 export type DestinationConfigTemplateList = Array<DestinationConfigTemplate>;
-const DestinationConfigTemplateList = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<DestinationConfigTemplateList>;
-
 /** Config for connection schema refresh */
 export interface SchemaRefreshConfig {
   /** Whether to use displayName for actions in UI. */
@@ -2752,8 +2017,6 @@ export interface SchemaRefreshConfig {
   /** Whether to use synchronous schema refresh. */
   useSynchronousSchemaRefresh?: boolean;
 }
-const SchemaRefreshConfig = /*@__PURE__*/ __L.at(__c22, 1) as any as S.Schema<SchemaRefreshConfig>;
-
 export type ConnectorVersionLaunchStageEnum =
   | "LAUNCH_STAGE_UNSPECIFIED"
   | "PREVIEW"
@@ -2761,8 +2024,6 @@ export type ConnectorVersionLaunchStageEnum =
   | "DEPRECATED"
   | "TEST"
   | "PRIVATE_PREVIEW";
-const ConnectorVersionLaunchStageEnum = S.String;
-
 /** ConnectorVersion indicates a specific version of a connector. */
 export interface ConnectorVersion {
   /** Output only. VPCSC config for the connector. */
@@ -2816,17 +2077,10 @@ export interface ConnectorVersion {
   /** Output only. Flag to mark the version indicating the launch stage. */
   launchStage?: ConnectorVersionLaunchStageEnum;
 }
-const ConnectorVersion = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<ConnectorVersion>;
-
 export interface GetProjectsLocationsProvidersConnectorsVersionsEventtypesRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/providers/*\/connectors/*\/versions/*\/eventtypes/*` Only global location is supported for EventType resource. */
   name: string;
 }
-const GetProjectsLocationsProvidersConnectorsVersionsEventtypesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<GetProjectsLocationsProvidersConnectorsVersionsEventtypesRequest>;
-
 /** EventType includes fields. */
 export interface EventType {
   /** Output only. Event type id. Example: `ticket.created`. */
@@ -2846,23 +2100,14 @@ export interface EventType {
   /** Output only. Schema of webhook event payload. */
   eventPayloadSchema?: string;
 }
-const EventType = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<EventType>;
-
 export interface GetRegionalSettingsProjectsLocationsRequest {
   /** Required. The resource name of the Regional Settings. */
   name: string;
 }
-const GetRegionalSettingsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<GetRegionalSettingsProjectsLocationsRequest>;
-
 export type NetworkConfigEgressModeEnum =
   | "NETWORK_EGRESS_MODE_UNSPECIFIED"
   | "AUTO_IP"
   | "STATIC_IP";
-const NetworkConfigEgressModeEnum = S.String;
-
 /** Regional Network Config. */
 export interface NetworkConfig {
   /** Optional. Egress mode for the network. */
@@ -2870,11 +2115,7 @@ export interface NetworkConfig {
   /** Output only. Egress IPs */
   egressIps?: StringList;
 }
-const NetworkConfig = /*@__PURE__*/ __L.at(__c22, 6) as any as S.Schema<NetworkConfig>;
-
 export type EncryptionConfigEncryptionTypeEnum = "ENCRYPTION_TYPE_UNSPECIFIED" | "GMEK" | "CMEK";
-const EncryptionConfigEncryptionTypeEnum = S.String;
-
 /** Regional encryption config for CMEK details. */
 export interface EncryptionConfig {
   /** Optional. KMS crypto key. This field accepts identifiers of the form `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/ {crypto_key}` */
@@ -2882,8 +2123,6 @@ export interface EncryptionConfig {
   /** Optional. Encryption type for the region. */
   encryptionType?: EncryptionConfigEncryptionTypeEnum | (string & {});
 }
-const EncryptionConfig = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<EncryptionConfig>;
-
 /** Regional Settings details. */
 export interface RegionalSettings {
   /** Optional. Client type for the regional settings. */
@@ -2897,17 +2136,10 @@ export interface RegionalSettings {
   /** Optional. Regional encryption config to hold CMEK details. */
   encryptionConfig?: EncryptionConfig;
 }
-const RegionalSettings = /*@__PURE__*/ __L.at(__c23, 0) as any as S.Schema<RegionalSettings>;
-
 export interface GetRuntimeConfigProjectsLocationsRequest {
   /** Required. Resource name of the form: `projects/*\/locations/*\/runtimeConfig` */
   name: string;
 }
-const GetRuntimeConfigProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<GetRuntimeConfigProjectsLocationsRequest>;
-
 export type RuntimeConfigStateEnum =
   | "STATE_UNSPECIFIED"
   | "INACTIVE"
@@ -2916,8 +2148,6 @@ export type RuntimeConfigStateEnum =
   | "CREATING"
   | "DELETING"
   | "UPDATING";
-const RuntimeConfigStateEnum = S.String;
-
 /** RuntimeConfig is the singleton resource of each location. It includes generic resource configs consumed by control plane and runtime plane like: pub/sub topic/subscription resource name, Cloud Storage location storing schema etc. */
 export interface RuntimeConfig {
   /** Output only. Pub/Sub topic for connd to send message. E.g. projects/{project-id}/topics/{topic-id} */
@@ -2941,17 +2171,10 @@ export interface RuntimeConfig {
   /** Output only. The name of the Service Directory service name. */
   serviceDirectory?: string;
 }
-const RuntimeConfig = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<RuntimeConfig>;
-
 export interface GetSettingsProjectsLocationsGlobalRequest {
   /** Required. The resource name of the Settings. */
   name: string;
 }
-const GetSettingsProjectsLocationsGlobalRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<GetSettingsProjectsLocationsGlobalRequest>;
-
 /** Global Settings details. */
 export interface Settings {
   /** Output only. Resource name of the Connection. Format: projects/{project}/locations/global/settings} */
@@ -2963,13 +2186,9 @@ export interface Settings {
   /** Optional. Flag indicates whether vpc-sc is enabled. */
   vpcsc?: boolean;
 }
-const Settings = /*@__PURE__*/ __L.at(__c23, 4) as any as S.Schema<Settings>;
-
 export type ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC";
-const ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum = S.String;
-
 export interface ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataRequest {
   /** Page size. If unspecified, at most 50 actions will be returned. */
   pageSize?: number;
@@ -2982,11 +2201,6 @@ export interface ListActionsProjectsLocationsConnectionsConnectionSchemaMetadata
   /** Specifies which fields are returned in response. Defaults to BASIC view. */
   view?: ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum | (string & {});
 }
-const ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
-
 export type InputParameterDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "DATA_TYPE_INT"
@@ -3033,17 +2247,9 @@ export type InputParameterDataTypeEnum =
   | "DATA_TYPE_REF_CURSOR"
   | "DATA_TYPE_TIME_WITH_TIMEZONE"
   | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE";
-const InputParameterDataTypeEnum = S.String;
-
 export type JsonSchemaList = Array<JsonSchema>;
-const JsonSchemaList = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<JsonSchemaList>;
-
 export type JsonSchemaMap = { [key: string]: JsonSchema | undefined };
-const JsonSchemaMap = /*@__PURE__*/ __L.at(__c23, 7) as any as S.Schema<JsonSchemaMap>;
-
 export type DocumentList = Array<unknown>;
-const DocumentList = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<DocumentList>;
-
 export type JsonSchemaJdbcTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "DATA_TYPE_INT"
@@ -3090,8 +2296,6 @@ export type JsonSchemaJdbcTypeEnum =
   | "DATA_TYPE_REF_CURSOR"
   | "DATA_TYPE_TIME_WITH_TIMEZONE"
   | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE";
-const JsonSchemaJdbcTypeEnum = S.String;
-
 /** JsonSchema representation of schema metadata */
 export interface JsonSchema {
   /** Schema that must be valid against all of the sub-schemas. */
@@ -3193,8 +2397,6 @@ export interface JsonSchema {
   /** Schema that applies to at least one item in an array. */
   contains?: JsonSchema;
 }
-const JsonSchema = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<JsonSchema>;
-
 /** Metadata of an input parameter. */
 export interface InputParameter {
   /** The data type of the Parameter. */
@@ -3210,11 +2412,7 @@ export interface InputParameter {
   /** JsonSchema representation of this action's parameter */
   jsonSchema?: JsonSchema;
 }
-const InputParameter = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<InputParameter>;
-
 export type InputParameterList = Array<InputParameter>;
-const InputParameterList = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<InputParameterList>;
-
 export type ResultMetadataDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "DATA_TYPE_INT"
@@ -3261,8 +2459,6 @@ export type ResultMetadataDataTypeEnum =
   | "DATA_TYPE_REF_CURSOR"
   | "DATA_TYPE_TIME_WITH_TIMEZONE"
   | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE";
-const ResultMetadataDataTypeEnum = S.String;
-
 /** Metadata of result field. */
 export interface ResultMetadata {
   /** Name of the result field. */
@@ -3278,11 +2474,7 @@ export interface ResultMetadata {
   /** Specifies whether a null value is allowed. */
   nullable?: boolean;
 }
-const ResultMetadata = /*@__PURE__*/ __L.at(__c24, 4) as any as S.Schema<ResultMetadata>;
-
 export type ResultMetadataList = Array<ResultMetadata>;
-const ResultMetadataList = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<ResultMetadataList>;
-
 /** Schema of a runtime action. */
 export interface RuntimeActionSchema {
   /** Output only. Input schema as string. */
@@ -3304,14 +2496,7 @@ export interface RuntimeActionSchema {
   /** Output only. Result schema as string. */
   resultSchemaAsString?: string;
 }
-const RuntimeActionSchema = /*@__PURE__*/ __L.at(__c24, 6) as any as S.Schema<RuntimeActionSchema>;
-
 export type RuntimeActionSchemaList = Array<RuntimeActionSchema>;
-const RuntimeActionSchemaList = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<RuntimeActionSchemaList>;
-
 /** Response message for ListActions API */
 export interface ListActionsResponse {
   /** token for next page */
@@ -3319,35 +2504,22 @@ export interface ListActionsResponse {
   /** list of actions */
   actions?: RuntimeActionSchemaList;
 }
-const ListActionsResponse = /*@__PURE__*/ __L.at(__c25, 0) as any as S.Schema<ListActionsResponse>;
-
 /** Expected request for ListenEvent API. */
 export interface ListenEventRequest {
   /** Optional. Request payload. */
   payload?: DocumentMap;
 }
-const ListenEventRequest = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<ListenEventRequest>;
-
 export interface ListenEventProjectsLocationsConnectionsRequest {
   /** Required. Resource path for request. */
   resourcePath: string;
   /** Request body */
   body?: ListenEventRequest;
 }
-const ListenEventProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<ListenEventProjectsLocationsConnectionsRequest>;
-
 /** Expected response for ListenEvent API. */
 export interface ListenEventResponse {}
-const ListenEventResponse = CancelOperationRequest as any as S.Schema<ListenEventResponse>;
-
 export type ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum =
   | "VIEW_UNSPECIFIED"
   | "BASIC";
-const ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum = S.String;
-
 export interface ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataRequest {
   /** Required. Resource name format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata */
   name: string;
@@ -3362,12 +2534,6 @@ export interface ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMeta
   /** Page size. If unspecified, at most 50 entity types will be returned. */
   pageSize?: number;
 }
-const ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataRequest =
-  /*@__PURE__*/ __L.at(
-    __c25,
-    3,
-  ) as any as S.Schema<ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
-
 export type FieldDataTypeEnum =
   | "DATA_TYPE_UNSPECIFIED"
   | "DATA_TYPE_INT"
@@ -3414,8 +2580,6 @@ export type FieldDataTypeEnum =
   | "DATA_TYPE_REF_CURSOR"
   | "DATA_TYPE_TIME_WITH_TIMEZONE"
   | "DATA_TYPE_TIMESTAMP_WITH_TIMEZONE";
-const FieldDataTypeEnum = S.String;
-
 /** Metadata of an entity field. */
 export interface Field {
   /** JsonSchema representation of this entity's schema */
@@ -3437,11 +2601,7 @@ export interface Field {
   /** A brief description of the Field. */
   description?: string;
 }
-const Field = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<Field>;
-
 export type FieldList = Array<Field>;
-const FieldList = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<FieldList>;
-
 export type RuntimeEntitySchemaOperationsItemEnum =
   | "OPERATION_UNSPECIFIED"
   | "LIST"
@@ -3451,9 +2611,6 @@ export type RuntimeEntitySchemaOperationsItemEnum =
   | "DELETE";
 export type RuntimeEntitySchemaOperationsItemEnumList =
   Array<RuntimeEntitySchemaOperationsItemEnum>;
-const RuntimeEntitySchemaOperationsItemEnumList =
-  EndUserAuthenticationRolesItemEnumList as any as S.Schema<RuntimeEntitySchemaOperationsItemEnumList>;
-
 /** Schema of a runtime entity. */
 export interface RuntimeEntitySchema {
   /** Output only. Name of the entity. */
@@ -3465,14 +2622,7 @@ export interface RuntimeEntitySchema {
   /** Output only. JsonSchema representation of this entity's metadata */
   jsonSchema?: JsonSchema;
 }
-const RuntimeEntitySchema = /*@__PURE__*/ __L.at(__c25, 6) as any as S.Schema<RuntimeEntitySchema>;
-
 export type RuntimeEntitySchemaList = Array<RuntimeEntitySchema>;
-const RuntimeEntitySchemaList = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<RuntimeEntitySchemaList>;
-
 /** Response message for ListEntityTypes API */
 export interface ListEntityTypesResponse {
   /** token for next page */
@@ -3480,11 +2630,6 @@ export interface ListEntityTypesResponse {
   /** list of entity types */
   entityTypes?: RuntimeEntitySchemaList;
 }
-const ListEntityTypesResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<ListEntityTypesResponse>;
-
 export interface ListProjectsLocationsRequest {
   /** Optional. Do not use this field unless explicitly documented otherwise. This is primarily for internal usage. */
   extraLocationTypes?: StringList;
@@ -3497,14 +2642,7 @@ export interface ListProjectsLocationsRequest {
   /** The maximum number of results to return. If not set, the service selects a default. */
   pageSize?: number;
 }
-const ListProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<ListProjectsLocationsRequest>;
-
 export type LocationList = Array<Location>;
-const LocationList = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<LocationList>;
-
 /** The response message for Locations.ListLocations. */
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -3512,17 +2650,10 @@ export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
   locations?: LocationList;
 }
-const ListLocationsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<ListLocationsResponse>;
-
 export type ListProjectsLocationsConnectionsViewEnum =
   | "CONNECTION_VIEW_UNSPECIFIED"
   | "BASIC"
   | "FULL";
-const ListProjectsLocationsConnectionsViewEnum = S.String;
-
 export interface ListProjectsLocationsConnectionsRequest {
   /** Filter. */
   filter?: string;
@@ -3537,14 +2668,7 @@ export interface ListProjectsLocationsConnectionsRequest {
   /** Order by parameters. */
   orderBy?: string;
 }
-const ListProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<ListProjectsLocationsConnectionsRequest>;
-
 export type ConnectionList = Array<Connection>;
-const ConnectionList = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<ConnectionList>;
-
 /** Response message for ConnectorsService.ListConnections */
 export interface ListConnectionsResponse {
   /** Next page token. */
@@ -3554,11 +2678,6 @@ export interface ListConnectionsResponse {
   /** Connections. */
   connections?: ConnectionList;
 }
-const ListConnectionsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<ListConnectionsResponse>;
-
 export interface ListProjectsLocationsConnectionsEndUserAuthenticationsRequest {
   /** Order by parameters. */
   orderBy?: string;
@@ -3571,17 +2690,7 @@ export interface ListProjectsLocationsConnectionsEndUserAuthenticationsRequest {
   /** Filter. */
   filter?: string;
 }
-const ListProjectsLocationsConnectionsEndUserAuthenticationsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<ListProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
-
 export type EndUserAuthenticationList = Array<EndUserAuthentication>;
-const EndUserAuthenticationList = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<EndUserAuthenticationList>;
-
 /** Response message for ConnectorsService.ListEndUserAuthentications */
 export interface ListEndUserAuthenticationsResponse {
   /** Subscriptions. */
@@ -3591,11 +2700,6 @@ export interface ListEndUserAuthenticationsResponse {
   /** Next page token. */
   nextPageToken?: string;
 }
-const ListEndUserAuthenticationsResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<ListEndUserAuthenticationsResponse>;
-
 export interface ListProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Page size. */
   pageSize?: number;
@@ -3608,17 +2712,7 @@ export interface ListProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Order by parameters. */
   orderBy?: string;
 }
-const ListProjectsLocationsConnectionsEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<ListProjectsLocationsConnectionsEventSubscriptionsRequest>;
-
 export type EventSubscriptionList = Array<EventSubscription>;
-const EventSubscriptionList = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<EventSubscriptionList>;
-
 /** Response message for ConnectorsService.ListEventSubscriptions */
 export interface ListEventSubscriptionsResponse {
   /** Next page token. */
@@ -3628,11 +2722,6 @@ export interface ListEventSubscriptionsResponse {
   /** Subscriptions. */
   eventSubscriptions?: EventSubscriptionList;
 }
-const ListEventSubscriptionsResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<ListEventSubscriptionsResponse>;
-
 export interface ListProjectsLocationsConnectionsRuntimeActionSchemasRequest {
   /** Page token. */
   pageToken?: string;
@@ -3645,11 +2734,6 @@ export interface ListProjectsLocationsConnectionsRuntimeActionSchemasRequest {
   /** Optional. Flag to indicate if schema should be returned as string or not */
   schemaAsString?: boolean;
 }
-const ListProjectsLocationsConnectionsRuntimeActionSchemasRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<ListProjectsLocationsConnectionsRuntimeActionSchemasRequest>;
-
 /** Response message for ConnectorsService.ListRuntimeActionSchemas. */
 export interface ListRuntimeActionSchemasResponse {
   /** Next page token. */
@@ -3657,11 +2741,6 @@ export interface ListRuntimeActionSchemasResponse {
   /** Runtime action schemas. */
   runtimeActionSchemas?: RuntimeActionSchemaList;
 }
-const ListRuntimeActionSchemasResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<ListRuntimeActionSchemasResponse>;
-
 export interface ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest {
   /** Page size. */
   pageSize?: number;
@@ -3672,11 +2751,6 @@ export interface ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest {
   /** Required. Filter Format: entity="{entityId}" Only entity field is supported with literal equality operator. Accepted filter example: entity="Order" Wildcards are not supported in the filter currently. */
   filter?: string;
 }
-const ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest>;
-
 /** Response message for ConnectorsService.ListRuntimeEntitySchemas. */
 export interface ListRuntimeEntitySchemasResponse {
   /** Next page token. */
@@ -3684,17 +2758,10 @@ export interface ListRuntimeEntitySchemasResponse {
   /** Runtime entity schemas. */
   runtimeEntitySchemas?: RuntimeEntitySchemaList;
 }
-const ListRuntimeEntitySchemasResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<ListRuntimeEntitySchemasResponse>;
-
 export type ListProjectsLocationsEndpointAttachmentsViewEnum =
   | "ENDPOINT_ATTACHMENT_VIEW_UNSPECIFIED"
   | "ENDPOINT_ATTACHMENT_VIEW_BASIC"
   | "ENDPOINT_ATTACHMENT_VIEW_FULL";
-const ListProjectsLocationsEndpointAttachmentsViewEnum = S.String;
-
 export interface ListProjectsLocationsEndpointAttachmentsRequest {
   /** Order by parameters. */
   orderBy?: string;
@@ -3709,17 +2776,7 @@ export interface ListProjectsLocationsEndpointAttachmentsRequest {
   /** Filter. */
   filter?: string;
 }
-const ListProjectsLocationsEndpointAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<ListProjectsLocationsEndpointAttachmentsRequest>;
-
 export type EndpointAttachmentList = Array<EndpointAttachment>;
-const EndpointAttachmentList = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<EndpointAttachmentList>;
-
 /** Response message for ConnectorsService.ListEndpointAttachments */
 export interface ListEndpointAttachmentsResponse {
   /** EndpointAttachments. */
@@ -3729,11 +2786,6 @@ export interface ListEndpointAttachmentsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListEndpointAttachmentsResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<ListEndpointAttachmentsResponse>;
-
 export interface ListProjectsLocationsGlobalCustomConnectorsRequest {
   /** Page token. */
   pageToken?: string;
@@ -3744,14 +2796,7 @@ export interface ListProjectsLocationsGlobalCustomConnectorsRequest {
   /** Required. Parent resource of the custom connectors, of the form: `projects/*\/locations/*` Only global location is supported for CustomConnector resource. */
   parent: string;
 }
-const ListProjectsLocationsGlobalCustomConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<ListProjectsLocationsGlobalCustomConnectorsRequest>;
-
 export type CustomConnectorList = Array<CustomConnector>;
-const CustomConnectorList = /*@__PURE__*/ __L.at(__c28, 5) as any as S.Schema<CustomConnectorList>;
-
 /** Response message for Connectors.ListCustomConnectors. */
 export interface ListCustomConnectorsResponse {
   /** A list of customConnectors. */
@@ -3761,11 +2806,6 @@ export interface ListCustomConnectorsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListCustomConnectorsResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<ListCustomConnectorsResponse>;
-
 export interface ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest {
   /** Required. Parent resource of the connectors, of the form: `projects/*\/locations/{location}/customConnectors/*\/customConnectorVersions/*` */
   parent: string;
@@ -3774,18 +2814,7 @@ export interface ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersi
   /** Page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest =
-  /*@__PURE__*/ __L.at(
-    __c28,
-    7,
-  ) as any as S.Schema<ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest>;
-
 export type CustomConnectorVersionList = Array<CustomConnectorVersion>;
-const CustomConnectorVersionList = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<CustomConnectorVersionList>;
-
 /** Response message for Connectors.ListCustomConnectorVersions. */
 export interface ListCustomConnectorVersionsResponse {
   /** Locations that could not be reached. */
@@ -3795,11 +2824,6 @@ export interface ListCustomConnectorVersionsResponse {
   /** A list of connector versions. */
   customConnectorVersions?: CustomConnectorVersionList;
 }
-const ListCustomConnectorVersionsResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<ListCustomConnectorVersionsResponse>;
-
 export interface ListProjectsLocationsGlobalManagedZonesRequest {
   /** Required. Parent resource of the Managed Zone, of the form: `projects/*\/locations/global` */
   parent: string;
@@ -3814,14 +2838,7 @@ export interface ListProjectsLocationsGlobalManagedZonesRequest {
   /** Filter. */
   filter?: string;
 }
-const ListProjectsLocationsGlobalManagedZonesRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<ListProjectsLocationsGlobalManagedZonesRequest>;
-
 export type ManagedZoneList = Array<ManagedZone>;
-const ManagedZoneList = /*@__PURE__*/ __L.at(__c29, 3) as any as S.Schema<ManagedZoneList>;
-
 /** Response message for ConnectorsService.ListManagedZones */
 export interface ListManagedZonesResponse {
   /** ManagedZones. */
@@ -3831,11 +2848,6 @@ export interface ListManagedZonesResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListManagedZonesResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<ListManagedZonesResponse>;
-
 export interface ListProjectsLocationsOperationsRequest {
   /** The standard list filter. */
   filter?: string;
@@ -3848,14 +2860,7 @@ export interface ListProjectsLocationsOperationsRequest {
   /** The name of the operation's parent resource. */
   name: string;
 }
-const ListProjectsLocationsOperationsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<ListProjectsLocationsOperationsRequest>;
-
 export type OperationList = Array<Operation>;
-const OperationList = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<OperationList>;
-
 /** The response message for Operations.ListOperations. */
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -3865,11 +2870,6 @@ export interface ListOperationsResponse {
   /** The standard List next-page token. */
   nextPageToken?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListProjectsLocationsProvidersRequest {
   /** Required. Parent resource of the API, of the form: `projects/*\/locations/*` Only global location is supported for Provider resource. */
   parent: string;
@@ -3878,14 +2878,7 @@ export interface ListProjectsLocationsProvidersRequest {
   /** Page token. */
   pageToken?: string;
 }
-const ListProjectsLocationsProvidersRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<ListProjectsLocationsProvidersRequest>;
-
 export type ProviderList = Array<Provider>;
-const ProviderList = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<ProviderList>;
-
 /** Response message for Connectors.ListProviders. */
 export interface ListProvidersResponse {
   /** Locations that could not be reached. */
@@ -3895,11 +2888,6 @@ export interface ListProvidersResponse {
   /** A list of providers. */
   providers?: ProviderList;
 }
-const ListProvidersResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<ListProvidersResponse>;
-
 export interface ListProjectsLocationsProvidersConnectorsRequest {
   /** Page token. */
   pageToken?: string;
@@ -3910,14 +2898,7 @@ export interface ListProjectsLocationsProvidersConnectorsRequest {
   /** Required. Parent resource of the connectors, of the form: `projects/*\/locations/*\/providers/*` Only global location is supported for Connector resource. */
   parent: string;
 }
-const ListProjectsLocationsProvidersConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<ListProjectsLocationsProvidersConnectorsRequest>;
-
 export type ConnectorList = Array<Connector>;
-const ConnectorList = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<ConnectorList>;
-
 /** Response message for Connectors.ListConnectors. */
 export interface ListConnectorsResponse {
   /** Locations that could not be reached. */
@@ -3927,17 +2908,10 @@ export interface ListConnectorsResponse {
   /** A list of connectors. */
   connectors?: ConnectorList;
 }
-const ListConnectorsResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<ListConnectorsResponse>;
-
 export type ListProjectsLocationsProvidersConnectorsVersionsViewEnum =
   | "CONNECTOR_VERSION_VIEW_UNSPECIFIED"
   | "CONNECTOR_VERSION_VIEW_BASIC"
   | "CONNECTOR_VERSION_VIEW_FULL";
-const ListProjectsLocationsProvidersConnectorsVersionsViewEnum = S.String;
-
 export interface ListProjectsLocationsProvidersConnectorsVersionsRequest {
   /** Page token. */
   pageToken?: string;
@@ -3947,17 +2921,7 @@ export interface ListProjectsLocationsProvidersConnectorsVersionsRequest {
   /** Specifies which fields of the ConnectorVersion are returned in the response. Defaults to `BASIC` view. */
   view?: ListProjectsLocationsProvidersConnectorsVersionsViewEnum | (string & {});
 }
-const ListProjectsLocationsProvidersConnectorsVersionsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<ListProjectsLocationsProvidersConnectorsVersionsRequest>;
-
 export type ConnectorVersionList = Array<ConnectorVersion>;
-const ConnectorVersionList = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<ConnectorVersionList>;
-
 /** Response message for Connectors.ListConnectorVersions. */
 export interface ListConnectorVersionsResponse {
   /** A list of connector versions. */
@@ -3967,11 +2931,6 @@ export interface ListConnectorVersionsResponse {
   /** Locations that could not be reached. */
   unreachable?: StringList;
 }
-const ListConnectorVersionsResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<ListConnectorVersionsResponse>;
-
 export interface ListProjectsLocationsProvidersConnectorsVersionsEventtypesRequest {
   /** Page size. */
   pageSize?: number;
@@ -3980,14 +2939,7 @@ export interface ListProjectsLocationsProvidersConnectorsVersionsEventtypesReque
   /** Required. Parent resource of the connectors, of the form: `projects/*\/locations/*\/providers/*\/connectors/*\/versions/*` Only global location is supported for EventType resource. */
   parent: string;
 }
-const ListProjectsLocationsProvidersConnectorsVersionsEventtypesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<ListProjectsLocationsProvidersConnectorsVersionsEventtypesRequest>;
-
 export type EventTypeList = Array<EventType>;
-const EventTypeList = /*@__PURE__*/ __L.at(__c31, 2) as any as S.Schema<EventTypeList>;
-
 /** Response message for Connectors.ListEventTypes. */
 export interface ListEventTypesResponse {
   /** A list of connector versions. */
@@ -3995,40 +2947,22 @@ export interface ListEventTypesResponse {
   /** Next page token. */
   nextPageToken?: string;
 }
-const ListEventTypesResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<ListEventTypesResponse>;
-
 /** Request message for ModifyConnectionToolspecOverride API. */
 export interface ModifyConnectionToolspecOverrideRequest {
   /** Required. Toolspec overrides to be modified. */
   toolspecOverride?: ToolspecOverride;
 }
-const ModifyConnectionToolspecOverrideRequest =
-  FetchConnectionToolspecOverrideResponse as any as S.Schema<ModifyConnectionToolspecOverrideRequest>;
-
 export interface ModifyToolspecOverrideProjectsLocationsConnectionsRequest {
   /** Required. Resource name format: projects/{project}/locations/{location}/connections/{connection} */
   name: string;
   /** Request body */
   body?: ModifyConnectionToolspecOverrideRequest;
 }
-const ModifyToolspecOverrideProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<ModifyToolspecOverrideProjectsLocationsConnectionsRequest>;
-
 /** Response message for ModifyConnectionToolspecOverride API. */
 export interface ModifyConnectionToolspecOverrideResponse {
   /** Toolspec overrides for the connection. */
   toolspecOverrides?: ToolspecOverride;
 }
-const ModifyConnectionToolspecOverrideResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<ModifyConnectionToolspecOverrideResponse>;
-
 export interface PatchProjectsLocationsConnectionsRequest {
   /** Output only. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} */
   name: string;
@@ -4037,11 +2971,6 @@ export interface PatchProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: Connection;
 }
-const PatchProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<PatchProjectsLocationsConnectionsRequest>;
-
 export interface PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest {
   /** Required. The list of fields to update. A field will be overwritten if it is in the mask. You can modify only the fields listed below. To update the EndUserAuthentication details: * `notify_endpoint_destination` */
   updateMask?: string;
@@ -4050,11 +2979,6 @@ export interface PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest 
   /** Request body */
   body?: EndUserAuthentication;
 }
-const PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest>;
-
 export interface PatchProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Required. The list of fields to update. Fields are specified relative to the Subscription. A field will be overwritten if it is in the mask. You can modify only the fields listed below. To update the EventSubscription details: * `serviceAccount` */
   updateMask?: string;
@@ -4063,11 +2987,6 @@ export interface PatchProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Request body */
   body?: EventSubscription;
 }
-const PatchProjectsLocationsConnectionsEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<PatchProjectsLocationsConnectionsEventSubscriptionsRequest>;
-
 export interface PatchProjectsLocationsEndpointAttachmentsRequest {
   /** Output only. Resource name of the Endpoint Attachment. Format: projects/{project}/locations/{location}/endpointAttachments/{endpoint_attachment} */
   name: string;
@@ -4076,11 +2995,6 @@ export interface PatchProjectsLocationsEndpointAttachmentsRequest {
   /** Request body */
   body?: EndpointAttachment;
 }
-const PatchProjectsLocationsEndpointAttachmentsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<PatchProjectsLocationsEndpointAttachmentsRequest>;
-
 export interface PatchProjectsLocationsGlobalCustomConnectorsRequest {
   /** Required. Field mask is used to specify the fields to be overwritten in the Connector resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. Set the mask as "*" for full replacement, which means all fields will be overwritten. */
   updateMask?: string;
@@ -4089,11 +3003,6 @@ export interface PatchProjectsLocationsGlobalCustomConnectorsRequest {
   /** Request body */
   body?: CustomConnector;
 }
-const PatchProjectsLocationsGlobalCustomConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<PatchProjectsLocationsGlobalCustomConnectorsRequest>;
-
 export interface PatchProjectsLocationsGlobalManagedZonesRequest {
   /** Output only. Resource name of the Managed Zone. Format: projects/{project}/locations/global/managedZones/{managed_zone} */
   name: string;
@@ -4102,32 +3011,17 @@ export interface PatchProjectsLocationsGlobalManagedZonesRequest {
   /** Request body */
   body?: ManagedZone;
 }
-const PatchProjectsLocationsGlobalManagedZonesRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<PatchProjectsLocationsGlobalManagedZonesRequest>;
-
 /** Request message for ConnectorsService.PublishCustomConnectorVersion */
 export interface PublishCustomConnectorVersionRequest {
   /** Required. Partner metadata details for validating and publishing the custom connector as a partner connector version. */
   partnerMetadata?: PartnerMetadata;
 }
-const PublishCustomConnectorVersionRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<PublishCustomConnectorVersionRequest>;
-
 export interface PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest {
   /** Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` */
   name: string;
   /** Request body */
   body?: PublishCustomConnectorVersionRequest;
 }
-const PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
-
 /** Request message for ConnectorsService.RefreshConnectionSchemaMetadata. */
 export type RefreshConnectionSchemaMetadataRequest = CancelOperationRequest;
 export interface RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequest {
@@ -4136,11 +3030,6 @@ export interface RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequ
   /** Request body */
   body?: CancelOperationRequest;
 }
-const RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequest>;
-
 /** Request message for RemoveConnectionToolspecOverride API. */
 export type RemoveConnectionToolspecOverrideRequest = CancelOperationRequest;
 export interface RemoveToolspecOverrideProjectsLocationsConnectionsRequest {
@@ -4149,11 +3038,6 @@ export interface RemoveToolspecOverrideProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const RemoveToolspecOverrideProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<RemoveToolspecOverrideProjectsLocationsConnectionsRequest>;
-
 /** Request message for ConnectorsService.RepairEventing */
 export type RepairEventingRequest = CancelOperationRequest;
 export interface RepairEventingProjectsLocationsConnectionsRequest {
@@ -4162,11 +3046,6 @@ export interface RepairEventingProjectsLocationsConnectionsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const RepairEventingProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<RepairEventingProjectsLocationsConnectionsRequest>;
-
 /** Request message for ConnectorsService.RefreshEventSubscription */
 export type RetryEventSubscriptionRequest = CancelOperationRequest;
 export interface RetryProjectsLocationsConnectionsEventSubscriptionsRequest {
@@ -4175,11 +3054,6 @@ export interface RetryProjectsLocationsConnectionsEventSubscriptionsRequest {
   /** Request body */
   body?: CancelOperationRequest;
 }
-const RetryProjectsLocationsConnectionsEventSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<RetryProjectsLocationsConnectionsEventSubscriptionsRequest>;
-
 export interface SearchProjectsLocationsConnectionsRequest {
   /** Optional. The number of top matching connectors to return */
   pageSize?: number;
@@ -4190,11 +3064,6 @@ export interface SearchProjectsLocationsConnectionsRequest {
   /** Required. Parent resource of the Connection, of the form: `projects/*\/locations/*\/connections` */
   name: string;
 }
-const SearchProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<SearchProjectsLocationsConnectionsRequest>;
-
 /** SearchConnectionInstance represents an instance of connector with specific fields */
 export interface SearchConnectionInstance {
   /** Output only. Connection details */
@@ -4204,17 +3073,7 @@ export interface SearchConnectionInstance {
   /** Output only. Schema of a runtime entity. */
   entitySchema?: RuntimeEntitySchema;
 }
-const SearchConnectionInstance = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<SearchConnectionInstance>;
-
 export type SearchConnectionInstanceList = Array<SearchConnectionInstance>;
-const SearchConnectionInstanceList = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<SearchConnectionInstanceList>;
-
 /** Response message for Connectors.SearchConnections. */
 export interface SearchConnectionsResponse {
   /** Optional. page_token */
@@ -4224,11 +3083,6 @@ export interface SearchConnectionsResponse {
   /** A list of connectors. */
   connections?: SearchConnectionInstanceList;
 }
-const SearchConnectionsResponse = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<SearchConnectionsResponse>;
-
 /** Request message for `SetIamPolicy` method. */
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -4236,70 +3090,40 @@ export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
   updateMask?: string;
 }
-const SetIamPolicyRequest = /*@__PURE__*/ __L.at(__c33, 6) as any as S.Schema<SetIamPolicyRequest>;
-
 export interface SetIamPolicyProjectsLocationsConnectionsRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>;
-
 export interface SetIamPolicyProjectsLocationsProvidersRequest {
   /** REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: SetIamPolicyRequest;
 }
-const SetIamPolicyProjectsLocationsProvidersRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<SetIamPolicyProjectsLocationsProvidersRequest>;
-
 /** Request message for `TestIamPermissions` method. */
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: StringList;
 }
-const TestIamPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<TestIamPermissionsRequest>;
-
 export interface TestIamPermissionsProjectsLocationsConnectionsRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionsRequest>;
-
 /** Response message for `TestIamPermissions` method. */
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: StringList;
 }
-const TestIamPermissionsResponse =
-  TestIamPermissionsRequest as any as S.Schema<TestIamPermissionsResponse>;
-
 export interface TestIamPermissionsProjectsLocationsProvidersRequest {
   /** REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. */
   resource: string;
   /** Request body */
   body?: TestIamPermissionsRequest;
 }
-const TestIamPermissionsProjectsLocationsProvidersRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<TestIamPermissionsProjectsLocationsProvidersRequest>;
-
 export interface UpdateRegionalSettingsProjectsLocationsRequest {
   /** Output only. Resource name of the Connection. Format: projects/{project}/locations/{location}/regionalSettings */
   name: string;
@@ -4308,11 +3132,6 @@ export interface UpdateRegionalSettingsProjectsLocationsRequest {
   /** Request body */
   body?: RegionalSettings;
 }
-const UpdateRegionalSettingsProjectsLocationsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<UpdateRegionalSettingsProjectsLocationsRequest>;
-
 export interface UpdateSettingsProjectsLocationsGlobalRequest {
   /** Output only. Resource name of the Connection. Format: projects/{project}/locations/global/settings} */
   name: string;
@@ -4321,18 +3140,11 @@ export interface UpdateSettingsProjectsLocationsGlobalRequest {
   /** Request body */
   body?: Settings;
 }
-const UpdateSettingsProjectsLocationsGlobalRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<UpdateSettingsProjectsLocationsGlobalRequest>;
-
 export type ValidateCustomConnectorSpecRequestSpecTypeEnum =
   | "CUSTOM_CONNECTOR_TYPE_UNSPECIFIED"
   | "OPEN_API"
   | "PROTO"
   | "SDK";
-const ValidateCustomConnectorSpecRequestSpecTypeEnum = S.String;
-
 /** Request message for ConnectorsService.ValidateCustomConnectorSpec */
 export interface ValidateCustomConnectorSpecRequest {
   /** Required. Service account to access the spec from Google Cloud Storage. */
@@ -4342,32 +3154,17 @@ export interface ValidateCustomConnectorSpecRequest {
   /** Required. Location of the custom connector spec. The location can be either a public url like `https://public-url.com/spec` Or a Google Cloud Storage location like `gs:///` */
   specLocation?: string;
 }
-const ValidateCustomConnectorSpecRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<ValidateCustomConnectorSpecRequest>;
-
 export interface ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsRequest {
   /** Required. Location at which the custom connector is being created. */
   parent: string;
   /** Request body */
   body?: ValidateCustomConnectorSpecRequest;
 }
-const ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsRequest>;
-
 /** Response message for ConnectorsService.ValidateCustomConnectorSpec */
 export interface ValidateCustomConnectorSpecResponse {
   /** Error message. The spec is valid if the error message is empty. */
   errorMessage?: string;
 }
-const ValidateCustomConnectorSpecResponse = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<ValidateCustomConnectorSpecResponse>;
-
 /** Request message for ConnectorsService.WithdrawCustomConnectorVersion */
 export type WithdrawCustomConnectorVersionRequest = CancelOperationRequest;
 export interface WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest {
@@ -4376,12 +3173,6 @@ export interface WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersion
   /** Request body */
   body?: CancelOperationRequest;
 }
-const WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest =
-  /*@__PURE__*/ __L.at(
-    __c35,
-    1,
-  ) as any as S.Schema<WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>;
-
 export type CancelProjectsLocationsOperationsError =
   | NotFound
   | Forbidden
@@ -4395,8 +3186,8 @@ export const cancelProjectsLocationsOperations: API.OperationMethod<
   CancelProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(1) as any as S.Schema<CancelProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4415,8 +3206,8 @@ export const createProjectsLocationsConnections: API.OperationMethod<
   CreateProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsConnectionsRequest,
-  output: Operation,
+  input: __S(44) as any as S.Schema<CreateProjectsLocationsConnectionsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4435,8 +3226,10 @@ export const createProjectsLocationsConnectionsEndUserAuthentications: API.Opera
   CreateProjectsLocationsConnectionsEndUserAuthenticationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsConnectionsEndUserAuthenticationsRequest,
-  output: Operation,
+  input: __S(
+    68,
+  ) as any as S.Schema<CreateProjectsLocationsConnectionsEndUserAuthenticationsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4455,8 +3248,8 @@ export const createProjectsLocationsConnectionsEventSubscriptions: API.Operation
   CreateProjectsLocationsConnectionsEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsConnectionsEventSubscriptionsRequest,
-  output: Operation,
+  input: __S(76) as any as S.Schema<CreateProjectsLocationsConnectionsEventSubscriptionsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4475,8 +3268,8 @@ export const createProjectsLocationsEndpointAttachments: API.OperationMethod<
   CreateProjectsLocationsEndpointAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsEndpointAttachmentsRequest,
-  output: Operation,
+  input: __S(78) as any as S.Schema<CreateProjectsLocationsEndpointAttachmentsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4495,8 +3288,8 @@ export const createProjectsLocationsGlobalCustomConnectors: API.OperationMethod<
   CreateProjectsLocationsGlobalCustomConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsGlobalCustomConnectorsRequest,
-  output: Operation,
+  input: __S(80) as any as S.Schema<CreateProjectsLocationsGlobalCustomConnectorsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4515,8 +3308,10 @@ export const createProjectsLocationsGlobalCustomConnectorsCustomConnectorVersion
   CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest,
-  output: Operation,
+  input: __S(
+    100,
+  ) as any as S.Schema<CreateProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4535,8 +3330,8 @@ export const createProjectsLocationsGlobalManagedZones: API.OperationMethod<
   CreateProjectsLocationsGlobalManagedZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectsLocationsGlobalManagedZonesRequest,
-  output: Operation,
+  input: __S(102) as any as S.Schema<CreateProjectsLocationsGlobalManagedZonesRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4555,8 +3350,8 @@ export const deleteProjectsLocationsConnections: API.OperationMethod<
   DeleteProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsConnectionsRequest,
-  output: Operation,
+  input: __S(103) as any as S.Schema<DeleteProjectsLocationsConnectionsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4575,8 +3370,10 @@ export const deleteProjectsLocationsConnectionsEndUserAuthentications: API.Opera
   DeleteProjectsLocationsConnectionsEndUserAuthenticationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsConnectionsEndUserAuthenticationsRequest,
-  output: Operation,
+  input: __S(
+    104,
+  ) as any as S.Schema<DeleteProjectsLocationsConnectionsEndUserAuthenticationsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4595,8 +3392,8 @@ export const deleteProjectsLocationsConnectionsEventSubscriptions: API.Operation
   DeleteProjectsLocationsConnectionsEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsConnectionsEventSubscriptionsRequest,
-  output: Operation,
+  input: __S(105) as any as S.Schema<DeleteProjectsLocationsConnectionsEventSubscriptionsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4615,8 +3412,10 @@ export const deleteProjectsLocationsCustomConnectorsCustomConnectorVersions: API
   DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest,
-  output: Operation,
+  input: __S(
+    106,
+  ) as any as S.Schema<DeleteProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4635,8 +3434,8 @@ export const deleteProjectsLocationsEndpointAttachments: API.OperationMethod<
   DeleteProjectsLocationsEndpointAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsEndpointAttachmentsRequest,
-  output: Operation,
+  input: __S(107) as any as S.Schema<DeleteProjectsLocationsEndpointAttachmentsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4655,8 +3454,8 @@ export const deleteProjectsLocationsGlobalCustomConnectors: API.OperationMethod<
   DeleteProjectsLocationsGlobalCustomConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsGlobalCustomConnectorsRequest,
-  output: Operation,
+  input: __S(108) as any as S.Schema<DeleteProjectsLocationsGlobalCustomConnectorsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4675,8 +3474,8 @@ export const deleteProjectsLocationsGlobalManagedZones: API.OperationMethod<
   DeleteProjectsLocationsGlobalManagedZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsGlobalManagedZonesRequest,
-  output: Operation,
+  input: __S(109) as any as S.Schema<DeleteProjectsLocationsGlobalManagedZonesRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4695,8 +3494,8 @@ export const deleteProjectsLocationsOperations: API.OperationMethod<
   DeleteProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectsLocationsOperationsRequest,
-  output: Empty,
+  input: __S(110) as any as S.Schema<DeleteProjectsLocationsOperationsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4715,8 +3514,10 @@ export const deprecateProjectsLocationsCustomConnectorsCustomConnectorVersions: 
   DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest,
-  output: Operation,
+  input: __S(
+    111,
+  ) as any as S.Schema<DeprecateProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4733,8 +3534,10 @@ export const fetchAuthSchemaProjectsLocationsProvidersConnectorsVersions: API.Op
   FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsRequest,
-  output: FetchAuthSchemaResponse,
+  input: __S(
+    112,
+  ) as any as S.Schema<FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsRequest>,
+  output: __S(122) as any as S.Schema<FetchAuthSchemaResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4753,8 +3556,8 @@ export const fetchToolspecOverrideProjectsLocationsConnections: API.OperationMet
   FetchToolspecOverrideProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FetchToolspecOverrideProjectsLocationsConnectionsRequest,
-  output: FetchConnectionToolspecOverrideResponse,
+  input: __S(126) as any as S.Schema<FetchToolspecOverrideProjectsLocationsConnectionsRequest>,
+  output: __S(128) as any as S.Schema<FetchConnectionToolspecOverrideResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4773,8 +3576,8 @@ export const generateToolspecOverrideProjectsLocationsConnections: API.Operation
   GenerateToolspecOverrideProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateToolspecOverrideProjectsLocationsConnectionsRequest,
-  output: GenerateConnectionToolspecOverrideResponse,
+  input: __S(129) as any as S.Schema<GenerateToolspecOverrideProjectsLocationsConnectionsRequest>,
+  output: __S(128) as any as S.Schema<GenerateConnectionToolspecOverrideResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4791,8 +3594,10 @@ export const getActionProjectsLocationsConnectionsConnectionSchemaMetadata: API.
   GetActionProjectsLocationsConnectionsConnectionSchemaMetadataError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRequest,
-  output: Operation,
+  input: __S(
+    130,
+  ) as any as S.Schema<GetActionProjectsLocationsConnectionsConnectionSchemaMetadataRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4809,8 +3614,10 @@ export const getConnectionSchemaMetadataProjectsLocationsConnections: API.Operat
   GetConnectionSchemaMetadataProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest,
-  output: ConnectionSchemaMetadata,
+  input: __S(
+    131,
+  ) as any as S.Schema<GetConnectionSchemaMetadataProjectsLocationsConnectionsRequest>,
+  output: __S(132) as any as S.Schema<ConnectionSchemaMetadata>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4827,8 +3634,10 @@ export const getEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadata: 
   GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRequest,
-  output: Operation,
+  input: __S(
+    133,
+  ) as any as S.Schema<GetEntityTypeProjectsLocationsConnectionsConnectionSchemaMetadataRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4842,8 +3651,8 @@ export const getIamPolicyProjectsLocationsConnections: API.OperationMethod<
   GetIamPolicyProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsConnectionsRequest,
-  output: Policy,
+  input: __S(134) as any as S.Schema<GetIamPolicyProjectsLocationsConnectionsRequest>,
+  output: __S(142) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4857,8 +3666,8 @@ export const getIamPolicyProjectsLocationsProviders: API.OperationMethod<
   GetIamPolicyProjectsLocationsProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetIamPolicyProjectsLocationsProvidersRequest,
-  output: Policy,
+  input: __S(143) as any as S.Schema<GetIamPolicyProjectsLocationsProvidersRequest>,
+  output: __S(142) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4872,8 +3681,8 @@ export const getProjectsLocations: API.OperationMethod<
   GetProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsRequest,
-  output: Location,
+  input: __S(144) as any as S.Schema<GetProjectsLocationsRequest>,
+  output: __S(145) as any as S.Schema<Location>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4887,8 +3696,8 @@ export const getProjectsLocationsConnections: API.OperationMethod<
   GetProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConnectionsRequest,
-  output: Connection,
+  input: __S(146) as any as S.Schema<GetProjectsLocationsConnectionsRequest>,
+  output: __S(43) as any as S.Schema<Connection>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4905,8 +3714,8 @@ export const getProjectsLocationsConnectionsEndUserAuthentications: API.Operatio
   GetProjectsLocationsConnectionsEndUserAuthenticationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConnectionsEndUserAuthenticationsRequest,
-  output: EndUserAuthentication,
+  input: __S(147) as any as S.Schema<GetProjectsLocationsConnectionsEndUserAuthenticationsRequest>,
+  output: __S(67) as any as S.Schema<EndUserAuthentication>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4923,8 +3732,8 @@ export const getProjectsLocationsConnectionsEventSubscriptions: API.OperationMet
   GetProjectsLocationsConnectionsEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsConnectionsEventSubscriptionsRequest,
-  output: EventSubscription,
+  input: __S(148) as any as S.Schema<GetProjectsLocationsConnectionsEventSubscriptionsRequest>,
+  output: __S(75) as any as S.Schema<EventSubscription>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4938,8 +3747,8 @@ export const getProjectsLocationsEndpointAttachments: API.OperationMethod<
   GetProjectsLocationsEndpointAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsEndpointAttachmentsRequest,
-  output: EndpointAttachment,
+  input: __S(149) as any as S.Schema<GetProjectsLocationsEndpointAttachmentsRequest>,
+  output: __S(77) as any as S.Schema<EndpointAttachment>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4953,8 +3762,8 @@ export const getProjectsLocationsGlobalCustomConnectors: API.OperationMethod<
   GetProjectsLocationsGlobalCustomConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsGlobalCustomConnectorsRequest,
-  output: CustomConnector,
+  input: __S(150) as any as S.Schema<GetProjectsLocationsGlobalCustomConnectorsRequest>,
+  output: __S(79) as any as S.Schema<CustomConnector>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4971,8 +3780,10 @@ export const getProjectsLocationsGlobalCustomConnectorsCustomConnectorVersions: 
   GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest,
-  output: CustomConnectorVersion,
+  input: __S(
+    151,
+  ) as any as S.Schema<GetProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest>,
+  output: __S(99) as any as S.Schema<CustomConnectorVersion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -4986,8 +3797,8 @@ export const getProjectsLocationsGlobalManagedZones: API.OperationMethod<
   GetProjectsLocationsGlobalManagedZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsGlobalManagedZonesRequest,
-  output: ManagedZone,
+  input: __S(152) as any as S.Schema<GetProjectsLocationsGlobalManagedZonesRequest>,
+  output: __S(101) as any as S.Schema<ManagedZone>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5001,8 +3812,8 @@ export const getProjectsLocationsOperations: API.OperationMethod<
   GetProjectsLocationsOperationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsOperationsRequest,
-  output: Operation,
+  input: __S(153) as any as S.Schema<GetProjectsLocationsOperationsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5016,8 +3827,8 @@ export const getProjectsLocationsProviders: API.OperationMethod<
   GetProjectsLocationsProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsProvidersRequest,
-  output: Provider,
+  input: __S(154) as any as S.Schema<GetProjectsLocationsProvidersRequest>,
+  output: __S(155) as any as S.Schema<Provider>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5031,8 +3842,8 @@ export const getProjectsLocationsProvidersConnectors: API.OperationMethod<
   GetProjectsLocationsProvidersConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsProvidersConnectorsRequest,
-  output: Connector,
+  input: __S(156) as any as S.Schema<GetProjectsLocationsProvidersConnectorsRequest>,
+  output: __S(159) as any as S.Schema<Connector>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5049,8 +3860,8 @@ export const getProjectsLocationsProvidersConnectorsVersions: API.OperationMetho
   GetProjectsLocationsProvidersConnectorsVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsProvidersConnectorsVersionsRequest,
-  output: ConnectorVersion,
+  input: __S(160) as any as S.Schema<GetProjectsLocationsProvidersConnectorsVersionsRequest>,
+  output: __S(178) as any as S.Schema<ConnectorVersion>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5067,8 +3878,10 @@ export const getProjectsLocationsProvidersConnectorsVersionsEventtypes: API.Oper
   GetProjectsLocationsProvidersConnectorsVersionsEventtypesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectsLocationsProvidersConnectorsVersionsEventtypesRequest,
-  output: EventType,
+  input: __S(
+    179,
+  ) as any as S.Schema<GetProjectsLocationsProvidersConnectorsVersionsEventtypesRequest>,
+  output: __S(180) as any as S.Schema<EventType>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5082,8 +3895,8 @@ export const getRegionalSettingsProjectsLocations: API.OperationMethod<
   GetRegionalSettingsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegionalSettingsProjectsLocationsRequest,
-  output: RegionalSettings,
+  input: __S(181) as any as S.Schema<GetRegionalSettingsProjectsLocationsRequest>,
+  output: __S(184) as any as S.Schema<RegionalSettings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5097,8 +3910,8 @@ export const getRuntimeConfigProjectsLocations: API.OperationMethod<
   GetRuntimeConfigProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRuntimeConfigProjectsLocationsRequest,
-  output: RuntimeConfig,
+  input: __S(185) as any as S.Schema<GetRuntimeConfigProjectsLocationsRequest>,
+  output: __S(186) as any as S.Schema<RuntimeConfig>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5112,8 +3925,8 @@ export const getSettingsProjectsLocationsGlobal: API.OperationMethod<
   GetSettingsProjectsLocationsGlobalError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingsProjectsLocationsGlobalRequest,
-  output: Settings,
+  input: __S(187) as any as S.Schema<GetSettingsProjectsLocationsGlobalRequest>,
+  output: __S(188) as any as S.Schema<Settings>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5131,8 +3944,10 @@ export const listActionsProjectsLocationsConnectionsConnectionSchemaMetadata: AP
   GcpOpContext,
   ListActionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataRequest,
-  output: ListActionsResponse,
+  input: __S(
+    189,
+  ) as any as S.Schema<ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataRequest>,
+  output: __S(200) as any as S.Schema<ListActionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5152,8 +3967,8 @@ export const listenEventProjectsLocationsConnections: API.OperationMethod<
   ListenEventProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListenEventProjectsLocationsConnectionsRequest,
-  output: ListenEventResponse,
+  input: __S(202) as any as S.Schema<ListenEventProjectsLocationsConnectionsRequest>,
+  output: __S(0) as any as S.Schema<ListenEventResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5171,8 +3986,10 @@ export const listEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadata
   GcpOpContext,
   ListEntityTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataRequest,
-  output: ListEntityTypesResponse,
+  input: __S(
+    203,
+  ) as any as S.Schema<ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataRequest>,
+  output: __S(208) as any as S.Schema<ListEntityTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5188,8 +4005,8 @@ export const listProjectsLocations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListLocationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsRequest,
-  output: ListLocationsResponse,
+  input: __S(209) as any as S.Schema<ListProjectsLocationsRequest>,
+  output: __S(211) as any as S.Schema<ListLocationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5205,8 +4022,8 @@ export const listProjectsLocationsConnections: API.PaginatedOperationMethod<
   GcpOpContext,
   ListConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectionsRequest,
-  output: ListConnectionsResponse,
+  input: __S(212) as any as S.Schema<ListProjectsLocationsConnectionsRequest>,
+  output: __S(214) as any as S.Schema<ListConnectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5225,8 +4042,8 @@ export const listProjectsLocationsConnectionsEndUserAuthentications: API.Paginat
   GcpOpContext,
   ListEndUserAuthenticationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectionsEndUserAuthenticationsRequest,
-  output: ListEndUserAuthenticationsResponse,
+  input: __S(215) as any as S.Schema<ListProjectsLocationsConnectionsEndUserAuthenticationsRequest>,
+  output: __S(217) as any as S.Schema<ListEndUserAuthenticationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5245,8 +4062,8 @@ export const listProjectsLocationsConnectionsEventSubscriptions: API.PaginatedOp
   GcpOpContext,
   ListEventSubscriptionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectionsEventSubscriptionsRequest,
-  output: ListEventSubscriptionsResponse,
+  input: __S(218) as any as S.Schema<ListProjectsLocationsConnectionsEventSubscriptionsRequest>,
+  output: __S(220) as any as S.Schema<ListEventSubscriptionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5265,8 +4082,8 @@ export const listProjectsLocationsConnectionsRuntimeActionSchemas: API.Paginated
   GcpOpContext,
   ListRuntimeActionSchemasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectionsRuntimeActionSchemasRequest,
-  output: ListRuntimeActionSchemasResponse,
+  input: __S(221) as any as S.Schema<ListProjectsLocationsConnectionsRuntimeActionSchemasRequest>,
+  output: __S(222) as any as S.Schema<ListRuntimeActionSchemasResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5285,8 +4102,8 @@ export const listProjectsLocationsConnectionsRuntimeEntitySchemas: API.Paginated
   GcpOpContext,
   ListRuntimeEntitySchemasResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest,
-  output: ListRuntimeEntitySchemasResponse,
+  input: __S(223) as any as S.Schema<ListProjectsLocationsConnectionsRuntimeEntitySchemasRequest>,
+  output: __S(224) as any as S.Schema<ListRuntimeEntitySchemasResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5302,8 +4119,8 @@ export const listProjectsLocationsEndpointAttachments: API.PaginatedOperationMet
   GcpOpContext,
   ListEndpointAttachmentsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsEndpointAttachmentsRequest,
-  output: ListEndpointAttachmentsResponse,
+  input: __S(225) as any as S.Schema<ListProjectsLocationsEndpointAttachmentsRequest>,
+  output: __S(227) as any as S.Schema<ListEndpointAttachmentsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5319,8 +4136,8 @@ export const listProjectsLocationsGlobalCustomConnectors: API.PaginatedOperation
   GcpOpContext,
   ListCustomConnectorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsGlobalCustomConnectorsRequest,
-  output: ListCustomConnectorsResponse,
+  input: __S(228) as any as S.Schema<ListProjectsLocationsGlobalCustomConnectorsRequest>,
+  output: __S(230) as any as S.Schema<ListCustomConnectorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5339,8 +4156,10 @@ export const listProjectsLocationsGlobalCustomConnectorsCustomConnectorVersions:
   GcpOpContext,
   ListCustomConnectorVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest,
-  output: ListCustomConnectorVersionsResponse,
+  input: __S(
+    231,
+  ) as any as S.Schema<ListProjectsLocationsGlobalCustomConnectorsCustomConnectorVersionsRequest>,
+  output: __S(233) as any as S.Schema<ListCustomConnectorVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5356,8 +4175,8 @@ export const listProjectsLocationsGlobalManagedZones: API.PaginatedOperationMeth
   GcpOpContext,
   ListManagedZonesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsGlobalManagedZonesRequest,
-  output: ListManagedZonesResponse,
+  input: __S(234) as any as S.Schema<ListProjectsLocationsGlobalManagedZonesRequest>,
+  output: __S(236) as any as S.Schema<ListManagedZonesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5373,8 +4192,8 @@ export const listProjectsLocationsOperations: API.PaginatedOperationMethod<
   GcpOpContext,
   ListOperationsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(237) as any as S.Schema<ListProjectsLocationsOperationsRequest>,
+  output: __S(239) as any as S.Schema<ListOperationsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5390,8 +4209,8 @@ export const listProjectsLocationsProviders: API.PaginatedOperationMethod<
   GcpOpContext,
   ListProvidersResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsProvidersRequest,
-  output: ListProvidersResponse,
+  input: __S(240) as any as S.Schema<ListProjectsLocationsProvidersRequest>,
+  output: __S(242) as any as S.Schema<ListProvidersResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5407,8 +4226,8 @@ export const listProjectsLocationsProvidersConnectors: API.PaginatedOperationMet
   GcpOpContext,
   ListConnectorsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsProvidersConnectorsRequest,
-  output: ListConnectorsResponse,
+  input: __S(243) as any as S.Schema<ListProjectsLocationsProvidersConnectorsRequest>,
+  output: __S(245) as any as S.Schema<ListConnectorsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5427,8 +4246,8 @@ export const listProjectsLocationsProvidersConnectorsVersions: API.PaginatedOper
   GcpOpContext,
   ListConnectorVersionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsProvidersConnectorsVersionsRequest,
-  output: ListConnectorVersionsResponse,
+  input: __S(246) as any as S.Schema<ListProjectsLocationsProvidersConnectorsVersionsRequest>,
+  output: __S(248) as any as S.Schema<ListConnectorVersionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5447,8 +4266,10 @@ export const listProjectsLocationsProvidersConnectorsVersionsEventtypes: API.Pag
   GcpOpContext,
   ListEventTypesResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProjectsLocationsProvidersConnectorsVersionsEventtypesRequest,
-  output: ListEventTypesResponse,
+  input: __S(
+    249,
+  ) as any as S.Schema<ListProjectsLocationsProvidersConnectorsVersionsEventtypesRequest>,
+  output: __S(251) as any as S.Schema<ListEventTypesResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5468,8 +4289,8 @@ export const modifyToolspecOverrideProjectsLocationsConnections: API.OperationMe
   ModifyToolspecOverrideProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModifyToolspecOverrideProjectsLocationsConnectionsRequest,
-  output: ModifyConnectionToolspecOverrideResponse,
+  input: __S(252) as any as S.Schema<ModifyToolspecOverrideProjectsLocationsConnectionsRequest>,
+  output: __S(253) as any as S.Schema<ModifyConnectionToolspecOverrideResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5488,8 +4309,8 @@ export const patchProjectsLocationsConnections: API.OperationMethod<
   PatchProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsConnectionsRequest,
-  output: Operation,
+  input: __S(254) as any as S.Schema<PatchProjectsLocationsConnectionsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5508,8 +4329,10 @@ export const patchProjectsLocationsConnectionsEndUserAuthentications: API.Operat
   PatchProjectsLocationsConnectionsEndUserAuthenticationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest,
-  output: Operation,
+  input: __S(
+    255,
+  ) as any as S.Schema<PatchProjectsLocationsConnectionsEndUserAuthenticationsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5528,8 +4351,8 @@ export const patchProjectsLocationsConnectionsEventSubscriptions: API.OperationM
   PatchProjectsLocationsConnectionsEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsConnectionsEventSubscriptionsRequest,
-  output: Operation,
+  input: __S(256) as any as S.Schema<PatchProjectsLocationsConnectionsEventSubscriptionsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5548,8 +4371,8 @@ export const patchProjectsLocationsEndpointAttachments: API.OperationMethod<
   PatchProjectsLocationsEndpointAttachmentsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsEndpointAttachmentsRequest,
-  output: Operation,
+  input: __S(257) as any as S.Schema<PatchProjectsLocationsEndpointAttachmentsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5568,8 +4391,8 @@ export const patchProjectsLocationsGlobalCustomConnectors: API.OperationMethod<
   PatchProjectsLocationsGlobalCustomConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsGlobalCustomConnectorsRequest,
-  output: Operation,
+  input: __S(258) as any as S.Schema<PatchProjectsLocationsGlobalCustomConnectorsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5588,8 +4411,8 @@ export const patchProjectsLocationsGlobalManagedZones: API.OperationMethod<
   PatchProjectsLocationsGlobalManagedZonesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchProjectsLocationsGlobalManagedZonesRequest,
-  output: Operation,
+  input: __S(259) as any as S.Schema<PatchProjectsLocationsGlobalManagedZonesRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5608,8 +4431,10 @@ export const publishProjectsLocationsCustomConnectorsCustomConnectorVersions: AP
   PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest,
-  output: Operation,
+  input: __S(
+    261,
+  ) as any as S.Schema<PublishProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5628,8 +4453,10 @@ export const refreshProjectsLocationsConnectionsConnectionSchemaMetadata: API.Op
   RefreshProjectsLocationsConnectionsConnectionSchemaMetadataError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequest,
-  output: Operation,
+  input: __S(
+    262,
+  ) as any as S.Schema<RefreshProjectsLocationsConnectionsConnectionSchemaMetadataRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5648,8 +4475,8 @@ export const removeToolspecOverrideProjectsLocationsConnections: API.OperationMe
   RemoveToolspecOverrideProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveToolspecOverrideProjectsLocationsConnectionsRequest,
-  output: Empty,
+  input: __S(263) as any as S.Schema<RemoveToolspecOverrideProjectsLocationsConnectionsRequest>,
+  output: __S(0) as any as S.Schema<Empty>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5668,8 +4495,8 @@ export const repairEventingProjectsLocationsConnections: API.OperationMethod<
   RepairEventingProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RepairEventingProjectsLocationsConnectionsRequest,
-  output: Operation,
+  input: __S(264) as any as S.Schema<RepairEventingProjectsLocationsConnectionsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5688,8 +4515,8 @@ export const retryProjectsLocationsConnectionsEventSubscriptions: API.OperationM
   RetryProjectsLocationsConnectionsEventSubscriptionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RetryProjectsLocationsConnectionsEventSubscriptionsRequest,
-  output: Operation,
+  input: __S(265) as any as S.Schema<RetryProjectsLocationsConnectionsEventSubscriptionsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5704,8 +4531,8 @@ export const searchProjectsLocationsConnections: API.PaginatedOperationMethod<
   GcpOpContext,
   SearchConnectionsResponse
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: SearchProjectsLocationsConnectionsRequest,
-  output: SearchConnectionsResponse,
+  input: __S(266) as any as S.Schema<SearchProjectsLocationsConnectionsRequest>,
+  output: __S(269) as any as S.Schema<SearchConnectionsResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5725,8 +4552,8 @@ export const setIamPolicyProjectsLocationsConnections: API.OperationMethod<
   SetIamPolicyProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsConnectionsRequest,
-  output: Policy,
+  input: __S(271) as any as S.Schema<SetIamPolicyProjectsLocationsConnectionsRequest>,
+  output: __S(142) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5745,8 +4572,8 @@ export const setIamPolicyProjectsLocationsProviders: API.OperationMethod<
   SetIamPolicyProjectsLocationsProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetIamPolicyProjectsLocationsProvidersRequest,
-  output: Policy,
+  input: __S(272) as any as S.Schema<SetIamPolicyProjectsLocationsProvidersRequest>,
+  output: __S(142) as any as S.Schema<Policy>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5765,8 +4592,8 @@ export const testIamPermissionsProjectsLocationsConnections: API.OperationMethod
   TestIamPermissionsProjectsLocationsConnectionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsConnectionsRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(274) as any as S.Schema<TestIamPermissionsProjectsLocationsConnectionsRequest>,
+  output: __S(273) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5785,8 +4612,8 @@ export const testIamPermissionsProjectsLocationsProviders: API.OperationMethod<
   TestIamPermissionsProjectsLocationsProvidersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestIamPermissionsProjectsLocationsProvidersRequest,
-  output: TestIamPermissionsResponse,
+  input: __S(275) as any as S.Schema<TestIamPermissionsProjectsLocationsProvidersRequest>,
+  output: __S(273) as any as S.Schema<TestIamPermissionsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5805,8 +4632,8 @@ export const updateRegionalSettingsProjectsLocations: API.OperationMethod<
   UpdateRegionalSettingsProjectsLocationsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRegionalSettingsProjectsLocationsRequest,
-  output: Operation,
+  input: __S(276) as any as S.Schema<UpdateRegionalSettingsProjectsLocationsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5825,8 +4652,8 @@ export const updateSettingsProjectsLocationsGlobal: API.OperationMethod<
   UpdateSettingsProjectsLocationsGlobalError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSettingsProjectsLocationsGlobalRequest,
-  output: Operation,
+  input: __S(277) as any as S.Schema<UpdateSettingsProjectsLocationsGlobalRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5845,8 +4672,10 @@ export const validateCustomConnectorSpecProjectsLocationsCustomConnectors: API.O
   ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsRequest,
-  output: ValidateCustomConnectorSpecResponse,
+  input: __S(
+    279,
+  ) as any as S.Schema<ValidateCustomConnectorSpecProjectsLocationsCustomConnectorsRequest>,
+  output: __S(280) as any as S.Schema<ValidateCustomConnectorSpecResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5865,8 +4694,10 @@ export const withdrawProjectsLocationsCustomConnectorsCustomConnectorVersions: A
   WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest,
-  output: Operation,
+  input: __S(
+    281,
+  ) as any as S.Schema<WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest>,
+  output: __S(48) as any as S.Schema<Operation>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -5883,7 +4714,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5899,21 +4730,21 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          listValues: S.optional(StringList),
+          listValues: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "StringListValues" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          stringListValues: S.optional(StringListValues),
-          filterType: S.optional(AdminFiltersFilterTypeEnum),
+          stringListValues: S.optional(__S(3)),
+          filterType: S.optional(S.String),
           stringValue: S.optional(S.String),
           intValue: S.optional(S.String),
           filterKey: S.optional(S.String),
         }),
       ).annotate({ identifier: "AdminFilters" });
     case 5:
-      return S.Array(AdminFilters);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -5934,7 +4765,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(EncryptionKeyTypeEnum),
+          type: S.optional(S.String),
           kmsKeyName: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptionKey" });
@@ -5942,28 +4773,28 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          secretValue: S.optional(Secret),
-          encryptionKeyValue: S.optional(EncryptionKey),
+          secretValue: S.optional(__S(7)),
+          encryptionKeyValue: S.optional(__S(8)),
           stringValue: S.optional(S.String),
           intValue: S.optional(S.String),
           boolValue: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ConfigVariable" });
     case 2:
-      return S.Array(ConfigVariable);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(SslConfigTypeEnum),
-          clientPrivateKey: S.optional(Secret),
-          additionalVariables: S.optional(ConfigVariableList),
+          type: S.optional(S.String),
+          clientPrivateKey: S.optional(__S(7)),
+          additionalVariables: S.optional(__S(10)),
           useSsl: S.optional(S.Boolean),
-          clientCertType: S.optional(SslConfigClientCertTypeEnum),
-          clientPrivateKeyPass: S.optional(Secret),
-          serverCertType: S.optional(SslConfigServerCertTypeEnum),
-          privateServerCertificate: S.optional(Secret),
-          clientCertificate: S.optional(Secret),
-          trustModel: S.optional(SslConfigTrustModelEnum),
+          clientCertType: S.optional(S.String),
+          clientPrivateKeyPass: S.optional(__S(7)),
+          serverCertType: S.optional(S.String),
+          privateServerCertificate: S.optional(__S(7)),
+          clientCertificate: S.optional(__S(7)),
+          trustModel: S.optional(S.String),
         }),
       ).annotate({ identifier: "SslConfig" });
     case 4:
@@ -5975,16 +4806,16 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Destination" });
     case 5:
-      return S.Array(Destination);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          destinations: S.optional(DestinationList),
+          destinations: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "DestinationConfig" });
     case 7:
-      return S.Array(DestinationConfig);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -5995,7 +4826,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          level: S.optional(ConnectorsLogConfigLevelEnum),
+          level: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectorsLogConfig" });
     case 2:
@@ -6006,11 +4837,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "TrafficShapingConfig" });
     case 3:
-      return S.Array(TrafficShapingConfig);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          password: S.optional(Secret),
+          password: S.optional(__S(7)),
           username: S.optional(S.String),
         }),
       ).annotate({ identifier: "UserPassword" });
@@ -6021,10 +4852,10 @@ function __c2(j: number): any {
           clientId: S.optional(S.String),
           pkceVerifier: S.optional(S.String),
           authCode: S.optional(S.String),
-          scopes: S.optional(StringList),
+          scopes: S.optional(__S(2)),
           authUri: S.optional(S.String),
           redirectUri: S.optional(S.String),
-          clientSecret: S.optional(Secret),
+          clientSecret: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "Oauth2AuthCodeFlow" });
     case 6:
@@ -6032,7 +4863,7 @@ function __c2(j: number): any {
         S.Struct({
           authCode: S.optional(S.String),
           redirectUri: S.optional(S.String),
-          scopes: S.optional(StringList),
+          scopes: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "Oauth2AuthCodeFlowGoogleManaged",
@@ -6041,7 +4872,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clientId: S.optional(S.String),
-          clientSecret: S.optional(Secret),
+          clientSecret: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "Oauth2ClientCredentials" });
   }
@@ -6051,8 +4882,8 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sshClientCert: S.optional(Secret),
-          sshClientCertPass: S.optional(Secret),
+          sshClientCert: S.optional(__S(7)),
+          sshClientCertPass: S.optional(__S(7)),
           username: S.optional(S.String),
           certType: S.optional(S.String),
         }),
@@ -6068,22 +4899,22 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          jwtClaims: S.optional(JwtClaims),
-          clientKey: S.optional(Secret),
+          jwtClaims: S.optional(__S(25)),
+          clientKey: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "Oauth2JwtBearer" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           authKey: S.optional(S.String),
-          userPassword: S.optional(UserPassword),
-          oauth2AuthCodeFlow: S.optional(Oauth2AuthCodeFlow),
-          oauth2AuthCodeFlowGoogleManaged: S.optional(Oauth2AuthCodeFlowGoogleManaged),
-          additionalVariables: S.optional(ConfigVariableList),
-          oauth2ClientCredentials: S.optional(Oauth2ClientCredentials),
-          sshPublicKey: S.optional(SshPublicKey),
-          authType: S.optional(AuthConfigAuthTypeEnum),
-          oauth2JwtBearer: S.optional(Oauth2JwtBearer),
+          userPassword: S.optional(__S(20)),
+          oauth2AuthCodeFlow: S.optional(__S(21)),
+          oauth2AuthCodeFlowGoogleManaged: S.optional(__S(22)),
+          additionalVariables: S.optional(__S(10)),
+          oauth2ClientCredentials: S.optional(__S(23)),
+          sshPublicKey: S.optional(__S(24)),
+          authType: S.optional(S.String),
+          oauth2JwtBearer: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "AuthConfig" });
     case 4:
@@ -6096,7 +4927,7 @@ function __c3(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(EventingStatusStateEnum),
+          state: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventingStatus" });
@@ -6104,17 +4935,17 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          eventSubscriptions: S.optional(StringList),
+          eventSubscriptions: S.optional(__S(2)),
           createTime: S.optional(S.String),
           nextRefreshTime: S.optional(S.String),
           id: S.optional(S.String),
           name: S.optional(S.String),
-          additionalVariables: S.optional(ConfigVariableList),
-          eventTypes: S.optional(StringList),
+          additionalVariables: S.optional(__S(10)),
+          eventTypes: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "WebhookData" });
     case 7:
-      return S.Array(WebhookData);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
@@ -6122,17 +4953,17 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          webhookData: S.optional(WebhookDataList),
+          webhookData: S.optional(__S(31)),
         }),
       ).annotate({ identifier: "WebhookSubscriptions" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(EventingStatus),
+          status: S.optional(__S(29)),
           eventsListenerPscSa: S.optional(S.String),
-          webhookSubscriptions: S.optional(WebhookSubscriptions),
+          webhookSubscriptions: S.optional(__S(32)),
           eventsListenerEndpoint: S.optional(S.String),
-          webhookData: S.optional(WebhookData),
+          webhookData: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "EventingRuntimeData" });
     case 2:
@@ -6151,20 +4982,20 @@ function __c4(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          additionalVariables: S.optional(ConfigVariableList),
+          additionalVariables: S.optional(__S(10)),
           enrichmentEnabled: S.optional(S.Boolean),
           privateConnectivityEnabled: S.optional(S.Boolean),
-          privateConnectivityAllowlistedProjects: S.optional(StringList),
-          deadLetterConfig: S.optional(DeadLetterConfig),
-          sslConfig: S.optional(SslConfig),
-          enrichmentConfig: S.optional(EnrichmentConfig),
-          authConfig: S.optional(AuthConfig),
+          privateConnectivityAllowlistedProjects: S.optional(__S(2)),
+          deadLetterConfig: S.optional(__S(34)),
+          sslConfig: S.optional(__S(11)),
+          enrichmentConfig: S.optional(__S(35)),
+          authConfig: S.optional(__S(27)),
           globalEventFilter: S.optional(S.String),
-          registrationDestinationConfig: S.optional(DestinationConfig),
-          allowedEventTypes: S.optional(StringList),
-          proxyDestinationConfig: S.optional(DestinationConfig),
+          registrationDestinationConfig: S.optional(__S(14)),
+          allowedEventTypes: S.optional(__S(2)),
+          proxyDestinationConfig: S.optional(__S(14)),
           eventsListenerIngressEndpoint: S.optional(S.String),
-          listenerAuthConfig: S.optional(AuthConfig),
+          listenerAuthConfig: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "EventingConfig" });
     case 5:
@@ -6197,17 +5028,15 @@ function __c5(j: number): any {
         S.Struct({
           connectionRatelimitWindowSeconds: S.optional(S.String),
           maxInstanceRequestConcurrency: S.optional(S.Number),
-          tlsMigrationState: S.optional(ConnectorVersionInfraConfigTlsMigrationStateEnum),
-          deploymentModel: S.optional(ConnectorVersionInfraConfigDeploymentModelEnum),
-          deploymentModelMigrationState: S.optional(
-            ConnectorVersionInfraConfigDeploymentModelMigrationStateEnum,
-          ),
+          tlsMigrationState: S.optional(S.String),
+          deploymentModel: S.optional(S.String),
+          deploymentModelMigrationState: S.optional(S.String),
           ratelimitThreshold: S.optional(S.String),
-          resourceRequests: S.optional(ResourceRequests),
+          resourceRequests: S.optional(__S(37)),
           internalclientRatelimitThreshold: S.optional(S.String),
           sharedDeployment: S.optional(S.String),
-          hpaConfig: S.optional(HPAConfig),
-          resourceLimits: S.optional(ResourceLimits),
+          hpaConfig: S.optional(__S(38)),
+          resourceLimits: S.optional(__S(39)),
         }),
       ).annotate({
         identifier: "ConnectorVersionInfraConfig",
@@ -6215,7 +5044,7 @@ function __c5(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(ConnectionStatusStateEnum),
+          state: S.optional(S.String),
           status: S.optional(S.String),
           description: S.optional(S.String),
         }),
@@ -6223,48 +5052,48 @@ function __c5(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          billingCategory: S.optional(BillingConfigBillingCategoryEnum),
+          billingCategory: S.optional(S.String),
         }),
       ).annotate({ identifier: "BillingConfig" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          adminFilters: S.optional(AdminFiltersList),
-          nodeConfig: S.optional(NodeConfig),
-          sslConfig: S.optional(SslConfig),
-          destinationConfigs: S.optional(DestinationConfigList),
+          adminFilters: S.optional(__S(5)),
+          nodeConfig: S.optional(__S(6)),
+          sslConfig: S.optional(__S(11)),
+          destinationConfigs: S.optional(__S(15)),
           serviceDirectory: S.optional(S.String),
-          labels: S.optional(StringMap),
-          logConfig: S.optional(ConnectorsLogConfig),
-          subscriptionType: S.optional(ConnectionSubscriptionTypeEnum),
-          trafficShapingConfigs: S.optional(TrafficShapingConfigList),
+          labels: S.optional(__S(16)),
+          logConfig: S.optional(__S(17)),
+          subscriptionType: S.optional(S.String),
+          trafficShapingConfigs: S.optional(__S(19)),
           authOverrideEnabled: S.optional(S.Boolean),
           host: S.optional(S.String),
           isTrustedTester: S.optional(S.Boolean),
-          euaOauthAuthConfig: S.optional(AuthConfig),
+          euaOauthAuthConfig: S.optional(__S(27)),
           updateTime: S.optional(S.String),
-          authConfig: S.optional(AuthConfig),
+          authConfig: S.optional(__S(27)),
           fallbackOnAdminCredentials: S.optional(S.Boolean),
-          lockConfig: S.optional(LockConfig),
-          eventingRuntimeData: S.optional(EventingRuntimeData),
+          lockConfig: S.optional(__S(28)),
+          eventingRuntimeData: S.optional(__S(33)),
           suspended: S.optional(S.Boolean),
           tlsServiceDirectory: S.optional(S.String),
           envoyImageLocation: S.optional(S.String),
           serviceAccount: S.optional(S.String),
           imageLocation: S.optional(S.String),
-          configVariables: S.optional(ConfigVariableList),
-          eventingConfig: S.optional(EventingConfig),
-          eventingEnablementType: S.optional(ConnectionEventingEnablementTypeEnum),
-          connectorVersionLaunchStage: S.optional(ConnectionConnectorVersionLaunchStageEnum),
+          configVariables: S.optional(__S(10)),
+          eventingConfig: S.optional(__S(36)),
+          eventingEnablementType: S.optional(S.String),
+          connectorVersionLaunchStage: S.optional(S.String),
           description: S.optional(S.String),
           connectionRevision: S.optional(S.String),
-          connectorVersionInfraConfig: S.optional(ConnectorVersionInfraConfig),
+          connectorVersionInfraConfig: S.optional(__S(40)),
           asyncOperationsEnabled: S.optional(S.Boolean),
           createTime: S.optional(S.String),
-          status: S.optional(ConnectionStatus),
+          status: S.optional(__S(41)),
           connectorVersion: S.optional(S.String),
           name: S.optional(S.String),
-          billingConfig: S.optional(BillingConfig),
+          billingConfig: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "Connection" });
     case 4:
@@ -6272,7 +5101,7 @@ function __c5(j: number): any {
         S.Struct({
           connectionId: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          body: S.optional(Connection.pipe(T.HttpBody())),
+          body: S.optional(__S(43).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6286,13 +5115,13 @@ function __c5(j: number): any {
     case 5:
       return S.Record(S.String, S.Unknown);
     case 6:
-      return S.Array(DocumentMap);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
         S.Struct({
           message: S.optional(S.String),
           code: S.optional(S.Number),
-          details: S.optional(DocumentMapList),
+          details: S.optional(__S(46)),
         }),
       ).annotate({ identifier: "Status" });
   }
@@ -6304,13 +5133,13 @@ function __c6(j: number): any {
         S.Struct({
           done: S.optional(S.Boolean),
           name: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
-          error: S.optional(Status),
-          response: S.optional(DocumentMap),
+          metadata: S.optional(__S(45)),
+          error: S.optional(__S(47)),
+          response: S.optional(__S(45)),
         }),
       ).annotate({ identifier: "Operation" });
     case 1:
-      return S.Array(EndUserAuthenticationRolesItemEnum);
+      return S.Array(S.String);
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6325,31 +5154,31 @@ function __c6(j: number): any {
           boolValue: S.optional(S.Boolean),
           stringValue: S.optional(S.String),
           intValue: S.optional(S.String),
-          secretValue: S.optional(EUASecret),
+          secretValue: S.optional(__S(50)),
         }),
       ).annotate({
         identifier: "EndUserAuthenticationConfigVariable",
       });
     case 4:
-      return S.Array(EndUserAuthenticationConfigVariable);
+      return S.Array(__S(51));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          refreshToken: S.optional(EUASecret),
+          refreshToken: S.optional(__S(50)),
           expiry: S.optional(S.String),
           createTime: S.optional(S.String),
-          accessToken: S.optional(EUASecret),
+          accessToken: S.optional(__S(50)),
         }),
       ).annotate({ identifier: "OAuthTokenData" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           pkceVerifier: S.optional(S.String),
-          clientSecret: S.optional(EUASecret),
+          clientSecret: S.optional(__S(50)),
           redirectUri: S.optional(S.String),
-          scopes: S.optional(StringList),
+          scopes: S.optional(__S(2)),
           enablePkce: S.optional(S.Boolean),
-          oauthTokenData: S.optional(OAuthTokenData),
+          oauthTokenData: S.optional(__S(53)),
           authUri: S.optional(S.String),
           authCode: S.optional(S.String),
           clientId: S.optional(S.String),
@@ -6361,7 +5190,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           clientId: S.optional(S.String),
-          clientSecret: S.optional(EUASecret),
+          clientSecret: S.optional(__S(50)),
         }),
       ).annotate({
         identifier: "EndUserAuthenticationConfigOauth2ClientCredentials",
@@ -6373,10 +5202,10 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          oauthTokenData: S.optional(OAuthTokenData),
+          oauthTokenData: S.optional(__S(53)),
           authCode: S.optional(S.String),
           redirectUri: S.optional(S.String),
-          scopes: S.optional(StringList),
+          scopes: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged",
@@ -6385,9 +5214,9 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
-          sshClientCert: S.optional(EUASecret),
+          sshClientCert: S.optional(__S(50)),
           certType: S.optional(S.String),
-          sshClientCertPass: S.optional(EUASecret),
+          sshClientCertPass: S.optional(__S(50)),
         }),
       ).annotate({
         identifier: "EndUserAuthenticationConfigSshPublicKey",
@@ -6405,8 +5234,8 @@ function __c7(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          clientKey: S.optional(EUASecret),
-          jwtClaims: S.optional(EndUserAuthenticationConfigOauth2JwtBearerJwtClaims),
+          clientKey: S.optional(__S(50)),
+          jwtClaims: S.optional(__S(58)),
         }),
       ).annotate({
         identifier: "EndUserAuthenticationConfigOauth2JwtBearer",
@@ -6415,7 +5244,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
-          password: S.optional(EUASecret),
+          password: S.optional(__S(50)),
         }),
       ).annotate({
         identifier: "EndUserAuthenticationConfigUserPassword",
@@ -6423,16 +5252,14 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          authType: S.optional(EndUserAuthenticationConfigAuthTypeEnum),
-          additionalVariables: S.optional(EndUserAuthenticationConfigVariableList),
-          oauth2AuthCodeFlow: S.optional(EndUserAuthenticationConfigOauth2AuthCodeFlow),
-          oauth2ClientCredentials: S.optional(EndUserAuthenticationConfigOauth2ClientCredentials),
-          oauth2AuthCodeFlowGoogleManaged: S.optional(
-            EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged,
-          ),
-          sshPublicKey: S.optional(EndUserAuthenticationConfigSshPublicKey),
-          oauth2JwtBearer: S.optional(EndUserAuthenticationConfigOauth2JwtBearer),
-          userPassword: S.optional(EndUserAuthenticationConfigUserPassword),
+          authType: S.optional(S.String),
+          additionalVariables: S.optional(__S(52)),
+          oauth2AuthCodeFlow: S.optional(__S(54)),
+          oauth2ClientCredentials: S.optional(__S(55)),
+          oauth2AuthCodeFlowGoogleManaged: S.optional(__S(56)),
+          sshPublicKey: S.optional(__S(57)),
+          oauth2JwtBearer: S.optional(__S(59)),
+          userPassword: S.optional(__S(60)),
           authKey: S.optional(S.String),
         }),
       ).annotate({
@@ -6442,7 +5269,7 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          state: S.optional(EndUserAuthenticationEndUserAuthenticationStatusStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EndUserAuthenticationEndUserAuthenticationStatus",
@@ -6461,12 +5288,12 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(EndUserAuthenticationNotifyEndpointDestinationEndPointHeader);
+      return S.Array(__S(63));
     case 1:
       return S.suspend(() =>
         S.Struct({
           endpointUri: S.optional(S.String),
-          headers: S.optional(EndUserAuthenticationNotifyEndpointDestinationEndPointHeaderList),
+          headers: S.optional(__S(64)),
         }),
       ).annotate({
         identifier: "EndUserAuthenticationNotifyEndpointDestinationEndPoint",
@@ -6474,9 +5301,9 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          endpoint: S.optional(EndUserAuthenticationNotifyEndpointDestinationEndPoint),
+          endpoint: S.optional(__S(65)),
           serviceAccount: S.optional(S.String),
-          type: S.optional(EndUserAuthenticationNotifyEndpointDestinationTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EndUserAuthenticationNotifyEndpointDestination",
@@ -6484,16 +5311,16 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          roles: S.optional(EndUserAuthenticationRolesItemEnumList),
+          roles: S.optional(__S(49)),
           name: S.optional(S.String),
           createTime: S.optional(S.String),
-          configVariables: S.optional(EndUserAuthenticationConfigVariableList),
-          endUserAuthenticationConfig: S.optional(EndUserAuthenticationConfig),
-          status: S.optional(EndUserAuthenticationEndUserAuthenticationStatus),
+          configVariables: S.optional(__S(52)),
+          endUserAuthenticationConfig: S.optional(__S(61)),
+          status: S.optional(__S(62)),
           userId: S.optional(S.String),
-          notifyEndpointDestination: S.optional(EndUserAuthenticationNotifyEndpointDestination),
-          labels: S.optional(StringList),
-          destinationConfigs: S.optional(DestinationConfigList),
+          notifyEndpointDestination: S.optional(__S(66)),
+          labels: S.optional(__S(2)),
+          destinationConfigs: S.optional(__S(15)),
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "EndUserAuthentication" });
@@ -6502,7 +5329,7 @@ function __c8(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           endUserAuthenticationId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(EndUserAuthentication.pipe(T.HttpBody())),
+          body: S.optional(__S(67).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6517,7 +5344,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          type: S.optional(JMSTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "JMS" });
     case 6:
@@ -6528,7 +5355,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "Header" });
     case 7:
-      return S.Array(Header);
+      return S.Array(__S(70));
   }
 }
 function __c9(j: number): any {
@@ -6537,14 +5364,14 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           endpointUri: S.optional(S.String),
-          headers: S.optional(HeaderList),
+          headers: S.optional(__S(71)),
         }),
       ).annotate({ identifier: "EndPoint" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(StringMap),
-          configVariables: S.optional(ConfigVariableList),
+          attributes: S.optional(__S(16)),
+          configVariables: S.optional(__S(10)),
           projectId: S.optional(S.String),
           topicId: S.optional(S.String),
         }),
@@ -6553,9 +5380,9 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceAccount: S.optional(S.String),
-          endpoint: S.optional(EndPoint),
-          type: S.optional(EventSubscriptionDestinationTypeEnum),
-          pubsub: S.optional(PubSub),
+          endpoint: S.optional(__S(72)),
+          type: S.optional(S.String),
+          pubsub: S.optional(__S(73)),
         }),
       ).annotate({
         identifier: "EventSubscriptionDestination",
@@ -6567,13 +5394,13 @@ function __c9(j: number): any {
           subscriberLink: S.optional(S.String),
           subscriber: S.optional(S.String),
           eventTypeId: S.optional(S.String),
-          triggerConfigVariables: S.optional(ConfigVariableList),
-          status: S.optional(EventSubscriptionStatus),
+          triggerConfigVariables: S.optional(__S(10)),
+          status: S.optional(__S(29)),
           createTime: S.optional(S.String),
           name: S.optional(S.String),
-          jms: S.optional(JMS),
+          jms: S.optional(__S(69)),
           filter: S.optional(S.String),
-          destinations: S.optional(EventSubscriptionDestination),
+          destinations: S.optional(__S(74)),
         }),
       ).annotate({ identifier: "EventSubscription" });
     case 4:
@@ -6581,7 +5408,7 @@ function __c9(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           eventSubscriptionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(EventSubscription.pipe(T.HttpBody())),
+          body: S.optional(__S(75).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6595,13 +5422,13 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(16)),
           description: S.optional(S.String),
           name: S.optional(S.String),
           endpointIp: S.optional(S.String),
           createTime: S.optional(S.String),
           endpointGlobalAccess: S.optional(S.Boolean),
-          state: S.optional(EndpointAttachmentStateEnum),
+          state: S.optional(S.String),
           serviceAttachment: S.optional(S.String),
           updateTime: S.optional(S.String),
         }),
@@ -6611,7 +5438,7 @@ function __c9(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           endpointAttachmentId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(EndpointAttachment.pipe(T.HttpBody())),
+          body: S.optional(__S(77).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6626,15 +5453,15 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          customConnectorType: S.optional(CustomConnectorCustomConnectorTypeEnum),
+          customConnectorType: S.optional(S.String),
           updateTime: S.optional(S.String),
-          allMarketplaceVersions: S.optional(StringList),
-          publishedMarketplaceVersions: S.optional(StringList),
-          labels: S.optional(StringMap),
+          allMarketplaceVersions: S.optional(__S(2)),
+          publishedMarketplaceVersions: S.optional(__S(2)),
+          labels: S.optional(__S(16)),
           name: S.optional(S.String),
-          allConnectorVersions: S.optional(StringList),
+          allConnectorVersions: S.optional(__S(2)),
           displayName: S.optional(S.String),
-          activeConnectorVersions: S.optional(StringList),
+          activeConnectorVersions: S.optional(__S(2)),
           logo: S.optional(S.String),
           createTime: S.optional(S.String),
         }),
@@ -6648,7 +5475,7 @@ function __c10(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           customConnectorId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(CustomConnector.pipe(T.HttpBody())),
+          body: S.optional(__S(79).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6686,10 +5513,10 @@ function __c10(j: number): any {
         S.Struct({
           omitQueryParams: S.optional(S.Boolean),
           uri: S.optional(S.String),
-          scopes: S.optional(StringList),
+          scopes: S.optional(__S(2)),
           clientId: S.optional(S.String),
           enablePkce: S.optional(S.Boolean),
-          clientSecret: S.optional(Secret),
+          clientSecret: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "AuthorizationCodeLink" });
     case 3:
@@ -6702,11 +5529,11 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "MultipleSelectOption" });
     case 4:
-      return S.Array(MultipleSelectOption);
+      return S.Array(__S(83));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          multipleSelectOptions: S.optional(MultipleSelectOptionList),
+          multipleSelectOptions: S.optional(__S(84)),
           valueSeparator: S.optional(S.String),
           allowCustomValues: S.optional(S.Boolean),
         }),
@@ -6719,7 +5546,7 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "EnumOption" });
     case 7:
-      return S.Array(EnumOption);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -6728,62 +5555,62 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           pathTemplate: S.optional(S.String),
-          type: S.optional(ResourceTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "Resource" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          principal: S.optional(RoleGrantPrincipalEnum),
-          roles: S.optional(StringList),
-          resource: S.optional(Resource),
+          principal: S.optional(S.String),
+          roles: S.optional(__S(2)),
+          resource: S.optional(__S(88)),
           helperTextTemplate: S.optional(S.String),
         }),
       ).annotate({ identifier: "RoleGrant" });
     case 2:
-      return S.Array(S.suspend(() => LogicalExpression));
+      return S.Array(S.suspend(() => __S(93)));
     case 3:
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
           boolValue: S.optional(S.Boolean),
           stringValue: S.optional(S.String),
-          comparator: S.optional(FieldComparisonComparatorEnum),
+          comparator: S.optional(S.String),
           intValue: S.optional(S.String),
         }),
       ).annotate({ identifier: "FieldComparison" });
     case 4:
-      return S.Array(FieldComparison);
+      return S.Array(__S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          logicalExpressions: S.optional(LogicalExpressionList),
-          logicalOperator: S.optional(LogicalExpressionLogicalOperatorEnum),
-          fieldComparisons: S.optional(FieldComparisonList),
+          logicalExpressions: S.optional(__S(90)),
+          logicalOperator: S.optional(S.String),
+          fieldComparisons: S.optional(__S(92)),
         }),
       ).annotate({ identifier: "LogicalExpression" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          authorizationCodeLink: S.optional(AuthorizationCodeLink),
-          multipleSelectConfig: S.optional(MultipleSelectConfig),
-          enumOptions: S.optional(EnumOptionList),
-          locationType: S.optional(ConfigVariableTemplateLocationTypeEnum),
-          valueType: S.optional(ConfigVariableTemplateValueTypeEnum),
-          enumSource: S.optional(ConfigVariableTemplateEnumSourceEnum),
-          state: S.optional(ConfigVariableTemplateStateEnum),
+          authorizationCodeLink: S.optional(__S(82)),
+          multipleSelectConfig: S.optional(__S(85)),
+          enumOptions: S.optional(__S(87)),
+          locationType: S.optional(S.String),
+          valueType: S.optional(S.String),
+          enumSource: S.optional(S.String),
+          state: S.optional(S.String),
           validationRegex: S.optional(S.String),
           isAdvanced: S.optional(S.Boolean),
           displayName: S.optional(S.String),
           required: S.optional(S.Boolean),
           key: S.optional(S.String),
-          roleGrant: S.optional(RoleGrant),
+          roleGrant: S.optional(__S(89)),
           description: S.optional(S.String),
-          requiredCondition: S.optional(LogicalExpression),
+          requiredCondition: S.optional(__S(93)),
         }),
       ).annotate({ identifier: "ConfigVariableTemplate" });
     case 7:
-      return S.Array(ConfigVariableTemplate);
+      return S.Array(__S(94));
   }
 }
 function __c12(j: number): any {
@@ -6793,7 +5620,7 @@ function __c12(j: number): any {
         S.Struct({
           publishedSource: S.optional(S.String),
           publishTime: S.optional(S.String),
-          publishState: S.optional(PublishStatusPublishStateEnum),
+          publishState: S.optional(S.String),
           publishedAs: S.optional(S.String),
         }),
       ).annotate({ identifier: "PublishStatus" });
@@ -6803,32 +5630,32 @@ function __c12(j: number): any {
           description: S.optional(S.String),
           authKey: S.optional(S.String),
           displayName: S.optional(S.String),
-          configVariableTemplates: S.optional(ConfigVariableTemplateList),
-          authType: S.optional(AuthConfigTemplateAuthTypeEnum),
+          configVariableTemplates: S.optional(__S(95)),
+          authType: S.optional(S.String),
           isDefault: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "AuthConfigTemplate" });
     case 2:
-      return S.Array(AuthConfigTemplate);
+      return S.Array(__S(97));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
-          partnerMetadata: S.optional(PartnerMetadata),
+          labels: S.optional(__S(16)),
+          partnerMetadata: S.optional(__S(81)),
           asyncOperationsSupport: S.optional(S.Boolean),
           serviceAccount: S.optional(S.String),
-          backendVariableTemplates: S.optional(ConfigVariableTemplateList),
-          specServerUrls: S.optional(StringList),
+          backendVariableTemplates: S.optional(__S(95)),
+          specServerUrls: S.optional(__S(2)),
           enableBackendDestinationConfig: S.optional(S.Boolean),
           authOverrideSupport: S.optional(S.Boolean),
-          state: S.optional(CustomConnectorVersionStateEnum),
+          state: S.optional(S.String),
           createTime: S.optional(S.String),
-          authConfig: S.optional(AuthConfig),
-          publishStatus: S.optional(PublishStatus),
-          destinationConfigs: S.optional(DestinationConfigList),
+          authConfig: S.optional(__S(27)),
+          publishStatus: S.optional(__S(96)),
+          destinationConfigs: S.optional(__S(15)),
           specLocation: S.optional(S.String),
           name: S.optional(S.String),
-          authConfigTemplates: S.optional(AuthConfigTemplateList),
+          authConfigTemplates: S.optional(__S(98)),
           updateTime: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomConnectorVersion" });
@@ -6837,7 +5664,7 @@ function __c12(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           customConnectorVersionId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(CustomConnectorVersion.pipe(T.HttpBody())),
+          body: S.optional(__S(99).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6858,7 +5685,7 @@ function __c12(j: number): any {
           createTime: S.optional(S.String),
           targetProject: S.optional(S.String),
           dns: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(16)),
         }),
       ).annotate({ identifier: "ManagedZone" });
     case 6:
@@ -6866,7 +5693,7 @@ function __c12(j: number): any {
         S.Struct({
           parent: S.String.pipe(T.Label()),
           managedZoneId: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ManagedZone.pipe(T.HttpBody())),
+          body: S.optional(__S(101).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6999,7 +5826,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7018,9 +5845,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          view: S.optional(
-            FetchAuthSchemaProjectsLocationsProvidersConnectorsVersionsViewEnum.pipe(T.Query()),
-          ),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -7039,7 +5864,7 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "AuthProperty" });
     case 2:
-      return S.Record(S.String, AuthProperty);
+      return S.Record(S.String, __S(113));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7048,17 +5873,17 @@ function __c14(j: number): any {
           isDefault: S.optional(S.Boolean),
           additionalProperties: S.optional(S.Boolean),
           type: S.optional(S.String),
-          properties: S.optional(AuthPropertyMap),
+          properties: S.optional(__S(114)),
           authType: S.optional(S.String),
         }),
       ).annotate({ identifier: "AuthObject" });
     case 4:
-      return S.Array(AuthObject);
+      return S.Array(__S(115));
     case 5:
       return S.suspend(() =>
         S.Struct({
           $schema: S.optional(S.String),
-          oneOf: S.optional(AuthObjectList),
+          oneOf: S.optional(__S(116)),
         }),
       ).annotate({ identifier: "JsonAuthSchema" });
     case 6:
@@ -7070,7 +5895,7 @@ function __c14(j: number): any {
         }),
       ).annotate({ identifier: "AuthField" });
     case 7:
-      return S.Array(AuthField);
+      return S.Array(__S(118));
   }
 }
 function __c15(j: number): any {
@@ -7080,19 +5905,19 @@ function __c15(j: number): any {
         S.Struct({
           isDefault: S.optional(S.Boolean),
           authKey: S.optional(S.String),
-          authType: S.optional(AuthSchemaAuthTypeEnum),
+          authType: S.optional(S.String),
           description: S.optional(S.String),
           displayName: S.optional(S.String),
-          authFields: S.optional(AuthFieldList),
+          authFields: S.optional(__S(119)),
         }),
       ).annotate({ identifier: "AuthSchema" });
     case 1:
-      return S.Array(AuthSchema);
+      return S.Array(__S(120));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          jsonSchema: S.optional(JsonAuthSchema),
-          authSchemas: S.optional(AuthSchemaList),
+          jsonSchema: S.optional(__S(117)),
+          authSchemas: S.optional(__S(121)),
         }),
       ).annotate({ identifier: "FetchAuthSchemaResponse" });
     case 3:
@@ -7100,15 +5925,15 @@ function __c15(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           entityType: S.optional(S.String),
-          operation: S.optional(ToolNameOperationEnum),
+          operation: S.optional(S.String),
         }),
       ).annotate({ identifier: "ToolName" });
     case 4:
-      return S.Array(ToolName);
+      return S.Array(__S(123));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          toolNames: S.optional(ToolNameList),
+          toolNames: S.optional(__S(124)),
         }),
       ).annotate({
         identifier: "FetchConnectionToolspecOverrideRequest",
@@ -7117,7 +5942,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(FetchConnectionToolspecOverrideRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(125).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7132,7 +5957,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createTime: S.optional(S.String),
-          tools: S.optional(DocumentMapList),
+          tools: S.optional(__S(46)),
           baseVersion: S.optional(S.String),
           updateTime: S.optional(S.String),
         }),
@@ -7144,7 +5969,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          toolspecOverride: S.optional(ToolspecOverride),
+          toolspecOverride: S.optional(__S(127)),
         }),
       ).annotate({
         identifier: "FetchConnectionToolspecOverrideResponse",
@@ -7153,7 +5978,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(FetchConnectionToolspecOverrideRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(125).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7197,11 +6022,11 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           updateTime: S.optional(S.String),
-          entities: S.optional(StringList),
+          entities: S.optional(__S(2)),
           refreshTime: S.optional(S.String),
-          actions: S.optional(StringList),
+          actions: S.optional(__S(2)),
           name: S.optional(S.String),
-          state: S.optional(ConnectionSchemaMetadataStateEnum),
+          state: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectionSchemaMetadata" });
@@ -7251,38 +6076,38 @@ function __c17(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          condition: S.optional(Expr),
+          condition: S.optional(__S(135)),
           role: S.optional(S.String),
-          members: S.optional(StringList),
+          members: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "Binding" });
     case 1:
-      return S.Array(Binding);
+      return S.Array(__S(136));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          logType: S.optional(AuditLogConfigLogTypeEnum),
-          exemptedMembers: S.optional(StringList),
+          logType: S.optional(S.String),
+          exemptedMembers: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "AuditLogConfig" });
     case 3:
-      return S.Array(AuditLogConfig);
+      return S.Array(__S(138));
     case 4:
       return S.suspend(() =>
         S.Struct({
           service: S.optional(S.String),
-          auditLogConfigs: S.optional(AuditLogConfigList),
+          auditLogConfigs: S.optional(__S(139)),
         }),
       ).annotate({ identifier: "AuditConfig" });
     case 5:
-      return S.Array(AuditConfig);
+      return S.Array(__S(140));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          bindings: S.optional(BindingList),
+          bindings: S.optional(__S(137)),
           version: S.optional(S.Number),
           etag: S.optional(S.String),
-          auditConfigs: S.optional(AuditConfigList),
+          auditConfigs: S.optional(__S(141)),
         }),
       ).annotate({ identifier: "Policy" });
     case 7:
@@ -7322,16 +6147,16 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(16)),
           displayName: S.optional(S.String),
-          metadata: S.optional(DocumentMap),
+          metadata: S.optional(__S(45)),
           locationId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Location" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(GetProjectsLocationsConnectionsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -7346,9 +6171,7 @@ function __c18(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(
-            GetProjectsLocationsConnectionsEndUserAuthenticationsViewEnum.pipe(T.Query()),
-          ),
+          view: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -7378,7 +6201,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          view: S.optional(GetProjectsLocationsEndpointAttachmentsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -7470,12 +6293,12 @@ function __c19(j: number): any {
           externalUri: S.optional(S.String),
           description: S.optional(S.String),
           documentationUri: S.optional(S.String),
-          labels: S.optional(StringMap),
+          labels: S.optional(__S(16)),
           displayName: S.optional(S.String),
           name: S.optional(S.String),
           webAssetsLocation: S.optional(S.String),
           updateTime: S.optional(S.String),
-          launchStage: S.optional(ProviderLaunchStageEnum),
+          launchStage: S.optional(S.String),
         }),
       ).annotate({ identifier: "Provider" });
     case 4:
@@ -7507,34 +6330,34 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          searchTags: S.optional(StringList),
-          subscriptionType: S.optional(EventingDetailsSubscriptionTypeEnum),
+          searchTags: S.optional(__S(2)),
+          subscriptionType: S.optional(S.String),
           description: S.optional(S.String),
           documentationLink: S.optional(S.String),
           iconLocation: S.optional(S.String),
           customEventTypes: S.optional(S.Boolean),
-          launchStage: S.optional(EventingDetailsLaunchStageEnum),
-          type: S.optional(EventingDetailsTypeEnum),
+          launchStage: S.optional(S.String),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventingDetails" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          labels: S.optional(StringMap),
-          tags: S.optional(StringList),
+          labels: S.optional(__S(16)),
+          tags: S.optional(__S(2)),
           externalUri: S.optional(S.String),
           description: S.optional(S.String),
           webAssetsLocation: S.optional(S.String),
           displayName: S.optional(S.String),
-          connectorType: S.optional(ConnectorConnectorTypeEnum),
-          launchStage: S.optional(ConnectorLaunchStageEnum),
-          marketplaceConnectorDetails: S.optional(MarketplaceConnectorDetails),
+          connectorType: S.optional(S.String),
+          launchStage: S.optional(S.String),
+          marketplaceConnectorDetails: S.optional(__S(157)),
           createTime: S.optional(S.String),
           category: S.optional(S.String),
           documentationUri: S.optional(S.String),
           name: S.optional(S.String),
           updateTime: S.optional(S.String),
-          eventingDetails: S.optional(EventingDetails),
+          eventingDetails: S.optional(__S(158)),
         }),
       ).annotate({ identifier: "Connector" });
   }
@@ -7544,7 +6367,7 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          view: S.optional(GetProjectsLocationsProvidersConnectorsVersionsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -7560,7 +6383,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           disableFirewallVpcscFlow: S.optional(S.Boolean),
-          defaultAllowlistedHost: S.optional(StringList),
+          defaultAllowlistedHost: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "VpcscConfig" });
     case 2:
@@ -7570,14 +6393,14 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "StandardAction" });
     case 3:
-      return S.Array(StandardAction);
+      return S.Array(__S(162));
     case 4:
-      return S.Array(RoleGrant);
+      return S.Array(__S(89));
     case 5:
       return S.suspend(() =>
         S.Struct({
           isEventingOverrideEnabled: S.optional(S.Boolean),
-          networkEgressMode: S.optional(NetworkEgressModeOverrideNetworkEgressModeEnum),
+          networkEgressMode: S.optional(S.String),
           isJobsOverrideEnabled: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -7596,13 +6419,13 @@ function __c20(j: number): any {
           publicNetworkIngressEnabled: S.optional(S.Boolean),
           connectionServiceAccountEnabled: S.optional(S.Boolean),
           provisionCloudSpanner: S.optional(S.Boolean),
-          hpaConfig: S.optional(HPAConfig),
-          resourceLimits: S.optional(ResourceLimits),
-          networkEgressModeOverride: S.optional(NetworkEgressModeOverride),
+          hpaConfig: S.optional(__S(38)),
+          resourceLimits: S.optional(__S(39)),
+          networkEgressModeOverride: S.optional(__S(165)),
           maxInstanceRequestConcurrency: S.optional(S.Number),
-          resourceRequests: S.optional(ResourceRequests),
+          resourceRequests: S.optional(__S(37)),
           sharedDeployment: S.optional(S.String),
-          deploymentModel: S.optional(ConnectorInfraConfigDeploymentModelEnum),
+          deploymentModel: S.optional(S.String),
           connectorVersioningEnabled: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ConnectorInfraConfig" });
@@ -7625,10 +6448,10 @@ function __c21(j: number): any {
           isAdvanced: S.optional(S.Boolean),
           max: S.optional(S.Number),
           description: S.optional(S.String),
-          portFieldType: S.optional(DestinationConfigTemplatePortFieldTypeEnum),
+          portFieldType: S.optional(S.String),
           regexPattern: S.optional(S.String),
           defaultPort: S.optional(S.Number),
-          autocompleteSuggestions: S.optional(StringList),
+          autocompleteSuggestions: S.optional(__S(2)),
           min: S.optional(S.Number),
           key: S.optional(S.String),
           displayName: S.optional(S.String),
@@ -7639,28 +6462,28 @@ function __c21(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          clientCertType: S.optional(SslConfigTemplateClientCertTypeItemEnumList),
+          clientCertType: S.optional(__S(49)),
           isTlsMandatory: S.optional(S.Boolean),
-          sslType: S.optional(SslConfigTemplateSslTypeEnum),
-          serverCertType: S.optional(SslConfigTemplateServerCertTypeItemEnumList),
-          additionalVariables: S.optional(ConfigVariableTemplateList),
+          sslType: S.optional(S.String),
+          serverCertType: S.optional(__S(49)),
+          additionalVariables: S.optional(__S(95)),
         }),
       ).annotate({ identifier: "SslConfigTemplate" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          triggerConfigVariables: S.optional(ConfigVariableTemplateList),
-          registrationDestinationConfig: S.optional(DestinationConfigTemplate),
-          eventListenerType: S.optional(EventingConfigTemplateEventListenerTypeEnum),
-          sslConfigTemplate: S.optional(SslConfigTemplate),
+          triggerConfigVariables: S.optional(__S(95)),
+          registrationDestinationConfig: S.optional(__S(168)),
+          eventListenerType: S.optional(S.String),
+          sslConfigTemplate: S.optional(__S(169)),
           autoRegistrationSupported: S.optional(S.Boolean),
-          authConfigTemplates: S.optional(AuthConfigTemplateList),
+          authConfigTemplates: S.optional(__S(98)),
           isEventingSupported: S.optional(S.Boolean),
           autoRefresh: S.optional(S.Boolean),
-          encryptionKeyTemplate: S.optional(ConfigVariableTemplate),
-          proxyDestinationConfig: S.optional(DestinationConfigTemplate),
-          listenerAuthConfigTemplates: S.optional(AuthConfigTemplateList),
-          additionalVariables: S.optional(ConfigVariableTemplateList),
+          encryptionKeyTemplate: S.optional(__S(94)),
+          proxyDestinationConfig: S.optional(__S(168)),
+          listenerAuthConfigTemplates: S.optional(__S(98)),
+          additionalVariables: S.optional(__S(95)),
           enrichmentSupported: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "EventingConfigTemplate" });
@@ -7668,34 +6491,34 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fieldId: S.optional(S.String),
-          sourceType: S.optional(SourceSourceTypeEnum),
+          sourceType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Source" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           extractionRegex: S.optional(S.String),
-          source: S.optional(Source),
+          source: S.optional(__S(171)),
           formatString: S.optional(S.String),
         }),
       ).annotate({ identifier: "ExtractionRule" });
     case 5:
-      return S.Array(ExtractionRule);
+      return S.Array(__S(172));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          extractionRule: S.optional(ExtractionRuleList),
+          extractionRule: S.optional(__S(173)),
         }),
       ).annotate({ identifier: "ExtractionRules" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           backends: S.optional(S.String),
-          allowlistedProjectNumbers: S.optional(StringList),
-          accessMode: S.optional(EgressControlConfigAccessModeEnum),
-          launchEnvironment: S.optional(EgressControlConfigLaunchEnvironmentEnum),
-          additionalExtractionRules: S.optional(ExtractionRules),
-          extractionRules: S.optional(ExtractionRules),
+          allowlistedProjectNumbers: S.optional(__S(2)),
+          accessMode: S.optional(S.String),
+          launchEnvironment: S.optional(S.String),
+          additionalExtractionRules: S.optional(__S(174)),
+          extractionRules: S.optional(__S(174)),
         }),
       ).annotate({ identifier: "EgressControlConfig" });
   }
@@ -7703,7 +6526,7 @@ function __c21(j: number): any {
 function __c22(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DestinationConfigTemplate);
+      return S.Array(__S(168));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -7714,33 +6537,31 @@ function __c22(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          vpcscConfig: S.optional(VpcscConfig),
-          supportedStandardActions: S.optional(StandardActionList),
-          roleGrant: S.optional(RoleGrant),
-          roleGrants: S.optional(RoleGrantList),
-          labels: S.optional(StringMap),
+          vpcscConfig: S.optional(__S(161)),
+          supportedStandardActions: S.optional(__S(163)),
+          roleGrant: S.optional(__S(89)),
+          roleGrants: S.optional(__S(164)),
+          labels: S.optional(__S(16)),
           updateTime: S.optional(S.String),
-          connectorInfraConfig: S.optional(ConnectorInfraConfig),
-          configVariableTemplates: S.optional(ConfigVariableTemplateList),
-          authConfigTemplates: S.optional(AuthConfigTemplateList),
+          connectorInfraConfig: S.optional(__S(166)),
+          configVariableTemplates: S.optional(__S(95)),
+          authConfigTemplates: S.optional(__S(98)),
           releaseVersion: S.optional(S.String),
-          unsupportedConnectionTypes: S.optional(
-            ConnectorVersionUnsupportedConnectionTypesItemEnumList,
-          ),
-          supportedStandardEntities: S.optional(StandardEntityList),
-          supportedRuntimeFeatures: S.optional(SupportedRuntimeFeatures),
+          unsupportedConnectionTypes: S.optional(__S(49)),
+          supportedStandardEntities: S.optional(__S(163)),
+          supportedRuntimeFeatures: S.optional(__S(167)),
           authOverrideEnabled: S.optional(S.Boolean),
-          eventingConfigTemplate: S.optional(EventingConfigTemplate),
+          eventingConfigTemplate: S.optional(__S(170)),
           name: S.optional(S.String),
-          sslConfigTemplate: S.optional(SslConfigTemplate),
+          sslConfigTemplate: S.optional(__S(169)),
           isCustomEntitiesSupported: S.optional(S.Boolean),
-          egressControlConfig: S.optional(EgressControlConfig),
-          destinationConfigTemplates: S.optional(DestinationConfigTemplateList),
+          egressControlConfig: S.optional(__S(175)),
+          destinationConfigTemplates: S.optional(__S(176)),
           isCustomActionsSupported: S.optional(S.Boolean),
           displayName: S.optional(S.String),
           createTime: S.optional(S.String),
-          schemaRefreshConfig: S.optional(SchemaRefreshConfig),
-          launchStage: S.optional(ConnectorVersionLaunchStageEnum),
+          schemaRefreshConfig: S.optional(__S(177)),
+          launchStage: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConnectorVersion" });
     case 3:
@@ -7787,15 +6608,15 @@ function __c22(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          egressMode: S.optional(NetworkConfigEgressModeEnum),
-          egressIps: S.optional(StringList),
+          egressMode: S.optional(S.String),
+          egressIps: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "NetworkConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           kmsKeyName: S.optional(S.String),
-          encryptionType: S.optional(EncryptionConfigEncryptionTypeEnum),
+          encryptionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "EncryptionConfig" });
   }
@@ -7808,8 +6629,8 @@ function __c23(j: number): any {
           client: S.optional(S.String),
           name: S.optional(S.String),
           provisioned: S.optional(S.Boolean),
-          networkConfig: S.optional(NetworkConfig),
-          encryptionConfig: S.optional(EncryptionConfig),
+          networkConfig: S.optional(__S(182)),
+          encryptionConfig: S.optional(__S(183)),
         }),
       ).annotate({ identifier: "RegionalSettings" });
     case 1:
@@ -7830,7 +6651,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           conndTopic: S.optional(S.String),
-          state: S.optional(RuntimeConfigStateEnum),
+          state: S.optional(S.String),
           conndSubscription: S.optional(S.String),
           locationId: S.optional(S.String),
           schemaGcsBucket: S.optional(S.String),
@@ -7871,9 +6692,7 @@ function __c23(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          view: S.optional(
-            ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum.pipe(T.Query()),
-          ),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -7885,11 +6704,11 @@ function __c23(j: number): any {
         identifier: "ListActionsProjectsLocationsConnectionsConnectionSchemaMetadataRequest",
       });
     case 6:
-      return S.Array(S.suspend(() => JsonSchema));
+      return S.Array(S.suspend(() => __S(193)));
     case 7:
       return S.Record(
         S.String,
-        S.suspend(() => JsonSchema),
+        S.suspend(() => __S(193)),
       );
   }
 }
@@ -7900,99 +6719,99 @@ function __c24(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          allOf: S.optional(JsonSchemaList),
-          propertyNames: S.optional(JsonSchema),
+          allOf: S.optional(__S(190)),
+          propertyNames: S.optional(__S(193)),
           exclusiveMaximum: S.optional(S.Unknown),
           title: S.optional(S.String),
           uniqueItems: S.optional(S.Boolean),
           writeOnly: S.optional(S.Boolean),
-          if: S.optional(JsonSchema),
+          if: S.optional(__S(193)),
           minProperties: S.optional(S.Number),
           minimum: S.optional(S.Unknown),
-          additionalItems: S.optional(JsonSchema),
+          additionalItems: S.optional(__S(193)),
           minLength: S.optional(S.Number),
-          anyOf: S.optional(JsonSchemaList),
+          anyOf: S.optional(__S(190)),
           maxProperties: S.optional(S.Number),
-          else: S.optional(JsonSchema),
+          else: S.optional(__S(193)),
           pattern: S.optional(S.String),
           $schema: S.optional(S.String),
           multipleOf: S.optional(S.Number),
-          properties: S.optional(JsonSchemaMap),
+          properties: S.optional(__S(191)),
           exclusiveMinimum: S.optional(S.Unknown),
           $comment: S.optional(S.String),
-          additionalProperties: S.optional(JsonSchema),
+          additionalProperties: S.optional(__S(193)),
           $ref: S.optional(S.String),
           readOnly: S.optional(S.Boolean),
-          $defs: S.optional(JsonSchemaMap),
+          $defs: S.optional(__S(191)),
           format: S.optional(S.String),
-          required: S.optional(StringList),
-          type: S.optional(StringList),
-          enum: S.optional(DocumentList),
+          required: S.optional(__S(2)),
+          type: S.optional(__S(2)),
+          enum: S.optional(__S(192)),
           contentEncoding: S.optional(S.String),
-          examples: S.optional(DocumentList),
+          examples: S.optional(__S(192)),
           maxItems: S.optional(S.Number),
-          definitions: S.optional(JsonSchemaMap),
-          additionalDetails: S.optional(DocumentMap),
+          definitions: S.optional(__S(191)),
+          additionalDetails: S.optional(__S(45)),
           minItems: S.optional(S.Number),
-          oneOf: S.optional(JsonSchemaList),
+          oneOf: S.optional(__S(190)),
           maximum: S.optional(S.Unknown),
-          not: S.optional(JsonSchema),
-          then: S.optional(JsonSchema),
+          not: S.optional(__S(193)),
+          then: S.optional(__S(193)),
           maxLength: S.optional(S.Number),
           $id: S.optional(S.String),
-          items: S.optional(JsonSchema),
+          items: S.optional(__S(193)),
           description: S.optional(S.String),
-          jdbcType: S.optional(JsonSchemaJdbcTypeEnum),
-          dependencies: S.optional(DocumentMap),
-          patternProperties: S.optional(JsonSchemaMap),
+          jdbcType: S.optional(S.String),
+          dependencies: S.optional(__S(45)),
+          patternProperties: S.optional(__S(191)),
           default: S.optional(S.Unknown),
           const: S.optional(S.Unknown),
           contentMediaType: S.optional(S.String),
-          contains: S.optional(JsonSchema),
+          contains: S.optional(__S(193)),
         }),
       ).annotate({ identifier: "JsonSchema" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dataType: S.optional(InputParameterDataTypeEnum),
+          dataType: S.optional(S.String),
           parameter: S.optional(S.String),
           description: S.optional(S.String),
           nullable: S.optional(S.Boolean),
           defaultValue: S.optional(S.Unknown),
-          jsonSchema: S.optional(JsonSchema),
+          jsonSchema: S.optional(__S(193)),
         }),
       ).annotate({ identifier: "InputParameter" });
     case 3:
-      return S.Array(InputParameter);
+      return S.Array(__S(194));
     case 4:
       return S.suspend(() =>
         S.Struct({
           field: S.optional(S.String),
           description: S.optional(S.String),
-          dataType: S.optional(ResultMetadataDataTypeEnum),
+          dataType: S.optional(S.String),
           defaultValue: S.optional(S.Unknown),
-          jsonSchema: S.optional(JsonSchema),
+          jsonSchema: S.optional(__S(193)),
           nullable: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ResultMetadata" });
     case 5:
-      return S.Array(ResultMetadata);
+      return S.Array(__S(196));
     case 6:
       return S.suspend(() =>
         S.Struct({
           inputSchemaAsString: S.optional(S.String),
-          inputParameters: S.optional(InputParameterList),
-          inputJsonSchema: S.optional(JsonSchema),
-          resultMetadata: S.optional(ResultMetadataList),
+          inputParameters: S.optional(__S(195)),
+          inputJsonSchema: S.optional(__S(193)),
+          resultMetadata: S.optional(__S(197)),
           description: S.optional(S.String),
-          resultJsonSchema: S.optional(JsonSchema),
+          resultJsonSchema: S.optional(__S(193)),
           action: S.optional(S.String),
           displayName: S.optional(S.String),
           resultSchemaAsString: S.optional(S.String),
         }),
       ).annotate({ identifier: "RuntimeActionSchema" });
     case 7:
-      return S.Array(RuntimeActionSchema);
+      return S.Array(__S(198));
   }
 }
 function __c25(j: number): any {
@@ -8001,20 +6820,20 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          actions: S.optional(RuntimeActionSchemaList),
+          actions: S.optional(__S(199)),
         }),
       ).annotate({ identifier: "ListActionsResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          payload: S.optional(DocumentMap),
+          payload: S.optional(__S(45)),
         }),
       ).annotate({ identifier: "ListenEventRequest" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           resourcePath: S.String.pipe(T.Label()),
-          body: S.optional(ListenEventRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(201).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8031,11 +6850,7 @@ function __c25(j: number): any {
           name: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(
-            ListEntityTypesProjectsLocationsConnectionsConnectionSchemaMetadataViewEnum.pipe(
-              T.Query(),
-            ),
-          ),
+          view: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -8050,30 +6865,30 @@ function __c25(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          jsonSchema: S.optional(JsonSchema),
+          jsonSchema: S.optional(__S(193)),
           key: S.optional(S.Boolean),
           nullable: S.optional(S.Boolean),
           field: S.optional(S.String),
-          additionalDetails: S.optional(DocumentMap),
+          additionalDetails: S.optional(__S(45)),
           defaultValue: S.optional(S.Unknown),
           readonly: S.optional(S.Boolean),
-          dataType: S.optional(FieldDataTypeEnum),
+          dataType: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Field" });
     case 5:
-      return S.Array(Field);
+      return S.Array(__S(204));
     case 6:
       return S.suspend(() =>
         S.Struct({
           entity: S.optional(S.String),
-          fields: S.optional(FieldList),
-          operations: S.optional(RuntimeEntitySchemaOperationsItemEnumList),
-          jsonSchema: S.optional(JsonSchema),
+          fields: S.optional(__S(205)),
+          operations: S.optional(__S(49)),
+          jsonSchema: S.optional(__S(193)),
         }),
       ).annotate({ identifier: "RuntimeEntitySchema" });
     case 7:
-      return S.Array(RuntimeEntitySchema);
+      return S.Array(__S(206));
   }
 }
 function __c26(j: number): any {
@@ -8082,13 +6897,13 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          entityTypes: S.optional(RuntimeEntitySchemaList),
+          entityTypes: S.optional(__S(207)),
         }),
       ).annotate({ identifier: "ListEntityTypesResponse" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          extraLocationTypes: S.optional(StringList.pipe(T.Query())),
+          extraLocationTypes: S.optional(__S(2).pipe(T.Query())),
           filter: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8104,12 +6919,12 @@ function __c26(j: number): any {
         identifier: "ListProjectsLocationsRequest",
       });
     case 2:
-      return S.Array(Location);
+      return S.Array(__S(145));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          locations: S.optional(LocationList),
+          locations: S.optional(__S(210)),
         }),
       ).annotate({ identifier: "ListLocationsResponse" });
     case 4:
@@ -8117,7 +6932,7 @@ function __c26(j: number): any {
         S.Struct({
           filter: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
-          view: S.optional(ListProjectsLocationsConnectionsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           orderBy: S.optional(S.String.pipe(T.Query())),
@@ -8132,13 +6947,13 @@ function __c26(j: number): any {
         identifier: "ListProjectsLocationsConnectionsRequest",
       });
     case 5:
-      return S.Array(Connection);
+      return S.Array(__S(43));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          connections: S.optional(ConnectionList),
+          unreachable: S.optional(__S(2)),
+          connections: S.optional(__S(213)),
         }),
       ).annotate({ identifier: "ListConnectionsResponse" });
     case 7:
@@ -8164,12 +6979,12 @@ function __c26(j: number): any {
 function __c27(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(EndUserAuthentication);
+      return S.Array(__S(67));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          endUserAuthentications: S.optional(EndUserAuthenticationList),
-          unreachable: S.optional(StringList),
+          endUserAuthentications: S.optional(__S(216)),
+          unreachable: S.optional(__S(2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({
@@ -8194,13 +7009,13 @@ function __c27(j: number): any {
         identifier: "ListProjectsLocationsConnectionsEventSubscriptionsRequest",
       });
     case 3:
-      return S.Array(EventSubscription);
+      return S.Array(__S(75));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          eventSubscriptions: S.optional(EventSubscriptionList),
+          unreachable: S.optional(__S(2)),
+          eventSubscriptions: S.optional(__S(219)),
         }),
       ).annotate({
         identifier: "ListEventSubscriptionsResponse",
@@ -8227,7 +7042,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          runtimeActionSchemas: S.optional(RuntimeActionSchemaList),
+          runtimeActionSchemas: S.optional(__S(199)),
         }),
       ).annotate({
         identifier: "ListRuntimeActionSchemasResponse",
@@ -8257,7 +7072,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          runtimeEntitySchemas: S.optional(RuntimeEntitySchemaList),
+          runtimeEntitySchemas: S.optional(__S(207)),
         }),
       ).annotate({
         identifier: "ListRuntimeEntitySchemasResponse",
@@ -8266,7 +7081,7 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           orderBy: S.optional(S.String.pipe(T.Query())),
-          view: S.optional(ListProjectsLocationsEndpointAttachmentsViewEnum.pipe(T.Query())),
+          view: S.optional(S.String.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           pageToken: S.optional(S.String.pipe(T.Query())),
@@ -8282,13 +7097,13 @@ function __c28(j: number): any {
         identifier: "ListProjectsLocationsEndpointAttachmentsRequest",
       });
     case 2:
-      return S.Array(EndpointAttachment);
+      return S.Array(__S(77));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          endpointAttachments: S.optional(EndpointAttachmentList),
+          endpointAttachments: S.optional(__S(226)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "ListEndpointAttachmentsResponse",
@@ -8311,13 +7126,13 @@ function __c28(j: number): any {
         identifier: "ListProjectsLocationsGlobalCustomConnectorsRequest",
       });
     case 5:
-      return S.Array(CustomConnector);
+      return S.Array(__S(79));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          customConnectors: S.optional(CustomConnectorList),
+          customConnectors: S.optional(__S(229)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "ListCustomConnectorsResponse",
@@ -8343,13 +7158,13 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CustomConnectorVersion);
+      return S.Array(__S(99));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(2)),
           nextPageToken: S.optional(S.String),
-          customConnectorVersions: S.optional(CustomConnectorVersionList),
+          customConnectorVersions: S.optional(__S(232)),
         }),
       ).annotate({
         identifier: "ListCustomConnectorVersionsResponse",
@@ -8374,13 +7189,13 @@ function __c29(j: number): any {
         identifier: "ListProjectsLocationsGlobalManagedZonesRequest",
       });
     case 3:
-      return S.Array(ManagedZone);
+      return S.Array(__S(101));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          managedZones: S.optional(ManagedZoneList),
+          managedZones: S.optional(__S(235)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "ListManagedZonesResponse" });
     case 5:
@@ -8402,12 +7217,12 @@ function __c29(j: number): any {
         identifier: "ListProjectsLocationsOperationsRequest",
       });
     case 6:
-      return S.Array(Operation);
+      return S.Array(__S(48));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          operations: S.optional(OperationList),
-          unreachable: S.optional(StringList),
+          operations: S.optional(__S(238)),
+          unreachable: S.optional(__S(2)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -8432,13 +7247,13 @@ function __c30(j: number): any {
         identifier: "ListProjectsLocationsProvidersRequest",
       });
     case 1:
-      return S.Array(Provider);
+      return S.Array(__S(155));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(2)),
           nextPageToken: S.optional(S.String),
-          providers: S.optional(ProviderList),
+          providers: S.optional(__S(241)),
         }),
       ).annotate({ identifier: "ListProvidersResponse" });
     case 3:
@@ -8459,13 +7274,13 @@ function __c30(j: number): any {
         identifier: "ListProjectsLocationsProvidersConnectorsRequest",
       });
     case 4:
-      return S.Array(Connector);
+      return S.Array(__S(159));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(2)),
           nextPageToken: S.optional(S.String),
-          connectors: S.optional(ConnectorList),
+          connectors: S.optional(__S(244)),
         }),
       ).annotate({ identifier: "ListConnectorsResponse" });
     case 6:
@@ -8474,9 +7289,7 @@ function __c30(j: number): any {
           pageToken: S.optional(S.String.pipe(T.Query())),
           pageSize: S.optional(S.Number.pipe(T.Query())),
           parent: S.String.pipe(T.Label()),
-          view: S.optional(
-            ListProjectsLocationsProvidersConnectorsVersionsViewEnum.pipe(T.Query()),
-          ),
+          view: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -8488,7 +7301,7 @@ function __c30(j: number): any {
         identifier: "ListProjectsLocationsProvidersConnectorsVersionsRequest",
       });
     case 7:
-      return S.Array(ConnectorVersion);
+      return S.Array(__S(178));
   }
 }
 function __c31(j: number): any {
@@ -8496,9 +7309,9 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          connectorVersions: S.optional(ConnectorVersionList),
+          connectorVersions: S.optional(__S(247)),
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
+          unreachable: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "ListConnectorVersionsResponse",
@@ -8520,11 +7333,11 @@ function __c31(j: number): any {
         identifier: "ListProjectsLocationsProvidersConnectorsVersionsEventtypesRequest",
       });
     case 2:
-      return S.Array(EventType);
+      return S.Array(__S(180));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          eventTypes: S.optional(EventTypeList),
+          eventTypes: S.optional(__S(250)),
           nextPageToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListEventTypesResponse" });
@@ -8532,7 +7345,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(ModifyConnectionToolspecOverrideRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(128).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8546,7 +7359,7 @@ function __c31(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          toolspecOverrides: S.optional(ToolspecOverride),
+          toolspecOverrides: S.optional(__S(127)),
         }),
       ).annotate({
         identifier: "ModifyConnectionToolspecOverrideResponse",
@@ -8556,7 +7369,7 @@ function __c31(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Connection.pipe(T.HttpBody())),
+          body: S.optional(__S(43).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8572,7 +7385,7 @@ function __c31(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(EndUserAuthentication.pipe(T.HttpBody())),
+          body: S.optional(__S(67).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8592,7 +7405,7 @@ function __c32(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(EventSubscription.pipe(T.HttpBody())),
+          body: S.optional(__S(75).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8608,7 +7421,7 @@ function __c32(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(EndpointAttachment.pipe(T.HttpBody())),
+          body: S.optional(__S(77).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8624,7 +7437,7 @@ function __c32(j: number): any {
         S.Struct({
           updateMask: S.optional(S.String.pipe(T.Query())),
           name: S.String.pipe(T.Label()),
-          body: S.optional(CustomConnector.pipe(T.HttpBody())),
+          body: S.optional(__S(79).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8640,7 +7453,7 @@ function __c32(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(ManagedZone.pipe(T.HttpBody())),
+          body: S.optional(__S(101).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8654,7 +7467,7 @@ function __c32(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          partnerMetadata: S.optional(PartnerMetadata),
+          partnerMetadata: S.optional(__S(81)),
         }),
       ).annotate({
         identifier: "PublishCustomConnectorVersionRequest",
@@ -8663,7 +7476,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(PublishCustomConnectorVersionRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(260).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8678,7 +7491,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8693,7 +7506,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8712,7 +7525,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8727,7 +7540,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8758,19 +7571,19 @@ function __c33(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          connection: S.optional(Connection),
-          actionSchema: S.optional(RuntimeActionSchema),
-          entitySchema: S.optional(RuntimeEntitySchema),
+          connection: S.optional(__S(43)),
+          actionSchema: S.optional(__S(198)),
+          entitySchema: S.optional(__S(206)),
         }),
       ).annotate({ identifier: "SearchConnectionInstance" });
     case 4:
-      return S.Array(SearchConnectionInstance);
+      return S.Array(__S(267));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextPageToken: S.optional(S.String),
-          unreachable: S.optional(StringList),
-          connections: S.optional(SearchConnectionInstanceList),
+          unreachable: S.optional(__S(2)),
+          connections: S.optional(__S(268)),
         }),
       ).annotate({
         identifier: "SearchConnectionsResponse",
@@ -8778,7 +7591,7 @@ function __c33(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(Policy),
+          policy: S.optional(__S(142)),
           updateMask: S.optional(S.String),
         }),
       ).annotate({ identifier: "SetIamPolicyRequest" });
@@ -8786,7 +7599,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(270).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8805,7 +7618,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(SetIamPolicyRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(270).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8819,7 +7632,7 @@ function __c34(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          permissions: S.optional(StringList),
+          permissions: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "TestIamPermissionsRequest",
@@ -8828,7 +7641,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(273).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8843,7 +7656,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resource: S.String.pipe(T.Label()),
-          body: S.optional(TestIamPermissionsRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(273).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8859,7 +7672,7 @@ function __c34(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(RegionalSettings.pipe(T.HttpBody())),
+          body: S.optional(__S(184).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8875,7 +7688,7 @@ function __c34(j: number): any {
         S.Struct({
           name: S.String.pipe(T.Label()),
           updateMask: S.optional(S.String.pipe(T.Query())),
-          body: S.optional(Settings.pipe(T.HttpBody())),
+          body: S.optional(__S(188).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8890,7 +7703,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceAccount: S.optional(S.String),
-          specType: S.optional(ValidateCustomConnectorSpecRequestSpecTypeEnum),
+          specType: S.optional(S.String),
           specLocation: S.optional(S.String),
         }),
       ).annotate({
@@ -8900,7 +7713,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           parent: S.String.pipe(T.Label()),
-          body: S.optional(ValidateCustomConnectorSpecRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(278).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8927,7 +7740,7 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.Label()),
-          body: S.optional(CancelOperationRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(0).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8938,5 +7751,86 @@ function __c35(j: number): any {
       ).annotate({
         identifier: "WithdrawProjectsLocationsCustomConnectorsCustomConnectorVersionsRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
   }
 }

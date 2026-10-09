@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -38,15 +40,8 @@ export class NotFound
 
 /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
 export type CreateSubscriptionRequestDashboardExportInsightsList = Array<number>;
-const CreateSubscriptionRequestDashboardExportInsightsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateSubscriptionRequestDashboardExportInsightsList>;
-
 /** * `since_last_sent` - Since last report * `last_n_days` - Last N days * `days_ago_range` - Between X and Y days ago */
 export type SubscriptionAIWindowModeEnum = "since_last_sent" | "last_n_days" | "days_ago_range";
-const SubscriptionAIWindowModeEnum = S.String;
-
 export interface AIWindowConfig {
   /** What the report analyzes each run: * `since_last_sent` (default) -- everything since the previous successful scheduled delivery (gap-free; test/manual sends don't move the anchor) * `last_n_days` -- a fixed trailing window of start_days_ago days * `days_ago_range` -- the explicit range from start_days_ago to end_days_ago days ago * `since_last_sent` - Since last report * `last_n_days` - Last N days * `days_ago_range` - Between X and Y days ago */
   mode?: SubscriptionAIWindowModeEnum | (string & {});
@@ -55,14 +50,10 @@ export interface AIWindowConfig {
   /** Upper bound of the analysis window, in days before the run (0 = now). Required for 'days_ago_range' and must be less than start_days_ago; ignored for other modes. 0-365. */
   end_days_ago?: number | null;
 }
-const AIWindowConfig = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<AIWindowConfig>;
-
 export interface AIPromptConfig {
   /** Analysis window for the report. Omitted = 'since_last_sent' (everything since the previous scheduled delivery). */
   window?: AIWindowConfig;
 }
-const AIPromptConfig = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AIPromptConfig>;
-
 export interface CreateSubscriptionRequestContextsItemCase0 {
   dashboard_id: number;
 }
@@ -72,24 +63,12 @@ export interface CreateSubscriptionRequestContextsItemCase1 {
 export type CreateSubscriptionRequestContextsItem =
   | CreateSubscriptionRequestContextsItemCase0
   | CreateSubscriptionRequestContextsItemCase1;
-const CreateSubscriptionRequestContextsItem =
-  S.Unknown as any as S.Schema<CreateSubscriptionRequestContextsItem>;
-
 /** Complete dashboard and insight context for an AI report. Omit on PATCH to preserve, pass an empty list to clear, or pass up to 3 items to replace all contexts. */
 export type CreateSubscriptionRequestContextsList = Array<CreateSubscriptionRequestContextsItem>;
-const CreateSubscriptionRequestContextsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateSubscriptionRequestContextsList>;
-
 /** * `email` - Email * `slack` - Slack * `teams` - Microsoft Teams */
 export type SubscriptionTargetEnum = "email" | "slack" | "teams";
-const SubscriptionTargetEnum = S.String;
-
 /** * `daily` - Daily * `weekly` - Weekly * `monthly` - Monthly * `yearly` - Yearly */
 export type RecurrenceIntervalEnum = "daily" | "weekly" | "monthly" | "yearly";
-const RecurrenceIntervalEnum = S.String;
-
 /** * `monday` - Monday * `tuesday` - Tuesday * `wednesday` - Wednesday * `thursday` - Thursday * `friday` - Friday * `saturday` - Saturday * `sunday` - Sunday */
 export type CreateSubscriptionRequestByweekdayItem =
   | "monday"
@@ -99,17 +78,10 @@ export type CreateSubscriptionRequestByweekdayItem =
   | "friday"
   | "saturday"
   | "sunday";
-const CreateSubscriptionRequestByweekdayItem = S.String;
-
 /** Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
 export type CreateSubscriptionRequestByweekdayList = Array<
   CreateSubscriptionRequestByweekdayItem | (string & {})
 >;
-const CreateSubscriptionRequestByweekdayList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateSubscriptionRequestByweekdayList>;
-
 /** Typed view over the Subscription.delivery_config JSON blob. */
 export interface DeliveryConfig {
   /** Slack insight and dashboard subscriptions only: when true, upload all insight images together in the main Slack message instead of posting the first image in the main message and the rest as threaded replies. Defaults to false. The request is rejected when target_type is not 'slack', when the subscription sets prompt instead of insight or dashboard, or when the Slack integration does not hold the files:write permission. Omit it unless the user asks for one combined message. */
@@ -123,8 +95,6 @@ export interface DeliveryConfig {
   /** Prompt subscriptions only: include PostHog product guidance. Defaults to true when omitted. Only a Slack report renders the guidance. Email and Microsoft Teams reports leave it out and accept the option without an error, unlike post_all_insights_in_main_message. The request is rejected when the subscription sets insight or dashboard instead of prompt. It does not control the AI summary on an insight or dashboard subscription: use summary_enabled and summary_prompt_guide for that. */
   include_posthog_hint?: boolean;
 }
-const DeliveryConfig = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<DeliveryConfig>;
-
 export interface CreateSubscriptionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -177,20 +147,10 @@ export interface CreateSubscriptionRequest {
   /** Per-delivery rendering options. Every option applies to one subscription kind or delivery target only, and each option's own description says where it applies and whether a mismatch is rejected or ignored. Omit this field unless the user asks for one of the options. */
   delivery_config?: DeliveryConfig;
 }
-const CreateSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateSubscriptionRequest>;
-
 /** * `insight` - Insight * `dashboard` - Dashboard * `ai_prompt` - AI prompt */
 export type SubscriptionResourceTypeEnum = "insight" | "dashboard" | "ai_prompt";
-const SubscriptionResourceTypeEnum = S.String;
-
 /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
 export type SubscriptionOutputDashboardExportInsightsList = Array<number>;
-const SubscriptionOutputDashboardExportInsightsList =
-  CreateSubscriptionRequestDashboardExportInsightsList as any as S.Schema<SubscriptionOutputDashboardExportInsightsList>;
-
 export interface SubscriptionDashboardContext {
   /** Dashboard ID used to open the context dashboard. */
   dashboard_id: number;
@@ -206,18 +166,9 @@ export interface SubscriptionInsightContext {
   insight_name: string;
 }
 export type SubscriptionContext = SubscriptionDashboardContext | SubscriptionInsightContext;
-const SubscriptionContext = S.Unknown as any as S.Schema<SubscriptionContext>;
-
 /** Dashboards and insights that ground this AI report. Deleted resources are omitted. */
 export type SubscriptionOutputContextsList = Array<SubscriptionContext>;
-const SubscriptionOutputContextsList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<SubscriptionOutputContextsList>;
-
 export type AIQueryPlanStatusEnum = "frozen" | "not_frozen" | "planner_updated";
-const AIQueryPlanStatusEnum = S.String;
-
 /** * `monday` - Monday * `tuesday` - Tuesday * `wednesday` - Wednesday * `thursday` - Thursday * `friday` - Friday * `saturday` - Saturday * `sunday` - Sunday */
 export type SubscriptionOutputByweekdayItem =
   | "monday"
@@ -229,15 +180,7 @@ export type SubscriptionOutputByweekdayItem =
   | "sunday";
 /** Days of week for daily or weekly subscriptions: monday, tuesday, wednesday, thursday, friday, saturday, sunday. */
 export type SubscriptionOutputByweekdayList = Array<SubscriptionOutputByweekdayItem>;
-const SubscriptionOutputByweekdayList =
-  CreateSubscriptionRequestByweekdayList as any as S.Schema<SubscriptionOutputByweekdayList>;
-
 export type UserBasicHedgehogConfigMap = { [key: string]: unknown | undefined };
-const UserBasicHedgehogConfigMap = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<UserBasicHedgehogConfigMap>;
-
 /** * `engineering` - Engineering * `data` - Data * `product` - Product Management * `founder` - Founder * `leadership` - Leadership * `marketing` - Marketing * `sales` - Sales / Success * `student` - Student * `other` - Other */
 export type RoleAtOrganizationEnum =
   | "engineering"
@@ -251,8 +194,6 @@ export type RoleAtOrganizationEnum =
   | "other";
 export type BlankEnum = "";
 export type UserBasicRoleAtOrganization = RoleAtOrganizationEnum | BlankEnum;
-const UserBasicRoleAtOrganization = S.Unknown as any as S.Schema<UserBasicRoleAtOrganization>;
-
 export interface UserBasic {
   id?: number;
   uuid?: string;
@@ -264,8 +205,6 @@ export interface UserBasic {
   hedgehog_config?: UserBasicHedgehogConfigMap | null;
   role_at_organization?: UserBasicRoleAtOrganization | null;
 }
-const UserBasic = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<UserBasic>;
-
 /** Standard Subscription serializer. */
 export interface SubscriptionOutput {
   id?: number;
@@ -327,36 +266,19 @@ export interface SubscriptionOutput {
   /** Per-delivery rendering options. Every option applies to one subscription kind or delivery target only, and each option's own description says where it applies and whether a mismatch is rejected or ignored. Omit this field unless the user asks for one of the options. */
   delivery_config?: DeliveryConfig;
 }
-const SubscriptionOutput = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<SubscriptionOutput>;
-
 export interface CreateSubscriptionsTestDeliveryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this subscription. */
   id: number;
 }
-const CreateSubscriptionsTestDeliveryRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateSubscriptionsTestDeliveryRequest>;
-
 export interface CreateSubscriptionsTestDeliveryResponse {}
-const CreateSubscriptionsTestDeliveryResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateSubscriptionsTestDeliveryResponse>;
-
 export interface GetSubscriptionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this subscription. */
   id: number;
 }
-const GetSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetSubscriptionRequest>;
-
 export interface GetSubscriptionsDeliveryRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -364,20 +286,10 @@ export interface GetSubscriptionsDeliveryRequest {
   /** A UUID string identifying this subscription delivery. */
   id: string;
 }
-const GetSubscriptionsDeliveryRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetSubscriptionsDeliveryRequest>;
-
 /** ExportedAsset ids generated for this send. */
 export type SubscriptionDeliveryExportedAssetIdsList = Array<number>;
-const SubscriptionDeliveryExportedAssetIdsList =
-  CreateSubscriptionRequestDashboardExportInsightsList as any as S.Schema<SubscriptionDeliveryExportedAssetIdsList>;
-
 /** * `starting` - Starting * `completed` - Completed * `failed` - Failed * `skipped` - Skipped */
 export type SubscriptionDeliveryStatusEnum = "starting" | "completed" | "failed" | "skipped";
-const SubscriptionDeliveryStatusEnum = S.String;
-
 export interface AIReportQueryDiagnostic {
   /** What this query step was meant to compute. */
   description: string;
@@ -392,18 +304,8 @@ export interface AIReportQueryDiagnostic {
   /** Human-readable failure reason, present only for query errors safe to surface to the subscription owner (e.g. an unresolved field name); null on success and for internal errors, which expose error_type only. */
   human_readable_error?: string | null;
 }
-const AIReportQueryDiagnostic = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<AIReportQueryDiagnostic>;
-
 /** Per-step query diagnostics (generated HogQL + failure type) for this report. Null for non-AI deliveries or runs without persisted diagnostics. */
 export type SubscriptionDeliveryAiReportDiagnosticsList = Array<AIReportQueryDiagnostic>;
-const SubscriptionDeliveryAiReportDiagnosticsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<SubscriptionDeliveryAiReportDiagnosticsList>;
-
 export interface AIReportChart {
   /** Id of the rendered PNG export backing this chart. */
   export_asset_id: number;
@@ -412,15 +314,8 @@ export interface AIReportChart {
   /** Index of the plan step this chart came from. */
   step_index: number;
 }
-const AIReportChart = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<AIReportChart>;
-
 /** Charts rendered for this report, in the order they were delivered. Empty when the report had no charts. Null for non-AI deliveries and for deliveries recorded before charts existed. */
 export type SubscriptionDeliveryAiReportChartsList = Array<AIReportChart>;
-const SubscriptionDeliveryAiReportChartsList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<SubscriptionDeliveryAiReportChartsList>;
-
 export interface SubscriptionDelivery {
   /** Primary key for this delivery row. */
   id?: string;
@@ -467,33 +362,17 @@ export interface SubscriptionDelivery {
   /** Query plan state recorded for this delivery: frozen, not_frozen, or planner_updated. Null for older deliveries and non-AI deliveries. */
   ai_query_plan_status?: AIQueryPlanStatusEnum | null;
 }
-const SubscriptionDelivery = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<SubscriptionDelivery>;
-
 export interface GetSubscriptionsSummaryQuotaRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
 }
-const GetSubscriptionsSummaryQuotaRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetSubscriptionsSummaryQuotaRequest>;
-
 export interface GetSubscriptionsSummaryQuotaResponse {
   active_count: number;
   limit: number | null;
   at_limit: boolean;
 }
-const GetSubscriptionsSummaryQuotaResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<GetSubscriptionsSummaryQuotaResponse>;
-
 export type ListSubscriptionsRequestResourceType = "ai_prompt" | "dashboard" | "insight";
-const ListSubscriptionsRequestResourceType = S.String;
-
 export type ListSubscriptionsRequestTargetType = "email" | "slack" | "teams";
-const ListSubscriptionsRequestTargetType = S.String;
-
 export interface ListSubscriptionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -520,35 +399,18 @@ export interface ListSubscriptionsRequest {
   /** Filter by delivery channel: email, Slack, or Microsoft Teams. */
   target_type?: ListSubscriptionsRequestTargetType | (string & {});
 }
-const ListSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListSubscriptionsRequest>;
-
 export type PaginatedSubscriptionListOutputResultsList = Array<SubscriptionOutput>;
-const PaginatedSubscriptionListOutputResultsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<PaginatedSubscriptionListOutputResultsList>;
-
 export interface PaginatedSubscriptionListOutput {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedSubscriptionListOutputResultsList;
 }
-const PaginatedSubscriptionListOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<PaginatedSubscriptionListOutput>;
-
 export type ListSubscriptionsDeliveriesRequestStatus =
   | "completed"
   | "failed"
   | "skipped"
   | "starting";
-const ListSubscriptionsDeliveriesRequestStatus = S.String;
-
 export interface ListSubscriptionsDeliveriesRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -558,64 +420,28 @@ export interface ListSubscriptionsDeliveriesRequest {
   /** Return only deliveries in this run status (starting, completed, failed, or skipped). */
   status?: ListSubscriptionsDeliveriesRequestStatus | (string & {});
 }
-const ListSubscriptionsDeliveriesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListSubscriptionsDeliveriesRequest>;
-
 export type PaginatedSubscriptionDeliveryListResultsList = Array<SubscriptionDelivery>;
-const PaginatedSubscriptionDeliveryListResultsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<PaginatedSubscriptionDeliveryListResultsList>;
-
 export interface PaginatedSubscriptionDeliveryList {
   next?: string | null;
   previous?: string | null;
   results?: PaginatedSubscriptionDeliveryListResultsList;
 }
-const PaginatedSubscriptionDeliveryList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<PaginatedSubscriptionDeliveryList>;
-
 export interface SubscriptionsDestroyRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   /** A unique integer value identifying this subscription. */
   id: number;
 }
-const SubscriptionsDestroyRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<SubscriptionsDestroyRequest>;
-
 export interface SubscriptionsDestroyResponse {}
-const SubscriptionsDestroyResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<SubscriptionsDestroyResponse>;
-
 /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
 export type UpdateSubscriptionRequestDashboardExportInsightsList = Array<number>;
-const UpdateSubscriptionRequestDashboardExportInsightsList =
-  CreateSubscriptionRequestDashboardExportInsightsList as any as S.Schema<UpdateSubscriptionRequestDashboardExportInsightsList>;
-
 export type UpdateSubscriptionRequestContextsItemCase0 = CreateSubscriptionRequestContextsItemCase0;
 export type UpdateSubscriptionRequestContextsItemCase1 = CreateSubscriptionRequestContextsItemCase1;
 export type UpdateSubscriptionRequestContextsItem =
   | CreateSubscriptionRequestContextsItemCase0
   | CreateSubscriptionRequestContextsItemCase1;
-const UpdateSubscriptionRequestContextsItem =
-  S.Unknown as any as S.Schema<UpdateSubscriptionRequestContextsItem>;
-
 /** Complete dashboard and insight context for an AI report. Omit on PATCH to preserve, pass an empty list to clear, or pass up to 3 items to replace all contexts. */
 export type UpdateSubscriptionRequestContextsList = Array<UpdateSubscriptionRequestContextsItem>;
-const UpdateSubscriptionRequestContextsList = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<UpdateSubscriptionRequestContextsList>;
-
 /** * `monday` - Monday * `tuesday` - Tuesday * `wednesday` - Wednesday * `thursday` - Thursday * `friday` - Friday * `saturday` - Saturday * `sunday` - Sunday */
 export type UpdateSubscriptionRequestByweekdayItem =
   | "monday"
@@ -629,9 +455,6 @@ export type UpdateSubscriptionRequestByweekdayItem =
 export type UpdateSubscriptionRequestByweekdayList = Array<
   UpdateSubscriptionRequestByweekdayItem | (string & {})
 >;
-const UpdateSubscriptionRequestByweekdayList =
-  CreateSubscriptionRequestByweekdayList as any as S.Schema<UpdateSubscriptionRequestByweekdayList>;
-
 export interface UpdateSubscriptionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -686,16 +509,8 @@ export interface UpdateSubscriptionRequest {
   /** Per-delivery rendering options. Every option applies to one subscription kind or delivery target only, and each option's own description says where it applies and whether a mismatch is rejected or ignored. Omit this field unless the user asks for one of the options. */
   delivery_config?: DeliveryConfig;
 }
-const UpdateSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<UpdateSubscriptionRequest>;
-
 /** List of insight IDs from the dashboard to include. Required for dashboard subscriptions, max 10. */
 export type UpdateSubscriptionsPartialRequestDashboardExportInsightsList = Array<number>;
-const UpdateSubscriptionsPartialRequestDashboardExportInsightsList =
-  CreateSubscriptionRequestDashboardExportInsightsList as any as S.Schema<UpdateSubscriptionsPartialRequestDashboardExportInsightsList>;
-
 export type UpdateSubscriptionsPartialRequestContextsItemCase0 =
   CreateSubscriptionRequestContextsItemCase0;
 export type UpdateSubscriptionsPartialRequestContextsItemCase1 =
@@ -703,17 +518,9 @@ export type UpdateSubscriptionsPartialRequestContextsItemCase1 =
 export type UpdateSubscriptionsPartialRequestContextsItem =
   | CreateSubscriptionRequestContextsItemCase0
   | CreateSubscriptionRequestContextsItemCase1;
-const UpdateSubscriptionsPartialRequestContextsItem =
-  S.Unknown as any as S.Schema<UpdateSubscriptionsPartialRequestContextsItem>;
-
 /** Complete dashboard and insight context for an AI report. Omit on PATCH to preserve, pass an empty list to clear, or pass up to 3 items to replace all contexts. */
 export type UpdateSubscriptionsPartialRequestContextsList =
   Array<UpdateSubscriptionsPartialRequestContextsItem>;
-const UpdateSubscriptionsPartialRequestContextsList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<UpdateSubscriptionsPartialRequestContextsList>;
-
 /** * `monday` - Monday * `tuesday` - Tuesday * `wednesday` - Wednesday * `thursday` - Thursday * `friday` - Friday * `saturday` - Saturday * `sunday` - Sunday */
 export type UpdateSubscriptionsPartialRequestByweekdayItem =
   | "monday"
@@ -727,9 +534,6 @@ export type UpdateSubscriptionsPartialRequestByweekdayItem =
 export type UpdateSubscriptionsPartialRequestByweekdayList = Array<
   UpdateSubscriptionsPartialRequestByweekdayItem | (string & {})
 >;
-const UpdateSubscriptionsPartialRequestByweekdayList =
-  CreateSubscriptionRequestByweekdayList as any as S.Schema<UpdateSubscriptionsPartialRequestByweekdayList>;
-
 export interface UpdateSubscriptionsPartialRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -784,11 +588,6 @@ export interface UpdateSubscriptionsPartialRequest {
   /** Per-delivery rendering options. Every option applies to one subscription kind or delivery target only, and each option's own description says where it applies and whether a mismatch is rejected or ignored. Omit this field unless the user asks for one of the options. */
   delivery_config?: DeliveryConfig;
 }
-const UpdateSubscriptionsPartialRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<UpdateSubscriptionsPartialRequest>;
-
 export type CreateSubscriptionError = BadRequest | Forbidden | NotFound | PosthogOpError;
 export const createSubscription: API.OperationMethod<
   CreateSubscriptionRequest,
@@ -796,8 +595,8 @@ export const createSubscription: API.OperationMethod<
   CreateSubscriptionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSubscriptionRequest,
-  output: SubscriptionOutput,
+  input: __S(6) as any as S.Schema<CreateSubscriptionRequest>,
+  output: __S(10) as any as S.Schema<SubscriptionOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -810,8 +609,8 @@ export const createSubscriptionsTestDelivery: API.OperationMethod<
   CreateSubscriptionsTestDeliveryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSubscriptionsTestDeliveryRequest,
-  output: CreateSubscriptionsTestDeliveryResponse,
+  input: __S(11) as any as S.Schema<CreateSubscriptionsTestDeliveryRequest>,
+  output: __S(12) as any as S.Schema<CreateSubscriptionsTestDeliveryResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -824,8 +623,8 @@ export const getSubscription: API.OperationMethod<
   GetSubscriptionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionRequest,
-  output: SubscriptionOutput,
+  input: __S(13) as any as S.Schema<GetSubscriptionRequest>,
+  output: __S(10) as any as S.Schema<SubscriptionOutput>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -839,8 +638,8 @@ export const getSubscriptionsDelivery: API.OperationMethod<
   GetSubscriptionsDeliveryError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionsDeliveryRequest,
-  output: SubscriptionDelivery,
+  input: __S(14) as any as S.Schema<GetSubscriptionsDeliveryRequest>,
+  output: __S(19) as any as S.Schema<SubscriptionDelivery>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -853,8 +652,8 @@ export const getSubscriptionsSummaryQuota: API.OperationMethod<
   GetSubscriptionsSummaryQuotaError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionsSummaryQuotaRequest,
-  output: GetSubscriptionsSummaryQuotaResponse,
+  input: __S(20) as any as S.Schema<GetSubscriptionsSummaryQuotaRequest>,
+  output: __S(21) as any as S.Schema<GetSubscriptionsSummaryQuotaResponse>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -867,8 +666,8 @@ export const listSubscriptions: API.OperationMethod<
   ListSubscriptionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSubscriptionsRequest,
-  output: PaginatedSubscriptionListOutput,
+  input: __S(22) as any as S.Schema<ListSubscriptionsRequest>,
+  output: __S(24) as any as S.Schema<PaginatedSubscriptionListOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -882,8 +681,8 @@ export const listSubscriptionsDeliveries: API.OperationMethod<
   ListSubscriptionsDeliveriesError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListSubscriptionsDeliveriesRequest,
-  output: PaginatedSubscriptionDeliveryList,
+  input: __S(25) as any as S.Schema<ListSubscriptionsDeliveriesRequest>,
+  output: __S(27) as any as S.Schema<PaginatedSubscriptionDeliveryList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -897,8 +696,8 @@ export const subscriptionsDestroy: API.OperationMethod<
   SubscriptionsDestroyError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsDestroyRequest,
-  output: SubscriptionsDestroyResponse,
+  input: __S(28) as any as S.Schema<SubscriptionsDestroyRequest>,
+  output: __S(29) as any as S.Schema<SubscriptionsDestroyResponse>,
   errors: [Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -911,8 +710,8 @@ export const updateSubscription: API.OperationMethod<
   UpdateSubscriptionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSubscriptionRequest,
-  output: SubscriptionOutput,
+  input: __S(31) as any as S.Schema<UpdateSubscriptionRequest>,
+  output: __S(10) as any as S.Schema<SubscriptionOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -925,8 +724,8 @@ export const updateSubscriptionsPartial: API.OperationMethod<
   UpdateSubscriptionsPartialError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSubscriptionsPartialRequest,
-  output: SubscriptionOutput,
+  input: __S(33) as any as S.Schema<UpdateSubscriptionsPartialRequest>,
+  output: __S(10) as any as S.Schema<SubscriptionOutput>,
   errors: [BadRequest, Forbidden, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -940,7 +739,7 @@ function __c0(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(SubscriptionAIWindowModeEnum),
+          mode: S.optional(S.String),
           start_days_ago: S.optional(S.NullOr(S.Number)),
           end_days_ago: S.optional(S.NullOr(S.Number)),
         }),
@@ -948,13 +747,13 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          window: S.optional(AIWindowConfig),
+          window: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "AIPromptConfig" });
     case 3:
-      return S.Array(CreateSubscriptionRequestContextsItem);
+      return S.Array(S.Unknown);
     case 4:
-      return S.Array(CreateSubscriptionRequestByweekdayItem);
+      return S.Array(S.String);
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -971,17 +770,15 @@ function __c0(j: number): any {
           project_id: S.String.pipe(T.Label()),
           dashboard: S.optional(S.NullOr(S.Number)),
           insight: S.optional(S.NullOr(S.Number)),
-          dashboard_export_insights: S.optional(
-            CreateSubscriptionRequestDashboardExportInsightsList,
-          ),
+          dashboard_export_insights: S.optional(__S(0)),
           prompt: S.optional(S.NullOr(S.String)),
-          ai_prompt_config: S.optional(AIPromptConfig),
-          contexts: S.optional(CreateSubscriptionRequestContextsList),
-          target_type: SubscriptionTargetEnum,
+          ai_prompt_config: S.optional(__S(2)),
+          contexts: S.optional(__S(3)),
+          target_type: S.String,
           target_value: S.String,
-          frequency: RecurrenceIntervalEnum,
+          frequency: S.String,
           interval: S.Number,
-          byweekday: S.optional(S.NullOr(CreateSubscriptionRequestByweekdayList)),
+          byweekday: S.optional(S.NullOr(__S(4))),
           bysetpos: S.optional(S.NullOr(S.Number)),
           count: S.optional(S.NullOr(S.Number)),
           start_date: S.String,
@@ -994,7 +791,7 @@ function __c0(j: number): any {
           send_test_now: S.optional(S.Boolean),
           summary_enabled: S.optional(S.Boolean),
           summary_prompt_guide: S.optional(S.String),
-          delivery_config: S.optional(DeliveryConfig),
+          delivery_config: S.optional(__S(5)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/projects/{project_id}/subscriptions/", code: 200 }),
         ),
@@ -1002,7 +799,7 @@ function __c0(j: number): any {
         identifier: "CreateSubscriptionRequest",
       });
     case 7:
-      return S.Array(SubscriptionContext);
+      return S.Array(S.Unknown);
   }
 }
 function __c1(j: number): any {
@@ -1019,35 +816,35 @@ function __c1(j: number): any {
           last_name: S.optional(S.String),
           email: S.optional(S.String),
           is_email_verified: S.optional(S.NullOr(S.Boolean)),
-          hedgehog_config: S.optional(S.NullOr(UserBasicHedgehogConfigMap)),
-          role_at_organization: S.optional(S.NullOr(UserBasicRoleAtOrganization)),
+          hedgehog_config: S.optional(S.NullOr(__S(8))),
+          role_at_organization: S.optional(S.NullOr(S.Unknown)),
         }),
       ).annotate({ identifier: "UserBasic" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number),
-          resource_type: S.optional(SubscriptionResourceTypeEnum),
+          resource_type: S.optional(S.String),
           dashboard: S.optional(S.NullOr(S.Number)),
           insight: S.optional(S.NullOr(S.Number)),
           insight_short_id: S.optional(S.NullOr(S.String)),
           resource_name: S.optional(S.NullOr(S.String)),
-          dashboard_export_insights: S.optional(SubscriptionOutputDashboardExportInsightsList),
+          dashboard_export_insights: S.optional(__S(0)),
           prompt: S.optional(S.NullOr(S.String)),
-          ai_prompt_config: S.optional(AIPromptConfig),
-          contexts: S.optional(SubscriptionOutputContextsList),
-          ai_query_plan_status: S.optional(S.NullOr(AIQueryPlanStatusEnum)),
-          target_type: S.optional(SubscriptionTargetEnum),
+          ai_prompt_config: S.optional(__S(2)),
+          contexts: S.optional(__S(7)),
+          ai_query_plan_status: S.optional(S.NullOr(S.String)),
+          target_type: S.optional(S.String),
           target_value: S.optional(S.String),
-          frequency: S.optional(RecurrenceIntervalEnum),
+          frequency: S.optional(S.String),
           interval: S.optional(S.Number),
-          byweekday: S.optional(S.NullOr(SubscriptionOutputByweekdayList)),
+          byweekday: S.optional(S.NullOr(__S(4))),
           bysetpos: S.optional(S.NullOr(S.Number)),
           count: S.optional(S.NullOr(S.Number)),
           start_date: S.optional(S.String),
           until_date: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
-          created_by: S.optional(S.NullOr(UserBasic)),
+          created_by: S.optional(S.NullOr(__S(9))),
           deleted: S.optional(S.Boolean),
           enabled: S.optional(S.Boolean),
           title: S.optional(S.NullOr(S.String)),
@@ -1057,7 +854,7 @@ function __c1(j: number): any {
           invite_message: S.optional(S.NullOr(S.String)),
           summary_enabled: S.optional(S.Boolean),
           summary_prompt_guide: S.optional(S.String),
-          delivery_config: S.optional(DeliveryConfig),
+          delivery_config: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "SubscriptionOutput" });
     case 3:
@@ -1124,7 +921,7 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AIReportQueryDiagnostic);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1134,7 +931,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "AIReportChart" });
     case 2:
-      return S.Array(AIReportChart);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1146,20 +943,20 @@ function __c2(j: number): any {
           scheduled_at: S.optional(S.NullOr(S.String)),
           target_type: S.optional(S.String),
           target_value: S.optional(S.String),
-          exported_asset_ids: S.optional(SubscriptionDeliveryExportedAssetIdsList),
+          exported_asset_ids: S.optional(__S(0)),
           content_snapshot: S.optional(S.Unknown),
           recipient_results: S.optional(S.Unknown),
-          status: S.optional(SubscriptionDeliveryStatusEnum),
+          status: S.optional(S.String),
           error: S.optional(S.Unknown),
           created_at: S.optional(S.String),
           last_updated_at: S.optional(S.String),
           finished_at: S.optional(S.NullOr(S.String)),
           change_summary: S.optional(S.NullOr(S.String)),
           ai_report: S.optional(S.NullOr(S.String)),
-          ai_report_diagnostics: S.optional(S.NullOr(SubscriptionDeliveryAiReportDiagnosticsList)),
-          ai_report_charts: S.optional(S.NullOr(SubscriptionDeliveryAiReportChartsList)),
+          ai_report_diagnostics: S.optional(S.NullOr(__S(16))),
+          ai_report_charts: S.optional(S.NullOr(__S(18))),
           ai_report_prompt: S.optional(S.NullOr(S.String)),
-          ai_query_plan_status: S.optional(S.NullOr(AIQueryPlanStatusEnum)),
+          ai_query_plan_status: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "SubscriptionDelivery" });
     case 4:
@@ -1198,15 +995,15 @@ function __c2(j: number): any {
           limit: S.optional(S.Number.pipe(T.Query())),
           offset: S.optional(S.Number.pipe(T.Query())),
           ordering: S.optional(S.String.pipe(T.Query())),
-          resource_type: S.optional(ListSubscriptionsRequestResourceType.pipe(T.Query())),
+          resource_type: S.optional(S.String.pipe(T.Query())),
           search: S.optional(S.String.pipe(T.Query())),
-          target_type: S.optional(ListSubscriptionsRequestTargetType.pipe(T.Query())),
+          target_type: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/projects/{project_id}/subscriptions/", code: 200 }),
         ),
       ).annotate({ identifier: "ListSubscriptionsRequest" });
     case 7:
-      return S.Array(SubscriptionOutput);
+      return S.Array(__S(10));
   }
 }
 function __c3(j: number): any {
@@ -1217,7 +1014,7 @@ function __c3(j: number): any {
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedSubscriptionListOutputResultsList),
+          results: S.optional(__S(23)),
         }),
       ).annotate({
         identifier: "PaginatedSubscriptionListOutput",
@@ -1228,7 +1025,7 @@ function __c3(j: number): any {
           project_id: S.String.pipe(T.Label()),
           subscription_id: S.Number.pipe(T.Label()),
           cursor: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListSubscriptionsDeliveriesRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -1240,13 +1037,13 @@ function __c3(j: number): any {
         identifier: "ListSubscriptionsDeliveriesRequest",
       });
     case 2:
-      return S.Array(SubscriptionDelivery);
+      return S.Array(__S(19));
     case 3:
       return S.suspend(() =>
         S.Struct({
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedSubscriptionDeliveryListResultsList),
+          results: S.optional(__S(26)),
         }),
       ).annotate({
         identifier: "PaginatedSubscriptionDeliveryList",
@@ -1271,7 +1068,7 @@ function __c3(j: number): any {
         identifier: "SubscriptionsDestroyResponse",
       });
     case 6:
-      return S.Array(UpdateSubscriptionRequestContextsItem);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -1279,17 +1076,15 @@ function __c3(j: number): any {
           id: S.Number.pipe(T.Label()),
           dashboard: S.optional(S.NullOr(S.Number)),
           insight: S.optional(S.NullOr(S.Number)),
-          dashboard_export_insights: S.optional(
-            UpdateSubscriptionRequestDashboardExportInsightsList,
-          ),
+          dashboard_export_insights: S.optional(__S(0)),
           prompt: S.optional(S.NullOr(S.String)),
-          ai_prompt_config: S.optional(AIPromptConfig),
-          contexts: S.optional(UpdateSubscriptionRequestContextsList),
-          target_type: SubscriptionTargetEnum,
+          ai_prompt_config: S.optional(__S(2)),
+          contexts: S.optional(__S(30)),
+          target_type: S.String,
           target_value: S.String,
-          frequency: RecurrenceIntervalEnum,
+          frequency: S.String,
           interval: S.Number,
-          byweekday: S.optional(S.NullOr(UpdateSubscriptionRequestByweekdayList)),
+          byweekday: S.optional(S.NullOr(__S(4))),
           bysetpos: S.optional(S.NullOr(S.Number)),
           count: S.optional(S.NullOr(S.Number)),
           start_date: S.String,
@@ -1302,7 +1097,7 @@ function __c3(j: number): any {
           send_test_now: S.optional(S.Boolean),
           summary_enabled: S.optional(S.Boolean),
           summary_prompt_guide: S.optional(S.String),
-          delivery_config: S.optional(DeliveryConfig),
+          delivery_config: S.optional(__S(5)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1318,7 +1113,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UpdateSubscriptionsPartialRequestContextsItem);
+      return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1326,17 +1121,15 @@ function __c4(j: number): any {
           id: S.Number.pipe(T.Label()),
           dashboard: S.optional(S.NullOr(S.Number)),
           insight: S.optional(S.NullOr(S.Number)),
-          dashboard_export_insights: S.optional(
-            UpdateSubscriptionsPartialRequestDashboardExportInsightsList,
-          ),
+          dashboard_export_insights: S.optional(__S(0)),
           prompt: S.optional(S.NullOr(S.String)),
-          ai_prompt_config: S.optional(AIPromptConfig),
-          contexts: S.optional(UpdateSubscriptionsPartialRequestContextsList),
-          target_type: S.optional(SubscriptionTargetEnum),
+          ai_prompt_config: S.optional(__S(2)),
+          contexts: S.optional(__S(32)),
+          target_type: S.optional(S.String),
           target_value: S.optional(S.String),
-          frequency: S.optional(RecurrenceIntervalEnum),
+          frequency: S.optional(S.String),
           interval: S.optional(S.Number),
-          byweekday: S.optional(S.NullOr(UpdateSubscriptionsPartialRequestByweekdayList)),
+          byweekday: S.optional(S.NullOr(__S(4))),
           bysetpos: S.optional(S.NullOr(S.Number)),
           count: S.optional(S.NullOr(S.Number)),
           start_date: S.optional(S.String),
@@ -1349,7 +1142,7 @@ function __c4(j: number): any {
           send_test_now: S.optional(S.Boolean),
           summary_enabled: S.optional(S.Boolean),
           summary_prompt_guide: S.optional(S.String),
-          delivery_config: S.optional(DeliveryConfig),
+          delivery_config: S.optional(__S(5)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1360,5 +1153,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UpdateSubscriptionsPartialRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

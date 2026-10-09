@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({ sdkId: "OAM", serviceShapeName: "oamservice" });
 const auth = /*@__PURE__*/ T.AwsAuthSigv4({ name: "oam" });
 const ver = /*@__PURE__*/ T.ServiceVersion("2022-06-10");
@@ -159,33 +161,23 @@ export type ResourceType =
   | "AWS::ApplicationSignals::Service"
   | "AWS::ApplicationSignals::ServiceLevelObjective"
   | (string & {});
-const ResourceType = S.String;
-
 export type ResourceTypesInput = ResourceType[];
-const ResourceTypesInput = /*@__PURE__*/ __L.at(__c0, 0);
 export type ResourceIdentifier = string;
 export type TagKey = string;
 export type TagValue = string;
 export type TagMapInput = { [key: string]: string | undefined };
-const TagMapInput = /*@__PURE__*/ __L.at(__c0, 1);
 export type LogsFilter = string;
 export interface LogGroupConfiguration {
   Filter: string;
 }
-const LogGroupConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<LogGroupConfiguration>;
 export type MetricsFilter = string;
 export interface MetricConfiguration {
   Filter: string;
 }
-const MetricConfiguration = LogGroupConfiguration as any as S.Schema<MetricConfiguration>;
 export interface LinkConfiguration {
   LogGroupConfiguration?: LogGroupConfiguration;
   MetricConfiguration?: MetricConfiguration;
 }
-const LinkConfiguration = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<LinkConfiguration>;
 export interface CreateLinkInput {
   LabelTemplate: string;
   ResourceTypes: ResourceType[];
@@ -193,11 +185,8 @@ export interface CreateLinkInput {
   Tags?: { [key: string]: string | undefined };
   LinkConfiguration?: LinkConfiguration;
 }
-const CreateLinkInput = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<CreateLinkInput>;
 export type ResourceTypesOutput = string[];
-const ResourceTypesOutput = /*@__PURE__*/ __L.at(__c0, 5);
 export type TagMapOutput = { [key: string]: string | undefined };
-const TagMapOutput = TagMapInput as any as S.Schema<TagMapOutput>;
 export interface CreateLinkOutput {
   Arn?: string;
   Id?: string;
@@ -208,38 +197,30 @@ export interface CreateLinkOutput {
   Tags?: { [key: string]: string | undefined };
   LinkConfiguration?: LinkConfiguration;
 }
-const CreateLinkOutput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<CreateLinkOutput>;
 export type SinkName = string;
 export interface CreateSinkInput {
   Name: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateSinkInput = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CreateSinkInput>;
 export interface CreateSinkOutput {
   Arn?: string;
   Id?: string;
   Name?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateSinkOutput = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreateSinkOutput>;
 export interface DeleteLinkInput {
   Identifier: string;
 }
-const DeleteLinkInput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<DeleteLinkInput>;
 export interface DeleteLinkOutput {}
-const DeleteLinkOutput = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<DeleteLinkOutput>;
 export interface DeleteSinkInput {
   Identifier: string;
 }
-const DeleteSinkInput = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<DeleteSinkInput>;
 export interface DeleteSinkOutput {}
-const DeleteSinkOutput = DeleteLinkOutput as any as S.Schema<DeleteSinkOutput>;
 export type IncludeTags = boolean;
 export interface GetLinkInput {
   Identifier: string;
   IncludeTags?: boolean;
 }
-const GetLinkInput = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetLinkInput>;
 export interface GetLinkOutput {
   Arn?: string;
   Id?: string;
@@ -250,29 +231,24 @@ export interface GetLinkOutput {
   Tags?: { [key: string]: string | undefined };
   LinkConfiguration?: LinkConfiguration;
 }
-const GetLinkOutput = CreateLinkOutput as any as S.Schema<GetLinkOutput>;
 export interface GetSinkInput {
   Identifier: string;
   IncludeTags?: boolean;
 }
-const GetSinkInput = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetSinkInput>;
 export interface GetSinkOutput {
   Arn?: string;
   Id?: string;
   Name?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const GetSinkOutput = CreateSinkOutput as any as S.Schema<GetSinkOutput>;
 export interface GetSinkPolicyInput {
   SinkIdentifier: string;
 }
-const GetSinkPolicyInput = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetSinkPolicyInput>;
 export interface GetSinkPolicyOutput {
   SinkArn?: string;
   SinkId?: string;
   Policy?: string;
 }
-const GetSinkPolicyOutput = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<GetSinkPolicyOutput>;
 export type ListAttachedLinksMaxResults = number;
 export type NextToken = string;
 export interface ListAttachedLinksInput {
@@ -280,35 +256,21 @@ export interface ListAttachedLinksInput {
   NextToken?: string;
   SinkIdentifier: string;
 }
-const ListAttachedLinksInput = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListAttachedLinksInput>;
 export interface ListAttachedLinksItem {
   Label?: string;
   LinkArn?: string;
   ResourceTypes?: string[];
 }
-const ListAttachedLinksItem = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListAttachedLinksItem>;
 export type ListAttachedLinksItems = ListAttachedLinksItem[];
-const ListAttachedLinksItems = /*@__PURE__*/ __L.at(__c2, 2);
 export interface ListAttachedLinksOutput {
   Items: ListAttachedLinksItem[];
   NextToken?: string;
 }
-const ListAttachedLinksOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListAttachedLinksOutput>;
 export type ListLinksMaxResults = number;
 export interface ListLinksInput {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListLinksInput = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<ListLinksInput>;
 export interface ListLinksItem {
   Arn?: string;
   Id?: string;
@@ -316,83 +278,60 @@ export interface ListLinksItem {
   ResourceTypes?: string[];
   SinkArn?: string;
 }
-const ListLinksItem = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ListLinksItem>;
 export type ListLinksItems = ListLinksItem[];
-const ListLinksItems = /*@__PURE__*/ __L.at(__c2, 6);
 export interface ListLinksOutput {
   Items: ListLinksItem[];
   NextToken?: string;
 }
-const ListLinksOutput = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<ListLinksOutput>;
 export type ListSinksMaxResults = number;
 export interface ListSinksInput {
   MaxResults?: number;
   NextToken?: string;
 }
-const ListSinksInput = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<ListSinksInput>;
 export interface ListSinksItem {
   Arn?: string;
   Id?: string;
   Name?: string;
 }
-const ListSinksItem = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<ListSinksItem>;
 export type ListSinksItems = ListSinksItem[];
-const ListSinksItems = /*@__PURE__*/ __L.at(__c3, 2);
 export interface ListSinksOutput {
   Items: ListSinksItem[];
   NextToken?: string;
 }
-const ListSinksOutput = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<ListSinksOutput>;
 export type Arn = string;
 export interface ListTagsForResourceInput {
   ResourceArn: string;
 }
-const ListTagsForResourceInput = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListTagsForResourceInput>;
 export interface ListTagsForResourceOutput {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListTagsForResourceOutput>;
 export type SinkPolicy = string;
 export interface PutSinkPolicyInput {
   SinkIdentifier: string;
   Policy: string;
 }
-const PutSinkPolicyInput = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<PutSinkPolicyInput>;
 export interface PutSinkPolicyOutput {
   SinkArn?: string;
   SinkId?: string;
   Policy?: string;
 }
-const PutSinkPolicyOutput = GetSinkPolicyOutput as any as S.Schema<PutSinkPolicyOutput>;
 export interface TagResourceInput {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceInput = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<TagResourceInput>;
 export interface TagResourceOutput {}
-const TagResourceOutput = DeleteLinkOutput as any as S.Schema<TagResourceOutput>;
 export type TagKeys = string[];
-const TagKeys = ResourceTypesOutput as any as S.Schema<TagKeys>;
 export interface UntagResourceInput {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceInput = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<UntagResourceInput>;
 export interface UntagResourceOutput {}
-const UntagResourceOutput = DeleteLinkOutput as any as S.Schema<UntagResourceOutput>;
 export interface UpdateLinkInput {
   Identifier: string;
   ResourceTypes: ResourceType[];
   LinkConfiguration?: LinkConfiguration;
   IncludeTags?: boolean;
 }
-const UpdateLinkInput = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<UpdateLinkInput>;
 export interface UpdateLinkOutput {
   Arn?: string;
   Id?: string;
@@ -403,7 +342,6 @@ export interface UpdateLinkOutput {
   Tags?: { [key: string]: string | undefined };
   LinkConfiguration?: LinkConfiguration;
 }
-const UpdateLinkOutput = CreateLinkOutput as any as S.Schema<UpdateLinkOutput>;
 export type CreateLinkError =
   | ConflictException
   | InternalServiceFault
@@ -429,8 +367,8 @@ export const createLink: API.OperationMethod<
   CreateLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLinkInput,
-  output: CreateLinkOutput,
+  input: __S(4) as any as S.Schema<CreateLinkInput>,
+  output: __S(6) as any as S.Schema<CreateLinkOutput>,
   errors: [
     ConflictException,
     InternalServiceFault,
@@ -465,8 +403,8 @@ export const createSink: API.OperationMethod<
   CreateSinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSinkInput,
-  output: CreateSinkOutput,
+  input: __S(7) as any as S.Schema<CreateSinkInput>,
+  output: __S(8) as any as S.Schema<CreateSinkOutput>,
   errors: [
     ConflictException,
     InternalServiceFault,
@@ -496,8 +434,8 @@ export const deleteLink: API.OperationMethod<
   DeleteLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLinkInput,
-  output: DeleteLinkOutput,
+  input: __S(9) as any as S.Schema<DeleteLinkInput>,
+  output: __S(10) as any as S.Schema<DeleteLinkOutput>,
   errors: [
     InternalServiceFault,
     InvalidParameterException,
@@ -527,8 +465,8 @@ export const deleteSink: API.OperationMethod<
   DeleteSinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSinkInput,
-  output: DeleteSinkOutput,
+  input: __S(11) as any as S.Schema<DeleteSinkInput>,
+  output: __S(10) as any as S.Schema<DeleteSinkOutput>,
   errors: [
     ConflictException,
     InternalServiceFault,
@@ -560,8 +498,8 @@ export const getLink: API.OperationMethod<
   GetLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLinkInput,
-  output: GetLinkOutput,
+  input: __S(12) as any as S.Schema<GetLinkInput>,
+  output: __S(6) as any as S.Schema<GetLinkOutput>,
   errors: [
     InternalServiceFault,
     InvalidParameterException,
@@ -592,8 +530,8 @@ export const getSink: API.OperationMethod<
   GetSinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSinkInput,
-  output: GetSinkOutput,
+  input: __S(13) as any as S.Schema<GetSinkInput>,
+  output: __S(8) as any as S.Schema<GetSinkOutput>,
   errors: [
     InternalServiceFault,
     InvalidParameterException,
@@ -622,8 +560,8 @@ export const getSinkPolicy: API.OperationMethod<
   GetSinkPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSinkPolicyInput,
-  output: GetSinkPolicyOutput,
+  input: __S(14) as any as S.Schema<GetSinkPolicyInput>,
+  output: __S(15) as any as S.Schema<GetSinkPolicyOutput>,
   errors: [
     InternalServiceFault,
     InvalidParameterException,
@@ -657,8 +595,8 @@ export const listAttachedLinks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListAttachedLinksItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListAttachedLinksInput,
-  output: ListAttachedLinksOutput,
+  input: __S(16) as any as S.Schema<ListAttachedLinksInput>,
+  output: __S(19) as any as S.Schema<ListAttachedLinksOutput>,
   errors: [
     InternalServiceFault,
     InvalidParameterException,
@@ -695,8 +633,8 @@ export const listLinks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListLinksItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLinksInput,
-  output: ListLinksOutput,
+  input: __S(20) as any as S.Schema<ListLinksInput>,
+  output: __S(23) as any as S.Schema<ListLinksOutput>,
   errors: [
     InternalServiceFault,
     InvalidParameterException,
@@ -730,8 +668,8 @@ export const listSinks: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ListSinksItem
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSinksInput,
-  output: ListSinksOutput,
+  input: __S(24) as any as S.Schema<ListSinksInput>,
+  output: __S(27) as any as S.Schema<ListSinksOutput>,
   errors: [
     InternalServiceFault,
     InvalidParameterException,
@@ -763,8 +701,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceInput,
-  output: ListTagsForResourceOutput,
+  input: __S(28) as any as S.Schema<ListTagsForResourceInput>,
+  output: __S(29) as any as S.Schema<ListTagsForResourceOutput>,
   errors: [ResourceNotFoundException, ValidationException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -803,8 +741,8 @@ export const putSinkPolicy: API.OperationMethod<
   PutSinkPolicyError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSinkPolicyInput,
-  output: PutSinkPolicyOutput,
+  input: __S(30) as any as S.Schema<PutSinkPolicyInput>,
+  output: __S(15) as any as S.Schema<PutSinkPolicyOutput>,
   errors: [
     InternalServiceFault,
     InvalidParameterException,
@@ -842,8 +780,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceInput,
-  output: TagResourceOutput,
+  input: __S(31) as any as S.Schema<TagResourceInput>,
+  output: __S(10) as any as S.Schema<TagResourceOutput>,
   errors: [
     ResourceNotFoundException,
     TooManyTagsException,
@@ -871,8 +809,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceInput,
-  output: UntagResourceOutput,
+  input: __S(32) as any as S.Schema<UntagResourceInput>,
+  output: __S(10) as any as S.Schema<UntagResourceOutput>,
   errors: [ResourceNotFoundException, ValidationException, TooManyRequestsException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -899,8 +837,8 @@ export const updateLink: API.OperationMethod<
   UpdateLinkError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateLinkInput,
-  output: UpdateLinkOutput,
+  input: __S(33) as any as S.Schema<UpdateLinkInput>,
+  output: __S(6) as any as S.Schema<UpdateLinkOutput>,
   errors: [
     InternalServiceFault,
     InvalidParameterException,
@@ -917,7 +855,7 @@ export const updateLink: API.OperationMethod<
 function __c0(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ResourceType);
+      return S.Array(S.String);
     case 1:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 2:
@@ -927,18 +865,18 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          LogGroupConfiguration: S.optional(LogGroupConfiguration),
-          MetricConfiguration: S.optional(MetricConfiguration),
+          LogGroupConfiguration: S.optional(__S(2)),
+          MetricConfiguration: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "LinkConfiguration" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           LabelTemplate: S.String,
-          ResourceTypes: ResourceTypesInput,
+          ResourceTypes: __S(0),
           SinkIdentifier: S.String,
-          Tags: S.optional(TagMapInput),
-          LinkConfiguration: S.optional(LinkConfiguration),
+          Tags: S.optional(__S(1)),
+          LinkConfiguration: S.optional(__S(3)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/CreateLink" }), svc, auth, proto, ver, rules),
         ),
@@ -952,15 +890,15 @@ function __c0(j: number): any {
           Id: S.optional(S.String),
           Label: S.optional(S.String),
           LabelTemplate: S.optional(S.String),
-          ResourceTypes: S.optional(ResourceTypesOutput),
+          ResourceTypes: S.optional(__S(5)),
           SinkArn: S.optional(S.String),
-          Tags: S.optional(TagMapOutput),
-          LinkConfiguration: S.optional(LinkConfiguration),
+          Tags: S.optional(__S(1)),
+          LinkConfiguration: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "CreateLinkOutput" });
     case 7:
       return S.suspend(() =>
-        S.Struct({ Name: S.String, Tags: S.optional(TagMapInput) }).pipe(
+        S.Struct({ Name: S.String, Tags: S.optional(__S(1)) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/CreateSink" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "CreateSinkInput" });
@@ -974,7 +912,7 @@ function __c1(j: number): any {
           Arn: S.optional(S.String),
           Id: S.optional(S.String),
           Name: S.optional(S.String),
-          Tags: S.optional(TagMapOutput),
+          Tags: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "CreateSinkOutput" });
     case 1:
@@ -1045,14 +983,14 @@ function __c2(j: number): any {
         S.Struct({
           Label: S.optional(S.String),
           LinkArn: S.optional(S.String),
-          ResourceTypes: S.optional(ResourceTypesOutput),
+          ResourceTypes: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "ListAttachedLinksItem" });
     case 2:
-      return S.Array(ListAttachedLinksItem);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: ListAttachedLinksItems, NextToken: S.optional(S.String) }),
+        S.Struct({ Items: __S(18), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListAttachedLinksOutput" });
     case 4:
       return S.suspend(() =>
@@ -1066,15 +1004,15 @@ function __c2(j: number): any {
           Arn: S.optional(S.String),
           Id: S.optional(S.String),
           Label: S.optional(S.String),
-          ResourceTypes: S.optional(ResourceTypesOutput),
+          ResourceTypes: S.optional(__S(5)),
           SinkArn: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListLinksItem" });
     case 6:
-      return S.Array(ListLinksItem);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Items: ListLinksItems, NextToken: S.optional(S.String) }),
+        S.Struct({ Items: __S(22), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListLinksOutput" });
   }
 }
@@ -1095,10 +1033,10 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "ListSinksItem" });
     case 2:
-      return S.Array(ListSinksItem);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: ListSinksItems, NextToken: S.optional(S.String) }),
+        S.Struct({ Items: __S(26), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListSinksOutput" });
     case 4:
       return S.suspend(() =>
@@ -1114,7 +1052,7 @@ function __c3(j: number): any {
         ),
       ).annotate({ identifier: "ListTagsForResourceInput" });
     case 5:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagMapOutput) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(1)) })).annotate({
         identifier: "ListTagsForResourceOutput",
       });
     case 6:
@@ -1127,7 +1065,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          Tags: TagMapInput,
+          Tags: __S(1),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/tags/{ResourceArn}" }),
@@ -1147,7 +1085,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: TagKeys.pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(5).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -1163,12 +1101,31 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String,
-          ResourceTypes: ResourceTypesInput,
-          LinkConfiguration: S.optional(LinkConfiguration),
+          ResourceTypes: __S(0),
+          LinkConfiguration: S.optional(__S(3)),
           IncludeTags: S.optional(S.Boolean),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/UpdateLink" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "UpdateLinkInput" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

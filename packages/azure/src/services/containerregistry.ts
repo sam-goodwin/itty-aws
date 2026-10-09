@@ -7,6 +7,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -20,15 +22,9 @@ export interface CancelRunRequest {
   /** The run ID. */
   runId: string;
 }
-const CancelRunRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CancelRunRequest>;
-
 export interface CancelRunResponse {}
-const CancelRunResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CancelRunResponse>;
-
 /** The resource type for Container Registry. */
 export type ContainerRegistryResourceType = "Microsoft.ContainerRegistry/registries";
-const ContainerRegistryResourceType = S.String;
-
 export interface CheckRegistryNameAvailabilityRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -37,11 +33,6 @@ export interface CheckRegistryNameAvailabilityRequest {
   /** The resource type of the container registry. This field must be set to 'Microsoft.ContainerRegistry/registries'. */
   type: ContainerRegistryResourceType | (string & {});
 }
-const CheckRegistryNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CheckRegistryNameAvailabilityRequest>;
-
 /** The result of a request to check the availability of a container registry name. */
 export interface RegistryNameStatus {
   /** The value that indicates whether the name is available. */
@@ -51,8 +42,6 @@ export interface RegistryNameStatus {
   /** If any, the error message that provides more detail for the reason that the name is not available. */
   message?: string;
 }
-const RegistryNameStatus = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<RegistryNameStatus>;
-
 /** The properties of a cache rule. */
 export interface CacheRulePropertiesInput {
   /** The ARM resource ID of the credential store which is associated with the cache rule. */
@@ -62,11 +51,6 @@ export interface CacheRulePropertiesInput {
   /** Target repository specified in docker pull command. Eg: docker pull myregistry.azurecr.io/{targetRepository}:{tag} */
   targetRepository?: string;
 }
-const CacheRulePropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CacheRulePropertiesInput>;
-
 export interface CreateCacheRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -79,19 +63,10 @@ export interface CreateCacheRuleRequest {
   /** The properties of the cache rule. */
   properties?: CacheRulePropertiesInput;
 }
-const CreateCacheRuleRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateCacheRuleRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -107,8 +82,6 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<SystemData>;
-
 /** The provisioning state of the archive at the time the operation was called. */
 export type ProvisioningState =
   | "Creating"
@@ -117,8 +90,6 @@ export type ProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled";
-const ProvisioningState = S.String;
-
 /** The properties of a cache rule. */
 export interface CacheRuleProperties {
   /** The ARM resource ID of the credential store which is associated with the cache rule. */
@@ -132,8 +103,6 @@ export interface CacheRuleProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-const CacheRuleProperties = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<CacheRuleProperties>;
-
 export interface CreateCacheRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -146,15 +115,8 @@ export interface CreateCacheRuleResponse {
   /** The properties of the cache rule. */
   properties?: CacheRuleProperties;
 }
-const CreateCacheRuleResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateCacheRuleResponse>;
-
 /** The mode of the connected registry resource that indicates the permissions of the registry. */
 export type ConnectedRegistryMode = "ReadWrite" | "ReadOnly" | "Registry" | "Mirror";
-const ConnectedRegistryMode = S.String;
-
 /** The sync properties of the connected registry with its parent. */
 export interface SyncPropertiesInput {
   /** The resource ID of the ACR token used to authenticate the connected registry to its parent during sync. */
@@ -166,8 +128,6 @@ export interface SyncPropertiesInput {
   /** The period of time for which a message is available to sync before it is expired. Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601. */
   messageTtl: string;
 }
-const SyncPropertiesInput = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<SyncPropertiesInput>;
-
 /** The properties of the connected registry parent. */
 export interface ParentPropertiesInput {
   /** The resource ID of the parent to which the connected registry will be associated. */
@@ -175,30 +135,14 @@ export interface ParentPropertiesInput {
   /** The sync properties of the connected registry with its parent. */
   syncProperties: SyncPropertiesInput;
 }
-const ParentPropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ParentPropertiesInput>;
-
 /** The list of the ACR token resource IDs used to authenticate clients to the connected registry. */
 export type ConnectedRegistryPropertiesInputClientTokenIdsList = Array<string>;
-const ConnectedRegistryPropertiesInputClientTokenIdsList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ConnectedRegistryPropertiesInputClientTokenIdsList>;
-
 /** The login server properties of the connected registry. */
 export interface LoginServerPropertiesInput {}
-const LoginServerPropertiesInput = CancelRunResponse as any as S.Schema<LoginServerPropertiesInput>;
-
 /** The verbosity of logs persisted on the connected registry. */
 export type LoggingPropertiesLogLevel = "Debug" | "Information" | "Warning" | "Error" | "None";
-const LoggingPropertiesLogLevel = S.String;
-
 /** Indicates whether audit logs are enabled on the connected registry. */
 export type LoggingPropertiesAuditLogStatus = "Enabled" | "Disabled";
-const LoggingPropertiesAuditLogStatus = S.String;
-
 /** The logging properties of the connected registry. */
 export interface LoggingProperties {
   /** The verbosity of logs persisted on the connected registry. */
@@ -206,13 +150,8 @@ export interface LoggingProperties {
   /** Indicates whether audit logs are enabled on the connected registry. */
   auditLogStatus?: LoggingPropertiesAuditLogStatus | (string & {});
 }
-const LoggingProperties = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<LoggingProperties>;
-
 /** The list of notifications subscription information for the connected registry. */
 export type ConnectedRegistryPropertiesInputNotificationsListList = Array<string>;
-const ConnectedRegistryPropertiesInputNotificationsListList =
-  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ConnectedRegistryPropertiesInputNotificationsListList>;
-
 /** The garbage collection properties of the connected registry. */
 export interface GarbageCollectionProperties {
   /** Indicates whether garbage collection is enabled for the connected registry. */
@@ -220,11 +159,6 @@ export interface GarbageCollectionProperties {
   /** The cron expression indicating the schedule that the connected registry will run garbage collection. */
   schedule?: string;
 }
-const GarbageCollectionProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GarbageCollectionProperties>;
-
 /** The properties of a connected registry. */
 export interface ConnectedRegistryPropertiesInput {
   /** The mode of the connected registry resource that indicates the permissions of the registry. */
@@ -242,11 +176,6 @@ export interface ConnectedRegistryPropertiesInput {
   /** The garbage collection properties of the connected registry. */
   garbageCollection?: GarbageCollectionProperties;
 }
-const ConnectedRegistryPropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ConnectedRegistryPropertiesInput>;
-
 export interface CreateConnectedRegistryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -259,26 +188,15 @@ export interface CreateConnectedRegistryRequest {
   /** The properties of the connected registry. */
   properties?: ConnectedRegistryPropertiesInput;
 }
-const CreateConnectedRegistryRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateConnectedRegistryRequest>;
-
 /** The current connection state of the connected registry. */
 export type ConnectionState = "Online" | "Offline" | "Syncing" | "Unhealthy";
-const ConnectionState = S.String;
-
 /** The activation status of the connected registry. */
 export type ActivationStatus = "Active" | "Inactive";
-const ActivationStatus = S.String;
-
 /** The activation properties of the connected registry. */
 export interface ActivationProperties {
   /** The activation status of the connected registry. */
   status?: ActivationStatus;
 }
-const ActivationProperties = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ActivationProperties>;
-
 /** The sync properties of the connected registry with its parent. */
 export interface SyncProperties {
   /** The resource ID of the ACR token used to authenticate the connected registry to its parent during sync. */
@@ -294,8 +212,6 @@ export interface SyncProperties {
   /** The gateway endpoint used by the connected registry to communicate with its parent. */
   gatewayEndpoint?: string;
 }
-const SyncProperties = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<SyncProperties>;
-
 /** The properties of the connected registry parent. */
 export interface ParentProperties {
   /** The resource ID of the parent to which the connected registry will be associated. */
@@ -303,21 +219,12 @@ export interface ParentProperties {
   /** The sync properties of the connected registry with its parent. */
   syncProperties: SyncProperties;
 }
-const ParentProperties = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<ParentProperties>;
-
 /** The list of the ACR token resource IDs used to authenticate clients to the connected registry. */
 export type ConnectedRegistryPropertiesClientTokenIdsList = Array<string>;
-const ConnectedRegistryPropertiesClientTokenIdsList =
-  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ConnectedRegistryPropertiesClientTokenIdsList>;
-
 /** Indicates whether HTTPS is enabled for the login server. */
 export type TlsStatus = "Enabled" | "Disabled";
-const TlsStatus = S.String;
-
 /** The type of certificate location. */
 export type CertificateType = "LocalDirectory";
-const CertificateType = S.String;
-
 /** The TLS certificate properties of the connected registry login server. */
 export interface TlsCertificateProperties {
   /** The type of certificate location. */
@@ -325,11 +232,6 @@ export interface TlsCertificateProperties {
   /** Indicates the location of the certificates. */
   location?: string;
 }
-const TlsCertificateProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<TlsCertificateProperties>;
-
 /** The TLS properties of the connected registry login server. */
 export interface TlsProperties {
   /** Indicates whether HTTPS is enabled for the login server. */
@@ -337,8 +239,6 @@ export interface TlsProperties {
   /** The certificate used to configure HTTPS for the login server. */
   certificate?: TlsCertificateProperties;
 }
-const TlsProperties = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<TlsProperties>;
-
 /** The login server properties of the connected registry. */
 export interface LoginServerProperties {
   /** The host of the connected registry. Can be FQDN or IP. */
@@ -346,11 +246,6 @@ export interface LoginServerProperties {
   /** The TLS properties of the connected registry login server. */
   tls?: TlsProperties;
 }
-const LoginServerProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<LoginServerProperties>;
-
 /** The status detail properties of the connected registry. */
 export interface StatusDetailProperties {
   /** The component of the connected registry corresponding to the status. */
@@ -364,23 +259,10 @@ export interface StatusDetailProperties {
   /** The correlation ID of the status. */
   correlationId?: string;
 }
-const StatusDetailProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<StatusDetailProperties>;
-
 /** The list of current statuses of the connected registry. */
 export type ConnectedRegistryPropertiesStatusDetailsList = Array<StatusDetailProperties>;
-const ConnectedRegistryPropertiesStatusDetailsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ConnectedRegistryPropertiesStatusDetailsList>;
-
 /** The list of notifications subscription information for the connected registry. */
 export type ConnectedRegistryPropertiesNotificationsListList = Array<string>;
-const ConnectedRegistryPropertiesNotificationsListList =
-  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ConnectedRegistryPropertiesNotificationsListList>;
-
 /** The properties of a connected registry. */
 export interface ConnectedRegistryProperties {
   /** Provisioning state of the resource. */
@@ -410,11 +292,6 @@ export interface ConnectedRegistryProperties {
   /** The garbage collection properties of the connected registry. */
   garbageCollection?: GarbageCollectionProperties;
 }
-const ConnectedRegistryProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ConnectedRegistryProperties>;
-
 export interface CreateConnectedRegistryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -427,19 +304,10 @@ export interface CreateConnectedRegistryResponse {
   /** The properties of the connected registry. */
   properties?: ConnectedRegistryProperties;
 }
-const CreateConnectedRegistryResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateConnectedRegistryResponse>;
-
 /** The name of the credential. */
 export type CredentialName = "Credential1";
-const CredentialName = S.String;
-
 /** The health status of credential. */
 export type CredentialHealthStatus = "Healthy" | "Unhealthy";
-const CredentialHealthStatus = S.String;
-
 /** The health of the auth credential. */
 export interface CredentialHealth {
   /** The health status of credential. */
@@ -449,8 +317,6 @@ export interface CredentialHealth {
   /** Descriptive message representing the health check error. */
   errorMessage?: string;
 }
-const CredentialHealth = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<CredentialHealth>;
-
 /** Authentication credential stored for an upstream. */
 export interface AuthCredential {
   /** The name of the credential. */
@@ -462,15 +328,8 @@ export interface AuthCredential {
   /** This provides data pertaining to the health of the auth credential. */
   credentialHealth?: CredentialHealth;
 }
-const AuthCredential = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<AuthCredential>;
-
 /** List of authentication credentials stored for an upstream. Usually consists of a primary and an optional secondary credential. */
 export type CredentialSetPropertiesInputAuthCredentialsList = Array<AuthCredential>;
-const CredentialSetPropertiesInputAuthCredentialsList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CredentialSetPropertiesInputAuthCredentialsList>;
-
 /** The properties of a credential set resource. */
 export interface CredentialSetPropertiesInput {
   /** The credentials are stored for this upstream or login server. */
@@ -478,29 +337,17 @@ export interface CredentialSetPropertiesInput {
   /** List of authentication credentials stored for an upstream. Usually consists of a primary and an optional secondary credential. */
   authCredentials?: CredentialSetPropertiesInputAuthCredentialsList;
 }
-const CredentialSetPropertiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CredentialSetPropertiesInput>;
-
 /** The identity type. */
 export type ResourceIdentityType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
-const ResourceIdentityType = S.String;
-
 export type UserIdentityPropertiesInput = LoginServerPropertiesInput;
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityPropertiesInputUserAssignedIdentitiesMap = {
   [key: string]: LoginServerPropertiesInput | undefined;
 };
-const IdentityPropertiesInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<IdentityPropertiesInputUserAssignedIdentitiesMap>;
-
 /** Managed identity for the resource. */
 export interface IdentityPropertiesInput {
   /** The identity type. */
@@ -508,11 +355,6 @@ export interface IdentityPropertiesInput {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityPropertiesInputUserAssignedIdentitiesMap;
 }
-const IdentityPropertiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<IdentityPropertiesInput>;
-
 export interface CreateCredentialSetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -527,16 +369,8 @@ export interface CreateCredentialSetRequest {
   /** Identities associated with the resource. This is used to access the KeyVault secrets. */
   identity?: IdentityPropertiesInput;
 }
-const CreateCredentialSetRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateCredentialSetRequest>;
-
 /** List of authentication credentials stored for an upstream. Usually consists of a primary and an optional secondary credential. */
 export type CredentialSetPropertiesAuthCredentialsList = Array<AuthCredential>;
-const CredentialSetPropertiesAuthCredentialsList =
-  CredentialSetPropertiesInputAuthCredentialsList as any as S.Schema<CredentialSetPropertiesAuthCredentialsList>;
-
 /** The properties of a credential set resource. */
 export interface CredentialSetProperties {
   /** The credentials are stored for this upstream or login server. */
@@ -548,31 +382,16 @@ export interface CredentialSetProperties {
   /** Provisioning state of the resource. */
   provisioningState?: ProvisioningState;
 }
-const CredentialSetProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CredentialSetProperties>;
-
 export interface UserIdentityProperties {
   /** The principal id of user assigned identity. */
   principalId?: string;
   /** The client id of user assigned identity. */
   clientId?: string;
 }
-const UserIdentityProperties = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<UserIdentityProperties>;
-
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityPropertiesUserAssignedIdentitiesMap = {
   [key: string]: UserIdentityProperties | undefined;
 };
-const IdentityPropertiesUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<IdentityPropertiesUserAssignedIdentitiesMap>;
-
 /** Managed identity for the resource. */
 export interface IdentityProperties {
   /** The principal ID of resource identity. */
@@ -584,8 +403,6 @@ export interface IdentityProperties {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityPropertiesUserAssignedIdentitiesMap;
 }
-const IdentityProperties = /*@__PURE__*/ __L.at(__c4, 4) as any as S.Schema<IdentityProperties>;
-
 export interface CreateCredentialSetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -600,26 +417,12 @@ export interface CreateCredentialSetResponse {
   /** Identities associated with the resource. This is used to access the KeyVault secrets. */
   identity?: IdentityProperties;
 }
-const CreateCredentialSetResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateCredentialSetResponse>;
-
 /** Resource tags. */
 export type CreateRegistryRequestTagsMap = { [key: string]: string | undefined };
-const CreateRegistryRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateRegistryRequestTagsMap>;
-
 /** The default action of allow or deny when no other rules match. */
 export type NetworkRuleSetDefaultAction = "Allow" | "Deny";
-const NetworkRuleSetDefaultAction = S.String;
-
 /** The action of IP ACL rule. */
 export type IPRuleAction = "Allow";
-const IPRuleAction = S.String;
-
 /** IP rule with specific IP or IP range in CIDR format. */
 export interface IPRule {
   /** The action of IP ACL rule. */
@@ -627,15 +430,8 @@ export interface IPRule {
   /** Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed. */
   value: string;
 }
-const IPRule = /*@__PURE__*/ __L.at(__c4, 7) as any as S.Schema<IPRule>;
-
 /** The IP ACL rules. */
 export type NetworkRuleSetIpRulesList = Array<IPRule>;
-const NetworkRuleSetIpRulesList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<NetworkRuleSetIpRulesList>;
-
 /** The network rule set for a container registry. */
 export interface NetworkRuleSet {
   /** The default action of allow or deny when no other rules match. */
@@ -643,8 +439,6 @@ export interface NetworkRuleSet {
   /** The IP ACL rules. */
   ipRules?: NetworkRuleSetIpRulesList;
 }
-const NetworkRuleSet = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<NetworkRuleSet>;
-
 /** The value that indicates whether the policy is enabled or not. */
 export type QuarantinePolicyStatus = "enabled" | "disabled";
 /** The quarantine policy for a container registry. */
@@ -652,16 +446,10 @@ export interface QuarantinePolicy {
   /** The value that indicates whether the policy is enabled or not. */
   status?: QuarantinePolicyStatus | (string & {});
 }
-const QuarantinePolicy = ActivationProperties as any as S.Schema<QuarantinePolicy>;
-
 /** The type of trust policy. */
 export type TrustPolicyType = "Notary";
-const TrustPolicyType = S.String;
-
 /** The value that indicates whether the policy is enabled or not. */
 export type TrustPolicyStatus = "enabled" | "disabled";
-const TrustPolicyStatus = S.String;
-
 /** The content trust policy for a container registry. */
 export interface TrustPolicy {
   /** The type of trust policy. */
@@ -669,12 +457,8 @@ export interface TrustPolicy {
   /** The value that indicates whether the policy is enabled or not. */
   status?: TrustPolicyStatus | (string & {});
 }
-const TrustPolicy = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<TrustPolicy>;
-
 /** The value that indicates whether the policy is enabled or not. */
 export type RetentionPolicyInputStatus = "enabled" | "disabled";
-const RetentionPolicyInputStatus = S.String;
-
 /** The retention policy for a container registry. */
 export interface RetentionPolicyInput {
   /** The number of days to retain an untagged manifest after which it gets purged. */
@@ -682,8 +466,6 @@ export interface RetentionPolicyInput {
   /** The value that indicates whether the policy is enabled or not. */
   status?: RetentionPolicyInputStatus | (string & {});
 }
-const RetentionPolicyInput = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<RetentionPolicyInput>;
-
 /** The value that indicates whether the policy is enabled or not. */
 export type ExportPolicyStatus = "enabled" | "disabled";
 /** The export policy for a container registry. */
@@ -691,22 +473,13 @@ export interface ExportPolicy {
   /** The value that indicates whether the policy is enabled or not. */
   status?: ExportPolicyStatus | (string & {});
 }
-const ExportPolicy = ActivationProperties as any as S.Schema<ExportPolicy>;
-
 /** The value that indicates whether the policy is enabled or not. */
 export type AzureADAuthenticationAsArmPolicyStatus = "enabled" | "disabled";
-const AzureADAuthenticationAsArmPolicyStatus = S.String;
-
 /** The policy for using Azure Resource Manager audience token for a container registry. */
 export interface AzureADAuthenticationAsArmPolicy {
   /** The value that indicates whether the policy is enabled or not. */
   status?: AzureADAuthenticationAsArmPolicyStatus | (string & {});
 }
-const AzureADAuthenticationAsArmPolicy = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<AzureADAuthenticationAsArmPolicy>;
-
 /** The policies for a container registry. */
 export interface PoliciesInput {
   /** The quarantine policy for a container registry. */
@@ -720,52 +493,30 @@ export interface PoliciesInput {
   /** The policy for using Azure Resource Manager audience token for a container registry. */
   azureADAuthenticationAsArmPolicy?: AzureADAuthenticationAsArmPolicy;
 }
-const PoliciesInput = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<PoliciesInput>;
-
 /** Indicates whether or not the encryption is enabled for container registry. */
 export type EncryptionStatus = "enabled" | "disabled";
-const EncryptionStatus = S.String;
-
 export interface KeyVaultPropertiesInput {
   /** Key vault uri to access the encryption key. */
   keyIdentifier?: string;
   /** The client id of the identity which will be used to access key vault. */
   identity?: string;
 }
-const KeyVaultPropertiesInput = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<KeyVaultPropertiesInput>;
-
 export interface EncryptionPropertyInput {
   /** Indicates whether or not the encryption is enabled for container registry. */
   status?: EncryptionStatus | (string & {});
   /** Key vault properties. */
   keyVaultProperties?: KeyVaultPropertiesInput;
 }
-const EncryptionPropertyInput = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<EncryptionPropertyInput>;
-
 /** Whether or not public network access is allowed for the container registry. */
 export type RegistryPropertiesInputPublicNetworkAccess = "Enabled" | "Disabled";
-const RegistryPropertiesInputPublicNetworkAccess = S.String;
-
 /** Whether to allow trusted Azure services to access a network restricted registry. */
 export type RegistryPropertiesInputNetworkRuleBypassOptions = "AzureServices" | "None";
-const RegistryPropertiesInputNetworkRuleBypassOptions = S.String;
-
 /** Whether or not zone redundancy is enabled for this container registry */
 export type RegistryPropertiesInputZoneRedundancy = "Enabled" | "Disabled";
-const RegistryPropertiesInputZoneRedundancy = S.String;
-
 /** Determines registry role assignment mode. */
 export type RegistryPropertiesInputRoleAssignmentMode =
   | "AbacRepositoryPermissions"
   | "LegacyRegistryPermissions";
-const RegistryPropertiesInputRoleAssignmentMode = S.String;
-
 /** The properties of a container registry. */
 export interface RegistryPropertiesInput {
   /** The value that indicates whether the admin user is enabled. */
@@ -791,19 +542,10 @@ export interface RegistryPropertiesInput {
   /** Determines registry role assignment mode. */
   roleAssignmentMode?: RegistryPropertiesInputRoleAssignmentMode | (string & {});
 }
-const RegistryPropertiesInput = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<RegistryPropertiesInput>;
-
 /** The SKU name of the container registry. Required for registry creation. */
 export type SkuName = "Classic" | "Basic" | "Standard" | "Premium";
-const SkuName = S.String;
-
 /** The SKU tier based on the SKU name. */
 export type SkuTier = "Classic" | "Basic" | "Standard" | "Premium";
-const SkuTier = S.String;
-
 /** The SKU of a container registry. */
 export interface Sku {
   /** The SKU name of the container registry. Required for registry creation. */
@@ -811,8 +553,6 @@ export interface Sku {
   /** The SKU tier based on the SKU name. */
   tier?: SkuTier | (string & {});
 }
-const Sku = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<Sku>;
-
 export interface CreateRegistryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -831,16 +571,8 @@ export interface CreateRegistryRequest {
   /** The identity of the container registry. */
   identity?: IdentityPropertiesInput;
 }
-const CreateRegistryRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateRegistryRequest>;
-
 /** Resource tags. */
 export type CreateRegistryResponseTagsMap = { [key: string]: string | undefined };
-const CreateRegistryResponseTagsMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<CreateRegistryResponseTagsMap>;
-
 /** The status of an Azure resource at the time the operation was called. */
 export interface Status {
   /** The short label for the status. */
@@ -850,12 +582,8 @@ export interface Status {
   /** The timestamp when the status was changed to the current value. */
   timestamp?: string;
 }
-const Status = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<Status>;
-
 /** The value that indicates whether the policy is enabled or not. */
 export type RetentionPolicyStatus = "enabled" | "disabled";
-const RetentionPolicyStatus = S.String;
-
 /** The retention policy for a container registry. */
 export interface RetentionPolicy {
   /** The number of days to retain an untagged manifest after which it gets purged. */
@@ -865,8 +593,6 @@ export interface RetentionPolicy {
   /** The value that indicates whether the policy is enabled or not. */
   status?: RetentionPolicyStatus;
 }
-const RetentionPolicy = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<RetentionPolicy>;
-
 /** The policies for a container registry. */
 export interface Policies {
   /** The quarantine policy for a container registry. */
@@ -880,8 +606,6 @@ export interface Policies {
   /** The policy for using Azure Resource Manager audience token for a container registry. */
   azureADAuthenticationAsArmPolicy?: AzureADAuthenticationAsArmPolicy;
 }
-const Policies = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<Policies>;
-
 export interface KeyVaultProperties {
   /** Key vault uri to access the encryption key. */
   keyIdentifier?: string;
@@ -894,36 +618,23 @@ export interface KeyVaultProperties {
   /** Timestamp of the last successful key rotation. */
   lastKeyRotationTimestamp?: string;
 }
-const KeyVaultProperties = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<KeyVaultProperties>;
-
 export interface EncryptionProperty {
   /** Indicates whether or not the encryption is enabled for container registry. */
   status?: EncryptionStatus;
   /** Key vault properties. */
   keyVaultProperties?: KeyVaultProperties;
 }
-const EncryptionProperty = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<EncryptionProperty>;
-
 /** List of host names that will serve data when dataEndpointEnabled is true. */
 export type RegistryPropertiesDataEndpointHostNamesList = Array<string>;
-const RegistryPropertiesDataEndpointHostNamesList =
-  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<RegistryPropertiesDataEndpointHostNamesList>;
-
 /** The Private Endpoint resource. */
 export interface PrivateEndpoint {
   /** This is private endpoint resource created with Microsoft.Network resource provider. */
   id?: string;
 }
-const PrivateEndpoint = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<PrivateEndpoint>;
-
 /** The private link service connection status. */
 export type ConnectionStatus = "Approved" | "Pending" | "Rejected" | "Disconnected";
-const ConnectionStatus = S.String;
-
 /** A message indicating if changes on the service provider require any updates on the consumer. */
 export type ActionsRequired = "None" | "Recreate";
-const ActionsRequired = S.String;
-
 /** The state of a private link service connection. */
 export interface PrivateLinkServiceConnectionState {
   /** The private link service connection status. */
@@ -933,11 +644,6 @@ export interface PrivateLinkServiceConnectionState {
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: ActionsRequired | (string & {});
 }
-const PrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<PrivateLinkServiceConnectionState>;
-
 /** The properties of a private endpoint connection. */
 export interface PrivateEndpointConnectionProperties {
   /** The resource of private endpoint. */
@@ -947,11 +653,6 @@ export interface PrivateEndpointConnectionProperties {
   /** The provisioning state of private endpoint connection resource. */
   provisioningState?: ProvisioningState | (string & {});
 }
-const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<PrivateEndpointConnectionProperties>;
-
 /** An object that represents a private endpoint connection for a container registry. */
 export interface PrivateEndpointConnection {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -965,36 +666,18 @@ export interface PrivateEndpointConnection {
   /** The properties of a private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const PrivateEndpointConnection = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<PrivateEndpointConnection>;
-
 /** List of private endpoint connections for a container registry. */
 export type RegistryPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-const RegistryPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<RegistryPropertiesPrivateEndpointConnectionsList>;
-
 /** Whether or not public network access is allowed for the container registry. */
 export type RegistryPropertiesPublicNetworkAccess = "Enabled" | "Disabled";
-const RegistryPropertiesPublicNetworkAccess = S.String;
-
 /** Whether to allow trusted Azure services to access a network restricted registry. */
 export type RegistryPropertiesNetworkRuleBypassOptions = "AzureServices" | "None";
-const RegistryPropertiesNetworkRuleBypassOptions = S.String;
-
 /** Whether or not zone redundancy is enabled for this container registry */
 export type RegistryPropertiesZoneRedundancy = "Enabled" | "Disabled";
-const RegistryPropertiesZoneRedundancy = S.String;
-
 /** Determines registry role assignment mode. */
 export type RegistryPropertiesRoleAssignmentMode =
   | "AbacRepositoryPermissions"
   | "LegacyRegistryPermissions";
-const RegistryPropertiesRoleAssignmentMode = S.String;
-
 /** The properties of a container registry. */
 export interface RegistryProperties {
   /** The URL that can be used to log into the container registry. */
@@ -1032,8 +715,6 @@ export interface RegistryProperties {
   /** Determines registry role assignment mode. */
   roleAssignmentMode?: RegistryPropertiesRoleAssignmentMode;
 }
-const RegistryProperties = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<RegistryProperties>;
-
 export interface CreateRegistryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1054,20 +735,10 @@ export interface CreateRegistryResponse {
   /** The identity of the container registry. */
   identity?: IdentityProperties;
 }
-const CreateRegistryResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CreateRegistryResponse>;
-
 /** Resource tags. */
 export type CreateReplicationRequestTagsMap = { [key: string]: string | undefined };
-const CreateReplicationRequestTagsMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<CreateReplicationRequestTagsMap>;
-
 /** Whether or not zone redundancy is enabled for this container registry replication */
 export type ReplicationPropertiesInputZoneRedundancy = "Enabled" | "Disabled";
-const ReplicationPropertiesInputZoneRedundancy = S.String;
-
 /** The properties of a replication. */
 export interface ReplicationPropertiesInput {
   /** Specifies whether the replication's regional endpoint is enabled. Requests will not be routed to a replication whose regional endpoint is disabled, however its data will continue to be synced with other replications. */
@@ -1075,11 +746,6 @@ export interface ReplicationPropertiesInput {
   /** Whether or not zone redundancy is enabled for this container registry replication */
   zoneRedundancy?: ReplicationPropertiesInputZoneRedundancy | (string & {});
 }
-const ReplicationPropertiesInput = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<ReplicationPropertiesInput>;
-
 export interface CreateReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1096,20 +762,10 @@ export interface CreateReplicationRequest {
   /** The properties of the replication. */
   properties?: ReplicationPropertiesInput;
 }
-const CreateReplicationRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CreateReplicationRequest>;
-
 /** Resource tags. */
 export type CreateReplicationResponseTagsMap = { [key: string]: string | undefined };
-const CreateReplicationResponseTagsMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<CreateReplicationResponseTagsMap>;
-
 /** Whether or not zone redundancy is enabled for this container registry replication */
 export type ReplicationPropertiesZoneRedundancy = "Enabled" | "Disabled";
-const ReplicationPropertiesZoneRedundancy = S.String;
-
 /** The properties of a replication. */
 export interface ReplicationProperties {
   /** The provisioning state of the replication at the time the operation was called. */
@@ -1121,11 +777,6 @@ export interface ReplicationProperties {
   /** Whether or not zone redundancy is enabled for this container registry replication */
   zoneRedundancy?: ReplicationPropertiesZoneRedundancy;
 }
-const ReplicationProperties = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ReplicationProperties>;
-
 export interface CreateReplicationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1142,16 +793,8 @@ export interface CreateReplicationResponse {
   /** The properties of the replication. */
   properties?: ReplicationProperties;
 }
-const CreateReplicationResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CreateReplicationResponse>;
-
 /** The list of scoped permissions for registry artifacts. E.g. repositories/repository-name/content/read, repositories/repository-name/metadata/write */
 export type ScopeMapPropertiesInputActionsList = Array<string>;
-const ScopeMapPropertiesInputActionsList =
-  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ScopeMapPropertiesInputActionsList>;
-
 /** The properties of a scope map. */
 export interface ScopeMapPropertiesInput {
   /** The user friendly description of the scope map. */
@@ -1159,11 +802,6 @@ export interface ScopeMapPropertiesInput {
   /** The list of scoped permissions for registry artifacts. E.g. repositories/repository-name/content/read, repositories/repository-name/metadata/write */
   actions: ScopeMapPropertiesInputActionsList;
 }
-const ScopeMapPropertiesInput = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<ScopeMapPropertiesInput>;
-
 export interface CreateScopeMapRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1176,16 +814,8 @@ export interface CreateScopeMapRequest {
   /** The properties of the scope map. */
   properties?: ScopeMapPropertiesInput;
 }
-const CreateScopeMapRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateScopeMapRequest>;
-
 /** The list of scoped permissions for registry artifacts. E.g. repositories/repository-name/content/read, repositories/repository-name/metadata/write */
 export type ScopeMapPropertiesActionsList = Array<string>;
-const ScopeMapPropertiesActionsList =
-  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ScopeMapPropertiesActionsList>;
-
 /** The properties of a scope map. */
 export interface ScopeMapProperties {
   /** The user friendly description of the scope map. */
@@ -1199,8 +829,6 @@ export interface ScopeMapProperties {
   /** The list of scoped permissions for registry artifacts. E.g. repositories/repository-name/content/read, repositories/repository-name/metadata/write */
   actions: ScopeMapPropertiesActionsList;
 }
-const ScopeMapProperties = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<ScopeMapProperties>;
-
 export interface CreateScopeMapResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1213,31 +841,18 @@ export interface CreateScopeMapResponse {
   /** The properties of the scope map. */
   properties?: ScopeMapProperties;
 }
-const CreateScopeMapResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateScopeMapResponse>;
-
 /** The tags of the resource. */
 export type CreateTaskRequestTagsMap = { [key: string]: string | undefined };
-const CreateTaskRequestTagsMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<CreateTaskRequestTagsMap>;
-
 /** The identity type. */
 export type IdentityPropertiesType =
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned"
   | "None";
-const IdentityPropertiesType = S.String;
-
 /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
 export type IdentityPropertiesUserAssignedIdentitiesMap_2 = {
   [key: string]: UserIdentityProperties | undefined;
 };
-const IdentityPropertiesUserAssignedIdentitiesMap_2 =
-  IdentityPropertiesUserAssignedIdentitiesMap as any as S.Schema<IdentityPropertiesUserAssignedIdentitiesMap_2>;
-
 /** Managed identity for the resource. */
 export interface IdentityProperties_2 {
   /** The principal ID of resource identity. */
@@ -1249,24 +864,14 @@ export interface IdentityProperties_2 {
   /** The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/ providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'. */
   userAssignedIdentities?: IdentityPropertiesUserAssignedIdentitiesMap_2;
 }
-const IdentityProperties_2 = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<IdentityProperties_2>;
-
 /** The current status of task. */
 export type TaskPropertiesInputStatus = "Disabled" | "Enabled";
-const TaskPropertiesInputStatus = S.String;
-
 /** The operating system type required for the run. */
 export type PlatformPropertiesOs = "Windows" | "Linux";
-const PlatformPropertiesOs = S.String;
-
 /** The OS architecture. */
 export type PlatformPropertiesArchitecture = "amd64" | "x86" | "arm";
-const PlatformPropertiesArchitecture = S.String;
-
 /** Variant of the CPU. */
 export type PlatformPropertiesVariant = "v6" | "v7" | "v8";
-const PlatformPropertiesVariant = S.String;
-
 /** The platform properties against which the run has to happen. */
 export interface PlatformProperties {
   /** The operating system type required for the run. */
@@ -1276,19 +881,13 @@ export interface PlatformProperties {
   /** Variant of the CPU. */
   variant?: PlatformPropertiesVariant | (string & {});
 }
-const PlatformProperties = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<PlatformProperties>;
-
 /** The properties that determine the run agent configuration. */
 export interface AgentProperties {
   /** The CPU configuration in terms of number of cores required for the run. */
   cpu?: number;
 }
-const AgentProperties = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<AgentProperties>;
-
 /** The type of the step. */
 export type TaskStepPropertiesInputType = "Docker" | "FileTask" | "EncodedTask";
-const TaskStepPropertiesInputType = S.String;
-
 /** Base properties for any task step. */
 export interface TaskStepPropertiesInput {
   /** The type of the step. */
@@ -1320,15 +919,8 @@ export interface TaskStepPropertiesInput {
   /** FileTask/EncodedTask step: values to override ({ name, value, isSecret }[]). */
   values?: unknown;
 }
-const TaskStepPropertiesInput = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<TaskStepPropertiesInput>;
-
 /** The current status of trigger. */
 export type TimerTriggerStatus = "Disabled" | "Enabled";
-const TimerTriggerStatus = S.String;
-
 /** The properties of a timer trigger. */
 export interface TimerTrigger {
   /** The CRON expression for the task schedule */
@@ -1338,23 +930,12 @@ export interface TimerTrigger {
   /** The name of the trigger. */
   name: string;
 }
-const TimerTrigger = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<TimerTrigger>;
-
 /** The collection of timer triggers. */
 export type TriggerPropertiesTimerTriggersList = Array<TimerTrigger>;
-const TriggerPropertiesTimerTriggersList = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<TriggerPropertiesTimerTriggersList>;
-
 /** The type of source control service. */
 export type SourcePropertiesSourceControlType = "Github" | "VisualStudioTeamService";
-const SourcePropertiesSourceControlType = S.String;
-
 /** The type of Auth token. */
 export type AuthInfoTokenType = "PAT" | "OAuth";
-const AuthInfoTokenType = S.String;
-
 /** The authorization properties for accessing the source code repository. */
 export interface AuthInfo {
   /** The type of Auth token. */
@@ -1368,8 +949,6 @@ export interface AuthInfo {
   /** Time in seconds that the token remains valid */
   expiresIn?: number;
 }
-const AuthInfo = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<AuthInfo>;
-
 /** The properties of the source code repository. */
 export interface SourceProperties {
   /** The type of source control service. */
@@ -1381,24 +960,13 @@ export interface SourceProperties {
   /** The authorization properties for accessing the source code repository and to set up webhooks for notifications. */
   sourceControlAuthProperties?: AuthInfo;
 }
-const SourceProperties = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<SourceProperties>;
-
 export type SourceTriggerSourceTriggerEventsItem = "commit" | "pullrequest";
-const SourceTriggerSourceTriggerEventsItem = S.String;
-
 /** The source event corresponding to the trigger. */
 export type SourceTriggerSourceTriggerEventsList = Array<
   SourceTriggerSourceTriggerEventsItem | (string & {})
 >;
-const SourceTriggerSourceTriggerEventsList = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<SourceTriggerSourceTriggerEventsList>;
-
 /** The current status of trigger. */
 export type SourceTriggerStatus = "Disabled" | "Enabled";
-const SourceTriggerStatus = S.String;
-
 /** The properties of a source based trigger. */
 export interface SourceTrigger {
   /** The properties that describes the source(code) for the task. */
@@ -1410,23 +978,12 @@ export interface SourceTrigger {
   /** The name of the trigger. */
   name: string;
 }
-const SourceTrigger = /*@__PURE__*/ __L.at(__c10, 0) as any as S.Schema<SourceTrigger>;
-
 /** The collection of triggers based on source code repository. */
 export type TriggerPropertiesSourceTriggersList = Array<SourceTrigger>;
-const TriggerPropertiesSourceTriggersList = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<TriggerPropertiesSourceTriggersList>;
-
 /** The type of the auto trigger for base image dependency updates. */
 export type BaseImageTriggerBaseImageTriggerType = "All" | "Runtime";
-const BaseImageTriggerBaseImageTriggerType = S.String;
-
 /** The current status of trigger. */
 export type BaseImageTriggerStatus = "Disabled" | "Enabled";
-const BaseImageTriggerStatus = S.String;
-
 /** The trigger based on base image dependency. */
 export interface BaseImageTrigger {
   /** The type of the auto trigger for base image dependency updates. */
@@ -1436,8 +993,6 @@ export interface BaseImageTrigger {
   /** The name of the trigger. */
   name: string;
 }
-const BaseImageTrigger = /*@__PURE__*/ __L.at(__c10, 2) as any as S.Schema<BaseImageTrigger>;
-
 /** The properties of a trigger. */
 export interface TriggerProperties {
   /** The collection of timer triggers. */
@@ -1447,26 +1002,15 @@ export interface TriggerProperties {
   /** The trigger based on base image dependencies. */
   baseImageTrigger?: BaseImageTrigger;
 }
-const TriggerProperties = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<TriggerProperties>;
-
 /** The authentication mode which determines the source registry login scope. The credentials for the source registry will be generated using the given scope. These credentials will be used to login to the source registry during the run. */
 export type SourceRegistryCredentialsLoginMode = "None" | "Default";
-const SourceRegistryCredentialsLoginMode = S.String;
-
 /** Describes the credential parameters for accessing the source registry. */
 export interface SourceRegistryCredentials {
   /** The authentication mode which determines the source registry login scope. The credentials for the source registry will be generated using the given scope. These credentials will be used to login to the source registry during the run. */
   loginMode?: SourceRegistryCredentialsLoginMode | (string & {});
 }
-const SourceRegistryCredentials = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<SourceRegistryCredentials>;
-
 /** The type of the secret object which determines how the value of the secret object has to be interpreted. */
 export type SecretObjectType = "Opaque" | "Vaultsecret";
-const SecretObjectType = S.String;
-
 /** Describes the properties of a secret object value. */
 export interface SecretObject {
   /** The value of the secret. The format of this value will be determined based on the type of the secret object. If the type is Opaque, the value will be used as is without any modification. */
@@ -1474,8 +1018,6 @@ export interface SecretObject {
   /** The type of the secret object which determines how the value of the secret object has to be interpreted. */
   type?: SecretObjectType | (string & {});
 }
-const SecretObject = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<SecretObject>;
-
 /** Describes the credentials that will be used to access a custom registry during a run. */
 export interface CustomRegistryCredentials {
   /** The username for logging into the custom registry. */
@@ -1485,20 +1027,10 @@ export interface CustomRegistryCredentials {
   /** Indicates the managed identity assigned to the custom credential. If a user-assigned identity this value is the Client ID. If a system-assigned identity, the value will be `system`. In the case of a system-assigned identity, the Client ID will be determined by the runner. This identity may be used to authenticate to key vault to retrieve credentials or it may be the only source of authentication used for accessing the registry. */
   identity?: string;
 }
-const CustomRegistryCredentials = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<CustomRegistryCredentials>;
-
 /** Describes the credential parameters for accessing other custom registries. The key for the dictionary item will be the registry login server (myregistry.azurecr.io) and the value of the item will be the registry credentials for accessing the registry. */
 export type CredentialsCustomRegistriesMap = {
   [key: string]: CustomRegistryCredentials | undefined;
 };
-const CredentialsCustomRegistriesMap = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<CredentialsCustomRegistriesMap>;
-
 /** The parameters that describes a set of credentials that will be used when a run is invoked. */
 export interface Credentials {
   /** Describes the credential parameters for accessing the source registry. */
@@ -1506,8 +1038,6 @@ export interface Credentials {
   /** Describes the credential parameters for accessing other custom registries. The key for the dictionary item will be the registry login server (myregistry.azurecr.io) and the value of the item will be the registry credentials for accessing the registry. */
   customRegistries?: CredentialsCustomRegistriesMap;
 }
-const Credentials = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<Credentials>;
-
 /** The properties of a task. */
 export interface TaskPropertiesInput {
   /** The current status of task. */
@@ -1525,8 +1055,6 @@ export interface TaskPropertiesInput {
   /** The properties that describes a set of credentials that will be used when this run is invoked. */
   credentials?: Credentials;
 }
-const TaskPropertiesInput = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<TaskPropertiesInput>;
-
 export interface CreateTaskRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -1545,13 +1073,8 @@ export interface CreateTaskRequest {
   /** The properties of a task. */
   properties?: TaskPropertiesInput;
 }
-const CreateTaskRequest = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<CreateTaskRequest>;
-
 /** The tags of the resource. */
 export type CreateTaskResponseTagsMap = { [key: string]: string | undefined };
-const CreateTaskResponseTagsMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<CreateTaskResponseTagsMap>;
-
 /** The provisioning state of the task. */
 export type TaskPropertiesProvisioningState =
   | "Creating"
@@ -1560,20 +1083,12 @@ export type TaskPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled";
-const TaskPropertiesProvisioningState = S.String;
-
 /** The current status of task. */
 export type TaskPropertiesStatus = "Disabled" | "Enabled";
-const TaskPropertiesStatus = S.String;
-
 /** The type of the step. */
 export type TaskStepPropertiesType = "Docker" | "FileTask" | "EncodedTask";
-const TaskStepPropertiesType = S.String;
-
 /** The type of the base image dependency. */
 export type BaseImageDependencyType = "BuildTime" | "RunTime";
-const BaseImageDependencyType = S.String;
-
 /** Properties that describe a base image dependency. */
 export interface BaseImageDependency {
   /** The type of the base image dependency. */
@@ -1587,15 +1102,8 @@ export interface BaseImageDependency {
   /** The sha256-based digest of the image manifest. */
   digest?: string;
 }
-const BaseImageDependency = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<BaseImageDependency>;
-
 /** List of base image dependencies for a step. */
 export type TaskStepPropertiesBaseImageDependenciesList = Array<BaseImageDependency>;
-const TaskStepPropertiesBaseImageDependenciesList = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<TaskStepPropertiesBaseImageDependenciesList>;
-
 /** Base properties for any task step. */
 export interface TaskStepProperties {
   /** The type of the step. */
@@ -1629,8 +1137,6 @@ export interface TaskStepProperties {
   /** FileTask/EncodedTask step: values to override ({ name, value, isSecret }[]). */
   values?: unknown;
 }
-const TaskStepProperties = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<TaskStepProperties>;
-
 /** The properties of a task. */
 export interface TaskProperties {
   /** The provisioning state of the task. */
@@ -1652,8 +1158,6 @@ export interface TaskProperties {
   /** The properties that describes a set of credentials that will be used when this run is invoked. */
   credentials?: Credentials;
 }
-const TaskProperties = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<TaskProperties>;
-
 export interface CreateTaskResponse {
   /** The resource ID. */
   id?: string;
@@ -1670,11 +1174,7 @@ export interface CreateTaskResponse {
   /** The properties of a task. */
   properties?: TaskProperties;
 }
-const CreateTaskResponse = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<CreateTaskResponse>;
-
 export type TokenCertificateName = "certificate1" | "certificate2";
-const TokenCertificateName = S.String;
-
 /** The properties of a certificate used for authenticating a token. */
 export interface TokenCertificate {
   name?: TokenCertificateName | (string & {});
@@ -1685,18 +1185,9 @@ export interface TokenCertificate {
   /** Base 64 encoded string of the public certificate1 in PEM format that will be used for authenticating the token. */
   encodedPemCertificate?: string;
 }
-const TokenCertificate = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<TokenCertificate>;
-
 export type TokenCredentialsPropertiesInputCertificatesList = Array<TokenCertificate>;
-const TokenCredentialsPropertiesInputCertificatesList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<TokenCredentialsPropertiesInputCertificatesList>;
-
 /** The password name "password1" or "password2" */
 export type TokenPasswordName = "password1" | "password2";
-const TokenPasswordName = S.String;
-
 /** The password that will be used for authenticating the token of a container registry. */
 export interface TokenPasswordInput {
   /** The creation datetime of the password. */
@@ -1706,28 +1197,14 @@ export interface TokenPasswordInput {
   /** The password name "password1" or "password2" */
   name?: TokenPasswordName | (string & {});
 }
-const TokenPasswordInput = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<TokenPasswordInput>;
-
 export type TokenCredentialsPropertiesInputPasswordsList = Array<TokenPasswordInput>;
-const TokenCredentialsPropertiesInputPasswordsList = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<TokenCredentialsPropertiesInputPasswordsList>;
-
 /** The properties of the credentials that can be used for authenticating the token. */
 export interface TokenCredentialsPropertiesInput {
   certificates?: TokenCredentialsPropertiesInputCertificatesList;
   passwords?: TokenCredentialsPropertiesInputPasswordsList;
 }
-const TokenCredentialsPropertiesInput = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<TokenCredentialsPropertiesInput>;
-
 /** The status of the token example enabled or disabled. */
 export type TokenStatus = "enabled" | "disabled";
-const TokenStatus = S.String;
-
 /** The properties of a token. */
 export interface TokenPropertiesInput {
   /** The resource ID of the scope map to which the token will be associated with. */
@@ -1737,11 +1214,6 @@ export interface TokenPropertiesInput {
   /** The status of the token example enabled or disabled. */
   status?: TokenStatus | (string & {});
 }
-const TokenPropertiesInput = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<TokenPropertiesInput>;
-
 export interface CreateTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1754,12 +1226,7 @@ export interface CreateTokenRequest {
   /** The properties of the token. */
   properties?: TokenPropertiesInput;
 }
-const CreateTokenRequest = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<CreateTokenRequest>;
-
 export type TokenCredentialsPropertiesCertificatesList = Array<TokenCertificate>;
-const TokenCredentialsPropertiesCertificatesList =
-  TokenCredentialsPropertiesInputCertificatesList as any as S.Schema<TokenCredentialsPropertiesCertificatesList>;
-
 /** The password that will be used for authenticating the token of a container registry. */
 export interface TokenPassword {
   /** The creation datetime of the password. */
@@ -1771,24 +1238,12 @@ export interface TokenPassword {
   /** The password value. */
   value?: string;
 }
-const TokenPassword = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<TokenPassword>;
-
 export type TokenCredentialsPropertiesPasswordsList = Array<TokenPassword>;
-const TokenCredentialsPropertiesPasswordsList = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<TokenCredentialsPropertiesPasswordsList>;
-
 /** The properties of the credentials that can be used for authenticating the token. */
 export interface TokenCredentialsProperties {
   certificates?: TokenCredentialsPropertiesCertificatesList;
   passwords?: TokenCredentialsPropertiesPasswordsList;
 }
-const TokenCredentialsProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<TokenCredentialsProperties>;
-
 /** The properties of a token. */
 export interface TokenProperties {
   /** The creation date of scope map. */
@@ -1802,8 +1257,6 @@ export interface TokenProperties {
   /** The status of the token example enabled or disabled. */
   status?: TokenStatus;
 }
-const TokenProperties = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<TokenProperties>;
-
 export interface CreateTokenResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1816,30 +1269,17 @@ export interface CreateTokenResponse {
   /** The properties of the token. */
   properties?: TokenProperties;
 }
-const CreateTokenResponse = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<CreateTokenResponse>;
-
 /** The tags for the webhook. */
 export type CreateWebhookRequestTagsMap = { [key: string]: string | undefined };
-const CreateWebhookRequestTagsMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<CreateWebhookRequestTagsMap>;
-
 /** Custom headers that will be added to the webhook notifications. */
 export type WebhookPropertiesCreateParametersCustomHeadersMap = {
   [key: string]: string | undefined;
 };
-const WebhookPropertiesCreateParametersCustomHeadersMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<WebhookPropertiesCreateParametersCustomHeadersMap>;
-
 /** The status of the webhook at the time the operation was called. */
 export type WebhookStatus = "enabled" | "disabled";
-const WebhookStatus = S.String;
-
 export type WebhookAction = "push" | "delete" | "quarantine" | "chart_push" | "chart_delete";
 /** The list of actions that trigger the webhook to post notifications. */
 export type WebhookPropertiesCreateParametersActionsList = Array<WebhookAction | (string & {})>;
-const WebhookPropertiesCreateParametersActionsList =
-  SourceTriggerSourceTriggerEventsList as any as S.Schema<WebhookPropertiesCreateParametersActionsList>;
-
 /** The parameters for creating the properties of a webhook. */
 export interface WebhookPropertiesCreateParameters {
   /** The service URI for the webhook to post notifications. */
@@ -1853,11 +1293,6 @@ export interface WebhookPropertiesCreateParameters {
   /** The list of actions that trigger the webhook to post notifications. */
   actions: WebhookPropertiesCreateParametersActionsList;
 }
-const WebhookPropertiesCreateParameters = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<WebhookPropertiesCreateParameters>;
-
 export interface CreateWebhookRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1874,21 +1309,10 @@ export interface CreateWebhookRequest {
   /** The properties that the webhook will be created with. */
   properties?: WebhookPropertiesCreateParameters;
 }
-const CreateWebhookRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<CreateWebhookRequest>;
-
 /** Resource tags. */
 export type CreateWebhookResponseTagsMap = { [key: string]: string | undefined };
-const CreateWebhookResponseTagsMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<CreateWebhookResponseTagsMap>;
-
 /** The list of actions that trigger the webhook to post notifications. */
 export type WebhookPropertiesActionsList = Array<WebhookAction>;
-const WebhookPropertiesActionsList =
-  WebhookPropertiesCreateParametersActionsList as any as S.Schema<WebhookPropertiesActionsList>;
-
 /** The properties of a webhook. */
 export interface WebhookProperties {
   /** The status of the webhook at the time the operation was called. */
@@ -1900,8 +1324,6 @@ export interface WebhookProperties {
   /** The provisioning state of the webhook at the time the operation was called. */
   provisioningState?: ProvisioningState;
 }
-const WebhookProperties = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<WebhookProperties>;
-
 export interface CreateWebhookResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -1918,11 +1340,6 @@ export interface CreateWebhookResponse {
   /** The properties of the webhook. */
   properties?: WebhookProperties;
 }
-const CreateWebhookResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<CreateWebhookResponse>;
-
 export interface DeactivateConnectedRegistryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1933,17 +1350,7 @@ export interface DeactivateConnectedRegistryRequest {
   /** The name of the connected registry. */
   connectedRegistryName: string;
 }
-const DeactivateConnectedRegistryRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<DeactivateConnectedRegistryRequest>;
-
 export interface DeactivateConnectedRegistryResponse {}
-const DeactivateConnectedRegistryResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<DeactivateConnectedRegistryResponse>;
-
 export interface DeleteCacheRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1954,14 +1361,7 @@ export interface DeleteCacheRuleRequest {
   /** The name of the cache rule. */
   cacheRuleName: string;
 }
-const DeleteCacheRuleRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<DeleteCacheRuleRequest>;
-
 export interface DeleteCacheRuleResponse {}
-const DeleteCacheRuleResponse = CancelRunResponse as any as S.Schema<DeleteCacheRuleResponse>;
-
 export interface DeleteConnectedRegistryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1972,17 +1372,7 @@ export interface DeleteConnectedRegistryRequest {
   /** The name of the connected registry. */
   connectedRegistryName: string;
 }
-const DeleteConnectedRegistryRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<DeleteConnectedRegistryRequest>;
-
 export interface DeleteConnectedRegistryResponse {}
-const DeleteConnectedRegistryResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<DeleteConnectedRegistryResponse>;
-
 export interface DeleteCredentialSetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -1993,15 +1383,7 @@ export interface DeleteCredentialSetRequest {
   /** The name of the credential set. */
   credentialSetName: string;
 }
-const DeleteCredentialSetRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<DeleteCredentialSetRequest>;
-
 export interface DeleteCredentialSetResponse {}
-const DeleteCredentialSetResponse =
-  CancelRunResponse as any as S.Schema<DeleteCredentialSetResponse>;
-
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2012,15 +1394,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
-
 export interface DeletePrivateEndpointConnectionResponse {}
-const DeletePrivateEndpointConnectionResponse =
-  DeactivateConnectedRegistryResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
-
 export interface DeleteRegistryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2029,14 +1403,7 @@ export interface DeleteRegistryRequest {
   /** The name of the container registry. */
   registryName: string;
 }
-const DeleteRegistryRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<DeleteRegistryRequest>;
-
 export interface DeleteRegistryResponse {}
-const DeleteRegistryResponse = CancelRunResponse as any as S.Schema<DeleteRegistryResponse>;
-
 export interface DeleteReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2047,14 +1414,7 @@ export interface DeleteReplicationRequest {
   /** The name of the replication. */
   replicationName: string;
 }
-const DeleteReplicationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<DeleteReplicationRequest>;
-
 export interface DeleteReplicationResponse {}
-const DeleteReplicationResponse = CancelRunResponse as any as S.Schema<DeleteReplicationResponse>;
-
 export interface DeleteScopeMapRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2065,14 +1425,7 @@ export interface DeleteScopeMapRequest {
   /** The name of the scope map. */
   scopeMapName: string;
 }
-const DeleteScopeMapRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<DeleteScopeMapRequest>;
-
 export interface DeleteScopeMapResponse {}
-const DeleteScopeMapResponse = CancelRunResponse as any as S.Schema<DeleteScopeMapResponse>;
-
 export interface DeleteTaskRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -2083,11 +1436,7 @@ export interface DeleteTaskRequest {
   /** The name of the container registry task. */
   taskName: string;
 }
-const DeleteTaskRequest = /*@__PURE__*/ __L.at(__c15, 2) as any as S.Schema<DeleteTaskRequest>;
-
 export interface DeleteTaskResponse {}
-const DeleteTaskResponse = CancelRunResponse as any as S.Schema<DeleteTaskResponse>;
-
 export interface DeleteTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2098,11 +1447,7 @@ export interface DeleteTokenRequest {
   /** The name of the token. */
   tokenName: string;
 }
-const DeleteTokenRequest = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<DeleteTokenRequest>;
-
 export interface DeleteTokenResponse {}
-const DeleteTokenResponse = CancelRunResponse as any as S.Schema<DeleteTokenResponse>;
-
 export interface DeleteWebhookRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2113,14 +1458,7 @@ export interface DeleteWebhookRequest {
   /** The name of the webhook. */
   webhookName: string;
 }
-const DeleteWebhookRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<DeleteWebhookRequest>;
-
 export interface DeleteWebhookResponse {}
-const DeleteWebhookResponse = CancelRunResponse as any as S.Schema<DeleteWebhookResponse>;
-
 export interface GenerateRegistryCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2135,16 +1473,8 @@ export interface GenerateRegistryCredentialsRequest {
   /** Specifies name of the password which should be regenerated if any -- password1 or password2. */
   name?: TokenPasswordName | (string & {});
 }
-const GenerateRegistryCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GenerateRegistryCredentialsRequest>;
-
 /** The list of passwords for a container registry. */
 export type GenerateCredentialsResultPasswordsList = Array<TokenPassword>;
-const GenerateCredentialsResultPasswordsList =
-  TokenCredentialsPropertiesPasswordsList as any as S.Schema<GenerateCredentialsResultPasswordsList>;
-
 /** The response from the GenerateCredentials operation. */
 export interface GenerateCredentialsResult {
   /** The username for a container registry. */
@@ -2152,11 +1482,6 @@ export interface GenerateCredentialsResult {
   /** The list of passwords for a container registry. */
   passwords?: GenerateCredentialsResultPasswordsList;
 }
-const GenerateCredentialsResult = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GenerateCredentialsResult>;
-
 export interface GetCacheRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2167,8 +1492,6 @@ export interface GetCacheRuleRequest {
   /** The name of the cache rule. */
   cacheRuleName: string;
 }
-const GetCacheRuleRequest = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<GetCacheRuleRequest>;
-
 export interface GetCacheRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2181,8 +1504,6 @@ export interface GetCacheRuleResponse {
   /** The properties of the cache rule. */
   properties?: CacheRuleProperties;
 }
-const GetCacheRuleResponse = CreateCacheRuleResponse as any as S.Schema<GetCacheRuleResponse>;
-
 export interface GetConnectedRegistryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2193,11 +1514,6 @@ export interface GetConnectedRegistryRequest {
   /** The name of the connected registry. */
   connectedRegistryName: string;
 }
-const GetConnectedRegistryRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<GetConnectedRegistryRequest>;
-
 export interface GetConnectedRegistryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2210,9 +1526,6 @@ export interface GetConnectedRegistryResponse {
   /** The properties of the connected registry. */
   properties?: ConnectedRegistryProperties;
 }
-const GetConnectedRegistryResponse =
-  CreateConnectedRegistryResponse as any as S.Schema<GetConnectedRegistryResponse>;
-
 export interface GetCredentialSetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2223,11 +1536,6 @@ export interface GetCredentialSetRequest {
   /** The name of the credential set. */
   credentialSetName: string;
 }
-const GetCredentialSetRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GetCredentialSetRequest>;
-
 export interface GetCredentialSetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2242,11 +1550,6 @@ export interface GetCredentialSetResponse {
   /** Identities associated with the resource. This is used to access the KeyVault secrets. */
   identity?: IdentityProperties;
 }
-const GetCredentialSetResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetCredentialSetResponse>;
-
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2257,11 +1560,6 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection. */
   privateEndpointConnectionName: string;
 }
-const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
-
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2274,9 +1572,6 @@ export interface GetPrivateEndpointConnectionResponse {
   /** The properties of a private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const GetPrivateEndpointConnectionResponse =
-  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
-
 export interface GetRegistryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2285,8 +1580,6 @@ export interface GetRegistryRequest {
   /** The name of the container registry. */
   registryName: string;
 }
-const GetRegistryRequest = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<GetRegistryRequest>;
-
 /** Resource tags. */
 export type GetRegistryResponseTagsMap = { [key: string]: string | undefined };
 export interface GetRegistryResponse {
@@ -2309,8 +1602,6 @@ export interface GetRegistryResponse {
   /** The identity of the container registry. */
   identity?: IdentityProperties;
 }
-const GetRegistryResponse = CreateRegistryResponse as any as S.Schema<GetRegistryResponse>;
-
 export interface GetRegistryPrivateLinkResourceRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2321,21 +1612,10 @@ export interface GetRegistryPrivateLinkResourceRequest {
   /** The name of the private link associated with the Azure resource. */
   groupName: string;
 }
-const GetRegistryPrivateLinkResourceRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<GetRegistryPrivateLinkResourceRequest>;
-
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredMembersList =
-  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** The private link resource private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -2345,11 +1625,6 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource private link DNS zone name. */
   requiredZoneNames?: PrivateLinkResourcePropertiesRequiredZoneNamesList;
 }
-const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<PrivateLinkResourceProperties>;
-
 export interface GetRegistryPrivateLinkResourceResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2362,11 +1637,6 @@ export interface GetRegistryPrivateLinkResourceResponse {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-const GetRegistryPrivateLinkResourceResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GetRegistryPrivateLinkResourceResponse>;
-
 export interface GetReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2377,16 +1647,8 @@ export interface GetReplicationRequest {
   /** The name of the replication. */
   replicationName: string;
 }
-const GetReplicationRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<GetReplicationRequest>;
-
 /** Resource tags. */
 export type GetReplicationResponseTagsMap = { [key: string]: string | undefined };
-const GetReplicationResponseTagsMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<GetReplicationResponseTagsMap>;
-
 export interface GetReplicationResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2403,11 +1665,6 @@ export interface GetReplicationResponse {
   /** The properties of the replication. */
   properties?: ReplicationProperties;
 }
-const GetReplicationResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<GetReplicationResponse>;
-
 export interface GetRunRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -2418,8 +1675,6 @@ export interface GetRunRequest {
   /** The run ID. */
   runId: string;
 }
-const GetRunRequest = /*@__PURE__*/ __L.at(__c17, 2) as any as S.Schema<GetRunRequest>;
-
 /** The current status of the run. */
 export type RunPropertiesStatus =
   | "Queued"
@@ -2430,12 +1685,8 @@ export type RunPropertiesStatus =
   | "Canceled"
   | "Error"
   | "Timeout";
-const RunPropertiesStatus = S.String;
-
 /** The type of run. */
 export type RunPropertiesRunType = "QuickBuild" | "QuickRun" | "AutoBuild" | "AutoRun";
-const RunPropertiesRunType = S.String;
-
 /** Properties for a registry image. */
 export interface ImageDescriptor {
   /** The registry login server. */
@@ -2447,20 +1698,10 @@ export interface ImageDescriptor {
   /** The sha256-based digest of the image manifest. */
   digest?: string;
 }
-const ImageDescriptor = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<ImageDescriptor>;
-
 /** The list of all images that were generated from the run. This is applicable if the run generates base image dependencies. */
 export type RunPropertiesOutputImagesList = Array<ImageDescriptor>;
-const RunPropertiesOutputImagesList = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<RunPropertiesOutputImagesList>;
-
 /** The list of image updates that caused the build. */
 export type ImageUpdateTriggerImagesList = Array<ImageDescriptor>;
-const ImageUpdateTriggerImagesList =
-  RunPropertiesOutputImagesList as any as S.Schema<ImageUpdateTriggerImagesList>;
-
 /** The image update trigger that caused a build. */
 export interface ImageUpdateTrigger {
   /** The unique ID of the trigger. */
@@ -2470,8 +1711,6 @@ export interface ImageUpdateTrigger {
   /** The list of image updates that caused the build. */
   images?: ImageUpdateTriggerImagesList;
 }
-const ImageUpdateTrigger = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<ImageUpdateTrigger>;
-
 /** The source trigger that caused a run. */
 export interface SourceTriggerDescriptor {
   /** The unique ID of the trigger. */
@@ -2489,16 +1728,8 @@ export interface SourceTriggerDescriptor {
   /** The source control provider type. */
   providerType?: string;
 }
-const SourceTriggerDescriptor = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<SourceTriggerDescriptor>;
-
 /** The list of custom registries that were logged in during this run. */
 export type RunPropertiesCustomRegistriesList = Array<string>;
-const RunPropertiesCustomRegistriesList =
-  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<RunPropertiesCustomRegistriesList>;
-
 /** The provisioning state of a run. */
 export type RunPropertiesProvisioningState =
   | "Creating"
@@ -2507,19 +1738,12 @@ export type RunPropertiesProvisioningState =
   | "Succeeded"
   | "Failed"
   | "Canceled";
-const RunPropertiesProvisioningState = S.String;
-
 export interface TimerTriggerDescriptor {
   /** The timer trigger name that caused the run. */
   timerTriggerName?: string;
   /** The occurrence that triggered the run. */
   scheduleOccurrence?: string;
 }
-const TimerTriggerDescriptor = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<TimerTriggerDescriptor>;
-
 /** The properties for a run. */
 export interface RunProperties {
   /** The unique identifier for the run. */
@@ -2561,8 +1785,6 @@ export interface RunProperties {
   /** The timer trigger that caused the run. */
   timerTrigger?: TimerTriggerDescriptor;
 }
-const RunProperties = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<RunProperties>;
-
 export interface GetRunResponse {
   /** The resource ID. */
   id?: string;
@@ -2573,8 +1795,6 @@ export interface GetRunResponse {
   /** The properties of a run. */
   properties?: RunProperties;
 }
-const GetRunResponse = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<GetRunResponse>;
-
 export interface GetRunLogSasUrlRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -2585,18 +1805,11 @@ export interface GetRunLogSasUrlRequest {
   /** The run ID. */
   runId: string;
 }
-const GetRunLogSasUrlRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GetRunLogSasUrlRequest>;
-
 /** The result of get log link operation. */
 export interface RunGetLogResult {
   /** The link to logs for a run on a azure container registry. */
   logLink?: string;
 }
-const RunGetLogResult = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<RunGetLogResult>;
-
 export interface GetScopeMapRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2607,8 +1820,6 @@ export interface GetScopeMapRequest {
   /** The name of the scope map. */
   scopeMapName: string;
 }
-const GetScopeMapRequest = /*@__PURE__*/ __L.at(__c18, 4) as any as S.Schema<GetScopeMapRequest>;
-
 export interface GetScopeMapResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2621,8 +1832,6 @@ export interface GetScopeMapResponse {
   /** The properties of the scope map. */
   properties?: ScopeMapProperties;
 }
-const GetScopeMapResponse = CreateScopeMapResponse as any as S.Schema<GetScopeMapResponse>;
-
 export interface GetTaskRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -2633,8 +1842,6 @@ export interface GetTaskRequest {
   /** The name of the container registry task. */
   taskName: string;
 }
-const GetTaskRequest = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<GetTaskRequest>;
-
 /** The tags of the resource. */
 export type GetTaskResponseTagsMap = { [key: string]: string | undefined };
 export interface GetTaskResponse {
@@ -2653,8 +1860,6 @@ export interface GetTaskResponse {
   /** The properties of a task. */
   properties?: TaskProperties;
 }
-const GetTaskResponse = CreateTaskResponse as any as S.Schema<GetTaskResponse>;
-
 export interface GetTaskDetailsRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -2665,11 +1870,6 @@ export interface GetTaskDetailsRequest {
   /** The name of the container registry task. */
   taskName: string;
 }
-const GetTaskDetailsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<GetTaskDetailsRequest>;
-
 /** The tags of the resource. */
 export type GetTaskDetailsResponseTagsMap = { [key: string]: string | undefined };
 export interface GetTaskDetailsResponse {
@@ -2688,8 +1888,6 @@ export interface GetTaskDetailsResponse {
   /** The properties of a task. */
   properties?: TaskProperties;
 }
-const GetTaskDetailsResponse = CreateTaskResponse as any as S.Schema<GetTaskDetailsResponse>;
-
 export interface GetTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2700,8 +1898,6 @@ export interface GetTokenRequest {
   /** The name of the token. */
   tokenName: string;
 }
-const GetTokenRequest = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<GetTokenRequest>;
-
 export interface GetTokenResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -2714,8 +1910,6 @@ export interface GetTokenResponse {
   /** The properties of the token. */
   properties?: TokenProperties;
 }
-const GetTokenResponse = CreateTokenResponse as any as S.Schema<GetTokenResponse>;
-
 export interface GetWebhookRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2726,8 +1920,6 @@ export interface GetWebhookRequest {
   /** The name of the webhook. */
   webhookName: string;
 }
-const GetWebhookRequest = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<GetWebhookRequest>;
-
 /** Resource tags. */
 export type GetWebhookResponseTagsMap = { [key: string]: string | undefined };
 export interface GetWebhookResponse {
@@ -2746,8 +1938,6 @@ export interface GetWebhookResponse {
   /** The properties of the webhook. */
   properties?: WebhookProperties;
 }
-const GetWebhookResponse = CreateWebhookResponse as any as S.Schema<GetWebhookResponse>;
-
 export interface GetWebhookCallbackConfigRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2758,16 +1948,8 @@ export interface GetWebhookCallbackConfigRequest {
   /** The name of the webhook. */
   webhookName: string;
 }
-const GetWebhookCallbackConfigRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<GetWebhookCallbackConfigRequest>;
-
 /** Custom headers that will be added to the webhook notifications. */
 export type CallbackConfigCustomHeadersMap = { [key: string]: string | undefined };
-const CallbackConfigCustomHeadersMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<CallbackConfigCustomHeadersMap>;
-
 /** The configuration of service URI and custom headers for the webhook. */
 export interface CallbackConfig {
   /** The service URI for the webhook to post notifications. */
@@ -2775,19 +1957,12 @@ export interface CallbackConfig {
   /** Custom headers that will be added to the webhook notifications. */
   customHeaders?: CallbackConfigCustomHeadersMap;
 }
-const CallbackConfig = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<CallbackConfig>;
-
 export interface ImportSourceCredentials {
   /** The username to authenticate with the source registry. */
   username?: string;
   /** The password used to authenticate with the source registry. */
   password: string | Redacted.Redacted<string>;
 }
-const ImportSourceCredentials = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ImportSourceCredentials>;
-
 export interface ImportSource {
   /** The resource identifier of the source Azure Container Registry. */
   resourceId?: string;
@@ -2798,22 +1973,12 @@ export interface ImportSource {
   /** Repository name of the source image. Specify an image by repository ('hello-world'). This will use the 'latest' tag. Specify an image by tag ('hello-world:latest'). Specify an image by sha256-based manifest digest ('hello-world@sha256:abc123'). */
   sourceImage: string;
 }
-const ImportSource = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<ImportSource>;
-
 /** List of strings of the form repo[:tag]. When tag is omitted the source will be used (or 'latest' if source tag is also omitted). */
 export type ImportRegistryImageRequestTargetTagsList = Array<string>;
-const ImportRegistryImageRequestTargetTagsList =
-  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ImportRegistryImageRequestTargetTagsList>;
-
 /** List of strings of repository names to do a manifest only copy. No tag will be created. */
 export type ImportRegistryImageRequestUntaggedTargetRepositoriesList = Array<string>;
-const ImportRegistryImageRequestUntaggedTargetRepositoriesList =
-  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ImportRegistryImageRequestUntaggedTargetRepositoriesList>;
-
 /** When Force, any existing target tags will be overwritten. When NoForce, any existing target tags will fail the operation before any copying begins. */
 export type ImportRegistryImageRequestMode = "NoForce" | "Force";
-const ImportRegistryImageRequestMode = S.String;
-
 export interface ImportRegistryImageRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2830,15 +1995,7 @@ export interface ImportRegistryImageRequest {
   /** When Force, any existing target tags will be overwritten. When NoForce, any existing target tags will fail the operation before any copying begins. */
   mode?: ImportRegistryImageRequestMode | (string & {});
 }
-const ImportRegistryImageRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ImportRegistryImageRequest>;
-
 export interface ImportRegistryImageResponse {}
-const ImportRegistryImageResponse =
-  CancelRunResponse as any as S.Schema<ImportRegistryImageResponse>;
-
 export interface ListCacheRulesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2847,11 +2004,6 @@ export interface ListCacheRulesRequest {
   /** The name of the container registry. */
   registryName: string;
 }
-const ListCacheRulesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ListCacheRulesRequest>;
-
 /** An object that represents a cache rule for a container registry. */
 export interface CacheRule {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2865,15 +2017,8 @@ export interface CacheRule {
   /** The properties of the cache rule. */
   properties?: CacheRuleProperties;
 }
-const CacheRule = CreateCacheRuleResponse as any as S.Schema<CacheRule>;
-
 /** The list of cache rules. Since this list may be incomplete, the nextLink field should be used to request the next list of cache rules. */
 export type CacheRulesListResultValueList = Array<CacheRule>;
-const CacheRulesListResultValueList = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<CacheRulesListResultValueList>;
-
 /** The result of a request to list cache rules for a container registry. */
 export interface CacheRulesListResult {
   /** The list of cache rules. Since this list may be incomplete, the nextLink field should be used to request the next list of cache rules. */
@@ -2881,11 +2026,6 @@ export interface CacheRulesListResult {
   /** The URI that can be used to request the next list of cache rules. */
   nextLink?: string;
 }
-const CacheRulesListResult = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<CacheRulesListResult>;
-
 export interface ListConnectedRegistriesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2896,11 +2036,6 @@ export interface ListConnectedRegistriesRequest {
   /** An OData filter expression that describes a subset of connectedRegistries to return. The parameters that can be filtered are parent.id (the resource id of the connectedRegistry parent), mode, and connectionState. The supported operator is eq. */
   _filter?: string;
 }
-const ListConnectedRegistriesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<ListConnectedRegistriesRequest>;
-
 /** An object that represents a connected registry for a container registry. */
 export interface ConnectedRegistry {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2914,15 +2049,8 @@ export interface ConnectedRegistry {
   /** The properties of the connected registry. */
   properties?: ConnectedRegistryProperties;
 }
-const ConnectedRegistry = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<ConnectedRegistry>;
-
 /** The list of connected registries. Since this list may be incomplete, the nextLink field should be used to request the next list of connected registries. */
 export type ConnectedRegistryListResultValueList = Array<ConnectedRegistry>;
-const ConnectedRegistryListResultValueList = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ConnectedRegistryListResultValueList>;
-
 /** The result of a request to list connected registries for a container registry. */
 export interface ConnectedRegistryListResult {
   /** The list of connected registries. Since this list may be incomplete, the nextLink field should be used to request the next list of connected registries. */
@@ -2930,11 +2058,6 @@ export interface ConnectedRegistryListResult {
   /** The URI that can be used to request the next list of connected registries. */
   nextLink?: string;
 }
-const ConnectedRegistryListResult = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<ConnectedRegistryListResult>;
-
 export interface ListCredentialSetsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -2943,11 +2066,6 @@ export interface ListCredentialSetsRequest {
   /** The name of the container registry. */
   registryName: string;
 }
-const ListCredentialSetsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListCredentialSetsRequest>;
-
 /** An object that represents a credential set resource for a container registry. */
 export interface CredentialSet {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -2963,15 +2081,8 @@ export interface CredentialSet {
   /** Identities associated with the resource. This is used to access the KeyVault secrets. */
   identity?: IdentityProperties;
 }
-const CredentialSet = GetCredentialSetResponse as any as S.Schema<CredentialSet>;
-
 /** The list of credential sets. Since this list may be incomplete, the nextLink field should be used to request the next list of credential sets. */
 export type CredentialSetListResultValueList = Array<CredentialSet>;
-const CredentialSetListResultValueList = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<CredentialSetListResultValueList>;
-
 /** The result of a request to list credential sets for a container registry. */
 export interface CredentialSetListResult {
   /** The list of credential sets. Since this list may be incomplete, the nextLink field should be used to request the next list of credential sets. */
@@ -2979,17 +2090,7 @@ export interface CredentialSetListResult {
   /** The URI that can be used to request the next list of credential sets. */
   nextLink?: string;
 }
-const CredentialSetListResult = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<CredentialSetListResult>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** The display information for a container registry operation. */
 export interface OperationDisplayDefinition {
   /** The resource provider name: Microsoft.ContainerRegistry. */
@@ -3001,11 +2102,6 @@ export interface OperationDisplayDefinition {
   /** The description for the operation. */
   description?: string;
 }
-const OperationDisplayDefinition = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<OperationDisplayDefinition>;
-
 /** The definition of Azure Monitoring metric. */
 export interface OperationMetricSpecificationDefinition {
   /** Metric name. */
@@ -3021,19 +2117,9 @@ export interface OperationMetricSpecificationDefinition {
   /** Internal metric name. */
   internalMetricName?: string;
 }
-const OperationMetricSpecificationDefinition = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<OperationMetricSpecificationDefinition>;
-
 /** A list of Azure Monitoring metrics definition. */
 export type OperationServiceSpecificationDefinitionMetricSpecificationsList =
   Array<OperationMetricSpecificationDefinition>;
-const OperationServiceSpecificationDefinitionMetricSpecificationsList = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<OperationServiceSpecificationDefinitionMetricSpecificationsList>;
-
 /** The definition of Azure Monitoring log. */
 export interface OperationLogSpecificationDefinition {
   /** Log name. */
@@ -3043,19 +2129,9 @@ export interface OperationLogSpecificationDefinition {
   /** Log blob duration. */
   blobDuration?: string;
 }
-const OperationLogSpecificationDefinition = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<OperationLogSpecificationDefinition>;
-
 /** A list of Azure Monitoring log definitions. */
 export type OperationServiceSpecificationDefinitionLogSpecificationsList =
   Array<OperationLogSpecificationDefinition>;
-const OperationServiceSpecificationDefinitionLogSpecificationsList = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<OperationServiceSpecificationDefinitionLogSpecificationsList>;
-
 /** The definition of Azure Monitoring list. */
 export interface OperationServiceSpecificationDefinition {
   /** A list of Azure Monitoring metrics definition. */
@@ -3063,21 +2139,11 @@ export interface OperationServiceSpecificationDefinition {
   /** A list of Azure Monitoring log definitions. */
   logSpecifications?: OperationServiceSpecificationDefinitionLogSpecificationsList;
 }
-const OperationServiceSpecificationDefinition = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<OperationServiceSpecificationDefinition>;
-
 /** The definition of Azure Monitoring properties. */
 export interface OperationPropertiesDefinition {
   /** The definition of Azure Monitoring service. */
   serviceSpecification?: OperationServiceSpecificationDefinition;
 }
-const OperationPropertiesDefinition = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<OperationPropertiesDefinition>;
-
 /** The definition of a container registry operation. */
 export interface OperationDefinition {
   /** The origin information of the container registry operation. */
@@ -3091,15 +2157,8 @@ export interface OperationDefinition {
   /** This property indicates if the operation is an action or a data action ref: https://docs.microsoft.com/en-us/azure/role-based-access-control/role-definitions#management-and-data-operations */
   isDataAction?: boolean;
 }
-const OperationDefinition = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<OperationDefinition>;
-
 /** The list of container registry operations. Since this list may be incomplete, the nextLink field should be used to request the next list of operations. */
 export type OperationListResultValueList = Array<OperationDefinition>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** The result of a request to list container registry operations. */
 export interface OperationListResult {
   /** The list of container registry operations. Since this list may be incomplete, the nextLink field should be used to request the next list of operations. */
@@ -3107,8 +2166,6 @@ export interface OperationListResult {
   /** The URI that can be used to request the next list of container registry operations. */
   nextLink?: string;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<OperationListResult>;
-
 export interface ListPrivateEndpointConnectionsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3117,16 +2174,8 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** The name of the container registry. */
   registryName: string;
 }
-const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<ListPrivateEndpointConnectionsRequest>;
-
 /** The list of private endpoint connections. Since this list may be incomplete, the nextLink field should be used to request the next list of private endpoint connections. */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-const PrivateEndpointConnectionListResultValueList =
-  RegistryPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
-
 /** The result of a request to list private endpoint connections for a container registry. */
 export interface PrivateEndpointConnectionListResult {
   /** The list of private endpoint connections. Since this list may be incomplete, the nextLink field should be used to request the next list of private endpoint connections. */
@@ -3134,20 +2183,10 @@ export interface PrivateEndpointConnectionListResult {
   /** The URI that can be used to request the next list of private endpoint connections. */
   nextLink?: string;
 }
-const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<PrivateEndpointConnectionListResult>;
-
 export interface ListRegistriesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
 }
-const ListRegistriesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<ListRegistriesRequest>;
-
 /** Resource tags. */
 export type RegistryTagsMap = { [key: string]: string | undefined };
 /** An object that represents a container registry. */
@@ -3171,15 +2210,8 @@ export interface Registry {
   /** The identity of the container registry. */
   identity?: IdentityProperties;
 }
-const Registry = CreateRegistryResponse as any as S.Schema<Registry>;
-
 /** The list of container registries. Since this list may be incomplete, the nextLink field should be used to request the next list of container registries. */
 export type RegistryListResultValueList = Array<Registry>;
-const RegistryListResultValueList = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<RegistryListResultValueList>;
-
 /** The result of a request to list container registries. */
 export interface RegistryListResult {
   /** The list of container registries. Since this list may be incomplete, the nextLink field should be used to request the next list of container registries. */
@@ -3187,19 +2219,12 @@ export interface RegistryListResult {
   /** The URI that can be used to request the next list of container registries. */
   nextLink?: string;
 }
-const RegistryListResult = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<RegistryListResult>;
-
 export interface ListRegistryByResourceGroupRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListRegistryByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<ListRegistryByResourceGroupRequest>;
-
 export interface ListRegistryCredentialsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3208,15 +2233,8 @@ export interface ListRegistryCredentialsRequest {
   /** The name of the container registry. */
   registryName: string;
 }
-const ListRegistryCredentialsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<ListRegistryCredentialsRequest>;
-
 /** The password name. */
 export type PasswordName = "password" | "password2";
-const PasswordName = S.String;
-
 /** The login password for the container registry. */
 export interface RegistryPassword {
   /** The password name. */
@@ -3224,15 +2242,8 @@ export interface RegistryPassword {
   /** The password value. */
   value?: string;
 }
-const RegistryPassword = /*@__PURE__*/ __L.at(__c23, 2) as any as S.Schema<RegistryPassword>;
-
 /** The list of passwords for a container registry. */
 export type RegistryListCredentialsResultPasswordsList = Array<RegistryPassword>;
-const RegistryListCredentialsResultPasswordsList = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<RegistryListCredentialsResultPasswordsList>;
-
 /** The response from the ListCredentials operation. */
 export interface RegistryListCredentialsResult {
   /** The username for a container registry. */
@@ -3240,11 +2251,6 @@ export interface RegistryListCredentialsResult {
   /** The list of passwords for a container registry. */
   passwords?: RegistryListCredentialsResultPasswordsList;
 }
-const RegistryListCredentialsResult = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<RegistryListCredentialsResult>;
-
 export interface ListRegistryPrivateLinkResourcesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3253,11 +2259,6 @@ export interface ListRegistryPrivateLinkResourcesRequest {
   /** The name of the container registry. */
   registryName: string;
 }
-const ListRegistryPrivateLinkResourcesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ListRegistryPrivateLinkResourcesRequest>;
-
 /** A private link resource. */
 export interface PrivateLinkResourceListResultValueItem {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3271,16 +2272,8 @@ export interface PrivateLinkResourceListResultValueItem {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-const PrivateLinkResourceListResultValueItem =
-  GetRegistryPrivateLinkResourceResponse as any as S.Schema<PrivateLinkResourceListResultValueItem>;
-
 /** The list of private link resources. Since this list may be incomplete, the nextLink field should be used to request the next list of private link resources. */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResourceListResultValueItem>;
-const PrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<PrivateLinkResourceListResultValueList>;
-
 /** The result of a request to list private link resources for a container registry. */
 export interface PrivateLinkResourceListResult {
   /** The list of private link resources. Since this list may be incomplete, the nextLink field should be used to request the next list of private link resources. */
@@ -3288,11 +2281,6 @@ export interface PrivateLinkResourceListResult {
   /** The URI that can be used to request the next list of private link resources. */
   nextLink?: string;
 }
-const PrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<PrivateLinkResourceListResult>;
-
 export interface ListRegistryUsagesRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3301,15 +2289,8 @@ export interface ListRegistryUsagesRequest {
   /** The name of the container registry. */
   registryName: string;
 }
-const ListRegistryUsagesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<ListRegistryUsagesRequest>;
-
 /** The unit of measurement. */
 export type RegistryUsageUnit = "Count" | "Bytes";
-const RegistryUsageUnit = S.String;
-
 /** The quota usage for a container registry. */
 export interface RegistryUsage {
   /** The name of the usage. */
@@ -3321,25 +2302,13 @@ export interface RegistryUsage {
   /** The unit of measurement. */
   unit?: RegistryUsageUnit;
 }
-const RegistryUsage = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<RegistryUsage>;
-
 /** The list of container registry quota usages. */
 export type RegistryUsageListResultValueList = Array<RegistryUsage>;
-const RegistryUsageListResultValueList = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<RegistryUsageListResultValueList>;
-
 /** The result of a request to get container registry quota usages. */
 export interface RegistryUsageListResult {
   /** The list of container registry quota usages. */
   value?: RegistryUsageListResultValueList;
 }
-const RegistryUsageListResult = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<RegistryUsageListResult>;
-
 export interface ListReplicationsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3348,11 +2317,6 @@ export interface ListReplicationsRequest {
   /** The name of the container registry. */
   registryName: string;
 }
-const ListReplicationsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ListReplicationsRequest>;
-
 /** Resource tags. */
 export type ReplicationTagsMap = { [key: string]: string | undefined };
 /** An object that represents a replication for a container registry. */
@@ -3372,15 +2336,8 @@ export interface Replication {
   /** The properties of the replication. */
   properties?: ReplicationProperties;
 }
-const Replication = GetReplicationResponse as any as S.Schema<Replication>;
-
 /** The list of replications. Since this list may be incomplete, the nextLink field should be used to request the next list of replications. */
 export type ReplicationListResultValueList = Array<Replication>;
-const ReplicationListResultValueList = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<ReplicationListResultValueList>;
-
 /** The result of a request to list replications for a container registry. */
 export interface ReplicationListResult {
   /** The list of replications. Since this list may be incomplete, the nextLink field should be used to request the next list of replications. */
@@ -3388,11 +2345,6 @@ export interface ReplicationListResult {
   /** The URI that can be used to request the next list of replications. */
   nextLink?: string;
 }
-const ReplicationListResult = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<ReplicationListResult>;
-
 export interface ListRunsRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -3405,8 +2357,6 @@ export interface ListRunsRequest {
   /** $top is supported for get list of runs, which limits the maximum number of runs to return. */
   _top?: number;
 }
-const ListRunsRequest = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<ListRunsRequest>;
-
 /** Run resource properties */
 export interface Run {
   /** The resource ID. */
@@ -3418,15 +2368,8 @@ export interface Run {
   /** The properties of a run. */
   properties?: RunProperties;
 }
-const Run = GetRunResponse as any as S.Schema<Run>;
-
 /** The collection value. */
 export type RunListResultValueList = Array<Run>;
-const RunListResultValueList = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<RunListResultValueList>;
-
 /** Collection of runs. */
 export interface RunListResult {
   /** The collection value. */
@@ -3434,8 +2377,6 @@ export interface RunListResult {
   /** The URI that can be used to request the next set of paged results. */
   nextLink?: string;
 }
-const RunListResult = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<RunListResult>;
-
 export interface ListScopeMapsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3444,11 +2385,6 @@ export interface ListScopeMapsRequest {
   /** The name of the container registry. */
   registryName: string;
 }
-const ListScopeMapsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<ListScopeMapsRequest>;
-
 /** An object that represents a scope map for a container registry. */
 export interface ScopeMap {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3462,15 +2398,8 @@ export interface ScopeMap {
   /** The properties of the scope map. */
   properties?: ScopeMapProperties;
 }
-const ScopeMap = CreateScopeMapResponse as any as S.Schema<ScopeMap>;
-
 /** The list of scope maps. Since this list may be incomplete, the nextLink field should be used to request the next list of scope maps. */
 export type ScopeMapListResultValueList = Array<ScopeMap>;
-const ScopeMapListResultValueList = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<ScopeMapListResultValueList>;
-
 /** The result of a request to list scope maps for a container registry. */
 export interface ScopeMapListResult {
   /** The list of scope maps. Since this list may be incomplete, the nextLink field should be used to request the next list of scope maps. */
@@ -3478,8 +2407,6 @@ export interface ScopeMapListResult {
   /** The URI that can be used to request the next list of scope maps. */
   nextLink?: string;
 }
-const ScopeMapListResult = /*@__PURE__*/ __L.at(__c25, 4) as any as S.Schema<ScopeMapListResult>;
-
 export interface ListTasksRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -3488,8 +2415,6 @@ export interface ListTasksRequest {
   /** The name of the container registry. */
   registryName: string;
 }
-const ListTasksRequest = /*@__PURE__*/ __L.at(__c25, 5) as any as S.Schema<ListTasksRequest>;
-
 /** The tags of the resource. */
 export type TaskTagsMap = { [key: string]: string | undefined };
 /** The task that has the ARM resource and task properties. The task will have all information to schedule a run against it. */
@@ -3509,15 +2434,8 @@ export interface Task {
   /** The properties of a task. */
   properties?: TaskProperties;
 }
-const Task = CreateTaskResponse as any as S.Schema<Task>;
-
 /** The collection value. */
 export type TaskListResultValueList = Array<Task>;
-const TaskListResultValueList = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<TaskListResultValueList>;
-
 /** The collection of tasks. */
 export interface TaskListResult {
   /** The collection value. */
@@ -3525,8 +2443,6 @@ export interface TaskListResult {
   /** The URI that can be used to request the next set of paged results. */
   nextLink?: string;
 }
-const TaskListResult = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<TaskListResult>;
-
 export interface ListTokensRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3535,8 +2451,6 @@ export interface ListTokensRequest {
   /** The name of the container registry. */
   registryName: string;
 }
-const ListTokensRequest = /*@__PURE__*/ __L.at(__c26, 0) as any as S.Schema<ListTokensRequest>;
-
 /** An object that represents a token for a container registry. */
 export interface Token {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
@@ -3550,15 +2464,8 @@ export interface Token {
   /** The properties of the token. */
   properties?: TokenProperties;
 }
-const Token = CreateTokenResponse as any as S.Schema<Token>;
-
 /** The list of tokens. Since this list may be incomplete, the nextLink field should be used to request the next list of tokens. */
 export type TokenListResultValueList = Array<Token>;
-const TokenListResultValueList = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<TokenListResultValueList>;
-
 /** The result of a request to list tokens for a container registry. */
 export interface TokenListResult {
   /** The list of tokens. Since this list may be incomplete, the nextLink field should be used to request the next list of tokens. */
@@ -3566,8 +2473,6 @@ export interface TokenListResult {
   /** The URI that can be used to request the next list of tokens. */
   nextLink?: string;
 }
-const TokenListResult = /*@__PURE__*/ __L.at(__c26, 2) as any as S.Schema<TokenListResult>;
-
 export interface ListWebhookEventsRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3578,11 +2483,6 @@ export interface ListWebhookEventsRequest {
   /** The name of the webhook. */
   webhookName: string;
 }
-const ListWebhookEventsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<ListWebhookEventsRequest>;
-
 /** The target of the event. */
 export interface Target {
   /** The MIME type of the referenced object. */
@@ -3604,8 +2504,6 @@ export interface Target {
   /** The version of the artifact. */
   version?: string;
 }
-const Target = /*@__PURE__*/ __L.at(__c26, 4) as any as S.Schema<Target>;
-
 /** The request that generated the event. */
 export interface Request {
   /** The ID of the request that initiated the event. */
@@ -3619,15 +2517,11 @@ export interface Request {
   /** The user agent header of the request. */
   useragent?: string;
 }
-const Request = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<Request>;
-
 /** The agent that initiated the event. For most situations, this could be from the authorization context of the request. */
 export interface Actor {
   /** The subject or username associated with the request context that generated the event. */
   name?: string;
 }
-const Actor = /*@__PURE__*/ __L.at(__c26, 6) as any as S.Schema<Actor>;
-
 /** The registry node that generated the event. Put differently, while the actor initiates the event, the source generates it. */
 export interface Source {
   /** The IP or hostname and the port of the registry node that generated the event. Generally, this will be resolved by os.Hostname() along with the running port. */
@@ -3635,8 +2529,6 @@ export interface Source {
   /** The running instance of an application. Changes after each restart. */
   instanceID?: string;
 }
-const Source = /*@__PURE__*/ __L.at(__c26, 7) as any as S.Schema<Source>;
-
 /** The content of the event request message. */
 export interface EventContent {
   /** The event ID. */
@@ -3654,13 +2546,8 @@ export interface EventContent {
   /** The registry node that generated the event. Put differently, while the actor initiates the event, the source generates it. */
   source?: Source;
 }
-const EventContent = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<EventContent>;
-
 /** The headers of the event request message. */
 export type EventRequestMessageHeadersMap = { [key: string]: string | undefined };
-const EventRequestMessageHeadersMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<EventRequestMessageHeadersMap>;
-
 /** The event request message sent to the service URI. */
 export interface EventRequestMessage {
   /** The content of the event request message. */
@@ -3674,13 +2561,8 @@ export interface EventRequestMessage {
   /** The HTTP message version. */
   version?: string;
 }
-const EventRequestMessage = /*@__PURE__*/ __L.at(__c27, 1) as any as S.Schema<EventRequestMessage>;
-
 /** The headers of the event response message. */
 export type EventResponseMessageHeadersMap = { [key: string]: string | undefined };
-const EventResponseMessageHeadersMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<EventResponseMessageHeadersMap>;
-
 /** The event response message received from the service URI. */
 export interface EventResponseMessage {
   /** The content of the event response message. */
@@ -3694,11 +2576,6 @@ export interface EventResponseMessage {
   /** The HTTP message version. */
   version?: string;
 }
-const EventResponseMessage = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<EventResponseMessage>;
-
 /** The event for a webhook. */
 export interface Event {
   /** The event ID. */
@@ -3708,15 +2585,8 @@ export interface Event {
   /** The event response message received from the service URI. */
   eventResponseMessage?: EventResponseMessage;
 }
-const Event = /*@__PURE__*/ __L.at(__c27, 3) as any as S.Schema<Event>;
-
 /** The list of events. Since this list may be incomplete, the nextLink field should be used to request the next list of events. */
 export type EventListResultValueList = Array<Event>;
-const EventListResultValueList = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<EventListResultValueList>;
-
 /** The result of a request to list events for a webhook. */
 export interface EventListResult {
   /** The list of events. Since this list may be incomplete, the nextLink field should be used to request the next list of events. */
@@ -3724,8 +2594,6 @@ export interface EventListResult {
   /** The URI that can be used to request the next list of events. */
   nextLink?: string;
 }
-const EventListResult = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<EventListResult>;
-
 export interface ListWebhooksRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3734,8 +2602,6 @@ export interface ListWebhooksRequest {
   /** The name of the container registry. */
   registryName: string;
 }
-const ListWebhooksRequest = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<ListWebhooksRequest>;
-
 /** Resource tags. */
 export type WebhookTagsMap = { [key: string]: string | undefined };
 /** An object that represents a webhook for a container registry. */
@@ -3755,15 +2621,8 @@ export interface Webhook {
   /** The properties of the webhook. */
   properties?: WebhookProperties;
 }
-const Webhook = CreateWebhookResponse as any as S.Schema<Webhook>;
-
 /** The list of webhooks. Since this list may be incomplete, the nextLink field should be used to request the next list of webhooks. */
 export type WebhookListResultValueList = Array<Webhook>;
-const WebhookListResultValueList = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<WebhookListResultValueList>;
-
 /** The result of a request to list webhooks for a container registry. */
 export interface WebhookListResult {
   /** The list of webhooks. Since this list may be incomplete, the nextLink field should be used to request the next list of webhooks. */
@@ -3771,8 +2630,6 @@ export interface WebhookListResult {
   /** The URI that can be used to request the next list of webhooks. */
   nextLink?: string;
 }
-const WebhookListResult = /*@__PURE__*/ __L.at(__c28, 0) as any as S.Schema<WebhookListResult>;
-
 export interface PingWebhookRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3783,15 +2640,11 @@ export interface PingWebhookRequest {
   /** The name of the webhook. */
   webhookName: string;
 }
-const PingWebhookRequest = /*@__PURE__*/ __L.at(__c28, 1) as any as S.Schema<PingWebhookRequest>;
-
 /** The basic information of an event. */
 export interface EventInfo {
   /** The event ID. */
   id?: string;
 }
-const EventInfo = PrivateEndpoint as any as S.Schema<EventInfo>;
-
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3804,11 +2657,6 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The properties of a private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
-
 export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3821,9 +2669,6 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** The properties of a private endpoint connection. */
   properties?: PrivateEndpointConnectionProperties;
 }
-const PrivateEndpointConnectionsCreateOrUpdateResponse =
-  PrivateEndpointConnection as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
-
 export interface RegenerateRegistryCredentialRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3834,11 +2679,6 @@ export interface RegenerateRegistryCredentialRequest {
   /** Specifies name of the password which should be regenerated -- password or password2. */
   name: PasswordName | (string & {});
 }
-const RegenerateRegistryCredentialRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<RegenerateRegistryCredentialRequest>;
-
 export interface RegistriesGetBuildSourceUploadUrlRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -3847,11 +2687,6 @@ export interface RegistriesGetBuildSourceUploadUrlRequest {
   /** The name of the container registry. */
   registryName: string;
 }
-const RegistriesGetBuildSourceUploadUrlRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<RegistriesGetBuildSourceUploadUrlRequest>;
-
 /** The properties of a response to source upload request. */
 export interface SourceUploadDefinition {
   /** The URL where the client can upload the source. */
@@ -3859,11 +2694,6 @@ export interface SourceUploadDefinition {
   /** The relative path to the source. This is used to submit the subsequent queue build request. */
   relativePath?: string;
 }
-const SourceUploadDefinition = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<SourceUploadDefinition>;
-
 export interface RunRegistriesScheduleRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -3876,11 +2706,6 @@ export interface RunRegistriesScheduleRequest {
   /** The value that indicates whether archiving is enabled for the run or not. */
   isArchiveEnabled?: boolean;
 }
-const RunRegistriesScheduleRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<RunRegistriesScheduleRequest>;
-
 export interface RunRegistriesScheduleResponse {
   /** The resource ID. */
   id?: string;
@@ -3891,21 +2716,11 @@ export interface RunRegistriesScheduleResponse {
   /** The properties of a run. */
   properties?: RunProperties;
 }
-const RunRegistriesScheduleResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<RunRegistriesScheduleResponse>;
-
 /** The parameters for updating cache rule properties. */
 export interface CacheRuleUpdateProperties {
   /** The ARM resource ID of the credential store which is associated with the Cache rule. */
   credentialSetResourceId?: string;
 }
-const CacheRuleUpdateProperties = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<CacheRuleUpdateProperties>;
-
 export interface UpdateCacheRuleRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3918,11 +2733,6 @@ export interface UpdateCacheRuleRequest {
   /** The properties of the cache rule update parameters. */
   properties?: CacheRuleUpdateProperties;
 }
-const UpdateCacheRuleRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<UpdateCacheRuleRequest>;
-
 export interface UpdateCacheRuleResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -3935,8 +2745,6 @@ export interface UpdateCacheRuleResponse {
   /** The properties of the cache rule. */
   properties?: CacheRuleProperties;
 }
-const UpdateCacheRuleResponse = CreateCacheRuleResponse as any as S.Schema<UpdateCacheRuleResponse>;
-
 /** The parameters for updating the sync properties of the connected registry with its parent. */
 export interface SyncUpdateProperties {
   /** The cron expression indicating the schedule that the connected registry will sync with its parent. */
@@ -3946,21 +2754,10 @@ export interface SyncUpdateProperties {
   /** The period of time for which a message is available to sync before it is expired. Specify the duration using the format P[n]Y[n]M[n]DT[n]H[n]M[n]S as per ISO8601. */
   messageTtl?: string;
 }
-const SyncUpdateProperties = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<SyncUpdateProperties>;
-
 /** The list of the ACR token resource IDs used to authenticate clients to the connected registry. */
 export type ConnectedRegistryUpdatePropertiesClientTokenIdsList = Array<string>;
-const ConnectedRegistryUpdatePropertiesClientTokenIdsList =
-  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ConnectedRegistryUpdatePropertiesClientTokenIdsList>;
-
 /** The list of notifications subscription information for the connected registry. */
 export type ConnectedRegistryUpdatePropertiesNotificationsListList = Array<string>;
-const ConnectedRegistryUpdatePropertiesNotificationsListList =
-  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ConnectedRegistryUpdatePropertiesNotificationsListList>;
-
 /** The parameters for updating token properties. */
 export interface ConnectedRegistryUpdateProperties {
   /** The sync properties of the connected registry with its parent. */
@@ -3974,11 +2771,6 @@ export interface ConnectedRegistryUpdateProperties {
   /** The garbage collection properties of the connected registry. */
   garbageCollection?: GarbageCollectionProperties;
 }
-const ConnectedRegistryUpdateProperties = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<ConnectedRegistryUpdateProperties>;
-
 export interface UpdateConnectedRegistryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -3991,11 +2783,6 @@ export interface UpdateConnectedRegistryRequest {
   /** The properties of the connected registry update parameters. */
   properties?: ConnectedRegistryUpdateProperties;
 }
-const UpdateConnectedRegistryRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<UpdateConnectedRegistryRequest>;
-
 export interface UpdateConnectedRegistryResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4008,24 +2795,13 @@ export interface UpdateConnectedRegistryResponse {
   /** The properties of the connected registry. */
   properties?: ConnectedRegistryProperties;
 }
-const UpdateConnectedRegistryResponse =
-  CreateConnectedRegistryResponse as any as S.Schema<UpdateConnectedRegistryResponse>;
-
 /** List of authentication credentials stored for an upstream. Usually consists of a primary and an optional secondary credential. */
 export type CredentialSetUpdatePropertiesAuthCredentialsList = Array<AuthCredential>;
-const CredentialSetUpdatePropertiesAuthCredentialsList =
-  CredentialSetPropertiesInputAuthCredentialsList as any as S.Schema<CredentialSetUpdatePropertiesAuthCredentialsList>;
-
 /** The parameters for updating credential set properties. */
 export interface CredentialSetUpdateProperties {
   /** List of authentication credentials stored for an upstream. Usually consists of a primary and an optional secondary credential. */
   authCredentials?: CredentialSetUpdatePropertiesAuthCredentialsList;
 }
-const CredentialSetUpdateProperties = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<CredentialSetUpdateProperties>;
-
 export interface UpdateCredentialSetRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4040,11 +2816,6 @@ export interface UpdateCredentialSetRequest {
   /** Identities associated with the resource. This is used to access the KeyVault secrets. */
   identity?: IdentityPropertiesInput;
 }
-const UpdateCredentialSetRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<UpdateCredentialSetRequest>;
-
 export interface UpdateCredentialSetResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4059,28 +2830,16 @@ export interface UpdateCredentialSetResponse {
   /** Identities associated with the resource. This is used to access the KeyVault secrets. */
   identity?: IdentityProperties;
 }
-const UpdateCredentialSetResponse =
-  CreateCredentialSetResponse as any as S.Schema<UpdateCredentialSetResponse>;
-
 /** The tags for the container registry. */
 export type UpdateRegistryRequestTagsMap = { [key: string]: string | undefined };
-const UpdateRegistryRequestTagsMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<UpdateRegistryRequestTagsMap>;
-
 /** Whether or not public network access is allowed for the container registry. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
-const PublicNetworkAccess = S.String;
-
 /** Whether to allow trusted Azure services to access a network restricted registry. */
 export type RegistryPropertiesUpdateParametersInputNetworkRuleBypassOptions =
   | "AzureServices"
   | "None";
-const RegistryPropertiesUpdateParametersInputNetworkRuleBypassOptions = S.String;
-
 /** Determines registry role assignment mode. */
 export type RoleAssignmentMode = "AbacRepositoryPermissions" | "LegacyRegistryPermissions";
-const RoleAssignmentMode = S.String;
-
 /** The parameters for updating the properties of a container registry. */
 export interface RegistryPropertiesUpdateParametersInput {
   /** The value that indicates whether the admin user is enabled. */
@@ -4106,11 +2865,6 @@ export interface RegistryPropertiesUpdateParametersInput {
   /** Determines registry role assignment mode. */
   roleAssignmentMode?: RoleAssignmentMode | (string & {});
 }
-const RegistryPropertiesUpdateParametersInput = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<RegistryPropertiesUpdateParametersInput>;
-
 export interface UpdateRegistryRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4127,11 +2881,6 @@ export interface UpdateRegistryRequest {
   /** The properties that the container registry will be updated with. */
   properties?: RegistryPropertiesUpdateParametersInput;
 }
-const UpdateRegistryRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<UpdateRegistryRequest>;
-
 /** Resource tags. */
 export type UpdateRegistryResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateRegistryResponse {
@@ -4154,22 +2903,12 @@ export interface UpdateRegistryResponse {
   /** The identity of the container registry. */
   identity?: IdentityProperties;
 }
-const UpdateRegistryResponse = CreateRegistryResponse as any as S.Schema<UpdateRegistryResponse>;
-
 /** The tags for the replication. */
 export type UpdateReplicationRequestTagsMap = { [key: string]: string | undefined };
-const UpdateReplicationRequestTagsMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<UpdateReplicationRequestTagsMap>;
-
 export interface ReplicationUpdateParametersProperties {
   /** Specifies whether the replication's regional endpoint is enabled. Requests will not be routed to a replication whose regional endpoint is disabled, however its data will continue to be synced with other replications. */
   regionEndpointEnabled?: boolean;
 }
-const ReplicationUpdateParametersProperties = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<ReplicationUpdateParametersProperties>;
-
 export interface UpdateReplicationRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4184,11 +2923,6 @@ export interface UpdateReplicationRequest {
   /** The parameters for updating a replication's properties */
   properties?: ReplicationUpdateParametersProperties;
 }
-const UpdateReplicationRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<UpdateReplicationRequest>;
-
 /** Resource tags. */
 export type UpdateReplicationResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateReplicationResponse {
@@ -4207,9 +2941,6 @@ export interface UpdateReplicationResponse {
   /** The properties of the replication. */
   properties?: ReplicationProperties;
 }
-const UpdateReplicationResponse =
-  CreateReplicationResponse as any as S.Schema<UpdateReplicationResponse>;
-
 export interface UpdateRunRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -4222,8 +2953,6 @@ export interface UpdateRunRequest {
   /** The value that indicates whether archiving is enabled or not. */
   isArchiveEnabled?: boolean;
 }
-const UpdateRunRequest = /*@__PURE__*/ __L.at(__c30, 3) as any as S.Schema<UpdateRunRequest>;
-
 export interface UpdateRunResponse {
   /** The resource ID. */
   id?: string;
@@ -4234,13 +2963,8 @@ export interface UpdateRunResponse {
   /** The properties of a run. */
   properties?: RunProperties;
 }
-const UpdateRunResponse = GetRunResponse as any as S.Schema<UpdateRunResponse>;
-
 /** The list of scope permissions for registry artifacts. E.g. repositories/repository-name/pull, repositories/repository-name/delete */
 export type ScopeMapPropertiesUpdateParametersActionsList = Array<string>;
-const ScopeMapPropertiesUpdateParametersActionsList =
-  ConnectedRegistryPropertiesInputClientTokenIdsList as any as S.Schema<ScopeMapPropertiesUpdateParametersActionsList>;
-
 /** The update parameters for scope map properties. */
 export interface ScopeMapPropertiesUpdateParameters {
   /** The user friendly description of the scope map. */
@@ -4248,11 +2972,6 @@ export interface ScopeMapPropertiesUpdateParameters {
   /** The list of scope permissions for registry artifacts. E.g. repositories/repository-name/pull, repositories/repository-name/delete */
   actions?: ScopeMapPropertiesUpdateParametersActionsList;
 }
-const ScopeMapPropertiesUpdateParameters = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<ScopeMapPropertiesUpdateParameters>;
-
 export interface UpdateScopeMapRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4265,11 +2984,6 @@ export interface UpdateScopeMapRequest {
   /** The update parameters for scope map properties. */
   properties?: ScopeMapPropertiesUpdateParameters;
 }
-const UpdateScopeMapRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<UpdateScopeMapRequest>;
-
 export interface UpdateScopeMapResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4282,24 +2996,14 @@ export interface UpdateScopeMapResponse {
   /** The properties of the scope map. */
   properties?: ScopeMapProperties;
 }
-const UpdateScopeMapResponse = CreateScopeMapResponse as any as S.Schema<UpdateScopeMapResponse>;
-
 /** The current status of task. */
 export type TaskPropertiesUpdateParametersStatus = "Disabled" | "Enabled";
-const TaskPropertiesUpdateParametersStatus = S.String;
-
 /** The operating system type required for the run. */
 export type PlatformUpdateParametersOs = "Windows" | "Linux";
-const PlatformUpdateParametersOs = S.String;
-
 /** The OS architecture. */
 export type PlatformUpdateParametersArchitecture = "amd64" | "x86" | "arm";
-const PlatformUpdateParametersArchitecture = S.String;
-
 /** Variant of the CPU. */
 export type PlatformUpdateParametersVariant = "v6" | "v7" | "v8";
-const PlatformUpdateParametersVariant = S.String;
-
 /** The properties for updating the platform configuration. */
 export interface PlatformUpdateParameters {
   /** The operating system type required for the run. */
@@ -4309,11 +3013,6 @@ export interface PlatformUpdateParameters {
   /** Variant of the CPU. */
   variant?: PlatformUpdateParametersVariant | (string & {});
 }
-const PlatformUpdateParameters = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<PlatformUpdateParameters>;
-
 /** The type of the step. */
 export type TaskStepUpdateParametersType = "Docker" | "FileTask" | "EncodedTask";
 /** Base properties for updating any task step. */
@@ -4347,13 +3046,8 @@ export interface TaskStepUpdateParameters {
   /** FileTask/EncodedTask step: values to override ({ name, value, isSecret }[]). */
   values?: unknown;
 }
-const TaskStepUpdateParameters =
-  TaskStepPropertiesInput as any as S.Schema<TaskStepUpdateParameters>;
-
 /** The current status of trigger. */
 export type TimerTriggerUpdateParametersStatus = "Disabled" | "Enabled";
-const TimerTriggerUpdateParametersStatus = S.String;
-
 /** The properties for updating a timer trigger. */
 export interface TimerTriggerUpdateParameters {
   /** The CRON expression for the task schedule */
@@ -4363,26 +3057,12 @@ export interface TimerTriggerUpdateParameters {
   /** The name of the trigger. */
   name: string;
 }
-const TimerTriggerUpdateParameters = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<TimerTriggerUpdateParameters>;
-
 /** The collection of timer triggers. */
 export type TriggerUpdateParametersTimerTriggersList = Array<TimerTriggerUpdateParameters>;
-const TriggerUpdateParametersTimerTriggersList = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<TriggerUpdateParametersTimerTriggersList>;
-
 /** The type of source control service. */
 export type SourceUpdateParametersSourceControlType = "Github" | "VisualStudioTeamService";
-const SourceUpdateParametersSourceControlType = S.String;
-
 /** The type of Auth token. */
 export type AuthInfoUpdateParametersTokenType = "PAT" | "OAuth";
-const AuthInfoUpdateParametersTokenType = S.String;
-
 /** The authorization properties for accessing the source code repository. */
 export interface AuthInfoUpdateParameters {
   /** The type of Auth token. */
@@ -4396,11 +3076,6 @@ export interface AuthInfoUpdateParameters {
   /** Time in seconds that the token remains valid */
   expiresIn?: number;
 }
-const AuthInfoUpdateParameters = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<AuthInfoUpdateParameters>;
-
 /** The properties for updating the source code repository. */
 export interface SourceUpdateParameters {
   /** The type of source control service. */
@@ -4412,23 +3087,13 @@ export interface SourceUpdateParameters {
   /** The authorization properties for accessing the source code repository and to set up webhooks for notifications. */
   sourceControlAuthProperties?: AuthInfoUpdateParameters;
 }
-const SourceUpdateParameters = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<SourceUpdateParameters>;
-
 export type SourceTriggerUpdateParametersSourceTriggerEventsItem = "commit" | "pullrequest";
 /** The source event corresponding to the trigger. */
 export type SourceTriggerUpdateParametersSourceTriggerEventsList = Array<
   SourceTriggerUpdateParametersSourceTriggerEventsItem | (string & {})
 >;
-const SourceTriggerUpdateParametersSourceTriggerEventsList =
-  SourceTriggerSourceTriggerEventsList as any as S.Schema<SourceTriggerUpdateParametersSourceTriggerEventsList>;
-
 /** The current status of trigger. */
 export type SourceTriggerUpdateParametersStatus = "Disabled" | "Enabled";
-const SourceTriggerUpdateParametersStatus = S.String;
-
 /** The properties for updating a source based trigger. */
 export interface SourceTriggerUpdateParameters {
   /** The properties that describes the source(code) for the task. */
@@ -4440,26 +3105,12 @@ export interface SourceTriggerUpdateParameters {
   /** The name of the trigger. */
   name: string;
 }
-const SourceTriggerUpdateParameters = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<SourceTriggerUpdateParameters>;
-
 /** The collection of triggers based on source code repository. */
 export type TriggerUpdateParametersSourceTriggersList = Array<SourceTriggerUpdateParameters>;
-const TriggerUpdateParametersSourceTriggersList = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<TriggerUpdateParametersSourceTriggersList>;
-
 /** The type of the auto trigger for base image dependency updates. */
 export type BaseImageTriggerUpdateParametersBaseImageTriggerType = "All" | "Runtime";
-const BaseImageTriggerUpdateParametersBaseImageTriggerType = S.String;
-
 /** The current status of trigger. */
 export type BaseImageTriggerUpdateParametersStatus = "Disabled" | "Enabled";
-const BaseImageTriggerUpdateParametersStatus = S.String;
-
 /** The properties for updating base image dependency trigger. */
 export interface BaseImageTriggerUpdateParameters {
   /** The type of the auto trigger for base image dependency updates. */
@@ -4469,11 +3120,6 @@ export interface BaseImageTriggerUpdateParameters {
   /** The name of the trigger. */
   name: string;
 }
-const BaseImageTriggerUpdateParameters = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<BaseImageTriggerUpdateParameters>;
-
 /** The properties for updating triggers. */
 export interface TriggerUpdateParameters {
   /** The collection of timer triggers. */
@@ -4483,11 +3129,6 @@ export interface TriggerUpdateParameters {
   /** The trigger based on base image dependencies. */
   baseImageTrigger?: BaseImageTriggerUpdateParameters;
 }
-const TriggerUpdateParameters = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<TriggerUpdateParameters>;
-
 /** The properties for updating a task. */
 export interface TaskPropertiesUpdateParameters {
   /** The current status of task. */
@@ -4505,16 +3146,8 @@ export interface TaskPropertiesUpdateParameters {
   /** The parameters that describes a set of credentials that will be used when this run is invoked. */
   credentials?: Credentials;
 }
-const TaskPropertiesUpdateParameters = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<TaskPropertiesUpdateParameters>;
-
 /** The ARM resource tags. */
 export type UpdateTaskRequestTagsMap = { [key: string]: string | undefined };
-const UpdateTaskRequestTagsMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<UpdateTaskRequestTagsMap>;
-
 export interface UpdateTaskRequest {
   /** The Microsoft Azure subscription ID. */
   subscriptionId: string;
@@ -4531,8 +3164,6 @@ export interface UpdateTaskRequest {
   /** The ARM resource tags. */
   tags?: UpdateTaskRequestTagsMap;
 }
-const UpdateTaskRequest = /*@__PURE__*/ __L.at(__c32, 0) as any as S.Schema<UpdateTaskRequest>;
-
 /** The tags of the resource. */
 export type UpdateTaskResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateTaskResponse {
@@ -4551,8 +3182,6 @@ export interface UpdateTaskResponse {
   /** The properties of a task. */
   properties?: TaskProperties;
 }
-const UpdateTaskResponse = CreateTaskResponse as any as S.Schema<UpdateTaskResponse>;
-
 /** The parameters for updating token properties. */
 export interface TokenUpdatePropertiesInput {
   /** The resource ID of the scope map to which the token will be associated with. */
@@ -4562,11 +3191,6 @@ export interface TokenUpdatePropertiesInput {
   /** The credentials that can be used for authenticating the token. */
   credentials?: TokenCredentialsPropertiesInput;
 }
-const TokenUpdatePropertiesInput = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<TokenUpdatePropertiesInput>;
-
 export interface UpdateTokenRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4579,8 +3203,6 @@ export interface UpdateTokenRequest {
   /** The properties of the token update parameters. */
   properties?: TokenUpdatePropertiesInput;
 }
-const UpdateTokenRequest = /*@__PURE__*/ __L.at(__c32, 2) as any as S.Schema<UpdateTokenRequest>;
-
 export interface UpdateTokenResponse {
   /** Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}" */
   id?: string;
@@ -4593,25 +3215,14 @@ export interface UpdateTokenResponse {
   /** The properties of the token. */
   properties?: TokenProperties;
 }
-const UpdateTokenResponse = CreateTokenResponse as any as S.Schema<UpdateTokenResponse>;
-
 /** The tags for the webhook. */
 export type UpdateWebhookRequestTagsMap = { [key: string]: string | undefined };
-const UpdateWebhookRequestTagsMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<UpdateWebhookRequestTagsMap>;
-
 /** Custom headers that will be added to the webhook notifications. */
 export type WebhookPropertiesUpdateParametersCustomHeadersMap = {
   [key: string]: string | undefined;
 };
-const WebhookPropertiesUpdateParametersCustomHeadersMap =
-  CreateRegistryRequestTagsMap as any as S.Schema<WebhookPropertiesUpdateParametersCustomHeadersMap>;
-
 /** The list of actions that trigger the webhook to post notifications. */
 export type WebhookPropertiesUpdateParametersActionsList = Array<WebhookAction | (string & {})>;
-const WebhookPropertiesUpdateParametersActionsList =
-  WebhookPropertiesCreateParametersActionsList as any as S.Schema<WebhookPropertiesUpdateParametersActionsList>;
-
 /** The parameters for updating the properties of a webhook. */
 export interface WebhookPropertiesUpdateParameters {
   /** The service URI for the webhook to post notifications. */
@@ -4625,11 +3236,6 @@ export interface WebhookPropertiesUpdateParameters {
   /** The list of actions that trigger the webhook to post notifications. */
   actions?: WebhookPropertiesUpdateParametersActionsList;
 }
-const WebhookPropertiesUpdateParameters = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<WebhookPropertiesUpdateParameters>;
-
 export interface UpdateWebhookRequest {
   /** The ID of the target subscription. The value must be an UUID. */
   subscriptionId: string;
@@ -4644,11 +3250,6 @@ export interface UpdateWebhookRequest {
   /** The properties that the webhook will be updated with. */
   properties?: WebhookPropertiesUpdateParameters;
 }
-const UpdateWebhookRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<UpdateWebhookRequest>;
-
 /** Resource tags. */
 export type UpdateWebhookResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateWebhookResponse {
@@ -4667,8 +3268,6 @@ export interface UpdateWebhookResponse {
   /** The properties of the webhook. */
   properties?: WebhookProperties;
 }
-const UpdateWebhookResponse = CreateWebhookResponse as any as S.Schema<UpdateWebhookResponse>;
-
 export type CancelRunError = AzureOpError;
 /** Cancel an existing run. */
 export const CancelRun: API.OperationMethod<
@@ -4677,8 +3276,8 @@ export const CancelRun: API.OperationMethod<
   CancelRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelRunRequest,
-  output: CancelRunResponse,
+  input: __S(0) as any as S.Schema<CancelRunRequest>,
+  output: __S(1) as any as S.Schema<CancelRunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4692,8 +3291,8 @@ export const CheckRegistryNameAvailability: API.OperationMethod<
   CheckRegistryNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckRegistryNameAvailabilityRequest,
-  output: RegistryNameStatus,
+  input: __S(2) as any as S.Schema<CheckRegistryNameAvailabilityRequest>,
+  output: __S(3) as any as S.Schema<RegistryNameStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4707,8 +3306,8 @@ export const CreateCacheRule: API.OperationMethod<
   CreateCacheRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCacheRuleRequest,
-  output: CreateCacheRuleResponse,
+  input: __S(5) as any as S.Schema<CreateCacheRuleRequest>,
+  output: __S(8) as any as S.Schema<CreateCacheRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4722,8 +3321,8 @@ export const CreateConnectedRegistry: API.OperationMethod<
   CreateConnectedRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateConnectedRegistryRequest,
-  output: CreateConnectedRegistryResponse,
+  input: __S(15) as any as S.Schema<CreateConnectedRegistryRequest>,
+  output: __S(25) as any as S.Schema<CreateConnectedRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4737,8 +3336,8 @@ export const CreateCredentialSet: API.OperationMethod<
   CreateCredentialSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCredentialSetRequest,
-  output: CreateCredentialSetResponse,
+  input: __S(32) as any as S.Schema<CreateCredentialSetRequest>,
+  output: __S(37) as any as S.Schema<CreateCredentialSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4752,8 +3351,8 @@ export const CreateRegistry: API.OperationMethod<
   CreateRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRegistryRequest,
-  output: CreateRegistryResponse,
+  input: __S(50) as any as S.Schema<CreateRegistryRequest>,
+  output: __S(62) as any as S.Schema<CreateRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4767,8 +3366,8 @@ export const CreateReplication: API.OperationMethod<
   CreateReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateReplicationRequest,
-  output: CreateReplicationResponse,
+  input: __S(64) as any as S.Schema<CreateReplicationRequest>,
+  output: __S(66) as any as S.Schema<CreateReplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4782,8 +3381,8 @@ export const CreateScopeMap: API.OperationMethod<
   CreateScopeMapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateScopeMapRequest,
-  output: CreateScopeMapResponse,
+  input: __S(68) as any as S.Schema<CreateScopeMapRequest>,
+  output: __S(70) as any as S.Schema<CreateScopeMapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4797,8 +3396,8 @@ export const CreateTask: API.OperationMethod<
   CreateTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTaskRequest,
-  output: CreateTaskResponse,
+  input: __S(90) as any as S.Schema<CreateTaskRequest>,
+  output: __S(95) as any as S.Schema<CreateTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4812,8 +3411,8 @@ export const CreateToken: API.OperationMethod<
   CreateTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTokenRequest,
-  output: CreateTokenResponse,
+  input: __S(102) as any as S.Schema<CreateTokenRequest>,
+  output: __S(107) as any as S.Schema<CreateTokenResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4827,8 +3426,8 @@ export const CreateWebhook: API.OperationMethod<
   CreateWebhookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWebhookRequest,
-  output: CreateWebhookResponse,
+  input: __S(109) as any as S.Schema<CreateWebhookRequest>,
+  output: __S(111) as any as S.Schema<CreateWebhookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4842,8 +3441,8 @@ export const DeactivateConnectedRegistry: API.OperationMethod<
   DeactivateConnectedRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeactivateConnectedRegistryRequest,
-  output: DeactivateConnectedRegistryResponse,
+  input: __S(112) as any as S.Schema<DeactivateConnectedRegistryRequest>,
+  output: __S(113) as any as S.Schema<DeactivateConnectedRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4857,8 +3456,8 @@ export const DeleteCacheRule: API.OperationMethod<
   DeleteCacheRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCacheRuleRequest,
-  output: DeleteCacheRuleResponse,
+  input: __S(114) as any as S.Schema<DeleteCacheRuleRequest>,
+  output: __S(1) as any as S.Schema<DeleteCacheRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4872,8 +3471,8 @@ export const DeleteConnectedRegistry: API.OperationMethod<
   DeleteConnectedRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteConnectedRegistryRequest,
-  output: DeleteConnectedRegistryResponse,
+  input: __S(115) as any as S.Schema<DeleteConnectedRegistryRequest>,
+  output: __S(116) as any as S.Schema<DeleteConnectedRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4887,8 +3486,8 @@ export const DeleteCredentialSet: API.OperationMethod<
   DeleteCredentialSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCredentialSetRequest,
-  output: DeleteCredentialSetResponse,
+  input: __S(117) as any as S.Schema<DeleteCredentialSetRequest>,
+  output: __S(1) as any as S.Schema<DeleteCredentialSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4902,8 +3501,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateEndpointConnectionRequest,
-  output: DeletePrivateEndpointConnectionResponse,
+  input: __S(118) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(113) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4917,8 +3516,8 @@ export const DeleteRegistry: API.OperationMethod<
   DeleteRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRegistryRequest,
-  output: DeleteRegistryResponse,
+  input: __S(119) as any as S.Schema<DeleteRegistryRequest>,
+  output: __S(1) as any as S.Schema<DeleteRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4932,8 +3531,8 @@ export const DeleteReplication: API.OperationMethod<
   DeleteReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteReplicationRequest,
-  output: DeleteReplicationResponse,
+  input: __S(120) as any as S.Schema<DeleteReplicationRequest>,
+  output: __S(1) as any as S.Schema<DeleteReplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4947,8 +3546,8 @@ export const DeleteScopeMap: API.OperationMethod<
   DeleteScopeMapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteScopeMapRequest,
-  output: DeleteScopeMapResponse,
+  input: __S(121) as any as S.Schema<DeleteScopeMapRequest>,
+  output: __S(1) as any as S.Schema<DeleteScopeMapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4962,8 +3561,8 @@ export const DeleteTask: API.OperationMethod<
   DeleteTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTaskRequest,
-  output: DeleteTaskResponse,
+  input: __S(122) as any as S.Schema<DeleteTaskRequest>,
+  output: __S(1) as any as S.Schema<DeleteTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4977,8 +3576,8 @@ export const DeleteToken: API.OperationMethod<
   DeleteTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTokenRequest,
-  output: DeleteTokenResponse,
+  input: __S(123) as any as S.Schema<DeleteTokenRequest>,
+  output: __S(1) as any as S.Schema<DeleteTokenResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -4992,8 +3591,8 @@ export const DeleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebhookRequest,
-  output: DeleteWebhookResponse,
+  input: __S(124) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(1) as any as S.Schema<DeleteWebhookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5007,8 +3606,8 @@ export const GenerateRegistryCredentials: API.OperationMethod<
   GenerateRegistryCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateRegistryCredentialsRequest,
-  output: GenerateCredentialsResult,
+  input: __S(125) as any as S.Schema<GenerateRegistryCredentialsRequest>,
+  output: __S(126) as any as S.Schema<GenerateCredentialsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5022,8 +3621,8 @@ export const GetCacheRule: API.OperationMethod<
   GetCacheRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCacheRuleRequest,
-  output: GetCacheRuleResponse,
+  input: __S(127) as any as S.Schema<GetCacheRuleRequest>,
+  output: __S(8) as any as S.Schema<GetCacheRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5037,8 +3636,8 @@ export const GetConnectedRegistry: API.OperationMethod<
   GetConnectedRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetConnectedRegistryRequest,
-  output: GetConnectedRegistryResponse,
+  input: __S(128) as any as S.Schema<GetConnectedRegistryRequest>,
+  output: __S(25) as any as S.Schema<GetConnectedRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5052,8 +3651,8 @@ export const GetCredentialSet: API.OperationMethod<
   GetCredentialSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCredentialSetRequest,
-  output: GetCredentialSetResponse,
+  input: __S(129) as any as S.Schema<GetCredentialSetRequest>,
+  output: __S(130) as any as S.Schema<GetCredentialSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5067,8 +3666,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateEndpointConnectionRequest,
-  output: GetPrivateEndpointConnectionResponse,
+  input: __S(131) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(59) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5082,8 +3681,8 @@ export const GetRegistry: API.OperationMethod<
   GetRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistryRequest,
-  output: GetRegistryResponse,
+  input: __S(132) as any as S.Schema<GetRegistryRequest>,
+  output: __S(62) as any as S.Schema<GetRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5097,8 +3696,8 @@ export const GetRegistryPrivateLinkResource: API.OperationMethod<
   GetRegistryPrivateLinkResourceError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistryPrivateLinkResourceRequest,
-  output: GetRegistryPrivateLinkResourceResponse,
+  input: __S(133) as any as S.Schema<GetRegistryPrivateLinkResourceRequest>,
+  output: __S(135) as any as S.Schema<GetRegistryPrivateLinkResourceResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5112,8 +3711,8 @@ export const GetReplication: API.OperationMethod<
   GetReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReplicationRequest,
-  output: GetReplicationResponse,
+  input: __S(136) as any as S.Schema<GetReplicationRequest>,
+  output: __S(137) as any as S.Schema<GetReplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5127,8 +3726,8 @@ export const GetRun: API.OperationMethod<
   GetRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRunRequest,
-  output: GetRunResponse,
+  input: __S(138) as any as S.Schema<GetRunRequest>,
+  output: __S(145) as any as S.Schema<GetRunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5142,8 +3741,8 @@ export const GetRunLogSasUrl: API.OperationMethod<
   GetRunLogSasUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRunLogSasUrlRequest,
-  output: RunGetLogResult,
+  input: __S(146) as any as S.Schema<GetRunLogSasUrlRequest>,
+  output: __S(147) as any as S.Schema<RunGetLogResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5157,8 +3756,8 @@ export const GetScopeMap: API.OperationMethod<
   GetScopeMapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetScopeMapRequest,
-  output: GetScopeMapResponse,
+  input: __S(148) as any as S.Schema<GetScopeMapRequest>,
+  output: __S(70) as any as S.Schema<GetScopeMapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5172,8 +3771,8 @@ export const GetTask: API.OperationMethod<
   GetTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTaskRequest,
-  output: GetTaskResponse,
+  input: __S(149) as any as S.Schema<GetTaskRequest>,
+  output: __S(95) as any as S.Schema<GetTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5187,8 +3786,8 @@ export const GetTaskDetails: API.OperationMethod<
   GetTaskDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTaskDetailsRequest,
-  output: GetTaskDetailsResponse,
+  input: __S(150) as any as S.Schema<GetTaskDetailsRequest>,
+  output: __S(95) as any as S.Schema<GetTaskDetailsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5202,8 +3801,8 @@ export const GetToken: API.OperationMethod<
   GetTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTokenRequest,
-  output: GetTokenResponse,
+  input: __S(151) as any as S.Schema<GetTokenRequest>,
+  output: __S(107) as any as S.Schema<GetTokenResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5217,8 +3816,8 @@ export const GetWebhook: API.OperationMethod<
   GetWebhookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhookRequest,
-  output: GetWebhookResponse,
+  input: __S(152) as any as S.Schema<GetWebhookRequest>,
+  output: __S(111) as any as S.Schema<GetWebhookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5232,8 +3831,8 @@ export const GetWebhookCallbackConfig: API.OperationMethod<
   GetWebhookCallbackConfigError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhookCallbackConfigRequest,
-  output: CallbackConfig,
+  input: __S(153) as any as S.Schema<GetWebhookCallbackConfigRequest>,
+  output: __S(154) as any as S.Schema<CallbackConfig>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5247,8 +3846,8 @@ export const ImportRegistryImage: API.OperationMethod<
   ImportRegistryImageError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportRegistryImageRequest,
-  output: ImportRegistryImageResponse,
+  input: __S(157) as any as S.Schema<ImportRegistryImageRequest>,
+  output: __S(1) as any as S.Schema<ImportRegistryImageResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5262,8 +3861,8 @@ export const ListCacheRules: API.OperationMethod<
   ListCacheRulesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCacheRulesRequest,
-  output: CacheRulesListResult,
+  input: __S(158) as any as S.Schema<ListCacheRulesRequest>,
+  output: __S(160) as any as S.Schema<CacheRulesListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5277,8 +3876,8 @@ export const ListConnectedRegistries: API.OperationMethod<
   ListConnectedRegistriesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListConnectedRegistriesRequest,
-  output: ConnectedRegistryListResult,
+  input: __S(161) as any as S.Schema<ListConnectedRegistriesRequest>,
+  output: __S(164) as any as S.Schema<ConnectedRegistryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5292,8 +3891,8 @@ export const ListCredentialSets: API.OperationMethod<
   ListCredentialSetsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCredentialSetsRequest,
-  output: CredentialSetListResult,
+  input: __S(165) as any as S.Schema<ListCredentialSetsRequest>,
+  output: __S(167) as any as S.Schema<CredentialSetListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5307,8 +3906,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(168) as any as S.Schema<ListOperationsRequest>,
+  output: __S(178) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5322,8 +3921,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateEndpointConnectionsRequest,
-  output: PrivateEndpointConnectionListResult,
+  input: __S(179) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(180) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5337,8 +3936,8 @@ export const ListRegistries: API.OperationMethod<
   ListRegistriesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistriesRequest,
-  output: RegistryListResult,
+  input: __S(181) as any as S.Schema<ListRegistriesRequest>,
+  output: __S(183) as any as S.Schema<RegistryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5352,8 +3951,8 @@ export const ListRegistryByResourceGroup: API.OperationMethod<
   ListRegistryByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistryByResourceGroupRequest,
-  output: RegistryListResult,
+  input: __S(184) as any as S.Schema<ListRegistryByResourceGroupRequest>,
+  output: __S(183) as any as S.Schema<RegistryListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5367,8 +3966,8 @@ export const ListRegistryCredentials: API.OperationMethod<
   ListRegistryCredentialsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistryCredentialsRequest,
-  output: RegistryListCredentialsResult,
+  input: __S(185) as any as S.Schema<ListRegistryCredentialsRequest>,
+  output: __S(188) as any as S.Schema<RegistryListCredentialsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5382,8 +3981,8 @@ export const ListRegistryPrivateLinkResources: API.OperationMethod<
   ListRegistryPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistryPrivateLinkResourcesRequest,
-  output: PrivateLinkResourceListResult,
+  input: __S(189) as any as S.Schema<ListRegistryPrivateLinkResourcesRequest>,
+  output: __S(191) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5397,8 +3996,8 @@ export const ListRegistryUsages: API.OperationMethod<
   ListRegistryUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistryUsagesRequest,
-  output: RegistryUsageListResult,
+  input: __S(192) as any as S.Schema<ListRegistryUsagesRequest>,
+  output: __S(195) as any as S.Schema<RegistryUsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5412,8 +4011,8 @@ export const ListReplications: API.OperationMethod<
   ListReplicationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReplicationsRequest,
-  output: ReplicationListResult,
+  input: __S(196) as any as S.Schema<ListReplicationsRequest>,
+  output: __S(198) as any as S.Schema<ReplicationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5427,8 +4026,8 @@ export const ListRuns: API.OperationMethod<
   ListRunsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRunsRequest,
-  output: RunListResult,
+  input: __S(199) as any as S.Schema<ListRunsRequest>,
+  output: __S(201) as any as S.Schema<RunListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5442,8 +4041,8 @@ export const ListScopeMaps: API.OperationMethod<
   ListScopeMapsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListScopeMapsRequest,
-  output: ScopeMapListResult,
+  input: __S(202) as any as S.Schema<ListScopeMapsRequest>,
+  output: __S(204) as any as S.Schema<ScopeMapListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5457,8 +4056,8 @@ export const ListTasks: API.OperationMethod<
   ListTasksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTasksRequest,
-  output: TaskListResult,
+  input: __S(205) as any as S.Schema<ListTasksRequest>,
+  output: __S(207) as any as S.Schema<TaskListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5472,8 +4071,8 @@ export const ListTokens: API.OperationMethod<
   ListTokensError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTokensRequest,
-  output: TokenListResult,
+  input: __S(208) as any as S.Schema<ListTokensRequest>,
+  output: __S(210) as any as S.Schema<TokenListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5487,8 +4086,8 @@ export const ListWebhookEvents: API.OperationMethod<
   ListWebhookEventsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebhookEventsRequest,
-  output: EventListResult,
+  input: __S(211) as any as S.Schema<ListWebhookEventsRequest>,
+  output: __S(221) as any as S.Schema<EventListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5502,8 +4101,8 @@ export const ListWebhooks: API.OperationMethod<
   ListWebhooksError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebhooksRequest,
-  output: WebhookListResult,
+  input: __S(222) as any as S.Schema<ListWebhooksRequest>,
+  output: __S(224) as any as S.Schema<WebhookListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5517,8 +4116,8 @@ export const PingWebhook: API.OperationMethod<
   PingWebhookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PingWebhookRequest,
-  output: EventInfo,
+  input: __S(225) as any as S.Schema<PingWebhookRequest>,
+  output: __S(56) as any as S.Schema<EventInfo>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5532,8 +4131,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsCreateOrUpdateRequest,
-  output: PrivateEndpointConnectionsCreateOrUpdateResponse,
+  input: __S(226) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  output: __S(59) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5547,8 +4146,8 @@ export const RegenerateRegistryCredential: API.OperationMethod<
   RegenerateRegistryCredentialError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegenerateRegistryCredentialRequest,
-  output: RegistryListCredentialsResult,
+  input: __S(227) as any as S.Schema<RegenerateRegistryCredentialRequest>,
+  output: __S(188) as any as S.Schema<RegistryListCredentialsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5562,8 +4161,8 @@ export const RegistriesGetBuildSourceUploadUrl: API.OperationMethod<
   RegistriesGetBuildSourceUploadUrlError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegistriesGetBuildSourceUploadUrlRequest,
-  output: SourceUploadDefinition,
+  input: __S(228) as any as S.Schema<RegistriesGetBuildSourceUploadUrlRequest>,
+  output: __S(229) as any as S.Schema<SourceUploadDefinition>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5577,8 +4176,8 @@ export const RunRegistriesSchedule: API.OperationMethod<
   RunRegistriesScheduleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunRegistriesScheduleRequest,
-  output: RunRegistriesScheduleResponse,
+  input: __S(230) as any as S.Schema<RunRegistriesScheduleRequest>,
+  output: __S(231) as any as S.Schema<RunRegistriesScheduleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5592,8 +4191,8 @@ export const UpdateCacheRule: API.OperationMethod<
   UpdateCacheRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCacheRuleRequest,
-  output: UpdateCacheRuleResponse,
+  input: __S(233) as any as S.Schema<UpdateCacheRuleRequest>,
+  output: __S(8) as any as S.Schema<UpdateCacheRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5607,8 +4206,8 @@ export const UpdateConnectedRegistry: API.OperationMethod<
   UpdateConnectedRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateConnectedRegistryRequest,
-  output: UpdateConnectedRegistryResponse,
+  input: __S(236) as any as S.Schema<UpdateConnectedRegistryRequest>,
+  output: __S(25) as any as S.Schema<UpdateConnectedRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5622,8 +4221,8 @@ export const UpdateCredentialSet: API.OperationMethod<
   UpdateCredentialSetError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCredentialSetRequest,
-  output: UpdateCredentialSetResponse,
+  input: __S(238) as any as S.Schema<UpdateCredentialSetRequest>,
+  output: __S(37) as any as S.Schema<UpdateCredentialSetResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5637,8 +4236,8 @@ export const UpdateRegistry: API.OperationMethod<
   UpdateRegistryError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRegistryRequest,
-  output: UpdateRegistryResponse,
+  input: __S(240) as any as S.Schema<UpdateRegistryRequest>,
+  output: __S(62) as any as S.Schema<UpdateRegistryResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5652,8 +4251,8 @@ export const UpdateReplication: API.OperationMethod<
   UpdateReplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateReplicationRequest,
-  output: UpdateReplicationResponse,
+  input: __S(242) as any as S.Schema<UpdateReplicationRequest>,
+  output: __S(66) as any as S.Schema<UpdateReplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5667,8 +4266,8 @@ export const UpdateRun: API.OperationMethod<
   UpdateRunError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRunRequest,
-  output: UpdateRunResponse,
+  input: __S(243) as any as S.Schema<UpdateRunRequest>,
+  output: __S(145) as any as S.Schema<UpdateRunResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5682,8 +4281,8 @@ export const UpdateScopeMap: API.OperationMethod<
   UpdateScopeMapError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateScopeMapRequest,
-  output: UpdateScopeMapResponse,
+  input: __S(245) as any as S.Schema<UpdateScopeMapRequest>,
+  output: __S(70) as any as S.Schema<UpdateScopeMapResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5697,8 +4296,8 @@ export const UpdateTask: API.OperationMethod<
   UpdateTaskError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTaskRequest,
-  output: UpdateTaskResponse,
+  input: __S(256) as any as S.Schema<UpdateTaskRequest>,
+  output: __S(95) as any as S.Schema<UpdateTaskResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5712,8 +4311,8 @@ export const UpdateToken: API.OperationMethod<
   UpdateTokenError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTokenRequest,
-  output: UpdateTokenResponse,
+  input: __S(258) as any as S.Schema<UpdateTokenRequest>,
+  output: __S(107) as any as S.Schema<UpdateTokenResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5727,8 +4326,8 @@ export const UpdateWebhook: API.OperationMethod<
   UpdateWebhookError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebhookRequest,
-  output: UpdateWebhookResponse,
+  input: __S(260) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(111) as any as S.Schema<UpdateWebhookResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -5762,7 +4361,7 @@ function __c0(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           name: S.String,
-          type: ContainerRegistryResourceType,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -5797,7 +4396,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           cacheRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(CacheRulePropertiesInput),
+          properties: S.optional(__S(4)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5811,10 +4410,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -5825,7 +4424,7 @@ function __c0(j: number): any {
           sourceRepository: S.optional(S.String),
           targetRepository: S.optional(S.String),
           creationDate: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CacheRuleProperties" });
   }
@@ -5838,8 +4437,8 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(CacheRuleProperties),
+          systemData: S.optional(__S(6)),
+          properties: S.optional(__S(7)),
         }),
       ).annotate({ identifier: "CreateCacheRuleResponse" });
     case 1:
@@ -5855,7 +4454,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          syncProperties: SyncPropertiesInput,
+          syncProperties: __S(9),
         }),
       ).annotate({ identifier: "ParentPropertiesInput" });
     case 3:
@@ -5863,8 +4462,8 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          logLevel: S.optional(LoggingPropertiesLogLevel),
-          auditLogStatus: S.optional(LoggingPropertiesAuditLogStatus),
+          logLevel: S.optional(S.String),
+          auditLogStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "LoggingProperties" });
     case 5:
@@ -5879,13 +4478,13 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          mode: ConnectedRegistryMode,
-          parent: ParentPropertiesInput,
-          clientTokenIds: S.optional(ConnectedRegistryPropertiesInputClientTokenIdsList),
-          loginServer: S.optional(LoginServerPropertiesInput),
-          logging: S.optional(LoggingProperties),
-          notificationsList: S.optional(ConnectedRegistryPropertiesInputNotificationsListList),
-          garbageCollection: S.optional(GarbageCollectionProperties),
+          mode: S.String,
+          parent: __S(10),
+          clientTokenIds: S.optional(__S(11)),
+          loginServer: S.optional(__S(1)),
+          logging: S.optional(__S(12)),
+          notificationsList: S.optional(__S(11)),
+          garbageCollection: S.optional(__S(13)),
         }),
       ).annotate({
         identifier: "ConnectedRegistryPropertiesInput",
@@ -5897,7 +4496,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           connectedRegistryName: S.String.pipe(T.Label()),
-          properties: S.optional(ConnectedRegistryPropertiesInput),
+          properties: S.optional(__S(14)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5916,7 +4515,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ActivationStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ActivationProperties" });
     case 1:
@@ -5934,28 +4533,28 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          syncProperties: SyncProperties,
+          syncProperties: __S(17),
         }),
       ).annotate({ identifier: "ParentProperties" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(CertificateType),
+          type: S.optional(S.String),
           location: S.optional(S.String),
         }),
       ).annotate({ identifier: "TlsCertificateProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(TlsStatus),
-          certificate: S.optional(TlsCertificateProperties),
+          status: S.optional(S.String),
+          certificate: S.optional(__S(19)),
         }),
       ).annotate({ identifier: "TlsProperties" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           host: S.optional(S.String),
-          tls: S.optional(TlsProperties),
+          tls: S.optional(__S(20)),
         }),
       ).annotate({ identifier: "LoginServerProperties" });
     case 6:
@@ -5969,7 +4568,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "StatusDetailProperties" });
     case 7:
-      return S.Array(StatusDetailProperties);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -5977,19 +4576,19 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
-          mode: ConnectedRegistryMode,
+          provisioningState: S.optional(S.String),
+          mode: S.String,
           version: S.optional(S.String),
-          connectionState: S.optional(ConnectionState),
+          connectionState: S.optional(S.String),
           lastActivityTime: S.optional(S.String),
-          activation: S.optional(ActivationProperties),
-          parent: ParentProperties,
-          clientTokenIds: S.optional(ConnectedRegistryPropertiesClientTokenIdsList),
-          loginServer: S.optional(LoginServerProperties),
-          logging: S.optional(LoggingProperties),
-          statusDetails: S.optional(ConnectedRegistryPropertiesStatusDetailsList),
-          notificationsList: S.optional(ConnectedRegistryPropertiesNotificationsListList),
-          garbageCollection: S.optional(GarbageCollectionProperties),
+          activation: S.optional(__S(16)),
+          parent: __S(18),
+          clientTokenIds: S.optional(__S(11)),
+          loginServer: S.optional(__S(21)),
+          logging: S.optional(__S(12)),
+          statusDetails: S.optional(__S(23)),
+          notificationsList: S.optional(__S(11)),
+          garbageCollection: S.optional(__S(13)),
         }),
       ).annotate({
         identifier: "ConnectedRegistryProperties",
@@ -6000,8 +4599,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ConnectedRegistryProperties),
+          systemData: S.optional(__S(6)),
+          properties: S.optional(__S(24)),
         }),
       ).annotate({
         identifier: "CreateConnectedRegistryResponse",
@@ -6009,7 +4608,7 @@ function __c3(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(CredentialHealthStatus),
+          status: S.optional(S.String),
           errorCode: S.optional(S.String),
           errorMessage: S.optional(S.String),
         }),
@@ -6017,30 +4616,30 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(CredentialName),
+          name: S.optional(S.String),
           usernameSecretIdentifier: S.optional(S.String),
           passwordSecretIdentifier: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          credentialHealth: S.optional(CredentialHealth),
+          credentialHealth: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "AuthCredential" });
     case 4:
-      return S.Array(AuthCredential);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
           loginServer: S.optional(S.String),
-          authCredentials: S.optional(CredentialSetPropertiesInputAuthCredentialsList),
+          authCredentials: S.optional(__S(28)),
         }),
       ).annotate({
         identifier: "CredentialSetPropertiesInput",
       });
     case 6:
-      return S.Record(S.String, LoginServerPropertiesInput);
+      return S.Record(S.String, __S(1));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ResourceIdentityType),
-          userAssignedIdentities: S.optional(IdentityPropertiesInputUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(30)),
         }),
       ).annotate({ identifier: "IdentityPropertiesInput" });
   }
@@ -6054,8 +4653,8 @@ function __c4(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           credentialSetName: S.String.pipe(T.Label()),
-          properties: S.optional(CredentialSetPropertiesInput),
-          identity: S.optional(IdentityPropertiesInput),
+          properties: S.optional(__S(29)),
+          identity: S.optional(__S(31)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6071,9 +4670,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           loginServer: S.optional(S.String),
-          authCredentials: S.optional(CredentialSetPropertiesAuthCredentialsList),
+          authCredentials: S.optional(__S(28)),
           creationDate: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "CredentialSetProperties" });
     case 2:
@@ -6084,14 +4683,14 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "UserIdentityProperties" });
     case 3:
-      return S.Record(S.String, UserIdentityProperties);
+      return S.Record(S.String, __S(34));
     case 4:
       return S.suspend(() =>
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(ResourceIdentityType),
-          userAssignedIdentities: S.optional(IdentityPropertiesUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(35)),
         }),
       ).annotate({ identifier: "IdentityProperties" });
     case 5:
@@ -6100,9 +4699,9 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(CredentialSetProperties),
-          identity: S.optional(IdentityProperties),
+          systemData: S.optional(__S(6)),
+          properties: S.optional(__S(33)),
+          identity: S.optional(__S(36)),
         }),
       ).annotate({
         identifier: "CreateCredentialSetResponse",
@@ -6112,7 +4711,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(IPRuleAction),
+          action: S.optional(S.String),
           value: S.String,
         }),
       ).annotate({ identifier: "IPRule" });
@@ -6121,32 +4720,32 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IPRule);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          defaultAction: NetworkRuleSetDefaultAction,
-          ipRules: S.optional(NetworkRuleSetIpRulesList),
+          defaultAction: S.String,
+          ipRules: S.optional(__S(40)),
         }),
       ).annotate({ identifier: "NetworkRuleSet" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(TrustPolicyType),
-          status: S.optional(TrustPolicyStatus),
+          type: S.optional(S.String),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "TrustPolicy" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           days: S.optional(S.Number),
-          status: S.optional(RetentionPolicyInputStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "RetentionPolicyInput" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(AzureADAuthenticationAsArmPolicyStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AzureADAuthenticationAsArmPolicy",
@@ -6154,11 +4753,11 @@ function __c5(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          quarantinePolicy: S.optional(QuarantinePolicy),
-          trustPolicy: S.optional(TrustPolicy),
-          retentionPolicy: S.optional(RetentionPolicyInput),
-          exportPolicy: S.optional(ExportPolicy),
-          azureADAuthenticationAsArmPolicy: S.optional(AzureADAuthenticationAsArmPolicy),
+          quarantinePolicy: S.optional(__S(16)),
+          trustPolicy: S.optional(__S(42)),
+          retentionPolicy: S.optional(__S(43)),
+          exportPolicy: S.optional(__S(16)),
+          azureADAuthenticationAsArmPolicy: S.optional(__S(44)),
         }),
       ).annotate({ identifier: "PoliciesInput" });
     case 6:
@@ -6171,8 +4770,8 @@ function __c5(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(EncryptionStatus),
-          keyVaultProperties: S.optional(KeyVaultPropertiesInput),
+          status: S.optional(S.String),
+          keyVaultProperties: S.optional(__S(46)),
         }),
       ).annotate({ identifier: "EncryptionPropertyInput" });
   }
@@ -6183,23 +4782,23 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           adminUserEnabled: S.optional(S.Boolean),
-          networkRuleSet: S.optional(NetworkRuleSet),
-          policies: S.optional(PoliciesInput),
-          encryption: S.optional(EncryptionPropertyInput),
+          networkRuleSet: S.optional(__S(41)),
+          policies: S.optional(__S(45)),
+          encryption: S.optional(__S(47)),
           dataEndpointEnabled: S.optional(S.Boolean),
-          publicNetworkAccess: S.optional(RegistryPropertiesInputPublicNetworkAccess),
-          networkRuleBypassOptions: S.optional(RegistryPropertiesInputNetworkRuleBypassOptions),
+          publicNetworkAccess: S.optional(S.String),
+          networkRuleBypassOptions: S.optional(S.String),
           networkRuleBypassAllowedForTasks: S.optional(S.Boolean),
-          zoneRedundancy: S.optional(RegistryPropertiesInputZoneRedundancy),
+          zoneRedundancy: S.optional(S.String),
           anonymousPullEnabled: S.optional(S.Boolean),
-          roleAssignmentMode: S.optional(RegistryPropertiesInputRoleAssignmentMode),
+          roleAssignmentMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegistryPropertiesInput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          name: SkuName,
-          tier: S.optional(SkuTier),
+          name: S.String,
+          tier: S.optional(S.String),
         }),
       ).annotate({ identifier: "Sku" });
     case 2:
@@ -6208,11 +4807,11 @@ function __c6(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateRegistryRequestTagsMap),
+          tags: S.optional(__S(38)),
           location: S.String,
-          properties: S.optional(RegistryPropertiesInput),
-          sku: Sku,
-          identity: S.optional(IdentityPropertiesInput),
+          properties: S.optional(__S(48)),
+          sku: __S(49),
+          identity: S.optional(__S(31)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6235,17 +4834,17 @@ function __c6(j: number): any {
         S.Struct({
           days: S.optional(S.Number),
           lastUpdatedTime: S.optional(S.String),
-          status: S.optional(RetentionPolicyStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "RetentionPolicy" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          quarantinePolicy: S.optional(QuarantinePolicy),
-          trustPolicy: S.optional(TrustPolicy),
-          retentionPolicy: S.optional(RetentionPolicy),
-          exportPolicy: S.optional(ExportPolicy),
-          azureADAuthenticationAsArmPolicy: S.optional(AzureADAuthenticationAsArmPolicy),
+          quarantinePolicy: S.optional(__S(16)),
+          trustPolicy: S.optional(__S(42)),
+          retentionPolicy: S.optional(__S(52)),
+          exportPolicy: S.optional(__S(16)),
+          azureADAuthenticationAsArmPolicy: S.optional(__S(44)),
         }),
       ).annotate({ identifier: "Policies" });
     case 6:
@@ -6261,8 +4860,8 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(EncryptionStatus),
-          keyVaultProperties: S.optional(KeyVaultProperties),
+          status: S.optional(S.String),
+          keyVaultProperties: S.optional(__S(54)),
         }),
       ).annotate({ identifier: "EncryptionProperty" });
   }
@@ -6278,9 +4877,9 @@ function __c7(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ConnectionStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
-          actionsRequired: S.optional(ActionsRequired),
+          actionsRequired: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateLinkServiceConnectionState",
@@ -6288,9 +4887,9 @@ function __c7(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(PrivateEndpoint),
-          privateLinkServiceConnectionState: S.optional(PrivateLinkServiceConnectionState),
-          provisioningState: S.optional(ProvisioningState),
+          privateEndpoint: S.optional(__S(56)),
+          privateLinkServiceConnectionState: S.optional(__S(57)),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -6301,34 +4900,34 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateEndpointConnectionProperties),
+          systemData: S.optional(__S(6)),
+          properties: S.optional(__S(58)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnection",
       });
     case 4:
-      return S.Array(PrivateEndpointConnection);
+      return S.Array(__S(59));
     case 5:
       return S.suspend(() =>
         S.Struct({
           loginServer: S.optional(S.String),
           creationDate: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
-          status: S.optional(Status),
+          provisioningState: S.optional(S.String),
+          status: S.optional(__S(51)),
           adminUserEnabled: S.optional(S.Boolean),
-          networkRuleSet: S.optional(NetworkRuleSet),
-          policies: S.optional(Policies),
-          encryption: S.optional(EncryptionProperty),
+          networkRuleSet: S.optional(__S(41)),
+          policies: S.optional(__S(53)),
+          encryption: S.optional(__S(55)),
           dataEndpointEnabled: S.optional(S.Boolean),
-          dataEndpointHostNames: S.optional(RegistryPropertiesDataEndpointHostNamesList),
-          privateEndpointConnections: S.optional(RegistryPropertiesPrivateEndpointConnectionsList),
-          publicNetworkAccess: S.optional(RegistryPropertiesPublicNetworkAccess),
-          networkRuleBypassOptions: S.optional(RegistryPropertiesNetworkRuleBypassOptions),
+          dataEndpointHostNames: S.optional(__S(11)),
+          privateEndpointConnections: S.optional(__S(60)),
+          publicNetworkAccess: S.optional(S.String),
+          networkRuleBypassOptions: S.optional(S.String),
           networkRuleBypassAllowedForTasks: S.optional(S.Boolean),
-          zoneRedundancy: S.optional(RegistryPropertiesZoneRedundancy),
+          zoneRedundancy: S.optional(S.String),
           anonymousPullEnabled: S.optional(S.Boolean),
-          roleAssignmentMode: S.optional(RegistryPropertiesRoleAssignmentMode),
+          roleAssignmentMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegistryProperties" });
     case 6:
@@ -6337,19 +4936,19 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateRegistryResponseTagsMap),
+          systemData: S.optional(__S(6)),
+          tags: S.optional(__S(38)),
           location: S.String,
-          properties: S.optional(RegistryProperties),
-          sku: Sku,
-          identity: S.optional(IdentityProperties),
+          properties: S.optional(__S(61)),
+          sku: __S(49),
+          identity: S.optional(__S(36)),
         }),
       ).annotate({ identifier: "CreateRegistryResponse" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           regionEndpointEnabled: S.optional(S.Boolean),
-          zoneRedundancy: S.optional(ReplicationPropertiesInputZoneRedundancy),
+          zoneRedundancy: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ReplicationPropertiesInput",
@@ -6365,9 +4964,9 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           replicationName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateReplicationRequestTagsMap),
+          tags: S.optional(__S(38)),
           location: S.String,
-          properties: S.optional(ReplicationPropertiesInput),
+          properties: S.optional(__S(63)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6380,10 +4979,10 @@ function __c8(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
-          status: S.optional(Status),
+          provisioningState: S.optional(S.String),
+          status: S.optional(__S(51)),
           regionEndpointEnabled: S.optional(S.Boolean),
-          zoneRedundancy: S.optional(ReplicationPropertiesZoneRedundancy),
+          zoneRedundancy: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicationProperties" });
     case 2:
@@ -6392,10 +4991,10 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateReplicationResponseTagsMap),
+          systemData: S.optional(__S(6)),
+          tags: S.optional(__S(38)),
           location: S.String,
-          properties: S.optional(ReplicationProperties),
+          properties: S.optional(__S(65)),
         }),
       ).annotate({
         identifier: "CreateReplicationResponse",
@@ -6404,7 +5003,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          actions: ScopeMapPropertiesInputActionsList,
+          actions: __S(11),
         }),
       ).annotate({ identifier: "ScopeMapPropertiesInput" });
     case 4:
@@ -6414,7 +5013,7 @@ function __c8(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           scopeMapName: S.String.pipe(T.Label()),
-          properties: S.optional(ScopeMapPropertiesInput),
+          properties: S.optional(__S(67)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6430,8 +5029,8 @@ function __c8(j: number): any {
           description: S.optional(S.String),
           type: S.optional(S.String),
           creationDate: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
-          actions: ScopeMapPropertiesActionsList,
+          provisioningState: S.optional(S.String),
+          actions: __S(11),
         }),
       ).annotate({ identifier: "ScopeMapProperties" });
     case 6:
@@ -6440,8 +5039,8 @@ function __c8(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ScopeMapProperties),
+          systemData: S.optional(__S(6)),
+          properties: S.optional(__S(69)),
         }),
       ).annotate({ identifier: "CreateScopeMapResponse" });
     case 7:
@@ -6449,8 +5048,8 @@ function __c8(j: number): any {
         S.Struct({
           principalId: S.optional(S.String),
           tenantId: S.optional(S.String),
-          type: S.optional(IdentityPropertiesType),
-          userAssignedIdentities: S.optional(IdentityPropertiesUserAssignedIdentitiesMap_2),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(35)),
         }),
       ).annotate({ identifier: "IdentityProperties_2" });
   }
@@ -6460,9 +5059,9 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          os: PlatformPropertiesOs,
-          architecture: S.optional(PlatformPropertiesArchitecture),
-          variant: S.optional(PlatformPropertiesVariant),
+          os: S.String,
+          architecture: S.optional(S.String),
+          variant: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlatformProperties" });
     case 1:
@@ -6474,7 +5073,7 @@ function __c9(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: TaskStepPropertiesInputType,
+          type: S.String,
           contextPath: S.optional(S.String),
           contextAccessToken: S.optional(S.String),
           dockerFilePath: S.optional(S.String),
@@ -6494,16 +5093,16 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           schedule: S.String,
-          status: S.optional(TimerTriggerStatus),
+          status: S.optional(S.String),
           name: S.String,
         }),
       ).annotate({ identifier: "TimerTrigger" });
     case 4:
-      return S.Array(TimerTrigger);
+      return S.Array(__S(75));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          tokenType: AuthInfoTokenType,
+          tokenType: S.String,
           token: S.String,
           refreshToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
           scope: S.optional(S.String),
@@ -6513,14 +5112,14 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sourceControlType: SourcePropertiesSourceControlType,
+          sourceControlType: S.String,
           repositoryUrl: S.String,
           branch: S.optional(S.String),
-          sourceControlAuthProperties: S.optional(AuthInfo),
+          sourceControlAuthProperties: S.optional(__S(77)),
         }),
       ).annotate({ identifier: "SourceProperties" });
     case 7:
-      return S.Array(SourceTriggerSourceTriggerEventsItem);
+      return S.Array(S.String);
   }
 }
 function __c10(j: number): any {
@@ -6528,34 +5127,34 @@ function __c10(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sourceRepository: SourceProperties,
-          sourceTriggerEvents: SourceTriggerSourceTriggerEventsList,
-          status: S.optional(SourceTriggerStatus),
+          sourceRepository: __S(78),
+          sourceTriggerEvents: __S(79),
+          status: S.optional(S.String),
           name: S.String,
         }),
       ).annotate({ identifier: "SourceTrigger" });
     case 1:
-      return S.Array(SourceTrigger);
+      return S.Array(__S(80));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          baseImageTriggerType: BaseImageTriggerBaseImageTriggerType,
-          status: S.optional(BaseImageTriggerStatus),
+          baseImageTriggerType: S.String,
+          status: S.optional(S.String),
           name: S.String,
         }),
       ).annotate({ identifier: "BaseImageTrigger" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          timerTriggers: S.optional(TriggerPropertiesTimerTriggersList),
-          sourceTriggers: S.optional(TriggerPropertiesSourceTriggersList),
-          baseImageTrigger: S.optional(BaseImageTrigger),
+          timerTriggers: S.optional(__S(76)),
+          sourceTriggers: S.optional(__S(81)),
+          baseImageTrigger: S.optional(__S(82)),
         }),
       ).annotate({ identifier: "TriggerProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          loginMode: S.optional(SourceRegistryCredentialsLoginMode),
+          loginMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SourceRegistryCredentials",
@@ -6564,21 +5163,21 @@ function __c10(j: number): any {
       return S.suspend(() =>
         S.Struct({
           value: S.optional(S.String),
-          type: S.optional(SecretObjectType),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "SecretObject" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          userName: S.optional(SecretObject),
-          password: S.optional(SecretObject),
+          userName: S.optional(__S(85)),
+          password: S.optional(__S(85)),
           identity: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CustomRegistryCredentials",
       });
     case 7:
-      return S.Record(S.String, CustomRegistryCredentials);
+      return S.Record(S.String, __S(86));
   }
 }
 function __c11(j: number): any {
@@ -6586,20 +5185,20 @@ function __c11(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sourceRegistry: S.optional(SourceRegistryCredentials),
-          customRegistries: S.optional(CredentialsCustomRegistriesMap),
+          sourceRegistry: S.optional(__S(84)),
+          customRegistries: S.optional(__S(87)),
         }),
       ).annotate({ identifier: "Credentials" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(TaskPropertiesInputStatus),
-          platform: PlatformProperties,
-          agentConfiguration: S.optional(AgentProperties),
+          status: S.optional(S.String),
+          platform: __S(72),
+          agentConfiguration: S.optional(__S(73)),
           timeout: S.optional(S.Number),
-          step: TaskStepPropertiesInput,
-          trigger: S.optional(TriggerProperties),
-          credentials: S.optional(Credentials),
+          step: __S(74),
+          trigger: S.optional(__S(83)),
+          credentials: S.optional(__S(88)),
         }),
       ).annotate({ identifier: "TaskPropertiesInput" });
     case 2:
@@ -6610,9 +5209,9 @@ function __c11(j: number): any {
           registryName: S.String.pipe(T.Label()),
           taskName: S.String.pipe(T.Label()),
           location: S.String,
-          tags: S.optional(CreateTaskRequestTagsMap),
-          identity: S.optional(IdentityProperties_2),
-          properties: S.optional(TaskPropertiesInput),
+          tags: S.optional(__S(38)),
+          identity: S.optional(__S(71)),
+          properties: S.optional(__S(89)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6625,7 +5224,7 @@ function __c11(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(BaseImageDependencyType),
+          type: S.optional(S.String),
           registry: S.optional(S.String),
           repository: S.optional(S.String),
           tag: S.optional(S.String),
@@ -6633,12 +5232,12 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "BaseImageDependency" });
     case 4:
-      return S.Array(BaseImageDependency);
+      return S.Array(__S(91));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: TaskStepPropertiesType,
-          baseImageDependencies: S.optional(TaskStepPropertiesBaseImageDependenciesList),
+          type: S.String,
+          baseImageDependencies: S.optional(__S(92)),
           contextPath: S.optional(S.String),
           contextAccessToken: S.optional(S.String),
           dockerFilePath: S.optional(S.String),
@@ -6657,15 +5256,15 @@ function __c11(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(TaskPropertiesProvisioningState),
+          provisioningState: S.optional(S.String),
           creationDate: S.optional(S.String),
-          status: S.optional(TaskPropertiesStatus),
-          platform: PlatformProperties,
-          agentConfiguration: S.optional(AgentProperties),
+          status: S.optional(S.String),
+          platform: __S(72),
+          agentConfiguration: S.optional(__S(73)),
           timeout: S.optional(S.Number),
-          step: TaskStepProperties,
-          trigger: S.optional(TriggerProperties),
-          credentials: S.optional(Credentials),
+          step: __S(93),
+          trigger: S.optional(__S(83)),
+          credentials: S.optional(__S(88)),
         }),
       ).annotate({ identifier: "TaskProperties" });
     case 7:
@@ -6675,9 +5274,9 @@ function __c11(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          tags: S.optional(CreateTaskResponseTagsMap),
-          identity: S.optional(IdentityProperties_2),
-          properties: S.optional(TaskProperties),
+          tags: S.optional(__S(38)),
+          identity: S.optional(__S(71)),
+          properties: S.optional(__S(94)),
         }),
       ).annotate({ identifier: "CreateTaskResponse" });
   }
@@ -6687,29 +5286,29 @@ function __c12(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(TokenCertificateName),
+          name: S.optional(S.String),
           expiry: S.optional(S.String),
           thumbprint: S.optional(S.String),
           encodedPemCertificate: S.optional(S.String),
         }),
       ).annotate({ identifier: "TokenCertificate" });
     case 1:
-      return S.Array(TokenCertificate);
+      return S.Array(__S(96));
     case 2:
       return S.suspend(() =>
         S.Struct({
           creationTime: S.optional(S.String),
           expiry: S.optional(S.String),
-          name: S.optional(TokenPasswordName),
+          name: S.optional(S.String),
         }),
       ).annotate({ identifier: "TokenPasswordInput" });
     case 3:
-      return S.Array(TokenPasswordInput);
+      return S.Array(__S(98));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          certificates: S.optional(TokenCredentialsPropertiesInputCertificatesList),
-          passwords: S.optional(TokenCredentialsPropertiesInputPasswordsList),
+          certificates: S.optional(__S(97)),
+          passwords: S.optional(__S(99)),
         }),
       ).annotate({
         identifier: "TokenCredentialsPropertiesInput",
@@ -6718,8 +5317,8 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scopeMapId: S.optional(S.String),
-          credentials: S.optional(TokenCredentialsPropertiesInput),
-          status: S.optional(TokenStatus),
+          credentials: S.optional(__S(100)),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "TokenPropertiesInput" });
     case 6:
@@ -6729,7 +5328,7 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           tokenName: S.String.pipe(T.Label()),
-          properties: S.optional(TokenPropertiesInput),
+          properties: S.optional(__S(101)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6744,7 +5343,7 @@ function __c12(j: number): any {
         S.Struct({
           creationTime: S.optional(S.String),
           expiry: S.optional(S.String),
-          name: S.optional(TokenPasswordName),
+          name: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "TokenPassword" });
@@ -6753,12 +5352,12 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TokenPassword);
+      return S.Array(__S(103));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          certificates: S.optional(TokenCredentialsPropertiesCertificatesList),
-          passwords: S.optional(TokenCredentialsPropertiesPasswordsList),
+          certificates: S.optional(__S(97)),
+          passwords: S.optional(__S(104)),
         }),
       ).annotate({
         identifier: "TokenCredentialsProperties",
@@ -6767,10 +5366,10 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           creationDate: S.optional(S.String),
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           scopeMapId: S.optional(S.String),
-          credentials: S.optional(TokenCredentialsProperties),
-          status: S.optional(TokenStatus),
+          credentials: S.optional(__S(105)),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "TokenProperties" });
     case 3:
@@ -6779,18 +5378,18 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(TokenProperties),
+          systemData: S.optional(__S(6)),
+          properties: S.optional(__S(106)),
         }),
       ).annotate({ identifier: "CreateTokenResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           serviceUri: S.String,
-          customHeaders: S.optional(WebhookPropertiesCreateParametersCustomHeadersMap),
-          status: S.optional(WebhookStatus),
+          customHeaders: S.optional(__S(38)),
+          status: S.optional(S.String),
           scope: S.optional(S.String),
-          actions: WebhookPropertiesCreateParametersActionsList,
+          actions: __S(79),
         }),
       ).annotate({
         identifier: "WebhookPropertiesCreateParameters",
@@ -6802,9 +5401,9 @@ function __c13(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           webhookName: S.String.pipe(T.Label()),
-          tags: S.optional(CreateWebhookRequestTagsMap),
+          tags: S.optional(__S(38)),
           location: S.String,
-          properties: S.optional(WebhookPropertiesCreateParameters),
+          properties: S.optional(__S(108)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -6817,10 +5416,10 @@ function __c13(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(WebhookStatus),
+          status: S.optional(S.String),
           scope: S.optional(S.String),
-          actions: WebhookPropertiesActionsList,
-          provisioningState: S.optional(ProvisioningState),
+          actions: __S(79),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebhookProperties" });
     case 7:
@@ -6829,10 +5428,10 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(CreateWebhookResponseTagsMap),
+          systemData: S.optional(__S(6)),
+          tags: S.optional(__S(38)),
           location: S.String,
-          properties: S.optional(WebhookProperties),
+          properties: S.optional(__S(110)),
         }),
       ).annotate({ identifier: "CreateWebhookResponse" });
   }
@@ -7042,7 +5641,7 @@ function __c15(j: number): any {
           registryName: S.String.pipe(T.Label()),
           tokenId: S.optional(S.String),
           expiry: S.optional(S.String),
-          name: S.optional(TokenPasswordName),
+          name: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7058,7 +5657,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
-          passwords: S.optional(GenerateCredentialsResultPasswordsList),
+          passwords: S.optional(__S(104)),
         }),
       ).annotate({
         identifier: "GenerateCredentialsResult",
@@ -7123,9 +5722,9 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(CredentialSetProperties),
-          identity: S.optional(IdentityProperties),
+          systemData: S.optional(__S(6)),
+          properties: S.optional(__S(33)),
+          identity: S.optional(__S(36)),
         }),
       ).annotate({ identifier: "GetCredentialSetResponse" });
     case 3:
@@ -7183,8 +5782,8 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
+          requiredMembers: S.optional(__S(11)),
+          requiredZoneNames: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceProperties",
@@ -7195,8 +5794,8 @@ function __c16(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateLinkResourceProperties),
+          systemData: S.optional(__S(6)),
+          properties: S.optional(__S(134)),
         }),
       ).annotate({
         identifier: "GetRegistryPrivateLinkResourceResponse",
@@ -7227,10 +5826,10 @@ function __c17(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          tags: S.optional(GetReplicationResponseTagsMap),
+          systemData: S.optional(__S(6)),
+          tags: S.optional(__S(38)),
           location: S.String,
-          properties: S.optional(ReplicationProperties),
+          properties: S.optional(__S(65)),
         }),
       ).annotate({ identifier: "GetReplicationResponse" });
     case 2:
@@ -7259,13 +5858,13 @@ function __c17(j: number): any {
         }),
       ).annotate({ identifier: "ImageDescriptor" });
     case 4:
-      return S.Array(ImageDescriptor);
+      return S.Array(__S(139));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
           timestamp: S.optional(S.String),
-          images: S.optional(ImageUpdateTriggerImagesList),
+          images: S.optional(__S(140)),
         }),
       ).annotate({ identifier: "ImageUpdateTrigger" });
     case 6:
@@ -7295,24 +5894,24 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           runId: S.optional(S.String),
-          status: S.optional(RunPropertiesStatus),
+          status: S.optional(S.String),
           lastUpdatedTime: S.optional(S.String),
-          runType: S.optional(RunPropertiesRunType),
+          runType: S.optional(S.String),
           createTime: S.optional(S.String),
           startTime: S.optional(S.String),
           finishTime: S.optional(S.String),
-          outputImages: S.optional(RunPropertiesOutputImagesList),
+          outputImages: S.optional(__S(140)),
           task: S.optional(S.String),
-          imageUpdateTrigger: S.optional(ImageUpdateTrigger),
-          sourceTrigger: S.optional(SourceTriggerDescriptor),
-          platform: S.optional(PlatformProperties),
-          agentConfiguration: S.optional(AgentProperties),
+          imageUpdateTrigger: S.optional(__S(141)),
+          sourceTrigger: S.optional(__S(142)),
+          platform: S.optional(__S(72)),
+          agentConfiguration: S.optional(__S(73)),
           sourceRegistryAuth: S.optional(S.String),
-          customRegistries: S.optional(RunPropertiesCustomRegistriesList),
+          customRegistries: S.optional(__S(11)),
           runErrorMessage: S.optional(S.String),
-          provisioningState: S.optional(RunPropertiesProvisioningState),
+          provisioningState: S.optional(S.String),
           isArchiveEnabled: S.optional(S.Boolean),
-          timerTrigger: S.optional(TimerTriggerDescriptor),
+          timerTrigger: S.optional(__S(143)),
         }),
       ).annotate({ identifier: "RunProperties" });
     case 1:
@@ -7321,7 +5920,7 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(RunProperties),
+          properties: S.optional(__S(144)),
         }),
       ).annotate({ identifier: "GetRunResponse" });
     case 2:
@@ -7452,7 +6051,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceUri: S.String,
-          customHeaders: S.optional(CallbackConfigCustomHeadersMap),
+          customHeaders: S.optional(__S(38)),
         }),
       ).annotate({ identifier: "CallbackConfig" });
     case 3:
@@ -7467,7 +6066,7 @@ function __c19(j: number): any {
         S.Struct({
           resourceId: S.optional(S.String),
           registryUri: S.optional(S.String),
-          credentials: S.optional(ImportSourceCredentials),
+          credentials: S.optional(__S(155)),
           sourceImage: S.String,
         }),
       ).annotate({ identifier: "ImportSource" });
@@ -7477,12 +6076,10 @@ function __c19(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
-          source: ImportSource,
-          targetTags: S.optional(ImportRegistryImageRequestTargetTagsList),
-          untaggedTargetRepositories: S.optional(
-            ImportRegistryImageRequestUntaggedTargetRepositoriesList,
-          ),
-          mode: S.optional(ImportRegistryImageRequestMode),
+          source: __S(156),
+          targetTags: S.optional(__S(11)),
+          untaggedTargetRepositories: S.optional(__S(11)),
+          mode: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -7510,7 +6107,7 @@ function __c19(j: number): any {
         ),
       ).annotate({ identifier: "ListCacheRulesRequest" });
     case 7:
-      return S.Array(CacheRule);
+      return S.Array(__S(8));
   }
 }
 function __c20(j: number): any {
@@ -7518,7 +6115,7 @@ function __c20(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(CacheRulesListResultValueList),
+          value: S.optional(__S(159)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CacheRulesListResult" });
@@ -7546,16 +6143,16 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ConnectedRegistryProperties),
+          systemData: S.optional(__S(6)),
+          properties: S.optional(__S(24)),
         }),
       ).annotate({ identifier: "ConnectedRegistry" });
     case 3:
-      return S.Array(ConnectedRegistry);
+      return S.Array(__S(162));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ConnectedRegistryListResultValueList),
+          value: S.optional(__S(163)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -7579,11 +6176,11 @@ function __c20(j: number): any {
         identifier: "ListCredentialSetsRequest",
       });
     case 6:
-      return S.Array(CredentialSet);
+      return S.Array(__S(130));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(CredentialSetListResultValueList),
+          value: S.optional(__S(166)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "CredentialSetListResult" });
@@ -7627,7 +6224,7 @@ function __c21(j: number): any {
         identifier: "OperationMetricSpecificationDefinition",
       });
     case 3:
-      return S.Array(OperationMetricSpecificationDefinition);
+      return S.Array(__S(170));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -7639,16 +6236,12 @@ function __c21(j: number): any {
         identifier: "OperationLogSpecificationDefinition",
       });
     case 5:
-      return S.Array(OperationLogSpecificationDefinition);
+      return S.Array(__S(172));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(
-            OperationServiceSpecificationDefinitionMetricSpecificationsList,
-          ),
-          logSpecifications: S.optional(
-            OperationServiceSpecificationDefinitionLogSpecificationsList,
-          ),
+          metricSpecifications: S.optional(__S(171)),
+          logSpecifications: S.optional(__S(173)),
         }),
       ).annotate({
         identifier: "OperationServiceSpecificationDefinition",
@@ -7656,7 +6249,7 @@ function __c21(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(OperationServiceSpecificationDefinition),
+          serviceSpecification: S.optional(__S(174)),
         }),
       ).annotate({
         identifier: "OperationPropertiesDefinition",
@@ -7670,17 +6263,17 @@ function __c22(j: number): any {
         S.Struct({
           origin: S.optional(S.String),
           name: S.optional(S.String),
-          display: S.optional(OperationDisplayDefinition),
-          properties: S.optional(OperationPropertiesDefinition),
+          display: S.optional(__S(169)),
+          properties: S.optional(__S(175)),
           isDataAction: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "OperationDefinition" });
     case 1:
-      return S.Array(OperationDefinition);
+      return S.Array(__S(176));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(OperationListResultValueList),
+          value: S.optional(__S(177)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -7704,7 +6297,7 @@ function __c22(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PrivateEndpointConnectionListResultValueList),
+          value: S.optional(__S(60)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -7724,11 +6317,11 @@ function __c22(j: number): any {
         ),
       ).annotate({ identifier: "ListRegistriesRequest" });
     case 6:
-      return S.Array(Registry);
+      return S.Array(__S(62));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(RegistryListResultValueList),
+          value: S.optional(__S(182)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegistryListResult" });
@@ -7772,17 +6365,17 @@ function __c23(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(PasswordName),
+          name: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegistryPassword" });
     case 3:
-      return S.Array(RegistryPassword);
+      return S.Array(__S(186));
     case 4:
       return S.suspend(() =>
         S.Struct({
           username: S.optional(S.String),
-          passwords: S.optional(RegistryListCredentialsResultPasswordsList),
+          passwords: S.optional(__S(187)),
         }),
       ).annotate({
         identifier: "RegistryListCredentialsResult",
@@ -7805,11 +6398,11 @@ function __c23(j: number): any {
         identifier: "ListRegistryPrivateLinkResourcesRequest",
       });
     case 6:
-      return S.Array(PrivateLinkResourceListResultValueItem);
+      return S.Array(__S(135));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PrivateLinkResourceListResultValueList),
+          value: S.optional(__S(190)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -7842,15 +6435,15 @@ function __c24(j: number): any {
           name: S.optional(S.String),
           limit: S.optional(S.Number),
           currentValue: S.optional(S.Number),
-          unit: S.optional(RegistryUsageUnit),
+          unit: S.optional(S.String),
         }),
       ).annotate({ identifier: "RegistryUsage" });
     case 2:
-      return S.Array(RegistryUsage);
+      return S.Array(__S(193));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(RegistryUsageListResultValueList),
+          value: S.optional(__S(194)),
         }),
       ).annotate({ identifier: "RegistryUsageListResult" });
     case 4:
@@ -7869,11 +6462,11 @@ function __c24(j: number): any {
         ),
       ).annotate({ identifier: "ListReplicationsRequest" });
     case 5:
-      return S.Array(Replication);
+      return S.Array(__S(137));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ReplicationListResultValueList),
+          value: S.optional(__S(197)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ReplicationListResult" });
@@ -7899,11 +6492,11 @@ function __c24(j: number): any {
 function __c25(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Run);
+      return S.Array(__S(145));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(RunListResultValueList),
+          value: S.optional(__S(200)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "RunListResult" });
@@ -7923,11 +6516,11 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListScopeMapsRequest" });
     case 3:
-      return S.Array(ScopeMap);
+      return S.Array(__S(70));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ScopeMapListResultValueList),
+          value: S.optional(__S(203)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ScopeMapListResult" });
@@ -7947,11 +6540,11 @@ function __c25(j: number): any {
         ),
       ).annotate({ identifier: "ListTasksRequest" });
     case 6:
-      return S.Array(Task);
+      return S.Array(__S(95));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(TaskListResultValueList),
+          value: S.optional(__S(206)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TaskListResult" });
@@ -7975,11 +6568,11 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "ListTokensRequest" });
     case 1:
-      return S.Array(Token);
+      return S.Array(__S(107));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(TokenListResultValueList),
+          value: S.optional(__S(209)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "TokenListResult" });
@@ -8046,17 +6639,17 @@ function __c27(j: number): any {
           id: S.optional(S.String),
           timestamp: S.optional(S.String),
           action: S.optional(S.String),
-          target: S.optional(Target),
-          request: S.optional(Request),
-          actor: S.optional(Actor),
-          source: S.optional(Source),
+          target: S.optional(__S(212)),
+          request: S.optional(__S(213)),
+          actor: S.optional(__S(214)),
+          source: S.optional(__S(215)),
         }),
       ).annotate({ identifier: "EventContent" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          content: S.optional(EventContent),
-          headers: S.optional(EventRequestMessageHeadersMap),
+          content: S.optional(__S(216)),
+          headers: S.optional(__S(38)),
           method: S.optional(S.String),
           requestUri: S.optional(S.String),
           version: S.optional(S.String),
@@ -8066,7 +6659,7 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.String),
-          headers: S.optional(EventResponseMessageHeadersMap),
+          headers: S.optional(__S(38)),
           reasonPhrase: S.optional(S.String),
           statusCode: S.optional(S.String),
           version: S.optional(S.String),
@@ -8076,16 +6669,16 @@ function __c27(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          eventRequestMessage: S.optional(EventRequestMessage),
-          eventResponseMessage: S.optional(EventResponseMessage),
+          eventRequestMessage: S.optional(__S(217)),
+          eventResponseMessage: S.optional(__S(218)),
         }),
       ).annotate({ identifier: "Event" });
     case 4:
-      return S.Array(Event);
+      return S.Array(__S(219));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(EventListResultValueList),
+          value: S.optional(__S(220)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "EventListResult" });
@@ -8105,7 +6698,7 @@ function __c27(j: number): any {
         ),
       ).annotate({ identifier: "ListWebhooksRequest" });
     case 7:
-      return S.Array(Webhook);
+      return S.Array(__S(111));
   }
 }
 function __c28(j: number): any {
@@ -8113,7 +6706,7 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(WebhookListResultValueList),
+          value: S.optional(__S(223)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebhookListResult" });
@@ -8140,7 +6733,7 @@ function __c28(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(PrivateEndpointConnectionProperties),
+          properties: S.optional(__S(58)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -8158,7 +6751,7 @@ function __c28(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
-          name: PasswordName,
+          name: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8219,7 +6812,7 @@ function __c28(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          properties: S.optional(RunProperties),
+          properties: S.optional(__S(144)),
         }),
       ).annotate({
         identifier: "RunRegistriesScheduleResponse",
@@ -8243,7 +6836,7 @@ function __c29(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           cacheRuleName: S.String.pipe(T.Label()),
-          properties: S.optional(CacheRuleUpdateProperties),
+          properties: S.optional(__S(232)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8264,11 +6857,11 @@ function __c29(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          syncProperties: S.optional(SyncUpdateProperties),
-          logging: S.optional(LoggingProperties),
-          clientTokenIds: S.optional(ConnectedRegistryUpdatePropertiesClientTokenIdsList),
-          notificationsList: S.optional(ConnectedRegistryUpdatePropertiesNotificationsListList),
-          garbageCollection: S.optional(GarbageCollectionProperties),
+          syncProperties: S.optional(__S(234)),
+          logging: S.optional(__S(12)),
+          clientTokenIds: S.optional(__S(11)),
+          notificationsList: S.optional(__S(11)),
+          garbageCollection: S.optional(__S(13)),
         }),
       ).annotate({
         identifier: "ConnectedRegistryUpdateProperties",
@@ -8280,7 +6873,7 @@ function __c29(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           connectedRegistryName: S.String.pipe(T.Label()),
-          properties: S.optional(ConnectedRegistryUpdateProperties),
+          properties: S.optional(__S(235)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8295,7 +6888,7 @@ function __c29(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          authCredentials: S.optional(CredentialSetUpdatePropertiesAuthCredentialsList),
+          authCredentials: S.optional(__S(28)),
         }),
       ).annotate({
         identifier: "CredentialSetUpdateProperties",
@@ -8307,8 +6900,8 @@ function __c29(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           credentialSetName: S.String.pipe(T.Label()),
-          properties: S.optional(CredentialSetUpdateProperties),
-          identity: S.optional(IdentityPropertiesInput),
+          properties: S.optional(__S(237)),
+          identity: S.optional(__S(31)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8324,17 +6917,15 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           adminUserEnabled: S.optional(S.Boolean),
-          networkRuleSet: S.optional(NetworkRuleSet),
-          policies: S.optional(PoliciesInput),
-          encryption: S.optional(EncryptionPropertyInput),
+          networkRuleSet: S.optional(__S(41)),
+          policies: S.optional(__S(45)),
+          encryption: S.optional(__S(47)),
           dataEndpointEnabled: S.optional(S.Boolean),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
-          networkRuleBypassOptions: S.optional(
-            RegistryPropertiesUpdateParametersInputNetworkRuleBypassOptions,
-          ),
+          publicNetworkAccess: S.optional(S.String),
+          networkRuleBypassOptions: S.optional(S.String),
           networkRuleBypassAllowedForTasks: S.optional(S.Boolean),
           anonymousPullEnabled: S.optional(S.Boolean),
-          roleAssignmentMode: S.optional(RoleAssignmentMode),
+          roleAssignmentMode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RegistryPropertiesUpdateParametersInput",
@@ -8349,10 +6940,10 @@ function __c30(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
-          identity: S.optional(IdentityPropertiesInput),
-          tags: S.optional(UpdateRegistryRequestTagsMap),
-          sku: S.optional(Sku),
-          properties: S.optional(RegistryPropertiesUpdateParametersInput),
+          identity: S.optional(__S(31)),
+          tags: S.optional(__S(38)),
+          sku: S.optional(__S(49)),
+          properties: S.optional(__S(239)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8377,8 +6968,8 @@ function __c30(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           replicationName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateReplicationRequestTagsMap),
-          properties: S.optional(ReplicationUpdateParametersProperties),
+          tags: S.optional(__S(38)),
+          properties: S.optional(__S(241)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8409,7 +7000,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.String),
-          actions: S.optional(ScopeMapPropertiesUpdateParametersActionsList),
+          actions: S.optional(__S(11)),
         }),
       ).annotate({
         identifier: "ScopeMapPropertiesUpdateParameters",
@@ -8421,7 +7012,7 @@ function __c30(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           scopeMapName: S.String.pipe(T.Label()),
-          properties: S.optional(ScopeMapPropertiesUpdateParameters),
+          properties: S.optional(__S(244)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8434,16 +7025,16 @@ function __c30(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          os: S.optional(PlatformUpdateParametersOs),
-          architecture: S.optional(PlatformUpdateParametersArchitecture),
-          variant: S.optional(PlatformUpdateParametersVariant),
+          os: S.optional(S.String),
+          architecture: S.optional(S.String),
+          variant: S.optional(S.String),
         }),
       ).annotate({ identifier: "PlatformUpdateParameters" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           schedule: S.optional(S.String),
-          status: S.optional(TimerTriggerUpdateParametersStatus),
+          status: S.optional(S.String),
           name: S.String,
         }),
       ).annotate({
@@ -8454,11 +7045,11 @@ function __c30(j: number): any {
 function __c31(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(TimerTriggerUpdateParameters);
+      return S.Array(__S(247));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          tokenType: S.optional(AuthInfoUpdateParametersTokenType),
+          tokenType: S.optional(S.String),
           token: S.optional(S.String),
           refreshToken: S.optional(S.String.pipe(T.SensitiveValue({}))),
           scope: S.optional(S.String),
@@ -8468,30 +7059,30 @@ function __c31(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          sourceControlType: S.optional(SourceUpdateParametersSourceControlType),
+          sourceControlType: S.optional(S.String),
           repositoryUrl: S.optional(S.String),
           branch: S.optional(S.String),
-          sourceControlAuthProperties: S.optional(AuthInfoUpdateParameters),
+          sourceControlAuthProperties: S.optional(__S(249)),
         }),
       ).annotate({ identifier: "SourceUpdateParameters" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sourceRepository: S.optional(SourceUpdateParameters),
-          sourceTriggerEvents: S.optional(SourceTriggerUpdateParametersSourceTriggerEventsList),
-          status: S.optional(SourceTriggerUpdateParametersStatus),
+          sourceRepository: S.optional(__S(250)),
+          sourceTriggerEvents: S.optional(__S(79)),
+          status: S.optional(S.String),
           name: S.String,
         }),
       ).annotate({
         identifier: "SourceTriggerUpdateParameters",
       });
     case 4:
-      return S.Array(SourceTriggerUpdateParameters);
+      return S.Array(__S(251));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          baseImageTriggerType: S.optional(BaseImageTriggerUpdateParametersBaseImageTriggerType),
-          status: S.optional(BaseImageTriggerUpdateParametersStatus),
+          baseImageTriggerType: S.optional(S.String),
+          status: S.optional(S.String),
           name: S.String,
         }),
       ).annotate({
@@ -8500,21 +7091,21 @@ function __c31(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          timerTriggers: S.optional(TriggerUpdateParametersTimerTriggersList),
-          sourceTriggers: S.optional(TriggerUpdateParametersSourceTriggersList),
-          baseImageTrigger: S.optional(BaseImageTriggerUpdateParameters),
+          timerTriggers: S.optional(__S(248)),
+          sourceTriggers: S.optional(__S(252)),
+          baseImageTrigger: S.optional(__S(253)),
         }),
       ).annotate({ identifier: "TriggerUpdateParameters" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(TaskPropertiesUpdateParametersStatus),
-          platform: S.optional(PlatformUpdateParameters),
-          agentConfiguration: S.optional(AgentProperties),
+          status: S.optional(S.String),
+          platform: S.optional(__S(246)),
+          agentConfiguration: S.optional(__S(73)),
           timeout: S.optional(S.Number),
-          step: S.optional(TaskStepUpdateParameters),
-          trigger: S.optional(TriggerUpdateParameters),
-          credentials: S.optional(Credentials),
+          step: S.optional(__S(74)),
+          trigger: S.optional(__S(254)),
+          credentials: S.optional(__S(88)),
         }),
       ).annotate({
         identifier: "TaskPropertiesUpdateParameters",
@@ -8530,9 +7121,9 @@ function __c32(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           taskName: S.String.pipe(T.Label()),
-          identity: S.optional(IdentityProperties_2),
-          properties: S.optional(TaskPropertiesUpdateParameters),
-          tags: S.optional(UpdateTaskRequestTagsMap),
+          identity: S.optional(__S(71)),
+          properties: S.optional(__S(255)),
+          tags: S.optional(__S(38)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8546,8 +7137,8 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           scopeMapId: S.optional(S.String),
-          status: S.optional(TokenStatus),
-          credentials: S.optional(TokenCredentialsPropertiesInput),
+          status: S.optional(S.String),
+          credentials: S.optional(__S(100)),
         }),
       ).annotate({
         identifier: "TokenUpdatePropertiesInput",
@@ -8559,7 +7150,7 @@ function __c32(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           tokenName: S.String.pipe(T.Label()),
-          properties: S.optional(TokenUpdatePropertiesInput),
+          properties: S.optional(__S(257)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8573,10 +7164,10 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceUri: S.optional(S.String),
-          customHeaders: S.optional(WebhookPropertiesUpdateParametersCustomHeadersMap),
-          status: S.optional(WebhookStatus),
+          customHeaders: S.optional(__S(38)),
+          status: S.optional(S.String),
           scope: S.optional(S.String),
-          actions: S.optional(WebhookPropertiesUpdateParametersActionsList),
+          actions: S.optional(__S(79)),
         }),
       ).annotate({
         identifier: "WebhookPropertiesUpdateParameters",
@@ -8588,8 +7179,8 @@ function __c32(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           registryName: S.String.pipe(T.Label()),
           webhookName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateWebhookRequestTagsMap),
-          properties: S.optional(WebhookPropertiesUpdateParameters),
+          tags: S.optional(__S(38)),
+          properties: S.optional(__S(259)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -8599,5 +7190,80 @@ function __c32(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWebhookRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
   }
 }

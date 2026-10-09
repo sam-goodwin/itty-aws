@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -20,18 +22,11 @@ export class BadRequest
 
 /** * `revenue_analytics` - Revenue Analytics * `engineering_analytics` - Engineering Analytics */
 export type GetManagedViewsetRequestKind = "revenue_analytics" | "engineering_analytics";
-const GetManagedViewsetRequestKind = S.String;
-
 export interface GetManagedViewsetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   kind: GetManagedViewsetRequestKind | (string & {});
 }
-const GetManagedViewsetRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetManagedViewsetRequest>;
-
 export interface DataWarehouseManagedView {
   /** Saved query the managed viewset owns. */
   id: string;
@@ -42,33 +37,16 @@ export interface DataWarehouseManagedView {
   /** User who created the saved query, or null when the sync did. */
   created_by_id: number | null;
 }
-const DataWarehouseManagedView = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DataWarehouseManagedView>;
-
 /** Saved queries in the managed viewset. */
 export type DataWarehouseManagedViewSetResponseViewsList = Array<DataWarehouseManagedView>;
-const DataWarehouseManagedViewSetResponseViewsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DataWarehouseManagedViewSetResponseViewsList>;
-
 export interface DataWarehouseManagedViewSetResponse {
   /** Saved queries in the managed viewset. */
   views: DataWarehouseManagedViewSetResponseViewsList;
   /** Number of saved queries returned. */
   count: number;
 }
-const DataWarehouseManagedViewSetResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DataWarehouseManagedViewSetResponse>;
-
 /** * `revenue_analytics` - Revenue Analytics * `engineering_analytics` - Engineering Analytics */
 export type UpdateManagedViewsetRequestKind = "revenue_analytics" | "engineering_analytics";
-const UpdateManagedViewsetRequestKind = S.String;
-
 export interface UpdateManagedViewsetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -76,26 +54,14 @@ export interface UpdateManagedViewsetRequest {
   /** Whether the managed viewset should exist. */
   enabled: boolean;
 }
-const UpdateManagedViewsetRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<UpdateManagedViewsetRequest>;
-
 /** * `revenue_analytics` - Revenue Analytics * `engineering_analytics` - Engineering Analytics */
 export type DataWarehouseManagedViewSetKindEnum = "revenue_analytics" | "engineering_analytics";
-const DataWarehouseManagedViewSetKindEnum = S.String;
-
 export interface DataWarehouseManagedViewSetUpdateResponse {
   /** State the managed viewset is now in. */
   enabled: boolean;
   /** Managed viewset that was toggled. * `revenue_analytics` - Revenue Analytics * `engineering_analytics` - Engineering Analytics */
   kind: DataWarehouseManagedViewSetKindEnum;
 }
-const DataWarehouseManagedViewSetUpdateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DataWarehouseManagedViewSetUpdateResponse>;
-
 export type GetManagedViewsetError = BadRequest | PosthogOpError;
 /** Get all views associated with a specific managed viewset. GET /api/environments/{team_id}/managed_viewsets/{kind}/ */
 export const getManagedViewset: API.OperationMethod<
@@ -104,8 +70,8 @@ export const getManagedViewset: API.OperationMethod<
   GetManagedViewsetError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedViewsetRequest,
-  output: DataWarehouseManagedViewSetResponse,
+  input: __S(0) as any as S.Schema<GetManagedViewsetRequest>,
+  output: __S(3) as any as S.Schema<DataWarehouseManagedViewSetResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -119,8 +85,8 @@ export const updateManagedViewset: API.OperationMethod<
   UpdateManagedViewsetError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateManagedViewsetRequest,
-  output: DataWarehouseManagedViewSetUpdateResponse,
+  input: __S(4) as any as S.Schema<UpdateManagedViewsetRequest>,
+  output: __S(5) as any as S.Schema<DataWarehouseManagedViewSetUpdateResponse>,
   errors: [BadRequest],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -133,7 +99,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          kind: GetManagedViewsetRequestKind.pipe(T.Label()),
+          kind: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -152,11 +118,11 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "DataWarehouseManagedView" });
     case 2:
-      return S.Array(DataWarehouseManagedView);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          views: DataWarehouseManagedViewSetResponseViewsList,
+          views: __S(2),
           count: S.Number,
         }),
       ).annotate({
@@ -166,7 +132,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project_id: S.String.pipe(T.Label()),
-          kind: UpdateManagedViewsetRequestKind.pipe(T.Label()),
+          kind: S.String.pipe(T.Label()),
           enabled: S.Boolean,
         }).pipe(
           T.Http({
@@ -182,10 +148,21 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enabled: S.Boolean,
-          kind: DataWarehouseManagedViewSetKindEnum,
+          kind: S.String,
         }),
       ).annotate({
         identifier: "DataWarehouseManagedViewSetUpdateResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
   }
 }

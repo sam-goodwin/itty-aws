@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -242,11 +244,6 @@ export class RouteNotFound
 
 export type CreateRequestDlpCase0Action = "BLOCK" | "FLAG";
 export type CreateRequestDlpCase0ProfilesList = Array<string>;
-const CreateRequestDlpCase0ProfilesList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateRequestDlpCase0ProfilesList>;
-
 export interface CreateRequestDlpCase0 {
   action: CreateRequestDlpCase0Action | (string & {});
   enabled: boolean;
@@ -271,50 +268,20 @@ export interface CreateRequestDlpCase1 {
   policies: CreateRequestDlpCase1PoliciesList;
 }
 export type CreateRequestDlp = CreateRequestDlpCase0 | CreateRequestDlpCase1;
-const CreateRequestDlp = /*@__PURE__*/ __L.at(__c0, 1);
-
 export type CreateRequestGuardrailsPromptP1 = "FLAG" | "BLOCK";
-const CreateRequestGuardrailsPromptP1 = S.String;
-
 export type CreateRequestGuardrailsPromptS1 = "FLAG" | "BLOCK";
-const CreateRequestGuardrailsPromptS1 = S.String;
-
 export type CreateRequestGuardrailsPromptS10 = "FLAG" | "BLOCK";
-const CreateRequestGuardrailsPromptS10 = S.String;
-
 export type CreateRequestGuardrailsPromptS11 = "FLAG" | "BLOCK";
-const CreateRequestGuardrailsPromptS11 = S.String;
-
 export type CreateRequestGuardrailsPromptS12 = "FLAG" | "BLOCK";
-const CreateRequestGuardrailsPromptS12 = S.String;
-
 export type CreateRequestGuardrailsPromptS13 = "FLAG" | "BLOCK";
-const CreateRequestGuardrailsPromptS13 = S.String;
-
 export type CreateRequestGuardrailsPromptS2 = "FLAG" | "BLOCK";
-const CreateRequestGuardrailsPromptS2 = S.String;
-
 export type CreateRequestGuardrailsPromptS3 = "FLAG" | "BLOCK";
-const CreateRequestGuardrailsPromptS3 = S.String;
-
 export type CreateRequestGuardrailsPromptS4 = "FLAG" | "BLOCK";
-const CreateRequestGuardrailsPromptS4 = S.String;
-
 export type CreateRequestGuardrailsPromptS5 = "FLAG" | "BLOCK";
-const CreateRequestGuardrailsPromptS5 = S.String;
-
 export type CreateRequestGuardrailsPromptS6 = "FLAG" | "BLOCK";
-const CreateRequestGuardrailsPromptS6 = S.String;
-
 export type CreateRequestGuardrailsPromptS7 = "FLAG" | "BLOCK";
-const CreateRequestGuardrailsPromptS7 = S.String;
-
 export type CreateRequestGuardrailsPromptS8 = "FLAG" | "BLOCK";
-const CreateRequestGuardrailsPromptS8 = S.String;
-
 export type CreateRequestGuardrailsPromptS9 = "FLAG" | "BLOCK";
-const CreateRequestGuardrailsPromptS9 = S.String;
-
 export interface CreateRequestGuardrailsPrompt {
   p1?: CreateRequestGuardrailsPromptP1 | (string & {});
   s1?: CreateRequestGuardrailsPromptS1 | (string & {});
@@ -331,11 +298,6 @@ export interface CreateRequestGuardrailsPrompt {
   s8?: CreateRequestGuardrailsPromptS8 | (string & {});
   s9?: CreateRequestGuardrailsPromptS9 | (string & {});
 }
-const CreateRequestGuardrailsPrompt = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateRequestGuardrailsPrompt>;
-
 export type CreateRequestGuardrailsResponseP1 = "FLAG" | "BLOCK";
 export type CreateRequestGuardrailsResponseS1 = "FLAG" | "BLOCK";
 export type CreateRequestGuardrailsResponseS10 = "FLAG" | "BLOCK";
@@ -366,56 +328,23 @@ export interface CreateRequestGuardrailsResponse {
   s8?: CreateRequestGuardrailsResponseS8 | (string & {});
   s9?: CreateRequestGuardrailsResponseS9 | (string & {});
 }
-const CreateRequestGuardrailsResponse =
-  CreateRequestGuardrailsPrompt as any as S.Schema<CreateRequestGuardrailsResponse>;
-
 export interface CreateRequestGuardrails {
   prompt: CreateRequestGuardrailsPrompt;
   response: CreateRequestGuardrailsResponse;
 }
-const CreateRequestGuardrails = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateRequestGuardrails>;
-
 export type CreateRequestLogManagementStrategy = "STOP_INSERTING" | "DELETE_OLDEST";
-const CreateRequestLogManagementStrategy = S.String;
-
 export type CreateRequestOtelItemHeadersMap = { [key: string]: string | undefined };
-const CreateRequestOtelItemHeadersMap = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateRequestOtelItemHeadersMap>;
-
 export type CreateRequestOtelItemContentType = "json" | "protobuf";
-const CreateRequestOtelItemContentType = S.String;
-
 export interface CreateRequestOtelItem {
   headers: CreateRequestOtelItemHeadersMap;
   url: string;
   authorization?: string;
   contentType?: CreateRequestOtelItemContentType | (string & {});
 }
-const CreateRequestOtelItem = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateRequestOtelItem>;
-
 export type CreateRequestOtelList = Array<CreateRequestOtelItem>;
-const CreateRequestOtelList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateRequestOtelList>;
-
 export type CreateRequestRateLimitingTechnique = "fixed" | "sliding";
-const CreateRequestRateLimitingTechnique = S.String;
-
 export type CreateRequestRetryBackoff = "constant" | "linear" | "exponential";
-const CreateRequestRetryBackoff = S.String;
-
 export type CreateRequestSpendLimitsRulesItemLimitType = "cost";
-const CreateRequestSpendLimitsRulesItemLimitType = S.String;
-
 export type CreateRequestSpendLimitsRulesItemMetadataValueModeMode = "partition";
 export interface CreateRequestSpendLimitsRulesItemMetadataValueMode {
   mode: CreateRequestSpendLimitsRulesItemMetadataValueModeMode;
@@ -429,51 +358,22 @@ export interface CreateRequestSpendLimitsRulesItemMetadataValueCase1 {
 export type CreateRequestSpendLimitsRulesItemMetadataValue =
   | CreateRequestSpendLimitsRulesItemMetadataValueMode
   | CreateRequestSpendLimitsRulesItemMetadataValueCase1;
-const CreateRequestSpendLimitsRulesItemMetadataValue = /*@__PURE__*/ __L.at(__c0, 7);
-
 export type CreateRequestSpendLimitsRulesItemMetadataMap = {
   [key: string]: CreateRequestSpendLimitsRulesItemMetadataValue | undefined;
 };
-const CreateRequestSpendLimitsRulesItemMetadataMap = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateRequestSpendLimitsRulesItemMetadataMap>;
-
 export type CreateRequestSpendLimitsRulesItemModelMode = "filter";
-const CreateRequestSpendLimitsRulesItemModelMode = S.String;
-
 export type CreateRequestSpendLimitsRulesItemModelValuesList = Array<string>;
-const CreateRequestSpendLimitsRulesItemModelValuesList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<CreateRequestSpendLimitsRulesItemModelValuesList>;
-
 export interface CreateRequestSpendLimitsRulesItemModel {
   mode: CreateRequestSpendLimitsRulesItemModelMode | (string & {});
   values: CreateRequestSpendLimitsRulesItemModelValuesList;
 }
-const CreateRequestSpendLimitsRulesItemModel = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateRequestSpendLimitsRulesItemModel>;
-
 export type CreateRequestSpendLimitsRulesItemProviderMode = "filter";
-const CreateRequestSpendLimitsRulesItemProviderMode = S.String;
-
 export type CreateRequestSpendLimitsRulesItemProviderValuesList = Array<string>;
-const CreateRequestSpendLimitsRulesItemProviderValuesList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<CreateRequestSpendLimitsRulesItemProviderValuesList>;
-
 export interface CreateRequestSpendLimitsRulesItemProvider {
   mode: CreateRequestSpendLimitsRulesItemProviderMode | (string & {});
   values: CreateRequestSpendLimitsRulesItemProviderValuesList;
 }
-const CreateRequestSpendLimitsRulesItemProvider = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateRequestSpendLimitsRulesItemProvider>;
-
 export type CreateRequestSpendLimitsRulesItemTechnique = "fixed" | "sliding";
-const CreateRequestSpendLimitsRulesItemTechnique = S.String;
-
 export interface CreateRequestSpendLimitsRulesItem {
   /** exclusiveMinimum */
   limit: number;
@@ -487,49 +387,20 @@ export interface CreateRequestSpendLimitsRulesItem {
   provider?: CreateRequestSpendLimitsRulesItemProvider;
   technique?: CreateRequestSpendLimitsRulesItemTechnique | (string & {});
 }
-const CreateRequestSpendLimitsRulesItem = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateRequestSpendLimitsRulesItem>;
-
 export type CreateRequestSpendLimitsRulesList = Array<CreateRequestSpendLimitsRulesItem>;
-const CreateRequestSpendLimitsRulesList = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateRequestSpendLimitsRulesList>;
-
 export interface CreateRequestSpendLimits {
   enabled?: boolean;
   rules?: CreateRequestSpendLimitsRulesList;
 }
-const CreateRequestSpendLimits = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateRequestSpendLimits>;
-
 export interface CreateRequestStripeUsageEventsItem {
   payload: string;
 }
-const CreateRequestStripeUsageEventsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateRequestStripeUsageEventsItem>;
-
 export type CreateRequestStripeUsageEventsList = Array<CreateRequestStripeUsageEventsItem>;
-const CreateRequestStripeUsageEventsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateRequestStripeUsageEventsList>;
-
 export interface CreateRequestStripe {
   authorization: string;
   usageEvents: CreateRequestStripeUsageEventsList;
 }
-const CreateRequestStripe = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CreateRequestStripe>;
-
 export type CreateRequestWorkersAiBillingMode = "postpaid" | "unified";
-const CreateRequestWorkersAiBillingMode = S.String;
-
 export interface CreateAiGatewayRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
@@ -564,11 +435,6 @@ export interface CreateAiGatewayRequest {
   workersAiBillingMode?: CreateRequestWorkersAiBillingMode | (string & {});
   zdr?: boolean;
 }
-const CreateAiGatewayRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateAiGatewayRequest>;
-
 export type CreateResponseDlpCase0Action = "BLOCK" | "FLAG";
 export type CreateResponseDlpCase0ProfilesList = Array<string>;
 export interface CreateResponseDlpCase0 {
@@ -594,50 +460,20 @@ export interface CreateResponseDlpCase1 {
   policies: CreateResponseDlpCase1PoliciesList;
 }
 export type CreateResponseDlp = CreateResponseDlpCase0 | CreateResponseDlpCase1;
-const CreateResponseDlp = /*@__PURE__*/ __L.at(__c2, 2);
-
 export type CreateResponseGuardrailsPromptP1 = "FLAG" | "BLOCK";
-const CreateResponseGuardrailsPromptP1 = S.String;
-
 export type CreateResponseGuardrailsPromptS1 = "FLAG" | "BLOCK";
-const CreateResponseGuardrailsPromptS1 = S.String;
-
 export type CreateResponseGuardrailsPromptS10 = "FLAG" | "BLOCK";
-const CreateResponseGuardrailsPromptS10 = S.String;
-
 export type CreateResponseGuardrailsPromptS11 = "FLAG" | "BLOCK";
-const CreateResponseGuardrailsPromptS11 = S.String;
-
 export type CreateResponseGuardrailsPromptS12 = "FLAG" | "BLOCK";
-const CreateResponseGuardrailsPromptS12 = S.String;
-
 export type CreateResponseGuardrailsPromptS13 = "FLAG" | "BLOCK";
-const CreateResponseGuardrailsPromptS13 = S.String;
-
 export type CreateResponseGuardrailsPromptS2 = "FLAG" | "BLOCK";
-const CreateResponseGuardrailsPromptS2 = S.String;
-
 export type CreateResponseGuardrailsPromptS3 = "FLAG" | "BLOCK";
-const CreateResponseGuardrailsPromptS3 = S.String;
-
 export type CreateResponseGuardrailsPromptS4 = "FLAG" | "BLOCK";
-const CreateResponseGuardrailsPromptS4 = S.String;
-
 export type CreateResponseGuardrailsPromptS5 = "FLAG" | "BLOCK";
-const CreateResponseGuardrailsPromptS5 = S.String;
-
 export type CreateResponseGuardrailsPromptS6 = "FLAG" | "BLOCK";
-const CreateResponseGuardrailsPromptS6 = S.String;
-
 export type CreateResponseGuardrailsPromptS7 = "FLAG" | "BLOCK";
-const CreateResponseGuardrailsPromptS7 = S.String;
-
 export type CreateResponseGuardrailsPromptS8 = "FLAG" | "BLOCK";
-const CreateResponseGuardrailsPromptS8 = S.String;
-
 export type CreateResponseGuardrailsPromptS9 = "FLAG" | "BLOCK";
-const CreateResponseGuardrailsPromptS9 = S.String;
-
 export interface CreateResponseGuardrailsPrompt {
   p1?: CreateResponseGuardrailsPromptP1 | null;
   s1?: CreateResponseGuardrailsPromptS1 | null;
@@ -654,11 +490,6 @@ export interface CreateResponseGuardrailsPrompt {
   s8?: CreateResponseGuardrailsPromptS8 | null;
   s9?: CreateResponseGuardrailsPromptS9 | null;
 }
-const CreateResponseGuardrailsPrompt = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateResponseGuardrailsPrompt>;
-
 export type CreateResponseGuardrailsResponseP1 = "FLAG" | "BLOCK";
 export type CreateResponseGuardrailsResponseS1 = "FLAG" | "BLOCK";
 export type CreateResponseGuardrailsResponseS10 = "FLAG" | "BLOCK";
@@ -689,94 +520,37 @@ export interface CreateResponseGuardrailsResponse {
   s8?: CreateResponseGuardrailsResponseS8 | null;
   s9?: CreateResponseGuardrailsResponseS9 | null;
 }
-const CreateResponseGuardrailsResponse =
-  CreateResponseGuardrailsPrompt as any as S.Schema<CreateResponseGuardrailsResponse>;
-
 export interface CreateResponseGuardrails {
   prompt: CreateResponseGuardrailsPrompt;
   response: CreateResponseGuardrailsResponse;
 }
-const CreateResponseGuardrails = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateResponseGuardrails>;
-
 export type CreateResponseLogManagementStrategy = "STOP_INSERTING" | "DELETE_OLDEST";
-const CreateResponseLogManagementStrategy = S.String;
-
 export type CreateResponseOtelItemHeadersMap = { [key: string]: unknown | undefined };
-const CreateResponseOtelItemHeadersMap = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateResponseOtelItemHeadersMap>;
-
 export type CreateResponseOtelItemContentType = "json" | "protobuf";
-const CreateResponseOtelItemContentType = S.String;
-
 export interface CreateResponseOtelItem {
   headers: CreateResponseOtelItemHeadersMap;
   url: string;
   authorization?: string | null;
   contentType?: CreateResponseOtelItemContentType | null;
 }
-const CreateResponseOtelItem = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateResponseOtelItem>;
-
 export type CreateResponseOtelList = Array<CreateResponseOtelItem>;
-const CreateResponseOtelList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateResponseOtelList>;
-
 export type CreateResponseRateLimitingTechnique = "fixed" | "sliding";
-const CreateResponseRateLimitingTechnique = S.String;
-
 export type CreateResponseRetryBackoff = "constant" | "linear" | "exponential";
-const CreateResponseRetryBackoff = S.String;
-
 export type CreateResponseSpendLimitsRulesItemLimitType = "cost";
-const CreateResponseSpendLimitsRulesItemLimitType = S.String;
-
 export type UntypedMetadataMap = { [key: string]: unknown | undefined };
-const UntypedMetadataMap = CreateResponseOtelItemHeadersMap as any as S.Schema<UntypedMetadataMap>;
-
 export type CreateResponseSpendLimitsRulesItemModelMode = "filter";
-const CreateResponseSpendLimitsRulesItemModelMode = S.String;
-
 export type CreateResponseSpendLimitsRulesItemModelValuesList = Array<string>;
-const CreateResponseSpendLimitsRulesItemModelValuesList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<CreateResponseSpendLimitsRulesItemModelValuesList>;
-
 export interface CreateResponseSpendLimitsRulesItemModel {
   mode: CreateResponseSpendLimitsRulesItemModelMode;
   values: CreateResponseSpendLimitsRulesItemModelValuesList;
 }
-const CreateResponseSpendLimitsRulesItemModel = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateResponseSpendLimitsRulesItemModel>;
-
 export type CreateResponseSpendLimitsRulesItemProviderMode = "filter";
-const CreateResponseSpendLimitsRulesItemProviderMode = S.String;
-
 export type CreateResponseSpendLimitsRulesItemProviderValuesList = Array<string>;
-const CreateResponseSpendLimitsRulesItemProviderValuesList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<CreateResponseSpendLimitsRulesItemProviderValuesList>;
-
 export interface CreateResponseSpendLimitsRulesItemProvider {
   mode: CreateResponseSpendLimitsRulesItemProviderMode;
   values: CreateResponseSpendLimitsRulesItemProviderValuesList;
 }
-const CreateResponseSpendLimitsRulesItemProvider = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateResponseSpendLimitsRulesItemProvider>;
-
 export type CreateResponseSpendLimitsRulesItemTechnique = "fixed" | "sliding";
-const CreateResponseSpendLimitsRulesItemTechnique = S.String;
-
 export interface CreateResponseSpendLimitsRulesItem {
   /** exclusiveMinimum */
   limit: number;
@@ -790,37 +564,18 @@ export interface CreateResponseSpendLimitsRulesItem {
   provider?: CreateResponseSpendLimitsRulesItemProvider | null;
   technique?: CreateResponseSpendLimitsRulesItemTechnique | null;
 }
-const CreateResponseSpendLimitsRulesItem = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateResponseSpendLimitsRulesItem>;
-
 export type CreateResponseSpendLimitsRulesList = Array<CreateResponseSpendLimitsRulesItem>;
-const CreateResponseSpendLimitsRulesList = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateResponseSpendLimitsRulesList>;
-
 export interface CreateResponseSpendLimits {
   enabled?: boolean | null;
   rules?: CreateResponseSpendLimitsRulesList | null;
 }
-const CreateResponseSpendLimits = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateResponseSpendLimits>;
-
 export type CreateResponseStripeUsageEventsItem = CreateRequestStripeUsageEventsItem;
 export type CreateResponseStripeUsageEventsList = Array<CreateRequestStripeUsageEventsItem>;
 export interface CreateResponseStripe {
   authorization: string;
   usageEvents: CreateResponseStripeUsageEventsList;
 }
-const CreateResponseStripe = CreateRequestStripe as any as S.Schema<CreateResponseStripe>;
-
 export type CreateResponseWorkersAiBillingMode = "postpaid" | "unified";
-const CreateResponseWorkersAiBillingMode = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateAiGatewayResponse {
   /** Unique identifier of the AI Gateway within the account. */
@@ -858,17 +613,8 @@ export interface CreateAiGatewayResponse {
   workersAiBillingMode?: CreateResponseWorkersAiBillingMode | null;
   zdr?: boolean | null;
 }
-const CreateAiGatewayResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateAiGatewayResponse>;
-
 export type BillingSpendingLimitCreateRequestDuration = "daily" | "weekly" | "monthly";
-const BillingSpendingLimitCreateRequestDuration = S.String;
-
 export type BillingSpendingLimitCreateRequestStrategy = "fixed" | "sliding";
-const BillingSpendingLimitCreateRequestStrategy = S.String;
-
 export interface CreateBillingSpendingLimitRequest {
   accountId: string;
   /** Spending limit amount in cents (min 100). */
@@ -878,17 +624,7 @@ export interface CreateBillingSpendingLimitRequest {
   /** Spending limit strategy. */
   strategy: BillingSpendingLimitCreateRequestStrategy | (string & {});
 }
-const CreateBillingSpendingLimitRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateBillingSpendingLimitRequest>;
-
 export type CreateBillingSpendingLimitResponse = unknown;
-const CreateBillingSpendingLimitResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateBillingSpendingLimitResponse>;
-
 export interface CreateBillingTopupRequest {
   accountId: string;
   /** Top-up amount in cents (min 1000). */
@@ -896,11 +632,6 @@ export interface CreateBillingTopupRequest {
   /** Stripe PaymentMethod to charge instead of the customer's default payment method. */
   paymentMethodId?: string;
 }
-const CreateBillingTopupRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateBillingTopupRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateBillingTopupResponse {
   /** Stripe PaymentIntent client secret. */
@@ -914,11 +645,6 @@ export interface CreateBillingTopupResponse {
   /** Last 4 digits of card. */
   last4?: string | null;
 }
-const CreateBillingTopupResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateBillingTopupResponse>;
-
 export interface CreateBillingTopupConfigRequest {
   accountId: string;
   /** Auto top-up amount in cents (min 1000). */
@@ -926,21 +652,11 @@ export interface CreateBillingTopupConfigRequest {
   /** Balance threshold in cents that triggers auto top-up (min 500). */
   threshold: number;
 }
-const CreateBillingTopupConfigRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateBillingTopupConfigRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateBillingTopupConfigResponse {
   amount: number;
   threshold: number;
 }
-const CreateBillingTopupConfigResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateBillingTopupConfigResponse>;
-
 export interface CreateCustomProviderRequest {
   accountId: string;
   baseUrl: string;
@@ -956,11 +672,6 @@ export interface CreateCustomProviderRequest {
   link?: string;
   position?: number;
 }
-const CreateCustomProviderRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateCustomProviderRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCustomProviderResponse {
   id: string;
@@ -980,11 +691,6 @@ export interface CreateCustomProviderResponse {
   logo?: string | null;
   position?: number | null;
 }
-const CreateCustomProviderResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateCustomProviderResponse>;
-
 export type DatasetsCreateRequestFiltersItemKey =
   | "created_at"
   | "request_content_type"
@@ -999,37 +705,16 @@ export type DatasetsCreateRequestFiltersItemKey =
   | "tokens_out"
   | "duration"
   | "feedback";
-const DatasetsCreateRequestFiltersItemKey = S.String;
-
 export type DatasetsCreateRequestFiltersItemOperator = "eq" | "contains" | "lt" | "gt";
-const DatasetsCreateRequestFiltersItemOperator = S.String;
-
 export type DatasetsCreateRequestFiltersItemValueItem = string | number | boolean;
-const DatasetsCreateRequestFiltersItemValueItem = /*@__PURE__*/ __L.at(__c4, 6);
-
 export type DatasetsCreateRequestFiltersItemValueList =
   Array<DatasetsCreateRequestFiltersItemValueItem>;
-const DatasetsCreateRequestFiltersItemValueList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DatasetsCreateRequestFiltersItemValueList>;
-
 export interface DatasetsCreateRequestFiltersItem {
   key: DatasetsCreateRequestFiltersItemKey | (string & {});
   operator: DatasetsCreateRequestFiltersItemOperator | (string & {});
   value: DatasetsCreateRequestFiltersItemValueList;
 }
-const DatasetsCreateRequestFiltersItem = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<DatasetsCreateRequestFiltersItem>;
-
 export type DatasetsCreateRequestFiltersList = Array<DatasetsCreateRequestFiltersItem>;
-const DatasetsCreateRequestFiltersList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<DatasetsCreateRequestFiltersList>;
-
 export interface CreateDatasetRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
@@ -1038,8 +723,6 @@ export interface CreateDatasetRequest {
   filters: DatasetsCreateRequestFiltersList;
   name: string;
 }
-const CreateDatasetRequest = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<CreateDatasetRequest>;
-
 export type DatasetsCreateResponseFiltersItemKey =
   | "created_at"
   | "request_content_type"
@@ -1054,37 +737,16 @@ export type DatasetsCreateResponseFiltersItemKey =
   | "tokens_out"
   | "duration"
   | "feedback";
-const DatasetsCreateResponseFiltersItemKey = S.String;
-
 export type DatasetsCreateResponseFiltersItemOperator = "eq" | "contains" | "lt" | "gt";
-const DatasetsCreateResponseFiltersItemOperator = S.String;
-
 export type DatasetsCreateResponseFiltersItemValueItem = string | number | boolean;
-const DatasetsCreateResponseFiltersItemValueItem = /*@__PURE__*/ __L.at(__c5, 3);
-
 export type DatasetsCreateResponseFiltersItemValueList =
   Array<DatasetsCreateResponseFiltersItemValueItem>;
-const DatasetsCreateResponseFiltersItemValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<DatasetsCreateResponseFiltersItemValueList>;
-
 export interface DatasetsCreateResponseFiltersItem {
   key: DatasetsCreateResponseFiltersItemKey;
   operator: DatasetsCreateResponseFiltersItemOperator;
   value: DatasetsCreateResponseFiltersItemValueList;
 }
-const DatasetsCreateResponseFiltersItem = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<DatasetsCreateResponseFiltersItem>;
-
 export type DatasetsCreateResponseFiltersList = Array<DatasetsCreateResponseFiltersItem>;
-const DatasetsCreateResponseFiltersList = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<DatasetsCreateResponseFiltersList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDatasetResponse {
   id: string;
@@ -1096,22 +758,12 @@ export interface CreateDatasetResponse {
   modifiedAt: string;
   name: string;
 }
-const CreateDatasetResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CreateDatasetResponse>;
-
 export interface CreateDeploymentDynamicRoutingRequest {
   accountId: string;
   gatewayId: string;
   id: string;
   versionId: string;
 }
-const CreateDeploymentDynamicRoutingRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateDeploymentDynamicRoutingRequest>;
-
 export interface DynamicRoutingCreateDeploymentResponseElementsItemCase0OutputsNext {
   elementId: string;
 }
@@ -1210,15 +862,8 @@ export type DynamicRoutingCreateDeploymentResponseElementsItem =
   | DynamicRoutingCreateDeploymentResponseElementsItemCase3
   | DynamicRoutingCreateDeploymentResponseElementsItemCase4
   | DynamicRoutingCreateDeploymentResponseElementsItemCase5;
-const DynamicRoutingCreateDeploymentResponseElementsItem = /*@__PURE__*/ __L.at(__c6, 1);
-
 export type DynamicRoutingCreateDeploymentResponseElementsList =
   Array<DynamicRoutingCreateDeploymentResponseElementsItem>;
-const DynamicRoutingCreateDeploymentResponseElementsList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDeploymentDynamicRoutingResponse {
   id: string;
@@ -1228,11 +873,6 @@ export interface CreateDeploymentDynamicRoutingResponse {
   modifiedAt: string;
   name: string;
 }
-const CreateDeploymentDynamicRoutingResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CreateDeploymentDynamicRoutingResponse>;
-
 export type DynamicRoutingCreateRequestElementsItemCase0OutputsNext =
   DynamicRoutingCreateDeploymentResponseElementsItemCase0OutputsNext;
 export type DynamicRoutingCreateRequestElementsItemCase0Outputs =
@@ -1318,36 +958,19 @@ export type DynamicRoutingCreateRequestElementsItem =
   | DynamicRoutingCreateRequestElementsItemCase3
   | DynamicRoutingCreateRequestElementsItemCase4
   | DynamicRoutingCreateRequestElementsItemCase5;
-const DynamicRoutingCreateRequestElementsItem = /*@__PURE__*/ __L.at(__c6, 4);
-
 export type DynamicRoutingCreateRequestElementsList =
   Array<DynamicRoutingCreateRequestElementsItem>;
-const DynamicRoutingCreateRequestElementsList = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<DynamicRoutingCreateRequestElementsList>;
-
 export interface CreateDynamicRoutingRequest {
   accountId: string;
   gatewayId: string;
   elements: DynamicRoutingCreateRequestElementsList;
   name: string;
 }
-const CreateDynamicRoutingRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CreateDynamicRoutingRequest>;
-
 export interface DynamicRoutingCreateResponseDeployment {
   createdAt: string;
   deploymentId: string;
   versionId: string;
 }
-const DynamicRoutingCreateResponseDeployment = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<DynamicRoutingCreateResponseDeployment>;
-
 export type DynamicRoutingCreateResponseElementsItemCase0OutputsNext =
   DynamicRoutingCreateDeploymentResponseElementsItemCase0OutputsNext;
 export type DynamicRoutingCreateResponseElementsItemCase0Outputs =
@@ -1433,18 +1056,9 @@ export type DynamicRoutingCreateResponseElementsItem =
   | DynamicRoutingCreateResponseElementsItemCase3
   | DynamicRoutingCreateResponseElementsItemCase4
   | DynamicRoutingCreateResponseElementsItemCase5;
-const DynamicRoutingCreateResponseElementsItem = /*@__PURE__*/ __L.at(__c7, 0);
-
 export type DynamicRoutingCreateResponseElementsList =
   Array<DynamicRoutingCreateResponseElementsItem>;
-const DynamicRoutingCreateResponseElementsList = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<DynamicRoutingCreateResponseElementsList>;
-
 export type DynamicRoutingCreateResponseVersionActive = "true" | "false";
-const DynamicRoutingCreateResponseVersionActive = S.String;
-
 export interface DynamicRoutingCreateResponseVersion {
   active: DynamicRoutingCreateResponseVersionActive;
   createdAt: string;
@@ -1452,11 +1066,6 @@ export interface DynamicRoutingCreateResponseVersion {
   versionId: string;
   isValid?: boolean | null;
 }
-const DynamicRoutingCreateResponseVersion = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DynamicRoutingCreateResponseVersion>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateDynamicRoutingResponse {
   id: string;
@@ -1468,19 +1077,8 @@ export interface CreateDynamicRoutingResponse {
   name: string;
   version: DynamicRoutingCreateResponseVersion;
 }
-const CreateDynamicRoutingResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateDynamicRoutingResponse>;
-
 export type EvaluationsCreateRequestDatasetIdsList = Array<string>;
-const EvaluationsCreateRequestDatasetIdsList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<EvaluationsCreateRequestDatasetIdsList>;
-
 export type EvaluationsCreateRequestEvaluationTypeIdsList = Array<string>;
-const EvaluationsCreateRequestEvaluationTypeIdsList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<EvaluationsCreateRequestEvaluationTypeIdsList>;
-
 export interface CreateEvaluationRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
@@ -1489,11 +1087,6 @@ export interface CreateEvaluationRequest {
   evaluationTypeIds: EvaluationsCreateRequestEvaluationTypeIdsList;
   name: string;
 }
-const CreateEvaluationRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateEvaluationRequest>;
-
 export type EvaluationsCreateResponseDatasetsItemFiltersItemKey =
   | "created_at"
   | "request_content_type"
@@ -1508,42 +1101,21 @@ export type EvaluationsCreateResponseDatasetsItemFiltersItemKey =
   | "tokens_out"
   | "duration"
   | "feedback";
-const EvaluationsCreateResponseDatasetsItemFiltersItemKey = S.String;
-
 export type EvaluationsCreateResponseDatasetsItemFiltersItemOperator =
   | "eq"
   | "contains"
   | "lt"
   | "gt";
-const EvaluationsCreateResponseDatasetsItemFiltersItemOperator = S.String;
-
 export type EvaluationsCreateResponseDatasetsItemFiltersItemValueItem = string | number | boolean;
-const EvaluationsCreateResponseDatasetsItemFiltersItemValueItem = /*@__PURE__*/ __L.at(__c7, 5);
-
 export type EvaluationsCreateResponseDatasetsItemFiltersItemValueList =
   Array<EvaluationsCreateResponseDatasetsItemFiltersItemValueItem>;
-const EvaluationsCreateResponseDatasetsItemFiltersItemValueList = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<EvaluationsCreateResponseDatasetsItemFiltersItemValueList>;
-
 export interface EvaluationsCreateResponseDatasetsItemFiltersItem {
   key: EvaluationsCreateResponseDatasetsItemFiltersItemKey;
   operator: EvaluationsCreateResponseDatasetsItemFiltersItemOperator;
   value: EvaluationsCreateResponseDatasetsItemFiltersItemValueList;
 }
-const EvaluationsCreateResponseDatasetsItemFiltersItem = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<EvaluationsCreateResponseDatasetsItemFiltersItem>;
-
 export type EvaluationsCreateResponseDatasetsItemFiltersList =
   Array<EvaluationsCreateResponseDatasetsItemFiltersItem>;
-const EvaluationsCreateResponseDatasetsItemFiltersList = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<EvaluationsCreateResponseDatasetsItemFiltersList>;
-
 export interface EvaluationsCreateResponseDatasetsItem {
   id: string;
   accountId: string;
@@ -1556,17 +1128,7 @@ export interface EvaluationsCreateResponseDatasetsItem {
   modifiedAt: string;
   name: string;
 }
-const EvaluationsCreateResponseDatasetsItem = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<EvaluationsCreateResponseDatasetsItem>;
-
 export type EvaluationsCreateResponseDatasetsList = Array<EvaluationsCreateResponseDatasetsItem>;
-const EvaluationsCreateResponseDatasetsList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<EvaluationsCreateResponseDatasetsList>;
-
 export interface EvaluationsCreateResponseResultsItem {
   id: string;
   createdAt: string;
@@ -1578,17 +1140,7 @@ export interface EvaluationsCreateResponseResultsItem {
   statusDescription: string;
   totalLogs: number;
 }
-const EvaluationsCreateResponseResultsItem = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<EvaluationsCreateResponseResultsItem>;
-
 export type EvaluationsCreateResponseResultsList = Array<EvaluationsCreateResponseResultsItem>;
-const EvaluationsCreateResponseResultsList = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<EvaluationsCreateResponseResultsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateEvaluationResponse {
   id: string;
@@ -1602,11 +1154,6 @@ export interface CreateEvaluationResponse {
   results: EvaluationsCreateResponseResultsList;
   totalLogs: number;
 }
-const CreateEvaluationResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateEvaluationResponse>;
-
 export interface CreateProviderConfigRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
@@ -1620,11 +1167,6 @@ export interface CreateProviderConfigRequest {
   secret?: string;
   secretId?: string;
 }
-const CreateProviderConfigRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateProviderConfigRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateProviderConfigResponse {
   id: string;
@@ -1639,11 +1181,6 @@ export interface CreateProviderConfigResponse {
   rateLimit?: number | null;
   rateLimitPeriod?: number | null;
 }
-const CreateProviderConfigResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<CreateProviderConfigResponse>;
-
 export type DynamicRoutingCreateVersionRequestElementsItemCase0OutputsNext =
   DynamicRoutingCreateDeploymentResponseElementsItemCase0OutputsNext;
 export type DynamicRoutingCreateVersionRequestElementsItemCase0Outputs =
@@ -1732,26 +1269,14 @@ export type DynamicRoutingCreateVersionRequestElementsItem =
   | DynamicRoutingCreateVersionRequestElementsItemCase3
   | DynamicRoutingCreateVersionRequestElementsItemCase4
   | DynamicRoutingCreateVersionRequestElementsItemCase5;
-const DynamicRoutingCreateVersionRequestElementsItem = /*@__PURE__*/ __L.at(__c9, 0);
-
 export type DynamicRoutingCreateVersionRequestElementsList =
   Array<DynamicRoutingCreateVersionRequestElementsItem>;
-const DynamicRoutingCreateVersionRequestElementsList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsList>;
-
 export interface CreateVersionDynamicRoutingRequest {
   accountId: string;
   gatewayId: string;
   id: string;
   elements: DynamicRoutingCreateVersionRequestElementsList;
 }
-const CreateVersionDynamicRoutingRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<CreateVersionDynamicRoutingRequest>;
-
 export type DynamicRoutingCreateVersionResponseElementsItemCase0OutputsNext =
   DynamicRoutingCreateDeploymentResponseElementsItemCase0OutputsNext;
 export type DynamicRoutingCreateVersionResponseElementsItemCase0Outputs =
@@ -1839,15 +1364,8 @@ export type DynamicRoutingCreateVersionResponseElementsItem =
   | DynamicRoutingCreateVersionResponseElementsItemCase3
   | DynamicRoutingCreateVersionResponseElementsItemCase4
   | DynamicRoutingCreateVersionResponseElementsItemCase5;
-const DynamicRoutingCreateVersionResponseElementsItem = /*@__PURE__*/ __L.at(__c9, 3);
-
 export type DynamicRoutingCreateVersionResponseElementsList =
   Array<DynamicRoutingCreateVersionResponseElementsItem>;
-const DynamicRoutingCreateVersionResponseElementsList = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateVersionDynamicRoutingResponse {
   id: string;
@@ -1859,28 +1377,13 @@ export interface CreateVersionDynamicRoutingResponse {
   /** Identifier of the newly created version (top-level on the live wire; the docs' nested shape is stale). */
   versionId: string;
 }
-const CreateVersionDynamicRoutingResponse = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<CreateVersionDynamicRoutingResponse>;
-
 export interface CreditBalanceBillingRequest {
   accountId: string;
 }
-const CreditBalanceBillingRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<CreditBalanceBillingRequest>;
-
 export interface BillingCreditBalanceResponsePaymentMethod {
   brand?: string | null;
   last4?: string | null;
 }
-const BillingCreditBalanceResponsePaymentMethod = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<BillingCreditBalanceResponsePaymentMethod>;
-
 export interface BillingCreditBalanceResponseTopupConfig {
   amount: number;
   threshold: number;
@@ -1888,11 +1391,6 @@ export interface BillingCreditBalanceResponseTopupConfig {
   error?: string | null;
   lastFailedAt?: number | null;
 }
-const BillingCreditBalanceResponseTopupConfig = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<BillingCreditBalanceResponseTopupConfig>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreditBalanceBillingResponse {
   balance: number;
@@ -1901,21 +1399,11 @@ export interface CreditBalanceBillingResponse {
   topupConfig: BillingCreditBalanceResponseTopupConfig;
   firstTopupSuccess?: boolean | null;
 }
-const CreditBalanceBillingResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<CreditBalanceBillingResponse>;
-
 export interface DeleteAiGatewayRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
   id: string;
 }
-const DeleteAiGatewayRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<DeleteAiGatewayRequest>;
-
 export type DeleteResponseDlpCase0Action = "BLOCK" | "FLAG";
 export type DeleteResponseDlpCase0ProfilesList = Array<string>;
 export interface DeleteResponseDlpCase0 {
@@ -1941,8 +1429,6 @@ export interface DeleteResponseDlpCase1 {
   policies: DeleteResponseDlpCase1PoliciesList;
 }
 export type DeleteResponseDlp = DeleteResponseDlpCase0 | DeleteResponseDlpCase1;
-const DeleteResponseDlp = /*@__PURE__*/ __L.at(__c10, 3);
-
 export type DeleteResponseGuardrailsPromptP1 = "FLAG" | "BLOCK";
 export type DeleteResponseGuardrailsPromptS1 = "FLAG" | "BLOCK";
 export type DeleteResponseGuardrailsPromptS10 = "FLAG" | "BLOCK";
@@ -2007,80 +1493,32 @@ export interface DeleteResponseGuardrails {
   prompt: DeleteResponseGuardrailsPrompt;
   response: DeleteResponseGuardrailsResponse;
 }
-const DeleteResponseGuardrails =
-  CreateResponseGuardrails as any as S.Schema<DeleteResponseGuardrails>;
-
 export type DeleteResponseLogManagementStrategy = "STOP_INSERTING" | "DELETE_OLDEST";
-const DeleteResponseLogManagementStrategy = S.String;
-
 export type DeleteResponseOtelItemHeadersMap = { [key: string]: unknown | undefined };
-const DeleteResponseOtelItemHeadersMap =
-  CreateResponseOtelItemHeadersMap as any as S.Schema<DeleteResponseOtelItemHeadersMap>;
-
 export type DeleteResponseOtelItemContentType = "json" | "protobuf";
-const DeleteResponseOtelItemContentType = S.String;
-
 export interface DeleteResponseOtelItem {
   headers: DeleteResponseOtelItemHeadersMap;
   url: string;
   authorization?: string | null;
   contentType?: DeleteResponseOtelItemContentType | null;
 }
-const DeleteResponseOtelItem = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<DeleteResponseOtelItem>;
-
 export type DeleteResponseOtelList = Array<DeleteResponseOtelItem>;
-const DeleteResponseOtelList = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<DeleteResponseOtelList>;
-
 export type DeleteResponseRateLimitingTechnique = "fixed" | "sliding";
-const DeleteResponseRateLimitingTechnique = S.String;
-
 export type DeleteResponseRetryBackoff = "constant" | "linear" | "exponential";
-const DeleteResponseRetryBackoff = S.String;
-
 export type DeleteResponseSpendLimitsRulesItemLimitType = "cost";
-const DeleteResponseSpendLimitsRulesItemLimitType = S.String;
-
 export type DeleteResponseSpendLimitsRulesItemModelMode = "filter";
-const DeleteResponseSpendLimitsRulesItemModelMode = S.String;
-
 export type DeleteResponseSpendLimitsRulesItemModelValuesList = Array<string>;
-const DeleteResponseSpendLimitsRulesItemModelValuesList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<DeleteResponseSpendLimitsRulesItemModelValuesList>;
-
 export interface DeleteResponseSpendLimitsRulesItemModel {
   mode: DeleteResponseSpendLimitsRulesItemModelMode;
   values: DeleteResponseSpendLimitsRulesItemModelValuesList;
 }
-const DeleteResponseSpendLimitsRulesItemModel = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DeleteResponseSpendLimitsRulesItemModel>;
-
 export type DeleteResponseSpendLimitsRulesItemProviderMode = "filter";
-const DeleteResponseSpendLimitsRulesItemProviderMode = S.String;
-
 export type DeleteResponseSpendLimitsRulesItemProviderValuesList = Array<string>;
-const DeleteResponseSpendLimitsRulesItemProviderValuesList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<DeleteResponseSpendLimitsRulesItemProviderValuesList>;
-
 export interface DeleteResponseSpendLimitsRulesItemProvider {
   mode: DeleteResponseSpendLimitsRulesItemProviderMode;
   values: DeleteResponseSpendLimitsRulesItemProviderValuesList;
 }
-const DeleteResponseSpendLimitsRulesItemProvider = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<DeleteResponseSpendLimitsRulesItemProvider>;
-
 export type DeleteResponseSpendLimitsRulesItemTechnique = "fixed" | "sliding";
-const DeleteResponseSpendLimitsRulesItemTechnique = S.String;
-
 export interface DeleteResponseSpendLimitsRulesItem {
   /** exclusiveMinimum */
   limit: number;
@@ -2094,37 +1532,18 @@ export interface DeleteResponseSpendLimitsRulesItem {
   provider?: DeleteResponseSpendLimitsRulesItemProvider | null;
   technique?: DeleteResponseSpendLimitsRulesItemTechnique | null;
 }
-const DeleteResponseSpendLimitsRulesItem = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<DeleteResponseSpendLimitsRulesItem>;
-
 export type DeleteResponseSpendLimitsRulesList = Array<DeleteResponseSpendLimitsRulesItem>;
-const DeleteResponseSpendLimitsRulesList = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<DeleteResponseSpendLimitsRulesList>;
-
 export interface DeleteResponseSpendLimits {
   enabled?: boolean | null;
   rules?: DeleteResponseSpendLimitsRulesList | null;
 }
-const DeleteResponseSpendLimits = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<DeleteResponseSpendLimits>;
-
 export type DeleteResponseStripeUsageEventsItem = CreateRequestStripeUsageEventsItem;
 export type DeleteResponseStripeUsageEventsList = Array<CreateRequestStripeUsageEventsItem>;
 export interface DeleteResponseStripe {
   authorization: string;
   usageEvents: DeleteResponseStripeUsageEventsList;
 }
-const DeleteResponseStripe = CreateRequestStripe as any as S.Schema<DeleteResponseStripe>;
-
 export type DeleteResponseWorkersAiBillingMode = "postpaid" | "unified";
-const DeleteResponseWorkersAiBillingMode = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteAiGatewayResponse {
   /** Unique identifier of the AI Gateway within the account. */
@@ -2162,44 +1581,18 @@ export interface DeleteAiGatewayResponse {
   workersAiBillingMode?: DeleteResponseWorkersAiBillingMode | null;
   zdr?: boolean | null;
 }
-const DeleteAiGatewayResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<DeleteAiGatewayResponse>;
-
 export interface DeleteBillingSpendingLimitRequest {
   accountId: string;
 }
-const DeleteBillingSpendingLimitRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<DeleteBillingSpendingLimitRequest>;
-
 export type DeleteBillingSpendingLimitResponse = unknown;
-const DeleteBillingSpendingLimitResponse =
-  CreateBillingSpendingLimitResponse as any as S.Schema<DeleteBillingSpendingLimitResponse>;
-
 export interface DeleteBillingTopupConfigRequest {
   accountId: string;
 }
-const DeleteBillingTopupConfigRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<DeleteBillingTopupConfigRequest>;
-
 export type DeleteBillingTopupConfigResponse = unknown;
-const DeleteBillingTopupConfigResponse =
-  CreateBillingSpendingLimitResponse as any as S.Schema<DeleteBillingTopupConfigResponse>;
-
 export interface DeleteCustomProviderRequest {
   accountId: string;
   id: string;
 }
-const DeleteCustomProviderRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<DeleteCustomProviderRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteCustomProviderResponse {
   id: string;
@@ -2219,20 +1612,12 @@ export interface DeleteCustomProviderResponse {
   logo?: string | null;
   position?: number | null;
 }
-const DeleteCustomProviderResponse =
-  CreateCustomProviderResponse as any as S.Schema<DeleteCustomProviderResponse>;
-
 export interface DeleteDatasetRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
   gatewayId: string;
   id: string;
 }
-const DeleteDatasetRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<DeleteDatasetRequest>;
-
 export type DatasetsDeleteResponseFiltersItemKey =
   | "created_at"
   | "request_content_type"
@@ -2247,37 +1632,16 @@ export type DatasetsDeleteResponseFiltersItemKey =
   | "tokens_out"
   | "duration"
   | "feedback";
-const DatasetsDeleteResponseFiltersItemKey = S.String;
-
 export type DatasetsDeleteResponseFiltersItemOperator = "eq" | "contains" | "lt" | "gt";
-const DatasetsDeleteResponseFiltersItemOperator = S.String;
-
 export type DatasetsDeleteResponseFiltersItemValueItem = string | number | boolean;
-const DatasetsDeleteResponseFiltersItemValueItem = /*@__PURE__*/ __L.at(__c12, 0);
-
 export type DatasetsDeleteResponseFiltersItemValueList =
   Array<DatasetsDeleteResponseFiltersItemValueItem>;
-const DatasetsDeleteResponseFiltersItemValueList = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<DatasetsDeleteResponseFiltersItemValueList>;
-
 export interface DatasetsDeleteResponseFiltersItem {
   key: DatasetsDeleteResponseFiltersItemKey;
   operator: DatasetsDeleteResponseFiltersItemOperator;
   value: DatasetsDeleteResponseFiltersItemValueList;
 }
-const DatasetsDeleteResponseFiltersItem = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<DatasetsDeleteResponseFiltersItem>;
-
 export type DatasetsDeleteResponseFiltersList = Array<DatasetsDeleteResponseFiltersItem>;
-const DatasetsDeleteResponseFiltersList = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<DatasetsDeleteResponseFiltersList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteDatasetResponse {
   id: string;
@@ -2289,21 +1653,11 @@ export interface DeleteDatasetResponse {
   modifiedAt: string;
   name: string;
 }
-const DeleteDatasetResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<DeleteDatasetResponse>;
-
 export interface DeleteDynamicRoutingRequest {
   accountId: string;
   gatewayId: string;
   id: string;
 }
-const DeleteDynamicRoutingRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<DeleteDynamicRoutingRequest>;
-
 export type DynamicRoutingDeleteResponseElementsItemCase0OutputsNext =
   DynamicRoutingCreateDeploymentResponseElementsItemCase0OutputsNext;
 export type DynamicRoutingDeleteResponseElementsItemCase0Outputs =
@@ -2389,15 +1743,8 @@ export type DynamicRoutingDeleteResponseElementsItem =
   | DynamicRoutingDeleteResponseElementsItemCase3
   | DynamicRoutingDeleteResponseElementsItemCase4
   | DynamicRoutingDeleteResponseElementsItemCase5;
-const DynamicRoutingDeleteResponseElementsItem = /*@__PURE__*/ __L.at(__c12, 6);
-
 export type DynamicRoutingDeleteResponseElementsList =
   Array<DynamicRoutingDeleteResponseElementsItem>;
-const DynamicRoutingDeleteResponseElementsList = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<DynamicRoutingDeleteResponseElementsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteDynamicRoutingResponse {
   id: string;
@@ -2407,22 +1754,12 @@ export interface DeleteDynamicRoutingResponse {
   modifiedAt: string;
   name: string;
 }
-const DeleteDynamicRoutingResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<DeleteDynamicRoutingResponse>;
-
 export interface DeleteEvaluationRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
   gatewayId: string;
   id: string;
 }
-const DeleteEvaluationRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<DeleteEvaluationRequest>;
-
 export type EvaluationsDeleteResponseDatasetsItemFiltersItemKey =
   | "created_at"
   | "request_content_type"
@@ -2437,42 +1774,21 @@ export type EvaluationsDeleteResponseDatasetsItemFiltersItemKey =
   | "tokens_out"
   | "duration"
   | "feedback";
-const EvaluationsDeleteResponseDatasetsItemFiltersItemKey = S.String;
-
 export type EvaluationsDeleteResponseDatasetsItemFiltersItemOperator =
   | "eq"
   | "contains"
   | "lt"
   | "gt";
-const EvaluationsDeleteResponseDatasetsItemFiltersItemOperator = S.String;
-
 export type EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem = string | number | boolean;
-const EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem = /*@__PURE__*/ __L.at(__c13, 2);
-
 export type EvaluationsDeleteResponseDatasetsItemFiltersItemValueList =
   Array<EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem>;
-const EvaluationsDeleteResponseDatasetsItemFiltersItemValueList = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<EvaluationsDeleteResponseDatasetsItemFiltersItemValueList>;
-
 export interface EvaluationsDeleteResponseDatasetsItemFiltersItem {
   key: EvaluationsDeleteResponseDatasetsItemFiltersItemKey;
   operator: EvaluationsDeleteResponseDatasetsItemFiltersItemOperator;
   value: EvaluationsDeleteResponseDatasetsItemFiltersItemValueList;
 }
-const EvaluationsDeleteResponseDatasetsItemFiltersItem = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<EvaluationsDeleteResponseDatasetsItemFiltersItem>;
-
 export type EvaluationsDeleteResponseDatasetsItemFiltersList =
   Array<EvaluationsDeleteResponseDatasetsItemFiltersItem>;
-const EvaluationsDeleteResponseDatasetsItemFiltersList = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<EvaluationsDeleteResponseDatasetsItemFiltersList>;
-
 export interface EvaluationsDeleteResponseDatasetsItem {
   id: string;
   accountId: string;
@@ -2485,22 +1801,9 @@ export interface EvaluationsDeleteResponseDatasetsItem {
   modifiedAt: string;
   name: string;
 }
-const EvaluationsDeleteResponseDatasetsItem = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<EvaluationsDeleteResponseDatasetsItem>;
-
 export type EvaluationsDeleteResponseDatasetsList = Array<EvaluationsDeleteResponseDatasetsItem>;
-const EvaluationsDeleteResponseDatasetsList = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<EvaluationsDeleteResponseDatasetsList>;
-
 export type EvaluationsDeleteResponseResultsItem = EvaluationsCreateResponseResultsItem;
 export type EvaluationsDeleteResponseResultsList = Array<EvaluationsCreateResponseResultsItem>;
-const EvaluationsDeleteResponseResultsList =
-  EvaluationsCreateResponseResultsList as any as S.Schema<EvaluationsDeleteResponseResultsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteEvaluationResponse {
   id: string;
@@ -2514,15 +1817,7 @@ export interface DeleteEvaluationResponse {
   results: EvaluationsDeleteResponseResultsList;
   totalLogs: number;
 }
-const DeleteEvaluationResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<DeleteEvaluationResponse>;
-
 export type LogsDeleteRequestFiltersList = Array<string>;
-const LogsDeleteRequestFiltersList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<LogsDeleteRequestFiltersList>;
-
 export type LogsDeleteRequestOrderBy =
   | "created_at"
   | "provider"
@@ -2535,11 +1830,7 @@ export type LogsDeleteRequestOrderBy =
   | "tokens_out"
   | "duration"
   | "feedback";
-const LogsDeleteRequestOrderBy = S.String;
-
 export type LogsDeleteRequestOrderByDirection = "asc" | "desc";
-const LogsDeleteRequestOrderByDirection = S.String;
-
 export interface DeleteLogRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
@@ -2549,33 +1840,19 @@ export interface DeleteLogRequest {
   orderBy?: LogsDeleteRequestOrderBy | (string & {});
   orderByDirection?: LogsDeleteRequestOrderByDirection | (string & {});
 }
-const DeleteLogRequest = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<DeleteLogRequest>;
-
 export interface DeleteLogResponse {}
-const DeleteLogResponse = /*@__PURE__*/ __L.at(__c14, 2) as any as S.Schema<DeleteLogResponse>;
-
 export interface DeleteProviderConfigRequest {
   /** Identifier. */
   accountId: string;
   gatewayId: string;
   id: string;
 }
-const DeleteProviderConfigRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<DeleteProviderConfigRequest>;
-
 export type DeleteProviderConfigResponse = unknown;
-const DeleteProviderConfigResponse =
-  CreateBillingSpendingLimitResponse as any as S.Schema<DeleteProviderConfigResponse>;
-
 export interface GetAiGatewayRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
   id: string;
 }
-const GetAiGatewayRequest = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<GetAiGatewayRequest>;
-
 export type GetResponseDlpCase0Action = "BLOCK" | "FLAG";
 export type GetResponseDlpCase0ProfilesList = Array<string>;
 export interface GetResponseDlpCase0 {
@@ -2601,8 +1878,6 @@ export interface GetResponseDlpCase1 {
   policies: GetResponseDlpCase1PoliciesList;
 }
 export type GetResponseDlp = GetResponseDlpCase0 | GetResponseDlpCase1;
-const GetResponseDlp = /*@__PURE__*/ __L.at(__c14, 5);
-
 export type GetResponseGuardrailsPromptP1 = "FLAG" | "BLOCK";
 export type GetResponseGuardrailsPromptS1 = "FLAG" | "BLOCK";
 export type GetResponseGuardrailsPromptS10 = "FLAG" | "BLOCK";
@@ -2667,73 +1942,32 @@ export interface GetResponseGuardrails {
   prompt: GetResponseGuardrailsPrompt;
   response: GetResponseGuardrailsResponse;
 }
-const GetResponseGuardrails = CreateResponseGuardrails as any as S.Schema<GetResponseGuardrails>;
-
 export type GetResponseLogManagementStrategy = "STOP_INSERTING" | "DELETE_OLDEST";
-const GetResponseLogManagementStrategy = S.String;
-
 export type GetResponseOtelItemHeadersMap = { [key: string]: unknown | undefined };
-const GetResponseOtelItemHeadersMap =
-  CreateResponseOtelItemHeadersMap as any as S.Schema<GetResponseOtelItemHeadersMap>;
-
 export type GetResponseOtelItemContentType = "json" | "protobuf";
-const GetResponseOtelItemContentType = S.String;
-
 export interface GetResponseOtelItem {
   headers: GetResponseOtelItemHeadersMap;
   url: string;
   authorization?: string | null;
   contentType?: GetResponseOtelItemContentType | null;
 }
-const GetResponseOtelItem = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<GetResponseOtelItem>;
-
 export type GetResponseOtelList = Array<GetResponseOtelItem>;
-const GetResponseOtelList = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<GetResponseOtelList>;
-
 export type GetResponseRateLimitingTechnique = "fixed" | "sliding";
-const GetResponseRateLimitingTechnique = S.String;
-
 export type GetResponseRetryBackoff = "constant" | "linear" | "exponential";
-const GetResponseRetryBackoff = S.String;
-
 export type GetResponseSpendLimitsRulesItemLimitType = "cost";
-const GetResponseSpendLimitsRulesItemLimitType = S.String;
-
 export type GetResponseSpendLimitsRulesItemModelMode = "filter";
-const GetResponseSpendLimitsRulesItemModelMode = S.String;
-
 export type GetResponseSpendLimitsRulesItemModelValuesList = Array<string>;
-const GetResponseSpendLimitsRulesItemModelValuesList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<GetResponseSpendLimitsRulesItemModelValuesList>;
-
 export interface GetResponseSpendLimitsRulesItemModel {
   mode: GetResponseSpendLimitsRulesItemModelMode;
   values: GetResponseSpendLimitsRulesItemModelValuesList;
 }
-const GetResponseSpendLimitsRulesItemModel = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<GetResponseSpendLimitsRulesItemModel>;
-
 export type GetResponseSpendLimitsRulesItemProviderMode = "filter";
-const GetResponseSpendLimitsRulesItemProviderMode = S.String;
-
 export type GetResponseSpendLimitsRulesItemProviderValuesList = Array<string>;
-const GetResponseSpendLimitsRulesItemProviderValuesList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<GetResponseSpendLimitsRulesItemProviderValuesList>;
-
 export interface GetResponseSpendLimitsRulesItemProvider {
   mode: GetResponseSpendLimitsRulesItemProviderMode;
   values: GetResponseSpendLimitsRulesItemProviderValuesList;
 }
-const GetResponseSpendLimitsRulesItemProvider = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<GetResponseSpendLimitsRulesItemProvider>;
-
 export type GetResponseSpendLimitsRulesItemTechnique = "fixed" | "sliding";
-const GetResponseSpendLimitsRulesItemTechnique = S.String;
-
 export interface GetResponseSpendLimitsRulesItem {
   /** exclusiveMinimum */
   limit: number;
@@ -2747,37 +1981,18 @@ export interface GetResponseSpendLimitsRulesItem {
   provider?: GetResponseSpendLimitsRulesItemProvider | null;
   technique?: GetResponseSpendLimitsRulesItemTechnique | null;
 }
-const GetResponseSpendLimitsRulesItem = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GetResponseSpendLimitsRulesItem>;
-
 export type GetResponseSpendLimitsRulesList = Array<GetResponseSpendLimitsRulesItem>;
-const GetResponseSpendLimitsRulesList = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<GetResponseSpendLimitsRulesList>;
-
 export interface GetResponseSpendLimits {
   enabled?: boolean | null;
   rules?: GetResponseSpendLimitsRulesList | null;
 }
-const GetResponseSpendLimits = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GetResponseSpendLimits>;
-
 export type GetResponseStripeUsageEventsItem = CreateRequestStripeUsageEventsItem;
 export type GetResponseStripeUsageEventsList = Array<CreateRequestStripeUsageEventsItem>;
 export interface GetResponseStripe {
   authorization: string;
   usageEvents: GetResponseStripeUsageEventsList;
 }
-const GetResponseStripe = CreateRequestStripe as any as S.Schema<GetResponseStripe>;
-
 export type GetResponseWorkersAiBillingMode = "postpaid" | "unified";
-const GetResponseWorkersAiBillingMode = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetAiGatewayResponse {
   /** Unique identifier of the AI Gateway within the account. */
@@ -2815,47 +2030,22 @@ export interface GetAiGatewayResponse {
   workersAiBillingMode?: GetResponseWorkersAiBillingMode | null;
   zdr?: boolean | null;
 }
-const GetAiGatewayResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<GetAiGatewayResponse>;
-
 export interface GetBillingSpendingLimitRequest {
   accountId: string;
 }
-const GetBillingSpendingLimitRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GetBillingSpendingLimitRequest>;
-
 export interface BillingSpendingLimitGetResponseConfig {
   amount: number;
   duration: string;
   strategy: string;
 }
-const BillingSpendingLimitGetResponseConfig = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<BillingSpendingLimitGetResponseConfig>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetBillingSpendingLimitResponse {
   config: BillingSpendingLimitGetResponseConfig;
   enabled: boolean;
 }
-const GetBillingSpendingLimitResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<GetBillingSpendingLimitResponse>;
-
 export interface GetBillingTopupConfigRequest {
   accountId: string;
 }
-const GetBillingTopupConfigRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GetBillingTopupConfigRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetBillingTopupConfigResponse {
   amount: number;
@@ -2864,20 +2054,10 @@ export interface GetBillingTopupConfigResponse {
   error?: string | null;
   lastFailedAt?: number | null;
 }
-const GetBillingTopupConfigResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetBillingTopupConfigResponse>;
-
 export interface GetCustomProviderRequest {
   accountId: string;
   id: string;
 }
-const GetCustomProviderRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<GetCustomProviderRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetCustomProviderResponse {
   id: string;
@@ -2897,17 +2077,12 @@ export interface GetCustomProviderResponse {
   logo?: string | null;
   position?: number | null;
 }
-const GetCustomProviderResponse =
-  CreateCustomProviderResponse as any as S.Schema<GetCustomProviderResponse>;
-
 export interface GetDatasetRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
   gatewayId: string;
   id: string;
 }
-const GetDatasetRequest = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<GetDatasetRequest>;
-
 export type DatasetsGetResponseFiltersItemKey =
   | "created_at"
   | "request_content_type"
@@ -2922,37 +2097,16 @@ export type DatasetsGetResponseFiltersItemKey =
   | "tokens_out"
   | "duration"
   | "feedback";
-const DatasetsGetResponseFiltersItemKey = S.String;
-
 export type DatasetsGetResponseFiltersItemOperator = "eq" | "contains" | "lt" | "gt";
-const DatasetsGetResponseFiltersItemOperator = S.String;
-
 export type DatasetsGetResponseFiltersItemValueItem = string | number | boolean;
-const DatasetsGetResponseFiltersItemValueItem = /*@__PURE__*/ __L.at(__c16, 5);
-
 export type DatasetsGetResponseFiltersItemValueList =
   Array<DatasetsGetResponseFiltersItemValueItem>;
-const DatasetsGetResponseFiltersItemValueList = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<DatasetsGetResponseFiltersItemValueList>;
-
 export interface DatasetsGetResponseFiltersItem {
   key: DatasetsGetResponseFiltersItemKey;
   operator: DatasetsGetResponseFiltersItemOperator;
   value: DatasetsGetResponseFiltersItemValueList;
 }
-const DatasetsGetResponseFiltersItem = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<DatasetsGetResponseFiltersItem>;
-
 export type DatasetsGetResponseFiltersList = Array<DatasetsGetResponseFiltersItem>;
-const DatasetsGetResponseFiltersList = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<DatasetsGetResponseFiltersList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDatasetResponse {
   id: string;
@@ -2964,18 +2118,11 @@ export interface GetDatasetResponse {
   modifiedAt: string;
   name: string;
 }
-const GetDatasetResponse = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<GetDatasetResponse>;
-
 export interface GetDynamicRoutingRequest {
   accountId: string;
   gatewayId: string;
   id: string;
 }
-const GetDynamicRoutingRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<GetDynamicRoutingRequest>;
-
 export type DynamicRoutingGetResponseDeployment = DynamicRoutingCreateResponseDeployment;
 export type DynamicRoutingGetResponseElementsItemCase0OutputsNext =
   DynamicRoutingCreateDeploymentResponseElementsItemCase0OutputsNext;
@@ -3062,14 +2209,7 @@ export type DynamicRoutingGetResponseElementsItem =
   | DynamicRoutingGetResponseElementsItemCase3
   | DynamicRoutingGetResponseElementsItemCase4
   | DynamicRoutingGetResponseElementsItemCase5;
-const DynamicRoutingGetResponseElementsItem = /*@__PURE__*/ __L.at(__c17, 3);
-
 export type DynamicRoutingGetResponseElementsList = Array<DynamicRoutingGetResponseElementsItem>;
-const DynamicRoutingGetResponseElementsList = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<DynamicRoutingGetResponseElementsList>;
-
 export type DynamicRoutingGetResponseVersionActive = "true" | "false";
 export interface DynamicRoutingGetResponseVersion {
   active: DynamicRoutingGetResponseVersionActive;
@@ -3078,9 +2218,6 @@ export interface DynamicRoutingGetResponseVersion {
   versionId: string;
   isValid?: boolean | null;
 }
-const DynamicRoutingGetResponseVersion =
-  DynamicRoutingCreateResponseVersion as any as S.Schema<DynamicRoutingGetResponseVersion>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetDynamicRoutingResponse {
   id: string;
@@ -3092,22 +2229,12 @@ export interface GetDynamicRoutingResponse {
   name: string;
   version: DynamicRoutingGetResponseVersion;
 }
-const GetDynamicRoutingResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<GetDynamicRoutingResponse>;
-
 export interface GetEvaluationRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
   gatewayId: string;
   id: string;
 }
-const GetEvaluationRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GetEvaluationRequest>;
-
 export type EvaluationsGetResponseDatasetsItemFiltersItemKey =
   | "created_at"
   | "request_content_type"
@@ -3122,38 +2249,17 @@ export type EvaluationsGetResponseDatasetsItemFiltersItemKey =
   | "tokens_out"
   | "duration"
   | "feedback";
-const EvaluationsGetResponseDatasetsItemFiltersItemKey = S.String;
-
 export type EvaluationsGetResponseDatasetsItemFiltersItemOperator = "eq" | "contains" | "lt" | "gt";
-const EvaluationsGetResponseDatasetsItemFiltersItemOperator = S.String;
-
 export type EvaluationsGetResponseDatasetsItemFiltersItemValueItem = string | number | boolean;
-const EvaluationsGetResponseDatasetsItemFiltersItemValueItem = /*@__PURE__*/ __L.at(__c17, 7);
-
 export type EvaluationsGetResponseDatasetsItemFiltersItemValueList =
   Array<EvaluationsGetResponseDatasetsItemFiltersItemValueItem>;
-const EvaluationsGetResponseDatasetsItemFiltersItemValueList = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<EvaluationsGetResponseDatasetsItemFiltersItemValueList>;
-
 export interface EvaluationsGetResponseDatasetsItemFiltersItem {
   key: EvaluationsGetResponseDatasetsItemFiltersItemKey;
   operator: EvaluationsGetResponseDatasetsItemFiltersItemOperator;
   value: EvaluationsGetResponseDatasetsItemFiltersItemValueList;
 }
-const EvaluationsGetResponseDatasetsItemFiltersItem = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<EvaluationsGetResponseDatasetsItemFiltersItem>;
-
 export type EvaluationsGetResponseDatasetsItemFiltersList =
   Array<EvaluationsGetResponseDatasetsItemFiltersItem>;
-const EvaluationsGetResponseDatasetsItemFiltersList = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<EvaluationsGetResponseDatasetsItemFiltersList>;
-
 export interface EvaluationsGetResponseDatasetsItem {
   id: string;
   accountId: string;
@@ -3166,22 +2272,9 @@ export interface EvaluationsGetResponseDatasetsItem {
   modifiedAt: string;
   name: string;
 }
-const EvaluationsGetResponseDatasetsItem = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<EvaluationsGetResponseDatasetsItem>;
-
 export type EvaluationsGetResponseDatasetsList = Array<EvaluationsGetResponseDatasetsItem>;
-const EvaluationsGetResponseDatasetsList = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<EvaluationsGetResponseDatasetsList>;
-
 export type EvaluationsGetResponseResultsItem = EvaluationsCreateResponseResultsItem;
 export type EvaluationsGetResponseResultsList = Array<EvaluationsCreateResponseResultsItem>;
-const EvaluationsGetResponseResultsList =
-  EvaluationsCreateResponseResultsList as any as S.Schema<EvaluationsGetResponseResultsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetEvaluationResponse {
   id: string;
@@ -3195,19 +2288,12 @@ export interface GetEvaluationResponse {
   results: EvaluationsGetResponseResultsList;
   totalLogs: number;
 }
-const GetEvaluationResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<GetEvaluationResponse>;
-
 export interface GetLogRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
   gatewayId: string;
   id: string;
 }
-const GetLogRequest = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<GetLogRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetLogResponse {
   id: string;
@@ -3236,33 +2322,20 @@ export interface GetLogResponse {
   statusCode?: number | null;
   step?: number | null;
 }
-const GetLogResponse = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<GetLogResponse>;
-
 export interface GetUrlRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
   gatewayId: string;
   provider: string;
 }
-const GetUrlRequest = /*@__PURE__*/ __L.at(__c19, 0) as any as S.Schema<GetUrlRequest>;
-
 export type GetUrlResponse = string;
-const GetUrlResponse = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<GetUrlResponse>;
-
 export interface GetVersionDynamicRoutingRequest {
   accountId: string;
   gatewayId: string;
   id: string;
   versionId: string;
 }
-const GetVersionDynamicRoutingRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetVersionDynamicRoutingRequest>;
-
 export type DynamicRoutingGetVersionResponseActive = "true" | "false";
-const DynamicRoutingGetVersionResponseActive = S.String;
-
 export type DynamicRoutingGetVersionResponseElementsItemCase0OutputsNext =
   DynamicRoutingCreateDeploymentResponseElementsItemCase0OutputsNext;
 export type DynamicRoutingGetVersionResponseElementsItemCase0Outputs =
@@ -3348,15 +2421,8 @@ export type DynamicRoutingGetVersionResponseElementsItem =
   | DynamicRoutingGetVersionResponseElementsItemCase3
   | DynamicRoutingGetVersionResponseElementsItemCase4
   | DynamicRoutingGetVersionResponseElementsItemCase5;
-const DynamicRoutingGetVersionResponseElementsItem = /*@__PURE__*/ __L.at(__c19, 3);
-
 export type DynamicRoutingGetVersionResponseElementsList =
   Array<DynamicRoutingGetVersionResponseElementsItem>;
-const DynamicRoutingGetVersionResponseElementsList = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<DynamicRoutingGetVersionResponseElementsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetVersionDynamicRoutingResponse {
   id: string;
@@ -3370,24 +2436,12 @@ export interface GetVersionDynamicRoutingResponse {
   versionId: string;
   isValid?: boolean | null;
 }
-const GetVersionDynamicRoutingResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<GetVersionDynamicRoutingResponse>;
-
 export type BillingInvoiceHistoryRequestType = "auto" | "all" | "manual";
-const BillingInvoiceHistoryRequestType = S.String;
-
 export interface InvoiceHistoryBillingRequest {
   accountId: string;
   /** Filter invoice type: auto, manual, or all. */
   type?: BillingInvoiceHistoryRequestType | (string & {});
 }
-const InvoiceHistoryBillingRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<InvoiceHistoryBillingRequest>;
-
 export interface BillingInvoiceHistoryResponseInvoicesItem {
   amountDue: number;
   amountPaid: number;
@@ -3404,82 +2458,37 @@ export interface BillingInvoiceHistoryResponseInvoicesItem {
   invoicePdf?: string | null;
   status?: string | null;
 }
-const BillingInvoiceHistoryResponseInvoicesItem = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<BillingInvoiceHistoryResponseInvoicesItem>;
-
 export type BillingInvoiceHistoryResponseInvoicesList =
   Array<BillingInvoiceHistoryResponseInvoicesItem>;
-const BillingInvoiceHistoryResponseInvoicesList = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<BillingInvoiceHistoryResponseInvoicesList>;
-
 export interface BillingInvoiceHistoryResponsePagination {
   hasMore: boolean;
   page: number;
   perPage: number;
   totalCount: number;
 }
-const BillingInvoiceHistoryResponsePagination = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<BillingInvoiceHistoryResponsePagination>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface InvoiceHistoryBillingResponse {
   invoices: BillingInvoiceHistoryResponseInvoicesList;
   pagination: BillingInvoiceHistoryResponsePagination;
 }
-const InvoiceHistoryBillingResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<InvoiceHistoryBillingResponse>;
-
 export interface InvoicePreviewBillingRequest {
   accountId: string;
 }
-const InvoicePreviewBillingRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<InvoicePreviewBillingRequest>;
-
 export interface BillingInvoicePreviewResponseInvoiceLinesItemPeriod {
   end: number;
   start: number;
 }
-const BillingInvoicePreviewResponseInvoiceLinesItemPeriod = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItemPeriod>;
-
 export interface BillingInvoicePreviewResponseInvoiceLinesItemPricing {
   unitAmountDecimal: string;
 }
-const BillingInvoicePreviewResponseInvoiceLinesItemPricing = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItemPricing>;
-
 export interface BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem {
   amount: number;
   type: string;
   creditBalanceTransaction?: string | null;
   discount?: string | null;
 }
-const BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem>;
-
 export type BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList =
   Array<BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem>;
-const BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList>;
-
 export interface BillingInvoicePreviewResponseInvoiceLinesItem {
   amount: number;
   currency: string;
@@ -3489,26 +2498,14 @@ export interface BillingInvoicePreviewResponseInvoiceLinesItem {
   quantity: number;
   pretaxCreditAmounts?: BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList | null;
 }
-const BillingInvoicePreviewResponseInvoiceLinesItem = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItem>;
-
 export type BillingInvoicePreviewResponseInvoiceLinesList =
   Array<BillingInvoicePreviewResponseInvoiceLinesItem>;
-const BillingInvoicePreviewResponseInvoiceLinesList = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesList>;
-
 export type BillingInvoicePreviewResponseStatus =
   | "draft"
   | "open"
   | "paid"
   | "uncollectible"
   | "void";
-const BillingInvoicePreviewResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface InvoicePreviewBillingResponse {
   id: string;
@@ -3521,11 +2518,6 @@ export interface InvoicePreviewBillingResponse {
   periodStart: number;
   status: BillingInvoicePreviewResponseStatus;
 }
-const InvoicePreviewBillingResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<InvoicePreviewBillingResponse>;
-
 export interface ListAiGatewaysRequest {
   accountId: string;
   page?: number;
@@ -3533,11 +2525,6 @@ export interface ListAiGatewaysRequest {
   /** Search by id */
   search?: string;
 }
-const ListAiGatewaysRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ListAiGatewaysRequest>;
-
 export type ListResultItemDlpCase0Action = "BLOCK" | "FLAG";
 export type ListResultItemDlpCase0ProfilesList = Array<string>;
 export interface ListResultItemDlpCase0 {
@@ -3563,8 +2550,6 @@ export interface ListResultItemDlpCase1 {
   policies: ListResultItemDlpCase1PoliciesList;
 }
 export type ListResultItemDlp = ListResultItemDlpCase0 | ListResultItemDlpCase1;
-const ListResultItemDlp = /*@__PURE__*/ __L.at(__c21, 4);
-
 export type ListResultItemGuardrailsPromptP1 = "FLAG" | "BLOCK";
 export type ListResultItemGuardrailsPromptS1 = "FLAG" | "BLOCK";
 export type ListResultItemGuardrailsPromptS10 = "FLAG" | "BLOCK";
@@ -3629,80 +2614,32 @@ export interface ListResultItemGuardrails {
   prompt: ListResultItemGuardrailsPrompt;
   response: ListResultItemGuardrailsResponse;
 }
-const ListResultItemGuardrails =
-  CreateResponseGuardrails as any as S.Schema<ListResultItemGuardrails>;
-
 export type ListResultItemLogManagementStrategy = "STOP_INSERTING" | "DELETE_OLDEST";
-const ListResultItemLogManagementStrategy = S.String;
-
 export type ListResultItemOtelItemHeadersMap = { [key: string]: unknown | undefined };
-const ListResultItemOtelItemHeadersMap =
-  CreateResponseOtelItemHeadersMap as any as S.Schema<ListResultItemOtelItemHeadersMap>;
-
 export type ListResultItemOtelItemContentType = "json" | "protobuf";
-const ListResultItemOtelItemContentType = S.String;
-
 export interface ListResultItemOtelItem {
   headers: ListResultItemOtelItemHeadersMap;
   url: string;
   authorization?: string | null;
   contentType?: ListResultItemOtelItemContentType | null;
 }
-const ListResultItemOtelItem = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<ListResultItemOtelItem>;
-
 export type ListResultItemOtelList = Array<ListResultItemOtelItem>;
-const ListResultItemOtelList = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<ListResultItemOtelList>;
-
 export type ListResultItemRateLimitingTechnique = "fixed" | "sliding";
-const ListResultItemRateLimitingTechnique = S.String;
-
 export type ListResultItemRetryBackoff = "constant" | "linear" | "exponential";
-const ListResultItemRetryBackoff = S.String;
-
 export type ListResultItemSpendLimitsRulesItemLimitType = "cost";
-const ListResultItemSpendLimitsRulesItemLimitType = S.String;
-
 export type ListResultItemSpendLimitsRulesItemModelMode = "filter";
-const ListResultItemSpendLimitsRulesItemModelMode = S.String;
-
 export type ListResultItemSpendLimitsRulesItemModelValuesList = Array<string>;
-const ListResultItemSpendLimitsRulesItemModelValuesList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<ListResultItemSpendLimitsRulesItemModelValuesList>;
-
 export interface ListResultItemSpendLimitsRulesItemModel {
   mode: ListResultItemSpendLimitsRulesItemModelMode;
   values: ListResultItemSpendLimitsRulesItemModelValuesList;
 }
-const ListResultItemSpendLimitsRulesItemModel = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<ListResultItemSpendLimitsRulesItemModel>;
-
 export type ListResultItemSpendLimitsRulesItemProviderMode = "filter";
-const ListResultItemSpendLimitsRulesItemProviderMode = S.String;
-
 export type ListResultItemSpendLimitsRulesItemProviderValuesList = Array<string>;
-const ListResultItemSpendLimitsRulesItemProviderValuesList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<ListResultItemSpendLimitsRulesItemProviderValuesList>;
-
 export interface ListResultItemSpendLimitsRulesItemProvider {
   mode: ListResultItemSpendLimitsRulesItemProviderMode;
   values: ListResultItemSpendLimitsRulesItemProviderValuesList;
 }
-const ListResultItemSpendLimitsRulesItemProvider = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<ListResultItemSpendLimitsRulesItemProvider>;
-
 export type ListResultItemSpendLimitsRulesItemTechnique = "fixed" | "sliding";
-const ListResultItemSpendLimitsRulesItemTechnique = S.String;
-
 export interface ListResultItemSpendLimitsRulesItem {
   /** exclusiveMinimum */
   limit: number;
@@ -3716,37 +2653,18 @@ export interface ListResultItemSpendLimitsRulesItem {
   provider?: ListResultItemSpendLimitsRulesItemProvider | null;
   technique?: ListResultItemSpendLimitsRulesItemTechnique | null;
 }
-const ListResultItemSpendLimitsRulesItem = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<ListResultItemSpendLimitsRulesItem>;
-
 export type ListResultItemSpendLimitsRulesList = Array<ListResultItemSpendLimitsRulesItem>;
-const ListResultItemSpendLimitsRulesList = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<ListResultItemSpendLimitsRulesList>;
-
 export interface ListResultItemSpendLimits {
   enabled?: boolean | null;
   rules?: ListResultItemSpendLimitsRulesList | null;
 }
-const ListResultItemSpendLimits = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<ListResultItemSpendLimits>;
-
 export type ListResultItemStripeUsageEventsItem = CreateRequestStripeUsageEventsItem;
 export type ListResultItemStripeUsageEventsList = Array<CreateRequestStripeUsageEventsItem>;
 export interface ListResultItemStripe {
   authorization: string;
   usageEvents: ListResultItemStripeUsageEventsList;
 }
-const ListResultItemStripe = CreateRequestStripe as any as S.Schema<ListResultItemStripe>;
-
 export type ListResultItemWorkersAiBillingMode = "postpaid" | "unified";
-const ListResultItemWorkersAiBillingMode = S.String;
-
 export interface ListResultItem {
   /** Unique identifier of the AI Gateway within the account. */
   id: string;
@@ -3783,22 +2701,13 @@ export interface ListResultItem {
   workersAiBillingMode?: ListResultItemWorkersAiBillingMode | null;
   zdr?: boolean | null;
 }
-const ListResultItem = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<ListResultItem>;
-
 export type ListResultList = Array<ListResultItem>;
-const ListResultList = /*@__PURE__*/ __L.at(__c22, 5) as any as S.Schema<ListResultList>;
-
 export interface ListAiGatewaysResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListAiGatewaysResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<ListAiGatewaysResponse>;
-
 export interface ListCustomProvidersRequest {
   accountId: string;
   beta?: boolean;
@@ -3808,11 +2717,6 @@ export interface ListCustomProvidersRequest {
   /** Search by id, name, slug */
   search?: string;
 }
-const ListCustomProvidersRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ListCustomProvidersRequest>;
-
 export interface CustomProvidersListResultItem {
   id: string;
   baseUrl: string;
@@ -3831,28 +2735,13 @@ export interface CustomProvidersListResultItem {
   logo?: string | null;
   position?: number | null;
 }
-const CustomProvidersListResultItem = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<CustomProvidersListResultItem>;
-
 export type CustomProvidersListResultList = Array<CustomProvidersListResultItem>;
-const CustomProvidersListResultList = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<CustomProvidersListResultList>;
-
 export interface ListCustomProvidersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: CustomProvidersListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListCustomProvidersResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ListCustomProvidersResponse>;
-
 export interface ListDatasetsRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
@@ -3864,8 +2753,6 @@ export interface ListDatasetsRequest {
   /** Search by id, name, filters */
   search?: string;
 }
-const ListDatasetsRequest = /*@__PURE__*/ __L.at(__c23, 3) as any as S.Schema<ListDatasetsRequest>;
-
 export type DatasetsListResultItemFiltersItemKey =
   | "created_at"
   | "request_content_type"
@@ -3880,37 +2767,16 @@ export type DatasetsListResultItemFiltersItemKey =
   | "tokens_out"
   | "duration"
   | "feedback";
-const DatasetsListResultItemFiltersItemKey = S.String;
-
 export type DatasetsListResultItemFiltersItemOperator = "eq" | "contains" | "lt" | "gt";
-const DatasetsListResultItemFiltersItemOperator = S.String;
-
 export type DatasetsListResultItemFiltersItemValueItem = string | number | boolean;
-const DatasetsListResultItemFiltersItemValueItem = /*@__PURE__*/ __L.at(__c23, 4);
-
 export type DatasetsListResultItemFiltersItemValueList =
   Array<DatasetsListResultItemFiltersItemValueItem>;
-const DatasetsListResultItemFiltersItemValueList = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<DatasetsListResultItemFiltersItemValueList>;
-
 export interface DatasetsListResultItemFiltersItem {
   key: DatasetsListResultItemFiltersItemKey;
   operator: DatasetsListResultItemFiltersItemOperator;
   value: DatasetsListResultItemFiltersItemValueList;
 }
-const DatasetsListResultItemFiltersItem = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<DatasetsListResultItemFiltersItem>;
-
 export type DatasetsListResultItemFiltersList = Array<DatasetsListResultItemFiltersItem>;
-const DatasetsListResultItemFiltersList = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<DatasetsListResultItemFiltersList>;
-
 export interface DatasetsListResultItem {
   id: string;
   createdAt: string;
@@ -3921,47 +2787,22 @@ export interface DatasetsListResultItem {
   modifiedAt: string;
   name: string;
 }
-const DatasetsListResultItem = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<DatasetsListResultItem>;
-
 export type DatasetsListResultList = Array<DatasetsListResultItem>;
-const DatasetsListResultList = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<DatasetsListResultList>;
-
 export interface ListDatasetsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: DatasetsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListDatasetsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<ListDatasetsResponse>;
-
 export interface ListDeploymentsDynamicRoutingRequest {
   accountId: string;
   gatewayId: string;
   id: string;
 }
-const ListDeploymentsDynamicRoutingRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<ListDeploymentsDynamicRoutingRequest>;
-
 export type DynamicRoutingListDeploymentsResponseDataDeploymentsItem =
   DynamicRoutingCreateResponseDeployment;
 export type DynamicRoutingListDeploymentsResponseDataDeploymentsList =
   Array<DynamicRoutingCreateResponseDeployment>;
-const DynamicRoutingListDeploymentsResponseDataDeploymentsList = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<DynamicRoutingListDeploymentsResponseDataDeploymentsList>;
-
 export interface DynamicRoutingListDeploymentsResponseData {
   deployments: DynamicRoutingListDeploymentsResponseDataDeploymentsList;
   orderBy: string;
@@ -3969,20 +2810,10 @@ export interface DynamicRoutingListDeploymentsResponseData {
   page: number;
   perPage: number;
 }
-const DynamicRoutingListDeploymentsResponseData = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<DynamicRoutingListDeploymentsResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListDeploymentsDynamicRoutingResponse {
   data: DynamicRoutingListDeploymentsResponseData;
 }
-const ListDeploymentsDynamicRoutingResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<ListDeploymentsDynamicRoutingResponse>;
-
 export interface ListDynamicRoutingsRequest {
   accountId: string;
   gatewayId: string;
@@ -3991,11 +2822,6 @@ export interface ListDynamicRoutingsRequest {
   /** Number of routes per page */
   perPage?: number;
 }
-const ListDynamicRoutingsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<ListDynamicRoutingsRequest>;
-
 export type DynamicRoutingListResponseDataRoutesItemDeployment =
   DynamicRoutingCreateResponseDeployment;
 export type DynamicRoutingListResponseDataRoutesItemElementsItemCase0OutputsNext =
@@ -4085,15 +2911,8 @@ export type DynamicRoutingListResponseDataRoutesItemElementsItem =
   | DynamicRoutingListResponseDataRoutesItemElementsItemCase3
   | DynamicRoutingListResponseDataRoutesItemElementsItemCase4
   | DynamicRoutingListResponseDataRoutesItemElementsItemCase5;
-const DynamicRoutingListResponseDataRoutesItemElementsItem = /*@__PURE__*/ __L.at(__c25, 0);
-
 export type DynamicRoutingListResponseDataRoutesItemElementsList =
   Array<DynamicRoutingListResponseDataRoutesItemElementsItem>;
-const DynamicRoutingListResponseDataRoutesItemElementsList = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsList>;
-
 export type DynamicRoutingListResponseDataRoutesItemVersionActive = "true" | "false";
 export interface DynamicRoutingListResponseDataRoutesItemVersion {
   active: DynamicRoutingListResponseDataRoutesItemVersionActive;
@@ -4102,9 +2921,6 @@ export interface DynamicRoutingListResponseDataRoutesItemVersion {
   versionId: string;
   isValid?: boolean | null;
 }
-const DynamicRoutingListResponseDataRoutesItemVersion =
-  DynamicRoutingCreateResponseVersion as any as S.Schema<DynamicRoutingListResponseDataRoutesItemVersion>;
-
 export interface DynamicRoutingListResponseDataRoutesItem {
   id: string;
   accountTag: string;
@@ -4116,18 +2932,8 @@ export interface DynamicRoutingListResponseDataRoutesItem {
   name: string;
   version: DynamicRoutingListResponseDataRoutesItemVersion;
 }
-const DynamicRoutingListResponseDataRoutesItem = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<DynamicRoutingListResponseDataRoutesItem>;
-
 export type DynamicRoutingListResponseDataRoutesList =
   Array<DynamicRoutingListResponseDataRoutesItem>;
-const DynamicRoutingListResponseDataRoutesList = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<DynamicRoutingListResponseDataRoutesList>;
-
 export interface DynamicRoutingListResponseData {
   orderBy: string;
   orderByDirection: string;
@@ -4135,20 +2941,10 @@ export interface DynamicRoutingListResponseData {
   perPage: number;
   routes: DynamicRoutingListResponseDataRoutesList;
 }
-const DynamicRoutingListResponseData = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<DynamicRoutingListResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListDynamicRoutingsResponse {
   data: DynamicRoutingListResponseData;
 }
-const ListDynamicRoutingsResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<ListDynamicRoutingsResponse>;
-
 export interface ListEvaluationsRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
@@ -4160,11 +2956,6 @@ export interface ListEvaluationsRequest {
   /** Search by id, name */
   search?: string;
 }
-const ListEvaluationsRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<ListEvaluationsRequest>;
-
 export type EvaluationsListResultItemDatasetsItemFiltersItemKey =
   | "created_at"
   | "request_content_type"
@@ -4179,42 +2970,21 @@ export type EvaluationsListResultItemDatasetsItemFiltersItemKey =
   | "tokens_out"
   | "duration"
   | "feedback";
-const EvaluationsListResultItemDatasetsItemFiltersItemKey = S.String;
-
 export type EvaluationsListResultItemDatasetsItemFiltersItemOperator =
   | "eq"
   | "contains"
   | "lt"
   | "gt";
-const EvaluationsListResultItemDatasetsItemFiltersItemOperator = S.String;
-
 export type EvaluationsListResultItemDatasetsItemFiltersItemValueItem = string | number | boolean;
-const EvaluationsListResultItemDatasetsItemFiltersItemValueItem = /*@__PURE__*/ __L.at(__c25, 7);
-
 export type EvaluationsListResultItemDatasetsItemFiltersItemValueList =
   Array<EvaluationsListResultItemDatasetsItemFiltersItemValueItem>;
-const EvaluationsListResultItemDatasetsItemFiltersItemValueList = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<EvaluationsListResultItemDatasetsItemFiltersItemValueList>;
-
 export interface EvaluationsListResultItemDatasetsItemFiltersItem {
   key: EvaluationsListResultItemDatasetsItemFiltersItemKey;
   operator: EvaluationsListResultItemDatasetsItemFiltersItemOperator;
   value: EvaluationsListResultItemDatasetsItemFiltersItemValueList;
 }
-const EvaluationsListResultItemDatasetsItemFiltersItem = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<EvaluationsListResultItemDatasetsItemFiltersItem>;
-
 export type EvaluationsListResultItemDatasetsItemFiltersList =
   Array<EvaluationsListResultItemDatasetsItemFiltersItem>;
-const EvaluationsListResultItemDatasetsItemFiltersList = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<EvaluationsListResultItemDatasetsItemFiltersList>;
-
 export interface EvaluationsListResultItemDatasetsItem {
   id: string;
   accountId: string;
@@ -4227,22 +2997,9 @@ export interface EvaluationsListResultItemDatasetsItem {
   modifiedAt: string;
   name: string;
 }
-const EvaluationsListResultItemDatasetsItem = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<EvaluationsListResultItemDatasetsItem>;
-
 export type EvaluationsListResultItemDatasetsList = Array<EvaluationsListResultItemDatasetsItem>;
-const EvaluationsListResultItemDatasetsList = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<EvaluationsListResultItemDatasetsList>;
-
 export type EvaluationsListResultItemResultsItem = EvaluationsCreateResponseResultsItem;
 export type EvaluationsListResultItemResultsList = Array<EvaluationsCreateResponseResultsItem>;
-const EvaluationsListResultItemResultsList =
-  EvaluationsCreateResponseResultsList as any as S.Schema<EvaluationsListResultItemResultsList>;
-
 export interface EvaluationsListResultItem {
   id: string;
   createdAt: string;
@@ -4255,31 +3012,14 @@ export interface EvaluationsListResultItem {
   results: EvaluationsListResultItemResultsList;
   totalLogs: number;
 }
-const EvaluationsListResultItem = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<EvaluationsListResultItem>;
-
 export type EvaluationsListResultList = Array<EvaluationsListResultItem>;
-const EvaluationsListResultList = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<EvaluationsListResultList>;
-
 export interface ListEvaluationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: EvaluationsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListEvaluationsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<ListEvaluationsResponse>;
-
 export type EvaluationTypesListRequestOrderByDirection = "asc" | "desc";
-const EvaluationTypesListRequestOrderByDirection = S.String;
-
 export interface ListEvaluationTypesRequest {
   accountId: string;
   orderBy?: string;
@@ -4287,11 +3027,6 @@ export interface ListEvaluationTypesRequest {
   page?: number;
   perPage?: number;
 }
-const ListEvaluationTypesRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<ListEvaluationTypesRequest>;
-
 export interface EvaluationTypesListResultItem {
   id: string;
   createdAt: string;
@@ -4302,35 +3037,15 @@ export interface EvaluationTypesListResultItem {
   name: string;
   type: string;
 }
-const EvaluationTypesListResultItem = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<EvaluationTypesListResultItem>;
-
 export type EvaluationTypesListResultList = Array<EvaluationTypesListResultItem>;
-const EvaluationTypesListResultList = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<EvaluationTypesListResultList>;
-
 export interface ListEvaluationTypesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: EvaluationTypesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListEvaluationTypesResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ListEvaluationTypesResponse>;
-
 export type LogsListRequestDirection = "asc" | "desc";
-const LogsListRequestDirection = S.String;
-
 export type LogsListRequestFiltersList = Array<string>;
-const LogsListRequestFiltersList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<LogsListRequestFiltersList>;
-
 export type LogsListRequestOrderBy =
   | "created_at"
   | "provider"
@@ -4338,11 +3053,7 @@ export type LogsListRequestOrderBy =
   | "model_type"
   | "success"
   | "cached";
-const LogsListRequestOrderBy = S.String;
-
 export type LogsListRequestOrderByDirection = "asc" | "desc";
-const LogsListRequestOrderByDirection = S.String;
-
 export interface ListLogsRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
@@ -4378,8 +3089,6 @@ export interface ListLogsRequest {
   startDate?: string;
   success?: boolean;
 }
-const ListLogsRequest = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<ListLogsRequest>;
-
 export interface LogsListResultItem {
   id: string;
   cached: boolean;
@@ -4401,19 +3110,13 @@ export interface LogsListResultItem {
   statusCode?: number | null;
   step?: number | null;
 }
-const LogsListResultItem = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<LogsListResultItem>;
-
 export type LogsListResultList = Array<LogsListResultItem>;
-const LogsListResultList = /*@__PURE__*/ __L.at(__c27, 6) as any as S.Schema<LogsListResultList>;
-
 export interface ListLogsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: LogsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListLogsResponse = /*@__PURE__*/ __L.at(__c27, 7) as any as S.Schema<ListLogsResponse>;
-
 export interface ListProviderConfigsRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
@@ -4421,11 +3124,6 @@ export interface ListProviderConfigsRequest {
   page?: number;
   perPage?: number;
 }
-const ListProviderConfigsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<ListProviderConfigsRequest>;
-
 export interface ProviderConfigsListResultItem {
   id: string;
   alias: string;
@@ -4439,38 +3137,18 @@ export interface ProviderConfigsListResultItem {
   rateLimit?: number | null;
   rateLimitPeriod?: number | null;
 }
-const ProviderConfigsListResultItem = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<ProviderConfigsListResultItem>;
-
 export type ProviderConfigsListResultList = Array<ProviderConfigsListResultItem>;
-const ProviderConfigsListResultList = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<ProviderConfigsListResultList>;
-
 export interface ListProviderConfigsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ProviderConfigsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListProviderConfigsResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<ListProviderConfigsResponse>;
-
 export interface ListVersionsDynamicRoutingRequest {
   accountId: string;
   gatewayId: string;
   id: string;
 }
-const ListVersionsDynamicRoutingRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<ListVersionsDynamicRoutingRequest>;
-
 export type DynamicRoutingListVersionsResponseDataVersionsItemActive = "true" | "false";
 export interface DynamicRoutingListVersionsResponseDataVersionsItem {
   active: DynamicRoutingListVersionsResponseDataVersionsItemActive;
@@ -4479,16 +3157,8 @@ export interface DynamicRoutingListVersionsResponseDataVersionsItem {
   versionId: string;
   isValid?: boolean | null;
 }
-const DynamicRoutingListVersionsResponseDataVersionsItem =
-  DynamicRoutingCreateResponseVersion as any as S.Schema<DynamicRoutingListVersionsResponseDataVersionsItem>;
-
 export type DynamicRoutingListVersionsResponseDataVersionsList =
   Array<DynamicRoutingListVersionsResponseDataVersionsItem>;
-const DynamicRoutingListVersionsResponseDataVersionsList = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<DynamicRoutingListVersionsResponseDataVersionsList>;
-
 export interface DynamicRoutingListVersionsResponseData {
   orderBy: string;
   orderByDirection: string;
@@ -4496,31 +3166,16 @@ export interface DynamicRoutingListVersionsResponseData {
   perPage: number;
   versions: DynamicRoutingListVersionsResponseDataVersionsList;
 }
-const DynamicRoutingListVersionsResponseData = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<DynamicRoutingListVersionsResponseData>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ListVersionsDynamicRoutingResponse {
   data: DynamicRoutingListVersionsResponseData;
 }
-const ListVersionsDynamicRoutingResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<ListVersionsDynamicRoutingResponse>;
-
 export interface PatchDynamicRoutingRequest {
   accountId: string;
   gatewayId: string;
   id: string;
   name: string;
 }
-const PatchDynamicRoutingRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<PatchDynamicRoutingRequest>;
-
 export type DynamicRoutingUpdateResponseRouteDeployment = DynamicRoutingCreateResponseDeployment;
 export type DynamicRoutingUpdateResponseRouteElementsItemCase0OutputsNext =
   DynamicRoutingCreateDeploymentResponseElementsItemCase0OutputsNext;
@@ -4609,15 +3264,8 @@ export type DynamicRoutingUpdateResponseRouteElementsItem =
   | DynamicRoutingUpdateResponseRouteElementsItemCase3
   | DynamicRoutingUpdateResponseRouteElementsItemCase4
   | DynamicRoutingUpdateResponseRouteElementsItemCase5;
-const DynamicRoutingUpdateResponseRouteElementsItem = /*@__PURE__*/ __L.at(__c29, 1);
-
 export type DynamicRoutingUpdateResponseRouteElementsList =
   Array<DynamicRoutingUpdateResponseRouteElementsItem>;
-const DynamicRoutingUpdateResponseRouteElementsList = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsList>;
-
 export type DynamicRoutingUpdateResponseRouteVersionActive = "true" | "false";
 export interface DynamicRoutingUpdateResponseRouteVersion {
   active: DynamicRoutingUpdateResponseRouteVersionActive;
@@ -4626,9 +3274,6 @@ export interface DynamicRoutingUpdateResponseRouteVersion {
   versionId: string;
   isValid?: boolean | null;
 }
-const DynamicRoutingUpdateResponseRouteVersion =
-  DynamicRoutingCreateResponseVersion as any as S.Schema<DynamicRoutingUpdateResponseRouteVersion>;
-
 export interface DynamicRoutingUpdateResponseRoute {
   id: string;
   accountTag: string;
@@ -4640,31 +3285,14 @@ export interface DynamicRoutingUpdateResponseRoute {
   name: string;
   version: DynamicRoutingUpdateResponseRouteVersion;
 }
-const DynamicRoutingUpdateResponseRoute = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<DynamicRoutingUpdateResponseRoute>;
-
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface PatchDynamicRoutingResponse {
   route: DynamicRoutingUpdateResponseRoute;
 }
-const PatchDynamicRoutingResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<PatchDynamicRoutingResponse>;
-
 export type LogsEditRequestMetadataValue = string | number | boolean;
-const LogsEditRequestMetadataValue = /*@__PURE__*/ __L.at(__c29, 5);
-
 export type LogsEditRequestMetadataMap = {
   [key: string]: LogsEditRequestMetadataValue | undefined;
 };
-const LogsEditRequestMetadataMap = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<LogsEditRequestMetadataMap>;
-
 export interface PatchLogRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
@@ -4674,56 +3302,32 @@ export interface PatchLogRequest {
   metadata?: LogsEditRequestMetadataMap;
   score?: number;
 }
-const PatchLogRequest = /*@__PURE__*/ __L.at(__c29, 7) as any as S.Schema<PatchLogRequest>;
-
 export type PatchLogResponse = unknown;
-const PatchLogResponse = /*@__PURE__*/ __L.at(__c30, 0) as any as S.Schema<PatchLogResponse>;
-
 export interface RequestLogRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
   gatewayId: string;
   id: string;
 }
-const RequestLogRequest = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<RequestLogRequest>;
-
 export interface RequestLogResponse {}
-const RequestLogResponse = DeleteLogResponse as any as S.Schema<RequestLogResponse>;
-
 export interface ResponseLogRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
   gatewayId: string;
   id: string;
 }
-const ResponseLogRequest = /*@__PURE__*/ __L.at(__c30, 2) as any as S.Schema<ResponseLogRequest>;
-
 export interface ResponseLogResponse {}
-const ResponseLogResponse = DeleteLogResponse as any as S.Schema<ResponseLogResponse>;
-
 export interface StatusBillingTopupRequest {
   accountId: string;
   /** Stripe invoice ID to check status for. */
   paymentIntentId: string;
 }
-const StatusBillingTopupRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<StatusBillingTopupRequest>;
-
 export type BillingTopupStatusResponseStatus = "completed" | "pending";
-const BillingTopupStatusResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface StatusBillingTopupResponse {
   paymentIntentId: string;
   status: BillingTopupStatusResponseStatus;
 }
-const StatusBillingTopupResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<StatusBillingTopupResponse>;
-
 export type UpdateRequestDlpCase0Action = "BLOCK" | "FLAG";
 export type UpdateRequestDlpCase0ProfilesList = Array<string>;
 export interface UpdateRequestDlpCase0 {
@@ -4750,8 +3354,6 @@ export interface UpdateRequestDlpCase1 {
   policies: UpdateRequestDlpCase1PoliciesList;
 }
 export type UpdateRequestDlp = UpdateRequestDlpCase0 | UpdateRequestDlpCase1;
-const UpdateRequestDlp = /*@__PURE__*/ __L.at(__c30, 5);
-
 export type UpdateRequestGuardrailsPromptP1 = "FLAG" | "BLOCK";
 export type UpdateRequestGuardrailsPromptS1 = "FLAG" | "BLOCK";
 export type UpdateRequestGuardrailsPromptS10 = "FLAG" | "BLOCK";
@@ -4816,79 +3418,32 @@ export interface UpdateRequestGuardrails {
   prompt: UpdateRequestGuardrailsPrompt;
   response: UpdateRequestGuardrailsResponse;
 }
-const UpdateRequestGuardrails = CreateRequestGuardrails as any as S.Schema<UpdateRequestGuardrails>;
-
 export type UpdateRequestLogManagementStrategy = "STOP_INSERTING" | "DELETE_OLDEST";
-const UpdateRequestLogManagementStrategy = S.String;
-
 export type UpdateRequestOtelItemHeadersMap = { [key: string]: unknown | undefined };
-const UpdateRequestOtelItemHeadersMap =
-  CreateResponseOtelItemHeadersMap as any as S.Schema<UpdateRequestOtelItemHeadersMap>;
-
 export type UpdateRequestOtelItemContentType = "json" | "protobuf";
-const UpdateRequestOtelItemContentType = S.String;
-
 export interface UpdateRequestOtelItem {
   headers: UpdateRequestOtelItemHeadersMap;
   url: string;
   authorization?: string;
   contentType?: UpdateRequestOtelItemContentType | (string & {});
 }
-const UpdateRequestOtelItem = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<UpdateRequestOtelItem>;
-
 export type UpdateRequestOtelList = Array<UpdateRequestOtelItem>;
-const UpdateRequestOtelList = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<UpdateRequestOtelList>;
-
 export type UpdateRequestRateLimitingTechnique = "fixed" | "sliding";
-const UpdateRequestRateLimitingTechnique = S.String;
-
 export type UpdateRequestRetryBackoff = "constant" | "linear" | "exponential";
-const UpdateRequestRetryBackoff = S.String;
-
 export type UpdateRequestSpendLimitsRulesItemLimitType = "cost";
-const UpdateRequestSpendLimitsRulesItemLimitType = S.String;
-
 export type UpdateRequestSpendLimitsRulesItemModelMode = "filter";
-const UpdateRequestSpendLimitsRulesItemModelMode = S.String;
-
 export type UpdateRequestSpendLimitsRulesItemModelValuesList = Array<string>;
-const UpdateRequestSpendLimitsRulesItemModelValuesList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<UpdateRequestSpendLimitsRulesItemModelValuesList>;
-
 export interface UpdateRequestSpendLimitsRulesItemModel {
   mode: UpdateRequestSpendLimitsRulesItemModelMode | (string & {});
   values: UpdateRequestSpendLimitsRulesItemModelValuesList;
 }
-const UpdateRequestSpendLimitsRulesItemModel = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<UpdateRequestSpendLimitsRulesItemModel>;
-
 export type UpdateRequestSpendLimitsRulesItemProviderMode = "filter";
-const UpdateRequestSpendLimitsRulesItemProviderMode = S.String;
-
 export type UpdateRequestSpendLimitsRulesItemProviderValuesList = Array<string>;
-const UpdateRequestSpendLimitsRulesItemProviderValuesList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<UpdateRequestSpendLimitsRulesItemProviderValuesList>;
-
 export interface UpdateRequestSpendLimitsRulesItemProvider {
   mode: UpdateRequestSpendLimitsRulesItemProviderMode | (string & {});
   values: UpdateRequestSpendLimitsRulesItemProviderValuesList;
 }
-const UpdateRequestSpendLimitsRulesItemProvider = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<UpdateRequestSpendLimitsRulesItemProvider>;
-
 export type UpdateRequestSpendLimitsRulesItemTechnique = "fixed" | "sliding";
-const UpdateRequestSpendLimitsRulesItemTechnique = S.String;
-
 export interface UpdateRequestSpendLimitsRulesItem {
   /** exclusiveMinimum */
   limit: number;
@@ -4902,37 +3457,18 @@ export interface UpdateRequestSpendLimitsRulesItem {
   provider?: UpdateRequestSpendLimitsRulesItemProvider;
   technique?: UpdateRequestSpendLimitsRulesItemTechnique | (string & {});
 }
-const UpdateRequestSpendLimitsRulesItem = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<UpdateRequestSpendLimitsRulesItem>;
-
 export type UpdateRequestSpendLimitsRulesList = Array<UpdateRequestSpendLimitsRulesItem>;
-const UpdateRequestSpendLimitsRulesList = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<UpdateRequestSpendLimitsRulesList>;
-
 export interface UpdateRequestSpendLimits {
   enabled?: boolean;
   rules?: UpdateRequestSpendLimitsRulesList;
 }
-const UpdateRequestSpendLimits = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<UpdateRequestSpendLimits>;
-
 export type UpdateRequestStripeUsageEventsItem = CreateRequestStripeUsageEventsItem;
 export type UpdateRequestStripeUsageEventsList = Array<CreateRequestStripeUsageEventsItem>;
 export interface UpdateRequestStripe {
   authorization: string;
   usageEvents: UpdateRequestStripeUsageEventsList;
 }
-const UpdateRequestStripe = CreateRequestStripe as any as S.Schema<UpdateRequestStripe>;
-
 export type UpdateRequestWorkersAiBillingMode = "postpaid" | "unified";
-const UpdateRequestWorkersAiBillingMode = S.String;
-
 export interface UpdateAiGatewayRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
@@ -4967,11 +3503,6 @@ export interface UpdateAiGatewayRequest {
   workersAiBillingMode?: UpdateRequestWorkersAiBillingMode | (string & {});
   zdr?: boolean;
 }
-const UpdateAiGatewayRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<UpdateAiGatewayRequest>;
-
 export type UpdateResponseDlpCase0Action = "BLOCK" | "FLAG";
 export type UpdateResponseDlpCase0ProfilesList = Array<string>;
 export interface UpdateResponseDlpCase0 {
@@ -4997,8 +3528,6 @@ export interface UpdateResponseDlpCase1 {
   policies: UpdateResponseDlpCase1PoliciesList;
 }
 export type UpdateResponseDlp = UpdateResponseDlpCase0 | UpdateResponseDlpCase1;
-const UpdateResponseDlp = /*@__PURE__*/ __L.at(__c31, 6);
-
 export type UpdateResponseGuardrailsPromptP1 = "FLAG" | "BLOCK";
 export type UpdateResponseGuardrailsPromptS1 = "FLAG" | "BLOCK";
 export type UpdateResponseGuardrailsPromptS10 = "FLAG" | "BLOCK";
@@ -5063,80 +3592,32 @@ export interface UpdateResponseGuardrails {
   prompt: UpdateResponseGuardrailsPrompt;
   response: UpdateResponseGuardrailsResponse;
 }
-const UpdateResponseGuardrails =
-  CreateResponseGuardrails as any as S.Schema<UpdateResponseGuardrails>;
-
 export type UpdateResponseLogManagementStrategy = "STOP_INSERTING" | "DELETE_OLDEST";
-const UpdateResponseLogManagementStrategy = S.String;
-
 export type UpdateResponseOtelItemHeadersMap = { [key: string]: unknown | undefined };
-const UpdateResponseOtelItemHeadersMap =
-  CreateResponseOtelItemHeadersMap as any as S.Schema<UpdateResponseOtelItemHeadersMap>;
-
 export type UpdateResponseOtelItemContentType = "json" | "protobuf";
-const UpdateResponseOtelItemContentType = S.String;
-
 export interface UpdateResponseOtelItem {
   headers: UpdateResponseOtelItemHeadersMap;
   url: string;
   authorization?: string | null;
   contentType?: UpdateResponseOtelItemContentType | null;
 }
-const UpdateResponseOtelItem = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<UpdateResponseOtelItem>;
-
 export type UpdateResponseOtelList = Array<UpdateResponseOtelItem>;
-const UpdateResponseOtelList = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<UpdateResponseOtelList>;
-
 export type UpdateResponseRateLimitingTechnique = "fixed" | "sliding";
-const UpdateResponseRateLimitingTechnique = S.String;
-
 export type UpdateResponseRetryBackoff = "constant" | "linear" | "exponential";
-const UpdateResponseRetryBackoff = S.String;
-
 export type UpdateResponseSpendLimitsRulesItemLimitType = "cost";
-const UpdateResponseSpendLimitsRulesItemLimitType = S.String;
-
 export type UpdateResponseSpendLimitsRulesItemModelMode = "filter";
-const UpdateResponseSpendLimitsRulesItemModelMode = S.String;
-
 export type UpdateResponseSpendLimitsRulesItemModelValuesList = Array<string>;
-const UpdateResponseSpendLimitsRulesItemModelValuesList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<UpdateResponseSpendLimitsRulesItemModelValuesList>;
-
 export interface UpdateResponseSpendLimitsRulesItemModel {
   mode: UpdateResponseSpendLimitsRulesItemModelMode;
   values: UpdateResponseSpendLimitsRulesItemModelValuesList;
 }
-const UpdateResponseSpendLimitsRulesItemModel = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<UpdateResponseSpendLimitsRulesItemModel>;
-
 export type UpdateResponseSpendLimitsRulesItemProviderMode = "filter";
-const UpdateResponseSpendLimitsRulesItemProviderMode = S.String;
-
 export type UpdateResponseSpendLimitsRulesItemProviderValuesList = Array<string>;
-const UpdateResponseSpendLimitsRulesItemProviderValuesList =
-  CreateRequestDlpCase0ProfilesList as any as S.Schema<UpdateResponseSpendLimitsRulesItemProviderValuesList>;
-
 export interface UpdateResponseSpendLimitsRulesItemProvider {
   mode: UpdateResponseSpendLimitsRulesItemProviderMode;
   values: UpdateResponseSpendLimitsRulesItemProviderValuesList;
 }
-const UpdateResponseSpendLimitsRulesItemProvider = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<UpdateResponseSpendLimitsRulesItemProvider>;
-
 export type UpdateResponseSpendLimitsRulesItemTechnique = "fixed" | "sliding";
-const UpdateResponseSpendLimitsRulesItemTechnique = S.String;
-
 export interface UpdateResponseSpendLimitsRulesItem {
   /** exclusiveMinimum */
   limit: number;
@@ -5150,37 +3631,18 @@ export interface UpdateResponseSpendLimitsRulesItem {
   provider?: UpdateResponseSpendLimitsRulesItemProvider | null;
   technique?: UpdateResponseSpendLimitsRulesItemTechnique | null;
 }
-const UpdateResponseSpendLimitsRulesItem = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<UpdateResponseSpendLimitsRulesItem>;
-
 export type UpdateResponseSpendLimitsRulesList = Array<UpdateResponseSpendLimitsRulesItem>;
-const UpdateResponseSpendLimitsRulesList = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<UpdateResponseSpendLimitsRulesList>;
-
 export interface UpdateResponseSpendLimits {
   enabled?: boolean | null;
   rules?: UpdateResponseSpendLimitsRulesList | null;
 }
-const UpdateResponseSpendLimits = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<UpdateResponseSpendLimits>;
-
 export type UpdateResponseStripeUsageEventsItem = CreateRequestStripeUsageEventsItem;
 export type UpdateResponseStripeUsageEventsList = Array<CreateRequestStripeUsageEventsItem>;
 export interface UpdateResponseStripe {
   authorization: string;
   usageEvents: UpdateResponseStripeUsageEventsList;
 }
-const UpdateResponseStripe = CreateRequestStripe as any as S.Schema<UpdateResponseStripe>;
-
 export type UpdateResponseWorkersAiBillingMode = "postpaid" | "unified";
-const UpdateResponseWorkersAiBillingMode = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateAiGatewayResponse {
   /** Unique identifier of the AI Gateway within the account. */
@@ -5218,11 +3680,6 @@ export interface UpdateAiGatewayResponse {
   workersAiBillingMode?: UpdateResponseWorkersAiBillingMode | null;
   zdr?: boolean | null;
 }
-const UpdateAiGatewayResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<UpdateAiGatewayResponse>;
-
 export type DatasetsUpdateRequestFiltersItemKey =
   | "created_at"
   | "request_content_type"
@@ -5237,37 +3694,16 @@ export type DatasetsUpdateRequestFiltersItemKey =
   | "tokens_out"
   | "duration"
   | "feedback";
-const DatasetsUpdateRequestFiltersItemKey = S.String;
-
 export type DatasetsUpdateRequestFiltersItemOperator = "eq" | "contains" | "lt" | "gt";
-const DatasetsUpdateRequestFiltersItemOperator = S.String;
-
 export type DatasetsUpdateRequestFiltersItemValueItem = string | number | boolean;
-const DatasetsUpdateRequestFiltersItemValueItem = /*@__PURE__*/ __L.at(__c32, 7);
-
 export type DatasetsUpdateRequestFiltersItemValueList =
   Array<DatasetsUpdateRequestFiltersItemValueItem>;
-const DatasetsUpdateRequestFiltersItemValueList = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<DatasetsUpdateRequestFiltersItemValueList>;
-
 export interface DatasetsUpdateRequestFiltersItem {
   key: DatasetsUpdateRequestFiltersItemKey | (string & {});
   operator: DatasetsUpdateRequestFiltersItemOperator | (string & {});
   value: DatasetsUpdateRequestFiltersItemValueList;
 }
-const DatasetsUpdateRequestFiltersItem = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<DatasetsUpdateRequestFiltersItem>;
-
 export type DatasetsUpdateRequestFiltersList = Array<DatasetsUpdateRequestFiltersItem>;
-const DatasetsUpdateRequestFiltersList = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<DatasetsUpdateRequestFiltersList>;
-
 export interface UpdateDatasetRequest {
   accountId: string;
   /** Unique identifier of the AI Gateway within the account. */
@@ -5277,11 +3713,6 @@ export interface UpdateDatasetRequest {
   filters: DatasetsUpdateRequestFiltersList;
   name: string;
 }
-const UpdateDatasetRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<UpdateDatasetRequest>;
-
 export type DatasetsUpdateResponseFiltersItemKey =
   | "created_at"
   | "request_content_type"
@@ -5296,37 +3727,16 @@ export type DatasetsUpdateResponseFiltersItemKey =
   | "tokens_out"
   | "duration"
   | "feedback";
-const DatasetsUpdateResponseFiltersItemKey = S.String;
-
 export type DatasetsUpdateResponseFiltersItemOperator = "eq" | "contains" | "lt" | "gt";
-const DatasetsUpdateResponseFiltersItemOperator = S.String;
-
 export type DatasetsUpdateResponseFiltersItemValueItem = string | number | boolean;
-const DatasetsUpdateResponseFiltersItemValueItem = /*@__PURE__*/ __L.at(__c33, 4);
-
 export type DatasetsUpdateResponseFiltersItemValueList =
   Array<DatasetsUpdateResponseFiltersItemValueItem>;
-const DatasetsUpdateResponseFiltersItemValueList = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<DatasetsUpdateResponseFiltersItemValueList>;
-
 export interface DatasetsUpdateResponseFiltersItem {
   key: DatasetsUpdateResponseFiltersItemKey;
   operator: DatasetsUpdateResponseFiltersItemOperator;
   value: DatasetsUpdateResponseFiltersItemValueList;
 }
-const DatasetsUpdateResponseFiltersItem = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<DatasetsUpdateResponseFiltersItem>;
-
 export type DatasetsUpdateResponseFiltersList = Array<DatasetsUpdateResponseFiltersItem>;
-const DatasetsUpdateResponseFiltersList = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<DatasetsUpdateResponseFiltersList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UpdateDatasetResponse {
   id: string;
@@ -5338,14 +3748,7 @@ export interface UpdateDatasetResponse {
   modifiedAt: string;
   name: string;
 }
-const UpdateDatasetResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<UpdateDatasetResponse>;
-
 export type BillingUsageHistoryRequestValueGroupingWindow = "day" | "hour";
-const BillingUsageHistoryRequestValueGroupingWindow = S.String;
-
 export interface UsageHistoryBillingRequest {
   accountId: string;
   /** Grouping window for usage data. */
@@ -5355,37 +3758,17 @@ export interface UsageHistoryBillingRequest {
   /** Start time as Unix timestamp in milliseconds. */
   startTime?: number;
 }
-const UsageHistoryBillingRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<UsageHistoryBillingRequest>;
-
 export interface BillingUsageHistoryResponseHistoryItem {
   id: string;
   aggregatedValue: number;
   endTime: number;
   startTime: number;
 }
-const BillingUsageHistoryResponseHistoryItem = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<BillingUsageHistoryResponseHistoryItem>;
-
 export type BillingUsageHistoryResponseHistoryList = Array<BillingUsageHistoryResponseHistoryItem>;
-const BillingUsageHistoryResponseHistoryList = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<BillingUsageHistoryResponseHistoryList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface UsageHistoryBillingResponse {
   history: BillingUsageHistoryResponseHistoryList;
 }
-const UsageHistoryBillingResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<UsageHistoryBillingResponse>;
-
 export type CreateAiGatewayError = GatewayAlreadyExists | CloudflareOpError;
 /** Creates an AI Gateway in the account with the specified caching, rate limiting, logging, and authentication settings. The gateway ID appears in request URLs and must be unique within the account. */
 export const createAiGateway: API.OperationMethod<
@@ -5394,8 +3777,8 @@ export const createAiGateway: API.OperationMethod<
   CreateAiGatewayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAiGatewayRequest,
-  output: CreateAiGatewayResponse,
+  input: __S(17) as any as S.Schema<CreateAiGatewayRequest>,
+  output: __S(29) as any as S.Schema<CreateAiGatewayResponse>,
   errors: [GatewayAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5412,8 +3795,8 @@ export const createBillingSpendingLimit: API.OperationMethod<
   CreateBillingSpendingLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingSpendingLimitRequest,
-  output: CreateBillingSpendingLimitResponse,
+  input: __S(30) as any as S.Schema<CreateBillingSpendingLimitRequest>,
+  output: __S(31) as any as S.Schema<CreateBillingSpendingLimitResponse>,
   errors: [NoManualTopup, AiGatewaySpendingLimitDeprecated, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5427,8 +3810,8 @@ export const createBillingTopup: API.OperationMethod<
   CreateBillingTopupError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingTopupRequest,
-  output: CreateBillingTopupResponse,
+  input: __S(32) as any as S.Schema<CreateBillingTopupRequest>,
+  output: __S(33) as any as S.Schema<CreateBillingTopupResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5442,8 +3825,8 @@ export const createBillingTopupConfig: API.OperationMethod<
   CreateBillingTopupConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBillingTopupConfigRequest,
-  output: CreateBillingTopupConfigResponse,
+  input: __S(34) as any as S.Schema<CreateBillingTopupConfigRequest>,
+  output: __S(35) as any as S.Schema<CreateBillingTopupConfigResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5457,8 +3840,8 @@ export const createCustomProvider: API.OperationMethod<
   CreateCustomProviderError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCustomProviderRequest,
-  output: CreateCustomProviderResponse,
+  input: __S(36) as any as S.Schema<CreateCustomProviderRequest>,
+  output: __S(37) as any as S.Schema<CreateCustomProviderResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5472,8 +3855,8 @@ export const createDataset: API.OperationMethod<
   CreateDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetRequest,
-  output: CreateDatasetResponse,
+  input: __S(42) as any as S.Schema<CreateDatasetRequest>,
+  output: __S(47) as any as S.Schema<CreateDatasetResponse>,
   errors: [GatewayNotFound, DatasetNameAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5487,8 +3870,8 @@ export const createDeploymentDynamicRouting: API.OperationMethod<
   CreateDeploymentDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDeploymentDynamicRoutingRequest,
-  output: CreateDeploymentDynamicRoutingResponse,
+  input: __S(48) as any as S.Schema<CreateDeploymentDynamicRoutingRequest>,
+  output: __S(51) as any as S.Schema<CreateDeploymentDynamicRoutingResponse>,
   errors: [RouteNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5502,8 +3885,8 @@ export const createDynamicRouting: API.OperationMethod<
   CreateDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDynamicRoutingRequest,
-  output: CreateDynamicRoutingResponse,
+  input: __S(54) as any as S.Schema<CreateDynamicRoutingRequest>,
+  output: __S(59) as any as S.Schema<CreateDynamicRoutingResponse>,
   errors: [RouteAlreadyExists, GatewayNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5520,8 +3903,8 @@ export const createEvaluation: API.OperationMethod<
   CreateEvaluationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEvaluationRequest,
-  output: CreateEvaluationResponse,
+  input: __S(60) as any as S.Schema<CreateEvaluationRequest>,
+  output: __S(69) as any as S.Schema<CreateEvaluationResponse>,
   errors: [GatewayNotFound, EvaluationNameAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5539,8 +3922,8 @@ export const createProviderConfig: API.OperationMethod<
   CreateProviderConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProviderConfigRequest,
-  output: CreateProviderConfigResponse,
+  input: __S(70) as any as S.Schema<CreateProviderConfigRequest>,
+  output: __S(71) as any as S.Schema<CreateProviderConfigResponse>,
   errors: [
     ProviderConfigSecretNotFound,
     ProviderConfigAlreadyExists,
@@ -5560,8 +3943,8 @@ export const createVersionDynamicRouting: API.OperationMethod<
   CreateVersionDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVersionDynamicRoutingRequest,
-  output: CreateVersionDynamicRoutingResponse,
+  input: __S(74) as any as S.Schema<CreateVersionDynamicRoutingRequest>,
+  output: __S(77) as any as S.Schema<CreateVersionDynamicRoutingResponse>,
   errors: [RouteNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5575,8 +3958,8 @@ export const creditBalanceBilling: API.OperationMethod<
   CreditBalanceBillingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreditBalanceBillingRequest,
-  output: CreditBalanceBillingResponse,
+  input: __S(78) as any as S.Schema<CreditBalanceBillingRequest>,
+  output: __S(81) as any as S.Schema<CreditBalanceBillingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5590,8 +3973,8 @@ export const deleteAiGateway: API.OperationMethod<
   DeleteAiGatewayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAiGatewayRequest,
-  output: DeleteAiGatewayResponse,
+  input: __S(82) as any as S.Schema<DeleteAiGatewayRequest>,
+  output: __S(91) as any as S.Schema<DeleteAiGatewayResponse>,
   errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5605,8 +3988,8 @@ export const deleteBillingSpendingLimit: API.OperationMethod<
   DeleteBillingSpendingLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBillingSpendingLimitRequest,
-  output: DeleteBillingSpendingLimitResponse,
+  input: __S(92) as any as S.Schema<DeleteBillingSpendingLimitRequest>,
+  output: __S(31) as any as S.Schema<DeleteBillingSpendingLimitResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5620,8 +4003,8 @@ export const deleteBillingTopupConfig: API.OperationMethod<
   DeleteBillingTopupConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBillingTopupConfigRequest,
-  output: DeleteBillingTopupConfigResponse,
+  input: __S(93) as any as S.Schema<DeleteBillingTopupConfigRequest>,
+  output: __S(31) as any as S.Schema<DeleteBillingTopupConfigResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5635,8 +4018,8 @@ export const deleteCustomProvider: API.OperationMethod<
   DeleteCustomProviderError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCustomProviderRequest,
-  output: DeleteCustomProviderResponse,
+  input: __S(94) as any as S.Schema<DeleteCustomProviderRequest>,
+  output: __S(37) as any as S.Schema<DeleteCustomProviderResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5650,8 +4033,8 @@ export const deleteDataset: API.OperationMethod<
   DeleteDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatasetRequest,
-  output: DeleteDatasetResponse,
+  input: __S(95) as any as S.Schema<DeleteDatasetRequest>,
+  output: __S(100) as any as S.Schema<DeleteDatasetResponse>,
   errors: [DatasetNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5665,8 +4048,8 @@ export const deleteDynamicRouting: API.OperationMethod<
   DeleteDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDynamicRoutingRequest,
-  output: DeleteDynamicRoutingResponse,
+  input: __S(101) as any as S.Schema<DeleteDynamicRoutingRequest>,
+  output: __S(104) as any as S.Schema<DeleteDynamicRoutingResponse>,
   errors: [RouteNotFound, GatewayNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5680,8 +4063,8 @@ export const deleteEvaluation: API.OperationMethod<
   DeleteEvaluationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEvaluationRequest,
-  output: DeleteEvaluationResponse,
+  input: __S(105) as any as S.Schema<DeleteEvaluationRequest>,
+  output: __S(112) as any as S.Schema<DeleteEvaluationResponse>,
   errors: [EvaluationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5695,8 +4078,8 @@ export const deleteLog: API.OperationMethod<
   DeleteLogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLogRequest,
-  output: DeleteLogResponse,
+  input: __S(113) as any as S.Schema<DeleteLogRequest>,
+  output: __S(114) as any as S.Schema<DeleteLogResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5709,8 +4092,8 @@ export const deleteProviderConfig: API.OperationMethod<
   DeleteProviderConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProviderConfigRequest,
-  output: DeleteProviderConfigResponse,
+  input: __S(115) as any as S.Schema<DeleteProviderConfigRequest>,
+  output: __S(31) as any as S.Schema<DeleteProviderConfigResponse>,
   errors: [ProviderConfigNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5724,8 +4107,8 @@ export const getAiGateway: API.OperationMethod<
   GetAiGatewayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAiGatewayRequest,
-  output: GetAiGatewayResponse,
+  input: __S(116) as any as S.Schema<GetAiGatewayRequest>,
+  output: __S(125) as any as S.Schema<GetAiGatewayResponse>,
   errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5739,8 +4122,8 @@ export const getBillingSpendingLimit: API.OperationMethod<
   GetBillingSpendingLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingSpendingLimitRequest,
-  output: GetBillingSpendingLimitResponse,
+  input: __S(126) as any as S.Schema<GetBillingSpendingLimitRequest>,
+  output: __S(128) as any as S.Schema<GetBillingSpendingLimitResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5754,8 +4137,8 @@ export const getBillingTopupConfig: API.OperationMethod<
   GetBillingTopupConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBillingTopupConfigRequest,
-  output: GetBillingTopupConfigResponse,
+  input: __S(129) as any as S.Schema<GetBillingTopupConfigRequest>,
+  output: __S(130) as any as S.Schema<GetBillingTopupConfigResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5769,8 +4152,8 @@ export const getCustomProvider: API.OperationMethod<
   GetCustomProviderError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomProviderRequest,
-  output: GetCustomProviderResponse,
+  input: __S(131) as any as S.Schema<GetCustomProviderRequest>,
+  output: __S(37) as any as S.Schema<GetCustomProviderResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5784,8 +4167,8 @@ export const getDataset: API.OperationMethod<
   GetDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatasetRequest,
-  output: GetDatasetResponse,
+  input: __S(132) as any as S.Schema<GetDatasetRequest>,
+  output: __S(137) as any as S.Schema<GetDatasetResponse>,
   errors: [DatasetNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5799,8 +4182,8 @@ export const getDynamicRouting: API.OperationMethod<
   GetDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDynamicRoutingRequest,
-  output: GetDynamicRoutingResponse,
+  input: __S(138) as any as S.Schema<GetDynamicRoutingRequest>,
+  output: __S(141) as any as S.Schema<GetDynamicRoutingResponse>,
   errors: [RouteNotFound, GatewayNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5814,8 +4197,8 @@ export const getEvaluation: API.OperationMethod<
   GetEvaluationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEvaluationRequest,
-  output: GetEvaluationResponse,
+  input: __S(142) as any as S.Schema<GetEvaluationRequest>,
+  output: __S(149) as any as S.Schema<GetEvaluationResponse>,
   errors: [EvaluationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5829,8 +4212,8 @@ export const getLog: API.OperationMethod<
   GetLogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLogRequest,
-  output: GetLogResponse,
+  input: __S(150) as any as S.Schema<GetLogRequest>,
+  output: __S(151) as any as S.Schema<GetLogResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5844,8 +4227,8 @@ export const getUrl: API.OperationMethod<
   GetUrlError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUrlRequest,
-  output: GetUrlResponse,
+  input: __S(152) as any as S.Schema<GetUrlRequest>,
+  output: __S(153) as any as S.Schema<GetUrlResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5859,8 +4242,8 @@ export const getVersionDynamicRouting: API.OperationMethod<
   GetVersionDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVersionDynamicRoutingRequest,
-  output: GetVersionDynamicRoutingResponse,
+  input: __S(154) as any as S.Schema<GetVersionDynamicRoutingRequest>,
+  output: __S(157) as any as S.Schema<GetVersionDynamicRoutingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5874,8 +4257,8 @@ export const invoiceHistoryBilling: API.OperationMethod<
   InvoiceHistoryBillingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvoiceHistoryBillingRequest,
-  output: InvoiceHistoryBillingResponse,
+  input: __S(158) as any as S.Schema<InvoiceHistoryBillingRequest>,
+  output: __S(162) as any as S.Schema<InvoiceHistoryBillingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5889,8 +4272,8 @@ export const invoicePreviewBilling: API.OperationMethod<
   InvoicePreviewBillingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvoicePreviewBillingRequest,
-  output: InvoicePreviewBillingResponse,
+  input: __S(163) as any as S.Schema<InvoicePreviewBillingRequest>,
+  output: __S(170) as any as S.Schema<InvoicePreviewBillingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5906,8 +4289,8 @@ export const listAiGateways: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListAiGatewaysRequest,
-    output: ListAiGatewaysResponse,
+    input: __S(171) as any as S.Schema<ListAiGatewaysRequest>,
+    output: __S(182) as any as S.Schema<ListAiGatewaysResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5932,8 +4315,8 @@ export const listCustomProviders: API.PaginatedOperationMethod<
   CustomProvidersListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListCustomProvidersRequest,
-    output: ListCustomProvidersResponse,
+    input: __S(183) as any as S.Schema<ListCustomProvidersRequest>,
+    output: __S(186) as any as S.Schema<ListCustomProvidersResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5958,8 +4341,8 @@ export const listDatasets: API.PaginatedOperationMethod<
   DatasetsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListDatasetsRequest,
-    output: ListDatasetsResponse,
+    input: __S(187) as any as S.Schema<ListDatasetsRequest>,
+    output: __S(194) as any as S.Schema<ListDatasetsResponse>,
     errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -5982,8 +4365,8 @@ export const listDeploymentsDynamicRouting: API.OperationMethod<
   ListDeploymentsDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeploymentsDynamicRoutingRequest,
-  output: ListDeploymentsDynamicRoutingResponse,
+  input: __S(195) as any as S.Schema<ListDeploymentsDynamicRoutingRequest>,
+  output: __S(198) as any as S.Schema<ListDeploymentsDynamicRoutingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -5997,8 +4380,8 @@ export const listDynamicRoutings: API.OperationMethod<
   ListDynamicRoutingsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDynamicRoutingsRequest,
-  output: ListDynamicRoutingsResponse,
+  input: __S(199) as any as S.Schema<ListDynamicRoutingsRequest>,
+  output: __S(205) as any as S.Schema<ListDynamicRoutingsResponse>,
   errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6014,8 +4397,8 @@ export const listEvaluations: API.PaginatedOperationMethod<
   EvaluationsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListEvaluationsRequest,
-    output: ListEvaluationsResponse,
+    input: __S(206) as any as S.Schema<ListEvaluationsRequest>,
+    output: __S(215) as any as S.Schema<ListEvaluationsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -6040,8 +4423,8 @@ export const listEvaluationTypes: API.PaginatedOperationMethod<
   EvaluationTypesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListEvaluationTypesRequest,
-    output: ListEvaluationTypesResponse,
+    input: __S(216) as any as S.Schema<ListEvaluationTypesRequest>,
+    output: __S(219) as any as S.Schema<ListEvaluationTypesResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -6066,8 +4449,8 @@ export const listLogs: API.PaginatedOperationMethod<
   LogsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListLogsRequest,
-    output: ListLogsResponse,
+    input: __S(220) as any as S.Schema<ListLogsRequest>,
+    output: __S(223) as any as S.Schema<ListLogsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -6092,8 +4475,8 @@ export const listProviderConfigs: API.PaginatedOperationMethod<
   ProviderConfigsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListProviderConfigsRequest,
-    output: ListProviderConfigsResponse,
+    input: __S(224) as any as S.Schema<ListProviderConfigsRequest>,
+    output: __S(227) as any as S.Schema<ListProviderConfigsResponse>,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -6116,8 +4499,8 @@ export const listVersionsDynamicRouting: API.OperationMethod<
   ListVersionsDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListVersionsDynamicRoutingRequest,
-  output: ListVersionsDynamicRoutingResponse,
+  input: __S(228) as any as S.Schema<ListVersionsDynamicRoutingRequest>,
+  output: __S(231) as any as S.Schema<ListVersionsDynamicRoutingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6131,8 +4514,8 @@ export const patchDynamicRouting: API.OperationMethod<
   PatchDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchDynamicRoutingRequest,
-  output: PatchDynamicRoutingResponse,
+  input: __S(232) as any as S.Schema<PatchDynamicRoutingRequest>,
+  output: __S(236) as any as S.Schema<PatchDynamicRoutingResponse>,
   errors: [RouteNotFound, RouteAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6146,8 +4529,8 @@ export const patchLog: API.OperationMethod<
   PatchLogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchLogRequest,
-  output: PatchLogResponse,
+  input: __S(239) as any as S.Schema<PatchLogRequest>,
+  output: __S(240) as any as S.Schema<PatchLogResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6161,8 +4544,8 @@ export const requestLog: API.OperationMethod<
   RequestLogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RequestLogRequest,
-  output: RequestLogResponse,
+  input: __S(241) as any as S.Schema<RequestLogRequest>,
+  output: __S(114) as any as S.Schema<RequestLogResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6176,8 +4559,8 @@ export const responseLog: API.OperationMethod<
   ResponseLogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResponseLogRequest,
-  output: ResponseLogResponse,
+  input: __S(242) as any as S.Schema<ResponseLogRequest>,
+  output: __S(114) as any as S.Schema<ResponseLogResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6191,8 +4574,8 @@ export const statusBillingTopup: API.OperationMethod<
   StatusBillingTopupError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StatusBillingTopupRequest,
-  output: StatusBillingTopupResponse,
+  input: __S(243) as any as S.Schema<StatusBillingTopupRequest>,
+  output: __S(244) as any as S.Schema<StatusBillingTopupResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6206,8 +4589,8 @@ export const updateAiGateway: API.OperationMethod<
   UpdateAiGatewayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAiGatewayRequest,
-  output: UpdateAiGatewayResponse,
+  input: __S(253) as any as S.Schema<UpdateAiGatewayRequest>,
+  output: __S(262) as any as S.Schema<UpdateAiGatewayResponse>,
   errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6221,8 +4604,8 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDatasetRequest,
-  output: UpdateDatasetResponse,
+  input: __S(267) as any as S.Schema<UpdateDatasetRequest>,
+  output: __S(272) as any as S.Schema<UpdateDatasetResponse>,
   errors: [DatasetNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6236,8 +4619,8 @@ export const usageHistoryBilling: API.OperationMethod<
   UsageHistoryBillingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsageHistoryBillingRequest,
-  output: UsageHistoryBillingResponse,
+  input: __S(273) as any as S.Schema<UsageHistoryBillingRequest>,
+  output: __S(276) as any as S.Schema<UsageHistoryBillingResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -6258,20 +4641,20 @@ function __c0(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          p1: S.optional(CreateRequestGuardrailsPromptP1.pipe(T.Body("P1"))),
-          s1: S.optional(CreateRequestGuardrailsPromptS1.pipe(T.Body("S1"))),
-          s10: S.optional(CreateRequestGuardrailsPromptS10.pipe(T.Body("S10"))),
-          s11: S.optional(CreateRequestGuardrailsPromptS11.pipe(T.Body("S11"))),
-          s12: S.optional(CreateRequestGuardrailsPromptS12.pipe(T.Body("S12"))),
-          s13: S.optional(CreateRequestGuardrailsPromptS13.pipe(T.Body("S13"))),
-          s2: S.optional(CreateRequestGuardrailsPromptS2.pipe(T.Body("S2"))),
-          s3: S.optional(CreateRequestGuardrailsPromptS3.pipe(T.Body("S3"))),
-          s4: S.optional(CreateRequestGuardrailsPromptS4.pipe(T.Body("S4"))),
-          s5: S.optional(CreateRequestGuardrailsPromptS5.pipe(T.Body("S5"))),
-          s6: S.optional(CreateRequestGuardrailsPromptS6.pipe(T.Body("S6"))),
-          s7: S.optional(CreateRequestGuardrailsPromptS7.pipe(T.Body("S7"))),
-          s8: S.optional(CreateRequestGuardrailsPromptS8.pipe(T.Body("S8"))),
-          s9: S.optional(CreateRequestGuardrailsPromptS9.pipe(T.Body("S9"))),
+          p1: S.optional(S.String.pipe(T.Body("P1"))),
+          s1: S.optional(S.String.pipe(T.Body("S1"))),
+          s10: S.optional(S.String.pipe(T.Body("S10"))),
+          s11: S.optional(S.String.pipe(T.Body("S11"))),
+          s12: S.optional(S.String.pipe(T.Body("S12"))),
+          s13: S.optional(S.String.pipe(T.Body("S13"))),
+          s2: S.optional(S.String.pipe(T.Body("S2"))),
+          s3: S.optional(S.String.pipe(T.Body("S3"))),
+          s4: S.optional(S.String.pipe(T.Body("S4"))),
+          s5: S.optional(S.String.pipe(T.Body("S5"))),
+          s6: S.optional(S.String.pipe(T.Body("S6"))),
+          s7: S.optional(S.String.pipe(T.Body("S7"))),
+          s8: S.optional(S.String.pipe(T.Body("S8"))),
+          s9: S.optional(S.String.pipe(T.Body("S9"))),
         }),
       ).annotate({
         identifier: "CreateRequestGuardrailsPrompt",
@@ -6279,8 +4662,8 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          prompt: CreateRequestGuardrailsPrompt,
-          response: CreateRequestGuardrailsResponse,
+          prompt: __S(2),
+          response: __S(2),
         }),
       ).annotate({ identifier: "CreateRequestGuardrails" });
     case 4:
@@ -6288,14 +4671,14 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          headers: CreateRequestOtelItemHeadersMap,
+          headers: __S(4),
           url: S.String,
           authorization: S.optional(S.String),
-          contentType: S.optional(CreateRequestOtelItemContentType.pipe(T.Body("content_type"))),
+          contentType: S.optional(S.String.pipe(T.Body("content_type"))),
         }),
       ).annotate({ identifier: "CreateRequestOtelItem" });
     case 6:
-      return S.Array(CreateRequestOtelItem);
+      return S.Array(__S(5));
     case 7:
       return S.Unknown.pipe(
         /*@__PURE__*/ T.UnionCases([["mode"], ["mode", "values"]], {
@@ -6308,12 +4691,12 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, CreateRequestSpendLimitsRulesItemMetadataValue);
+      return S.Record(S.String, __S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: CreateRequestSpendLimitsRulesItemModelMode,
-          values: CreateRequestSpendLimitsRulesItemModelValuesList,
+          mode: S.String,
+          values: __S(0),
         }),
       ).annotate({
         identifier: "CreateRequestSpendLimitsRulesItemModel",
@@ -6321,8 +4704,8 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          mode: CreateRequestSpendLimitsRulesItemProviderMode,
-          values: CreateRequestSpendLimitsRulesItemProviderValuesList,
+          mode: S.String,
+          values: __S(0),
         }),
       ).annotate({
         identifier: "CreateRequestSpendLimitsRulesItemProvider",
@@ -6331,25 +4714,25 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           limit: S.Number,
-          limitType: CreateRequestSpendLimitsRulesItemLimitType,
+          limitType: S.String,
           window: S.Number,
           id: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          metadata: S.optional(CreateRequestSpendLimitsRulesItemMetadataMap),
-          model: S.optional(CreateRequestSpendLimitsRulesItemModel),
-          provider: S.optional(CreateRequestSpendLimitsRulesItemProvider),
-          technique: S.optional(CreateRequestSpendLimitsRulesItemTechnique),
+          metadata: S.optional(__S(8)),
+          model: S.optional(__S(9)),
+          provider: S.optional(__S(10)),
+          technique: S.optional(S.String),
         }),
       ).annotate({
         identifier: "CreateRequestSpendLimitsRulesItem",
       });
     case 4:
-      return S.Array(CreateRequestSpendLimitsRulesItem);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          rules: S.optional(CreateRequestSpendLimitsRulesList),
+          rules: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "CreateRequestSpendLimits" });
     case 6:
@@ -6361,7 +4744,7 @@ function __c1(j: number): any {
         identifier: "CreateRequestStripeUsageEventsItem",
       });
     case 7:
-      return S.Array(CreateRequestStripeUsageEventsItem);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -6370,7 +4753,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           authorization: S.String,
-          usageEvents: CreateRequestStripeUsageEventsList.pipe(T.Body("usage_events")),
+          usageEvents: __S(15).pipe(T.Body("usage_events")),
         }),
       ).annotate({ identifier: "CreateRequestStripe" });
     case 1:
@@ -6385,28 +4768,22 @@ function __c2(j: number): any {
           rateLimitingLimit: S.NullOr(S.Number).pipe(T.Body("rate_limiting_limit")),
           authentication: S.optional(S.Boolean),
           byokOnly: S.optional(S.Boolean.pipe(T.Body("byok_only"))),
-          dlp: S.optional(CreateRequestDlp),
-          guardrails: S.optional(CreateRequestGuardrails),
+          dlp: S.optional(__S(1)),
+          guardrails: S.optional(__S(3)),
           logClassification: S.optional(S.Boolean.pipe(T.Body("log_classification"))),
           logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
-          logManagementStrategy: S.optional(
-            CreateRequestLogManagementStrategy.pipe(T.Body("log_management_strategy")),
-          ),
+          logManagementStrategy: S.optional(S.String.pipe(T.Body("log_management_strategy"))),
           logpush: S.optional(S.Boolean),
           logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
-          otel: S.optional(CreateRequestOtelList),
-          rateLimitingTechnique: S.optional(
-            CreateRequestRateLimitingTechnique.pipe(T.Body("rate_limiting_technique")),
-          ),
-          retryBackoff: S.optional(CreateRequestRetryBackoff.pipe(T.Body("retry_backoff"))),
+          otel: S.optional(__S(6)),
+          rateLimitingTechnique: S.optional(S.String.pipe(T.Body("rate_limiting_technique"))),
+          retryBackoff: S.optional(S.String.pipe(T.Body("retry_backoff"))),
           retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
           retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
-          spendLimits: S.optional(CreateRequestSpendLimits.pipe(T.Body("spend_limits"))),
+          spendLimits: S.optional(__S(13).pipe(T.Body("spend_limits"))),
           storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-          stripe: S.optional(CreateRequestStripe),
-          workersAiBillingMode: S.optional(
-            CreateRequestWorkersAiBillingMode.pipe(T.Body("workers_ai_billing_mode")),
-          ),
+          stripe: S.optional(__S(16)),
+          workersAiBillingMode: S.optional(S.String.pipe(T.Body("workers_ai_billing_mode"))),
           zdr: S.optional(S.Boolean),
         })
           .pipe(
@@ -6428,20 +4805,20 @@ function __c2(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          p1: S.optional(S.NullOr(CreateResponseGuardrailsPromptP1).pipe(T.Body("P1"))),
-          s1: S.optional(S.NullOr(CreateResponseGuardrailsPromptS1).pipe(T.Body("S1"))),
-          s10: S.optional(S.NullOr(CreateResponseGuardrailsPromptS10).pipe(T.Body("S10"))),
-          s11: S.optional(S.NullOr(CreateResponseGuardrailsPromptS11).pipe(T.Body("S11"))),
-          s12: S.optional(S.NullOr(CreateResponseGuardrailsPromptS12).pipe(T.Body("S12"))),
-          s13: S.optional(S.NullOr(CreateResponseGuardrailsPromptS13).pipe(T.Body("S13"))),
-          s2: S.optional(S.NullOr(CreateResponseGuardrailsPromptS2).pipe(T.Body("S2"))),
-          s3: S.optional(S.NullOr(CreateResponseGuardrailsPromptS3).pipe(T.Body("S3"))),
-          s4: S.optional(S.NullOr(CreateResponseGuardrailsPromptS4).pipe(T.Body("S4"))),
-          s5: S.optional(S.NullOr(CreateResponseGuardrailsPromptS5).pipe(T.Body("S5"))),
-          s6: S.optional(S.NullOr(CreateResponseGuardrailsPromptS6).pipe(T.Body("S6"))),
-          s7: S.optional(S.NullOr(CreateResponseGuardrailsPromptS7).pipe(T.Body("S7"))),
-          s8: S.optional(S.NullOr(CreateResponseGuardrailsPromptS8).pipe(T.Body("S8"))),
-          s9: S.optional(S.NullOr(CreateResponseGuardrailsPromptS9).pipe(T.Body("S9"))),
+          p1: S.optional(S.NullOr(S.String).pipe(T.Body("P1"))),
+          s1: S.optional(S.NullOr(S.String).pipe(T.Body("S1"))),
+          s10: S.optional(S.NullOr(S.String).pipe(T.Body("S10"))),
+          s11: S.optional(S.NullOr(S.String).pipe(T.Body("S11"))),
+          s12: S.optional(S.NullOr(S.String).pipe(T.Body("S12"))),
+          s13: S.optional(S.NullOr(S.String).pipe(T.Body("S13"))),
+          s2: S.optional(S.NullOr(S.String).pipe(T.Body("S2"))),
+          s3: S.optional(S.NullOr(S.String).pipe(T.Body("S3"))),
+          s4: S.optional(S.NullOr(S.String).pipe(T.Body("S4"))),
+          s5: S.optional(S.NullOr(S.String).pipe(T.Body("S5"))),
+          s6: S.optional(S.NullOr(S.String).pipe(T.Body("S6"))),
+          s7: S.optional(S.NullOr(S.String).pipe(T.Body("S7"))),
+          s8: S.optional(S.NullOr(S.String).pipe(T.Body("S8"))),
+          s9: S.optional(S.NullOr(S.String).pipe(T.Body("S9"))),
         }),
       ).annotate({
         identifier: "CreateResponseGuardrailsPrompt",
@@ -6449,8 +4826,8 @@ function __c2(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          prompt: CreateResponseGuardrailsPrompt,
-          response: CreateResponseGuardrailsResponse,
+          prompt: __S(19),
+          response: __S(19),
         }),
       ).annotate({ identifier: "CreateResponseGuardrails" });
     case 5:
@@ -6458,16 +4835,14 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          headers: CreateResponseOtelItemHeadersMap,
+          headers: __S(21),
           url: S.String,
           authorization: S.optional(S.NullOr(S.String)),
-          contentType: S.optional(
-            S.NullOr(CreateResponseOtelItemContentType).pipe(T.Body("content_type")),
-          ),
+          contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
         }),
       ).annotate({ identifier: "CreateResponseOtelItem" });
     case 7:
-      return S.Array(CreateResponseOtelItem);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -6475,8 +4850,8 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mode: CreateResponseSpendLimitsRulesItemModelMode,
-          values: CreateResponseSpendLimitsRulesItemModelValuesList,
+          mode: S.String,
+          values: __S(0),
         }),
       ).annotate({
         identifier: "CreateResponseSpendLimitsRulesItemModel",
@@ -6484,8 +4859,8 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: CreateResponseSpendLimitsRulesItemProviderMode,
-          values: CreateResponseSpendLimitsRulesItemProviderValuesList,
+          mode: S.String,
+          values: __S(0),
         }),
       ).annotate({
         identifier: "CreateResponseSpendLimitsRulesItemProvider",
@@ -6494,25 +4869,25 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           limit: S.Number,
-          limitType: CreateResponseSpendLimitsRulesItemLimitType,
+          limitType: S.String,
           window: S.Number,
           id: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          metadata: S.optional(S.NullOr(UntypedMetadataMap)),
-          model: S.optional(S.NullOr(CreateResponseSpendLimitsRulesItemModel)),
-          provider: S.optional(S.NullOr(CreateResponseSpendLimitsRulesItemProvider)),
-          technique: S.optional(S.NullOr(CreateResponseSpendLimitsRulesItemTechnique)),
+          metadata: S.optional(S.NullOr(__S(21))),
+          model: S.optional(S.NullOr(__S(24))),
+          provider: S.optional(S.NullOr(__S(25))),
+          technique: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "CreateResponseSpendLimitsRulesItem",
       });
     case 3:
-      return S.Array(CreateResponseSpendLimitsRulesItem);
+      return S.Array(__S(26));
     case 4:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
-          rules: S.optional(S.NullOr(CreateResponseSpendLimitsRulesList)),
+          rules: S.optional(S.NullOr(__S(27))),
         }),
       ).annotate({
         identifier: "CreateResponseSpendLimits",
@@ -6530,30 +4905,28 @@ function __c3(j: number): any {
           rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
           authentication: S.optional(S.NullOr(S.Boolean)),
           byokOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("byok_only"))),
-          dlp: S.optional(S.NullOr(CreateResponseDlp)),
-          guardrails: S.optional(S.NullOr(CreateResponseGuardrails)),
+          dlp: S.optional(S.NullOr(__S(18))),
+          guardrails: S.optional(S.NullOr(__S(20))),
           isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
           logClassification: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_classification"))),
           logManagement: S.optional(S.NullOr(S.Number).pipe(T.Body("log_management"))),
           logManagementStrategy: S.optional(
-            S.NullOr(CreateResponseLogManagementStrategy).pipe(T.Body("log_management_strategy")),
+            S.NullOr(S.String).pipe(T.Body("log_management_strategy")),
           ),
           logpush: S.optional(S.NullOr(S.Boolean)),
           logpushPublicKey: S.optional(S.NullOr(S.String).pipe(T.Body("logpush_public_key"))),
-          otel: S.optional(S.NullOr(CreateResponseOtelList)),
+          otel: S.optional(S.NullOr(__S(23))),
           rateLimitingTechnique: S.optional(
-            S.NullOr(CreateResponseRateLimitingTechnique).pipe(T.Body("rate_limiting_technique")),
+            S.NullOr(S.String).pipe(T.Body("rate_limiting_technique")),
           ),
-          retryBackoff: S.optional(
-            S.NullOr(CreateResponseRetryBackoff).pipe(T.Body("retry_backoff")),
-          ),
+          retryBackoff: S.optional(S.NullOr(S.String).pipe(T.Body("retry_backoff"))),
           retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
           retryMaxAttempts: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_max_attempts"))),
-          spendLimits: S.optional(S.NullOr(CreateResponseSpendLimits).pipe(T.Body("spend_limits"))),
+          spendLimits: S.optional(S.NullOr(__S(28)).pipe(T.Body("spend_limits"))),
           storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
-          stripe: S.optional(S.NullOr(CreateResponseStripe)),
+          stripe: S.optional(S.NullOr(__S(16))),
           workersAiBillingMode: S.optional(
-            S.NullOr(CreateResponseWorkersAiBillingMode).pipe(T.Body("workers_ai_billing_mode")),
+            S.NullOr(S.String).pipe(T.Body("workers_ai_billing_mode")),
           ),
           zdr: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -6563,8 +4936,8 @@ function __c3(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           amount: S.Number,
-          duration: BillingSpendingLimitCreateRequestDuration,
-          strategy: BillingSpendingLimitCreateRequestStrategy,
+          duration: S.String,
+          strategy: S.String,
         })
           .pipe(
             T.Http({
@@ -6696,7 +5069,7 @@ function __c4(j: number): any {
     case 6:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 7:
-      return S.Array(DatasetsCreateRequestFiltersItemValueItem);
+      return S.Array(__S(38));
   }
 }
 function __c5(j: number): any {
@@ -6704,22 +5077,22 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          key: DatasetsCreateRequestFiltersItemKey,
-          operator: DatasetsCreateRequestFiltersItemOperator,
-          value: DatasetsCreateRequestFiltersItemValueList,
+          key: S.String,
+          operator: S.String,
+          value: __S(39),
         }),
       ).annotate({
         identifier: "DatasetsCreateRequestFiltersItem",
       });
     case 1:
-      return S.Array(DatasetsCreateRequestFiltersItem);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           gatewayId: S.String.pipe(T.Label("gateway_id")),
           enable: S.Boolean,
-          filters: DatasetsCreateRequestFiltersList,
+          filters: __S(41),
           name: S.String,
         })
           .pipe(
@@ -6734,26 +5107,26 @@ function __c5(j: number): any {
     case 3:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 4:
-      return S.Array(DatasetsCreateResponseFiltersItemValueItem);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          key: DatasetsCreateResponseFiltersItemKey,
-          operator: DatasetsCreateResponseFiltersItemOperator,
-          value: DatasetsCreateResponseFiltersItemValueList,
+          key: S.String,
+          operator: S.String,
+          value: __S(44),
         }),
       ).annotate({
         identifier: "DatasetsCreateResponseFiltersItem",
       });
     case 6:
-      return S.Array(DatasetsCreateResponseFiltersItem);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: DatasetsCreateResponseFiltersList,
+          filters: __S(46),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -6797,13 +5170,13 @@ function __c6(j: number): any {
         ),
       );
     case 2:
-      return S.Array(DynamicRoutingCreateDeploymentResponseElementsItem);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          elements: DynamicRoutingCreateDeploymentResponseElementsList,
+          elements: __S(50),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -6826,13 +5199,13 @@ function __c6(j: number): any {
         ),
       );
     case 5:
-      return S.Array(DynamicRoutingCreateRequestElementsItem);
+      return S.Array(__S(52));
     case 6:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           gatewayId: S.String.pipe(T.Label("gateway_id")),
-          elements: DynamicRoutingCreateRequestElementsList,
+          elements: __S(53),
           name: S.String,
         })
           .pipe(
@@ -6875,13 +5248,13 @@ function __c7(j: number): any {
         ),
       );
     case 1:
-      return S.Array(DynamicRoutingCreateResponseElementsItem);
+      return S.Array(__S(56));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          active: DynamicRoutingCreateResponseVersionActive,
+          active: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          data: DynamicRoutingCreateRequestElementsList,
+          data: __S(53),
           versionId: S.String.pipe(T.Body("version_id")),
           isValid: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_valid"))),
         }),
@@ -6893,12 +5266,12 @@ function __c7(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          deployment: DynamicRoutingCreateResponseDeployment,
-          elements: DynamicRoutingCreateResponseElementsList,
+          deployment: __S(55),
+          elements: __S(57),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
-          version: DynamicRoutingCreateResponseVersion,
+          version: __S(58),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateDynamicRoutingResponse",
@@ -6908,10 +5281,8 @@ function __c7(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           gatewayId: S.String.pipe(T.Label("gateway_id")),
-          datasetIds: EvaluationsCreateRequestDatasetIdsList.pipe(T.Body("dataset_ids")),
-          evaluationTypeIds: EvaluationsCreateRequestEvaluationTypeIdsList.pipe(
-            T.Body("evaluation_type_ids"),
-          ),
+          datasetIds: __S(0).pipe(T.Body("dataset_ids")),
+          evaluationTypeIds: __S(0).pipe(T.Body("evaluation_type_ids")),
           name: S.String,
         })
           .pipe(
@@ -6926,13 +5297,13 @@ function __c7(j: number): any {
     case 5:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 6:
-      return S.Array(EvaluationsCreateResponseDatasetsItemFiltersItemValueItem);
+      return S.Array(__S(61));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          key: EvaluationsCreateResponseDatasetsItemFiltersItemKey,
-          operator: EvaluationsCreateResponseDatasetsItemFiltersItemOperator,
-          value: EvaluationsCreateResponseDatasetsItemFiltersItemValueList,
+          key: S.String,
+          operator: S.String,
+          value: __S(62),
         }),
       ).annotate({
         identifier: "EvaluationsCreateResponseDatasetsItemFiltersItem",
@@ -6942,7 +5313,7 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(EvaluationsCreateResponseDatasetsItemFiltersItem);
+      return S.Array(__S(63));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -6951,7 +5322,7 @@ function __c8(j: number): any {
           accountTag: S.String.pipe(T.Body("account_tag")),
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: EvaluationsCreateResponseDatasetsItemFiltersList,
+          filters: __S(64),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -6960,7 +5331,7 @@ function __c8(j: number): any {
         identifier: "EvaluationsCreateResponseDatasetsItem",
       });
     case 2:
-      return S.Array(EvaluationsCreateResponseDatasetsItem);
+      return S.Array(__S(65));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6978,18 +5349,18 @@ function __c8(j: number): any {
         identifier: "EvaluationsCreateResponseResultsItem",
       });
     case 4:
-      return S.Array(EvaluationsCreateResponseResultsItem);
+      return S.Array(__S(67));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          datasets: EvaluationsCreateResponseDatasetsList,
+          datasets: __S(66),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           processed: S.Boolean,
-          results: EvaluationsCreateResponseResultsList,
+          results: __S(68),
           totalLogs: S.Number.pipe(T.Body("total_logs")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateEvaluationResponse" });
@@ -7053,14 +5424,14 @@ function __c9(j: number): any {
         ),
       );
     case 1:
-      return S.Array(DynamicRoutingCreateVersionRequestElementsItem);
+      return S.Array(__S(72));
     case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           gatewayId: S.String.pipe(T.Label("gateway_id")),
           id: S.String.pipe(T.Label()),
-          elements: DynamicRoutingCreateVersionRequestElementsList,
+          elements: __S(73),
         })
           .pipe(
             T.Http({
@@ -7088,13 +5459,13 @@ function __c9(j: number): any {
         ),
       );
     case 4:
-      return S.Array(DynamicRoutingCreateVersionResponseElementsItem);
+      return S.Array(__S(75));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          elements: DynamicRoutingCreateVersionResponseElementsList,
+          elements: __S(76),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -7149,8 +5520,8 @@ function __c10(j: number): any {
         S.Struct({
           balance: S.Number,
           hasDefaultPaymentMethod: S.Boolean.pipe(T.Body("has_default_payment_method")),
-          paymentMethod: BillingCreditBalanceResponsePaymentMethod.pipe(T.Body("payment_method")),
-          topupConfig: BillingCreditBalanceResponseTopupConfig.pipe(T.Body("topup_config")),
+          paymentMethod: __S(79).pipe(T.Body("payment_method")),
+          topupConfig: __S(80).pipe(T.Body("topup_config")),
           firstTopupSuccess: S.optional(S.NullOr(S.Boolean).pipe(T.Body("first_topup_success"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -7181,21 +5552,19 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          headers: DeleteResponseOtelItemHeadersMap,
+          headers: __S(21),
           url: S.String,
           authorization: S.optional(S.NullOr(S.String)),
-          contentType: S.optional(
-            S.NullOr(DeleteResponseOtelItemContentType).pipe(T.Body("content_type")),
-          ),
+          contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
         }),
       ).annotate({ identifier: "DeleteResponseOtelItem" });
     case 5:
-      return S.Array(DeleteResponseOtelItem);
+      return S.Array(__S(84));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          mode: DeleteResponseSpendLimitsRulesItemModelMode,
-          values: DeleteResponseSpendLimitsRulesItemModelValuesList,
+          mode: S.String,
+          values: __S(0),
         }),
       ).annotate({
         identifier: "DeleteResponseSpendLimitsRulesItemModel",
@@ -7203,8 +5572,8 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          mode: DeleteResponseSpendLimitsRulesItemProviderMode,
-          values: DeleteResponseSpendLimitsRulesItemProviderValuesList,
+          mode: S.String,
+          values: __S(0),
         }),
       ).annotate({
         identifier: "DeleteResponseSpendLimitsRulesItemProvider",
@@ -7217,25 +5586,25 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           limit: S.Number,
-          limitType: DeleteResponseSpendLimitsRulesItemLimitType,
+          limitType: S.String,
           window: S.Number,
           id: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          metadata: S.optional(S.NullOr(UntypedMetadataMap)),
-          model: S.optional(S.NullOr(DeleteResponseSpendLimitsRulesItemModel)),
-          provider: S.optional(S.NullOr(DeleteResponseSpendLimitsRulesItemProvider)),
-          technique: S.optional(S.NullOr(DeleteResponseSpendLimitsRulesItemTechnique)),
+          metadata: S.optional(S.NullOr(__S(21))),
+          model: S.optional(S.NullOr(__S(86))),
+          provider: S.optional(S.NullOr(__S(87))),
+          technique: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "DeleteResponseSpendLimitsRulesItem",
       });
     case 1:
-      return S.Array(DeleteResponseSpendLimitsRulesItem);
+      return S.Array(__S(88));
     case 2:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
-          rules: S.optional(S.NullOr(DeleteResponseSpendLimitsRulesList)),
+          rules: S.optional(S.NullOr(__S(89))),
         }),
       ).annotate({
         identifier: "DeleteResponseSpendLimits",
@@ -7253,30 +5622,28 @@ function __c11(j: number): any {
           rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
           authentication: S.optional(S.NullOr(S.Boolean)),
           byokOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("byok_only"))),
-          dlp: S.optional(S.NullOr(DeleteResponseDlp)),
-          guardrails: S.optional(S.NullOr(DeleteResponseGuardrails)),
+          dlp: S.optional(S.NullOr(__S(83))),
+          guardrails: S.optional(S.NullOr(__S(20))),
           isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
           logClassification: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_classification"))),
           logManagement: S.optional(S.NullOr(S.Number).pipe(T.Body("log_management"))),
           logManagementStrategy: S.optional(
-            S.NullOr(DeleteResponseLogManagementStrategy).pipe(T.Body("log_management_strategy")),
+            S.NullOr(S.String).pipe(T.Body("log_management_strategy")),
           ),
           logpush: S.optional(S.NullOr(S.Boolean)),
           logpushPublicKey: S.optional(S.NullOr(S.String).pipe(T.Body("logpush_public_key"))),
-          otel: S.optional(S.NullOr(DeleteResponseOtelList)),
+          otel: S.optional(S.NullOr(__S(85))),
           rateLimitingTechnique: S.optional(
-            S.NullOr(DeleteResponseRateLimitingTechnique).pipe(T.Body("rate_limiting_technique")),
+            S.NullOr(S.String).pipe(T.Body("rate_limiting_technique")),
           ),
-          retryBackoff: S.optional(
-            S.NullOr(DeleteResponseRetryBackoff).pipe(T.Body("retry_backoff")),
-          ),
+          retryBackoff: S.optional(S.NullOr(S.String).pipe(T.Body("retry_backoff"))),
           retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
           retryMaxAttempts: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_max_attempts"))),
-          spendLimits: S.optional(S.NullOr(DeleteResponseSpendLimits).pipe(T.Body("spend_limits"))),
+          spendLimits: S.optional(S.NullOr(__S(90)).pipe(T.Body("spend_limits"))),
           storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
-          stripe: S.optional(S.NullOr(DeleteResponseStripe)),
+          stripe: S.optional(S.NullOr(__S(16))),
           workersAiBillingMode: S.optional(
-            S.NullOr(DeleteResponseWorkersAiBillingMode).pipe(T.Body("workers_ai_billing_mode")),
+            S.NullOr(S.String).pipe(T.Body("workers_ai_billing_mode")),
           ),
           zdr: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -7353,26 +5720,26 @@ function __c12(j: number): any {
     case 0:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 1:
-      return S.Array(DatasetsDeleteResponseFiltersItemValueItem);
+      return S.Array(__S(96));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          key: DatasetsDeleteResponseFiltersItemKey,
-          operator: DatasetsDeleteResponseFiltersItemOperator,
-          value: DatasetsDeleteResponseFiltersItemValueList,
+          key: S.String,
+          operator: S.String,
+          value: __S(97),
         }),
       ).annotate({
         identifier: "DatasetsDeleteResponseFiltersItem",
       });
     case 3:
-      return S.Array(DatasetsDeleteResponseFiltersItem);
+      return S.Array(__S(98));
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: DatasetsDeleteResponseFiltersList,
+          filters: __S(99),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -7411,7 +5778,7 @@ function __c12(j: number): any {
         ),
       );
     case 7:
-      return S.Array(DynamicRoutingDeleteResponseElementsItem);
+      return S.Array(__S(102));
   }
 }
 function __c13(j: number): any {
@@ -7421,7 +5788,7 @@ function __c13(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          elements: DynamicRoutingDeleteResponseElementsList,
+          elements: __S(103),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -7448,19 +5815,19 @@ function __c13(j: number): any {
     case 2:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 3:
-      return S.Array(EvaluationsDeleteResponseDatasetsItemFiltersItemValueItem);
+      return S.Array(__S(106));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          key: EvaluationsDeleteResponseDatasetsItemFiltersItemKey,
-          operator: EvaluationsDeleteResponseDatasetsItemFiltersItemOperator,
-          value: EvaluationsDeleteResponseDatasetsItemFiltersItemValueList,
+          key: S.String,
+          operator: S.String,
+          value: __S(107),
         }),
       ).annotate({
         identifier: "EvaluationsDeleteResponseDatasetsItemFiltersItem",
       });
     case 5:
-      return S.Array(EvaluationsDeleteResponseDatasetsItemFiltersItem);
+      return S.Array(__S(108));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -7469,7 +5836,7 @@ function __c13(j: number): any {
           accountTag: S.String.pipe(T.Body("account_tag")),
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: EvaluationsDeleteResponseDatasetsItemFiltersList,
+          filters: __S(109),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -7478,7 +5845,7 @@ function __c13(j: number): any {
         identifier: "EvaluationsDeleteResponseDatasetsItem",
       });
     case 7:
-      return S.Array(EvaluationsDeleteResponseDatasetsItem);
+      return S.Array(__S(110));
   }
 }
 function __c14(j: number): any {
@@ -7488,12 +5855,12 @@ function __c14(j: number): any {
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          datasets: EvaluationsDeleteResponseDatasetsList,
+          datasets: __S(111),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           processed: S.Boolean,
-          results: EvaluationsDeleteResponseResultsList,
+          results: __S(68),
           totalLogs: S.Number.pipe(T.Body("total_logs")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteEvaluationResponse" });
@@ -7502,12 +5869,10 @@ function __c14(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           gatewayId: S.String.pipe(T.Label("gateway_id")),
-          filters: S.optional(LogsDeleteRequestFiltersList.pipe(T.Query())),
+          filters: S.optional(__S(0).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          orderBy: S.optional(LogsDeleteRequestOrderBy.pipe(T.Query("order_by"))),
-          orderByDirection: S.optional(
-            LogsDeleteRequestOrderByDirection.pipe(T.Query("order_by_direction")),
-          ),
+          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
+          orderByDirection: S.optional(S.String.pipe(T.Query("order_by_direction"))),
         })
           .pipe(
             T.Http({
@@ -7565,16 +5930,14 @@ function __c14(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          headers: GetResponseOtelItemHeadersMap,
+          headers: __S(21),
           url: S.String,
           authorization: S.optional(S.NullOr(S.String)),
-          contentType: S.optional(
-            S.NullOr(GetResponseOtelItemContentType).pipe(T.Body("content_type")),
-          ),
+          contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
         }),
       ).annotate({ identifier: "GetResponseOtelItem" });
     case 7:
-      return S.Array(GetResponseOtelItem);
+      return S.Array(__S(118));
   }
 }
 function __c15(j: number): any {
@@ -7582,8 +5945,8 @@ function __c15(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mode: GetResponseSpendLimitsRulesItemModelMode,
-          values: GetResponseSpendLimitsRulesItemModelValuesList,
+          mode: S.String,
+          values: __S(0),
         }),
       ).annotate({
         identifier: "GetResponseSpendLimitsRulesItemModel",
@@ -7591,8 +5954,8 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: GetResponseSpendLimitsRulesItemProviderMode,
-          values: GetResponseSpendLimitsRulesItemProviderValuesList,
+          mode: S.String,
+          values: __S(0),
         }),
       ).annotate({
         identifier: "GetResponseSpendLimitsRulesItemProvider",
@@ -7601,25 +5964,25 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           limit: S.Number,
-          limitType: GetResponseSpendLimitsRulesItemLimitType,
+          limitType: S.String,
           window: S.Number,
           id: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          metadata: S.optional(S.NullOr(UntypedMetadataMap)),
-          model: S.optional(S.NullOr(GetResponseSpendLimitsRulesItemModel)),
-          provider: S.optional(S.NullOr(GetResponseSpendLimitsRulesItemProvider)),
-          technique: S.optional(S.NullOr(GetResponseSpendLimitsRulesItemTechnique)),
+          metadata: S.optional(S.NullOr(__S(21))),
+          model: S.optional(S.NullOr(__S(120))),
+          provider: S.optional(S.NullOr(__S(121))),
+          technique: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "GetResponseSpendLimitsRulesItem",
       });
     case 3:
-      return S.Array(GetResponseSpendLimitsRulesItem);
+      return S.Array(__S(122));
     case 4:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
-          rules: S.optional(S.NullOr(GetResponseSpendLimitsRulesList)),
+          rules: S.optional(S.NullOr(__S(123))),
         }),
       ).annotate({ identifier: "GetResponseSpendLimits" });
     case 5:
@@ -7635,28 +5998,28 @@ function __c15(j: number): any {
           rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
           authentication: S.optional(S.NullOr(S.Boolean)),
           byokOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("byok_only"))),
-          dlp: S.optional(S.NullOr(GetResponseDlp)),
-          guardrails: S.optional(S.NullOr(GetResponseGuardrails)),
+          dlp: S.optional(S.NullOr(__S(117))),
+          guardrails: S.optional(S.NullOr(__S(20))),
           isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
           logClassification: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_classification"))),
           logManagement: S.optional(S.NullOr(S.Number).pipe(T.Body("log_management"))),
           logManagementStrategy: S.optional(
-            S.NullOr(GetResponseLogManagementStrategy).pipe(T.Body("log_management_strategy")),
+            S.NullOr(S.String).pipe(T.Body("log_management_strategy")),
           ),
           logpush: S.optional(S.NullOr(S.Boolean)),
           logpushPublicKey: S.optional(S.NullOr(S.String).pipe(T.Body("logpush_public_key"))),
-          otel: S.optional(S.NullOr(GetResponseOtelList)),
+          otel: S.optional(S.NullOr(__S(119))),
           rateLimitingTechnique: S.optional(
-            S.NullOr(GetResponseRateLimitingTechnique).pipe(T.Body("rate_limiting_technique")),
+            S.NullOr(S.String).pipe(T.Body("rate_limiting_technique")),
           ),
-          retryBackoff: S.optional(S.NullOr(GetResponseRetryBackoff).pipe(T.Body("retry_backoff"))),
+          retryBackoff: S.optional(S.NullOr(S.String).pipe(T.Body("retry_backoff"))),
           retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
           retryMaxAttempts: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_max_attempts"))),
-          spendLimits: S.optional(S.NullOr(GetResponseSpendLimits).pipe(T.Body("spend_limits"))),
+          spendLimits: S.optional(S.NullOr(__S(124)).pipe(T.Body("spend_limits"))),
           storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
-          stripe: S.optional(S.NullOr(GetResponseStripe)),
+          stripe: S.optional(S.NullOr(__S(16))),
           workersAiBillingMode: S.optional(
-            S.NullOr(GetResponseWorkersAiBillingMode).pipe(T.Body("workers_ai_billing_mode")),
+            S.NullOr(S.String).pipe(T.Body("workers_ai_billing_mode")),
           ),
           zdr: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -7694,7 +6057,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          config: BillingSpendingLimitGetResponseConfig,
+          config: __S(127),
           enabled: S.Boolean,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -7762,13 +6125,13 @@ function __c16(j: number): any {
     case 5:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 6:
-      return S.Array(DatasetsGetResponseFiltersItemValueItem);
+      return S.Array(__S(133));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          key: DatasetsGetResponseFiltersItemKey,
-          operator: DatasetsGetResponseFiltersItemOperator,
-          value: DatasetsGetResponseFiltersItemValueList,
+          key: S.String,
+          operator: S.String,
+          value: __S(134),
         }),
       ).annotate({
         identifier: "DatasetsGetResponseFiltersItem",
@@ -7778,14 +6141,14 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DatasetsGetResponseFiltersItem);
+      return S.Array(__S(135));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: DatasetsGetResponseFiltersList,
+          filters: __S(136),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -7822,18 +6185,18 @@ function __c17(j: number): any {
         ),
       );
     case 4:
-      return S.Array(DynamicRoutingGetResponseElementsItem);
+      return S.Array(__S(139));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          deployment: DynamicRoutingCreateResponseDeployment,
-          elements: DynamicRoutingGetResponseElementsList,
+          deployment: __S(55),
+          elements: __S(140),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
-          version: DynamicRoutingGetResponseVersion,
+          version: __S(58),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetDynamicRoutingResponse",
@@ -7861,19 +6224,19 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(EvaluationsGetResponseDatasetsItemFiltersItemValueItem);
+      return S.Array(__S(143));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          key: EvaluationsGetResponseDatasetsItemFiltersItemKey,
-          operator: EvaluationsGetResponseDatasetsItemFiltersItemOperator,
-          value: EvaluationsGetResponseDatasetsItemFiltersItemValueList,
+          key: S.String,
+          operator: S.String,
+          value: __S(144),
         }),
       ).annotate({
         identifier: "EvaluationsGetResponseDatasetsItemFiltersItem",
       });
     case 2:
-      return S.Array(EvaluationsGetResponseDatasetsItemFiltersItem);
+      return S.Array(__S(145));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -7882,7 +6245,7 @@ function __c18(j: number): any {
           accountTag: S.String.pipe(T.Body("account_tag")),
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: EvaluationsGetResponseDatasetsItemFiltersList,
+          filters: __S(146),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -7891,18 +6254,18 @@ function __c18(j: number): any {
         identifier: "EvaluationsGetResponseDatasetsItem",
       });
     case 4:
-      return S.Array(EvaluationsGetResponseDatasetsItem);
+      return S.Array(__S(147));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          datasets: EvaluationsGetResponseDatasetsList,
+          datasets: __S(148),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           processed: S.Boolean,
-          results: EvaluationsGetResponseResultsList,
+          results: __S(68),
           totalLogs: S.Number.pipe(T.Body("total_logs")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetEvaluationResponse" });
@@ -8014,15 +6377,15 @@ function __c19(j: number): any {
         ),
       );
     case 4:
-      return S.Array(DynamicRoutingGetVersionResponseElementsItem);
+      return S.Array(__S(155));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          active: DynamicRoutingGetVersionResponseActive,
+          active: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          data: DynamicRoutingCreateRequestElementsList,
-          elements: DynamicRoutingGetVersionResponseElementsList,
+          data: __S(53),
+          elements: __S(156),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -8036,7 +6399,7 @@ function __c19(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          type: S.optional(BillingInvoiceHistoryRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         })
           .pipe(
             T.Http({
@@ -8075,7 +6438,7 @@ function __c19(j: number): any {
 function __c20(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(BillingInvoiceHistoryResponseInvoicesItem);
+      return S.Array(__S(159));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -8090,8 +6453,8 @@ function __c20(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          invoices: BillingInvoiceHistoryResponseInvoicesList,
-          pagination: BillingInvoiceHistoryResponsePagination,
+          invoices: __S(160),
+          pagination: __S(161),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "InvoiceHistoryBillingResponse",
@@ -8143,7 +6506,7 @@ function __c20(j: number): any {
         identifier: "BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem",
       });
     case 7:
-      return S.Array(BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem);
+      return S.Array(__S(166));
   }
 }
 function __c21(j: number): any {
@@ -8154,20 +6517,16 @@ function __c21(j: number): any {
           amount: S.Number,
           currency: S.String,
           description: S.String,
-          period: BillingInvoicePreviewResponseInvoiceLinesItemPeriod,
-          pricing: BillingInvoicePreviewResponseInvoiceLinesItemPricing,
+          period: __S(164),
+          pricing: __S(165),
           quantity: S.Number,
-          pretaxCreditAmounts: S.optional(
-            S.NullOr(BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList).pipe(
-              T.Body("pretax_credit_amounts"),
-            ),
-          ),
+          pretaxCreditAmounts: S.optional(S.NullOr(__S(167)).pipe(T.Body("pretax_credit_amounts"))),
         }),
       ).annotate({
         identifier: "BillingInvoicePreviewResponseInvoiceLinesItem",
       });
     case 1:
-      return S.Array(BillingInvoicePreviewResponseInvoiceLinesItem);
+      return S.Array(__S(168));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -8176,10 +6535,10 @@ function __c21(j: number): any {
           amountPaid: S.Number.pipe(T.Body("amount_paid")),
           amountRemaining: S.Number.pipe(T.Body("amount_remaining")),
           currency: S.String,
-          invoiceLines: BillingInvoicePreviewResponseInvoiceLinesList.pipe(T.Body("invoice_lines")),
+          invoiceLines: __S(169).pipe(T.Body("invoice_lines")),
           periodEnd: S.Number.pipe(T.Body("period_end")),
           periodStart: S.Number.pipe(T.Body("period_start")),
-          status: BillingInvoicePreviewResponseStatus,
+          status: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "InvoicePreviewBillingResponse",
@@ -8207,21 +6566,19 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          headers: ListResultItemOtelItemHeadersMap,
+          headers: __S(21),
           url: S.String,
           authorization: S.optional(S.NullOr(S.String)),
-          contentType: S.optional(
-            S.NullOr(ListResultItemOtelItemContentType).pipe(T.Body("content_type")),
-          ),
+          contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
         }),
       ).annotate({ identifier: "ListResultItemOtelItem" });
     case 6:
-      return S.Array(ListResultItemOtelItem);
+      return S.Array(__S(173));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          mode: ListResultItemSpendLimitsRulesItemModelMode,
-          values: ListResultItemSpendLimitsRulesItemModelValuesList,
+          mode: S.String,
+          values: __S(0),
         }),
       ).annotate({
         identifier: "ListResultItemSpendLimitsRulesItemModel",
@@ -8233,8 +6590,8 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mode: ListResultItemSpendLimitsRulesItemProviderMode,
-          values: ListResultItemSpendLimitsRulesItemProviderValuesList,
+          mode: S.String,
+          values: __S(0),
         }),
       ).annotate({
         identifier: "ListResultItemSpendLimitsRulesItemProvider",
@@ -8243,25 +6600,25 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           limit: S.Number,
-          limitType: ListResultItemSpendLimitsRulesItemLimitType,
+          limitType: S.String,
           window: S.Number,
           id: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          metadata: S.optional(S.NullOr(UntypedMetadataMap)),
-          model: S.optional(S.NullOr(ListResultItemSpendLimitsRulesItemModel)),
-          provider: S.optional(S.NullOr(ListResultItemSpendLimitsRulesItemProvider)),
-          technique: S.optional(S.NullOr(ListResultItemSpendLimitsRulesItemTechnique)),
+          metadata: S.optional(S.NullOr(__S(21))),
+          model: S.optional(S.NullOr(__S(175))),
+          provider: S.optional(S.NullOr(__S(176))),
+          technique: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ListResultItemSpendLimitsRulesItem",
       });
     case 2:
-      return S.Array(ListResultItemSpendLimitsRulesItem);
+      return S.Array(__S(177));
     case 3:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
-          rules: S.optional(S.NullOr(ListResultItemSpendLimitsRulesList)),
+          rules: S.optional(S.NullOr(__S(178))),
         }),
       ).annotate({
         identifier: "ListResultItemSpendLimits",
@@ -8279,40 +6636,38 @@ function __c22(j: number): any {
           rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
           authentication: S.optional(S.NullOr(S.Boolean)),
           byokOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("byok_only"))),
-          dlp: S.optional(S.NullOr(ListResultItemDlp)),
-          guardrails: S.optional(S.NullOr(ListResultItemGuardrails)),
+          dlp: S.optional(S.NullOr(__S(172))),
+          guardrails: S.optional(S.NullOr(__S(20))),
           isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
           logClassification: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_classification"))),
           logManagement: S.optional(S.NullOr(S.Number).pipe(T.Body("log_management"))),
           logManagementStrategy: S.optional(
-            S.NullOr(ListResultItemLogManagementStrategy).pipe(T.Body("log_management_strategy")),
+            S.NullOr(S.String).pipe(T.Body("log_management_strategy")),
           ),
           logpush: S.optional(S.NullOr(S.Boolean)),
           logpushPublicKey: S.optional(S.NullOr(S.String).pipe(T.Body("logpush_public_key"))),
-          otel: S.optional(S.NullOr(ListResultItemOtelList)),
+          otel: S.optional(S.NullOr(__S(174))),
           rateLimitingTechnique: S.optional(
-            S.NullOr(ListResultItemRateLimitingTechnique).pipe(T.Body("rate_limiting_technique")),
+            S.NullOr(S.String).pipe(T.Body("rate_limiting_technique")),
           ),
-          retryBackoff: S.optional(
-            S.NullOr(ListResultItemRetryBackoff).pipe(T.Body("retry_backoff")),
-          ),
+          retryBackoff: S.optional(S.NullOr(S.String).pipe(T.Body("retry_backoff"))),
           retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
           retryMaxAttempts: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_max_attempts"))),
-          spendLimits: S.optional(S.NullOr(ListResultItemSpendLimits).pipe(T.Body("spend_limits"))),
+          spendLimits: S.optional(S.NullOr(__S(179)).pipe(T.Body("spend_limits"))),
           storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
-          stripe: S.optional(S.NullOr(ListResultItemStripe)),
+          stripe: S.optional(S.NullOr(__S(16))),
           workersAiBillingMode: S.optional(
-            S.NullOr(ListResultItemWorkersAiBillingMode).pipe(T.Body("workers_ai_billing_mode")),
+            S.NullOr(S.String).pipe(T.Body("workers_ai_billing_mode")),
           ),
           zdr: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 5:
-      return S.Array(ListResultItem);
+      return S.Array(__S(180));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: ListResultList.pipe(T.EnvelopePayload()),
+          result: __S(181).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListAiGatewaysResponse" });
@@ -8364,11 +6719,11 @@ function __c23(j: number): any {
         identifier: "CustomProvidersListResultItem",
       });
     case 1:
-      return S.Array(CustomProvidersListResultItem);
+      return S.Array(__S(184));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: CustomProvidersListResultList.pipe(T.EnvelopePayload()),
+          result: __S(185).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -8397,19 +6752,19 @@ function __c23(j: number): any {
     case 4:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 5:
-      return S.Array(DatasetsListResultItemFiltersItemValueItem);
+      return S.Array(__S(188));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          key: DatasetsListResultItemFiltersItemKey,
-          operator: DatasetsListResultItemFiltersItemOperator,
-          value: DatasetsListResultItemFiltersItemValueList,
+          key: S.String,
+          operator: S.String,
+          value: __S(189),
         }),
       ).annotate({
         identifier: "DatasetsListResultItemFiltersItem",
       });
     case 7:
-      return S.Array(DatasetsListResultItemFiltersItem);
+      return S.Array(__S(190));
   }
 }
 function __c24(j: number): any {
@@ -8420,18 +6775,18 @@ function __c24(j: number): any {
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: DatasetsListResultItemFiltersList,
+          filters: __S(191),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
         }),
       ).annotate({ identifier: "DatasetsListResultItem" });
     case 1:
-      return S.Array(DatasetsListResultItem);
+      return S.Array(__S(192));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: DatasetsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(193).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListDatasetsResponse" });
@@ -8454,11 +6809,11 @@ function __c24(j: number): any {
         identifier: "ListDeploymentsDynamicRoutingRequest",
       });
     case 4:
-      return S.Array(DynamicRoutingCreateResponseDeployment);
+      return S.Array(__S(55));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          deployments: DynamicRoutingListDeploymentsResponseDataDeploymentsList,
+          deployments: __S(196),
           orderBy: S.String.pipe(T.Body("order_by")),
           orderByDirection: S.String.pipe(T.Body("order_by_direction")),
           page: S.Number,
@@ -8470,7 +6825,7 @@ function __c24(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          data: DynamicRoutingListDeploymentsResponseData,
+          data: __S(197),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListDeploymentsDynamicRoutingResponse",
@@ -8513,25 +6868,25 @@ function __c25(j: number): any {
         ),
       );
     case 1:
-      return S.Array(DynamicRoutingListResponseDataRoutesItemElementsItem);
+      return S.Array(__S(200));
     case 2:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           accountTag: S.String.pipe(T.Body("account_tag")),
           createdAt: S.String.pipe(T.Body("created_at")),
-          deployment: DynamicRoutingCreateResponseDeployment,
-          elements: DynamicRoutingListResponseDataRoutesItemElementsList,
+          deployment: __S(55),
+          elements: __S(201),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
-          version: DynamicRoutingListResponseDataRoutesItemVersion,
+          version: __S(58),
         }),
       ).annotate({
         identifier: "DynamicRoutingListResponseDataRoutesItem",
       });
     case 3:
-      return S.Array(DynamicRoutingListResponseDataRoutesItem);
+      return S.Array(__S(202));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8539,7 +6894,7 @@ function __c25(j: number): any {
           orderByDirection: S.String.pipe(T.Body("order_by_direction")),
           page: S.Number,
           perPage: S.Number.pipe(T.Body("per_page")),
-          routes: DynamicRoutingListResponseDataRoutesList,
+          routes: __S(203),
         }),
       ).annotate({
         identifier: "DynamicRoutingListResponseData",
@@ -8547,7 +6902,7 @@ function __c25(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          data: DynamicRoutingListResponseData,
+          data: __S(204),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListDynamicRoutingsResponse",
@@ -8579,19 +6934,19 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(EvaluationsListResultItemDatasetsItemFiltersItemValueItem);
+      return S.Array(__S(207));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          key: EvaluationsListResultItemDatasetsItemFiltersItemKey,
-          operator: EvaluationsListResultItemDatasetsItemFiltersItemOperator,
-          value: EvaluationsListResultItemDatasetsItemFiltersItemValueList,
+          key: S.String,
+          operator: S.String,
+          value: __S(208),
         }),
       ).annotate({
         identifier: "EvaluationsListResultItemDatasetsItemFiltersItem",
       });
     case 2:
-      return S.Array(EvaluationsListResultItemDatasetsItemFiltersItem);
+      return S.Array(__S(209));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -8600,7 +6955,7 @@ function __c26(j: number): any {
           accountTag: S.String.pipe(T.Body("account_tag")),
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: EvaluationsListResultItemDatasetsItemFiltersList,
+          filters: __S(210),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -8609,29 +6964,29 @@ function __c26(j: number): any {
         identifier: "EvaluationsListResultItemDatasetsItem",
       });
     case 4:
-      return S.Array(EvaluationsListResultItemDatasetsItem);
+      return S.Array(__S(211));
     case 5:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
-          datasets: EvaluationsListResultItemDatasetsList,
+          datasets: __S(212),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
           processed: S.Boolean,
-          results: EvaluationsListResultItemResultsList,
+          results: __S(68),
           totalLogs: S.Number.pipe(T.Body("total_logs")),
         }),
       ).annotate({
         identifier: "EvaluationsListResultItem",
       });
     case 6:
-      return S.Array(EvaluationsListResultItem);
+      return S.Array(__S(213));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: EvaluationsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(214).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListEvaluationsResponse" });
@@ -8644,9 +6999,7 @@ function __c27(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
-          orderByDirection: S.optional(
-            EvaluationTypesListRequestOrderByDirection.pipe(T.Query("order_by_direction")),
-          ),
+          orderByDirection: S.optional(S.String.pipe(T.Query("order_by_direction"))),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
         })
@@ -8677,11 +7030,11 @@ function __c27(j: number): any {
         identifier: "EvaluationTypesListResultItem",
       });
     case 2:
-      return S.Array(EvaluationTypesListResultItem);
+      return S.Array(__S(217));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: EvaluationTypesListResultList.pipe(T.EnvelopePayload()),
+          result: __S(218).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -8693,10 +7046,10 @@ function __c27(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           gatewayId: S.String.pipe(T.Label("gateway_id")),
           cached: S.optional(S.Boolean.pipe(T.Query())),
-          direction: S.optional(LogsListRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           endDate: S.optional(S.String.pipe(T.Query("end_date"))),
           feedback: S.optional(S.String.pipe(T.Query())),
-          filters: S.optional(LogsListRequestFiltersList.pipe(T.Query())),
+          filters: S.optional(__S(0).pipe(T.Query())),
           maxCost: S.optional(S.Number.pipe(T.Query("max_cost"))),
           maxDuration: S.optional(S.Number.pipe(T.Query("max_duration"))),
           maxTokensIn: S.optional(S.Number.pipe(T.Query("max_tokens_in"))),
@@ -8710,10 +7063,8 @@ function __c27(j: number): any {
           minTotalTokens: S.optional(S.Number.pipe(T.Query("min_total_tokens"))),
           model: S.optional(S.String.pipe(T.Query())),
           modelType: S.optional(S.String.pipe(T.Query("model_type"))),
-          orderBy: S.optional(LogsListRequestOrderBy.pipe(T.Query("order_by"))),
-          orderByDirection: S.optional(
-            LogsListRequestOrderByDirection.pipe(T.Query("order_by_direction")),
-          ),
+          orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
+          orderByDirection: S.optional(S.String.pipe(T.Query("order_by_direction"))),
           page: S.optional(S.Number.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
           provider: S.optional(S.String.pipe(T.Query())),
@@ -8757,11 +7108,11 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "LogsListResultItem" });
     case 6:
-      return S.Array(LogsListResultItem);
+      return S.Array(__S(221));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: LogsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(222).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListLogsResponse" });
@@ -8806,11 +7157,11 @@ function __c28(j: number): any {
         identifier: "ProviderConfigsListResultItem",
       });
     case 2:
-      return S.Array(ProviderConfigsListResultItem);
+      return S.Array(__S(225));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: ProviderConfigsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(226).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -8835,7 +7186,7 @@ function __c28(j: number): any {
         identifier: "ListVersionsDynamicRoutingRequest",
       });
     case 5:
-      return S.Array(DynamicRoutingListVersionsResponseDataVersionsItem);
+      return S.Array(__S(58));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -8843,7 +7194,7 @@ function __c28(j: number): any {
           orderByDirection: S.String.pipe(T.Body("order_by_direction")),
           page: S.Number,
           perPage: S.Number.pipe(T.Body("per_page")),
-          versions: DynamicRoutingListVersionsResponseDataVersionsList,
+          versions: __S(229),
         }),
       ).annotate({
         identifier: "DynamicRoutingListVersionsResponseData",
@@ -8851,7 +7202,7 @@ function __c28(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: DynamicRoutingListVersionsResponseData,
+          data: __S(230),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListVersionsDynamicRoutingResponse",
@@ -8894,19 +7245,19 @@ function __c29(j: number): any {
         ),
       );
     case 2:
-      return S.Array(DynamicRoutingUpdateResponseRouteElementsItem);
+      return S.Array(__S(233));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
           accountTag: S.String.pipe(T.Body("account_tag")),
           createdAt: S.String.pipe(T.Body("created_at")),
-          deployment: DynamicRoutingCreateResponseDeployment,
-          elements: DynamicRoutingUpdateResponseRouteElementsList,
+          deployment: __S(55),
+          elements: __S(234),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
-          version: DynamicRoutingUpdateResponseRouteVersion,
+          version: __S(58),
         }),
       ).annotate({
         identifier: "DynamicRoutingUpdateResponseRoute",
@@ -8914,7 +7265,7 @@ function __c29(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          route: DynamicRoutingUpdateResponseRoute,
+          route: __S(235),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "PatchDynamicRoutingResponse",
@@ -8922,7 +7273,7 @@ function __c29(j: number): any {
     case 5:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 6:
-      return S.Record(S.String, LogsEditRequestMetadataValue);
+      return S.Record(S.String, __S(237));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -8930,7 +7281,7 @@ function __c29(j: number): any {
           gatewayId: S.String.pipe(T.Label("gateway_id")),
           id: S.String.pipe(T.Label()),
           feedback: S.optional(S.Number),
-          metadata: S.optional(LogsEditRequestMetadataMap),
+          metadata: S.optional(__S(238)),
           score: S.optional(S.Number),
         })
           .pipe(
@@ -9003,7 +7354,7 @@ function __c30(j: number): any {
       return S.suspend(() =>
         S.Struct({
           paymentIntentId: S.String.pipe(T.Body("payment_intent_id")),
-          status: BillingTopupStatusResponseStatus,
+          status: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "StatusBillingTopupResponse",
@@ -9018,14 +7369,14 @@ function __c30(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          headers: UpdateRequestOtelItemHeadersMap,
+          headers: __S(21),
           url: S.String,
           authorization: S.optional(S.String),
-          contentType: S.optional(UpdateRequestOtelItemContentType.pipe(T.Body("content_type"))),
+          contentType: S.optional(S.String.pipe(T.Body("content_type"))),
         }),
       ).annotate({ identifier: "UpdateRequestOtelItem" });
     case 7:
-      return S.Array(UpdateRequestOtelItem);
+      return S.Array(__S(246));
   }
 }
 function __c31(j: number): any {
@@ -9033,8 +7384,8 @@ function __c31(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          mode: UpdateRequestSpendLimitsRulesItemModelMode,
-          values: UpdateRequestSpendLimitsRulesItemModelValuesList,
+          mode: S.String,
+          values: __S(0),
         }),
       ).annotate({
         identifier: "UpdateRequestSpendLimitsRulesItemModel",
@@ -9042,8 +7393,8 @@ function __c31(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: UpdateRequestSpendLimitsRulesItemProviderMode,
-          values: UpdateRequestSpendLimitsRulesItemProviderValuesList,
+          mode: S.String,
+          values: __S(0),
         }),
       ).annotate({
         identifier: "UpdateRequestSpendLimitsRulesItemProvider",
@@ -9052,25 +7403,25 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           limit: S.Number,
-          limitType: UpdateRequestSpendLimitsRulesItemLimitType,
+          limitType: S.String,
           window: S.Number,
           id: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          metadata: S.optional(UntypedMetadataMap),
-          model: S.optional(UpdateRequestSpendLimitsRulesItemModel),
-          provider: S.optional(UpdateRequestSpendLimitsRulesItemProvider),
-          technique: S.optional(UpdateRequestSpendLimitsRulesItemTechnique),
+          metadata: S.optional(__S(21)),
+          model: S.optional(__S(248)),
+          provider: S.optional(__S(249)),
+          technique: S.optional(S.String),
         }),
       ).annotate({
         identifier: "UpdateRequestSpendLimitsRulesItem",
       });
     case 3:
-      return S.Array(UpdateRequestSpendLimitsRulesItem);
+      return S.Array(__S(250));
     case 4:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.Boolean),
-          rules: S.optional(UpdateRequestSpendLimitsRulesList),
+          rules: S.optional(__S(251)),
         }),
       ).annotate({ identifier: "UpdateRequestSpendLimits" });
     case 5:
@@ -9085,28 +7436,22 @@ function __c31(j: number): any {
           rateLimitingLimit: S.NullOr(S.Number).pipe(T.Body("rate_limiting_limit")),
           authentication: S.optional(S.Boolean),
           byokOnly: S.optional(S.Boolean.pipe(T.Body("byok_only"))),
-          dlp: S.optional(UpdateRequestDlp),
-          guardrails: S.optional(UpdateRequestGuardrails),
+          dlp: S.optional(__S(245)),
+          guardrails: S.optional(__S(3)),
           logClassification: S.optional(S.Boolean.pipe(T.Body("log_classification"))),
           logManagement: S.optional(S.Number.pipe(T.Body("log_management"))),
-          logManagementStrategy: S.optional(
-            UpdateRequestLogManagementStrategy.pipe(T.Body("log_management_strategy")),
-          ),
+          logManagementStrategy: S.optional(S.String.pipe(T.Body("log_management_strategy"))),
           logpush: S.optional(S.Boolean),
           logpushPublicKey: S.optional(S.String.pipe(T.Body("logpush_public_key"))),
-          otel: S.optional(UpdateRequestOtelList),
-          rateLimitingTechnique: S.optional(
-            UpdateRequestRateLimitingTechnique.pipe(T.Body("rate_limiting_technique")),
-          ),
-          retryBackoff: S.optional(UpdateRequestRetryBackoff.pipe(T.Body("retry_backoff"))),
+          otel: S.optional(__S(247)),
+          rateLimitingTechnique: S.optional(S.String.pipe(T.Body("rate_limiting_technique"))),
+          retryBackoff: S.optional(S.String.pipe(T.Body("retry_backoff"))),
           retryDelay: S.optional(S.Number.pipe(T.Body("retry_delay"))),
           retryMaxAttempts: S.optional(S.Number.pipe(T.Body("retry_max_attempts"))),
-          spendLimits: S.optional(UpdateRequestSpendLimits.pipe(T.Body("spend_limits"))),
+          spendLimits: S.optional(__S(252).pipe(T.Body("spend_limits"))),
           storeId: S.optional(S.String.pipe(T.Body("store_id"))),
-          stripe: S.optional(UpdateRequestStripe),
-          workersAiBillingMode: S.optional(
-            UpdateRequestWorkersAiBillingMode.pipe(T.Body("workers_ai_billing_mode")),
-          ),
+          stripe: S.optional(__S(16)),
+          workersAiBillingMode: S.optional(S.String.pipe(T.Body("workers_ai_billing_mode"))),
           zdr: S.optional(S.Boolean),
         })
           .pipe(
@@ -9128,12 +7473,10 @@ function __c31(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          headers: UpdateResponseOtelItemHeadersMap,
+          headers: __S(21),
           url: S.String,
           authorization: S.optional(S.NullOr(S.String)),
-          contentType: S.optional(
-            S.NullOr(UpdateResponseOtelItemContentType).pipe(T.Body("content_type")),
-          ),
+          contentType: S.optional(S.NullOr(S.String).pipe(T.Body("content_type"))),
         }),
       ).annotate({ identifier: "UpdateResponseOtelItem" });
   }
@@ -9141,12 +7484,12 @@ function __c31(j: number): any {
 function __c32(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UpdateResponseOtelItem);
+      return S.Array(__S(255));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          mode: UpdateResponseSpendLimitsRulesItemModelMode,
-          values: UpdateResponseSpendLimitsRulesItemModelValuesList,
+          mode: S.String,
+          values: __S(0),
         }),
       ).annotate({
         identifier: "UpdateResponseSpendLimitsRulesItemModel",
@@ -9154,8 +7497,8 @@ function __c32(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          mode: UpdateResponseSpendLimitsRulesItemProviderMode,
-          values: UpdateResponseSpendLimitsRulesItemProviderValuesList,
+          mode: S.String,
+          values: __S(0),
         }),
       ).annotate({
         identifier: "UpdateResponseSpendLimitsRulesItemProvider",
@@ -9164,25 +7507,25 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           limit: S.Number,
-          limitType: UpdateResponseSpendLimitsRulesItemLimitType,
+          limitType: S.String,
           window: S.Number,
           id: S.optional(S.NullOr(S.String)),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          metadata: S.optional(S.NullOr(UntypedMetadataMap)),
-          model: S.optional(S.NullOr(UpdateResponseSpendLimitsRulesItemModel)),
-          provider: S.optional(S.NullOr(UpdateResponseSpendLimitsRulesItemProvider)),
-          technique: S.optional(S.NullOr(UpdateResponseSpendLimitsRulesItemTechnique)),
+          metadata: S.optional(S.NullOr(__S(21))),
+          model: S.optional(S.NullOr(__S(257))),
+          provider: S.optional(S.NullOr(__S(258))),
+          technique: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "UpdateResponseSpendLimitsRulesItem",
       });
     case 4:
-      return S.Array(UpdateResponseSpendLimitsRulesItem);
+      return S.Array(__S(259));
     case 5:
       return S.suspend(() =>
         S.Struct({
           enabled: S.optional(S.NullOr(S.Boolean)),
-          rules: S.optional(S.NullOr(UpdateResponseSpendLimitsRulesList)),
+          rules: S.optional(S.NullOr(__S(260))),
         }),
       ).annotate({
         identifier: "UpdateResponseSpendLimits",
@@ -9200,30 +7543,28 @@ function __c32(j: number): any {
           rateLimitingLimit: S.Number.pipe(T.Body("rate_limiting_limit")),
           authentication: S.optional(S.NullOr(S.Boolean)),
           byokOnly: S.optional(S.NullOr(S.Boolean).pipe(T.Body("byok_only"))),
-          dlp: S.optional(S.NullOr(UpdateResponseDlp)),
-          guardrails: S.optional(S.NullOr(UpdateResponseGuardrails)),
+          dlp: S.optional(S.NullOr(__S(254))),
+          guardrails: S.optional(S.NullOr(__S(20))),
           isDefault: S.optional(S.NullOr(S.Boolean).pipe(T.Body("is_default"))),
           logClassification: S.optional(S.NullOr(S.Boolean).pipe(T.Body("log_classification"))),
           logManagement: S.optional(S.NullOr(S.Number).pipe(T.Body("log_management"))),
           logManagementStrategy: S.optional(
-            S.NullOr(UpdateResponseLogManagementStrategy).pipe(T.Body("log_management_strategy")),
+            S.NullOr(S.String).pipe(T.Body("log_management_strategy")),
           ),
           logpush: S.optional(S.NullOr(S.Boolean)),
           logpushPublicKey: S.optional(S.NullOr(S.String).pipe(T.Body("logpush_public_key"))),
-          otel: S.optional(S.NullOr(UpdateResponseOtelList)),
+          otel: S.optional(S.NullOr(__S(256))),
           rateLimitingTechnique: S.optional(
-            S.NullOr(UpdateResponseRateLimitingTechnique).pipe(T.Body("rate_limiting_technique")),
+            S.NullOr(S.String).pipe(T.Body("rate_limiting_technique")),
           ),
-          retryBackoff: S.optional(
-            S.NullOr(UpdateResponseRetryBackoff).pipe(T.Body("retry_backoff")),
-          ),
+          retryBackoff: S.optional(S.NullOr(S.String).pipe(T.Body("retry_backoff"))),
           retryDelay: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_delay"))),
           retryMaxAttempts: S.optional(S.NullOr(S.Number).pipe(T.Body("retry_max_attempts"))),
-          spendLimits: S.optional(S.NullOr(UpdateResponseSpendLimits).pipe(T.Body("spend_limits"))),
+          spendLimits: S.optional(S.NullOr(__S(261)).pipe(T.Body("spend_limits"))),
           storeId: S.optional(S.NullOr(S.String).pipe(T.Body("store_id"))),
-          stripe: S.optional(S.NullOr(UpdateResponseStripe)),
+          stripe: S.optional(S.NullOr(__S(16))),
           workersAiBillingMode: S.optional(
-            S.NullOr(UpdateResponseWorkersAiBillingMode).pipe(T.Body("workers_ai_billing_mode")),
+            S.NullOr(S.String).pipe(T.Body("workers_ai_billing_mode")),
           ),
           zdr: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -9235,19 +7576,19 @@ function __c32(j: number): any {
 function __c33(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(DatasetsUpdateRequestFiltersItemValueItem);
+      return S.Array(__S(263));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          key: DatasetsUpdateRequestFiltersItemKey,
-          operator: DatasetsUpdateRequestFiltersItemOperator,
-          value: DatasetsUpdateRequestFiltersItemValueList,
+          key: S.String,
+          operator: S.String,
+          value: __S(264),
         }),
       ).annotate({
         identifier: "DatasetsUpdateRequestFiltersItem",
       });
     case 2:
-      return S.Array(DatasetsUpdateRequestFiltersItem);
+      return S.Array(__S(265));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -9255,7 +7596,7 @@ function __c33(j: number): any {
           gatewayId: S.String.pipe(T.Label("gateway_id")),
           id: S.String.pipe(T.Label()),
           enable: S.Boolean,
-          filters: DatasetsUpdateRequestFiltersList,
+          filters: __S(266),
           name: S.String,
         })
           .pipe(
@@ -9270,19 +7611,19 @@ function __c33(j: number): any {
     case 4:
       return S.Unknown.pipe(/*@__PURE__*/ T.UnionCases([[], [], []]));
     case 5:
-      return S.Array(DatasetsUpdateResponseFiltersItemValueItem);
+      return S.Array(__S(268));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          key: DatasetsUpdateResponseFiltersItemKey,
-          operator: DatasetsUpdateResponseFiltersItemOperator,
-          value: DatasetsUpdateResponseFiltersItemValueList,
+          key: S.String,
+          operator: S.String,
+          value: __S(269),
         }),
       ).annotate({
         identifier: "DatasetsUpdateResponseFiltersItem",
       });
     case 7:
-      return S.Array(DatasetsUpdateResponseFiltersItem);
+      return S.Array(__S(270));
   }
 }
 function __c34(j: number): any {
@@ -9293,7 +7634,7 @@ function __c34(j: number): any {
           id: S.String,
           createdAt: S.String.pipe(T.Body("created_at")),
           enable: S.Boolean,
-          filters: DatasetsUpdateResponseFiltersList,
+          filters: __S(271),
           gatewayId: S.String.pipe(T.Body("gateway_id")),
           modifiedAt: S.String.pipe(T.Body("modified_at")),
           name: S.String,
@@ -9303,9 +7644,7 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          valueGroupingWindow: BillingUsageHistoryRequestValueGroupingWindow.pipe(
-            T.Query("value_grouping_window"),
-          ),
+          valueGroupingWindow: S.String.pipe(T.Query("value_grouping_window")),
           endTime: S.optional(S.Number.pipe(T.Query("end_time"))),
           startTime: S.optional(S.Number.pipe(T.Query("start_time"))),
         })
@@ -9332,14 +7671,93 @@ function __c34(j: number): any {
         identifier: "BillingUsageHistoryResponseHistoryItem",
       });
     case 3:
-      return S.Array(BillingUsageHistoryResponseHistoryItem);
+      return S.Array(__S(274));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          history: BillingUsageHistoryResponseHistoryList,
+          history: __S(275),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "UsageHistoryBillingResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
   }
 }

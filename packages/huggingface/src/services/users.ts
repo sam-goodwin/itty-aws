@@ -9,20 +9,16 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HuggingFaceOpError, HuggingFaceOpContext };
 
 export interface GetAvatarRequest {
   namespace: string;
 }
-const GetAvatarRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<GetAvatarRequest>;
-
 export interface GetAvatarResponse {}
-const GetAvatarResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<GetAvatarResponse>;
-
 export interface GetJobsUsageRequest {}
-const GetJobsUsageRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<GetJobsUsageRequest>;
-
 export interface GetJobsUsageResponseUsageJobDetailsItem {
   jobId: string;
   hardwareFlavor: string;
@@ -31,18 +27,8 @@ export interface GetJobsUsageResponseUsageJobDetailsItem {
   startedAt: string;
   completedAt?: string;
 }
-const GetJobsUsageResponseUsageJobDetailsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetJobsUsageResponseUsageJobDetailsItem>;
-
 export type GetJobsUsageResponseUsageJobDetailsList =
   Array<GetJobsUsageResponseUsageJobDetailsItem>;
-const GetJobsUsageResponseUsageJobDetailsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetJobsUsageResponseUsageJobDetailsList>;
-
 export interface GetJobsUsageResponseUsage {
   usedMicroUsd: number;
   totalMinutes: number;
@@ -50,164 +36,74 @@ export interface GetJobsUsageResponseUsage {
   periodEnd: string;
   jobDetails: GetJobsUsageResponseUsageJobDetailsList;
 }
-const GetJobsUsageResponseUsage = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetJobsUsageResponseUsage>;
-
 export interface GetJobsUsageResponse {
   usage: GetJobsUsageResponseUsage;
   hasAccess: boolean;
 }
-const GetJobsUsageResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetJobsUsageResponse>;
-
 export interface GetMcpToolsRequest {}
-const GetMcpToolsRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetMcpToolsRequest>;
-
 export type GetMcpToolsResponseBuiltInToolsList = Array<string>;
-const GetMcpToolsResponseBuiltInToolsList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetMcpToolsResponseBuiltInToolsList>;
-
 export interface GetMcpToolsResponseSpaceToolsItem {
   _id: string;
   name: string;
   emoji: string;
   subdomain: string;
 }
-const GetMcpToolsResponseSpaceToolsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetMcpToolsResponseSpaceToolsItem>;
-
 export type GetMcpToolsResponseSpaceToolsList = Array<GetMcpToolsResponseSpaceToolsItem>;
-const GetMcpToolsResponseSpaceToolsList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetMcpToolsResponseSpaceToolsList>;
-
 export interface GetMcpToolsResponse {
   builtInTools: GetMcpToolsResponseBuiltInToolsList;
   spaceTools: GetMcpToolsResponseSpaceToolsList;
 }
-const GetMcpToolsResponse = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetMcpToolsResponse>;
-
 export interface GetSessionInferenceUsageRequest {
   startDate?: string;
   endDate?: string;
 }
-const GetSessionInferenceUsageRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetSessionInferenceUsageRequest>;
-
 export interface GetSessionInferenceUsageResponsePeriodsItemSessionsItem {
   id: string;
   requestCount: number;
   costCents: number;
 }
-const GetSessionInferenceUsageResponsePeriodsItemSessionsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<GetSessionInferenceUsageResponsePeriodsItemSessionsItem>;
-
 export type GetSessionInferenceUsageResponsePeriodsItemSessionsList =
   Array<GetSessionInferenceUsageResponsePeriodsItemSessionsItem>;
-const GetSessionInferenceUsageResponsePeriodsItemSessionsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<GetSessionInferenceUsageResponsePeriodsItemSessionsList>;
-
 export interface GetSessionInferenceUsageResponsePeriodsItem {
   period: string;
   sessions: GetSessionInferenceUsageResponsePeriodsItemSessionsList;
 }
-const GetSessionInferenceUsageResponsePeriodsItem = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetSessionInferenceUsageResponsePeriodsItem>;
-
 export type GetSessionInferenceUsageResponsePeriodsList =
   Array<GetSessionInferenceUsageResponsePeriodsItem>;
-const GetSessionInferenceUsageResponsePeriodsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<GetSessionInferenceUsageResponsePeriodsList>;
-
 export interface GetSessionInferenceUsageResponse {
   currency: string;
   periods: GetSessionInferenceUsageResponsePeriodsList;
 }
-const GetSessionInferenceUsageResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetSessionInferenceUsageResponse>;
-
 export interface GetSocialHandlesRequest {
   username: string;
 }
-const GetSocialHandlesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<GetSocialHandlesRequest>;
-
 export interface GetSocialHandlesResponseSocialHandles {
   twitter?: string;
   github?: string;
   linkedin?: string;
   bluesky?: string;
 }
-const GetSocialHandlesResponseSocialHandles = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<GetSocialHandlesResponseSocialHandles>;
-
 export interface GetSocialHandlesResponse {
   _id: string;
   user: string;
   socialHandles: GetSocialHandlesResponseSocialHandles;
 }
-const GetSocialHandlesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<GetSocialHandlesResponse>;
-
 export interface GetUserAvatarRequest {
   username: string;
   redirect?: string;
 }
-const GetUserAvatarRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GetUserAvatarRequest>;
-
 export interface GetUserAvatarResponse {
   avatarUrl: string;
 }
-const GetUserAvatarResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetUserAvatarResponse>;
-
 export interface GetUserUsageV2Request {
   startDate: number;
   endDate: number;
 }
-const GetUserUsageV2Request = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<GetUserUsageV2Request>;
-
 export interface GetUserUsageV2Response {}
-const GetUserUsageV2Response = GetAvatarResponse as any as S.Schema<GetUserUsageV2Response>;
-
 export interface ListFollowedOrganizationsRequest {
   username: string;
   cursor?: string;
 }
-const ListFollowedOrganizationsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListFollowedOrganizationsRequest>;
-
 export type ListFollowedOrganizationsResponseBodyItemOrgType =
   | "company"
   | "university"
@@ -215,31 +111,17 @@ export type ListFollowedOrganizationsResponseBodyItemOrgType =
   | "non-profit"
   | "government"
   | "community";
-const ListFollowedOrganizationsResponseBodyItemOrgType = S.String;
-
 export type ListFollowedOrganizationsResponseBodyItemPlan =
   | "team"
   | "enterprise"
   | "plus"
   | "academia";
-const ListFollowedOrganizationsResponseBodyItemPlan = S.String;
-
 export interface ListFollowedOrganizationsResponseBodyItemEmailDomainsItem {
   domain: string;
   verified?: boolean;
 }
-const ListFollowedOrganizationsResponseBodyItemEmailDomainsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListFollowedOrganizationsResponseBodyItemEmailDomainsItem>;
-
 export type ListFollowedOrganizationsResponseBodyItemEmailDomainsList =
   Array<ListFollowedOrganizationsResponseBodyItemEmailDomainsItem>;
-const ListFollowedOrganizationsResponseBodyItemEmailDomainsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListFollowedOrganizationsResponseBodyItemEmailDomainsList>;
-
 export interface ListFollowedOrganizationsResponseBodyItem {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -256,51 +138,21 @@ export interface ListFollowedOrganizationsResponseBodyItem {
   reasonToFollow?: string;
   emailDomains?: ListFollowedOrganizationsResponseBodyItemEmailDomainsList;
 }
-const ListFollowedOrganizationsResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListFollowedOrganizationsResponseBodyItem>;
-
 export type ListFollowedOrganizationsResponseBodyList =
   Array<ListFollowedOrganizationsResponseBodyItem>;
-const ListFollowedOrganizationsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ListFollowedOrganizationsResponseBodyList>;
-
 export type ListFollowedOrganizationsResponse = ListFollowedOrganizationsResponseBodyList;
-const ListFollowedOrganizationsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListFollowedOrganizationsResponse>;
-
 export interface ListFollowedUsersRequest {
   username: string;
   cursor?: string;
 }
-const ListFollowedUsersRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListFollowedUsersRequest>;
-
 export interface ListFollowedUsersResponseBodyItemOrgsItem {
   id: string;
   name: string;
   fullname: string;
   avatarUrl: string;
 }
-const ListFollowedUsersResponseBodyItemOrgsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListFollowedUsersResponseBodyItemOrgsItem>;
-
 export type ListFollowedUsersResponseBodyItemOrgsList =
   Array<ListFollowedUsersResponseBodyItemOrgsItem>;
-const ListFollowedUsersResponseBodyItemOrgsList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ListFollowedUsersResponseBodyItemOrgsList>;
-
 /** Set when the user is a service account */
 export interface ListFollowedUsersResponseBodyItemServiceAccount {
   /** A hex string of 24 characters representing an ObjectId. */
@@ -309,11 +161,6 @@ export interface ListFollowedUsersResponseBodyItemServiceAccount {
   orgAvatarUrl: string;
   description?: string;
 }
-const ListFollowedUsersResponseBodyItemServiceAccount = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ListFollowedUsersResponseBodyItemServiceAccount>;
-
 export interface ListFollowedUsersResponseBodyItem {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -342,45 +189,18 @@ export interface ListFollowedUsersResponseBodyItem {
   serviceAccount?: ListFollowedUsersResponseBodyItemServiceAccount;
   type: string;
 }
-const ListFollowedUsersResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListFollowedUsersResponseBodyItem>;
-
 export type ListFollowedUsersResponseBodyList = Array<ListFollowedUsersResponseBodyItem>;
-const ListFollowedUsersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListFollowedUsersResponseBodyList>;
-
 export type ListFollowedUsersResponse = ListFollowedUsersResponseBodyList;
-const ListFollowedUsersResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListFollowedUsersResponse>;
-
 export type ListUserFollowersRequestExpandItem = "followedAt";
-const ListUserFollowersRequestExpandItem = S.String;
-
 export type ListUserFollowersRequestExpandList = Array<
   ListUserFollowersRequestExpandItem | (string & {})
 >;
-const ListUserFollowersRequestExpandList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListUserFollowersRequestExpandList>;
-
 export interface ListUserFollowersRequest {
   username: string;
   cursor?: string;
   limit?: number;
   expand?: ListUserFollowersRequestExpandList;
 }
-const ListUserFollowersRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListUserFollowersRequest>;
-
 export type ListUserFollowersResponseBodyItemCase0OrgsItem =
   ListFollowedUsersResponseBodyItemOrgsItem;
 export type ListUserFollowersResponseBodyItemCase0OrgsList =
@@ -425,28 +245,13 @@ export interface ListUserFollowersResponseBodyItemCase1 {
 export type ListUserFollowersResponseBodyItem =
   | ListUserFollowersResponseBodyItemCase0
   | ListUserFollowersResponseBodyItemCase1;
-const ListUserFollowersResponseBodyItem =
-  S.Unknown as any as S.Schema<ListUserFollowersResponseBodyItem>;
-
 export type ListUserFollowersResponseBodyList = Array<ListUserFollowersResponseBodyItem>;
-const ListUserFollowersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListUserFollowersResponseBodyList>;
-
 export type ListUserFollowersResponse = ListUserFollowersResponseBodyList;
-const ListUserFollowersResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListUserFollowersResponse>;
-
 export interface ListUserLikesRequest {
   username: string;
   limit?: number;
   cursor?: string;
 }
-const ListUserLikesRequest = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<ListUserLikesRequest>;
-
 export type ListUserLikesResponseBodyItemRepoType =
   | "dataset"
   | "model"
@@ -454,38 +259,16 @@ export type ListUserLikesResponseBodyItemRepoType =
   | "bucket"
   | "kernel"
   | "container";
-const ListUserLikesResponseBodyItemRepoType = S.String;
-
 export interface ListUserLikesResponseBodyItemRepo {
   name: string;
   type: ListUserLikesResponseBodyItemRepoType;
 }
-const ListUserLikesResponseBodyItemRepo = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ListUserLikesResponseBodyItemRepo>;
-
 export interface ListUserLikesResponseBodyItem {
   createdAt: string;
   repo: ListUserLikesResponseBodyItemRepo;
 }
-const ListUserLikesResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ListUserLikesResponseBodyItem>;
-
 export type ListUserLikesResponseBodyList = Array<ListUserLikesResponseBodyItem>;
-const ListUserLikesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ListUserLikesResponseBodyList>;
-
 export type ListUserLikesResponse = ListUserLikesResponseBodyList;
-const ListUserLikesResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListUserLikesResponse>;
-
 /** Filter by repository type */
 export type ListUserRepositoriesRequestType =
   | "dataset"
@@ -494,16 +277,10 @@ export type ListUserRepositoriesRequestType =
   | "bucket"
   | "kernel"
   | "container";
-const ListUserRepositoriesRequestType = S.String;
-
 /** Sort field (default: storage) */
 export type ListUserRepositoriesRequestSort = "storage" | "updatedAt";
-const ListUserRepositoriesRequestSort = S.String;
-
 /** Sort direction (default: desc) */
 export type ListUserRepositoriesRequestDirection = "asc" | "desc";
-const ListUserRepositoriesRequestDirection = S.String;
-
 export interface ListUserRepositoriesRequest {
   search?: string;
   type?: ListUserRepositoriesRequestType | (string & {});
@@ -511,11 +288,6 @@ export interface ListUserRepositoriesRequest {
   sort?: ListUserRepositoriesRequestSort | (string & {});
   direction?: ListUserRepositoriesRequestDirection | (string & {});
 }
-const ListUserRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<ListUserRepositoriesRequest>;
-
 export type ListUserRepositoriesResponseBodyItemType =
   | "dataset"
   | "model"
@@ -523,11 +295,7 @@ export type ListUserRepositoriesResponseBodyItemType =
   | "bucket"
   | "kernel"
   | "container";
-const ListUserRepositoriesResponseBodyItemType = S.String;
-
 export type ListUserRepositoriesResponseBodyItemVisibility = "public" | "private" | "protected";
-const ListUserRepositoriesResponseBodyItemVisibility = S.String;
-
 export interface ListUserRepositoriesResponseBodyItem {
   id: string;
   type: ListUserRepositoriesResponseBodyItemType;
@@ -536,71 +304,25 @@ export interface ListUserRepositoriesResponseBodyItem {
   storage: number;
   storagePercent: number;
 }
-const ListUserRepositoriesResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListUserRepositoriesResponseBodyItem>;
-
 export type ListUserRepositoriesResponseBodyList = Array<ListUserRepositoriesResponseBodyItem>;
-const ListUserRepositoriesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListUserRepositoriesResponseBodyList>;
-
 export type ListUserRepositoriesResponse = ListUserRepositoriesResponseBodyList;
-const ListUserRepositoriesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListUserRepositoriesResponse>;
-
 export interface StreamMetricsRequest {}
-const StreamMetricsRequest = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<StreamMetricsRequest>;
-
 export interface StreamMetricsResponse {}
-const StreamMetricsResponse = GetAvatarResponse as any as S.Schema<StreamMetricsResponse>;
-
 export interface StreamUserUsageRequest {}
-const StreamUserUsageRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<StreamUserUsageRequest>;
-
 export interface StreamUserUsageResponse {}
-const StreamUserUsageResponse = GetAvatarResponse as any as S.Schema<StreamUserUsageResponse>;
-
 export interface StreamUserUsageByUsernameRequest {
   username: string;
 }
-const StreamUserUsageByUsernameRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<StreamUserUsageByUsernameRequest>;
-
 export interface StreamUserUsageByUsernameResponse {}
-const StreamUserUsageByUsernameResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<StreamUserUsageByUsernameResponse>;
-
 export interface UserOverviewRequest {
   username: string;
 }
-const UserOverviewRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<UserOverviewRequest>;
-
 export type UserOverviewResponseOrgsItem = ListFollowedUsersResponseBodyItemOrgsItem;
 export type UserOverviewResponseOrgsList = Array<ListFollowedUsersResponseBodyItemOrgsItem>;
-const UserOverviewResponseOrgsList =
-  ListFollowedUsersResponseBodyItemOrgsList as any as S.Schema<UserOverviewResponseOrgsList>;
-
 /** Set when the user is a service account */
 export type UserOverviewResponseServiceAccount = ListFollowedUsersResponseBodyItemServiceAccount;
 /** Hardware SKU as [type, vendor, model] */
 export type UserOverviewResponseHardwareItemsItemSkuList = Array<unknown>;
-const UserOverviewResponseHardwareItemsItemSkuList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<UserOverviewResponseHardwareItemsItemSkuList>;
-
 export interface UserOverviewResponseHardwareItemsItem {
   /** Hardware SKU as [type, vendor, model] */
   sku: UserOverviewResponseHardwareItemsItemSkuList;
@@ -610,18 +332,8 @@ export interface UserOverviewResponseHardwareItemsItem {
   num: number;
   isPrimary?: boolean;
 }
-const UserOverviewResponseHardwareItemsItem = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<UserOverviewResponseHardwareItemsItem>;
-
 /** The user's hardware items, unless the user set them as private */
 export type UserOverviewResponseHardwareItemsList = Array<UserOverviewResponseHardwareItemsItem>;
-const UserOverviewResponseHardwareItemsList = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<UserOverviewResponseHardwareItemsList>;
-
 export interface UserOverviewResponse {
   /** A hex string of 24 characters representing an ObjectId. */
   _id: string;
@@ -653,8 +365,6 @@ export interface UserOverviewResponse {
   /** The user's hardware items, unless the user set them as private */
   hardwareItems?: UserOverviewResponseHardwareItemsList;
 }
-const UserOverviewResponse = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<UserOverviewResponse>;
-
 export type GetAvatarError = HuggingFaceOpError;
 /** Get avatar Display the avatar for any user or organization. This endpoint redirects to the avatar URL for either a user or an organization */
 export const getAvatar: API.OperationMethod<
@@ -663,8 +373,8 @@ export const getAvatar: API.OperationMethod<
   GetAvatarError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAvatarRequest,
-  output: GetAvatarResponse,
+  input: __S(0) as any as S.Schema<GetAvatarRequest>,
+  output: __S(1) as any as S.Schema<GetAvatarResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -678,8 +388,8 @@ export const getJobsUsage: API.OperationMethod<
   GetJobsUsageError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetJobsUsageRequest,
-  output: GetJobsUsageResponse,
+  input: __S(2) as any as S.Schema<GetJobsUsageRequest>,
+  output: __S(6) as any as S.Schema<GetJobsUsageResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -693,8 +403,8 @@ export const getMcpTools: API.OperationMethod<
   GetMcpToolsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMcpToolsRequest,
-  output: GetMcpToolsResponse,
+  input: __S(7) as any as S.Schema<GetMcpToolsRequest>,
+  output: __S(11) as any as S.Schema<GetMcpToolsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -708,8 +418,8 @@ export const getSessionInferenceUsage: API.OperationMethod<
   GetSessionInferenceUsageError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionInferenceUsageRequest,
-  output: GetSessionInferenceUsageResponse,
+  input: __S(12) as any as S.Schema<GetSessionInferenceUsageRequest>,
+  output: __S(17) as any as S.Schema<GetSessionInferenceUsageResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -723,8 +433,8 @@ export const getSocialHandles: API.OperationMethod<
   GetSocialHandlesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSocialHandlesRequest,
-  output: GetSocialHandlesResponse,
+  input: __S(18) as any as S.Schema<GetSocialHandlesRequest>,
+  output: __S(20) as any as S.Schema<GetSocialHandlesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -738,8 +448,8 @@ export const getUserAvatar: API.OperationMethod<
   GetUserAvatarError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserAvatarRequest,
-  output: GetUserAvatarResponse,
+  input: __S(21) as any as S.Schema<GetUserAvatarRequest>,
+  output: __S(22) as any as S.Schema<GetUserAvatarResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -753,8 +463,8 @@ export const getUserUsageV2: API.OperationMethod<
   GetUserUsageV2Error,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserUsageV2Request,
-  output: GetUserUsageV2Response,
+  input: __S(23) as any as S.Schema<GetUserUsageV2Request>,
+  output: __S(1) as any as S.Schema<GetUserUsageV2Response>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -768,8 +478,8 @@ export const listFollowedOrganizations: API.OperationMethod<
   ListFollowedOrganizationsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFollowedOrganizationsRequest,
-  output: ListFollowedOrganizationsResponse,
+  input: __S(24) as any as S.Schema<ListFollowedOrganizationsRequest>,
+  output: __S(29) as any as S.Schema<ListFollowedOrganizationsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -783,8 +493,8 @@ export const listFollowedUsers: API.OperationMethod<
   ListFollowedUsersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFollowedUsersRequest,
-  output: ListFollowedUsersResponse,
+  input: __S(30) as any as S.Schema<ListFollowedUsersRequest>,
+  output: __S(36) as any as S.Schema<ListFollowedUsersResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -798,8 +508,8 @@ export const listUserFollowers: API.OperationMethod<
   ListUserFollowersError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUserFollowersRequest,
-  output: ListUserFollowersResponse,
+  input: __S(38) as any as S.Schema<ListUserFollowersRequest>,
+  output: __S(40) as any as S.Schema<ListUserFollowersResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -813,8 +523,8 @@ export const listUserLikes: API.OperationMethod<
   ListUserLikesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUserLikesRequest,
-  output: ListUserLikesResponse,
+  input: __S(41) as any as S.Schema<ListUserLikesRequest>,
+  output: __S(45) as any as S.Schema<ListUserLikesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -828,8 +538,8 @@ export const listUserRepositories: API.OperationMethod<
   ListUserRepositoriesError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUserRepositoriesRequest,
-  output: ListUserRepositoriesResponse,
+  input: __S(46) as any as S.Schema<ListUserRepositoriesRequest>,
+  output: __S(49) as any as S.Schema<ListUserRepositoriesResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -843,8 +553,8 @@ export const streamMetrics: API.OperationMethod<
   StreamMetricsError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamMetricsRequest,
-  output: StreamMetricsResponse,
+  input: __S(50) as any as S.Schema<StreamMetricsRequest>,
+  output: __S(1) as any as S.Schema<StreamMetricsResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -858,8 +568,8 @@ export const streamUserUsage: API.OperationMethod<
   StreamUserUsageError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamUserUsageRequest,
-  output: StreamUserUsageResponse,
+  input: __S(51) as any as S.Schema<StreamUserUsageRequest>,
+  output: __S(1) as any as S.Schema<StreamUserUsageResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -873,8 +583,8 @@ export const streamUserUsageByUsername: API.OperationMethod<
   StreamUserUsageByUsernameError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamUserUsageByUsernameRequest,
-  output: StreamUserUsageByUsernameResponse,
+  input: __S(52) as any as S.Schema<StreamUserUsageByUsernameRequest>,
+  output: __S(53) as any as S.Schema<StreamUserUsageByUsernameResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -888,8 +598,8 @@ export const userOverview: API.OperationMethod<
   UserOverviewError,
   HuggingFaceOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UserOverviewRequest,
-  output: UserOverviewResponse,
+  input: __S(54) as any as S.Schema<UserOverviewRequest>,
+  output: __S(58) as any as S.Schema<UserOverviewResponse>,
   errors: [],
   protocol: HuggingFaceProtocol,
   retry: Retry.Retry,
@@ -928,7 +638,7 @@ function __c0(j: number): any {
         identifier: "GetJobsUsageResponseUsageJobDetailsItem",
       });
     case 4:
-      return S.Array(GetJobsUsageResponseUsageJobDetailsItem);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -936,7 +646,7 @@ function __c0(j: number): any {
           totalMinutes: S.Number,
           periodStart: S.String,
           periodEnd: S.String,
-          jobDetails: GetJobsUsageResponseUsageJobDetailsList,
+          jobDetails: __S(4),
         }),
       ).annotate({
         identifier: "GetJobsUsageResponseUsage",
@@ -944,7 +654,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          usage: GetJobsUsageResponseUsage,
+          usage: __S(5),
           hasAccess: S.Boolean,
         }),
       ).annotate({ identifier: "GetJobsUsageResponse" });
@@ -970,12 +680,12 @@ function __c1(j: number): any {
         identifier: "GetMcpToolsResponseSpaceToolsItem",
       });
     case 2:
-      return S.Array(GetMcpToolsResponseSpaceToolsItem);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          builtInTools: GetMcpToolsResponseBuiltInToolsList,
-          spaceTools: GetMcpToolsResponseSpaceToolsList,
+          builtInTools: __S(8),
+          spaceTools: __S(10),
         }),
       ).annotate({ identifier: "GetMcpToolsResponse" });
     case 4:
@@ -1004,12 +714,12 @@ function __c1(j: number): any {
         identifier: "GetSessionInferenceUsageResponsePeriodsItemSessionsItem",
       });
     case 6:
-      return S.Array(GetSessionInferenceUsageResponsePeriodsItemSessionsItem);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
           period: S.String,
-          sessions: GetSessionInferenceUsageResponsePeriodsItemSessionsList,
+          sessions: __S(14),
         }),
       ).annotate({
         identifier: "GetSessionInferenceUsageResponsePeriodsItem",
@@ -1019,12 +729,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetSessionInferenceUsageResponsePeriodsItem);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
           currency: S.String,
-          periods: GetSessionInferenceUsageResponsePeriodsList,
+          periods: __S(16),
         }),
       ).annotate({
         identifier: "GetSessionInferenceUsageResponse",
@@ -1051,7 +761,7 @@ function __c2(j: number): any {
         S.Struct({
           _id: S.String,
           user: S.String,
-          socialHandles: GetSocialHandlesResponseSocialHandles,
+          socialHandles: __S(19),
         }),
       ).annotate({ identifier: "GetSocialHandlesResponse" });
     case 5:
@@ -1097,7 +807,7 @@ function __c3(j: number): any {
         identifier: "ListFollowedOrganizationsResponseBodyItemEmailDomainsItem",
       });
     case 2:
-      return S.Array(ListFollowedOrganizationsResponseBodyItemEmailDomainsItem);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -1107,23 +817,21 @@ function __c3(j: number): any {
           fullname: S.String,
           type: S.String,
           isHf: S.Boolean,
-          orgType: S.optional(ListFollowedOrganizationsResponseBodyItemOrgType),
-          plan: S.optional(ListFollowedOrganizationsResponseBodyItemPlan),
+          orgType: S.optional(S.String),
+          plan: S.optional(S.String),
           isFollowing: S.optional(S.Boolean),
           numModels: S.optional(S.Number),
           followerCount: S.optional(S.Number),
           reasonToFollow: S.optional(S.String),
-          emailDomains: S.optional(ListFollowedOrganizationsResponseBodyItemEmailDomainsList),
+          emailDomains: S.optional(__S(26)),
         }),
       ).annotate({
         identifier: "ListFollowedOrganizationsResponseBodyItem",
       });
     case 4:
-      return S.Array(ListFollowedOrganizationsResponseBodyItem);
+      return S.Array(__S(27));
     case 5:
-      return S.suspend(() =>
-        ListFollowedOrganizationsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(28).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListFollowedOrganizationsResponse",
       });
     case 6:
@@ -1149,7 +857,7 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListFollowedUsersResponseBodyItemOrgsItem);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -1165,7 +873,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
-          orgs: S.optional(ListFollowedUsersResponseBodyItemOrgsList),
+          orgs: S.optional(__S(32)),
           avatarUrl: S.String,
           fullname: S.String,
           isPro: S.Boolean,
@@ -1186,37 +894,37 @@ function __c4(j: number): any {
           isFollowing: S.optional(S.Boolean),
           reasonToFollow: S.optional(S.String),
           primaryOrgAvatarUrl: S.optional(S.String),
-          serviceAccount: S.optional(ListFollowedUsersResponseBodyItemServiceAccount),
+          serviceAccount: S.optional(__S(33)),
           type: S.String,
         }),
       ).annotate({
         identifier: "ListFollowedUsersResponseBodyItem",
       });
     case 3:
-      return S.Array(ListFollowedUsersResponseBodyItem);
+      return S.Array(__S(34));
     case 4:
-      return S.suspend(() => ListFollowedUsersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(35).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListFollowedUsersResponse",
       });
     case 5:
-      return S.Array(ListUserFollowersRequestExpandItem);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
           username: S.String.pipe(T.Label()),
           cursor: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          expand: S.optional(ListUserFollowersRequestExpandList.pipe(T.Query())),
+          expand: S.optional(__S(37).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/users/{username}/followers", code: 200 })),
       ).annotate({ identifier: "ListUserFollowersRequest" });
     case 7:
-      return S.Array(ListUserFollowersResponseBodyItem);
+      return S.Array(S.Unknown);
   }
 }
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => ListUserFollowersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(39).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListUserFollowersResponse",
       });
     case 1:
@@ -1231,7 +939,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          type: ListUserLikesResponseBodyItemRepoType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "ListUserLikesResponseBodyItemRepo",
@@ -1240,25 +948,25 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdAt: S.String,
-          repo: ListUserLikesResponseBodyItemRepo,
+          repo: __S(42),
         }),
       ).annotate({
         identifier: "ListUserLikesResponseBodyItem",
       });
     case 4:
-      return S.Array(ListUserLikesResponseBodyItem);
+      return S.Array(__S(43));
     case 5:
-      return S.suspend(() => ListUserLikesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(44).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListUserLikesResponse",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
           search: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(ListUserRepositoriesRequestType.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(ListUserRepositoriesRequestSort.pipe(T.Query())),
-          direction: S.optional(ListUserRepositoriesRequestDirection.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/settings/repositories", code: 200 })),
       ).annotate({
         identifier: "ListUserRepositoriesRequest",
@@ -1267,9 +975,9 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          type: ListUserRepositoriesResponseBodyItemType,
+          type: S.String,
           updatedAt: S.String,
-          visibility: ListUserRepositoriesResponseBodyItemVisibility,
+          visibility: S.String,
           storage: S.Number,
           storagePercent: S.Number,
         }),
@@ -1281,11 +989,9 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListUserRepositoriesResponseBodyItem);
+      return S.Array(__S(47));
     case 1:
-      return S.suspend(() =>
-        ListUserRepositoriesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(48).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListUserRepositoriesResponse",
       });
     case 2:
@@ -1327,7 +1033,7 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          sku: UserOverviewResponseHardwareItemsItemSkuList,
+          sku: __S(55),
           mem: S.Number,
           num: S.Number,
           isPrimary: S.optional(S.Boolean),
@@ -1336,12 +1042,12 @@ function __c7(j: number): any {
         identifier: "UserOverviewResponseHardwareItemsItem",
       });
     case 1:
-      return S.Array(UserOverviewResponseHardwareItemsItem);
+      return S.Array(__S(56));
     case 2:
       return S.suspend(() =>
         S.Struct({
           _id: S.String,
-          orgs: S.optional(UserOverviewResponseOrgsList),
+          orgs: S.optional(__S(32)),
           avatarUrl: S.String,
           fullname: S.String,
           isPro: S.Boolean,
@@ -1362,11 +1068,36 @@ function __c7(j: number): any {
           isFollowing: S.optional(S.Boolean),
           reasonToFollow: S.optional(S.String),
           primaryOrgAvatarUrl: S.optional(S.String),
-          serviceAccount: S.optional(ListFollowedUsersResponseBodyItemServiceAccount),
+          serviceAccount: S.optional(__S(33)),
           type: S.String,
           createdAt: S.String,
-          hardwareItems: S.optional(UserOverviewResponseHardwareItemsList),
+          hardwareItems: S.optional(__S(57)),
         }),
       ).annotate({ identifier: "UserOverviewResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
   }
 }

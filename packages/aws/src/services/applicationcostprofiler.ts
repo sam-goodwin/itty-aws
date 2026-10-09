@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "ApplicationCostProfiler",
   serviceShapeName: "AWSApplicationCostProfiler",
@@ -110,38 +112,21 @@ export type ReportId = string;
 export interface DeleteReportDefinitionRequest {
   reportId: string;
 }
-const DeleteReportDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<DeleteReportDefinitionRequest>;
 export interface DeleteReportDefinitionResult {
   reportId?: string;
 }
-const DeleteReportDefinitionResult = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<DeleteReportDefinitionResult>;
 export interface GetReportDefinitionRequest {
   reportId: string;
 }
-const GetReportDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetReportDefinitionRequest>;
 export type ReportDescription = string;
 export type ReportFrequency = "MONTHLY" | "DAILY" | "ALL" | (string & {});
-const ReportFrequency = S.String;
-
 export type Format = "CSV" | "PARQUET" | (string & {});
-const Format = S.String;
-
 export type S3Bucket = string;
 export type S3Prefix = string;
 export interface S3Location {
   bucket: string;
   prefix: string;
 }
-const S3Location = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<S3Location>;
 export interface GetReportDefinitionResult {
   reportId: string;
   reportDescription: string;
@@ -151,10 +136,6 @@ export interface GetReportDefinitionResult {
   createdAt: Date;
   lastUpdated: Date;
 }
-const GetReportDefinitionResult = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetReportDefinitionResult>;
 export type S3Key = string;
 export type S3BucketRegion =
   | "ap-east-1"
@@ -162,38 +143,23 @@ export type S3BucketRegion =
   | "eu-south-1"
   | "af-south-1"
   | (string & {});
-const S3BucketRegion = S.String;
-
 export interface SourceS3Location {
   bucket: string;
   key: string;
   region?: S3BucketRegion;
 }
-const SourceS3Location = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<SourceS3Location>;
 export interface ImportApplicationUsageRequest {
   sourceS3Location: SourceS3Location;
 }
-const ImportApplicationUsageRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<ImportApplicationUsageRequest>;
 export type ImportId = string;
 export interface ImportApplicationUsageResult {
   importId: string;
 }
-const ImportApplicationUsageResult = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ImportApplicationUsageResult>;
 export type Token = string;
 export interface ListReportDefinitionsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListReportDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListReportDefinitionsRequest>;
 export interface ReportDefinition {
   reportId?: string;
   reportDescription?: string;
@@ -203,17 +169,11 @@ export interface ReportDefinition {
   createdAt?: Date;
   lastUpdatedAt?: Date;
 }
-const ReportDefinition = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<ReportDefinition>;
 export type ReportDefinitionList = ReportDefinition[];
-const ReportDefinitionList = /*@__PURE__*/ __L.at(__c1, 2);
 export interface ListReportDefinitionsResult {
   reportDefinitions?: ReportDefinition[];
   nextToken?: string;
 }
-const ListReportDefinitionsResult = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListReportDefinitionsResult>;
 export interface PutReportDefinitionRequest {
   reportId: string;
   reportDescription: string;
@@ -221,15 +181,9 @@ export interface PutReportDefinitionRequest {
   format: Format;
   destinationS3Location: S3Location;
 }
-const PutReportDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<PutReportDefinitionRequest>;
 export interface PutReportDefinitionResult {
   reportId?: string;
 }
-const PutReportDefinitionResult =
-  DeleteReportDefinitionResult as any as S.Schema<PutReportDefinitionResult>;
 export interface UpdateReportDefinitionRequest {
   reportId: string;
   reportDescription: string;
@@ -237,15 +191,9 @@ export interface UpdateReportDefinitionRequest {
   format: Format;
   destinationS3Location: S3Location;
 }
-const UpdateReportDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<UpdateReportDefinitionRequest>;
 export interface UpdateReportDefinitionResult {
   reportId?: string;
 }
-const UpdateReportDefinitionResult =
-  DeleteReportDefinitionResult as any as S.Schema<UpdateReportDefinitionResult>;
 export type ErrorMessage = string;
 export type DeleteReportDefinitionError =
   | AccessDeniedException
@@ -263,8 +211,8 @@ export const deleteReportDefinition: API.OperationMethod<
   DeleteReportDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteReportDefinitionRequest,
-  output: DeleteReportDefinitionResult,
+  input: __S(0) as any as S.Schema<DeleteReportDefinitionRequest>,
+  output: __S(1) as any as S.Schema<DeleteReportDefinitionResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -291,8 +239,8 @@ export const getReportDefinition: API.OperationMethod<
   GetReportDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReportDefinitionRequest,
-  output: GetReportDefinitionResult,
+  input: __S(2) as any as S.Schema<GetReportDefinitionRequest>,
+  output: __S(4) as any as S.Schema<GetReportDefinitionResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -323,8 +271,8 @@ export const importApplicationUsage: API.OperationMethod<
   ImportApplicationUsageError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportApplicationUsageRequest,
-  output: ImportApplicationUsageResult,
+  input: __S(6) as any as S.Schema<ImportApplicationUsageRequest>,
+  output: __S(7) as any as S.Schema<ImportApplicationUsageResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -354,8 +302,8 @@ export const listReportDefinitions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ReportDefinition
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListReportDefinitionsRequest,
-  output: ListReportDefinitionsResult,
+  input: __S(8) as any as S.Schema<ListReportDefinitionsRequest>,
+  output: __S(11) as any as S.Schema<ListReportDefinitionsResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -389,8 +337,8 @@ export const putReportDefinition: API.OperationMethod<
   PutReportDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutReportDefinitionRequest,
-  output: PutReportDefinitionResult,
+  input: __S(12) as any as S.Schema<PutReportDefinitionRequest>,
+  output: __S(1) as any as S.Schema<PutReportDefinitionResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -418,8 +366,8 @@ export const updateReportDefinition: API.OperationMethod<
   UpdateReportDefinitionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateReportDefinitionRequest,
-  output: UpdateReportDefinitionResult,
+  input: __S(13) as any as S.Schema<UpdateReportDefinitionRequest>,
+  output: __S(1) as any as S.Schema<UpdateReportDefinitionResult>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -477,9 +425,9 @@ function __c0(j: number): any {
         S.Struct({
           reportId: S.String,
           reportDescription: S.String,
-          reportFrequency: ReportFrequency,
-          format: Format,
-          destinationS3Location: S3Location,
+          reportFrequency: S.String,
+          format: S.String,
+          destinationS3Location: __S(3),
           createdAt: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastUpdated: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
@@ -488,11 +436,11 @@ function __c0(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ bucket: S.String, key: S.String, region: S.optional(S3BucketRegion) }),
+        S.Struct({ bucket: S.String, key: S.String, region: S.optional(S.String) }),
       ).annotate({ identifier: "SourceS3Location" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ sourceS3Location: SourceS3Location }).pipe(
+        S.Struct({ sourceS3Location: __S(5) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/importApplicationUsage" }),
             svc,
@@ -529,19 +477,19 @@ function __c1(j: number): any {
         S.Struct({
           reportId: S.optional(S.String),
           reportDescription: S.optional(S.String),
-          reportFrequency: S.optional(ReportFrequency),
-          format: S.optional(Format),
-          destinationS3Location: S.optional(S3Location),
+          reportFrequency: S.optional(S.String),
+          format: S.optional(S.String),
+          destinationS3Location: S.optional(__S(3)),
           createdAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "ReportDefinition" });
     case 2:
-      return S.Array(ReportDefinition);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          reportDefinitions: S.optional(ReportDefinitionList),
+          reportDefinitions: S.optional(__S(10)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -552,9 +500,9 @@ function __c1(j: number): any {
         S.Struct({
           reportId: S.String,
           reportDescription: S.String,
-          reportFrequency: ReportFrequency,
-          format: Format,
-          destinationS3Location: S3Location,
+          reportFrequency: S.String,
+          format: S.String,
+          destinationS3Location: __S(3),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/reportDefinition" }), svc, auth, proto, ver, rules),
         ),
@@ -566,9 +514,9 @@ function __c1(j: number): any {
         S.Struct({
           reportId: S.String.pipe(T.HttpLabel("reportId")),
           reportDescription: S.String,
-          reportFrequency: ReportFrequency,
-          format: Format,
-          destinationS3Location: S3Location,
+          reportFrequency: S.String,
+          format: S.String,
+          destinationS3Location: __S(3),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/reportDefinition/{reportId}" }),
@@ -582,5 +530,18 @@ function __c1(j: number): any {
       ).annotate({
         identifier: "UpdateReportDefinitionRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

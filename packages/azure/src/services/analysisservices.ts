@@ -6,6 +6,8 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
@@ -19,11 +21,6 @@ export interface CheckServerNameAvailabilityRequest {
   /** The resource type of azure analysis services. */
   type?: string;
 }
-const CheckServerNameAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckServerNameAvailabilityRequest>;
-
 /** The checking result of server name availability. */
 export interface CheckServerNameAvailabilityResult {
   /** Indicator of available of the server name. */
@@ -33,15 +30,8 @@ export interface CheckServerNameAvailabilityResult {
   /** The detailed message of the request unavailability. */
   message?: string;
 }
-const CheckServerNameAvailabilityResult = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CheckServerNameAvailabilityResult>;
-
 /** The name of the Azure pricing tier to which the SKU applies. */
 export type ResourceSkuTier = "Development" | "Basic" | "Standard";
-const ResourceSkuTier = S.String;
-
 /** Represents the SKU name and Azure pricing tier for Analysis Services resource. */
 export interface ResourceSku {
   /** Name of the SKU level. */
@@ -51,36 +41,20 @@ export interface ResourceSku {
   /** The number of instances in the read only query pool. */
   capacity?: number;
 }
-const ResourceSku = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ResourceSku>;
-
 /** Key-value pairs of additional resource provisioning properties. */
 export type CreateServerRequestTagsMap = { [key: string]: string | undefined };
-const CreateServerRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateServerRequestTagsMap>;
-
 /** An array of administrator user identities. */
 export type ServerAdministratorsMembersList = Array<string>;
-const ServerAdministratorsMembersList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ServerAdministratorsMembersList>;
-
 /** An array of administrator user identities. */
 export interface ServerAdministrators {
   /** An array of administrator user identities. */
   members?: ServerAdministratorsMembersList;
 }
-const ServerAdministrators = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<ServerAdministrators>;
-
 /** The gateway details. */
 export interface GatewayDetailsInput {
   /** Gateway resource to be associated with the server. */
   gatewayResourceId?: string;
 }
-const GatewayDetailsInput = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GatewayDetailsInput>;
-
 /** The detail of firewall rule. */
 export interface IPv4FirewallRule {
   /** The rule name. */
@@ -90,15 +64,8 @@ export interface IPv4FirewallRule {
   /** The end range of IPv4. */
   rangeEnd?: string;
 }
-const IPv4FirewallRule = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<IPv4FirewallRule>;
-
 /** An array of firewall rules. */
 export type IPv4FirewallSettingsFirewallRulesList = Array<IPv4FirewallRule>;
-const IPv4FirewallSettingsFirewallRulesList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<IPv4FirewallSettingsFirewallRulesList>;
-
 /** An array of firewall rules. */
 export interface IPv4FirewallSettings {
   /** An array of firewall rules. */
@@ -106,20 +73,12 @@ export interface IPv4FirewallSettings {
   /** The indicator of enabling PBI service. */
   enablePowerBIService?: boolean;
 }
-const IPv4FirewallSettings = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<IPv4FirewallSettings>;
-
 /** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
 export type AnalysisServicesServerPropertiesInputQuerypoolConnectionMode = "All" | "ReadOnly";
-const AnalysisServicesServerPropertiesInputQuerypoolConnectionMode = S.String;
-
 /** The managed mode of the server (0 = not managed, 1 = managed). */
 export type AnalysisServicesServerPropertiesInputManagedMode = 0 | 1;
-const AnalysisServicesServerPropertiesInputManagedMode = S.Number;
-
 /** The server monitor mode for AS server */
 export type AnalysisServicesServerPropertiesInputServerMonitorMode = 0 | 1;
-const AnalysisServicesServerPropertiesInputServerMonitorMode = S.Number;
-
 /** Properties of Analysis Services resource. */
 export interface AnalysisServicesServerPropertiesInput {
   /** A collection of AS server administrators */
@@ -141,11 +100,6 @@ export interface AnalysisServicesServerPropertiesInput {
   /** The SKU of the Analysis Services resource. */
   sku?: ResourceSku;
 }
-const AnalysisServicesServerPropertiesInput = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AnalysisServicesServerPropertiesInput>;
-
 export interface CreateServerRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -162,13 +116,8 @@ export interface CreateServerRequest {
   /** Properties of the provision operation request. */
   properties?: AnalysisServicesServerPropertiesInput;
 }
-const CreateServerRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<CreateServerRequest>;
-
 /** Key-value pairs of additional resource provisioning properties. */
 export type CreateServerResponseTagsMap = { [key: string]: string | undefined };
-const CreateServerResponseTagsMap =
-  CreateServerRequestTagsMap as any as S.Schema<CreateServerResponseTagsMap>;
-
 /** The gateway details. */
 export interface GatewayDetails {
   /** Gateway resource to be associated with the server. */
@@ -178,20 +127,12 @@ export interface GatewayDetails {
   /** Uri of the DMTS cluster. */
   dmtsClusterUri?: string;
 }
-const GatewayDetails = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GatewayDetails>;
-
 /** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
 export type AnalysisServicesServerPropertiesQuerypoolConnectionMode = "All" | "ReadOnly";
-const AnalysisServicesServerPropertiesQuerypoolConnectionMode = S.String;
-
 /** The managed mode of the server (0 = not managed, 1 = managed). */
 export type AnalysisServicesServerPropertiesManagedMode = 0 | 1;
-const AnalysisServicesServerPropertiesManagedMode = S.Number;
-
 /** The server monitor mode for AS server */
 export type AnalysisServicesServerPropertiesServerMonitorMode = 0 | 1;
-const AnalysisServicesServerPropertiesServerMonitorMode = S.Number;
-
 /** The current state of Analysis Services resource. The state is to indicate more states outside of resource provisioning. */
 export type AnalysisServicesServerPropertiesState =
   | "Deleting"
@@ -206,8 +147,6 @@ export type AnalysisServicesServerPropertiesState =
   | "Resuming"
   | "Preparing"
   | "Scaling";
-const AnalysisServicesServerPropertiesState = S.String;
-
 /** The current deployment state of Analysis Services resource. The provisioningState is to indicate states for resource provisioning. */
 export type AnalysisServicesServerPropertiesProvisioningState =
   | "Deleting"
@@ -222,8 +161,6 @@ export type AnalysisServicesServerPropertiesProvisioningState =
   | "Resuming"
   | "Preparing"
   | "Scaling";
-const AnalysisServicesServerPropertiesProvisioningState = S.String;
-
 /** Properties of Analysis Services resource. */
 export interface AnalysisServicesServerProperties {
   /** A collection of AS server administrators */
@@ -249,11 +186,6 @@ export interface AnalysisServicesServerProperties {
   /** The SKU of the Analysis Services resource. */
   sku?: ResourceSku;
 }
-const AnalysisServicesServerProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<AnalysisServicesServerProperties>;
-
 export interface CreateServerResponse {
   /** An identifier that represents the Analysis Services resource. */
   id?: string;
@@ -270,8 +202,6 @@ export interface CreateServerResponse {
   /** Properties of the provision operation request. */
   properties?: AnalysisServicesServerProperties;
 }
-const CreateServerResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CreateServerResponse>;
-
 export interface DeleteServerRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -280,11 +210,7 @@ export interface DeleteServerRequest {
   /** The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63. */
   serverName: string;
 }
-const DeleteServerRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<DeleteServerRequest>;
-
 export interface DeleteServerResponse {}
-const DeleteServerResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<DeleteServerResponse>;
-
 export interface GetServerDetailsRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -293,11 +219,6 @@ export interface GetServerDetailsRequest {
   /** The name of the Analysis Services server. It must be a minimum of 3 characters, and a maximum of 63. */
   serverName: string;
 }
-const GetServerDetailsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<GetServerDetailsRequest>;
-
 /** Key-value pairs of additional resource provisioning properties. */
 export type GetServerDetailsResponseTagsMap = { [key: string]: string | undefined };
 export interface GetServerDetailsResponse {
@@ -316,14 +237,7 @@ export interface GetServerDetailsResponse {
   /** Properties of the provision operation request. */
   properties?: AnalysisServicesServerProperties;
 }
-const GetServerDetailsResponse = CreateServerResponse as any as S.Schema<GetServerDetailsResponse>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** The object that represents the operation. */
 export interface OperationDisplay {
   /** Service provider: Microsoft.Consumption. */
@@ -335,8 +249,6 @@ export interface OperationDisplay {
   /** Description of the operation object. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<OperationDisplay>;
-
 /** Metric dimension. */
 export interface MetricDimensions {
   /** Dimension name. */
@@ -344,15 +256,8 @@ export interface MetricDimensions {
   /** Dimension display name. */
   displayName?: string;
 }
-const MetricDimensions = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<MetricDimensions>;
-
 /** The dimensions of metric. */
 export type MetricSpecificationsDimensionsList = Array<MetricDimensions>;
-const MetricSpecificationsDimensionsList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<MetricSpecificationsDimensionsList>;
-
 /** Available operation metric specification for exposing performance metrics to shoebox. */
 export interface MetricSpecifications {
   /** The name of metric. */
@@ -368,16 +273,9 @@ export interface MetricSpecifications {
   /** The dimensions of metric. */
   dimensions?: MetricSpecificationsDimensionsList;
 }
-const MetricSpecifications = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<MetricSpecifications>;
-
 /** The metric specifications. */
 export type OperationPropertiesServiceSpecificationMetricSpecificationsList =
   Array<MetricSpecifications>;
-const OperationPropertiesServiceSpecificationMetricSpecificationsList = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<OperationPropertiesServiceSpecificationMetricSpecificationsList>;
-
 /** The log metric specification for exposing performance metrics to shoebox. */
 export interface LogSpecifications {
   /** The name of metric. */
@@ -387,15 +285,8 @@ export interface LogSpecifications {
   /** The blob duration for the log. */
   blobDuration?: string;
 }
-const LogSpecifications = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<LogSpecifications>;
-
 /** The log specifications. */
 export type OperationPropertiesServiceSpecificationLogSpecificationsList = Array<LogSpecifications>;
-const OperationPropertiesServiceSpecificationLogSpecificationsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<OperationPropertiesServiceSpecificationLogSpecificationsList>;
-
 /** Performance metrics to shoebox. */
 export interface OperationPropertiesServiceSpecification {
   /** The metric specifications. */
@@ -403,18 +294,11 @@ export interface OperationPropertiesServiceSpecification {
   /** The log specifications. */
   logSpecifications?: OperationPropertiesServiceSpecificationLogSpecificationsList;
 }
-const OperationPropertiesServiceSpecification = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<OperationPropertiesServiceSpecification>;
-
 /** Additional properties to expose performance metrics to shoebox. */
 export interface OperationProperties {
   /** Performance metrics to shoebox. */
   serviceSpecification?: OperationPropertiesServiceSpecification;
 }
-const OperationProperties = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<OperationProperties>;
-
 /** A Consumption REST API operation. */
 export interface Operation {
   /** Operation name: {provider}/{resource}/{operation}. */
@@ -426,15 +310,8 @@ export interface Operation {
   /** Additional properties to expose performance metrics to shoebox. */
   properties?: OperationProperties;
 }
-const Operation = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<Operation>;
-
 /** List of analysis services operations supported by the Microsoft.AnalysisServices resource provider. */
 export type OperationListResultValueList = Array<Operation>;
-const OperationListResultValueList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<OperationListResultValueList>;
-
 /** Result of listing consumption operations. It contains a list of operations and a URL link to get the next set of results. */
 export interface OperationListResult {
   /** List of analysis services operations supported by the Microsoft.AnalysisServices resource provider. */
@@ -442,19 +319,12 @@ export interface OperationListResult {
   /** URL to get the next set of operation list results if there are any. */
   nextLink?: string;
 }
-const OperationListResult = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<OperationListResult>;
-
 export interface ListServerByResourceGroupRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
   /** The name of the Azure Resource group of which a given Analysis Services server is part. This name must be at least 1 character in length, and no more than 90. */
   resourceGroupName: string;
 }
-const ListServerByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListServerByResourceGroupRequest>;
-
 /** Key-value pairs of additional resource provisioning properties. */
 export type AnalysisServicesServerTagsMap = { [key: string]: string | undefined };
 /** Represents an instance of an Analysis Services resource. */
@@ -474,25 +344,13 @@ export interface AnalysisServicesServer {
   /** Properties of the provision operation request. */
   properties?: AnalysisServicesServerProperties;
 }
-const AnalysisServicesServer = CreateServerResponse as any as S.Schema<AnalysisServicesServer>;
-
 /** An array of Analysis Services resources. */
 export type AnalysisServicesServersValueList = Array<AnalysisServicesServer>;
-const AnalysisServicesServersValueList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<AnalysisServicesServersValueList>;
-
 /** An array of Analysis Services resources. */
 export interface AnalysisServicesServers {
   /** An array of Analysis Services resources. */
   value: AnalysisServicesServersValueList;
 }
-const AnalysisServicesServers = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<AnalysisServicesServers>;
-
 export interface ListServerGatewayStatusRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -501,25 +359,13 @@ export interface ListServerGatewayStatusRequest {
   /** The name of the Analysis Services server. */
   serverName: string;
 }
-const ListServerGatewayStatusRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListServerGatewayStatusRequest>;
-
 /** Live message of list gateway. Status: 0 - Live */
 export type GatewayListStatusLiveStatus = 0;
-const GatewayListStatusLiveStatus = S.Number;
-
 /** Status of gateway is live. */
 export interface GatewayListStatusLive {
   /** Live message of list gateway. Status: 0 - Live */
   status?: GatewayListStatusLiveStatus;
 }
-const GatewayListStatusLive = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GatewayListStatusLive>;
-
 export interface ListServerOperationResultsRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -528,17 +374,7 @@ export interface ListServerOperationResultsRequest {
   /** The target operation Id. */
   operationId: string;
 }
-const ListServerOperationResultsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListServerOperationResultsRequest>;
-
 export interface ListServerOperationResultsResponse {}
-const ListServerOperationResultsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<ListServerOperationResultsResponse>;
-
 export interface ListServerOperationStatusesRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -547,18 +383,8 @@ export interface ListServerOperationStatusesRequest {
   /** The target operation Id. */
   operationId: string;
 }
-const ListServerOperationStatusesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListServerOperationStatusesRequest>;
-
 /** The error details. */
 export type ErrorDetailDetailsList = Array<ErrorDetail>;
-const ErrorDetailDetailsList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ErrorDetailDetailsList>;
-
 /** The resource management error additional info. */
 export interface ErrorAdditionalInfo {
   /** The additional info type. */
@@ -566,15 +392,8 @@ export interface ErrorAdditionalInfo {
   /** The additional info. */
   info?: unknown;
 }
-const ErrorAdditionalInfo = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ErrorAdditionalInfo>;
-
 /** The error additional info. */
 export type ErrorDetailAdditionalInfoList = Array<ErrorAdditionalInfo>;
-const ErrorDetailAdditionalInfoList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ErrorDetailAdditionalInfoList>;
-
 /** The error detail. */
 export interface ErrorDetail {
   /** The error code. */
@@ -594,8 +413,6 @@ export interface ErrorDetail {
   /** The error additional info. */
   additionalInfo?: ErrorDetailAdditionalInfoList;
 }
-const ErrorDetail = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<ErrorDetail>;
-
 /** The status of operation. */
 export interface OperationStatus {
   /** The operation Id. */
@@ -611,14 +428,10 @@ export interface OperationStatus {
   /** The error detail of the operation if any. */
   error?: ErrorDetail;
 }
-const OperationStatus = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<OperationStatus>;
-
 export interface ListServersRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-const ListServersRequest = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ListServersRequest>;
-
 export interface ListServerSkusForExistingRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -627,11 +440,6 @@ export interface ListServerSkusForExistingRequest {
   /** The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63. */
   serverName: string;
 }
-const ListServerSkusForExistingRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListServerSkusForExistingRequest>;
-
 /** An object that represents SKU details for existing resources. */
 export interface SkuDetailsForExistingResource {
   /** The SKU in SKU details for existing resources. */
@@ -639,54 +447,24 @@ export interface SkuDetailsForExistingResource {
   /** The resource type. */
   resourceType?: string;
 }
-const SkuDetailsForExistingResource = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<SkuDetailsForExistingResource>;
-
 /** The collection of available SKUs for existing resources. */
 export type SkuEnumerationForExistingResourceResultValueList = Array<SkuDetailsForExistingResource>;
-const SkuEnumerationForExistingResourceResultValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<SkuEnumerationForExistingResourceResultValueList>;
-
 /** An object that represents enumerating SKUs for existing resources. */
 export interface SkuEnumerationForExistingResourceResult {
   /** The collection of available SKUs for existing resources. */
   value?: SkuEnumerationForExistingResourceResultValueList;
 }
-const SkuEnumerationForExistingResourceResult = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<SkuEnumerationForExistingResourceResult>;
-
 export interface ListServerSkusForNewRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
 }
-const ListServerSkusForNewRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<ListServerSkusForNewRequest>;
-
 /** The collection of available SKUs for new resources. */
 export type SkuEnumerationForNewResourceResultValueList = Array<ResourceSku>;
-const SkuEnumerationForNewResourceResultValueList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<SkuEnumerationForNewResourceResultValueList>;
-
 /** An object that represents enumerating SKUs for new resources. */
 export interface SkuEnumerationForNewResourceResult {
   /** The collection of available SKUs for new resources. */
   value?: SkuEnumerationForNewResourceResultValueList;
 }
-const SkuEnumerationForNewResourceResult = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<SkuEnumerationForNewResourceResult>;
-
 export interface ResumeServerRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -695,11 +473,7 @@ export interface ResumeServerRequest {
   /** The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63. */
   serverName: string;
 }
-const ResumeServerRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<ResumeServerRequest>;
-
 export interface ResumeServerResponse {}
-const ResumeServerResponse = DeleteServerResponse as any as S.Schema<ResumeServerResponse>;
-
 export interface ServersDissociateGatewayRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -708,15 +482,7 @@ export interface ServersDissociateGatewayRequest {
   /** The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63. */
   serverName: string;
 }
-const ServersDissociateGatewayRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<ServersDissociateGatewayRequest>;
-
 export interface ServersDissociateGatewayResponse {}
-const ServersDissociateGatewayResponse =
-  ListServerOperationResultsResponse as any as S.Schema<ServersDissociateGatewayResponse>;
-
 export interface SuspendServerRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -725,30 +491,17 @@ export interface SuspendServerRequest {
   /** The name of the Analysis Services server. It must be at least 3 characters in length, and no more than 63. */
   serverName: string;
 }
-const SuspendServerRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<SuspendServerRequest>;
-
 export interface SuspendServerResponse {}
-const SuspendServerResponse = DeleteServerResponse as any as S.Schema<SuspendServerResponse>;
-
 /** Key-value pairs of additional provisioning properties. */
 export type UpdateServerRequestTagsMap = { [key: string]: string | undefined };
-const UpdateServerRequestTagsMap =
-  CreateServerRequestTagsMap as any as S.Schema<UpdateServerRequestTagsMap>;
-
 /** How the read-write server's participation in the query pool is controlled.<br/>It can have the following values: <ul><li>readOnly - indicates that the read-write server is intended not to participate in query operations</li><li>all - indicates that the read-write server can participate in query operations</li></ul>Specifying readOnly when capacity is 1 results in error. */
 export type AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode =
   | "All"
   | "ReadOnly";
-const AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode = S.String;
-
 /** The managed mode of the server (0 = not managed, 1 = managed). */
 export type AnalysisServicesServerMutablePropertiesInputManagedMode = 0 | 1;
-const AnalysisServicesServerMutablePropertiesInputManagedMode = S.Number;
-
 /** The server monitor mode for AS server */
 export type AnalysisServicesServerMutablePropertiesInputServerMonitorMode = 0 | 1;
-const AnalysisServicesServerMutablePropertiesInputServerMonitorMode = S.Number;
-
 /** An object that represents a set of mutable Analysis Services resource properties. */
 export interface AnalysisServicesServerMutablePropertiesInput {
   /** A collection of AS server administrators */
@@ -768,11 +521,6 @@ export interface AnalysisServicesServerMutablePropertiesInput {
   /** The server monitor mode for AS server */
   serverMonitorMode?: AnalysisServicesServerMutablePropertiesInputServerMonitorMode | (number & {});
 }
-const AnalysisServicesServerMutablePropertiesInput = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<AnalysisServicesServerMutablePropertiesInput>;
-
 export interface UpdateServerRequest {
   /** A unique identifier for a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call. */
   subscriptionId: string;
@@ -787,8 +535,6 @@ export interface UpdateServerRequest {
   /** Properties of the provision operation request. */
   properties?: AnalysisServicesServerMutablePropertiesInput;
 }
-const UpdateServerRequest = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<UpdateServerRequest>;
-
 /** Key-value pairs of additional resource provisioning properties. */
 export type UpdateServerResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateServerResponse {
@@ -807,8 +553,6 @@ export interface UpdateServerResponse {
   /** Properties of the provision operation request. */
   properties?: AnalysisServicesServerProperties;
 }
-const UpdateServerResponse = CreateServerResponse as any as S.Schema<UpdateServerResponse>;
-
 export type CheckServerNameAvailabilityError = AzureOpError;
 /** Check the name availability in the target location. */
 export const CheckServerNameAvailability: API.OperationMethod<
@@ -817,8 +561,8 @@ export const CheckServerNameAvailability: API.OperationMethod<
   CheckServerNameAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckServerNameAvailabilityRequest,
-  output: CheckServerNameAvailabilityResult,
+  input: __S(0) as any as S.Schema<CheckServerNameAvailabilityRequest>,
+  output: __S(1) as any as S.Schema<CheckServerNameAvailabilityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -832,8 +576,8 @@ export const CreateServer: API.OperationMethod<
   CreateServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateServerRequest,
-  output: CreateServerResponse,
+  input: __S(11) as any as S.Schema<CreateServerRequest>,
+  output: __S(14) as any as S.Schema<CreateServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -847,8 +591,8 @@ export const DeleteServer: API.OperationMethod<
   DeleteServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServerRequest,
-  output: DeleteServerResponse,
+  input: __S(15) as any as S.Schema<DeleteServerRequest>,
+  output: __S(16) as any as S.Schema<DeleteServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -862,8 +606,8 @@ export const GetServerDetails: API.OperationMethod<
   GetServerDetailsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServerDetailsRequest,
-  output: GetServerDetailsResponse,
+  input: __S(17) as any as S.Schema<GetServerDetailsRequest>,
+  output: __S(14) as any as S.Schema<GetServerDetailsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -877,8 +621,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: OperationListResult,
+  input: __S(18) as any as S.Schema<ListOperationsRequest>,
+  output: __S(30) as any as S.Schema<OperationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -892,8 +636,8 @@ export const ListServerByResourceGroup: API.OperationMethod<
   ListServerByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServerByResourceGroupRequest,
-  output: AnalysisServicesServers,
+  input: __S(31) as any as S.Schema<ListServerByResourceGroupRequest>,
+  output: __S(33) as any as S.Schema<AnalysisServicesServers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -907,8 +651,8 @@ export const ListServerGatewayStatus: API.OperationMethod<
   ListServerGatewayStatusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServerGatewayStatusRequest,
-  output: GatewayListStatusLive,
+  input: __S(34) as any as S.Schema<ListServerGatewayStatusRequest>,
+  output: __S(35) as any as S.Schema<GatewayListStatusLive>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -922,8 +666,8 @@ export const ListServerOperationResults: API.OperationMethod<
   ListServerOperationResultsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServerOperationResultsRequest,
-  output: ListServerOperationResultsResponse,
+  input: __S(36) as any as S.Schema<ListServerOperationResultsRequest>,
+  output: __S(37) as any as S.Schema<ListServerOperationResultsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -937,8 +681,8 @@ export const ListServerOperationStatuses: API.OperationMethod<
   ListServerOperationStatusesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServerOperationStatusesRequest,
-  output: OperationStatus,
+  input: __S(38) as any as S.Schema<ListServerOperationStatusesRequest>,
+  output: __S(43) as any as S.Schema<OperationStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -952,8 +696,8 @@ export const ListServers: API.OperationMethod<
   ListServersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServersRequest,
-  output: AnalysisServicesServers,
+  input: __S(44) as any as S.Schema<ListServersRequest>,
+  output: __S(33) as any as S.Schema<AnalysisServicesServers>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -967,8 +711,8 @@ export const ListServerSkusForExisting: API.OperationMethod<
   ListServerSkusForExistingError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServerSkusForExistingRequest,
-  output: SkuEnumerationForExistingResourceResult,
+  input: __S(45) as any as S.Schema<ListServerSkusForExistingRequest>,
+  output: __S(48) as any as S.Schema<SkuEnumerationForExistingResourceResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -982,8 +726,8 @@ export const ListServerSkusForNew: API.OperationMethod<
   ListServerSkusForNewError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServerSkusForNewRequest,
-  output: SkuEnumerationForNewResourceResult,
+  input: __S(49) as any as S.Schema<ListServerSkusForNewRequest>,
+  output: __S(51) as any as S.Schema<SkuEnumerationForNewResourceResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -997,8 +741,8 @@ export const ResumeServer: API.OperationMethod<
   ResumeServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumeServerRequest,
-  output: ResumeServerResponse,
+  input: __S(52) as any as S.Schema<ResumeServerRequest>,
+  output: __S(16) as any as S.Schema<ResumeServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1012,8 +756,8 @@ export const ServersDissociateGateway: API.OperationMethod<
   ServersDissociateGatewayError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ServersDissociateGatewayRequest,
-  output: ServersDissociateGatewayResponse,
+  input: __S(53) as any as S.Schema<ServersDissociateGatewayRequest>,
+  output: __S(37) as any as S.Schema<ServersDissociateGatewayResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1027,8 +771,8 @@ export const SuspendServer: API.OperationMethod<
   SuspendServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SuspendServerRequest,
-  output: SuspendServerResponse,
+  input: __S(54) as any as S.Schema<SuspendServerRequest>,
+  output: __S(16) as any as S.Schema<SuspendServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1042,8 +786,8 @@ export const UpdateServer: API.OperationMethod<
   UpdateServerError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateServerRequest,
-  output: UpdateServerResponse,
+  input: __S(56) as any as S.Schema<UpdateServerRequest>,
+  output: __S(14) as any as S.Schema<UpdateServerResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -1084,7 +828,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.optional(ResourceSkuTier),
+          tier: S.optional(S.String),
           capacity: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ResourceSku" });
@@ -1095,7 +839,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          members: S.optional(ServerAdministratorsMembersList),
+          members: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "ServerAdministrators" });
     case 6:
@@ -1117,27 +861,25 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(IPv4FirewallRule);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          firewallRules: S.optional(IPv4FirewallSettingsFirewallRulesList),
+          firewallRules: S.optional(__S(8)),
           enablePowerBIService: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "IPv4FirewallSettings" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          asAdministrators: S.optional(ServerAdministrators),
+          asAdministrators: S.optional(__S(5)),
           backupBlobContainerUri: S.optional(S.String),
-          gatewayDetails: S.optional(GatewayDetailsInput),
-          ipV4FirewallSettings: S.optional(IPv4FirewallSettings),
-          querypoolConnectionMode: S.optional(
-            AnalysisServicesServerPropertiesInputQuerypoolConnectionMode,
-          ),
-          managedMode: S.optional(AnalysisServicesServerPropertiesInputManagedMode),
-          serverMonitorMode: S.optional(AnalysisServicesServerPropertiesInputServerMonitorMode),
-          sku: S.optional(ResourceSku),
+          gatewayDetails: S.optional(__S(6)),
+          ipV4FirewallSettings: S.optional(__S(9)),
+          querypoolConnectionMode: S.optional(S.String),
+          managedMode: S.optional(S.Number),
+          serverMonitorMode: S.optional(S.Number),
+          sku: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "AnalysisServicesServerPropertiesInput",
@@ -1149,9 +891,9 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
           location: S.String,
-          sku: ResourceSku,
-          tags: S.optional(CreateServerRequestTagsMap),
-          properties: S.optional(AnalysisServicesServerPropertiesInput),
+          sku: __S(2),
+          tags: S.optional(__S(3)),
+          properties: S.optional(__S(10)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -1172,19 +914,17 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          asAdministrators: S.optional(ServerAdministrators),
+          asAdministrators: S.optional(__S(5)),
           backupBlobContainerUri: S.optional(S.String),
-          gatewayDetails: S.optional(GatewayDetails),
-          ipV4FirewallSettings: S.optional(IPv4FirewallSettings),
-          querypoolConnectionMode: S.optional(
-            AnalysisServicesServerPropertiesQuerypoolConnectionMode,
-          ),
-          managedMode: S.optional(AnalysisServicesServerPropertiesManagedMode),
-          serverMonitorMode: S.optional(AnalysisServicesServerPropertiesServerMonitorMode),
-          state: S.optional(AnalysisServicesServerPropertiesState),
-          provisioningState: S.optional(AnalysisServicesServerPropertiesProvisioningState),
+          gatewayDetails: S.optional(__S(12)),
+          ipV4FirewallSettings: S.optional(__S(9)),
+          querypoolConnectionMode: S.optional(S.String),
+          managedMode: S.optional(S.Number),
+          serverMonitorMode: S.optional(S.Number),
+          state: S.optional(S.String),
+          provisioningState: S.optional(S.String),
           serverFullName: S.optional(S.String),
-          sku: S.optional(ResourceSku),
+          sku: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "AnalysisServicesServerProperties",
@@ -1196,9 +936,9 @@ function __c1(j: number): any {
           name: S.optional(S.String),
           type: S.optional(S.String),
           location: S.String,
-          sku: ResourceSku,
-          tags: S.optional(CreateServerResponseTagsMap),
-          properties: S.optional(AnalysisServicesServerProperties),
+          sku: __S(2),
+          tags: S.optional(__S(3)),
+          properties: S.optional(__S(13)),
         }),
       ).annotate({ identifier: "CreateServerResponse" });
     case 7:
@@ -1267,7 +1007,7 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "MetricDimensions" });
     case 5:
-      return S.Array(MetricDimensions);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -1276,11 +1016,11 @@ function __c2(j: number): any {
           displayDescription: S.optional(S.String),
           unit: S.optional(S.String),
           aggregationType: S.optional(S.String),
-          dimensions: S.optional(MetricSpecificationsDimensionsList),
+          dimensions: S.optional(__S(21)),
         }),
       ).annotate({ identifier: "MetricSpecifications" });
     case 7:
-      return S.Array(MetricSpecifications);
+      return S.Array(__S(22));
   }
 }
 function __c3(j: number): any {
@@ -1294,16 +1034,12 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "LogSpecifications" });
     case 1:
-      return S.Array(LogSpecifications);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          metricSpecifications: S.optional(
-            OperationPropertiesServiceSpecificationMetricSpecificationsList,
-          ),
-          logSpecifications: S.optional(
-            OperationPropertiesServiceSpecificationLogSpecificationsList,
-          ),
+          metricSpecifications: S.optional(__S(23)),
+          logSpecifications: S.optional(__S(25)),
         }),
       ).annotate({
         identifier: "OperationPropertiesServiceSpecification",
@@ -1311,24 +1047,24 @@ function __c3(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          serviceSpecification: S.optional(OperationPropertiesServiceSpecification),
+          serviceSpecification: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "OperationProperties" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          display: S.optional(OperationDisplay),
+          display: S.optional(__S(19)),
           origin: S.optional(S.String),
-          properties: S.optional(OperationProperties),
+          properties: S.optional(__S(27)),
         }),
       ).annotate({ identifier: "Operation" });
     case 5:
-      return S.Array(Operation);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(OperationListResultValueList),
+          value: S.optional(__S(29)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "OperationListResult" });
@@ -1353,11 +1089,11 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AnalysisServicesServer);
+      return S.Array(__S(14));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: AnalysisServicesServersValueList,
+          value: __S(32),
         }),
       ).annotate({ identifier: "AnalysisServicesServers" });
     case 2:
@@ -1380,7 +1116,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(GatewayListStatusLiveStatus),
+          status: S.optional(S.Number),
         }),
       ).annotate({ identifier: "GatewayListStatusLive" });
     case 4:
@@ -1422,7 +1158,7 @@ function __c4(j: number): any {
         identifier: "ListServerOperationStatusesRequest",
       });
     case 7:
-      return S.Array(/*@__PURE__*/ S.suspend(() => ErrorDetail));
+      return S.Array(/*@__PURE__*/ S.suspend(() => __S(42)));
   }
 }
 function __c5(j: number): any {
@@ -1435,7 +1171,7 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ErrorAdditionalInfo" });
     case 1:
-      return S.Array(ErrorAdditionalInfo);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -1445,8 +1181,8 @@ function __c5(j: number): any {
           subCode: S.optional(S.Number),
           httpStatusCode: S.optional(S.Number),
           timeStamp: S.optional(S.String),
-          details: S.optional(ErrorDetailDetailsList),
-          additionalInfo: S.optional(ErrorDetailAdditionalInfoList),
+          details: S.optional(__S(39)),
+          additionalInfo: S.optional(__S(41)),
         }),
       ).annotate({ identifier: "ErrorDetail" });
     case 3:
@@ -1457,7 +1193,7 @@ function __c5(j: number): any {
           startTime: S.optional(S.String),
           endTime: S.optional(S.String),
           status: S.optional(S.String),
-          error: S.optional(ErrorDetail),
+          error: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "OperationStatus" });
     case 4:
@@ -1493,14 +1229,14 @@ function __c5(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sku: S.optional(ResourceSku),
+          sku: S.optional(__S(2)),
           resourceType: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SkuDetailsForExistingResource",
       });
     case 7:
-      return S.Array(SkuDetailsForExistingResource);
+      return S.Array(__S(46));
   }
 }
 function __c6(j: number): any {
@@ -1508,7 +1244,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SkuEnumerationForExistingResourceResultValueList),
+          value: S.optional(__S(47)),
         }),
       ).annotate({
         identifier: "SkuEnumerationForExistingResourceResult",
@@ -1529,11 +1265,11 @@ function __c6(j: number): any {
         identifier: "ListServerSkusForNewRequest",
       });
     case 2:
-      return S.Array(ResourceSku);
+      return S.Array(__S(2));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SkuEnumerationForNewResourceResultValueList),
+          value: S.optional(__S(50)),
         }),
       ).annotate({
         identifier: "SkuEnumerationForNewResourceResult",
@@ -1588,17 +1324,13 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          asAdministrators: S.optional(ServerAdministrators),
+          asAdministrators: S.optional(__S(5)),
           backupBlobContainerUri: S.optional(S.String),
-          gatewayDetails: S.optional(GatewayDetailsInput),
-          ipV4FirewallSettings: S.optional(IPv4FirewallSettings),
-          querypoolConnectionMode: S.optional(
-            AnalysisServicesServerMutablePropertiesInputQuerypoolConnectionMode,
-          ),
-          managedMode: S.optional(AnalysisServicesServerMutablePropertiesInputManagedMode),
-          serverMonitorMode: S.optional(
-            AnalysisServicesServerMutablePropertiesInputServerMonitorMode,
-          ),
+          gatewayDetails: S.optional(__S(6)),
+          ipV4FirewallSettings: S.optional(__S(9)),
+          querypoolConnectionMode: S.optional(S.String),
+          managedMode: S.optional(S.Number),
+          serverMonitorMode: S.optional(S.Number),
         }),
       ).annotate({
         identifier: "AnalysisServicesServerMutablePropertiesInput",
@@ -1613,9 +1345,9 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           serverName: S.String.pipe(T.Label()),
-          sku: S.optional(ResourceSku),
-          tags: S.optional(UpdateServerRequestTagsMap),
-          properties: S.optional(AnalysisServicesServerMutablePropertiesInput),
+          sku: S.optional(__S(2)),
+          tags: S.optional(__S(3)),
+          properties: S.optional(__S(55)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -1625,5 +1357,30 @@ function __c7(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateServerRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
   }
 }

@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -78,8 +80,6 @@ export interface DeleteRuleRequest {
   /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
 }
-const DeleteRuleRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<DeleteRuleRequest>;
-
 export interface RulesDeleteResultItem {
   /** Specify the unique ID of the rule. */
   id: string;
@@ -94,53 +94,28 @@ export interface RulesDeleteResultItem {
   /** Indicate whether to execute the rule. */
   enabled?: boolean | null;
 }
-const RulesDeleteResultItem = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<RulesDeleteResultItem>;
-
 export type RulesDeleteResultList = Array<RulesDeleteResultItem>;
-const RulesDeleteResultList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<RulesDeleteResultList>;
-
 export type DeleteRuleResponse = RulesDeleteResultList;
-const DeleteRuleResponse = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteRuleResponse>;
-
 export interface DeleteSnippetRequest {
   /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
   /** Identify the snippet. */
   snippetName: string;
 }
-const DeleteSnippetRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<DeleteSnippetRequest>;
-
 export type DeleteSnippetResponse = unknown;
-const DeleteSnippetResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<DeleteSnippetResponse>;
-
 export interface GetContentRequest {
   /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
   /** Identify the snippet. */
   snippetName: string;
 }
-const GetContentRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetContentRequest>;
-
 export interface GetContentResponse {}
-const GetContentResponse = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetContentResponse>;
-
 export interface GetSnippetRequest {
   /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
   /** Identify the snippet. */
   snippetName: string;
 }
-const GetSnippetRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GetSnippetRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSnippetResponse {
   /** Indicates when the snippet was created. */
@@ -150,19 +125,13 @@ export interface GetSnippetResponse {
   /** Indicates when the snippet was last modified. */
   modifiedOn?: string | null;
 }
-const GetSnippetResponse = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetSnippetResponse>;
-
 export interface ListRulesRequest {
   /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
 }
-const ListRulesRequest = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<ListRulesRequest>;
-
 export type RulesGetResultItem = RulesDeleteResultItem;
 export type RulesGetResultList = Array<RulesDeleteResultItem>;
 export type ListRulesResponse = RulesGetResultList;
-const ListRulesResponse = DeleteRuleResponse as any as S.Schema<ListRulesResponse>;
-
 export interface ListSnippetsRequest {
   /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
@@ -171,8 +140,6 @@ export interface ListSnippetsRequest {
   /** Specifies how many results to return per page. */
   perPage?: number;
 }
-const ListSnippetsRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<ListSnippetsRequest>;
-
 export interface ListResultItem {
   /** Indicates when the snippet was created. */
   createdOn: string;
@@ -181,19 +148,13 @@ export interface ListResultItem {
   /** Indicates when the snippet was last modified. */
   modifiedOn?: string | null;
 }
-const ListResultItem = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ListResultItem>;
-
 export type ListResultList = Array<ListResultItem>;
-const ListResultList = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<ListResultList>;
-
 export interface ListSnippetsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListSnippetsResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ListSnippetsResponse>;
-
 export interface RulesUpdateRequestRulesItem {
   /** Define the expression that determines which traffic matches the rule. */
   expression: string;
@@ -204,30 +165,16 @@ export interface RulesUpdateRequestRulesItem {
   /** Indicate whether to execute the rule. */
   enabled?: boolean;
 }
-const RulesUpdateRequestRulesItem = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<RulesUpdateRequestRulesItem>;
-
 export type RulesUpdateRequestRulesList = Array<RulesUpdateRequestRulesItem>;
-const RulesUpdateRequestRulesList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<RulesUpdateRequestRulesList>;
-
 export interface PutRuleRequest {
   /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
   /** Lists snippet rules. */
   rules: RulesUpdateRequestRulesList;
 }
-const PutRuleRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PutRuleRequest>;
-
 export type RulesUpdateResultItem = RulesDeleteResultItem;
 export type RulesUpdateResultList = Array<RulesDeleteResultItem>;
 export type PutRuleResponse = RulesUpdateResultList;
-const PutRuleResponse = DeleteRuleResponse as any as S.Schema<PutRuleResponse>;
-
 export interface PutSnippetRequest {
   /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
@@ -238,8 +185,6 @@ export interface PutSnippetRequest {
   /** Snippet module file(s), appended under their own filenames. */
   files?: File | Blob | (File | Blob)[];
 }
-const PutSnippetRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<PutSnippetRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutSnippetResponse {
   /** Indicates when the snippet was created. */
@@ -249,8 +194,6 @@ export interface PutSnippetResponse {
   /** Indicates when the snippet was last modified. */
   modifiedOn?: string | null;
 }
-const PutSnippetResponse = GetSnippetResponse as any as S.Schema<PutSnippetResponse>;
-
 export type DeleteRuleError =
   | SnippetRulesNotFound
   | Forbidden
@@ -263,8 +206,8 @@ export const deleteRule: API.OperationMethod<
   DeleteRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRuleRequest,
-  output: DeleteRuleResponse,
+  input: __S(0) as any as S.Schema<DeleteRuleRequest>,
+  output: __S(3) as any as S.Schema<DeleteRuleResponse>,
   errors: [
     SnippetRulesNotFound,
     Forbidden,
@@ -284,8 +227,8 @@ export const deleteSnippet: API.OperationMethod<
   DeleteSnippetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSnippetRequest,
-  output: DeleteSnippetResponse,
+  input: __S(4) as any as S.Schema<DeleteSnippetRequest>,
+  output: __S(5) as any as S.Schema<DeleteSnippetResponse>,
   errors: [SnippetNotFound, SnippetInUse, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -299,8 +242,8 @@ export const getContent: API.OperationMethod<
   GetContentError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetContentRequest,
-  output: GetContentResponse,
+  input: __S(6) as any as S.Schema<GetContentRequest>,
+  output: __S(7) as any as S.Schema<GetContentResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -314,8 +257,8 @@ export const getSnippet: API.OperationMethod<
   GetSnippetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSnippetRequest,
-  output: GetSnippetResponse,
+  input: __S(8) as any as S.Schema<GetSnippetRequest>,
+  output: __S(9) as any as S.Schema<GetSnippetResponse>,
   errors: [SnippetNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -329,8 +272,8 @@ export const listRules: API.OperationMethod<
   ListRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRulesRequest,
-  output: ListRulesResponse,
+  input: __S(10) as any as S.Schema<ListRulesRequest>,
+  output: __S(3) as any as S.Schema<ListRulesResponse>,
   errors: [SnippetRulesNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -346,8 +289,8 @@ export const listSnippets: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListSnippetsRequest,
-    output: ListSnippetsResponse,
+    input: __S(11) as any as S.Schema<ListSnippetsRequest>,
+    output: __S(14) as any as S.Schema<ListSnippetsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -370,8 +313,8 @@ export const putRule: API.OperationMethod<
   PutRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutRuleRequest,
-  output: PutRuleResponse,
+  input: __S(17) as any as S.Schema<PutRuleRequest>,
+  output: __S(3) as any as S.Schema<PutRuleResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -385,8 +328,8 @@ export const putSnippet: API.OperationMethod<
   PutSnippetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSnippetRequest,
-  output: PutSnippetResponse,
+  input: __S(18) as any as S.Schema<PutSnippetRequest>,
+  output: __S(9) as any as S.Schema<PutSnippetResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -417,10 +360,10 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "RulesDeleteResultItem" });
     case 2:
-      return S.Array(RulesDeleteResultItem);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
-        RulesDeleteResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(2).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "DeleteRuleResponse" });
     case 4:
       return S.suspend(() =>
@@ -512,11 +455,11 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 5:
-      return S.Array(ListResultItem);
+      return S.Array(__S(12));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          result: ListResultList.pipe(T.EnvelopePayload()),
+          result: __S(13).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListSnippetsResponse" });
@@ -536,12 +479,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RulesUpdateRequestRulesItem);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          rules: RulesUpdateRequestRulesList,
+          rules: __S(16),
         })
           .pipe(
             T.Http({ method: "PUT", uri: "/zones/{zone_id}/snippets/snippet_rules", code: 200 }),
@@ -566,5 +509,20 @@ function __c2(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutSnippetRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

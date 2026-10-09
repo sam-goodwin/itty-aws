@@ -7,6 +7,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -32,49 +34,26 @@ export interface Member {
   role: string;
   subject: string;
 }
-const Member = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<Member>;
-
 export type AddMembersRequestMembersList = Array<Member>;
-const AddMembersRequestMembersList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AddMembersRequestMembersList>;
-
 export interface AddMembersRequest {
   resourceId: string;
   members: AddMembersRequestMembersList;
   resourceType: string;
 }
-const AddMembersRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<AddMembersRequest>;
-
 export type MembersResponseMembersList = Array<Member>;
-const MembersResponseMembersList =
-  AddMembersRequestMembersList as any as S.Schema<MembersResponseMembersList>;
-
 export interface Zookie {
   zookie?: string;
 }
-const Zookie = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Zookie>;
-
 export interface MembersResponse {
   members: MembersResponseMembersList;
   resourceId: string;
   resourceType: string;
   writtenAt?: Zookie;
 }
-const MembersResponse = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<MembersResponse>;
-
 export interface PermissionRequest {
   name: string;
 }
-const PermissionRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<PermissionRequest>;
-
 export type AddRoleRequestPermissionsList = Array<PermissionRequest>;
-const AddRoleRequestPermissionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AddRoleRequestPermissionsList>;
-
 export interface AddRoleRequest {
   resourceType: string;
   resourceId: string;
@@ -82,17 +61,11 @@ export interface AddRoleRequest {
   name: string;
   permissions: AddRoleRequestPermissionsList;
 }
-const AddRoleRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<AddRoleRequest>;
-
 export interface Permission {
   description: string;
   name: string;
 }
-const Permission = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<Permission>;
-
 export type RolePermissionsList = Array<Permission>;
-const RolePermissionsList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<RolePermissionsList>;
-
 export interface Role {
   description: string;
   etag?: string;
@@ -100,194 +73,100 @@ export interface Role {
   name: string;
   permissions: RolePermissionsList;
 }
-const Role = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Role>;
-
 export interface AddCustomRoleResponse {
   resourceId: string;
   resourceType: string;
   role: Role;
 }
-const AddCustomRoleResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<AddCustomRoleResponse>;
-
 export interface DeleteRoleRequest {
   resourceType: string;
   resourceId: string;
   roleId: string;
   etag?: string;
 }
-const DeleteRoleRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<DeleteRoleRequest>;
-
 export interface DeleteRoleResponse {
   writtenAt: Zookie;
 }
-const DeleteRoleResponse = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<DeleteRoleResponse>;
-
 export interface GetRoleRequest {
   resourceType: string;
   resourceId: string;
   roleId: string;
 }
-const GetRoleRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetRoleRequest>;
-
 export interface GetRoleResponse {
   resourceId: string;
   resourceType: string;
   role: Role;
 }
-const GetRoleResponse = AddCustomRoleResponse as any as S.Schema<GetRoleResponse>;
-
 export interface ListMembersRequest {
   resourceType: string;
   resourceId: string;
   subject?: string;
 }
-const ListMembersRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ListMembersRequest>;
-
 export type ListMembersResponseMembersList = Array<Member>;
-const ListMembersResponseMembersList =
-  AddMembersRequestMembersList as any as S.Schema<ListMembersResponseMembersList>;
-
 export interface ListMembersResponse {
   members: ListMembersResponseMembersList;
   resourceId: string;
   resourceType: string;
 }
-const ListMembersResponse = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ListMembersResponse>;
-
 export interface ListPermissionsRequest {
   resourceType?: string;
 }
-const ListPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListPermissionsRequest>;
-
 export type ListPermissionsResponsePermissionsList = Array<Permission>;
-const ListPermissionsResponsePermissionsList =
-  RolePermissionsList as any as S.Schema<ListPermissionsResponsePermissionsList>;
-
 export interface ListPermissionsResponse {
   permissions: ListPermissionsResponsePermissionsList;
 }
-const ListPermissionsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ListPermissionsResponse>;
-
 export interface ListRolesRequest {
   resourceType: string;
   resourceId: string;
 }
-const ListRolesRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<ListRolesRequest>;
-
 export type RolesResponseRolesList = Array<Role>;
-const RolesResponseRolesList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<RolesResponseRolesList>;
-
 export interface RolesResponse {
   resourceId: string;
   resourceType: string;
   roles: RolesResponseRolesList;
 }
-const RolesResponse = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<RolesResponse>;
-
 export interface ListUserMembershipsRequest {
   email: string;
   resourceType?: string;
   resourceId?: string;
   parentResourceId?: string;
 }
-const ListUserMembershipsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<ListUserMembershipsRequest>;
-
 export interface UserMembership {
   resourceId: string;
   resourceType: string;
   role: string;
   subject: string;
 }
-const UserMembership = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<UserMembership>;
-
 export type ListUserMembershipsResponseItemsList = Array<UserMembership>;
-const ListUserMembershipsResponseItemsList = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListUserMembershipsResponseItemsList>;
-
 export interface ListUserMembershipsResponse {
   items: ListUserMembershipsResponseItemsList;
 }
-const ListUserMembershipsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListUserMembershipsResponse>;
-
 export type ListUserPermissionsRequestPermissionsList = Array<string>;
-const ListUserPermissionsRequestPermissionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListUserPermissionsRequestPermissionsList>;
-
 export interface ListUserPermissionsRequest {
   email: string;
   resource?: string;
   resourceType?: string;
   permissions?: ListUserPermissionsRequestPermissionsList;
 }
-const ListUserPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListUserPermissionsRequest>;
-
 export type ExistingPermission = Permission;
 export type UserPermissionPermissionsList = Array<Permission>;
-const UserPermissionPermissionsList =
-  RolePermissionsList as any as S.Schema<UserPermissionPermissionsList>;
-
 export interface UserPermission {
   permissions: UserPermissionPermissionsList;
   resourceId: string;
   resourceType: string;
 }
-const UserPermission = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<UserPermission>;
-
 export type ListUserPermissionsResponseItemsList = Array<UserPermission>;
-const ListUserPermissionsResponseItemsList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListUserPermissionsResponseItemsList>;
-
 export interface ListUserPermissionsResponse {
   items: ListUserPermissionsResponseItemsList;
 }
-const ListUserPermissionsResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ListUserPermissionsResponse>;
-
 export type RemoveMembersRequestMembersList = Array<Member>;
-const RemoveMembersRequestMembersList =
-  AddMembersRequestMembersList as any as S.Schema<RemoveMembersRequestMembersList>;
-
 export interface RemoveMembersRequest {
   resourceId: string;
   forceRemove?: boolean;
   members: RemoveMembersRequestMembersList;
   resourceType: string;
 }
-const RemoveMembersRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<RemoveMembersRequest>;
-
 export type UpdateRoleRequestPermissionsList = Array<PermissionRequest>;
-const UpdateRoleRequestPermissionsList =
-  AddRoleRequestPermissionsList as any as S.Schema<UpdateRoleRequestPermissionsList>;
-
 export interface UpdateRoleRequest {
   resourceType: string;
   resourceId: string;
@@ -297,15 +176,11 @@ export interface UpdateRoleRequest {
   name: string;
   permissions: UpdateRoleRequestPermissionsList;
 }
-const UpdateRoleRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<UpdateRoleRequest>;
-
 export interface UpdateRoleResponse {
   resourceId: string;
   resourceType: string;
   role: Role;
 }
-const UpdateRoleResponse = AddCustomRoleResponse as any as S.Schema<UpdateRoleResponse>;
-
 export type AddMembersError = BadRequest | Forbidden | StackitOpError;
 /** Add members to a resource Add members to the given resource with specified roles. */
 export const addMembers: API.OperationMethod<
@@ -314,8 +189,8 @@ export const addMembers: API.OperationMethod<
   AddMembersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddMembersRequest,
-  output: MembersResponse,
+  input: __S(2) as any as S.Schema<AddMembersRequest>,
+  output: __S(4) as any as S.Schema<MembersResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -329,8 +204,8 @@ export const addRole: API.OperationMethod<
   AddRoleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddRoleRequest,
-  output: AddCustomRoleResponse,
+  input: __S(7) as any as S.Schema<AddRoleRequest>,
+  output: __S(11) as any as S.Schema<AddCustomRoleResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -344,8 +219,8 @@ export const deleteRole: API.OperationMethod<
   DeleteRoleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRoleRequest,
-  output: DeleteRoleResponse,
+  input: __S(12) as any as S.Schema<DeleteRoleRequest>,
+  output: __S(13) as any as S.Schema<DeleteRoleResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -359,8 +234,8 @@ export const getRole: API.OperationMethod<
   GetRoleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRoleRequest,
-  output: GetRoleResponse,
+  input: __S(14) as any as S.Schema<GetRoleRequest>,
+  output: __S(11) as any as S.Schema<GetRoleResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -374,8 +249,8 @@ export const listMembers: API.OperationMethod<
   ListMembersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMembersRequest,
-  output: ListMembersResponse,
+  input: __S(15) as any as S.Schema<ListMembersRequest>,
+  output: __S(16) as any as S.Schema<ListMembersResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -389,8 +264,8 @@ export const listPermissions: API.OperationMethod<
   ListPermissionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPermissionsRequest,
-  output: ListPermissionsResponse,
+  input: __S(17) as any as S.Schema<ListPermissionsRequest>,
+  output: __S(18) as any as S.Schema<ListPermissionsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -404,8 +279,8 @@ export const listRoles: API.OperationMethod<
   ListRolesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRolesRequest,
-  output: RolesResponse,
+  input: __S(19) as any as S.Schema<ListRolesRequest>,
+  output: __S(21) as any as S.Schema<RolesResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -419,8 +294,8 @@ export const listUserMemberships: API.OperationMethod<
   ListUserMembershipsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUserMembershipsRequest,
-  output: ListUserMembershipsResponse,
+  input: __S(22) as any as S.Schema<ListUserMembershipsRequest>,
+  output: __S(25) as any as S.Schema<ListUserMembershipsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -434,8 +309,8 @@ export const listUserPermissions: API.OperationMethod<
   ListUserPermissionsError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUserPermissionsRequest,
-  output: ListUserPermissionsResponse,
+  input: __S(27) as any as S.Schema<ListUserPermissionsRequest>,
+  output: __S(30) as any as S.Schema<ListUserPermissionsResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -449,8 +324,8 @@ export const removeMembers: API.OperationMethod<
   RemoveMembersError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveMembersRequest,
-  output: MembersResponse,
+  input: __S(31) as any as S.Schema<RemoveMembersRequest>,
+  output: __S(4) as any as S.Schema<MembersResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -464,8 +339,8 @@ export const updateRole: API.OperationMethod<
   UpdateRoleError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRoleRequest,
-  output: UpdateRoleResponse,
+  input: __S(32) as any as S.Schema<UpdateRoleRequest>,
+  output: __S(11) as any as S.Schema<UpdateRoleResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -482,12 +357,12 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "Member" });
     case 1:
-      return S.Array(Member);
+      return S.Array(__S(0));
     case 2:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
-          members: AddMembersRequestMembersList,
+          members: __S(1),
           resourceType: S.String,
         }).pipe(
           T.Http({
@@ -507,10 +382,10 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          members: MembersResponseMembersList,
+          members: __S(1),
           resourceId: S.String,
           resourceType: S.String,
-          writtenAt: S.optional(Zookie),
+          writtenAt: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "MembersResponse" });
     case 5:
@@ -520,7 +395,7 @@ function __c0(j: number): any {
         }),
       ).annotate({ identifier: "PermissionRequest" });
     case 6:
-      return S.Array(PermissionRequest);
+      return S.Array(__S(5));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -528,7 +403,7 @@ function __c0(j: number): any {
           resourceId: S.String.pipe(T.Label()),
           description: S.String,
           name: S.String,
-          permissions: AddRoleRequestPermissionsList,
+          permissions: __S(6),
         }).pipe(
           T.Http({
             method: "POST",
@@ -550,7 +425,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "Permission" });
     case 1:
-      return S.Array(Permission);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -558,7 +433,7 @@ function __c1(j: number): any {
           etag: S.optional(S.String),
           id: S.optional(S.String),
           name: S.String,
-          permissions: RolePermissionsList,
+          permissions: __S(9),
         }),
       ).annotate({ identifier: "Role" });
     case 3:
@@ -566,7 +441,7 @@ function __c1(j: number): any {
         S.Struct({
           resourceId: S.String,
           resourceType: S.String,
-          role: Role,
+          role: __S(10),
         }),
       ).annotate({ identifier: "AddCustomRoleResponse" });
     case 4:
@@ -588,7 +463,7 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          writtenAt: Zookie,
+          writtenAt: __S(3),
         }),
       ).annotate({ identifier: "DeleteRoleResponse" });
     case 6:
@@ -628,7 +503,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          members: ListMembersResponseMembersList,
+          members: __S(1),
           resourceId: S.String,
           resourceType: S.String,
         }),
@@ -649,7 +524,7 @@ function __c2(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          permissions: ListPermissionsResponsePermissionsList,
+          permissions: __S(9),
         }),
       ).annotate({ identifier: "ListPermissionsResponse" });
     case 3:
@@ -667,13 +542,13 @@ function __c2(j: number): any {
         ),
       ).annotate({ identifier: "ListRolesRequest" });
     case 4:
-      return S.Array(Role);
+      return S.Array(__S(10));
     case 5:
       return S.suspend(() =>
         S.Struct({
           resourceId: S.String,
           resourceType: S.String,
-          roles: RolesResponseRolesList,
+          roles: __S(20),
         }),
       ).annotate({ identifier: "RolesResponse" });
     case 6:
@@ -708,11 +583,11 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UserMembership);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: ListUserMembershipsResponseItemsList,
+          items: __S(24),
         }),
       ).annotate({
         identifier: "ListUserMembershipsResponse",
@@ -725,7 +600,7 @@ function __c3(j: number): any {
           email: S.String.pipe(T.Label()),
           resource: S.optional(S.String.pipe(T.Query())),
           resourceType: S.optional(S.String.pipe(T.Query())),
-          permissions: S.optional(ListUserPermissionsRequestPermissionsList.pipe(T.Query())),
+          permissions: S.optional(__S(26).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -740,17 +615,17 @@ function __c3(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          permissions: UserPermissionPermissionsList,
+          permissions: __S(9),
           resourceId: S.String,
           resourceType: S.String,
         }),
       ).annotate({ identifier: "UserPermission" });
     case 5:
-      return S.Array(UserPermission);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          items: ListUserPermissionsResponseItemsList,
+          items: __S(29),
         }),
       ).annotate({
         identifier: "ListUserPermissionsResponse",
@@ -760,7 +635,7 @@ function __c3(j: number): any {
         S.Struct({
           resourceId: S.String.pipe(T.Label()),
           forceRemove: S.optional(S.Boolean),
-          members: RemoveMembersRequestMembersList,
+          members: __S(1),
           resourceType: S.String,
         }).pipe(
           T.Http({
@@ -784,7 +659,7 @@ function __c4(j: number): any {
           description: S.String,
           etag: S.optional(S.String),
           name: S.String,
-          permissions: UpdateRoleRequestPermissionsList,
+          permissions: __S(6),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -794,5 +669,24 @@ function __c4(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateRoleRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

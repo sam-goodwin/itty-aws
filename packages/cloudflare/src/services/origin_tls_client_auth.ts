@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -163,11 +165,6 @@ export interface CreateHostnameCertificateRequest {
   /** The hostname certificate's private key. */
   privateKey: string;
 }
-const CreateHostnameCertificateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateHostnameCertificateRequest>;
-
 export type HostnameCertificatesCreateResponseStatus =
   | "initializing"
   | "pending_deployment"
@@ -176,8 +173,6 @@ export type HostnameCertificatesCreateResponseStatus =
   | "deleted"
   | "deployment_timed_out"
   | "deletion_timed_out";
-const HostnameCertificatesCreateResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateHostnameCertificateResponse {
   /** Certificate identifier tag. */
@@ -197,11 +192,6 @@ export interface CreateHostnameCertificateResponse {
   /** The time when the certificate was uploaded. */
   uploadedOn?: string | null;
 }
-const CreateHostnameCertificateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateHostnameCertificateResponse>;
-
 export interface CreateOriginTlsClientAuthRequest {
   /** Identifier. */
   zoneId: string;
@@ -210,11 +200,6 @@ export interface CreateOriginTlsClientAuthRequest {
   /** The zone's private key. */
   privateKey: string;
 }
-const CreateOriginTlsClientAuthRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateOriginTlsClientAuthRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateOriginTlsClientAuthResponse {
   /** Certificate identifier tag. */
@@ -231,11 +216,6 @@ export interface CreateOriginTlsClientAuthResponse {
   status?: string | null;
   uploadedOn?: string | null;
 }
-const CreateOriginTlsClientAuthResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateOriginTlsClientAuthResponse>;
-
 export interface CreateZoneCertificateRequest {
   /** Identifier. */
   zoneId: string;
@@ -244,11 +224,6 @@ export interface CreateZoneCertificateRequest {
   /** The zone's private key. */
   privateKey: string;
 }
-const CreateZoneCertificateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateZoneCertificateRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateZoneCertificateResponse {
   /** Certificate identifier tag. */
@@ -260,22 +235,12 @@ export interface CreateZoneCertificateResponse {
   /** The zone's private key. */
   privateKey?: string | null;
 }
-const CreateZoneCertificateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CreateZoneCertificateResponse>;
-
 export interface DeleteHostnameCertificateRequest {
   /** Identifier. */
   zoneId: string;
   /** Certificate identifier tag. */
   certificateId: string;
 }
-const DeleteHostnameCertificateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<DeleteHostnameCertificateRequest>;
-
 export type HostnameCertificatesDeleteResponseStatus =
   | "initializing"
   | "pending_deployment"
@@ -303,20 +268,12 @@ export interface DeleteHostnameCertificateResponse {
   /** The time when the certificate was uploaded. */
   uploadedOn?: string | null;
 }
-const DeleteHostnameCertificateResponse =
-  CreateHostnameCertificateResponse as any as S.Schema<DeleteHostnameCertificateResponse>;
-
 export interface DeleteOriginTlsClientAuthRequest {
   /** Identifier. */
   zoneId: string;
   /** Certificate identifier tag. */
   certificateId: string;
 }
-const DeleteOriginTlsClientAuthRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<DeleteOriginTlsClientAuthRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteOriginTlsClientAuthResponse {
   /** Certificate identifier tag. */
@@ -328,20 +285,12 @@ export interface DeleteOriginTlsClientAuthResponse {
   /** The zone's private key. */
   privateKey?: string | null;
 }
-const DeleteOriginTlsClientAuthResponse =
-  CreateZoneCertificateResponse as any as S.Schema<DeleteOriginTlsClientAuthResponse>;
-
 export interface DeleteZoneCertificateRequest {
   /** Identifier. */
   zoneId: string;
   /** Certificate identifier tag. */
   certificateId: string;
 }
-const DeleteZoneCertificateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeleteZoneCertificateRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteZoneCertificateResponse {
   /** Certificate identifier tag. */
@@ -353,17 +302,12 @@ export interface DeleteZoneCertificateResponse {
   /** The zone's private key. */
   privateKey?: string | null;
 }
-const DeleteZoneCertificateResponse =
-  CreateZoneCertificateResponse as any as S.Schema<DeleteZoneCertificateResponse>;
-
 export interface GetHostnameRequest {
   /** Identifier. */
   zoneId: string;
   /** The hostname on the origin for which the client certificate uploaded will be used. */
   hostname: string;
 }
-const GetHostnameRequest = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GetHostnameRequest>;
-
 export type HostnamesGetResponseCertStatus =
   | "initializing"
   | "pending_deployment"
@@ -372,8 +316,6 @@ export type HostnamesGetResponseCertStatus =
   | "deleted"
   | "deployment_timed_out"
   | "deletion_timed_out";
-const HostnamesGetResponseCertStatus = S.String;
-
 export type HostnamesGetResponseStatus =
   | "initializing"
   | "pending_deployment"
@@ -382,8 +324,6 @@ export type HostnamesGetResponseStatus =
   | "deleted"
   | "deployment_timed_out"
   | "deletion_timed_out";
-const HostnamesGetResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetHostnameResponse {
   /** Certificate identifier tag. */
@@ -415,19 +355,12 @@ export interface GetHostnameResponse {
   /** The time when the certificate was updated. */
   updatedAt?: string | null;
 }
-const GetHostnameResponse = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<GetHostnameResponse>;
-
 export interface GetHostnameCertificateRequest {
   /** Identifier. */
   zoneId: string;
   /** Certificate identifier tag. */
   certificateId: string;
 }
-const GetHostnameCertificateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetHostnameCertificateRequest>;
-
 export type HostnameCertificatesGetResponseStatus =
   | "initializing"
   | "pending_deployment"
@@ -455,20 +388,12 @@ export interface GetHostnameCertificateResponse {
   /** The time when the certificate was uploaded. */
   uploadedOn?: string | null;
 }
-const GetHostnameCertificateResponse =
-  CreateHostnameCertificateResponse as any as S.Schema<GetHostnameCertificateResponse>;
-
 export interface GetOriginTlsClientAuthRequest {
   /** Identifier. */
   zoneId: string;
   /** Certificate identifier tag. */
   certificateId: string;
 }
-const GetOriginTlsClientAuthRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<GetOriginTlsClientAuthRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetOriginTlsClientAuthResponse {
   /** Certificate identifier tag. */
@@ -485,33 +410,21 @@ export interface GetOriginTlsClientAuthResponse {
   status?: string | null;
   uploadedOn?: string | null;
 }
-const GetOriginTlsClientAuthResponse =
-  CreateOriginTlsClientAuthResponse as any as S.Schema<GetOriginTlsClientAuthResponse>;
-
 export interface GetSettingRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetSettingRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetSettingRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetSettingResponse {
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
 }
-const GetSettingResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetSettingResponse>;
-
 export interface GetZoneCertificateRequest {
   /** Identifier. */
   zoneId: string;
   /** Certificate identifier tag. */
   certificateId: string;
 }
-const GetZoneCertificateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<GetZoneCertificateRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetZoneCertificateResponse {
   /** Certificate identifier tag. */
@@ -523,18 +436,10 @@ export interface GetZoneCertificateResponse {
   /** The zone's private key. */
   privateKey?: string | null;
 }
-const GetZoneCertificateResponse =
-  CreateZoneCertificateResponse as any as S.Schema<GetZoneCertificateResponse>;
-
 export interface ListHostnameCertificatesRequest {
   /** Identifier. */
   zoneId: string;
 }
-const ListHostnameCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListHostnameCertificatesRequest>;
-
 export type HostnameCertificatesListResultItemStatus =
   | "initializing"
   | "pending_deployment"
@@ -543,8 +448,6 @@ export type HostnameCertificatesListResultItemStatus =
   | "deleted"
   | "deployment_timed_out"
   | "deletion_timed_out";
-const HostnameCertificatesListResultItemStatus = S.String;
-
 export interface HostnameCertificatesListResultItem {
   /** Certificate identifier tag. */
   id?: string | null;
@@ -563,37 +466,17 @@ export interface HostnameCertificatesListResultItem {
   /** The time when the certificate was uploaded. */
   uploadedOn?: string | null;
 }
-const HostnameCertificatesListResultItem = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<HostnameCertificatesListResultItem>;
-
 export type HostnameCertificatesListResultList = Array<HostnameCertificatesListResultItem>;
-const HostnameCertificatesListResultList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<HostnameCertificatesListResultList>;
-
 export interface ListHostnameCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: HostnameCertificatesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListHostnameCertificatesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ListHostnameCertificatesResponse>;
-
 export interface ListOriginTlsClientAuthsRequest {
   /** Identifier. */
   zoneId: string;
 }
-const ListOriginTlsClientAuthsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<ListOriginTlsClientAuthsRequest>;
-
 export interface ListResultItem {
   /** Certificate identifier tag. */
   id?: string | null;
@@ -609,31 +492,17 @@ export interface ListResultItem {
   status?: string | null;
   uploadedOn?: string | null;
 }
-const ListResultItem = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<ListResultItem>;
-
 export type ListResultList = Array<ListResultItem>;
-const ListResultList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<ListResultList>;
-
 export interface ListOriginTlsClientAuthsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListOriginTlsClientAuthsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<ListOriginTlsClientAuthsResponse>;
-
 export interface ListZoneCertificatesRequest {
   /** Identifier. */
   zoneId: string;
 }
-const ListZoneCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ListZoneCertificatesRequest>;
-
 export interface ListZoneCertificatesResultItem {
   /** Certificate identifier tag. */
   id?: string | null;
@@ -644,28 +513,13 @@ export interface ListZoneCertificatesResultItem {
   /** The zone's private key. */
   privateKey?: string | null;
 }
-const ListZoneCertificatesResultItem = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ListZoneCertificatesResultItem>;
-
 export type ListZoneCertificatesResultList = Array<ListZoneCertificatesResultItem>;
-const ListZoneCertificatesResultList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ListZoneCertificatesResultList>;
-
 export interface ListZoneCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: ListZoneCertificatesResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListZoneCertificatesResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<ListZoneCertificatesResponse>;
-
 export interface HostnamesUpdateRequestConfigItem {
   /** Certificate identifier tag. */
   certId?: string;
@@ -674,24 +528,12 @@ export interface HostnamesUpdateRequestConfigItem {
   /** The hostname on the origin for which the client certificate uploaded will be used. */
   hostname?: string;
 }
-const HostnamesUpdateRequestConfigItem = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<HostnamesUpdateRequestConfigItem>;
-
 export type HostnamesUpdateRequestConfigList = Array<HostnamesUpdateRequestConfigItem>;
-const HostnamesUpdateRequestConfigList = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<HostnamesUpdateRequestConfigList>;
-
 export interface PutHostnameRequest {
   /** Identifier. */
   zoneId: string;
   config: HostnamesUpdateRequestConfigList;
 }
-const PutHostnameRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<PutHostnameRequest>;
-
 export interface HostnamesUpdateResultItem {
   /** Certificate identifier tag. */
   id?: string | null;
@@ -706,40 +548,24 @@ export interface HostnamesUpdateResultItem {
   /** The hostname certificate's private key. */
   privateKey?: string | null;
 }
-const HostnamesUpdateResultItem = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<HostnamesUpdateResultItem>;
-
 export type HostnamesUpdateResultList = Array<HostnamesUpdateResultItem>;
-const HostnamesUpdateResultList = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<HostnamesUpdateResultList>;
-
 export interface PutHostnameResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: HostnamesUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const PutHostnameResponse = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<PutHostnameResponse>;
-
 export interface PutSettingRequest {
   /** Identifier. */
   zoneId: string;
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled: boolean;
 }
-const PutSettingRequest = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<PutSettingRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface PutSettingResponse {
   /** Indicates whether zone-level authenticated origin pulls is enabled. */
   enabled?: boolean | null;
 }
-const PutSettingResponse = GetSettingResponse as any as S.Schema<PutSettingResponse>;
-
 export type CreateHostnameCertificateError =
   | CertificateAlreadyExists
   | InvalidCertificate
@@ -752,8 +578,8 @@ export const createHostnameCertificate: API.OperationMethod<
   CreateHostnameCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostnameCertificateRequest,
-  output: CreateHostnameCertificateResponse,
+  input: __S(0) as any as S.Schema<CreateHostnameCertificateRequest>,
+  output: __S(1) as any as S.Schema<CreateHostnameCertificateResponse>,
   errors: [
     CertificateAlreadyExists,
     InvalidCertificate,
@@ -778,8 +604,8 @@ export const createOriginTlsClientAuth: API.OperationMethod<
   CreateOriginTlsClientAuthError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOriginTlsClientAuthRequest,
-  output: CreateOriginTlsClientAuthResponse,
+  input: __S(2) as any as S.Schema<CreateOriginTlsClientAuthRequest>,
+  output: __S(3) as any as S.Schema<CreateOriginTlsClientAuthResponse>,
   errors: [
     CertificateAlreadyExists,
     InvalidCertificate,
@@ -805,8 +631,8 @@ export const createZoneCertificate: API.OperationMethod<
   CreateZoneCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateZoneCertificateRequest,
-  output: CreateZoneCertificateResponse,
+  input: __S(4) as any as S.Schema<CreateZoneCertificateRequest>,
+  output: __S(5) as any as S.Schema<CreateZoneCertificateResponse>,
   errors: [
     CertificateAlreadyExists,
     InvalidCertificate,
@@ -834,8 +660,8 @@ export const deleteHostnameCertificate: API.OperationMethod<
   DeleteHostnameCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostnameCertificateRequest,
-  output: DeleteHostnameCertificateResponse,
+  input: __S(6) as any as S.Schema<DeleteHostnameCertificateRequest>,
+  output: __S(1) as any as S.Schema<DeleteHostnameCertificateResponse>,
   errors: [
     HostnameCertificateNotFound,
     HostnameCertificateInUse,
@@ -864,8 +690,8 @@ export const deleteOriginTlsClientAuth: API.OperationMethod<
   DeleteOriginTlsClientAuthError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOriginTlsClientAuthRequest,
-  output: DeleteOriginTlsClientAuthResponse,
+  input: __S(7) as any as S.Schema<DeleteOriginTlsClientAuthRequest>,
+  output: __S(5) as any as S.Schema<DeleteOriginTlsClientAuthResponse>,
   errors: [
     CertificateNotFound,
     Forbidden,
@@ -893,8 +719,8 @@ export const deleteZoneCertificate: API.OperationMethod<
   DeleteZoneCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteZoneCertificateRequest,
-  output: DeleteZoneCertificateResponse,
+  input: __S(8) as any as S.Schema<DeleteZoneCertificateRequest>,
+  output: __S(5) as any as S.Schema<DeleteZoneCertificateResponse>,
   errors: [
     CertificateNotFound,
     Forbidden,
@@ -916,8 +742,8 @@ export const getHostname: API.OperationMethod<
   GetHostnameError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostnameRequest,
-  output: GetHostnameResponse,
+  input: __S(9) as any as S.Schema<GetHostnameRequest>,
+  output: __S(10) as any as S.Schema<GetHostnameResponse>,
   errors: [HostnameAssociationNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -934,8 +760,8 @@ export const getHostnameCertificate: API.OperationMethod<
   GetHostnameCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostnameCertificateRequest,
-  output: GetHostnameCertificateResponse,
+  input: __S(11) as any as S.Schema<GetHostnameCertificateRequest>,
+  output: __S(1) as any as S.Schema<GetHostnameCertificateResponse>,
   errors: [HostnameCertificateNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -949,8 +775,8 @@ export const getOriginTlsClientAuth: API.OperationMethod<
   GetOriginTlsClientAuthError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOriginTlsClientAuthRequest,
-  output: GetOriginTlsClientAuthResponse,
+  input: __S(12) as any as S.Schema<GetOriginTlsClientAuthRequest>,
+  output: __S(3) as any as S.Schema<GetOriginTlsClientAuthResponse>,
   errors: [CertificateNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -964,8 +790,8 @@ export const getSetting: API.OperationMethod<
   GetSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingRequest,
-  output: GetSettingResponse,
+  input: __S(13) as any as S.Schema<GetSettingRequest>,
+  output: __S(14) as any as S.Schema<GetSettingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -979,8 +805,8 @@ export const getZoneCertificate: API.OperationMethod<
   GetZoneCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetZoneCertificateRequest,
-  output: GetZoneCertificateResponse,
+  input: __S(15) as any as S.Schema<GetZoneCertificateRequest>,
+  output: __S(5) as any as S.Schema<GetZoneCertificateResponse>,
   errors: [CertificateNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -996,8 +822,8 @@ export const listHostnameCertificates: API.PaginatedOperationMethod<
   HostnameCertificatesListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListHostnameCertificatesRequest,
-    output: ListHostnameCertificatesResponse,
+    input: __S(16) as any as S.Schema<ListHostnameCertificatesRequest>,
+    output: __S(19) as any as S.Schema<ListHostnameCertificatesResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1016,8 +842,8 @@ export const listOriginTlsClientAuths: API.PaginatedOperationMethod<
   ListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListOriginTlsClientAuthsRequest,
-    output: ListOriginTlsClientAuthsResponse,
+    input: __S(20) as any as S.Schema<ListOriginTlsClientAuthsRequest>,
+    output: __S(23) as any as S.Schema<ListOriginTlsClientAuthsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1036,8 +862,8 @@ export const listZoneCertificates: API.PaginatedOperationMethod<
   ListZoneCertificatesResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListZoneCertificatesRequest,
-    output: ListZoneCertificatesResponse,
+    input: __S(24) as any as S.Schema<ListZoneCertificatesRequest>,
+    output: __S(27) as any as S.Schema<ListZoneCertificatesResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1060,8 +886,8 @@ export const putHostname: API.PaginatedOperationMethod<
   HostnamesUpdateResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: PutHostnameRequest,
-    output: PutHostnameResponse,
+    input: __S(30) as any as S.Schema<PutHostnameRequest>,
+    output: __S(33) as any as S.Schema<PutHostnameResponse>,
     errors: [
       HostnameCertificateIdRequired,
       InvalidHostnameConfig,
@@ -1084,8 +910,8 @@ export const putSetting: API.OperationMethod<
   PutSettingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSettingRequest,
-  output: PutSettingResponse,
+  input: __S(34) as any as S.Schema<PutSettingRequest>,
+  output: __S(14) as any as S.Schema<PutSettingResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1121,7 +947,7 @@ function __c0(j: number): any {
           issuer: S.optional(S.NullOr(S.String)),
           serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
           signature: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(HostnameCertificatesCreateResponseStatus)),
+          status: S.optional(S.NullOr(S.String)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1256,9 +1082,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           certId: S.optional(S.NullOr(S.String).pipe(T.Body("cert_id"))),
-          certStatus: S.optional(
-            S.NullOr(HostnamesGetResponseCertStatus).pipe(T.Body("cert_status")),
-          ),
+          certStatus: S.optional(S.NullOr(S.String).pipe(T.Body("cert_status"))),
           certUpdatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("cert_updated_at"))),
           certUploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("cert_uploaded_on"))),
           certificate: S.optional(S.NullOr(S.String)),
@@ -1269,7 +1093,7 @@ function __c1(j: number): any {
           issuer: S.optional(S.NullOr(S.String)),
           serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
           signature: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(HostnamesGetResponseStatus)),
+          status: S.optional(S.NullOr(S.String)),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetHostnameResponse" });
@@ -1373,18 +1197,18 @@ function __c2(j: number): any {
           issuer: S.optional(S.NullOr(S.String)),
           serialNumber: S.optional(S.NullOr(S.String).pipe(T.Body("serial_number"))),
           signature: S.optional(S.NullOr(S.String)),
-          status: S.optional(S.NullOr(HostnameCertificatesListResultItemStatus)),
+          status: S.optional(S.NullOr(S.String)),
           uploadedOn: S.optional(S.NullOr(S.String).pipe(T.Body("uploaded_on"))),
         }),
       ).annotate({
         identifier: "HostnameCertificatesListResultItem",
       });
     case 2:
-      return S.Array(HostnameCertificatesListResultItem);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: HostnameCertificatesListResultList.pipe(T.EnvelopePayload()),
+          result: __S(18).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1417,11 +1241,11 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "ListResultItem" });
     case 6:
-      return S.Array(ListResultItem);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          result: ListResultList.pipe(T.EnvelopePayload()),
+          result: __S(22).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1455,11 +1279,11 @@ function __c3(j: number): any {
         identifier: "ListZoneCertificatesResultItem",
       });
     case 2:
-      return S.Array(ListZoneCertificatesResultItem);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          result: ListZoneCertificatesResultList.pipe(T.EnvelopePayload()),
+          result: __S(26).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -1476,12 +1300,12 @@ function __c3(j: number): any {
         identifier: "HostnamesUpdateRequestConfigItem",
       });
     case 5:
-      return S.Array(HostnamesUpdateRequestConfigItem);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() =>
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
-          config: HostnamesUpdateRequestConfigList,
+          config: __S(29),
         })
           .pipe(
             T.Http({
@@ -1510,11 +1334,11 @@ function __c3(j: number): any {
 function __c4(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(HostnamesUpdateResultItem);
+      return S.Array(__S(31));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          result: HostnamesUpdateResultList.pipe(T.EnvelopePayload()),
+          result: __S(32).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutHostnameResponse" });
@@ -1533,5 +1357,24 @@ function __c4(j: number): any {
           )
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "PutSettingRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

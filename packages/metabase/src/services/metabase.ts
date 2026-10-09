@@ -7,24 +7,18 @@ import { UnknownMetabaseError } from "../errors.ts";
 import { MetabaseProtocol, type MetabaseOpError, type MetabaseOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { MetabaseOpError, MetabaseOpContext };
 
 export type MetabaseLibSchemaParameterVariable = Array<unknown>;
-const MetabaseLibSchemaParameterVariable = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<MetabaseLibSchemaParameterVariable>;
-
 /** A :text-tag parameter :target applies to parameterized text cards in viz settings */
 export type MetabaseLibSchemaParameterTextTag = Array<unknown>;
 export type MetabaseLibSchemaParameterTarget =
   | unknown
   | MetabaseLibSchemaParameterVariable
   | MetabaseLibSchemaParameterTextTag;
-const MetabaseLibSchemaParameterTarget =
-  S.Unknown as any as S.Schema<MetabaseLibSchemaParameterTarget>;
-
 /** parameter_mapping must be a map with :parameter_id and :target keys */
 export interface MetabaseParametersSchemaParameterMapping {
   card_id?: number | null;
@@ -32,18 +26,8 @@ export interface MetabaseParametersSchemaParameterMapping {
   parameter_id: string;
   target: MetabaseLibSchemaParameterTarget;
 }
-const MetabaseParametersSchemaParameterMapping = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<MetabaseParametersSchemaParameterMapping>;
-
 export type MetabaseParametersSchemaParameterMappings =
   Array<MetabaseParametersSchemaParameterMapping>;
-const MetabaseParametersSchemaParameterMappings = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<MetabaseParametersSchemaParameterMappings>;
-
 /** Unsupported action type */
 export type MetabaseActionsSchemaType = "http" | "implicit" | "query";
 export type MetabaseActionsSchemaHttpActionTemplateMethod =
@@ -53,11 +37,6 @@ export type MetabaseActionsSchemaHttpActionTemplateMethod =
   | "DELETE"
   | "PATCH";
 export type MetabaseParametersSchemaParameterFilteringParametersList = Array<string>;
-const MetabaseParametersSchemaParameterFilteringParametersList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<MetabaseParametersSchemaParameterFilteringParametersList>;
-
 export type MetabaseParametersSchemaParameterMappingsCase0List =
   Array<MetabaseParametersSchemaParameterMapping>;
 export type MetabaseParametersSchemaParameterMappingsCase1List =
@@ -65,9 +44,6 @@ export type MetabaseParametersSchemaParameterMappingsCase1List =
 export type MetabaseParametersSchemaParameterMappings2 =
   | MetabaseParametersSchemaParameterMappingsCase0List
   | MetabaseParametersSchemaParameterMappingsCase1List;
-const MetabaseParametersSchemaParameterMappings2 =
-  S.Unknown as any as S.Schema<MetabaseParametersSchemaParameterMappings2>;
-
 /** Schema for valid source_options within a Parameter */
 export interface MetabaseParametersSchemaValuesSourceConfig {
   card_id?: number;
@@ -75,21 +51,11 @@ export interface MetabaseParametersSchemaValuesSourceConfig {
   value_field?: unknown;
   values?: unknown;
 }
-const MetabaseParametersSchemaValuesSourceConfig = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<MetabaseParametersSchemaValuesSourceConfig>;
-
 export type MetabaseLibSchemaParameterParameterValueCase1List = Array<unknown>;
 export type MetabaseLibSchemaParameterParameterValue =
   | unknown
   | MetabaseLibSchemaParameterParameterValueCase1List;
-const MetabaseLibSchemaParameterParameterValue =
-  S.Unknown as any as S.Schema<MetabaseLibSchemaParameterParameterValue>;
-
 export type MetabaseParametersSchemaValuesQueryType = "none" | "list" | "search";
-const MetabaseParametersSchemaValuesQueryType = S.String;
-
 /** Valid parameter :type */
 export type MetabaseLibSchemaParameterType =
   | "number"
@@ -121,8 +87,6 @@ export type MetabaseLibSchemaParameterType =
   | "string/ends-with"
   | "string/starts-with"
   | "boolean/=";
-const MetabaseLibSchemaParameterType = S.String;
-
 export type MetabaseLibSchemaTemporalBucketingUnit =
   | "day"
   | "day-of-month"
@@ -144,29 +108,15 @@ export type MetabaseLibSchemaTemporalBucketingUnit =
   | "week-of-year"
   | "year"
   | "year-of-era";
-const MetabaseLibSchemaTemporalBucketingUnit = S.String;
-
 export type MetabaseParametersSchemaParameterTemporalUnitsList = Array<
   MetabaseLibSchemaTemporalBucketingUnit | (string & {})
 >;
-const MetabaseParametersSchemaParameterTemporalUnitsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<MetabaseParametersSchemaParameterTemporalUnitsList>;
-
 export type MetabaseParametersSchemaValuesSourceType = "static-list" | "card";
-const MetabaseParametersSchemaValuesSourceType = S.String;
-
 /** Options the frontend attaches to a parameter value. */
 export interface MetabaseLibSchemaParameterParameterOptions {
   case_sensitive?: boolean;
   include_current?: boolean;
 }
-const MetabaseLibSchemaParameterParameterOptions = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<MetabaseLibSchemaParameterParameterOptions>;
-
 /** parameter must be a map with :id and :type keys */
 export interface MetabaseParametersSchemaParameter {
   filteringParameters?: MetabaseParametersSchemaParameterFilteringParametersList | null;
@@ -188,17 +138,7 @@ export interface MetabaseParametersSchemaParameter {
   default?: MetabaseLibSchemaParameterParameterValue;
   isMultiSelect?: boolean | null;
 }
-const MetabaseParametersSchemaParameter = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<MetabaseParametersSchemaParameter>;
-
 export type MetabaseParametersSchemaParameters = Array<MetabaseParametersSchemaParameter>;
-const MetabaseParametersSchemaParameters = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<MetabaseParametersSchemaParameters>;
-
 export interface MetabaseActionsSchemaHttpActionTemplate {
   body?: string | null;
   headers?: string | null;
@@ -239,17 +179,7 @@ export interface MetabaseActionsSchemaActionForInsertCase1 {
   description?: string | null;
 }
 export type MetabaseLibSchemaQueryPivotRowsList = Array<number>;
-const MetabaseLibSchemaQueryPivotRowsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<MetabaseLibSchemaQueryPivotRowsList>;
-
 export type MetabaseLibSchemaActionsRow = { [key: string]: unknown | undefined };
-const MetabaseLibSchemaActionsRow = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<MetabaseLibSchemaActionsRow>;
-
 /** Options that tweak the behavior of the query processor. */
 export interface MetabaseLibSchemaSettingsSettings {
   /** Whether to include fields with visibility_type :sensitive when fetching query metadata. */
@@ -257,11 +187,6 @@ export interface MetabaseLibSchemaSettingsSettings {
   /** The timezone the query should be ran in, overriding the default report timezone for the instance. */
   report_timezone?: unknown;
 }
-const MetabaseLibSchemaSettingsSettings = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<MetabaseLibSchemaSettingsSettings>;
-
 /** Additional constraints added to a query limiting the maximum number of rows that can be returned. Mostly useful because native queries don't support the MBQL `:limit` clause. For MBQL queries, if `:limit` is set, it will override these values. */
 export interface MetabaseLibSchemaConstraintsConstraints {
   /** Maximum number of results to allow for a query with aggregations. If `max-results-bare-rows` is unset, this applies to all queries */
@@ -269,15 +194,7 @@ export interface MetabaseLibSchemaConstraintsConstraints {
   /** Maximum number of results to allow for a query with no aggregations. If set, this should be LOWER than `:max-results`. */
   max_results_bare_rows?: number;
 }
-const MetabaseLibSchemaConstraintsConstraints = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<MetabaseLibSchemaConstraintsConstraints>;
-
 export type MetabaseLibSchemaInfoInfoPivotOriginalQueryMap = { [key: string]: unknown | undefined };
-const MetabaseLibSchemaInfoInfoPivotOriginalQueryMap =
-  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseLibSchemaInfoInfoPivotOriginalQueryMap>;
-
 export type MetabaseLibSchemaMetadataColumnVisibilityType =
   | "retired"
   | "sensitive"
@@ -350,8 +267,6 @@ export type MetabaseLibSchemaMetadataColumnHasFieldValues =
   | "list"
   | "none"
   | "search";
-const MetabaseLibSchemaMetadataColumnHasFieldValues = S.String;
-
 export type MetabaseLibSchemaMetadataColumnRemappingInternalHumanReadableValuesList =
   Array<unknown>;
 export type MetabaseLibSchemaMetadataColumnRemappingInternalValuesList = Array<unknown>;
@@ -455,9 +370,6 @@ export type MetabaseLibSchemaInfoInfoPivotResultMetadataCase1List =
 export type MetabaseLibSchemaInfoInfoPivotResultMetadata =
   | unknown
   | MetabaseLibSchemaInfoInfoPivotResultMetadataCase1List;
-const MetabaseLibSchemaInfoInfoPivotResultMetadata =
-  S.Unknown as any as S.Schema<MetabaseLibSchemaInfoInfoPivotResultMetadata>;
-
 /** Schema for `info.context`; used for informational purposes to record how a query was executed. */
 export type MetabaseLibSchemaInfoContext =
   | "action"
@@ -490,12 +402,7 @@ export type MetabaseLibSchemaInfoContext =
   | "table-rows-sample"
   | "transform-inspector"
   | "slackbot";
-const MetabaseLibSchemaInfoContext = S.String;
-
 export type MetabaseLibSchemaInfoInfoLensParamsMap = { [key: string]: unknown | undefined };
-const MetabaseLibSchemaInfoInfoLensParamsMap =
-  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseLibSchemaInfoInfoLensParamsMap>;
-
 export type MetabaseLibSchemaMetadataLibOrLegacyColumnCase0SettingsMap = {
   [key: string]: unknown | undefined;
 };
@@ -683,16 +590,8 @@ export interface MetabaseLegacyMbqlSchemaLegacyColumnMetadata {
 export type MetabaseLibSchemaMetadataLibOrLegacyColumn =
   | MetabaseLibSchemaMetadataLibOrLegacyColumnCase0
   | MetabaseLegacyMbqlSchemaLegacyColumnMetadata;
-const MetabaseLibSchemaMetadataLibOrLegacyColumn =
-  S.Unknown as any as S.Schema<MetabaseLibSchemaMetadataLibOrLegacyColumn>;
-
 export type MetabaseLibSchemaInfoInfoMetadataModelMetadataList =
   Array<MetabaseLibSchemaMetadataLibOrLegacyColumn>;
-const MetabaseLibSchemaInfoInfoMetadataModelMetadataList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<MetabaseLibSchemaInfoInfoMetadataModelMetadataList>;
-
 /** Schema for query `:info` dictionary, which is used for informational purposes to record information about how a query was executed in QueryExecution and other places. It is considered bad form for middleware to change its behavior based on this information, don't do it! TODO - this schema is somewhat misleading because if you use a function like [[metabase.query-processor/userland-query]] some of these keys (e.g. `:context`) are in fact required */
 export interface MetabaseLibSchemaInfoInfo {
   query_hash?: string | null;
@@ -710,11 +609,6 @@ export interface MetabaseLibSchemaInfoInfo {
   pulse_id?: number | null;
   card_name?: string | null;
 }
-const MetabaseLibSchemaInfoInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<MetabaseLibSchemaInfoInfo>;
-
 /** Additional options that can be used to toggle middleware on or off. */
 export interface MetabaseLibSchemaMiddlewareOptionsMiddlewareOptions {
   /** Whether to process a question's visualization settings and include them in the result metadata so that they can incorporated into an export. Used by `metabase.query-processor.middleware.visualization-settings`; default `false`. */
@@ -736,22 +630,9 @@ export interface MetabaseLibSchemaMiddlewareOptionsMiddlewareOptions {
   /** Userland queries are ones ran as a result of an API call, Pulse, or the like. Special handling is done in certain userland-only middleware for such queries -- results are returned in a slightly different format, and QueryExecution entries are normally saved, unless you pass `:no-save` as the option. */
   userland_query_?: boolean | null;
 }
-const MetabaseLibSchemaMiddlewareOptionsMiddlewareOptions = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<MetabaseLibSchemaMiddlewareOptionsMiddlewareOptions>;
-
 export type MetabaseLibSchemaQueryDatabase = unknown | number;
-const MetabaseLibSchemaQueryDatabase = S.Unknown as any as S.Schema<MetabaseLibSchemaQueryDatabase>;
-
 export type MetabaseLibSchemaQueryPivotMeasuresList = Array<number>;
-const MetabaseLibSchemaQueryPivotMeasuresList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<MetabaseLibSchemaQueryPivotMeasuresList>;
-
 export type MetabaseLibSchemaQueryPivotColsList = Array<number>;
-const MetabaseLibSchemaQueryPivotColsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<MetabaseLibSchemaQueryPivotColsList>;
-
 /** parameter must be a map with a :type key */
 export interface MetabaseLibSchemaParameterParameter {
   id?: string;
@@ -764,18 +645,8 @@ export interface MetabaseLibSchemaParameterParameter {
   options?: MetabaseLibSchemaParameterParameterOptions | null;
   default?: MetabaseLibSchemaParameterParameterValue;
 }
-const MetabaseLibSchemaParameterParameter = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<MetabaseLibSchemaParameterParameter>;
-
 /** Schema for a list of `:parameters` as passed in to a query. */
 export type MetabaseLibSchemaParameterParameters = Array<MetabaseLibSchemaParameterParameter>;
-const MetabaseLibSchemaParameterParameters = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<MetabaseLibSchemaParameterParameters>;
-
 export interface MetabaseLibSchemaQuery {
   lib_metadata?: unknown;
   show_column_totals?: boolean | null;
@@ -796,16 +667,8 @@ export interface MetabaseLibSchemaQuery {
   /** Whether this query was originally run as a pivot query. Stamped into the saved `json_query` by `metabase.query-processor.middleware.process-userland-query` and sent back by clients re-downloading pivot query results. */
   was_pivot?: boolean | null;
 }
-const MetabaseLibSchemaQuery = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<MetabaseLibSchemaQuery>;
-
 /** value must be a valid MBQL query, or an empty query. */
 export type MetabaseLibBeSchemaMaybeLegacyOrEmptyQuery = unknown | MetabaseLibSchemaQuery;
-const MetabaseLibBeSchemaMaybeLegacyOrEmptyQuery =
-  S.Unknown as any as S.Schema<MetabaseLibBeSchemaMaybeLegacyOrEmptyQuery>;
-
 export interface MetabaseActionsSchemaActionForInsertCase2 {
   visualization_settings?: unknown | null;
   dataset_query?: MetabaseLibBeSchemaMaybeLegacyOrEmptyQuery | null;
@@ -840,72 +703,31 @@ export type MetabaseActionsSchemaActionForInsert =
   | MetabaseActionsSchemaActionForInsertCase1
   | MetabaseActionsSchemaActionForInsertCase2
   | MetabaseActionsSchemaActionForInsertCase3;
-const MetabaseActionsSchemaActionForInsert =
-  S.Unknown as any as S.Schema<MetabaseActionsSchemaActionForInsert>;
-
 export interface CreateActionRequest {
   body?: MetabaseActionsSchemaActionForInsert;
 }
-const CreateActionRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<CreateActionRequest>;
-
 export interface CreateActionResponse {}
-const CreateActionResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<CreateActionResponse>;
-
 /** value must map parameter ids to scalar values. */
 export type MetabaseActionsSchemaExecuteParameterValues = { [key: string]: unknown | undefined };
-const MetabaseActionsSchemaExecuteParameterValues =
-  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseActionsSchemaExecuteParameterValues>;
-
 export interface CreateActionExecuteRequestBody {
   parameters?: MetabaseActionsSchemaExecuteParameterValues | null;
 }
-const CreateActionExecuteRequestBody = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateActionExecuteRequestBody>;
-
 export interface CreateActionExecuteRequest {
   id: string;
   body?: CreateActionExecuteRequestBody | null;
 }
-const CreateActionExecuteRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateActionExecuteRequest>;
-
 export interface CreateActionExecuteResponse {}
-const CreateActionExecuteResponse =
-  CreateActionResponse as any as S.Schema<CreateActionExecuteResponse>;
-
 export interface CreateActionExecuteRequest2 {
   /** value must be a valid UUID. */
   uuid: string;
   parameters?: MetabaseActionsSchemaExecuteParameterValues | null;
 }
-const CreateActionExecuteRequest2 = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateActionExecuteRequest2>;
-
 export interface CreateActionExecute2Response {}
-const CreateActionExecute2Response =
-  CreateActionResponse as any as S.Schema<CreateActionExecute2Response>;
-
 export interface CreateActionPublicLinkRequest {
   id: number;
 }
-const CreateActionPublicLinkRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateActionPublicLinkRequest>;
-
 export interface CreateActionPublicLinkResponse {}
-const CreateActionPublicLinkResponse =
-  CreateActionResponse as any as S.Schema<CreateActionPublicLinkResponse>;
-
 export type CreateActivityRecentRequestContext = "selection";
-const CreateActivityRecentRequestContext = S.String;
-
 export type CreateActivityRecentRequestModel =
   | "card"
   | "dataset"
@@ -914,112 +736,49 @@ export type CreateActivityRecentRequestModel =
   | "table"
   | "collection"
   | "document";
-const CreateActivityRecentRequestModel = S.String;
-
 export interface CreateActivityRecentRequest {
   context: CreateActivityRecentRequestContext | (string & {});
   model: CreateActivityRecentRequestModel | (string & {});
   /** value must be an integer greater than zero. */
   model_id: number;
 }
-const CreateActivityRecentRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateActivityRecentRequest>;
-
 export interface CreateActivityRecentResponse {}
-const CreateActivityRecentResponse =
-  CreateActionResponse as any as S.Schema<CreateActivityRecentResponse>;
-
 export interface CreateAgentCollectionRequest {
   description?: string | null;
   name: string;
   parent_collection_id?: number | null;
 }
-const CreateAgentCollectionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateAgentCollectionRequest>;
-
 export interface CreateAgentCollectionResponse {}
-const CreateAgentCollectionResponse =
-  CreateActionResponse as any as S.Schema<CreateAgentCollectionResponse>;
-
 export interface CreateAgentConstructNativeQueryRequest {
   /** value must be an integer greater than zero. */
   database_id: number;
   sql: string;
 }
-const CreateAgentConstructNativeQueryRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateAgentConstructNativeQueryRequest>;
-
 export interface CreateAgentConstructNativeQueryResponse {}
-const CreateAgentConstructNativeQueryResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateAgentConstructNativeQueryResponse>;
-
 export interface CreateAgentConstructQueryRequest {
   prompt?: string | null;
   /** Value must be a map. */
   query: unknown;
 }
-const CreateAgentConstructQueryRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateAgentConstructQueryRequest>;
-
 export interface CreateAgentConstructQueryResponse {}
-const CreateAgentConstructQueryResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateAgentConstructQueryResponse>;
-
 export type CreateAgentDashboardRequestQuestionIdsList = Array<number>;
-const CreateAgentDashboardRequestQuestionIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateAgentDashboardRequestQuestionIdsList>;
-
 export interface CreateAgentDashboardRequest {
   collection_id?: number | null;
   description?: string | null;
   name: string;
   question_ids?: CreateAgentDashboardRequestQuestionIdsList | null;
 }
-const CreateAgentDashboardRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateAgentDashboardRequest>;
-
 export interface CreateAgentDashboardResponse {}
-const CreateAgentDashboardResponse =
-  CreateActionResponse as any as S.Schema<CreateAgentDashboardResponse>;
-
 export interface CreateAgentExecuteRequest {
   query: string;
 }
-const CreateAgentExecuteRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateAgentExecuteRequest>;
-
 export interface CreateAgentExecuteResponse {}
-const CreateAgentExecuteResponse =
-  CreateActionResponse as any as S.Schema<CreateAgentExecuteResponse>;
-
 export interface CreateAgentExecuteSqlRequest {
   /** value must be an integer greater than zero. */
   database_id: number;
   sql: string;
 }
-const CreateAgentExecuteSqlRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateAgentExecuteSqlRequest>;
-
 export interface CreateAgentExecuteSqlResponse {}
-const CreateAgentExecuteSqlResponse =
-  CreateActionResponse as any as S.Schema<CreateAgentExecuteSqlResponse>;
-
 /** Display types accepted by Card. Validates LLM-passed values so a bogus value (e.g. `"potato"`) gets a 400 rather than persisting junk. */
 export type MetabaseAgentApiApiCardDisplay =
   | "table"
@@ -1039,8 +798,6 @@ export type MetabaseAgentApiApiCardDisplay =
   | "map"
   | "waterfall"
   | "sankey";
-const MetabaseAgentApiApiCardDisplay = S.String;
-
 export interface CreateAgentMetricRequest {
   collection_id?: number | null;
   description?: string | null;
@@ -1049,15 +806,7 @@ export interface CreateAgentMetricRequest {
   query: string;
   visualization_settings?: unknown | null;
 }
-const CreateAgentMetricRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateAgentMetricRequest>;
-
 export interface CreateAgentMetricResponse {}
-const CreateAgentMetricResponse =
-  CreateActionResponse as any as S.Schema<CreateAgentMetricResponse>;
-
 export interface MetabaseAgentApiApiQueryRequestCase0 {
   continuation_token: string;
 }
@@ -1075,20 +824,10 @@ export type MetabaseAgentApiApiQueryRequest =
   | MetabaseAgentApiApiQueryRequestCase0
   | MetabaseAgentApiApiQueryRequestCase1
   | MetabaseAgentApiApiConstructQueryRequest;
-const MetabaseAgentApiApiQueryRequest =
-  S.Unknown as any as S.Schema<MetabaseAgentApiApiQueryRequest>;
-
 export interface CreateAgentQueryRequest {
   body?: MetabaseAgentApiApiQueryRequest;
 }
-const CreateAgentQueryRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<CreateAgentQueryRequest>;
-
 export interface CreateAgentQueryResponse {}
-const CreateAgentQueryResponse = CreateActionResponse as any as S.Schema<CreateAgentQueryResponse>;
-
 export interface CreateAgentQuestionRequest {
   collection_id?: number | null;
   description?: string | null;
@@ -1097,186 +836,75 @@ export interface CreateAgentQuestionRequest {
   query: string;
   visualization_settings?: unknown | null;
 }
-const CreateAgentQuestionRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<CreateAgentQuestionRequest>;
-
 export interface CreateAgentQuestionResponse {}
-const CreateAgentQuestionResponse =
-  CreateActionResponse as any as S.Schema<CreateAgentQuestionResponse>;
-
 export interface CreateAgentQuestionQueryRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateAgentQuestionQueryRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateAgentQuestionQueryRequest>;
-
 export interface CreateAgentQuestionQueryResponse {}
-const CreateAgentQuestionQueryResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateAgentQuestionQueryResponse>;
-
 export type CreateAgentReadResourceRequestUrisList = Array<string>;
-const CreateAgentReadResourceRequestUrisList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateAgentReadResourceRequestUrisList>;
-
 export interface CreateAgentReadResourceRequest {
   uris: CreateAgentReadResourceRequestUrisList;
 }
-const CreateAgentReadResourceRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateAgentReadResourceRequest>;
-
 export interface CreateAgentReadResourceResponse {}
-const CreateAgentReadResourceResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateAgentReadResourceResponse>;
-
 export type CreateAgentSearchRequestSemanticQueriesCase0List = Array<string>;
 export type CreateAgentSearchRequestSemanticQueries =
   | CreateAgentSearchRequestSemanticQueriesCase0List
   | string;
-const CreateAgentSearchRequestSemanticQueries =
-  S.Unknown as any as S.Schema<CreateAgentSearchRequestSemanticQueries>;
-
 export type CreateAgentSearchRequestTermQueriesCase0List = Array<string>;
 export type CreateAgentSearchRequestTermQueries =
   | CreateAgentSearchRequestTermQueriesCase0List
   | string;
-const CreateAgentSearchRequestTermQueries =
-  S.Unknown as any as S.Schema<CreateAgentSearchRequestTermQueries>;
-
 export interface CreateAgentSearchRequest {
   semantic_queries?: CreateAgentSearchRequestSemanticQueries | null;
   term_queries?: CreateAgentSearchRequestTermQueries | null;
 }
-const CreateAgentSearchRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateAgentSearchRequest>;
-
 export interface CreateAgentSearchResponse {}
-const CreateAgentSearchResponse =
-  CreateActionResponse as any as S.Schema<CreateAgentSearchResponse>;
-
 export interface CreateAiEntityAnalysisAnalyzeChartRequestTimelineEventsItem {
   description?: string | null;
   name: string;
   timestamp: string;
 }
-const CreateAiEntityAnalysisAnalyzeChartRequestTimelineEventsItem = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateAiEntityAnalysisAnalyzeChartRequestTimelineEventsItem>;
-
 export type CreateAiEntityAnalysisAnalyzeChartRequestTimelineEventsList =
   Array<CreateAiEntityAnalysisAnalyzeChartRequestTimelineEventsItem>;
-const CreateAiEntityAnalysisAnalyzeChartRequestTimelineEventsList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateAiEntityAnalysisAnalyzeChartRequestTimelineEventsList>;
-
 export interface CreateAiEntityAnalysisAnalyzeChartRequest {
   description?: string | null;
   image_base64: string;
   name?: string | null;
   timeline_events?: CreateAiEntityAnalysisAnalyzeChartRequestTimelineEventsList | null;
 }
-const CreateAiEntityAnalysisAnalyzeChartRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CreateAiEntityAnalysisAnalyzeChartRequest>;
-
 export interface CreateAiEntityAnalysisAnalyzeChartResponse {}
-const CreateAiEntityAnalysisAnalyzeChartResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateAiEntityAnalysisAnalyzeChartResponse>;
-
 export type CreateAnalyticsInternalRequestEventsItemLabelsMap = {
   [key: string]: string | undefined;
 };
-const CreateAnalyticsInternalRequestEventsItemLabelsMap = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CreateAnalyticsInternalRequestEventsItemLabelsMap>;
-
 export type CreateAnalyticsInternalRequestEventsItemOp =
   | "inc"
   | "dec"
   | "set"
   | "observe"
   | "clear";
-const CreateAnalyticsInternalRequestEventsItemOp = S.String;
-
 export interface CreateAnalyticsInternalRequestEventsItem {
   amount?: number | null;
   labels?: CreateAnalyticsInternalRequestEventsItemLabelsMap | null;
   metric: string;
   op: CreateAnalyticsInternalRequestEventsItemOp | (string & {});
 }
-const CreateAnalyticsInternalRequestEventsItem = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateAnalyticsInternalRequestEventsItem>;
-
 export type CreateAnalyticsInternalRequestEventsList =
   Array<CreateAnalyticsInternalRequestEventsItem>;
-const CreateAnalyticsInternalRequestEventsList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CreateAnalyticsInternalRequestEventsList>;
-
 export interface CreateAnalyticsInternalRequest {
   events: CreateAnalyticsInternalRequestEventsList;
 }
-const CreateAnalyticsInternalRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateAnalyticsInternalRequest>;
-
 export interface CreateAnalyticsInternalResponse {}
-const CreateAnalyticsInternalResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<CreateAnalyticsInternalResponse>;
-
 export type CreateAnalyticsProxyRequestDataItemMap = { [key: string]: string | undefined };
-const CreateAnalyticsProxyRequestDataItemMap =
-  CreateAnalyticsInternalRequestEventsItemLabelsMap as any as S.Schema<CreateAnalyticsProxyRequestDataItemMap>;
-
 export type CreateAnalyticsProxyRequestDataList = Array<CreateAnalyticsProxyRequestDataItemMap>;
-const CreateAnalyticsProxyRequestDataList = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CreateAnalyticsProxyRequestDataList>;
-
 export interface CreateAnalyticsProxyRequest {
   data: CreateAnalyticsProxyRequestDataList;
   schema: string;
 }
-const CreateAnalyticsProxyRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateAnalyticsProxyRequest>;
-
 export interface CreateAnalyticsProxyResponse {}
-const CreateAnalyticsProxyResponse =
-  CreateActionResponse as any as S.Schema<CreateAnalyticsProxyResponse>;
-
 export type CreateCacheInvalidateRequestDatabaseList = Array<number>;
-const CreateCacheInvalidateRequestDatabaseList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateCacheInvalidateRequestDatabaseList>;
-
 export type CreateCacheInvalidateRequestDashboardList = Array<number>;
-const CreateCacheInvalidateRequestDashboardList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateCacheInvalidateRequestDashboardList>;
-
 export type CreateCacheInvalidateRequestQuestionList = Array<number>;
-const CreateCacheInvalidateRequestQuestionList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateCacheInvalidateRequestQuestionList>;
-
 export interface CreateCacheInvalidateRequest {
   /** All cache configuration overrides should invalidate cache too */
   include?: unknown;
@@ -1287,39 +915,19 @@ export interface CreateCacheInvalidateRequest {
   /** A list of question ids */
   question?: CreateCacheInvalidateRequestQuestionList;
 }
-const CreateCacheInvalidateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreateCacheInvalidateRequest>;
-
 export interface CreateCacheInvalidateResponse {}
-const CreateCacheInvalidateResponse =
-  CreateActionResponse as any as S.Schema<CreateCacheInvalidateResponse>;
-
 /** Schema for the `:result-metadata` for a Card (Saved Question, Model, or v2 Metric). */
 export type MetabaseLibSchemaMetadataCardResultMetadata =
   Array<MetabaseLibSchemaMetadataLibOrLegacyColumn>;
-const MetabaseLibSchemaMetadataCardResultMetadata =
-  MetabaseLibSchemaInfoInfoMetadataModelMetadataList as any as S.Schema<MetabaseLibSchemaMetadataCardResultMetadata>;
-
 export type CreateCardRequestCollectionId = number | string;
-const CreateCardRequestCollectionId = S.Unknown as any as S.Schema<CreateCardRequestCollectionId>;
-
 /** All acceptable card types. Previously (< 49), we only had 2 card types: question and model, which were differentiated using the boolean `dataset` column. Soon we'll have more card types (e.g: metric) and we will longer be able to use a boolean column to differentiate between all types. So we've added a new `type` column for this purpose. Migrating all the code to use `report_card.type` will be quite an effort, we decided that we'll migrate it gradually. */
 export type MetabaseLibSchemaMetadataCardType = "question" | "metric" | "model";
-const MetabaseLibSchemaMetadataCardType = S.String;
-
 export interface CreateCardRequestSize {
   /** value must be an integer greater than zero. */
   size_x: number;
   /** value must be an integer greater than zero. */
   size_y: number;
 }
-const CreateCardRequestSize = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateCardRequestSize>;
-
 export interface CreateCardRequest {
   /** Value must be a map. */
   visualization_settings: unknown;
@@ -1339,40 +947,18 @@ export interface CreateCardRequest {
   description?: string | null;
   dashboard_id?: number | null;
 }
-const CreateCardRequest = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<CreateCardRequest>;
-
 export interface CreateCardResponse {}
-const CreateCardResponse = CreateActionResponse as any as S.Schema<CreateCardResponse>;
-
 export type CreateCardCollectionRequestCardIdsList = Array<number>;
-const CreateCardCollectionRequestCardIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateCardCollectionRequestCardIdsList>;
-
 export interface CreateCardCollectionRequest {
   card_ids: CreateCardCollectionRequestCardIdsList;
   collection_id?: number | null;
 }
-const CreateCardCollectionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CreateCardCollectionRequest>;
-
 export interface CreateCardCollectionResponse {}
-const CreateCardCollectionResponse =
-  CreateActionResponse as any as S.Schema<CreateCardCollectionResponse>;
-
 export interface CreateCardCopyRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateCardCopyRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CreateCardCopyRequest>;
-
 export interface CreateCardCopyResponse {}
-const CreateCardCopyResponse = CreateActionResponse as any as S.Schema<CreateCardCopyResponse>;
-
 /** parameter must be a map with an :id key */
 export interface MetabaseParametersSchemaParameterWithValue {
   default?: MetabaseLibSchemaParameterParameterValue;
@@ -1384,46 +970,20 @@ export interface MetabaseParametersSchemaParameterWithValue {
   type?: MetabaseLibSchemaParameterType | (string & {}) | null;
   value?: MetabaseLibSchemaParameterParameterValue;
 }
-const MetabaseParametersSchemaParameterWithValue = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<MetabaseParametersSchemaParameterWithValue>;
-
 export type MetabaseParametersSchemaParameterValues =
   Array<MetabaseParametersSchemaParameterWithValue>;
-const MetabaseParametersSchemaParameterValues = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<MetabaseParametersSchemaParameterValues>;
-
 export interface CreateCardPivotCardQueryRequest {
   /** value must be an integer greater than zero. */
   card_id: number;
   ignore_cache?: boolean | null;
   parameters?: MetabaseParametersSchemaParameterValues | null;
 }
-const CreateCardPivotCardQueryRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CreateCardPivotCardQueryRequest>;
-
 export interface CreateCardPivotCardQueryResponse {}
-const CreateCardPivotCardQueryResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateCardPivotCardQueryResponse>;
-
 export interface CreateCardPublicLinkRequest {
   /** value must be an integer greater than zero. */
   card_id: number;
 }
-const CreateCardPublicLinkRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CreateCardPublicLinkRequest>;
-
 export interface CreateCardPublicLinkResponse {}
-const CreateCardPublicLinkResponse =
-  CreateActionResponse as any as S.Schema<CreateCardPublicLinkResponse>;
-
 export interface CreateCardQueryRequest {
   card_id: string;
   collection_preview?: boolean | null;
@@ -1431,47 +991,19 @@ export interface CreateCardQueryRequest {
   ignore_cache?: boolean;
   parameters?: MetabaseParametersSchemaParameterValues | null;
 }
-const CreateCardQueryRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CreateCardQueryRequest>;
-
 export interface CreateCardQueryResponse {}
-const CreateCardQueryResponse = CreateActionResponse as any as S.Schema<CreateCardQueryResponse>;
-
 export type CreateCardsDashboardRequestCardIdsList = Array<number>;
-const CreateCardsDashboardRequestCardIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateCardsDashboardRequestCardIdsList>;
-
 export interface CreateCardsDashboardRequest {
   card_ids: CreateCardsDashboardRequestCardIdsList;
 }
-const CreateCardsDashboardRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<CreateCardsDashboardRequest>;
-
 export interface CreateCardsDashboardResponse {}
-const CreateCardsDashboardResponse =
-  CreateActionResponse as any as S.Schema<CreateCardsDashboardResponse>;
-
 export type CreateCardsMoveRequestCardIdsList = Array<number>;
-const CreateCardsMoveRequestCardIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateCardsMoveRequestCardIdsList>;
-
 export interface CreateCardsMoveRequest {
   card_ids: CreateCardsMoveRequestCardIdsList;
   collection_id?: number | null;
   dashboard_id?: number | null;
 }
-const CreateCardsMoveRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<CreateCardsMoveRequest>;
-
 export interface CreateCardsMoveResponse {}
-const CreateCardsMoveResponse = CreateActionResponse as any as S.Schema<CreateCardsMoveResponse>;
-
 export type CreateChannelRequestBodyCase0DetailsAuthMethod =
   | "none"
   | "header"
@@ -1557,16 +1089,10 @@ export type CreateChannelRequestBody =
   | CreateChannelRequestBodyCase1
   | CreateChannelRequestBodyCase2
   | CreateChannelRequestBodyCase3;
-const CreateChannelRequestBody = S.Unknown as any as S.Schema<CreateChannelRequestBody>;
-
 export interface CreateChannelRequest {
   body?: CreateChannelRequestBody;
 }
-const CreateChannelRequest = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<CreateChannelRequest>;
-
 export interface CreateChannelResponse {}
-const CreateChannelResponse = CreateActionResponse as any as S.Schema<CreateChannelResponse>;
-
 export type CreateChannelTestRequestBodyCase0DetailsAuthMethod =
   | "none"
   | "header"
@@ -1638,33 +1164,13 @@ export type CreateChannelTestRequestBody =
   | CreateChannelTestRequestBodyCase1
   | CreateChannelTestRequestBodyCase2
   | CreateChannelTestRequestBodyCase3;
-const CreateChannelTestRequestBody = S.Unknown as any as S.Schema<CreateChannelTestRequestBody>;
-
 export interface CreateChannelTestRequest {
   body?: CreateChannelTestRequestBody;
 }
-const CreateChannelTestRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CreateChannelTestRequest>;
-
 export interface CreateChannelTestResponse {}
-const CreateChannelTestResponse =
-  CreateActionResponse as any as S.Schema<CreateChannelTestResponse>;
-
 export interface CreateCloudMigrationRequest {}
-const CreateCloudMigrationRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<CreateCloudMigrationRequest>;
-
 export interface CreateCloudMigrationResponse {}
-const CreateCloudMigrationResponse =
-  CreateActionResponse as any as S.Schema<CreateCloudMigrationResponse>;
-
 export type CreateCollectionRequestAuthorityLevel = "official";
-const CreateCollectionRequestAuthorityLevel = S.String;
-
 export interface CreateCollectionRequest {
   authority_level?: CreateCollectionRequestAuthorityLevel | (string & {}) | null;
   description?: string | null;
@@ -1672,72 +1178,27 @@ export interface CreateCollectionRequest {
   namespace?: string | null;
   parent_id?: number | null;
 }
-const CreateCollectionRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<CreateCollectionRequest>;
-
 export interface CreateCollectionResponse {}
-const CreateCollectionResponse = CreateActionResponse as any as S.Schema<CreateCollectionResponse>;
-
 export type CreateCollectionMoveDashboardQuestionCandidateRequestBodyCardIdsList = Array<number>;
-const CreateCollectionMoveDashboardQuestionCandidateRequestBodyCardIdsList = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CreateCollectionMoveDashboardQuestionCandidateRequestBodyCardIdsList>;
-
 export interface CreateCollectionMoveDashboardQuestionCandidateRequestBody {
   card_ids?: CreateCollectionMoveDashboardQuestionCandidateRequestBodyCardIdsList;
 }
-const CreateCollectionMoveDashboardQuestionCandidateRequestBody = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<CreateCollectionMoveDashboardQuestionCandidateRequestBody>;
-
 export interface CreateCollectionMoveDashboardQuestionCandidateRequest {
   /** value must be an integer greater than zero. */
   id: number;
   body?: CreateCollectionMoveDashboardQuestionCandidateRequestBody | null;
 }
-const CreateCollectionMoveDashboardQuestionCandidateRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<CreateCollectionMoveDashboardQuestionCandidateRequest>;
-
 export interface CreateCollectionMoveDashboardQuestionCandidateResponse {}
-const CreateCollectionMoveDashboardQuestionCandidateResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateCollectionMoveDashboardQuestionCandidateResponse>;
-
 export type CreateCollectionRootMoveDashboardQuestionCandidateRequestBodyCardIdsList =
   Array<number>;
-const CreateCollectionRootMoveDashboardQuestionCandidateRequestBodyCardIdsList =
-  CreateCollectionMoveDashboardQuestionCandidateRequestBodyCardIdsList as any as S.Schema<CreateCollectionRootMoveDashboardQuestionCandidateRequestBodyCardIdsList>;
-
 export interface CreateCollectionRootMoveDashboardQuestionCandidateRequestBody {
   card_ids?: CreateCollectionRootMoveDashboardQuestionCandidateRequestBodyCardIdsList;
 }
-const CreateCollectionRootMoveDashboardQuestionCandidateRequestBody = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateCollectionRootMoveDashboardQuestionCandidateRequestBody>;
-
 export interface CreateCollectionRootMoveDashboardQuestionCandidateRequest {
   body?: CreateCollectionRootMoveDashboardQuestionCandidateRequestBody | null;
 }
-const CreateCollectionRootMoveDashboardQuestionCandidateRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateCollectionRootMoveDashboardQuestionCandidateRequest>;
-
 export interface CreateCollectionRootMoveDashboardQuestionCandidateResponse {}
-const CreateCollectionRootMoveDashboardQuestionCandidateResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<CreateCollectionRootMoveDashboardQuestionCandidateResponse>;
-
 export type CreateCommentRequestTargetType = "document";
-const CreateCommentRequestTargetType = S.String;
-
 export interface CreateCommentRequest {
   child_target_id?: string | null;
   content: unknown;
@@ -1746,25 +1207,13 @@ export interface CreateCommentRequest {
   target_id: number;
   target_type: CreateCommentRequestTargetType | (string & {});
 }
-const CreateCommentRequest = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<CreateCommentRequest>;
-
 export interface CreateCommentResponse {}
-const CreateCommentResponse = CreateActionResponse as any as S.Schema<CreateCommentResponse>;
-
 export interface CreateCommentReactionRequest {
   /** value must be an integer greater than zero. */
   comment_id: number;
   emoji: string;
 }
-const CreateCommentReactionRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<CreateCommentReactionRequest>;
-
 export interface CreateCommentReactionResponse {}
-const CreateCommentReactionResponse =
-  CreateActionResponse as any as S.Schema<CreateCommentReactionResponse>;
-
 export interface CreateDashboardRequest {
   cache_ttl?: number | null;
   collection_id?: number | null;
@@ -1773,14 +1222,7 @@ export interface CreateDashboardRequest {
   name: string;
   parameters?: MetabaseParametersSchemaParameters | null;
 }
-const CreateDashboardRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<CreateDashboardRequest>;
-
 export interface CreateDashboardResponse {}
-const CreateDashboardResponse = CreateActionResponse as any as S.Schema<CreateDashboardResponse>;
-
 export interface CreateDashboardCopyRequest {
   /** value must be an integer greater than zero. */
   from_dashboard_id: number;
@@ -1790,15 +1232,7 @@ export interface CreateDashboardCopyRequest {
   is_deep_copy?: boolean | null;
   name?: string | null;
 }
-const CreateDashboardCopyRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<CreateDashboardCopyRequest>;
-
 export interface CreateDashboardCopyResponse {}
-const CreateDashboardCopyResponse =
-  CreateActionResponse as any as S.Schema<CreateDashboardCopyResponse>;
-
 export interface CreateDashboardDashcardCardQueryRequest {
   /** value must be an integer greater than zero. */
   dashboard_id: number;
@@ -1809,22 +1243,11 @@ export interface CreateDashboardDashcardCardQueryRequest {
   dashboard_load_id?: string | null;
   parameters?: MetabaseParametersSchemaParameterValues | null;
 }
-const CreateDashboardDashcardCardQueryRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<CreateDashboardDashcardCardQueryRequest>;
-
 export interface CreateDashboardDashcardCardQueryResponse {}
-const CreateDashboardDashcardCardQueryResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDashboardDashcardCardQueryResponse>;
-
 /** value must map parameter ids to scalar values. */
 export type MetabaseActionsSchemaExecuteParameterValuesStringKeys = {
   [key: string]: unknown | undefined;
 };
-const MetabaseActionsSchemaExecuteParameterValuesStringKeys =
-  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseActionsSchemaExecuteParameterValuesStringKeys>;
-
 export interface CreateDashboardDashcardExecuteRequest {
   /** value must be an integer greater than zero. */
   dashboard_id: number;
@@ -1832,15 +1255,7 @@ export interface CreateDashboardDashcardExecuteRequest {
   dashcard_id: number;
   parameters?: MetabaseActionsSchemaExecuteParameterValuesStringKeys | null;
 }
-const CreateDashboardDashcardExecuteRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<CreateDashboardDashcardExecuteRequest>;
-
 export interface CreateDashboardDashcardExecuteResponse {}
-const CreateDashboardDashcardExecuteResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDashboardDashcardExecuteResponse>;
-
 export interface CreateDashboardDashcardExecuteRequest2 {
   /** value must be a valid UUID. */
   uuid: string;
@@ -1849,33 +1264,15 @@ export interface CreateDashboardDashcardExecuteRequest2 {
   modelId?: number | null;
   parameters?: MetabaseActionsSchemaExecuteParameterValues | null;
 }
-const CreateDashboardDashcardExecuteRequest2 = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<CreateDashboardDashcardExecuteRequest2>;
-
 export interface CreateDashboardDashcardExecute2Response {}
-const CreateDashboardDashcardExecute2Response =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDashboardDashcardExecute2Response>;
-
 export type CreateDashboardPdfRequestPaperSize = "a4" | "letter";
-const CreateDashboardPdfRequestPaperSize = S.String;
-
 export interface CreateDashboardPdfRequest {
   /** value must be an integer greater than zero. */
   id: number;
   paper_size?: CreateDashboardPdfRequestPaperSize | (string & {}) | null;
   parameters?: MetabaseParametersSchemaParameterValues | null;
 }
-const CreateDashboardPdfRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<CreateDashboardPdfRequest>;
-
 export interface CreateDashboardPdfResponse {}
-const CreateDashboardPdfResponse =
-  CreateActionResponse as any as S.Schema<CreateDashboardPdfResponse>;
-
 export interface CreateDashboardPivotDashboardDashcardCardQueryRequest {
   /** value must be an integer greater than zero. */
   dashboard_id: number;
@@ -1885,32 +1282,13 @@ export interface CreateDashboardPivotDashboardDashcardCardQueryRequest {
   card_id: number;
   parameters?: MetabaseParametersSchemaParameterValues | null;
 }
-const CreateDashboardPivotDashboardDashcardCardQueryRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<CreateDashboardPivotDashboardDashcardCardQueryRequest>;
-
 export interface CreateDashboardPivotDashboardDashcardCardQueryResponse {}
-const CreateDashboardPivotDashboardDashcardCardQueryResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDashboardPivotDashboardDashcardCardQueryResponse>;
-
 export interface CreateDashboardPublicLinkRequest {
   /** value must be an integer greater than zero. */
   dashboard_id: number;
 }
-const CreateDashboardPublicLinkRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<CreateDashboardPublicLinkRequest>;
-
 export interface CreateDashboardPublicLinkResponse {}
-const CreateDashboardPublicLinkResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDashboardPublicLinkResponse>;
-
 export type CreateDashboardSaveRequestDashcardsItemSeriesItemId = number | string;
-const CreateDashboardSaveRequestDashcardsItemSeriesItemId =
-  S.Unknown as any as S.Schema<CreateDashboardSaveRequestDashcardsItemSeriesItemId>;
-
 export interface CreateDashboardSaveRequestDashcardsItemSeriesItem {
   dataset_query?: MetabaseLibBeSchemaMaybeLegacyOrEmptyQuery | null;
   description?: string | null;
@@ -1919,22 +1297,9 @@ export interface CreateDashboardSaveRequestDashcardsItemSeriesItem {
   name?: string | null;
   visualization_settings?: unknown | null;
 }
-const CreateDashboardSaveRequestDashcardsItemSeriesItem = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<CreateDashboardSaveRequestDashcardsItemSeriesItem>;
-
 export type CreateDashboardSaveRequestDashcardsItemSeriesList =
   Array<CreateDashboardSaveRequestDashcardsItemSeriesItem>;
-const CreateDashboardSaveRequestDashcardsItemSeriesList = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<CreateDashboardSaveRequestDashcardsItemSeriesList>;
-
 export type CreateDashboardSaveRequestDashcardsItemCardId = number | string;
-const CreateDashboardSaveRequestDashcardsItemCardId =
-  S.Unknown as any as S.Schema<CreateDashboardSaveRequestDashcardsItemCardId>;
-
 export interface CreateDashboardSaveRequestDashcardsItemCard {
   dataset_query?: MetabaseLibBeSchemaMaybeLegacyOrEmptyQuery | null;
   description?: string | null;
@@ -1943,11 +1308,6 @@ export interface CreateDashboardSaveRequestDashcardsItemCard {
   name?: string | null;
   visualization_settings?: unknown | null;
 }
-const CreateDashboardSaveRequestDashcardsItemCard = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<CreateDashboardSaveRequestDashcardsItemCard>;
-
 export interface CreateDashboardSaveRequestDashcardsItem {
   visualization_settings?: unknown | null;
   dashboard_tab_id?: number | null;
@@ -1959,18 +1319,8 @@ export interface CreateDashboardSaveRequestDashcardsItem {
   series?: CreateDashboardSaveRequestDashcardsItemSeriesList | null;
   card?: CreateDashboardSaveRequestDashcardsItemCard | null;
 }
-const CreateDashboardSaveRequestDashcardsItem = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<CreateDashboardSaveRequestDashcardsItem>;
-
 export type CreateDashboardSaveRequestDashcardsList =
   Array<CreateDashboardSaveRequestDashcardsItem>;
-const CreateDashboardSaveRequestDashcardsList = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<CreateDashboardSaveRequestDashcardsList>;
-
 export interface CreateDashboardSaveRequestTabsItem {
   /** value must be an integer. */
   id: number;
@@ -1978,20 +1328,8 @@ export interface CreateDashboardSaveRequestTabsItem {
   /** value must be an integer greater or equal to than zero. */
   position?: number;
 }
-const CreateDashboardSaveRequestTabsItem = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<CreateDashboardSaveRequestTabsItem>;
-
 export type CreateDashboardSaveRequestTabsList = Array<CreateDashboardSaveRequestTabsItem>;
-const CreateDashboardSaveRequestTabsList = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<CreateDashboardSaveRequestTabsList>;
-
 export type CreateDashboardSaveRequestWidth = "fixed" | "full";
-const CreateDashboardSaveRequestWidth = S.String;
-
 export interface CreateDashboardSaveRequest {
   auto_apply_filters?: boolean | null;
   dashcards?: CreateDashboardSaveRequestDashcardsList | null;
@@ -2001,18 +1339,8 @@ export interface CreateDashboardSaveRequest {
   tabs?: CreateDashboardSaveRequestTabsList | null;
   width?: CreateDashboardSaveRequestWidth | (string & {}) | null;
 }
-const CreateDashboardSaveRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<CreateDashboardSaveRequest>;
-
 export interface CreateDashboardSaveResponse {}
-const CreateDashboardSaveResponse =
-  CreateActionResponse as any as S.Schema<CreateDashboardSaveResponse>;
-
 export type CreateDatabaseRequestConnectionSource = "admin" | "setup";
-const CreateDatabaseRequestConnectionSource = S.String;
-
 export type MetabaseUtilCronScheduleMapScheduleDay =
   | "sun"
   | "mon"
@@ -2021,14 +1349,8 @@ export type MetabaseUtilCronScheduleMapScheduleDay =
   | "thu"
   | "fri"
   | "sat";
-const MetabaseUtilCronScheduleMapScheduleDay = S.String;
-
 export type MetabaseUtilCronScheduleMapScheduleFrame = "first" | "mid" | "last";
-const MetabaseUtilCronScheduleMapScheduleFrame = S.String;
-
 export type MetabaseUtilCronScheduleMapScheduleType = "hourly" | "daily" | "weekly" | "monthly";
-const MetabaseUtilCronScheduleMapScheduleType = S.String;
-
 /** value must be a valid schedule map. See schema in metabase.util.cron for details. */
 export interface MetabaseUtilCronScheduleMap {
   schedule_day?: MetabaseUtilCronScheduleMapScheduleDay | (string & {}) | null;
@@ -2037,21 +1359,11 @@ export interface MetabaseUtilCronScheduleMap {
   schedule_minute?: number | null;
   schedule_type: MetabaseUtilCronScheduleMapScheduleType | (string & {});
 }
-const MetabaseUtilCronScheduleMap = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<MetabaseUtilCronScheduleMap>;
-
 /** value must be a valid map of schedule maps for a DB. */
 export interface MetabaseSyncSchedulesExpandedSchedulesMap {
   cache_field_values?: MetabaseUtilCronScheduleMap | null;
   metadata_sync?: MetabaseUtilCronScheduleMap;
 }
-const MetabaseSyncSchedulesExpandedSchedulesMap = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<MetabaseSyncSchedulesExpandedSchedulesMap>;
-
 export interface CreateDatabaseRequest {
   provider_name?: string | null;
   name: string;
@@ -2067,99 +1379,39 @@ export interface CreateDatabaseRequest {
   is_stub?: boolean | null;
   schedules?: MetabaseSyncSchedulesExpandedSchedulesMap | null;
 }
-const CreateDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<CreateDatabaseRequest>;
-
 export interface CreateDatabaseResponse {}
-const CreateDatabaseResponse = CreateActionResponse as any as S.Schema<CreateDatabaseResponse>;
-
 export interface CreateDatabaseDiscardValueRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateDatabaseDiscardValueRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<CreateDatabaseDiscardValueRequest>;
-
 export interface CreateDatabaseDiscardValueResponse {}
-const CreateDatabaseDiscardValueResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDatabaseDiscardValueResponse>;
-
 export interface CreateDatabaseDismissSpinnerRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateDatabaseDismissSpinnerRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<CreateDatabaseDismissSpinnerRequest>;
-
 export interface CreateDatabaseDismissSpinnerResponse {}
-const CreateDatabaseDismissSpinnerResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDatabaseDismissSpinnerResponse>;
-
 export interface CreateDatabaseRescanValueRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateDatabaseRescanValueRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<CreateDatabaseRescanValueRequest>;
-
 export interface CreateDatabaseRescanValueResponse {}
-const CreateDatabaseRescanValueResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDatabaseRescanValueResponse>;
-
 export interface CreateDatabaseSampleDatabaseRequest {}
-const CreateDatabaseSampleDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<CreateDatabaseSampleDatabaseRequest>;
-
 export interface CreateDatabaseSampleDatabaseResponse {}
-const CreateDatabaseSampleDatabaseResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDatabaseSampleDatabaseResponse>;
-
 export interface CreateDatabaseSyncSchemaRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateDatabaseSyncSchemaRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<CreateDatabaseSyncSchemaRequest>;
-
 export interface CreateDatabaseSyncSchemaResponse {}
-const CreateDatabaseSyncSchemaResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDatabaseSyncSchemaResponse>;
-
 export interface CreateDatabaseValidateRequestDetails {
   /** Value must be a map. */
   details: unknown;
   /** value must be a valid database engine. */
   engine: string;
 }
-const CreateDatabaseValidateRequestDetails = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<CreateDatabaseValidateRequestDetails>;
-
 export interface CreateDatabaseValidateRequest {
   details: CreateDatabaseValidateRequestDetails;
 }
-const CreateDatabaseValidateRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<CreateDatabaseValidateRequest>;
-
 export interface CreateDatabaseValidateResponse {}
-const CreateDatabaseValidateResponse =
-  CreateActionResponse as any as S.Schema<CreateDatabaseValidateResponse>;
-
 export type MetabaseLibBeSchemaInternalQueryArgsList = Array<unknown>;
 /** A legacy internal audit query, e.g. `{:type :internal, :fn ...}`. These are not MBQL; the audit-app middleware validates the `:fn` and `:args` against the queries it defines. */
 export interface MetabaseLibBeSchemaInternalQuery {
@@ -2173,86 +1425,34 @@ export interface MetabaseLibBeSchemaInternalQuery {
 export type MetabaseLibBeSchemaMaybeLegacyOrInternalQuery =
   | MetabaseLibBeSchemaInternalQuery
   | MetabaseLibSchemaQuery;
-const MetabaseLibBeSchemaMaybeLegacyOrInternalQuery =
-  S.Unknown as any as S.Schema<MetabaseLibBeSchemaMaybeLegacyOrInternalQuery>;
-
 export interface CreateDatasetRequest {
   body?: MetabaseLibBeSchemaMaybeLegacyOrInternalQuery;
 }
-const CreateDatasetRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<CreateDatasetRequest>;
-
 export interface CreateDatasetResponse {}
-const CreateDatasetResponse = CreateActionResponse as any as S.Schema<CreateDatasetResponse>;
-
 export interface CreateDatasetNativeRequest {
   /** value must be an integer greater than zero. */
   database: number;
   parameters?: MetabaseLibSchemaParameterParameters | null;
   pretty?: boolean | null;
 }
-const CreateDatasetNativeRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<CreateDatasetNativeRequest>;
-
 export interface CreateDatasetNativeResponse {}
-const CreateDatasetNativeResponse =
-  CreateActionResponse as any as S.Schema<CreateDatasetNativeResponse>;
-
 export type CreateDatasetParameterRemappingRequestFieldIdsList = Array<number>;
-const CreateDatasetParameterRemappingRequestFieldIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDatasetParameterRemappingRequestFieldIdsList>;
-
 export interface CreateDatasetParameterRemappingRequest {
   field_ids?: CreateDatasetParameterRemappingRequestFieldIdsList | null;
   parameter: MetabaseParametersSchemaParameter;
   value: unknown;
 }
-const CreateDatasetParameterRemappingRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<CreateDatasetParameterRemappingRequest>;
-
 export interface CreateDatasetParameterRemappingResponse {}
-const CreateDatasetParameterRemappingResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDatasetParameterRemappingResponse>;
-
 export type CreateDatasetParameterValueRequestFieldIdsList = Array<number>;
-const CreateDatasetParameterValueRequestFieldIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDatasetParameterValueRequestFieldIdsList>;
-
 export interface CreateDatasetParameterValueRequest {
   field_ids?: CreateDatasetParameterValueRequestFieldIdsList | null;
   parameter: MetabaseParametersSchemaParameter;
 }
-const CreateDatasetParameterValueRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<CreateDatasetParameterValueRequest>;
-
 export interface CreateDatasetParameterValueResponse {}
-const CreateDatasetParameterValueResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDatasetParameterValueResponse>;
-
 export type CreateDatasetPivotRequestPivotRowsList = Array<number>;
-const CreateDatasetPivotRequestPivotRowsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDatasetPivotRequestPivotRowsList>;
-
 export type CreateDatasetPivotRequestDatabase = unknown | number;
-const CreateDatasetPivotRequestDatabase =
-  S.Unknown as any as S.Schema<CreateDatasetPivotRequestDatabase>;
-
 export type CreateDatasetPivotRequestPivotMeasuresList = Array<number>;
-const CreateDatasetPivotRequestPivotMeasuresList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDatasetPivotRequestPivotMeasuresList>;
-
 export type CreateDatasetPivotRequestPivotColsList = Array<number>;
-const CreateDatasetPivotRequestPivotColsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDatasetPivotRequestPivotColsList>;
-
 export interface CreateDatasetPivotRequest {
   lib_metadata?: unknown;
   show_column_totals?: boolean | null;
@@ -2273,31 +1473,11 @@ export interface CreateDatasetPivotRequest {
   /** Whether this query was originally run as a pivot query. Stamped into the saved `json_query` by `metabase.query-processor.middleware.process-userland-query` and sent back by clients re-downloading pivot query results. */
   was_pivot?: boolean | null;
 }
-const CreateDatasetPivotRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<CreateDatasetPivotRequest>;
-
 export interface CreateDatasetPivotResponse {}
-const CreateDatasetPivotResponse =
-  CreateActionResponse as any as S.Schema<CreateDatasetPivotResponse>;
-
 export type CreateDatasetQueryMetadataRequestPivotRowsList = Array<number>;
-const CreateDatasetQueryMetadataRequestPivotRowsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDatasetQueryMetadataRequestPivotRowsList>;
-
 export type CreateDatasetQueryMetadataRequestDatabase = unknown | number;
-const CreateDatasetQueryMetadataRequestDatabase =
-  S.Unknown as any as S.Schema<CreateDatasetQueryMetadataRequestDatabase>;
-
 export type CreateDatasetQueryMetadataRequestPivotMeasuresList = Array<number>;
-const CreateDatasetQueryMetadataRequestPivotMeasuresList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDatasetQueryMetadataRequestPivotMeasuresList>;
-
 export type CreateDatasetQueryMetadataRequestPivotColsList = Array<number>;
-const CreateDatasetQueryMetadataRequestPivotColsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDatasetQueryMetadataRequestPivotColsList>;
-
 export interface CreateDatasetQueryMetadataRequest {
   lib_metadata?: unknown;
   show_column_totals?: boolean | null;
@@ -2318,55 +1498,23 @@ export interface CreateDatasetQueryMetadataRequest {
   /** Whether this query was originally run as a pivot query. Stamped into the saved `json_query` by `metabase.query-processor.middleware.process-userland-query` and sent back by clients re-downloading pivot query results. */
   was_pivot?: boolean | null;
 }
-const CreateDatasetQueryMetadataRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<CreateDatasetQueryMetadataRequest>;
-
 export interface CreateDatasetQueryMetadataResponse {}
-const CreateDatasetQueryMetadataResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDatasetQueryMetadataResponse>;
-
 export type CreateDataStudioTableDiscardValueRequestDatabaseIdsList = Array<number>;
-const CreateDataStudioTableDiscardValueRequestDatabaseIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableDiscardValueRequestDatabaseIdsList>;
-
 export type CreateDataStudioTableDiscardValueRequestSchemaIdsList = Array<string>;
-const CreateDataStudioTableDiscardValueRequestSchemaIdsList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateDataStudioTableDiscardValueRequestSchemaIdsList>;
-
 export type CreateDataStudioTableDiscardValueRequestTableIdsList = Array<number>;
-const CreateDataStudioTableDiscardValueRequestTableIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableDiscardValueRequestTableIdsList>;
-
 export interface CreateDataStudioTableDiscardValueRequest {
   database_ids?: CreateDataStudioTableDiscardValueRequestDatabaseIdsList;
   schema_ids?: CreateDataStudioTableDiscardValueRequestSchemaIdsList;
   table_ids?: CreateDataStudioTableDiscardValueRequestTableIdsList;
 }
-const CreateDataStudioTableDiscardValueRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<CreateDataStudioTableDiscardValueRequest>;
-
 export interface CreateDataStudioTableDiscardValueResponse {}
-const CreateDataStudioTableDiscardValueResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDataStudioTableDiscardValueResponse>;
-
 export type MetabaseDataStudioApiTableDataAuthorities =
   | "computed"
   | "authoritative"
   | "unconfigured"
   | "ingested";
-const MetabaseDataStudioApiTableDataAuthorities = S.String;
-
 export type MetabaseDataStudioApiTableDataLayers = "final" | "internal" | "hidden";
-const MetabaseDataStudioApiTableDataLayers = S.String;
-
 export type CreateDataStudioTableEditRequestTableIdsList = Array<number>;
-const CreateDataStudioTableEditRequestTableIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableEditRequestTableIdsList>;
-
 export type MetabaseDataStudioApiTableDataSources =
   | "source-data"
   | "transform"
@@ -2374,16 +1522,8 @@ export type MetabaseDataStudioApiTableDataSources =
   | "ingested"
   | "metabase-transform"
   | "upload";
-const MetabaseDataStudioApiTableDataSources = S.String;
-
 export type CreateDataStudioTableEditRequestSchemaIdsList = Array<string>;
-const CreateDataStudioTableEditRequestSchemaIdsList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateDataStudioTableEditRequestSchemaIdsList>;
-
 export type CreateDataStudioTableEditRequestDatabaseIdsList = Array<number>;
-const CreateDataStudioTableEditRequestDatabaseIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableEditRequestDatabaseIdsList>;
-
 export interface CreateDataStudioTableEditRequest {
   data_authority?: MetabaseDataStudioApiTableDataAuthorities | (string & {}) | null;
   data_layer?: MetabaseDataStudioApiTableDataLayers | (string & {}) | null;
@@ -2395,101 +1535,36 @@ export interface CreateDataStudioTableEditRequest {
   entity_type?: string | null;
   database_ids?: CreateDataStudioTableEditRequestDatabaseIdsList;
 }
-const CreateDataStudioTableEditRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<CreateDataStudioTableEditRequest>;
-
 export interface CreateDataStudioTableEditResponse {}
-const CreateDataStudioTableEditResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDataStudioTableEditResponse>;
-
 export type CreateDataStudioTableRescanValueRequestDatabaseIdsList = Array<number>;
-const CreateDataStudioTableRescanValueRequestDatabaseIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableRescanValueRequestDatabaseIdsList>;
-
 export type CreateDataStudioTableRescanValueRequestSchemaIdsList = Array<string>;
-const CreateDataStudioTableRescanValueRequestSchemaIdsList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateDataStudioTableRescanValueRequestSchemaIdsList>;
-
 export type CreateDataStudioTableRescanValueRequestTableIdsList = Array<number>;
-const CreateDataStudioTableRescanValueRequestTableIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableRescanValueRequestTableIdsList>;
-
 export interface CreateDataStudioTableRescanValueRequest {
   database_ids?: CreateDataStudioTableRescanValueRequestDatabaseIdsList;
   schema_ids?: CreateDataStudioTableRescanValueRequestSchemaIdsList;
   table_ids?: CreateDataStudioTableRescanValueRequestTableIdsList;
 }
-const CreateDataStudioTableRescanValueRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<CreateDataStudioTableRescanValueRequest>;
-
 export interface CreateDataStudioTableRescanValueResponse {}
-const CreateDataStudioTableRescanValueResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDataStudioTableRescanValueResponse>;
-
 export type CreateDataStudioTableSelectionRequestDatabaseIdsList = Array<number>;
-const CreateDataStudioTableSelectionRequestDatabaseIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableSelectionRequestDatabaseIdsList>;
-
 export type CreateDataStudioTableSelectionRequestSchemaIdsList = Array<string>;
-const CreateDataStudioTableSelectionRequestSchemaIdsList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateDataStudioTableSelectionRequestSchemaIdsList>;
-
 export type CreateDataStudioTableSelectionRequestTableIdsList = Array<number>;
-const CreateDataStudioTableSelectionRequestTableIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableSelectionRequestTableIdsList>;
-
 export interface CreateDataStudioTableSelectionRequest {
   database_ids?: CreateDataStudioTableSelectionRequestDatabaseIdsList;
   schema_ids?: CreateDataStudioTableSelectionRequestSchemaIdsList;
   table_ids?: CreateDataStudioTableSelectionRequestTableIdsList;
 }
-const CreateDataStudioTableSelectionRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<CreateDataStudioTableSelectionRequest>;
-
 export interface CreateDataStudioTableSelectionResponse {}
-const CreateDataStudioTableSelectionResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDataStudioTableSelectionResponse>;
-
 export type CreateDataStudioTableSyncSchemaRequestDatabaseIdsList = Array<number>;
-const CreateDataStudioTableSyncSchemaRequestDatabaseIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableSyncSchemaRequestDatabaseIdsList>;
-
 export type CreateDataStudioTableSyncSchemaRequestSchemaIdsList = Array<string>;
-const CreateDataStudioTableSyncSchemaRequestSchemaIdsList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateDataStudioTableSyncSchemaRequestSchemaIdsList>;
-
 export type CreateDataStudioTableSyncSchemaRequestTableIdsList = Array<number>;
-const CreateDataStudioTableSyncSchemaRequestTableIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateDataStudioTableSyncSchemaRequestTableIdsList>;
-
 export interface CreateDataStudioTableSyncSchemaRequest {
   database_ids?: CreateDataStudioTableSyncSchemaRequestDatabaseIdsList;
   schema_ids?: CreateDataStudioTableSyncSchemaRequestSchemaIdsList;
   table_ids?: CreateDataStudioTableSyncSchemaRequestTableIdsList;
 }
-const CreateDataStudioTableSyncSchemaRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<CreateDataStudioTableSyncSchemaRequest>;
-
 export interface CreateDataStudioTableSyncSchemaResponse {}
-const CreateDataStudioTableSyncSchemaResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDataStudioTableSyncSchemaResponse>;
-
 export type CreateDocumentRequestCardsValueParameterMappingsList = Array<unknown>;
-const CreateDocumentRequestCardsValueParameterMappingsList =
-  MetabaseLibSchemaParameterVariable as any as S.Schema<CreateDocumentRequestCardsValueParameterMappingsList>;
-
 export type CreateDocumentRequestCardsValueResultMetadataList = Array<unknown>;
-const CreateDocumentRequestCardsValueResultMetadataList =
-  MetabaseLibSchemaParameterVariable as any as S.Schema<CreateDocumentRequestCardsValueResultMetadataList>;
-
 export interface CreateDocumentRequestCardsValue {
   /** Value must be a map. */
   visualization_settings: unknown;
@@ -2503,28 +1578,13 @@ export interface CreateDocumentRequestCardsValue {
   parameters?: MetabaseParametersSchemaParameters | null;
   description?: string | null;
 }
-const CreateDocumentRequestCardsValue = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<CreateDocumentRequestCardsValue>;
-
 export type CreateDocumentRequestCardsMap = {
   [key: string]: CreateDocumentRequestCardsValue | undefined;
 };
-const CreateDocumentRequestCardsMap = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<CreateDocumentRequestCardsMap>;
-
 /** A prose-mirror document AST as it arrives at the API. Normalized to keyword keys, the same form the app-DB `:document` column transform yields. */
 export interface MetabaseDocumentsProseMirrorAst {
   type: string;
 }
-const MetabaseDocumentsProseMirrorAst = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<MetabaseDocumentsProseMirrorAst>;
-
 export interface CreateDocumentRequest {
   cards?: CreateDocumentRequestCardsMap | null;
   collection_id?: number | null;
@@ -2532,14 +1592,7 @@ export interface CreateDocumentRequest {
   document: MetabaseDocumentsProseMirrorAst;
   name: string;
 }
-const CreateDocumentRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<CreateDocumentRequest>;
-
 export interface CreateDocumentResponse {}
-const CreateDocumentResponse = CreateActionResponse as any as S.Schema<CreateDocumentResponse>;
-
 export interface CreateDocumentCopyRequest {
   /** value must be an integer greater than zero. */
   from_document_id: number;
@@ -2547,42 +1600,20 @@ export interface CreateDocumentCopyRequest {
   collection_position?: number | null;
   name?: string | null;
 }
-const CreateDocumentCopyRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<CreateDocumentCopyRequest>;
-
 export interface CreateDocumentCopyResponse {}
-const CreateDocumentCopyResponse =
-  CreateActionResponse as any as S.Schema<CreateDocumentCopyResponse>;
-
 export interface CreateDocumentPublicLinkRequest {
   /** value must be an integer greater than zero. */
   document_id: number;
 }
-const CreateDocumentPublicLinkRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<CreateDocumentPublicLinkRequest>;
-
 export interface CreateDocumentPublicLinkResponse {}
-const CreateDocumentPublicLinkResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateDocumentPublicLinkResponse>;
-
 /** Primitive actions, saved actions, and packed encodings from the picker. */
 export type MetabaseEnterpriseActionV2ApiApiActionId = number | string;
 /** All the various ways of referring to an action with the v2 APIs. */
 export type MetabaseEnterpriseActionV2ApiApiActionIdOrExpression =
   | MetabaseEnterpriseActionV2ApiApiActionId
   | unknown;
-const MetabaseEnterpriseActionV2ApiApiActionIdOrExpression =
-  S.Unknown as any as S.Schema<MetabaseEnterpriseActionV2ApiApiActionIdOrExpression>;
-
 /** A map from parameter name / column name to a value. Keys are keywords: the request decoder keywordizes map keys and the handler reads them via `(keyword ...)`, so the FE never sends anything else. Same shape as [[metabase.actions.schema/execute-parameter-values]] and for the same two reasons. Decoding sees a permissive `[:map-of :keyword :any]`, because `:map-of` *drops* an entry whose value fails rather than rejecting it -- a bad cell would silently go missing from the write instead of 400ing. And `parameter.value` must be validated against rather than decoded through: its `:decode/normalize` rewrites a bad value to `nil`, which for an action that writes would store NULL instead of rejecting the request. */
 export type MetabaseEnterpriseActionV2ApiActionValueMap = { [key: string]: unknown | undefined };
-const MetabaseEnterpriseActionV2ApiActionValueMap =
-  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseEnterpriseActionV2ApiActionValueMap>;
-
 export interface MetabaseActionsTypesScopeRawCase0 {
   /** value must be an integer greater than zero. */
   dashboard_id: number;
@@ -2626,225 +1657,94 @@ export type MetabaseActionsTypesScopeRaw =
   | MetabaseActionsTypesScopeRawCase4
   | MetabaseActionsTypesScopeRawCase5
   | MetabaseActionsTypesScopeRawCase6;
-const MetabaseActionsTypesScopeRaw = S.Unknown as any as S.Schema<MetabaseActionsTypesScopeRaw>;
-
 export interface CreateEeActionV2ExecuteRequest {
   action: MetabaseEnterpriseActionV2ApiApiActionIdOrExpression;
   input?: MetabaseEnterpriseActionV2ApiActionValueMap;
   params?: MetabaseEnterpriseActionV2ApiActionValueMap;
   scope: MetabaseActionsTypesScopeRaw;
 }
-const CreateEeActionV2ExecuteRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<CreateEeActionV2ExecuteRequest>;
-
 export interface CreateEeActionV2ExecuteResponse {}
-const CreateEeActionV2ExecuteResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<CreateEeActionV2ExecuteResponse>;
-
 export type CreateEeActionV2ExecuteBulkRequestInputsList =
   Array<MetabaseEnterpriseActionV2ApiActionValueMap>;
-const CreateEeActionV2ExecuteBulkRequestInputsList = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<CreateEeActionV2ExecuteBulkRequestInputsList>;
-
 export interface CreateEeActionV2ExecuteBulkRequest {
   action: MetabaseEnterpriseActionV2ApiApiActionIdOrExpression;
   inputs: CreateEeActionV2ExecuteBulkRequestInputsList;
   params?: MetabaseEnterpriseActionV2ApiActionValueMap;
   scope: MetabaseActionsTypesScopeRaw;
 }
-const CreateEeActionV2ExecuteBulkRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<CreateEeActionV2ExecuteBulkRequest>;
-
 export interface CreateEeActionV2ExecuteBulkResponse {}
-const CreateEeActionV2ExecuteBulkResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeActionV2ExecuteBulkResponse>;
-
 export interface CreateEeActionV2ExecuteFormRequest {
   action: MetabaseEnterpriseActionV2ApiApiActionIdOrExpression;
   input?: MetabaseEnterpriseActionV2ApiActionValueMap;
   scope: MetabaseActionsTypesScopeRaw;
 }
-const CreateEeActionV2ExecuteFormRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<CreateEeActionV2ExecuteFormRequest>;
-
 export interface CreateEeActionV2ExecuteFormResponse {}
-const CreateEeActionV2ExecuteFormResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeActionV2ExecuteFormResponse>;
-
 export interface CreateEeAiControlsPermissionsAdvancedRequest {}
-const CreateEeAiControlsPermissionsAdvancedRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<CreateEeAiControlsPermissionsAdvancedRequest>;
-
 export interface CreateEeAiControlsPermissionsAdvancedResponse {}
-const CreateEeAiControlsPermissionsAdvancedResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeAiControlsPermissionsAdvancedResponse>;
-
 export interface CreateEeAuditAppAnalyticsDevExportRequest {}
-const CreateEeAuditAppAnalyticsDevExportRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<CreateEeAuditAppAnalyticsDevExportRequest>;
-
 export interface CreateEeAuditAppAnalyticsDevExportResponse {}
-const CreateEeAuditAppAnalyticsDevExportResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeAuditAppAnalyticsDevExportResponse>;
-
 export interface CreateEeContentTranslationUploadDictionaryRequestFile {
   filename: string;
   size: number;
   tempfile: unknown;
 }
-const CreateEeContentTranslationUploadDictionaryRequestFile = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<CreateEeContentTranslationUploadDictionaryRequestFile>;
-
 export interface CreateEeContentTranslationUploadDictionaryRequest {
   file: CreateEeContentTranslationUploadDictionaryRequestFile;
 }
-const CreateEeContentTranslationUploadDictionaryRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<CreateEeContentTranslationUploadDictionaryRequest>;
-
 export interface CreateEeContentTranslationUploadDictionaryResponse {}
-const CreateEeContentTranslationUploadDictionaryResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeContentTranslationUploadDictionaryResponse>;
-
 export interface CreateEeCustomVizPluginRequestFile {
   filename: string;
   /** value must be an integer greater or equal to than zero. */
   size: number;
   tempfile: unknown;
 }
-const CreateEeCustomVizPluginRequestFile =
-  CreateEeContentTranslationUploadDictionaryRequestFile as any as S.Schema<CreateEeCustomVizPluginRequestFile>;
-
 export interface CreateEeCustomVizPluginRequest {
   file: CreateEeCustomVizPluginRequestFile;
 }
-const CreateEeCustomVizPluginRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<CreateEeCustomVizPluginRequest>;
-
 export interface CreateEeCustomVizPluginResponse {}
-const CreateEeCustomVizPluginResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<CreateEeCustomVizPluginResponse>;
-
 export interface CreateEeCustomVizPluginDevRequest {
   dev_bundle_url: string;
   identifier?: string | null;
 }
-const CreateEeCustomVizPluginDevRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<CreateEeCustomVizPluginDevRequest>;
-
 export interface CreateEeCustomVizPluginDevResponse {}
-const CreateEeCustomVizPluginDevResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeCustomVizPluginDevResponse>;
-
 export interface CreateEeCustomVizPluginRefreshRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateEeCustomVizPluginRefreshRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<CreateEeCustomVizPluginRefreshRequest>;
-
 export interface CreateEeCustomVizPluginRefreshResponse {}
-const CreateEeCustomVizPluginRefreshResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeCustomVizPluginRefreshResponse>;
-
 export type CreateEeDatabaseReplicationConnectionDatabasePreviewRequestReplicationSchemaFiltersSchemaFiltersType =
   | "inclusion"
   | "exclusion"
   | "all";
-const CreateEeDatabaseReplicationConnectionDatabasePreviewRequestReplicationSchemaFiltersSchemaFiltersType =
-  S.String;
-
 export interface CreateEeDatabaseReplicationConnectionDatabasePreviewRequestReplicationSchemaFilters {
   schema_filters_patterns: string;
   schema_filters_type:
     | CreateEeDatabaseReplicationConnectionDatabasePreviewRequestReplicationSchemaFiltersSchemaFiltersType
     | (string & {});
 }
-const CreateEeDatabaseReplicationConnectionDatabasePreviewRequestReplicationSchemaFilters =
-  /*@__PURE__*/ __L.at(
-    __c15,
-    7,
-  ) as any as S.Schema<CreateEeDatabaseReplicationConnectionDatabasePreviewRequestReplicationSchemaFilters>;
-
 export interface CreateEeDatabaseReplicationConnectionDatabasePreviewRequest {
   /** value must be an integer greater than zero. */
   database_id: number;
   replicationSchemaFilters?: CreateEeDatabaseReplicationConnectionDatabasePreviewRequestReplicationSchemaFilters;
 }
-const CreateEeDatabaseReplicationConnectionDatabasePreviewRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<CreateEeDatabaseReplicationConnectionDatabasePreviewRequest>;
-
 export interface CreateEeDatabaseReplicationConnectionDatabasePreviewResponse {}
-const CreateEeDatabaseReplicationConnectionDatabasePreviewResponse =
-  CreateCollectionRootMoveDashboardQuestionCandidateResponse as any as S.Schema<CreateEeDatabaseReplicationConnectionDatabasePreviewResponse>;
-
 export interface CreateEeDatabaseRoutingDestinationDatabaseRequestDestinationsItem {
   /** Value must be a map. */
   details: unknown;
   name: string;
 }
-const CreateEeDatabaseRoutingDestinationDatabaseRequestDestinationsItem = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<CreateEeDatabaseRoutingDestinationDatabaseRequestDestinationsItem>;
-
 export type CreateEeDatabaseRoutingDestinationDatabaseRequestDestinationsList =
   Array<CreateEeDatabaseRoutingDestinationDatabaseRequestDestinationsItem>;
-const CreateEeDatabaseRoutingDestinationDatabaseRequestDestinationsList = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<CreateEeDatabaseRoutingDestinationDatabaseRequestDestinationsList>;
-
 export interface CreateEeDatabaseRoutingDestinationDatabaseRequest {
   check_connection_details?: boolean;
   destinations: CreateEeDatabaseRoutingDestinationDatabaseRequestDestinationsList;
   /** value must be an integer greater than zero. */
   router_database_id: number;
 }
-const CreateEeDatabaseRoutingDestinationDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<CreateEeDatabaseRoutingDestinationDatabaseRequest>;
-
 export interface CreateEeDatabaseRoutingDestinationDatabaseResponse {}
-const CreateEeDatabaseRoutingDestinationDatabaseResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeDatabaseRoutingDestinationDatabaseResponse>;
-
 export type CreateEeDataStudioTablePublishTableRequestDatabaseIdsList = Array<number>;
-const CreateEeDataStudioTablePublishTableRequestDatabaseIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateEeDataStudioTablePublishTableRequestDatabaseIdsList>;
-
 export type CreateEeDataStudioTablePublishTableRequestSchemaIdsList = Array<string>;
-const CreateEeDataStudioTablePublishTableRequestSchemaIdsList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateEeDataStudioTablePublishTableRequestSchemaIdsList>;
-
 export type CreateEeDataStudioTablePublishTableRequestTableIdsList = Array<number>;
-const CreateEeDataStudioTablePublishTableRequestTableIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateEeDataStudioTablePublishTableRequestTableIdsList>;
-
 export interface CreateEeDataStudioTablePublishTableRequest {
   /** value must be an integer greater than zero. */
   collection_id: number;
@@ -2852,344 +1752,126 @@ export interface CreateEeDataStudioTablePublishTableRequest {
   schema_ids?: CreateEeDataStudioTablePublishTableRequestSchemaIdsList;
   table_ids?: CreateEeDataStudioTablePublishTableRequestTableIdsList;
 }
-const CreateEeDataStudioTablePublishTableRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<CreateEeDataStudioTablePublishTableRequest>;
-
 export interface CreateEeDataStudioTablePublishTableResponse {}
-const CreateEeDataStudioTablePublishTableResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeDataStudioTablePublishTableResponse>;
-
 export type CreateEeDataStudioTableUnpublishTableRequestDatabaseIdsList = Array<number>;
-const CreateEeDataStudioTableUnpublishTableRequestDatabaseIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateEeDataStudioTableUnpublishTableRequestDatabaseIdsList>;
-
 export type CreateEeDataStudioTableUnpublishTableRequestSchemaIdsList = Array<string>;
-const CreateEeDataStudioTableUnpublishTableRequestSchemaIdsList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateEeDataStudioTableUnpublishTableRequestSchemaIdsList>;
-
 export type CreateEeDataStudioTableUnpublishTableRequestTableIdsList = Array<number>;
-const CreateEeDataStudioTableUnpublishTableRequestTableIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateEeDataStudioTableUnpublishTableRequestTableIdsList>;
-
 export interface CreateEeDataStudioTableUnpublishTableRequest {
   database_ids?: CreateEeDataStudioTableUnpublishTableRequestDatabaseIdsList;
   schema_ids?: CreateEeDataStudioTableUnpublishTableRequestSchemaIdsList;
   table_ids?: CreateEeDataStudioTableUnpublishTableRequestTableIdsList;
 }
-const CreateEeDataStudioTableUnpublishTableRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<CreateEeDataStudioTableUnpublishTableRequest>;
-
 export interface CreateEeDataStudioTableUnpublishTableResponse {}
-const CreateEeDataStudioTableUnpublishTableResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeDataStudioTableUnpublishTableResponse>;
-
 export interface CreateEeGsheetsConnectionRequest {
   url: string;
 }
-const CreateEeGsheetsConnectionRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<CreateEeGsheetsConnectionRequest>;
-
 export interface CreateEeGsheetsConnectionResponse {}
-const CreateEeGsheetsConnectionResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeGsheetsConnectionResponse>;
-
 export interface CreateEeGsheetsConnectionSyncRequest {}
-const CreateEeGsheetsConnectionSyncRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<CreateEeGsheetsConnectionSyncRequest>;
-
 export interface CreateEeGsheetsConnectionSyncResponse {}
-const CreateEeGsheetsConnectionSyncResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeGsheetsConnectionSyncResponse>;
-
 export interface CreateEeLibraryRequest {}
-const CreateEeLibraryRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<CreateEeLibraryRequest>;
-
 export interface CreateEeLibraryResponse {}
-const CreateEeLibraryResponse = CreateActionResponse as any as S.Schema<CreateEeLibraryResponse>;
-
 export interface CreateEeMfaAdminRemoveRequest {
   /** value must be an integer greater than zero. */
   user_id: number;
 }
-const CreateEeMfaAdminRemoveRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<CreateEeMfaAdminRemoveRequest>;
-
 export interface CreateEeMfaAdminRemoveResponse {}
-const CreateEeMfaAdminRemoveResponse =
-  CreateActionResponse as any as S.Schema<CreateEeMfaAdminRemoveResponse>;
-
 export interface CreateEeMfaDisableRequest {
   code: string;
 }
-const CreateEeMfaDisableRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<CreateEeMfaDisableRequest>;
-
 export interface CreateEeMfaDisableResponse {}
-const CreateEeMfaDisableResponse =
-  CreateActionResponse as any as S.Schema<CreateEeMfaDisableResponse>;
-
 export interface CreateEeMfaEnrollRequest {
   password: string | Redacted.Redacted<string>;
 }
-const CreateEeMfaEnrollRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<CreateEeMfaEnrollRequest>;
-
 export interface CreateEeMfaEnrollResponse {}
-const CreateEeMfaEnrollResponse =
-  CreateActionResponse as any as S.Schema<CreateEeMfaEnrollResponse>;
-
 export interface CreateEeMfaEnrollConfirmRequest {
   code: string;
 }
-const CreateEeMfaEnrollConfirmRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<CreateEeMfaEnrollConfirmRequest>;
-
 export interface CreateEeMfaEnrollConfirmResponse {}
-const CreateEeMfaEnrollConfirmResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeMfaEnrollConfirmResponse>;
-
 export interface CreateEeMfaRecoveryCodeRequest {
   code: string;
 }
-const CreateEeMfaRecoveryCodeRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<CreateEeMfaRecoveryCodeRequest>;
-
 export interface CreateEeMfaRecoveryCodeResponse {}
-const CreateEeMfaRecoveryCodeResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<CreateEeMfaRecoveryCodeResponse>;
-
 export interface CreateEeRemoteSyncCreateBranchRequest {
   name: string;
 }
-const CreateEeRemoteSyncCreateBranchRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<CreateEeRemoteSyncCreateBranchRequest>;
-
 export interface CreateEeRemoteSyncCreateBranchResponse {}
-const CreateEeRemoteSyncCreateBranchResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeRemoteSyncCreateBranchResponse>;
-
 export interface CreateEeRemoteSyncCurrentTaskCancelRequest {}
-const CreateEeRemoteSyncCurrentTaskCancelRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<CreateEeRemoteSyncCurrentTaskCancelRequest>;
-
 export interface CreateEeRemoteSyncCurrentTaskCancelResponse {}
-const CreateEeRemoteSyncCurrentTaskCancelResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeRemoteSyncCurrentTaskCancelResponse>;
-
 export interface CreateEeRemoteSyncExportRequest {
   branch: string;
   force?: boolean;
   merge?: boolean;
   message?: string;
 }
-const CreateEeRemoteSyncExportRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<CreateEeRemoteSyncExportRequest>;
-
 export interface CreateEeRemoteSyncExportResponse {}
-const CreateEeRemoteSyncExportResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeRemoteSyncExportResponse>;
-
 export interface CreateEeRemoteSyncImportRequest {
   branch?: string;
   expected_branch: string;
   force?: boolean;
   merge?: boolean;
 }
-const CreateEeRemoteSyncImportRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<CreateEeRemoteSyncImportRequest>;
-
 export interface CreateEeRemoteSyncImportResponse {}
-const CreateEeRemoteSyncImportResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeRemoteSyncImportResponse>;
-
 export interface CreateEeRemoteSyncStashRequest {
   message: string;
   new_branch: string;
 }
-const CreateEeRemoteSyncStashRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<CreateEeRemoteSyncStashRequest>;
-
 export interface CreateEeRemoteSyncStashResponse {}
-const CreateEeRemoteSyncStashResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<CreateEeRemoteSyncStashResponse>;
-
 export interface CreateEeRemoteSyncTestConnectionRequest {
   remote_sync_token?: string | null;
   remote_sync_url?: string | null;
 }
-const CreateEeRemoteSyncTestConnectionRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<CreateEeRemoteSyncTestConnectionRequest>;
-
 export interface CreateEeRemoteSyncTestConnectionResponse {}
-const CreateEeRemoteSyncTestConnectionResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeRemoteSyncTestConnectionResponse>;
-
 export type MetabaseEnterpriseReplacementSchemaSourceEntityType = "card" | "table" | "transform";
-const MetabaseEnterpriseReplacementSchemaSourceEntityType = S.String;
-
 export interface CreateEeReplacementCheckReplaceSourceRequest {
   source_entity_id: number;
   source_entity_type: MetabaseEnterpriseReplacementSchemaSourceEntityType | (string & {});
   target_entity_id: number;
   target_entity_type: MetabaseEnterpriseReplacementSchemaSourceEntityType | (string & {});
 }
-const CreateEeReplacementCheckReplaceSourceRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<CreateEeReplacementCheckReplaceSourceRequest>;
-
 export interface CreateEeReplacementCheckReplaceSourceResponse {}
-const CreateEeReplacementCheckReplaceSourceResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeReplacementCheckReplaceSourceResponse>;
-
 export interface CreateEeReplacementReplaceSourceRequest {
   source_entity_id: number;
   source_entity_type: MetabaseEnterpriseReplacementSchemaSourceEntityType | (string & {});
   target_entity_id: number;
   target_entity_type: MetabaseEnterpriseReplacementSchemaSourceEntityType | (string & {});
 }
-const CreateEeReplacementReplaceSourceRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<CreateEeReplacementReplaceSourceRequest>;
-
 export interface CreateEeReplacementReplaceSourceResponse {}
-const CreateEeReplacementReplaceSourceResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeReplacementReplaceSourceResponse>;
-
 export interface CreateEeReplacementRunCancelRequest {
   id: number;
 }
-const CreateEeReplacementRunCancelRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<CreateEeReplacementRunCancelRequest>;
-
 export interface CreateEeReplacementRunCancelResponse {}
-const CreateEeReplacementRunCancelResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeReplacementRunCancelResponse>;
-
 export interface CreateEeScimGroupRequestMembersItem {
   _ref?: string;
   value: string;
 }
-const CreateEeScimGroupRequestMembersItem = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<CreateEeScimGroupRequestMembersItem>;
-
 export type CreateEeScimGroupRequestMembersList = Array<CreateEeScimGroupRequestMembersItem>;
-const CreateEeScimGroupRequestMembersList = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<CreateEeScimGroupRequestMembersList>;
-
 export type CreateEeScimGroupRequestSchemasList = Array<string>;
-const CreateEeScimGroupRequestSchemasList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateEeScimGroupRequestSchemasList>;
-
 export interface CreateEeScimGroupRequest {
   displayName: string;
   id?: string;
   members?: CreateEeScimGroupRequestMembersList;
   schemas: CreateEeScimGroupRequestSchemasList;
 }
-const CreateEeScimGroupRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<CreateEeScimGroupRequest>;
-
 export interface CreateEeScimGroupResponse {}
-const CreateEeScimGroupResponse =
-  CreateActionResponse as any as S.Schema<CreateEeScimGroupResponse>;
-
 export interface CreateEeScimKeyRequest {}
-const CreateEeScimKeyRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<CreateEeScimKeyRequest>;
-
 export interface CreateEeScimKeyResponse {}
-const CreateEeScimKeyResponse = CreateActionResponse as any as S.Schema<CreateEeScimKeyResponse>;
-
 export interface CreateEeScimUserRequestEmailsItem {
   primary?: boolean;
   type?: string;
   value: string;
 }
-const CreateEeScimUserRequestEmailsItem = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<CreateEeScimUserRequestEmailsItem>;
-
 export type CreateEeScimUserRequestEmailsList = Array<CreateEeScimUserRequestEmailsItem>;
-const CreateEeScimUserRequestEmailsList = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<CreateEeScimUserRequestEmailsList>;
-
 export interface CreateEeScimUserRequestGroupsItem {
   _ref?: string;
   display: string;
   value: string;
 }
-const CreateEeScimUserRequestGroupsItem = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<CreateEeScimUserRequestGroupsItem>;
-
 export type CreateEeScimUserRequestGroupsList = Array<CreateEeScimUserRequestGroupsItem>;
-const CreateEeScimUserRequestGroupsList = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<CreateEeScimUserRequestGroupsList>;
-
 export interface CreateEeScimUserRequestName {
   familyName: string;
   givenName: string;
 }
-const CreateEeScimUserRequestName = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<CreateEeScimUserRequestName>;
-
 export type CreateEeScimUserRequestSchemasList = Array<string>;
-const CreateEeScimUserRequestSchemasList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateEeScimUserRequestSchemasList>;
-
 export interface CreateEeScimUserRequest {
   active?: boolean;
   emails: CreateEeScimUserRequestEmailsList;
@@ -3200,52 +1882,18 @@ export interface CreateEeScimUserRequest {
   schemas: CreateEeScimUserRequestSchemasList;
   userName: string;
 }
-const CreateEeScimUserRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<CreateEeScimUserRequest>;
-
 export interface CreateEeScimUserResponse {}
-const CreateEeScimUserResponse = CreateActionResponse as any as S.Schema<CreateEeScimUserResponse>;
-
 export type CreateEeSecurityCenterAcknowledgeRequestAdvisoryIdsList = Array<string>;
-const CreateEeSecurityCenterAcknowledgeRequestAdvisoryIdsList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateEeSecurityCenterAcknowledgeRequestAdvisoryIdsList>;
-
 export interface CreateEeSecurityCenterAcknowledgeRequest {
   advisory_ids: CreateEeSecurityCenterAcknowledgeRequestAdvisoryIdsList;
 }
-const CreateEeSecurityCenterAcknowledgeRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<CreateEeSecurityCenterAcknowledgeRequest>;
-
 export interface CreateEeSecurityCenterAcknowledgeResponse {}
-const CreateEeSecurityCenterAcknowledgeResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSecurityCenterAcknowledgeResponse>;
-
 export interface CreateEeSecurityCenterAcknowledgeRequest2 {
   advisory_id: string;
 }
-const CreateEeSecurityCenterAcknowledgeRequest2 = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<CreateEeSecurityCenterAcknowledgeRequest2>;
-
 export interface CreateEeSecurityCenterAcknowledge2Response {}
-const CreateEeSecurityCenterAcknowledge2Response =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSecurityCenterAcknowledge2Response>;
-
 export interface CreateEeSecurityCenterSyncRequest {}
-const CreateEeSecurityCenterSyncRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<CreateEeSecurityCenterSyncRequest>;
-
 export interface CreateEeSecurityCenterSyncResponse {}
-const CreateEeSecurityCenterSyncResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSecurityCenterSyncResponse>;
-
 export type MetabaseNotificationModelsNotificationRecipientCase0Type =
   | "notification-recipient/raw-value"
   | "notification-recipient/user"
@@ -3322,40 +1970,16 @@ export type MetabaseNotificationModelsNotificationRecipient =
   | MetabaseNotificationModelsNotificationRecipientCase1
   | MetabaseNotificationModelsNotificationRecipientCase2
   | MetabaseNotificationModelsNotificationRecipientCase3;
-const MetabaseNotificationModelsNotificationRecipient =
-  S.Unknown as any as S.Schema<MetabaseNotificationModelsNotificationRecipient>;
-
 export type CreateEeSecurityCenterTestNotificationRequestEmailRecipientsList =
   Array<MetabaseNotificationModelsNotificationRecipient>;
-const CreateEeSecurityCenterTestNotificationRequestEmailRecipientsList = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<CreateEeSecurityCenterTestNotificationRequestEmailRecipientsList>;
-
 export interface CreateEeSecurityCenterTestNotificationRequest {
   email_recipients?: CreateEeSecurityCenterTestNotificationRequestEmailRecipientsList | null;
   slack_channel?: string | null;
 }
-const CreateEeSecurityCenterTestNotificationRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<CreateEeSecurityCenterTestNotificationRequest>;
-
 export interface CreateEeSecurityCenterTestNotificationResponse {}
-const CreateEeSecurityCenterTestNotificationResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSecurityCenterTestNotificationResponse>;
-
 export type CreateEeSerializationExportRequestCollectionItem = number | string;
-const CreateEeSerializationExportRequestCollectionItem =
-  S.Unknown as any as S.Schema<CreateEeSerializationExportRequestCollectionItem>;
-
 export type CreateEeSerializationExportRequestCollectionList =
   Array<CreateEeSerializationExportRequestCollectionItem>;
-const CreateEeSerializationExportRequestCollectionList = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<CreateEeSerializationExportRequestCollectionList>;
-
 export interface CreateEeSerializationExportRequest {
   /** name of directory and archive file (default: `<instance-name>-<YYYY-MM-dd_HH-mm>`) */
   dirname?: string;
@@ -3368,15 +1992,7 @@ export interface CreateEeSerializationExportRequest {
   continue_on_error?: boolean;
   full_stacktrace?: boolean;
 }
-const CreateEeSerializationExportRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<CreateEeSerializationExportRequest>;
-
 export interface CreateEeSerializationExportResponse {}
-const CreateEeSerializationExportResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSerializationExportResponse>;
-
 /** .tgz with serialization data */
 export interface CreateEeSerializationImportRequestFile {
   content_type: string;
@@ -3384,11 +2000,6 @@ export interface CreateEeSerializationImportRequestFile {
   size: number;
   tempfile: unknown;
 }
-const CreateEeSerializationImportRequestFile = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<CreateEeSerializationImportRequestFile>;
-
 export interface CreateEeSerializationImportRequest {
   continue_on_error?: boolean;
   full_stacktrace?: boolean;
@@ -3396,88 +2007,38 @@ export interface CreateEeSerializationImportRequest {
   /** .tgz with serialization data */
   file: CreateEeSerializationImportRequestFile;
 }
-const CreateEeSerializationImportRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<CreateEeSerializationImportRequest>;
-
 export interface CreateEeSerializationImportResponse {}
-const CreateEeSerializationImportResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSerializationImportResponse>;
-
 export interface CreateEeSerializationMetadataExportRequest {
   with_databases?: boolean;
   with_tables?: boolean;
   with_fields?: boolean;
 }
-const CreateEeSerializationMetadataExportRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<CreateEeSerializationMetadataExportRequest>;
-
 export interface CreateEeSerializationMetadataExportResponse {}
-const CreateEeSerializationMetadataExportResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSerializationMetadataExportResponse>;
-
 export interface CreateEeSerializationMetadataImportRequest {}
-const CreateEeSerializationMetadataImportRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<CreateEeSerializationMetadataImportRequest>;
-
 export interface CreateEeSerializationMetadataImportResponse {}
-const CreateEeSerializationMetadataImportResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSerializationMetadataImportResponse>;
-
 export interface CreateEeSupportAccessGrantRequest {
   grant_duration_minutes: number;
   notes?: string | null;
   ticket_number?: string | null;
 }
-const CreateEeSupportAccessGrantRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<CreateEeSupportAccessGrantRequest>;
-
 export interface CreateEeSupportAccessGrantResponse {}
-const CreateEeSupportAccessGrantResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeSupportAccessGrantResponse>;
-
 export type CreateEeTenantRequestAttributesMap = { [key: string]: unknown | undefined };
-const CreateEeTenantRequestAttributesMap =
-  MetabaseLibSchemaActionsRow as any as S.Schema<CreateEeTenantRequestAttributesMap>;
-
 export interface CreateEeTenantRequest {
   attributes?: CreateEeTenantRequestAttributesMap | null;
   name: string;
   /** invalid slug */
   slug: string;
 }
-const CreateEeTenantRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<CreateEeTenantRequest>;
-
 export interface CreateEeTenantResponse {}
-const CreateEeTenantResponse = CreateActionResponse as any as S.Schema<CreateEeTenantResponse>;
-
 export type MetabaseEnterpriseTransformsInspectorSchemaLensParamsValue =
   | string
   | number
   | boolean
   | number;
-const MetabaseEnterpriseTransformsInspectorSchemaLensParamsValue =
-  S.Unknown as any as S.Schema<MetabaseEnterpriseTransformsInspectorSchemaLensParamsValue>;
-
 /** Params passed to a drill lens (e.g. `{:join_step 2}`), emitted on drill-lens triggers and echoed back by the FE to the lens endpoints. Scalar values only: they end up in `query_execution.lens_params`, and scalars keep map/collection shapes out of the value position. */
 export type MetabaseEnterpriseTransformsInspectorSchemaLensParams = {
   [key: string]: MetabaseEnterpriseTransformsInspectorSchemaLensParamsValue | null | undefined;
 };
-const MetabaseEnterpriseTransformsInspectorSchemaLensParams = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<MetabaseEnterpriseTransformsInspectorSchemaLensParams>;
-
 export interface CreateEeTransformInspectQueryRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -3485,15 +2046,7 @@ export interface CreateEeTransformInspectQueryRequest {
   lens_params?: MetabaseEnterpriseTransformsInspectorSchemaLensParams | null;
   query: MetabaseLibSchemaQuery;
 }
-const CreateEeTransformInspectQueryRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<CreateEeTransformInspectQueryRequest>;
-
 export interface CreateEeTransformInspectQueryResponse {}
-const CreateEeTransformInspectQueryResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeTransformInspectQueryResponse>;
-
 /** A source table entry in the array format. Combines alias with table reference. */
 export interface MetabaseTransformsBaseUtilSourceTableEntry {
   alias: string;
@@ -3502,170 +2055,68 @@ export interface MetabaseTransformsBaseUtilSourceTableEntry {
   table?: string;
   table_id?: number | null;
 }
-const MetabaseTransformsBaseUtilSourceTableEntry = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<MetabaseTransformsBaseUtilSourceTableEntry>;
-
 export type CreateEeTransformsPythonTestRunRequestSourceTablesList =
   Array<MetabaseTransformsBaseUtilSourceTableEntry>;
-const CreateEeTransformsPythonTestRunRequestSourceTablesList = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<CreateEeTransformsPythonTestRunRequestSourceTablesList>;
-
 export interface CreateEeTransformsPythonTestRunRequest {
   code: string;
   output_row_limit?: unknown;
   per_input_row_limit?: unknown;
   source_tables: CreateEeTransformsPythonTestRunRequestSourceTablesList;
 }
-const CreateEeTransformsPythonTestRunRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<CreateEeTransformsPythonTestRunRequest>;
-
 export interface CreateEeTransformsPythonTestRunResponse {}
-const CreateEeTransformsPythonTestRunResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEeTransformsPythonTestRunResponse>;
-
 export type CreateEidTranslationTranslateRequestEntityIdsValueList = Array<string>;
-const CreateEidTranslationTranslateRequestEntityIdsValueList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateEidTranslationTranslateRequestEntityIdsValueList>;
-
 export type CreateEidTranslationTranslateRequestEntityIdsMap = {
   [key: string]: CreateEidTranslationTranslateRequestEntityIdsValueList | undefined;
 };
-const CreateEidTranslationTranslateRequestEntityIdsMap = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<CreateEidTranslationTranslateRequestEntityIdsMap>;
-
 export interface CreateEidTranslationTranslateRequest {
   entity_ids: CreateEidTranslationTranslateRequestEntityIdsMap;
 }
-const CreateEidTranslationTranslateRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<CreateEidTranslationTranslateRequest>;
-
 export interface CreateEidTranslationTranslateResponse {}
-const CreateEidTranslationTranslateResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEidTranslationTranslateResponse>;
-
 export interface CreateEmailTestRequest {}
-const CreateEmailTestRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<CreateEmailTestRequest>;
-
 export interface CreateEmailTestResponse {}
-const CreateEmailTestResponse = CreateActionResponse as any as S.Schema<CreateEmailTestResponse>;
-
 export interface CreateEmbedMcpDrillRequest {
   encodedQuery: string;
 }
-const CreateEmbedMcpDrillRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<CreateEmbedMcpDrillRequest>;
-
 export interface CreateEmbedMcpDrillResponse {}
-const CreateEmbedMcpDrillResponse =
-  CreateActionResponse as any as S.Schema<CreateEmbedMcpDrillResponse>;
-
 export interface CreateEmbedMcpFeedbackRequestConversationData {
   prompt?: string | null;
   query?: string | null;
   source: unknown;
 }
-const CreateEmbedMcpFeedbackRequestConversationData = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<CreateEmbedMcpFeedbackRequestConversationData>;
-
 export interface CreateEmbedMcpFeedbackRequestFeedback {
   freeform_feedback?: string | null;
   issue_type?: string | null;
   message_id: string;
   positive: boolean;
 }
-const CreateEmbedMcpFeedbackRequestFeedback = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<CreateEmbedMcpFeedbackRequestFeedback>;
-
 export interface CreateEmbedMcpFeedbackRequest {
   conversation_data: CreateEmbedMcpFeedbackRequestConversationData;
   feedback: CreateEmbedMcpFeedbackRequestFeedback;
 }
-const CreateEmbedMcpFeedbackRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<CreateEmbedMcpFeedbackRequest>;
-
 export interface CreateEmbedMcpFeedbackResponse {}
-const CreateEmbedMcpFeedbackResponse =
-  CreateActionResponse as any as S.Schema<CreateEmbedMcpFeedbackResponse>;
-
 export interface CreateEmbedThemeRequest {
   name: string;
   /** Value must be a map. */
   settings: unknown;
 }
-const CreateEmbedThemeRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<CreateEmbedThemeRequest>;
-
 export interface CreateEmbedThemeResponse {}
-const CreateEmbedThemeResponse = CreateActionResponse as any as S.Schema<CreateEmbedThemeResponse>;
-
 export interface CreateEmbedThemeCopyRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateEmbedThemeCopyRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<CreateEmbedThemeCopyRequest>;
-
 export interface CreateEmbedThemeCopyResponse {}
-const CreateEmbedThemeCopyResponse =
-  CreateActionResponse as any as S.Schema<CreateEmbedThemeCopyResponse>;
-
 export interface CreateEmbedThemeSeedDefaultRequestThemesItem {
   name: string;
   /** Value must be a map. */
   settings: unknown;
 }
-const CreateEmbedThemeSeedDefaultRequestThemesItem = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<CreateEmbedThemeSeedDefaultRequestThemesItem>;
-
 export type CreateEmbedThemeSeedDefaultRequestThemesList =
   Array<CreateEmbedThemeSeedDefaultRequestThemesItem>;
-const CreateEmbedThemeSeedDefaultRequestThemesList = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<CreateEmbedThemeSeedDefaultRequestThemesList>;
-
 export interface CreateEmbedThemeSeedDefaultRequest {
   themes: CreateEmbedThemeSeedDefaultRequestThemesList;
 }
-const CreateEmbedThemeSeedDefaultRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<CreateEmbedThemeSeedDefaultRequest>;
-
 export interface CreateEmbedThemeSeedDefaultResponse {}
-const CreateEmbedThemeSeedDefaultResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateEmbedThemeSeedDefaultResponse>;
-
 export type CreateFieldDimensionRequestType = "internal" | "external";
-const CreateFieldDimensionRequestType = S.String;
-
 export interface CreateFieldDimensionRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -3673,182 +2124,75 @@ export interface CreateFieldDimensionRequest {
   name: string;
   type: CreateFieldDimensionRequestType | (string & {});
 }
-const CreateFieldDimensionRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<CreateFieldDimensionRequest>;
-
 export interface CreateFieldDimensionResponse {}
-const CreateFieldDimensionResponse =
-  CreateActionResponse as any as S.Schema<CreateFieldDimensionResponse>;
-
 export interface CreateFieldDiscardValueRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateFieldDiscardValueRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<CreateFieldDiscardValueRequest>;
-
 export interface CreateFieldDiscardValueResponse {}
-const CreateFieldDiscardValueResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<CreateFieldDiscardValueResponse>;
-
 export interface CreateFieldRescanValueRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateFieldRescanValueRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<CreateFieldRescanValueRequest>;
-
 export interface CreateFieldRescanValueResponse {}
-const CreateFieldRescanValueResponse =
-  CreateActionResponse as any as S.Schema<CreateFieldRescanValueResponse>;
-
 export type CreateFieldTableIdsRequestFieldIdsList = Array<number>;
-const CreateFieldTableIdsRequestFieldIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateFieldTableIdsRequestFieldIdsList>;
-
 export interface CreateFieldTableIdsRequest {
   field_ids: CreateFieldTableIdsRequestFieldIdsList;
 }
-const CreateFieldTableIdsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<CreateFieldTableIdsRequest>;
-
 export interface CreateFieldTableIdsResponse {}
-const CreateFieldTableIdsResponse =
-  CreateActionResponse as any as S.Schema<CreateFieldTableIdsResponse>;
-
 export type CreateFieldValueRequestValuesItemCase0List = Array<unknown>;
 export type CreateFieldValueRequestValuesItemCase1List = Array<unknown>;
 export type CreateFieldValueRequestValuesItem =
   | CreateFieldValueRequestValuesItemCase0List
   | CreateFieldValueRequestValuesItemCase1List;
-const CreateFieldValueRequestValuesItem =
-  S.Unknown as any as S.Schema<CreateFieldValueRequestValuesItem>;
-
 export type CreateFieldValueRequestValuesList = Array<CreateFieldValueRequestValuesItem>;
-const CreateFieldValueRequestValuesList = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<CreateFieldValueRequestValuesList>;
-
 export interface CreateFieldValueRequest {
   /** value must be an integer greater than zero. */
   id: number;
   values: CreateFieldValueRequestValuesList;
 }
-const CreateFieldValueRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<CreateFieldValueRequest>;
-
 export interface CreateFieldValueResponse {}
-const CreateFieldValueResponse = CreateActionResponse as any as S.Schema<CreateFieldValueResponse>;
-
 export type MetabaseFrontendErrorsApiFrontendErrorType = "component-crash" | "chart-render-error";
-const MetabaseFrontendErrorsApiFrontendErrorType = S.String;
-
 export interface CreateFrontendErrorRequest {
   type: MetabaseFrontendErrorsApiFrontendErrorType | (string & {});
 }
-const CreateFrontendErrorRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<CreateFrontendErrorRequest>;
-
 export interface CreateFrontendErrorResponse {}
-const CreateFrontendErrorResponse =
-  CreateActionResponse as any as S.Schema<CreateFrontendErrorResponse>;
-
 export interface CreateGlossaryRequest {
   definition: string;
   term: string;
 }
-const CreateGlossaryRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<CreateGlossaryRequest>;
-
 export interface CreateGlossaryResponse {}
-const CreateGlossaryResponse = CreateActionResponse as any as S.Schema<CreateGlossaryResponse>;
-
 export interface CreateKeyRequest {
   group_id: number;
   name: string;
 }
-const CreateKeyRequest = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<CreateKeyRequest>;
-
 export interface CreateKeyResponse {}
-const CreateKeyResponse = CreateActionResponse as any as S.Schema<CreateKeyResponse>;
-
 export interface CreateLlmExtractSourceRequestTemplateTagsValue {
   card_id?: number;
   type: string;
 }
-const CreateLlmExtractSourceRequestTemplateTagsValue = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<CreateLlmExtractSourceRequestTemplateTagsValue>;
-
 export type CreateLlmExtractSourceRequestTemplateTagsMap = {
   [key: string]: CreateLlmExtractSourceRequestTemplateTagsValue | undefined;
 };
-const CreateLlmExtractSourceRequestTemplateTagsMap = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<CreateLlmExtractSourceRequestTemplateTagsMap>;
-
 export interface CreateLlmExtractSourceRequest {
   database_id: number;
   sql: string;
   template_tags?: CreateLlmExtractSourceRequestTemplateTagsMap;
 }
-const CreateLlmExtractSourceRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<CreateLlmExtractSourceRequest>;
-
 export interface CreateLlmExtractSourceResponse {}
-const CreateLlmExtractSourceResponse =
-  CreateActionResponse as any as S.Schema<CreateLlmExtractSourceResponse>;
-
 export interface CreateLlmGenerateSqlRequestReferencedEntitiesItem {
   id: number;
   model: string;
 }
-const CreateLlmGenerateSqlRequestReferencedEntitiesItem = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<CreateLlmGenerateSqlRequestReferencedEntitiesItem>;
-
 export type CreateLlmGenerateSqlRequestReferencedEntitiesList =
   Array<CreateLlmGenerateSqlRequestReferencedEntitiesItem>;
-const CreateLlmGenerateSqlRequestReferencedEntitiesList = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<CreateLlmGenerateSqlRequestReferencedEntitiesList>;
-
 export interface CreateLlmGenerateSqlRequest {
   database_id: number;
   prompt: string;
   referenced_entities?: CreateLlmGenerateSqlRequestReferencedEntitiesList;
   source_sql?: string;
 }
-const CreateLlmGenerateSqlRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<CreateLlmGenerateSqlRequest>;
-
 export interface CreateLlmGenerateSqlResponse {}
-const CreateLlmGenerateSqlResponse =
-  CreateActionResponse as any as S.Schema<CreateLlmGenerateSqlResponse>;
-
 export type MetabaseLoggerApiTimeUnit =
   | "days"
   | "hours"
@@ -3857,22 +2201,12 @@ export type MetabaseLoggerApiTimeUnit =
   | "milliseconds"
   | "microseconds"
   | "nanoseconds";
-const MetabaseLoggerApiTimeUnit = S.String;
-
 export interface CreateLoggerAdjustmentRequest {
   duration: number;
   duration_unit: MetabaseLoggerApiTimeUnit | (string & {});
   log_levels: unknown;
 }
-const CreateLoggerAdjustmentRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<CreateLoggerAdjustmentRequest>;
-
 export interface CreateLoggerAdjustmentResponse {}
-const CreateLoggerAdjustmentResponse =
-  CreateActionResponse as any as S.Schema<CreateLoggerAdjustmentResponse>;
-
 export interface CreateMeasureRequest {
   definition: MetabaseLibSchemaQuery;
   description?: string | null;
@@ -3880,14 +2214,7 @@ export interface CreateMeasureRequest {
   /** value must be an integer greater than zero. */
   table_id: number;
 }
-const CreateMeasureRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<CreateMeasureRequest>;
-
 export interface CreateMeasureResponse {}
-const CreateMeasureResponse = CreateActionResponse as any as S.Schema<CreateMeasureResponse>;
-
 export interface MetabaseMetabotContextContextUserIsViewingItemCase0ChartConfigsItem {
   /** Value must be a map. */
   query?: unknown;
@@ -3922,85 +2249,32 @@ export interface MetabaseMetabotContextContextUserIsViewingItemCase1 {
 export type MetabaseMetabotContextContextUserIsViewingItem =
   | MetabaseMetabotContextContextUserIsViewingItemCase0
   | MetabaseMetabotContextContextUserIsViewingItemCase1;
-const MetabaseMetabotContextContextUserIsViewingItem =
-  S.Unknown as any as S.Schema<MetabaseMetabotContextContextUserIsViewingItem>;
-
 export type MetabaseMetabotContextContextUserIsViewingList =
   Array<MetabaseMetabotContextContextUserIsViewingItem>;
-const MetabaseMetabotContextContextUserIsViewingList = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<MetabaseMetabotContextContextUserIsViewingList>;
-
 export interface MetabaseMetabotContextContext {
   user_is_viewing?: MetabaseMetabotContextContextUserIsViewingList;
 }
-const MetabaseMetabotContextContext = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<MetabaseMetabotContextContext>;
-
 export type MetabaseMetabotSchemaRole = "system" | "user" | "assistant" | "tool";
-const MetabaseMetabotSchemaRole = S.String;
-
 export interface MetabaseMetabotSchemaMessageToolCallsItem {
   arguments: string;
   id: string;
   name: string;
 }
-const MetabaseMetabotSchemaMessageToolCallsItem = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<MetabaseMetabotSchemaMessageToolCallsItem>;
-
 export type MetabaseMetabotSchemaMessageToolCallsList =
   Array<MetabaseMetabotSchemaMessageToolCallsItem>;
-const MetabaseMetabotSchemaMessageToolCallsList = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<MetabaseMetabotSchemaMessageToolCallsList>;
-
 export interface MetabaseMetabotSchemaMessage {
   content?: string | null;
   role: MetabaseMetabotSchemaRole | (string & {});
   tool_call_id?: string | null;
   tool_calls?: MetabaseMetabotSchemaMessageToolCallsList | null;
 }
-const MetabaseMetabotSchemaMessage = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<MetabaseMetabotSchemaMessage>;
-
 export type MetabaseMetabotSchemaMessages = Array<MetabaseMetabotSchemaMessage>;
-const MetabaseMetabotSchemaMessages = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<MetabaseMetabotSchemaMessages>;
-
 export type MetabaseMetabotAgentCoreStateChartConfigsMap = { [key: string]: unknown | undefined };
-const MetabaseMetabotAgentCoreStateChartConfigsMap =
-  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseMetabotAgentCoreStateChartConfigsMap>;
-
 export type MetabaseMetabotAgentCoreStateChartsMap = { [key: string]: unknown | undefined };
-const MetabaseMetabotAgentCoreStateChartsMap =
-  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseMetabotAgentCoreStateChartsMap>;
-
 export type MetabaseMetabotAgentCoreStateLinkRegistryMap = { [key: string]: string | undefined };
-const MetabaseMetabotAgentCoreStateLinkRegistryMap =
-  CreateAnalyticsInternalRequestEventsItemLabelsMap as any as S.Schema<MetabaseMetabotAgentCoreStateLinkRegistryMap>;
-
 export type MetabaseMetabotAgentCoreStateQueriesMap = { [key: string]: unknown | undefined };
-const MetabaseMetabotAgentCoreStateQueriesMap =
-  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseMetabotAgentCoreStateQueriesMap>;
-
 export type MetabaseMetabotAgentCoreStateTodosList = Array<unknown>;
-const MetabaseMetabotAgentCoreStateTodosList =
-  MetabaseLibSchemaParameterVariable as any as S.Schema<MetabaseMetabotAgentCoreStateTodosList>;
-
 export type MetabaseMetabotAgentCoreStateTransformsMap = { [key: string]: unknown | undefined };
-const MetabaseMetabotAgentCoreStateTransformsMap =
-  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseMetabotAgentCoreStateTransformsMap>;
-
 /** Agent state containing queries, charts, chart-configs, todos, transforms, and link-registry. */
 export interface MetabaseMetabotAgentCoreState {
   chart_configs?: MetabaseMetabotAgentCoreStateChartConfigsMap;
@@ -4010,11 +2284,6 @@ export interface MetabaseMetabotAgentCoreState {
   todos?: MetabaseMetabotAgentCoreStateTodosList;
   transforms?: MetabaseMetabotAgentCoreStateTransformsMap;
 }
-const MetabaseMetabotAgentCoreState = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<MetabaseMetabotAgentCoreState>;
-
 export interface CreateMetabotAgentStreamingRequest {
   context: MetabaseMetabotContextContext;
   /** value must be a valid UUID. */
@@ -4026,29 +2295,13 @@ export interface CreateMetabotAgentStreamingRequest {
   profile_id?: string;
   state: MetabaseMetabotAgentCoreState;
 }
-const CreateMetabotAgentStreamingRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<CreateMetabotAgentStreamingRequest>;
-
 export interface CreateMetabotAgentStreamingResponse {}
-const CreateMetabotAgentStreamingResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateMetabotAgentStreamingResponse>;
-
 export interface CreateMetabotDocumentGenerateContentRequest {
   instructions: string;
   /** Value must be a map. */
   references?: unknown;
 }
-const CreateMetabotDocumentGenerateContentRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<CreateMetabotDocumentGenerateContentRequest>;
-
 export interface CreateMetabotDocumentGenerateContentResponse {}
-const CreateMetabotDocumentGenerateContentResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateMetabotDocumentGenerateContentResponse>;
-
 export interface CreateMetabotFeedbackRequest {
   freeform_feedback?: string | null;
   issue_type?: string | null;
@@ -4057,27 +2310,11 @@ export interface CreateMetabotFeedbackRequest {
   metabot_id: number;
   positive: boolean;
 }
-const CreateMetabotFeedbackRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<CreateMetabotFeedbackRequest>;
-
 export interface CreateMetabotFeedbackResponse {}
-const CreateMetabotFeedbackResponse =
-  CreateActionResponse as any as S.Schema<CreateMetabotFeedbackResponse>;
-
 export interface CreateMetabotMetabotPromptSuggestionsRegenerateRequest {
   id: number;
 }
-const CreateMetabotMetabotPromptSuggestionsRegenerateRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<CreateMetabotMetabotPromptSuggestionsRegenerateRequest>;
-
 export interface CreateMetabotMetabotPromptSuggestionsRegenerateResponse {}
-const CreateMetabotMetabotPromptSuggestionsRegenerateResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateMetabotMetabotPromptSuggestionsRegenerateResponse>;
-
 export interface CreateMetabotSlackEventRequestBodyCase0 {
   challenge: string;
   type: unknown;
@@ -4128,36 +2365,15 @@ export type CreateMetabotSlackEventRequestBody =
   | CreateMetabotSlackEventRequestBodyCase0
   | CreateMetabotSlackEventRequestBodyCase1
   | MetabaseDocumentsProseMirrorAst;
-const CreateMetabotSlackEventRequestBody =
-  S.Unknown as any as S.Schema<CreateMetabotSlackEventRequestBody>;
-
 export interface CreateMetabotSlackEventRequest {
   body?: CreateMetabotSlackEventRequestBody;
 }
-const CreateMetabotSlackEventRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<CreateMetabotSlackEventRequest>;
-
 export interface CreateMetabotSlackEventResponse {}
-const CreateMetabotSlackEventResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<CreateMetabotSlackEventResponse>;
-
 export interface CreateMetabotSlackInteractiveRequest {
   payload: string;
 }
-const CreateMetabotSlackInteractiveRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<CreateMetabotSlackInteractiveRequest>;
-
 export interface CreateMetabotSlackInteractiveResponse {}
-const CreateMetabotSlackInteractiveResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateMetabotSlackInteractiveResponse>;
-
 export type CreateMetabotSourceFeedbackRequestSourceType = "table" | "card" | "model";
-const CreateMetabotSourceFeedbackRequestSourceType = S.String;
-
 export interface CreateMetabotSourceFeedbackRequest {
   message_id: string;
   /** value must be an integer greater than zero. */
@@ -4167,15 +2383,7 @@ export interface CreateMetabotSourceFeedbackRequest {
   source_id: number;
   source_type: CreateMetabotSourceFeedbackRequestSourceType | (string & {});
 }
-const CreateMetabotSourceFeedbackRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<CreateMetabotSourceFeedbackRequest>;
-
 export interface CreateMetabotSourceFeedbackResponse {}
-const CreateMetabotSourceFeedbackResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateMetabotSourceFeedbackResponse>;
-
 /** A metric reference in an expression: [:metric {:lib/uuid uuid} card-id]. */
 export type MetabaseLibMetricSchemaMetricExpressionRef = Array<unknown>;
 /** A measure reference in an expression: [:measure {:lib/uuid uuid} measure-id]. */
@@ -4190,41 +2398,18 @@ export type MetabaseLibMetricSchemaMetricMathExpression =
   | MetabaseLibMetricSchemaExpressionLeaf
   | number
   | MetabaseLibMetricSchemaMetricMathExpressionCase2List;
-const MetabaseLibMetricSchemaMetricMathExpression =
-  S.Unknown as any as S.Schema<MetabaseLibMetricSchemaMetricMathExpression>;
-
 /** A filter associated with a specific expression instance via lib/uuid. */
 export interface MetabaseLibMetricSchemaInstanceFilter {
   filter: unknown;
   lib_uuid: string;
 }
-const MetabaseLibMetricSchemaInstanceFilter = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<MetabaseLibMetricSchemaInstanceFilter>;
-
 /** A sequence of per-instance filters. */
 export type MetabaseLibMetricSchemaInstanceFilters = Array<MetabaseLibMetricSchemaInstanceFilter>;
-const MetabaseLibMetricSchemaInstanceFilters = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<MetabaseLibMetricSchemaInstanceFilters>;
-
 /** Dimension reference clause [:dimension opts uuid]. Handles normalization from JSON where the tag arrives as a string. */
 export type MetabaseLibMetricSchemaDimensionReference = Array<unknown>;
-const MetabaseLibMetricSchemaDimensionReference =
-  MetabaseLibSchemaParameterVariable as any as S.Schema<MetabaseLibMetricSchemaDimensionReference>;
-
 export type MetabaseLibMetricSchemaTypedProjectionProjectionList =
   Array<MetabaseLibMetricSchemaDimensionReference>;
-const MetabaseLibMetricSchemaTypedProjectionProjectionList = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<MetabaseLibMetricSchemaTypedProjectionProjectionList>;
-
 export type MetabaseLibMetricSchemaTypedProjectionType = "metric" | "measure";
-const MetabaseLibMetricSchemaTypedProjectionType = S.String;
-
 /** A projection associated with a specific expression leaf instance via :lib/uuid. The :type and :id identify the source metric/measure for metadata resolution. The :lib/uuid disambiguates multiple references to the same metric/measure in an expression. */
 export interface MetabaseLibMetricSchemaTypedProjection {
   id: number;
@@ -4232,77 +2417,35 @@ export interface MetabaseLibMetricSchemaTypedProjection {
   projection: MetabaseLibMetricSchemaTypedProjectionProjectionList;
   type: MetabaseLibMetricSchemaTypedProjectionType | (string & {});
 }
-const MetabaseLibMetricSchemaTypedProjection = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<MetabaseLibMetricSchemaTypedProjection>;
-
 /** A sequence of typed projections. */
 export type MetabaseLibMetricSchemaTypedProjections = Array<MetabaseLibMetricSchemaTypedProjection>;
-const MetabaseLibMetricSchemaTypedProjections = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<MetabaseLibMetricSchemaTypedProjections>;
-
 /** Schema for the definition object within a dataset request. Uses expression-based contract for metric math support. */
 export interface MetabaseMetricsApiDefinition {
   expression: MetabaseLibMetricSchemaMetricMathExpression;
   filters?: MetabaseLibMetricSchemaInstanceFilters | null;
   projections?: MetabaseLibMetricSchemaTypedProjections | null;
 }
-const MetabaseMetricsApiDefinition = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<MetabaseMetricsApiDefinition>;
-
 export interface CreateMetricBreakoutValueRequest {
   definition: MetabaseMetricsApiDefinition;
 }
-const CreateMetricBreakoutValueRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<CreateMetricBreakoutValueRequest>;
-
 export interface CreateMetricBreakoutValueResponse {}
-const CreateMetricBreakoutValueResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateMetricBreakoutValueResponse>;
-
 export interface CreateMetricDatasetRequest {
   definition: MetabaseMetricsApiDefinition;
 }
-const CreateMetricDatasetRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<CreateMetricDatasetRequest>;
-
 export interface CreateMetricDatasetResponse {}
-const CreateMetricDatasetResponse =
-  CreateActionResponse as any as S.Schema<CreateMetricDatasetResponse>;
-
 export interface CreateModelIndexRequest {
   /** value must be an integer greater than zero. */
   model_id: number;
   pk_ref: unknown;
   value_ref: unknown;
 }
-const CreateModelIndexRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<CreateModelIndexRequest>;
-
 export interface CreateModelIndexResponse {}
-const CreateModelIndexResponse = CreateActionResponse as any as S.Schema<CreateModelIndexResponse>;
-
 export type CreateModerationReviewRequestModeratedItemType =
   | "card"
   | "card"
   | "dashboard"
   | "dashboard";
-const CreateModerationReviewRequestModeratedItemType = S.String;
-
 export type CreateModerationReviewRequestStatus = "verified";
-const CreateModerationReviewRequestStatus = S.String;
-
 export interface CreateModerationReviewRequest {
   /** value must be an integer greater than zero. */
   moderated_item_id: number;
@@ -4310,30 +2453,14 @@ export interface CreateModerationReviewRequest {
   status?: CreateModerationReviewRequestStatus | (string & {}) | null;
   text?: string | null;
 }
-const CreateModerationReviewRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<CreateModerationReviewRequest>;
-
 export interface CreateModerationReviewResponse {}
-const CreateModerationReviewResponse =
-  CreateActionResponse as any as S.Schema<CreateModerationReviewResponse>;
-
 export type MetabaseEnterpriseSandboxSchemaAttributeRemappingsValue =
   | string
   | number
   | MetabaseLibSchemaParameterTarget;
-const MetabaseEnterpriseSandboxSchemaAttributeRemappingsValue =
-  S.Unknown as any as S.Schema<MetabaseEnterpriseSandboxSchemaAttributeRemappingsValue>;
-
 export type MetabaseEnterpriseSandboxSchemaAttributeRemappingsMap = {
   [key: string]: MetabaseEnterpriseSandboxSchemaAttributeRemappingsValue | undefined;
 };
-const MetabaseEnterpriseSandboxSchemaAttributeRemappingsMap = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<MetabaseEnterpriseSandboxSchemaAttributeRemappingsMap>;
-
 export interface CreateMtGtapRequest {
   attribute_remappings?: MetabaseEnterpriseSandboxSchemaAttributeRemappingsMap | null;
   card_id?: number | null;
@@ -4342,25 +2469,13 @@ export interface CreateMtGtapRequest {
   /** value must be an integer greater than zero. */
   table_id: number;
 }
-const CreateMtGtapRequest = /*@__PURE__*/ __L.at(__c29, 1) as any as S.Schema<CreateMtGtapRequest>;
-
 export interface CreateMtGtapResponse {}
-const CreateMtGtapResponse = CreateActionResponse as any as S.Schema<CreateMtGtapResponse>;
-
 export interface CreateMtGtapValidateRequest {
   card_id?: number | null;
   /** value must be an integer greater than zero. */
   table_id: number;
 }
-const CreateMtGtapValidateRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<CreateMtGtapValidateRequest>;
-
 export interface CreateMtGtapValidateResponse {}
-const CreateMtGtapValidateResponse =
-  CreateActionResponse as any as S.Schema<CreateMtGtapValidateResponse>;
-
 export interface CreateNativeQuerySnippetRequest {
   collection_id?: number | null;
   content: string;
@@ -4368,15 +2483,7 @@ export interface CreateNativeQuerySnippetRequest {
   /** snippet names cannot include '}' or start with spaces */
   name: unknown;
 }
-const CreateNativeQuerySnippetRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<CreateNativeQuerySnippetRequest>;
-
 export interface CreateNativeQuerySnippetResponse {}
-const CreateNativeQuerySnippetResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateNativeQuerySnippetResponse>;
-
 /** Channel schema. */
 export interface MetabaseChannelModelsChannelChannel {
   active?: boolean;
@@ -4601,168 +2708,69 @@ export interface MetabaseNotificationApiNotificationCreateNotificationParamsCase
 export type MetabaseNotificationApiNotificationCreateNotificationParams =
   | MetabaseNotificationApiNotificationCreateNotificationParamsCase0
   | MetabaseNotificationApiNotificationCreateNotificationParamsCase1;
-const MetabaseNotificationApiNotificationCreateNotificationParams =
-  S.Unknown as any as S.Schema<MetabaseNotificationApiNotificationCreateNotificationParams>;
-
 export interface CreateNotificationRequest {
   body?: MetabaseNotificationApiNotificationCreateNotificationParams;
 }
-const CreateNotificationRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<CreateNotificationRequest>;
-
 export interface CreateNotificationResponse {}
-const CreateNotificationResponse =
-  CreateActionResponse as any as S.Schema<CreateNotificationResponse>;
-
 export type CreateNotificationAdminBulkRequestAction = "archive" | "change-creator";
-const CreateNotificationAdminBulkRequestAction = S.String;
-
 export type CreateNotificationAdminBulkRequestNotificationIdsList = Array<number>;
-const CreateNotificationAdminBulkRequestNotificationIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateNotificationAdminBulkRequestNotificationIdsList>;
-
 export interface CreateNotificationAdminBulkRequest {
   action: CreateNotificationAdminBulkRequestAction | (string & {});
   /** value must be an integer greater than zero. */
   creator_id?: number;
   notification_ids: CreateNotificationAdminBulkRequestNotificationIdsList;
 }
-const CreateNotificationAdminBulkRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<CreateNotificationAdminBulkRequest>;
-
 export interface CreateNotificationAdminBulkResponse {}
-const CreateNotificationAdminBulkResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateNotificationAdminBulkResponse>;
-
 export interface CreateNotificationSendRequest {
   body?: MetabaseNotificationApiNotificationCreateNotificationParams;
 }
-const CreateNotificationSendRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<CreateNotificationSendRequest>;
-
 export interface CreateNotificationSendResponse {}
-const CreateNotificationSendResponse =
-  CreateActionResponse as any as S.Schema<CreateNotificationSendResponse>;
-
 export type CreateNotificationSendRequestHandlerIdsList = Array<number>;
-const CreateNotificationSendRequestHandlerIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateNotificationSendRequestHandlerIdsList>;
-
 export interface CreateNotificationSendRequest2 {
   /** value must be an integer greater than zero. */
   id: number;
   handler_ids?: CreateNotificationSendRequestHandlerIdsList;
 }
-const CreateNotificationSendRequest2 = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<CreateNotificationSendRequest2>;
-
 export interface CreateNotificationSend2Response {}
-const CreateNotificationSend2Response =
-  CreateAgentReadResourceResponse as any as S.Schema<CreateNotificationSend2Response>;
-
 export interface CreateNotificationUnsubscribeRequest {
   email: string;
   hash: string;
   /** value must be an integer greater than zero. */
   notification_handler_id: number;
 }
-const CreateNotificationUnsubscribeRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<CreateNotificationUnsubscribeRequest>;
-
 export interface CreateNotificationUnsubscribeResponse {}
-const CreateNotificationUnsubscribeResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateNotificationUnsubscribeResponse>;
-
 export interface CreateNotificationUnsubscribeRequest2 {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateNotificationUnsubscribeRequest2 = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<CreateNotificationUnsubscribeRequest2>;
-
 export interface CreateNotificationUnsubscribe2Response {}
-const CreateNotificationUnsubscribe2Response =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateNotificationUnsubscribe2Response>;
-
 export interface CreateNotificationUnsubscribeUndoRequest {
   email: string;
   hash: string;
   /** value must be an integer greater than zero. */
   notification_handler_id: number;
 }
-const CreateNotificationUnsubscribeUndoRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<CreateNotificationUnsubscribeUndoRequest>;
-
 export interface CreateNotificationUnsubscribeUndoResponse {}
-const CreateNotificationUnsubscribeUndoResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateNotificationUnsubscribeUndoResponse>;
-
 export interface CreateNotifyDbAttachedDatawarehouseRequest {
   schema_name?: string | null;
   synchronous_?: boolean | null;
   table_name?: string | null;
 }
-const CreateNotifyDbAttachedDatawarehouseRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<CreateNotifyDbAttachedDatawarehouseRequest>;
-
 export interface CreateNotifyDbAttachedDatawarehouseResponse {}
-const CreateNotifyDbAttachedDatawarehouseResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateNotifyDbAttachedDatawarehouseResponse>;
-
 export interface CreateNotifyDbNewTableRequest {
   /** value must be an integer greater than zero. */
   id: number;
   schema_name: string;
   table_name: string;
 }
-const CreateNotifyDbNewTableRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<CreateNotifyDbNewTableRequest>;
-
 export interface CreateNotifyDbNewTableResponse {}
-const CreateNotifyDbNewTableResponse =
-  CreateActionResponse as any as S.Schema<CreateNotifyDbNewTableResponse>;
-
 export interface CreateOsiAiContextReconcileRequest {}
-const CreateOsiAiContextReconcileRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<CreateOsiAiContextReconcileRequest>;
-
 export interface CreateOsiAiContextReconcileResponse {}
-const CreateOsiAiContextReconcileResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateOsiAiContextReconcileResponse>;
-
 export interface CreatePermissionsGroupRequest {
   is_tenant_group?: boolean | null;
   name: string;
 }
-const CreatePermissionsGroupRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<CreatePermissionsGroupRequest>;
-
 export interface CreatePermissionsGroupResponse {}
-const CreatePermissionsGroupResponse =
-  CreateActionResponse as any as S.Schema<CreatePermissionsGroupResponse>;
-
 export interface CreatePermissionsMembershipRequest {
   /** value must be an integer greater than zero. */
   group_id: number;
@@ -4770,141 +2778,50 @@ export interface CreatePermissionsMembershipRequest {
   /** value must be an integer greater than zero. */
   user_id: number;
 }
-const CreatePermissionsMembershipRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<CreatePermissionsMembershipRequest>;
-
 export interface CreatePermissionsMembershipResponse {}
-const CreatePermissionsMembershipResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePermissionsMembershipResponse>;
-
 export interface CreatePersistCardPersistRequest {
   /** value must be an integer greater than zero. */
   card_id: number;
 }
-const CreatePersistCardPersistRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<CreatePersistCardPersistRequest>;
-
 export interface CreatePersistCardPersistResponse {}
-const CreatePersistCardPersistResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePersistCardPersistResponse>;
-
 export interface CreatePersistCardRefreshRequest {
   /** value must be an integer greater than zero. */
   card_id: number;
 }
-const CreatePersistCardRefreshRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<CreatePersistCardRefreshRequest>;
-
 export interface CreatePersistCardRefreshResponse {}
-const CreatePersistCardRefreshResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePersistCardRefreshResponse>;
-
 export interface CreatePersistCardUnpersistRequest {
   /** value must be an integer greater than zero. */
   card_id: number;
 }
-const CreatePersistCardUnpersistRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<CreatePersistCardUnpersistRequest>;
-
 export interface CreatePersistCardUnpersistResponse {}
-const CreatePersistCardUnpersistResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePersistCardUnpersistResponse>;
-
 export interface CreatePersistDatabasePersistRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreatePersistDatabasePersistRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<CreatePersistDatabasePersistRequest>;
-
 export interface CreatePersistDatabasePersistResponse {}
-const CreatePersistDatabasePersistResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePersistDatabasePersistResponse>;
-
 export interface CreatePersistDatabaseUnpersistRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreatePersistDatabaseUnpersistRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<CreatePersistDatabaseUnpersistRequest>;
-
 export interface CreatePersistDatabaseUnpersistResponse {}
-const CreatePersistDatabaseUnpersistResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePersistDatabaseUnpersistResponse>;
-
 export interface CreatePersistDisableRequest {}
-const CreatePersistDisableRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<CreatePersistDisableRequest>;
-
 export interface CreatePersistDisableResponse {}
-const CreatePersistDisableResponse =
-  CreateActionResponse as any as S.Schema<CreatePersistDisableResponse>;
-
 export interface CreatePersistEnableRequest {}
-const CreatePersistEnableRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<CreatePersistEnableRequest>;
-
 export interface CreatePersistEnableResponse {}
-const CreatePersistEnableResponse =
-  CreateActionResponse as any as S.Schema<CreatePersistEnableResponse>;
-
 export interface CreatePersistSetRefreshScheduleRequest {
   /** Value must be a string representing a cron schedule of format <seconds> <minutes> <hours> <day of month> <month> <day of week> <year> */
   cron: string;
 }
-const CreatePersistSetRefreshScheduleRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<CreatePersistSetRefreshScheduleRequest>;
-
 export interface CreatePersistSetRefreshScheduleResponse {}
-const CreatePersistSetRefreshScheduleResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePersistSetRefreshScheduleResponse>;
-
 export interface CreatePremiumFeaturesTokenRefreshRequest {}
-const CreatePremiumFeaturesTokenRefreshRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<CreatePremiumFeaturesTokenRefreshRequest>;
-
 export interface CreatePremiumFeaturesTokenRefreshResponse {}
-const CreatePremiumFeaturesTokenRefreshResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePremiumFeaturesTokenRefreshResponse>;
-
 export interface CreateProductFeedbackRequest {
   comments?: string | null;
   email?: string | null;
   source: string;
 }
-const CreateProductFeedbackRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<CreateProductFeedbackRequest>;
-
 export interface CreateProductFeedbackResponse {}
-const CreateProductFeedbackResponse =
-  CreateActionResponse as any as S.Schema<CreateProductFeedbackResponse>;
-
 export type CreatePulseRequestParametersList = Array<MetabaseParametersSchemaParameter>;
-const CreatePulseRequestParametersList =
-  MetabaseParametersSchemaParameters as any as S.Schema<CreatePulseRequestParametersList>;
-
 export interface CreatePulseRequest {
   cards: unknown;
   channels: unknown;
@@ -4915,14 +2832,8 @@ export interface CreatePulseRequest {
   parameters?: CreatePulseRequestParametersList | null;
   skip_if_empty?: boolean | null;
 }
-const CreatePulseRequest = /*@__PURE__*/ __L.at(__c32, 2) as any as S.Schema<CreatePulseRequest>;
-
 export interface CreatePulseResponse {}
-const CreatePulseResponse = CreateActionResponse as any as S.Schema<CreatePulseResponse>;
-
 export type CreatePulseTestRequestAlertCondition = "rows" | "goal";
-const CreatePulseTestRequestAlertCondition = S.String;
-
 export interface CreatePulseTestRequest {
   id?: number | null;
   name: string;
@@ -4938,44 +2849,21 @@ export interface CreatePulseTestRequest {
   dashboard_id?: number | null;
   channels: unknown;
 }
-const CreatePulseTestRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<CreatePulseTestRequest>;
-
 export interface CreatePulseTestResponse {}
-const CreatePulseTestResponse = CreateActionResponse as any as S.Schema<CreatePulseTestResponse>;
-
 export interface CreatePulseUnsubscribeRequest {
   email: string;
   hash: string;
   /** value must be an integer greater than zero. */
   pulse_id: number;
 }
-const CreatePulseUnsubscribeRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<CreatePulseUnsubscribeRequest>;
-
 export interface CreatePulseUnsubscribeResponse {}
-const CreatePulseUnsubscribeResponse =
-  CreateActionResponse as any as S.Schema<CreatePulseUnsubscribeResponse>;
-
 export interface CreatePulseUnsubscribeUndoRequest {
   email: string;
   hash: string;
   /** value must be an integer greater than zero. */
   pulse_id: number;
 }
-const CreatePulseUnsubscribeUndoRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<CreatePulseUnsubscribeUndoRequest>;
-
 export interface CreatePulseUnsubscribeUndoResponse {}
-const CreatePulseUnsubscribeUndoResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreatePulseUnsubscribeUndoResponse>;
-
 export type CreateRevisionRevertRequestEntity =
   | "card"
   | "dashboard"
@@ -4983,8 +2871,6 @@ export type CreateRevisionRevertRequestEntity =
   | "measure"
   | "segment"
   | "transform";
-const CreateRevisionRevertRequestEntity = S.String;
-
 export interface CreateRevisionRevertRequest {
   entity: CreateRevisionRevertRequestEntity | (string & {});
   /** value must be an integer greater than zero. */
@@ -4992,35 +2878,11 @@ export interface CreateRevisionRevertRequest {
   /** value must be an integer greater than zero. */
   revision_id: number;
 }
-const CreateRevisionRevertRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<CreateRevisionRevertRequest>;
-
 export interface CreateRevisionRevertResponse {}
-const CreateRevisionRevertResponse =
-  CreateActionResponse as any as S.Schema<CreateRevisionRevertResponse>;
-
 export interface CreateSearchForceReindexRequest {}
-const CreateSearchForceReindexRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<CreateSearchForceReindexRequest>;
-
 export interface CreateSearchForceReindexResponse {}
-const CreateSearchForceReindexResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateSearchForceReindexResponse>;
-
 export interface CreateSearchReInitRequest {}
-const CreateSearchReInitRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<CreateSearchReInitRequest>;
-
 export interface CreateSearchReInitResponse {}
-const CreateSearchReInitResponse =
-  CreateActionResponse as any as S.Schema<CreateSearchReInitResponse>;
-
 export interface CreateSegmentRequest {
   definition: MetabaseLibSchemaQuery;
   description?: string | null;
@@ -5028,113 +2890,46 @@ export interface CreateSegmentRequest {
   /** value must be an integer greater than zero. */
   table_id: number;
 }
-const CreateSegmentRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<CreateSegmentRequest>;
-
 export interface CreateSegmentResponse {}
-const CreateSegmentResponse = CreateActionResponse as any as S.Schema<CreateSegmentResponse>;
-
 export interface CreateSessionRequest {
   password: string | Redacted.Redacted<string>;
   username: string;
 }
-const CreateSessionRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<CreateSessionRequest>;
-
 export interface CreateSessionResponse {}
-const CreateSessionResponse = CreateActionResponse as any as S.Schema<CreateSessionResponse>;
-
 export interface CreateSessionForgotPasswordRequest {
   /** value must be a valid email address. */
   email: string;
 }
-const CreateSessionForgotPasswordRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<CreateSessionForgotPasswordRequest>;
-
 export interface CreateSessionForgotPasswordResponse {}
-const CreateSessionForgotPasswordResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateSessionForgotPasswordResponse>;
-
 export interface CreateSessionGoogleAuthRequest {
   token: string;
 }
-const CreateSessionGoogleAuthRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<CreateSessionGoogleAuthRequest>;
-
 export interface CreateSessionGoogleAuthResponse {}
-const CreateSessionGoogleAuthResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<CreateSessionGoogleAuthResponse>;
-
 export interface CreateSessionMfaSendEmailOtpRequest {
   challenge_token: string;
 }
-const CreateSessionMfaSendEmailOtpRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<CreateSessionMfaSendEmailOtpRequest>;
-
 export interface CreateSessionMfaSendEmailOtpResponse {}
-const CreateSessionMfaSendEmailOtpResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateSessionMfaSendEmailOtpResponse>;
-
 export interface CreateSessionMfaVerifyRequest {
   challenge_token: string;
   code: string;
   remember?: boolean;
 }
-const CreateSessionMfaVerifyRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<CreateSessionMfaVerifyRequest>;
-
 export interface CreateSessionMfaVerifyResponse {}
-const CreateSessionMfaVerifyResponse =
-  CreateActionResponse as any as S.Schema<CreateSessionMfaVerifyResponse>;
-
 export interface CreateSessionPasswordCheckRequest {
   /** password is too common. */
   password: string | Redacted.Redacted<string>;
 }
-const CreateSessionPasswordCheckRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<CreateSessionPasswordCheckRequest>;
-
 export interface CreateSessionPasswordCheckResponse {}
-const CreateSessionPasswordCheckResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateSessionPasswordCheckResponse>;
-
 export interface CreateSessionResetPasswordRequest {
   /** password is too common. */
   password: string | Redacted.Redacted<string>;
   token: string;
 }
-const CreateSessionResetPasswordRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<CreateSessionResetPasswordRequest>;
-
 export interface CreateSessionResetPasswordResponse {}
-const CreateSessionResetPasswordResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateSessionResetPasswordResponse>;
-
 export interface CreateSetupRequestPrefs {
   site_locale?: string | null;
   site_name: string;
 }
-const CreateSetupRequestPrefs = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<CreateSetupRequestPrefs>;
-
 export interface CreateSetupRequestUser {
   /** value must be a valid email address. */
   email: string;
@@ -5143,26 +2938,14 @@ export interface CreateSetupRequestUser {
   /** password is too common. */
   password: string | Redacted.Redacted<string>;
 }
-const CreateSetupRequestUser = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<CreateSetupRequestUser>;
-
 export interface CreateSetupRequest {
   prefs: CreateSetupRequestPrefs;
   /** Token does not match the setup token. */
   token: string;
   user: CreateSetupRequestUser;
 }
-const CreateSetupRequest = /*@__PURE__*/ __L.at(__c34, 3) as any as S.Schema<CreateSetupRequest>;
-
 export interface CreateSetupResponse {}
-const CreateSetupResponse = CreateActionResponse as any as S.Schema<CreateSetupResponse>;
-
 export type CreateSlackBugReportRequestDiagnosticInfoFrontendErrorsList = Array<string>;
-const CreateSlackBugReportRequestDiagnosticInfoFrontendErrorsList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<CreateSlackBugReportRequestDiagnosticInfoFrontendErrorsList>;
-
 export interface CreateSlackBugReportRequestDiagnosticInfoReporterCase0 {
   email: string;
   name: string;
@@ -5170,21 +2953,9 @@ export interface CreateSlackBugReportRequestDiagnosticInfoReporterCase0 {
 export type CreateSlackBugReportRequestDiagnosticInfoReporter =
   | CreateSlackBugReportRequestDiagnosticInfoReporterCase0
   | boolean;
-const CreateSlackBugReportRequestDiagnosticInfoReporter =
-  S.Unknown as any as S.Schema<CreateSlackBugReportRequestDiagnosticInfoReporter>;
-
 export type CreateSlackBugReportRequestDiagnosticInfoBackendErrorsList = Array<unknown>;
-const CreateSlackBugReportRequestDiagnosticInfoBackendErrorsList =
-  MetabaseLibSchemaParameterVariable as any as S.Schema<CreateSlackBugReportRequestDiagnosticInfoBackendErrorsList>;
-
 export type CreateSlackBugReportRequestDiagnosticInfoUserLogsList = Array<unknown>;
-const CreateSlackBugReportRequestDiagnosticInfoUserLogsList =
-  MetabaseLibSchemaParameterVariable as any as S.Schema<CreateSlackBugReportRequestDiagnosticInfoUserLogsList>;
-
 export type CreateSlackBugReportRequestDiagnosticInfoLogsList = Array<unknown>;
-const CreateSlackBugReportRequestDiagnosticInfoLogsList =
-  MetabaseLibSchemaParameterVariable as any as S.Schema<CreateSlackBugReportRequestDiagnosticInfoLogsList>;
-
 export interface CreateSlackBugReportRequestDiagnosticInfo {
   entityName?: string | null;
   frontendErrors?: CreateSlackBugReportRequestDiagnosticInfoFrontendErrorsList | null;
@@ -5200,60 +2971,26 @@ export interface CreateSlackBugReportRequestDiagnosticInfo {
   browserInfo?: unknown | null;
   description?: string | null;
 }
-const CreateSlackBugReportRequestDiagnosticInfo = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<CreateSlackBugReportRequestDiagnosticInfo>;
-
 export interface CreateSlackBugReportRequest {
   diagnosticInfo: CreateSlackBugReportRequestDiagnosticInfo;
 }
-const CreateSlackBugReportRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<CreateSlackBugReportRequest>;
-
 export interface CreateSlackBugReportResponse {}
-const CreateSlackBugReportResponse =
-  CreateActionResponse as any as S.Schema<CreateSlackBugReportResponse>;
-
 export interface CreateTableAppendCsvRequestFile {
   filename: string;
   tempfile: unknown;
 }
-const CreateTableAppendCsvRequestFile = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<CreateTableAppendCsvRequestFile>;
-
 export interface CreateTableAppendCsvRequest {
   /** value must be an integer greater than zero. */
   id: number;
   collection_id?: string;
   file: CreateTableAppendCsvRequestFile;
 }
-const CreateTableAppendCsvRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<CreateTableAppendCsvRequest>;
-
 export interface CreateTableAppendCsvResponse {}
-const CreateTableAppendCsvResponse =
-  CreateActionResponse as any as S.Schema<CreateTableAppendCsvResponse>;
-
 export interface CreateTableDiscardValueRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateTableDiscardValueRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<CreateTableDiscardValueRequest>;
-
 export interface CreateTableDiscardValueResponse {}
-const CreateTableDiscardValueResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<CreateTableDiscardValueResponse>;
-
 export type CreateTableReplaceCsvRequestFile = CreateTableAppendCsvRequestFile;
 export interface CreateTableReplaceCsvRequest {
   /** value must be an integer greater than zero. */
@@ -5261,44 +2998,18 @@ export interface CreateTableReplaceCsvRequest {
   collection_id?: string;
   file: CreateTableAppendCsvRequestFile;
 }
-const CreateTableReplaceCsvRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<CreateTableReplaceCsvRequest>;
-
 export interface CreateTableReplaceCsvResponse {}
-const CreateTableReplaceCsvResponse =
-  CreateActionResponse as any as S.Schema<CreateTableReplaceCsvResponse>;
-
 export interface CreateTableRescanValueRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateTableRescanValueRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<CreateTableRescanValueRequest>;
-
 export interface CreateTableRescanValueResponse {}
-const CreateTableRescanValueResponse =
-  CreateActionResponse as any as S.Schema<CreateTableRescanValueResponse>;
-
 export interface CreateTableSyncSchemaRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateTableSyncSchemaRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<CreateTableSyncSchemaRequest>;
-
 export interface CreateTableSyncSchemaResponse {}
-const CreateTableSyncSchemaResponse =
-  CreateActionResponse as any as S.Schema<CreateTableSyncSchemaResponse>;
-
 export type CreateTimelineRequestIcon = "star" | "cake" | "mail" | "warning" | "bell" | "cloud";
-const CreateTimelineRequestIcon = S.String;
-
 export interface CreateTimelineRequest {
   archived?: boolean | null;
   collection_id?: number | null;
@@ -5307,17 +3018,8 @@ export interface CreateTimelineRequest {
   icon?: CreateTimelineRequestIcon | (string & {}) | null;
   name: string;
 }
-const CreateTimelineRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<CreateTimelineRequest>;
-
 export interface CreateTimelineResponse {}
-const CreateTimelineResponse = CreateActionResponse as any as S.Schema<CreateTimelineResponse>;
-
 export type CreateTimelineEventRequestSource = "collections" | "question";
-const CreateTimelineEventRequestSource = S.String;
-
 export type CreateTimelineEventRequestIcon =
   | "star"
   | "cake"
@@ -5325,8 +3027,6 @@ export type CreateTimelineEventRequestIcon =
   | "warning"
   | "bell"
   | "cloud";
-const CreateTimelineEventRequestIcon = S.String;
-
 export interface CreateTimelineEventRequest {
   question_id?: number | null;
   timezone: string;
@@ -5341,19 +3041,8 @@ export interface CreateTimelineEventRequest {
   description?: string | null;
   icon?: CreateTimelineEventRequestIcon | (string & {}) | null;
 }
-const CreateTimelineEventRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<CreateTimelineEventRequest>;
-
 export interface CreateTimelineEventResponse {}
-const CreateTimelineEventResponse =
-  CreateActionResponse as any as S.Schema<CreateTimelineEventResponse>;
-
 export type CreateTransformRequestTagIdsList = Array<number>;
-const CreateTransformRequestTagIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateTransformRequestTagIdsList>;
-
 export interface MetabaseTransformsSchemaCheckpointStrategy {
   checkpoint_filter_field_id?: number;
   type: unknown;
@@ -5375,9 +3064,6 @@ export interface MetabaseTransformsSchemaTransformSourceCase1 {
 export type MetabaseTransformsSchemaTransformSource =
   | MetabaseTransformsSchemaTransformSourceCase0
   | MetabaseTransformsSchemaTransformSourceCase1;
-const MetabaseTransformsSchemaTransformSource =
-  S.Unknown as any as S.Schema<MetabaseTransformsSchemaTransformSource>;
-
 export interface MetabaseTransformsSchemaTableTarget {
   database?: number;
   name: string;
@@ -5411,12 +3097,7 @@ export interface MetabaseTransformsSchemaTableIncrementalTarget {
 export type MetabaseTransformsSchemaTransformTarget =
   | MetabaseTransformsSchemaTableTarget
   | MetabaseTransformsSchemaTableIncrementalTarget;
-const MetabaseTransformsSchemaTransformTarget =
-  S.Unknown as any as S.Schema<MetabaseTransformsSchemaTransformTarget>;
-
 export type MetabaseTransformsRestApiTransformRunTrigger = "none" | "global-schedule";
-const MetabaseTransformsRestApiTransformRunTrigger = S.String;
-
 export interface CreateTransformRequest {
   owner_email?: string | null;
   owner_user_id?: number | null;
@@ -5428,34 +3109,14 @@ export interface CreateTransformRequest {
   run_trigger?: MetabaseTransformsRestApiTransformRunTrigger | (string & {});
   description?: string | null;
 }
-const CreateTransformRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<CreateTransformRequest>;
-
 export interface CreateTransformResponse {}
-const CreateTransformResponse = CreateActionResponse as any as S.Schema<CreateTransformResponse>;
-
 export interface CreateTransformCancelRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateTransformCancelRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<CreateTransformCancelRequest>;
-
 export interface CreateTransformCancelResponse {}
-const CreateTransformCancelResponse =
-  CreateActionResponse as any as S.Schema<CreateTransformCancelResponse>;
-
 export type CreateTransformJobRequestTagIdsList = Array<number>;
-const CreateTransformJobRequestTagIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<CreateTransformJobRequestTagIdsList>;
-
 export type CreateTransformJobRequestUiDisplayType = "cron/raw" | "cron/builder";
-const CreateTransformJobRequestUiDisplayType = S.String;
-
 export interface CreateTransformJobRequest {
   description?: string | null;
   name: string;
@@ -5463,84 +3124,34 @@ export interface CreateTransformJobRequest {
   tag_ids?: CreateTransformJobRequestTagIdsList;
   ui_display_type?: CreateTransformJobRequestUiDisplayType | (string & {});
 }
-const CreateTransformJobRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<CreateTransformJobRequest>;
-
 export interface CreateTransformJobResponse {}
-const CreateTransformJobResponse =
-  CreateActionResponse as any as S.Schema<CreateTransformJobResponse>;
-
 export interface CreateTransformJobRunRequest {
   /** value must be an integer greater than zero. */
   job_id: number;
   run_all?: boolean;
 }
-const CreateTransformJobRunRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<CreateTransformJobRunRequest>;
-
 export interface CreateTransformJobRunResponse {}
-const CreateTransformJobRunResponse =
-  CreateActionResponse as any as S.Schema<CreateTransformJobRunResponse>;
-
 export interface CreateTransformResetCheckpointRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateTransformResetCheckpointRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<CreateTransformResetCheckpointRequest>;
-
 export interface CreateTransformResetCheckpointResponse {}
-const CreateTransformResetCheckpointResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateTransformResetCheckpointResponse>;
-
 export interface CreateTransformRunRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateTransformRunRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<CreateTransformRunRequest>;
-
 export interface CreateTransformRunResponse {}
-const CreateTransformRunResponse =
-  CreateActionResponse as any as S.Schema<CreateTransformRunResponse>;
-
 export interface CreateTransformTagRequest {
   name: string;
 }
-const CreateTransformTagRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<CreateTransformTagRequest>;
-
 export interface CreateTransformTagResponse {}
-const CreateTransformTagResponse =
-  CreateActionResponse as any as S.Schema<CreateTransformTagResponse>;
-
 export type CreateUploadCsvRequestFile = CreateTableAppendCsvRequestFile;
 export interface CreateUploadCsvRequest {
   collection_id: number | null;
   file: CreateTableAppendCsvRequestFile;
 }
-const CreateUploadCsvRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<CreateUploadCsvRequest>;
-
 export interface CreateUploadCsvResponse {}
-const CreateUploadCsvResponse = CreateActionResponse as any as S.Schema<CreateUploadCsvResponse>;
-
 export type CreateUserRequestLoginAttributesMap = { [key: string]: unknown | undefined };
-const CreateUserRequestLoginAttributesMap =
-  MetabaseLibSchemaActionsRow as any as S.Schema<CreateUserRequestLoginAttributesMap>;
-
 /** Group Membership info of a User. In which :is_group_manager is only included if `advanced-permissions` is enabled. */
 export interface MetabaseUsersSchemaUserGroupMembership {
   /** value must be an integer greater than zero. */
@@ -5548,32 +3159,15 @@ export interface MetabaseUsersSchemaUserGroupMembership {
   /** Only relevant if `advanced-permissions` is enabled. If it is, you should always include this key. */
   is_group_manager?: boolean;
 }
-const MetabaseUsersSchemaUserGroupMembership = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<MetabaseUsersSchemaUserGroupMembership>;
-
 export type CreateUserRequestUserGroupMembershipsList =
   Array<MetabaseUsersSchemaUserGroupMembership>;
-const CreateUserRequestUserGroupMembershipsList = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<CreateUserRequestUserGroupMembershipsList>;
-
 export type CreateUserRequestInviteTargetType = "dashboard" | "question";
-const CreateUserRequestInviteTargetType = S.String;
-
 export interface CreateUserRequestInviteTarget {
   /** value must be an integer greater than zero. */
   id: number;
   name: string;
   type: CreateUserRequestInviteTargetType | (string & {});
 }
-const CreateUserRequestInviteTarget = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<CreateUserRequestInviteTarget>;
-
 export interface CreateUserRequest {
   login_attributes?: CreateUserRequestLoginAttributesMap | null;
   user_group_memberships?: CreateUserRequestUserGroupMembershipsList | null;
@@ -5586,234 +3180,97 @@ export interface CreateUserRequest {
   password?: string | null;
   invite_target?: CreateUserRequestInviteTarget | null;
 }
-const CreateUserRequest = /*@__PURE__*/ __L.at(__c37, 1) as any as S.Schema<CreateUserRequest>;
-
 export interface CreateUserResponse {}
-const CreateUserResponse = CreateActionResponse as any as S.Schema<CreateUserResponse>;
-
 export interface CreateUserPasswordResetUrlRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const CreateUserPasswordResetUrlRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<CreateUserPasswordResetUrlRequest>;
-
 export interface CreateUserPasswordResetUrlResponse {}
-const CreateUserPasswordResetUrlResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<CreateUserPasswordResetUrlResponse>;
-
 export interface DeleteActionRequest {
   /** value must be an integer greater than zero. */
   action_id: number;
 }
-const DeleteActionRequest = /*@__PURE__*/ __L.at(__c37, 3) as any as S.Schema<DeleteActionRequest>;
-
 export interface DeleteActionResponse {}
-const DeleteActionResponse = CreateActionResponse as any as S.Schema<DeleteActionResponse>;
-
 export interface DeleteActionPublicLinkRequest {
   id: number;
 }
-const DeleteActionPublicLinkRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<DeleteActionPublicLinkRequest>;
-
 export interface DeleteActionPublicLinkResponse {}
-const DeleteActionPublicLinkResponse =
-  CreateActionResponse as any as S.Schema<DeleteActionPublicLinkResponse>;
-
 export interface DeleteAlertSubscriptionRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteAlertSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<DeleteAlertSubscriptionRequest>;
-
 export interface DeleteAlertSubscriptionResponse {}
-const DeleteAlertSubscriptionResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<DeleteAlertSubscriptionResponse>;
-
 export type DeleteBookmarkRequestModel = "card" | "dashboard" | "collection" | "document";
-const DeleteBookmarkRequestModel = S.String;
-
 export interface DeleteBookmarkRequest {
   model: DeleteBookmarkRequestModel | (string & {});
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteBookmarkRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<DeleteBookmarkRequest>;
-
 export interface DeleteBookmarkResponse {}
-const DeleteBookmarkResponse = CreateActionResponse as any as S.Schema<DeleteBookmarkResponse>;
-
 export type DeleteCacheRequestModel = "root" | "database" | "dashboard" | "question";
-const DeleteCacheRequestModel = S.String;
-
 export type DeleteCacheRequestModelIdList = Array<number>;
-const DeleteCacheRequestModelIdList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<DeleteCacheRequestModelIdList>;
-
 export interface DeleteCacheRequest {
   model: DeleteCacheRequestModel | (string & {});
   model_id: DeleteCacheRequestModelIdList;
 }
-const DeleteCacheRequest = /*@__PURE__*/ __L.at(__c37, 7) as any as S.Schema<DeleteCacheRequest>;
-
 export interface DeleteCacheResponse {}
-const DeleteCacheResponse = CreateActionResponse as any as S.Schema<DeleteCacheResponse>;
-
 export interface DeleteCardRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteCardRequest = /*@__PURE__*/ __L.at(__c38, 0) as any as S.Schema<DeleteCardRequest>;
-
 export interface DeleteCardResponse {}
-const DeleteCardResponse = CreateActionResponse as any as S.Schema<DeleteCardResponse>;
-
 export interface DeleteCardPublicLinkRequest {
   /** value must be an integer greater than zero. */
   card_id: number;
 }
-const DeleteCardPublicLinkRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<DeleteCardPublicLinkRequest>;
-
 export interface DeleteCardPublicLinkResponse {}
-const DeleteCardPublicLinkResponse =
-  CreateActionResponse as any as S.Schema<DeleteCardPublicLinkResponse>;
-
 export interface DeleteCollectionRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteCollectionRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<DeleteCollectionRequest>;
-
 export interface DeleteCollectionResponse {}
-const DeleteCollectionResponse = CreateActionResponse as any as S.Schema<DeleteCollectionResponse>;
-
 export interface DeleteCommentRequest {
   /** value must be an integer greater than zero. */
   comment_id: number;
 }
-const DeleteCommentRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<DeleteCommentRequest>;
-
 export interface DeleteCommentResponse {}
-const DeleteCommentResponse = CreateActionResponse as any as S.Schema<DeleteCommentResponse>;
-
 export interface DeleteDashboardRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteDashboardRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<DeleteDashboardRequest>;
-
 export interface DeleteDashboardResponse {}
-const DeleteDashboardResponse = CreateActionResponse as any as S.Schema<DeleteDashboardResponse>;
-
 export interface DeleteDashboardPublicLinkRequest {
   /** value must be an integer greater than zero. */
   dashboard_id: number;
 }
-const DeleteDashboardPublicLinkRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<DeleteDashboardPublicLinkRequest>;
-
 export interface DeleteDashboardPublicLinkResponse {}
-const DeleteDashboardPublicLinkResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteDashboardPublicLinkResponse>;
-
 export interface DeleteDatabaseRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<DeleteDatabaseRequest>;
-
 export interface DeleteDatabaseResponse {}
-const DeleteDatabaseResponse = CreateActionResponse as any as S.Schema<DeleteDatabaseResponse>;
-
 export interface DeleteDocumentRequest {
   /** value must be an integer greater than zero. */
   document_id: number;
 }
-const DeleteDocumentRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<DeleteDocumentRequest>;
-
 export interface DeleteDocumentResponse {}
-const DeleteDocumentResponse = CreateActionResponse as any as S.Schema<DeleteDocumentResponse>;
-
 export interface DeleteDocumentPublicLinkRequest {
   /** value must be an integer greater than zero. */
   document_id: number;
 }
-const DeleteDocumentPublicLinkRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<DeleteDocumentPublicLinkRequest>;
-
 export interface DeleteDocumentPublicLinkResponse {}
-const DeleteDocumentPublicLinkResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteDocumentPublicLinkResponse>;
-
 export interface DeleteEeAdvancedPermissionsImpersonationRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteEeAdvancedPermissionsImpersonationRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<DeleteEeAdvancedPermissionsImpersonationRequest>;
-
 export interface DeleteEeAdvancedPermissionsImpersonationResponse {}
-const DeleteEeAdvancedPermissionsImpersonationResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteEeAdvancedPermissionsImpersonationResponse>;
-
 export interface DeleteEeAiControlsPermissionsAdvancedRequest {}
-const DeleteEeAiControlsPermissionsAdvancedRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  2,
-) as any as S.Schema<DeleteEeAiControlsPermissionsAdvancedRequest>;
-
 export interface DeleteEeAiControlsPermissionsAdvancedResponse {}
-const DeleteEeAiControlsPermissionsAdvancedResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteEeAiControlsPermissionsAdvancedResponse>;
-
 export interface DeleteEeAuditAppUserSubscriptionsRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteEeAuditAppUserSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<DeleteEeAuditAppUserSubscriptionsRequest>;
-
 export interface DeleteEeAuditAppUserSubscriptionsResponse {}
-const DeleteEeAuditAppUserSubscriptionsResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteEeAuditAppUserSubscriptionsResponse>;
-
 export type DeleteEeCloudAddOnsRequestProductType =
   | "metabase-ai"
   | "metabase-ai-tiered"
@@ -5826,503 +3283,196 @@ export type DeleteEeCloudAddOnsRequestProductType =
   | "transforms-advanced-metered"
   | "dwh-rent"
   | "etl-connections";
-const DeleteEeCloudAddOnsRequestProductType = S.String;
-
 export interface DeleteEeCloudAddOnsRequest {
   product_type: DeleteEeCloudAddOnsRequestProductType | (string & {});
 }
-const DeleteEeCloudAddOnsRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<DeleteEeCloudAddOnsRequest>;
-
 export interface DeleteEeCloudAddOnsResponse {}
-const DeleteEeCloudAddOnsResponse =
-  CreateActionResponse as any as S.Schema<DeleteEeCloudAddOnsResponse>;
-
 export interface DeleteEeCustomVizPluginRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteEeCustomVizPluginRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<DeleteEeCustomVizPluginRequest>;
-
 export interface DeleteEeCustomVizPluginResponse {}
-const DeleteEeCustomVizPluginResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<DeleteEeCustomVizPluginResponse>;
-
 export interface DeleteEeDatabaseReplicationConnectionDatabaseRequest {
   /** value must be an integer greater than zero. */
   database_id: number;
 }
-const DeleteEeDatabaseReplicationConnectionDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  6,
-) as any as S.Schema<DeleteEeDatabaseReplicationConnectionDatabaseRequest>;
-
 export interface DeleteEeDatabaseReplicationConnectionDatabaseResponse {}
-const DeleteEeDatabaseReplicationConnectionDatabaseResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteEeDatabaseReplicationConnectionDatabaseResponse>;
-
 export interface DeleteEeEmailOverrideRequest {}
-const DeleteEeEmailOverrideRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<DeleteEeEmailOverrideRequest>;
-
 export interface DeleteEeEmailOverrideResponse {}
-const DeleteEeEmailOverrideResponse =
-  CreateActionResponse as any as S.Schema<DeleteEeEmailOverrideResponse>;
-
 export interface DeleteEeGsheetsConnectionRequest {}
-const DeleteEeGsheetsConnectionRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<DeleteEeGsheetsConnectionRequest>;
-
 export interface DeleteEeGsheetsConnectionResponse {}
-const DeleteEeGsheetsConnectionResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteEeGsheetsConnectionResponse>;
-
 export interface DeleteEeScimGroupRequest {
   id: string;
 }
-const DeleteEeScimGroupRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<DeleteEeScimGroupRequest>;
-
 export interface DeleteEeScimGroupResponse {}
-const DeleteEeScimGroupResponse =
-  CreateActionResponse as any as S.Schema<DeleteEeScimGroupResponse>;
-
 export interface DeleteEeUploadManagementTableRequest {
   /** value must be an integer greater than zero. */
   id: number;
   archive_cards?: boolean;
 }
-const DeleteEeUploadManagementTableRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<DeleteEeUploadManagementTableRequest>;
-
 export interface DeleteEeUploadManagementTableResponse {}
-const DeleteEeUploadManagementTableResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteEeUploadManagementTableResponse>;
-
 export interface DeleteEmailRequest {}
-const DeleteEmailRequest = /*@__PURE__*/ __L.at(__c40, 3) as any as S.Schema<DeleteEmailRequest>;
-
 export interface DeleteEmailResponse {}
-const DeleteEmailResponse = CreateActionResponse as any as S.Schema<DeleteEmailResponse>;
-
 export interface DeleteEmbedThemeRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteEmbedThemeRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<DeleteEmbedThemeRequest>;
-
 export interface DeleteEmbedThemeResponse {}
-const DeleteEmbedThemeResponse = CreateActionResponse as any as S.Schema<DeleteEmbedThemeResponse>;
-
 export interface DeleteFieldDimensionRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteFieldDimensionRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<DeleteFieldDimensionRequest>;
-
 export interface DeleteFieldDimensionResponse {}
-const DeleteFieldDimensionResponse =
-  CreateActionResponse as any as S.Schema<DeleteFieldDimensionResponse>;
-
 export interface DeleteGlossaryRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteGlossaryRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<DeleteGlossaryRequest>;
-
 export interface DeleteGlossaryResponse {}
-const DeleteGlossaryResponse = CreateActionResponse as any as S.Schema<DeleteGlossaryResponse>;
-
 export interface DeleteKeyRequest {
   id: number;
 }
-const DeleteKeyRequest = /*@__PURE__*/ __L.at(__c40, 7) as any as S.Schema<DeleteKeyRequest>;
-
 export interface DeleteKeyResponse {}
-const DeleteKeyResponse = CreateActionResponse as any as S.Schema<DeleteKeyResponse>;
-
 export interface DeleteLoggerAdjustmentRequest {}
-const DeleteLoggerAdjustmentRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<DeleteLoggerAdjustmentRequest>;
-
 export interface DeleteLoggerAdjustmentResponse {}
-const DeleteLoggerAdjustmentResponse =
-  CreateActionResponse as any as S.Schema<DeleteLoggerAdjustmentResponse>;
-
 export interface DeleteMetabotMetabotPromptSuggestionsRequest {
   id: number;
 }
-const DeleteMetabotMetabotPromptSuggestionsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsRequest>;
-
 export interface DeleteMetabotMetabotPromptSuggestionsResponse {}
-const DeleteMetabotMetabotPromptSuggestionsResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsResponse>;
-
 export interface DeleteMetabotMetabotPromptSuggestionsPromptRequest {
   id: number;
   prompt_id: number;
 }
-const DeleteMetabotMetabotPromptSuggestionsPromptRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  2,
-) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsPromptRequest>;
-
 export interface DeleteMetabotMetabotPromptSuggestionsPromptResponse {}
-const DeleteMetabotMetabotPromptSuggestionsPromptResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsPromptResponse>;
-
 export interface DeleteModelIndexRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteModelIndexRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  3,
-) as any as S.Schema<DeleteModelIndexRequest>;
-
 export interface DeleteModelIndexResponse {}
-const DeleteModelIndexResponse = CreateActionResponse as any as S.Schema<DeleteModelIndexResponse>;
-
 export interface DeleteMtGtapRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteMtGtapRequest = /*@__PURE__*/ __L.at(__c41, 4) as any as S.Schema<DeleteMtGtapRequest>;
-
 export interface DeleteMtGtapResponse {}
-const DeleteMtGtapResponse = CreateActionResponse as any as S.Schema<DeleteMtGtapResponse>;
-
 export interface DeleteOsiAiContextRequest {
   entity_type: string;
   /** value must be an integer greater than zero. */
   entity_local_id: number;
 }
-const DeleteOsiAiContextRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  5,
-) as any as S.Schema<DeleteOsiAiContextRequest>;
-
 export interface DeleteOsiAiContextResponse {}
-const DeleteOsiAiContextResponse =
-  CreateActionResponse as any as S.Schema<DeleteOsiAiContextResponse>;
-
 export interface DeletePermissionsGroupRequest {
   /** value must be an integer greater than zero. */
   group_id: number;
 }
-const DeletePermissionsGroupRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<DeletePermissionsGroupRequest>;
-
 export interface DeletePermissionsGroupResponse {}
-const DeletePermissionsGroupResponse =
-  CreateActionResponse as any as S.Schema<DeletePermissionsGroupResponse>;
-
 export interface DeletePermissionsMembershipRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeletePermissionsMembershipRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<DeletePermissionsMembershipRequest>;
-
 export interface DeletePermissionsMembershipResponse {}
-const DeletePermissionsMembershipResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeletePermissionsMembershipResponse>;
-
 export interface DeletePulseSubscriptionRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeletePulseSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<DeletePulseSubscriptionRequest>;
-
 export interface DeletePulseSubscriptionResponse {}
-const DeletePulseSubscriptionResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<DeletePulseSubscriptionResponse>;
-
 export interface DeleteSegmentRequest {
   /** value must be an integer greater than zero. */
   id: number;
   revision_message: string;
 }
-const DeleteSegmentRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<DeleteSegmentRequest>;
-
 export interface DeleteSegmentResponse {}
-const DeleteSegmentResponse = CreateActionResponse as any as S.Schema<DeleteSegmentResponse>;
-
 export interface DeleteSessionRequest {}
-const DeleteSessionRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  2,
-) as any as S.Schema<DeleteSessionRequest>;
-
 export interface DeleteSessionResponse {}
-const DeleteSessionResponse = CreateActionResponse as any as S.Schema<DeleteSessionResponse>;
-
 export interface DeleteTimelineRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteTimelineRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  3,
-) as any as S.Schema<DeleteTimelineRequest>;
-
 export interface DeleteTimelineResponse {}
-const DeleteTimelineResponse = CreateActionResponse as any as S.Schema<DeleteTimelineResponse>;
-
 export interface DeleteTimelineEventRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteTimelineEventRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<DeleteTimelineEventRequest>;
-
 export interface DeleteTimelineEventResponse {}
-const DeleteTimelineEventResponse =
-  CreateActionResponse as any as S.Schema<DeleteTimelineEventResponse>;
-
 export interface DeleteTransformRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteTransformRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<DeleteTransformRequest>;
-
 export interface DeleteTransformResponse {}
-const DeleteTransformResponse = CreateActionResponse as any as S.Schema<DeleteTransformResponse>;
-
 export interface DeleteTransformJobRequest {
   /** value must be an integer greater than zero. */
   job_id: number;
 }
-const DeleteTransformJobRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<DeleteTransformJobRequest>;
-
 export interface DeleteTransformJobResponse {}
-const DeleteTransformJobResponse =
-  CreateActionResponse as any as S.Schema<DeleteTransformJobResponse>;
-
 export interface DeleteTransformTableRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteTransformTableRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<DeleteTransformTableRequest>;
-
 export interface DeleteTransformTableResponse {}
-const DeleteTransformTableResponse =
-  CreateActionResponse as any as S.Schema<DeleteTransformTableResponse>;
-
 export interface DeleteTransformTagRequest {
   /** value must be an integer greater than zero. */
   tag_id: number;
 }
-const DeleteTransformTagRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<DeleteTransformTagRequest>;
-
 export interface DeleteTransformTagResponse {}
-const DeleteTransformTagResponse =
-  CreateActionResponse as any as S.Schema<DeleteTransformTagResponse>;
-
 export interface DeleteUserRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const DeleteUserRequest = /*@__PURE__*/ __L.at(__c43, 1) as any as S.Schema<DeleteUserRequest>;
-
 export interface DeleteUserResponse {}
-const DeleteUserResponse = CreateActionResponse as any as S.Schema<DeleteUserResponse>;
-
 export interface DeleteUserKeyValueNamespaceKeyRequest {
   namespace: string;
   key: string;
 }
-const DeleteUserKeyValueNamespaceKeyRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<DeleteUserKeyValueNamespaceKeyRequest>;
-
 export interface DeleteUserKeyValueNamespaceKeyResponse {}
-const DeleteUserKeyValueNamespaceKeyResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<DeleteUserKeyValueNamespaceKeyResponse>;
-
 export interface GetActionRequest {
   model_id?: number;
 }
-const GetActionRequest = /*@__PURE__*/ __L.at(__c43, 3) as any as S.Schema<GetActionRequest>;
-
 export interface GetActionResponse {}
-const GetActionResponse = CreateActionResponse as any as S.Schema<GetActionResponse>;
-
 export interface GetAction2Request {}
-const GetAction2Request = /*@__PURE__*/ __L.at(__c43, 4) as any as S.Schema<GetAction2Request>;
-
 export interface GetAction2Response {}
-const GetAction2Response = CreateActionResponse as any as S.Schema<GetAction2Response>;
-
 export interface GetActionByActionIdRequest {
   /** value must be an integer greater than zero. */
   action_id: number;
 }
-const GetActionByActionIdRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<GetActionByActionIdRequest>;
-
 export interface GetActionByActionIdResponse {}
-const GetActionByActionIdResponse =
-  CreateActionResponse as any as S.Schema<GetActionByActionIdResponse>;
-
 export interface GetActionByUuidRequest {
   /** value must be a valid UUID. */
   uuid: string;
 }
-const GetActionByUuidRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  6,
-) as any as S.Schema<GetActionByUuidRequest>;
-
 export interface GetActionByUuidResponse {}
-const GetActionByUuidResponse = CreateActionResponse as any as S.Schema<GetActionByUuidResponse>;
-
 /** value must be a JSON object mapping parameter ids to scalar values. */
 export type MetabaseActionsSchemaPrefetchParameterValues = { [key: string]: unknown | undefined };
-const MetabaseActionsSchemaPrefetchParameterValues =
-  MetabaseLibSchemaActionsRow as any as S.Schema<MetabaseActionsSchemaPrefetchParameterValues>;
-
 export interface GetActionExecuteRequest {
   /** value must be an integer greater than zero. */
   action_id: number;
   parameters: MetabaseActionsSchemaPrefetchParameterValues;
 }
-const GetActionExecuteRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<GetActionExecuteRequest>;
-
 export interface GetActionExecuteResponse {}
-const GetActionExecuteResponse = CreateActionResponse as any as S.Schema<GetActionExecuteResponse>;
-
 export interface GetActivityMostRecentlyViewedDashboardRequest {}
-const GetActivityMostRecentlyViewedDashboardRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<GetActivityMostRecentlyViewedDashboardRequest>;
-
 export interface GetActivityMostRecentlyViewedDashboardResponse {}
-const GetActivityMostRecentlyViewedDashboardResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetActivityMostRecentlyViewedDashboardResponse>;
-
 export interface GetActivityPopularItemsRequest {}
-const GetActivityPopularItemsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<GetActivityPopularItemsRequest>;
-
 export interface GetActivityPopularItemsResponse {}
-const GetActivityPopularItemsResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<GetActivityPopularItemsResponse>;
-
 export type GetActivityRecentsRequestContextItem = "selections" | "views";
 export type GetActivityRecentsRequestContextList = Array<
   GetActivityRecentsRequestContextItem | (string & {})
 >;
-const GetActivityRecentsRequestContextList =
-  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetActivityRecentsRequestContextList>;
-
 export interface GetActivityRecentsRequest {
   context: GetActivityRecentsRequestContextList;
   include_metadata?: boolean;
 }
-const GetActivityRecentsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<GetActivityRecentsRequest>;
-
 export interface GetActivityRecentsResponse {}
-const GetActivityRecentsResponse =
-  CreateActionResponse as any as S.Schema<GetActivityRecentsResponse>;
-
 export interface GetAgentPingRequest {}
-const GetAgentPingRequest = /*@__PURE__*/ __L.at(__c44, 3) as any as S.Schema<GetAgentPingRequest>;
-
 export interface GetAgentPingResponse {}
-const GetAgentPingResponse = CreateActionResponse as any as S.Schema<GetAgentPingResponse>;
-
 export interface GetAlertRequest {
   archived?: boolean;
   user_id?: number;
 }
-const GetAlertRequest = /*@__PURE__*/ __L.at(__c44, 4) as any as S.Schema<GetAlertRequest>;
-
 export interface GetAlertResponse {}
-const GetAlertResponse = CreateActionResponse as any as S.Schema<GetAlertResponse>;
-
 export interface GetAlertByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetAlertByIdRequest = /*@__PURE__*/ __L.at(__c44, 5) as any as S.Schema<GetAlertByIdRequest>;
-
 export interface GetAlertByIdResponse {}
-const GetAlertByIdResponse = CreateActionResponse as any as S.Schema<GetAlertByIdResponse>;
-
 export interface GetAnalyticsAnonymousStatsRequest {}
-const GetAnalyticsAnonymousStatsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  6,
-) as any as S.Schema<GetAnalyticsAnonymousStatsRequest>;
-
 export interface GetAnalyticsAnonymousStatsResponse {}
-const GetAnalyticsAnonymousStatsResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAnalyticsAnonymousStatsResponse>;
-
 export type GetAutomagicDashboardRequestEntity =
   | "adhoc"
   | "field"
@@ -6331,26 +3481,13 @@ export type GetAutomagicDashboardRequestEntity =
   | "segment"
   | "table"
   | "transform";
-const GetAutomagicDashboardRequestEntity = S.String;
-
 export type GetAutomagicDashboardRequestShow = unknown | number;
-const GetAutomagicDashboardRequestShow =
-  S.Unknown as any as S.Schema<GetAutomagicDashboardRequestShow>;
-
 export interface GetAutomagicDashboardRequest {
   entity: GetAutomagicDashboardRequestEntity | (string & {});
   entity_id_or_query: string;
   show?: GetAutomagicDashboardRequestShow;
 }
-const GetAutomagicDashboardRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<GetAutomagicDashboardRequest>;
-
 export interface GetAutomagicDashboardResponse {}
-const GetAutomagicDashboardResponse =
-  CreateActionResponse as any as S.Schema<GetAutomagicDashboardResponse>;
-
 export type GetAutomagicDashboardCellRequestEntity =
   | "adhoc"
   | "field"
@@ -6359,15 +3496,10 @@ export type GetAutomagicDashboardCellRequestEntity =
   | "segment"
   | "table"
   | "transform";
-const GetAutomagicDashboardCellRequestEntity = S.String;
-
 export type GetAutomagicDashboardCellRequestShowCase0 = "all";
 export type GetAutomagicDashboardCellRequestShow =
   | GetAutomagicDashboardCellRequestShowCase0
   | number;
-const GetAutomagicDashboardCellRequestShow =
-  S.Unknown as any as S.Schema<GetAutomagicDashboardCellRequestShow>;
-
 export interface GetAutomagicDashboardCellRequest {
   entity: GetAutomagicDashboardCellRequestEntity | (string & {});
   entity_id_or_query: string;
@@ -6375,15 +3507,7 @@ export interface GetAutomagicDashboardCellRequest {
   /** invalid show value */
   show?: GetAutomagicDashboardCellRequestShow;
 }
-const GetAutomagicDashboardCellRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  0,
-) as any as S.Schema<GetAutomagicDashboardCellRequest>;
-
 export interface GetAutomagicDashboardCellResponse {}
-const GetAutomagicDashboardCellResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAutomagicDashboardCellResponse>;
-
 export type GetAutomagicDashboardCellCompareRequestEntity =
   | "adhoc"
   | "field"
@@ -6392,18 +3516,11 @@ export type GetAutomagicDashboardCellCompareRequestEntity =
   | "segment"
   | "table"
   | "transform";
-const GetAutomagicDashboardCellCompareRequestEntity = S.String;
-
 export type GetAutomagicDashboardCellCompareRequestComparisonEntity = "adhoc" | "segment" | "table";
-const GetAutomagicDashboardCellCompareRequestComparisonEntity = S.String;
-
 export type GetAutomagicDashboardCellCompareRequestShowCase0 = "all";
 export type GetAutomagicDashboardCellCompareRequestShow =
   | GetAutomagicDashboardCellCompareRequestShowCase0
   | number;
-const GetAutomagicDashboardCellCompareRequestShow =
-  S.Unknown as any as S.Schema<GetAutomagicDashboardCellCompareRequestShow>;
-
 export interface GetAutomagicDashboardCellCompareRequest {
   entity: GetAutomagicDashboardCellCompareRequestEntity | (string & {});
   entity_id_or_query: string;
@@ -6414,15 +3531,7 @@ export interface GetAutomagicDashboardCellCompareRequest {
   /** invalid show value */
   show?: GetAutomagicDashboardCellCompareRequestShow;
 }
-const GetAutomagicDashboardCellCompareRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<GetAutomagicDashboardCellCompareRequest>;
-
 export interface GetAutomagicDashboardCellCompareResponse {}
-const GetAutomagicDashboardCellCompareResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAutomagicDashboardCellCompareResponse>;
-
 export type GetAutomagicDashboardCellRuleDashboardTemplateRequestEntity =
   | "adhoc"
   | "field"
@@ -6431,15 +3540,10 @@ export type GetAutomagicDashboardCellRuleDashboardTemplateRequestEntity =
   | "segment"
   | "table"
   | "transform";
-const GetAutomagicDashboardCellRuleDashboardTemplateRequestEntity = S.String;
-
 export type GetAutomagicDashboardCellRuleDashboardTemplateRequestShowCase0 = "all";
 export type GetAutomagicDashboardCellRuleDashboardTemplateRequestShow =
   | GetAutomagicDashboardCellRuleDashboardTemplateRequestShowCase0
   | number;
-const GetAutomagicDashboardCellRuleDashboardTemplateRequestShow =
-  S.Unknown as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateRequestShow>;
-
 export interface GetAutomagicDashboardCellRuleDashboardTemplateRequest {
   entity: GetAutomagicDashboardCellRuleDashboardTemplateRequestEntity | (string & {});
   entity_id_or_query: string;
@@ -6450,15 +3554,7 @@ export interface GetAutomagicDashboardCellRuleDashboardTemplateRequest {
   /** invalid show value */
   show?: GetAutomagicDashboardCellRuleDashboardTemplateRequestShow;
 }
-const GetAutomagicDashboardCellRuleDashboardTemplateRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateRequest>;
-
 export interface GetAutomagicDashboardCellRuleDashboardTemplateResponse {}
-const GetAutomagicDashboardCellRuleDashboardTemplateResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateResponse>;
-
 export type GetAutomagicDashboardCellRuleDashboardTemplateCompareRequestEntity =
   | "adhoc"
   | "field"
@@ -6467,21 +3563,14 @@ export type GetAutomagicDashboardCellRuleDashboardTemplateCompareRequestEntity =
   | "segment"
   | "table"
   | "transform";
-const GetAutomagicDashboardCellRuleDashboardTemplateCompareRequestEntity = S.String;
-
 export type GetAutomagicDashboardCellRuleDashboardTemplateCompareRequestComparisonEntity =
   | "adhoc"
   | "segment"
   | "table";
-const GetAutomagicDashboardCellRuleDashboardTemplateCompareRequestComparisonEntity = S.String;
-
 export type GetAutomagicDashboardCellRuleDashboardTemplateCompareRequestShowCase0 = "all";
 export type GetAutomagicDashboardCellRuleDashboardTemplateCompareRequestShow =
   | GetAutomagicDashboardCellRuleDashboardTemplateCompareRequestShowCase0
   | number;
-const GetAutomagicDashboardCellRuleDashboardTemplateCompareRequestShow =
-  S.Unknown as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateCompareRequestShow>;
-
 export interface GetAutomagicDashboardCellRuleDashboardTemplateCompareRequest {
   entity: GetAutomagicDashboardCellRuleDashboardTemplateCompareRequestEntity | (string & {});
   entity_id_or_query: string;
@@ -6497,17 +3586,7 @@ export interface GetAutomagicDashboardCellRuleDashboardTemplateCompareRequest {
   /** invalid show value */
   show?: GetAutomagicDashboardCellRuleDashboardTemplateCompareRequestShow;
 }
-const GetAutomagicDashboardCellRuleDashboardTemplateCompareRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  3,
-) as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateCompareRequest>;
-
 export interface GetAutomagicDashboardCellRuleDashboardTemplateCompareResponse {}
-const GetAutomagicDashboardCellRuleDashboardTemplateCompareResponse = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateCompareResponse>;
-
 export type GetAutomagicDashboardCompareRequestEntity =
   | "adhoc"
   | "field"
@@ -6516,18 +3595,11 @@ export type GetAutomagicDashboardCompareRequestEntity =
   | "segment"
   | "table"
   | "transform";
-const GetAutomagicDashboardCompareRequestEntity = S.String;
-
 export type GetAutomagicDashboardCompareRequestComparisonEntity = "adhoc" | "segment" | "table";
-const GetAutomagicDashboardCompareRequestComparisonEntity = S.String;
-
 export type GetAutomagicDashboardCompareRequestShowCase0 = "all";
 export type GetAutomagicDashboardCompareRequestShow =
   | GetAutomagicDashboardCompareRequestShowCase0
   | number;
-const GetAutomagicDashboardCompareRequestShow =
-  S.Unknown as any as S.Schema<GetAutomagicDashboardCompareRequestShow>;
-
 export interface GetAutomagicDashboardCompareRequest {
   entity: GetAutomagicDashboardCompareRequestEntity | (string & {});
   entity_id_or_query: string;
@@ -6537,15 +3609,7 @@ export interface GetAutomagicDashboardCompareRequest {
   /** invalid show value */
   show?: GetAutomagicDashboardCompareRequestShow;
 }
-const GetAutomagicDashboardCompareRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  5,
-) as any as S.Schema<GetAutomagicDashboardCompareRequest>;
-
 export interface GetAutomagicDashboardCompareResponse {}
-const GetAutomagicDashboardCompareResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAutomagicDashboardCompareResponse>;
-
 export type GetAutomagicDashboardEntityOrQueryQueryMetadataRequestEntity =
   | "adhoc"
   | "field"
@@ -6554,21 +3618,11 @@ export type GetAutomagicDashboardEntityOrQueryQueryMetadataRequestEntity =
   | "segment"
   | "table"
   | "transform";
-const GetAutomagicDashboardEntityOrQueryQueryMetadataRequestEntity = S.String;
-
 export interface GetAutomagicDashboardEntityOrQueryQueryMetadataRequest {
   entity: GetAutomagicDashboardEntityOrQueryQueryMetadataRequestEntity | (string & {});
   entity_id_or_query: string;
 }
-const GetAutomagicDashboardEntityOrQueryQueryMetadataRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<GetAutomagicDashboardEntityOrQueryQueryMetadataRequest>;
-
 export interface GetAutomagicDashboardEntityOrQueryQueryMetadataResponse {}
-const GetAutomagicDashboardEntityOrQueryQueryMetadataResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAutomagicDashboardEntityOrQueryQueryMetadataResponse>;
-
 export type GetAutomagicDashboardRuleDashboardTemplateRequestEntity =
   | "adhoc"
   | "field"
@@ -6577,15 +3631,10 @@ export type GetAutomagicDashboardRuleDashboardTemplateRequestEntity =
   | "segment"
   | "table"
   | "transform";
-const GetAutomagicDashboardRuleDashboardTemplateRequestEntity = S.String;
-
 export type GetAutomagicDashboardRuleDashboardTemplateRequestShowCase0 = "all";
 export type GetAutomagicDashboardRuleDashboardTemplateRequestShow =
   | GetAutomagicDashboardRuleDashboardTemplateRequestShowCase0
   | number;
-const GetAutomagicDashboardRuleDashboardTemplateRequestShow =
-  S.Unknown as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateRequestShow>;
-
 export interface GetAutomagicDashboardRuleDashboardTemplateRequest {
   entity: GetAutomagicDashboardRuleDashboardTemplateRequestEntity | (string & {});
   entity_id_or_query: string;
@@ -6595,15 +3644,7 @@ export interface GetAutomagicDashboardRuleDashboardTemplateRequest {
   /** invalid show value */
   show?: GetAutomagicDashboardRuleDashboardTemplateRequestShow;
 }
-const GetAutomagicDashboardRuleDashboardTemplateRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateRequest>;
-
 export interface GetAutomagicDashboardRuleDashboardTemplateResponse {}
-const GetAutomagicDashboardRuleDashboardTemplateResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateResponse>;
-
 export type GetAutomagicDashboardRuleDashboardTemplateCompareRequestEntity =
   | "adhoc"
   | "field"
@@ -6612,21 +3653,14 @@ export type GetAutomagicDashboardRuleDashboardTemplateCompareRequestEntity =
   | "segment"
   | "table"
   | "transform";
-const GetAutomagicDashboardRuleDashboardTemplateCompareRequestEntity = S.String;
-
 export type GetAutomagicDashboardRuleDashboardTemplateCompareRequestComparisonEntity =
   | "adhoc"
   | "segment"
   | "table";
-const GetAutomagicDashboardRuleDashboardTemplateCompareRequestComparisonEntity = S.String;
-
 export type GetAutomagicDashboardRuleDashboardTemplateCompareRequestShowCase0 = "all";
 export type GetAutomagicDashboardRuleDashboardTemplateCompareRequestShow =
   | GetAutomagicDashboardRuleDashboardTemplateCompareRequestShowCase0
   | number;
-const GetAutomagicDashboardRuleDashboardTemplateCompareRequestShow =
-  S.Unknown as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateCompareRequestShow>;
-
 export interface GetAutomagicDashboardRuleDashboardTemplateCompareRequest {
   entity: GetAutomagicDashboardRuleDashboardTemplateCompareRequestEntity | (string & {});
   entity_id_or_query: string;
@@ -6641,78 +3675,27 @@ export interface GetAutomagicDashboardRuleDashboardTemplateCompareRequest {
   /** invalid show value */
   show?: GetAutomagicDashboardRuleDashboardTemplateCompareRequestShow;
 }
-const GetAutomagicDashboardRuleDashboardTemplateCompareRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  0,
-) as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateCompareRequest>;
-
 export interface GetAutomagicDashboardRuleDashboardTemplateCompareResponse {}
-const GetAutomagicDashboardRuleDashboardTemplateCompareResponse =
-  CreateCollectionRootMoveDashboardQuestionCandidateResponse as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateCompareResponse>;
-
 export interface GetAutomagicDashboardsDatabaseCandidatesRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetAutomagicDashboardsDatabaseCandidatesRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<GetAutomagicDashboardsDatabaseCandidatesRequest>;
-
 export interface GetAutomagicDashboardsDatabaseCandidatesResponse {}
-const GetAutomagicDashboardsDatabaseCandidatesResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAutomagicDashboardsDatabaseCandidatesResponse>;
-
 export interface GetAutomagicDashboardsModelIndexPrimaryKeyRequest {
   model_index_id: number;
   pk_id: number;
 }
-const GetAutomagicDashboardsModelIndexPrimaryKeyRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  2,
-) as any as S.Schema<GetAutomagicDashboardsModelIndexPrimaryKeyRequest>;
-
 export interface GetAutomagicDashboardsModelIndexPrimaryKeyResponse {}
-const GetAutomagicDashboardsModelIndexPrimaryKeyResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetAutomagicDashboardsModelIndexPrimaryKeyResponse>;
-
 export interface GetBookmarkRequest {}
-const GetBookmarkRequest = /*@__PURE__*/ __L.at(__c46, 3) as any as S.Schema<GetBookmarkRequest>;
-
 export interface GetBookmarkResponse {}
-const GetBookmarkResponse = CreateActionResponse as any as S.Schema<GetBookmarkResponse>;
-
 export interface GetBugReportingConnectionPoolDetailsRequest {}
-const GetBugReportingConnectionPoolDetailsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  4,
-) as any as S.Schema<GetBugReportingConnectionPoolDetailsRequest>;
-
 export interface GetBugReportingConnectionPoolDetailsResponse {}
-const GetBugReportingConnectionPoolDetailsResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetBugReportingConnectionPoolDetailsResponse>;
-
 export interface GetBugReportingDetailsRequest {}
-const GetBugReportingDetailsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<GetBugReportingDetailsRequest>;
-
 export interface GetBugReportingDetailsResponse {}
-const GetBugReportingDetailsResponse =
-  CreateActionResponse as any as S.Schema<GetBugReportingDetailsResponse>;
-
 export type GetCacheRequestModelItem = "root" | "database" | "dashboard" | "question";
 export type GetCacheRequestModelList = Array<GetCacheRequestModelItem | (string & {})>;
-const GetCacheRequestModelList =
-  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetCacheRequestModelList>;
-
 export type GetCacheRequestSortColumn = "name" | "policy" | "collection";
-const GetCacheRequestSortColumn = S.String;
-
 export type GetCacheRequestSortDirection = "asc" | "desc";
-const GetCacheRequestSortDirection = S.String;
-
 export interface GetCacheRequest {
   /** Type of model */
   model?: GetCacheRequestModelList;
@@ -6723,11 +3706,7 @@ export interface GetCacheRequest {
   sort_column?: GetCacheRequestSortColumn | (string & {});
   sort_direction?: GetCacheRequestSortDirection | (string & {});
 }
-const GetCacheRequest = /*@__PURE__*/ __L.at(__c46, 6) as any as S.Schema<GetCacheRequest>;
-
 export interface GetCacheResponse {}
-const GetCacheResponse = CreateActionResponse as any as S.Schema<GetCacheResponse>;
-
 export type GetCardRequestF =
   | "archived"
   | "table"
@@ -6737,169 +3716,78 @@ export type GetCardRequestF =
   | "all"
   | "mine"
   | "database";
-const GetCardRequestF = S.String;
-
 export interface GetCardRequest {
   f?: GetCardRequestF | (string & {});
   model_id?: number;
 }
-const GetCardRequest = /*@__PURE__*/ __L.at(__c46, 7) as any as S.Schema<GetCardRequest>;
-
 export interface GetCardResponse {}
-const GetCardResponse = CreateActionResponse as any as S.Schema<GetCardResponse>;
-
 export interface GetCard2Request {}
-const GetCard2Request = /*@__PURE__*/ __L.at(__c47, 0) as any as S.Schema<GetCard2Request>;
-
 export interface GetCard2Response {}
-const GetCard2Response = CreateActionResponse as any as S.Schema<GetCard2Response>;
-
 export interface GetCardByIdRequest {
   id: string;
   legacy_mbql?: boolean;
 }
-const GetCardByIdRequest = /*@__PURE__*/ __L.at(__c47, 1) as any as S.Schema<GetCardByIdRequest>;
-
 export interface GetCardByIdResponse {}
-const GetCardByIdResponse = CreateActionResponse as any as S.Schema<GetCardByIdResponse>;
-
 export interface GetCardByUuidRequest {
   /** value must be a valid UUID. */
   uuid: string;
 }
-const GetCardByUuidRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<GetCardByUuidRequest>;
-
 export interface GetCardByUuidResponse {}
-const GetCardByUuidResponse = CreateActionResponse as any as S.Schema<GetCardByUuidResponse>;
-
 export interface GetCardDashboardsRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetCardDashboardsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  3,
-) as any as S.Schema<GetCardDashboardsRequest>;
-
 export interface GetCardDashboardsResponse {}
-const GetCardDashboardsResponse =
-  CreateActionResponse as any as S.Schema<GetCardDashboardsResponse>;
-
 export interface GetCardEmbeddableRequest {}
-const GetCardEmbeddableRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  4,
-) as any as S.Schema<GetCardEmbeddableRequest>;
-
 export interface GetCardEmbeddableResponse {}
-const GetCardEmbeddableResponse =
-  CreateActionResponse as any as S.Schema<GetCardEmbeddableResponse>;
-
 export interface GetCardParamRemappingRequest {
   id: number;
   param_key: string;
   value: string;
 }
-const GetCardParamRemappingRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<GetCardParamRemappingRequest>;
-
 export interface GetCardParamRemappingResponse {}
-const GetCardParamRemappingResponse =
-  CreateActionResponse as any as S.Schema<GetCardParamRemappingResponse>;
-
 export interface GetCardParamRemappingRequest2 {
   /** value must be a valid UUID. */
   uuid: string;
   param_key: string;
   value: string;
 }
-const GetCardParamRemappingRequest2 = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<GetCardParamRemappingRequest2>;
-
 export interface GetCardParamRemapping2Response {}
-const GetCardParamRemapping2Response =
-  CreateActionResponse as any as S.Schema<GetCardParamRemapping2Response>;
-
 export interface GetCardParamSearchRequest {
   /** value must be an integer greater than zero. */
   card_id: number;
   param_key: string;
   query: string;
 }
-const GetCardParamSearchRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  7,
-) as any as S.Schema<GetCardParamSearchRequest>;
-
 export interface GetCardParamSearchResponse {}
-const GetCardParamSearchResponse =
-  CreateActionResponse as any as S.Schema<GetCardParamSearchResponse>;
-
 export interface GetCardParamSearchByQueryRequest {
   /** value must be a valid UUID. */
   uuid: string;
   param_key: string;
   query: string;
 }
-const GetCardParamSearchByQueryRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<GetCardParamSearchByQueryRequest>;
-
 export interface GetCardParamSearchByQueryResponse {}
-const GetCardParamSearchByQueryResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetCardParamSearchByQueryResponse>;
-
 export interface GetCardParamValuesRequest {
   /** value must be an integer greater than zero. */
   card_id: number;
   param_key: string;
 }
-const GetCardParamValuesRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  1,
-) as any as S.Schema<GetCardParamValuesRequest>;
-
 export interface GetCardParamValuesResponse {}
-const GetCardParamValuesResponse =
-  CreateActionResponse as any as S.Schema<GetCardParamValuesResponse>;
-
 export interface GetCardParamValuesRequest2 {
   /** value must be a valid UUID. */
   uuid: string;
   param_key: string;
 }
-const GetCardParamValuesRequest2 = /*@__PURE__*/ __L.at(
-  __c48,
-  2,
-) as any as S.Schema<GetCardParamValuesRequest2>;
-
 export interface GetCardParamValues2Response {}
-const GetCardParamValues2Response =
-  CreateActionResponse as any as S.Schema<GetCardParamValues2Response>;
-
 export interface GetCardQueryRequest {
   /** value must be a valid UUID. */
   uuid: string;
   parameters?: MetabaseParametersSchemaParameterValues;
   ignore_cache?: boolean;
 }
-const GetCardQueryRequest = /*@__PURE__*/ __L.at(__c48, 3) as any as S.Schema<GetCardQueryRequest>;
-
 export interface GetCardQueryResponse {}
-const GetCardQueryResponse = CreateActionResponse as any as S.Schema<GetCardQueryResponse>;
-
 /** Schema for valid export formats for downloading query results. */
 export type GetCardQueryByExportFormatRequestExportFormat = "csv" | "api" | "xlsx" | "json";
-const GetCardQueryByExportFormatRequestExportFormat = S.String;
-
 export interface GetCardQueryByExportFormatRequest {
   /** value must be a valid UUID. */
   uuid: string;
@@ -6909,122 +3797,49 @@ export interface GetCardQueryByExportFormatRequest {
   parameters?: MetabaseParametersSchemaParameterValues;
   csv_include_bom?: boolean;
 }
-const GetCardQueryByExportFormatRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<GetCardQueryByExportFormatRequest>;
-
 export interface GetCardQueryByExportFormatResponse {}
-const GetCardQueryByExportFormatResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetCardQueryByExportFormatResponse>;
-
 export interface GetCardQueryMetadataRequest {
   id: string;
 }
-const GetCardQueryMetadataRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<GetCardQueryMetadataRequest>;
-
 export interface GetCardQueryMetadataResponse {}
-const GetCardQueryMetadataResponse =
-  CreateActionResponse as any as S.Schema<GetCardQueryMetadataResponse>;
-
 export interface GetCardSeriesRequest {
   id: number;
   last_cursor?: number;
   query?: string;
   exclude_ids?: unknown;
 }
-const GetCardSeriesRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  6,
-) as any as S.Schema<GetCardSeriesRequest>;
-
 export interface GetCardSeriesResponse {}
-const GetCardSeriesResponse = CreateActionResponse as any as S.Schema<GetCardSeriesResponse>;
-
 export interface GetChannelRequest {
   include_inactive?: boolean | null;
 }
-const GetChannelRequest = /*@__PURE__*/ __L.at(__c48, 7) as any as S.Schema<GetChannelRequest>;
-
 export interface GetChannelResponse {}
-const GetChannelResponse = CreateActionResponse as any as S.Schema<GetChannelResponse>;
-
 export interface GetChannelByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetChannelByIdRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<GetChannelByIdRequest>;
-
 export interface GetChannelByIdResponse {}
-const GetChannelByIdResponse = CreateActionResponse as any as S.Schema<GetChannelByIdResponse>;
-
 export interface GetCloudMigrationRequest {}
-const GetCloudMigrationRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<GetCloudMigrationRequest>;
-
 export interface GetCloudMigrationResponse {}
-const GetCloudMigrationResponse =
-  CreateActionResponse as any as S.Schema<GetCloudMigrationResponse>;
-
 export interface GetCollectionRequest {
   archived?: boolean;
   exclude_other_user_collections?: boolean;
   namespace?: string;
   personal_only?: boolean;
 }
-const GetCollectionRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  2,
-) as any as S.Schema<GetCollectionRequest>;
-
 export interface GetCollectionResponse {}
-const GetCollectionResponse = CreateActionResponse as any as S.Schema<GetCollectionResponse>;
-
 export interface GetCollectionByIdRequest {
   id: string;
 }
-const GetCollectionByIdRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  3,
-) as any as S.Schema<GetCollectionByIdRequest>;
-
 export interface GetCollectionByIdResponse {}
-const GetCollectionByIdResponse =
-  CreateActionResponse as any as S.Schema<GetCollectionByIdResponse>;
-
 export interface GetCollectionDashboardQuestionCandidatesRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetCollectionDashboardQuestionCandidatesRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  4,
-) as any as S.Schema<GetCollectionDashboardQuestionCandidatesRequest>;
-
 export interface GetCollectionDashboardQuestionCandidatesResponse {}
-const GetCollectionDashboardQuestionCandidatesResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetCollectionDashboardQuestionCandidatesResponse>;
-
 export interface GetCollectionGraphRequest {
   namespace?: string;
 }
-const GetCollectionGraphRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<GetCollectionGraphRequest>;
-
 export interface GetCollectionGraphResponse {}
-const GetCollectionGraphResponse =
-  CreateActionResponse as any as S.Schema<GetCollectionGraphResponse>;
-
 export type GetCollectionItemsRequestModelsItem =
   | "dashboard"
   | "table"
@@ -7042,23 +3857,14 @@ export type GetCollectionItemsRequestModelsItem =
 export type GetCollectionItemsRequestModelsList = Array<
   GetCollectionItemsRequestModelsItem | (string & {})
 >;
-const GetCollectionItemsRequestModelsList =
-  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetCollectionItemsRequestModelsList>;
-
 export type GetCollectionItemsRequestPinnedState = "is_not_pinned" | "is_pinned" | "all";
-const GetCollectionItemsRequestPinnedState = S.String;
-
 export type GetCollectionItemsRequestSortColumn =
   | "model"
   | "name"
   | "last_edited_by"
   | "last_edited_at"
   | "description";
-const GetCollectionItemsRequestSortColumn = S.String;
-
 export type GetCollectionItemsRequestSortDirection = "desc" | "asc";
-const GetCollectionItemsRequestSortDirection = S.String;
-
 export interface GetCollectionItemsRequest {
   id: string;
   models?: GetCollectionItemsRequestModelsList;
@@ -7069,37 +3875,13 @@ export interface GetCollectionItemsRequest {
   official_collections_first?: boolean;
   show_dashboard_questions?: boolean;
 }
-const GetCollectionItemsRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<GetCollectionItemsRequest>;
-
 export interface GetCollectionItemsResponse {}
-const GetCollectionItemsResponse =
-  CreateActionResponse as any as S.Schema<GetCollectionItemsResponse>;
-
 export interface GetCollectionRootRequest {
   namespace?: string;
 }
-const GetCollectionRootRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<GetCollectionRootRequest>;
-
 export interface GetCollectionRootResponse {}
-const GetCollectionRootResponse =
-  CreateActionResponse as any as S.Schema<GetCollectionRootResponse>;
-
 export interface GetCollectionRootDashboardQuestionCandidatesRequest {}
-const GetCollectionRootDashboardQuestionCandidatesRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  0,
-) as any as S.Schema<GetCollectionRootDashboardQuestionCandidatesRequest>;
-
 export interface GetCollectionRootDashboardQuestionCandidatesResponse {}
-const GetCollectionRootDashboardQuestionCandidatesResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetCollectionRootDashboardQuestionCandidatesResponse>;
-
 export type GetCollectionRootItemsRequestModelsItem =
   | "dashboard"
   | "table"
@@ -7117,26 +3899,15 @@ export type GetCollectionRootItemsRequestModelsItem =
 export type GetCollectionRootItemsRequestModelsList = Array<
   GetCollectionRootItemsRequestModelsItem | (string & {})
 >;
-const GetCollectionRootItemsRequestModelsList =
-  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetCollectionRootItemsRequestModelsList>;
-
 export type GetCollectionRootItemsRequestCollectionType = "remote-synced";
-const GetCollectionRootItemsRequestCollectionType = S.String;
-
 export type GetCollectionRootItemsRequestPinnedState = "is_not_pinned" | "is_pinned" | "all";
-const GetCollectionRootItemsRequestPinnedState = S.String;
-
 export type GetCollectionRootItemsRequestSortColumn =
   | "model"
   | "name"
   | "last_edited_by"
   | "last_edited_at"
   | "description";
-const GetCollectionRootItemsRequestSortColumn = S.String;
-
 export type GetCollectionRootItemsRequestSortDirection = "desc" | "asc";
-const GetCollectionRootItemsRequestSortDirection = S.String;
-
 export interface GetCollectionRootItemsRequest {
   models?: GetCollectionRootItemsRequestModelsList;
   collection_type?: GetCollectionRootItemsRequestCollectionType | (string & {});
@@ -7149,29 +3920,10 @@ export interface GetCollectionRootItemsRequest {
   official_collections_first?: boolean;
   show_dashboard_questions?: boolean;
 }
-const GetCollectionRootItemsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<GetCollectionRootItemsRequest>;
-
 export interface GetCollectionRootItemsResponse {}
-const GetCollectionRootItemsResponse =
-  CreateActionResponse as any as S.Schema<GetCollectionRootItemsResponse>;
-
 export interface GetCollectionTrashRequest {}
-const GetCollectionTrashRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  2,
-) as any as S.Schema<GetCollectionTrashRequest>;
-
 export interface GetCollectionTrashResponse {}
-const GetCollectionTrashResponse =
-  CreateActionResponse as any as S.Schema<GetCollectionTrashResponse>;
-
 export type GetCollectionTreeRequestNamespacesList = Array<string>;
-const GetCollectionTreeRequestNamespacesList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<GetCollectionTreeRequestNamespacesList>;
-
 export interface GetCollectionTreeRequest {
   exclude_archived?: boolean;
   exclude_other_user_collections?: boolean;
@@ -7181,70 +3933,29 @@ export interface GetCollectionTreeRequest {
   shallow?: boolean;
   collection_id?: number;
 }
-const GetCollectionTreeRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<GetCollectionTreeRequest>;
-
 export interface GetCollectionTreeResponse {}
-const GetCollectionTreeResponse =
-  CreateActionResponse as any as S.Schema<GetCollectionTreeResponse>;
-
 export type GetCommentRequestTargetType = "document";
-const GetCommentRequestTargetType = S.String;
-
 export interface GetCommentRequest {
   target_type: GetCommentRequestTargetType | (string & {});
   /** value must be an integer greater than zero. */
   target_id: number;
 }
-const GetCommentRequest = /*@__PURE__*/ __L.at(__c50, 4) as any as S.Schema<GetCommentRequest>;
-
 export interface GetCommentResponse {}
-const GetCommentResponse = CreateActionResponse as any as S.Schema<GetCommentResponse>;
-
 export interface GetCommentMentionsRequest {}
-const GetCommentMentionsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  5,
-) as any as S.Schema<GetCommentMentionsRequest>;
-
 export interface GetCommentMentionsResponse {}
-const GetCommentMentionsResponse =
-  CreateActionResponse as any as S.Schema<GetCommentMentionsResponse>;
-
 export interface GetDashboardRequest {}
-const GetDashboardRequest = /*@__PURE__*/ __L.at(__c50, 6) as any as S.Schema<GetDashboardRequest>;
-
 export interface GetDashboardResponse {}
-const GetDashboardResponse = CreateActionResponse as any as S.Schema<GetDashboardResponse>;
-
 export interface GetDashboardByIdRequest {
   id: string;
   dashboard_load_id?: string;
 }
-const GetDashboardByIdRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<GetDashboardByIdRequest>;
-
 export interface GetDashboardByIdResponse {}
-const GetDashboardByIdResponse = CreateActionResponse as any as S.Schema<GetDashboardByIdResponse>;
-
 export interface GetDashboardByUuidRequest {
   /** value must be a valid UUID. */
   uuid: string;
   dashboard_load_id?: string;
 }
-const GetDashboardByUuidRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<GetDashboardByUuidRequest>;
-
 export interface GetDashboardByUuidResponse {}
-const GetDashboardByUuidResponse =
-  CreateActionResponse as any as S.Schema<GetDashboardByUuidResponse>;
-
 export interface GetDashboardDashcardCardRequest {
   /** value must be a valid UUID. */
   uuid: string;
@@ -7255,15 +3966,7 @@ export interface GetDashboardDashcardCardRequest {
   parameters?: MetabaseParametersSchemaParameterValues;
   ignore_cache?: boolean;
 }
-const GetDashboardDashcardCardRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<GetDashboardDashcardCardRequest>;
-
 export interface GetDashboardDashcardCardResponse {}
-const GetDashboardDashcardCardResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardDashcardCardResponse>;
-
 export interface GetDashboardDashcardExecuteRequest {
   /** value must be an integer greater than zero. */
   dashboard_id: number;
@@ -7271,15 +3974,7 @@ export interface GetDashboardDashcardExecuteRequest {
   dashcard_id: number;
   parameters?: MetabaseActionsSchemaPrefetchParameterValues;
 }
-const GetDashboardDashcardExecuteRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  2,
-) as any as S.Schema<GetDashboardDashcardExecuteRequest>;
-
 export interface GetDashboardDashcardExecuteResponse {}
-const GetDashboardDashcardExecuteResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardDashcardExecuteResponse>;
-
 export interface GetDashboardDashcardExecuteRequest2 {
   /** value must be a valid UUID. */
   uuid: string;
@@ -7287,176 +3982,72 @@ export interface GetDashboardDashcardExecuteRequest2 {
   dashcard_id: number;
   parameters: MetabaseActionsSchemaPrefetchParameterValues;
 }
-const GetDashboardDashcardExecuteRequest2 = /*@__PURE__*/ __L.at(
-  __c51,
-  3,
-) as any as S.Schema<GetDashboardDashcardExecuteRequest2>;
-
 export interface GetDashboardDashcardExecute2Response {}
-const GetDashboardDashcardExecute2Response =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardDashcardExecute2Response>;
-
 export interface GetDashboardEmbeddableRequest {}
-const GetDashboardEmbeddableRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<GetDashboardEmbeddableRequest>;
-
 export interface GetDashboardEmbeddableResponse {}
-const GetDashboardEmbeddableResponse =
-  CreateActionResponse as any as S.Schema<GetDashboardEmbeddableResponse>;
-
 export interface GetDashboardItemsRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetDashboardItemsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<GetDashboardItemsRequest>;
-
 export interface GetDashboardItemsResponse {}
-const GetDashboardItemsResponse =
-  CreateActionResponse as any as S.Schema<GetDashboardItemsResponse>;
-
 export interface GetDashboardParamRemappingRequest {
   /** value must be an integer greater than zero. */
   id: number;
   param_key: string;
   value: string;
 }
-const GetDashboardParamRemappingRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  6,
-) as any as S.Schema<GetDashboardParamRemappingRequest>;
-
 export interface GetDashboardParamRemappingResponse {}
-const GetDashboardParamRemappingResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardParamRemappingResponse>;
-
 export interface GetDashboardParamRemappingRequest2 {
   /** value must be a valid UUID. */
   uuid: string;
   param_key: string;
   value: string;
 }
-const GetDashboardParamRemappingRequest2 = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<GetDashboardParamRemappingRequest2>;
-
 export interface GetDashboardParamRemapping2Response {}
-const GetDashboardParamRemapping2Response =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardParamRemapping2Response>;
-
 export interface GetDashboardParamSearchRequest {
   /** value must be an integer greater than zero. */
   id: number;
   param_key: string;
   query: string;
 }
-const GetDashboardParamSearchRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<GetDashboardParamSearchRequest>;
-
 export interface GetDashboardParamSearchResponse {}
-const GetDashboardParamSearchResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<GetDashboardParamSearchResponse>;
-
 export interface GetDashboardParamSearchByQueryRequest {
   /** value must be a valid UUID. */
   uuid: string;
   param_key: string;
   query: string;
 }
-const GetDashboardParamSearchByQueryRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  1,
-) as any as S.Schema<GetDashboardParamSearchByQueryRequest>;
-
 export interface GetDashboardParamSearchByQueryResponse {}
-const GetDashboardParamSearchByQueryResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardParamSearchByQueryResponse>;
-
 export type GetDashboardParamsValidFilterFieldsRequestFilteredList = Array<number>;
-const GetDashboardParamsValidFilterFieldsRequestFilteredList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetDashboardParamsValidFilterFieldsRequestFilteredList>;
-
 export type GetDashboardParamsValidFilterFieldsRequestFilteringList = Array<number>;
-const GetDashboardParamsValidFilterFieldsRequestFilteringList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetDashboardParamsValidFilterFieldsRequestFilteringList>;
-
 export interface GetDashboardParamsValidFilterFieldsRequest {
   filtered: GetDashboardParamsValidFilterFieldsRequestFilteredList;
   filtering?: GetDashboardParamsValidFilterFieldsRequestFilteringList;
 }
-const GetDashboardParamsValidFilterFieldsRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<GetDashboardParamsValidFilterFieldsRequest>;
-
 export interface GetDashboardParamsValidFilterFieldsResponse {}
-const GetDashboardParamsValidFilterFieldsResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardParamsValidFilterFieldsResponse>;
-
 export interface GetDashboardParamValuesRequest {
   /** value must be an integer greater than zero. */
   id: number;
   param_key: string;
 }
-const GetDashboardParamValuesRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<GetDashboardParamValuesRequest>;
-
 export interface GetDashboardParamValuesResponse {}
-const GetDashboardParamValuesResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<GetDashboardParamValuesResponse>;
-
 export interface GetDashboardParamValuesRequest2 {
   /** value must be a valid UUID. */
   uuid: string;
   param_key: string;
 }
-const GetDashboardParamValuesRequest2 = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<GetDashboardParamValuesRequest2>;
-
 export interface GetDashboardParamValues2Response {}
-const GetDashboardParamValues2Response =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardParamValues2Response>;
-
 export interface GetDashboardQueryMetadataRequest {
   id: string;
   dashboard_load_id?: string;
 }
-const GetDashboardQueryMetadataRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<GetDashboardQueryMetadataRequest>;
-
 export interface GetDashboardQueryMetadataResponse {}
-const GetDashboardQueryMetadataResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDashboardQueryMetadataResponse>;
-
 export interface GetDashboardRelatedRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetDashboardRelatedRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<GetDashboardRelatedRequest>;
-
 export interface GetDashboardRelatedResponse {}
-const GetDashboardRelatedResponse =
-  CreateActionResponse as any as S.Schema<GetDashboardRelatedResponse>;
-
 export type GetDatabaseRequestInclude = "tables" | "schemas";
-const GetDatabaseRequestInclude = S.String;
-
 export interface GetDatabaseRequest {
   /** include must be either empty, 'tables', or 'schemas' */
   include?: GetDatabaseRequestInclude | (string & {});
@@ -7469,29 +4060,15 @@ export interface GetDatabaseRequest {
   can_query?: boolean;
   can_write_metadata?: boolean;
 }
-const GetDatabaseRequest = /*@__PURE__*/ __L.at(__c52, 7) as any as S.Schema<GetDatabaseRequest>;
-
 export interface GetDatabaseResponse {}
-const GetDatabaseResponse = CreateActionResponse as any as S.Schema<GetDatabaseResponse>;
-
 export interface GetDatabaseAutocompleteSuggestionsRequest {
   /** value must be an integer greater than zero. */
   id: number;
   prefix?: string;
   substring?: string;
 }
-const GetDatabaseAutocompleteSuggestionsRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<GetDatabaseAutocompleteSuggestionsRequest>;
-
 export interface GetDatabaseAutocompleteSuggestionsResponse {}
-const GetDatabaseAutocompleteSuggestionsResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDatabaseAutocompleteSuggestionsResponse>;
-
 export type GetDatabaseByIdRequestInclude = "tables" | "tables.fields";
-const GetDatabaseByIdRequestInclude = S.String;
-
 export interface GetDatabaseByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -7499,102 +4076,45 @@ export interface GetDatabaseByIdRequest {
   include_editable_data_model?: boolean;
   exclude_uneditable_details?: boolean;
 }
-const GetDatabaseByIdRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  1,
-) as any as S.Schema<GetDatabaseByIdRequest>;
-
 export interface GetDatabaseByIdResponse {}
-const GetDatabaseByIdResponse = CreateActionResponse as any as S.Schema<GetDatabaseByIdResponse>;
-
 export interface GetDatabaseCardAutocompleteSuggestionsRequest {
   /** value must be an integer greater than zero. */
   id: number;
   query: string;
   include_dashboard_questions?: boolean;
 }
-const GetDatabaseCardAutocompleteSuggestionsRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  2,
-) as any as S.Schema<GetDatabaseCardAutocompleteSuggestionsRequest>;
-
 export interface GetDatabaseCardAutocompleteSuggestionsResponse {}
-const GetDatabaseCardAutocompleteSuggestionsResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDatabaseCardAutocompleteSuggestionsResponse>;
-
 export interface GetDatabaseDatasetRequest {
   virtual_db: string;
   schema: string;
 }
-const GetDatabaseDatasetRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<GetDatabaseDatasetRequest>;
-
 export interface GetDatabaseDatasetResponse {}
-const GetDatabaseDatasetResponse =
-  CreateActionResponse as any as S.Schema<GetDatabaseDatasetResponse>;
-
 export interface GetDatabaseDatasetsRequest {
   virtual_db: string;
 }
-const GetDatabaseDatasetsRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<GetDatabaseDatasetsRequest>;
-
 export interface GetDatabaseDatasetsResponse {}
-const GetDatabaseDatasetsResponse =
-  CreateActionResponse as any as S.Schema<GetDatabaseDatasetsResponse>;
-
 export interface GetDatabaseFieldsRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetDatabaseFieldsRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<GetDatabaseFieldsRequest>;
-
 export interface GetDatabaseFieldsResponse {}
-const GetDatabaseFieldsResponse =
-  CreateActionResponse as any as S.Schema<GetDatabaseFieldsResponse>;
-
 export type MetabaseDriverConnectionConnectionType =
   | "default"
   | "write-data"
   | "admin"
   | "transform";
-const MetabaseDriverConnectionConnectionType = S.String;
-
 export interface GetDatabaseHealthcheckRequest {
   /** value must be an integer greater than zero. */
   id: number;
   connection_type?: MetabaseDriverConnectionConnectionType | (string & {});
 }
-const GetDatabaseHealthcheckRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<GetDatabaseHealthcheckRequest>;
-
 export interface GetDatabaseHealthcheckResponse {}
-const GetDatabaseHealthcheckResponse =
-  CreateActionResponse as any as S.Schema<GetDatabaseHealthcheckResponse>;
-
 export interface GetDatabaseIdfieldsRequest {
   /** value must be an integer greater than zero. */
   id: number;
   include_editable_data_model?: boolean;
 }
-const GetDatabaseIdfieldsRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<GetDatabaseIdfieldsRequest>;
-
 export interface GetDatabaseIdfieldsResponse {}
-const GetDatabaseIdfieldsResponse =
-  CreateActionResponse as any as S.Schema<GetDatabaseIdfieldsResponse>;
-
 export interface GetDatabaseMetadataRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -7603,27 +4123,11 @@ export interface GetDatabaseMetadataRequest {
   remove_inactive?: boolean;
   skip_fields?: boolean;
 }
-const GetDatabaseMetadataRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<GetDatabaseMetadataRequest>;
-
 export interface GetDatabaseMetadataResponse {}
-const GetDatabaseMetadataResponse =
-  CreateActionResponse as any as S.Schema<GetDatabaseMetadataResponse>;
-
 export interface GetDatabaseMetadataRequest2 {
   virtual_db: string;
 }
-const GetDatabaseMetadataRequest2 = /*@__PURE__*/ __L.at(
-  __c54,
-  1,
-) as any as S.Schema<GetDatabaseMetadataRequest2>;
-
 export interface GetDatabaseMetadata2Response {}
-const GetDatabaseMetadata2Response =
-  CreateActionResponse as any as S.Schema<GetDatabaseMetadata2Response>;
-
 export interface GetDatabaseSchemaRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -7634,15 +4138,7 @@ export interface GetDatabaseSchemaRequest {
   can_write_metadata?: boolean;
   include_measures?: boolean;
 }
-const GetDatabaseSchemaRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-) as any as S.Schema<GetDatabaseSchemaRequest>;
-
 export interface GetDatabaseSchemaResponse {}
-const GetDatabaseSchemaResponse =
-  CreateActionResponse as any as S.Schema<GetDatabaseSchemaResponse>;
-
 export interface GetDatabaseSchemaBySchemaRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -7653,28 +4149,12 @@ export interface GetDatabaseSchemaBySchemaRequest {
   can_write_metadata?: boolean;
   include_measures?: boolean;
 }
-const GetDatabaseSchemaBySchemaRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<GetDatabaseSchemaBySchemaRequest>;
-
 export interface GetDatabaseSchemaBySchemaResponse {}
-const GetDatabaseSchemaBySchemaResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDatabaseSchemaBySchemaResponse>;
-
 export interface GetDatabaseSchemaBySchemaRequest2 {
   virtual_db: string;
   schema: string;
 }
-const GetDatabaseSchemaBySchemaRequest2 = /*@__PURE__*/ __L.at(
-  __c54,
-  4,
-) as any as S.Schema<GetDatabaseSchemaBySchemaRequest2>;
-
 export interface GetDatabaseSchemaBySchema2Response {}
-const GetDatabaseSchemaBySchema2Response =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDatabaseSchemaBySchema2Response>;
-
 export interface GetDatabaseSchemasRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -7683,104 +4163,40 @@ export interface GetDatabaseSchemasRequest {
   can_query?: boolean;
   can_write_metadata?: boolean;
 }
-const GetDatabaseSchemasRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  5,
-) as any as S.Schema<GetDatabaseSchemasRequest>;
-
 export interface GetDatabaseSchemasResponse {}
-const GetDatabaseSchemasResponse =
-  CreateActionResponse as any as S.Schema<GetDatabaseSchemasResponse>;
-
 export interface GetDatabaseSchemasRequest2 {
   virtual_db: string;
 }
-const GetDatabaseSchemasRequest2 = /*@__PURE__*/ __L.at(
-  __c54,
-  6,
-) as any as S.Schema<GetDatabaseSchemasRequest2>;
-
 export interface GetDatabaseSchemas2Response {}
-const GetDatabaseSchemas2Response =
-  CreateActionResponse as any as S.Schema<GetDatabaseSchemas2Response>;
-
 export interface GetDatabaseSettingsAvailableRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetDatabaseSettingsAvailableRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  7,
-) as any as S.Schema<GetDatabaseSettingsAvailableRequest>;
-
 export interface GetDatabaseSettingsAvailableResponse {}
-const GetDatabaseSettingsAvailableResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDatabaseSettingsAvailableResponse>;
-
 export interface GetDatabaseSyncableSchemasRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetDatabaseSyncableSchemasRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  0,
-) as any as S.Schema<GetDatabaseSyncableSchemasRequest>;
-
 export interface GetDatabaseSyncableSchemasResponse {}
-const GetDatabaseSyncableSchemasResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetDatabaseSyncableSchemasResponse>;
-
 export interface GetDatabaseUsageInfoRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetDatabaseUsageInfoRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  1,
-) as any as S.Schema<GetDatabaseUsageInfoRequest>;
-
 export interface GetDatabaseUsageInfoResponse {}
-const GetDatabaseUsageInfoResponse =
-  CreateActionResponse as any as S.Schema<GetDatabaseUsageInfoResponse>;
-
 export interface GetDocumentRequest {}
-const GetDocumentRequest = /*@__PURE__*/ __L.at(__c55, 2) as any as S.Schema<GetDocumentRequest>;
-
 export interface GetDocumentResponse {}
-const GetDocumentResponse = CreateActionResponse as any as S.Schema<GetDocumentResponse>;
-
 export interface GetDocument2Request {}
-const GetDocument2Request = /*@__PURE__*/ __L.at(__c55, 3) as any as S.Schema<GetDocument2Request>;
-
 export interface GetDocument2Response {}
-const GetDocument2Response = CreateActionResponse as any as S.Schema<GetDocument2Response>;
-
 export interface GetDocumentByDocumentIdRequest {
   /** value must be an integer greater than zero. */
   document_id: number;
 }
-const GetDocumentByDocumentIdRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  4,
-) as any as S.Schema<GetDocumentByDocumentIdRequest>;
-
 export interface GetDocumentByDocumentIdResponse {}
-const GetDocumentByDocumentIdResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<GetDocumentByDocumentIdResponse>;
-
 export interface GetDocumentByUuidRequest {
   /** value must be a valid UUID. */
   uuid: string;
 }
-const GetDocumentByUuidRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  5,
-) as any as S.Schema<GetDocumentByUuidRequest>;
-
 export interface GetDocumentByUuidResponse {}
-const GetDocumentByUuidResponse =
-  CreateActionResponse as any as S.Schema<GetDocumentByUuidResponse>;
-
 export interface GetDocumentCardRequest {
   /** value must be a valid UUID. */
   uuid: string;
@@ -7788,264 +4204,77 @@ export interface GetDocumentCardRequest {
   card_id: number;
   parameters?: MetabaseParametersSchemaParameterValues;
 }
-const GetDocumentCardRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  6,
-) as any as S.Schema<GetDocumentCardRequest>;
-
 export interface GetDocumentCardResponse {}
-const GetDocumentCardResponse = CreateActionResponse as any as S.Schema<GetDocumentCardResponse>;
-
 export interface GetEeAdvancedPermissionsApplicationGraphRequest {}
-const GetEeAdvancedPermissionsApplicationGraphRequest = /*@__PURE__*/ __L.at(
-  __c55,
-  7,
-) as any as S.Schema<GetEeAdvancedPermissionsApplicationGraphRequest>;
-
 export interface GetEeAdvancedPermissionsApplicationGraphResponse {}
-const GetEeAdvancedPermissionsApplicationGraphResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAdvancedPermissionsApplicationGraphResponse>;
-
 export interface GetEeAdvancedPermissionsImpersonationRequest {
   group_id?: number;
   db_id?: number;
 }
-const GetEeAdvancedPermissionsImpersonationRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  0,
-) as any as S.Schema<GetEeAdvancedPermissionsImpersonationRequest>;
-
 export interface GetEeAdvancedPermissionsImpersonationResponse {}
-const GetEeAdvancedPermissionsImpersonationResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAdvancedPermissionsImpersonationResponse>;
-
 export interface GetEeAiControlsPermissionsRequest {}
-const GetEeAiControlsPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  1,
-) as any as S.Schema<GetEeAiControlsPermissionsRequest>;
-
 export interface GetEeAiControlsPermissionsResponse {}
-const GetEeAiControlsPermissionsResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAiControlsPermissionsResponse>;
-
 export interface GetEeAiControlsUsageGroupRequest {}
-const GetEeAiControlsUsageGroupRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  2,
-) as any as S.Schema<GetEeAiControlsUsageGroupRequest>;
-
 export interface GetEeAiControlsUsageGroupResponse {}
-const GetEeAiControlsUsageGroupResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAiControlsUsageGroupResponse>;
-
 export interface GetEeAiControlsUsageGroupByGroupIdRequest {
   group_id: number;
 }
-const GetEeAiControlsUsageGroupByGroupIdRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  3,
-) as any as S.Schema<GetEeAiControlsUsageGroupByGroupIdRequest>;
-
 export interface GetEeAiControlsUsageGroupByGroupIdResponse {}
-const GetEeAiControlsUsageGroupByGroupIdResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAiControlsUsageGroupByGroupIdResponse>;
-
 export interface GetEeAiControlsUsageInstanceRequest {}
-const GetEeAiControlsUsageInstanceRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  4,
-) as any as S.Schema<GetEeAiControlsUsageInstanceRequest>;
-
 export interface GetEeAiControlsUsageInstanceResponse {}
-const GetEeAiControlsUsageInstanceResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAiControlsUsageInstanceResponse>;
-
 export interface GetEeAiControlsUsageTenantRequest {}
-const GetEeAiControlsUsageTenantRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  5,
-) as any as S.Schema<GetEeAiControlsUsageTenantRequest>;
-
 export interface GetEeAiControlsUsageTenantResponse {}
-const GetEeAiControlsUsageTenantResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAiControlsUsageTenantResponse>;
-
 export interface GetEeAiControlsUsageTenantByTenantIdRequest {
   tenant_id: number;
 }
-const GetEeAiControlsUsageTenantByTenantIdRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  6,
-) as any as S.Schema<GetEeAiControlsUsageTenantByTenantIdRequest>;
-
 export interface GetEeAiControlsUsageTenantByTenantIdResponse {}
-const GetEeAiControlsUsageTenantByTenantIdResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAiControlsUsageTenantByTenantIdResponse>;
-
 export interface GetEeAuditAppUserAuditInfoRequest {}
-const GetEeAuditAppUserAuditInfoRequest = /*@__PURE__*/ __L.at(
-  __c56,
-  7,
-) as any as S.Schema<GetEeAuditAppUserAuditInfoRequest>;
-
 export interface GetEeAuditAppUserAuditInfoResponse {}
-const GetEeAuditAppUserAuditInfoResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeAuditAppUserAuditInfoResponse>;
-
 export interface GetEeBillingRequest {}
-const GetEeBillingRequest = /*@__PURE__*/ __L.at(__c57, 0) as any as S.Schema<GetEeBillingRequest>;
-
 export interface GetEeBillingResponse {}
-const GetEeBillingResponse = CreateActionResponse as any as S.Schema<GetEeBillingResponse>;
-
 export interface GetEeCloudAddOnsAddonsRequest {}
-const GetEeCloudAddOnsAddonsRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  1,
-) as any as S.Schema<GetEeCloudAddOnsAddonsRequest>;
-
 export interface GetEeCloudAddOnsAddonsResponse {}
-const GetEeCloudAddOnsAddonsResponse =
-  CreateActionResponse as any as S.Schema<GetEeCloudAddOnsAddonsResponse>;
-
 export interface GetEeCloudAddOnsPlansRequest {}
-const GetEeCloudAddOnsPlansRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  2,
-) as any as S.Schema<GetEeCloudAddOnsPlansRequest>;
-
 export interface GetEeCloudAddOnsPlansResponse {}
-const GetEeCloudAddOnsPlansResponse =
-  CreateActionResponse as any as S.Schema<GetEeCloudAddOnsPlansResponse>;
-
 export interface GetEeContentTranslationCsvRequest {}
-const GetEeContentTranslationCsvRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  3,
-) as any as S.Schema<GetEeContentTranslationCsvRequest>;
-
 export interface GetEeContentTranslationCsvResponse {}
-const GetEeContentTranslationCsvResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeContentTranslationCsvResponse>;
-
 export interface GetEeContentTranslationDictionaryRequest {
   locale: string;
 }
-const GetEeContentTranslationDictionaryRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  4,
-) as any as S.Schema<GetEeContentTranslationDictionaryRequest>;
-
 export interface GetEeContentTranslationDictionaryResponse {}
-const GetEeContentTranslationDictionaryResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeContentTranslationDictionaryResponse>;
-
 export interface GetEeContentTranslationDictionaryByTokenRequest {
   token: string;
   locale?: string;
 }
-const GetEeContentTranslationDictionaryByTokenRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  5,
-) as any as S.Schema<GetEeContentTranslationDictionaryByTokenRequest>;
-
 export interface GetEeContentTranslationDictionaryByTokenResponse {}
-const GetEeContentTranslationDictionaryByTokenResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeContentTranslationDictionaryByTokenResponse>;
-
 export interface GetEeCustomVizPluginRequest {}
-const GetEeCustomVizPluginRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  6,
-) as any as S.Schema<GetEeCustomVizPluginRequest>;
-
 export interface GetEeCustomVizPluginResponse {}
-const GetEeCustomVizPluginResponse =
-  CreateActionResponse as any as S.Schema<GetEeCustomVizPluginResponse>;
-
 export interface GetEeCustomVizPluginAssetRequest {
   /** value must be an integer greater than zero. */
   id: number;
   path: string;
 }
-const GetEeCustomVizPluginAssetRequest = /*@__PURE__*/ __L.at(
-  __c57,
-  7,
-) as any as S.Schema<GetEeCustomVizPluginAssetRequest>;
-
 export interface GetEeCustomVizPluginAssetResponse {}
-const GetEeCustomVizPluginAssetResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeCustomVizPluginAssetResponse>;
-
 export interface GetEeCustomVizPluginBundleRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetEeCustomVizPluginBundleRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  0,
-) as any as S.Schema<GetEeCustomVizPluginBundleRequest>;
-
 export interface GetEeCustomVizPluginBundleResponse {}
-const GetEeCustomVizPluginBundleResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeCustomVizPluginBundleResponse>;
-
 export interface GetEeCustomVizPluginDevSseRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetEeCustomVizPluginDevSseRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  1,
-) as any as S.Schema<GetEeCustomVizPluginDevSseRequest>;
-
 export interface GetEeCustomVizPluginDevSseResponse {}
-const GetEeCustomVizPluginDevSseResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeCustomVizPluginDevSseResponse>;
-
 export interface GetEeCustomVizPluginListRequest {}
-const GetEeCustomVizPluginListRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  2,
-) as any as S.Schema<GetEeCustomVizPluginListRequest>;
-
 export interface GetEeCustomVizPluginListResponse {}
-const GetEeCustomVizPluginListResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeCustomVizPluginListResponse>;
-
 export interface GetEeCustomVizPluginSandboxHostRequest {}
-const GetEeCustomVizPluginSandboxHostRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  3,
-) as any as S.Schema<GetEeCustomVizPluginSandboxHostRequest>;
-
 export interface GetEeCustomVizPluginSandboxHostResponse {}
-const GetEeCustomVizPluginSandboxHostResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeCustomVizPluginSandboxHostResponse>;
-
 export interface GetEeDataComplexityScoreComplexityRequest {
   force_recalculation?: boolean;
 }
-const GetEeDataComplexityScoreComplexityRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  4,
-) as any as S.Schema<GetEeDataComplexityScoreComplexityRequest>;
-
 export interface GetEeDataComplexityScoreComplexityResponse {}
-const GetEeDataComplexityScoreComplexityResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeDataComplexityScoreComplexityResponse>;
-
 export interface GetEeDependenciesBackfillStatusRequest {}
-const GetEeDependenciesBackfillStatusRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  5,
-) as any as S.Schema<GetEeDependenciesBackfillStatusRequest>;
-
 export interface GetEeDependenciesBackfillStatusResponse {}
-const GetEeDependenciesBackfillStatusResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeDependenciesBackfillStatusResponse>;
-
 export type MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes =
   | "transform"
   | "table"
@@ -8056,31 +4285,18 @@ export type MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes =
   | "card"
   | "document"
   | "segment";
-const MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes = S.String;
-
 export interface GetEeDependenciesGraphRequest {
   /** value must be an integer greater than zero. */
   id?: number;
   type?: MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes | (string & {});
 }
-const GetEeDependenciesGraphRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  6,
-) as any as S.Schema<GetEeDependenciesGraphRequest>;
-
 export interface GetEeDependenciesGraphResponse {}
-const GetEeDependenciesGraphResponse =
-  CreateActionResponse as any as S.Schema<GetEeDependenciesGraphResponse>;
-
 export type GetEeDependenciesGraphBreakingRequestTypesCase1List = Array<
   MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes | (string & {})
 >;
 export type GetEeDependenciesGraphBreakingRequestTypes =
   | MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes
   | GetEeDependenciesGraphBreakingRequestTypesCase1List;
-const GetEeDependenciesGraphBreakingRequestTypes =
-  S.Unknown as any as S.Schema<GetEeDependenciesGraphBreakingRequestTypes>;
-
 export type GetEeDependenciesGraphBreakingRequestCardTypesCase0 = "question" | "metric" | "model";
 export type GetEeDependenciesGraphBreakingRequestCardTypesCase1Item =
   | "question"
@@ -8092,19 +4308,12 @@ export type GetEeDependenciesGraphBreakingRequestCardTypesCase1List = Array<
 export type GetEeDependenciesGraphBreakingRequestCardTypes =
   | GetEeDependenciesGraphBreakingRequestCardTypesCase0
   | GetEeDependenciesGraphBreakingRequestCardTypesCase1List;
-const GetEeDependenciesGraphBreakingRequestCardTypes =
-  S.Unknown as any as S.Schema<GetEeDependenciesGraphBreakingRequestCardTypes>;
-
 export type GetEeDependenciesGraphBreakingRequestSortColumn =
   | "dependents-with-errors"
   | "dependents-errors"
   | "name"
   | "location";
-const GetEeDependenciesGraphBreakingRequestSortColumn = S.String;
-
 export type GetEeDependenciesGraphBreakingRequestSortDirection = "desc" | "asc";
-const GetEeDependenciesGraphBreakingRequestSortDirection = S.String;
-
 export interface GetEeDependenciesGraphBreakingRequest {
   types?: GetEeDependenciesGraphBreakingRequestTypes;
   card_types?: GetEeDependenciesGraphBreakingRequestCardTypes;
@@ -8113,24 +4322,13 @@ export interface GetEeDependenciesGraphBreakingRequest {
   sort_column?: GetEeDependenciesGraphBreakingRequestSortColumn | (string & {});
   sort_direction?: GetEeDependenciesGraphBreakingRequestSortDirection | (string & {});
 }
-const GetEeDependenciesGraphBreakingRequest = /*@__PURE__*/ __L.at(
-  __c58,
-  7,
-) as any as S.Schema<GetEeDependenciesGraphBreakingRequest>;
-
 export interface GetEeDependenciesGraphBreakingResponse {}
-const GetEeDependenciesGraphBreakingResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeDependenciesGraphBreakingResponse>;
-
 export type GetEeDependenciesGraphBrokenRequestDependentTypesCase1List = Array<
   MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes | (string & {})
 >;
 export type GetEeDependenciesGraphBrokenRequestDependentTypes =
   | MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes
   | GetEeDependenciesGraphBrokenRequestDependentTypesCase1List;
-const GetEeDependenciesGraphBrokenRequestDependentTypes =
-  S.Unknown as any as S.Schema<GetEeDependenciesGraphBrokenRequestDependentTypes>;
-
 export type GetEeDependenciesGraphBrokenRequestDependentCardTypesCase0 =
   | "question"
   | "metric"
@@ -8145,15 +4343,8 @@ export type GetEeDependenciesGraphBrokenRequestDependentCardTypesCase1List = Arr
 export type GetEeDependenciesGraphBrokenRequestDependentCardTypes =
   | GetEeDependenciesGraphBrokenRequestDependentCardTypesCase0
   | GetEeDependenciesGraphBrokenRequestDependentCardTypesCase1List;
-const GetEeDependenciesGraphBrokenRequestDependentCardTypes =
-  S.Unknown as any as S.Schema<GetEeDependenciesGraphBrokenRequestDependentCardTypes>;
-
 export type GetEeDependenciesGraphBrokenRequestSortColumn = "name" | "view-count" | "location";
-const GetEeDependenciesGraphBrokenRequestSortColumn = S.String;
-
 export type GetEeDependenciesGraphBrokenRequestSortDirection = "desc" | "asc";
-const GetEeDependenciesGraphBrokenRequestSortDirection = S.String;
-
 export interface GetEeDependenciesGraphBrokenRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -8164,24 +4355,13 @@ export interface GetEeDependenciesGraphBrokenRequest {
   sort_column?: GetEeDependenciesGraphBrokenRequestSortColumn | (string & {});
   sort_direction?: GetEeDependenciesGraphBrokenRequestSortDirection | (string & {});
 }
-const GetEeDependenciesGraphBrokenRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  0,
-) as any as S.Schema<GetEeDependenciesGraphBrokenRequest>;
-
 export interface GetEeDependenciesGraphBrokenResponse {}
-const GetEeDependenciesGraphBrokenResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeDependenciesGraphBrokenResponse>;
-
 export type GetEeDependenciesGraphDependentsRequestDependentTypesCase1List = Array<
   MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes | (string & {})
 >;
 export type GetEeDependenciesGraphDependentsRequestDependentTypes =
   | MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes
   | GetEeDependenciesGraphDependentsRequestDependentTypesCase1List;
-const GetEeDependenciesGraphDependentsRequestDependentTypes =
-  S.Unknown as any as S.Schema<GetEeDependenciesGraphDependentsRequestDependentTypes>;
-
 export type GetEeDependenciesGraphDependentsRequestDependentCardTypesCase0 =
   | "question"
   | "metric"
@@ -8196,15 +4376,8 @@ export type GetEeDependenciesGraphDependentsRequestDependentCardTypesCase1List =
 export type GetEeDependenciesGraphDependentsRequestDependentCardTypes =
   | GetEeDependenciesGraphDependentsRequestDependentCardTypesCase0
   | GetEeDependenciesGraphDependentsRequestDependentCardTypesCase1List;
-const GetEeDependenciesGraphDependentsRequestDependentCardTypes =
-  S.Unknown as any as S.Schema<GetEeDependenciesGraphDependentsRequestDependentCardTypes>;
-
 export type GetEeDependenciesGraphDependentsRequestSortColumn = "name" | "view-count" | "location";
-const GetEeDependenciesGraphDependentsRequestSortColumn = S.String;
-
 export type GetEeDependenciesGraphDependentsRequestSortDirection = "desc" | "asc";
-const GetEeDependenciesGraphDependentsRequestSortDirection = S.String;
-
 export interface GetEeDependenciesGraphDependentsRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -8217,24 +4390,13 @@ export interface GetEeDependenciesGraphDependentsRequest {
   sort_column?: GetEeDependenciesGraphDependentsRequestSortColumn | (string & {});
   sort_direction?: GetEeDependenciesGraphDependentsRequestSortDirection | (string & {});
 }
-const GetEeDependenciesGraphDependentsRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  1,
-) as any as S.Schema<GetEeDependenciesGraphDependentsRequest>;
-
 export interface GetEeDependenciesGraphDependentsResponse {}
-const GetEeDependenciesGraphDependentsResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeDependenciesGraphDependentsResponse>;
-
 export type GetEeDependenciesGraphUnreferencedRequestTypesCase1List = Array<
   MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes | (string & {})
 >;
 export type GetEeDependenciesGraphUnreferencedRequestTypes =
   | MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes
   | GetEeDependenciesGraphUnreferencedRequestTypesCase1List;
-const GetEeDependenciesGraphUnreferencedRequestTypes =
-  S.Unknown as any as S.Schema<GetEeDependenciesGraphUnreferencedRequestTypes>;
-
 export type GetEeDependenciesGraphUnreferencedRequestCardTypesCase0 =
   | "question"
   | "metric"
@@ -8249,19 +4411,12 @@ export type GetEeDependenciesGraphUnreferencedRequestCardTypesCase1List = Array<
 export type GetEeDependenciesGraphUnreferencedRequestCardTypes =
   | GetEeDependenciesGraphUnreferencedRequestCardTypesCase0
   | GetEeDependenciesGraphUnreferencedRequestCardTypesCase1List;
-const GetEeDependenciesGraphUnreferencedRequestCardTypes =
-  S.Unknown as any as S.Schema<GetEeDependenciesGraphUnreferencedRequestCardTypes>;
-
 export type GetEeDependenciesGraphUnreferencedRequestSortColumn =
   | "dependents-with-errors"
   | "dependents-errors"
   | "name"
   | "location";
-const GetEeDependenciesGraphUnreferencedRequestSortColumn = S.String;
-
 export type GetEeDependenciesGraphUnreferencedRequestSortDirection = "desc" | "asc";
-const GetEeDependenciesGraphUnreferencedRequestSortDirection = S.String;
-
 export interface GetEeDependenciesGraphUnreferencedRequest {
   types?: GetEeDependenciesGraphUnreferencedRequestTypes;
   card_types?: GetEeDependenciesGraphUnreferencedRequestCardTypes;
@@ -8270,92 +4425,29 @@ export interface GetEeDependenciesGraphUnreferencedRequest {
   sort_column?: GetEeDependenciesGraphUnreferencedRequestSortColumn | (string & {});
   sort_direction?: GetEeDependenciesGraphUnreferencedRequestSortDirection | (string & {});
 }
-const GetEeDependenciesGraphUnreferencedRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  2,
-) as any as S.Schema<GetEeDependenciesGraphUnreferencedRequest>;
-
 export interface GetEeDependenciesGraphUnreferencedResponse {}
-const GetEeDependenciesGraphUnreferencedResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeDependenciesGraphUnreferencedResponse>;
-
 export interface GetEeEmbeddingHubChecklistRequest {}
-const GetEeEmbeddingHubChecklistRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  3,
-) as any as S.Schema<GetEeEmbeddingHubChecklistRequest>;
-
 export interface GetEeEmbeddingHubChecklistResponse {}
-const GetEeEmbeddingHubChecklistResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeEmbeddingHubChecklistResponse>;
-
 export interface GetEeErdRequest {}
-const GetEeErdRequest = /*@__PURE__*/ __L.at(__c59, 4) as any as S.Schema<GetEeErdRequest>;
-
 export interface GetEeErdResponse {}
-const GetEeErdResponse = CreateActionResponse as any as S.Schema<GetEeErdResponse>;
-
 export interface GetEeGsheetsConnectionRequest {}
-const GetEeGsheetsConnectionRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  5,
-) as any as S.Schema<GetEeGsheetsConnectionRequest>;
-
 export interface GetEeGsheetsConnectionResponse {}
-const GetEeGsheetsConnectionResponse =
-  CreateActionResponse as any as S.Schema<GetEeGsheetsConnectionResponse>;
-
 export interface GetEeGsheetsServiceAccountRequest {}
-const GetEeGsheetsServiceAccountRequest = /*@__PURE__*/ __L.at(
-  __c59,
-  6,
-) as any as S.Schema<GetEeGsheetsServiceAccountRequest>;
-
 export interface GetEeGsheetsServiceAccountResponse {}
-const GetEeGsheetsServiceAccountResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeGsheetsServiceAccountResponse>;
-
 export interface GetEeLibraryRequest {}
-const GetEeLibraryRequest = /*@__PURE__*/ __L.at(__c59, 7) as any as S.Schema<GetEeLibraryRequest>;
-
 export interface GetEeLibraryResponse {}
-const GetEeLibraryResponse = CreateActionResponse as any as S.Schema<GetEeLibraryResponse>;
-
 export interface GetEeLibraryTreeRequest {}
-const GetEeLibraryTreeRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  0,
-) as any as S.Schema<GetEeLibraryTreeRequest>;
-
 export interface GetEeLibraryTreeResponse {}
-const GetEeLibraryTreeResponse = CreateActionResponse as any as S.Schema<GetEeLibraryTreeResponse>;
-
 export interface GetEeLogsQueryExecutionRequest {
   /** Must be a string like 2020-04 or 2222-11. */
   yyyy_mm: string;
 }
-const GetEeLogsQueryExecutionRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  1,
-) as any as S.Schema<GetEeLogsQueryExecutionRequest>;
-
 export interface GetEeLogsQueryExecutionResponse {}
-const GetEeLogsQueryExecutionResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<GetEeLogsQueryExecutionResponse>;
-
 export interface GetEeMetabotAnalyticsConversationRequest {
   /** value must be a valid UUID. */
   id: string;
 }
-const GetEeMetabotAnalyticsConversationRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  2,
-) as any as S.Schema<GetEeMetabotAnalyticsConversationRequest>;
-
 export interface GetEeMetabotAnalyticsConversationResponse {}
-const GetEeMetabotAnalyticsConversationResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeMetabotAnalyticsConversationResponse>;
-
 export type GetEeMetabotAnalyticsConversationsRequestSortBy =
   | "created_at"
   | "message_count"
@@ -8364,11 +4456,7 @@ export type GetEeMetabotAnalyticsConversationsRequestSortBy =
   | "user"
   | "profile_id"
   | "ip_address";
-const GetEeMetabotAnalyticsConversationsRequestSortBy = S.String;
-
 export type GetEeMetabotAnalyticsConversationsRequestSortDir = "asc" | "desc";
-const GetEeMetabotAnalyticsConversationsRequestSortDir = S.String;
-
 export interface GetEeMetabotAnalyticsConversationsRequest {
   sort_by?: GetEeMetabotAnalyticsConversationsRequestSortBy | (string & {});
   sort_dir?: GetEeMetabotAnalyticsConversationsRequestSortDir | (string & {});
@@ -8377,245 +4465,80 @@ export interface GetEeMetabotAnalyticsConversationsRequest {
   tenant_id?: number;
   date?: string;
 }
-const GetEeMetabotAnalyticsConversationsRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  3,
-) as any as S.Schema<GetEeMetabotAnalyticsConversationsRequest>;
-
 export interface GetEeMetabotAnalyticsConversationsResponse {}
-const GetEeMetabotAnalyticsConversationsResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeMetabotAnalyticsConversationsResponse>;
-
 export interface GetEeMetabotUsageRequest {}
-const GetEeMetabotUsageRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  4,
-) as any as S.Schema<GetEeMetabotUsageRequest>;
-
 export interface GetEeMetabotUsageResponse {}
-const GetEeMetabotUsageResponse =
-  CreateActionResponse as any as S.Schema<GetEeMetabotUsageResponse>;
-
 export interface GetEeMfaAdminOverviewRequest {}
-const GetEeMfaAdminOverviewRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  5,
-) as any as S.Schema<GetEeMfaAdminOverviewRequest>;
-
 export interface GetEeMfaAdminOverviewResponse {}
-const GetEeMfaAdminOverviewResponse =
-  CreateActionResponse as any as S.Schema<GetEeMfaAdminOverviewResponse>;
-
 export interface GetEeMfaStatusRequest {}
-const GetEeMfaStatusRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  6,
-) as any as S.Schema<GetEeMfaStatusRequest>;
-
 export interface GetEeMfaStatusResponse {}
-const GetEeMfaStatusResponse = CreateActionResponse as any as S.Schema<GetEeMfaStatusResponse>;
-
 export type GetEePermissionDebugRequestActionType =
   | "card/read"
   | "card/query"
   | "card/download-data";
-const GetEePermissionDebugRequestActionType = S.String;
-
 export interface GetEePermissionDebugRequest {
   user_id: number;
   model_id: string;
   action_type: GetEePermissionDebugRequestActionType | (string & {});
 }
-const GetEePermissionDebugRequest = /*@__PURE__*/ __L.at(
-  __c60,
-  7,
-) as any as S.Schema<GetEePermissionDebugRequest>;
-
 export interface GetEePermissionDebugResponse {}
-const GetEePermissionDebugResponse =
-  CreateActionResponse as any as S.Schema<GetEePermissionDebugResponse>;
-
 export interface GetEeRemoteSyncBranchesRequest {}
-const GetEeRemoteSyncBranchesRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  0,
-) as any as S.Schema<GetEeRemoteSyncBranchesRequest>;
-
 export interface GetEeRemoteSyncBranchesResponse {}
-const GetEeRemoteSyncBranchesResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<GetEeRemoteSyncBranchesResponse>;
-
 export interface GetEeRemoteSyncCurrentTaskRequest {}
-const GetEeRemoteSyncCurrentTaskRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  1,
-) as any as S.Schema<GetEeRemoteSyncCurrentTaskRequest>;
-
 export interface GetEeRemoteSyncCurrentTaskResponse {}
-const GetEeRemoteSyncCurrentTaskResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeRemoteSyncCurrentTaskResponse>;
-
 export interface GetEeRemoteSyncDirtyRequest {}
-const GetEeRemoteSyncDirtyRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  2,
-) as any as S.Schema<GetEeRemoteSyncDirtyRequest>;
-
 export interface GetEeRemoteSyncDirtyResponse {}
-const GetEeRemoteSyncDirtyResponse =
-  CreateActionResponse as any as S.Schema<GetEeRemoteSyncDirtyResponse>;
-
 export interface GetEeRemoteSyncExportPreflightRequest {
   branch: string;
 }
-const GetEeRemoteSyncExportPreflightRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  3,
-) as any as S.Schema<GetEeRemoteSyncExportPreflightRequest>;
-
 export interface GetEeRemoteSyncExportPreflightResponse {}
-const GetEeRemoteSyncExportPreflightResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeRemoteSyncExportPreflightResponse>;
-
 export interface GetEeRemoteSyncHasRemoteChangesRequest {
   force_refresh?: boolean;
 }
-const GetEeRemoteSyncHasRemoteChangesRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  4,
-) as any as S.Schema<GetEeRemoteSyncHasRemoteChangesRequest>;
-
 export interface GetEeRemoteSyncHasRemoteChangesResponse {}
-const GetEeRemoteSyncHasRemoteChangesResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeRemoteSyncHasRemoteChangesResponse>;
-
 export interface GetEeRemoteSyncIsDirtyRequest {}
-const GetEeRemoteSyncIsDirtyRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  5,
-) as any as S.Schema<GetEeRemoteSyncIsDirtyRequest>;
-
 export interface GetEeRemoteSyncIsDirtyResponse {}
-const GetEeRemoteSyncIsDirtyResponse =
-  CreateActionResponse as any as S.Schema<GetEeRemoteSyncIsDirtyResponse>;
-
 export interface GetEeReplacementRunRequest {
   id: number;
 }
-const GetEeReplacementRunRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  6,
-) as any as S.Schema<GetEeReplacementRunRequest>;
-
 export interface GetEeReplacementRunResponse {}
-const GetEeReplacementRunResponse =
-  CreateActionResponse as any as S.Schema<GetEeReplacementRunResponse>;
-
 export interface GetEeReplacementRunsRequest {
   is_active?: boolean;
 }
-const GetEeReplacementRunsRequest = /*@__PURE__*/ __L.at(
-  __c61,
-  7,
-) as any as S.Schema<GetEeReplacementRunsRequest>;
-
 export interface GetEeReplacementRunsResponse {}
-const GetEeReplacementRunsResponse =
-  CreateActionResponse as any as S.Schema<GetEeReplacementRunsResponse>;
-
 export interface GetEeScimGroupRequest {
   id: string;
 }
-const GetEeScimGroupRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  0,
-) as any as S.Schema<GetEeScimGroupRequest>;
-
 export interface GetEeScimGroupResponse {}
-const GetEeScimGroupResponse = CreateActionResponse as any as S.Schema<GetEeScimGroupResponse>;
-
 export interface GetEeScimGroupsRequest {
   startIndex?: number;
   count?: number;
   filter?: string;
 }
-const GetEeScimGroupsRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  1,
-) as any as S.Schema<GetEeScimGroupsRequest>;
-
 export interface GetEeScimGroupsResponse {}
-const GetEeScimGroupsResponse = CreateActionResponse as any as S.Schema<GetEeScimGroupsResponse>;
-
 export interface GetEeScimKeyRequest {}
-const GetEeScimKeyRequest = /*@__PURE__*/ __L.at(__c62, 2) as any as S.Schema<GetEeScimKeyRequest>;
-
 export interface GetEeScimKeyResponse {}
-const GetEeScimKeyResponse = CreateActionResponse as any as S.Schema<GetEeScimKeyResponse>;
-
 export interface GetEeScimUserRequest {
   id: string;
 }
-const GetEeScimUserRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  3,
-) as any as S.Schema<GetEeScimUserRequest>;
-
 export interface GetEeScimUserResponse {}
-const GetEeScimUserResponse = CreateActionResponse as any as S.Schema<GetEeScimUserResponse>;
-
 export interface GetEeScimUsersRequest {
   startIndex?: number;
   count?: number;
   filter?: string;
 }
-const GetEeScimUsersRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  4,
-) as any as S.Schema<GetEeScimUsersRequest>;
-
 export interface GetEeScimUsersResponse {}
-const GetEeScimUsersResponse = CreateActionResponse as any as S.Schema<GetEeScimUsersResponse>;
-
 export interface GetEeSecurityCenterRequest {}
-const GetEeSecurityCenterRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  5,
-) as any as S.Schema<GetEeSecurityCenterRequest>;
-
 export interface GetEeSecurityCenterResponse {}
-const GetEeSecurityCenterResponse =
-  CreateActionResponse as any as S.Schema<GetEeSecurityCenterResponse>;
-
 export interface GetEeSemanticSearchStatusRequest {}
-const GetEeSemanticSearchStatusRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  6,
-) as any as S.Schema<GetEeSemanticSearchStatusRequest>;
-
 export interface GetEeSemanticSearchStatusResponse {}
-const GetEeSemanticSearchStatusResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeSemanticSearchStatusResponse>;
-
 export interface GetEeSerializationMetadataImportRequest {
   /** value must be a valid UUID. */
   id: string;
 }
-const GetEeSerializationMetadataImportRequest = /*@__PURE__*/ __L.at(
-  __c62,
-  7,
-) as any as S.Schema<GetEeSerializationMetadataImportRequest>;
-
 export interface GetEeSerializationMetadataImportResponse {}
-const GetEeSerializationMetadataImportResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeSerializationMetadataImportResponse>;
-
 export type GetEeStaleRequestSortColumn = "name" | "last_used_at";
-const GetEeStaleRequestSortColumn = S.String;
-
 export type GetEeStaleRequestSortDirection = "asc" | "desc";
-const GetEeStaleRequestSortDirection = S.String;
-
 export interface GetEeStaleRequest {
   id: string;
   before_date?: string;
@@ -8623,199 +4546,80 @@ export interface GetEeStaleRequest {
   sort_column?: GetEeStaleRequestSortColumn | (string & {});
   sort_direction?: GetEeStaleRequestSortDirection | (string & {});
 }
-const GetEeStaleRequest = /*@__PURE__*/ __L.at(__c63, 0) as any as S.Schema<GetEeStaleRequest>;
-
 export interface GetEeStaleResponse {}
-const GetEeStaleResponse = CreateActionResponse as any as S.Schema<GetEeStaleResponse>;
-
 export interface GetEeSupportAccessGrantRequest {
   ticket_number?: string;
   user_id?: number;
   include_revoked?: boolean;
 }
-const GetEeSupportAccessGrantRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  1,
-) as any as S.Schema<GetEeSupportAccessGrantRequest>;
-
 export interface GetEeSupportAccessGrantResponse {}
-const GetEeSupportAccessGrantResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<GetEeSupportAccessGrantResponse>;
-
 export interface GetEeSupportAccessGrantCurrentRequest {}
-const GetEeSupportAccessGrantCurrentRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  2,
-) as any as S.Schema<GetEeSupportAccessGrantCurrentRequest>;
-
 export interface GetEeSupportAccessGrantCurrentResponse {}
-const GetEeSupportAccessGrantCurrentResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeSupportAccessGrantCurrentResponse>;
-
 export type GetEeTenantRequestStatus = "all" | "deactivated" | "active";
-const GetEeTenantRequestStatus = S.String;
-
 export interface GetEeTenantRequest {
   status?: GetEeTenantRequestStatus | (string & {});
 }
-const GetEeTenantRequest = /*@__PURE__*/ __L.at(__c63, 3) as any as S.Schema<GetEeTenantRequest>;
-
 export interface GetEeTenantResponse {}
-const GetEeTenantResponse = CreateActionResponse as any as S.Schema<GetEeTenantResponse>;
-
 export interface GetEeTenantByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetEeTenantByIdRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  4,
-) as any as S.Schema<GetEeTenantByIdRequest>;
-
 export interface GetEeTenantByIdResponse {}
-const GetEeTenantByIdResponse = CreateActionResponse as any as S.Schema<GetEeTenantByIdResponse>;
-
 export interface GetEeTransformInspectRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetEeTransformInspectRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  5,
-) as any as S.Schema<GetEeTransformInspectRequest>;
-
 export interface GetEeTransformInspectResponse {}
-const GetEeTransformInspectResponse =
-  CreateActionResponse as any as S.Schema<GetEeTransformInspectResponse>;
-
 export interface GetEeTransformInspectByLensIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
   lens_id: string;
 }
-const GetEeTransformInspectByLensIdRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  6,
-) as any as S.Schema<GetEeTransformInspectByLensIdRequest>;
-
 export interface GetEeTransformInspectByLensIdResponse {}
-const GetEeTransformInspectByLensIdResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeTransformInspectByLensIdResponse>;
-
 export interface GetEeTransformsPythonLibraryRequest {
   path: string;
 }
-const GetEeTransformsPythonLibraryRequest = /*@__PURE__*/ __L.at(
-  __c63,
-  7,
-) as any as S.Schema<GetEeTransformsPythonLibraryRequest>;
-
 export interface GetEeTransformsPythonLibraryResponse {}
-const GetEeTransformsPythonLibraryResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeTransformsPythonLibraryResponse>;
-
 export interface GetEeUploadManagementTablesRequest {}
-const GetEeUploadManagementTablesRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  0,
-) as any as S.Schema<GetEeUploadManagementTablesRequest>;
-
 export interface GetEeUploadManagementTablesResponse {}
-const GetEeUploadManagementTablesResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEeUploadManagementTablesResponse>;
-
 export interface GetEmbedCardRequest {
   token: string;
 }
-const GetEmbedCardRequest = /*@__PURE__*/ __L.at(__c64, 1) as any as S.Schema<GetEmbedCardRequest>;
-
 export interface GetEmbedCardResponse {}
-const GetEmbedCardResponse = CreateActionResponse as any as S.Schema<GetEmbedCardResponse>;
-
 export interface GetEmbedCardParamRemappingRequest {
   token: string;
   param_key: string;
   value: string;
 }
-const GetEmbedCardParamRemappingRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  2,
-) as any as S.Schema<GetEmbedCardParamRemappingRequest>;
-
 export interface GetEmbedCardParamRemappingResponse {}
-const GetEmbedCardParamRemappingResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedCardParamRemappingResponse>;
-
 export interface GetEmbedCardParamSearchRequest {
   token: string;
   param_key: string;
   prefix: string;
 }
-const GetEmbedCardParamSearchRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  3,
-) as any as S.Schema<GetEmbedCardParamSearchRequest>;
-
 export interface GetEmbedCardParamSearchResponse {}
-const GetEmbedCardParamSearchResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<GetEmbedCardParamSearchResponse>;
-
 export interface GetEmbedCardParamValuesRequest {
   token: string;
   param_key: string;
 }
-const GetEmbedCardParamValuesRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  4,
-) as any as S.Schema<GetEmbedCardParamValuesRequest>;
-
 export interface GetEmbedCardParamValuesResponse {}
-const GetEmbedCardParamValuesResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<GetEmbedCardParamValuesResponse>;
-
 export interface GetEmbedCardQueryRequest {
   token: string;
 }
-const GetEmbedCardQueryRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  5,
-) as any as S.Schema<GetEmbedCardQueryRequest>;
-
 export interface GetEmbedCardQueryResponse {}
-const GetEmbedCardQueryResponse =
-  CreateActionResponse as any as S.Schema<GetEmbedCardQueryResponse>;
-
 /** Schema for valid export formats for downloading query results. */
 export type GetEmbedCardQueryByExportFormatRequestExportFormat = "csv" | "api" | "xlsx" | "json";
-const GetEmbedCardQueryByExportFormatRequestExportFormat = S.String;
-
 export interface GetEmbedCardQueryByExportFormatRequest {
   token: string;
   export_format: GetEmbedCardQueryByExportFormatRequestExportFormat | (string & {});
   format_rows?: boolean;
   pivot_results?: boolean;
 }
-const GetEmbedCardQueryByExportFormatRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  6,
-) as any as S.Schema<GetEmbedCardQueryByExportFormatRequest>;
-
 export interface GetEmbedCardQueryByExportFormatResponse {}
-const GetEmbedCardQueryByExportFormatResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedCardQueryByExportFormatResponse>;
-
 export interface GetEmbedDashboardRequest {
   token: string;
 }
-const GetEmbedDashboardRequest = /*@__PURE__*/ __L.at(
-  __c64,
-  7,
-) as any as S.Schema<GetEmbedDashboardRequest>;
-
 export interface GetEmbedDashboardResponse {}
-const GetEmbedDashboardResponse =
-  CreateActionResponse as any as S.Schema<GetEmbedDashboardResponse>;
-
 export interface GetEmbedDashboardDashcardCardRequest {
   token: string;
   /** value must be an integer greater than zero. */
@@ -8823,23 +4627,13 @@ export interface GetEmbedDashboardDashcardCardRequest {
   /** value must be an integer greater than zero. */
   card_id: number;
 }
-const GetEmbedDashboardDashcardCardRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  0,
-) as any as S.Schema<GetEmbedDashboardDashcardCardRequest>;
-
 export interface GetEmbedDashboardDashcardCardResponse {}
-const GetEmbedDashboardDashcardCardResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedDashboardDashcardCardResponse>;
-
 /** Schema for valid export formats for downloading query results. */
 export type GetEmbedDashboardDashcardCardByExportFormatRequestExportFormat =
   | "csv"
   | "api"
   | "xlsx"
   | "json";
-const GetEmbedDashboardDashcardCardByExportFormatRequestExportFormat = S.String;
-
 export interface GetEmbedDashboardDashcardCardByExportFormatRequest {
   token: string;
   /** value must be an integer greater than zero. */
@@ -8850,68 +4644,28 @@ export interface GetEmbedDashboardDashcardCardByExportFormatRequest {
   format_rows?: boolean;
   pivot_results?: boolean;
 }
-const GetEmbedDashboardDashcardCardByExportFormatRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  1,
-) as any as S.Schema<GetEmbedDashboardDashcardCardByExportFormatRequest>;
-
 export interface GetEmbedDashboardDashcardCardByExportFormatResponse {}
-const GetEmbedDashboardDashcardCardByExportFormatResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedDashboardDashcardCardByExportFormatResponse>;
-
 export interface GetEmbedDashboardParamRemappingRequest {
   token: string;
   param_key: string;
   value: string;
 }
-const GetEmbedDashboardParamRemappingRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  2,
-) as any as S.Schema<GetEmbedDashboardParamRemappingRequest>;
-
 export interface GetEmbedDashboardParamRemappingResponse {}
-const GetEmbedDashboardParamRemappingResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedDashboardParamRemappingResponse>;
-
 export interface GetEmbedDashboardParamSearchRequest {
   token: string;
   param_key: string;
   prefix: string;
 }
-const GetEmbedDashboardParamSearchRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  3,
-) as any as S.Schema<GetEmbedDashboardParamSearchRequest>;
-
 export interface GetEmbedDashboardParamSearchResponse {}
-const GetEmbedDashboardParamSearchResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedDashboardParamSearchResponse>;
-
 export interface GetEmbedDashboardParamValuesRequest {
   token: string;
   param_key: string;
 }
-const GetEmbedDashboardParamValuesRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  4,
-) as any as S.Schema<GetEmbedDashboardParamValuesRequest>;
-
 export interface GetEmbedDashboardParamValuesResponse {}
-const GetEmbedDashboardParamValuesResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedDashboardParamValuesResponse>;
-
 export interface GetEmbedPivotCardQueryRequest {
   token: string;
 }
-const GetEmbedPivotCardQueryRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  5,
-) as any as S.Schema<GetEmbedPivotCardQueryRequest>;
-
 export interface GetEmbedPivotCardQueryResponse {}
-const GetEmbedPivotCardQueryResponse =
-  CreateActionResponse as any as S.Schema<GetEmbedPivotCardQueryResponse>;
-
 export interface GetEmbedPivotDashboardDashcardCardRequest {
   token: string;
   /** value must be an integer greater than zero. */
@@ -8919,37 +4673,14 @@ export interface GetEmbedPivotDashboardDashcardCardRequest {
   /** value must be an integer greater than zero. */
   card_id: number;
 }
-const GetEmbedPivotDashboardDashcardCardRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  6,
-) as any as S.Schema<GetEmbedPivotDashboardDashcardCardRequest>;
-
 export interface GetEmbedPivotDashboardDashcardCardResponse {}
-const GetEmbedPivotDashboardDashcardCardResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedPivotDashboardDashcardCardResponse>;
-
 export interface GetEmbedThemeRequest {}
-const GetEmbedThemeRequest = /*@__PURE__*/ __L.at(
-  __c65,
-  7,
-) as any as S.Schema<GetEmbedThemeRequest>;
-
 export interface GetEmbedThemeResponse {}
-const GetEmbedThemeResponse = CreateActionResponse as any as S.Schema<GetEmbedThemeResponse>;
-
 export interface GetEmbedThemeByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetEmbedThemeByIdRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  0,
-) as any as S.Schema<GetEmbedThemeByIdRequest>;
-
 export interface GetEmbedThemeByIdResponse {}
-const GetEmbedThemeByIdResponse =
-  CreateActionResponse as any as S.Schema<GetEmbedThemeByIdResponse>;
-
 export interface GetEmbedTilesCardRequest {
   token: string;
   /** value must be an integer. */
@@ -8962,15 +4693,7 @@ export interface GetEmbedTilesCardRequest {
   latField: unknown;
   lonField: unknown;
 }
-const GetEmbedTilesCardRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  1,
-) as any as S.Schema<GetEmbedTilesCardRequest>;
-
 export interface GetEmbedTilesCardResponse {}
-const GetEmbedTilesCardResponse =
-  CreateActionResponse as any as S.Schema<GetEmbedTilesCardResponse>;
-
 export interface GetEmbedTilesDashboardDashcardCardRequest {
   token: string;
   /** value must be an integer greater than zero. */
@@ -8987,37 +4710,18 @@ export interface GetEmbedTilesDashboardDashcardCardRequest {
   latField: unknown;
   lonField: unknown;
 }
-const GetEmbedTilesDashboardDashcardCardRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  2,
-) as any as S.Schema<GetEmbedTilesDashboardDashcardCardRequest>;
-
 export interface GetEmbedTilesDashboardDashcardCardResponse {}
-const GetEmbedTilesDashboardDashcardCardResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetEmbedTilesDashboardDashcardCardResponse>;
-
 export interface GetFieldRequest {
   /** value must be an integer greater than zero. */
   id: number;
   include_editable_data_model?: boolean;
 }
-const GetFieldRequest = /*@__PURE__*/ __L.at(__c66, 3) as any as S.Schema<GetFieldRequest>;
-
 export interface GetFieldResponse {}
-const GetFieldResponse = CreateActionResponse as any as S.Schema<GetFieldResponse>;
-
 export interface GetFieldRelatedRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetFieldRelatedRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  4,
-) as any as S.Schema<GetFieldRelatedRequest>;
-
 export interface GetFieldRelatedResponse {}
-const GetFieldRelatedResponse = CreateActionResponse as any as S.Schema<GetFieldRelatedResponse>;
-
 export interface GetFieldRemappingRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -9025,15 +4729,7 @@ export interface GetFieldRemappingRequest {
   remapped_id: number;
   value: string;
 }
-const GetFieldRemappingRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  5,
-) as any as S.Schema<GetFieldRemappingRequest>;
-
 export interface GetFieldRemappingResponse {}
-const GetFieldRemappingResponse =
-  CreateActionResponse as any as S.Schema<GetFieldRemappingResponse>;
-
 export interface GetFieldSearchRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -9041,143 +4737,51 @@ export interface GetFieldSearchRequest {
   search_id: number;
   value?: string;
 }
-const GetFieldSearchRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  6,
-) as any as S.Schema<GetFieldSearchRequest>;
-
 export interface GetFieldSearchResponse {}
-const GetFieldSearchResponse = CreateActionResponse as any as S.Schema<GetFieldSearchResponse>;
-
 export interface GetFieldSummaryRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetFieldSummaryRequest = /*@__PURE__*/ __L.at(
-  __c66,
-  7,
-) as any as S.Schema<GetFieldSummaryRequest>;
-
 export interface GetFieldSummaryResponse {}
-const GetFieldSummaryResponse = CreateActionResponse as any as S.Schema<GetFieldSummaryResponse>;
-
 export interface GetFieldValuesRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetFieldValuesRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  0,
-) as any as S.Schema<GetFieldValuesRequest>;
-
 export interface GetFieldValuesResponse {}
-const GetFieldValuesResponse = CreateActionResponse as any as S.Schema<GetFieldValuesResponse>;
-
 export interface GetGeojsonRequest {
   url: string;
 }
-const GetGeojsonRequest = /*@__PURE__*/ __L.at(__c67, 1) as any as S.Schema<GetGeojsonRequest>;
-
 export interface GetGeojsonResponse {}
-const GetGeojsonResponse = CreateActionResponse as any as S.Schema<GetGeojsonResponse>;
-
 export interface GetGeojsonByKeyRequest {
   key: string;
 }
-const GetGeojsonByKeyRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  2,
-) as any as S.Schema<GetGeojsonByKeyRequest>;
-
 export interface GetGeojsonByKeyResponse {}
-const GetGeojsonByKeyResponse = CreateActionResponse as any as S.Schema<GetGeojsonByKeyResponse>;
-
 export interface GetGlossaryRequest {}
-const GetGlossaryRequest = /*@__PURE__*/ __L.at(__c67, 3) as any as S.Schema<GetGlossaryRequest>;
-
 export interface GetGlossaryResponse {}
-const GetGlossaryResponse = CreateActionResponse as any as S.Schema<GetGlossaryResponse>;
-
 export interface GetHealthInspectorRequest {
   /** value must be an integer greater than zero. */
   limit?: number;
 }
-const GetHealthInspectorRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  4,
-) as any as S.Schema<GetHealthInspectorRequest>;
-
 export interface GetHealthInspectorResponse {}
-const GetHealthInspectorResponse =
-  CreateActionResponse as any as S.Schema<GetHealthInspectorResponse>;
-
 export interface GetKeyRequest {}
-const GetKeyRequest = /*@__PURE__*/ __L.at(__c67, 5) as any as S.Schema<GetKeyRequest>;
-
 export interface GetKeyResponse {}
-const GetKeyResponse = CreateActionResponse as any as S.Schema<GetKeyResponse>;
-
 export interface GetKeyCountRequest {}
-const GetKeyCountRequest = /*@__PURE__*/ __L.at(__c67, 6) as any as S.Schema<GetKeyCountRequest>;
-
 export interface GetKeyCountResponse {}
-const GetKeyCountResponse = CreateActionResponse as any as S.Schema<GetKeyCountResponse>;
-
 export interface GetLlmListModelsRequest {}
-const GetLlmListModelsRequest = /*@__PURE__*/ __L.at(
-  __c67,
-  7,
-) as any as S.Schema<GetLlmListModelsRequest>;
-
 export interface GetLlmListModelsResponse {}
-const GetLlmListModelsResponse = CreateActionResponse as any as S.Schema<GetLlmListModelsResponse>;
-
 export interface GetLoggerLogsRequest {}
-const GetLoggerLogsRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  0,
-) as any as S.Schema<GetLoggerLogsRequest>;
-
 export interface GetLoggerLogsResponse {}
-const GetLoggerLogsResponse = CreateActionResponse as any as S.Schema<GetLoggerLogsResponse>;
-
 export interface GetLoggerPresetsRequest {}
-const GetLoggerPresetsRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  1,
-) as any as S.Schema<GetLoggerPresetsRequest>;
-
 export interface GetLoggerPresetsResponse {}
-const GetLoggerPresetsResponse = CreateActionResponse as any as S.Schema<GetLoggerPresetsResponse>;
-
 export interface GetLoginHistoryCurrentRequest {}
-const GetLoginHistoryCurrentRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  2,
-) as any as S.Schema<GetLoginHistoryCurrentRequest>;
-
 export interface GetLoginHistoryCurrentResponse {}
-const GetLoginHistoryCurrentResponse =
-  CreateActionResponse as any as S.Schema<GetLoginHistoryCurrentResponse>;
-
 export interface GetMeasureRequest {}
-const GetMeasureRequest = /*@__PURE__*/ __L.at(__c68, 3) as any as S.Schema<GetMeasureRequest>;
-
 export interface GetMeasureResponse {}
-const GetMeasureResponse = CreateActionResponse as any as S.Schema<GetMeasureResponse>;
-
 export interface GetMeasureByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetMeasureByIdRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  4,
-) as any as S.Schema<GetMeasureByIdRequest>;
-
 export interface GetMeasureByIdResponse {}
-const GetMeasureByIdResponse = CreateActionResponse as any as S.Schema<GetMeasureByIdResponse>;
-
 export interface GetMeasureDimensionRemappingRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -9185,15 +4789,7 @@ export interface GetMeasureDimensionRemappingRequest {
   dimension_key: string;
   value: string;
 }
-const GetMeasureDimensionRemappingRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  5,
-) as any as S.Schema<GetMeasureDimensionRemappingRequest>;
-
 export interface GetMeasureDimensionRemappingResponse {}
-const GetMeasureDimensionRemappingResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetMeasureDimensionRemappingResponse>;
-
 export interface GetMeasureDimensionSearchRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -9201,103 +4797,37 @@ export interface GetMeasureDimensionSearchRequest {
   dimension_key: string;
   query: string;
 }
-const GetMeasureDimensionSearchRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  6,
-) as any as S.Schema<GetMeasureDimensionSearchRequest>;
-
 export interface GetMeasureDimensionSearchResponse {}
-const GetMeasureDimensionSearchResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetMeasureDimensionSearchResponse>;
-
 export interface GetMeasureDimensionValuesRequest {
   /** value must be an integer greater than zero. */
   id: number;
   /** value must be a valid UUID. */
   dimension_key: string;
 }
-const GetMeasureDimensionValuesRequest = /*@__PURE__*/ __L.at(
-  __c68,
-  7,
-) as any as S.Schema<GetMeasureDimensionValuesRequest>;
-
 export interface GetMeasureDimensionValuesResponse {}
-const GetMeasureDimensionValuesResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetMeasureDimensionValuesResponse>;
-
 export interface GetMetabotConversationRequest {
   /** value must be a valid UUID. */
   id: string;
 }
-const GetMetabotConversationRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  0,
-) as any as S.Schema<GetMetabotConversationRequest>;
-
 export interface GetMetabotConversationResponse {}
-const GetMetabotConversationResponse =
-  CreateActionResponse as any as S.Schema<GetMetabotConversationResponse>;
-
 export interface GetMetabotConversationsRequest {}
-const GetMetabotConversationsRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  1,
-) as any as S.Schema<GetMetabotConversationsRequest>;
-
 export interface GetMetabotConversationsResponse {}
-const GetMetabotConversationsResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<GetMetabotConversationsResponse>;
-
 export interface GetMetabotMetabotRequest {}
-const GetMetabotMetabotRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  2,
-) as any as S.Schema<GetMetabotMetabotRequest>;
-
 export interface GetMetabotMetabotResponse {}
-const GetMetabotMetabotResponse =
-  CreateActionResponse as any as S.Schema<GetMetabotMetabotResponse>;
-
 export interface GetMetabotMetabotByIdRequest {
   id: number;
 }
-const GetMetabotMetabotByIdRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  3,
-) as any as S.Schema<GetMetabotMetabotByIdRequest>;
-
 export interface GetMetabotMetabotByIdResponse {}
-const GetMetabotMetabotByIdResponse =
-  CreateActionResponse as any as S.Schema<GetMetabotMetabotByIdResponse>;
-
 export type GetMetabotMetabotPromptSuggestionsRequestModel = "metric" | "model";
-const GetMetabotMetabotPromptSuggestionsRequestModel = S.String;
-
 export interface GetMetabotMetabotPromptSuggestionsRequest {
   id: number;
   sample?: boolean;
   model?: GetMetabotMetabotPromptSuggestionsRequestModel | (string & {});
   model_id?: number;
 }
-const GetMetabotMetabotPromptSuggestionsRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  4,
-) as any as S.Schema<GetMetabotMetabotPromptSuggestionsRequest>;
-
 export interface GetMetabotMetabotPromptSuggestionsResponse {}
-const GetMetabotMetabotPromptSuggestionsResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetMetabotMetabotPromptSuggestionsResponse>;
-
 export interface GetMetabotPermissionsUserPermissionsRequest {}
-const GetMetabotPermissionsUserPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  5,
-) as any as S.Schema<GetMetabotPermissionsUserPermissionsRequest>;
-
 export interface GetMetabotPermissionsUserPermissionsResponse {}
-const GetMetabotPermissionsUserPermissionsResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetMetabotPermissionsUserPermissionsResponse>;
-
 export type GetMetabotSettingsRequestProvider =
   | "anthropic"
   | "openai"
@@ -9307,38 +4837,17 @@ export type GetMetabotSettingsRequestProvider =
   | "zai"
   | "metabase"
   | "openrouter";
-const GetMetabotSettingsRequestProvider = S.String;
-
 export interface GetMetabotSettingsRequest {
   provider?: GetMetabotSettingsRequestProvider | (string & {});
 }
-const GetMetabotSettingsRequest = /*@__PURE__*/ __L.at(
-  __c69,
-  6,
-) as any as S.Schema<GetMetabotSettingsRequest>;
-
 export interface GetMetabotSettingsResponse {}
-const GetMetabotSettingsResponse =
-  CreateActionResponse as any as S.Schema<GetMetabotSettingsResponse>;
-
 export interface GetMetricRequest {}
-const GetMetricRequest = /*@__PURE__*/ __L.at(__c69, 7) as any as S.Schema<GetMetricRequest>;
-
 export interface GetMetricResponse {}
-const GetMetricResponse = CreateActionResponse as any as S.Schema<GetMetricResponse>;
-
 export interface GetMetricByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetMetricByIdRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  0,
-) as any as S.Schema<GetMetricByIdRequest>;
-
 export interface GetMetricByIdResponse {}
-const GetMetricByIdResponse = CreateActionResponse as any as S.Schema<GetMetricByIdResponse>;
-
 export interface GetMetricDimensionRemappingRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -9346,15 +4855,7 @@ export interface GetMetricDimensionRemappingRequest {
   dimension_key: string;
   value: string;
 }
-const GetMetricDimensionRemappingRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  1,
-) as any as S.Schema<GetMetricDimensionRemappingRequest>;
-
 export interface GetMetricDimensionRemappingResponse {}
-const GetMetricDimensionRemappingResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetMetricDimensionRemappingResponse>;
-
 export interface GetMetricDimensionSearchRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -9362,118 +4863,50 @@ export interface GetMetricDimensionSearchRequest {
   dimension_key: string;
   query: string;
 }
-const GetMetricDimensionSearchRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  2,
-) as any as S.Schema<GetMetricDimensionSearchRequest>;
-
 export interface GetMetricDimensionSearchResponse {}
-const GetMetricDimensionSearchResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetMetricDimensionSearchResponse>;
-
 export interface GetMetricDimensionValuesRequest {
   /** value must be an integer greater than zero. */
   id: number;
   /** value must be a valid UUID. */
   dimension_key: string;
 }
-const GetMetricDimensionValuesRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  3,
-) as any as S.Schema<GetMetricDimensionValuesRequest>;
-
 export interface GetMetricDimensionValuesResponse {}
-const GetMetricDimensionValuesResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetMetricDimensionValuesResponse>;
-
 export interface GetModelIndexRequest {
   /** value must be an integer greater than zero. */
   model_id: number;
 }
-const GetModelIndexRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  4,
-) as any as S.Schema<GetModelIndexRequest>;
-
 export interface GetModelIndexResponse {}
-const GetModelIndexResponse = CreateActionResponse as any as S.Schema<GetModelIndexResponse>;
-
 export interface GetModelIndexByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetModelIndexByIdRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  5,
-) as any as S.Schema<GetModelIndexByIdRequest>;
-
 export interface GetModelIndexByIdResponse {}
-const GetModelIndexByIdResponse =
-  CreateActionResponse as any as S.Schema<GetModelIndexByIdResponse>;
-
 export interface GetMtGtapRequest {
   group_id?: number;
   table_id?: number;
 }
-const GetMtGtapRequest = /*@__PURE__*/ __L.at(__c70, 6) as any as S.Schema<GetMtGtapRequest>;
-
 export interface GetMtGtapResponse {}
-const GetMtGtapResponse = CreateActionResponse as any as S.Schema<GetMtGtapResponse>;
-
 export interface GetMtGtapByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetMtGtapByIdRequest = /*@__PURE__*/ __L.at(
-  __c70,
-  7,
-) as any as S.Schema<GetMtGtapByIdRequest>;
-
 export interface GetMtGtapByIdResponse {}
-const GetMtGtapByIdResponse = CreateActionResponse as any as S.Schema<GetMtGtapByIdResponse>;
-
 export interface GetMtUserAttributesRequest {}
-const GetMtUserAttributesRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  0,
-) as any as S.Schema<GetMtUserAttributesRequest>;
-
 export interface GetMtUserAttributesResponse {}
-const GetMtUserAttributesResponse =
-  CreateActionResponse as any as S.Schema<GetMtUserAttributesResponse>;
-
 export interface GetNativeQuerySnippetRequest {
   archived?: boolean;
 }
-const GetNativeQuerySnippetRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  1,
-) as any as S.Schema<GetNativeQuerySnippetRequest>;
-
 export interface GetNativeQuerySnippetResponse {}
-const GetNativeQuerySnippetResponse =
-  CreateActionResponse as any as S.Schema<GetNativeQuerySnippetResponse>;
-
 export interface GetNativeQuerySnippetByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetNativeQuerySnippetByIdRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  2,
-) as any as S.Schema<GetNativeQuerySnippetByIdRequest>;
-
 export interface GetNativeQuerySnippetByIdResponse {}
-const GetNativeQuerySnippetByIdResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetNativeQuerySnippetByIdResponse>;
-
 export type GetNotificationRequestPayloadType =
   | "notification/dashboard"
   | "notification/system-event"
   | "notification/testing"
   | "notification/card";
-const GetNotificationRequestPayloadType = S.String;
-
 export interface GetNotificationRequest {
   /** value must be an integer greater than zero. */
   creator_id?: number;
@@ -9486,24 +4919,12 @@ export interface GetNotificationRequest {
   include_inactive?: boolean;
   payload_type?: GetNotificationRequestPayloadType | (string & {});
 }
-const GetNotificationRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  3,
-) as any as S.Schema<GetNotificationRequest>;
-
 export interface GetNotificationResponse {}
-const GetNotificationResponse = CreateActionResponse as any as S.Schema<GetNotificationResponse>;
-
 export type GetNotificationAdminRequestChannelCase1List = Array<string>;
 export type GetNotificationAdminRequestChannel =
   | string
   | GetNotificationAdminRequestChannelCase1List;
-const GetNotificationAdminRequestChannel =
-  S.Unknown as any as S.Schema<GetNotificationAdminRequestChannel>;
-
 export type MetabaseNotificationApiAdminRunStatus = "failing" | "successful";
-const MetabaseNotificationApiAdminRunStatus = S.String;
-
 export type MetabaseNotificationApiAdminSortColumn =
   | "id"
   | "last_send"
@@ -9511,11 +4932,7 @@ export type MetabaseNotificationApiAdminSortColumn =
   | "card_name"
   | "creator_name"
   | "updated_at";
-const MetabaseNotificationApiAdminSortColumn = S.String;
-
 export type MetabaseNotificationApiAdminSortDirection = "asc" | "desc";
-const MetabaseNotificationApiAdminSortDirection = S.String;
-
 export interface GetNotificationAdminRequest {
   active?: boolean;
   /** value must be an integer greater than zero. */
@@ -9532,60 +4949,24 @@ export interface GetNotificationAdminRequest {
   sort_column?: MetabaseNotificationApiAdminSortColumn | (string & {});
   sort_direction?: MetabaseNotificationApiAdminSortDirection | (string & {});
 }
-const GetNotificationAdminRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  4,
-) as any as S.Schema<GetNotificationAdminRequest>;
-
 export interface GetNotificationAdminResponse {}
-const GetNotificationAdminResponse =
-  CreateActionResponse as any as S.Schema<GetNotificationAdminResponse>;
-
 export interface GetNotificationAdminByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetNotificationAdminByIdRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  5,
-) as any as S.Schema<GetNotificationAdminByIdRequest>;
-
 export interface GetNotificationAdminByIdResponse {}
-const GetNotificationAdminByIdResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetNotificationAdminByIdResponse>;
-
 export interface GetNotificationByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetNotificationByIdRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  6,
-) as any as S.Schema<GetNotificationByIdRequest>;
-
 export interface GetNotificationByIdResponse {}
-const GetNotificationByIdResponse =
-  CreateActionResponse as any as S.Schema<GetNotificationByIdResponse>;
-
 export type GetOauthAuthorizationsRequestEventType = "registered" | "approved" | "denied";
-const GetOauthAuthorizationsRequestEventType = S.String;
-
 export interface GetOauthAuthorizationsRequest {
   client_id?: string;
   event_type?: GetOauthAuthorizationsRequestEventType | (string & {});
 }
-const GetOauthAuthorizationsRequest = /*@__PURE__*/ __L.at(
-  __c71,
-  7,
-) as any as S.Schema<GetOauthAuthorizationsRequest>;
-
 export interface GetOauthAuthorizationsResponse {}
-const GetOauthAuthorizationsResponse =
-  CreateActionResponse as any as S.Schema<GetOauthAuthorizationsResponse>;
-
 export type GetOembedRequestFormat = "json";
-const GetOembedRequestFormat = S.String;
-
 export interface GetOembedRequest {
   url: string;
   /** The format param is not used by the API, but is required as part of the oEmbed spec: http://oembed.com/#section2 just return an error if `format` is specified and it's anything other than `json`. */
@@ -9593,154 +4974,58 @@ export interface GetOembedRequest {
   maxheight?: number;
   maxwidth?: number;
 }
-const GetOembedRequest = /*@__PURE__*/ __L.at(__c72, 0) as any as S.Schema<GetOembedRequest>;
-
 export interface GetOembedResponse {}
-const GetOembedResponse = CreateActionResponse as any as S.Schema<GetOembedResponse>;
-
 export interface GetOsiAiContextRequest {}
-const GetOsiAiContextRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  1,
-) as any as S.Schema<GetOsiAiContextRequest>;
-
 export interface GetOsiAiContextResponse {}
-const GetOsiAiContextResponse = CreateActionResponse as any as S.Schema<GetOsiAiContextResponse>;
-
 export interface GetOsiAiContextByEntityLocalIdRequest {
   entity_type: string;
   /** value must be an integer greater than zero. */
   entity_local_id: number;
 }
-const GetOsiAiContextByEntityLocalIdRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  2,
-) as any as S.Schema<GetOsiAiContextByEntityLocalIdRequest>;
-
 export interface GetOsiAiContextByEntityLocalIdResponse {}
-const GetOsiAiContextByEntityLocalIdResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetOsiAiContextByEntityLocalIdResponse>;
-
 export interface GetPermissionsGraphRequest {}
-const GetPermissionsGraphRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  3,
-) as any as S.Schema<GetPermissionsGraphRequest>;
-
 export interface GetPermissionsGraphResponse {}
-const GetPermissionsGraphResponse =
-  CreateActionResponse as any as S.Schema<GetPermissionsGraphResponse>;
-
 export interface GetPermissionsGraphDbRequest {
   /** value must be an integer greater than zero. */
   db_id: number;
 }
-const GetPermissionsGraphDbRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  4,
-) as any as S.Schema<GetPermissionsGraphDbRequest>;
-
 export interface GetPermissionsGraphDbResponse {}
-const GetPermissionsGraphDbResponse =
-  CreateActionResponse as any as S.Schema<GetPermissionsGraphDbResponse>;
-
 export interface GetPermissionsGraphGroupRequest {
   /** value must be an integer greater than zero. */
   group_id: number;
 }
-const GetPermissionsGraphGroupRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  5,
-) as any as S.Schema<GetPermissionsGraphGroupRequest>;
-
 export interface GetPermissionsGraphGroupResponse {}
-const GetPermissionsGraphGroupResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPermissionsGraphGroupResponse>;
-
 export type GetPermissionsGroupRequestTenancy = "external" | "internal";
-const GetPermissionsGroupRequestTenancy = S.String;
-
 export interface GetPermissionsGroupRequest {
   tenancy?: GetPermissionsGroupRequestTenancy | (string & {});
 }
-const GetPermissionsGroupRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  6,
-) as any as S.Schema<GetPermissionsGroupRequest>;
-
 export interface GetPermissionsGroupResponse {}
-const GetPermissionsGroupResponse =
-  CreateActionResponse as any as S.Schema<GetPermissionsGroupResponse>;
-
 export interface GetPermissionsGroupByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetPermissionsGroupByIdRequest = /*@__PURE__*/ __L.at(
-  __c72,
-  7,
-) as any as S.Schema<GetPermissionsGroupByIdRequest>;
-
 export interface GetPermissionsGroupByIdResponse {}
-const GetPermissionsGroupByIdResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<GetPermissionsGroupByIdResponse>;
-
 export interface GetPermissionsMembershipRequest {}
-const GetPermissionsMembershipRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  0,
-) as any as S.Schema<GetPermissionsMembershipRequest>;
-
 export interface GetPermissionsMembershipResponse {}
-const GetPermissionsMembershipResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPermissionsMembershipResponse>;
-
 export interface GetPersistRequest {}
-const GetPersistRequest = /*@__PURE__*/ __L.at(__c73, 1) as any as S.Schema<GetPersistRequest>;
-
 export interface GetPersistResponse {}
-const GetPersistResponse = CreateActionResponse as any as S.Schema<GetPersistResponse>;
-
 export interface GetPersistByPersistedInfoIdRequest {
   /** value must be an integer greater than zero. */
   persisted_info_id: number;
 }
-const GetPersistByPersistedInfoIdRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  2,
-) as any as S.Schema<GetPersistByPersistedInfoIdRequest>;
-
 export interface GetPersistByPersistedInfoIdResponse {}
-const GetPersistByPersistedInfoIdResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPersistByPersistedInfoIdResponse>;
-
 export interface GetPersistCardRequest {
   /** value must be an integer greater than zero. */
   card_id: number;
 }
-const GetPersistCardRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  3,
-) as any as S.Schema<GetPersistCardRequest>;
-
 export interface GetPersistCardResponse {}
-const GetPersistCardResponse = CreateActionResponse as any as S.Schema<GetPersistCardResponse>;
-
 export interface GetPivotCardQueryRequest {
   /** value must be a valid UUID. */
   uuid: string;
   parameters?: MetabaseParametersSchemaParameterValues;
   ignore_cache?: boolean;
 }
-const GetPivotCardQueryRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  4,
-) as any as S.Schema<GetPivotCardQueryRequest>;
-
 export interface GetPivotCardQueryResponse {}
-const GetPivotCardQueryResponse =
-  CreateActionResponse as any as S.Schema<GetPivotCardQueryResponse>;
-
 export interface GetPivotDashboardDashcardCardRequest {
   /** value must be a valid UUID. */
   uuid: string;
@@ -9751,88 +5036,32 @@ export interface GetPivotDashboardDashcardCardRequest {
   parameters?: MetabaseParametersSchemaParameterValues;
   ignore_cache?: boolean;
 }
-const GetPivotDashboardDashcardCardRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  5,
-) as any as S.Schema<GetPivotDashboardDashcardCardRequest>;
-
 export interface GetPivotDashboardDashcardCardResponse {}
-const GetPivotDashboardDashcardCardResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPivotDashboardDashcardCardResponse>;
-
 export interface GetPremiumFeaturesTokenStatusRequest {}
-const GetPremiumFeaturesTokenStatusRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  6,
-) as any as S.Schema<GetPremiumFeaturesTokenStatusRequest>;
-
 export interface GetPremiumFeaturesTokenStatusResponse {}
-const GetPremiumFeaturesTokenStatusResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPremiumFeaturesTokenStatusResponse>;
-
 export interface GetPreviewEmbedCardRequest {
   token: string;
 }
-const GetPreviewEmbedCardRequest = /*@__PURE__*/ __L.at(
-  __c73,
-  7,
-) as any as S.Schema<GetPreviewEmbedCardRequest>;
-
 export interface GetPreviewEmbedCardResponse {}
-const GetPreviewEmbedCardResponse =
-  CreateActionResponse as any as S.Schema<GetPreviewEmbedCardResponse>;
-
 export interface GetPreviewEmbedCardParamRemappingRequest {
   token: string;
   param_key: string;
   value: string;
 }
-const GetPreviewEmbedCardParamRemappingRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  0,
-) as any as S.Schema<GetPreviewEmbedCardParamRemappingRequest>;
-
 export interface GetPreviewEmbedCardParamRemappingResponse {}
-const GetPreviewEmbedCardParamRemappingResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedCardParamRemappingResponse>;
-
 export interface GetPreviewEmbedCardParamValuesRequest {
   token: string;
   param_key: string;
 }
-const GetPreviewEmbedCardParamValuesRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  1,
-) as any as S.Schema<GetPreviewEmbedCardParamValuesRequest>;
-
 export interface GetPreviewEmbedCardParamValuesResponse {}
-const GetPreviewEmbedCardParamValuesResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedCardParamValuesResponse>;
-
 export interface GetPreviewEmbedCardQueryRequest {
   token: string;
 }
-const GetPreviewEmbedCardQueryRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  2,
-) as any as S.Schema<GetPreviewEmbedCardQueryRequest>;
-
 export interface GetPreviewEmbedCardQueryResponse {}
-const GetPreviewEmbedCardQueryResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedCardQueryResponse>;
-
 export interface GetPreviewEmbedDashboardRequest {
   token: string;
 }
-const GetPreviewEmbedDashboardRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  3,
-) as any as S.Schema<GetPreviewEmbedDashboardRequest>;
-
 export interface GetPreviewEmbedDashboardResponse {}
-const GetPreviewEmbedDashboardResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedDashboardResponse>;
-
 export interface GetPreviewEmbedDashboardDashcardCardRequest {
   token: string;
   /** value must be an integer greater than zero. */
@@ -9840,68 +5069,28 @@ export interface GetPreviewEmbedDashboardDashcardCardRequest {
   /** value must be an integer greater than zero. */
   card_id: number;
 }
-const GetPreviewEmbedDashboardDashcardCardRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  4,
-) as any as S.Schema<GetPreviewEmbedDashboardDashcardCardRequest>;
-
 export interface GetPreviewEmbedDashboardDashcardCardResponse {}
-const GetPreviewEmbedDashboardDashcardCardResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedDashboardDashcardCardResponse>;
-
 export interface GetPreviewEmbedDashboardParamRemappingRequest {
   token: string;
   param_key: string;
   value: string;
 }
-const GetPreviewEmbedDashboardParamRemappingRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  5,
-) as any as S.Schema<GetPreviewEmbedDashboardParamRemappingRequest>;
-
 export interface GetPreviewEmbedDashboardParamRemappingResponse {}
-const GetPreviewEmbedDashboardParamRemappingResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedDashboardParamRemappingResponse>;
-
 export interface GetPreviewEmbedDashboardParamSearchRequest {
   token: string;
   param_key: string;
   prefix: string;
 }
-const GetPreviewEmbedDashboardParamSearchRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  6,
-) as any as S.Schema<GetPreviewEmbedDashboardParamSearchRequest>;
-
 export interface GetPreviewEmbedDashboardParamSearchResponse {}
-const GetPreviewEmbedDashboardParamSearchResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedDashboardParamSearchResponse>;
-
 export interface GetPreviewEmbedDashboardParamValuesRequest {
   token: string;
   param_key: string;
 }
-const GetPreviewEmbedDashboardParamValuesRequest = /*@__PURE__*/ __L.at(
-  __c74,
-  7,
-) as any as S.Schema<GetPreviewEmbedDashboardParamValuesRequest>;
-
 export interface GetPreviewEmbedDashboardParamValuesResponse {}
-const GetPreviewEmbedDashboardParamValuesResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedDashboardParamValuesResponse>;
-
 export interface GetPreviewEmbedPivotCardQueryRequest {
   token: string;
 }
-const GetPreviewEmbedPivotCardQueryRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  0,
-) as any as S.Schema<GetPreviewEmbedPivotCardQueryRequest>;
-
 export interface GetPreviewEmbedPivotCardQueryResponse {}
-const GetPreviewEmbedPivotCardQueryResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedPivotCardQueryResponse>;
-
 export interface GetPreviewEmbedPivotDashboardDashcardCardRequest {
   token: string;
   /** value must be an integer greater than zero. */
@@ -9909,15 +5098,7 @@ export interface GetPreviewEmbedPivotDashboardDashcardCardRequest {
   /** value must be an integer greater than zero. */
   card_id: number;
 }
-const GetPreviewEmbedPivotDashboardDashcardCardRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  1,
-) as any as S.Schema<GetPreviewEmbedPivotDashboardDashcardCardRequest>;
-
 export interface GetPreviewEmbedPivotDashboardDashcardCardResponse {}
-const GetPreviewEmbedPivotDashboardDashcardCardResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedPivotDashboardDashcardCardResponse>;
-
 export interface GetPreviewEmbedTilesCardRequest {
   token: string;
   /** value must be an integer. */
@@ -9930,15 +5111,7 @@ export interface GetPreviewEmbedTilesCardRequest {
   latField: unknown;
   lonField: unknown;
 }
-const GetPreviewEmbedTilesCardRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  2,
-) as any as S.Schema<GetPreviewEmbedTilesCardRequest>;
-
 export interface GetPreviewEmbedTilesCardResponse {}
-const GetPreviewEmbedTilesCardResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedTilesCardResponse>;
-
 export interface GetPreviewEmbedTilesDashboardDashcardCardRequest {
   token: string;
   /** value must be an integer greater than zero. */
@@ -9955,44 +5128,20 @@ export interface GetPreviewEmbedTilesDashboardDashcardCardRequest {
   latField: unknown;
   lonField: unknown;
 }
-const GetPreviewEmbedTilesDashboardDashcardCardRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  3,
-) as any as S.Schema<GetPreviewEmbedTilesDashboardDashcardCardRequest>;
-
 export interface GetPreviewEmbedTilesDashboardDashcardCardResponse {}
-const GetPreviewEmbedTilesDashboardDashcardCardResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetPreviewEmbedTilesDashboardDashcardCardResponse>;
-
 export interface GetPulseRequest {
   archived?: boolean;
   dashboard_id?: number;
   creator_or_recipient?: boolean;
 }
-const GetPulseRequest = /*@__PURE__*/ __L.at(__c75, 4) as any as S.Schema<GetPulseRequest>;
-
 export interface GetPulseResponse {}
-const GetPulseResponse = CreateActionResponse as any as S.Schema<GetPulseResponse>;
-
 export interface GetPulseByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetPulseByIdRequest = /*@__PURE__*/ __L.at(__c75, 5) as any as S.Schema<GetPulseByIdRequest>;
-
 export interface GetPulseByIdResponse {}
-const GetPulseByIdResponse = CreateActionResponse as any as S.Schema<GetPulseByIdResponse>;
-
 export interface GetPulseFormInputRequest {}
-const GetPulseFormInputRequest = /*@__PURE__*/ __L.at(
-  __c75,
-  6,
-) as any as S.Schema<GetPulseFormInputRequest>;
-
 export interface GetPulseFormInputResponse {}
-const GetPulseFormInputResponse =
-  CreateActionResponse as any as S.Schema<GetPulseFormInputResponse>;
-
 export type GetRevisionRequestEntity =
   | "card"
   | "dashboard"
@@ -10000,18 +5149,12 @@ export type GetRevisionRequestEntity =
   | "measure"
   | "segment"
   | "transform";
-const GetRevisionRequestEntity = S.String;
-
 export interface GetRevisionRequest {
   /** value must be an integer greater than zero. */
   id: number;
   entity: GetRevisionRequestEntity | (string & {});
 }
-const GetRevisionRequest = /*@__PURE__*/ __L.at(__c75, 7) as any as S.Schema<GetRevisionRequest>;
-
 export interface GetRevisionResponse {}
-const GetRevisionResponse = CreateActionResponse as any as S.Schema<GetRevisionResponse>;
-
 export type GetRevisionByIdRequestEntity =
   | "card"
   | "dashboard"
@@ -10019,21 +5162,12 @@ export type GetRevisionByIdRequestEntity =
   | "measure"
   | "segment"
   | "transform";
-const GetRevisionByIdRequestEntity = S.String;
-
 export interface GetRevisionByIdRequest {
   entity: GetRevisionByIdRequestEntity | (string & {});
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetRevisionByIdRequest = /*@__PURE__*/ __L.at(
-  __c76,
-  0,
-) as any as S.Schema<GetRevisionByIdRequest>;
-
 export interface GetRevisionByIdResponse {}
-const GetRevisionByIdResponse = CreateActionResponse as any as S.Schema<GetRevisionByIdResponse>;
-
 export type GetSearchRequestContext =
   | "basic-actions"
   | "browse"
@@ -10050,8 +5184,6 @@ export type GetSearchRequestContext =
   | "type-filter"
   | "api"
   | "metabot";
-const GetSearchRequestContext = S.String;
-
 export type GetSearchRequestModelsItem =
   | "dashboard"
   | "table"
@@ -10067,40 +5199,21 @@ export type GetSearchRequestModelsItem =
   | "metric"
   | "card";
 export type GetSearchRequestModelsList = Array<GetSearchRequestModelsItem | (string & {})>;
-const GetSearchRequestModelsList =
-  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetSearchRequestModelsList>;
-
 export type GetSearchRequestFilterItemsInPersonalCollection =
   | "all"
   | "only"
   | "only-mine"
   | "exclude"
   | "exclude-others";
-const GetSearchRequestFilterItemsInPersonalCollection = S.String;
-
 export type GetSearchRequestCreatedByList = Array<number>;
-const GetSearchRequestCreatedByList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetSearchRequestCreatedByList>;
-
 export type GetSearchRequestDisplayTypeList = Array<string>;
-const GetSearchRequestDisplayTypeList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<GetSearchRequestDisplayTypeList>;
-
 export type GetSearchRequestLastEditedByList = Array<number>;
-const GetSearchRequestLastEditedByList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetSearchRequestLastEditedByList>;
-
 export type GetSearchRequestVectorSearchStrategy =
   | "hnsw"
   | "brute-force"
   | "hnsw-iterative-relaxed"
   | "hnsw-iterative-strict";
-const GetSearchRequestVectorSearchStrategy = S.String;
-
 export type GetSearchRequestIdsList = Array<number>;
-const GetSearchRequestIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetSearchRequestIdsList>;
-
 export interface GetSearchRequest {
   q?: string;
   context?: GetSearchRequestContext | (string & {});
@@ -10129,11 +5242,7 @@ export interface GetSearchRequest {
   include_dashboard_questions?: boolean;
   include_metadata?: boolean;
 }
-const GetSearchRequest = /*@__PURE__*/ __L.at(__c76, 1) as any as S.Schema<GetSearchRequest>;
-
 export interface GetSearchResponse {}
-const GetSearchResponse = CreateActionResponse as any as S.Schema<GetSearchResponse>;
-
 export type GetSearchDebugRequestContext =
   | "basic-actions"
   | "browse"
@@ -10150,8 +5259,6 @@ export type GetSearchDebugRequestContext =
   | "type-filter"
   | "api"
   | "metabot";
-const GetSearchDebugRequestContext = S.String;
-
 export type GetSearchDebugRequestModelsItem =
   | "dashboard"
   | "table"
@@ -10169,40 +5276,21 @@ export type GetSearchDebugRequestModelsItem =
 export type GetSearchDebugRequestModelsList = Array<
   GetSearchDebugRequestModelsItem | (string & {})
 >;
-const GetSearchDebugRequestModelsList =
-  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetSearchDebugRequestModelsList>;
-
 export type GetSearchDebugRequestFilterItemsInPersonalCollection =
   | "all"
   | "only"
   | "only-mine"
   | "exclude"
   | "exclude-others";
-const GetSearchDebugRequestFilterItemsInPersonalCollection = S.String;
-
 export type GetSearchDebugRequestCreatedByList = Array<number>;
-const GetSearchDebugRequestCreatedByList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetSearchDebugRequestCreatedByList>;
-
 export type GetSearchDebugRequestDisplayTypeList = Array<string>;
-const GetSearchDebugRequestDisplayTypeList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<GetSearchDebugRequestDisplayTypeList>;
-
 export type GetSearchDebugRequestLastEditedByList = Array<number>;
-const GetSearchDebugRequestLastEditedByList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetSearchDebugRequestLastEditedByList>;
-
 export type GetSearchDebugRequestVectorSearchStrategy =
   | "hnsw"
   | "brute-force"
   | "hnsw-iterative-relaxed"
   | "hnsw-iterative-strict";
-const GetSearchDebugRequestVectorSearchStrategy = S.String;
-
 export type GetSearchDebugRequestIdsList = Array<number>;
-const GetSearchDebugRequestIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetSearchDebugRequestIdsList>;
-
 export type GetSearchDebugRequestExpectedResultType =
   | "dashboard"
   | "table"
@@ -10217,8 +5305,6 @@ export type GetSearchDebugRequestExpectedResultType =
   | "indexed-entity"
   | "metric"
   | "card";
-const GetSearchDebugRequestExpectedResultType = S.String;
-
 export interface GetSearchDebugRequest {
   q?: string;
   context?: GetSearchDebugRequestContext | (string & {});
@@ -10251,116 +5337,40 @@ export interface GetSearchDebugRequest {
   expected_result_id: number;
   for_user_id?: number;
 }
-const GetSearchDebugRequest = /*@__PURE__*/ __L.at(
-  __c76,
-  2,
-) as any as S.Schema<GetSearchDebugRequest>;
-
 export interface GetSearchDebugResponse {}
-const GetSearchDebugResponse = CreateActionResponse as any as S.Schema<GetSearchDebugResponse>;
-
 export interface GetSearchWeightsRequest {
   context?: string;
 }
-const GetSearchWeightsRequest = /*@__PURE__*/ __L.at(
-  __c76,
-  3,
-) as any as S.Schema<GetSearchWeightsRequest>;
-
 export interface GetSearchWeightsResponse {}
-const GetSearchWeightsResponse = CreateActionResponse as any as S.Schema<GetSearchWeightsResponse>;
-
 export interface GetSegmentRequest {}
-const GetSegmentRequest = /*@__PURE__*/ __L.at(__c76, 4) as any as S.Schema<GetSegmentRequest>;
-
 export interface GetSegmentResponse {}
-const GetSegmentResponse = CreateActionResponse as any as S.Schema<GetSegmentResponse>;
-
 export interface GetSegmentByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetSegmentByIdRequest = /*@__PURE__*/ __L.at(
-  __c76,
-  5,
-) as any as S.Schema<GetSegmentByIdRequest>;
-
 export interface GetSegmentByIdResponse {}
-const GetSegmentByIdResponse = CreateActionResponse as any as S.Schema<GetSegmentByIdResponse>;
-
 export interface GetSegmentRelatedRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetSegmentRelatedRequest = /*@__PURE__*/ __L.at(
-  __c76,
-  6,
-) as any as S.Schema<GetSegmentRelatedRequest>;
-
 export interface GetSegmentRelatedResponse {}
-const GetSegmentRelatedResponse =
-  CreateActionResponse as any as S.Schema<GetSegmentRelatedResponse>;
-
 export interface GetSessionPasswordResetTokenValidRequest {
   token: string;
 }
-const GetSessionPasswordResetTokenValidRequest = /*@__PURE__*/ __L.at(
-  __c76,
-  7,
-) as any as S.Schema<GetSessionPasswordResetTokenValidRequest>;
-
 export interface GetSessionPasswordResetTokenValidResponse {}
-const GetSessionPasswordResetTokenValidResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetSessionPasswordResetTokenValidResponse>;
-
 export interface GetSessionPropertiesRequest {}
-const GetSessionPropertiesRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  0,
-) as any as S.Schema<GetSessionPropertiesRequest>;
-
 export interface GetSessionPropertiesResponse {}
-const GetSessionPropertiesResponse =
-  CreateActionResponse as any as S.Schema<GetSessionPropertiesResponse>;
-
 export interface GetSettingRequest {}
-const GetSettingRequest = /*@__PURE__*/ __L.at(__c77, 1) as any as S.Schema<GetSettingRequest>;
-
 export interface GetSettingResponse {}
-const GetSettingResponse = CreateActionResponse as any as S.Schema<GetSettingResponse>;
-
 export interface GetSettingByKeyRequest {
   key: string;
 }
-const GetSettingByKeyRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  2,
-) as any as S.Schema<GetSettingByKeyRequest>;
-
 export interface GetSettingByKeyResponse {}
-const GetSettingByKeyResponse = CreateActionResponse as any as S.Schema<GetSettingByKeyResponse>;
-
 export interface GetSlackAppInfoRequest {}
-const GetSlackAppInfoRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  3,
-) as any as S.Schema<GetSlackAppInfoRequest>;
-
 export interface GetSlackAppInfoResponse {}
-const GetSlackAppInfoResponse = CreateActionResponse as any as S.Schema<GetSlackAppInfoResponse>;
-
 export interface GetSlackManifestRequest {}
-const GetSlackManifestRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  4,
-) as any as S.Schema<GetSlackManifestRequest>;
-
 export interface GetSlackManifestResponse {}
-const GetSlackManifestResponse = CreateActionResponse as any as S.Schema<GetSlackManifestResponse>;
-
 export type MetabaseWarehouseSchemaRestApiTableDataLayers = "final" | "internal" | "hidden";
-const MetabaseWarehouseSchemaRestApiTableDataLayers = S.String;
-
 export type MetabaseWarehouseSchemaRestApiTableDataSources =
   | "source-data"
   | "transform"
@@ -10368,8 +5378,6 @@ export type MetabaseWarehouseSchemaRestApiTableDataSources =
   | "ingested"
   | "metabase-transform"
   | "upload";
-const MetabaseWarehouseSchemaRestApiTableDataSources = S.String;
-
 export interface GetTableRequest {
   term?: string;
   visibility_type?: string;
@@ -10384,59 +5392,27 @@ export interface GetTableRequest {
   can_write?: boolean;
   include_transform_targets?: boolean;
 }
-const GetTableRequest = /*@__PURE__*/ __L.at(__c77, 5) as any as S.Schema<GetTableRequest>;
-
 export interface GetTableResponse {}
-const GetTableResponse = CreateActionResponse as any as S.Schema<GetTableResponse>;
-
 export interface GetTableByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
   include_editable_data_model?: boolean;
 }
-const GetTableByIdRequest = /*@__PURE__*/ __L.at(__c77, 6) as any as S.Schema<GetTableByIdRequest>;
-
 export interface GetTableByIdResponse {}
-const GetTableByIdResponse = CreateActionResponse as any as S.Schema<GetTableByIdResponse>;
-
 export interface GetTableCardIdFksRequest {}
-const GetTableCardIdFksRequest = /*@__PURE__*/ __L.at(
-  __c77,
-  7,
-) as any as S.Schema<GetTableCardIdFksRequest>;
-
 export interface GetTableCardIdFksResponse {}
-const GetTableCardIdFksResponse =
-  CreateActionResponse as any as S.Schema<GetTableCardIdFksResponse>;
-
 export interface GetTableCardIdQueryMetadataRequest {}
-const GetTableCardIdQueryMetadataRequest = /*@__PURE__*/ __L.at(
-  __c78,
-  0,
-) as any as S.Schema<GetTableCardIdQueryMetadataRequest>;
-
 export interface GetTableCardIdQueryMetadataResponse {}
-const GetTableCardIdQueryMetadataResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetTableCardIdQueryMetadataResponse>;
-
 export interface GetTableDataRequest {
   /** value must be an integer greater than zero. */
   table_id: number;
 }
-const GetTableDataRequest = /*@__PURE__*/ __L.at(__c78, 1) as any as S.Schema<GetTableDataRequest>;
-
 export interface GetTableDataResponse {}
-const GetTableDataResponse = CreateActionResponse as any as S.Schema<GetTableDataResponse>;
-
 export interface GetTableFksRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetTableFksRequest = /*@__PURE__*/ __L.at(__c78, 2) as any as S.Schema<GetTableFksRequest>;
-
 export interface GetTableFksResponse {}
-const GetTableFksResponse = CreateActionResponse as any as S.Schema<GetTableFksResponse>;
-
 export interface GetTableQueryMetadataRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -10444,89 +5420,36 @@ export interface GetTableQueryMetadataRequest {
   include_hidden_fields?: boolean;
   include_editable_data_model?: boolean;
 }
-const GetTableQueryMetadataRequest = /*@__PURE__*/ __L.at(
-  __c78,
-  3,
-) as any as S.Schema<GetTableQueryMetadataRequest>;
-
 export interface GetTableQueryMetadataResponse {}
-const GetTableQueryMetadataResponse =
-  CreateActionResponse as any as S.Schema<GetTableQueryMetadataResponse>;
-
 export interface GetTableRelatedRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetTableRelatedRequest = /*@__PURE__*/ __L.at(
-  __c78,
-  4,
-) as any as S.Schema<GetTableRelatedRequest>;
-
 export interface GetTableRelatedResponse {}
-const GetTableRelatedResponse = CreateActionResponse as any as S.Schema<GetTableRelatedResponse>;
-
 export interface GetTaskRequest {}
-const GetTaskRequest = /*@__PURE__*/ __L.at(__c78, 5) as any as S.Schema<GetTaskRequest>;
-
 export interface GetTaskResponse {}
-const GetTaskResponse = CreateActionResponse as any as S.Schema<GetTaskResponse>;
-
 export interface GetTaskByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetTaskByIdRequest = /*@__PURE__*/ __L.at(__c78, 6) as any as S.Schema<GetTaskByIdRequest>;
-
 export interface GetTaskByIdResponse {}
-const GetTaskByIdResponse = CreateActionResponse as any as S.Schema<GetTaskByIdResponse>;
-
 export interface GetTaskInfoRequest {}
-const GetTaskInfoRequest = /*@__PURE__*/ __L.at(__c78, 7) as any as S.Schema<GetTaskInfoRequest>;
-
 export interface GetTaskInfoResponse {}
-const GetTaskInfoResponse = CreateActionResponse as any as S.Schema<GetTaskInfoResponse>;
-
 export interface GetTaskRunRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetTaskRunRequest = /*@__PURE__*/ __L.at(__c79, 0) as any as S.Schema<GetTaskRunRequest>;
-
 export interface GetTaskRunResponse {}
-const GetTaskRunResponse = CreateActionResponse as any as S.Schema<GetTaskRunResponse>;
-
 export interface GetTaskRunsRequest {}
-const GetTaskRunsRequest = /*@__PURE__*/ __L.at(__c79, 1) as any as S.Schema<GetTaskRunsRequest>;
-
 export interface GetTaskRunsResponse {}
-const GetTaskRunsResponse = CreateActionResponse as any as S.Schema<GetTaskRunsResponse>;
-
 export type GetTaskRunsEntitiesRequestRunType = "alert" | "sync" | "fingerprint" | "subscription";
-const GetTaskRunsEntitiesRequestRunType = S.String;
-
 export interface GetTaskRunsEntitiesRequest {
   run_type: GetTaskRunsEntitiesRequestRunType | (string & {});
   started_at: string;
 }
-const GetTaskRunsEntitiesRequest = /*@__PURE__*/ __L.at(
-  __c79,
-  2,
-) as any as S.Schema<GetTaskRunsEntitiesRequest>;
-
 export interface GetTaskRunsEntitiesResponse {}
-const GetTaskRunsEntitiesResponse =
-  CreateActionResponse as any as S.Schema<GetTaskRunsEntitiesResponse>;
-
 export interface GetTaskUniqueTasksRequest {}
-const GetTaskUniqueTasksRequest = /*@__PURE__*/ __L.at(
-  __c79,
-  3,
-) as any as S.Schema<GetTaskUniqueTasksRequest>;
-
 export interface GetTaskUniqueTasksResponse {}
-const GetTaskUniqueTasksResponse =
-  CreateActionResponse as any as S.Schema<GetTaskUniqueTasksResponse>;
-
 export interface GetTileRequest {
   card_id: number;
   /** value must be an integer. */
@@ -10539,11 +5462,7 @@ export interface GetTileRequest {
   latField: unknown;
   lonField: unknown;
 }
-const GetTileRequest = /*@__PURE__*/ __L.at(__c79, 4) as any as S.Schema<GetTileRequest>;
-
 export interface GetTileResponse {}
-const GetTileResponse = CreateActionResponse as any as S.Schema<GetTileResponse>;
-
 export interface GetTileByYRequest {
   /** value must be an integer. */
   zoom: number;
@@ -10555,11 +5474,7 @@ export interface GetTileByYRequest {
   latField: unknown;
   lonField: unknown;
 }
-const GetTileByYRequest = /*@__PURE__*/ __L.at(__c79, 5) as any as S.Schema<GetTileByYRequest>;
-
 export interface GetTileByYResponse {}
-const GetTileByYResponse = CreateActionResponse as any as S.Schema<GetTileByYResponse>;
-
 export interface GetTileDashcardCardRequest {
   dashboard_id: number;
   dashcard_id: number;
@@ -10574,15 +5489,7 @@ export interface GetTileDashcardCardRequest {
   latField: unknown;
   lonField: unknown;
 }
-const GetTileDashcardCardRequest = /*@__PURE__*/ __L.at(
-  __c79,
-  6,
-) as any as S.Schema<GetTileDashcardCardRequest>;
-
 export interface GetTileDashcardCardResponse {}
-const GetTileDashcardCardResponse =
-  CreateActionResponse as any as S.Schema<GetTileDashcardCardResponse>;
-
 export interface GetTilesCardRequest {
   /** value must be a valid UUID. */
   uuid: string;
@@ -10596,11 +5503,7 @@ export interface GetTilesCardRequest {
   latField: unknown;
   lonField: unknown;
 }
-const GetTilesCardRequest = /*@__PURE__*/ __L.at(__c79, 7) as any as S.Schema<GetTilesCardRequest>;
-
 export interface GetTilesCardResponse {}
-const GetTilesCardResponse = CreateActionResponse as any as S.Schema<GetTilesCardResponse>;
-
 export interface GetTilesDashboardDashcardCardRequest {
   /** value must be a valid UUID. */
   uuid: string;
@@ -10618,27 +5521,13 @@ export interface GetTilesDashboardDashcardCardRequest {
   latField: unknown;
   lonField: unknown;
 }
-const GetTilesDashboardDashcardCardRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  0,
-) as any as S.Schema<GetTilesDashboardDashcardCardRequest>;
-
 export interface GetTilesDashboardDashcardCardResponse {}
-const GetTilesDashboardDashcardCardResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetTilesDashboardDashcardCardResponse>;
-
 export type MetabaseTimelineApiTimelineInclude = "events";
-const MetabaseTimelineApiTimelineInclude = S.String;
-
 export interface GetTimelineRequest {
   include?: MetabaseTimelineApiTimelineInclude | (string & {});
   archived?: boolean;
 }
-const GetTimelineRequest = /*@__PURE__*/ __L.at(__c80, 1) as any as S.Schema<GetTimelineRequest>;
-
 export interface GetTimelineResponse {}
-const GetTimelineResponse = CreateActionResponse as any as S.Schema<GetTimelineResponse>;
-
 export interface GetTimelineByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -10649,101 +5538,46 @@ export interface GetTimelineByIdRequest {
   /** value must be a valid date string */
   end?: string;
 }
-const GetTimelineByIdRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  2,
-) as any as S.Schema<GetTimelineByIdRequest>;
-
 export interface GetTimelineByIdResponse {}
-const GetTimelineByIdResponse = CreateActionResponse as any as S.Schema<GetTimelineByIdResponse>;
-
 export interface GetTimelineCollectionRequest {
   /** value must be an integer greater than zero. */
   id: number;
   include?: unknown;
   archived?: boolean;
 }
-const GetTimelineCollectionRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  3,
-) as any as S.Schema<GetTimelineCollectionRequest>;
-
 export interface GetTimelineCollectionResponse {}
-const GetTimelineCollectionResponse =
-  CreateActionResponse as any as S.Schema<GetTimelineCollectionResponse>;
-
 export interface GetTimelineCollectionRootRequest {
   include?: unknown;
   archived?: boolean;
 }
-const GetTimelineCollectionRootRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  4,
-) as any as S.Schema<GetTimelineCollectionRootRequest>;
-
 export interface GetTimelineCollectionRootResponse {}
-const GetTimelineCollectionRootResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetTimelineCollectionRootResponse>;
-
 export interface GetTimelineEventRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetTimelineEventRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  5,
-) as any as S.Schema<GetTimelineEventRequest>;
-
 export interface GetTimelineEventResponse {}
-const GetTimelineEventResponse = CreateActionResponse as any as S.Schema<GetTimelineEventResponse>;
-
 export type GetTransformRequestLastRunStatusesItem = "started" | "succeeded" | "failed" | "timeout";
 export type GetTransformRequestLastRunStatusesList = Array<
   GetTransformRequestLastRunStatusesItem | (string & {})
 >;
-const GetTransformRequestLastRunStatusesList =
-  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetTransformRequestLastRunStatusesList>;
-
 export type GetTransformRequestTagIdsList = Array<number>;
-const GetTransformRequestTagIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetTransformRequestTagIdsList>;
-
 export interface GetTransformRequest {
   last_run_start_time?: string;
   last_run_statuses?: GetTransformRequestLastRunStatusesList;
   tag_ids?: GetTransformRequestTagIdsList;
   database_id?: number;
 }
-const GetTransformRequest = /*@__PURE__*/ __L.at(__c80, 6) as any as S.Schema<GetTransformRequest>;
-
 export interface GetTransformResponse {}
-const GetTransformResponse = CreateActionResponse as any as S.Schema<GetTransformResponse>;
-
 export interface GetTransformByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetTransformByIdRequest = /*@__PURE__*/ __L.at(
-  __c80,
-  7,
-) as any as S.Schema<GetTransformByIdRequest>;
-
 export interface GetTransformByIdResponse {}
-const GetTransformByIdResponse = CreateActionResponse as any as S.Schema<GetTransformByIdResponse>;
-
 export interface GetTransformDependenciesRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetTransformDependenciesRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  0,
-) as any as S.Schema<GetTransformDependenciesRequest>;
-
 export interface GetTransformDependenciesResponse {}
-const GetTransformDependenciesResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetTransformDependenciesResponse>;
-
 export type GetTransformJobRequestLastRunStatusesItem =
   | "started"
   | "succeeded"
@@ -10752,52 +5586,23 @@ export type GetTransformJobRequestLastRunStatusesItem =
 export type GetTransformJobRequestLastRunStatusesList = Array<
   GetTransformJobRequestLastRunStatusesItem | (string & {})
 >;
-const GetTransformJobRequestLastRunStatusesList =
-  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetTransformJobRequestLastRunStatusesList>;
-
 export type GetTransformJobRequestTagIdsList = Array<number>;
-const GetTransformJobRequestTagIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetTransformJobRequestTagIdsList>;
-
 export interface GetTransformJobRequest {
   last_run_start_time?: string;
   next_run_start_time?: string;
   last_run_statuses?: GetTransformJobRequestLastRunStatusesList;
   tag_ids?: GetTransformJobRequestTagIdsList;
 }
-const GetTransformJobRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  1,
-) as any as S.Schema<GetTransformJobRequest>;
-
 export interface GetTransformJobResponse {}
-const GetTransformJobResponse = CreateActionResponse as any as S.Schema<GetTransformJobResponse>;
-
 export interface GetTransformJobByJobIdRequest {
   /** value must be an integer greater than zero. */
   job_id: number;
 }
-const GetTransformJobByJobIdRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  2,
-) as any as S.Schema<GetTransformJobByJobIdRequest>;
-
 export interface GetTransformJobByJobIdResponse {}
-const GetTransformJobByJobIdResponse =
-  CreateActionResponse as any as S.Schema<GetTransformJobByJobIdResponse>;
-
 export type GetTransformJobRunsRequestStatus = "started" | "succeeded" | "failed" | "timeout";
-const GetTransformJobRunsRequestStatus = S.String;
-
 export type GetTransformJobRunsRequestRunMethod = "manual" | "cron";
-const GetTransformJobRunsRequestRunMethod = S.String;
-
 export type GetTransformJobRunsRequestSortColumn = "start_time" | "end_time";
-const GetTransformJobRunsRequestSortColumn = S.String;
-
 export type GetTransformJobRunsRequestSortDirection = "asc" | "desc";
-const GetTransformJobRunsRequestSortDirection = S.String;
-
 export interface GetTransformJobRunsRequest {
   /** value must be an integer greater than zero. */
   job_id: number;
@@ -10807,43 +5612,19 @@ export interface GetTransformJobRunsRequest {
   sort_column?: GetTransformJobRunsRequestSortColumn | (string & {});
   sort_direction?: GetTransformJobRunsRequestSortDirection | (string & {});
 }
-const GetTransformJobRunsRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  3,
-) as any as S.Schema<GetTransformJobRunsRequest>;
-
 export interface GetTransformJobRunsResponse {}
-const GetTransformJobRunsResponse =
-  CreateActionResponse as any as S.Schema<GetTransformJobRunsResponse>;
-
 export interface GetTransformJobRunTransformRunsRequest {
   /** value must be an integer greater than zero. */
   job_id: number;
   /** value must be an integer greater than zero. */
   run_id: number;
 }
-const GetTransformJobRunTransformRunsRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  4,
-) as any as S.Schema<GetTransformJobRunTransformRunsRequest>;
-
 export interface GetTransformJobRunTransformRunsResponse {}
-const GetTransformJobRunTransformRunsResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetTransformJobRunTransformRunsResponse>;
-
 export interface GetTransformJobTransformsRequest {
   /** value must be an integer greater than zero. */
   job_id: number;
 }
-const GetTransformJobTransformsRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  5,
-) as any as S.Schema<GetTransformJobTransformsRequest>;
-
 export interface GetTransformJobTransformsResponse {}
-const GetTransformJobTransformsResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetTransformJobTransformsResponse>;
-
 export type GetTransformRunRequestSortColumn =
   | "transform-name"
   | "start-time"
@@ -10852,33 +5633,17 @@ export type GetTransformRunRequestSortColumn =
   | "run-method"
   | "transform-tags"
   | "duration";
-const GetTransformRunRequestSortColumn = S.String;
-
 export type GetTransformRunRequestSortDirection = "asc" | "desc";
-const GetTransformRunRequestSortDirection = S.String;
-
 export type GetTransformRunRequestTransformIdsList = Array<number>;
-const GetTransformRunRequestTransformIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetTransformRunRequestTransformIdsList>;
-
 export type GetTransformRunRequestStatusesItem = "started" | "succeeded" | "failed" | "timeout";
 export type GetTransformRunRequestStatusesList = Array<
   GetTransformRunRequestStatusesItem | (string & {})
 >;
-const GetTransformRunRequestStatusesList =
-  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetTransformRunRequestStatusesList>;
-
 export type GetTransformRunRequestTransformTagIdsList = Array<number>;
-const GetTransformRunRequestTransformTagIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<GetTransformRunRequestTransformTagIdsList>;
-
 export type GetTransformRunRequestRunMethodsItem = "manual" | "cron";
 export type GetTransformRunRequestRunMethodsList = Array<
   GetTransformRunRequestRunMethodsItem | (string & {})
 >;
-const GetTransformRunRequestRunMethodsList =
-  MetabaseParametersSchemaParameterTemporalUnitsList as any as S.Schema<GetTransformRunRequestRunMethodsList>;
-
 export interface GetTransformRunRequest {
   sort_column?: GetTransformRunRequestSortColumn | (string & {});
   sort_direction?: GetTransformRunRequestSortDirection | (string & {});
@@ -10890,39 +5655,15 @@ export interface GetTransformRunRequest {
   run_methods?: GetTransformRunRequestRunMethodsList;
   user_id?: number;
 }
-const GetTransformRunRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  6,
-) as any as S.Schema<GetTransformRunRequest>;
-
 export interface GetTransformRunResponse {}
-const GetTransformRunResponse = CreateActionResponse as any as S.Schema<GetTransformRunResponse>;
-
 export interface GetTransformRunByRunIdRequest {
   /** value must be an integer greater than zero. */
   run_id: number;
 }
-const GetTransformRunByRunIdRequest = /*@__PURE__*/ __L.at(
-  __c81,
-  7,
-) as any as S.Schema<GetTransformRunByRunIdRequest>;
-
 export interface GetTransformRunByRunIdResponse {}
-const GetTransformRunByRunIdResponse =
-  CreateActionResponse as any as S.Schema<GetTransformRunByRunIdResponse>;
-
 export interface GetTransformTagRequest {}
-const GetTransformTagRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  0,
-) as any as S.Schema<GetTransformTagRequest>;
-
 export interface GetTransformTagResponse {}
-const GetTransformTagResponse = CreateActionResponse as any as S.Schema<GetTransformTagResponse>;
-
 export type GetUserRequestTenancy = "all" | "internal" | "external";
-const GetUserRequestTenancy = S.String;
-
 export interface GetUserRequest {
   status?: string;
   query?: string;
@@ -10933,78 +5674,28 @@ export interface GetUserRequest {
   tenancy?: GetUserRequestTenancy | (string & {});
   tenant_id?: number;
 }
-const GetUserRequest = /*@__PURE__*/ __L.at(__c82, 1) as any as S.Schema<GetUserRequest>;
-
 export interface GetUserResponse {}
-const GetUserResponse = CreateActionResponse as any as S.Schema<GetUserResponse>;
-
 export interface GetUserByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const GetUserByIdRequest = /*@__PURE__*/ __L.at(__c82, 2) as any as S.Schema<GetUserByIdRequest>;
-
 export interface GetUserByIdResponse {}
-const GetUserByIdResponse = CreateActionResponse as any as S.Schema<GetUserByIdResponse>;
-
 export interface GetUserCurrentRequest {}
-const GetUserCurrentRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  3,
-) as any as S.Schema<GetUserCurrentRequest>;
-
 export interface GetUserCurrentResponse {}
-const GetUserCurrentResponse = CreateActionResponse as any as S.Schema<GetUserCurrentResponse>;
-
 export interface GetUserKeyValueNamespaceRequest {
   namespace: string;
 }
-const GetUserKeyValueNamespaceRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  4,
-) as any as S.Schema<GetUserKeyValueNamespaceRequest>;
-
 export interface GetUserKeyValueNamespaceResponse {}
-const GetUserKeyValueNamespaceResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetUserKeyValueNamespaceResponse>;
-
 export interface GetUserKeyValueNamespaceKeyRequest {
   namespace: string;
   key: string;
 }
-const GetUserKeyValueNamespaceKeyRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  5,
-) as any as S.Schema<GetUserKeyValueNamespaceKeyRequest>;
-
 export interface GetUserKeyValueNamespaceKeyResponse {}
-const GetUserKeyValueNamespaceKeyResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<GetUserKeyValueNamespaceKeyResponse>;
-
 export interface GetUserRecipientsRequest {}
-const GetUserRecipientsRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  6,
-) as any as S.Schema<GetUserRecipientsRequest>;
-
 export interface GetUserRecipientsResponse {}
-const GetUserRecipientsResponse =
-  CreateActionResponse as any as S.Schema<GetUserRecipientsResponse>;
-
 export interface GetUtilRandomTokenRequest {}
-const GetUtilRandomTokenRequest = /*@__PURE__*/ __L.at(
-  __c82,
-  7,
-) as any as S.Schema<GetUtilRandomTokenRequest>;
-
 export interface GetUtilRandomTokenResponse {}
-const GetUtilRandomTokenResponse =
-  CreateActionResponse as any as S.Schema<GetUtilRandomTokenResponse>;
-
 export type PostApiEeReplacementReplaceModelWithTransformRequestTransformTagIdsList = Array<number>;
-const PostApiEeReplacementReplaceModelWithTransformRequestTransformTagIdsList =
-  CreateCollectionMoveDashboardQuestionCandidateRequestBodyCardIdsList as any as S.Schema<PostApiEeReplacementReplaceModelWithTransformRequestTransformTagIdsList>;
-
 export interface PostApiEeReplacementReplaceModelWithTransformRequest {
   card_id: number;
   target_collection_id?: number | null;
@@ -11012,15 +5703,7 @@ export interface PostApiEeReplacementReplaceModelWithTransformRequest {
   transform_tag_ids?: PostApiEeReplacementReplaceModelWithTransformRequestTransformTagIdsList | null;
   transform_target: MetabaseTransformsSchemaTransformTarget;
 }
-const PostApiEeReplacementReplaceModelWithTransformRequest = /*@__PURE__*/ __L.at(
-  __c83,
-  0,
-) as any as S.Schema<PostApiEeReplacementReplaceModelWithTransformRequest>;
-
 export interface PostApiEeReplacementReplaceModelWithTransformResponse {}
-const PostApiEeReplacementReplaceModelWithTransformResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<PostApiEeReplacementReplaceModelWithTransformResponse>;
-
 export interface MetabaseActionsSchemaActionForUpdateCase0 {
   visualization_settings?: unknown | null;
   response_handle?: string | null;
@@ -11083,18 +5766,11 @@ export type MetabaseActionsSchemaActionForUpdate =
   | MetabaseActionsSchemaActionForUpdateCase1
   | MetabaseActionsSchemaActionForUpdateCase2
   | MetabaseActionsSchemaActionForUpdateCase3;
-const MetabaseActionsSchemaActionForUpdate =
-  S.Unknown as any as S.Schema<MetabaseActionsSchemaActionForUpdate>;
-
 export interface PutActionRequest {
   id: number;
   body?: MetabaseActionsSchemaActionForUpdate;
 }
-const PutActionRequest = /*@__PURE__*/ __L.at(__c83, 1) as any as S.Schema<PutActionRequest>;
-
 export interface PutActionResponse {}
-const PutActionResponse = CreateActionResponse as any as S.Schema<PutActionResponse>;
-
 export type MetabaseAgentApiApiDashcardMutationCase0DisplaySize = "wide" | "tall" | "full";
 export interface MetabaseAgentApiApiDashcardMutationCase0 {
   action: unknown;
@@ -11119,15 +5795,7 @@ export type MetabaseAgentApiApiDashcardMutation =
   | MetabaseAgentApiApiDashcardMutationCase0
   | MetabaseAgentApiApiDashcardMutationCase1
   | MetabaseAgentApiApiDashcardMutationCase2;
-const MetabaseAgentApiApiDashcardMutation =
-  S.Unknown as any as S.Schema<MetabaseAgentApiApiDashcardMutation>;
-
 export type PutAgentDashboardRequestDashcardsList = Array<MetabaseAgentApiApiDashcardMutation>;
-const PutAgentDashboardRequestDashcardsList = /*@__PURE__*/ __L.at(
-  __c83,
-  2,
-) as any as S.Schema<PutAgentDashboardRequestDashcardsList>;
-
 export interface PutAgentDashboardRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -11137,15 +5805,7 @@ export interface PutAgentDashboardRequest {
   description?: string | null;
   name?: string | null;
 }
-const PutAgentDashboardRequest = /*@__PURE__*/ __L.at(
-  __c83,
-  3,
-) as any as S.Schema<PutAgentDashboardRequest>;
-
 export interface PutAgentDashboardResponse {}
-const PutAgentDashboardResponse =
-  CreateActionResponse as any as S.Schema<PutAgentDashboardResponse>;
-
 export interface PutAgentMetricRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -11157,14 +5817,7 @@ export interface PutAgentMetricRequest {
   query?: string | null;
   visualization_settings?: unknown | null;
 }
-const PutAgentMetricRequest = /*@__PURE__*/ __L.at(
-  __c83,
-  4,
-) as any as S.Schema<PutAgentMetricRequest>;
-
 export interface PutAgentMetricResponse {}
-const PutAgentMetricResponse = CreateActionResponse as any as S.Schema<PutAgentMetricResponse>;
-
 export interface PutAgentQuestionRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -11176,53 +5829,24 @@ export interface PutAgentQuestionRequest {
   query?: string | null;
   visualization_settings?: unknown | null;
 }
-const PutAgentQuestionRequest = /*@__PURE__*/ __L.at(
-  __c83,
-  5,
-) as any as S.Schema<PutAgentQuestionRequest>;
-
 export interface PutAgentQuestionResponse {}
-const PutAgentQuestionResponse = CreateActionResponse as any as S.Schema<PutAgentQuestionResponse>;
-
 export type PutBookmarkOrderingRequestOrderingsItemType =
   | "card"
   | "dashboard"
   | "collection"
   | "document";
-const PutBookmarkOrderingRequestOrderingsItemType = S.String;
-
 export interface PutBookmarkOrderingRequestOrderingsItem {
   /** value must be an integer greater than zero. */
   item_id: number;
   type: PutBookmarkOrderingRequestOrderingsItemType | (string & {});
 }
-const PutBookmarkOrderingRequestOrderingsItem = /*@__PURE__*/ __L.at(
-  __c83,
-  6,
-) as any as S.Schema<PutBookmarkOrderingRequestOrderingsItem>;
-
 export type PutBookmarkOrderingRequestOrderingsList =
   Array<PutBookmarkOrderingRequestOrderingsItem>;
-const PutBookmarkOrderingRequestOrderingsList = /*@__PURE__*/ __L.at(
-  __c83,
-  7,
-) as any as S.Schema<PutBookmarkOrderingRequestOrderingsList>;
-
 export interface PutBookmarkOrderingRequest {
   orderings: PutBookmarkOrderingRequestOrderingsList;
 }
-const PutBookmarkOrderingRequest = /*@__PURE__*/ __L.at(
-  __c84,
-  0,
-) as any as S.Schema<PutBookmarkOrderingRequest>;
-
 export interface PutBookmarkOrderingResponse {}
-const PutBookmarkOrderingResponse =
-  CreateActionResponse as any as S.Schema<PutBookmarkOrderingResponse>;
-
 export type PutCacheRequestModel = "root" | "database" | "dashboard" | "question";
-const PutCacheRequestModel = S.String;
-
 export interface MetabaseCacheApiCacheStrategyNocache {
   name?: string | null;
   type: unknown;
@@ -11260,30 +5884,17 @@ export type MetabaseCacheApiCacheStrategyOss =
 export type MetabaseCacheApiCacheStrategy =
   | MetabaseCacheApiCacheStrategyEe
   | MetabaseCacheApiCacheStrategyOss;
-const MetabaseCacheApiCacheStrategy = S.Unknown as any as S.Schema<MetabaseCacheApiCacheStrategy>;
-
 export interface PutCacheRequest {
   model: PutCacheRequestModel | (string & {});
   /** value must be an integer greater or equal to than zero. */
   model_id: number;
   strategy: MetabaseCacheApiCacheStrategy;
 }
-const PutCacheRequest = /*@__PURE__*/ __L.at(__c84, 1) as any as S.Schema<PutCacheRequest>;
-
 export interface PutCacheResponse {}
-const PutCacheResponse = CreateActionResponse as any as S.Schema<PutCacheResponse>;
-
 export type PutCardRequestEmbeddingParamsValue = "disabled" | "enabled" | "locked";
-const PutCardRequestEmbeddingParamsValue = S.String;
-
 export type PutCardRequestEmbeddingParamsMap = {
   [key: string]: PutCardRequestEmbeddingParamsValue | (string & {}) | undefined;
 };
-const PutCardRequestEmbeddingParamsMap = /*@__PURE__*/ __L.at(
-  __c84,
-  2,
-) as any as S.Schema<PutCardRequestEmbeddingParamsMap>;
-
 export interface PutCardRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -11308,11 +5919,7 @@ export interface PutCardRequest {
   description?: string | null;
   dashboard_id?: number | null;
 }
-const PutCardRequest = /*@__PURE__*/ __L.at(__c84, 3) as any as S.Schema<PutCardRequest>;
-
 export interface PutCardResponse {}
-const PutCardResponse = CreateActionResponse as any as S.Schema<PutCardResponse>;
-
 export type PutChannelRequestBodyCase0DetailsAuthMethod =
   | "none"
   | "header"
@@ -11388,31 +5995,15 @@ export type PutChannelRequestBody =
   | PutChannelRequestBodyCase1
   | PutChannelRequestBodyCase2
   | PutChannelRequestBodyCase3;
-const PutChannelRequestBody = S.Unknown as any as S.Schema<PutChannelRequestBody>;
-
 export interface PutChannelRequest {
   /** value must be an integer greater than zero. */
   id: number;
   body?: PutChannelRequestBody;
 }
-const PutChannelRequest = /*@__PURE__*/ __L.at(__c84, 4) as any as S.Schema<PutChannelRequest>;
-
 export interface PutChannelResponse {}
-const PutChannelResponse = CreateActionResponse as any as S.Schema<PutChannelResponse>;
-
 export interface PutCloudMigrationCancelRequest {}
-const PutCloudMigrationCancelRequest = /*@__PURE__*/ __L.at(
-  __c84,
-  5,
-) as any as S.Schema<PutCloudMigrationCancelRequest>;
-
 export interface PutCloudMigrationCancelResponse {}
-const PutCloudMigrationCancelResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<PutCloudMigrationCancelResponse>;
-
 export type PutCollectionRequestAuthorityLevel = "official";
-const PutCollectionRequestAuthorityLevel = S.String;
-
 export interface PutCollectionRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -11422,14 +6013,7 @@ export interface PutCollectionRequest {
   name?: string | null;
   parent_id?: number | null;
 }
-const PutCollectionRequest = /*@__PURE__*/ __L.at(
-  __c84,
-  6,
-) as any as S.Schema<PutCollectionRequest>;
-
 export interface PutCollectionResponse {}
-const PutCollectionResponse = CreateActionResponse as any as S.Schema<PutCollectionResponse>;
-
 export interface PutCollectionGraphRequest {
   force?: boolean;
   skip_graph?: boolean;
@@ -11438,62 +6022,29 @@ export interface PutCollectionGraphRequest {
   namespace?: string | null;
   revision?: number | null;
 }
-const PutCollectionGraphRequest = /*@__PURE__*/ __L.at(
-  __c84,
-  7,
-) as any as S.Schema<PutCollectionGraphRequest>;
-
 export interface PutCollectionGraphResponse {}
-const PutCollectionGraphResponse =
-  CreateActionResponse as any as S.Schema<PutCollectionGraphResponse>;
-
 export interface PutCommentRequest {
   /** value must be an integer greater than zero. */
   comment_id: number;
   content?: unknown;
   is_resolved?: boolean;
 }
-const PutCommentRequest = /*@__PURE__*/ __L.at(__c85, 0) as any as S.Schema<PutCommentRequest>;
-
 export interface PutCommentResponse {}
-const PutCommentResponse = CreateActionResponse as any as S.Schema<PutCommentResponse>;
-
 export type PutDashboardRequestWidth = "fixed" | "full";
-const PutDashboardRequestWidth = S.String;
-
 export type PutDashboardRequestEmbeddingParamsValue = "disabled" | "enabled" | "locked";
 export type PutDashboardRequestEmbeddingParamsMap = {
   [key: string]: PutDashboardRequestEmbeddingParamsValue | (string & {}) | undefined;
 };
-const PutDashboardRequestEmbeddingParamsMap =
-  PutCardRequestEmbeddingParamsMap as any as S.Schema<PutDashboardRequestEmbeddingParamsMap>;
-
 export type PutDashboardRequestTabsItem = CreateDashboardSaveRequestTabsItem;
 /** value must be seq of maps in which ids are unique */
 export type PutDashboardRequestTabsList = Array<CreateDashboardSaveRequestTabsItem>;
-const PutDashboardRequestTabsList =
-  CreateDashboardSaveRequestTabsList as any as S.Schema<PutDashboardRequestTabsList>;
-
 export type PutDashboardRequestDashcardsItemInlineParametersList = Array<string>;
-const PutDashboardRequestDashcardsItemInlineParametersList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<PutDashboardRequestDashcardsItemInlineParametersList>;
-
 export interface PutDashboardRequestDashcardsItemSeriesItem {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const PutDashboardRequestDashcardsItemSeriesItem = /*@__PURE__*/ __L.at(
-  __c85,
-  1,
-) as any as S.Schema<PutDashboardRequestDashcardsItemSeriesItem>;
-
 export type PutDashboardRequestDashcardsItemSeriesList =
   Array<PutDashboardRequestDashcardsItemSeriesItem>;
-const PutDashboardRequestDashcardsItemSeriesList = /*@__PURE__*/ __L.at(
-  __c85,
-  2,
-) as any as S.Schema<PutDashboardRequestDashcardsItemSeriesList>;
-
 export interface PutDashboardRequestDashcardsItem {
   inline_parameters?: PutDashboardRequestDashcardsItemInlineParametersList | null;
   visualization_settings?: unknown | null;
@@ -11512,18 +6063,8 @@ export interface PutDashboardRequestDashcardsItem {
   series?: PutDashboardRequestDashcardsItemSeriesList | null;
   action_id?: number | null;
 }
-const PutDashboardRequestDashcardsItem = /*@__PURE__*/ __L.at(
-  __c85,
-  3,
-) as any as S.Schema<PutDashboardRequestDashcardsItem>;
-
 /** value must be seq of maps in which ids are unique */
 export type PutDashboardRequestDashcardsList = Array<PutDashboardRequestDashcardsItem>;
-const PutDashboardRequestDashcardsList = /*@__PURE__*/ __L.at(
-  __c85,
-  4,
-) as any as S.Schema<PutDashboardRequestDashcardsList>;
-
 export interface PutDashboardRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -11546,11 +6087,7 @@ export interface PutDashboardRequest {
   dashcards?: PutDashboardRequestDashcardsList | null;
   description?: string | null;
 }
-const PutDashboardRequest = /*@__PURE__*/ __L.at(__c85, 5) as any as S.Schema<PutDashboardRequest>;
-
 export interface PutDashboardResponse {}
-const PutDashboardResponse = CreateActionResponse as any as S.Schema<PutDashboardResponse>;
-
 export type PutDashboardCardsRequestCardsItemInlineParametersList = Array<string>;
 export type PutDashboardCardsRequestCardsItemSeriesItem =
   PutDashboardRequestDashcardsItemSeriesItem;
@@ -11576,15 +6113,9 @@ export interface PutDashboardCardsRequestCardsItem {
 }
 /** value must be seq of maps in which ids are unique */
 export type PutDashboardCardsRequestCardsList = Array<PutDashboardCardsRequestCardsItem>;
-const PutDashboardCardsRequestCardsList =
-  PutDashboardRequestDashcardsList as any as S.Schema<PutDashboardCardsRequestCardsList>;
-
 export type PutDashboardCardsRequestTabsItem = CreateDashboardSaveRequestTabsItem;
 /** value must be seq of maps in which ids are unique */
 export type PutDashboardCardsRequestTabsList = Array<CreateDashboardSaveRequestTabsItem>;
-const PutDashboardCardsRequestTabsList =
-  CreateDashboardSaveRequestTabsList as any as S.Schema<PutDashboardCardsRequestTabsList>;
-
 export interface PutDashboardCardsRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -11592,15 +6123,7 @@ export interface PutDashboardCardsRequest {
   cards: PutDashboardCardsRequestCardsList;
   tabs?: PutDashboardCardsRequestTabsList | null;
 }
-const PutDashboardCardsRequest = /*@__PURE__*/ __L.at(
-  __c85,
-  6,
-) as any as S.Schema<PutDashboardCardsRequest>;
-
 export interface PutDashboardCardsResponse {}
-const PutDashboardCardsResponse =
-  CreateActionResponse as any as S.Schema<PutDashboardCardsResponse>;
-
 export interface PutDatabaseRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -11622,11 +6145,7 @@ export interface PutDatabaseRequest {
   schedules?: MetabaseSyncSchedulesExpandedSchedulesMap | null;
   description?: string | null;
 }
-const PutDatabaseRequest = /*@__PURE__*/ __L.at(__c85, 7) as any as S.Schema<PutDatabaseRequest>;
-
 export interface PutDatabaseResponse {}
-const PutDatabaseResponse = CreateActionResponse as any as S.Schema<PutDatabaseResponse>;
-
 export type PutDocumentRequestCardsValueParameterMappingsList = Array<unknown>;
 export type PutDocumentRequestCardsValueResultMetadataList = Array<unknown>;
 export interface PutDocumentRequestCardsValue {
@@ -11645,9 +6164,6 @@ export interface PutDocumentRequestCardsValue {
 export type PutDocumentRequestCardsMap = {
   [key: string]: PutDocumentRequestCardsValue | undefined;
 };
-const PutDocumentRequestCardsMap =
-  CreateDocumentRequestCardsMap as any as S.Schema<PutDocumentRequestCardsMap>;
-
 export interface PutDocumentRequest {
   /** value must be an integer greater than zero. */
   document_id: number;
@@ -11658,174 +6174,76 @@ export interface PutDocumentRequest {
   document?: MetabaseDocumentsProseMirrorAst | null;
   name?: string;
 }
-const PutDocumentRequest = /*@__PURE__*/ __L.at(__c86, 0) as any as S.Schema<PutDocumentRequest>;
-
 export interface PutDocumentResponse {}
-const PutDocumentResponse = CreateActionResponse as any as S.Schema<PutDocumentResponse>;
-
 export type PutEeAdvancedPermissionsApplicationGraphRequestGroupsValueMap = {
   [key: string]: string | undefined;
 };
-const PutEeAdvancedPermissionsApplicationGraphRequestGroupsValueMap =
-  CreateAnalyticsInternalRequestEventsItemLabelsMap as any as S.Schema<PutEeAdvancedPermissionsApplicationGraphRequestGroupsValueMap>;
-
 export type PutEeAdvancedPermissionsApplicationGraphRequestGroupsMap = {
   [key: string]: PutEeAdvancedPermissionsApplicationGraphRequestGroupsValueMap | undefined;
 };
-const PutEeAdvancedPermissionsApplicationGraphRequestGroupsMap = /*@__PURE__*/ __L.at(
-  __c86,
-  1,
-) as any as S.Schema<PutEeAdvancedPermissionsApplicationGraphRequestGroupsMap>;
-
 export interface PutEeAdvancedPermissionsApplicationGraphRequest {
   skip_graph?: boolean;
   force?: boolean;
   groups: PutEeAdvancedPermissionsApplicationGraphRequestGroupsMap;
   revision?: number | null;
 }
-const PutEeAdvancedPermissionsApplicationGraphRequest = /*@__PURE__*/ __L.at(
-  __c86,
-  2,
-) as any as S.Schema<PutEeAdvancedPermissionsApplicationGraphRequest>;
-
 export interface PutEeAdvancedPermissionsApplicationGraphResponse {}
-const PutEeAdvancedPermissionsApplicationGraphResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeAdvancedPermissionsApplicationGraphResponse>;
-
 export type PutEeAiControlsPermissionsRequestPermissionsItemPermType =
   | "permission/metabot-nlq"
   | "permission/metabot-sql-generation"
   | "permission/metabot-other-tools"
   | "permission/metabot";
-const PutEeAiControlsPermissionsRequestPermissionsItemPermType = S.String;
-
 export type PutEeAiControlsPermissionsRequestPermissionsItemPermValue = "yes" | "no";
-const PutEeAiControlsPermissionsRequestPermissionsItemPermValue = S.String;
-
 export interface PutEeAiControlsPermissionsRequestPermissionsItem {
   group_id: number;
   perm_type: PutEeAiControlsPermissionsRequestPermissionsItemPermType | (string & {});
   perm_value: PutEeAiControlsPermissionsRequestPermissionsItemPermValue | (string & {});
 }
-const PutEeAiControlsPermissionsRequestPermissionsItem = /*@__PURE__*/ __L.at(
-  __c86,
-  3,
-) as any as S.Schema<PutEeAiControlsPermissionsRequestPermissionsItem>;
-
 export type PutEeAiControlsPermissionsRequestPermissionsList =
   Array<PutEeAiControlsPermissionsRequestPermissionsItem>;
-const PutEeAiControlsPermissionsRequestPermissionsList = /*@__PURE__*/ __L.at(
-  __c86,
-  4,
-) as any as S.Schema<PutEeAiControlsPermissionsRequestPermissionsList>;
-
 export interface PutEeAiControlsPermissionsRequest {
   permissions: PutEeAiControlsPermissionsRequestPermissionsList;
 }
-const PutEeAiControlsPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c86,
-  5,
-) as any as S.Schema<PutEeAiControlsPermissionsRequest>;
-
 export interface PutEeAiControlsPermissionsResponse {}
-const PutEeAiControlsPermissionsResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeAiControlsPermissionsResponse>;
-
 export interface PutEeAiControlsUsageGroupRequest {
   group_id: number;
   max_usage: number | null;
 }
-const PutEeAiControlsUsageGroupRequest = /*@__PURE__*/ __L.at(
-  __c86,
-  6,
-) as any as S.Schema<PutEeAiControlsUsageGroupRequest>;
-
 export interface PutEeAiControlsUsageGroupResponse {}
-const PutEeAiControlsUsageGroupResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeAiControlsUsageGroupResponse>;
-
 export interface PutEeAiControlsUsageInstanceRequest {
   max_usage: number | null;
 }
-const PutEeAiControlsUsageInstanceRequest = /*@__PURE__*/ __L.at(
-  __c86,
-  7,
-) as any as S.Schema<PutEeAiControlsUsageInstanceRequest>;
-
 export interface PutEeAiControlsUsageInstanceResponse {}
-const PutEeAiControlsUsageInstanceResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeAiControlsUsageInstanceResponse>;
-
 export interface PutEeAiControlsUsageTenantRequest {
   tenant_id: number;
   max_usage: number | null;
 }
-const PutEeAiControlsUsageTenantRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  0,
-) as any as S.Schema<PutEeAiControlsUsageTenantRequest>;
-
 export interface PutEeAiControlsUsageTenantResponse {}
-const PutEeAiControlsUsageTenantResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeAiControlsUsageTenantResponse>;
-
 export interface PutEeCustomVizPluginRequest {
   /** value must be an integer greater than zero. */
   id: number;
   enabled?: boolean | null;
 }
-const PutEeCustomVizPluginRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  1,
-) as any as S.Schema<PutEeCustomVizPluginRequest>;
-
 export interface PutEeCustomVizPluginResponse {}
-const PutEeCustomVizPluginResponse =
-  CreateActionResponse as any as S.Schema<PutEeCustomVizPluginResponse>;
-
 export type PutEeCustomVizPluginBundleRequestFile = CreateEeCustomVizPluginRequestFile;
 export interface PutEeCustomVizPluginBundleRequest {
   /** value must be an integer greater than zero. */
   id: number;
   file: CreateEeCustomVizPluginRequestFile;
 }
-const PutEeCustomVizPluginBundleRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  2,
-) as any as S.Schema<PutEeCustomVizPluginBundleRequest>;
-
 export interface PutEeCustomVizPluginBundleResponse {}
-const PutEeCustomVizPluginBundleResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeCustomVizPluginBundleResponse>;
-
 export interface PutEeCustomVizPluginDevUrlRequest {
   /** value must be an integer greater than zero. */
   id: number;
   dev_bundle_url: string | null;
 }
-const PutEeCustomVizPluginDevUrlRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  3,
-) as any as S.Schema<PutEeCustomVizPluginDevUrlRequest>;
-
 export interface PutEeCustomVizPluginDevUrlResponse {}
-const PutEeCustomVizPluginDevUrlResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeCustomVizPluginDevUrlResponse>;
-
 export interface PutEeDatabaseRoutingRouterDatabaseRequest {
   /** value must be an integer greater than zero. */
   id: number;
   user_attribute?: string | null;
 }
-const PutEeDatabaseRoutingRouterDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  4,
-) as any as S.Schema<PutEeDatabaseRoutingRouterDatabaseRequest>;
-
 export interface PutEeDatabaseRoutingRouterDatabaseResponse {}
-const PutEeDatabaseRoutingRouterDatabaseResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeDatabaseRoutingRouterDatabaseResponse>;
-
 export interface PutEeEmailOverrideRequest {
   email_smtp_host_override?: string | null;
   email_smtp_password_override?: string | null;
@@ -11833,24 +6251,9 @@ export interface PutEeEmailOverrideRequest {
   email_smtp_security_override?: string | null;
   email_smtp_username_override?: string | null;
 }
-const PutEeEmailOverrideRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  5,
-) as any as S.Schema<PutEeEmailOverrideRequest>;
-
 export interface PutEeEmailOverrideResponse {}
-const PutEeEmailOverrideResponse =
-  CreateActionResponse as any as S.Schema<PutEeEmailOverrideResponse>;
-
 export type PutEeRemoteSyncSettingsRequestCollectionsMap = { [key: string]: boolean | undefined };
-const PutEeRemoteSyncSettingsRequestCollectionsMap = /*@__PURE__*/ __L.at(
-  __c87,
-  6,
-) as any as S.Schema<PutEeRemoteSyncSettingsRequestCollectionsMap>;
-
 export type PutEeRemoteSyncSettingsRequestRemoteSyncType = "read-only" | "read-write";
-const PutEeRemoteSyncSettingsRequestRemoteSyncType = S.String;
-
 export interface PutEeRemoteSyncSettingsRequest {
   collections?: PutEeRemoteSyncSettingsRequestCollectionsMap | null;
   remote_sync_auto_import?: boolean | null;
@@ -11860,53 +6263,23 @@ export interface PutEeRemoteSyncSettingsRequest {
   remote_sync_type?: PutEeRemoteSyncSettingsRequestRemoteSyncType | (string & {}) | null;
   remote_sync_url?: string | null;
 }
-const PutEeRemoteSyncSettingsRequest = /*@__PURE__*/ __L.at(
-  __c87,
-  7,
-) as any as S.Schema<PutEeRemoteSyncSettingsRequest>;
-
 export interface PutEeRemoteSyncSettingsResponse {}
-const PutEeRemoteSyncSettingsResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<PutEeRemoteSyncSettingsResponse>;
-
 export type PutEeScimGroupRequestMembersItem = CreateEeScimGroupRequestMembersItem;
 export type PutEeScimGroupRequestMembersList = Array<CreateEeScimGroupRequestMembersItem>;
-const PutEeScimGroupRequestMembersList =
-  CreateEeScimGroupRequestMembersList as any as S.Schema<PutEeScimGroupRequestMembersList>;
-
 export type PutEeScimGroupRequestSchemasList = Array<string>;
-const PutEeScimGroupRequestSchemasList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<PutEeScimGroupRequestSchemasList>;
-
 export interface PutEeScimGroupRequest {
   id: string;
   displayName: string;
   members?: PutEeScimGroupRequestMembersList;
   schemas: PutEeScimGroupRequestSchemasList;
 }
-const PutEeScimGroupRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  0,
-) as any as S.Schema<PutEeScimGroupRequest>;
-
 export interface PutEeScimGroupResponse {}
-const PutEeScimGroupResponse = CreateActionResponse as any as S.Schema<PutEeScimGroupResponse>;
-
 export type PutEeScimUserRequestEmailsItem = CreateEeScimUserRequestEmailsItem;
 export type PutEeScimUserRequestEmailsList = Array<CreateEeScimUserRequestEmailsItem>;
-const PutEeScimUserRequestEmailsList =
-  CreateEeScimUserRequestEmailsList as any as S.Schema<PutEeScimUserRequestEmailsList>;
-
 export type PutEeScimUserRequestGroupsItem = CreateEeScimUserRequestGroupsItem;
 export type PutEeScimUserRequestGroupsList = Array<CreateEeScimUserRequestGroupsItem>;
-const PutEeScimUserRequestGroupsList =
-  CreateEeScimUserRequestGroupsList as any as S.Schema<PutEeScimUserRequestGroupsList>;
-
 export type PutEeScimUserRequestName = CreateEeScimUserRequestName;
 export type PutEeScimUserRequestSchemasList = Array<string>;
-const PutEeScimUserRequestSchemasList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<PutEeScimUserRequestSchemasList>;
-
 export interface PutEeScimUserRequest {
   id: string;
   active?: boolean;
@@ -11917,31 +6290,13 @@ export interface PutEeScimUserRequest {
   schemas: PutEeScimUserRequestSchemasList;
   userName: string;
 }
-const PutEeScimUserRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  1,
-) as any as S.Schema<PutEeScimUserRequest>;
-
 export interface PutEeScimUserResponse {}
-const PutEeScimUserResponse = CreateActionResponse as any as S.Schema<PutEeScimUserResponse>;
-
 export interface PutEeSupportAccessGrantRevokeRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const PutEeSupportAccessGrantRevokeRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  2,
-) as any as S.Schema<PutEeSupportAccessGrantRevokeRequest>;
-
 export interface PutEeSupportAccessGrantRevokeResponse {}
-const PutEeSupportAccessGrantRevokeResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeSupportAccessGrantRevokeResponse>;
-
 export type PutEeTenantRequestAttributesMap = { [key: string]: unknown | undefined };
-const PutEeTenantRequestAttributesMap =
-  MetabaseLibSchemaActionsRow as any as S.Schema<PutEeTenantRequestAttributesMap>;
-
 export interface PutEeTenantRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -11949,24 +6304,12 @@ export interface PutEeTenantRequest {
   is_active?: boolean | null;
   name?: string | null;
 }
-const PutEeTenantRequest = /*@__PURE__*/ __L.at(__c88, 3) as any as S.Schema<PutEeTenantRequest>;
-
 export interface PutEeTenantResponse {}
-const PutEeTenantResponse = CreateActionResponse as any as S.Schema<PutEeTenantResponse>;
-
 export interface PutEeTransformsPythonLibraryRequest {
   path: string;
   source: string;
 }
-const PutEeTransformsPythonLibraryRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  4,
-) as any as S.Schema<PutEeTransformsPythonLibraryRequest>;
-
 export interface PutEeTransformsPythonLibraryResponse {}
-const PutEeTransformsPythonLibraryResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutEeTransformsPythonLibraryResponse>;
-
 export interface PutEmailRequest {
   email_smtp_host?: string | null;
   email_smtp_password?: string | null;
@@ -11974,37 +6317,21 @@ export interface PutEmailRequest {
   email_smtp_security?: string | null;
   email_smtp_username?: string | null;
 }
-const PutEmailRequest = /*@__PURE__*/ __L.at(__c88, 5) as any as S.Schema<PutEmailRequest>;
-
 export interface PutEmailResponse {}
-const PutEmailResponse = CreateActionResponse as any as S.Schema<PutEmailResponse>;
-
 export interface PutEmbedThemeRequest {
   /** value must be an integer greater than zero. */
   id: number;
   name?: string | null;
   settings?: unknown | null;
 }
-const PutEmbedThemeRequest = /*@__PURE__*/ __L.at(
-  __c88,
-  6,
-) as any as S.Schema<PutEmbedThemeRequest>;
-
 export interface PutEmbedThemeResponse {}
-const PutEmbedThemeResponse = CreateActionResponse as any as S.Schema<PutEmbedThemeResponse>;
-
 export type PutFieldRequestVisibilityType =
   | "retired"
   | "sensitive"
   | "normal"
   | "hidden"
   | "details-only";
-const PutFieldRequestVisibilityType = S.String;
-
 export type PutFieldRequestNfcPathList = Array<string>;
-const PutFieldRequestNfcPathList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<PutFieldRequestNfcPathList>;
-
 export interface PutFieldRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -12021,73 +6348,36 @@ export interface PutFieldRequest {
   description?: string | null;
   fk_target_field_id?: number | null;
 }
-const PutFieldRequest = /*@__PURE__*/ __L.at(__c88, 7) as any as S.Schema<PutFieldRequest>;
-
 export interface PutFieldResponse {}
-const PutFieldResponse = CreateActionResponse as any as S.Schema<PutFieldResponse>;
-
 export interface PutGlossaryRequest {
   /** value must be an integer greater than zero. */
   id: number;
   definition: string;
   term: string;
 }
-const PutGlossaryRequest = /*@__PURE__*/ __L.at(__c89, 0) as any as S.Schema<PutGlossaryRequest>;
-
 export interface PutGlossaryResponse {}
-const PutGlossaryResponse = CreateActionResponse as any as S.Schema<PutGlossaryResponse>;
-
 export interface PutGoogleSettingsRequest {
   google_auth_auto_create_accounts_domain?: string | null;
   google_auth_client_id?: string | null;
   google_auth_enabled?: boolean | null;
 }
-const PutGoogleSettingsRequest = /*@__PURE__*/ __L.at(
-  __c89,
-  1,
-) as any as S.Schema<PutGoogleSettingsRequest>;
-
 export interface PutGoogleSettingsResponse {}
-const PutGoogleSettingsResponse =
-  CreateActionResponse as any as S.Schema<PutGoogleSettingsResponse>;
-
 export interface PutKeyRequest {
   /** value must be an integer greater than zero. */
   id: number;
   group_id?: number | null;
   name?: string | null;
 }
-const PutKeyRequest = /*@__PURE__*/ __L.at(__c89, 2) as any as S.Schema<PutKeyRequest>;
-
 export interface PutKeyResponse {}
-const PutKeyResponse = CreateActionResponse as any as S.Schema<PutKeyResponse>;
-
 export interface PutKeyRegenerateRequest {
   id: number;
 }
-const PutKeyRegenerateRequest = /*@__PURE__*/ __L.at(
-  __c89,
-  3,
-) as any as S.Schema<PutKeyRegenerateRequest>;
-
 export interface PutKeyRegenerateResponse {}
-const PutKeyRegenerateResponse = CreateActionResponse as any as S.Schema<PutKeyRegenerateResponse>;
-
 export type PutLdapSettingsRequestLdapGroupMappingsValueList = Array<number>;
-const PutLdapSettingsRequestLdapGroupMappingsValueList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<PutLdapSettingsRequestLdapGroupMappingsValueList>;
-
 export type PutLdapSettingsRequestLdapGroupMappingsMap = {
   [key: string]: PutLdapSettingsRequestLdapGroupMappingsValueList | undefined;
 };
-const PutLdapSettingsRequestLdapGroupMappingsMap = /*@__PURE__*/ __L.at(
-  __c89,
-  4,
-) as any as S.Schema<PutLdapSettingsRequestLdapGroupMappingsMap>;
-
 export type PutLdapSettingsRequestLdapSecurity = "none" | "ssl" | "starttls";
-const PutLdapSettingsRequestLdapSecurity = S.String;
-
 export interface PutLdapSettingsRequest {
   ldap_host?: string | null;
   ldap_attribute_email?: string | null;
@@ -12105,14 +6395,7 @@ export interface PutLdapSettingsRequest {
   ldap_group_base?: string | null;
   ldap_enabled?: boolean | null;
 }
-const PutLdapSettingsRequest = /*@__PURE__*/ __L.at(
-  __c89,
-  5,
-) as any as S.Schema<PutLdapSettingsRequest>;
-
 export interface PutLdapSettingsResponse {}
-const PutLdapSettingsResponse = CreateActionResponse as any as S.Schema<PutLdapSettingsResponse>;
-
 export interface PutMeasureRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -12122,25 +6405,13 @@ export interface PutMeasureRequest {
   name?: string | null;
   revision_message: string;
 }
-const PutMeasureRequest = /*@__PURE__*/ __L.at(__c89, 6) as any as S.Schema<PutMeasureRequest>;
-
 export interface PutMeasureResponse {}
-const PutMeasureResponse = CreateActionResponse as any as S.Schema<PutMeasureResponse>;
-
 export interface PutMetabotMetabotRequest {
   id: number;
   collection_id?: number | null;
   use_verified_content?: boolean;
 }
-const PutMetabotMetabotRequest = /*@__PURE__*/ __L.at(
-  __c89,
-  7,
-) as any as S.Schema<PutMetabotMetabotRequest>;
-
 export interface PutMetabotMetabotResponse {}
-const PutMetabotMetabotResponse =
-  CreateActionResponse as any as S.Schema<PutMetabotMetabotResponse>;
-
 export interface PutMetabotSettingsRequestCredentials {
   access_key_id?: string | null;
   api_key?: string | null;
@@ -12149,11 +6420,6 @@ export interface PutMetabotSettingsRequestCredentials {
   secret_access_key?: string | null;
   session_token?: string | null;
 }
-const PutMetabotSettingsRequestCredentials = /*@__PURE__*/ __L.at(
-  __c90,
-  0,
-) as any as S.Schema<PutMetabotSettingsRequestCredentials>;
-
 export type PutMetabotSettingsRequestProvider =
   | "anthropic"
   | "openai"
@@ -12163,67 +6429,34 @@ export type PutMetabotSettingsRequestProvider =
   | "zai"
   | "metabase"
   | "openrouter";
-const PutMetabotSettingsRequestProvider = S.String;
-
 export interface PutMetabotSettingsRequest {
   api_key?: string | null;
   credentials?: PutMetabotSettingsRequestCredentials | null;
   model?: string | null;
   provider: PutMetabotSettingsRequestProvider | (string & {});
 }
-const PutMetabotSettingsRequest = /*@__PURE__*/ __L.at(
-  __c90,
-  1,
-) as any as S.Schema<PutMetabotSettingsRequest>;
-
 export interface PutMetabotSettingsResponse {}
-const PutMetabotSettingsResponse =
-  CreateActionResponse as any as S.Schema<PutMetabotSettingsResponse>;
-
 export interface PutMetabotSlackSettingsRequest {
   metabot_slack_signing_secret: string | null;
   slack_connect_client_id: string | null;
   slack_connect_client_secret: string | null;
 }
-const PutMetabotSlackSettingsRequest = /*@__PURE__*/ __L.at(
-  __c90,
-  2,
-) as any as S.Schema<PutMetabotSlackSettingsRequest>;
-
 export interface PutMetabotSlackSettingsResponse {}
-const PutMetabotSlackSettingsResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<PutMetabotSlackSettingsResponse>;
-
 export interface PutMtGtapRequest {
   /** value must be an integer greater than zero. */
   id: number;
   attribute_remappings?: MetabaseEnterpriseSandboxSchemaAttributeRemappingsMap | null;
   card_id?: number | null;
 }
-const PutMtGtapRequest = /*@__PURE__*/ __L.at(__c90, 3) as any as S.Schema<PutMtGtapRequest>;
-
 export interface PutMtGtapResponse {}
-const PutMtGtapResponse = CreateActionResponse as any as S.Schema<PutMtGtapResponse>;
-
 /** value must be a valid user attributes map (name -> value) */
 export type PutMtUserAttributesRequestLoginAttributesMap = { [key: string]: unknown | undefined };
-const PutMtUserAttributesRequestLoginAttributesMap =
-  MetabaseLibSchemaActionsRow as any as S.Schema<PutMtUserAttributesRequestLoginAttributesMap>;
-
 export interface PutMtUserAttributesRequest {
   /** value must be an integer greater than zero. */
   id: number;
   login_attributes?: PutMtUserAttributesRequestLoginAttributesMap | null;
 }
-const PutMtUserAttributesRequest = /*@__PURE__*/ __L.at(
-  __c90,
-  4,
-) as any as S.Schema<PutMtUserAttributesRequest>;
-
 export interface PutMtUserAttributesResponse {}
-const PutMtUserAttributesResponse =
-  CreateActionResponse as any as S.Schema<PutMtUserAttributesResponse>;
-
 export interface PutNativeQuerySnippetRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -12233,15 +6466,7 @@ export interface PutNativeQuerySnippetRequest {
   description?: string | null;
   name?: unknown | null;
 }
-const PutNativeQuerySnippetRequest = /*@__PURE__*/ __L.at(
-  __c90,
-  5,
-) as any as S.Schema<PutNativeQuerySnippetRequest>;
-
 export interface PutNativeQuerySnippetResponse {}
-const PutNativeQuerySnippetResponse =
-  CreateActionResponse as any as S.Schema<PutNativeQuerySnippetResponse>;
-
 export type MetabaseNotificationApiNotificationNotificationApiUpdateInputCase0HandlersItemRecipientsList =
   Array<MetabaseNotificationModelsNotificationRecipient>;
 export interface MetabaseNotificationApiNotificationNotificationApiUpdateInputCase0HandlersItem {
@@ -12359,54 +6584,26 @@ export interface MetabaseNotificationApiNotificationNotificationApiUpdateInputCa
 export type MetabaseNotificationApiNotificationNotificationApiUpdateInput =
   | MetabaseNotificationApiNotificationNotificationApiUpdateInputCase0
   | MetabaseNotificationApiNotificationNotificationApiUpdateInputCase1;
-const MetabaseNotificationApiNotificationNotificationApiUpdateInput =
-  S.Unknown as any as S.Schema<MetabaseNotificationApiNotificationNotificationApiUpdateInput>;
-
 export interface PutNotificationRequest {
   /** value must be an integer greater than zero. */
   id: number;
   body?: MetabaseNotificationApiNotificationNotificationApiUpdateInput;
 }
-const PutNotificationRequest = /*@__PURE__*/ __L.at(
-  __c90,
-  6,
-) as any as S.Schema<PutNotificationRequest>;
-
 export interface PutNotificationResponse {}
-const PutNotificationResponse = CreateActionResponse as any as S.Schema<PutNotificationResponse>;
-
 export type PutOsiAiContextRequestAiContextExamplesList = Array<string>;
-const PutOsiAiContextRequestAiContextExamplesList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<PutOsiAiContextRequestAiContextExamplesList>;
-
 export type PutOsiAiContextRequestAiContextSynonymsList = Array<string>;
-const PutOsiAiContextRequestAiContextSynonymsList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<PutOsiAiContextRequestAiContextSynonymsList>;
-
 export interface PutOsiAiContextRequestAiContext {
   examples?: PutOsiAiContextRequestAiContextExamplesList;
   instructions?: string | null;
   synonyms?: PutOsiAiContextRequestAiContextSynonymsList;
 }
-const PutOsiAiContextRequestAiContext = /*@__PURE__*/ __L.at(
-  __c90,
-  7,
-) as any as S.Schema<PutOsiAiContextRequestAiContext>;
-
 export interface PutOsiAiContextRequest {
   entity_type: string;
   /** value must be an integer greater than zero. */
   entity_local_id: number;
   ai_context: PutOsiAiContextRequestAiContext;
 }
-const PutOsiAiContextRequest = /*@__PURE__*/ __L.at(
-  __c91,
-  0,
-) as any as S.Schema<PutOsiAiContextRequest>;
-
 export interface PutOsiAiContextResponse {}
-const PutOsiAiContextResponse = CreateActionResponse as any as S.Schema<PutOsiAiContextResponse>;
-
 export type MetabasePermissionsRestSchemaTablePermsCase0Query = "all" | "none" | "segmented";
 export type MetabasePermissionsRestSchemaTablePermsCase0Read = "all" | "none";
 export interface MetabasePermissionsRestSchemaTablePermsCase0 {
@@ -12492,9 +6689,6 @@ export type PutPermissionsGraphRequestGroupsCase0Map = {
   [key: string]: PutPermissionsGraphRequestGroupsCase0Value | undefined;
 };
 export type PutPermissionsGraphRequestGroups = PutPermissionsGraphRequestGroupsCase0Map | unknown;
-const PutPermissionsGraphRequestGroups =
-  S.Unknown as any as S.Schema<PutPermissionsGraphRequestGroups>;
-
 /** a connection impersonation policy to write alongside a permissions graph update */
 export interface MetabasePermissionsRestSchemaImpersonationUpdate {
   attribute: string;
@@ -12503,18 +6697,8 @@ export interface MetabasePermissionsRestSchemaImpersonationUpdate {
   /** value must be an integer greater than zero. */
   group_id: number;
 }
-const MetabasePermissionsRestSchemaImpersonationUpdate = /*@__PURE__*/ __L.at(
-  __c91,
-  1,
-) as any as S.Schema<MetabasePermissionsRestSchemaImpersonationUpdate>;
-
 export type PutPermissionsGraphRequestImpersonationsList =
   Array<MetabasePermissionsRestSchemaImpersonationUpdate>;
-const PutPermissionsGraphRequestImpersonationsList = /*@__PURE__*/ __L.at(
-  __c91,
-  2,
-) as any as S.Schema<PutPermissionsGraphRequestImpersonationsList>;
-
 /** a field name, a field id, or a parameter target */
 export type MetabasePermissionsRestSchemaAttributeRemapping =
   | string
@@ -12523,18 +6707,10 @@ export type MetabasePermissionsRestSchemaAttributeRemapping =
 export type MetabasePermissionsRestSchemaAttributeRemappingsValue =
   | MetabasePermissionsRestSchemaAttributeRemapping
   | unknown;
-const MetabasePermissionsRestSchemaAttributeRemappingsValue =
-  S.Unknown as any as S.Schema<MetabasePermissionsRestSchemaAttributeRemappingsValue>;
-
 /** a map of user attribute name -> the field or parameter target it is remapped onto */
 export type MetabasePermissionsRestSchemaAttributeRemappings = {
   [key: string]: MetabasePermissionsRestSchemaAttributeRemappingsValue | undefined;
 };
-const MetabasePermissionsRestSchemaAttributeRemappings = /*@__PURE__*/ __L.at(
-  __c91,
-  3,
-) as any as S.Schema<MetabasePermissionsRestSchemaAttributeRemappings>;
-
 /** a sandbox to write alongside a permissions graph update */
 export interface MetabasePermissionsRestSchemaSandboxUpdate {
   attribute_remappings?: MetabasePermissionsRestSchemaAttributeRemappings | null;
@@ -12547,18 +6723,8 @@ export interface MetabasePermissionsRestSchemaSandboxUpdate {
   /** value must be an integer greater than zero. */
   table_id?: number;
 }
-const MetabasePermissionsRestSchemaSandboxUpdate = /*@__PURE__*/ __L.at(
-  __c91,
-  4,
-) as any as S.Schema<MetabasePermissionsRestSchemaSandboxUpdate>;
-
 export type PutPermissionsGraphRequestSandboxesList =
   Array<MetabasePermissionsRestSchemaSandboxUpdate>;
-const PutPermissionsGraphRequestSandboxesList = /*@__PURE__*/ __L.at(
-  __c91,
-  5,
-) as any as S.Schema<PutPermissionsGraphRequestSandboxesList>;
-
 export interface PutPermissionsGraphRequest {
   skip_graph?: boolean;
   force?: boolean;
@@ -12567,60 +6733,25 @@ export interface PutPermissionsGraphRequest {
   revision?: number | null;
   sandboxes?: PutPermissionsGraphRequestSandboxesList | null;
 }
-const PutPermissionsGraphRequest = /*@__PURE__*/ __L.at(
-  __c91,
-  6,
-) as any as S.Schema<PutPermissionsGraphRequest>;
-
 export interface PutPermissionsGraphResponse {}
-const PutPermissionsGraphResponse =
-  CreateActionResponse as any as S.Schema<PutPermissionsGraphResponse>;
-
 export interface PutPermissionsGroupRequest {
   /** value must be an integer greater than zero. */
   group_id: number;
   name: string;
 }
-const PutPermissionsGroupRequest = /*@__PURE__*/ __L.at(
-  __c91,
-  7,
-) as any as S.Schema<PutPermissionsGroupRequest>;
-
 export interface PutPermissionsGroupResponse {}
-const PutPermissionsGroupResponse =
-  CreateActionResponse as any as S.Schema<PutPermissionsGroupResponse>;
-
 export interface PutPermissionsMembershipRequest {
   /** value must be an integer greater than zero. */
   id: number;
   is_group_manager: boolean;
 }
-const PutPermissionsMembershipRequest = /*@__PURE__*/ __L.at(
-  __c92,
-  0,
-) as any as S.Schema<PutPermissionsMembershipRequest>;
-
 export interface PutPermissionsMembershipResponse {}
-const PutPermissionsMembershipResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutPermissionsMembershipResponse>;
-
 export interface PutPermissionsMembershipClearRequest {
   /** value must be an integer greater than zero. */
   group_id: number;
 }
-const PutPermissionsMembershipClearRequest = /*@__PURE__*/ __L.at(
-  __c92,
-  1,
-) as any as S.Schema<PutPermissionsMembershipClearRequest>;
-
 export interface PutPermissionsMembershipClearResponse {}
-const PutPermissionsMembershipClearResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutPermissionsMembershipClearResponse>;
-
 export type PutPulseRequestParametersList = Array<MetabaseParametersSchemaParameter>;
-const PutPulseRequestParametersList =
-  MetabaseParametersSchemaParameters as any as S.Schema<PutPulseRequestParametersList>;
-
 export interface PutPulseRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -12633,23 +6764,12 @@ export interface PutPulseRequest {
   parameters?: PutPulseRequestParametersList | null;
   skip_if_empty?: boolean | null;
 }
-const PutPulseRequest = /*@__PURE__*/ __L.at(__c92, 2) as any as S.Schema<PutPulseRequest>;
-
 export interface PutPulseResponse {}
-const PutPulseResponse = CreateActionResponse as any as S.Schema<PutPulseResponse>;
-
 export interface PutSearchWeightsRequest {
   context?: string;
   search_engine?: unknown;
 }
-const PutSearchWeightsRequest = /*@__PURE__*/ __L.at(
-  __c92,
-  3,
-) as any as S.Schema<PutSearchWeightsRequest>;
-
 export interface PutSearchWeightsResponse {}
-const PutSearchWeightsResponse = CreateActionResponse as any as S.Schema<PutSearchWeightsResponse>;
-
 export interface PutSegmentRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -12662,62 +6782,30 @@ export interface PutSegmentRequest {
   revision_message: string;
   show_in_getting_started?: boolean | null;
 }
-const PutSegmentRequest = /*@__PURE__*/ __L.at(__c92, 4) as any as S.Schema<PutSegmentRequest>;
-
 export interface PutSegmentResponse {}
-const PutSegmentResponse = CreateActionResponse as any as S.Schema<PutSegmentResponse>;
-
 export type PutSettingRequestBodyMap = { [key: string]: unknown | undefined };
-const PutSettingRequestBodyMap =
-  MetabaseLibSchemaActionsRow as any as S.Schema<PutSettingRequestBodyMap>;
-
 export interface PutSettingRequest {
   body?: PutSettingRequestBodyMap;
 }
-const PutSettingRequest = /*@__PURE__*/ __L.at(__c92, 5) as any as S.Schema<PutSettingRequest>;
-
 export interface PutSettingResponse {}
-const PutSettingResponse = CreateActionResponse as any as S.Schema<PutSettingResponse>;
-
 export interface PutSettingByKeyRequest {
   key: string;
   value: unknown;
 }
-const PutSettingByKeyRequest = /*@__PURE__*/ __L.at(
-  __c92,
-  6,
-) as any as S.Schema<PutSettingByKeyRequest>;
-
 export interface PutSettingByKeyResponse {}
-const PutSettingByKeyResponse = CreateActionResponse as any as S.Schema<PutSettingByKeyResponse>;
-
 export interface PutSlackSettingsRequest {
   slack_app_token?: string | null;
   slack_bug_report_channel?: string | null;
 }
-const PutSlackSettingsRequest = /*@__PURE__*/ __L.at(
-  __c92,
-  7,
-) as any as S.Schema<PutSlackSettingsRequest>;
-
 export interface PutSlackSettingsResponse {}
-const PutSlackSettingsResponse = CreateActionResponse as any as S.Schema<PutSlackSettingsResponse>;
-
 export type PutTableRequestVisibilityType = "technical" | "hidden" | "cruft";
-const PutTableRequestVisibilityType = S.String;
-
 /** Schema for writing a valid table data authority. */
 export type MetabaseWarehouseSchemaRestApiTableDataAuthorityWrite =
   | "computed"
   | "authoritative"
   | "unconfigured"
   | "ingested";
-const MetabaseWarehouseSchemaRestApiTableDataAuthorityWrite = S.String;
-
 export type PutTableRequestIdsList = Array<number>;
-const PutTableRequestIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<PutTableRequestIdsList>;
-
 export interface PutTableRequest {
   points_of_interest?: string | null;
   visibility_type?: PutTableRequestVisibilityType | (string & {}) | null;
@@ -12733,17 +6821,9 @@ export interface PutTableRequest {
   entity_type?: unknown | null;
   description?: string | null;
 }
-const PutTableRequest = /*@__PURE__*/ __L.at(__c93, 0) as any as S.Schema<PutTableRequest>;
-
 export interface PutTableResponse {}
-const PutTableResponse = CreateActionResponse as any as S.Schema<PutTableResponse>;
-
 export type PutTableByIdRequestVisibilityType = "technical" | "hidden" | "cruft";
-const PutTableByIdRequestVisibilityType = S.String;
-
 export type PutTableByIdRequestFieldOrder = "alphabetical" | "custom" | "database" | "smart";
-const PutTableByIdRequestFieldOrder = S.String;
-
 export interface PutTableByIdRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -12762,11 +6842,7 @@ export interface PutTableByIdRequest {
   field_order?: PutTableByIdRequestFieldOrder | (string & {}) | null;
   description?: string | null;
 }
-const PutTableByIdRequest = /*@__PURE__*/ __L.at(__c93, 1) as any as S.Schema<PutTableByIdRequest>;
-
 export interface PutTableByIdResponse {}
-const PutTableByIdResponse = CreateActionResponse as any as S.Schema<PutTableByIdResponse>;
-
 export type PutTableFieldsOrderRequestBodyCase0List = Array<number>;
 export type PutTableFieldsOrderRequestBodyCase1FieldOrderList = Array<number>;
 export interface PutTableFieldsOrderRequestBodyCase1 {
@@ -12775,25 +6851,13 @@ export interface PutTableFieldsOrderRequestBodyCase1 {
 export type PutTableFieldsOrderRequestBody =
   | PutTableFieldsOrderRequestBodyCase0List
   | PutTableFieldsOrderRequestBodyCase1;
-const PutTableFieldsOrderRequestBody = S.Unknown as any as S.Schema<PutTableFieldsOrderRequestBody>;
-
 export interface PutTableFieldsOrderRequest {
   /** value must be an integer greater than zero. */
   id: number;
   body?: PutTableFieldsOrderRequestBody;
 }
-const PutTableFieldsOrderRequest = /*@__PURE__*/ __L.at(
-  __c93,
-  2,
-) as any as S.Schema<PutTableFieldsOrderRequest>;
-
 export interface PutTableFieldsOrderResponse {}
-const PutTableFieldsOrderResponse =
-  CreateActionResponse as any as S.Schema<PutTableFieldsOrderResponse>;
-
 export type PutTimelineRequestIcon = "star" | "cake" | "mail" | "warning" | "bell" | "cloud";
-const PutTimelineRequestIcon = S.String;
-
 export interface PutTimelineRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -12804,14 +6868,8 @@ export interface PutTimelineRequest {
   icon?: PutTimelineRequestIcon | (string & {}) | null;
   name?: string | null;
 }
-const PutTimelineRequest = /*@__PURE__*/ __L.at(__c93, 3) as any as S.Schema<PutTimelineRequest>;
-
 export interface PutTimelineResponse {}
-const PutTimelineResponse = CreateActionResponse as any as S.Schema<PutTimelineResponse>;
-
 export type PutTimelineEventRequestIcon = "star" | "cake" | "mail" | "warning" | "bell" | "cloud";
-const PutTimelineEventRequestIcon = S.String;
-
 export interface PutTimelineEventRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -12824,18 +6882,8 @@ export interface PutTimelineEventRequest {
   timestamp?: string | null;
   timezone?: string | null;
 }
-const PutTimelineEventRequest = /*@__PURE__*/ __L.at(
-  __c93,
-  4,
-) as any as S.Schema<PutTimelineEventRequest>;
-
 export interface PutTimelineEventResponse {}
-const PutTimelineEventResponse = CreateActionResponse as any as S.Schema<PutTimelineEventResponse>;
-
 export type PutTransformRequestTagIdsList = Array<number>;
-const PutTransformRequestTagIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<PutTransformRequestTagIdsList>;
-
 export interface PutTransformRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -12849,18 +6897,9 @@ export interface PutTransformRequest {
   run_trigger?: MetabaseTransformsRestApiTransformRunTrigger | (string & {});
   description?: string | null;
 }
-const PutTransformRequest = /*@__PURE__*/ __L.at(__c93, 5) as any as S.Schema<PutTransformRequest>;
-
 export interface PutTransformResponse {}
-const PutTransformResponse = CreateActionResponse as any as S.Schema<PutTransformResponse>;
-
 export type PutTransformJobRequestTagIdsList = Array<number>;
-const PutTransformJobRequestTagIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<PutTransformJobRequestTagIdsList>;
-
 export type PutTransformJobRequestUiDisplayType = "cron/raw" | "cron/builder";
-const PutTransformJobRequestUiDisplayType = S.String;
-
 export interface PutTransformJobRequest {
   /** value must be an integer greater than zero. */
   job_id: number;
@@ -12871,47 +6910,19 @@ export interface PutTransformJobRequest {
   tag_ids?: PutTransformJobRequestTagIdsList;
   ui_display_type?: PutTransformJobRequestUiDisplayType | (string & {});
 }
-const PutTransformJobRequest = /*@__PURE__*/ __L.at(
-  __c93,
-  6,
-) as any as S.Schema<PutTransformJobRequest>;
-
 export interface PutTransformJobResponse {}
-const PutTransformJobResponse = CreateActionResponse as any as S.Schema<PutTransformJobResponse>;
-
 export interface PutTransformJobActiveRequest {
   active: boolean;
 }
-const PutTransformJobActiveRequest = /*@__PURE__*/ __L.at(
-  __c93,
-  7,
-) as any as S.Schema<PutTransformJobActiveRequest>;
-
 export interface PutTransformJobActiveResponse {}
-const PutTransformJobActiveResponse =
-  CreateActionResponse as any as S.Schema<PutTransformJobActiveResponse>;
-
 export interface PutTransformTagRequest {
   /** value must be an integer greater than zero. */
   tag_id: number;
   name: string;
 }
-const PutTransformTagRequest = /*@__PURE__*/ __L.at(
-  __c94,
-  0,
-) as any as S.Schema<PutTransformTagRequest>;
-
 export interface PutTransformTagResponse {}
-const PutTransformTagResponse = CreateActionResponse as any as S.Schema<PutTransformTagResponse>;
-
 export type PutUserRequestLoginAttributesMap = { [key: string]: unknown | undefined };
-const PutUserRequestLoginAttributesMap =
-  MetabaseLibSchemaActionsRow as any as S.Schema<PutUserRequestLoginAttributesMap>;
-
 export type PutUserRequestUserGroupMembershipsList = Array<MetabaseUsersSchemaUserGroupMembership>;
-const PutUserRequestUserGroupMembershipsList =
-  CreateUserRequestUserGroupMembershipsList as any as S.Schema<PutUserRequestUserGroupMembershipsList>;
-
 export interface PutUserRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -12926,39 +6937,21 @@ export interface PutUserRequest {
   last_name?: string | null;
   first_name?: string | null;
 }
-const PutUserRequest = /*@__PURE__*/ __L.at(__c94, 1) as any as S.Schema<PutUserRequest>;
-
 export interface PutUserResponse {}
-const PutUserResponse = CreateActionResponse as any as S.Schema<PutUserResponse>;
-
 export interface PutUserKeyValueNamespaceKeyRequest {
   namespace: string;
   key: string;
   expires_at?: string | null;
   value?: unknown;
 }
-const PutUserKeyValueNamespaceKeyRequest = /*@__PURE__*/ __L.at(
-  __c94,
-  2,
-) as any as S.Schema<PutUserKeyValueNamespaceKeyRequest>;
-
 export interface PutUserKeyValueNamespaceKeyResponse {}
-const PutUserKeyValueNamespaceKeyResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<PutUserKeyValueNamespaceKeyResponse>;
-
 export type PutUserModalRequestModal = "qbnewb" | "datasetnewb";
-const PutUserModalRequestModal = S.String;
-
 export interface PutUserModalRequest {
   /** value must be an integer greater than zero. */
   id: number;
   modal: PutUserModalRequestModal | (string & {});
 }
-const PutUserModalRequest = /*@__PURE__*/ __L.at(__c94, 3) as any as S.Schema<PutUserModalRequest>;
-
 export interface PutUserModalResponse {}
-const PutUserModalResponse = CreateActionResponse as any as S.Schema<PutUserModalResponse>;
-
 export interface PutUserPasswordRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -12966,47 +6959,21 @@ export interface PutUserPasswordRequest {
   /** password is too common. */
   password: string | Redacted.Redacted<string>;
 }
-const PutUserPasswordRequest = /*@__PURE__*/ __L.at(
-  __c94,
-  4,
-) as any as S.Schema<PutUserPasswordRequest>;
-
 export interface PutUserPasswordResponse {}
-const PutUserPasswordResponse = CreateActionResponse as any as S.Schema<PutUserPasswordResponse>;
-
 export interface PutUserReactivateRequest {
   /** value must be an integer greater than zero. */
   id: number;
 }
-const PutUserReactivateRequest = /*@__PURE__*/ __L.at(
-  __c94,
-  5,
-) as any as S.Schema<PutUserReactivateRequest>;
-
 export interface PutUserReactivateResponse {}
-const PutUserReactivateResponse =
-  CreateActionResponse as any as S.Schema<PutUserReactivateResponse>;
-
 export type UpdateBookmarkRequestModel = "card" | "dashboard" | "collection" | "document";
-const UpdateBookmarkRequestModel = S.String;
-
 export interface UpdateBookmarkRequest {
   model: UpdateBookmarkRequestModel | (string & {});
   /** value must be an integer greater than zero. */
   id: number;
 }
-const UpdateBookmarkRequest = /*@__PURE__*/ __L.at(
-  __c94,
-  6,
-) as any as S.Schema<UpdateBookmarkRequest>;
-
 export interface UpdateBookmarkResponse {}
-const UpdateBookmarkResponse = CreateActionResponse as any as S.Schema<UpdateBookmarkResponse>;
-
 /** Schema for valid export formats for downloading query results. */
 export type UpdateCardQueryRequestExportFormat = "csv" | "api" | "xlsx" | "json";
-const UpdateCardQueryRequestExportFormat = S.String;
-
 export interface UpdateCardQueryRequest {
   /** value must be an integer greater than zero. */
   card_id: number;
@@ -13016,18 +6983,9 @@ export interface UpdateCardQueryRequest {
   parameters?: MetabaseParametersSchemaParameterValues | null;
   pivot_results?: boolean;
 }
-const UpdateCardQueryRequest = /*@__PURE__*/ __L.at(
-  __c94,
-  7,
-) as any as S.Schema<UpdateCardQueryRequest>;
-
 export interface UpdateCardQueryResponse {}
-const UpdateCardQueryResponse = CreateActionResponse as any as S.Schema<UpdateCardQueryResponse>;
-
 /** Schema for valid export formats for downloading query results. */
 export type UpdateDashboardDashcardCardRequestExportFormat = "csv" | "api" | "xlsx" | "json";
-const UpdateDashboardDashcardCardRequestExportFormat = S.String;
-
 export interface UpdateDashboardDashcardCardRequest {
   /** value must be a valid UUID. */
   uuid: string;
@@ -13041,19 +6999,9 @@ export interface UpdateDashboardDashcardCardRequest {
   parameters?: MetabaseParametersSchemaParameterValues | null;
   pivot_results?: boolean;
 }
-const UpdateDashboardDashcardCardRequest = /*@__PURE__*/ __L.at(
-  __c95,
-  0,
-) as any as S.Schema<UpdateDashboardDashcardCardRequest>;
-
 export interface UpdateDashboardDashcardCardResponse {}
-const UpdateDashboardDashcardCardResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<UpdateDashboardDashcardCardResponse>;
-
 /** Schema for valid export formats for downloading query results. */
 export type UpdateDashboardDashcardCardQueryRequestExportFormat = "csv" | "api" | "xlsx" | "json";
-const UpdateDashboardDashcardCardQueryRequestExportFormat = S.String;
-
 export interface UpdateDashboardDashcardCardQueryRequest {
   /** value must be an integer greater than zero. */
   dashboard_id: number;
@@ -13066,19 +7014,8 @@ export interface UpdateDashboardDashcardCardQueryRequest {
   parameters?: MetabaseParametersSchemaParameterValues | null;
   pivot_results?: boolean;
 }
-const UpdateDashboardDashcardCardQueryRequest = /*@__PURE__*/ __L.at(
-  __c95,
-  1,
-) as any as S.Schema<UpdateDashboardDashcardCardQueryRequest>;
-
 export interface UpdateDashboardDashcardCardQueryResponse {}
-const UpdateDashboardDashcardCardQueryResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<UpdateDashboardDashcardCardQueryResponse>;
-
 export type UpdateDashboardSaveCollectionRequestDashcardsItemSeriesItemId = number | string;
-const UpdateDashboardSaveCollectionRequestDashcardsItemSeriesItemId =
-  S.Unknown as any as S.Schema<UpdateDashboardSaveCollectionRequestDashcardsItemSeriesItemId>;
-
 export interface UpdateDashboardSaveCollectionRequestDashcardsItemSeriesItem {
   dataset_query?: MetabaseLibBeSchemaMaybeLegacyOrEmptyQuery | null;
   description?: string | null;
@@ -13087,22 +7024,9 @@ export interface UpdateDashboardSaveCollectionRequestDashcardsItemSeriesItem {
   name?: string | null;
   visualization_settings?: unknown | null;
 }
-const UpdateDashboardSaveCollectionRequestDashcardsItemSeriesItem = /*@__PURE__*/ __L.at(
-  __c95,
-  2,
-) as any as S.Schema<UpdateDashboardSaveCollectionRequestDashcardsItemSeriesItem>;
-
 export type UpdateDashboardSaveCollectionRequestDashcardsItemSeriesList =
   Array<UpdateDashboardSaveCollectionRequestDashcardsItemSeriesItem>;
-const UpdateDashboardSaveCollectionRequestDashcardsItemSeriesList = /*@__PURE__*/ __L.at(
-  __c95,
-  3,
-) as any as S.Schema<UpdateDashboardSaveCollectionRequestDashcardsItemSeriesList>;
-
 export type UpdateDashboardSaveCollectionRequestDashcardsItemCardId = number | string;
-const UpdateDashboardSaveCollectionRequestDashcardsItemCardId =
-  S.Unknown as any as S.Schema<UpdateDashboardSaveCollectionRequestDashcardsItemCardId>;
-
 export interface UpdateDashboardSaveCollectionRequestDashcardsItemCard {
   dataset_query?: MetabaseLibBeSchemaMaybeLegacyOrEmptyQuery | null;
   description?: string | null;
@@ -13111,11 +7035,6 @@ export interface UpdateDashboardSaveCollectionRequestDashcardsItemCard {
   name?: string | null;
   visualization_settings?: unknown | null;
 }
-const UpdateDashboardSaveCollectionRequestDashcardsItemCard = /*@__PURE__*/ __L.at(
-  __c95,
-  4,
-) as any as S.Schema<UpdateDashboardSaveCollectionRequestDashcardsItemCard>;
-
 export interface UpdateDashboardSaveCollectionRequestDashcardsItem {
   visualization_settings?: unknown | null;
   dashboard_tab_id?: number | null;
@@ -13127,27 +7046,12 @@ export interface UpdateDashboardSaveCollectionRequestDashcardsItem {
   series?: UpdateDashboardSaveCollectionRequestDashcardsItemSeriesList | null;
   card?: UpdateDashboardSaveCollectionRequestDashcardsItemCard | null;
 }
-const UpdateDashboardSaveCollectionRequestDashcardsItem = /*@__PURE__*/ __L.at(
-  __c95,
-  5,
-) as any as S.Schema<UpdateDashboardSaveCollectionRequestDashcardsItem>;
-
 export type UpdateDashboardSaveCollectionRequestDashcardsList =
   Array<UpdateDashboardSaveCollectionRequestDashcardsItem>;
-const UpdateDashboardSaveCollectionRequestDashcardsList = /*@__PURE__*/ __L.at(
-  __c95,
-  6,
-) as any as S.Schema<UpdateDashboardSaveCollectionRequestDashcardsList>;
-
 export type UpdateDashboardSaveCollectionRequestTabsItem = CreateDashboardSaveRequestTabsItem;
 export type UpdateDashboardSaveCollectionRequestTabsList =
   Array<CreateDashboardSaveRequestTabsItem>;
-const UpdateDashboardSaveCollectionRequestTabsList =
-  CreateDashboardSaveRequestTabsList as any as S.Schema<UpdateDashboardSaveCollectionRequestTabsList>;
-
 export type UpdateDashboardSaveCollectionRequestWidth = "fixed" | "full";
-const UpdateDashboardSaveCollectionRequestWidth = S.String;
-
 export interface UpdateDashboardSaveCollectionRequest {
   /** value must be an integer greater than zero. */
   parent_collection_id: number;
@@ -13159,19 +7063,9 @@ export interface UpdateDashboardSaveCollectionRequest {
   tabs?: UpdateDashboardSaveCollectionRequestTabsList | null;
   width?: UpdateDashboardSaveCollectionRequestWidth | (string & {}) | null;
 }
-const UpdateDashboardSaveCollectionRequest = /*@__PURE__*/ __L.at(
-  __c95,
-  7,
-) as any as S.Schema<UpdateDashboardSaveCollectionRequest>;
-
 export interface UpdateDashboardSaveCollectionResponse {}
-const UpdateDashboardSaveCollectionResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<UpdateDashboardSaveCollectionResponse>;
-
 /** Schema for valid export formats for downloading query results. */
 export type UpdateDatasetRequestExportFormat = "csv" | "api" | "xlsx" | "json";
-const UpdateDatasetRequestExportFormat = S.String;
-
 export interface UpdateDatasetRequest {
   export_format: UpdateDatasetRequestExportFormat | (string & {});
   csv_include_bom?: boolean;
@@ -13180,36 +7074,16 @@ export interface UpdateDatasetRequest {
   query: MetabaseLibBeSchemaMaybeLegacyOrInternalQuery;
   visualization_settings?: unknown;
 }
-const UpdateDatasetRequest = /*@__PURE__*/ __L.at(
-  __c96,
-  0,
-) as any as S.Schema<UpdateDatasetRequest>;
-
 export interface UpdateDatasetResponse {}
-const UpdateDatasetResponse = CreateActionResponse as any as S.Schema<UpdateDatasetResponse>;
-
 export type UpdateDatasetParameterSearchRequestFieldIdsList = Array<number>;
-const UpdateDatasetParameterSearchRequestFieldIdsList =
-  MetabaseLibSchemaQueryPivotRowsList as any as S.Schema<UpdateDatasetParameterSearchRequestFieldIdsList>;
-
 export interface UpdateDatasetParameterSearchRequest {
   query: string;
   field_ids?: UpdateDatasetParameterSearchRequestFieldIdsList | null;
   parameter: MetabaseParametersSchemaParameter;
 }
-const UpdateDatasetParameterSearchRequest = /*@__PURE__*/ __L.at(
-  __c96,
-  1,
-) as any as S.Schema<UpdateDatasetParameterSearchRequest>;
-
 export interface UpdateDatasetParameterSearchResponse {}
-const UpdateDatasetParameterSearchResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<UpdateDatasetParameterSearchResponse>;
-
 /** Schema for valid export formats for downloading query results. */
 export type UpdateDocumentCardRequestExportFormat = "csv" | "api" | "xlsx" | "json";
-const UpdateDocumentCardRequestExportFormat = S.String;
-
 export interface UpdateDocumentCardRequest {
   /** value must be a valid UUID. */
   uuid: string;
@@ -13221,15 +7095,7 @@ export interface UpdateDocumentCardRequest {
   parameters?: MetabaseParametersSchemaParameterValues | null;
   pivot_results?: boolean;
 }
-const UpdateDocumentCardRequest = /*@__PURE__*/ __L.at(
-  __c96,
-  2,
-) as any as S.Schema<UpdateDocumentCardRequest>;
-
 export interface UpdateDocumentCardResponse {}
-const UpdateDocumentCardResponse =
-  CreateActionResponse as any as S.Schema<UpdateDocumentCardResponse>;
-
 export interface UpdateDocumentCardQueryRequest {
   /** value must be an integer greater than zero. */
   document_id: number;
@@ -13240,15 +7106,7 @@ export interface UpdateDocumentCardQueryRequest {
   parameters?: MetabaseParametersSchemaParameterValues | null;
   pivot_results?: boolean;
 }
-const UpdateDocumentCardQueryRequest = /*@__PURE__*/ __L.at(
-  __c96,
-  3,
-) as any as S.Schema<UpdateDocumentCardQueryRequest>;
-
 export interface UpdateDocumentCardQueryResponse {}
-const UpdateDocumentCardQueryResponse =
-  CreateAgentReadResourceResponse as any as S.Schema<UpdateDocumentCardQueryResponse>;
-
 export type UpdateEeCloudAddOnsRequestProductType =
   | "metabase-ai"
   | "metabase-ai-tiered"
@@ -13261,78 +7119,38 @@ export type UpdateEeCloudAddOnsRequestProductType =
   | "transforms-advanced-metered"
   | "dwh-rent"
   | "etl-connections";
-const UpdateEeCloudAddOnsRequestProductType = S.String;
-
 export interface UpdateEeCloudAddOnsRequest {
   product_type: UpdateEeCloudAddOnsRequestProductType | (string & {});
   quantity?: number | null;
   terms_of_service?: boolean | null;
 }
-const UpdateEeCloudAddOnsRequest = /*@__PURE__*/ __L.at(
-  __c96,
-  4,
-) as any as S.Schema<UpdateEeCloudAddOnsRequest>;
-
 export interface UpdateEeCloudAddOnsResponse {}
-const UpdateEeCloudAddOnsResponse =
-  CreateActionResponse as any as S.Schema<UpdateEeCloudAddOnsResponse>;
-
 export interface UpdateEeCloudProxyRequestBody {
   force_end_trial?: boolean;
   new_plan_alias?: string;
   plan_alias?: string;
 }
-const UpdateEeCloudProxyRequestBody = /*@__PURE__*/ __L.at(
-  __c96,
-  5,
-) as any as S.Schema<UpdateEeCloudProxyRequestBody>;
-
 export interface UpdateEeCloudProxyRequest {
   operation_id: string;
   body?: UpdateEeCloudProxyRequestBody | null;
 }
-const UpdateEeCloudProxyRequest = /*@__PURE__*/ __L.at(
-  __c96,
-  6,
-) as any as S.Schema<UpdateEeCloudProxyRequest>;
-
 export interface UpdateEeCloudProxyResponse {}
-const UpdateEeCloudProxyResponse =
-  CreateActionResponse as any as S.Schema<UpdateEeCloudProxyResponse>;
-
 export type UpdateEeDatabaseReplicationConnectionDatabaseRequestReplicationSchemaFiltersSchemaFiltersType =
   | "inclusion"
   | "exclusion"
   | "all";
-const UpdateEeDatabaseReplicationConnectionDatabaseRequestReplicationSchemaFiltersSchemaFiltersType =
-  S.String;
-
 export interface UpdateEeDatabaseReplicationConnectionDatabaseRequestReplicationSchemaFilters {
   schema_filters_patterns: string;
   schema_filters_type:
     | UpdateEeDatabaseReplicationConnectionDatabaseRequestReplicationSchemaFiltersSchemaFiltersType
     | (string & {});
 }
-const UpdateEeDatabaseReplicationConnectionDatabaseRequestReplicationSchemaFilters =
-  /*@__PURE__*/ __L.at(
-    __c96,
-    7,
-  ) as any as S.Schema<UpdateEeDatabaseReplicationConnectionDatabaseRequestReplicationSchemaFilters>;
-
 export interface UpdateEeDatabaseReplicationConnectionDatabaseRequest {
   /** value must be an integer greater than zero. */
   database_id: number;
   replicationSchemaFilters?: UpdateEeDatabaseReplicationConnectionDatabaseRequestReplicationSchemaFilters;
 }
-const UpdateEeDatabaseReplicationConnectionDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c97,
-  0,
-) as any as S.Schema<UpdateEeDatabaseReplicationConnectionDatabaseRequest>;
-
 export interface UpdateEeDatabaseReplicationConnectionDatabaseResponse {}
-const UpdateEeDatabaseReplicationConnectionDatabaseResponse =
-  CreateAgentConstructNativeQueryResponse as any as S.Schema<UpdateEeDatabaseReplicationConnectionDatabaseResponse>;
-
 export type UpdateEeScimUserRequestOperationsItemValueCase0Map = {
   [key: string]: unknown | undefined;
 };
@@ -13341,45 +7159,20 @@ export type MetabaseEnterpriseScimV2ApiPatchValue = string | boolean;
 export type UpdateEeScimUserRequestOperationsItemValue =
   | UpdateEeScimUserRequestOperationsItemValueCase0Map
   | MetabaseEnterpriseScimV2ApiPatchValue;
-const UpdateEeScimUserRequestOperationsItemValue =
-  S.Unknown as any as S.Schema<UpdateEeScimUserRequestOperationsItemValue>;
-
 export interface UpdateEeScimUserRequestOperationsItem {
   op: string;
   path?: string | null;
   value: UpdateEeScimUserRequestOperationsItemValue;
 }
-const UpdateEeScimUserRequestOperationsItem = /*@__PURE__*/ __L.at(
-  __c97,
-  1,
-) as any as S.Schema<UpdateEeScimUserRequestOperationsItem>;
-
 export type UpdateEeScimUserRequestOperationsList = Array<UpdateEeScimUserRequestOperationsItem>;
-const UpdateEeScimUserRequestOperationsList = /*@__PURE__*/ __L.at(
-  __c97,
-  2,
-) as any as S.Schema<UpdateEeScimUserRequestOperationsList>;
-
 export type UpdateEeScimUserRequestSchemasList = Array<string>;
-const UpdateEeScimUserRequestSchemasList =
-  MetabaseParametersSchemaParameterFilteringParametersList as any as S.Schema<UpdateEeScimUserRequestSchemasList>;
-
 export interface UpdateEeScimUserRequest {
   id: string;
   Operations: UpdateEeScimUserRequestOperationsList;
   schemas: UpdateEeScimUserRequestSchemasList;
 }
-const UpdateEeScimUserRequest = /*@__PURE__*/ __L.at(
-  __c97,
-  3,
-) as any as S.Schema<UpdateEeScimUserRequest>;
-
 export interface UpdateEeScimUserResponse {}
-const UpdateEeScimUserResponse = CreateActionResponse as any as S.Schema<UpdateEeScimUserResponse>;
-
 export type UpdateNotifyDbRequestScan = "full" | "schema";
-const UpdateNotifyDbRequestScan = S.String;
-
 export interface UpdateNotifyDbRequest {
   /** value must be an integer greater than zero. */
   id: number;
@@ -13388,14 +7181,7 @@ export interface UpdateNotifyDbRequest {
   table_id?: number | null;
   table_name?: string | null;
 }
-const UpdateNotifyDbRequest = /*@__PURE__*/ __L.at(
-  __c97,
-  4,
-) as any as S.Schema<UpdateNotifyDbRequest>;
-
 export interface UpdateNotifyDbResponse {}
-const UpdateNotifyDbResponse = CreateActionResponse as any as S.Schema<UpdateNotifyDbResponse>;
-
 export type CreateActionError = MetabaseOpError;
 /** POST /api/action Create a new action. */
 export const createAction: API.OperationMethod<
@@ -13404,8 +7190,8 @@ export const createAction: API.OperationMethod<
   CreateActionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateActionRequest,
-  output: CreateActionResponse,
+  input: __S(19) as any as S.Schema<CreateActionRequest>,
+  output: __S(20) as any as S.Schema<CreateActionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13419,8 +7205,8 @@ export const createActionExecute: API.OperationMethod<
   CreateActionExecuteError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateActionExecuteRequest,
-  output: CreateActionExecuteResponse,
+  input: __S(22) as any as S.Schema<CreateActionExecuteRequest>,
+  output: __S(20) as any as S.Schema<CreateActionExecuteResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13434,8 +7220,8 @@ export const createActionExecute2: API.OperationMethod<
   CreateActionExecute2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateActionExecuteRequest2,
-  output: CreateActionExecute2Response,
+  input: __S(23) as any as S.Schema<CreateActionExecuteRequest2>,
+  output: __S(20) as any as S.Schema<CreateActionExecute2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13449,8 +7235,8 @@ export const createActionPublicLink: API.OperationMethod<
   CreateActionPublicLinkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateActionPublicLinkRequest,
-  output: CreateActionPublicLinkResponse,
+  input: __S(24) as any as S.Schema<CreateActionPublicLinkRequest>,
+  output: __S(20) as any as S.Schema<CreateActionPublicLinkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13464,8 +7250,8 @@ export const createActivityRecent: API.OperationMethod<
   CreateActivityRecentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateActivityRecentRequest,
-  output: CreateActivityRecentResponse,
+  input: __S(25) as any as S.Schema<CreateActivityRecentRequest>,
+  output: __S(20) as any as S.Schema<CreateActivityRecentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13479,8 +7265,8 @@ export const createAgentCollection: API.OperationMethod<
   CreateAgentCollectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgentCollectionRequest,
-  output: CreateAgentCollectionResponse,
+  input: __S(26) as any as S.Schema<CreateAgentCollectionRequest>,
+  output: __S(20) as any as S.Schema<CreateAgentCollectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13494,8 +7280,8 @@ export const createAgentConstructNativeQuery: API.OperationMethod<
   CreateAgentConstructNativeQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgentConstructNativeQueryRequest,
-  output: CreateAgentConstructNativeQueryResponse,
+  input: __S(27) as any as S.Schema<CreateAgentConstructNativeQueryRequest>,
+  output: __S(28) as any as S.Schema<CreateAgentConstructNativeQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13509,8 +7295,8 @@ export const createAgentConstructQuery: API.OperationMethod<
   CreateAgentConstructQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgentConstructQueryRequest,
-  output: CreateAgentConstructQueryResponse,
+  input: __S(29) as any as S.Schema<CreateAgentConstructQueryRequest>,
+  output: __S(28) as any as S.Schema<CreateAgentConstructQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13524,8 +7310,8 @@ export const createAgentDashboard: API.OperationMethod<
   CreateAgentDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgentDashboardRequest,
-  output: CreateAgentDashboardResponse,
+  input: __S(30) as any as S.Schema<CreateAgentDashboardRequest>,
+  output: __S(20) as any as S.Schema<CreateAgentDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13539,8 +7325,8 @@ export const createAgentExecute: API.OperationMethod<
   CreateAgentExecuteError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgentExecuteRequest,
-  output: CreateAgentExecuteResponse,
+  input: __S(31) as any as S.Schema<CreateAgentExecuteRequest>,
+  output: __S(20) as any as S.Schema<CreateAgentExecuteResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13554,8 +7340,8 @@ export const createAgentExecuteSql: API.OperationMethod<
   CreateAgentExecuteSqlError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgentExecuteSqlRequest,
-  output: CreateAgentExecuteSqlResponse,
+  input: __S(32) as any as S.Schema<CreateAgentExecuteSqlRequest>,
+  output: __S(20) as any as S.Schema<CreateAgentExecuteSqlResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13569,8 +7355,8 @@ export const createAgentMetric: API.OperationMethod<
   CreateAgentMetricError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgentMetricRequest,
-  output: CreateAgentMetricResponse,
+  input: __S(33) as any as S.Schema<CreateAgentMetricRequest>,
+  output: __S(20) as any as S.Schema<CreateAgentMetricResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13584,8 +7370,8 @@ export const createAgentQuery: API.OperationMethod<
   CreateAgentQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgentQueryRequest,
-  output: CreateAgentQueryResponse,
+  input: __S(34) as any as S.Schema<CreateAgentQueryRequest>,
+  output: __S(20) as any as S.Schema<CreateAgentQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13599,8 +7385,8 @@ export const createAgentQuestion: API.OperationMethod<
   CreateAgentQuestionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgentQuestionRequest,
-  output: CreateAgentQuestionResponse,
+  input: __S(35) as any as S.Schema<CreateAgentQuestionRequest>,
+  output: __S(20) as any as S.Schema<CreateAgentQuestionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13614,8 +7400,8 @@ export const createAgentQuestionQuery: API.OperationMethod<
   CreateAgentQuestionQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgentQuestionQueryRequest,
-  output: CreateAgentQuestionQueryResponse,
+  input: __S(36) as any as S.Schema<CreateAgentQuestionQueryRequest>,
+  output: __S(28) as any as S.Schema<CreateAgentQuestionQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13629,8 +7415,8 @@ export const createAgentReadResource: API.OperationMethod<
   CreateAgentReadResourceError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgentReadResourceRequest,
-  output: CreateAgentReadResourceResponse,
+  input: __S(37) as any as S.Schema<CreateAgentReadResourceRequest>,
+  output: __S(38) as any as S.Schema<CreateAgentReadResourceResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13644,8 +7430,8 @@ export const createAgentSearch: API.OperationMethod<
   CreateAgentSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAgentSearchRequest,
-  output: CreateAgentSearchResponse,
+  input: __S(39) as any as S.Schema<CreateAgentSearchRequest>,
+  output: __S(20) as any as S.Schema<CreateAgentSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13659,8 +7445,8 @@ export const createAiEntityAnalysisAnalyzeChart: API.OperationMethod<
   CreateAiEntityAnalysisAnalyzeChartError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAiEntityAnalysisAnalyzeChartRequest,
-  output: CreateAiEntityAnalysisAnalyzeChartResponse,
+  input: __S(42) as any as S.Schema<CreateAiEntityAnalysisAnalyzeChartRequest>,
+  output: __S(28) as any as S.Schema<CreateAiEntityAnalysisAnalyzeChartResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13674,8 +7460,8 @@ export const createAnalyticsInternal: API.OperationMethod<
   CreateAnalyticsInternalError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAnalyticsInternalRequest,
-  output: CreateAnalyticsInternalResponse,
+  input: __S(46) as any as S.Schema<CreateAnalyticsInternalRequest>,
+  output: __S(38) as any as S.Schema<CreateAnalyticsInternalResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13689,8 +7475,8 @@ export const createAnalyticsProxy: API.OperationMethod<
   CreateAnalyticsProxyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAnalyticsProxyRequest,
-  output: CreateAnalyticsProxyResponse,
+  input: __S(48) as any as S.Schema<CreateAnalyticsProxyRequest>,
+  output: __S(20) as any as S.Schema<CreateAnalyticsProxyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13704,8 +7490,8 @@ export const createCacheInvalidate: API.OperationMethod<
   CreateCacheInvalidateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCacheInvalidateRequest,
-  output: CreateCacheInvalidateResponse,
+  input: __S(49) as any as S.Schema<CreateCacheInvalidateRequest>,
+  output: __S(20) as any as S.Schema<CreateCacheInvalidateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13719,8 +7505,8 @@ export const createCard: API.OperationMethod<
   CreateCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCardRequest,
-  output: CreateCardResponse,
+  input: __S(51) as any as S.Schema<CreateCardRequest>,
+  output: __S(20) as any as S.Schema<CreateCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13734,8 +7520,8 @@ export const createCardCollection: API.OperationMethod<
   CreateCardCollectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCardCollectionRequest,
-  output: CreateCardCollectionResponse,
+  input: __S(52) as any as S.Schema<CreateCardCollectionRequest>,
+  output: __S(20) as any as S.Schema<CreateCardCollectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13749,8 +7535,8 @@ export const createCardCopy: API.OperationMethod<
   CreateCardCopyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCardCopyRequest,
-  output: CreateCardCopyResponse,
+  input: __S(53) as any as S.Schema<CreateCardCopyRequest>,
+  output: __S(20) as any as S.Schema<CreateCardCopyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13764,8 +7550,8 @@ export const createCardPivotCardQuery: API.OperationMethod<
   CreateCardPivotCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCardPivotCardQueryRequest,
-  output: CreateCardPivotCardQueryResponse,
+  input: __S(56) as any as S.Schema<CreateCardPivotCardQueryRequest>,
+  output: __S(28) as any as S.Schema<CreateCardPivotCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13779,8 +7565,8 @@ export const createCardPublicLink: API.OperationMethod<
   CreateCardPublicLinkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCardPublicLinkRequest,
-  output: CreateCardPublicLinkResponse,
+  input: __S(57) as any as S.Schema<CreateCardPublicLinkRequest>,
+  output: __S(20) as any as S.Schema<CreateCardPublicLinkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13794,8 +7580,8 @@ export const createCardQuery: API.OperationMethod<
   CreateCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCardQueryRequest,
-  output: CreateCardQueryResponse,
+  input: __S(58) as any as S.Schema<CreateCardQueryRequest>,
+  output: __S(20) as any as S.Schema<CreateCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13809,8 +7595,8 @@ export const createCardsDashboard: API.OperationMethod<
   CreateCardsDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCardsDashboardRequest,
-  output: CreateCardsDashboardResponse,
+  input: __S(59) as any as S.Schema<CreateCardsDashboardRequest>,
+  output: __S(20) as any as S.Schema<CreateCardsDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13824,8 +7610,8 @@ export const createCardsMove: API.OperationMethod<
   CreateCardsMoveError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCardsMoveRequest,
-  output: CreateCardsMoveResponse,
+  input: __S(60) as any as S.Schema<CreateCardsMoveRequest>,
+  output: __S(20) as any as S.Schema<CreateCardsMoveResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13839,8 +7625,8 @@ export const createChannel: API.OperationMethod<
   CreateChannelError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChannelRequest,
-  output: CreateChannelResponse,
+  input: __S(61) as any as S.Schema<CreateChannelRequest>,
+  output: __S(20) as any as S.Schema<CreateChannelResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13854,8 +7640,8 @@ export const createChannelTest: API.OperationMethod<
   CreateChannelTestError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateChannelTestRequest,
-  output: CreateChannelTestResponse,
+  input: __S(62) as any as S.Schema<CreateChannelTestRequest>,
+  output: __S(20) as any as S.Schema<CreateChannelTestResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13869,8 +7655,8 @@ export const createCloudMigration: API.OperationMethod<
   CreateCloudMigrationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCloudMigrationRequest,
-  output: CreateCloudMigrationResponse,
+  input: __S(63) as any as S.Schema<CreateCloudMigrationRequest>,
+  output: __S(20) as any as S.Schema<CreateCloudMigrationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13884,8 +7670,8 @@ export const createCollection: API.OperationMethod<
   CreateCollectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCollectionRequest,
-  output: CreateCollectionResponse,
+  input: __S(64) as any as S.Schema<CreateCollectionRequest>,
+  output: __S(20) as any as S.Schema<CreateCollectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13899,8 +7685,8 @@ export const createCollectionMoveDashboardQuestionCandidate: API.OperationMethod
   CreateCollectionMoveDashboardQuestionCandidateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCollectionMoveDashboardQuestionCandidateRequest,
-  output: CreateCollectionMoveDashboardQuestionCandidateResponse,
+  input: __S(67) as any as S.Schema<CreateCollectionMoveDashboardQuestionCandidateRequest>,
+  output: __S(28) as any as S.Schema<CreateCollectionMoveDashboardQuestionCandidateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13914,8 +7700,8 @@ export const createCollectionRootMoveDashboardQuestionCandidate: API.OperationMe
   CreateCollectionRootMoveDashboardQuestionCandidateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCollectionRootMoveDashboardQuestionCandidateRequest,
-  output: CreateCollectionRootMoveDashboardQuestionCandidateResponse,
+  input: __S(69) as any as S.Schema<CreateCollectionRootMoveDashboardQuestionCandidateRequest>,
+  output: __S(70) as any as S.Schema<CreateCollectionRootMoveDashboardQuestionCandidateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13929,8 +7715,8 @@ export const createComment: API.OperationMethod<
   CreateCommentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCommentRequest,
-  output: CreateCommentResponse,
+  input: __S(71) as any as S.Schema<CreateCommentRequest>,
+  output: __S(20) as any as S.Schema<CreateCommentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13944,8 +7730,8 @@ export const createCommentReaction: API.OperationMethod<
   CreateCommentReactionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCommentReactionRequest,
-  output: CreateCommentReactionResponse,
+  input: __S(72) as any as S.Schema<CreateCommentReactionRequest>,
+  output: __S(20) as any as S.Schema<CreateCommentReactionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13959,8 +7745,8 @@ export const createDashboard: API.OperationMethod<
   CreateDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardRequest,
-  output: CreateDashboardResponse,
+  input: __S(73) as any as S.Schema<CreateDashboardRequest>,
+  output: __S(20) as any as S.Schema<CreateDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13974,8 +7760,8 @@ export const createDashboardCopy: API.OperationMethod<
   CreateDashboardCopyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardCopyRequest,
-  output: CreateDashboardCopyResponse,
+  input: __S(74) as any as S.Schema<CreateDashboardCopyRequest>,
+  output: __S(20) as any as S.Schema<CreateDashboardCopyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -13989,8 +7775,8 @@ export const createDashboardDashcardCardQuery: API.OperationMethod<
   CreateDashboardDashcardCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardDashcardCardQueryRequest,
-  output: CreateDashboardDashcardCardQueryResponse,
+  input: __S(75) as any as S.Schema<CreateDashboardDashcardCardQueryRequest>,
+  output: __S(28) as any as S.Schema<CreateDashboardDashcardCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14004,8 +7790,8 @@ export const createDashboardDashcardExecute: API.OperationMethod<
   CreateDashboardDashcardExecuteError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardDashcardExecuteRequest,
-  output: CreateDashboardDashcardExecuteResponse,
+  input: __S(76) as any as S.Schema<CreateDashboardDashcardExecuteRequest>,
+  output: __S(28) as any as S.Schema<CreateDashboardDashcardExecuteResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14019,8 +7805,8 @@ export const createDashboardDashcardExecute2: API.OperationMethod<
   CreateDashboardDashcardExecute2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardDashcardExecuteRequest2,
-  output: CreateDashboardDashcardExecute2Response,
+  input: __S(77) as any as S.Schema<CreateDashboardDashcardExecuteRequest2>,
+  output: __S(28) as any as S.Schema<CreateDashboardDashcardExecute2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14034,8 +7820,8 @@ export const createDashboardPdf: API.OperationMethod<
   CreateDashboardPdfError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardPdfRequest,
-  output: CreateDashboardPdfResponse,
+  input: __S(78) as any as S.Schema<CreateDashboardPdfRequest>,
+  output: __S(20) as any as S.Schema<CreateDashboardPdfResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14049,8 +7835,8 @@ export const createDashboardPivotDashboardDashcardCardQuery: API.OperationMethod
   CreateDashboardPivotDashboardDashcardCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardPivotDashboardDashcardCardQueryRequest,
-  output: CreateDashboardPivotDashboardDashcardCardQueryResponse,
+  input: __S(79) as any as S.Schema<CreateDashboardPivotDashboardDashcardCardQueryRequest>,
+  output: __S(28) as any as S.Schema<CreateDashboardPivotDashboardDashcardCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14064,8 +7850,8 @@ export const createDashboardPublicLink: API.OperationMethod<
   CreateDashboardPublicLinkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardPublicLinkRequest,
-  output: CreateDashboardPublicLinkResponse,
+  input: __S(80) as any as S.Schema<CreateDashboardPublicLinkRequest>,
+  output: __S(28) as any as S.Schema<CreateDashboardPublicLinkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14079,8 +7865,8 @@ export const createDashboardSave: API.OperationMethod<
   CreateDashboardSaveError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDashboardSaveRequest,
-  output: CreateDashboardSaveResponse,
+  input: __S(88) as any as S.Schema<CreateDashboardSaveRequest>,
+  output: __S(20) as any as S.Schema<CreateDashboardSaveResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14094,8 +7880,8 @@ export const createDatabase: API.OperationMethod<
   CreateDatabaseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatabaseRequest,
-  output: CreateDatabaseResponse,
+  input: __S(91) as any as S.Schema<CreateDatabaseRequest>,
+  output: __S(20) as any as S.Schema<CreateDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14109,8 +7895,8 @@ export const createDatabaseDiscardValue: API.OperationMethod<
   CreateDatabaseDiscardValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatabaseDiscardValueRequest,
-  output: CreateDatabaseDiscardValueResponse,
+  input: __S(92) as any as S.Schema<CreateDatabaseDiscardValueRequest>,
+  output: __S(28) as any as S.Schema<CreateDatabaseDiscardValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14124,8 +7910,8 @@ export const createDatabaseDismissSpinner: API.OperationMethod<
   CreateDatabaseDismissSpinnerError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatabaseDismissSpinnerRequest,
-  output: CreateDatabaseDismissSpinnerResponse,
+  input: __S(93) as any as S.Schema<CreateDatabaseDismissSpinnerRequest>,
+  output: __S(28) as any as S.Schema<CreateDatabaseDismissSpinnerResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14139,8 +7925,8 @@ export const createDatabaseRescanValue: API.OperationMethod<
   CreateDatabaseRescanValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatabaseRescanValueRequest,
-  output: CreateDatabaseRescanValueResponse,
+  input: __S(94) as any as S.Schema<CreateDatabaseRescanValueRequest>,
+  output: __S(28) as any as S.Schema<CreateDatabaseRescanValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14154,8 +7940,8 @@ export const createDatabaseSampleDatabase: API.OperationMethod<
   CreateDatabaseSampleDatabaseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatabaseSampleDatabaseRequest,
-  output: CreateDatabaseSampleDatabaseResponse,
+  input: __S(95) as any as S.Schema<CreateDatabaseSampleDatabaseRequest>,
+  output: __S(28) as any as S.Schema<CreateDatabaseSampleDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14169,8 +7955,8 @@ export const createDatabaseSyncSchema: API.OperationMethod<
   CreateDatabaseSyncSchemaError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatabaseSyncSchemaRequest,
-  output: CreateDatabaseSyncSchemaResponse,
+  input: __S(96) as any as S.Schema<CreateDatabaseSyncSchemaRequest>,
+  output: __S(28) as any as S.Schema<CreateDatabaseSyncSchemaResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14184,8 +7970,8 @@ export const createDatabaseValidate: API.OperationMethod<
   CreateDatabaseValidateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatabaseValidateRequest,
-  output: CreateDatabaseValidateResponse,
+  input: __S(98) as any as S.Schema<CreateDatabaseValidateRequest>,
+  output: __S(20) as any as S.Schema<CreateDatabaseValidateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14199,8 +7985,8 @@ export const createDataset: API.OperationMethod<
   CreateDatasetError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetRequest,
-  output: CreateDatasetResponse,
+  input: __S(99) as any as S.Schema<CreateDatasetRequest>,
+  output: __S(20) as any as S.Schema<CreateDatasetResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14214,8 +8000,8 @@ export const createDatasetNative: API.OperationMethod<
   CreateDatasetNativeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetNativeRequest,
-  output: CreateDatasetNativeResponse,
+  input: __S(100) as any as S.Schema<CreateDatasetNativeRequest>,
+  output: __S(20) as any as S.Schema<CreateDatasetNativeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14229,8 +8015,8 @@ export const createDatasetParameterRemapping: API.OperationMethod<
   CreateDatasetParameterRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetParameterRemappingRequest,
-  output: CreateDatasetParameterRemappingResponse,
+  input: __S(101) as any as S.Schema<CreateDatasetParameterRemappingRequest>,
+  output: __S(28) as any as S.Schema<CreateDatasetParameterRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14244,8 +8030,8 @@ export const createDatasetParameterValue: API.OperationMethod<
   CreateDatasetParameterValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetParameterValueRequest,
-  output: CreateDatasetParameterValueResponse,
+  input: __S(102) as any as S.Schema<CreateDatasetParameterValueRequest>,
+  output: __S(28) as any as S.Schema<CreateDatasetParameterValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14259,8 +8045,8 @@ export const createDatasetPivot: API.OperationMethod<
   CreateDatasetPivotError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetPivotRequest,
-  output: CreateDatasetPivotResponse,
+  input: __S(103) as any as S.Schema<CreateDatasetPivotRequest>,
+  output: __S(20) as any as S.Schema<CreateDatasetPivotResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14274,8 +8060,8 @@ export const createDatasetQueryMetadata: API.OperationMethod<
   CreateDatasetQueryMetadataError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDatasetQueryMetadataRequest,
-  output: CreateDatasetQueryMetadataResponse,
+  input: __S(104) as any as S.Schema<CreateDatasetQueryMetadataRequest>,
+  output: __S(28) as any as S.Schema<CreateDatasetQueryMetadataResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14289,8 +8075,8 @@ export const createDataStudioTableDiscardValue: API.OperationMethod<
   CreateDataStudioTableDiscardValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataStudioTableDiscardValueRequest,
-  output: CreateDataStudioTableDiscardValueResponse,
+  input: __S(105) as any as S.Schema<CreateDataStudioTableDiscardValueRequest>,
+  output: __S(28) as any as S.Schema<CreateDataStudioTableDiscardValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14304,8 +8090,8 @@ export const createDataStudioTableEdit: API.OperationMethod<
   CreateDataStudioTableEditError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataStudioTableEditRequest,
-  output: CreateDataStudioTableEditResponse,
+  input: __S(106) as any as S.Schema<CreateDataStudioTableEditRequest>,
+  output: __S(28) as any as S.Schema<CreateDataStudioTableEditResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14319,8 +8105,8 @@ export const createDataStudioTableRescanValue: API.OperationMethod<
   CreateDataStudioTableRescanValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataStudioTableRescanValueRequest,
-  output: CreateDataStudioTableRescanValueResponse,
+  input: __S(107) as any as S.Schema<CreateDataStudioTableRescanValueRequest>,
+  output: __S(28) as any as S.Schema<CreateDataStudioTableRescanValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14334,8 +8120,8 @@ export const createDataStudioTableSelection: API.OperationMethod<
   CreateDataStudioTableSelectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataStudioTableSelectionRequest,
-  output: CreateDataStudioTableSelectionResponse,
+  input: __S(108) as any as S.Schema<CreateDataStudioTableSelectionRequest>,
+  output: __S(28) as any as S.Schema<CreateDataStudioTableSelectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14349,8 +8135,8 @@ export const createDataStudioTableSyncSchema: API.OperationMethod<
   CreateDataStudioTableSyncSchemaError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDataStudioTableSyncSchemaRequest,
-  output: CreateDataStudioTableSyncSchemaResponse,
+  input: __S(109) as any as S.Schema<CreateDataStudioTableSyncSchemaRequest>,
+  output: __S(28) as any as S.Schema<CreateDataStudioTableSyncSchemaResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14364,8 +8150,8 @@ export const createDocument: API.OperationMethod<
   CreateDocumentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDocumentRequest,
-  output: CreateDocumentResponse,
+  input: __S(113) as any as S.Schema<CreateDocumentRequest>,
+  output: __S(20) as any as S.Schema<CreateDocumentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14379,8 +8165,8 @@ export const createDocumentCopy: API.OperationMethod<
   CreateDocumentCopyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDocumentCopyRequest,
-  output: CreateDocumentCopyResponse,
+  input: __S(114) as any as S.Schema<CreateDocumentCopyRequest>,
+  output: __S(20) as any as S.Schema<CreateDocumentCopyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14394,8 +8180,8 @@ export const createDocumentPublicLink: API.OperationMethod<
   CreateDocumentPublicLinkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDocumentPublicLinkRequest,
-  output: CreateDocumentPublicLinkResponse,
+  input: __S(115) as any as S.Schema<CreateDocumentPublicLinkRequest>,
+  output: __S(28) as any as S.Schema<CreateDocumentPublicLinkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14409,8 +8195,8 @@ export const createEeActionV2Execute: API.OperationMethod<
   CreateEeActionV2ExecuteError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeActionV2ExecuteRequest,
-  output: CreateEeActionV2ExecuteResponse,
+  input: __S(116) as any as S.Schema<CreateEeActionV2ExecuteRequest>,
+  output: __S(38) as any as S.Schema<CreateEeActionV2ExecuteResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14424,8 +8210,8 @@ export const createEeActionV2ExecuteBulk: API.OperationMethod<
   CreateEeActionV2ExecuteBulkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeActionV2ExecuteBulkRequest,
-  output: CreateEeActionV2ExecuteBulkResponse,
+  input: __S(118) as any as S.Schema<CreateEeActionV2ExecuteBulkRequest>,
+  output: __S(28) as any as S.Schema<CreateEeActionV2ExecuteBulkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14439,8 +8225,8 @@ export const createEeActionV2ExecuteForm: API.OperationMethod<
   CreateEeActionV2ExecuteFormError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeActionV2ExecuteFormRequest,
-  output: CreateEeActionV2ExecuteFormResponse,
+  input: __S(119) as any as S.Schema<CreateEeActionV2ExecuteFormRequest>,
+  output: __S(28) as any as S.Schema<CreateEeActionV2ExecuteFormResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14454,8 +8240,8 @@ export const createEeAiControlsPermissionsAdvanced: API.OperationMethod<
   CreateEeAiControlsPermissionsAdvancedError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeAiControlsPermissionsAdvancedRequest,
-  output: CreateEeAiControlsPermissionsAdvancedResponse,
+  input: __S(120) as any as S.Schema<CreateEeAiControlsPermissionsAdvancedRequest>,
+  output: __S(28) as any as S.Schema<CreateEeAiControlsPermissionsAdvancedResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14469,8 +8255,8 @@ export const createEeAuditAppAnalyticsDevExport: API.OperationMethod<
   CreateEeAuditAppAnalyticsDevExportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeAuditAppAnalyticsDevExportRequest,
-  output: CreateEeAuditAppAnalyticsDevExportResponse,
+  input: __S(121) as any as S.Schema<CreateEeAuditAppAnalyticsDevExportRequest>,
+  output: __S(28) as any as S.Schema<CreateEeAuditAppAnalyticsDevExportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14484,8 +8270,8 @@ export const createEeContentTranslationUploadDictionary: API.OperationMethod<
   CreateEeContentTranslationUploadDictionaryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeContentTranslationUploadDictionaryRequest,
-  output: CreateEeContentTranslationUploadDictionaryResponse,
+  input: __S(123) as any as S.Schema<CreateEeContentTranslationUploadDictionaryRequest>,
+  output: __S(28) as any as S.Schema<CreateEeContentTranslationUploadDictionaryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14499,8 +8285,8 @@ export const createEeCustomVizPlugin: API.OperationMethod<
   CreateEeCustomVizPluginError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeCustomVizPluginRequest,
-  output: CreateEeCustomVizPluginResponse,
+  input: __S(124) as any as S.Schema<CreateEeCustomVizPluginRequest>,
+  output: __S(38) as any as S.Schema<CreateEeCustomVizPluginResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14514,8 +8300,8 @@ export const createEeCustomVizPluginDev: API.OperationMethod<
   CreateEeCustomVizPluginDevError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeCustomVizPluginDevRequest,
-  output: CreateEeCustomVizPluginDevResponse,
+  input: __S(125) as any as S.Schema<CreateEeCustomVizPluginDevRequest>,
+  output: __S(28) as any as S.Schema<CreateEeCustomVizPluginDevResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14529,8 +8315,8 @@ export const createEeCustomVizPluginRefresh: API.OperationMethod<
   CreateEeCustomVizPluginRefreshError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeCustomVizPluginRefreshRequest,
-  output: CreateEeCustomVizPluginRefreshResponse,
+  input: __S(126) as any as S.Schema<CreateEeCustomVizPluginRefreshRequest>,
+  output: __S(28) as any as S.Schema<CreateEeCustomVizPluginRefreshResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14544,8 +8330,8 @@ export const createEeDatabaseReplicationConnectionDatabasePreview: API.Operation
   CreateEeDatabaseReplicationConnectionDatabasePreviewError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeDatabaseReplicationConnectionDatabasePreviewRequest,
-  output: CreateEeDatabaseReplicationConnectionDatabasePreviewResponse,
+  input: __S(128) as any as S.Schema<CreateEeDatabaseReplicationConnectionDatabasePreviewRequest>,
+  output: __S(70) as any as S.Schema<CreateEeDatabaseReplicationConnectionDatabasePreviewResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14559,8 +8345,8 @@ export const createEeDatabaseRoutingDestinationDatabase: API.OperationMethod<
   CreateEeDatabaseRoutingDestinationDatabaseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeDatabaseRoutingDestinationDatabaseRequest,
-  output: CreateEeDatabaseRoutingDestinationDatabaseResponse,
+  input: __S(131) as any as S.Schema<CreateEeDatabaseRoutingDestinationDatabaseRequest>,
+  output: __S(28) as any as S.Schema<CreateEeDatabaseRoutingDestinationDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14574,8 +8360,8 @@ export const createEeDataStudioTablePublishTable: API.OperationMethod<
   CreateEeDataStudioTablePublishTableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeDataStudioTablePublishTableRequest,
-  output: CreateEeDataStudioTablePublishTableResponse,
+  input: __S(132) as any as S.Schema<CreateEeDataStudioTablePublishTableRequest>,
+  output: __S(28) as any as S.Schema<CreateEeDataStudioTablePublishTableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14589,8 +8375,8 @@ export const createEeDataStudioTableUnpublishTable: API.OperationMethod<
   CreateEeDataStudioTableUnpublishTableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeDataStudioTableUnpublishTableRequest,
-  output: CreateEeDataStudioTableUnpublishTableResponse,
+  input: __S(133) as any as S.Schema<CreateEeDataStudioTableUnpublishTableRequest>,
+  output: __S(28) as any as S.Schema<CreateEeDataStudioTableUnpublishTableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14604,8 +8390,8 @@ export const createEeGsheetsConnection: API.OperationMethod<
   CreateEeGsheetsConnectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeGsheetsConnectionRequest,
-  output: CreateEeGsheetsConnectionResponse,
+  input: __S(134) as any as S.Schema<CreateEeGsheetsConnectionRequest>,
+  output: __S(28) as any as S.Schema<CreateEeGsheetsConnectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14619,8 +8405,8 @@ export const createEeGsheetsConnectionSync: API.OperationMethod<
   CreateEeGsheetsConnectionSyncError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeGsheetsConnectionSyncRequest,
-  output: CreateEeGsheetsConnectionSyncResponse,
+  input: __S(135) as any as S.Schema<CreateEeGsheetsConnectionSyncRequest>,
+  output: __S(28) as any as S.Schema<CreateEeGsheetsConnectionSyncResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14634,8 +8420,8 @@ export const createEeLibrary: API.OperationMethod<
   CreateEeLibraryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeLibraryRequest,
-  output: CreateEeLibraryResponse,
+  input: __S(136) as any as S.Schema<CreateEeLibraryRequest>,
+  output: __S(20) as any as S.Schema<CreateEeLibraryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14649,8 +8435,8 @@ export const createEeMfaAdminRemove: API.OperationMethod<
   CreateEeMfaAdminRemoveError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeMfaAdminRemoveRequest,
-  output: CreateEeMfaAdminRemoveResponse,
+  input: __S(137) as any as S.Schema<CreateEeMfaAdminRemoveRequest>,
+  output: __S(20) as any as S.Schema<CreateEeMfaAdminRemoveResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14664,8 +8450,8 @@ export const createEeMfaDisable: API.OperationMethod<
   CreateEeMfaDisableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeMfaDisableRequest,
-  output: CreateEeMfaDisableResponse,
+  input: __S(138) as any as S.Schema<CreateEeMfaDisableRequest>,
+  output: __S(20) as any as S.Schema<CreateEeMfaDisableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14679,8 +8465,8 @@ export const createEeMfaEnroll: API.OperationMethod<
   CreateEeMfaEnrollError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeMfaEnrollRequest,
-  output: CreateEeMfaEnrollResponse,
+  input: __S(139) as any as S.Schema<CreateEeMfaEnrollRequest>,
+  output: __S(20) as any as S.Schema<CreateEeMfaEnrollResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14694,8 +8480,8 @@ export const createEeMfaEnrollConfirm: API.OperationMethod<
   CreateEeMfaEnrollConfirmError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeMfaEnrollConfirmRequest,
-  output: CreateEeMfaEnrollConfirmResponse,
+  input: __S(140) as any as S.Schema<CreateEeMfaEnrollConfirmRequest>,
+  output: __S(28) as any as S.Schema<CreateEeMfaEnrollConfirmResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14709,8 +8495,8 @@ export const createEeMfaRecoveryCode: API.OperationMethod<
   CreateEeMfaRecoveryCodeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeMfaRecoveryCodeRequest,
-  output: CreateEeMfaRecoveryCodeResponse,
+  input: __S(141) as any as S.Schema<CreateEeMfaRecoveryCodeRequest>,
+  output: __S(38) as any as S.Schema<CreateEeMfaRecoveryCodeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14724,8 +8510,8 @@ export const createEeRemoteSyncCreateBranch: API.OperationMethod<
   CreateEeRemoteSyncCreateBranchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeRemoteSyncCreateBranchRequest,
-  output: CreateEeRemoteSyncCreateBranchResponse,
+  input: __S(142) as any as S.Schema<CreateEeRemoteSyncCreateBranchRequest>,
+  output: __S(28) as any as S.Schema<CreateEeRemoteSyncCreateBranchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14739,8 +8525,8 @@ export const createEeRemoteSyncCurrentTaskCancel: API.OperationMethod<
   CreateEeRemoteSyncCurrentTaskCancelError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeRemoteSyncCurrentTaskCancelRequest,
-  output: CreateEeRemoteSyncCurrentTaskCancelResponse,
+  input: __S(143) as any as S.Schema<CreateEeRemoteSyncCurrentTaskCancelRequest>,
+  output: __S(28) as any as S.Schema<CreateEeRemoteSyncCurrentTaskCancelResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14754,8 +8540,8 @@ export const createEeRemoteSyncExport: API.OperationMethod<
   CreateEeRemoteSyncExportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeRemoteSyncExportRequest,
-  output: CreateEeRemoteSyncExportResponse,
+  input: __S(144) as any as S.Schema<CreateEeRemoteSyncExportRequest>,
+  output: __S(28) as any as S.Schema<CreateEeRemoteSyncExportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14769,8 +8555,8 @@ export const createEeRemoteSyncImport: API.OperationMethod<
   CreateEeRemoteSyncImportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeRemoteSyncImportRequest,
-  output: CreateEeRemoteSyncImportResponse,
+  input: __S(145) as any as S.Schema<CreateEeRemoteSyncImportRequest>,
+  output: __S(28) as any as S.Schema<CreateEeRemoteSyncImportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14784,8 +8570,8 @@ export const createEeRemoteSyncStash: API.OperationMethod<
   CreateEeRemoteSyncStashError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeRemoteSyncStashRequest,
-  output: CreateEeRemoteSyncStashResponse,
+  input: __S(146) as any as S.Schema<CreateEeRemoteSyncStashRequest>,
+  output: __S(38) as any as S.Schema<CreateEeRemoteSyncStashResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14799,8 +8585,8 @@ export const createEeRemoteSyncTestConnection: API.OperationMethod<
   CreateEeRemoteSyncTestConnectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeRemoteSyncTestConnectionRequest,
-  output: CreateEeRemoteSyncTestConnectionResponse,
+  input: __S(147) as any as S.Schema<CreateEeRemoteSyncTestConnectionRequest>,
+  output: __S(28) as any as S.Schema<CreateEeRemoteSyncTestConnectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14814,8 +8600,8 @@ export const createEeReplacementCheckReplaceSource: API.OperationMethod<
   CreateEeReplacementCheckReplaceSourceError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeReplacementCheckReplaceSourceRequest,
-  output: CreateEeReplacementCheckReplaceSourceResponse,
+  input: __S(148) as any as S.Schema<CreateEeReplacementCheckReplaceSourceRequest>,
+  output: __S(28) as any as S.Schema<CreateEeReplacementCheckReplaceSourceResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14829,8 +8615,8 @@ export const createEeReplacementReplaceSource: API.OperationMethod<
   CreateEeReplacementReplaceSourceError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeReplacementReplaceSourceRequest,
-  output: CreateEeReplacementReplaceSourceResponse,
+  input: __S(149) as any as S.Schema<CreateEeReplacementReplaceSourceRequest>,
+  output: __S(28) as any as S.Schema<CreateEeReplacementReplaceSourceResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14844,8 +8630,8 @@ export const createEeReplacementRunCancel: API.OperationMethod<
   CreateEeReplacementRunCancelError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeReplacementRunCancelRequest,
-  output: CreateEeReplacementRunCancelResponse,
+  input: __S(150) as any as S.Schema<CreateEeReplacementRunCancelRequest>,
+  output: __S(28) as any as S.Schema<CreateEeReplacementRunCancelResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14859,8 +8645,8 @@ export const createEeScimGroup: API.OperationMethod<
   CreateEeScimGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeScimGroupRequest,
-  output: CreateEeScimGroupResponse,
+  input: __S(153) as any as S.Schema<CreateEeScimGroupRequest>,
+  output: __S(20) as any as S.Schema<CreateEeScimGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14874,8 +8660,8 @@ export const createEeScimKey: API.OperationMethod<
   CreateEeScimKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeScimKeyRequest,
-  output: CreateEeScimKeyResponse,
+  input: __S(154) as any as S.Schema<CreateEeScimKeyRequest>,
+  output: __S(20) as any as S.Schema<CreateEeScimKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14889,8 +8675,8 @@ export const createEeScimUser: API.OperationMethod<
   CreateEeScimUserError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeScimUserRequest,
-  output: CreateEeScimUserResponse,
+  input: __S(160) as any as S.Schema<CreateEeScimUserRequest>,
+  output: __S(20) as any as S.Schema<CreateEeScimUserResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14904,8 +8690,8 @@ export const createEeSecurityCenterAcknowledge: API.OperationMethod<
   CreateEeSecurityCenterAcknowledgeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeSecurityCenterAcknowledgeRequest,
-  output: CreateEeSecurityCenterAcknowledgeResponse,
+  input: __S(161) as any as S.Schema<CreateEeSecurityCenterAcknowledgeRequest>,
+  output: __S(28) as any as S.Schema<CreateEeSecurityCenterAcknowledgeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14919,8 +8705,8 @@ export const createEeSecurityCenterAcknowledge2: API.OperationMethod<
   CreateEeSecurityCenterAcknowledge2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeSecurityCenterAcknowledgeRequest2,
-  output: CreateEeSecurityCenterAcknowledge2Response,
+  input: __S(162) as any as S.Schema<CreateEeSecurityCenterAcknowledgeRequest2>,
+  output: __S(28) as any as S.Schema<CreateEeSecurityCenterAcknowledge2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14934,8 +8720,8 @@ export const createEeSecurityCenterSync: API.OperationMethod<
   CreateEeSecurityCenterSyncError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeSecurityCenterSyncRequest,
-  output: CreateEeSecurityCenterSyncResponse,
+  input: __S(163) as any as S.Schema<CreateEeSecurityCenterSyncRequest>,
+  output: __S(28) as any as S.Schema<CreateEeSecurityCenterSyncResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14949,8 +8735,8 @@ export const createEeSecurityCenterTestNotification: API.OperationMethod<
   CreateEeSecurityCenterTestNotificationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeSecurityCenterTestNotificationRequest,
-  output: CreateEeSecurityCenterTestNotificationResponse,
+  input: __S(165) as any as S.Schema<CreateEeSecurityCenterTestNotificationRequest>,
+  output: __S(28) as any as S.Schema<CreateEeSecurityCenterTestNotificationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14964,8 +8750,8 @@ export const createEeSerializationExport: API.OperationMethod<
   CreateEeSerializationExportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeSerializationExportRequest,
-  output: CreateEeSerializationExportResponse,
+  input: __S(167) as any as S.Schema<CreateEeSerializationExportRequest>,
+  output: __S(28) as any as S.Schema<CreateEeSerializationExportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14979,8 +8765,8 @@ export const createEeSerializationImport: API.OperationMethod<
   CreateEeSerializationImportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeSerializationImportRequest,
-  output: CreateEeSerializationImportResponse,
+  input: __S(169) as any as S.Schema<CreateEeSerializationImportRequest>,
+  output: __S(28) as any as S.Schema<CreateEeSerializationImportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -14994,8 +8780,8 @@ export const createEeSerializationMetadataExport: API.OperationMethod<
   CreateEeSerializationMetadataExportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeSerializationMetadataExportRequest,
-  output: CreateEeSerializationMetadataExportResponse,
+  input: __S(170) as any as S.Schema<CreateEeSerializationMetadataExportRequest>,
+  output: __S(28) as any as S.Schema<CreateEeSerializationMetadataExportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15009,8 +8795,8 @@ export const createEeSerializationMetadataImport: API.OperationMethod<
   CreateEeSerializationMetadataImportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeSerializationMetadataImportRequest,
-  output: CreateEeSerializationMetadataImportResponse,
+  input: __S(171) as any as S.Schema<CreateEeSerializationMetadataImportRequest>,
+  output: __S(28) as any as S.Schema<CreateEeSerializationMetadataImportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15024,8 +8810,8 @@ export const createEeSupportAccessGrant: API.OperationMethod<
   CreateEeSupportAccessGrantError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeSupportAccessGrantRequest,
-  output: CreateEeSupportAccessGrantResponse,
+  input: __S(172) as any as S.Schema<CreateEeSupportAccessGrantRequest>,
+  output: __S(28) as any as S.Schema<CreateEeSupportAccessGrantResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15039,8 +8825,8 @@ export const createEeTenant: API.OperationMethod<
   CreateEeTenantError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeTenantRequest,
-  output: CreateEeTenantResponse,
+  input: __S(173) as any as S.Schema<CreateEeTenantRequest>,
+  output: __S(20) as any as S.Schema<CreateEeTenantResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15054,8 +8840,8 @@ export const createEeTransformInspectQuery: API.OperationMethod<
   CreateEeTransformInspectQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeTransformInspectQueryRequest,
-  output: CreateEeTransformInspectQueryResponse,
+  input: __S(175) as any as S.Schema<CreateEeTransformInspectQueryRequest>,
+  output: __S(28) as any as S.Schema<CreateEeTransformInspectQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15069,8 +8855,8 @@ export const createEeTransformsPythonTestRun: API.OperationMethod<
   CreateEeTransformsPythonTestRunError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEeTransformsPythonTestRunRequest,
-  output: CreateEeTransformsPythonTestRunResponse,
+  input: __S(178) as any as S.Schema<CreateEeTransformsPythonTestRunRequest>,
+  output: __S(28) as any as S.Schema<CreateEeTransformsPythonTestRunResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15084,8 +8870,8 @@ export const createEidTranslationTranslate: API.OperationMethod<
   CreateEidTranslationTranslateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEidTranslationTranslateRequest,
-  output: CreateEidTranslationTranslateResponse,
+  input: __S(180) as any as S.Schema<CreateEidTranslationTranslateRequest>,
+  output: __S(28) as any as S.Schema<CreateEidTranslationTranslateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15099,8 +8885,8 @@ export const createEmailTest: API.OperationMethod<
   CreateEmailTestError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmailTestRequest,
-  output: CreateEmailTestResponse,
+  input: __S(181) as any as S.Schema<CreateEmailTestRequest>,
+  output: __S(20) as any as S.Schema<CreateEmailTestResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15114,8 +8900,8 @@ export const createEmbedMcpDrill: API.OperationMethod<
   CreateEmbedMcpDrillError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmbedMcpDrillRequest,
-  output: CreateEmbedMcpDrillResponse,
+  input: __S(182) as any as S.Schema<CreateEmbedMcpDrillRequest>,
+  output: __S(20) as any as S.Schema<CreateEmbedMcpDrillResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15129,8 +8915,8 @@ export const createEmbedMcpFeedback: API.OperationMethod<
   CreateEmbedMcpFeedbackError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmbedMcpFeedbackRequest,
-  output: CreateEmbedMcpFeedbackResponse,
+  input: __S(185) as any as S.Schema<CreateEmbedMcpFeedbackRequest>,
+  output: __S(20) as any as S.Schema<CreateEmbedMcpFeedbackResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15144,8 +8930,8 @@ export const createEmbedTheme: API.OperationMethod<
   CreateEmbedThemeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmbedThemeRequest,
-  output: CreateEmbedThemeResponse,
+  input: __S(186) as any as S.Schema<CreateEmbedThemeRequest>,
+  output: __S(20) as any as S.Schema<CreateEmbedThemeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15159,8 +8945,8 @@ export const createEmbedThemeCopy: API.OperationMethod<
   CreateEmbedThemeCopyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmbedThemeCopyRequest,
-  output: CreateEmbedThemeCopyResponse,
+  input: __S(187) as any as S.Schema<CreateEmbedThemeCopyRequest>,
+  output: __S(20) as any as S.Schema<CreateEmbedThemeCopyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15174,8 +8960,8 @@ export const createEmbedThemeSeedDefault: API.OperationMethod<
   CreateEmbedThemeSeedDefaultError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEmbedThemeSeedDefaultRequest,
-  output: CreateEmbedThemeSeedDefaultResponse,
+  input: __S(190) as any as S.Schema<CreateEmbedThemeSeedDefaultRequest>,
+  output: __S(28) as any as S.Schema<CreateEmbedThemeSeedDefaultResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15189,8 +8975,8 @@ export const createFieldDimension: API.OperationMethod<
   CreateFieldDimensionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFieldDimensionRequest,
-  output: CreateFieldDimensionResponse,
+  input: __S(191) as any as S.Schema<CreateFieldDimensionRequest>,
+  output: __S(20) as any as S.Schema<CreateFieldDimensionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15204,8 +8990,8 @@ export const createFieldDiscardValue: API.OperationMethod<
   CreateFieldDiscardValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFieldDiscardValueRequest,
-  output: CreateFieldDiscardValueResponse,
+  input: __S(192) as any as S.Schema<CreateFieldDiscardValueRequest>,
+  output: __S(38) as any as S.Schema<CreateFieldDiscardValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15219,8 +9005,8 @@ export const createFieldRescanValue: API.OperationMethod<
   CreateFieldRescanValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFieldRescanValueRequest,
-  output: CreateFieldRescanValueResponse,
+  input: __S(193) as any as S.Schema<CreateFieldRescanValueRequest>,
+  output: __S(20) as any as S.Schema<CreateFieldRescanValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15234,8 +9020,8 @@ export const createFieldTableIds: API.OperationMethod<
   CreateFieldTableIdsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFieldTableIdsRequest,
-  output: CreateFieldTableIdsResponse,
+  input: __S(194) as any as S.Schema<CreateFieldTableIdsRequest>,
+  output: __S(20) as any as S.Schema<CreateFieldTableIdsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15249,8 +9035,8 @@ export const createFieldValue: API.OperationMethod<
   CreateFieldValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFieldValueRequest,
-  output: CreateFieldValueResponse,
+  input: __S(196) as any as S.Schema<CreateFieldValueRequest>,
+  output: __S(20) as any as S.Schema<CreateFieldValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15264,8 +9050,8 @@ export const createFrontendError: API.OperationMethod<
   CreateFrontendErrorError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFrontendErrorRequest,
-  output: CreateFrontendErrorResponse,
+  input: __S(197) as any as S.Schema<CreateFrontendErrorRequest>,
+  output: __S(20) as any as S.Schema<CreateFrontendErrorResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15279,8 +9065,8 @@ export const createGlossary: API.OperationMethod<
   CreateGlossaryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateGlossaryRequest,
-  output: CreateGlossaryResponse,
+  input: __S(198) as any as S.Schema<CreateGlossaryRequest>,
+  output: __S(20) as any as S.Schema<CreateGlossaryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15294,8 +9080,8 @@ export const createKey: API.OperationMethod<
   CreateKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateKeyRequest,
-  output: CreateKeyResponse,
+  input: __S(199) as any as S.Schema<CreateKeyRequest>,
+  output: __S(20) as any as S.Schema<CreateKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15309,8 +9095,8 @@ export const createLlmExtractSource: API.OperationMethod<
   CreateLlmExtractSourceError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLlmExtractSourceRequest,
-  output: CreateLlmExtractSourceResponse,
+  input: __S(202) as any as S.Schema<CreateLlmExtractSourceRequest>,
+  output: __S(20) as any as S.Schema<CreateLlmExtractSourceResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15324,8 +9110,8 @@ export const createLlmGenerateSql: API.OperationMethod<
   CreateLlmGenerateSqlError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLlmGenerateSqlRequest,
-  output: CreateLlmGenerateSqlResponse,
+  input: __S(205) as any as S.Schema<CreateLlmGenerateSqlRequest>,
+  output: __S(20) as any as S.Schema<CreateLlmGenerateSqlResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15339,8 +9125,8 @@ export const createLoggerAdjustment: API.OperationMethod<
   CreateLoggerAdjustmentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLoggerAdjustmentRequest,
-  output: CreateLoggerAdjustmentResponse,
+  input: __S(206) as any as S.Schema<CreateLoggerAdjustmentRequest>,
+  output: __S(20) as any as S.Schema<CreateLoggerAdjustmentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15354,8 +9140,8 @@ export const createMeasure: API.OperationMethod<
   CreateMeasureError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMeasureRequest,
-  output: CreateMeasureResponse,
+  input: __S(207) as any as S.Schema<CreateMeasureRequest>,
+  output: __S(20) as any as S.Schema<CreateMeasureResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15369,8 +9155,8 @@ export const createMetabotAgentStreaming: API.OperationMethod<
   CreateMetabotAgentStreamingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMetabotAgentStreamingRequest,
-  output: CreateMetabotAgentStreamingResponse,
+  input: __S(215) as any as S.Schema<CreateMetabotAgentStreamingRequest>,
+  output: __S(28) as any as S.Schema<CreateMetabotAgentStreamingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15384,8 +9170,8 @@ export const createMetabotDocumentGenerateContent: API.OperationMethod<
   CreateMetabotDocumentGenerateContentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMetabotDocumentGenerateContentRequest,
-  output: CreateMetabotDocumentGenerateContentResponse,
+  input: __S(216) as any as S.Schema<CreateMetabotDocumentGenerateContentRequest>,
+  output: __S(28) as any as S.Schema<CreateMetabotDocumentGenerateContentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15399,8 +9185,8 @@ export const createMetabotFeedback: API.OperationMethod<
   CreateMetabotFeedbackError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMetabotFeedbackRequest,
-  output: CreateMetabotFeedbackResponse,
+  input: __S(217) as any as S.Schema<CreateMetabotFeedbackRequest>,
+  output: __S(20) as any as S.Schema<CreateMetabotFeedbackResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15414,8 +9200,8 @@ export const createMetabotMetabotPromptSuggestionsRegenerate: API.OperationMetho
   CreateMetabotMetabotPromptSuggestionsRegenerateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMetabotMetabotPromptSuggestionsRegenerateRequest,
-  output: CreateMetabotMetabotPromptSuggestionsRegenerateResponse,
+  input: __S(218) as any as S.Schema<CreateMetabotMetabotPromptSuggestionsRegenerateRequest>,
+  output: __S(28) as any as S.Schema<CreateMetabotMetabotPromptSuggestionsRegenerateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15429,8 +9215,8 @@ export const createMetabotSlackEvent: API.OperationMethod<
   CreateMetabotSlackEventError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMetabotSlackEventRequest,
-  output: CreateMetabotSlackEventResponse,
+  input: __S(219) as any as S.Schema<CreateMetabotSlackEventRequest>,
+  output: __S(38) as any as S.Schema<CreateMetabotSlackEventResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15444,8 +9230,8 @@ export const createMetabotSlackInteractive: API.OperationMethod<
   CreateMetabotSlackInteractiveError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMetabotSlackInteractiveRequest,
-  output: CreateMetabotSlackInteractiveResponse,
+  input: __S(220) as any as S.Schema<CreateMetabotSlackInteractiveRequest>,
+  output: __S(28) as any as S.Schema<CreateMetabotSlackInteractiveResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15459,8 +9245,8 @@ export const createMetabotSourceFeedback: API.OperationMethod<
   CreateMetabotSourceFeedbackError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMetabotSourceFeedbackRequest,
-  output: CreateMetabotSourceFeedbackResponse,
+  input: __S(221) as any as S.Schema<CreateMetabotSourceFeedbackRequest>,
+  output: __S(28) as any as S.Schema<CreateMetabotSourceFeedbackResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15474,8 +9260,8 @@ export const createMetricBreakoutValue: API.OperationMethod<
   CreateMetricBreakoutValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMetricBreakoutValueRequest,
-  output: CreateMetricBreakoutValueResponse,
+  input: __S(228) as any as S.Schema<CreateMetricBreakoutValueRequest>,
+  output: __S(28) as any as S.Schema<CreateMetricBreakoutValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15489,8 +9275,8 @@ export const createMetricDataset: API.OperationMethod<
   CreateMetricDatasetError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMetricDatasetRequest,
-  output: CreateMetricDatasetResponse,
+  input: __S(229) as any as S.Schema<CreateMetricDatasetRequest>,
+  output: __S(20) as any as S.Schema<CreateMetricDatasetResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15504,8 +9290,8 @@ export const createModelIndex: API.OperationMethod<
   CreateModelIndexError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateModelIndexRequest,
-  output: CreateModelIndexResponse,
+  input: __S(230) as any as S.Schema<CreateModelIndexRequest>,
+  output: __S(20) as any as S.Schema<CreateModelIndexResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15519,8 +9305,8 @@ export const createModerationReview: API.OperationMethod<
   CreateModerationReviewError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateModerationReviewRequest,
-  output: CreateModerationReviewResponse,
+  input: __S(231) as any as S.Schema<CreateModerationReviewRequest>,
+  output: __S(20) as any as S.Schema<CreateModerationReviewResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15534,8 +9320,8 @@ export const createMtGtap: API.OperationMethod<
   CreateMtGtapError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMtGtapRequest,
-  output: CreateMtGtapResponse,
+  input: __S(233) as any as S.Schema<CreateMtGtapRequest>,
+  output: __S(20) as any as S.Schema<CreateMtGtapResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15549,8 +9335,8 @@ export const createMtGtapValidate: API.OperationMethod<
   CreateMtGtapValidateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateMtGtapValidateRequest,
-  output: CreateMtGtapValidateResponse,
+  input: __S(234) as any as S.Schema<CreateMtGtapValidateRequest>,
+  output: __S(20) as any as S.Schema<CreateMtGtapValidateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15564,8 +9350,8 @@ export const createNativeQuerySnippet: API.OperationMethod<
   CreateNativeQuerySnippetError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNativeQuerySnippetRequest,
-  output: CreateNativeQuerySnippetResponse,
+  input: __S(235) as any as S.Schema<CreateNativeQuerySnippetRequest>,
+  output: __S(28) as any as S.Schema<CreateNativeQuerySnippetResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15579,8 +9365,8 @@ export const createNotification: API.OperationMethod<
   CreateNotificationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNotificationRequest,
-  output: CreateNotificationResponse,
+  input: __S(236) as any as S.Schema<CreateNotificationRequest>,
+  output: __S(20) as any as S.Schema<CreateNotificationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15594,8 +9380,8 @@ export const createNotificationAdminBulk: API.OperationMethod<
   CreateNotificationAdminBulkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNotificationAdminBulkRequest,
-  output: CreateNotificationAdminBulkResponse,
+  input: __S(237) as any as S.Schema<CreateNotificationAdminBulkRequest>,
+  output: __S(28) as any as S.Schema<CreateNotificationAdminBulkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15609,8 +9395,8 @@ export const createNotificationSend: API.OperationMethod<
   CreateNotificationSendError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNotificationSendRequest,
-  output: CreateNotificationSendResponse,
+  input: __S(238) as any as S.Schema<CreateNotificationSendRequest>,
+  output: __S(20) as any as S.Schema<CreateNotificationSendResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15624,8 +9410,8 @@ export const createNotificationSend2: API.OperationMethod<
   CreateNotificationSend2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNotificationSendRequest2,
-  output: CreateNotificationSend2Response,
+  input: __S(239) as any as S.Schema<CreateNotificationSendRequest2>,
+  output: __S(38) as any as S.Schema<CreateNotificationSend2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15639,8 +9425,8 @@ export const createNotificationUnsubscribe: API.OperationMethod<
   CreateNotificationUnsubscribeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNotificationUnsubscribeRequest,
-  output: CreateNotificationUnsubscribeResponse,
+  input: __S(240) as any as S.Schema<CreateNotificationUnsubscribeRequest>,
+  output: __S(28) as any as S.Schema<CreateNotificationUnsubscribeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15654,8 +9440,8 @@ export const createNotificationUnsubscribe2: API.OperationMethod<
   CreateNotificationUnsubscribe2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNotificationUnsubscribeRequest2,
-  output: CreateNotificationUnsubscribe2Response,
+  input: __S(241) as any as S.Schema<CreateNotificationUnsubscribeRequest2>,
+  output: __S(28) as any as S.Schema<CreateNotificationUnsubscribe2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15669,8 +9455,8 @@ export const createNotificationUnsubscribeUndo: API.OperationMethod<
   CreateNotificationUnsubscribeUndoError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNotificationUnsubscribeUndoRequest,
-  output: CreateNotificationUnsubscribeUndoResponse,
+  input: __S(242) as any as S.Schema<CreateNotificationUnsubscribeUndoRequest>,
+  output: __S(28) as any as S.Schema<CreateNotificationUnsubscribeUndoResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15684,8 +9470,8 @@ export const createNotifyDbAttachedDatawarehouse: API.OperationMethod<
   CreateNotifyDbAttachedDatawarehouseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNotifyDbAttachedDatawarehouseRequest,
-  output: CreateNotifyDbAttachedDatawarehouseResponse,
+  input: __S(243) as any as S.Schema<CreateNotifyDbAttachedDatawarehouseRequest>,
+  output: __S(28) as any as S.Schema<CreateNotifyDbAttachedDatawarehouseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15699,8 +9485,8 @@ export const createNotifyDbNewTable: API.OperationMethod<
   CreateNotifyDbNewTableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateNotifyDbNewTableRequest,
-  output: CreateNotifyDbNewTableResponse,
+  input: __S(244) as any as S.Schema<CreateNotifyDbNewTableRequest>,
+  output: __S(20) as any as S.Schema<CreateNotifyDbNewTableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15714,8 +9500,8 @@ export const createOsiAiContextReconcile: API.OperationMethod<
   CreateOsiAiContextReconcileError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateOsiAiContextReconcileRequest,
-  output: CreateOsiAiContextReconcileResponse,
+  input: __S(245) as any as S.Schema<CreateOsiAiContextReconcileRequest>,
+  output: __S(28) as any as S.Schema<CreateOsiAiContextReconcileResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15729,8 +9515,8 @@ export const createPermissionsGroup: API.OperationMethod<
   CreatePermissionsGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePermissionsGroupRequest,
-  output: CreatePermissionsGroupResponse,
+  input: __S(246) as any as S.Schema<CreatePermissionsGroupRequest>,
+  output: __S(20) as any as S.Schema<CreatePermissionsGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15744,8 +9530,8 @@ export const createPermissionsMembership: API.OperationMethod<
   CreatePermissionsMembershipError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePermissionsMembershipRequest,
-  output: CreatePermissionsMembershipResponse,
+  input: __S(247) as any as S.Schema<CreatePermissionsMembershipRequest>,
+  output: __S(28) as any as S.Schema<CreatePermissionsMembershipResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15759,8 +9545,8 @@ export const createPersistCardPersist: API.OperationMethod<
   CreatePersistCardPersistError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePersistCardPersistRequest,
-  output: CreatePersistCardPersistResponse,
+  input: __S(248) as any as S.Schema<CreatePersistCardPersistRequest>,
+  output: __S(28) as any as S.Schema<CreatePersistCardPersistResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15774,8 +9560,8 @@ export const createPersistCardRefresh: API.OperationMethod<
   CreatePersistCardRefreshError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePersistCardRefreshRequest,
-  output: CreatePersistCardRefreshResponse,
+  input: __S(249) as any as S.Schema<CreatePersistCardRefreshRequest>,
+  output: __S(28) as any as S.Schema<CreatePersistCardRefreshResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15789,8 +9575,8 @@ export const createPersistCardUnpersist: API.OperationMethod<
   CreatePersistCardUnpersistError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePersistCardUnpersistRequest,
-  output: CreatePersistCardUnpersistResponse,
+  input: __S(250) as any as S.Schema<CreatePersistCardUnpersistRequest>,
+  output: __S(28) as any as S.Schema<CreatePersistCardUnpersistResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15804,8 +9590,8 @@ export const createPersistDatabasePersist: API.OperationMethod<
   CreatePersistDatabasePersistError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePersistDatabasePersistRequest,
-  output: CreatePersistDatabasePersistResponse,
+  input: __S(251) as any as S.Schema<CreatePersistDatabasePersistRequest>,
+  output: __S(28) as any as S.Schema<CreatePersistDatabasePersistResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15819,8 +9605,8 @@ export const createPersistDatabaseUnpersist: API.OperationMethod<
   CreatePersistDatabaseUnpersistError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePersistDatabaseUnpersistRequest,
-  output: CreatePersistDatabaseUnpersistResponse,
+  input: __S(252) as any as S.Schema<CreatePersistDatabaseUnpersistRequest>,
+  output: __S(28) as any as S.Schema<CreatePersistDatabaseUnpersistResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15834,8 +9620,8 @@ export const createPersistDisable: API.OperationMethod<
   CreatePersistDisableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePersistDisableRequest,
-  output: CreatePersistDisableResponse,
+  input: __S(253) as any as S.Schema<CreatePersistDisableRequest>,
+  output: __S(20) as any as S.Schema<CreatePersistDisableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15849,8 +9635,8 @@ export const createPersistEnable: API.OperationMethod<
   CreatePersistEnableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePersistEnableRequest,
-  output: CreatePersistEnableResponse,
+  input: __S(254) as any as S.Schema<CreatePersistEnableRequest>,
+  output: __S(20) as any as S.Schema<CreatePersistEnableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15864,8 +9650,8 @@ export const createPersistSetRefreshSchedule: API.OperationMethod<
   CreatePersistSetRefreshScheduleError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePersistSetRefreshScheduleRequest,
-  output: CreatePersistSetRefreshScheduleResponse,
+  input: __S(255) as any as S.Schema<CreatePersistSetRefreshScheduleRequest>,
+  output: __S(28) as any as S.Schema<CreatePersistSetRefreshScheduleResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15879,8 +9665,8 @@ export const createPremiumFeaturesTokenRefresh: API.OperationMethod<
   CreatePremiumFeaturesTokenRefreshError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePremiumFeaturesTokenRefreshRequest,
-  output: CreatePremiumFeaturesTokenRefreshResponse,
+  input: __S(256) as any as S.Schema<CreatePremiumFeaturesTokenRefreshRequest>,
+  output: __S(28) as any as S.Schema<CreatePremiumFeaturesTokenRefreshResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15894,8 +9680,8 @@ export const createProductFeedback: API.OperationMethod<
   CreateProductFeedbackError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProductFeedbackRequest,
-  output: CreateProductFeedbackResponse,
+  input: __S(257) as any as S.Schema<CreateProductFeedbackRequest>,
+  output: __S(20) as any as S.Schema<CreateProductFeedbackResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15909,8 +9695,8 @@ export const createPulse: API.OperationMethod<
   CreatePulseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePulseRequest,
-  output: CreatePulseResponse,
+  input: __S(258) as any as S.Schema<CreatePulseRequest>,
+  output: __S(20) as any as S.Schema<CreatePulseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15924,8 +9710,8 @@ export const createPulseTest: API.OperationMethod<
   CreatePulseTestError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePulseTestRequest,
-  output: CreatePulseTestResponse,
+  input: __S(259) as any as S.Schema<CreatePulseTestRequest>,
+  output: __S(20) as any as S.Schema<CreatePulseTestResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15939,8 +9725,8 @@ export const createPulseUnsubscribe: API.OperationMethod<
   CreatePulseUnsubscribeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePulseUnsubscribeRequest,
-  output: CreatePulseUnsubscribeResponse,
+  input: __S(260) as any as S.Schema<CreatePulseUnsubscribeRequest>,
+  output: __S(20) as any as S.Schema<CreatePulseUnsubscribeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15954,8 +9740,8 @@ export const createPulseUnsubscribeUndo: API.OperationMethod<
   CreatePulseUnsubscribeUndoError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreatePulseUnsubscribeUndoRequest,
-  output: CreatePulseUnsubscribeUndoResponse,
+  input: __S(261) as any as S.Schema<CreatePulseUnsubscribeUndoRequest>,
+  output: __S(28) as any as S.Schema<CreatePulseUnsubscribeUndoResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15969,8 +9755,8 @@ export const createRevisionRevert: API.OperationMethod<
   CreateRevisionRevertError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRevisionRevertRequest,
-  output: CreateRevisionRevertResponse,
+  input: __S(262) as any as S.Schema<CreateRevisionRevertRequest>,
+  output: __S(20) as any as S.Schema<CreateRevisionRevertResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15984,8 +9770,8 @@ export const createSearchForceReindex: API.OperationMethod<
   CreateSearchForceReindexError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSearchForceReindexRequest,
-  output: CreateSearchForceReindexResponse,
+  input: __S(263) as any as S.Schema<CreateSearchForceReindexRequest>,
+  output: __S(28) as any as S.Schema<CreateSearchForceReindexResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -15999,8 +9785,8 @@ export const createSearchReInit: API.OperationMethod<
   CreateSearchReInitError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSearchReInitRequest,
-  output: CreateSearchReInitResponse,
+  input: __S(264) as any as S.Schema<CreateSearchReInitRequest>,
+  output: __S(20) as any as S.Schema<CreateSearchReInitResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16014,8 +9800,8 @@ export const createSegment: API.OperationMethod<
   CreateSegmentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSegmentRequest,
-  output: CreateSegmentResponse,
+  input: __S(265) as any as S.Schema<CreateSegmentRequest>,
+  output: __S(20) as any as S.Schema<CreateSegmentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16029,8 +9815,8 @@ export const createSession: API.OperationMethod<
   CreateSessionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSessionRequest,
-  output: CreateSessionResponse,
+  input: __S(266) as any as S.Schema<CreateSessionRequest>,
+  output: __S(20) as any as S.Schema<CreateSessionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16044,8 +9830,8 @@ export const createSessionForgotPassword: API.OperationMethod<
   CreateSessionForgotPasswordError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSessionForgotPasswordRequest,
-  output: CreateSessionForgotPasswordResponse,
+  input: __S(267) as any as S.Schema<CreateSessionForgotPasswordRequest>,
+  output: __S(28) as any as S.Schema<CreateSessionForgotPasswordResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16059,8 +9845,8 @@ export const createSessionGoogleAuth: API.OperationMethod<
   CreateSessionGoogleAuthError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSessionGoogleAuthRequest,
-  output: CreateSessionGoogleAuthResponse,
+  input: __S(268) as any as S.Schema<CreateSessionGoogleAuthRequest>,
+  output: __S(38) as any as S.Schema<CreateSessionGoogleAuthResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16074,8 +9860,8 @@ export const createSessionMfaSendEmailOtp: API.OperationMethod<
   CreateSessionMfaSendEmailOtpError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSessionMfaSendEmailOtpRequest,
-  output: CreateSessionMfaSendEmailOtpResponse,
+  input: __S(269) as any as S.Schema<CreateSessionMfaSendEmailOtpRequest>,
+  output: __S(28) as any as S.Schema<CreateSessionMfaSendEmailOtpResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16089,8 +9875,8 @@ export const createSessionMfaVerify: API.OperationMethod<
   CreateSessionMfaVerifyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSessionMfaVerifyRequest,
-  output: CreateSessionMfaVerifyResponse,
+  input: __S(270) as any as S.Schema<CreateSessionMfaVerifyRequest>,
+  output: __S(20) as any as S.Schema<CreateSessionMfaVerifyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16104,8 +9890,8 @@ export const createSessionPasswordCheck: API.OperationMethod<
   CreateSessionPasswordCheckError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSessionPasswordCheckRequest,
-  output: CreateSessionPasswordCheckResponse,
+  input: __S(271) as any as S.Schema<CreateSessionPasswordCheckRequest>,
+  output: __S(28) as any as S.Schema<CreateSessionPasswordCheckResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16119,8 +9905,8 @@ export const createSessionResetPassword: API.OperationMethod<
   CreateSessionResetPasswordError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSessionResetPasswordRequest,
-  output: CreateSessionResetPasswordResponse,
+  input: __S(272) as any as S.Schema<CreateSessionResetPasswordRequest>,
+  output: __S(28) as any as S.Schema<CreateSessionResetPasswordResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16134,8 +9920,8 @@ export const createSetup: API.OperationMethod<
   CreateSetupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSetupRequest,
-  output: CreateSetupResponse,
+  input: __S(275) as any as S.Schema<CreateSetupRequest>,
+  output: __S(20) as any as S.Schema<CreateSetupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16149,8 +9935,8 @@ export const createSlackBugReport: API.OperationMethod<
   CreateSlackBugReportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSlackBugReportRequest,
-  output: CreateSlackBugReportResponse,
+  input: __S(277) as any as S.Schema<CreateSlackBugReportRequest>,
+  output: __S(20) as any as S.Schema<CreateSlackBugReportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16164,8 +9950,8 @@ export const createTableAppendCsv: API.OperationMethod<
   CreateTableAppendCsvError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTableAppendCsvRequest,
-  output: CreateTableAppendCsvResponse,
+  input: __S(279) as any as S.Schema<CreateTableAppendCsvRequest>,
+  output: __S(20) as any as S.Schema<CreateTableAppendCsvResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16179,8 +9965,8 @@ export const createTableDiscardValue: API.OperationMethod<
   CreateTableDiscardValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTableDiscardValueRequest,
-  output: CreateTableDiscardValueResponse,
+  input: __S(280) as any as S.Schema<CreateTableDiscardValueRequest>,
+  output: __S(38) as any as S.Schema<CreateTableDiscardValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16194,8 +9980,8 @@ export const createTableReplaceCsv: API.OperationMethod<
   CreateTableReplaceCsvError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTableReplaceCsvRequest,
-  output: CreateTableReplaceCsvResponse,
+  input: __S(281) as any as S.Schema<CreateTableReplaceCsvRequest>,
+  output: __S(20) as any as S.Schema<CreateTableReplaceCsvResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16209,8 +9995,8 @@ export const createTableRescanValue: API.OperationMethod<
   CreateTableRescanValueError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTableRescanValueRequest,
-  output: CreateTableRescanValueResponse,
+  input: __S(282) as any as S.Schema<CreateTableRescanValueRequest>,
+  output: __S(20) as any as S.Schema<CreateTableRescanValueResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16224,8 +10010,8 @@ export const createTableSyncSchema: API.OperationMethod<
   CreateTableSyncSchemaError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTableSyncSchemaRequest,
-  output: CreateTableSyncSchemaResponse,
+  input: __S(283) as any as S.Schema<CreateTableSyncSchemaRequest>,
+  output: __S(20) as any as S.Schema<CreateTableSyncSchemaResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16239,8 +10025,8 @@ export const createTimeline: API.OperationMethod<
   CreateTimelineError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTimelineRequest,
-  output: CreateTimelineResponse,
+  input: __S(284) as any as S.Schema<CreateTimelineRequest>,
+  output: __S(20) as any as S.Schema<CreateTimelineResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16254,8 +10040,8 @@ export const createTimelineEvent: API.OperationMethod<
   CreateTimelineEventError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTimelineEventRequest,
-  output: CreateTimelineEventResponse,
+  input: __S(285) as any as S.Schema<CreateTimelineEventRequest>,
+  output: __S(20) as any as S.Schema<CreateTimelineEventResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16269,8 +10055,8 @@ export const createTransform: API.OperationMethod<
   CreateTransformError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTransformRequest,
-  output: CreateTransformResponse,
+  input: __S(286) as any as S.Schema<CreateTransformRequest>,
+  output: __S(20) as any as S.Schema<CreateTransformResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16284,8 +10070,8 @@ export const createTransformCancel: API.OperationMethod<
   CreateTransformCancelError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTransformCancelRequest,
-  output: CreateTransformCancelResponse,
+  input: __S(287) as any as S.Schema<CreateTransformCancelRequest>,
+  output: __S(20) as any as S.Schema<CreateTransformCancelResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16299,8 +10085,8 @@ export const createTransformJob: API.OperationMethod<
   CreateTransformJobError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTransformJobRequest,
-  output: CreateTransformJobResponse,
+  input: __S(288) as any as S.Schema<CreateTransformJobRequest>,
+  output: __S(20) as any as S.Schema<CreateTransformJobResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16314,8 +10100,8 @@ export const createTransformJobRun: API.OperationMethod<
   CreateTransformJobRunError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTransformJobRunRequest,
-  output: CreateTransformJobRunResponse,
+  input: __S(289) as any as S.Schema<CreateTransformJobRunRequest>,
+  output: __S(20) as any as S.Schema<CreateTransformJobRunResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16329,8 +10115,8 @@ export const createTransformResetCheckpoint: API.OperationMethod<
   CreateTransformResetCheckpointError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTransformResetCheckpointRequest,
-  output: CreateTransformResetCheckpointResponse,
+  input: __S(290) as any as S.Schema<CreateTransformResetCheckpointRequest>,
+  output: __S(28) as any as S.Schema<CreateTransformResetCheckpointResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16344,8 +10130,8 @@ export const createTransformRun: API.OperationMethod<
   CreateTransformRunError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTransformRunRequest,
-  output: CreateTransformRunResponse,
+  input: __S(291) as any as S.Schema<CreateTransformRunRequest>,
+  output: __S(20) as any as S.Schema<CreateTransformRunResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16359,8 +10145,8 @@ export const createTransformTag: API.OperationMethod<
   CreateTransformTagError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTransformTagRequest,
-  output: CreateTransformTagResponse,
+  input: __S(292) as any as S.Schema<CreateTransformTagRequest>,
+  output: __S(20) as any as S.Schema<CreateTransformTagResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16374,8 +10160,8 @@ export const createUploadCsv: API.OperationMethod<
   CreateUploadCsvError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUploadCsvRequest,
-  output: CreateUploadCsvResponse,
+  input: __S(293) as any as S.Schema<CreateUploadCsvRequest>,
+  output: __S(20) as any as S.Schema<CreateUploadCsvResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16389,8 +10175,8 @@ export const createUser: API.OperationMethod<
   CreateUserError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUserRequest,
-  output: CreateUserResponse,
+  input: __S(297) as any as S.Schema<CreateUserRequest>,
+  output: __S(20) as any as S.Schema<CreateUserResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16404,8 +10190,8 @@ export const createUserPasswordResetUrl: API.OperationMethod<
   CreateUserPasswordResetUrlError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateUserPasswordResetUrlRequest,
-  output: CreateUserPasswordResetUrlResponse,
+  input: __S(298) as any as S.Schema<CreateUserPasswordResetUrlRequest>,
+  output: __S(28) as any as S.Schema<CreateUserPasswordResetUrlResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16419,8 +10205,8 @@ export const deleteAction: API.OperationMethod<
   DeleteActionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteActionRequest,
-  output: DeleteActionResponse,
+  input: __S(299) as any as S.Schema<DeleteActionRequest>,
+  output: __S(20) as any as S.Schema<DeleteActionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16434,8 +10220,8 @@ export const deleteActionPublicLink: API.OperationMethod<
   DeleteActionPublicLinkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteActionPublicLinkRequest,
-  output: DeleteActionPublicLinkResponse,
+  input: __S(300) as any as S.Schema<DeleteActionPublicLinkRequest>,
+  output: __S(20) as any as S.Schema<DeleteActionPublicLinkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16449,8 +10235,8 @@ export const deleteAlertSubscription: API.OperationMethod<
   DeleteAlertSubscriptionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAlertSubscriptionRequest,
-  output: DeleteAlertSubscriptionResponse,
+  input: __S(301) as any as S.Schema<DeleteAlertSubscriptionRequest>,
+  output: __S(38) as any as S.Schema<DeleteAlertSubscriptionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16464,8 +10250,8 @@ export const deleteBookmark: API.OperationMethod<
   DeleteBookmarkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteBookmarkRequest,
-  output: DeleteBookmarkResponse,
+  input: __S(302) as any as S.Schema<DeleteBookmarkRequest>,
+  output: __S(20) as any as S.Schema<DeleteBookmarkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16479,8 +10265,8 @@ export const deleteCache: API.OperationMethod<
   DeleteCacheError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCacheRequest,
-  output: DeleteCacheResponse,
+  input: __S(303) as any as S.Schema<DeleteCacheRequest>,
+  output: __S(20) as any as S.Schema<DeleteCacheResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16494,8 +10280,8 @@ export const deleteCard: API.OperationMethod<
   DeleteCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCardRequest,
-  output: DeleteCardResponse,
+  input: __S(304) as any as S.Schema<DeleteCardRequest>,
+  output: __S(20) as any as S.Schema<DeleteCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16509,8 +10295,8 @@ export const deleteCardPublicLink: API.OperationMethod<
   DeleteCardPublicLinkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCardPublicLinkRequest,
-  output: DeleteCardPublicLinkResponse,
+  input: __S(305) as any as S.Schema<DeleteCardPublicLinkRequest>,
+  output: __S(20) as any as S.Schema<DeleteCardPublicLinkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16524,8 +10310,8 @@ export const deleteCollection: API.OperationMethod<
   DeleteCollectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCollectionRequest,
-  output: DeleteCollectionResponse,
+  input: __S(306) as any as S.Schema<DeleteCollectionRequest>,
+  output: __S(20) as any as S.Schema<DeleteCollectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16539,8 +10325,8 @@ export const deleteComment: API.OperationMethod<
   DeleteCommentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCommentRequest,
-  output: DeleteCommentResponse,
+  input: __S(307) as any as S.Schema<DeleteCommentRequest>,
+  output: __S(20) as any as S.Schema<DeleteCommentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16554,8 +10340,8 @@ export const deleteDashboard: API.OperationMethod<
   DeleteDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDashboardRequest,
-  output: DeleteDashboardResponse,
+  input: __S(308) as any as S.Schema<DeleteDashboardRequest>,
+  output: __S(20) as any as S.Schema<DeleteDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16569,8 +10355,8 @@ export const deleteDashboardPublicLink: API.OperationMethod<
   DeleteDashboardPublicLinkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDashboardPublicLinkRequest,
-  output: DeleteDashboardPublicLinkResponse,
+  input: __S(309) as any as S.Schema<DeleteDashboardPublicLinkRequest>,
+  output: __S(28) as any as S.Schema<DeleteDashboardPublicLinkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16584,8 +10370,8 @@ export const deleteDatabase: API.OperationMethod<
   DeleteDatabaseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDatabaseRequest,
-  output: DeleteDatabaseResponse,
+  input: __S(310) as any as S.Schema<DeleteDatabaseRequest>,
+  output: __S(20) as any as S.Schema<DeleteDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16599,8 +10385,8 @@ export const deleteDocument: API.OperationMethod<
   DeleteDocumentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDocumentRequest,
-  output: DeleteDocumentResponse,
+  input: __S(311) as any as S.Schema<DeleteDocumentRequest>,
+  output: __S(20) as any as S.Schema<DeleteDocumentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16614,8 +10400,8 @@ export const deleteDocumentPublicLink: API.OperationMethod<
   DeleteDocumentPublicLinkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDocumentPublicLinkRequest,
-  output: DeleteDocumentPublicLinkResponse,
+  input: __S(312) as any as S.Schema<DeleteDocumentPublicLinkRequest>,
+  output: __S(28) as any as S.Schema<DeleteDocumentPublicLinkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16629,8 +10415,8 @@ export const deleteEeAdvancedPermissionsImpersonation: API.OperationMethod<
   DeleteEeAdvancedPermissionsImpersonationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEeAdvancedPermissionsImpersonationRequest,
-  output: DeleteEeAdvancedPermissionsImpersonationResponse,
+  input: __S(313) as any as S.Schema<DeleteEeAdvancedPermissionsImpersonationRequest>,
+  output: __S(28) as any as S.Schema<DeleteEeAdvancedPermissionsImpersonationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16644,8 +10430,8 @@ export const deleteEeAiControlsPermissionsAdvanced: API.OperationMethod<
   DeleteEeAiControlsPermissionsAdvancedError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEeAiControlsPermissionsAdvancedRequest,
-  output: DeleteEeAiControlsPermissionsAdvancedResponse,
+  input: __S(314) as any as S.Schema<DeleteEeAiControlsPermissionsAdvancedRequest>,
+  output: __S(28) as any as S.Schema<DeleteEeAiControlsPermissionsAdvancedResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16659,8 +10445,8 @@ export const deleteEeAuditAppUserSubscriptions: API.OperationMethod<
   DeleteEeAuditAppUserSubscriptionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEeAuditAppUserSubscriptionsRequest,
-  output: DeleteEeAuditAppUserSubscriptionsResponse,
+  input: __S(315) as any as S.Schema<DeleteEeAuditAppUserSubscriptionsRequest>,
+  output: __S(28) as any as S.Schema<DeleteEeAuditAppUserSubscriptionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16674,8 +10460,8 @@ export const deleteEeCloudAddOns: API.OperationMethod<
   DeleteEeCloudAddOnsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEeCloudAddOnsRequest,
-  output: DeleteEeCloudAddOnsResponse,
+  input: __S(316) as any as S.Schema<DeleteEeCloudAddOnsRequest>,
+  output: __S(20) as any as S.Schema<DeleteEeCloudAddOnsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16689,8 +10475,8 @@ export const deleteEeCustomVizPlugin: API.OperationMethod<
   DeleteEeCustomVizPluginError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEeCustomVizPluginRequest,
-  output: DeleteEeCustomVizPluginResponse,
+  input: __S(317) as any as S.Schema<DeleteEeCustomVizPluginRequest>,
+  output: __S(38) as any as S.Schema<DeleteEeCustomVizPluginResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16704,8 +10490,8 @@ export const deleteEeDatabaseReplicationConnectionDatabase: API.OperationMethod<
   DeleteEeDatabaseReplicationConnectionDatabaseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEeDatabaseReplicationConnectionDatabaseRequest,
-  output: DeleteEeDatabaseReplicationConnectionDatabaseResponse,
+  input: __S(318) as any as S.Schema<DeleteEeDatabaseReplicationConnectionDatabaseRequest>,
+  output: __S(28) as any as S.Schema<DeleteEeDatabaseReplicationConnectionDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16719,8 +10505,8 @@ export const deleteEeEmailOverride: API.OperationMethod<
   DeleteEeEmailOverrideError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEeEmailOverrideRequest,
-  output: DeleteEeEmailOverrideResponse,
+  input: __S(319) as any as S.Schema<DeleteEeEmailOverrideRequest>,
+  output: __S(20) as any as S.Schema<DeleteEeEmailOverrideResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16734,8 +10520,8 @@ export const deleteEeGsheetsConnection: API.OperationMethod<
   DeleteEeGsheetsConnectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEeGsheetsConnectionRequest,
-  output: DeleteEeGsheetsConnectionResponse,
+  input: __S(320) as any as S.Schema<DeleteEeGsheetsConnectionRequest>,
+  output: __S(28) as any as S.Schema<DeleteEeGsheetsConnectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16749,8 +10535,8 @@ export const deleteEeScimGroup: API.OperationMethod<
   DeleteEeScimGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEeScimGroupRequest,
-  output: DeleteEeScimGroupResponse,
+  input: __S(321) as any as S.Schema<DeleteEeScimGroupRequest>,
+  output: __S(20) as any as S.Schema<DeleteEeScimGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16764,8 +10550,8 @@ export const deleteEeUploadManagementTable: API.OperationMethod<
   DeleteEeUploadManagementTableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEeUploadManagementTableRequest,
-  output: DeleteEeUploadManagementTableResponse,
+  input: __S(322) as any as S.Schema<DeleteEeUploadManagementTableRequest>,
+  output: __S(28) as any as S.Schema<DeleteEeUploadManagementTableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16779,8 +10565,8 @@ export const deleteEmail: API.OperationMethod<
   DeleteEmailError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmailRequest,
-  output: DeleteEmailResponse,
+  input: __S(323) as any as S.Schema<DeleteEmailRequest>,
+  output: __S(20) as any as S.Schema<DeleteEmailResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16794,8 +10580,8 @@ export const deleteEmbedTheme: API.OperationMethod<
   DeleteEmbedThemeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEmbedThemeRequest,
-  output: DeleteEmbedThemeResponse,
+  input: __S(324) as any as S.Schema<DeleteEmbedThemeRequest>,
+  output: __S(20) as any as S.Schema<DeleteEmbedThemeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16809,8 +10595,8 @@ export const deleteFieldDimension: API.OperationMethod<
   DeleteFieldDimensionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFieldDimensionRequest,
-  output: DeleteFieldDimensionResponse,
+  input: __S(325) as any as S.Schema<DeleteFieldDimensionRequest>,
+  output: __S(20) as any as S.Schema<DeleteFieldDimensionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16824,8 +10610,8 @@ export const deleteGlossary: API.OperationMethod<
   DeleteGlossaryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteGlossaryRequest,
-  output: DeleteGlossaryResponse,
+  input: __S(326) as any as S.Schema<DeleteGlossaryRequest>,
+  output: __S(20) as any as S.Schema<DeleteGlossaryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16839,8 +10625,8 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteKeyRequest,
-  output: DeleteKeyResponse,
+  input: __S(327) as any as S.Schema<DeleteKeyRequest>,
+  output: __S(20) as any as S.Schema<DeleteKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16854,8 +10640,8 @@ export const deleteLoggerAdjustment: API.OperationMethod<
   DeleteLoggerAdjustmentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLoggerAdjustmentRequest,
-  output: DeleteLoggerAdjustmentResponse,
+  input: __S(328) as any as S.Schema<DeleteLoggerAdjustmentRequest>,
+  output: __S(20) as any as S.Schema<DeleteLoggerAdjustmentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16869,8 +10655,8 @@ export const deleteMetabotMetabotPromptSuggestions: API.OperationMethod<
   DeleteMetabotMetabotPromptSuggestionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMetabotMetabotPromptSuggestionsRequest,
-  output: DeleteMetabotMetabotPromptSuggestionsResponse,
+  input: __S(329) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsRequest>,
+  output: __S(28) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16884,8 +10670,8 @@ export const deleteMetabotMetabotPromptSuggestionsPrompt: API.OperationMethod<
   DeleteMetabotMetabotPromptSuggestionsPromptError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMetabotMetabotPromptSuggestionsPromptRequest,
-  output: DeleteMetabotMetabotPromptSuggestionsPromptResponse,
+  input: __S(330) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsPromptRequest>,
+  output: __S(28) as any as S.Schema<DeleteMetabotMetabotPromptSuggestionsPromptResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16899,8 +10685,8 @@ export const deleteModelIndex: API.OperationMethod<
   DeleteModelIndexError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteModelIndexRequest,
-  output: DeleteModelIndexResponse,
+  input: __S(331) as any as S.Schema<DeleteModelIndexRequest>,
+  output: __S(20) as any as S.Schema<DeleteModelIndexResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16914,8 +10700,8 @@ export const deleteMtGtap: API.OperationMethod<
   DeleteMtGtapError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteMtGtapRequest,
-  output: DeleteMtGtapResponse,
+  input: __S(332) as any as S.Schema<DeleteMtGtapRequest>,
+  output: __S(20) as any as S.Schema<DeleteMtGtapResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16929,8 +10715,8 @@ export const deleteOsiAiContext: API.OperationMethod<
   DeleteOsiAiContextError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOsiAiContextRequest,
-  output: DeleteOsiAiContextResponse,
+  input: __S(333) as any as S.Schema<DeleteOsiAiContextRequest>,
+  output: __S(20) as any as S.Schema<DeleteOsiAiContextResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16944,8 +10730,8 @@ export const deletePermissionsGroup: API.OperationMethod<
   DeletePermissionsGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePermissionsGroupRequest,
-  output: DeletePermissionsGroupResponse,
+  input: __S(334) as any as S.Schema<DeletePermissionsGroupRequest>,
+  output: __S(20) as any as S.Schema<DeletePermissionsGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16959,8 +10745,8 @@ export const deletePermissionsMembership: API.OperationMethod<
   DeletePermissionsMembershipError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePermissionsMembershipRequest,
-  output: DeletePermissionsMembershipResponse,
+  input: __S(335) as any as S.Schema<DeletePermissionsMembershipRequest>,
+  output: __S(28) as any as S.Schema<DeletePermissionsMembershipResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16974,8 +10760,8 @@ export const deletePulseSubscription: API.OperationMethod<
   DeletePulseSubscriptionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePulseSubscriptionRequest,
-  output: DeletePulseSubscriptionResponse,
+  input: __S(336) as any as S.Schema<DeletePulseSubscriptionRequest>,
+  output: __S(38) as any as S.Schema<DeletePulseSubscriptionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -16989,8 +10775,8 @@ export const deleteSegment: API.OperationMethod<
   DeleteSegmentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSegmentRequest,
-  output: DeleteSegmentResponse,
+  input: __S(337) as any as S.Schema<DeleteSegmentRequest>,
+  output: __S(20) as any as S.Schema<DeleteSegmentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17004,8 +10790,8 @@ export const deleteSession: API.OperationMethod<
   DeleteSessionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSessionRequest,
-  output: DeleteSessionResponse,
+  input: __S(338) as any as S.Schema<DeleteSessionRequest>,
+  output: __S(20) as any as S.Schema<DeleteSessionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17019,8 +10805,8 @@ export const deleteTimeline: API.OperationMethod<
   DeleteTimelineError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTimelineRequest,
-  output: DeleteTimelineResponse,
+  input: __S(339) as any as S.Schema<DeleteTimelineRequest>,
+  output: __S(20) as any as S.Schema<DeleteTimelineResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17034,8 +10820,8 @@ export const deleteTimelineEvent: API.OperationMethod<
   DeleteTimelineEventError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTimelineEventRequest,
-  output: DeleteTimelineEventResponse,
+  input: __S(340) as any as S.Schema<DeleteTimelineEventRequest>,
+  output: __S(20) as any as S.Schema<DeleteTimelineEventResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17049,8 +10835,8 @@ export const deleteTransform: API.OperationMethod<
   DeleteTransformError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTransformRequest,
-  output: DeleteTransformResponse,
+  input: __S(341) as any as S.Schema<DeleteTransformRequest>,
+  output: __S(20) as any as S.Schema<DeleteTransformResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17064,8 +10850,8 @@ export const deleteTransformJob: API.OperationMethod<
   DeleteTransformJobError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTransformJobRequest,
-  output: DeleteTransformJobResponse,
+  input: __S(342) as any as S.Schema<DeleteTransformJobRequest>,
+  output: __S(20) as any as S.Schema<DeleteTransformJobResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17079,8 +10865,8 @@ export const deleteTransformTable: API.OperationMethod<
   DeleteTransformTableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTransformTableRequest,
-  output: DeleteTransformTableResponse,
+  input: __S(343) as any as S.Schema<DeleteTransformTableRequest>,
+  output: __S(20) as any as S.Schema<DeleteTransformTableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17094,8 +10880,8 @@ export const deleteTransformTag: API.OperationMethod<
   DeleteTransformTagError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteTransformTagRequest,
-  output: DeleteTransformTagResponse,
+  input: __S(344) as any as S.Schema<DeleteTransformTagRequest>,
+  output: __S(20) as any as S.Schema<DeleteTransformTagResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17109,8 +10895,8 @@ export const deleteUser: API.OperationMethod<
   DeleteUserError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserRequest,
-  output: DeleteUserResponse,
+  input: __S(345) as any as S.Schema<DeleteUserRequest>,
+  output: __S(20) as any as S.Schema<DeleteUserResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17124,8 +10910,8 @@ export const deleteUserKeyValueNamespaceKey: API.OperationMethod<
   DeleteUserKeyValueNamespaceKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUserKeyValueNamespaceKeyRequest,
-  output: DeleteUserKeyValueNamespaceKeyResponse,
+  input: __S(346) as any as S.Schema<DeleteUserKeyValueNamespaceKeyRequest>,
+  output: __S(28) as any as S.Schema<DeleteUserKeyValueNamespaceKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17139,8 +10925,8 @@ export const getAction: API.OperationMethod<
   GetActionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActionRequest,
-  output: GetActionResponse,
+  input: __S(347) as any as S.Schema<GetActionRequest>,
+  output: __S(20) as any as S.Schema<GetActionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17154,8 +10940,8 @@ export const getAction2: API.OperationMethod<
   GetAction2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAction2Request,
-  output: GetAction2Response,
+  input: __S(348) as any as S.Schema<GetAction2Request>,
+  output: __S(20) as any as S.Schema<GetAction2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17169,8 +10955,8 @@ export const getActionByActionId: API.OperationMethod<
   GetActionByActionIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActionByActionIdRequest,
-  output: GetActionByActionIdResponse,
+  input: __S(349) as any as S.Schema<GetActionByActionIdRequest>,
+  output: __S(20) as any as S.Schema<GetActionByActionIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17184,8 +10970,8 @@ export const getActionByUuid: API.OperationMethod<
   GetActionByUuidError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActionByUuidRequest,
-  output: GetActionByUuidResponse,
+  input: __S(350) as any as S.Schema<GetActionByUuidRequest>,
+  output: __S(20) as any as S.Schema<GetActionByUuidResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17199,8 +10985,8 @@ export const getActionExecute: API.OperationMethod<
   GetActionExecuteError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActionExecuteRequest,
-  output: GetActionExecuteResponse,
+  input: __S(351) as any as S.Schema<GetActionExecuteRequest>,
+  output: __S(20) as any as S.Schema<GetActionExecuteResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17214,8 +11000,8 @@ export const getActivityMostRecentlyViewedDashboard: API.OperationMethod<
   GetActivityMostRecentlyViewedDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActivityMostRecentlyViewedDashboardRequest,
-  output: GetActivityMostRecentlyViewedDashboardResponse,
+  input: __S(352) as any as S.Schema<GetActivityMostRecentlyViewedDashboardRequest>,
+  output: __S(28) as any as S.Schema<GetActivityMostRecentlyViewedDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17229,8 +11015,8 @@ export const getActivityPopularItems: API.OperationMethod<
   GetActivityPopularItemsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActivityPopularItemsRequest,
-  output: GetActivityPopularItemsResponse,
+  input: __S(353) as any as S.Schema<GetActivityPopularItemsRequest>,
+  output: __S(38) as any as S.Schema<GetActivityPopularItemsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17244,8 +11030,8 @@ export const getActivityRecents: API.OperationMethod<
   GetActivityRecentsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetActivityRecentsRequest,
-  output: GetActivityRecentsResponse,
+  input: __S(354) as any as S.Schema<GetActivityRecentsRequest>,
+  output: __S(20) as any as S.Schema<GetActivityRecentsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17259,8 +11045,8 @@ export const getAgentPing: API.OperationMethod<
   GetAgentPingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgentPingRequest,
-  output: GetAgentPingResponse,
+  input: __S(355) as any as S.Schema<GetAgentPingRequest>,
+  output: __S(20) as any as S.Schema<GetAgentPingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17274,8 +11060,8 @@ export const getAlert: API.OperationMethod<
   GetAlertError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAlertRequest,
-  output: GetAlertResponse,
+  input: __S(356) as any as S.Schema<GetAlertRequest>,
+  output: __S(20) as any as S.Schema<GetAlertResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17289,8 +11075,8 @@ export const getAlertById: API.OperationMethod<
   GetAlertByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAlertByIdRequest,
-  output: GetAlertByIdResponse,
+  input: __S(357) as any as S.Schema<GetAlertByIdRequest>,
+  output: __S(20) as any as S.Schema<GetAlertByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17304,8 +11090,8 @@ export const getAnalyticsAnonymousStats: API.OperationMethod<
   GetAnalyticsAnonymousStatsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAnalyticsAnonymousStatsRequest,
-  output: GetAnalyticsAnonymousStatsResponse,
+  input: __S(358) as any as S.Schema<GetAnalyticsAnonymousStatsRequest>,
+  output: __S(28) as any as S.Schema<GetAnalyticsAnonymousStatsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17319,8 +11105,8 @@ export const getAutomagicDashboard: API.OperationMethod<
   GetAutomagicDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutomagicDashboardRequest,
-  output: GetAutomagicDashboardResponse,
+  input: __S(359) as any as S.Schema<GetAutomagicDashboardRequest>,
+  output: __S(20) as any as S.Schema<GetAutomagicDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17334,8 +11120,8 @@ export const getAutomagicDashboardCell: API.OperationMethod<
   GetAutomagicDashboardCellError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutomagicDashboardCellRequest,
-  output: GetAutomagicDashboardCellResponse,
+  input: __S(360) as any as S.Schema<GetAutomagicDashboardCellRequest>,
+  output: __S(28) as any as S.Schema<GetAutomagicDashboardCellResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17349,8 +11135,8 @@ export const getAutomagicDashboardCellCompare: API.OperationMethod<
   GetAutomagicDashboardCellCompareError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutomagicDashboardCellCompareRequest,
-  output: GetAutomagicDashboardCellCompareResponse,
+  input: __S(361) as any as S.Schema<GetAutomagicDashboardCellCompareRequest>,
+  output: __S(28) as any as S.Schema<GetAutomagicDashboardCellCompareResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17364,8 +11150,8 @@ export const getAutomagicDashboardCellRuleDashboardTemplate: API.OperationMethod
   GetAutomagicDashboardCellRuleDashboardTemplateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutomagicDashboardCellRuleDashboardTemplateRequest,
-  output: GetAutomagicDashboardCellRuleDashboardTemplateResponse,
+  input: __S(362) as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateRequest>,
+  output: __S(28) as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17379,8 +11165,10 @@ export const getAutomagicDashboardCellRuleDashboardTemplateCompare: API.Operatio
   GetAutomagicDashboardCellRuleDashboardTemplateCompareError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutomagicDashboardCellRuleDashboardTemplateCompareRequest,
-  output: GetAutomagicDashboardCellRuleDashboardTemplateCompareResponse,
+  input: __S(363) as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateCompareRequest>,
+  output: __S(
+    364,
+  ) as any as S.Schema<GetAutomagicDashboardCellRuleDashboardTemplateCompareResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17394,8 +11182,8 @@ export const getAutomagicDashboardCompare: API.OperationMethod<
   GetAutomagicDashboardCompareError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutomagicDashboardCompareRequest,
-  output: GetAutomagicDashboardCompareResponse,
+  input: __S(365) as any as S.Schema<GetAutomagicDashboardCompareRequest>,
+  output: __S(28) as any as S.Schema<GetAutomagicDashboardCompareResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17409,8 +11197,8 @@ export const getAutomagicDashboardEntityOrQueryQueryMetadata: API.OperationMetho
   GetAutomagicDashboardEntityOrQueryQueryMetadataError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutomagicDashboardEntityOrQueryQueryMetadataRequest,
-  output: GetAutomagicDashboardEntityOrQueryQueryMetadataResponse,
+  input: __S(366) as any as S.Schema<GetAutomagicDashboardEntityOrQueryQueryMetadataRequest>,
+  output: __S(28) as any as S.Schema<GetAutomagicDashboardEntityOrQueryQueryMetadataResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17424,8 +11212,8 @@ export const getAutomagicDashboardRuleDashboardTemplate: API.OperationMethod<
   GetAutomagicDashboardRuleDashboardTemplateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutomagicDashboardRuleDashboardTemplateRequest,
-  output: GetAutomagicDashboardRuleDashboardTemplateResponse,
+  input: __S(367) as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateRequest>,
+  output: __S(28) as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17439,8 +11227,8 @@ export const getAutomagicDashboardRuleDashboardTemplateCompare: API.OperationMet
   GetAutomagicDashboardRuleDashboardTemplateCompareError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutomagicDashboardRuleDashboardTemplateCompareRequest,
-  output: GetAutomagicDashboardRuleDashboardTemplateCompareResponse,
+  input: __S(368) as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateCompareRequest>,
+  output: __S(70) as any as S.Schema<GetAutomagicDashboardRuleDashboardTemplateCompareResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17454,8 +11242,8 @@ export const getAutomagicDashboardsDatabaseCandidates: API.OperationMethod<
   GetAutomagicDashboardsDatabaseCandidatesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutomagicDashboardsDatabaseCandidatesRequest,
-  output: GetAutomagicDashboardsDatabaseCandidatesResponse,
+  input: __S(369) as any as S.Schema<GetAutomagicDashboardsDatabaseCandidatesRequest>,
+  output: __S(28) as any as S.Schema<GetAutomagicDashboardsDatabaseCandidatesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17469,8 +11257,8 @@ export const getAutomagicDashboardsModelIndexPrimaryKey: API.OperationMethod<
   GetAutomagicDashboardsModelIndexPrimaryKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAutomagicDashboardsModelIndexPrimaryKeyRequest,
-  output: GetAutomagicDashboardsModelIndexPrimaryKeyResponse,
+  input: __S(370) as any as S.Schema<GetAutomagicDashboardsModelIndexPrimaryKeyRequest>,
+  output: __S(28) as any as S.Schema<GetAutomagicDashboardsModelIndexPrimaryKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17484,8 +11272,8 @@ export const getBookmark: API.OperationMethod<
   GetBookmarkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBookmarkRequest,
-  output: GetBookmarkResponse,
+  input: __S(371) as any as S.Schema<GetBookmarkRequest>,
+  output: __S(20) as any as S.Schema<GetBookmarkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17499,8 +11287,8 @@ export const getBugReportingConnectionPoolDetails: API.OperationMethod<
   GetBugReportingConnectionPoolDetailsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBugReportingConnectionPoolDetailsRequest,
-  output: GetBugReportingConnectionPoolDetailsResponse,
+  input: __S(372) as any as S.Schema<GetBugReportingConnectionPoolDetailsRequest>,
+  output: __S(28) as any as S.Schema<GetBugReportingConnectionPoolDetailsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17514,8 +11302,8 @@ export const getBugReportingDetails: API.OperationMethod<
   GetBugReportingDetailsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetBugReportingDetailsRequest,
-  output: GetBugReportingDetailsResponse,
+  input: __S(373) as any as S.Schema<GetBugReportingDetailsRequest>,
+  output: __S(20) as any as S.Schema<GetBugReportingDetailsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17529,8 +11317,8 @@ export const getCache: API.OperationMethod<
   GetCacheError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCacheRequest,
-  output: GetCacheResponse,
+  input: __S(374) as any as S.Schema<GetCacheRequest>,
+  output: __S(20) as any as S.Schema<GetCacheResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17544,8 +11332,8 @@ export const getCard: API.OperationMethod<
   GetCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardRequest,
-  output: GetCardResponse,
+  input: __S(375) as any as S.Schema<GetCardRequest>,
+  output: __S(20) as any as S.Schema<GetCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17559,8 +11347,8 @@ export const getCard2: API.OperationMethod<
   GetCard2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCard2Request,
-  output: GetCard2Response,
+  input: __S(376) as any as S.Schema<GetCard2Request>,
+  output: __S(20) as any as S.Schema<GetCard2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17574,8 +11362,8 @@ export const getCardById: API.OperationMethod<
   GetCardByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardByIdRequest,
-  output: GetCardByIdResponse,
+  input: __S(377) as any as S.Schema<GetCardByIdRequest>,
+  output: __S(20) as any as S.Schema<GetCardByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17589,8 +11377,8 @@ export const getCardByUuid: API.OperationMethod<
   GetCardByUuidError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardByUuidRequest,
-  output: GetCardByUuidResponse,
+  input: __S(378) as any as S.Schema<GetCardByUuidRequest>,
+  output: __S(20) as any as S.Schema<GetCardByUuidResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17604,8 +11392,8 @@ export const getCardDashboards: API.OperationMethod<
   GetCardDashboardsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardDashboardsRequest,
-  output: GetCardDashboardsResponse,
+  input: __S(379) as any as S.Schema<GetCardDashboardsRequest>,
+  output: __S(20) as any as S.Schema<GetCardDashboardsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17619,8 +11407,8 @@ export const getCardEmbeddable: API.OperationMethod<
   GetCardEmbeddableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardEmbeddableRequest,
-  output: GetCardEmbeddableResponse,
+  input: __S(380) as any as S.Schema<GetCardEmbeddableRequest>,
+  output: __S(20) as any as S.Schema<GetCardEmbeddableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17634,8 +11422,8 @@ export const getCardParamRemapping: API.OperationMethod<
   GetCardParamRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardParamRemappingRequest,
-  output: GetCardParamRemappingResponse,
+  input: __S(381) as any as S.Schema<GetCardParamRemappingRequest>,
+  output: __S(20) as any as S.Schema<GetCardParamRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17649,8 +11437,8 @@ export const getCardParamRemapping2: API.OperationMethod<
   GetCardParamRemapping2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardParamRemappingRequest2,
-  output: GetCardParamRemapping2Response,
+  input: __S(382) as any as S.Schema<GetCardParamRemappingRequest2>,
+  output: __S(20) as any as S.Schema<GetCardParamRemapping2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17664,8 +11452,8 @@ export const getCardParamSearch: API.OperationMethod<
   GetCardParamSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardParamSearchRequest,
-  output: GetCardParamSearchResponse,
+  input: __S(383) as any as S.Schema<GetCardParamSearchRequest>,
+  output: __S(20) as any as S.Schema<GetCardParamSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17679,8 +11467,8 @@ export const getCardParamSearchByQuery: API.OperationMethod<
   GetCardParamSearchByQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardParamSearchByQueryRequest,
-  output: GetCardParamSearchByQueryResponse,
+  input: __S(384) as any as S.Schema<GetCardParamSearchByQueryRequest>,
+  output: __S(28) as any as S.Schema<GetCardParamSearchByQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17694,8 +11482,8 @@ export const getCardParamValues: API.OperationMethod<
   GetCardParamValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardParamValuesRequest,
-  output: GetCardParamValuesResponse,
+  input: __S(385) as any as S.Schema<GetCardParamValuesRequest>,
+  output: __S(20) as any as S.Schema<GetCardParamValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17709,8 +11497,8 @@ export const getCardParamValues2: API.OperationMethod<
   GetCardParamValues2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardParamValuesRequest2,
-  output: GetCardParamValues2Response,
+  input: __S(386) as any as S.Schema<GetCardParamValuesRequest2>,
+  output: __S(20) as any as S.Schema<GetCardParamValues2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17724,8 +11512,8 @@ export const getCardQuery: API.OperationMethod<
   GetCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardQueryRequest,
-  output: GetCardQueryResponse,
+  input: __S(387) as any as S.Schema<GetCardQueryRequest>,
+  output: __S(20) as any as S.Schema<GetCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17739,8 +11527,8 @@ export const getCardQueryByExportFormat: API.OperationMethod<
   GetCardQueryByExportFormatError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardQueryByExportFormatRequest,
-  output: GetCardQueryByExportFormatResponse,
+  input: __S(388) as any as S.Schema<GetCardQueryByExportFormatRequest>,
+  output: __S(28) as any as S.Schema<GetCardQueryByExportFormatResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17754,8 +11542,8 @@ export const getCardQueryMetadata: API.OperationMethod<
   GetCardQueryMetadataError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardQueryMetadataRequest,
-  output: GetCardQueryMetadataResponse,
+  input: __S(389) as any as S.Schema<GetCardQueryMetadataRequest>,
+  output: __S(20) as any as S.Schema<GetCardQueryMetadataResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17769,8 +11557,8 @@ export const getCardSeries: API.OperationMethod<
   GetCardSeriesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCardSeriesRequest,
-  output: GetCardSeriesResponse,
+  input: __S(390) as any as S.Schema<GetCardSeriesRequest>,
+  output: __S(20) as any as S.Schema<GetCardSeriesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17784,8 +11572,8 @@ export const getChannel: API.OperationMethod<
   GetChannelError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChannelRequest,
-  output: GetChannelResponse,
+  input: __S(391) as any as S.Schema<GetChannelRequest>,
+  output: __S(20) as any as S.Schema<GetChannelResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17799,8 +11587,8 @@ export const getChannelById: API.OperationMethod<
   GetChannelByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetChannelByIdRequest,
-  output: GetChannelByIdResponse,
+  input: __S(392) as any as S.Schema<GetChannelByIdRequest>,
+  output: __S(20) as any as S.Schema<GetChannelByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17814,8 +11602,8 @@ export const getCloudMigration: API.OperationMethod<
   GetCloudMigrationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCloudMigrationRequest,
-  output: GetCloudMigrationResponse,
+  input: __S(393) as any as S.Schema<GetCloudMigrationRequest>,
+  output: __S(20) as any as S.Schema<GetCloudMigrationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17829,8 +11617,8 @@ export const getCollection: API.OperationMethod<
   GetCollectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionRequest,
-  output: GetCollectionResponse,
+  input: __S(394) as any as S.Schema<GetCollectionRequest>,
+  output: __S(20) as any as S.Schema<GetCollectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17844,8 +11632,8 @@ export const getCollectionById: API.OperationMethod<
   GetCollectionByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionByIdRequest,
-  output: GetCollectionByIdResponse,
+  input: __S(395) as any as S.Schema<GetCollectionByIdRequest>,
+  output: __S(20) as any as S.Schema<GetCollectionByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17859,8 +11647,8 @@ export const getCollectionDashboardQuestionCandidates: API.OperationMethod<
   GetCollectionDashboardQuestionCandidatesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionDashboardQuestionCandidatesRequest,
-  output: GetCollectionDashboardQuestionCandidatesResponse,
+  input: __S(396) as any as S.Schema<GetCollectionDashboardQuestionCandidatesRequest>,
+  output: __S(28) as any as S.Schema<GetCollectionDashboardQuestionCandidatesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17874,8 +11662,8 @@ export const getCollectionGraph: API.OperationMethod<
   GetCollectionGraphError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionGraphRequest,
-  output: GetCollectionGraphResponse,
+  input: __S(397) as any as S.Schema<GetCollectionGraphRequest>,
+  output: __S(20) as any as S.Schema<GetCollectionGraphResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17889,8 +11677,8 @@ export const getCollectionItems: API.OperationMethod<
   GetCollectionItemsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionItemsRequest,
-  output: GetCollectionItemsResponse,
+  input: __S(398) as any as S.Schema<GetCollectionItemsRequest>,
+  output: __S(20) as any as S.Schema<GetCollectionItemsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17904,8 +11692,8 @@ export const getCollectionRoot: API.OperationMethod<
   GetCollectionRootError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionRootRequest,
-  output: GetCollectionRootResponse,
+  input: __S(399) as any as S.Schema<GetCollectionRootRequest>,
+  output: __S(20) as any as S.Schema<GetCollectionRootResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17919,8 +11707,8 @@ export const getCollectionRootDashboardQuestionCandidates: API.OperationMethod<
   GetCollectionRootDashboardQuestionCandidatesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionRootDashboardQuestionCandidatesRequest,
-  output: GetCollectionRootDashboardQuestionCandidatesResponse,
+  input: __S(400) as any as S.Schema<GetCollectionRootDashboardQuestionCandidatesRequest>,
+  output: __S(28) as any as S.Schema<GetCollectionRootDashboardQuestionCandidatesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17934,8 +11722,8 @@ export const getCollectionRootItems: API.OperationMethod<
   GetCollectionRootItemsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionRootItemsRequest,
-  output: GetCollectionRootItemsResponse,
+  input: __S(401) as any as S.Schema<GetCollectionRootItemsRequest>,
+  output: __S(20) as any as S.Schema<GetCollectionRootItemsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17949,8 +11737,8 @@ export const getCollectionTrash: API.OperationMethod<
   GetCollectionTrashError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionTrashRequest,
-  output: GetCollectionTrashResponse,
+  input: __S(402) as any as S.Schema<GetCollectionTrashRequest>,
+  output: __S(20) as any as S.Schema<GetCollectionTrashResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17964,8 +11752,8 @@ export const getCollectionTree: API.OperationMethod<
   GetCollectionTreeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCollectionTreeRequest,
-  output: GetCollectionTreeResponse,
+  input: __S(403) as any as S.Schema<GetCollectionTreeRequest>,
+  output: __S(20) as any as S.Schema<GetCollectionTreeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17979,8 +11767,8 @@ export const getComment: API.OperationMethod<
   GetCommentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommentRequest,
-  output: GetCommentResponse,
+  input: __S(404) as any as S.Schema<GetCommentRequest>,
+  output: __S(20) as any as S.Schema<GetCommentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -17994,8 +11782,8 @@ export const getCommentMentions: API.OperationMethod<
   GetCommentMentionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommentMentionsRequest,
-  output: GetCommentMentionsResponse,
+  input: __S(405) as any as S.Schema<GetCommentMentionsRequest>,
+  output: __S(20) as any as S.Schema<GetCommentMentionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18009,8 +11797,8 @@ export const getDashboard: API.OperationMethod<
   GetDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardRequest,
-  output: GetDashboardResponse,
+  input: __S(406) as any as S.Schema<GetDashboardRequest>,
+  output: __S(20) as any as S.Schema<GetDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18024,8 +11812,8 @@ export const getDashboardById: API.OperationMethod<
   GetDashboardByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardByIdRequest,
-  output: GetDashboardByIdResponse,
+  input: __S(407) as any as S.Schema<GetDashboardByIdRequest>,
+  output: __S(20) as any as S.Schema<GetDashboardByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18039,8 +11827,8 @@ export const getDashboardByUuid: API.OperationMethod<
   GetDashboardByUuidError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardByUuidRequest,
-  output: GetDashboardByUuidResponse,
+  input: __S(408) as any as S.Schema<GetDashboardByUuidRequest>,
+  output: __S(20) as any as S.Schema<GetDashboardByUuidResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18054,8 +11842,8 @@ export const getDashboardDashcardCard: API.OperationMethod<
   GetDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardDashcardCardRequest,
-  output: GetDashboardDashcardCardResponse,
+  input: __S(409) as any as S.Schema<GetDashboardDashcardCardRequest>,
+  output: __S(28) as any as S.Schema<GetDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18069,8 +11857,8 @@ export const getDashboardDashcardExecute: API.OperationMethod<
   GetDashboardDashcardExecuteError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardDashcardExecuteRequest,
-  output: GetDashboardDashcardExecuteResponse,
+  input: __S(410) as any as S.Schema<GetDashboardDashcardExecuteRequest>,
+  output: __S(28) as any as S.Schema<GetDashboardDashcardExecuteResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18084,8 +11872,8 @@ export const getDashboardDashcardExecute2: API.OperationMethod<
   GetDashboardDashcardExecute2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardDashcardExecuteRequest2,
-  output: GetDashboardDashcardExecute2Response,
+  input: __S(411) as any as S.Schema<GetDashboardDashcardExecuteRequest2>,
+  output: __S(28) as any as S.Schema<GetDashboardDashcardExecute2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18099,8 +11887,8 @@ export const getDashboardEmbeddable: API.OperationMethod<
   GetDashboardEmbeddableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardEmbeddableRequest,
-  output: GetDashboardEmbeddableResponse,
+  input: __S(412) as any as S.Schema<GetDashboardEmbeddableRequest>,
+  output: __S(20) as any as S.Schema<GetDashboardEmbeddableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18114,8 +11902,8 @@ export const getDashboardItems: API.OperationMethod<
   GetDashboardItemsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardItemsRequest,
-  output: GetDashboardItemsResponse,
+  input: __S(413) as any as S.Schema<GetDashboardItemsRequest>,
+  output: __S(20) as any as S.Schema<GetDashboardItemsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18129,8 +11917,8 @@ export const getDashboardParamRemapping: API.OperationMethod<
   GetDashboardParamRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardParamRemappingRequest,
-  output: GetDashboardParamRemappingResponse,
+  input: __S(414) as any as S.Schema<GetDashboardParamRemappingRequest>,
+  output: __S(28) as any as S.Schema<GetDashboardParamRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18144,8 +11932,8 @@ export const getDashboardParamRemapping2: API.OperationMethod<
   GetDashboardParamRemapping2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardParamRemappingRequest2,
-  output: GetDashboardParamRemapping2Response,
+  input: __S(415) as any as S.Schema<GetDashboardParamRemappingRequest2>,
+  output: __S(28) as any as S.Schema<GetDashboardParamRemapping2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18159,8 +11947,8 @@ export const getDashboardParamSearch: API.OperationMethod<
   GetDashboardParamSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardParamSearchRequest,
-  output: GetDashboardParamSearchResponse,
+  input: __S(416) as any as S.Schema<GetDashboardParamSearchRequest>,
+  output: __S(38) as any as S.Schema<GetDashboardParamSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18174,8 +11962,8 @@ export const getDashboardParamSearchByQuery: API.OperationMethod<
   GetDashboardParamSearchByQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardParamSearchByQueryRequest,
-  output: GetDashboardParamSearchByQueryResponse,
+  input: __S(417) as any as S.Schema<GetDashboardParamSearchByQueryRequest>,
+  output: __S(28) as any as S.Schema<GetDashboardParamSearchByQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18189,8 +11977,8 @@ export const getDashboardParamsValidFilterFields: API.OperationMethod<
   GetDashboardParamsValidFilterFieldsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardParamsValidFilterFieldsRequest,
-  output: GetDashboardParamsValidFilterFieldsResponse,
+  input: __S(418) as any as S.Schema<GetDashboardParamsValidFilterFieldsRequest>,
+  output: __S(28) as any as S.Schema<GetDashboardParamsValidFilterFieldsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18204,8 +11992,8 @@ export const getDashboardParamValues: API.OperationMethod<
   GetDashboardParamValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardParamValuesRequest,
-  output: GetDashboardParamValuesResponse,
+  input: __S(419) as any as S.Schema<GetDashboardParamValuesRequest>,
+  output: __S(38) as any as S.Schema<GetDashboardParamValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18219,8 +12007,8 @@ export const getDashboardParamValues2: API.OperationMethod<
   GetDashboardParamValues2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardParamValuesRequest2,
-  output: GetDashboardParamValues2Response,
+  input: __S(420) as any as S.Schema<GetDashboardParamValuesRequest2>,
+  output: __S(28) as any as S.Schema<GetDashboardParamValues2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18234,8 +12022,8 @@ export const getDashboardQueryMetadata: API.OperationMethod<
   GetDashboardQueryMetadataError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardQueryMetadataRequest,
-  output: GetDashboardQueryMetadataResponse,
+  input: __S(421) as any as S.Schema<GetDashboardQueryMetadataRequest>,
+  output: __S(28) as any as S.Schema<GetDashboardQueryMetadataResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18249,8 +12037,8 @@ export const getDashboardRelated: API.OperationMethod<
   GetDashboardRelatedError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDashboardRelatedRequest,
-  output: GetDashboardRelatedResponse,
+  input: __S(422) as any as S.Schema<GetDashboardRelatedRequest>,
+  output: __S(20) as any as S.Schema<GetDashboardRelatedResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18264,8 +12052,8 @@ export const getDatabase: API.OperationMethod<
   GetDatabaseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseRequest,
-  output: GetDatabaseResponse,
+  input: __S(423) as any as S.Schema<GetDatabaseRequest>,
+  output: __S(20) as any as S.Schema<GetDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18279,8 +12067,8 @@ export const getDatabaseAutocompleteSuggestions: API.OperationMethod<
   GetDatabaseAutocompleteSuggestionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseAutocompleteSuggestionsRequest,
-  output: GetDatabaseAutocompleteSuggestionsResponse,
+  input: __S(424) as any as S.Schema<GetDatabaseAutocompleteSuggestionsRequest>,
+  output: __S(28) as any as S.Schema<GetDatabaseAutocompleteSuggestionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18294,8 +12082,8 @@ export const getDatabaseById: API.OperationMethod<
   GetDatabaseByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseByIdRequest,
-  output: GetDatabaseByIdResponse,
+  input: __S(425) as any as S.Schema<GetDatabaseByIdRequest>,
+  output: __S(20) as any as S.Schema<GetDatabaseByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18309,8 +12097,8 @@ export const getDatabaseCardAutocompleteSuggestions: API.OperationMethod<
   GetDatabaseCardAutocompleteSuggestionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseCardAutocompleteSuggestionsRequest,
-  output: GetDatabaseCardAutocompleteSuggestionsResponse,
+  input: __S(426) as any as S.Schema<GetDatabaseCardAutocompleteSuggestionsRequest>,
+  output: __S(28) as any as S.Schema<GetDatabaseCardAutocompleteSuggestionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18324,8 +12112,8 @@ export const getDatabaseDataset: API.OperationMethod<
   GetDatabaseDatasetError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseDatasetRequest,
-  output: GetDatabaseDatasetResponse,
+  input: __S(427) as any as S.Schema<GetDatabaseDatasetRequest>,
+  output: __S(20) as any as S.Schema<GetDatabaseDatasetResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18339,8 +12127,8 @@ export const getDatabaseDatasets: API.OperationMethod<
   GetDatabaseDatasetsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseDatasetsRequest,
-  output: GetDatabaseDatasetsResponse,
+  input: __S(428) as any as S.Schema<GetDatabaseDatasetsRequest>,
+  output: __S(20) as any as S.Schema<GetDatabaseDatasetsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18354,8 +12142,8 @@ export const getDatabaseFields: API.OperationMethod<
   GetDatabaseFieldsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseFieldsRequest,
-  output: GetDatabaseFieldsResponse,
+  input: __S(429) as any as S.Schema<GetDatabaseFieldsRequest>,
+  output: __S(20) as any as S.Schema<GetDatabaseFieldsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18369,8 +12157,8 @@ export const getDatabaseHealthcheck: API.OperationMethod<
   GetDatabaseHealthcheckError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseHealthcheckRequest,
-  output: GetDatabaseHealthcheckResponse,
+  input: __S(430) as any as S.Schema<GetDatabaseHealthcheckRequest>,
+  output: __S(20) as any as S.Schema<GetDatabaseHealthcheckResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18384,8 +12172,8 @@ export const getDatabaseIdfields: API.OperationMethod<
   GetDatabaseIdfieldsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseIdfieldsRequest,
-  output: GetDatabaseIdfieldsResponse,
+  input: __S(431) as any as S.Schema<GetDatabaseIdfieldsRequest>,
+  output: __S(20) as any as S.Schema<GetDatabaseIdfieldsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18399,8 +12187,8 @@ export const getDatabaseMetadata: API.OperationMethod<
   GetDatabaseMetadataError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseMetadataRequest,
-  output: GetDatabaseMetadataResponse,
+  input: __S(432) as any as S.Schema<GetDatabaseMetadataRequest>,
+  output: __S(20) as any as S.Schema<GetDatabaseMetadataResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18414,8 +12202,8 @@ export const getDatabaseMetadata2: API.OperationMethod<
   GetDatabaseMetadata2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseMetadataRequest2,
-  output: GetDatabaseMetadata2Response,
+  input: __S(433) as any as S.Schema<GetDatabaseMetadataRequest2>,
+  output: __S(20) as any as S.Schema<GetDatabaseMetadata2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18429,8 +12217,8 @@ export const getDatabaseSchema: API.OperationMethod<
   GetDatabaseSchemaError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseSchemaRequest,
-  output: GetDatabaseSchemaResponse,
+  input: __S(434) as any as S.Schema<GetDatabaseSchemaRequest>,
+  output: __S(20) as any as S.Schema<GetDatabaseSchemaResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18444,8 +12232,8 @@ export const getDatabaseSchemaBySchema: API.OperationMethod<
   GetDatabaseSchemaBySchemaError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseSchemaBySchemaRequest,
-  output: GetDatabaseSchemaBySchemaResponse,
+  input: __S(435) as any as S.Schema<GetDatabaseSchemaBySchemaRequest>,
+  output: __S(28) as any as S.Schema<GetDatabaseSchemaBySchemaResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18459,8 +12247,8 @@ export const getDatabaseSchemaBySchema2: API.OperationMethod<
   GetDatabaseSchemaBySchema2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseSchemaBySchemaRequest2,
-  output: GetDatabaseSchemaBySchema2Response,
+  input: __S(436) as any as S.Schema<GetDatabaseSchemaBySchemaRequest2>,
+  output: __S(28) as any as S.Schema<GetDatabaseSchemaBySchema2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18474,8 +12262,8 @@ export const getDatabaseSchemas: API.OperationMethod<
   GetDatabaseSchemasError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseSchemasRequest,
-  output: GetDatabaseSchemasResponse,
+  input: __S(437) as any as S.Schema<GetDatabaseSchemasRequest>,
+  output: __S(20) as any as S.Schema<GetDatabaseSchemasResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18489,8 +12277,8 @@ export const getDatabaseSchemas2: API.OperationMethod<
   GetDatabaseSchemas2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseSchemasRequest2,
-  output: GetDatabaseSchemas2Response,
+  input: __S(438) as any as S.Schema<GetDatabaseSchemasRequest2>,
+  output: __S(20) as any as S.Schema<GetDatabaseSchemas2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18504,8 +12292,8 @@ export const getDatabaseSettingsAvailable: API.OperationMethod<
   GetDatabaseSettingsAvailableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseSettingsAvailableRequest,
-  output: GetDatabaseSettingsAvailableResponse,
+  input: __S(439) as any as S.Schema<GetDatabaseSettingsAvailableRequest>,
+  output: __S(28) as any as S.Schema<GetDatabaseSettingsAvailableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18519,8 +12307,8 @@ export const getDatabaseSyncableSchemas: API.OperationMethod<
   GetDatabaseSyncableSchemasError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseSyncableSchemasRequest,
-  output: GetDatabaseSyncableSchemasResponse,
+  input: __S(440) as any as S.Schema<GetDatabaseSyncableSchemasRequest>,
+  output: __S(28) as any as S.Schema<GetDatabaseSyncableSchemasResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18534,8 +12322,8 @@ export const getDatabaseUsageInfo: API.OperationMethod<
   GetDatabaseUsageInfoError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDatabaseUsageInfoRequest,
-  output: GetDatabaseUsageInfoResponse,
+  input: __S(441) as any as S.Schema<GetDatabaseUsageInfoRequest>,
+  output: __S(20) as any as S.Schema<GetDatabaseUsageInfoResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18549,8 +12337,8 @@ export const getDocument: API.OperationMethod<
   GetDocumentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDocumentRequest,
-  output: GetDocumentResponse,
+  input: __S(442) as any as S.Schema<GetDocumentRequest>,
+  output: __S(20) as any as S.Schema<GetDocumentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18564,8 +12352,8 @@ export const getDocument2: API.OperationMethod<
   GetDocument2Error,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDocument2Request,
-  output: GetDocument2Response,
+  input: __S(443) as any as S.Schema<GetDocument2Request>,
+  output: __S(20) as any as S.Schema<GetDocument2Response>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18579,8 +12367,8 @@ export const getDocumentByDocumentId: API.OperationMethod<
   GetDocumentByDocumentIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDocumentByDocumentIdRequest,
-  output: GetDocumentByDocumentIdResponse,
+  input: __S(444) as any as S.Schema<GetDocumentByDocumentIdRequest>,
+  output: __S(38) as any as S.Schema<GetDocumentByDocumentIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18594,8 +12382,8 @@ export const getDocumentByUuid: API.OperationMethod<
   GetDocumentByUuidError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDocumentByUuidRequest,
-  output: GetDocumentByUuidResponse,
+  input: __S(445) as any as S.Schema<GetDocumentByUuidRequest>,
+  output: __S(20) as any as S.Schema<GetDocumentByUuidResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18609,8 +12397,8 @@ export const getDocumentCard: API.OperationMethod<
   GetDocumentCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDocumentCardRequest,
-  output: GetDocumentCardResponse,
+  input: __S(446) as any as S.Schema<GetDocumentCardRequest>,
+  output: __S(20) as any as S.Schema<GetDocumentCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18624,8 +12412,8 @@ export const getEeAdvancedPermissionsApplicationGraph: API.OperationMethod<
   GetEeAdvancedPermissionsApplicationGraphError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeAdvancedPermissionsApplicationGraphRequest,
-  output: GetEeAdvancedPermissionsApplicationGraphResponse,
+  input: __S(447) as any as S.Schema<GetEeAdvancedPermissionsApplicationGraphRequest>,
+  output: __S(28) as any as S.Schema<GetEeAdvancedPermissionsApplicationGraphResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18639,8 +12427,8 @@ export const getEeAdvancedPermissionsImpersonation: API.OperationMethod<
   GetEeAdvancedPermissionsImpersonationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeAdvancedPermissionsImpersonationRequest,
-  output: GetEeAdvancedPermissionsImpersonationResponse,
+  input: __S(448) as any as S.Schema<GetEeAdvancedPermissionsImpersonationRequest>,
+  output: __S(28) as any as S.Schema<GetEeAdvancedPermissionsImpersonationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18654,8 +12442,8 @@ export const getEeAiControlsPermissions: API.OperationMethod<
   GetEeAiControlsPermissionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeAiControlsPermissionsRequest,
-  output: GetEeAiControlsPermissionsResponse,
+  input: __S(449) as any as S.Schema<GetEeAiControlsPermissionsRequest>,
+  output: __S(28) as any as S.Schema<GetEeAiControlsPermissionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18669,8 +12457,8 @@ export const getEeAiControlsUsageGroup: API.OperationMethod<
   GetEeAiControlsUsageGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeAiControlsUsageGroupRequest,
-  output: GetEeAiControlsUsageGroupResponse,
+  input: __S(450) as any as S.Schema<GetEeAiControlsUsageGroupRequest>,
+  output: __S(28) as any as S.Schema<GetEeAiControlsUsageGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18684,8 +12472,8 @@ export const getEeAiControlsUsageGroupByGroupId: API.OperationMethod<
   GetEeAiControlsUsageGroupByGroupIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeAiControlsUsageGroupByGroupIdRequest,
-  output: GetEeAiControlsUsageGroupByGroupIdResponse,
+  input: __S(451) as any as S.Schema<GetEeAiControlsUsageGroupByGroupIdRequest>,
+  output: __S(28) as any as S.Schema<GetEeAiControlsUsageGroupByGroupIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18699,8 +12487,8 @@ export const getEeAiControlsUsageInstance: API.OperationMethod<
   GetEeAiControlsUsageInstanceError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeAiControlsUsageInstanceRequest,
-  output: GetEeAiControlsUsageInstanceResponse,
+  input: __S(452) as any as S.Schema<GetEeAiControlsUsageInstanceRequest>,
+  output: __S(28) as any as S.Schema<GetEeAiControlsUsageInstanceResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18714,8 +12502,8 @@ export const getEeAiControlsUsageTenant: API.OperationMethod<
   GetEeAiControlsUsageTenantError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeAiControlsUsageTenantRequest,
-  output: GetEeAiControlsUsageTenantResponse,
+  input: __S(453) as any as S.Schema<GetEeAiControlsUsageTenantRequest>,
+  output: __S(28) as any as S.Schema<GetEeAiControlsUsageTenantResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18729,8 +12517,8 @@ export const getEeAiControlsUsageTenantByTenantId: API.OperationMethod<
   GetEeAiControlsUsageTenantByTenantIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeAiControlsUsageTenantByTenantIdRequest,
-  output: GetEeAiControlsUsageTenantByTenantIdResponse,
+  input: __S(454) as any as S.Schema<GetEeAiControlsUsageTenantByTenantIdRequest>,
+  output: __S(28) as any as S.Schema<GetEeAiControlsUsageTenantByTenantIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18744,8 +12532,8 @@ export const getEeAuditAppUserAuditInfo: API.OperationMethod<
   GetEeAuditAppUserAuditInfoError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeAuditAppUserAuditInfoRequest,
-  output: GetEeAuditAppUserAuditInfoResponse,
+  input: __S(455) as any as S.Schema<GetEeAuditAppUserAuditInfoRequest>,
+  output: __S(28) as any as S.Schema<GetEeAuditAppUserAuditInfoResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18759,8 +12547,8 @@ export const getEeBilling: API.OperationMethod<
   GetEeBillingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeBillingRequest,
-  output: GetEeBillingResponse,
+  input: __S(456) as any as S.Schema<GetEeBillingRequest>,
+  output: __S(20) as any as S.Schema<GetEeBillingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18774,8 +12562,8 @@ export const getEeCloudAddOnsAddons: API.OperationMethod<
   GetEeCloudAddOnsAddonsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeCloudAddOnsAddonsRequest,
-  output: GetEeCloudAddOnsAddonsResponse,
+  input: __S(457) as any as S.Schema<GetEeCloudAddOnsAddonsRequest>,
+  output: __S(20) as any as S.Schema<GetEeCloudAddOnsAddonsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18789,8 +12577,8 @@ export const getEeCloudAddOnsPlans: API.OperationMethod<
   GetEeCloudAddOnsPlansError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeCloudAddOnsPlansRequest,
-  output: GetEeCloudAddOnsPlansResponse,
+  input: __S(458) as any as S.Schema<GetEeCloudAddOnsPlansRequest>,
+  output: __S(20) as any as S.Schema<GetEeCloudAddOnsPlansResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18804,8 +12592,8 @@ export const getEeContentTranslationCsv: API.OperationMethod<
   GetEeContentTranslationCsvError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeContentTranslationCsvRequest,
-  output: GetEeContentTranslationCsvResponse,
+  input: __S(459) as any as S.Schema<GetEeContentTranslationCsvRequest>,
+  output: __S(28) as any as S.Schema<GetEeContentTranslationCsvResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18819,8 +12607,8 @@ export const getEeContentTranslationDictionary: API.OperationMethod<
   GetEeContentTranslationDictionaryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeContentTranslationDictionaryRequest,
-  output: GetEeContentTranslationDictionaryResponse,
+  input: __S(460) as any as S.Schema<GetEeContentTranslationDictionaryRequest>,
+  output: __S(28) as any as S.Schema<GetEeContentTranslationDictionaryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18834,8 +12622,8 @@ export const getEeContentTranslationDictionaryByToken: API.OperationMethod<
   GetEeContentTranslationDictionaryByTokenError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeContentTranslationDictionaryByTokenRequest,
-  output: GetEeContentTranslationDictionaryByTokenResponse,
+  input: __S(461) as any as S.Schema<GetEeContentTranslationDictionaryByTokenRequest>,
+  output: __S(28) as any as S.Schema<GetEeContentTranslationDictionaryByTokenResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18849,8 +12637,8 @@ export const getEeCustomVizPlugin: API.OperationMethod<
   GetEeCustomVizPluginError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeCustomVizPluginRequest,
-  output: GetEeCustomVizPluginResponse,
+  input: __S(462) as any as S.Schema<GetEeCustomVizPluginRequest>,
+  output: __S(20) as any as S.Schema<GetEeCustomVizPluginResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18864,8 +12652,8 @@ export const getEeCustomVizPluginAsset: API.OperationMethod<
   GetEeCustomVizPluginAssetError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeCustomVizPluginAssetRequest,
-  output: GetEeCustomVizPluginAssetResponse,
+  input: __S(463) as any as S.Schema<GetEeCustomVizPluginAssetRequest>,
+  output: __S(28) as any as S.Schema<GetEeCustomVizPluginAssetResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18879,8 +12667,8 @@ export const getEeCustomVizPluginBundle: API.OperationMethod<
   GetEeCustomVizPluginBundleError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeCustomVizPluginBundleRequest,
-  output: GetEeCustomVizPluginBundleResponse,
+  input: __S(464) as any as S.Schema<GetEeCustomVizPluginBundleRequest>,
+  output: __S(28) as any as S.Schema<GetEeCustomVizPluginBundleResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18894,8 +12682,8 @@ export const getEeCustomVizPluginDevSse: API.OperationMethod<
   GetEeCustomVizPluginDevSseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeCustomVizPluginDevSseRequest,
-  output: GetEeCustomVizPluginDevSseResponse,
+  input: __S(465) as any as S.Schema<GetEeCustomVizPluginDevSseRequest>,
+  output: __S(28) as any as S.Schema<GetEeCustomVizPluginDevSseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18909,8 +12697,8 @@ export const getEeCustomVizPluginList: API.OperationMethod<
   GetEeCustomVizPluginListError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeCustomVizPluginListRequest,
-  output: GetEeCustomVizPluginListResponse,
+  input: __S(466) as any as S.Schema<GetEeCustomVizPluginListRequest>,
+  output: __S(28) as any as S.Schema<GetEeCustomVizPluginListResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18924,8 +12712,8 @@ export const getEeCustomVizPluginSandboxHost: API.OperationMethod<
   GetEeCustomVizPluginSandboxHostError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeCustomVizPluginSandboxHostRequest,
-  output: GetEeCustomVizPluginSandboxHostResponse,
+  input: __S(467) as any as S.Schema<GetEeCustomVizPluginSandboxHostRequest>,
+  output: __S(28) as any as S.Schema<GetEeCustomVizPluginSandboxHostResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18939,8 +12727,8 @@ export const getEeDataComplexityScoreComplexity: API.OperationMethod<
   GetEeDataComplexityScoreComplexityError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeDataComplexityScoreComplexityRequest,
-  output: GetEeDataComplexityScoreComplexityResponse,
+  input: __S(468) as any as S.Schema<GetEeDataComplexityScoreComplexityRequest>,
+  output: __S(28) as any as S.Schema<GetEeDataComplexityScoreComplexityResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18954,8 +12742,8 @@ export const getEeDependenciesBackfillStatus: API.OperationMethod<
   GetEeDependenciesBackfillStatusError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeDependenciesBackfillStatusRequest,
-  output: GetEeDependenciesBackfillStatusResponse,
+  input: __S(469) as any as S.Schema<GetEeDependenciesBackfillStatusRequest>,
+  output: __S(28) as any as S.Schema<GetEeDependenciesBackfillStatusResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18969,8 +12757,8 @@ export const getEeDependenciesGraph: API.OperationMethod<
   GetEeDependenciesGraphError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeDependenciesGraphRequest,
-  output: GetEeDependenciesGraphResponse,
+  input: __S(470) as any as S.Schema<GetEeDependenciesGraphRequest>,
+  output: __S(20) as any as S.Schema<GetEeDependenciesGraphResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18984,8 +12772,8 @@ export const getEeDependenciesGraphBreaking: API.OperationMethod<
   GetEeDependenciesGraphBreakingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeDependenciesGraphBreakingRequest,
-  output: GetEeDependenciesGraphBreakingResponse,
+  input: __S(471) as any as S.Schema<GetEeDependenciesGraphBreakingRequest>,
+  output: __S(28) as any as S.Schema<GetEeDependenciesGraphBreakingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -18999,8 +12787,8 @@ export const getEeDependenciesGraphBroken: API.OperationMethod<
   GetEeDependenciesGraphBrokenError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeDependenciesGraphBrokenRequest,
-  output: GetEeDependenciesGraphBrokenResponse,
+  input: __S(472) as any as S.Schema<GetEeDependenciesGraphBrokenRequest>,
+  output: __S(28) as any as S.Schema<GetEeDependenciesGraphBrokenResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19014,8 +12802,8 @@ export const getEeDependenciesGraphDependents: API.OperationMethod<
   GetEeDependenciesGraphDependentsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeDependenciesGraphDependentsRequest,
-  output: GetEeDependenciesGraphDependentsResponse,
+  input: __S(473) as any as S.Schema<GetEeDependenciesGraphDependentsRequest>,
+  output: __S(28) as any as S.Schema<GetEeDependenciesGraphDependentsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19029,8 +12817,8 @@ export const getEeDependenciesGraphUnreferenced: API.OperationMethod<
   GetEeDependenciesGraphUnreferencedError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeDependenciesGraphUnreferencedRequest,
-  output: GetEeDependenciesGraphUnreferencedResponse,
+  input: __S(474) as any as S.Schema<GetEeDependenciesGraphUnreferencedRequest>,
+  output: __S(28) as any as S.Schema<GetEeDependenciesGraphUnreferencedResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19044,8 +12832,8 @@ export const getEeEmbeddingHubChecklist: API.OperationMethod<
   GetEeEmbeddingHubChecklistError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeEmbeddingHubChecklistRequest,
-  output: GetEeEmbeddingHubChecklistResponse,
+  input: __S(475) as any as S.Schema<GetEeEmbeddingHubChecklistRequest>,
+  output: __S(28) as any as S.Schema<GetEeEmbeddingHubChecklistResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19059,8 +12847,8 @@ export const getEeErd: API.OperationMethod<
   GetEeErdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeErdRequest,
-  output: GetEeErdResponse,
+  input: __S(476) as any as S.Schema<GetEeErdRequest>,
+  output: __S(20) as any as S.Schema<GetEeErdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19074,8 +12862,8 @@ export const getEeGsheetsConnection: API.OperationMethod<
   GetEeGsheetsConnectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeGsheetsConnectionRequest,
-  output: GetEeGsheetsConnectionResponse,
+  input: __S(477) as any as S.Schema<GetEeGsheetsConnectionRequest>,
+  output: __S(20) as any as S.Schema<GetEeGsheetsConnectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19089,8 +12877,8 @@ export const getEeGsheetsServiceAccount: API.OperationMethod<
   GetEeGsheetsServiceAccountError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeGsheetsServiceAccountRequest,
-  output: GetEeGsheetsServiceAccountResponse,
+  input: __S(478) as any as S.Schema<GetEeGsheetsServiceAccountRequest>,
+  output: __S(28) as any as S.Schema<GetEeGsheetsServiceAccountResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19104,8 +12892,8 @@ export const getEeLibrary: API.OperationMethod<
   GetEeLibraryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeLibraryRequest,
-  output: GetEeLibraryResponse,
+  input: __S(479) as any as S.Schema<GetEeLibraryRequest>,
+  output: __S(20) as any as S.Schema<GetEeLibraryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19119,8 +12907,8 @@ export const getEeLibraryTree: API.OperationMethod<
   GetEeLibraryTreeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeLibraryTreeRequest,
-  output: GetEeLibraryTreeResponse,
+  input: __S(480) as any as S.Schema<GetEeLibraryTreeRequest>,
+  output: __S(20) as any as S.Schema<GetEeLibraryTreeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19134,8 +12922,8 @@ export const getEeLogsQueryExecution: API.OperationMethod<
   GetEeLogsQueryExecutionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeLogsQueryExecutionRequest,
-  output: GetEeLogsQueryExecutionResponse,
+  input: __S(481) as any as S.Schema<GetEeLogsQueryExecutionRequest>,
+  output: __S(38) as any as S.Schema<GetEeLogsQueryExecutionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19149,8 +12937,8 @@ export const getEeMetabotAnalyticsConversation: API.OperationMethod<
   GetEeMetabotAnalyticsConversationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeMetabotAnalyticsConversationRequest,
-  output: GetEeMetabotAnalyticsConversationResponse,
+  input: __S(482) as any as S.Schema<GetEeMetabotAnalyticsConversationRequest>,
+  output: __S(28) as any as S.Schema<GetEeMetabotAnalyticsConversationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19164,8 +12952,8 @@ export const getEeMetabotAnalyticsConversations: API.OperationMethod<
   GetEeMetabotAnalyticsConversationsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeMetabotAnalyticsConversationsRequest,
-  output: GetEeMetabotAnalyticsConversationsResponse,
+  input: __S(483) as any as S.Schema<GetEeMetabotAnalyticsConversationsRequest>,
+  output: __S(28) as any as S.Schema<GetEeMetabotAnalyticsConversationsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19179,8 +12967,8 @@ export const getEeMetabotUsage: API.OperationMethod<
   GetEeMetabotUsageError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeMetabotUsageRequest,
-  output: GetEeMetabotUsageResponse,
+  input: __S(484) as any as S.Schema<GetEeMetabotUsageRequest>,
+  output: __S(20) as any as S.Schema<GetEeMetabotUsageResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19194,8 +12982,8 @@ export const getEeMfaAdminOverview: API.OperationMethod<
   GetEeMfaAdminOverviewError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeMfaAdminOverviewRequest,
-  output: GetEeMfaAdminOverviewResponse,
+  input: __S(485) as any as S.Schema<GetEeMfaAdminOverviewRequest>,
+  output: __S(20) as any as S.Schema<GetEeMfaAdminOverviewResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19209,8 +12997,8 @@ export const getEeMfaStatus: API.OperationMethod<
   GetEeMfaStatusError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeMfaStatusRequest,
-  output: GetEeMfaStatusResponse,
+  input: __S(486) as any as S.Schema<GetEeMfaStatusRequest>,
+  output: __S(20) as any as S.Schema<GetEeMfaStatusResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19224,8 +13012,8 @@ export const getEePermissionDebug: API.OperationMethod<
   GetEePermissionDebugError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEePermissionDebugRequest,
-  output: GetEePermissionDebugResponse,
+  input: __S(487) as any as S.Schema<GetEePermissionDebugRequest>,
+  output: __S(20) as any as S.Schema<GetEePermissionDebugResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19239,8 +13027,8 @@ export const getEeRemoteSyncBranches: API.OperationMethod<
   GetEeRemoteSyncBranchesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeRemoteSyncBranchesRequest,
-  output: GetEeRemoteSyncBranchesResponse,
+  input: __S(488) as any as S.Schema<GetEeRemoteSyncBranchesRequest>,
+  output: __S(38) as any as S.Schema<GetEeRemoteSyncBranchesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19254,8 +13042,8 @@ export const getEeRemoteSyncCurrentTask: API.OperationMethod<
   GetEeRemoteSyncCurrentTaskError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeRemoteSyncCurrentTaskRequest,
-  output: GetEeRemoteSyncCurrentTaskResponse,
+  input: __S(489) as any as S.Schema<GetEeRemoteSyncCurrentTaskRequest>,
+  output: __S(28) as any as S.Schema<GetEeRemoteSyncCurrentTaskResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19269,8 +13057,8 @@ export const getEeRemoteSyncDirty: API.OperationMethod<
   GetEeRemoteSyncDirtyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeRemoteSyncDirtyRequest,
-  output: GetEeRemoteSyncDirtyResponse,
+  input: __S(490) as any as S.Schema<GetEeRemoteSyncDirtyRequest>,
+  output: __S(20) as any as S.Schema<GetEeRemoteSyncDirtyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19284,8 +13072,8 @@ export const getEeRemoteSyncExportPreflight: API.OperationMethod<
   GetEeRemoteSyncExportPreflightError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeRemoteSyncExportPreflightRequest,
-  output: GetEeRemoteSyncExportPreflightResponse,
+  input: __S(491) as any as S.Schema<GetEeRemoteSyncExportPreflightRequest>,
+  output: __S(28) as any as S.Schema<GetEeRemoteSyncExportPreflightResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19299,8 +13087,8 @@ export const getEeRemoteSyncHasRemoteChanges: API.OperationMethod<
   GetEeRemoteSyncHasRemoteChangesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeRemoteSyncHasRemoteChangesRequest,
-  output: GetEeRemoteSyncHasRemoteChangesResponse,
+  input: __S(492) as any as S.Schema<GetEeRemoteSyncHasRemoteChangesRequest>,
+  output: __S(28) as any as S.Schema<GetEeRemoteSyncHasRemoteChangesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19314,8 +13102,8 @@ export const getEeRemoteSyncIsDirty: API.OperationMethod<
   GetEeRemoteSyncIsDirtyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeRemoteSyncIsDirtyRequest,
-  output: GetEeRemoteSyncIsDirtyResponse,
+  input: __S(493) as any as S.Schema<GetEeRemoteSyncIsDirtyRequest>,
+  output: __S(20) as any as S.Schema<GetEeRemoteSyncIsDirtyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19329,8 +13117,8 @@ export const getEeReplacementRun: API.OperationMethod<
   GetEeReplacementRunError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeReplacementRunRequest,
-  output: GetEeReplacementRunResponse,
+  input: __S(494) as any as S.Schema<GetEeReplacementRunRequest>,
+  output: __S(20) as any as S.Schema<GetEeReplacementRunResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19344,8 +13132,8 @@ export const getEeReplacementRuns: API.OperationMethod<
   GetEeReplacementRunsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeReplacementRunsRequest,
-  output: GetEeReplacementRunsResponse,
+  input: __S(495) as any as S.Schema<GetEeReplacementRunsRequest>,
+  output: __S(20) as any as S.Schema<GetEeReplacementRunsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19359,8 +13147,8 @@ export const getEeScimGroup: API.OperationMethod<
   GetEeScimGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeScimGroupRequest,
-  output: GetEeScimGroupResponse,
+  input: __S(496) as any as S.Schema<GetEeScimGroupRequest>,
+  output: __S(20) as any as S.Schema<GetEeScimGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19374,8 +13162,8 @@ export const getEeScimGroups: API.OperationMethod<
   GetEeScimGroupsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeScimGroupsRequest,
-  output: GetEeScimGroupsResponse,
+  input: __S(497) as any as S.Schema<GetEeScimGroupsRequest>,
+  output: __S(20) as any as S.Schema<GetEeScimGroupsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19389,8 +13177,8 @@ export const getEeScimKey: API.OperationMethod<
   GetEeScimKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeScimKeyRequest,
-  output: GetEeScimKeyResponse,
+  input: __S(498) as any as S.Schema<GetEeScimKeyRequest>,
+  output: __S(20) as any as S.Schema<GetEeScimKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19404,8 +13192,8 @@ export const getEeScimUser: API.OperationMethod<
   GetEeScimUserError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeScimUserRequest,
-  output: GetEeScimUserResponse,
+  input: __S(499) as any as S.Schema<GetEeScimUserRequest>,
+  output: __S(20) as any as S.Schema<GetEeScimUserResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19419,8 +13207,8 @@ export const getEeScimUsers: API.OperationMethod<
   GetEeScimUsersError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeScimUsersRequest,
-  output: GetEeScimUsersResponse,
+  input: __S(500) as any as S.Schema<GetEeScimUsersRequest>,
+  output: __S(20) as any as S.Schema<GetEeScimUsersResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19434,8 +13222,8 @@ export const getEeSecurityCenter: API.OperationMethod<
   GetEeSecurityCenterError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeSecurityCenterRequest,
-  output: GetEeSecurityCenterResponse,
+  input: __S(501) as any as S.Schema<GetEeSecurityCenterRequest>,
+  output: __S(20) as any as S.Schema<GetEeSecurityCenterResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19449,8 +13237,8 @@ export const getEeSemanticSearchStatus: API.OperationMethod<
   GetEeSemanticSearchStatusError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeSemanticSearchStatusRequest,
-  output: GetEeSemanticSearchStatusResponse,
+  input: __S(502) as any as S.Schema<GetEeSemanticSearchStatusRequest>,
+  output: __S(28) as any as S.Schema<GetEeSemanticSearchStatusResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19464,8 +13252,8 @@ export const getEeSerializationMetadataImport: API.OperationMethod<
   GetEeSerializationMetadataImportError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeSerializationMetadataImportRequest,
-  output: GetEeSerializationMetadataImportResponse,
+  input: __S(503) as any as S.Schema<GetEeSerializationMetadataImportRequest>,
+  output: __S(28) as any as S.Schema<GetEeSerializationMetadataImportResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19479,8 +13267,8 @@ export const getEeStale: API.OperationMethod<
   GetEeStaleError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeStaleRequest,
-  output: GetEeStaleResponse,
+  input: __S(504) as any as S.Schema<GetEeStaleRequest>,
+  output: __S(20) as any as S.Schema<GetEeStaleResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19494,8 +13282,8 @@ export const getEeSupportAccessGrant: API.OperationMethod<
   GetEeSupportAccessGrantError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeSupportAccessGrantRequest,
-  output: GetEeSupportAccessGrantResponse,
+  input: __S(505) as any as S.Schema<GetEeSupportAccessGrantRequest>,
+  output: __S(38) as any as S.Schema<GetEeSupportAccessGrantResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19509,8 +13297,8 @@ export const getEeSupportAccessGrantCurrent: API.OperationMethod<
   GetEeSupportAccessGrantCurrentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeSupportAccessGrantCurrentRequest,
-  output: GetEeSupportAccessGrantCurrentResponse,
+  input: __S(506) as any as S.Schema<GetEeSupportAccessGrantCurrentRequest>,
+  output: __S(28) as any as S.Schema<GetEeSupportAccessGrantCurrentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19524,8 +13312,8 @@ export const getEeTenant: API.OperationMethod<
   GetEeTenantError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeTenantRequest,
-  output: GetEeTenantResponse,
+  input: __S(507) as any as S.Schema<GetEeTenantRequest>,
+  output: __S(20) as any as S.Schema<GetEeTenantResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19539,8 +13327,8 @@ export const getEeTenantById: API.OperationMethod<
   GetEeTenantByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeTenantByIdRequest,
-  output: GetEeTenantByIdResponse,
+  input: __S(508) as any as S.Schema<GetEeTenantByIdRequest>,
+  output: __S(20) as any as S.Schema<GetEeTenantByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19554,8 +13342,8 @@ export const getEeTransformInspect: API.OperationMethod<
   GetEeTransformInspectError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeTransformInspectRequest,
-  output: GetEeTransformInspectResponse,
+  input: __S(509) as any as S.Schema<GetEeTransformInspectRequest>,
+  output: __S(20) as any as S.Schema<GetEeTransformInspectResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19569,8 +13357,8 @@ export const getEeTransformInspectByLensId: API.OperationMethod<
   GetEeTransformInspectByLensIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeTransformInspectByLensIdRequest,
-  output: GetEeTransformInspectByLensIdResponse,
+  input: __S(510) as any as S.Schema<GetEeTransformInspectByLensIdRequest>,
+  output: __S(28) as any as S.Schema<GetEeTransformInspectByLensIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19584,8 +13372,8 @@ export const getEeTransformsPythonLibrary: API.OperationMethod<
   GetEeTransformsPythonLibraryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeTransformsPythonLibraryRequest,
-  output: GetEeTransformsPythonLibraryResponse,
+  input: __S(511) as any as S.Schema<GetEeTransformsPythonLibraryRequest>,
+  output: __S(28) as any as S.Schema<GetEeTransformsPythonLibraryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19599,8 +13387,8 @@ export const getEeUploadManagementTables: API.OperationMethod<
   GetEeUploadManagementTablesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEeUploadManagementTablesRequest,
-  output: GetEeUploadManagementTablesResponse,
+  input: __S(512) as any as S.Schema<GetEeUploadManagementTablesRequest>,
+  output: __S(28) as any as S.Schema<GetEeUploadManagementTablesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19614,8 +13402,8 @@ export const getEmbedCard: API.OperationMethod<
   GetEmbedCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedCardRequest,
-  output: GetEmbedCardResponse,
+  input: __S(513) as any as S.Schema<GetEmbedCardRequest>,
+  output: __S(20) as any as S.Schema<GetEmbedCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19629,8 +13417,8 @@ export const getEmbedCardParamRemapping: API.OperationMethod<
   GetEmbedCardParamRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedCardParamRemappingRequest,
-  output: GetEmbedCardParamRemappingResponse,
+  input: __S(514) as any as S.Schema<GetEmbedCardParamRemappingRequest>,
+  output: __S(28) as any as S.Schema<GetEmbedCardParamRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19644,8 +13432,8 @@ export const getEmbedCardParamSearch: API.OperationMethod<
   GetEmbedCardParamSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedCardParamSearchRequest,
-  output: GetEmbedCardParamSearchResponse,
+  input: __S(515) as any as S.Schema<GetEmbedCardParamSearchRequest>,
+  output: __S(38) as any as S.Schema<GetEmbedCardParamSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19659,8 +13447,8 @@ export const getEmbedCardParamValues: API.OperationMethod<
   GetEmbedCardParamValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedCardParamValuesRequest,
-  output: GetEmbedCardParamValuesResponse,
+  input: __S(516) as any as S.Schema<GetEmbedCardParamValuesRequest>,
+  output: __S(38) as any as S.Schema<GetEmbedCardParamValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19674,8 +13462,8 @@ export const getEmbedCardQuery: API.OperationMethod<
   GetEmbedCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedCardQueryRequest,
-  output: GetEmbedCardQueryResponse,
+  input: __S(517) as any as S.Schema<GetEmbedCardQueryRequest>,
+  output: __S(20) as any as S.Schema<GetEmbedCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19689,8 +13477,8 @@ export const getEmbedCardQueryByExportFormat: API.OperationMethod<
   GetEmbedCardQueryByExportFormatError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedCardQueryByExportFormatRequest,
-  output: GetEmbedCardQueryByExportFormatResponse,
+  input: __S(518) as any as S.Schema<GetEmbedCardQueryByExportFormatRequest>,
+  output: __S(28) as any as S.Schema<GetEmbedCardQueryByExportFormatResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19704,8 +13492,8 @@ export const getEmbedDashboard: API.OperationMethod<
   GetEmbedDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedDashboardRequest,
-  output: GetEmbedDashboardResponse,
+  input: __S(519) as any as S.Schema<GetEmbedDashboardRequest>,
+  output: __S(20) as any as S.Schema<GetEmbedDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19719,8 +13507,8 @@ export const getEmbedDashboardDashcardCard: API.OperationMethod<
   GetEmbedDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedDashboardDashcardCardRequest,
-  output: GetEmbedDashboardDashcardCardResponse,
+  input: __S(520) as any as S.Schema<GetEmbedDashboardDashcardCardRequest>,
+  output: __S(28) as any as S.Schema<GetEmbedDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19734,8 +13522,8 @@ export const getEmbedDashboardDashcardCardByExportFormat: API.OperationMethod<
   GetEmbedDashboardDashcardCardByExportFormatError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedDashboardDashcardCardByExportFormatRequest,
-  output: GetEmbedDashboardDashcardCardByExportFormatResponse,
+  input: __S(521) as any as S.Schema<GetEmbedDashboardDashcardCardByExportFormatRequest>,
+  output: __S(28) as any as S.Schema<GetEmbedDashboardDashcardCardByExportFormatResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19749,8 +13537,8 @@ export const getEmbedDashboardParamRemapping: API.OperationMethod<
   GetEmbedDashboardParamRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedDashboardParamRemappingRequest,
-  output: GetEmbedDashboardParamRemappingResponse,
+  input: __S(522) as any as S.Schema<GetEmbedDashboardParamRemappingRequest>,
+  output: __S(28) as any as S.Schema<GetEmbedDashboardParamRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19764,8 +13552,8 @@ export const getEmbedDashboardParamSearch: API.OperationMethod<
   GetEmbedDashboardParamSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedDashboardParamSearchRequest,
-  output: GetEmbedDashboardParamSearchResponse,
+  input: __S(523) as any as S.Schema<GetEmbedDashboardParamSearchRequest>,
+  output: __S(28) as any as S.Schema<GetEmbedDashboardParamSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19779,8 +13567,8 @@ export const getEmbedDashboardParamValues: API.OperationMethod<
   GetEmbedDashboardParamValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedDashboardParamValuesRequest,
-  output: GetEmbedDashboardParamValuesResponse,
+  input: __S(524) as any as S.Schema<GetEmbedDashboardParamValuesRequest>,
+  output: __S(28) as any as S.Schema<GetEmbedDashboardParamValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19794,8 +13582,8 @@ export const getEmbedPivotCardQuery: API.OperationMethod<
   GetEmbedPivotCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedPivotCardQueryRequest,
-  output: GetEmbedPivotCardQueryResponse,
+  input: __S(525) as any as S.Schema<GetEmbedPivotCardQueryRequest>,
+  output: __S(20) as any as S.Schema<GetEmbedPivotCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19809,8 +13597,8 @@ export const getEmbedPivotDashboardDashcardCard: API.OperationMethod<
   GetEmbedPivotDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedPivotDashboardDashcardCardRequest,
-  output: GetEmbedPivotDashboardDashcardCardResponse,
+  input: __S(526) as any as S.Schema<GetEmbedPivotDashboardDashcardCardRequest>,
+  output: __S(28) as any as S.Schema<GetEmbedPivotDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19824,8 +13612,8 @@ export const getEmbedTheme: API.OperationMethod<
   GetEmbedThemeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedThemeRequest,
-  output: GetEmbedThemeResponse,
+  input: __S(527) as any as S.Schema<GetEmbedThemeRequest>,
+  output: __S(20) as any as S.Schema<GetEmbedThemeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19839,8 +13627,8 @@ export const getEmbedThemeById: API.OperationMethod<
   GetEmbedThemeByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedThemeByIdRequest,
-  output: GetEmbedThemeByIdResponse,
+  input: __S(528) as any as S.Schema<GetEmbedThemeByIdRequest>,
+  output: __S(20) as any as S.Schema<GetEmbedThemeByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19854,8 +13642,8 @@ export const getEmbedTilesCard: API.OperationMethod<
   GetEmbedTilesCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedTilesCardRequest,
-  output: GetEmbedTilesCardResponse,
+  input: __S(529) as any as S.Schema<GetEmbedTilesCardRequest>,
+  output: __S(20) as any as S.Schema<GetEmbedTilesCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19869,8 +13657,8 @@ export const getEmbedTilesDashboardDashcardCard: API.OperationMethod<
   GetEmbedTilesDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEmbedTilesDashboardDashcardCardRequest,
-  output: GetEmbedTilesDashboardDashcardCardResponse,
+  input: __S(530) as any as S.Schema<GetEmbedTilesDashboardDashcardCardRequest>,
+  output: __S(28) as any as S.Schema<GetEmbedTilesDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19884,8 +13672,8 @@ export const getField: API.OperationMethod<
   GetFieldError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFieldRequest,
-  output: GetFieldResponse,
+  input: __S(531) as any as S.Schema<GetFieldRequest>,
+  output: __S(20) as any as S.Schema<GetFieldResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19899,8 +13687,8 @@ export const getFieldRelated: API.OperationMethod<
   GetFieldRelatedError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFieldRelatedRequest,
-  output: GetFieldRelatedResponse,
+  input: __S(532) as any as S.Schema<GetFieldRelatedRequest>,
+  output: __S(20) as any as S.Schema<GetFieldRelatedResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19914,8 +13702,8 @@ export const getFieldRemapping: API.OperationMethod<
   GetFieldRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFieldRemappingRequest,
-  output: GetFieldRemappingResponse,
+  input: __S(533) as any as S.Schema<GetFieldRemappingRequest>,
+  output: __S(20) as any as S.Schema<GetFieldRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19929,8 +13717,8 @@ export const getFieldSearch: API.OperationMethod<
   GetFieldSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFieldSearchRequest,
-  output: GetFieldSearchResponse,
+  input: __S(534) as any as S.Schema<GetFieldSearchRequest>,
+  output: __S(20) as any as S.Schema<GetFieldSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19944,8 +13732,8 @@ export const getFieldSummary: API.OperationMethod<
   GetFieldSummaryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFieldSummaryRequest,
-  output: GetFieldSummaryResponse,
+  input: __S(535) as any as S.Schema<GetFieldSummaryRequest>,
+  output: __S(20) as any as S.Schema<GetFieldSummaryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19959,8 +13747,8 @@ export const getFieldValues: API.OperationMethod<
   GetFieldValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFieldValuesRequest,
-  output: GetFieldValuesResponse,
+  input: __S(536) as any as S.Schema<GetFieldValuesRequest>,
+  output: __S(20) as any as S.Schema<GetFieldValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19974,8 +13762,8 @@ export const getGeojson: API.OperationMethod<
   GetGeojsonError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGeojsonRequest,
-  output: GetGeojsonResponse,
+  input: __S(537) as any as S.Schema<GetGeojsonRequest>,
+  output: __S(20) as any as S.Schema<GetGeojsonResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -19989,8 +13777,8 @@ export const getGeojsonByKey: API.OperationMethod<
   GetGeojsonByKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGeojsonByKeyRequest,
-  output: GetGeojsonByKeyResponse,
+  input: __S(538) as any as S.Schema<GetGeojsonByKeyRequest>,
+  output: __S(20) as any as S.Schema<GetGeojsonByKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20004,8 +13792,8 @@ export const getGlossary: API.OperationMethod<
   GetGlossaryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGlossaryRequest,
-  output: GetGlossaryResponse,
+  input: __S(539) as any as S.Schema<GetGlossaryRequest>,
+  output: __S(20) as any as S.Schema<GetGlossaryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20019,8 +13807,8 @@ export const getHealthInspector: API.OperationMethod<
   GetHealthInspectorError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHealthInspectorRequest,
-  output: GetHealthInspectorResponse,
+  input: __S(540) as any as S.Schema<GetHealthInspectorRequest>,
+  output: __S(20) as any as S.Schema<GetHealthInspectorResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20034,8 +13822,8 @@ export const getKey: API.OperationMethod<
   GetKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetKeyRequest,
-  output: GetKeyResponse,
+  input: __S(541) as any as S.Schema<GetKeyRequest>,
+  output: __S(20) as any as S.Schema<GetKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20049,8 +13837,8 @@ export const getKeyCount: API.OperationMethod<
   GetKeyCountError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetKeyCountRequest,
-  output: GetKeyCountResponse,
+  input: __S(542) as any as S.Schema<GetKeyCountRequest>,
+  output: __S(20) as any as S.Schema<GetKeyCountResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20064,8 +13852,8 @@ export const getLlmListModels: API.OperationMethod<
   GetLlmListModelsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLlmListModelsRequest,
-  output: GetLlmListModelsResponse,
+  input: __S(543) as any as S.Schema<GetLlmListModelsRequest>,
+  output: __S(20) as any as S.Schema<GetLlmListModelsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20079,8 +13867,8 @@ export const getLoggerLogs: API.OperationMethod<
   GetLoggerLogsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLoggerLogsRequest,
-  output: GetLoggerLogsResponse,
+  input: __S(544) as any as S.Schema<GetLoggerLogsRequest>,
+  output: __S(20) as any as S.Schema<GetLoggerLogsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20094,8 +13882,8 @@ export const getLoggerPresets: API.OperationMethod<
   GetLoggerPresetsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLoggerPresetsRequest,
-  output: GetLoggerPresetsResponse,
+  input: __S(545) as any as S.Schema<GetLoggerPresetsRequest>,
+  output: __S(20) as any as S.Schema<GetLoggerPresetsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20109,8 +13897,8 @@ export const getLoginHistoryCurrent: API.OperationMethod<
   GetLoginHistoryCurrentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLoginHistoryCurrentRequest,
-  output: GetLoginHistoryCurrentResponse,
+  input: __S(546) as any as S.Schema<GetLoginHistoryCurrentRequest>,
+  output: __S(20) as any as S.Schema<GetLoginHistoryCurrentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20124,8 +13912,8 @@ export const getMeasure: API.OperationMethod<
   GetMeasureError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMeasureRequest,
-  output: GetMeasureResponse,
+  input: __S(547) as any as S.Schema<GetMeasureRequest>,
+  output: __S(20) as any as S.Schema<GetMeasureResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20139,8 +13927,8 @@ export const getMeasureById: API.OperationMethod<
   GetMeasureByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMeasureByIdRequest,
-  output: GetMeasureByIdResponse,
+  input: __S(548) as any as S.Schema<GetMeasureByIdRequest>,
+  output: __S(20) as any as S.Schema<GetMeasureByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20154,8 +13942,8 @@ export const getMeasureDimensionRemapping: API.OperationMethod<
   GetMeasureDimensionRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMeasureDimensionRemappingRequest,
-  output: GetMeasureDimensionRemappingResponse,
+  input: __S(549) as any as S.Schema<GetMeasureDimensionRemappingRequest>,
+  output: __S(28) as any as S.Schema<GetMeasureDimensionRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20169,8 +13957,8 @@ export const getMeasureDimensionSearch: API.OperationMethod<
   GetMeasureDimensionSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMeasureDimensionSearchRequest,
-  output: GetMeasureDimensionSearchResponse,
+  input: __S(550) as any as S.Schema<GetMeasureDimensionSearchRequest>,
+  output: __S(28) as any as S.Schema<GetMeasureDimensionSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20184,8 +13972,8 @@ export const getMeasureDimensionValues: API.OperationMethod<
   GetMeasureDimensionValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMeasureDimensionValuesRequest,
-  output: GetMeasureDimensionValuesResponse,
+  input: __S(551) as any as S.Schema<GetMeasureDimensionValuesRequest>,
+  output: __S(28) as any as S.Schema<GetMeasureDimensionValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20199,8 +13987,8 @@ export const getMetabotConversation: API.OperationMethod<
   GetMetabotConversationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetabotConversationRequest,
-  output: GetMetabotConversationResponse,
+  input: __S(552) as any as S.Schema<GetMetabotConversationRequest>,
+  output: __S(20) as any as S.Schema<GetMetabotConversationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20214,8 +14002,8 @@ export const getMetabotConversations: API.OperationMethod<
   GetMetabotConversationsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetabotConversationsRequest,
-  output: GetMetabotConversationsResponse,
+  input: __S(553) as any as S.Schema<GetMetabotConversationsRequest>,
+  output: __S(38) as any as S.Schema<GetMetabotConversationsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20229,8 +14017,8 @@ export const getMetabotMetabot: API.OperationMethod<
   GetMetabotMetabotError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetabotMetabotRequest,
-  output: GetMetabotMetabotResponse,
+  input: __S(554) as any as S.Schema<GetMetabotMetabotRequest>,
+  output: __S(20) as any as S.Schema<GetMetabotMetabotResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20244,8 +14032,8 @@ export const getMetabotMetabotById: API.OperationMethod<
   GetMetabotMetabotByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetabotMetabotByIdRequest,
-  output: GetMetabotMetabotByIdResponse,
+  input: __S(555) as any as S.Schema<GetMetabotMetabotByIdRequest>,
+  output: __S(20) as any as S.Schema<GetMetabotMetabotByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20259,8 +14047,8 @@ export const getMetabotMetabotPromptSuggestions: API.OperationMethod<
   GetMetabotMetabotPromptSuggestionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetabotMetabotPromptSuggestionsRequest,
-  output: GetMetabotMetabotPromptSuggestionsResponse,
+  input: __S(556) as any as S.Schema<GetMetabotMetabotPromptSuggestionsRequest>,
+  output: __S(28) as any as S.Schema<GetMetabotMetabotPromptSuggestionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20274,8 +14062,8 @@ export const getMetabotPermissionsUserPermissions: API.OperationMethod<
   GetMetabotPermissionsUserPermissionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetabotPermissionsUserPermissionsRequest,
-  output: GetMetabotPermissionsUserPermissionsResponse,
+  input: __S(557) as any as S.Schema<GetMetabotPermissionsUserPermissionsRequest>,
+  output: __S(28) as any as S.Schema<GetMetabotPermissionsUserPermissionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20289,8 +14077,8 @@ export const getMetabotSettings: API.OperationMethod<
   GetMetabotSettingsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetabotSettingsRequest,
-  output: GetMetabotSettingsResponse,
+  input: __S(558) as any as S.Schema<GetMetabotSettingsRequest>,
+  output: __S(20) as any as S.Schema<GetMetabotSettingsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20304,8 +14092,8 @@ export const getMetric: API.OperationMethod<
   GetMetricError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetricRequest,
-  output: GetMetricResponse,
+  input: __S(559) as any as S.Schema<GetMetricRequest>,
+  output: __S(20) as any as S.Schema<GetMetricResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20319,8 +14107,8 @@ export const getMetricById: API.OperationMethod<
   GetMetricByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetricByIdRequest,
-  output: GetMetricByIdResponse,
+  input: __S(560) as any as S.Schema<GetMetricByIdRequest>,
+  output: __S(20) as any as S.Schema<GetMetricByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20334,8 +14122,8 @@ export const getMetricDimensionRemapping: API.OperationMethod<
   GetMetricDimensionRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetricDimensionRemappingRequest,
-  output: GetMetricDimensionRemappingResponse,
+  input: __S(561) as any as S.Schema<GetMetricDimensionRemappingRequest>,
+  output: __S(28) as any as S.Schema<GetMetricDimensionRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20349,8 +14137,8 @@ export const getMetricDimensionSearch: API.OperationMethod<
   GetMetricDimensionSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetricDimensionSearchRequest,
-  output: GetMetricDimensionSearchResponse,
+  input: __S(562) as any as S.Schema<GetMetricDimensionSearchRequest>,
+  output: __S(28) as any as S.Schema<GetMetricDimensionSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20364,8 +14152,8 @@ export const getMetricDimensionValues: API.OperationMethod<
   GetMetricDimensionValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMetricDimensionValuesRequest,
-  output: GetMetricDimensionValuesResponse,
+  input: __S(563) as any as S.Schema<GetMetricDimensionValuesRequest>,
+  output: __S(28) as any as S.Schema<GetMetricDimensionValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20379,8 +14167,8 @@ export const getModelIndex: API.OperationMethod<
   GetModelIndexError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetModelIndexRequest,
-  output: GetModelIndexResponse,
+  input: __S(564) as any as S.Schema<GetModelIndexRequest>,
+  output: __S(20) as any as S.Schema<GetModelIndexResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20394,8 +14182,8 @@ export const getModelIndexById: API.OperationMethod<
   GetModelIndexByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetModelIndexByIdRequest,
-  output: GetModelIndexByIdResponse,
+  input: __S(565) as any as S.Schema<GetModelIndexByIdRequest>,
+  output: __S(20) as any as S.Schema<GetModelIndexByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20409,8 +14197,8 @@ export const getMtGtap: API.OperationMethod<
   GetMtGtapError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMtGtapRequest,
-  output: GetMtGtapResponse,
+  input: __S(566) as any as S.Schema<GetMtGtapRequest>,
+  output: __S(20) as any as S.Schema<GetMtGtapResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20424,8 +14212,8 @@ export const getMtGtapById: API.OperationMethod<
   GetMtGtapByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMtGtapByIdRequest,
-  output: GetMtGtapByIdResponse,
+  input: __S(567) as any as S.Schema<GetMtGtapByIdRequest>,
+  output: __S(20) as any as S.Schema<GetMtGtapByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20439,8 +14227,8 @@ export const getMtUserAttributes: API.OperationMethod<
   GetMtUserAttributesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMtUserAttributesRequest,
-  output: GetMtUserAttributesResponse,
+  input: __S(568) as any as S.Schema<GetMtUserAttributesRequest>,
+  output: __S(20) as any as S.Schema<GetMtUserAttributesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20454,8 +14242,8 @@ export const getNativeQuerySnippet: API.OperationMethod<
   GetNativeQuerySnippetError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNativeQuerySnippetRequest,
-  output: GetNativeQuerySnippetResponse,
+  input: __S(569) as any as S.Schema<GetNativeQuerySnippetRequest>,
+  output: __S(20) as any as S.Schema<GetNativeQuerySnippetResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20469,8 +14257,8 @@ export const getNativeQuerySnippetById: API.OperationMethod<
   GetNativeQuerySnippetByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNativeQuerySnippetByIdRequest,
-  output: GetNativeQuerySnippetByIdResponse,
+  input: __S(570) as any as S.Schema<GetNativeQuerySnippetByIdRequest>,
+  output: __S(28) as any as S.Schema<GetNativeQuerySnippetByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20484,8 +14272,8 @@ export const getNotification: API.OperationMethod<
   GetNotificationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNotificationRequest,
-  output: GetNotificationResponse,
+  input: __S(571) as any as S.Schema<GetNotificationRequest>,
+  output: __S(20) as any as S.Schema<GetNotificationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20499,8 +14287,8 @@ export const getNotificationAdmin: API.OperationMethod<
   GetNotificationAdminError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNotificationAdminRequest,
-  output: GetNotificationAdminResponse,
+  input: __S(572) as any as S.Schema<GetNotificationAdminRequest>,
+  output: __S(20) as any as S.Schema<GetNotificationAdminResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20514,8 +14302,8 @@ export const getNotificationAdminById: API.OperationMethod<
   GetNotificationAdminByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNotificationAdminByIdRequest,
-  output: GetNotificationAdminByIdResponse,
+  input: __S(573) as any as S.Schema<GetNotificationAdminByIdRequest>,
+  output: __S(28) as any as S.Schema<GetNotificationAdminByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20529,8 +14317,8 @@ export const getNotificationById: API.OperationMethod<
   GetNotificationByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNotificationByIdRequest,
-  output: GetNotificationByIdResponse,
+  input: __S(574) as any as S.Schema<GetNotificationByIdRequest>,
+  output: __S(20) as any as S.Schema<GetNotificationByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20544,8 +14332,8 @@ export const getOauthAuthorizations: API.OperationMethod<
   GetOauthAuthorizationsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOauthAuthorizationsRequest,
-  output: GetOauthAuthorizationsResponse,
+  input: __S(575) as any as S.Schema<GetOauthAuthorizationsRequest>,
+  output: __S(20) as any as S.Schema<GetOauthAuthorizationsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20559,8 +14347,8 @@ export const getOembed: API.OperationMethod<
   GetOembedError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOembedRequest,
-  output: GetOembedResponse,
+  input: __S(576) as any as S.Schema<GetOembedRequest>,
+  output: __S(20) as any as S.Schema<GetOembedResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20574,8 +14362,8 @@ export const getOsiAiContext: API.OperationMethod<
   GetOsiAiContextError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOsiAiContextRequest,
-  output: GetOsiAiContextResponse,
+  input: __S(577) as any as S.Schema<GetOsiAiContextRequest>,
+  output: __S(20) as any as S.Schema<GetOsiAiContextResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20589,8 +14377,8 @@ export const getOsiAiContextByEntityLocalId: API.OperationMethod<
   GetOsiAiContextByEntityLocalIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOsiAiContextByEntityLocalIdRequest,
-  output: GetOsiAiContextByEntityLocalIdResponse,
+  input: __S(578) as any as S.Schema<GetOsiAiContextByEntityLocalIdRequest>,
+  output: __S(28) as any as S.Schema<GetOsiAiContextByEntityLocalIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20604,8 +14392,8 @@ export const getPermissionsGraph: API.OperationMethod<
   GetPermissionsGraphError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPermissionsGraphRequest,
-  output: GetPermissionsGraphResponse,
+  input: __S(579) as any as S.Schema<GetPermissionsGraphRequest>,
+  output: __S(20) as any as S.Schema<GetPermissionsGraphResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20619,8 +14407,8 @@ export const getPermissionsGraphDb: API.OperationMethod<
   GetPermissionsGraphDbError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPermissionsGraphDbRequest,
-  output: GetPermissionsGraphDbResponse,
+  input: __S(580) as any as S.Schema<GetPermissionsGraphDbRequest>,
+  output: __S(20) as any as S.Schema<GetPermissionsGraphDbResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20634,8 +14422,8 @@ export const getPermissionsGraphGroup: API.OperationMethod<
   GetPermissionsGraphGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPermissionsGraphGroupRequest,
-  output: GetPermissionsGraphGroupResponse,
+  input: __S(581) as any as S.Schema<GetPermissionsGraphGroupRequest>,
+  output: __S(28) as any as S.Schema<GetPermissionsGraphGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20649,8 +14437,8 @@ export const getPermissionsGroup: API.OperationMethod<
   GetPermissionsGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPermissionsGroupRequest,
-  output: GetPermissionsGroupResponse,
+  input: __S(582) as any as S.Schema<GetPermissionsGroupRequest>,
+  output: __S(20) as any as S.Schema<GetPermissionsGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20664,8 +14452,8 @@ export const getPermissionsGroupById: API.OperationMethod<
   GetPermissionsGroupByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPermissionsGroupByIdRequest,
-  output: GetPermissionsGroupByIdResponse,
+  input: __S(583) as any as S.Schema<GetPermissionsGroupByIdRequest>,
+  output: __S(38) as any as S.Schema<GetPermissionsGroupByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20679,8 +14467,8 @@ export const getPermissionsMembership: API.OperationMethod<
   GetPermissionsMembershipError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPermissionsMembershipRequest,
-  output: GetPermissionsMembershipResponse,
+  input: __S(584) as any as S.Schema<GetPermissionsMembershipRequest>,
+  output: __S(28) as any as S.Schema<GetPermissionsMembershipResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20694,8 +14482,8 @@ export const getPersist: API.OperationMethod<
   GetPersistError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPersistRequest,
-  output: GetPersistResponse,
+  input: __S(585) as any as S.Schema<GetPersistRequest>,
+  output: __S(20) as any as S.Schema<GetPersistResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20709,8 +14497,8 @@ export const getPersistByPersistedInfoId: API.OperationMethod<
   GetPersistByPersistedInfoIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPersistByPersistedInfoIdRequest,
-  output: GetPersistByPersistedInfoIdResponse,
+  input: __S(586) as any as S.Schema<GetPersistByPersistedInfoIdRequest>,
+  output: __S(28) as any as S.Schema<GetPersistByPersistedInfoIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20724,8 +14512,8 @@ export const getPersistCard: API.OperationMethod<
   GetPersistCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPersistCardRequest,
-  output: GetPersistCardResponse,
+  input: __S(587) as any as S.Schema<GetPersistCardRequest>,
+  output: __S(20) as any as S.Schema<GetPersistCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20739,8 +14527,8 @@ export const getPivotCardQuery: API.OperationMethod<
   GetPivotCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPivotCardQueryRequest,
-  output: GetPivotCardQueryResponse,
+  input: __S(588) as any as S.Schema<GetPivotCardQueryRequest>,
+  output: __S(20) as any as S.Schema<GetPivotCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20754,8 +14542,8 @@ export const getPivotDashboardDashcardCard: API.OperationMethod<
   GetPivotDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPivotDashboardDashcardCardRequest,
-  output: GetPivotDashboardDashcardCardResponse,
+  input: __S(589) as any as S.Schema<GetPivotDashboardDashcardCardRequest>,
+  output: __S(28) as any as S.Schema<GetPivotDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20769,8 +14557,8 @@ export const getPremiumFeaturesTokenStatus: API.OperationMethod<
   GetPremiumFeaturesTokenStatusError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPremiumFeaturesTokenStatusRequest,
-  output: GetPremiumFeaturesTokenStatusResponse,
+  input: __S(590) as any as S.Schema<GetPremiumFeaturesTokenStatusRequest>,
+  output: __S(28) as any as S.Schema<GetPremiumFeaturesTokenStatusResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20784,8 +14572,8 @@ export const getPreviewEmbedCard: API.OperationMethod<
   GetPreviewEmbedCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPreviewEmbedCardRequest,
-  output: GetPreviewEmbedCardResponse,
+  input: __S(591) as any as S.Schema<GetPreviewEmbedCardRequest>,
+  output: __S(20) as any as S.Schema<GetPreviewEmbedCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20799,8 +14587,8 @@ export const getPreviewEmbedCardParamRemapping: API.OperationMethod<
   GetPreviewEmbedCardParamRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPreviewEmbedCardParamRemappingRequest,
-  output: GetPreviewEmbedCardParamRemappingResponse,
+  input: __S(592) as any as S.Schema<GetPreviewEmbedCardParamRemappingRequest>,
+  output: __S(28) as any as S.Schema<GetPreviewEmbedCardParamRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20814,8 +14602,8 @@ export const getPreviewEmbedCardParamValues: API.OperationMethod<
   GetPreviewEmbedCardParamValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPreviewEmbedCardParamValuesRequest,
-  output: GetPreviewEmbedCardParamValuesResponse,
+  input: __S(593) as any as S.Schema<GetPreviewEmbedCardParamValuesRequest>,
+  output: __S(28) as any as S.Schema<GetPreviewEmbedCardParamValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20829,8 +14617,8 @@ export const getPreviewEmbedCardQuery: API.OperationMethod<
   GetPreviewEmbedCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPreviewEmbedCardQueryRequest,
-  output: GetPreviewEmbedCardQueryResponse,
+  input: __S(594) as any as S.Schema<GetPreviewEmbedCardQueryRequest>,
+  output: __S(28) as any as S.Schema<GetPreviewEmbedCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20844,8 +14632,8 @@ export const getPreviewEmbedDashboard: API.OperationMethod<
   GetPreviewEmbedDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPreviewEmbedDashboardRequest,
-  output: GetPreviewEmbedDashboardResponse,
+  input: __S(595) as any as S.Schema<GetPreviewEmbedDashboardRequest>,
+  output: __S(28) as any as S.Schema<GetPreviewEmbedDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20859,8 +14647,8 @@ export const getPreviewEmbedDashboardDashcardCard: API.OperationMethod<
   GetPreviewEmbedDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPreviewEmbedDashboardDashcardCardRequest,
-  output: GetPreviewEmbedDashboardDashcardCardResponse,
+  input: __S(596) as any as S.Schema<GetPreviewEmbedDashboardDashcardCardRequest>,
+  output: __S(28) as any as S.Schema<GetPreviewEmbedDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20874,8 +14662,8 @@ export const getPreviewEmbedDashboardParamRemapping: API.OperationMethod<
   GetPreviewEmbedDashboardParamRemappingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPreviewEmbedDashboardParamRemappingRequest,
-  output: GetPreviewEmbedDashboardParamRemappingResponse,
+  input: __S(597) as any as S.Schema<GetPreviewEmbedDashboardParamRemappingRequest>,
+  output: __S(28) as any as S.Schema<GetPreviewEmbedDashboardParamRemappingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20889,8 +14677,8 @@ export const getPreviewEmbedDashboardParamSearch: API.OperationMethod<
   GetPreviewEmbedDashboardParamSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPreviewEmbedDashboardParamSearchRequest,
-  output: GetPreviewEmbedDashboardParamSearchResponse,
+  input: __S(598) as any as S.Schema<GetPreviewEmbedDashboardParamSearchRequest>,
+  output: __S(28) as any as S.Schema<GetPreviewEmbedDashboardParamSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20904,8 +14692,8 @@ export const getPreviewEmbedDashboardParamValues: API.OperationMethod<
   GetPreviewEmbedDashboardParamValuesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPreviewEmbedDashboardParamValuesRequest,
-  output: GetPreviewEmbedDashboardParamValuesResponse,
+  input: __S(599) as any as S.Schema<GetPreviewEmbedDashboardParamValuesRequest>,
+  output: __S(28) as any as S.Schema<GetPreviewEmbedDashboardParamValuesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20919,8 +14707,8 @@ export const getPreviewEmbedPivotCardQuery: API.OperationMethod<
   GetPreviewEmbedPivotCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPreviewEmbedPivotCardQueryRequest,
-  output: GetPreviewEmbedPivotCardQueryResponse,
+  input: __S(600) as any as S.Schema<GetPreviewEmbedPivotCardQueryRequest>,
+  output: __S(28) as any as S.Schema<GetPreviewEmbedPivotCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20934,8 +14722,8 @@ export const getPreviewEmbedPivotDashboardDashcardCard: API.OperationMethod<
   GetPreviewEmbedPivotDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPreviewEmbedPivotDashboardDashcardCardRequest,
-  output: GetPreviewEmbedPivotDashboardDashcardCardResponse,
+  input: __S(601) as any as S.Schema<GetPreviewEmbedPivotDashboardDashcardCardRequest>,
+  output: __S(28) as any as S.Schema<GetPreviewEmbedPivotDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20949,8 +14737,8 @@ export const getPreviewEmbedTilesCard: API.OperationMethod<
   GetPreviewEmbedTilesCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPreviewEmbedTilesCardRequest,
-  output: GetPreviewEmbedTilesCardResponse,
+  input: __S(602) as any as S.Schema<GetPreviewEmbedTilesCardRequest>,
+  output: __S(28) as any as S.Schema<GetPreviewEmbedTilesCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20964,8 +14752,8 @@ export const getPreviewEmbedTilesDashboardDashcardCard: API.OperationMethod<
   GetPreviewEmbedTilesDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPreviewEmbedTilesDashboardDashcardCardRequest,
-  output: GetPreviewEmbedTilesDashboardDashcardCardResponse,
+  input: __S(603) as any as S.Schema<GetPreviewEmbedTilesDashboardDashcardCardRequest>,
+  output: __S(28) as any as S.Schema<GetPreviewEmbedTilesDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20979,8 +14767,8 @@ export const getPulse: API.OperationMethod<
   GetPulseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPulseRequest,
-  output: GetPulseResponse,
+  input: __S(604) as any as S.Schema<GetPulseRequest>,
+  output: __S(20) as any as S.Schema<GetPulseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -20994,8 +14782,8 @@ export const getPulseById: API.OperationMethod<
   GetPulseByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPulseByIdRequest,
-  output: GetPulseByIdResponse,
+  input: __S(605) as any as S.Schema<GetPulseByIdRequest>,
+  output: __S(20) as any as S.Schema<GetPulseByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21009,8 +14797,8 @@ export const getPulseFormInput: API.OperationMethod<
   GetPulseFormInputError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPulseFormInputRequest,
-  output: GetPulseFormInputResponse,
+  input: __S(606) as any as S.Schema<GetPulseFormInputRequest>,
+  output: __S(20) as any as S.Schema<GetPulseFormInputResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21024,8 +14812,8 @@ export const getRevision: API.OperationMethod<
   GetRevisionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRevisionRequest,
-  output: GetRevisionResponse,
+  input: __S(607) as any as S.Schema<GetRevisionRequest>,
+  output: __S(20) as any as S.Schema<GetRevisionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21039,8 +14827,8 @@ export const getRevisionById: API.OperationMethod<
   GetRevisionByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRevisionByIdRequest,
-  output: GetRevisionByIdResponse,
+  input: __S(608) as any as S.Schema<GetRevisionByIdRequest>,
+  output: __S(20) as any as S.Schema<GetRevisionByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21054,8 +14842,8 @@ export const getSearch: API.OperationMethod<
   GetSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSearchRequest,
-  output: GetSearchResponse,
+  input: __S(609) as any as S.Schema<GetSearchRequest>,
+  output: __S(20) as any as S.Schema<GetSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21069,8 +14857,8 @@ export const getSearchDebug: API.OperationMethod<
   GetSearchDebugError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSearchDebugRequest,
-  output: GetSearchDebugResponse,
+  input: __S(610) as any as S.Schema<GetSearchDebugRequest>,
+  output: __S(20) as any as S.Schema<GetSearchDebugResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21084,8 +14872,8 @@ export const getSearchWeights: API.OperationMethod<
   GetSearchWeightsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSearchWeightsRequest,
-  output: GetSearchWeightsResponse,
+  input: __S(611) as any as S.Schema<GetSearchWeightsRequest>,
+  output: __S(20) as any as S.Schema<GetSearchWeightsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21099,8 +14887,8 @@ export const getSegment: API.OperationMethod<
   GetSegmentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentRequest,
-  output: GetSegmentResponse,
+  input: __S(612) as any as S.Schema<GetSegmentRequest>,
+  output: __S(20) as any as S.Schema<GetSegmentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21114,8 +14902,8 @@ export const getSegmentById: API.OperationMethod<
   GetSegmentByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentByIdRequest,
-  output: GetSegmentByIdResponse,
+  input: __S(613) as any as S.Schema<GetSegmentByIdRequest>,
+  output: __S(20) as any as S.Schema<GetSegmentByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21129,8 +14917,8 @@ export const getSegmentRelated: API.OperationMethod<
   GetSegmentRelatedError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSegmentRelatedRequest,
-  output: GetSegmentRelatedResponse,
+  input: __S(614) as any as S.Schema<GetSegmentRelatedRequest>,
+  output: __S(20) as any as S.Schema<GetSegmentRelatedResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21144,8 +14932,8 @@ export const getSessionPasswordResetTokenValid: API.OperationMethod<
   GetSessionPasswordResetTokenValidError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionPasswordResetTokenValidRequest,
-  output: GetSessionPasswordResetTokenValidResponse,
+  input: __S(615) as any as S.Schema<GetSessionPasswordResetTokenValidRequest>,
+  output: __S(28) as any as S.Schema<GetSessionPasswordResetTokenValidResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21159,8 +14947,8 @@ export const getSessionProperties: API.OperationMethod<
   GetSessionPropertiesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSessionPropertiesRequest,
-  output: GetSessionPropertiesResponse,
+  input: __S(616) as any as S.Schema<GetSessionPropertiesRequest>,
+  output: __S(20) as any as S.Schema<GetSessionPropertiesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21174,8 +14962,8 @@ export const getSetting: API.OperationMethod<
   GetSettingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingRequest,
-  output: GetSettingResponse,
+  input: __S(617) as any as S.Schema<GetSettingRequest>,
+  output: __S(20) as any as S.Schema<GetSettingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21189,8 +14977,8 @@ export const getSettingByKey: API.OperationMethod<
   GetSettingByKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSettingByKeyRequest,
-  output: GetSettingByKeyResponse,
+  input: __S(618) as any as S.Schema<GetSettingByKeyRequest>,
+  output: __S(20) as any as S.Schema<GetSettingByKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21204,8 +14992,8 @@ export const getSlackAppInfo: API.OperationMethod<
   GetSlackAppInfoError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSlackAppInfoRequest,
-  output: GetSlackAppInfoResponse,
+  input: __S(619) as any as S.Schema<GetSlackAppInfoRequest>,
+  output: __S(20) as any as S.Schema<GetSlackAppInfoResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21219,8 +15007,8 @@ export const getSlackManifest: API.OperationMethod<
   GetSlackManifestError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSlackManifestRequest,
-  output: GetSlackManifestResponse,
+  input: __S(620) as any as S.Schema<GetSlackManifestRequest>,
+  output: __S(20) as any as S.Schema<GetSlackManifestResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21234,8 +15022,8 @@ export const getTable: API.OperationMethod<
   GetTableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableRequest,
-  output: GetTableResponse,
+  input: __S(621) as any as S.Schema<GetTableRequest>,
+  output: __S(20) as any as S.Schema<GetTableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21249,8 +15037,8 @@ export const getTableById: API.OperationMethod<
   GetTableByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableByIdRequest,
-  output: GetTableByIdResponse,
+  input: __S(622) as any as S.Schema<GetTableByIdRequest>,
+  output: __S(20) as any as S.Schema<GetTableByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21264,8 +15052,8 @@ export const getTableCardIdFks: API.OperationMethod<
   GetTableCardIdFksError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableCardIdFksRequest,
-  output: GetTableCardIdFksResponse,
+  input: __S(623) as any as S.Schema<GetTableCardIdFksRequest>,
+  output: __S(20) as any as S.Schema<GetTableCardIdFksResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21279,8 +15067,8 @@ export const getTableCardIdQueryMetadata: API.OperationMethod<
   GetTableCardIdQueryMetadataError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableCardIdQueryMetadataRequest,
-  output: GetTableCardIdQueryMetadataResponse,
+  input: __S(624) as any as S.Schema<GetTableCardIdQueryMetadataRequest>,
+  output: __S(28) as any as S.Schema<GetTableCardIdQueryMetadataResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21294,8 +15082,8 @@ export const getTableData: API.OperationMethod<
   GetTableDataError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableDataRequest,
-  output: GetTableDataResponse,
+  input: __S(625) as any as S.Schema<GetTableDataRequest>,
+  output: __S(20) as any as S.Schema<GetTableDataResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21309,8 +15097,8 @@ export const getTableFks: API.OperationMethod<
   GetTableFksError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableFksRequest,
-  output: GetTableFksResponse,
+  input: __S(626) as any as S.Schema<GetTableFksRequest>,
+  output: __S(20) as any as S.Schema<GetTableFksResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21324,8 +15112,8 @@ export const getTableQueryMetadata: API.OperationMethod<
   GetTableQueryMetadataError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableQueryMetadataRequest,
-  output: GetTableQueryMetadataResponse,
+  input: __S(627) as any as S.Schema<GetTableQueryMetadataRequest>,
+  output: __S(20) as any as S.Schema<GetTableQueryMetadataResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21339,8 +15127,8 @@ export const getTableRelated: API.OperationMethod<
   GetTableRelatedError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTableRelatedRequest,
-  output: GetTableRelatedResponse,
+  input: __S(628) as any as S.Schema<GetTableRelatedRequest>,
+  output: __S(20) as any as S.Schema<GetTableRelatedResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21354,8 +15142,8 @@ export const getTask: API.OperationMethod<
   GetTaskError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTaskRequest,
-  output: GetTaskResponse,
+  input: __S(629) as any as S.Schema<GetTaskRequest>,
+  output: __S(20) as any as S.Schema<GetTaskResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21369,8 +15157,8 @@ export const getTaskById: API.OperationMethod<
   GetTaskByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTaskByIdRequest,
-  output: GetTaskByIdResponse,
+  input: __S(630) as any as S.Schema<GetTaskByIdRequest>,
+  output: __S(20) as any as S.Schema<GetTaskByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21384,8 +15172,8 @@ export const getTaskInfo: API.OperationMethod<
   GetTaskInfoError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTaskInfoRequest,
-  output: GetTaskInfoResponse,
+  input: __S(631) as any as S.Schema<GetTaskInfoRequest>,
+  output: __S(20) as any as S.Schema<GetTaskInfoResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21399,8 +15187,8 @@ export const getTaskRun: API.OperationMethod<
   GetTaskRunError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTaskRunRequest,
-  output: GetTaskRunResponse,
+  input: __S(632) as any as S.Schema<GetTaskRunRequest>,
+  output: __S(20) as any as S.Schema<GetTaskRunResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21414,8 +15202,8 @@ export const getTaskRuns: API.OperationMethod<
   GetTaskRunsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTaskRunsRequest,
-  output: GetTaskRunsResponse,
+  input: __S(633) as any as S.Schema<GetTaskRunsRequest>,
+  output: __S(20) as any as S.Schema<GetTaskRunsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21429,8 +15217,8 @@ export const getTaskRunsEntities: API.OperationMethod<
   GetTaskRunsEntitiesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTaskRunsEntitiesRequest,
-  output: GetTaskRunsEntitiesResponse,
+  input: __S(634) as any as S.Schema<GetTaskRunsEntitiesRequest>,
+  output: __S(20) as any as S.Schema<GetTaskRunsEntitiesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21444,8 +15232,8 @@ export const getTaskUniqueTasks: API.OperationMethod<
   GetTaskUniqueTasksError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTaskUniqueTasksRequest,
-  output: GetTaskUniqueTasksResponse,
+  input: __S(635) as any as S.Schema<GetTaskUniqueTasksRequest>,
+  output: __S(20) as any as S.Schema<GetTaskUniqueTasksResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21459,8 +15247,8 @@ export const getTile: API.OperationMethod<
   GetTileError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTileRequest,
-  output: GetTileResponse,
+  input: __S(636) as any as S.Schema<GetTileRequest>,
+  output: __S(20) as any as S.Schema<GetTileResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21474,8 +15262,8 @@ export const getTileByY: API.OperationMethod<
   GetTileByYError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTileByYRequest,
-  output: GetTileByYResponse,
+  input: __S(637) as any as S.Schema<GetTileByYRequest>,
+  output: __S(20) as any as S.Schema<GetTileByYResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21489,8 +15277,8 @@ export const getTileDashcardCard: API.OperationMethod<
   GetTileDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTileDashcardCardRequest,
-  output: GetTileDashcardCardResponse,
+  input: __S(638) as any as S.Schema<GetTileDashcardCardRequest>,
+  output: __S(20) as any as S.Schema<GetTileDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21504,8 +15292,8 @@ export const getTilesCard: API.OperationMethod<
   GetTilesCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTilesCardRequest,
-  output: GetTilesCardResponse,
+  input: __S(639) as any as S.Schema<GetTilesCardRequest>,
+  output: __S(20) as any as S.Schema<GetTilesCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21519,8 +15307,8 @@ export const getTilesDashboardDashcardCard: API.OperationMethod<
   GetTilesDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTilesDashboardDashcardCardRequest,
-  output: GetTilesDashboardDashcardCardResponse,
+  input: __S(640) as any as S.Schema<GetTilesDashboardDashcardCardRequest>,
+  output: __S(28) as any as S.Schema<GetTilesDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21534,8 +15322,8 @@ export const getTimeline: API.OperationMethod<
   GetTimelineError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTimelineRequest,
-  output: GetTimelineResponse,
+  input: __S(641) as any as S.Schema<GetTimelineRequest>,
+  output: __S(20) as any as S.Schema<GetTimelineResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21549,8 +15337,8 @@ export const getTimelineById: API.OperationMethod<
   GetTimelineByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTimelineByIdRequest,
-  output: GetTimelineByIdResponse,
+  input: __S(642) as any as S.Schema<GetTimelineByIdRequest>,
+  output: __S(20) as any as S.Schema<GetTimelineByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21564,8 +15352,8 @@ export const getTimelineCollection: API.OperationMethod<
   GetTimelineCollectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTimelineCollectionRequest,
-  output: GetTimelineCollectionResponse,
+  input: __S(643) as any as S.Schema<GetTimelineCollectionRequest>,
+  output: __S(20) as any as S.Schema<GetTimelineCollectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21579,8 +15367,8 @@ export const getTimelineCollectionRoot: API.OperationMethod<
   GetTimelineCollectionRootError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTimelineCollectionRootRequest,
-  output: GetTimelineCollectionRootResponse,
+  input: __S(644) as any as S.Schema<GetTimelineCollectionRootRequest>,
+  output: __S(28) as any as S.Schema<GetTimelineCollectionRootResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21594,8 +15382,8 @@ export const getTimelineEvent: API.OperationMethod<
   GetTimelineEventError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTimelineEventRequest,
-  output: GetTimelineEventResponse,
+  input: __S(645) as any as S.Schema<GetTimelineEventRequest>,
+  output: __S(20) as any as S.Schema<GetTimelineEventResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21609,8 +15397,8 @@ export const getTransform: API.OperationMethod<
   GetTransformError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransformRequest,
-  output: GetTransformResponse,
+  input: __S(646) as any as S.Schema<GetTransformRequest>,
+  output: __S(20) as any as S.Schema<GetTransformResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21624,8 +15412,8 @@ export const getTransformById: API.OperationMethod<
   GetTransformByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransformByIdRequest,
-  output: GetTransformByIdResponse,
+  input: __S(647) as any as S.Schema<GetTransformByIdRequest>,
+  output: __S(20) as any as S.Schema<GetTransformByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21639,8 +15427,8 @@ export const getTransformDependencies: API.OperationMethod<
   GetTransformDependenciesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransformDependenciesRequest,
-  output: GetTransformDependenciesResponse,
+  input: __S(648) as any as S.Schema<GetTransformDependenciesRequest>,
+  output: __S(28) as any as S.Schema<GetTransformDependenciesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21654,8 +15442,8 @@ export const getTransformJob: API.OperationMethod<
   GetTransformJobError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransformJobRequest,
-  output: GetTransformJobResponse,
+  input: __S(649) as any as S.Schema<GetTransformJobRequest>,
+  output: __S(20) as any as S.Schema<GetTransformJobResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21669,8 +15457,8 @@ export const getTransformJobByJobId: API.OperationMethod<
   GetTransformJobByJobIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransformJobByJobIdRequest,
-  output: GetTransformJobByJobIdResponse,
+  input: __S(650) as any as S.Schema<GetTransformJobByJobIdRequest>,
+  output: __S(20) as any as S.Schema<GetTransformJobByJobIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21684,8 +15472,8 @@ export const getTransformJobRuns: API.OperationMethod<
   GetTransformJobRunsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransformJobRunsRequest,
-  output: GetTransformJobRunsResponse,
+  input: __S(651) as any as S.Schema<GetTransformJobRunsRequest>,
+  output: __S(20) as any as S.Schema<GetTransformJobRunsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21699,8 +15487,8 @@ export const getTransformJobRunTransformRuns: API.OperationMethod<
   GetTransformJobRunTransformRunsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransformJobRunTransformRunsRequest,
-  output: GetTransformJobRunTransformRunsResponse,
+  input: __S(652) as any as S.Schema<GetTransformJobRunTransformRunsRequest>,
+  output: __S(28) as any as S.Schema<GetTransformJobRunTransformRunsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21714,8 +15502,8 @@ export const getTransformJobTransforms: API.OperationMethod<
   GetTransformJobTransformsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransformJobTransformsRequest,
-  output: GetTransformJobTransformsResponse,
+  input: __S(653) as any as S.Schema<GetTransformJobTransformsRequest>,
+  output: __S(28) as any as S.Schema<GetTransformJobTransformsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21729,8 +15517,8 @@ export const getTransformRun: API.OperationMethod<
   GetTransformRunError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransformRunRequest,
-  output: GetTransformRunResponse,
+  input: __S(654) as any as S.Schema<GetTransformRunRequest>,
+  output: __S(20) as any as S.Schema<GetTransformRunResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21744,8 +15532,8 @@ export const getTransformRunByRunId: API.OperationMethod<
   GetTransformRunByRunIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransformRunByRunIdRequest,
-  output: GetTransformRunByRunIdResponse,
+  input: __S(655) as any as S.Schema<GetTransformRunByRunIdRequest>,
+  output: __S(20) as any as S.Schema<GetTransformRunByRunIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21759,8 +15547,8 @@ export const getTransformTag: API.OperationMethod<
   GetTransformTagError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransformTagRequest,
-  output: GetTransformTagResponse,
+  input: __S(656) as any as S.Schema<GetTransformTagRequest>,
+  output: __S(20) as any as S.Schema<GetTransformTagResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21774,8 +15562,8 @@ export const getUser: API.OperationMethod<
   GetUserError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserRequest,
-  output: GetUserResponse,
+  input: __S(657) as any as S.Schema<GetUserRequest>,
+  output: __S(20) as any as S.Schema<GetUserResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21789,8 +15577,8 @@ export const getUserById: API.OperationMethod<
   GetUserByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserByIdRequest,
-  output: GetUserByIdResponse,
+  input: __S(658) as any as S.Schema<GetUserByIdRequest>,
+  output: __S(20) as any as S.Schema<GetUserByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21804,8 +15592,8 @@ export const getUserCurrent: API.OperationMethod<
   GetUserCurrentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserCurrentRequest,
-  output: GetUserCurrentResponse,
+  input: __S(659) as any as S.Schema<GetUserCurrentRequest>,
+  output: __S(20) as any as S.Schema<GetUserCurrentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21819,8 +15607,8 @@ export const getUserKeyValueNamespace: API.OperationMethod<
   GetUserKeyValueNamespaceError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserKeyValueNamespaceRequest,
-  output: GetUserKeyValueNamespaceResponse,
+  input: __S(660) as any as S.Schema<GetUserKeyValueNamespaceRequest>,
+  output: __S(28) as any as S.Schema<GetUserKeyValueNamespaceResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21834,8 +15622,8 @@ export const getUserKeyValueNamespaceKey: API.OperationMethod<
   GetUserKeyValueNamespaceKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserKeyValueNamespaceKeyRequest,
-  output: GetUserKeyValueNamespaceKeyResponse,
+  input: __S(661) as any as S.Schema<GetUserKeyValueNamespaceKeyRequest>,
+  output: __S(28) as any as S.Schema<GetUserKeyValueNamespaceKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21849,8 +15637,8 @@ export const getUserRecipients: API.OperationMethod<
   GetUserRecipientsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUserRecipientsRequest,
-  output: GetUserRecipientsResponse,
+  input: __S(662) as any as S.Schema<GetUserRecipientsRequest>,
+  output: __S(20) as any as S.Schema<GetUserRecipientsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21864,8 +15652,8 @@ export const getUtilRandomToken: API.OperationMethod<
   GetUtilRandomTokenError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUtilRandomTokenRequest,
-  output: GetUtilRandomTokenResponse,
+  input: __S(663) as any as S.Schema<GetUtilRandomTokenRequest>,
+  output: __S(20) as any as S.Schema<GetUtilRandomTokenResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21879,8 +15667,8 @@ export const postApiEeReplacementReplaceModelWithTransform: API.OperationMethod<
   PostApiEeReplacementReplaceModelWithTransformError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostApiEeReplacementReplaceModelWithTransformRequest,
-  output: PostApiEeReplacementReplaceModelWithTransformResponse,
+  input: __S(664) as any as S.Schema<PostApiEeReplacementReplaceModelWithTransformRequest>,
+  output: __S(28) as any as S.Schema<PostApiEeReplacementReplaceModelWithTransformResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21894,8 +15682,8 @@ export const putAction: API.OperationMethod<
   PutActionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutActionRequest,
-  output: PutActionResponse,
+  input: __S(665) as any as S.Schema<PutActionRequest>,
+  output: __S(20) as any as S.Schema<PutActionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21909,8 +15697,8 @@ export const putAgentDashboard: API.OperationMethod<
   PutAgentDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAgentDashboardRequest,
-  output: PutAgentDashboardResponse,
+  input: __S(667) as any as S.Schema<PutAgentDashboardRequest>,
+  output: __S(20) as any as S.Schema<PutAgentDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21924,8 +15712,8 @@ export const putAgentMetric: API.OperationMethod<
   PutAgentMetricError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAgentMetricRequest,
-  output: PutAgentMetricResponse,
+  input: __S(668) as any as S.Schema<PutAgentMetricRequest>,
+  output: __S(20) as any as S.Schema<PutAgentMetricResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21939,8 +15727,8 @@ export const putAgentQuestion: API.OperationMethod<
   PutAgentQuestionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutAgentQuestionRequest,
-  output: PutAgentQuestionResponse,
+  input: __S(669) as any as S.Schema<PutAgentQuestionRequest>,
+  output: __S(20) as any as S.Schema<PutAgentQuestionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21954,8 +15742,8 @@ export const putBookmarkOrdering: API.OperationMethod<
   PutBookmarkOrderingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutBookmarkOrderingRequest,
-  output: PutBookmarkOrderingResponse,
+  input: __S(672) as any as S.Schema<PutBookmarkOrderingRequest>,
+  output: __S(20) as any as S.Schema<PutBookmarkOrderingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21969,8 +15757,8 @@ export const putCache: API.OperationMethod<
   PutCacheError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutCacheRequest,
-  output: PutCacheResponse,
+  input: __S(673) as any as S.Schema<PutCacheRequest>,
+  output: __S(20) as any as S.Schema<PutCacheResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21984,8 +15772,8 @@ export const putCard: API.OperationMethod<
   PutCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutCardRequest,
-  output: PutCardResponse,
+  input: __S(675) as any as S.Schema<PutCardRequest>,
+  output: __S(20) as any as S.Schema<PutCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -21999,8 +15787,8 @@ export const putChannel: API.OperationMethod<
   PutChannelError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutChannelRequest,
-  output: PutChannelResponse,
+  input: __S(676) as any as S.Schema<PutChannelRequest>,
+  output: __S(20) as any as S.Schema<PutChannelResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22014,8 +15802,8 @@ export const putCloudMigrationCancel: API.OperationMethod<
   PutCloudMigrationCancelError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutCloudMigrationCancelRequest,
-  output: PutCloudMigrationCancelResponse,
+  input: __S(677) as any as S.Schema<PutCloudMigrationCancelRequest>,
+  output: __S(38) as any as S.Schema<PutCloudMigrationCancelResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22029,8 +15817,8 @@ export const putCollection: API.OperationMethod<
   PutCollectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutCollectionRequest,
-  output: PutCollectionResponse,
+  input: __S(678) as any as S.Schema<PutCollectionRequest>,
+  output: __S(20) as any as S.Schema<PutCollectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22044,8 +15832,8 @@ export const putCollectionGraph: API.OperationMethod<
   PutCollectionGraphError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutCollectionGraphRequest,
-  output: PutCollectionGraphResponse,
+  input: __S(679) as any as S.Schema<PutCollectionGraphRequest>,
+  output: __S(20) as any as S.Schema<PutCollectionGraphResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22059,8 +15847,8 @@ export const putComment: API.OperationMethod<
   PutCommentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutCommentRequest,
-  output: PutCommentResponse,
+  input: __S(680) as any as S.Schema<PutCommentRequest>,
+  output: __S(20) as any as S.Schema<PutCommentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22074,8 +15862,8 @@ export const putDashboard: API.OperationMethod<
   PutDashboardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDashboardRequest,
-  output: PutDashboardResponse,
+  input: __S(685) as any as S.Schema<PutDashboardRequest>,
+  output: __S(20) as any as S.Schema<PutDashboardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22089,8 +15877,8 @@ export const putDashboardCards: API.OperationMethod<
   PutDashboardCardsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDashboardCardsRequest,
-  output: PutDashboardCardsResponse,
+  input: __S(686) as any as S.Schema<PutDashboardCardsRequest>,
+  output: __S(20) as any as S.Schema<PutDashboardCardsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22104,8 +15892,8 @@ export const putDatabase: API.OperationMethod<
   PutDatabaseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDatabaseRequest,
-  output: PutDatabaseResponse,
+  input: __S(687) as any as S.Schema<PutDatabaseRequest>,
+  output: __S(20) as any as S.Schema<PutDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22119,8 +15907,8 @@ export const putDocument: API.OperationMethod<
   PutDocumentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDocumentRequest,
-  output: PutDocumentResponse,
+  input: __S(688) as any as S.Schema<PutDocumentRequest>,
+  output: __S(20) as any as S.Schema<PutDocumentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22134,8 +15922,8 @@ export const putEeAdvancedPermissionsApplicationGraph: API.OperationMethod<
   PutEeAdvancedPermissionsApplicationGraphError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEeAdvancedPermissionsApplicationGraphRequest,
-  output: PutEeAdvancedPermissionsApplicationGraphResponse,
+  input: __S(690) as any as S.Schema<PutEeAdvancedPermissionsApplicationGraphRequest>,
+  output: __S(28) as any as S.Schema<PutEeAdvancedPermissionsApplicationGraphResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22149,8 +15937,8 @@ export const putEeAiControlsPermissions: API.OperationMethod<
   PutEeAiControlsPermissionsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEeAiControlsPermissionsRequest,
-  output: PutEeAiControlsPermissionsResponse,
+  input: __S(693) as any as S.Schema<PutEeAiControlsPermissionsRequest>,
+  output: __S(28) as any as S.Schema<PutEeAiControlsPermissionsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22164,8 +15952,8 @@ export const putEeAiControlsUsageGroup: API.OperationMethod<
   PutEeAiControlsUsageGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEeAiControlsUsageGroupRequest,
-  output: PutEeAiControlsUsageGroupResponse,
+  input: __S(694) as any as S.Schema<PutEeAiControlsUsageGroupRequest>,
+  output: __S(28) as any as S.Schema<PutEeAiControlsUsageGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22179,8 +15967,8 @@ export const putEeAiControlsUsageInstance: API.OperationMethod<
   PutEeAiControlsUsageInstanceError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEeAiControlsUsageInstanceRequest,
-  output: PutEeAiControlsUsageInstanceResponse,
+  input: __S(695) as any as S.Schema<PutEeAiControlsUsageInstanceRequest>,
+  output: __S(28) as any as S.Schema<PutEeAiControlsUsageInstanceResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22194,8 +15982,8 @@ export const putEeAiControlsUsageTenant: API.OperationMethod<
   PutEeAiControlsUsageTenantError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEeAiControlsUsageTenantRequest,
-  output: PutEeAiControlsUsageTenantResponse,
+  input: __S(696) as any as S.Schema<PutEeAiControlsUsageTenantRequest>,
+  output: __S(28) as any as S.Schema<PutEeAiControlsUsageTenantResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22209,8 +15997,8 @@ export const putEeCustomVizPlugin: API.OperationMethod<
   PutEeCustomVizPluginError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEeCustomVizPluginRequest,
-  output: PutEeCustomVizPluginResponse,
+  input: __S(697) as any as S.Schema<PutEeCustomVizPluginRequest>,
+  output: __S(20) as any as S.Schema<PutEeCustomVizPluginResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22224,8 +16012,8 @@ export const putEeCustomVizPluginBundle: API.OperationMethod<
   PutEeCustomVizPluginBundleError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEeCustomVizPluginBundleRequest,
-  output: PutEeCustomVizPluginBundleResponse,
+  input: __S(698) as any as S.Schema<PutEeCustomVizPluginBundleRequest>,
+  output: __S(28) as any as S.Schema<PutEeCustomVizPluginBundleResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22239,8 +16027,8 @@ export const putEeCustomVizPluginDevUrl: API.OperationMethod<
   PutEeCustomVizPluginDevUrlError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEeCustomVizPluginDevUrlRequest,
-  output: PutEeCustomVizPluginDevUrlResponse,
+  input: __S(699) as any as S.Schema<PutEeCustomVizPluginDevUrlRequest>,
+  output: __S(28) as any as S.Schema<PutEeCustomVizPluginDevUrlResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22254,8 +16042,8 @@ export const putEeDatabaseRoutingRouterDatabase: API.OperationMethod<
   PutEeDatabaseRoutingRouterDatabaseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEeDatabaseRoutingRouterDatabaseRequest,
-  output: PutEeDatabaseRoutingRouterDatabaseResponse,
+  input: __S(700) as any as S.Schema<PutEeDatabaseRoutingRouterDatabaseRequest>,
+  output: __S(28) as any as S.Schema<PutEeDatabaseRoutingRouterDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22269,8 +16057,8 @@ export const putEeEmailOverride: API.OperationMethod<
   PutEeEmailOverrideError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEeEmailOverrideRequest,
-  output: PutEeEmailOverrideResponse,
+  input: __S(701) as any as S.Schema<PutEeEmailOverrideRequest>,
+  output: __S(20) as any as S.Schema<PutEeEmailOverrideResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22284,8 +16072,8 @@ export const putEeRemoteSyncSettings: API.OperationMethod<
   PutEeRemoteSyncSettingsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEeRemoteSyncSettingsRequest,
-  output: PutEeRemoteSyncSettingsResponse,
+  input: __S(703) as any as S.Schema<PutEeRemoteSyncSettingsRequest>,
+  output: __S(38) as any as S.Schema<PutEeRemoteSyncSettingsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22299,8 +16087,8 @@ export const putEeScimGroup: API.OperationMethod<
   PutEeScimGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEeScimGroupRequest,
-  output: PutEeScimGroupResponse,
+  input: __S(704) as any as S.Schema<PutEeScimGroupRequest>,
+  output: __S(20) as any as S.Schema<PutEeScimGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22314,8 +16102,8 @@ export const putEeScimUser: API.OperationMethod<
   PutEeScimUserError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEeScimUserRequest,
-  output: PutEeScimUserResponse,
+  input: __S(705) as any as S.Schema<PutEeScimUserRequest>,
+  output: __S(20) as any as S.Schema<PutEeScimUserResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22329,8 +16117,8 @@ export const putEeSupportAccessGrantRevoke: API.OperationMethod<
   PutEeSupportAccessGrantRevokeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEeSupportAccessGrantRevokeRequest,
-  output: PutEeSupportAccessGrantRevokeResponse,
+  input: __S(706) as any as S.Schema<PutEeSupportAccessGrantRevokeRequest>,
+  output: __S(28) as any as S.Schema<PutEeSupportAccessGrantRevokeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22344,8 +16132,8 @@ export const putEeTenant: API.OperationMethod<
   PutEeTenantError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEeTenantRequest,
-  output: PutEeTenantResponse,
+  input: __S(707) as any as S.Schema<PutEeTenantRequest>,
+  output: __S(20) as any as S.Schema<PutEeTenantResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22359,8 +16147,8 @@ export const putEeTransformsPythonLibrary: API.OperationMethod<
   PutEeTransformsPythonLibraryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEeTransformsPythonLibraryRequest,
-  output: PutEeTransformsPythonLibraryResponse,
+  input: __S(708) as any as S.Schema<PutEeTransformsPythonLibraryRequest>,
+  output: __S(28) as any as S.Schema<PutEeTransformsPythonLibraryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22374,8 +16162,8 @@ export const putEmail: API.OperationMethod<
   PutEmailError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEmailRequest,
-  output: PutEmailResponse,
+  input: __S(709) as any as S.Schema<PutEmailRequest>,
+  output: __S(20) as any as S.Schema<PutEmailResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22389,8 +16177,8 @@ export const putEmbedTheme: API.OperationMethod<
   PutEmbedThemeError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEmbedThemeRequest,
-  output: PutEmbedThemeResponse,
+  input: __S(710) as any as S.Schema<PutEmbedThemeRequest>,
+  output: __S(20) as any as S.Schema<PutEmbedThemeResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22404,8 +16192,8 @@ export const putField: API.OperationMethod<
   PutFieldError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutFieldRequest,
-  output: PutFieldResponse,
+  input: __S(711) as any as S.Schema<PutFieldRequest>,
+  output: __S(20) as any as S.Schema<PutFieldResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22419,8 +16207,8 @@ export const putGlossary: API.OperationMethod<
   PutGlossaryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutGlossaryRequest,
-  output: PutGlossaryResponse,
+  input: __S(712) as any as S.Schema<PutGlossaryRequest>,
+  output: __S(20) as any as S.Schema<PutGlossaryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22434,8 +16222,8 @@ export const putGoogleSettings: API.OperationMethod<
   PutGoogleSettingsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutGoogleSettingsRequest,
-  output: PutGoogleSettingsResponse,
+  input: __S(713) as any as S.Schema<PutGoogleSettingsRequest>,
+  output: __S(20) as any as S.Schema<PutGoogleSettingsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22449,8 +16237,8 @@ export const putKey: API.OperationMethod<
   PutKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutKeyRequest,
-  output: PutKeyResponse,
+  input: __S(714) as any as S.Schema<PutKeyRequest>,
+  output: __S(20) as any as S.Schema<PutKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22464,8 +16252,8 @@ export const putKeyRegenerate: API.OperationMethod<
   PutKeyRegenerateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutKeyRegenerateRequest,
-  output: PutKeyRegenerateResponse,
+  input: __S(715) as any as S.Schema<PutKeyRegenerateRequest>,
+  output: __S(20) as any as S.Schema<PutKeyRegenerateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22479,8 +16267,8 @@ export const putLdapSettings: API.OperationMethod<
   PutLdapSettingsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutLdapSettingsRequest,
-  output: PutLdapSettingsResponse,
+  input: __S(717) as any as S.Schema<PutLdapSettingsRequest>,
+  output: __S(20) as any as S.Schema<PutLdapSettingsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22494,8 +16282,8 @@ export const putMeasure: API.OperationMethod<
   PutMeasureError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutMeasureRequest,
-  output: PutMeasureResponse,
+  input: __S(718) as any as S.Schema<PutMeasureRequest>,
+  output: __S(20) as any as S.Schema<PutMeasureResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22509,8 +16297,8 @@ export const putMetabotMetabot: API.OperationMethod<
   PutMetabotMetabotError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutMetabotMetabotRequest,
-  output: PutMetabotMetabotResponse,
+  input: __S(719) as any as S.Schema<PutMetabotMetabotRequest>,
+  output: __S(20) as any as S.Schema<PutMetabotMetabotResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22524,8 +16312,8 @@ export const putMetabotSettings: API.OperationMethod<
   PutMetabotSettingsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutMetabotSettingsRequest,
-  output: PutMetabotSettingsResponse,
+  input: __S(721) as any as S.Schema<PutMetabotSettingsRequest>,
+  output: __S(20) as any as S.Schema<PutMetabotSettingsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22539,8 +16327,8 @@ export const putMetabotSlackSettings: API.OperationMethod<
   PutMetabotSlackSettingsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutMetabotSlackSettingsRequest,
-  output: PutMetabotSlackSettingsResponse,
+  input: __S(722) as any as S.Schema<PutMetabotSlackSettingsRequest>,
+  output: __S(38) as any as S.Schema<PutMetabotSlackSettingsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22554,8 +16342,8 @@ export const putMtGtap: API.OperationMethod<
   PutMtGtapError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutMtGtapRequest,
-  output: PutMtGtapResponse,
+  input: __S(723) as any as S.Schema<PutMtGtapRequest>,
+  output: __S(20) as any as S.Schema<PutMtGtapResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22569,8 +16357,8 @@ export const putMtUserAttributes: API.OperationMethod<
   PutMtUserAttributesError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutMtUserAttributesRequest,
-  output: PutMtUserAttributesResponse,
+  input: __S(724) as any as S.Schema<PutMtUserAttributesRequest>,
+  output: __S(20) as any as S.Schema<PutMtUserAttributesResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22584,8 +16372,8 @@ export const putNativeQuerySnippet: API.OperationMethod<
   PutNativeQuerySnippetError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutNativeQuerySnippetRequest,
-  output: PutNativeQuerySnippetResponse,
+  input: __S(725) as any as S.Schema<PutNativeQuerySnippetRequest>,
+  output: __S(20) as any as S.Schema<PutNativeQuerySnippetResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22599,8 +16387,8 @@ export const putNotification: API.OperationMethod<
   PutNotificationError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutNotificationRequest,
-  output: PutNotificationResponse,
+  input: __S(726) as any as S.Schema<PutNotificationRequest>,
+  output: __S(20) as any as S.Schema<PutNotificationResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22614,8 +16402,8 @@ export const putOsiAiContext: API.OperationMethod<
   PutOsiAiContextError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutOsiAiContextRequest,
-  output: PutOsiAiContextResponse,
+  input: __S(728) as any as S.Schema<PutOsiAiContextRequest>,
+  output: __S(20) as any as S.Schema<PutOsiAiContextResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22629,8 +16417,8 @@ export const putPermissionsGraph: API.OperationMethod<
   PutPermissionsGraphError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutPermissionsGraphRequest,
-  output: PutPermissionsGraphResponse,
+  input: __S(734) as any as S.Schema<PutPermissionsGraphRequest>,
+  output: __S(20) as any as S.Schema<PutPermissionsGraphResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22644,8 +16432,8 @@ export const putPermissionsGroup: API.OperationMethod<
   PutPermissionsGroupError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutPermissionsGroupRequest,
-  output: PutPermissionsGroupResponse,
+  input: __S(735) as any as S.Schema<PutPermissionsGroupRequest>,
+  output: __S(20) as any as S.Schema<PutPermissionsGroupResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22659,8 +16447,8 @@ export const putPermissionsMembership: API.OperationMethod<
   PutPermissionsMembershipError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutPermissionsMembershipRequest,
-  output: PutPermissionsMembershipResponse,
+  input: __S(736) as any as S.Schema<PutPermissionsMembershipRequest>,
+  output: __S(28) as any as S.Schema<PutPermissionsMembershipResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22674,8 +16462,8 @@ export const putPermissionsMembershipClear: API.OperationMethod<
   PutPermissionsMembershipClearError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutPermissionsMembershipClearRequest,
-  output: PutPermissionsMembershipClearResponse,
+  input: __S(737) as any as S.Schema<PutPermissionsMembershipClearRequest>,
+  output: __S(28) as any as S.Schema<PutPermissionsMembershipClearResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22689,8 +16477,8 @@ export const putPulse: API.OperationMethod<
   PutPulseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutPulseRequest,
-  output: PutPulseResponse,
+  input: __S(738) as any as S.Schema<PutPulseRequest>,
+  output: __S(20) as any as S.Schema<PutPulseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22704,8 +16492,8 @@ export const putSearchWeights: API.OperationMethod<
   PutSearchWeightsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSearchWeightsRequest,
-  output: PutSearchWeightsResponse,
+  input: __S(739) as any as S.Schema<PutSearchWeightsRequest>,
+  output: __S(20) as any as S.Schema<PutSearchWeightsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22719,8 +16507,8 @@ export const putSegment: API.OperationMethod<
   PutSegmentError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSegmentRequest,
-  output: PutSegmentResponse,
+  input: __S(740) as any as S.Schema<PutSegmentRequest>,
+  output: __S(20) as any as S.Schema<PutSegmentResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22734,8 +16522,8 @@ export const putSetting: API.OperationMethod<
   PutSettingError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSettingRequest,
-  output: PutSettingResponse,
+  input: __S(741) as any as S.Schema<PutSettingRequest>,
+  output: __S(20) as any as S.Schema<PutSettingResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22749,8 +16537,8 @@ export const putSettingByKey: API.OperationMethod<
   PutSettingByKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSettingByKeyRequest,
-  output: PutSettingByKeyResponse,
+  input: __S(742) as any as S.Schema<PutSettingByKeyRequest>,
+  output: __S(20) as any as S.Schema<PutSettingByKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22764,8 +16552,8 @@ export const putSlackSettings: API.OperationMethod<
   PutSlackSettingsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutSlackSettingsRequest,
-  output: PutSlackSettingsResponse,
+  input: __S(743) as any as S.Schema<PutSlackSettingsRequest>,
+  output: __S(20) as any as S.Schema<PutSlackSettingsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22779,8 +16567,8 @@ export const putTable: API.OperationMethod<
   PutTableError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTableRequest,
-  output: PutTableResponse,
+  input: __S(744) as any as S.Schema<PutTableRequest>,
+  output: __S(20) as any as S.Schema<PutTableResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22794,8 +16582,8 @@ export const putTableById: API.OperationMethod<
   PutTableByIdError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTableByIdRequest,
-  output: PutTableByIdResponse,
+  input: __S(745) as any as S.Schema<PutTableByIdRequest>,
+  output: __S(20) as any as S.Schema<PutTableByIdResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22809,8 +16597,8 @@ export const putTableFieldsOrder: API.OperationMethod<
   PutTableFieldsOrderError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTableFieldsOrderRequest,
-  output: PutTableFieldsOrderResponse,
+  input: __S(746) as any as S.Schema<PutTableFieldsOrderRequest>,
+  output: __S(20) as any as S.Schema<PutTableFieldsOrderResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22824,8 +16612,8 @@ export const putTimeline: API.OperationMethod<
   PutTimelineError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTimelineRequest,
-  output: PutTimelineResponse,
+  input: __S(747) as any as S.Schema<PutTimelineRequest>,
+  output: __S(20) as any as S.Schema<PutTimelineResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22839,8 +16627,8 @@ export const putTimelineEvent: API.OperationMethod<
   PutTimelineEventError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTimelineEventRequest,
-  output: PutTimelineEventResponse,
+  input: __S(748) as any as S.Schema<PutTimelineEventRequest>,
+  output: __S(20) as any as S.Schema<PutTimelineEventResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22854,8 +16642,8 @@ export const putTransform: API.OperationMethod<
   PutTransformError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTransformRequest,
-  output: PutTransformResponse,
+  input: __S(749) as any as S.Schema<PutTransformRequest>,
+  output: __S(20) as any as S.Schema<PutTransformResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22869,8 +16657,8 @@ export const putTransformJob: API.OperationMethod<
   PutTransformJobError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTransformJobRequest,
-  output: PutTransformJobResponse,
+  input: __S(750) as any as S.Schema<PutTransformJobRequest>,
+  output: __S(20) as any as S.Schema<PutTransformJobResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22884,8 +16672,8 @@ export const putTransformJobActive: API.OperationMethod<
   PutTransformJobActiveError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTransformJobActiveRequest,
-  output: PutTransformJobActiveResponse,
+  input: __S(751) as any as S.Schema<PutTransformJobActiveRequest>,
+  output: __S(20) as any as S.Schema<PutTransformJobActiveResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22899,8 +16687,8 @@ export const putTransformTag: API.OperationMethod<
   PutTransformTagError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutTransformTagRequest,
-  output: PutTransformTagResponse,
+  input: __S(752) as any as S.Schema<PutTransformTagRequest>,
+  output: __S(20) as any as S.Schema<PutTransformTagResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22914,8 +16702,8 @@ export const putUser: API.OperationMethod<
   PutUserError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutUserRequest,
-  output: PutUserResponse,
+  input: __S(753) as any as S.Schema<PutUserRequest>,
+  output: __S(20) as any as S.Schema<PutUserResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22929,8 +16717,8 @@ export const putUserKeyValueNamespaceKey: API.OperationMethod<
   PutUserKeyValueNamespaceKeyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutUserKeyValueNamespaceKeyRequest,
-  output: PutUserKeyValueNamespaceKeyResponse,
+  input: __S(754) as any as S.Schema<PutUserKeyValueNamespaceKeyRequest>,
+  output: __S(28) as any as S.Schema<PutUserKeyValueNamespaceKeyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22944,8 +16732,8 @@ export const putUserModal: API.OperationMethod<
   PutUserModalError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutUserModalRequest,
-  output: PutUserModalResponse,
+  input: __S(755) as any as S.Schema<PutUserModalRequest>,
+  output: __S(20) as any as S.Schema<PutUserModalResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22959,8 +16747,8 @@ export const putUserPassword: API.OperationMethod<
   PutUserPasswordError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutUserPasswordRequest,
-  output: PutUserPasswordResponse,
+  input: __S(756) as any as S.Schema<PutUserPasswordRequest>,
+  output: __S(20) as any as S.Schema<PutUserPasswordResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22974,8 +16762,8 @@ export const putUserReactivate: API.OperationMethod<
   PutUserReactivateError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutUserReactivateRequest,
-  output: PutUserReactivateResponse,
+  input: __S(757) as any as S.Schema<PutUserReactivateRequest>,
+  output: __S(20) as any as S.Schema<PutUserReactivateResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -22989,8 +16777,8 @@ export const updateBookmark: API.OperationMethod<
   UpdateBookmarkError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateBookmarkRequest,
-  output: UpdateBookmarkResponse,
+  input: __S(758) as any as S.Schema<UpdateBookmarkRequest>,
+  output: __S(20) as any as S.Schema<UpdateBookmarkResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -23004,8 +16792,8 @@ export const updateCardQuery: API.OperationMethod<
   UpdateCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCardQueryRequest,
-  output: UpdateCardQueryResponse,
+  input: __S(759) as any as S.Schema<UpdateCardQueryRequest>,
+  output: __S(20) as any as S.Schema<UpdateCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -23019,8 +16807,8 @@ export const updateDashboardDashcardCard: API.OperationMethod<
   UpdateDashboardDashcardCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDashboardDashcardCardRequest,
-  output: UpdateDashboardDashcardCardResponse,
+  input: __S(760) as any as S.Schema<UpdateDashboardDashcardCardRequest>,
+  output: __S(28) as any as S.Schema<UpdateDashboardDashcardCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -23034,8 +16822,8 @@ export const updateDashboardDashcardCardQuery: API.OperationMethod<
   UpdateDashboardDashcardCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDashboardDashcardCardQueryRequest,
-  output: UpdateDashboardDashcardCardQueryResponse,
+  input: __S(761) as any as S.Schema<UpdateDashboardDashcardCardQueryRequest>,
+  output: __S(28) as any as S.Schema<UpdateDashboardDashcardCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -23049,8 +16837,8 @@ export const updateDashboardSaveCollection: API.OperationMethod<
   UpdateDashboardSaveCollectionError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDashboardSaveCollectionRequest,
-  output: UpdateDashboardSaveCollectionResponse,
+  input: __S(767) as any as S.Schema<UpdateDashboardSaveCollectionRequest>,
+  output: __S(28) as any as S.Schema<UpdateDashboardSaveCollectionResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -23064,8 +16852,8 @@ export const updateDataset: API.OperationMethod<
   UpdateDatasetError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDatasetRequest,
-  output: UpdateDatasetResponse,
+  input: __S(768) as any as S.Schema<UpdateDatasetRequest>,
+  output: __S(20) as any as S.Schema<UpdateDatasetResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -23079,8 +16867,8 @@ export const updateDatasetParameterSearch: API.OperationMethod<
   UpdateDatasetParameterSearchError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDatasetParameterSearchRequest,
-  output: UpdateDatasetParameterSearchResponse,
+  input: __S(769) as any as S.Schema<UpdateDatasetParameterSearchRequest>,
+  output: __S(28) as any as S.Schema<UpdateDatasetParameterSearchResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -23094,8 +16882,8 @@ export const updateDocumentCard: API.OperationMethod<
   UpdateDocumentCardError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDocumentCardRequest,
-  output: UpdateDocumentCardResponse,
+  input: __S(770) as any as S.Schema<UpdateDocumentCardRequest>,
+  output: __S(20) as any as S.Schema<UpdateDocumentCardResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -23109,8 +16897,8 @@ export const updateDocumentCardQuery: API.OperationMethod<
   UpdateDocumentCardQueryError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDocumentCardQueryRequest,
-  output: UpdateDocumentCardQueryResponse,
+  input: __S(771) as any as S.Schema<UpdateDocumentCardQueryRequest>,
+  output: __S(38) as any as S.Schema<UpdateDocumentCardQueryResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -23124,8 +16912,8 @@ export const updateEeCloudAddOns: API.OperationMethod<
   UpdateEeCloudAddOnsError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEeCloudAddOnsRequest,
-  output: UpdateEeCloudAddOnsResponse,
+  input: __S(772) as any as S.Schema<UpdateEeCloudAddOnsRequest>,
+  output: __S(20) as any as S.Schema<UpdateEeCloudAddOnsResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -23139,8 +16927,8 @@ export const updateEeCloudProxy: API.OperationMethod<
   UpdateEeCloudProxyError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEeCloudProxyRequest,
-  output: UpdateEeCloudProxyResponse,
+  input: __S(774) as any as S.Schema<UpdateEeCloudProxyRequest>,
+  output: __S(20) as any as S.Schema<UpdateEeCloudProxyResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -23154,8 +16942,8 @@ export const updateEeDatabaseReplicationConnectionDatabase: API.OperationMethod<
   UpdateEeDatabaseReplicationConnectionDatabaseError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEeDatabaseReplicationConnectionDatabaseRequest,
-  output: UpdateEeDatabaseReplicationConnectionDatabaseResponse,
+  input: __S(776) as any as S.Schema<UpdateEeDatabaseReplicationConnectionDatabaseRequest>,
+  output: __S(28) as any as S.Schema<UpdateEeDatabaseReplicationConnectionDatabaseResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -23169,8 +16957,8 @@ export const updateEeScimUser: API.OperationMethod<
   UpdateEeScimUserError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEeScimUserRequest,
-  output: UpdateEeScimUserResponse,
+  input: __S(779) as any as S.Schema<UpdateEeScimUserRequest>,
+  output: __S(20) as any as S.Schema<UpdateEeScimUserResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -23184,8 +16972,8 @@ export const updateNotifyDb: API.OperationMethod<
   UpdateNotifyDbError,
   MetabaseOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateNotifyDbRequest,
-  output: UpdateNotifyDbResponse,
+  input: __S(780) as any as S.Schema<UpdateNotifyDbRequest>,
+  output: __S(20) as any as S.Schema<UpdateNotifyDbResponse>,
   errors: [UnknownMetabaseError],
   protocol: MetabaseProtocol,
   retry: Retry.Retry,
@@ -23202,13 +16990,13 @@ function __c0(j: number): any {
           card_id: S.optional(S.NullOr(S.Number)),
           dashcard: S.optional(S.Unknown),
           parameter_id: S.String,
-          target: MetabaseLibSchemaParameterTarget,
+          target: S.Unknown,
         }),
       ).annotate({
         identifier: "MetabaseParametersSchemaParameterMapping",
       });
     case 2:
-      return S.Array(MetabaseParametersSchemaParameterMapping);
+      return S.Array(__S(1));
     case 3:
       return S.Array(S.String);
     case 4:
@@ -23223,7 +17011,7 @@ function __c0(j: number): any {
         identifier: "MetabaseParametersSchemaValuesSourceConfig",
       });
     case 5:
-      return S.Array(MetabaseLibSchemaTemporalBucketingUnit);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -23236,25 +17024,23 @@ function __c0(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          filteringParameters: S.optional(
-            S.NullOr(MetabaseParametersSchemaParameterFilteringParametersList),
-          ),
-          mappings: S.optional(S.NullOr(MetabaseParametersSchemaParameterMappings2)),
+          filteringParameters: S.optional(S.NullOr(__S(3))),
+          mappings: S.optional(S.NullOr(S.Unknown)),
           sectionId: S.optional(S.String),
-          values_source_config: S.optional(S.NullOr(MetabaseParametersSchemaValuesSourceConfig)),
+          values_source_config: S.optional(S.NullOr(__S(4))),
           display_name: S.optional(S.NullOr(S.String).pipe(T.Body("display-name"))),
           id: S.String,
           name: S.optional(S.String),
           slug: S.optional(S.String),
-          value: S.optional(MetabaseLibSchemaParameterParameterValue),
+          value: S.optional(S.Unknown),
           required: S.optional(S.NullOr(S.Boolean)),
-          values_query_type: S.optional(S.NullOr(MetabaseParametersSchemaValuesQueryType)),
-          type: MetabaseLibSchemaParameterType,
-          temporal_units: S.optional(S.NullOr(MetabaseParametersSchemaParameterTemporalUnitsList)),
-          target: S.optional(MetabaseLibSchemaParameterTarget),
-          values_source_type: S.optional(S.NullOr(MetabaseParametersSchemaValuesSourceType)),
-          options: S.optional(S.NullOr(MetabaseLibSchemaParameterParameterOptions)),
-          default: S.optional(MetabaseLibSchemaParameterParameterValue),
+          values_query_type: S.optional(S.NullOr(S.String)),
+          type: S.String,
+          temporal_units: S.optional(S.NullOr(__S(5))),
+          target: S.optional(S.Unknown),
+          values_source_type: S.optional(S.NullOr(S.String)),
+          options: S.optional(S.NullOr(__S(6))),
+          default: S.optional(S.Unknown),
           isMultiSelect: S.optional(S.NullOr(S.Boolean)),
         }),
       ).annotate({
@@ -23265,7 +17051,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MetabaseParametersSchemaParameter);
+      return S.Array(__S(7));
     case 1:
       return S.Array(S.Number);
     case 2:
@@ -23289,35 +17075,25 @@ function __c1(j: number): any {
         identifier: "MetabaseLibSchemaConstraintsConstraints",
       });
     case 5:
-      return S.Array(MetabaseLibSchemaMetadataLibOrLegacyColumn);
+      return S.Array(S.Unknown);
     case 6:
       return S.suspend(() =>
         S.Struct({
           query_hash: S.optional(S.NullOr(S.String).pipe(T.Body("query-hash"))),
           action_id: S.optional(S.NullOr(S.Number).pipe(T.Body("action-id"))),
           lens_id: S.optional(S.NullOr(S.String).pipe(T.Body("lens-id"))),
-          pivot_original_query: S.optional(
-            S.NullOr(MetabaseLibSchemaInfoInfoPivotOriginalQueryMap).pipe(
-              T.Body("pivot/original-query"),
-            ),
-          ),
+          pivot_original_query: S.optional(S.NullOr(__S(10)).pipe(T.Body("pivot/original-query"))),
           executed_by: S.optional(S.NullOr(S.Number).pipe(T.Body("executed-by"))),
           card_id: S.optional(S.NullOr(S.Number).pipe(T.Body("card-id"))),
           pivot_result_metadata: S.optional(
-            S.NullOr(MetabaseLibSchemaInfoInfoPivotResultMetadata).pipe(
-              T.Body("pivot/result-metadata"),
-            ),
+            S.NullOr(S.Unknown).pipe(T.Body("pivot/result-metadata")),
           ),
           transform_id: S.optional(S.NullOr(S.Number).pipe(T.Body("transform-id"))),
-          context: S.optional(S.NullOr(MetabaseLibSchemaInfoContext)),
+          context: S.optional(S.NullOr(S.String)),
           dashboard_id: S.optional(S.NullOr(S.Number).pipe(T.Body("dashboard-id"))),
-          lens_params: S.optional(
-            S.NullOr(MetabaseLibSchemaInfoInfoLensParamsMap).pipe(T.Body("lens-params")),
-          ),
+          lens_params: S.optional(S.NullOr(__S(10)).pipe(T.Body("lens-params"))),
           metadata_model_metadata: S.optional(
-            S.NullOr(MetabaseLibSchemaInfoInfoMetadataModelMetadataList).pipe(
-              T.Body("metadata/model-metadata"),
-            ),
+            S.NullOr(__S(13)).pipe(T.Body("metadata/model-metadata")),
           ),
           pulse_id: S.optional(S.NullOr(S.Number).pipe(T.Body("pulse-id"))),
           card_name: S.optional(S.NullOr(S.String).pipe(T.Body("card-name"))),
@@ -23357,50 +17133,44 @@ function __c2(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           slug: S.optional(S.String),
-          value: S.optional(MetabaseLibSchemaParameterParameterValue),
+          value: S.optional(S.Unknown),
           required: S.optional(S.NullOr(S.Boolean)),
-          type: MetabaseLibSchemaParameterType,
-          target: S.optional(MetabaseLibSchemaParameterTarget),
-          options: S.optional(S.NullOr(MetabaseLibSchemaParameterParameterOptions)),
-          default: S.optional(MetabaseLibSchemaParameterParameterValue),
+          type: S.String,
+          target: S.optional(S.Unknown),
+          options: S.optional(S.NullOr(__S(6))),
+          default: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "MetabaseLibSchemaParameterParameter",
       });
     case 1:
-      return S.Array(MetabaseLibSchemaParameterParameter);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
           lib_metadata: S.optional(S.Unknown.pipe(T.Body("lib/metadata"))),
           show_column_totals: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show-column-totals"))),
-          pivot_rows: S.optional(
-            S.NullOr(MetabaseLibSchemaQueryPivotRowsList).pipe(T.Body("pivot-rows")),
-          ),
-          update_row: S.optional(MetabaseLibSchemaActionsRow.pipe(T.Body("update-row"))),
+          pivot_rows: S.optional(S.NullOr(__S(9)).pipe(T.Body("pivot-rows"))),
+          update_row: S.optional(__S(10).pipe(T.Body("update-row"))),
           lib_type: S.optional(S.Unknown.pipe(T.Body("lib/type"))),
-          settings: S.optional(MetabaseLibSchemaSettingsSettings),
-          constraints: S.optional(MetabaseLibSchemaConstraintsConstraints),
-          info: S.optional(MetabaseLibSchemaInfoInfo),
+          settings: S.optional(__S(11)),
+          constraints: S.optional(__S(12)),
+          info: S.optional(__S(14)),
           show_row_totals: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show-row-totals"))),
-          middleware: S.optional(MetabaseLibSchemaMiddlewareOptionsMiddlewareOptions),
-          database: S.optional(MetabaseLibSchemaQueryDatabase),
-          pivot_measures: S.optional(
-            S.NullOr(MetabaseLibSchemaQueryPivotMeasuresList).pipe(T.Body("pivot-measures")),
-          ),
+          middleware: S.optional(__S(15)),
+          database: S.optional(S.Unknown),
+          pivot_measures: S.optional(S.NullOr(__S(9)).pipe(T.Body("pivot-measures"))),
           stages: S.Unknown,
-          pivot_cols: S.optional(
-            S.NullOr(MetabaseLibSchemaQueryPivotColsList).pipe(T.Body("pivot-cols")),
-          ),
-          parameters: S.optional(MetabaseLibSchemaParameterParameters),
-          create_row: S.optional(MetabaseLibSchemaActionsRow.pipe(T.Body("create-row"))),
+          pivot_cols: S.optional(S.NullOr(__S(9)).pipe(T.Body("pivot-cols"))),
+          parameters: S.optional(__S(17)),
+          create_row: S.optional(__S(10).pipe(T.Body("create-row"))),
           was_pivot: S.optional(S.NullOr(S.Boolean).pipe(T.Body("was-pivot"))),
         }),
       ).annotate({ identifier: "MetabaseLibSchemaQuery" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(MetabaseActionsSchemaActionForInsert.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/api/action", code: 200 })),
       ).annotate({ identifier: "CreateActionRequest" });
     case 4:
@@ -23410,7 +17180,7 @@ function __c2(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          parameters: S.optional(S.NullOr(MetabaseActionsSchemaExecuteParameterValues)),
+          parameters: S.optional(S.NullOr(__S(10))),
         }),
       ).annotate({
         identifier: "CreateActionExecuteRequestBody",
@@ -23419,7 +17189,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          body: S.optional(S.NullOr(CreateActionExecuteRequestBody).pipe(T.HttpBody())),
+          body: S.optional(S.NullOr(__S(21)).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/api/action/{id}/execute", code: 200 })),
       ).annotate({
         identifier: "CreateActionExecuteRequest",
@@ -23428,7 +17198,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
-          parameters: S.optional(S.NullOr(MetabaseActionsSchemaExecuteParameterValues)),
+          parameters: S.optional(S.NullOr(__S(10))),
         }).pipe(T.Http({ method: "POST", uri: "/api/public/action/{uuid}/execute", code: 200 })),
       ).annotate({
         identifier: "CreateActionExecuteRequest2",
@@ -23448,8 +17218,8 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          context: CreateActivityRecentRequestContext,
-          model: CreateActivityRecentRequestModel,
+          context: S.String,
+          model: S.String,
           model_id: S.Number,
         }).pipe(T.Http({ method: "POST", uri: "/api/activity/recents", code: 200 })),
       ).annotate({
@@ -23493,7 +17263,7 @@ function __c3(j: number): any {
           collection_id: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.NullOr(S.String)),
           name: S.String,
-          question_ids: S.optional(S.NullOr(CreateAgentDashboardRequestQuestionIdsList)),
+          question_ids: S.optional(S.NullOr(__S(9))),
         }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/dashboard", code: 200 })),
       ).annotate({
         identifier: "CreateAgentDashboardRequest",
@@ -23524,7 +17294,7 @@ function __c4(j: number): any {
         S.Struct({
           collection_id: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.NullOr(S.String)),
-          display: S.optional(S.NullOr(MetabaseAgentApiApiCardDisplay)),
+          display: S.optional(S.NullOr(S.String)),
           name: S.String,
           query: S.String,
           visualization_settings: S.optional(S.NullOr(S.Unknown)),
@@ -23533,7 +17303,7 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(MetabaseAgentApiApiQueryRequest.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/api/agent/v2/query", code: 200 })),
       ).annotate({ identifier: "CreateAgentQueryRequest" });
     case 3:
@@ -23541,7 +17311,7 @@ function __c4(j: number): any {
         S.Struct({
           collection_id: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.NullOr(S.String)),
-          display: S.optional(S.NullOr(MetabaseAgentApiApiCardDisplay)),
+          display: S.optional(S.NullOr(S.String)),
           name: S.String,
           query: S.String,
           visualization_settings: S.optional(S.NullOr(S.Unknown)),
@@ -23560,7 +17330,7 @@ function __c4(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          uris: CreateAgentReadResourceRequestUrisList,
+          uris: __S(3),
         }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/read-resource", code: 200 })),
       ).annotate({
         identifier: "CreateAgentReadResourceRequest",
@@ -23572,8 +17342,8 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          semantic_queries: S.optional(S.NullOr(CreateAgentSearchRequestSemanticQueries)),
-          term_queries: S.optional(S.NullOr(CreateAgentSearchRequestTermQueries)),
+          semantic_queries: S.optional(S.NullOr(S.Unknown)),
+          term_queries: S.optional(S.NullOr(S.Unknown)),
         }).pipe(T.Http({ method: "POST", uri: "/api/agent/v1/search", code: 200 })),
       ).annotate({ identifier: "CreateAgentSearchRequest" });
   }
@@ -23591,16 +17361,14 @@ function __c5(j: number): any {
         identifier: "CreateAiEntityAnalysisAnalyzeChartRequestTimelineEventsItem",
       });
     case 1:
-      return S.Array(CreateAiEntityAnalysisAnalyzeChartRequestTimelineEventsItem);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
           image_base64: S.String,
           name: S.optional(S.NullOr(S.String)),
-          timeline_events: S.optional(
-            S.NullOr(CreateAiEntityAnalysisAnalyzeChartRequestTimelineEventsList),
-          ),
+          timeline_events: S.optional(S.NullOr(__S(41))),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/ai-entity-analysis/analyze-chart", code: 200 }),
         ),
@@ -23613,25 +17381,25 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           amount: S.optional(S.NullOr(S.Number)),
-          labels: S.optional(S.NullOr(CreateAnalyticsInternalRequestEventsItemLabelsMap)),
+          labels: S.optional(S.NullOr(__S(43))),
           metric: S.String,
-          op: CreateAnalyticsInternalRequestEventsItemOp,
+          op: S.String,
         }),
       ).annotate({
         identifier: "CreateAnalyticsInternalRequestEventsItem",
       });
     case 5:
-      return S.Array(CreateAnalyticsInternalRequestEventsItem);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          events: CreateAnalyticsInternalRequestEventsList,
+          events: __S(45),
         }).pipe(T.Http({ method: "POST", uri: "/api/analytics/internal", code: 200 })),
       ).annotate({
         identifier: "CreateAnalyticsInternalRequest",
       });
     case 7:
-      return S.Array(CreateAnalyticsProxyRequestDataItemMap);
+      return S.Array(__S(43));
   }
 }
 function __c6(j: number): any {
@@ -23639,7 +17407,7 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          data: CreateAnalyticsProxyRequestDataList,
+          data: __S(47),
           schema: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/analytics-proxy", code: 200 })),
       ).annotate({
@@ -23649,9 +17417,9 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           include: S.optional(S.Unknown.pipe(T.Query())),
-          database: S.optional(CreateCacheInvalidateRequestDatabaseList.pipe(T.Query())),
-          dashboard: S.optional(CreateCacheInvalidateRequestDashboardList.pipe(T.Query())),
-          question: S.optional(CreateCacheInvalidateRequestQuestionList.pipe(T.Query())),
+          database: S.optional(__S(9).pipe(T.Query())),
+          dashboard: S.optional(__S(9).pipe(T.Query())),
+          question: S.optional(__S(9).pipe(T.Query())),
         }).pipe(T.Http({ method: "POST", uri: "/api/cache/invalidate", code: 200 })),
       ).annotate({
         identifier: "CreateCacheInvalidateRequest",
@@ -23669,17 +17437,17 @@ function __c6(j: number): any {
           visualization_settings: S.Unknown,
           dashboard_tab_id: S.optional(S.NullOr(S.Number)),
           entity_id: S.optional(S.NullOr(S.String)),
-          dataset_query: MetabaseLibSchemaQuery,
-          parameter_mappings: S.optional(S.NullOr(MetabaseParametersSchemaParameterMappings)),
+          dataset_query: __S(18),
+          parameter_mappings: S.optional(S.NullOr(__S(2))),
           name: S.String,
           collection_position: S.optional(S.NullOr(S.Number)),
-          result_metadata: S.optional(S.NullOr(MetabaseLibSchemaMetadataCardResultMetadata)),
-          collection_id: S.optional(S.NullOr(CreateCardRequestCollectionId)),
+          result_metadata: S.optional(S.NullOr(__S(13))),
+          collection_id: S.optional(S.NullOr(S.Unknown)),
           cache_ttl: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(MetabaseLibSchemaMetadataCardType)),
+          type: S.optional(S.NullOr(S.String)),
           display: S.String,
-          size: S.optional(S.NullOr(CreateCardRequestSize)),
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameters)),
+          size: S.optional(S.NullOr(__S(50))),
+          parameters: S.optional(S.NullOr(__S(8))),
           description: S.optional(S.NullOr(S.String)),
           dashboard_id: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "POST", uri: "/api/card", code: 200 })),
@@ -23687,7 +17455,7 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          card_ids: CreateCardCollectionRequestCardIdsList,
+          card_ids: __S(9),
           collection_id: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "POST", uri: "/api/card/collections", code: 200 })),
       ).annotate({
@@ -23702,20 +17470,20 @@ function __c6(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          default: S.optional(MetabaseLibSchemaParameterParameterValue),
+          default: S.optional(S.Unknown),
           id: S.String,
           name: S.optional(S.NullOr(S.String)),
-          options: S.optional(S.NullOr(MetabaseLibSchemaParameterParameterOptions)),
+          options: S.optional(S.NullOr(__S(6))),
           slug: S.optional(S.NullOr(S.String)),
-          target: S.optional(S.NullOr(MetabaseLibSchemaParameterTarget)),
-          type: S.optional(S.NullOr(MetabaseLibSchemaParameterType)),
-          value: S.optional(MetabaseLibSchemaParameterParameterValue),
+          target: S.optional(S.NullOr(S.Unknown)),
+          type: S.optional(S.NullOr(S.String)),
+          value: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "MetabaseParametersSchemaParameterWithValue",
       });
     case 7:
-      return S.Array(MetabaseParametersSchemaParameterWithValue);
+      return S.Array(__S(54));
   }
 }
 function __c7(j: number): any {
@@ -23725,7 +17493,7 @@ function __c7(j: number): any {
         S.Struct({
           card_id: S.Number.pipe(T.Label()),
           ignore_cache: S.optional(S.NullOr(S.Boolean)),
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameterValues)),
+          parameters: S.optional(S.NullOr(__S(55))),
         }).pipe(T.Http({ method: "POST", uri: "/api/card/pivot/{card_id}/query", code: 200 })),
       ).annotate({
         identifier: "CreateCardPivotCardQueryRequest",
@@ -23745,13 +17513,13 @@ function __c7(j: number): any {
           collection_preview: S.optional(S.NullOr(S.Boolean)),
           dashboard_id: S.optional(S.NullOr(S.Number)),
           ignore_cache: S.optional(S.Boolean),
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameterValues)),
+          parameters: S.optional(S.NullOr(__S(55))),
         }).pipe(T.Http({ method: "POST", uri: "/api/card/{card_id}/query", code: 200 })),
       ).annotate({ identifier: "CreateCardQueryRequest" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          card_ids: CreateCardsDashboardRequestCardIdsList,
+          card_ids: __S(9),
         }).pipe(T.Http({ method: "POST", uri: "/api/cards/dashboards", code: 200 })),
       ).annotate({
         identifier: "CreateCardsDashboardRequest",
@@ -23759,7 +17527,7 @@ function __c7(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          card_ids: CreateCardsMoveRequestCardIdsList,
+          card_ids: __S(9),
           collection_id: S.optional(S.NullOr(S.Number)),
           dashboard_id: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "POST", uri: "/api/cards/move", code: 200 })),
@@ -23767,13 +17535,13 @@ function __c7(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(CreateChannelRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/api/channel", code: 200 })),
       ).annotate({ identifier: "CreateChannelRequest" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(CreateChannelTestRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/api/channel/test", code: 200 })),
       ).annotate({ identifier: "CreateChannelTestRequest" });
     case 7:
@@ -23789,7 +17557,7 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          authority_level: S.optional(S.NullOr(CreateCollectionRequestAuthorityLevel)),
+          authority_level: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           name: S.String,
           namespace: S.optional(S.NullOr(S.String)),
@@ -23801,9 +17569,7 @@ function __c8(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          card_ids: S.optional(
-            CreateCollectionMoveDashboardQuestionCandidateRequestBodyCardIdsList,
-          ),
+          card_ids: S.optional(__S(65)),
         }),
       ).annotate({
         identifier: "CreateCollectionMoveDashboardQuestionCandidateRequestBody",
@@ -23812,9 +17578,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          body: S.optional(
-            S.NullOr(CreateCollectionMoveDashboardQuestionCandidateRequestBody).pipe(T.HttpBody()),
-          ),
+          body: S.optional(S.NullOr(__S(66)).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23828,9 +17592,7 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          card_ids: S.optional(
-            CreateCollectionRootMoveDashboardQuestionCandidateRequestBodyCardIdsList,
-          ),
+          card_ids: S.optional(__S(65)),
         }),
       ).annotate({
         identifier: "CreateCollectionRootMoveDashboardQuestionCandidateRequestBody",
@@ -23838,11 +17600,7 @@ function __c8(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(
-            S.NullOr(CreateCollectionRootMoveDashboardQuestionCandidateRequestBody).pipe(
-              T.HttpBody(),
-            ),
-          ),
+          body: S.optional(S.NullOr(__S(68)).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23864,7 +17622,7 @@ function __c8(j: number): any {
           content: S.Unknown,
           parent_comment_id: S.optional(S.NullOr(S.Number)),
           target_id: S.Number,
-          target_type: CreateCommentRequestTargetType,
+          target_type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/comment", code: 200 })),
       ).annotate({ identifier: "CreateCommentRequest" });
   }
@@ -23888,7 +17646,7 @@ function __c9(j: number): any {
           collection_position: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.NullOr(S.String)),
           name: S.String,
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameters)),
+          parameters: S.optional(S.NullOr(__S(8))),
         }).pipe(T.Http({ method: "POST", uri: "/api/dashboard", code: 200 })),
       ).annotate({ identifier: "CreateDashboardRequest" });
     case 2:
@@ -23913,7 +17671,7 @@ function __c9(j: number): any {
           dashcard_id: S.Number.pipe(T.Label()),
           card_id: S.Number.pipe(T.Label()),
           dashboard_load_id: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameterValues)),
+          parameters: S.optional(S.NullOr(__S(55))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23929,7 +17687,7 @@ function __c9(j: number): any {
         S.Struct({
           dashboard_id: S.Number.pipe(T.Label()),
           dashcard_id: S.Number.pipe(T.Label()),
-          parameters: S.optional(S.NullOr(MetabaseActionsSchemaExecuteParameterValuesStringKeys)),
+          parameters: S.optional(S.NullOr(__S(10))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23946,7 +17704,7 @@ function __c9(j: number): any {
           uuid: S.String.pipe(T.Label()),
           dashcard_id: S.Number.pipe(T.Label()),
           modelId: S.optional(S.NullOr(S.Number)),
-          parameters: S.optional(S.NullOr(MetabaseActionsSchemaExecuteParameterValues)),
+          parameters: S.optional(S.NullOr(__S(10))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -23961,8 +17719,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          paper_size: S.optional(S.NullOr(CreateDashboardPdfRequestPaperSize)),
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameterValues)),
+          paper_size: S.optional(S.NullOr(S.String)),
+          parameters: S.optional(S.NullOr(__S(55))),
         }).pipe(T.Http({ method: "POST", uri: "/api/dashboard/{id}/pdf", code: 200 })),
       ).annotate({
         identifier: "CreateDashboardPdfRequest",
@@ -23973,7 +17731,7 @@ function __c9(j: number): any {
           dashboard_id: S.Number.pipe(T.Label()),
           dashcard_id: S.Number.pipe(T.Label()),
           card_id: S.Number.pipe(T.Label()),
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameterValues)),
+          parameters: S.optional(S.NullOr(__S(55))),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24001,10 +17759,10 @@ function __c10(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          dataset_query: S.optional(S.NullOr(MetabaseLibBeSchemaMaybeLegacyOrEmptyQuery)),
+          dataset_query: S.optional(S.NullOr(S.Unknown)),
           description: S.optional(S.NullOr(S.String)),
           display: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.NullOr(CreateDashboardSaveRequestDashcardsItemSeriesItemId)),
+          id: S.optional(S.NullOr(S.Unknown)),
           name: S.optional(S.NullOr(S.String)),
           visualization_settings: S.optional(S.NullOr(S.Unknown)),
         }),
@@ -24012,14 +17770,14 @@ function __c10(j: number): any {
         identifier: "CreateDashboardSaveRequestDashcardsItemSeriesItem",
       });
     case 2:
-      return S.Array(CreateDashboardSaveRequestDashcardsItemSeriesItem);
+      return S.Array(__S(81));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          dataset_query: S.optional(S.NullOr(MetabaseLibBeSchemaMaybeLegacyOrEmptyQuery)),
+          dataset_query: S.optional(S.NullOr(S.Unknown)),
           description: S.optional(S.NullOr(S.String)),
           display: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.NullOr(CreateDashboardSaveRequestDashcardsItemCardId)),
+          id: S.optional(S.NullOr(S.Unknown)),
           name: S.optional(S.NullOr(S.String)),
           visualization_settings: S.optional(S.NullOr(S.Unknown)),
         }),
@@ -24031,19 +17789,19 @@ function __c10(j: number): any {
         S.Struct({
           visualization_settings: S.optional(S.NullOr(S.Unknown)),
           dashboard_tab_id: S.optional(S.NullOr(S.Number)),
-          parameter_mappings: S.optional(S.NullOr(MetabaseParametersSchemaParameterMappings)),
+          parameter_mappings: S.optional(S.NullOr(__S(2))),
           size_x: S.optional(S.NullOr(S.Number)),
           size_y: S.optional(S.NullOr(S.Number)),
           col: S.optional(S.NullOr(S.Number)),
           row: S.optional(S.NullOr(S.Number)),
-          series: S.optional(S.NullOr(CreateDashboardSaveRequestDashcardsItemSeriesList)),
-          card: S.optional(S.NullOr(CreateDashboardSaveRequestDashcardsItemCard)),
+          series: S.optional(S.NullOr(__S(82))),
+          card: S.optional(S.NullOr(__S(83))),
         }),
       ).annotate({
         identifier: "CreateDashboardSaveRequestDashcardsItem",
       });
     case 5:
-      return S.Array(CreateDashboardSaveRequestDashcardsItem);
+      return S.Array(__S(84));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -24055,7 +17813,7 @@ function __c10(j: number): any {
         identifier: "CreateDashboardSaveRequestTabsItem",
       });
     case 7:
-      return S.Array(CreateDashboardSaveRequestTabsItem);
+      return S.Array(__S(86));
   }
 }
 function __c11(j: number): any {
@@ -24064,12 +17822,12 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           auto_apply_filters: S.optional(S.NullOr(S.Boolean)),
-          dashcards: S.optional(S.NullOr(CreateDashboardSaveRequestDashcardsList)),
+          dashcards: S.optional(S.NullOr(__S(85))),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameters)),
-          tabs: S.optional(S.NullOr(CreateDashboardSaveRequestTabsList)),
-          width: S.optional(S.NullOr(CreateDashboardSaveRequestWidth)),
+          parameters: S.optional(S.NullOr(__S(8))),
+          tabs: S.optional(S.NullOr(__S(87))),
+          width: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/api/dashboard/save", code: 200 })),
       ).annotate({
         identifier: "CreateDashboardSaveRequest",
@@ -24077,11 +17835,11 @@ function __c11(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          schedule_day: S.optional(S.NullOr(MetabaseUtilCronScheduleMapScheduleDay)),
-          schedule_frame: S.optional(S.NullOr(MetabaseUtilCronScheduleMapScheduleFrame)),
+          schedule_day: S.optional(S.NullOr(S.String)),
+          schedule_frame: S.optional(S.NullOr(S.String)),
           schedule_hour: S.optional(S.NullOr(S.Number)),
           schedule_minute: S.optional(S.NullOr(S.Number)),
-          schedule_type: MetabaseUtilCronScheduleMapScheduleType,
+          schedule_type: S.String,
         }),
       ).annotate({
         identifier: "MetabaseUtilCronScheduleMap",
@@ -24089,8 +17847,8 @@ function __c11(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cache_field_values: S.optional(S.NullOr(MetabaseUtilCronScheduleMap)),
-          metadata_sync: S.optional(MetabaseUtilCronScheduleMap),
+          cache_field_values: S.optional(S.NullOr(__S(89))),
+          metadata_sync: S.optional(__S(89)),
         }),
       ).annotate({
         identifier: "MetabaseSyncSchedulesExpandedSchedulesMap",
@@ -24105,10 +17863,10 @@ function __c11(j: number): any {
           engine: S.String,
           details: S.Unknown,
           is_full_sync: S.optional(S.NullOr(S.Boolean)),
-          connection_source: S.optional(S.NullOr(CreateDatabaseRequestConnectionSource)),
+          connection_source: S.optional(S.NullOr(S.String)),
           auto_run_queries: S.optional(S.NullOr(S.Boolean)),
           is_stub: S.optional(S.NullOr(S.Boolean)),
-          schedules: S.optional(S.NullOr(MetabaseSyncSchedulesExpandedSchedulesMap)),
+          schedules: S.optional(S.NullOr(__S(90))),
         }).pipe(T.Http({ method: "POST", uri: "/api/database", code: 200 })),
       ).annotate({ identifier: "CreateDatabaseRequest" });
     case 4:
@@ -24167,7 +17925,7 @@ function __c12(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          details: CreateDatabaseValidateRequestDetails,
+          details: __S(97),
         }).pipe(T.Http({ method: "POST", uri: "/api/database/validate", code: 200 })),
       ).annotate({
         identifier: "CreateDatabaseValidateRequest",
@@ -24175,14 +17933,14 @@ function __c12(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(MetabaseLibBeSchemaMaybeLegacyOrInternalQuery.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/api/dataset", code: 200 })),
       ).annotate({ identifier: "CreateDatasetRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           database: S.Number,
-          parameters: S.optional(S.NullOr(MetabaseLibSchemaParameterParameters)),
+          parameters: S.optional(S.NullOr(__S(17))),
           pretty: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "POST", uri: "/api/dataset/native", code: 200 })),
       ).annotate({
@@ -24191,8 +17949,8 @@ function __c12(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          field_ids: S.optional(S.NullOr(CreateDatasetParameterRemappingRequestFieldIdsList)),
-          parameter: MetabaseParametersSchemaParameter,
+          field_ids: S.optional(S.NullOr(__S(9))),
+          parameter: __S(7),
           value: S.Unknown,
         }).pipe(T.Http({ method: "POST", uri: "/api/dataset/parameter/remapping", code: 200 })),
       ).annotate({
@@ -24201,8 +17959,8 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          field_ids: S.optional(S.NullOr(CreateDatasetParameterValueRequestFieldIdsList)),
-          parameter: MetabaseParametersSchemaParameter,
+          field_ids: S.optional(S.NullOr(__S(9))),
+          parameter: __S(7),
         }).pipe(T.Http({ method: "POST", uri: "/api/dataset/parameter/values", code: 200 })),
       ).annotate({
         identifier: "CreateDatasetParameterValueRequest",
@@ -24212,26 +17970,20 @@ function __c12(j: number): any {
         S.Struct({
           lib_metadata: S.optional(S.Unknown.pipe(T.Body("lib/metadata"))),
           show_column_totals: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show-column-totals"))),
-          pivot_rows: S.optional(
-            S.NullOr(CreateDatasetPivotRequestPivotRowsList).pipe(T.Body("pivot-rows")),
-          ),
-          update_row: S.optional(MetabaseLibSchemaActionsRow.pipe(T.Body("update-row"))),
+          pivot_rows: S.optional(S.NullOr(__S(9)).pipe(T.Body("pivot-rows"))),
+          update_row: S.optional(__S(10).pipe(T.Body("update-row"))),
           lib_type: S.optional(S.Unknown.pipe(T.Body("lib/type"))),
-          settings: S.optional(MetabaseLibSchemaSettingsSettings),
-          constraints: S.optional(MetabaseLibSchemaConstraintsConstraints),
-          info: S.optional(MetabaseLibSchemaInfoInfo),
+          settings: S.optional(__S(11)),
+          constraints: S.optional(__S(12)),
+          info: S.optional(__S(14)),
           show_row_totals: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show-row-totals"))),
-          middleware: S.optional(MetabaseLibSchemaMiddlewareOptionsMiddlewareOptions),
-          database: S.optional(CreateDatasetPivotRequestDatabase),
-          pivot_measures: S.optional(
-            S.NullOr(CreateDatasetPivotRequestPivotMeasuresList).pipe(T.Body("pivot-measures")),
-          ),
+          middleware: S.optional(__S(15)),
+          database: S.optional(S.Unknown),
+          pivot_measures: S.optional(S.NullOr(__S(9)).pipe(T.Body("pivot-measures"))),
           stages: S.Unknown,
-          pivot_cols: S.optional(
-            S.NullOr(CreateDatasetPivotRequestPivotColsList).pipe(T.Body("pivot-cols")),
-          ),
-          parameters: S.optional(MetabaseLibSchemaParameterParameters),
-          create_row: S.optional(MetabaseLibSchemaActionsRow.pipe(T.Body("create-row"))),
+          pivot_cols: S.optional(S.NullOr(__S(9)).pipe(T.Body("pivot-cols"))),
+          parameters: S.optional(__S(17)),
+          create_row: S.optional(__S(10).pipe(T.Body("create-row"))),
           was_pivot: S.optional(S.NullOr(S.Boolean).pipe(T.Body("was-pivot"))),
         }).pipe(T.Http({ method: "POST", uri: "/api/dataset/pivot", code: 200 })),
       ).annotate({
@@ -24246,28 +17998,20 @@ function __c13(j: number): any {
         S.Struct({
           lib_metadata: S.optional(S.Unknown.pipe(T.Body("lib/metadata"))),
           show_column_totals: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show-column-totals"))),
-          pivot_rows: S.optional(
-            S.NullOr(CreateDatasetQueryMetadataRequestPivotRowsList).pipe(T.Body("pivot-rows")),
-          ),
-          update_row: S.optional(MetabaseLibSchemaActionsRow.pipe(T.Body("update-row"))),
+          pivot_rows: S.optional(S.NullOr(__S(9)).pipe(T.Body("pivot-rows"))),
+          update_row: S.optional(__S(10).pipe(T.Body("update-row"))),
           lib_type: S.optional(S.Unknown.pipe(T.Body("lib/type"))),
-          settings: S.optional(MetabaseLibSchemaSettingsSettings),
-          constraints: S.optional(MetabaseLibSchemaConstraintsConstraints),
-          info: S.optional(MetabaseLibSchemaInfoInfo),
+          settings: S.optional(__S(11)),
+          constraints: S.optional(__S(12)),
+          info: S.optional(__S(14)),
           show_row_totals: S.optional(S.NullOr(S.Boolean).pipe(T.Body("show-row-totals"))),
-          middleware: S.optional(MetabaseLibSchemaMiddlewareOptionsMiddlewareOptions),
-          database: S.optional(CreateDatasetQueryMetadataRequestDatabase),
-          pivot_measures: S.optional(
-            S.NullOr(CreateDatasetQueryMetadataRequestPivotMeasuresList).pipe(
-              T.Body("pivot-measures"),
-            ),
-          ),
+          middleware: S.optional(__S(15)),
+          database: S.optional(S.Unknown),
+          pivot_measures: S.optional(S.NullOr(__S(9)).pipe(T.Body("pivot-measures"))),
           stages: S.Unknown,
-          pivot_cols: S.optional(
-            S.NullOr(CreateDatasetQueryMetadataRequestPivotColsList).pipe(T.Body("pivot-cols")),
-          ),
-          parameters: S.optional(MetabaseLibSchemaParameterParameters),
-          create_row: S.optional(MetabaseLibSchemaActionsRow.pipe(T.Body("create-row"))),
+          pivot_cols: S.optional(S.NullOr(__S(9)).pipe(T.Body("pivot-cols"))),
+          parameters: S.optional(__S(17)),
+          create_row: S.optional(__S(10).pipe(T.Body("create-row"))),
           was_pivot: S.optional(S.NullOr(S.Boolean).pipe(T.Body("was-pivot"))),
         }).pipe(T.Http({ method: "POST", uri: "/api/dataset/query_metadata", code: 200 })),
       ).annotate({
@@ -24276,9 +18020,9 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          database_ids: S.optional(CreateDataStudioTableDiscardValueRequestDatabaseIdsList),
-          schema_ids: S.optional(CreateDataStudioTableDiscardValueRequestSchemaIdsList),
-          table_ids: S.optional(CreateDataStudioTableDiscardValueRequestTableIdsList),
+          database_ids: S.optional(__S(9)),
+          schema_ids: S.optional(__S(3)),
+          table_ids: S.optional(__S(9)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/data-studio/table/discard-values", code: 200 }),
         ),
@@ -24288,15 +18032,15 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          data_authority: S.optional(S.NullOr(MetabaseDataStudioApiTableDataAuthorities)),
-          data_layer: S.optional(S.NullOr(MetabaseDataStudioApiTableDataLayers)),
-          table_ids: S.optional(CreateDataStudioTableEditRequestTableIdsList),
+          data_authority: S.optional(S.NullOr(S.String)),
+          data_layer: S.optional(S.NullOr(S.String)),
+          table_ids: S.optional(__S(9)),
           owner_email: S.optional(S.NullOr(S.String)),
           owner_user_id: S.optional(S.NullOr(S.Number)),
-          data_source: S.optional(S.NullOr(MetabaseDataStudioApiTableDataSources)),
-          schema_ids: S.optional(CreateDataStudioTableEditRequestSchemaIdsList),
+          data_source: S.optional(S.NullOr(S.String)),
+          schema_ids: S.optional(__S(3)),
           entity_type: S.optional(S.NullOr(S.String)),
-          database_ids: S.optional(CreateDataStudioTableEditRequestDatabaseIdsList),
+          database_ids: S.optional(__S(9)),
         }).pipe(T.Http({ method: "POST", uri: "/api/data-studio/table/edit", code: 200 })),
       ).annotate({
         identifier: "CreateDataStudioTableEditRequest",
@@ -24304,9 +18048,9 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          database_ids: S.optional(CreateDataStudioTableRescanValueRequestDatabaseIdsList),
-          schema_ids: S.optional(CreateDataStudioTableRescanValueRequestSchemaIdsList),
-          table_ids: S.optional(CreateDataStudioTableRescanValueRequestTableIdsList),
+          database_ids: S.optional(__S(9)),
+          schema_ids: S.optional(__S(3)),
+          table_ids: S.optional(__S(9)),
         }).pipe(T.Http({ method: "POST", uri: "/api/data-studio/table/rescan-values", code: 200 })),
       ).annotate({
         identifier: "CreateDataStudioTableRescanValueRequest",
@@ -24314,9 +18058,9 @@ function __c13(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          database_ids: S.optional(CreateDataStudioTableSelectionRequestDatabaseIdsList),
-          schema_ids: S.optional(CreateDataStudioTableSelectionRequestSchemaIdsList),
-          table_ids: S.optional(CreateDataStudioTableSelectionRequestTableIdsList),
+          database_ids: S.optional(__S(9)),
+          schema_ids: S.optional(__S(3)),
+          table_ids: S.optional(__S(9)),
         }).pipe(T.Http({ method: "POST", uri: "/api/data-studio/table/selection", code: 200 })),
       ).annotate({
         identifier: "CreateDataStudioTableSelectionRequest",
@@ -24324,9 +18068,9 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          database_ids: S.optional(CreateDataStudioTableSyncSchemaRequestDatabaseIdsList),
-          schema_ids: S.optional(CreateDataStudioTableSyncSchemaRequestSchemaIdsList),
-          table_ids: S.optional(CreateDataStudioTableSyncSchemaRequestTableIdsList),
+          database_ids: S.optional(__S(9)),
+          schema_ids: S.optional(__S(3)),
+          table_ids: S.optional(__S(9)),
         }).pipe(T.Http({ method: "POST", uri: "/api/data-studio/table/sync-schema", code: 200 })),
       ).annotate({
         identifier: "CreateDataStudioTableSyncSchemaRequest",
@@ -24336,22 +18080,20 @@ function __c13(j: number): any {
         S.Struct({
           visualization_settings: S.Unknown,
           entity_id: S.optional(S.NullOr(S.String)),
-          dataset_query: MetabaseLibSchemaQuery,
-          parameter_mappings: S.optional(
-            S.NullOr(CreateDocumentRequestCardsValueParameterMappingsList),
-          ),
+          dataset_query: __S(18),
+          parameter_mappings: S.optional(S.NullOr(__S(0))),
           name: S.String,
-          result_metadata: S.optional(S.NullOr(CreateDocumentRequestCardsValueResultMetadataList)),
+          result_metadata: S.optional(S.NullOr(__S(0))),
           cache_ttl: S.optional(S.NullOr(S.Number)),
           display: S.String,
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameters)),
+          parameters: S.optional(S.NullOr(__S(8))),
           description: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "CreateDocumentRequestCardsValue",
       });
     case 7:
-      return S.Record(S.String, CreateDocumentRequestCardsValue);
+      return S.Record(S.String, __S(110));
   }
 }
 function __c14(j: number): any {
@@ -24367,10 +18109,10 @@ function __c14(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          cards: S.optional(S.NullOr(CreateDocumentRequestCardsMap)),
+          cards: S.optional(S.NullOr(__S(111))),
           collection_id: S.optional(S.NullOr(S.Number)),
           collection_position: S.optional(S.NullOr(S.Number)),
-          document: MetabaseDocumentsProseMirrorAst,
+          document: __S(112),
           name: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/document", code: 200 })),
       ).annotate({ identifier: "CreateDocumentRequest" });
@@ -24400,23 +18142,23 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          action: MetabaseEnterpriseActionV2ApiApiActionIdOrExpression,
-          input: S.optional(MetabaseEnterpriseActionV2ApiActionValueMap),
-          params: S.optional(MetabaseEnterpriseActionV2ApiActionValueMap),
-          scope: MetabaseActionsTypesScopeRaw,
+          action: S.Unknown,
+          input: S.optional(__S(10)),
+          params: S.optional(__S(10)),
+          scope: S.Unknown,
         }).pipe(T.Http({ method: "POST", uri: "/api/ee/action-v2/execute", code: 200 })),
       ).annotate({
         identifier: "CreateEeActionV2ExecuteRequest",
       });
     case 5:
-      return S.Array(MetabaseEnterpriseActionV2ApiActionValueMap);
+      return S.Array(__S(10));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: MetabaseEnterpriseActionV2ApiApiActionIdOrExpression,
-          inputs: CreateEeActionV2ExecuteBulkRequestInputsList,
-          params: S.optional(MetabaseEnterpriseActionV2ApiActionValueMap),
-          scope: MetabaseActionsTypesScopeRaw,
+          action: S.Unknown,
+          inputs: __S(117),
+          params: S.optional(__S(10)),
+          scope: S.Unknown,
         }).pipe(T.Http({ method: "POST", uri: "/api/ee/action-v2/execute-bulk", code: 200 })),
       ).annotate({
         identifier: "CreateEeActionV2ExecuteBulkRequest",
@@ -24424,9 +18166,9 @@ function __c14(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          action: MetabaseEnterpriseActionV2ApiApiActionIdOrExpression,
-          input: S.optional(MetabaseEnterpriseActionV2ApiActionValueMap),
-          scope: MetabaseActionsTypesScopeRaw,
+          action: S.Unknown,
+          input: S.optional(__S(10)),
+          scope: S.Unknown,
         }).pipe(T.Http({ method: "POST", uri: "/api/ee/action-v2/execute-form", code: 200 })),
       ).annotate({
         identifier: "CreateEeActionV2ExecuteFormRequest",
@@ -24464,7 +18206,7 @@ function __c15(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          file: CreateEeContentTranslationUploadDictionaryRequestFile,
+          file: __S(122),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24479,7 +18221,7 @@ function __c15(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          file: CreateEeCustomVizPluginRequestFile,
+          file: __S(122),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24514,10 +18256,7 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           schema_filters_patterns: S.String.pipe(T.Body("schema-filters-patterns")),
-          schema_filters_type:
-            CreateEeDatabaseReplicationConnectionDatabasePreviewRequestReplicationSchemaFiltersSchemaFiltersType.pipe(
-              T.Body("schema-filters-type"),
-            ),
+          schema_filters_type: S.String.pipe(T.Body("schema-filters-type")),
         }),
       ).annotate({
         identifier:
@@ -24531,9 +18270,7 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           database_id: S.Number.pipe(T.Label()),
-          replicationSchemaFilters: S.optional(
-            CreateEeDatabaseReplicationConnectionDatabasePreviewRequestReplicationSchemaFilters,
-          ),
+          replicationSchemaFilters: S.optional(__S(127)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24554,12 +18291,12 @@ function __c16(j: number): any {
         identifier: "CreateEeDatabaseRoutingDestinationDatabaseRequestDestinationsItem",
       });
     case 2:
-      return S.Array(CreateEeDatabaseRoutingDestinationDatabaseRequestDestinationsItem);
+      return S.Array(__S(129));
     case 3:
       return S.suspend(() =>
         S.Struct({
           check_connection_details: S.optional(S.Boolean.pipe(T.Query())),
-          destinations: CreateEeDatabaseRoutingDestinationDatabaseRequestDestinationsList,
+          destinations: __S(130),
           router_database_id: S.Number,
         }).pipe(
           T.Http({
@@ -24575,9 +18312,9 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           collection_id: S.Number,
-          database_ids: S.optional(CreateEeDataStudioTablePublishTableRequestDatabaseIdsList),
-          schema_ids: S.optional(CreateEeDataStudioTablePublishTableRequestSchemaIdsList),
-          table_ids: S.optional(CreateEeDataStudioTablePublishTableRequestTableIdsList),
+          database_ids: S.optional(__S(9)),
+          schema_ids: S.optional(__S(3)),
+          table_ids: S.optional(__S(9)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/ee/data-studio/table/publish-tables", code: 200 }),
         ),
@@ -24587,9 +18324,9 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          database_ids: S.optional(CreateEeDataStudioTableUnpublishTableRequestDatabaseIdsList),
-          schema_ids: S.optional(CreateEeDataStudioTableUnpublishTableRequestSchemaIdsList),
-          table_ids: S.optional(CreateEeDataStudioTableUnpublishTableRequestTableIdsList),
+          database_ids: S.optional(__S(9)),
+          schema_ids: S.optional(__S(3)),
+          table_ids: S.optional(__S(9)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/ee/data-studio/table/unpublish-tables", code: 200 }),
         ),
@@ -24722,9 +18459,9 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           source_entity_id: S.Number,
-          source_entity_type: MetabaseEnterpriseReplacementSchemaSourceEntityType,
+          source_entity_type: S.String,
           target_entity_id: S.Number,
-          target_entity_type: MetabaseEnterpriseReplacementSchemaSourceEntityType,
+          target_entity_type: S.String,
         }).pipe(
           T.Http({ method: "POST", uri: "/api/ee/replacement/check-replace-source", code: 200 }),
         ),
@@ -24735,9 +18472,9 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           source_entity_id: S.Number,
-          source_entity_type: MetabaseEnterpriseReplacementSchemaSourceEntityType,
+          source_entity_type: S.String,
           target_entity_id: S.Number,
-          target_entity_type: MetabaseEnterpriseReplacementSchemaSourceEntityType,
+          target_entity_type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/ee/replacement/replace-source", code: 200 })),
       ).annotate({
         identifier: "CreateEeReplacementReplaceSourceRequest",
@@ -24764,14 +18501,14 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CreateEeScimGroupRequestMembersItem);
+      return S.Array(__S(151));
     case 1:
       return S.suspend(() =>
         S.Struct({
           displayName: S.String,
           id: S.optional(S.String),
-          members: S.optional(CreateEeScimGroupRequestMembersList),
-          schemas: CreateEeScimGroupRequestSchemasList,
+          members: S.optional(__S(152)),
+          schemas: __S(3),
         }).pipe(T.Http({ method: "POST", uri: "/api/ee/scim/v2/Groups", code: 200 })),
       ).annotate({ identifier: "CreateEeScimGroupRequest" });
     case 2:
@@ -24789,7 +18526,7 @@ function __c19(j: number): any {
         identifier: "CreateEeScimUserRequestEmailsItem",
       });
     case 4:
-      return S.Array(CreateEeScimUserRequestEmailsItem);
+      return S.Array(__S(155));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -24801,7 +18538,7 @@ function __c19(j: number): any {
         identifier: "CreateEeScimUserRequestGroupsItem",
       });
     case 6:
-      return S.Array(CreateEeScimUserRequestGroupsItem);
+      return S.Array(__S(157));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -24819,19 +18556,19 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.Boolean),
-          emails: CreateEeScimUserRequestEmailsList,
-          groups: S.optional(CreateEeScimUserRequestGroupsList),
+          emails: __S(156),
+          groups: S.optional(__S(158)),
           id: S.optional(S.String),
           locale: S.optional(S.NullOr(S.String)),
-          name: CreateEeScimUserRequestName,
-          schemas: CreateEeScimUserRequestSchemasList,
+          name: __S(159),
+          schemas: __S(3),
           userName: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/ee/scim/v2/Users", code: 200 })),
       ).annotate({ identifier: "CreateEeScimUserRequest" });
     case 1:
       return S.suspend(() =>
         S.Struct({
-          advisory_ids: CreateEeSecurityCenterAcknowledgeRequestAdvisoryIdsList,
+          advisory_ids: __S(3),
         }).pipe(T.Http({ method: "POST", uri: "/api/ee/security-center/acknowledge", code: 200 })),
       ).annotate({
         identifier: "CreateEeSecurityCenterAcknowledgeRequest",
@@ -24859,13 +18596,11 @@ function __c20(j: number): any {
         identifier: "CreateEeSecurityCenterSyncRequest",
       });
     case 4:
-      return S.Array(MetabaseNotificationModelsNotificationRecipient);
+      return S.Array(S.Unknown);
     case 5:
       return S.suspend(() =>
         S.Struct({
-          email_recipients: S.optional(
-            S.NullOr(CreateEeSecurityCenterTestNotificationRequestEmailRecipientsList),
-          ),
+          email_recipients: S.optional(S.NullOr(__S(164))),
           slack_channel: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/ee/security-center/test-notification", code: 200 }),
@@ -24874,12 +18609,12 @@ function __c20(j: number): any {
         identifier: "CreateEeSecurityCenterTestNotificationRequest",
       });
     case 6:
-      return S.Array(CreateEeSerializationExportRequestCollectionItem);
+      return S.Array(S.Unknown);
     case 7:
       return S.suspend(() =>
         S.Struct({
           dirname: S.optional(S.String.pipe(T.Query())),
-          collection: S.optional(CreateEeSerializationExportRequestCollectionList.pipe(T.Query())),
+          collection: S.optional(__S(166).pipe(T.Query())),
           all_collections: S.optional(S.Boolean.pipe(T.Query())),
           settings: S.optional(S.Boolean.pipe(T.Query())),
           data_model: S.optional(S.Boolean.pipe(T.Query())),
@@ -24911,7 +18646,7 @@ function __c21(j: number): any {
           continue_on_error: S.optional(S.Boolean.pipe(T.Query())),
           full_stacktrace: S.optional(S.Boolean.pipe(T.Query())),
           reindex: S.optional(S.Boolean.pipe(T.Query())),
-          file: CreateEeSerializationImportRequestFile,
+          file: __S(168),
         }).pipe(
           T.Http({
             method: "POST",
@@ -24956,23 +18691,20 @@ function __c21(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          attributes: S.optional(S.NullOr(CreateEeTenantRequestAttributesMap)),
+          attributes: S.optional(S.NullOr(__S(10))),
           name: S.String,
           slug: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/ee/tenant", code: 200 })),
       ).annotate({ identifier: "CreateEeTenantRequest" });
     case 6:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.NullOr(MetabaseEnterpriseTransformsInspectorSchemaLensParamsValue),
-      );
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(S.Unknown));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           lens_id: S.String.pipe(T.Label()),
-          lens_params: S.optional(S.NullOr(MetabaseEnterpriseTransformsInspectorSchemaLensParams)),
-          query: MetabaseLibSchemaQuery,
+          lens_params: S.optional(S.NullOr(__S(174))),
+          query: __S(18),
         }).pipe(
           T.Http({
             method: "POST",
@@ -25000,24 +18732,24 @@ function __c22(j: number): any {
         identifier: "MetabaseTransformsBaseUtilSourceTableEntry",
       });
     case 1:
-      return S.Array(MetabaseTransformsBaseUtilSourceTableEntry);
+      return S.Array(__S(176));
     case 2:
       return S.suspend(() =>
         S.Struct({
           code: S.String,
           output_row_limit: S.optional(S.Unknown),
           per_input_row_limit: S.optional(S.Unknown),
-          source_tables: CreateEeTransformsPythonTestRunRequestSourceTablesList,
+          source_tables: __S(177),
         }).pipe(T.Http({ method: "POST", uri: "/api/ee/transforms-python/test-run", code: 200 })),
       ).annotate({
         identifier: "CreateEeTransformsPythonTestRunRequest",
       });
     case 3:
-      return S.Record(S.String, CreateEidTranslationTranslateRequestEntityIdsValueList);
+      return S.Record(S.String, __S(3));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          entity_ids: CreateEidTranslationTranslateRequestEntityIdsMap,
+          entity_ids: __S(179),
         }).pipe(T.Http({ method: "POST", uri: "/api/eid-translation/translate", code: 200 })),
       ).annotate({
         identifier: "CreateEidTranslationTranslateRequest",
@@ -25062,8 +18794,8 @@ function __c23(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          conversation_data: CreateEmbedMcpFeedbackRequestConversationData,
-          feedback: CreateEmbedMcpFeedbackRequestFeedback,
+          conversation_data: __S(183),
+          feedback: __S(184),
         }).pipe(T.Http({ method: "POST", uri: "/api/embed-mcp/feedback", code: 200 })),
       ).annotate({
         identifier: "CreateEmbedMcpFeedbackRequest",
@@ -25093,11 +18825,11 @@ function __c23(j: number): any {
         identifier: "CreateEmbedThemeSeedDefaultRequestThemesItem",
       });
     case 5:
-      return S.Array(CreateEmbedThemeSeedDefaultRequestThemesItem);
+      return S.Array(__S(188));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          themes: CreateEmbedThemeSeedDefaultRequestThemesList,
+          themes: __S(189),
         }).pipe(T.Http({ method: "POST", uri: "/api/embed-theme/seed-defaults", code: 200 })),
       ).annotate({
         identifier: "CreateEmbedThemeSeedDefaultRequest",
@@ -25108,7 +18840,7 @@ function __c23(j: number): any {
           id: S.Number.pipe(T.Label()),
           human_readable_field_id: S.optional(S.NullOr(S.Number)),
           name: S.String,
-          type: CreateFieldDimensionRequestType,
+          type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/field/{id}/dimension", code: 200 })),
       ).annotate({
         identifier: "CreateFieldDimensionRequest",
@@ -25136,24 +18868,24 @@ function __c24(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          field_ids: CreateFieldTableIdsRequestFieldIdsList,
+          field_ids: __S(9),
         }).pipe(T.Http({ method: "POST", uri: "/api/field/table-ids", code: 200 })),
       ).annotate({
         identifier: "CreateFieldTableIdsRequest",
       });
     case 3:
-      return S.Array(CreateFieldValueRequestValuesItem);
+      return S.Array(S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          values: CreateFieldValueRequestValuesList,
+          values: __S(195),
         }).pipe(T.Http({ method: "POST", uri: "/api/field/{id}/values", code: 200 })),
       ).annotate({ identifier: "CreateFieldValueRequest" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: MetabaseFrontendErrorsApiFrontendErrorType,
+          type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/frontend-errors", code: 200 })),
       ).annotate({
         identifier: "CreateFrontendErrorRequest",
@@ -25186,13 +18918,13 @@ function __c25(j: number): any {
         identifier: "CreateLlmExtractSourceRequestTemplateTagsValue",
       });
     case 1:
-      return S.Record(S.String, CreateLlmExtractSourceRequestTemplateTagsValue);
+      return S.Record(S.String, __S(200));
     case 2:
       return S.suspend(() =>
         S.Struct({
           database_id: S.Number,
           sql: S.String,
-          template_tags: S.optional(CreateLlmExtractSourceRequestTemplateTagsMap),
+          template_tags: S.optional(__S(201)),
         }).pipe(T.Http({ method: "POST", uri: "/api/llm/extract-sources", code: 200 })),
       ).annotate({
         identifier: "CreateLlmExtractSourceRequest",
@@ -25207,13 +18939,13 @@ function __c25(j: number): any {
         identifier: "CreateLlmGenerateSqlRequestReferencedEntitiesItem",
       });
     case 4:
-      return S.Array(CreateLlmGenerateSqlRequestReferencedEntitiesItem);
+      return S.Array(__S(203));
     case 5:
       return S.suspend(() =>
         S.Struct({
           database_id: S.Number,
           prompt: S.String,
-          referenced_entities: S.optional(CreateLlmGenerateSqlRequestReferencedEntitiesList),
+          referenced_entities: S.optional(__S(204)),
           source_sql: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/llm/generate-sql", code: 200 })),
       ).annotate({
@@ -25223,7 +18955,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           duration: S.Number,
-          duration_unit: MetabaseLoggerApiTimeUnit,
+          duration_unit: S.String,
           log_levels: S.Unknown,
         }).pipe(T.Http({ method: "POST", uri: "/api/logger/adjustment", code: 200 })),
       ).annotate({
@@ -25232,7 +18964,7 @@ function __c25(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          definition: MetabaseLibSchemaQuery,
+          definition: __S(18),
           description: S.optional(S.NullOr(S.String)),
           name: S.String,
           table_id: S.Number,
@@ -25243,11 +18975,11 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MetabaseMetabotContextContextUserIsViewingItem);
+      return S.Array(S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          user_is_viewing: S.optional(MetabaseMetabotContextContextUserIsViewingList),
+          user_is_viewing: S.optional(__S(208)),
         }),
       ).annotate({
         identifier: "MetabaseMetabotContextContext",
@@ -25263,33 +18995,29 @@ function __c26(j: number): any {
         identifier: "MetabaseMetabotSchemaMessageToolCallsItem",
       });
     case 3:
-      return S.Array(MetabaseMetabotSchemaMessageToolCallsItem);
+      return S.Array(__S(210));
     case 4:
       return S.suspend(() =>
         S.Struct({
           content: S.optional(S.NullOr(S.String)),
-          role: MetabaseMetabotSchemaRole,
+          role: S.String,
           tool_call_id: S.optional(S.NullOr(S.String)),
-          tool_calls: S.optional(S.NullOr(MetabaseMetabotSchemaMessageToolCallsList)),
+          tool_calls: S.optional(S.NullOr(__S(211))),
         }),
       ).annotate({
         identifier: "MetabaseMetabotSchemaMessage",
       });
     case 5:
-      return S.Array(MetabaseMetabotSchemaMessage);
+      return S.Array(__S(212));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          chart_configs: S.optional(
-            MetabaseMetabotAgentCoreStateChartConfigsMap.pipe(T.Body("chart-configs")),
-          ),
-          charts: S.optional(MetabaseMetabotAgentCoreStateChartsMap),
-          link_registry: S.optional(
-            MetabaseMetabotAgentCoreStateLinkRegistryMap.pipe(T.Body("link-registry")),
-          ),
-          queries: S.optional(MetabaseMetabotAgentCoreStateQueriesMap),
-          todos: S.optional(MetabaseMetabotAgentCoreStateTodosList),
-          transforms: S.optional(MetabaseMetabotAgentCoreStateTransformsMap),
+          chart_configs: S.optional(__S(10).pipe(T.Body("chart-configs"))),
+          charts: S.optional(__S(10)),
+          link_registry: S.optional(__S(43).pipe(T.Body("link-registry"))),
+          queries: S.optional(__S(10)),
+          todos: S.optional(__S(0)),
+          transforms: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "MetabaseMetabotAgentCoreState",
@@ -25297,14 +19025,14 @@ function __c26(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          context: MetabaseMetabotContextContext,
+          context: __S(209),
           conversation_id: S.String,
           debug: S.optional(S.NullOr(S.Boolean)),
-          history: S.NullOr(MetabaseMetabotSchemaMessages),
+          history: S.NullOr(__S(213)),
           message: S.String,
           metabot_id: S.optional(S.String),
           profile_id: S.optional(S.String),
-          state: MetabaseMetabotAgentCoreState,
+          state: __S(214),
         }).pipe(T.Http({ method: "POST", uri: "/api/metabot/agent-streaming", code: 200 })),
       ).annotate({
         identifier: "CreateMetabotAgentStreamingRequest",
@@ -25353,7 +19081,7 @@ function __c27(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(CreateMetabotSlackEventRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/api/metabot/slack/events", code: 200 })),
       ).annotate({
         identifier: "CreateMetabotSlackEventRequest",
@@ -25373,7 +19101,7 @@ function __c27(j: number): any {
           metabot_id: S.Number,
           positive: S.Boolean,
           source_id: S.Number,
-          source_type: CreateMetabotSourceFeedbackRequestSourceType,
+          source_type: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/metabot/source-feedback", code: 200 })),
       ).annotate({
         identifier: "CreateMetabotSourceFeedbackRequest",
@@ -25388,32 +19116,32 @@ function __c27(j: number): any {
         identifier: "MetabaseLibMetricSchemaInstanceFilter",
       });
     case 7:
-      return S.Array(MetabaseLibMetricSchemaInstanceFilter);
+      return S.Array(__S(222));
   }
 }
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(MetabaseLibMetricSchemaDimensionReference);
+      return S.Array(__S(0));
     case 1:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
           lib_uuid: S.String.pipe(T.Body("lib/uuid")),
-          projection: MetabaseLibMetricSchemaTypedProjectionProjectionList,
-          type: MetabaseLibMetricSchemaTypedProjectionType,
+          projection: __S(224),
+          type: S.String,
         }),
       ).annotate({
         identifier: "MetabaseLibMetricSchemaTypedProjection",
       });
     case 2:
-      return S.Array(MetabaseLibMetricSchemaTypedProjection);
+      return S.Array(__S(225));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          expression: MetabaseLibMetricSchemaMetricMathExpression,
-          filters: S.optional(S.NullOr(MetabaseLibMetricSchemaInstanceFilters)),
-          projections: S.optional(S.NullOr(MetabaseLibMetricSchemaTypedProjections)),
+          expression: S.Unknown,
+          filters: S.optional(S.NullOr(__S(223))),
+          projections: S.optional(S.NullOr(__S(226))),
         }),
       ).annotate({
         identifier: "MetabaseMetricsApiDefinition",
@@ -25421,7 +19149,7 @@ function __c28(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          definition: MetabaseMetricsApiDefinition,
+          definition: __S(227),
         }).pipe(T.Http({ method: "POST", uri: "/api/metric/breakout-values", code: 200 })),
       ).annotate({
         identifier: "CreateMetricBreakoutValueRequest",
@@ -25429,7 +19157,7 @@ function __c28(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          definition: MetabaseMetricsApiDefinition,
+          definition: __S(227),
         }).pipe(T.Http({ method: "POST", uri: "/api/metric/dataset", code: 200 })),
       ).annotate({
         identifier: "CreateMetricDatasetRequest",
@@ -25446,8 +19174,8 @@ function __c28(j: number): any {
       return S.suspend(() =>
         S.Struct({
           moderated_item_id: S.Number,
-          moderated_item_type: CreateModerationReviewRequestModeratedItemType,
-          status: S.optional(S.NullOr(CreateModerationReviewRequestStatus)),
+          moderated_item_type: S.String,
+          status: S.optional(S.NullOr(S.String)),
           text: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/api/moderation-review", code: 200 })),
       ).annotate({
@@ -25458,13 +19186,11 @@ function __c28(j: number): any {
 function __c29(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, MetabaseEnterpriseSandboxSchemaAttributeRemappingsValue);
+      return S.Record(S.String, S.Unknown);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          attribute_remappings: S.optional(
-            S.NullOr(MetabaseEnterpriseSandboxSchemaAttributeRemappingsMap),
-          ),
+          attribute_remappings: S.optional(S.NullOr(__S(232))),
           card_id: S.optional(S.NullOr(S.Number)),
           group_id: S.Number,
           table_id: S.Number,
@@ -25493,9 +19219,7 @@ function __c29(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(
-            MetabaseNotificationApiNotificationCreateNotificationParams.pipe(T.HttpBody()),
-          ),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/api/notification", code: 200 })),
       ).annotate({
         identifier: "CreateNotificationRequest",
@@ -25503,9 +19227,9 @@ function __c29(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          action: CreateNotificationAdminBulkRequestAction,
+          action: S.String,
           creator_id: S.optional(S.Number),
-          notification_ids: CreateNotificationAdminBulkRequestNotificationIdsList,
+          notification_ids: __S(9),
         }).pipe(T.Http({ method: "POST", uri: "/api/notification/admin/bulk", code: 200 })),
       ).annotate({
         identifier: "CreateNotificationAdminBulkRequest",
@@ -25513,9 +19237,7 @@ function __c29(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(
-            MetabaseNotificationApiNotificationCreateNotificationParams.pipe(T.HttpBody()),
-          ),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/api/notification/send", code: 200 })),
       ).annotate({
         identifier: "CreateNotificationSendRequest",
@@ -25524,7 +19246,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          handler_ids: S.optional(CreateNotificationSendRequestHandlerIdsList),
+          handler_ids: S.optional(__S(9)),
         }).pipe(T.Http({ method: "POST", uri: "/api/notification/{id}/send", code: 200 })),
       ).annotate({
         identifier: "CreateNotificationSendRequest2",
@@ -25707,7 +19429,7 @@ function __c32(j: number): any {
           collection_position: S.optional(S.NullOr(S.Number)),
           dashboard_id: S.optional(S.NullOr(S.Number)),
           name: S.String,
-          parameters: S.optional(S.NullOr(CreatePulseRequestParametersList)),
+          parameters: S.optional(S.NullOr(__S(8))),
           skip_if_empty: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "POST", uri: "/api/pulse", code: 200 })),
       ).annotate({ identifier: "CreatePulseRequest" });
@@ -25719,11 +19441,11 @@ function __c32(j: number): any {
           collection_position: S.optional(S.NullOr(S.Number)),
           skip_if_empty: S.optional(S.NullOr(S.Boolean)),
           alert_above_goal: S.optional(S.NullOr(S.Boolean)),
-          alert_condition: S.optional(S.NullOr(CreatePulseTestRequestAlertCondition)),
+          alert_condition: S.optional(S.NullOr(S.String)),
           collection_id: S.optional(S.NullOr(S.Number)),
           alert_first_only: S.optional(S.NullOr(S.Boolean)),
           disable_links: S.optional(S.NullOr(S.Boolean)),
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameterValues)),
+          parameters: S.optional(S.NullOr(__S(55))),
           cards: S.Unknown,
           dashboard_id: S.optional(S.NullOr(S.Number)),
           channels: S.Unknown,
@@ -25752,7 +19474,7 @@ function __c32(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          entity: CreateRevisionRevertRequestEntity,
+          entity: S.String,
           id: S.Number,
           revision_id: S.Number,
         }).pipe(T.Http({ method: "POST", uri: "/api/revision/revert", code: 200 })),
@@ -25778,7 +19500,7 @@ function __c33(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          definition: MetabaseLibSchemaQuery,
+          definition: __S(18),
           description: S.optional(S.NullOr(S.String)),
           name: S.String,
           table_id: S.Number,
@@ -25865,28 +19587,24 @@ function __c34(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          prefs: CreateSetupRequestPrefs,
+          prefs: __S(273),
           token: S.String,
-          user: CreateSetupRequestUser,
+          user: __S(274),
         }).pipe(T.Http({ method: "POST", uri: "/api/setup", code: 200 })),
       ).annotate({ identifier: "CreateSetupRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           entityName: S.optional(S.NullOr(S.String)),
-          frontendErrors: S.optional(
-            S.NullOr(CreateSlackBugReportRequestDiagnosticInfoFrontendErrorsList),
-          ),
+          frontendErrors: S.optional(S.NullOr(__S(3))),
           entityInfo: S.optional(S.NullOr(S.Unknown)),
-          reporter: S.optional(S.NullOr(CreateSlackBugReportRequestDiagnosticInfoReporter)),
+          reporter: S.optional(S.NullOr(S.Unknown)),
           url: S.optional(S.NullOr(S.String)),
-          backendErrors: S.optional(
-            S.NullOr(CreateSlackBugReportRequestDiagnosticInfoBackendErrorsList),
-          ),
+          backendErrors: S.optional(S.NullOr(__S(0))),
           bugReportDetails: S.optional(S.NullOr(S.Unknown)),
-          userLogs: S.optional(S.NullOr(CreateSlackBugReportRequestDiagnosticInfoUserLogsList)),
+          userLogs: S.optional(S.NullOr(__S(0))),
           localizedEntityName: S.optional(S.NullOr(S.String)),
-          logs: S.optional(S.NullOr(CreateSlackBugReportRequestDiagnosticInfoLogsList)),
+          logs: S.optional(S.NullOr(__S(0))),
           queryResults: S.optional(S.NullOr(S.Unknown)),
           browserInfo: S.optional(S.NullOr(S.Unknown)),
           description: S.optional(S.NullOr(S.String)),
@@ -25897,7 +19615,7 @@ function __c34(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          diagnosticInfo: CreateSlackBugReportRequestDiagnosticInfo,
+          diagnosticInfo: __S(276),
         }).pipe(T.Http({ method: "POST", uri: "/api/slack/bug-report", code: 200 })),
       ).annotate({
         identifier: "CreateSlackBugReportRequest",
@@ -25916,7 +19634,7 @@ function __c34(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           collection_id: S.optional(S.String),
-          file: CreateTableAppendCsvRequestFile,
+          file: __S(278),
         }).pipe(
           T.Http({
             method: "POST",
@@ -25945,7 +19663,7 @@ function __c35(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           collection_id: S.optional(S.String),
-          file: CreateTableAppendCsvRequestFile,
+          file: __S(278),
         }).pipe(
           T.Http({
             method: "POST",
@@ -25980,7 +19698,7 @@ function __c35(j: number): any {
           collection_id: S.optional(S.NullOr(S.Number)),
           default: S.optional(S.NullOr(S.Boolean)),
           description: S.optional(S.NullOr(S.String)),
-          icon: S.optional(S.NullOr(CreateTimelineRequestIcon)),
+          icon: S.optional(S.NullOr(S.String)),
           name: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/api/timeline", code: 200 })),
       ).annotate({ identifier: "CreateTimelineRequest" });
@@ -25993,10 +19711,10 @@ function __c35(j: number): any {
           name: S.String,
           archived: S.optional(S.NullOr(S.Boolean)),
           timeline_id: S.Number,
-          source: S.optional(S.NullOr(CreateTimelineEventRequestSource)),
+          source: S.optional(S.NullOr(S.String)),
           time_matters: S.optional(S.NullOr(S.Boolean)),
           description: S.optional(S.NullOr(S.String)),
-          icon: S.optional(S.NullOr(CreateTimelineEventRequestIcon)),
+          icon: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/api/timeline-event", code: 200 })),
       ).annotate({
         identifier: "CreateTimelineEventRequest",
@@ -26007,11 +19725,11 @@ function __c35(j: number): any {
           owner_email: S.optional(S.NullOr(S.String)),
           owner_user_id: S.optional(S.NullOr(S.Number)),
           name: S.String,
-          tag_ids: S.optional(CreateTransformRequestTagIdsList),
+          tag_ids: S.optional(__S(9)),
           collection_id: S.optional(S.NullOr(S.Number)),
-          source: MetabaseTransformsSchemaTransformSource,
-          target: MetabaseTransformsSchemaTransformTarget,
-          run_trigger: S.optional(MetabaseTransformsRestApiTransformRunTrigger),
+          source: S.Unknown,
+          target: S.Unknown,
+          run_trigger: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/api/transform", code: 200 })),
       ).annotate({ identifier: "CreateTransformRequest" });
@@ -26033,8 +19751,8 @@ function __c36(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           name: S.String,
           schedule: S.String,
-          tag_ids: S.optional(CreateTransformJobRequestTagIdsList),
-          ui_display_type: S.optional(CreateTransformJobRequestUiDisplayType),
+          tag_ids: S.optional(__S(9)),
+          ui_display_type: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/api/transform-job", code: 200 })),
       ).annotate({
         identifier: "CreateTransformJobRequest",
@@ -26076,7 +19794,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           collection_id: S.NullOr(S.Number),
-          file: CreateTableAppendCsvRequestFile,
+          file: __S(278),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/upload/csv", code: 200, contentType: "multipart" }),
         ),
@@ -26091,7 +19809,7 @@ function __c36(j: number): any {
         identifier: "MetabaseUsersSchemaUserGroupMembership",
       });
     case 7:
-      return S.Array(MetabaseUsersSchemaUserGroupMembership);
+      return S.Array(__S(294));
   }
 }
 function __c37(j: number): any {
@@ -26101,7 +19819,7 @@ function __c37(j: number): any {
         S.Struct({
           id: S.Number,
           name: S.String,
-          type: CreateUserRequestInviteTargetType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "CreateUserRequestInviteTarget",
@@ -26109,15 +19827,15 @@ function __c37(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          login_attributes: S.optional(S.NullOr(CreateUserRequestLoginAttributesMap)),
-          user_group_memberships: S.optional(S.NullOr(CreateUserRequestUserGroupMembershipsList)),
+          login_attributes: S.optional(S.NullOr(__S(10))),
+          user_group_memberships: S.optional(S.NullOr(__S(295))),
           email: S.String,
           tenant_id: S.optional(S.NullOr(S.Number)),
           last_name: S.optional(S.NullOr(S.String)),
           first_name: S.optional(S.NullOr(S.String)),
           source: S.optional(S.NullOr(S.String)),
           password: S.optional(S.NullOr(S.String)),
-          invite_target: S.optional(S.NullOr(CreateUserRequestInviteTarget)),
+          invite_target: S.optional(S.NullOr(__S(296))),
         }).pipe(T.Http({ method: "POST", uri: "/api/user", code: 200 })),
       ).annotate({ identifier: "CreateUserRequest" });
     case 2:
@@ -26153,15 +19871,15 @@ function __c37(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          model: DeleteBookmarkRequestModel.pipe(T.Label()),
+          model: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/bookmark/{model}/{id}", code: 200 })),
       ).annotate({ identifier: "DeleteBookmarkRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          model: DeleteCacheRequestModel,
-          model_id: DeleteCacheRequestModelIdList,
+          model: S.String,
+          model_id: __S(9),
         }).pipe(T.Http({ method: "DELETE", uri: "/api/cache", code: 200 })),
       ).annotate({ identifier: "DeleteCacheRequest" });
   }
@@ -26271,7 +19989,7 @@ function __c39(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          product_type: DeleteEeCloudAddOnsRequestProductType.pipe(T.Label()),
+          product_type: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({ method: "DELETE", uri: "/api/ee/cloud-add-ons/{product_type}", code: 200 }),
         ),
@@ -26567,7 +20285,7 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           action_id: S.Number.pipe(T.Label()),
-          parameters: MetabaseActionsSchemaPrefetchParameterValues.pipe(T.Query()),
+          parameters: __S(10).pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/api/action/{action_id}/execute", code: 200 })),
       ).annotate({ identifier: "GetActionExecuteRequest" });
   }
@@ -26591,7 +20309,7 @@ function __c44(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          context: GetActivityRecentsRequestContextList.pipe(T.Query()),
+          context: __S(5).pipe(T.Query()),
           include_metadata: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/activity/recents", code: 200 })),
       ).annotate({
@@ -26625,9 +20343,9 @@ function __c44(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entity: GetAutomagicDashboardRequestEntity.pipe(T.Label()),
+          entity: S.String.pipe(T.Label()),
           entity_id_or_query: S.String.pipe(T.Label()),
-          show: S.optional(GetAutomagicDashboardRequestShow.pipe(T.Query())),
+          show: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -26645,10 +20363,10 @@ function __c45(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entity: GetAutomagicDashboardCellRequestEntity.pipe(T.Label()),
+          entity: S.String.pipe(T.Label()),
           entity_id_or_query: S.String.pipe(T.Label()),
           cell_query: S.String.pipe(T.Label()),
-          show: S.optional(GetAutomagicDashboardCellRequestShow.pipe(T.Query())),
+          show: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -26662,14 +20380,12 @@ function __c45(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          entity: GetAutomagicDashboardCellCompareRequestEntity.pipe(T.Label()),
+          entity: S.String.pipe(T.Label()),
           entity_id_or_query: S.String.pipe(T.Label()),
           cell_query: S.String.pipe(T.Label()),
-          comparison_entity: GetAutomagicDashboardCellCompareRequestComparisonEntity.pipe(
-            T.Label(),
-          ),
+          comparison_entity: S.String.pipe(T.Label()),
           comparison_entity_id_or_query: S.String.pipe(T.Label()),
-          show: S.optional(GetAutomagicDashboardCellCompareRequestShow.pipe(T.Query())),
+          show: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -26683,14 +20399,12 @@ function __c45(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          entity: GetAutomagicDashboardCellRuleDashboardTemplateRequestEntity.pipe(T.Label()),
+          entity: S.String.pipe(T.Label()),
           entity_id_or_query: S.String.pipe(T.Label()),
           cell_query: S.String.pipe(T.Label()),
           prefix: S.String.pipe(T.Label()),
           dashboard_template: S.String.pipe(T.Label()),
-          show: S.optional(
-            GetAutomagicDashboardCellRuleDashboardTemplateRequestShow.pipe(T.Query()),
-          ),
+          show: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -26704,21 +20418,14 @@ function __c45(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          entity: GetAutomagicDashboardCellRuleDashboardTemplateCompareRequestEntity.pipe(
-            T.Label(),
-          ),
+          entity: S.String.pipe(T.Label()),
           entity_id_or_query: S.String.pipe(T.Label()),
           cell_query: S.String.pipe(T.Label()),
           prefix: S.String.pipe(T.Label()),
           dashboard_template: S.String.pipe(T.Label()),
-          comparison_entity:
-            GetAutomagicDashboardCellRuleDashboardTemplateCompareRequestComparisonEntity.pipe(
-              T.Label(),
-            ),
+          comparison_entity: S.String.pipe(T.Label()),
           comparison_entity_id_or_query: S.String.pipe(T.Label()),
-          show: S.optional(
-            GetAutomagicDashboardCellRuleDashboardTemplateCompareRequestShow.pipe(T.Query()),
-          ),
+          show: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -26736,11 +20443,11 @@ function __c45(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          entity: GetAutomagicDashboardCompareRequestEntity.pipe(T.Label()),
+          entity: S.String.pipe(T.Label()),
           entity_id_or_query: S.String.pipe(T.Label()),
-          comparison_entity: GetAutomagicDashboardCompareRequestComparisonEntity.pipe(T.Label()),
+          comparison_entity: S.String.pipe(T.Label()),
           comparison_entity_id_or_query: S.String.pipe(T.Label()),
-          show: S.optional(GetAutomagicDashboardCompareRequestShow.pipe(T.Query())),
+          show: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -26754,7 +20461,7 @@ function __c45(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          entity: GetAutomagicDashboardEntityOrQueryQueryMetadataRequestEntity.pipe(T.Label()),
+          entity: S.String.pipe(T.Label()),
           entity_id_or_query: S.String.pipe(T.Label()),
         }).pipe(
           T.Http({
@@ -26769,11 +20476,11 @@ function __c45(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          entity: GetAutomagicDashboardRuleDashboardTemplateRequestEntity.pipe(T.Label()),
+          entity: S.String.pipe(T.Label()),
           entity_id_or_query: S.String.pipe(T.Label()),
           prefix: S.String.pipe(T.Label()),
           dashboard_template: S.String.pipe(T.Label()),
-          show: S.optional(GetAutomagicDashboardRuleDashboardTemplateRequestShow.pipe(T.Query())),
+          show: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -26791,18 +20498,13 @@ function __c46(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entity: GetAutomagicDashboardRuleDashboardTemplateCompareRequestEntity.pipe(T.Label()),
+          entity: S.String.pipe(T.Label()),
           entity_id_or_query: S.String.pipe(T.Label()),
           prefix: S.String.pipe(T.Label()),
           dashboard_template: S.String.pipe(T.Label()),
-          comparison_entity:
-            GetAutomagicDashboardRuleDashboardTemplateCompareRequestComparisonEntity.pipe(
-              T.Label(),
-            ),
+          comparison_entity: S.String.pipe(T.Label()),
           comparison_entity_id_or_query: S.String.pipe(T.Label()),
-          show: S.optional(
-            GetAutomagicDashboardRuleDashboardTemplateCompareRequestShow.pipe(T.Query()),
-          ),
+          show: S.optional(S.Unknown.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -26863,17 +20565,17 @@ function __c46(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          model: S.optional(GetCacheRequestModelList.pipe(T.Query())),
+          model: S.optional(__S(5).pipe(T.Query())),
           collection: S.optional(S.Number.pipe(T.Query())),
           id: S.optional(S.Number.pipe(T.Query())),
-          sort_column: S.optional(GetCacheRequestSortColumn.pipe(T.Query())),
-          sort_direction: S.optional(GetCacheRequestSortDirection.pipe(T.Query())),
+          sort_column: S.optional(S.String.pipe(T.Query())),
+          sort_direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/cache", code: 200 })),
       ).annotate({ identifier: "GetCacheRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          f: S.optional(GetCardRequestF.pipe(T.Query())),
+          f: S.optional(S.String.pipe(T.Query())),
           model_id: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/card", code: 200 })),
       ).annotate({ identifier: "GetCardRequest" });
@@ -27006,7 +20708,7 @@ function __c48(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
-          parameters: S.optional(MetabaseParametersSchemaParameterValues.pipe(T.Query())),
+          parameters: S.optional(__S(55).pipe(T.Query())),
           ignore_cache: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/public/card/{uuid}/query", code: 200 })),
       ).annotate({ identifier: "GetCardQueryRequest" });
@@ -27014,10 +20716,10 @@ function __c48(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
-          export_format: GetCardQueryByExportFormatRequestExportFormat.pipe(T.Label()),
+          export_format: S.String.pipe(T.Label()),
           format_rows: S.optional(S.Boolean.pipe(T.Query())),
           pivot_results: S.optional(S.Boolean.pipe(T.Query())),
-          parameters: S.optional(MetabaseParametersSchemaParameterValues.pipe(T.Query())),
+          parameters: S.optional(__S(55).pipe(T.Query())),
           csv_include_bom: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -27109,11 +20811,11 @@ function __c49(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          models: S.optional(GetCollectionItemsRequestModelsList.pipe(T.Query())),
+          models: S.optional(__S(5).pipe(T.Query())),
           archived: S.optional(S.Boolean.pipe(T.Query())),
-          pinned_state: S.optional(GetCollectionItemsRequestPinnedState.pipe(T.Query())),
-          sort_column: S.optional(GetCollectionItemsRequestSortColumn.pipe(T.Query())),
-          sort_direction: S.optional(GetCollectionItemsRequestSortDirection.pipe(T.Query())),
+          pinned_state: S.optional(S.String.pipe(T.Query())),
+          sort_column: S.optional(S.String.pipe(T.Query())),
+          sort_direction: S.optional(S.String.pipe(T.Query())),
           official_collections_first: S.optional(S.Boolean.pipe(T.Query())),
           show_dashboard_questions: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/collection/{id}/items", code: 200 })),
@@ -27145,14 +20847,14 @@ function __c50(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          models: S.optional(GetCollectionRootItemsRequestModelsList.pipe(T.Query())),
-          collection_type: S.optional(GetCollectionRootItemsRequestCollectionType.pipe(T.Query())),
+          models: S.optional(__S(5).pipe(T.Query())),
+          collection_type: S.optional(S.String.pipe(T.Query())),
           archived: S.optional(S.Boolean.pipe(T.Query())),
           namespace: S.optional(S.String.pipe(T.Query())),
           include_library: S.optional(S.Boolean.pipe(T.Query())),
-          pinned_state: S.optional(GetCollectionRootItemsRequestPinnedState.pipe(T.Query())),
-          sort_column: S.optional(GetCollectionRootItemsRequestSortColumn.pipe(T.Query())),
-          sort_direction: S.optional(GetCollectionRootItemsRequestSortDirection.pipe(T.Query())),
+          pinned_state: S.optional(S.String.pipe(T.Query())),
+          sort_column: S.optional(S.String.pipe(T.Query())),
+          sort_direction: S.optional(S.String.pipe(T.Query())),
           official_collections_first: S.optional(S.Boolean.pipe(T.Query())),
           show_dashboard_questions: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/collection/root/items", code: 200 })),
@@ -27174,7 +20876,7 @@ function __c50(j: number): any {
           ),
           include_library: S.optional(S.Boolean.pipe(T.Query("include-library"))),
           namespace: S.optional(S.String.pipe(T.Query())),
-          namespaces: S.optional(GetCollectionTreeRequestNamespacesList.pipe(T.Query())),
+          namespaces: S.optional(__S(3).pipe(T.Query())),
           shallow: S.optional(S.Boolean.pipe(T.Query())),
           collection_id: S.optional(S.Number.pipe(T.Query("collection-id"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/collection/tree", code: 200 })),
@@ -27182,7 +20884,7 @@ function __c50(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          target_type: GetCommentRequestTargetType.pipe(T.Query()),
+          target_type: S.String.pipe(T.Query()),
           target_id: S.Number.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/api/comment", code: 200 })),
       ).annotate({ identifier: "GetCommentRequest" });
@@ -27222,7 +20924,7 @@ function __c51(j: number): any {
           uuid: S.String.pipe(T.Label()),
           dashcard_id: S.Number.pipe(T.Label()),
           card_id: S.Number.pipe(T.Label()),
-          parameters: S.optional(MetabaseParametersSchemaParameterValues.pipe(T.Query())),
+          parameters: S.optional(__S(55).pipe(T.Query())),
           ignore_cache: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -27239,7 +20941,7 @@ function __c51(j: number): any {
         S.Struct({
           dashboard_id: S.Number.pipe(T.Label()),
           dashcard_id: S.Number.pipe(T.Label()),
-          parameters: S.optional(MetabaseActionsSchemaPrefetchParameterValues.pipe(T.Query())),
+          parameters: S.optional(__S(10).pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -27255,7 +20957,7 @@ function __c51(j: number): any {
         S.Struct({
           uuid: S.String.pipe(T.Label()),
           dashcard_id: S.Number.pipe(T.Label()),
-          parameters: MetabaseActionsSchemaPrefetchParameterValues.pipe(T.Query()),
+          parameters: __S(10).pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -27349,10 +21051,8 @@ function __c52(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          filtered: GetDashboardParamsValidFilterFieldsRequestFilteredList.pipe(T.Query()),
-          filtering: S.optional(
-            GetDashboardParamsValidFilterFieldsRequestFilteringList.pipe(T.Query()),
-          ),
+          filtered: __S(9).pipe(T.Query()),
+          filtering: S.optional(__S(9).pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/dashboard/params/valid-filter-fields", code: 200 }),
         ),
@@ -27409,7 +21109,7 @@ function __c52(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          include: S.optional(GetDatabaseRequestInclude.pipe(T.Query())),
+          include: S.optional(S.String.pipe(T.Query())),
           include_analytics: S.optional(S.Boolean.pipe(T.Query())),
           saved: S.optional(S.Boolean.pipe(T.Query())),
           include_editable_data_model: S.optional(S.Boolean.pipe(T.Query())),
@@ -27440,7 +21140,7 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          include: S.optional(GetDatabaseByIdRequestInclude.pipe(T.Query())),
+          include: S.optional(S.String.pipe(T.Query())),
           include_editable_data_model: S.optional(S.Boolean.pipe(T.Query())),
           exclude_uneditable_details: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/database/{id}", code: 200 })),
@@ -27490,9 +21190,7 @@ function __c53(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          connection_type: S.optional(
-            MetabaseDriverConnectionConnectionType.pipe(T.Query("connection-type")),
-          ),
+          connection_type: S.optional(S.String.pipe(T.Query("connection-type"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/database/{id}/healthcheck", code: 200 })),
       ).annotate({
         identifier: "GetDatabaseHealthcheckRequest",
@@ -27642,7 +21340,7 @@ function __c55(j: number): any {
         S.Struct({
           uuid: S.String.pipe(T.Label()),
           card_id: S.Number.pipe(T.Label()),
-          parameters: S.optional(MetabaseParametersSchemaParameterValues.pipe(T.Query())),
+          parameters: S.optional(__S(55).pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/public/document/{uuid}/card/{card_id}", code: 200 }),
         ),
@@ -27864,9 +21562,7 @@ function __c58(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.Number.pipe(T.Query())),
-          type: S.optional(
-            MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes.pipe(T.Query()),
-          ),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/ee/dependencies/graph", code: 200 })),
       ).annotate({
         identifier: "GetEeDependenciesGraphRequest",
@@ -27874,20 +21570,14 @@ function __c58(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          types: S.optional(GetEeDependenciesGraphBreakingRequestTypes.pipe(T.Query())),
-          card_types: S.optional(
-            GetEeDependenciesGraphBreakingRequestCardTypes.pipe(T.Query("card-types")),
-          ),
+          types: S.optional(S.Unknown.pipe(T.Query())),
+          card_types: S.optional(S.Unknown.pipe(T.Query("card-types"))),
           query: S.optional(S.String.pipe(T.Query())),
           include_personal_collections: S.optional(
             S.Boolean.pipe(T.Query("include-personal-collections")),
           ),
-          sort_column: S.optional(
-            GetEeDependenciesGraphBreakingRequestSortColumn.pipe(T.Query("sort-column")),
-          ),
-          sort_direction: S.optional(
-            GetEeDependenciesGraphBreakingRequestSortDirection.pipe(T.Query("sort-direction")),
-          ),
+          sort_column: S.optional(S.String.pipe(T.Query("sort-column"))),
+          sort_direction: S.optional(S.String.pipe(T.Query("sort-direction"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/ee/dependencies/graph/breaking", code: 200 })),
       ).annotate({
         identifier: "GetEeDependenciesGraphBreakingRequest",
@@ -27900,24 +21590,14 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Query()),
-          type: MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes.pipe(T.Query()),
-          dependent_types: S.optional(
-            GetEeDependenciesGraphBrokenRequestDependentTypes.pipe(T.Query("dependent-types")),
-          ),
-          dependent_card_types: S.optional(
-            GetEeDependenciesGraphBrokenRequestDependentCardTypes.pipe(
-              T.Query("dependent-card-types"),
-            ),
-          ),
+          type: S.String.pipe(T.Query()),
+          dependent_types: S.optional(S.Unknown.pipe(T.Query("dependent-types"))),
+          dependent_card_types: S.optional(S.Unknown.pipe(T.Query("dependent-card-types"))),
           include_personal_collections: S.optional(
             S.Boolean.pipe(T.Query("include-personal-collections")),
           ),
-          sort_column: S.optional(
-            GetEeDependenciesGraphBrokenRequestSortColumn.pipe(T.Query("sort-column")),
-          ),
-          sort_direction: S.optional(
-            GetEeDependenciesGraphBrokenRequestSortDirection.pipe(T.Query("sort-direction")),
-          ),
+          sort_column: S.optional(S.String.pipe(T.Query("sort-column"))),
+          sort_direction: S.optional(S.String.pipe(T.Query("sort-direction"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/ee/dependencies/graph/broken", code: 200 })),
       ).annotate({
         identifier: "GetEeDependenciesGraphBrokenRequest",
@@ -27926,26 +21606,16 @@ function __c59(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Query()),
-          type: MetabaseEnterpriseDependenciesDependencyTypesDependencyTypes.pipe(T.Query()),
-          dependent_types: S.optional(
-            GetEeDependenciesGraphDependentsRequestDependentTypes.pipe(T.Query("dependent-types")),
-          ),
-          dependent_card_types: S.optional(
-            GetEeDependenciesGraphDependentsRequestDependentCardTypes.pipe(
-              T.Query("dependent-card-types"),
-            ),
-          ),
+          type: S.String.pipe(T.Query()),
+          dependent_types: S.optional(S.Unknown.pipe(T.Query("dependent-types"))),
+          dependent_card_types: S.optional(S.Unknown.pipe(T.Query("dependent-card-types"))),
           broken: S.optional(S.Boolean.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
           include_personal_collections: S.optional(
             S.Boolean.pipe(T.Query("include-personal-collections")),
           ),
-          sort_column: S.optional(
-            GetEeDependenciesGraphDependentsRequestSortColumn.pipe(T.Query("sort-column")),
-          ),
-          sort_direction: S.optional(
-            GetEeDependenciesGraphDependentsRequestSortDirection.pipe(T.Query("sort-direction")),
-          ),
+          sort_column: S.optional(S.String.pipe(T.Query("sort-column"))),
+          sort_direction: S.optional(S.String.pipe(T.Query("sort-direction"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/ee/dependencies/graph/dependents", code: 200 })),
       ).annotate({
         identifier: "GetEeDependenciesGraphDependentsRequest",
@@ -27953,20 +21623,14 @@ function __c59(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          types: S.optional(GetEeDependenciesGraphUnreferencedRequestTypes.pipe(T.Query())),
-          card_types: S.optional(
-            GetEeDependenciesGraphUnreferencedRequestCardTypes.pipe(T.Query("card-types")),
-          ),
+          types: S.optional(S.Unknown.pipe(T.Query())),
+          card_types: S.optional(S.Unknown.pipe(T.Query("card-types"))),
           query: S.optional(S.String.pipe(T.Query())),
           include_personal_collections: S.optional(
             S.Boolean.pipe(T.Query("include-personal-collections")),
           ),
-          sort_column: S.optional(
-            GetEeDependenciesGraphUnreferencedRequestSortColumn.pipe(T.Query("sort-column")),
-          ),
-          sort_direction: S.optional(
-            GetEeDependenciesGraphUnreferencedRequestSortDirection.pipe(T.Query("sort-direction")),
-          ),
+          sort_column: S.optional(S.String.pipe(T.Query("sort-column"))),
+          sort_direction: S.optional(S.String.pipe(T.Query("sort-direction"))),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/ee/dependencies/graph/unreferenced", code: 200 }),
         ),
@@ -28034,8 +21698,8 @@ function __c60(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          sort_by: S.optional(GetEeMetabotAnalyticsConversationsRequestSortBy.pipe(T.Query())),
-          sort_dir: S.optional(GetEeMetabotAnalyticsConversationsRequestSortDir.pipe(T.Query())),
+          sort_by: S.optional(S.String.pipe(T.Query())),
+          sort_dir: S.optional(S.String.pipe(T.Query())),
           user_id: S.optional(S.Number.pipe(T.Query())),
           group_id: S.optional(S.Number.pipe(T.Query())),
           tenant_id: S.optional(S.Number.pipe(T.Query())),
@@ -28065,7 +21729,7 @@ function __c60(j: number): any {
         S.Struct({
           user_id: S.Number.pipe(T.Query()),
           model_id: S.String.pipe(T.Query()),
-          action_type: GetEePermissionDebugRequestActionType.pipe(T.Query()),
+          action_type: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/api/ee/permission_debug", code: 200 })),
       ).annotate({
         identifier: "GetEePermissionDebugRequest",
@@ -28208,8 +21872,8 @@ function __c63(j: number): any {
           id: S.String.pipe(T.Label()),
           before_date: S.optional(S.String.pipe(T.Query())),
           is_recursive: S.optional(S.Boolean.pipe(T.Query())),
-          sort_column: S.optional(GetEeStaleRequestSortColumn.pipe(T.Query())),
-          sort_direction: S.optional(GetEeStaleRequestSortDirection.pipe(T.Query())),
+          sort_column: S.optional(S.String.pipe(T.Query())),
+          sort_direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/ee/stale/{id}", code: 200 })),
       ).annotate({ identifier: "GetEeStaleRequest" });
     case 1:
@@ -28233,7 +21897,7 @@ function __c63(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(GetEeTenantRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/ee/tenant", code: 200 })),
       ).annotate({ identifier: "GetEeTenantRequest" });
     case 4:
@@ -28346,7 +22010,7 @@ function __c64(j: number): any {
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Label()),
-          export_format: GetEmbedCardQueryByExportFormatRequestExportFormat.pipe(T.Label()),
+          export_format: S.String.pipe(T.Label()),
           format_rows: S.optional(S.Boolean.pipe(T.Query())),
           pivot_results: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
@@ -28391,9 +22055,7 @@ function __c65(j: number): any {
           token: S.String.pipe(T.Label()),
           dashcard_id: S.Number.pipe(T.Label()),
           card_id: S.Number.pipe(T.Label()),
-          export_format: GetEmbedDashboardDashcardCardByExportFormatRequestExportFormat.pipe(
-            T.Label(),
-          ),
+          export_format: S.String.pipe(T.Label()),
           format_rows: S.optional(S.Boolean.pipe(T.Query())),
           pivot_results: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
@@ -28498,7 +22160,7 @@ function __c66(j: number): any {
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          parameters: S.optional(MetabaseParametersSchemaParameterValues.pipe(T.Query())),
+          parameters: S.optional(__S(55).pipe(T.Query())),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(
@@ -28514,7 +22176,7 @@ function __c66(j: number): any {
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          parameters: S.optional(MetabaseParametersSchemaParameterValues.pipe(T.Query())),
+          parameters: S.optional(__S(55).pipe(T.Query())),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(
@@ -28720,7 +22382,7 @@ function __c69(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           sample: S.optional(S.Boolean.pipe(T.Query())),
-          model: S.optional(GetMetabotMetabotPromptSuggestionsRequestModel.pipe(T.Query())),
+          model: S.optional(S.String.pipe(T.Query())),
           model_id: S.optional(S.Number.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/api/metabot/metabot/{id}/prompt-suggestions", code: 200 }),
@@ -28739,7 +22401,7 @@ function __c69(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          provider: S.optional(GetMetabotSettingsRequestProvider.pipe(T.Query())),
+          provider: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/metabot/settings", code: 200 })),
       ).annotate({
         identifier: "GetMetabotSettingsRequest",
@@ -28864,7 +22526,7 @@ function __c71(j: number): any {
           creator_or_recipient_id: S.optional(S.Number.pipe(T.Query())),
           card_id: S.optional(S.Number.pipe(T.Query())),
           include_inactive: S.optional(S.Boolean.pipe(T.Query())),
-          payload_type: S.optional(GetNotificationRequestPayloadType.pipe(T.Query())),
+          payload_type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/notification", code: 200 })),
       ).annotate({ identifier: "GetNotificationRequest" });
     case 4:
@@ -28876,12 +22538,12 @@ function __c71(j: number): any {
           creatorless: S.optional(S.Boolean.pipe(T.Query())),
           card_id: S.optional(S.Number.pipe(T.Query())),
           recipient_email: S.optional(S.String.pipe(T.Query())),
-          channel: S.optional(GetNotificationAdminRequestChannel.pipe(T.Query())),
-          last_send_status: S.optional(MetabaseNotificationApiAdminRunStatus.pipe(T.Query())),
-          last_check_status: S.optional(MetabaseNotificationApiAdminRunStatus.pipe(T.Query())),
+          channel: S.optional(S.Unknown.pipe(T.Query())),
+          last_send_status: S.optional(S.String.pipe(T.Query())),
+          last_check_status: S.optional(S.String.pipe(T.Query())),
           query: S.optional(S.String.pipe(T.Query())),
-          sort_column: S.optional(MetabaseNotificationApiAdminSortColumn.pipe(T.Query())),
-          sort_direction: S.optional(MetabaseNotificationApiAdminSortDirection.pipe(T.Query())),
+          sort_column: S.optional(S.String.pipe(T.Query())),
+          sort_direction: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/notification/admin", code: 200 })),
       ).annotate({
         identifier: "GetNotificationAdminRequest",
@@ -28906,9 +22568,7 @@ function __c71(j: number): any {
       return S.suspend(() =>
         S.Struct({
           client_id: S.optional(S.String.pipe(T.Query("client-id"))),
-          event_type: S.optional(
-            GetOauthAuthorizationsRequestEventType.pipe(T.Query("event-type")),
-          ),
+          event_type: S.optional(S.String.pipe(T.Query("event-type"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/oauth/authorizations", code: 200 })),
       ).annotate({
         identifier: "GetOauthAuthorizationsRequest",
@@ -28921,7 +22581,7 @@ function __c72(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.String.pipe(T.Query()),
-          format: S.optional(GetOembedRequestFormat.pipe(T.Query())),
+          format: S.optional(S.String.pipe(T.Query())),
           maxheight: S.optional(S.Number.pipe(T.Query())),
           maxwidth: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/public/oembed", code: 200 })),
@@ -28972,7 +22632,7 @@ function __c72(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          tenancy: S.optional(GetPermissionsGroupRequestTenancy.pipe(T.Query())),
+          tenancy: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/permissions/group", code: 200 })),
       ).annotate({
         identifier: "GetPermissionsGroupRequest",
@@ -29017,7 +22677,7 @@ function __c73(j: number): any {
       return S.suspend(() =>
         S.Struct({
           uuid: S.String.pipe(T.Label()),
-          parameters: S.optional(MetabaseParametersSchemaParameterValues.pipe(T.Query())),
+          parameters: S.optional(__S(55).pipe(T.Query())),
           ignore_cache: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/public/pivot/card/{uuid}/query", code: 200 })),
       ).annotate({ identifier: "GetPivotCardQueryRequest" });
@@ -29027,7 +22687,7 @@ function __c73(j: number): any {
           uuid: S.String.pipe(T.Label()),
           dashcard_id: S.Number.pipe(T.Label()),
           card_id: S.Number.pipe(T.Label()),
-          parameters: S.optional(MetabaseParametersSchemaParameterValues.pipe(T.Query())),
+          parameters: S.optional(__S(55).pipe(T.Query())),
           ignore_cache: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -29206,7 +22866,7 @@ function __c75(j: number): any {
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          parameters: S.optional(MetabaseParametersSchemaParameterValues.pipe(T.Query())),
+          parameters: S.optional(__S(55).pipe(T.Query())),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(
@@ -29228,7 +22888,7 @@ function __c75(j: number): any {
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          parameters: S.optional(MetabaseParametersSchemaParameterValues.pipe(T.Query())),
+          parameters: S.optional(__S(55).pipe(T.Query())),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(
@@ -29263,7 +22923,7 @@ function __c75(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Query()),
-          entity: GetRevisionRequestEntity.pipe(T.Query()),
+          entity: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/api/revision", code: 200 })),
       ).annotate({ identifier: "GetRevisionRequest" });
   }
@@ -29273,7 +22933,7 @@ function __c76(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          entity: GetRevisionByIdRequestEntity.pipe(T.Label()),
+          entity: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "GET", uri: "/api/revision/{entity}/{id}", code: 200 })),
       ).annotate({ identifier: "GetRevisionByIdRequest" });
@@ -29281,28 +22941,26 @@ function __c76(j: number): any {
       return S.suspend(() =>
         S.Struct({
           q: S.optional(S.String.pipe(T.Query())),
-          context: S.optional(GetSearchRequestContext.pipe(T.Query())),
+          context: S.optional(S.String.pipe(T.Query())),
           archived: S.optional(S.Boolean.pipe(T.Query())),
           collection: S.optional(S.Number.pipe(T.Query())),
           table_db_id: S.optional(S.Number.pipe(T.Query())),
-          models: S.optional(GetSearchRequestModelsList.pipe(T.Query())),
-          filter_items_in_personal_collection: S.optional(
-            GetSearchRequestFilterItemsInPersonalCollection.pipe(T.Query()),
-          ),
+          models: S.optional(__S(5).pipe(T.Query())),
+          filter_items_in_personal_collection: S.optional(S.String.pipe(T.Query())),
           created_at: S.optional(S.String.pipe(T.Query())),
-          created_by: S.optional(GetSearchRequestCreatedByList.pipe(T.Query())),
-          display_type: S.optional(GetSearchRequestDisplayTypeList.pipe(T.Query())),
+          created_by: S.optional(__S(9).pipe(T.Query())),
+          display_type: S.optional(__S(3).pipe(T.Query())),
           last_edited_at: S.optional(S.String.pipe(T.Query())),
-          last_edited_by: S.optional(GetSearchRequestLastEditedByList.pipe(T.Query())),
+          last_edited_by: S.optional(__S(9).pipe(T.Query())),
           model_ancestors: S.optional(S.Boolean.pipe(T.Query())),
           search_engine: S.optional(S.String.pipe(T.Query())),
-          vector_search_strategy: S.optional(GetSearchRequestVectorSearchStrategy.pipe(T.Query())),
+          vector_search_strategy: S.optional(S.String.pipe(T.Query())),
           vector_search_ef_search: S.optional(S.Number.pipe(T.Query())),
           vector_search_max_scan_tuples: S.optional(S.Number.pipe(T.Query())),
           vector_search_explain: S.optional(S.Boolean.pipe(T.Query())),
           search_native_query: S.optional(S.Boolean.pipe(T.Query())),
           verified: S.optional(S.Boolean.pipe(T.Query())),
-          ids: S.optional(GetSearchRequestIdsList.pipe(T.Query())),
+          ids: S.optional(__S(9).pipe(T.Query())),
           calculate_available_models: S.optional(S.Boolean.pipe(T.Query())),
           include_dashboard_questions: S.optional(S.Boolean.pipe(T.Query())),
           include_metadata: S.optional(S.Boolean.pipe(T.Query())),
@@ -29312,34 +22970,30 @@ function __c76(j: number): any {
       return S.suspend(() =>
         S.Struct({
           q: S.optional(S.String.pipe(T.Query())),
-          context: S.optional(GetSearchDebugRequestContext.pipe(T.Query())),
+          context: S.optional(S.String.pipe(T.Query())),
           archived: S.optional(S.Boolean.pipe(T.Query())),
           collection: S.optional(S.Number.pipe(T.Query())),
           table_db_id: S.optional(S.Number.pipe(T.Query())),
-          models: S.optional(GetSearchDebugRequestModelsList.pipe(T.Query())),
-          filter_items_in_personal_collection: S.optional(
-            GetSearchDebugRequestFilterItemsInPersonalCollection.pipe(T.Query()),
-          ),
+          models: S.optional(__S(5).pipe(T.Query())),
+          filter_items_in_personal_collection: S.optional(S.String.pipe(T.Query())),
           created_at: S.optional(S.String.pipe(T.Query())),
-          created_by: S.optional(GetSearchDebugRequestCreatedByList.pipe(T.Query())),
-          display_type: S.optional(GetSearchDebugRequestDisplayTypeList.pipe(T.Query())),
+          created_by: S.optional(__S(9).pipe(T.Query())),
+          display_type: S.optional(__S(3).pipe(T.Query())),
           last_edited_at: S.optional(S.String.pipe(T.Query())),
-          last_edited_by: S.optional(GetSearchDebugRequestLastEditedByList.pipe(T.Query())),
+          last_edited_by: S.optional(__S(9).pipe(T.Query())),
           model_ancestors: S.optional(S.Boolean.pipe(T.Query())),
           search_engine: S.optional(S.String.pipe(T.Query())),
-          vector_search_strategy: S.optional(
-            GetSearchDebugRequestVectorSearchStrategy.pipe(T.Query()),
-          ),
+          vector_search_strategy: S.optional(S.String.pipe(T.Query())),
           vector_search_ef_search: S.optional(S.Number.pipe(T.Query())),
           vector_search_max_scan_tuples: S.optional(S.Number.pipe(T.Query())),
           vector_search_explain: S.optional(S.Boolean.pipe(T.Query())),
           search_native_query: S.optional(S.Boolean.pipe(T.Query())),
           verified: S.optional(S.Boolean.pipe(T.Query())),
-          ids: S.optional(GetSearchDebugRequestIdsList.pipe(T.Query())),
+          ids: S.optional(__S(9).pipe(T.Query())),
           calculate_available_models: S.optional(S.Boolean.pipe(T.Query())),
           include_dashboard_questions: S.optional(S.Boolean.pipe(T.Query())),
           include_metadata: S.optional(S.Boolean.pipe(T.Query())),
-          expected_result_type: GetSearchDebugRequestExpectedResultType.pipe(T.Query()),
+          expected_result_type: S.String.pipe(T.Query()),
           expected_result_id: S.Number.pipe(T.Query()),
           for_user_id: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/search/debug", code: 200 })),
@@ -29409,12 +23063,8 @@ function __c77(j: number): any {
         S.Struct({
           term: S.optional(S.String.pipe(T.Query())),
           visibility_type: S.optional(S.String.pipe(T.Query("visibility-type"))),
-          data_layer: S.optional(
-            MetabaseWarehouseSchemaRestApiTableDataLayers.pipe(T.Query("data-layer")),
-          ),
-          data_source: S.optional(
-            MetabaseWarehouseSchemaRestApiTableDataSources.pipe(T.Query("data-source")),
-          ),
+          data_layer: S.optional(S.String.pipe(T.Query("data-layer"))),
+          data_source: S.optional(S.String.pipe(T.Query("data-source"))),
           owner_user_id: S.optional(S.Number.pipe(T.Query("owner-user-id"))),
           owner_email: S.optional(S.String.pipe(T.Query("owner-email"))),
           orphan_only: S.optional(S.Boolean.pipe(T.Query("orphan-only"))),
@@ -29510,7 +23160,7 @@ function __c79(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          run_type: GetTaskRunsEntitiesRequestRunType.pipe(T.Query("run-type")),
+          run_type: S.String.pipe(T.Query("run-type")),
           started_at: S.String.pipe(T.Query("started-at")),
         }).pipe(T.Http({ method: "GET", uri: "/api/task/runs/entities", code: 200 })),
       ).annotate({
@@ -29529,7 +23179,7 @@ function __c79(j: number): any {
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          parameters: S.optional(MetabaseParametersSchemaParameterValues.pipe(T.Query())),
+          parameters: S.optional(__S(55).pipe(T.Query())),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/api/tiles/{card_id}/{zoom}/{x}/{y}", code: 200 })),
@@ -29540,7 +23190,7 @@ function __c79(j: number): any {
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          query: MetabaseLibSchemaQuery.pipe(T.Query()),
+          query: __S(18).pipe(T.Query()),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/api/tiles/{zoom}/{x}/{y}", code: 200 })),
@@ -29554,7 +23204,7 @@ function __c79(j: number): any {
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          parameters: S.optional(MetabaseParametersSchemaParameterValues.pipe(T.Query())),
+          parameters: S.optional(__S(55).pipe(T.Query())),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(
@@ -29574,7 +23224,7 @@ function __c79(j: number): any {
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          parameters: S.optional(MetabaseParametersSchemaParameterValues.pipe(T.Query())),
+          parameters: S.optional(__S(55).pipe(T.Query())),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(
@@ -29594,7 +23244,7 @@ function __c80(j: number): any {
           zoom: S.Number.pipe(T.Label()),
           x: S.Number.pipe(T.Label()),
           y: S.Number.pipe(T.Label()),
-          parameters: S.optional(MetabaseParametersSchemaParameterValues.pipe(T.Query())),
+          parameters: S.optional(__S(55).pipe(T.Query())),
           latField: S.Unknown.pipe(T.Query()),
           lonField: S.Unknown.pipe(T.Query()),
         }).pipe(
@@ -29610,7 +23260,7 @@ function __c80(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          include: S.optional(MetabaseTimelineApiTimelineInclude.pipe(T.Query())),
+          include: S.optional(S.String.pipe(T.Query())),
           archived: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/timeline", code: 200 })),
       ).annotate({ identifier: "GetTimelineRequest" });
@@ -29618,7 +23268,7 @@ function __c80(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          include: S.optional(MetabaseTimelineApiTimelineInclude.pipe(T.Query())),
+          include: S.optional(S.String.pipe(T.Query())),
           archived: S.optional(S.Boolean.pipe(T.Query())),
           start: S.optional(S.String.pipe(T.Query())),
           end: S.optional(S.String.pipe(T.Query())),
@@ -29653,10 +23303,8 @@ function __c80(j: number): any {
       return S.suspend(() =>
         S.Struct({
           last_run_start_time: S.optional(S.String.pipe(T.Query("last-run-start-time"))),
-          last_run_statuses: S.optional(
-            GetTransformRequestLastRunStatusesList.pipe(T.Query("last-run-statuses")),
-          ),
-          tag_ids: S.optional(GetTransformRequestTagIdsList.pipe(T.Query("tag-ids"))),
+          last_run_statuses: S.optional(__S(5).pipe(T.Query("last-run-statuses"))),
+          tag_ids: S.optional(__S(9).pipe(T.Query("tag-ids"))),
           database_id: S.optional(S.Number.pipe(T.Query("database-id"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/transform", code: 200 })),
       ).annotate({ identifier: "GetTransformRequest" });
@@ -29683,10 +23331,8 @@ function __c81(j: number): any {
         S.Struct({
           last_run_start_time: S.optional(S.String.pipe(T.Query("last-run-start-time"))),
           next_run_start_time: S.optional(S.String.pipe(T.Query("next-run-start-time"))),
-          last_run_statuses: S.optional(
-            GetTransformJobRequestLastRunStatusesList.pipe(T.Query("last-run-statuses")),
-          ),
-          tag_ids: S.optional(GetTransformJobRequestTagIdsList.pipe(T.Query("tag-ids"))),
+          last_run_statuses: S.optional(__S(5).pipe(T.Query("last-run-statuses"))),
+          tag_ids: S.optional(__S(9).pipe(T.Query("tag-ids"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/transform-job", code: 200 })),
       ).annotate({ identifier: "GetTransformJobRequest" });
     case 2:
@@ -29701,15 +23347,11 @@ function __c81(j: number): any {
       return S.suspend(() =>
         S.Struct({
           job_id: S.Number.pipe(T.Label()),
-          status: S.optional(GetTransformJobRunsRequestStatus.pipe(T.Query())),
-          run_method: S.optional(GetTransformJobRunsRequestRunMethod.pipe(T.Query("run-method"))),
+          status: S.optional(S.String.pipe(T.Query())),
+          run_method: S.optional(S.String.pipe(T.Query("run-method"))),
           start_time: S.optional(S.String.pipe(T.Query("start-time"))),
-          sort_column: S.optional(
-            GetTransformJobRunsRequestSortColumn.pipe(T.Query("sort-column")),
-          ),
-          sort_direction: S.optional(
-            GetTransformJobRunsRequestSortDirection.pipe(T.Query("sort-direction")),
-          ),
+          sort_column: S.optional(S.String.pipe(T.Query("sort-column"))),
+          sort_direction: S.optional(S.String.pipe(T.Query("sort-direction"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/transform-job/{job_id}/runs", code: 200 })),
       ).annotate({
         identifier: "GetTransformJobRunsRequest",
@@ -29742,22 +23384,14 @@ function __c81(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          sort_column: S.optional(GetTransformRunRequestSortColumn.pipe(T.Query("sort-column"))),
-          sort_direction: S.optional(
-            GetTransformRunRequestSortDirection.pipe(T.Query("sort-direction")),
-          ),
-          transform_ids: S.optional(
-            GetTransformRunRequestTransformIdsList.pipe(T.Query("transform-ids")),
-          ),
-          statuses: S.optional(GetTransformRunRequestStatusesList.pipe(T.Query())),
-          transform_tag_ids: S.optional(
-            GetTransformRunRequestTransformTagIdsList.pipe(T.Query("transform-tag-ids")),
-          ),
+          sort_column: S.optional(S.String.pipe(T.Query("sort-column"))),
+          sort_direction: S.optional(S.String.pipe(T.Query("sort-direction"))),
+          transform_ids: S.optional(__S(9).pipe(T.Query("transform-ids"))),
+          statuses: S.optional(__S(5).pipe(T.Query())),
+          transform_tag_ids: S.optional(__S(9).pipe(T.Query("transform-tag-ids"))),
           start_time: S.optional(S.String.pipe(T.Query("start-time"))),
           end_time: S.optional(S.String.pipe(T.Query("end-time"))),
-          run_methods: S.optional(
-            GetTransformRunRequestRunMethodsList.pipe(T.Query("run-methods")),
-          ),
+          run_methods: S.optional(__S(5).pipe(T.Query("run-methods"))),
           user_id: S.optional(S.Number.pipe(T.Query("user-id"))),
         }).pipe(T.Http({ method: "GET", uri: "/api/transform/run", code: 200 })),
       ).annotate({ identifier: "GetTransformRunRequest" });
@@ -29786,7 +23420,7 @@ function __c82(j: number): any {
           include_deactivated: S.optional(S.Boolean.pipe(T.Query())),
           is_data_analyst: S.optional(S.Boolean.pipe(T.Query())),
           can_access_data_studio: S.optional(S.Boolean.pipe(T.Query())),
-          tenancy: S.optional(GetUserRequestTenancy.pipe(T.Query())),
+          tenancy: S.optional(S.String.pipe(T.Query())),
           tenant_id: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/api/user", code: 200 })),
       ).annotate({ identifier: "GetUserRequest" });
@@ -29845,10 +23479,8 @@ function __c83(j: number): any {
           card_id: S.Number,
           target_collection_id: S.optional(S.NullOr(S.Number)),
           transform_name: S.String,
-          transform_tag_ids: S.optional(
-            S.NullOr(PostApiEeReplacementReplaceModelWithTransformRequestTransformTagIdsList),
-          ),
-          transform_target: MetabaseTransformsSchemaTransformTarget,
+          transform_tag_ids: S.optional(S.NullOr(__S(65))),
+          transform_target: S.Unknown,
         }).pipe(
           T.Http({
             method: "POST",
@@ -29863,18 +23495,18 @@ function __c83(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          body: S.optional(MetabaseActionsSchemaActionForUpdate.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PUT", uri: "/api/action/{id}", code: 200 })),
       ).annotate({ identifier: "PutActionRequest" });
     case 2:
-      return S.Array(MetabaseAgentApiApiDashcardMutation);
+      return S.Array(S.Unknown);
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
           archived: S.optional(S.NullOr(S.Boolean)),
           collection_id: S.optional(S.NullOr(S.Number)),
-          dashcards: S.optional(S.NullOr(PutAgentDashboardRequestDashcardsList)),
+          dashcards: S.optional(S.NullOr(__S(666))),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/agent/v1/dashboard/{id}", code: 200 })),
@@ -29886,7 +23518,7 @@ function __c83(j: number): any {
           archived: S.optional(S.NullOr(S.Boolean)),
           collection_id: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.NullOr(S.String)),
-          display: S.optional(S.NullOr(MetabaseAgentApiApiCardDisplay)),
+          display: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
           query: S.optional(S.NullOr(S.String)),
           visualization_settings: S.optional(S.NullOr(S.Unknown)),
@@ -29899,7 +23531,7 @@ function __c83(j: number): any {
           archived: S.optional(S.NullOr(S.Boolean)),
           collection_id: S.optional(S.NullOr(S.Number)),
           description: S.optional(S.NullOr(S.String)),
-          display: S.optional(S.NullOr(MetabaseAgentApiApiCardDisplay)),
+          display: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
           query: S.optional(S.NullOr(S.String)),
           visualization_settings: S.optional(S.NullOr(S.Unknown)),
@@ -29909,13 +23541,13 @@ function __c83(j: number): any {
       return S.suspend(() =>
         S.Struct({
           item_id: S.Number,
-          type: PutBookmarkOrderingRequestOrderingsItemType,
+          type: S.String,
         }),
       ).annotate({
         identifier: "PutBookmarkOrderingRequestOrderingsItem",
       });
     case 7:
-      return S.Array(PutBookmarkOrderingRequestOrderingsItem);
+      return S.Array(__S(670));
   }
 }
 function __c84(j: number): any {
@@ -29923,7 +23555,7 @@ function __c84(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          orderings: PutBookmarkOrderingRequestOrderingsList,
+          orderings: __S(671),
         }).pipe(T.Http({ method: "PUT", uri: "/api/bookmark/ordering", code: 200 })),
       ).annotate({
         identifier: "PutBookmarkOrderingRequest",
@@ -29931,13 +23563,13 @@ function __c84(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          model: PutCacheRequestModel,
+          model: S.String,
           model_id: S.Number,
-          strategy: MetabaseCacheApiCacheStrategy,
+          strategy: S.Unknown,
         }).pipe(T.Http({ method: "PUT", uri: "/api/cache", code: 200 })),
       ).annotate({ identifier: "PutCacheRequest" });
     case 2:
-      return S.Record(S.String, PutCardRequestEmbeddingParamsValue);
+      return S.Record(S.String, S.String);
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -29947,19 +23579,19 @@ function __c84(j: number): any {
           visualization_settings: S.optional(S.NullOr(S.Unknown)),
           dashboard_tab_id: S.optional(S.NullOr(S.Number)),
           collection_preview: S.optional(S.NullOr(S.Boolean)),
-          dataset_query: S.optional(S.NullOr(MetabaseLibSchemaQuery)),
-          parameter_mappings: S.optional(S.NullOr(MetabaseParametersSchemaParameterMappings)),
+          dataset_query: S.optional(S.NullOr(__S(18))),
+          parameter_mappings: S.optional(S.NullOr(__S(2))),
           embedding_type: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
           archived: S.optional(S.NullOr(S.Boolean)),
           collection_position: S.optional(S.NullOr(S.Number)),
-          embedding_params: S.optional(S.NullOr(PutCardRequestEmbeddingParamsMap)),
-          result_metadata: S.optional(S.NullOr(MetabaseLibSchemaMetadataCardResultMetadata)),
+          embedding_params: S.optional(S.NullOr(__S(674))),
+          result_metadata: S.optional(S.NullOr(__S(13))),
           collection_id: S.optional(S.NullOr(S.Number)),
           cache_ttl: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(MetabaseLibSchemaMetadataCardType)),
+          type: S.optional(S.NullOr(S.String)),
           display: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameters)),
+          parameters: S.optional(S.NullOr(__S(8))),
           description: S.optional(S.NullOr(S.String)),
           dashboard_id: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/card/{id}", code: 200 })),
@@ -29968,7 +23600,7 @@ function __c84(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          body: S.optional(PutChannelRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PUT", uri: "/api/channel/{id}", code: 200 })),
       ).annotate({ identifier: "PutChannelRequest" });
     case 5:
@@ -29982,7 +23614,7 @@ function __c84(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           archived: S.optional(S.NullOr(S.Boolean)),
-          authority_level: S.optional(S.NullOr(PutCollectionRequestAuthorityLevel)),
+          authority_level: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
           parent_id: S.optional(S.NullOr(S.Number)),
@@ -30021,30 +23653,28 @@ function __c85(j: number): any {
         identifier: "PutDashboardRequestDashcardsItemSeriesItem",
       });
     case 2:
-      return S.Array(PutDashboardRequestDashcardsItemSeriesItem);
+      return S.Array(__S(681));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          inline_parameters: S.optional(
-            S.NullOr(PutDashboardRequestDashcardsItemInlineParametersList),
-          ),
+          inline_parameters: S.optional(S.NullOr(__S(3))),
           visualization_settings: S.optional(S.NullOr(S.Unknown)),
           dashboard_tab_id: S.optional(S.NullOr(S.Number)),
-          parameter_mappings: S.optional(S.NullOr(MetabaseParametersSchemaParameterMappings)),
+          parameter_mappings: S.optional(S.NullOr(__S(2))),
           id: S.Number,
           card_id: S.optional(S.NullOr(S.Number)),
           size_x: S.Number,
           size_y: S.Number,
           col: S.Number,
           row: S.Number,
-          series: S.optional(S.NullOr(PutDashboardRequestDashcardsItemSeriesList)),
+          series: S.optional(S.NullOr(__S(682))),
           action_id: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
         identifier: "PutDashboardRequestDashcardsItem",
       });
     case 4:
-      return S.Array(PutDashboardRequestDashcardsItem);
+      return S.Array(__S(683));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -30052,20 +23682,20 @@ function __c85(j: number): any {
           points_of_interest: S.optional(S.NullOr(S.String)),
           enable_embedding: S.optional(S.NullOr(S.Boolean)),
           auto_apply_filters: S.optional(S.NullOr(S.Boolean)),
-          width: S.optional(PutDashboardRequestWidth),
+          width: S.optional(S.String),
           embedding_type: S.optional(S.NullOr(S.String)),
           show_in_getting_started: S.optional(S.NullOr(S.Boolean)),
           position: S.optional(S.NullOr(S.Number)),
           name: S.optional(S.NullOr(S.String)),
           archived: S.optional(S.NullOr(S.Boolean)),
           collection_position: S.optional(S.NullOr(S.Number)),
-          embedding_params: S.optional(S.NullOr(PutDashboardRequestEmbeddingParamsMap)),
-          tabs: S.optional(S.NullOr(PutDashboardRequestTabsList)),
+          embedding_params: S.optional(S.NullOr(__S(674))),
+          tabs: S.optional(S.NullOr(__S(87))),
           collection_id: S.optional(S.NullOr(S.Number)),
           cache_ttl: S.optional(S.NullOr(S.Number)),
           caveats: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameters)),
-          dashcards: S.optional(S.NullOr(PutDashboardRequestDashcardsList)),
+          parameters: S.optional(S.NullOr(__S(8))),
+          dashcards: S.optional(S.NullOr(__S(684))),
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/dashboard/{id}", code: 200 })),
       ).annotate({ identifier: "PutDashboardRequest" });
@@ -30073,8 +23703,8 @@ function __c85(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          cards: PutDashboardCardsRequestCardsList,
-          tabs: S.optional(S.NullOr(PutDashboardCardsRequestTabsList)),
+          cards: __S(684),
+          tabs: S.optional(S.NullOr(__S(87))),
         }).pipe(T.Http({ method: "PUT", uri: "/api/dashboard/{id}/cards", code: 200 })),
       ).annotate({ identifier: "PutDashboardCardsRequest" });
     case 7:
@@ -30096,7 +23726,7 @@ function __c85(j: number): any {
           is_stub: S.optional(S.NullOr(S.Boolean)),
           admin_details: S.optional(S.NullOr(S.Unknown)),
           refingerprint: S.optional(S.NullOr(S.Boolean)),
-          schedules: S.optional(S.NullOr(MetabaseSyncSchedulesExpandedSchedulesMap)),
+          schedules: S.optional(S.NullOr(__S(90))),
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/database/{id}", code: 200 })),
       ).annotate({ identifier: "PutDatabaseRequest" });
@@ -30109,21 +23739,21 @@ function __c86(j: number): any {
         S.Struct({
           document_id: S.Number.pipe(T.Label()),
           archived: S.optional(S.NullOr(S.Boolean)),
-          cards: S.optional(S.NullOr(PutDocumentRequestCardsMap)),
+          cards: S.optional(S.NullOr(__S(111))),
           collection_id: S.optional(S.NullOr(S.Number)),
           collection_position: S.optional(S.NullOr(S.Number)),
-          document: S.optional(S.NullOr(MetabaseDocumentsProseMirrorAst)),
+          document: S.optional(S.NullOr(__S(112))),
           name: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/api/document/{document_id}", code: 200 })),
       ).annotate({ identifier: "PutDocumentRequest" });
     case 1:
-      return S.Record(S.String, PutEeAdvancedPermissionsApplicationGraphRequestGroupsValueMap);
+      return S.Record(S.String, __S(43));
     case 2:
       return S.suspend(() =>
         S.Struct({
           skip_graph: S.optional(S.Boolean.pipe(T.Query("skip-graph"))),
           force: S.optional(S.Boolean.pipe(T.Query())),
-          groups: PutEeAdvancedPermissionsApplicationGraphRequestGroupsMap,
+          groups: __S(689),
           revision: S.optional(S.NullOr(S.Number)),
         }).pipe(
           T.Http({
@@ -30139,18 +23769,18 @@ function __c86(j: number): any {
       return S.suspend(() =>
         S.Struct({
           group_id: S.Number,
-          perm_type: PutEeAiControlsPermissionsRequestPermissionsItemPermType,
-          perm_value: PutEeAiControlsPermissionsRequestPermissionsItemPermValue,
+          perm_type: S.String,
+          perm_value: S.String,
         }),
       ).annotate({
         identifier: "PutEeAiControlsPermissionsRequestPermissionsItem",
       });
     case 4:
-      return S.Array(PutEeAiControlsPermissionsRequestPermissionsItem);
+      return S.Array(__S(691));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          permissions: PutEeAiControlsPermissionsRequestPermissionsList,
+          permissions: __S(692),
         }).pipe(T.Http({ method: "PUT", uri: "/api/ee/ai-controls/permissions", code: 200 })),
       ).annotate({
         identifier: "PutEeAiControlsPermissionsRequest",
@@ -30202,7 +23832,7 @@ function __c87(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          file: CreateEeCustomVizPluginRequestFile,
+          file: __S(122),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -30267,7 +23897,7 @@ function __c87(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          collections: S.optional(S.NullOr(PutEeRemoteSyncSettingsRequestCollectionsMap)),
+          collections: S.optional(S.NullOr(__S(702))),
           remote_sync_auto_import: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("remote-sync-auto-import")),
           ),
@@ -30276,9 +23906,7 @@ function __c87(j: number): any {
           remote_sync_transforms: S.optional(
             S.NullOr(S.Boolean).pipe(T.Body("remote-sync-transforms")),
           ),
-          remote_sync_type: S.optional(
-            S.NullOr(PutEeRemoteSyncSettingsRequestRemoteSyncType).pipe(T.Body("remote-sync-type")),
-          ),
+          remote_sync_type: S.optional(S.NullOr(S.String).pipe(T.Body("remote-sync-type"))),
           remote_sync_url: S.optional(S.NullOr(S.String).pipe(T.Body("remote-sync-url"))),
         }).pipe(T.Http({ method: "PUT", uri: "/api/ee/remote-sync/settings", code: 200 })),
       ).annotate({
@@ -30293,8 +23921,8 @@ function __c88(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           displayName: S.String,
-          members: S.optional(PutEeScimGroupRequestMembersList),
-          schemas: PutEeScimGroupRequestSchemasList,
+          members: S.optional(__S(152)),
+          schemas: __S(3),
         }).pipe(T.Http({ method: "PUT", uri: "/api/ee/scim/v2/Groups/{id}", code: 200 })),
       ).annotate({ identifier: "PutEeScimGroupRequest" });
     case 1:
@@ -30302,11 +23930,11 @@ function __c88(j: number): any {
         S.Struct({
           id: S.String.pipe(T.Label()),
           active: S.optional(S.Boolean),
-          emails: PutEeScimUserRequestEmailsList,
-          groups: S.optional(PutEeScimUserRequestGroupsList),
+          emails: __S(156),
+          groups: S.optional(__S(158)),
           locale: S.optional(S.NullOr(S.String)),
-          name: CreateEeScimUserRequestName,
-          schemas: PutEeScimUserRequestSchemasList,
+          name: __S(159),
+          schemas: __S(3),
           userName: S.String,
         }).pipe(T.Http({ method: "PUT", uri: "/api/ee/scim/v2/Users/{id}", code: 200 })),
       ).annotate({ identifier: "PutEeScimUserRequest" });
@@ -30324,7 +23952,7 @@ function __c88(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          attributes: S.optional(S.NullOr(PutEeTenantRequestAttributesMap)),
+          attributes: S.optional(S.NullOr(__S(10))),
           is_active: S.optional(S.NullOr(S.Boolean)),
           name: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/ee/tenant/{id}", code: 200 })),
@@ -30364,13 +23992,13 @@ function __c88(j: number): any {
           id: S.Number.pipe(T.Label()),
           points_of_interest: S.optional(S.NullOr(S.String)),
           settings: S.optional(S.NullOr(S.Unknown)),
-          visibility_type: S.optional(S.NullOr(PutFieldRequestVisibilityType)),
+          visibility_type: S.optional(S.NullOr(S.String)),
           coercion_strategy: S.optional(S.NullOr(S.Unknown)),
           json_unfolding: S.optional(S.NullOr(S.Boolean)),
           semantic_type: S.optional(S.NullOr(S.Unknown)),
-          has_field_values: S.optional(S.NullOr(MetabaseLibSchemaMetadataColumnHasFieldValues)),
+          has_field_values: S.optional(S.NullOr(S.String)),
           display_name: S.optional(S.NullOr(S.String)),
-          nfc_path: S.optional(S.NullOr(PutFieldRequestNfcPathList)),
+          nfc_path: S.optional(S.NullOr(__S(3))),
           caveats: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
           fk_target_field_id: S.optional(S.NullOr(S.Number)),
@@ -30415,7 +24043,7 @@ function __c89(j: number): any {
         }).pipe(T.Http({ method: "PUT", uri: "/api/api-key/{id}/regenerate", code: 200 })),
       ).annotate({ identifier: "PutKeyRegenerateRequest" });
     case 4:
-      return S.Record(S.String, PutLdapSettingsRequestLdapGroupMappingsValueList);
+      return S.Record(S.String, __S(9));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -30431,15 +24059,9 @@ function __c89(j: number): any {
           ldap_attribute_firstname: S.optional(
             S.NullOr(S.String).pipe(T.Body("ldap-attribute-firstname")),
           ),
-          ldap_group_mappings: S.optional(
-            S.NullOr(PutLdapSettingsRequestLdapGroupMappingsMap).pipe(
-              T.Body("ldap-group-mappings"),
-            ),
-          ),
+          ldap_group_mappings: S.optional(S.NullOr(__S(716)).pipe(T.Body("ldap-group-mappings"))),
           ldap_user_base: S.optional(S.NullOr(S.String).pipe(T.Body("ldap-user-base"))),
-          ldap_security: S.optional(
-            S.NullOr(PutLdapSettingsRequestLdapSecurity).pipe(T.Body("ldap-security")),
-          ),
+          ldap_security: S.optional(S.NullOr(S.String).pipe(T.Body("ldap-security"))),
           ldap_user_filter: S.optional(S.NullOr(S.String).pipe(T.Body("ldap-user-filter"))),
           ldap_attribute_lastname: S.optional(
             S.NullOr(S.String).pipe(T.Body("ldap-attribute-lastname")),
@@ -30453,7 +24075,7 @@ function __c89(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           archived: S.optional(S.NullOr(S.Boolean)),
-          definition: S.optional(S.NullOr(MetabaseLibSchemaQuery)),
+          definition: S.optional(S.NullOr(__S(18))),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
           revision_message: S.String,
@@ -30488,9 +24110,9 @@ function __c90(j: number): any {
       return S.suspend(() =>
         S.Struct({
           api_key: S.optional(S.NullOr(S.String).pipe(T.Body("api-key"))),
-          credentials: S.optional(S.NullOr(PutMetabotSettingsRequestCredentials)),
+          credentials: S.optional(S.NullOr(__S(720))),
           model: S.optional(S.NullOr(S.String)),
-          provider: PutMetabotSettingsRequestProvider,
+          provider: S.String,
         }).pipe(T.Http({ method: "PUT", uri: "/api/metabot/settings", code: 200 })),
       ).annotate({
         identifier: "PutMetabotSettingsRequest",
@@ -30513,9 +24135,7 @@ function __c90(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          attribute_remappings: S.optional(
-            S.NullOr(MetabaseEnterpriseSandboxSchemaAttributeRemappingsMap),
-          ),
+          attribute_remappings: S.optional(S.NullOr(__S(232))),
           card_id: S.optional(S.NullOr(S.Number)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/mt/gtap/{id}", code: 200 })),
       ).annotate({ identifier: "PutMtGtapRequest" });
@@ -30523,7 +24143,7 @@ function __c90(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          login_attributes: S.optional(S.NullOr(PutMtUserAttributesRequestLoginAttributesMap)),
+          login_attributes: S.optional(S.NullOr(__S(10))),
         }).pipe(T.Http({ method: "PUT", uri: "/api/mt/user/{id}/attributes", code: 200 })),
       ).annotate({
         identifier: "PutMtUserAttributesRequest",
@@ -30545,17 +24165,15 @@ function __c90(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          body: S.optional(
-            MetabaseNotificationApiNotificationNotificationApiUpdateInput.pipe(T.HttpBody()),
-          ),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PUT", uri: "/api/notification/{id}", code: 200 })),
       ).annotate({ identifier: "PutNotificationRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          examples: S.optional(PutOsiAiContextRequestAiContextExamplesList),
+          examples: S.optional(__S(3)),
           instructions: S.optional(S.NullOr(S.String)),
-          synonyms: S.optional(PutOsiAiContextRequestAiContextSynonymsList),
+          synonyms: S.optional(__S(3)),
         }),
       ).annotate({
         identifier: "PutOsiAiContextRequestAiContext",
@@ -30569,7 +24187,7 @@ function __c91(j: number): any {
         S.Struct({
           entity_type: S.String.pipe(T.Label()),
           entity_local_id: S.Number.pipe(T.Label()),
-          ai_context: PutOsiAiContextRequestAiContext,
+          ai_context: __S(727),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -30589,15 +24207,13 @@ function __c91(j: number): any {
         identifier: "MetabasePermissionsRestSchemaImpersonationUpdate",
       });
     case 2:
-      return S.Array(MetabasePermissionsRestSchemaImpersonationUpdate);
+      return S.Array(__S(729));
     case 3:
-      return S.Record(S.String, MetabasePermissionsRestSchemaAttributeRemappingsValue);
+      return S.Record(S.String, S.Unknown);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          attribute_remappings: S.optional(
-            S.NullOr(MetabasePermissionsRestSchemaAttributeRemappings),
-          ),
+          attribute_remappings: S.optional(S.NullOr(__S(731))),
           card_id: S.optional(S.NullOr(S.Number)),
           group_id: S.optional(S.Number),
           id: S.optional(S.Number),
@@ -30608,16 +24224,16 @@ function __c91(j: number): any {
         identifier: "MetabasePermissionsRestSchemaSandboxUpdate",
       });
     case 5:
-      return S.Array(MetabasePermissionsRestSchemaSandboxUpdate);
+      return S.Array(__S(732));
     case 6:
       return S.suspend(() =>
         S.Struct({
           skip_graph: S.optional(S.Boolean.pipe(T.Query("skip-graph"))),
           force: S.optional(S.Boolean.pipe(T.Query())),
-          groups: PutPermissionsGraphRequestGroups,
-          impersonations: S.optional(S.NullOr(PutPermissionsGraphRequestImpersonationsList)),
+          groups: S.Unknown,
+          impersonations: S.optional(S.NullOr(__S(730))),
           revision: S.optional(S.NullOr(S.Number)),
-          sandboxes: S.optional(S.NullOr(PutPermissionsGraphRequestSandboxesList)),
+          sandboxes: S.optional(S.NullOr(__S(733))),
         }).pipe(T.Http({ method: "PUT", uri: "/api/permissions/graph", code: 200 })),
       ).annotate({
         identifier: "PutPermissionsGraphRequest",
@@ -30664,7 +24280,7 @@ function __c92(j: number): any {
           collection_id: S.optional(S.NullOr(S.Number)),
           collection_position: S.optional(S.NullOr(S.Number)),
           name: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(PutPulseRequestParametersList)),
+          parameters: S.optional(S.NullOr(__S(8))),
           skip_if_empty: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/pulse/{id}", code: 200 })),
       ).annotate({ identifier: "PutPulseRequest" });
@@ -30681,7 +24297,7 @@ function __c92(j: number): any {
           id: S.Number.pipe(T.Label()),
           archived: S.optional(S.NullOr(S.Boolean)),
           caveats: S.optional(S.NullOr(S.String)),
-          definition: S.optional(S.NullOr(MetabaseLibSchemaQuery)),
+          definition: S.optional(S.NullOr(__S(18))),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
           points_of_interest: S.optional(S.NullOr(S.String)),
@@ -30692,7 +24308,7 @@ function __c92(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          body: S.optional(PutSettingRequestBodyMap.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PUT", uri: "/api/setting", code: 200 })),
       ).annotate({ identifier: "PutSettingRequest" });
     case 6:
@@ -30719,15 +24335,13 @@ function __c93(j: number): any {
       return S.suspend(() =>
         S.Struct({
           points_of_interest: S.optional(S.NullOr(S.String)),
-          visibility_type: S.optional(S.NullOr(PutTableRequestVisibilityType)),
-          data_authority: S.optional(
-            S.NullOr(MetabaseWarehouseSchemaRestApiTableDataAuthorityWrite),
-          ),
+          visibility_type: S.optional(S.NullOr(S.String)),
+          data_authority: S.optional(S.NullOr(S.String)),
           data_layer: S.optional(S.NullOr(S.String)),
           show_in_getting_started: S.optional(S.NullOr(S.Boolean)),
           owner_email: S.optional(S.NullOr(S.String)),
           owner_user_id: S.optional(S.NullOr(S.Number)),
-          ids: PutTableRequestIdsList,
+          ids: __S(9),
           display_name: S.optional(S.NullOr(S.String)),
           data_source: S.optional(S.NullOr(S.String)),
           caveats: S.optional(S.NullOr(S.String)),
@@ -30740,10 +24354,8 @@ function __c93(j: number): any {
         S.Struct({
           id: S.Number.pipe(T.Label()),
           points_of_interest: S.optional(S.NullOr(S.String)),
-          visibility_type: S.optional(S.NullOr(PutTableByIdRequestVisibilityType)),
-          data_authority: S.optional(
-            S.NullOr(MetabaseWarehouseSchemaRestApiTableDataAuthorityWrite),
-          ),
+          visibility_type: S.optional(S.NullOr(S.String)),
+          data_authority: S.optional(S.NullOr(S.String)),
           data_layer: S.optional(S.NullOr(S.String)),
           show_in_getting_started: S.optional(S.NullOr(S.Boolean)),
           owner_email: S.optional(S.NullOr(S.String)),
@@ -30753,7 +24365,7 @@ function __c93(j: number): any {
           data_source: S.optional(S.NullOr(S.String)),
           caveats: S.optional(S.NullOr(S.String)),
           entity_type: S.optional(S.NullOr(S.Unknown)),
-          field_order: S.optional(S.NullOr(PutTableByIdRequestFieldOrder)),
+          field_order: S.optional(S.NullOr(S.String)),
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/table/{id}", code: 200 })),
       ).annotate({ identifier: "PutTableByIdRequest" });
@@ -30761,7 +24373,7 @@ function __c93(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          body: S.optional(PutTableFieldsOrderRequestBody.pipe(T.HttpBody())),
+          body: S.optional(S.Unknown.pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "PUT", uri: "/api/table/{id}/fields/order", code: 200 })),
       ).annotate({
         identifier: "PutTableFieldsOrderRequest",
@@ -30774,7 +24386,7 @@ function __c93(j: number): any {
           collection_id: S.optional(S.NullOr(S.Number)),
           default: S.optional(S.NullOr(S.Boolean)),
           description: S.optional(S.NullOr(S.String)),
-          icon: S.optional(S.NullOr(PutTimelineRequestIcon)),
+          icon: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/timeline/{id}", code: 200 })),
       ).annotate({ identifier: "PutTimelineRequest" });
@@ -30784,7 +24396,7 @@ function __c93(j: number): any {
           id: S.Number.pipe(T.Label()),
           archived: S.optional(S.NullOr(S.Boolean)),
           description: S.optional(S.NullOr(S.String)),
-          icon: S.optional(S.NullOr(PutTimelineEventRequestIcon)),
+          icon: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
           time_matters: S.optional(S.NullOr(S.Boolean)),
           timeline_id: S.optional(S.NullOr(S.Number)),
@@ -30799,11 +24411,11 @@ function __c93(j: number): any {
           owner_email: S.optional(S.NullOr(S.String)),
           owner_user_id: S.optional(S.NullOr(S.Number)),
           name: S.optional(S.String),
-          tag_ids: S.optional(PutTransformRequestTagIdsList),
+          tag_ids: S.optional(__S(9)),
           collection_id: S.optional(S.NullOr(S.Number)),
-          source: S.optional(MetabaseTransformsSchemaTransformSource),
-          target: S.optional(MetabaseTransformsSchemaTransformTarget),
-          run_trigger: S.optional(MetabaseTransformsRestApiTransformRunTrigger),
+          source: S.optional(S.Unknown),
+          target: S.optional(S.Unknown),
+          run_trigger: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "PUT", uri: "/api/transform/{id}", code: 200 })),
       ).annotate({ identifier: "PutTransformRequest" });
@@ -30815,8 +24427,8 @@ function __c93(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.String),
           schedule: S.optional(S.String),
-          tag_ids: S.optional(PutTransformJobRequestTagIdsList),
-          ui_display_type: S.optional(PutTransformJobRequestUiDisplayType),
+          tag_ids: S.optional(__S(9)),
+          ui_display_type: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/api/transform-job/{job_id}", code: 200 })),
       ).annotate({ identifier: "PutTransformJobRequest" });
     case 7:
@@ -30842,8 +24454,8 @@ function __c94(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          login_attributes: S.optional(S.NullOr(PutUserRequestLoginAttributesMap)),
-          user_group_memberships: S.optional(S.NullOr(PutUserRequestUserGroupMembershipsList)),
+          login_attributes: S.optional(S.NullOr(__S(10))),
+          user_group_memberships: S.optional(S.NullOr(__S(295))),
           email: S.optional(S.NullOr(S.String)),
           is_data_analyst: S.optional(S.NullOr(S.Boolean)),
           locale: S.optional(S.NullOr(S.String)),
@@ -30875,7 +24487,7 @@ function __c94(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          modal: PutUserModalRequestModal.pipe(T.Label()),
+          modal: S.String.pipe(T.Label()),
         }).pipe(T.Http({ method: "PUT", uri: "/api/user/{id}/modal/{modal}", code: 200 })),
       ).annotate({ identifier: "PutUserModalRequest" });
     case 4:
@@ -30895,7 +24507,7 @@ function __c94(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          model: UpdateBookmarkRequestModel.pipe(T.Label()),
+          model: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
         }).pipe(T.Http({ method: "POST", uri: "/api/bookmark/{model}/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateBookmarkRequest" });
@@ -30903,10 +24515,10 @@ function __c94(j: number): any {
       return S.suspend(() =>
         S.Struct({
           card_id: S.Number.pipe(T.Label()),
-          export_format: UpdateCardQueryRequestExportFormat.pipe(T.Label()),
+          export_format: S.String.pipe(T.Label()),
           csv_include_bom: S.optional(S.Boolean),
           format_rows: S.optional(S.Boolean),
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameterValues)),
+          parameters: S.optional(S.NullOr(__S(55))),
           pivot_results: S.optional(S.Boolean),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/card/{card_id}/query/{export_format}", code: 200 }),
@@ -30922,10 +24534,10 @@ function __c95(j: number): any {
           uuid: S.String.pipe(T.Label()),
           dashcard_id: S.Number.pipe(T.Label()),
           card_id: S.Number.pipe(T.Label()),
-          export_format: UpdateDashboardDashcardCardRequestExportFormat.pipe(T.Label()),
+          export_format: S.String.pipe(T.Label()),
           csv_include_bom: S.optional(S.NullOr(S.Boolean)),
           format_rows: S.optional(S.Boolean),
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameterValues)),
+          parameters: S.optional(S.NullOr(__S(55))),
           pivot_results: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -30943,9 +24555,9 @@ function __c95(j: number): any {
           dashboard_id: S.Number.pipe(T.Label()),
           dashcard_id: S.Number.pipe(T.Label()),
           card_id: S.Number.pipe(T.Label()),
-          export_format: UpdateDashboardDashcardCardQueryRequestExportFormat.pipe(T.Label()),
+          export_format: S.String.pipe(T.Label()),
           format_rows: S.optional(S.Boolean),
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameterValues)),
+          parameters: S.optional(S.NullOr(__S(55))),
           pivot_results: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -30960,10 +24572,10 @@ function __c95(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          dataset_query: S.optional(S.NullOr(MetabaseLibBeSchemaMaybeLegacyOrEmptyQuery)),
+          dataset_query: S.optional(S.NullOr(S.Unknown)),
           description: S.optional(S.NullOr(S.String)),
           display: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.NullOr(UpdateDashboardSaveCollectionRequestDashcardsItemSeriesItemId)),
+          id: S.optional(S.NullOr(S.Unknown)),
           name: S.optional(S.NullOr(S.String)),
           visualization_settings: S.optional(S.NullOr(S.Unknown)),
         }),
@@ -30971,14 +24583,14 @@ function __c95(j: number): any {
         identifier: "UpdateDashboardSaveCollectionRequestDashcardsItemSeriesItem",
       });
     case 3:
-      return S.Array(UpdateDashboardSaveCollectionRequestDashcardsItemSeriesItem);
+      return S.Array(__S(762));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          dataset_query: S.optional(S.NullOr(MetabaseLibBeSchemaMaybeLegacyOrEmptyQuery)),
+          dataset_query: S.optional(S.NullOr(S.Unknown)),
           description: S.optional(S.NullOr(S.String)),
           display: S.optional(S.NullOr(S.String)),
-          id: S.optional(S.NullOr(UpdateDashboardSaveCollectionRequestDashcardsItemCardId)),
+          id: S.optional(S.NullOr(S.Unknown)),
           name: S.optional(S.NullOr(S.String)),
           visualization_settings: S.optional(S.NullOr(S.Unknown)),
         }),
@@ -30990,30 +24602,30 @@ function __c95(j: number): any {
         S.Struct({
           visualization_settings: S.optional(S.NullOr(S.Unknown)),
           dashboard_tab_id: S.optional(S.NullOr(S.Number)),
-          parameter_mappings: S.optional(S.NullOr(MetabaseParametersSchemaParameterMappings)),
+          parameter_mappings: S.optional(S.NullOr(__S(2))),
           size_x: S.optional(S.NullOr(S.Number)),
           size_y: S.optional(S.NullOr(S.Number)),
           col: S.optional(S.NullOr(S.Number)),
           row: S.optional(S.NullOr(S.Number)),
-          series: S.optional(S.NullOr(UpdateDashboardSaveCollectionRequestDashcardsItemSeriesList)),
-          card: S.optional(S.NullOr(UpdateDashboardSaveCollectionRequestDashcardsItemCard)),
+          series: S.optional(S.NullOr(__S(763))),
+          card: S.optional(S.NullOr(__S(764))),
         }),
       ).annotate({
         identifier: "UpdateDashboardSaveCollectionRequestDashcardsItem",
       });
     case 6:
-      return S.Array(UpdateDashboardSaveCollectionRequestDashcardsItem);
+      return S.Array(__S(765));
     case 7:
       return S.suspend(() =>
         S.Struct({
           parent_collection_id: S.Number.pipe(T.Label()),
           auto_apply_filters: S.optional(S.NullOr(S.Boolean)),
-          dashcards: S.optional(S.NullOr(UpdateDashboardSaveCollectionRequestDashcardsList)),
+          dashcards: S.optional(S.NullOr(__S(766))),
           description: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameters)),
-          tabs: S.optional(S.NullOr(UpdateDashboardSaveCollectionRequestTabsList)),
-          width: S.optional(S.NullOr(UpdateDashboardSaveCollectionRequestWidth)),
+          parameters: S.optional(S.NullOr(__S(8))),
+          tabs: S.optional(S.NullOr(__S(87))),
+          width: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -31031,11 +24643,11 @@ function __c96(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          export_format: UpdateDatasetRequestExportFormat.pipe(T.Label()),
+          export_format: S.String.pipe(T.Label()),
           csv_include_bom: S.optional(S.Boolean),
           format_rows: S.optional(S.Boolean),
           pivot_results: S.optional(S.Boolean),
-          query: MetabaseLibBeSchemaMaybeLegacyOrInternalQuery,
+          query: S.Unknown,
           visualization_settings: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "POST", uri: "/api/dataset/{export_format}", code: 200 })),
       ).annotate({ identifier: "UpdateDatasetRequest" });
@@ -31043,8 +24655,8 @@ function __c96(j: number): any {
       return S.suspend(() =>
         S.Struct({
           query: S.String.pipe(T.Label()),
-          field_ids: S.optional(S.NullOr(UpdateDatasetParameterSearchRequestFieldIdsList)),
-          parameter: MetabaseParametersSchemaParameter,
+          field_ids: S.optional(S.NullOr(__S(9))),
+          parameter: __S(7),
         }).pipe(
           T.Http({ method: "POST", uri: "/api/dataset/parameter/search/{query}", code: 200 }),
         ),
@@ -31056,10 +24668,10 @@ function __c96(j: number): any {
         S.Struct({
           uuid: S.String.pipe(T.Label()),
           card_id: S.Number.pipe(T.Label()),
-          export_format: UpdateDocumentCardRequestExportFormat.pipe(T.Label()),
+          export_format: S.String.pipe(T.Label()),
           csv_include_bom: S.optional(S.NullOr(S.Boolean)),
           format_rows: S.optional(S.Boolean),
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameterValues)),
+          parameters: S.optional(S.NullOr(__S(55))),
           pivot_results: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -31078,7 +24690,7 @@ function __c96(j: number): any {
           card_id: S.Number.pipe(T.Label()),
           export_format: S.String.pipe(T.Label()),
           format_rows: S.optional(S.Boolean),
-          parameters: S.optional(S.NullOr(MetabaseParametersSchemaParameterValues)),
+          parameters: S.optional(S.NullOr(__S(55))),
           pivot_results: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -31093,7 +24705,7 @@ function __c96(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          product_type: UpdateEeCloudAddOnsRequestProductType.pipe(T.Label()),
+          product_type: S.String.pipe(T.Label()),
           quantity: S.optional(S.NullOr(S.Number)),
           terms_of_service: S.optional(S.NullOr(S.Boolean)),
         }).pipe(T.Http({ method: "POST", uri: "/api/ee/cloud-add-ons/{product_type}", code: 200 })),
@@ -31114,7 +24726,7 @@ function __c96(j: number): any {
       return S.suspend(() =>
         S.Struct({
           operation_id: S.String.pipe(T.Label()),
-          body: S.optional(S.NullOr(UpdateEeCloudProxyRequestBody).pipe(T.HttpBody())),
+          body: S.optional(S.NullOr(__S(773)).pipe(T.HttpBody())),
         }).pipe(T.Http({ method: "POST", uri: "/api/ee/cloud-proxy/{operation_id}", code: 200 })),
       ).annotate({
         identifier: "UpdateEeCloudProxyRequest",
@@ -31123,10 +24735,7 @@ function __c96(j: number): any {
       return S.suspend(() =>
         S.Struct({
           schema_filters_patterns: S.String.pipe(T.Body("schema-filters-patterns")),
-          schema_filters_type:
-            UpdateEeDatabaseReplicationConnectionDatabaseRequestReplicationSchemaFiltersSchemaFiltersType.pipe(
-              T.Body("schema-filters-type"),
-            ),
+          schema_filters_type: S.String.pipe(T.Body("schema-filters-type")),
         }),
       ).annotate({
         identifier: "UpdateEeDatabaseReplicationConnectionDatabaseRequestReplicationSchemaFilters",
@@ -31139,9 +24748,7 @@ function __c97(j: number): any {
       return S.suspend(() =>
         S.Struct({
           database_id: S.Number.pipe(T.Label()),
-          replicationSchemaFilters: S.optional(
-            UpdateEeDatabaseReplicationConnectionDatabaseRequestReplicationSchemaFilters,
-          ),
+          replicationSchemaFilters: S.optional(__S(775)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -31157,30 +24764,235 @@ function __c97(j: number): any {
         S.Struct({
           op: S.String,
           path: S.optional(S.NullOr(S.String)),
-          value: UpdateEeScimUserRequestOperationsItemValue,
+          value: S.Unknown,
         }),
       ).annotate({
         identifier: "UpdateEeScimUserRequestOperationsItem",
       });
     case 2:
-      return S.Array(UpdateEeScimUserRequestOperationsItem);
+      return S.Array(__S(777));
     case 3:
       return S.suspend(() =>
         S.Struct({
           id: S.String.pipe(T.Label()),
-          Operations: UpdateEeScimUserRequestOperationsList,
-          schemas: UpdateEeScimUserRequestSchemasList,
+          Operations: __S(778),
+          schemas: __S(3),
         }).pipe(T.Http({ method: "PATCH", uri: "/api/ee/scim/v2/Users/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateEeScimUserRequest" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.Number.pipe(T.Label()),
-          scan: S.optional(S.NullOr(UpdateNotifyDbRequestScan)),
+          scan: S.optional(S.NullOr(S.String)),
           synchronous_: S.optional(S.NullOr(S.Boolean).pipe(T.Body("synchronous?"))),
           table_id: S.optional(S.NullOr(S.Number)),
           table_name: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/api/notify/db/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateNotifyDbRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
+    case 41:
+      return __c41(i & 7);
+    case 42:
+      return __c42(i & 7);
+    case 43:
+      return __c43(i & 7);
+    case 44:
+      return __c44(i & 7);
+    case 45:
+      return __c45(i & 7);
+    case 46:
+      return __c46(i & 7);
+    case 47:
+      return __c47(i & 7);
+    case 48:
+      return __c48(i & 7);
+    case 49:
+      return __c49(i & 7);
+    case 50:
+      return __c50(i & 7);
+    case 51:
+      return __c51(i & 7);
+    case 52:
+      return __c52(i & 7);
+    case 53:
+      return __c53(i & 7);
+    case 54:
+      return __c54(i & 7);
+    case 55:
+      return __c55(i & 7);
+    case 56:
+      return __c56(i & 7);
+    case 57:
+      return __c57(i & 7);
+    case 58:
+      return __c58(i & 7);
+    case 59:
+      return __c59(i & 7);
+    case 60:
+      return __c60(i & 7);
+    case 61:
+      return __c61(i & 7);
+    case 62:
+      return __c62(i & 7);
+    case 63:
+      return __c63(i & 7);
+    case 64:
+      return __c64(i & 7);
+    case 65:
+      return __c65(i & 7);
+    case 66:
+      return __c66(i & 7);
+    case 67:
+      return __c67(i & 7);
+    case 68:
+      return __c68(i & 7);
+    case 69:
+      return __c69(i & 7);
+    case 70:
+      return __c70(i & 7);
+    case 71:
+      return __c71(i & 7);
+    case 72:
+      return __c72(i & 7);
+    case 73:
+      return __c73(i & 7);
+    case 74:
+      return __c74(i & 7);
+    case 75:
+      return __c75(i & 7);
+    case 76:
+      return __c76(i & 7);
+    case 77:
+      return __c77(i & 7);
+    case 78:
+      return __c78(i & 7);
+    case 79:
+      return __c79(i & 7);
+    case 80:
+      return __c80(i & 7);
+    case 81:
+      return __c81(i & 7);
+    case 82:
+      return __c82(i & 7);
+    case 83:
+      return __c83(i & 7);
+    case 84:
+      return __c84(i & 7);
+    case 85:
+      return __c85(i & 7);
+    case 86:
+      return __c86(i & 7);
+    case 87:
+      return __c87(i & 7);
+    case 88:
+      return __c88(i & 7);
+    case 89:
+      return __c89(i & 7);
+    case 90:
+      return __c90(i & 7);
+    case 91:
+      return __c91(i & 7);
+    case 92:
+      return __c92(i & 7);
+    case 93:
+      return __c93(i & 7);
+    case 94:
+      return __c94(i & 7);
+    case 95:
+      return __c95(i & 7);
+    case 96:
+      return __c96(i & 7);
+    case 97:
+      return __c97(i & 7);
   }
 }

@@ -6,6 +6,8 @@ import { UnknownModalError } from "../errors.ts";
 import { ModalProtocol, type ModalOpError, type ModalOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { ModalOpError, ModalOpContext };
 
@@ -14,63 +16,41 @@ export interface ClearQueueRequest {
   partitionKey?: string;
   allPartitions?: boolean;
 }
-const ClearQueueRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<ClearQueueRequest>;
-
 export interface ClearQueueResponse {}
-const ClearQueueResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ClearQueueResponse>;
-
 export interface DeleteQueueRequest {
   queueId?: string;
 }
-const DeleteQueueRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeleteQueueRequest>;
-
 export interface DeleteQueueResponse {}
-const DeleteQueueResponse = ClearQueueResponse as any as S.Schema<DeleteQueueResponse>;
-
 export interface GetQueueRequest {
   queueId?: string;
   timeout?: number;
   nValues?: number;
   partitionKey?: string;
 }
-const GetQueueRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<GetQueueRequest>;
-
 export type BlobList = Array<string>;
-const BlobList = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<BlobList>;
-
 export interface GetQueueResponse {
   values?: BlobList;
 }
-const GetQueueResponse = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetQueueResponse>;
-
 export interface ListPagination {
   maxObjects?: number;
   createdBefore?: number;
 }
-const ListPagination = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<ListPagination>;
-
 export interface ListQueueRequest {
   environmentName?: string;
   totalSizeLimit?: number;
   /** Limit on "number of partitions" reported, since checking them is costly */
   pagination?: ListPagination;
 }
-const ListQueueRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<ListQueueRequest>;
-
 export interface CreationInfo {
   /** This message is used in metadata for resource objects like Dict, Queue, Volume, etc. */
   createdAt?: number;
   /** Timestamp of resource creation */
   createdBy?: string;
 }
-const CreationInfo = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<CreationInfo>;
-
 export interface QueueMetadata {
   name?: string;
   creationInfo?: CreationInfo;
 }
-const QueueMetadata = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<QueueMetadata>;
-
 export interface ListQueueResponseQueueInfo {
   name?: string;
   createdAt?: number;
@@ -80,45 +60,25 @@ export interface ListQueueResponseQueueInfo {
   queueId?: string;
   metadata?: QueueMetadata;
 }
-const ListQueueResponseQueueInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListQueueResponseQueueInfo>;
-
 export type ListQueueResponseQueueInfoList = Array<ListQueueResponseQueueInfo>;
-const ListQueueResponseQueueInfoList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListQueueResponseQueueInfoList>;
-
 export interface ListQueueResponse {
   queues?: ListQueueResponseQueueInfoList;
   environmentName?: string;
 }
-const ListQueueResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ListQueueResponse>;
-
 export interface PutQueueRequest {
   queueId?: string;
   values?: BlobList;
   partitionKey?: string;
   partitionTtlSeconds?: number;
 }
-const PutQueueRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<PutQueueRequest>;
-
 export interface PutQueueResponse {}
-const PutQueueResponse = ClearQueueResponse as any as S.Schema<PutQueueResponse>;
-
 export interface QueueGetByIdRequest {
   queueId?: string;
 }
-const QueueGetByIdRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<QueueGetByIdRequest>;
-
 export interface QueueGetByIdResponse {
   queueId?: string;
   metadata?: QueueMetadata;
 }
-const QueueGetByIdResponse = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<QueueGetByIdResponse>;
-
 export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_UNSPECIFIED"
   | "OBJECT_CREATION_TYPE_CREATE_IF_MISSING"
@@ -126,76 +86,42 @@ export type ObjectCreationType =
   | "OBJECT_CREATION_TYPE_CREATE_OVERWRITE_IF_EXISTS"
   | "OBJECT_CREATION_TYPE_ANONYMOUS_OWNED_BY_APP"
   | "OBJECT_CREATION_TYPE_EPHEMERAL";
-const ObjectCreationType = S.String;
-
 export interface QueueGetOrCreateRequest {
   deploymentName?: string;
   /** removed namespace */
   environmentName?: string;
   objectCreationType?: ObjectCreationType | (string & {});
 }
-const QueueGetOrCreateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<QueueGetOrCreateRequest>;
-
 export interface QueueGetOrCreateResponse {
   queueId?: string;
   metadata?: QueueMetadata;
 }
-const QueueGetOrCreateResponse = QueueGetByIdResponse as any as S.Schema<QueueGetOrCreateResponse>;
-
 export interface QueueHeartbeatRequest {
   queueId?: string;
 }
-const QueueHeartbeatRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<QueueHeartbeatRequest>;
-
 export interface QueueHeartbeatResponse {}
-const QueueHeartbeatResponse = ClearQueueResponse as any as S.Schema<QueueHeartbeatResponse>;
-
 export interface QueueLenRequest {
   queueId?: string;
   partitionKey?: string;
   total?: boolean;
 }
-const QueueLenRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<QueueLenRequest>;
-
 export interface QueueLenResponse {
   len?: number;
 }
-const QueueLenResponse = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<QueueLenResponse>;
-
 export interface QueueNextItemsRequest {
   queueId?: string;
   partitionKey?: string;
   lastEntryId?: string;
   itemPollTimeout?: number;
 }
-const QueueNextItemsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<QueueNextItemsRequest>;
-
 export interface QueueItem {
   value?: string;
   entryId?: string;
 }
-const QueueItem = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<QueueItem>;
-
 export type QueueItemList = Array<QueueItem>;
-const QueueItemList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<QueueItemList>;
-
 export interface QueueNextItemsResponse {
   items?: QueueItemList;
 }
-const QueueNextItemsResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<QueueNextItemsResponse>;
-
 export type ClearQueueError = ModalOpError;
 /** Queues */
 export const clearQueue: API.OperationMethod<
@@ -204,8 +130,8 @@ export const clearQueue: API.OperationMethod<
   ClearQueueError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClearQueueRequest,
-  output: ClearQueueResponse,
+  input: __S(0) as any as S.Schema<ClearQueueRequest>,
+  output: __S(1) as any as S.Schema<ClearQueueResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -218,8 +144,8 @@ export const deleteQueue: API.OperationMethod<
   DeleteQueueError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteQueueRequest,
-  output: DeleteQueueResponse,
+  input: __S(2) as any as S.Schema<DeleteQueueRequest>,
+  output: __S(1) as any as S.Schema<DeleteQueueResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -232,8 +158,8 @@ export const getQueue: API.OperationMethod<
   GetQueueError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQueueRequest,
-  output: GetQueueResponse,
+  input: __S(3) as any as S.Schema<GetQueueRequest>,
+  output: __S(5) as any as S.Schema<GetQueueResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -246,8 +172,8 @@ export const listQueue: API.OperationMethod<
   ListQueueError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListQueueRequest,
-  output: ListQueueResponse,
+  input: __S(7) as any as S.Schema<ListQueueRequest>,
+  output: __S(12) as any as S.Schema<ListQueueResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -260,8 +186,8 @@ export const putQueue: API.OperationMethod<
   PutQueueError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutQueueRequest,
-  output: PutQueueResponse,
+  input: __S(13) as any as S.Schema<PutQueueRequest>,
+  output: __S(1) as any as S.Schema<PutQueueResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -274,8 +200,8 @@ export const queueGetById: API.OperationMethod<
   QueueGetByIdError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueueGetByIdRequest,
-  output: QueueGetByIdResponse,
+  input: __S(14) as any as S.Schema<QueueGetByIdRequest>,
+  output: __S(15) as any as S.Schema<QueueGetByIdResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -288,8 +214,8 @@ export const queueGetOrCreate: API.OperationMethod<
   QueueGetOrCreateError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueueGetOrCreateRequest,
-  output: QueueGetOrCreateResponse,
+  input: __S(16) as any as S.Schema<QueueGetOrCreateRequest>,
+  output: __S(15) as any as S.Schema<QueueGetOrCreateResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -302,8 +228,8 @@ export const queueHeartbeat: API.OperationMethod<
   QueueHeartbeatError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueueHeartbeatRequest,
-  output: QueueHeartbeatResponse,
+  input: __S(17) as any as S.Schema<QueueHeartbeatRequest>,
+  output: __S(1) as any as S.Schema<QueueHeartbeatResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -316,8 +242,8 @@ export const queueLen: API.OperationMethod<
   QueueLenError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueueLenRequest,
-  output: QueueLenResponse,
+  input: __S(18) as any as S.Schema<QueueLenRequest>,
+  output: __S(19) as any as S.Schema<QueueLenResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -330,8 +256,8 @@ export const queueNextItems: API.OperationMethod<
   QueueNextItemsError,
   ModalOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueueNextItemsRequest,
-  output: QueueNextItemsResponse,
+  input: __S(20) as any as S.Schema<QueueNextItemsRequest>,
+  output: __S(23) as any as S.Schema<QueueNextItemsResponse>,
   errors: [UnknownModalError],
   protocol: ModalProtocol,
   retry: Retry.Retry,
@@ -374,7 +300,7 @@ function __c0(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          values: S.optional(BlobList),
+          values: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "GetQueueResponse" });
     case 6:
@@ -389,7 +315,7 @@ function __c0(j: number): any {
         S.Struct({
           environmentName: S.optional(S.String),
           totalSizeLimit: S.optional(S.Number),
-          pagination: S.optional(ListPagination),
+          pagination: S.optional(__S(6)),
         }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/QueueList", code: 200 })),
       ).annotate({ identifier: "ListQueueRequest" });
   }
@@ -407,7 +333,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          creationInfo: S.optional(CreationInfo),
+          creationInfo: S.optional(__S(8)),
         }),
       ).annotate({ identifier: "QueueMetadata" });
     case 2:
@@ -418,17 +344,17 @@ function __c1(j: number): any {
           numPartitions: S.optional(S.Number),
           totalSize: S.optional(S.Number),
           queueId: S.optional(S.String),
-          metadata: S.optional(QueueMetadata),
+          metadata: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "ListQueueResponseQueueInfo",
       });
     case 3:
-      return S.Array(ListQueueResponseQueueInfo);
+      return S.Array(__S(10));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          queues: S.optional(ListQueueResponseQueueInfoList),
+          queues: S.optional(__S(11)),
           environmentName: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListQueueResponse" });
@@ -436,7 +362,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           queueId: S.optional(S.String),
-          values: S.optional(BlobList),
+          values: S.optional(__S(4)),
           partitionKey: S.optional(S.String),
           partitionTtlSeconds: S.optional(S.Number),
         }).pipe(T.Http({ method: "POST", uri: "/modal.client.ModalClient/QueuePut", code: 200 })),
@@ -453,7 +379,7 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           queueId: S.optional(S.String),
-          metadata: S.optional(QueueMetadata),
+          metadata: S.optional(__S(9)),
         }),
       ).annotate({ identifier: "QueueGetByIdResponse" });
   }
@@ -465,7 +391,7 @@ function __c2(j: number): any {
         S.Struct({
           deploymentName: S.optional(S.String),
           environmentName: S.optional(S.String),
-          objectCreationType: S.optional(ObjectCreationType),
+          objectCreationType: S.optional(S.String),
         }).pipe(
           T.Http({ method: "POST", uri: "/modal.client.ModalClient/QueueGetOrCreate", code: 200 }),
         ),
@@ -511,12 +437,27 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "QueueItem" });
     case 6:
-      return S.Array(QueueItem);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(QueueItemList),
+          items: S.optional(__S(22)),
         }),
       ).annotate({ identifier: "QueueNextItemsResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

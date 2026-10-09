@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "GameLiftStreams",
   serviceShapeName: "GameLiftStreams",
@@ -111,15 +113,10 @@ export type MaximumCapacity = number;
 export type VpcId = string;
 export type Ipv4CidrBlock = string;
 export type Ipv4CidrBlockList = string[];
-const Ipv4CidrBlockList = /*@__PURE__*/ __L.at(__c0, 0);
 export interface VpcTransitConfiguration {
   VpcId: string;
   Ipv4CidrBlocks: string[];
 }
-const VpcTransitConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<VpcTransitConfiguration>;
 export interface LocationConfiguration {
   LocationName: string;
   AlwaysOnCapacity?: number;
@@ -128,28 +125,17 @@ export interface LocationConfiguration {
   MaximumCapacity?: number;
   VpcTransitConfiguration?: VpcTransitConfiguration;
 }
-const LocationConfiguration = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<LocationConfiguration>;
 export type LocationConfigurations = LocationConfiguration[];
-const LocationConfigurations = /*@__PURE__*/ __L.at(__c0, 3);
 export interface AddStreamGroupLocationsInput {
   Identifier: string;
   LocationConfigurations: LocationConfiguration[];
 }
-const AddStreamGroupLocationsInput = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<AddStreamGroupLocationsInput>;
 export type StreamGroupLocationStatus =
   | "ACTIVATING"
   | "ACTIVE"
   | "ERROR"
   | "REMOVING"
   | (string & {});
-const StreamGroupLocationStatus = S.String;
-
 export type CapacityValue = number;
 export interface VpcTransitConfigurationResponse {
   VpcId?: string;
@@ -157,10 +143,6 @@ export interface VpcTransitConfigurationResponse {
   TransitGatewayId?: string;
   TransitGatewayResourceShareArn?: string;
 }
-const VpcTransitConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<VpcTransitConfigurationResponse>;
 export interface LocationState {
   LocationName?: string;
   Status?: StreamGroupLocationStatus;
@@ -174,58 +156,37 @@ export interface LocationState {
   InternalVpcIpv4CidrBlock?: string;
   VpcTransitConfiguration?: VpcTransitConfigurationResponse;
 }
-const LocationState = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<LocationState>;
 export type LocationStates = LocationState[];
-const LocationStates = /*@__PURE__*/ __L.at(__c0, 7);
 export interface AddStreamGroupLocationsOutput {
   Identifier: string;
   Locations: LocationState[];
 }
-const AddStreamGroupLocationsOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<AddStreamGroupLocationsOutput>;
 export type Identifiers = string[];
-const Identifiers = Ipv4CidrBlockList as any as S.Schema<Identifiers>;
 export interface AssociateApplicationsInput {
   Identifier: string;
   ApplicationIdentifiers: string[];
 }
-const AssociateApplicationsInput = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<AssociateApplicationsInput>;
 export type Arn = string;
 export type ArnList = string[];
-const ArnList = Ipv4CidrBlockList as any as S.Schema<ArnList>;
 export interface AssociateApplicationsOutput {
   Arn?: string;
   ApplicationArns?: string[];
 }
-const AssociateApplicationsOutput = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AssociateApplicationsOutput>;
 export type Description = string;
 export type RuntimeEnvironmentType = "PROTON" | "WINDOWS" | "UBUNTU" | (string & {});
-const RuntimeEnvironmentType = S.String;
-
 export type RuntimeEnvironmentVersion = string;
 export interface RuntimeEnvironment {
   Type: RuntimeEnvironmentType;
   Version: string;
 }
-const RuntimeEnvironment = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<RuntimeEnvironment>;
 export type ExecutablePath = string;
 export type ApplicationSourceUri = string;
 export type FilePath = string;
 export type FilePaths = string[];
-const FilePaths = Ipv4CidrBlockList as any as S.Schema<FilePaths>;
 export type ApplicationLogOutputUri = string;
 export type TagKey = string;
 export type TagValue = string;
 export type Tags = { [key: string]: string | undefined };
-const Tags = /*@__PURE__*/ __L.at(__c1, 4);
 export type ClientToken = string;
 export interface CreateApplicationInput {
   Description: string;
@@ -237,10 +198,6 @@ export interface CreateApplicationInput {
   Tags?: { [key: string]: string | undefined };
   ClientToken?: string;
 }
-const CreateApplicationInput = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateApplicationInput>;
 export type Id = string;
 export type ApplicationStatus =
   | "INITIALIZED"
@@ -249,25 +206,17 @@ export type ApplicationStatus =
   | "DELETING"
   | "ERROR"
   | (string & {});
-const ApplicationStatus = S.String;
-
 export type ApplicationStatusReason =
   | "internalError"
   | "accessDenied"
   | "sourceModified"
   | (string & {});
-const ApplicationStatusReason = S.String;
-
 export type ReplicationStatusType = "REPLICATING" | "COMPLETED" | (string & {});
-const ReplicationStatusType = S.String;
-
 export interface ReplicationStatus {
   Location?: string;
   Status?: ReplicationStatusType;
 }
-const ReplicationStatus = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<ReplicationStatus>;
 export type ReplicationStatuses = ReplicationStatus[];
-const ReplicationStatuses = /*@__PURE__*/ __L.at(__c1, 7);
 export interface CreateApplicationOutput {
   Arn: string;
   Description?: string;
@@ -284,10 +233,6 @@ export interface CreateApplicationOutput {
   LastUpdatedAt?: Date;
   AssociatedStreamGroups?: string[];
 }
-const CreateApplicationOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateApplicationOutput>;
 export type StreamClass =
   | "gen4n_high"
   | "gen4n_ultra"
@@ -307,8 +252,6 @@ export type StreamClass =
   | "gen6e_pro"
   | "gen6e_pro_win2022"
   | (string & {});
-const StreamClass = S.String;
-
 export interface CreateStreamGroupInput {
   Description: string;
   StreamClass: StreamClass;
@@ -317,15 +260,10 @@ export interface CreateStreamGroupInput {
   Tags?: { [key: string]: string | undefined };
   ClientToken?: string;
 }
-const CreateStreamGroupInput = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateStreamGroupInput>;
 export interface DefaultApplication {
   Id?: string;
   Arn?: string;
 }
-const DefaultApplication = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<DefaultApplication>;
 export type StreamGroupStatus =
   | "ACTIVATING"
   | "UPDATING_LOCATIONS"
@@ -335,11 +273,7 @@ export type StreamGroupStatus =
   | "DELETING"
   | "EXPIRED"
   | (string & {});
-const StreamGroupStatus = S.String;
-
 export type StreamGroupStatusReason = "internalError" | "noAvailableInstances" | (string & {});
-const StreamGroupStatusReason = S.String;
-
 export interface CreateStreamGroupOutput {
   Arn: string;
   Description?: string;
@@ -354,18 +288,10 @@ export interface CreateStreamGroupOutput {
   ExpiresAt?: Date;
   AssociatedApplications?: string[];
 }
-const CreateStreamGroupOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateStreamGroupOutput>;
 export interface CreateStreamSessionAdminShellInput {
   Identifier: string;
   StreamSessionIdentifier: string;
 }
-const CreateStreamSessionAdminShellInput = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateStreamSessionAdminShellInput>;
 export type SessionId = string;
 export type StreamUrl = string;
 export type TokenValue = string | redacted.Redacted<string>;
@@ -374,10 +300,6 @@ export interface CreateStreamSessionAdminShellOutput {
   StreamUrl?: string;
   TokenValue?: string | redacted.Redacted<string>;
 }
-const CreateStreamSessionAdminShellOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateStreamSessionAdminShellOutput>;
 export type SignalRequest = string | redacted.Redacted<string>;
 export interface CreateStreamSessionConnectionInput {
   ClientToken?: string;
@@ -385,30 +307,17 @@ export interface CreateStreamSessionConnectionInput {
   StreamSessionIdentifier: string;
   SignalRequest: string | redacted.Redacted<string>;
 }
-const CreateStreamSessionConnectionInput = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateStreamSessionConnectionInput>;
 export type SignalResponse = string | redacted.Redacted<string>;
 export interface CreateStreamSessionConnectionOutput {
   SignalResponse?: string | redacted.Redacted<string>;
 }
-const CreateStreamSessionConnectionOutput = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateStreamSessionConnectionOutput>;
 export type Protocol = "WebRTC" | (string & {});
-const Protocol = S.String;
-
 export type UrlExpiresAfterMinutes = number;
 export type UsageLimit = number;
 export type LocationList = string[];
-const LocationList = Ipv4CidrBlockList as any as S.Schema<LocationList>;
 export type SessionLengthSeconds = number;
 export type GameLaunchArgList = string[];
-const GameLaunchArgList = Ipv4CidrBlockList as any as S.Schema<GameLaunchArgList>;
 export type EnvironmentVariables = { [key: string]: string | undefined };
-const EnvironmentVariables = /*@__PURE__*/ __L.at(__c3, 0);
 export type IamRoleArn = string | redacted.Redacted<string>;
 export type ResolutionWidth = number;
 export type ResolutionHeight = number;
@@ -416,11 +325,9 @@ export interface Resolution {
   Width: number;
   Height: number;
 }
-const Resolution = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<Resolution>;
 export interface DisplayConfiguration {
   Resolution?: Resolution;
 }
-const DisplayConfiguration = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DisplayConfiguration>;
 export interface CreateStreamUrlInput {
   Identifier: string;
   ApplicationIdentifier: string;
@@ -436,11 +343,8 @@ export interface CreateStreamUrlInput {
   DisplayConfiguration?: DisplayConfiguration;
   ClientToken?: string;
 }
-const CreateStreamUrlInput = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<CreateStreamUrlInput>;
 export type StreamSessionStreamUrl = string | redacted.Redacted<string>;
 export type StreamUrlStatus = "ACTIVE" | "EXPIRED" | "REVOKED" | "LIMIT_REACHED" | (string & {});
-const StreamUrlStatus = S.String;
-
 export type StreamUrlStatusReason =
   | "userRevoked"
   | "revokedAndTerminatingSessions"
@@ -448,8 +352,6 @@ export type StreamUrlStatusReason =
   | "streamGroupDeleted"
   | "applicationDeleted"
   | (string & {});
-const StreamUrlStatusReason = S.String;
-
 export type RemainingUses = number;
 export interface CreateStreamUrlOutput {
   Arn: string;
@@ -472,63 +374,32 @@ export interface CreateStreamUrlOutput {
   RoleArn?: string | redacted.Redacted<string>;
   DisplayConfiguration?: DisplayConfiguration;
 }
-const CreateStreamUrlOutput = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateStreamUrlOutput>;
 export interface DeleteApplicationInput {
   Identifier: string;
 }
-const DeleteApplicationInput = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<DeleteApplicationInput>;
 export interface DeleteApplicationResponse {}
-const DeleteApplicationResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<DeleteApplicationResponse>;
 export interface DeleteStreamGroupInput {
   Identifier: string;
 }
-const DeleteStreamGroupInput = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<DeleteStreamGroupInput>;
 export interface DeleteStreamGroupResponse {}
-const DeleteStreamGroupResponse =
-  DeleteApplicationResponse as any as S.Schema<DeleteStreamGroupResponse>;
 export interface DisassociateApplicationsInput {
   Identifier: string;
   ApplicationIdentifiers: string[];
 }
-const DisassociateApplicationsInput = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<DisassociateApplicationsInput>;
 export interface DisassociateApplicationsOutput {
   Arn?: string;
   ApplicationArns?: string[];
 }
-const DisassociateApplicationsOutput =
-  AssociateApplicationsOutput as any as S.Schema<DisassociateApplicationsOutput>;
 export type OutputUri = string;
 export interface ExportStreamSessionFilesInput {
   Identifier: string;
   StreamSessionIdentifier: string;
   OutputUri: string;
 }
-const ExportStreamSessionFilesInput = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ExportStreamSessionFilesInput>;
 export interface ExportStreamSessionFilesOutput {}
-const ExportStreamSessionFilesOutput =
-  DeleteApplicationResponse as any as S.Schema<ExportStreamSessionFilesOutput>;
 export interface GetApplicationInput {
   Identifier: string;
 }
-const GetApplicationInput = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<GetApplicationInput>;
 export interface GetApplicationOutput {
   Arn: string;
   Description?: string;
@@ -545,11 +416,9 @@ export interface GetApplicationOutput {
   LastUpdatedAt?: Date;
   AssociatedStreamGroups?: string[];
 }
-const GetApplicationOutput = CreateApplicationOutput as any as S.Schema<GetApplicationOutput>;
 export interface GetStreamGroupInput {
   Identifier: string;
 }
-const GetStreamGroupInput = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<GetStreamGroupInput>;
 export interface GetStreamGroupOutput {
   Arn: string;
   Description?: string;
@@ -564,15 +433,10 @@ export interface GetStreamGroupOutput {
   ExpiresAt?: Date;
   AssociatedApplications?: string[];
 }
-const GetStreamGroupOutput = CreateStreamGroupOutput as any as S.Schema<GetStreamGroupOutput>;
 export interface GetStreamSessionInput {
   Identifier: string;
   StreamSessionIdentifier: string;
 }
-const GetStreamSessionInput = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GetStreamSessionInput>;
 export type UserId = string;
 export type StreamSessionStatus =
   | "ACTIVATING"
@@ -584,8 +448,6 @@ export type StreamSessionStatus =
   | "TERMINATED"
   | "ERROR"
   | (string & {});
-const StreamSessionStatus = S.String;
-
 export type StreamSessionStatusReason =
   | "internalError"
   | "invalidSignalRequest"
@@ -599,28 +461,19 @@ export type StreamSessionStatusReason =
   | "idleTimeout"
   | "apiTerminated"
   | (string & {});
-const StreamSessionStatusReason = S.String;
-
 export type ConnectionTimeoutSeconds = number;
 export interface PerformanceStatsConfiguration {
   SharedWithClient?: boolean;
 }
-const PerformanceStatsConfiguration = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<PerformanceStatsConfiguration>;
 export type FileLocationUri = string;
 export type WebSdkProtocolUrl = string;
 export type ExportFilesStatus = "SUCCEEDED" | "FAILED" | "PENDING" | (string & {});
-const ExportFilesStatus = S.String;
-
 export type ExportFilesReason = string;
 export interface ExportFilesMetadata {
   Status?: ExportFilesStatus;
   StatusReason?: string;
   OutputUri?: string;
 }
-const ExportFilesMetadata = /*@__PURE__*/ __L.at(__c4, 6) as any as S.Schema<ExportFilesMetadata>;
 export interface GetStreamSessionOutput {
   Arn?: string;
   Description?: string;
@@ -646,15 +499,10 @@ export interface GetStreamSessionOutput {
   RoleArn?: string | redacted.Redacted<string>;
   DisplayConfiguration?: DisplayConfiguration;
 }
-const GetStreamSessionOutput = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<GetStreamSessionOutput>;
 export interface GetStreamUrlInput {
   Identifier: string;
   StreamUrlIdentifier: string;
 }
-const GetStreamUrlInput = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<GetStreamUrlInput>;
 export interface StreamSessionSummary {
   Arn?: string;
   UserId?: string;
@@ -668,9 +516,7 @@ export interface StreamSessionSummary {
   Location?: string;
   RoleArn?: string | redacted.Redacted<string>;
 }
-const StreamSessionSummary = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<StreamSessionSummary>;
 export type StreamSessionSummaryList = StreamSessionSummary[];
-const StreamSessionSummaryList = /*@__PURE__*/ __L.at(__c5, 2);
 export interface GetStreamUrlOutput {
   Arn: string;
   StreamUrlId?: string;
@@ -693,17 +539,12 @@ export interface GetStreamUrlOutput {
   DisplayConfiguration?: DisplayConfiguration;
   StreamSessions?: StreamSessionSummary[];
 }
-const GetStreamUrlOutput = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<GetStreamUrlOutput>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface ListApplicationsInput {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListApplicationsInput = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ListApplicationsInput>;
 export interface ApplicationSummary {
   Arn: string;
   Id?: string;
@@ -713,24 +554,14 @@ export interface ApplicationSummary {
   LastUpdatedAt?: Date;
   RuntimeEnvironment?: RuntimeEnvironment;
 }
-const ApplicationSummary = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<ApplicationSummary>;
 export type ApplicationSummaryList = ApplicationSummary[];
-const ApplicationSummaryList = /*@__PURE__*/ __L.at(__c5, 6);
 export interface ListApplicationsOutput {
   Items?: ApplicationSummary[];
   NextToken?: string;
 }
-const ListApplicationsOutput = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListApplicationsOutput>;
 export interface ListApplicationShaderCachesInput {
   Identifier: string;
 }
-const ListApplicationShaderCachesInput = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<ListApplicationShaderCachesInput>;
 export type ShaderCacheStatus =
   | "INITIALIZED"
   | "PROCESSING"
@@ -738,8 +569,6 @@ export type ShaderCacheStatus =
   | "DELETING"
   | "ERROR"
   | (string & {});
-const ShaderCacheStatus = S.String;
-
 export interface ShaderCacheSummary {
   Identifier: string;
   ApplicationArn: string;
@@ -748,24 +577,14 @@ export interface ShaderCacheSummary {
   StorageBytes?: number;
   AssociatedStreamGroups?: string[];
 }
-const ShaderCacheSummary = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<ShaderCacheSummary>;
 export type ShaderCacheSummaryList = ShaderCacheSummary[];
-const ShaderCacheSummaryList = /*@__PURE__*/ __L.at(__c6, 2);
 export interface ListApplicationShaderCachesOutput {
   Items?: ShaderCacheSummary[];
 }
-const ListApplicationShaderCachesOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<ListApplicationShaderCachesOutput>;
 export interface ListStreamGroupsInput {
   NextToken?: string;
   MaxResults?: number;
 }
-const ListStreamGroupsInput = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ListStreamGroupsInput>;
 export interface StreamGroupSummary {
   Arn: string;
   Id?: string;
@@ -777,17 +596,11 @@ export interface StreamGroupSummary {
   LastUpdatedAt?: Date;
   ExpiresAt?: Date;
 }
-const StreamGroupSummary = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<StreamGroupSummary>;
 export type StreamGroupSummaryList = StreamGroupSummary[];
-const StreamGroupSummaryList = /*@__PURE__*/ __L.at(__c6, 6);
 export interface ListStreamGroupsOutput {
   Items?: StreamGroupSummary[];
   NextToken?: string;
 }
-const ListStreamGroupsOutput = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ListStreamGroupsOutput>;
 export interface ListStreamSessionsInput {
   Status?: StreamSessionStatus;
   ExportFilesStatus?: ExportFilesStatus;
@@ -795,43 +608,26 @@ export interface ListStreamSessionsInput {
   MaxResults?: number;
   Identifier: string;
 }
-const ListStreamSessionsInput = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<ListStreamSessionsInput>;
 export interface ListStreamSessionsOutput {
   Items?: StreamSessionSummary[];
   NextToken?: string;
 }
-const ListStreamSessionsOutput = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<ListStreamSessionsOutput>;
 export interface ListStreamSessionsByAccountInput {
   Status?: StreamSessionStatus;
   ExportFilesStatus?: ExportFilesStatus;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListStreamSessionsByAccountInput = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<ListStreamSessionsByAccountInput>;
 export interface ListStreamSessionsByAccountOutput {
   Items?: StreamSessionSummary[];
   NextToken?: string;
 }
-const ListStreamSessionsByAccountOutput = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<ListStreamSessionsByAccountOutput>;
 export interface ListStreamUrlsInput {
   Status?: StreamUrlStatus;
   StreamGroupIdentifier?: string;
   NextToken?: string;
   MaxResults?: number;
 }
-const ListStreamUrlsInput = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<ListStreamUrlsInput>;
 export interface StreamUrlSummary {
   Arn: string;
   StreamUrlId?: string;
@@ -847,55 +643,30 @@ export interface StreamUrlSummary {
   SessionLengthSeconds?: number;
   Description?: string;
 }
-const StreamUrlSummary = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<StreamUrlSummary>;
 export type StreamUrlSummaryList = StreamUrlSummary[];
-const StreamUrlSummaryList = /*@__PURE__*/ __L.at(__c7, 6);
 export interface ListStreamUrlsOutput {
   Items?: StreamUrlSummary[];
   NextToken?: string;
 }
-const ListStreamUrlsOutput = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ListStreamUrlsOutput>;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export type LocationsList = string[];
-const LocationsList = Ipv4CidrBlockList as any as S.Schema<LocationsList>;
 export interface RemoveStreamGroupLocationsInput {
   Identifier: string;
   Locations: string[];
 }
-const RemoveStreamGroupLocationsInput = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<RemoveStreamGroupLocationsInput>;
 export interface RemoveStreamGroupLocationsResponse {}
-const RemoveStreamGroupLocationsResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<RemoveStreamGroupLocationsResponse>;
 export type RevocationMode = "REVOKE_URL" | "REVOKE_AND_TERMINATE_SESSIONS" | (string & {});
-const RevocationMode = S.String;
-
 export interface RevokeStreamUrlInput {
   Identifier: string;
   StreamUrlIdentifier: string;
   RevocationMode?: RevocationMode;
 }
-const RevokeStreamUrlInput = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<RevokeStreamUrlInput>;
 export interface RevokeStreamUrlResponse {}
-const RevokeStreamUrlResponse =
-  DeleteApplicationResponse as any as S.Schema<RevokeStreamUrlResponse>;
 export interface StartStreamSessionInput {
   ClientToken?: string;
   Description?: string;
@@ -913,10 +684,6 @@ export interface StartStreamSessionInput {
   RoleArn?: string | redacted.Redacted<string>;
   DisplayConfiguration?: DisplayConfiguration;
 }
-const StartStreamSessionInput = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<StartStreamSessionInput>;
 export interface StartStreamSessionOutput {
   Arn?: string;
   Description?: string;
@@ -942,45 +709,28 @@ export interface StartStreamSessionOutput {
   RoleArn?: string | redacted.Redacted<string>;
   DisplayConfiguration?: DisplayConfiguration;
 }
-const StartStreamSessionOutput =
-  GetStreamSessionOutput as any as S.Schema<StartStreamSessionOutput>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = DeleteApplicationResponse as any as S.Schema<TagResourceResponse>;
 export interface TerminateStreamSessionInput {
   Identifier: string;
   StreamSessionIdentifier: string;
 }
-const TerminateStreamSessionInput = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<TerminateStreamSessionInput>;
 export interface TerminateStreamSessionResponse {}
-const TerminateStreamSessionResponse =
-  DeleteApplicationResponse as any as S.Schema<TerminateStreamSessionResponse>;
 export type TagKeyList = string[];
-const TagKeyList = Ipv4CidrBlockList as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = DeleteApplicationResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateApplicationInput {
   Identifier: string;
   Description?: string;
   ApplicationLogPaths?: string[];
   ApplicationLogOutputUri?: string;
 }
-const UpdateApplicationInput = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<UpdateApplicationInput>;
 export interface UpdateApplicationOutput {
   Arn: string;
   Description?: string;
@@ -997,17 +747,12 @@ export interface UpdateApplicationOutput {
   LastUpdatedAt?: Date;
   AssociatedStreamGroups?: string[];
 }
-const UpdateApplicationOutput = CreateApplicationOutput as any as S.Schema<UpdateApplicationOutput>;
 export interface UpdateStreamGroupInput {
   Identifier: string;
   LocationConfigurations?: LocationConfiguration[];
   Description?: string;
   DefaultApplicationIdentifier?: string;
 }
-const UpdateStreamGroupInput = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<UpdateStreamGroupInput>;
 export interface UpdateStreamGroupOutput {
   Arn: string;
   Description?: string;
@@ -1022,7 +767,6 @@ export interface UpdateStreamGroupOutput {
   ExpiresAt?: Date;
   AssociatedApplications?: string[];
 }
-const UpdateStreamGroupOutput = CreateStreamGroupOutput as any as S.Schema<UpdateStreamGroupOutput>;
 export type AddStreamGroupLocationsError =
   | AccessDeniedException
   | InternalServerException
@@ -1042,8 +786,8 @@ export const addStreamGroupLocations: API.OperationMethod<
   AddStreamGroupLocationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddStreamGroupLocationsInput,
-  output: AddStreamGroupLocationsOutput,
+  input: __S(4) as any as S.Schema<AddStreamGroupLocationsInput>,
+  output: __S(8) as any as S.Schema<AddStreamGroupLocationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1076,8 +820,8 @@ export const associateApplications: API.OperationMethod<
   AssociateApplicationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateApplicationsInput,
-  output: AssociateApplicationsOutput,
+  input: __S(9) as any as S.Schema<AssociateApplicationsInput>,
+  output: __S(10) as any as S.Schema<AssociateApplicationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1116,8 +860,8 @@ export const createApplication: API.OperationMethod<
   CreateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateApplicationInput,
-  output: CreateApplicationOutput,
+  input: __S(13) as any as S.Schema<CreateApplicationInput>,
+  output: __S(16) as any as S.Schema<CreateApplicationOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1165,8 +909,8 @@ export const createStreamGroup: API.OperationMethod<
   CreateStreamGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStreamGroupInput,
-  output: CreateStreamGroupOutput,
+  input: __S(17) as any as S.Schema<CreateStreamGroupInput>,
+  output: __S(19) as any as S.Schema<CreateStreamGroupOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1204,8 +948,8 @@ export const createStreamSessionAdminShell: API.OperationMethod<
   CreateStreamSessionAdminShellError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStreamSessionAdminShellInput,
-  output: CreateStreamSessionAdminShellOutput,
+  input: __S(20) as any as S.Schema<CreateStreamSessionAdminShellInput>,
+  output: __S(21) as any as S.Schema<CreateStreamSessionAdminShellOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1262,8 +1006,8 @@ export const createStreamSessionConnection: API.OperationMethod<
   CreateStreamSessionConnectionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStreamSessionConnectionInput,
-  output: CreateStreamSessionConnectionOutput,
+  input: __S(22) as any as S.Schema<CreateStreamSessionConnectionInput>,
+  output: __S(23) as any as S.Schema<CreateStreamSessionConnectionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1299,8 +1043,8 @@ export const createStreamUrl: API.OperationMethod<
   CreateStreamUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStreamUrlInput,
-  output: CreateStreamUrlOutput,
+  input: __S(27) as any as S.Schema<CreateStreamUrlInput>,
+  output: __S(28) as any as S.Schema<CreateStreamUrlOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1344,8 +1088,8 @@ export const deleteApplication: API.OperationMethod<
   DeleteApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteApplicationInput,
-  output: DeleteApplicationResponse,
+  input: __S(29) as any as S.Schema<DeleteApplicationInput>,
+  output: __S(30) as any as S.Schema<DeleteApplicationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1376,8 +1120,8 @@ export const deleteStreamGroup: API.OperationMethod<
   DeleteStreamGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStreamGroupInput,
-  output: DeleteStreamGroupResponse,
+  input: __S(31) as any as S.Schema<DeleteStreamGroupInput>,
+  output: __S(30) as any as S.Schema<DeleteStreamGroupResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1409,8 +1153,8 @@ export const disassociateApplications: API.OperationMethod<
   DisassociateApplicationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateApplicationsInput,
-  output: DisassociateApplicationsOutput,
+  input: __S(32) as any as S.Schema<DisassociateApplicationsInput>,
+  output: __S(10) as any as S.Schema<DisassociateApplicationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1453,8 +1197,8 @@ export const exportStreamSessionFiles: API.OperationMethod<
   ExportStreamSessionFilesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExportStreamSessionFilesInput,
-  output: ExportStreamSessionFilesOutput,
+  input: __S(33) as any as S.Schema<ExportStreamSessionFilesInput>,
+  output: __S(30) as any as S.Schema<ExportStreamSessionFilesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1483,8 +1227,8 @@ export const getApplication: API.OperationMethod<
   GetApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApplicationInput,
-  output: GetApplicationOutput,
+  input: __S(34) as any as S.Schema<GetApplicationInput>,
+  output: __S(16) as any as S.Schema<GetApplicationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1513,8 +1257,8 @@ export const getStreamGroup: API.OperationMethod<
   GetStreamGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStreamGroupInput,
-  output: GetStreamGroupOutput,
+  input: __S(35) as any as S.Schema<GetStreamGroupInput>,
+  output: __S(19) as any as S.Schema<GetStreamGroupOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1543,8 +1287,8 @@ export const getStreamSession: API.OperationMethod<
   GetStreamSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStreamSessionInput,
-  output: GetStreamSessionOutput,
+  input: __S(36) as any as S.Schema<GetStreamSessionInput>,
+  output: __S(39) as any as S.Schema<GetStreamSessionOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1575,8 +1319,8 @@ export const getStreamUrl: API.OperationMethod<
   GetStreamUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStreamUrlInput,
-  output: GetStreamUrlOutput,
+  input: __S(40) as any as S.Schema<GetStreamUrlInput>,
+  output: __S(43) as any as S.Schema<GetStreamUrlOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1605,8 +1349,8 @@ export const listApplications: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ApplicationSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListApplicationsInput,
-  output: ListApplicationsOutput,
+  input: __S(44) as any as S.Schema<ListApplicationsInput>,
+  output: __S(47) as any as S.Schema<ListApplicationsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1642,8 +1386,8 @@ export const listApplicationShaderCaches: API.OperationMethod<
   ListApplicationShaderCachesError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListApplicationShaderCachesInput,
-  output: ListApplicationShaderCachesOutput,
+  input: __S(48) as any as S.Schema<ListApplicationShaderCachesInput>,
+  output: __S(51) as any as S.Schema<ListApplicationShaderCachesOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1672,8 +1416,8 @@ export const listStreamGroups: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StreamGroupSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListStreamGroupsInput,
-  output: ListStreamGroupsOutput,
+  input: __S(52) as any as S.Schema<ListStreamGroupsInput>,
+  output: __S(55) as any as S.Schema<ListStreamGroupsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1712,8 +1456,8 @@ export const listStreamSessions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StreamSessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListStreamSessionsInput,
-  output: ListStreamSessionsOutput,
+  input: __S(56) as any as S.Schema<ListStreamSessionsInput>,
+  output: __S(57) as any as S.Schema<ListStreamSessionsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1752,8 +1496,8 @@ export const listStreamSessionsByAccount: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StreamSessionSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListStreamSessionsByAccountInput,
-  output: ListStreamSessionsByAccountOutput,
+  input: __S(58) as any as S.Schema<ListStreamSessionsByAccountInput>,
+  output: __S(59) as any as S.Schema<ListStreamSessionsByAccountOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1787,8 +1531,8 @@ export const listStreamUrls: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StreamUrlSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListStreamUrlsInput,
-  output: ListStreamUrlsOutput,
+  input: __S(60) as any as S.Schema<ListStreamUrlsInput>,
+  output: __S(63) as any as S.Schema<ListStreamUrlsOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1827,8 +1571,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(64) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(65) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1858,8 +1602,8 @@ export const removeStreamGroupLocations: API.OperationMethod<
   RemoveStreamGroupLocationsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveStreamGroupLocationsInput,
-  output: RemoveStreamGroupLocationsResponse,
+  input: __S(66) as any as S.Schema<RemoveStreamGroupLocationsInput>,
+  output: __S(67) as any as S.Schema<RemoveStreamGroupLocationsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1890,8 +1634,8 @@ export const revokeStreamUrl: API.OperationMethod<
   RevokeStreamUrlError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeStreamUrlInput,
-  output: RevokeStreamUrlResponse,
+  input: __S(68) as any as S.Schema<RevokeStreamUrlInput>,
+  output: __S(30) as any as S.Schema<RevokeStreamUrlResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1975,8 +1719,8 @@ export const startStreamSession: API.OperationMethod<
   StartStreamSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartStreamSessionInput,
-  output: StartStreamSessionOutput,
+  input: __S(69) as any as S.Schema<StartStreamSessionInput>,
+  output: __S(39) as any as S.Schema<StartStreamSessionOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2015,8 +1759,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(70) as any as S.Schema<TagResourceRequest>,
+  output: __S(30) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2044,8 +1788,8 @@ export const terminateStreamSession: API.OperationMethod<
   TerminateStreamSessionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TerminateStreamSessionInput,
-  output: TerminateStreamSessionResponse,
+  input: __S(71) as any as S.Schema<TerminateStreamSessionInput>,
+  output: __S(30) as any as S.Schema<TerminateStreamSessionResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2073,8 +1817,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(72) as any as S.Schema<UntagResourceRequest>,
+  output: __S(30) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2104,8 +1848,8 @@ export const updateApplication: API.OperationMethod<
   UpdateApplicationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateApplicationInput,
-  output: UpdateApplicationOutput,
+  input: __S(73) as any as S.Schema<UpdateApplicationInput>,
+  output: __S(16) as any as S.Schema<UpdateApplicationOutput>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2148,8 +1892,8 @@ export const updateStreamGroup: API.OperationMethod<
   UpdateStreamGroupError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStreamGroupInput,
-  output: UpdateStreamGroupOutput,
+  input: __S(74) as any as S.Schema<UpdateStreamGroupInput>,
+  output: __S(19) as any as S.Schema<UpdateStreamGroupOutput>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2170,9 +1914,9 @@ function __c0(j: number): any {
     case 0:
       return S.Array(S.String);
     case 1:
-      return S.suspend(() =>
-        S.Struct({ VpcId: S.String, Ipv4CidrBlocks: Ipv4CidrBlockList }),
-      ).annotate({ identifier: "VpcTransitConfiguration" });
+      return S.suspend(() => S.Struct({ VpcId: S.String, Ipv4CidrBlocks: __S(0) })).annotate({
+        identifier: "VpcTransitConfiguration",
+      });
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -2181,16 +1925,16 @@ function __c0(j: number): any {
           OnDemandCapacity: S.optional(S.Number),
           TargetIdleCapacity: S.optional(S.Number),
           MaximumCapacity: S.optional(S.Number),
-          VpcTransitConfiguration: S.optional(VpcTransitConfiguration),
+          VpcTransitConfiguration: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "LocationConfiguration" });
     case 3:
-      return S.Array(LocationConfiguration);
+      return S.Array(__S(2));
     case 4:
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          LocationConfigurations: LocationConfigurations,
+          LocationConfigurations: __S(3),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/streamgroups/{Identifier}/locations" }),
@@ -2208,7 +1952,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           VpcId: S.optional(S.String),
-          Ipv4CidrBlocks: S.optional(Ipv4CidrBlockList),
+          Ipv4CidrBlocks: S.optional(__S(0)),
           TransitGatewayId: S.optional(S.String),
           TransitGatewayResourceShareArn: S.optional(S.String),
         }),
@@ -2219,7 +1963,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           LocationName: S.optional(S.String),
-          Status: S.optional(StreamGroupLocationStatus),
+          Status: S.optional(S.String),
           AlwaysOnCapacity: S.optional(S.Number),
           OnDemandCapacity: S.optional(S.Number),
           TargetIdleCapacity: S.optional(S.Number),
@@ -2228,26 +1972,24 @@ function __c0(j: number): any {
           AllocatedCapacity: S.optional(S.Number),
           IdleCapacity: S.optional(S.Number),
           InternalVpcIpv4CidrBlock: S.optional(S.String),
-          VpcTransitConfiguration: S.optional(VpcTransitConfigurationResponse),
+          VpcTransitConfiguration: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "LocationState" });
     case 7:
-      return S.Array(LocationState);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ Identifier: S.String, Locations: LocationStates }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ Identifier: S.String, Locations: __S(7) })).annotate({
         identifier: "AddStreamGroupLocationsOutput",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          ApplicationIdentifiers: Identifiers,
+          ApplicationIdentifiers: __S(0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/streamgroups/{Identifier}/associations" }),
@@ -2263,26 +2005,26 @@ function __c1(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ Arn: S.optional(S.String), ApplicationArns: S.optional(ArnList) }),
+        S.Struct({ Arn: S.optional(S.String), ApplicationArns: S.optional(__S(0)) }),
       ).annotate({
         identifier: "AssociateApplicationsOutput",
       });
     case 3:
-      return S.suspend(() =>
-        S.Struct({ Type: RuntimeEnvironmentType, Version: S.String }),
-      ).annotate({ identifier: "RuntimeEnvironment" });
+      return S.suspend(() => S.Struct({ Type: S.String, Version: S.String })).annotate({
+        identifier: "RuntimeEnvironment",
+      });
     case 4:
       return S.Record(S.String, /*@__PURE__*/ S.String.pipe(S.optional));
     case 5:
       return S.suspend(() =>
         S.Struct({
           Description: S.String,
-          RuntimeEnvironment: RuntimeEnvironment,
+          RuntimeEnvironment: __S(11),
           ExecutablePath: S.String,
           ApplicationSourceUri: S.String,
-          ApplicationLogPaths: S.optional(FilePaths),
+          ApplicationLogPaths: S.optional(__S(0)),
           ApplicationLogOutputUri: S.optional(S.String),
-          Tags: S.optional(Tags),
+          Tags: S.optional(__S(12)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/applications" }), svc, auth, proto, ver, rules),
@@ -2290,10 +2032,10 @@ function __c1(j: number): any {
       ).annotate({ identifier: "CreateApplicationInput" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ Location: S.optional(S.String), Status: S.optional(ReplicationStatusType) }),
+        S.Struct({ Location: S.optional(S.String), Status: S.optional(S.String) }),
       ).annotate({ identifier: "ReplicationStatus" });
     case 7:
-      return S.Array(ReplicationStatus);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -2303,28 +2045,28 @@ function __c2(j: number): any {
         S.Struct({
           Arn: S.String,
           Description: S.optional(S.String),
-          RuntimeEnvironment: S.optional(RuntimeEnvironment),
+          RuntimeEnvironment: S.optional(__S(11)),
           ExecutablePath: S.optional(S.String),
-          ApplicationLogPaths: S.optional(FilePaths),
+          ApplicationLogPaths: S.optional(__S(0)),
           ApplicationLogOutputUri: S.optional(S.String),
           ApplicationSourceUri: S.optional(S.String),
           Id: S.optional(S.String),
-          Status: S.optional(ApplicationStatus),
-          StatusReason: S.optional(ApplicationStatusReason),
-          ReplicationStatuses: S.optional(ReplicationStatuses),
+          Status: S.optional(S.String),
+          StatusReason: S.optional(S.String),
+          ReplicationStatuses: S.optional(__S(15)),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AssociatedStreamGroups: S.optional(ArnList),
+          AssociatedStreamGroups: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "CreateApplicationOutput" });
     case 1:
       return S.suspend(() =>
         S.Struct({
           Description: S.String,
-          StreamClass: StreamClass,
+          StreamClass: S.String,
           DefaultApplicationIdentifier: S.optional(S.String),
-          LocationConfigurations: S.optional(LocationConfigurations),
-          Tags: S.optional(Tags),
+          LocationConfigurations: S.optional(__S(3)),
+          Tags: S.optional(__S(12)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/streamgroups" }), svc, auth, proto, ver, rules),
@@ -2339,16 +2081,16 @@ function __c2(j: number): any {
         S.Struct({
           Arn: S.String,
           Description: S.optional(S.String),
-          DefaultApplication: S.optional(DefaultApplication),
-          LocationStates: S.optional(LocationStates),
-          StreamClass: S.optional(StreamClass),
+          DefaultApplication: S.optional(__S(18)),
+          LocationStates: S.optional(__S(7)),
+          StreamClass: S.optional(S.String),
           Id: S.optional(S.String),
-          Status: S.optional(StreamGroupStatus),
-          StatusReason: S.optional(StreamGroupStatusReason),
+          Status: S.optional(S.String),
+          StatusReason: S.optional(S.String),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          AssociatedApplications: S.optional(ArnList),
+          AssociatedApplications: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "CreateStreamGroupOutput" });
     case 4:
@@ -2420,7 +2162,7 @@ function __c3(j: number): any {
         identifier: "Resolution",
       });
     case 2:
-      return S.suspend(() => S.Struct({ Resolution: S.optional(Resolution) })).annotate({
+      return S.suspend(() => S.Struct({ Resolution: S.optional(__S(25)) })).annotate({
         identifier: "DisplayConfiguration",
       });
     case 3:
@@ -2428,16 +2170,16 @@ function __c3(j: number): any {
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
           ApplicationIdentifier: S.String,
-          Protocol: Protocol,
+          Protocol: S.String,
           UrlExpiresAfterMinutes: S.Number,
           UsageLimit: S.optional(S.Number),
           Description: S.optional(S.String),
-          Locations: LocationList,
+          Locations: __S(0),
           SessionLengthSeconds: S.optional(S.Number),
-          AdditionalLaunchArgs: S.optional(GameLaunchArgList),
-          AdditionalEnvironmentVariables: S.optional(EnvironmentVariables),
+          AdditionalLaunchArgs: S.optional(__S(0)),
+          AdditionalEnvironmentVariables: S.optional(__S(24)),
           RoleArn: S.optional(SensitiveString),
-          DisplayConfiguration: S.optional(DisplayConfiguration),
+          DisplayConfiguration: S.optional(__S(26)),
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
         }).pipe(
           T.all(
@@ -2456,22 +2198,22 @@ function __c3(j: number): any {
           Arn: S.String,
           StreamUrlId: S.optional(S.String),
           StreamUrl: S.optional(SensitiveString),
-          Status: S.optional(StreamUrlStatus),
-          StatusReason: S.optional(StreamUrlStatusReason),
+          Status: S.optional(S.String),
+          StatusReason: S.optional(S.String),
           ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UsageLimit: S.optional(S.Number),
           RemainingUses: S.optional(S.Number),
           StreamGroupArn: S.optional(S.String),
           ApplicationArn: S.optional(S.String),
-          Protocol: S.optional(Protocol),
-          Locations: S.optional(LocationList),
+          Protocol: S.optional(S.String),
+          Locations: S.optional(__S(0)),
           SessionLengthSeconds: S.optional(S.Number),
           Description: S.optional(S.String),
-          AdditionalLaunchArgs: S.optional(GameLaunchArgList),
-          AdditionalEnvironmentVariables: S.optional(EnvironmentVariables),
+          AdditionalLaunchArgs: S.optional(__S(0)),
+          AdditionalEnvironmentVariables: S.optional(__S(24)),
           RoleArn: S.optional(SensitiveString),
-          DisplayConfiguration: S.optional(DisplayConfiguration),
+          DisplayConfiguration: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "CreateStreamUrlOutput" });
     case 5:
@@ -2512,7 +2254,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          ApplicationIdentifiers: Identifiers,
+          ApplicationIdentifiers: __S(0),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/streamgroups/{Identifier}/disassociations" }),
@@ -2600,7 +2342,7 @@ function __c4(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(ExportFilesStatus),
+          Status: S.optional(S.String),
           StatusReason: S.optional(S.String),
           OutputUri: S.optional(S.String),
         }),
@@ -2612,25 +2354,25 @@ function __c4(j: number): any {
           Description: S.optional(S.String),
           StreamGroupId: S.optional(S.String),
           UserId: S.optional(S.String),
-          Status: S.optional(StreamSessionStatus),
-          StatusReason: S.optional(StreamSessionStatusReason),
-          Protocol: S.optional(Protocol),
+          Status: S.optional(S.String),
+          StatusReason: S.optional(S.String),
+          Protocol: S.optional(S.String),
           Location: S.optional(S.String),
           SignalRequest: S.optional(SensitiveString),
           SignalResponse: S.optional(SensitiveString),
           ConnectionTimeoutSeconds: S.optional(S.Number),
           SessionLengthSeconds: S.optional(S.Number),
-          AdditionalLaunchArgs: S.optional(GameLaunchArgList),
-          AdditionalEnvironmentVariables: S.optional(EnvironmentVariables),
-          PerformanceStatsConfiguration: S.optional(PerformanceStatsConfiguration),
+          AdditionalLaunchArgs: S.optional(__S(0)),
+          AdditionalEnvironmentVariables: S.optional(__S(24)),
+          PerformanceStatsConfiguration: S.optional(__S(37)),
           LogFileLocationUri: S.optional(S.String),
           WebSdkProtocolUrl: S.optional(S.String),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ApplicationArn: S.optional(S.String),
-          ExportFilesMetadata: S.optional(ExportFilesMetadata),
+          ExportFilesMetadata: S.optional(__S(38)),
           RoleArn: S.optional(SensitiveString),
-          DisplayConfiguration: S.optional(DisplayConfiguration),
+          DisplayConfiguration: S.optional(__S(26)),
         }),
       ).annotate({ identifier: "GetStreamSessionOutput" });
   }
@@ -2661,42 +2403,42 @@ function __c5(j: number): any {
         S.Struct({
           Arn: S.optional(S.String),
           UserId: S.optional(S.String),
-          Status: S.optional(StreamSessionStatus),
-          StatusReason: S.optional(StreamSessionStatusReason),
-          Protocol: S.optional(Protocol),
+          Status: S.optional(S.String),
+          StatusReason: S.optional(S.String),
+          Protocol: S.optional(S.String),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ApplicationArn: S.optional(S.String),
-          ExportFilesMetadata: S.optional(ExportFilesMetadata),
+          ExportFilesMetadata: S.optional(__S(38)),
           Location: S.optional(S.String),
           RoleArn: S.optional(SensitiveString),
         }),
       ).annotate({ identifier: "StreamSessionSummary" });
     case 2:
-      return S.Array(StreamSessionSummary);
+      return S.Array(__S(41));
     case 3:
       return S.suspend(() =>
         S.Struct({
           Arn: S.String,
           StreamUrlId: S.optional(S.String),
           StreamUrl: S.optional(SensitiveString),
-          Status: S.optional(StreamUrlStatus),
-          StatusReason: S.optional(StreamUrlStatusReason),
+          Status: S.optional(S.String),
+          StatusReason: S.optional(S.String),
           ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UsageLimit: S.optional(S.Number),
           RemainingUses: S.optional(S.Number),
           StreamGroupArn: S.optional(S.String),
           ApplicationArn: S.optional(S.String),
-          Protocol: S.optional(Protocol),
-          Locations: S.optional(LocationList),
+          Protocol: S.optional(S.String),
+          Locations: S.optional(__S(0)),
           SessionLengthSeconds: S.optional(S.Number),
           Description: S.optional(S.String),
-          AdditionalLaunchArgs: S.optional(GameLaunchArgList),
-          AdditionalEnvironmentVariables: S.optional(EnvironmentVariables),
+          AdditionalLaunchArgs: S.optional(__S(0)),
+          AdditionalEnvironmentVariables: S.optional(__S(24)),
           RoleArn: S.optional(SensitiveString),
-          DisplayConfiguration: S.optional(DisplayConfiguration),
-          StreamSessions: S.optional(StreamSessionSummaryList),
+          DisplayConfiguration: S.optional(__S(26)),
+          StreamSessions: S.optional(__S(42)),
         }),
       ).annotate({ identifier: "GetStreamUrlOutput" });
     case 4:
@@ -2714,17 +2456,17 @@ function __c5(j: number): any {
           Arn: S.String,
           Id: S.optional(S.String),
           Description: S.optional(S.String),
-          Status: S.optional(ApplicationStatus),
+          Status: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          RuntimeEnvironment: S.optional(RuntimeEnvironment),
+          RuntimeEnvironment: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "ApplicationSummary" });
     case 6:
-      return S.Array(ApplicationSummary);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(ApplicationSummaryList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(46)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListApplicationsOutput" });
   }
 }
@@ -2750,16 +2492,16 @@ function __c6(j: number): any {
         S.Struct({
           Identifier: S.String,
           ApplicationArn: S.String,
-          Status: S.optional(ShaderCacheStatus),
+          Status: S.optional(S.String),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           StorageBytes: S.optional(S.Number),
-          AssociatedStreamGroups: S.optional(ArnList),
+          AssociatedStreamGroups: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "ShaderCacheSummary" });
     case 2:
-      return S.Array(ShaderCacheSummary);
+      return S.Array(__S(49));
     case 3:
-      return S.suspend(() => S.Struct({ Items: S.optional(ShaderCacheSummaryList) })).annotate({
+      return S.suspend(() => S.Struct({ Items: S.optional(__S(50)) })).annotate({
         identifier: "ListApplicationShaderCachesOutput",
       });
     case 4:
@@ -2777,19 +2519,19 @@ function __c6(j: number): any {
           Arn: S.String,
           Id: S.optional(S.String),
           Description: S.optional(S.String),
-          DefaultApplication: S.optional(DefaultApplication),
-          StreamClass: S.optional(StreamClass),
-          Status: S.optional(StreamGroupStatus),
+          DefaultApplication: S.optional(__S(18)),
+          StreamClass: S.optional(S.String),
+          Status: S.optional(S.String),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           LastUpdatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "StreamGroupSummary" });
     case 6:
-      return S.Array(StreamGroupSummary);
+      return S.Array(__S(53));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(StreamGroupSummaryList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(54)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListStreamGroupsOutput" });
   }
 }
@@ -2798,8 +2540,8 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(StreamSessionStatus).pipe(T.HttpQuery("Status")),
-          ExportFilesStatus: S.optional(ExportFilesStatus).pipe(T.HttpQuery("ExportFilesStatus")),
+          Status: S.optional(S.String).pipe(T.HttpQuery("Status")),
+          ExportFilesStatus: S.optional(S.String).pipe(T.HttpQuery("ExportFilesStatus")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
@@ -2816,13 +2558,13 @@ function __c7(j: number): any {
       ).annotate({ identifier: "ListStreamSessionsInput" });
     case 1:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(StreamSessionSummaryList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(42)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListStreamSessionsOutput" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(StreamSessionStatus).pipe(T.HttpQuery("Status")),
-          ExportFilesStatus: S.optional(ExportFilesStatus).pipe(T.HttpQuery("ExportFilesStatus")),
+          Status: S.optional(S.String).pipe(T.HttpQuery("Status")),
+          ExportFilesStatus: S.optional(S.String).pipe(T.HttpQuery("ExportFilesStatus")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
         }).pipe(
@@ -2833,14 +2575,14 @@ function __c7(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(StreamSessionSummaryList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(42)), NextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListStreamSessionsByAccountOutput",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          Status: S.optional(StreamUrlStatus).pipe(T.HttpQuery("Status")),
+          Status: S.optional(S.String).pipe(T.HttpQuery("Status")),
           StreamGroupIdentifier: S.optional(S.String).pipe(T.HttpQuery("StreamGroupIdentifier")),
           NextToken: S.optional(S.String).pipe(T.HttpQuery("NextToken")),
           MaxResults: S.optional(S.Number).pipe(T.HttpQuery("MaxResults")),
@@ -2852,8 +2594,8 @@ function __c7(j: number): any {
           Arn: S.String,
           StreamUrlId: S.optional(S.String),
           StreamUrl: S.optional(SensitiveString),
-          Status: S.optional(StreamUrlStatus),
-          StatusReason: S.optional(StreamUrlStatusReason),
+          Status: S.optional(S.String),
+          StatusReason: S.optional(S.String),
           ExpiresAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           CreatedAt: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           UsageLimit: S.optional(S.Number),
@@ -2865,10 +2607,10 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "StreamUrlSummary" });
     case 6:
-      return S.Array(StreamUrlSummary);
+      return S.Array(__S(61));
     case 7:
       return S.suspend(() =>
-        S.Struct({ Items: S.optional(StreamUrlSummaryList), NextToken: S.optional(S.String) }),
+        S.Struct({ Items: S.optional(__S(62)), NextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListStreamUrlsOutput" });
   }
 }
@@ -2890,14 +2632,14 @@ function __c8(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 1:
-      return S.suspend(() => S.Struct({ Tags: S.optional(Tags) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(12)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          Locations: LocationsList.pipe(T.HttpQuery("locations")),
+          Locations: __S(0).pipe(T.HttpQuery("locations")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/streamgroups/{Identifier}/locations" }),
@@ -2920,7 +2662,7 @@ function __c8(j: number): any {
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
           StreamUrlIdentifier: S.String.pipe(T.HttpLabel("StreamUrlIdentifier")),
-          RevocationMode: S.optional(RevocationMode),
+          RevocationMode: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({
@@ -2941,18 +2683,18 @@ function __c8(j: number): any {
           ClientToken: S.optional(S.String).pipe(T.IdempotencyToken()),
           Description: S.optional(S.String),
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          Protocol: Protocol,
+          Protocol: S.String,
           SignalRequest: SensitiveString,
           ApplicationIdentifier: S.String,
           UserId: S.optional(S.String),
-          Locations: S.optional(LocationList),
+          Locations: S.optional(__S(0)),
           ConnectionTimeoutSeconds: S.optional(S.Number),
           SessionLengthSeconds: S.optional(S.Number),
-          AdditionalLaunchArgs: S.optional(GameLaunchArgList),
-          AdditionalEnvironmentVariables: S.optional(EnvironmentVariables),
-          PerformanceStatsConfiguration: S.optional(PerformanceStatsConfiguration),
+          AdditionalLaunchArgs: S.optional(__S(0)),
+          AdditionalEnvironmentVariables: S.optional(__S(24)),
+          PerformanceStatsConfiguration: S.optional(__S(37)),
           RoleArn: S.optional(SensitiveString),
-          DisplayConfiguration: S.optional(DisplayConfiguration),
+          DisplayConfiguration: S.optional(__S(26)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/streamgroups/{Identifier}/streamsessions" }),
@@ -2966,7 +2708,7 @@ function __c8(j: number): any {
       ).annotate({ identifier: "StartStreamSessionInput" });
     case 6:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: Tags }).pipe(
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: __S(12) }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/tags/{ResourceArn}" }),
             svc,
@@ -3006,7 +2748,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -3023,7 +2765,7 @@ function __c9(j: number): any {
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
           Description: S.optional(S.String),
-          ApplicationLogPaths: S.optional(FilePaths),
+          ApplicationLogPaths: S.optional(__S(0)),
           ApplicationLogOutputUri: S.optional(S.String),
         }).pipe(
           T.all(
@@ -3040,7 +2782,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Identifier: S.String.pipe(T.HttpLabel("Identifier")),
-          LocationConfigurations: S.optional(LocationConfigurations),
+          LocationConfigurations: S.optional(__S(3)),
           Description: S.optional(S.String),
           DefaultApplicationIdentifier: S.optional(S.String),
         }).pipe(
@@ -3054,5 +2796,34 @@ function __c9(j: number): any {
           ),
         ),
       ).annotate({ identifier: "UpdateStreamGroupInput" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
   }
 }

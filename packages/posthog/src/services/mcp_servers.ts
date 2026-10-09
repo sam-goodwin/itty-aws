@@ -5,6 +5,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -16,15 +18,8 @@ export interface ListMcpServersRequest {
   /** The initial index from which to return the results. */
   offset?: number;
 }
-const ListMcpServersRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ListMcpServersRequest>;
-
 /** * `api_key` - API Key * `oauth` - OAuth */
 export type MCPAuthTypeEnum = "api_key" | "oauth";
-const MCPAuthTypeEnum = S.String;
-
 /** * `business` - Business Operations * `data` - Data & Analytics * `design` - Design & Content * `dev` - Developer Tools & APIs * `infra` - Infrastructure * `productivity` - Productivity & Collaboration */
 export type MCPServerCategoryEnum =
   | "business"
@@ -33,8 +28,6 @@ export type MCPServerCategoryEnum =
   | "dev"
   | "infra"
   | "productivity";
-const MCPServerCategoryEnum = S.String;
-
 export interface MCPServerTemplate {
   id?: string;
   name?: string;
@@ -48,25 +41,13 @@ export interface MCPServerTemplate {
   icon_domain?: string;
   category?: MCPServerCategoryEnum;
 }
-const MCPServerTemplate = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<MCPServerTemplate>;
-
 export type PaginatedMCPServerTemplateListResultsList = Array<MCPServerTemplate>;
-const PaginatedMCPServerTemplateListResultsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<PaginatedMCPServerTemplateListResultsList>;
-
 export interface PaginatedMCPServerTemplateList {
   count?: number;
   next?: string | null;
   previous?: string | null;
   results?: PaginatedMCPServerTemplateListResultsList;
 }
-const PaginatedMCPServerTemplateList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<PaginatedMCPServerTemplateList>;
-
 export type ListMcpServersError = PosthogOpError;
 /** Lists curated MCP server templates that users can install with one click. Templates are seeded by PostHog operators and carry shared, encrypted OAuth client credentials. Inactive templates are hidden from the catalog. */
 export const listMcpServers: API.OperationMethod<
@@ -75,8 +56,8 @@ export const listMcpServers: API.OperationMethod<
   ListMcpServersError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMcpServersRequest,
-  output: PaginatedMCPServerTemplateList,
+  input: __S(0) as any as S.Schema<ListMcpServersRequest>,
+  output: __S(3) as any as S.Schema<PaginatedMCPServerTemplateList>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -103,24 +84,35 @@ function __c0(j: number): any {
           url: S.optional(S.String),
           docs_url: S.optional(S.String),
           description: S.optional(S.String),
-          auth_type: S.optional(MCPAuthTypeEnum),
+          auth_type: S.optional(S.String),
           icon_key: S.optional(S.String),
           icon_domain: S.optional(S.String),
-          category: S.optional(MCPServerCategoryEnum),
+          category: S.optional(S.String),
         }),
       ).annotate({ identifier: "MCPServerTemplate" });
     case 2:
-      return S.Array(MCPServerTemplate);
+      return S.Array(__S(1));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           next: S.optional(S.NullOr(S.String)),
           previous: S.optional(S.NullOr(S.String)),
-          results: S.optional(PaginatedMCPServerTemplateListResultsList),
+          results: S.optional(__S(2)),
         }),
       ).annotate({
         identifier: "PaginatedMCPServerTemplateList",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 2) {
+    case 0:
+      return __c0(i & 3);
   }
 }

@@ -8,6 +8,8 @@ import { UnknownStackitError } from "../errors.ts";
 import { StackitProtocol, type StackitOpError, type StackitOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { StackitOpError, StackitOpContext };
 
@@ -40,11 +42,6 @@ export class NotFound
 
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per Certificate. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type CreateCertificateRequestLabelsMap = { [key: string]: string | undefined };
-const CreateCertificateRequestLabelsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateCertificateRequestLabelsMap>;
-
 export interface CreateCertificateRequest {
   projectId: string;
   region: string;
@@ -57,11 +54,6 @@ export interface CreateCertificateRequest {
   /** The PEM encoded public key part */
   publicKey?: string;
 }
-const CreateCertificateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateCertificateRequest>;
-
 export interface Data {
   /** Comma-separated list of all domains and IP addresses the certificate is valid for (Subject Alternative Names). */
   dnsNames?: string;
@@ -94,40 +86,24 @@ export interface Data {
   /** The primary identity of the certificate. Fallback sequence: Common Name -> First DNS Name -> Full Subject String. */
   subjectCn?: string;
 }
-const Data = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<Data>;
-
 /** Labels represent user-defined metadata as key-value pairs. Label count should not exceed 64 per Certificate. **Key Formatting Rules:** Length: 1-63 characters. Characters: Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. Keys starting with 'stackit-' are system-reserved; users MUST NOT manage them. **Value Formatting Rules:** Length: 0-63 characters (empty string explicitly allowed). Characters (for non-empty values): Must begin and end with [a-zA-Z0-9]. May contain dashes (-), underscores (_), dots (.), and alphanumerics in between. */
 export type GetCertificateResponseLabelsMap = { [key: string]: string | undefined };
-const GetCertificateResponseLabelsMap =
-  CreateCertificateRequestLabelsMap as any as S.Schema<GetCertificateResponseLabelsMap>;
-
 /** The list of listener names in this Load Balancer, that are using the certificate. */
 export type UsageItemListenerNamesList = Array<string>;
-const UsageItemListenerNamesList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<UsageItemListenerNamesList>;
-
 export interface UsageItem {
   /** The list of listener names in this Load Balancer, that are using the certificate. */
   listenerNames?: UsageItemListenerNamesList;
   /** The display name of the Load Balancer. */
   loadBalancerName?: string;
 }
-const UsageItem = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<UsageItem>;
-
 /** List of Load Balancers with their associated listeners that use this certificate. */
 export type UsageItemsList = Array<UsageItem>;
-const UsageItemsList = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<UsageItemsList>;
-
 export interface Usage {
   /** Number of listeners using this certificate. */
   count?: number;
   /** List of Load Balancers with their associated listeners that use this certificate. */
   items?: UsageItemsList;
 }
-const Usage = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<Usage>;
-
 /** GetCertificateResponse returns name, id and public key */
 export interface GetCertificateResponse {
   data?: Data;
@@ -143,43 +119,21 @@ export interface GetCertificateResponse {
   region?: string;
   usage?: Usage;
 }
-const GetCertificateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<GetCertificateResponse>;
-
 export interface DeleteCertificateRequest {
   projectId: string;
   region: string;
   id: string;
 }
-const DeleteCertificateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<DeleteCertificateRequest>;
-
 export type DeleteCertificateResponse2 = unknown;
-const DeleteCertificateResponse2 = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<DeleteCertificateResponse2>;
-
 export interface GetCertificateRequest {
   projectId: string;
   region: string;
   id: string;
 }
-const GetCertificateRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetCertificateRequest>;
-
 export interface GetQuotaRequest {
   projectId: string;
   region: string;
 }
-const GetQuotaRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GetQuotaRequest>;
-
 /** Certificates quotas holds the limits and usage for certificates resources */
 export interface CertificatesQuota {
   /** The maximum number of TLS certificates in this project. */
@@ -187,14 +141,10 @@ export interface CertificatesQuota {
   /** The number of certificates that are currently existing in this project. */
   usage?: number;
 }
-const CertificatesQuota = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CertificatesQuota>;
-
 /** Quotas holds the specific quota elements for different resources */
 export interface Quotas {
   certificates?: CertificatesQuota;
 }
-const Quotas = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<Quotas>;
-
 export interface GetQuotaResponse {
   /** Project identifier */
   projectId?: string;
@@ -202,8 +152,6 @@ export interface GetQuotaResponse {
   /** Region */
   region?: string;
 }
-const GetQuotaResponse = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetQuotaResponse>;
-
 export interface ListCertificatesRequest {
   projectId: string;
   region: string;
@@ -212,28 +160,13 @@ export interface ListCertificatesRequest {
   /** page_id is a page identifier returned by the previous response and is used to request the next page */
   pageId?: string;
 }
-const ListCertificatesRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ListCertificatesRequest>;
-
 export type ListCertificatesResponseItemsList = Array<GetCertificateResponse>;
-const ListCertificatesResponseItemsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ListCertificatesResponseItemsList>;
-
 /** ListCertificateResponse returns a list of certificate responses */
 export interface ListCertificatesResponse {
   items?: ListCertificatesResponseItemsList;
   /** Continue token from the ListCertificatesResponse with Limit option */
   nextPageId?: string;
 }
-const ListCertificatesResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<ListCertificatesResponse>;
-
 export type CreateCertificateError = BadRequest | Forbidden | StackitOpError;
 /** Store a TLS certificate in a project. CreateCertificate will store a TLS certificate in a project. */
 export const createCertificate: API.OperationMethod<
@@ -242,8 +175,8 @@ export const createCertificate: API.OperationMethod<
   CreateCertificateError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCertificateRequest,
-  output: GetCertificateResponse,
+  input: __S(1) as any as S.Schema<CreateCertificateRequest>,
+  output: __S(7) as any as S.Schema<GetCertificateResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -257,8 +190,8 @@ export const deleteCertificate: API.OperationMethod<
   DeleteCertificateError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCertificateRequest,
-  output: DeleteCertificateResponse2,
+  input: __S(8) as any as S.Schema<DeleteCertificateRequest>,
+  output: __S(9) as any as S.Schema<DeleteCertificateResponse2>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -272,8 +205,8 @@ export const getCertificate: API.OperationMethod<
   GetCertificateError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCertificateRequest,
-  output: GetCertificateResponse,
+  input: __S(10) as any as S.Schema<GetCertificateRequest>,
+  output: __S(7) as any as S.Schema<GetCertificateResponse>,
   errors: [BadRequest, Forbidden, NotFound, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -287,8 +220,8 @@ export const getQuota: API.OperationMethod<
   GetQuotaError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQuotaRequest,
-  output: GetQuotaResponse,
+  input: __S(11) as any as S.Schema<GetQuotaRequest>,
+  output: __S(14) as any as S.Schema<GetQuotaResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -302,8 +235,8 @@ export const listCertificates: API.OperationMethod<
   ListCertificatesError,
   StackitOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCertificatesRequest,
-  output: ListCertificatesResponse,
+  input: __S(15) as any as S.Schema<ListCertificatesRequest>,
+  output: __S(17) as any as S.Schema<ListCertificatesResponse>,
   errors: [BadRequest, Forbidden, UnknownStackitError],
   protocol: StackitProtocol,
   retry: Retry.Retry,
@@ -319,7 +252,7 @@ function __c0(j: number): any {
         S.Struct({
           projectId: S.String.pipe(T.Label()),
           region: S.String.pipe(T.Label()),
-          labels: S.optional(CreateCertificateRequestLabelsMap),
+          labels: S.optional(__S(0)),
           name: S.optional(S.String),
           privateKey: S.optional(S.String.pipe(T.SensitiveValue({}))),
           publicKey: S.optional(S.String),
@@ -357,29 +290,29 @@ function __c0(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          listenerNames: S.optional(UsageItemListenerNamesList),
+          listenerNames: S.optional(__S(3)),
           loadBalancerName: S.optional(S.String),
         }),
       ).annotate({ identifier: "UsageItem" });
     case 5:
-      return S.Array(UsageItem);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
-          items: S.optional(UsageItemsList),
+          items: S.optional(__S(5)),
         }),
       ).annotate({ identifier: "Usage" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          data: S.optional(Data),
+          data: S.optional(__S(2)),
           id: S.optional(S.String),
-          labels: S.optional(GetCertificateResponseLabelsMap),
+          labels: S.optional(__S(0)),
           name: S.optional(S.String),
           publicKey: S.optional(S.String),
           region: S.optional(S.String),
-          usage: S.optional(Usage),
+          usage: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "GetCertificateResponse" });
   }
@@ -444,14 +377,14 @@ function __c1(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          certificates: S.optional(CertificatesQuota),
+          certificates: S.optional(__S(12)),
         }),
       ).annotate({ identifier: "Quotas" });
     case 6:
       return S.suspend(() =>
         S.Struct({
           projectId: S.optional(S.String),
-          quotas: S.optional(Quotas),
+          quotas: S.optional(__S(13)),
           region: S.optional(S.String),
         }),
       ).annotate({ identifier: "GetQuotaResponse" });
@@ -476,13 +409,28 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GetCertificateResponse);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          items: S.optional(ListCertificatesResponseItemsList),
+          items: S.optional(__S(16)),
           nextPageId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCertificatesResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

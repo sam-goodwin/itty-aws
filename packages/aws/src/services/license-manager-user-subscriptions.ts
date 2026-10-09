@@ -8,6 +8,8 @@ import type { CommonErrors } from "../errors.ts";
 import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "License Manager User Subscriptions",
   serviceShapeName: "LicenseManagerUserSubscriptions",
@@ -112,31 +114,19 @@ export class ValidationException
 export type Directory = string;
 export type IpV4 = string;
 export type IpV4List = string[];
-const IpV4List = /*@__PURE__*/ __L.at(__c0, 0);
 export type IpV6 = string;
 export type IpV6List = string[];
-const IpV6List = IpV4List as any as S.Schema<IpV6List>;
 export interface SecretsManagerCredentialsProvider {
   SecretId?: string;
 }
-const SecretsManagerCredentialsProvider = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<SecretsManagerCredentialsProvider>;
 export type CredentialsProvider = {
   SecretsManagerCredentialsProvider: SecretsManagerCredentialsProvider;
 };
-const CredentialsProvider = /*@__PURE__*/ __L.at(__c0, 2);
 export type Subnet = string;
 export type Subnets = string[];
-const Subnets = IpV4List as any as S.Schema<Subnets>;
 export interface DomainNetworkSettings {
   Subnets: string[];
 }
-const DomainNetworkSettings = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DomainNetworkSettings>;
 export interface ActiveDirectorySettings {
   DomainName?: string;
   DomainIpv4List?: string[];
@@ -144,10 +134,6 @@ export interface ActiveDirectorySettings {
   DomainCredentialsProvider?: CredentialsProvider;
   DomainNetworkSettings?: DomainNetworkSettings;
 }
-const ActiveDirectorySettings = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ActiveDirectorySettings>;
 export type ActiveDirectoryType = string;
 export interface ActiveDirectoryIdentityProvider {
   DirectoryId?: string;
@@ -155,14 +141,8 @@ export interface ActiveDirectoryIdentityProvider {
   ActiveDirectoryType?: string;
   IsSharedActiveDirectory?: boolean;
 }
-const ActiveDirectoryIdentityProvider = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ActiveDirectoryIdentityProvider>;
 export type IdentityProvider = { ActiveDirectoryIdentityProvider: ActiveDirectoryIdentityProvider };
-const IdentityProvider = /*@__PURE__*/ __L.at(__c0, 6);
 export type Tags = { [key: string]: string | undefined };
-const Tags = /*@__PURE__*/ __L.at(__c0, 7);
 export interface AssociateUserRequest {
   Username: string;
   InstanceId: string;
@@ -170,7 +150,6 @@ export interface AssociateUserRequest {
   Domain?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const AssociateUserRequest = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AssociateUserRequest>;
 export type Arn = string;
 export interface InstanceUserSummary {
   Username: string;
@@ -183,58 +162,34 @@ export interface InstanceUserSummary {
   AssociationDate?: string;
   DisassociationDate?: string;
 }
-const InstanceUserSummary = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<InstanceUserSummary>;
 export interface AssociateUserResponse {
   InstanceUserSummary: InstanceUserSummary;
 }
-const AssociateUserResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AssociateUserResponse>;
 export type ServerType = string;
 export interface RdsSalSettings {
   RdsSalCredentialsProvider: CredentialsProvider;
 }
-const RdsSalSettings = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<RdsSalSettings>;
 export type ServerSettings = { RdsSalSettings: RdsSalSettings };
-const ServerSettings = /*@__PURE__*/ __L.at(__c1, 4);
 export interface LicenseServerSettings {
   ServerType: string;
   ServerSettings: ServerSettings;
 }
-const LicenseServerSettings = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<LicenseServerSettings>;
 export interface CreateLicenseServerEndpointRequest {
   IdentityProviderArn: string;
   LicenseServerSettings: LicenseServerSettings;
   Tags?: { [key: string]: string | undefined };
 }
-const CreateLicenseServerEndpointRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateLicenseServerEndpointRequest>;
 export interface CreateLicenseServerEndpointResponse {
   IdentityProviderArn?: string;
   LicenseServerEndpointArn?: string;
 }
-const CreateLicenseServerEndpointResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateLicenseServerEndpointResponse>;
 export interface DeleteLicenseServerEndpointRequest {
   LicenseServerEndpointArn: string;
   ServerType: string;
 }
-const DeleteLicenseServerEndpointRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<DeleteLicenseServerEndpointRequest>;
 export interface ServerEndpoint {
   Endpoint?: string;
 }
-const ServerEndpoint = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<ServerEndpoint>;
 export type LicenseServerEndpointId = string;
 export type LicenseServerEndpointProvisioningStatus = string;
 export type LicenseServerHealthStatus = string;
@@ -244,9 +199,7 @@ export interface LicenseServer {
   Ipv4Address?: string;
   Ipv6Address?: string;
 }
-const LicenseServer = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<LicenseServer>;
 export type LicenseServerList = LicenseServer[];
-const LicenseServerList = /*@__PURE__*/ __L.at(__c2, 3);
 export interface LicenseServerEndpoint {
   IdentityProviderArn?: string;
   ServerType?: string;
@@ -258,32 +211,19 @@ export interface LicenseServerEndpoint {
   LicenseServers?: LicenseServer[];
   CreationTime?: Date;
 }
-const LicenseServerEndpoint = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<LicenseServerEndpoint>;
 export interface DeleteLicenseServerEndpointResponse {
   LicenseServerEndpoint?: LicenseServerEndpoint;
 }
-const DeleteLicenseServerEndpointResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteLicenseServerEndpointResponse>;
 export interface DeregisterIdentityProviderRequest {
   IdentityProvider?: IdentityProvider;
   Product?: string;
   IdentityProviderArn?: string;
 }
-const DeregisterIdentityProviderRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeregisterIdentityProviderRequest>;
 export type SecurityGroup = string;
 export interface Settings {
   Subnets: string[];
   SecurityGroupId: string;
 }
-const Settings = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<Settings>;
 export interface IdentityProviderSummary {
   IdentityProvider: IdentityProvider;
   Settings: Settings;
@@ -293,17 +233,9 @@ export interface IdentityProviderSummary {
   FailureMessage?: string;
   OwnerAccountId?: string;
 }
-const IdentityProviderSummary = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<IdentityProviderSummary>;
 export interface DeregisterIdentityProviderResponse {
   IdentityProviderSummary: IdentityProviderSummary;
 }
-const DeregisterIdentityProviderResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeregisterIdentityProviderResponse>;
 export interface DisassociateUserRequest {
   Username?: string;
   InstanceId?: string;
@@ -311,50 +243,32 @@ export interface DisassociateUserRequest {
   InstanceUserArn?: string;
   Domain?: string;
 }
-const DisassociateUserRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DisassociateUserRequest>;
 export interface DisassociateUserResponse {
   InstanceUserSummary: InstanceUserSummary;
 }
-const DisassociateUserResponse = AssociateUserResponse as any as S.Schema<DisassociateUserResponse>;
 export type BoxInteger = number;
 export interface Filter {
   Attribute?: string;
   Operation?: string;
   Value?: string;
 }
-const Filter = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<Filter>;
 export type FilterList = Filter[];
-const FilterList = /*@__PURE__*/ __L.at(__c3, 4);
 export interface ListIdentityProvidersRequest {
   MaxResults?: number;
   Filters?: Filter[];
   NextToken?: string;
 }
-const ListIdentityProvidersRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<ListIdentityProvidersRequest>;
 export type IdentityProviderSummaryList = IdentityProviderSummary[];
-const IdentityProviderSummaryList = /*@__PURE__*/ __L.at(__c3, 6);
 export interface ListIdentityProvidersResponse {
   IdentityProviderSummaries: IdentityProviderSummary[];
   NextToken?: string;
 }
-const ListIdentityProvidersResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ListIdentityProvidersResponse>;
 export interface ListInstancesRequest {
   MaxResults?: number;
   NextToken?: string;
   Filters?: Filter[];
 }
-const ListInstancesRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListInstancesRequest>;
 export type StringList = string[];
-const StringList = IpV4List as any as S.Schema<StringList>;
 export interface InstanceSummary {
   InstanceId: string;
   Status: string;
@@ -364,36 +278,21 @@ export interface InstanceSummary {
   OwnerAccountId?: string;
   IdentityProvider?: IdentityProvider;
 }
-const InstanceSummary = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<InstanceSummary>;
 export type InstanceSummaryList = InstanceSummary[];
-const InstanceSummaryList = /*@__PURE__*/ __L.at(__c4, 2);
 export interface ListInstancesResponse {
   InstanceSummaries?: InstanceSummary[];
   NextToken?: string;
 }
-const ListInstancesResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListInstancesResponse>;
 export interface ListLicenseServerEndpointsRequest {
   MaxResults?: number;
   Filters?: Filter[];
   NextToken?: string;
 }
-const ListLicenseServerEndpointsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListLicenseServerEndpointsRequest>;
 export type LicenseServerEndpointList = LicenseServerEndpoint[];
-const LicenseServerEndpointList = /*@__PURE__*/ __L.at(__c4, 5);
 export interface ListLicenseServerEndpointsResponse {
   LicenseServerEndpoints?: LicenseServerEndpoint[];
   NextToken?: string;
 }
-const ListLicenseServerEndpointsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListLicenseServerEndpointsResponse>;
 export interface ListProductSubscriptionsRequest {
   Product?: string;
   IdentityProvider: IdentityProvider;
@@ -401,10 +300,6 @@ export interface ListProductSubscriptionsRequest {
   Filters?: Filter[];
   NextToken?: string;
 }
-const ListProductSubscriptionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListProductSubscriptionsRequest>;
 export interface ProductUserSummary {
   Username: string;
   Product: string;
@@ -417,32 +312,18 @@ export interface ProductUserSummary {
   SubscriptionEndDate?: string;
   LicenseExpirationDate?: string;
 }
-const ProductUserSummary = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<ProductUserSummary>;
 export type ProductUserSummaryList = ProductUserSummary[];
-const ProductUserSummaryList = /*@__PURE__*/ __L.at(__c5, 1);
 export interface ListProductSubscriptionsResponse {
   ProductUserSummaries?: ProductUserSummary[];
   NextToken?: string;
 }
-const ListProductSubscriptionsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ListProductSubscriptionsResponse>;
 export type ResourceArn = string;
 export interface ListTagsForResourceRequest {
   ResourceArn: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: { [key: string]: string | undefined };
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export interface ListUserAssociationsRequest {
   InstanceId: string;
   IdentityProvider: IdentityProvider;
@@ -450,35 +331,20 @@ export interface ListUserAssociationsRequest {
   Filters?: Filter[];
   NextToken?: string;
 }
-const ListUserAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListUserAssociationsRequest>;
 export type InstanceUserSummaryList = InstanceUserSummary[];
-const InstanceUserSummaryList = /*@__PURE__*/ __L.at(__c5, 6);
 export interface ListUserAssociationsResponse {
   InstanceUserSummaries?: InstanceUserSummary[];
   NextToken?: string;
 }
-const ListUserAssociationsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<ListUserAssociationsResponse>;
 export interface RegisterIdentityProviderRequest {
   IdentityProvider: IdentityProvider;
   Product: string;
   Settings?: Settings;
   Tags?: { [key: string]: string | undefined };
 }
-const RegisterIdentityProviderRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<RegisterIdentityProviderRequest>;
 export interface RegisterIdentityProviderResponse {
   IdentityProviderSummary: IdentityProviderSummary;
 }
-const RegisterIdentityProviderResponse =
-  DeregisterIdentityProviderResponse as any as S.Schema<RegisterIdentityProviderResponse>;
 export interface StartProductSubscriptionRequest {
   Username: string;
   IdentityProvider: IdentityProvider;
@@ -486,17 +352,9 @@ export interface StartProductSubscriptionRequest {
   Domain?: string;
   Tags?: { [key: string]: string | undefined };
 }
-const StartProductSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<StartProductSubscriptionRequest>;
 export interface StartProductSubscriptionResponse {
   ProductUserSummary: ProductUserSummary;
 }
-const StartProductSubscriptionResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<StartProductSubscriptionResponse>;
 export interface StopProductSubscriptionRequest {
   Username?: string;
   IdentityProvider?: IdentityProvider;
@@ -504,52 +362,34 @@ export interface StopProductSubscriptionRequest {
   ProductUserArn?: string;
   Domain?: string;
 }
-const StopProductSubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<StopProductSubscriptionRequest>;
 export interface StopProductSubscriptionResponse {
   ProductUserSummary: ProductUserSummary;
 }
-const StopProductSubscriptionResponse =
-  StartProductSubscriptionResponse as any as S.Schema<StopProductSubscriptionResponse>;
 export interface TagResourceRequest {
   ResourceArn: string;
   Tags: { [key: string]: string | undefined };
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c6, 4) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = IpV4List as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceArn: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(__c6, 6) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse = TagResourceResponse as any as S.Schema<UntagResourceResponse>;
 export interface UpdateSettings {
   AddSubnets: string[];
   RemoveSubnets: string[];
   SecurityGroupId?: string;
 }
-const UpdateSettings = /*@__PURE__*/ __L.at(__c6, 7) as any as S.Schema<UpdateSettings>;
 export interface UpdateIdentityProviderSettingsRequest {
   IdentityProvider?: IdentityProvider;
   Product?: string;
   IdentityProviderArn?: string;
   UpdateSettings: UpdateSettings;
 }
-const UpdateIdentityProviderSettingsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<UpdateIdentityProviderSettingsRequest>;
 export interface UpdateIdentityProviderSettingsResponse {
   IdentityProviderSummary: IdentityProviderSummary;
 }
-const UpdateIdentityProviderSettingsResponse =
-  DeregisterIdentityProviderResponse as any as S.Schema<UpdateIdentityProviderSettingsResponse>;
 export type AssociateUserError =
   | AccessDeniedException
   | ConflictException
@@ -570,8 +410,8 @@ export const associateUser: API.OperationMethod<
   AssociateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateUserRequest,
-  output: AssociateUserResponse,
+  input: __S(8) as any as S.Schema<AssociateUserRequest>,
+  output: __S(10) as any as S.Schema<AssociateUserResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -604,8 +444,8 @@ export const createLicenseServerEndpoint: API.OperationMethod<
   CreateLicenseServerEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateLicenseServerEndpointRequest,
-  output: CreateLicenseServerEndpointResponse,
+  input: __S(14) as any as S.Schema<CreateLicenseServerEndpointRequest>,
+  output: __S(15) as any as S.Schema<CreateLicenseServerEndpointResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -638,8 +478,8 @@ export const deleteLicenseServerEndpoint: API.OperationMethod<
   DeleteLicenseServerEndpointError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteLicenseServerEndpointRequest,
-  output: DeleteLicenseServerEndpointResponse,
+  input: __S(16) as any as S.Schema<DeleteLicenseServerEndpointRequest>,
+  output: __S(21) as any as S.Schema<DeleteLicenseServerEndpointResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -672,8 +512,8 @@ export const deregisterIdentityProvider: API.OperationMethod<
   DeregisterIdentityProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeregisterIdentityProviderRequest,
-  output: DeregisterIdentityProviderResponse,
+  input: __S(22) as any as S.Schema<DeregisterIdentityProviderRequest>,
+  output: __S(25) as any as S.Schema<DeregisterIdentityProviderResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -706,8 +546,8 @@ export const disassociateUser: API.OperationMethod<
   DisassociateUserError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateUserRequest,
-  output: DisassociateUserResponse,
+  input: __S(26) as any as S.Schema<DisassociateUserRequest>,
+  output: __S(10) as any as S.Schema<DisassociateUserResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -741,8 +581,8 @@ export const listIdentityProviders: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   IdentityProviderSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListIdentityProvidersRequest,
-  output: ListIdentityProvidersResponse,
+  input: __S(29) as any as S.Schema<ListIdentityProvidersRequest>,
+  output: __S(31) as any as S.Schema<ListIdentityProvidersResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -782,8 +622,8 @@ export const listInstances: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InstanceSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListInstancesRequest,
-  output: ListInstancesResponse,
+  input: __S(32) as any as S.Schema<ListInstancesRequest>,
+  output: __S(35) as any as S.Schema<ListInstancesResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -822,8 +662,8 @@ export const listLicenseServerEndpoints: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   LicenseServerEndpoint
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListLicenseServerEndpointsRequest,
-  output: ListLicenseServerEndpointsResponse,
+  input: __S(36) as any as S.Schema<ListLicenseServerEndpointsRequest>,
+  output: __S(38) as any as S.Schema<ListLicenseServerEndpointsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -862,8 +702,8 @@ export const listProductSubscriptions: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ProductUserSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListProductSubscriptionsRequest,
-  output: ListProductSubscriptionsResponse,
+  input: __S(39) as any as S.Schema<ListProductSubscriptionsRequest>,
+  output: __S(42) as any as S.Schema<ListProductSubscriptionsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -898,8 +738,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(43) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(44) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -925,8 +765,8 @@ export const listUserAssociations: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   InstanceUserSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListUserAssociationsRequest,
-  output: ListUserAssociationsResponse,
+  input: __S(45) as any as S.Schema<ListUserAssociationsRequest>,
+  output: __S(47) as any as S.Schema<ListUserAssociationsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -965,8 +805,8 @@ export const registerIdentityProvider: API.OperationMethod<
   RegisterIdentityProviderError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterIdentityProviderRequest,
-  output: RegisterIdentityProviderResponse,
+  input: __S(48) as any as S.Schema<RegisterIdentityProviderRequest>,
+  output: __S(25) as any as S.Schema<RegisterIdentityProviderResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1001,8 +841,8 @@ export const startProductSubscription: API.OperationMethod<
   StartProductSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartProductSubscriptionRequest,
-  output: StartProductSubscriptionResponse,
+  input: __S(49) as any as S.Schema<StartProductSubscriptionRequest>,
+  output: __S(50) as any as S.Schema<StartProductSubscriptionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1035,8 +875,8 @@ export const stopProductSubscription: API.OperationMethod<
   StopProductSubscriptionError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopProductSubscriptionRequest,
-  output: StopProductSubscriptionResponse,
+  input: __S(51) as any as S.Schema<StopProductSubscriptionRequest>,
+  output: __S(50) as any as S.Schema<StopProductSubscriptionResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -1065,8 +905,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(52) as any as S.Schema<TagResourceRequest>,
+  output: __S(53) as any as S.Schema<TagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1083,8 +923,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(54) as any as S.Schema<UntagResourceRequest>,
+  output: __S(53) as any as S.Schema<UntagResourceResponse>,
   errors: [InternalServerException, ResourceNotFoundException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -1106,8 +946,8 @@ export const updateIdentityProviderSettings: API.OperationMethod<
   UpdateIdentityProviderSettingsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIdentityProviderSettingsRequest,
-  output: UpdateIdentityProviderSettingsResponse,
+  input: __S(56) as any as S.Schema<UpdateIdentityProviderSettingsRequest>,
+  output: __S(25) as any as S.Schema<UpdateIdentityProviderSettingsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -1131,28 +971,28 @@ function __c0(j: number): any {
     case 2:
       return S.Union([
         /*@__PURE__*/ S.Struct({
-          SecretsManagerCredentialsProvider: SecretsManagerCredentialsProvider,
+          SecretsManagerCredentialsProvider: __S(1),
         }),
       ]);
     case 3:
-      return S.suspend(() => S.Struct({ Subnets: Subnets })).annotate({
+      return S.suspend(() => S.Struct({ Subnets: __S(0) })).annotate({
         identifier: "DomainNetworkSettings",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
           DomainName: S.optional(S.String),
-          DomainIpv4List: S.optional(IpV4List),
-          DomainIpv6List: S.optional(IpV6List),
-          DomainCredentialsProvider: S.optional(CredentialsProvider),
-          DomainNetworkSettings: S.optional(DomainNetworkSettings),
+          DomainIpv4List: S.optional(__S(0)),
+          DomainIpv6List: S.optional(__S(0)),
+          DomainCredentialsProvider: S.optional(__S(2)),
+          DomainNetworkSettings: S.optional(__S(3)),
         }),
       ).annotate({ identifier: "ActiveDirectorySettings" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           DirectoryId: S.optional(S.String),
-          ActiveDirectorySettings: S.optional(ActiveDirectorySettings),
+          ActiveDirectorySettings: S.optional(__S(4)),
           ActiveDirectoryType: S.optional(S.String),
           IsSharedActiveDirectory: S.optional(S.Boolean),
         }),
@@ -1162,7 +1002,7 @@ function __c0(j: number): any {
     case 6:
       return S.Union([
         /*@__PURE__*/ S.Struct({
-          ActiveDirectoryIdentityProvider: ActiveDirectoryIdentityProvider,
+          ActiveDirectoryIdentityProvider: __S(5),
         }),
       ]);
     case 7:
@@ -1176,9 +1016,9 @@ function __c1(j: number): any {
         S.Struct({
           Username: S.String,
           InstanceId: S.String,
-          IdentityProvider: IdentityProvider,
+          IdentityProvider: __S(6),
           Domain: S.optional(S.String),
-          Tags: S.optional(Tags),
+          Tags: S.optional(__S(7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/user/AssociateUser" }),
@@ -1195,7 +1035,7 @@ function __c1(j: number): any {
         S.Struct({
           Username: S.String,
           InstanceId: S.String,
-          IdentityProvider: IdentityProvider,
+          IdentityProvider: __S(6),
           Status: S.String,
           InstanceUserArn: S.optional(S.String),
           StatusMessage: S.optional(S.String),
@@ -1205,25 +1045,25 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "InstanceUserSummary" });
     case 2:
-      return S.suspend(() => S.Struct({ InstanceUserSummary: InstanceUserSummary })).annotate({
+      return S.suspend(() => S.Struct({ InstanceUserSummary: __S(9) })).annotate({
         identifier: "AssociateUserResponse",
       });
     case 3:
-      return S.suspend(() => S.Struct({ RdsSalCredentialsProvider: CredentialsProvider })).annotate(
-        { identifier: "RdsSalSettings" },
-      );
+      return S.suspend(() => S.Struct({ RdsSalCredentialsProvider: __S(2) })).annotate({
+        identifier: "RdsSalSettings",
+      });
     case 4:
-      return S.Union([/*@__PURE__*/ S.Struct({ RdsSalSettings: RdsSalSettings })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ RdsSalSettings: __S(11) })]);
     case 5:
-      return S.suspend(() =>
-        S.Struct({ ServerType: S.String, ServerSettings: ServerSettings }),
-      ).annotate({ identifier: "LicenseServerSettings" });
+      return S.suspend(() => S.Struct({ ServerType: S.String, ServerSettings: __S(12) })).annotate({
+        identifier: "LicenseServerSettings",
+      });
     case 6:
       return S.suspend(() =>
         S.Struct({
           IdentityProviderArn: S.String,
-          LicenseServerSettings: LicenseServerSettings,
-          Tags: S.optional(Tags),
+          LicenseServerSettings: __S(13),
+          Tags: S.optional(__S(7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/license-server/CreateLicenseServerEndpoint" }),
@@ -1279,31 +1119,29 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "LicenseServer" });
     case 3:
-      return S.Array(LicenseServer);
+      return S.Array(__S(18));
     case 4:
       return S.suspend(() =>
         S.Struct({
           IdentityProviderArn: S.optional(S.String),
           ServerType: S.optional(S.String),
-          ServerEndpoint: S.optional(ServerEndpoint),
+          ServerEndpoint: S.optional(__S(17)),
           StatusMessage: S.optional(S.String),
           LicenseServerEndpointId: S.optional(S.String),
           LicenseServerEndpointArn: S.optional(S.String),
           LicenseServerEndpointProvisioningStatus: S.optional(S.String),
-          LicenseServers: S.optional(LicenseServerList),
+          LicenseServers: S.optional(__S(19)),
           CreationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
       ).annotate({ identifier: "LicenseServerEndpoint" });
     case 5:
-      return S.suspend(() =>
-        S.Struct({ LicenseServerEndpoint: S.optional(LicenseServerEndpoint) }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ LicenseServerEndpoint: S.optional(__S(20)) })).annotate({
         identifier: "DeleteLicenseServerEndpointResponse",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          IdentityProvider: S.optional(IdentityProvider),
+          IdentityProvider: S.optional(__S(6)),
           Product: S.optional(S.String),
           IdentityProviderArn: S.optional(S.String),
         }).pipe(
@@ -1320,7 +1158,7 @@ function __c2(j: number): any {
         identifier: "DeregisterIdentityProviderRequest",
       });
     case 7:
-      return S.suspend(() => S.Struct({ Subnets: Subnets, SecurityGroupId: S.String })).annotate({
+      return S.suspend(() => S.Struct({ Subnets: __S(0), SecurityGroupId: S.String })).annotate({
         identifier: "Settings",
       });
   }
@@ -1330,8 +1168,8 @@ function __c3(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          IdentityProvider: IdentityProvider,
-          Settings: Settings,
+          IdentityProvider: __S(6),
+          Settings: __S(23),
           Product: S.String,
           Status: S.String,
           IdentityProviderArn: S.optional(S.String),
@@ -1340,9 +1178,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "IdentityProviderSummary" });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ IdentityProviderSummary: IdentityProviderSummary }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ IdentityProviderSummary: __S(24) })).annotate({
         identifier: "DeregisterIdentityProviderResponse",
       });
     case 2:
@@ -1350,7 +1186,7 @@ function __c3(j: number): any {
         S.Struct({
           Username: S.optional(S.String),
           InstanceId: S.optional(S.String),
-          IdentityProvider: S.optional(IdentityProvider),
+          IdentityProvider: S.optional(__S(6)),
           InstanceUserArn: S.optional(S.String),
           Domain: S.optional(S.String),
         }).pipe(
@@ -1373,12 +1209,12 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "Filter" });
     case 4:
-      return S.Array(Filter);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(FilterList),
+          Filters: S.optional(__S(28)),
           NextToken: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1394,11 +1230,11 @@ function __c3(j: number): any {
         identifier: "ListIdentityProvidersRequest",
       });
     case 6:
-      return S.Array(IdentityProviderSummary);
+      return S.Array(__S(24));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          IdentityProviderSummaries: IdentityProviderSummaryList,
+          IdentityProviderSummaries: __S(30),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1413,7 +1249,7 @@ function __c4(j: number): any {
         S.Struct({
           MaxResults: S.optional(S.Number),
           NextToken: S.optional(S.String),
-          Filters: S.optional(FilterList),
+          Filters: S.optional(__S(28)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/instance/ListInstances" }),
@@ -1430,19 +1266,19 @@ function __c4(j: number): any {
         S.Struct({
           InstanceId: S.String,
           Status: S.String,
-          Products: StringList,
+          Products: __S(0),
           LastStatusCheckDate: S.optional(S.String),
           StatusMessage: S.optional(S.String),
           OwnerAccountId: S.optional(S.String),
-          IdentityProvider: S.optional(IdentityProvider),
+          IdentityProvider: S.optional(__S(6)),
         }),
       ).annotate({ identifier: "InstanceSummary" });
     case 2:
-      return S.Array(InstanceSummary);
+      return S.Array(__S(33));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          InstanceSummaries: S.optional(InstanceSummaryList),
+          InstanceSummaries: S.optional(__S(34)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListInstancesResponse" });
@@ -1450,7 +1286,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(FilterList),
+          Filters: S.optional(__S(28)),
           NextToken: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1466,11 +1302,11 @@ function __c4(j: number): any {
         identifier: "ListLicenseServerEndpointsRequest",
       });
     case 5:
-      return S.Array(LicenseServerEndpoint);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          LicenseServerEndpoints: S.optional(LicenseServerEndpointList),
+          LicenseServerEndpoints: S.optional(__S(37)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1480,9 +1316,9 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Product: S.optional(S.String),
-          IdentityProvider: IdentityProvider,
+          IdentityProvider: __S(6),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(FilterList),
+          Filters: S.optional(__S(28)),
           NextToken: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1506,7 +1342,7 @@ function __c5(j: number): any {
         S.Struct({
           Username: S.String,
           Product: S.String,
-          IdentityProvider: IdentityProvider,
+          IdentityProvider: __S(6),
           Status: S.String,
           ProductUserArn: S.optional(S.String),
           StatusMessage: S.optional(S.String),
@@ -1517,11 +1353,11 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "ProductUserSummary" });
     case 1:
-      return S.Array(ProductUserSummary);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          ProductUserSummaries: S.optional(ProductUserSummaryList),
+          ProductUserSummaries: S.optional(__S(41)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1543,16 +1379,16 @@ function __c5(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ Tags: S.optional(Tags) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(7)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           InstanceId: S.String,
-          IdentityProvider: IdentityProvider,
+          IdentityProvider: __S(6),
           MaxResults: S.optional(S.Number),
-          Filters: S.optional(FilterList),
+          Filters: S.optional(__S(28)),
           NextToken: S.optional(S.String),
         }).pipe(
           T.all(
@@ -1568,11 +1404,11 @@ function __c5(j: number): any {
         identifier: "ListUserAssociationsRequest",
       });
     case 6:
-      return S.Array(InstanceUserSummary);
+      return S.Array(__S(9));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          InstanceUserSummaries: S.optional(InstanceUserSummaryList),
+          InstanceUserSummaries: S.optional(__S(46)),
           NextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -1585,10 +1421,10 @@ function __c6(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          IdentityProvider: IdentityProvider,
+          IdentityProvider: __S(6),
           Product: S.String,
-          Settings: S.optional(Settings),
-          Tags: S.optional(Tags),
+          Settings: S.optional(__S(23)),
+          Tags: S.optional(__S(7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/identity-provider/RegisterIdentityProvider" }),
@@ -1606,10 +1442,10 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           Username: S.String,
-          IdentityProvider: IdentityProvider,
+          IdentityProvider: __S(6),
           Product: S.String,
           Domain: S.optional(S.String),
-          Tags: S.optional(Tags),
+          Tags: S.optional(__S(7)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/user/StartProductSubscription" }),
@@ -1624,14 +1460,14 @@ function __c6(j: number): any {
         identifier: "StartProductSubscriptionRequest",
       });
     case 2:
-      return S.suspend(() => S.Struct({ ProductUserSummary: ProductUserSummary })).annotate({
+      return S.suspend(() => S.Struct({ ProductUserSummary: __S(40) })).annotate({
         identifier: "StartProductSubscriptionResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           Username: S.optional(S.String),
-          IdentityProvider: S.optional(IdentityProvider),
+          IdentityProvider: S.optional(__S(6)),
           Product: S.optional(S.String),
           ProductUserArn: S.optional(S.String),
           Domain: S.optional(S.String),
@@ -1650,7 +1486,7 @@ function __c6(j: number): any {
       });
     case 4:
       return S.suspend(() =>
-        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: Tags }).pipe(
+        S.Struct({ ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")), Tags: __S(7) }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/tags/{ResourceArn}" }),
             svc,
@@ -1669,7 +1505,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceArn: S.String.pipe(T.HttpLabel("ResourceArn")),
-          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(0).pipe(T.HttpQuery("tagKeys")),
         }).pipe(
           T.all(
             T.Http({ method: "DELETE", uri: "/tags/{ResourceArn}" }),
@@ -1684,8 +1520,8 @@ function __c6(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          AddSubnets: Subnets,
-          RemoveSubnets: Subnets,
+          AddSubnets: __S(0),
+          RemoveSubnets: __S(0),
           SecurityGroupId: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateSettings" });
@@ -1696,10 +1532,10 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          IdentityProvider: S.optional(IdentityProvider),
+          IdentityProvider: S.optional(__S(6)),
           Product: S.optional(S.String),
           IdentityProviderArn: S.optional(S.String),
-          UpdateSettings: UpdateSettings,
+          UpdateSettings: __S(55),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/identity-provider/UpdateIdentityProviderSettings" }),
@@ -1713,5 +1549,30 @@ function __c7(j: number): any {
       ).annotate({
         identifier: "UpdateIdentityProviderSettingsRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
   }
 }

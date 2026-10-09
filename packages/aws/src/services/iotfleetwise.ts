@@ -10,6 +10,8 @@ import { AwsProtocol } from "../protocol.ts";
 import { Retry } from "../retry.ts";
 import { SensitiveString } from "../sensitive.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 const svc = /*@__PURE__*/ T.AwsApiService({
   sdkId: "IoTFleetWise",
   serviceShapeName: "IoTAutobahnControlPlane",
@@ -97,12 +99,12 @@ export class DecoderManifestValidationException
     "DecoderManifestValidationException",
     {
       invalidSignals: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => InvalidSignalDecoders).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(192)).annotate({
           identifier: "InvalidSignalDecoders",
         }),
       ),
       invalidNetworkInterfaces: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => InvalidNetworkInterfaces).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(194)).annotate({
           identifier: "InvalidNetworkInterfaces",
         }),
       ),
@@ -126,7 +128,7 @@ export class InvalidNodeException
     "InvalidNodeException",
     {
       invalidNodes: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => Nodes).annotate({ identifier: "Nodes" }),
+        /*@__PURE__*/ S.suspend(() => __S(79)).annotate({ identifier: "Nodes" }),
       ),
       reason: /*@__PURE__*/ S.optional(S.String),
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
@@ -139,7 +141,7 @@ export class InvalidSignalsException
     {
       message: /*@__PURE__*/ S.optional(S.String).pipe(/*@__PURE__*/ T.ErrorMessage()),
       invalidSignals: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => InvalidSignals).annotate({ identifier: "InvalidSignals" }),
+        /*@__PURE__*/ S.suspend(() => __S(196)).annotate({ identifier: "InvalidSignals" }),
       ),
     },
     /*@__PURE__*/ T.HttpError(400),
@@ -183,12 +185,12 @@ export class ValidationException
     {
       message: /*@__PURE__*/ S.String.pipe(/*@__PURE__*/ T.ErrorMessage()),
       reason: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionReason).annotate({
+        /*@__PURE__*/ S.suspend(() => S.String).annotate({
           identifier: "ValidationExceptionReason",
         }),
       ),
       fieldList: /*@__PURE__*/ S.optional(
-        /*@__PURE__*/ S.suspend(() => ValidationExceptionFieldList).annotate({
+        /*@__PURE__*/ S.suspend(() => __S(190)).annotate({
           identifier: "ValidationExceptionFieldList",
         }),
       ),
@@ -201,71 +203,41 @@ export interface AssociateVehicleFleetRequest {
   vehicleName: string;
   fleetId: string;
 }
-const AssociateVehicleFleetRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AssociateVehicleFleetRequest>;
 export interface AssociateVehicleFleetResponse {}
-const AssociateVehicleFleetResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AssociateVehicleFleetResponse>;
 export type Arn = string;
 export type AttributeName = string;
 export type AttributeValue = string;
 export type AttributesMap = { [key: string]: string | undefined };
-const AttributesMap = /*@__PURE__*/ __L.at(__c0, 2);
 export type VehicleAssociationBehavior =
   | "CreateIotThing"
   | "ValidateIotThingExists"
   | (string & {});
-const VehicleAssociationBehavior = S.String;
-
 export type TagKey = string;
 export type TagValue = string;
 export interface Tag {
   Key: string;
   Value: string;
 }
-const Tag = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<Tag>;
 export type TagList = Tag[];
-const TagList = /*@__PURE__*/ __L.at(__c0, 4);
 export type ResourceIdentifier = string;
 export type TimeUnit = "MILLISECOND" | "SECOND" | "MINUTE" | "HOUR" | (string & {});
-const TimeUnit = S.String;
-
 export type PositiveInteger = number;
 export interface TimePeriod {
   unit: TimeUnit;
   value: number;
 }
-const TimePeriod = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<TimePeriod>;
 export interface PeriodicStateTemplateUpdateStrategy {
   stateTemplateUpdateRate: TimePeriod;
 }
-const PeriodicStateTemplateUpdateStrategy = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<PeriodicStateTemplateUpdateStrategy>;
 export interface OnChangeStateTemplateUpdateStrategy {}
-const OnChangeStateTemplateUpdateStrategy = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<OnChangeStateTemplateUpdateStrategy>;
 export type StateTemplateUpdateStrategy =
   | { periodic: PeriodicStateTemplateUpdateStrategy; onChange?: never }
   | { periodic?: never; onChange: OnChangeStateTemplateUpdateStrategy };
-const StateTemplateUpdateStrategy = /*@__PURE__*/ __L.at(__c1, 0);
 export interface StateTemplateAssociation {
   identifier: string;
   stateTemplateUpdateStrategy: StateTemplateUpdateStrategy;
 }
-const StateTemplateAssociation = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<StateTemplateAssociation>;
 export type StateTemplateAssociations = StateTemplateAssociation[];
-const StateTemplateAssociations = /*@__PURE__*/ __L.at(__c1, 2);
 export interface CreateVehicleRequestItem {
   vehicleName: string;
   modelManifestArn: string;
@@ -275,51 +247,28 @@ export interface CreateVehicleRequestItem {
   tags?: Tag[];
   stateTemplates?: StateTemplateAssociation[];
 }
-const CreateVehicleRequestItem = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateVehicleRequestItem>;
 export type CreateVehicleRequestItems = CreateVehicleRequestItem[];
-const CreateVehicleRequestItems = /*@__PURE__*/ __L.at(__c1, 4);
 export interface BatchCreateVehicleRequest {
   vehicles: CreateVehicleRequestItem[];
 }
-const BatchCreateVehicleRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<BatchCreateVehicleRequest>;
 export interface CreateVehicleResponseItem {
   vehicleName?: string;
   arn?: string;
   thingArn?: string;
 }
-const CreateVehicleResponseItem = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateVehicleResponseItem>;
 export type CreateVehicleResponses = CreateVehicleResponseItem[];
-const CreateVehicleResponses = /*@__PURE__*/ __L.at(__c1, 7);
 export interface CreateVehicleError_ {
   vehicleName?: string;
   code?: string;
   message?: string;
 }
-const CreateVehicleError_ = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CreateVehicleError_>;
 export type CreateVehicleErrors = CreateVehicleError_[];
-const CreateVehicleErrors = /*@__PURE__*/ __L.at(__c2, 1);
 export interface BatchCreateVehicleResponse {
   vehicles?: CreateVehicleResponseItem[];
   errors?: CreateVehicleError_[];
 }
-const BatchCreateVehicleResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<BatchCreateVehicleResponse>;
 export type UpdateMode = "Overwrite" | "Merge" | (string & {});
-const UpdateMode = S.String;
-
 export type StateTemplateAssociationIdentifiers = string[];
-const StateTemplateAssociationIdentifiers = /*@__PURE__*/ __L.at(__c2, 3);
 export interface UpdateVehicleRequestItem {
   vehicleName: string;
   modelManifestArn?: string;
@@ -330,57 +279,31 @@ export interface UpdateVehicleRequestItem {
   stateTemplatesToRemove?: string[];
   stateTemplatesToUpdate?: StateTemplateAssociation[];
 }
-const UpdateVehicleRequestItem = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<UpdateVehicleRequestItem>;
 export type UpdateVehicleRequestItems = UpdateVehicleRequestItem[];
-const UpdateVehicleRequestItems = /*@__PURE__*/ __L.at(__c2, 5);
 export interface BatchUpdateVehicleRequest {
   vehicles: UpdateVehicleRequestItem[];
 }
-const BatchUpdateVehicleRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<BatchUpdateVehicleRequest>;
 export interface UpdateVehicleResponseItem {
   vehicleName?: string;
   arn?: string;
 }
-const UpdateVehicleResponseItem = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<UpdateVehicleResponseItem>;
 export type UpdateVehicleResponseItems = UpdateVehicleResponseItem[];
-const UpdateVehicleResponseItems = /*@__PURE__*/ __L.at(__c3, 0);
 export interface UpdateVehicleError_ {
   vehicleName?: string;
   code?: number;
   message?: string;
 }
-const UpdateVehicleError_ = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<UpdateVehicleError_>;
 export type UpdateVehicleErrors = UpdateVehicleError_[];
-const UpdateVehicleErrors = /*@__PURE__*/ __L.at(__c3, 2);
 export interface BatchUpdateVehicleResponse {
   vehicles?: UpdateVehicleResponseItem[];
   errors?: UpdateVehicleError_[];
 }
-const BatchUpdateVehicleResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<BatchUpdateVehicleResponse>;
 export type CampaignName = string;
 export type Description = string;
 export type Uint32 = number;
 export type DiagnosticsMode = "OFF" | "SEND_ACTIVE_DTCS" | (string & {});
-const DiagnosticsMode = S.String;
-
 export type SpoolingMode = "OFF" | "TO_DISK" | (string & {});
-const SpoolingMode = S.String;
-
 export type Compression = "OFF" | "SNAPPY" | (string & {});
-const Compression = S.String;
-
 export type Priority = number;
 export type WildcardSignalName = string;
 export type MaxSampleCount = number;
@@ -391,21 +314,13 @@ export interface SignalInformation {
   minimumSamplingIntervalMs?: number;
   dataPartitionId?: string;
 }
-const SignalInformation = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<SignalInformation>;
 export type SignalInformationList = SignalInformation[];
-const SignalInformationList = /*@__PURE__*/ __L.at(__c3, 5);
 export type CollectionPeriodMs = number;
 export interface TimeBasedCollectionScheme {
   periodMs: number;
 }
-const TimeBasedCollectionScheme = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<TimeBasedCollectionScheme>;
 export type EventExpression = string | redacted.Redacted<string>;
 export type TriggerMode = "ALWAYS" | "RISING_EDGE" | (string & {});
-const TriggerMode = S.String;
-
 export type LanguageVersion = number;
 export interface ConditionBasedCollectionScheme {
   expression: string | redacted.Redacted<string>;
@@ -413,28 +328,17 @@ export interface ConditionBasedCollectionScheme {
   triggerMode?: TriggerMode;
   conditionLanguageVersion?: number;
 }
-const ConditionBasedCollectionScheme = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<ConditionBasedCollectionScheme>;
 export type CollectionScheme =
   | { timeBasedCollectionScheme: TimeBasedCollectionScheme; conditionBasedCollectionScheme?: never }
   | {
       timeBasedCollectionScheme?: never;
       conditionBasedCollectionScheme: ConditionBasedCollectionScheme;
     };
-const CollectionScheme = /*@__PURE__*/ __L.at(__c4, 0);
 export type NodePath = string;
 export type DataExtraDimensionNodePathList = string[];
-const DataExtraDimensionNodePathList =
-  StateTemplateAssociationIdentifiers as any as S.Schema<DataExtraDimensionNodePathList>;
 export type S3BucketArn = string;
 export type DataFormat = "JSON" | "PARQUET" | (string & {});
-const DataFormat = S.String;
-
 export type StorageCompressionFormat = "NONE" | "GZIP" | (string & {});
-const StorageCompressionFormat = S.String;
-
 export type Prefix = string;
 export interface S3Config {
   bucketArn: string;
@@ -442,34 +346,28 @@ export interface S3Config {
   storageCompressionFormat?: StorageCompressionFormat;
   prefix?: string;
 }
-const S3Config = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<S3Config>;
 export type TimestreamTableArn = string;
 export type IAMRoleArn = string;
 export interface TimestreamConfig {
   timestreamTableArn: string;
   executionRoleArn: string;
 }
-const TimestreamConfig = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<TimestreamConfig>;
 export type MqttTopicArn = string;
 export interface MqttTopicConfig {
   mqttTopicArn: string;
   executionRoleArn: string;
 }
-const MqttTopicConfig = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<MqttTopicConfig>;
 export type DataDestinationConfig =
   | { s3Config: S3Config; timestreamConfig?: never; mqttTopicConfig?: never }
   | { s3Config?: never; timestreamConfig: TimestreamConfig; mqttTopicConfig?: never }
   | { s3Config?: never; timestreamConfig?: never; mqttTopicConfig: MqttTopicConfig };
-const DataDestinationConfig = /*@__PURE__*/ __L.at(__c4, 4);
 export type DataDestinationConfigs = DataDestinationConfig[];
-const DataDestinationConfigs = /*@__PURE__*/ __L.at(__c4, 5);
 export type StorageMaximumSizeUnit = "MB" | "GB" | "TB" | (string & {});
 export type StorageMaximumSizeValue = number;
 export interface StorageMaximumSize {
   unit: StorageMaximumSizeUnit;
   value: number;
 }
-const StorageMaximumSize = TimePeriod as any as S.Schema<StorageMaximumSize>;
 export type StorageLocation = string | redacted.Redacted<string>;
 export type StorageMinimumTimeToLiveUnit = "HOURS" | "DAYS" | "WEEKS" | (string & {});
 export type StorageMinimumTimeToLiveValue = number;
@@ -477,68 +375,42 @@ export interface StorageMinimumTimeToLive {
   unit: StorageMinimumTimeToLiveUnit;
   value: number;
 }
-const StorageMinimumTimeToLive = TimePeriod as any as S.Schema<StorageMinimumTimeToLive>;
 export interface DataPartitionStorageOptions {
   maximumSize: StorageMaximumSize;
   storageLocation: string | redacted.Redacted<string>;
   minimumTimeToLive: StorageMinimumTimeToLive;
 }
-const DataPartitionStorageOptions = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<DataPartitionStorageOptions>;
 export interface DataPartitionUploadOptions {
   expression: string | redacted.Redacted<string>;
   conditionLanguageVersion?: number;
 }
-const DataPartitionUploadOptions = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<DataPartitionUploadOptions>;
 export interface DataPartition {
   id: string;
   storageOptions: DataPartitionStorageOptions;
   uploadOptions?: DataPartitionUploadOptions;
 }
-const DataPartition = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<DataPartition>;
 export type DataPartitions = DataPartition[];
-const DataPartitions = /*@__PURE__*/ __L.at(__c5, 1);
 export type PositiveLong = number;
 export interface TimeBasedSignalFetchConfig {
   executionFrequencyMs: number;
 }
-const TimeBasedSignalFetchConfig = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<TimeBasedSignalFetchConfig>;
 export type FetchConfigEventExpression = string | redacted.Redacted<string>;
 export interface ConditionBasedSignalFetchConfig {
   conditionExpression: string | redacted.Redacted<string>;
   triggerMode: TriggerMode;
 }
-const ConditionBasedSignalFetchConfig = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ConditionBasedSignalFetchConfig>;
 export type SignalFetchConfig =
   | { timeBased: TimeBasedSignalFetchConfig; conditionBased?: never }
   | { timeBased?: never; conditionBased: ConditionBasedSignalFetchConfig };
-const SignalFetchConfig = /*@__PURE__*/ __L.at(__c5, 4);
 export type ActionEventExpression = string | redacted.Redacted<string>;
 export type EventExpressionList = (string | redacted.Redacted<string>)[];
-const EventExpressionList = /*@__PURE__*/ __L.at(__c5, 5);
 export interface SignalFetchInformation {
   fullyQualifiedName: string;
   signalFetchConfig: SignalFetchConfig;
   conditionLanguageVersion?: number;
   actions: (string | redacted.Redacted<string>)[];
 }
-const SignalFetchInformation = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<SignalFetchInformation>;
 export type SignalFetchInformationList = SignalFetchInformation[];
-const SignalFetchInformationList = /*@__PURE__*/ __L.at(__c5, 7);
 export interface CreateCampaignRequest {
   name: string;
   description?: string;
@@ -559,19 +431,11 @@ export interface CreateCampaignRequest {
   dataPartitions?: DataPartition[];
   signalsToFetch?: SignalFetchInformation[];
 }
-const CreateCampaignRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateCampaignRequest>;
 export type CampaignArn = string;
 export interface CreateCampaignResponse {
   name?: string;
   arn?: string;
 }
-const CreateCampaignResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreateCampaignResponse>;
 export type ResourceName = string;
 export type FullyQualifiedName = string;
 export type SignalDecoderType =
@@ -580,14 +444,10 @@ export type SignalDecoderType =
   | "MESSAGE_SIGNAL"
   | "CUSTOM_DECODING_SIGNAL"
   | (string & {});
-const SignalDecoderType = S.String;
-
 export type InterfaceId = string;
 export type NonNegativeInteger = number;
 export type CanSignalName = string;
 export type SignalValueType = "INTEGER" | "FLOATING_POINT" | (string & {});
-const SignalValueType = S.String;
-
 export interface CanSignal {
   messageId: number;
   isBigEndian: boolean;
@@ -599,7 +459,6 @@ export interface CanSignal {
   name?: string;
   signalValueType?: SignalValueType;
 }
-const CanSignal = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<CanSignal>;
 export type ObdByteLength = number;
 export type ObdBitmaskLength = number;
 export interface ObdSignal {
@@ -615,7 +474,6 @@ export interface ObdSignal {
   isSigned?: boolean;
   signalValueType?: SignalValueType;
 }
-const ObdSignal = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<ObdSignal>;
 export type TopicName = string;
 export type ROS2PrimitiveType =
   | "BOOL"
@@ -634,8 +492,6 @@ export type ROS2PrimitiveType =
   | "STRING"
   | "WSTRING"
   | (string & {});
-const ROS2PrimitiveType = S.String;
-
 export type MaxStringSize = number;
 export interface ROS2PrimitiveMessageDefinition {
   primitiveType: ROS2PrimitiveType;
@@ -643,45 +499,26 @@ export interface ROS2PrimitiveMessageDefinition {
   scaling?: number;
   upperBound?: number;
 }
-const ROS2PrimitiveMessageDefinition = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<ROS2PrimitiveMessageDefinition>;
 export type PrimitiveMessageDefinition = {
   ros2PrimitiveMessageDefinition: ROS2PrimitiveMessageDefinition;
 };
-const PrimitiveMessageDefinition = /*@__PURE__*/ __L.at(__c6, 5);
 export type StructureMessageName = string;
 export type StructuredMessageListType =
   | "FIXED_CAPACITY"
   | "DYNAMIC_UNBOUNDED_CAPACITY"
   | "DYNAMIC_BOUNDED_CAPACITY"
   | (string & {});
-const StructuredMessageListType = S.String;
-
 export interface StructuredMessageListDefinition {
   name: string;
   memberType: StructuredMessage;
   listType: StructuredMessageListType;
   capacity?: number;
 }
-const StructuredMessageListDefinition = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<StructuredMessageListDefinition>;
 export interface StructuredMessageFieldNameAndDataTypePair {
   fieldName: string;
   dataType: StructuredMessage;
 }
-const StructuredMessageFieldNameAndDataTypePair = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<StructuredMessageFieldNameAndDataTypePair>;
 export type StructuredMessageDefinition = StructuredMessageFieldNameAndDataTypePair[];
-const StructuredMessageDefinition = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<StructuredMessageDefinition>;
 export type StructuredMessage =
   | {
       primitiveMessageDefinition: PrimitiveMessageDefinition;
@@ -698,17 +535,14 @@ export type StructuredMessage =
       structuredMessageListDefinition?: never;
       structuredMessageDefinition: StructuredMessageFieldNameAndDataTypePair[];
     };
-const StructuredMessage = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<StructuredMessage>;
 export interface MessageSignal {
   topicName: string;
   structuredMessage: StructuredMessage;
 }
-const MessageSignal = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<MessageSignal>;
 export type CustomDecodingId = string;
 export interface CustomDecodingSignal {
   id: string;
 }
-const CustomDecodingSignal = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<CustomDecodingSignal>;
 export interface SignalDecoder {
   fullyQualifiedName: string;
   type: SignalDecoderType;
@@ -718,17 +552,13 @@ export interface SignalDecoder {
   messageSignal?: MessageSignal;
   customDecodingSignal?: CustomDecodingSignal;
 }
-const SignalDecoder = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<SignalDecoder>;
 export type SignalDecoders = SignalDecoder[];
-const SignalDecoders = /*@__PURE__*/ __L.at(__c7, 5);
 export type NetworkInterfaceType =
   | "CAN_INTERFACE"
   | "OBD_INTERFACE"
   | "VEHICLE_MIDDLEWARE"
   | "CUSTOM_DECODING_INTERFACE"
   | (string & {});
-const NetworkInterfaceType = S.String;
-
 export type CanInterfaceName = string;
 export type ProtocolName = string;
 export type ProtocolVersion = string;
@@ -737,7 +567,6 @@ export interface CanInterface {
   protocolName?: string;
   protocolVersion?: string;
 }
-const CanInterface = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<CanInterface>;
 export type ObdInterfaceName = string;
 export type ObdStandard = string;
 export interface ObdInterface {
@@ -749,24 +578,16 @@ export interface ObdInterface {
   useExtendedIds?: boolean;
   hasTransmissionEcu?: boolean;
 }
-const ObdInterface = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ObdInterface>;
 export type VehicleMiddlewareName = string;
 export type VehicleMiddlewareProtocol = "ROS_2" | (string & {});
-const VehicleMiddlewareProtocol = S.String;
-
 export interface VehicleMiddleware {
   name: string;
   protocolName: VehicleMiddlewareProtocol;
 }
-const VehicleMiddleware = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<VehicleMiddleware>;
 export type CustomDecodingSignalInterfaceName = string;
 export interface CustomDecodingInterface {
   name: string;
 }
-const CustomDecodingInterface = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<CustomDecodingInterface>;
 export interface NetworkInterface {
   interfaceId: string;
   type: NetworkInterfaceType;
@@ -775,12 +596,8 @@ export interface NetworkInterface {
   vehicleMiddleware?: VehicleMiddleware;
   customDecodingInterface?: CustomDecodingInterface;
 }
-const NetworkInterface = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<NetworkInterface>;
 export type NetworkInterfaces = NetworkInterface[];
-const NetworkInterfaces = /*@__PURE__*/ __L.at(__c8, 3);
 export type DefaultForUnmappedSignalsType = "CUSTOM_DECODING" | (string & {});
-const DefaultForUnmappedSignalsType = S.String;
-
 export interface CreateDecoderManifestRequest {
   name: string;
   description?: string;
@@ -790,32 +607,21 @@ export interface CreateDecoderManifestRequest {
   defaultForUnmappedSignals?: DefaultForUnmappedSignalsType;
   tags?: Tag[];
 }
-const CreateDecoderManifestRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<CreateDecoderManifestRequest>;
 export interface CreateDecoderManifestResponse {
   name: string;
   arn: string;
 }
-const CreateDecoderManifestResponse = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<CreateDecoderManifestResponse>;
 export interface CreateFleetRequest {
   fleetId: string;
   description?: string;
   signalCatalogArn: string;
   tags?: Tag[];
 }
-const CreateFleetRequest = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<CreateFleetRequest>;
 export interface CreateFleetResponse {
   id: string;
   arn: string;
 }
-const CreateFleetResponse = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<CreateFleetResponse>;
 export type ListOfStrings = string[];
-const ListOfStrings = StateTemplateAssociationIdentifiers as any as S.Schema<ListOfStrings>;
 export interface CreateModelManifestRequest {
   name: string;
   description?: string;
@@ -823,16 +629,10 @@ export interface CreateModelManifestRequest {
   signalCatalogArn: string;
   tags?: Tag[];
 }
-const CreateModelManifestRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<CreateModelManifestRequest>;
 export interface CreateModelManifestResponse {
   name: string;
   arn: string;
 }
-const CreateModelManifestResponse =
-  CreateDecoderManifestResponse as any as S.Schema<CreateModelManifestResponse>;
 export type Message = string;
 export interface Branch {
   fullyQualifiedName: string;
@@ -840,7 +640,6 @@ export interface Branch {
   deprecationMessage?: string;
   comment?: string;
 }
-const Branch = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<Branch>;
 export type NodeDataType =
   | "INT8"
   | "UINT8"
@@ -872,8 +671,6 @@ export type NodeDataType =
   | "STRUCT"
   | "STRUCT_ARRAY"
   | (string & {});
-const NodeDataType = S.String;
-
 export interface Sensor {
   fullyQualifiedName: string;
   dataType: NodeDataType;
@@ -886,7 +683,6 @@ export interface Sensor {
   comment?: string;
   structFullyQualifiedName?: string;
 }
-const Sensor = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<Sensor>;
 export interface Actuator {
   fullyQualifiedName: string;
   dataType: NodeDataType;
@@ -900,7 +696,6 @@ export interface Actuator {
   comment?: string;
   structFullyQualifiedName?: string;
 }
-const Actuator = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<Actuator>;
 export interface Attribute {
   fullyQualifiedName: string;
   dataType: NodeDataType;
@@ -914,17 +709,13 @@ export interface Attribute {
   deprecationMessage?: string;
   comment?: string;
 }
-const Attribute = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<Attribute>;
 export interface CustomStruct {
   fullyQualifiedName: string;
   description?: string;
   deprecationMessage?: string;
   comment?: string;
 }
-const CustomStruct = Branch as any as S.Schema<CustomStruct>;
 export type NodeDataEncoding = "BINARY" | "TYPED" | (string & {});
-const NodeDataEncoding = S.String;
-
 export interface CustomProperty {
   fullyQualifiedName: string;
   dataType: NodeDataType;
@@ -934,7 +725,6 @@ export interface CustomProperty {
   comment?: string;
   structFullyQualifiedName?: string;
 }
-const CustomProperty = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<CustomProperty>;
 export type Node =
   | {
       branch: Branch;
@@ -984,34 +774,20 @@ export type Node =
       struct?: never;
       property: CustomProperty;
     };
-const Node = /*@__PURE__*/ __L.at(__c9, 6);
 export type Nodes = Node[];
-const Nodes = /*@__PURE__*/ __L.at(__c9, 7);
 export interface CreateSignalCatalogRequest {
   name: string;
   description?: string;
   nodes?: Node[];
   tags?: Tag[];
 }
-const CreateSignalCatalogRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<CreateSignalCatalogRequest>;
 export interface CreateSignalCatalogResponse {
   name: string;
   arn: string;
 }
-const CreateSignalCatalogResponse =
-  CreateDecoderManifestResponse as any as S.Schema<CreateSignalCatalogResponse>;
 export type StateTemplateProperties = string[];
-const StateTemplateProperties =
-  StateTemplateAssociationIdentifiers as any as S.Schema<StateTemplateProperties>;
 export type StateTemplateDataExtraDimensionNodePathList = string[];
-const StateTemplateDataExtraDimensionNodePathList =
-  StateTemplateAssociationIdentifiers as any as S.Schema<StateTemplateDataExtraDimensionNodePathList>;
 export type StateTemplateMetadataExtraDimensionNodePathList = string[];
-const StateTemplateMetadataExtraDimensionNodePathList =
-  StateTemplateAssociationIdentifiers as any as S.Schema<StateTemplateMetadataExtraDimensionNodePathList>;
 export interface CreateStateTemplateRequest {
   name: string;
   description?: string;
@@ -1021,20 +797,12 @@ export interface CreateStateTemplateRequest {
   metadataExtraDimensions?: string[];
   tags?: Tag[];
 }
-const CreateStateTemplateRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<CreateStateTemplateRequest>;
 export type ResourceUniqueId = string;
 export interface CreateStateTemplateResponse {
   name?: string;
   arn?: string;
   id?: string;
 }
-const CreateStateTemplateResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<CreateStateTemplateResponse>;
 export interface CreateVehicleRequest {
   vehicleName: string;
   modelManifestArn: string;
@@ -1044,131 +812,75 @@ export interface CreateVehicleRequest {
   tags?: Tag[];
   stateTemplates?: StateTemplateAssociation[];
 }
-const CreateVehicleRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<CreateVehicleRequest>;
 export interface CreateVehicleResponse {
   vehicleName?: string;
   arn?: string;
   thingArn?: string;
 }
-const CreateVehicleResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<CreateVehicleResponse>;
 export interface DeleteCampaignRequest {
   name: string;
 }
-const DeleteCampaignRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<DeleteCampaignRequest>;
 export interface DeleteCampaignResponse {
   name?: string;
   arn?: string;
 }
-const DeleteCampaignResponse = CreateCampaignResponse as any as S.Schema<DeleteCampaignResponse>;
 export interface DeleteDecoderManifestRequest {
   name: string;
 }
-const DeleteDecoderManifestRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<DeleteDecoderManifestRequest>;
 export interface DeleteDecoderManifestResponse {
   name: string;
   arn: string;
 }
-const DeleteDecoderManifestResponse =
-  CreateDecoderManifestResponse as any as S.Schema<DeleteDecoderManifestResponse>;
 export interface DeleteFleetRequest {
   fleetId: string;
 }
-const DeleteFleetRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<DeleteFleetRequest>;
 export interface DeleteFleetResponse {
   id?: string;
   arn?: string;
 }
-const DeleteFleetResponse = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<DeleteFleetResponse>;
 export interface DeleteModelManifestRequest {
   name: string;
 }
-const DeleteModelManifestRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<DeleteModelManifestRequest>;
 export interface DeleteModelManifestResponse {
   name: string;
   arn: string;
 }
-const DeleteModelManifestResponse =
-  CreateDecoderManifestResponse as any as S.Schema<DeleteModelManifestResponse>;
 export interface DeleteSignalCatalogRequest {
   name: string;
 }
-const DeleteSignalCatalogRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<DeleteSignalCatalogRequest>;
 export interface DeleteSignalCatalogResponse {
   name: string;
   arn: string;
 }
-const DeleteSignalCatalogResponse =
-  CreateDecoderManifestResponse as any as S.Schema<DeleteSignalCatalogResponse>;
 export interface DeleteStateTemplateRequest {
   identifier: string;
 }
-const DeleteStateTemplateRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<DeleteStateTemplateRequest>;
 export interface DeleteStateTemplateResponse {
   name?: string;
   arn?: string;
   id?: string;
 }
-const DeleteStateTemplateResponse =
-  CreateStateTemplateResponse as any as S.Schema<DeleteStateTemplateResponse>;
 export interface DeleteVehicleRequest {
   vehicleName: string;
 }
-const DeleteVehicleRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<DeleteVehicleRequest>;
 export interface DeleteVehicleResponse {
   vehicleName: string;
   arn: string;
 }
-const DeleteVehicleResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<DeleteVehicleResponse>;
 export interface DisassociateVehicleFleetRequest {
   vehicleName: string;
   fleetId: string;
 }
-const DisassociateVehicleFleetRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<DisassociateVehicleFleetRequest>;
 export interface DisassociateVehicleFleetResponse {}
-const DisassociateVehicleFleetResponse =
-  OnChangeStateTemplateUpdateStrategy as any as S.Schema<DisassociateVehicleFleetResponse>;
 export interface GetCampaignRequest {
   name: string;
 }
-const GetCampaignRequest = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<GetCampaignRequest>;
 export type CampaignStatus =
   | "CREATING"
   | "WAITING_FOR_APPROVAL"
   | "RUNNING"
   | "SUSPENDED"
   | (string & {});
-const CampaignStatus = S.String;
-
 export interface GetCampaignResponse {
   name?: string;
   arn?: string;
@@ -1192,17 +904,10 @@ export interface GetCampaignResponse {
   dataPartitions?: DataPartition[];
   signalsToFetch?: SignalFetchInformation[];
 }
-const GetCampaignResponse = /*@__PURE__*/ __L.at(__c12, 0) as any as S.Schema<GetCampaignResponse>;
 export interface GetDecoderManifestRequest {
   name: string;
 }
-const GetDecoderManifestRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GetDecoderManifestRequest>;
 export type ManifestStatus = "ACTIVE" | "DRAFT" | "INVALID" | "VALIDATING" | (string & {});
-const ManifestStatus = S.String;
-
 export interface GetDecoderManifestResponse {
   name: string;
   arn: string;
@@ -1213,24 +918,12 @@ export interface GetDecoderManifestResponse {
   lastModificationTime: Date;
   message?: string;
 }
-const GetDecoderManifestResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GetDecoderManifestResponse>;
 export interface GetEncryptionConfigurationRequest {}
-const GetEncryptionConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetEncryptionConfigurationRequest>;
 export type EncryptionStatus = "PENDING" | "SUCCESS" | "FAILURE" | (string & {});
-const EncryptionStatus = S.String;
-
 export type EncryptionType =
   | "KMS_BASED_ENCRYPTION"
   | "FLEETWISE_DEFAULT_ENCRYPTION"
   | (string & {});
-const EncryptionType = S.String;
-
 export type ErrorMessage = string;
 export interface GetEncryptionConfigurationResponse {
   kmsKeyId?: string;
@@ -1240,14 +933,9 @@ export interface GetEncryptionConfigurationResponse {
   creationTime?: Date;
   lastModificationTime?: Date;
 }
-const GetEncryptionConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GetEncryptionConfigurationResponse>;
 export interface GetFleetRequest {
   fleetId: string;
 }
-const GetFleetRequest = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<GetFleetRequest>;
 export interface GetFleetResponse {
   id: string;
   arn: string;
@@ -1256,38 +944,19 @@ export interface GetFleetResponse {
   creationTime: Date;
   lastModificationTime: Date;
 }
-const GetFleetResponse = /*@__PURE__*/ __L.at(__c12, 6) as any as S.Schema<GetFleetResponse>;
 export interface GetLoggingOptionsRequest {}
-const GetLoggingOptionsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<GetLoggingOptionsRequest>;
 export type LogType = "OFF" | "ERROR" | (string & {});
-const LogType = S.String;
-
 export type CloudWatchLogGroupName = string;
 export interface CloudWatchLogDeliveryOptions {
   logType: LogType;
   logGroupName?: string;
 }
-const CloudWatchLogDeliveryOptions = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<CloudWatchLogDeliveryOptions>;
 export interface GetLoggingOptionsResponse {
   cloudWatchLogDelivery: CloudWatchLogDeliveryOptions;
 }
-const GetLoggingOptionsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GetLoggingOptionsResponse>;
 export interface GetModelManifestRequest {
   name: string;
 }
-const GetModelManifestRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GetModelManifestRequest>;
 export interface GetModelManifestResponse {
   name: string;
   arn: string;
@@ -1297,23 +966,13 @@ export interface GetModelManifestResponse {
   creationTime: Date;
   lastModificationTime: Date;
 }
-const GetModelManifestResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<GetModelManifestResponse>;
 export interface GetRegisterAccountStatusRequest {}
-const GetRegisterAccountStatusRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GetRegisterAccountStatusRequest>;
 export type CustomerAccountId = string;
 export type RegistrationStatus =
   | "REGISTRATION_PENDING"
   | "REGISTRATION_SUCCESS"
   | "REGISTRATION_FAILURE"
   | (string & {});
-const RegistrationStatus = S.String;
-
 export type TimestreamDatabaseName = string;
 export type TimestreamTableName = string;
 export interface TimestreamRegistrationResponse {
@@ -1324,19 +983,11 @@ export interface TimestreamRegistrationResponse {
   registrationStatus: RegistrationStatus;
   errorMessage?: string;
 }
-const TimestreamRegistrationResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<TimestreamRegistrationResponse>;
 export interface IamRegistrationResponse {
   roleArn: string;
   registrationStatus: RegistrationStatus;
   errorMessage?: string;
 }
-const IamRegistrationResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<IamRegistrationResponse>;
 export interface GetRegisterAccountStatusResponse {
   customerAccountId: string;
   accountStatus: RegistrationStatus;
@@ -1345,17 +996,9 @@ export interface GetRegisterAccountStatusResponse {
   creationTime: Date;
   lastModificationTime: Date;
 }
-const GetRegisterAccountStatusResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetRegisterAccountStatusResponse>;
 export interface GetSignalCatalogRequest {
   name: string;
 }
-const GetSignalCatalogRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetSignalCatalogRequest>;
 export interface NodeCounts {
   totalNodes?: number;
   totalBranches?: number;
@@ -1365,7 +1008,6 @@ export interface NodeCounts {
   totalStructs?: number;
   totalProperties?: number;
 }
-const NodeCounts = /*@__PURE__*/ __L.at(__c14, 1) as any as S.Schema<NodeCounts>;
 export interface GetSignalCatalogResponse {
   name: string;
   arn: string;
@@ -1374,17 +1016,9 @@ export interface GetSignalCatalogResponse {
   creationTime: Date;
   lastModificationTime: Date;
 }
-const GetSignalCatalogResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GetSignalCatalogResponse>;
 export interface GetStateTemplateRequest {
   identifier: string;
 }
-const GetStateTemplateRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GetStateTemplateRequest>;
 export interface GetStateTemplateResponse {
   name?: string;
   arn?: string;
@@ -1397,14 +1031,9 @@ export interface GetStateTemplateResponse {
   lastModificationTime?: Date;
   id?: string;
 }
-const GetStateTemplateResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<GetStateTemplateResponse>;
 export interface GetVehicleRequest {
   vehicleName: string;
 }
-const GetVehicleRequest = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<GetVehicleRequest>;
 export interface GetVehicleResponse {
   vehicleName?: string;
   arn?: string;
@@ -1415,7 +1044,6 @@ export interface GetVehicleResponse {
   creationTime?: Date;
   lastModificationTime?: Date;
 }
-const GetVehicleResponse = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<GetVehicleResponse>;
 export type NextToken = string;
 export type MaxResults = number;
 export interface GetVehicleStatusRequest {
@@ -1423,10 +1051,6 @@ export interface GetVehicleStatusRequest {
   maxResults?: number;
   vehicleName: string;
 }
-const GetVehicleStatusRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<GetVehicleStatusRequest>;
 export type VehicleState =
   | "CREATED"
   | "READY"
@@ -1435,85 +1059,53 @@ export type VehicleState =
   | "DELETING"
   | "READY_FOR_CHECKIN"
   | (string & {});
-const VehicleState = S.String;
-
 export interface VehicleStatus {
   campaignName?: string;
   vehicleName?: string;
   status?: VehicleState;
 }
-const VehicleStatus = /*@__PURE__*/ __L.at(__c15, 0) as any as S.Schema<VehicleStatus>;
 export type VehicleStatusList = VehicleStatus[];
-const VehicleStatusList = /*@__PURE__*/ __L.at(__c15, 1);
 export interface GetVehicleStatusResponse {
   campaigns?: VehicleStatus[];
   nextToken?: string;
 }
-const GetVehicleStatusResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GetVehicleStatusResponse>;
 export type NetworkFileBlob = Uint8Array;
 export type NetworkFilesList = Uint8Array[];
-const NetworkFilesList = /*@__PURE__*/ __L.at(__c15, 3);
 export type ModelSignalsMap = { [key: string]: string | undefined };
-const ModelSignalsMap = AttributesMap as any as S.Schema<ModelSignalsMap>;
 export interface CanDbcDefinition {
   networkInterface: string;
   canDbcFiles: Uint8Array[];
   signalsMap?: { [key: string]: string | undefined };
 }
-const CanDbcDefinition = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<CanDbcDefinition>;
 export type NetworkFileDefinition = { canDbc: CanDbcDefinition };
-const NetworkFileDefinition = /*@__PURE__*/ __L.at(__c15, 5);
 export type NetworkFileDefinitions = NetworkFileDefinition[];
-const NetworkFileDefinitions = /*@__PURE__*/ __L.at(__c15, 6);
 export interface ImportDecoderManifestRequest {
   name: string;
   networkFileDefinitions: NetworkFileDefinition[];
 }
-const ImportDecoderManifestRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<ImportDecoderManifestRequest>;
 export interface ImportDecoderManifestResponse {
   name: string;
   arn: string;
 }
-const ImportDecoderManifestResponse =
-  CreateDecoderManifestResponse as any as S.Schema<ImportDecoderManifestResponse>;
 export type FormattedVss = { vssJson: string };
-const FormattedVss = /*@__PURE__*/ __L.at(__c16, 0);
 export interface ImportSignalCatalogRequest {
   name: string;
   description?: string;
   vss?: FormattedVss;
   tags?: Tag[];
 }
-const ImportSignalCatalogRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ImportSignalCatalogRequest>;
 export interface ImportSignalCatalogResponse {
   name: string;
   arn: string;
 }
-const ImportSignalCatalogResponse =
-  CreateDecoderManifestResponse as any as S.Schema<ImportSignalCatalogResponse>;
 export type StatusStr = string;
 export type ListResponseScope = "METADATA_ONLY" | (string & {});
-const ListResponseScope = S.String;
-
 export interface ListCampaignsRequest {
   nextToken?: string;
   maxResults?: number;
   status?: string;
   listResponseScope?: ListResponseScope;
 }
-const ListCampaignsRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<ListCampaignsRequest>;
 export interface CampaignSummary {
   arn?: string;
   name?: string;
@@ -1524,44 +1116,26 @@ export interface CampaignSummary {
   creationTime: Date;
   lastModificationTime: Date;
 }
-const CampaignSummary = /*@__PURE__*/ __L.at(__c16, 3) as any as S.Schema<CampaignSummary>;
 export type CampaignSummaries = CampaignSummary[];
-const CampaignSummaries = /*@__PURE__*/ __L.at(__c16, 4);
 export interface ListCampaignsResponse {
   campaignSummaries?: CampaignSummary[];
   nextToken?: string;
 }
-const ListCampaignsResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<ListCampaignsResponse>;
 export interface ListDecoderManifestNetworkInterfacesRequest {
   name: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListDecoderManifestNetworkInterfacesRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<ListDecoderManifestNetworkInterfacesRequest>;
 export interface ListDecoderManifestNetworkInterfacesResponse {
   networkInterfaces?: NetworkInterface[];
   nextToken?: string;
 }
-const ListDecoderManifestNetworkInterfacesResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListDecoderManifestNetworkInterfacesResponse>;
 export interface ListDecoderManifestsRequest {
   modelManifestArn?: string;
   nextToken?: string;
   maxResults?: number;
   listResponseScope?: ListResponseScope;
 }
-const ListDecoderManifestsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ListDecoderManifestsRequest>;
 export interface DecoderManifestSummary {
   name?: string;
   arn?: string;
@@ -1572,43 +1146,25 @@ export interface DecoderManifestSummary {
   lastModificationTime: Date;
   message?: string;
 }
-const DecoderManifestSummary = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<DecoderManifestSummary>;
 export type DecoderManifestSummaries = DecoderManifestSummary[];
-const DecoderManifestSummaries = /*@__PURE__*/ __L.at(__c17, 2);
 export interface ListDecoderManifestsResponse {
   summaries?: DecoderManifestSummary[];
   nextToken?: string;
 }
-const ListDecoderManifestsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ListDecoderManifestsResponse>;
 export interface ListDecoderManifestSignalsRequest {
   name: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListDecoderManifestSignalsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ListDecoderManifestSignalsRequest>;
 export interface ListDecoderManifestSignalsResponse {
   signalDecoders?: SignalDecoder[];
   nextToken?: string;
 }
-const ListDecoderManifestSignalsResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ListDecoderManifestSignalsResponse>;
 export interface ListFleetsRequest {
   nextToken?: string;
   maxResults?: number;
   listResponseScope?: ListResponseScope;
 }
-const ListFleetsRequest = /*@__PURE__*/ __L.at(__c17, 6) as any as S.Schema<ListFleetsRequest>;
 export interface FleetSummary {
   id: string;
   arn: string;
@@ -1617,60 +1173,36 @@ export interface FleetSummary {
   creationTime: Date;
   lastModificationTime?: Date;
 }
-const FleetSummary = /*@__PURE__*/ __L.at(__c17, 7) as any as S.Schema<FleetSummary>;
 export type FleetSummaries = FleetSummary[];
-const FleetSummaries = /*@__PURE__*/ __L.at(__c18, 0);
 export interface ListFleetsResponse {
   fleetSummaries?: FleetSummary[];
   nextToken?: string;
 }
-const ListFleetsResponse = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<ListFleetsResponse>;
 export interface ListFleetsForVehicleRequest {
   vehicleName: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListFleetsForVehicleRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<ListFleetsForVehicleRequest>;
 export type Fleets = string[];
-const Fleets = StateTemplateAssociationIdentifiers as any as S.Schema<Fleets>;
 export interface ListFleetsForVehicleResponse {
   fleets?: string[];
   nextToken?: string;
 }
-const ListFleetsForVehicleResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<ListFleetsForVehicleResponse>;
 export interface ListModelManifestNodesRequest {
   name: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListModelManifestNodesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ListModelManifestNodesRequest>;
 export interface ListModelManifestNodesResponse {
   nodes?: Node[];
   nextToken?: string;
 }
-const ListModelManifestNodesResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListModelManifestNodesResponse>;
 export interface ListModelManifestsRequest {
   signalCatalogArn?: string;
   nextToken?: string;
   maxResults?: number;
   listResponseScope?: ListResponseScope;
 }
-const ListModelManifestsRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ListModelManifestsRequest>;
 export interface ModelManifestSummary {
   name?: string;
   arn?: string;
@@ -1680,20 +1212,11 @@ export interface ModelManifestSummary {
   creationTime: Date;
   lastModificationTime: Date;
 }
-const ModelManifestSummary = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<ModelManifestSummary>;
 export type ModelManifestSummaries = ModelManifestSummary[];
-const ModelManifestSummaries = /*@__PURE__*/ __L.at(__c19, 0);
 export interface ListModelManifestsResponse {
   summaries?: ModelManifestSummary[];
   nextToken?: string;
 }
-const ListModelManifestsResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<ListModelManifestsResponse>;
 export type SignalNodeType =
   | "SENSOR"
   | "ACTUATOR"
@@ -1702,61 +1225,36 @@ export type SignalNodeType =
   | "CUSTOM_STRUCT"
   | "CUSTOM_PROPERTY"
   | (string & {});
-const SignalNodeType = S.String;
-
 export interface ListSignalCatalogNodesRequest {
   name: string;
   nextToken?: string;
   maxResults?: number;
   signalNodeType?: SignalNodeType;
 }
-const ListSignalCatalogNodesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<ListSignalCatalogNodesRequest>;
 export interface ListSignalCatalogNodesResponse {
   nodes?: Node[];
   nextToken?: string;
 }
-const ListSignalCatalogNodesResponse =
-  ListModelManifestNodesResponse as any as S.Schema<ListSignalCatalogNodesResponse>;
 export interface ListSignalCatalogsRequest {
   nextToken?: string;
   maxResults?: number;
 }
-const ListSignalCatalogsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ListSignalCatalogsRequest>;
 export interface SignalCatalogSummary {
   name?: string;
   arn?: string;
   creationTime?: Date;
   lastModificationTime?: Date;
 }
-const SignalCatalogSummary = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<SignalCatalogSummary>;
 export type SignalCatalogSummaries = SignalCatalogSummary[];
-const SignalCatalogSummaries = /*@__PURE__*/ __L.at(__c19, 5);
 export interface ListSignalCatalogsResponse {
   summaries?: SignalCatalogSummary[];
   nextToken?: string;
 }
-const ListSignalCatalogsResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ListSignalCatalogsResponse>;
 export interface ListStateTemplatesRequest {
   nextToken?: string;
   maxResults?: number;
   listResponseScope?: ListResponseScope;
 }
-const ListStateTemplatesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ListStateTemplatesRequest>;
 export interface StateTemplateSummary {
   name?: string;
   arn?: string;
@@ -1766,41 +1264,20 @@ export interface StateTemplateSummary {
   lastModificationTime?: Date;
   id?: string;
 }
-const StateTemplateSummary = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<StateTemplateSummary>;
 export type StateTemplateSummaries = StateTemplateSummary[];
-const StateTemplateSummaries = /*@__PURE__*/ __L.at(__c20, 1);
 export interface ListStateTemplatesResponse {
   summaries?: StateTemplateSummary[];
   nextToken?: string;
 }
-const ListStateTemplatesResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListStateTemplatesResponse>;
 export type AmazonResourceName = string;
 export interface ListTagsForResourceRequest {
   ResourceARN: string;
 }
-const ListTagsForResourceRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ListTagsForResourceRequest>;
 export interface ListTagsForResourceResponse {
   Tags?: Tag[];
 }
-const ListTagsForResourceResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<ListTagsForResourceResponse>;
 export type AttributeNamesList = string[];
-const AttributeNamesList =
-  StateTemplateAssociationIdentifiers as any as S.Schema<AttributeNamesList>;
 export type AttributeValuesList = string[];
-const AttributeValuesList =
-  StateTemplateAssociationIdentifiers as any as S.Schema<AttributeValuesList>;
 export type ListVehiclesMaxResults = number;
 export interface ListVehiclesRequest {
   modelManifestArn?: string;
@@ -1810,7 +1287,6 @@ export interface ListVehiclesRequest {
   maxResults?: number;
   listResponseScope?: ListResponseScope;
 }
-const ListVehiclesRequest = /*@__PURE__*/ __L.at(__c20, 5) as any as S.Schema<ListVehiclesRequest>;
 export interface VehicleSummary {
   vehicleName: string;
   arn: string;
@@ -1820,80 +1296,45 @@ export interface VehicleSummary {
   lastModificationTime: Date;
   attributes?: { [key: string]: string | undefined };
 }
-const VehicleSummary = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<VehicleSummary>;
 export type VehicleSummaries = VehicleSummary[];
-const VehicleSummaries = /*@__PURE__*/ __L.at(__c20, 7);
 export interface ListVehiclesResponse {
   vehicleSummaries?: VehicleSummary[];
   nextToken?: string;
 }
-const ListVehiclesResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<ListVehiclesResponse>;
 export interface ListVehiclesInFleetRequest {
   fleetId: string;
   nextToken?: string;
   maxResults?: number;
 }
-const ListVehiclesInFleetRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ListVehiclesInFleetRequest>;
 export type Vehicles = string[];
-const Vehicles = StateTemplateAssociationIdentifiers as any as S.Schema<Vehicles>;
 export interface ListVehiclesInFleetResponse {
   vehicles?: string[];
   nextToken?: string;
 }
-const ListVehiclesInFleetResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ListVehiclesInFleetResponse>;
 export interface PutEncryptionConfigurationRequest {
   kmsKeyId?: string;
   encryptionType: EncryptionType;
 }
-const PutEncryptionConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<PutEncryptionConfigurationRequest>;
 export interface PutEncryptionConfigurationResponse {
   kmsKeyId?: string;
   encryptionStatus: EncryptionStatus;
   encryptionType: EncryptionType;
 }
-const PutEncryptionConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<PutEncryptionConfigurationResponse>;
 export interface PutLoggingOptionsRequest {
   cloudWatchLogDelivery: CloudWatchLogDeliveryOptions;
 }
-const PutLoggingOptionsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<PutLoggingOptionsRequest>;
 export interface PutLoggingOptionsResponse {}
-const PutLoggingOptionsResponse =
-  AssociateVehicleFleetResponse as any as S.Schema<PutLoggingOptionsResponse>;
 export interface TimestreamResources {
   timestreamDatabaseName: string;
   timestreamTableName: string;
 }
-const TimestreamResources = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<TimestreamResources>;
 export interface IamResources {
   roleArn: string;
 }
-const IamResources = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<IamResources>;
 export interface RegisterAccountRequest {
   timestreamResources?: TimestreamResources;
   iamResources?: IamResources;
 }
-const RegisterAccountRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<RegisterAccountRequest>;
 export interface RegisterAccountResponse {
   registerAccountStatus: RegistrationStatus;
   timestreamResources?: TimestreamResources;
@@ -1901,56 +1342,31 @@ export interface RegisterAccountResponse {
   creationTime: Date;
   lastModificationTime: Date;
 }
-const RegisterAccountResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<RegisterAccountResponse>;
 export interface TagResourceRequest {
   ResourceARN: string;
   Tags: Tag[];
 }
-const TagResourceRequest = /*@__PURE__*/ __L.at(__c22, 2) as any as S.Schema<TagResourceRequest>;
 export interface TagResourceResponse {}
-const TagResourceResponse = AssociateVehicleFleetResponse as any as S.Schema<TagResourceResponse>;
 export type TagKeyList = string[];
-const TagKeyList = StateTemplateAssociationIdentifiers as any as S.Schema<TagKeyList>;
 export interface UntagResourceRequest {
   ResourceARN: string;
   TagKeys: string[];
 }
-const UntagResourceRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<UntagResourceRequest>;
 export interface UntagResourceResponse {}
-const UntagResourceResponse =
-  AssociateVehicleFleetResponse as any as S.Schema<UntagResourceResponse>;
 export type UpdateCampaignAction = "APPROVE" | "SUSPEND" | "RESUME" | "UPDATE" | (string & {});
-const UpdateCampaignAction = S.String;
-
 export interface UpdateCampaignRequest {
   name: string;
   description?: string;
   dataExtraDimensions?: string[];
   action: UpdateCampaignAction;
 }
-const UpdateCampaignRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<UpdateCampaignRequest>;
 export interface UpdateCampaignResponse {
   arn?: string;
   name?: string;
   status?: CampaignStatus;
 }
-const UpdateCampaignResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<UpdateCampaignResponse>;
 export type Fqns = string[];
-const Fqns = StateTemplateAssociationIdentifiers as any as S.Schema<Fqns>;
 export type InterfaceIds = string[];
-const InterfaceIds = StateTemplateAssociationIdentifiers as any as S.Schema<InterfaceIds>;
 export interface UpdateDecoderManifestRequest {
   name: string;
   description?: string;
@@ -1963,28 +1379,19 @@ export interface UpdateDecoderManifestRequest {
   status?: ManifestStatus;
   defaultForUnmappedSignals?: DefaultForUnmappedSignalsType;
 }
-const UpdateDecoderManifestRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<UpdateDecoderManifestRequest>;
 export interface UpdateDecoderManifestResponse {
   name: string;
   arn: string;
 }
-const UpdateDecoderManifestResponse =
-  CreateDecoderManifestResponse as any as S.Schema<UpdateDecoderManifestResponse>;
 export interface UpdateFleetRequest {
   fleetId: string;
   description?: string;
 }
-const UpdateFleetRequest = /*@__PURE__*/ __L.at(__c22, 7) as any as S.Schema<UpdateFleetRequest>;
 export interface UpdateFleetResponse {
   id?: string;
   arn?: string;
 }
-const UpdateFleetResponse = DeleteFleetResponse as any as S.Schema<UpdateFleetResponse>;
 export type NodePaths = string[];
-const NodePaths = StateTemplateAssociationIdentifiers as any as S.Schema<NodePaths>;
 export interface UpdateModelManifestRequest {
   name: string;
   description?: string;
@@ -1992,16 +1399,10 @@ export interface UpdateModelManifestRequest {
   nodesToRemove?: string[];
   status?: ManifestStatus;
 }
-const UpdateModelManifestRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<UpdateModelManifestRequest>;
 export interface UpdateModelManifestResponse {
   name: string;
   arn: string;
 }
-const UpdateModelManifestResponse =
-  CreateDecoderManifestResponse as any as S.Schema<UpdateModelManifestResponse>;
 export interface UpdateSignalCatalogRequest {
   name: string;
   description?: string;
@@ -2009,16 +1410,10 @@ export interface UpdateSignalCatalogRequest {
   nodesToUpdate?: Node[];
   nodesToRemove?: string[];
 }
-const UpdateSignalCatalogRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<UpdateSignalCatalogRequest>;
 export interface UpdateSignalCatalogResponse {
   name: string;
   arn: string;
 }
-const UpdateSignalCatalogResponse =
-  CreateDecoderManifestResponse as any as S.Schema<UpdateSignalCatalogResponse>;
 export interface UpdateStateTemplateRequest {
   identifier: string;
   description?: string;
@@ -2027,17 +1422,11 @@ export interface UpdateStateTemplateRequest {
   dataExtraDimensions?: string[];
   metadataExtraDimensions?: string[];
 }
-const UpdateStateTemplateRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<UpdateStateTemplateRequest>;
 export interface UpdateStateTemplateResponse {
   name?: string;
   arn?: string;
   id?: string;
 }
-const UpdateStateTemplateResponse =
-  CreateStateTemplateResponse as any as S.Schema<UpdateStateTemplateResponse>;
 export interface UpdateVehicleRequest {
   vehicleName: string;
   modelManifestArn?: string;
@@ -2048,18 +1437,10 @@ export interface UpdateVehicleRequest {
   stateTemplatesToRemove?: string[];
   stateTemplatesToUpdate?: StateTemplateAssociation[];
 }
-const UpdateVehicleRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<UpdateVehicleRequest>;
 export interface UpdateVehicleResponse {
   vehicleName?: string;
   arn?: string;
 }
-const UpdateVehicleResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<UpdateVehicleResponse>;
 export type RetryAfterSeconds = number;
 export type ValidationExceptionReason =
   | "unknownOperation"
@@ -2067,18 +1448,11 @@ export type ValidationExceptionReason =
   | "fieldValidationFailed"
   | "other"
   | (string & {});
-const ValidationExceptionReason = S.String;
-
 export interface ValidationExceptionField {
   name: string;
   message: string;
 }
-const ValidationExceptionField = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ValidationExceptionField>;
 export type ValidationExceptionFieldList = ValidationExceptionField[];
-const ValidationExceptionFieldList = /*@__PURE__*/ __L.at(__c23, 6);
 export type SignalDecoderFailureReason =
   | "DUPLICATE_SIGNAL"
   | "CONFLICTING_SIGNAL"
@@ -2097,19 +1471,12 @@ export type SignalDecoderFailureReason =
   | "EMPTY_MESSAGE_SIGNAL"
   | "CUSTOM_DECODING_SIGNAL_INFO_IS_NULL"
   | (string & {});
-const SignalDecoderFailureReason = S.String;
-
 export interface InvalidSignalDecoder {
   name?: string;
   reason?: SignalDecoderFailureReason;
   hint?: string;
 }
-const InvalidSignalDecoder = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<InvalidSignalDecoder>;
 export type InvalidSignalDecoders = InvalidSignalDecoder[];
-const InvalidSignalDecoders = /*@__PURE__*/ __L.at(__c24, 0);
 export type NetworkInterfaceFailureReason =
   | "DUPLICATE_NETWORK_INTERFACE"
   | "CONFLICTING_NETWORK_INTERFACE"
@@ -2120,25 +1487,16 @@ export type NetworkInterfaceFailureReason =
   | "VEHICLE_MIDDLEWARE_NETWORK_INTERFACE_INFO_IS_NULL"
   | "CUSTOM_DECODING_SIGNAL_NETWORK_INTERFACE_INFO_IS_NULL"
   | (string & {});
-const NetworkInterfaceFailureReason = S.String;
-
 export interface InvalidNetworkInterface {
   interfaceId?: string;
   reason?: NetworkInterfaceFailureReason;
 }
-const InvalidNetworkInterface = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<InvalidNetworkInterface>;
 export type InvalidNetworkInterfaces = InvalidNetworkInterface[];
-const InvalidNetworkInterfaces = /*@__PURE__*/ __L.at(__c24, 2);
 export interface InvalidSignal {
   name?: string;
   reason?: string;
 }
-const InvalidSignal = /*@__PURE__*/ __L.at(__c24, 3) as any as S.Schema<InvalidSignal>;
 export type InvalidSignals = InvalidSignal[];
-const InvalidSignals = /*@__PURE__*/ __L.at(__c24, 4);
 export type AssociateVehicleFleetError =
   | AccessDeniedException
   | InternalServerException
@@ -2156,8 +1514,8 @@ export const associateVehicleFleet: API.OperationMethod<
   AssociateVehicleFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssociateVehicleFleetRequest,
-  output: AssociateVehicleFleetResponse,
+  input: __S(0) as any as S.Schema<AssociateVehicleFleetRequest>,
+  output: __S(1) as any as S.Schema<AssociateVehicleFleetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2193,8 +1551,8 @@ export const batchCreateVehicle: API.OperationMethod<
   BatchCreateVehicleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchCreateVehicleRequest,
-  output: BatchCreateVehicleResponse,
+  input: __S(13) as any as S.Schema<BatchCreateVehicleRequest>,
+  output: __S(18) as any as S.Schema<BatchCreateVehicleResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2229,8 +1587,8 @@ export const batchUpdateVehicle: API.OperationMethod<
   BatchUpdateVehicleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: BatchUpdateVehicleRequest,
-  output: BatchUpdateVehicleResponse,
+  input: __S(22) as any as S.Schema<BatchUpdateVehicleRequest>,
+  output: __S(27) as any as S.Schema<BatchUpdateVehicleResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2268,8 +1626,8 @@ export const createCampaign: API.OperationMethod<
   CreateCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCampaignRequest,
-  output: CreateCampaignResponse,
+  input: __S(48) as any as S.Schema<CreateCampaignRequest>,
+  output: __S(49) as any as S.Schema<CreateCampaignResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2310,8 +1668,8 @@ export const createDecoderManifest: API.OperationMethod<
   CreateDecoderManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateDecoderManifestRequest,
-  output: CreateDecoderManifestResponse,
+  input: __S(68) as any as S.Schema<CreateDecoderManifestRequest>,
+  output: __S(69) as any as S.Schema<CreateDecoderManifestResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2349,8 +1707,8 @@ export const createFleet: API.OperationMethod<
   CreateFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateFleetRequest,
-  output: CreateFleetResponse,
+  input: __S(70) as any as S.Schema<CreateFleetRequest>,
+  output: __S(71) as any as S.Schema<CreateFleetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2387,8 +1745,8 @@ export const createModelManifest: API.OperationMethod<
   CreateModelManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateModelManifestRequest,
-  output: CreateModelManifestResponse,
+  input: __S(72) as any as S.Schema<CreateModelManifestRequest>,
+  output: __S(69) as any as S.Schema<CreateModelManifestResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2422,8 +1780,8 @@ export const createSignalCatalog: API.OperationMethod<
   CreateSignalCatalogError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSignalCatalogRequest,
-  output: CreateSignalCatalogResponse,
+  input: __S(80) as any as S.Schema<CreateSignalCatalogRequest>,
+  output: __S(69) as any as S.Schema<CreateSignalCatalogResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2459,8 +1817,8 @@ export const createStateTemplate: API.OperationMethod<
   CreateStateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateStateTemplateRequest,
-  output: CreateStateTemplateResponse,
+  input: __S(81) as any as S.Schema<CreateStateTemplateRequest>,
+  output: __S(82) as any as S.Schema<CreateStateTemplateResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2502,8 +1860,8 @@ export const createVehicle: API.OperationMethod<
   CreateVehicleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateVehicleRequest,
-  output: CreateVehicleResponse,
+  input: __S(83) as any as S.Schema<CreateVehicleRequest>,
+  output: __S(84) as any as S.Schema<CreateVehicleResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2534,8 +1892,8 @@ export const deleteCampaign: API.OperationMethod<
   DeleteCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCampaignRequest,
-  output: DeleteCampaignResponse,
+  input: __S(85) as any as S.Schema<DeleteCampaignRequest>,
+  output: __S(49) as any as S.Schema<DeleteCampaignResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2564,8 +1922,8 @@ export const deleteDecoderManifest: API.OperationMethod<
   DeleteDecoderManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDecoderManifestRequest,
-  output: DeleteDecoderManifestResponse,
+  input: __S(86) as any as S.Schema<DeleteDecoderManifestRequest>,
+  output: __S(69) as any as S.Schema<DeleteDecoderManifestResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2595,8 +1953,8 @@ export const deleteFleet: API.OperationMethod<
   DeleteFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteFleetRequest,
-  output: DeleteFleetResponse,
+  input: __S(87) as any as S.Schema<DeleteFleetRequest>,
+  output: __S(88) as any as S.Schema<DeleteFleetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2624,8 +1982,8 @@ export const deleteModelManifest: API.OperationMethod<
   DeleteModelManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteModelManifestRequest,
-  output: DeleteModelManifestResponse,
+  input: __S(89) as any as S.Schema<DeleteModelManifestRequest>,
+  output: __S(69) as any as S.Schema<DeleteModelManifestResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2654,8 +2012,8 @@ export const deleteSignalCatalog: API.OperationMethod<
   DeleteSignalCatalogError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSignalCatalogRequest,
-  output: DeleteSignalCatalogResponse,
+  input: __S(90) as any as S.Schema<DeleteSignalCatalogRequest>,
+  output: __S(69) as any as S.Schema<DeleteSignalCatalogResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -2683,8 +2041,8 @@ export const deleteStateTemplate: API.OperationMethod<
   DeleteStateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStateTemplateRequest,
-  output: DeleteStateTemplateResponse,
+  input: __S(91) as any as S.Schema<DeleteStateTemplateRequest>,
+  output: __S(82) as any as S.Schema<DeleteStateTemplateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2711,8 +2069,8 @@ export const deleteVehicle: API.OperationMethod<
   DeleteVehicleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteVehicleRequest,
-  output: DeleteVehicleResponse,
+  input: __S(92) as any as S.Schema<DeleteVehicleRequest>,
+  output: __S(93) as any as S.Schema<DeleteVehicleResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2741,8 +2099,8 @@ export const disassociateVehicleFleet: API.OperationMethod<
   DisassociateVehicleFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisassociateVehicleFleetRequest,
-  output: DisassociateVehicleFleetResponse,
+  input: __S(94) as any as S.Schema<DisassociateVehicleFleetRequest>,
+  output: __S(7) as any as S.Schema<DisassociateVehicleFleetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2772,8 +2130,8 @@ export const getCampaign: API.OperationMethod<
   GetCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCampaignRequest,
-  output: GetCampaignResponse,
+  input: __S(95) as any as S.Schema<GetCampaignRequest>,
+  output: __S(96) as any as S.Schema<GetCampaignResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2800,8 +2158,8 @@ export const getDecoderManifest: API.OperationMethod<
   GetDecoderManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDecoderManifestRequest,
-  output: GetDecoderManifestResponse,
+  input: __S(97) as any as S.Schema<GetDecoderManifestRequest>,
+  output: __S(98) as any as S.Schema<GetDecoderManifestResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2829,8 +2187,8 @@ export const getEncryptionConfiguration: API.OperationMethod<
   GetEncryptionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEncryptionConfigurationRequest,
-  output: GetEncryptionConfigurationResponse,
+  input: __S(99) as any as S.Schema<GetEncryptionConfigurationRequest>,
+  output: __S(100) as any as S.Schema<GetEncryptionConfigurationResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2859,8 +2217,8 @@ export const getFleet: API.OperationMethod<
   GetFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetFleetRequest,
-  output: GetFleetResponse,
+  input: __S(101) as any as S.Schema<GetFleetRequest>,
+  output: __S(102) as any as S.Schema<GetFleetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2883,8 +2241,8 @@ export const getLoggingOptions: API.OperationMethod<
   GetLoggingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLoggingOptionsRequest,
-  output: GetLoggingOptionsResponse,
+  input: __S(103) as any as S.Schema<GetLoggingOptionsRequest>,
+  output: __S(105) as any as S.Schema<GetLoggingOptionsResponse>,
   errors: [AccessDeniedException, ThrottlingException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -2906,8 +2264,8 @@ export const getModelManifest: API.OperationMethod<
   GetModelManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetModelManifestRequest,
-  output: GetModelManifestResponse,
+  input: __S(106) as any as S.Schema<GetModelManifestRequest>,
+  output: __S(107) as any as S.Schema<GetModelManifestResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -2941,8 +2299,8 @@ export const getRegisterAccountStatus: API.OperationMethod<
   GetRegisterAccountStatusError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegisterAccountStatusRequest,
-  output: GetRegisterAccountStatusResponse,
+  input: __S(108) as any as S.Schema<GetRegisterAccountStatusRequest>,
+  output: __S(111) as any as S.Schema<GetRegisterAccountStatusResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -2970,8 +2328,8 @@ export const getSignalCatalog: API.OperationMethod<
   GetSignalCatalogError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSignalCatalogRequest,
-  output: GetSignalCatalogResponse,
+  input: __S(112) as any as S.Schema<GetSignalCatalogRequest>,
+  output: __S(114) as any as S.Schema<GetSignalCatalogResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3001,8 +2359,8 @@ export const getStateTemplate: API.OperationMethod<
   GetStateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStateTemplateRequest,
-  output: GetStateTemplateResponse,
+  input: __S(115) as any as S.Schema<GetStateTemplateRequest>,
+  output: __S(116) as any as S.Schema<GetStateTemplateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3031,8 +2389,8 @@ export const getVehicle: API.OperationMethod<
   GetVehicleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVehicleRequest,
-  output: GetVehicleResponse,
+  input: __S(117) as any as S.Schema<GetVehicleRequest>,
+  output: __S(118) as any as S.Schema<GetVehicleResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3062,8 +2420,8 @@ export const getVehicleStatus: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VehicleStatus
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: GetVehicleStatusRequest,
-  output: GetVehicleStatusResponse,
+  input: __S(119) as any as S.Schema<GetVehicleStatusRequest>,
+  output: __S(122) as any as S.Schema<GetVehicleStatusResponse>,
   errors: [
     AccessDeniedException,
     ResourceNotFoundException,
@@ -3101,8 +2459,8 @@ export const importDecoderManifest: API.OperationMethod<
   ImportDecoderManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportDecoderManifestRequest,
-  output: ImportDecoderManifestResponse,
+  input: __S(127) as any as S.Schema<ImportDecoderManifestRequest>,
+  output: __S(69) as any as S.Schema<ImportDecoderManifestResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3137,8 +2495,8 @@ export const importSignalCatalog: API.OperationMethod<
   ImportSignalCatalogError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportSignalCatalogRequest,
-  output: ImportSignalCatalogResponse,
+  input: __S(129) as any as S.Schema<ImportSignalCatalogRequest>,
+  output: __S(69) as any as S.Schema<ImportSignalCatalogResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3171,8 +2529,8 @@ export const listCampaigns: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   CampaignSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListCampaignsRequest,
-  output: ListCampaignsResponse,
+  input: __S(130) as any as S.Schema<ListCampaignsRequest>,
+  output: __S(133) as any as S.Schema<ListCampaignsResponse>,
   errors: [AccessDeniedException, ThrottlingException, ValidationException],
   protocol: AwsProtocol,
   retry: Retry,
@@ -3204,8 +2562,8 @@ export const listDecoderManifestNetworkInterfaces: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   NetworkInterface
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDecoderManifestNetworkInterfacesRequest,
-  output: ListDecoderManifestNetworkInterfacesResponse,
+  input: __S(134) as any as S.Schema<ListDecoderManifestNetworkInterfacesRequest>,
+  output: __S(135) as any as S.Schema<ListDecoderManifestNetworkInterfacesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3242,8 +2600,8 @@ export const listDecoderManifests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   DecoderManifestSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDecoderManifestsRequest,
-  output: ListDecoderManifestsResponse,
+  input: __S(136) as any as S.Schema<ListDecoderManifestsRequest>,
+  output: __S(139) as any as S.Schema<ListDecoderManifestsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3280,8 +2638,8 @@ export const listDecoderManifestSignals: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SignalDecoder
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListDecoderManifestSignalsRequest,
-  output: ListDecoderManifestSignalsResponse,
+  input: __S(140) as any as S.Schema<ListDecoderManifestSignalsRequest>,
+  output: __S(141) as any as S.Schema<ListDecoderManifestSignalsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3319,8 +2677,8 @@ export const listFleets: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FleetSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFleetsRequest,
-  output: ListFleetsResponse,
+  input: __S(142) as any as S.Schema<ListFleetsRequest>,
+  output: __S(145) as any as S.Schema<ListFleetsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3358,8 +2716,8 @@ export const listFleetsForVehicle: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   FleetId
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListFleetsForVehicleRequest,
-  output: ListFleetsForVehicleResponse,
+  input: __S(146) as any as S.Schema<ListFleetsForVehicleRequest>,
+  output: __S(147) as any as S.Schema<ListFleetsForVehicleResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3398,8 +2756,8 @@ export const listModelManifestNodes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Node
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListModelManifestNodesRequest,
-  output: ListModelManifestNodesResponse,
+  input: __S(148) as any as S.Schema<ListModelManifestNodesRequest>,
+  output: __S(149) as any as S.Schema<ListModelManifestNodesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3437,8 +2795,8 @@ export const listModelManifests: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   ModelManifestSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListModelManifestsRequest,
-  output: ListModelManifestsResponse,
+  input: __S(150) as any as S.Schema<ListModelManifestsRequest>,
+  output: __S(153) as any as S.Schema<ListModelManifestsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3476,8 +2834,8 @@ export const listSignalCatalogNodes: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   Node
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSignalCatalogNodesRequest,
-  output: ListSignalCatalogNodesResponse,
+  input: __S(154) as any as S.Schema<ListSignalCatalogNodesRequest>,
+  output: __S(149) as any as S.Schema<ListSignalCatalogNodesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3518,8 +2876,8 @@ export const listSignalCatalogs: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   SignalCatalogSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListSignalCatalogsRequest,
-  output: ListSignalCatalogsResponse,
+  input: __S(155) as any as S.Schema<ListSignalCatalogsRequest>,
+  output: __S(158) as any as S.Schema<ListSignalCatalogsResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3555,8 +2913,8 @@ export const listStateTemplates: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   StateTemplateSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListStateTemplatesRequest,
-  output: ListStateTemplatesResponse,
+  input: __S(159) as any as S.Schema<ListStateTemplatesRequest>,
+  output: __S(162) as any as S.Schema<ListStateTemplatesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3590,8 +2948,8 @@ export const listTagsForResource: API.OperationMethod<
   ListTagsForResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListTagsForResourceRequest,
-  output: ListTagsForResourceResponse,
+  input: __S(163) as any as S.Schema<ListTagsForResourceRequest>,
+  output: __S(164) as any as S.Schema<ListTagsForResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3622,8 +2980,8 @@ export const listVehicles: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VehicleSummary
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListVehiclesRequest,
-  output: ListVehiclesResponse,
+  input: __S(165) as any as S.Schema<ListVehiclesRequest>,
+  output: __S(168) as any as S.Schema<ListVehiclesResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3660,8 +3018,8 @@ export const listVehiclesInFleet: API.PaginatedOperationMethod<
   Credentials | HttpClient.HttpClient,
   VehicleName
 > = /*@__PURE__*/ API.makePaginated(() => ({
-  input: ListVehiclesInFleetRequest,
-  output: ListVehiclesInFleetResponse,
+  input: __S(169) as any as S.Schema<ListVehiclesInFleetRequest>,
+  output: __S(170) as any as S.Schema<ListVehiclesInFleetResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3700,8 +3058,8 @@ export const putEncryptionConfiguration: API.OperationMethod<
   PutEncryptionConfigurationError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutEncryptionConfigurationRequest,
-  output: PutEncryptionConfigurationResponse,
+  input: __S(171) as any as S.Schema<PutEncryptionConfigurationRequest>,
+  output: __S(172) as any as S.Schema<PutEncryptionConfigurationResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3731,8 +3089,8 @@ export const putLoggingOptions: API.OperationMethod<
   PutLoggingOptionsError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutLoggingOptionsRequest,
-  output: PutLoggingOptionsResponse,
+  input: __S(173) as any as S.Schema<PutLoggingOptionsRequest>,
+  output: __S(1) as any as S.Schema<PutLoggingOptionsResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3784,8 +3142,8 @@ export const registerAccount: API.OperationMethod<
   RegisterAccountError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegisterAccountRequest,
-  output: RegisterAccountResponse,
+  input: __S(176) as any as S.Schema<RegisterAccountRequest>,
+  output: __S(177) as any as S.Schema<RegisterAccountResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3816,8 +3174,8 @@ export const tagResource: API.OperationMethod<
   TagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: TagResourceRequest,
-  output: TagResourceResponse,
+  input: __S(178) as any as S.Schema<TagResourceRequest>,
+  output: __S(1) as any as S.Schema<TagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3846,8 +3204,8 @@ export const untagResource: API.OperationMethod<
   UntagResourceError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UntagResourceRequest,
-  output: UntagResourceResponse,
+  input: __S(179) as any as S.Schema<UntagResourceRequest>,
+  output: __S(1) as any as S.Schema<UntagResourceResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -3876,8 +3234,8 @@ export const updateCampaign: API.OperationMethod<
   UpdateCampaignError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCampaignRequest,
-  output: UpdateCampaignResponse,
+  input: __S(180) as any as S.Schema<UpdateCampaignRequest>,
+  output: __S(181) as any as S.Schema<UpdateCampaignResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3911,8 +3269,8 @@ export const updateDecoderManifest: API.OperationMethod<
   UpdateDecoderManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDecoderManifestRequest,
-  output: UpdateDecoderManifestResponse,
+  input: __S(182) as any as S.Schema<UpdateDecoderManifestRequest>,
+  output: __S(69) as any as S.Schema<UpdateDecoderManifestResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3944,8 +3302,8 @@ export const updateFleet: API.OperationMethod<
   UpdateFleetError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateFleetRequest,
-  output: UpdateFleetResponse,
+  input: __S(183) as any as S.Schema<UpdateFleetRequest>,
+  output: __S(88) as any as S.Schema<UpdateFleetResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -3978,8 +3336,8 @@ export const updateModelManifest: API.OperationMethod<
   UpdateModelManifestError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateModelManifestRequest,
-  output: UpdateModelManifestResponse,
+  input: __S(184) as any as S.Schema<UpdateModelManifestRequest>,
+  output: __S(69) as any as S.Schema<UpdateModelManifestResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4014,8 +3372,8 @@ export const updateSignalCatalog: API.OperationMethod<
   UpdateSignalCatalogError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateSignalCatalogRequest,
-  output: UpdateSignalCatalogResponse,
+  input: __S(185) as any as S.Schema<UpdateSignalCatalogRequest>,
+  output: __S(69) as any as S.Schema<UpdateSignalCatalogResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4052,8 +3410,8 @@ export const updateStateTemplate: API.OperationMethod<
   UpdateStateTemplateError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStateTemplateRequest,
-  output: UpdateStateTemplateResponse,
+  input: __S(186) as any as S.Schema<UpdateStateTemplateRequest>,
+  output: __S(82) as any as S.Schema<UpdateStateTemplateResponse>,
   errors: [
     AccessDeniedException,
     InternalServerException,
@@ -4088,8 +3446,8 @@ export const updateVehicle: API.OperationMethod<
   UpdateVehicleError,
   Credentials | HttpClient.HttpClient
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateVehicleRequest,
-  output: UpdateVehicleResponse,
+  input: __S(187) as any as S.Schema<UpdateVehicleRequest>,
+  output: __S(188) as any as S.Schema<UpdateVehicleResponse>,
   errors: [
     AccessDeniedException,
     ConflictException,
@@ -4136,13 +3494,13 @@ function __c0(j: number): any {
         identifier: "Tag",
       });
     case 4:
-      return S.Array(Tag);
+      return S.Array(__S(3));
     case 5:
-      return S.suspend(() => S.Struct({ unit: TimeUnit, value: S.Number })).annotate({
+      return S.suspend(() => S.Struct({ unit: S.String, value: S.Number })).annotate({
         identifier: "TimePeriod",
       });
     case 6:
-      return S.suspend(() => S.Struct({ stateTemplateUpdateRate: TimePeriod })).annotate({
+      return S.suspend(() => S.Struct({ stateTemplateUpdateRate: __S(5) })).annotate({
         identifier: "PeriodicStateTemplateUpdateStrategy",
       });
     case 7:
@@ -4155,35 +3513,35 @@ function __c1(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ periodic: PeriodicStateTemplateUpdateStrategy }),
-        /*@__PURE__*/ S.Struct({ onChange: OnChangeStateTemplateUpdateStrategy }),
+        /*@__PURE__*/ S.Struct({ periodic: __S(6) }),
+        /*@__PURE__*/ S.Struct({ onChange: __S(7) }),
       ]);
     case 1:
       return S.suspend(() =>
         S.Struct({
           identifier: S.String,
-          stateTemplateUpdateStrategy: StateTemplateUpdateStrategy,
+          stateTemplateUpdateStrategy: __S(8),
         }),
       ).annotate({ identifier: "StateTemplateAssociation" });
     case 2:
-      return S.Array(StateTemplateAssociation);
+      return S.Array(__S(9));
     case 3:
       return S.suspend(() =>
         S.Struct({
           vehicleName: S.String,
           modelManifestArn: S.String,
           decoderManifestArn: S.String,
-          attributes: S.optional(AttributesMap),
-          associationBehavior: S.optional(VehicleAssociationBehavior),
-          tags: S.optional(TagList),
-          stateTemplates: S.optional(StateTemplateAssociations),
+          attributes: S.optional(__S(2)),
+          associationBehavior: S.optional(S.String),
+          tags: S.optional(__S(4)),
+          stateTemplates: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "CreateVehicleRequestItem" });
     case 4:
-      return S.Array(CreateVehicleRequestItem);
+      return S.Array(__S(11));
     case 5:
       return S.suspend(() =>
-        S.Struct({ vehicles: CreateVehicleRequestItems }).pipe(
+        S.Struct({ vehicles: __S(12) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/vehicles" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4200,7 +3558,7 @@ function __c1(j: number): any {
         identifier: "CreateVehicleResponseItem",
       });
     case 7:
-      return S.Array(CreateVehicleResponseItem);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -4214,12 +3572,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "CreateVehicleError" });
     case 1:
-      return S.Array(CreateVehicleError_);
+      return S.Array(__S(16));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          vehicles: S.optional(CreateVehicleResponses),
-          errors: S.optional(CreateVehicleErrors),
+          vehicles: S.optional(__S(15)),
+          errors: S.optional(__S(17)),
         }),
       ).annotate({
         identifier: "BatchCreateVehicleResponse",
@@ -4232,18 +3590,18 @@ function __c2(j: number): any {
           vehicleName: S.String,
           modelManifestArn: S.optional(S.String),
           decoderManifestArn: S.optional(S.String),
-          attributes: S.optional(AttributesMap),
-          attributeUpdateMode: S.optional(UpdateMode),
-          stateTemplatesToAdd: S.optional(StateTemplateAssociations),
-          stateTemplatesToRemove: S.optional(StateTemplateAssociationIdentifiers),
-          stateTemplatesToUpdate: S.optional(StateTemplateAssociations),
+          attributes: S.optional(__S(2)),
+          attributeUpdateMode: S.optional(S.String),
+          stateTemplatesToAdd: S.optional(__S(10)),
+          stateTemplatesToRemove: S.optional(__S(19)),
+          stateTemplatesToUpdate: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "UpdateVehicleRequestItem" });
     case 5:
-      return S.Array(UpdateVehicleRequestItem);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
-        S.Struct({ vehicles: UpdateVehicleRequestItems }).pipe(
+        S.Struct({ vehicles: __S(21) }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/vehicles" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({
@@ -4260,7 +3618,7 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(UpdateVehicleResponseItem);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4270,12 +3628,12 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "UpdateVehicleError" });
     case 2:
-      return S.Array(UpdateVehicleError_);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          vehicles: S.optional(UpdateVehicleResponseItems),
-          errors: S.optional(UpdateVehicleErrors),
+          vehicles: S.optional(__S(24)),
+          errors: S.optional(__S(26)),
         }),
       ).annotate({
         identifier: "BatchUpdateVehicleResponse",
@@ -4290,7 +3648,7 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "SignalInformation" });
     case 5:
-      return S.Array(SignalInformation);
+      return S.Array(__S(28));
     case 6:
       return S.suspend(() => S.Struct({ periodMs: S.Number })).annotate({
         identifier: "TimeBasedCollectionScheme",
@@ -4300,7 +3658,7 @@ function __c3(j: number): any {
         S.Struct({
           expression: SensitiveString,
           minimumTriggerIntervalMs: S.optional(S.Number),
-          triggerMode: S.optional(TriggerMode),
+          triggerMode: S.optional(S.String),
           conditionLanguageVersion: S.optional(S.Number),
         }),
       ).annotate({
@@ -4312,15 +3670,15 @@ function __c4(j: number): any {
   switch (j) {
     case 0:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ timeBasedCollectionScheme: TimeBasedCollectionScheme }),
-        /*@__PURE__*/ S.Struct({ conditionBasedCollectionScheme: ConditionBasedCollectionScheme }),
+        /*@__PURE__*/ S.Struct({ timeBasedCollectionScheme: __S(30) }),
+        /*@__PURE__*/ S.Struct({ conditionBasedCollectionScheme: __S(31) }),
       ]);
     case 1:
       return S.suspend(() =>
         S.Struct({
           bucketArn: S.String,
-          dataFormat: S.optional(DataFormat),
-          storageCompressionFormat: S.optional(StorageCompressionFormat),
+          dataFormat: S.optional(S.String),
+          storageCompressionFormat: S.optional(S.String),
           prefix: S.optional(S.String),
         }),
       ).annotate({ identifier: "S3Config" });
@@ -4334,18 +3692,18 @@ function __c4(j: number): any {
       ).annotate({ identifier: "MqttTopicConfig" });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ s3Config: S3Config }),
-        /*@__PURE__*/ S.Struct({ timestreamConfig: TimestreamConfig }),
-        /*@__PURE__*/ S.Struct({ mqttTopicConfig: MqttTopicConfig }),
+        /*@__PURE__*/ S.Struct({ s3Config: __S(33) }),
+        /*@__PURE__*/ S.Struct({ timestreamConfig: __S(34) }),
+        /*@__PURE__*/ S.Struct({ mqttTopicConfig: __S(35) }),
       ]);
     case 5:
-      return S.Array(DataDestinationConfig);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          maximumSize: StorageMaximumSize,
+          maximumSize: __S(5),
           storageLocation: SensitiveString,
-          minimumTimeToLive: StorageMinimumTimeToLive,
+          minimumTimeToLive: __S(5),
         }),
       ).annotate({
         identifier: "DataPartitionStorageOptions",
@@ -4364,26 +3722,26 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          storageOptions: DataPartitionStorageOptions,
-          uploadOptions: S.optional(DataPartitionUploadOptions),
+          storageOptions: __S(38),
+          uploadOptions: S.optional(__S(39)),
         }),
       ).annotate({ identifier: "DataPartition" });
     case 1:
-      return S.Array(DataPartition);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() => S.Struct({ executionFrequencyMs: S.Number })).annotate({
         identifier: "TimeBasedSignalFetchConfig",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ conditionExpression: SensitiveString, triggerMode: TriggerMode }),
+        S.Struct({ conditionExpression: SensitiveString, triggerMode: S.String }),
       ).annotate({
         identifier: "ConditionBasedSignalFetchConfig",
       });
     case 4:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ timeBased: TimeBasedSignalFetchConfig }),
-        /*@__PURE__*/ S.Struct({ conditionBased: ConditionBasedSignalFetchConfig }),
+        /*@__PURE__*/ S.Struct({ timeBased: __S(42) }),
+        /*@__PURE__*/ S.Struct({ conditionBased: __S(43) }),
       ]);
     case 5:
       return S.Array(SensitiveString);
@@ -4391,13 +3749,13 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fullyQualifiedName: S.String,
-          signalFetchConfig: SignalFetchConfig,
+          signalFetchConfig: __S(44),
           conditionLanguageVersion: S.optional(S.Number),
-          actions: EventExpressionList,
+          actions: __S(45),
         }),
       ).annotate({ identifier: "SignalFetchInformation" });
     case 7:
-      return S.Array(SignalFetchInformation);
+      return S.Array(__S(46));
   }
 }
 function __c6(j: number): any {
@@ -4412,17 +3770,17 @@ function __c6(j: number): any {
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           expiryTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           postTriggerCollectionDuration: S.optional(S.Number),
-          diagnosticsMode: S.optional(DiagnosticsMode),
-          spoolingMode: S.optional(SpoolingMode),
-          compression: S.optional(Compression),
+          diagnosticsMode: S.optional(S.String),
+          spoolingMode: S.optional(S.String),
+          compression: S.optional(S.String),
           priority: S.optional(S.Number),
-          signalsToCollect: S.optional(SignalInformationList),
-          collectionScheme: CollectionScheme,
-          dataExtraDimensions: S.optional(DataExtraDimensionNodePathList),
-          tags: S.optional(TagList),
-          dataDestinationConfigs: S.optional(DataDestinationConfigs),
-          dataPartitions: S.optional(DataPartitions),
-          signalsToFetch: S.optional(SignalFetchInformationList),
+          signalsToCollect: S.optional(__S(29)),
+          collectionScheme: __S(32),
+          dataExtraDimensions: S.optional(__S(19)),
+          tags: S.optional(__S(4)),
+          dataDestinationConfigs: S.optional(__S(37)),
+          dataPartitions: S.optional(__S(41)),
+          signalsToFetch: S.optional(__S(47)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/campaigns/{name}" }), svc, auth, proto, ver, rules),
         ),
@@ -4442,7 +3800,7 @@ function __c6(j: number): any {
           factor: S.Number,
           length: S.Number,
           name: S.optional(S.String),
-          signalValueType: S.optional(SignalValueType),
+          signalValueType: S.optional(S.String),
         }),
       ).annotate({ identifier: "CanSignal" });
     case 3:
@@ -4458,13 +3816,13 @@ function __c6(j: number): any {
           bitRightShift: S.optional(S.Number),
           bitMaskLength: S.optional(S.Number),
           isSigned: S.optional(S.Boolean),
-          signalValueType: S.optional(SignalValueType),
+          signalValueType: S.optional(S.String),
         }),
       ).annotate({ identifier: "ObdSignal" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          primitiveType: ROS2PrimitiveType,
+          primitiveType: S.String,
           offset: S.optional(S.Number),
           scaling: S.optional(S.Number),
           upperBound: S.optional(S.Number),
@@ -4473,17 +3831,15 @@ function __c6(j: number): any {
         identifier: "ROS2PrimitiveMessageDefinition",
       });
     case 5:
-      return S.Union([
-        /*@__PURE__*/ S.Struct({ ros2PrimitiveMessageDefinition: ROS2PrimitiveMessageDefinition }),
-      ]);
+      return S.Union([/*@__PURE__*/ S.Struct({ ros2PrimitiveMessageDefinition: __S(52) })]);
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          memberType: S.suspend(() => StructuredMessage).annotate({
+          memberType: S.suspend(() => __S(57)).annotate({
             identifier: "StructuredMessage",
           }),
-          listType: StructuredMessageListType,
+          listType: S.String,
           capacity: S.optional(S.Number),
         }),
       ).annotate({
@@ -4493,7 +3849,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fieldName: S.String,
-          dataType: S.suspend(() => StructuredMessage).annotate({
+          dataType: S.suspend(() => __S(57)).annotate({
             identifier: "StructuredMessage",
           }),
         }),
@@ -4506,30 +3862,27 @@ function __c7(j: number): any {
   switch (j) {
     case 0:
       return S.Array(
-        /*@__PURE__*/ S.suspend(
-          (): S.Schema<StructuredMessageFieldNameAndDataTypePair> =>
-            StructuredMessageFieldNameAndDataTypePair,
+        /*@__PURE__*/ S.suspend((): S.Schema<StructuredMessageFieldNameAndDataTypePair> =>
+          __S(55),
         ).annotate({ identifier: "StructuredMessageFieldNameAndDataTypePair" }),
       );
     case 1:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ primitiveMessageDefinition: PrimitiveMessageDefinition }),
+        /*@__PURE__*/ S.Struct({ primitiveMessageDefinition: __S(53) }),
         /*@__PURE__*/ S.Struct({
           structuredMessageListDefinition: /*@__PURE__*/ S.suspend(
-            (): S.Schema<StructuredMessageListDefinition> => StructuredMessageListDefinition,
+            (): S.Schema<StructuredMessageListDefinition> => __S(54),
           ).annotate({ identifier: "StructuredMessageListDefinition" }),
         }),
         /*@__PURE__*/ S.Struct({
-          structuredMessageDefinition: /*@__PURE__*/ S.suspend(
-            () => StructuredMessageDefinition,
-          ).annotate({
+          structuredMessageDefinition: /*@__PURE__*/ S.suspend(() => __S(56)).annotate({
             identifier: "StructuredMessageDefinition",
           }),
         }),
       ]);
     case 2:
       return S.suspend(() =>
-        S.Struct({ topicName: S.String, structuredMessage: StructuredMessage }),
+        S.Struct({ topicName: S.String, structuredMessage: __S(57) }),
       ).annotate({ identifier: "MessageSignal" });
     case 3:
       return S.suspend(() => S.Struct({ id: S.String })).annotate({
@@ -4539,16 +3892,16 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fullyQualifiedName: S.String,
-          type: SignalDecoderType,
+          type: S.String,
           interfaceId: S.String,
-          canSignal: S.optional(CanSignal),
-          obdSignal: S.optional(ObdSignal),
-          messageSignal: S.optional(MessageSignal),
-          customDecodingSignal: S.optional(CustomDecodingSignal),
+          canSignal: S.optional(__S(50)),
+          obdSignal: S.optional(__S(51)),
+          messageSignal: S.optional(__S(58)),
+          customDecodingSignal: S.optional(__S(59)),
         }),
       ).annotate({ identifier: "SignalDecoder" });
     case 5:
-      return S.Array(SignalDecoder);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -4574,9 +3927,9 @@ function __c7(j: number): any {
 function __c8(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        S.Struct({ name: S.String, protocolName: VehicleMiddlewareProtocol }),
-      ).annotate({ identifier: "VehicleMiddleware" });
+      return S.suspend(() => S.Struct({ name: S.String, protocolName: S.String })).annotate({
+        identifier: "VehicleMiddleware",
+      });
     case 1:
       return S.suspend(() => S.Struct({ name: S.String })).annotate({
         identifier: "CustomDecodingInterface",
@@ -4585,25 +3938,25 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           interfaceId: S.String,
-          type: NetworkInterfaceType,
-          canInterface: S.optional(CanInterface),
-          obdInterface: S.optional(ObdInterface),
-          vehicleMiddleware: S.optional(VehicleMiddleware),
-          customDecodingInterface: S.optional(CustomDecodingInterface),
+          type: S.String,
+          canInterface: S.optional(__S(62)),
+          obdInterface: S.optional(__S(63)),
+          vehicleMiddleware: S.optional(__S(64)),
+          customDecodingInterface: S.optional(__S(65)),
         }),
       ).annotate({ identifier: "NetworkInterface" });
     case 3:
-      return S.Array(NetworkInterface);
+      return S.Array(__S(66));
     case 4:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
           modelManifestArn: S.String,
-          signalDecoders: S.optional(SignalDecoders),
-          networkInterfaces: S.optional(NetworkInterfaces),
-          defaultForUnmappedSignals: S.optional(DefaultForUnmappedSignalsType),
-          tags: S.optional(TagList),
+          signalDecoders: S.optional(__S(61)),
+          networkInterfaces: S.optional(__S(67)),
+          defaultForUnmappedSignals: S.optional(S.String),
+          tags: S.optional(__S(4)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/decoder-manifests/{name}" }),
@@ -4627,7 +3980,7 @@ function __c8(j: number): any {
           fleetId: S.String.pipe(T.HttpLabel("fleetId")),
           description: S.optional(S.String),
           signalCatalogArn: S.String,
-          tags: S.optional(TagList),
+          tags: S.optional(__S(4)),
         }).pipe(
           T.all(T.Http({ method: "POST", uri: "/fleets/{fleetId}" }), svc, auth, proto, ver, rules),
         ),
@@ -4645,9 +3998,9 @@ function __c9(j: number): any {
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          nodes: ListOfStrings,
+          nodes: __S(19),
           signalCatalogArn: S.String,
-          tags: S.optional(TagList),
+          tags: S.optional(__S(4)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/model-manifests/{name}" }),
@@ -4674,10 +4027,10 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fullyQualifiedName: S.String,
-          dataType: NodeDataType,
+          dataType: S.String,
           description: S.optional(S.String),
           unit: S.optional(S.String),
-          allowedValues: S.optional(ListOfStrings),
+          allowedValues: S.optional(__S(19)),
           min: S.optional(S.Number),
           max: S.optional(S.Number),
           deprecationMessage: S.optional(S.String),
@@ -4689,10 +4042,10 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fullyQualifiedName: S.String,
-          dataType: NodeDataType,
+          dataType: S.String,
           description: S.optional(S.String),
           unit: S.optional(S.String),
-          allowedValues: S.optional(ListOfStrings),
+          allowedValues: S.optional(__S(19)),
           min: S.optional(S.Number),
           max: S.optional(S.Number),
           assignedValue: S.optional(S.String),
@@ -4705,10 +4058,10 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fullyQualifiedName: S.String,
-          dataType: NodeDataType,
+          dataType: S.String,
           description: S.optional(S.String),
           unit: S.optional(S.String),
-          allowedValues: S.optional(ListOfStrings),
+          allowedValues: S.optional(__S(19)),
           min: S.optional(S.Number),
           max: S.optional(S.Number),
           assignedValue: S.optional(S.String),
@@ -4721,8 +4074,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           fullyQualifiedName: S.String,
-          dataType: NodeDataType,
-          dataEncoding: S.optional(NodeDataEncoding),
+          dataType: S.String,
+          dataEncoding: S.optional(S.String),
           description: S.optional(S.String),
           deprecationMessage: S.optional(S.String),
           comment: S.optional(S.String),
@@ -4731,15 +4084,15 @@ function __c9(j: number): any {
       ).annotate({ identifier: "CustomProperty" });
     case 6:
       return S.Union([
-        /*@__PURE__*/ S.Struct({ branch: Branch }),
-        /*@__PURE__*/ S.Struct({ sensor: Sensor }),
-        /*@__PURE__*/ S.Struct({ actuator: Actuator }),
-        /*@__PURE__*/ S.Struct({ attribute: Attribute }),
-        /*@__PURE__*/ S.Struct({ struct: CustomStruct }),
-        /*@__PURE__*/ S.Struct({ property: CustomProperty }),
+        /*@__PURE__*/ S.Struct({ branch: __S(73) }),
+        /*@__PURE__*/ S.Struct({ sensor: __S(74) }),
+        /*@__PURE__*/ S.Struct({ actuator: __S(75) }),
+        /*@__PURE__*/ S.Struct({ attribute: __S(76) }),
+        /*@__PURE__*/ S.Struct({ struct: __S(73) }),
+        /*@__PURE__*/ S.Struct({ property: __S(77) }),
       ]);
     case 7:
-      return S.Array(Node);
+      return S.Array(__S(78));
   }
 }
 function __c10(j: number): any {
@@ -4749,8 +4102,8 @@ function __c10(j: number): any {
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          nodes: S.optional(Nodes),
-          tags: S.optional(TagList),
+          nodes: S.optional(__S(79)),
+          tags: S.optional(__S(4)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/signal-catalogs/{name}" }),
@@ -4770,10 +4123,10 @@ function __c10(j: number): any {
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
           signalCatalogArn: S.String,
-          stateTemplateProperties: StateTemplateProperties,
-          dataExtraDimensions: S.optional(StateTemplateDataExtraDimensionNodePathList),
-          metadataExtraDimensions: S.optional(StateTemplateMetadataExtraDimensionNodePathList),
-          tags: S.optional(TagList),
+          stateTemplateProperties: __S(19),
+          dataExtraDimensions: S.optional(__S(19)),
+          metadataExtraDimensions: S.optional(__S(19)),
+          tags: S.optional(__S(4)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/state-templates/{name}" }),
@@ -4803,10 +4156,10 @@ function __c10(j: number): any {
           vehicleName: S.String.pipe(T.HttpLabel("vehicleName")),
           modelManifestArn: S.String,
           decoderManifestArn: S.String,
-          attributes: S.optional(AttributesMap),
-          associationBehavior: S.optional(VehicleAssociationBehavior),
-          tags: S.optional(TagList),
-          stateTemplates: S.optional(StateTemplateAssociations),
+          attributes: S.optional(__S(2)),
+          associationBehavior: S.optional(S.String),
+          tags: S.optional(__S(4)),
+          stateTemplates: S.optional(__S(10)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/vehicles/{vehicleName}" }),
@@ -4973,22 +4326,22 @@ function __c12(j: number): any {
           description: S.optional(S.String),
           signalCatalogArn: S.optional(S.String),
           targetArn: S.optional(S.String),
-          status: S.optional(CampaignStatus),
+          status: S.optional(S.String),
           startTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           expiryTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           postTriggerCollectionDuration: S.optional(S.Number),
-          diagnosticsMode: S.optional(DiagnosticsMode),
-          spoolingMode: S.optional(SpoolingMode),
-          compression: S.optional(Compression),
+          diagnosticsMode: S.optional(S.String),
+          spoolingMode: S.optional(S.String),
+          compression: S.optional(S.String),
           priority: S.optional(S.Number),
-          signalsToCollect: S.optional(SignalInformationList),
-          collectionScheme: S.optional(CollectionScheme),
-          dataExtraDimensions: S.optional(DataExtraDimensionNodePathList),
+          signalsToCollect: S.optional(__S(29)),
+          collectionScheme: S.optional(__S(32)),
+          dataExtraDimensions: S.optional(__S(19)),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
-          dataDestinationConfigs: S.optional(DataDestinationConfigs),
-          dataPartitions: S.optional(DataPartitions),
-          signalsToFetch: S.optional(SignalFetchInformationList),
+          dataDestinationConfigs: S.optional(__S(37)),
+          dataPartitions: S.optional(__S(41)),
+          signalsToFetch: S.optional(__S(47)),
         }),
       ).annotate({ identifier: "GetCampaignResponse" });
     case 1:
@@ -5013,7 +4366,7 @@ function __c12(j: number): any {
           arn: S.String,
           description: S.optional(S.String),
           modelManifestArn: S.optional(S.String),
-          status: S.optional(ManifestStatus),
+          status: S.optional(S.String),
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModificationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           message: S.optional(S.String),
@@ -5040,8 +4393,8 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kmsKeyId: S.optional(S.String),
-          encryptionStatus: EncryptionStatus,
-          encryptionType: EncryptionType,
+          encryptionStatus: S.String,
+          encryptionType: S.String,
           errorMessage: S.optional(S.String),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
@@ -5078,14 +4431,12 @@ function __c13(j: number): any {
   switch (j) {
     case 0:
       return S.suspend(() =>
-        S.Struct({ logType: LogType, logGroupName: S.optional(S.String) }),
+        S.Struct({ logType: S.String, logGroupName: S.optional(S.String) }),
       ).annotate({
         identifier: "CloudWatchLogDeliveryOptions",
       });
     case 1:
-      return S.suspend(() =>
-        S.Struct({ cloudWatchLogDelivery: CloudWatchLogDeliveryOptions }),
-      ).annotate({
+      return S.suspend(() => S.Struct({ cloudWatchLogDelivery: __S(104) })).annotate({
         identifier: "GetLoggingOptionsResponse",
       });
     case 2:
@@ -5108,7 +4459,7 @@ function __c13(j: number): any {
           arn: S.String,
           description: S.optional(S.String),
           signalCatalogArn: S.optional(S.String),
-          status: S.optional(ManifestStatus),
+          status: S.optional(S.String),
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModificationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
@@ -5135,7 +4486,7 @@ function __c13(j: number): any {
           timestreamTableName: S.String,
           timestreamDatabaseArn: S.optional(S.String),
           timestreamTableArn: S.optional(S.String),
-          registrationStatus: RegistrationStatus,
+          registrationStatus: S.String,
           errorMessage: S.optional(S.String),
         }),
       ).annotate({
@@ -5145,7 +4496,7 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           roleArn: S.String,
-          registrationStatus: RegistrationStatus,
+          registrationStatus: S.String,
           errorMessage: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamRegistrationResponse" });
@@ -5153,9 +4504,9 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           customerAccountId: S.String,
-          accountStatus: RegistrationStatus,
-          timestreamRegistrationResponse: S.optional(TimestreamRegistrationResponse),
-          iamRegistrationResponse: IamRegistrationResponse,
+          accountStatus: S.String,
+          timestreamRegistrationResponse: S.optional(__S(109)),
+          iamRegistrationResponse: __S(110),
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModificationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
@@ -5197,7 +4548,7 @@ function __c14(j: number): any {
           name: S.String,
           arn: S.String,
           description: S.optional(S.String),
-          nodeCounts: S.optional(NodeCounts),
+          nodeCounts: S.optional(__S(113)),
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModificationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
@@ -5222,9 +4573,9 @@ function __c14(j: number): any {
           arn: S.optional(S.String),
           description: S.optional(S.String),
           signalCatalogArn: S.optional(S.String),
-          stateTemplateProperties: S.optional(StateTemplateProperties),
-          dataExtraDimensions: S.optional(StateTemplateDataExtraDimensionNodePathList),
-          metadataExtraDimensions: S.optional(StateTemplateMetadataExtraDimensionNodePathList),
+          stateTemplateProperties: S.optional(__S(19)),
+          dataExtraDimensions: S.optional(__S(19)),
+          metadataExtraDimensions: S.optional(__S(19)),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           id: S.optional(S.String),
@@ -5250,8 +4601,8 @@ function __c14(j: number): any {
           arn: S.optional(S.String),
           modelManifestArn: S.optional(S.String),
           decoderManifestArn: S.optional(S.String),
-          attributes: S.optional(AttributesMap),
-          stateTemplates: S.optional(StateTemplateAssociations),
+          attributes: S.optional(__S(2)),
+          stateTemplates: S.optional(__S(10)),
           creationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
           lastModificationTime: S.optional(S.Date.pipe(T.TimestampFormat("epoch-seconds"))),
         }),
@@ -5282,14 +4633,14 @@ function __c15(j: number): any {
         S.Struct({
           campaignName: S.optional(S.String),
           vehicleName: S.optional(S.String),
-          status: S.optional(VehicleState),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "VehicleStatus" });
     case 1:
-      return S.Array(VehicleStatus);
+      return S.Array(__S(120));
     case 2:
       return S.suspend(() =>
-        S.Struct({ campaigns: S.optional(VehicleStatusList), nextToken: S.optional(S.String) }),
+        S.Struct({ campaigns: S.optional(__S(121)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "GetVehicleStatusResponse" });
     case 3:
       return S.Array(T.Blob);
@@ -5297,19 +4648,19 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           networkInterface: S.String,
-          canDbcFiles: NetworkFilesList,
-          signalsMap: S.optional(ModelSignalsMap),
+          canDbcFiles: __S(123),
+          signalsMap: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "CanDbcDefinition" });
     case 5:
-      return S.Union([/*@__PURE__*/ S.Struct({ canDbc: CanDbcDefinition })]);
+      return S.Union([/*@__PURE__*/ S.Struct({ canDbc: __S(124) })]);
     case 6:
-      return S.Array(NetworkFileDefinition);
+      return S.Array(__S(125));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
-          networkFileDefinitions: NetworkFileDefinitions,
+          networkFileDefinitions: __S(126),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/decoder-manifests/{name}" }),
@@ -5334,8 +4685,8 @@ function __c16(j: number): any {
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          vss: S.optional(FormattedVss),
-          tags: S.optional(TagList),
+          vss: S.optional(__S(128)),
+          tags: S.optional(__S(4)),
         }).pipe(
           T.all(
             T.Http({ method: "PUT", uri: "/signal-catalogs/{name}/nodes" }),
@@ -5355,7 +4706,7 @@ function __c16(j: number): any {
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
           status: S.optional(S.String).pipe(T.HttpQuery("status")),
-          listResponseScope: S.optional(ListResponseScope).pipe(T.HttpQuery("listResponseScope")),
+          listResponseScope: S.optional(S.String).pipe(T.HttpQuery("listResponseScope")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/campaigns" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListCampaignsRequest" });
     case 3:
@@ -5366,17 +4717,17 @@ function __c16(j: number): any {
           description: S.optional(S.String),
           signalCatalogArn: S.optional(S.String),
           targetArn: S.optional(S.String),
-          status: S.optional(CampaignStatus),
+          status: S.optional(S.String),
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModificationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "CampaignSummary" });
     case 4:
-      return S.Array(CampaignSummary);
+      return S.Array(__S(131));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          campaignSummaries: S.optional(CampaignSummaries),
+          campaignSummaries: S.optional(__S(132)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListCampaignsResponse" });
@@ -5402,7 +4753,7 @@ function __c16(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          networkInterfaces: S.optional(NetworkInterfaces),
+          networkInterfaces: S.optional(__S(67)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5418,7 +4769,7 @@ function __c17(j: number): any {
           modelManifestArn: S.optional(S.String).pipe(T.HttpQuery("modelManifestArn")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          listResponseScope: S.optional(ListResponseScope).pipe(T.HttpQuery("listResponseScope")),
+          listResponseScope: S.optional(S.String).pipe(T.HttpQuery("listResponseScope")),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/decoder-manifests" }), svc, auth, proto, ver, rules),
         ),
@@ -5432,18 +4783,18 @@ function __c17(j: number): any {
           arn: S.optional(S.String),
           modelManifestArn: S.optional(S.String),
           description: S.optional(S.String),
-          status: S.optional(ManifestStatus),
+          status: S.optional(S.String),
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModificationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           message: S.optional(S.String),
         }),
       ).annotate({ identifier: "DecoderManifestSummary" });
     case 2:
-      return S.Array(DecoderManifestSummary);
+      return S.Array(__S(137));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          summaries: S.optional(DecoderManifestSummaries),
+          summaries: S.optional(__S(138)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5470,7 +4821,7 @@ function __c17(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ signalDecoders: S.optional(SignalDecoders), nextToken: S.optional(S.String) }),
+        S.Struct({ signalDecoders: S.optional(__S(61)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListDecoderManifestSignalsResponse",
       });
@@ -5479,7 +4830,7 @@ function __c17(j: number): any {
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          listResponseScope: S.optional(ListResponseScope).pipe(T.HttpQuery("listResponseScope")),
+          listResponseScope: S.optional(S.String).pipe(T.HttpQuery("listResponseScope")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/fleets" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListFleetsRequest" });
     case 7:
@@ -5498,10 +4849,10 @@ function __c17(j: number): any {
 function __c18(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(FleetSummary);
+      return S.Array(__S(143));
     case 1:
       return S.suspend(() =>
-        S.Struct({ fleetSummaries: S.optional(FleetSummaries), nextToken: S.optional(S.String) }),
+        S.Struct({ fleetSummaries: S.optional(__S(144)), nextToken: S.optional(S.String) }),
       ).annotate({ identifier: "ListFleetsResponse" });
     case 2:
       return S.suspend(() =>
@@ -5524,7 +4875,7 @@ function __c18(j: number): any {
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ fleets: S.optional(Fleets), nextToken: S.optional(S.String) }),
+        S.Struct({ fleets: S.optional(__S(19)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListFleetsForVehicleResponse",
       });
@@ -5549,7 +4900,7 @@ function __c18(j: number): any {
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ nodes: S.optional(Nodes), nextToken: S.optional(S.String) }),
+        S.Struct({ nodes: S.optional(__S(79)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListModelManifestNodesResponse",
       });
@@ -5559,7 +4910,7 @@ function __c18(j: number): any {
           signalCatalogArn: S.optional(S.String).pipe(T.HttpQuery("signalCatalogArn")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          listResponseScope: S.optional(ListResponseScope).pipe(T.HttpQuery("listResponseScope")),
+          listResponseScope: S.optional(S.String).pipe(T.HttpQuery("listResponseScope")),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/model-manifests" }), svc, auth, proto, ver, rules),
         ),
@@ -5573,7 +4924,7 @@ function __c18(j: number): any {
           arn: S.optional(S.String),
           signalCatalogArn: S.optional(S.String),
           description: S.optional(S.String),
-          status: S.optional(ManifestStatus),
+          status: S.optional(S.String),
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModificationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
@@ -5583,11 +4934,11 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ModelManifestSummary);
+      return S.Array(__S(151));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          summaries: S.optional(ModelManifestSummaries),
+          summaries: S.optional(__S(152)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5599,7 +4950,7 @@ function __c19(j: number): any {
           name: S.String.pipe(T.HttpLabel("name")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          signalNodeType: S.optional(SignalNodeType).pipe(T.HttpQuery("signalNodeType")),
+          signalNodeType: S.optional(S.String).pipe(T.HttpQuery("signalNodeType")),
         }).pipe(
           T.all(
             T.Http({ method: "GET", uri: "/signal-catalogs/{name}/nodes" }),
@@ -5634,11 +4985,11 @@ function __c19(j: number): any {
         }),
       ).annotate({ identifier: "SignalCatalogSummary" });
     case 5:
-      return S.Array(SignalCatalogSummary);
+      return S.Array(__S(156));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          summaries: S.optional(SignalCatalogSummaries),
+          summaries: S.optional(__S(157)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5649,7 +5000,7 @@ function __c19(j: number): any {
         S.Struct({
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          listResponseScope: S.optional(ListResponseScope).pipe(T.HttpQuery("listResponseScope")),
+          listResponseScope: S.optional(S.String).pipe(T.HttpQuery("listResponseScope")),
         }).pipe(
           T.all(T.Http({ method: "GET", uri: "/state-templates" }), svc, auth, proto, ver, rules),
         ),
@@ -5673,11 +5024,11 @@ function __c20(j: number): any {
         }),
       ).annotate({ identifier: "StateTemplateSummary" });
     case 1:
-      return S.Array(StateTemplateSummary);
+      return S.Array(__S(160));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          summaries: S.optional(StateTemplateSummaries),
+          summaries: S.optional(__S(161)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({
@@ -5692,18 +5043,18 @@ function __c20(j: number): any {
         identifier: "ListTagsForResourceRequest",
       });
     case 4:
-      return S.suspend(() => S.Struct({ Tags: S.optional(TagList) })).annotate({
+      return S.suspend(() => S.Struct({ Tags: S.optional(__S(4)) })).annotate({
         identifier: "ListTagsForResourceResponse",
       });
     case 5:
       return S.suspend(() =>
         S.Struct({
           modelManifestArn: S.optional(S.String).pipe(T.HttpQuery("modelManifestArn")),
-          attributeNames: S.optional(AttributeNamesList).pipe(T.HttpQuery("attributeNames")),
-          attributeValues: S.optional(AttributeValuesList).pipe(T.HttpQuery("attributeValues")),
+          attributeNames: S.optional(__S(19)).pipe(T.HttpQuery("attributeNames")),
+          attributeValues: S.optional(__S(19)).pipe(T.HttpQuery("attributeValues")),
           nextToken: S.optional(S.String).pipe(T.HttpQuery("nextToken")),
           maxResults: S.optional(S.Number).pipe(T.HttpQuery("maxResults")),
-          listResponseScope: S.optional(ListResponseScope).pipe(T.HttpQuery("listResponseScope")),
+          listResponseScope: S.optional(S.String).pipe(T.HttpQuery("listResponseScope")),
         }).pipe(T.all(T.Http({ method: "GET", uri: "/vehicles" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "ListVehiclesRequest" });
     case 6:
@@ -5715,11 +5066,11 @@ function __c20(j: number): any {
           decoderManifestArn: S.String,
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModificationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
-          attributes: S.optional(AttributesMap),
+          attributes: S.optional(__S(2)),
         }),
       ).annotate({ identifier: "VehicleSummary" });
     case 7:
-      return S.Array(VehicleSummary);
+      return S.Array(__S(166));
   }
 }
 function __c21(j: number): any {
@@ -5727,7 +5078,7 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          vehicleSummaries: S.optional(VehicleSummaries),
+          vehicleSummaries: S.optional(__S(167)),
           nextToken: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListVehiclesResponse" });
@@ -5752,13 +5103,13 @@ function __c21(j: number): any {
       });
     case 2:
       return S.suspend(() =>
-        S.Struct({ vehicles: S.optional(Vehicles), nextToken: S.optional(S.String) }),
+        S.Struct({ vehicles: S.optional(__S(19)), nextToken: S.optional(S.String) }),
       ).annotate({
         identifier: "ListVehiclesInFleetResponse",
       });
     case 3:
       return S.suspend(() =>
-        S.Struct({ kmsKeyId: S.optional(S.String), encryptionType: EncryptionType }).pipe(
+        S.Struct({ kmsKeyId: S.optional(S.String), encryptionType: S.String }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/encryptionConfiguration" }),
             svc,
@@ -5775,15 +5126,15 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           kmsKeyId: S.optional(S.String),
-          encryptionStatus: EncryptionStatus,
-          encryptionType: EncryptionType,
+          encryptionStatus: S.String,
+          encryptionType: S.String,
         }),
       ).annotate({
         identifier: "PutEncryptionConfigurationResponse",
       });
     case 5:
       return S.suspend(() =>
-        S.Struct({ cloudWatchLogDelivery: CloudWatchLogDeliveryOptions }).pipe(
+        S.Struct({ cloudWatchLogDelivery: __S(104) }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/loggingOptions" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "PutLoggingOptionsRequest" });
@@ -5802,8 +5153,8 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          timestreamResources: S.optional(TimestreamResources),
-          iamResources: S.optional(IamResources),
+          timestreamResources: S.optional(__S(174)),
+          iamResources: S.optional(__S(175)),
         }).pipe(
           T.all(
             T.Http({ method: "POST", uri: "/account/registration" }),
@@ -5818,16 +5169,16 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          registerAccountStatus: RegistrationStatus,
-          timestreamResources: S.optional(TimestreamResources),
-          iamResources: IamResources,
+          registerAccountStatus: S.String,
+          timestreamResources: S.optional(__S(174)),
+          iamResources: __S(175),
           creationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
           lastModificationTime: S.Date.pipe(T.TimestampFormat("epoch-seconds")),
         }),
       ).annotate({ identifier: "RegisterAccountResponse" });
     case 2:
       return S.suspend(() =>
-        S.Struct({ ResourceARN: S.String.pipe(T.HttpQuery("resourceArn")), Tags: TagList }).pipe(
+        S.Struct({ ResourceARN: S.String.pipe(T.HttpQuery("resourceArn")), Tags: __S(4) }).pipe(
           T.all(T.Http({ method: "POST", uri: "/tags" }), svc, auth, proto, ver, rules),
         ),
       ).annotate({ identifier: "TagResourceRequest" });
@@ -5835,7 +5186,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           ResourceARN: S.String.pipe(T.HttpQuery("resourceArn")),
-          TagKeys: TagKeyList.pipe(T.HttpQuery("tagKeys")),
+          TagKeys: __S(19).pipe(T.HttpQuery("tagKeys")),
         }).pipe(T.all(T.Http({ method: "DELETE", uri: "/tags" }), svc, auth, proto, ver, rules)),
       ).annotate({ identifier: "UntagResourceRequest" });
     case 4:
@@ -5843,8 +5194,8 @@ function __c22(j: number): any {
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          dataExtraDimensions: S.optional(DataExtraDimensionNodePathList),
-          action: UpdateCampaignAction,
+          dataExtraDimensions: S.optional(__S(19)),
+          action: S.String,
         }).pipe(
           T.all(T.Http({ method: "PUT", uri: "/campaigns/{name}" }), svc, auth, proto, ver, rules),
         ),
@@ -5854,7 +5205,7 @@ function __c22(j: number): any {
         S.Struct({
           arn: S.optional(S.String),
           name: S.optional(S.String),
-          status: S.optional(CampaignStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "UpdateCampaignResponse" });
     case 6:
@@ -5862,14 +5213,14 @@ function __c22(j: number): any {
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          signalDecodersToAdd: S.optional(SignalDecoders),
-          signalDecodersToUpdate: S.optional(SignalDecoders),
-          signalDecodersToRemove: S.optional(Fqns),
-          networkInterfacesToAdd: S.optional(NetworkInterfaces),
-          networkInterfacesToUpdate: S.optional(NetworkInterfaces),
-          networkInterfacesToRemove: S.optional(InterfaceIds),
-          status: S.optional(ManifestStatus),
-          defaultForUnmappedSignals: S.optional(DefaultForUnmappedSignalsType),
+          signalDecodersToAdd: S.optional(__S(61)),
+          signalDecodersToUpdate: S.optional(__S(61)),
+          signalDecodersToRemove: S.optional(__S(19)),
+          networkInterfacesToAdd: S.optional(__S(67)),
+          networkInterfacesToUpdate: S.optional(__S(67)),
+          networkInterfacesToRemove: S.optional(__S(19)),
+          status: S.optional(S.String),
+          defaultForUnmappedSignals: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/decoder-manifests/{name}" }),
@@ -5908,9 +5259,9 @@ function __c23(j: number): any {
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          nodesToAdd: S.optional(NodePaths),
-          nodesToRemove: S.optional(NodePaths),
-          status: S.optional(ManifestStatus),
+          nodesToAdd: S.optional(__S(19)),
+          nodesToRemove: S.optional(__S(19)),
+          status: S.optional(S.String),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/model-manifests/{name}" }),
@@ -5929,9 +5280,9 @@ function __c23(j: number): any {
         S.Struct({
           name: S.String.pipe(T.HttpLabel("name")),
           description: S.optional(S.String),
-          nodesToAdd: S.optional(Nodes),
-          nodesToUpdate: S.optional(Nodes),
-          nodesToRemove: S.optional(NodePaths),
+          nodesToAdd: S.optional(__S(79)),
+          nodesToUpdate: S.optional(__S(79)),
+          nodesToRemove: S.optional(__S(19)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/signal-catalogs/{name}" }),
@@ -5950,10 +5301,10 @@ function __c23(j: number): any {
         S.Struct({
           identifier: S.String.pipe(T.HttpLabel("identifier")),
           description: S.optional(S.String),
-          stateTemplatePropertiesToAdd: S.optional(StateTemplateProperties),
-          stateTemplatePropertiesToRemove: S.optional(StateTemplateProperties),
-          dataExtraDimensions: S.optional(StateTemplateDataExtraDimensionNodePathList),
-          metadataExtraDimensions: S.optional(StateTemplateMetadataExtraDimensionNodePathList),
+          stateTemplatePropertiesToAdd: S.optional(__S(19)),
+          stateTemplatePropertiesToRemove: S.optional(__S(19)),
+          dataExtraDimensions: S.optional(__S(19)),
+          metadataExtraDimensions: S.optional(__S(19)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/state-templates/{identifier}" }),
@@ -5973,11 +5324,11 @@ function __c23(j: number): any {
           vehicleName: S.String.pipe(T.HttpLabel("vehicleName")),
           modelManifestArn: S.optional(S.String),
           decoderManifestArn: S.optional(S.String),
-          attributes: S.optional(AttributesMap),
-          attributeUpdateMode: S.optional(UpdateMode),
-          stateTemplatesToAdd: S.optional(StateTemplateAssociations),
-          stateTemplatesToRemove: S.optional(StateTemplateAssociationIdentifiers),
-          stateTemplatesToUpdate: S.optional(StateTemplateAssociations),
+          attributes: S.optional(__S(2)),
+          attributeUpdateMode: S.optional(S.String),
+          stateTemplatesToAdd: S.optional(__S(10)),
+          stateTemplatesToRemove: S.optional(__S(19)),
+          stateTemplatesToUpdate: S.optional(__S(10)),
         }).pipe(
           T.all(
             T.Http({ method: "PATCH", uri: "/vehicles/{vehicleName}" }),
@@ -5998,12 +5349,12 @@ function __c23(j: number): any {
         identifier: "ValidationExceptionField",
       });
     case 6:
-      return S.Array(ValidationExceptionField);
+      return S.Array(__S(189));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          reason: S.optional(SignalDecoderFailureReason),
+          reason: S.optional(S.String),
           hint: S.optional(S.String),
         }),
       ).annotate({ identifier: "InvalidSignalDecoder" });
@@ -6012,21 +5363,80 @@ function __c23(j: number): any {
 function __c24(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(InvalidSignalDecoder);
+      return S.Array(__S(191));
     case 1:
       return S.suspend(() =>
         S.Struct({
           interfaceId: S.optional(S.String),
-          reason: S.optional(NetworkInterfaceFailureReason),
+          reason: S.optional(S.String),
         }),
       ).annotate({ identifier: "InvalidNetworkInterface" });
     case 2:
-      return S.Array(InvalidNetworkInterface);
+      return S.Array(__S(193));
     case 3:
       return S.suspend(() =>
         S.Struct({ name: S.optional(S.String), reason: S.optional(S.String) }),
       ).annotate({ identifier: "InvalidSignal" });
     case 4:
-      return S.Array(InvalidSignal);
+      return S.Array(__S(195));
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
   }
 }

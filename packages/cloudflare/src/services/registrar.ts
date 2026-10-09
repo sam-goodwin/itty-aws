@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -67,22 +69,12 @@ export class RegistrarUpdateNotAllowed
   ) {}
 
 export type CheckRequestDomainsList = Array<string>;
-const CheckRequestDomainsList = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CheckRequestDomainsList>;
-
 export interface CheckRegistrarRequest {
   /** Identifier. */
   accountId: string;
   /** List of fully qualified domain names (FQDNs) to check for availability. Each domain must include the extension. */
   domains: CheckRequestDomainsList;
 }
-const CheckRegistrarRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CheckRegistrarRequest>;
-
 export interface CheckResponseDomainsItemPricing {
   /** ISO-4217 currency code for the prices (e.g., "USD", "EUR", "GBP"). */
   currency: string;
@@ -91,22 +83,13 @@ export interface CheckResponseDomainsItemPricing {
   /** Per-year renewal cost for this domain. Applied to each year beyond the first year of a multi-year registration, and to each annual auto-renewal thereafter. May differ from `registration_cost`, especially for premium domains where initial registration often costs more than renewals. */
   renewalCost: string;
 }
-const CheckResponseDomainsItemPricing = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CheckResponseDomainsItemPricing>;
-
 export type CheckResponseDomainsItemReason =
   | "extension_not_supported_via_api"
   | "extension_not_supported"
   | "extension_disallows_registration"
   | "domain_premium"
   | "domain_unavailable";
-const CheckResponseDomainsItemReason = S.String;
-
 export type CheckResponseDomainsItemTier = "standard" | "premium";
-const CheckResponseDomainsItemTier = S.String;
-
 export interface CheckResponseDomainsItem {
   /** The fully qualified domain name (FQDN) in punycode format for internationalized domain names (IDNs). */
   name: string;
@@ -119,37 +102,14 @@ export interface CheckResponseDomainsItem {
   /** The pricing tier for this domain. A `registrable` value of `true` always includes this field, which defaults to `standard` for most domains. A `registrable` value of `false` may omit it. */
   tier?: CheckResponseDomainsItemTier | null;
 }
-const CheckResponseDomainsItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CheckResponseDomainsItem>;
-
 export type CheckResponseDomainsList = Array<CheckResponseDomainsItem>;
-const CheckResponseDomainsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CheckResponseDomainsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CheckRegistrarResponse {
   /** Array of domain availability results. Results for unsupported extensions contain `registrable: false` and a `reason` field. The response may omit malformed domain names. */
   domains: CheckResponseDomainsList;
 }
-const CheckRegistrarResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CheckRegistrarResponse>;
-
 export type CreateRegistrationRequestAcknowledgementsMap = { [key: string]: unknown | undefined };
-const CreateRegistrationRequestAcknowledgementsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateRegistrationRequestAcknowledgementsMap>;
-
 export type CreateRegistrationRequestContactExtensionsMap = { [key: string]: unknown | undefined };
-const CreateRegistrationRequestContactExtensionsMap =
-  CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<CreateRegistrationRequestContactExtensionsMap>;
-
 export interface CreateRegistrationRequestContactsAdministratorPostalInfoAddress {
   /** City or locality name. */
   city: string;
@@ -162,11 +122,6 @@ export interface CreateRegistrationRequestContactsAdministratorPostalInfoAddress
   /** Street address including building/suite number. */
   street: string;
 }
-const CreateRegistrationRequestContactsAdministratorPostalInfoAddress = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CreateRegistrationRequestContactsAdministratorPostalInfoAddress>;
-
 export interface CreateRegistrationRequestContactsAdministratorPostalInfo {
   /** Physical mailing address for the registrant contact. */
   address: CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
@@ -175,11 +130,6 @@ export interface CreateRegistrationRequestContactsAdministratorPostalInfo {
   /** Organization or company name. Optional for individual registrants. */
   organization?: string;
 }
-const CreateRegistrationRequestContactsAdministratorPostalInfo = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateRegistrationRequestContactsAdministratorPostalInfo>;
-
 export interface CreateRegistrationRequestContactsAdministrator {
   /** Email address for the registrant. Used for domain-related communications from the registry, including ownership verification and renewal notices. */
   email: string;
@@ -190,11 +140,6 @@ export interface CreateRegistrationRequestContactsAdministrator {
   /** Fax number in E.164 format (e.g., `+1.5555555555`). Optional. Most registrations do not require a fax number. */
   fax?: string;
 }
-const CreateRegistrationRequestContactsAdministrator = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CreateRegistrationRequestContactsAdministrator>;
-
 export type CreateRegistrationRequestContactsBillingPostalInfoAddress =
   CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
 export type CreateRegistrationRequestContactsBillingPostalInfo =
@@ -223,14 +168,7 @@ export interface CreateRegistrationRequestContacts {
   /** Optional technical contact. Accepted only when the extension schema includes this role. When the registry requires an omitted contact, Cloudflare may derive it from `contacts.registrant`. */
   technical?: CreateRegistrationRequestContactsAdministrator;
 }
-const CreateRegistrationRequestContacts = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CreateRegistrationRequestContacts>;
-
 export type CreateRegistrationRequestPrivacyMode = "off" | "redaction";
-const CreateRegistrationRequestPrivacyMode = S.String;
-
 export interface CreateRegistrationRequest {
   /** Identifier. */
   accountId: string;
@@ -250,22 +188,12 @@ export interface CreateRegistrationRequest {
   /** Sets the registration term from 1 to 10 years. When omitted, this field defaults to the registry's minimum registration period for the extension. Most extensions require 1 year, while some require longer minimum terms (e.g., `.ai` requires 2 years). */
   years?: number;
 }
-const CreateRegistrationRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CreateRegistrationRequest>;
-
 export interface CreateRegistrationResponseLinks {
   /** URL to this status resource. */
   self: string;
   /** URL to the domain resource. */
   resource?: string | null;
 }
-const CreateRegistrationResponseLinks = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateRegistrationResponseLinks>;
-
 export type CreateRegistrationResponseState =
   | "pending"
   | "in_progress"
@@ -273,23 +201,13 @@ export type CreateRegistrationResponseState =
   | "blocked"
   | "succeeded"
   | "failed";
-const CreateRegistrationResponseState = S.String;
-
 export type CreateRegistrationResponseContextMap = { [key: string]: unknown | undefined };
-const CreateRegistrationResponseContextMap =
-  CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<CreateRegistrationResponseContextMap>;
-
 export interface CreateRegistrationResponseError {
   /** Machine-readable error code identifying the failure reason. */
   code: string;
   /** Human-readable explanation of the failure. May include registry-specific details. */
   message: string;
 }
-const CreateRegistrationResponseError = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateRegistrationResponseError>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateRegistrationResponse {
   /** Indicates whether the workflow reached a terminal state. A `succeeded` or `failed` state returns `true`; `pending`, `in_progress`, `action_required`, and `blocked` return `false`. */
@@ -304,15 +222,7 @@ export interface CreateRegistrationResponse {
   /** Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context. */
   error?: CreateRegistrationResponseError | null;
 }
-const CreateRegistrationResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateRegistrationResponse>;
-
 export type CreateTransferInRequestContactExtensionsMap = { [key: string]: unknown | undefined };
-const CreateTransferInRequestContactExtensionsMap =
-  CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<CreateTransferInRequestContactExtensionsMap>;
-
 export type CreateTransferInRequestContactsAdministratorPostalInfoAddress =
   CreateRegistrationRequestContactsAdministratorPostalInfoAddress;
 export type CreateTransferInRequestContactsAdministratorPostalInfo =
@@ -338,8 +248,6 @@ export type CreateTransferInRequestContactsTechnical =
   CreateRegistrationRequestContactsAdministrator;
 export type CreateTransferInRequestContacts = CreateRegistrationRequestContacts;
 export type CreateTransferInRequestPrivacyMode = "off" | "redaction";
-const CreateTransferInRequestPrivacyMode = S.String;
-
 export interface CreateTransferInRequest {
   /** Identifier. */
   accountId: string;
@@ -357,11 +265,6 @@ export interface CreateTransferInRequest {
   /** WHOIS privacy mode to apply after transfer completes. Defaults to the extension's default privacy mode (typically `redaction`). */
   privacyMode?: CreateTransferInRequestPrivacyMode | (string & {});
 }
-const CreateTransferInRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateTransferInRequest>;
-
 export type CreateTransferInResponseLinks = CreateRegistrationResponseLinks;
 export type CreateTransferInResponseState =
   | "pending"
@@ -370,12 +273,7 @@ export type CreateTransferInResponseState =
   | "blocked"
   | "succeeded"
   | "failed";
-const CreateTransferInResponseState = S.String;
-
 export type CreateTransferInResponseContextMap = { [key: string]: unknown | undefined };
-const CreateTransferInResponseContextMap =
-  CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<CreateTransferInResponseContextMap>;
-
 export type CreateTransferInResponseError = CreateRegistrationResponseError;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateTransferInResponse {
@@ -391,14 +289,7 @@ export interface CreateTransferInResponse {
   /** Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context. */
   error?: CreateRegistrationResponseError | null;
 }
-const CreateTransferInResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateTransferInResponse>;
-
 export type EditRegistrationRequestPrefer = "respond-async";
-const EditRegistrationRequestPrefer = S.String;
-
 export interface EditRegistrationRequest {
   /** Identifier. */
   accountId: string;
@@ -408,11 +299,6 @@ export interface EditRegistrationRequest {
   /** Enable or disable automatic renewal. Setting this field to `true` authorizes Cloudflare to charge the account's default payment method up to 30 days before domain expiry to renew the domain automatically. Renewal pricing may change over time based on registry pricing. */
   autoRenew?: boolean;
 }
-const EditRegistrationRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<EditRegistrationRequest>;
-
 export type EditRegistrationResponseLinks = CreateRegistrationResponseLinks;
 export type EditRegistrationResponseState =
   | "pending"
@@ -421,12 +307,7 @@ export type EditRegistrationResponseState =
   | "blocked"
   | "succeeded"
   | "failed";
-const EditRegistrationResponseState = S.String;
-
 export type EditRegistrationResponseContextMap = { [key: string]: unknown | undefined };
-const EditRegistrationResponseContextMap =
-  CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<EditRegistrationResponseContextMap>;
-
 export type EditRegistrationResponseError = CreateRegistrationResponseError;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface EditRegistrationResponse {
@@ -442,40 +323,24 @@ export interface EditRegistrationResponse {
   /** Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context. */
   error?: CreateRegistrationResponseError | null;
 }
-const EditRegistrationResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<EditRegistrationResponse>;
-
 export interface GetDomainRequest {
   /** Identifier. */
   accountId: string;
   /** Provides a fully qualified domain name (FQDN), including the extension (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies a registration. Cloudflare permits only one registration per domain, making the domain name a natural idempotency key for registration requests. */
   domainName: string;
 }
-const GetDomainRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GetDomainRequest>;
-
 export type GetDomainResponse = unknown;
-const GetDomainResponse = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<GetDomainResponse>;
-
 export interface GetExtensionRequest {
   /** Identifier. */
   accountId: string;
   extension: string;
 }
-const GetExtensionRequest = /*@__PURE__*/ __L.at(__c2, 5) as any as S.Schema<GetExtensionRequest>;
-
 export interface GetExtensionResponseMetadata {
   /** The full name of the extension. For example, "co.uk", or "uk". */
   name: string;
   /** The TLD of the extension. For example, for "co.uk", it is "uk". For "uk", it is "uk". */
   tld: string;
 }
-const GetExtensionResponseMetadata = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<GetExtensionResponseMetadata>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetExtensionResponse {
   /** Extension metadata. */
@@ -485,22 +350,13 @@ export interface GetExtensionResponse {
   /** JSON Schema describing the expected input structure for transfer operations on this extension. */
   transferSchema: unknown;
 }
-const GetExtensionResponse = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GetExtensionResponse>;
-
 export interface GetRegistrationRequest {
   /** Identifier. */
   accountId: string;
   /** Provides a fully qualified domain name (FQDN), including the extension (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies a registration. Cloudflare permits only one registration per domain, making the domain name a natural idempotency key for registration requests. */
   domainName: string;
 }
-const GetRegistrationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<GetRegistrationRequest>;
-
 export type GetRegistrationResponsePrivacyMode = "off" | "redaction";
-const GetRegistrationResponsePrivacyMode = S.String;
-
 export type GetRegistrationResponseStatus =
   | "active"
   | "registration_pending"
@@ -509,8 +365,6 @@ export type GetRegistrationResponseStatus =
   | "suspended"
   | "redemption_period"
   | "pending_delete";
-const GetRegistrationResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRegistrationResponse {
   /** Whether automatic renewal occurs before expiration. */
@@ -528,22 +382,12 @@ export interface GetRegistrationResponse {
   /** Current registration status. */
   status: GetRegistrationResponseStatus;
 }
-const GetRegistrationResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<GetRegistrationResponse>;
-
 export interface GetRegistrationStatusRequest {
   /** Identifier. */
   accountId: string;
   /** Provides a fully qualified domain name (FQDN), including the extension (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies a registration. Cloudflare permits only one registration per domain, making the domain name a natural idempotency key for registration requests. */
   domainName: string;
 }
-const GetRegistrationStatusRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<GetRegistrationStatusRequest>;
-
 export type RegistrationStatusGetResponseLinks = CreateRegistrationResponseLinks;
 export type RegistrationStatusGetResponseState =
   | "pending"
@@ -552,12 +396,7 @@ export type RegistrationStatusGetResponseState =
   | "blocked"
   | "succeeded"
   | "failed";
-const RegistrationStatusGetResponseState = S.String;
-
 export type RegistrationStatusGetResponseContextMap = { [key: string]: unknown | undefined };
-const RegistrationStatusGetResponseContextMap =
-  CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<RegistrationStatusGetResponseContextMap>;
-
 export type RegistrationStatusGetResponseError = CreateRegistrationResponseError;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetRegistrationStatusResponse {
@@ -573,22 +412,12 @@ export interface GetRegistrationStatusResponse {
   /** Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context. */
   error?: CreateRegistrationResponseError | null;
 }
-const GetRegistrationStatusResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<GetRegistrationStatusResponse>;
-
 export interface GetTransferInStatusRequest {
   /** Identifier. */
   accountId: string;
   /** Provides a fully qualified domain name (FQDN), including the extension (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies a registration. Cloudflare permits only one registration per domain, making the domain name a natural idempotency key for registration requests. */
   domainName: string;
 }
-const GetTransferInStatusRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<GetTransferInStatusRequest>;
-
 export type GetTransferInStatusResponseLinks = CreateRegistrationResponseLinks;
 export type GetTransferInStatusResponseState =
   | "pending"
@@ -597,12 +426,7 @@ export type GetTransferInStatusResponseState =
   | "blocked"
   | "succeeded"
   | "failed";
-const GetTransferInStatusResponseState = S.String;
-
 export type GetTransferInStatusResponseContextMap = { [key: string]: unknown | undefined };
-const GetTransferInStatusResponseContextMap =
-  CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<GetTransferInStatusResponseContextMap>;
-
 export type GetTransferInStatusResponseError = CreateRegistrationResponseError;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetTransferInStatusResponse {
@@ -618,22 +442,12 @@ export interface GetTransferInStatusResponse {
   /** Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context. */
   error?: CreateRegistrationResponseError | null;
 }
-const GetTransferInStatusResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<GetTransferInStatusResponse>;
-
 export interface GetUpdateStatusRequest {
   /** Identifier. */
   accountId: string;
   /** Provides a fully qualified domain name (FQDN), including the extension (e.g., `example.com`, `mybrand.app`). The domain name uniquely identifies a registration. Cloudflare permits only one registration per domain, making the domain name a natural idempotency key for registration requests. */
   domainName: string;
 }
-const GetUpdateStatusRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<GetUpdateStatusRequest>;
-
 export type UpdateStatusGetResponseLinks = CreateRegistrationResponseLinks;
 export type UpdateStatusGetResponseState =
   | "pending"
@@ -642,12 +456,7 @@ export type UpdateStatusGetResponseState =
   | "blocked"
   | "succeeded"
   | "failed";
-const UpdateStatusGetResponseState = S.String;
-
 export type UpdateStatusGetResponseContextMap = { [key: string]: unknown | undefined };
-const UpdateStatusGetResponseContextMap =
-  CreateRegistrationRequestAcknowledgementsMap as any as S.Schema<UpdateStatusGetResponseContextMap>;
-
 export type UpdateStatusGetResponseError = CreateRegistrationResponseError;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetUpdateStatusResponse {
@@ -663,17 +472,10 @@ export interface GetUpdateStatusResponse {
   /** Provides error details when a workflow reaches the `failed` state. The workflow type (registration, update, etc.) and underlying registry response determine the specific codes and messages. Workflow error codes differ from immediate HTTP error `errors[].code` values in non-2xx responses. Surface `error.message` to the user for context. */
   error?: CreateRegistrationResponseError | null;
 }
-const GetUpdateStatusResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GetUpdateStatusResponse>;
-
 export interface ListDomainsRequest {
   /** Identifier. */
   accountId: string;
 }
-const ListDomainsRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<ListDomainsRequest>;
-
 export interface DomainsListResultItemRegistrantContact {
   /** Address. */
   address: string;
@@ -702,14 +504,7 @@ export interface DomainsListResultItemRegistrantContact {
   /** Contact fax number. */
   fax?: string | null;
 }
-const DomainsListResultItemRegistrantContact = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<DomainsListResultItemRegistrantContact>;
-
 export type DomainsListResultItemTransferInAcceptFoa = "needed" | "ok";
-const DomainsListResultItemTransferInAcceptFoa = S.String;
-
 export type DomainsListResultItemTransferInApproveTransfer =
   | "needed"
   | "ok"
@@ -717,27 +512,19 @@ export type DomainsListResultItemTransferInApproveTransfer =
   | "trying"
   | "rejected"
   | "unknown";
-const DomainsListResultItemTransferInApproveTransfer = S.String;
-
 export type DomainsListResultItemTransferInDisablePrivacy = "needed" | "ok" | "unknown";
-const DomainsListResultItemTransferInDisablePrivacy = S.String;
-
 export type DomainsListResultItemTransferInEnterAuthCode =
   | "needed"
   | "ok"
   | "pending"
   | "trying"
   | "rejected";
-const DomainsListResultItemTransferInEnterAuthCode = S.String;
-
 export type DomainsListResultItemTransferInUnlockDomain =
   | "needed"
   | "ok"
   | "pending"
   | "trying"
   | "unknown";
-const DomainsListResultItemTransferInUnlockDomain = S.String;
-
 export interface DomainsListResultItemTransferIn {
   /** Status of the registrant authorization step. */
   acceptFoa?: DomainsListResultItemTransferInAcceptFoa | null;
@@ -752,11 +539,6 @@ export interface DomainsListResultItemTransferIn {
   /** Status of the domain-unlock step at the foreign registrar. */
   unlockDomain?: DomainsListResultItemTransferInUnlockDomain | null;
 }
-const DomainsListResultItemTransferIn = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<DomainsListResultItemTransferIn>;
-
 export interface DomainsListResultItem {
   /** Domain identifier. */
   id?: string | null;
@@ -789,31 +571,15 @@ export interface DomainsListResultItem {
   /** Whether WHOIS privacy is enabled. */
   privacy?: boolean | null;
 }
-const DomainsListResultItem = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<DomainsListResultItem>;
-
 export type DomainsListResultList = Array<DomainsListResultItem>;
-const DomainsListResultList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<DomainsListResultList>;
-
 export interface ListDomainsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: DomainsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListDomainsResponse = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<ListDomainsResponse>;
-
 export type ListExtensionsRequestDirection = "asc" | "desc";
-const ListExtensionsRequestDirection = S.String;
-
 export type ListExtensionsRequestSortBy = "name" | "created_at" | "updated_at";
-const ListExtensionsRequestSortBy = S.String;
-
 export interface ListExtensionsRequest {
   /** Identifier. */
   accountId: string;
@@ -828,11 +594,6 @@ export interface ListExtensionsRequest {
   /** Column to sort results by. Defaults to `name` when omitted. */
   sortBy?: ListExtensionsRequestSortBy | (string & {});
 }
-const ListExtensionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<ListExtensionsRequest>;
-
 export type ListExtensionsResultItemMetadata = GetExtensionResponseMetadata;
 export interface ListExtensionsResultItem {
   /** Extension metadata. */
@@ -842,29 +603,10 @@ export interface ListExtensionsResultItem {
   /** JSON Schema describing the expected input structure for transfer operations on this extension. */
   transferSchema: unknown;
 }
-const ListExtensionsResultItem = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<ListExtensionsResultItem>;
-
 export type ListExtensionsResultList = Array<ListExtensionsResultItem>;
-const ListExtensionsResultList = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<ListExtensionsResultList>;
-
 export type ListExtensionsResponse = ListExtensionsResultList;
-const ListExtensionsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<ListExtensionsResponse>;
-
 export type ListRegistrationsRequestDirection = "asc" | "desc";
-const ListRegistrationsRequestDirection = S.String;
-
 export type ListRegistrationsRequestSortBy = "registry_created_at" | "registry_expires_at" | "name";
-const ListRegistrationsRequestSortBy = S.String;
-
 export interface ListRegistrationsRequest {
   /** Identifier. */
   accountId: string;
@@ -877,14 +619,7 @@ export interface ListRegistrationsRequest {
   /** Column to sort results by. Defaults to registration date (`registry_created_at`) when omitted. */
   sortBy?: ListRegistrationsRequestSortBy | (string & {});
 }
-const ListRegistrationsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<ListRegistrationsRequest>;
-
 export type ListRegistrationsResultItemPrivacyMode = "off" | "redaction";
-const ListRegistrationsResultItemPrivacyMode = S.String;
-
 export type ListRegistrationsResultItemStatus =
   | "active"
   | "registration_pending"
@@ -893,8 +628,6 @@ export type ListRegistrationsResultItemStatus =
   | "suspended"
   | "redemption_period"
   | "pending_delete";
-const ListRegistrationsResultItemStatus = S.String;
-
 export interface ListRegistrationsResultItem {
   /** Whether automatic renewal occurs before expiration. */
   autoRenew: boolean;
@@ -911,23 +644,8 @@ export interface ListRegistrationsResultItem {
   /** Current registration status. */
   status: ListRegistrationsResultItemStatus;
 }
-const ListRegistrationsResultItem = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<ListRegistrationsResultItem>;
-
 export type ListRegistrationsResultList = Array<ListRegistrationsResultItem>;
-const ListRegistrationsResultList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<ListRegistrationsResultList>;
-
 export type ListRegistrationsResponse = ListRegistrationsResultList;
-const ListRegistrationsResponse = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ListRegistrationsResponse>;
-
 export interface PutDomainRequest {
   /** Identifier. */
   accountId: string;
@@ -940,15 +658,8 @@ export interface PutDomainRequest {
   /** Privacy option controls redacting WHOIS information. */
   privacy?: boolean;
 }
-const PutDomainRequest = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<PutDomainRequest>;
-
 export type PutDomainResponse = unknown;
-const PutDomainResponse = GetDomainResponse as any as S.Schema<PutDomainResponse>;
-
 export type SearchRequestExtensionsList = Array<string>;
-const SearchRequestExtensionsList =
-  CheckRequestDomainsList as any as S.Schema<SearchRequestExtensionsList>;
-
 export interface SearchRegistrarRequest {
   /** Identifier. */
   accountId: string;
@@ -959,11 +670,6 @@ export interface SearchRegistrarRequest {
   /** Maximum number of domain suggestions to return. Defaults to 20 if not specified. */
   limit?: number;
 }
-const SearchRegistrarRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<SearchRegistrarRequest>;
-
 export type SearchResponseDomainsItemPricing = CheckResponseDomainsItemPricing;
 export type SearchResponseDomainsItemReason =
   | "extension_not_supported_via_api"
@@ -971,11 +677,7 @@ export type SearchResponseDomainsItemReason =
   | "extension_disallows_registration"
   | "domain_premium"
   | "domain_unavailable";
-const SearchResponseDomainsItemReason = S.String;
-
 export type SearchResponseDomainsItemTier = "standard" | "premium";
-const SearchResponseDomainsItemTier = S.String;
-
 export interface SearchResponseDomainsItem {
   /** The fully qualified domain name (FQDN) in punycode format for internationalized domain names (IDNs). */
   name: string;
@@ -988,52 +690,25 @@ export interface SearchResponseDomainsItem {
   /** The pricing tier for this domain. A `registrable` value of `true` always includes this field, which defaults to `standard` for most domains. A `registrable` value of `false` may omit it. */
   tier?: SearchResponseDomainsItemTier | null;
 }
-const SearchResponseDomainsItem = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<SearchResponseDomainsItem>;
-
 export type SearchResponseDomainsList = Array<SearchResponseDomainsItem>;
-const SearchResponseDomainsList = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<SearchResponseDomainsList>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface SearchRegistrarResponse {
   /** Lists domain suggestions in relevance order. An empty array indicates that the search criteria matched zero domains. */
   domains: SearchResponseDomainsList;
 }
-const SearchRegistrarResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<SearchRegistrarResponse>;
-
 export interface TransferCheckRequestDomainsItem {
   /** Fully qualified domain name (FQDN) to check for transfer eligibility. */
   domainName: string;
   /** Base64-encoded auth/EPP code from the current registrar. Required for most TLDs. `.uk` namespaces do not use auth codes. */
   authCode?: string;
 }
-const TransferCheckRequestDomainsItem = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<TransferCheckRequestDomainsItem>;
-
 export type TransferCheckRequestDomainsList = Array<TransferCheckRequestDomainsItem>;
-const TransferCheckRequestDomainsList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<TransferCheckRequestDomainsList>;
-
 export interface TransferCheckRequest {
   /** Identifier. */
   accountId: string;
   /** List of domain objects to evaluate for transfer eligibility. */
   domains: TransferCheckRequestDomainsList;
 }
-const TransferCheckRequest = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<TransferCheckRequest>;
-
 export interface TransferCheckResponseDomainsValueTransferableResultPricing {
   /** ISO-4217 currency code for the prices (e.g., "USD", "EUR", "GBP"). */
   currency: string;
@@ -1111,26 +786,14 @@ export interface TransferCheckResponseDomainsValueNonTransferableResult {
 export type TransferCheckResponseDomainsValue =
   | TransferCheckResponseDomainsValueTransferableResult
   | TransferCheckResponseDomainsValueNonTransferableResult;
-const TransferCheckResponseDomainsValue = /*@__PURE__*/ __L.at(__c6, 6);
-
 export type TransferCheckResponseDomainsMap = {
   [key: string]: TransferCheckResponseDomainsValue | undefined;
 };
-const TransferCheckResponseDomainsMap = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<TransferCheckResponseDomainsMap>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface TransferCheckResponse {
   /** Maps domain names to transfer eligibility results. Each value contains `name`, `transferable`, and `reasons`. */
   domains: TransferCheckResponseDomainsMap;
 }
-const TransferCheckResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<TransferCheckResponse>;
-
 export type CheckRegistrarError = CloudflareOpError;
 /** Performs real-time, authoritative availability checks directly against domain registries. Use this endpoint to verify a domain is available before attempting registration via `POST /registrations`. **Important:** Unlike the Search endpoint, these results are authoritative and reflect current registry status. Always check availability immediately before registration as domain status can change rapidly. **Note:** This endpoint uses POST to accept a list of domains in the request body. It is a read-only operation -- it does not create, modify, or reserve any domains. */
 export const checkRegistrar: API.OperationMethod<
@@ -1139,8 +802,8 @@ export const checkRegistrar: API.OperationMethod<
   CheckRegistrarError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckRegistrarRequest,
-  output: CheckRegistrarResponse,
+  input: __S(1) as any as S.Schema<CheckRegistrarRequest>,
+  output: __S(5) as any as S.Schema<CheckRegistrarResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1154,8 +817,8 @@ export const createRegistration: API.OperationMethod<
   CreateRegistrationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRegistrationRequest,
-  output: CreateRegistrationResponse,
+  input: __S(11) as any as S.Schema<CreateRegistrationRequest>,
+  output: __S(14) as any as S.Schema<CreateRegistrationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1169,8 +832,8 @@ export const createTransferIn: API.OperationMethod<
   CreateTransferInError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTransferInRequest,
-  output: CreateTransferInResponse,
+  input: __S(15) as any as S.Schema<CreateTransferInRequest>,
+  output: __S(16) as any as S.Schema<CreateTransferInResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1184,8 +847,8 @@ export const editRegistration: API.OperationMethod<
   EditRegistrationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EditRegistrationRequest,
-  output: EditRegistrationResponse,
+  input: __S(17) as any as S.Schema<EditRegistrationRequest>,
+  output: __S(18) as any as S.Schema<EditRegistrationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1199,8 +862,8 @@ export const getDomain: API.OperationMethod<
   GetDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDomainRequest,
-  output: GetDomainResponse,
+  input: __S(19) as any as S.Schema<GetDomainRequest>,
+  output: __S(20) as any as S.Schema<GetDomainResponse>,
   errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1214,8 +877,8 @@ export const getExtension: API.OperationMethod<
   GetExtensionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExtensionRequest,
-  output: GetExtensionResponse,
+  input: __S(21) as any as S.Schema<GetExtensionRequest>,
+  output: __S(23) as any as S.Schema<GetExtensionResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1229,8 +892,8 @@ export const getRegistration: API.OperationMethod<
   GetRegistrationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistrationRequest,
-  output: GetRegistrationResponse,
+  input: __S(24) as any as S.Schema<GetRegistrationRequest>,
+  output: __S(25) as any as S.Schema<GetRegistrationResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1244,8 +907,8 @@ export const getRegistrationStatus: API.OperationMethod<
   GetRegistrationStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRegistrationStatusRequest,
-  output: GetRegistrationStatusResponse,
+  input: __S(26) as any as S.Schema<GetRegistrationStatusRequest>,
+  output: __S(27) as any as S.Schema<GetRegistrationStatusResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1259,8 +922,8 @@ export const getTransferInStatus: API.OperationMethod<
   GetTransferInStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTransferInStatusRequest,
-  output: GetTransferInStatusResponse,
+  input: __S(28) as any as S.Schema<GetTransferInStatusRequest>,
+  output: __S(29) as any as S.Schema<GetTransferInStatusResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1274,8 +937,8 @@ export const getUpdateStatus: API.OperationMethod<
   GetUpdateStatusError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetUpdateStatusRequest,
-  output: GetUpdateStatusResponse,
+  input: __S(30) as any as S.Schema<GetUpdateStatusRequest>,
+  output: __S(31) as any as S.Schema<GetUpdateStatusResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1291,8 +954,8 @@ export const listDomains: API.PaginatedOperationMethod<
   DomainsListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListDomainsRequest,
-    output: ListDomainsResponse,
+    input: __S(32) as any as S.Schema<ListDomainsRequest>,
+    output: __S(37) as any as S.Schema<ListDomainsResponse>,
     errors: [Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -1309,8 +972,8 @@ export const listExtensions: API.OperationMethod<
   ListExtensionsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListExtensionsRequest,
-  output: ListExtensionsResponse,
+  input: __S(38) as any as S.Schema<ListExtensionsRequest>,
+  output: __S(41) as any as S.Schema<ListExtensionsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1324,8 +987,8 @@ export const listRegistrations: API.OperationMethod<
   ListRegistrationsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRegistrationsRequest,
-  output: ListRegistrationsResponse,
+  input: __S(42) as any as S.Schema<ListRegistrationsRequest>,
+  output: __S(45) as any as S.Schema<ListRegistrationsResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1343,8 +1006,8 @@ export const putDomain: API.OperationMethod<
   PutDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutDomainRequest,
-  output: PutDomainResponse,
+  input: __S(46) as any as S.Schema<PutDomainRequest>,
+  output: __S(20) as any as S.Schema<PutDomainResponse>,
   errors: [
     RegistrarDomainNotOwned,
     RegistrarUpdateNotAllowed,
@@ -1364,8 +1027,8 @@ export const searchRegistrar: API.OperationMethod<
   SearchRegistrarError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchRegistrarRequest,
-  output: SearchRegistrarResponse,
+  input: __S(47) as any as S.Schema<SearchRegistrarRequest>,
+  output: __S(50) as any as S.Schema<SearchRegistrarResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1379,8 +1042,8 @@ export const transferCheck: API.OperationMethod<
   TransferCheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TransferCheckRequest,
-  output: TransferCheckResponse,
+  input: __S(53) as any as S.Schema<TransferCheckRequest>,
+  output: __S(56) as any as S.Schema<TransferCheckResponse>,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
@@ -1395,7 +1058,7 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          domains: CheckRequestDomainsList,
+          domains: __S(0),
         })
           .pipe(
             T.Http({
@@ -1421,17 +1084,17 @@ function __c0(j: number): any {
         S.Struct({
           name: S.String,
           registrable: S.Boolean,
-          pricing: S.optional(S.NullOr(CheckResponseDomainsItemPricing)),
-          reason: S.optional(S.NullOr(CheckResponseDomainsItemReason)),
-          tier: S.optional(S.NullOr(CheckResponseDomainsItemTier)),
+          pricing: S.optional(S.NullOr(__S(2))),
+          reason: S.optional(S.NullOr(S.String)),
+          tier: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "CheckResponseDomainsItem" });
     case 4:
-      return S.Array(CheckResponseDomainsItem);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          domains: CheckResponseDomainsList,
+          domains: __S(4),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CheckRegistrarResponse" });
     case 6:
@@ -1455,7 +1118,7 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          address: CreateRegistrationRequestContactsAdministratorPostalInfoAddress,
+          address: __S(7),
           name: S.String,
           organization: S.optional(S.String),
         }),
@@ -1467,9 +1130,7 @@ function __c1(j: number): any {
         S.Struct({
           email: S.String,
           phone: S.String,
-          postalInfo: CreateRegistrationRequestContactsAdministratorPostalInfo.pipe(
-            T.Body("postal_info"),
-          ),
+          postalInfo: __S(8).pipe(T.Body("postal_info")),
           fax: S.optional(S.String),
         }),
       ).annotate({
@@ -1478,10 +1139,10 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          administrator: S.optional(CreateRegistrationRequestContactsAdministrator),
-          billing: S.optional(CreateRegistrationRequestContactsAdministrator),
-          registrant: S.optional(CreateRegistrationRequestContactsAdministrator),
-          technical: S.optional(CreateRegistrationRequestContactsAdministrator),
+          administrator: S.optional(__S(9)),
+          billing: S.optional(__S(9)),
+          registrant: S.optional(__S(9)),
+          technical: S.optional(__S(9)),
         }),
       ).annotate({
         identifier: "CreateRegistrationRequestContacts",
@@ -1492,15 +1153,11 @@ function __c1(j: number): any {
           accountId: S.String.pipe(T.Label("account_id")),
           prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
           domainName: S.String.pipe(T.Body("domain_name")),
-          acknowledgements: S.optional(CreateRegistrationRequestAcknowledgementsMap),
+          acknowledgements: S.optional(__S(6)),
           autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
-          contactExtensions: S.optional(
-            CreateRegistrationRequestContactExtensionsMap.pipe(T.Body("contact_extensions")),
-          ),
-          contacts: S.optional(CreateRegistrationRequestContacts),
-          privacyMode: S.optional(
-            CreateRegistrationRequestPrivacyMode.pipe(T.Body("privacy_mode")),
-          ),
+          contactExtensions: S.optional(__S(6).pipe(T.Body("contact_extensions"))),
+          contacts: S.optional(__S(10)),
+          privacyMode: S.optional(S.String.pipe(T.Body("privacy_mode"))),
           years: S.optional(S.Number),
         })
           .pipe(
@@ -1537,11 +1194,11 @@ function __c1(j: number): any {
         S.Struct({
           completed: S.Boolean,
           createdAt: S.String.pipe(T.Body("created_at")),
-          links: CreateRegistrationResponseLinks,
-          state: CreateRegistrationResponseState,
+          links: __S(12),
+          state: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          context: S.optional(S.NullOr(CreateRegistrationResponseContextMap)),
-          error: S.optional(S.NullOr(CreateRegistrationResponseError)),
+          context: S.optional(S.NullOr(__S(6))),
+          error: S.optional(S.NullOr(__S(13))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "CreateRegistrationResponse",
@@ -1554,11 +1211,9 @@ function __c1(j: number): any {
           prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
           authCode: S.optional(S.String.pipe(T.Body("auth_code"))),
           autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
-          contactExtensions: S.optional(
-            CreateTransferInRequestContactExtensionsMap.pipe(T.Body("contact_extensions")),
-          ),
-          contacts: S.optional(CreateRegistrationRequestContacts),
-          privacyMode: S.optional(CreateTransferInRequestPrivacyMode.pipe(T.Body("privacy_mode"))),
+          contactExtensions: S.optional(__S(6).pipe(T.Body("contact_extensions"))),
+          contacts: S.optional(__S(10)),
+          privacyMode: S.optional(S.String.pipe(T.Body("privacy_mode"))),
         })
           .pipe(
             T.Http({
@@ -1578,11 +1233,11 @@ function __c2(j: number): any {
         S.Struct({
           completed: S.Boolean,
           createdAt: S.String.pipe(T.Body("created_at")),
-          links: CreateRegistrationResponseLinks,
-          state: CreateTransferInResponseState,
+          links: __S(12),
+          state: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          context: S.optional(S.NullOr(CreateTransferInResponseContextMap)),
-          error: S.optional(S.NullOr(CreateRegistrationResponseError)),
+          context: S.optional(S.NullOr(__S(6))),
+          error: S.optional(S.NullOr(__S(13))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "CreateTransferInResponse" });
     case 1:
@@ -1590,7 +1245,7 @@ function __c2(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           domainName: S.String.pipe(T.Label("domain_name")),
-          prefer: S.optional(EditRegistrationRequestPrefer.pipe(T.Header("Prefer"))),
+          prefer: S.optional(S.String.pipe(T.Header("Prefer"))),
           autoRenew: S.optional(S.Boolean.pipe(T.Body("auto_renew"))),
         })
           .pipe(
@@ -1607,11 +1262,11 @@ function __c2(j: number): any {
         S.Struct({
           completed: S.Boolean,
           createdAt: S.String.pipe(T.Body("created_at")),
-          links: CreateRegistrationResponseLinks,
-          state: EditRegistrationResponseState,
+          links: __S(12),
+          state: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          context: S.optional(S.NullOr(EditRegistrationResponseContextMap)),
-          error: S.optional(S.NullOr(CreateRegistrationResponseError)),
+          context: S.optional(S.NullOr(__S(6))),
+          error: S.optional(S.NullOr(__S(13))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "EditRegistrationResponse" });
     case 3:
@@ -1660,7 +1315,7 @@ function __c2(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: GetExtensionResponseMetadata,
+          metadata: __S(22),
           registrationSchema: S.Unknown.pipe(T.Body("registration_schema")),
           transferSchema: S.Unknown.pipe(T.Body("transfer_schema")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -1692,8 +1347,8 @@ function __c3(j: number): any {
           domainName: S.String.pipe(T.Body("domain_name")),
           expiresAt: S.String.pipe(T.Body("expires_at")),
           locked: S.Boolean,
-          privacyMode: GetRegistrationResponsePrivacyMode.pipe(T.Body("privacy_mode")),
-          status: GetRegistrationResponseStatus,
+          privacyMode: S.String.pipe(T.Body("privacy_mode")),
+          status: S.String,
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetRegistrationResponse" });
     case 2:
@@ -1718,11 +1373,11 @@ function __c3(j: number): any {
         S.Struct({
           completed: S.Boolean,
           createdAt: S.String.pipe(T.Body("created_at")),
-          links: CreateRegistrationResponseLinks,
-          state: RegistrationStatusGetResponseState,
+          links: __S(12),
+          state: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          context: S.optional(S.NullOr(RegistrationStatusGetResponseContextMap)),
-          error: S.optional(S.NullOr(CreateRegistrationResponseError)),
+          context: S.optional(S.NullOr(__S(6))),
+          error: S.optional(S.NullOr(__S(13))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetRegistrationStatusResponse",
@@ -1749,11 +1404,11 @@ function __c3(j: number): any {
         S.Struct({
           completed: S.Boolean,
           createdAt: S.String.pipe(T.Body("created_at")),
-          links: CreateRegistrationResponseLinks,
-          state: GetTransferInStatusResponseState,
+          links: __S(12),
+          state: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          context: S.optional(S.NullOr(GetTransferInStatusResponseContextMap)),
-          error: S.optional(S.NullOr(CreateRegistrationResponseError)),
+          context: S.optional(S.NullOr(__S(6))),
+          error: S.optional(S.NullOr(__S(13))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "GetTransferInStatusResponse",
@@ -1778,11 +1433,11 @@ function __c3(j: number): any {
         S.Struct({
           completed: S.Boolean,
           createdAt: S.String.pipe(T.Body("created_at")),
-          links: CreateRegistrationResponseLinks,
-          state: UpdateStatusGetResponseState,
+          links: __S(12),
+          state: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
-          context: S.optional(S.NullOr(UpdateStatusGetResponseContextMap)),
-          error: S.optional(S.NullOr(CreateRegistrationResponseError)),
+          context: S.optional(S.NullOr(__S(6))),
+          error: S.optional(S.NullOr(__S(13))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetUpdateStatusResponse" });
   }
@@ -1822,24 +1477,12 @@ function __c4(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          acceptFoa: S.optional(
-            S.NullOr(DomainsListResultItemTransferInAcceptFoa).pipe(T.Body("accept_foa")),
-          ),
-          approveTransfer: S.optional(
-            S.NullOr(DomainsListResultItemTransferInApproveTransfer).pipe(
-              T.Body("approve_transfer"),
-            ),
-          ),
+          acceptFoa: S.optional(S.NullOr(S.String).pipe(T.Body("accept_foa"))),
+          approveTransfer: S.optional(S.NullOr(S.String).pipe(T.Body("approve_transfer"))),
           canCancelTransfer: S.optional(S.NullOr(S.Boolean).pipe(T.Body("can_cancel_transfer"))),
-          disablePrivacy: S.optional(
-            S.NullOr(DomainsListResultItemTransferInDisablePrivacy).pipe(T.Body("disable_privacy")),
-          ),
-          enterAuthCode: S.optional(
-            S.NullOr(DomainsListResultItemTransferInEnterAuthCode).pipe(T.Body("enter_auth_code")),
-          ),
-          unlockDomain: S.optional(
-            S.NullOr(DomainsListResultItemTransferInUnlockDomain).pipe(T.Body("unlock_domain")),
-          ),
+          disablePrivacy: S.optional(S.NullOr(S.String).pipe(T.Body("disable_privacy"))),
+          enterAuthCode: S.optional(S.NullOr(S.String).pipe(T.Body("enter_auth_code"))),
+          unlockDomain: S.optional(S.NullOr(S.String).pipe(T.Body("unlock_domain"))),
         }),
       ).annotate({
         identifier: "DomainsListResultItemTransferIn",
@@ -1854,14 +1497,10 @@ function __c4(j: number): any {
           currentRegistrar: S.optional(S.NullOr(S.String).pipe(T.Body("current_registrar"))),
           expiresAt: S.optional(S.NullOr(S.String).pipe(T.Body("expires_at"))),
           locked: S.optional(S.NullOr(S.Boolean)),
-          registrantContact: S.optional(
-            S.NullOr(DomainsListResultItemRegistrantContact).pipe(T.Body("registrant_contact")),
-          ),
+          registrantContact: S.optional(S.NullOr(__S(33)).pipe(T.Body("registrant_contact"))),
           registryStatuses: S.optional(S.NullOr(S.String).pipe(T.Body("registry_statuses"))),
           supportedTld: S.optional(S.NullOr(S.Boolean).pipe(T.Body("supported_tld"))),
-          transferIn: S.optional(
-            S.NullOr(DomainsListResultItemTransferIn).pipe(T.Body("transfer_in")),
-          ),
+          transferIn: S.optional(S.NullOr(__S(34)).pipe(T.Body("transfer_in"))),
           updatedAt: S.optional(S.NullOr(S.String).pipe(T.Body("updated_at"))),
           name: S.optional(S.NullOr(S.String)),
           autoRenew: S.optional(S.NullOr(S.Boolean).pipe(T.Body("auto_renew"))),
@@ -1869,11 +1508,11 @@ function __c4(j: number): any {
         }),
       ).annotate({ identifier: "DomainsListResultItem" });
     case 4:
-      return S.Array(DomainsListResultItem);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          result: DomainsListResultList.pipe(T.EnvelopePayload()),
+          result: __S(36).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListDomainsResponse" });
@@ -1882,10 +1521,10 @@ function __c4(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           cursor: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(ListExtensionsRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          sortBy: S.optional(ListExtensionsRequestSortBy.pipe(T.Query("sort_by"))),
+          sortBy: S.optional(S.String.pipe(T.Query("sort_by"))),
         })
           .pipe(
             T.Http({
@@ -1899,7 +1538,7 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          metadata: GetExtensionResponseMetadata,
+          metadata: __S(22),
           registrationSchema: S.Unknown.pipe(T.Body("registration_schema")),
           transferSchema: S.Unknown.pipe(T.Body("transfer_schema")),
         }),
@@ -1909,19 +1548,19 @@ function __c4(j: number): any {
 function __c5(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListExtensionsResultItem);
+      return S.Array(__S(39));
     case 1:
       return S.suspend(() =>
-        ListExtensionsResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(40).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "ListExtensionsResponse" });
     case 2:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           cursor: S.optional(S.String.pipe(T.Query())),
-          direction: S.optional(ListRegistrationsRequestDirection.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
           perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-          sortBy: S.optional(ListRegistrationsRequestSortBy.pipe(T.Query("sort_by"))),
+          sortBy: S.optional(S.String.pipe(T.Query("sort_by"))),
         })
           .pipe(
             T.Http({
@@ -1940,17 +1579,17 @@ function __c5(j: number): any {
           domainName: S.String.pipe(T.Body("domain_name")),
           expiresAt: S.String.pipe(T.Body("expires_at")),
           locked: S.Boolean,
-          privacyMode: ListRegistrationsResultItemPrivacyMode.pipe(T.Body("privacy_mode")),
-          status: ListRegistrationsResultItemStatus,
+          privacyMode: S.String.pipe(T.Body("privacy_mode")),
+          status: S.String,
         }),
       ).annotate({
         identifier: "ListRegistrationsResultItem",
       });
     case 4:
-      return S.Array(ListRegistrationsResultItem);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
-        ListRegistrationsResultList.pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
+        __S(44).pipe(T.EnvelopePayloadRoot(), T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
         identifier: "ListRegistrationsResponse",
       });
@@ -1977,7 +1616,7 @@ function __c5(j: number): any {
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
           q: S.String.pipe(T.Query()),
-          extensions: S.optional(SearchRequestExtensionsList.pipe(T.Query())),
+          extensions: S.optional(__S(0).pipe(T.Query())),
           limit: S.optional(S.Number.pipe(T.Query())),
         })
           .pipe(
@@ -1998,19 +1637,19 @@ function __c6(j: number): any {
         S.Struct({
           name: S.String,
           registrable: S.Boolean,
-          pricing: S.optional(S.NullOr(CheckResponseDomainsItemPricing)),
-          reason: S.optional(S.NullOr(SearchResponseDomainsItemReason)),
-          tier: S.optional(S.NullOr(SearchResponseDomainsItemTier)),
+          pricing: S.optional(S.NullOr(__S(2))),
+          reason: S.optional(S.NullOr(S.String)),
+          tier: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "SearchResponseDomainsItem",
       });
     case 1:
-      return S.Array(SearchResponseDomainsItem);
+      return S.Array(__S(48));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          domains: SearchResponseDomainsList,
+          domains: __S(49),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "SearchRegistrarResponse" });
     case 3:
@@ -2023,12 +1662,12 @@ function __c6(j: number): any {
         identifier: "TransferCheckRequestDomainsItem",
       });
     case 4:
-      return S.Array(TransferCheckRequestDomainsItem);
+      return S.Array(__S(51));
     case 5:
       return S.suspend(() =>
         S.Struct({
           accountId: S.String.pipe(T.Label("account_id")),
-          domains: TransferCheckRequestDomainsList,
+          domains: __S(52),
         })
           .pipe(
             T.Http({
@@ -2047,7 +1686,7 @@ function __c6(j: number): any {
         ]),
       );
     case 7:
-      return S.Record(S.String, TransferCheckResponseDomainsValue);
+      return S.Record(S.String, __S(54));
   }
 }
 function __c7(j: number): any {
@@ -2055,8 +1694,33 @@ function __c7(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          domains: TransferCheckResponseDomainsMap,
+          domains: __S(55),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "TransferCheckResponse" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
   }
 }

@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { PosthogProtocol, type PosthogOpError, type PosthogOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { PosthogOpError, PosthogOpContext };
 
@@ -51,12 +53,8 @@ export type WidgetGenerateRequestModelEnum =
   | "claude-sonnet-4-6"
   | "claude-sonnet-5"
   | "claude-opus-5";
-const WidgetGenerateRequestModelEnum = S.String;
-
 /** * `initial` - initial * `regenerate` - regenerate * `improve` - improve */
 export type GenerationOperationEnum = "initial" | "regenerate" | "improve";
-const GenerationOperationEnum = S.String;
-
 export interface GenerateReusableWidgetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -72,69 +70,30 @@ export interface GenerateReusableWidgetRequest {
   /** Current widget version the improvement is based on. Required for improve operations. */
   expected_current_version_id?: string;
 }
-const GenerateReusableWidgetRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GenerateReusableWidgetRequest>;
-
 export interface GenerateReusableWidgetResponse {}
-const GenerateReusableWidgetResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GenerateReusableWidgetResponse>;
-
 export interface GetReusableWidgetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
-const GetReusableWidgetRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetReusableWidgetRequest>;
-
 /** Searchable widget labels. */
 export type ReusableWidgetDetailTagsList = Array<string>;
-const ReusableWidgetDetailTagsList = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ReusableWidgetDetailTagsList>;
-
 /** * `published` - published * `deprecated` - deprecated */
 export type PublicationStatusEnum = "published" | "deprecated";
-const PublicationStatusEnum = S.String;
-
 /** * `initial` - initial * `regenerate` - regenerate * `improve` - improve * `revert` - revert */
 export type GeneratedWidgetVersionOperationEnum = "initial" | "regenerate" | "improve" | "revert";
-const GeneratedWidgetVersionOperationEnum = S.String;
-
 /** * `queued` - queued * `building` - building * `ready` - ready * `failed` - failed */
 export type BuildStatusEnum = "queued" | "building" | "ready" | "failed";
-const BuildStatusEnum = S.String;
-
 /** Logical dataframe slots accepted by this widget version. */
 export type ReusableWidgetVersionDetailFrameNamesList = Array<string>;
-const ReusableWidgetVersionDetailFrameNamesList =
-  ReusableWidgetDetailTagsList as any as S.Schema<ReusableWidgetVersionDetailFrameNamesList>;
-
 export interface WidgetInputContractColumn {
   /** Column name expected by the reusable widget. */
   name: string;
   /** Column type expected by the reusable widget. */
   type: string;
 }
-const WidgetInputContractColumn = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<WidgetInputContractColumn>;
-
 /** Columns the notebook-local binding must produce after its optional Hog mapping. */
 export type WidgetInputContractItemColumnsList = Array<WidgetInputContractColumn>;
-const WidgetInputContractItemColumnsList = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<WidgetInputContractItemColumnsList>;
-
 export interface WidgetInputContractItem {
   /** Stable logical input name used by the reusable widget. */
   slot: string;
@@ -145,18 +104,8 @@ export interface WidgetInputContractItem {
   /** Hash of the expected column schema. */
   schemaHash: string;
 }
-const WidgetInputContractItem = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<WidgetInputContractItem>;
-
 /** Dataframe slots and schemas expected by this widget version. */
 export type ReusableWidgetVersionDetailInputContractList = Array<WidgetInputContractItem>;
-const ReusableWidgetVersionDetailInputContractList = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ReusableWidgetVersionDetailInputContractList>;
-
 /** * `none` - none * `low` - low * `medium` - medium * `high` - high * `critical` - critical */
 export type GeneratedWidgetVersionSecurityReviewSeverityEnum =
   | "none"
@@ -164,12 +113,8 @@ export type GeneratedWidgetVersionSecurityReviewSeverityEnum =
   | "medium"
   | "high"
   | "critical";
-const GeneratedWidgetVersionSecurityReviewSeverityEnum = S.String;
-
 /** * `low` - low * `medium` - medium * `high` - high * `critical` - critical */
 export type ErrorTrackingIssueSeverityRuleEnum = "low" | "medium" | "high" | "critical";
-const ErrorTrackingIssueSeverityRuleEnum = S.String;
-
 export interface WidgetSecurityFinding {
   /** Severity of this potential security issue. * `low` - low * `medium` - medium * `high` - high * `critical` - critical */
   severity: ErrorTrackingIssueSeverityRuleEnum;
@@ -178,18 +123,8 @@ export interface WidgetSecurityFinding {
   /** Why the source may be unsafe and what it could do. */
   details: string;
 }
-const WidgetSecurityFinding = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<WidgetSecurityFinding>;
-
 /** Potential security issues found in the source. */
 export type WidgetSecurityReviewFindingsList = Array<WidgetSecurityFinding>;
-const WidgetSecurityReviewFindingsList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<WidgetSecurityReviewFindingsList>;
-
 export interface WidgetSecurityReview {
   /** Highest severity found, or none when the review found no issues. * `none` - none * `low` - low * `medium` - medium * `high` - high * `critical` - critical */
   severity: GeneratedWidgetVersionSecurityReviewSeverityEnum;
@@ -204,8 +139,6 @@ export interface WidgetSecurityReview {
   /** When this exact widget source was reviewed. */
   reviewed_at: string;
 }
-const WidgetSecurityReview = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<WidgetSecurityReview>;
-
 export interface ReusableWidgetVersionDetail {
   /** Estimated generation charge in USD, including retries, security review, and the AI credit markup. Null when unavailable. */
   generation_cost_usd?: string | null;
@@ -236,11 +169,6 @@ export interface ReusableWidgetVersionDetail {
   /** When this immutable version was created. */
   created_at: string;
 }
-const ReusableWidgetVersionDetail = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ReusableWidgetVersionDetail>;
-
 export interface ReusableWidgetDetail {
   /** Stable reusable widget identifier. */
   id: string;
@@ -267,8 +195,6 @@ export interface ReusableWidgetDetail {
   /** When the reusable widget was last changed. */
   updated_at: string;
 }
-const ReusableWidgetDetail = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<ReusableWidgetDetail>;
-
 export interface ListReusableWidgetsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -276,16 +202,8 @@ export interface ListReusableWidgetsRequest {
   offset?: number;
   search?: string;
 }
-const ListReusableWidgetsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<ListReusableWidgetsRequest>;
-
 /** Searchable widget labels. */
 export type ReusableWidgetSummaryTagsList = Array<string>;
-const ReusableWidgetSummaryTagsList =
-  ReusableWidgetDetailTagsList as any as S.Schema<ReusableWidgetSummaryTagsList>;
-
 export interface ReusableWidgetSummary {
   /** Stable reusable widget identifier. */
   id: string;
@@ -310,18 +228,8 @@ export interface ReusableWidgetSummary {
   /** When the reusable widget was last changed. */
   updated_at: string;
 }
-const ReusableWidgetSummary = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<ReusableWidgetSummary>;
-
 /** Reusable widgets in this page. */
 export type ReusableWidgetPageResultsList = Array<ReusableWidgetSummary>;
-const ReusableWidgetPageResultsList = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ReusableWidgetPageResultsList>;
-
 export interface ReusableWidgetPage {
   /** Reusable widgets in this page. */
   results: ReusableWidgetPageResultsList;
@@ -330,8 +238,6 @@ export interface ReusableWidgetPage {
   /** Offset for the next page, or null when this is the final page. */
   next_offset: number | null;
 }
-const ReusableWidgetPage = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<ReusableWidgetPage>;
-
 export interface RestoreReusableWidgetRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -341,11 +247,6 @@ export interface RestoreReusableWidgetRequest {
   /** Latest version observed before restoring. */
   expected_current_version_id: string;
 }
-const RestoreReusableWidgetRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<RestoreReusableWidgetRequest>;
-
 export interface ReusableWidgetsDemoFrameRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -355,36 +256,17 @@ export interface ReusableWidgetsDemoFrameRequest {
   /** Immutable version whose saved demo data should be returned. */
   version_id?: string;
 }
-const ReusableWidgetsDemoFrameRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ReusableWidgetsDemoFrameRequest>;
-
 export interface WidgetFrameColumn {
   /** Column name. */
   name: string;
   /** Column type reported by the completed notebook run. */
   type: string;
 }
-const WidgetFrameColumn = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<WidgetFrameColumn>;
-
 /** Dataframe columns in display order. */
 export type WidgetFrameColumnsList = Array<WidgetFrameColumn>;
-const WidgetFrameColumnsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<WidgetFrameColumnsList>;
-
 export type WidgetFrameRowsItemList = Array<unknown>;
-const WidgetFrameRowsItemList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<WidgetFrameRowsItemList>;
-
 /** Requested page of dataframe rows. */
 export type WidgetFrameRowsList = Array<WidgetFrameRowsItemList>;
-const WidgetFrameRowsList = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<WidgetFrameRowsList>;
-
 export interface WidgetFrame {
   /** Logical dataframe name. */
   name: string;
@@ -405,8 +287,6 @@ export interface WidgetFrame {
   /** Whether more rows exist after this page. */
   truncated: boolean;
 }
-const WidgetFrame = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<WidgetFrame>;
-
 export interface ReusableWidgetsDiscardVersionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -416,11 +296,6 @@ export interface ReusableWidgetsDiscardVersionRequest {
   /** Published version observed when the review action started. */
   expected_current_version_id: string;
 }
-const ReusableWidgetsDiscardVersionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<ReusableWidgetsDiscardVersionRequest>;
-
 export interface ReusableWidgetsSaveVersionRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -430,11 +305,6 @@ export interface ReusableWidgetsSaveVersionRequest {
   /** Published version observed when the review action started. */
   expected_current_version_id: string;
 }
-const ReusableWidgetsSaveVersionRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<ReusableWidgetsSaveVersionRequest>;
-
 export interface ReusableWidgetsSourceRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -442,27 +312,15 @@ export interface ReusableWidgetsSourceRequest {
   /** Immutable reusable widget version whose source should be returned. */
   version_id?: string;
 }
-const ReusableWidgetsSourceRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<ReusableWidgetsSourceRequest>;
-
 export interface WidgetSource {
   /** Read-only source code for the current widget version. */
   source: string;
 }
-const WidgetSource = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<WidgetSource>;
-
 export interface ReusableWidgetsStatusRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
   id: string;
 }
-const ReusableWidgetsStatusRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<ReusableWidgetsStatusRequest>;
-
 /** * `awaiting_generation` - awaiting_generation * `generating` - generating * `building` - building * `ready` - ready * `failed` - failed * `incompatible` - incompatible */
 export type LifecycleStatusEnum =
   | "awaiting_generation"
@@ -471,48 +329,26 @@ export type LifecycleStatusEnum =
   | "ready"
   | "failed"
   | "incompatible";
-const LifecycleStatusEnum = S.String;
-
 /** * `generating_source` - generating_source * `reviewing_source` - reviewing_source * `publishing_source` - publishing_source * `unknown` - unknown */
 export type FailurePhaseEnum =
   | "generating_source"
   | "reviewing_source"
   | "publishing_source"
   | "unknown";
-const FailurePhaseEnum = S.String;
-
 /** Logical dataframe slots available to the selected version. */
 export type WidgetStatusFrameNamesList = Array<string>;
-const WidgetStatusFrameNamesList =
-  ReusableWidgetDetailTagsList as any as S.Schema<WidgetStatusFrameNamesList>;
-
 export interface WidgetStatusInputBindingsValue {
   source: string;
   hog?: string;
 }
-const WidgetStatusInputBindingsValue = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<WidgetStatusInputBindingsValue>;
-
 /** Notebook-local mapping from each logical widget input slot to a dataframe and optional Hog transform. */
 export type WidgetStatusInputBindingsMap = {
   [key: string]: WidgetStatusInputBindingsValue | undefined;
 };
-const WidgetStatusInputBindingsMap = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<WidgetStatusInputBindingsMap>;
-
 /** Logical dataframe slots and output schemas required by the selected widget version. */
 export type WidgetStatusInputContractList = Array<WidgetInputContractItem>;
-const WidgetStatusInputContractList =
-  ReusableWidgetVersionDetailInputContractList as any as S.Schema<WidgetStatusInputContractList>;
-
 /** * `queued` - queued * `generating` - generating * `publishing` - publishing */
 export type WidgetJobStatusEnum = "queued" | "generating" | "publishing";
-const WidgetJobStatusEnum = S.String;
-
 export interface WidgetJob {
   /** Generation job identifier. */
   id: string;
@@ -527,8 +363,6 @@ export interface WidgetJob {
   /** When a worker started the job. */
   started_at: string | null;
 }
-const WidgetJob = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<WidgetJob>;
-
 export interface WidgetStatus {
   /** Current widget and preview state. * `awaiting_generation` - awaiting_generation * `generating` - generating * `building` - building * `ready` - ready * `failed` - failed * `incompatible` - incompatible */
   lifecycle_status: LifecycleStatusEnum;
@@ -565,8 +399,6 @@ export interface WidgetStatus {
   /** Hex SHA-256 over the exact immutable artifact manifest selected for display. */
   build_hash: string | null;
 }
-const WidgetStatus = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<WidgetStatus>;
-
 export interface ReusableWidgetsVersionsRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -576,18 +408,8 @@ export interface ReusableWidgetsVersionsRequest {
   /** Zero-based version offset. */
   offset?: number;
 }
-const ReusableWidgetsVersionsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<ReusableWidgetsVersionsRequest>;
-
 /** Published versions, newest first. */
 export type ReusableWidgetVersionPageResultsList = Array<ReusableWidgetVersionDetail>;
-const ReusableWidgetVersionPageResultsList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ReusableWidgetVersionPageResultsList>;
-
 export interface ReusableWidgetVersionPage {
   /** Published versions, newest first. */
   results: ReusableWidgetVersionPageResultsList;
@@ -596,18 +418,10 @@ export interface ReusableWidgetVersionPage {
   /** Next page offset, or null on the final page. */
   next_offset: number | null;
 }
-const ReusableWidgetVersionPage = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ReusableWidgetVersionPage>;
-
 export type UpdateReusableWidgetDemoDataRequestRowsItemList = Array<unknown>;
 /** Saved demo rows in input-contract column order. Replaces this slot's entire sample, up to 20 rows. */
 export type UpdateReusableWidgetDemoDataRequestRowsList =
   Array<UpdateReusableWidgetDemoDataRequestRowsItemList>;
-const UpdateReusableWidgetDemoDataRequestRowsList =
-  WidgetFrameRowsList as any as S.Schema<UpdateReusableWidgetDemoDataRequestRowsList>;
-
 export interface UpdateReusableWidgetDemoDataRequest {
   /** Project ID of the project you're trying to access. To find the ID of the project, make a call to /api/projects/. */
   project_id: string;
@@ -619,11 +433,6 @@ export interface UpdateReusableWidgetDemoDataRequest {
   /** Saved demo rows in input-contract column order. Replaces this slot's entire sample, up to 20 rows. */
   rows: UpdateReusableWidgetDemoDataRequestRowsList;
 }
-const UpdateReusableWidgetDemoDataRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<UpdateReusableWidgetDemoDataRequest>;
-
 export type GenerateReusableWidgetError =
   | BadRequest
   | Forbidden
@@ -636,8 +445,8 @@ export const generateReusableWidget: API.OperationMethod<
   GenerateReusableWidgetError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateReusableWidgetRequest,
-  output: GenerateReusableWidgetResponse,
+  input: __S(0) as any as S.Schema<GenerateReusableWidgetRequest>,
+  output: __S(1) as any as S.Schema<GenerateReusableWidgetResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -650,8 +459,8 @@ export const getReusableWidget: API.OperationMethod<
   GetReusableWidgetError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetReusableWidgetRequest,
-  output: ReusableWidgetDetail,
+  input: __S(2) as any as S.Schema<GetReusableWidgetRequest>,
+  output: __S(12) as any as S.Schema<ReusableWidgetDetail>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -664,8 +473,8 @@ export const listReusableWidgets: API.OperationMethod<
   ListReusableWidgetsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListReusableWidgetsRequest,
-  output: ReusableWidgetPage,
+  input: __S(13) as any as S.Schema<ListReusableWidgetsRequest>,
+  output: __S(16) as any as S.Schema<ReusableWidgetPage>,
   errors: [],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -678,8 +487,8 @@ export const restoreReusableWidget: API.OperationMethod<
   RestoreReusableWidgetError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreReusableWidgetRequest,
-  output: ReusableWidgetDetail,
+  input: __S(17) as any as S.Schema<RestoreReusableWidgetRequest>,
+  output: __S(12) as any as S.Schema<ReusableWidgetDetail>,
   errors: [BadRequest, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -692,8 +501,8 @@ export const reusableWidgetsDemoFrame: API.OperationMethod<
   ReusableWidgetsDemoFrameError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReusableWidgetsDemoFrameRequest,
-  output: WidgetFrame,
+  input: __S(18) as any as S.Schema<ReusableWidgetsDemoFrameRequest>,
+  output: __S(23) as any as S.Schema<WidgetFrame>,
   errors: [NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -706,8 +515,8 @@ export const reusableWidgetsDiscardVersion: API.OperationMethod<
   ReusableWidgetsDiscardVersionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReusableWidgetsDiscardVersionRequest,
-  output: ReusableWidgetDetail,
+  input: __S(24) as any as S.Schema<ReusableWidgetsDiscardVersionRequest>,
+  output: __S(12) as any as S.Schema<ReusableWidgetDetail>,
   errors: [NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -720,8 +529,8 @@ export const reusableWidgetsSaveVersion: API.OperationMethod<
   ReusableWidgetsSaveVersionError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReusableWidgetsSaveVersionRequest,
-  output: ReusableWidgetDetail,
+  input: __S(25) as any as S.Schema<ReusableWidgetsSaveVersionRequest>,
+  output: __S(12) as any as S.Schema<ReusableWidgetDetail>,
   errors: [BadRequest, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -734,8 +543,8 @@ export const reusableWidgetsSource: API.OperationMethod<
   ReusableWidgetsSourceError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReusableWidgetsSourceRequest,
-  output: WidgetSource,
+  input: __S(26) as any as S.Schema<ReusableWidgetsSourceRequest>,
+  output: __S(27) as any as S.Schema<WidgetSource>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -748,8 +557,8 @@ export const reusableWidgetsStatus: API.OperationMethod<
   ReusableWidgetsStatusError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReusableWidgetsStatusRequest,
-  output: WidgetStatus,
+  input: __S(28) as any as S.Schema<ReusableWidgetsStatusRequest>,
+  output: __S(32) as any as S.Schema<WidgetStatus>,
   errors: [NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -762,8 +571,8 @@ export const reusableWidgetsVersions: API.OperationMethod<
   ReusableWidgetsVersionsError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReusableWidgetsVersionsRequest,
-  output: ReusableWidgetVersionPage,
+  input: __S(33) as any as S.Schema<ReusableWidgetsVersionsRequest>,
+  output: __S(35) as any as S.Schema<ReusableWidgetVersionPage>,
   errors: [BadRequest, NotFound],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -776,8 +585,8 @@ export const updateReusableWidgetDemoData: API.OperationMethod<
   UpdateReusableWidgetDemoDataError,
   PosthogOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateReusableWidgetDemoDataRequest,
-  output: WidgetFrame,
+  input: __S(36) as any as S.Schema<UpdateReusableWidgetDemoDataRequest>,
+  output: __S(23) as any as S.Schema<WidgetFrame>,
   errors: [BadRequest, NotFound, Conflict],
   protocol: PosthogProtocol,
   retry: Retry.Retry,
@@ -793,8 +602,8 @@ function __c0(j: number): any {
           id: S.String.pipe(T.Label()),
           prompt: S.String,
           generation_id: S.String,
-          model: S.optional(WidgetGenerateRequestModelEnum),
-          generation_operation: S.optional(GenerationOperationEnum),
+          model: S.optional(S.String),
+          generation_operation: S.optional(S.String),
           expected_current_version_id: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -835,18 +644,18 @@ function __c0(j: number): any {
         identifier: "WidgetInputContractColumn",
       });
     case 5:
-      return S.Array(WidgetInputContractColumn);
+      return S.Array(__S(4));
     case 6:
       return S.suspend(() =>
         S.Struct({
           slot: S.String,
           sourceName: S.String,
-          columns: S.optional(WidgetInputContractItemColumnsList),
+          columns: S.optional(__S(5)),
           schemaHash: S.String,
         }),
       ).annotate({ identifier: "WidgetInputContractItem" });
     case 7:
-      return S.Array(WidgetInputContractItem);
+      return S.Array(__S(6));
   }
 }
 function __c1(j: number): any {
@@ -854,19 +663,19 @@ function __c1(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          severity: ErrorTrackingIssueSeverityRuleEnum,
+          severity: S.String,
           title: S.String,
           details: S.String,
         }),
       ).annotate({ identifier: "WidgetSecurityFinding" });
     case 1:
-      return S.Array(WidgetSecurityFinding);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          severity: GeneratedWidgetVersionSecurityReviewSeverityEnum,
+          severity: S.String,
           summary: S.String,
-          findings: WidgetSecurityReviewFindingsList,
+          findings: __S(9),
           model: S.String,
           review_version: S.String,
           reviewed_at: S.String,
@@ -879,14 +688,14 @@ function __c1(j: number): any {
           id: S.String,
           title: S.String,
           version: S.Number,
-          operation: GeneratedWidgetVersionOperationEnum,
+          operation: S.String,
           model: S.NullOr(S.String),
           artifact_url: S.NullOr(S.String),
-          build_status: S.NullOr(BuildStatusEnum),
+          build_status: S.NullOr(S.String),
           build_hash: S.NullOr(S.String),
-          frame_names: ReusableWidgetVersionDetailFrameNamesList,
-          input_contract: ReusableWidgetVersionDetailInputContractList,
-          security_review: S.NullOr(WidgetSecurityReview),
+          frame_names: __S(3),
+          input_contract: __S(7),
+          security_review: S.NullOr(__S(10)),
           has_demo_data: S.Boolean,
           created_at: S.String,
         }),
@@ -899,10 +708,10 @@ function __c1(j: number): any {
           id: S.String,
           name: S.String,
           description: S.String,
-          tags: ReusableWidgetDetailTagsList,
-          publication_status: PublicationStatusEnum,
-          current_version: ReusableWidgetVersionDetail,
-          pending_version: S.NullOr(ReusableWidgetVersionDetail),
+          tags: __S(3),
+          publication_status: S.String,
+          current_version: __S(11),
+          pending_version: S.NullOr(__S(11)),
           version_count: S.Number,
           instance_count: S.Number,
           created_at: S.String,
@@ -929,8 +738,8 @@ function __c1(j: number): any {
           id: S.String,
           name: S.String,
           description: S.String,
-          tags: ReusableWidgetSummaryTagsList,
-          publication_status: PublicationStatusEnum,
+          tags: __S(3),
+          publication_status: S.String,
           current_version_id: S.String,
           version_count: S.Number,
           instance_count: S.Number,
@@ -940,7 +749,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "ReusableWidgetSummary" });
     case 7:
-      return S.Array(ReusableWidgetSummary);
+      return S.Array(__S(14));
   }
 }
 function __c2(j: number): any {
@@ -948,7 +757,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          results: ReusableWidgetPageResultsList,
+          results: __S(15),
           count: S.Number,
           next_offset: S.NullOr(S.Number),
         }),
@@ -995,18 +804,18 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "WidgetFrameColumn" });
     case 4:
-      return S.Array(WidgetFrameColumn);
+      return S.Array(__S(19));
     case 5:
       return S.Array(S.Unknown);
     case 6:
-      return S.Array(WidgetFrameRowsItemList);
+      return S.Array(__S(21));
     case 7:
       return S.suspend(() =>
         S.Struct({
           name: S.String,
           runId: S.String,
-          columns: WidgetFrameColumnsList,
-          rows: WidgetFrameRowsList,
+          columns: __S(20),
+          rows: __S(22),
           totalRowCount: S.Number,
           includedRowCount: S.Number,
           offset: S.Number,
@@ -1099,12 +908,12 @@ function __c3(j: number): any {
         identifier: "WidgetStatusInputBindingsValue",
       });
     case 6:
-      return S.Record(S.String, WidgetStatusInputBindingsValue);
+      return S.Record(S.String, __S(29));
     case 7:
       return S.suspend(() =>
         S.Struct({
           id: S.String,
-          status: WidgetJobStatusEnum,
+          status: S.String,
           phase: S.String,
           model: S.String,
           created_at: S.String,
@@ -1118,21 +927,21 @@ function __c4(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          lifecycle_status: LifecycleStatusEnum,
+          lifecycle_status: S.String,
           error_detail: S.optional(S.NullOr(S.String)),
           error_code: S.optional(S.NullOr(S.String)),
-          failure_phase: S.optional(S.NullOr(FailurePhaseEnum)),
+          failure_phase: S.optional(S.NullOr(S.String)),
           artifact_url: S.optional(S.NullOr(S.String)),
-          frame_names: WidgetStatusFrameNamesList,
-          input_bindings: WidgetStatusInputBindingsMap,
-          input_contract: WidgetStatusInputContractList,
+          frame_names: __S(3),
+          input_bindings: __S(30),
+          input_contract: __S(7),
           current_version_id: S.NullOr(S.String),
           pinned_version_id: S.NullOr(S.String),
           widget_id: S.NullOr(S.String),
           instance_id: S.NullOr(S.String),
           has_versions: S.Boolean,
-          active_job: S.NullOr(WidgetJob),
-          security_review: S.NullOr(WidgetSecurityReview),
+          active_job: S.NullOr(__S(31)),
+          security_review: S.NullOr(__S(10)),
           is_reusable: S.Boolean,
           build_hash: S.NullOr(S.String),
         }),
@@ -1155,11 +964,11 @@ function __c4(j: number): any {
         identifier: "ReusableWidgetsVersionsRequest",
       });
     case 2:
-      return S.Array(ReusableWidgetVersionDetail);
+      return S.Array(__S(11));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          results: ReusableWidgetVersionPageResultsList,
+          results: __S(34),
           count: S.Number,
           next_offset: S.NullOr(S.Number),
         }),
@@ -1173,7 +982,7 @@ function __c4(j: number): any {
           id: S.String.pipe(T.Label()),
           version_id: S.String,
           frame_name: S.String,
-          rows: UpdateReusableWidgetDemoDataRequestRowsList,
+          rows: __S(22),
         }).pipe(
           T.Http({
             method: "POST",
@@ -1184,5 +993,24 @@ function __c4(j: number): any {
       ).annotate({
         identifier: "UpdateReusableWidgetDemoDataRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

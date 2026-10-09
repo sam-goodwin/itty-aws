@@ -7,6 +7,8 @@ import { UnknownOvhError } from "../errors.ts";
 import { OvhProtocol, type OvhOpError, type OvhOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { OvhOpError, OvhOpContext };
 
@@ -17,8 +19,6 @@ export type ServiceTerminationFutureUseEnum =
   | "SUBSCRIBE_AN_OTHER_SERVICE"
   | "SUBSCRIBE_OTHER_KIND_OF_SERVICE_WITH_COMPETITOR"
   | "SUBSCRIBE_SIMILAR_SERVICE_WITH_COMPETITOR";
-const ServiceTerminationFutureUseEnum = S.String;
-
 /** All reasons you can provide for a service termination */
 export type ServiceTerminationReasonEnum =
   | "FEATURES_DONT_SUIT_ME"
@@ -35,8 +35,6 @@ export type ServiceTerminationReasonEnum =
   | "TOO_EXPENSIVE"
   | "TOO_HARD_TO_USE"
   | "UNSATIFIED_BY_CUSTOMER_SUPPORT";
-const ServiceTerminationReasonEnum = S.String;
-
 export interface ConfirmHostingWebTerminationRequest {
   /** Service name */
   serviceName: string;
@@ -49,32 +47,15 @@ export interface ConfirmHostingWebTerminationRequest {
   /** The termination token sent by email to the admin contact */
   token: string;
 }
-const ConfirmHostingWebTerminationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<ConfirmHostingWebTerminationRequest>;
-
 export type ConfirmHostingWebTerminationResponse = string;
-const ConfirmHostingWebTerminationResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<ConfirmHostingWebTerminationResponse>;
-
 export interface CopyHostingWebDatabaseRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Database name (like mydb.mysql.db or mydb.postgres.db) */
   name: string;
 }
-const CopyHostingWebDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CopyHostingWebDatabaseRequest>;
-
 /** Database copy status */
 export type HostingWebDatabaseCopyStatusEnum = "doing" | "done" | "error" | "todo";
-const HostingWebDatabaseCopyStatusEnum = S.String;
-
 /** Copy */
 export interface HostingWebDatabaseCopy {
   /** Creation date */
@@ -88,11 +69,6 @@ export interface HostingWebDatabaseCopy {
   /** Copy status */
   status?: HostingWebDatabaseCopyStatusEnum;
 }
-const HostingWebDatabaseCopy = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<HostingWebDatabaseCopy>;
-
 export interface CopyHostingWebDatabaseRestoreRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -103,11 +79,6 @@ export interface CopyHostingWebDatabaseRestoreRequest {
   /** If database will be flushed before importing the dump. Default: false */
   flushDatabase?: boolean;
 }
-const CopyHostingWebDatabaseRestoreRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CopyHostingWebDatabaseRestoreRequest>;
-
 /** Object type enum */
 export type HostingWebTaskObjectTypeEnum =
   | "Abuse"
@@ -138,12 +109,8 @@ export type HostingWebTaskObjectTypeEnum =
   | "Web"
   | "Webd"
   | "Website";
-const HostingWebTaskObjectTypeEnum = S.String;
-
 /** Task status enum */
 export type HostingWebTaskStatusEnum = "cancelled" | "doing" | "done" | "init" | "todo";
-const HostingWebTaskStatusEnum = S.String;
-
 /** Tasks */
 export interface HostingWebTask {
   /** Completion date */
@@ -163,16 +130,10 @@ export interface HostingWebTask {
   /** Task status */
   status?: HostingWebTaskStatusEnum;
 }
-const HostingWebTask = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<HostingWebTask>;
-
 /** whether or not the attachedDomain is linked to the hosting cdn */
 export type HostingWebAttachedDomainCdnEnum = "active" | "none";
-const HostingWebAttachedDomainCdnEnum = S.String;
-
 /** Firewall state for this path */
 export type HostingWebAttachedDomainFirewallEnum = "active" | "none";
-const HostingWebAttachedDomainFirewallEnum = S.String;
-
 /** Available cluster countries */
 export type HostingWebCountryEnum =
   | "BE"
@@ -189,8 +150,6 @@ export type HostingWebCountryEnum =
   | "PL"
   | "PT"
   | "UK";
-const HostingWebCountryEnum = S.String;
-
 export interface CreateHostingWebAttachedDomainRequest {
   /** Service name */
   serviceName: string;
@@ -213,11 +172,6 @@ export interface CreateHostingWebAttachedDomainRequest {
   /** Whether to put the attached domain in the SSL certificate */
   ssl?: boolean | null;
 }
-const CreateHostingWebAttachedDomainRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CreateHostingWebAttachedDomainRequest>;
-
 /** Task function enum */
 export type HostingWebTaskFunctionEnum =
   | "abuse/close"
@@ -410,8 +364,6 @@ export type HostingWebTaskFunctionEnum =
   | "website/create"
   | "website/delete"
   | "website/deploy";
-const HostingWebTaskFunctionEnum = S.String;
-
 /** Public task */
 export interface HostingWebPublicTask {
   /** Done date */
@@ -431,23 +383,14 @@ export interface HostingWebPublicTask {
   /** Task status */
   status?: HostingWebTaskStatusEnum;
 }
-const HostingWebPublicTask = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<HostingWebPublicTask>;
-
 export interface CreateHostingWebAttachedDomainSslRequest {
   /** Service name */
   serviceName: string;
   /** Domain */
   domain: string;
 }
-const CreateHostingWebAttachedDomainSslRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CreateHostingWebAttachedDomainSslRequest>;
-
 /** Hosted SSL Provider */
 export type HostingWebHostedsslProviderEnum = "COMODO" | "CUSTOM" | "LETSENCRYPT" | "SECTIGO";
-const HostingWebHostedsslProviderEnum = S.String;
-
 /** Hosted SSL status */
 export type HostingWebHostedsslStatusEnum =
   | "created"
@@ -455,12 +398,8 @@ export type HostingWebHostedsslStatusEnum =
   | "deleting"
   | "importing"
   | "regenerating";
-const HostingWebHostedsslStatusEnum = S.String;
-
 /** Hosted SSL type */
 export type HostingWebHostedsslTypeEnum = "CUSTOM" | "DV" | "EV";
-const HostingWebHostedsslTypeEnum = S.String;
-
 /** Hosted SSL properties */
 export interface HostingWebSSL {
   /** If the hostedssl is currently bound to a report */
@@ -476,23 +415,12 @@ export interface HostingWebSSL {
   /** Type of the Hosted SSL */
   type?: HostingWebHostedsslTypeEnum;
 }
-const HostingWebSSL = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<HostingWebSSL>;
-
 /** Option pattern type */
 export type CdnOptionPatternTypeEnum = "extension" | "folder" | "regex" | "uri";
-const CdnOptionPatternTypeEnum = S.String;
-
 /** Option query parameters */
 export type CdnOptionQueryParametersEnum = "ignored" | "sorted";
-const CdnOptionQueryParametersEnum = S.String;
-
 /** List of URI */
 export type CdnDomainOptionConfigResourcesList = Array<string>;
-const CdnDomainOptionConfigResourcesList = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CdnDomainOptionConfigResourcesList>;
-
 /** Option configuration */
 export interface CdnDomainOptionConfig {
   /** URL used for Mobile Redirect */
@@ -514,15 +442,8 @@ export interface CdnDomainOptionConfig {
   /** Cache time in seconds */
   ttl?: number | null;
 }
-const CdnDomainOptionConfig = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<CdnDomainOptionConfig>;
-
 /** Option type */
 export type CdnOptionTypePostEnum = "cache_rule";
-const CdnOptionTypePostEnum = S.String;
-
 export interface CreateHostingWebCdnDomainOptionRequest {
   /** Service name */
   serviceName: string;
@@ -539,11 +460,6 @@ export interface CreateHostingWebCdnDomainOptionRequest {
   /** Option type */
   type: CdnOptionTypePostEnum | (string & {});
 }
-const CreateHostingWebCdnDomainOptionRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateHostingWebCdnDomainOptionRequest>;
-
 /** Additional information about option */
 export interface CdnDomainOptionExtra {
   /** Maximum usage of the option */
@@ -551,8 +467,6 @@ export interface CdnDomainOptionExtra {
   /** Current usage of the option */
   usage?: number | null;
 }
-const CdnDomainOptionExtra = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<CdnDomainOptionExtra>;
-
 /** Option type */
 export type CdnOptionTypeEnum =
   | "brotli"
@@ -568,8 +482,6 @@ export type CdnOptionTypeEnum =
   | "prewarm"
   | "querystring"
   | "waf";
-const CdnOptionTypeEnum = S.String;
-
 /** Option details */
 export interface CdnDomainOption {
   /** Option configuration */
@@ -585,8 +497,6 @@ export interface CdnDomainOption {
   /** Option type */
   type: CdnOptionTypeEnum;
 }
-const CdnDomainOption = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<CdnDomainOption>;
-
 /** Map a possible renew for a specific service */
 export interface ServiceRenewType {
   /** The service is automatically renewed */
@@ -600,25 +510,13 @@ export interface ServiceRenewType {
   /** period of renew in month */
   period?: number | null;
 }
-const ServiceRenewType = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ServiceRenewType>;
-
 export interface CreateHostingWebCdnServiceInfosUpdateRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Renew type */
   renew: ServiceRenewType;
 }
-const CreateHostingWebCdnServiceInfosUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateHostingWebCdnServiceInfosUpdateRequest>;
-
 export interface CreateHostingWebCdnServiceInfosUpdateResponse {}
-const CreateHostingWebCdnServiceInfosUpdateResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateHostingWebCdnServiceInfosUpdateResponse>;
-
 export interface CreateHostingWebChangeContactRequest {
   /** Service name */
   serviceName: string;
@@ -629,23 +527,8 @@ export interface CreateHostingWebChangeContactRequest {
   /** The contact to set as tech contact */
   contactTech?: string;
 }
-const CreateHostingWebChangeContactRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateHostingWebChangeContactRequest>;
-
 export type CreateHostingWebChangeContactResponseBodyList = Array<number>;
-const CreateHostingWebChangeContactResponseBodyList = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateHostingWebChangeContactResponseBodyList>;
-
 export type CreateHostingWebChangeContactResponse = CreateHostingWebChangeContactResponseBodyList;
-const CreateHostingWebChangeContactResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateHostingWebChangeContactResponse>;
-
 /** Web supported languages */
 export type HostingWebLanguagesEnum =
   | "node10"
@@ -674,12 +557,8 @@ export type HostingWebLanguagesEnum =
   | "python2"
   | "python3"
   | "ruby2.6";
-const HostingWebLanguagesEnum = S.String;
-
 /** Cron status */
 export type HostingWebCronStatusEnum = "disabled" | "enabled" | "suspended";
-const HostingWebCronStatusEnum = S.String;
-
 export interface CreateHostingWebCronRequest {
   /** Service name */
   serviceName: string;
@@ -696,11 +575,6 @@ export interface CreateHostingWebCronRequest {
   /** Cron status */
   status?: HostingWebCronStatusEnum | (string & {});
 }
-const CreateHostingWebCronRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateHostingWebCronRequest>;
-
 /** Database capabitities type enum */
 export type HostingWebDatabaseDatabaseCapabilitiesTypeEnum =
   | "extraSqlPerso"
@@ -709,20 +583,14 @@ export type HostingWebDatabaseDatabaseCapabilitiesTypeEnum =
   | "sqlLocal"
   | "sqlPerso"
   | "sqlPro";
-const HostingWebDatabaseDatabaseCapabilitiesTypeEnum = S.String;
-
 /** ExtraSqlPerso quota enum */
 export type HostingWebDatabaseExtraSqlQuotaEnum = 25 | 100 | 200 | 256 | 400 | 512 | 800 | 1024;
-const HostingWebDatabaseExtraSqlQuotaEnum = S.Number;
-
 /** Database Type enum */
 export type HostingWebDatabaseDatabaseCreationTypeEnum =
   | "mariadb"
   | "mysql"
   | "postgresql"
   | "redis";
-const HostingWebDatabaseDatabaseCreationTypeEnum = S.String;
-
 /** Database Version enum */
 export type HostingWebDatabaseVersionEnum =
   | "10"
@@ -751,8 +619,6 @@ export type HostingWebDatabaseVersionEnum =
   | "9.4"
   | "9.5"
   | "9.6";
-const HostingWebDatabaseVersionEnum = S.String;
-
 export interface CreateHostingWebDatabaseRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -769,11 +635,6 @@ export interface CreateHostingWebDatabaseRequest {
   /** Version you want for your database following the type */
   version?: HostingWebDatabaseVersionEnum | (string & {});
 }
-const CreateHostingWebDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateHostingWebDatabaseRequest>;
-
 export interface CreateHostingWebDatabaseChangePasswordRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -782,15 +643,8 @@ export interface CreateHostingWebDatabaseChangePasswordRequest {
   /** The new database password */
   password: string | Redacted.Redacted<string>;
 }
-const CreateHostingWebDatabaseChangePasswordRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<CreateHostingWebDatabaseChangePasswordRequest>;
-
 /** List of dump types */
 export type HostingWebDatabaseDumpDateEnum = "daily.1" | "now" | "weekly.1";
-const HostingWebDatabaseDumpDateEnum = S.String;
-
 export interface CreateHostingWebDatabaseDumpRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -801,15 +655,8 @@ export interface CreateHostingWebDatabaseDumpRequest {
   /** Send an email when dump will be available? Default: true */
   sendEmail?: boolean;
 }
-const CreateHostingWebDatabaseDumpRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateHostingWebDatabaseDumpRequest>;
-
 /** Types of action you can request for your database */
 export type HostingWebDatabaseRequestActionEnum = "CHECK_QUOTA";
-const HostingWebDatabaseRequestActionEnum = S.String;
-
 export interface CreateHostingWebDatabaseRequestRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -818,34 +665,17 @@ export interface CreateHostingWebDatabaseRequestRequest {
   /** Action you want to request */
   action: HostingWebDatabaseRequestActionEnum | (string & {});
 }
-const CreateHostingWebDatabaseRequestRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateHostingWebDatabaseRequestRequest>;
-
 /** Types of action you can request for your mail */
 export type HostingWebMailActionEnum = "BLOCK" | "PURGE" | "UNBLOCK";
-const HostingWebMailActionEnum = S.String;
-
 export interface CreateHostingWebEmailRequestRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Action you want to request */
   action: HostingWebMailActionEnum | (string & {});
 }
-const CreateHostingWebEmailRequestRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateHostingWebEmailRequestRequest>;
-
 export type CreateHostingWebEmailRequestResponse = string;
-const CreateHostingWebEmailRequestResponse =
-  ConfirmHostingWebTerminationResponse as any as S.Schema<CreateHostingWebEmailRequestResponse>;
-
 /** Filter the value of type property (=) */
 export type HostingWebEnvVarTypeEnum = "integer" | "password" | "string";
-const HostingWebEnvVarTypeEnum = S.String;
-
 export interface CreateHostingWebEnvVarRequest {
   /** Service name */
   serviceName: string;
@@ -856,11 +686,6 @@ export interface CreateHostingWebEnvVarRequest {
   /** Value of the variable */
   value: string;
 }
-const CreateHostingWebEnvVarRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateHostingWebEnvVarRequest>;
-
 export interface CreateHostingWebExtraSqlPersoServiceInfosUpdateRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -869,31 +694,16 @@ export interface CreateHostingWebExtraSqlPersoServiceInfosUpdateRequest {
   /** Renew type */
   renew: ServiceRenewType;
 }
-const CreateHostingWebExtraSqlPersoServiceInfosUpdateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<CreateHostingWebExtraSqlPersoServiceInfosUpdateRequest>;
-
 export interface CreateHostingWebExtraSqlPersoServiceInfosUpdateResponse {}
-const CreateHostingWebExtraSqlPersoServiceInfosUpdateResponse =
-  CreateHostingWebCdnServiceInfosUpdateResponse as any as S.Schema<CreateHostingWebExtraSqlPersoServiceInfosUpdateResponse>;
-
 export interface CreateHostingWebKeySshRequest {
   /** Service name */
   serviceName: string;
 }
-const CreateHostingWebKeySshRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<CreateHostingWebKeySshRequest>;
-
 /** Key information */
 export interface HostingWebKey {
   /** Public key */
   publicKey?: string;
 }
-const HostingWebKey = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<HostingWebKey>;
-
 export interface CreateHostingWebLocalSeoLocationServiceInfosUpdateRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -902,21 +712,9 @@ export interface CreateHostingWebLocalSeoLocationServiceInfosUpdateRequest {
   /** Renew type */
   renew: ServiceRenewType;
 }
-const CreateHostingWebLocalSeoLocationServiceInfosUpdateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateHostingWebLocalSeoLocationServiceInfosUpdateRequest>;
-
 export interface CreateHostingWebLocalSeoLocationServiceInfosUpdateResponse {}
-const CreateHostingWebLocalSeoLocationServiceInfosUpdateResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateHostingWebLocalSeoLocationServiceInfosUpdateResponse>;
-
 /** Location country */
 export type HostingWebLocalSeoLocationCountryEnum = "FR";
-const HostingWebLocalSeoLocationCountryEnum = S.String;
-
 export interface CreateHostingWebLocalSeoVisibilityCheckRequest {
   /** Country of the location */
   country: HostingWebLocalSeoLocationCountryEnum | (string & {});
@@ -927,11 +725,6 @@ export interface CreateHostingWebLocalSeoVisibilityCheckRequest {
   /** Zipcode of the location */
   zip: string;
 }
-const CreateHostingWebLocalSeoVisibilityCheckRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<CreateHostingWebLocalSeoVisibilityCheckRequest>;
-
 /** Struct describing a location being checked for visibility */
 export interface HostingWebLocalSeoSearchData {
   /** City of the location */
@@ -953,11 +746,6 @@ export interface HostingWebLocalSeoSearchData {
   /** Zipcode of the location */
   zip?: string;
 }
-const HostingWebLocalSeoSearchData = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<HostingWebLocalSeoSearchData>;
-
 /** Struct describing the response for a visibility check request */
 export interface HostingWebLocalSeoVisibilityCheckResponse {
   /** Is the searched location already managed ? */
@@ -965,15 +753,8 @@ export interface HostingWebLocalSeoVisibilityCheckResponse {
   /** Searched location data */
   searchData?: HostingWebLocalSeoSearchData;
 }
-const HostingWebLocalSeoVisibilityCheckResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<HostingWebLocalSeoVisibilityCheckResponse>;
-
 /** The type of the dependency. A dependency can be a standard database (like MySQL or PostgreSQL) or a key-value store (like Redis or Memcached) for example */
 export type HostingWebModuleDependencyTypeEnum = "mysql";
-const HostingWebModuleDependencyTypeEnum = S.String;
-
 /** Dependency parameters. A dependency can be a standard database (like MySQL or PostgreSQL) or a key-value store (like Redis or Memcached) for example */
 export interface HostingWebModuleDependencyType {
   /** The name of this dependency */
@@ -991,18 +772,8 @@ export interface HostingWebModuleDependencyType {
   /** The user to use to connect to this dependency */
   user?: string | null;
 }
-const HostingWebModuleDependencyType = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<HostingWebModuleDependencyType>;
-
 /** The dependencies that we have to configure on your module. A dependency can be a standard database (like MySQL or PostgreSQL) or a key-value store (like Redis or Memcached) for example */
 export type CreateHostingWebModuleRequestDependenciesList = Array<HostingWebModuleDependencyType>;
-const CreateHostingWebModuleRequestDependenciesList = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CreateHostingWebModuleRequestDependenciesList>;
-
 /** Install language */
 export type HostingWebModuleLanguageEnum =
   | "cz"
@@ -1016,8 +787,6 @@ export type HostingWebModuleLanguageEnum =
   | "nl"
   | "pl"
   | "pt";
-const HostingWebModuleLanguageEnum = S.String;
-
 export interface CreateHostingWebModuleRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -1036,11 +805,6 @@ export interface CreateHostingWebModuleRequest {
   /** Where to install the module, relative to your home directory */
   path?: string;
 }
-const CreateHostingWebModuleRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateHostingWebModuleRequest>;
-
 export interface CreateHostingWebModuleUpgradeRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -1049,11 +813,6 @@ export interface CreateHostingWebModuleUpgradeRequest {
   /** The ID of the module to upgrade to */
   moduleId: number;
 }
-const CreateHostingWebModuleUpgradeRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateHostingWebModuleUpgradeRequest>;
-
 /** Hosting configuration image to run website */
 export type HostingWebOvhconfigContainerEnum =
   | "jessie.i386"
@@ -1061,12 +820,8 @@ export type HostingWebOvhconfigContainerEnum =
   | "stable"
   | "stable64"
   | "testing";
-const HostingWebOvhconfigContainerEnum = S.String;
-
 /** Hosting configuration engine */
 export type HostingWebOvhConfigEngineNameEnum = "php" | "phpcgi";
-const HostingWebOvhConfigEngineNameEnum = S.String;
-
 /** Hosting available configuration version */
 export type HostingWebOvhConfigAvailableEngineVersionEnum =
   | "5.4"
@@ -1082,16 +837,10 @@ export type HostingWebOvhConfigAvailableEngineVersionEnum =
   | "8.2"
   | "8.3"
   | "8.4";
-const HostingWebOvhConfigAvailableEngineVersionEnum = S.String;
-
 /** Hosting configuration environment */
 export type HostingWebOvhConfigEnvironmentEnum = "development" | "production";
-const HostingWebOvhConfigEnvironmentEnum = S.String;
-
 /** Hosting configuration firewall */
 export type HostingWebOvhConfigHttpFirewallEnum = "none" | "security";
-const HostingWebOvhConfigHttpFirewallEnum = S.String;
-
 export interface CreateHostingWebOvhConfigChangeConfigurationRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -1108,20 +857,10 @@ export interface CreateHostingWebOvhConfigChangeConfigurationRequest {
   /** Configuration you want for http firewall */
   httpFirewall?: HostingWebOvhConfigHttpFirewallEnum | (string & {});
 }
-const CreateHostingWebOvhConfigChangeConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CreateHostingWebOvhConfigChangeConfigurationRequest>;
-
 export interface CreateHostingWebOvhConfigRefreshRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const CreateHostingWebOvhConfigRefreshRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<CreateHostingWebOvhConfigRefreshRequest>;
-
 export interface CreateHostingWebOvhConfigRollbackRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -1130,11 +869,6 @@ export interface CreateHostingWebOvhConfigRollbackRequest {
   /** The configuration's id you want to rollback */
   rollbackId: number;
 }
-const CreateHostingWebOvhConfigRollbackRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CreateHostingWebOvhConfigRollbackRequest>;
-
 export interface CreateHostingWebOwnLogUserLogRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -1149,15 +883,7 @@ export interface CreateHostingWebOwnLogUserLogRequest {
   /** The new userLogs password */
   password: string | Redacted.Redacted<string>;
 }
-const CreateHostingWebOwnLogUserLogRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<CreateHostingWebOwnLogUserLogRequest>;
-
 export type CreateHostingWebOwnLogUserLogResponse = string;
-const CreateHostingWebOwnLogUserLogResponse =
-  ConfirmHostingWebTerminationResponse as any as S.Schema<CreateHostingWebOwnLogUserLogResponse>;
-
 export interface CreateHostingWebOwnLogUserLogChangePasswordRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -1168,30 +894,15 @@ export interface CreateHostingWebOwnLogUserLogChangePasswordRequest {
   /** The new userLogs password */
   password: string | Redacted.Redacted<string>;
 }
-const CreateHostingWebOwnLogUserLogChangePasswordRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CreateHostingWebOwnLogUserLogChangePasswordRequest>;
-
 export type CreateHostingWebOwnLogUserLogChangePasswordResponse = string;
-const CreateHostingWebOwnLogUserLogChangePasswordResponse =
-  ConfirmHostingWebTerminationResponse as any as S.Schema<CreateHostingWebOwnLogUserLogChangePasswordResponse>;
-
 /** Types of action you can request for your web hosting */
 export type HostingWebRequestActionEnum = "CHECK_QUOTA" | "FLUSH_CACHE" | "SCAN_ANTIHACK";
-const HostingWebRequestActionEnum = S.String;
-
 export interface CreateHostingWebRequestRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Action you want to request */
   action: HostingWebRequestActionEnum | (string & {});
 }
-const CreateHostingWebRequestRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<CreateHostingWebRequestRequest>;
-
 /** Hosting's offer */
 export type HostingWebOfferEnum =
   | "CLOUDWEB_1"
@@ -1206,28 +917,16 @@ export type HostingWebOfferEnum =
   | "POWER_BETA_1"
   | "PRO"
   | "START";
-const HostingWebOfferEnum = S.String;
-
 export interface CreateHostingWebRequestBoostRequest {
   /** Service name */
   serviceName: string;
   /** Requested boost offer */
   offer?: HostingWebOfferEnum | (string & {}) | null;
 }
-const CreateHostingWebRequestBoostRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CreateHostingWebRequestBoostRequest>;
-
 /** Runtime env enum */
 export type HostingWebRuntimeEnvEnum = "development" | "production";
-const HostingWebRuntimeEnvEnum = S.String;
-
 /** The attached domains fqdn to link to this runtime configuration */
 export type CreateHostingWebRuntimeRequestAttachedDomainsList = Array<string>;
-const CreateHostingWebRuntimeRequestAttachedDomainsList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<CreateHostingWebRuntimeRequestAttachedDomainsList>;
-
 /** Runtime backend type enum */
 export type HostingWebRuntimeTypeEnum =
   | "nodejs-10"
@@ -1246,8 +945,6 @@ export type HostingWebRuntimeTypeEnum =
   | "python-2"
   | "python-3"
   | "ruby-2.6";
-const HostingWebRuntimeTypeEnum = S.String;
-
 export interface CreateHostingWebRuntimeRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -1266,15 +963,8 @@ export interface CreateHostingWebRuntimeRequest {
   /** The backend type of a runtime configuration */
   type?: HostingWebRuntimeTypeEnum | (string & {});
 }
-const CreateHostingWebRuntimeRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CreateHostingWebRuntimeRequest>;
-
 /** Account's ssh state */
 export type HostingWebUserSshStateEnum = "active" | "none" | "sftponly";
-const HostingWebUserSshStateEnum = S.String;
-
 export interface CreateHostingWebUserRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -1287,11 +977,6 @@ export interface CreateHostingWebUserRequest {
   /** Ssh state for this user. Default: none */
   sshState?: HostingWebUserSshStateEnum | (string & {});
 }
-const CreateHostingWebUserRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CreateHostingWebUserRequest>;
-
 export interface CreateHostingWebUserChangePasswordRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -1300,11 +985,6 @@ export interface CreateHostingWebUserChangePasswordRequest {
   /** The user's new password */
   password: string | Redacted.Redacted<string>;
 }
-const CreateHostingWebUserChangePasswordRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CreateHostingWebUserChangePasswordRequest>;
-
 export interface CreateHostingWebWebsiteRequest {
   /** Service name */
   serviceName: string;
@@ -1315,11 +995,6 @@ export interface CreateHostingWebWebsiteRequest {
   /** Clone URL of the repository containing the website source code to deploy */
   vcsUrl: string;
 }
-const CreateHostingWebWebsiteRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<CreateHostingWebWebsiteRequest>;
-
 export interface DeleteHostingWebAttachedDomainRequest {
   /** Service name */
   serviceName: string;
@@ -1328,22 +1003,12 @@ export interface DeleteHostingWebAttachedDomainRequest {
   /** If set to true, DNS zone will not be updated by the operation */
   bypassDNSConfiguration?: boolean;
 }
-const DeleteHostingWebAttachedDomainRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<DeleteHostingWebAttachedDomainRequest>;
-
 export interface DeleteHostingWebAttachedDomainSslRequest {
   /** Service name */
   serviceName: string;
   /** Domain */
   domain: string;
 }
-const DeleteHostingWebAttachedDomainSslRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<DeleteHostingWebAttachedDomainSslRequest>;
-
 export interface DeleteHostingWebCdnDomainOptionRequest {
   /** Service name */
   serviceName: string;
@@ -1352,37 +1017,19 @@ export interface DeleteHostingWebCdnDomainOptionRequest {
   /** Option name */
   optionName: string;
 }
-const DeleteHostingWebCdnDomainOptionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<DeleteHostingWebCdnDomainOptionRequest>;
-
 export interface DeleteHostingWebCdnDomainOptionResponse {}
-const DeleteHostingWebCdnDomainOptionResponse =
-  CreateHostingWebCdnServiceInfosUpdateResponse as any as S.Schema<DeleteHostingWebCdnDomainOptionResponse>;
-
 export interface DeleteHostingWebCronRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
-const DeleteHostingWebCronRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<DeleteHostingWebCronRequest>;
-
 export interface DeleteHostingWebDatabaseRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Database name (like mydb.mysql.db or mydb.postgres.db) */
   name: string;
 }
-const DeleteHostingWebDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<DeleteHostingWebDatabaseRequest>;
-
 export interface DeleteHostingWebDatabaseCopyRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -1391,15 +1038,7 @@ export interface DeleteHostingWebDatabaseCopyRequest {
   /** Copy id */
   id: string;
 }
-const DeleteHostingWebDatabaseCopyRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<DeleteHostingWebDatabaseCopyRequest>;
-
 export interface DeleteHostingWebDatabaseCopyResponse {}
-const DeleteHostingWebDatabaseCopyResponse =
-  CreateHostingWebCdnServiceInfosUpdateResponse as any as S.Schema<DeleteHostingWebDatabaseCopyResponse>;
-
 export interface DeleteHostingWebDatabaseDumpRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -1408,44 +1047,24 @@ export interface DeleteHostingWebDatabaseDumpRequest {
   /** Dump id */
   id: number;
 }
-const DeleteHostingWebDatabaseDumpRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<DeleteHostingWebDatabaseDumpRequest>;
-
 export interface DeleteHostingWebDumpRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Dump id */
   id: number;
 }
-const DeleteHostingWebDumpRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<DeleteHostingWebDumpRequest>;
-
 export interface DeleteHostingWebEnvVarRequest {
   /** Service name */
   serviceName: string;
   /** Key */
   key: string;
 }
-const DeleteHostingWebEnvVarRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<DeleteHostingWebEnvVarRequest>;
-
 export interface DeleteHostingWebModuleRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Installation ID */
   id: number;
 }
-const DeleteHostingWebModuleRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<DeleteHostingWebModuleRequest>;
-
 export interface DeleteHostingWebOwnLogUserLogRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -1454,37 +1073,19 @@ export interface DeleteHostingWebOwnLogUserLogRequest {
   /** The userLogs login used to connect to logs.ovh.net */
   login: string;
 }
-const DeleteHostingWebOwnLogUserLogRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<DeleteHostingWebOwnLogUserLogRequest>;
-
 export type DeleteHostingWebOwnLogUserLogResponse = string;
-const DeleteHostingWebOwnLogUserLogResponse =
-  ConfirmHostingWebTerminationResponse as any as S.Schema<DeleteHostingWebOwnLogUserLogResponse>;
-
 export interface DeleteHostingWebRuntimeRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** The runtime configuration ID */
   id: number;
 }
-const DeleteHostingWebRuntimeRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<DeleteHostingWebRuntimeRequest>;
-
 export interface DeleteHostingWebUserRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Login used to connect on FTP and SSH */
   login: string;
 }
-const DeleteHostingWebUserRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  7,
-) as any as S.Schema<DeleteHostingWebUserRequest>;
-
 export interface DeleteHostingWebWebsiteRequest {
   /** Service name */
   serviceName: string;
@@ -1493,11 +1094,6 @@ export interface DeleteHostingWebWebsiteRequest {
   /** Whether the website path should be emptied or not */
   deleteFiles: boolean;
 }
-const DeleteHostingWebWebsiteRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeleteHostingWebWebsiteRequest>;
-
 export interface DeployHostingWebWebsiteRequest {
   /** Service name */
   serviceName: string;
@@ -1506,17 +1102,10 @@ export interface DeployHostingWebWebsiteRequest {
   /** Whether a reset was requested before deploying */
   reset?: boolean;
 }
-const DeployHostingWebWebsiteRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeployHostingWebWebsiteRequest>;
-
 export interface GetHostingWebRequest {
   /** Service name */
   serviceName: string;
 }
-const GetHostingWebRequest = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<GetHostingWebRequest>;
-
 /** Currency code */
 export type OrderCurrencyCodeEnum =
   | "AUD"
@@ -1534,8 +1123,6 @@ export type OrderCurrencyCodeEnum =
   | "USD"
   | "XOF"
   | "points";
-const OrderCurrencyCodeEnum = S.String;
-
 /** Price with its currency and textual representation */
 export interface OrderPrice {
   /** Currency code */
@@ -1547,8 +1134,6 @@ export interface OrderPrice {
   /** The effective price */
   value?: number;
 }
-const OrderPrice = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<OrderPrice>;
-
 /** Struct which describs an boost offer from a service */
 export interface HostingWebAvailableOfferStruct {
   /** Available boost offer */
@@ -1556,18 +1141,8 @@ export interface HostingWebAvailableOfferStruct {
   /** The price in month for this boost offer */
   price?: OrderPrice;
 }
-const HostingWebAvailableOfferStruct = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<HostingWebAvailableOfferStruct>;
-
 /** Available offers for boost option */
 export type HostingWebServiceWithIAMAvailableBoostOfferList = Array<HostingWebAvailableOfferStruct>;
-const HostingWebServiceWithIAMAvailableBoostOfferList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<HostingWebServiceWithIAMAvailableBoostOfferList>;
-
 /** Hosting's offer */
 export type HostingWebOfferCapabilitiesEnum =
   | "1000gp"
@@ -1654,8 +1229,6 @@ export type HostingWebOfferCapabilitiesEnum =
   | "starter"
   | "xxlpack"
   | "xxlplan";
-const HostingWebOfferCapabilitiesEnum = S.String;
-
 /** Available clusterIp by country */
 export interface HostingWebCountriesIp {
   /** The whois country of the ip */
@@ -1665,25 +1238,10 @@ export interface HostingWebCountriesIp {
   /** The cluster ipv6 */
   ipv6?: string | null;
 }
-const HostingWebCountriesIp = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<HostingWebCountriesIp>;
-
 /** Available clusterIp by countries */
 export type HostingWebServiceWithIAMCountriesIpList = Array<HostingWebCountriesIp>;
-const HostingWebServiceWithIAMCountriesIpList = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<HostingWebServiceWithIAMCountriesIpList>;
-
 /** Resource tags. Tags that were internally computed are prefixed with ovh: */
 export type IamResourceMetadataTagsMap = { [key: string]: string | undefined };
-const IamResourceMetadataTagsMap = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<IamResourceMetadataTagsMap>;
-
 /** IAM resource metadata embedded in services models */
 export interface IamResourceMetadata {
   /** Resource display name */
@@ -1695,16 +1253,10 @@ export interface IamResourceMetadata {
   /** Unique resource name used in policies */
   urn?: string;
 }
-const IamResourceMetadata = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<IamResourceMetadata>;
-
 /** Hosting's OS */
 export type HostingWebOperatingSystemEnum = "linux";
-const HostingWebOperatingSystemEnum = S.String;
-
 /** Different support of PHP versions */
 export type HostingWebPhpVersionStateEnum = "BETA" | "END_OF_LIFE" | "SECURITY_FIXES" | "SUPPORTED";
-const HostingWebPhpVersionStateEnum = S.String;
-
 /** State of available php versions for this account */
 export interface HostingWebPhpVersion {
   /** Current support of this php version */
@@ -1712,30 +1264,16 @@ export interface HostingWebPhpVersion {
   /** PHP version */
   version?: string;
 }
-const HostingWebPhpVersion = /*@__PURE__*/ __L.at(__c9, 2) as any as S.Schema<HostingWebPhpVersion>;
-
 /** State of available php versions for this account */
 export type HostingWebServiceWithIAMPhpVersionsList = Array<HostingWebPhpVersion>;
-const HostingWebServiceWithIAMPhpVersionsList = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<HostingWebServiceWithIAMPhpVersionsList>;
-
 /** A numeric value tagged with its unit */
 export interface ComplexTypeUnitAndValueDouble {
   /** Unit of the value */
   unit?: string;
   value?: number;
 }
-const ComplexTypeUnitAndValueDouble = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ComplexTypeUnitAndValueDouble>;
-
 /** Hosting's type */
 export type HostingWebResourceEnum = "bestEffort" | "cloud" | "dedicated" | "shared";
-const HostingWebResourceEnum = S.String;
-
 /** Url and port of a service */
 export interface HostingWebAddress {
   /** Port to use to access to the service */
@@ -1743,8 +1281,6 @@ export interface HostingWebAddress {
   /** Url to contact the service */
   url?: string;
 }
-const HostingWebAddress = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<HostingWebAddress>;
-
 /** Different url to manage your service */
 export interface HostingWebServiceAccess {
   /** Address with url and port to manage files by ftp */
@@ -1754,20 +1290,10 @@ export interface HostingWebServiceAccess {
   /** Address with url and port to manage webhosting by ssh */
   ssh?: HostingWebAddress;
 }
-const HostingWebServiceAccess = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<HostingWebServiceAccess>;
-
 /** Hosting's state */
 export type HostingWebStateEnum = "active" | "bloqued" | "maintenance";
-const HostingWebStateEnum = S.String;
-
 /** List of updates on your hosting */
 export type HostingWebServiceWithIAMUpdatesList = Array<string>;
-const HostingWebServiceWithIAMUpdatesList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<HostingWebServiceWithIAMUpdatesList>;
-
 /** Web Hosting */
 export interface HostingWebServiceWithIAM {
   /** Available offers for boost option */
@@ -1837,26 +1363,14 @@ export interface HostingWebServiceWithIAM {
   /** List of updates on your hosting */
   updates?: HostingWebServiceWithIAMUpdatesList;
 }
-const HostingWebServiceWithIAM = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<HostingWebServiceWithIAM>;
-
 export interface GetHostingWebAttachedDomainRequest {
   /** Service name */
   serviceName: string;
   /** Domain */
   domain: string;
 }
-const GetHostingWebAttachedDomainRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetHostingWebAttachedDomainRequest>;
-
 /** allowed attachedDomain's capabilities methods */
 export type HostingWebAttachedDomainCapabilityMethodEnum = "DELETE" | "GET" | "POST" | "PUT";
-const HostingWebAttachedDomainCapabilityMethodEnum = S.String;
-
 /** Attached domain Capability */
 export interface HostingWebAttachedDomainCapabilities {
   /** Capability description */
@@ -1868,23 +1382,11 @@ export interface HostingWebAttachedDomainCapabilities {
   /** Capability method */
   method?: HostingWebAttachedDomainCapabilityMethodEnum;
 }
-const HostingWebAttachedDomainCapabilities = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<HostingWebAttachedDomainCapabilities>;
-
 /** Provides the capabilities related to your attachedDomain */
 export type HostingWebAttachedDomainPublicAttachedDomainCapabilitiesList =
   Array<HostingWebAttachedDomainCapabilities>;
-const HostingWebAttachedDomainPublicAttachedDomainCapabilitiesList = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<HostingWebAttachedDomainPublicAttachedDomainCapabilitiesList>;
-
 /** attachedDomain status */
 export type HostingWebAttachedDomainStatusEnum = "created" | "creating" | "deleting" | "updating";
-const HostingWebAttachedDomainStatusEnum = S.String;
-
 /** AttachedDomain vcs status */
 export type HostingWebAttachedDomainVcsStatusEnum =
   | "created"
@@ -1894,8 +1396,6 @@ export type HostingWebAttachedDomainVcsStatusEnum =
   | "disabled"
   | "error"
   | "initialError";
-const HostingWebAttachedDomainVcsStatusEnum = S.String;
-
 /** Public attached domain */
 export interface HostingWebAttachedDomainPublicAttachedDomain {
   /** Provides the capabilities related to your attachedDomain */
@@ -1925,32 +1425,16 @@ export interface HostingWebAttachedDomainPublicAttachedDomain {
   /** The status of the VCS synchronization */
   vcsStatus?: HostingWebAttachedDomainVcsStatusEnum;
 }
-const HostingWebAttachedDomainPublicAttachedDomain = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<HostingWebAttachedDomainPublicAttachedDomain>;
-
 export interface GetHostingWebAttachedDomainDigStatusRequest {
   /** Service name */
   serviceName: string;
   /** Domain */
   domain: string;
 }
-const GetHostingWebAttachedDomainDigStatusRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<GetHostingWebAttachedDomainDigStatusRequest>;
-
 /** Recommended IPV4 */
 export type HostingWebAttachedDomainRecommendedIpsRecommendedIpV4List = Array<string>;
-const HostingWebAttachedDomainRecommendedIpsRecommendedIpV4List =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<HostingWebAttachedDomainRecommendedIpsRecommendedIpV4List>;
-
 /** Recommended IPV6 */
 export type HostingWebAttachedDomainRecommendedIpsRecommendedIpV6List = Array<string>;
-const HostingWebAttachedDomainRecommendedIpsRecommendedIpV6List =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<HostingWebAttachedDomainRecommendedIpsRecommendedIpV6List>;
-
 /** Recommended IPs for DNS records configuration */
 export interface HostingWebAttachedDomainRecommendedIps {
   /** Recommended IPV4 */
@@ -1958,15 +1442,8 @@ export interface HostingWebAttachedDomainRecommendedIps {
   /** Recommended IPV6 */
   recommendedIpV6?: HostingWebAttachedDomainRecommendedIpsRecommendedIpV6List;
 }
-const HostingWebAttachedDomainRecommendedIps = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<HostingWebAttachedDomainRecommendedIps>;
-
 /** DNS Record type */
 export type HostingWebAttachedDomainRecordTypeEnum = "A" | "AAAA";
-const HostingWebAttachedDomainRecordTypeEnum = S.String;
-
 /** Attached domain record status */
 export interface HostingWebAttachedDomainRecordStatus {
   /** Whether DNS is configured */
@@ -1976,19 +1453,9 @@ export interface HostingWebAttachedDomainRecordStatus {
   /** DNS record type */
   type?: HostingWebAttachedDomainRecordTypeEnum;
 }
-const HostingWebAttachedDomainRecordStatus = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<HostingWebAttachedDomainRecordStatus>;
-
 export type HostingWebAttachedDomainDigStatusRecordsMap = {
   [key: string]: HostingWebAttachedDomainRecordStatus | undefined;
 };
-const HostingWebAttachedDomainDigStatusRecordsMap = /*@__PURE__*/ __L.at(
-  __c10,
-  7,
-) as any as S.Schema<HostingWebAttachedDomainDigStatusRecordsMap>;
-
 /** Attached domain DNS status */
 export interface HostingWebAttachedDomainDigStatus {
   /** Attached domain */
@@ -1996,33 +1463,18 @@ export interface HostingWebAttachedDomainDigStatus {
   recommendedIps?: HostingWebAttachedDomainRecommendedIps;
   records?: HostingWebAttachedDomainDigStatusRecordsMap;
 }
-const HostingWebAttachedDomainDigStatus = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<HostingWebAttachedDomainDigStatus>;
-
 export interface GetHostingWebAttachedDomainSslRequest {
   /** Service name */
   serviceName: string;
   /** Domain */
   domain: string;
 }
-const GetHostingWebAttachedDomainSslRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<GetHostingWebAttachedDomainSslRequest>;
-
 export interface GetHostingWebBoostHistoryRequest {
   /** Service name */
   serviceName: string;
   /** Date */
   date: string;
 }
-const GetHostingWebBoostHistoryRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GetHostingWebBoostHistoryRequest>;
-
 /** Boost History */
 export interface HostingWebBoostHistory {
   /** Account who requested the change */
@@ -2034,20 +1486,10 @@ export interface HostingWebBoostHistory {
   /** Offer when the change was made */
   offer?: HostingWebOfferCapabilitiesEnum;
 }
-const HostingWebBoostHistory = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<HostingWebBoostHistory>;
-
 export interface GetHostingWebCdnRequest {
   /** Service name */
   serviceName: string;
 }
-const GetHostingWebCdnRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<GetHostingWebCdnRequest>;
-
 /** CDN status */
 export type HostingWebCdnStatusEnum =
   | "created"
@@ -2057,8 +1499,6 @@ export type HostingWebCdnStatusEnum =
   | "reopening"
   | "suspended"
   | "suspending";
-const HostingWebCdnStatusEnum = S.String;
-
 /** CDN properties */
 export interface HostingWebCDN {
   /** Domain of this CDN */
@@ -2074,19 +1514,12 @@ export interface HostingWebCDN {
   /** Version of the CDN */
   version?: string;
 }
-const HostingWebCDN = /*@__PURE__*/ __L.at(__c11, 5) as any as S.Schema<HostingWebCDN>;
-
 export interface GetHostingWebCdnDomainRequest {
   /** Service name */
   serviceName: string;
   /** Domain name */
   domainName: string;
 }
-const GetHostingWebCdnDomainRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetHostingWebCdnDomainRequest>;
-
 /** Domain status */
 export type CdnDomainStatusEnum =
   | "deleting"
@@ -2097,8 +1530,6 @@ export type CdnDomainStatusEnum =
   | "to_delete"
   | "to_disable"
   | "to_refresh";
-const CdnDomainStatusEnum = S.String;
-
 /** Domain details */
 export interface CdnDomain {
   /** Creation date */
@@ -2112,8 +1543,6 @@ export interface CdnDomain {
   /** Last update date */
   updatedDate?: string;
 }
-const CdnDomain = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<CdnDomain>;
-
 export interface GetHostingWebCdnDomainLogsRequest {
   /** Service name */
   serviceName: string;
@@ -2122,11 +1551,6 @@ export interface GetHostingWebCdnDomainLogsRequest {
   /** Logs date (default is yesterday) */
   date?: string;
 }
-const GetHostingWebCdnDomainLogsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GetHostingWebCdnDomainLogsRequest>;
-
 /** Logs archive URL */
 export interface CdnLogs {
   /** URL to logs archive */
@@ -2134,8 +1558,6 @@ export interface CdnLogs {
   /** URL validity */
   validity?: string;
 }
-const CdnLogs = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<CdnLogs>;
-
 export interface GetHostingWebCdnDomainOptionRequest {
   /** Service name */
   serviceName: string;
@@ -2144,22 +1566,12 @@ export interface GetHostingWebCdnDomainOptionRequest {
   /** Option name */
   optionName: string;
 }
-const GetHostingWebCdnDomainOptionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GetHostingWebCdnDomainOptionRequest>;
-
 export interface GetHostingWebCdnOperationRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
-const GetHostingWebCdnOperationRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<GetHostingWebCdnOperationRequest>;
-
 /** Operation function */
 export type CdnOperationFunctionEnum =
   | "analytics_delete"
@@ -2171,12 +1583,8 @@ export type CdnOperationFunctionEnum =
   | "service_install"
   | "ssl_delete"
   | "ssl_install";
-const CdnOperationFunctionEnum = S.String;
-
 /** Shared CDN offer */
 export type CdnOperationOfferEnum = "advanced" | "basic" | "security";
-const CdnOperationOfferEnum = S.String;
-
 /** Operation parameter */
 export interface CdnOperationParameter {
   /** CDN anycast IP */
@@ -2198,15 +1606,8 @@ export interface CdnOperationParameter {
   /** CDN ssl id */
   sslId?: number | null;
 }
-const CdnOperationParameter = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<CdnOperationParameter>;
-
 /** Operation status */
 export type CdnOperationStatusEnum = "cancelled" | "doing" | "done" | "error" | "todo";
-const CdnOperationStatusEnum = S.String;
-
 /** Operation details */
 export interface CdnOperation {
   /** Comment */
@@ -2228,22 +1629,12 @@ export interface CdnOperation {
   /** Last execution date */
   updatedDate?: string;
 }
-const CdnOperation = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<CdnOperation>;
-
 export interface GetHostingWebCdnServiceInfosRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const GetHostingWebCdnServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GetHostingWebCdnServiceInfosRequest>;
-
 /** All the possible renew period of your service in month */
 export type ServicesServicePossibleRenewPeriodList = Array<number>;
-const ServicesServicePossibleRenewPeriodList =
-  CreateHostingWebChangeContactResponseBodyList as any as S.Schema<ServicesServicePossibleRenewPeriodList>;
-
 /** Detailed renewal type of a service */
 export type ServiceRenewalTypeEnum =
   | "automaticForcedProduct"
@@ -2253,8 +1644,6 @@ export type ServiceRenewalTypeEnum =
   | "manual"
   | "oneShot"
   | "option";
-const ServiceRenewalTypeEnum = S.String;
-
 /** service.StateEnum */
 export type ServiceStateEnum =
   | "autorenewInProgress"
@@ -2263,8 +1652,6 @@ export type ServiceStateEnum =
   | "ok"
   | "pendingDebt"
   | "unPaid";
-const ServiceStateEnum = S.String;
-
 /** Details about a Service */
 export interface ServicesService {
   /** Indicates that the service can be set up to be deleted at expiration */
@@ -2284,29 +1671,16 @@ export interface ServicesService {
   serviceId?: number;
   status?: ServiceStateEnum;
 }
-const ServicesService = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<ServicesService>;
-
 export interface GetHostingWebConfigurationRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const GetHostingWebConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<GetHostingWebConfigurationRequest>;
-
 /** Configuration env enum */
 export type HostingWebConfigurationEnvEnum = "development" | "production";
-const HostingWebConfigurationEnvEnum = S.String;
-
 /** Configuration languages enum */
 export type HostingWebConfigurationLanguageEnum = "nodejs" | "python" | "ruby";
-const HostingWebConfigurationLanguageEnum = S.String;
-
 /** Configuration state enum */
 export type HostingWebConfigurationStateEnum = "created" | "creating" | "deleting" | "updating";
-const HostingWebConfigurationStateEnum = S.String;
-
 /** The Configuration of an hosting Power offer */
 export interface HostingWebConfiguration {
   /** Application environment */
@@ -2324,26 +1698,14 @@ export interface HostingWebConfiguration {
   /** version of the language chosen for the current hosting */
   version?: string;
 }
-const HostingWebConfiguration = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<HostingWebConfiguration>;
-
 export interface GetHostingWebCronRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
-const GetHostingWebCronRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GetHostingWebCronRequest>;
-
 /** Cron state */
 export type HostingWebCronStateEnum = "created" | "creating" | "deleting" | "updating";
-const HostingWebCronStateEnum = S.String;
-
 /** Cron */
 export interface HostingWebCron {
   /** Command to execute */
@@ -2363,31 +1725,18 @@ export interface HostingWebCron {
   /** Cron status */
   status?: HostingWebCronStatusEnum;
 }
-const HostingWebCron = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<HostingWebCron>;
-
 export interface GetHostingWebDatabaseRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Database name (like mydb.mysql.db or mydb.postgres.db) */
   name: string;
 }
-const GetHostingWebDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GetHostingWebDatabaseRequest>;
-
 /** Database Service Type enum */
 export type HostingWebDatabaseDatabaseServiceTypeEnum = "extra" | "included" | "optional";
-const HostingWebDatabaseDatabaseServiceTypeEnum = S.String;
-
 /** Database mode */
 export type HostingWebDatabaseModeEnum = "besteffort" | "classic" | "module";
-const HostingWebDatabaseModeEnum = S.String;
-
 /** Database state */
 export type HostingWebDatabaseStateEnum = "close" | "ok" | "readonly";
-const HostingWebDatabaseStateEnum = S.String;
-
 /** Database status */
 export type HostingWebDatabaseStatusEnum =
   | "checking"
@@ -2400,8 +1749,6 @@ export type HostingWebDatabaseStatusEnum =
   | "optimizing"
   | "restoring"
   | "updating";
-const HostingWebDatabaseStatusEnum = S.String;
-
 /** Database Type enum */
 export type HostingWebDatabaseDatabaseTypeEnum =
   | "mariadb"
@@ -2409,12 +1756,8 @@ export type HostingWebDatabaseDatabaseTypeEnum =
   | "mysql"
   | "postgresql"
   | "redis";
-const HostingWebDatabaseDatabaseTypeEnum = S.String;
-
 /** Indicates the current support state of your database version */
 export type HostingWebDatabaseSupportedVersionEnum = "beta" | "deprecated" | "stable";
-const HostingWebDatabaseSupportedVersionEnum = S.String;
-
 /** Database */
 export interface HostingWebDatabase {
   /** Whether service database is deprecated */
@@ -2454,19 +1797,12 @@ export interface HostingWebDatabase {
   /** Indicates the current support state of your database version */
   versionSupport?: HostingWebDatabaseSupportedVersionEnum;
 }
-const HostingWebDatabase = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<HostingWebDatabase>;
-
 export interface GetHostingWebDatabaseCapabilitiesRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Database name (like mydb.mysql.db or mydb.postgres.db) */
   name: string;
 }
-const GetHostingWebDatabaseCapabilitiesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<GetHostingWebDatabaseCapabilitiesRequest>;
-
 /** Struct which describe available features for a database */
 export interface HostingWebDatabaseDatabaseCapabilities {
   /** Availability of the changePassword function */
@@ -2488,11 +1824,6 @@ export interface HostingWebDatabaseDatabaseCapabilities {
   /** Availability of the restore function */
   restore?: boolean;
 }
-const HostingWebDatabaseDatabaseCapabilities = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<HostingWebDatabaseDatabaseCapabilities>;
-
 export interface GetHostingWebDatabaseCopyRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -2501,11 +1832,6 @@ export interface GetHostingWebDatabaseCopyRequest {
   /** Copy id */
   id: string;
 }
-const GetHostingWebDatabaseCopyRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetHostingWebDatabaseCopyRequest>;
-
 export interface GetHostingWebDatabaseDumpRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -2514,15 +1840,8 @@ export interface GetHostingWebDatabaseDumpRequest {
   /** Dump id */
   id: number;
 }
-const GetHostingWebDatabaseDumpRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GetHostingWebDatabaseDumpRequest>;
-
 /** Database dump status */
 export type HostingWebDatabaseDumpStatusEnum = "created" | "creating" | "deleting";
-const HostingWebDatabaseDumpStatusEnum = S.String;
-
 /** Dump */
 export interface HostingWebDatabaseDump {
   /** Creation date of the dump */
@@ -2540,22 +1859,12 @@ export interface HostingWebDatabaseDump {
   /** Dump url access */
   url?: string | null;
 }
-const HostingWebDatabaseDump = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<HostingWebDatabaseDump>;
-
 export interface GetHostingWebDumpRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Dump id */
   id: number;
 }
-const GetHostingWebDumpRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GetHostingWebDumpRequest>;
-
 /** Dump */
 export interface HostingWebDump {
   /** Creation date of the dump */
@@ -2577,21 +1886,12 @@ export interface HostingWebDump {
   /** Dump url access */
   url?: string | null;
 }
-const HostingWebDump = /*@__PURE__*/ __L.at(__c14, 4) as any as S.Schema<HostingWebDump>;
-
 export interface GetHostingWebEmailRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const GetHostingWebEmailRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<GetHostingWebEmailRequest>;
-
 /** Mail state enum */
 export type HostingWebMailStateEnum = "bounce" | "force" | "ko" | "ok" | "purging" | "spam";
-const HostingWebMailStateEnum = S.String;
-
 /** Hosting automated emails */
 export interface HostingWebEmail {
   /** Bounce */
@@ -2607,19 +1907,12 @@ export interface HostingWebEmail {
   /** Email state */
   state?: HostingWebMailStateEnum;
 }
-const HostingWebEmail = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<HostingWebEmail>;
-
 export interface GetHostingWebEmailOptionRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Id of the object */
   id: number;
 }
-const GetHostingWebEmailOptionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<GetHostingWebEmailOptionRequest>;
-
 /** Mail service linked to webhosting */
 export interface HostingWebEmailoption {
   /** Creation date */
@@ -2629,37 +1922,20 @@ export interface HostingWebEmailoption {
   /** Account id */
   id?: number;
 }
-const HostingWebEmailoption = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<HostingWebEmailoption>;
-
 export interface GetHostingWebEmailOptionServiceInfosRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Id of the object */
   id: number;
 }
-const GetHostingWebEmailOptionServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<GetHostingWebEmailOptionServiceInfosRequest>;
-
 export interface GetHostingWebEnvVarRequest {
   /** Service name */
   serviceName: string;
   /** Key */
   key: string;
 }
-const GetHostingWebEnvVarRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<GetHostingWebEnvVarRequest>;
-
 /** EnvVar status */
 export type HostingWebEnvVarStatusEnum = "created" | "creating" | "deleting" | "updating";
-const HostingWebEnvVarStatusEnum = S.String;
-
 /** Environment variables set into your webhosting account */
 export interface HostingWebEnvVar {
   /** Name of the variable */
@@ -2673,24 +1949,14 @@ export interface HostingWebEnvVar {
   /** Value of the variable */
   value?: string;
 }
-const HostingWebEnvVar = /*@__PURE__*/ __L.at(__c15, 3) as any as S.Schema<HostingWebEnvVar>;
-
 export interface GetHostingWebExtraSqlPersoRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** The extraSqlPerso option name */
   name: string;
 }
-const GetHostingWebExtraSqlPersoRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<GetHostingWebExtraSqlPersoRequest>;
-
 /** Linked databases */
 export type HostingWebExtrasqlpersoUsageList = Array<string>;
-const HostingWebExtrasqlpersoUsageList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<HostingWebExtrasqlpersoUsageList>;
-
 /** Sqlperso service */
 export interface HostingWebExtrasqlperso {
   /** Number of database allowed by this option */
@@ -2706,42 +1972,22 @@ export interface HostingWebExtrasqlperso {
   /** Linked databases */
   usage?: HostingWebExtrasqlpersoUsageList;
 }
-const HostingWebExtrasqlperso = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<HostingWebExtrasqlperso>;
-
 export interface GetHostingWebExtraSqlPersoServiceInfosRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** The extraSqlPerso option name */
   name: string;
 }
-const GetHostingWebExtraSqlPersoServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<GetHostingWebExtraSqlPersoServiceInfosRequest>;
-
 export interface GetHostingWebIndyRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Login of the multidomain independent user */
   login: string;
 }
-const GetHostingWebIndyRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<GetHostingWebIndyRequest>;
-
 /** AttachedDomain IDs linked to this multidomain */
 export type HostingWebIndyAttachedDomainsList = Array<string>;
-const HostingWebIndyAttachedDomainsList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<HostingWebIndyAttachedDomainsList>;
-
 /** Account's state */
 export type HostingWebUserStateEnum = "off" | "rw";
-const HostingWebUserStateEnum = S.String;
-
 /** Hosting indys */
 export interface HostingWebIndy {
   /** AttachedDomain IDs linked to this multidomain */
@@ -2753,32 +1999,18 @@ export interface HostingWebIndy {
   /** User status */
   state?: HostingWebUserStateEnum;
 }
-const HostingWebIndy = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<HostingWebIndy>;
-
 export interface GetHostingWebKeySshRequest {
   /** Service name */
   serviceName: string;
 }
-const GetHostingWebKeySshRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GetHostingWebKeySshRequest>;
-
 export interface GetHostingWebLocalSeoAccountRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Account id */
   id: number;
 }
-const GetHostingWebLocalSeoAccountRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetHostingWebLocalSeoAccountRequest>;
-
 /** Account status */
 export type HostingWebLocalSeoAccountStatusEnum = "created" | "creating" | "deleting" | "updating";
-const HostingWebLocalSeoAccountStatusEnum = S.String;
-
 /** Local SEO accounts */
 export interface HostingWebLocalSeoAccount {
   /** Date of creation of the account */
@@ -2794,28 +2026,16 @@ export interface HostingWebLocalSeoAccount {
   /** Running task associated to the account */
   taskId?: number | null;
 }
-const HostingWebLocalSeoAccount = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<HostingWebLocalSeoAccount>;
-
 export interface GetHostingWebLocalSeoEmailAvailabilityRequest {
   /** The email address to check */
   email: string;
 }
-const GetHostingWebLocalSeoEmailAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<GetHostingWebLocalSeoEmailAvailabilityRequest>;
-
 /** Availability of an email address for a local SEO order */
 export type HostingWebLocalSeoAccountEmailAvailabilityEnum =
   | "available"
   | "merge"
   | "nic"
   | "taken";
-const HostingWebLocalSeoAccountEmailAvailabilityEnum = S.String;
-
 /** Struct describing the availability of an email address for a local SEO order */
 export interface HostingWebLocalSeoEmailAvailability {
   /** Availability of the email address */
@@ -2823,41 +2043,22 @@ export interface HostingWebLocalSeoEmailAvailability {
   /** Hosting on which the email address is used */
   serviceName?: string | null;
 }
-const HostingWebLocalSeoEmailAvailability = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<HostingWebLocalSeoEmailAvailability>;
-
 export interface GetHostingWebLocalSeoEmailAvailabilityRequest2 {
   /** The internal name of your hosting */
   serviceName: string;
   /** The email address to check */
   email: string;
 }
-const GetHostingWebLocalSeoEmailAvailabilityRequest2 = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<GetHostingWebLocalSeoEmailAvailabilityRequest2>;
-
 export interface GetHostingWebLocalSeoLocationRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Location id */
   id: number;
 }
-const GetHostingWebLocalSeoLocationRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GetHostingWebLocalSeoLocationRequest>;
-
 /** Location offer */
 export type HostingWebLocalSeoLocationOfferEnum = "normal";
-const HostingWebLocalSeoLocationOfferEnum = S.String;
-
 /** Location status */
 export type HostingWebLocalSeoLocationStatusEnum = "created" | "creating" | "deleting" | "updating";
-const HostingWebLocalSeoLocationStatusEnum = S.String;
-
 /** Local SEO locations */
 export interface HostingWebLocalSeoLocation {
   /** Account id */
@@ -2881,31 +2082,16 @@ export interface HostingWebLocalSeoLocation {
   /** Running task associated to the location */
   taskId?: number | null;
 }
-const HostingWebLocalSeoLocation = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<HostingWebLocalSeoLocation>;
-
 export interface GetHostingWebLocalSeoLocationServiceInfosRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Location id */
   id: number;
 }
-const GetHostingWebLocalSeoLocationServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<GetHostingWebLocalSeoLocationServiceInfosRequest>;
-
 export interface GetHostingWebMetricsTokenRequest {
   /** Service name */
   serviceName: string;
 }
-const GetHostingWebMetricsTokenRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<GetHostingWebMetricsTokenRequest>;
-
 /** Metrics token */
 export interface HostingWebMetricsToken {
   /** Backend url */
@@ -2915,31 +2101,16 @@ export interface HostingWebMetricsToken {
   /** Generated token */
   token?: string;
 }
-const HostingWebMetricsToken = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<HostingWebMetricsToken>;
-
 export interface GetHostingWebModuleRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Installation ID */
   id: number;
 }
-const GetHostingWebModuleRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<GetHostingWebModuleRequest>;
-
 /** The dependencies to which the module has access. A dependency can be a standard database (like MySQL or PostgreSQL) or a key-value store (like Redis or Memcached) for example */
 export type HostingWebModuleDependenciesList = Array<HostingWebModuleDependencyType>;
-const HostingWebModuleDependenciesList =
-  CreateHostingWebModuleRequestDependenciesList as any as S.Schema<HostingWebModuleDependenciesList>;
-
 /** Module status */
 export type HostingWebModuleStatusEnum = "created" | "creating" | "deleting" | "updating";
-const HostingWebModuleStatusEnum = S.String;
-
 /** Hosting modules installed */
 export interface HostingWebModule {
   /** The admin folder, relative to the module's installation path */
@@ -2967,53 +2138,26 @@ export interface HostingWebModule {
   /** The task ID working on this module */
   taskId?: number | null;
 }
-const HostingWebModule = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<HostingWebModule>;
-
 export interface GetHostingWebModuleListRequest {
   /** The ID of the module */
   id: number;
 }
-const GetHostingWebModuleListRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GetHostingWebModuleListRequest>;
-
 /** The type of the admin name */
 export type HostingWebModuleAdminNameTypeEnum = "email" | "string";
-const HostingWebModuleAdminNameTypeEnum = S.String;
-
 /** Branch enum */
 export type HostingWebModuleBranchEnum = "old" | "stable" | "testing";
-const HostingWebModuleBranchEnum = S.String;
-
 /** The keywords for this module */
 export type HostingWebModuleListKeywordsList = Array<string>;
-const HostingWebModuleListKeywordsList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<HostingWebModuleListKeywordsList>;
-
 /** All available languages for this module */
 export type HostingWebModuleListLanguageList = Array<HostingWebModuleLanguageEnum>;
-const HostingWebModuleListLanguageList = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<HostingWebModuleListLanguageList>;
-
 /** A numeric value tagged with its unit */
 export interface ComplexTypeUnitAndValueString {
   /** Unit of the value */
   unit?: string;
   value?: string;
 }
-const ComplexTypeUnitAndValueString = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<ComplexTypeUnitAndValueString>;
-
 /** The IDs of the module you can upgrade to */
 export type HostingWebModuleListUpgradeFromList = Array<number>;
-const HostingWebModuleListUpgradeFromList =
-  CreateHostingWebChangeContactResponseBodyList as any as S.Schema<HostingWebModuleListUpgradeFromList>;
-
 /** A module specifically packaged by OVH */
 export interface HostingWebModuleList {
   /** Is the module available? */
@@ -3043,30 +2187,15 @@ export interface HostingWebModuleList {
   /** The version of the module */
   version?: string;
 }
-const HostingWebModuleList = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<HostingWebModuleList>;
-
 export interface GetHostingWebOfferCapabilitiesRequest {
   /** Describe offer capabilities */
   offer: HostingWebOfferCapabilitiesEnum | (string & {});
 }
-const GetHostingWebOfferCapabilitiesRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GetHostingWebOfferCapabilitiesRequest>;
-
 /** Database software available on this platform */
 export type HostingWebDatabaseCreationDatabaseCapabilitiesEnginesList =
   Array<HostingWebDatabaseDatabaseTypeEnum>;
-const HostingWebDatabaseCreationDatabaseCapabilitiesEnginesList =
-  HostingWebModuleListLanguageList as any as S.Schema<HostingWebDatabaseCreationDatabaseCapabilitiesEnginesList>;
-
 /** Database Isolation enum */
 export type HostingWebDatabaseDatabaseIsolationEnum = "dedicated" | "local" | "shared";
-const HostingWebDatabaseDatabaseIsolationEnum = S.String;
-
 /** A numeric value tagged with its unit */
 export type ComplexTypeUnitAndValueLong = ComplexTypeUnitAndValueDouble;
 /** Struct which describs quota and available for a specific type of database */
@@ -3082,23 +2211,11 @@ export interface HostingWebDatabaseCreationDatabaseCapabilities {
   /** Database offer name */
   type?: HostingWebDatabaseDatabaseCapabilitiesTypeEnum;
 }
-const HostingWebDatabaseCreationDatabaseCapabilities = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<HostingWebDatabaseCreationDatabaseCapabilities>;
-
 /** Describe all databases type you can have */
 export type HostingWebCapabilitiesDatabasesList =
   Array<HostingWebDatabaseCreationDatabaseCapabilities>;
-const HostingWebCapabilitiesDatabasesList = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<HostingWebCapabilitiesDatabasesList>;
-
 /** Disk type available */
 export type HostingWebDiskTypeEnum = "HDD" | "SSD";
-const HostingWebDiskTypeEnum = S.String;
-
 /** Disk properties (size and type of disk) */
 export interface HostingWebDiskType {
   /** Type of the disk */
@@ -3108,8 +2225,6 @@ export interface HostingWebDiskType {
   /** Size of the disk */
   value?: number;
 }
-const HostingWebDiskType = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<HostingWebDiskType>;
-
 /** Struct which describes mail offer available and his quota */
 export interface HostingWebCreationEmailCapabilities {
   /** Number of email available for creation */
@@ -3117,15 +2232,8 @@ export interface HostingWebCreationEmailCapabilities {
   /** Email account capacity */
   quota?: ComplexTypeUnitAndValueDouble;
 }
-const HostingWebCreationEmailCapabilities = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<HostingWebCreationEmailCapabilities>;
-
 /** Highlight tips for offer */
 export type HostingWebHighLightEnum = "best-seller" | "new";
-const HostingWebHighLightEnum = S.String;
-
 /** Different NodeJs versions available */
 export type HostingWebNodejsVersionAvailableEnum =
   | "nodejs-10"
@@ -3135,9 +2243,6 @@ export type HostingWebNodejsVersionAvailableEnum =
   | "nodejs-9";
 /** NodeJS versions */
 export type HostingWebCronLanguageAvailableNodejsList = Array<HostingWebNodejsVersionAvailableEnum>;
-const HostingWebCronLanguageAvailableNodejsList =
-  HostingWebModuleListLanguageList as any as S.Schema<HostingWebCronLanguageAvailableNodejsList>;
-
 /** Different PHP versions available */
 export type HostingWebPhpVersionAvailableEnum =
   | "phpfpm-5.6"
@@ -3153,23 +2258,14 @@ export type HostingWebPhpVersionAvailableEnum =
   | "phpfpm-8.4";
 /** Php versions */
 export type HostingWebCronLanguageAvailablePhpList = Array<HostingWebPhpVersionAvailableEnum>;
-const HostingWebCronLanguageAvailablePhpList =
-  HostingWebModuleListLanguageList as any as S.Schema<HostingWebCronLanguageAvailablePhpList>;
-
 /** Different Python versions available */
 export type HostingWebPythonVersionAvailableEnum = "python-2" | "python-3";
 /** Python versions */
 export type HostingWebCronLanguageAvailablePythonList = Array<HostingWebPythonVersionAvailableEnum>;
-const HostingWebCronLanguageAvailablePythonList =
-  HostingWebModuleListLanguageList as any as S.Schema<HostingWebCronLanguageAvailablePythonList>;
-
 /** Different Ruby versions available */
 export type HostingWebRubyVersionAvailableEnum = "ruby-2.6";
 /** Ruby versions */
 export type HostingWebCronLanguageAvailableRubyList = Array<HostingWebRubyVersionAvailableEnum>;
-const HostingWebCronLanguageAvailableRubyList =
-  HostingWebModuleListLanguageList as any as S.Schema<HostingWebCronLanguageAvailableRubyList>;
-
 /** Language available for cron script */
 export interface HostingWebCronLanguageAvailable {
   /** NodeJS versions */
@@ -3181,17 +2277,9 @@ export interface HostingWebCronLanguageAvailable {
   /** Ruby versions */
   ruby?: HostingWebCronLanguageAvailableRubyList;
 }
-const HostingWebCronLanguageAvailable = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<HostingWebCronLanguageAvailable>;
-
 /** Describe all privateDatabases type you can have */
 export type HostingWebCapabilitiesPrivateDatabasesList =
   Array<HostingWebDatabaseCreationDatabaseCapabilities>;
-const HostingWebCapabilitiesPrivateDatabasesList =
-  HostingWebCapabilitiesDatabasesList as any as S.Schema<HostingWebCapabilitiesPrivateDatabasesList>;
-
 /** Struct which describs an offer */
 export interface HostingWebCapabilities {
   /** Number of domains you can attach to your hosting */
@@ -3229,22 +2317,12 @@ export interface HostingWebCapabilities {
   /** Traffic quota size for your hosting ( null for unlimited ) */
   traffic?: ComplexTypeUnitAndValueDouble | null;
 }
-const HostingWebCapabilities = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<HostingWebCapabilities>;
-
 export interface GetHostingWebOvhConfigRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Configuration's id */
   id: number;
 }
-const GetHostingWebOvhConfigRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  1,
-) as any as S.Schema<GetHostingWebOvhConfigRequest>;
-
 /** Hosting configuration version */
 export type HostingWebOvhConfigEngineVersionEnum =
   | "4.4"
@@ -3266,12 +2344,8 @@ export type HostingWebOvhConfigEngineVersionEnum =
   | "8.3"
   | "8.4"
   | "AUTO";
-const HostingWebOvhConfigEngineVersionEnum = S.String;
-
 /** Ovhconfig status */
 export type HostingWebOvhConfigStatusEnum = "created" | "rollbacking" | "updating";
-const HostingWebOvhConfigStatusEnum = S.String;
-
 /** Virtual service */
 export interface HostingWebOvhConfig {
   /** Container to run this website */
@@ -3299,17 +2373,10 @@ export interface HostingWebOvhConfig {
   /** The task ID working on this configuration */
   taskId?: number | null;
 }
-const HostingWebOvhConfig = /*@__PURE__*/ __L.at(__c19, 2) as any as S.Schema<HostingWebOvhConfig>;
-
 export interface GetHostingWebOvhConfigRecommendedValuesRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const GetHostingWebOvhConfigRecommendedValuesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GetHostingWebOvhConfigRecommendedValuesRequest>;
-
 /** Struct which recommend default values on ovhConfig file */
 export interface HostingWebOvhConfigRecommendedValues {
   /** Container to run this website */
@@ -3323,26 +2390,14 @@ export interface HostingWebOvhConfigRecommendedValues {
   /** Configuration for http firewall */
   httpFirewall?: HostingWebOvhConfigHttpFirewallEnum;
 }
-const HostingWebOvhConfigRecommendedValues = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<HostingWebOvhConfigRecommendedValues>;
-
 export interface GetHostingWebOwnLogRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Id of the object */
   id: number;
 }
-const GetHostingWebOwnLogRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<GetHostingWebOwnLogRequest>;
-
 /** OwnLogs status */
 export type HostingWebOwnLogsStatusEnum = "created" | "creating" | "deleting";
-const HostingWebOwnLogsStatusEnum = S.String;
-
 /** Hosting own logs */
 export interface HostingWebOwnLogs {
   /** The ownlogs fqdn available on logs.clusterXX.hosting.ovh.net */
@@ -3358,8 +2413,6 @@ export interface HostingWebOwnLogs {
   /** The task ID working on this ownLogs */
   taskId?: number | null;
 }
-const HostingWebOwnLogs = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<HostingWebOwnLogs>;
-
 export interface GetHostingWebOwnLogUserLogRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -3368,15 +2421,8 @@ export interface GetHostingWebOwnLogUserLogRequest {
   /** The userLogs login used to connect to logs.ovh.net */
   login: string;
 }
-const GetHostingWebOwnLogUserLogRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<GetHostingWebOwnLogUserLogRequest>;
-
 /** UserLogs status */
 export type HostingWebUserLogsStatusEnum = "created" | "creating" | "deleting" | "updating";
-const HostingWebUserLogsStatusEnum = S.String;
-
 /** Hosting users logs */
 export interface HostingWebUserLogs {
   /** Date of the user creation */
@@ -3392,23 +2438,14 @@ export interface HostingWebUserLogs {
   /** The task ID working on this userLogs */
   taskId?: number | null;
 }
-const HostingWebUserLogs = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<HostingWebUserLogs>;
-
 export interface GetHostingWebRuntimeRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** The runtime configuration ID */
   id: number;
 }
-const GetHostingWebRuntimeRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<GetHostingWebRuntimeRequest>;
-
 /** Runtime state enum */
 export type HostingWebRuntimeStateEnum = "created" | "creating" | "deleting" | "updating";
-const HostingWebRuntimeStateEnum = S.String;
-
 /** The runtime configuration of an attached domain for cloud web offer */
 export interface HostingWebRuntime {
   /** The client application bootstrap script */
@@ -3436,52 +2473,27 @@ export interface HostingWebRuntime {
   /** The backend type of the runtime */
   type?: HostingWebRuntimeTypeEnum;
 }
-const HostingWebRuntime = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<HostingWebRuntime>;
-
 export interface GetHostingWebServiceInfosRequest {
   /** Service name */
   serviceName: string;
 }
-const GetHostingWebServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<GetHostingWebServiceInfosRequest>;
-
 export interface GetHostingWebTaskRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
-const GetHostingWebTaskRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<GetHostingWebTaskRequest>;
-
 export interface GetHostingWebTokenRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const GetHostingWebTokenRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<GetHostingWebTokenRequest>;
-
 export type GetHostingWebTokenResponse = string;
-const GetHostingWebTokenResponse =
-  ConfirmHostingWebTerminationResponse as any as S.Schema<GetHostingWebTokenResponse>;
-
 export interface GetHostingWebUserRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Login used to connect on FTP and SSH */
   login: string;
 }
-const GetHostingWebUserRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<GetHostingWebUserRequest>;
-
 /** User, url and port of a service */
 export interface HostingWebUserCredentials {
   /** Port to use to access to the service */
@@ -3491,11 +2503,6 @@ export interface HostingWebUserCredentials {
   /** Login to authentificate you on the service */
   user?: string;
 }
-const HostingWebUserCredentials = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<HostingWebUserCredentials>;
-
 /** Different credentials to manage your service */
 export interface HostingWebUserServiceCredentials {
   /** Credentials to manage files by ftp */
@@ -3503,15 +2510,8 @@ export interface HostingWebUserServiceCredentials {
   /** Credentials to manage webhosting by ssh */
   ssh?: HostingWebUserCredentials;
 }
-const HostingWebUserServiceCredentials = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<HostingWebUserServiceCredentials>;
-
 /** User status */
 export type HostingWebUserStatusEnum = "created" | "creating" | "deleting" | "updating";
-const HostingWebUserStatusEnum = S.String;
-
 /** Hosting users */
 export interface HostingWebUser {
   /** Home directory */
@@ -3531,8 +2531,6 @@ export interface HostingWebUser {
   /** The task ID working on this user */
   taskId?: number | null;
 }
-const HostingWebUser = /*@__PURE__*/ __L.at(__c21, 1) as any as S.Schema<HostingWebUser>;
-
 export interface GetHostingWebUserLogsTokenRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -3543,19 +2541,9 @@ export interface GetHostingWebUserLogsTokenRequest {
   /** Expiration of your token (in seconds) */
   ttl?: number;
 }
-const GetHostingWebUserLogsTokenRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<GetHostingWebUserLogsTokenRequest>;
-
 export type GetHostingWebUserLogsTokenResponse = string;
-const GetHostingWebUserLogsTokenResponse =
-  ConfirmHostingWebTerminationResponse as any as S.Schema<GetHostingWebUserLogsTokenResponse>;
-
 /** Supported VCS platforms */
 export type HostingWebSupportedVcsEnum = "github";
-const HostingWebSupportedVcsEnum = S.String;
-
 export interface GetHostingWebVcsWebhooksRequest {
   /** Service name */
   serviceName: string;
@@ -3564,32 +2552,17 @@ export interface GetHostingWebVcsWebhooksRequest {
   /** Filter on VCS platform */
   vcs: HostingWebSupportedVcsEnum | (string & {});
 }
-const GetHostingWebVcsWebhooksRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<GetHostingWebVcsWebhooksRequest>;
-
 /** VCS webhooks URLs for given hosting and VCS platform */
 export interface HostingWebVcsWebhooks {
   /** Webhook URL for push events */
   push?: string;
 }
-const HostingWebVcsWebhooks = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<HostingWebVcsWebhooks>;
-
 export interface GetHostingWebWebsiteRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
-const GetHostingWebWebsiteRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<GetHostingWebWebsiteRequest>;
-
 /** A website domain */
 export interface HostingWebWebsiteDomain {
   /** If the CDN is currently active */
@@ -3599,18 +2572,8 @@ export interface HostingWebWebsiteDomain {
   /** If the SSL is currently active */
   ssl?: boolean;
 }
-const HostingWebWebsiteDomain = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<HostingWebWebsiteDomain>;
-
 /** Domains of the website */
 export type HostingWebWebsiteDomainsList = Array<HostingWebWebsiteDomain>;
-const HostingWebWebsiteDomainsList = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<HostingWebWebsiteDomainsList>;
-
 /** Website status */
 export type HostingWebWebsiteStatusEnum =
   | "created"
@@ -3619,8 +2582,6 @@ export type HostingWebWebsiteStatusEnum =
   | "deploying"
   | "error"
   | "initialError";
-const HostingWebWebsiteStatusEnum = S.String;
-
 /** A website on your hosting */
 export interface HostingWebWebsite {
   /** Domains of the website */
@@ -3642,17 +2603,10 @@ export interface HostingWebWebsite {
   /** URL of the repository containing the website source code to deploy */
   vcsUrl?: string;
 }
-const HostingWebWebsite = /*@__PURE__*/ __L.at(__c22, 0) as any as S.Schema<HostingWebWebsite>;
-
 export interface GetHostingWebWebsiteCreationCapabilitiesRequest {
   /** Service name */
   serviceName: string;
 }
-const GetHostingWebWebsiteCreationCapabilitiesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<GetHostingWebWebsiteCreationCapabilitiesRequest>;
-
 /** Website creation capabilities of your hosting */
 export interface HostingWebWebsiteCreationCapabilities {
   /** Number of websites allowed by your hosting offer, -1 meaning unlimited */
@@ -3660,11 +2614,6 @@ export interface HostingWebWebsiteCreationCapabilities {
   /** Number of existing websites on your hosting */
   existingWebsites?: number;
 }
-const HostingWebWebsiteCreationCapabilities = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<HostingWebWebsiteCreationCapabilities>;
-
 export interface GetHostingWebWebsiteDeploymentRequest {
   /** Service name */
   serviceName: string;
@@ -3673,15 +2622,8 @@ export interface GetHostingWebWebsiteDeploymentRequest {
   /** Deployment ID */
   deploymentId: number;
 }
-const GetHostingWebWebsiteDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<GetHostingWebWebsiteDeploymentRequest>;
-
 /** Website deployment status */
 export type HostingWebWebsiteDeploymentStatusEnum = "doing" | "failed" | "successful";
-const HostingWebWebsiteDeploymentStatusEnum = S.String;
-
 /** A website deployment */
 export interface HostingWebWebsiteDeployment {
   /** Date of the deployment */
@@ -3703,11 +2645,6 @@ export interface HostingWebWebsiteDeployment {
   /** Website numeric identifier */
   websiteId?: number;
 }
-const HostingWebWebsiteDeployment = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<HostingWebWebsiteDeployment>;
-
 export interface ImportHostingWebDatabaseRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -3720,70 +2657,24 @@ export interface ImportHostingWebDatabaseRequest {
   /** Send an email when the import will be done? Default: false */
   sendEmail?: boolean;
 }
-const ImportHostingWebDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<ImportHostingWebDatabaseRequest>;
-
 /** Resource tag filter */
 export interface IamResourceTagFilterInput {}
-const IamResourceTagFilterInput = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<IamResourceTagFilterInput>;
-
 export type ListHostingWebRequestIamTagsValueList = Array<IamResourceTagFilterInput>;
-const ListHostingWebRequestIamTagsValueList = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ListHostingWebRequestIamTagsValueList>;
-
 export type ListHostingWebRequestIamTagsMap = {
   [key: string]: ListHostingWebRequestIamTagsValueList | undefined;
 };
-const ListHostingWebRequestIamTagsMap = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<ListHostingWebRequestIamTagsMap>;
-
 export interface ListHostingWebRequest {
   /** Filter resources on IAM tags */
   iamTags?: ListHostingWebRequestIamTagsMap;
 }
-const ListHostingWebRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<ListHostingWebRequest>;
-
 export type ListHostingWebResponseBodyList = Array<string>;
-const ListHostingWebResponseBodyList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebResponseBodyList>;
-
 export type ListHostingWebResponse = ListHostingWebResponseBodyList;
-const ListHostingWebResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ListHostingWebResponse>;
-
 export interface ListHostingWebAttachedDomainRequest {
   /** Domain used into web hosting attached domains */
   domain: string;
 }
-const ListHostingWebAttachedDomainRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<ListHostingWebAttachedDomainRequest>;
-
 export type ListHostingWebAttachedDomainResponseBodyList = Array<string>;
-const ListHostingWebAttachedDomainResponseBodyList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<ListHostingWebAttachedDomainResponseBodyList>;
-
 export type ListHostingWebAttachedDomainResponse = ListHostingWebAttachedDomainResponseBodyList;
-const ListHostingWebAttachedDomainResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<ListHostingWebAttachedDomainResponse>;
-
 export interface ListHostingWebAttachedDomainRequest2 {
   /** Service name */
   serviceName: string;
@@ -3792,27 +2683,14 @@ export interface ListHostingWebAttachedDomainRequest2 {
   /** Filter the value of path property (like) */
   path?: string;
 }
-const ListHostingWebAttachedDomainRequest2 = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ListHostingWebAttachedDomainRequest2>;
-
 export type ListHostingWebAttachedDomainResponseBodyList2 = Array<string>;
 export type ListHostingWebAttachedDomainResponse2 = ListHostingWebAttachedDomainResponseBodyList2;
-const ListHostingWebAttachedDomainResponse2 =
-  ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebAttachedDomainResponse2>;
-
 export interface ListHostingWebAvailableConfigurationsRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Filter on language name */
   language?: HostingWebConfigurationLanguageEnum | (string & {});
 }
-const ListHostingWebAvailableConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<ListHostingWebAvailableConfigurationsRequest>;
-
 /** Configuration language versions enum */
 export type HostingWebConfigurationVersionEnum =
   | "nodejs-12"
@@ -3824,63 +2702,30 @@ export type HostingWebConfigurationVersionEnum =
   | "ruby-2.7";
 export type ListHostingWebAvailableConfigurationsResponseBodyList =
   Array<HostingWebConfigurationVersionEnum>;
-const ListHostingWebAvailableConfigurationsResponseBodyList =
-  HostingWebModuleListLanguageList as any as S.Schema<ListHostingWebAvailableConfigurationsResponseBodyList>;
-
 export type ListHostingWebAvailableConfigurationsResponse =
   ListHostingWebAvailableConfigurationsResponseBodyList;
-const ListHostingWebAvailableConfigurationsResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<ListHostingWebAvailableConfigurationsResponse>;
-
 export interface ListHostingWebAvailableOfferRequest {
   /** Domain you want to add or upgrade a hosting */
   domain: string;
 }
-const ListHostingWebAvailableOfferRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<ListHostingWebAvailableOfferRequest>;
-
 export type ListHostingWebAvailableOfferResponseBodyList = Array<HostingWebOfferEnum>;
 export type ListHostingWebAvailableOfferResponse = ListHostingWebAvailableOfferResponseBodyList;
-const ListHostingWebAvailableOfferResponse =
-  ListHostingWebAvailableConfigurationsResponse as any as S.Schema<ListHostingWebAvailableOfferResponse>;
-
 export interface ListHostingWebBoostHistoryRequest {
   /** Service name */
   serviceName: string;
   /** Filter the value of date property (=) */
   date?: string;
 }
-const ListHostingWebBoostHistoryRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<ListHostingWebBoostHistoryRequest>;
-
 export type ListHostingWebBoostHistoryResponseBodyList = Array<string>;
 export type ListHostingWebBoostHistoryResponse = ListHostingWebBoostHistoryResponseBodyList;
-const ListHostingWebBoostHistoryResponse =
-  ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebBoostHistoryResponse>;
-
 export interface ListHostingWebCdnAvailableOptionsRequest {
   /** Service name */
   serviceName: string;
 }
-const ListHostingWebCdnAvailableOptionsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  2,
-) as any as S.Schema<ListHostingWebCdnAvailableOptionsRequest>;
-
 /** Option category */
 export type CdnOptionCategoryEnum = "cache" | "performance" | "security";
-const CdnOptionCategoryEnum = S.String;
-
 /** Option Config Parameter type */
 export type CdnOptionConfigParamTypeEnum = "bool" | "int" | "list" | "str";
-const CdnOptionConfigParamTypeEnum = S.String;
-
 /** Option configuration constraints */
 export interface CdnAvailableOptionsConfigConstraints {
   /** Maximum number of items in value */
@@ -3894,11 +2739,6 @@ export interface CdnAvailableOptionsConfigConstraints {
   /** Type of value */
   type?: CdnOptionConfigParamTypeEnum | null;
 }
-const CdnAvailableOptionsConfigConstraints = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<CdnAvailableOptionsConfigConstraints>;
-
 /** Option configuration */
 export interface CdnAvailableOptionsConfig {
   /** URL used for Mobile Redirect */
@@ -3920,11 +2760,6 @@ export interface CdnAvailableOptionsConfig {
   /** Cache time in seconds */
   ttl?: CdnAvailableOptionsConfigConstraints | null;
 }
-const CdnAvailableOptionsConfig = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<CdnAvailableOptionsConfig>;
-
 /** Option type available */
 export interface CdnAvailableOptions {
   /** Option category */
@@ -3936,86 +2771,29 @@ export interface CdnAvailableOptions {
   /** Option type */
   type?: string;
 }
-const CdnAvailableOptions = /*@__PURE__*/ __L.at(__c24, 5) as any as S.Schema<CdnAvailableOptions>;
-
 export type ListHostingWebCdnAvailableOptionsResponseBodyList = Array<CdnAvailableOptions>;
-const ListHostingWebCdnAvailableOptionsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<ListHostingWebCdnAvailableOptionsResponseBodyList>;
-
 export type ListHostingWebCdnAvailableOptionsResponse =
   ListHostingWebCdnAvailableOptionsResponseBodyList;
-const ListHostingWebCdnAvailableOptionsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<ListHostingWebCdnAvailableOptionsResponse>;
-
 export interface ListHostingWebCdnDomainRequest {
   /** Service name */
   serviceName: string;
 }
-const ListHostingWebCdnDomainRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ListHostingWebCdnDomainRequest>;
-
 export type ListHostingWebCdnDomainResponseBodyList = Array<CdnDomain>;
-const ListHostingWebCdnDomainResponseBodyList = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<ListHostingWebCdnDomainResponseBodyList>;
-
 export type ListHostingWebCdnDomainResponse = ListHostingWebCdnDomainResponseBodyList;
-const ListHostingWebCdnDomainResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<ListHostingWebCdnDomainResponse>;
-
 export interface ListHostingWebCdnDomainOptionRequest {
   /** Service name */
   serviceName: string;
   /** Domain name */
   domainName: string;
 }
-const ListHostingWebCdnDomainOptionRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<ListHostingWebCdnDomainOptionRequest>;
-
 export type ListHostingWebCdnDomainOptionResponseBodyList = Array<CdnDomainOption>;
-const ListHostingWebCdnDomainOptionResponseBodyList = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<ListHostingWebCdnDomainOptionResponseBodyList>;
-
 export type ListHostingWebCdnDomainOptionResponse = ListHostingWebCdnDomainOptionResponseBodyList;
-const ListHostingWebCdnDomainOptionResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<ListHostingWebCdnDomainOptionResponse>;
-
 export interface ListHostingWebCdnOperationRequest {
   /** Service name */
   serviceName: string;
 }
-const ListHostingWebCdnOperationRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<ListHostingWebCdnOperationRequest>;
-
 export type ListHostingWebCdnOperationResponseBodyList = Array<CdnOperation>;
-const ListHostingWebCdnOperationResponseBodyList = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<ListHostingWebCdnOperationResponseBodyList>;
-
 export type ListHostingWebCdnOperationResponse = ListHostingWebCdnOperationResponseBodyList;
-const ListHostingWebCdnOperationResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<ListHostingWebCdnOperationResponse>;
-
 export interface ListHostingWebCronRequest {
   /** Service name */
   serviceName: string;
@@ -4028,31 +2806,15 @@ export interface ListHostingWebCronRequest {
   /** Filter the value of language property (=) */
   language?: HostingWebLanguagesEnum | (string & {});
 }
-const ListHostingWebCronRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<ListHostingWebCronRequest>;
-
 export type ListHostingWebCronResponseBodyList = Array<number>;
 export type ListHostingWebCronResponse = ListHostingWebCronResponseBodyList;
-const ListHostingWebCronResponse =
-  CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebCronResponse>;
-
 export interface ListHostingWebCronAvailableLanguageRequest {
   /** Service name */
   serviceName: string;
 }
-const ListHostingWebCronAvailableLanguageRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ListHostingWebCronAvailableLanguageRequest>;
-
 export type ListHostingWebCronAvailableLanguageResponseBodyList = Array<HostingWebLanguagesEnum>;
 export type ListHostingWebCronAvailableLanguageResponse =
   ListHostingWebCronAvailableLanguageResponseBodyList;
-const ListHostingWebCronAvailableLanguageResponse =
-  ListHostingWebAvailableConfigurationsResponse as any as S.Schema<ListHostingWebCronAvailableLanguageResponse>;
-
 export interface ListHostingWebDatabaseRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -4067,53 +2829,24 @@ export interface ListHostingWebDatabaseRequest {
   /** Filter the value of user property (like) */
   user?: string;
 }
-const ListHostingWebDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<ListHostingWebDatabaseRequest>;
-
 export type ListHostingWebDatabaseResponseBodyList = Array<string>;
 export type ListHostingWebDatabaseResponse = ListHostingWebDatabaseResponseBodyList;
-const ListHostingWebDatabaseResponse =
-  ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebDatabaseResponse>;
-
 export interface ListHostingWebDatabaseAvailableTypeRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const ListHostingWebDatabaseAvailableTypeRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<ListHostingWebDatabaseAvailableTypeRequest>;
-
 export type ListHostingWebDatabaseAvailableTypeResponseBodyList =
   Array<HostingWebDatabaseDatabaseTypeEnum>;
-const ListHostingWebDatabaseAvailableTypeResponseBodyList =
-  HostingWebDatabaseCreationDatabaseCapabilitiesEnginesList as any as S.Schema<ListHostingWebDatabaseAvailableTypeResponseBodyList>;
-
 export type ListHostingWebDatabaseAvailableTypeResponse =
   ListHostingWebDatabaseAvailableTypeResponseBodyList;
-const ListHostingWebDatabaseAvailableTypeResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<ListHostingWebDatabaseAvailableTypeResponse>;
-
 export interface ListHostingWebDatabaseAvailableVersionRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Type of the database */
   type: HostingWebDatabaseDatabaseTypeEnum | (string & {});
 }
-const ListHostingWebDatabaseAvailableVersionRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<ListHostingWebDatabaseAvailableVersionRequest>;
-
 /** Database available version */
 export type HostingWebDatabaseAvailableVersionStructListList = Array<HostingWebDatabaseVersionEnum>;
-const HostingWebDatabaseAvailableVersionStructListList =
-  HostingWebModuleListLanguageList as any as S.Schema<HostingWebDatabaseAvailableVersionStructListList>;
-
 /** Database Available and Default version */
 export interface HostingWebDatabaseAvailableVersionStruct {
   /** Database default version */
@@ -4121,48 +2854,22 @@ export interface HostingWebDatabaseAvailableVersionStruct {
   /** Database available version */
   list?: HostingWebDatabaseAvailableVersionStructListList;
 }
-const HostingWebDatabaseAvailableVersionStruct = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<HostingWebDatabaseAvailableVersionStruct>;
-
 export interface ListHostingWebDatabaseCopyRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Database name (like mydb.mysql.db or mydb.postgres.db) */
   name: string;
 }
-const ListHostingWebDatabaseCopyRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<ListHostingWebDatabaseCopyRequest>;
-
 export type ListHostingWebDatabaseCopyResponseBodyList = Array<string>;
 export type ListHostingWebDatabaseCopyResponse = ListHostingWebDatabaseCopyResponseBodyList;
-const ListHostingWebDatabaseCopyResponse =
-  ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebDatabaseCopyResponse>;
-
 export interface ListHostingWebDatabaseCreationCapabilitiesRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const ListHostingWebDatabaseCreationCapabilitiesRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<ListHostingWebDatabaseCreationCapabilitiesRequest>;
-
 export type ListHostingWebDatabaseCreationCapabilitiesResponseBodyList =
   Array<HostingWebDatabaseCreationDatabaseCapabilities>;
-const ListHostingWebDatabaseCreationCapabilitiesResponseBodyList =
-  HostingWebCapabilitiesDatabasesList as any as S.Schema<ListHostingWebDatabaseCreationCapabilitiesResponseBodyList>;
-
 export type ListHostingWebDatabaseCreationCapabilitiesResponse =
   ListHostingWebDatabaseCreationCapabilitiesResponseBodyList;
-const ListHostingWebDatabaseCreationCapabilitiesResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<ListHostingWebDatabaseCreationCapabilitiesResponse>;
-
 export interface ListHostingWebDatabaseDumpRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -4179,24 +2886,12 @@ export interface ListHostingWebDatabaseDumpRequest {
   /** Filter the value of type property (=) */
   type?: HostingWebDatabaseDumpDateEnum | (string & {});
 }
-const ListHostingWebDatabaseDumpRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ListHostingWebDatabaseDumpRequest>;
-
 export type ListHostingWebDatabaseDumpResponseBodyList = Array<number>;
 export type ListHostingWebDatabaseDumpResponse = ListHostingWebDatabaseDumpResponseBodyList;
-const ListHostingWebDatabaseDumpResponse =
-  CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebDatabaseDumpResponse>;
-
 /** Available periods for statistics */
 export type HostingWebStatisticsPeriodEnum = "daily" | "monthly" | "weekly" | "yearly";
-const HostingWebStatisticsPeriodEnum = S.String;
-
 /** Types of statistics available for the database */
 export type HostingWebDatabaseStatisticsTypeEnum = "statement" | "statementMeanTime";
-const HostingWebDatabaseStatisticsTypeEnum = S.String;
-
 export interface ListHostingWebDatabaseStatisticsRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -4207,53 +2902,23 @@ export interface ListHostingWebDatabaseStatisticsRequest {
   /** Types of statistics available for the database */
   type: HostingWebDatabaseStatisticsTypeEnum | (string & {});
 }
-const ListHostingWebDatabaseStatisticsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<ListHostingWebDatabaseStatisticsRequest>;
-
 /** A timestamp associated to a value */
 export interface ComplexTypeChartTimestampValue {
   timestamp?: number;
   value?: number | null;
 }
-const ComplexTypeChartTimestampValue = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<ComplexTypeChartTimestampValue>;
-
 export type ComplexTypeChartSerieComplexTypeChartTimestampValueValuesList =
   Array<ComplexTypeChartTimestampValue>;
-const ComplexTypeChartSerieComplexTypeChartTimestampValueValuesList = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<ComplexTypeChartSerieComplexTypeChartTimestampValueValuesList>;
-
 /** A value set tagged with its unit and serie name */
 export interface ComplexTypeChartSerieComplexTypeChartTimestampValue {
   serieName?: string;
   unit?: string;
   values?: ComplexTypeChartSerieComplexTypeChartTimestampValueValuesList;
 }
-const ComplexTypeChartSerieComplexTypeChartTimestampValue = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<ComplexTypeChartSerieComplexTypeChartTimestampValue>;
-
 export type ListHostingWebDatabaseStatisticsResponseBodyList =
   Array<ComplexTypeChartSerieComplexTypeChartTimestampValue>;
-const ListHostingWebDatabaseStatisticsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<ListHostingWebDatabaseStatisticsResponseBodyList>;
-
 export type ListHostingWebDatabaseStatisticsResponse =
   ListHostingWebDatabaseStatisticsResponseBodyList;
-const ListHostingWebDatabaseStatisticsResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<ListHostingWebDatabaseStatisticsResponse>;
-
 export interface ListHostingWebDumpRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -4270,27 +2935,14 @@ export interface ListHostingWebDumpRequest {
   /** Filter the value of orphan property (=) */
   orphan?: boolean;
 }
-const ListHostingWebDumpRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<ListHostingWebDumpRequest>;
-
 export type ListHostingWebDumpResponseBodyList = Array<number>;
 export type ListHostingWebDumpResponse = ListHostingWebDumpResponseBodyList;
-const ListHostingWebDumpResponse =
-  CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebDumpResponse>;
-
 export interface ListHostingWebEmailBouncesRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Maximum bounces limit ( default : 20 / max : 100 ) */
   limit: number;
 }
-const ListHostingWebEmailBouncesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<ListHostingWebEmailBouncesRequest>;
-
 /** The volume history type */
 export interface HostingWebMailBounce {
   /** The datetime of this bounce */
@@ -4300,46 +2952,18 @@ export interface HostingWebMailBounce {
   /** The email where you have the bounce */
   to?: string | null;
 }
-const HostingWebMailBounce = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<HostingWebMailBounce>;
-
 export type ListHostingWebEmailBouncesResponseBodyList = Array<HostingWebMailBounce>;
-const ListHostingWebEmailBouncesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<ListHostingWebEmailBouncesResponseBodyList>;
-
 export type ListHostingWebEmailBouncesResponse = ListHostingWebEmailBouncesResponseBodyList;
-const ListHostingWebEmailBouncesResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<ListHostingWebEmailBouncesResponse>;
-
 export interface ListHostingWebEmailOptionRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const ListHostingWebEmailOptionRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<ListHostingWebEmailOptionRequest>;
-
 export type ListHostingWebEmailOptionResponseBodyList = Array<number>;
 export type ListHostingWebEmailOptionResponse = ListHostingWebEmailOptionResponseBodyList;
-const ListHostingWebEmailOptionResponse =
-  CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebEmailOptionResponse>;
-
 export interface ListHostingWebEmailVolumesRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const ListHostingWebEmailVolumesRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<ListHostingWebEmailVolumesRequest>;
-
 /** The volume history type */
 export interface HostingWebMailVolumeHistory {
   /** The datetime of this volume history point */
@@ -4347,144 +2971,66 @@ export interface HostingWebMailVolumeHistory {
   /** The volume history size */
   volume?: number | null;
 }
-const HostingWebMailVolumeHistory = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<HostingWebMailVolumeHistory>;
-
 export type ListHostingWebEmailVolumesResponseBodyList = Array<HostingWebMailVolumeHistory>;
-const ListHostingWebEmailVolumesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<ListHostingWebEmailVolumesResponseBodyList>;
-
 export type ListHostingWebEmailVolumesResponse = ListHostingWebEmailVolumesResponseBodyList;
-const ListHostingWebEmailVolumesResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<ListHostingWebEmailVolumesResponse>;
-
 export interface ListHostingWebEnvVarRequest {
   /** Service name */
   serviceName: string;
   /** Filter the value of type property (=) */
   type?: HostingWebEnvVarTypeEnum | (string & {});
 }
-const ListHostingWebEnvVarRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<ListHostingWebEnvVarRequest>;
-
 export type ListHostingWebEnvVarResponseBodyList = Array<string>;
 export type ListHostingWebEnvVarResponse = ListHostingWebEnvVarResponseBodyList;
-const ListHostingWebEnvVarResponse =
-  ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebEnvVarResponse>;
-
 export interface ListHostingWebExtraSqlPersoRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const ListHostingWebExtraSqlPersoRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<ListHostingWebExtraSqlPersoRequest>;
-
 export type ListHostingWebExtraSqlPersoResponseBodyList = Array<string>;
 export type ListHostingWebExtraSqlPersoResponse = ListHostingWebExtraSqlPersoResponseBodyList;
-const ListHostingWebExtraSqlPersoResponse =
-  ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebExtraSqlPersoResponse>;
-
 export interface ListHostingWebExtraSqlPersoDatabasesRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** The extraSqlPerso option name */
   name: string;
 }
-const ListHostingWebExtraSqlPersoDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<ListHostingWebExtraSqlPersoDatabasesRequest>;
-
 export type ListHostingWebExtraSqlPersoDatabasesResponseBodyList = Array<string>;
 export type ListHostingWebExtraSqlPersoDatabasesResponse =
   ListHostingWebExtraSqlPersoDatabasesResponseBodyList;
-const ListHostingWebExtraSqlPersoDatabasesResponse =
-  ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebExtraSqlPersoDatabasesResponse>;
-
 /** FreeDom status */
 export type HostingWebFreedomStatusEnum = "blockedByCustomer" | "blockedBySystem" | "ok" | "preset";
-const HostingWebFreedomStatusEnum = S.String;
-
 export interface ListHostingWebFreedomRequest {
   /** Service name */
   serviceName: string;
   /** Filter the freedom status (=) */
   status?: HostingWebFreedomStatusEnum | (string & {});
 }
-const ListHostingWebFreedomRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<ListHostingWebFreedomRequest>;
-
 export type ListHostingWebFreedomResponseBodyList = Array<string>;
 export type ListHostingWebFreedomResponse = ListHostingWebFreedomResponseBodyList;
-const ListHostingWebFreedomResponse =
-  ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebFreedomResponse>;
-
 export interface ListHostingWebIncidentRequest {}
-const ListHostingWebIncidentRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<ListHostingWebIncidentRequest>;
-
 export type ListHostingWebIncidentResponseBodyList = Array<string>;
 export type ListHostingWebIncidentResponse = ListHostingWebIncidentResponseBodyList;
-const ListHostingWebIncidentResponse =
-  ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebIncidentResponse>;
-
 export interface ListHostingWebIndyRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Filter the value of login property (like) */
   login?: string;
 }
-const ListHostingWebIndyRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  1,
-) as any as S.Schema<ListHostingWebIndyRequest>;
-
 export type ListHostingWebIndyResponseBodyList = Array<string>;
 export type ListHostingWebIndyResponse = ListHostingWebIndyResponseBodyList;
-const ListHostingWebIndyResponse =
-  ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebIndyResponse>;
-
 export interface ListHostingWebLocalSeoAccountRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Filter the value of email property (like) */
   email?: string;
 }
-const ListHostingWebLocalSeoAccountRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<ListHostingWebLocalSeoAccountRequest>;
-
 export type ListHostingWebLocalSeoAccountResponseBodyList = Array<number>;
 export type ListHostingWebLocalSeoAccountResponse = ListHostingWebLocalSeoAccountResponseBodyList;
-const ListHostingWebLocalSeoAccountResponse =
-  CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebLocalSeoAccountResponse>;
-
 export interface ListHostingWebLocalSeoDirectoriesListRequest {
   /** Country of the location */
   country: HostingWebLocalSeoLocationCountryEnum | (string & {});
   /** Local SEO offer */
   offer: HostingWebLocalSeoLocationOfferEnum | (string & {});
 }
-const ListHostingWebLocalSeoDirectoriesListRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<ListHostingWebLocalSeoDirectoriesListRequest>;
-
 /** Struct describing a directory */
 export interface HostingWebLocalSeoDirectory {
   /** Identifier to use to get the result of a visibility check for the directory */
@@ -4492,30 +3038,14 @@ export interface HostingWebLocalSeoDirectory {
   /** Human-readable name of the directory */
   displayName?: string;
 }
-const HostingWebLocalSeoDirectory = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<HostingWebLocalSeoDirectory>;
-
 /** Navigation systems */
 export type HostingWebLocalSeoDirectoriesListNavigationSystemsList =
   Array<HostingWebLocalSeoDirectory>;
-const HostingWebLocalSeoDirectoriesListNavigationSystemsList = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<HostingWebLocalSeoDirectoriesListNavigationSystemsList>;
-
 /** Search engines */
 export type HostingWebLocalSeoDirectoriesListSearchEnginesList = Array<HostingWebLocalSeoDirectory>;
-const HostingWebLocalSeoDirectoriesListSearchEnginesList =
-  HostingWebLocalSeoDirectoriesListNavigationSystemsList as any as S.Schema<HostingWebLocalSeoDirectoriesListSearchEnginesList>;
-
 /** Social networks */
 export type HostingWebLocalSeoDirectoriesListSocialNetworksList =
   Array<HostingWebLocalSeoDirectory>;
-const HostingWebLocalSeoDirectoriesListSocialNetworksList =
-  HostingWebLocalSeoDirectoriesListNavigationSystemsList as any as S.Schema<HostingWebLocalSeoDirectoriesListSocialNetworksList>;
-
 /** Struct describing a list of directories ordered by type */
 export interface HostingWebLocalSeoDirectoriesList {
   /** Navigation systems */
@@ -4525,25 +3055,12 @@ export interface HostingWebLocalSeoDirectoriesList {
   /** Social networks */
   socialNetworks?: HostingWebLocalSeoDirectoriesListSocialNetworksList;
 }
-const HostingWebLocalSeoDirectoriesList = /*@__PURE__*/ __L.at(
-  __c30,
-  6,
-) as any as S.Schema<HostingWebLocalSeoDirectoriesList>;
-
 export interface ListHostingWebLocalSeoLocationRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const ListHostingWebLocalSeoLocationRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<ListHostingWebLocalSeoLocationRequest>;
-
 export type ListHostingWebLocalSeoLocationResponseBodyList = Array<number>;
 export type ListHostingWebLocalSeoLocationResponse = ListHostingWebLocalSeoLocationResponseBodyList;
-const ListHostingWebLocalSeoLocationResponse =
-  CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebLocalSeoLocationResponse>;
-
 export interface ListHostingWebLocalSeoVisibilityCheckResultRequest {
   /** Get the result only for one directory */
   directory: string;
@@ -4552,11 +3069,6 @@ export interface ListHostingWebLocalSeoVisibilityCheckResultRequest {
   /** Token received when requesting the check */
   token: string;
 }
-const ListHostingWebLocalSeoVisibilityCheckResultRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<ListHostingWebLocalSeoVisibilityCheckResultRequest>;
-
 /** Sync status of a location field */
 export type HostingWebLocalSeoFieldStatusEnum =
   | "MATCH"
@@ -4564,8 +3076,6 @@ export type HostingWebLocalSeoFieldStatusEnum =
   | "MISSING"
   | "NOT_APPLICABLE"
   | "PRESENT";
-const HostingWebLocalSeoFieldStatusEnum = S.String;
-
 /** Status of a listing */
 export type HostingWebLocalSeoFlowStatusEnum =
   | "ALL_INFORMATION_SUBMITTED"
@@ -4582,8 +3092,6 @@ export type HostingWebLocalSeoFlowStatusEnum =
   | "SUBMISSION_NEEDED"
   | "WAITING_DIRECTORY_ACTION"
   | "WAITING_USER_ACTION";
-const HostingWebLocalSeoFlowStatusEnum = S.String;
-
 /** Sync status of a listing */
 export type HostingWebLocalSeoListingStatusEnum =
   | "IN_SYNC"
@@ -4592,8 +3100,6 @@ export type HostingWebLocalSeoListingStatusEnum =
   | "NOT_SUPPORTED"
   | "NO_ONLINE_LISTING"
   | "TECHNICAL_PROBLEMS";
-const HostingWebLocalSeoListingStatusEnum = S.String;
-
 /** Struct describing a visibility check result */
 export interface HostingWebLocalSeoVisibilityCheckResultResponse {
   /** City of the location */
@@ -4657,39 +3163,16 @@ export interface HostingWebLocalSeoVisibilityCheckResultResponse {
   /** Zipcode of the location (sync status) */
   zipStatus?: HostingWebLocalSeoFieldStatusEnum | null;
 }
-const HostingWebLocalSeoVisibilityCheckResultResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<HostingWebLocalSeoVisibilityCheckResultResponse>;
-
 export type ListHostingWebLocalSeoVisibilityCheckResultResponseBodyList =
   Array<HostingWebLocalSeoVisibilityCheckResultResponse>;
-const ListHostingWebLocalSeoVisibilityCheckResultResponseBodyList = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<ListHostingWebLocalSeoVisibilityCheckResultResponseBodyList>;
-
 export type ListHostingWebLocalSeoVisibilityCheckResultResponse =
   ListHostingWebLocalSeoVisibilityCheckResultResponseBodyList;
-const ListHostingWebLocalSeoVisibilityCheckResultResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<ListHostingWebLocalSeoVisibilityCheckResultResponse>;
-
 export interface ListHostingWebModuleRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const ListHostingWebModuleRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<ListHostingWebModuleRequest>;
-
 export type ListHostingWebModuleResponseBodyList = Array<number>;
 export type ListHostingWebModuleResponse = ListHostingWebModuleResponseBodyList;
-const ListHostingWebModuleResponse =
-  CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebModuleResponse>;
-
 export interface ListHostingWebModuleListRequest {
   /** Filter the value of active property (=) */
   active?: boolean;
@@ -4698,16 +3181,8 @@ export interface ListHostingWebModuleListRequest {
   /** Filter the value of latest property (=) */
   latest?: boolean;
 }
-const ListHostingWebModuleListRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<ListHostingWebModuleListRequest>;
-
 export type ListHostingWebModuleListResponseBodyList = Array<number>;
 export type ListHostingWebModuleListResponse = ListHostingWebModuleListResponseBodyList;
-const ListHostingWebModuleListResponse =
-  CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebModuleListResponse>;
-
 export interface ListHostingWebOvhConfigRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -4716,30 +3191,14 @@ export interface ListHostingWebOvhConfigRequest {
   /** Filter the value of path property (like) */
   path?: string;
 }
-const ListHostingWebOvhConfigRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<ListHostingWebOvhConfigRequest>;
-
 export type ListHostingWebOvhConfigResponseBodyList = Array<number>;
 export type ListHostingWebOvhConfigResponse = ListHostingWebOvhConfigResponseBodyList;
-const ListHostingWebOvhConfigResponse =
-  CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebOvhConfigResponse>;
-
 export interface ListHostingWebOvhConfigCapabilitiesRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const ListHostingWebOvhConfigCapabilitiesRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<ListHostingWebOvhConfigCapabilitiesRequest>;
-
 /** Container image available */
 export type HostingWebOvhConfigCapabilitiesContainerImageList = Array<string>;
-const HostingWebOvhConfigCapabilitiesContainerImageList =
-  CdnDomainOptionConfigResourcesList as any as S.Schema<HostingWebOvhConfigCapabilitiesContainerImageList>;
-
 /** Struct which describes version and container image available */
 export interface HostingWebOvhConfigCapabilities {
   /** Container image available */
@@ -4747,41 +3206,18 @@ export interface HostingWebOvhConfigCapabilities {
   /** PHP version */
   version?: HostingWebOvhConfigAvailableEngineVersionEnum;
 }
-const HostingWebOvhConfigCapabilities = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<HostingWebOvhConfigCapabilities>;
-
 export type ListHostingWebOvhConfigCapabilitiesResponseBodyList =
   Array<HostingWebOvhConfigCapabilities>;
-const ListHostingWebOvhConfigCapabilitiesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<ListHostingWebOvhConfigCapabilitiesResponseBodyList>;
-
 export type ListHostingWebOvhConfigCapabilitiesResponse =
   ListHostingWebOvhConfigCapabilitiesResponseBodyList;
-const ListHostingWebOvhConfigCapabilitiesResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<ListHostingWebOvhConfigCapabilitiesResponse>;
-
 export interface ListHostingWebOwnLogsRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Filter the value of fqdn property (like) */
   fqdn?: string;
 }
-const ListHostingWebOwnLogsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<ListHostingWebOwnLogsRequest>;
-
 export type ListHostingWebOwnLogsResponseBodyList = Array<number>;
 export type ListHostingWebOwnLogsResponse = ListHostingWebOwnLogsResponseBodyList;
-const ListHostingWebOwnLogsResponse =
-  CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebOwnLogsResponse>;
-
 export interface ListHostingWebOwnLogUserLogsRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -4790,53 +3226,22 @@ export interface ListHostingWebOwnLogUserLogsRequest {
   /** Filter the value of login property (like) */
   login?: string;
 }
-const ListHostingWebOwnLogUserLogsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  4,
-) as any as S.Schema<ListHostingWebOwnLogUserLogsRequest>;
-
 export type ListHostingWebOwnLogUserLogsResponseBodyList = Array<string>;
 export type ListHostingWebOwnLogUserLogsResponse = ListHostingWebOwnLogUserLogsResponseBodyList;
-const ListHostingWebOwnLogUserLogsResponse =
-  ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebOwnLogUserLogsResponse>;
-
 export interface ListHostingWebPrivateDatabaseCreationCapabilitiesRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const ListHostingWebPrivateDatabaseCreationCapabilitiesRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<ListHostingWebPrivateDatabaseCreationCapabilitiesRequest>;
-
 export type ListHostingWebPrivateDatabaseCreationCapabilitiesResponseBodyList =
   Array<HostingWebDatabaseCreationDatabaseCapabilities>;
-const ListHostingWebPrivateDatabaseCreationCapabilitiesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<ListHostingWebPrivateDatabaseCreationCapabilitiesResponseBodyList>;
-
 export type ListHostingWebPrivateDatabaseCreationCapabilitiesResponse =
   ListHostingWebPrivateDatabaseCreationCapabilitiesResponseBodyList;
-const ListHostingWebPrivateDatabaseCreationCapabilitiesResponse = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<ListHostingWebPrivateDatabaseCreationCapabilitiesResponse>;
-
 export interface ListHostingWebPrivateDatabasesRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const ListHostingWebPrivateDatabasesRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<ListHostingWebPrivateDatabasesRequest>;
-
 export type ListHostingWebPrivateDatabasesResponseBodyList = Array<string>;
 export type ListHostingWebPrivateDatabasesResponse = ListHostingWebPrivateDatabasesResponseBodyList;
-const ListHostingWebPrivateDatabasesResponse =
-  ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebPrivateDatabasesResponse>;
-
 export interface ListHostingWebRuntimeRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -4845,50 +3250,26 @@ export interface ListHostingWebRuntimeRequest {
   /** Filter the value of type property (=) */
   type?: HostingWebRuntimeTypeEnum | (string & {});
 }
-const ListHostingWebRuntimeRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  1,
-) as any as S.Schema<ListHostingWebRuntimeRequest>;
-
 export type ListHostingWebRuntimeResponseBodyList = Array<number>;
 export type ListHostingWebRuntimeResponse = ListHostingWebRuntimeResponseBodyList;
-const ListHostingWebRuntimeResponse =
-  CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebRuntimeResponse>;
-
 export interface ListHostingWebRuntimeAttachedDomainsRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** The runtime configuration ID */
   id: number;
 }
-const ListHostingWebRuntimeAttachedDomainsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<ListHostingWebRuntimeAttachedDomainsRequest>;
-
 export type ListHostingWebRuntimeAttachedDomainsResponseBodyList = Array<string>;
 export type ListHostingWebRuntimeAttachedDomainsResponse =
   ListHostingWebRuntimeAttachedDomainsResponseBodyList;
-const ListHostingWebRuntimeAttachedDomainsResponse =
-  ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebRuntimeAttachedDomainsResponse>;
-
 export interface ListHostingWebRuntimeAvailableTypesRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Specific programming language to filter */
   language?: string;
 }
-const ListHostingWebRuntimeAvailableTypesRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<ListHostingWebRuntimeAvailableTypesRequest>;
-
 export type ListHostingWebRuntimeAvailableTypesResponseBodyList = Array<HostingWebRuntimeTypeEnum>;
 export type ListHostingWebRuntimeAvailableTypesResponse =
   ListHostingWebRuntimeAvailableTypesResponseBodyList;
-const ListHostingWebRuntimeAvailableTypesResponse =
-  ListHostingWebAvailableConfigurationsResponse as any as S.Schema<ListHostingWebRuntimeAvailableTypesResponse>;
-
 /** Types of statistics available for the web hosting */
 export type HostingWebStatisticsTypeEnum =
   | "in.ftpCommands"
@@ -4897,25 +3278,15 @@ export type HostingWebStatisticsTypeEnum =
   | "out.tcpConn"
   | "sys.cpuUsage"
   | "sys.workerSpawnOverload";
-const HostingWebStatisticsTypeEnum = S.String;
-
 export interface ListHostingWebStatisticsRequest {
   /** The internal name of your hosting */
   serviceName: string;
   period: HostingWebStatisticsPeriodEnum | (string & {});
   type: HostingWebStatisticsTypeEnum | (string & {});
 }
-const ListHostingWebStatisticsRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<ListHostingWebStatisticsRequest>;
-
 export type ListHostingWebStatisticsResponseBodyList =
   Array<ComplexTypeChartSerieComplexTypeChartTimestampValue>;
 export type ListHostingWebStatisticsResponse = ListHostingWebStatisticsResponseBodyList;
-const ListHostingWebStatisticsResponse =
-  ListHostingWebDatabaseStatisticsResponse as any as S.Schema<ListHostingWebStatisticsResponse>;
-
 export interface ListHostingWebTasksRequest {
   /** Service name */
   serviceName: string;
@@ -4924,16 +3295,8 @@ export interface ListHostingWebTasksRequest {
   /** Filter tasks by status (like) */
   status?: HostingWebTaskStatusEnum | (string & {});
 }
-const ListHostingWebTasksRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<ListHostingWebTasksRequest>;
-
 export type ListHostingWebTasksResponseBodyList = Array<number>;
 export type ListHostingWebTasksResponse = ListHostingWebTasksResponseBodyList;
-const ListHostingWebTasksResponse =
-  CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebTasksResponse>;
-
 export interface ListHostingWebUserRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -4942,60 +3305,28 @@ export interface ListHostingWebUserRequest {
   /** Filter the value of login property (like) */
   login?: string;
 }
-const ListHostingWebUserRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<ListHostingWebUserRequest>;
-
 export type ListHostingWebUserResponseBodyList = Array<string>;
 export type ListHostingWebUserResponse = ListHostingWebUserResponseBodyList;
-const ListHostingWebUserResponse =
-  ListHostingWebAttachedDomainResponse as any as S.Schema<ListHostingWebUserResponse>;
-
 export interface ListHostingWebVcsSupportedRequest {}
-const ListHostingWebVcsSupportedRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<ListHostingWebVcsSupportedRequest>;
-
 export type ListHostingWebVcsSupportedResponseBodyList = Array<HostingWebSupportedVcsEnum>;
 export type ListHostingWebVcsSupportedResponse = ListHostingWebVcsSupportedResponseBodyList;
-const ListHostingWebVcsSupportedResponse =
-  ListHostingWebAvailableConfigurationsResponse as any as S.Schema<ListHostingWebVcsSupportedResponse>;
-
 export interface ListHostingWebWebsiteRequest {
   /** Service name */
   serviceName: string;
   /** Filter the value of path property */
   path?: string;
 }
-const ListHostingWebWebsiteRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<ListHostingWebWebsiteRequest>;
-
 export type ListHostingWebWebsiteResponseBodyList = Array<number>;
 export type ListHostingWebWebsiteResponse = ListHostingWebWebsiteResponseBodyList;
-const ListHostingWebWebsiteResponse =
-  CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebWebsiteResponse>;
-
 export interface ListHostingWebWebsiteDeploymentRequest {
   /** Service name */
   serviceName: string;
   /** Id */
   id: number;
 }
-const ListHostingWebWebsiteDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<ListHostingWebWebsiteDeploymentRequest>;
-
 export type ListHostingWebWebsiteDeploymentResponseBodyList = Array<number>;
 export type ListHostingWebWebsiteDeploymentResponse =
   ListHostingWebWebsiteDeploymentResponseBodyList;
-const ListHostingWebWebsiteDeploymentResponse =
-  CreateHostingWebChangeContactResponse as any as S.Schema<ListHostingWebWebsiteDeploymentResponse>;
-
 export interface ListHostingWebWebsiteDeploymentLogsRequest {
   /** Service name */
   serviceName: string;
@@ -5004,11 +3335,6 @@ export interface ListHostingWebWebsiteDeploymentLogsRequest {
   /** Deployment ID */
   deploymentId: number;
 }
-const ListHostingWebWebsiteDeploymentLogsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<ListHostingWebWebsiteDeploymentLogsRequest>;
-
 /** Message from logs of a website deployment */
 export interface HostingWebWebsiteDeploymentLogsMessage {
   /** Date of the message */
@@ -5016,55 +3342,25 @@ export interface HostingWebWebsiteDeploymentLogsMessage {
   /** Content of the message */
   message?: string;
 }
-const HostingWebWebsiteDeploymentLogsMessage = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<HostingWebWebsiteDeploymentLogsMessage>;
-
 export type ListHostingWebWebsiteDeploymentLogsResponseBodyList =
   Array<HostingWebWebsiteDeploymentLogsMessage>;
-const ListHostingWebWebsiteDeploymentLogsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c34,
-  4,
-) as any as S.Schema<ListHostingWebWebsiteDeploymentLogsResponseBodyList>;
-
 export type ListHostingWebWebsiteDeploymentLogsResponse =
   ListHostingWebWebsiteDeploymentLogsResponseBodyList;
-const ListHostingWebWebsiteDeploymentLogsResponse = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<ListHostingWebWebsiteDeploymentLogsResponse>;
-
 export interface LoginHostingWebLocalSeoAccountRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Account id */
   id: number;
 }
-const LoginHostingWebLocalSeoAccountRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  6,
-) as any as S.Schema<LoginHostingWebLocalSeoAccountRequest>;
-
 export type LoginHostingWebLocalSeoAccountResponse = string;
-const LoginHostingWebLocalSeoAccountResponse =
-  ConfirmHostingWebTerminationResponse as any as S.Schema<LoginHostingWebLocalSeoAccountResponse>;
-
 export interface PurgeHostingWebAttachedDomainCacheRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Domain linked (fqdn) */
   domain: string;
 }
-const PurgeHostingWebAttachedDomainCacheRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<PurgeHostingWebAttachedDomainCacheRequest>;
-
 /** Purge type */
 export type CdnPurgeTypeEnum = "extension" | "folder" | "regex" | "uri";
-const CdnPurgeTypeEnum = S.String;
-
 export interface PurgeHostingWebCdnDomainRequest {
   /** Service name */
   serviceName: string;
@@ -5075,25 +3371,13 @@ export interface PurgeHostingWebCdnDomainRequest {
   /** Purge Pattern Type (default is regex) */
   patternType?: CdnPurgeTypeEnum | (string & {});
 }
-const PurgeHostingWebCdnDomainRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  0,
-) as any as S.Schema<PurgeHostingWebCdnDomainRequest>;
-
 export interface PutHostingWebRequest {
   /** Service name */
   serviceName: string;
   /** Set the name displayed in ManagerV6 for your hosting (max 50 chars, empty string resets to service name) */
   displayName?: string;
 }
-const PutHostingWebRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<PutHostingWebRequest>;
-
 export interface PutHostingWebResponse {}
-const PutHostingWebResponse = IamResourceTagFilterInput as any as S.Schema<PutHostingWebResponse>;
-
 export interface PutHostingWebAttachedDomainRequest {
   /** Service name */
   serviceName: string;
@@ -5116,15 +3400,7 @@ export interface PutHostingWebAttachedDomainRequest {
   /** Whether to put the attached domain in the SSL certificate */
   ssl?: boolean | null;
 }
-const PutHostingWebAttachedDomainRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<PutHostingWebAttachedDomainRequest>;
-
 export interface PutHostingWebAttachedDomainResponse {}
-const PutHostingWebAttachedDomainResponse =
-  CreateHostingWebCdnServiceInfosUpdateResponse as any as S.Schema<PutHostingWebAttachedDomainResponse>;
-
 export interface PutHostingWebCdnDomainOptionRequest {
   /** Service name */
   serviceName: string;
@@ -5143,11 +3419,6 @@ export interface PutHostingWebCdnDomainOptionRequest {
   /** Option type */
   type: CdnOptionTypeEnum | (string & {});
 }
-const PutHostingWebCdnDomainOptionRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<PutHostingWebCdnDomainOptionRequest>;
-
 export interface PutHostingWebConfigurationRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -5162,15 +3433,7 @@ export interface PutHostingWebConfigurationRequest {
   /** version of the language chosen for the current hosting */
   version?: string;
 }
-const PutHostingWebConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  4,
-) as any as S.Schema<PutHostingWebConfigurationRequest>;
-
 export interface PutHostingWebConfigurationResponse {}
-const PutHostingWebConfigurationResponse =
-  CreateHostingWebCdnServiceInfosUpdateResponse as any as S.Schema<PutHostingWebConfigurationResponse>;
-
 export interface PutHostingWebCronRequest {
   /** Service name */
   serviceName: string;
@@ -5189,30 +3452,14 @@ export interface PutHostingWebCronRequest {
   /** Cron status */
   status?: HostingWebCronStatusEnum | (string & {});
 }
-const PutHostingWebCronRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<PutHostingWebCronRequest>;
-
 export type PutHostingWebCronResponse = string;
-const PutHostingWebCronResponse =
-  ConfirmHostingWebTerminationResponse as any as S.Schema<PutHostingWebCronResponse>;
-
 export interface PutHostingWebEmailRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Email used to receive errors */
   email?: string | null;
 }
-const PutHostingWebEmailRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<PutHostingWebEmailRequest>;
-
 export interface PutHostingWebEmailResponse {}
-const PutHostingWebEmailResponse =
-  IamResourceTagFilterInput as any as S.Schema<PutHostingWebEmailResponse>;
-
 export interface PutHostingWebEnvVarRequest {
   /** Service name */
   serviceName: string;
@@ -5221,11 +3468,6 @@ export interface PutHostingWebEnvVarRequest {
   /** Value of the variable */
   value?: string;
 }
-const PutHostingWebEnvVarRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<PutHostingWebEnvVarRequest>;
-
 export interface PutHostingWebOwnLogUserLogRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -5236,15 +3478,7 @@ export interface PutHostingWebOwnLogUserLogRequest {
   /** Description field for you */
   description?: string | null;
 }
-const PutHostingWebOwnLogUserLogRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  0,
-) as any as S.Schema<PutHostingWebOwnLogUserLogRequest>;
-
 export interface PutHostingWebOwnLogUserLogResponse {}
-const PutHostingWebOwnLogUserLogResponse =
-  CreateHostingWebCdnServiceInfosUpdateResponse as any as S.Schema<PutHostingWebOwnLogUserLogResponse>;
-
 export interface PutHostingWebRuntimeRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -5263,30 +3497,14 @@ export interface PutHostingWebRuntimeRequest {
   /** The backend type of the runtime */
   type?: HostingWebRuntimeTypeEnum | (string & {});
 }
-const PutHostingWebRuntimeRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<PutHostingWebRuntimeRequest>;
-
 export interface PutHostingWebRuntimeResponse {}
-const PutHostingWebRuntimeResponse =
-  IamResourceTagFilterInput as any as S.Schema<PutHostingWebRuntimeResponse>;
-
 export interface PutHostingWebServiceInfosRequest {
   /** Service name */
   serviceName: string;
   /** Way of handling the renew */
   renew?: ServiceRenewType | null;
 }
-const PutHostingWebServiceInfosRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<PutHostingWebServiceInfosRequest>;
-
 export interface PutHostingWebServiceInfosResponse {}
-const PutHostingWebServiceInfosResponse =
-  CreateHostingWebCdnServiceInfosUpdateResponse as any as S.Schema<PutHostingWebServiceInfosResponse>;
-
 export interface PutHostingWebUserRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -5299,15 +3517,7 @@ export interface PutHostingWebUserRequest {
   /** User state */
   state?: HostingWebUserStateEnum | (string & {});
 }
-const PutHostingWebUserRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<PutHostingWebUserRequest>;
-
 export interface PutHostingWebUserResponse {}
-const PutHostingWebUserResponse =
-  IamResourceTagFilterInput as any as S.Schema<PutHostingWebUserResponse>;
-
 export interface PutHostingWebWebsiteRequest {
   /** Service name */
   serviceName: string;
@@ -5316,33 +3526,18 @@ export interface PutHostingWebWebsiteRequest {
   /** Branch of the repository containing the website source code to deploy */
   vcsBranch?: string | null;
 }
-const PutHostingWebWebsiteRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<PutHostingWebWebsiteRequest>;
-
 export interface RefreshHostingWebCdnDomainRequest {
   /** Service name */
   serviceName: string;
   /** Domain name */
   domainName: string;
 }
-const RefreshHostingWebCdnDomainRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<RefreshHostingWebCdnDomainRequest>;
-
 export interface RestartHostingWebAttachedDomainRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Domain linked (fqdn) */
   domain: string;
 }
-const RestartHostingWebAttachedDomainRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<RestartHostingWebAttachedDomainRequest>;
-
 export interface RestoreHostingWebDatabaseRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -5353,11 +3548,6 @@ export interface RestoreHostingWebDatabaseRequest {
   /** Send an email when the restore will be done? Default: false */
   sendEmail?: boolean;
 }
-const RestoreHostingWebDatabaseRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  7,
-) as any as S.Schema<RestoreHostingWebDatabaseRequest>;
-
 export interface RestoreHostingWebDatabaseDumpRequest {
   /** The internal name of your hosting */
   serviceName: string;
@@ -5366,97 +3556,45 @@ export interface RestoreHostingWebDatabaseDumpRequest {
   /** Dump id */
   id: number;
 }
-const RestoreHostingWebDatabaseDumpRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<RestoreHostingWebDatabaseDumpRequest>;
-
 /** List of backup types */
 export type HostingWebBackupTypeEnum = "daily.1" | "daily.2" | "daily.3" | "weekly.1" | "weekly.2";
-const HostingWebBackupTypeEnum = S.String;
-
 export interface RestoreHostingWebSnapshotRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** The backup you want to restore */
   backup: HostingWebBackupTypeEnum | (string & {});
 }
-const RestoreHostingWebSnapshotRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<RestoreHostingWebSnapshotRequest>;
-
 export interface TerminateHostingWebRequest {
   /** Service name */
   serviceName: string;
 }
-const TerminateHostingWebRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<TerminateHostingWebRequest>;
-
 export type TerminateHostingWebResponse = string;
-const TerminateHostingWebResponse =
-  ConfirmHostingWebTerminationResponse as any as S.Schema<TerminateHostingWebResponse>;
-
 export interface TerminateHostingWebCdnRequest {
   /** The internal name of your hosting */
   serviceName: string;
 }
-const TerminateHostingWebCdnRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<TerminateHostingWebCdnRequest>;
-
 export type TerminateHostingWebCdnResponse = string;
-const TerminateHostingWebCdnResponse =
-  ConfirmHostingWebTerminationResponse as any as S.Schema<TerminateHostingWebCdnResponse>;
-
 export interface TerminateHostingWebEmailOptionRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Id of the object */
   id: number;
 }
-const TerminateHostingWebEmailOptionRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<TerminateHostingWebEmailOptionRequest>;
-
 export type TerminateHostingWebEmailOptionResponse = string;
-const TerminateHostingWebEmailOptionResponse =
-  ConfirmHostingWebTerminationResponse as any as S.Schema<TerminateHostingWebEmailOptionResponse>;
-
 export interface TerminateHostingWebExtraSqlPersoRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** The extraSqlPerso option name */
   name: string;
 }
-const TerminateHostingWebExtraSqlPersoRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  5,
-) as any as S.Schema<TerminateHostingWebExtraSqlPersoRequest>;
-
 export type TerminateHostingWebExtraSqlPersoResponse = string;
-const TerminateHostingWebExtraSqlPersoResponse =
-  ConfirmHostingWebTerminationResponse as any as S.Schema<TerminateHostingWebExtraSqlPersoResponse>;
-
 export interface TerminateHostingWebLocalSeoLocationRequest {
   /** The internal name of your hosting */
   serviceName: string;
   /** Location id */
   id: number;
 }
-const TerminateHostingWebLocalSeoLocationRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  6,
-) as any as S.Schema<TerminateHostingWebLocalSeoLocationRequest>;
-
 export type TerminateHostingWebLocalSeoLocationResponse = string;
-const TerminateHostingWebLocalSeoLocationResponse =
-  ConfirmHostingWebTerminationResponse as any as S.Schema<TerminateHostingWebLocalSeoLocationResponse>;
-
 export type ConfirmHostingWebTerminationError = OvhOpError;
 /** Confirm service termination */
 export const confirmHostingWebTermination: API.OperationMethod<
@@ -5465,8 +3603,8 @@ export const confirmHostingWebTermination: API.OperationMethod<
   ConfirmHostingWebTerminationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfirmHostingWebTerminationRequest,
-  output: ConfirmHostingWebTerminationResponse,
+  input: __S(0) as any as S.Schema<ConfirmHostingWebTerminationRequest>,
+  output: __S(1) as any as S.Schema<ConfirmHostingWebTerminationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5480,8 +3618,8 @@ export const copyHostingWebDatabase: API.OperationMethod<
   CopyHostingWebDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CopyHostingWebDatabaseRequest,
-  output: HostingWebDatabaseCopy,
+  input: __S(2) as any as S.Schema<CopyHostingWebDatabaseRequest>,
+  output: __S(3) as any as S.Schema<HostingWebDatabaseCopy>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5495,8 +3633,8 @@ export const copyHostingWebDatabaseRestore: API.OperationMethod<
   CopyHostingWebDatabaseRestoreError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CopyHostingWebDatabaseRestoreRequest,
-  output: HostingWebTask,
+  input: __S(4) as any as S.Schema<CopyHostingWebDatabaseRestoreRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5510,8 +3648,8 @@ export const createHostingWebAttachedDomain: API.OperationMethod<
   CreateHostingWebAttachedDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebAttachedDomainRequest,
-  output: HostingWebPublicTask,
+  input: __S(6) as any as S.Schema<CreateHostingWebAttachedDomainRequest>,
+  output: __S(7) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5525,8 +3663,8 @@ export const createHostingWebAttachedDomainSsl: API.OperationMethod<
   CreateHostingWebAttachedDomainSslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebAttachedDomainSslRequest,
-  output: HostingWebSSL,
+  input: __S(8) as any as S.Schema<CreateHostingWebAttachedDomainSslRequest>,
+  output: __S(9) as any as S.Schema<HostingWebSSL>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5540,8 +3678,8 @@ export const createHostingWebCdnDomainOption: API.OperationMethod<
   CreateHostingWebCdnDomainOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebCdnDomainOptionRequest,
-  output: CdnDomainOption,
+  input: __S(12) as any as S.Schema<CreateHostingWebCdnDomainOptionRequest>,
+  output: __S(14) as any as S.Schema<CdnDomainOption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5555,8 +3693,8 @@ export const createHostingWebCdnServiceInfosUpdate: API.OperationMethod<
   CreateHostingWebCdnServiceInfosUpdateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebCdnServiceInfosUpdateRequest,
-  output: CreateHostingWebCdnServiceInfosUpdateResponse,
+  input: __S(16) as any as S.Schema<CreateHostingWebCdnServiceInfosUpdateRequest>,
+  output: __S(17) as any as S.Schema<CreateHostingWebCdnServiceInfosUpdateResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5570,8 +3708,8 @@ export const createHostingWebChangeContact: API.OperationMethod<
   CreateHostingWebChangeContactError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebChangeContactRequest,
-  output: CreateHostingWebChangeContactResponse,
+  input: __S(18) as any as S.Schema<CreateHostingWebChangeContactRequest>,
+  output: __S(20) as any as S.Schema<CreateHostingWebChangeContactResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5585,8 +3723,8 @@ export const createHostingWebCron: API.OperationMethod<
   CreateHostingWebCronError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebCronRequest,
-  output: HostingWebPublicTask,
+  input: __S(21) as any as S.Schema<CreateHostingWebCronRequest>,
+  output: __S(7) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5600,8 +3738,8 @@ export const createHostingWebDatabase: API.OperationMethod<
   CreateHostingWebDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebDatabaseRequest,
-  output: HostingWebTask,
+  input: __S(22) as any as S.Schema<CreateHostingWebDatabaseRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5615,8 +3753,8 @@ export const createHostingWebDatabaseChangePassword: API.OperationMethod<
   CreateHostingWebDatabaseChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebDatabaseChangePasswordRequest,
-  output: HostingWebTask,
+  input: __S(23) as any as S.Schema<CreateHostingWebDatabaseChangePasswordRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5630,8 +3768,8 @@ export const createHostingWebDatabaseDump: API.OperationMethod<
   CreateHostingWebDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebDatabaseDumpRequest,
-  output: HostingWebTask,
+  input: __S(24) as any as S.Schema<CreateHostingWebDatabaseDumpRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5645,8 +3783,8 @@ export const createHostingWebDatabaseRequest2: API.OperationMethod<
   CreateHostingWebDatabaseRequest2Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebDatabaseRequestRequest,
-  output: HostingWebTask,
+  input: __S(25) as any as S.Schema<CreateHostingWebDatabaseRequestRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5660,8 +3798,8 @@ export const createHostingWebEmailRequest: API.OperationMethod<
   CreateHostingWebEmailRequestError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebEmailRequestRequest,
-  output: CreateHostingWebEmailRequestResponse,
+  input: __S(26) as any as S.Schema<CreateHostingWebEmailRequestRequest>,
+  output: __S(1) as any as S.Schema<CreateHostingWebEmailRequestResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5674,8 +3812,8 @@ export const createHostingWebEnvVar: API.OperationMethod<
   CreateHostingWebEnvVarError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebEnvVarRequest,
-  output: HostingWebPublicTask,
+  input: __S(27) as any as S.Schema<CreateHostingWebEnvVarRequest>,
+  output: __S(7) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5689,8 +3827,8 @@ export const createHostingWebExtraSqlPersoServiceInfosUpdate: API.OperationMetho
   CreateHostingWebExtraSqlPersoServiceInfosUpdateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebExtraSqlPersoServiceInfosUpdateRequest,
-  output: CreateHostingWebExtraSqlPersoServiceInfosUpdateResponse,
+  input: __S(28) as any as S.Schema<CreateHostingWebExtraSqlPersoServiceInfosUpdateRequest>,
+  output: __S(17) as any as S.Schema<CreateHostingWebExtraSqlPersoServiceInfosUpdateResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5704,8 +3842,8 @@ export const createHostingWebKeySsh: API.OperationMethod<
   CreateHostingWebKeySshError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebKeySshRequest,
-  output: HostingWebKey,
+  input: __S(29) as any as S.Schema<CreateHostingWebKeySshRequest>,
+  output: __S(30) as any as S.Schema<HostingWebKey>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5719,8 +3857,8 @@ export const createHostingWebLocalSeoLocationServiceInfosUpdate: API.OperationMe
   CreateHostingWebLocalSeoLocationServiceInfosUpdateError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebLocalSeoLocationServiceInfosUpdateRequest,
-  output: CreateHostingWebLocalSeoLocationServiceInfosUpdateResponse,
+  input: __S(31) as any as S.Schema<CreateHostingWebLocalSeoLocationServiceInfosUpdateRequest>,
+  output: __S(32) as any as S.Schema<CreateHostingWebLocalSeoLocationServiceInfosUpdateResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5734,8 +3872,8 @@ export const createHostingWebLocalSeoVisibilityCheck: API.OperationMethod<
   CreateHostingWebLocalSeoVisibilityCheckError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebLocalSeoVisibilityCheckRequest,
-  output: HostingWebLocalSeoVisibilityCheckResponse,
+  input: __S(33) as any as S.Schema<CreateHostingWebLocalSeoVisibilityCheckRequest>,
+  output: __S(35) as any as S.Schema<HostingWebLocalSeoVisibilityCheckResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5749,8 +3887,8 @@ export const createHostingWebModule: API.OperationMethod<
   CreateHostingWebModuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebModuleRequest,
-  output: HostingWebTask,
+  input: __S(38) as any as S.Schema<CreateHostingWebModuleRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5764,8 +3902,8 @@ export const createHostingWebModuleUpgrade: API.OperationMethod<
   CreateHostingWebModuleUpgradeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebModuleUpgradeRequest,
-  output: HostingWebTask,
+  input: __S(39) as any as S.Schema<CreateHostingWebModuleUpgradeRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5779,8 +3917,8 @@ export const createHostingWebOvhConfigChangeConfiguration: API.OperationMethod<
   CreateHostingWebOvhConfigChangeConfigurationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebOvhConfigChangeConfigurationRequest,
-  output: HostingWebTask,
+  input: __S(40) as any as S.Schema<CreateHostingWebOvhConfigChangeConfigurationRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5794,8 +3932,8 @@ export const createHostingWebOvhConfigRefresh: API.OperationMethod<
   CreateHostingWebOvhConfigRefreshError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebOvhConfigRefreshRequest,
-  output: HostingWebTask,
+  input: __S(41) as any as S.Schema<CreateHostingWebOvhConfigRefreshRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5809,8 +3947,8 @@ export const createHostingWebOvhConfigRollback: API.OperationMethod<
   CreateHostingWebOvhConfigRollbackError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebOvhConfigRollbackRequest,
-  output: HostingWebTask,
+  input: __S(42) as any as S.Schema<CreateHostingWebOvhConfigRollbackRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5824,8 +3962,8 @@ export const createHostingWebOwnLogUserLog: API.OperationMethod<
   CreateHostingWebOwnLogUserLogError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebOwnLogUserLogRequest,
-  output: CreateHostingWebOwnLogUserLogResponse,
+  input: __S(43) as any as S.Schema<CreateHostingWebOwnLogUserLogRequest>,
+  output: __S(1) as any as S.Schema<CreateHostingWebOwnLogUserLogResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5839,8 +3977,8 @@ export const createHostingWebOwnLogUserLogChangePassword: API.OperationMethod<
   CreateHostingWebOwnLogUserLogChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebOwnLogUserLogChangePasswordRequest,
-  output: CreateHostingWebOwnLogUserLogChangePasswordResponse,
+  input: __S(44) as any as S.Schema<CreateHostingWebOwnLogUserLogChangePasswordRequest>,
+  output: __S(1) as any as S.Schema<CreateHostingWebOwnLogUserLogChangePasswordResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5854,8 +3992,8 @@ export const createHostingWebRequest: API.OperationMethod<
   CreateHostingWebRequestError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebRequestRequest,
-  output: HostingWebTask,
+  input: __S(45) as any as S.Schema<CreateHostingWebRequestRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5869,8 +4007,8 @@ export const createHostingWebRequestBoost: API.OperationMethod<
   CreateHostingWebRequestBoostError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebRequestBoostRequest,
-  output: HostingWebPublicTask,
+  input: __S(46) as any as S.Schema<CreateHostingWebRequestBoostRequest>,
+  output: __S(7) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5884,8 +4022,8 @@ export const createHostingWebRuntime: API.OperationMethod<
   CreateHostingWebRuntimeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebRuntimeRequest,
-  output: HostingWebTask,
+  input: __S(47) as any as S.Schema<CreateHostingWebRuntimeRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5899,8 +4037,8 @@ export const createHostingWebUser: API.OperationMethod<
   CreateHostingWebUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebUserRequest,
-  output: HostingWebTask,
+  input: __S(48) as any as S.Schema<CreateHostingWebUserRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5914,8 +4052,8 @@ export const createHostingWebUserChangePassword: API.OperationMethod<
   CreateHostingWebUserChangePasswordError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebUserChangePasswordRequest,
-  output: HostingWebTask,
+  input: __S(49) as any as S.Schema<CreateHostingWebUserChangePasswordRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5929,8 +4067,8 @@ export const createHostingWebWebsite: API.OperationMethod<
   CreateHostingWebWebsiteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateHostingWebWebsiteRequest,
-  output: HostingWebPublicTask,
+  input: __S(50) as any as S.Schema<CreateHostingWebWebsiteRequest>,
+  output: __S(7) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5944,8 +4082,8 @@ export const deleteHostingWebAttachedDomain: API.OperationMethod<
   DeleteHostingWebAttachedDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostingWebAttachedDomainRequest,
-  output: HostingWebPublicTask,
+  input: __S(51) as any as S.Schema<DeleteHostingWebAttachedDomainRequest>,
+  output: __S(7) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5959,8 +4097,8 @@ export const deleteHostingWebAttachedDomainSsl: API.OperationMethod<
   DeleteHostingWebAttachedDomainSslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostingWebAttachedDomainSslRequest,
-  output: HostingWebSSL,
+  input: __S(52) as any as S.Schema<DeleteHostingWebAttachedDomainSslRequest>,
+  output: __S(9) as any as S.Schema<HostingWebSSL>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5974,8 +4112,8 @@ export const deleteHostingWebCdnDomainOption: API.OperationMethod<
   DeleteHostingWebCdnDomainOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostingWebCdnDomainOptionRequest,
-  output: DeleteHostingWebCdnDomainOptionResponse,
+  input: __S(53) as any as S.Schema<DeleteHostingWebCdnDomainOptionRequest>,
+  output: __S(17) as any as S.Schema<DeleteHostingWebCdnDomainOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -5989,8 +4127,8 @@ export const deleteHostingWebCron: API.OperationMethod<
   DeleteHostingWebCronError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostingWebCronRequest,
-  output: HostingWebPublicTask,
+  input: __S(54) as any as S.Schema<DeleteHostingWebCronRequest>,
+  output: __S(7) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6004,8 +4142,8 @@ export const deleteHostingWebDatabase: API.OperationMethod<
   DeleteHostingWebDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostingWebDatabaseRequest,
-  output: HostingWebTask,
+  input: __S(55) as any as S.Schema<DeleteHostingWebDatabaseRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6019,8 +4157,8 @@ export const deleteHostingWebDatabaseCopy: API.OperationMethod<
   DeleteHostingWebDatabaseCopyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostingWebDatabaseCopyRequest,
-  output: DeleteHostingWebDatabaseCopyResponse,
+  input: __S(56) as any as S.Schema<DeleteHostingWebDatabaseCopyRequest>,
+  output: __S(17) as any as S.Schema<DeleteHostingWebDatabaseCopyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6034,8 +4172,8 @@ export const deleteHostingWebDatabaseDump: API.OperationMethod<
   DeleteHostingWebDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostingWebDatabaseDumpRequest,
-  output: HostingWebTask,
+  input: __S(57) as any as S.Schema<DeleteHostingWebDatabaseDumpRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6049,8 +4187,8 @@ export const deleteHostingWebDump: API.OperationMethod<
   DeleteHostingWebDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostingWebDumpRequest,
-  output: HostingWebTask,
+  input: __S(58) as any as S.Schema<DeleteHostingWebDumpRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6063,8 +4201,8 @@ export const deleteHostingWebEnvVar: API.OperationMethod<
   DeleteHostingWebEnvVarError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostingWebEnvVarRequest,
-  output: HostingWebPublicTask,
+  input: __S(59) as any as S.Schema<DeleteHostingWebEnvVarRequest>,
+  output: __S(7) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6078,8 +4216,8 @@ export const deleteHostingWebModule: API.OperationMethod<
   DeleteHostingWebModuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostingWebModuleRequest,
-  output: HostingWebTask,
+  input: __S(60) as any as S.Schema<DeleteHostingWebModuleRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6093,8 +4231,8 @@ export const deleteHostingWebOwnLogUserLog: API.OperationMethod<
   DeleteHostingWebOwnLogUserLogError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostingWebOwnLogUserLogRequest,
-  output: DeleteHostingWebOwnLogUserLogResponse,
+  input: __S(61) as any as S.Schema<DeleteHostingWebOwnLogUserLogRequest>,
+  output: __S(1) as any as S.Schema<DeleteHostingWebOwnLogUserLogResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6108,8 +4246,8 @@ export const deleteHostingWebRuntime: API.OperationMethod<
   DeleteHostingWebRuntimeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostingWebRuntimeRequest,
-  output: HostingWebTask,
+  input: __S(62) as any as S.Schema<DeleteHostingWebRuntimeRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6123,8 +4261,8 @@ export const deleteHostingWebUser: API.OperationMethod<
   DeleteHostingWebUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostingWebUserRequest,
-  output: HostingWebTask,
+  input: __S(63) as any as S.Schema<DeleteHostingWebUserRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6138,8 +4276,8 @@ export const deleteHostingWebWebsite: API.OperationMethod<
   DeleteHostingWebWebsiteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteHostingWebWebsiteRequest,
-  output: HostingWebPublicTask,
+  input: __S(64) as any as S.Schema<DeleteHostingWebWebsiteRequest>,
+  output: __S(7) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6153,8 +4291,8 @@ export const deployHostingWebWebsite: API.OperationMethod<
   DeployHostingWebWebsiteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeployHostingWebWebsiteRequest,
-  output: HostingWebPublicTask,
+  input: __S(65) as any as S.Schema<DeployHostingWebWebsiteRequest>,
+  output: __S(7) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6168,8 +4306,8 @@ export const getHostingWeb: API.OperationMethod<
   GetHostingWebError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebRequest,
-  output: HostingWebServiceWithIAM,
+  input: __S(66) as any as S.Schema<GetHostingWebRequest>,
+  output: __S(79) as any as S.Schema<HostingWebServiceWithIAM>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6183,8 +4321,8 @@ export const getHostingWebAttachedDomain: API.OperationMethod<
   GetHostingWebAttachedDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebAttachedDomainRequest,
-  output: HostingWebAttachedDomainPublicAttachedDomain,
+  input: __S(80) as any as S.Schema<GetHostingWebAttachedDomainRequest>,
+  output: __S(83) as any as S.Schema<HostingWebAttachedDomainPublicAttachedDomain>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6198,8 +4336,8 @@ export const getHostingWebAttachedDomainDigStatus: API.OperationMethod<
   GetHostingWebAttachedDomainDigStatusError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebAttachedDomainDigStatusRequest,
-  output: HostingWebAttachedDomainDigStatus,
+  input: __S(84) as any as S.Schema<GetHostingWebAttachedDomainDigStatusRequest>,
+  output: __S(88) as any as S.Schema<HostingWebAttachedDomainDigStatus>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6213,8 +4351,8 @@ export const getHostingWebAttachedDomainSsl: API.OperationMethod<
   GetHostingWebAttachedDomainSslError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebAttachedDomainSslRequest,
-  output: HostingWebSSL,
+  input: __S(89) as any as S.Schema<GetHostingWebAttachedDomainSslRequest>,
+  output: __S(9) as any as S.Schema<HostingWebSSL>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6228,8 +4366,8 @@ export const getHostingWebBoostHistory: API.OperationMethod<
   GetHostingWebBoostHistoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebBoostHistoryRequest,
-  output: HostingWebBoostHistory,
+  input: __S(90) as any as S.Schema<GetHostingWebBoostHistoryRequest>,
+  output: __S(91) as any as S.Schema<HostingWebBoostHistory>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6243,8 +4381,8 @@ export const getHostingWebCdn: API.OperationMethod<
   GetHostingWebCdnError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebCdnRequest,
-  output: HostingWebCDN,
+  input: __S(92) as any as S.Schema<GetHostingWebCdnRequest>,
+  output: __S(93) as any as S.Schema<HostingWebCDN>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6258,8 +4396,8 @@ export const getHostingWebCdnDomain: API.OperationMethod<
   GetHostingWebCdnDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebCdnDomainRequest,
-  output: CdnDomain,
+  input: __S(94) as any as S.Schema<GetHostingWebCdnDomainRequest>,
+  output: __S(95) as any as S.Schema<CdnDomain>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6273,8 +4411,8 @@ export const getHostingWebCdnDomainLogs: API.OperationMethod<
   GetHostingWebCdnDomainLogsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebCdnDomainLogsRequest,
-  output: CdnLogs,
+  input: __S(96) as any as S.Schema<GetHostingWebCdnDomainLogsRequest>,
+  output: __S(97) as any as S.Schema<CdnLogs>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6288,8 +4426,8 @@ export const getHostingWebCdnDomainOption: API.OperationMethod<
   GetHostingWebCdnDomainOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebCdnDomainOptionRequest,
-  output: CdnDomainOption,
+  input: __S(98) as any as S.Schema<GetHostingWebCdnDomainOptionRequest>,
+  output: __S(14) as any as S.Schema<CdnDomainOption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6303,8 +4441,8 @@ export const getHostingWebCdnOperation: API.OperationMethod<
   GetHostingWebCdnOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebCdnOperationRequest,
-  output: CdnOperation,
+  input: __S(99) as any as S.Schema<GetHostingWebCdnOperationRequest>,
+  output: __S(101) as any as S.Schema<CdnOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6318,8 +4456,8 @@ export const getHostingWebCdnServiceInfos: API.OperationMethod<
   GetHostingWebCdnServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebCdnServiceInfosRequest,
-  output: ServicesService,
+  input: __S(102) as any as S.Schema<GetHostingWebCdnServiceInfosRequest>,
+  output: __S(103) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6333,8 +4471,8 @@ export const getHostingWebConfiguration: API.OperationMethod<
   GetHostingWebConfigurationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebConfigurationRequest,
-  output: HostingWebConfiguration,
+  input: __S(104) as any as S.Schema<GetHostingWebConfigurationRequest>,
+  output: __S(105) as any as S.Schema<HostingWebConfiguration>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6348,8 +4486,8 @@ export const getHostingWebCron: API.OperationMethod<
   GetHostingWebCronError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebCronRequest,
-  output: HostingWebCron,
+  input: __S(106) as any as S.Schema<GetHostingWebCronRequest>,
+  output: __S(107) as any as S.Schema<HostingWebCron>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6363,8 +4501,8 @@ export const getHostingWebDatabase: API.OperationMethod<
   GetHostingWebDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebDatabaseRequest,
-  output: HostingWebDatabase,
+  input: __S(108) as any as S.Schema<GetHostingWebDatabaseRequest>,
+  output: __S(109) as any as S.Schema<HostingWebDatabase>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6378,8 +4516,8 @@ export const getHostingWebDatabaseCapabilities: API.OperationMethod<
   GetHostingWebDatabaseCapabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebDatabaseCapabilitiesRequest,
-  output: HostingWebDatabaseDatabaseCapabilities,
+  input: __S(110) as any as S.Schema<GetHostingWebDatabaseCapabilitiesRequest>,
+  output: __S(111) as any as S.Schema<HostingWebDatabaseDatabaseCapabilities>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6393,8 +4531,8 @@ export const getHostingWebDatabaseCopy: API.OperationMethod<
   GetHostingWebDatabaseCopyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebDatabaseCopyRequest,
-  output: HostingWebDatabaseCopy,
+  input: __S(112) as any as S.Schema<GetHostingWebDatabaseCopyRequest>,
+  output: __S(3) as any as S.Schema<HostingWebDatabaseCopy>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6408,8 +4546,8 @@ export const getHostingWebDatabaseDump: API.OperationMethod<
   GetHostingWebDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebDatabaseDumpRequest,
-  output: HostingWebDatabaseDump,
+  input: __S(113) as any as S.Schema<GetHostingWebDatabaseDumpRequest>,
+  output: __S(114) as any as S.Schema<HostingWebDatabaseDump>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6423,8 +4561,8 @@ export const getHostingWebDump: API.OperationMethod<
   GetHostingWebDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebDumpRequest,
-  output: HostingWebDump,
+  input: __S(115) as any as S.Schema<GetHostingWebDumpRequest>,
+  output: __S(116) as any as S.Schema<HostingWebDump>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6438,8 +4576,8 @@ export const getHostingWebEmail: API.OperationMethod<
   GetHostingWebEmailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebEmailRequest,
-  output: HostingWebEmail,
+  input: __S(117) as any as S.Schema<GetHostingWebEmailRequest>,
+  output: __S(118) as any as S.Schema<HostingWebEmail>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6453,8 +4591,8 @@ export const getHostingWebEmailOption: API.OperationMethod<
   GetHostingWebEmailOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebEmailOptionRequest,
-  output: HostingWebEmailoption,
+  input: __S(119) as any as S.Schema<GetHostingWebEmailOptionRequest>,
+  output: __S(120) as any as S.Schema<HostingWebEmailoption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6468,8 +4606,8 @@ export const getHostingWebEmailOptionServiceInfos: API.OperationMethod<
   GetHostingWebEmailOptionServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebEmailOptionServiceInfosRequest,
-  output: ServicesService,
+  input: __S(121) as any as S.Schema<GetHostingWebEmailOptionServiceInfosRequest>,
+  output: __S(103) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6482,8 +4620,8 @@ export const getHostingWebEnvVar: API.OperationMethod<
   GetHostingWebEnvVarError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebEnvVarRequest,
-  output: HostingWebEnvVar,
+  input: __S(122) as any as S.Schema<GetHostingWebEnvVarRequest>,
+  output: __S(123) as any as S.Schema<HostingWebEnvVar>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6497,8 +4635,8 @@ export const getHostingWebExtraSqlPerso: API.OperationMethod<
   GetHostingWebExtraSqlPersoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebExtraSqlPersoRequest,
-  output: HostingWebExtrasqlperso,
+  input: __S(124) as any as S.Schema<GetHostingWebExtraSqlPersoRequest>,
+  output: __S(125) as any as S.Schema<HostingWebExtrasqlperso>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6512,8 +4650,8 @@ export const getHostingWebExtraSqlPersoServiceInfos: API.OperationMethod<
   GetHostingWebExtraSqlPersoServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebExtraSqlPersoServiceInfosRequest,
-  output: ServicesService,
+  input: __S(126) as any as S.Schema<GetHostingWebExtraSqlPersoServiceInfosRequest>,
+  output: __S(103) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6527,8 +4665,8 @@ export const getHostingWebIndy: API.OperationMethod<
   GetHostingWebIndyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebIndyRequest,
-  output: HostingWebIndy,
+  input: __S(127) as any as S.Schema<GetHostingWebIndyRequest>,
+  output: __S(128) as any as S.Schema<HostingWebIndy>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6542,8 +4680,8 @@ export const getHostingWebKeySsh: API.OperationMethod<
   GetHostingWebKeySshError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebKeySshRequest,
-  output: HostingWebKey,
+  input: __S(129) as any as S.Schema<GetHostingWebKeySshRequest>,
+  output: __S(30) as any as S.Schema<HostingWebKey>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6557,8 +4695,8 @@ export const getHostingWebLocalSeoAccount: API.OperationMethod<
   GetHostingWebLocalSeoAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebLocalSeoAccountRequest,
-  output: HostingWebLocalSeoAccount,
+  input: __S(130) as any as S.Schema<GetHostingWebLocalSeoAccountRequest>,
+  output: __S(131) as any as S.Schema<HostingWebLocalSeoAccount>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6572,8 +4710,8 @@ export const getHostingWebLocalSeoEmailAvailability: API.OperationMethod<
   GetHostingWebLocalSeoEmailAvailabilityError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebLocalSeoEmailAvailabilityRequest,
-  output: HostingWebLocalSeoEmailAvailability,
+  input: __S(132) as any as S.Schema<GetHostingWebLocalSeoEmailAvailabilityRequest>,
+  output: __S(133) as any as S.Schema<HostingWebLocalSeoEmailAvailability>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6587,8 +4725,8 @@ export const getHostingWebLocalSeoEmailAvailability2: API.OperationMethod<
   GetHostingWebLocalSeoEmailAvailability2Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebLocalSeoEmailAvailabilityRequest2,
-  output: HostingWebLocalSeoEmailAvailability,
+  input: __S(134) as any as S.Schema<GetHostingWebLocalSeoEmailAvailabilityRequest2>,
+  output: __S(133) as any as S.Schema<HostingWebLocalSeoEmailAvailability>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6602,8 +4740,8 @@ export const getHostingWebLocalSeoLocation: API.OperationMethod<
   GetHostingWebLocalSeoLocationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebLocalSeoLocationRequest,
-  output: HostingWebLocalSeoLocation,
+  input: __S(135) as any as S.Schema<GetHostingWebLocalSeoLocationRequest>,
+  output: __S(136) as any as S.Schema<HostingWebLocalSeoLocation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6617,8 +4755,8 @@ export const getHostingWebLocalSeoLocationServiceInfos: API.OperationMethod<
   GetHostingWebLocalSeoLocationServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebLocalSeoLocationServiceInfosRequest,
-  output: ServicesService,
+  input: __S(137) as any as S.Schema<GetHostingWebLocalSeoLocationServiceInfosRequest>,
+  output: __S(103) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6632,8 +4770,8 @@ export const getHostingWebMetricsToken: API.OperationMethod<
   GetHostingWebMetricsTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebMetricsTokenRequest,
-  output: HostingWebMetricsToken,
+  input: __S(138) as any as S.Schema<GetHostingWebMetricsTokenRequest>,
+  output: __S(139) as any as S.Schema<HostingWebMetricsToken>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6647,8 +4785,8 @@ export const getHostingWebModule: API.OperationMethod<
   GetHostingWebModuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebModuleRequest,
-  output: HostingWebModule,
+  input: __S(140) as any as S.Schema<GetHostingWebModuleRequest>,
+  output: __S(141) as any as S.Schema<HostingWebModule>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6662,8 +4800,8 @@ export const getHostingWebModuleList: API.OperationMethod<
   GetHostingWebModuleListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebModuleListRequest,
-  output: HostingWebModuleList,
+  input: __S(142) as any as S.Schema<GetHostingWebModuleListRequest>,
+  output: __S(145) as any as S.Schema<HostingWebModuleList>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6677,8 +4815,8 @@ export const getHostingWebOfferCapabilities: API.OperationMethod<
   GetHostingWebOfferCapabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebOfferCapabilitiesRequest,
-  output: HostingWebCapabilities,
+  input: __S(146) as any as S.Schema<GetHostingWebOfferCapabilitiesRequest>,
+  output: __S(152) as any as S.Schema<HostingWebCapabilities>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6692,8 +4830,8 @@ export const getHostingWebOvhConfig: API.OperationMethod<
   GetHostingWebOvhConfigError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebOvhConfigRequest,
-  output: HostingWebOvhConfig,
+  input: __S(153) as any as S.Schema<GetHostingWebOvhConfigRequest>,
+  output: __S(154) as any as S.Schema<HostingWebOvhConfig>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6707,8 +4845,8 @@ export const getHostingWebOvhConfigRecommendedValues: API.OperationMethod<
   GetHostingWebOvhConfigRecommendedValuesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebOvhConfigRecommendedValuesRequest,
-  output: HostingWebOvhConfigRecommendedValues,
+  input: __S(155) as any as S.Schema<GetHostingWebOvhConfigRecommendedValuesRequest>,
+  output: __S(156) as any as S.Schema<HostingWebOvhConfigRecommendedValues>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6722,8 +4860,8 @@ export const getHostingWebOwnLog: API.OperationMethod<
   GetHostingWebOwnLogError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebOwnLogRequest,
-  output: HostingWebOwnLogs,
+  input: __S(157) as any as S.Schema<GetHostingWebOwnLogRequest>,
+  output: __S(158) as any as S.Schema<HostingWebOwnLogs>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6737,8 +4875,8 @@ export const getHostingWebOwnLogUserLog: API.OperationMethod<
   GetHostingWebOwnLogUserLogError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebOwnLogUserLogRequest,
-  output: HostingWebUserLogs,
+  input: __S(159) as any as S.Schema<GetHostingWebOwnLogUserLogRequest>,
+  output: __S(160) as any as S.Schema<HostingWebUserLogs>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6752,8 +4890,8 @@ export const getHostingWebRuntime: API.OperationMethod<
   GetHostingWebRuntimeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebRuntimeRequest,
-  output: HostingWebRuntime,
+  input: __S(161) as any as S.Schema<GetHostingWebRuntimeRequest>,
+  output: __S(162) as any as S.Schema<HostingWebRuntime>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6767,8 +4905,8 @@ export const getHostingWebServiceInfos: API.OperationMethod<
   GetHostingWebServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebServiceInfosRequest,
-  output: ServicesService,
+  input: __S(163) as any as S.Schema<GetHostingWebServiceInfosRequest>,
+  output: __S(103) as any as S.Schema<ServicesService>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6782,8 +4920,8 @@ export const getHostingWebTask: API.OperationMethod<
   GetHostingWebTaskError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebTaskRequest,
-  output: HostingWebPublicTask,
+  input: __S(164) as any as S.Schema<GetHostingWebTaskRequest>,
+  output: __S(7) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6797,8 +4935,8 @@ export const getHostingWebToken: API.OperationMethod<
   GetHostingWebTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebTokenRequest,
-  output: GetHostingWebTokenResponse,
+  input: __S(165) as any as S.Schema<GetHostingWebTokenRequest>,
+  output: __S(1) as any as S.Schema<GetHostingWebTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6812,8 +4950,8 @@ export const getHostingWebUser: API.OperationMethod<
   GetHostingWebUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebUserRequest,
-  output: HostingWebUser,
+  input: __S(166) as any as S.Schema<GetHostingWebUserRequest>,
+  output: __S(169) as any as S.Schema<HostingWebUser>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6827,8 +4965,8 @@ export const getHostingWebUserLogsToken: API.OperationMethod<
   GetHostingWebUserLogsTokenError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebUserLogsTokenRequest,
-  output: GetHostingWebUserLogsTokenResponse,
+  input: __S(170) as any as S.Schema<GetHostingWebUserLogsTokenRequest>,
+  output: __S(1) as any as S.Schema<GetHostingWebUserLogsTokenResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6842,8 +4980,8 @@ export const getHostingWebVcsWebhooks: API.OperationMethod<
   GetHostingWebVcsWebhooksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebVcsWebhooksRequest,
-  output: HostingWebVcsWebhooks,
+  input: __S(171) as any as S.Schema<GetHostingWebVcsWebhooksRequest>,
+  output: __S(172) as any as S.Schema<HostingWebVcsWebhooks>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6857,8 +4995,8 @@ export const getHostingWebWebsite: API.OperationMethod<
   GetHostingWebWebsiteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebWebsiteRequest,
-  output: HostingWebWebsite,
+  input: __S(173) as any as S.Schema<GetHostingWebWebsiteRequest>,
+  output: __S(176) as any as S.Schema<HostingWebWebsite>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6872,8 +5010,8 @@ export const getHostingWebWebsiteCreationCapabilities: API.OperationMethod<
   GetHostingWebWebsiteCreationCapabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebWebsiteCreationCapabilitiesRequest,
-  output: HostingWebWebsiteCreationCapabilities,
+  input: __S(177) as any as S.Schema<GetHostingWebWebsiteCreationCapabilitiesRequest>,
+  output: __S(178) as any as S.Schema<HostingWebWebsiteCreationCapabilities>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6887,8 +5025,8 @@ export const getHostingWebWebsiteDeployment: API.OperationMethod<
   GetHostingWebWebsiteDeploymentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHostingWebWebsiteDeploymentRequest,
-  output: HostingWebWebsiteDeployment,
+  input: __S(179) as any as S.Schema<GetHostingWebWebsiteDeploymentRequest>,
+  output: __S(180) as any as S.Schema<HostingWebWebsiteDeployment>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6902,8 +5040,8 @@ export const importHostingWebDatabase: API.OperationMethod<
   ImportHostingWebDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportHostingWebDatabaseRequest,
-  output: HostingWebTask,
+  input: __S(181) as any as S.Schema<ImportHostingWebDatabaseRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6917,8 +5055,8 @@ export const listHostingWeb: API.OperationMethod<
   ListHostingWebError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebRequest,
-  output: ListHostingWebResponse,
+  input: __S(185) as any as S.Schema<ListHostingWebRequest>,
+  output: __S(186) as any as S.Schema<ListHostingWebResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6932,8 +5070,8 @@ export const listHostingWebAttachedDomain: API.OperationMethod<
   ListHostingWebAttachedDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebAttachedDomainRequest,
-  output: ListHostingWebAttachedDomainResponse,
+  input: __S(187) as any as S.Schema<ListHostingWebAttachedDomainRequest>,
+  output: __S(188) as any as S.Schema<ListHostingWebAttachedDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6947,8 +5085,8 @@ export const listHostingWebAttachedDomain2: API.OperationMethod<
   ListHostingWebAttachedDomain2Error,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebAttachedDomainRequest2,
-  output: ListHostingWebAttachedDomainResponse2,
+  input: __S(189) as any as S.Schema<ListHostingWebAttachedDomainRequest2>,
+  output: __S(188) as any as S.Schema<ListHostingWebAttachedDomainResponse2>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6962,8 +5100,8 @@ export const listHostingWebAvailableConfigurations: API.OperationMethod<
   ListHostingWebAvailableConfigurationsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebAvailableConfigurationsRequest,
-  output: ListHostingWebAvailableConfigurationsResponse,
+  input: __S(190) as any as S.Schema<ListHostingWebAvailableConfigurationsRequest>,
+  output: __S(191) as any as S.Schema<ListHostingWebAvailableConfigurationsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6977,8 +5115,8 @@ export const listHostingWebAvailableOffer: API.OperationMethod<
   ListHostingWebAvailableOfferError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebAvailableOfferRequest,
-  output: ListHostingWebAvailableOfferResponse,
+  input: __S(192) as any as S.Schema<ListHostingWebAvailableOfferRequest>,
+  output: __S(191) as any as S.Schema<ListHostingWebAvailableOfferResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -6992,8 +5130,8 @@ export const listHostingWebBoostHistory: API.OperationMethod<
   ListHostingWebBoostHistoryError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebBoostHistoryRequest,
-  output: ListHostingWebBoostHistoryResponse,
+  input: __S(193) as any as S.Schema<ListHostingWebBoostHistoryRequest>,
+  output: __S(188) as any as S.Schema<ListHostingWebBoostHistoryResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7007,8 +5145,8 @@ export const listHostingWebCdnAvailableOptions: API.OperationMethod<
   ListHostingWebCdnAvailableOptionsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebCdnAvailableOptionsRequest,
-  output: ListHostingWebCdnAvailableOptionsResponse,
+  input: __S(194) as any as S.Schema<ListHostingWebCdnAvailableOptionsRequest>,
+  output: __S(199) as any as S.Schema<ListHostingWebCdnAvailableOptionsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7022,8 +5160,8 @@ export const listHostingWebCdnDomain: API.OperationMethod<
   ListHostingWebCdnDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebCdnDomainRequest,
-  output: ListHostingWebCdnDomainResponse,
+  input: __S(200) as any as S.Schema<ListHostingWebCdnDomainRequest>,
+  output: __S(202) as any as S.Schema<ListHostingWebCdnDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7037,8 +5175,8 @@ export const listHostingWebCdnDomainOption: API.OperationMethod<
   ListHostingWebCdnDomainOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebCdnDomainOptionRequest,
-  output: ListHostingWebCdnDomainOptionResponse,
+  input: __S(203) as any as S.Schema<ListHostingWebCdnDomainOptionRequest>,
+  output: __S(205) as any as S.Schema<ListHostingWebCdnDomainOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7052,8 +5190,8 @@ export const listHostingWebCdnOperation: API.OperationMethod<
   ListHostingWebCdnOperationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebCdnOperationRequest,
-  output: ListHostingWebCdnOperationResponse,
+  input: __S(206) as any as S.Schema<ListHostingWebCdnOperationRequest>,
+  output: __S(208) as any as S.Schema<ListHostingWebCdnOperationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7067,8 +5205,8 @@ export const listHostingWebCron: API.OperationMethod<
   ListHostingWebCronError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebCronRequest,
-  output: ListHostingWebCronResponse,
+  input: __S(209) as any as S.Schema<ListHostingWebCronRequest>,
+  output: __S(20) as any as S.Schema<ListHostingWebCronResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7082,8 +5220,8 @@ export const listHostingWebCronAvailableLanguage: API.OperationMethod<
   ListHostingWebCronAvailableLanguageError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebCronAvailableLanguageRequest,
-  output: ListHostingWebCronAvailableLanguageResponse,
+  input: __S(210) as any as S.Schema<ListHostingWebCronAvailableLanguageRequest>,
+  output: __S(191) as any as S.Schema<ListHostingWebCronAvailableLanguageResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7097,8 +5235,8 @@ export const listHostingWebDatabase: API.OperationMethod<
   ListHostingWebDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebDatabaseRequest,
-  output: ListHostingWebDatabaseResponse,
+  input: __S(211) as any as S.Schema<ListHostingWebDatabaseRequest>,
+  output: __S(188) as any as S.Schema<ListHostingWebDatabaseResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7112,8 +5250,8 @@ export const listHostingWebDatabaseAvailableType: API.OperationMethod<
   ListHostingWebDatabaseAvailableTypeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebDatabaseAvailableTypeRequest,
-  output: ListHostingWebDatabaseAvailableTypeResponse,
+  input: __S(212) as any as S.Schema<ListHostingWebDatabaseAvailableTypeRequest>,
+  output: __S(213) as any as S.Schema<ListHostingWebDatabaseAvailableTypeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7127,8 +5265,8 @@ export const listHostingWebDatabaseAvailableVersion: API.OperationMethod<
   ListHostingWebDatabaseAvailableVersionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebDatabaseAvailableVersionRequest,
-  output: HostingWebDatabaseAvailableVersionStruct,
+  input: __S(214) as any as S.Schema<ListHostingWebDatabaseAvailableVersionRequest>,
+  output: __S(215) as any as S.Schema<HostingWebDatabaseAvailableVersionStruct>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7142,8 +5280,8 @@ export const listHostingWebDatabaseCopy: API.OperationMethod<
   ListHostingWebDatabaseCopyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebDatabaseCopyRequest,
-  output: ListHostingWebDatabaseCopyResponse,
+  input: __S(216) as any as S.Schema<ListHostingWebDatabaseCopyRequest>,
+  output: __S(188) as any as S.Schema<ListHostingWebDatabaseCopyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7157,8 +5295,8 @@ export const listHostingWebDatabaseCreationCapabilities: API.OperationMethod<
   ListHostingWebDatabaseCreationCapabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebDatabaseCreationCapabilitiesRequest,
-  output: ListHostingWebDatabaseCreationCapabilitiesResponse,
+  input: __S(217) as any as S.Schema<ListHostingWebDatabaseCreationCapabilitiesRequest>,
+  output: __S(218) as any as S.Schema<ListHostingWebDatabaseCreationCapabilitiesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7172,8 +5310,8 @@ export const listHostingWebDatabaseDump: API.OperationMethod<
   ListHostingWebDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebDatabaseDumpRequest,
-  output: ListHostingWebDatabaseDumpResponse,
+  input: __S(219) as any as S.Schema<ListHostingWebDatabaseDumpRequest>,
+  output: __S(20) as any as S.Schema<ListHostingWebDatabaseDumpResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7187,8 +5325,8 @@ export const listHostingWebDatabaseStatistics: API.OperationMethod<
   ListHostingWebDatabaseStatisticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebDatabaseStatisticsRequest,
-  output: ListHostingWebDatabaseStatisticsResponse,
+  input: __S(220) as any as S.Schema<ListHostingWebDatabaseStatisticsRequest>,
+  output: __S(225) as any as S.Schema<ListHostingWebDatabaseStatisticsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7202,8 +5340,8 @@ export const listHostingWebDump: API.OperationMethod<
   ListHostingWebDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebDumpRequest,
-  output: ListHostingWebDumpResponse,
+  input: __S(226) as any as S.Schema<ListHostingWebDumpRequest>,
+  output: __S(20) as any as S.Schema<ListHostingWebDumpResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7217,8 +5355,8 @@ export const listHostingWebEmailBounces: API.OperationMethod<
   ListHostingWebEmailBouncesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebEmailBouncesRequest,
-  output: ListHostingWebEmailBouncesResponse,
+  input: __S(227) as any as S.Schema<ListHostingWebEmailBouncesRequest>,
+  output: __S(230) as any as S.Schema<ListHostingWebEmailBouncesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7232,8 +5370,8 @@ export const listHostingWebEmailOption: API.OperationMethod<
   ListHostingWebEmailOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebEmailOptionRequest,
-  output: ListHostingWebEmailOptionResponse,
+  input: __S(231) as any as S.Schema<ListHostingWebEmailOptionRequest>,
+  output: __S(20) as any as S.Schema<ListHostingWebEmailOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7247,8 +5385,8 @@ export const listHostingWebEmailVolumes: API.OperationMethod<
   ListHostingWebEmailVolumesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebEmailVolumesRequest,
-  output: ListHostingWebEmailVolumesResponse,
+  input: __S(232) as any as S.Schema<ListHostingWebEmailVolumesRequest>,
+  output: __S(235) as any as S.Schema<ListHostingWebEmailVolumesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7261,8 +5399,8 @@ export const listHostingWebEnvVar: API.OperationMethod<
   ListHostingWebEnvVarError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebEnvVarRequest,
-  output: ListHostingWebEnvVarResponse,
+  input: __S(236) as any as S.Schema<ListHostingWebEnvVarRequest>,
+  output: __S(188) as any as S.Schema<ListHostingWebEnvVarResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7276,8 +5414,8 @@ export const listHostingWebExtraSqlPerso: API.OperationMethod<
   ListHostingWebExtraSqlPersoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebExtraSqlPersoRequest,
-  output: ListHostingWebExtraSqlPersoResponse,
+  input: __S(237) as any as S.Schema<ListHostingWebExtraSqlPersoRequest>,
+  output: __S(188) as any as S.Schema<ListHostingWebExtraSqlPersoResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7291,8 +5429,8 @@ export const listHostingWebExtraSqlPersoDatabases: API.OperationMethod<
   ListHostingWebExtraSqlPersoDatabasesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebExtraSqlPersoDatabasesRequest,
-  output: ListHostingWebExtraSqlPersoDatabasesResponse,
+  input: __S(238) as any as S.Schema<ListHostingWebExtraSqlPersoDatabasesRequest>,
+  output: __S(188) as any as S.Schema<ListHostingWebExtraSqlPersoDatabasesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7306,8 +5444,8 @@ export const listHostingWebFreedom: API.OperationMethod<
   ListHostingWebFreedomError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebFreedomRequest,
-  output: ListHostingWebFreedomResponse,
+  input: __S(239) as any as S.Schema<ListHostingWebFreedomRequest>,
+  output: __S(188) as any as S.Schema<ListHostingWebFreedomResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7321,8 +5459,8 @@ export const listHostingWebIncident: API.OperationMethod<
   ListHostingWebIncidentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebIncidentRequest,
-  output: ListHostingWebIncidentResponse,
+  input: __S(240) as any as S.Schema<ListHostingWebIncidentRequest>,
+  output: __S(188) as any as S.Schema<ListHostingWebIncidentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7336,8 +5474,8 @@ export const listHostingWebIndy: API.OperationMethod<
   ListHostingWebIndyError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebIndyRequest,
-  output: ListHostingWebIndyResponse,
+  input: __S(241) as any as S.Schema<ListHostingWebIndyRequest>,
+  output: __S(188) as any as S.Schema<ListHostingWebIndyResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7351,8 +5489,8 @@ export const listHostingWebLocalSeoAccount: API.OperationMethod<
   ListHostingWebLocalSeoAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebLocalSeoAccountRequest,
-  output: ListHostingWebLocalSeoAccountResponse,
+  input: __S(242) as any as S.Schema<ListHostingWebLocalSeoAccountRequest>,
+  output: __S(20) as any as S.Schema<ListHostingWebLocalSeoAccountResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7366,8 +5504,8 @@ export const listHostingWebLocalSeoDirectoriesList: API.OperationMethod<
   ListHostingWebLocalSeoDirectoriesListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebLocalSeoDirectoriesListRequest,
-  output: HostingWebLocalSeoDirectoriesList,
+  input: __S(243) as any as S.Schema<ListHostingWebLocalSeoDirectoriesListRequest>,
+  output: __S(246) as any as S.Schema<HostingWebLocalSeoDirectoriesList>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7381,8 +5519,8 @@ export const listHostingWebLocalSeoLocation: API.OperationMethod<
   ListHostingWebLocalSeoLocationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebLocalSeoLocationRequest,
-  output: ListHostingWebLocalSeoLocationResponse,
+  input: __S(247) as any as S.Schema<ListHostingWebLocalSeoLocationRequest>,
+  output: __S(20) as any as S.Schema<ListHostingWebLocalSeoLocationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7396,8 +5534,8 @@ export const listHostingWebLocalSeoVisibilityCheckResult: API.OperationMethod<
   ListHostingWebLocalSeoVisibilityCheckResultError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebLocalSeoVisibilityCheckResultRequest,
-  output: ListHostingWebLocalSeoVisibilityCheckResultResponse,
+  input: __S(248) as any as S.Schema<ListHostingWebLocalSeoVisibilityCheckResultRequest>,
+  output: __S(251) as any as S.Schema<ListHostingWebLocalSeoVisibilityCheckResultResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7411,8 +5549,8 @@ export const listHostingWebModule: API.OperationMethod<
   ListHostingWebModuleError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebModuleRequest,
-  output: ListHostingWebModuleResponse,
+  input: __S(252) as any as S.Schema<ListHostingWebModuleRequest>,
+  output: __S(20) as any as S.Schema<ListHostingWebModuleResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7426,8 +5564,8 @@ export const listHostingWebModuleList: API.OperationMethod<
   ListHostingWebModuleListError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebModuleListRequest,
-  output: ListHostingWebModuleListResponse,
+  input: __S(253) as any as S.Schema<ListHostingWebModuleListRequest>,
+  output: __S(20) as any as S.Schema<ListHostingWebModuleListResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7441,8 +5579,8 @@ export const listHostingWebOvhConfig: API.OperationMethod<
   ListHostingWebOvhConfigError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebOvhConfigRequest,
-  output: ListHostingWebOvhConfigResponse,
+  input: __S(254) as any as S.Schema<ListHostingWebOvhConfigRequest>,
+  output: __S(20) as any as S.Schema<ListHostingWebOvhConfigResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7456,8 +5594,8 @@ export const listHostingWebOvhConfigCapabilities: API.OperationMethod<
   ListHostingWebOvhConfigCapabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebOvhConfigCapabilitiesRequest,
-  output: ListHostingWebOvhConfigCapabilitiesResponse,
+  input: __S(255) as any as S.Schema<ListHostingWebOvhConfigCapabilitiesRequest>,
+  output: __S(258) as any as S.Schema<ListHostingWebOvhConfigCapabilitiesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7471,8 +5609,8 @@ export const listHostingWebOwnLogs: API.OperationMethod<
   ListHostingWebOwnLogsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebOwnLogsRequest,
-  output: ListHostingWebOwnLogsResponse,
+  input: __S(259) as any as S.Schema<ListHostingWebOwnLogsRequest>,
+  output: __S(20) as any as S.Schema<ListHostingWebOwnLogsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7486,8 +5624,8 @@ export const listHostingWebOwnLogUserLogs: API.OperationMethod<
   ListHostingWebOwnLogUserLogsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebOwnLogUserLogsRequest,
-  output: ListHostingWebOwnLogUserLogsResponse,
+  input: __S(260) as any as S.Schema<ListHostingWebOwnLogUserLogsRequest>,
+  output: __S(188) as any as S.Schema<ListHostingWebOwnLogUserLogsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7501,8 +5639,8 @@ export const listHostingWebPrivateDatabaseCreationCapabilities: API.OperationMet
   ListHostingWebPrivateDatabaseCreationCapabilitiesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebPrivateDatabaseCreationCapabilitiesRequest,
-  output: ListHostingWebPrivateDatabaseCreationCapabilitiesResponse,
+  input: __S(261) as any as S.Schema<ListHostingWebPrivateDatabaseCreationCapabilitiesRequest>,
+  output: __S(263) as any as S.Schema<ListHostingWebPrivateDatabaseCreationCapabilitiesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7516,8 +5654,8 @@ export const listHostingWebPrivateDatabases: API.OperationMethod<
   ListHostingWebPrivateDatabasesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebPrivateDatabasesRequest,
-  output: ListHostingWebPrivateDatabasesResponse,
+  input: __S(264) as any as S.Schema<ListHostingWebPrivateDatabasesRequest>,
+  output: __S(188) as any as S.Schema<ListHostingWebPrivateDatabasesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7531,8 +5669,8 @@ export const listHostingWebRuntime: API.OperationMethod<
   ListHostingWebRuntimeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebRuntimeRequest,
-  output: ListHostingWebRuntimeResponse,
+  input: __S(265) as any as S.Schema<ListHostingWebRuntimeRequest>,
+  output: __S(20) as any as S.Schema<ListHostingWebRuntimeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7546,8 +5684,8 @@ export const listHostingWebRuntimeAttachedDomains: API.OperationMethod<
   ListHostingWebRuntimeAttachedDomainsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebRuntimeAttachedDomainsRequest,
-  output: ListHostingWebRuntimeAttachedDomainsResponse,
+  input: __S(266) as any as S.Schema<ListHostingWebRuntimeAttachedDomainsRequest>,
+  output: __S(188) as any as S.Schema<ListHostingWebRuntimeAttachedDomainsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7561,8 +5699,8 @@ export const listHostingWebRuntimeAvailableTypes: API.OperationMethod<
   ListHostingWebRuntimeAvailableTypesError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebRuntimeAvailableTypesRequest,
-  output: ListHostingWebRuntimeAvailableTypesResponse,
+  input: __S(267) as any as S.Schema<ListHostingWebRuntimeAvailableTypesRequest>,
+  output: __S(191) as any as S.Schema<ListHostingWebRuntimeAvailableTypesResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7576,8 +5714,8 @@ export const listHostingWebStatistics: API.OperationMethod<
   ListHostingWebStatisticsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebStatisticsRequest,
-  output: ListHostingWebStatisticsResponse,
+  input: __S(268) as any as S.Schema<ListHostingWebStatisticsRequest>,
+  output: __S(225) as any as S.Schema<ListHostingWebStatisticsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7591,8 +5729,8 @@ export const listHostingWebTasks: API.OperationMethod<
   ListHostingWebTasksError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebTasksRequest,
-  output: ListHostingWebTasksResponse,
+  input: __S(269) as any as S.Schema<ListHostingWebTasksRequest>,
+  output: __S(20) as any as S.Schema<ListHostingWebTasksResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7606,8 +5744,8 @@ export const listHostingWebUser: API.OperationMethod<
   ListHostingWebUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebUserRequest,
-  output: ListHostingWebUserResponse,
+  input: __S(270) as any as S.Schema<ListHostingWebUserRequest>,
+  output: __S(188) as any as S.Schema<ListHostingWebUserResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7621,8 +5759,8 @@ export const listHostingWebVcsSupported: API.OperationMethod<
   ListHostingWebVcsSupportedError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebVcsSupportedRequest,
-  output: ListHostingWebVcsSupportedResponse,
+  input: __S(271) as any as S.Schema<ListHostingWebVcsSupportedRequest>,
+  output: __S(191) as any as S.Schema<ListHostingWebVcsSupportedResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7636,8 +5774,8 @@ export const listHostingWebWebsite: API.OperationMethod<
   ListHostingWebWebsiteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebWebsiteRequest,
-  output: ListHostingWebWebsiteResponse,
+  input: __S(272) as any as S.Schema<ListHostingWebWebsiteRequest>,
+  output: __S(20) as any as S.Schema<ListHostingWebWebsiteResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7651,8 +5789,8 @@ export const listHostingWebWebsiteDeployment: API.OperationMethod<
   ListHostingWebWebsiteDeploymentError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebWebsiteDeploymentRequest,
-  output: ListHostingWebWebsiteDeploymentResponse,
+  input: __S(273) as any as S.Schema<ListHostingWebWebsiteDeploymentRequest>,
+  output: __S(20) as any as S.Schema<ListHostingWebWebsiteDeploymentResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7666,8 +5804,8 @@ export const listHostingWebWebsiteDeploymentLogs: API.OperationMethod<
   ListHostingWebWebsiteDeploymentLogsError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListHostingWebWebsiteDeploymentLogsRequest,
-  output: ListHostingWebWebsiteDeploymentLogsResponse,
+  input: __S(274) as any as S.Schema<ListHostingWebWebsiteDeploymentLogsRequest>,
+  output: __S(277) as any as S.Schema<ListHostingWebWebsiteDeploymentLogsResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7681,8 +5819,8 @@ export const loginHostingWebLocalSeoAccount: API.OperationMethod<
   LoginHostingWebLocalSeoAccountError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LoginHostingWebLocalSeoAccountRequest,
-  output: LoginHostingWebLocalSeoAccountResponse,
+  input: __S(278) as any as S.Schema<LoginHostingWebLocalSeoAccountRequest>,
+  output: __S(1) as any as S.Schema<LoginHostingWebLocalSeoAccountResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7696,8 +5834,8 @@ export const purgeHostingWebAttachedDomainCache: API.OperationMethod<
   PurgeHostingWebAttachedDomainCacheError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurgeHostingWebAttachedDomainCacheRequest,
-  output: HostingWebTask,
+  input: __S(279) as any as S.Schema<PurgeHostingWebAttachedDomainCacheRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7711,8 +5849,8 @@ export const purgeHostingWebCdnDomain: API.OperationMethod<
   PurgeHostingWebCdnDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurgeHostingWebCdnDomainRequest,
-  output: CdnOperation,
+  input: __S(280) as any as S.Schema<PurgeHostingWebCdnDomainRequest>,
+  output: __S(101) as any as S.Schema<CdnOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7726,8 +5864,8 @@ export const putHostingWeb: API.OperationMethod<
   PutHostingWebError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutHostingWebRequest,
-  output: PutHostingWebResponse,
+  input: __S(281) as any as S.Schema<PutHostingWebRequest>,
+  output: __S(182) as any as S.Schema<PutHostingWebResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7741,8 +5879,8 @@ export const putHostingWebAttachedDomain: API.OperationMethod<
   PutHostingWebAttachedDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutHostingWebAttachedDomainRequest,
-  output: PutHostingWebAttachedDomainResponse,
+  input: __S(282) as any as S.Schema<PutHostingWebAttachedDomainRequest>,
+  output: __S(17) as any as S.Schema<PutHostingWebAttachedDomainResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7756,8 +5894,8 @@ export const putHostingWebCdnDomainOption: API.OperationMethod<
   PutHostingWebCdnDomainOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutHostingWebCdnDomainOptionRequest,
-  output: CdnDomainOption,
+  input: __S(283) as any as S.Schema<PutHostingWebCdnDomainOptionRequest>,
+  output: __S(14) as any as S.Schema<CdnDomainOption>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7771,8 +5909,8 @@ export const putHostingWebConfiguration: API.OperationMethod<
   PutHostingWebConfigurationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutHostingWebConfigurationRequest,
-  output: PutHostingWebConfigurationResponse,
+  input: __S(284) as any as S.Schema<PutHostingWebConfigurationRequest>,
+  output: __S(17) as any as S.Schema<PutHostingWebConfigurationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7786,8 +5924,8 @@ export const putHostingWebCron: API.OperationMethod<
   PutHostingWebCronError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutHostingWebCronRequest,
-  output: PutHostingWebCronResponse,
+  input: __S(285) as any as S.Schema<PutHostingWebCronRequest>,
+  output: __S(1) as any as S.Schema<PutHostingWebCronResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7801,8 +5939,8 @@ export const putHostingWebEmail: API.OperationMethod<
   PutHostingWebEmailError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutHostingWebEmailRequest,
-  output: PutHostingWebEmailResponse,
+  input: __S(286) as any as S.Schema<PutHostingWebEmailRequest>,
+  output: __S(182) as any as S.Schema<PutHostingWebEmailResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7815,8 +5953,8 @@ export const putHostingWebEnvVar: API.OperationMethod<
   PutHostingWebEnvVarError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutHostingWebEnvVarRequest,
-  output: HostingWebPublicTask,
+  input: __S(287) as any as S.Schema<PutHostingWebEnvVarRequest>,
+  output: __S(7) as any as S.Schema<HostingWebPublicTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7830,8 +5968,8 @@ export const putHostingWebOwnLogUserLog: API.OperationMethod<
   PutHostingWebOwnLogUserLogError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutHostingWebOwnLogUserLogRequest,
-  output: PutHostingWebOwnLogUserLogResponse,
+  input: __S(288) as any as S.Schema<PutHostingWebOwnLogUserLogRequest>,
+  output: __S(17) as any as S.Schema<PutHostingWebOwnLogUserLogResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7845,8 +5983,8 @@ export const putHostingWebRuntime: API.OperationMethod<
   PutHostingWebRuntimeError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutHostingWebRuntimeRequest,
-  output: PutHostingWebRuntimeResponse,
+  input: __S(289) as any as S.Schema<PutHostingWebRuntimeRequest>,
+  output: __S(182) as any as S.Schema<PutHostingWebRuntimeResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7860,8 +5998,8 @@ export const putHostingWebServiceInfos: API.OperationMethod<
   PutHostingWebServiceInfosError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutHostingWebServiceInfosRequest,
-  output: PutHostingWebServiceInfosResponse,
+  input: __S(290) as any as S.Schema<PutHostingWebServiceInfosRequest>,
+  output: __S(17) as any as S.Schema<PutHostingWebServiceInfosResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7875,8 +6013,8 @@ export const putHostingWebUser: API.OperationMethod<
   PutHostingWebUserError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutHostingWebUserRequest,
-  output: PutHostingWebUserResponse,
+  input: __S(291) as any as S.Schema<PutHostingWebUserRequest>,
+  output: __S(182) as any as S.Schema<PutHostingWebUserResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7890,8 +6028,8 @@ export const putHostingWebWebsite: API.OperationMethod<
   PutHostingWebWebsiteError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutHostingWebWebsiteRequest,
-  output: HostingWebWebsite,
+  input: __S(292) as any as S.Schema<PutHostingWebWebsiteRequest>,
+  output: __S(176) as any as S.Schema<HostingWebWebsite>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7905,8 +6043,8 @@ export const refreshHostingWebCdnDomain: API.OperationMethod<
   RefreshHostingWebCdnDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RefreshHostingWebCdnDomainRequest,
-  output: CdnOperation,
+  input: __S(293) as any as S.Schema<RefreshHostingWebCdnDomainRequest>,
+  output: __S(101) as any as S.Schema<CdnOperation>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7920,8 +6058,8 @@ export const restartHostingWebAttachedDomain: API.OperationMethod<
   RestartHostingWebAttachedDomainError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestartHostingWebAttachedDomainRequest,
-  output: HostingWebTask,
+  input: __S(294) as any as S.Schema<RestartHostingWebAttachedDomainRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7935,8 +6073,8 @@ export const restoreHostingWebDatabase: API.OperationMethod<
   RestoreHostingWebDatabaseError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreHostingWebDatabaseRequest,
-  output: HostingWebTask,
+  input: __S(295) as any as S.Schema<RestoreHostingWebDatabaseRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7950,8 +6088,8 @@ export const restoreHostingWebDatabaseDump: API.OperationMethod<
   RestoreHostingWebDatabaseDumpError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreHostingWebDatabaseDumpRequest,
-  output: HostingWebTask,
+  input: __S(296) as any as S.Schema<RestoreHostingWebDatabaseDumpRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7965,8 +6103,8 @@ export const restoreHostingWebSnapshot: API.OperationMethod<
   RestoreHostingWebSnapshotError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RestoreHostingWebSnapshotRequest,
-  output: HostingWebTask,
+  input: __S(297) as any as S.Schema<RestoreHostingWebSnapshotRequest>,
+  output: __S(5) as any as S.Schema<HostingWebTask>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7980,8 +6118,8 @@ export const terminateHostingWeb: API.OperationMethod<
   TerminateHostingWebError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TerminateHostingWebRequest,
-  output: TerminateHostingWebResponse,
+  input: __S(298) as any as S.Schema<TerminateHostingWebRequest>,
+  output: __S(1) as any as S.Schema<TerminateHostingWebResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -7995,8 +6133,8 @@ export const terminateHostingWebCdn: API.OperationMethod<
   TerminateHostingWebCdnError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TerminateHostingWebCdnRequest,
-  output: TerminateHostingWebCdnResponse,
+  input: __S(299) as any as S.Schema<TerminateHostingWebCdnRequest>,
+  output: __S(1) as any as S.Schema<TerminateHostingWebCdnResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8010,8 +6148,8 @@ export const terminateHostingWebEmailOption: API.OperationMethod<
   TerminateHostingWebEmailOptionError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TerminateHostingWebEmailOptionRequest,
-  output: TerminateHostingWebEmailOptionResponse,
+  input: __S(300) as any as S.Schema<TerminateHostingWebEmailOptionRequest>,
+  output: __S(1) as any as S.Schema<TerminateHostingWebEmailOptionResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8025,8 +6163,8 @@ export const terminateHostingWebExtraSqlPerso: API.OperationMethod<
   TerminateHostingWebExtraSqlPersoError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TerminateHostingWebExtraSqlPersoRequest,
-  output: TerminateHostingWebExtraSqlPersoResponse,
+  input: __S(301) as any as S.Schema<TerminateHostingWebExtraSqlPersoRequest>,
+  output: __S(1) as any as S.Schema<TerminateHostingWebExtraSqlPersoResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8040,8 +6178,8 @@ export const terminateHostingWebLocalSeoLocation: API.OperationMethod<
   TerminateHostingWebLocalSeoLocationError,
   OvhOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TerminateHostingWebLocalSeoLocationRequest,
-  output: TerminateHostingWebLocalSeoLocationResponse,
+  input: __S(302) as any as S.Schema<TerminateHostingWebLocalSeoLocationRequest>,
+  output: __S(1) as any as S.Schema<TerminateHostingWebLocalSeoLocationResponse>,
   errors: [UnknownOvhError],
   protocol: OvhProtocol,
   retry: Retry.Retry,
@@ -8055,8 +6193,8 @@ function __c0(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           commentary: S.optional(S.String),
-          futureUse: S.optional(ServiceTerminationFutureUseEnum),
-          reason: S.optional(ServiceTerminationReasonEnum),
+          futureUse: S.optional(S.String),
+          reason: S.optional(S.String),
           token: S.String,
         }).pipe(
           T.Http({
@@ -8094,7 +6232,7 @@ function __c0(j: number): any {
           expirationDate: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
           lastUpdate: S.optional(S.String),
-          status: S.optional(HostingWebDatabaseCopyStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostingWebDatabaseCopy" });
     case 4:
@@ -8122,9 +6260,9 @@ function __c0(j: number): any {
           id: S.optional(S.Number),
           lastUpdate: S.optional(S.NullOr(S.String)),
           objectId: S.optional(S.NullOr(S.String)),
-          objectType: S.optional(S.NullOr(HostingWebTaskObjectTypeEnum)),
+          objectType: S.optional(S.NullOr(S.String)),
           startDate: S.optional(S.String),
-          status: S.optional(HostingWebTaskStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostingWebTask" });
     case 6:
@@ -8132,10 +6270,10 @@ function __c0(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           bypassDNSConfiguration: S.optional(S.NullOr(S.Boolean)),
-          cdn: S.optional(S.NullOr(HostingWebAttachedDomainCdnEnum)),
+          cdn: S.optional(S.NullOr(S.String)),
           domain: S.optional(S.NullOr(S.String)),
-          firewall: S.optional(S.NullOr(HostingWebAttachedDomainFirewallEnum)),
-          ipLocation: S.optional(S.NullOr(HostingWebCountryEnum)),
+          firewall: S.optional(S.NullOr(S.String)),
+          ipLocation: S.optional(S.NullOr(S.String)),
           ownLog: S.optional(S.NullOr(S.String)),
           path: S.optional(S.NullOr(S.String)),
           runtimeId: S.optional(S.NullOr(S.Number)),
@@ -8150,13 +6288,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           doneDate: S.optional(S.NullOr(S.String)),
-          function: S.optional(HostingWebTaskFunctionEnum),
+          function: S.optional(S.String),
           id: S.optional(S.Number),
           lastUpdate: S.optional(S.NullOr(S.String)),
           objectId: S.optional(S.NullOr(S.String)),
-          objectType: S.optional(S.NullOr(HostingWebTaskObjectTypeEnum)),
+          objectType: S.optional(S.NullOr(S.String)),
           startDate: S.optional(S.String),
-          status: S.optional(HostingWebTaskStatusEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostingWebPublicTask" });
   }
@@ -8182,11 +6320,11 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           isReportable: S.optional(S.Boolean),
-          provider: S.optional(HostingWebHostedsslProviderEnum),
+          provider: S.optional(S.String),
           regenerable: S.optional(S.Boolean),
-          status: S.optional(HostingWebHostedsslStatusEnum),
+          status: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
-          type: S.optional(HostingWebHostedsslTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostingWebSSL" });
     case 2:
@@ -8197,10 +6335,10 @@ function __c1(j: number): any {
           destination: S.optional(S.NullOr(S.String)),
           followUri: S.optional(S.NullOr(S.Boolean)),
           origins: S.optional(S.NullOr(S.String)),
-          patternType: S.optional(S.NullOr(CdnOptionPatternTypeEnum)),
+          patternType: S.optional(S.NullOr(S.String)),
           priority: S.optional(S.NullOr(S.Number)),
-          queryParameters: S.optional(S.NullOr(CdnOptionQueryParametersEnum)),
-          resources: S.optional(S.NullOr(CdnDomainOptionConfigResourcesList)),
+          queryParameters: S.optional(S.NullOr(S.String)),
+          resources: S.optional(S.NullOr(__S(10))),
           statusCode: S.optional(S.NullOr(S.Number)),
           ttl: S.optional(S.NullOr(S.Number)),
         }),
@@ -8210,11 +6348,11 @@ function __c1(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
-          config: S.optional(S.NullOr(CdnDomainOptionConfig)),
+          config: S.optional(S.NullOr(__S(11))),
           enabled: S.Boolean,
           name: S.String,
           pattern: S.optional(S.NullOr(S.String)),
-          type: CdnOptionTypePostEnum,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8235,12 +6373,12 @@ function __c1(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          config: S.optional(S.NullOr(CdnDomainOptionConfig)),
+          config: S.optional(S.NullOr(__S(11))),
           enabled: S.Boolean,
-          extra: S.optional(S.NullOr(CdnDomainOptionExtra)),
+          extra: S.optional(S.NullOr(__S(13))),
           name: S.optional(S.String),
           pattern: S.optional(S.NullOr(S.String)),
-          type: CdnOptionTypeEnum,
+          type: S.String,
         }),
       ).annotate({ identifier: "CdnDomainOption" });
     case 7:
@@ -8261,7 +6399,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: ServiceRenewType,
+          renew: __S(15),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8292,9 +6430,7 @@ function __c2(j: number): any {
     case 3:
       return S.Array(S.Number);
     case 4:
-      return S.suspend(() =>
-        CreateHostingWebChangeContactResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(19).pipe(T.RawResponseRoot())).annotate({
         identifier: "CreateHostingWebChangeContactResponse",
       });
     case 5:
@@ -8305,8 +6441,8 @@ function __c2(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           frequency: S.String,
-          language: HostingWebLanguagesEnum,
-          status: S.optional(HostingWebCronStatusEnum),
+          language: S.String,
+          status: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/cron", code: 200 })),
       ).annotate({
         identifier: "CreateHostingWebCronRequest",
@@ -8315,12 +6451,12 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          capabilitie: HostingWebDatabaseDatabaseCapabilitiesTypeEnum,
+          capabilitie: S.String,
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          quota: S.optional(HostingWebDatabaseExtraSqlQuotaEnum),
-          type: HostingWebDatabaseDatabaseCreationTypeEnum,
+          quota: S.optional(S.Number),
+          type: S.String,
           user: S.String,
-          version: S.optional(HostingWebDatabaseVersionEnum),
+          version: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/database", code: 200 })),
       ).annotate({
         identifier: "CreateHostingWebDatabaseRequest",
@@ -8350,7 +6486,7 @@ function __c3(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          date: HostingWebDatabaseDumpDateEnum,
+          date: S.String,
           sendEmail: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -8367,7 +6503,7 @@ function __c3(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          action: HostingWebDatabaseRequestActionEnum,
+          action: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -8382,7 +6518,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          action: HostingWebMailActionEnum,
+          action: S.String,
         }).pipe(
           T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/email/request", code: 200 }),
         ),
@@ -8394,7 +6530,7 @@ function __c3(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           key: S.String,
-          type: HostingWebEnvVarTypeEnum,
+          type: S.String,
           value: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/envVar", code: 200 })),
       ).annotate({
@@ -8405,7 +6541,7 @@ function __c3(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          renew: ServiceRenewType,
+          renew: __S(15),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8435,7 +6571,7 @@ function __c3(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          renew: ServiceRenewType,
+          renew: __S(15),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8457,7 +6593,7 @@ function __c4(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          country: HostingWebLocalSeoLocationCountryEnum,
+          country: S.String,
           name: S.String,
           street: S.String,
           zip: S.String,
@@ -8487,7 +6623,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           alreadyManaged: S.optional(S.NullOr(S.Boolean)),
-          searchData: S.optional(HostingWebLocalSeoSearchData),
+          searchData: S.optional(__S(34)),
         }),
       ).annotate({
         identifier: "HostingWebLocalSeoVisibilityCheckResponse",
@@ -8500,23 +6636,23 @@ function __c4(j: number): any {
           port: S.optional(S.NullOr(S.Number)),
           prefix: S.optional(S.NullOr(S.String)),
           server: S.optional(S.NullOr(S.String)),
-          type: S.optional(HostingWebModuleDependencyTypeEnum),
+          type: S.optional(S.String),
           user: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "HostingWebModuleDependencyType",
       });
     case 5:
-      return S.Array(HostingWebModuleDependencyType);
+      return S.Array(__S(36));
     case 6:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           adminName: S.optional(S.String),
           adminPassword: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          dependencies: S.optional(CreateHostingWebModuleRequestDependenciesList),
+          dependencies: S.optional(__S(37)),
           domain: S.optional(S.String),
-          language: S.optional(HostingWebModuleLanguageEnum),
+          language: S.optional(S.String),
           moduleId: S.Number,
           path: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/module", code: 200 })),
@@ -8548,11 +6684,11 @@ function __c5(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
-          container: S.optional(HostingWebOvhconfigContainerEnum),
-          engineName: S.optional(HostingWebOvhConfigEngineNameEnum),
-          engineVersion: S.optional(HostingWebOvhConfigAvailableEngineVersionEnum),
-          environment: S.optional(HostingWebOvhConfigEnvironmentEnum),
-          httpFirewall: S.optional(HostingWebOvhConfigHttpFirewallEnum),
+          container: S.optional(S.String),
+          engineName: S.optional(S.String),
+          engineVersion: S.optional(S.String),
+          environment: S.optional(S.String),
+          httpFirewall: S.optional(S.String),
         }).pipe(
           T.Http({
             method: "POST",
@@ -8629,7 +6765,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          action: HostingWebRequestActionEnum,
+          action: S.String,
         }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/request", code: 200 })),
       ).annotate({
         identifier: "CreateHostingWebRequestRequest",
@@ -8638,7 +6774,7 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          offer: S.optional(S.NullOr(HostingWebOfferEnum)),
+          offer: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/requestBoost", code: 200 }),
         ),
@@ -8650,12 +6786,12 @@ function __c5(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           appBootstrap: S.optional(S.String),
-          appEnv: S.optional(HostingWebRuntimeEnvEnum),
-          attachedDomains: S.optional(CreateHostingWebRuntimeRequestAttachedDomainsList),
+          appEnv: S.optional(S.String),
+          attachedDomains: S.optional(__S(10)),
           isDefault: S.optional(S.Boolean),
           name: S.optional(S.String),
           publicDir: S.optional(S.String),
-          type: S.optional(HostingWebRuntimeTypeEnum),
+          type: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/runtime", code: 200 })),
       ).annotate({
         identifier: "CreateHostingWebRuntimeRequest",
@@ -8671,7 +6807,7 @@ function __c6(j: number): any {
           home: S.String,
           login: S.String,
           password: S.String.pipe(T.SensitiveValue({})),
-          sshState: S.optional(HostingWebUserSshStateEnum),
+          sshState: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/user", code: 200 })),
       ).annotate({
         identifier: "CreateHostingWebUserRequest",
@@ -8924,7 +7060,7 @@ function __c8(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          currencyCode: S.optional(OrderCurrencyCodeEnum),
+          currencyCode: S.optional(S.String),
           priceInUcents: S.optional(S.NullOr(S.Number)),
           text: S.optional(S.String),
           value: S.optional(S.Number),
@@ -8933,24 +7069,24 @@ function __c8(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          offer: S.optional(HostingWebOfferEnum),
-          price: S.optional(OrderPrice),
+          offer: S.optional(S.String),
+          price: S.optional(__S(67)),
         }),
       ).annotate({
         identifier: "HostingWebAvailableOfferStruct",
       });
     case 5:
-      return S.Array(HostingWebAvailableOfferStruct);
+      return S.Array(__S(68));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          country: S.optional(HostingWebCountryEnum),
+          country: S.optional(S.String),
           ip: S.optional(S.NullOr(S.String)),
           ipv6: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "HostingWebCountriesIp" });
     case 7:
-      return S.Array(HostingWebCountriesIp);
+      return S.Array(__S(70));
   }
 }
 function __c9(j: number): any {
@@ -8962,19 +7098,19 @@ function __c9(j: number): any {
         S.Struct({
           displayName: S.optional(S.NullOr(S.String)),
           id: S.optional(S.String),
-          tags: S.optional(S.NullOr(IamResourceMetadataTagsMap)),
+          tags: S.optional(S.NullOr(__S(72))),
           urn: S.optional(S.String),
         }),
       ).annotate({ identifier: "IamResourceMetadata" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          support: S.optional(HostingWebPhpVersionStateEnum),
+          support: S.optional(S.String),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostingWebPhpVersion" });
     case 3:
-      return S.Array(HostingWebPhpVersion);
+      return S.Array(__S(74));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8994,20 +7130,20 @@ function __c9(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          ftp: S.optional(HostingWebAddress),
-          http: S.optional(HostingWebAddress),
-          ssh: S.optional(HostingWebAddress),
+          ftp: S.optional(__S(77)),
+          http: S.optional(__S(77)),
+          ssh: S.optional(__S(77)),
         }),
       ).annotate({ identifier: "HostingWebServiceAccess" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          availableBoostOffer: S.optional(HostingWebServiceWithIAMAvailableBoostOfferList),
-          boostOffer: S.optional(S.NullOr(HostingWebOfferCapabilitiesEnum)),
+          availableBoostOffer: S.optional(__S(69)),
+          boostOffer: S.optional(S.NullOr(S.String)),
           cluster: S.optional(S.String),
           clusterIp: S.optional(S.NullOr(S.String)),
           clusterIpv6: S.optional(S.NullOr(S.String)),
-          countriesIp: S.optional(S.NullOr(HostingWebServiceWithIAMCountriesIpList)),
+          countriesIp: S.optional(S.NullOr(__S(71))),
           datacenter: S.optional(S.String),
           defaultAttachedDomain: S.optional(S.NullOr(S.String)),
           displayName: S.optional(S.String),
@@ -9017,24 +7153,24 @@ function __c9(j: number): any {
           home: S.optional(S.String),
           hostingIp: S.optional(S.NullOr(S.String)),
           hostingIpv6: S.optional(S.NullOr(S.String)),
-          iam: S.optional(S.NullOr(IamResourceMetadata)),
+          iam: S.optional(S.NullOr(__S(73))),
           lastOvhConfigScan: S.optional(S.NullOr(S.String)),
           multipleSSL: S.optional(S.Boolean),
-          offer: S.optional(HostingWebOfferCapabilitiesEnum),
-          operatingSystem: S.optional(HostingWebOperatingSystemEnum),
-          phpVersions: S.optional(HostingWebServiceWithIAMPhpVersionsList),
+          offer: S.optional(S.String),
+          operatingSystem: S.optional(S.String),
+          phpVersions: S.optional(__S(75)),
           primaryLogin: S.optional(S.String),
-          quotaSize: S.optional(ComplexTypeUnitAndValueDouble),
-          quotaUsed: S.optional(S.NullOr(ComplexTypeUnitAndValueDouble)),
-          recommendedOffer: S.optional(S.NullOr(HostingWebOfferEnum)),
-          resourceType: S.optional(HostingWebResourceEnum),
-          serviceManagementAccess: S.optional(HostingWebServiceAccess),
+          quotaSize: S.optional(__S(76)),
+          quotaUsed: S.optional(S.NullOr(__S(76))),
+          recommendedOffer: S.optional(S.NullOr(S.String)),
+          resourceType: S.optional(S.String),
+          serviceManagementAccess: S.optional(__S(78)),
           serviceName: S.optional(S.String),
-          state: S.optional(HostingWebStateEnum),
+          state: S.optional(S.String),
           token: S.optional(S.NullOr(S.String)),
-          trafficQuotaSize: S.optional(S.NullOr(ComplexTypeUnitAndValueDouble)),
-          trafficQuotaUsed: S.optional(S.NullOr(ComplexTypeUnitAndValueDouble)),
-          updates: S.optional(HostingWebServiceWithIAMUpdatesList),
+          trafficQuotaSize: S.optional(S.NullOr(__S(76))),
+          trafficQuotaUsed: S.optional(S.NullOr(__S(76))),
+          updates: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "HostingWebServiceWithIAM" });
   }
@@ -9062,29 +7198,29 @@ function __c10(j: number): any {
           description: S.optional(S.String),
           href: S.optional(S.String),
           key: S.optional(S.String),
-          method: S.optional(HostingWebAttachedDomainCapabilityMethodEnum),
+          method: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HostingWebAttachedDomainCapabilities",
       });
     case 2:
-      return S.Array(HostingWebAttachedDomainCapabilities);
+      return S.Array(__S(81));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          capabilities: S.optional(HostingWebAttachedDomainPublicAttachedDomainCapabilitiesList),
-          cdn: S.optional(HostingWebAttachedDomainCdnEnum),
+          capabilities: S.optional(__S(82)),
+          cdn: S.optional(S.String),
           domain: S.optional(S.String),
-          firewall: S.optional(HostingWebAttachedDomainFirewallEnum),
-          ipLocation: S.optional(S.NullOr(HostingWebCountryEnum)),
+          firewall: S.optional(S.String),
+          ipLocation: S.optional(S.NullOr(S.String)),
           isFlushable: S.optional(S.Boolean),
           ownLog: S.optional(S.NullOr(S.String)),
           path: S.optional(S.String),
           runtimeId: S.optional(S.NullOr(S.Number)),
           ssl: S.optional(S.NullOr(S.Boolean)),
-          status: S.optional(HostingWebAttachedDomainStatusEnum),
+          status: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
-          vcsStatus: S.optional(HostingWebAttachedDomainVcsStatusEnum),
+          vcsStatus: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HostingWebAttachedDomainPublicAttachedDomain",
@@ -9107,8 +7243,8 @@ function __c10(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          recommendedIpV4: S.optional(HostingWebAttachedDomainRecommendedIpsRecommendedIpV4List),
-          recommendedIpV6: S.optional(HostingWebAttachedDomainRecommendedIpsRecommendedIpV6List),
+          recommendedIpV4: S.optional(__S(10)),
+          recommendedIpV6: S.optional(__S(10)),
         }),
       ).annotate({
         identifier: "HostingWebAttachedDomainRecommendedIps",
@@ -9118,13 +7254,13 @@ function __c10(j: number): any {
         S.Struct({
           dnsConfigured: S.optional(S.Boolean),
           isOvhIp: S.optional(S.Boolean),
-          type: S.optional(HostingWebAttachedDomainRecordTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HostingWebAttachedDomainRecordStatus",
       });
     case 7:
-      return S.Record(S.String, HostingWebAttachedDomainRecordStatus);
+      return S.Record(S.String, __S(86));
   }
 }
 function __c11(j: number): any {
@@ -9133,8 +7269,8 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           domain: S.optional(S.String),
-          recommendedIps: S.optional(HostingWebAttachedDomainRecommendedIps),
-          records: S.optional(HostingWebAttachedDomainDigStatusRecordsMap),
+          recommendedIps: S.optional(__S(85)),
+          records: S.optional(__S(87)),
         }),
       ).annotate({
         identifier: "HostingWebAttachedDomainDigStatus",
@@ -9173,9 +7309,9 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           accountId: S.optional(S.String),
-          boostOffer: S.optional(S.NullOr(HostingWebOfferCapabilitiesEnum)),
+          boostOffer: S.optional(S.NullOr(S.String)),
           date: S.optional(S.String),
-          offer: S.optional(HostingWebOfferCapabilitiesEnum),
+          offer: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostingWebBoostHistory" });
     case 4:
@@ -9189,7 +7325,7 @@ function __c11(j: number): any {
         S.Struct({
           domain: S.optional(S.String),
           free: S.optional(S.Boolean),
-          status: S.optional(HostingWebCdnStatusEnum),
+          status: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
           type: S.optional(S.String),
           version: S.optional(S.String),
@@ -9216,7 +7352,7 @@ function __c11(j: number): any {
           creationDate: S.optional(S.String),
           name: S.optional(S.String),
           needRefresh: S.optional(S.Boolean),
-          status: S.optional(CdnDomainStatusEnum),
+          status: S.optional(S.String),
           updatedDate: S.optional(S.String),
         }),
       ).annotate({ identifier: "CdnDomain" });
@@ -9286,7 +7422,7 @@ function __c12(j: number): any {
           date: S.optional(S.NullOr(S.String)),
           domainName: S.optional(S.NullOr(S.String)),
           fingerprint: S.optional(S.NullOr(S.String)),
-          offer: S.optional(S.NullOr(CdnOperationOfferEnum)),
+          offer: S.optional(S.NullOr(S.String)),
           pattern: S.optional(S.NullOr(S.String)),
           service: S.optional(S.NullOr(S.String)),
           sslId: S.optional(S.NullOr(S.Number)),
@@ -9297,11 +7433,11 @@ function __c12(j: number): any {
         S.Struct({
           comment: S.optional(S.NullOr(S.String)),
           creationDate: S.optional(S.String),
-          function: S.optional(CdnOperationFunctionEnum),
+          function: S.optional(S.String),
           id: S.optional(S.Number),
-          parameter: S.optional(CdnOperationParameter),
+          parameter: S.optional(__S(100)),
           service: S.optional(S.String),
-          status: S.optional(CdnOperationStatusEnum),
+          status: S.optional(S.String),
           todoDate: S.optional(S.String),
           updatedDate: S.optional(S.String),
         }),
@@ -9327,11 +7463,11 @@ function __c12(j: number): any {
           domain: S.optional(S.String),
           engagedUpTo: S.optional(S.NullOr(S.String)),
           expiration: S.optional(S.String),
-          possibleRenewPeriod: S.optional(S.NullOr(ServicesServicePossibleRenewPeriodList)),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
-          renewalType: S.optional(ServiceRenewalTypeEnum),
+          possibleRenewPeriod: S.optional(S.NullOr(__S(19))),
+          renew: S.optional(S.NullOr(__S(15))),
+          renewalType: S.optional(S.String),
           serviceId: S.optional(S.Number),
-          status: S.optional(ServiceStateEnum),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServicesService" });
   }
@@ -9351,12 +7487,12 @@ function __c13(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          appEnv: S.optional(HostingWebConfigurationEnvEnum),
+          appEnv: S.optional(S.String),
           entryPoint: S.optional(S.NullOr(S.String)),
           id: S.optional(S.Number),
-          language: S.optional(HostingWebConfigurationLanguageEnum),
+          language: S.optional(S.String),
           publicDir: S.optional(S.NullOr(S.String)),
-          status: S.optional(HostingWebConfigurationStateEnum),
+          status: S.optional(S.String),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostingWebConfiguration" });
@@ -9375,9 +7511,9 @@ function __c13(j: number): any {
           email: S.optional(S.NullOr(S.String)),
           frequency: S.String,
           id: S.optional(S.Number),
-          language: HostingWebLanguagesEnum,
-          state: S.optional(HostingWebCronStateEnum),
-          status: S.optional(HostingWebCronStatusEnum),
+          language: S.String,
+          state: S.optional(S.String),
+          status: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostingWebCron" });
     case 4:
@@ -9395,23 +7531,23 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           databaseServiceDeprecated: S.optional(S.Boolean),
-          databaseType: S.optional(S.NullOr(HostingWebDatabaseDatabaseServiceTypeEnum)),
+          databaseType: S.optional(S.NullOr(S.String)),
           dumps: S.optional(S.Number),
           guiURL: S.optional(S.NullOr(S.String)),
           lastCheck: S.optional(S.NullOr(S.String)),
-          mode: S.optional(HostingWebDatabaseModeEnum),
+          mode: S.optional(S.String),
           name: S.optional(S.String),
           port: S.optional(S.Number),
-          quotaSize: S.optional(ComplexTypeUnitAndValueDouble),
-          quotaUsed: S.optional(ComplexTypeUnitAndValueDouble),
+          quotaSize: S.optional(__S(76)),
+          quotaUsed: S.optional(__S(76)),
           server: S.optional(S.NullOr(S.String)),
-          state: S.optional(HostingWebDatabaseStateEnum),
-          status: S.optional(HostingWebDatabaseStatusEnum),
+          state: S.optional(S.String),
+          status: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
-          type: S.optional(HostingWebDatabaseDatabaseTypeEnum),
+          type: S.optional(S.String),
           user: S.optional(S.String),
-          version: S.optional(HostingWebDatabaseVersionEnum),
-          versionSupport: S.optional(HostingWebDatabaseSupportedVersionEnum),
+          version: S.optional(S.String),
+          versionSupport: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostingWebDatabase" });
     case 6:
@@ -9487,9 +7623,9 @@ function __c14(j: number): any {
           creationDate: S.optional(S.String),
           deletionDate: S.optional(S.String),
           id: S.optional(S.Number),
-          status: S.optional(HostingWebDatabaseDumpStatusEnum),
+          status: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
-          type: S.optional(HostingWebDatabaseDumpDateEnum),
+          type: S.optional(S.String),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "HostingWebDatabaseDump" });
@@ -9508,9 +7644,9 @@ function __c14(j: number): any {
           deletionDate: S.optional(S.String),
           id: S.optional(S.Number),
           orphan: S.optional(S.Boolean),
-          status: S.optional(HostingWebDatabaseDumpStatusEnum),
+          status: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
-          type: S.optional(HostingWebDatabaseDumpDateEnum),
+          type: S.optional(S.String),
           url: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "HostingWebDump" });
@@ -9530,7 +7666,7 @@ function __c14(j: number): any {
           maxPerDay: S.optional(S.Number),
           sent: S.optional(S.Number),
           sentToday: S.optional(S.Number),
-          state: S.optional(HostingWebMailStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostingWebEmail" });
     case 7:
@@ -9586,9 +7722,9 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           key: S.optional(S.String),
-          status: S.optional(HostingWebEnvVarStatusEnum),
+          status: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
-          type: S.optional(HostingWebEnvVarTypeEnum),
+          type: S.optional(S.String),
           value: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostingWebEnvVar" });
@@ -9612,10 +7748,10 @@ function __c15(j: number): any {
         S.Struct({
           database: S.optional(S.Number),
           name: S.optional(S.String),
-          size: S.optional(ComplexTypeUnitAndValueDouble),
+          size: S.optional(__S(76)),
           status: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
-          usage: S.optional(HostingWebExtrasqlpersoUsageList),
+          usage: S.optional(__S(10)),
         }),
       ).annotate({ identifier: "HostingWebExtrasqlperso" });
     case 6:
@@ -9649,10 +7785,10 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          attachedDomains: S.optional(HostingWebIndyAttachedDomainsList),
+          attachedDomains: S.optional(__S(10)),
           home: S.optional(S.String),
           login: S.optional(S.String),
-          state: S.optional(HostingWebUserStateEnum),
+          state: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostingWebIndy" });
     case 1:
@@ -9685,7 +7821,7 @@ function __c16(j: number): any {
           email: S.optional(S.String),
           id: S.optional(S.Number),
           lastUpdate: S.optional(S.String),
-          status: S.optional(HostingWebLocalSeoAccountStatusEnum),
+          status: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
@@ -9704,7 +7840,7 @@ function __c16(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          availability: S.optional(HostingWebLocalSeoAccountEmailAvailabilityEnum),
+          availability: S.optional(S.String),
           serviceName: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
@@ -9749,13 +7885,13 @@ function __c17(j: number): any {
         S.Struct({
           accountId: S.optional(S.NullOr(S.Number)),
           address: S.optional(S.NullOr(S.String)),
-          country: S.optional(HostingWebLocalSeoLocationCountryEnum),
+          country: S.optional(S.String),
           creationDate: S.optional(S.String),
           id: S.optional(S.Number),
           lastUpdate: S.optional(S.String),
           name: S.optional(S.NullOr(S.String)),
-          offer: S.optional(HostingWebLocalSeoLocationOfferEnum),
-          status: S.optional(HostingWebLocalSeoLocationStatusEnum),
+          offer: S.optional(S.String),
+          status: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({
@@ -9811,13 +7947,13 @@ function __c17(j: number): any {
           adminFolder: S.optional(S.String),
           adminName: S.optional(S.String),
           creationDate: S.optional(S.String),
-          dependencies: S.optional(HostingWebModuleDependenciesList),
+          dependencies: S.optional(__S(37)),
           id: S.optional(S.Number),
-          language: S.optional(HostingWebModuleLanguageEnum),
+          language: S.optional(S.String),
           lastUpdate: S.optional(S.String),
           moduleId: S.optional(S.Number),
           path: S.optional(S.String),
-          status: S.optional(HostingWebModuleStatusEnum),
+          status: S.optional(S.String),
           targetUrl: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
         }),
@@ -9831,7 +7967,7 @@ function __c17(j: number): any {
         identifier: "GetHostingWebModuleListRequest",
       });
     case 7:
-      return S.Array(HostingWebModuleLanguageEnum);
+      return S.Array(S.String);
   }
 }
 function __c18(j: number): any {
@@ -9849,24 +7985,24 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.Boolean),
-          adminNameType: S.optional(HostingWebModuleAdminNameTypeEnum),
+          adminNameType: S.optional(S.String),
           author: S.optional(S.String),
-          branch: S.optional(HostingWebModuleBranchEnum),
+          branch: S.optional(S.String),
           id: S.optional(S.Number),
-          keywords: S.optional(HostingWebModuleListKeywordsList),
-          language: S.optional(HostingWebModuleListLanguageList),
-          languageRequirement: S.optional(ComplexTypeUnitAndValueString),
+          keywords: S.optional(__S(10)),
+          language: S.optional(__S(143)),
+          languageRequirement: S.optional(__S(144)),
           latest: S.optional(S.Boolean),
           name: S.optional(S.String),
-          size: S.optional(ComplexTypeUnitAndValueDouble),
-          upgradeFrom: S.optional(HostingWebModuleListUpgradeFromList),
+          size: S.optional(__S(76)),
+          upgradeFrom: S.optional(__S(19)),
           version: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostingWebModuleList" });
     case 2:
       return S.suspend(() =>
         S.Struct({
-          offer: HostingWebOfferCapabilitiesEnum.pipe(T.Query()),
+          offer: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/hosting/web/offerCapabilities", code: 200 })),
       ).annotate({
         identifier: "GetHostingWebOfferCapabilitiesRequest",
@@ -9875,20 +8011,20 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           available: S.optional(S.Number),
-          engines: S.optional(HostingWebDatabaseCreationDatabaseCapabilitiesEnginesList),
-          isolation: S.optional(HostingWebDatabaseDatabaseIsolationEnum),
-          quota: S.optional(ComplexTypeUnitAndValueDouble),
-          type: S.optional(HostingWebDatabaseDatabaseCapabilitiesTypeEnum),
+          engines: S.optional(__S(143)),
+          isolation: S.optional(S.String),
+          quota: S.optional(__S(76)),
+          type: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HostingWebDatabaseCreationDatabaseCapabilities",
       });
     case 4:
-      return S.Array(HostingWebDatabaseCreationDatabaseCapabilities);
+      return S.Array(__S(147));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(HostingWebDiskTypeEnum),
+          type: S.optional(S.String),
           unit: S.optional(S.String),
           value: S.optional(S.Number),
         }),
@@ -9897,7 +8033,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           available: S.optional(S.Number),
-          quota: S.optional(ComplexTypeUnitAndValueDouble),
+          quota: S.optional(__S(76)),
         }),
       ).annotate({
         identifier: "HostingWebCreationEmailCapabilities",
@@ -9905,10 +8041,10 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          nodejs: S.optional(HostingWebCronLanguageAvailableNodejsList),
-          php: S.optional(HostingWebCronLanguageAvailablePhpList),
-          python: S.optional(HostingWebCronLanguageAvailablePythonList),
-          ruby: S.optional(HostingWebCronLanguageAvailableRubyList),
+          nodejs: S.optional(__S(143)),
+          php: S.optional(__S(143)),
+          python: S.optional(__S(143)),
+          ruby: S.optional(__S(143)),
         }),
       ).annotate({
         identifier: "HostingWebCronLanguageAvailable",
@@ -9923,20 +8059,20 @@ function __c19(j: number): any {
           attachedDomains: S.optional(S.Number),
           crontab: S.optional(S.Boolean),
           databaseEngines: S.optional(S.Number),
-          databases: S.optional(HostingWebCapabilitiesDatabasesList),
-          disk: S.optional(S.NullOr(HostingWebDiskType)),
-          emails: S.optional(HostingWebCreationEmailCapabilities),
+          databases: S.optional(__S(148)),
+          disk: S.optional(S.NullOr(__S(149))),
+          emails: S.optional(__S(150)),
           envVars: S.optional(S.Number),
           extraUsers: S.optional(S.Number),
           filesBrowser: S.optional(S.Boolean),
-          highlight: S.optional(S.NullOr(HostingWebHighLightEnum)),
-          languages: S.optional(HostingWebCronLanguageAvailable),
+          highlight: S.optional(S.NullOr(S.String)),
+          languages: S.optional(__S(151)),
           moduleOneClick: S.optional(S.Boolean),
-          privateDatabases: S.optional(HostingWebCapabilitiesPrivateDatabasesList),
+          privateDatabases: S.optional(__S(148)),
           runtimes: S.optional(S.Number),
           sitesRecommended: S.optional(S.NullOr(S.Number)),
           ssh: S.optional(S.Boolean),
-          traffic: S.optional(S.NullOr(ComplexTypeUnitAndValueDouble)),
+          traffic: S.optional(S.NullOr(__S(76))),
         }),
       ).annotate({ identifier: "HostingWebCapabilities" });
     case 1:
@@ -9955,15 +8091,15 @@ function __c19(j: number): any {
         S.Struct({
           container: S.optional(S.String),
           creationDate: S.optional(S.String),
-          engineName: S.optional(HostingWebOvhConfigEngineNameEnum),
-          engineVersion: S.optional(HostingWebOvhConfigEngineVersionEnum),
-          environment: S.optional(HostingWebOvhConfigEnvironmentEnum),
+          engineName: S.optional(S.String),
+          engineVersion: S.optional(S.String),
+          environment: S.optional(S.String),
           fileExist: S.optional(S.Boolean),
           historical: S.optional(S.NullOr(S.Boolean)),
-          httpFirewall: S.optional(HostingWebOvhConfigHttpFirewallEnum),
+          httpFirewall: S.optional(S.String),
           id: S.optional(S.Number),
           path: S.optional(S.NullOr(S.String)),
-          status: S.optional(HostingWebOvhConfigStatusEnum),
+          status: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "HostingWebOvhConfig" });
@@ -9984,11 +8120,11 @@ function __c19(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          container: S.optional(HostingWebOvhconfigContainerEnum),
-          engineName: S.optional(HostingWebOvhConfigEngineNameEnum),
-          engineVersion: S.optional(HostingWebOvhConfigAvailableEngineVersionEnum),
-          environment: S.optional(HostingWebOvhConfigEnvironmentEnum),
-          httpFirewall: S.optional(HostingWebOvhConfigHttpFirewallEnum),
+          container: S.optional(S.String),
+          engineName: S.optional(S.String),
+          engineVersion: S.optional(S.String),
+          environment: S.optional(S.String),
+          httpFirewall: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HostingWebOvhConfigRecommendedValues",
@@ -10011,7 +8147,7 @@ function __c19(j: number): any {
           id: S.optional(S.Number),
           logs: S.optional(S.String),
           stats: S.optional(S.String),
-          status: S.optional(HostingWebOwnLogsStatusEnum),
+          status: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "HostingWebOwnLogs" });
@@ -10042,7 +8178,7 @@ function __c20(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           login: S.optional(S.String),
           ownLogsId: S.optional(S.NullOr(S.Number)),
-          status: S.optional(HostingWebUserLogsStatusEnum),
+          status: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "HostingWebUserLogs" });
@@ -10061,7 +8197,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           appBootstrap: S.optional(S.NullOr(S.String)),
-          appEnv: S.optional(HostingWebRuntimeEnvEnum),
+          appEnv: S.optional(S.String),
           creationDate: S.optional(S.String),
           id: S.optional(S.Number),
           isDefault: S.optional(S.Boolean),
@@ -10069,9 +8205,9 @@ function __c20(j: number): any {
           lastUpdate: S.optional(S.String),
           name: S.optional(S.NullOr(S.String)),
           publicDir: S.optional(S.NullOr(S.String)),
-          status: S.optional(HostingWebRuntimeStateEnum),
+          status: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
-          type: S.optional(HostingWebRuntimeTypeEnum),
+          type: S.optional(S.String),
         }),
       ).annotate({ identifier: "HostingWebRuntime" });
     case 3:
@@ -10125,8 +8261,8 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          ftp: S.optional(HostingWebUserCredentials),
-          ssh: S.optional(HostingWebUserCredentials),
+          ftp: S.optional(__S(167)),
+          ssh: S.optional(__S(167)),
         }),
       ).annotate({
         identifier: "HostingWebUserServiceCredentials",
@@ -10137,10 +8273,10 @@ function __c21(j: number): any {
           home: S.optional(S.String),
           isPrimaryAccount: S.optional(S.Boolean),
           login: S.optional(S.String),
-          serviceManagementCredentials: S.optional(HostingWebUserServiceCredentials),
-          sshState: S.optional(HostingWebUserSshStateEnum),
-          state: S.optional(HostingWebUserStateEnum),
-          status: S.optional(HostingWebUserStatusEnum),
+          serviceManagementCredentials: S.optional(__S(168)),
+          sshState: S.optional(S.String),
+          state: S.optional(S.String),
+          status: S.optional(S.String),
           taskId: S.optional(S.NullOr(S.Number)),
         }),
       ).annotate({ identifier: "HostingWebUser" });
@@ -10162,7 +8298,7 @@ function __c21(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           path: S.String.pipe(T.Query()),
-          vcs: HostingWebSupportedVcsEnum.pipe(T.Query()),
+          vcs: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/vcs/webhooks", code: 200 }),
         ),
@@ -10195,7 +8331,7 @@ function __c21(j: number): any {
         }),
       ).annotate({ identifier: "HostingWebWebsiteDomain" });
     case 7:
-      return S.Array(HostingWebWebsiteDomain);
+      return S.Array(__S(174));
   }
 }
 function __c22(j: number): any {
@@ -10203,13 +8339,13 @@ function __c22(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          domains: S.optional(HostingWebWebsiteDomainsList),
+          domains: S.optional(__S(175)),
           hostingDisplayName: S.optional(S.String),
           hostingServiceName: S.optional(S.String),
           id: S.optional(S.Number),
           name: S.optional(S.NullOr(S.String)),
           path: S.optional(S.String),
-          status: S.optional(HostingWebWebsiteStatusEnum),
+          status: S.optional(S.String),
           vcsBranch: S.optional(S.String),
           vcsUrl: S.optional(S.String),
         }),
@@ -10260,7 +8396,7 @@ function __c22(j: number): any {
           id: S.optional(S.Number),
           reset: S.optional(S.Boolean),
           source: S.optional(S.String),
-          status: S.optional(HostingWebWebsiteDeploymentStatusEnum),
+          status: S.optional(S.String),
           vcsBranch: S.optional(S.String),
           vcsCommitId: S.optional(S.NullOr(S.String)),
           vcsCommitMessage: S.optional(S.NullOr(S.String)),
@@ -10292,21 +8428,21 @@ function __c22(j: number): any {
         identifier: "IamResourceTagFilterInput",
       });
     case 7:
-      return S.Array(IamResourceTagFilterInput);
+      return S.Array(__S(182));
   }
 }
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.Record(S.String, ListHostingWebRequestIamTagsValueList);
+      return S.Record(S.String, __S(183));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          iamTags: S.optional(ListHostingWebRequestIamTagsMap.pipe(T.Query())),
+          iamTags: S.optional(__S(184).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/hosting/web", code: 200 })),
       ).annotate({ identifier: "ListHostingWebRequest" });
     case 2:
-      return S.suspend(() => ListHostingWebResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(10).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebResponse",
       });
     case 3:
@@ -10318,9 +8454,7 @@ function __c23(j: number): any {
         identifier: "ListHostingWebAttachedDomainRequest",
       });
     case 4:
-      return S.suspend(() =>
-        ListHostingWebAttachedDomainResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(10).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebAttachedDomainResponse",
       });
     case 5:
@@ -10339,7 +8473,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          language: S.optional(HostingWebConfigurationLanguageEnum.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -10351,9 +8485,7 @@ function __c23(j: number): any {
         identifier: "ListHostingWebAvailableConfigurationsRequest",
       });
     case 7:
-      return S.suspend(() =>
-        ListHostingWebAvailableConfigurationsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(143).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebAvailableConfigurationsResponse",
       });
   }
@@ -10400,7 +8532,7 @@ function __c24(j: number): any {
           maximum: S.optional(S.NullOr(S.Number)),
           message: S.optional(S.NullOr(S.String)),
           minimum: S.optional(S.NullOr(S.Number)),
-          type: S.optional(S.NullOr(CdnOptionConfigParamTypeEnum)),
+          type: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "CdnAvailableOptionsConfigConstraints",
@@ -10408,15 +8540,15 @@ function __c24(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          destination: S.optional(S.NullOr(CdnAvailableOptionsConfigConstraints)),
-          followUri: S.optional(S.NullOr(CdnAvailableOptionsConfigConstraints)),
-          origins: S.optional(S.NullOr(CdnAvailableOptionsConfigConstraints)),
-          patternType: S.optional(S.NullOr(CdnAvailableOptionsConfigConstraints)),
-          priority: S.optional(S.NullOr(CdnAvailableOptionsConfigConstraints)),
-          queryParameters: S.optional(S.NullOr(CdnAvailableOptionsConfigConstraints)),
-          resources: S.optional(S.NullOr(CdnAvailableOptionsConfigConstraints)),
-          statusCode: S.optional(S.NullOr(CdnAvailableOptionsConfigConstraints)),
-          ttl: S.optional(S.NullOr(CdnAvailableOptionsConfigConstraints)),
+          destination: S.optional(S.NullOr(__S(195))),
+          followUri: S.optional(S.NullOr(__S(195))),
+          origins: S.optional(S.NullOr(__S(195))),
+          patternType: S.optional(S.NullOr(__S(195))),
+          priority: S.optional(S.NullOr(__S(195))),
+          queryParameters: S.optional(S.NullOr(__S(195))),
+          resources: S.optional(S.NullOr(__S(195))),
+          statusCode: S.optional(S.NullOr(__S(195))),
+          ttl: S.optional(S.NullOr(__S(195))),
         }),
       ).annotate({
         identifier: "CdnAvailableOptionsConfig",
@@ -10424,18 +8556,16 @@ function __c24(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(S.NullOr(CdnOptionCategoryEnum)),
-          config: S.optional(S.NullOr(CdnAvailableOptionsConfig)),
+          category: S.optional(S.NullOr(S.String)),
+          config: S.optional(S.NullOr(__S(196))),
           maxItems: S.optional(S.Number),
           type: S.optional(S.String),
         }),
       ).annotate({ identifier: "CdnAvailableOptions" });
     case 6:
-      return S.Array(CdnAvailableOptions);
+      return S.Array(__S(197));
     case 7:
-      return S.suspend(() =>
-        ListHostingWebCdnAvailableOptionsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(198).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebCdnAvailableOptionsResponse",
       });
   }
@@ -10451,11 +8581,9 @@ function __c25(j: number): any {
         identifier: "ListHostingWebCdnDomainRequest",
       });
     case 1:
-      return S.Array(CdnDomain);
+      return S.Array(__S(95));
     case 2:
-      return S.suspend(() =>
-        ListHostingWebCdnDomainResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(201).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebCdnDomainResponse",
       });
     case 3:
@@ -10474,11 +8602,9 @@ function __c25(j: number): any {
         identifier: "ListHostingWebCdnDomainOptionRequest",
       });
     case 4:
-      return S.Array(CdnDomainOption);
+      return S.Array(__S(14));
     case 5:
-      return S.suspend(() =>
-        ListHostingWebCdnDomainOptionResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(204).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebCdnDomainOptionResponse",
       });
     case 6:
@@ -10492,15 +8618,13 @@ function __c25(j: number): any {
         identifier: "ListHostingWebCdnOperationRequest",
       });
     case 7:
-      return S.Array(CdnOperation);
+      return S.Array(__S(101));
   }
 }
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListHostingWebCdnOperationResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(207).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebCdnOperationResponse",
       });
     case 1:
@@ -10510,7 +8634,7 @@ function __c26(j: number): any {
           command: S.optional(S.String.pipe(T.Query())),
           description: S.optional(S.String.pipe(T.Query())),
           email: S.optional(S.String.pipe(T.Query())),
-          language: S.optional(HostingWebLanguagesEnum.pipe(T.Query())),
+          language: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/cron", code: 200 })),
       ).annotate({
         identifier: "ListHostingWebCronRequest",
@@ -10533,10 +8657,10 @@ function __c26(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          mode: S.optional(HostingWebDatabaseModeEnum.pipe(T.Query())),
+          mode: S.optional(S.String.pipe(T.Query())),
           name: S.optional(S.String.pipe(T.Query())),
           server: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(HostingWebDatabaseDatabaseTypeEnum.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
           user: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/database", code: 200 })),
       ).annotate({
@@ -10557,16 +8681,14 @@ function __c26(j: number): any {
         identifier: "ListHostingWebDatabaseAvailableTypeRequest",
       });
     case 5:
-      return S.suspend(() =>
-        ListHostingWebDatabaseAvailableTypeResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(143).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebDatabaseAvailableTypeResponse",
       });
     case 6:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          type: HostingWebDatabaseDatabaseTypeEnum.pipe(T.Query()),
+          type: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -10580,8 +8702,8 @@ function __c26(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          default: S.optional(HostingWebDatabaseVersionEnum),
-          list: S.optional(HostingWebDatabaseAvailableVersionStructListList),
+          default: S.optional(S.String),
+          list: S.optional(__S(143)),
         }),
       ).annotate({
         identifier: "HostingWebDatabaseAvailableVersionStruct",
@@ -10620,9 +8742,7 @@ function __c27(j: number): any {
         identifier: "ListHostingWebDatabaseCreationCapabilitiesRequest",
       });
     case 2:
-      return S.suspend(() =>
-        ListHostingWebDatabaseCreationCapabilitiesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(148).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebDatabaseCreationCapabilitiesResponse",
       });
     case 3:
@@ -10634,7 +8754,7 @@ function __c27(j: number): any {
           creationDate_to: S.optional(S.String.pipe(T.Query("creationDate.to"))),
           deletionDate_from: S.optional(S.String.pipe(T.Query("deletionDate.from"))),
           deletionDate_to: S.optional(S.String.pipe(T.Query("deletionDate.to"))),
-          type: S.optional(HostingWebDatabaseDumpDateEnum.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -10650,8 +8770,8 @@ function __c27(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          period: HostingWebStatisticsPeriodEnum.pipe(T.Query()),
-          type: HostingWebDatabaseStatisticsTypeEnum.pipe(T.Query()),
+          period: S.String.pipe(T.Query()),
+          type: S.String.pipe(T.Query()),
         }).pipe(
           T.Http({
             method: "GET",
@@ -10672,13 +8792,13 @@ function __c27(j: number): any {
         identifier: "ComplexTypeChartTimestampValue",
       });
     case 6:
-      return S.Array(ComplexTypeChartTimestampValue);
+      return S.Array(__S(221));
     case 7:
       return S.suspend(() =>
         S.Struct({
           serieName: S.optional(S.String),
           unit: S.optional(S.String),
-          values: S.optional(ComplexTypeChartSerieComplexTypeChartTimestampValueValuesList),
+          values: S.optional(__S(222)),
         }),
       ).annotate({
         identifier: "ComplexTypeChartSerieComplexTypeChartTimestampValue",
@@ -10688,11 +8808,9 @@ function __c27(j: number): any {
 function __c28(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ComplexTypeChartSerieComplexTypeChartTimestampValue);
+      return S.Array(__S(223));
     case 1:
-      return S.suspend(() =>
-        ListHostingWebDatabaseStatisticsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(224).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebDatabaseStatisticsResponse",
       });
     case 2:
@@ -10729,11 +8847,9 @@ function __c28(j: number): any {
         }),
       ).annotate({ identifier: "HostingWebMailBounce" });
     case 5:
-      return S.Array(HostingWebMailBounce);
+      return S.Array(__S(228));
     case 6:
-      return S.suspend(() =>
-        ListHostingWebEmailBouncesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(229).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebEmailBouncesResponse",
       });
     case 7:
@@ -10770,18 +8886,16 @@ function __c29(j: number): any {
         identifier: "HostingWebMailVolumeHistory",
       });
     case 2:
-      return S.Array(HostingWebMailVolumeHistory);
+      return S.Array(__S(233));
     case 3:
-      return S.suspend(() =>
-        ListHostingWebEmailVolumesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(234).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebEmailVolumesResponse",
       });
     case 4:
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          type: S.optional(HostingWebEnvVarTypeEnum.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/envVar", code: 200 })),
       ).annotate({
         identifier: "ListHostingWebEnvVarRequest",
@@ -10815,7 +8929,7 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          status: S.optional(HostingWebFreedomStatusEnum.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/freedom", code: 200 })),
       ).annotate({
         identifier: "ListHostingWebFreedomRequest",
@@ -10853,8 +8967,8 @@ function __c30(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          country: HostingWebLocalSeoLocationCountryEnum.pipe(T.Query()),
-          offer: HostingWebLocalSeoLocationOfferEnum.pipe(T.Query()),
+          country: S.String.pipe(T.Query()),
+          offer: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/hosting/web/localSeo/directoriesList", code: 200 })),
       ).annotate({
         identifier: "ListHostingWebLocalSeoDirectoriesListRequest",
@@ -10869,13 +8983,13 @@ function __c30(j: number): any {
         identifier: "HostingWebLocalSeoDirectory",
       });
     case 5:
-      return S.Array(HostingWebLocalSeoDirectory);
+      return S.Array(__S(244));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          navigationSystems: S.optional(HostingWebLocalSeoDirectoriesListNavigationSystemsList),
-          searchEngines: S.optional(HostingWebLocalSeoDirectoriesListSearchEnginesList),
-          socialNetworks: S.optional(HostingWebLocalSeoDirectoriesListSocialNetworksList),
+          navigationSystems: S.optional(__S(245)),
+          searchEngines: S.optional(__S(245)),
+          socialNetworks: S.optional(__S(245)),
         }),
       ).annotate({
         identifier: "HostingWebLocalSeoDirectoriesList",
@@ -10910,45 +9024,43 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           city: S.optional(S.NullOr(S.String)),
-          cityStatus: S.optional(S.NullOr(HostingWebLocalSeoFieldStatusEnum)),
+          cityStatus: S.optional(S.NullOr(S.String)),
           country: S.optional(S.NullOr(S.String)),
-          countryStatus: S.optional(S.NullOr(HostingWebLocalSeoFieldStatusEnum)),
+          countryStatus: S.optional(S.NullOr(S.String)),
           dateCreated: S.optional(S.NullOr(S.String)),
           directoryType: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
-          emailStatus: S.optional(S.NullOr(HostingWebLocalSeoFieldStatusEnum)),
-          flowStatus: S.optional(S.NullOr(HostingWebLocalSeoFlowStatusEnum)),
+          emailStatus: S.optional(S.NullOr(S.String)),
+          flowStatus: S.optional(S.NullOr(S.String)),
           listingId: S.optional(S.NullOr(S.String)),
           listingUrl: S.optional(S.NullOr(S.String)),
           name: S.optional(S.NullOr(S.String)),
-          nameStatus: S.optional(S.NullOr(HostingWebLocalSeoFieldStatusEnum)),
+          nameStatus: S.optional(S.NullOr(S.String)),
           phone: S.optional(S.NullOr(S.String)),
-          phoneStatus: S.optional(S.NullOr(HostingWebLocalSeoFieldStatusEnum)),
+          phoneStatus: S.optional(S.NullOr(S.String)),
           province: S.optional(S.NullOr(S.String)),
-          provinceStatus: S.optional(S.NullOr(HostingWebLocalSeoFieldStatusEnum)),
+          provinceStatus: S.optional(S.NullOr(S.String)),
           street: S.optional(S.NullOr(S.String)),
           streetAndNo: S.optional(S.NullOr(S.String)),
-          streetAndNoStatus: S.optional(S.NullOr(HostingWebLocalSeoFieldStatusEnum)),
+          streetAndNoStatus: S.optional(S.NullOr(S.String)),
           streetNo: S.optional(S.NullOr(S.String)),
-          streetNoStatus: S.optional(S.NullOr(HostingWebLocalSeoFieldStatusEnum)),
-          streetStatus: S.optional(S.NullOr(HostingWebLocalSeoFieldStatusEnum)),
+          streetNoStatus: S.optional(S.NullOr(S.String)),
+          streetStatus: S.optional(S.NullOr(S.String)),
           streetType: S.optional(S.NullOr(S.String)),
-          streetTypeStatus: S.optional(S.NullOr(HostingWebLocalSeoFieldStatusEnum)),
-          syncStatus: S.optional(S.NullOr(HostingWebLocalSeoListingStatusEnum)),
+          streetTypeStatus: S.optional(S.NullOr(S.String)),
+          syncStatus: S.optional(S.NullOr(S.String)),
           website: S.optional(S.NullOr(S.String)),
-          websiteStatus: S.optional(S.NullOr(HostingWebLocalSeoFieldStatusEnum)),
+          websiteStatus: S.optional(S.NullOr(S.String)),
           zip: S.optional(S.NullOr(S.String)),
-          zipStatus: S.optional(S.NullOr(HostingWebLocalSeoFieldStatusEnum)),
+          zipStatus: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "HostingWebLocalSeoVisibilityCheckResultResponse",
       });
     case 2:
-      return S.Array(HostingWebLocalSeoVisibilityCheckResultResponse);
+      return S.Array(__S(249));
     case 3:
-      return S.suspend(() =>
-        ListHostingWebLocalSeoVisibilityCheckResultResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(250).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebLocalSeoVisibilityCheckResultResponse",
       });
     case 4:
@@ -10963,7 +9075,7 @@ function __c31(j: number): any {
       return S.suspend(() =>
         S.Struct({
           active: S.optional(S.Boolean.pipe(T.Query())),
-          branch: S.optional(HostingWebModuleBranchEnum.pipe(T.Query())),
+          branch: S.optional(S.String.pipe(T.Query())),
           latest: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/hosting/web/moduleList", code: 200 })),
       ).annotate({
@@ -11000,18 +9112,16 @@ function __c32(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          containerImage: S.optional(HostingWebOvhConfigCapabilitiesContainerImageList),
-          version: S.optional(HostingWebOvhConfigAvailableEngineVersionEnum),
+          containerImage: S.optional(__S(10)),
+          version: S.optional(S.String),
         }),
       ).annotate({
         identifier: "HostingWebOvhConfigCapabilities",
       });
     case 1:
-      return S.Array(HostingWebOvhConfigCapabilities);
+      return S.Array(__S(256));
     case 2:
-      return S.suspend(() =>
-        ListHostingWebOvhConfigCapabilitiesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(257).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebOvhConfigCapabilitiesResponse",
       });
     case 3:
@@ -11054,11 +9164,9 @@ function __c32(j: number): any {
         identifier: "ListHostingWebPrivateDatabaseCreationCapabilitiesRequest",
       });
     case 6:
-      return S.Array(HostingWebDatabaseCreationDatabaseCapabilities);
+      return S.Array(__S(147));
     case 7:
-      return S.suspend(() =>
-        ListHostingWebPrivateDatabaseCreationCapabilitiesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(262).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebPrivateDatabaseCreationCapabilitiesResponse",
       });
   }
@@ -11080,7 +9188,7 @@ function __c33(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           name: S.optional(S.String.pipe(T.Query())),
-          type: S.optional(HostingWebRuntimeTypeEnum.pipe(T.Query())),
+          type: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/runtime", code: 200 })),
       ).annotate({
         identifier: "ListHostingWebRuntimeRequest",
@@ -11119,8 +9227,8 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          period: HostingWebStatisticsPeriodEnum.pipe(T.Query()),
-          type: HostingWebStatisticsTypeEnum.pipe(T.Query()),
+          period: S.String.pipe(T.Query()),
+          type: S.String.pipe(T.Query()),
         }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/statistics", code: 200 })),
       ).annotate({
         identifier: "ListHostingWebStatisticsRequest",
@@ -11130,7 +9238,7 @@ function __c33(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           function: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(HostingWebTaskStatusEnum.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/hosting/web/{serviceName}/tasks", code: 200 })),
       ).annotate({
         identifier: "ListHostingWebTasksRequest",
@@ -11205,11 +9313,9 @@ function __c34(j: number): any {
         identifier: "HostingWebWebsiteDeploymentLogsMessage",
       });
     case 4:
-      return S.Array(HostingWebWebsiteDeploymentLogsMessage);
+      return S.Array(__S(275));
     case 5:
-      return S.suspend(() =>
-        ListHostingWebWebsiteDeploymentLogsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(276).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListHostingWebWebsiteDeploymentLogsResponse",
       });
     case 6:
@@ -11252,7 +9358,7 @@ function __c35(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           pattern: S.optional(S.String.pipe(T.Query())),
-          patternType: S.optional(CdnPurgeTypeEnum.pipe(T.Query())),
+          patternType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11276,9 +9382,9 @@ function __c35(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           domain: S.String.pipe(T.Label()),
           bypassDNSConfiguration: S.optional(S.NullOr(S.Boolean)),
-          cdn: S.optional(S.NullOr(HostingWebAttachedDomainCdnEnum)),
-          firewall: S.optional(S.NullOr(HostingWebAttachedDomainFirewallEnum)),
-          ipLocation: S.optional(S.NullOr(HostingWebCountryEnum)),
+          cdn: S.optional(S.NullOr(S.String)),
+          firewall: S.optional(S.NullOr(S.String)),
+          ipLocation: S.optional(S.NullOr(S.String)),
           ownLog: S.optional(S.NullOr(S.String)),
           path: S.optional(S.NullOr(S.String)),
           runtimeId: S.optional(S.NullOr(S.Number)),
@@ -11299,11 +9405,11 @@ function __c35(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           domainName: S.String.pipe(T.Label()),
           optionName: S.String.pipe(T.Label()),
-          config: S.optional(S.NullOr(CdnDomainOptionConfig)),
+          config: S.optional(S.NullOr(__S(11))),
           enabled: S.Boolean,
-          extra: S.optional(S.NullOr(CdnDomainOptionExtra)),
+          extra: S.optional(S.NullOr(__S(13))),
           pattern: S.optional(S.NullOr(S.String)),
-          type: CdnOptionTypeEnum,
+          type: S.String,
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11318,9 +9424,9 @@ function __c35(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          appEnv: S.optional(HostingWebConfigurationEnvEnum),
+          appEnv: S.optional(S.String),
           entryPoint: S.optional(S.NullOr(S.String)),
-          language: S.optional(HostingWebConfigurationLanguageEnum),
+          language: S.optional(S.String),
           publicDir: S.optional(S.NullOr(S.String)),
           version: S.optional(S.String),
         }).pipe(
@@ -11338,8 +9444,8 @@ function __c35(j: number): any {
           description: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           frequency: S.String,
-          language: HostingWebLanguagesEnum,
-          status: S.optional(HostingWebCronStatusEnum),
+          language: S.String,
+          status: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/hosting/web/{serviceName}/cron/{id}", code: 200 })),
       ).annotate({ identifier: "PutHostingWebCronRequest" });
     case 6:
@@ -11390,11 +9496,11 @@ function __c36(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           id: S.Number.pipe(T.Label()),
           appBootstrap: S.optional(S.NullOr(S.String)),
-          appEnv: S.optional(HostingWebRuntimeEnvEnum),
+          appEnv: S.optional(S.String),
           isDefault: S.optional(S.Boolean),
           name: S.optional(S.NullOr(S.String)),
           publicDir: S.optional(S.NullOr(S.String)),
-          type: S.optional(HostingWebRuntimeTypeEnum),
+          type: S.optional(S.String),
         }).pipe(
           T.Http({ method: "PUT", uri: "/hosting/web/{serviceName}/runtime/{id}", code: 200 }),
         ),
@@ -11405,7 +9511,7 @@ function __c36(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          renew: S.optional(S.NullOr(ServiceRenewType)),
+          renew: S.optional(S.NullOr(__S(15))),
         }).pipe(
           T.Http({ method: "PUT", uri: "/hosting/web/{serviceName}/serviceInfos", code: 200 }),
         ),
@@ -11418,8 +9524,8 @@ function __c36(j: number): any {
           serviceName: S.String.pipe(T.Label()),
           login: S.String.pipe(T.Label()),
           home: S.optional(S.String),
-          sshState: S.optional(HostingWebUserSshStateEnum),
-          state: S.optional(HostingWebUserStateEnum),
+          sshState: S.optional(S.String),
+          state: S.optional(S.String),
         }).pipe(
           T.Http({ method: "PUT", uri: "/hosting/web/{serviceName}/user/{login}", code: 200 }),
         ),
@@ -11471,7 +9577,7 @@ function __c36(j: number): any {
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          date: HostingWebDatabaseDumpDateEnum,
+          date: S.String,
           sendEmail: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -11507,7 +9613,7 @@ function __c37(j: number): any {
       return S.suspend(() =>
         S.Struct({
           serviceName: S.String.pipe(T.Label()),
-          backup: HostingWebBackupTypeEnum,
+          backup: S.String,
         }).pipe(
           T.Http({ method: "POST", uri: "/hosting/web/{serviceName}/restoreSnapshot", code: 200 }),
         ),
@@ -11577,5 +9683,90 @@ function __c37(j: number): any {
       ).annotate({
         identifier: "TerminateHostingWebLocalSeoLocationRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
   }
 }

@@ -12,6 +12,8 @@ import {
 } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { CloudflareOpError, CloudflareOpContext };
 
@@ -90,11 +92,6 @@ export interface CreateCustomTrustStoreRequest {
   /** The root CA certificate in PEM format. Only root CA certificates are accepted; intermediate and leaf certificates are not supported. */
   certificate: string;
 }
-const CreateCustomTrustStoreRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CreateCustomTrustStoreRequest>;
-
 export type CustomTrustStoreCreateResponseStatus =
   | "initializing"
   | "pending_deployment"
@@ -102,8 +99,6 @@ export type CustomTrustStoreCreateResponseStatus =
   | "pending_deletion"
   | "deleted"
   | "expired";
-const CustomTrustStoreCreateResponseStatus = S.String;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface CreateCustomTrustStoreResponse {
   /** Certificate identifier tag. */
@@ -123,43 +118,23 @@ export interface CreateCustomTrustStoreResponse {
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn: string;
 }
-const CreateCustomTrustStoreResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CreateCustomTrustStoreResponse>;
-
 export interface DeleteCustomTrustStoreRequest {
   /** Identifier. */
   zoneId: string;
   /** Certificate identifier tag. */
   customOriginTrustStoreId: string;
 }
-const DeleteCustomTrustStoreRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<DeleteCustomTrustStoreRequest>;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DeleteCustomTrustStoreResponse {
   /** Certificate identifier tag. */
   id?: string | null;
 }
-const DeleteCustomTrustStoreResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<DeleteCustomTrustStoreResponse>;
-
 export interface GetCustomTrustStoreRequest {
   /** Identifier. */
   zoneId: string;
   /** Certificate identifier tag. */
   customOriginTrustStoreId: string;
 }
-const GetCustomTrustStoreRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetCustomTrustStoreRequest>;
-
 export type CustomTrustStoreGetResponseStatus =
   | "initializing"
   | "pending_deployment"
@@ -186,21 +161,12 @@ export interface GetCustomTrustStoreResponse {
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn: string;
 }
-const GetCustomTrustStoreResponse =
-  CreateCustomTrustStoreResponse as any as S.Schema<GetCustomTrustStoreResponse>;
-
 export interface GetTotalTlRequest {
   /** Identifier. */
   zoneId: string;
 }
-const GetTotalTlRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetTotalTlRequest>;
-
 export type TotalTlsGetResponseCertificateAuthority = "google" | "lets_encrypt" | "ssl_com";
-const TotalTlsGetResponseCertificateAuthority = S.String;
-
 export type TotalTlsGetResponseValidityPeriod = 90;
-const TotalTlsGetResponseValidityPeriod = S.Number;
-
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface GetTotalTlResponse {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
@@ -210,8 +176,6 @@ export interface GetTotalTlResponse {
   /** The validity period in days for the certificates ordered via Total TLS. */
   validityPeriod?: TotalTlsGetResponseValidityPeriod | null;
 }
-const GetTotalTlResponse = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetTotalTlResponse>;
-
 export interface ListCustomTrustStoresRequest {
   /** Identifier. */
   zoneId: string;
@@ -224,11 +188,6 @@ export interface ListCustomTrustStoresRequest {
   /** Number of records per page. */
   perPage?: number;
 }
-const ListCustomTrustStoresRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListCustomTrustStoresRequest>;
-
 export type CustomTrustStoreListResultItemStatus =
   | "initializing"
   | "pending_deployment"
@@ -236,8 +195,6 @@ export type CustomTrustStoreListResultItemStatus =
   | "pending_deletion"
   | "deleted"
   | "expired";
-const CustomTrustStoreListResultItemStatus = S.String;
-
 export interface CustomTrustStoreListResultItem {
   /** Certificate identifier tag. */
   id: string;
@@ -256,31 +213,14 @@ export interface CustomTrustStoreListResultItem {
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn: string;
 }
-const CustomTrustStoreListResultItem = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CustomTrustStoreListResultItem>;
-
 export type CustomTrustStoreListResultList = Array<CustomTrustStoreListResultItem>;
-const CustomTrustStoreListResultList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CustomTrustStoreListResultList>;
-
 export interface ListCustomTrustStoresResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result: CustomTrustStoreListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
-const ListCustomTrustStoresResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListCustomTrustStoresResponse>;
-
 export type TotalTlsEditRequestCertificateAuthority = "google" | "lets_encrypt" | "ssl_com";
-const TotalTlsEditRequestCertificateAuthority = S.String;
-
 export interface UpdateTotalTlRequest {
   /** Identifier. */
   zoneId: string;
@@ -289,8 +229,6 @@ export interface UpdateTotalTlRequest {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
   certificateAuthority?: TotalTlsEditRequestCertificateAuthority | (string & {});
 }
-const UpdateTotalTlRequest = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<UpdateTotalTlRequest>;
-
 export type TotalTlsEditResponseCertificateAuthority = "google" | "lets_encrypt" | "ssl_com";
 export type TotalTlsEditResponseValidityPeriod = 90;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -302,11 +240,7 @@ export interface UpdateTotalTlResponse {
   /** The validity period in days for the certificates ordered via Total TLS. */
   validityPeriod?: TotalTlsEditResponseValidityPeriod | null;
 }
-const UpdateTotalTlResponse = GetTotalTlResponse as any as S.Schema<UpdateTotalTlResponse>;
-
 export type UpdateTotalTlsRequestCertificateAuthority = "google" | "lets_encrypt" | "ssl_com";
-const UpdateTotalTlsRequestCertificateAuthority = S.String;
-
 export interface UpdateTotalTlsRequest {
   /** Identifier. */
   zoneId: string;
@@ -315,11 +249,6 @@ export interface UpdateTotalTlsRequest {
   /** The Certificate Authority that Total TLS certificates will be issued through. */
   certificateAuthority?: UpdateTotalTlsRequestCertificateAuthority | (string & {});
 }
-const UpdateTotalTlsRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<UpdateTotalTlsRequest>;
-
 export type UpdateTotalTlsResponseCertificateAuthority = "google" | "lets_encrypt" | "ssl_com";
 export type UpdateTotalTlsResponseValidityPeriod = 90;
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
@@ -331,8 +260,6 @@ export interface UpdateTotalTlsResponse {
   /** The validity period in days for the certificates ordered via Total TLS. */
   validityPeriod?: UpdateTotalTlsResponseValidityPeriod | null;
 }
-const UpdateTotalTlsResponse = GetTotalTlResponse as any as S.Schema<UpdateTotalTlsResponse>;
-
 export type CreateCustomTrustStoreError =
   | InvalidObjectIdentifier
   | AdvancedCertificateManagerRequired
@@ -345,8 +272,8 @@ export const createCustomTrustStore: API.OperationMethod<
   CreateCustomTrustStoreError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCustomTrustStoreRequest,
-  output: CreateCustomTrustStoreResponse,
+  input: __S(0) as any as S.Schema<CreateCustomTrustStoreRequest>,
+  output: __S(1) as any as S.Schema<CreateCustomTrustStoreResponse>,
   errors: [
     InvalidObjectIdentifier,
     AdvancedCertificateManagerRequired,
@@ -371,8 +298,8 @@ export const deleteCustomTrustStore: API.OperationMethod<
   DeleteCustomTrustStoreError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCustomTrustStoreRequest,
-  output: DeleteCustomTrustStoreResponse,
+  input: __S(2) as any as S.Schema<DeleteCustomTrustStoreRequest>,
+  output: __S(3) as any as S.Schema<DeleteCustomTrustStoreResponse>,
   errors: [
     InvalidObjectIdentifier,
     AdvancedCertificateManagerRequired,
@@ -398,8 +325,8 @@ export const getCustomTrustStore: API.OperationMethod<
   GetCustomTrustStoreError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCustomTrustStoreRequest,
-  output: GetCustomTrustStoreResponse,
+  input: __S(4) as any as S.Schema<GetCustomTrustStoreRequest>,
+  output: __S(1) as any as S.Schema<GetCustomTrustStoreResponse>,
   errors: [
     InvalidObjectIdentifier,
     AdvancedCertificateManagerRequired,
@@ -424,8 +351,8 @@ export const getTotalTl: API.OperationMethod<
   GetTotalTlError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetTotalTlRequest,
-  output: GetTotalTlResponse,
+  input: __S(5) as any as S.Schema<GetTotalTlRequest>,
+  output: __S(6) as any as S.Schema<GetTotalTlResponse>,
   errors: [
     InvalidObjectIdentifier,
     AdvancedCertificateManagerRequired,
@@ -450,8 +377,8 @@ export const listCustomTrustStores: API.PaginatedOperationMethod<
   CustomTrustStoreListResultItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListCustomTrustStoresRequest,
-    output: ListCustomTrustStoresResponse,
+    input: __S(7) as any as S.Schema<ListCustomTrustStoresRequest>,
+    output: __S(10) as any as S.Schema<ListCustomTrustStoresResponse>,
     errors: [AdvancedCertificateManagerRequired, Forbidden, CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,
@@ -480,8 +407,8 @@ export const updateTotalTl: API.OperationMethod<
   UpdateTotalTlError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTotalTlRequest,
-  output: UpdateTotalTlResponse,
+  input: __S(11) as any as S.Schema<UpdateTotalTlRequest>,
+  output: __S(6) as any as S.Schema<UpdateTotalTlResponse>,
   errors: [
     InvalidObjectIdentifier,
     AdvancedCertificateManagerRequired,
@@ -509,8 +436,8 @@ export const updateTotalTls: API.OperationMethod<
   UpdateTotalTlsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateTotalTlsRequest,
-  output: UpdateTotalTlsResponse,
+  input: __S(12) as any as S.Schema<UpdateTotalTlsRequest>,
+  output: __S(6) as any as S.Schema<UpdateTotalTlsResponse>,
   errors: [
     InvalidObjectIdentifier,
     AdvancedCertificateManagerRequired,
@@ -553,7 +480,7 @@ function __c0(j: number): any {
           expiresOn: S.String.pipe(T.Body("expires_on")),
           issuer: S.String,
           signature: S.String,
-          status: CustomTrustStoreCreateResponseStatus,
+          status: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
           uploadedOn: S.String.pipe(T.Body("uploaded_on")),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -614,12 +541,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           certificateAuthority: S.optional(
-            S.NullOr(TotalTlsGetResponseCertificateAuthority).pipe(T.Body("certificate_authority")),
+            S.NullOr(S.String).pipe(T.Body("certificate_authority")),
           ),
           enabled: S.optional(S.NullOr(S.Boolean)),
-          validityPeriod: S.optional(
-            S.NullOr(TotalTlsGetResponseValidityPeriod).pipe(T.Body("validity_period")),
-          ),
+          validityPeriod: S.optional(S.NullOr(S.Number).pipe(T.Body("validity_period"))),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "GetTotalTlResponse" });
     case 7:
@@ -650,7 +575,7 @@ function __c1(j: number): any {
           expiresOn: S.String.pipe(T.Body("expires_on")),
           issuer: S.String,
           signature: S.String,
-          status: CustomTrustStoreListResultItemStatus,
+          status: S.String,
           updatedAt: S.String.pipe(T.Body("updated_at")),
           uploadedOn: S.String.pipe(T.Body("uploaded_on")),
         }),
@@ -658,11 +583,11 @@ function __c1(j: number): any {
         identifier: "CustomTrustStoreListResultItem",
       });
     case 1:
-      return S.Array(CustomTrustStoreListResultItem);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: CustomTrustStoreListResultList.pipe(T.EnvelopePayload()),
+          result: __S(9).pipe(T.EnvelopePayload()),
           resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
         }).pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({
@@ -673,9 +598,7 @@ function __c1(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           enabled: S.Boolean,
-          certificateAuthority: S.optional(
-            TotalTlsEditRequestCertificateAuthority.pipe(T.Body("certificate_authority")),
-          ),
+          certificateAuthority: S.optional(S.String.pipe(T.Body("certificate_authority"))),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/acm/total_tls", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
@@ -685,12 +608,23 @@ function __c1(j: number): any {
         S.Struct({
           zoneId: S.String.pipe(T.Label("zone_id")),
           enabled: S.Boolean,
-          certificateAuthority: S.optional(
-            UpdateTotalTlsRequestCertificateAuthority.pipe(T.Body("certificate_authority")),
-          ),
+          certificateAuthority: S.optional(S.String.pipe(T.Body("certificate_authority"))),
         })
           .pipe(T.Http({ method: "POST", uri: "/zones/{zone_id}/acm/total_tls", code: 200 }))
           .pipe(T.KeyDictionary(KEY_DICTIONARY)),
       ).annotate({ identifier: "UpdateTotalTlsRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

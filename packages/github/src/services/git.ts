@@ -6,6 +6,8 @@ import * as S from "@distilled.cloud/core/schema";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -55,22 +57,13 @@ export interface CreateBlobRequest {
   /** The encoding used for `content`. Currently, `"utf-8"` and `"base64"` are supported. */
   encoding?: string;
 }
-const CreateBlobRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateBlobRequest>;
-
 /** Short Blob */
 export interface ShortBlob {
   url: string;
   sha: string;
 }
-const ShortBlob = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<ShortBlob>;
-
 /** The full SHAs of the commits that were the parents of this commit. If omitted or empty, the commit will be written as a root commit. For a single parent, an array of one SHA should be provided; for a merge commit, an array of more than one should be provided. */
 export type CreateCommitRequestParentsList = Array<string>;
-const CreateCommitRequestParentsList = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CreateCommitRequestParentsList>;
-
 /** Information about the author of the commit. By default, the `author` will be the authenticated user and the current date. See the `author` and `committer` object below for details. */
 export interface CreateCommitRequestAuthor {
   /** The name of the author (or committer) of the commit */
@@ -80,11 +73,6 @@ export interface CreateCommitRequestAuthor {
   /** Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   date?: string;
 }
-const CreateCommitRequestAuthor = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<CreateCommitRequestAuthor>;
-
 /** Information about the person who is making the commit. By default, `committer` will use the information set in `author`. See the `author` and `committer` object below for details. */
 export interface CreateCommitRequestCommitter {
   /** The name of the author (or committer) of the commit */
@@ -94,11 +82,6 @@ export interface CreateCommitRequestCommitter {
   /** Indicates when this commit was authored (or committed). This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   date?: string;
 }
-const CreateCommitRequestCommitter = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<CreateCommitRequestCommitter>;
-
 export interface CreateCommitRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -117,8 +100,6 @@ export interface CreateCommitRequest {
   /** The [PGP signature](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) of the commit. GitHub adds the signature to the `gpgsig` header of the created commit. For a commit signature to be verifiable by Git or GitHub, it must be an ASCII-armored detached PGP signature over the string commit as it would be written to the object database. To pass a `signature` parameter, you need to first manually create a valid PGP signature, which can be complicated. You may find it easier to [use the command line](https://git-scm.com/book/id/v2/Git-Tools-Signing-Your-Work) to create signed commits. */
   signature?: string;
 }
-const CreateCommitRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<CreateCommitRequest>;
-
 /** Identifying information for the git-user */
 export interface GitCommitAuthor {
   /** Timestamp of the commit */
@@ -128,8 +109,6 @@ export interface GitCommitAuthor {
   /** Name of the git user */
   name: string;
 }
-const GitCommitAuthor = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GitCommitAuthor>;
-
 /** Identifying information for the git-user */
 export type GitCommitCommitter = GitCommitAuthor;
 export interface GitCommitTree {
@@ -137,19 +116,13 @@ export interface GitCommitTree {
   sha: string;
   url: string;
 }
-const GitCommitTree = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GitCommitTree>;
-
 export interface GitCommitParentsItem {
   /** SHA for the commit */
   sha: string;
   url: string;
   html_url: string;
 }
-const GitCommitParentsItem = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<GitCommitParentsItem>;
-
 export type GitCommitParentsList = Array<GitCommitParentsItem>;
-const GitCommitParentsList = /*@__PURE__*/ __L.at(__c1, 1) as any as S.Schema<GitCommitParentsList>;
-
 export interface GitCommitVerification {
   verified: boolean;
   reason: string;
@@ -157,11 +130,6 @@ export interface GitCommitVerification {
   payload: string | null;
   verified_at: string | null;
 }
-const GitCommitVerification = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GitCommitVerification>;
-
 /** Low-level Git commit operations within a repository */
 export interface GitCommit {
   /** SHA for the commit */
@@ -179,8 +147,6 @@ export interface GitCommit {
   verification: GitCommitVerification;
   html_url: string;
 }
-const GitCommit = /*@__PURE__*/ __L.at(__c1, 3) as any as S.Schema<GitCommit>;
-
 export interface CreateRefRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -191,16 +157,12 @@ export interface CreateRefRequest {
   /** The SHA1 value for this reference. */
   sha: string;
 }
-const CreateRefRequest = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<CreateRefRequest>;
-
 export interface GitRefObject {
   type: string;
   /** SHA for the reference */
   sha: string;
   url: string;
 }
-const GitRefObject = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GitRefObject>;
-
 /** Git references within a repository */
 export interface GitRef {
   ref: string;
@@ -208,12 +170,8 @@ export interface GitRef {
   url: string;
   object: GitRefObject;
 }
-const GitRef = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GitRef>;
-
 /** The type of the object we're tagging. Normally this is a `commit` but it can also be a `tree` or a `blob`. */
 export type CreateTagRequestType = "commit" | "tree" | "blob";
-const CreateTagRequestType = S.String;
-
 /** An object with information about the individual creating the tag. */
 export interface CreateTagRequestTagger {
   /** The name of the author of the tag */
@@ -223,11 +181,6 @@ export interface CreateTagRequestTagger {
   /** When this object was tagged. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   date?: string;
 }
-const CreateTagRequestTagger = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<CreateTagRequestTagger>;
-
 export interface CreateTagRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -244,22 +197,16 @@ export interface CreateTagRequest {
   /** An object with information about the individual creating the tag. */
   tagger?: CreateTagRequestTagger;
 }
-const CreateTagRequest = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<CreateTagRequest>;
-
 export interface GitTagTagger {
   date: string;
   email: string;
   name: string;
 }
-const GitTagTagger = GitCommitAuthor as any as S.Schema<GitTagTagger>;
-
 export interface GitTagObject {
   sha: string;
   type: string;
   url: string;
 }
-const GitTagObject = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<GitTagObject>;
-
 export interface Verification {
   verified: boolean;
   reason: string;
@@ -267,8 +214,6 @@ export interface Verification {
   signature: string | null;
   verified_at: string | null;
 }
-const Verification = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<Verification>;
-
 /** Metadata for a Git tag */
 export interface GitTag {
   node_id: string;
@@ -283,16 +228,10 @@ export interface GitTag {
   object: GitTagObject;
   verification?: Verification;
 }
-const GitTag = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<GitTag>;
-
 /** The file mode; one of `100644` for file (blob), `100755` for executable (blob), `040000` for subdirectory (tree), `160000` for submodule (commit), or `120000` for a blob that specifies the path of a symlink. */
 export type CreateTreeRequestTreeItemMode = "100644" | "100755" | "040000" | "160000" | "120000";
-const CreateTreeRequestTreeItemMode = S.String;
-
 /** Either `blob`, `tree`, or `commit`. */
 export type CreateTreeRequestTreeItemType = "blob" | "tree" | "commit";
-const CreateTreeRequestTreeItemType = S.String;
-
 export interface CreateTreeRequestTreeItem {
   /** The file referenced in the tree. */
   path?: string;
@@ -305,18 +244,8 @@ export interface CreateTreeRequestTreeItem {
   /** The content you want this file to have. GitHub will write this blob out and use that SHA for this entry. Use either this, or `tree.sha`. **Note:** Use either `tree.sha` or `content` to specify the contents of the entry. Using both `tree.sha` and `content` will return an error. */
   content?: string;
 }
-const CreateTreeRequestTreeItem = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateTreeRequestTreeItem>;
-
 /** Objects (of `path`, `mode`, `type`, and `sha`) specifying a tree structure. */
 export type CreateTreeRequestTreeList = Array<CreateTreeRequestTreeItem>;
-const CreateTreeRequestTreeList = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateTreeRequestTreeList>;
-
 export interface CreateTreeRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -327,8 +256,6 @@ export interface CreateTreeRequest {
   /** The SHA1 of an existing Git tree object which will be used as the base for the new tree. If provided, a new Git tree object will be created from entries in the Git tree object pointed to by `base_tree` and entries defined in the `tree` parameter. Entries defined in the `tree` parameter will overwrite items from `base_tree` with the same `path`. If you're creating new changes on a branch, then normally you'd set `base_tree` to the SHA1 of the Git tree object of the current latest commit on the branch you're working on. If not provided, GitHub will create a new Git tree object from only the entries defined in the `tree` parameter. If you create a new commit pointing to such a tree, then all files which were a part of the parent commit's tree and were not defined in the `tree` parameter will be listed as deleted by the new commit. */
   base_tree?: string;
 }
-const CreateTreeRequest = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<CreateTreeRequest>;
-
 export interface GitTreeTreeItem {
   path: string;
   mode: string;
@@ -337,12 +264,8 @@ export interface GitTreeTreeItem {
   size?: number;
   url?: string;
 }
-const GitTreeTreeItem = /*@__PURE__*/ __L.at(__c2, 7) as any as S.Schema<GitTreeTreeItem>;
-
 /** Objects specifying a tree structure */
 export type GitTreeTreeList = Array<GitTreeTreeItem>;
-const GitTreeTreeList = /*@__PURE__*/ __L.at(__c3, 0) as any as S.Schema<GitTreeTreeList>;
-
 /** The hierarchy between files in a Git repository. */
 export interface GitTree {
   sha: string;
@@ -351,8 +274,6 @@ export interface GitTree {
   /** Objects specifying a tree structure */
   tree: GitTreeTreeList;
 }
-const GitTree = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<GitTree>;
-
 export interface DeleteRefRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -361,11 +282,7 @@ export interface DeleteRefRequest {
   /** The Git reference. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation. */
   ref: string;
 }
-const DeleteRefRequest = /*@__PURE__*/ __L.at(__c3, 2) as any as S.Schema<DeleteRefRequest>;
-
 export interface DeleteRefResponse {}
-const DeleteRefResponse = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DeleteRefResponse>;
-
 export interface GetBlobRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -373,8 +290,6 @@ export interface GetBlobRequest {
   repo: string;
   file_sha: string;
 }
-const GetBlobRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<GetBlobRequest>;
-
 /** Blob */
 export interface Blob {
   content: string;
@@ -385,8 +300,6 @@ export interface Blob {
   node_id: string;
   highlighted_content?: string;
 }
-const Blob = /*@__PURE__*/ __L.at(__c3, 5) as any as S.Schema<Blob>;
-
 export interface GetCommitRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -395,8 +308,6 @@ export interface GetCommitRequest {
   /** The SHA of the commit. */
   commit_sha: string;
 }
-const GetCommitRequest = /*@__PURE__*/ __L.at(__c3, 6) as any as S.Schema<GetCommitRequest>;
-
 export interface GetRefRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -405,8 +316,6 @@ export interface GetRefRequest {
   /** The Git reference. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation. */
   ref: string;
 }
-const GetRefRequest = /*@__PURE__*/ __L.at(__c3, 7) as any as S.Schema<GetRefRequest>;
-
 export interface GetTagRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -414,8 +323,6 @@ export interface GetTagRequest {
   repo: string;
   tag_sha: string;
 }
-const GetTagRequest = /*@__PURE__*/ __L.at(__c4, 0) as any as S.Schema<GetTagRequest>;
-
 export interface GetTreeRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -426,8 +333,6 @@ export interface GetTreeRequest {
   /** Setting this parameter to any value returns the objects or subtrees referenced by the tree specified in `:tree_sha`. For example, setting `recursive` to any of the following will enable returning objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent recursively returning objects or subtrees. */
   recursive?: string;
 }
-const GetTreeRequest = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<GetTreeRequest>;
-
 export interface ListMatchingRefsRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -436,23 +341,8 @@ export interface ListMatchingRefsRequest {
   /** The Git reference. For more information, see "[Git References](https://git-scm.com/book/en/v2/Git-Internals-Git-References)" in the Git documentation. */
   ref: string;
 }
-const ListMatchingRefsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ListMatchingRefsRequest>;
-
 export type ListMatchingRefsResponseBodyList = Array<GitRef>;
-const ListMatchingRefsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ListMatchingRefsResponseBodyList>;
-
 export type ListMatchingRefsResponse = ListMatchingRefsResponseBodyList;
-const ListMatchingRefsResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<ListMatchingRefsResponse>;
-
 export interface UpdateRefRequest {
   /** The account owner of the repository. The name is not case sensitive. */
   owner: string;
@@ -465,8 +355,6 @@ export interface UpdateRefRequest {
   /** Indicates whether to force the update or to make sure the update is a fast-forward update. Leaving this out or setting it to `false` will make sure you're not overwriting work. */
   force?: boolean;
 }
-const UpdateRefRequest = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<UpdateRefRequest>;
-
 export type CreateBlobError = Forbidden | NotFound | Conflict | UnprocessableEntity | GithubOpError;
 /** Create a blob */
 export const createBlob: API.OperationMethod<
@@ -475,8 +363,8 @@ export const createBlob: API.OperationMethod<
   CreateBlobError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateBlobRequest,
-  output: ShortBlob,
+  input: __S(0) as any as S.Schema<CreateBlobRequest>,
+  output: __S(1) as any as S.Schema<ShortBlob>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -490,8 +378,8 @@ export const createCommit: API.OperationMethod<
   CreateCommitError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateCommitRequest,
-  output: GitCommit,
+  input: __S(5) as any as S.Schema<CreateCommitRequest>,
+  output: __S(11) as any as S.Schema<GitCommit>,
   errors: [NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -505,8 +393,8 @@ export const createRef: API.OperationMethod<
   CreateRefError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRefRequest,
-  output: GitRef,
+  input: __S(12) as any as S.Schema<CreateRefRequest>,
+  output: __S(14) as any as S.Schema<GitRef>,
   errors: [Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -520,8 +408,8 @@ export const createTag: API.OperationMethod<
   CreateTagError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTagRequest,
-  output: GitTag,
+  input: __S(16) as any as S.Schema<CreateTagRequest>,
+  output: __S(19) as any as S.Schema<GitTag>,
   errors: [Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -535,8 +423,8 @@ export const createTree: API.OperationMethod<
   CreateTreeError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateTreeRequest,
-  output: GitTree,
+  input: __S(22) as any as S.Schema<CreateTreeRequest>,
+  output: __S(25) as any as S.Schema<GitTree>,
   errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -550,8 +438,8 @@ export const deleteRef: API.OperationMethod<
   DeleteRefError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRefRequest,
-  output: DeleteRefResponse,
+  input: __S(26) as any as S.Schema<DeleteRefRequest>,
+  output: __S(27) as any as S.Schema<DeleteRefResponse>,
   errors: [Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -561,8 +449,8 @@ export type GetBlobError = Forbidden | NotFound | Conflict | UnprocessableEntity
 /** Get a blob The `content` in the response will always be Base64 encoded. This endpoint supports the following custom media types. For more information, see "[Media types](https://docs.github.com/rest/using-the-rest-api/getting-started-with-the-rest-api#media-types)." - **`application/vnd.github.raw+json`**: Returns the raw blob data. - **`application/vnd.github+json`**: Returns a JSON representation of the blob with `content` as a base64 encoded string. This is the default if no media type is specified. **Note** This endpoint supports blobs up to 100 megabytes in size. */
 export const getBlob: API.OperationMethod<GetBlobRequest, Blob, GetBlobError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetBlobRequest,
-    output: Blob,
+    input: __S(28) as any as S.Schema<GetBlobRequest>,
+    output: __S(29) as any as S.Schema<Blob>,
     errors: [Forbidden, NotFound, Conflict, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -576,8 +464,8 @@ export const getCommit: API.OperationMethod<
   GetCommitError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommitRequest,
-  output: GitCommit,
+  input: __S(30) as any as S.Schema<GetCommitRequest>,
+  output: __S(11) as any as S.Schema<GitCommit>,
   errors: [NotFound, Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -587,8 +475,8 @@ export type GetRefError = NotFound | Conflict | GithubOpError;
 /** Get a reference Returns a single reference from your Git database. The `:ref` in the URL must be formatted as `heads/<branch name>` for branches and `tags/<tag name>` for tags. If the `:ref` doesn't match an existing ref, a `404` is returned. > [!NOTE] > You need to explicitly [request a pull request](https://docs.github.com/rest/pulls/pulls#get-a-pull-request) to trigger a test merge commit, which checks the mergeability of pull requests. For more information, see "[Checking mergeability of pull requests](https://docs.github.com/rest/guides/getting-started-with-the-git-database-api#checking-mergeability-of-pull-requests)". */
 export const getRef: API.OperationMethod<GetRefRequest, GitRef, GetRefError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetRefRequest,
-    output: GitRef,
+    input: __S(31) as any as S.Schema<GetRefRequest>,
+    output: __S(14) as any as S.Schema<GitRef>,
     errors: [NotFound, Conflict],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -598,8 +486,8 @@ export type GetTagError = NotFound | Conflict | GithubOpError;
 /** Get a tag **Signature verification object** The response will include a `verification` object that describes the result of verifying the commit's signature. The following fields are included in the `verification` object: These are the possible values for `reason` in the `verification` object: */
 export const getTag: API.OperationMethod<GetTagRequest, GitTag, GetTagError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetTagRequest,
-    output: GitTag,
+    input: __S(32) as any as S.Schema<GetTagRequest>,
+    output: __S(19) as any as S.Schema<GitTag>,
     errors: [NotFound, Conflict],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -609,8 +497,8 @@ export type GetTreeError = NotFound | Conflict | UnprocessableEntity | GithubOpE
 /** Get a tree Returns a single tree using the SHA1 value or ref name for that tree. If `truncated` is `true` in the response then the number of items in the `tree` array exceeded our maximum limit. If you need to fetch more items, use the non-recursive method of fetching trees, and fetch one sub-tree at a time. > [!NOTE] > The limit for the `tree` array is 100,000 entries with a maximum size of 7 MB when using the `recursive` parameter. */
 export const getTree: API.OperationMethod<GetTreeRequest, GitTree, GetTreeError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetTreeRequest,
-    output: GitTree,
+    input: __S(33) as any as S.Schema<GetTreeRequest>,
+    output: __S(25) as any as S.Schema<GitTree>,
     errors: [NotFound, Conflict, UnprocessableEntity],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -624,8 +512,8 @@ export const listMatchingRefs: API.OperationMethod<
   ListMatchingRefsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMatchingRefsRequest,
-  output: ListMatchingRefsResponse,
+  input: __S(34) as any as S.Schema<ListMatchingRefsRequest>,
+  output: __S(36) as any as S.Schema<ListMatchingRefsResponse>,
   errors: [Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -639,8 +527,8 @@ export const updateRef: API.OperationMethod<
   UpdateRefError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRefRequest,
-  output: GitRef,
+  input: __S(37) as any as S.Schema<UpdateRefRequest>,
+  output: __S(14) as any as S.Schema<GitRef>,
   errors: [Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -694,9 +582,9 @@ function __c0(j: number): any {
           repo: S.String.pipe(T.Label()),
           message: S.String,
           tree: S.String,
-          parents: S.optional(CreateCommitRequestParentsList),
-          author: S.optional(CreateCommitRequestAuthor),
-          committer: S.optional(CreateCommitRequestCommitter),
+          parents: S.optional(__S(2)),
+          author: S.optional(__S(3)),
+          committer: S.optional(__S(4)),
           signature: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/git/commits", code: 200 })),
       ).annotate({ identifier: "CreateCommitRequest" });
@@ -728,7 +616,7 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "GitCommitParentsItem" });
     case 1:
-      return S.Array(GitCommitParentsItem);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -745,12 +633,12 @@ function __c1(j: number): any {
           sha: S.String,
           node_id: S.String,
           url: S.String,
-          author: GitCommitAuthor,
-          committer: GitCommitAuthor,
+          author: __S(6),
+          committer: __S(6),
           message: S.String,
-          tree: GitCommitTree,
-          parents: GitCommitParentsList,
-          verification: GitCommitVerification,
+          tree: __S(7),
+          parents: __S(9),
+          verification: __S(10),
           html_url: S.String,
         }),
       ).annotate({ identifier: "GitCommit" });
@@ -777,7 +665,7 @@ function __c1(j: number): any {
           ref: S.String,
           node_id: S.String,
           url: S.String,
-          object: GitRefObject,
+          object: __S(13),
         }),
       ).annotate({ identifier: "GitRef" });
     case 7:
@@ -800,8 +688,8 @@ function __c2(j: number): any {
           tag: S.String,
           message: S.String,
           object: S.String,
-          type: CreateTagRequestType,
-          tagger: S.optional(CreateTagRequestTagger),
+          type: S.String,
+          tagger: S.optional(__S(15)),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/git/tags", code: 200 })),
       ).annotate({ identifier: "CreateTagRequest" });
     case 1:
@@ -830,17 +718,17 @@ function __c2(j: number): any {
           sha: S.String,
           url: S.String,
           message: S.String,
-          tagger: GitTagTagger,
-          object: GitTagObject,
-          verification: S.optional(Verification),
+          tagger: __S(6),
+          object: __S(17),
+          verification: S.optional(__S(18)),
         }),
       ).annotate({ identifier: "GitTag" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           path: S.optional(S.String),
-          mode: S.optional(CreateTreeRequestTreeItemMode),
-          type: S.optional(CreateTreeRequestTreeItemType),
+          mode: S.optional(S.String),
+          type: S.optional(S.String),
           sha: S.optional(S.NullOr(S.String)),
           content: S.optional(S.String),
         }),
@@ -848,13 +736,13 @@ function __c2(j: number): any {
         identifier: "CreateTreeRequestTreeItem",
       });
     case 5:
-      return S.Array(CreateTreeRequestTreeItem);
+      return S.Array(__S(20));
     case 6:
       return S.suspend(() =>
         S.Struct({
           owner: S.String.pipe(T.Label()),
           repo: S.String.pipe(T.Label()),
-          tree: CreateTreeRequestTreeList,
+          tree: __S(21),
           base_tree: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/repos/{owner}/{repo}/git/trees", code: 200 })),
       ).annotate({ identifier: "CreateTreeRequest" });
@@ -874,14 +762,14 @@ function __c2(j: number): any {
 function __c3(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(GitTreeTreeItem);
+      return S.Array(__S(23));
     case 1:
       return S.suspend(() =>
         S.Struct({
           sha: S.String,
           url: S.optional(S.String),
           truncated: S.Boolean,
-          tree: GitTreeTreeList,
+          tree: __S(24),
         }),
       ).annotate({ identifier: "GitTree" });
     case 2:
@@ -982,9 +870,9 @@ function __c4(j: number): any {
         ),
       ).annotate({ identifier: "ListMatchingRefsRequest" });
     case 3:
-      return S.Array(GitRef);
+      return S.Array(__S(14));
     case 4:
-      return S.suspend(() => ListMatchingRefsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(35).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMatchingRefsResponse",
       });
     case 5:
@@ -999,5 +887,24 @@ function __c4(j: number): any {
           T.Http({ method: "PATCH", uri: "/repos/{owner}/{repo}/git/refs/{ref}", code: 200 }),
         ),
       ).annotate({ identifier: "UpdateRefRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
   }
 }

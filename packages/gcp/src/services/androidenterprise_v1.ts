@@ -7,6 +7,8 @@ import { UnknownGCPError } from "../errors.ts";
 import { GcpProtocol, type GcpOpError, type GcpOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GcpOpError, GcpOpContext };
 
@@ -83,40 +85,21 @@ export interface AcknowledgeNotificationSetEnterprisesRequest {
   /** The notification set ID as returned by Enterprises.PullNotificationSet. This must be provided. */
   notificationSetId?: string;
 }
-const AcknowledgeNotificationSetEnterprisesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AcknowledgeNotificationSetEnterprisesRequest>;
-
 export interface AcknowledgeNotificationSetEnterprisesResponse {}
-const AcknowledgeNotificationSetEnterprisesResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AcknowledgeNotificationSetEnterprisesResponse>;
-
 /** Information on an approval URL. */
 export interface ApprovalUrlInfo {
   /** A URL that displays a product's permissions and that can also be used to approve the product with the Products.approve call. */
   approvalUrl?: string;
 }
-const ApprovalUrlInfo = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<ApprovalUrlInfo>;
-
 export type ProductsApproveRequestApprovedPermissionsEnum =
   | "currentPermissionsOnly"
   | "allPermissions";
-const ProductsApproveRequestApprovedPermissionsEnum = S.String;
-
 export interface ProductsApproveRequest {
   /** The approval URL that was shown to the user. Only the permissions shown to the user with that URL will be accepted, which may not be the product's entire set of permissions. For example, the URL may only display new permissions from an update after the product was approved, or not include new permissions if the product was updated since the URL was generated. */
   approvalUrlInfo?: ApprovalUrlInfo;
   /** Sets how new permission requests for the product are handled. "allPermissions" automatically approves all current and future permissions for the product. "currentPermissionsOnly" approves the current set of permissions for the product, but any future permissions added through updates will require manual reapproval. If not specified, only the current set of permissions will be approved. */
   approvedPermissions?: ProductsApproveRequestApprovedPermissionsEnum | (string & {});
 }
-const ProductsApproveRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<ProductsApproveRequest>;
-
 export interface ApproveProductsRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
@@ -125,44 +108,23 @@ export interface ApproveProductsRequest {
   /** Request body */
   body?: ProductsApproveRequest;
 }
-const ApproveProductsRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<ApproveProductsRequest>;
-
 export interface ApproveProductsResponse {}
-const ApproveProductsResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<ApproveProductsResponse>;
-
 export interface CompleteSignupEnterprisesRequest {
   /** The Completion token initially returned by GenerateSignupUrl. */
   completionToken?: string;
   /** The Enterprise token appended to the Callback URL. */
   enterpriseToken?: string;
 }
-const CompleteSignupEnterprisesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<CompleteSignupEnterprisesRequest>;
-
 /** This represents an enterprise admin who can manage the enterprise in the managed Google Play store. */
 export interface Administrator {
   /** The admin's email address. */
   email?: string;
 }
-const Administrator = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<Administrator>;
-
 export type AdministratorList = Array<Administrator>;
-const AdministratorList = /*@__PURE__*/ __L.at(__c1, 0) as any as S.Schema<AdministratorList>;
-
 export type GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum =
   | "googleAuthenticationRequiredUnspecified"
   | "notRequired"
   | "required";
-const GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum = S.String;
-
 /** Contains settings for Google-provided user authentication. */
 export interface GoogleAuthenticationSettings {
   /** Whether Google authentication is required. */
@@ -170,23 +132,14 @@ export interface GoogleAuthenticationSettings {
     | GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum
     | (string & {});
 }
-const GoogleAuthenticationSettings = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GoogleAuthenticationSettings>;
-
 export type EnterpriseManagedGoogleDomainTypeEnum =
   | "managedGoogleDomainTypeUnspecified"
   | "typeTeam"
   | "typeDomain";
-const EnterpriseManagedGoogleDomainTypeEnum = S.String;
-
 export type EnterpriseEnterpriseTypeEnum =
   | "enterpriseTypeUnspecified"
   | "managedGoogleDomain"
   | "managedGooglePlayAccountsEnterprise";
-const EnterpriseEnterpriseTypeEnum = S.String;
-
 /** An Enterprises resource represents the binding between an EMM and a specific organization. That binding can be instantiated in one of two different ways using this API as follows: - For Google managed domain customers, the process involves using Enterprises.enroll and Enterprises.setAccount (in conjunction with artifacts obtained from the Admin console and the Google API Console) and submitted to the EMM through a more-or-less manual process. - For managed Google Play Accounts customers, the process involves using Enterprises.generateSignupUrl and Enterprises.completeSignup in conjunction with the managed Google Play sign-up UI (Google-provided mechanism) to create the binding without manual steps. As an EMM, you can support either or both approaches in your EMM console. See Create an Enterprise for details. */
 export interface Enterprise {
   /** Admins of the enterprise. This is only supported for enterprises created via the EMM-initiated flow. */
@@ -204,20 +157,14 @@ export interface Enterprise {
   /** The type of the enterprise. */
   enterpriseType?: EnterpriseEnterpriseTypeEnum | (string & {});
 }
-const Enterprise = /*@__PURE__*/ __L.at(__c1, 2) as any as S.Schema<Enterprise>;
-
 export type EnrollmentTokenEnrollmentTokenTypeEnum =
   | "enrollmentTokenTypeUnspecified"
   | "userlessDevice"
   | "userDevice";
-const EnrollmentTokenEnrollmentTokenTypeEnum = S.String;
-
 export type EnrollmentTokenGoogleAuthenticationOptionsAuthenticationRequirementEnum =
   | "authenticationRequirementUnspecified"
   | "optional"
   | "required";
-const EnrollmentTokenGoogleAuthenticationOptionsAuthenticationRequirementEnum = S.String;
-
 /** Options for Google authentication during the enrollment. */
 export interface EnrollmentTokenGoogleAuthenticationOptions {
   /** [Optional] Specifies the managed Google account that the user must use during enrollment.`AuthenticationRequirement` must be set to`REQUIRED` if this field is set. */
@@ -227,11 +174,6 @@ export interface EnrollmentTokenGoogleAuthenticationOptions {
     | EnrollmentTokenGoogleAuthenticationOptionsAuthenticationRequirementEnum
     | (string & {});
 }
-const EnrollmentTokenGoogleAuthenticationOptions = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<EnrollmentTokenGoogleAuthenticationOptions>;
-
 /** A token used to enroll a device. */
 export interface EnrollmentToken {
   /** [Required] The type of the enrollment token. */
@@ -243,78 +185,42 @@ export interface EnrollmentToken {
   /** [Optional] Provides options related to Google authentication during the enrollment. */
   googleAuthenticationOptions?: EnrollmentTokenGoogleAuthenticationOptions;
 }
-const EnrollmentToken = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<EnrollmentToken>;
-
 export interface CreateEnrollmentTokensRequest {
   /** Required. The ID of the enterprise. */
   enterpriseId: string;
   /** Request body */
   body?: EnrollmentToken;
 }
-const CreateEnrollmentTokensRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateEnrollmentTokensRequest>;
-
 export interface AdministratorWebTokenSpecPrivateApps {
   /** Whether the Private Apps page is displayed. Default is true. */
   enabled?: boolean;
 }
-const AdministratorWebTokenSpecPrivateApps = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<AdministratorWebTokenSpecPrivateApps>;
-
 export interface AdministratorWebTokenSpecZeroTouch {
   /** Whether zero-touch embedded UI is usable with this token. If enabled, the admin can link zero-touch customers to this enterprise. */
   enabled?: boolean;
 }
-const AdministratorWebTokenSpecZeroTouch =
-  AdministratorWebTokenSpecPrivateApps as any as S.Schema<AdministratorWebTokenSpecZeroTouch>;
-
 export interface AdministratorWebTokenSpecManagedConfigurations {
   /** Whether the Managed Configuration page is displayed. Default is true. */
   enabled?: boolean;
 }
-const AdministratorWebTokenSpecManagedConfigurations =
-  AdministratorWebTokenSpecPrivateApps as any as S.Schema<AdministratorWebTokenSpecManagedConfigurations>;
-
 export interface AdministratorWebTokenSpecPlaySearch {
   /** Whether the managed Play Search apps page is displayed. Default is true. */
   enabled?: boolean;
   /** Allow access to the iframe in approve mode. Default is false. */
   approveApps?: boolean;
 }
-const AdministratorWebTokenSpecPlaySearch = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<AdministratorWebTokenSpecPlaySearch>;
-
 export interface AdministratorWebTokenSpecStoreBuilder {
   /** Whether the Organize apps page is displayed. Default is true. */
   enabled?: boolean;
 }
-const AdministratorWebTokenSpecStoreBuilder =
-  AdministratorWebTokenSpecPrivateApps as any as S.Schema<AdministratorWebTokenSpecStoreBuilder>;
-
 export interface AdministratorWebTokenSpecWebApps {
   /** Whether the Web Apps page is displayed. Default is true. */
   enabled?: boolean;
 }
-const AdministratorWebTokenSpecWebApps =
-  AdministratorWebTokenSpecPrivateApps as any as S.Schema<AdministratorWebTokenSpecWebApps>;
-
 export type AdministratorWebTokenSpecPermissionItemEnum = "unknown" | "approveApps" | "manageMcm";
-const AdministratorWebTokenSpecPermissionItemEnum = S.String;
-
 export type AdministratorWebTokenSpecPermissionItemEnumList = Array<
   AdministratorWebTokenSpecPermissionItemEnum | (string & {})
 >;
-const AdministratorWebTokenSpecPermissionItemEnumList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<AdministratorWebTokenSpecPermissionItemEnumList>;
-
 /** Specification for a token used to generate iframes. The token specifies what data the admin is allowed to modify and the URI the iframe is allowed to communiate with. */
 export interface AdministratorWebTokenSpec {
   /** Options for displaying the Private Apps page. */
@@ -334,32 +240,17 @@ export interface AdministratorWebTokenSpec {
   /** Deprecated. Use PlaySearch.approveApps. */
   permission?: AdministratorWebTokenSpecPermissionItemEnumList;
 }
-const AdministratorWebTokenSpec = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<AdministratorWebTokenSpec>;
-
 export interface CreateWebTokenEnterprisesRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** Request body */
   body?: AdministratorWebTokenSpec;
 }
-const CreateWebTokenEnterprisesRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateWebTokenEnterprisesRequest>;
-
 /** A token authorizing an admin to access an iframe. */
 export interface AdministratorWebToken {
   /** An opaque token to be passed to the Play front-end to generate an iframe. */
   token?: string;
 }
-const AdministratorWebToken = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<AdministratorWebToken>;
-
 export interface DeleteEntitlementsRequest {
   /** The ID of the user. */
   userId: string;
@@ -368,15 +259,7 @@ export interface DeleteEntitlementsRequest {
   /** The ID of the entitlement (a product ID), e.g. "app:com.google.android.gm". */
   entitlementId: string;
 }
-const DeleteEntitlementsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<DeleteEntitlementsRequest>;
-
 export interface DeleteEntitlementsResponse {}
-const DeleteEntitlementsResponse =
-  ApproveProductsResponse as any as S.Schema<DeleteEntitlementsResponse>;
-
 export interface DeleteInstallsRequest {
   /** The Android ID of the device. */
   deviceId: string;
@@ -387,14 +270,7 @@ export interface DeleteInstallsRequest {
   /** The ID of the product represented by the install, e.g. "app:com.google.android.gm". */
   installId: string;
 }
-const DeleteInstallsRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<DeleteInstallsRequest>;
-
 export interface DeleteInstallsResponse {}
-const DeleteInstallsResponse = ApproveProductsResponse as any as S.Schema<DeleteInstallsResponse>;
-
 export interface DeleteManagedconfigurationsfordeviceRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
@@ -405,15 +281,7 @@ export interface DeleteManagedconfigurationsfordeviceRequest {
   /** The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm". */
   managedConfigurationForDeviceId: string;
 }
-const DeleteManagedconfigurationsfordeviceRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<DeleteManagedconfigurationsfordeviceRequest>;
-
 export interface DeleteManagedconfigurationsfordeviceResponse {}
-const DeleteManagedconfigurationsfordeviceResponse =
-  AcknowledgeNotificationSetEnterprisesResponse as any as S.Schema<DeleteManagedconfigurationsfordeviceResponse>;
-
 export interface DeleteManagedconfigurationsforuserRequest {
   /** The ID of the user. */
   userId: string;
@@ -422,30 +290,14 @@ export interface DeleteManagedconfigurationsforuserRequest {
   /** The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm". */
   managedConfigurationForUserId: string;
 }
-const DeleteManagedconfigurationsforuserRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<DeleteManagedconfigurationsforuserRequest>;
-
 export interface DeleteManagedconfigurationsforuserResponse {}
-const DeleteManagedconfigurationsforuserResponse =
-  AcknowledgeNotificationSetEnterprisesResponse as any as S.Schema<DeleteManagedconfigurationsforuserResponse>;
-
 export interface DeleteServiceaccountkeysRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** The ID of the key. */
   keyId: string;
 }
-const DeleteServiceaccountkeysRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<DeleteServiceaccountkeysRequest>;
-
 export interface DeleteServiceaccountkeysResponse {}
-const DeleteServiceaccountkeysResponse =
-  AcknowledgeNotificationSetEnterprisesResponse as any as S.Schema<DeleteServiceaccountkeysResponse>;
-
 export interface DeleteStorelayoutclustersRequest {
   /** The ID of the page. */
   pageId: string;
@@ -454,63 +306,34 @@ export interface DeleteStorelayoutclustersRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const DeleteStorelayoutclustersRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<DeleteStorelayoutclustersRequest>;
-
 export interface DeleteStorelayoutclustersResponse {}
-const DeleteStorelayoutclustersResponse =
-  AcknowledgeNotificationSetEnterprisesResponse as any as S.Schema<DeleteStorelayoutclustersResponse>;
-
 export interface DeleteStorelayoutpagesRequest {
   /** The ID of the page. */
   pageId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const DeleteStorelayoutpagesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<DeleteStorelayoutpagesRequest>;
-
 export interface DeleteStorelayoutpagesResponse {}
-const DeleteStorelayoutpagesResponse =
-  ApproveProductsResponse as any as S.Schema<DeleteStorelayoutpagesResponse>;
-
 export interface DeleteUsersRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** The ID of the user. */
   userId: string;
 }
-const DeleteUsersRequest = /*@__PURE__*/ __L.at(__c3, 3) as any as S.Schema<DeleteUsersRequest>;
-
 export interface DeleteUsersResponse {}
-const DeleteUsersResponse = ApproveProductsResponse as any as S.Schema<DeleteUsersResponse>;
-
 export interface DeleteWebappsRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** The ID of the web app. */
   webAppId: string;
 }
-const DeleteWebappsRequest = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<DeleteWebappsRequest>;
-
 export interface DeleteWebappsResponse {}
-const DeleteWebappsResponse = ApproveProductsResponse as any as S.Schema<DeleteWebappsResponse>;
-
 export interface EnrollEnterprisesRequest {
   /** Required. The token provided by the enterprise to register the EMM. */
   token: string;
   /** Request body */
   body?: Enterprise;
 }
-const EnrollEnterprisesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<EnrollEnterprisesRequest>;
-
 export interface ForceReportUploadDevicesRequest {
   /** The ID of the device. */
   deviceId: string;
@@ -519,15 +342,7 @@ export interface ForceReportUploadDevicesRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const ForceReportUploadDevicesRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<ForceReportUploadDevicesRequest>;
-
 export interface ForceReportUploadDevicesResponse {}
-const ForceReportUploadDevicesResponse =
-  AcknowledgeNotificationSetEnterprisesResponse as any as S.Schema<ForceReportUploadDevicesResponse>;
-
 export interface GenerateApprovalUrlProductsRequest {
   /** The ID of the product. */
   productId: string;
@@ -536,41 +351,22 @@ export interface GenerateApprovalUrlProductsRequest {
   /** The BCP 47 language code used for permission names and descriptions in the returned iframe, for instance "en-US". */
   languageCode?: string;
 }
-const GenerateApprovalUrlProductsRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<GenerateApprovalUrlProductsRequest>;
-
 export interface ProductsGenerateApprovalUrlResponse {
   /** A URL that can be rendered in an iframe to display the permissions (if any) of a product. This URL can be used to approve the product only once and only within 24 hours of being generated, using the Products.approve call. If the product is currently unapproved and has no permissions, this URL will point to an empty page. If the product is currently approved, a URL will only be generated if that product has added permissions since it was last approved, and the URL will only display those new permissions that have not yet been accepted. */
   url?: string;
 }
-const ProductsGenerateApprovalUrlResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<ProductsGenerateApprovalUrlResponse>;
-
 export interface GenerateAuthenticationTokenUsersRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** The ID of the user. */
   userId: string;
 }
-const GenerateAuthenticationTokenUsersRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<GenerateAuthenticationTokenUsersRequest>;
-
 /** An AuthenticationToken is used by the EMM's device policy client on a device to provision the given EMM-managed user on that device. */
 export interface AuthenticationToken {
   /** The authentication token to be passed to the device policy client on the device where it can be used to provision the account for which this token was generated. */
   token?: string;
 }
-const AuthenticationToken = AdministratorWebToken as any as S.Schema<AuthenticationToken>;
-
 export type StringList = Array<string>;
-const StringList = /*@__PURE__*/ __L.at(__c4, 2) as any as S.Schema<StringList>;
-
 export interface GenerateEnterpriseUpgradeUrlEnterprisesRequest {
   /** Optional. A list of domains that are permitted for the admin email. The IT admin cannot enter an email address with a domain name that is not in this list. Subdomains of domains in this list are not allowed but can be allowed by adding a second entry which has `*.` prefixed to the domain name (e.g. *.example.com). If the field is not present or is an empty list then the IT admin is free to use any valid domain name. Personal email domains are not allowed. */
   allowedDomains?: StringList;
@@ -579,19 +375,11 @@ export interface GenerateEnterpriseUpgradeUrlEnterprisesRequest {
   /** Optional. Email address used to prefill the admin field of the enterprise signup form as part of the upgrade process. This value is a hint only and can be altered by the user. Personal email addresses are not allowed. If `allowedDomains` is non-empty then this must belong to one of the `allowedDomains`. */
   adminEmail?: string;
 }
-const GenerateEnterpriseUpgradeUrlEnterprisesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<GenerateEnterpriseUpgradeUrlEnterprisesRequest>;
-
 /** Response message for generating a URL to upgrade an existing managed Google Play Accounts enterprise to a managed Google domain. */
 export interface GenerateEnterpriseUpgradeUrlResponse {
   /** A URL for an enterprise admin to upgrade their enterprise. The page can't be rendered in an iframe. */
   url?: string;
 }
-const GenerateEnterpriseUpgradeUrlResponse =
-  ProductsGenerateApprovalUrlResponse as any as S.Schema<GenerateEnterpriseUpgradeUrlResponse>;
-
 export interface GenerateSignupUrlEnterprisesRequest {
   /** Optional. Email address used to prefill the admin field of the enterprise signup form. This value is a hint only and can be altered by the user. If `allowedDomains` is non-empty then this must belong to one of the `allowedDomains`. */
   adminEmail?: string;
@@ -600,11 +388,6 @@ export interface GenerateSignupUrlEnterprisesRequest {
   /** The callback URL to which the Admin will be redirected after successfully creating an enterprise. Before redirecting there the system will add a single query parameter to this URL named "enterpriseToken" which will contain an opaque token to be used for the CompleteSignup request. Beware that this means that the URL will be parsed, the parameter added and then a new URL formatted, i.e. there may be some minor formatting changes and, more importantly, the URL must be well-formed so that it can be parsed. */
   callbackUrl?: string;
 }
-const GenerateSignupUrlEnterprisesRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<GenerateSignupUrlEnterprisesRequest>;
-
 /** A resource returned by the GenerateSignupUrl API, which contains the Signup URL and Completion Token. */
 export interface SignupInfo {
   /** An opaque token that will be required, along with the Enterprise Token, for obtaining the enterprise resource from CompleteSignup. */
@@ -614,8 +397,6 @@ export interface SignupInfo {
   /** Deprecated. */
   kind?: string;
 }
-const SignupInfo = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<SignupInfo>;
-
 export interface GetAppRestrictionsSchemaProductsRequest {
   /** The BCP47 tag for the user's preferred language (e.g. "en-US", "de"). */
   language?: string;
@@ -624,11 +405,6 @@ export interface GetAppRestrictionsSchemaProductsRequest {
   /** The ID of the product. */
   productId: string;
 }
-const GetAppRestrictionsSchemaProductsRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<GetAppRestrictionsSchemaProductsRequest>;
-
 export type AppRestrictionsSchemaRestrictionRestrictionTypeEnum =
   | "bool"
   | "string"
@@ -638,8 +414,6 @@ export type AppRestrictionsSchemaRestrictionRestrictionTypeEnum =
   | "hidden"
   | "bundle"
   | "bundleArray";
-const AppRestrictionsSchemaRestrictionRestrictionTypeEnum = S.String;
-
 export type AppRestrictionsSchemaRestrictionRestrictionValueTypeEnum =
   | "bool"
   | "string"
@@ -649,8 +423,6 @@ export type AppRestrictionsSchemaRestrictionRestrictionValueTypeEnum =
   | "hidden"
   | "bundle"
   | "bundleArray";
-const AppRestrictionsSchemaRestrictionRestrictionValueTypeEnum = S.String;
-
 /** A typed value for the restriction. */
 export interface AppRestrictionsSchemaRestrictionRestrictionValue {
   /** The string value - this will be present for types string, choice and hidden. */
@@ -664,11 +436,6 @@ export interface AppRestrictionsSchemaRestrictionRestrictionValue {
   /** The list of string values - this will only be present if type is multiselect. */
   valueMultiselect?: StringList;
 }
-const AppRestrictionsSchemaRestrictionRestrictionValue = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<AppRestrictionsSchemaRestrictionRestrictionValue>;
-
 /** A restriction in the App Restriction Schema represents a piece of configuration that may be pre-applied. */
 export interface AppRestrictionsSchemaRestriction {
   /** The type of the restriction. */
@@ -688,17 +455,7 @@ export interface AppRestrictionsSchemaRestriction {
   /** The name of the restriction. */
   title?: string;
 }
-const AppRestrictionsSchemaRestriction = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<AppRestrictionsSchemaRestriction>;
-
 export type AppRestrictionsSchemaRestrictionList = Array<AppRestrictionsSchemaRestriction>;
-const AppRestrictionsSchemaRestrictionList = /*@__PURE__*/ __L.at(
-  __c5,
-  1,
-) as any as S.Schema<AppRestrictionsSchemaRestrictionList>;
-
 /** Represents the list of app restrictions available to be pre-configured for the product. */
 export interface AppRestrictionsSchema {
   /** Deprecated. */
@@ -706,29 +463,17 @@ export interface AppRestrictionsSchema {
   /** The set of restrictions that make up this schema. */
   restrictions?: AppRestrictionsSchemaRestrictionList;
 }
-const AppRestrictionsSchema = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<AppRestrictionsSchema>;
-
 export interface GetAvailableProductSetUsersRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** The ID of the user. */
   userId: string;
 }
-const GetAvailableProductSetUsersRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  3,
-) as any as S.Schema<GetAvailableProductSetUsersRequest>;
-
 export type ProductSetProductSetBehaviorEnum =
   | "unknown"
   | "whitelist"
   | "includeAll"
   | "allApproved";
-const ProductSetProductSetBehaviorEnum = S.String;
-
 export type ProductVisibilityTracksItemEnum =
   | "appTrackUnspecified"
   | "production"
@@ -737,9 +482,6 @@ export type ProductVisibilityTracksItemEnum =
 export type ProductVisibilityTracksItemEnumList = Array<
   ProductVisibilityTracksItemEnum | (string & {})
 >;
-const ProductVisibilityTracksItemEnumList =
-  AdministratorWebTokenSpecPermissionItemEnumList as any as S.Schema<ProductVisibilityTracksItemEnumList>;
-
 /** A product to be made visible to a user. */
 export interface ProductVisibility {
   /** The product ID to make visible to the user. Required for each item in the productVisibility list. */
@@ -749,14 +491,7 @@ export interface ProductVisibility {
   /** Grants the user visibility to the specified product track(s), identified by trackIds. */
   trackIds?: StringList;
 }
-const ProductVisibility = /*@__PURE__*/ __L.at(__c5, 4) as any as S.Schema<ProductVisibility>;
-
 export type ProductVisibilityList = Array<ProductVisibility>;
-const ProductVisibilityList = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<ProductVisibilityList>;
-
 /** A set of products. */
 export interface ProductSet {
   /** The interpretation of this product set. "unknown" should never be sent and is ignored if received. "whitelist" means that the user is entitled to access the product set. "includeAll" means that all products are accessible, including products that are approved, products with revoked approval, and products that have never been approved. "allApproved" means that the user is entitled to access all products that are approved for the enterprise. If the value is "allApproved" or "includeAll", the productId field is ignored. If no value is provided, it is interpreted as "whitelist" for backwards compatibility. Further "allApproved" or "includeAll" does not enable automatic visibility of "alpha" or "beta" tracks for Android app. Use ProductVisibility to enable "alpha" or "beta" tracks per user. */
@@ -766,8 +501,6 @@ export interface ProductSet {
   /** The list of product IDs making up the set of products. */
   productId?: StringList;
 }
-const ProductSet = /*@__PURE__*/ __L.at(__c5, 6) as any as S.Schema<ProductSet>;
-
 export interface GetDevicesRequest {
   /** The ID of the device. */
   deviceId: string;
@@ -776,20 +509,14 @@ export interface GetDevicesRequest {
   /** The ID of the user. */
   userId: string;
 }
-const GetDevicesRequest = /*@__PURE__*/ __L.at(__c5, 7) as any as S.Schema<GetDevicesRequest>;
-
 export type PolicyProductAvailabilityPolicyEnum =
   | "productAvailabilityPolicyUnspecified"
   | "whitelist"
   | "all";
-const PolicyProductAvailabilityPolicyEnum = S.String;
-
 export type PolicyDeviceReportPolicyEnum =
   | "deviceReportPolicyUnspecified"
   | "deviceReportDisabled"
   | "deviceReportEnabled";
-const PolicyDeviceReportPolicyEnum = S.String;
-
 /** Maintenance window for managed Google Play Accounts. This allows Play store to update the apps on the foreground in the designated window. */
 export interface MaintenanceWindow {
   /** Duration of the maintenance window, in milliseconds. The duration must be between 30 minutes and 24 hours (inclusive). */
@@ -797,63 +524,38 @@ export interface MaintenanceWindow {
   /** Start time of the maintenance window, in milliseconds after midnight on the device. Windows can span midnight. */
   startTimeAfterMidnightMs?: string;
 }
-const MaintenanceWindow = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<MaintenanceWindow>;
-
 export type PolicyAutoUpdatePolicyEnum =
   | "autoUpdatePolicyUnspecified"
   | "choiceToTheUser"
   | "never"
   | "wifiOnly"
   | "always";
-const PolicyAutoUpdatePolicyEnum = S.String;
-
 /** An authentication URL configuration for the authenticator app of an identity provider. */
 export interface EnterpriseAuthenticationAppLinkConfig {
   /** An authentication url. */
   uri?: string;
 }
-const EnterpriseAuthenticationAppLinkConfig = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<EnterpriseAuthenticationAppLinkConfig>;
-
 export type EnterpriseAuthenticationAppLinkConfigList =
   Array<EnterpriseAuthenticationAppLinkConfig>;
-const EnterpriseAuthenticationAppLinkConfigList = /*@__PURE__*/ __L.at(
-  __c6,
-  2,
-) as any as S.Schema<EnterpriseAuthenticationAppLinkConfigList>;
-
 export type ProductPolicyTracksItemEnum = "appTrackUnspecified" | "production" | "beta" | "alpha";
 export type ProductPolicyTracksItemEnumList = Array<ProductPolicyTracksItemEnum | (string & {})>;
-const ProductPolicyTracksItemEnumList =
-  AdministratorWebTokenSpecPermissionItemEnumList as any as S.Schema<ProductPolicyTracksItemEnumList>;
-
 export type AutoInstallPolicyAutoInstallModeEnum =
   | "autoInstallModeUnspecified"
   | "doNotAutoInstall"
   | "autoInstallOnce"
   | "forceAutoInstall";
-const AutoInstallPolicyAutoInstallModeEnum = S.String;
-
 export type AutoInstallConstraintNetworkTypeConstraintEnum =
   | "networkTypeConstraintUnspecified"
   | "anyNetwork"
   | "unmeteredNetwork";
-const AutoInstallConstraintNetworkTypeConstraintEnum = S.String;
-
 export type AutoInstallConstraintChargingStateConstraintEnum =
   | "chargingStateConstraintUnspecified"
   | "chargingNotRequired"
   | "chargingRequired";
-const AutoInstallConstraintChargingStateConstraintEnum = S.String;
-
 export type AutoInstallConstraintDeviceIdleStateConstraintEnum =
   | "deviceIdleStateConstraintUnspecified"
   | "deviceIdleNotRequired"
   | "deviceIdleRequired";
-const AutoInstallConstraintDeviceIdleStateConstraintEnum = S.String;
-
 /** The auto-install constraint. Defines a set of restrictions for installation. At least one of the fields must be set. */
 export interface AutoInstallConstraint {
   /** Network type constraint. */
@@ -863,17 +565,7 @@ export interface AutoInstallConstraint {
   /** Device idle state constraint. */
   deviceIdleStateConstraint?: AutoInstallConstraintDeviceIdleStateConstraintEnum | (string & {});
 }
-const AutoInstallConstraint = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<AutoInstallConstraint>;
-
 export type AutoInstallConstraintList = Array<AutoInstallConstraint>;
-const AutoInstallConstraintList = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<AutoInstallConstraintList>;
-
 export interface AutoInstallPolicy {
   /** The auto-install mode. If unset, defaults to "doNotAutoInstall". An app is automatically installed regardless of a set maintenance window. */
   autoInstallMode?: AutoInstallPolicyAutoInstallModeEnum | (string & {});
@@ -884,24 +576,12 @@ export interface AutoInstallPolicy {
   /** The minimum version of the app. If a lower version of the app is installed, then the app will be auto-updated according to the auto-install constraints, instead of waiting for the regular auto-update. You can set a minimum version code for at most 20 apps per device. */
   minimumVersionCode?: number;
 }
-const AutoInstallPolicy = /*@__PURE__*/ __L.at(__c6, 5) as any as S.Schema<AutoInstallPolicy>;
-
 /** A bundle of managed properties. */
 export interface ManagedPropertyBundle {
   /** The list of managed properties. */
   managedProperty?: ManagedPropertyList;
 }
-const ManagedPropertyBundle = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<ManagedPropertyBundle>;
-
 export type ManagedPropertyBundleList = Array<ManagedPropertyBundle>;
-const ManagedPropertyBundleList = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<ManagedPropertyBundleList>;
-
 /** A managed property of a managed configuration. The property must match one of the properties in the app restrictions schema of the product. Exactly one of the value fields must be populated, and it must match the property's type in the app restrictions schema. */
 export interface ManagedProperty {
   /** The string value - this will only be present if type of the property is string, choice or hidden. */
@@ -919,11 +599,7 @@ export interface ManagedProperty {
   /** The integer value - this will only be present if type of the property is integer. */
   valueInteger?: number;
 }
-const ManagedProperty = /*@__PURE__*/ __L.at(__c7, 0) as any as S.Schema<ManagedProperty>;
-
 export type ManagedPropertyList = Array<ManagedProperty>;
-const ManagedPropertyList = /*@__PURE__*/ __L.at(__c7, 1) as any as S.Schema<ManagedPropertyList>;
-
 /** A variable set is a key-value pair of EMM-provided placeholders and its corresponding value, which is attributed to a user. For example, $FIRSTNAME could be a placeholder, and its value could be Alice. Placeholders should start with a '$' sign and should be alphanumeric only. */
 export interface VariableSet {
   /** The value of the placeholder, specific to the user. */
@@ -931,11 +607,7 @@ export interface VariableSet {
   /** The placeholder string; defined by EMM. */
   placeholder?: string;
 }
-const VariableSet = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<VariableSet>;
-
 export type VariableSetList = Array<VariableSet>;
-const VariableSetList = /*@__PURE__*/ __L.at(__c7, 3) as any as S.Schema<VariableSetList>;
-
 /** A configuration variables resource contains the managed configuration settings ID to be applied to a single user, as well as the variable set that is attributed to the user. The variable set will be used to replace placeholders in the managed configuration settings. */
 export interface ConfigurationVariables {
   /** The variable set that is attributed to the user. */
@@ -943,11 +615,6 @@ export interface ConfigurationVariables {
   /** The ID of the managed configurations settings. */
   mcmId?: string;
 }
-const ConfigurationVariables = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<ConfigurationVariables>;
-
 /** *Deprecated:* New integrations cannot use this method and can refer to our new recommendations */
 export interface ManagedConfiguration {
   /** The ID of the product that the managed configuration is for, e.g. "app:com.google.android.gm". */
@@ -959,15 +626,11 @@ export interface ManagedConfiguration {
   /** Contains the ID of the managed configuration profile and the set of configuration variables (if any) defined for the user. */
   configurationVariables?: ConfigurationVariables;
 }
-const ManagedConfiguration = /*@__PURE__*/ __L.at(__c7, 5) as any as S.Schema<ManagedConfiguration>;
-
 export type ProductPolicyAutoUpdateModeEnum =
   | "autoUpdateModeUnspecified"
   | "autoUpdateDefault"
   | "autoUpdatePostponed"
   | "autoUpdateHighPriority";
-const ProductPolicyAutoUpdateModeEnum = S.String;
-
 /** The policy for a product. */
 export interface ProductPolicy {
   /** An authentication URL configuration for the authenticator app of an identity provider. This helps to launch the identity provider's authenticator app during the authentication happening in a private app using Android WebView. Authenticator app should already be the default handler for the authentication url on the device. */
@@ -985,11 +648,7 @@ export interface ProductPolicy {
   /** The auto-update mode for the product. When autoUpdateMode is used, it always takes precedence over the user's choice. So when a user makes changes to the device settings manually, these changes are ignored. */
   autoUpdateMode?: ProductPolicyAutoUpdateModeEnum | (string & {});
 }
-const ProductPolicy = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<ProductPolicy>;
-
 export type ProductPolicyList = Array<ProductPolicy>;
-const ProductPolicyList = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<ProductPolicyList>;
-
 /** The device policy for a given managed device. */
 export interface Policy {
   /** The availability granted to the device for the specified products. "all" gives the device access to all products, regardless of approval status. "all" does not enable automatic visibility of "alpha" or "beta" tracks. "whitelist" grants the device access the products specified in productPolicy[]. Only products that are approved or products that were previously approved (products with revoked approval) by the enterprise can be whitelisted. If no value is provided, the availability set at the user level is applied by default. */
@@ -1005,11 +664,7 @@ export interface Policy {
   /** The list of product policies. The productAvailabilityPolicy needs to be set to WHITELIST or ALL for the product policies to be applied. */
   productPolicy?: ProductPolicyList;
 }
-const Policy = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<Policy>;
-
 export type KeyedAppStateSeverityEnum = "severityUnknown" | "severityInfo" | "severityError";
-const KeyedAppStateSeverityEnum = S.String;
-
 /** Represents a keyed app state containing a key, timestamp, severity level, optional description, and optional data. */
 export interface KeyedAppState {
   /** Timestamp of when the app set the state in milliseconds since epoch. This field will always be present. */
@@ -1023,11 +678,7 @@ export interface KeyedAppState {
   /** Additional field intended for machine-readable data. For example, a number or JSON object. To prevent XSS, we recommend removing any HTML from the data before displaying it. */
   data?: string;
 }
-const KeyedAppState = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<KeyedAppState>;
-
 export type KeyedAppStateList = Array<KeyedAppState>;
-const KeyedAppStateList = /*@__PURE__*/ __L.at(__c8, 2) as any as S.Schema<KeyedAppStateList>;
-
 /** List of states set by the app. */
 export interface AppState {
   /** List of keyed app states. This field will always be present. */
@@ -1035,11 +686,7 @@ export interface AppState {
   /** The package name of the app. This field will always be present. */
   packageName?: string;
 }
-const AppState = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<AppState>;
-
 export type AppStateList = Array<AppState>;
-const AppStateList = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<AppStateList>;
-
 /** Device report updated with the latest app states for managed apps on the device. */
 export interface DeviceReport {
   /** The timestamp of the last report update in milliseconds since epoch. This field will always be present. */
@@ -1047,15 +694,11 @@ export interface DeviceReport {
   /** List of app states set by managed apps on the device. App states are defined by the app's developers. This field will always be present. */
   appState?: AppStateList;
 }
-const DeviceReport = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<DeviceReport>;
-
 export type DeviceManagementTypeEnum =
   | "managedDevice"
   | "managedProfile"
   | "containerApp"
   | "unmanagedProfile";
-const DeviceManagementTypeEnum = S.String;
-
 /** A Devices resource represents a mobile device managed by the EMM and belonging to a specific enterprise user. */
 export interface Device {
   /** The policy enforced on the device. */
@@ -1081,17 +724,10 @@ export interface Device {
   /** Retail brand for the device, if set. See android.os.Build.BRAND */
   retailBrand?: string;
 }
-const Device = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<Device>;
-
 export interface GetEnterprisesRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const GetEnterprisesRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<GetEnterprisesRequest>;
-
 export interface GetEntitlementsRequest {
   /** The ID of the entitlement (a product ID), e.g. "app:com.google.android.gm". */
   entitlementId: string;
@@ -1100,14 +736,7 @@ export interface GetEntitlementsRequest {
   /** The ID of the user. */
   userId: string;
 }
-const GetEntitlementsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<GetEntitlementsRequest>;
-
 export type EntitlementReasonEnum = "free" | "groupLicense" | "userPurchase";
-const EntitlementReasonEnum = S.String;
-
 /** *Deprecated:* New integrations cannot use this method and can refer to our new recommendations. */
 export interface Entitlement {
   /** The reason for the entitlement. For example, "free" for free apps. This property is temporary: it will be replaced by the acquisition kind field of group licenses. */
@@ -1115,31 +744,18 @@ export interface Entitlement {
   /** The ID of the product that the entitlement is for. For example, "app:com.google.android.gm". */
   productId?: string;
 }
-const Entitlement = /*@__PURE__*/ __L.at(__c9, 1) as any as S.Schema<Entitlement>;
-
 export interface GetGrouplicensesRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** The ID of the product the group license is for, e.g. "app:com.google.android.gm". */
   groupLicenseId: string;
 }
-const GetGrouplicensesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<GetGrouplicensesRequest>;
-
 export type GroupLicensePermissionsEnum =
   | "currentApproved"
   | "needsReapproval"
   | "allCurrentAndFutureApproved";
-const GroupLicensePermissionsEnum = S.String;
-
 export type GroupLicenseApprovalEnum = "approved" | "unapproved";
-const GroupLicenseApprovalEnum = S.String;
-
 export type GroupLicenseAcquisitionKindEnum = "free" | "bulkPurchase";
-const GroupLicenseAcquisitionKindEnum = S.String;
-
 /** *Deprecated:* New integrations cannot use this method and can refer to our new recommendations */
 export interface GroupLicense {
   /** The ID of the product that the license is for. For example, "app:com.google.android.gm". */
@@ -1155,8 +771,6 @@ export interface GroupLicense {
   /** How this group license was acquired. "bulkPurchase" means that this Grouplicenses resource was created because the enterprise purchased licenses for this product; otherwise, the value is "free" (for free products). */
   acquisitionKind?: GroupLicenseAcquisitionKindEnum;
 }
-const GroupLicense = /*@__PURE__*/ __L.at(__c9, 3) as any as S.Schema<GroupLicense>;
-
 export interface GetInstallsRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
@@ -1167,11 +781,7 @@ export interface GetInstallsRequest {
   /** The ID of the product represented by the install, e.g. "app:com.google.android.gm". */
   installId: string;
 }
-const GetInstallsRequest = /*@__PURE__*/ __L.at(__c9, 4) as any as S.Schema<GetInstallsRequest>;
-
 export type InstallInstallStateEnum = "installed" | "installPending";
-const InstallInstallStateEnum = S.String;
-
 /** The existence of an Installs resource indicates that an app is installed on a particular device (or that an install is pending). The API can be used to create an install resource using the update method. This triggers the actual install of the app on the device. If the user does not already have an entitlement for the app, then an attempt is made to create one. If this fails (for example, because the app is not free and there is no available license), then the creation of the install fails. The API can also be used to update an installed app. If the update method is used on an existing install, then the app will be updated to the latest available version. Note that it is not possible to force the installation of a specific version of an app: the version code is read-only. If a user installs an app themselves (as permitted by the enterprise), then again an install resource and possibly an entitlement resource are automatically created. The API can also be used to delete an install resource, which triggers the removal of the app from the device. Note that deleting an install does not automatically remove the corresponding entitlement, even if there are no remaining installs. The install resource will also be deleted if the user uninstalls the app themselves. */
 export interface Install {
   /** Install state. The state "installPending" means that an install request has recently been made and download to the device is in progress. The state "installed" means that the app has been installed. This field is read-only. */
@@ -1181,8 +791,6 @@ export interface Install {
   /** The version of the installed product. Guaranteed to be set only if the install state is "installed". */
   versionCode?: number;
 }
-const Install = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<Install>;
-
 export interface GetManagedconfigurationsfordeviceRequest {
   /** The Android ID of the device. */
   deviceId: string;
@@ -1193,11 +801,6 @@ export interface GetManagedconfigurationsfordeviceRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const GetManagedconfigurationsfordeviceRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<GetManagedconfigurationsfordeviceRequest>;
-
 export interface GetManagedconfigurationsforuserRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
@@ -1206,22 +809,12 @@ export interface GetManagedconfigurationsforuserRequest {
   /** The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm". */
   managedConfigurationForUserId: string;
 }
-const GetManagedconfigurationsforuserRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<GetManagedconfigurationsforuserRequest>;
-
 export interface GetPermissionsRequest {
   /** The ID of the permission. */
   permissionId: string;
   /** The BCP47 tag for the user's preferred language (e.g. "en-US", "de") */
   language?: string;
 }
-const GetPermissionsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<GetPermissionsRequest>;
-
 /** A Permissions resource represents some extra capability, to be granted to an Android app, which requires explicit consent. An enterprise admin must consent to these permissions on behalf of their users before an entitlement for the app can be created. The permissions collection is read-only. The information provided for each permission (localized name and description) is intended to be used in the MDM user interface when obtaining consent from the enterprise. */
 export interface Permission {
   /** A longer description of the Permissions resource, giving more details of what it affects. */
@@ -1231,22 +824,13 @@ export interface Permission {
   /** An opaque string uniquely identifying the permission. */
   permissionId?: string;
 }
-const Permission = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<Permission>;
-
 export interface GetPermissionsProductsRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** The ID of the product. */
   productId: string;
 }
-const GetPermissionsProductsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<GetPermissionsProductsRequest>;
-
 export type ProductPermissionStateEnum = "required" | "accepted";
-const ProductPermissionStateEnum = S.String;
-
 /** A product permissions resource represents the set of permissions required by a specific app and whether or not they have been accepted by an enterprise admin. The API can be used to read the set of permissions, and also to update the set to indicate that permissions have been accepted. */
 export interface ProductPermission {
   /** Whether the permission has been accepted or not. */
@@ -1254,14 +838,7 @@ export interface ProductPermission {
   /** An opaque string uniquely identifying the permission. */
   permissionId?: string;
 }
-const ProductPermission = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<ProductPermission>;
-
 export type ProductPermissionList = Array<ProductPermission>;
-const ProductPermissionList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ProductPermissionList>;
-
 /** Information about the permissions required by a specific app and whether they have been accepted by the enterprise. */
 export interface ProductPermissions {
   /** The ID of the app that the permissions relate to, e.g. "app:com.google.android.gm". */
@@ -1269,8 +846,6 @@ export interface ProductPermissions {
   /** The permissions required by the app. */
   permission?: ProductPermissionList;
 }
-const ProductPermissions = /*@__PURE__*/ __L.at(__c10, 5) as any as S.Schema<ProductPermissions>;
-
 export interface GetProductsRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
@@ -1279,11 +854,7 @@ export interface GetProductsRequest {
   /** The BCP47 tag for the user's preferred language (e.g. "en-US", "de"). */
   language?: string;
 }
-const GetProductsRequest = /*@__PURE__*/ __L.at(__c10, 6) as any as S.Schema<GetProductsRequest>;
-
 export type AppVersionTrackEnum = "appTrackUnspecified" | "production" | "beta" | "alpha";
-const AppVersionTrackEnum = S.String;
-
 /** This represents a single version of the app. */
 export interface AppVersion {
   /** Deprecated, use trackId instead. */
@@ -1299,30 +870,16 @@ export interface AppVersion {
   /** The SDK version this app targets, as specified in the manifest of the APK. See http://developer.android.com/guide/topics/manifest/uses-sdk-element.html */
   targetSdkVersion?: number;
 }
-const AppVersion = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<AppVersion>;
-
 export type AppVersionList = Array<AppVersion>;
-const AppVersionList = /*@__PURE__*/ __L.at(__c11, 0) as any as S.Schema<AppVersionList>;
-
 export interface ProductSigningCertificate {
   /** The base64 urlsafe encoded SHA1 hash of the certificate. (This field is deprecated in favor of SHA2-256. It should not be used and may be removed at any time.) */
   certificateHashSha1?: string;
   /** The base64 urlsafe encoded SHA2-256 hash of the certificate. */
   certificateHashSha256?: string;
 }
-const ProductSigningCertificate = /*@__PURE__*/ __L.at(
-  __c11,
-  1,
-) as any as S.Schema<ProductSigningCertificate>;
-
 export type ProductFeaturesItemEnum = "featureUnknown" | "vpnApp";
 export type ProductFeaturesItemEnumList = Array<ProductFeaturesItemEnum>;
-const ProductFeaturesItemEnumList =
-  AdministratorWebTokenSpecPermissionItemEnumList as any as S.Schema<ProductFeaturesItemEnumList>;
-
 export type ProductContentRatingEnum = "ratingUnknown" | "all" | "preTeen" | "teen" | "mature";
-const ProductContentRatingEnum = S.String;
-
 /** Id to name association of a track. */
 export interface TrackInfo {
   /** Unmodifiable, unique track identifier. This identifier is the releaseTrackId in the url of the play developer console page that displays the track information. */
@@ -1330,29 +887,18 @@ export interface TrackInfo {
   /** A modifiable name for a track. This is the visible name in the play developer console. */
   trackAlias?: string;
 }
-const TrackInfo = /*@__PURE__*/ __L.at(__c11, 2) as any as S.Schema<TrackInfo>;
-
 export type TrackInfoList = Array<TrackInfo>;
-const TrackInfoList = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<TrackInfoList>;
-
 export type ProductProductPricingEnum = "unknown" | "free" | "freeWithInAppPurchase" | "paid";
-const ProductProductPricingEnum = S.String;
-
 export type ProductAvailableTracksItemEnum =
   | "appTrackUnspecified"
   | "production"
   | "beta"
   | "alpha";
 export type ProductAvailableTracksItemEnumList = Array<ProductAvailableTracksItemEnum>;
-const ProductAvailableTracksItemEnumList =
-  AdministratorWebTokenSpecPermissionItemEnumList as any as S.Schema<ProductAvailableTracksItemEnumList>;
-
 export type ProductDistributionChannelEnum =
   | "publicGoogleHosted"
   | "privateGoogleHosted"
   | "privateSelfHosted";
-const ProductDistributionChannelEnum = S.String;
-
 /** A Products resource represents an app in the Google Play store that is available to at least some users in the enterprise. (Some apps are restricted to a single enterprise, and no information about them is made available outside that enterprise.) The information provided for each product (localized name, icon, link to the full Google Play details page) is intended to allow a basic representation of the product within an EMM user interface. */
 export interface Product {
   /** A description of the recent changes made to the app. */
@@ -1408,25 +954,14 @@ export interface Product {
   /** A list of screenshot links representing the app. */
   screenshotUrls?: StringList;
 }
-const Product = /*@__PURE__*/ __L.at(__c11, 4) as any as S.Schema<Product>;
-
 export type GetServiceAccountEnterprisesKeyTypeEnum = "googleCredentials" | "pkcs12";
-const GetServiceAccountEnterprisesKeyTypeEnum = S.String;
-
 export interface GetServiceAccountEnterprisesRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** The type of credential to return with the service account. Required. */
   keyType?: GetServiceAccountEnterprisesKeyTypeEnum | (string & {});
 }
-const GetServiceAccountEnterprisesRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GetServiceAccountEnterprisesRequest>;
-
 export type ServiceAccountKeyTypeEnum = "googleCredentials" | "pkcs12";
-const ServiceAccountKeyTypeEnum = S.String;
-
 /** *Deprecated:* New integrations cannot use this method and can refer to our new recommendations */
 export interface ServiceAccountKey {
   /** An opaque, unique identifier for this ServiceAccountKey. Assigned by the server. */
@@ -1438,8 +973,6 @@ export interface ServiceAccountKey {
   /** Public key data for the credentials file. This is an X.509 cert. If you are using the googleCredentials key type, this is identical to the cert that can be retrieved by using the X.509 cert url inside of the credentials file. */
   publicData?: string;
 }
-const ServiceAccountKey = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<ServiceAccountKey>;
-
 /** A service account identity, including the name and credentials that can be used to authenticate as the service account. */
 export interface ServiceAccount {
   /** The account name of the service account, in the form of an email address. Assigned by the server. */
@@ -1447,8 +980,6 @@ export interface ServiceAccount {
   /** Credentials that can be used to authenticate as this ServiceAccount. */
   key?: ServiceAccountKey;
 }
-const ServiceAccount = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<ServiceAccount>;
-
 export interface GetStateDevicesRequest {
   /** The ID of the device. */
   deviceId: string;
@@ -1457,21 +988,12 @@ export interface GetStateDevicesRequest {
   /** The ID of the user. */
   userId: string;
 }
-const GetStateDevicesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<GetStateDevicesRequest>;
-
 export type DeviceStateAccountStateEnum = "enabled" | "disabled";
-const DeviceStateAccountStateEnum = S.String;
-
 /** The state of a user's device, as accessed by the getState and setState methods on device resources. */
 export interface DeviceState {
   /** The state of the Google account on the device. "enabled" indicates that the Google account on the device can be used to access Google services (including Google Play), while "disabled" means that it cannot. A new device is initially in the "disabled" state. */
   accountState?: DeviceStateAccountStateEnum | (string & {});
 }
-const DeviceState = /*@__PURE__*/ __L.at(__c12, 1) as any as S.Schema<DeviceState>;
-
 export interface GetStorelayoutclustersRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
@@ -1480,11 +1002,6 @@ export interface GetStorelayoutclustersRequest {
   /** The ID of the cluster. */
   clusterId: string;
 }
-const GetStorelayoutclustersRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GetStorelayoutclustersRequest>;
-
 /** A localized string with its locale. */
 export interface LocalizedText {
   /** The BCP47 tag for a locale. (e.g. "en-US", "de"). */
@@ -1492,11 +1009,7 @@ export interface LocalizedText {
   /** The text localized in the associated locale. */
   text?: string;
 }
-const LocalizedText = /*@__PURE__*/ __L.at(__c12, 3) as any as S.Schema<LocalizedText>;
-
 export type LocalizedTextList = Array<LocalizedText>;
-const LocalizedTextList = /*@__PURE__*/ __L.at(__c12, 4) as any as S.Schema<LocalizedTextList>;
-
 /** Definition of a managed Google Play store cluster, a list of products displayed as part of a store page. */
 export interface StoreCluster {
   /** Ordered list of localized strings giving the name of this page. The text displayed is the one that best matches the user locale, or the first entry if there is no good match. There needs to be at least one entry. */
@@ -1508,20 +1021,11 @@ export interface StoreCluster {
   /** String (US-ASCII only) used to determine order of this cluster within the parent page's elements. Page elements are sorted in lexicographic order of this field. Duplicated values are allowed, but ordering between elements with duplicate order is undefined. The value of this field is never visible to a user, it is used solely for the purpose of defining an ordering. Maximum length is 256 characters. */
   orderInPage?: string;
 }
-const StoreCluster = /*@__PURE__*/ __L.at(__c12, 5) as any as S.Schema<StoreCluster>;
-
 export interface GetStoreLayoutEnterprisesRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const GetStoreLayoutEnterprisesRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GetStoreLayoutEnterprisesRequest>;
-
 export type StoreLayoutStoreLayoutTypeEnum = "unknown" | "basic" | "custom";
-const StoreLayoutStoreLayoutTypeEnum = S.String;
-
 /** General setting for the managed Google Play store layout, currently only specifying the page to display the first time the store is opened. */
 export interface StoreLayout {
   /** The ID of the store page to be used as the homepage. The homepage is the first page shown in the managed Google Play Store. Not specifying a homepage is equivalent to setting the store layout type to "basic". */
@@ -1529,19 +1033,12 @@ export interface StoreLayout {
   /** The store layout type. By default, this value is set to "basic" if the homepageId field is not set, and to "custom" otherwise. If set to "basic", the layout will consist of all approved apps that have been whitelisted for the user. */
   storeLayoutType?: StoreLayoutStoreLayoutTypeEnum | (string & {});
 }
-const StoreLayout = /*@__PURE__*/ __L.at(__c12, 7) as any as S.Schema<StoreLayout>;
-
 export interface GetStorelayoutpagesRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** The ID of the page. */
   pageId: string;
 }
-const GetStorelayoutpagesRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<GetStorelayoutpagesRequest>;
-
 /** Definition of a managed Google Play store page, made of a localized name and links to other pages. A page also contains clusters defined as a subcollection. */
 export interface StorePage {
   /** Unique ID of this page. Assigned by the server. Immutable once assigned. */
@@ -1551,22 +1048,14 @@ export interface StorePage {
   /** Ordered list of pages a user should be able to reach from this page. The list can't include this page. It is recommended that the basic pages are created first, before adding the links between pages. The API doesn't verify that the pages exist or the pages are reachable. */
   link?: StringList;
 }
-const StorePage = /*@__PURE__*/ __L.at(__c13, 1) as any as S.Schema<StorePage>;
-
 export interface GetUsersRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** The ID of the user. */
   userId: string;
 }
-const GetUsersRequest = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<GetUsersRequest>;
-
 export type UserManagementTypeEnum = "googleManaged" | "emmManaged";
-const UserManagementTypeEnum = S.String;
-
 export type UserAccountTypeEnum = "deviceAccount" | "userAccount";
-const UserAccountTypeEnum = S.String;
-
 /** A Users resource represents an account associated with an enterprise. The account may be specific to a device or to an individual user (who can then use the account across multiple devices). The account may provide access to managed Google Play only, or to other Google services, depending on the identity model: - The Google managed domain identity model requires synchronization to Google account sources (via primaryEmail). - The managed Google Play Accounts identity model provides a dynamic means for enterprises to create user or device accounts as needed. These accounts provide access to managed Google Play. */
 export interface User {
   /** The entity that manages the user. With googleManaged users, the source of truth is Google so EMMs have to make sure a Google Account exists for the user. With emmManaged users, the EMM is in charge. */
@@ -1582,33 +1071,23 @@ export interface User {
   /** The unique ID for the user. */
   id?: string;
 }
-const User = /*@__PURE__*/ __L.at(__c13, 3) as any as S.Schema<User>;
-
 export interface GetWebappsRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** The ID of the web app. */
   webAppId: string;
 }
-const GetWebappsRequest = /*@__PURE__*/ __L.at(__c13, 4) as any as S.Schema<GetWebappsRequest>;
-
 /** Icon for a web app. */
 export interface WebAppIcon {
   /** The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 "Base 64 Encoding with URL and Filename Safe Alphabet"). - The image type can be png or jpg. - The image should ideally be square. - The image should ideally have a size of 512x512. */
   imageData?: string;
 }
-const WebAppIcon = /*@__PURE__*/ __L.at(__c13, 5) as any as S.Schema<WebAppIcon>;
-
 export type WebAppIconList = Array<WebAppIcon>;
-const WebAppIconList = /*@__PURE__*/ __L.at(__c13, 6) as any as S.Schema<WebAppIconList>;
-
 export type WebAppDisplayModeEnum =
   | "displayModeUnspecified"
   | "minimalUi"
   | "standalone"
   | "fullScreen";
-const WebAppDisplayModeEnum = S.String;
-
 /** A WebApps resource represents a web app created for an enterprise. Web apps are published to managed Google Play and can be distributed like other Android apps. On a user's device, a web app opens its specified URL. */
 export interface WebApp {
   /** The ID of the application. A string of the form "app:<package name>" where the package name always starts with the prefix "com.google.enterprise.webapp." followed by a random id. */
@@ -1626,19 +1105,12 @@ export interface WebApp {
   /** The current version of the app. Note that the version can automatically increase during the lifetime of the web app, while Google does internal housekeeping to keep the web app up-to-date. */
   versionCode?: string;
 }
-const WebApp = /*@__PURE__*/ __L.at(__c13, 7) as any as S.Schema<WebApp>;
-
 export interface InsertServiceaccountkeysRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** Request body */
   body?: ServiceAccountKey;
 }
-const InsertServiceaccountkeysRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<InsertServiceaccountkeysRequest>;
-
 export interface InsertStorelayoutclustersRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
@@ -1647,146 +1119,75 @@ export interface InsertStorelayoutclustersRequest {
   /** Request body */
   body?: StoreCluster;
 }
-const InsertStorelayoutclustersRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<InsertStorelayoutclustersRequest>;
-
 export interface InsertStorelayoutpagesRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** Request body */
   body?: StorePage;
 }
-const InsertStorelayoutpagesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<InsertStorelayoutpagesRequest>;
-
 export interface InsertUsersRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** Request body */
   body?: User;
 }
-const InsertUsersRequest = /*@__PURE__*/ __L.at(__c14, 3) as any as S.Schema<InsertUsersRequest>;
-
 export interface InsertWebappsRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** Request body */
   body?: WebApp;
 }
-const InsertWebappsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<InsertWebappsRequest>;
-
 export interface ListDevicesRequest {
   /** The ID of the user. */
   userId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const ListDevicesRequest = /*@__PURE__*/ __L.at(__c14, 5) as any as S.Schema<ListDevicesRequest>;
-
 export type DeviceList = Array<Device>;
-const DeviceList = /*@__PURE__*/ __L.at(__c14, 6) as any as S.Schema<DeviceList>;
-
 export interface DevicesListResponse {
   /** A managed device. */
   device?: DeviceList;
 }
-const DevicesListResponse = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<DevicesListResponse>;
-
 export interface ListEnterprisesRequest {
   /** Required. The exact primary domain name of the enterprise to look up. */
   domain: string;
 }
-const ListEnterprisesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<ListEnterprisesRequest>;
-
 export type EnterpriseList = Array<Enterprise>;
-const EnterpriseList = /*@__PURE__*/ __L.at(__c15, 1) as any as S.Schema<EnterpriseList>;
-
 export interface EnterprisesListResponse {
   /** An enterprise. */
   enterprise?: EnterpriseList;
 }
-const EnterprisesListResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<EnterprisesListResponse>;
-
 export interface ListEntitlementsRequest {
   /** The ID of the user. */
   userId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const ListEntitlementsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<ListEntitlementsRequest>;
-
 export type EntitlementList = Array<Entitlement>;
-const EntitlementList = /*@__PURE__*/ __L.at(__c15, 4) as any as S.Schema<EntitlementList>;
-
 export interface EntitlementsListResponse {
   /** An entitlement of a user to a product (e.g. an app). For example, a free app that they have installed, or a paid app that they have been allocated a license to. */
   entitlement?: EntitlementList;
 }
-const EntitlementsListResponse = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<EntitlementsListResponse>;
-
 export interface ListGrouplicensesRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const ListGrouplicensesRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<ListGrouplicensesRequest>;
-
 export type GroupLicenseList = Array<GroupLicense>;
-const GroupLicenseList = /*@__PURE__*/ __L.at(__c15, 7) as any as S.Schema<GroupLicenseList>;
-
 export interface GroupLicensesListResponse {
   /** A group license for a product approved for use in the enterprise. */
   groupLicense?: GroupLicenseList;
 }
-const GroupLicensesListResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<GroupLicensesListResponse>;
-
 export interface ListGrouplicenseusersRequest {
   /** The ID of the product the group license is for, e.g. "app:com.google.android.gm". */
   groupLicenseId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const ListGrouplicenseusersRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<ListGrouplicenseusersRequest>;
-
 export type UserList = Array<User>;
-const UserList = /*@__PURE__*/ __L.at(__c16, 2) as any as S.Schema<UserList>;
-
 export interface GroupLicenseUsersListResponse {
   /** A user of an enterprise. */
   user?: UserList;
 }
-const GroupLicenseUsersListResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<GroupLicenseUsersListResponse>;
-
 export interface ListInstallsRequest {
   /** The ID of the user. */
   userId: string;
@@ -1795,20 +1196,11 @@ export interface ListInstallsRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const ListInstallsRequest = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<ListInstallsRequest>;
-
 export type InstallList = Array<Install>;
-const InstallList = /*@__PURE__*/ __L.at(__c16, 5) as any as S.Schema<InstallList>;
-
 export interface InstallsListResponse {
   /** An installation of an app for a user on a specific device. The existence of an install implies that the user must have an entitlement to the app. */
   install?: InstallList;
 }
-const InstallsListResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<InstallsListResponse>;
-
 export interface ListManagedconfigurationsfordeviceRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
@@ -1817,57 +1209,27 @@ export interface ListManagedconfigurationsfordeviceRequest {
   /** The Android ID of the device. */
   deviceId: string;
 }
-const ListManagedconfigurationsfordeviceRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<ListManagedconfigurationsfordeviceRequest>;
-
 export type ManagedConfigurationList = Array<ManagedConfiguration>;
-const ManagedConfigurationList = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<ManagedConfigurationList>;
-
 export interface ManagedConfigurationsForDeviceListResponse {
   /** A managed configuration for an app on a specific device. */
   managedConfigurationForDevice?: ManagedConfigurationList;
 }
-const ManagedConfigurationsForDeviceListResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<ManagedConfigurationsForDeviceListResponse>;
-
 export interface ListManagedconfigurationsforuserRequest {
   /** The ID of the user. */
   userId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const ListManagedconfigurationsforuserRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<ListManagedconfigurationsforuserRequest>;
-
 export interface ManagedConfigurationsForUserListResponse {
   /** A managed configuration for an app for a specific user. */
   managedConfigurationForUser?: ManagedConfigurationList;
 }
-const ManagedConfigurationsForUserListResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<ManagedConfigurationsForUserListResponse>;
-
 export interface ListManagedconfigurationssettingsRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** The ID of the product for which the managed configurations settings applies to. */
   productId: string;
 }
-const ListManagedconfigurationssettingsRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<ListManagedconfigurationssettingsRequest>;
-
 /** A managed configurations settings resource contains the set of managed properties that have been configured for an Android app to be applied to a set of users. The app's developer would have defined configurable properties in the managed configurations schema. */
 export interface ManagedConfigurationsSettings {
   /** The ID of the managed configurations settings. */
@@ -1877,26 +1239,11 @@ export interface ManagedConfigurationsSettings {
   /** The last updated time of the managed configuration settings in milliseconds since 1970-01-01T00:00:00Z. */
   lastUpdatedTimestampMillis?: string;
 }
-const ManagedConfigurationsSettings = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<ManagedConfigurationsSettings>;
-
 export type ManagedConfigurationsSettingsList = Array<ManagedConfigurationsSettings>;
-const ManagedConfigurationsSettingsList = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<ManagedConfigurationsSettingsList>;
-
 export interface ManagedConfigurationsSettingsListResponse {
   /** A managed configurations settings for an app that may be assigned to a group of users in an enterprise. */
   managedConfigurationsSettings?: ManagedConfigurationsSettingsList;
 }
-const ManagedConfigurationsSettingsListResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<ManagedConfigurationsSettingsListResponse>;
-
 export interface ListProductsRequest {
   /** Specifies whether to search among all products (false) or among only products that have been approved (true). Only "true" is supported, and should be specified. */
   approved?: boolean;
@@ -1911,11 +1258,7 @@ export interface ListProductsRequest {
   /** The BCP47 tag for the user's preferred language (e.g. "en-US", "de"). Results are returned in the language best matching the preferred language. */
   language?: string;
 }
-const ListProductsRequest = /*@__PURE__*/ __L.at(__c18, 0) as any as S.Schema<ListProductsRequest>;
-
 export type ProductList = Array<Product>;
-const ProductList = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<ProductList>;
-
 /** Information about the current page. List operations that supports paging return only one "page" of results. This protocol buffer message describes the page that has been returned. */
 export interface PageInfo {
   /** Maximum number of results returned in one page. ! The number of results included in the API response. */
@@ -1925,16 +1268,12 @@ export interface PageInfo {
   /** Index of the first result returned in the current page. */
   startIndex?: number;
 }
-const PageInfo = /*@__PURE__*/ __L.at(__c18, 2) as any as S.Schema<PageInfo>;
-
 /** Pagination information returned by a List operation when token pagination is enabled. List operations that supports paging return only one "page" of results. This protocol buffer message describes the page that has been returned. When using token pagination, clients should use the next/previous token to get another page of the result. The presence or absence of next/previous token indicates whether a next/previous page is available and provides a mean of accessing this page. ListRequest.page_token should be set to either next_page_token or previous_page_token to access another page. */
 export interface TokenPagination {
   previousPageToken?: string;
   /** Tokens to pass to the standard list field 'page_token'. Whenever available, tokens are preferred over manipulating start_index. */
   nextPageToken?: string;
 }
-const TokenPagination = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<TokenPagination>;
-
 export interface ProductsListResponse {
   /** Information about a product (e.g. an app) in the Google Play store, for display to an enterprise admin. */
   product?: ProductList;
@@ -1943,125 +1282,62 @@ export interface ProductsListResponse {
   /** Pagination information for token pagination. */
   tokenPagination?: TokenPagination;
 }
-const ProductsListResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<ProductsListResponse>;
-
 export interface ListServiceaccountkeysRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const ListServiceaccountkeysRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<ListServiceaccountkeysRequest>;
-
 export type ServiceAccountKeyList = Array<ServiceAccountKey>;
-const ServiceAccountKeyList = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<ServiceAccountKeyList>;
-
 export interface ServiceAccountKeysListResponse {
   /** The service account credentials. */
   serviceAccountKey?: ServiceAccountKeyList;
 }
-const ServiceAccountKeysListResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<ServiceAccountKeysListResponse>;
-
 export interface ListStorelayoutclustersRequest {
   /** The ID of the page. */
   pageId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const ListStorelayoutclustersRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ListStorelayoutclustersRequest>;
-
 export type StoreClusterList = Array<StoreCluster>;
-const StoreClusterList = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<StoreClusterList>;
-
 export interface StoreLayoutClustersListResponse {
   /** A store cluster of an enterprise. */
   cluster?: StoreClusterList;
 }
-const StoreLayoutClustersListResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<StoreLayoutClustersListResponse>;
-
 export interface ListStorelayoutpagesRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const ListStorelayoutpagesRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<ListStorelayoutpagesRequest>;
-
 export type StorePageList = Array<StorePage>;
-const StorePageList = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<StorePageList>;
-
 export interface StoreLayoutPagesListResponse {
   /** A store page of an enterprise. */
   page?: StorePageList;
 }
-const StoreLayoutPagesListResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<StoreLayoutPagesListResponse>;
-
 export interface ListUsersRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** Required. The exact primary email address of the user to look up. */
   email: string;
 }
-const ListUsersRequest = /*@__PURE__*/ __L.at(__c19, 6) as any as S.Schema<ListUsersRequest>;
-
 export interface UsersListResponse {
   /** A user of an enterprise. */
   user?: UserList;
 }
-const UsersListResponse = /*@__PURE__*/ __L.at(__c19, 7) as any as S.Schema<UsersListResponse>;
-
 export interface ListWebappsRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const ListWebappsRequest = /*@__PURE__*/ __L.at(__c20, 0) as any as S.Schema<ListWebappsRequest>;
-
 export type WebAppList = Array<WebApp>;
-const WebAppList = /*@__PURE__*/ __L.at(__c20, 1) as any as S.Schema<WebAppList>;
-
 export interface WebAppsListResponse {
   /** The manifest describing a web app. */
   webApp?: WebAppList;
 }
-const WebAppsListResponse = /*@__PURE__*/ __L.at(__c20, 2) as any as S.Schema<WebAppsListResponse>;
-
 export type PullNotificationSetEnterprisesRequestModeEnum =
   | "waitForNotifications"
   | "returnImmediately";
-const PullNotificationSetEnterprisesRequestModeEnum = S.String;
-
 export interface PullNotificationSetEnterprisesRequest {
   /** The request mode for pulling notifications. Specifying waitForNotifications will cause the request to block and wait until one or more notifications are present, or return an empty notification list if no notifications are present after some time. Specifying returnImmediately will cause the request to immediately return the pending notifications, or an empty list if no notifications are present. If omitted, defaults to waitForNotifications. */
   requestMode?: PullNotificationSetEnterprisesRequestModeEnum | (string & {});
 }
-const PullNotificationSetEnterprisesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<PullNotificationSetEnterprisesRequest>;
-
 export type ProductApprovalEventApprovedEnum = "unknown" | "approved" | "unapproved";
-const ProductApprovalEventApprovedEnum = S.String;
-
 /** An event generated when a product's approval status is changed. */
 export interface ProductApprovalEvent {
   /** The id of the product (e.g. "app:com.google.android.gm") for which the approval status has changed. This field will always be present. */
@@ -2069,11 +1345,6 @@ export interface ProductApprovalEvent {
   /** Whether the product was approved or unapproved. This field will always be present. */
   approved?: ProductApprovalEventApprovedEnum;
 }
-const ProductApprovalEvent = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<ProductApprovalEvent>;
-
 /** An event generated when an updated device report is available. */
 export interface DeviceReportUpdateEvent {
   /** The ID of the user. This field will always be present. */
@@ -2083,11 +1354,6 @@ export interface DeviceReportUpdateEvent {
   /** The device report updated with the latest app states. This field will always be present. */
   report?: DeviceReport;
 }
-const DeviceReportUpdateEvent = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<DeviceReportUpdateEvent>;
-
 /** An event generated when new permissions are added to an app. */
 export interface NewPermissionsEvent {
   /** The set of permissions that the app is currently requesting. Use Permissions.Get on the EMM API to retrieve details about these permissions. */
@@ -2097,15 +1363,11 @@ export interface NewPermissionsEvent {
   /** The id of the product (e.g. "app:com.google.android.gm") for which new permissions were added. This field will always be present. */
   productId?: string;
 }
-const NewPermissionsEvent = /*@__PURE__*/ __L.at(__c20, 6) as any as S.Schema<NewPermissionsEvent>;
-
 export type ProductAvailabilityChangeEventAvailabilityStatusEnum =
   | "unknown"
   | "available"
   | "removed"
   | "unpublished";
-const ProductAvailabilityChangeEventAvailabilityStatusEnum = S.String;
-
 /** An event generated whenever a product's availability changes. */
 export interface ProductAvailabilityChangeEvent {
   /** The new state of the product. This field will always be present. */
@@ -2113,26 +1375,14 @@ export interface ProductAvailabilityChangeEvent {
   /** The id of the product (e.g. "app:com.google.android.gm") for which the product availability changed. This field will always be present. */
   productId?: string;
 }
-const ProductAvailabilityChangeEvent = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<ProductAvailabilityChangeEvent>;
-
 export type EnterpriseUpgradeEventUpgradeStateEnum =
   | "upgradeStateUnspecified"
   | "upgradeStateSucceeded";
-const EnterpriseUpgradeEventUpgradeStateEnum = S.String;
-
 /** An event generated when an enterprise is upgraded. */
 export interface EnterpriseUpgradeEvent {
   /** The upgrade state. */
   upgradeState?: EnterpriseUpgradeEventUpgradeStateEnum;
 }
-const EnterpriseUpgradeEvent = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<EnterpriseUpgradeEvent>;
-
 export type NotificationNotificationTypeEnum =
   | "unknown"
   | "testNotification"
@@ -2145,28 +1395,17 @@ export type NotificationNotificationTypeEnum =
   | "newDevice"
   | "deviceReportUpdate"
   | "enterpriseUpgrade";
-const NotificationNotificationTypeEnum = S.String;
-
 /** An event generated when a new app version is uploaded to Google Play and its app restrictions schema changed. To fetch the app restrictions schema for an app, use Products.getAppRestrictionsSchema on the EMM API. */
 export interface AppRestrictionsSchemaChangeEvent {
   /** The id of the product (e.g. "app:com.google.android.gm") for which the app restriction schema changed. This field will always be present. */
   productId?: string;
 }
-const AppRestrictionsSchemaChangeEvent = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<AppRestrictionsSchemaChangeEvent>;
-
 /** An event generated when a new version of an app is uploaded to Google Play. Notifications are sent for new public versions only: alpha, beta, or canary versions do not generate this event. To fetch up-to-date version history for an app, use Products.Get on the EMM API. */
 export interface AppUpdateEvent {
   /** The id of the product (e.g. "app:com.google.android.gm") that was updated. This field will always be present. */
   productId?: string;
 }
-const AppUpdateEvent = /*@__PURE__*/ __L.at(__c21, 2) as any as S.Schema<AppUpdateEvent>;
-
 export type InstallFailureEventFailureReasonEnum = "unknown" | "timeout";
-const InstallFailureEventFailureReasonEnum = S.String;
-
 /** An event generated when an app installation failed on a device */
 export interface InstallFailureEvent {
   /** The ID of the user. This field will always be present. */
@@ -2180,11 +1419,7 @@ export interface InstallFailureEvent {
   /** Additional details on the failure if applicable. */
   failureDetails?: string;
 }
-const InstallFailureEvent = /*@__PURE__*/ __L.at(__c21, 3) as any as S.Schema<InstallFailureEvent>;
-
 export type NewDeviceEventManagementTypeEnum = "managedDevice" | "managedProfile";
-const NewDeviceEventManagementTypeEnum = S.String;
-
 /** An event generated when a new device is ready to be managed. */
 export interface NewDeviceEvent {
   /** Identifies the extent to which the device is controlled by an Android EMM in various deployment configurations. Possible values include: - "managedDevice", a device where the DPC is set as device owner, - "managedProfile", a device where the DPC is set as profile owner. */
@@ -2196,8 +1431,6 @@ export interface NewDeviceEvent {
   /** The ID of the user. This field will always be present. */
   userId?: string;
 }
-const NewDeviceEvent = /*@__PURE__*/ __L.at(__c21, 4) as any as S.Schema<NewDeviceEvent>;
-
 /** A notification of one event relating to an enterprise. */
 export interface Notification {
   /** The time when the notification was published in milliseconds since 1970-01-01T00:00:00Z. This will always be present. */
@@ -2225,11 +1458,7 @@ export interface Notification {
   /** Notifications about new devices. */
   newDeviceEvent?: NewDeviceEvent;
 }
-const Notification = /*@__PURE__*/ __L.at(__c21, 5) as any as S.Schema<Notification>;
-
 export type NotificationList = Array<Notification>;
-const NotificationList = /*@__PURE__*/ __L.at(__c21, 6) as any as S.Schema<NotificationList>;
-
 /** A resource returned by the PullNotificationSet API, which contains a collection of notifications for enterprises associated with the service account authenticated for the request. */
 export interface NotificationSet {
   /** The notifications received, or empty if no notifications are present. */
@@ -2237,63 +1466,34 @@ export interface NotificationSet {
   /** The notification set ID, required to mark the notification as received with the Enterprises.AcknowledgeNotification API. This will be omitted if no notifications are present. */
   notificationSetId?: string;
 }
-const NotificationSet = /*@__PURE__*/ __L.at(__c21, 7) as any as S.Schema<NotificationSet>;
-
 export interface RevokeDeviceAccessUsersRequest {
   /** The ID of the user. */
   userId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const RevokeDeviceAccessUsersRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<RevokeDeviceAccessUsersRequest>;
-
 export interface RevokeDeviceAccessUsersResponse {}
-const RevokeDeviceAccessUsersResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<RevokeDeviceAccessUsersResponse>;
-
 export interface SendTestPushNotificationEnterprisesRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const SendTestPushNotificationEnterprisesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<SendTestPushNotificationEnterprisesRequest>;
-
 export interface EnterprisesSendTestPushNotificationResponse {
   /** The name of the Cloud Pub/Sub topic to which notifications for this enterprise's enrolled account will be sent. */
   topicName?: string;
   /** The message ID of the test push notification that was sent. */
   messageId?: string;
 }
-const EnterprisesSendTestPushNotificationResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<EnterprisesSendTestPushNotificationResponse>;
-
 /** A service account that can be used to authenticate as the enterprise to API calls that require such authentication. */
 export interface EnterpriseAccount {
   /** The email address of the service account. */
   accountEmail?: string;
 }
-const EnterpriseAccount = /*@__PURE__*/ __L.at(__c22, 4) as any as S.Schema<EnterpriseAccount>;
-
 export interface SetAccountEnterprisesRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** Request body */
   body?: EnterpriseAccount;
 }
-const SetAccountEnterprisesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<SetAccountEnterprisesRequest>;
-
 export interface SetAvailableProductSetUsersRequest {
   /** The ID of the user. */
   userId: string;
@@ -2302,11 +1502,6 @@ export interface SetAvailableProductSetUsersRequest {
   /** Request body */
   body?: ProductSet;
 }
-const SetAvailableProductSetUsersRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<SetAvailableProductSetUsersRequest>;
-
 export interface SetStateDevicesRequest {
   /** The ID of the user. */
   userId: string;
@@ -2317,50 +1512,24 @@ export interface SetStateDevicesRequest {
   /** Request body */
   body?: DeviceState;
 }
-const SetStateDevicesRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<SetStateDevicesRequest>;
-
 export interface SetStoreLayoutEnterprisesRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
   /** Request body */
   body?: StoreLayout;
 }
-const SetStoreLayoutEnterprisesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<SetStoreLayoutEnterprisesRequest>;
-
 export interface UnapproveProductsRequest {
   /** The ID of the product. */
   productId: string;
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const UnapproveProductsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<UnapproveProductsRequest>;
-
 export interface UnapproveProductsResponse {}
-const UnapproveProductsResponse =
-  ApproveProductsResponse as any as S.Schema<UnapproveProductsResponse>;
-
 export interface UnenrollEnterprisesRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
 }
-const UnenrollEnterprisesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<UnenrollEnterprisesRequest>;
-
 export interface UnenrollEnterprisesResponse {}
-const UnenrollEnterprisesResponse =
-  ApproveProductsResponse as any as S.Schema<UnenrollEnterprisesResponse>;
-
 export interface UpdateDevicesRequest {
   /** The ID of the device. */
   deviceId: string;
@@ -2373,11 +1542,6 @@ export interface UpdateDevicesRequest {
   /** Request body */
   body?: Device;
 }
-const UpdateDevicesRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<UpdateDevicesRequest>;
-
 export interface UpdateEntitlementsRequest {
   /** The ID of the entitlement (a product ID), e.g. "app:com.google.android.gm". */
   entitlementId: string;
@@ -2390,11 +1554,6 @@ export interface UpdateEntitlementsRequest {
   /** Request body */
   body?: Entitlement;
 }
-const UpdateEntitlementsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<UpdateEntitlementsRequest>;
-
 export interface UpdateInstallsRequest {
   /** The ID of the user. */
   userId: string;
@@ -2407,11 +1566,6 @@ export interface UpdateInstallsRequest {
   /** Request body */
   body?: Install;
 }
-const UpdateInstallsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<UpdateInstallsRequest>;
-
 export interface UpdateManagedconfigurationsfordeviceRequest {
   /** The Android ID of the device. */
   deviceId: string;
@@ -2424,11 +1578,6 @@ export interface UpdateManagedconfigurationsfordeviceRequest {
   /** Request body */
   body?: ManagedConfiguration;
 }
-const UpdateManagedconfigurationsfordeviceRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<UpdateManagedconfigurationsfordeviceRequest>;
-
 export interface UpdateManagedconfigurationsforuserRequest {
   /** The ID of the user. */
   userId: string;
@@ -2439,11 +1588,6 @@ export interface UpdateManagedconfigurationsforuserRequest {
   /** Request body */
   body?: ManagedConfiguration;
 }
-const UpdateManagedconfigurationsforuserRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<UpdateManagedconfigurationsforuserRequest>;
-
 export interface UpdateStorelayoutclustersRequest {
   /** The ID of the page. */
   pageId: string;
@@ -2454,11 +1598,6 @@ export interface UpdateStorelayoutclustersRequest {
   /** Request body */
   body?: StoreCluster;
 }
-const UpdateStorelayoutclustersRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<UpdateStorelayoutclustersRequest>;
-
 export interface UpdateStorelayoutpagesRequest {
   /** The ID of the page. */
   pageId: string;
@@ -2467,11 +1606,6 @@ export interface UpdateStorelayoutpagesRequest {
   /** Request body */
   body?: StorePage;
 }
-const UpdateStorelayoutpagesRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<UpdateStorelayoutpagesRequest>;
-
 export interface UpdateUsersRequest {
   /** The ID of the user. */
   userId: string;
@@ -2480,8 +1614,6 @@ export interface UpdateUsersRequest {
   /** Request body */
   body?: User;
 }
-const UpdateUsersRequest = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<UpdateUsersRequest>;
-
 export interface UpdateWebappsRequest {
   /** The ID of the enterprise. */
   enterpriseId: string;
@@ -2490,11 +1622,6 @@ export interface UpdateWebappsRequest {
   /** Request body */
   body?: WebApp;
 }
-const UpdateWebappsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<UpdateWebappsRequest>;
-
 export type AcknowledgeNotificationSetEnterprisesError =
   | NotFound
   | Forbidden
@@ -2508,8 +1635,8 @@ export const acknowledgeNotificationSetEnterprises: API.OperationMethod<
   AcknowledgeNotificationSetEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AcknowledgeNotificationSetEnterprisesRequest,
-  output: AcknowledgeNotificationSetEnterprisesResponse,
+  input: __S(0) as any as S.Schema<AcknowledgeNotificationSetEnterprisesRequest>,
+  output: __S(1) as any as S.Schema<AcknowledgeNotificationSetEnterprisesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2523,8 +1650,8 @@ export const approveProducts: API.OperationMethod<
   ApproveProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ApproveProductsRequest,
-  output: ApproveProductsResponse,
+  input: __S(4) as any as S.Schema<ApproveProductsRequest>,
+  output: __S(5) as any as S.Schema<ApproveProductsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2543,8 +1670,8 @@ export const completeSignupEnterprises: API.OperationMethod<
   CompleteSignupEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CompleteSignupEnterprisesRequest,
-  output: Enterprise,
+  input: __S(6) as any as S.Schema<CompleteSignupEnterprisesRequest>,
+  output: __S(10) as any as S.Schema<Enterprise>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2558,8 +1685,8 @@ export const createEnrollmentTokens: API.OperationMethod<
   CreateEnrollmentTokensError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateEnrollmentTokensRequest,
-  output: EnrollmentToken,
+  input: __S(13) as any as S.Schema<CreateEnrollmentTokensRequest>,
+  output: __S(12) as any as S.Schema<EnrollmentToken>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2578,8 +1705,8 @@ export const createWebTokenEnterprises: API.OperationMethod<
   CreateWebTokenEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWebTokenEnterprisesRequest,
-  output: AdministratorWebToken,
+  input: __S(18) as any as S.Schema<CreateWebTokenEnterprisesRequest>,
+  output: __S(19) as any as S.Schema<AdministratorWebToken>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2593,8 +1720,8 @@ export const deleteEntitlements: API.OperationMethod<
   DeleteEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEntitlementsRequest,
-  output: DeleteEntitlementsResponse,
+  input: __S(20) as any as S.Schema<DeleteEntitlementsRequest>,
+  output: __S(5) as any as S.Schema<DeleteEntitlementsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2608,8 +1735,8 @@ export const deleteInstalls: API.OperationMethod<
   DeleteInstallsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteInstallsRequest,
-  output: DeleteInstallsResponse,
+  input: __S(21) as any as S.Schema<DeleteInstallsRequest>,
+  output: __S(5) as any as S.Schema<DeleteInstallsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2628,8 +1755,8 @@ export const deleteManagedconfigurationsfordevice: API.OperationMethod<
   DeleteManagedconfigurationsfordeviceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteManagedconfigurationsfordeviceRequest,
-  output: DeleteManagedconfigurationsfordeviceResponse,
+  input: __S(22) as any as S.Schema<DeleteManagedconfigurationsfordeviceRequest>,
+  output: __S(1) as any as S.Schema<DeleteManagedconfigurationsfordeviceResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2648,8 +1775,8 @@ export const deleteManagedconfigurationsforuser: API.OperationMethod<
   DeleteManagedconfigurationsforuserError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteManagedconfigurationsforuserRequest,
-  output: DeleteManagedconfigurationsforuserResponse,
+  input: __S(23) as any as S.Schema<DeleteManagedconfigurationsforuserRequest>,
+  output: __S(1) as any as S.Schema<DeleteManagedconfigurationsforuserResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2668,8 +1795,8 @@ export const deleteServiceaccountkeys: API.OperationMethod<
   DeleteServiceaccountkeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteServiceaccountkeysRequest,
-  output: DeleteServiceaccountkeysResponse,
+  input: __S(24) as any as S.Schema<DeleteServiceaccountkeysRequest>,
+  output: __S(1) as any as S.Schema<DeleteServiceaccountkeysResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2689,8 +1816,8 @@ export const deleteStorelayoutclusters: API.OperationMethod<
   DeleteStorelayoutclustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorelayoutclustersRequest,
-  output: DeleteStorelayoutclustersResponse,
+  input: __S(25) as any as S.Schema<DeleteStorelayoutclustersRequest>,
+  output: __S(1) as any as S.Schema<DeleteStorelayoutclustersResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -2717,8 +1844,8 @@ export const deleteStorelayoutpages: API.OperationMethod<
   DeleteStorelayoutpagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteStorelayoutpagesRequest,
-  output: DeleteStorelayoutpagesResponse,
+  input: __S(26) as any as S.Schema<DeleteStorelayoutpagesRequest>,
+  output: __S(5) as any as S.Schema<DeleteStorelayoutpagesResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -2739,8 +1866,8 @@ export const deleteUsers: API.OperationMethod<
   DeleteUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteUsersRequest,
-  output: DeleteUsersResponse,
+  input: __S(27) as any as S.Schema<DeleteUsersRequest>,
+  output: __S(5) as any as S.Schema<DeleteUsersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2760,8 +1887,8 @@ export const deleteWebapps: API.OperationMethod<
   DeleteWebappsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebappsRequest,
-  output: DeleteWebappsResponse,
+  input: __S(28) as any as S.Schema<DeleteWebappsRequest>,
+  output: __S(5) as any as S.Schema<DeleteWebappsResponse>,
   errors: [
     NotFound,
     Forbidden,
@@ -2782,8 +1909,8 @@ export const enrollEnterprises: API.OperationMethod<
   EnrollEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnrollEnterprisesRequest,
-  output: Enterprise,
+  input: __S(29) as any as S.Schema<EnrollEnterprisesRequest>,
+  output: __S(10) as any as S.Schema<Enterprise>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2802,8 +1929,8 @@ export const forceReportUploadDevices: API.OperationMethod<
   ForceReportUploadDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ForceReportUploadDevicesRequest,
-  output: ForceReportUploadDevicesResponse,
+  input: __S(30) as any as S.Schema<ForceReportUploadDevicesRequest>,
+  output: __S(1) as any as S.Schema<ForceReportUploadDevicesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2822,8 +1949,8 @@ export const generateApprovalUrlProducts: API.OperationMethod<
   GenerateApprovalUrlProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateApprovalUrlProductsRequest,
-  output: ProductsGenerateApprovalUrlResponse,
+  input: __S(31) as any as S.Schema<GenerateApprovalUrlProductsRequest>,
+  output: __S(32) as any as S.Schema<ProductsGenerateApprovalUrlResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2842,8 +1969,8 @@ export const generateAuthenticationTokenUsers: API.OperationMethod<
   GenerateAuthenticationTokenUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateAuthenticationTokenUsersRequest,
-  output: AuthenticationToken,
+  input: __S(33) as any as S.Schema<GenerateAuthenticationTokenUsersRequest>,
+  output: __S(19) as any as S.Schema<AuthenticationToken>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2862,8 +1989,8 @@ export const generateEnterpriseUpgradeUrlEnterprises: API.OperationMethod<
   GenerateEnterpriseUpgradeUrlEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateEnterpriseUpgradeUrlEnterprisesRequest,
-  output: GenerateEnterpriseUpgradeUrlResponse,
+  input: __S(35) as any as S.Schema<GenerateEnterpriseUpgradeUrlEnterprisesRequest>,
+  output: __S(32) as any as S.Schema<GenerateEnterpriseUpgradeUrlResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2882,8 +2009,8 @@ export const generateSignupUrlEnterprises: API.OperationMethod<
   GenerateSignupUrlEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GenerateSignupUrlEnterprisesRequest,
-  output: SignupInfo,
+  input: __S(36) as any as S.Schema<GenerateSignupUrlEnterprisesRequest>,
+  output: __S(37) as any as S.Schema<SignupInfo>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2897,8 +2024,8 @@ export const getAppRestrictionsSchemaProducts: API.OperationMethod<
   GetAppRestrictionsSchemaProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAppRestrictionsSchemaProductsRequest,
-  output: AppRestrictionsSchema,
+  input: __S(38) as any as S.Schema<GetAppRestrictionsSchemaProductsRequest>,
+  output: __S(42) as any as S.Schema<AppRestrictionsSchema>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2912,8 +2039,8 @@ export const getAvailableProductSetUsers: API.OperationMethod<
   GetAvailableProductSetUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAvailableProductSetUsersRequest,
-  output: ProductSet,
+  input: __S(43) as any as S.Schema<GetAvailableProductSetUsersRequest>,
+  output: __S(46) as any as S.Schema<ProductSet>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2927,8 +2054,8 @@ export const getDevices: API.OperationMethod<
   GetDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDevicesRequest,
-  output: Device,
+  input: __S(47) as any as S.Schema<GetDevicesRequest>,
+  output: __S(70) as any as S.Schema<Device>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2946,8 +2073,8 @@ export const getEnterprises: API.OperationMethod<
   GetEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEnterprisesRequest,
-  output: Enterprise,
+  input: __S(71) as any as S.Schema<GetEnterprisesRequest>,
+  output: __S(10) as any as S.Schema<Enterprise>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2961,8 +2088,8 @@ export const getEntitlements: API.OperationMethod<
   GetEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEntitlementsRequest,
-  output: Entitlement,
+  input: __S(72) as any as S.Schema<GetEntitlementsRequest>,
+  output: __S(73) as any as S.Schema<Entitlement>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2976,8 +2103,8 @@ export const getGrouplicenses: API.OperationMethod<
   GetGrouplicensesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetGrouplicensesRequest,
-  output: GroupLicense,
+  input: __S(74) as any as S.Schema<GetGrouplicensesRequest>,
+  output: __S(75) as any as S.Schema<GroupLicense>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -2991,8 +2118,8 @@ export const getInstalls: API.OperationMethod<
   GetInstallsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetInstallsRequest,
-  output: Install,
+  input: __S(76) as any as S.Schema<GetInstallsRequest>,
+  output: __S(77) as any as S.Schema<Install>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3006,8 +2133,8 @@ export const getManagedconfigurationsfordevice: API.OperationMethod<
   GetManagedconfigurationsfordeviceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedconfigurationsfordeviceRequest,
-  output: ManagedConfiguration,
+  input: __S(78) as any as S.Schema<GetManagedconfigurationsfordeviceRequest>,
+  output: __S(61) as any as S.Schema<ManagedConfiguration>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3021,8 +2148,8 @@ export const getManagedconfigurationsforuser: API.OperationMethod<
   GetManagedconfigurationsforuserError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedconfigurationsforuserRequest,
-  output: ManagedConfiguration,
+  input: __S(79) as any as S.Schema<GetManagedconfigurationsforuserRequest>,
+  output: __S(61) as any as S.Schema<ManagedConfiguration>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3036,8 +2163,8 @@ export const getPermissions: API.OperationMethod<
   GetPermissionsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPermissionsRequest,
-  output: Permission,
+  input: __S(80) as any as S.Schema<GetPermissionsRequest>,
+  output: __S(81) as any as S.Schema<Permission>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3051,8 +2178,8 @@ export const getPermissionsProducts: API.OperationMethod<
   GetPermissionsProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPermissionsProductsRequest,
-  output: ProductPermissions,
+  input: __S(82) as any as S.Schema<GetPermissionsProductsRequest>,
+  output: __S(85) as any as S.Schema<ProductPermissions>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3066,8 +2193,8 @@ export const getProducts: API.OperationMethod<
   GetProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProductsRequest,
-  output: Product,
+  input: __S(86) as any as S.Schema<GetProductsRequest>,
+  output: __S(92) as any as S.Schema<Product>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3081,8 +2208,8 @@ export const getServiceAccountEnterprises: API.OperationMethod<
   GetServiceAccountEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetServiceAccountEnterprisesRequest,
-  output: ServiceAccount,
+  input: __S(93) as any as S.Schema<GetServiceAccountEnterprisesRequest>,
+  output: __S(95) as any as S.Schema<ServiceAccount>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3096,8 +2223,8 @@ export const getStateDevices: API.OperationMethod<
   GetStateDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStateDevicesRequest,
-  output: DeviceState,
+  input: __S(96) as any as S.Schema<GetStateDevicesRequest>,
+  output: __S(97) as any as S.Schema<DeviceState>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3115,8 +2242,8 @@ export const getStorelayoutclusters: API.OperationMethod<
   GetStorelayoutclustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStorelayoutclustersRequest,
-  output: StoreCluster,
+  input: __S(98) as any as S.Schema<GetStorelayoutclustersRequest>,
+  output: __S(101) as any as S.Schema<StoreCluster>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3130,8 +2257,8 @@ export const getStoreLayoutEnterprises: API.OperationMethod<
   GetStoreLayoutEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStoreLayoutEnterprisesRequest,
-  output: StoreLayout,
+  input: __S(102) as any as S.Schema<GetStoreLayoutEnterprisesRequest>,
+  output: __S(103) as any as S.Schema<StoreLayout>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3149,8 +2276,8 @@ export const getStorelayoutpages: API.OperationMethod<
   GetStorelayoutpagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStorelayoutpagesRequest,
-  output: StorePage,
+  input: __S(104) as any as S.Schema<GetStorelayoutpagesRequest>,
+  output: __S(105) as any as S.Schema<StorePage>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3160,8 +2287,8 @@ export type GetUsersError = NotFound | Forbidden | GcpOpError;
 /** Retrieves a user's details. */
 export const getUsers: API.OperationMethod<GetUsersRequest, User, GetUsersError, GcpOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetUsersRequest,
-    output: User,
+    input: __S(106) as any as S.Schema<GetUsersRequest>,
+    output: __S(107) as any as S.Schema<User>,
     errors: [NotFound, Forbidden, UnknownGCPError],
     protocol: GcpProtocol,
     retry: Retry.Retry,
@@ -3175,8 +2302,8 @@ export const getWebapps: API.OperationMethod<
   GetWebappsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebappsRequest,
-  output: WebApp,
+  input: __S(108) as any as S.Schema<GetWebappsRequest>,
+  output: __S(111) as any as S.Schema<WebApp>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3195,8 +2322,8 @@ export const insertServiceaccountkeys: API.OperationMethod<
   InsertServiceaccountkeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertServiceaccountkeysRequest,
-  output: ServiceAccountKey,
+  input: __S(112) as any as S.Schema<InsertServiceaccountkeysRequest>,
+  output: __S(94) as any as S.Schema<ServiceAccountKey>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3216,8 +2343,8 @@ export const insertStorelayoutclusters: API.OperationMethod<
   InsertStorelayoutclustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertStorelayoutclustersRequest,
-  output: StoreCluster,
+  input: __S(113) as any as S.Schema<InsertStorelayoutclustersRequest>,
+  output: __S(101) as any as S.Schema<StoreCluster>,
   errors: [
     NotFound,
     Forbidden,
@@ -3244,8 +2371,8 @@ export const insertStorelayoutpages: API.OperationMethod<
   InsertStorelayoutpagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertStorelayoutpagesRequest,
-  output: StorePage,
+  input: __S(114) as any as S.Schema<InsertStorelayoutpagesRequest>,
+  output: __S(105) as any as S.Schema<StorePage>,
   errors: [
     NotFound,
     Forbidden,
@@ -3266,8 +2393,8 @@ export const insertUsers: API.OperationMethod<
   InsertUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertUsersRequest,
-  output: User,
+  input: __S(115) as any as S.Schema<InsertUsersRequest>,
+  output: __S(107) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3287,8 +2414,8 @@ export const insertWebapps: API.OperationMethod<
   InsertWebappsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InsertWebappsRequest,
-  output: WebApp,
+  input: __S(116) as any as S.Schema<InsertWebappsRequest>,
+  output: __S(111) as any as S.Schema<WebApp>,
   errors: [
     NotFound,
     Forbidden,
@@ -3309,8 +2436,8 @@ export const listDevices: API.OperationMethod<
   ListDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDevicesRequest,
-  output: DevicesListResponse,
+  input: __S(117) as any as S.Schema<ListDevicesRequest>,
+  output: __S(119) as any as S.Schema<DevicesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3328,8 +2455,8 @@ export const listEnterprises: API.OperationMethod<
   ListEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEnterprisesRequest,
-  output: EnterprisesListResponse,
+  input: __S(120) as any as S.Schema<ListEnterprisesRequest>,
+  output: __S(122) as any as S.Schema<EnterprisesListResponse>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3343,8 +2470,8 @@ export const listEntitlements: API.OperationMethod<
   ListEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEntitlementsRequest,
-  output: EntitlementsListResponse,
+  input: __S(123) as any as S.Schema<ListEntitlementsRequest>,
+  output: __S(125) as any as S.Schema<EntitlementsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3358,8 +2485,8 @@ export const listGrouplicenses: API.OperationMethod<
   ListGrouplicensesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGrouplicensesRequest,
-  output: GroupLicensesListResponse,
+  input: __S(126) as any as S.Schema<ListGrouplicensesRequest>,
+  output: __S(128) as any as S.Schema<GroupLicensesListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3373,8 +2500,8 @@ export const listGrouplicenseusers: API.OperationMethod<
   ListGrouplicenseusersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListGrouplicenseusersRequest,
-  output: GroupLicenseUsersListResponse,
+  input: __S(129) as any as S.Schema<ListGrouplicenseusersRequest>,
+  output: __S(131) as any as S.Schema<GroupLicenseUsersListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3388,8 +2515,8 @@ export const listInstalls: API.OperationMethod<
   ListInstallsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInstallsRequest,
-  output: InstallsListResponse,
+  input: __S(132) as any as S.Schema<ListInstallsRequest>,
+  output: __S(134) as any as S.Schema<InstallsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3403,8 +2530,8 @@ export const listManagedconfigurationsfordevice: API.OperationMethod<
   ListManagedconfigurationsfordeviceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedconfigurationsfordeviceRequest,
-  output: ManagedConfigurationsForDeviceListResponse,
+  input: __S(135) as any as S.Schema<ListManagedconfigurationsfordeviceRequest>,
+  output: __S(137) as any as S.Schema<ManagedConfigurationsForDeviceListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3418,8 +2545,8 @@ export const listManagedconfigurationsforuser: API.OperationMethod<
   ListManagedconfigurationsforuserError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedconfigurationsforuserRequest,
-  output: ManagedConfigurationsForUserListResponse,
+  input: __S(138) as any as S.Schema<ListManagedconfigurationsforuserRequest>,
+  output: __S(139) as any as S.Schema<ManagedConfigurationsForUserListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3433,8 +2560,8 @@ export const listManagedconfigurationssettings: API.OperationMethod<
   ListManagedconfigurationssettingsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedconfigurationssettingsRequest,
-  output: ManagedConfigurationsSettingsListResponse,
+  input: __S(140) as any as S.Schema<ListManagedconfigurationssettingsRequest>,
+  output: __S(143) as any as S.Schema<ManagedConfigurationsSettingsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3448,8 +2575,8 @@ export const listProducts: API.OperationMethod<
   ListProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProductsRequest,
-  output: ProductsListResponse,
+  input: __S(144) as any as S.Schema<ListProductsRequest>,
+  output: __S(148) as any as S.Schema<ProductsListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3463,8 +2590,8 @@ export const listServiceaccountkeys: API.OperationMethod<
   ListServiceaccountkeysError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListServiceaccountkeysRequest,
-  output: ServiceAccountKeysListResponse,
+  input: __S(149) as any as S.Schema<ListServiceaccountkeysRequest>,
+  output: __S(151) as any as S.Schema<ServiceAccountKeysListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3482,8 +2609,8 @@ export const listStorelayoutclusters: API.OperationMethod<
   ListStorelayoutclustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorelayoutclustersRequest,
-  output: StoreLayoutClustersListResponse,
+  input: __S(152) as any as S.Schema<ListStorelayoutclustersRequest>,
+  output: __S(154) as any as S.Schema<StoreLayoutClustersListResponse>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3501,8 +2628,8 @@ export const listStorelayoutpages: API.OperationMethod<
   ListStorelayoutpagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListStorelayoutpagesRequest,
-  output: StoreLayoutPagesListResponse,
+  input: __S(155) as any as S.Schema<ListStorelayoutpagesRequest>,
+  output: __S(157) as any as S.Schema<StoreLayoutPagesListResponse>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3516,8 +2643,8 @@ export const listUsers: API.OperationMethod<
   ListUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsersRequest,
-  output: UsersListResponse,
+  input: __S(158) as any as S.Schema<ListUsersRequest>,
+  output: __S(159) as any as S.Schema<UsersListResponse>,
   errors: [NotFound, Forbidden, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3531,8 +2658,8 @@ export const listWebapps: API.OperationMethod<
   ListWebappsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebappsRequest,
-  output: WebAppsListResponse,
+  input: __S(160) as any as S.Schema<ListWebappsRequest>,
+  output: __S(162) as any as S.Schema<WebAppsListResponse>,
   errors: [NotFound, Forbidden, InsufficientAuthenticationScopes, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3551,8 +2678,8 @@ export const pullNotificationSetEnterprises: API.OperationMethod<
   PullNotificationSetEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PullNotificationSetEnterprisesRequest,
-  output: NotificationSet,
+  input: __S(163) as any as S.Schema<PullNotificationSetEnterprisesRequest>,
+  output: __S(175) as any as S.Schema<NotificationSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3571,8 +2698,8 @@ export const revokeDeviceAccessUsers: API.OperationMethod<
   RevokeDeviceAccessUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeDeviceAccessUsersRequest,
-  output: RevokeDeviceAccessUsersResponse,
+  input: __S(176) as any as S.Schema<RevokeDeviceAccessUsersRequest>,
+  output: __S(177) as any as S.Schema<RevokeDeviceAccessUsersResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3591,8 +2718,8 @@ export const sendTestPushNotificationEnterprises: API.OperationMethod<
   SendTestPushNotificationEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SendTestPushNotificationEnterprisesRequest,
-  output: EnterprisesSendTestPushNotificationResponse,
+  input: __S(178) as any as S.Schema<SendTestPushNotificationEnterprisesRequest>,
+  output: __S(179) as any as S.Schema<EnterprisesSendTestPushNotificationResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3606,8 +2733,8 @@ export const setAccountEnterprises: API.OperationMethod<
   SetAccountEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetAccountEnterprisesRequest,
-  output: EnterpriseAccount,
+  input: __S(181) as any as S.Schema<SetAccountEnterprisesRequest>,
+  output: __S(180) as any as S.Schema<EnterpriseAccount>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3626,8 +2753,8 @@ export const setAvailableProductSetUsers: API.OperationMethod<
   SetAvailableProductSetUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetAvailableProductSetUsersRequest,
-  output: ProductSet,
+  input: __S(182) as any as S.Schema<SetAvailableProductSetUsersRequest>,
+  output: __S(46) as any as S.Schema<ProductSet>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3641,8 +2768,8 @@ export const setStateDevices: API.OperationMethod<
   SetStateDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetStateDevicesRequest,
-  output: DeviceState,
+  input: __S(183) as any as S.Schema<SetStateDevicesRequest>,
+  output: __S(97) as any as S.Schema<DeviceState>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3661,8 +2788,8 @@ export const setStoreLayoutEnterprises: API.OperationMethod<
   SetStoreLayoutEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetStoreLayoutEnterprisesRequest,
-  output: StoreLayout,
+  input: __S(184) as any as S.Schema<SetStoreLayoutEnterprisesRequest>,
+  output: __S(103) as any as S.Schema<StoreLayout>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3676,8 +2803,8 @@ export const unapproveProducts: API.OperationMethod<
   UnapproveProductsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnapproveProductsRequest,
-  output: UnapproveProductsResponse,
+  input: __S(185) as any as S.Schema<UnapproveProductsRequest>,
+  output: __S(5) as any as S.Schema<UnapproveProductsResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3691,8 +2818,8 @@ export const unenrollEnterprises: API.OperationMethod<
   UnenrollEnterprisesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnenrollEnterprisesRequest,
-  output: UnenrollEnterprisesResponse,
+  input: __S(186) as any as S.Schema<UnenrollEnterprisesRequest>,
+  output: __S(5) as any as S.Schema<UnenrollEnterprisesResponse>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3706,8 +2833,8 @@ export const updateDevices: API.OperationMethod<
   UpdateDevicesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDevicesRequest,
-  output: Device,
+  input: __S(187) as any as S.Schema<UpdateDevicesRequest>,
+  output: __S(70) as any as S.Schema<Device>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3721,8 +2848,8 @@ export const updateEntitlements: API.OperationMethod<
   UpdateEntitlementsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateEntitlementsRequest,
-  output: Entitlement,
+  input: __S(188) as any as S.Schema<UpdateEntitlementsRequest>,
+  output: __S(73) as any as S.Schema<Entitlement>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3736,8 +2863,8 @@ export const updateInstalls: API.OperationMethod<
   UpdateInstallsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateInstallsRequest,
-  output: Install,
+  input: __S(189) as any as S.Schema<UpdateInstallsRequest>,
+  output: __S(77) as any as S.Schema<Install>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3756,8 +2883,8 @@ export const updateManagedconfigurationsfordevice: API.OperationMethod<
   UpdateManagedconfigurationsfordeviceError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateManagedconfigurationsfordeviceRequest,
-  output: ManagedConfiguration,
+  input: __S(190) as any as S.Schema<UpdateManagedconfigurationsfordeviceRequest>,
+  output: __S(61) as any as S.Schema<ManagedConfiguration>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3776,8 +2903,8 @@ export const updateManagedconfigurationsforuser: API.OperationMethod<
   UpdateManagedconfigurationsforuserError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateManagedconfigurationsforuserRequest,
-  output: ManagedConfiguration,
+  input: __S(191) as any as S.Schema<UpdateManagedconfigurationsforuserRequest>,
+  output: __S(61) as any as S.Schema<ManagedConfiguration>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3797,8 +2924,8 @@ export const updateStorelayoutclusters: API.OperationMethod<
   UpdateStorelayoutclustersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStorelayoutclustersRequest,
-  output: StoreCluster,
+  input: __S(192) as any as S.Schema<UpdateStorelayoutclustersRequest>,
+  output: __S(101) as any as S.Schema<StoreCluster>,
   errors: [
     NotFound,
     Forbidden,
@@ -3825,8 +2952,8 @@ export const updateStorelayoutpages: API.OperationMethod<
   UpdateStorelayoutpagesError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStorelayoutpagesRequest,
-  output: StorePage,
+  input: __S(193) as any as S.Schema<UpdateStorelayoutpagesRequest>,
+  output: __S(105) as any as S.Schema<StorePage>,
   errors: [
     NotFound,
     Forbidden,
@@ -3847,8 +2974,8 @@ export const updateUsers: API.OperationMethod<
   UpdateUsersError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateUsersRequest,
-  output: User,
+  input: __S(194) as any as S.Schema<UpdateUsersRequest>,
+  output: __S(107) as any as S.Schema<User>,
   errors: [NotFound, Forbidden, BadRequest, Conflict, UnknownGCPError],
   protocol: GcpProtocol,
   retry: Retry.Retry,
@@ -3868,8 +2995,8 @@ export const updateWebapps: API.OperationMethod<
   UpdateWebappsError,
   GcpOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebappsRequest,
-  output: WebApp,
+  input: __S(195) as any as S.Schema<UpdateWebappsRequest>,
+  output: __S(111) as any as S.Schema<WebApp>,
   errors: [
     NotFound,
     Forbidden,
@@ -3912,8 +3039,8 @@ function __c0(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          approvalUrlInfo: S.optional(ApprovalUrlInfo),
-          approvedPermissions: S.optional(ProductsApproveRequestApprovedPermissionsEnum),
+          approvalUrlInfo: S.optional(__S(2)),
+          approvedPermissions: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductsApproveRequest" });
     case 4:
@@ -3921,7 +3048,7 @@ function __c0(j: number): any {
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
           productId: S.String.pipe(T.Label()),
-          body: S.optional(ProductsApproveRequest.pipe(T.HttpBody())),
+          body: S.optional(__S(3).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -3960,13 +3087,11 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(Administrator);
+      return S.Array(__S(7));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          googleAuthenticationRequired: S.optional(
-            GoogleAuthenticationSettingsGoogleAuthenticationRequiredEnum,
-          ),
+          googleAuthenticationRequired: S.optional(S.String),
         }),
       ).annotate({
         identifier: "GoogleAuthenticationSettings",
@@ -3974,22 +3099,20 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          administrator: S.optional(AdministratorList),
+          administrator: S.optional(__S(8)),
           id: S.optional(S.String),
           primaryDomain: S.optional(S.String),
-          googleAuthenticationSettings: S.optional(GoogleAuthenticationSettings),
-          managedGoogleDomainType: S.optional(EnterpriseManagedGoogleDomainTypeEnum),
+          googleAuthenticationSettings: S.optional(__S(9)),
+          managedGoogleDomainType: S.optional(S.String),
           name: S.optional(S.String),
-          enterpriseType: S.optional(EnterpriseEnterpriseTypeEnum),
+          enterpriseType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Enterprise" });
     case 3:
       return S.suspend(() =>
         S.Struct({
           requiredAccountEmail: S.optional(S.String),
-          authenticationRequirement: S.optional(
-            EnrollmentTokenGoogleAuthenticationOptionsAuthenticationRequirementEnum,
-          ),
+          authenticationRequirement: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EnrollmentTokenGoogleAuthenticationOptions",
@@ -3997,17 +3120,17 @@ function __c1(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          enrollmentTokenType: S.optional(EnrollmentTokenEnrollmentTokenTypeEnum),
+          enrollmentTokenType: S.optional(S.String),
           duration: S.optional(S.String),
           token: S.optional(S.String),
-          googleAuthenticationOptions: S.optional(EnrollmentTokenGoogleAuthenticationOptions),
+          googleAuthenticationOptions: S.optional(__S(11)),
         }),
       ).annotate({ identifier: "EnrollmentToken" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(EnrollmentToken.pipe(T.HttpBody())),
+          body: S.optional(__S(12).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4040,18 +3163,18 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AdministratorWebTokenSpecPermissionItemEnum);
+      return S.Array(S.String);
     case 1:
       return S.suspend(() =>
         S.Struct({
-          privateApps: S.optional(AdministratorWebTokenSpecPrivateApps),
+          privateApps: S.optional(__S(14)),
           parent: S.optional(S.String),
-          zeroTouch: S.optional(AdministratorWebTokenSpecZeroTouch),
-          managedConfigurations: S.optional(AdministratorWebTokenSpecManagedConfigurations),
-          playSearch: S.optional(AdministratorWebTokenSpecPlaySearch),
-          storeBuilder: S.optional(AdministratorWebTokenSpecStoreBuilder),
-          webApps: S.optional(AdministratorWebTokenSpecWebApps),
-          permission: S.optional(AdministratorWebTokenSpecPermissionItemEnumList),
+          zeroTouch: S.optional(__S(14)),
+          managedConfigurations: S.optional(__S(14)),
+          playSearch: S.optional(__S(15)),
+          storeBuilder: S.optional(__S(14)),
+          webApps: S.optional(__S(14)),
+          permission: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "AdministratorWebTokenSpec",
@@ -4060,7 +3183,7 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(AdministratorWebTokenSpec.pipe(T.HttpBody())),
+          body: S.optional(__S(17).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4221,7 +3344,7 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           token: S.String.pipe(T.Query()),
-          body: S.optional(Enterprise.pipe(T.HttpBody())),
+          body: S.optional(__S(10).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -4294,7 +3417,7 @@ function __c4(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          allowedDomains: S.optional(StringList.pipe(T.Query())),
+          allowedDomains: S.optional(__S(34).pipe(T.Query())),
           enterpriseId: S.String.pipe(T.Label()),
           adminEmail: S.optional(S.String.pipe(T.Query())),
         }).pipe(
@@ -4311,7 +3434,7 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           adminEmail: S.optional(S.String.pipe(T.Query())),
-          allowedDomains: S.optional(StringList.pipe(T.Query())),
+          allowedDomains: S.optional(__S(34).pipe(T.Query())),
           callbackUrl: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -4352,9 +3475,9 @@ function __c4(j: number): any {
         S.Struct({
           valueString: S.optional(S.String),
           valueInteger: S.optional(S.Number),
-          type: S.optional(AppRestrictionsSchemaRestrictionRestrictionValueTypeEnum),
+          type: S.optional(S.String),
           valueBool: S.optional(S.Boolean),
-          valueMultiselect: S.optional(StringList),
+          valueMultiselect: S.optional(__S(34)),
         }),
       ).annotate({
         identifier: "AppRestrictionsSchemaRestrictionRestrictionValue",
@@ -4366,11 +3489,11 @@ function __c5(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          restrictionType: S.optional(AppRestrictionsSchemaRestrictionRestrictionTypeEnum),
-          entryValue: S.optional(StringList),
-          entry: S.optional(StringList),
-          nestedRestriction: S.optional(S.suspend(() => AppRestrictionsSchemaRestrictionList)),
-          defaultValue: S.optional(AppRestrictionsSchemaRestrictionRestrictionValue),
+          restrictionType: S.optional(S.String),
+          entryValue: S.optional(__S(34)),
+          entry: S.optional(__S(34)),
+          nestedRestriction: S.optional(S.suspend(() => __S(41))),
+          defaultValue: S.optional(__S(39)),
           description: S.optional(S.String),
           key: S.optional(S.String),
           title: S.optional(S.String),
@@ -4379,12 +3502,12 @@ function __c5(j: number): any {
         identifier: "AppRestrictionsSchemaRestriction",
       });
     case 1:
-      return S.Array(AppRestrictionsSchemaRestriction);
+      return S.Array(__S(40));
     case 2:
       return S.suspend(() =>
         S.Struct({
           kind: S.optional(S.String),
-          restrictions: S.optional(AppRestrictionsSchemaRestrictionList),
+          restrictions: S.optional(__S(41)),
         }),
       ).annotate({ identifier: "AppRestrictionsSchema" });
     case 3:
@@ -4406,18 +3529,18 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           productId: S.optional(S.String),
-          tracks: S.optional(ProductVisibilityTracksItemEnumList),
-          trackIds: S.optional(StringList),
+          tracks: S.optional(__S(16)),
+          trackIds: S.optional(__S(34)),
         }),
       ).annotate({ identifier: "ProductVisibility" });
     case 5:
-      return S.Array(ProductVisibility);
+      return S.Array(__S(44));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          productSetBehavior: S.optional(ProductSetProductSetBehaviorEnum),
-          productVisibility: S.optional(ProductVisibilityList),
-          productId: S.optional(StringList),
+          productSetBehavior: S.optional(S.String),
+          productVisibility: S.optional(__S(45)),
+          productId: S.optional(__S(34)),
         }),
       ).annotate({ identifier: "ProductSet" });
     case 7:
@@ -4454,34 +3577,34 @@ function __c6(j: number): any {
         identifier: "EnterpriseAuthenticationAppLinkConfig",
       });
     case 2:
-      return S.Array(EnterpriseAuthenticationAppLinkConfig);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          networkTypeConstraint: S.optional(AutoInstallConstraintNetworkTypeConstraintEnum),
-          chargingStateConstraint: S.optional(AutoInstallConstraintChargingStateConstraintEnum),
-          deviceIdleStateConstraint: S.optional(AutoInstallConstraintDeviceIdleStateConstraintEnum),
+          networkTypeConstraint: S.optional(S.String),
+          chargingStateConstraint: S.optional(S.String),
+          deviceIdleStateConstraint: S.optional(S.String),
         }),
       ).annotate({ identifier: "AutoInstallConstraint" });
     case 4:
-      return S.Array(AutoInstallConstraint);
+      return S.Array(__S(51));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          autoInstallMode: S.optional(AutoInstallPolicyAutoInstallModeEnum),
+          autoInstallMode: S.optional(S.String),
           autoInstallPriority: S.optional(S.Number),
-          autoInstallConstraint: S.optional(AutoInstallConstraintList),
+          autoInstallConstraint: S.optional(__S(52)),
           minimumVersionCode: S.optional(S.Number),
         }),
       ).annotate({ identifier: "AutoInstallPolicy" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          managedProperty: S.optional(S.suspend(() => ManagedPropertyList)),
+          managedProperty: S.optional(S.suspend(() => __S(57))),
         }),
       ).annotate({ identifier: "ManagedPropertyBundle" });
     case 7:
-      return S.Array(ManagedPropertyBundle);
+      return S.Array(__S(54));
   }
 }
 function __c7(j: number): any {
@@ -4490,16 +3613,16 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           valueString: S.optional(S.String),
-          valueStringArray: S.optional(StringList),
+          valueStringArray: S.optional(__S(34)),
           key: S.optional(S.String),
-          valueBundleArray: S.optional(ManagedPropertyBundleList),
-          valueBundle: S.optional(ManagedPropertyBundle),
+          valueBundleArray: S.optional(__S(55)),
+          valueBundle: S.optional(__S(54)),
           valueBool: S.optional(S.Boolean),
           valueInteger: S.optional(S.Number),
         }),
       ).annotate({ identifier: "ManagedProperty" });
     case 1:
-      return S.Array(ManagedProperty);
+      return S.Array(__S(56));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -4508,11 +3631,11 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "VariableSet" });
     case 3:
-      return S.Array(VariableSet);
+      return S.Array(__S(58));
     case 4:
       return S.suspend(() =>
         S.Struct({
-          variableSet: S.optional(VariableSetList),
+          variableSet: S.optional(__S(59)),
           mcmId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ConfigurationVariables" });
@@ -4520,27 +3643,25 @@ function __c7(j: number): any {
       return S.suspend(() =>
         S.Struct({
           productId: S.optional(S.String),
-          managedProperty: S.optional(ManagedPropertyList),
+          managedProperty: S.optional(__S(57)),
           kind: S.optional(S.String),
-          configurationVariables: S.optional(ConfigurationVariables),
+          configurationVariables: S.optional(__S(60)),
         }),
       ).annotate({ identifier: "ManagedConfiguration" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          enterpriseAuthenticationAppLinkConfigs: S.optional(
-            EnterpriseAuthenticationAppLinkConfigList,
-          ),
-          tracks: S.optional(ProductPolicyTracksItemEnumList),
+          enterpriseAuthenticationAppLinkConfigs: S.optional(__S(50)),
+          tracks: S.optional(__S(16)),
           productId: S.optional(S.String),
-          autoInstallPolicy: S.optional(AutoInstallPolicy),
-          managedConfiguration: S.optional(ManagedConfiguration),
-          trackIds: S.optional(StringList),
-          autoUpdateMode: S.optional(ProductPolicyAutoUpdateModeEnum),
+          autoInstallPolicy: S.optional(__S(53)),
+          managedConfiguration: S.optional(__S(61)),
+          trackIds: S.optional(__S(34)),
+          autoUpdateMode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductPolicy" });
     case 7:
-      return S.Array(ProductPolicy);
+      return S.Array(__S(62));
   }
 }
 function __c8(j: number): any {
@@ -4548,12 +3669,12 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          productAvailabilityPolicy: S.optional(PolicyProductAvailabilityPolicyEnum),
-          deviceReportPolicy: S.optional(PolicyDeviceReportPolicyEnum),
-          maintenanceWindow: S.optional(MaintenanceWindow),
+          productAvailabilityPolicy: S.optional(S.String),
+          deviceReportPolicy: S.optional(S.String),
+          maintenanceWindow: S.optional(__S(48)),
           policyId: S.optional(S.String),
-          autoUpdatePolicy: S.optional(PolicyAutoUpdatePolicyEnum),
-          productPolicy: S.optional(ProductPolicyList),
+          autoUpdatePolicy: S.optional(S.String),
+          productPolicy: S.optional(__S(63)),
         }),
       ).annotate({ identifier: "Policy" });
     case 1:
@@ -4561,40 +3682,40 @@ function __c8(j: number): any {
         S.Struct({
           stateTimestampMillis: S.optional(S.String),
           key: S.optional(S.String),
-          severity: S.optional(KeyedAppStateSeverityEnum),
+          severity: S.optional(S.String),
           message: S.optional(S.String),
           data: S.optional(S.String),
         }),
       ).annotate({ identifier: "KeyedAppState" });
     case 2:
-      return S.Array(KeyedAppState);
+      return S.Array(__S(65));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          keyedAppState: S.optional(KeyedAppStateList),
+          keyedAppState: S.optional(__S(66)),
           packageName: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppState" });
     case 4:
-      return S.Array(AppState);
+      return S.Array(__S(67));
     case 5:
       return S.suspend(() =>
         S.Struct({
           lastUpdatedTimestampMillis: S.optional(S.String),
-          appState: S.optional(AppStateList),
+          appState: S.optional(__S(68)),
         }),
       ).annotate({ identifier: "DeviceReport" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          policy: S.optional(Policy),
-          report: S.optional(DeviceReport),
+          policy: S.optional(__S(64)),
+          report: S.optional(__S(69)),
           androidId: S.optional(S.String),
           device: S.optional(S.String),
           model: S.optional(S.String),
           product: S.optional(S.String),
           sdkVersion: S.optional(S.Number),
-          managementType: S.optional(DeviceManagementTypeEnum),
+          managementType: S.optional(S.String),
           maker: S.optional(S.String),
           latestBuildFingerprint: S.optional(S.String),
           retailBrand: S.optional(S.String),
@@ -4633,7 +3754,7 @@ function __c9(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          reason: S.optional(EntitlementReasonEnum),
+          reason: S.optional(S.String),
           productId: S.optional(S.String),
         }),
       ).annotate({ identifier: "Entitlement" });
@@ -4654,11 +3775,11 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           productId: S.optional(S.String),
-          permissions: S.optional(GroupLicensePermissionsEnum),
-          approval: S.optional(GroupLicenseApprovalEnum),
+          permissions: S.optional(S.String),
+          approval: S.optional(S.String),
           numProvisioned: S.optional(S.Number),
           numPurchased: S.optional(S.Number),
-          acquisitionKind: S.optional(GroupLicenseAcquisitionKindEnum),
+          acquisitionKind: S.optional(S.String),
         }),
       ).annotate({ identifier: "GroupLicense" });
     case 4:
@@ -4679,7 +3800,7 @@ function __c9(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          installState: S.optional(InstallInstallStateEnum),
+          installState: S.optional(S.String),
           productId: S.optional(S.String),
           versionCode: S.optional(S.Number),
         }),
@@ -4760,17 +3881,17 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(ProductPermissionStateEnum),
+          state: S.optional(S.String),
           permissionId: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductPermission" });
     case 4:
-      return S.Array(ProductPermission);
+      return S.Array(__S(83));
     case 5:
       return S.suspend(() =>
         S.Struct({
           productId: S.optional(S.String),
-          permission: S.optional(ProductPermissionList),
+          permission: S.optional(__S(84)),
         }),
       ).annotate({ identifier: "ProductPermissions" });
     case 6:
@@ -4790,9 +3911,9 @@ function __c10(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          track: S.optional(AppVersionTrackEnum),
+          track: S.optional(S.String),
           versionString: S.optional(S.String),
-          trackId: S.optional(StringList),
+          trackId: S.optional(__S(34)),
           versionCode: S.optional(S.Number),
           isProduction: S.optional(S.Boolean),
           targetSdkVersion: S.optional(S.Number),
@@ -4803,7 +3924,7 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AppVersion);
+      return S.Array(__S(87));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -4821,17 +3942,17 @@ function __c11(j: number): any {
         }),
       ).annotate({ identifier: "TrackInfo" });
     case 3:
-      return S.Array(TrackInfo);
+      return S.Array(__S(90));
     case 4:
       return S.suspend(() =>
         S.Struct({
           recentChanges: S.optional(S.String),
-          appVersion: S.optional(AppVersionList),
-          signingCertificate: S.optional(ProductSigningCertificate),
-          features: S.optional(ProductFeaturesItemEnumList),
-          contentRating: S.optional(ProductContentRatingEnum),
+          appVersion: S.optional(__S(88)),
+          signingCertificate: S.optional(__S(89)),
+          features: S.optional(__S(16)),
+          contentRating: S.optional(S.String),
           minAndroidSdkVersion: S.optional(S.Number),
-          appTracks: S.optional(TrackInfoList),
+          appTracks: S.optional(__S(91)),
           category: S.optional(S.String),
           workDetailsUrl: S.optional(S.String),
           description: S.optional(S.String),
@@ -4839,25 +3960,25 @@ function __c11(j: number): any {
           lastUpdatedTimestampMillis: S.optional(S.String),
           detailsUrl: S.optional(S.String),
           smallIconUrl: S.optional(S.String),
-          productPricing: S.optional(ProductProductPricingEnum),
+          productPricing: S.optional(S.String),
           productId: S.optional(S.String),
-          appRestrictionsSchema: S.optional(AppRestrictionsSchema),
-          availableCountries: S.optional(StringList),
+          appRestrictionsSchema: S.optional(__S(42)),
+          availableCountries: S.optional(__S(34)),
           requiresContainerApp: S.optional(S.Boolean),
           iconUrl: S.optional(S.String),
-          availableTracks: S.optional(ProductAvailableTracksItemEnumList),
+          availableTracks: S.optional(__S(16)),
           fullDescription: S.optional(S.String),
-          distributionChannel: S.optional(ProductDistributionChannelEnum),
+          distributionChannel: S.optional(S.String),
           authorName: S.optional(S.String),
-          permissions: S.optional(ProductPermissionList),
-          screenshotUrls: S.optional(StringList),
+          permissions: S.optional(__S(84)),
+          screenshotUrls: S.optional(__S(34)),
         }),
       ).annotate({ identifier: "Product" });
     case 5:
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
-          keyType: S.optional(GetServiceAccountEnterprisesKeyTypeEnum.pipe(T.Query())),
+          keyType: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "GET",
@@ -4873,7 +3994,7 @@ function __c11(j: number): any {
         S.Struct({
           id: S.optional(S.String),
           data: S.optional(S.String),
-          type: S.optional(ServiceAccountKeyTypeEnum),
+          type: S.optional(S.String),
           publicData: S.optional(S.String),
         }),
       ).annotate({ identifier: "ServiceAccountKey" });
@@ -4881,7 +4002,7 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          key: S.optional(ServiceAccountKey),
+          key: S.optional(__S(94)),
         }),
       ).annotate({ identifier: "ServiceAccount" });
   }
@@ -4905,7 +4026,7 @@ function __c12(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          accountState: S.optional(DeviceStateAccountStateEnum),
+          accountState: S.optional(S.String),
         }),
       ).annotate({ identifier: "DeviceState" });
     case 2:
@@ -4932,12 +4053,12 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "LocalizedText" });
     case 4:
-      return S.Array(LocalizedText);
+      return S.Array(__S(99));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          name: S.optional(LocalizedTextList),
-          productId: S.optional(StringList),
+          name: S.optional(__S(100)),
+          productId: S.optional(__S(34)),
           id: S.optional(S.String),
           orderInPage: S.optional(S.String),
         }),
@@ -4960,7 +4081,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           homepageId: S.optional(S.String),
-          storeLayoutType: S.optional(StoreLayoutStoreLayoutTypeEnum),
+          storeLayoutType: S.optional(S.String),
         }),
       ).annotate({ identifier: "StoreLayout" });
   }
@@ -4986,8 +4107,8 @@ function __c13(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.optional(S.String),
-          name: S.optional(LocalizedTextList),
-          link: S.optional(StringList),
+          name: S.optional(__S(100)),
+          link: S.optional(__S(34)),
         }),
       ).annotate({ identifier: "StorePage" });
     case 2:
@@ -5006,8 +4127,8 @@ function __c13(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          managementType: S.optional(UserManagementTypeEnum),
-          accountType: S.optional(UserAccountTypeEnum),
+          managementType: S.optional(S.String),
+          accountType: S.optional(S.String),
           displayName: S.optional(S.String),
           primaryEmail: S.optional(S.String),
           accountIdentifier: S.optional(S.String),
@@ -5034,7 +4155,7 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "WebAppIcon" });
     case 6:
-      return S.Array(WebAppIcon);
+      return S.Array(__S(109));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -5042,8 +4163,8 @@ function __c13(j: number): any {
           startUrl: S.optional(S.String),
           title: S.optional(S.String),
           isPublished: S.optional(S.Boolean),
-          icons: S.optional(WebAppIconList),
-          displayMode: S.optional(WebAppDisplayModeEnum),
+          icons: S.optional(__S(110)),
+          displayMode: S.optional(S.String),
           versionCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "WebApp" });
@@ -5055,7 +4176,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(ServiceAccountKey.pipe(T.HttpBody())),
+          body: S.optional(__S(94).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5071,7 +4192,7 @@ function __c14(j: number): any {
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
           pageId: S.String.pipe(T.Label()),
-          body: S.optional(StoreCluster.pipe(T.HttpBody())),
+          body: S.optional(__S(101).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5086,7 +4207,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(StorePage.pipe(T.HttpBody())),
+          body: S.optional(__S(105).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5101,7 +4222,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(User.pipe(T.HttpBody())),
+          body: S.optional(__S(107).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5114,7 +4235,7 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(WebApp.pipe(T.HttpBody())),
+          body: S.optional(__S(111).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5137,11 +4258,11 @@ function __c14(j: number): any {
         ),
       ).annotate({ identifier: "ListDevicesRequest" });
     case 6:
-      return S.Array(Device);
+      return S.Array(__S(70));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          device: S.optional(DeviceList),
+          device: S.optional(__S(118)),
         }),
       ).annotate({ identifier: "DevicesListResponse" });
   }
@@ -5161,11 +4282,11 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListEnterprisesRequest" });
     case 1:
-      return S.Array(Enterprise);
+      return S.Array(__S(10));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          enterprise: S.optional(EnterpriseList),
+          enterprise: S.optional(__S(121)),
         }),
       ).annotate({ identifier: "EnterprisesListResponse" });
     case 3:
@@ -5182,11 +4303,11 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListEntitlementsRequest" });
     case 4:
-      return S.Array(Entitlement);
+      return S.Array(__S(73));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          entitlement: S.optional(EntitlementList),
+          entitlement: S.optional(__S(124)),
         }),
       ).annotate({ identifier: "EntitlementsListResponse" });
     case 6:
@@ -5202,7 +4323,7 @@ function __c15(j: number): any {
         ),
       ).annotate({ identifier: "ListGrouplicensesRequest" });
     case 7:
-      return S.Array(GroupLicense);
+      return S.Array(__S(75));
   }
 }
 function __c16(j: number): any {
@@ -5210,7 +4331,7 @@ function __c16(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          groupLicense: S.optional(GroupLicenseList),
+          groupLicense: S.optional(__S(127)),
         }),
       ).annotate({
         identifier: "GroupLicensesListResponse",
@@ -5231,11 +4352,11 @@ function __c16(j: number): any {
         identifier: "ListGrouplicenseusersRequest",
       });
     case 2:
-      return S.Array(User);
+      return S.Array(__S(107));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          user: S.optional(UserList),
+          user: S.optional(__S(130)),
         }),
       ).annotate({
         identifier: "GroupLicenseUsersListResponse",
@@ -5255,11 +4376,11 @@ function __c16(j: number): any {
         ),
       ).annotate({ identifier: "ListInstallsRequest" });
     case 5:
-      return S.Array(Install);
+      return S.Array(__S(77));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          install: S.optional(InstallList),
+          install: S.optional(__S(133)),
         }),
       ).annotate({ identifier: "InstallsListResponse" });
     case 7:
@@ -5283,11 +4404,11 @@ function __c16(j: number): any {
 function __c17(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ManagedConfiguration);
+      return S.Array(__S(61));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          managedConfigurationForDevice: S.optional(ManagedConfigurationList),
+          managedConfigurationForDevice: S.optional(__S(136)),
         }),
       ).annotate({
         identifier: "ManagedConfigurationsForDeviceListResponse",
@@ -5310,7 +4431,7 @@ function __c17(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          managedConfigurationForUser: S.optional(ManagedConfigurationList),
+          managedConfigurationForUser: S.optional(__S(136)),
         }),
       ).annotate({
         identifier: "ManagedConfigurationsForUserListResponse",
@@ -5341,11 +4462,11 @@ function __c17(j: number): any {
         identifier: "ManagedConfigurationsSettings",
       });
     case 6:
-      return S.Array(ManagedConfigurationsSettings);
+      return S.Array(__S(141));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          managedConfigurationsSettings: S.optional(ManagedConfigurationsSettingsList),
+          managedConfigurationsSettings: S.optional(__S(142)),
         }),
       ).annotate({
         identifier: "ManagedConfigurationsSettingsListResponse",
@@ -5372,7 +4493,7 @@ function __c18(j: number): any {
         ),
       ).annotate({ identifier: "ListProductsRequest" });
     case 1:
-      return S.Array(Product);
+      return S.Array(__S(92));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -5391,9 +4512,9 @@ function __c18(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          product: S.optional(ProductList),
-          pageInfo: S.optional(PageInfo),
-          tokenPagination: S.optional(TokenPagination),
+          product: S.optional(__S(145)),
+          pageInfo: S.optional(__S(146)),
+          tokenPagination: S.optional(__S(147)),
         }),
       ).annotate({ identifier: "ProductsListResponse" });
     case 5:
@@ -5411,11 +4532,11 @@ function __c18(j: number): any {
         identifier: "ListServiceaccountkeysRequest",
       });
     case 6:
-      return S.Array(ServiceAccountKey);
+      return S.Array(__S(94));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          serviceAccountKey: S.optional(ServiceAccountKeyList),
+          serviceAccountKey: S.optional(__S(150)),
         }),
       ).annotate({
         identifier: "ServiceAccountKeysListResponse",
@@ -5440,11 +4561,11 @@ function __c19(j: number): any {
         identifier: "ListStorelayoutclustersRequest",
       });
     case 1:
-      return S.Array(StoreCluster);
+      return S.Array(__S(101));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          cluster: S.optional(StoreClusterList),
+          cluster: S.optional(__S(153)),
         }),
       ).annotate({
         identifier: "StoreLayoutClustersListResponse",
@@ -5464,11 +4585,11 @@ function __c19(j: number): any {
         identifier: "ListStorelayoutpagesRequest",
       });
     case 4:
-      return S.Array(StorePage);
+      return S.Array(__S(105));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          page: S.optional(StorePageList),
+          page: S.optional(__S(156)),
         }),
       ).annotate({
         identifier: "StoreLayoutPagesListResponse",
@@ -5489,7 +4610,7 @@ function __c19(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          user: S.optional(UserList),
+          user: S.optional(__S(130)),
         }),
       ).annotate({ identifier: "UsersListResponse" });
   }
@@ -5509,17 +4630,17 @@ function __c20(j: number): any {
         ),
       ).annotate({ identifier: "ListWebappsRequest" });
     case 1:
-      return S.Array(WebApp);
+      return S.Array(__S(111));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          webApp: S.optional(WebAppList),
+          webApp: S.optional(__S(161)),
         }),
       ).annotate({ identifier: "WebAppsListResponse" });
     case 3:
       return S.suspend(() =>
         S.Struct({
-          requestMode: S.optional(PullNotificationSetEnterprisesRequestModeEnum.pipe(T.Query())),
+          requestMode: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
             method: "POST",
@@ -5534,7 +4655,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           productId: S.optional(S.String),
-          approved: S.optional(ProductApprovalEventApprovedEnum),
+          approved: S.optional(S.String),
         }),
       ).annotate({ identifier: "ProductApprovalEvent" });
     case 5:
@@ -5542,21 +4663,21 @@ function __c20(j: number): any {
         S.Struct({
           userId: S.optional(S.String),
           deviceId: S.optional(S.String),
-          report: S.optional(DeviceReport),
+          report: S.optional(__S(69)),
         }),
       ).annotate({ identifier: "DeviceReportUpdateEvent" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          requestedPermissions: S.optional(StringList),
-          approvedPermissions: S.optional(StringList),
+          requestedPermissions: S.optional(__S(34)),
+          approvedPermissions: S.optional(__S(34)),
           productId: S.optional(S.String),
         }),
       ).annotate({ identifier: "NewPermissionsEvent" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          availabilityStatus: S.optional(ProductAvailabilityChangeEventAvailabilityStatusEnum),
+          availabilityStatus: S.optional(S.String),
           productId: S.optional(S.String),
         }),
       ).annotate({
@@ -5569,7 +4690,7 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          upgradeState: S.optional(EnterpriseUpgradeEventUpgradeStateEnum),
+          upgradeState: S.optional(S.String),
         }),
       ).annotate({ identifier: "EnterpriseUpgradeEvent" });
     case 1:
@@ -5591,7 +4712,7 @@ function __c21(j: number): any {
         S.Struct({
           userId: S.optional(S.String),
           productId: S.optional(S.String),
-          failureReason: S.optional(InstallFailureEventFailureReasonEnum),
+          failureReason: S.optional(S.String),
           deviceId: S.optional(S.String),
           failureDetails: S.optional(S.String),
         }),
@@ -5599,7 +4720,7 @@ function __c21(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          managementType: S.optional(NewDeviceEventManagementTypeEnum),
+          managementType: S.optional(S.String),
           deviceId: S.optional(S.String),
           dpcPackageName: S.optional(S.String),
           userId: S.optional(S.String),
@@ -5610,24 +4731,24 @@ function __c21(j: number): any {
         S.Struct({
           timestampMillis: S.optional(S.String),
           enterpriseId: S.optional(S.String),
-          productApprovalEvent: S.optional(ProductApprovalEvent),
-          deviceReportUpdateEvent: S.optional(DeviceReportUpdateEvent),
-          newPermissionsEvent: S.optional(NewPermissionsEvent),
-          productAvailabilityChangeEvent: S.optional(ProductAvailabilityChangeEvent),
-          enterpriseUpgradeEvent: S.optional(EnterpriseUpgradeEvent),
-          notificationType: S.optional(NotificationNotificationTypeEnum),
-          appRestrictionsSchemaChangeEvent: S.optional(AppRestrictionsSchemaChangeEvent),
-          appUpdateEvent: S.optional(AppUpdateEvent),
-          installFailureEvent: S.optional(InstallFailureEvent),
-          newDeviceEvent: S.optional(NewDeviceEvent),
+          productApprovalEvent: S.optional(__S(164)),
+          deviceReportUpdateEvent: S.optional(__S(165)),
+          newPermissionsEvent: S.optional(__S(166)),
+          productAvailabilityChangeEvent: S.optional(__S(167)),
+          enterpriseUpgradeEvent: S.optional(__S(168)),
+          notificationType: S.optional(S.String),
+          appRestrictionsSchemaChangeEvent: S.optional(__S(169)),
+          appUpdateEvent: S.optional(__S(170)),
+          installFailureEvent: S.optional(__S(171)),
+          newDeviceEvent: S.optional(__S(172)),
         }),
       ).annotate({ identifier: "Notification" });
     case 6:
-      return S.Array(Notification);
+      return S.Array(__S(173));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          notification: S.optional(NotificationList),
+          notification: S.optional(__S(174)),
           notificationSetId: S.optional(S.String),
         }),
       ).annotate({ identifier: "NotificationSet" });
@@ -5687,7 +4808,7 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(EnterpriseAccount.pipe(T.HttpBody())),
+          body: S.optional(__S(180).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5703,7 +4824,7 @@ function __c22(j: number): any {
         S.Struct({
           userId: S.String.pipe(T.Label()),
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(ProductSet.pipe(T.HttpBody())),
+          body: S.optional(__S(46).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5720,7 +4841,7 @@ function __c22(j: number): any {
           userId: S.String.pipe(T.Label()),
           enterpriseId: S.String.pipe(T.Label()),
           deviceId: S.String.pipe(T.Label()),
-          body: S.optional(DeviceState.pipe(T.HttpBody())),
+          body: S.optional(__S(97).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5737,7 +4858,7 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(StoreLayout.pipe(T.HttpBody())),
+          body: S.optional(__S(103).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5782,7 +4903,7 @@ function __c23(j: number): any {
           updateMask: S.optional(S.String.pipe(T.Query())),
           enterpriseId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(Device.pipe(T.HttpBody())),
+          body: S.optional(__S(70).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5798,7 +4919,7 @@ function __c23(j: number): any {
           install: S.optional(S.Boolean.pipe(T.Query())),
           enterpriseId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(Entitlement.pipe(T.HttpBody())),
+          body: S.optional(__S(73).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5816,7 +4937,7 @@ function __c23(j: number): any {
           installId: S.String.pipe(T.Label()),
           deviceId: S.String.pipe(T.Label()),
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(Install.pipe(T.HttpBody())),
+          body: S.optional(__S(77).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5832,7 +4953,7 @@ function __c23(j: number): any {
           enterpriseId: S.String.pipe(T.Label()),
           managedConfigurationForDeviceId: S.String.pipe(T.Label()),
           userId: S.String.pipe(T.Label()),
-          body: S.optional(ManagedConfiguration.pipe(T.HttpBody())),
+          body: S.optional(__S(61).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5849,7 +4970,7 @@ function __c23(j: number): any {
           userId: S.String.pipe(T.Label()),
           managedConfigurationForUserId: S.String.pipe(T.Label()),
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(ManagedConfiguration.pipe(T.HttpBody())),
+          body: S.optional(__S(61).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5870,7 +4991,7 @@ function __c24(j: number): any {
           pageId: S.String.pipe(T.Label()),
           clusterId: S.String.pipe(T.Label()),
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(StoreCluster.pipe(T.HttpBody())),
+          body: S.optional(__S(101).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5886,7 +5007,7 @@ function __c24(j: number): any {
         S.Struct({
           pageId: S.String.pipe(T.Label()),
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(StorePage.pipe(T.HttpBody())),
+          body: S.optional(__S(105).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5902,7 +5023,7 @@ function __c24(j: number): any {
         S.Struct({
           userId: S.String.pipe(T.Label()),
           enterpriseId: S.String.pipe(T.Label()),
-          body: S.optional(User.pipe(T.HttpBody())),
+          body: S.optional(__S(107).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5916,7 +5037,7 @@ function __c24(j: number): any {
         S.Struct({
           enterpriseId: S.String.pipe(T.Label()),
           webAppId: S.String.pipe(T.Label()),
-          body: S.optional(WebApp.pipe(T.HttpBody())),
+          body: S.optional(__S(111).pipe(T.HttpBody())),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -5925,5 +5046,64 @@ function __c24(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateWebappsRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
   }
 }

@@ -7,6 +7,8 @@ import * as Redacted from "effect/Redacted";
 import { GithubProtocol, type GithubOpError, type GithubOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { GithubOpError, GithubOpContext };
 
@@ -63,17 +65,7 @@ export interface AssignTeamToOrgRoleRequest {
   /** The unique identifier of the role. */
   role_id: number;
 }
-const AssignTeamToOrgRoleRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<AssignTeamToOrgRoleRequest>;
-
 export interface AssignTeamToOrgRoleResponse {}
-const AssignTeamToOrgRoleResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<AssignTeamToOrgRoleResponse>;
-
 export interface AssignUserToOrgRoleRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -82,37 +74,18 @@ export interface AssignUserToOrgRoleRequest {
   /** The unique identifier of the role. */
   role_id: number;
 }
-const AssignUserToOrgRoleRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<AssignUserToOrgRoleRequest>;
-
 export interface AssignUserToOrgRoleResponse {}
-const AssignUserToOrgRoleResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<AssignUserToOrgRoleResponse>;
-
 export interface BlockUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The handle for the GitHub user account. */
   username: string;
 }
-const BlockUserRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<BlockUserRequest>;
-
 export interface BlockUserResponse {}
-const BlockUserResponse = AssignTeamToOrgRoleResponse as any as S.Schema<BlockUserResponse>;
-
 /** Unique identifiers of the requests for access via fine-grained personal access token. Must be formed of between 1 and 100 `pat_request_id` values. */
 export type BulkReviewPatGrantRequestsInRequestPatRequestIdsList = Array<number>;
-const BulkReviewPatGrantRequestsInRequestPatRequestIdsList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<BulkReviewPatGrantRequestsInRequestPatRequestIdsList>;
-
 /** Action to apply to the requests. */
 export type BulkReviewPatGrantRequestsInRequestAction = "approve" | "deny";
-const BulkReviewPatGrantRequestsInRequestAction = S.String;
-
 export interface BulkReviewPatGrantRequestsInRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -123,77 +96,35 @@ export interface BulkReviewPatGrantRequestsInRequest {
   /** Reason for approving or denying the requests. Max 1024 characters. */
   reason?: string | null;
 }
-const BulkReviewPatGrantRequestsInRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<BulkReviewPatGrantRequestsInRequest>;
-
 export interface BulkReviewPatGrantRequestsInResponse {}
-const BulkReviewPatGrantRequestsInResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<BulkReviewPatGrantRequestsInResponse>;
-
 export interface CancelInvitationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the invitation. */
   invitation_id: number;
 }
-const CancelInvitationRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<CancelInvitationRequest>;
-
 export interface CancelInvitationResponse {}
-const CancelInvitationResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<CancelInvitationResponse>;
-
 export interface CheckBlockedUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The handle for the GitHub user account. */
   username: string;
 }
-const CheckBlockedUserRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<CheckBlockedUserRequest>;
-
 export interface CheckBlockedUserResponse {}
-const CheckBlockedUserResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<CheckBlockedUserResponse>;
-
 export interface CheckMembershipForUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The handle for the GitHub user account. */
   username: string;
 }
-const CheckMembershipForUserRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<CheckMembershipForUserRequest>;
-
 export interface CheckMembershipForUserResponse {}
-const CheckMembershipForUserResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<CheckMembershipForUserResponse>;
-
 export interface CheckPublicMembershipForUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The handle for the GitHub user account. */
   username: string;
 }
-const CheckPublicMembershipForUserRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<CheckPublicMembershipForUserRequest>;
-
 export interface CheckPublicMembershipForUserResponse {}
-const CheckPublicMembershipForUserResponse =
-  BulkReviewPatGrantRequestsInResponse as any as S.Schema<CheckPublicMembershipForUserResponse>;
-
 export interface ConvertMemberToOutsideCollaboratorRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -202,42 +133,20 @@ export interface ConvertMemberToOutsideCollaboratorRequest {
   /** When set to `true`, the request will be performed asynchronously. Returns a 202 status code when the job is successfully queued. */
   async?: boolean;
 }
-const ConvertMemberToOutsideCollaboratorRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ConvertMemberToOutsideCollaboratorRequest>;
-
 export interface ConvertMemberToOutsideCollaboratorResponse {}
-const ConvertMemberToOutsideCollaboratorResponse =
-  BulkReviewPatGrantRequestsInResponse as any as S.Schema<ConvertMemberToOutsideCollaboratorResponse>;
-
 /** The status of the artifact. Can be either deployed or decommissioned. */
 export type CreateArtifactDeploymentRecordRequestStatus = "deployed" | "decommissioned";
-const CreateArtifactDeploymentRecordRequestStatus = S.String;
-
 /** The tags associated with the deployment. */
 export type CreateArtifactDeploymentRecordRequestTagsMap = { [key: string]: string | undefined };
-const CreateArtifactDeploymentRecordRequestTagsMap = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<CreateArtifactDeploymentRecordRequestTagsMap>;
-
 export type CreateArtifactDeploymentRecordRequestRuntimeRisksItem =
   | "critical-resource"
   | "internet-exposed"
   | "lateral-movement"
   | "sensitive-data";
-const CreateArtifactDeploymentRecordRequestRuntimeRisksItem = S.String;
-
 /** A list of runtime risks associated with the deployment. */
 export type CreateArtifactDeploymentRecordRequestRuntimeRisksList = Array<
   CreateArtifactDeploymentRecordRequestRuntimeRisksItem | (string & {})
 >;
-const CreateArtifactDeploymentRecordRequestRuntimeRisksList = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<CreateArtifactDeploymentRecordRequestRuntimeRisksList>;
-
 export interface CreateArtifactDeploymentRecordRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -266,15 +175,7 @@ export interface CreateArtifactDeploymentRecordRequest {
   /** If true, the endpoint will return the created or updated record in the response body. */
   return_records?: boolean;
 }
-const CreateArtifactDeploymentRecordRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<CreateArtifactDeploymentRecordRequest>;
-
 export type ArtifactDeploymentRecordTagsMap = { [key: string]: string | undefined };
-const ArtifactDeploymentRecordTagsMap =
-  CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<ArtifactDeploymentRecordTagsMap>;
-
 export type ArtifactDeploymentRecordRuntimeRisksItem =
   | "critical-resource"
   | "internet-exposed"
@@ -283,9 +184,6 @@ export type ArtifactDeploymentRecordRuntimeRisksItem =
 /** A list of runtime risks associated with the deployment. */
 export type ArtifactDeploymentRecordRuntimeRisksList =
   Array<ArtifactDeploymentRecordRuntimeRisksItem>;
-const ArtifactDeploymentRecordRuntimeRisksList =
-  CreateArtifactDeploymentRecordRequestRuntimeRisksList as any as S.Schema<ArtifactDeploymentRecordRuntimeRisksList>;
-
 /** Artifact Metadata Deployment Record */
 export interface ArtifactDeploymentRecord {
   id?: number;
@@ -302,32 +200,15 @@ export interface ArtifactDeploymentRecord {
   /** The ID of the provenance attestation associated with the deployment record. */
   attestation_id?: number | null;
 }
-const ArtifactDeploymentRecord = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<ArtifactDeploymentRecord>;
-
 export type CreateArtifactDeploymentRecordResponseDeploymentRecordsList =
   Array<ArtifactDeploymentRecord>;
-const CreateArtifactDeploymentRecordResponseDeploymentRecordsList = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<CreateArtifactDeploymentRecordResponseDeploymentRecordsList>;
-
 export interface CreateArtifactDeploymentRecordResponse {
   /** The number of deployment records created */
   total_count: number;
   deployment_records?: CreateArtifactDeploymentRecordResponseDeploymentRecordsList;
 }
-const CreateArtifactDeploymentRecordResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  1,
-) as any as S.Schema<CreateArtifactDeploymentRecordResponse>;
-
 /** The status of the artifact (e.g., active, inactive). */
 export type CreateArtifactStorageRecordRequestStatus = "active" | "eol" | "deleted";
-const CreateArtifactStorageRecordRequestStatus = S.String;
-
 export interface CreateArtifactStorageRecordRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -352,11 +233,6 @@ export interface CreateArtifactStorageRecordRequest {
   /** If true, the endpoint will return the created record in the response body. */
   return_records?: boolean;
 }
-const CreateArtifactStorageRecordRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<CreateArtifactStorageRecordRequest>;
-
 export interface CreateArtifactStorageRecordResponseStorageRecordsItem {
   id?: number;
   name?: string;
@@ -368,59 +244,29 @@ export interface CreateArtifactStorageRecordResponseStorageRecordsItem {
   created_at?: string;
   updated_at?: string;
 }
-const CreateArtifactStorageRecordResponseStorageRecordsItem = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<CreateArtifactStorageRecordResponseStorageRecordsItem>;
-
 export type CreateArtifactStorageRecordResponseStorageRecordsList =
   Array<CreateArtifactStorageRecordResponseStorageRecordsItem>;
-const CreateArtifactStorageRecordResponseStorageRecordsList = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<CreateArtifactStorageRecordResponseStorageRecordsList>;
-
 export interface CreateArtifactStorageRecordResponse {
   total_count: number;
   storage_records?: CreateArtifactStorageRecordResponseStorageRecordsList;
 }
-const CreateArtifactStorageRecordResponse = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<CreateArtifactStorageRecordResponse>;
-
 /** The deployment status of the artifact. */
 export type CreateClusterDeploymentRecordsJobRequestDeploymentsItemStatus =
   | "deployed"
   | "decommissioned";
-const CreateClusterDeploymentRecordsJobRequestDeploymentsItemStatus = S.String;
-
 /** Key-value pairs to tag the deployment record. */
 export type CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap = {
   [key: string]: string | undefined;
 };
-const CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap>;
-
 export type CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksItem =
   | "critical-resource"
   | "internet-exposed"
   | "lateral-movement"
   | "sensitive-data";
-const CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksItem = S.String;
-
 /** A list of runtime risks associated with the deployment. */
 export type CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksList = Array<
   CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksItem | (string & {})
 >;
-const CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksList =
-  /*@__PURE__*/ __L.at(
-    __c2,
-    7,
-  ) as any as S.Schema<CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksList>;
-
 export interface CreateClusterDeploymentRecordsJobRequestDeploymentsItem {
   /** The name of the artifact. */
   name: string;
@@ -439,19 +285,9 @@ export interface CreateClusterDeploymentRecordsJobRequestDeploymentsItem {
   /** A list of runtime risks associated with the deployment. */
   runtime_risks?: CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksList;
 }
-const CreateClusterDeploymentRecordsJobRequestDeploymentsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<CreateClusterDeploymentRecordsJobRequestDeploymentsItem>;
-
 /** The list of deployments to record. */
 export type CreateClusterDeploymentRecordsJobRequestDeploymentsList =
   Array<CreateClusterDeploymentRecordsJobRequestDeploymentsItem>;
-const CreateClusterDeploymentRecordsJobRequestDeploymentsList = /*@__PURE__*/ __L.at(
-  __c3,
-  1,
-) as any as S.Schema<CreateClusterDeploymentRecordsJobRequestDeploymentsList>;
-
 export interface CreateClusterDeploymentRecordsJobRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -464,28 +300,15 @@ export interface CreateClusterDeploymentRecordsJobRequest {
   /** The list of deployments to record. */
   deployments: CreateClusterDeploymentRecordsJobRequestDeploymentsList;
 }
-const CreateClusterDeploymentRecordsJobRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<CreateClusterDeploymentRecordsJobRequest>;
-
 export interface CreateClusterDeploymentRecordsJobResponse {}
-const CreateClusterDeploymentRecordsJobResponse =
-  BulkReviewPatGrantRequestsInResponse as any as S.Schema<CreateClusterDeploymentRecordsJobResponse>;
-
 /** The role for the new member. * `admin` - Organization owners with full administrative rights to the organization and complete access to all repositories and teams. * `direct_member` - Non-owner organization members with ability to see other members and join teams by invitation. * `billing_manager` - Non-owner organization members with ability to manage the billing settings of your organization. * `reinstate` - The previous role assigned to the invitee before they were removed from your organization. Can be one of the roles listed above. Only works if the invitee was previously part of your organization. */
 export type CreateInvitationRequestRole =
   | "admin"
   | "direct_member"
   | "billing_manager"
   | "reinstate";
-const CreateInvitationRequestRole = S.String;
-
 /** Specify IDs for the teams you want to invite new members to. */
 export type CreateInvitationRequestTeamIdsList = Array<number>;
-const CreateInvitationRequestTeamIdsList =
-  BulkReviewPatGrantRequestsInRequestPatRequestIdsList as any as S.Schema<CreateInvitationRequestTeamIdsList>;
-
 export interface CreateInvitationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -498,11 +321,6 @@ export interface CreateInvitationRequest {
   /** Specify IDs for the teams you want to invite new members to. */
   team_ids?: CreateInvitationRequestTeamIdsList;
 }
-const CreateInvitationRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<CreateInvitationRequest>;
-
 /** A GitHub user. */
 export interface SimpleUser {
   name?: string | null;
@@ -528,8 +346,6 @@ export interface SimpleUser {
   starred_at?: string;
   user_view_type?: string;
 }
-const SimpleUser = /*@__PURE__*/ __L.at(__c3, 4) as any as S.Schema<SimpleUser>;
-
 /** Organization Invitation */
 export interface OrganizationInvitation {
   id: number;
@@ -545,11 +361,6 @@ export interface OrganizationInvitation {
   invitation_teams_url: string;
   invitation_source?: string;
 }
-const OrganizationInvitation = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<OrganizationInvitation>;
-
 /** The data type of the issue field. */
 export type CreateIssueFieldRequestDataType =
   | "text"
@@ -557,12 +368,8 @@ export type CreateIssueFieldRequestDataType =
   | "single_select"
   | "multi_select"
   | "number";
-const CreateIssueFieldRequestDataType = S.String;
-
 /** The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled. Defaults to `organization_members_only`. */
 export type CreateIssueFieldRequestVisibility = "organization_members_only" | "all";
-const CreateIssueFieldRequestVisibility = S.String;
-
 /** Color for the option. */
 export type CreateIssueFieldRequestOptionsItemColor =
   | "gray"
@@ -573,8 +380,6 @@ export type CreateIssueFieldRequestOptionsItemColor =
   | "red"
   | "pink"
   | "purple";
-const CreateIssueFieldRequestOptionsItemColor = S.String;
-
 export interface CreateIssueFieldRequestOptionsItem {
   /** Name of the option. */
   name: string;
@@ -585,18 +390,8 @@ export interface CreateIssueFieldRequestOptionsItem {
   /** Priority of the option for ordering. */
   priority: number;
 }
-const CreateIssueFieldRequestOptionsItem = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<CreateIssueFieldRequestOptionsItem>;
-
 /** Options for select fields. Required when data_type is 'single_select' or 'multi_select'. */
 export type CreateIssueFieldRequestOptionsList = Array<CreateIssueFieldRequestOptionsItem>;
-const CreateIssueFieldRequestOptionsList = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<CreateIssueFieldRequestOptionsList>;
-
 export interface CreateIssueFieldRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -611,19 +406,10 @@ export interface CreateIssueFieldRequest {
   /** Options for select fields. Required when data_type is 'single_select' or 'multi_select'. */
   options?: CreateIssueFieldRequestOptionsList | null;
 }
-const CreateIssueFieldRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<CreateIssueFieldRequest>;
-
 /** The data type of the issue field. */
 export type IssueFieldDataType = "text" | "date" | "single_select" | "multi_select" | "number";
-const IssueFieldDataType = S.String;
-
 /** The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). */
 export type IssueFieldVisibility = "organization_members_only" | "all";
-const IssueFieldVisibility = S.String;
-
 /** The color of the option. */
 export type IssueFieldOptionsItemColor =
   | "gray"
@@ -634,8 +420,6 @@ export type IssueFieldOptionsItemColor =
   | "red"
   | "pink"
   | "purple";
-const IssueFieldOptionsItemColor = S.String;
-
 export interface IssueFieldOptionsItem {
   /** The unique identifier of the option. */
   id: number;
@@ -652,18 +436,8 @@ export interface IssueFieldOptionsItem {
   /** The time the option was last updated. */
   updated_at?: string;
 }
-const IssueFieldOptionsItem = /*@__PURE__*/ __L.at(
-  __c4,
-  1,
-) as any as S.Schema<IssueFieldOptionsItem>;
-
 /** Available options for single select and multi select fields. */
 export type IssueFieldOptionsList = Array<IssueFieldOptionsItem>;
-const IssueFieldOptionsList = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<IssueFieldOptionsList>;
-
 /** A custom attribute defined at the organization level for attaching structured data to issues. */
 export interface IssueField {
   /** The unique identifier of the issue field. */
@@ -685,8 +459,6 @@ export interface IssueField {
   /** The time the issue field was last updated. */
   updated_at?: string;
 }
-const IssueField = /*@__PURE__*/ __L.at(__c4, 3) as any as S.Schema<IssueField>;
-
 /** Color for the issue type. */
 export type CreateIssueTypeRequestColor =
   | "gray"
@@ -697,8 +469,6 @@ export type CreateIssueTypeRequestColor =
   | "red"
   | "pink"
   | "purple";
-const CreateIssueTypeRequestColor = S.String;
-
 export interface CreateIssueTypeRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -711,11 +481,6 @@ export interface CreateIssueTypeRequest {
   /** Color for the issue type. */
   color?: CreateIssueTypeRequestColor | (string & {}) | null;
 }
-const CreateIssueTypeRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CreateIssueTypeRequest>;
-
 /** The color of the issue type. */
 export type IssueTypeColor =
   | "gray"
@@ -726,8 +491,6 @@ export type IssueTypeColor =
   | "red"
   | "pink"
   | "purple";
-const IssueTypeColor = S.String;
-
 /** The type assigned to the issue. This is only present for issues in repositories where issue types are supported. */
 export interface IssueType {
   /** The unique identifier of the issue type. */
@@ -747,11 +510,7 @@ export interface IssueType {
   /** The enabled state of the issue type. */
   is_enabled?: boolean;
 }
-const IssueType = /*@__PURE__*/ __L.at(__c4, 5) as any as S.Schema<IssueType>;
-
 export type WebhookConfigInsecureSsl = string | number;
-const WebhookConfigInsecureSsl = S.Unknown as any as S.Schema<WebhookConfigInsecureSsl>;
-
 /** Key/value pairs to provide settings for this webhook. */
 export interface CreateWebhookRequestConfig {
   url: string;
@@ -761,18 +520,8 @@ export interface CreateWebhookRequestConfig {
   username?: string;
   password?: string | Redacted.Redacted<string>;
 }
-const CreateWebhookRequestConfig = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CreateWebhookRequestConfig>;
-
 /** Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. Set to `["*"]` to receive all possible events. */
 export type CreateWebhookRequestEventsList = Array<string>;
-const CreateWebhookRequestEventsList = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CreateWebhookRequestEventsList>;
-
 export interface CreateWebhookRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -785,19 +534,13 @@ export interface CreateWebhookRequest {
   /** Determines if notifications are sent when the webhook is triggered. Set to `true` to send notifications. */
   active?: boolean;
 }
-const CreateWebhookRequest = /*@__PURE__*/ __L.at(__c5, 0) as any as S.Schema<CreateWebhookRequest>;
-
 export type OrgHookEventsList = Array<string>;
-const OrgHookEventsList = CreateWebhookRequestEventsList as any as S.Schema<OrgHookEventsList>;
-
 export interface OrgHookConfig {
   url?: string;
   insecure_ssl?: string;
   content_type?: string;
   secret?: string | Redacted.Redacted<string>;
 }
-const OrgHookConfig = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<OrgHookConfig>;
-
 /** Org Hook */
 export interface OrgHook {
   id: number;
@@ -812,8 +555,6 @@ export interface OrgHook {
   created_at: string;
   type: string;
 }
-const OrgHook = /*@__PURE__*/ __L.at(__c5, 2) as any as S.Schema<OrgHook>;
-
 /** The type of the value for the property */
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestValueType =
   | "string"
@@ -821,36 +562,19 @@ export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestV
   | "multi_select"
   | "true_false"
   | "url";
-const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestValueType = S.String;
-
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List =
   Array<string>;
-const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    3,
-  ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List>;
-
 /** Default value of the property */
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValue =
   | string
   | CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List;
-const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValue =
-  S.Unknown as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValue>;
-
 /** An ordered list of the allowed values of the property. The property can have up to 200 allowed values. */
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestAllowedValuesList =
   Array<string>;
-const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestAllowedValuesList =
-  CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestAllowedValuesList>;
-
 /** Who can edit the values of the property */
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestValuesEditableBy =
   | "org_actors"
   | "org_and_repo_actors";
-const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestValuesEditableBy =
-  S.String;
-
 export interface CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -876,15 +600,8 @@ export interface CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionReq
   /** Whether setting properties values is mandatory */
   require_explicit_values?: boolean;
 }
-const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest>;
-
 /** The source type of the property */
 export type CustomPropertySourceType = "organization" | "enterprise";
-const CustomPropertySourceType = S.String;
-
 /** The type of the value for the property */
 export type CustomPropertyValueType =
   | "string"
@@ -892,22 +609,13 @@ export type CustomPropertyValueType =
   | "multi_select"
   | "true_false"
   | "url";
-const CustomPropertyValueType = S.String;
-
 export type CustomPropertyDefaultValueCase1List = Array<string>;
 /** Default value of the property */
 export type CustomPropertyDefaultValue = string | CustomPropertyDefaultValueCase1List;
-const CustomPropertyDefaultValue = S.Unknown as any as S.Schema<CustomPropertyDefaultValue>;
-
 /** An ordered list of the allowed values of the property. The property can have up to 200 allowed values. */
 export type CustomPropertyAllowedValuesList = Array<string>;
-const CustomPropertyAllowedValuesList =
-  CreateWebhookRequestEventsList as any as S.Schema<CustomPropertyAllowedValuesList>;
-
 /** Who can edit the values of the property */
 export type CustomPropertyValuesEditableBy = "org_actors" | "org_and_repo_actors";
-const CustomPropertyValuesEditableBy = S.String;
-
 /** Custom property defined on an organization */
 export interface CustomProperty {
   /** The name of the property */
@@ -931,51 +639,25 @@ export interface CustomProperty {
   /** Whether setting properties values is mandatory */
   require_explicit_values?: boolean;
 }
-const CustomProperty = /*@__PURE__*/ __L.at(__c5, 5) as any as S.Schema<CustomProperty>;
-
 /** The array of custom properties to create or update. */
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequestPropertiesList =
   Array<CustomProperty>;
-const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequestPropertiesList =
-  /*@__PURE__*/ __L.at(
-    __c5,
-    6,
-  ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequestPropertiesList>;
-
 export interface CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The array of custom properties to create or update. */
   properties: CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequestPropertiesList;
 }
-const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequest>;
-
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponseBodyList =
   Array<CustomProperty>;
-const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponseBodyList =
-  CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequestPropertiesList as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponseBodyList>;
-
 export type CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponse =
   CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponseBodyList;
-const CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  0,
-) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponse>;
-
 /** The names of repositories that the custom property values will be applied to. */
 export type CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList =
   Array<string>;
-const CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList =
-  CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList>;
-
 export type CustomPropertyValueValueCase1List = Array<string>;
 /** The value assigned to the property */
 export type CustomPropertyValueValue = string | CustomPropertyValueValueCase1List;
-const CustomPropertyValueValue = S.Unknown as any as S.Schema<CustomPropertyValueValue>;
-
 /** Custom property name and associated value */
 export interface CustomPropertyValue {
   /** The name of the property */
@@ -983,17 +665,9 @@ export interface CustomPropertyValue {
   /** The value assigned to the property */
   value: CustomPropertyValueValue | null;
 }
-const CustomPropertyValue = /*@__PURE__*/ __L.at(__c6, 1) as any as S.Schema<CustomPropertyValue>;
-
 /** List of custom property names and associated values to apply to the repositories. */
 export type CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList =
   Array<CustomPropertyValue>;
-const CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList =
-  /*@__PURE__*/ __L.at(
-    __c6,
-    2,
-  ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList>;
-
 export interface CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1002,66 +676,28 @@ export interface CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequest
   /** List of custom property names and associated values to apply to the repositories. */
   properties: CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList;
 }
-const CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  3,
-) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequest>;
-
 export interface CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse {}
-const CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse>;
-
 export interface CustomPropertiesForReposDeleteOrganizationDefinitionRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The custom property name */
   custom_property_name: string;
 }
-const CustomPropertiesForReposDeleteOrganizationDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CustomPropertiesForReposDeleteOrganizationDefinitionRequest>;
-
 export interface CustomPropertiesForReposDeleteOrganizationDefinitionResponse {}
-const CustomPropertiesForReposDeleteOrganizationDefinitionResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CustomPropertiesForReposDeleteOrganizationDefinitionResponse>;
-
 export interface CustomPropertiesForReposGetOrganizationDefinitionRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The custom property name */
   custom_property_name: string;
 }
-const CustomPropertiesForReposGetOrganizationDefinitionRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CustomPropertiesForReposGetOrganizationDefinitionRequest>;
-
 export interface CustomPropertiesForReposGetOrganizationDefinitionsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const CustomPropertiesForReposGetOrganizationDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CustomPropertiesForReposGetOrganizationDefinitionsRequest>;
-
 export type CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList =
   Array<CustomProperty>;
-const CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList =
-  CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequestPropertiesList as any as S.Schema<CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList>;
-
 export type CustomPropertiesForReposGetOrganizationDefinitionsResponse =
   CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList;
-const CustomPropertiesForReposGetOrganizationDefinitionsResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CustomPropertiesForReposGetOrganizationDefinitionsResponse>;
-
 export interface CustomPropertiesForReposGetOrganizationValuesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1072,18 +708,8 @@ export interface CustomPropertiesForReposGetOrganizationValuesRequest {
   /** Finds repositories in the organization with a query containing one or more search keywords and qualifiers. Qualifiers allow you to limit your search to specific areas of GitHub. The REST API supports the same qualifiers as the web interface for GitHub. To learn more about the format of the query, see [Constructing a search query](https://docs.github.com/rest/search/search#constructing-a-search-query). See "[Searching for repositories](https://docs.github.com/articles/searching-for-repositories/)" for a detailed list of qualifiers. */
   repository_query?: string;
 }
-const CustomPropertiesForReposGetOrganizationValuesRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  2,
-) as any as S.Schema<CustomPropertiesForReposGetOrganizationValuesRequest>;
-
 /** List of custom property names and associated values */
 export type OrgRepoCustomPropertyValuesPropertiesList = Array<CustomPropertyValue>;
-const OrgRepoCustomPropertyValuesPropertiesList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<OrgRepoCustomPropertyValuesPropertiesList>;
-
 /** List of custom property values for a repository */
 export interface OrgRepoCustomPropertyValues {
   repository_id: number;
@@ -1092,34 +718,15 @@ export interface OrgRepoCustomPropertyValues {
   /** List of custom property names and associated values */
   properties: OrgRepoCustomPropertyValuesPropertiesList;
 }
-const OrgRepoCustomPropertyValues = /*@__PURE__*/ __L.at(
-  __c7,
-  4,
-) as any as S.Schema<OrgRepoCustomPropertyValues>;
-
 export type CustomPropertiesForReposGetOrganizationValuesResponseBodyList =
   Array<OrgRepoCustomPropertyValues>;
-const CustomPropertiesForReposGetOrganizationValuesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<CustomPropertiesForReposGetOrganizationValuesResponseBodyList>;
-
 export type CustomPropertiesForReposGetOrganizationValuesResponse =
   CustomPropertiesForReposGetOrganizationValuesResponseBodyList;
-const CustomPropertiesForReposGetOrganizationValuesResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  6,
-) as any as S.Schema<CustomPropertiesForReposGetOrganizationValuesResponse>;
-
 export interface DeleteRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const DeleteRequest = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<DeleteRequest>;
-
 export interface DeleteResponse {}
-const DeleteResponse = AssignTeamToOrgRoleResponse as any as S.Schema<DeleteResponse>;
-
 /** List of subject digests associated with the artifact attestations to delete. */
 export type DeleteAttestationsBulkRequestBodyCase0SubjectDigestsList = Array<string>;
 export interface DeleteAttestationsBulkRequestBodyCase0 {
@@ -1136,136 +743,67 @@ export interface DeleteAttestationsBulkRequestBodyCase1 {
 export type DeleteAttestationsBulkRequestBody =
   | DeleteAttestationsBulkRequestBodyCase0
   | DeleteAttestationsBulkRequestBodyCase1;
-const DeleteAttestationsBulkRequestBody =
-  S.Unknown as any as S.Schema<DeleteAttestationsBulkRequestBody>;
-
 export interface DeleteAttestationsBulkRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   body: DeleteAttestationsBulkRequestBody;
 }
-const DeleteAttestationsBulkRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  0,
-) as any as S.Schema<DeleteAttestationsBulkRequest>;
-
 export interface DeleteAttestationsBulkResponse {}
-const DeleteAttestationsBulkResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<DeleteAttestationsBulkResponse>;
-
 export interface DeleteAttestationsByIdRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Attestation ID */
   attestation_id: number;
 }
-const DeleteAttestationsByIdRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  1,
-) as any as S.Schema<DeleteAttestationsByIdRequest>;
-
 export interface DeleteAttestationsByIdResponse {}
-const DeleteAttestationsByIdResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<DeleteAttestationsByIdResponse>;
-
 export interface DeleteAttestationsBySubjectDigestRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** Subject Digest */
   subject_digest: string;
 }
-const DeleteAttestationsBySubjectDigestRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<DeleteAttestationsBySubjectDigestRequest>;
-
 export interface DeleteAttestationsBySubjectDigestResponse {}
-const DeleteAttestationsBySubjectDigestResponse =
-  BulkReviewPatGrantRequestsInResponse as any as S.Schema<DeleteAttestationsBySubjectDigestResponse>;
-
 export interface DeleteIssueFieldRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the issue field. */
   issue_field_id: number;
 }
-const DeleteIssueFieldRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  3,
-) as any as S.Schema<DeleteIssueFieldRequest>;
-
 export interface DeleteIssueFieldResponse {}
-const DeleteIssueFieldResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<DeleteIssueFieldResponse>;
-
 export interface DeleteIssueTypeRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the issue type. */
   issue_type_id: number;
 }
-const DeleteIssueTypeRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  4,
-) as any as S.Schema<DeleteIssueTypeRequest>;
-
 export interface DeleteIssueTypeResponse {}
-const DeleteIssueTypeResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<DeleteIssueTypeResponse>;
-
 export interface DeleteWebhookRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-const DeleteWebhookRequest = /*@__PURE__*/ __L.at(__c8, 5) as any as S.Schema<DeleteWebhookRequest>;
-
 export interface DeleteWebhookResponse {}
-const DeleteWebhookResponse = AssignTeamToOrgRoleResponse as any as S.Schema<DeleteWebhookResponse>;
-
 export interface DisableSelectedRepositoryImmutableReleasesOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the repository. */
   repository_id: number;
 }
-const DisableSelectedRepositoryImmutableReleasesOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  6,
-) as any as S.Schema<DisableSelectedRepositoryImmutableReleasesOrganizationRequest>;
-
 export interface DisableSelectedRepositoryImmutableReleasesOrganizationResponse {}
-const DisableSelectedRepositoryImmutableReleasesOrganizationResponse =
-  CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse as any as S.Schema<DisableSelectedRepositoryImmutableReleasesOrganizationResponse>;
-
 export interface EnableSelectedRepositoryImmutableReleasesOrganizationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the repository. */
   repository_id: number;
 }
-const EnableSelectedRepositoryImmutableReleasesOrganizationRequest = /*@__PURE__*/ __L.at(
-  __c8,
-  7,
-) as any as S.Schema<EnableSelectedRepositoryImmutableReleasesOrganizationRequest>;
-
 export interface EnableSelectedRepositoryImmutableReleasesOrganizationResponse {}
-const EnableSelectedRepositoryImmutableReleasesOrganizationResponse =
-  CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse as any as S.Schema<EnableSelectedRepositoryImmutableReleasesOrganizationResponse>;
-
 /** The names of repositories that the external custom property values will be applied to. */
 export type ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList =
   Array<string>;
-const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList =
-  CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValueCase1List as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList>;
-
 /** List of external custom property names and associated values to apply to the repositories. */
 export type ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList =
   Array<CustomPropertyValue>;
-const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList =
-  CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList>;
-
 export interface ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1274,15 +812,7 @@ export interface ExternalPropertiesForReposCreateOrUpdateOrganizationValuesReque
   /** List of external custom property names and associated values to apply to the repositories. */
   properties: ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList;
 }
-const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  0,
-) as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequest>;
-
 export interface ExternalPropertiesForReposCreateOrUpdateOrganizationValuesResponse {}
-const ExternalPropertiesForReposCreateOrUpdateOrganizationValuesResponse =
-  CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesResponse>;
-
 /** Repository name and associated external custom property value */
 export interface RepositoryExternalPropertyPayload {
   /** The name of the repository */
@@ -1290,20 +820,9 @@ export interface RepositoryExternalPropertyPayload {
   /** The value assigned to the repository. Set to `null` to unset the value for this repository. */
   value: string | null;
 }
-const RepositoryExternalPropertyPayload = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<RepositoryExternalPropertyPayload>;
-
 /** The names of repositories and the values that the named external custom property will be set to. */
 export type ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequestRepositoryValuesList =
   Array<RepositoryExternalPropertyPayload>;
-const ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequestRepositoryValuesList =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    2,
-  ) as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequestRepositoryValuesList>;
-
 export interface ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1312,50 +831,23 @@ export interface ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPr
   /** The names of repositories and the values that the named external custom property will be set to. */
   repository_values: ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequestRepositoryValuesList;
 }
-const ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequest =
-  /*@__PURE__*/ __L.at(
-    __c9,
-    3,
-  ) as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequest>;
-
 export interface ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyResponse {}
-const ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyResponse =
-  CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyResponse>;
-
 export interface ExternalPropertiesForReposDeleteOrganizationValuesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The name of the external custom property */
   property_name: string;
 }
-const ExternalPropertiesForReposDeleteOrganizationValuesRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<ExternalPropertiesForReposDeleteOrganizationValuesRequest>;
-
 export interface ExternalPropertiesForReposDeleteOrganizationValuesResponse {}
-const ExternalPropertiesForReposDeleteOrganizationValuesResponse =
-  CustomPropertiesForReposDeleteOrganizationDefinitionResponse as any as S.Schema<ExternalPropertiesForReposDeleteOrganizationValuesResponse>;
-
 export interface ExternalPropertiesForReposGetOrganizationAppInstallationsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const ExternalPropertiesForReposGetOrganizationAppInstallationsRequest = /*@__PURE__*/ __L.at(
-  __c9,
-  5,
-) as any as S.Schema<ExternalPropertiesForReposGetOrganizationAppInstallationsRequest>;
-
 /** The GitHub App installation that was registered. */
 export interface OrganizationExternalPropertyInstallationInstallation {
   /** The unique identifier of the GitHub App installation. */
   id: number;
 }
-const OrganizationExternalPropertyInstallationInstallation = /*@__PURE__*/ __L.at(
-  __c9,
-  6,
-) as any as S.Schema<OrganizationExternalPropertyInstallationInstallation>;
-
 /** A GitHub App installation that has been registered to read and write an organization's external custom properties, together with the display name assigned to it. */
 export interface OrganizationExternalPropertyInstallation {
   /** The display name assigned to the app installation's external custom properties in the organization. */
@@ -1363,56 +855,23 @@ export interface OrganizationExternalPropertyInstallation {
   /** The GitHub App installation that was registered. */
   installation: OrganizationExternalPropertyInstallationInstallation;
 }
-const OrganizationExternalPropertyInstallation = /*@__PURE__*/ __L.at(
-  __c9,
-  7,
-) as any as S.Schema<OrganizationExternalPropertyInstallation>;
-
 export type ExternalPropertiesForReposGetOrganizationAppInstallationsResponseBodyList =
   Array<OrganizationExternalPropertyInstallation>;
-const ExternalPropertiesForReposGetOrganizationAppInstallationsResponseBodyList =
-  /*@__PURE__*/ __L.at(
-    __c10,
-    0,
-  ) as any as S.Schema<ExternalPropertiesForReposGetOrganizationAppInstallationsResponseBodyList>;
-
 export type ExternalPropertiesForReposGetOrganizationAppInstallationsResponse =
   ExternalPropertiesForReposGetOrganizationAppInstallationsResponseBodyList;
-const ExternalPropertiesForReposGetOrganizationAppInstallationsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  1,
-) as any as S.Schema<ExternalPropertiesForReposGetOrganizationAppInstallationsResponse>;
-
 export interface ExternalPropertiesForReposGetOrganizationDefinitionsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const ExternalPropertiesForReposGetOrganizationDefinitionsRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<ExternalPropertiesForReposGetOrganizationDefinitionsRequest>;
-
 /** External custom property defined for a GitHub App installation */
 export interface ExternalProperty {
   /** The name of the external property */
   property_name: string;
 }
-const ExternalProperty = /*@__PURE__*/ __L.at(__c10, 3) as any as S.Schema<ExternalProperty>;
-
 export type ExternalPropertiesForReposGetOrganizationDefinitionsResponseBodyList =
   Array<ExternalProperty>;
-const ExternalPropertiesForReposGetOrganizationDefinitionsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<ExternalPropertiesForReposGetOrganizationDefinitionsResponseBodyList>;
-
 export type ExternalPropertiesForReposGetOrganizationDefinitionsResponse =
   ExternalPropertiesForReposGetOrganizationDefinitionsResponseBodyList;
-const ExternalPropertiesForReposGetOrganizationDefinitionsResponse = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<ExternalPropertiesForReposGetOrganizationDefinitionsResponse>;
-
 export interface ExternalPropertiesForReposRegisterOrganizationAppInstallationRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1421,17 +880,10 @@ export interface ExternalPropertiesForReposRegisterOrganizationAppInstallationRe
   /** The display name for this app installation's external custom properties in the organization. Must be 1 to 15 characters and contain only letters and numbers. Capitalization is preserved as entered. This can't be changed after the app installation is registered. */
   display_name: string;
 }
-const ExternalPropertiesForReposRegisterOrganizationAppInstallationRequest = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<ExternalPropertiesForReposRegisterOrganizationAppInstallationRequest>;
-
 export interface GetRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const GetRequest = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<GetRequest>;
-
 export interface OrganizationFullPlan {
   name: string;
   space: number;
@@ -1439,11 +891,6 @@ export interface OrganizationFullPlan {
   filled_seats?: number;
   seats?: number;
 }
-const OrganizationFullPlan = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<OrganizationFullPlan>;
-
 /** Organization Full */
 export interface OrganizationFull {
   login: string;
@@ -1525,19 +972,13 @@ export interface OrganizationFull {
   /** Controls whether or not deploy keys may be added and used for repositories in the organization. */
   deploy_keys_enabled_for_repositories?: boolean;
 }
-const OrganizationFull = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<OrganizationFull>;
-
 export type GetApiInsightRouteStatsByActorRequestActorType =
   | "installation"
   | "classic_pat"
   | "fine_grained_pat"
   | "oauth_app"
   | "github_app_user_to_server";
-const GetApiInsightRouteStatsByActorRequestActorType = S.String;
-
 export type GetApiInsightRouteStatsByActorRequestDirection = "asc" | "desc";
-const GetApiInsightRouteStatsByActorRequestDirection = S.String;
-
 export type GetApiInsightRouteStatsByActorRequestSortItem =
   | "last_rate_limited_timestamp"
   | "last_request_timestamp"
@@ -1548,9 +989,6 @@ export type GetApiInsightRouteStatsByActorRequestSortItem =
 export type GetApiInsightRouteStatsByActorRequestSortList = Array<
   GetApiInsightRouteStatsByActorRequestSortItem | (string & {})
 >;
-const GetApiInsightRouteStatsByActorRequestSortList =
-  CreateArtifactDeploymentRecordRequestRuntimeRisksList as any as S.Schema<GetApiInsightRouteStatsByActorRequestSortList>;
-
 export interface GetApiInsightRouteStatsByActorRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1573,11 +1011,6 @@ export interface GetApiInsightRouteStatsByActorRequest {
   /** Providing a substring will filter results where the API route contains the substring. This is a case-insensitive search. */
   api_route_substring?: string;
 }
-const GetApiInsightRouteStatsByActorRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<GetApiInsightRouteStatsByActorRequest>;
-
 export interface ApiInsightsRouteStatsItem {
   /** The HTTP method */
   http_method?: string;
@@ -1590,27 +1023,10 @@ export interface ApiInsightsRouteStatsItem {
   last_rate_limited_timestamp?: string | null;
   last_request_timestamp?: string;
 }
-const ApiInsightsRouteStatsItem = /*@__PURE__*/ __L.at(
-  __c11,
-  3,
-) as any as S.Schema<ApiInsightsRouteStatsItem>;
-
 /** API Insights usage route stats for an actor */
 export type ApiInsightsRouteStats = Array<ApiInsightsRouteStatsItem>;
-const ApiInsightsRouteStats = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<ApiInsightsRouteStats>;
-
 export type GetApiInsightRouteStatsByActorResponse = ApiInsightsRouteStats;
-const GetApiInsightRouteStatsByActorResponse = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<GetApiInsightRouteStatsByActorResponse>;
-
 export type GetApiInsightSubjectStatsRequestDirection = "asc" | "desc";
-const GetApiInsightSubjectStatsRequestDirection = S.String;
-
 export type GetApiInsightSubjectStatsRequestSortItem =
   | "last_rate_limited_timestamp"
   | "last_request_timestamp"
@@ -1620,9 +1036,6 @@ export type GetApiInsightSubjectStatsRequestSortItem =
 export type GetApiInsightSubjectStatsRequestSortList = Array<
   GetApiInsightSubjectStatsRequestSortItem | (string & {})
 >;
-const GetApiInsightSubjectStatsRequestSortList =
-  CreateArtifactDeploymentRecordRequestRuntimeRisksList as any as S.Schema<GetApiInsightSubjectStatsRequestSortList>;
-
 export interface GetApiInsightSubjectStatsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1641,11 +1054,6 @@ export interface GetApiInsightSubjectStatsRequest {
   /** Providing a substring will filter results where the subject name contains the substring. This is a case-insensitive search. */
   subject_name_substring?: string;
 }
-const GetApiInsightSubjectStatsRequest = /*@__PURE__*/ __L.at(
-  __c11,
-  6,
-) as any as S.Schema<GetApiInsightSubjectStatsRequest>;
-
 export interface ApiInsightsSubjectStatsItem {
   subject_type?: string;
   subject_name?: string;
@@ -1655,24 +1063,9 @@ export interface ApiInsightsSubjectStatsItem {
   last_rate_limited_timestamp?: string | null;
   last_request_timestamp?: string;
 }
-const ApiInsightsSubjectStatsItem = /*@__PURE__*/ __L.at(
-  __c11,
-  7,
-) as any as S.Schema<ApiInsightsSubjectStatsItem>;
-
 /** API Insights usage subject stats for an organization */
 export type ApiInsightsSubjectStats = Array<ApiInsightsSubjectStatsItem>;
-const ApiInsightsSubjectStats = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<ApiInsightsSubjectStats>;
-
 export type GetApiInsightSubjectStatsResponse = ApiInsightsSubjectStats;
-const GetApiInsightSubjectStatsResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<GetApiInsightSubjectStatsResponse>;
-
 export interface GetApiInsightSummaryStatsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1681,11 +1074,6 @@ export interface GetApiInsightSummaryStatsRequest {
   /** The maximum timestamp to query for stats. Defaults to the time 30 days ago. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   max_timestamp?: string;
 }
-const GetApiInsightSummaryStatsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  2,
-) as any as S.Schema<GetApiInsightSummaryStatsRequest>;
-
 /** API Insights usage summary stats for an organization */
 export interface ApiInsightsSummaryStats {
   /** The total number of requests within the queried time period */
@@ -1693,19 +1081,12 @@ export interface ApiInsightsSummaryStats {
   /** The total number of requests that were rate limited within the queried time period */
   rate_limited_request_count?: number;
 }
-const ApiInsightsSummaryStats = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<ApiInsightsSummaryStats>;
-
 export type GetApiInsightSummaryStatsByActorRequestActorType =
   | "installation"
   | "classic_pat"
   | "fine_grained_pat"
   | "oauth_app"
   | "github_app_user_to_server";
-const GetApiInsightSummaryStatsByActorRequestActorType = S.String;
-
 export interface GetApiInsightSummaryStatsByActorRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1718,11 +1099,6 @@ export interface GetApiInsightSummaryStatsByActorRequest {
   /** The maximum timestamp to query for stats. Defaults to the time 30 days ago. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   max_timestamp?: string;
 }
-const GetApiInsightSummaryStatsByActorRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<GetApiInsightSummaryStatsByActorRequest>;
-
 export interface GetApiInsightSummaryStatsByUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1733,11 +1109,6 @@ export interface GetApiInsightSummaryStatsByUserRequest {
   /** The maximum timestamp to query for stats. Defaults to the time 30 days ago. This is a timestamp in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`. */
   max_timestamp?: string;
 }
-const GetApiInsightSummaryStatsByUserRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<GetApiInsightSummaryStatsByUserRequest>;
-
 export interface GetApiInsightTimeStatsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1748,42 +1119,20 @@ export interface GetApiInsightTimeStatsRequest {
   /** The increment of time used to breakdown the query results (5m, 10m, 1h, etc.) */
   timestamp_increment: string;
 }
-const GetApiInsightTimeStatsRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<GetApiInsightTimeStatsRequest>;
-
 export interface ApiInsightsTimeStatsItem {
   timestamp?: string;
   total_request_count?: number;
   rate_limited_request_count?: number;
 }
-const ApiInsightsTimeStatsItem = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<ApiInsightsTimeStatsItem>;
-
 /** API Insights usage time stats for an organization */
 export type ApiInsightsTimeStats = Array<ApiInsightsTimeStatsItem>;
-const ApiInsightsTimeStats = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ApiInsightsTimeStats>;
-
 export type GetApiInsightTimeStatsResponse = ApiInsightsTimeStats;
-const GetApiInsightTimeStatsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<GetApiInsightTimeStatsResponse>;
-
 export type GetApiInsightTimeStatsByActorRequestActorType =
   | "installation"
   | "classic_pat"
   | "fine_grained_pat"
   | "oauth_app"
   | "github_app_user_to_server";
-const GetApiInsightTimeStatsByActorRequestActorType = S.String;
-
 export interface GetApiInsightTimeStatsByActorRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1798,15 +1147,7 @@ export interface GetApiInsightTimeStatsByActorRequest {
   /** The increment of time used to breakdown the query results (5m, 10m, 1h, etc.) */
   timestamp_increment: string;
 }
-const GetApiInsightTimeStatsByActorRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  2,
-) as any as S.Schema<GetApiInsightTimeStatsByActorRequest>;
-
 export type GetApiInsightTimeStatsByActorResponse = ApiInsightsTimeStats;
-const GetApiInsightTimeStatsByActorResponse =
-  GetApiInsightTimeStatsResponse as any as S.Schema<GetApiInsightTimeStatsByActorResponse>;
-
 export interface GetApiInsightTimeStatsByUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1819,18 +1160,8 @@ export interface GetApiInsightTimeStatsByUserRequest {
   /** The increment of time used to breakdown the query results (5m, 10m, 1h, etc.) */
   timestamp_increment: string;
 }
-const GetApiInsightTimeStatsByUserRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<GetApiInsightTimeStatsByUserRequest>;
-
 export type GetApiInsightTimeStatsByUserResponse = ApiInsightsTimeStats;
-const GetApiInsightTimeStatsByUserResponse =
-  GetApiInsightTimeStatsResponse as any as S.Schema<GetApiInsightTimeStatsByUserResponse>;
-
 export type GetApiInsightUserStatsRequestDirection = "asc" | "desc";
-const GetApiInsightUserStatsRequestDirection = S.String;
-
 export type GetApiInsightUserStatsRequestSortItem =
   | "last_rate_limited_timestamp"
   | "last_request_timestamp"
@@ -1840,9 +1171,6 @@ export type GetApiInsightUserStatsRequestSortItem =
 export type GetApiInsightUserStatsRequestSortList = Array<
   GetApiInsightUserStatsRequestSortItem | (string & {})
 >;
-const GetApiInsightUserStatsRequestSortList =
-  CreateArtifactDeploymentRecordRequestRuntimeRisksList as any as S.Schema<GetApiInsightUserStatsRequestSortList>;
-
 export interface GetApiInsightUserStatsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1863,11 +1191,6 @@ export interface GetApiInsightUserStatsRequest {
   /** Providing a substring will filter results where the actor name contains the substring. This is a case-insensitive search. */
   actor_name_substring?: string;
 }
-const GetApiInsightUserStatsRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<GetApiInsightUserStatsRequest>;
-
 export interface ApiInsightsUserStatsItem {
   actor_type?: string;
   actor_name?: string;
@@ -1879,24 +1202,9 @@ export interface ApiInsightsUserStatsItem {
   last_rate_limited_timestamp?: string | null;
   last_request_timestamp?: string;
 }
-const ApiInsightsUserStatsItem = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<ApiInsightsUserStatsItem>;
-
 /** API Insights usage stats for a user */
 export type ApiInsightsUserStats = Array<ApiInsightsUserStatsItem>;
-const ApiInsightsUserStats = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<ApiInsightsUserStats>;
-
 export type GetApiInsightUserStatsResponse = ApiInsightsUserStats;
-const GetApiInsightUserStatsResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<GetApiInsightUserStatsResponse>;
-
 export interface GetClusterDeploymentRecordsJobRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1905,26 +1213,14 @@ export interface GetClusterDeploymentRecordsJobRequest {
   /** The ID of the job. */
   job_id: number;
 }
-const GetClusterDeploymentRecordsJobRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<GetClusterDeploymentRecordsJobRequest>;
-
 /** The current status of the job. */
 export type GetClusterDeploymentRecordsJobResponseStatus =
   | "pending"
   | "processing"
   | "completed"
   | "failed";
-const GetClusterDeploymentRecordsJobResponseStatus = S.String;
-
 /** Processing errors (only present when completed or failed). */
 export type GetClusterDeploymentRecordsJobResponseErrorsList = Array<unknown>;
-const GetClusterDeploymentRecordsJobResponseErrorsList = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<GetClusterDeploymentRecordsJobResponseErrorsList>;
-
 export interface GetClusterDeploymentRecordsJobResponse {
   /** The ID of the job. */
   job_id: number;
@@ -1937,24 +1233,12 @@ export interface GetClusterDeploymentRecordsJobResponse {
   /** Processing errors (only present when completed or failed). */
   errors?: GetClusterDeploymentRecordsJobResponseErrorsList;
 }
-const GetClusterDeploymentRecordsJobResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<GetClusterDeploymentRecordsJobResponse>;
-
 export interface GetImmutableReleasesSettingsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const GetImmutableReleasesSettingsRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<GetImmutableReleasesSettingsRequest>;
-
 /** The policy that controls how immutable releases are enforced in the organization. */
 export type ImmutableReleasesOrganizationSettingsEnforcedRepositories = "all" | "none" | "selected";
-const ImmutableReleasesOrganizationSettingsEnforcedRepositories = S.String;
-
 /** Check immutable releases settings for an organization. */
 export interface ImmutableReleasesOrganizationSettings {
   /** The policy that controls how immutable releases are enforced in the organization. */
@@ -1962,11 +1246,6 @@ export interface ImmutableReleasesOrganizationSettings {
   /** The API URL to use to get or set the selected repositories for immutable releases enforcement, when `enforced_repositories` is set to `selected`. */
   selected_repositories_url?: string;
 }
-const ImmutableReleasesOrganizationSettings = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<ImmutableReleasesOrganizationSettings>;
-
 export interface GetImmutableReleasesSettingsRepositoriesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -1975,19 +1254,9 @@ export interface GetImmutableReleasesSettingsRepositoriesRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-const GetImmutableReleasesSettingsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<GetImmutableReleasesSettingsRepositoriesRequest>;
-
 export type MinimalRepositoryTopicsList = Array<string>;
-const MinimalRepositoryTopicsList =
-  CreateWebhookRequestEventsList as any as S.Schema<MinimalRepositoryTopicsList>;
-
 /** The policy controlling who can create pull requests: all or collaborators_only. */
 export type MinimalRepositoryPullRequestCreationPolicy = "all" | "collaborators_only";
-const MinimalRepositoryPullRequestCreationPolicy = S.String;
-
 export interface MinimalRepositoryPermissions {
   admin?: boolean;
   maintain?: boolean;
@@ -1995,11 +1264,6 @@ export interface MinimalRepositoryPermissions {
   triage?: boolean;
   pull?: boolean;
 }
-const MinimalRepositoryPermissions = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<MinimalRepositoryPermissions>;
-
 /** Code Of Conduct */
 export interface CodeOfConduct {
   key: string;
@@ -2008,8 +1272,6 @@ export interface CodeOfConduct {
   body?: string;
   html_url: string | null;
 }
-const CodeOfConduct = /*@__PURE__*/ __L.at(__c14, 7) as any as S.Schema<CodeOfConduct>;
-
 export interface MinimalRepositoryLicense {
   key?: string;
   name?: string;
@@ -2017,30 +1279,15 @@ export interface MinimalRepositoryLicense {
   url?: string | null;
   node_id?: string;
 }
-const MinimalRepositoryLicense = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<MinimalRepositoryLicense>;
-
 export type SecurityAndAnalysisAdvancedSecurityStatus = "enabled" | "disabled";
-const SecurityAndAnalysisAdvancedSecurityStatus = S.String;
-
 /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
 export interface SecurityAndAnalysisAdvancedSecurity {
   status?: SecurityAndAnalysisAdvancedSecurityStatus;
 }
-const SecurityAndAnalysisAdvancedSecurity = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<SecurityAndAnalysisAdvancedSecurity>;
-
 export type SecurityAndAnalysisCodeSecurityStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisCodeSecurity {
   status?: SecurityAndAnalysisCodeSecurityStatus;
 }
-const SecurityAndAnalysisCodeSecurity =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisCodeSecurity>;
-
 /** The enablement status of Dependabot security updates for the repository. */
 export type SecurityAndAnalysisDependabotSecurityUpdatesStatus = "enabled" | "disabled";
 /** Enable or disable Dependabot security updates for the repository. */
@@ -2048,67 +1295,38 @@ export interface SecurityAndAnalysisDependabotSecurityUpdates {
   /** The enablement status of Dependabot security updates for the repository. */
   status?: SecurityAndAnalysisDependabotSecurityUpdatesStatus;
 }
-const SecurityAndAnalysisDependabotSecurityUpdates =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisDependabotSecurityUpdates>;
-
 export type SecurityAndAnalysisSecretScanningStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanning {
   status?: SecurityAndAnalysisSecretScanningStatus;
 }
-const SecurityAndAnalysisSecretScanning =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanning>;
-
 export type SecurityAndAnalysisSecretScanningPushProtectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningPushProtection {
   status?: SecurityAndAnalysisSecretScanningPushProtectionStatus;
 }
-const SecurityAndAnalysisSecretScanningPushProtection =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningPushProtection>;
-
 export type SecurityAndAnalysisSecretScanningNonProviderPatternsStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningNonProviderPatterns {
   status?: SecurityAndAnalysisSecretScanningNonProviderPatternsStatus;
 }
-const SecurityAndAnalysisSecretScanningNonProviderPatterns =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningNonProviderPatterns>;
-
 export type SecurityAndAnalysisSecretScanningAiDetectionStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningAiDetection {
   status?: SecurityAndAnalysisSecretScanningAiDetectionStatus;
 }
-const SecurityAndAnalysisSecretScanningAiDetection =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningAiDetection>;
-
 export type SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = "enabled" | "disabled";
-const SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedAlertDismissal {
   status?: SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus;
 }
-const SecurityAndAnalysisSecretScanningDelegatedAlertDismissal = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedAlertDismissal>;
-
 export type SecurityAndAnalysisSecretScanningDelegatedBypassStatus = "enabled" | "disabled";
 export interface SecurityAndAnalysisSecretScanningDelegatedBypass {
   status?: SecurityAndAnalysisSecretScanningDelegatedBypassStatus;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypass =
-  SecurityAndAnalysisAdvancedSecurity as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypass>;
-
 /** The type of the bypass reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType =
   | "TEAM"
   | "ROLE";
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType = S.String;
-
 /** The bypass mode for the reviewer */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode =
   | "ALWAYS"
   | "EXEMPT";
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode = S.String;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem {
   /** The ID of the team or role selected as a bypass reviewer */
   reviewer_id: number;
@@ -2117,28 +1335,13 @@ export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewer
   /** The bypass mode for the reviewer */
   mode?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-
 /** The bypass reviewers for secret scanning delegated bypass */
 export type SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList =
   Array<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem>;
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList>;
-
 export interface SecurityAndAnalysisSecretScanningDelegatedBypassOptions {
   /** The bypass reviewers for secret scanning delegated bypass */
   reviewers?: SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList;
 }
-const SecurityAndAnalysisSecretScanningDelegatedBypassOptions = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<SecurityAndAnalysisSecretScanningDelegatedBypassOptions>;
-
 export interface SecurityAndAnalysis {
   /** Enable or disable GitHub Advanced Security for the repository. For standalone Code Scanning or Secret Protection products, this parameter cannot be used. */
   advanced_security?: SecurityAndAnalysisAdvancedSecurity;
@@ -2153,15 +1356,8 @@ export interface SecurityAndAnalysis {
   secret_scanning_delegated_bypass?: SecurityAndAnalysisSecretScanningDelegatedBypass;
   secret_scanning_delegated_bypass_options?: SecurityAndAnalysisSecretScanningDelegatedBypassOptions;
 }
-const SecurityAndAnalysis = /*@__PURE__*/ __L.at(__c15, 6) as any as S.Schema<SecurityAndAnalysis>;
-
 /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
 export type MinimalRepositoryCustomPropertiesMap = { [key: string]: unknown | undefined };
-const MinimalRepositoryCustomPropertiesMap = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<MinimalRepositoryCustomPropertiesMap>;
-
 /** Minimal Repository */
 export interface MinimalRepository {
   id: number;
@@ -2258,46 +1454,22 @@ export interface MinimalRepository {
   /** The custom properties that were defined for the repository. The keys are the custom property names, and the values are the corresponding custom property values. */
   custom_properties?: MinimalRepositoryCustomPropertiesMap;
 }
-const MinimalRepository = /*@__PURE__*/ __L.at(__c16, 0) as any as S.Schema<MinimalRepository>;
-
 export type GetImmutableReleasesSettingsRepositoriesResponseRepositoriesList =
   Array<MinimalRepository>;
-const GetImmutableReleasesSettingsRepositoriesResponseRepositoriesList = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<GetImmutableReleasesSettingsRepositoriesResponseRepositoriesList>;
-
 export interface GetImmutableReleasesSettingsRepositoriesResponse {
   total_count: number;
   repositories: GetImmutableReleasesSettingsRepositoriesResponseRepositoriesList;
 }
-const GetImmutableReleasesSettingsRepositoriesResponse = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<GetImmutableReleasesSettingsRepositoriesResponse>;
-
 export interface GetMembershipForAuthenticatedUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const GetMembershipForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<GetMembershipForAuthenticatedUserRequest>;
-
 /** The state of the member in the organization. The `pending` state indicates the user has not yet accepted an invitation. */
 export type OrgMembershipState = "active" | "pending";
-const OrgMembershipState = S.String;
-
 /** The user's membership type in the organization. */
 export type OrgMembershipRole = "admin" | "member" | "billing_manager";
-const OrgMembershipRole = S.String;
-
 /** The slugs of the enterprise teams providing the user with indirect membership in the organization. A limit of 100 enterprise team slugs is returned. */
 export type OrgMembershipEnterpriseTeamsProvidingIndirectMembershipList = Array<string>;
-const OrgMembershipEnterpriseTeamsProvidingIndirectMembershipList =
-  CreateWebhookRequestEventsList as any as S.Schema<OrgMembershipEnterpriseTeamsProvidingIndirectMembershipList>;
-
 /** A GitHub organization. */
 export interface OrganizationSimple {
   login: string;
@@ -2313,18 +1485,11 @@ export interface OrganizationSimple {
   avatar_url: string;
   description: string | null;
 }
-const OrganizationSimple = /*@__PURE__*/ __L.at(__c16, 4) as any as S.Schema<OrganizationSimple>;
-
 /** A GitHub user. */
 export type NullableSimpleUser = SimpleUser;
 export interface OrgMembershipPermissions {
   can_create_repository: boolean;
 }
-const OrgMembershipPermissions = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<OrgMembershipPermissions>;
-
 /** Org Membership */
 export interface OrgMembership {
   url: string;
@@ -2341,40 +1506,24 @@ export interface OrgMembership {
   user: SimpleUser | null;
   permissions?: OrgMembershipPermissions;
 }
-const OrgMembership = /*@__PURE__*/ __L.at(__c16, 6) as any as S.Schema<OrgMembership>;
-
 export interface GetMembershipForUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The handle for the GitHub user account. */
   username: string;
 }
-const GetMembershipForUserRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<GetMembershipForUserRequest>;
-
 export interface GetOrgRoleRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the role. */
   role_id: number;
 }
-const GetOrgRoleRequest = /*@__PURE__*/ __L.at(__c17, 0) as any as S.Schema<GetOrgRoleRequest>;
-
 /** The system role from which this role inherits permissions. */
 export type OrganizationRoleBaseRole = "read" | "triage" | "write" | "maintain" | "admin";
-const OrganizationRoleBaseRole = S.String;
-
 /** Source answers the question, "where did this role come from?" */
 export type OrganizationRoleSource = "Organization" | "Enterprise" | "Predefined";
-const OrganizationRoleSource = S.String;
-
 /** A list of permissions included in this role. */
 export type OrganizationRolePermissionsList = Array<string>;
-const OrganizationRolePermissionsList =
-  CreateWebhookRequestEventsList as any as S.Schema<OrganizationRolePermissionsList>;
-
 /** Organization roles */
 export interface OrganizationRole {
   /** The unique identifier of the role. */
@@ -2395,8 +1544,6 @@ export interface OrganizationRole {
   /** The date and time the role was last updated. */
   updated_at: string;
 }
-const OrganizationRole = /*@__PURE__*/ __L.at(__c17, 1) as any as S.Schema<OrganizationRole>;
-
 export interface GetOrgRulesetHistoryRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -2407,18 +1554,11 @@ export interface GetOrgRulesetHistoryRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const GetOrgRulesetHistoryRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<GetOrgRulesetHistoryRequest>;
-
 /** The actor who updated the ruleset */
 export interface RulesetVersionActor {
   id?: number;
   type?: string;
 }
-const RulesetVersionActor = /*@__PURE__*/ __L.at(__c17, 3) as any as S.Schema<RulesetVersionActor>;
-
 /** The historical version of a ruleset */
 export interface RulesetVersion {
   /** The ID of the previous version of the ruleset */
@@ -2427,20 +1567,8 @@ export interface RulesetVersion {
   actor: RulesetVersionActor;
   updated_at: string;
 }
-const RulesetVersion = /*@__PURE__*/ __L.at(__c17, 4) as any as S.Schema<RulesetVersion>;
-
 export type GetOrgRulesetHistoryResponseBodyList = Array<RulesetVersion>;
-const GetOrgRulesetHistoryResponseBodyList = /*@__PURE__*/ __L.at(
-  __c17,
-  5,
-) as any as S.Schema<GetOrgRulesetHistoryResponseBodyList>;
-
 export type GetOrgRulesetHistoryResponse = GetOrgRulesetHistoryResponseBodyList;
-const GetOrgRulesetHistoryResponse = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<GetOrgRulesetHistoryResponse>;
-
 export interface GetOrgRulesetVersionRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -2449,11 +1577,6 @@ export interface GetOrgRulesetVersionRequest {
   /** The ID of the version */
   version_id: number;
 }
-const GetOrgRulesetVersionRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<GetOrgRulesetVersionRequest>;
-
 /** The actor who updated the ruleset */
 export type GetOrgRulesetVersionResponseActor = RulesetVersionActor;
 export interface GetOrgRulesetVersionResponse {
@@ -2465,30 +1588,18 @@ export interface GetOrgRulesetVersionResponse {
   /** The state of the ruleset version */
   state: unknown;
 }
-const GetOrgRulesetVersionResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<GetOrgRulesetVersionResponse>;
-
 export interface GetWebhookRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-const GetWebhookRequest = /*@__PURE__*/ __L.at(__c18, 1) as any as S.Schema<GetWebhookRequest>;
-
 export interface GetWebhookConfigForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-const GetWebhookConfigForOrgRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<GetWebhookConfigForOrgRequest>;
-
 /** Configuration object of the webhook */
 export interface WebhookConfig {
   url?: string;
@@ -2496,8 +1607,6 @@ export interface WebhookConfig {
   secret?: string | Redacted.Redacted<string>;
   insecure_ssl?: WebhookConfigInsecureSsl;
 }
-const WebhookConfig = /*@__PURE__*/ __L.at(__c18, 3) as any as S.Schema<WebhookConfig>;
-
 export interface GetWebhookDeliveryRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -2505,29 +1614,16 @@ export interface GetWebhookDeliveryRequest {
   hook_id: number;
   delivery_id: number;
 }
-const GetWebhookDeliveryRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<GetWebhookDeliveryRequest>;
-
 /** The request headers sent with the webhook delivery. */
 export type HookDeliveryRequestHeadersMap = { [key: string]: unknown | undefined };
-const HookDeliveryRequestHeadersMap =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryRequestHeadersMap>;
-
 /** The webhook payload. */
 export type HookDeliveryRequestPayloadMap = { [key: string]: unknown | undefined };
-const HookDeliveryRequestPayloadMap =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<HookDeliveryRequestPayloadMap>;
-
 export interface HookDeliveryRequest {
   /** The request headers sent with the webhook delivery. */
   headers: HookDeliveryRequestHeadersMap | null;
   /** The webhook payload. */
   payload: HookDeliveryRequestPayloadMap | null;
 }
-const HookDeliveryRequest = /*@__PURE__*/ __L.at(__c18, 5) as any as S.Schema<HookDeliveryRequest>;
-
 /** The response headers received when the delivery was made. */
 export type HookDeliveryResponseHeadersMap = { [key: string]: unknown | undefined };
 /** The response payload received. */
@@ -2538,8 +1634,6 @@ export interface HookDeliveryResponse {
   /** The response payload received. */
   payload: HookDeliveryResponsePayloadMap | null;
 }
-const HookDeliveryResponse = HookDeliveryRequest as any as S.Schema<HookDeliveryResponse>;
-
 /** Delivery made by a webhook. */
 export interface HookDelivery {
   /** Unique identifier of the delivery. */
@@ -2571,25 +1665,14 @@ export interface HookDelivery {
   request: HookDeliveryRequest;
   response: HookDeliveryResponse;
 }
-const HookDelivery = /*@__PURE__*/ __L.at(__c18, 6) as any as S.Schema<HookDelivery>;
-
 export interface ListRequest {
   /** An organization ID. Only return organizations with an ID greater than this ID. */
   since?: number;
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
 }
-const ListRequest = /*@__PURE__*/ __L.at(__c18, 7) as any as S.Schema<ListRequest>;
-
 export type ListResponseBodyList = Array<OrganizationSimple>;
-const ListResponseBodyList = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<ListResponseBodyList>;
-
 export type ListResponse = ListResponseBodyList;
-const ListResponse = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<ListResponse>;
-
 export interface ListAppInstallationsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -2598,11 +1681,6 @@ export interface ListAppInstallationsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListAppInstallationsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<ListAppInstallationsRequest>;
-
 /** An enterprise on GitHub. */
 export interface Enterprise {
   /** A short description of the enterprise. */
@@ -2622,236 +1700,120 @@ export interface Enterprise {
   avatar_url: string;
 }
 export type InstallationAccount = SimpleUser | Enterprise;
-const InstallationAccount = S.Unknown as any as S.Schema<InstallationAccount>;
-
 /** Describe whether all repositories have been selected or there's a selection involved */
 export type InstallationRepositorySelection = "all" | "selected";
-const InstallationRepositorySelection = S.String;
-
 /** The level of permission to grant the access token for GitHub Actions workflows, workflow runs, and artifacts. */
 export type AppPermissionsActions = "read" | "write";
-const AppPermissionsActions = S.String;
-
 /** The level of permission to grant the access token for repository creation, deletion, settings, teams, and collaborators creation. */
 export type AppPermissionsAdministration = "read" | "write";
-const AppPermissionsAdministration = S.String;
-
 /** The level of permission to grant the access token to create and retrieve build artifact metadata records. */
 export type AppPermissionsArtifactMetadata = "read" | "write";
-const AppPermissionsArtifactMetadata = S.String;
-
 /** The level of permission to create and retrieve the access token for repository attestations. */
 export type AppPermissionsAttestations = "read" | "write";
-const AppPermissionsAttestations = S.String;
-
 /** The level of permission to grant the access token for checks on code. */
 export type AppPermissionsChecks = "read" | "write";
-const AppPermissionsChecks = S.String;
-
 /** The level of permission to grant the access token to view and manage code quality data. */
 export type AppPermissionsCodeQuality = "read" | "write";
-const AppPermissionsCodeQuality = S.String;
-
 /** The level of permission to grant the access token to create, edit, delete, and list Codespaces. */
 export type AppPermissionsCodespaces = "read" | "write";
-const AppPermissionsCodespaces = S.String;
-
 /** The level of permission to grant the access token for repository contents, commits, branches, downloads, releases, and merges. */
 export type AppPermissionsContents = "read" | "write";
-const AppPermissionsContents = S.String;
-
 /** The level of permission to grant the access token to manage Dependabot secrets. */
 export type AppPermissionsDependabotSecrets = "read" | "write";
-const AppPermissionsDependabotSecrets = S.String;
-
 /** The level of permission to grant the access token for deployments and deployment statuses. */
 export type AppPermissionsDeployments = "read" | "write";
-const AppPermissionsDeployments = S.String;
-
 /** The level of permission to grant the access token for discussions and related comments and labels. */
 export type AppPermissionsDiscussions = "read" | "write";
-const AppPermissionsDiscussions = S.String;
-
 /** The level of permission to grant the access token for managing repository environments. */
 export type AppPermissionsEnvironments = "read" | "write";
-const AppPermissionsEnvironments = S.String;
-
 /** The level of permission to grant the access token for issues and related comments, assignees, labels, and milestones. */
 export type AppPermissionsIssues = "read" | "write";
-const AppPermissionsIssues = S.String;
-
 /** The level of permission to grant the access token to manage the merge queues for a repository. */
 export type AppPermissionsMergeQueues = "read" | "write";
-const AppPermissionsMergeQueues = S.String;
-
 /** The level of permission to grant the access token to search repositories, list collaborators, and access repository metadata. */
 export type AppPermissionsMetadata = "read" | "write";
-const AppPermissionsMetadata = S.String;
-
 /** The level of permission to grant the access token for packages published to GitHub Packages. */
 export type AppPermissionsPackages = "read" | "write";
-const AppPermissionsPackages = S.String;
-
 /** The level of permission to grant the access token to retrieve Pages statuses, configuration, and builds, as well as create new builds. */
 export type AppPermissionsPages = "read" | "write";
-const AppPermissionsPages = S.String;
-
 /** The level of permission to grant the access token for pull requests and related comments, assignees, labels, milestones, and merges. */
 export type AppPermissionsPullRequests = "read" | "write";
-const AppPermissionsPullRequests = S.String;
-
 /** The level of permission to grant the access token to view and edit custom properties for a repository, when allowed by the property. */
 export type AppPermissionsRepositoryCustomProperties = "read" | "write";
-const AppPermissionsRepositoryCustomProperties = S.String;
-
 /** The level of permission to grant the access token to manage the post-receive hooks for a repository. */
 export type AppPermissionsRepositoryHooks = "read" | "write";
-const AppPermissionsRepositoryHooks = S.String;
-
 /** The level of permission to grant the access token to manage repository projects, columns, and cards. */
 export type AppPermissionsRepositoryProjects = "read" | "write" | "admin";
-const AppPermissionsRepositoryProjects = S.String;
-
 /** The level of permission to grant the access token to view and manage secret scanning alerts. */
 export type AppPermissionsSecretScanningAlerts = "read" | "write";
-const AppPermissionsSecretScanningAlerts = S.String;
-
 /** The level of permission to grant the access token to manage repository secrets. */
 export type AppPermissionsSecrets = "read" | "write";
-const AppPermissionsSecrets = S.String;
-
 /** The level of permission to grant the access token to view and manage security events like code scanning alerts. */
 export type AppPermissionsSecurityEvents = "read" | "write";
-const AppPermissionsSecurityEvents = S.String;
-
 /** The level of permission to grant the access token to manage just a single file. */
 export type AppPermissionsSingleFile = "read" | "write";
-const AppPermissionsSingleFile = S.String;
-
 /** The level of permission to grant the access token for commit statuses. */
 export type AppPermissionsStatuses = "read" | "write";
-const AppPermissionsStatuses = S.String;
-
 /** The level of permission to grant the access token to manage Dependabot alerts. */
 export type AppPermissionsVulnerabilityAlerts = "read" | "write";
-const AppPermissionsVulnerabilityAlerts = S.String;
-
 /** The level of permission to grant the access token to update GitHub Actions workflow files. */
 export type AppPermissionsWorkflows = "write";
-const AppPermissionsWorkflows = S.String;
-
 /** The level of permission to grant the access token to view and edit custom properties for an organization, when allowed by the property. */
 export type AppPermissionsCustomPropertiesForOrganizations = "read" | "write";
-const AppPermissionsCustomPropertiesForOrganizations = S.String;
-
 /** The level of permission to grant the access token for organization teams and members. */
 export type AppPermissionsMembers = "read" | "write";
-const AppPermissionsMembers = S.String;
-
 /** The level of permission to grant the access token to manage access to an organization. */
 export type AppPermissionsOrganizationAdministration = "read" | "write";
-const AppPermissionsOrganizationAdministration = S.String;
-
 /** The level of permission to grant the access token for custom repository roles management. */
 export type AppPermissionsOrganizationCustomRoles = "read" | "write";
-const AppPermissionsOrganizationCustomRoles = S.String;
-
 /** The level of permission to grant the access token for custom organization roles management. */
 export type AppPermissionsOrganizationCustomOrgRoles = "read" | "write";
-const AppPermissionsOrganizationCustomOrgRoles = S.String;
-
 /** The level of permission to grant the access token for repository custom properties management at the organization level. */
 export type AppPermissionsOrganizationCustomProperties = "read" | "write" | "admin";
-const AppPermissionsOrganizationCustomProperties = S.String;
-
 /** The level of permission to grant the access token for managing access to GitHub Copilot for members of an organization with a Copilot Business subscription. This property is in public preview and is subject to change. */
 export type AppPermissionsOrganizationCopilotSeatManagement = "read" | "write";
-const AppPermissionsOrganizationCopilotSeatManagement = S.String;
-
 /** The level of permission to grant the access token to view and manage Copilot cloud agent settings for an organization. */
 export type AppPermissionsOrganizationCopilotAgentSettings = "read" | "write";
-const AppPermissionsOrganizationCopilotAgentSettings = S.String;
-
 /** The level of permission to grant the access token for managing external custom properties for repositories in an organization. */
 export type AppPermissionsOrganizationExternalPropertiesForRepos = "read" | "write" | "admin";
-const AppPermissionsOrganizationExternalPropertiesForRepos = S.String;
-
 /** The level of permission to grant the access token to view and manage announcement banners for an organization. */
 export type AppPermissionsOrganizationAnnouncementBanners = "read" | "write";
-const AppPermissionsOrganizationAnnouncementBanners = S.String;
-
 /** The level of permission to grant the access token to view events triggered by an activity in an organization. */
 export type AppPermissionsOrganizationEvents = "read";
-const AppPermissionsOrganizationEvents = S.String;
-
 /** The level of permission to grant the access token to manage the post-receive hooks for an organization. */
 export type AppPermissionsOrganizationHooks = "read" | "write";
-const AppPermissionsOrganizationHooks = S.String;
-
 /** The level of permission to grant the access token for viewing and managing fine-grained personal access token requests to an organization. */
 export type AppPermissionsOrganizationPersonalAccessTokens = "read" | "write";
-const AppPermissionsOrganizationPersonalAccessTokens = S.String;
-
 /** The level of permission to grant the access token for viewing and managing fine-grained personal access tokens that have been approved by an organization. */
 export type AppPermissionsOrganizationPersonalAccessTokenRequests = "read" | "write";
-const AppPermissionsOrganizationPersonalAccessTokenRequests = S.String;
-
 /** The level of permission to grant the access token for viewing an organization's plan. */
 export type AppPermissionsOrganizationPlan = "read";
-const AppPermissionsOrganizationPlan = S.String;
-
 /** The level of permission to grant the access token to manage organization projects and projects public preview (where available). */
 export type AppPermissionsOrganizationProjects = "read" | "write" | "admin";
-const AppPermissionsOrganizationProjects = S.String;
-
 /** The level of permission to grant the access token for organization packages published to GitHub Packages. */
 export type AppPermissionsOrganizationPackages = "read" | "write";
-const AppPermissionsOrganizationPackages = S.String;
-
 /** The level of permission to grant the access token to manage organization secrets. */
 export type AppPermissionsOrganizationSecrets = "read" | "write";
-const AppPermissionsOrganizationSecrets = S.String;
-
 /** The level of permission to grant the access token to view and manage GitHub Actions self-hosted runners available to an organization. */
 export type AppPermissionsOrganizationSelfHostedRunners = "read" | "write";
-const AppPermissionsOrganizationSelfHostedRunners = S.String;
-
 /** The level of permission to grant the access token to view and manage users blocked by the organization. */
 export type AppPermissionsOrganizationUserBlocking = "read" | "write";
-const AppPermissionsOrganizationUserBlocking = S.String;
-
 /** The level of permission to grant the access token to manage the email addresses belonging to a user. */
 export type AppPermissionsEmailAddresses = "read" | "write";
-const AppPermissionsEmailAddresses = S.String;
-
 /** The level of permission to grant the access token to manage the followers belonging to a user. */
 export type AppPermissionsFollowers = "read" | "write";
-const AppPermissionsFollowers = S.String;
-
 /** The level of permission to grant the access token to manage git SSH keys. */
 export type AppPermissionsGitSshKeys = "read" | "write";
-const AppPermissionsGitSshKeys = S.String;
-
 /** The level of permission to grant the access token to view and manage GPG keys belonging to a user. */
 export type AppPermissionsGpgKeys = "read" | "write";
-const AppPermissionsGpgKeys = S.String;
-
 /** The level of permission to grant the access token to view and manage interaction limits on a repository. */
 export type AppPermissionsInteractionLimits = "read" | "write";
-const AppPermissionsInteractionLimits = S.String;
-
 /** The level of permission to grant the access token to manage the profile settings belonging to a user. */
 export type AppPermissionsProfile = "write";
-const AppPermissionsProfile = S.String;
-
 /** The level of permission to grant the access token to list and manage repositories a user is starring. */
 export type AppPermissionsStarring = "read" | "write";
-const AppPermissionsStarring = S.String;
-
 /** The level of permission to grant the access token for organization custom properties management at the enterprise level. */
 export type AppPermissionsEnterpriseCustomPropertiesForOrganizations = "read" | "write" | "admin";
-const AppPermissionsEnterpriseCustomPropertiesForOrganizations = S.String;
-
 /** The permissions granted to the fine-grained access token. */
 export interface AppPermissions {
   /** The level of permission to grant the access token for GitHub Actions workflows, workflow runs, and artifacts. */
@@ -2967,16 +1929,8 @@ export interface AppPermissions {
   /** The level of permission to grant the access token for organization custom properties management at the enterprise level. */
   enterprise_custom_properties_for_organizations?: AppPermissionsEnterpriseCustomPropertiesForOrganizations;
 }
-const AppPermissions = /*@__PURE__*/ __L.at(__c19, 3) as any as S.Schema<AppPermissions>;
-
 export type InstallationEventsList = Array<string>;
-const InstallationEventsList =
-  CreateWebhookRequestEventsList as any as S.Schema<InstallationEventsList>;
-
 export type InstallationSingleFilePathsList = Array<string>;
-const InstallationSingleFilePathsList =
-  CreateWebhookRequestEventsList as any as S.Schema<InstallationSingleFilePathsList>;
-
 /** Installation */
 export interface Installation {
   /** The ID of the installation. */
@@ -3004,60 +1958,30 @@ export interface Installation {
   suspended_at: string | null;
   contact_email?: string | null;
 }
-const Installation = /*@__PURE__*/ __L.at(__c19, 4) as any as S.Schema<Installation>;
-
 export type ListAppInstallationsResponseInstallationsList = Array<Installation>;
-const ListAppInstallationsResponseInstallationsList = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<ListAppInstallationsResponseInstallationsList>;
-
 export interface ListAppInstallationsResponse {
   total_count: number;
   installations: ListAppInstallationsResponseInstallationsList;
 }
-const ListAppInstallationsResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<ListAppInstallationsResponse>;
-
 export interface ListArtifactDeploymentRecordsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The SHA256 digest of the artifact, in the form `sha256:HEX_DIGEST`. */
   subject_digest: string;
 }
-const ListArtifactDeploymentRecordsRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<ListArtifactDeploymentRecordsRequest>;
-
 export type ListArtifactDeploymentRecordsResponseDeploymentRecordsList =
   Array<ArtifactDeploymentRecord>;
-const ListArtifactDeploymentRecordsResponseDeploymentRecordsList =
-  CreateArtifactDeploymentRecordResponseDeploymentRecordsList as any as S.Schema<ListArtifactDeploymentRecordsResponseDeploymentRecordsList>;
-
 export interface ListArtifactDeploymentRecordsResponse {
   /** The number of deployment records for this digest and organization */
   total_count?: number;
   deployment_records?: ListArtifactDeploymentRecordsResponseDeploymentRecordsList;
 }
-const ListArtifactDeploymentRecordsResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<ListArtifactDeploymentRecordsResponse>;
-
 export interface ListArtifactStorageRecordsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The parameter should be set to the attestation's subject's SHA256 digest, in the form `sha256:HEX_DIGEST`. */
   subject_digest: string;
 }
-const ListArtifactStorageRecordsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<ListArtifactStorageRecordsRequest>;
-
 export interface ListArtifactStorageRecordsResponseStorageRecordsItem {
   id?: number;
   name?: string;
@@ -3069,28 +1993,13 @@ export interface ListArtifactStorageRecordsResponseStorageRecordsItem {
   created_at?: string;
   updated_at?: string;
 }
-const ListArtifactStorageRecordsResponseStorageRecordsItem = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<ListArtifactStorageRecordsResponseStorageRecordsItem>;
-
 export type ListArtifactStorageRecordsResponseStorageRecordsList =
   Array<ListArtifactStorageRecordsResponseStorageRecordsItem>;
-const ListArtifactStorageRecordsResponseStorageRecordsList = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<ListArtifactStorageRecordsResponseStorageRecordsList>;
-
 export interface ListArtifactStorageRecordsResponse {
   /** The number of storage records for this digest and organization */
   total_count?: number;
   storage_records?: ListArtifactStorageRecordsResponseStorageRecordsList;
 }
-const ListArtifactStorageRecordsResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<ListArtifactStorageRecordsResponse>;
-
 export interface ListAttestationRepositoriesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3103,33 +2012,13 @@ export interface ListAttestationRepositoriesRequest {
   /** Optional filter for fetching attestations with a given predicate type. This option accepts `provenance`, `sbom`, `release`, or freeform text for custom predicate types. */
   predicate_type?: string;
 }
-const ListAttestationRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<ListAttestationRepositoriesRequest>;
-
 export interface ListAttestationRepositoriesResponseBodyItem {
   id?: number;
   name?: string;
 }
-const ListAttestationRepositoriesResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<ListAttestationRepositoriesResponseBodyItem>;
-
 export type ListAttestationRepositoriesResponseBodyList =
   Array<ListAttestationRepositoriesResponseBodyItem>;
-const ListAttestationRepositoriesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<ListAttestationRepositoriesResponseBodyList>;
-
 export type ListAttestationRepositoriesResponse = ListAttestationRepositoriesResponseBodyList;
-const ListAttestationRepositoriesResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  0,
-) as any as S.Schema<ListAttestationRepositoriesResponse>;
-
 export interface ListAttestationsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3144,36 +2033,18 @@ export interface ListAttestationsRequest {
   /** Optional filter for fetching attestations with a given predicate type. This option accepts `provenance`, `sbom`, `release`, or freeform text for custom predicate types. */
   predicate_type?: string;
 }
-const ListAttestationsRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ListAttestationsRequest>;
-
 export type ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap = {
   [key: string]: unknown | undefined;
 };
-const ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap>;
-
 export type ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap = {
   [key: string]: unknown | undefined;
 };
-const ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap =
-  MinimalRepositoryCustomPropertiesMap as any as S.Schema<ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap>;
-
 /** The attestation's Sigstore Bundle. Refer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information. */
 export interface ListAttestationsResponseAttestationsItemBundle {
   mediaType?: string;
   verificationMaterial?: ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap;
   dsseEnvelope?: ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap;
 }
-const ListAttestationsResponseAttestationsItemBundle = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ListAttestationsResponseAttestationsItemBundle>;
-
 export interface ListAttestationsResponseAttestationsItem {
   /** The attestation's Sigstore Bundle. Refer to the [Sigstore Bundle Specification](https://github.com/sigstore/protobuf-specs/blob/main/protos/sigstore_bundle.proto) for more information. */
   bundle?: ListAttestationsResponseAttestationsItemBundle | null;
@@ -3181,31 +2052,13 @@ export interface ListAttestationsResponseAttestationsItem {
   bundle_url?: string;
   initiator?: string;
 }
-const ListAttestationsResponseAttestationsItem = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ListAttestationsResponseAttestationsItem>;
-
 export type ListAttestationsResponseAttestationsList =
   Array<ListAttestationsResponseAttestationsItem>;
-const ListAttestationsResponseAttestationsList = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<ListAttestationsResponseAttestationsList>;
-
 export interface ListAttestationsResponse {
   attestations?: ListAttestationsResponseAttestationsList;
 }
-const ListAttestationsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<ListAttestationsResponse>;
-
 /** List of subject digests to fetch attestations for. */
 export type ListAttestationsBulkRequestSubjectDigestsList = Array<string>;
-const ListAttestationsBulkRequestSubjectDigestsList =
-  CreateWebhookRequestEventsList as any as S.Schema<ListAttestationsBulkRequestSubjectDigestsList>;
-
 export interface ListAttestationsBulkRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3220,60 +2073,29 @@ export interface ListAttestationsBulkRequest {
   /** Optional filter for fetching attestations with a given predicate type. This option accepts `provenance`, `sbom`, `release`, or freeform text for custom predicate types. */
   predicate_type?: string;
 }
-const ListAttestationsBulkRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<ListAttestationsBulkRequest>;
-
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap =
   { [key: string]: unknown | undefined };
-const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap =
-  ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap>;
-
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap = {
   [key: string]: unknown | undefined;
 };
-const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap =
-  ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap>;
-
 /** The bundle of the attestation. */
 export interface ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle {
   mediaType?: string;
   verificationMaterial?: ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap;
   dsseEnvelope?: ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap;
 }
-const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle>;
-
 export interface ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem {
   /** The bundle of the attestation. */
   bundle?: ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle;
   repository_id?: number;
   bundle_url?: string;
 }
-const ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem>;
-
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsValueList =
   Array<ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem>;
-const ListAttestationsBulkResponseAttestationsSubjectDigestsValueList = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsValueList>;
-
 /** Mapping of subject digest to bundles. */
 export type ListAttestationsBulkResponseAttestationsSubjectDigestsMap = {
   [key: string]: ListAttestationsBulkResponseAttestationsSubjectDigestsValueList | null | undefined;
 };
-const ListAttestationsBulkResponseAttestationsSubjectDigestsMap = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<ListAttestationsBulkResponseAttestationsSubjectDigestsMap>;
-
 /** Information about the current page. */
 export interface ListAttestationsBulkResponsePageInfo {
   /** Indicates whether there is a next page. */
@@ -3285,22 +2107,12 @@ export interface ListAttestationsBulkResponsePageInfo {
   /** The cursor to the previous page. */
   previous?: string;
 }
-const ListAttestationsBulkResponsePageInfo = /*@__PURE__*/ __L.at(
-  __c22,
-  4,
-) as any as S.Schema<ListAttestationsBulkResponsePageInfo>;
-
 export interface ListAttestationsBulkResponse {
   /** Mapping of subject digest to bundles. */
   attestations_subject_digests?: ListAttestationsBulkResponseAttestationsSubjectDigestsMap;
   /** Information about the current page. */
   page_info?: ListAttestationsBulkResponsePageInfo;
 }
-const ListAttestationsBulkResponse = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<ListAttestationsBulkResponse>;
-
 export interface ListBlockedUsersRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3309,23 +2121,8 @@ export interface ListBlockedUsersRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListBlockedUsersRequest = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<ListBlockedUsersRequest>;
-
 export type ListBlockedUsersResponseBodyList = Array<SimpleUser>;
-const ListBlockedUsersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ListBlockedUsersResponseBodyList>;
-
 export type ListBlockedUsersResponse = ListBlockedUsersResponseBodyList;
-const ListBlockedUsersResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<ListBlockedUsersResponse>;
-
 export interface ListFailedInvitationsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3334,44 +2131,16 @@ export interface ListFailedInvitationsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListFailedInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  1,
-) as any as S.Schema<ListFailedInvitationsRequest>;
-
 export type ListFailedInvitationsResponseBodyList = Array<OrganizationInvitation>;
-const ListFailedInvitationsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<ListFailedInvitationsResponseBodyList>;
-
 export type ListFailedInvitationsResponse = ListFailedInvitationsResponseBodyList;
-const ListFailedInvitationsResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<ListFailedInvitationsResponse>;
-
 export interface ListForAuthenticatedUserRequest {
   /** The number of results per page (max 100). For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   per_page?: number;
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<ListForAuthenticatedUserRequest>;
-
 export type ListForAuthenticatedUserResponseBodyList = Array<OrganizationSimple>;
-const ListForAuthenticatedUserResponseBodyList =
-  ListResponseBodyList as any as S.Schema<ListForAuthenticatedUserResponseBodyList>;
-
 export type ListForAuthenticatedUserResponse = ListForAuthenticatedUserResponseBodyList;
-const ListForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<ListForAuthenticatedUserResponse>;
-
 export interface ListForUserRequest {
   /** The handle for the GitHub user account. */
   username: string;
@@ -3380,12 +2149,8 @@ export interface ListForUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListForUserRequest = /*@__PURE__*/ __L.at(__c23, 6) as any as S.Schema<ListForUserRequest>;
-
 export type ListForUserResponseBodyList = Array<OrganizationSimple>;
 export type ListForUserResponse = ListForUserResponseBodyList;
-const ListForUserResponse = ListResponse as any as S.Schema<ListForUserResponse>;
-
 export interface ListInvitationTeamsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3396,11 +2161,6 @@ export interface ListInvitationTeamsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListInvitationTeamsRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<ListInvitationTeamsRequest>;
-
 export interface TeamPermissions {
   pull: boolean;
   triage: boolean;
@@ -3408,20 +2168,12 @@ export interface TeamPermissions {
   maintain: boolean;
   admin: boolean;
 }
-const TeamPermissions = /*@__PURE__*/ __L.at(__c24, 0) as any as S.Schema<TeamPermissions>;
-
 /** The ownership type of the team */
 export type TeamType = "enterprise" | "organization";
-const TeamType = S.String;
-
 /** How the team's access to the repository was granted. This property is only present when the team is returned in a repository context, such as `GET /repos/{owner}/{repo}/teams`. */
 export type TeamAccessSource = "direct" | "organization" | "enterprise";
-const TeamAccessSource = S.String;
-
 /** The ownership type of the team */
 export type NullableTeamSimpleType = "enterprise" | "organization";
-const NullableTeamSimpleType = S.String;
-
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface NullableTeamSimple {
   /** Unique identifier of the team */
@@ -3452,8 +2204,6 @@ export interface NullableTeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-const NullableTeamSimple = /*@__PURE__*/ __L.at(__c24, 1) as any as S.Schema<NullableTeamSimple>;
-
 /** Groups of organization members that gives permissions on specified repositories. */
 export interface Team {
   id: number;
@@ -3479,68 +2229,22 @@ export interface Team {
   enterprise_id?: number;
   parent: NullableTeamSimple | null;
 }
-const Team = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<Team>;
-
 export type ListInvitationTeamsResponseBodyList = Array<Team>;
-const ListInvitationTeamsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<ListInvitationTeamsResponseBodyList>;
-
 export type ListInvitationTeamsResponse = ListInvitationTeamsResponseBodyList;
-const ListInvitationTeamsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ListInvitationTeamsResponse>;
-
 export interface ListIssueFieldsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const ListIssueFieldsRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<ListIssueFieldsRequest>;
-
 export type ListIssueFieldsResponseBodyList = Array<IssueField | null>;
-const ListIssueFieldsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<ListIssueFieldsResponseBodyList>;
-
 export type ListIssueFieldsResponse = ListIssueFieldsResponseBodyList;
-const ListIssueFieldsResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  7,
-) as any as S.Schema<ListIssueFieldsResponse>;
-
 export interface ListIssueTypesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const ListIssueTypesRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<ListIssueTypesRequest>;
-
 export type ListIssueTypesResponseBodyList = Array<IssueType | null>;
-const ListIssueTypesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c25,
-  1,
-) as any as S.Schema<ListIssueTypesResponseBodyList>;
-
 export type ListIssueTypesResponse = ListIssueTypesResponseBodyList;
-const ListIssueTypesResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<ListIssueTypesResponse>;
-
 export type ListMembersRequestFilter = "2fa_disabled" | "2fa_insecure" | "all";
-const ListMembersRequestFilter = S.String;
-
 export type ListMembersRequestRole = "all" | "admin" | "member";
-const ListMembersRequestRole = S.String;
-
 export interface ListMembersRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3553,15 +2257,9 @@ export interface ListMembersRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListMembersRequest = /*@__PURE__*/ __L.at(__c25, 3) as any as S.Schema<ListMembersRequest>;
-
 export type ListMembersResponseBodyList = Array<SimpleUser>;
 export type ListMembersResponse = ListMembersResponseBodyList;
-const ListMembersResponse = ListBlockedUsersResponse as any as S.Schema<ListMembersResponse>;
-
 export type ListMembershipsForAuthenticatedUserRequestState = "active" | "pending";
-const ListMembershipsForAuthenticatedUserRequestState = S.String;
-
 export interface ListMembershipsForAuthenticatedUserRequest {
   /** Indicates the state of the memberships to return. If not specified, the API returns both active and pending memberships. */
   state?: ListMembershipsForAuthenticatedUserRequestState | (string & {});
@@ -3570,48 +2268,21 @@ export interface ListMembershipsForAuthenticatedUserRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListMembershipsForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<ListMembershipsForAuthenticatedUserRequest>;
-
 export type ListMembershipsForAuthenticatedUserResponseBodyList = Array<OrgMembership>;
-const ListMembershipsForAuthenticatedUserResponseBodyList = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<ListMembershipsForAuthenticatedUserResponseBodyList>;
-
 export type ListMembershipsForAuthenticatedUserResponse =
   ListMembershipsForAuthenticatedUserResponseBodyList;
-const ListMembershipsForAuthenticatedUserResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<ListMembershipsForAuthenticatedUserResponse>;
-
 export interface ListOrgRolesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
 }
-const ListOrgRolesRequest = /*@__PURE__*/ __L.at(__c25, 7) as any as S.Schema<ListOrgRolesRequest>;
-
 /** The list of organization roles available to the organization. */
 export type ListOrgRolesResponseRolesList = Array<OrganizationRole>;
-const ListOrgRolesResponseRolesList = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<ListOrgRolesResponseRolesList>;
-
 export interface ListOrgRolesResponse {
   /** The total number of organization roles available to the organization. */
   total_count?: number;
   /** The list of organization roles available to the organization. */
   roles?: ListOrgRolesResponseRolesList;
 }
-const ListOrgRolesResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<ListOrgRolesResponse>;
-
 export interface ListOrgRoleTeamsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3622,20 +2293,11 @@ export interface ListOrgRoleTeamsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListOrgRoleTeamsRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<ListOrgRoleTeamsRequest>;
-
 /** Determines if the team has a direct, indirect, or mixed relationship to a role */
 export type TeamRoleAssignmentAssignment = "direct" | "indirect" | "mixed";
-const TeamRoleAssignmentAssignment = S.String;
-
 export type TeamRoleAssignmentPermissions = TeamPermissions;
 /** The ownership type of the team */
 export type TeamRoleAssignmentType = "enterprise" | "organization";
-const TeamRoleAssignmentType = S.String;
-
 /** The Relationship a Team has with a role. */
 export interface TeamRoleAssignment {
   /** Determines if the team has a direct, indirect, or mixed relationship to a role */
@@ -3661,21 +2323,9 @@ export interface TeamRoleAssignment {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-const TeamRoleAssignment = /*@__PURE__*/ __L.at(__c26, 3) as any as S.Schema<TeamRoleAssignment>;
-
 /** List of teams assigned to the organization role */
 export type ListOrgRoleTeamsResponseBodyList = Array<TeamRoleAssignment>;
-const ListOrgRoleTeamsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<ListOrgRoleTeamsResponseBodyList>;
-
 export type ListOrgRoleTeamsResponse = ListOrgRoleTeamsResponseBodyList;
-const ListOrgRoleTeamsResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  5,
-) as any as S.Schema<ListOrgRoleTeamsResponse>;
-
 export interface ListOrgRoleUsersRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3686,15 +2336,8 @@ export interface ListOrgRoleUsersRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListOrgRoleUsersRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<ListOrgRoleUsersRequest>;
-
 /** Determines if the user has a direct, indirect, or mixed relationship to a role */
 export type UserRoleAssignmentAssignment = "direct" | "indirect" | "mixed";
-const UserRoleAssignmentAssignment = S.String;
-
 /** The ownership type of the team */
 export type TeamSimpleType = "enterprise" | "organization";
 /** Groups of organization members that gives permissions on specified repositories. */
@@ -3727,15 +2370,8 @@ export interface TeamSimple {
   /** Unique identifier of the enterprise to which this team belongs */
   enterprise_id?: number;
 }
-const TeamSimple = NullableTeamSimple as any as S.Schema<TeamSimple>;
-
 /** Team the user has gotten the role through */
 export type UserRoleAssignmentInheritedFromList = Array<TeamSimple>;
-const UserRoleAssignmentInheritedFromList = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<UserRoleAssignmentInheritedFromList>;
-
 /** The Relationship a User has with a role. */
 export interface UserRoleAssignment {
   /** Determines if the user has a direct, indirect, or mixed relationship to a role */
@@ -3765,24 +2401,10 @@ export interface UserRoleAssignment {
   starred_at?: string;
   user_view_type?: string;
 }
-const UserRoleAssignment = /*@__PURE__*/ __L.at(__c27, 0) as any as S.Schema<UserRoleAssignment>;
-
 /** List of users assigned to the organization role */
 export type ListOrgRoleUsersResponseBodyList = Array<UserRoleAssignment>;
-const ListOrgRoleUsersResponseBodyList = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<ListOrgRoleUsersResponseBodyList>;
-
 export type ListOrgRoleUsersResponse = ListOrgRoleUsersResponseBodyList;
-const ListOrgRoleUsersResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<ListOrgRoleUsersResponse>;
-
 export type ListOutsideCollaboratorsRequestFilter = "2fa_disabled" | "2fa_insecure" | "all";
-const ListOutsideCollaboratorsRequestFilter = S.String;
-
 export interface ListOutsideCollaboratorsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3793,21 +2415,8 @@ export interface ListOutsideCollaboratorsRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListOutsideCollaboratorsRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<ListOutsideCollaboratorsRequest>;
-
 export type ListOutsideCollaboratorsResponseBodyList = Array<SimpleUser>;
-const ListOutsideCollaboratorsResponseBodyList =
-  ListBlockedUsersResponseBodyList as any as S.Schema<ListOutsideCollaboratorsResponseBodyList>;
-
 export type ListOutsideCollaboratorsResponse = ListOutsideCollaboratorsResponseBodyList;
-const ListOutsideCollaboratorsResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  4,
-) as any as S.Schema<ListOutsideCollaboratorsResponse>;
-
 export interface ListPatGrantRepositoriesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3818,23 +2427,8 @@ export interface ListPatGrantRepositoriesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListPatGrantRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c27,
-  5,
-) as any as S.Schema<ListPatGrantRepositoriesRequest>;
-
 export type ListPatGrantRepositoriesResponseBodyList = Array<MinimalRepository>;
-const ListPatGrantRepositoriesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<ListPatGrantRepositoriesResponseBodyList>;
-
 export type ListPatGrantRepositoriesResponse = ListPatGrantRepositoriesResponseBodyList;
-const ListPatGrantRepositoriesResponse = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<ListPatGrantRepositoriesResponse>;
-
 export interface ListPatGrantRequestRepositoriesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3845,31 +2439,13 @@ export interface ListPatGrantRequestRepositoriesRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListPatGrantRequestRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<ListPatGrantRequestRepositoriesRequest>;
-
 export type ListPatGrantRequestRepositoriesResponseBodyList = Array<MinimalRepository>;
 export type ListPatGrantRequestRepositoriesResponse =
   ListPatGrantRequestRepositoriesResponseBodyList;
-const ListPatGrantRequestRepositoriesResponse =
-  ListPatGrantRepositoriesResponse as any as S.Schema<ListPatGrantRequestRepositoriesResponse>;
-
 export type ListPatGrantRequestsRequestSort = "created_at";
-const ListPatGrantRequestsRequestSort = S.String;
-
 export type ListPatGrantRequestsRequestDirection = "asc" | "desc";
-const ListPatGrantRequestsRequestDirection = S.String;
-
 export type ListPatGrantRequestsRequestOwnerList = Array<string>;
-const ListPatGrantRequestsRequestOwnerList =
-  CreateWebhookRequestEventsList as any as S.Schema<ListPatGrantRequestsRequestOwnerList>;
-
 export type ListPatGrantRequestsRequestTokenIdList = Array<string>;
-const ListPatGrantRequestsRequestTokenIdList =
-  CreateWebhookRequestEventsList as any as S.Schema<ListPatGrantRequestsRequestTokenIdList>;
-
 export interface ListPatGrantRequestsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -3894,47 +2470,26 @@ export interface ListPatGrantRequestsRequest {
   /** The ID of the token */
   token_id?: ListPatGrantRequestsRequestTokenIdList;
 }
-const ListPatGrantRequestsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<ListPatGrantRequestsRequest>;
-
 /** Type of repository selection requested. */
 export type OrganizationProgrammaticAccessGrantRequestRepositorySelection =
   | "none"
   | "all"
   | "subset";
-const OrganizationProgrammaticAccessGrantRequestRepositorySelection = S.String;
-
 export type OrganizationProgrammaticAccessGrantRequestPermissionsOrganizationMap = {
   [key: string]: string | undefined;
 };
-const OrganizationProgrammaticAccessGrantRequestPermissionsOrganizationMap =
-  CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantRequestPermissionsOrganizationMap>;
-
 export type OrganizationProgrammaticAccessGrantRequestPermissionsRepositoryMap = {
   [key: string]: string | undefined;
 };
-const OrganizationProgrammaticAccessGrantRequestPermissionsRepositoryMap =
-  CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantRequestPermissionsRepositoryMap>;
-
 export type OrganizationProgrammaticAccessGrantRequestPermissionsOtherMap = {
   [key: string]: string | undefined;
 };
-const OrganizationProgrammaticAccessGrantRequestPermissionsOtherMap =
-  CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantRequestPermissionsOtherMap>;
-
 /** Permissions requested, categorized by type of permission. */
 export interface OrganizationProgrammaticAccessGrantRequestPermissions {
   organization?: OrganizationProgrammaticAccessGrantRequestPermissionsOrganizationMap;
   repository?: OrganizationProgrammaticAccessGrantRequestPermissionsRepositoryMap;
   other?: OrganizationProgrammaticAccessGrantRequestPermissionsOtherMap;
 }
-const OrganizationProgrammaticAccessGrantRequestPermissions = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<OrganizationProgrammaticAccessGrantRequestPermissions>;
-
 /** Minimal representation of an organization programmatic access grant request for enumerations */
 export interface OrganizationProgrammaticAccessGrantRequest {
   /** Unique identifier of the request for access via fine-grained personal access token. The `pat_request_id` used to review PAT requests. */
@@ -3961,38 +2516,13 @@ export interface OrganizationProgrammaticAccessGrantRequest {
   /** Date and time when the associated fine-grained personal access token was last used for authentication. */
   token_last_used_at: string | null;
 }
-const OrganizationProgrammaticAccessGrantRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  3,
-) as any as S.Schema<OrganizationProgrammaticAccessGrantRequest>;
-
 export type ListPatGrantRequestsResponseBodyList =
   Array<OrganizationProgrammaticAccessGrantRequest>;
-const ListPatGrantRequestsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c28,
-  4,
-) as any as S.Schema<ListPatGrantRequestsResponseBodyList>;
-
 export type ListPatGrantRequestsResponse = ListPatGrantRequestsResponseBodyList;
-const ListPatGrantRequestsResponse = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<ListPatGrantRequestsResponse>;
-
 export type ListPatGrantsRequestSort = "created_at";
-const ListPatGrantsRequestSort = S.String;
-
 export type ListPatGrantsRequestDirection = "asc" | "desc";
-const ListPatGrantsRequestDirection = S.String;
-
 export type ListPatGrantsRequestOwnerList = Array<string>;
-const ListPatGrantsRequestOwnerList =
-  CreateWebhookRequestEventsList as any as S.Schema<ListPatGrantsRequestOwnerList>;
-
 export type ListPatGrantsRequestTokenIdList = Array<string>;
-const ListPatGrantsRequestTokenIdList =
-  CreateWebhookRequestEventsList as any as S.Schema<ListPatGrantsRequestTokenIdList>;
-
 export interface ListPatGrantsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4017,44 +2547,23 @@ export interface ListPatGrantsRequest {
   /** The ID of the token */
   token_id?: ListPatGrantsRequestTokenIdList;
 }
-const ListPatGrantsRequest = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<ListPatGrantsRequest>;
-
 /** Type of repository selection requested. */
 export type OrganizationProgrammaticAccessGrantRepositorySelection = "none" | "all" | "subset";
-const OrganizationProgrammaticAccessGrantRepositorySelection = S.String;
-
 export type OrganizationProgrammaticAccessGrantPermissionsOrganizationMap = {
   [key: string]: string | undefined;
 };
-const OrganizationProgrammaticAccessGrantPermissionsOrganizationMap =
-  CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantPermissionsOrganizationMap>;
-
 export type OrganizationProgrammaticAccessGrantPermissionsRepositoryMap = {
   [key: string]: string | undefined;
 };
-const OrganizationProgrammaticAccessGrantPermissionsRepositoryMap =
-  CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantPermissionsRepositoryMap>;
-
 export type OrganizationProgrammaticAccessGrantPermissionsOtherMap = {
   [key: string]: string | undefined;
 };
-const OrganizationProgrammaticAccessGrantPermissionsOtherMap =
-  CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<OrganizationProgrammaticAccessGrantPermissionsOtherMap>;
-
 /** Permissions requested, categorized by type of permission. */
 export interface OrganizationProgrammaticAccessGrantPermissions {
   organization?: OrganizationProgrammaticAccessGrantPermissionsOrganizationMap;
   repository?: OrganizationProgrammaticAccessGrantPermissionsRepositoryMap;
   other?: OrganizationProgrammaticAccessGrantPermissionsOtherMap;
 }
-const OrganizationProgrammaticAccessGrantPermissions = /*@__PURE__*/ __L.at(
-  __c28,
-  7,
-) as any as S.Schema<OrganizationProgrammaticAccessGrantPermissions>;
-
 /** Minimal representation of an organization programmatic access grant for enumerations */
 export interface OrganizationProgrammaticAccessGrant {
   /** Unique identifier of the fine-grained personal access token grant. The `pat_id` used to get details about an approved fine-grained personal access token. */
@@ -4079,34 +2588,15 @@ export interface OrganizationProgrammaticAccessGrant {
   /** Date and time when the associated fine-grained personal access token was last used for authentication. */
   token_last_used_at: string | null;
 }
-const OrganizationProgrammaticAccessGrant = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<OrganizationProgrammaticAccessGrant>;
-
 export type ListPatGrantsResponseBodyList = Array<OrganizationProgrammaticAccessGrant>;
-const ListPatGrantsResponseBodyList = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<ListPatGrantsResponseBodyList>;
-
 export type ListPatGrantsResponse = ListPatGrantsResponseBodyList;
-const ListPatGrantsResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<ListPatGrantsResponse>;
-
 export type ListPendingInvitationsRequestRole =
   | "all"
   | "admin"
   | "direct_member"
   | "billing_manager"
   | "hiring_manager";
-const ListPendingInvitationsRequestRole = S.String;
-
 export type ListPendingInvitationsRequestInvitationSource = "all" | "member" | "scim";
-const ListPendingInvitationsRequestInvitationSource = S.String;
-
 export interface ListPendingInvitationsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4119,16 +2609,8 @@ export interface ListPendingInvitationsRequest {
   /** Filter invitations by their invitation source. */
   invitation_source?: ListPendingInvitationsRequestInvitationSource | (string & {});
 }
-const ListPendingInvitationsRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<ListPendingInvitationsRequest>;
-
 export type ListPendingInvitationsResponseBodyList = Array<OrganizationInvitation>;
 export type ListPendingInvitationsResponse = ListPendingInvitationsResponseBodyList;
-const ListPendingInvitationsResponse =
-  ListFailedInvitationsResponse as any as S.Schema<ListPendingInvitationsResponse>;
-
 export interface ListPublicMembersRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4137,19 +2619,9 @@ export interface ListPublicMembersRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListPublicMembersRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<ListPublicMembersRequest>;
-
 export type ListPublicMembersResponseBodyList = Array<SimpleUser>;
 export type ListPublicMembersResponse = ListPublicMembersResponseBodyList;
-const ListPublicMembersResponse =
-  ListOutsideCollaboratorsResponse as any as S.Schema<ListPublicMembersResponse>;
-
 export type ListWebhookDeliveriesRequestStatus = "success" | "failure";
-const ListWebhookDeliveriesRequestStatus = S.String;
-
 export interface ListWebhookDeliveriesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4162,11 +2634,6 @@ export interface ListWebhookDeliveriesRequest {
   /** Returns webhook deliveries filtered by delivery outcome classification based on `status_code` range. A `status` of `success` returns deliveries with a `status_code` in the 200-399 range (inclusive). A `status` of `failure` returns deliveries with a `status_code` in the 400-599 range (inclusive). */
   status?: ListWebhookDeliveriesRequestStatus | (string & {});
 }
-const ListWebhookDeliveriesRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<ListWebhookDeliveriesRequest>;
-
 /** Delivery made by a webhook, without request and response information. */
 export interface HookDeliveryItem {
   /** Unique identifier of the webhook delivery. */
@@ -4194,20 +2661,8 @@ export interface HookDeliveryItem {
   /** Time when the webhook delivery was throttled. */
   throttled_at?: string | null;
 }
-const HookDeliveryItem = /*@__PURE__*/ __L.at(__c29, 6) as any as S.Schema<HookDeliveryItem>;
-
 export type ListWebhookDeliveriesResponseBodyList = Array<HookDeliveryItem>;
-const ListWebhookDeliveriesResponseBodyList = /*@__PURE__*/ __L.at(
-  __c29,
-  7,
-) as any as S.Schema<ListWebhookDeliveriesResponseBodyList>;
-
 export type ListWebhookDeliveriesResponse = ListWebhookDeliveriesResponseBodyList;
-const ListWebhookDeliveriesResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  0,
-) as any as S.Schema<ListWebhookDeliveriesResponse>;
-
 export interface ListWebhooksRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4216,31 +2671,15 @@ export interface ListWebhooksRequest {
   /** The page number of the results to fetch. For more information, see "[Using pagination in the REST API](https://docs.github.com/rest/using-the-rest-api/using-pagination-in-the-rest-api)." */
   page?: number;
 }
-const ListWebhooksRequest = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<ListWebhooksRequest>;
-
 export type ListWebhooksResponseBodyList = Array<OrgHook>;
-const ListWebhooksResponseBodyList = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<ListWebhooksResponseBodyList>;
-
 export type ListWebhooksResponse = ListWebhooksResponseBodyList;
-const ListWebhooksResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<ListWebhooksResponse>;
-
 export interface PingWebhookRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The unique identifier of the hook. You can find this value in the `X-GitHub-Hook-ID` header of a webhook delivery. */
   hook_id: number;
 }
-const PingWebhookRequest = /*@__PURE__*/ __L.at(__c30, 4) as any as S.Schema<PingWebhookRequest>;
-
 export interface PingWebhookResponse {}
-const PingWebhookResponse = AssignTeamToOrgRoleResponse as any as S.Schema<PingWebhookResponse>;
-
 export interface RedeliverWebhookDeliveryRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4248,77 +2687,37 @@ export interface RedeliverWebhookDeliveryRequest {
   hook_id: number;
   delivery_id: number;
 }
-const RedeliverWebhookDeliveryRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<RedeliverWebhookDeliveryRequest>;
-
 export interface RedeliverWebhookDeliveryResponse {}
-const RedeliverWebhookDeliveryResponse =
-  BulkReviewPatGrantRequestsInResponse as any as S.Schema<RedeliverWebhookDeliveryResponse>;
-
 export interface RemoveMemberRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The handle for the GitHub user account. */
   username: string;
 }
-const RemoveMemberRequest = /*@__PURE__*/ __L.at(__c30, 6) as any as S.Schema<RemoveMemberRequest>;
-
 export interface RemoveMemberResponse {}
-const RemoveMemberResponse = AssignTeamToOrgRoleResponse as any as S.Schema<RemoveMemberResponse>;
-
 export interface RemoveMembershipForUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The handle for the GitHub user account. */
   username: string;
 }
-const RemoveMembershipForUserRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<RemoveMembershipForUserRequest>;
-
 export interface RemoveMembershipForUserResponse {}
-const RemoveMembershipForUserResponse = /*@__PURE__*/ __L.at(
-  __c31,
-  0,
-) as any as S.Schema<RemoveMembershipForUserResponse>;
-
 export interface RemoveOutsideCollaboratorRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The handle for the GitHub user account. */
   username: string;
 }
-const RemoveOutsideCollaboratorRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<RemoveOutsideCollaboratorRequest>;
-
 export interface RemoveOutsideCollaboratorResponse {}
-const RemoveOutsideCollaboratorResponse =
-  BulkReviewPatGrantRequestsInResponse as any as S.Schema<RemoveOutsideCollaboratorResponse>;
-
 export interface RemovePublicMembershipForAuthenticatedUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The handle for the GitHub user account. */
   username: string;
 }
-const RemovePublicMembershipForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<RemovePublicMembershipForAuthenticatedUserRequest>;
-
 export interface RemovePublicMembershipForAuthenticatedUserResponse {}
-const RemovePublicMembershipForAuthenticatedUserResponse =
-  BulkReviewPatGrantRequestsInResponse as any as S.Schema<RemovePublicMembershipForAuthenticatedUserResponse>;
-
 /** Action to apply to the request. */
 export type ReviewPatGrantRequestRequestAction = "approve" | "deny";
-const ReviewPatGrantRequestRequestAction = S.String;
-
 export interface ReviewPatGrantRequestRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4329,45 +2728,21 @@ export interface ReviewPatGrantRequestRequest {
   /** Reason for approving or denying the request. Max 1024 characters. */
   reason?: string | null;
 }
-const ReviewPatGrantRequestRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<ReviewPatGrantRequestRequest>;
-
 export interface ReviewPatGrantRequestResponse {}
-const ReviewPatGrantRequestResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<ReviewPatGrantRequestResponse>;
-
 export interface RevokeAllOrgRolesTeamRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The slug of the team name. */
   team_slug: string;
 }
-const RevokeAllOrgRolesTeamRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<RevokeAllOrgRolesTeamRequest>;
-
 export interface RevokeAllOrgRolesTeamResponse {}
-const RevokeAllOrgRolesTeamResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<RevokeAllOrgRolesTeamResponse>;
-
 export interface RevokeAllOrgRolesUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The handle for the GitHub user account. */
   username: string;
 }
-const RevokeAllOrgRolesUserRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<RevokeAllOrgRolesUserRequest>;
-
 export interface RevokeAllOrgRolesUserResponse {}
-const RevokeAllOrgRolesUserResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<RevokeAllOrgRolesUserResponse>;
-
 export interface RevokeOrgRoleTeamRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4376,15 +2751,7 @@ export interface RevokeOrgRoleTeamRequest {
   /** The unique identifier of the role. */
   role_id: number;
 }
-const RevokeOrgRoleTeamRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<RevokeOrgRoleTeamRequest>;
-
 export interface RevokeOrgRoleTeamResponse {}
-const RevokeOrgRoleTeamResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<RevokeOrgRoleTeamResponse>;
-
 export interface RevokeOrgRoleUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4393,26 +2760,13 @@ export interface RevokeOrgRoleUserRequest {
   /** The unique identifier of the role. */
   role_id: number;
 }
-const RevokeOrgRoleUserRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  7,
-) as any as S.Schema<RevokeOrgRoleUserRequest>;
-
 export interface RevokeOrgRoleUserResponse {}
-const RevokeOrgRoleUserResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<RevokeOrgRoleUserResponse>;
-
 /** The deployment status of the artifact. */
 export type SetClusterDeploymentRecordsRequestDeploymentsItemStatus = "deployed" | "decommissioned";
-const SetClusterDeploymentRecordsRequestDeploymentsItemStatus = S.String;
-
 /** Key-value pairs to tag the deployment record. */
 export type SetClusterDeploymentRecordsRequestDeploymentsItemTagsMap = {
   [key: string]: string | undefined;
 };
-const SetClusterDeploymentRecordsRequestDeploymentsItemTagsMap =
-  CreateArtifactDeploymentRecordRequestTagsMap as any as S.Schema<SetClusterDeploymentRecordsRequestDeploymentsItemTagsMap>;
-
 export type SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksItem =
   | "critical-resource"
   | "internet-exposed"
@@ -4422,9 +2776,6 @@ export type SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksItem =
 export type SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksList = Array<
   SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksItem | (string & {})
 >;
-const SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksList =
-  CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksList as any as S.Schema<SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksList>;
-
 export interface SetClusterDeploymentRecordsRequestDeploymentsItem {
   /** The name of the artifact. */
   name: string;
@@ -4443,19 +2794,9 @@ export interface SetClusterDeploymentRecordsRequestDeploymentsItem {
   /** A list of runtime risks associated with the deployment. */
   runtime_risks?: SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksList;
 }
-const SetClusterDeploymentRecordsRequestDeploymentsItem = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<SetClusterDeploymentRecordsRequestDeploymentsItem>;
-
 /** The list of deployments to record. */
 export type SetClusterDeploymentRecordsRequestDeploymentsList =
   Array<SetClusterDeploymentRecordsRequestDeploymentsItem>;
-const SetClusterDeploymentRecordsRequestDeploymentsList = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<SetClusterDeploymentRecordsRequestDeploymentsList>;
-
 export interface SetClusterDeploymentRecordsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4472,11 +2813,6 @@ export interface SetClusterDeploymentRecordsRequest {
   /** If true, the endpoint will return the set records in the response body */
   return_records?: boolean;
 }
-const SetClusterDeploymentRecordsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  2,
-) as any as S.Schema<SetClusterDeploymentRecordsRequest>;
-
 export type SetClusterDeploymentRecordsResponseDeploymentRecordsList =
   Array<ArtifactDeploymentRecord>;
 export interface SetClusterDeploymentRecordsResponse {
@@ -4484,18 +2820,10 @@ export interface SetClusterDeploymentRecordsResponse {
   total_count: number;
   deployment_records?: SetClusterDeploymentRecordsResponseDeploymentRecordsList;
 }
-const SetClusterDeploymentRecordsResponse =
-  CreateArtifactDeploymentRecordResponse as any as S.Schema<SetClusterDeploymentRecordsResponse>;
-
 /** The policy that controls how immutable releases are enforced in the organization. */
 export type SetImmutableReleasesSettingsRequestEnforcedRepositories = "all" | "none" | "selected";
-const SetImmutableReleasesSettingsRequestEnforcedRepositories = S.String;
-
 /** An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints. */
 export type SetImmutableReleasesSettingsRequestSelectedRepositoryIdsList = Array<number>;
-const SetImmutableReleasesSettingsRequestSelectedRepositoryIdsList =
-  BulkReviewPatGrantRequestsInRequestPatRequestIdsList as any as S.Schema<SetImmutableReleasesSettingsRequestSelectedRepositoryIdsList>;
-
 export interface SetImmutableReleasesSettingsRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4504,43 +2832,19 @@ export interface SetImmutableReleasesSettingsRequest {
   /** An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints. */
   selected_repository_ids?: SetImmutableReleasesSettingsRequestSelectedRepositoryIdsList;
 }
-const SetImmutableReleasesSettingsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<SetImmutableReleasesSettingsRequest>;
-
 export interface SetImmutableReleasesSettingsResponse {}
-const SetImmutableReleasesSettingsResponse =
-  BulkReviewPatGrantRequestsInResponse as any as S.Schema<SetImmutableReleasesSettingsResponse>;
-
 /** An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints. */
 export type SetImmutableReleasesSettingsRepositoriesRequestSelectedRepositoryIdsList =
   Array<number>;
-const SetImmutableReleasesSettingsRepositoriesRequestSelectedRepositoryIdsList =
-  /*@__PURE__*/ __L.at(
-    __c32,
-    4,
-  ) as any as S.Schema<SetImmutableReleasesSettingsRepositoriesRequestSelectedRepositoryIdsList>;
-
 export interface SetImmutableReleasesSettingsRepositoriesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** An array of repository ids for which immutable releases enforcement should be applied. You can only provide a list of repository ids when the `enforced_repositories` is set to `selected`. You can add and remove individual repositories using the [Enable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#enable-a-selected-repository-for-immutable-releases-in-an-organization) and [Disable a selected repository for immutable releases in an organization](https://docs.github.com/rest/orgs/orgs#disable-a-selected-repository-for-immutable-releases-in-an-organization) endpoints. */
   selected_repository_ids: SetImmutableReleasesSettingsRepositoriesRequestSelectedRepositoryIdsList;
 }
-const SetImmutableReleasesSettingsRepositoriesRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  5,
-) as any as S.Schema<SetImmutableReleasesSettingsRepositoriesRequest>;
-
 export interface SetImmutableReleasesSettingsRepositoriesResponse {}
-const SetImmutableReleasesSettingsRepositoriesResponse =
-  BulkReviewPatGrantRequestsInResponse as any as S.Schema<SetImmutableReleasesSettingsRepositoriesResponse>;
-
 /** The role to give the user in the organization. Can be one of: * `admin` - The user will become an owner of the organization. * `member` - The user will become a non-owner member of the organization. */
 export type SetMembershipForUserRequestRole = "admin" | "member";
-const SetMembershipForUserRequestRole = S.String;
-
 export interface SetMembershipForUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4549,45 +2853,24 @@ export interface SetMembershipForUserRequest {
   /** The role to give the user in the organization. Can be one of: * `admin` - The user will become an owner of the organization. * `member` - The user will become a non-owner member of the organization. */
   role?: SetMembershipForUserRequestRole | (string & {});
 }
-const SetMembershipForUserRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  6,
-) as any as S.Schema<SetMembershipForUserRequest>;
-
 export interface SetPublicMembershipForAuthenticatedUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The handle for the GitHub user account. */
   username: string;
 }
-const SetPublicMembershipForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<SetPublicMembershipForAuthenticatedUserRequest>;
-
 export interface SetPublicMembershipForAuthenticatedUserResponse {}
-const SetPublicMembershipForAuthenticatedUserResponse =
-  BulkReviewPatGrantRequestsInResponse as any as S.Schema<SetPublicMembershipForAuthenticatedUserResponse>;
-
 export interface UnblockUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The handle for the GitHub user account. */
   username: string;
 }
-const UnblockUserRequest = /*@__PURE__*/ __L.at(__c33, 0) as any as S.Schema<UnblockUserRequest>;
-
 export interface UnblockUserResponse {}
-const UnblockUserResponse = AssignTeamToOrgRoleResponse as any as S.Schema<UnblockUserResponse>;
-
 /** Default permission level members have for organization repositories. */
 export type UpdateRequestDefaultRepositoryPermission = "read" | "write" | "admin" | "none";
-const UpdateRequestDefaultRepositoryPermission = S.String;
-
 /** Specifies which types of repositories non-admin organization members can create. `private` is only available to repositories that are part of an organization on GitHub Enterprise Cloud. **Note:** This parameter is closing down and will be removed in the future. Its return value ignores internal repositories. Using this parameter overrides values set in `members_can_create_repositories`. See the parameter deprecation notice in the operation description for details. */
 export type UpdateRequestMembersAllowedRepositoryCreationType = "all" | "private" | "none";
-const UpdateRequestMembersAllowedRepositoryCreationType = S.String;
-
 export interface UpdateRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4653,12 +2936,8 @@ export interface UpdateRequest {
   /** Controls whether or not deploy keys may be added and used for repositories in the organization. */
   deploy_keys_enabled_for_repositories?: boolean;
 }
-const UpdateRequest = /*@__PURE__*/ __L.at(__c33, 1) as any as S.Schema<UpdateRequest>;
-
 /** The visibility of the issue field. Can be `organization_members_only` (visible only within the organization) or `all` (visible to all users who can see issues). Only used when the visibility settings feature is enabled. */
 export type UpdateIssueFieldRequestVisibility = "organization_members_only" | "all";
-const UpdateIssueFieldRequestVisibility = S.String;
-
 /** Color for the option. */
 export type UpdateIssueFieldRequestOptionsItemColor =
   | "gray"
@@ -4669,8 +2948,6 @@ export type UpdateIssueFieldRequestOptionsItemColor =
   | "red"
   | "pink"
   | "purple";
-const UpdateIssueFieldRequestOptionsItemColor = S.String;
-
 export interface UpdateIssueFieldRequestOptionsItem {
   /** The id of an existing option to retain or update. Omit this when creating a new option. */
   id?: number;
@@ -4683,18 +2960,8 @@ export interface UpdateIssueFieldRequestOptionsItem {
   /** Priority of the option for ordering. */
   priority: number;
 }
-const UpdateIssueFieldRequestOptionsItem = /*@__PURE__*/ __L.at(
-  __c33,
-  2,
-) as any as S.Schema<UpdateIssueFieldRequestOptionsItem>;
-
 /** Options for select fields. Only applicable when updating single_select or multi_select fields. When provided, this array **replaces** the entire existing set of options rather than adding to or updating individual options. To retain or update an existing option, include it in the array with its `id`. Options sent without an `id` are treated as new options and may cause existing options to be deleted and recreated. */
 export type UpdateIssueFieldRequestOptionsList = Array<UpdateIssueFieldRequestOptionsItem>;
-const UpdateIssueFieldRequestOptionsList = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<UpdateIssueFieldRequestOptionsList>;
-
 export interface UpdateIssueFieldRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4709,11 +2976,6 @@ export interface UpdateIssueFieldRequest {
   /** Options for select fields. Only applicable when updating single_select or multi_select fields. When provided, this array **replaces** the entire existing set of options rather than adding to or updating individual options. To retain or update an existing option, include it in the array with its `id`. Options sent without an `id` are treated as new options and may cause existing options to be deleted and recreated. */
   options?: UpdateIssueFieldRequestOptionsList;
 }
-const UpdateIssueFieldRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<UpdateIssueFieldRequest>;
-
 /** Color for the issue type. */
 export type UpdateIssueTypeRequestColor =
   | "gray"
@@ -4724,8 +2986,6 @@ export type UpdateIssueTypeRequestColor =
   | "red"
   | "pink"
   | "purple";
-const UpdateIssueTypeRequestColor = S.String;
-
 export interface UpdateIssueTypeRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4740,30 +3000,16 @@ export interface UpdateIssueTypeRequest {
   /** Color for the issue type. */
   color?: UpdateIssueTypeRequestColor | (string & {}) | null;
 }
-const UpdateIssueTypeRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  5,
-) as any as S.Schema<UpdateIssueTypeRequest>;
-
 /** The state that the membership should be in. Only `"active"` will be accepted. */
 export type UpdateMembershipForAuthenticatedUserRequestState = "active";
-const UpdateMembershipForAuthenticatedUserRequestState = S.String;
-
 export interface UpdateMembershipForAuthenticatedUserRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
   /** The state that the membership should be in. Only `"active"` will be accepted. */
   state: UpdateMembershipForAuthenticatedUserRequestState | (string & {});
 }
-const UpdateMembershipForAuthenticatedUserRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<UpdateMembershipForAuthenticatedUserRequest>;
-
 /** Action to apply to the fine-grained personal access token. */
 export type UpdatePatAccessRequestAction = "revoke";
-const UpdatePatAccessRequestAction = S.String;
-
 export interface UpdatePatAccessRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4772,24 +3018,11 @@ export interface UpdatePatAccessRequest {
   /** Action to apply to the fine-grained personal access token. */
   action: UpdatePatAccessRequestAction | (string & {});
 }
-const UpdatePatAccessRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  7,
-) as any as S.Schema<UpdatePatAccessRequest>;
-
 export interface UpdatePatAccessResponse {}
-const UpdatePatAccessResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<UpdatePatAccessResponse>;
-
 /** Action to apply to the fine-grained personal access token. */
 export type UpdatePatAccessesRequestAction = "revoke";
-const UpdatePatAccessesRequestAction = S.String;
-
 /** The IDs of the fine-grained personal access tokens. */
 export type UpdatePatAccessesRequestPatIdsList = Array<number>;
-const UpdatePatAccessesRequestPatIdsList =
-  BulkReviewPatGrantRequestsInRequestPatRequestIdsList as any as S.Schema<UpdatePatAccessesRequestPatIdsList>;
-
 export interface UpdatePatAccessesRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4798,15 +3031,7 @@ export interface UpdatePatAccessesRequest {
   /** The IDs of the fine-grained personal access tokens. */
   pat_ids: UpdatePatAccessesRequestPatIdsList;
 }
-const UpdatePatAccessesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<UpdatePatAccessesRequest>;
-
 export interface UpdatePatAccessesResponse {}
-const UpdatePatAccessesResponse =
-  AssignTeamToOrgRoleResponse as any as S.Schema<UpdatePatAccessesResponse>;
-
 /** Key/value pairs to provide settings for this webhook. */
 export interface UpdateWebhookRequestConfig {
   url: string;
@@ -4814,16 +3039,8 @@ export interface UpdateWebhookRequestConfig {
   secret?: string | Redacted.Redacted<string>;
   insecure_ssl?: WebhookConfigInsecureSsl;
 }
-const UpdateWebhookRequestConfig = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<UpdateWebhookRequestConfig>;
-
 /** Determines what [events](https://docs.github.com/webhooks/event-payloads) the hook is triggered for. */
 export type UpdateWebhookRequestEventsList = Array<string>;
-const UpdateWebhookRequestEventsList =
-  CreateWebhookRequestEventsList as any as S.Schema<UpdateWebhookRequestEventsList>;
-
 export interface UpdateWebhookRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4837,11 +3054,6 @@ export interface UpdateWebhookRequest {
   active?: boolean;
   name?: string;
 }
-const UpdateWebhookRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<UpdateWebhookRequest>;
-
 export interface UpdateWebhookConfigForOrgRequest {
   /** The organization name. The name is not case sensitive. */
   org: string;
@@ -4852,11 +3064,6 @@ export interface UpdateWebhookConfigForOrgRequest {
   secret?: string | Redacted.Redacted<string>;
   insecure_ssl?: WebhookConfigInsecureSsl;
 }
-const UpdateWebhookConfigForOrgRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  3,
-) as any as S.Schema<UpdateWebhookConfigForOrgRequest>;
-
 export type AssignTeamToOrgRoleError = NotFound | UnprocessableEntity | GithubOpError;
 /** Assign an organization role to a team Assigns an organization role to a team in an organization. For more information on organization roles, see "[Using organization roles](https://docs.github.com/organizations/managing-peoples-access-to-your-organization-with-roles/using-organization-roles)." The authenticated user must be an administrator for the organization to use this endpoint. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to use this endpoint. */
 export const assignTeamToOrgRole: API.OperationMethod<
@@ -4865,8 +3072,8 @@ export const assignTeamToOrgRole: API.OperationMethod<
   AssignTeamToOrgRoleError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssignTeamToOrgRoleRequest,
-  output: AssignTeamToOrgRoleResponse,
+  input: __S(0) as any as S.Schema<AssignTeamToOrgRoleRequest>,
+  output: __S(1) as any as S.Schema<AssignTeamToOrgRoleResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4880,8 +3087,8 @@ export const assignUserToOrgRole: API.OperationMethod<
   AssignUserToOrgRoleError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AssignUserToOrgRoleRequest,
-  output: AssignUserToOrgRoleResponse,
+  input: __S(2) as any as S.Schema<AssignUserToOrgRoleRequest>,
+  output: __S(1) as any as S.Schema<AssignUserToOrgRoleResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4895,8 +3102,8 @@ export const blockUser: API.OperationMethod<
   BlockUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BlockUserRequest,
-  output: BlockUserResponse,
+  input: __S(3) as any as S.Schema<BlockUserRequest>,
+  output: __S(1) as any as S.Schema<BlockUserResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4914,8 +3121,8 @@ export const bulkReviewPatGrantRequestsIn: API.OperationMethod<
   BulkReviewPatGrantRequestsInError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BulkReviewPatGrantRequestsInRequest,
-  output: BulkReviewPatGrantRequestsInResponse,
+  input: __S(5) as any as S.Schema<BulkReviewPatGrantRequestsInRequest>,
+  output: __S(6) as any as S.Schema<BulkReviewPatGrantRequestsInResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4929,8 +3136,8 @@ export const cancelInvitation: API.OperationMethod<
   CancelInvitationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CancelInvitationRequest,
-  output: CancelInvitationResponse,
+  input: __S(7) as any as S.Schema<CancelInvitationRequest>,
+  output: __S(1) as any as S.Schema<CancelInvitationResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4944,8 +3151,8 @@ export const checkBlockedUser: API.OperationMethod<
   CheckBlockedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckBlockedUserRequest,
-  output: CheckBlockedUserResponse,
+  input: __S(8) as any as S.Schema<CheckBlockedUserRequest>,
+  output: __S(1) as any as S.Schema<CheckBlockedUserResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4959,8 +3166,8 @@ export const checkMembershipForUser: API.OperationMethod<
   CheckMembershipForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckMembershipForUserRequest,
-  output: CheckMembershipForUserResponse,
+  input: __S(9) as any as S.Schema<CheckMembershipForUserRequest>,
+  output: __S(1) as any as S.Schema<CheckMembershipForUserResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4974,8 +3181,8 @@ export const checkPublicMembershipForUser: API.OperationMethod<
   CheckPublicMembershipForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckPublicMembershipForUserRequest,
-  output: CheckPublicMembershipForUserResponse,
+  input: __S(10) as any as S.Schema<CheckPublicMembershipForUserRequest>,
+  output: __S(6) as any as S.Schema<CheckPublicMembershipForUserResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -4989,8 +3196,8 @@ export const convertMemberToOutsideCollaborator: API.OperationMethod<
   ConvertMemberToOutsideCollaboratorError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConvertMemberToOutsideCollaboratorRequest,
-  output: ConvertMemberToOutsideCollaboratorResponse,
+  input: __S(11) as any as S.Schema<ConvertMemberToOutsideCollaboratorRequest>,
+  output: __S(6) as any as S.Schema<ConvertMemberToOutsideCollaboratorResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5004,8 +3211,8 @@ export const createArtifactDeploymentRecord: API.OperationMethod<
   CreateArtifactDeploymentRecordError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateArtifactDeploymentRecordRequest,
-  output: CreateArtifactDeploymentRecordResponse,
+  input: __S(14) as any as S.Schema<CreateArtifactDeploymentRecordRequest>,
+  output: __S(17) as any as S.Schema<CreateArtifactDeploymentRecordResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5019,8 +3226,8 @@ export const createArtifactStorageRecord: API.OperationMethod<
   CreateArtifactStorageRecordError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateArtifactStorageRecordRequest,
-  output: CreateArtifactStorageRecordResponse,
+  input: __S(18) as any as S.Schema<CreateArtifactStorageRecordRequest>,
+  output: __S(21) as any as S.Schema<CreateArtifactStorageRecordResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5039,8 +3246,8 @@ export const createClusterDeploymentRecordsJob: API.OperationMethod<
   CreateClusterDeploymentRecordsJobError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateClusterDeploymentRecordsJobRequest,
-  output: CreateClusterDeploymentRecordsJobResponse,
+  input: __S(26) as any as S.Schema<CreateClusterDeploymentRecordsJobRequest>,
+  output: __S(6) as any as S.Schema<CreateClusterDeploymentRecordsJobResponse>,
   errors: [BadRequest, Forbidden, NotFound, Conflict],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5054,8 +3261,8 @@ export const createInvitation: API.OperationMethod<
   CreateInvitationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateInvitationRequest,
-  output: OrganizationInvitation,
+  input: __S(27) as any as S.Schema<CreateInvitationRequest>,
+  output: __S(29) as any as S.Schema<OrganizationInvitation>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5069,8 +3276,8 @@ export const createIssueField: API.OperationMethod<
   CreateIssueFieldError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIssueFieldRequest,
-  output: IssueField,
+  input: __S(32) as any as S.Schema<CreateIssueFieldRequest>,
+  output: __S(35) as any as S.Schema<IssueField>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5084,8 +3291,8 @@ export const createIssueType: API.OperationMethod<
   CreateIssueTypeError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateIssueTypeRequest,
-  output: IssueType,
+  input: __S(36) as any as S.Schema<CreateIssueTypeRequest>,
+  output: __S(37) as any as S.Schema<IssueType>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5099,8 +3306,8 @@ export const createWebhook: API.OperationMethod<
   CreateWebhookError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateWebhookRequest,
-  output: OrgHook,
+  input: __S(40) as any as S.Schema<CreateWebhookRequest>,
+  output: __S(42) as any as S.Schema<OrgHook>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5117,8 +3324,10 @@ export const customPropertiesForReposCreateOrUpdateOrganizationDefinition: API.O
   CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest,
-  output: CustomProperty,
+  input: __S(
+    44,
+  ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequest>,
+  output: __S(45) as any as S.Schema<CustomProperty>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5135,8 +3344,12 @@ export const customPropertiesForReposCreateOrUpdateOrganizationDefinitions: API.
   CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequest,
-  output: CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponse,
+  input: __S(
+    47,
+  ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequest>,
+  output: __S(
+    48,
+  ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5154,8 +3367,12 @@ export const customPropertiesForReposCreateOrUpdateOrganizationValues: API.Opera
   CustomPropertiesForReposCreateOrUpdateOrganizationValuesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequest,
-  output: CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse,
+  input: __S(
+    51,
+  ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequest>,
+  output: __S(
+    52,
+  ) as any as S.Schema<CustomPropertiesForReposCreateOrUpdateOrganizationValuesResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5172,8 +3389,8 @@ export const customPropertiesForReposDeleteOrganizationDefinition: API.Operation
   CustomPropertiesForReposDeleteOrganizationDefinitionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomPropertiesForReposDeleteOrganizationDefinitionRequest,
-  output: CustomPropertiesForReposDeleteOrganizationDefinitionResponse,
+  input: __S(53) as any as S.Schema<CustomPropertiesForReposDeleteOrganizationDefinitionRequest>,
+  output: __S(54) as any as S.Schema<CustomPropertiesForReposDeleteOrganizationDefinitionResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5190,8 +3407,8 @@ export const customPropertiesForReposGetOrganizationDefinition: API.OperationMet
   CustomPropertiesForReposGetOrganizationDefinitionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomPropertiesForReposGetOrganizationDefinitionRequest,
-  output: CustomProperty,
+  input: __S(55) as any as S.Schema<CustomPropertiesForReposGetOrganizationDefinitionRequest>,
+  output: __S(45) as any as S.Schema<CustomProperty>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5208,8 +3425,8 @@ export const customPropertiesForReposGetOrganizationDefinitions: API.OperationMe
   CustomPropertiesForReposGetOrganizationDefinitionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomPropertiesForReposGetOrganizationDefinitionsRequest,
-  output: CustomPropertiesForReposGetOrganizationDefinitionsResponse,
+  input: __S(56) as any as S.Schema<CustomPropertiesForReposGetOrganizationDefinitionsRequest>,
+  output: __S(57) as any as S.Schema<CustomPropertiesForReposGetOrganizationDefinitionsResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5226,8 +3443,8 @@ export const customPropertiesForReposGetOrganizationValues: API.OperationMethod<
   CustomPropertiesForReposGetOrganizationValuesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomPropertiesForReposGetOrganizationValuesRequest,
-  output: CustomPropertiesForReposGetOrganizationValuesResponse,
+  input: __S(58) as any as S.Schema<CustomPropertiesForReposGetOrganizationValuesRequest>,
+  output: __S(62) as any as S.Schema<CustomPropertiesForReposGetOrganizationValuesResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5241,8 +3458,8 @@ export const Delete: API.OperationMethod<
   DeleteError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
+  input: __S(63) as any as S.Schema<DeleteRequest>,
+  output: __S(1) as any as S.Schema<DeleteResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5256,8 +3473,8 @@ export const deleteAttestationsBulk: API.OperationMethod<
   DeleteAttestationsBulkError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAttestationsBulkRequest,
-  output: DeleteAttestationsBulkResponse,
+  input: __S(64) as any as S.Schema<DeleteAttestationsBulkRequest>,
+  output: __S(1) as any as S.Schema<DeleteAttestationsBulkResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5271,8 +3488,8 @@ export const deleteAttestationsById: API.OperationMethod<
   DeleteAttestationsByIdError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAttestationsByIdRequest,
-  output: DeleteAttestationsByIdResponse,
+  input: __S(65) as any as S.Schema<DeleteAttestationsByIdRequest>,
+  output: __S(1) as any as S.Schema<DeleteAttestationsByIdResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5286,8 +3503,8 @@ export const deleteAttestationsBySubjectDigest: API.OperationMethod<
   DeleteAttestationsBySubjectDigestError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAttestationsBySubjectDigestRequest,
-  output: DeleteAttestationsBySubjectDigestResponse,
+  input: __S(66) as any as S.Schema<DeleteAttestationsBySubjectDigestRequest>,
+  output: __S(6) as any as S.Schema<DeleteAttestationsBySubjectDigestResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5301,8 +3518,8 @@ export const deleteIssueField: API.OperationMethod<
   DeleteIssueFieldError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIssueFieldRequest,
-  output: DeleteIssueFieldResponse,
+  input: __S(67) as any as S.Schema<DeleteIssueFieldRequest>,
+  output: __S(1) as any as S.Schema<DeleteIssueFieldResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5316,8 +3533,8 @@ export const deleteIssueType: API.OperationMethod<
   DeleteIssueTypeError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteIssueTypeRequest,
-  output: DeleteIssueTypeResponse,
+  input: __S(68) as any as S.Schema<DeleteIssueTypeRequest>,
+  output: __S(1) as any as S.Schema<DeleteIssueTypeResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5331,8 +3548,8 @@ export const deleteWebhook: API.OperationMethod<
   DeleteWebhookError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteWebhookRequest,
-  output: DeleteWebhookResponse,
+  input: __S(69) as any as S.Schema<DeleteWebhookRequest>,
+  output: __S(1) as any as S.Schema<DeleteWebhookResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5346,8 +3563,10 @@ export const disableSelectedRepositoryImmutableReleasesOrganization: API.Operati
   DisableSelectedRepositoryImmutableReleasesOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableSelectedRepositoryImmutableReleasesOrganizationRequest,
-  output: DisableSelectedRepositoryImmutableReleasesOrganizationResponse,
+  input: __S(70) as any as S.Schema<DisableSelectedRepositoryImmutableReleasesOrganizationRequest>,
+  output: __S(
+    52,
+  ) as any as S.Schema<DisableSelectedRepositoryImmutableReleasesOrganizationResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5361,8 +3580,8 @@ export const enableSelectedRepositoryImmutableReleasesOrganization: API.Operatio
   EnableSelectedRepositoryImmutableReleasesOrganizationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableSelectedRepositoryImmutableReleasesOrganizationRequest,
-  output: EnableSelectedRepositoryImmutableReleasesOrganizationResponse,
+  input: __S(71) as any as S.Schema<EnableSelectedRepositoryImmutableReleasesOrganizationRequest>,
+  output: __S(52) as any as S.Schema<EnableSelectedRepositoryImmutableReleasesOrganizationResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5380,8 +3599,12 @@ export const externalPropertiesForReposCreateOrUpdateOrganizationValues: API.Ope
   ExternalPropertiesForReposCreateOrUpdateOrganizationValuesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequest,
-  output: ExternalPropertiesForReposCreateOrUpdateOrganizationValuesResponse,
+  input: __S(
+    72,
+  ) as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequest>,
+  output: __S(
+    52,
+  ) as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateOrganizationValuesResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5399,8 +3622,12 @@ export const externalPropertiesForReposCreateOrUpdateValuesForOrganizationProper
   ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequest,
-  output: ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyResponse,
+  input: __S(
+    75,
+  ) as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequest>,
+  output: __S(
+    52,
+  ) as any as S.Schema<ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5418,8 +3645,8 @@ export const externalPropertiesForReposDeleteOrganizationValues: API.OperationMe
   ExternalPropertiesForReposDeleteOrganizationValuesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExternalPropertiesForReposDeleteOrganizationValuesRequest,
-  output: ExternalPropertiesForReposDeleteOrganizationValuesResponse,
+  input: __S(76) as any as S.Schema<ExternalPropertiesForReposDeleteOrganizationValuesRequest>,
+  output: __S(54) as any as S.Schema<ExternalPropertiesForReposDeleteOrganizationValuesResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5437,8 +3664,12 @@ export const externalPropertiesForReposGetOrganizationAppInstallations: API.Oper
   ExternalPropertiesForReposGetOrganizationAppInstallationsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExternalPropertiesForReposGetOrganizationAppInstallationsRequest,
-  output: ExternalPropertiesForReposGetOrganizationAppInstallationsResponse,
+  input: __S(
+    77,
+  ) as any as S.Schema<ExternalPropertiesForReposGetOrganizationAppInstallationsRequest>,
+  output: __S(
+    81,
+  ) as any as S.Schema<ExternalPropertiesForReposGetOrganizationAppInstallationsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5456,8 +3687,8 @@ export const externalPropertiesForReposGetOrganizationDefinitions: API.Operation
   ExternalPropertiesForReposGetOrganizationDefinitionsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExternalPropertiesForReposGetOrganizationDefinitionsRequest,
-  output: ExternalPropertiesForReposGetOrganizationDefinitionsResponse,
+  input: __S(82) as any as S.Schema<ExternalPropertiesForReposGetOrganizationDefinitionsRequest>,
+  output: __S(85) as any as S.Schema<ExternalPropertiesForReposGetOrganizationDefinitionsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5475,8 +3706,10 @@ export const externalPropertiesForReposRegisterOrganizationAppInstallation: API.
   ExternalPropertiesForReposRegisterOrganizationAppInstallationError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ExternalPropertiesForReposRegisterOrganizationAppInstallationRequest,
-  output: OrganizationExternalPropertyInstallation,
+  input: __S(
+    86,
+  ) as any as S.Schema<ExternalPropertiesForReposRegisterOrganizationAppInstallationRequest>,
+  output: __S(79) as any as S.Schema<OrganizationExternalPropertyInstallation>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5486,8 +3719,8 @@ export type GetError = NotFound | GithubOpError;
 /** Get an organization Gets information about an organization. When the value of `two_factor_requirement_enabled` is `true`, the organization requires all members, billing managers, outside collaborators, guest collaborators, repository collaborators, or everyone with access to any repository within the organization to enable [two-factor authentication](https://docs.github.com/articles/securing-your-account-with-two-factor-authentication-2fa/). To see the full details about an organization, the authenticated user must be an organization owner. OAuth app tokens and personal access tokens (classic) need the `admin:org` scope to see the full details about an organization. To see information about an organization's GitHub plan, GitHub Apps need the `Organization plan` permission. */
 export const get: API.OperationMethod<GetRequest, OrganizationFull, GetError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: GetRequest,
-    output: OrganizationFull,
+    input: __S(87) as any as S.Schema<GetRequest>,
+    output: __S(89) as any as S.Schema<OrganizationFull>,
     errors: [NotFound],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -5501,8 +3734,8 @@ export const getApiInsightRouteStatsByActor: API.OperationMethod<
   GetApiInsightRouteStatsByActorError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiInsightRouteStatsByActorRequest,
-  output: GetApiInsightRouteStatsByActorResponse,
+  input: __S(90) as any as S.Schema<GetApiInsightRouteStatsByActorRequest>,
+  output: __S(93) as any as S.Schema<GetApiInsightRouteStatsByActorResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5516,8 +3749,8 @@ export const getApiInsightSubjectStats: API.OperationMethod<
   GetApiInsightSubjectStatsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiInsightSubjectStatsRequest,
-  output: GetApiInsightSubjectStatsResponse,
+  input: __S(94) as any as S.Schema<GetApiInsightSubjectStatsRequest>,
+  output: __S(97) as any as S.Schema<GetApiInsightSubjectStatsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5531,8 +3764,8 @@ export const getApiInsightSummaryStats: API.OperationMethod<
   GetApiInsightSummaryStatsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiInsightSummaryStatsRequest,
-  output: ApiInsightsSummaryStats,
+  input: __S(98) as any as S.Schema<GetApiInsightSummaryStatsRequest>,
+  output: __S(99) as any as S.Schema<ApiInsightsSummaryStats>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5546,8 +3779,8 @@ export const getApiInsightSummaryStatsByActor: API.OperationMethod<
   GetApiInsightSummaryStatsByActorError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiInsightSummaryStatsByActorRequest,
-  output: ApiInsightsSummaryStats,
+  input: __S(100) as any as S.Schema<GetApiInsightSummaryStatsByActorRequest>,
+  output: __S(99) as any as S.Schema<ApiInsightsSummaryStats>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5561,8 +3794,8 @@ export const getApiInsightSummaryStatsByUser: API.OperationMethod<
   GetApiInsightSummaryStatsByUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiInsightSummaryStatsByUserRequest,
-  output: ApiInsightsSummaryStats,
+  input: __S(101) as any as S.Schema<GetApiInsightSummaryStatsByUserRequest>,
+  output: __S(99) as any as S.Schema<ApiInsightsSummaryStats>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5576,8 +3809,8 @@ export const getApiInsightTimeStats: API.OperationMethod<
   GetApiInsightTimeStatsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiInsightTimeStatsRequest,
-  output: GetApiInsightTimeStatsResponse,
+  input: __S(102) as any as S.Schema<GetApiInsightTimeStatsRequest>,
+  output: __S(105) as any as S.Schema<GetApiInsightTimeStatsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5591,8 +3824,8 @@ export const getApiInsightTimeStatsByActor: API.OperationMethod<
   GetApiInsightTimeStatsByActorError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiInsightTimeStatsByActorRequest,
-  output: GetApiInsightTimeStatsByActorResponse,
+  input: __S(106) as any as S.Schema<GetApiInsightTimeStatsByActorRequest>,
+  output: __S(105) as any as S.Schema<GetApiInsightTimeStatsByActorResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5606,8 +3839,8 @@ export const getApiInsightTimeStatsByUser: API.OperationMethod<
   GetApiInsightTimeStatsByUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiInsightTimeStatsByUserRequest,
-  output: GetApiInsightTimeStatsByUserResponse,
+  input: __S(107) as any as S.Schema<GetApiInsightTimeStatsByUserRequest>,
+  output: __S(105) as any as S.Schema<GetApiInsightTimeStatsByUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5621,8 +3854,8 @@ export const getApiInsightUserStats: API.OperationMethod<
   GetApiInsightUserStatsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetApiInsightUserStatsRequest,
-  output: GetApiInsightUserStatsResponse,
+  input: __S(108) as any as S.Schema<GetApiInsightUserStatsRequest>,
+  output: __S(111) as any as S.Schema<GetApiInsightUserStatsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5636,8 +3869,8 @@ export const getClusterDeploymentRecordsJob: API.OperationMethod<
   GetClusterDeploymentRecordsJobError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetClusterDeploymentRecordsJobRequest,
-  output: GetClusterDeploymentRecordsJobResponse,
+  input: __S(112) as any as S.Schema<GetClusterDeploymentRecordsJobRequest>,
+  output: __S(114) as any as S.Schema<GetClusterDeploymentRecordsJobResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5651,8 +3884,8 @@ export const getImmutableReleasesSettings: API.OperationMethod<
   GetImmutableReleasesSettingsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetImmutableReleasesSettingsRequest,
-  output: ImmutableReleasesOrganizationSettings,
+  input: __S(115) as any as S.Schema<GetImmutableReleasesSettingsRequest>,
+  output: __S(116) as any as S.Schema<ImmutableReleasesOrganizationSettings>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5666,8 +3899,8 @@ export const getImmutableReleasesSettingsRepositories: API.OperationMethod<
   GetImmutableReleasesSettingsRepositoriesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetImmutableReleasesSettingsRepositoriesRequest,
-  output: GetImmutableReleasesSettingsRepositoriesResponse,
+  input: __S(117) as any as S.Schema<GetImmutableReleasesSettingsRepositoriesRequest>,
+  output: __S(130) as any as S.Schema<GetImmutableReleasesSettingsRepositoriesResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5681,8 +3914,8 @@ export const getMembershipForAuthenticatedUser: API.OperationMethod<
   GetMembershipForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMembershipForAuthenticatedUserRequest,
-  output: OrgMembership,
+  input: __S(131) as any as S.Schema<GetMembershipForAuthenticatedUserRequest>,
+  output: __S(134) as any as S.Schema<OrgMembership>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5696,8 +3929,8 @@ export const getMembershipForUser: API.OperationMethod<
   GetMembershipForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetMembershipForUserRequest,
-  output: OrgMembership,
+  input: __S(135) as any as S.Schema<GetMembershipForUserRequest>,
+  output: __S(134) as any as S.Schema<OrgMembership>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5711,8 +3944,8 @@ export const getOrgRole: API.OperationMethod<
   GetOrgRoleError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgRoleRequest,
-  output: OrganizationRole,
+  input: __S(136) as any as S.Schema<GetOrgRoleRequest>,
+  output: __S(137) as any as S.Schema<OrganizationRole>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5726,8 +3959,8 @@ export const getOrgRulesetHistory: API.OperationMethod<
   GetOrgRulesetHistoryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgRulesetHistoryRequest,
-  output: GetOrgRulesetHistoryResponse,
+  input: __S(138) as any as S.Schema<GetOrgRulesetHistoryRequest>,
+  output: __S(142) as any as S.Schema<GetOrgRulesetHistoryResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5741,8 +3974,8 @@ export const getOrgRulesetVersion: API.OperationMethod<
   GetOrgRulesetVersionError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOrgRulesetVersionRequest,
-  output: GetOrgRulesetVersionResponse,
+  input: __S(143) as any as S.Schema<GetOrgRulesetVersionRequest>,
+  output: __S(144) as any as S.Schema<GetOrgRulesetVersionResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5756,8 +3989,8 @@ export const getWebhook: API.OperationMethod<
   GetWebhookError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhookRequest,
-  output: OrgHook,
+  input: __S(145) as any as S.Schema<GetWebhookRequest>,
+  output: __S(42) as any as S.Schema<OrgHook>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5771,8 +4004,8 @@ export const getWebhookConfigForOrg: API.OperationMethod<
   GetWebhookConfigForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhookConfigForOrgRequest,
-  output: WebhookConfig,
+  input: __S(146) as any as S.Schema<GetWebhookConfigForOrgRequest>,
+  output: __S(147) as any as S.Schema<WebhookConfig>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5786,8 +4019,8 @@ export const getWebhookDelivery: API.OperationMethod<
   GetWebhookDeliveryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetWebhookDeliveryRequest,
-  output: HookDelivery,
+  input: __S(148) as any as S.Schema<GetWebhookDeliveryRequest>,
+  output: __S(150) as any as S.Schema<HookDelivery>,
   errors: [BadRequest, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5797,8 +4030,8 @@ export type ListError = GithubOpError;
 /** List organizations Lists all organizations, in the order that they were created. > [!NOTE] > Pagination is powered exclusively by the `since` parameter. Use the [Link header](https://docs.github.com/rest/guides/using-pagination-in-the-rest-api#using-link-headers) to get the URL for the next page of organizations. */
 export const list: API.OperationMethod<ListRequest, ListResponse, ListError, GithubOpContext> =
   /*@__PURE__*/ API.make(() => ({
-    input: ListRequest,
-    output: ListResponse,
+    input: __S(151) as any as S.Schema<ListRequest>,
+    output: __S(153) as any as S.Schema<ListResponse>,
     errors: [],
     protocol: GithubProtocol,
     retry: Retry.Retry,
@@ -5812,8 +4045,8 @@ export const listAppInstallations: API.OperationMethod<
   ListAppInstallationsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAppInstallationsRequest,
-  output: ListAppInstallationsResponse,
+  input: __S(154) as any as S.Schema<ListAppInstallationsRequest>,
+  output: __S(158) as any as S.Schema<ListAppInstallationsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5827,8 +4060,8 @@ export const listArtifactDeploymentRecords: API.OperationMethod<
   ListArtifactDeploymentRecordsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListArtifactDeploymentRecordsRequest,
-  output: ListArtifactDeploymentRecordsResponse,
+  input: __S(159) as any as S.Schema<ListArtifactDeploymentRecordsRequest>,
+  output: __S(160) as any as S.Schema<ListArtifactDeploymentRecordsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5842,8 +4075,8 @@ export const listArtifactStorageRecords: API.OperationMethod<
   ListArtifactStorageRecordsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListArtifactStorageRecordsRequest,
-  output: ListArtifactStorageRecordsResponse,
+  input: __S(161) as any as S.Schema<ListArtifactStorageRecordsRequest>,
+  output: __S(164) as any as S.Schema<ListArtifactStorageRecordsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5857,8 +4090,8 @@ export const listAttestationRepositories: API.OperationMethod<
   ListAttestationRepositoriesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAttestationRepositoriesRequest,
-  output: ListAttestationRepositoriesResponse,
+  input: __S(165) as any as S.Schema<ListAttestationRepositoriesRequest>,
+  output: __S(168) as any as S.Schema<ListAttestationRepositoriesResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5872,8 +4105,8 @@ export const listAttestations: API.OperationMethod<
   ListAttestationsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAttestationsRequest,
-  output: ListAttestationsResponse,
+  input: __S(169) as any as S.Schema<ListAttestationsRequest>,
+  output: __S(174) as any as S.Schema<ListAttestationsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5887,8 +4120,8 @@ export const listAttestationsBulk: API.OperationMethod<
   ListAttestationsBulkError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAttestationsBulkRequest,
-  output: ListAttestationsBulkResponse,
+  input: __S(175) as any as S.Schema<ListAttestationsBulkRequest>,
+  output: __S(181) as any as S.Schema<ListAttestationsBulkResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5902,8 +4135,8 @@ export const listBlockedUsers: API.OperationMethod<
   ListBlockedUsersError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListBlockedUsersRequest,
-  output: ListBlockedUsersResponse,
+  input: __S(182) as any as S.Schema<ListBlockedUsersRequest>,
+  output: __S(184) as any as S.Schema<ListBlockedUsersResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5917,8 +4150,8 @@ export const listFailedInvitations: API.OperationMethod<
   ListFailedInvitationsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListFailedInvitationsRequest,
-  output: ListFailedInvitationsResponse,
+  input: __S(185) as any as S.Schema<ListFailedInvitationsRequest>,
+  output: __S(187) as any as S.Schema<ListFailedInvitationsResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5932,8 +4165,8 @@ export const listForAuthenticatedUser: API.OperationMethod<
   ListForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForAuthenticatedUserRequest,
-  output: ListForAuthenticatedUserResponse,
+  input: __S(188) as any as S.Schema<ListForAuthenticatedUserRequest>,
+  output: __S(189) as any as S.Schema<ListForAuthenticatedUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5947,8 +4180,8 @@ export const listForUser: API.OperationMethod<
   ListForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListForUserRequest,
-  output: ListForUserResponse,
+  input: __S(190) as any as S.Schema<ListForUserRequest>,
+  output: __S(153) as any as S.Schema<ListForUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5962,8 +4195,8 @@ export const listInvitationTeams: API.OperationMethod<
   ListInvitationTeamsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListInvitationTeamsRequest,
-  output: ListInvitationTeamsResponse,
+  input: __S(191) as any as S.Schema<ListInvitationTeamsRequest>,
+  output: __S(196) as any as S.Schema<ListInvitationTeamsResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5977,8 +4210,8 @@ export const listIssueFields: API.OperationMethod<
   ListIssueFieldsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIssueFieldsRequest,
-  output: ListIssueFieldsResponse,
+  input: __S(197) as any as S.Schema<ListIssueFieldsRequest>,
+  output: __S(199) as any as S.Schema<ListIssueFieldsResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -5992,8 +4225,8 @@ export const listIssueTypes: API.OperationMethod<
   ListIssueTypesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListIssueTypesRequest,
-  output: ListIssueTypesResponse,
+  input: __S(200) as any as S.Schema<ListIssueTypesRequest>,
+  output: __S(202) as any as S.Schema<ListIssueTypesResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6007,8 +4240,8 @@ export const listMembers: API.OperationMethod<
   ListMembersError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMembersRequest,
-  output: ListMembersResponse,
+  input: __S(203) as any as S.Schema<ListMembersRequest>,
+  output: __S(184) as any as S.Schema<ListMembersResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6025,8 +4258,8 @@ export const listMembershipsForAuthenticatedUser: API.OperationMethod<
   ListMembershipsForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListMembershipsForAuthenticatedUserRequest,
-  output: ListMembershipsForAuthenticatedUserResponse,
+  input: __S(204) as any as S.Schema<ListMembershipsForAuthenticatedUserRequest>,
+  output: __S(206) as any as S.Schema<ListMembershipsForAuthenticatedUserResponse>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6040,8 +4273,8 @@ export const listOrgRoles: API.OperationMethod<
   ListOrgRolesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrgRolesRequest,
-  output: ListOrgRolesResponse,
+  input: __S(207) as any as S.Schema<ListOrgRolesRequest>,
+  output: __S(209) as any as S.Schema<ListOrgRolesResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6055,8 +4288,8 @@ export const listOrgRoleTeams: API.OperationMethod<
   ListOrgRoleTeamsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrgRoleTeamsRequest,
-  output: ListOrgRoleTeamsResponse,
+  input: __S(210) as any as S.Schema<ListOrgRoleTeamsRequest>,
+  output: __S(213) as any as S.Schema<ListOrgRoleTeamsResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6070,8 +4303,8 @@ export const listOrgRoleUsers: API.OperationMethod<
   ListOrgRoleUsersError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOrgRoleUsersRequest,
-  output: ListOrgRoleUsersResponse,
+  input: __S(214) as any as S.Schema<ListOrgRoleUsersRequest>,
+  output: __S(218) as any as S.Schema<ListOrgRoleUsersResponse>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6085,8 +4318,8 @@ export const listOutsideCollaborators: API.OperationMethod<
   ListOutsideCollaboratorsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOutsideCollaboratorsRequest,
-  output: ListOutsideCollaboratorsResponse,
+  input: __S(219) as any as S.Schema<ListOutsideCollaboratorsRequest>,
+  output: __S(220) as any as S.Schema<ListOutsideCollaboratorsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6100,8 +4333,8 @@ export const listPatGrantRepositories: API.OperationMethod<
   ListPatGrantRepositoriesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPatGrantRepositoriesRequest,
-  output: ListPatGrantRepositoriesResponse,
+  input: __S(221) as any as S.Schema<ListPatGrantRepositoriesRequest>,
+  output: __S(223) as any as S.Schema<ListPatGrantRepositoriesResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6115,8 +4348,8 @@ export const listPatGrantRequestRepositories: API.OperationMethod<
   ListPatGrantRequestRepositoriesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPatGrantRequestRepositoriesRequest,
-  output: ListPatGrantRequestRepositoriesResponse,
+  input: __S(224) as any as S.Schema<ListPatGrantRequestRepositoriesRequest>,
+  output: __S(223) as any as S.Schema<ListPatGrantRequestRepositoriesResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6130,8 +4363,8 @@ export const listPatGrantRequests: API.OperationMethod<
   ListPatGrantRequestsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPatGrantRequestsRequest,
-  output: ListPatGrantRequestsResponse,
+  input: __S(225) as any as S.Schema<ListPatGrantRequestsRequest>,
+  output: __S(229) as any as S.Schema<ListPatGrantRequestsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6145,8 +4378,8 @@ export const listPatGrants: API.OperationMethod<
   ListPatGrantsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPatGrantsRequest,
-  output: ListPatGrantsResponse,
+  input: __S(230) as any as S.Schema<ListPatGrantsRequest>,
+  output: __S(234) as any as S.Schema<ListPatGrantsResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6160,8 +4393,8 @@ export const listPendingInvitations: API.OperationMethod<
   ListPendingInvitationsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPendingInvitationsRequest,
-  output: ListPendingInvitationsResponse,
+  input: __S(235) as any as S.Schema<ListPendingInvitationsRequest>,
+  output: __S(187) as any as S.Schema<ListPendingInvitationsResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6175,8 +4408,8 @@ export const listPublicMembers: API.OperationMethod<
   ListPublicMembersError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPublicMembersRequest,
-  output: ListPublicMembersResponse,
+  input: __S(236) as any as S.Schema<ListPublicMembersRequest>,
+  output: __S(220) as any as S.Schema<ListPublicMembersResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6190,8 +4423,8 @@ export const listWebhookDeliveries: API.OperationMethod<
   ListWebhookDeliveriesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebhookDeliveriesRequest,
-  output: ListWebhookDeliveriesResponse,
+  input: __S(237) as any as S.Schema<ListWebhookDeliveriesRequest>,
+  output: __S(240) as any as S.Schema<ListWebhookDeliveriesResponse>,
   errors: [BadRequest, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6205,8 +4438,8 @@ export const listWebhooks: API.OperationMethod<
   ListWebhooksError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListWebhooksRequest,
-  output: ListWebhooksResponse,
+  input: __S(241) as any as S.Schema<ListWebhooksRequest>,
+  output: __S(243) as any as S.Schema<ListWebhooksResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6220,8 +4453,8 @@ export const pingWebhook: API.OperationMethod<
   PingWebhookError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PingWebhookRequest,
-  output: PingWebhookResponse,
+  input: __S(244) as any as S.Schema<PingWebhookRequest>,
+  output: __S(1) as any as S.Schema<PingWebhookResponse>,
   errors: [NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6235,8 +4468,8 @@ export const redeliverWebhookDelivery: API.OperationMethod<
   RedeliverWebhookDeliveryError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RedeliverWebhookDeliveryRequest,
-  output: RedeliverWebhookDeliveryResponse,
+  input: __S(245) as any as S.Schema<RedeliverWebhookDeliveryRequest>,
+  output: __S(6) as any as S.Schema<RedeliverWebhookDeliveryResponse>,
   errors: [BadRequest, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6250,8 +4483,8 @@ export const removeMember: API.OperationMethod<
   RemoveMemberError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveMemberRequest,
-  output: RemoveMemberResponse,
+  input: __S(246) as any as S.Schema<RemoveMemberRequest>,
+  output: __S(1) as any as S.Schema<RemoveMemberResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6265,8 +4498,8 @@ export const removeMembershipForUser: API.OperationMethod<
   RemoveMembershipForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveMembershipForUserRequest,
-  output: RemoveMembershipForUserResponse,
+  input: __S(247) as any as S.Schema<RemoveMembershipForUserRequest>,
+  output: __S(248) as any as S.Schema<RemoveMembershipForUserResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6280,8 +4513,8 @@ export const removeOutsideCollaborator: API.OperationMethod<
   RemoveOutsideCollaboratorError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemoveOutsideCollaboratorRequest,
-  output: RemoveOutsideCollaboratorResponse,
+  input: __S(249) as any as S.Schema<RemoveOutsideCollaboratorRequest>,
+  output: __S(6) as any as S.Schema<RemoveOutsideCollaboratorResponse>,
   errors: [UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6295,8 +4528,8 @@ export const removePublicMembershipForAuthenticatedUser: API.OperationMethod<
   RemovePublicMembershipForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RemovePublicMembershipForAuthenticatedUserRequest,
-  output: RemovePublicMembershipForAuthenticatedUserResponse,
+  input: __S(250) as any as S.Schema<RemovePublicMembershipForAuthenticatedUserRequest>,
+  output: __S(6) as any as S.Schema<RemovePublicMembershipForAuthenticatedUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6310,8 +4543,8 @@ export const reviewPatGrantRequest: API.OperationMethod<
   ReviewPatGrantRequestError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReviewPatGrantRequestRequest,
-  output: ReviewPatGrantRequestResponse,
+  input: __S(251) as any as S.Schema<ReviewPatGrantRequestRequest>,
+  output: __S(1) as any as S.Schema<ReviewPatGrantRequestResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6325,8 +4558,8 @@ export const revokeAllOrgRolesTeam: API.OperationMethod<
   RevokeAllOrgRolesTeamError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeAllOrgRolesTeamRequest,
-  output: RevokeAllOrgRolesTeamResponse,
+  input: __S(252) as any as S.Schema<RevokeAllOrgRolesTeamRequest>,
+  output: __S(1) as any as S.Schema<RevokeAllOrgRolesTeamResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6340,8 +4573,8 @@ export const revokeAllOrgRolesUser: API.OperationMethod<
   RevokeAllOrgRolesUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeAllOrgRolesUserRequest,
-  output: RevokeAllOrgRolesUserResponse,
+  input: __S(253) as any as S.Schema<RevokeAllOrgRolesUserRequest>,
+  output: __S(1) as any as S.Schema<RevokeAllOrgRolesUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6355,8 +4588,8 @@ export const revokeOrgRoleTeam: API.OperationMethod<
   RevokeOrgRoleTeamError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeOrgRoleTeamRequest,
-  output: RevokeOrgRoleTeamResponse,
+  input: __S(254) as any as S.Schema<RevokeOrgRoleTeamRequest>,
+  output: __S(1) as any as S.Schema<RevokeOrgRoleTeamResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6370,8 +4603,8 @@ export const revokeOrgRoleUser: API.OperationMethod<
   RevokeOrgRoleUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RevokeOrgRoleUserRequest,
-  output: RevokeOrgRoleUserResponse,
+  input: __S(255) as any as S.Schema<RevokeOrgRoleUserRequest>,
+  output: __S(1) as any as S.Schema<RevokeOrgRoleUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6385,8 +4618,8 @@ export const setClusterDeploymentRecords: API.OperationMethod<
   SetClusterDeploymentRecordsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetClusterDeploymentRecordsRequest,
-  output: SetClusterDeploymentRecordsResponse,
+  input: __S(258) as any as S.Schema<SetClusterDeploymentRecordsRequest>,
+  output: __S(17) as any as S.Schema<SetClusterDeploymentRecordsResponse>,
   errors: [Forbidden, NotFound],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6400,8 +4633,8 @@ export const setImmutableReleasesSettings: API.OperationMethod<
   SetImmutableReleasesSettingsError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetImmutableReleasesSettingsRequest,
-  output: SetImmutableReleasesSettingsResponse,
+  input: __S(259) as any as S.Schema<SetImmutableReleasesSettingsRequest>,
+  output: __S(6) as any as S.Schema<SetImmutableReleasesSettingsResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6415,8 +4648,8 @@ export const setImmutableReleasesSettingsRepositories: API.OperationMethod<
   SetImmutableReleasesSettingsRepositoriesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetImmutableReleasesSettingsRepositoriesRequest,
-  output: SetImmutableReleasesSettingsRepositoriesResponse,
+  input: __S(261) as any as S.Schema<SetImmutableReleasesSettingsRepositoriesRequest>,
+  output: __S(6) as any as S.Schema<SetImmutableReleasesSettingsRepositoriesResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6430,8 +4663,8 @@ export const setMembershipForUser: API.OperationMethod<
   SetMembershipForUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetMembershipForUserRequest,
-  output: OrgMembership,
+  input: __S(262) as any as S.Schema<SetMembershipForUserRequest>,
+  output: __S(134) as any as S.Schema<OrgMembership>,
   errors: [Forbidden, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6445,8 +4678,8 @@ export const setPublicMembershipForAuthenticatedUser: API.OperationMethod<
   SetPublicMembershipForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SetPublicMembershipForAuthenticatedUserRequest,
-  output: SetPublicMembershipForAuthenticatedUserResponse,
+  input: __S(263) as any as S.Schema<SetPublicMembershipForAuthenticatedUserRequest>,
+  output: __S(6) as any as S.Schema<SetPublicMembershipForAuthenticatedUserResponse>,
   errors: [Forbidden],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6460,8 +4693,8 @@ export const unblockUser: API.OperationMethod<
   UnblockUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UnblockUserRequest,
-  output: UnblockUserResponse,
+  input: __S(264) as any as S.Schema<UnblockUserRequest>,
+  output: __S(1) as any as S.Schema<UnblockUserResponse>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6475,8 +4708,8 @@ export const update: API.OperationMethod<
   UpdateError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: OrganizationFull,
+  input: __S(265) as any as S.Schema<UpdateRequest>,
+  output: __S(89) as any as S.Schema<OrganizationFull>,
   errors: [Conflict, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6490,8 +4723,8 @@ export const updateIssueField: API.OperationMethod<
   UpdateIssueFieldError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIssueFieldRequest,
-  output: IssueField,
+  input: __S(268) as any as S.Schema<UpdateIssueFieldRequest>,
+  output: __S(35) as any as S.Schema<IssueField>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6505,8 +4738,8 @@ export const updateIssueType: API.OperationMethod<
   UpdateIssueTypeError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateIssueTypeRequest,
-  output: IssueType,
+  input: __S(269) as any as S.Schema<UpdateIssueTypeRequest>,
+  output: __S(37) as any as S.Schema<IssueType>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6524,8 +4757,8 @@ export const updateMembershipForAuthenticatedUser: API.OperationMethod<
   UpdateMembershipForAuthenticatedUserError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateMembershipForAuthenticatedUserRequest,
-  output: OrgMembership,
+  input: __S(270) as any as S.Schema<UpdateMembershipForAuthenticatedUserRequest>,
+  output: __S(134) as any as S.Schema<OrgMembership>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6539,8 +4772,8 @@ export const updatePatAccess: API.OperationMethod<
   UpdatePatAccessError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePatAccessRequest,
-  output: UpdatePatAccessResponse,
+  input: __S(271) as any as S.Schema<UpdatePatAccessRequest>,
+  output: __S(1) as any as S.Schema<UpdatePatAccessResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6554,8 +4787,8 @@ export const updatePatAccesses: API.OperationMethod<
   UpdatePatAccessesError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdatePatAccessesRequest,
-  output: UpdatePatAccessesResponse,
+  input: __S(272) as any as S.Schema<UpdatePatAccessesRequest>,
+  output: __S(1) as any as S.Schema<UpdatePatAccessesResponse>,
   errors: [Forbidden, NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6569,8 +4802,8 @@ export const updateWebhook: API.OperationMethod<
   UpdateWebhookError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebhookRequest,
-  output: OrgHook,
+  input: __S(274) as any as S.Schema<UpdateWebhookRequest>,
+  output: __S(42) as any as S.Schema<OrgHook>,
   errors: [NotFound, UnprocessableEntity],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6584,8 +4817,8 @@ export const updateWebhookConfigForOrg: API.OperationMethod<
   UpdateWebhookConfigForOrgError,
   GithubOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateWebhookConfigForOrgRequest,
-  output: WebhookConfig,
+  input: __S(275) as any as S.Schema<UpdateWebhookConfigForOrgRequest>,
+  output: __S(147) as any as S.Schema<WebhookConfig>,
   errors: [],
   protocol: GithubProtocol,
   retry: Retry.Retry,
@@ -6643,8 +4876,8 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          pat_request_ids: S.optional(BulkReviewPatGrantRequestsInRequestPatRequestIdsList),
-          action: BulkReviewPatGrantRequestsInRequestAction,
+          pat_request_ids: S.optional(__S(4)),
+          action: S.String,
           reason: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({ method: "POST", uri: "/orgs/{org}/personal-access-token-requests", code: 200 }),
@@ -6709,7 +4942,7 @@ function __c1(j: number): any {
     case 4:
       return S.Record(S.String, S.String);
     case 5:
-      return S.Array(CreateArtifactDeploymentRecordRequestRuntimeRisksItem);
+      return S.Array(S.String);
     case 6:
       return S.suspend(() =>
         S.Struct({
@@ -6717,13 +4950,13 @@ function __c1(j: number): any {
           name: S.String,
           digest: S.String,
           version: S.optional(S.String),
-          status: CreateArtifactDeploymentRecordRequestStatus,
+          status: S.String,
           logical_environment: S.String,
           physical_environment: S.optional(S.String),
           cluster: S.optional(S.String),
           deployment_name: S.String,
-          tags: S.optional(CreateArtifactDeploymentRecordRequestTagsMap),
-          runtime_risks: S.optional(CreateArtifactDeploymentRecordRequestRuntimeRisksList),
+          tags: S.optional(__S(12)),
+          runtime_risks: S.optional(__S(13)),
           github_repository: S.optional(S.String),
           return_records: S.optional(S.Boolean),
         }).pipe(
@@ -6745,8 +4978,8 @@ function __c1(j: number): any {
           physical_environment: S.optional(S.String),
           cluster: S.optional(S.String),
           deployment_name: S.optional(S.String),
-          tags: S.optional(ArtifactDeploymentRecordTagsMap),
-          runtime_risks: S.optional(ArtifactDeploymentRecordRuntimeRisksList),
+          tags: S.optional(__S(12)),
+          runtime_risks: S.optional(__S(13)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           attestation_id: S.optional(S.NullOr(S.Number)),
@@ -6757,14 +4990,12 @@ function __c1(j: number): any {
 function __c2(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ArtifactDeploymentRecord);
+      return S.Array(__S(15));
     case 1:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          deployment_records: S.optional(
-            CreateArtifactDeploymentRecordResponseDeploymentRecordsList,
-          ),
+          deployment_records: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "CreateArtifactDeploymentRecordResponse",
@@ -6780,7 +5011,7 @@ function __c2(j: number): any {
           path: S.optional(S.String),
           registry_url: S.String,
           repository: S.optional(S.String),
-          status: S.optional(CreateArtifactStorageRecordRequestStatus),
+          status: S.optional(S.String),
           github_repository: S.optional(S.String),
           return_records: S.optional(S.Boolean),
         }).pipe(
@@ -6810,12 +5041,12 @@ function __c2(j: number): any {
         identifier: "CreateArtifactStorageRecordResponseStorageRecordsItem",
       });
     case 4:
-      return S.Array(CreateArtifactStorageRecordResponseStorageRecordsItem);
+      return S.Array(__S(19));
     case 5:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          storage_records: S.optional(CreateArtifactStorageRecordResponseStorageRecordsList),
+          storage_records: S.optional(__S(20)),
         }),
       ).annotate({
         identifier: "CreateArtifactStorageRecordResponse",
@@ -6823,7 +5054,7 @@ function __c2(j: number): any {
     case 6:
       return S.Record(S.String, S.String);
     case 7:
-      return S.Array(CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksItem);
+      return S.Array(S.String);
   }
 }
 function __c3(j: number): any {
@@ -6834,19 +5065,17 @@ function __c3(j: number): any {
           name: S.String,
           digest: S.String,
           version: S.optional(S.String),
-          status: S.optional(CreateClusterDeploymentRecordsJobRequestDeploymentsItemStatus),
+          status: S.optional(S.String),
           deployment_name: S.String,
           github_repository: S.optional(S.String),
-          tags: S.optional(CreateClusterDeploymentRecordsJobRequestDeploymentsItemTagsMap),
-          runtime_risks: S.optional(
-            CreateClusterDeploymentRecordsJobRequestDeploymentsItemRuntimeRisksList,
-          ),
+          tags: S.optional(__S(22)),
+          runtime_risks: S.optional(__S(23)),
         }),
       ).annotate({
         identifier: "CreateClusterDeploymentRecordsJobRequestDeploymentsItem",
       });
     case 1:
-      return S.Array(CreateClusterDeploymentRecordsJobRequestDeploymentsItem);
+      return S.Array(__S(24));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -6854,7 +5083,7 @@ function __c3(j: number): any {
           cluster: S.String.pipe(T.Label()),
           logical_environment: S.String,
           physical_environment: S.optional(S.String),
-          deployments: CreateClusterDeploymentRecordsJobRequestDeploymentsList,
+          deployments: __S(25),
         }).pipe(
           T.Http({
             method: "POST",
@@ -6871,8 +5100,8 @@ function __c3(j: number): any {
           org: S.String.pipe(T.Label()),
           invitee_id: S.optional(S.Number),
           email: S.optional(S.String),
-          role: S.optional(CreateInvitationRequestRole),
-          team_ids: S.optional(CreateInvitationRequestTeamIdsList),
+          role: S.optional(S.String),
+          team_ids: S.optional(__S(4)),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/invitations", code: 200 })),
       ).annotate({ identifier: "CreateInvitationRequest" });
     case 4:
@@ -6912,7 +5141,7 @@ function __c3(j: number): any {
           created_at: S.String,
           failed_at: S.optional(S.NullOr(S.String)),
           failed_reason: S.optional(S.NullOr(S.String)),
-          inviter: SimpleUser,
+          inviter: __S(28),
           team_count: S.Number,
           node_id: S.String,
           invitation_teams_url: S.String,
@@ -6924,14 +5153,14 @@ function __c3(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
-          color: CreateIssueFieldRequestOptionsItemColor,
+          color: S.String,
           priority: S.Number,
         }),
       ).annotate({
         identifier: "CreateIssueFieldRequestOptionsItem",
       });
     case 7:
-      return S.Array(CreateIssueFieldRequestOptionsItem);
+      return S.Array(__S(30));
   }
 }
 function __c4(j: number): any {
@@ -6942,9 +5171,9 @@ function __c4(j: number): any {
           org: S.String.pipe(T.Label()),
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
-          data_type: CreateIssueFieldRequestDataType,
-          visibility: S.optional(CreateIssueFieldRequestVisibility),
-          options: S.optional(S.NullOr(CreateIssueFieldRequestOptionsList)),
+          data_type: S.String,
+          visibility: S.optional(S.String),
+          options: S.optional(S.NullOr(__S(31))),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/issue-fields", code: 200 })),
       ).annotate({ identifier: "CreateIssueFieldRequest" });
     case 1:
@@ -6953,14 +5182,14 @@ function __c4(j: number): any {
           id: S.Number,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
-          color: S.optional(S.NullOr(IssueFieldOptionsItemColor)),
+          color: S.optional(S.NullOr(S.String)),
           priority: S.optional(S.NullOr(S.Number)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
       ).annotate({ identifier: "IssueFieldOptionsItem" });
     case 2:
-      return S.Array(IssueFieldOptionsItem);
+      return S.Array(__S(33));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -6968,9 +5197,9 @@ function __c4(j: number): any {
           node_id: S.String,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
-          data_type: IssueFieldDataType,
-          visibility: S.optional(IssueFieldVisibility),
-          options: S.optional(S.NullOr(IssueFieldOptionsList)),
+          data_type: S.String,
+          visibility: S.optional(S.String),
+          options: S.optional(S.NullOr(__S(34))),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
         }),
@@ -6982,7 +5211,7 @@ function __c4(j: number): any {
           name: S.String,
           is_enabled: S.Boolean,
           description: S.optional(S.NullOr(S.String)),
-          color: S.optional(S.NullOr(CreateIssueTypeRequestColor)),
+          color: S.optional(S.NullOr(S.String)),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/issue-types", code: 200 })),
       ).annotate({ identifier: "CreateIssueTypeRequest" });
     case 5:
@@ -6992,7 +5221,7 @@ function __c4(j: number): any {
           node_id: S.String,
           name: S.String,
           description: S.NullOr(S.String),
-          color: S.optional(S.NullOr(IssueTypeColor)),
+          color: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.String),
           updated_at: S.optional(S.String),
           is_enabled: S.optional(S.Boolean),
@@ -7004,7 +5233,7 @@ function __c4(j: number): any {
           url: S.String,
           content_type: S.optional(S.String),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          insecure_ssl: S.optional(WebhookConfigInsecureSsl),
+          insecure_ssl: S.optional(S.Unknown),
           username: S.optional(S.String),
           password: S.optional(S.String.pipe(T.SensitiveValue({}))),
         }),
@@ -7022,8 +5251,8 @@ function __c5(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           name: S.String,
-          config: CreateWebhookRequestConfig,
-          events: S.optional(CreateWebhookRequestEventsList),
+          config: __S(38),
+          events: S.optional(__S(39)),
           active: S.optional(S.Boolean),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/hooks", code: 200 })),
       ).annotate({ identifier: "CreateWebhookRequest" });
@@ -7044,9 +5273,9 @@ function __c5(j: number): any {
           ping_url: S.String,
           deliveries_url: S.optional(S.String),
           name: S.String,
-          events: OrgHookEventsList,
+          events: __S(39),
           active: S.Boolean,
-          config: OrgHookConfig,
+          config: __S(41),
           updated_at: S.String,
           created_at: S.String,
           type: S.String,
@@ -7059,24 +5288,12 @@ function __c5(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           custom_property_name: S.String.pipe(T.Label()),
-          value_type: CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestValueType,
+          value_type: S.String,
           required: S.optional(S.Boolean),
-          default_value: S.optional(
-            S.NullOr(
-              CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestDefaultValue,
-            ),
-          ),
+          default_value: S.optional(S.NullOr(S.Unknown)),
           description: S.optional(S.NullOr(S.String)),
-          allowed_values: S.optional(
-            S.NullOr(
-              CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestAllowedValuesList,
-            ),
-          ),
-          values_editable_by: S.optional(
-            S.NullOr(
-              CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionRequestValuesEditableBy,
-            ),
-          ),
+          allowed_values: S.optional(S.NullOr(__S(43))),
+          values_editable_by: S.optional(S.NullOr(S.String)),
           require_explicit_values: S.optional(S.Boolean),
         }).pipe(
           T.Http({
@@ -7093,24 +5310,23 @@ function __c5(j: number): any {
         S.Struct({
           property_name: S.String,
           url: S.optional(S.String),
-          source_type: S.optional(CustomPropertySourceType),
-          value_type: CustomPropertyValueType,
+          source_type: S.optional(S.String),
+          value_type: S.String,
           required: S.optional(S.Boolean),
-          default_value: S.optional(S.NullOr(CustomPropertyDefaultValue)),
+          default_value: S.optional(S.NullOr(S.Unknown)),
           description: S.optional(S.NullOr(S.String)),
-          allowed_values: S.optional(S.NullOr(CustomPropertyAllowedValuesList)),
-          values_editable_by: S.optional(S.NullOr(CustomPropertyValuesEditableBy)),
+          allowed_values: S.optional(S.NullOr(__S(39))),
+          values_editable_by: S.optional(S.NullOr(S.String)),
           require_explicit_values: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CustomProperty" });
     case 6:
-      return S.Array(CustomProperty);
+      return S.Array(__S(45));
     case 7:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          properties:
-            CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequestPropertiesList,
+          properties: __S(46),
         }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}/properties/schema", code: 200 })),
       ).annotate({
         identifier: "CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsRequest",
@@ -7120,29 +5336,24 @@ function __c5(j: number): any {
 function __c6(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponseBodyList.pipe(
-          T.RawResponseRoot(),
-        ),
-      ).annotate({
+      return S.suspend(() => __S(46).pipe(T.RawResponseRoot())).annotate({
         identifier: "CustomPropertiesForReposCreateOrUpdateOrganizationDefinitionsResponse",
       });
     case 1:
       return S.suspend(() =>
         S.Struct({
           property_name: S.String,
-          value: S.NullOr(CustomPropertyValueValue),
+          value: S.NullOr(S.Unknown),
         }),
       ).annotate({ identifier: "CustomPropertyValue" });
     case 2:
-      return S.Array(CustomPropertyValue);
+      return S.Array(__S(49));
     case 3:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          repository_names:
-            CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList,
-          properties: CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList,
+          repository_names: __S(43),
+          properties: __S(50),
         }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}/properties/values", code: 200 })),
       ).annotate({
         identifier: "CustomPropertiesForReposCreateOrUpdateOrganizationValuesRequest",
@@ -7198,11 +5409,7 @@ function __c7(j: number): any {
         identifier: "CustomPropertiesForReposGetOrganizationDefinitionsRequest",
       });
     case 1:
-      return S.suspend(() =>
-        CustomPropertiesForReposGetOrganizationDefinitionsResponseBodyList.pipe(
-          T.RawResponseRoot(),
-        ),
-      ).annotate({
+      return S.suspend(() => __S(46).pipe(T.RawResponseRoot())).annotate({
         identifier: "CustomPropertiesForReposGetOrganizationDefinitionsResponse",
       });
     case 2:
@@ -7217,24 +5424,22 @@ function __c7(j: number): any {
         identifier: "CustomPropertiesForReposGetOrganizationValuesRequest",
       });
     case 3:
-      return S.Array(CustomPropertyValue);
+      return S.Array(__S(49));
     case 4:
       return S.suspend(() =>
         S.Struct({
           repository_id: S.Number,
           repository_name: S.String,
           repository_full_name: S.String,
-          properties: OrgRepoCustomPropertyValuesPropertiesList,
+          properties: __S(59),
         }),
       ).annotate({
         identifier: "OrgRepoCustomPropertyValues",
       });
     case 5:
-      return S.Array(OrgRepoCustomPropertyValues);
+      return S.Array(__S(60));
     case 6:
-      return S.suspend(() =>
-        CustomPropertiesForReposGetOrganizationValuesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(61).pipe(T.RawResponseRoot())).annotate({
         identifier: "CustomPropertiesForReposGetOrganizationValuesResponse",
       });
     case 7:
@@ -7251,7 +5456,7 @@ function __c8(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          body: DeleteAttestationsBulkRequestBody.pipe(T.HttpBody()),
+          body: S.Unknown.pipe(T.HttpBody()),
         }).pipe(
           T.Http({ method: "POST", uri: "/orgs/{org}/attestations/delete-request", code: 200 }),
         ),
@@ -7347,10 +5552,8 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          repository_names:
-            ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestRepositoryNamesList,
-          properties:
-            ExternalPropertiesForReposCreateOrUpdateOrganizationValuesRequestPropertiesList,
+          repository_names: __S(43),
+          properties: __S(50),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7371,14 +5574,13 @@ function __c9(j: number): any {
         identifier: "RepositoryExternalPropertyPayload",
       });
     case 2:
-      return S.Array(RepositoryExternalPropertyPayload);
+      return S.Array(__S(73));
     case 3:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
           property_name: S.String.pipe(T.Label()),
-          repository_values:
-            ExternalPropertiesForReposCreateOrUpdateValuesForOrganizationPropertyRequestRepositoryValuesList,
+          repository_values: __S(74),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -7424,7 +5626,7 @@ function __c9(j: number): any {
       return S.suspend(() =>
         S.Struct({
           display_name: S.String,
-          installation: OrganizationExternalPropertyInstallationInstallation,
+          installation: __S(78),
         }),
       ).annotate({
         identifier: "OrganizationExternalPropertyInstallation",
@@ -7434,13 +5636,9 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OrganizationExternalPropertyInstallation);
+      return S.Array(__S(79));
     case 1:
-      return S.suspend(() =>
-        ExternalPropertiesForReposGetOrganizationAppInstallationsResponseBodyList.pipe(
-          T.RawResponseRoot(),
-        ),
-      ).annotate({
+      return S.suspend(() => __S(80).pipe(T.RawResponseRoot())).annotate({
         identifier: "ExternalPropertiesForReposGetOrganizationAppInstallationsResponse",
       });
     case 2:
@@ -7460,13 +5658,9 @@ function __c10(j: number): any {
         }),
       ).annotate({ identifier: "ExternalProperty" });
     case 4:
-      return S.Array(ExternalProperty);
+      return S.Array(__S(83));
     case 5:
-      return S.suspend(() =>
-        ExternalPropertiesForReposGetOrganizationDefinitionsResponseBodyList.pipe(
-          T.RawResponseRoot(),
-        ),
-      ).annotate({
+      return S.suspend(() => __S(84).pipe(T.RawResponseRoot())).annotate({
         identifier: "ExternalPropertiesForReposGetOrganizationDefinitionsResponse",
       });
     case 6:
@@ -7535,7 +5729,7 @@ function __c11(j: number): any {
           disk_usage: S.optional(S.NullOr(S.Number)),
           collaborators: S.optional(S.NullOr(S.Number)),
           billing_email: S.optional(S.NullOr(S.String)),
-          plan: S.optional(OrganizationFullPlan),
+          plan: S.optional(__S(88)),
           default_repository_permission: S.optional(S.NullOr(S.String)),
           default_repository_branch: S.optional(S.NullOr(S.String)),
           members_can_create_repositories: S.optional(S.NullOr(S.Boolean)),
@@ -7575,14 +5769,14 @@ function __c11(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          actor_type: GetApiInsightRouteStatsByActorRequestActorType.pipe(T.Label()),
+          actor_type: S.String.pipe(T.Label()),
           actor_id: S.Number.pipe(T.Label()),
           min_timestamp: S.String.pipe(T.Query()),
           max_timestamp: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          direction: S.optional(GetApiInsightRouteStatsByActorRequestDirection.pipe(T.Query())),
-          sort: S.optional(GetApiInsightRouteStatsByActorRequestSortList.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(__S(13).pipe(T.Query())),
           api_route_substring: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -7608,9 +5802,9 @@ function __c11(j: number): any {
         identifier: "ApiInsightsRouteStatsItem",
       });
     case 4:
-      return S.Array(ApiInsightsRouteStatsItem);
+      return S.Array(__S(91));
     case 5:
-      return S.suspend(() => ApiInsightsRouteStats.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(92).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetApiInsightRouteStatsByActorResponse",
       });
     case 6:
@@ -7621,8 +5815,8 @@ function __c11(j: number): any {
           max_timestamp: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          direction: S.optional(GetApiInsightSubjectStatsRequestDirection.pipe(T.Query())),
-          sort: S.optional(GetApiInsightSubjectStatsRequestSortList.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(__S(13).pipe(T.Query())),
           subject_name_substring: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/orgs/{org}/insights/api/subject-stats", code: 200 }),
@@ -7649,9 +5843,9 @@ function __c11(j: number): any {
 function __c12(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ApiInsightsSubjectStatsItem);
+      return S.Array(__S(95));
     case 1:
-      return S.suspend(() => ApiInsightsSubjectStats.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(96).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetApiInsightSubjectStatsResponse",
       });
     case 2:
@@ -7677,7 +5871,7 @@ function __c12(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          actor_type: GetApiInsightSummaryStatsByActorRequestActorType.pipe(T.Label()),
+          actor_type: S.String.pipe(T.Label()),
           actor_id: S.Number.pipe(T.Label()),
           min_timestamp: S.String.pipe(T.Query()),
           max_timestamp: S.optional(S.String.pipe(T.Query())),
@@ -7732,16 +5926,16 @@ function __c12(j: number): any {
 function __c13(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ApiInsightsTimeStatsItem);
+      return S.Array(__S(103));
     case 1:
-      return S.suspend(() => ApiInsightsTimeStats.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(104).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetApiInsightTimeStatsResponse",
       });
     case 2:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          actor_type: GetApiInsightTimeStatsByActorRequestActorType.pipe(T.Label()),
+          actor_type: S.String.pipe(T.Label()),
           actor_id: S.Number.pipe(T.Label()),
           min_timestamp: S.String.pipe(T.Query()),
           max_timestamp: S.optional(S.String.pipe(T.Query())),
@@ -7783,8 +5977,8 @@ function __c13(j: number): any {
           max_timestamp: S.optional(S.String.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
-          direction: S.optional(GetApiInsightUserStatsRequestDirection.pipe(T.Query())),
-          sort: S.optional(GetApiInsightUserStatsRequestSortList.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          sort: S.optional(__S(13).pipe(T.Query())),
           actor_name_substring: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({
@@ -7811,9 +6005,9 @@ function __c13(j: number): any {
         }),
       ).annotate({ identifier: "ApiInsightsUserStatsItem" });
     case 6:
-      return S.Array(ApiInsightsUserStatsItem);
+      return S.Array(__S(109));
     case 7:
-      return S.suspend(() => ApiInsightsUserStats.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(110).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetApiInsightUserStatsResponse",
       });
   }
@@ -7842,10 +6036,10 @@ function __c14(j: number): any {
       return S.suspend(() =>
         S.Struct({
           job_id: S.Number,
-          status: GetClusterDeploymentRecordsJobResponseStatus,
+          status: S.String,
           started_at: S.optional(S.String),
           total_count: S.optional(S.Number),
-          errors: S.optional(GetClusterDeploymentRecordsJobResponseErrorsList),
+          errors: S.optional(__S(113)),
         }),
       ).annotate({
         identifier: "GetClusterDeploymentRecordsJobResponse",
@@ -7863,7 +6057,7 @@ function __c14(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          enforced_repositories: ImmutableReleasesOrganizationSettingsEnforcedRepositories,
+          enforced_repositories: S.String,
           selected_repositories_url: S.optional(S.String),
         }),
       ).annotate({
@@ -7924,7 +6118,7 @@ function __c15(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SecurityAndAnalysisAdvancedSecurityStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisAdvancedSecurity",
@@ -7932,7 +6126,7 @@ function __c15(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(SecurityAndAnalysisSecretScanningDelegatedAlertDismissalStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedAlertDismissal",
@@ -7941,23 +6135,18 @@ function __c15(j: number): any {
       return S.suspend(() =>
         S.Struct({
           reviewer_id: S.Number,
-          reviewer_type:
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemReviewerType,
-          mode: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItemMode,
-          ),
+          reviewer_type: S.String,
+          mode: S.optional(S.String),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem",
       });
     case 4:
-      return S.Array(SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersItem);
+      return S.Array(__S(123));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          reviewers: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptionsReviewersList,
-          ),
+          reviewers: S.optional(__S(124)),
         }),
       ).annotate({
         identifier: "SecurityAndAnalysisSecretScanningDelegatedBypassOptions",
@@ -7965,26 +6154,16 @@ function __c15(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          advanced_security: S.optional(SecurityAndAnalysisAdvancedSecurity),
-          code_security: S.optional(SecurityAndAnalysisCodeSecurity),
-          dependabot_security_updates: S.optional(SecurityAndAnalysisDependabotSecurityUpdates),
-          secret_scanning: S.optional(SecurityAndAnalysisSecretScanning),
-          secret_scanning_push_protection: S.optional(
-            SecurityAndAnalysisSecretScanningPushProtection,
-          ),
-          secret_scanning_non_provider_patterns: S.optional(
-            SecurityAndAnalysisSecretScanningNonProviderPatterns,
-          ),
-          secret_scanning_ai_detection: S.optional(SecurityAndAnalysisSecretScanningAiDetection),
-          secret_scanning_delegated_alert_dismissal: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedAlertDismissal,
-          ),
-          secret_scanning_delegated_bypass: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypass,
-          ),
-          secret_scanning_delegated_bypass_options: S.optional(
-            SecurityAndAnalysisSecretScanningDelegatedBypassOptions,
-          ),
+          advanced_security: S.optional(__S(121)),
+          code_security: S.optional(__S(121)),
+          dependabot_security_updates: S.optional(__S(121)),
+          secret_scanning: S.optional(__S(121)),
+          secret_scanning_push_protection: S.optional(__S(121)),
+          secret_scanning_non_provider_patterns: S.optional(__S(121)),
+          secret_scanning_ai_detection: S.optional(__S(121)),
+          secret_scanning_delegated_alert_dismissal: S.optional(__S(122)),
+          secret_scanning_delegated_bypass: S.optional(__S(121)),
+          secret_scanning_delegated_bypass_options: S.optional(__S(125)),
         }),
       ).annotate({ identifier: "SecurityAndAnalysis" });
     case 7:
@@ -8000,7 +6179,7 @@ function __c16(j: number): any {
           node_id: S.String,
           name: S.String,
           full_name: S.String,
-          owner: SimpleUser,
+          owner: __S(28),
           private: S.Boolean,
           html_url: S.String,
           description: S.NullOr(S.String),
@@ -8056,7 +6235,7 @@ function __c16(j: number): any {
           default_branch: S.optional(S.String),
           open_issues_count: S.optional(S.Number),
           is_template: S.optional(S.Boolean),
-          topics: S.optional(MinimalRepositoryTopicsList),
+          topics: S.optional(__S(39)),
           has_issues: S.optional(S.Boolean),
           has_projects: S.optional(S.Boolean),
           has_wiki: S.optional(S.Boolean),
@@ -8064,37 +6243,37 @@ function __c16(j: number): any {
           has_downloads: S.optional(S.Boolean),
           has_discussions: S.optional(S.Boolean),
           has_pull_requests: S.optional(S.Boolean),
-          pull_request_creation_policy: S.optional(MinimalRepositoryPullRequestCreationPolicy),
+          pull_request_creation_policy: S.optional(S.String),
           archived: S.optional(S.Boolean),
           disabled: S.optional(S.Boolean),
           visibility: S.optional(S.String),
           pushed_at: S.optional(S.NullOr(S.String)),
           created_at: S.optional(S.NullOr(S.String)),
           updated_at: S.optional(S.NullOr(S.String)),
-          permissions: S.optional(MinimalRepositoryPermissions),
+          permissions: S.optional(__S(118)),
           role_name: S.optional(S.String),
           temp_clone_token: S.optional(S.String),
           delete_branch_on_merge: S.optional(S.Boolean),
           subscribers_count: S.optional(S.Number),
           network_count: S.optional(S.Number),
-          code_of_conduct: S.optional(CodeOfConduct),
-          license: S.optional(S.NullOr(MinimalRepositoryLicense)),
+          code_of_conduct: S.optional(__S(119)),
+          license: S.optional(S.NullOr(__S(120))),
           forks: S.optional(S.Number),
           open_issues: S.optional(S.Number),
           watchers: S.optional(S.Number),
           allow_forking: S.optional(S.Boolean),
           web_commit_signoff_required: S.optional(S.Boolean),
-          security_and_analysis: S.optional(S.NullOr(SecurityAndAnalysis)),
-          custom_properties: S.optional(MinimalRepositoryCustomPropertiesMap),
+          security_and_analysis: S.optional(S.NullOr(__S(126))),
+          custom_properties: S.optional(__S(127)),
         }),
       ).annotate({ identifier: "MinimalRepository" });
     case 1:
-      return S.Array(MinimalRepository);
+      return S.Array(__S(128));
     case 2:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          repositories: GetImmutableReleasesSettingsRepositoriesResponseRepositoriesList,
+          repositories: __S(129),
         }),
       ).annotate({
         identifier: "GetImmutableReleasesSettingsRepositoriesResponse",
@@ -8134,16 +6313,14 @@ function __c16(j: number): any {
       return S.suspend(() =>
         S.Struct({
           url: S.String,
-          state: OrgMembershipState,
-          role: OrgMembershipRole,
+          state: S.String,
+          role: S.String,
           direct_membership: S.optional(S.Boolean),
-          enterprise_teams_providing_indirect_membership: S.optional(
-            OrgMembershipEnterpriseTeamsProvidingIndirectMembershipList,
-          ),
+          enterprise_teams_providing_indirect_membership: S.optional(__S(39)),
           organization_url: S.String,
-          organization: OrganizationSimple,
-          user: S.NullOr(SimpleUser),
-          permissions: S.optional(OrgMembershipPermissions),
+          organization: __S(132),
+          user: S.NullOr(__S(28)),
+          permissions: S.optional(__S(133)),
         }),
       ).annotate({ identifier: "OrgMembership" });
     case 7:
@@ -8174,10 +6351,10 @@ function __c17(j: number): any {
           id: S.Number,
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
-          base_role: S.optional(S.NullOr(OrganizationRoleBaseRole)),
-          source: S.optional(S.NullOr(OrganizationRoleSource)),
-          permissions: OrganizationRolePermissionsList,
-          organization: S.NullOr(SimpleUser),
+          base_role: S.optional(S.NullOr(S.String)),
+          source: S.optional(S.NullOr(S.String)),
+          permissions: __S(39),
+          organization: S.NullOr(__S(28)),
           created_at: S.String,
           updated_at: S.String,
         }),
@@ -8206,16 +6383,14 @@ function __c17(j: number): any {
       return S.suspend(() =>
         S.Struct({
           version_id: S.Number,
-          actor: RulesetVersionActor,
+          actor: __S(139),
           updated_at: S.String,
         }),
       ).annotate({ identifier: "RulesetVersion" });
     case 5:
-      return S.Array(RulesetVersion);
+      return S.Array(__S(140));
     case 6:
-      return S.suspend(() =>
-        GetOrgRulesetHistoryResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(141).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetOrgRulesetHistoryResponse",
       });
     case 7:
@@ -8242,7 +6417,7 @@ function __c18(j: number): any {
       return S.suspend(() =>
         S.Struct({
           version_id: S.Number,
-          actor: RulesetVersionActor,
+          actor: __S(139),
           updated_at: S.String,
           state: S.Unknown,
         }),
@@ -8271,7 +6446,7 @@ function __c18(j: number): any {
           url: S.optional(S.String),
           content_type: S.optional(S.String),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          insecure_ssl: S.optional(WebhookConfigInsecureSsl),
+          insecure_ssl: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "WebhookConfig" });
     case 4:
@@ -8293,8 +6468,8 @@ function __c18(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          headers: S.NullOr(HookDeliveryRequestHeadersMap),
-          payload: S.NullOr(HookDeliveryRequestPayloadMap),
+          headers: S.NullOr(__S(127)),
+          payload: S.NullOr(__S(127)),
         }),
       ).annotate({ identifier: "HookDeliveryRequest" });
     case 6:
@@ -8313,8 +6488,8 @@ function __c18(j: number): any {
           repository_id: S.NullOr(S.Number),
           throttled_at: S.optional(S.NullOr(S.String)),
           url: S.optional(S.String),
-          request: HookDeliveryRequest,
-          response: HookDeliveryResponse,
+          request: __S(149),
+          response: __S(149),
         }),
       ).annotate({ identifier: "HookDelivery" });
     case 7:
@@ -8329,9 +6504,9 @@ function __c18(j: number): any {
 function __c19(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OrganizationSimple);
+      return S.Array(__S(132));
     case 1:
-      return S.suspend(() => ListResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(152).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListResponse",
       });
     case 2:
@@ -8347,86 +6522,70 @@ function __c19(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          actions: S.optional(AppPermissionsActions),
-          administration: S.optional(AppPermissionsAdministration),
-          artifact_metadata: S.optional(AppPermissionsArtifactMetadata),
-          attestations: S.optional(AppPermissionsAttestations),
-          checks: S.optional(AppPermissionsChecks),
-          code_quality: S.optional(AppPermissionsCodeQuality),
-          codespaces: S.optional(AppPermissionsCodespaces),
-          contents: S.optional(AppPermissionsContents),
-          dependabot_secrets: S.optional(AppPermissionsDependabotSecrets),
-          deployments: S.optional(AppPermissionsDeployments),
-          discussions: S.optional(AppPermissionsDiscussions),
-          environments: S.optional(AppPermissionsEnvironments),
-          issues: S.optional(AppPermissionsIssues),
-          merge_queues: S.optional(AppPermissionsMergeQueues),
-          metadata: S.optional(AppPermissionsMetadata),
-          packages: S.optional(AppPermissionsPackages),
-          pages: S.optional(AppPermissionsPages),
-          pull_requests: S.optional(AppPermissionsPullRequests),
-          repository_custom_properties: S.optional(AppPermissionsRepositoryCustomProperties),
-          repository_hooks: S.optional(AppPermissionsRepositoryHooks),
-          repository_projects: S.optional(AppPermissionsRepositoryProjects),
-          secret_scanning_alerts: S.optional(AppPermissionsSecretScanningAlerts),
-          secrets: S.optional(AppPermissionsSecrets),
-          security_events: S.optional(AppPermissionsSecurityEvents),
-          single_file: S.optional(AppPermissionsSingleFile),
-          statuses: S.optional(AppPermissionsStatuses),
-          vulnerability_alerts: S.optional(AppPermissionsVulnerabilityAlerts),
-          workflows: S.optional(AppPermissionsWorkflows),
-          custom_properties_for_organizations: S.optional(
-            AppPermissionsCustomPropertiesForOrganizations,
-          ),
-          members: S.optional(AppPermissionsMembers),
-          organization_administration: S.optional(AppPermissionsOrganizationAdministration),
-          organization_custom_roles: S.optional(AppPermissionsOrganizationCustomRoles),
-          organization_custom_org_roles: S.optional(AppPermissionsOrganizationCustomOrgRoles),
-          organization_custom_properties: S.optional(AppPermissionsOrganizationCustomProperties),
-          organization_copilot_seat_management: S.optional(
-            AppPermissionsOrganizationCopilotSeatManagement,
-          ),
-          organization_copilot_agent_settings: S.optional(
-            AppPermissionsOrganizationCopilotAgentSettings,
-          ),
-          organization_external_properties_for_repos: S.optional(
-            AppPermissionsOrganizationExternalPropertiesForRepos,
-          ),
-          organization_announcement_banners: S.optional(
-            AppPermissionsOrganizationAnnouncementBanners,
-          ),
-          organization_events: S.optional(AppPermissionsOrganizationEvents),
-          organization_hooks: S.optional(AppPermissionsOrganizationHooks),
-          organization_personal_access_tokens: S.optional(
-            AppPermissionsOrganizationPersonalAccessTokens,
-          ),
-          organization_personal_access_token_requests: S.optional(
-            AppPermissionsOrganizationPersonalAccessTokenRequests,
-          ),
-          organization_plan: S.optional(AppPermissionsOrganizationPlan),
-          organization_projects: S.optional(AppPermissionsOrganizationProjects),
-          organization_packages: S.optional(AppPermissionsOrganizationPackages),
-          organization_secrets: S.optional(AppPermissionsOrganizationSecrets),
-          organization_self_hosted_runners: S.optional(AppPermissionsOrganizationSelfHostedRunners),
-          organization_user_blocking: S.optional(AppPermissionsOrganizationUserBlocking),
-          email_addresses: S.optional(AppPermissionsEmailAddresses),
-          followers: S.optional(AppPermissionsFollowers),
-          git_ssh_keys: S.optional(AppPermissionsGitSshKeys),
-          gpg_keys: S.optional(AppPermissionsGpgKeys),
-          interaction_limits: S.optional(AppPermissionsInteractionLimits),
-          profile: S.optional(AppPermissionsProfile),
-          starring: S.optional(AppPermissionsStarring),
-          enterprise_custom_properties_for_organizations: S.optional(
-            AppPermissionsEnterpriseCustomPropertiesForOrganizations,
-          ),
+          actions: S.optional(S.String),
+          administration: S.optional(S.String),
+          artifact_metadata: S.optional(S.String),
+          attestations: S.optional(S.String),
+          checks: S.optional(S.String),
+          code_quality: S.optional(S.String),
+          codespaces: S.optional(S.String),
+          contents: S.optional(S.String),
+          dependabot_secrets: S.optional(S.String),
+          deployments: S.optional(S.String),
+          discussions: S.optional(S.String),
+          environments: S.optional(S.String),
+          issues: S.optional(S.String),
+          merge_queues: S.optional(S.String),
+          metadata: S.optional(S.String),
+          packages: S.optional(S.String),
+          pages: S.optional(S.String),
+          pull_requests: S.optional(S.String),
+          repository_custom_properties: S.optional(S.String),
+          repository_hooks: S.optional(S.String),
+          repository_projects: S.optional(S.String),
+          secret_scanning_alerts: S.optional(S.String),
+          secrets: S.optional(S.String),
+          security_events: S.optional(S.String),
+          single_file: S.optional(S.String),
+          statuses: S.optional(S.String),
+          vulnerability_alerts: S.optional(S.String),
+          workflows: S.optional(S.String),
+          custom_properties_for_organizations: S.optional(S.String),
+          members: S.optional(S.String),
+          organization_administration: S.optional(S.String),
+          organization_custom_roles: S.optional(S.String),
+          organization_custom_org_roles: S.optional(S.String),
+          organization_custom_properties: S.optional(S.String),
+          organization_copilot_seat_management: S.optional(S.String),
+          organization_copilot_agent_settings: S.optional(S.String),
+          organization_external_properties_for_repos: S.optional(S.String),
+          organization_announcement_banners: S.optional(S.String),
+          organization_events: S.optional(S.String),
+          organization_hooks: S.optional(S.String),
+          organization_personal_access_tokens: S.optional(S.String),
+          organization_personal_access_token_requests: S.optional(S.String),
+          organization_plan: S.optional(S.String),
+          organization_projects: S.optional(S.String),
+          organization_packages: S.optional(S.String),
+          organization_secrets: S.optional(S.String),
+          organization_self_hosted_runners: S.optional(S.String),
+          organization_user_blocking: S.optional(S.String),
+          email_addresses: S.optional(S.String),
+          followers: S.optional(S.String),
+          git_ssh_keys: S.optional(S.String),
+          gpg_keys: S.optional(S.String),
+          interaction_limits: S.optional(S.String),
+          profile: S.optional(S.String),
+          starring: S.optional(S.String),
+          enterprise_custom_properties_for_organizations: S.optional(S.String),
         }),
       ).annotate({ identifier: "AppPermissions" });
     case 4:
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          account: S.NullOr(InstallationAccount),
-          repository_selection: InstallationRepositorySelection,
+          account: S.NullOr(S.Unknown),
+          repository_selection: S.String,
           access_tokens_url: S.String,
           repositories_url: S.String,
           html_url: S.String,
@@ -8434,26 +6593,26 @@ function __c19(j: number): any {
           client_id: S.optional(S.String),
           target_id: S.Number,
           target_type: S.String,
-          permissions: AppPermissions,
-          events: InstallationEventsList,
+          permissions: __S(155),
+          events: __S(39),
           created_at: S.String,
           updated_at: S.String,
           single_file_name: S.NullOr(S.String),
           has_multiple_single_files: S.optional(S.Boolean),
-          single_file_paths: S.optional(InstallationSingleFilePathsList),
+          single_file_paths: S.optional(__S(39)),
           app_slug: S.String,
-          suspended_by: S.NullOr(SimpleUser),
+          suspended_by: S.NullOr(__S(28)),
           suspended_at: S.NullOr(S.String),
           contact_email: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Installation" });
     case 5:
-      return S.Array(Installation);
+      return S.Array(__S(156));
     case 6:
       return S.suspend(() =>
         S.Struct({
           total_count: S.Number,
-          installations: ListAppInstallationsResponseInstallationsList,
+          installations: __S(157),
         }),
       ).annotate({
         identifier: "ListAppInstallationsResponse",
@@ -8481,9 +6640,7 @@ function __c20(j: number): any {
       return S.suspend(() =>
         S.Struct({
           total_count: S.optional(S.Number),
-          deployment_records: S.optional(
-            ListArtifactDeploymentRecordsResponseDeploymentRecordsList,
-          ),
+          deployment_records: S.optional(__S(16)),
         }),
       ).annotate({
         identifier: "ListArtifactDeploymentRecordsResponse",
@@ -8520,12 +6677,12 @@ function __c20(j: number): any {
         identifier: "ListArtifactStorageRecordsResponseStorageRecordsItem",
       });
     case 3:
-      return S.Array(ListArtifactStorageRecordsResponseStorageRecordsItem);
+      return S.Array(__S(162));
     case 4:
       return S.suspend(() =>
         S.Struct({
           total_count: S.optional(S.Number),
-          storage_records: S.optional(ListArtifactStorageRecordsResponseStorageRecordsList),
+          storage_records: S.optional(__S(163)),
         }),
       ).annotate({
         identifier: "ListArtifactStorageRecordsResponse",
@@ -8552,15 +6709,13 @@ function __c20(j: number): any {
         identifier: "ListAttestationRepositoriesResponseBodyItem",
       });
     case 7:
-      return S.Array(ListAttestationRepositoriesResponseBodyItem);
+      return S.Array(__S(166));
   }
 }
 function __c21(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListAttestationRepositoriesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(167).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListAttestationRepositoriesResponse",
       });
     case 1:
@@ -8582,10 +6737,8 @@ function __c21(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mediaType: S.optional(S.String),
-          verificationMaterial: S.optional(
-            ListAttestationsResponseAttestationsItemBundleVerificationMaterialMap,
-          ),
-          dsseEnvelope: S.optional(ListAttestationsResponseAttestationsItemBundleDsseEnvelopeMap),
+          verificationMaterial: S.optional(__S(170)),
+          dsseEnvelope: S.optional(__S(127)),
         }),
       ).annotate({
         identifier: "ListAttestationsResponseAttestationsItemBundle",
@@ -8593,7 +6746,7 @@ function __c21(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          bundle: S.optional(S.NullOr(ListAttestationsResponseAttestationsItemBundle)),
+          bundle: S.optional(S.NullOr(__S(171))),
           repository_id: S.optional(S.Number),
           bundle_url: S.optional(S.String),
           initiator: S.optional(S.String),
@@ -8602,11 +6755,11 @@ function __c21(j: number): any {
         identifier: "ListAttestationsResponseAttestationsItem",
       });
     case 5:
-      return S.Array(ListAttestationsResponseAttestationsItem);
+      return S.Array(__S(172));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          attestations: S.optional(ListAttestationsResponseAttestationsList),
+          attestations: S.optional(__S(173)),
         }),
       ).annotate({ identifier: "ListAttestationsResponse" });
     case 7:
@@ -8616,7 +6769,7 @@ function __c21(j: number): any {
           per_page: S.optional(S.Number.pipe(T.Query())),
           before: S.optional(S.String.pipe(T.Query())),
           after: S.optional(S.String.pipe(T.Query())),
-          subject_digests: ListAttestationsBulkRequestSubjectDigestsList,
+          subject_digests: __S(39),
           predicate_type: S.optional(S.String),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/attestations/bulk-list", code: 200 })),
       ).annotate({
@@ -8630,12 +6783,8 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           mediaType: S.optional(S.String),
-          verificationMaterial: S.optional(
-            ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleVerificationMaterialMap,
-          ),
-          dsseEnvelope: S.optional(
-            ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundleDsseEnvelopeMap,
-          ),
+          verificationMaterial: S.optional(__S(170)),
+          dsseEnvelope: S.optional(__S(170)),
         }),
       ).annotate({
         identifier: "ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle",
@@ -8643,7 +6792,7 @@ function __c22(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          bundle: S.optional(ListAttestationsBulkResponseAttestationsSubjectDigestsValueItemBundle),
+          bundle: S.optional(__S(176)),
           repository_id: S.optional(S.Number),
           bundle_url: S.optional(S.String),
         }),
@@ -8651,12 +6800,9 @@ function __c22(j: number): any {
         identifier: "ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem",
       });
     case 2:
-      return S.Array(ListAttestationsBulkResponseAttestationsSubjectDigestsValueItem);
+      return S.Array(__S(177));
     case 3:
-      return S.Record(
-        S.String,
-        /*@__PURE__*/ S.NullOr(ListAttestationsBulkResponseAttestationsSubjectDigestsValueList),
-      );
+      return S.Record(S.String, /*@__PURE__*/ S.NullOr(__S(178)));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -8671,10 +6817,8 @@ function __c22(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          attestations_subject_digests: S.optional(
-            ListAttestationsBulkResponseAttestationsSubjectDigestsMap,
-          ),
-          page_info: S.optional(ListAttestationsBulkResponsePageInfo),
+          attestations_subject_digests: S.optional(__S(179)),
+          page_info: S.optional(__S(180)),
         }),
       ).annotate({
         identifier: "ListAttestationsBulkResponse",
@@ -8688,13 +6832,13 @@ function __c22(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/blocks", code: 200 })),
       ).annotate({ identifier: "ListBlockedUsersRequest" });
     case 7:
-      return S.Array(SimpleUser);
+      return S.Array(__S(28));
   }
 }
 function __c23(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() => ListBlockedUsersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(183).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListBlockedUsersResponse",
       });
     case 1:
@@ -8708,11 +6852,9 @@ function __c23(j: number): any {
         identifier: "ListFailedInvitationsRequest",
       });
     case 2:
-      return S.Array(OrganizationInvitation);
+      return S.Array(__S(29));
     case 3:
-      return S.suspend(() =>
-        ListFailedInvitationsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(186).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListFailedInvitationsResponse",
       });
     case 4:
@@ -8725,9 +6867,7 @@ function __c23(j: number): any {
         identifier: "ListForAuthenticatedUserRequest",
       });
     case 5:
-      return S.suspend(() =>
-        ListForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(152).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListForAuthenticatedUserResponse",
       });
     case 6:
@@ -8785,7 +6925,7 @@ function __c24(j: number): any {
           repositories_url: S.String,
           slug: S.String,
           ldap_dn: S.optional(S.String),
-          type: NullableTeamSimpleType,
+          type: S.String,
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
         }),
@@ -8801,24 +6941,22 @@ function __c24(j: number): any {
           privacy: S.optional(S.String),
           notification_setting: S.optional(S.String),
           permission: S.String,
-          permissions: S.optional(TeamPermissions),
+          permissions: S.optional(__S(192)),
           url: S.String,
           html_url: S.String,
           members_url: S.String,
           repositories_url: S.String,
-          type: TeamType,
-          access_source: S.optional(TeamAccessSource),
+          type: S.String,
+          access_source: S.optional(S.String),
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
-          parent: S.NullOr(NullableTeamSimple),
+          parent: S.NullOr(__S(193)),
         }),
       ).annotate({ identifier: "Team" });
     case 3:
-      return S.Array(Team);
+      return S.Array(__S(194));
     case 4:
-      return S.suspend(() =>
-        ListInvitationTeamsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(195).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListInvitationTeamsResponse",
       });
     case 5:
@@ -8828,9 +6966,9 @@ function __c24(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/issue-fields", code: 200 })),
       ).annotate({ identifier: "ListIssueFieldsRequest" });
     case 6:
-      return S.Array(/*@__PURE__*/ S.NullOr(IssueField));
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(35)));
     case 7:
-      return S.suspend(() => ListIssueFieldsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(198).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIssueFieldsResponse",
       });
   }
@@ -8844,17 +6982,17 @@ function __c25(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/issue-types", code: 200 })),
       ).annotate({ identifier: "ListIssueTypesRequest" });
     case 1:
-      return S.Array(/*@__PURE__*/ S.NullOr(IssueType));
+      return S.Array(/*@__PURE__*/ S.NullOr(__S(37)));
     case 2:
-      return S.suspend(() => ListIssueTypesResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(201).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListIssueTypesResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          filter: S.optional(ListMembersRequestFilter.pipe(T.Query())),
-          role: S.optional(ListMembersRequestRole.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
+          role: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/members", code: 200 })),
@@ -8862,7 +7000,7 @@ function __c25(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(ListMembershipsForAuthenticatedUserRequestState.pipe(T.Query())),
+          state: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/user/memberships/orgs", code: 200 })),
@@ -8870,11 +7008,9 @@ function __c25(j: number): any {
         identifier: "ListMembershipsForAuthenticatedUserRequest",
       });
     case 5:
-      return S.Array(OrgMembership);
+      return S.Array(__S(134));
     case 6:
-      return S.suspend(() =>
-        ListMembershipsForAuthenticatedUserResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(205).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListMembershipsForAuthenticatedUserResponse",
       });
     case 7:
@@ -8888,12 +7024,12 @@ function __c25(j: number): any {
 function __c26(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OrganizationRole);
+      return S.Array(__S(137));
     case 1:
       return S.suspend(() =>
         S.Struct({
           total_count: S.optional(S.Number),
-          roles: S.optional(ListOrgRolesResponseRolesList),
+          roles: S.optional(__S(208)),
         }),
       ).annotate({ identifier: "ListOrgRolesResponse" });
     case 2:
@@ -8914,7 +7050,7 @@ function __c26(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          assignment: S.optional(TeamRoleAssignmentAssignment),
+          assignment: S.optional(S.String),
           id: S.Number,
           node_id: S.String,
           name: S.String,
@@ -8923,21 +7059,21 @@ function __c26(j: number): any {
           privacy: S.optional(S.String),
           notification_setting: S.optional(S.String),
           permission: S.String,
-          permissions: S.optional(TeamPermissions),
+          permissions: S.optional(__S(192)),
           url: S.String,
           html_url: S.String,
           members_url: S.String,
           repositories_url: S.String,
-          parent: S.NullOr(NullableTeamSimple),
-          type: TeamRoleAssignmentType,
+          parent: S.NullOr(__S(193)),
+          type: S.String,
           organization_id: S.optional(S.Number),
           enterprise_id: S.optional(S.Number),
         }),
       ).annotate({ identifier: "TeamRoleAssignment" });
     case 4:
-      return S.Array(TeamRoleAssignment);
+      return S.Array(__S(211));
     case 5:
-      return S.suspend(() => ListOrgRoleTeamsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(212).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrgRoleTeamsResponse",
       });
     case 6:
@@ -8956,7 +7092,7 @@ function __c26(j: number): any {
         ),
       ).annotate({ identifier: "ListOrgRoleUsersRequest" });
     case 7:
-      return S.Array(TeamSimple);
+      return S.Array(__S(193));
   }
 }
 function __c27(j: number): any {
@@ -8964,8 +7100,8 @@ function __c27(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          assignment: S.optional(UserRoleAssignmentAssignment),
-          inherited_from: S.optional(UserRoleAssignmentInheritedFromList),
+          assignment: S.optional(S.String),
+          inherited_from: S.optional(__S(215)),
           name: S.optional(S.NullOr(S.String)),
           email: S.optional(S.NullOr(S.String)),
           login: S.String,
@@ -8991,16 +7127,16 @@ function __c27(j: number): any {
         }),
       ).annotate({ identifier: "UserRoleAssignment" });
     case 1:
-      return S.Array(UserRoleAssignment);
+      return S.Array(__S(216));
     case 2:
-      return S.suspend(() => ListOrgRoleUsersResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(217).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOrgRoleUsersResponse",
       });
     case 3:
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          filter: S.optional(ListOutsideCollaboratorsRequestFilter.pipe(T.Query())),
+          filter: S.optional(S.String.pipe(T.Query())),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/outside_collaborators", code: 200 })),
@@ -9008,9 +7144,7 @@ function __c27(j: number): any {
         identifier: "ListOutsideCollaboratorsRequest",
       });
     case 4:
-      return S.suspend(() =>
-        ListOutsideCollaboratorsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(183).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListOutsideCollaboratorsResponse",
       });
     case 5:
@@ -9031,11 +7165,9 @@ function __c27(j: number): any {
         identifier: "ListPatGrantRepositoriesRequest",
       });
     case 6:
-      return S.Array(MinimalRepository);
+      return S.Array(__S(128));
     case 7:
-      return S.suspend(() =>
-        ListPatGrantRepositoriesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(222).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPatGrantRepositoriesResponse",
       });
   }
@@ -9065,14 +7197,14 @@ function __c28(j: number): any {
           org: S.String.pipe(T.Label()),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(ListPatGrantRequestsRequestSort.pipe(T.Query())),
-          direction: S.optional(ListPatGrantRequestsRequestDirection.pipe(T.Query())),
-          owner: S.optional(ListPatGrantRequestsRequestOwnerList.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          owner: S.optional(__S(39).pipe(T.Query())),
           repository: S.optional(S.String.pipe(T.Query())),
           permission: S.optional(S.String.pipe(T.Query())),
           last_used_before: S.optional(S.String.pipe(T.Query())),
           last_used_after: S.optional(S.String.pipe(T.Query())),
-          token_id: S.optional(ListPatGrantRequestsRequestTokenIdList.pipe(T.Query())),
+          token_id: S.optional(__S(39).pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/orgs/{org}/personal-access-token-requests", code: 200 }),
         ),
@@ -9082,13 +7214,9 @@ function __c28(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          organization: S.optional(
-            OrganizationProgrammaticAccessGrantRequestPermissionsOrganizationMap,
-          ),
-          repository: S.optional(
-            OrganizationProgrammaticAccessGrantRequestPermissionsRepositoryMap,
-          ),
-          other: S.optional(OrganizationProgrammaticAccessGrantRequestPermissionsOtherMap),
+          organization: S.optional(__S(22)),
+          repository: S.optional(__S(22)),
+          other: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "OrganizationProgrammaticAccessGrantRequestPermissions",
@@ -9098,10 +7226,10 @@ function __c28(j: number): any {
         S.Struct({
           id: S.Number,
           reason: S.NullOr(S.String),
-          owner: SimpleUser,
-          repository_selection: OrganizationProgrammaticAccessGrantRequestRepositorySelection,
+          owner: __S(28),
+          repository_selection: S.String,
           repositories_url: S.String,
-          permissions: OrganizationProgrammaticAccessGrantRequestPermissions,
+          permissions: __S(226),
           created_at: S.String,
           token_id: S.Number,
           token_name: S.String,
@@ -9113,11 +7241,9 @@ function __c28(j: number): any {
         identifier: "OrganizationProgrammaticAccessGrantRequest",
       });
     case 4:
-      return S.Array(OrganizationProgrammaticAccessGrantRequest);
+      return S.Array(__S(227));
     case 5:
-      return S.suspend(() =>
-        ListPatGrantRequestsResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(228).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPatGrantRequestsResponse",
       });
     case 6:
@@ -9126,22 +7252,22 @@ function __c28(j: number): any {
           org: S.String.pipe(T.Label()),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
-          sort: S.optional(ListPatGrantsRequestSort.pipe(T.Query())),
-          direction: S.optional(ListPatGrantsRequestDirection.pipe(T.Query())),
-          owner: S.optional(ListPatGrantsRequestOwnerList.pipe(T.Query())),
+          sort: S.optional(S.String.pipe(T.Query())),
+          direction: S.optional(S.String.pipe(T.Query())),
+          owner: S.optional(__S(39).pipe(T.Query())),
           repository: S.optional(S.String.pipe(T.Query())),
           permission: S.optional(S.String.pipe(T.Query())),
           last_used_before: S.optional(S.String.pipe(T.Query())),
           last_used_after: S.optional(S.String.pipe(T.Query())),
-          token_id: S.optional(ListPatGrantsRequestTokenIdList.pipe(T.Query())),
+          token_id: S.optional(__S(39).pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/personal-access-tokens", code: 200 })),
       ).annotate({ identifier: "ListPatGrantsRequest" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          organization: S.optional(OrganizationProgrammaticAccessGrantPermissionsOrganizationMap),
-          repository: S.optional(OrganizationProgrammaticAccessGrantPermissionsRepositoryMap),
-          other: S.optional(OrganizationProgrammaticAccessGrantPermissionsOtherMap),
+          organization: S.optional(__S(12)),
+          repository: S.optional(__S(12)),
+          other: S.optional(__S(12)),
         }),
       ).annotate({
         identifier: "OrganizationProgrammaticAccessGrantPermissions",
@@ -9154,10 +7280,10 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           id: S.Number,
-          owner: SimpleUser,
-          repository_selection: OrganizationProgrammaticAccessGrantRepositorySelection,
+          owner: __S(28),
+          repository_selection: S.String,
           repositories_url: S.String,
-          permissions: OrganizationProgrammaticAccessGrantPermissions,
+          permissions: __S(231),
           access_granted_at: S.String,
           token_id: S.Number,
           token_name: S.String,
@@ -9169,9 +7295,9 @@ function __c29(j: number): any {
         identifier: "OrganizationProgrammaticAccessGrant",
       });
     case 1:
-      return S.Array(OrganizationProgrammaticAccessGrant);
+      return S.Array(__S(232));
     case 2:
-      return S.suspend(() => ListPatGrantsResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(233).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListPatGrantsResponse",
       });
     case 3:
@@ -9180,10 +7306,8 @@ function __c29(j: number): any {
           org: S.String.pipe(T.Label()),
           per_page: S.optional(S.Number.pipe(T.Query())),
           page: S.optional(S.Number.pipe(T.Query())),
-          role: S.optional(ListPendingInvitationsRequestRole.pipe(T.Query())),
-          invitation_source: S.optional(
-            ListPendingInvitationsRequestInvitationSource.pipe(T.Query()),
-          ),
+          role: S.optional(S.String.pipe(T.Query())),
+          invitation_source: S.optional(S.String.pipe(T.Query())),
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/invitations", code: 200 })),
       ).annotate({
         identifier: "ListPendingInvitationsRequest",
@@ -9203,7 +7327,7 @@ function __c29(j: number): any {
           hook_id: S.Number.pipe(T.Label()),
           per_page: S.optional(S.Number.pipe(T.Query())),
           cursor: S.optional(S.String.pipe(T.Query())),
-          status: S.optional(ListWebhookDeliveriesRequestStatus.pipe(T.Query())),
+          status: S.optional(S.String.pipe(T.Query())),
         }).pipe(
           T.Http({ method: "GET", uri: "/orgs/{org}/hooks/{hook_id}/deliveries", code: 200 }),
         ),
@@ -9228,15 +7352,13 @@ function __c29(j: number): any {
         }),
       ).annotate({ identifier: "HookDeliveryItem" });
     case 7:
-      return S.Array(HookDeliveryItem);
+      return S.Array(__S(238));
   }
 }
 function __c30(j: number): any {
   switch (j) {
     case 0:
-      return S.suspend(() =>
-        ListWebhookDeliveriesResponseBodyList.pipe(T.RawResponseRoot()),
-      ).annotate({
+      return S.suspend(() => __S(239).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListWebhookDeliveriesResponse",
       });
     case 1:
@@ -9248,9 +7370,9 @@ function __c30(j: number): any {
         }).pipe(T.Http({ method: "GET", uri: "/orgs/{org}/hooks", code: 200 })),
       ).annotate({ identifier: "ListWebhooksRequest" });
     case 2:
-      return S.Array(OrgHook);
+      return S.Array(__S(42));
     case 3:
-      return S.suspend(() => ListWebhooksResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(242).pipe(T.RawResponseRoot())).annotate({
         identifier: "ListWebhooksResponse",
       });
     case 4:
@@ -9331,7 +7453,7 @@ function __c31(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           pat_request_id: S.Number.pipe(T.Label()),
-          action: ReviewPatGrantRequestRequestAction,
+          action: S.String,
           reason: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({
@@ -9411,19 +7533,17 @@ function __c32(j: number): any {
           name: S.String,
           digest: S.String,
           version: S.optional(S.String),
-          status: S.optional(SetClusterDeploymentRecordsRequestDeploymentsItemStatus),
+          status: S.optional(S.String),
           deployment_name: S.String,
           github_repository: S.optional(S.String),
-          tags: S.optional(SetClusterDeploymentRecordsRequestDeploymentsItemTagsMap),
-          runtime_risks: S.optional(
-            SetClusterDeploymentRecordsRequestDeploymentsItemRuntimeRisksList,
-          ),
+          tags: S.optional(__S(12)),
+          runtime_risks: S.optional(__S(23)),
         }),
       ).annotate({
         identifier: "SetClusterDeploymentRecordsRequestDeploymentsItem",
       });
     case 1:
-      return S.Array(SetClusterDeploymentRecordsRequestDeploymentsItem);
+      return S.Array(__S(256));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -9431,7 +7551,7 @@ function __c32(j: number): any {
           cluster: S.String.pipe(T.Label()),
           logical_environment: S.String,
           physical_environment: S.optional(S.String),
-          deployments: SetClusterDeploymentRecordsRequestDeploymentsList,
+          deployments: __S(257),
           partial_success: S.optional(S.Boolean),
           return_records: S.optional(S.Boolean),
         }).pipe(
@@ -9448,10 +7568,8 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          enforced_repositories: SetImmutableReleasesSettingsRequestEnforcedRepositories,
-          selected_repository_ids: S.optional(
-            SetImmutableReleasesSettingsRequestSelectedRepositoryIdsList,
-          ),
+          enforced_repositories: S.String,
+          selected_repository_ids: S.optional(__S(4)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/orgs/{org}/settings/immutable-releases", code: 200 }),
         ),
@@ -9464,8 +7582,7 @@ function __c32(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          selected_repository_ids:
-            SetImmutableReleasesSettingsRepositoriesRequestSelectedRepositoryIdsList,
+          selected_repository_ids: __S(260),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -9481,7 +7598,7 @@ function __c32(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           username: S.String.pipe(T.Label()),
-          role: S.optional(SetMembershipForUserRequestRole),
+          role: S.optional(S.String),
         }).pipe(T.Http({ method: "PUT", uri: "/orgs/{org}/memberships/{username}", code: 200 })),
       ).annotate({
         identifier: "SetMembershipForUserRequest",
@@ -9519,14 +7636,12 @@ function __c33(j: number): any {
           description: S.optional(S.String),
           has_organization_projects: S.optional(S.Boolean),
           has_repository_projects: S.optional(S.Boolean),
-          default_repository_permission: S.optional(UpdateRequestDefaultRepositoryPermission),
+          default_repository_permission: S.optional(S.String),
           members_can_create_repositories: S.optional(S.Boolean),
           members_can_create_internal_repositories: S.optional(S.Boolean),
           members_can_create_private_repositories: S.optional(S.Boolean),
           members_can_create_public_repositories: S.optional(S.Boolean),
-          members_allowed_repository_creation_type: S.optional(
-            UpdateRequestMembersAllowedRepositoryCreationType,
-          ),
+          members_allowed_repository_creation_type: S.optional(S.String),
           members_can_create_pages: S.optional(S.Boolean),
           members_can_create_public_pages: S.optional(S.Boolean),
           members_can_create_private_pages: S.optional(S.Boolean),
@@ -9550,14 +7665,14 @@ function __c33(j: number): any {
           id: S.optional(S.Number),
           name: S.String,
           description: S.optional(S.NullOr(S.String)),
-          color: UpdateIssueFieldRequestOptionsItemColor,
+          color: S.String,
           priority: S.Number,
         }),
       ).annotate({
         identifier: "UpdateIssueFieldRequestOptionsItem",
       });
     case 3:
-      return S.Array(UpdateIssueFieldRequestOptionsItem);
+      return S.Array(__S(266));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -9565,8 +7680,8 @@ function __c33(j: number): any {
           issue_field_id: S.Number.pipe(T.Label()),
           name: S.optional(S.String),
           description: S.optional(S.NullOr(S.String)),
-          visibility: S.optional(UpdateIssueFieldRequestVisibility),
-          options: S.optional(UpdateIssueFieldRequestOptionsList),
+          visibility: S.optional(S.String),
+          options: S.optional(__S(267)),
         }).pipe(
           T.Http({ method: "PATCH", uri: "/orgs/{org}/issue-fields/{issue_field_id}", code: 200 }),
         ),
@@ -9579,7 +7694,7 @@ function __c33(j: number): any {
           name: S.String,
           is_enabled: S.Boolean,
           description: S.optional(S.NullOr(S.String)),
-          color: S.optional(S.NullOr(UpdateIssueTypeRequestColor)),
+          color: S.optional(S.NullOr(S.String)),
         }).pipe(
           T.Http({ method: "PUT", uri: "/orgs/{org}/issue-types/{issue_type_id}", code: 200 }),
         ),
@@ -9588,7 +7703,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          state: UpdateMembershipForAuthenticatedUserRequestState,
+          state: S.String,
         }).pipe(T.Http({ method: "PATCH", uri: "/user/memberships/orgs/{org}", code: 200 })),
       ).annotate({
         identifier: "UpdateMembershipForAuthenticatedUserRequest",
@@ -9598,7 +7713,7 @@ function __c33(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           pat_id: S.Number.pipe(T.Label()),
-          action: UpdatePatAccessRequestAction,
+          action: S.String,
         }).pipe(
           T.Http({ method: "POST", uri: "/orgs/{org}/personal-access-tokens/{pat_id}", code: 200 }),
         ),
@@ -9611,8 +7726,8 @@ function __c34(j: number): any {
       return S.suspend(() =>
         S.Struct({
           org: S.String.pipe(T.Label()),
-          action: UpdatePatAccessesRequestAction,
-          pat_ids: UpdatePatAccessesRequestPatIdsList,
+          action: S.String,
+          pat_ids: __S(4),
         }).pipe(T.Http({ method: "POST", uri: "/orgs/{org}/personal-access-tokens", code: 200 })),
       ).annotate({ identifier: "UpdatePatAccessesRequest" });
     case 1:
@@ -9621,7 +7736,7 @@ function __c34(j: number): any {
           url: S.String,
           content_type: S.optional(S.String),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          insecure_ssl: S.optional(WebhookConfigInsecureSsl),
+          insecure_ssl: S.optional(S.Unknown),
         }),
       ).annotate({
         identifier: "UpdateWebhookRequestConfig",
@@ -9631,8 +7746,8 @@ function __c34(j: number): any {
         S.Struct({
           org: S.String.pipe(T.Label()),
           hook_id: S.Number.pipe(T.Label()),
-          config: S.optional(UpdateWebhookRequestConfig),
-          events: S.optional(UpdateWebhookRequestEventsList),
+          config: S.optional(__S(273)),
+          events: S.optional(__S(39)),
           active: S.optional(S.Boolean),
           name: S.optional(S.String),
         }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}/hooks/{hook_id}", code: 200 })),
@@ -9645,10 +7760,89 @@ function __c34(j: number): any {
           url: S.optional(S.String),
           content_type: S.optional(S.String),
           secret: S.optional(S.String.pipe(T.SensitiveValue({}))),
-          insecure_ssl: S.optional(WebhookConfigInsecureSsl),
+          insecure_ssl: S.optional(S.Unknown),
         }).pipe(T.Http({ method: "PATCH", uri: "/orgs/{org}/hooks/{hook_id}/config", code: 200 })),
       ).annotate({
         identifier: "UpdateWebhookConfigForOrgRequest",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
   }
 }

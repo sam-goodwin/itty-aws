@@ -7,6 +7,8 @@ import { paginatePageNumber } from "../pagination.ts";
 import { HetznerProtocol, type HetznerOpError, type HetznerOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { HetznerOpError, HetznerOpContext };
 
@@ -14,11 +16,6 @@ export interface GetLoadBalancerTypeRequest {
   /** ID of the Load Balancer Type. */
   id: number;
 }
-const GetLoadBalancerTypeRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<GetLoadBalancerTypeRequest>;
-
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export interface GetLoadBalancerTypeResponseLoadBalancerTypeDeprecation {
   /** Date of the deprecated resource removal. Once this date is reached, the resource will not be returned by resource type "list" endpoint, and the resource can not be used to create new resources. For example, if this is an image, you can not create new servers with this image after the mentioned date. */
@@ -26,11 +23,6 @@ export interface GetLoadBalancerTypeResponseLoadBalancerTypeDeprecation {
   /** Date of the deprecation announcement. */
   announced: string;
 }
-const GetLoadBalancerTypeResponseLoadBalancerTypeDeprecation = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<GetLoadBalancerTypeResponseLoadBalancerTypeDeprecation>;
-
 /** Hourly price in this [Location](#tag/locations). */
 export interface GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly {
   /** Price without VAT. */
@@ -38,11 +30,6 @@ export interface GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourl
   /** Price with VAT added. */
   gross: string;
 }
-const GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly>;
-
 /** Monthly price in this [Location](#tag/locations). */
 export type GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceMonthly =
   GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly;
@@ -61,19 +48,9 @@ export interface GetLoadBalancerTypeResponseLoadBalancerTypePricesItem {
   /** Additional traffic price per TB in this [Location](#tag/locations). */
   price_per_tb_traffic: GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly;
 }
-const GetLoadBalancerTypeResponseLoadBalancerTypePricesItem = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<GetLoadBalancerTypeResponseLoadBalancerTypePricesItem>;
-
 /** Price per [Location](#tag/locations). */
 export type GetLoadBalancerTypeResponseLoadBalancerTypePricesList =
   Array<GetLoadBalancerTypeResponseLoadBalancerTypePricesItem>;
-const GetLoadBalancerTypeResponseLoadBalancerTypePricesList = /*@__PURE__*/ __L.at(
-  __c0,
-  4,
-) as any as S.Schema<GetLoadBalancerTypeResponseLoadBalancerTypePricesList>;
-
 export interface GetLoadBalancerTypeResponseLoadBalancerType {
   /** ID of the Load Balancer type. */
   id: number;
@@ -96,19 +73,9 @@ export interface GetLoadBalancerTypeResponseLoadBalancerType {
   /** Price per [Location](#tag/locations). */
   prices: GetLoadBalancerTypeResponseLoadBalancerTypePricesList;
 }
-const GetLoadBalancerTypeResponseLoadBalancerType = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<GetLoadBalancerTypeResponseLoadBalancerType>;
-
 export interface GetLoadBalancerTypeResponse {
   load_balancer_type: GetLoadBalancerTypeResponseLoadBalancerType;
 }
-const GetLoadBalancerTypeResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<GetLoadBalancerTypeResponse>;
-
 export interface ListLoadBalancerTypesRequest {
   /** Filter resources by their name. The response will only contain the resources matching exactly the specified name. */
   name?: string;
@@ -117,11 +84,6 @@ export interface ListLoadBalancerTypesRequest {
   /** Maximum number of entries returned per page. For more information, see "[Pagination](#description/pagination)". */
   per_page?: number;
 }
-const ListLoadBalancerTypesRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<ListLoadBalancerTypesRequest>;
-
 /** Describes if, when and how the resource is deprecated. If this field is set to `null` the resource is not deprecated. If a value is set, it is considered deprecated. */
 export type ListLoadBalancerTypesResponseLoadBalancerTypesItemDeprecation =
   GetLoadBalancerTypeResponseLoadBalancerTypeDeprecation;
@@ -161,16 +123,8 @@ export interface ListLoadBalancerTypesResponseLoadBalancerTypesItem {
   /** Price per [Location](#tag/locations). */
   prices: ListLoadBalancerTypesResponseLoadBalancerTypesItemPricesList;
 }
-const ListLoadBalancerTypesResponseLoadBalancerTypesItem =
-  GetLoadBalancerTypeResponseLoadBalancerType as any as S.Schema<ListLoadBalancerTypesResponseLoadBalancerTypesItem>;
-
 export type ListLoadBalancerTypesResponseLoadBalancerTypesList =
   Array<ListLoadBalancerTypesResponseLoadBalancerTypesItem>;
-const ListLoadBalancerTypesResponseLoadBalancerTypesList = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<ListLoadBalancerTypesResponseLoadBalancerTypesList>;
-
 /** See "[Pagination](#description/pagination)" for more information. */
 export interface ListLoadBalancerTypesResponseMetaPagination {
   /** Current page number. */
@@ -186,29 +140,14 @@ export interface ListLoadBalancerTypesResponseMetaPagination {
   /** Total number of entries that exist for this query. Can be null if unknown. */
   total_entries: number | null;
 }
-const ListLoadBalancerTypesResponseMetaPagination = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<ListLoadBalancerTypesResponseMetaPagination>;
-
 export interface ListLoadBalancerTypesResponseMeta {
   /** See "[Pagination](#description/pagination)" for more information. */
   pagination: ListLoadBalancerTypesResponseMetaPagination;
 }
-const ListLoadBalancerTypesResponseMeta = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<ListLoadBalancerTypesResponseMeta>;
-
 export interface ListLoadBalancerTypesResponse {
   load_balancer_types: ListLoadBalancerTypesResponseLoadBalancerTypesList;
   meta: ListLoadBalancerTypesResponseMeta;
 }
-const ListLoadBalancerTypesResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<ListLoadBalancerTypesResponse>;
-
 export type GetLoadBalancerTypeError = HetznerOpError;
 /** Get a Load Balancer Type Gets a specific Load Balancer type object. */
 export const getLoadBalancerType: API.OperationMethod<
@@ -217,8 +156,8 @@ export const getLoadBalancerType: API.OperationMethod<
   GetLoadBalancerTypeError,
   HetznerOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetLoadBalancerTypeRequest,
-  output: GetLoadBalancerTypeResponse,
+  input: __S(0) as any as S.Schema<GetLoadBalancerTypeRequest>,
+  output: __S(6) as any as S.Schema<GetLoadBalancerTypeResponse>,
   errors: [UnknownHetznerError],
   protocol: HetznerProtocol,
   retry: Retry.Retry,
@@ -234,8 +173,8 @@ export const listLoadBalancerTypes: API.PaginatedOperationMethod<
   ListLoadBalancerTypesResponseLoadBalancerTypesItem
 > = /*@__PURE__*/ API.makePaginated(
   () => ({
-    input: ListLoadBalancerTypesRequest,
-    output: ListLoadBalancerTypesResponse,
+    input: __S(7) as any as S.Schema<ListLoadBalancerTypesRequest>,
+    output: __S(11) as any as S.Schema<ListLoadBalancerTypesResponse>,
     errors: [UnknownHetznerError],
     protocol: HetznerProtocol,
     retry: Retry.Retry,
@@ -283,16 +222,16 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           location: S.String,
-          price_hourly: GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly,
-          price_monthly: GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly,
+          price_hourly: __S(2),
+          price_monthly: __S(2),
           included_traffic: S.Number,
-          price_per_tb_traffic: GetLoadBalancerTypeResponseLoadBalancerTypePricesItemPriceHourly,
+          price_per_tb_traffic: __S(2),
         }),
       ).annotate({
         identifier: "GetLoadBalancerTypeResponseLoadBalancerTypePricesItem",
       });
     case 4:
-      return S.Array(GetLoadBalancerTypeResponseLoadBalancerTypePricesItem);
+      return S.Array(__S(3));
     case 5:
       return S.suspend(() =>
         S.Struct({
@@ -304,8 +243,8 @@ function __c0(j: number): any {
           max_targets: S.Number,
           max_assigned_certificates: S.Number,
           deprecated: S.NullOr(S.String),
-          deprecation: S.NullOr(GetLoadBalancerTypeResponseLoadBalancerTypeDeprecation),
-          prices: GetLoadBalancerTypeResponseLoadBalancerTypePricesList,
+          deprecation: S.NullOr(__S(1)),
+          prices: __S(4),
         }),
       ).annotate({
         identifier: "GetLoadBalancerTypeResponseLoadBalancerType",
@@ -313,7 +252,7 @@ function __c0(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          load_balancer_type: GetLoadBalancerTypeResponseLoadBalancerType,
+          load_balancer_type: __S(5),
         }),
       ).annotate({
         identifier: "GetLoadBalancerTypeResponse",
@@ -333,7 +272,7 @@ function __c0(j: number): any {
 function __c1(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ListLoadBalancerTypesResponseLoadBalancerTypesItem);
+      return S.Array(__S(5));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -350,7 +289,7 @@ function __c1(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          pagination: ListLoadBalancerTypesResponseMetaPagination,
+          pagination: __S(9),
         }),
       ).annotate({
         identifier: "ListLoadBalancerTypesResponseMeta",
@@ -358,11 +297,24 @@ function __c1(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          load_balancer_types: ListLoadBalancerTypesResponseLoadBalancerTypesList,
-          meta: ListLoadBalancerTypesResponseMeta,
+          load_balancer_types: __S(8),
+          meta: __S(10),
         }),
       ).annotate({
         identifier: "ListLoadBalancerTypesResponse",
       });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
   }
 }

@@ -6,6 +6,8 @@ import { UnknownSurrealdbError } from "../errors.ts";
 import { SurrealdbProtocol, type SurrealdbOpError, type SurrealdbOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { SurrealdbOpError, SurrealdbOpContext };
 
@@ -16,11 +18,7 @@ export interface CreateSqlRequest {
   dB?: string;
   body: string;
 }
-const CreateSqlRequest = /*@__PURE__*/ __L.at(__c0, 0) as any as S.Schema<CreateSqlRequest>;
-
 export interface CreateSqlResponse {}
-const CreateSqlResponse = /*@__PURE__*/ __L.at(__c0, 1) as any as S.Schema<CreateSqlResponse>;
-
 export interface DeleteKeyRequest {
   /** The table of the records to delete */
   table: string;
@@ -29,11 +27,7 @@ export interface DeleteKeyRequest {
   /** Sets the selected Database for queries */
   dB?: string;
 }
-const DeleteKeyRequest = /*@__PURE__*/ __L.at(__c0, 2) as any as S.Schema<DeleteKeyRequest>;
-
 export interface DeleteKeyResponse {}
-const DeleteKeyResponse = CreateSqlResponse as any as S.Schema<DeleteKeyResponse>;
-
 export interface DeleteKeyByIdRequest {
   /** The table of the record to delete */
   table: string;
@@ -44,28 +38,16 @@ export interface DeleteKeyByIdRequest {
   /** Sets the selected Database for queries */
   dB?: string;
 }
-const DeleteKeyByIdRequest = /*@__PURE__*/ __L.at(__c0, 3) as any as S.Schema<DeleteKeyByIdRequest>;
-
 export interface DeleteKeyByIdResponse {}
-const DeleteKeyByIdResponse = CreateSqlResponse as any as S.Schema<DeleteKeyByIdResponse>;
-
 export interface GetExportRequest {
   /** Sets the selected Namespace for queries */
   nS?: string;
   /** Sets the selected Database for queries */
   dB?: string;
 }
-const GetExportRequest = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<GetExportRequest>;
-
 export interface GetExportResponse {}
-const GetExportResponse = CreateSqlResponse as any as S.Schema<GetExportResponse>;
-
 export interface GetHealthRequest {}
-const GetHealthRequest = /*@__PURE__*/ __L.at(__c0, 5) as any as S.Schema<GetHealthRequest>;
-
 export interface GetHealthResponse {}
-const GetHealthResponse = CreateSqlResponse as any as S.Schema<GetHealthResponse>;
-
 export interface GetKeyRequest {
   /** The table of the records to select */
   table: string;
@@ -80,11 +62,7 @@ export interface GetKeyRequest {
   /** Sets the selected Database for queries */
   dB?: string;
 }
-const GetKeyRequest = /*@__PURE__*/ __L.at(__c0, 6) as any as S.Schema<GetKeyRequest>;
-
 export interface GetKeyResponse {}
-const GetKeyResponse = CreateSqlResponse as any as S.Schema<GetKeyResponse>;
-
 export interface GetKeyByIdRequest {
   /** The table of the record to select */
   table: string;
@@ -95,54 +73,22 @@ export interface GetKeyByIdRequest {
   /** Sets the selected Database for queries */
   dB?: string;
 }
-const GetKeyByIdRequest = /*@__PURE__*/ __L.at(__c0, 7) as any as S.Schema<GetKeyByIdRequest>;
-
 export interface GetKeyByIdResponseBodyItemResultItem {
   id?: string;
   some?: boolean;
 }
-const GetKeyByIdResponseBodyItemResultItem = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<GetKeyByIdResponseBodyItemResultItem>;
-
 export type GetKeyByIdResponseBodyItemResultList = Array<GetKeyByIdResponseBodyItemResultItem>;
-const GetKeyByIdResponseBodyItemResultList = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<GetKeyByIdResponseBodyItemResultList>;
-
 export interface GetKeyByIdResponseBodyItem {
   result?: GetKeyByIdResponseBodyItemResultList;
   status?: string;
   time?: string;
 }
-const GetKeyByIdResponseBodyItem = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<GetKeyByIdResponseBodyItem>;
-
 export type GetKeyByIdResponseBodyList = Array<GetKeyByIdResponseBodyItem>;
-const GetKeyByIdResponseBodyList = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<GetKeyByIdResponseBodyList>;
-
 export type GetKeyByIdResponse = GetKeyByIdResponseBodyList;
-const GetKeyByIdResponse = /*@__PURE__*/ __L.at(__c1, 4) as any as S.Schema<GetKeyByIdResponse>;
-
 export interface GetStatusRequest {}
-const GetStatusRequest = /*@__PURE__*/ __L.at(__c1, 5) as any as S.Schema<GetStatusRequest>;
-
 export interface GetStatusResponse {}
-const GetStatusResponse = CreateSqlResponse as any as S.Schema<GetStatusResponse>;
-
 export interface GetVersionRequest {}
-const GetVersionRequest = /*@__PURE__*/ __L.at(__c1, 6) as any as S.Schema<GetVersionRequest>;
-
 export interface GetVersionResponse {}
-const GetVersionResponse = CreateSqlResponse as any as S.Schema<GetVersionResponse>;
-
 export interface ImportRequest {
   /** Sets the selected Namespace for queries */
   nS?: string;
@@ -150,15 +96,9 @@ export interface ImportRequest {
   dB?: string;
   body: string;
 }
-const ImportRequest = /*@__PURE__*/ __L.at(__c1, 7) as any as S.Schema<ImportRequest>;
-
 export interface ImportResponse {}
-const ImportResponse = CreateSqlResponse as any as S.Schema<ImportResponse>;
-
 /** Record content */
 export type PutKeyRequestBodyMap = { [key: string]: unknown | undefined };
-const PutKeyRequestBodyMap = /*@__PURE__*/ __L.at(__c2, 0) as any as S.Schema<PutKeyRequestBodyMap>;
-
 export interface PutKeyRequest {
   /** The table of the records to update */
   table: string;
@@ -168,15 +108,9 @@ export interface PutKeyRequest {
   dB?: string;
   body: PutKeyRequestBodyMap;
 }
-const PutKeyRequest = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<PutKeyRequest>;
-
 export interface PutKeyResponse {}
-const PutKeyResponse = CreateSqlResponse as any as S.Schema<PutKeyResponse>;
-
 /** Record content */
 export type PutKeyByIdRequestBodyMap = { [key: string]: unknown | undefined };
-const PutKeyByIdRequestBodyMap = PutKeyRequestBodyMap as any as S.Schema<PutKeyByIdRequestBodyMap>;
-
 export interface PutKeyByIdRequest {
   /** The table of the record to update */
   table: string;
@@ -189,15 +123,9 @@ export interface PutKeyByIdRequest {
   dB?: string;
   body: PutKeyByIdRequestBodyMap;
 }
-const PutKeyByIdRequest = /*@__PURE__*/ __L.at(__c2, 2) as any as S.Schema<PutKeyByIdRequest>;
-
 export interface PutKeyByIdResponse {}
-const PutKeyByIdResponse = CreateSqlResponse as any as S.Schema<PutKeyByIdResponse>;
-
 /** Record content */
 export type UpdateKeyRequestBodyMap = { [key: string]: unknown | undefined };
-const UpdateKeyRequestBodyMap = PutKeyRequestBodyMap as any as S.Schema<UpdateKeyRequestBodyMap>;
-
 export interface UpdateKeyRequest {
   /** The table of the record to create */
   table: string;
@@ -207,16 +135,9 @@ export interface UpdateKeyRequest {
   dB?: string;
   body: UpdateKeyRequestBodyMap;
 }
-const UpdateKeyRequest = /*@__PURE__*/ __L.at(__c2, 3) as any as S.Schema<UpdateKeyRequest>;
-
 export interface UpdateKeyResponse {}
-const UpdateKeyResponse = CreateSqlResponse as any as S.Schema<UpdateKeyResponse>;
-
 /** Record content */
 export type UpdateKeyByIdRequestBodyMap = { [key: string]: unknown | undefined };
-const UpdateKeyByIdRequestBodyMap =
-  PutKeyRequestBodyMap as any as S.Schema<UpdateKeyByIdRequestBodyMap>;
-
 export interface UpdateKeyByIdRequest {
   /** The table of the record to create */
   table: string;
@@ -228,16 +149,9 @@ export interface UpdateKeyByIdRequest {
   dB?: string;
   body: UpdateKeyByIdRequestBodyMap;
 }
-const UpdateKeyByIdRequest = /*@__PURE__*/ __L.at(__c2, 4) as any as S.Schema<UpdateKeyByIdRequest>;
-
 export interface UpdateKeyByIdResponse {}
-const UpdateKeyByIdResponse = CreateSqlResponse as any as S.Schema<UpdateKeyByIdResponse>;
-
 /** Fields to merge into the record */
 export type UpdateKeyByIdRequestBodyMap2 = { [key: string]: unknown | undefined };
-const UpdateKeyByIdRequestBodyMap2 =
-  PutKeyRequestBodyMap as any as S.Schema<UpdateKeyByIdRequestBodyMap2>;
-
 export interface UpdateKeyByIdRequest2 {
   /** The table of the record to update */
   table: string;
@@ -249,19 +163,9 @@ export interface UpdateKeyByIdRequest2 {
   dB?: string;
   body: UpdateKeyByIdRequestBodyMap2;
 }
-const UpdateKeyByIdRequest2 = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<UpdateKeyByIdRequest2>;
-
 export interface UpdateKeyById2Response {}
-const UpdateKeyById2Response = CreateSqlResponse as any as S.Schema<UpdateKeyById2Response>;
-
 /** Fields to merge into each record */
 export type UpdateKeyByTableRequestBodyMap = { [key: string]: unknown | undefined };
-const UpdateKeyByTableRequestBodyMap =
-  PutKeyRequestBodyMap as any as S.Schema<UpdateKeyByTableRequestBodyMap>;
-
 export interface UpdateKeyByTableRequest {
   /** The table of the records to update */
   table: string;
@@ -271,14 +175,7 @@ export interface UpdateKeyByTableRequest {
   dB?: string;
   body: UpdateKeyByTableRequestBodyMap;
 }
-const UpdateKeyByTableRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  6,
-) as any as S.Schema<UpdateKeyByTableRequest>;
-
 export interface UpdateKeyByTableResponse {}
-const UpdateKeyByTableResponse = CreateSqlResponse as any as S.Schema<UpdateKeyByTableResponse>;
-
 export type CreateSqlError = SurrealdbOpError;
 /** Run SurrealQL queries against SurrealDB The SQL endpoint enables running advanced SurrealQL queries. This HTTP endpoint expects the HTTP body to be one or more SurrealQL statements, separated by a semicolon. */
 export const createSql: API.OperationMethod<
@@ -287,8 +184,8 @@ export const createSql: API.OperationMethod<
   CreateSqlError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateSqlRequest,
-  output: CreateSqlResponse,
+  input: __S(0) as any as S.Schema<CreateSqlRequest>,
+  output: __S(1) as any as S.Schema<CreateSqlResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -302,8 +199,8 @@ export const deleteKey: API.OperationMethod<
   DeleteKeyError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteKeyRequest,
-  output: DeleteKeyResponse,
+  input: __S(2) as any as S.Schema<DeleteKeyRequest>,
+  output: __S(1) as any as S.Schema<DeleteKeyResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -317,8 +214,8 @@ export const deleteKeyById: API.OperationMethod<
   DeleteKeyByIdError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteKeyByIdRequest,
-  output: DeleteKeyByIdResponse,
+  input: __S(3) as any as S.Schema<DeleteKeyByIdRequest>,
+  output: __S(1) as any as S.Schema<DeleteKeyByIdResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -332,8 +229,8 @@ export const getExport: API.OperationMethod<
   GetExportError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetExportRequest,
-  output: GetExportResponse,
+  input: __S(4) as any as S.Schema<GetExportRequest>,
+  output: __S(1) as any as S.Schema<GetExportResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -347,8 +244,8 @@ export const getHealth: API.OperationMethod<
   GetHealthError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetHealthRequest,
-  output: GetHealthResponse,
+  input: __S(5) as any as S.Schema<GetHealthRequest>,
+  output: __S(1) as any as S.Schema<GetHealthResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -362,8 +259,8 @@ export const getKey: API.OperationMethod<
   GetKeyError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetKeyRequest,
-  output: GetKeyResponse,
+  input: __S(6) as any as S.Schema<GetKeyRequest>,
+  output: __S(1) as any as S.Schema<GetKeyResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -377,8 +274,8 @@ export const getKeyById: API.OperationMethod<
   GetKeyByIdError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetKeyByIdRequest,
-  output: GetKeyByIdResponse,
+  input: __S(7) as any as S.Schema<GetKeyByIdRequest>,
+  output: __S(12) as any as S.Schema<GetKeyByIdResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -392,8 +289,8 @@ export const getStatus: API.OperationMethod<
   GetStatusError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetStatusRequest,
-  output: GetStatusResponse,
+  input: __S(13) as any as S.Schema<GetStatusRequest>,
+  output: __S(1) as any as S.Schema<GetStatusResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -407,8 +304,8 @@ export const getVersion: API.OperationMethod<
   GetVersionError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetVersionRequest,
-  output: GetVersionResponse,
+  input: __S(14) as any as S.Schema<GetVersionRequest>,
+  output: __S(1) as any as S.Schema<GetVersionResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -422,8 +319,8 @@ export const Import: API.OperationMethod<
   ImportError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ImportRequest,
-  output: ImportResponse,
+  input: __S(15) as any as S.Schema<ImportRequest>,
+  output: __S(1) as any as S.Schema<ImportResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -437,8 +334,8 @@ export const putKey: API.OperationMethod<
   PutKeyError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutKeyRequest,
-  output: PutKeyResponse,
+  input: __S(17) as any as S.Schema<PutKeyRequest>,
+  output: __S(1) as any as S.Schema<PutKeyResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -452,8 +349,8 @@ export const putKeyById: API.OperationMethod<
   PutKeyByIdError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutKeyByIdRequest,
-  output: PutKeyByIdResponse,
+  input: __S(18) as any as S.Schema<PutKeyByIdRequest>,
+  output: __S(1) as any as S.Schema<PutKeyByIdResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -467,8 +364,8 @@ export const updateKey: API.OperationMethod<
   UpdateKeyError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateKeyRequest,
-  output: UpdateKeyResponse,
+  input: __S(19) as any as S.Schema<UpdateKeyRequest>,
+  output: __S(1) as any as S.Schema<UpdateKeyResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -482,8 +379,8 @@ export const updateKeyById: API.OperationMethod<
   UpdateKeyByIdError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateKeyByIdRequest,
-  output: UpdateKeyByIdResponse,
+  input: __S(20) as any as S.Schema<UpdateKeyByIdRequest>,
+  output: __S(1) as any as S.Schema<UpdateKeyByIdResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -497,8 +394,8 @@ export const updateKeyById2: API.OperationMethod<
   UpdateKeyById2Error,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateKeyByIdRequest2,
-  output: UpdateKeyById2Response,
+  input: __S(21) as any as S.Schema<UpdateKeyByIdRequest2>,
+  output: __S(1) as any as S.Schema<UpdateKeyById2Response>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -512,8 +409,8 @@ export const updateKeyByTable: API.OperationMethod<
   UpdateKeyByTableError,
   SurrealdbOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateKeyByTableRequest,
-  output: UpdateKeyByTableResponse,
+  input: __S(22) as any as S.Schema<UpdateKeyByTableRequest>,
+  output: __S(1) as any as S.Schema<UpdateKeyByTableResponse>,
   errors: [UnknownSurrealdbError],
   protocol: SurrealdbProtocol,
   retry: Retry.Retry,
@@ -596,11 +493,11 @@ function __c1(j: number): any {
         identifier: "GetKeyByIdResponseBodyItemResultItem",
       });
     case 1:
-      return S.Array(GetKeyByIdResponseBodyItemResultItem);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          result: S.optional(GetKeyByIdResponseBodyItemResultList),
+          result: S.optional(__S(9)),
           status: S.optional(S.String),
           time: S.optional(S.String),
         }),
@@ -608,9 +505,9 @@ function __c1(j: number): any {
         identifier: "GetKeyByIdResponseBodyItem",
       });
     case 3:
-      return S.Array(GetKeyByIdResponseBodyItem);
+      return S.Array(__S(10));
     case 4:
-      return S.suspend(() => GetKeyByIdResponseBodyList.pipe(T.RawResponseRoot())).annotate({
+      return S.suspend(() => __S(11).pipe(T.RawResponseRoot())).annotate({
         identifier: "GetKeyByIdResponse",
       });
     case 5:
@@ -641,7 +538,7 @@ function __c2(j: number): any {
           table: S.String.pipe(T.Label()),
           nS: S.optional(S.String.pipe(T.Header("NS"))),
           dB: S.optional(S.String.pipe(T.Header("DB"))),
-          body: PutKeyRequestBodyMap.pipe(T.HttpBody()),
+          body: __S(16).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PUT", uri: "/key/{table}", code: 200 })),
       ).annotate({ identifier: "PutKeyRequest" });
     case 2:
@@ -652,7 +549,7 @@ function __c2(j: number): any {
           tags: S.optional(S.String.pipe(T.Query())),
           nS: S.optional(S.String.pipe(T.Header("NS"))),
           dB: S.optional(S.String.pipe(T.Header("DB"))),
-          body: PutKeyByIdRequestBodyMap.pipe(T.HttpBody()),
+          body: __S(16).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PUT", uri: "/key/{table}/{id}", code: 200 })),
       ).annotate({ identifier: "PutKeyByIdRequest" });
     case 3:
@@ -661,7 +558,7 @@ function __c2(j: number): any {
           table: S.String.pipe(T.Label()),
           nS: S.optional(S.String.pipe(T.Header("NS"))),
           dB: S.optional(S.String.pipe(T.Header("DB"))),
-          body: UpdateKeyRequestBodyMap.pipe(T.HttpBody()),
+          body: __S(16).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/key/{table}", code: 200 })),
       ).annotate({ identifier: "UpdateKeyRequest" });
     case 4:
@@ -671,7 +568,7 @@ function __c2(j: number): any {
           id: S.String.pipe(T.Label()),
           nS: S.optional(S.String.pipe(T.Header("NS"))),
           dB: S.optional(S.String.pipe(T.Header("DB"))),
-          body: UpdateKeyByIdRequestBodyMap.pipe(T.HttpBody()),
+          body: __S(16).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "POST", uri: "/key/{table}/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateKeyByIdRequest" });
     case 5:
@@ -681,7 +578,7 @@ function __c2(j: number): any {
           id: S.String.pipe(T.Label()),
           nS: S.optional(S.String.pipe(T.Header("NS"))),
           dB: S.optional(S.String.pipe(T.Header("DB"))),
-          body: UpdateKeyByIdRequestBodyMap2.pipe(T.HttpBody()),
+          body: __S(16).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/key/{table}/{id}", code: 200 })),
       ).annotate({ identifier: "UpdateKeyByIdRequest2" });
     case 6:
@@ -690,8 +587,23 @@ function __c2(j: number): any {
           table: S.String.pipe(T.Label()),
           nS: S.optional(S.String.pipe(T.Header("NS"))),
           dB: S.optional(S.String.pipe(T.Header("DB"))),
-          body: UpdateKeyByTableRequestBodyMap.pipe(T.HttpBody()),
+          body: __S(16).pipe(T.HttpBody()),
         }).pipe(T.Http({ method: "PATCH", uri: "/key/{table}", code: 200 })),
       ).annotate({ identifier: "UpdateKeyByTableRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
   }
 }

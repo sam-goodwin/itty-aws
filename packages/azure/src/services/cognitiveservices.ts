@@ -7,41 +7,22 @@ import { UnknownAzureError } from "../errors.ts";
 import { AzureProtocol, type AzureOpError, type AzureOpContext } from "../protocol.ts";
 import * as Retry from "../retry.ts";
 import * as T from "../traits.ts";
+// Schema table, filled on first reach (see __S at the end).
+const __s: any[] = [];
 
 export type { AzureOpError, AzureOpContext };
 
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type CapabilityHostPropertiesInputTagsMap = { [key: string]: string | undefined };
-const CapabilityHostPropertiesInputTagsMap = /*@__PURE__*/ __L.at(
-  __c0,
-  0,
-) as any as S.Schema<CapabilityHostPropertiesInputTagsMap>;
-
 /** List of AI services connections. */
 export type CapabilityHostPropertiesInputAiServicesConnectionsList = Array<string>;
-const CapabilityHostPropertiesInputAiServicesConnectionsList = /*@__PURE__*/ __L.at(
-  __c0,
-  1,
-) as any as S.Schema<CapabilityHostPropertiesInputAiServicesConnectionsList>;
-
 export type CapabilityHostKind = "Agents";
-const CapabilityHostKind = S.String;
-
 /** List of connection names from those available in the account or project to be used as a storage resource. */
 export type CapabilityHostPropertiesInputStorageConnectionsList = Array<string>;
-const CapabilityHostPropertiesInputStorageConnectionsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CapabilityHostPropertiesInputStorageConnectionsList>;
-
 /** List of connection names from those available in the account or project to be used for Thread storage. */
 export type CapabilityHostPropertiesInputThreadStorageConnectionsList = Array<string>;
-const CapabilityHostPropertiesInputThreadStorageConnectionsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CapabilityHostPropertiesInputThreadStorageConnectionsList>;
-
 /** List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB). */
 export type CapabilityHostPropertiesInputVectorStoreConnectionsList = Array<string>;
-const CapabilityHostPropertiesInputVectorStoreConnectionsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CapabilityHostPropertiesInputVectorStoreConnectionsList>;
-
 export interface CapabilityHostPropertiesInput {
   /** The asset description text. */
   description?: string | null;
@@ -62,11 +43,6 @@ export interface CapabilityHostPropertiesInput {
   /** Whether public hosting environment is enabled for the capability host */
   enablePublicHostingEnvironment?: boolean;
 }
-const CapabilityHostPropertiesInput = /*@__PURE__*/ __L.at(
-  __c0,
-  2,
-) as any as S.Schema<CapabilityHostPropertiesInput>;
-
 export interface AccountCapabilityHostsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -79,19 +55,10 @@ export interface AccountCapabilityHostsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: CapabilityHostPropertiesInput;
 }
-const AccountCapabilityHostsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c0,
-  3,
-) as any as S.Schema<AccountCapabilityHostsCreateOrUpdateRequest>;
-
 /** The type of identity that created the resource. */
 export type SystemDataCreatedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataCreatedByType = S.String;
-
 /** The type of identity that last modified the resource. */
 export type SystemDataLastModifiedByType = "User" | "Application" | "ManagedIdentity" | "Key";
-const SystemDataLastModifiedByType = S.String;
-
 /** Metadata pertaining to creation and last modification of the resource. */
 export interface SystemData {
   /** The identity that created the resource. */
@@ -107,18 +74,10 @@ export interface SystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const SystemData = /*@__PURE__*/ __L.at(__c0, 4) as any as S.Schema<SystemData>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type CapabilityHostPropertiesTagsMap = { [key: string]: string | undefined };
-const CapabilityHostPropertiesTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CapabilityHostPropertiesTagsMap>;
-
 /** List of AI services connections. */
 export type CapabilityHostPropertiesAiServicesConnectionsList = Array<string>;
-const CapabilityHostPropertiesAiServicesConnectionsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CapabilityHostPropertiesAiServicesConnectionsList>;
-
 /** Provisioning state of capability host. */
 export type CapabilityHostProvisioningState =
   | "Succeeded"
@@ -127,23 +86,12 @@ export type CapabilityHostProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting";
-const CapabilityHostProvisioningState = S.String;
-
 /** List of connection names from those available in the account or project to be used as a storage resource. */
 export type CapabilityHostPropertiesStorageConnectionsList = Array<string>;
-const CapabilityHostPropertiesStorageConnectionsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CapabilityHostPropertiesStorageConnectionsList>;
-
 /** List of connection names from those available in the account or project to be used for Thread storage. */
 export type CapabilityHostPropertiesThreadStorageConnectionsList = Array<string>;
-const CapabilityHostPropertiesThreadStorageConnectionsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CapabilityHostPropertiesThreadStorageConnectionsList>;
-
 /** List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB). */
 export type CapabilityHostPropertiesVectorStoreConnectionsList = Array<string>;
-const CapabilityHostPropertiesVectorStoreConnectionsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CapabilityHostPropertiesVectorStoreConnectionsList>;
-
 export interface CapabilityHostProperties {
   /** The asset description text. */
   description?: string | null;
@@ -166,11 +114,6 @@ export interface CapabilityHostProperties {
   /** Whether public hosting environment is enabled for the capability host */
   enablePublicHostingEnvironment?: boolean;
 }
-const CapabilityHostProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  5,
-) as any as S.Schema<CapabilityHostProperties>;
-
 export interface AccountCapabilityHostsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -183,11 +126,6 @@ export interface AccountCapabilityHostsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: CapabilityHostProperties;
 }
-const AccountCapabilityHostsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c0,
-  6,
-) as any as S.Schema<AccountCapabilityHostsCreateOrUpdateResponse>;
-
 /** RAI Custom Blocklist Item properties. */
 export interface RaiBlocklistItemProperties {
   /** Pattern to match against. */
@@ -195,29 +133,14 @@ export interface RaiBlocklistItemProperties {
   /** If the pattern is a regex pattern. */
   isRegex?: boolean;
 }
-const RaiBlocklistItemProperties = /*@__PURE__*/ __L.at(
-  __c0,
-  7,
-) as any as S.Schema<RaiBlocklistItemProperties>;
-
 /** The Cognitive Services RaiBlocklist Item request body. */
 export interface RaiBlocklistItemBulkRequest {
   name?: string;
   /** Properties of Cognitive Services RaiBlocklist Item. */
   properties?: RaiBlocklistItemProperties;
 }
-const RaiBlocklistItemBulkRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  0,
-) as any as S.Schema<RaiBlocklistItemBulkRequest>;
-
 /** The list of Cognitive Services RaiBlocklist Items for batch add. */
 export type RaiBlocklistItemsBulkAddRequest = Array<RaiBlocklistItemBulkRequest>;
-const RaiBlocklistItemsBulkAddRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  1,
-) as any as S.Schema<RaiBlocklistItemsBulkAddRequest>;
-
 export interface AddRaiBlocklistItemBatchRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -229,26 +152,13 @@ export interface AddRaiBlocklistItemBatchRequest {
   raiBlocklistName: string;
   body: RaiBlocklistItemsBulkAddRequest;
 }
-const AddRaiBlocklistItemBatchRequest = /*@__PURE__*/ __L.at(
-  __c1,
-  2,
-) as any as S.Schema<AddRaiBlocklistItemBatchRequest>;
-
 /** RAI Custom Blocklist properties. */
 export interface RaiBlocklistProperties {
   /** Description of the block list. */
   description?: string;
 }
-const RaiBlocklistProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  3,
-) as any as S.Schema<RaiBlocklistProperties>;
-
 /** Resource tags. */
 export type AddRaiBlocklistItemBatchResponseTagsMap = { [key: string]: string | undefined };
-const AddRaiBlocklistItemBatchResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AddRaiBlocklistItemBatchResponseTagsMap>;
-
 export interface AddRaiBlocklistItemBatchResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -265,16 +175,8 @@ export interface AddRaiBlocklistItemBatchResponse {
   /** Resource tags. */
   tags?: AddRaiBlocklistItemBatchResponseTagsMap;
 }
-const AddRaiBlocklistItemBatchResponse = /*@__PURE__*/ __L.at(
-  __c1,
-  4,
-) as any as S.Schema<AddRaiBlocklistItemBatchResponse>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type AgenticApplicationPropertiesInputTagsMap = { [key: string]: string | undefined };
-const AgenticApplicationPropertiesInputTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AgenticApplicationPropertiesInputTagsMap>;
-
 /** Type modeling a reference to a version of an agent definition. */
 export interface AgentReferenceProperties {
   /** Gets the agent's unique identifier within the organization (subscription). */
@@ -282,26 +184,12 @@ export interface AgentReferenceProperties {
   /** Gets the agent's name (unique within the project/app). */
   agentName?: string | null;
 }
-const AgentReferenceProperties = /*@__PURE__*/ __L.at(
-  __c1,
-  5,
-) as any as S.Schema<AgentReferenceProperties>;
-
 /** The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application. */
 export type AgenticApplicationPropertiesInputAgentsList = Array<AgentReferenceProperties>;
-const AgenticApplicationPropertiesInputAgentsList = /*@__PURE__*/ __L.at(
-  __c1,
-  6,
-) as any as S.Schema<AgenticApplicationPropertiesInputAgentsList>;
-
 /** Specifies the kind of Entra identity described by this object. */
 export type IdentityKind = "AgentBlueprint" | "AgentInstance" | "AgenticUser" | "Managed" | "None";
-const IdentityKind = S.String;
-
 /** Enumeration of identity types, from the perspective of management. */
 export type IdentityManagementType = "System" | "User" | "None";
-const IdentityManagementType = S.String;
-
 /** Type representing an identity assignment */
 export interface AssignedIdentityInput {
   /** Specifies the kind of Entra identity described by this object. */
@@ -317,29 +205,15 @@ export interface AssignedIdentityInput {
   /** The subject of this identity assignment. */
   subject?: string | null;
 }
-const AssignedIdentityInput = /*@__PURE__*/ __L.at(
-  __c1,
-  7,
-) as any as S.Schema<AssignedIdentityInput>;
-
 /** Authorization scheme type. */
 export type BuiltInAuthorizationScheme = "Default" | "OrganizationScope" | "Channels" | "Custom";
-const BuiltInAuthorizationScheme = S.String;
-
 /** Represents a policy for authorizing applications based on specified authentication and authorization schemes. */
 export interface ApplicationAuthorizationPolicy {
   /** Authorization scheme type. */
   type: BuiltInAuthorizationScheme | (string & {});
 }
-const ApplicationAuthorizationPolicy = /*@__PURE__*/ __L.at(
-  __c2,
-  0,
-) as any as S.Schema<ApplicationAuthorizationPolicy>;
-
 /** Traffic routing protocol, used to distribute an application's inbound traffic to its deployments. */
 export type TrafficRoutingProtocol = "FixedRatio";
-const TrafficRoutingProtocol = S.String;
-
 /** Represents a rule for routing traffic to a specific deployment. */
 export interface TrafficRoutingRule {
   /** The identifier of this traffic routing rule. */
@@ -351,15 +225,8 @@ export interface TrafficRoutingRule {
   /** Gets or sets the percentage of traffic allocated to this instance. */
   trafficPercentage?: number;
 }
-const TrafficRoutingRule = /*@__PURE__*/ __L.at(__c2, 1) as any as S.Schema<TrafficRoutingRule>;
-
 /** Gets or sets the collection of traffic routing rules. */
 export type ApplicationTrafficRoutingPolicyRulesList = Array<TrafficRoutingRule>;
-const ApplicationTrafficRoutingPolicyRulesList = /*@__PURE__*/ __L.at(
-  __c2,
-  2,
-) as any as S.Schema<ApplicationTrafficRoutingPolicyRulesList>;
-
 /** Type representing an application traffic policy as a property of an agentic application. */
 export interface ApplicationTrafficRoutingPolicy {
   /** Methodology used to route traffic to the application's deployments. */
@@ -367,11 +234,6 @@ export interface ApplicationTrafficRoutingPolicy {
   /** Gets or sets the collection of traffic routing rules. */
   rules?: ApplicationTrafficRoutingPolicyRulesList | null;
 }
-const ApplicationTrafficRoutingPolicy = /*@__PURE__*/ __L.at(
-  __c2,
-  3,
-) as any as S.Schema<ApplicationTrafficRoutingPolicy>;
-
 /** Resource type representing an agentic application as a management construct. */
 export interface AgenticApplicationPropertiesInput {
   /** The asset description text. */
@@ -393,11 +255,6 @@ export interface AgenticApplicationPropertiesInput {
   /** Gets or sets the traffic routing policy for the application's deployments. */
   trafficRoutingPolicy?: ApplicationTrafficRoutingPolicy | null;
 }
-const AgenticApplicationPropertiesInput = /*@__PURE__*/ __L.at(
-  __c2,
-  4,
-) as any as S.Schema<AgenticApplicationPropertiesInput>;
-
 export interface AgentApplicationsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -412,21 +269,10 @@ export interface AgentApplicationsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: AgenticApplicationPropertiesInput;
 }
-const AgentApplicationsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c2,
-  5,
-) as any as S.Schema<AgentApplicationsCreateOrUpdateRequest>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type AgenticApplicationPropertiesTagsMap = { [key: string]: string | undefined };
-const AgenticApplicationPropertiesTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AgenticApplicationPropertiesTagsMap>;
-
 /** The list of agent definitions comprising this application, returned as references to the objects under the parent project; use this to obtain a flat list of all agent-version pairs represented by this application. */
 export type AgenticApplicationPropertiesAgentsList = Array<AgentReferenceProperties>;
-const AgenticApplicationPropertiesAgentsList =
-  AgenticApplicationPropertiesInputAgentsList as any as S.Schema<AgenticApplicationPropertiesAgentsList>;
-
 /** Represents the provisioning state of an identity resource. */
 export type IdentityProvisioningState =
   | "Creating"
@@ -435,8 +281,6 @@ export type IdentityProvisioningState =
   | "Failed"
   | "Canceled"
   | "Deleting";
-const IdentityProvisioningState = S.String;
-
 /** Type representing an identity assignment */
 export interface AssignedIdentity {
   /** Specifies the kind of Entra identity described by this object. */
@@ -454,8 +298,6 @@ export interface AssignedIdentity {
   /** Represents the provisioning state of an identity resource. */
   provisioningState?: IdentityProvisioningState;
 }
-const AssignedIdentity = /*@__PURE__*/ __L.at(__c2, 6) as any as S.Schema<AssignedIdentity>;
-
 /** Provisioning state of an agentic application. */
 export type AgenticApplicationProvisioningState =
   | "Succeeded"
@@ -464,8 +306,6 @@ export type AgenticApplicationProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting";
-const AgenticApplicationProvisioningState = S.String;
-
 /** Resource type representing an agentic application as a management construct. */
 export interface AgenticApplicationProperties {
   /** The asset description text. */
@@ -491,11 +331,6 @@ export interface AgenticApplicationProperties {
   /** Enabledstate of the application. */
   isEnabled?: boolean;
 }
-const AgenticApplicationProperties = /*@__PURE__*/ __L.at(
-  __c2,
-  7,
-) as any as S.Schema<AgenticApplicationProperties>;
-
 export interface AgentApplicationsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -508,16 +343,8 @@ export interface AgentApplicationsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: AgenticApplicationProperties;
 }
-const AgentApplicationsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c3,
-  0,
-) as any as S.Schema<AgentApplicationsCreateOrUpdateResponse>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type AgentDeploymentPropertiesInputTagsMap = { [key: string]: string | undefined };
-const AgentDeploymentPropertiesInputTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AgentDeploymentPropertiesInputTagsMap>;
-
 /** Current operational state of the agentic functionality represented by this deployment. */
 export type AgentDeploymentState =
   | "Starting"
@@ -528,12 +355,8 @@ export type AgentDeploymentState =
   | "Deleting"
   | "Deleted"
   | "Updating";
-const AgentDeploymentState = S.String;
-
 /** Protocol used by the agent/exposed by a deployment. */
 export type AgentProtocol = "Agent" | "A2A" | "Responses";
-const AgentProtocol = S.String;
-
 /** Type modeling the protocol and version used by an agent/exposed by a deployment. */
 export interface AgentProtocolVersion {
   /** The protocol used by the agent/exposed by a deployment. */
@@ -541,15 +364,8 @@ export interface AgentProtocolVersion {
   /** The version of the protocol. */
   version?: string | null;
 }
-const AgentProtocolVersion = /*@__PURE__*/ __L.at(__c3, 1) as any as S.Schema<AgentProtocolVersion>;
-
 /** Gets or sets the supported protocol types and versions exposed by this deployment. */
 export type AgentDeploymentPropertiesInputProtocolsList = Array<AgentProtocolVersion>;
-const AgentDeploymentPropertiesInputProtocolsList = /*@__PURE__*/ __L.at(
-  __c3,
-  2,
-) as any as S.Schema<AgentDeploymentPropertiesInputProtocolsList>;
-
 /** Type modeling a reference to a version of an agent definition. */
 export interface VersionedAgentReference {
   /** Gets the agent's unique identifier within the organization (subscription). */
@@ -559,22 +375,10 @@ export interface VersionedAgentReference {
   /** Gets the agent's version (unique for each agent lineage). */
   agentVersion?: string | null;
 }
-const VersionedAgentReference = /*@__PURE__*/ __L.at(
-  __c3,
-  3,
-) as any as S.Schema<VersionedAgentReference>;
-
 /** Returns a flat list of agent:version deployed in this deployment. */
 export type AgentDeploymentPropertiesInputAgentsList = Array<VersionedAgentReference>;
-const AgentDeploymentPropertiesInputAgentsList = /*@__PURE__*/ __L.at(
-  __c3,
-  4,
-) as any as S.Schema<AgentDeploymentPropertiesInputAgentsList>;
-
 /** Specifies the type of deployment for an agent, indicating how the underlying compute and network infrastructure is managed. */
 export type AgentDeploymentType = "Managed" | "Hosted" | "Custom";
-const AgentDeploymentType = S.String;
-
 /** Type representing an agent deployment as a management construct. */
 export interface AgentDeploymentPropertiesInput {
   /** The asset description text. */
@@ -594,11 +398,6 @@ export interface AgentDeploymentPropertiesInput {
   /** Gets or sets the type of deployment for the agent. */
   deploymentType: AgentDeploymentType | (string & {});
 }
-const AgentDeploymentPropertiesInput = /*@__PURE__*/ __L.at(
-  __c3,
-  5,
-) as any as S.Schema<AgentDeploymentPropertiesInput>;
-
 export interface AgentDeploymentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -615,26 +414,12 @@ export interface AgentDeploymentsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: AgentDeploymentPropertiesInput;
 }
-const AgentDeploymentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c3,
-  6,
-) as any as S.Schema<AgentDeploymentsCreateOrUpdateRequest>;
-
 /** Tag dictionary. Tags can be added, removed, and updated. */
 export type AgentDeploymentPropertiesTagsMap = { [key: string]: string | undefined };
-const AgentDeploymentPropertiesTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AgentDeploymentPropertiesTagsMap>;
-
 /** Gets or sets the supported protocol types and versions exposed by this deployment. */
 export type AgentDeploymentPropertiesProtocolsList = Array<AgentProtocolVersion>;
-const AgentDeploymentPropertiesProtocolsList =
-  AgentDeploymentPropertiesInputProtocolsList as any as S.Schema<AgentDeploymentPropertiesProtocolsList>;
-
 /** Returns a flat list of agent:version deployed in this deployment. */
 export type AgentDeploymentPropertiesAgentsList = Array<VersionedAgentReference>;
-const AgentDeploymentPropertiesAgentsList =
-  AgentDeploymentPropertiesInputAgentsList as any as S.Schema<AgentDeploymentPropertiesAgentsList>;
-
 /** Provisioning state of an agentic deployment, as an Azure resource. */
 export type AgentDeploymentProvisioningState =
   | "Succeeded"
@@ -643,8 +428,6 @@ export type AgentDeploymentProvisioningState =
   | "Creating"
   | "Updating"
   | "Deleting";
-const AgentDeploymentProvisioningState = S.String;
-
 /** Type representing an agent deployment as a management construct. */
 export interface AgentDeploymentProperties {
   /** The asset description text. */
@@ -666,11 +449,6 @@ export interface AgentDeploymentProperties {
   /** Gets or sets the provisioning state of the agent deployment. */
   provisioningState?: AgentDeploymentProvisioningState;
 }
-const AgentDeploymentProperties = /*@__PURE__*/ __L.at(
-  __c3,
-  7,
-) as any as S.Schema<AgentDeploymentProperties>;
-
 export interface AgentDeploymentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -683,11 +461,6 @@ export interface AgentDeploymentsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: AgentDeploymentProperties;
 }
-const AgentDeploymentsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c4,
-  0,
-) as any as S.Schema<AgentDeploymentsCreateOrUpdateResponse>;
-
 /** Properties of Cognitive Services account deployment model. */
 export interface DeploymentModel {
   /** Deployment model publisher. */
@@ -703,8 +476,6 @@ export interface DeploymentModel {
   /** Optional. Source of the model, another Microsoft.CognitiveServices accounts ARM resource ID. */
   sourceAccount?: string;
 }
-const DeploymentModel = /*@__PURE__*/ __L.at(__c4, 1) as any as S.Schema<DeploymentModel>;
-
 /** Dictionary, Model Capacity Calculator Workload Parameters. */
 export interface ModelCapacityCalculatorWorkloadRequestParam {
   /** Average prompt tokens. */
@@ -712,11 +483,6 @@ export interface ModelCapacityCalculatorWorkloadRequestParam {
   /** Average generated tokens. */
   avgGeneratedTokens?: number;
 }
-const ModelCapacityCalculatorWorkloadRequestParam = /*@__PURE__*/ __L.at(
-  __c4,
-  2,
-) as any as S.Schema<ModelCapacityCalculatorWorkloadRequestParam>;
-
 /** Model Capacity Calculator Workload. */
 export interface ModelCapacityCalculatorWorkload {
   /** Request per minute. */
@@ -724,18 +490,8 @@ export interface ModelCapacityCalculatorWorkload {
   /** Dictionary, Model Capacity Calculator Workload Parameters. */
   requestParameters?: ModelCapacityCalculatorWorkloadRequestParam;
 }
-const ModelCapacityCalculatorWorkload = /*@__PURE__*/ __L.at(
-  __c4,
-  3,
-) as any as S.Schema<ModelCapacityCalculatorWorkload>;
-
 /** List of Model Capacity Calculator Workload. */
 export type CalculateModelCapacityRequestWorkloadsList = Array<ModelCapacityCalculatorWorkload>;
-const CalculateModelCapacityRequestWorkloadsList = /*@__PURE__*/ __L.at(
-  __c4,
-  4,
-) as any as S.Schema<CalculateModelCapacityRequestWorkloadsList>;
-
 export interface CalculateModelCapacityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -746,21 +502,11 @@ export interface CalculateModelCapacityRequest {
   /** List of Model Capacity Calculator Workload. */
   workloads?: CalculateModelCapacityRequestWorkloadsList;
 }
-const CalculateModelCapacityRequest = /*@__PURE__*/ __L.at(
-  __c4,
-  5,
-) as any as S.Schema<CalculateModelCapacityRequest>;
-
 /** Model Estimated Capacity. */
 export interface CalculateModelCapacityResultEstimatedCapacity {
   value?: number;
   deployableValue?: number;
 }
-const CalculateModelCapacityResultEstimatedCapacity = /*@__PURE__*/ __L.at(
-  __c4,
-  6,
-) as any as S.Schema<CalculateModelCapacityResultEstimatedCapacity>;
-
 /** Calculate Model Capacity result. */
 export interface CalculateModelCapacityResult {
   /** Properties of Cognitive Services account deployment model. */
@@ -769,11 +515,6 @@ export interface CalculateModelCapacityResult {
   /** Model Estimated Capacity. */
   estimatedCapacity?: CalculateModelCapacityResultEstimatedCapacity;
 }
-const CalculateModelCapacityResult = /*@__PURE__*/ __L.at(
-  __c4,
-  7,
-) as any as S.Schema<CalculateModelCapacityResult>;
-
 export interface CheckDomainAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -784,11 +525,6 @@ export interface CheckDomainAvailabilityRequest {
   /** The kind (type) of cognitive service account. */
   kind?: string;
 }
-const CheckDomainAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  0,
-) as any as S.Schema<CheckDomainAvailabilityRequest>;
-
 /** Domain availability. */
 export interface DomainAvailability {
   /** Indicates the given SKU is available or not. */
@@ -802,13 +538,8 @@ export interface DomainAvailability {
   /** The kind (type) of cognitive service account. */
   kind?: string;
 }
-const DomainAvailability = /*@__PURE__*/ __L.at(__c5, 1) as any as S.Schema<DomainAvailability>;
-
 /** The SKU of the resource. */
 export type CheckSkuAvailabilityRequestSkusList = Array<string>;
-const CheckSkuAvailabilityRequestSkusList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CheckSkuAvailabilityRequestSkusList>;
-
 export interface CheckSkuAvailabilityRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -821,11 +552,6 @@ export interface CheckSkuAvailabilityRequest {
   /** The Type of the resource. */
   type: string;
 }
-const CheckSkuAvailabilityRequest = /*@__PURE__*/ __L.at(
-  __c5,
-  2,
-) as any as S.Schema<CheckSkuAvailabilityRequest>;
-
 /** SKU availability. */
 export interface SkuAvailability {
   /** The kind (type) of cognitive service account. */
@@ -841,33 +567,19 @@ export interface SkuAvailability {
   /** Additional error message. */
   message?: string;
 }
-const SkuAvailability = /*@__PURE__*/ __L.at(__c5, 3) as any as S.Schema<SkuAvailability>;
-
 /** Check SKU availability result list. */
 export type SkuAvailabilityListResultValueList = Array<SkuAvailability>;
-const SkuAvailabilityListResultValueList = /*@__PURE__*/ __L.at(
-  __c5,
-  4,
-) as any as S.Schema<SkuAvailabilityListResultValueList>;
-
 /** Check SKU availability result list. */
 export interface SkuAvailabilityListResult {
   /** Check SKU availability result list. */
   value?: SkuAvailabilityListResultValueList;
 }
-const SkuAvailabilityListResult = /*@__PURE__*/ __L.at(
-  __c5,
-  5,
-) as any as S.Schema<SkuAvailabilityListResult>;
-
 /** Account hosting model. */
 export type HostingModel =
   | "Web"
   | "ConnectedContainer"
   | "DisconnectedContainer"
   | "ProvisionedWeb";
-const HostingModel = S.String;
-
 /** Cognitive Services account commitment period. */
 export interface CommitmentPeriodInput {
   /** Commitment period commitment tier. */
@@ -875,11 +587,6 @@ export interface CommitmentPeriodInput {
   /** Commitment period commitment count. */
   count?: number;
 }
-const CommitmentPeriodInput = /*@__PURE__*/ __L.at(
-  __c5,
-  6,
-) as any as S.Schema<CommitmentPeriodInput>;
-
 /** Properties of Cognitive Services account commitment plan. */
 export interface CommitmentPlanPropertiesInput {
   /** Commitment plan guid. */
@@ -895,20 +602,10 @@ export interface CommitmentPlanPropertiesInput {
   /** Cognitive Services account commitment period. */
   next?: CommitmentPeriodInput;
 }
-const CommitmentPlanPropertiesInput = /*@__PURE__*/ __L.at(
-  __c5,
-  7,
-) as any as S.Schema<CommitmentPlanPropertiesInput>;
-
 /** Resource tags. */
 export type CommitmentPlansCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const CommitmentPlansCreateOrUpdateRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CommitmentPlansCreateOrUpdateRequestTagsMap>;
-
 /** This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT. */
 export type SkuTier = "Free" | "Basic" | "Standard" | "Premium" | "Enterprise";
-const SkuTier = S.String;
-
 /** The resource model definition representing SKU */
 export interface Sku {
   /** The name of the SKU. Ex - P3. It is typically a letter+number code */
@@ -922,8 +619,6 @@ export interface Sku {
   /** If the SKU supports scale out/in then the capacity integer should be included. If scale out/in is not possible for the resource this may be omitted. */
   capacity?: number;
 }
-const Sku = /*@__PURE__*/ __L.at(__c6, 0) as any as S.Schema<Sku>;
-
 export interface CommitmentPlansCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -944,11 +639,6 @@ export interface CommitmentPlansCreateOrUpdateRequest {
   /** The resource model definition representing SKU */
   sku?: Sku;
 }
-const CommitmentPlansCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  1,
-) as any as S.Schema<CommitmentPlansCreateOrUpdateRequest>;
-
 /** Gets the status of the resource at the time the operation was called. */
 export type CommitmentPlanProvisioningState =
   | "Accepted"
@@ -958,8 +648,6 @@ export type CommitmentPlanProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Canceled";
-const CommitmentPlanProvisioningState = S.String;
-
 /** Cognitive Services account commitment quota. */
 export interface CommitmentQuota {
   /** Commitment quota quantity. */
@@ -967,8 +655,6 @@ export interface CommitmentQuota {
   /** Commitment quota unit. */
   unit?: string;
 }
-const CommitmentQuota = /*@__PURE__*/ __L.at(__c6, 2) as any as S.Schema<CommitmentQuota>;
-
 /** Cognitive Services account commitment period. */
 export interface CommitmentPeriod {
   /** Commitment period commitment tier. */
@@ -982,13 +668,8 @@ export interface CommitmentPeriod {
   /** Commitment period end date. */
   endDate?: string;
 }
-const CommitmentPeriod = /*@__PURE__*/ __L.at(__c6, 3) as any as S.Schema<CommitmentPeriod>;
-
 /** The list of ProvisioningIssue. */
 export type CommitmentPlanPropertiesProvisioningIssuesList = Array<string>;
-const CommitmentPlanPropertiesProvisioningIssuesList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<CommitmentPlanPropertiesProvisioningIssuesList>;
-
 /** Properties of Cognitive Services account commitment plan. */
 export interface CommitmentPlanProperties {
   /** Gets the status of the resource at the time the operation was called. */
@@ -1010,16 +691,8 @@ export interface CommitmentPlanProperties {
   /** The list of ProvisioningIssue. */
   provisioningIssues?: CommitmentPlanPropertiesProvisioningIssuesList;
 }
-const CommitmentPlanProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  4,
-) as any as S.Schema<CommitmentPlanProperties>;
-
 /** Resource tags. */
 export type CommitmentPlansCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const CommitmentPlansCreateOrUpdateResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CommitmentPlansCreateOrUpdateResponseTagsMap>;
-
 export interface CommitmentPlansCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1042,28 +715,15 @@ export interface CommitmentPlansCreateOrUpdateResponse {
   /** The resource model definition representing SKU */
   sku?: Sku;
 }
-const CommitmentPlansCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c6,
-  5,
-) as any as S.Schema<CommitmentPlansCreateOrUpdateResponse>;
-
 /** The commitment plan account association properties. */
 export interface CommitmentPlanAccountAssociationProperties {
   /** The Azure resource id of the account. */
   accountId?: string;
 }
-const CommitmentPlanAccountAssociationProperties = /*@__PURE__*/ __L.at(
-  __c6,
-  6,
-) as any as S.Schema<CommitmentPlanAccountAssociationProperties>;
-
 /** Resource tags. */
 export type CommitmentPlansCreateOrUpdateAssociationRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const CommitmentPlansCreateOrUpdateAssociationRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CommitmentPlansCreateOrUpdateAssociationRequestTagsMap>;
-
 export interface CommitmentPlansCreateOrUpdateAssociationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1078,18 +738,10 @@ export interface CommitmentPlansCreateOrUpdateAssociationRequest {
   /** Resource tags. */
   tags?: CommitmentPlansCreateOrUpdateAssociationRequestTagsMap;
 }
-const CommitmentPlansCreateOrUpdateAssociationRequest = /*@__PURE__*/ __L.at(
-  __c6,
-  7,
-) as any as S.Schema<CommitmentPlansCreateOrUpdateAssociationRequest>;
-
 /** Resource tags. */
 export type CommitmentPlansCreateOrUpdateAssociationResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const CommitmentPlansCreateOrUpdateAssociationResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CommitmentPlansCreateOrUpdateAssociationResponseTagsMap>;
-
 export interface CommitmentPlansCreateOrUpdateAssociationResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1106,16 +758,8 @@ export interface CommitmentPlansCreateOrUpdateAssociationResponse {
   /** Resource tags. */
   tags?: CommitmentPlansCreateOrUpdateAssociationResponseTagsMap;
 }
-const CommitmentPlansCreateOrUpdateAssociationResponse = /*@__PURE__*/ __L.at(
-  __c7,
-  0,
-) as any as S.Schema<CommitmentPlansCreateOrUpdateAssociationResponse>;
-
 /** Resource tags. */
 export type CommitmentPlansCreateOrUpdatePlanRequestTagsMap = { [key: string]: string | undefined };
-const CommitmentPlansCreateOrUpdatePlanRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CommitmentPlansCreateOrUpdatePlanRequestTagsMap>;
-
 export interface CommitmentPlansCreateOrUpdatePlanRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1134,11 +778,6 @@ export interface CommitmentPlansCreateOrUpdatePlanRequest {
   /** The resource model definition representing SKU */
   sku?: Sku;
 }
-const CommitmentPlansCreateOrUpdatePlanRequest = /*@__PURE__*/ __L.at(
-  __c7,
-  1,
-) as any as S.Schema<CommitmentPlansCreateOrUpdatePlanRequest>;
-
 /** Resource tags. */
 export type CommitmentPlansCreateOrUpdatePlanResponseTagsMap = {
   [key: string]: string | undefined;
@@ -1165,31 +804,17 @@ export interface CommitmentPlansCreateOrUpdatePlanResponse {
   /** The resource model definition representing SKU */
   sku?: Sku;
 }
-const CommitmentPlansCreateOrUpdatePlanResponse =
-  CommitmentPlansCreateOrUpdateResponse as any as S.Schema<CommitmentPlansCreateOrUpdatePlanResponse>;
-
 /** The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated. */
 export type NetworkRuleAction = "Allow" | "Deny";
-const NetworkRuleAction = S.String;
-
 /** Setting for trusted services. */
 export type ByPassSelection = "None" | "AzureServices";
-const ByPassSelection = S.String;
-
 /** A rule governing the accessibility from a specific ip address or ip range. */
 export interface IpRule {
   /** An IPv4 address range in CIDR notation, such as '124.56.78.91' (simple IP address) or '124.56.78.0/24' (all addresses that start with 124.56.78). */
   value: string;
 }
-const IpRule = /*@__PURE__*/ __L.at(__c7, 2) as any as S.Schema<IpRule>;
-
 /** The list of IP address rules. */
 export type NetworkRuleSetIpRulesList = Array<IpRule>;
-const NetworkRuleSetIpRulesList = /*@__PURE__*/ __L.at(
-  __c7,
-  3,
-) as any as S.Schema<NetworkRuleSetIpRulesList>;
-
 /** A rule governing the accessibility from a specific virtual network. */
 export interface VirtualNetworkRule {
   /** Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'. */
@@ -1199,15 +824,8 @@ export interface VirtualNetworkRule {
   /** Ignore missing vnet service endpoint or not. */
   ignoreMissingVnetServiceEndpoint?: boolean;
 }
-const VirtualNetworkRule = /*@__PURE__*/ __L.at(__c7, 4) as any as S.Schema<VirtualNetworkRule>;
-
 /** The list of virtual network rules. */
 export type NetworkRuleSetVirtualNetworkRulesList = Array<VirtualNetworkRule>;
-const NetworkRuleSetVirtualNetworkRulesList = /*@__PURE__*/ __L.at(
-  __c7,
-  5,
-) as any as S.Schema<NetworkRuleSetVirtualNetworkRulesList>;
-
 /** A set of rules governing the network accessibility. */
 export interface NetworkRuleSet {
   /** The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated. */
@@ -1219,8 +837,6 @@ export interface NetworkRuleSet {
   /** The list of virtual network rules. */
   virtualNetworkRules?: NetworkRuleSetVirtualNetworkRulesList;
 }
-const NetworkRuleSet = /*@__PURE__*/ __L.at(__c7, 6) as any as S.Schema<NetworkRuleSet>;
-
 /** Properties to configure keyVault Properties */
 export interface KeyVaultProperties {
   /** Name of the Key from KeyVault */
@@ -1231,12 +847,8 @@ export interface KeyVaultProperties {
   keyVaultUri?: string;
   identityClientId?: string;
 }
-const KeyVaultProperties = /*@__PURE__*/ __L.at(__c7, 7) as any as S.Schema<KeyVaultProperties>;
-
 /** Enumerates the possible value of keySource for Encryption */
 export type EncryptionKeySource = "Microsoft.CognitiveServices" | "Microsoft.KeyVault";
-const EncryptionKeySource = S.String;
-
 /** Properties to configure Encryption */
 export interface Encryption {
   /** Properties of KeyVault */
@@ -1244,23 +856,14 @@ export interface Encryption {
   /** Enumerates the possible value of keySource for Encryption */
   keySource?: EncryptionKeySource | (string & {});
 }
-const Encryption = /*@__PURE__*/ __L.at(__c8, 0) as any as S.Schema<Encryption>;
-
 /** The user owned storage for Cognitive Services account. */
 export interface UserOwnedStorage {
   /** Full resource id of a Microsoft.Storage resource. */
   resourceId?: string;
   identityClientId?: string;
 }
-const UserOwnedStorage = /*@__PURE__*/ __L.at(__c8, 1) as any as S.Schema<UserOwnedStorage>;
-
 /** The storage accounts for this resource. */
 export type AccountPropertiesInputUserOwnedStorageList = Array<UserOwnedStorage>;
-const AccountPropertiesInputUserOwnedStorageList = /*@__PURE__*/ __L.at(
-  __c8,
-  2,
-) as any as S.Schema<AccountPropertiesInputUserOwnedStorageList>;
-
 /** The user owned AML account for Cognitive Services account. */
 export interface UserOwnedAmlWorkspace {
   /** Full resource id of a AML account resource. */
@@ -1268,12 +871,8 @@ export interface UserOwnedAmlWorkspace {
   /** Identity Client id of a AML account resource. */
   identityClientId?: string;
 }
-const UserOwnedAmlWorkspace = UserOwnedStorage as any as S.Schema<UserOwnedAmlWorkspace>;
-
 /** Whether or not public endpoint access is allowed for this account. */
 export type PublicNetworkAccess = "Enabled" | "Disabled";
-const PublicNetworkAccess = S.String;
-
 /** The api properties for special APIs. */
 export interface ApiProperties {
   /** (QnAMaker Only) The runtime endpoint of QnAMaker. */
@@ -1297,16 +896,9 @@ export interface ApiProperties {
   /** (Metrics Advisor Only) The website name of Metrics Advisor. */
   websiteName?: string;
 }
-const ApiProperties = /*@__PURE__*/ __L.at(__c8, 3) as any as S.Schema<ApiProperties>;
-
 export type AccountPropertiesInputAllowedFqdnListList = Array<string>;
-const AccountPropertiesInputAllowedFqdnListList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<AccountPropertiesInputAllowedFqdnListList>;
-
 /** Multiregion routing methods. */
 export type RoutingMethods = "Priority" | "Weighted" | "Performance";
-const RoutingMethods = S.String;
-
 /** The call rate limit Cognitive Services account. */
 export interface RegionSetting {
   /** Name of the region. */
@@ -1316,22 +908,13 @@ export interface RegionSetting {
   /** Maps the region to the regional custom subdomain. */
   customsubdomain?: string;
 }
-const RegionSetting = /*@__PURE__*/ __L.at(__c8, 4) as any as S.Schema<RegionSetting>;
-
 export type MultiRegionSettingsRegionsList = Array<RegionSetting>;
-const MultiRegionSettingsRegionsList = /*@__PURE__*/ __L.at(
-  __c8,
-  5,
-) as any as S.Schema<MultiRegionSettingsRegionsList>;
-
 /** The multiregion settings Cognitive Services account. */
 export interface MultiRegionSettings {
   /** Multiregion routing methods. */
   routingMethod?: RoutingMethods | (string & {});
   regions?: MultiRegionSettingsRegionsList;
 }
-const MultiRegionSettings = /*@__PURE__*/ __L.at(__c8, 6) as any as S.Schema<MultiRegionSettings>;
-
 /** Cognitive Services Rai Monitor Config. */
 export interface RaiMonitorConfig {
   /** The storage resource Id. */
@@ -1339,12 +922,8 @@ export interface RaiMonitorConfig {
   /** The identity client Id to access the storage. */
   identityClientId?: string;
 }
-const RaiMonitorConfig = /*@__PURE__*/ __L.at(__c8, 7) as any as S.Schema<RaiMonitorConfig>;
-
 /** Specifies what features in AI Foundry network injection applies to. Currently only supports 'agent' for agent scenarios. 'none' means no network injection. */
 export type ScenarioType = "none" | "agent";
-const ScenarioType = S.String;
-
 /** Specifies in AI Foundry where virtual network injection occurs to secure scenarios like Agents entirely within the user's private network, eliminating public internet exposure while maintaining control over network configurations and resources. */
 export interface NetworkInjection {
   /** Specifies what features in AI Foundry network injection applies to. Currently only supports 'agent' for agent scenarios. 'none' means no network injection. */
@@ -1354,19 +933,9 @@ export interface NetworkInjection {
   /** Boolean to enable Microsoft Managed Network for subnet delegation */
   useMicrosoftManagedNetwork?: boolean;
 }
-const NetworkInjection = /*@__PURE__*/ __L.at(__c9, 0) as any as S.Schema<NetworkInjection>;
-
 export type AccountPropertiesInputNetworkInjectionsList = Array<NetworkInjection>;
-const AccountPropertiesInputNetworkInjectionsList = /*@__PURE__*/ __L.at(
-  __c9,
-  1,
-) as any as S.Schema<AccountPropertiesInputNetworkInjectionsList>;
-
 /** Specifies the projects, by project name, that are associated with this resource. */
 export type AccountPropertiesInputAssociatedProjectsList = Array<string>;
-const AccountPropertiesInputAssociatedProjectsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<AccountPropertiesInputAssociatedProjectsList>;
-
 /** Properties of Cognitive Services account. */
 export interface AccountPropertiesInput {
   /** Resource migration token. */
@@ -1407,40 +976,20 @@ export interface AccountPropertiesInput {
   /** Specifies the projects, by project name, that are associated with this resource. */
   associatedProjects?: AccountPropertiesInputAssociatedProjectsList;
 }
-const AccountPropertiesInput = /*@__PURE__*/ __L.at(
-  __c9,
-  2,
-) as any as S.Schema<AccountPropertiesInput>;
-
 /** Resource tags. */
 export type CreateAccountRequestTagsMap = { [key: string]: string | undefined };
-const CreateAccountRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CreateAccountRequestTagsMap>;
-
 /** The identity type. */
 export type ResourceIdentityType =
   | "None"
   | "SystemAssigned"
   | "UserAssigned"
   | "SystemAssigned, UserAssigned";
-const ResourceIdentityType = S.String;
-
 /** User-assigned managed identity. */
 export interface UserAssignedIdentityInput {}
-const UserAssignedIdentityInput = /*@__PURE__*/ __L.at(
-  __c9,
-  3,
-) as any as S.Schema<UserAssignedIdentityInput>;
-
 /** The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} */
 export type IdentityInputUserAssignedIdentitiesMap = {
   [key: string]: UserAssignedIdentityInput | undefined;
 };
-const IdentityInputUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c9,
-  4,
-) as any as S.Schema<IdentityInputUserAssignedIdentitiesMap>;
-
 /** Identity for the resource. */
 export interface IdentityInput {
   /** The identity type. */
@@ -1448,8 +997,6 @@ export interface IdentityInput {
   /** The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} */
   userAssignedIdentities?: IdentityInputUserAssignedIdentitiesMap;
 }
-const IdentityInput = /*@__PURE__*/ __L.at(__c9, 5) as any as S.Schema<IdentityInput>;
-
 export interface CreateAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -1470,8 +1017,6 @@ export interface CreateAccountRequest {
   /** Identity for the resource. */
   identity?: IdentityInput;
 }
-const CreateAccountRequest = /*@__PURE__*/ __L.at(__c9, 6) as any as S.Schema<CreateAccountRequest>;
-
 /** Gets the status of the cognitive services account at the time the operation was called. */
 export type ProvisioningState =
   | "Accepted"
@@ -1482,8 +1027,6 @@ export type ProvisioningState =
   | "Succeeded"
   | "Canceled"
   | "ResolvingDNS";
-const ProvisioningState = S.String;
-
 /** SkuCapability indicates the capability of a certain feature. */
 export interface SkuCapability {
   /** The name of the SkuCapability. */
@@ -1491,15 +1034,8 @@ export interface SkuCapability {
   /** The value of the SkuCapability. */
   value?: string;
 }
-const SkuCapability = /*@__PURE__*/ __L.at(__c9, 7) as any as S.Schema<SkuCapability>;
-
 /** Gets the capabilities of the cognitive services account. Each item indicates the capability of a specific feature. The values are read-only and for reference only. */
 export type AccountPropertiesCapabilitiesList = Array<SkuCapability>;
-const AccountPropertiesCapabilitiesList = /*@__PURE__*/ __L.at(
-  __c10,
-  0,
-) as any as S.Schema<AccountPropertiesCapabilitiesList>;
-
 /** Sku change info of account. */
 export interface SkuChangeInfo {
   /** Gets the count of downgrades. */
@@ -1509,27 +1045,15 @@ export interface SkuChangeInfo {
   /** Gets the last change date. */
   lastChangeDate?: string;
 }
-const SkuChangeInfo = /*@__PURE__*/ __L.at(__c10, 1) as any as S.Schema<SkuChangeInfo>;
-
 /** The storage accounts for this resource. */
 export type AccountPropertiesUserOwnedStorageList = Array<UserOwnedStorage>;
-const AccountPropertiesUserOwnedStorageList =
-  AccountPropertiesInputUserOwnedStorageList as any as S.Schema<AccountPropertiesUserOwnedStorageList>;
-
 /** The Private Endpoint resource. */
 export interface PrivateEndpointConnectionPropertiesPrivateEndpoint {
   /** The ARM identifier for Private Endpoint */
   id?: string;
 }
-const PrivateEndpointConnectionPropertiesPrivateEndpoint = /*@__PURE__*/ __L.at(
-  __c10,
-  2,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesPrivateEndpoint>;
-
 /** The private endpoint connection status. */
 export type PrivateEndpointServiceConnectionStatus = "Pending" | "Approved" | "Rejected";
-const PrivateEndpointServiceConnectionStatus = S.String;
-
 /** A collection of information about the state of the connection between service consumer and provider. */
 export interface PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState {
   /** Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service. */
@@ -1539,24 +1063,14 @@ export interface PrivateEndpointConnectionPropertiesPrivateLinkServiceConnection
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-const PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState = /*@__PURE__*/ __L.at(
-  __c10,
-  3,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState>;
-
 /** The current provisioning state. */
 export type PrivateEndpointConnectionPropertiesProvisioningState =
   | "Succeeded"
   | "Creating"
   | "Deleting"
   | "Failed";
-const PrivateEndpointConnectionPropertiesProvisioningState = S.String;
-
 /** The private link resource group ids. */
 export type PrivateEndpointConnectionPropertiesGroupIdsList = Array<string>;
-const PrivateEndpointConnectionPropertiesGroupIdsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<PrivateEndpointConnectionPropertiesGroupIdsList>;
-
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionProperties {
   /** The Private Endpoint resource. */
@@ -1568,11 +1082,6 @@ export interface PrivateEndpointConnectionProperties {
   /** The private link resource group ids. */
   groupIds?: PrivateEndpointConnectionPropertiesGroupIdsList;
 }
-const PrivateEndpointConnectionProperties = /*@__PURE__*/ __L.at(
-  __c10,
-  4,
-) as any as S.Schema<PrivateEndpointConnectionProperties>;
-
 /** The Private Endpoint Connection resource. */
 export interface PrivateEndpointConnection {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -1590,30 +1099,13 @@ export interface PrivateEndpointConnection {
   /** The location of the private endpoint connection */
   location?: string;
 }
-const PrivateEndpointConnection = /*@__PURE__*/ __L.at(
-  __c10,
-  5,
-) as any as S.Schema<PrivateEndpointConnection>;
-
 /** The private endpoint connection associated with the Cognitive Services account. */
 export type AccountPropertiesPrivateEndpointConnectionsList = Array<PrivateEndpointConnection>;
-const AccountPropertiesPrivateEndpointConnectionsList = /*@__PURE__*/ __L.at(
-  __c10,
-  6,
-) as any as S.Schema<AccountPropertiesPrivateEndpointConnectionsList>;
-
 export interface RequestMatchPattern {
   path?: string;
   method?: string;
 }
-const RequestMatchPattern = /*@__PURE__*/ __L.at(__c10, 7) as any as S.Schema<RequestMatchPattern>;
-
 export type ThrottlingRuleMatchPatternsList = Array<RequestMatchPattern>;
-const ThrottlingRuleMatchPatternsList = /*@__PURE__*/ __L.at(
-  __c11,
-  0,
-) as any as S.Schema<ThrottlingRuleMatchPatternsList>;
-
 export interface ThrottlingRule {
   key?: string;
   renewalPeriod?: number;
@@ -1622,14 +1114,7 @@ export interface ThrottlingRule {
   dynamicThrottlingEnabled?: boolean;
   matchPatterns?: ThrottlingRuleMatchPatternsList;
 }
-const ThrottlingRule = /*@__PURE__*/ __L.at(__c11, 1) as any as S.Schema<ThrottlingRule>;
-
 export type CallRateLimitRulesList = Array<ThrottlingRule>;
-const CallRateLimitRulesList = /*@__PURE__*/ __L.at(
-  __c11,
-  2,
-) as any as S.Schema<CallRateLimitRulesList>;
-
 /** The call rate limit Cognitive Services account. */
 export interface CallRateLimit {
   /** The count value of Call Rate Limit. */
@@ -1638,25 +1123,15 @@ export interface CallRateLimit {
   renewalPeriod?: number;
   rules?: CallRateLimitRulesList;
 }
-const CallRateLimit = /*@__PURE__*/ __L.at(__c11, 3) as any as S.Schema<CallRateLimit>;
-
 export type QuotaLimitRulesList = Array<ThrottlingRule>;
 export interface QuotaLimit {
   count?: number;
   renewalPeriod?: number;
   rules?: QuotaLimitRulesList;
 }
-const QuotaLimit = CallRateLimit as any as S.Schema<QuotaLimit>;
-
 export type AccountPropertiesAllowedFqdnListList = Array<string>;
-const AccountPropertiesAllowedFqdnListList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<AccountPropertiesAllowedFqdnListList>;
-
 /** Dictionary of <string> */
 export type AccountPropertiesEndpointsMap = { [key: string]: string | undefined };
-const AccountPropertiesEndpointsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AccountPropertiesEndpointsMap>;
-
 /** The commitment plan association. */
 export interface CommitmentPlanAssociation {
   /** The Azure resource id of the commitment plan. */
@@ -1664,22 +1139,10 @@ export interface CommitmentPlanAssociation {
   /** The location of of the commitment plan. */
   commitmentPlanLocation?: string;
 }
-const CommitmentPlanAssociation = /*@__PURE__*/ __L.at(
-  __c11,
-  4,
-) as any as S.Schema<CommitmentPlanAssociation>;
-
 /** The commitment plan associations of Cognitive Services account. */
 export type AccountPropertiesCommitmentPlanAssociationsList = Array<CommitmentPlanAssociation>;
-const AccountPropertiesCommitmentPlanAssociationsList = /*@__PURE__*/ __L.at(
-  __c11,
-  5,
-) as any as S.Schema<AccountPropertiesCommitmentPlanAssociationsList>;
-
 /** The action of AbusePenalty. */
 export type AbusePenaltyAction = "Throttle" | "Block";
-const AbusePenaltyAction = S.String;
-
 /** The abuse penalty. */
 export interface AbusePenalty {
   /** The action of AbusePenalty. */
@@ -1689,17 +1152,9 @@ export interface AbusePenalty {
   /** The datetime of expiration of the AbusePenalty. */
   expiration?: string;
 }
-const AbusePenalty = /*@__PURE__*/ __L.at(__c11, 6) as any as S.Schema<AbusePenalty>;
-
 export type AccountPropertiesNetworkInjectionsList = Array<NetworkInjection>;
-const AccountPropertiesNetworkInjectionsList =
-  AccountPropertiesInputNetworkInjectionsList as any as S.Schema<AccountPropertiesNetworkInjectionsList>;
-
 /** Specifies the projects, by project name, that are associated with this resource. */
 export type AccountPropertiesAssociatedProjectsList = Array<string>;
-const AccountPropertiesAssociatedProjectsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<AccountPropertiesAssociatedProjectsList>;
-
 /** Properties of Cognitive Services account. */
 export interface AccountProperties {
   /** Gets the status of the cognitive services account at the time the operation was called. */
@@ -1769,13 +1224,8 @@ export interface AccountProperties {
   /** Specifies the projects, by project name, that are associated with this resource. */
   associatedProjects?: AccountPropertiesAssociatedProjectsList;
 }
-const AccountProperties = /*@__PURE__*/ __L.at(__c11, 7) as any as S.Schema<AccountProperties>;
-
 /** Resource tags. */
 export type CreateAccountResponseTagsMap = { [key: string]: string | undefined };
-const CreateAccountResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CreateAccountResponseTagsMap>;
-
 /** User-assigned managed identity. */
 export interface UserAssignedIdentity {
   /** Azure Active Directory principal ID associated with this Identity. */
@@ -1783,18 +1233,8 @@ export interface UserAssignedIdentity {
   /** Client App Id associated with this identity. */
   clientId?: string;
 }
-const UserAssignedIdentity = /*@__PURE__*/ __L.at(
-  __c12,
-  0,
-) as any as S.Schema<UserAssignedIdentity>;
-
 /** The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} */
 export type IdentityUserAssignedIdentitiesMap = { [key: string]: UserAssignedIdentity | undefined };
-const IdentityUserAssignedIdentitiesMap = /*@__PURE__*/ __L.at(
-  __c12,
-  1,
-) as any as S.Schema<IdentityUserAssignedIdentitiesMap>;
-
 /** Identity for the resource. */
 export interface Identity {
   /** The identity type. */
@@ -1806,8 +1246,6 @@ export interface Identity {
   /** The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName} */
   userAssignedIdentities?: IdentityUserAssignedIdentitiesMap;
 }
-const Identity = /*@__PURE__*/ __L.at(__c12, 2) as any as S.Schema<Identity>;
-
 export interface CreateAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -1832,11 +1270,6 @@ export interface CreateAccountResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-const CreateAccountResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  3,
-) as any as S.Schema<CreateAccountResponse>;
-
 /** Authentication type of the connection target */
 export type ConnectionAuthType =
   | "PAT"
@@ -1858,8 +1291,6 @@ export type ConnectionAuthType =
   | "AgentUserImpersonation"
   | "AgenticIdentityToken"
   | "AgenticUser";
-const ConnectionAuthType = S.String;
-
 /** Category of the connection */
 export type ConnectionCategory =
   | "PythonFeed"
@@ -1982,23 +1413,11 @@ export type ConnectionCategory =
   | "MicrosoftFabric"
   | "PowerPlatformEnvironment"
   | "RemoteA2A";
-const ConnectionCategory = S.String;
-
 /** Store user metadata for this connection */
 export type ConnectionPropertiesV2InputMetadataMap = { [key: string]: string | undefined };
-const ConnectionPropertiesV2InputMetadataMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<ConnectionPropertiesV2InputMetadataMap>;
-
 export type ManagedPERequirement = "Required" | "NotRequired" | "NotApplicable";
-const ManagedPERequirement = S.String;
-
 export type ManagedPEStatus = "Inactive" | "Active" | "NotApplicable";
-const ManagedPEStatus = S.String;
-
 export type ConnectionPropertiesV2InputSharedUserListList = Array<string>;
-const ConnectionPropertiesV2InputSharedUserListList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ConnectionPropertiesV2InputSharedUserListList>;
-
 /** Connection property base schema. */
 export interface ConnectionPropertiesV2Input {
   /** Authentication type of the connection target */
@@ -2022,11 +1441,6 @@ export interface ConnectionPropertiesV2Input {
   /** Auth-type-specific credentials (polymorphic on `authType`), e.g. `{ key }` for ApiKey or `{ keys: {...} }` for CustomKeys. Write-only. */
   credentials?: unknown;
 }
-const ConnectionPropertiesV2Input = /*@__PURE__*/ __L.at(
-  __c12,
-  4,
-) as any as S.Schema<ConnectionPropertiesV2Input>;
-
 export interface CreateAccountConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2039,11 +1453,6 @@ export interface CreateAccountConnectionRequest {
   /** Connection property base schema. */
   properties: ConnectionPropertiesV2Input;
 }
-const CreateAccountConnectionRequest = /*@__PURE__*/ __L.at(
-  __c12,
-  5,
-) as any as S.Schema<CreateAccountConnectionRequest>;
-
 /** Group based on connection category */
 export type ConnectionGroup =
   | "Azure"
@@ -2053,17 +1462,9 @@ export type ConnectionGroup =
   | "File"
   | "GenericProtocol"
   | "ServicesAndApps";
-const ConnectionGroup = S.String;
-
 /** Store user metadata for this connection */
 export type ConnectionPropertiesV2MetadataMap = { [key: string]: string | undefined };
-const ConnectionPropertiesV2MetadataMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<ConnectionPropertiesV2MetadataMap>;
-
 export type ConnectionPropertiesV2SharedUserListList = Array<string>;
-const ConnectionPropertiesV2SharedUserListList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ConnectionPropertiesV2SharedUserListList>;
-
 /** Connection property base schema. */
 export interface ConnectionPropertiesV2 {
   /** Authentication type of the connection target */
@@ -2089,11 +1490,6 @@ export interface ConnectionPropertiesV2 {
   target?: string;
   useWorkspaceManagedIdentity?: boolean;
 }
-const ConnectionPropertiesV2 = /*@__PURE__*/ __L.at(
-  __c12,
-  6,
-) as any as S.Schema<ConnectionPropertiesV2>;
-
 export interface CreateAccountConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2106,11 +1502,6 @@ export interface CreateAccountConnectionResponse {
   /** Connection property base schema. */
   properties: ConnectionPropertiesV2;
 }
-const CreateAccountConnectionResponse = /*@__PURE__*/ __L.at(
-  __c12,
-  7,
-) as any as S.Schema<CreateAccountConnectionResponse>;
-
 /** Properties of Cognitive Services Project'. */
 export interface ProjectPropertiesInput {
   /** The display name of the Cognitive Services Project. */
@@ -2118,16 +1509,8 @@ export interface ProjectPropertiesInput {
   /** The description of the Cognitive Services Project. */
   description?: string;
 }
-const ProjectPropertiesInput = /*@__PURE__*/ __L.at(
-  __c13,
-  0,
-) as any as S.Schema<ProjectPropertiesInput>;
-
 /** Resource tags. */
 export type CreateProjectRequestTagsMap = { [key: string]: string | undefined };
-const CreateProjectRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CreateProjectRequestTagsMap>;
-
 export interface CreateProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2146,16 +1529,8 @@ export interface CreateProjectRequest {
   /** Identity for the resource. */
   identity?: IdentityInput;
 }
-const CreateProjectRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  1,
-) as any as S.Schema<CreateProjectRequest>;
-
 /** The list of endpoint for this Cognitive Services Project. */
 export type ProjectPropertiesEndpointsMap = { [key: string]: string | undefined };
-const ProjectPropertiesEndpointsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<ProjectPropertiesEndpointsMap>;
-
 /** Properties of Cognitive Services Project'. */
 export interface ProjectProperties {
   /** Gets the status of the cognitive services project at the time the operation was called. */
@@ -2169,13 +1544,8 @@ export interface ProjectProperties {
   /** Indicates whether the project is the default project for the account. */
   isDefault?: boolean;
 }
-const ProjectProperties = /*@__PURE__*/ __L.at(__c13, 2) as any as S.Schema<ProjectProperties>;
-
 /** Resource tags. */
 export type CreateProjectResponseTagsMap = { [key: string]: string | undefined };
-const CreateProjectResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CreateProjectResponseTagsMap>;
-
 export interface CreateProjectResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2196,11 +1566,6 @@ export interface CreateProjectResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-const CreateProjectResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  3,
-) as any as S.Schema<CreateProjectResponse>;
-
 export interface CreateProjectConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2215,11 +1580,6 @@ export interface CreateProjectConnectionRequest {
   /** Connection property base schema. */
   properties: ConnectionPropertiesV2Input;
 }
-const CreateProjectConnectionRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  4,
-) as any as S.Schema<CreateProjectConnectionRequest>;
-
 export interface CreateProjectConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2232,30 +1592,17 @@ export interface CreateProjectConnectionResponse {
   /** Connection property base schema. */
   properties: ConnectionPropertiesV2;
 }
-const CreateProjectConnectionResponse =
-  CreateAccountConnectionResponse as any as S.Schema<CreateProjectConnectionResponse>;
-
 /** Defender for AI state on the AI resource. */
 export type DefenderForAISettingState = "Disabled" | "Enabled";
-const DefenderForAISettingState = S.String;
-
 /** The Defender for AI resource properties. */
 export interface DefenderForAISettingProperties {
   /** Defender for AI state on the AI resource. */
   state?: DefenderForAISettingState | (string & {});
 }
-const DefenderForAISettingProperties = /*@__PURE__*/ __L.at(
-  __c13,
-  5,
-) as any as S.Schema<DefenderForAISettingProperties>;
-
 /** Resource tags. */
 export type DefenderForAISettingsCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const DefenderForAISettingsCreateOrUpdateRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<DefenderForAISettingsCreateOrUpdateRequestTagsMap>;
-
 export interface DefenderForAISettingsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2270,18 +1617,10 @@ export interface DefenderForAISettingsCreateOrUpdateRequest {
   /** Resource tags. */
   tags?: DefenderForAISettingsCreateOrUpdateRequestTagsMap;
 }
-const DefenderForAISettingsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c13,
-  6,
-) as any as S.Schema<DefenderForAISettingsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type DefenderForAISettingsCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
 };
-const DefenderForAISettingsCreateOrUpdateResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<DefenderForAISettingsCreateOrUpdateResponseTagsMap>;
-
 export interface DefenderForAISettingsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2298,11 +1637,6 @@ export interface DefenderForAISettingsCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: DefenderForAISettingsCreateOrUpdateResponseTagsMap;
 }
-const DefenderForAISettingsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c13,
-  7,
-) as any as S.Schema<DefenderForAISettingsCreateOrUpdateResponse>;
-
 export interface DeleteAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2311,14 +1645,7 @@ export interface DeleteAccountRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const DeleteAccountRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  0,
-) as any as S.Schema<DeleteAccountRequest>;
-
 export interface DeleteAccountResponse {}
-const DeleteAccountResponse = UserAssignedIdentityInput as any as S.Schema<DeleteAccountResponse>;
-
 export interface DeleteAccountCapabilityHostRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2329,17 +1656,7 @@ export interface DeleteAccountCapabilityHostRequest {
   /** The name of the capability host associated with the Cognitive Services Resource */
   capabilityHostName: string;
 }
-const DeleteAccountCapabilityHostRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  1,
-) as any as S.Schema<DeleteAccountCapabilityHostRequest>;
-
 export interface DeleteAccountCapabilityHostResponse {}
-const DeleteAccountCapabilityHostResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  2,
-) as any as S.Schema<DeleteAccountCapabilityHostResponse>;
-
 export interface DeleteAccountConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2350,17 +1667,7 @@ export interface DeleteAccountConnectionRequest {
   /** Friendly name of the connection */
   connectionName: string;
 }
-const DeleteAccountConnectionRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  3,
-) as any as S.Schema<DeleteAccountConnectionRequest>;
-
 export interface DeleteAccountConnectionResponse {}
-const DeleteAccountConnectionResponse = /*@__PURE__*/ __L.at(
-  __c14,
-  4,
-) as any as S.Schema<DeleteAccountConnectionResponse>;
-
 export interface DeleteAgentApplicationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2373,15 +1680,7 @@ export interface DeleteAgentApplicationRequest {
   /** Name for the Agent Application. */
   name: string;
 }
-const DeleteAgentApplicationRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  5,
-) as any as S.Schema<DeleteAgentApplicationRequest>;
-
 export interface DeleteAgentApplicationResponse {}
-const DeleteAgentApplicationResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteAgentApplicationResponse>;
-
 export interface DeleteAgentDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2396,15 +1695,7 @@ export interface DeleteAgentDeploymentRequest {
   /** The name of the deployment associated with the Cognitive Services Account */
   deploymentName: string;
 }
-const DeleteAgentDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  6,
-) as any as S.Schema<DeleteAgentDeploymentRequest>;
-
 export interface DeleteAgentDeploymentResponse {}
-const DeleteAgentDeploymentResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteAgentDeploymentResponse>;
-
 export interface DeleteCommitmentPlanRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2415,15 +1706,7 @@ export interface DeleteCommitmentPlanRequest {
   /** The name of the commitmentPlan associated with the Cognitive Services Account */
   commitmentPlanName: string;
 }
-const DeleteCommitmentPlanRequest = /*@__PURE__*/ __L.at(
-  __c14,
-  7,
-) as any as S.Schema<DeleteCommitmentPlanRequest>;
-
 export interface DeleteCommitmentPlanResponse {}
-const DeleteCommitmentPlanResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteCommitmentPlanResponse>;
-
 export interface DeleteCommitmentPlanAssociationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2434,15 +1717,7 @@ export interface DeleteCommitmentPlanAssociationRequest {
   /** The name of the commitment plan association with the Cognitive Services Account */
   commitmentPlanAssociationName: string;
 }
-const DeleteCommitmentPlanAssociationRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  0,
-) as any as S.Schema<DeleteCommitmentPlanAssociationRequest>;
-
 export interface DeleteCommitmentPlanAssociationResponse {}
-const DeleteCommitmentPlanAssociationResponse =
-  DeleteAccountCapabilityHostResponse as any as S.Schema<DeleteCommitmentPlanAssociationResponse>;
-
 export interface DeleteCommitmentPlanPlanRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2451,15 +1726,7 @@ export interface DeleteCommitmentPlanPlanRequest {
   /** The name of the commitmentPlan associated with the Cognitive Services Account */
   commitmentPlanName: string;
 }
-const DeleteCommitmentPlanPlanRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  1,
-) as any as S.Schema<DeleteCommitmentPlanPlanRequest>;
-
 export interface DeleteCommitmentPlanPlanResponse {}
-const DeleteCommitmentPlanPlanResponse =
-  DeleteAccountCapabilityHostResponse as any as S.Schema<DeleteCommitmentPlanPlanResponse>;
-
 export interface DeleteDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2470,15 +1737,7 @@ export interface DeleteDeploymentRequest {
   /** The name of the deployment associated with the Cognitive Services Account */
   deploymentName: string;
 }
-const DeleteDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  2,
-) as any as S.Schema<DeleteDeploymentRequest>;
-
 export interface DeleteDeploymentResponse {}
-const DeleteDeploymentResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteDeploymentResponse>;
-
 export interface DeleteEncryptionScopeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2489,15 +1748,7 @@ export interface DeleteEncryptionScopeRequest {
   /** The name of the encryptionScope associated with the Cognitive Services Account */
   encryptionScopeName: string;
 }
-const DeleteEncryptionScopeRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  3,
-) as any as S.Schema<DeleteEncryptionScopeRequest>;
-
 export interface DeleteEncryptionScopeResponse {}
-const DeleteEncryptionScopeResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteEncryptionScopeResponse>;
-
 export interface DeleteManagedNetworkSettingsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2508,15 +1759,7 @@ export interface DeleteManagedNetworkSettingsRequest {
   /** Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported. */
   managedNetworkName: string;
 }
-const DeleteManagedNetworkSettingsRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  4,
-) as any as S.Schema<DeleteManagedNetworkSettingsRequest>;
-
 export interface DeleteManagedNetworkSettingsResponse {}
-const DeleteManagedNetworkSettingsResponse =
-  DeleteAccountCapabilityHostResponse as any as S.Schema<DeleteManagedNetworkSettingsResponse>;
-
 export interface DeleteOutboundRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2529,15 +1772,7 @@ export interface DeleteOutboundRuleRequest {
   /** Name of the cognitive services account managed network outbound rule */
   ruleName: string;
 }
-const DeleteOutboundRuleRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  5,
-) as any as S.Schema<DeleteOutboundRuleRequest>;
-
 export interface DeleteOutboundRuleResponse {}
-const DeleteOutboundRuleResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteOutboundRuleResponse>;
-
 export interface DeletePrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2548,15 +1783,7 @@ export interface DeletePrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Cognitive Services Account */
   privateEndpointConnectionName: string;
 }
-const DeletePrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  6,
-) as any as S.Schema<DeletePrivateEndpointConnectionRequest>;
-
 export interface DeletePrivateEndpointConnectionResponse {}
-const DeletePrivateEndpointConnectionResponse =
-  DeleteAccountCapabilityHostResponse as any as S.Schema<DeletePrivateEndpointConnectionResponse>;
-
 export interface DeleteProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2567,14 +1794,7 @@ export interface DeleteProjectRequest {
   /** The name of Cognitive Services account's project. */
   projectName: string;
 }
-const DeleteProjectRequest = /*@__PURE__*/ __L.at(
-  __c15,
-  7,
-) as any as S.Schema<DeleteProjectRequest>;
-
 export interface DeleteProjectResponse {}
-const DeleteProjectResponse = UserAssignedIdentityInput as any as S.Schema<DeleteProjectResponse>;
-
 export interface DeleteProjectCapabilityHostRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2587,15 +1807,7 @@ export interface DeleteProjectCapabilityHostRequest {
   /** The name of the capability host associated with the Cognitive Services Resource */
   capabilityHostName: string;
 }
-const DeleteProjectCapabilityHostRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  0,
-) as any as S.Schema<DeleteProjectCapabilityHostRequest>;
-
 export interface DeleteProjectCapabilityHostResponse {}
-const DeleteProjectCapabilityHostResponse =
-  DeleteAccountCapabilityHostResponse as any as S.Schema<DeleteProjectCapabilityHostResponse>;
-
 export interface DeleteProjectConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2608,15 +1820,7 @@ export interface DeleteProjectConnectionRequest {
   /** Friendly name of the connection */
   connectionName: string;
 }
-const DeleteProjectConnectionRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  1,
-) as any as S.Schema<DeleteProjectConnectionRequest>;
-
 export interface DeleteProjectConnectionResponse {}
-const DeleteProjectConnectionResponse =
-  DeleteAccountConnectionResponse as any as S.Schema<DeleteProjectConnectionResponse>;
-
 export interface DeleteRaiBlocklistRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2627,15 +1831,7 @@ export interface DeleteRaiBlocklistRequest {
   /** The name of the RaiBlocklist associated with the Cognitive Services Account */
   raiBlocklistName: string;
 }
-const DeleteRaiBlocklistRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  2,
-) as any as S.Schema<DeleteRaiBlocklistRequest>;
-
 export interface DeleteRaiBlocklistResponse {}
-const DeleteRaiBlocklistResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteRaiBlocklistResponse>;
-
 export interface DeleteRaiBlocklistItemRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2648,20 +1844,9 @@ export interface DeleteRaiBlocklistItemRequest {
   /** The name of the RaiBlocklist Item associated with the custom blocklist */
   raiBlocklistItemName: string;
 }
-const DeleteRaiBlocklistItemRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  3,
-) as any as S.Schema<DeleteRaiBlocklistItemRequest>;
-
 export interface DeleteRaiBlocklistItemResponse {}
-const DeleteRaiBlocklistItemResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteRaiBlocklistItemResponse>;
-
 /** The list of Cognitive Services RaiBlocklist Items Names. */
 export type RaiBlocklistItemsBulkDeleteRequest = Array<string>;
-const RaiBlocklistItemsBulkDeleteRequest =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<RaiBlocklistItemsBulkDeleteRequest>;
-
 export interface DeleteRaiBlocklistItemBatchRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2673,30 +1858,14 @@ export interface DeleteRaiBlocklistItemBatchRequest {
   raiBlocklistName: string;
   body: RaiBlocklistItemsBulkDeleteRequest;
 }
-const DeleteRaiBlocklistItemBatchRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  4,
-) as any as S.Schema<DeleteRaiBlocklistItemBatchRequest>;
-
 export interface DeleteRaiBlocklistItemBatchResponse {}
-const DeleteRaiBlocklistItemBatchResponse =
-  DeleteAccountCapabilityHostResponse as any as S.Schema<DeleteRaiBlocklistItemBatchResponse>;
-
 export interface DeleteRaiExternalSafetyProviderRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the Rai External Safety Provider associated with the Cognitive Services Account */
   safetyProviderName: string;
 }
-const DeleteRaiExternalSafetyProviderRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  5,
-) as any as S.Schema<DeleteRaiExternalSafetyProviderRequest>;
-
 export interface DeleteRaiExternalSafetyProviderResponse {}
-const DeleteRaiExternalSafetyProviderResponse =
-  DeleteAccountCapabilityHostResponse as any as S.Schema<DeleteRaiExternalSafetyProviderResponse>;
-
 export interface DeleteRaiPolicyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2707,15 +1876,7 @@ export interface DeleteRaiPolicyRequest {
   /** The name of the RaiPolicy associated with the Cognitive Services Account */
   raiPolicyName: string;
 }
-const DeleteRaiPolicyRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  6,
-) as any as S.Schema<DeleteRaiPolicyRequest>;
-
 export interface DeleteRaiPolicyResponse {}
-const DeleteRaiPolicyResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteRaiPolicyResponse>;
-
 export interface DeleteRaiToolLabelRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2726,15 +1887,7 @@ export interface DeleteRaiToolLabelRequest {
   /** The name of the Rai Tool Label */
   raiToolConnectionName: string;
 }
-const DeleteRaiToolLabelRequest = /*@__PURE__*/ __L.at(
-  __c16,
-  7,
-) as any as S.Schema<DeleteRaiToolLabelRequest>;
-
 export interface DeleteRaiToolLabelResponse {}
-const DeleteRaiToolLabelResponse =
-  UserAssignedIdentityInput as any as S.Schema<DeleteRaiToolLabelResponse>;
-
 export interface DeleteRaiTopicRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2745,33 +1898,16 @@ export interface DeleteRaiTopicRequest {
   /** The name of the Rai Topic associated with the Cognitive Services Account */
   raiTopicName: string;
 }
-const DeleteRaiTopicRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  0,
-) as any as S.Schema<DeleteRaiTopicRequest>;
-
 export interface DeleteRaiTopicResponse {}
-const DeleteRaiTopicResponse = UserAssignedIdentityInput as any as S.Schema<DeleteRaiTopicResponse>;
-
 export interface DeleteSubscriptionRaiPolicyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the RaiPolicy associated with the Cognitive Services Account */
   raiPolicyName: string;
 }
-const DeleteSubscriptionRaiPolicyRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  1,
-) as any as S.Schema<DeleteSubscriptionRaiPolicyRequest>;
-
 export interface DeleteSubscriptionRaiPolicyResponse {}
-const DeleteSubscriptionRaiPolicyResponse =
-  DeleteAccountCapabilityHostResponse as any as S.Schema<DeleteSubscriptionRaiPolicyResponse>;
-
 /** Deployment scale type. */
 export type DeploymentScaleType = "Standard" | "Manual";
-const DeploymentScaleType = S.String;
-
 /** Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.) */
 export interface DeploymentScaleSettingsInput {
   /** Deployment scale type. */
@@ -2779,18 +1915,11 @@ export interface DeploymentScaleSettingsInput {
   /** Deployment capacity. */
   capacity?: number;
 }
-const DeploymentScaleSettingsInput = /*@__PURE__*/ __L.at(
-  __c17,
-  2,
-) as any as S.Schema<DeploymentScaleSettingsInput>;
-
 /** Deployment model version upgrade option. */
 export type DeploymentModelVersionUpgradeOption =
   | "OnceNewDefaultVersionAvailable"
   | "OnceCurrentVersionExpired"
   | "NoAutoUpgrade";
-const DeploymentModelVersionUpgradeOption = S.String;
-
 /** Internal use only. */
 export interface DeploymentCapacitySettings {
   /** The designated capacity. */
@@ -2798,30 +1927,14 @@ export interface DeploymentCapacitySettings {
   /** The priority of this capacity setting. */
   priority?: number;
 }
-const DeploymentCapacitySettings = /*@__PURE__*/ __L.at(
-  __c17,
-  3,
-) as any as S.Schema<DeploymentCapacitySettings>;
-
 /** The service tier for the deployment. Determines the pricing and performance level for request processing. Use 'Default' for standard pricing or 'Priority' for higher-priority processing with premium pricing. Note: Pause operations are only supported on Standard, DataZoneStandard, and GlobalStandard SKUs. */
 export type ServiceTier = "Default" | "Priority";
-const ServiceTier = S.String;
-
 /** The state of the deployment. Controls whether the deployment is accepting inference requests. Use 'Running' for active deployments that process requests, or 'Paused' to temporarily stop inference while preserving the deployment configuration. */
 export type DeploymentState = "Running" | "Paused";
-const DeploymentState = S.String;
-
 /** The model-router routing mode that determines how requests are distributed across models. */
 export type DeploymentRoutingMode = "cost" | "balanced" | "quality";
-const DeploymentRoutingMode = S.String;
-
 /** Optional. The list of model-router supported models that the model router can use to route requests across. If not specified, the model router will route to all available models specified in the model-router version. */
 export type DeploymentRoutingModelsList = Array<DeploymentModel>;
-const DeploymentRoutingModelsList = /*@__PURE__*/ __L.at(
-  __c17,
-  4,
-) as any as S.Schema<DeploymentRoutingModelsList>;
-
 /** Routing configuration for the model-router deployment. Specifies how requests are routed across multiple models. */
 export interface DeploymentRouting {
   /** The model-router routing mode that determines how requests are distributed across models. */
@@ -2829,8 +1942,6 @@ export interface DeploymentRouting {
   /** Optional. The list of model-router supported models that the model router can use to route requests across. If not specified, the model router will route to all available models specified in the model-router version. */
   models?: DeploymentRoutingModelsList;
 }
-const DeploymentRouting = /*@__PURE__*/ __L.at(__c17, 5) as any as S.Schema<DeploymentRouting>;
-
 /** Properties of Cognitive Services account deployment. */
 export interface DeploymentPropertiesInput {
   /** Properties of Cognitive Services account deployment model. */
@@ -2858,16 +1969,8 @@ export interface DeploymentPropertiesInput {
   /** Routing configuration for the model-router deployment. This property is only applicable when the deployed model is 'model-router' version 2025-11-18 or later. Allows you to select the models subset for routing and the routing mode (balanced, quality, cost) for routing across all supported models or the model subset. */
   routing?: DeploymentRouting;
 }
-const DeploymentPropertiesInput = /*@__PURE__*/ __L.at(
-  __c17,
-  6,
-) as any as S.Schema<DeploymentPropertiesInput>;
-
 /** Resource tags. */
 export type DeploymentsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const DeploymentsCreateOrUpdateRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<DeploymentsCreateOrUpdateRequestTagsMap>;
-
 export interface DeploymentsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -2884,11 +1987,6 @@ export interface DeploymentsCreateOrUpdateRequest {
   /** Resource tags. */
   tags?: DeploymentsCreateOrUpdateRequestTagsMap;
 }
-const DeploymentsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c17,
-  7,
-) as any as S.Schema<DeploymentsCreateOrUpdateRequest>;
-
 /** Gets the status of the resource at the time the operation was called. */
 export type DeploymentProvisioningState =
   | "Accepted"
@@ -2899,8 +1997,6 @@ export type DeploymentProvisioningState =
   | "Succeeded"
   | "Disabled"
   | "Canceled";
-const DeploymentProvisioningState = S.String;
-
 /** Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.) */
 export interface DeploymentScaleSettings {
   /** Deployment scale type. */
@@ -2910,20 +2006,9 @@ export interface DeploymentScaleSettings {
   /** Deployment active capacity. This value might be different from `capacity` if customer recently updated `capacity`. */
   activeCapacity?: number;
 }
-const DeploymentScaleSettings = /*@__PURE__*/ __L.at(
-  __c18,
-  0,
-) as any as S.Schema<DeploymentScaleSettings>;
-
 /** The capabilities. */
 export type DeploymentPropertiesCapabilitiesMap = { [key: string]: string | undefined };
-const DeploymentPropertiesCapabilitiesMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<DeploymentPropertiesCapabilitiesMap>;
-
 export type DeploymentPropertiesRateLimitsList = Array<ThrottlingRule>;
-const DeploymentPropertiesRateLimitsList =
-  CallRateLimitRulesList as any as S.Schema<DeploymentPropertiesRateLimitsList>;
-
 /** Properties of Cognitive Services account deployment. */
 export interface DeploymentProperties {
   /** Gets the status of the resource at the time the operation was called. */
@@ -2960,16 +2045,8 @@ export interface DeploymentProperties {
   /** Routing configuration for the model-router deployment. This property is only applicable when the deployed model is 'model-router' version 2025-11-18 or later. Allows you to select the models subset for routing and the routing mode (balanced, quality, cost) for routing across all supported models or the model subset. */
   routing?: DeploymentRouting;
 }
-const DeploymentProperties = /*@__PURE__*/ __L.at(
-  __c18,
-  1,
-) as any as S.Schema<DeploymentProperties>;
-
 /** Resource tags. */
 export type DeploymentsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const DeploymentsCreateOrUpdateResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<DeploymentsCreateOrUpdateResponseTagsMap>;
-
 export interface DeploymentsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -2988,11 +2065,6 @@ export interface DeploymentsCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: DeploymentsCreateOrUpdateResponseTagsMap;
 }
-const DeploymentsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c18,
-  2,
-) as any as S.Schema<DeploymentsCreateOrUpdateResponse>;
-
 export interface DisableAgentApplicationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3005,15 +2077,7 @@ export interface DisableAgentApplicationRequest {
   /** Name for the Agent Application. */
   name: string;
 }
-const DisableAgentApplicationRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  3,
-) as any as S.Schema<DisableAgentApplicationRequest>;
-
 export interface DisableAgentApplicationResponse {}
-const DisableAgentApplicationResponse =
-  DeleteAccountConnectionResponse as any as S.Schema<DisableAgentApplicationResponse>;
-
 export interface EnableAgentApplicationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3026,25 +2090,13 @@ export interface EnableAgentApplicationRequest {
   /** Name for the Agent Application. */
   name: string;
 }
-const EnableAgentApplicationRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  4,
-) as any as S.Schema<EnableAgentApplicationRequest>;
-
 export interface EnableAgentApplicationResponse {}
-const EnableAgentApplicationResponse =
-  UserAssignedIdentityInput as any as S.Schema<EnableAgentApplicationResponse>;
-
 /** Enumerates the possible value of keySource for Encryption */
 export type EncryptionScopePropertiesInputKeySource =
   | "Microsoft.CognitiveServices"
   | "Microsoft.KeyVault";
-const EncryptionScopePropertiesInputKeySource = S.String;
-
 /** The encryptionScope state. */
 export type EncryptionScopeState = "Disabled" | "Enabled";
-const EncryptionScopeState = S.String;
-
 /** Properties to EncryptionScope */
 export interface EncryptionScopePropertiesInput {
   /** Properties of KeyVault */
@@ -3054,16 +2106,8 @@ export interface EncryptionScopePropertiesInput {
   /** The encryptionScope state. */
   state?: EncryptionScopeState | (string & {});
 }
-const EncryptionScopePropertiesInput = /*@__PURE__*/ __L.at(
-  __c18,
-  5,
-) as any as S.Schema<EncryptionScopePropertiesInput>;
-
 /** Resource tags. */
 export type EncryptionScopesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const EncryptionScopesCreateOrUpdateRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<EncryptionScopesCreateOrUpdateRequestTagsMap>;
-
 export interface EncryptionScopesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3078,17 +2122,10 @@ export interface EncryptionScopesCreateOrUpdateRequest {
   /** Resource tags. */
   tags?: EncryptionScopesCreateOrUpdateRequestTagsMap;
 }
-const EncryptionScopesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c18,
-  6,
-) as any as S.Schema<EncryptionScopesCreateOrUpdateRequest>;
-
 /** Enumerates the possible value of keySource for Encryption */
 export type EncryptionScopePropertiesKeySource =
   | "Microsoft.CognitiveServices"
   | "Microsoft.KeyVault";
-const EncryptionScopePropertiesKeySource = S.String;
-
 /** Gets the status of the resource at the time the operation was called. */
 export type EncryptionScopeProvisioningState =
   | "Accepted"
@@ -3098,8 +2135,6 @@ export type EncryptionScopeProvisioningState =
   | "Failed"
   | "Succeeded"
   | "Canceled";
-const EncryptionScopeProvisioningState = S.String;
-
 /** Properties to EncryptionScope */
 export interface EncryptionScopeProperties {
   /** Properties of KeyVault */
@@ -3111,16 +2146,8 @@ export interface EncryptionScopeProperties {
   /** The encryptionScope state. */
   state?: EncryptionScopeState;
 }
-const EncryptionScopeProperties = /*@__PURE__*/ __L.at(
-  __c18,
-  7,
-) as any as S.Schema<EncryptionScopeProperties>;
-
 /** Resource tags. */
 export type EncryptionScopesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const EncryptionScopesCreateOrUpdateResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<EncryptionScopesCreateOrUpdateResponseTagsMap>;
-
 export interface EncryptionScopesCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3137,11 +2164,6 @@ export interface EncryptionScopesCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: EncryptionScopesCreateOrUpdateResponseTagsMap;
 }
-const EncryptionScopesCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c19,
-  0,
-) as any as S.Schema<EncryptionScopesCreateOrUpdateResponse>;
-
 export interface GetAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3150,8 +2172,6 @@ export interface GetAccountRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const GetAccountRequest = /*@__PURE__*/ __L.at(__c19, 1) as any as S.Schema<GetAccountRequest>;
-
 /** Resource tags. */
 export type GetAccountResponseTagsMap = { [key: string]: string | undefined };
 export interface GetAccountResponse {
@@ -3178,8 +2198,6 @@ export interface GetAccountResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-const GetAccountResponse = CreateAccountResponse as any as S.Schema<GetAccountResponse>;
-
 export interface GetAccountCapabilityHostRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3190,11 +2208,6 @@ export interface GetAccountCapabilityHostRequest {
   /** The name of the capability host associated with the Cognitive Services Resource */
   capabilityHostName: string;
 }
-const GetAccountCapabilityHostRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  2,
-) as any as S.Schema<GetAccountCapabilityHostRequest>;
-
 export interface GetAccountCapabilityHostResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3207,9 +2220,6 @@ export interface GetAccountCapabilityHostResponse {
   /** [Required] Additional attributes of the entity. */
   properties: CapabilityHostProperties;
 }
-const GetAccountCapabilityHostResponse =
-  AccountCapabilityHostsCreateOrUpdateResponse as any as S.Schema<GetAccountCapabilityHostResponse>;
-
 export interface GetAccountConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3220,11 +2230,6 @@ export interface GetAccountConnectionRequest {
   /** Friendly name of the connection */
   connectionName: string;
 }
-const GetAccountConnectionRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  3,
-) as any as S.Schema<GetAccountConnectionRequest>;
-
 export interface GetAccountConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3237,9 +2242,6 @@ export interface GetAccountConnectionResponse {
   /** Connection property base schema. */
   properties: ConnectionPropertiesV2;
 }
-const GetAccountConnectionResponse =
-  CreateAccountConnectionResponse as any as S.Schema<GetAccountConnectionResponse>;
-
 export interface GetAgentApplicationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3252,11 +2254,6 @@ export interface GetAgentApplicationRequest {
   /** Name for the Agent Application. */
   name: string;
 }
-const GetAgentApplicationRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  4,
-) as any as S.Schema<GetAgentApplicationRequest>;
-
 export interface GetAgentApplicationResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3269,9 +2266,6 @@ export interface GetAgentApplicationResponse {
   /** [Required] Additional attributes of the entity. */
   properties: AgenticApplicationProperties;
 }
-const GetAgentApplicationResponse =
-  AgentApplicationsCreateOrUpdateResponse as any as S.Schema<GetAgentApplicationResponse>;
-
 export interface GetAgentDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3286,11 +2280,6 @@ export interface GetAgentDeploymentRequest {
   /** The name of the deployment associated with the Cognitive Services Account */
   deploymentName: string;
 }
-const GetAgentDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  5,
-) as any as S.Schema<GetAgentDeploymentRequest>;
-
 export interface GetAgentDeploymentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3303,9 +2292,6 @@ export interface GetAgentDeploymentResponse {
   /** [Required] Additional attributes of the entity. */
   properties: AgentDeploymentProperties;
 }
-const GetAgentDeploymentResponse =
-  AgentDeploymentsCreateOrUpdateResponse as any as S.Schema<GetAgentDeploymentResponse>;
-
 export interface GetCommitmentPlanRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3316,11 +2302,6 @@ export interface GetCommitmentPlanRequest {
   /** The name of the commitmentPlan associated with the Cognitive Services Account */
   commitmentPlanName: string;
 }
-const GetCommitmentPlanRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  6,
-) as any as S.Schema<GetCommitmentPlanRequest>;
-
 /** Resource tags. */
 export type GetCommitmentPlanResponseTagsMap = { [key: string]: string | undefined };
 export interface GetCommitmentPlanResponse {
@@ -3345,9 +2326,6 @@ export interface GetCommitmentPlanResponse {
   /** The resource model definition representing SKU */
   sku?: Sku;
 }
-const GetCommitmentPlanResponse =
-  CommitmentPlansCreateOrUpdateResponse as any as S.Schema<GetCommitmentPlanResponse>;
-
 export interface GetCommitmentPlanAssociationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3358,11 +2336,6 @@ export interface GetCommitmentPlanAssociationRequest {
   /** The name of the commitment plan association with the Cognitive Services Account */
   commitmentPlanAssociationName: string;
 }
-const GetCommitmentPlanAssociationRequest = /*@__PURE__*/ __L.at(
-  __c19,
-  7,
-) as any as S.Schema<GetCommitmentPlanAssociationRequest>;
-
 /** Resource tags. */
 export type GetCommitmentPlanAssociationResponseTagsMap = { [key: string]: string | undefined };
 export interface GetCommitmentPlanAssociationResponse {
@@ -3381,9 +2354,6 @@ export interface GetCommitmentPlanAssociationResponse {
   /** Resource tags. */
   tags?: GetCommitmentPlanAssociationResponseTagsMap;
 }
-const GetCommitmentPlanAssociationResponse =
-  CommitmentPlansCreateOrUpdateAssociationResponse as any as S.Schema<GetCommitmentPlanAssociationResponse>;
-
 export interface GetCommitmentPlanPlanRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3392,11 +2362,6 @@ export interface GetCommitmentPlanPlanRequest {
   /** The name of the commitmentPlan associated with the Cognitive Services Account */
   commitmentPlanName: string;
 }
-const GetCommitmentPlanPlanRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  0,
-) as any as S.Schema<GetCommitmentPlanPlanRequest>;
-
 /** Resource tags. */
 export type GetCommitmentPlanPlanResponseTagsMap = { [key: string]: string | undefined };
 export interface GetCommitmentPlanPlanResponse {
@@ -3421,9 +2386,6 @@ export interface GetCommitmentPlanPlanResponse {
   /** The resource model definition representing SKU */
   sku?: Sku;
 }
-const GetCommitmentPlanPlanResponse =
-  CommitmentPlansCreateOrUpdateResponse as any as S.Schema<GetCommitmentPlanPlanResponse>;
-
 export interface GetDefenderForAISettingsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3434,11 +2396,6 @@ export interface GetDefenderForAISettingsRequest {
   /** The name of the defender for AI setting. */
   defenderForAISettingName: string;
 }
-const GetDefenderForAISettingsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  1,
-) as any as S.Schema<GetDefenderForAISettingsRequest>;
-
 /** Resource tags. */
 export type GetDefenderForAISettingsResponseTagsMap = { [key: string]: string | undefined };
 export interface GetDefenderForAISettingsResponse {
@@ -3457,9 +2414,6 @@ export interface GetDefenderForAISettingsResponse {
   /** Resource tags. */
   tags?: GetDefenderForAISettingsResponseTagsMap;
 }
-const GetDefenderForAISettingsResponse =
-  DefenderForAISettingsCreateOrUpdateResponse as any as S.Schema<GetDefenderForAISettingsResponse>;
-
 export interface GetDeletedAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3470,16 +2424,8 @@ export interface GetDeletedAccountRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const GetDeletedAccountRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  2,
-) as any as S.Schema<GetDeletedAccountRequest>;
-
 /** Resource tags. */
 export type GetDeletedAccountResponseTagsMap = { [key: string]: string | undefined };
-const GetDeletedAccountResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetDeletedAccountResponseTagsMap>;
-
 export interface GetDeletedAccountResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3504,11 +2450,6 @@ export interface GetDeletedAccountResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-const GetDeletedAccountResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  3,
-) as any as S.Schema<GetDeletedAccountResponse>;
-
 export interface GetDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3519,16 +2460,8 @@ export interface GetDeploymentRequest {
   /** The name of the deployment associated with the Cognitive Services Account */
   deploymentName: string;
 }
-const GetDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  4,
-) as any as S.Schema<GetDeploymentRequest>;
-
 /** Resource tags. */
 export type GetDeploymentResponseTagsMap = { [key: string]: string | undefined };
-const GetDeploymentResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetDeploymentResponseTagsMap>;
-
 export interface GetDeploymentResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3547,11 +2480,6 @@ export interface GetDeploymentResponse {
   /** Resource tags. */
   tags?: GetDeploymentResponseTagsMap;
 }
-const GetDeploymentResponse = /*@__PURE__*/ __L.at(
-  __c20,
-  5,
-) as any as S.Schema<GetDeploymentResponse>;
-
 export interface GetEncryptionScopeRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3562,11 +2490,6 @@ export interface GetEncryptionScopeRequest {
   /** The name of the encryptionScope associated with the Cognitive Services Account */
   encryptionScopeName: string;
 }
-const GetEncryptionScopeRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  6,
-) as any as S.Schema<GetEncryptionScopeRequest>;
-
 /** Resource tags. */
 export type GetEncryptionScopeResponseTagsMap = { [key: string]: string | undefined };
 export interface GetEncryptionScopeResponse {
@@ -3585,9 +2508,6 @@ export interface GetEncryptionScopeResponse {
   /** Resource tags. */
   tags?: GetEncryptionScopeResponseTagsMap;
 }
-const GetEncryptionScopeResponse =
-  EncryptionScopesCreateOrUpdateResponse as any as S.Schema<GetEncryptionScopeResponse>;
-
 export interface GetManagedNetworkSettingsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3598,31 +2518,15 @@ export interface GetManagedNetworkSettingsRequest {
   /** Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported. */
   managedNetworkName: string;
 }
-const GetManagedNetworkSettingsRequest = /*@__PURE__*/ __L.at(
-  __c20,
-  7,
-) as any as S.Schema<GetManagedNetworkSettingsRequest>;
-
 /** Isolation mode for the managed network of a cognitive services account. */
 export type IsolationMode = "Disabled" | "AllowInternetOutbound" | "AllowOnlyApprovedOutbound";
-const IsolationMode = S.String;
-
 /** Category of a managed network Outbound Rule of a cognitive services account. */
 export type RuleCategory = "Required" | "Recommended" | "UserDefined" | "Dependency";
-const RuleCategory = S.String;
-
 /** Type of a managed network Outbound Rule of a cognitive services account. */
 export type RuleStatus = "Inactive" | "Active" | "Provisioning" | "Deleting" | "Failed";
-const RuleStatus = S.String;
-
 /** Type of a managed network Outbound Rule of a cognitive services account. */
 export type RuleType = "FQDN" | "PrivateEndpoint" | "ServiceTag";
-const RuleType = S.String;
-
 export type OutboundRuleParentRuleNamesList = Array<string>;
-const OutboundRuleParentRuleNamesList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<OutboundRuleParentRuleNamesList>;
-
 /** Outbound Rule for the managed network of a cognitive services account. */
 export interface OutboundRule {
   /** Category of a managed network Outbound Rule of a cognitive services account. */
@@ -3637,37 +2541,19 @@ export interface OutboundRule {
   /** Rule destination (polymorphic on `type`). */
   destination?: unknown;
 }
-const OutboundRule = /*@__PURE__*/ __L.at(__c21, 0) as any as S.Schema<OutboundRule>;
-
 /** Dictionary of <OutboundRule> */
 export type ManagedNetworkSettingsExOutboundRulesMap = { [key: string]: OutboundRule | undefined };
-const ManagedNetworkSettingsExOutboundRulesMap = /*@__PURE__*/ __L.at(
-  __c21,
-  1,
-) as any as S.Schema<ManagedNetworkSettingsExOutboundRulesMap>;
-
 /** Status for the managed network of a cognitive services account. */
 export type ManagedNetworkStatus = "Inactive" | "Active";
-const ManagedNetworkStatus = S.String;
-
 /** Status of the Provisioning for the managed network of a cognitive services account. */
 export interface ManagedNetworkProvisionStatus {
   /** Status for the managed network of a cognitive services account. */
   status?: ManagedNetworkStatus | (string & {});
 }
-const ManagedNetworkProvisionStatus = /*@__PURE__*/ __L.at(
-  __c21,
-  2,
-) as any as S.Schema<ManagedNetworkProvisionStatus>;
-
 /** Firewall Sku used for FQDN Rules */
 export type FirewallSku = "Standard" | "Basic";
-const FirewallSku = S.String;
-
 /** The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled. */
 export type ManagedNetworkKind = "V1" | "V2";
-const ManagedNetworkKind = S.String;
-
 export type ManagedNetworkProvisioningState =
   | "Deferred"
   | "Updating"
@@ -3675,14 +2561,7 @@ export type ManagedNetworkProvisioningState =
   | "Failed"
   | "Deleting"
   | "Deleted";
-const ManagedNetworkProvisioningState = S.String;
-
 export type ManagedNetworkSettingsExChangeableIsolationModesList = Array<IsolationMode>;
-const ManagedNetworkSettingsExChangeableIsolationModesList = /*@__PURE__*/ __L.at(
-  __c21,
-  3,
-) as any as S.Schema<ManagedNetworkSettingsExChangeableIsolationModesList>;
-
 export interface ManagedNetworkSettingsEx {
   /** Isolation mode for the managed network of a cognitive services account. */
   isolationMode?: IsolationMode;
@@ -3701,11 +2580,6 @@ export interface ManagedNetworkSettingsEx {
   provisioningState?: ManagedNetworkProvisioningState;
   changeableIsolationModes?: ManagedNetworkSettingsExChangeableIsolationModesList;
 }
-const ManagedNetworkSettingsEx = /*@__PURE__*/ __L.at(
-  __c21,
-  4,
-) as any as S.Schema<ManagedNetworkSettingsEx>;
-
 /** The properties of the managed network settings of a cognitive services account. */
 export interface ManagedNetworkSettingsProperties {
   /** Managed Network settings for a cognitive services account. */
@@ -3713,11 +2587,6 @@ export interface ManagedNetworkSettingsProperties {
   /** The current deployment state of the managed network resource. The provisioningState is to indicate states for resource provisioning. */
   provisioningState?: ManagedNetworkProvisioningState;
 }
-const ManagedNetworkSettingsProperties = /*@__PURE__*/ __L.at(
-  __c21,
-  5,
-) as any as S.Schema<ManagedNetworkSettingsProperties>;
-
 export interface GetManagedNetworkSettingsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3730,11 +2599,6 @@ export interface GetManagedNetworkSettingsResponse {
   /** The properties of the managed network settings of a cognitive services account. */
   properties?: ManagedNetworkSettingsProperties;
 }
-const GetManagedNetworkSettingsResponse = /*@__PURE__*/ __L.at(
-  __c21,
-  6,
-) as any as S.Schema<GetManagedNetworkSettingsResponse>;
-
 export interface GetNetworkSecurityPerimeterConfigurationRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3745,45 +2609,20 @@ export interface GetNetworkSecurityPerimeterConfigurationRequest {
   /** The name of the NSP Configuration. */
   nspConfigurationName: string;
 }
-const GetNetworkSecurityPerimeterConfigurationRequest = /*@__PURE__*/ __L.at(
-  __c21,
-  7,
-) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationRequest>;
-
 /** IDs of resources that can be associated to the same perimeter to remediate the issue. */
 export type ProvisioningIssuePropertiesSuggestedResourceIdsList = Array<string>;
-const ProvisioningIssuePropertiesSuggestedResourceIdsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ProvisioningIssuePropertiesSuggestedResourceIdsList>;
-
 /** Direction of Access Rule */
 export type NspAccessRuleDirection = "Inbound" | "Outbound";
-const NspAccessRuleDirection = S.String;
-
 /** Address prefixes for inbound rules */
 export type NetworkSecurityPerimeterAccessRulePropertiesAddressPrefixesList = Array<string>;
-const NetworkSecurityPerimeterAccessRulePropertiesAddressPrefixesList = /*@__PURE__*/ __L.at(
-  __c22,
-  0,
-) as any as S.Schema<NetworkSecurityPerimeterAccessRulePropertiesAddressPrefixesList>;
-
 /** Subscription for inbound rule */
 export interface NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsItem {
   /** Fully qualified identifier of subscription */
   id?: string;
 }
-const NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsItem = /*@__PURE__*/ __L.at(
-  __c22,
-  1,
-) as any as S.Schema<NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsItem>;
-
 /** Subscriptions for inbound rules */
 export type NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsList =
   Array<NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsItem>;
-const NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsList = /*@__PURE__*/ __L.at(
-  __c22,
-  2,
-) as any as S.Schema<NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsList>;
-
 /** Information about a linked Network Security Perimeter */
 export interface NetworkSecurityPerimeter {
   /** Fully qualified identifier of the resource */
@@ -3793,26 +2632,12 @@ export interface NetworkSecurityPerimeter {
   /** Location of the resource */
   location?: string;
 }
-const NetworkSecurityPerimeter = /*@__PURE__*/ __L.at(
-  __c22,
-  3,
-) as any as S.Schema<NetworkSecurityPerimeter>;
-
 /** NetworkSecurityPerimeters for inbound rules */
 export type NetworkSecurityPerimeterAccessRulePropertiesNetworkSecurityPerimetersList =
   Array<NetworkSecurityPerimeter>;
-const NetworkSecurityPerimeterAccessRulePropertiesNetworkSecurityPerimetersList =
-  /*@__PURE__*/ __L.at(
-    __c22,
-    4,
-  ) as any as S.Schema<NetworkSecurityPerimeterAccessRulePropertiesNetworkSecurityPerimetersList>;
-
 /** Fully qualified domain name for outbound rules */
 export type NetworkSecurityPerimeterAccessRulePropertiesFullyQualifiedDomainNamesList =
   Array<string>;
-const NetworkSecurityPerimeterAccessRulePropertiesFullyQualifiedDomainNamesList =
-  NetworkSecurityPerimeterAccessRulePropertiesAddressPrefixesList as any as S.Schema<NetworkSecurityPerimeterAccessRulePropertiesFullyQualifiedDomainNamesList>;
-
 /** The Properties of Network Security Perimeter Rule */
 export interface NetworkSecurityPerimeterAccessRuleProperties {
   /** Direction of Access Rule */
@@ -3826,11 +2651,6 @@ export interface NetworkSecurityPerimeterAccessRuleProperties {
   /** Fully qualified domain name for outbound rules */
   fullyQualifiedDomainNames?: NetworkSecurityPerimeterAccessRulePropertiesFullyQualifiedDomainNamesList;
 }
-const NetworkSecurityPerimeterAccessRuleProperties = /*@__PURE__*/ __L.at(
-  __c22,
-  5,
-) as any as S.Schema<NetworkSecurityPerimeterAccessRuleProperties>;
-
 /** Network Security Perimeter Access Rule */
 export interface NetworkSecurityPerimeterAccessRule {
   /** Network Security Perimeter Access Rule Name */
@@ -3838,19 +2658,9 @@ export interface NetworkSecurityPerimeterAccessRule {
   /** Properties of Network Security Perimeter Access Rule */
   properties?: NetworkSecurityPerimeterAccessRuleProperties;
 }
-const NetworkSecurityPerimeterAccessRule = /*@__PURE__*/ __L.at(
-  __c22,
-  6,
-) as any as S.Schema<NetworkSecurityPerimeterAccessRule>;
-
 /** Optional array, suggested access rules */
 export type ProvisioningIssuePropertiesSuggestedAccessRulesList =
   Array<NetworkSecurityPerimeterAccessRule>;
-const ProvisioningIssuePropertiesSuggestedAccessRulesList = /*@__PURE__*/ __L.at(
-  __c22,
-  7,
-) as any as S.Schema<ProvisioningIssuePropertiesSuggestedAccessRulesList>;
-
 /** Properties of Provisioning Issue */
 export interface ProvisioningIssueProperties {
   /** Type of Issue */
@@ -3864,27 +2674,15 @@ export interface ProvisioningIssueProperties {
   /** Optional array, suggested access rules */
   suggestedAccessRules?: ProvisioningIssuePropertiesSuggestedAccessRulesList;
 }
-const ProvisioningIssueProperties = /*@__PURE__*/ __L.at(
-  __c23,
-  0,
-) as any as S.Schema<ProvisioningIssueProperties>;
-
 export interface ProvisioningIssue {
   /** Name of the NSP provisioning issue */
   name?: string;
   /** Properties of Provisioning Issue */
   properties?: ProvisioningIssueProperties;
 }
-const ProvisioningIssue = /*@__PURE__*/ __L.at(__c23, 1) as any as S.Schema<ProvisioningIssue>;
-
 /** List of Provisioning Issues */
 export type NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList =
   Array<ProvisioningIssue>;
-const NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList = /*@__PURE__*/ __L.at(
-  __c23,
-  2,
-) as any as S.Schema<NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList>;
-
 /** Network Security Perimeter Configuration Association Information */
 export interface NetworkSecurityPerimeterConfigurationAssociationInfo {
   /** Name of the resource association */
@@ -3892,21 +2690,10 @@ export interface NetworkSecurityPerimeterConfigurationAssociationInfo {
   /** Access Mode of the resource association */
   accessMode?: string;
 }
-const NetworkSecurityPerimeterConfigurationAssociationInfo = /*@__PURE__*/ __L.at(
-  __c23,
-  3,
-) as any as S.Schema<NetworkSecurityPerimeterConfigurationAssociationInfo>;
-
 export type NetworkSecurityPerimeterProfileInfoAccessRulesList =
   Array<NetworkSecurityPerimeterAccessRule>;
-const NetworkSecurityPerimeterProfileInfoAccessRulesList =
-  ProvisioningIssuePropertiesSuggestedAccessRulesList as any as S.Schema<NetworkSecurityPerimeterProfileInfoAccessRulesList>;
-
 /** List of enabled log categories */
 export type NetworkSecurityPerimeterProfileInfoEnabledLogCategoriesList = Array<string>;
-const NetworkSecurityPerimeterProfileInfoEnabledLogCategoriesList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<NetworkSecurityPerimeterProfileInfoEnabledLogCategoriesList>;
-
 /** Network Security Perimeter Profile Information */
 export interface NetworkSecurityPerimeterProfileInfo {
   /** Name of the resource profile */
@@ -3919,11 +2706,6 @@ export interface NetworkSecurityPerimeterProfileInfo {
   /** List of enabled log categories */
   enabledLogCategories?: NetworkSecurityPerimeterProfileInfoEnabledLogCategoriesList;
 }
-const NetworkSecurityPerimeterProfileInfo = /*@__PURE__*/ __L.at(
-  __c23,
-  4,
-) as any as S.Schema<NetworkSecurityPerimeterProfileInfo>;
-
 /** The properties of an NSP Configuration. */
 export interface NetworkSecurityPerimeterConfigurationProperties {
   /** Provisioning state of NetworkSecurityPerimeter configuration */
@@ -3937,11 +2719,6 @@ export interface NetworkSecurityPerimeterConfigurationProperties {
   /** Network Security Perimeter Profile Information */
   profile?: NetworkSecurityPerimeterProfileInfo;
 }
-const NetworkSecurityPerimeterConfigurationProperties = /*@__PURE__*/ __L.at(
-  __c23,
-  5,
-) as any as S.Schema<NetworkSecurityPerimeterConfigurationProperties>;
-
 export interface GetNetworkSecurityPerimeterConfigurationResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3954,11 +2731,6 @@ export interface GetNetworkSecurityPerimeterConfigurationResponse {
   /** NSP Configuration properties. */
   properties?: NetworkSecurityPerimeterConfigurationProperties;
 }
-const GetNetworkSecurityPerimeterConfigurationResponse = /*@__PURE__*/ __L.at(
-  __c23,
-  6,
-) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationResponse>;
-
 export interface GetOutboundRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -3971,11 +2743,6 @@ export interface GetOutboundRuleRequest {
   /** Name of the cognitive services account managed network outbound rule */
   ruleName: string;
 }
-const GetOutboundRuleRequest = /*@__PURE__*/ __L.at(
-  __c23,
-  7,
-) as any as S.Schema<GetOutboundRuleRequest>;
-
 export interface GetOutboundRuleResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -3988,11 +2755,6 @@ export interface GetOutboundRuleResponse {
   /** Outbound Rule for the managed network of a cognitive services account. */
   properties: OutboundRule;
 }
-const GetOutboundRuleResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  0,
-) as any as S.Schema<GetOutboundRuleResponse>;
-
 export interface GetPrivateEndpointConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4003,11 +2765,6 @@ export interface GetPrivateEndpointConnectionRequest {
   /** The name of the private endpoint connection associated with the Cognitive Services Account */
   privateEndpointConnectionName: string;
 }
-const GetPrivateEndpointConnectionRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  1,
-) as any as S.Schema<GetPrivateEndpointConnectionRequest>;
-
 export interface GetPrivateEndpointConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4024,9 +2781,6 @@ export interface GetPrivateEndpointConnectionResponse {
   /** The location of the private endpoint connection */
   location?: string;
 }
-const GetPrivateEndpointConnectionResponse =
-  PrivateEndpointConnection as any as S.Schema<GetPrivateEndpointConnectionResponse>;
-
 export interface GetProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4037,8 +2791,6 @@ export interface GetProjectRequest {
   /** The name of Cognitive Services account's project. */
   projectName: string;
 }
-const GetProjectRequest = /*@__PURE__*/ __L.at(__c24, 2) as any as S.Schema<GetProjectRequest>;
-
 /** Resource tags. */
 export type GetProjectResponseTagsMap = { [key: string]: string | undefined };
 export interface GetProjectResponse {
@@ -4061,8 +2813,6 @@ export interface GetProjectResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-const GetProjectResponse = CreateProjectResponse as any as S.Schema<GetProjectResponse>;
-
 export interface GetProjectCapabilityHostRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4075,31 +2825,14 @@ export interface GetProjectCapabilityHostRequest {
   /** The name of the capability host associated with the Cognitive Services Resource */
   capabilityHostName: string;
 }
-const GetProjectCapabilityHostRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  3,
-) as any as S.Schema<GetProjectCapabilityHostRequest>;
-
 /** List of AI services connections. */
 export type ProjectCapabilityHostPropertiesAiServicesConnectionsList = Array<string>;
-const ProjectCapabilityHostPropertiesAiServicesConnectionsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ProjectCapabilityHostPropertiesAiServicesConnectionsList>;
-
 /** List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB). */
 export type ProjectCapabilityHostPropertiesVectorStoreConnectionsList = Array<string>;
-const ProjectCapabilityHostPropertiesVectorStoreConnectionsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ProjectCapabilityHostPropertiesVectorStoreConnectionsList>;
-
 /** List of connection names from those available in the account or project to be used as a storage resource. */
 export type ProjectCapabilityHostPropertiesStorageConnectionsList = Array<string>;
-const ProjectCapabilityHostPropertiesStorageConnectionsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ProjectCapabilityHostPropertiesStorageConnectionsList>;
-
 /** List of connection names from those available in the account or project to be used for Thread storage. */
 export type ProjectCapabilityHostPropertiesThreadStorageConnectionsList = Array<string>;
-const ProjectCapabilityHostPropertiesThreadStorageConnectionsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ProjectCapabilityHostPropertiesThreadStorageConnectionsList>;
-
 export interface ProjectCapabilityHostProperties {
   /** List of AI services connections. */
   aiServicesConnections?: ProjectCapabilityHostPropertiesAiServicesConnectionsList | null;
@@ -4112,11 +2845,6 @@ export interface ProjectCapabilityHostProperties {
   /** Provisioning state for the CapabilityHost. */
   provisioningState?: CapabilityHostProvisioningState;
 }
-const ProjectCapabilityHostProperties = /*@__PURE__*/ __L.at(
-  __c24,
-  4,
-) as any as S.Schema<ProjectCapabilityHostProperties>;
-
 export interface GetProjectCapabilityHostResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4129,11 +2857,6 @@ export interface GetProjectCapabilityHostResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ProjectCapabilityHostProperties;
 }
-const GetProjectCapabilityHostResponse = /*@__PURE__*/ __L.at(
-  __c24,
-  5,
-) as any as S.Schema<GetProjectCapabilityHostResponse>;
-
 export interface GetProjectConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4146,11 +2869,6 @@ export interface GetProjectConnectionRequest {
   /** Friendly name of the connection */
   connectionName: string;
 }
-const GetProjectConnectionRequest = /*@__PURE__*/ __L.at(
-  __c24,
-  6,
-) as any as S.Schema<GetProjectConnectionRequest>;
-
 export interface GetProjectConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4163,25 +2881,16 @@ export interface GetProjectConnectionResponse {
   /** Connection property base schema. */
   properties: ConnectionPropertiesV2;
 }
-const GetProjectConnectionResponse =
-  CreateAccountConnectionResponse as any as S.Schema<GetProjectConnectionResponse>;
-
 export interface GetQuotaTierRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** Default parameter. Leave the value as default. */
   default: string;
 }
-const GetQuotaTierRequest = /*@__PURE__*/ __L.at(__c24, 7) as any as S.Schema<GetQuotaTierRequest>;
-
 /** Gets the tier upgrade policy for the subscription. */
 export type TierUpgradePolicy = "OnceUpgradeIsAvailable" | "NoAutoUpgrade";
-const TierUpgradePolicy = S.String;
-
 /** Specifies whether an upgrade to the next quota tier is available. */
 export type UpgradeAvailabilityStatus = "Available" | "NotAvailable";
-const UpgradeAvailabilityStatus = S.String;
-
 /** Information about the quota tier upgrade eligibility for the subscription. */
 export interface QuotaTierUpgradeEligibilityInfo {
   /** Name of the next quota tier for the subscription. */
@@ -4193,11 +2902,6 @@ export interface QuotaTierUpgradeEligibilityInfo {
   /** Reason in case the subscription is not eligible for upgrade to the next tier. */
   upgradeUnavailabilityReason?: string | null;
 }
-const QuotaTierUpgradeEligibilityInfo = /*@__PURE__*/ __L.at(
-  __c25,
-  0,
-) as any as S.Schema<QuotaTierUpgradeEligibilityInfo>;
-
 /** Properties of Quota Tier resource'. */
 export interface QuotaTierProperties {
   /** Name of the current quota tier for the subscription. */
@@ -4209,8 +2913,6 @@ export interface QuotaTierProperties {
   /** Information about the quota tier upgrade eligibility for the subscription. */
   tierUpgradeEligibilityInfo?: QuotaTierUpgradeEligibilityInfo | null;
 }
-const QuotaTierProperties = /*@__PURE__*/ __L.at(__c25, 1) as any as S.Schema<QuotaTierProperties>;
-
 export interface GetQuotaTierResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4223,11 +2925,6 @@ export interface GetQuotaTierResponse {
   /** Properties of quota tier resource. */
   properties?: QuotaTierProperties;
 }
-const GetQuotaTierResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  2,
-) as any as S.Schema<GetQuotaTierResponse>;
-
 export interface GetRaiBlocklistRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4238,16 +2935,8 @@ export interface GetRaiBlocklistRequest {
   /** The name of the RaiBlocklist associated with the Cognitive Services Account */
   raiBlocklistName: string;
 }
-const GetRaiBlocklistRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  3,
-) as any as S.Schema<GetRaiBlocklistRequest>;
-
 /** Resource tags. */
 export type GetRaiBlocklistResponseTagsMap = { [key: string]: string | undefined };
-const GetRaiBlocklistResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetRaiBlocklistResponseTagsMap>;
-
 export interface GetRaiBlocklistResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4264,11 +2953,6 @@ export interface GetRaiBlocklistResponse {
   /** Resource tags. */
   tags?: GetRaiBlocklistResponseTagsMap;
 }
-const GetRaiBlocklistResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  4,
-) as any as S.Schema<GetRaiBlocklistResponse>;
-
 export interface GetRaiBlocklistItemRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4281,16 +2965,8 @@ export interface GetRaiBlocklistItemRequest {
   /** The name of the RaiBlocklist Item associated with the custom blocklist */
   raiBlocklistItemName: string;
 }
-const GetRaiBlocklistItemRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  5,
-) as any as S.Schema<GetRaiBlocklistItemRequest>;
-
 /** Resource tags. */
 export type GetRaiBlocklistItemResponseTagsMap = { [key: string]: string | undefined };
-const GetRaiBlocklistItemResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetRaiBlocklistItemResponseTagsMap>;
-
 export interface GetRaiBlocklistItemResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4307,11 +2983,6 @@ export interface GetRaiBlocklistItemResponse {
   /** Resource tags. */
   tags?: GetRaiBlocklistItemResponseTagsMap;
 }
-const GetRaiBlocklistItemResponse = /*@__PURE__*/ __L.at(
-  __c25,
-  6,
-) as any as S.Schema<GetRaiBlocklistItemResponse>;
-
 export interface GetRaiContentFilterRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4320,11 +2991,6 @@ export interface GetRaiContentFilterRequest {
   /** The name of the RAI Content Filter. */
   filterName: string;
 }
-const GetRaiContentFilterRequest = /*@__PURE__*/ __L.at(
-  __c25,
-  7,
-) as any as S.Schema<GetRaiContentFilterRequest>;
-
 /** Content source to apply the Content Filters. */
 export type RaiPolicyContentSource =
   | "Prompt"
@@ -4333,8 +2999,6 @@ export type RaiPolicyContentSource =
   | "PostToolCall"
   | "PreRun"
   | "PostRun";
-const RaiPolicyContentSource = S.String;
-
 /** Azure OpenAI Content Filter Properties. */
 export interface RaiContentFilterProperties {
   /** Name of Content Filter. */
@@ -4344,11 +3008,6 @@ export interface RaiContentFilterProperties {
   /** Content source to apply the Content Filters. */
   source?: RaiPolicyContentSource;
 }
-const RaiContentFilterProperties = /*@__PURE__*/ __L.at(
-  __c26,
-  0,
-) as any as S.Schema<RaiContentFilterProperties>;
-
 export interface GetRaiContentFilterResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4361,22 +3020,12 @@ export interface GetRaiContentFilterResponse {
   /** Azure OpenAI Content Filter Properties. */
   properties?: RaiContentFilterProperties;
 }
-const GetRaiContentFilterResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  1,
-) as any as S.Schema<GetRaiContentFilterResponse>;
-
 export interface GetRaiExternalSafetyProviderRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the Rai External Safety Provider associated with the Cognitive Services Account */
   safetyProviderName: string;
 }
-const GetRaiExternalSafetyProviderRequest = /*@__PURE__*/ __L.at(
-  __c26,
-  2,
-) as any as S.Schema<GetRaiExternalSafetyProviderRequest>;
-
 /** RAI External SafetyProvider schema properties. */
 export interface RaiExternalSafetyProviderSchemaProperties {
   /** The unique identifier of the safety provider. */
@@ -4398,16 +3047,8 @@ export interface RaiExternalSafetyProviderSchemaProperties {
   /** Last modified time of the safety provider. */
   lastModifiedAt?: string;
 }
-const RaiExternalSafetyProviderSchemaProperties = /*@__PURE__*/ __L.at(
-  __c26,
-  3,
-) as any as S.Schema<RaiExternalSafetyProviderSchemaProperties>;
-
 /** Resource tags. */
 export type GetRaiExternalSafetyProviderResponseTagsMap = { [key: string]: string | undefined };
-const GetRaiExternalSafetyProviderResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetRaiExternalSafetyProviderResponseTagsMap>;
-
 export interface GetRaiExternalSafetyProviderResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4424,11 +3065,6 @@ export interface GetRaiExternalSafetyProviderResponse {
   /** Resource tags. */
   tags?: GetRaiExternalSafetyProviderResponseTagsMap;
 }
-const GetRaiExternalSafetyProviderResponse = /*@__PURE__*/ __L.at(
-  __c26,
-  4,
-) as any as S.Schema<GetRaiExternalSafetyProviderResponse>;
-
 export interface GetRaiPolicyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4439,24 +3075,14 @@ export interface GetRaiPolicyRequest {
   /** The name of the RaiPolicy associated with the Cognitive Services Account */
   raiPolicyName: string;
 }
-const GetRaiPolicyRequest = /*@__PURE__*/ __L.at(__c26, 5) as any as S.Schema<GetRaiPolicyRequest>;
-
 /** Content Filters policy type. */
 export type RaiPolicyType = "UserManaged" | "SystemManaged";
-const RaiPolicyType = S.String;
-
 /** Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version. */
 export type RaiPolicyMode = "Default" | "Deferred" | "Blocking" | "Asynchronous_filter";
-const RaiPolicyMode = S.String;
-
 /** Level at which content is filtered. */
 export type ContentLevel = "Low" | "Medium" | "High";
-const ContentLevel = S.String;
-
 /** The action types to apply to the content filters */
 export type RaiActionType = "None" | "BLOCKING" | "ANNOTATING" | "HITL" | "RETRY";
-const RaiActionType = S.String;
-
 /** Azure OpenAI Content Filter. */
 export interface RaiPolicyContentFilter {
   /** Name of ContentFilter. */
@@ -4472,18 +3098,8 @@ export interface RaiPolicyContentFilter {
   /** The action types to apply to the content filters */
   action?: RaiActionType | (string & {});
 }
-const RaiPolicyContentFilter = /*@__PURE__*/ __L.at(
-  __c26,
-  6,
-) as any as S.Schema<RaiPolicyContentFilter>;
-
 /** The list of Content Filters. */
 export type RaiPolicyPropertiesContentFiltersList = Array<RaiPolicyContentFilter>;
-const RaiPolicyPropertiesContentFiltersList = /*@__PURE__*/ __L.at(
-  __c26,
-  7,
-) as any as S.Schema<RaiPolicyPropertiesContentFiltersList>;
-
 /** Gets or sets the source to which filter applies. */
 export interface CustomBlocklistConfig {
   /** Name of ContentFilter. */
@@ -4493,18 +3109,8 @@ export interface CustomBlocklistConfig {
   /** Content source to apply the Content Filters. */
   source?: RaiPolicyContentSource | (string & {});
 }
-const CustomBlocklistConfig = /*@__PURE__*/ __L.at(
-  __c27,
-  0,
-) as any as S.Schema<CustomBlocklistConfig>;
-
 /** The list of custom Blocklist. */
 export type RaiPolicyPropertiesCustomBlocklistsList = Array<CustomBlocklistConfig>;
-const RaiPolicyPropertiesCustomBlocklistsList = /*@__PURE__*/ __L.at(
-  __c27,
-  1,
-) as any as S.Schema<RaiPolicyPropertiesCustomBlocklistsList>;
-
 /** Gets or sets the source to which safety providers applies. */
 export interface SafetyProviderConfig {
   /** Name of RAI Safety Provider. */
@@ -4514,30 +3120,14 @@ export interface SafetyProviderConfig {
   /** Content source to apply the Content Filters. */
   source?: RaiPolicyContentSource | (string & {});
 }
-const SafetyProviderConfig = /*@__PURE__*/ __L.at(
-  __c27,
-  2,
-) as any as S.Schema<SafetyProviderConfig>;
-
 /** The list of Safety Providers. */
 export type RaiPolicyPropertiesSafetyProvidersList = Array<SafetyProviderConfig>;
-const RaiPolicyPropertiesSafetyProvidersList = /*@__PURE__*/ __L.at(
-  __c27,
-  3,
-) as any as S.Schema<RaiPolicyPropertiesSafetyProvidersList>;
-
 /** The enforcement mode for egress rules. If omitted on create, the server defaults to Enforced. */
 export type RaiEgressMode = "Enforced" | "Audit";
-const RaiEgressMode = S.String;
-
 /** The default action when no user-defined egress rules match. */
 export type RaiEgressDefaultAction = "Allow" | "Deny";
-const RaiEgressDefaultAction = S.String;
-
 /** The type of an egress rule, determining what kind of traffic matching it performs. */
 export type RaiEgressRuleType = "Fqdn";
-const RaiEgressRuleType = S.String;
-
 /** The match criteria for an egress rule. If both host and path are omitted, the rule matches all traffic. Host uses DNS wildcard syntax (e.g., "\*.openai.com" matches "api.openai.com"). Path uses URI prefix matching with an asterisk as a single-segment wildcard. For example, "/v1/\*" matches "/v1/chat". */
 export interface RaiEgressRuleMatch {
   /** Host pattern to match using DNS wildcard syntax (e.g., "\*.openai.com"). A leading "\*." matches any subdomain. Omit to match all hosts. */
@@ -4545,16 +3135,10 @@ export interface RaiEgressRuleMatch {
   /** Path pattern to match using URI prefix matching. An asterisk serves as a single-segment wildcard. For example, "/v1/\*" matches "/v1/chat". Omit to match all paths. */
   path?: string;
 }
-const RaiEgressRuleMatch = /*@__PURE__*/ __L.at(__c27, 4) as any as S.Schema<RaiEgressRuleMatch>;
-
 /** The kind of action an egress rule takes when it matches. */
 export type RaiEgressRuleActionType = "Allow" | "Deny" | "Transform" | "Rewrite";
-const RaiEgressRuleActionType = S.String;
-
 /** The operation to apply to a header in a Transform or Rewrite action. */
 export type RaiEgressHeaderOperation = "Set" | "Insert" | "Remove";
-const RaiEgressHeaderOperation = S.String;
-
 /** A reference to a stored secret used as a header value. */
 export interface RaiEgressSecretRef {
   /** Identifier of the secret to inject. */
@@ -4564,8 +3148,6 @@ export interface RaiEgressSecretRef {
   /** Optional format for the resolved value; "{value}" is the placeholder, e.g. "Bearer {value}". */
   format?: string;
 }
-const RaiEgressSecretRef = /*@__PURE__*/ __L.at(__c27, 5) as any as S.Schema<RaiEgressSecretRef>;
-
 /** A reference to a managed-identity token used as a header value. */
 export interface RaiEgressManagedIdentityRef {
   /** The resource/audience the token is requested for. */
@@ -4573,11 +3155,6 @@ export interface RaiEgressManagedIdentityRef {
   /** Optional format for the resolved token; "{value}" is the placeholder, e.g. "Bearer {value}". */
   format?: string;
 }
-const RaiEgressManagedIdentityRef = /*@__PURE__*/ __L.at(
-  __c27,
-  6,
-) as any as S.Schema<RaiEgressManagedIdentityRef>;
-
 /** A dynamic source for a header value. Exactly one of secretRef or managedIdentityRef must be set. */
 export interface RaiEgressHeaderValueRef {
   /** Resolve the value from a stored secret. */
@@ -4585,11 +3162,6 @@ export interface RaiEgressHeaderValueRef {
   /** Resolve the value from a managed-identity token. */
   managedIdentityRef?: RaiEgressManagedIdentityRef;
 }
-const RaiEgressHeaderValueRef = /*@__PURE__*/ __L.at(
-  __c27,
-  7,
-) as any as S.Schema<RaiEgressHeaderValueRef>;
-
 /** A header transformation applied to matched traffic. For Set or Insert operations, exactly one of value or valueRef must be provided. For Remove operations, neither value nor valueRef should be set. */
 export interface RaiEgressHeaderTransform {
   /** The operation to perform on this header. */
@@ -4601,22 +3173,10 @@ export interface RaiEgressHeaderTransform {
   /** A dynamic header value resolved at request time from a secret or managed identity. */
   valueRef?: RaiEgressHeaderValueRef;
 }
-const RaiEgressHeaderTransform = /*@__PURE__*/ __L.at(
-  __c28,
-  0,
-) as any as S.Schema<RaiEgressHeaderTransform>;
-
 /** Header transforms to apply. Required for Transform; optional for Rewrite; not allowed for Allow or Deny. */
 export type RaiEgressRuleActionHeadersList = Array<RaiEgressHeaderTransform>;
-const RaiEgressRuleActionHeadersList = /*@__PURE__*/ __L.at(
-  __c28,
-  1,
-) as any as S.Schema<RaiEgressRuleActionHeadersList>;
-
 /** URL scheme for rewrite targets. Only HTTP and HTTPS are supported. */
 export type RaiEgressScheme = "http" | "https";
-const RaiEgressScheme = S.String;
-
 /** Where a Rewrite action sends matched traffic. At least one field must be set; omitted fields retain the original request values. This constraint is enforced by the server (400 Bad Request if all fields are omitted). */
 export interface RaiEgressRewriteTarget {
   /** Target scheme. Original scheme is kept if omitted. */
@@ -4626,11 +3186,6 @@ export interface RaiEgressRewriteTarget {
   /** Target path (literal string). Original path (and query) is kept if omitted. */
   path?: string;
 }
-const RaiEgressRewriteTarget = /*@__PURE__*/ __L.at(
-  __c28,
-  2,
-) as any as S.Schema<RaiEgressRewriteTarget>;
-
 /** The action an egress rule takes when it matches. - Allow/Deny: no additional fields needed; headers and rewrite must not be set. - Transform: headers is required with at least one entry; rewrite must not be set. - Rewrite: rewrite is required with at least one of scheme/host/path; headers is optional for injecting headers alongside the redirect. */
 export interface RaiEgressRuleAction {
   /** The kind of action. */
@@ -4640,8 +3195,6 @@ export interface RaiEgressRuleAction {
   /** Destination override. Required for Rewrite; not allowed otherwise. */
   rewrite?: RaiEgressRewriteTarget;
 }
-const RaiEgressRuleAction = /*@__PURE__*/ __L.at(__c28, 3) as any as S.Schema<RaiEgressRuleAction>;
-
 /** A single egress rule. Rules are evaluated in order; first match wins. */
 export interface RaiEgressRule {
   /** Name of the rule. Must be unique within the policy. */
@@ -4655,15 +3208,8 @@ export interface RaiEgressRule {
   /** The action to take when this rule matches, including the action type and any type-specific configuration (headers for Transform, rewrite target for Rewrite). */
   action: RaiEgressRuleAction;
 }
-const RaiEgressRule = /*@__PURE__*/ __L.at(__c28, 4) as any as S.Schema<RaiEgressRule>;
-
 /** Ordered list of egress rules. First matching rule wins. Rules are evaluated in declaration order; the first rule whose match criteria are satisfied determines the action taken on the request. */
 export type RaiEgressPolicyConfigRulesList = Array<RaiEgressRule>;
-const RaiEgressPolicyConfigRulesList = /*@__PURE__*/ __L.at(
-  __c28,
-  5,
-) as any as S.Schema<RaiEgressPolicyConfigRulesList>;
-
 /** Egress (outbound network) policy configuration nested within an RAI policy. Controls which external endpoints sandboxed agents can reach and what transformations (header injection, URL rewrite) are applied to matching traffic. */
 export interface RaiEgressPolicyConfig {
   /** The enforcement mode for egress rules. If omitted on create, the server defaults to Enforced. On subsequent GET requests, the server always returns the effective mode. */
@@ -4675,11 +3221,6 @@ export interface RaiEgressPolicyConfig {
   /** Ordered list of egress rules. First matching rule wins. Rules are evaluated in declaration order; the first rule whose match criteria are satisfied determines the action taken on the request. */
   rules?: RaiEgressPolicyConfigRulesList;
 }
-const RaiEgressPolicyConfig = /*@__PURE__*/ __L.at(
-  __c28,
-  6,
-) as any as S.Schema<RaiEgressPolicyConfig>;
-
 /** Azure OpenAI Content Filters properties. */
 export interface RaiPolicyProperties {
   /** Content Filters policy type. */
@@ -4697,13 +3238,8 @@ export interface RaiPolicyProperties {
   /** Egress (outbound network) policy controlling which external endpoints sandboxed agents can reach. Includes rules with Allow/Deny/Transform/Rewrite actions. */
   egressPolicy?: RaiEgressPolicyConfig;
 }
-const RaiPolicyProperties = /*@__PURE__*/ __L.at(__c28, 7) as any as S.Schema<RaiPolicyProperties>;
-
 /** Resource tags. */
 export type GetRaiPolicyResponseTagsMap = { [key: string]: string | undefined };
-const GetRaiPolicyResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetRaiPolicyResponseTagsMap>;
-
 export interface GetRaiPolicyResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4720,11 +3256,6 @@ export interface GetRaiPolicyResponse {
   /** Resource tags. */
   tags?: GetRaiPolicyResponseTagsMap;
 }
-const GetRaiPolicyResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  0,
-) as any as S.Schema<GetRaiPolicyResponse>;
-
 export interface GetRaiToolLabelRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4735,54 +3266,28 @@ export interface GetRaiToolLabelRequest {
   /** The name of the Rai Tool Label */
   raiToolConnectionName: string;
 }
-const GetRaiToolLabelRequest = /*@__PURE__*/ __L.at(
-  __c29,
-  1,
-) as any as S.Schema<GetRaiToolLabelRequest>;
-
 /** Dictionary of label key-value pairs for the account scope. */
 export type RaiToolLabelPropertiesAccountScopeLabelValuesMap = {
   [key: string]: string | undefined;
 };
-const RaiToolLabelPropertiesAccountScopeLabelValuesMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiToolLabelPropertiesAccountScopeLabelValuesMap>;
-
 /** Account-level tool label definition. */
 export interface RaiToolLabelPropertiesAccountScope {
   /** Dictionary of label key-value pairs for the account scope. */
   labelValues?: RaiToolLabelPropertiesAccountScopeLabelValuesMap;
 }
-const RaiToolLabelPropertiesAccountScope = /*@__PURE__*/ __L.at(
-  __c29,
-  2,
-) as any as S.Schema<RaiToolLabelPropertiesAccountScope>;
-
 /** Dictionary of label key-value pairs for the project scope. */
 export type RaiToolLabelPropertiesProjectScopesItemLabelValuesMap = {
   [key: string]: string | undefined;
 };
-const RaiToolLabelPropertiesProjectScopesItemLabelValuesMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiToolLabelPropertiesProjectScopesItemLabelValuesMap>;
-
 export interface RaiToolLabelPropertiesProjectScopesItem {
   /** Project name to which this scope applies. */
   project: string;
   /** Dictionary of label key-value pairs for the project scope. */
   labelValues: RaiToolLabelPropertiesProjectScopesItemLabelValuesMap;
 }
-const RaiToolLabelPropertiesProjectScopesItem = /*@__PURE__*/ __L.at(
-  __c29,
-  3,
-) as any as S.Schema<RaiToolLabelPropertiesProjectScopesItem>;
-
 /** List of project-level tool label definitions. */
 export type RaiToolLabelPropertiesProjectScopesList =
   Array<RaiToolLabelPropertiesProjectScopesItem>;
-const RaiToolLabelPropertiesProjectScopesList = /*@__PURE__*/ __L.at(
-  __c29,
-  4,
-) as any as S.Schema<RaiToolLabelPropertiesProjectScopesList>;
-
 /** RAI Tool Label properties. */
 export interface RaiToolLabelProperties {
   /** The unique tool connection name, e.g., 'Web_Search'. */
@@ -4792,16 +3297,8 @@ export interface RaiToolLabelProperties {
   /** List of project-level tool label definitions. */
   projectScopes?: RaiToolLabelPropertiesProjectScopesList;
 }
-const RaiToolLabelProperties = /*@__PURE__*/ __L.at(
-  __c29,
-  5,
-) as any as S.Schema<RaiToolLabelProperties>;
-
 /** Resource tags. */
 export type GetRaiToolLabelResponseTagsMap = { [key: string]: string | undefined };
-const GetRaiToolLabelResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetRaiToolLabelResponseTagsMap>;
-
 export interface GetRaiToolLabelResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4818,11 +3315,6 @@ export interface GetRaiToolLabelResponse {
   /** Resource tags. */
   tags?: GetRaiToolLabelResponseTagsMap;
 }
-const GetRaiToolLabelResponse = /*@__PURE__*/ __L.at(
-  __c29,
-  6,
-) as any as S.Schema<GetRaiToolLabelResponse>;
-
 export interface GetRaiTopicRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4833,8 +3325,6 @@ export interface GetRaiTopicRequest {
   /** The name of the Rai Topic associated with the Cognitive Services Account */
   raiTopicName: string;
 }
-const GetRaiTopicRequest = /*@__PURE__*/ __L.at(__c29, 7) as any as S.Schema<GetRaiTopicRequest>;
-
 /** RAI Custom Topic properties. */
 export interface RaiTopicProperties {
   /** The unique identifier of the custom topic. */
@@ -4854,13 +3344,8 @@ export interface RaiTopicProperties {
   /** Last modified time of the custom topic. */
   lastModifiedAt?: string;
 }
-const RaiTopicProperties = /*@__PURE__*/ __L.at(__c30, 0) as any as S.Schema<RaiTopicProperties>;
-
 /** Resource tags. */
 export type GetRaiTopicResponseTagsMap = { [key: string]: string | undefined };
-const GetRaiTopicResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetRaiTopicResponseTagsMap>;
-
 export interface GetRaiTopicResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4877,24 +3362,14 @@ export interface GetRaiTopicResponse {
   /** Resource tags. */
   tags?: GetRaiTopicResponseTagsMap;
 }
-const GetRaiTopicResponse = /*@__PURE__*/ __L.at(__c30, 1) as any as S.Schema<GetRaiTopicResponse>;
-
 export interface GetSubscriptionRaiPolicyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the RaiPolicy associated with the Cognitive Services Account */
   raiPolicyName: string;
 }
-const GetSubscriptionRaiPolicyRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  2,
-) as any as S.Schema<GetSubscriptionRaiPolicyRequest>;
-
 /** Resource tags. */
 export type GetSubscriptionRaiPolicyResponseTagsMap = { [key: string]: string | undefined };
-const GetSubscriptionRaiPolicyResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<GetSubscriptionRaiPolicyResponseTagsMap>;
-
 export interface GetSubscriptionRaiPolicyResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -4911,22 +3386,12 @@ export interface GetSubscriptionRaiPolicyResponse {
   /** Resource tags. */
   tags?: GetSubscriptionRaiPolicyResponseTagsMap;
 }
-const GetSubscriptionRaiPolicyResponse = /*@__PURE__*/ __L.at(
-  __c30,
-  3,
-) as any as S.Schema<GetSubscriptionRaiPolicyResponse>;
-
 export interface ListAccountByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListAccountByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  4,
-) as any as S.Schema<ListAccountByResourceGroupRequest>;
-
 /** Resource tags. */
 export type AccountTagsMap = { [key: string]: string | undefined };
 /** Cognitive Services account is an Azure resource representing the provisioned account, it's type, location and SKU. */
@@ -4954,15 +3419,8 @@ export interface Account {
   /** Identity for the resource. */
   identity?: Identity;
 }
-const Account = CreateAccountResponse as any as S.Schema<Account>;
-
 /** Gets the list of Cognitive Services accounts and their properties. */
 export type AccountListResultValueList = Array<Account>;
-const AccountListResultValueList = /*@__PURE__*/ __L.at(
-  __c30,
-  5,
-) as any as S.Schema<AccountListResultValueList>;
-
 /** The list of cognitive services accounts operation response. */
 export interface AccountListResult {
   /** The link used to get the next page of accounts. */
@@ -4970,8 +3428,6 @@ export interface AccountListResult {
   /** Gets the list of Cognitive Services accounts and their properties. */
   value?: AccountListResultValueList;
 }
-const AccountListResult = /*@__PURE__*/ __L.at(__c30, 6) as any as S.Schema<AccountListResult>;
-
 export interface ListAccountCapabilityHostsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -4980,11 +3436,6 @@ export interface ListAccountCapabilityHostsRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListAccountCapabilityHostsRequest = /*@__PURE__*/ __L.at(
-  __c30,
-  7,
-) as any as S.Schema<ListAccountCapabilityHostsRequest>;
-
 /** Azure Resource Manager resource envelope. */
 export interface CapabilityHost {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -4998,15 +3449,8 @@ export interface CapabilityHost {
   /** [Required] Additional attributes of the entity. */
   properties: CapabilityHostProperties;
 }
-const CapabilityHost = /*@__PURE__*/ __L.at(__c31, 0) as any as S.Schema<CapabilityHost>;
-
 /** An array of objects of type Capability Host. */
 export type CapabilityHostResourceArmPaginatedResultValueList = Array<CapabilityHost>;
-const CapabilityHostResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c31,
-  1,
-) as any as S.Schema<CapabilityHostResourceArmPaginatedResultValueList>;
-
 /** A paginated list of Capability Host entities. */
 export interface CapabilityHostResourceArmPaginatedResult {
   /** The link to the next page of Capability Host objects. If null, there are no additional pages. */
@@ -5014,11 +3458,6 @@ export interface CapabilityHostResourceArmPaginatedResult {
   /** An array of objects of type Capability Host. */
   value?: CapabilityHostResourceArmPaginatedResultValueList;
 }
-const CapabilityHostResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c31,
-  2,
-) as any as S.Schema<CapabilityHostResourceArmPaginatedResult>;
-
 export interface ListAccountConnectionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5033,11 +3472,6 @@ export interface ListAccountConnectionsRequest {
   /** query parameter that indicates if get connection call should return both connections and datastores */
   includeAll?: boolean;
 }
-const ListAccountConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  3,
-) as any as S.Schema<ListAccountConnectionsRequest>;
-
 /** Connection base resource schema. */
 export interface ConnectionPropertiesV2BasicResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5051,25 +3485,12 @@ export interface ConnectionPropertiesV2BasicResource {
   /** Connection property base schema. */
   properties: ConnectionPropertiesV2;
 }
-const ConnectionPropertiesV2BasicResource =
-  CreateAccountConnectionResponse as any as S.Schema<ConnectionPropertiesV2BasicResource>;
-
 export type ConnectionPropertiesV2BasicResourceArmPaginatedResultValueList =
   Array<ConnectionPropertiesV2BasicResource>;
-const ConnectionPropertiesV2BasicResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c31,
-  4,
-) as any as S.Schema<ConnectionPropertiesV2BasicResourceArmPaginatedResultValueList>;
-
 export interface ConnectionPropertiesV2BasicResourceArmPaginatedResult {
   nextLink?: string;
   value?: ConnectionPropertiesV2BasicResourceArmPaginatedResultValueList;
 }
-const ConnectionPropertiesV2BasicResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c31,
-  5,
-) as any as S.Schema<ConnectionPropertiesV2BasicResourceArmPaginatedResult>;
-
 export interface ListAccountKeysRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5078,11 +3499,6 @@ export interface ListAccountKeysRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListAccountKeysRequest = /*@__PURE__*/ __L.at(
-  __c31,
-  6,
-) as any as S.Schema<ListAccountKeysRequest>;
-
 /** The access keys for the cognitive services account. */
 export interface ApiKeys {
   /** Gets the value of key 1. */
@@ -5090,8 +3506,6 @@ export interface ApiKeys {
   /** Gets the value of key 2. */
   key2?: string;
 }
-const ApiKeys = /*@__PURE__*/ __L.at(__c31, 7) as any as S.Schema<ApiKeys>;
-
 export interface ListAccountModelsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5100,18 +3514,8 @@ export interface ListAccountModelsRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListAccountModelsRequest = /*@__PURE__*/ __L.at(
-  __c32,
-  0,
-) as any as S.Schema<ListAccountModelsRequest>;
-
 /** The array of allowed values for capacity. */
 export type CapacityConfigAllowedValuesList = Array<number>;
-const CapacityConfigAllowedValuesList = /*@__PURE__*/ __L.at(
-  __c32,
-  1,
-) as any as S.Schema<CapacityConfigAllowedValuesList>;
-
 /** The capacity configuration. */
 export interface CapacityConfig {
   /** The minimum capacity. */
@@ -5125,26 +3529,15 @@ export interface CapacityConfig {
   /** The array of allowed values for capacity. */
   allowedValues?: CapacityConfigAllowedValuesList;
 }
-const CapacityConfig = /*@__PURE__*/ __L.at(__c32, 2) as any as S.Schema<CapacityConfig>;
-
 /** The list of rateLimit. */
 export type ModelSkuRateLimitsList = Array<CallRateLimit>;
-const ModelSkuRateLimitsList = /*@__PURE__*/ __L.at(
-  __c32,
-  3,
-) as any as S.Schema<ModelSkuRateLimitsList>;
-
 export interface BillingMeterInfo {
   name?: string;
   meterId?: string;
   unit?: string;
 }
-const BillingMeterInfo = /*@__PURE__*/ __L.at(__c32, 4) as any as S.Schema<BillingMeterInfo>;
-
 /** The list of billing meter info. */
 export type ModelSkuCostList = Array<BillingMeterInfo>;
-const ModelSkuCostList = /*@__PURE__*/ __L.at(__c32, 5) as any as S.Schema<ModelSkuCostList>;
-
 /** Describes an available Cognitive Services Model SKU. */
 export interface ModelSku {
   /** The name of the model SKU. */
@@ -5160,29 +3553,14 @@ export interface ModelSku {
   /** The list of billing meter info. */
   cost?: ModelSkuCostList;
 }
-const ModelSku = /*@__PURE__*/ __L.at(__c32, 6) as any as S.Schema<ModelSku>;
-
 /** The list of Model Sku. */
 export type AccountModelSkusList = Array<ModelSku>;
-const AccountModelSkusList = /*@__PURE__*/ __L.at(
-  __c32,
-  7,
-) as any as S.Schema<AccountModelSkusList>;
-
 /** The capabilities. */
 export type AccountModelCapabilitiesMap = { [key: string]: string | undefined };
-const AccountModelCapabilitiesMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AccountModelCapabilitiesMap>;
-
 /** The capabilities for finetune models. */
 export type AccountModelFinetuneCapabilitiesMap = { [key: string]: string | undefined };
-const AccountModelFinetuneCapabilitiesMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<AccountModelFinetuneCapabilitiesMap>;
-
 /** Indicates whether the deprecation date is a confirmed planned end-of-life date or an estimated deprecation date. When 'Planned', the deprecation date represents a confirmed and communicated model end-of-life date. When 'Tentative', the deprecation date is an estimated timeline that may be subject to change. */
 export type DeprecationStatus = "Planned" | "Tentative";
-const DeprecationStatus = S.String;
-
 /** Cognitive Services account ModelDeprecationInfo. */
 export interface ModelDeprecationInfo {
   /** The datetime of deprecation of the fineTune Model. */
@@ -5192,11 +3570,6 @@ export interface ModelDeprecationInfo {
   /** Indicates whether the deprecation date is a confirmed planned end-of-life date or an estimated deprecation date. When 'Planned', the deprecation date represents a confirmed and communicated model end-of-life date. When 'Tentative', the deprecation date is an estimated timeline that may be subject to change. */
   deprecationStatus?: DeprecationStatus;
 }
-const ModelDeprecationInfo = /*@__PURE__*/ __L.at(
-  __c33,
-  0,
-) as any as S.Schema<ModelDeprecationInfo>;
-
 /** Configuration for model replacement. */
 export interface ReplacementConfig {
   /** The name of the replacement model. */
@@ -5208,8 +3581,6 @@ export interface ReplacementConfig {
   /** The number of days before deprecation date to trigger upgrade. This applies to deployments with the OnceCurrentVersionExpired upgrade option. */
   upgradeOnExpiryLeadTimeDays?: number;
 }
-const ReplacementConfig = /*@__PURE__*/ __L.at(__c33, 1) as any as S.Schema<ReplacementConfig>;
-
 /** Model lifecycle status. */
 export type ModelLifecycleStatus =
   | "Stable"
@@ -5218,8 +3589,6 @@ export type ModelLifecycleStatus =
   | "Deprecating"
   | "Deprecated"
   | "Legacy";
-const ModelLifecycleStatus = S.String;
-
 /** The type of identity that created the resource. */
 export type AccountModelSystemDataCreatedByType =
   | "User"
@@ -5247,8 +3616,6 @@ export interface AccountModelSystemData {
   /** The timestamp of resource last modification (UTC) */
   lastModifiedAt?: string;
 }
-const AccountModelSystemData = SystemData as any as S.Schema<AccountModelSystemData>;
-
 /** Cognitive Services account Model. */
 export interface AccountModel {
   /** Deployment model publisher. */
@@ -5288,15 +3655,8 @@ export interface AccountModel {
   /** Metadata pertaining to creation and last modification of the resource. */
   systemData?: AccountModelSystemData;
 }
-const AccountModel = /*@__PURE__*/ __L.at(__c33, 2) as any as S.Schema<AccountModel>;
-
 /** Gets the list of Cognitive Services accounts Model and their properties. */
 export type AccountModelListResultValueList = Array<AccountModel>;
-const AccountModelListResultValueList = /*@__PURE__*/ __L.at(
-  __c33,
-  3,
-) as any as S.Schema<AccountModelListResultValueList>;
-
 /** The list of cognitive services accounts operation response. */
 export interface AccountModelListResult {
   /** The link used to get the next page of Model. */
@@ -5304,17 +3664,10 @@ export interface AccountModelListResult {
   /** Gets the list of Cognitive Services accounts Model and their properties. */
   value?: AccountModelListResultValueList;
 }
-const AccountModelListResult = /*@__PURE__*/ __L.at(
-  __c33,
-  4,
-) as any as S.Schema<AccountModelListResult>;
-
 export interface ListAccountsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListAccountsRequest = /*@__PURE__*/ __L.at(__c33, 5) as any as S.Schema<ListAccountsRequest>;
-
 export interface ListAccountSkusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5323,11 +3676,6 @@ export interface ListAccountSkusRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListAccountSkusRequest = /*@__PURE__*/ __L.at(
-  __c33,
-  6,
-) as any as S.Schema<ListAccountSkusRequest>;
-
 /** Cognitive Services resource type and SKU. */
 export interface AccountSku {
   /** Resource Namespace and Type */
@@ -5335,25 +3683,13 @@ export interface AccountSku {
   /** The SKU of Cognitive Services account. */
   sku?: Sku;
 }
-const AccountSku = /*@__PURE__*/ __L.at(__c33, 7) as any as S.Schema<AccountSku>;
-
 /** Gets the list of Cognitive Services accounts and their properties. */
 export type AccountSkuListResultValueList = Array<AccountSku>;
-const AccountSkuListResultValueList = /*@__PURE__*/ __L.at(
-  __c34,
-  0,
-) as any as S.Schema<AccountSkuListResultValueList>;
-
 /** The list of cognitive services accounts operation response. */
 export interface AccountSkuListResult {
   /** Gets the list of Cognitive Services accounts and their properties. */
   value?: AccountSkuListResultValueList;
 }
-const AccountSkuListResult = /*@__PURE__*/ __L.at(
-  __c34,
-  1,
-) as any as S.Schema<AccountSkuListResult>;
-
 export interface ListAccountUsagesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5364,11 +3700,6 @@ export interface ListAccountUsagesRequest {
   /** An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names). */
   _filter?: string;
 }
-const ListAccountUsagesRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  2,
-) as any as S.Schema<ListAccountUsagesRequest>;
-
 /** The unit of the metric. */
 export type UnitType =
   | "Count"
@@ -5378,8 +3709,6 @@ export type UnitType =
   | "CountPerSecond"
   | "BytesPerSecond"
   | "Milliseconds";
-const UnitType = S.String;
-
 /** A metric name. */
 export interface MetricName {
   /** The name of the metric. */
@@ -5387,16 +3716,10 @@ export interface MetricName {
   /** The friendly name of the metric. */
   localizedValue?: string;
 }
-const MetricName = /*@__PURE__*/ __L.at(__c34, 3) as any as S.Schema<MetricName>;
-
 /** Cognitive Services account quota usage status. */
 export type QuotaUsageStatus = "Included" | "Blocked" | "InOverage" | "Unknown";
-const QuotaUsageStatus = S.String;
-
 /** The quota scope that determines the level at which the quota is applied. */
 export type QuotaScopeType = "Regional" | "Global" | "DataZone" | "Classic";
-const QuotaScopeType = S.String;
-
 /** The usage data for a usage request. */
 export interface Usage {
   /** The unit of the metric. */
@@ -5418,15 +3741,8 @@ export interface Usage {
   /** The scope identifier of the quota usage. */
   scopeId?: string | null;
 }
-const Usage = /*@__PURE__*/ __L.at(__c34, 4) as any as S.Schema<Usage>;
-
 /** The list of usages for Cognitive Service account. */
 export type UsageListResultValueList = Array<Usage>;
-const UsageListResultValueList = /*@__PURE__*/ __L.at(
-  __c34,
-  5,
-) as any as S.Schema<UsageListResultValueList>;
-
 /** The response to a list usage request. */
 export interface UsageListResult {
   /** The link used to get the next page of Usages. */
@@ -5434,8 +3750,6 @@ export interface UsageListResult {
   /** The list of usages for Cognitive Service account. */
   value?: UsageListResultValueList;
 }
-const UsageListResult = /*@__PURE__*/ __L.at(__c34, 6) as any as S.Schema<UsageListResult>;
-
 export interface ListAgentApplicationAgentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5448,11 +3762,6 @@ export interface ListAgentApplicationAgentsRequest {
   /** Name for the Agent Application. */
   name: string;
 }
-const ListAgentApplicationAgentsRequest = /*@__PURE__*/ __L.at(
-  __c34,
-  7,
-) as any as S.Schema<ListAgentApplicationAgentsRequest>;
-
 /** Agent Reference resource */
 export interface AgentReference {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5466,15 +3775,8 @@ export interface AgentReference {
   /** [Required] Additional attributes of the entity. */
   properties: AgentReferenceProperties;
 }
-const AgentReference = /*@__PURE__*/ __L.at(__c35, 0) as any as S.Schema<AgentReference>;
-
 /** An array of objects of type Agent Reference. */
 export type AgentReferenceResourceArmPaginatedResultValueList = Array<AgentReference>;
-const AgentReferenceResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c35,
-  1,
-) as any as S.Schema<AgentReferenceResourceArmPaginatedResultValueList>;
-
 /** A paginated list of Agent Reference entities. */
 export interface AgentReferenceResourceArmPaginatedResult {
   /** The link to the next page of Agent Reference objects. If null, there are no additional pages. */
@@ -5482,15 +3784,7 @@ export interface AgentReferenceResourceArmPaginatedResult {
   /** An array of objects of type Agent Reference. */
   value?: AgentReferenceResourceArmPaginatedResultValueList | null;
 }
-const AgentReferenceResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c35,
-  2,
-) as any as S.Schema<AgentReferenceResourceArmPaginatedResult>;
-
 export type ListAgentApplicationsRequestNamesList = Array<string>;
-const ListAgentApplicationsRequestNamesList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ListAgentApplicationsRequestNamesList>;
-
 export interface ListAgentApplicationsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5515,11 +3809,6 @@ export interface ListAgentApplicationsRequest {
   /** Whether to order in ascending order. */
   orderByAsc?: boolean;
 }
-const ListAgentApplicationsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  3,
-) as any as S.Schema<ListAgentApplicationsRequest>;
-
 /** Agent Application resource */
 export interface AgentApplication {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5533,15 +3822,8 @@ export interface AgentApplication {
   /** [Required] Additional attributes of the entity. */
   properties: AgenticApplicationProperties;
 }
-const AgentApplication = /*@__PURE__*/ __L.at(__c35, 4) as any as S.Schema<AgentApplication>;
-
 /** An array of objects of type Agent Application. */
 export type AgentApplicationResourceArmPaginatedResultValueList = Array<AgentApplication>;
-const AgentApplicationResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c35,
-  5,
-) as any as S.Schema<AgentApplicationResourceArmPaginatedResultValueList>;
-
 /** A paginated list of Agent Application entities. */
 export interface AgentApplicationResourceArmPaginatedResult {
   /** The link to the next page of Agent Application objects. If null, there are no additional pages. */
@@ -5549,15 +3831,7 @@ export interface AgentApplicationResourceArmPaginatedResult {
   /** An array of objects of type Agent Application. */
   value?: AgentApplicationResourceArmPaginatedResultValueList;
 }
-const AgentApplicationResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c35,
-  6,
-) as any as S.Schema<AgentApplicationResourceArmPaginatedResult>;
-
 export type ListAgentDeploymentsRequestNamesList = Array<string>;
-const ListAgentDeploymentsRequestNamesList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ListAgentDeploymentsRequestNamesList>;
-
 export interface ListAgentDeploymentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5580,11 +3854,6 @@ export interface ListAgentDeploymentsRequest {
   /** Whether to order in ascending order. */
   orderByAsc?: boolean;
 }
-const ListAgentDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c35,
-  7,
-) as any as S.Schema<ListAgentDeploymentsRequest>;
-
 /** Agent Deployment resource */
 export interface AgentDeployment {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5598,15 +3867,8 @@ export interface AgentDeployment {
   /** [Required] Additional attributes of the entity. */
   properties: AgentDeploymentProperties;
 }
-const AgentDeployment = /*@__PURE__*/ __L.at(__c36, 0) as any as S.Schema<AgentDeployment>;
-
 /** An array of objects of type Agent Deployment. */
 export type AgentDeploymentResourceArmPaginatedResultValueList = Array<AgentDeployment>;
-const AgentDeploymentResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c36,
-  1,
-) as any as S.Schema<AgentDeploymentResourceArmPaginatedResultValueList>;
-
 /** A paginated list of Agent Deployment entities. */
 export interface AgentDeploymentResourceArmPaginatedResult {
   /** The link to the next page of Agent Deployment objects. If null, there are no additional pages. */
@@ -5614,11 +3876,6 @@ export interface AgentDeploymentResourceArmPaginatedResult {
   /** An array of objects of type Agent Deployment. */
   value?: AgentDeploymentResourceArmPaginatedResultValueList;
 }
-const AgentDeploymentResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c36,
-  2,
-) as any as S.Schema<AgentDeploymentResourceArmPaginatedResult>;
-
 export interface ListCommitmentPlanAssociationsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5627,11 +3884,6 @@ export interface ListCommitmentPlanAssociationsRequest {
   /** The name of the commitmentPlan associated with the Cognitive Services Account */
   commitmentPlanName: string;
 }
-const ListCommitmentPlanAssociationsRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  3,
-) as any as S.Schema<ListCommitmentPlanAssociationsRequest>;
-
 /** Resource tags. */
 export type CommitmentPlanAccountAssociationTagsMap = { [key: string]: string | undefined };
 /** The commitment plan association. */
@@ -5651,17 +3903,9 @@ export interface CommitmentPlanAccountAssociation {
   /** Resource tags. */
   tags?: CommitmentPlanAccountAssociationTagsMap;
 }
-const CommitmentPlanAccountAssociation =
-  CommitmentPlansCreateOrUpdateAssociationResponse as any as S.Schema<CommitmentPlanAccountAssociation>;
-
 /** Gets the list of Cognitive Services Commitment Plan Account Association and their properties. */
 export type CommitmentPlanAccountAssociationListResultValueList =
   Array<CommitmentPlanAccountAssociation>;
-const CommitmentPlanAccountAssociationListResultValueList = /*@__PURE__*/ __L.at(
-  __c36,
-  4,
-) as any as S.Schema<CommitmentPlanAccountAssociationListResultValueList>;
-
 /** The list of cognitive services Commitment Plan Account Association operation response. */
 export interface CommitmentPlanAccountAssociationListResult {
   /** The link used to get the next page of Commitment Plan Account Association. */
@@ -5669,27 +3913,14 @@ export interface CommitmentPlanAccountAssociationListResult {
   /** Gets the list of Cognitive Services Commitment Plan Account Association and their properties. */
   value?: CommitmentPlanAccountAssociationListResultValueList;
 }
-const CommitmentPlanAccountAssociationListResult = /*@__PURE__*/ __L.at(
-  __c36,
-  5,
-) as any as S.Schema<CommitmentPlanAccountAssociationListResult>;
-
 export interface ListCommitmentPlanPlansByResourceGroupRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of the resource group. The name is case insensitive. */
   resourceGroupName: string;
 }
-const ListCommitmentPlanPlansByResourceGroupRequest = /*@__PURE__*/ __L.at(
-  __c36,
-  6,
-) as any as S.Schema<ListCommitmentPlanPlansByResourceGroupRequest>;
-
 /** Resource tags. */
 export type CommitmentPlanTagsMap = { [key: string]: string | undefined };
-const CommitmentPlanTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<CommitmentPlanTagsMap>;
-
 /** Cognitive Services account commitment plan. */
 export interface CommitmentPlan {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5713,15 +3944,8 @@ export interface CommitmentPlan {
   /** The resource model definition representing SKU */
   sku?: Sku;
 }
-const CommitmentPlan = /*@__PURE__*/ __L.at(__c36, 7) as any as S.Schema<CommitmentPlan>;
-
 /** Gets the list of Cognitive Services accounts CommitmentPlan and their properties. */
 export type CommitmentPlanListResultValueList = Array<CommitmentPlan>;
-const CommitmentPlanListResultValueList = /*@__PURE__*/ __L.at(
-  __c37,
-  0,
-) as any as S.Schema<CommitmentPlanListResultValueList>;
-
 /** The list of cognitive services accounts operation response. */
 export interface CommitmentPlanListResult {
   /** The link used to get the next page of CommitmentPlan. */
@@ -5729,20 +3953,10 @@ export interface CommitmentPlanListResult {
   /** Gets the list of Cognitive Services accounts CommitmentPlan and their properties. */
   value?: CommitmentPlanListResultValueList;
 }
-const CommitmentPlanListResult = /*@__PURE__*/ __L.at(
-  __c37,
-  1,
-) as any as S.Schema<CommitmentPlanListResult>;
-
 export interface ListCommitmentPlanPlansBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListCommitmentPlanPlansBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  2,
-) as any as S.Schema<ListCommitmentPlanPlansBySubscriptionRequest>;
-
 export interface ListCommitmentPlansRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5751,22 +3965,12 @@ export interface ListCommitmentPlansRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListCommitmentPlansRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  3,
-) as any as S.Schema<ListCommitmentPlansRequest>;
-
 export interface ListCommitmentTiersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of Azure region. */
   location: string;
 }
-const ListCommitmentTiersRequest = /*@__PURE__*/ __L.at(
-  __c37,
-  4,
-) as any as S.Schema<ListCommitmentTiersRequest>;
-
 /** Cognitive Services account commitment cost. */
 export interface CommitmentCost {
   /** Commitment meter Id. */
@@ -5774,8 +3978,6 @@ export interface CommitmentCost {
   /** Overage meter Id. */
   overageMeterId?: string;
 }
-const CommitmentCost = /*@__PURE__*/ __L.at(__c37, 5) as any as S.Schema<CommitmentCost>;
-
 /** Cognitive Services account commitment tier. */
 export interface CommitmentTier {
   /** The kind (type) of cognitive service account. */
@@ -5795,15 +3997,8 @@ export interface CommitmentTier {
   /** Cognitive Services account commitment cost. */
   cost?: CommitmentCost;
 }
-const CommitmentTier = /*@__PURE__*/ __L.at(__c37, 6) as any as S.Schema<CommitmentTier>;
-
 /** Gets the list of Cognitive Services accounts CommitmentTier and their properties. */
 export type CommitmentTierListResultValueList = Array<CommitmentTier>;
-const CommitmentTierListResultValueList = /*@__PURE__*/ __L.at(
-  __c37,
-  7,
-) as any as S.Schema<CommitmentTierListResultValueList>;
-
 /** The list of cognitive services accounts operation response. */
 export interface CommitmentTierListResult {
   /** The link used to get the next page of CommitmentTier. */
@@ -5811,11 +4006,6 @@ export interface CommitmentTierListResult {
   /** Gets the list of Cognitive Services accounts CommitmentTier and their properties. */
   value?: CommitmentTierListResultValueList;
 }
-const CommitmentTierListResult = /*@__PURE__*/ __L.at(
-  __c38,
-  0,
-) as any as S.Schema<CommitmentTierListResult>;
-
 export interface ListDefenderForAISettingsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5824,16 +4014,8 @@ export interface ListDefenderForAISettingsRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListDefenderForAISettingsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  1,
-) as any as S.Schema<ListDefenderForAISettingsRequest>;
-
 /** Resource tags. */
 export type DefenderForAISettingTagsMap = { [key: string]: string | undefined };
-const DefenderForAISettingTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<DefenderForAISettingTagsMap>;
-
 /** The Defender for AI resource. */
 export interface DefenderForAISetting {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -5851,18 +4033,8 @@ export interface DefenderForAISetting {
   /** Resource tags. */
   tags?: DefenderForAISettingTagsMap;
 }
-const DefenderForAISetting = /*@__PURE__*/ __L.at(
-  __c38,
-  2,
-) as any as S.Schema<DefenderForAISetting>;
-
 /** The list of Defender for AI Settings. */
 export type DefenderForAISettingResultValueList = Array<DefenderForAISetting>;
-const DefenderForAISettingResultValueList = /*@__PURE__*/ __L.at(
-  __c38,
-  3,
-) as any as S.Schema<DefenderForAISettingResultValueList>;
-
 /** The list of cognitive services Defender for AI Settings. */
 export interface DefenderForAISettingResult {
   /** The link used to get the next page of Defender for AI Settings. */
@@ -5870,20 +4042,10 @@ export interface DefenderForAISettingResult {
   /** The list of Defender for AI Settings. */
   value?: DefenderForAISettingResultValueList;
 }
-const DefenderForAISettingResult = /*@__PURE__*/ __L.at(
-  __c38,
-  4,
-) as any as S.Schema<DefenderForAISettingResult>;
-
 export interface ListDeletedAccountsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListDeletedAccountsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  5,
-) as any as S.Schema<ListDeletedAccountsRequest>;
-
 export interface ListDeploymentsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5892,11 +4054,6 @@ export interface ListDeploymentsRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListDeploymentsRequest = /*@__PURE__*/ __L.at(
-  __c38,
-  6,
-) as any as S.Schema<ListDeploymentsRequest>;
-
 /** Resource tags. */
 export type DeploymentTagsMap = { [key: string]: string | undefined };
 /** Cognitive Services account deployment. */
@@ -5918,15 +4075,8 @@ export interface Deployment {
   /** Resource tags. */
   tags?: DeploymentTagsMap;
 }
-const Deployment = GetDeploymentResponse as any as S.Schema<Deployment>;
-
 /** Gets the list of Cognitive Services accounts Deployment and their properties. */
 export type DeploymentListResultValueList = Array<Deployment>;
-const DeploymentListResultValueList = /*@__PURE__*/ __L.at(
-  __c38,
-  7,
-) as any as S.Schema<DeploymentListResultValueList>;
-
 /** The list of cognitive services accounts operation response. */
 export interface DeploymentListResult {
   /** The link used to get the next page of Deployment. */
@@ -5934,11 +4084,6 @@ export interface DeploymentListResult {
   /** Gets the list of Cognitive Services accounts Deployment and their properties. */
   value?: DeploymentListResultValueList;
 }
-const DeploymentListResult = /*@__PURE__*/ __L.at(
-  __c39,
-  0,
-) as any as S.Schema<DeploymentListResult>;
-
 export interface ListDeploymentSkusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5949,11 +4094,6 @@ export interface ListDeploymentSkusRequest {
   /** The name of the deployment associated with the Cognitive Services Account */
   deploymentName: string;
 }
-const ListDeploymentSkusRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  1,
-) as any as S.Schema<ListDeploymentSkusRequest>;
-
 /** Properties of Cognitive Services account resource sku resource properties. */
 export interface SkuResource {
   /** The resource type name. */
@@ -5963,15 +4103,8 @@ export interface SkuResource {
   /** The capacity configuration. */
   capacity?: CapacityConfig;
 }
-const SkuResource = /*@__PURE__*/ __L.at(__c39, 2) as any as S.Schema<SkuResource>;
-
 /** Gets the list of Cognitive Services accounts deployment skus. */
 export type DeploymentSkuListResultValueList = Array<SkuResource>;
-const DeploymentSkuListResultValueList = /*@__PURE__*/ __L.at(
-  __c39,
-  3,
-) as any as S.Schema<DeploymentSkuListResultValueList>;
-
 /** The list of cognitive services accounts operation response. */
 export interface DeploymentSkuListResult {
   /** The link used to get the next page of deployment skus. */
@@ -5979,11 +4112,6 @@ export interface DeploymentSkuListResult {
   /** Gets the list of Cognitive Services accounts deployment skus. */
   value?: DeploymentSkuListResultValueList;
 }
-const DeploymentSkuListResult = /*@__PURE__*/ __L.at(
-  __c39,
-  4,
-) as any as S.Schema<DeploymentSkuListResult>;
-
 export interface ListEncryptionScopesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -5992,16 +4120,8 @@ export interface ListEncryptionScopesRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListEncryptionScopesRequest = /*@__PURE__*/ __L.at(
-  __c39,
-  5,
-) as any as S.Schema<ListEncryptionScopesRequest>;
-
 /** Resource tags. */
 export type EncryptionScopeTagsMap = { [key: string]: string | undefined };
-const EncryptionScopeTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<EncryptionScopeTagsMap>;
-
 /** Cognitive Services EncryptionScope */
 export interface EncryptionScope {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6019,15 +4139,8 @@ export interface EncryptionScope {
   /** Resource tags. */
   tags?: EncryptionScopeTagsMap;
 }
-const EncryptionScope = /*@__PURE__*/ __L.at(__c39, 6) as any as S.Schema<EncryptionScope>;
-
 /** The list of EncryptionScope. */
 export type EncryptionScopeListResultValueList = Array<EncryptionScope>;
-const EncryptionScopeListResultValueList = /*@__PURE__*/ __L.at(
-  __c39,
-  7,
-) as any as S.Schema<EncryptionScopeListResultValueList>;
-
 /** The list of cognitive services EncryptionScopes. */
 export interface EncryptionScopeListResult {
   /** The link used to get the next page of EncryptionScope. */
@@ -6035,11 +4148,6 @@ export interface EncryptionScopeListResult {
   /** The list of EncryptionScope. */
   value?: EncryptionScopeListResultValueList;
 }
-const EncryptionScopeListResult = /*@__PURE__*/ __L.at(
-  __c40,
-  0,
-) as any as S.Schema<EncryptionScopeListResult>;
-
 export interface ListLocationBasedModelCapacitiesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6052,11 +4160,6 @@ export interface ListLocationBasedModelCapacitiesRequest {
   /** The version of the Model */
   modelVersion: string;
 }
-const ListLocationBasedModelCapacitiesRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  1,
-) as any as S.Schema<ListLocationBasedModelCapacitiesRequest>;
-
 /** Cognitive Services account ModelSkuCapacity. */
 export interface ModelSkuCapacityProperties {
   /** Properties of Cognitive Services account deployment model. */
@@ -6071,11 +4174,6 @@ export interface ModelSkuCapacityProperties {
   /** The scope type for model SKU capacity. */
   scopeType?: QuotaScopeType | null;
 }
-const ModelSkuCapacityProperties = /*@__PURE__*/ __L.at(
-  __c40,
-  2,
-) as any as S.Schema<ModelSkuCapacityProperties>;
-
 export interface ModelCapacityListResultValueItem {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -6090,18 +4188,8 @@ export interface ModelCapacityListResultValueItem {
   /** Cognitive Services account ModelSkuCapacity. */
   properties?: ModelSkuCapacityProperties;
 }
-const ModelCapacityListResultValueItem = /*@__PURE__*/ __L.at(
-  __c40,
-  3,
-) as any as S.Schema<ModelCapacityListResultValueItem>;
-
 /** Gets the list of Cognitive Services accounts ModelSkuCapacity. */
 export type ModelCapacityListResultValueList = Array<ModelCapacityListResultValueItem>;
-const ModelCapacityListResultValueList = /*@__PURE__*/ __L.at(
-  __c40,
-  4,
-) as any as S.Schema<ModelCapacityListResultValueList>;
-
 /** The list of cognitive services accounts operation response. */
 export interface ModelCapacityListResult {
   /** The link used to get the next page of ModelSkuCapacity. */
@@ -6109,11 +4197,6 @@ export interface ModelCapacityListResult {
   /** Gets the list of Cognitive Services accounts ModelSkuCapacity. */
   value?: ModelCapacityListResultValueList;
 }
-const ModelCapacityListResult = /*@__PURE__*/ __L.at(
-  __c40,
-  5,
-) as any as S.Schema<ModelCapacityListResult>;
-
 export interface ListManagedNetworkSettingsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6122,11 +4205,6 @@ export interface ListManagedNetworkSettingsRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListManagedNetworkSettingsRequest = /*@__PURE__*/ __L.at(
-  __c40,
-  6,
-) as any as S.Schema<ListManagedNetworkSettingsRequest>;
-
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface ManagedNetworkSettingsPropertiesBasicResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6140,17 +4218,9 @@ export interface ManagedNetworkSettingsPropertiesBasicResource {
   /** The properties of the managed network settings of a cognitive services account. */
   properties?: ManagedNetworkSettingsProperties;
 }
-const ManagedNetworkSettingsPropertiesBasicResource =
-  GetManagedNetworkSettingsResponse as any as S.Schema<ManagedNetworkSettingsPropertiesBasicResource>;
-
 /** The list of managed network settings of an account. Since this list may be incomplete, the nextLink field should be used to request the next list of cognitive services accounts. */
 export type ManagedNetworkListResultValueList =
   Array<ManagedNetworkSettingsPropertiesBasicResource>;
-const ManagedNetworkListResultValueList = /*@__PURE__*/ __L.at(
-  __c40,
-  7,
-) as any as S.Schema<ManagedNetworkListResultValueList>;
-
 /** List of managed networks of a cognitive services account. */
 export interface ManagedNetworkListResult {
   /** The link to the next page constructed using the continuationToken. If null, there are no additional pages. */
@@ -6158,11 +4228,6 @@ export interface ManagedNetworkListResult {
   /** The list of managed network settings of an account. Since this list may be incomplete, the nextLink field should be used to request the next list of cognitive services accounts. */
   value?: ManagedNetworkListResultValueList;
 }
-const ManagedNetworkListResult = /*@__PURE__*/ __L.at(
-  __c41,
-  0,
-) as any as S.Schema<ManagedNetworkListResult>;
-
 export interface ListModelCapacitiesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6173,19 +4238,12 @@ export interface ListModelCapacitiesRequest {
   /** The version of the Model */
   modelVersion: string;
 }
-const ListModelCapacitiesRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  1,
-) as any as S.Schema<ListModelCapacitiesRequest>;
-
 export interface ListModelsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of Azure region. */
   location: string;
 }
-const ListModelsRequest = /*@__PURE__*/ __L.at(__c41, 2) as any as S.Schema<ListModelsRequest>;
-
 /** Cognitive Services Model. */
 export interface Model {
   /** Cognitive Services account Model. */
@@ -6197,15 +4255,8 @@ export interface Model {
   /** The description of the model. */
   description?: string;
 }
-const Model = /*@__PURE__*/ __L.at(__c41, 3) as any as S.Schema<Model>;
-
 /** Gets the list of Cognitive Services accounts Model and their properties. */
 export type ModelListResultValueList = Array<Model>;
-const ModelListResultValueList = /*@__PURE__*/ __L.at(
-  __c41,
-  4,
-) as any as S.Schema<ModelListResultValueList>;
-
 /** The list of cognitive services models. */
 export interface ModelListResult {
   /** The link used to get the next page of Model. */
@@ -6213,8 +4264,6 @@ export interface ModelListResult {
   /** Gets the list of Cognitive Services accounts Model and their properties. */
   value?: ModelListResultValueList;
 }
-const ModelListResult = /*@__PURE__*/ __L.at(__c41, 5) as any as S.Schema<ModelListResult>;
-
 export interface ListNetworkSecurityPerimeterConfigurationsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6223,11 +4272,6 @@ export interface ListNetworkSecurityPerimeterConfigurationsRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListNetworkSecurityPerimeterConfigurationsRequest = /*@__PURE__*/ __L.at(
-  __c41,
-  6,
-) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationsRequest>;
-
 /** NSP Configuration for an Cognitive Services account. */
 export interface NetworkSecurityPerimeterConfiguration {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6241,17 +4285,9 @@ export interface NetworkSecurityPerimeterConfiguration {
   /** NSP Configuration properties. */
   properties?: NetworkSecurityPerimeterConfigurationProperties;
 }
-const NetworkSecurityPerimeterConfiguration =
-  GetNetworkSecurityPerimeterConfigurationResponse as any as S.Schema<NetworkSecurityPerimeterConfiguration>;
-
 /** Array of NSP configurations List Result for an Cognitive Services account. */
 export type NetworkSecurityPerimeterConfigurationListValueList =
   Array<NetworkSecurityPerimeterConfiguration>;
-const NetworkSecurityPerimeterConfigurationListValueList = /*@__PURE__*/ __L.at(
-  __c41,
-  7,
-) as any as S.Schema<NetworkSecurityPerimeterConfigurationListValueList>;
-
 /** A list of NSP configurations for an Cognitive Services account. */
 export interface NetworkSecurityPerimeterConfigurationList {
   /** Array of NSP configurations List Result for an Cognitive Services account. */
@@ -6259,17 +4295,7 @@ export interface NetworkSecurityPerimeterConfigurationList {
   /** Link to retrieve next page of results. */
   nextLink?: string;
 }
-const NetworkSecurityPerimeterConfigurationList = /*@__PURE__*/ __L.at(
-  __c42,
-  0,
-) as any as S.Schema<NetworkSecurityPerimeterConfigurationList>;
-
 export interface ListOperationsRequest {}
-const ListOperationsRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  1,
-) as any as S.Schema<ListOperationsRequest>;
-
 /** Localized display information for this particular operation. */
 export interface OperationDisplay {
   /** The localized friendly form of the resource provider name, e.g. "Microsoft Monitoring Insights" or "Microsoft Compute". */
@@ -6281,16 +4307,10 @@ export interface OperationDisplay {
   /** The short, localized friendly description of the operation; suitable for tool tips and detailed views. */
   description?: string;
 }
-const OperationDisplay = /*@__PURE__*/ __L.at(__c42, 2) as any as S.Schema<OperationDisplay>;
-
 /** The intended executor of the operation; as in Resource Based Access Control (RBAC) and audit logs UX. Default value is "user,system" */
 export type OperationOrigin = "user" | "system" | "user,system";
-const OperationOrigin = S.String;
-
 /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
 export type OperationActionType = "Internal";
-const OperationActionType = S.String;
-
 /** Details of a REST API operation, returned from the Resource Provider Operations API */
 export interface Operation {
   /** The name of the operation, as per Resource-Based Access Control (RBAC). Examples: "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/capture/action" */
@@ -6304,26 +4324,14 @@ export interface Operation {
   /** Enum. Indicates the action type. "Internal" refers to actions that are for internal only APIs. */
   actionType?: OperationActionType;
 }
-const Operation = /*@__PURE__*/ __L.at(__c42, 3) as any as S.Schema<Operation>;
-
 /** List of operations supported by the resource provider */
 export type ListOperationsResponseValueList = Array<Operation>;
-const ListOperationsResponseValueList = /*@__PURE__*/ __L.at(
-  __c42,
-  4,
-) as any as S.Schema<ListOperationsResponseValueList>;
-
 export interface ListOperationsResponse {
   /** List of operations supported by the resource provider */
   value?: ListOperationsResponseValueList;
   /** URL to get the next set of operation list results (if there are any). */
   nextLink?: string;
 }
-const ListOperationsResponse = /*@__PURE__*/ __L.at(
-  __c42,
-  5,
-) as any as S.Schema<ListOperationsResponse>;
-
 export interface ListOutboundRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6334,11 +4342,6 @@ export interface ListOutboundRuleRequest {
   /** Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported. */
   managedNetworkName: string;
 }
-const ListOutboundRuleRequest = /*@__PURE__*/ __L.at(
-  __c42,
-  6,
-) as any as S.Schema<ListOutboundRuleRequest>;
-
 /** Concrete proxy resource types can be created by aliasing this type using a specific property type. */
 export interface OutboundRuleBasicResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6352,18 +4355,8 @@ export interface OutboundRuleBasicResource {
   /** Outbound Rule for the managed network of a cognitive services account. */
   properties: OutboundRule;
 }
-const OutboundRuleBasicResource = /*@__PURE__*/ __L.at(
-  __c42,
-  7,
-) as any as S.Schema<OutboundRuleBasicResource>;
-
 /** The list of cognitive services accounts. Since this list may be incomplete, the nextLink field should be used to request the next list of cognitive services accounts. */
 export type OutboundRuleListResultValueList = Array<OutboundRuleBasicResource>;
-const OutboundRuleListResultValueList = /*@__PURE__*/ __L.at(
-  __c43,
-  0,
-) as any as S.Schema<OutboundRuleListResultValueList>;
-
 /** List of outbound rules for the managed network of a cognitive services account. */
 export interface OutboundRuleListResult {
   /** The link to the next page constructed using the continuationToken. If null, there are no additional pages. */
@@ -6371,11 +4364,6 @@ export interface OutboundRuleListResult {
   /** The list of cognitive services accounts. Since this list may be incomplete, the nextLink field should be used to request the next list of cognitive services accounts. */
   value?: OutboundRuleListResultValueList;
 }
-const OutboundRuleListResult = /*@__PURE__*/ __L.at(
-  __c43,
-  1,
-) as any as S.Schema<OutboundRuleListResult>;
-
 export interface ListPrivateEndpointConnectionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6384,26 +4372,13 @@ export interface ListPrivateEndpointConnectionsRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListPrivateEndpointConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  2,
-) as any as S.Schema<ListPrivateEndpointConnectionsRequest>;
-
 /** Array of private endpoint connections */
 export type PrivateEndpointConnectionListResultValueList = Array<PrivateEndpointConnection>;
-const PrivateEndpointConnectionListResultValueList =
-  AccountPropertiesPrivateEndpointConnectionsList as any as S.Schema<PrivateEndpointConnectionListResultValueList>;
-
 /** A list of private endpoint connections */
 export interface PrivateEndpointConnectionListResult {
   /** Array of private endpoint connections */
   value?: PrivateEndpointConnectionListResultValueList;
 }
-const PrivateEndpointConnectionListResult = /*@__PURE__*/ __L.at(
-  __c43,
-  3,
-) as any as S.Schema<PrivateEndpointConnectionListResult>;
-
 export interface ListPrivateLinkResourcesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6412,21 +4387,10 @@ export interface ListPrivateLinkResourcesRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListPrivateLinkResourcesRequest = /*@__PURE__*/ __L.at(
-  __c43,
-  4,
-) as any as S.Schema<ListPrivateLinkResourcesRequest>;
-
 /** The private link resource required member names. */
 export type PrivateLinkResourcePropertiesRequiredMembersList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredMembersList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredMembersList>;
-
 /** The private link resource Private link DNS zone name. */
 export type PrivateLinkResourcePropertiesRequiredZoneNamesList = Array<string>;
-const PrivateLinkResourcePropertiesRequiredZoneNamesList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<PrivateLinkResourcePropertiesRequiredZoneNamesList>;
-
 /** Properties of a private link resource. */
 export interface PrivateLinkResourceProperties {
   /** The private link resource group id. */
@@ -6438,11 +4402,6 @@ export interface PrivateLinkResourceProperties {
   /** The private link resource display name. */
   displayName?: string;
 }
-const PrivateLinkResourceProperties = /*@__PURE__*/ __L.at(
-  __c43,
-  5,
-) as any as S.Schema<PrivateLinkResourceProperties>;
-
 /** A private link resource */
 export interface PrivateLinkResource {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6456,25 +4415,13 @@ export interface PrivateLinkResource {
   /** Resource properties. */
   properties?: PrivateLinkResourceProperties;
 }
-const PrivateLinkResource = /*@__PURE__*/ __L.at(__c43, 6) as any as S.Schema<PrivateLinkResource>;
-
 /** Array of private link resources */
 export type PrivateLinkResourceListResultValueList = Array<PrivateLinkResource>;
-const PrivateLinkResourceListResultValueList = /*@__PURE__*/ __L.at(
-  __c43,
-  7,
-) as any as S.Schema<PrivateLinkResourceListResultValueList>;
-
 /** A list of private link resources */
 export interface PrivateLinkResourceListResult {
   /** Array of private link resources */
   value?: PrivateLinkResourceListResultValueList;
 }
-const PrivateLinkResourceListResult = /*@__PURE__*/ __L.at(
-  __c44,
-  0,
-) as any as S.Schema<PrivateLinkResourceListResult>;
-
 export interface ListProjectCapabilityHostsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6485,11 +4432,6 @@ export interface ListProjectCapabilityHostsRequest {
   /** The name of Cognitive Services account's project. */
   projectName: string;
 }
-const ListProjectCapabilityHostsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  1,
-) as any as S.Schema<ListProjectCapabilityHostsRequest>;
-
 /** Azure Resource Manager resource envelope for Project CapabilityHost. */
 export interface ProjectCapabilityHost {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6503,18 +4445,8 @@ export interface ProjectCapabilityHost {
   /** [Required] Additional attributes of the entity. */
   properties: ProjectCapabilityHostProperties;
 }
-const ProjectCapabilityHost = /*@__PURE__*/ __L.at(
-  __c44,
-  2,
-) as any as S.Schema<ProjectCapabilityHost>;
-
 /** An array of objects of type Project Capability Host. */
 export type ProjectCapabilityHostResourceArmPaginatedResultValueList = Array<ProjectCapabilityHost>;
-const ProjectCapabilityHostResourceArmPaginatedResultValueList = /*@__PURE__*/ __L.at(
-  __c44,
-  3,
-) as any as S.Schema<ProjectCapabilityHostResourceArmPaginatedResultValueList>;
-
 /** A paginated list of Project Capability Host entities. */
 export interface ProjectCapabilityHostResourceArmPaginatedResult {
   /** The link to the next page of Project Capability Host objects. If null, there are no additional pages. */
@@ -6522,11 +4454,6 @@ export interface ProjectCapabilityHostResourceArmPaginatedResult {
   /** An array of objects of type Project Capability Host. */
   value?: ProjectCapabilityHostResourceArmPaginatedResultValueList;
 }
-const ProjectCapabilityHostResourceArmPaginatedResult = /*@__PURE__*/ __L.at(
-  __c44,
-  4,
-) as any as S.Schema<ProjectCapabilityHostResourceArmPaginatedResult>;
-
 export interface ListProjectConnectionsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6543,11 +4470,6 @@ export interface ListProjectConnectionsRequest {
   /** query parameter that indicates if get connection call should return both connections and datastores */
   includeAll?: boolean;
 }
-const ListProjectConnectionsRequest = /*@__PURE__*/ __L.at(
-  __c44,
-  5,
-) as any as S.Schema<ListProjectConnectionsRequest>;
-
 export interface ListProjectsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6556,8 +4478,6 @@ export interface ListProjectsRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListProjectsRequest = /*@__PURE__*/ __L.at(__c44, 6) as any as S.Schema<ListProjectsRequest>;
-
 /** Resource tags. */
 export type ProjectTagsMap = { [key: string]: string | undefined };
 /** Cognitive Services project is an Azure resource representing the provisioned account's project, it's type, location and SKU. */
@@ -6581,15 +4501,8 @@ export interface Project {
   /** Identity for the resource. */
   identity?: Identity;
 }
-const Project = CreateProjectResponse as any as S.Schema<Project>;
-
 /** Gets the list of Cognitive Services projects and their properties. */
 export type ProjectListResultValueList = Array<Project>;
-const ProjectListResultValueList = /*@__PURE__*/ __L.at(
-  __c44,
-  7,
-) as any as S.Schema<ProjectListResultValueList>;
-
 /** The list of cognitive services projects operation response. */
 export interface ProjectListResult {
   /** The link used to get the next page of projects. */
@@ -6597,17 +4510,10 @@ export interface ProjectListResult {
   /** Gets the list of Cognitive Services projects and their properties. */
   value?: ProjectListResultValueList;
 }
-const ProjectListResult = /*@__PURE__*/ __L.at(__c45, 0) as any as S.Schema<ProjectListResult>;
-
 export interface ListQuotaTierBySubscriptionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListQuotaTierBySubscriptionRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  1,
-) as any as S.Schema<ListQuotaTierBySubscriptionRequest>;
-
 /** The quota tier information for the subscription */
 export interface QuotaTier {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6621,15 +4527,8 @@ export interface QuotaTier {
   /** Properties of quota tier resource. */
   properties?: QuotaTierProperties;
 }
-const QuotaTier = GetQuotaTierResponse as any as S.Schema<QuotaTier>;
-
 /** Gets the list of Quota Tiers and their properties. */
 export type QuotaTierListResultValueList = Array<QuotaTier>;
-const QuotaTierListResultValueList = /*@__PURE__*/ __L.at(
-  __c45,
-  2,
-) as any as S.Schema<QuotaTierListResultValueList>;
-
 /** The list of Quota Tiers response. */
 export interface QuotaTierListResult {
   /** The link used to get the next page of quota tiers. */
@@ -6637,8 +4536,6 @@ export interface QuotaTierListResult {
   /** Gets the list of Quota Tiers and their properties. */
   value?: QuotaTierListResultValueList;
 }
-const QuotaTierListResult = /*@__PURE__*/ __L.at(__c45, 3) as any as S.Schema<QuotaTierListResult>;
-
 export interface ListRaiBlocklistItemsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6649,16 +4546,8 @@ export interface ListRaiBlocklistItemsRequest {
   /** The name of the RaiBlocklist associated with the Cognitive Services Account */
   raiBlocklistName: string;
 }
-const ListRaiBlocklistItemsRequest = /*@__PURE__*/ __L.at(
-  __c45,
-  4,
-) as any as S.Schema<ListRaiBlocklistItemsRequest>;
-
 /** Resource tags. */
 export type RaiBlocklistItemTagsMap = { [key: string]: string | undefined };
-const RaiBlocklistItemTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiBlocklistItemTagsMap>;
-
 /** Cognitive Services RaiBlocklist Item. */
 export interface RaiBlocklistItem {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6676,15 +4565,8 @@ export interface RaiBlocklistItem {
   /** Resource tags. */
   tags?: RaiBlocklistItemTagsMap;
 }
-const RaiBlocklistItem = /*@__PURE__*/ __L.at(__c45, 5) as any as S.Schema<RaiBlocklistItem>;
-
 /** The list of RaiBlocklistItems. */
 export type RaiBlockListItemsResultValueList = Array<RaiBlocklistItem>;
-const RaiBlockListItemsResultValueList = /*@__PURE__*/ __L.at(
-  __c45,
-  6,
-) as any as S.Schema<RaiBlockListItemsResultValueList>;
-
 /** The list of cognitive services RAI Blocklist Items. */
 export interface RaiBlockListItemsResult {
   /** The link used to get the next page of RaiBlocklistItems. */
@@ -6692,11 +4574,6 @@ export interface RaiBlockListItemsResult {
   /** The list of RaiBlocklistItems. */
   value?: RaiBlockListItemsResultValueList;
 }
-const RaiBlockListItemsResult = /*@__PURE__*/ __L.at(
-  __c45,
-  7,
-) as any as S.Schema<RaiBlockListItemsResult>;
-
 export interface ListRaiBlocklistsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6705,11 +4582,6 @@ export interface ListRaiBlocklistsRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListRaiBlocklistsRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  0,
-) as any as S.Schema<ListRaiBlocklistsRequest>;
-
 /** Resource tags. */
 export type RaiBlocklistTagsMap = { [key: string]: string | undefined };
 /** Cognitive Services RaiBlocklist. */
@@ -6729,15 +4601,8 @@ export interface RaiBlocklist {
   /** Resource tags. */
   tags?: RaiBlocklistTagsMap;
 }
-const RaiBlocklist = GetRaiBlocklistResponse as any as S.Schema<RaiBlocklist>;
-
 /** The list of RaiBlocklist. */
 export type RaiBlockListResultValueList = Array<RaiBlocklist>;
-const RaiBlockListResultValueList = /*@__PURE__*/ __L.at(
-  __c46,
-  1,
-) as any as S.Schema<RaiBlockListResultValueList>;
-
 /** The list of cognitive services RAI Blocklists. */
 export interface RaiBlockListResult {
   /** The link used to get the next page of RaiBlocklists. */
@@ -6745,19 +4610,12 @@ export interface RaiBlockListResult {
   /** The list of RaiBlocklist. */
   value?: RaiBlockListResultValueList;
 }
-const RaiBlockListResult = /*@__PURE__*/ __L.at(__c46, 2) as any as S.Schema<RaiBlockListResult>;
-
 export interface ListRaiContentFiltersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
   /** The name of Azure region. */
   location: string;
 }
-const ListRaiContentFiltersRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  3,
-) as any as S.Schema<ListRaiContentFiltersRequest>;
-
 /** Azure OpenAI Content Filter. */
 export interface RaiContentFilter {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
@@ -6771,15 +4629,8 @@ export interface RaiContentFilter {
   /** Azure OpenAI Content Filter Properties. */
   properties?: RaiContentFilterProperties;
 }
-const RaiContentFilter = /*@__PURE__*/ __L.at(__c46, 4) as any as S.Schema<RaiContentFilter>;
-
 /** The list of RaiContentFilter. */
 export type RaiContentFilterListResultValueList = Array<RaiContentFilter>;
-const RaiContentFilterListResultValueList = /*@__PURE__*/ __L.at(
-  __c46,
-  5,
-) as any as S.Schema<RaiContentFilterListResultValueList>;
-
 /** The list of Content Filters. */
 export interface RaiContentFilterListResult {
   /** The link used to get the next page of Content Filters. */
@@ -6787,20 +4638,10 @@ export interface RaiContentFilterListResult {
   /** The list of RaiContentFilter. */
   value?: RaiContentFilterListResultValueList;
 }
-const RaiContentFilterListResult = /*@__PURE__*/ __L.at(
-  __c46,
-  6,
-) as any as S.Schema<RaiContentFilterListResult>;
-
 export interface ListRaiExternalSafetyProvidersRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListRaiExternalSafetyProvidersRequest = /*@__PURE__*/ __L.at(
-  __c46,
-  7,
-) as any as S.Schema<ListRaiExternalSafetyProvidersRequest>;
-
 /** Resource tags. */
 export type RaiExternalSafetyProviderSchemaTagsMap = { [key: string]: string | undefined };
 /** Cognitive Services Rai External Safety provider Schema. */
@@ -6820,16 +4661,8 @@ export interface RaiExternalSafetyProviderSchema {
   /** Resource tags. */
   tags?: RaiExternalSafetyProviderSchemaTagsMap;
 }
-const RaiExternalSafetyProviderSchema =
-  GetRaiExternalSafetyProviderResponse as any as S.Schema<RaiExternalSafetyProviderSchema>;
-
 /** The list of RaiExternalSafetyProvider. */
 export type RaiExternalSafetyProviderResultValueList = Array<RaiExternalSafetyProviderSchema>;
-const RaiExternalSafetyProviderResultValueList = /*@__PURE__*/ __L.at(
-  __c47,
-  0,
-) as any as S.Schema<RaiExternalSafetyProviderResultValueList>;
-
 /** The list of cognitive services RAI External Safety Providers. */
 export interface RaiExternalSafetyProviderResult {
   /** The link used to get the next page of Rai External Safety Provider. */
@@ -6837,11 +4670,6 @@ export interface RaiExternalSafetyProviderResult {
   /** The list of RaiExternalSafetyProvider. */
   value?: RaiExternalSafetyProviderResultValueList;
 }
-const RaiExternalSafetyProviderResult = /*@__PURE__*/ __L.at(
-  __c47,
-  1,
-) as any as S.Schema<RaiExternalSafetyProviderResult>;
-
 export interface ListRaiPoliciesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6850,11 +4678,6 @@ export interface ListRaiPoliciesRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListRaiPoliciesRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  2,
-) as any as S.Schema<ListRaiPoliciesRequest>;
-
 /** Resource tags. */
 export type RaiPolicyTagsMap = { [key: string]: string | undefined };
 /** Cognitive Services RaiPolicy. */
@@ -6874,15 +4697,8 @@ export interface RaiPolicy {
   /** Resource tags. */
   tags?: RaiPolicyTagsMap;
 }
-const RaiPolicy = GetRaiPolicyResponse as any as S.Schema<RaiPolicy>;
-
 /** The list of RaiPolicy. */
 export type RaiPolicyListResultValueList = Array<RaiPolicy>;
-const RaiPolicyListResultValueList = /*@__PURE__*/ __L.at(
-  __c47,
-  3,
-) as any as S.Schema<RaiPolicyListResultValueList>;
-
 /** The list of cognitive services RaiPolicies. */
 export interface RaiPolicyListResult {
   /** The link used to get the next page of RaiPolicy. */
@@ -6890,8 +4706,6 @@ export interface RaiPolicyListResult {
   /** The list of RaiPolicy. */
   value?: RaiPolicyListResultValueList;
 }
-const RaiPolicyListResult = /*@__PURE__*/ __L.at(__c47, 4) as any as S.Schema<RaiPolicyListResult>;
-
 export interface ListRaiToolLabelsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6900,11 +4714,6 @@ export interface ListRaiToolLabelsRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListRaiToolLabelsRequest = /*@__PURE__*/ __L.at(
-  __c47,
-  5,
-) as any as S.Schema<ListRaiToolLabelsRequest>;
-
 /** Resource tags. */
 export type RaiToolLabelTagsMap = { [key: string]: string | undefined };
 /** Cognitive Services RAI Tool Label resource. */
@@ -6924,15 +4733,8 @@ export interface RaiToolLabel {
   /** Resource tags. */
   tags?: RaiToolLabelTagsMap;
 }
-const RaiToolLabel = GetRaiToolLabelResponse as any as S.Schema<RaiToolLabel>;
-
 /** The list of RAI Tool Labels. */
 export type RaiToolLabelResultValueList = Array<RaiToolLabel>;
-const RaiToolLabelResultValueList = /*@__PURE__*/ __L.at(
-  __c47,
-  6,
-) as any as S.Schema<RaiToolLabelResultValueList>;
-
 /** The list of Cognitive Services RAI Tool Labels. */
 export interface RaiToolLabelResult {
   /** The link used to get the next page of RaiToolLabels. */
@@ -6940,8 +4742,6 @@ export interface RaiToolLabelResult {
   /** The list of RAI Tool Labels. */
   value?: RaiToolLabelResultValueList;
 }
-const RaiToolLabelResult = /*@__PURE__*/ __L.at(__c47, 7) as any as S.Schema<RaiToolLabelResult>;
-
 export interface ListRaiTopicsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -6950,11 +4750,6 @@ export interface ListRaiTopicsRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const ListRaiTopicsRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  0,
-) as any as S.Schema<ListRaiTopicsRequest>;
-
 /** Resource tags. */
 export type RaiTopicTagsMap = { [key: string]: string | undefined };
 /** Cognitive Services Rai Topic. */
@@ -6974,15 +4769,8 @@ export interface RaiTopic {
   /** Resource tags. */
   tags?: RaiTopicTagsMap;
 }
-const RaiTopic = GetRaiTopicResponse as any as S.Schema<RaiTopic>;
-
 /** The list of RaiTopic. */
 export type RaiTopicResultValueList = Array<RaiTopic>;
-const RaiTopicResultValueList = /*@__PURE__*/ __L.at(
-  __c48,
-  1,
-) as any as S.Schema<RaiTopicResultValueList>;
-
 /** The list of cognitive services RAI Topics. */
 export interface RaiTopicResult {
   /** The link used to get the next page of RaiTopics. */
@@ -6990,56 +4778,28 @@ export interface RaiTopicResult {
   /** The list of RaiTopic. */
   value?: RaiTopicResultValueList;
 }
-const RaiTopicResult = /*@__PURE__*/ __L.at(__c48, 2) as any as S.Schema<RaiTopicResult>;
-
 export interface ListResourceSkusRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
 }
-const ListResourceSkusRequest = /*@__PURE__*/ __L.at(
-  __c48,
-  3,
-) as any as S.Schema<ListResourceSkusRequest>;
-
 /** The set of locations that the SKU is available. */
 export type ResourceSkuLocationsList = Array<string>;
-const ResourceSkuLocationsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ResourceSkuLocationsList>;
-
 /** The type of restrictions. */
 export type ResourceSkuRestrictionsType = "Location" | "Zone";
-const ResourceSkuRestrictionsType = S.String;
-
 /** The value of restrictions. If the restriction type is set to location. This would be different locations where the SKU is restricted. */
 export type ResourceSkuRestrictionsValuesList = Array<string>;
-const ResourceSkuRestrictionsValuesList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ResourceSkuRestrictionsValuesList>;
-
 /** Locations where the SKU is restricted */
 export type ResourceSkuRestrictionInfoLocationsList = Array<string>;
-const ResourceSkuRestrictionInfoLocationsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ResourceSkuRestrictionInfoLocationsList>;
-
 /** List of availability zones where the SKU is restricted. */
 export type ResourceSkuRestrictionInfoZonesList = Array<string>;
-const ResourceSkuRestrictionInfoZonesList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ResourceSkuRestrictionInfoZonesList>;
-
 export interface ResourceSkuRestrictionInfo {
   /** Locations where the SKU is restricted */
   locations?: ResourceSkuRestrictionInfoLocationsList;
   /** List of availability zones where the SKU is restricted. */
   zones?: ResourceSkuRestrictionInfoZonesList;
 }
-const ResourceSkuRestrictionInfo = /*@__PURE__*/ __L.at(
-  __c48,
-  4,
-) as any as S.Schema<ResourceSkuRestrictionInfo>;
-
 /** The reason for restriction. */
 export type ResourceSkuRestrictionsReasonCode = "QuotaId" | "NotAvailableForSubscription";
-const ResourceSkuRestrictionsReasonCode = S.String;
-
 /** Describes restrictions of a SKU. */
 export interface ResourceSkuRestrictions {
   /** The type of restrictions. */
@@ -7051,18 +4811,8 @@ export interface ResourceSkuRestrictions {
   /** The reason for restriction. */
   reasonCode?: ResourceSkuRestrictionsReasonCode;
 }
-const ResourceSkuRestrictions = /*@__PURE__*/ __L.at(
-  __c48,
-  5,
-) as any as S.Schema<ResourceSkuRestrictions>;
-
 /** The restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
 export type ResourceSkuRestrictionsList = Array<ResourceSkuRestrictions>;
-const ResourceSkuRestrictionsList = /*@__PURE__*/ __L.at(
-  __c48,
-  6,
-) as any as S.Schema<ResourceSkuRestrictionsList>;
-
 /** Describes an available Cognitive Services SKU. */
 export interface ResourceSku {
   /** The type of resource the SKU applies to. */
@@ -7078,15 +4828,8 @@ export interface ResourceSku {
   /** The restrictions because of which SKU cannot be used. This is empty if there are no restrictions. */
   restrictions?: ResourceSkuRestrictionsList;
 }
-const ResourceSku = /*@__PURE__*/ __L.at(__c48, 7) as any as S.Schema<ResourceSku>;
-
 /** The ResourceSku items on this page */
 export type ResourceSkuListResultValueList = Array<ResourceSku>;
-const ResourceSkuListResultValueList = /*@__PURE__*/ __L.at(
-  __c49,
-  0,
-) as any as S.Schema<ResourceSkuListResultValueList>;
-
 /** The Get Skus operation response. */
 export interface ResourceSkuListResult {
   /** The ResourceSku items on this page */
@@ -7094,11 +4837,6 @@ export interface ResourceSkuListResult {
   /** The link to the next page of items */
   nextLink?: string;
 }
-const ResourceSkuListResult = /*@__PURE__*/ __L.at(
-  __c49,
-  1,
-) as any as S.Schema<ResourceSkuListResult>;
-
 export interface ListUsagesRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7107,8 +4845,6 @@ export interface ListUsagesRequest {
   /** An OData filter expression that describes a subset of usages to return. The supported parameter is name.value (name of the metric, can have an or of multiple names). */
   _filter?: string;
 }
-const ListUsagesRequest = /*@__PURE__*/ __L.at(__c49, 2) as any as S.Schema<ListUsagesRequest>;
-
 export interface NetworkSecurityPerimeterConfigurationsReconcileRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7119,11 +4855,6 @@ export interface NetworkSecurityPerimeterConfigurationsReconcileRequest {
   /** The name of the NSP Configuration. */
   nspConfigurationName: string;
 }
-const NetworkSecurityPerimeterConfigurationsReconcileRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  3,
-) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileRequest>;
-
 export interface NetworkSecurityPerimeterConfigurationsReconcileResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -7136,9 +4867,6 @@ export interface NetworkSecurityPerimeterConfigurationsReconcileResponse {
   /** NSP Configuration properties. */
   properties?: NetworkSecurityPerimeterConfigurationProperties;
 }
-const NetworkSecurityPerimeterConfigurationsReconcileResponse =
-  GetNetworkSecurityPerimeterConfigurationResponse as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileResponse>;
-
 /** Outbound Rule for the managed network of a cognitive services account. */
 export interface OutboundRuleInput {
   /** Category of a managed network Outbound Rule of a cognitive services account. */
@@ -7150,8 +4878,6 @@ export interface OutboundRuleInput {
   /** Rule destination (polymorphic on `type`): an FQDN string, a `{ serviceResourceId, subresourceTarget }` private endpoint target, or a `{ serviceTag, protocol, portRanges, action }` service tag. */
   destination?: unknown;
 }
-const OutboundRuleInput = /*@__PURE__*/ __L.at(__c49, 4) as any as S.Schema<OutboundRuleInput>;
-
 export interface OutboundRuleCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7166,11 +4892,6 @@ export interface OutboundRuleCreateOrUpdateRequest {
   /** Outbound Rule for the managed network of a cognitive services account. */
   properties: OutboundRuleInput;
 }
-const OutboundRuleCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c49,
-  5,
-) as any as S.Schema<OutboundRuleCreateOrUpdateRequest>;
-
 export interface OutboundRuleCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -7183,18 +4904,10 @@ export interface OutboundRuleCreateOrUpdateResponse {
   /** Outbound Rule for the managed network of a cognitive services account. */
   properties: OutboundRule;
 }
-const OutboundRuleCreateOrUpdateResponse =
-  OutboundRuleBasicResource as any as S.Schema<OutboundRuleCreateOrUpdateResponse>;
-
 /** Dictionary of <OutboundRule> */
 export type ManagedNetworkSettingsExInputOutboundRulesMap = {
   [key: string]: OutboundRuleInput | undefined;
 };
-const ManagedNetworkSettingsExInputOutboundRulesMap = /*@__PURE__*/ __L.at(
-  __c49,
-  6,
-) as any as S.Schema<ManagedNetworkSettingsExInputOutboundRulesMap>;
-
 export interface ManagedNetworkSettingsExInput {
   /** Isolation mode for the managed network of a cognitive services account. */
   isolationMode?: IsolationMode | (string & {});
@@ -7207,21 +4920,11 @@ export interface ManagedNetworkSettingsExInput {
   /** The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled. */
   managedNetworkKind?: ManagedNetworkKind | (string & {});
 }
-const ManagedNetworkSettingsExInput = /*@__PURE__*/ __L.at(
-  __c49,
-  7,
-) as any as S.Schema<ManagedNetworkSettingsExInput>;
-
 /** The properties of the managed network settings of a cognitive services account. */
 export interface ManagedNetworkSettingsPropertiesInput {
   /** Managed Network settings for a cognitive services account. */
   managedNetwork?: ManagedNetworkSettingsExInput;
 }
-const ManagedNetworkSettingsPropertiesInput = /*@__PURE__*/ __L.at(
-  __c50,
-  0,
-) as any as S.Schema<ManagedNetworkSettingsPropertiesInput>;
-
 export interface PatchManagedNetworkSettingsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7234,11 +4937,6 @@ export interface PatchManagedNetworkSettingsRequest {
   /** The properties of the managed network settings of a cognitive services account. */
   properties?: ManagedNetworkSettingsPropertiesInput;
 }
-const PatchManagedNetworkSettingsRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  1,
-) as any as S.Schema<PatchManagedNetworkSettingsRequest>;
-
 export interface PatchManagedNetworkSettingsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -7251,9 +4949,6 @@ export interface PatchManagedNetworkSettingsResponse {
   /** The properties of the managed network settings of a cognitive services account. */
   properties?: ManagedNetworkSettingsProperties;
 }
-const PatchManagedNetworkSettingsResponse =
-  GetManagedNetworkSettingsResponse as any as S.Schema<PatchManagedNetworkSettingsResponse>;
-
 export interface PauseDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7264,11 +4959,6 @@ export interface PauseDeploymentRequest {
   /** The name of the deployment associated with the Cognitive Services Account */
   deploymentName: string;
 }
-const PauseDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  2,
-) as any as S.Schema<PauseDeploymentRequest>;
-
 /** Resource tags. */
 export type PauseDeploymentResponseTagsMap = { [key: string]: string | undefined };
 export interface PauseDeploymentResponse {
@@ -7289,8 +4979,6 @@ export interface PauseDeploymentResponse {
   /** Resource tags. */
   tags?: PauseDeploymentResponseTagsMap;
 }
-const PauseDeploymentResponse = GetDeploymentResponse as any as S.Schema<PauseDeploymentResponse>;
-
 /** Dictionary of <OutboundRule> */
 export type ManagedNetworkSettingsInputOutboundRulesMap = {
   [key: string]: OutboundRuleInput | undefined;
@@ -7308,9 +4996,6 @@ export interface ManagedNetworkSettingsInput {
   /** The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled. */
   managedNetworkKind?: ManagedNetworkKind | (string & {});
 }
-const ManagedNetworkSettingsInput =
-  ManagedNetworkSettingsExInput as any as S.Schema<ManagedNetworkSettingsInput>;
-
 export interface PostOutboundRuleRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7323,11 +5008,6 @@ export interface PostOutboundRuleRequest {
   /** Managed Network settings for a cognitive services account. */
   properties?: ManagedNetworkSettingsInput;
 }
-const PostOutboundRuleRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  3,
-) as any as S.Schema<PostOutboundRuleRequest>;
-
 /** The Private Endpoint resource. */
 export type PrivateEndpointConnectionPropertiesInputPrivateEndpoint = UserAssignedIdentityInput;
 /** A collection of information about the state of the connection between service consumer and provider. */
@@ -7339,14 +5019,8 @@ export interface PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConne
   /** A message indicating if changes on the service provider require any updates on the consumer. */
   actionsRequired?: string;
 }
-const PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState =
-  PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState as any as S.Schema<PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState>;
-
 /** The private link resource group ids. */
 export type PrivateEndpointConnectionPropertiesInputGroupIdsList = Array<string>;
-const PrivateEndpointConnectionPropertiesInputGroupIdsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<PrivateEndpointConnectionPropertiesInputGroupIdsList>;
-
 /** Properties of the PrivateEndpointConnectProperties. */
 export interface PrivateEndpointConnectionPropertiesInput {
   /** The Private Endpoint resource. */
@@ -7356,11 +5030,6 @@ export interface PrivateEndpointConnectionPropertiesInput {
   /** The private link resource group ids. */
   groupIds?: PrivateEndpointConnectionPropertiesInputGroupIdsList;
 }
-const PrivateEndpointConnectionPropertiesInput = /*@__PURE__*/ __L.at(
-  __c50,
-  4,
-) as any as S.Schema<PrivateEndpointConnectionPropertiesInput>;
-
 export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7375,11 +5044,6 @@ export interface PrivateEndpointConnectionsCreateOrUpdateRequest {
   /** The location of the private endpoint connection */
   location?: string;
 }
-const PrivateEndpointConnectionsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  5,
-) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>;
-
 export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -7396,29 +5060,14 @@ export interface PrivateEndpointConnectionsCreateOrUpdateResponse {
   /** The location of the private endpoint connection */
   location?: string;
 }
-const PrivateEndpointConnectionsCreateOrUpdateResponse =
-  PrivateEndpointConnection as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>;
-
 /** List of AI services connections. */
 export type ProjectCapabilityHostPropertiesInputAiServicesConnectionsList = Array<string>;
-const ProjectCapabilityHostPropertiesInputAiServicesConnectionsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ProjectCapabilityHostPropertiesInputAiServicesConnectionsList>;
-
 /** List of connection names from those available in the account or project to be used for vector database (e.g. CosmosDB). */
 export type ProjectCapabilityHostPropertiesInputVectorStoreConnectionsList = Array<string>;
-const ProjectCapabilityHostPropertiesInputVectorStoreConnectionsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ProjectCapabilityHostPropertiesInputVectorStoreConnectionsList>;
-
 /** List of connection names from those available in the account or project to be used as a storage resource. */
 export type ProjectCapabilityHostPropertiesInputStorageConnectionsList = Array<string>;
-const ProjectCapabilityHostPropertiesInputStorageConnectionsList =
-  CapabilityHostPropertiesInputAiServicesConnectionsList as any as S.Schema<ProjectCapabilityHostPropertiesInputStorageConnectionsList>;
-
 /** List of connection names from those available in the account or project to be used for Thread storage. */
 export type ProjectCapabilityHostPropertiesInputThreadStorageConnectionsList = Array<string>;
-const ProjectCapabilityHostPropertiesInputThreadStorageConnectionsList =
-  NetworkSecurityPerimeterAccessRulePropertiesAddressPrefixesList as any as S.Schema<ProjectCapabilityHostPropertiesInputThreadStorageConnectionsList>;
-
 export interface ProjectCapabilityHostPropertiesInput {
   /** List of AI services connections. */
   aiServicesConnections?: ProjectCapabilityHostPropertiesInputAiServicesConnectionsList | null;
@@ -7429,11 +5078,6 @@ export interface ProjectCapabilityHostPropertiesInput {
   /** List of connection names from those available in the account or project to be used for Thread storage. */
   threadStorageConnections?: ProjectCapabilityHostPropertiesInputThreadStorageConnectionsList | null;
 }
-const ProjectCapabilityHostPropertiesInput = /*@__PURE__*/ __L.at(
-  __c50,
-  6,
-) as any as S.Schema<ProjectCapabilityHostPropertiesInput>;
-
 export interface ProjectCapabilityHostsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7448,11 +5092,6 @@ export interface ProjectCapabilityHostsCreateOrUpdateRequest {
   /** [Required] Additional attributes of the entity. */
   properties: ProjectCapabilityHostPropertiesInput;
 }
-const ProjectCapabilityHostsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c50,
-  7,
-) as any as S.Schema<ProjectCapabilityHostsCreateOrUpdateRequest>;
-
 export interface ProjectCapabilityHostsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -7465,9 +5104,6 @@ export interface ProjectCapabilityHostsCreateOrUpdateResponse {
   /** [Required] Additional attributes of the entity. */
   properties: ProjectCapabilityHostProperties;
 }
-const ProjectCapabilityHostsCreateOrUpdateResponse =
-  GetProjectCapabilityHostResponse as any as S.Schema<ProjectCapabilityHostsCreateOrUpdateResponse>;
-
 export interface ProvisionManagedNetworkProvisionManagedNetworkRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7478,11 +5114,6 @@ export interface ProvisionManagedNetworkProvisionManagedNetworkRequest {
   /** Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported. */
   managedNetworkName: string;
 }
-const ProvisionManagedNetworkProvisionManagedNetworkRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  0,
-) as any as S.Schema<ProvisionManagedNetworkProvisionManagedNetworkRequest>;
-
 export interface PurgeDeletedAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7493,15 +5124,7 @@ export interface PurgeDeletedAccountRequest {
   /** The name of Cognitive Services account. */
   accountName: string;
 }
-const PurgeDeletedAccountRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  1,
-) as any as S.Schema<PurgeDeletedAccountRequest>;
-
 export interface PurgeDeletedAccountResponse {}
-const PurgeDeletedAccountResponse =
-  UserAssignedIdentityInput as any as S.Schema<PurgeDeletedAccountResponse>;
-
 export interface PutManagedNetworkSettingsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7514,11 +5137,6 @@ export interface PutManagedNetworkSettingsRequest {
   /** The properties of the managed network settings of a cognitive services account. */
   properties?: ManagedNetworkSettingsPropertiesInput;
 }
-const PutManagedNetworkSettingsRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  2,
-) as any as S.Schema<PutManagedNetworkSettingsRequest>;
-
 export interface PutManagedNetworkSettingsResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -7531,19 +5149,11 @@ export interface PutManagedNetworkSettingsResponse {
   /** The properties of the managed network settings of a cognitive services account. */
   properties?: ManagedNetworkSettingsProperties;
 }
-const PutManagedNetworkSettingsResponse =
-  GetManagedNetworkSettingsResponse as any as S.Schema<PutManagedNetworkSettingsResponse>;
-
 /** Properties of Quota Tier resource'. */
 export interface QuotaTierPropertiesInput {
   /** Gets the tier upgrade policy for the subscription. */
   tierUpgradePolicy?: TierUpgradePolicy | (string & {});
 }
-const QuotaTierPropertiesInput = /*@__PURE__*/ __L.at(
-  __c51,
-  3,
-) as any as S.Schema<QuotaTierPropertiesInput>;
-
 export interface QuotaTiersCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7552,11 +5162,6 @@ export interface QuotaTiersCreateOrUpdateRequest {
   /** Properties of quota tier resource. */
   properties?: QuotaTierPropertiesInput;
 }
-const QuotaTiersCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  4,
-) as any as S.Schema<QuotaTiersCreateOrUpdateRequest>;
-
 export interface QuotaTiersCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -7569,16 +5174,8 @@ export interface QuotaTiersCreateOrUpdateResponse {
   /** Properties of quota tier resource. */
   properties?: QuotaTierProperties;
 }
-const QuotaTiersCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c51,
-  5,
-) as any as S.Schema<QuotaTiersCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type RaiBlocklistItemsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const RaiBlocklistItemsCreateOrUpdateRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiBlocklistItemsCreateOrUpdateRequestTagsMap>;
-
 export interface RaiBlocklistItemsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7595,11 +5192,6 @@ export interface RaiBlocklistItemsCreateOrUpdateRequest {
   /** Resource tags. */
   tags?: RaiBlocklistItemsCreateOrUpdateRequestTagsMap;
 }
-const RaiBlocklistItemsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  6,
-) as any as S.Schema<RaiBlocklistItemsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type RaiBlocklistItemsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface RaiBlocklistItemsCreateOrUpdateResponse {
@@ -7618,14 +5210,8 @@ export interface RaiBlocklistItemsCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: RaiBlocklistItemsCreateOrUpdateResponseTagsMap;
 }
-const RaiBlocklistItemsCreateOrUpdateResponse =
-  GetRaiBlocklistItemResponse as any as S.Schema<RaiBlocklistItemsCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type RaiBlocklistsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const RaiBlocklistsCreateOrUpdateRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiBlocklistsCreateOrUpdateRequestTagsMap>;
-
 export interface RaiBlocklistsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7640,11 +5226,6 @@ export interface RaiBlocklistsCreateOrUpdateRequest {
   /** Resource tags. */
   tags?: RaiBlocklistsCreateOrUpdateRequestTagsMap;
 }
-const RaiBlocklistsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c51,
-  7,
-) as any as S.Schema<RaiBlocklistsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type RaiBlocklistsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface RaiBlocklistsCreateOrUpdateResponse {
@@ -7663,9 +5244,6 @@ export interface RaiBlocklistsCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: RaiBlocklistsCreateOrUpdateResponseTagsMap;
 }
-const RaiBlocklistsCreateOrUpdateResponse =
-  AddRaiBlocklistItemBatchResponse as any as S.Schema<RaiBlocklistsCreateOrUpdateResponse>;
-
 /** RAI External SafetyProvider schema properties. */
 export interface RaiExternalSafetyProviderSchemaPropertiesInput {
   /** The unique identifier of the safety provider. */
@@ -7683,11 +5261,6 @@ export interface RaiExternalSafetyProviderSchemaPropertiesInput {
   /** The Key Vault URI that contains the api key for safety provider urls. */
   keyVaultUri?: string;
 }
-const RaiExternalSafetyProviderSchemaPropertiesInput = /*@__PURE__*/ __L.at(
-  __c52,
-  0,
-) as any as S.Schema<RaiExternalSafetyProviderSchemaPropertiesInput>;
-
 export interface RaiExternalSafetyProviderCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7696,11 +5269,6 @@ export interface RaiExternalSafetyProviderCreateOrUpdateRequest {
   /** Properties of Cognitive Services Rai External Safety provider. */
   properties?: RaiExternalSafetyProviderSchemaPropertiesInput;
 }
-const RaiExternalSafetyProviderCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  1,
-) as any as S.Schema<RaiExternalSafetyProviderCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type RaiExternalSafetyProviderCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -7721,14 +5289,8 @@ export interface RaiExternalSafetyProviderCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: RaiExternalSafetyProviderCreateOrUpdateResponseTagsMap;
 }
-const RaiExternalSafetyProviderCreateOrUpdateResponse =
-  GetRaiExternalSafetyProviderResponse as any as S.Schema<RaiExternalSafetyProviderCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type RaiPoliciesCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const RaiPoliciesCreateOrUpdateRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiPoliciesCreateOrUpdateRequestTagsMap>;
-
 export interface RaiPoliciesCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7743,11 +5305,6 @@ export interface RaiPoliciesCreateOrUpdateRequest {
   /** Resource tags. */
   tags?: RaiPoliciesCreateOrUpdateRequestTagsMap;
 }
-const RaiPoliciesCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  2,
-) as any as S.Schema<RaiPoliciesCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type RaiPoliciesCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
 export interface RaiPoliciesCreateOrUpdateResponse {
@@ -7766,14 +5323,8 @@ export interface RaiPoliciesCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: RaiPoliciesCreateOrUpdateResponseTagsMap;
 }
-const RaiPoliciesCreateOrUpdateResponse =
-  GetSubscriptionRaiPolicyResponse as any as S.Schema<RaiPoliciesCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type RaiToolLabelsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const RaiToolLabelsCreateOrUpdateRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiToolLabelsCreateOrUpdateRequestTagsMap>;
-
 export interface RaiToolLabelsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7788,16 +5339,8 @@ export interface RaiToolLabelsCreateOrUpdateRequest {
   /** Resource tags. */
   tags?: RaiToolLabelsCreateOrUpdateRequestTagsMap;
 }
-const RaiToolLabelsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  3,
-) as any as S.Schema<RaiToolLabelsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type RaiToolLabelsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const RaiToolLabelsCreateOrUpdateResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiToolLabelsCreateOrUpdateResponseTagsMap>;
-
 export interface RaiToolLabelsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -7814,16 +5357,8 @@ export interface RaiToolLabelsCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: RaiToolLabelsCreateOrUpdateResponseTagsMap;
 }
-const RaiToolLabelsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  4,
-) as any as S.Schema<RaiToolLabelsCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type RaiTopicsCreateOrUpdateRequestTagsMap = { [key: string]: string | undefined };
-const RaiTopicsCreateOrUpdateRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiTopicsCreateOrUpdateRequestTagsMap>;
-
 export interface RaiTopicsCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7838,16 +5373,8 @@ export interface RaiTopicsCreateOrUpdateRequest {
   /** Resource tags. */
   tags?: RaiTopicsCreateOrUpdateRequestTagsMap;
 }
-const RaiTopicsCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  5,
-) as any as S.Schema<RaiTopicsCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type RaiTopicsCreateOrUpdateResponseTagsMap = { [key: string]: string | undefined };
-const RaiTopicsCreateOrUpdateResponseTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<RaiTopicsCreateOrUpdateResponseTagsMap>;
-
 export interface RaiTopicsCreateOrUpdateResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -7864,15 +5391,8 @@ export interface RaiTopicsCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: RaiTopicsCreateOrUpdateResponseTagsMap;
 }
-const RaiTopicsCreateOrUpdateResponse = /*@__PURE__*/ __L.at(
-  __c52,
-  6,
-) as any as S.Schema<RaiTopicsCreateOrUpdateResponse>;
-
 /** key name to generate (Key1|Key2) */
 export type KeyName = "Key1" | "Key2";
-const KeyName = S.String;
-
 export interface RegenerateAccountKeyRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7883,11 +5403,6 @@ export interface RegenerateAccountKeyRequest {
   /** key name to generate (Key1|Key2) */
   keyName: KeyName | (string & {});
 }
-const RegenerateAccountKeyRequest = /*@__PURE__*/ __L.at(
-  __c52,
-  7,
-) as any as S.Schema<RegenerateAccountKeyRequest>;
-
 export interface ResumeDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7898,11 +5413,6 @@ export interface ResumeDeploymentRequest {
   /** The name of the deployment associated with the Cognitive Services Account */
   deploymentName: string;
 }
-const ResumeDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  0,
-) as any as S.Schema<ResumeDeploymentRequest>;
-
 /** Resource tags. */
 export type ResumeDeploymentResponseTagsMap = { [key: string]: string | undefined };
 export interface ResumeDeploymentResponse {
@@ -7923,8 +5433,6 @@ export interface ResumeDeploymentResponse {
   /** Resource tags. */
   tags?: ResumeDeploymentResponseTagsMap;
 }
-const ResumeDeploymentResponse = GetDeploymentResponse as any as S.Schema<ResumeDeploymentResponse>;
-
 export interface StartAgentDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7939,15 +5447,7 @@ export interface StartAgentDeploymentRequest {
   /** The name of the deployment associated with the Cognitive Services Account */
   deploymentName: string;
 }
-const StartAgentDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  1,
-) as any as S.Schema<StartAgentDeploymentRequest>;
-
 export interface StartAgentDeploymentResponse {}
-const StartAgentDeploymentResponse =
-  UserAssignedIdentityInput as any as S.Schema<StartAgentDeploymentResponse>;
-
 export interface StopAgentDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7962,22 +5462,11 @@ export interface StopAgentDeploymentRequest {
   /** The name of the deployment associated with the Cognitive Services Account */
   deploymentName: string;
 }
-const StopAgentDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  2,
-) as any as S.Schema<StopAgentDeploymentRequest>;
-
 export interface StopAgentDeploymentResponse {}
-const StopAgentDeploymentResponse =
-  UserAssignedIdentityInput as any as S.Schema<StopAgentDeploymentResponse>;
-
 /** Resource tags. */
 export type SubscriptionRaiPolicyCreateOrUpdateRequestTagsMap = {
   [key: string]: string | undefined;
 };
-const SubscriptionRaiPolicyCreateOrUpdateRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<SubscriptionRaiPolicyCreateOrUpdateRequestTagsMap>;
-
 export interface SubscriptionRaiPolicyCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -7988,11 +5477,6 @@ export interface SubscriptionRaiPolicyCreateOrUpdateRequest {
   /** Resource tags. */
   tags?: SubscriptionRaiPolicyCreateOrUpdateRequestTagsMap;
 }
-const SubscriptionRaiPolicyCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  3,
-) as any as S.Schema<SubscriptionRaiPolicyCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type SubscriptionRaiPolicyCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -8013,9 +5497,6 @@ export interface SubscriptionRaiPolicyCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: SubscriptionRaiPolicyCreateOrUpdateResponseTagsMap;
 }
-const SubscriptionRaiPolicyCreateOrUpdateResponse =
-  GetSubscriptionRaiPolicyResponse as any as S.Schema<SubscriptionRaiPolicyCreateOrUpdateResponse>;
-
 export interface TestRaiExternalSafetyProviderCreateOrUpdateRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8028,11 +5509,6 @@ export interface TestRaiExternalSafetyProviderCreateOrUpdateRequest {
   /** Properties of Cognitive Services Rai External Safety provider. */
   properties?: RaiExternalSafetyProviderSchemaPropertiesInput;
 }
-const TestRaiExternalSafetyProviderCreateOrUpdateRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  4,
-) as any as S.Schema<TestRaiExternalSafetyProviderCreateOrUpdateRequest>;
-
 /** Resource tags. */
 export type TestRaiExternalSafetyProviderCreateOrUpdateResponseTagsMap = {
   [key: string]: string | undefined;
@@ -8053,14 +5529,8 @@ export interface TestRaiExternalSafetyProviderCreateOrUpdateResponse {
   /** Resource tags. */
   tags?: TestRaiExternalSafetyProviderCreateOrUpdateResponseTagsMap;
 }
-const TestRaiExternalSafetyProviderCreateOrUpdateResponse =
-  GetRaiExternalSafetyProviderResponse as any as S.Schema<TestRaiExternalSafetyProviderCreateOrUpdateResponse>;
-
 /** Resource tags. */
 export type UpdateAccountRequestTagsMap = { [key: string]: string | undefined };
-const UpdateAccountRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<UpdateAccountRequestTagsMap>;
-
 export interface UpdateAccountRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8081,11 +5551,6 @@ export interface UpdateAccountRequest {
   /** Identity for the resource. */
   identity?: IdentityInput;
 }
-const UpdateAccountRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  5,
-) as any as S.Schema<UpdateAccountRequest>;
-
 /** Resource tags. */
 export type UpdateAccountResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateAccountResponse {
@@ -8112,8 +5577,6 @@ export interface UpdateAccountResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-const UpdateAccountResponse = CreateAccountResponse as any as S.Schema<UpdateAccountResponse>;
-
 export interface UpdateAccountConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8126,11 +5589,6 @@ export interface UpdateAccountConnectionRequest {
   /** The properties that the Cognitive services connection will be updated with. */
   properties?: ConnectionPropertiesV2Input;
 }
-const UpdateAccountConnectionRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  6,
-) as any as S.Schema<UpdateAccountConnectionRequest>;
-
 export interface UpdateAccountConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -8143,14 +5601,8 @@ export interface UpdateAccountConnectionResponse {
   /** Connection property base schema. */
   properties: ConnectionPropertiesV2;
 }
-const UpdateAccountConnectionResponse =
-  CreateAccountConnectionResponse as any as S.Schema<UpdateAccountConnectionResponse>;
-
 /** Resource tags. */
 export type UpdateCommitmentPlanPlanRequestTagsMap = { [key: string]: string | undefined };
-const UpdateCommitmentPlanPlanRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<UpdateCommitmentPlanPlanRequestTagsMap>;
-
 export interface UpdateCommitmentPlanPlanRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8163,11 +5615,6 @@ export interface UpdateCommitmentPlanPlanRequest {
   /** The resource model definition representing SKU */
   sku?: Sku;
 }
-const UpdateCommitmentPlanPlanRequest = /*@__PURE__*/ __L.at(
-  __c53,
-  7,
-) as any as S.Schema<UpdateCommitmentPlanPlanRequest>;
-
 /** Resource tags. */
 export type UpdateCommitmentPlanPlanResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateCommitmentPlanPlanResponse {
@@ -8192,14 +5639,8 @@ export interface UpdateCommitmentPlanPlanResponse {
   /** The resource model definition representing SKU */
   sku?: Sku;
 }
-const UpdateCommitmentPlanPlanResponse =
-  CommitmentPlansCreateOrUpdateResponse as any as S.Schema<UpdateCommitmentPlanPlanResponse>;
-
 /** Resource tags. */
 export type UpdateDefenderForAISettingsRequestTagsMap = { [key: string]: string | undefined };
-const UpdateDefenderForAISettingsRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<UpdateDefenderForAISettingsRequestTagsMap>;
-
 export interface UpdateDefenderForAISettingsRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8214,11 +5655,6 @@ export interface UpdateDefenderForAISettingsRequest {
   /** Resource tags. */
   tags?: UpdateDefenderForAISettingsRequestTagsMap;
 }
-const UpdateDefenderForAISettingsRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  0,
-) as any as S.Schema<UpdateDefenderForAISettingsRequest>;
-
 /** Resource tags. */
 export type UpdateDefenderForAISettingsResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDefenderForAISettingsResponse {
@@ -8237,14 +5673,8 @@ export interface UpdateDefenderForAISettingsResponse {
   /** Resource tags. */
   tags?: UpdateDefenderForAISettingsResponseTagsMap;
 }
-const UpdateDefenderForAISettingsResponse =
-  DefenderForAISettingsCreateOrUpdateResponse as any as S.Schema<UpdateDefenderForAISettingsResponse>;
-
 /** Resource tags. */
 export type UpdateDeploymentRequestTagsMap = { [key: string]: string | undefined };
-const UpdateDeploymentRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<UpdateDeploymentRequestTagsMap>;
-
 export interface UpdateDeploymentRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8259,11 +5689,6 @@ export interface UpdateDeploymentRequest {
   /** The resource model definition representing SKU */
   sku?: Sku;
 }
-const UpdateDeploymentRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  1,
-) as any as S.Schema<UpdateDeploymentRequest>;
-
 /** Resource tags. */
 export type UpdateDeploymentResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateDeploymentResponse {
@@ -8284,13 +5709,8 @@ export interface UpdateDeploymentResponse {
   /** Resource tags. */
   tags?: UpdateDeploymentResponseTagsMap;
 }
-const UpdateDeploymentResponse = GetDeploymentResponse as any as S.Schema<UpdateDeploymentResponse>;
-
 /** Resource tags. */
 export type UpdateProjectRequestTagsMap = { [key: string]: string | undefined };
-const UpdateProjectRequestTagsMap =
-  CapabilityHostPropertiesInputTagsMap as any as S.Schema<UpdateProjectRequestTagsMap>;
-
 export interface UpdateProjectRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8309,11 +5729,6 @@ export interface UpdateProjectRequest {
   /** Identity for the resource. */
   identity?: IdentityInput;
 }
-const UpdateProjectRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  2,
-) as any as S.Schema<UpdateProjectRequest>;
-
 /** Resource tags. */
 export type UpdateProjectResponseTagsMap = { [key: string]: string | undefined };
 export interface UpdateProjectResponse {
@@ -8336,8 +5751,6 @@ export interface UpdateProjectResponse {
   /** Identity for the resource. */
   identity?: Identity;
 }
-const UpdateProjectResponse = CreateProjectResponse as any as S.Schema<UpdateProjectResponse>;
-
 export interface UpdateProjectConnectionRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8352,11 +5765,6 @@ export interface UpdateProjectConnectionRequest {
   /** The properties that the Cognitive services connection will be updated with. */
   properties?: ConnectionPropertiesV2Input;
 }
-const UpdateProjectConnectionRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  3,
-) as any as S.Schema<UpdateProjectConnectionRequest>;
-
 export interface UpdateProjectConnectionResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -8369,9 +5777,6 @@ export interface UpdateProjectConnectionResponse {
   /** Connection property base schema. */
   properties: ConnectionPropertiesV2;
 }
-const UpdateProjectConnectionResponse =
-  CreateAccountConnectionResponse as any as S.Schema<UpdateProjectConnectionResponse>;
-
 export interface UpdateQuotaTierRequest {
   /** The ID of the target subscription. */
   subscriptionId: string;
@@ -8380,11 +5785,6 @@ export interface UpdateQuotaTierRequest {
   /** Properties of quota tier resource. */
   properties?: QuotaTierPropertiesInput;
 }
-const UpdateQuotaTierRequest = /*@__PURE__*/ __L.at(
-  __c54,
-  4,
-) as any as S.Schema<UpdateQuotaTierRequest>;
-
 export interface UpdateQuotaTierResponse {
   /** Fully qualified resource ID for the resource. Ex - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName} */
   id?: string;
@@ -8397,8 +5797,6 @@ export interface UpdateQuotaTierResponse {
   /** Properties of quota tier resource. */
   properties?: QuotaTierProperties;
 }
-const UpdateQuotaTierResponse = GetQuotaTierResponse as any as S.Schema<UpdateQuotaTierResponse>;
-
 export type AccountCapabilityHostsCreateOrUpdateError = AzureOpError;
 /** Create or update account capabilityHost. Create or update account capabilityHost. */
 export const AccountCapabilityHostsCreateOrUpdate: API.OperationMethod<
@@ -8407,8 +5805,8 @@ export const AccountCapabilityHostsCreateOrUpdate: API.OperationMethod<
   AccountCapabilityHostsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AccountCapabilityHostsCreateOrUpdateRequest,
-  output: AccountCapabilityHostsCreateOrUpdateResponse,
+  input: __S(3) as any as S.Schema<AccountCapabilityHostsCreateOrUpdateRequest>,
+  output: __S(6) as any as S.Schema<AccountCapabilityHostsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8422,8 +5820,8 @@ export const AddRaiBlocklistItemBatch: API.OperationMethod<
   AddRaiBlocklistItemBatchError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AddRaiBlocklistItemBatchRequest,
-  output: AddRaiBlocklistItemBatchResponse,
+  input: __S(10) as any as S.Schema<AddRaiBlocklistItemBatchRequest>,
+  output: __S(12) as any as S.Schema<AddRaiBlocklistItemBatchResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8437,8 +5835,8 @@ export const AgentApplicationsCreateOrUpdate: API.OperationMethod<
   AgentApplicationsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AgentApplicationsCreateOrUpdateRequest,
-  output: AgentApplicationsCreateOrUpdateResponse,
+  input: __S(21) as any as S.Schema<AgentApplicationsCreateOrUpdateRequest>,
+  output: __S(24) as any as S.Schema<AgentApplicationsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8452,8 +5850,8 @@ export const AgentDeploymentsCreateOrUpdate: API.OperationMethod<
   AgentDeploymentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AgentDeploymentsCreateOrUpdateRequest,
-  output: AgentDeploymentsCreateOrUpdateResponse,
+  input: __S(30) as any as S.Schema<AgentDeploymentsCreateOrUpdateRequest>,
+  output: __S(32) as any as S.Schema<AgentDeploymentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8467,8 +5865,8 @@ export const CalculateModelCapacity: API.OperationMethod<
   CalculateModelCapacityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CalculateModelCapacityRequest,
-  output: CalculateModelCapacityResult,
+  input: __S(37) as any as S.Schema<CalculateModelCapacityRequest>,
+  output: __S(39) as any as S.Schema<CalculateModelCapacityResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8482,8 +5880,8 @@ export const CheckDomainAvailability: API.OperationMethod<
   CheckDomainAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckDomainAvailabilityRequest,
-  output: DomainAvailability,
+  input: __S(40) as any as S.Schema<CheckDomainAvailabilityRequest>,
+  output: __S(41) as any as S.Schema<DomainAvailability>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8497,8 +5895,8 @@ export const CheckSkuAvailability: API.OperationMethod<
   CheckSkuAvailabilityError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckSkuAvailabilityRequest,
-  output: SkuAvailabilityListResult,
+  input: __S(42) as any as S.Schema<CheckSkuAvailabilityRequest>,
+  output: __S(45) as any as S.Schema<SkuAvailabilityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8512,8 +5910,8 @@ export const CommitmentPlansCreateOrUpdate: API.OperationMethod<
   CommitmentPlansCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitmentPlansCreateOrUpdateRequest,
-  output: CommitmentPlansCreateOrUpdateResponse,
+  input: __S(49) as any as S.Schema<CommitmentPlansCreateOrUpdateRequest>,
+  output: __S(53) as any as S.Schema<CommitmentPlansCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8527,8 +5925,8 @@ export const CommitmentPlansCreateOrUpdateAssociation: API.OperationMethod<
   CommitmentPlansCreateOrUpdateAssociationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitmentPlansCreateOrUpdateAssociationRequest,
-  output: CommitmentPlansCreateOrUpdateAssociationResponse,
+  input: __S(55) as any as S.Schema<CommitmentPlansCreateOrUpdateAssociationRequest>,
+  output: __S(56) as any as S.Schema<CommitmentPlansCreateOrUpdateAssociationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8542,8 +5940,8 @@ export const CommitmentPlansCreateOrUpdatePlan: API.OperationMethod<
   CommitmentPlansCreateOrUpdatePlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CommitmentPlansCreateOrUpdatePlanRequest,
-  output: CommitmentPlansCreateOrUpdatePlanResponse,
+  input: __S(57) as any as S.Schema<CommitmentPlansCreateOrUpdatePlanRequest>,
+  output: __S(53) as any as S.Schema<CommitmentPlansCreateOrUpdatePlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8557,8 +5955,8 @@ export const CreateAccount: API.OperationMethod<
   CreateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountRequest,
-  output: CreateAccountResponse,
+  input: __S(78) as any as S.Schema<CreateAccountRequest>,
+  output: __S(99) as any as S.Schema<CreateAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8572,8 +5970,8 @@ export const CreateAccountConnection: API.OperationMethod<
   CreateAccountConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateAccountConnectionRequest,
-  output: CreateAccountConnectionResponse,
+  input: __S(101) as any as S.Schema<CreateAccountConnectionRequest>,
+  output: __S(103) as any as S.Schema<CreateAccountConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8587,8 +5985,8 @@ export const CreateProject: API.OperationMethod<
   CreateProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectRequest,
-  output: CreateProjectResponse,
+  input: __S(105) as any as S.Schema<CreateProjectRequest>,
+  output: __S(107) as any as S.Schema<CreateProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8602,8 +6000,8 @@ export const CreateProjectConnection: API.OperationMethod<
   CreateProjectConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateProjectConnectionRequest,
-  output: CreateProjectConnectionResponse,
+  input: __S(108) as any as S.Schema<CreateProjectConnectionRequest>,
+  output: __S(103) as any as S.Schema<CreateProjectConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8617,8 +6015,8 @@ export const DefenderForAISettingsCreateOrUpdate: API.OperationMethod<
   DefenderForAISettingsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DefenderForAISettingsCreateOrUpdateRequest,
-  output: DefenderForAISettingsCreateOrUpdateResponse,
+  input: __S(110) as any as S.Schema<DefenderForAISettingsCreateOrUpdateRequest>,
+  output: __S(111) as any as S.Schema<DefenderForAISettingsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8632,8 +6030,8 @@ export const DeleteAccount: API.OperationMethod<
   DeleteAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountRequest,
-  output: DeleteAccountResponse,
+  input: __S(112) as any as S.Schema<DeleteAccountRequest>,
+  output: __S(75) as any as S.Schema<DeleteAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8647,8 +6045,8 @@ export const DeleteAccountCapabilityHost: API.OperationMethod<
   DeleteAccountCapabilityHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountCapabilityHostRequest,
-  output: DeleteAccountCapabilityHostResponse,
+  input: __S(113) as any as S.Schema<DeleteAccountCapabilityHostRequest>,
+  output: __S(114) as any as S.Schema<DeleteAccountCapabilityHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8662,8 +6060,8 @@ export const DeleteAccountConnection: API.OperationMethod<
   DeleteAccountConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAccountConnectionRequest,
-  output: DeleteAccountConnectionResponse,
+  input: __S(115) as any as S.Schema<DeleteAccountConnectionRequest>,
+  output: __S(116) as any as S.Schema<DeleteAccountConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8677,8 +6075,8 @@ export const DeleteAgentApplication: API.OperationMethod<
   DeleteAgentApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAgentApplicationRequest,
-  output: DeleteAgentApplicationResponse,
+  input: __S(117) as any as S.Schema<DeleteAgentApplicationRequest>,
+  output: __S(75) as any as S.Schema<DeleteAgentApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8692,8 +6090,8 @@ export const DeleteAgentDeployment: API.OperationMethod<
   DeleteAgentDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteAgentDeploymentRequest,
-  output: DeleteAgentDeploymentResponse,
+  input: __S(118) as any as S.Schema<DeleteAgentDeploymentRequest>,
+  output: __S(75) as any as S.Schema<DeleteAgentDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8707,8 +6105,8 @@ export const DeleteCommitmentPlan: API.OperationMethod<
   DeleteCommitmentPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCommitmentPlanRequest,
-  output: DeleteCommitmentPlanResponse,
+  input: __S(119) as any as S.Schema<DeleteCommitmentPlanRequest>,
+  output: __S(75) as any as S.Schema<DeleteCommitmentPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8722,8 +6120,8 @@ export const DeleteCommitmentPlanAssociation: API.OperationMethod<
   DeleteCommitmentPlanAssociationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCommitmentPlanAssociationRequest,
-  output: DeleteCommitmentPlanAssociationResponse,
+  input: __S(120) as any as S.Schema<DeleteCommitmentPlanAssociationRequest>,
+  output: __S(114) as any as S.Schema<DeleteCommitmentPlanAssociationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8737,8 +6135,8 @@ export const DeleteCommitmentPlanPlan: API.OperationMethod<
   DeleteCommitmentPlanPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteCommitmentPlanPlanRequest,
-  output: DeleteCommitmentPlanPlanResponse,
+  input: __S(121) as any as S.Schema<DeleteCommitmentPlanPlanRequest>,
+  output: __S(114) as any as S.Schema<DeleteCommitmentPlanPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8752,8 +6150,8 @@ export const DeleteDeployment: API.OperationMethod<
   DeleteDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteDeploymentRequest,
-  output: DeleteDeploymentResponse,
+  input: __S(122) as any as S.Schema<DeleteDeploymentRequest>,
+  output: __S(75) as any as S.Schema<DeleteDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8767,8 +6165,8 @@ export const DeleteEncryptionScope: API.OperationMethod<
   DeleteEncryptionScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteEncryptionScopeRequest,
-  output: DeleteEncryptionScopeResponse,
+  input: __S(123) as any as S.Schema<DeleteEncryptionScopeRequest>,
+  output: __S(75) as any as S.Schema<DeleteEncryptionScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8782,8 +6180,8 @@ export const DeleteManagedNetworkSettings: API.OperationMethod<
   DeleteManagedNetworkSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteManagedNetworkSettingsRequest,
-  output: DeleteManagedNetworkSettingsResponse,
+  input: __S(124) as any as S.Schema<DeleteManagedNetworkSettingsRequest>,
+  output: __S(114) as any as S.Schema<DeleteManagedNetworkSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8797,8 +6195,8 @@ export const DeleteOutboundRule: API.OperationMethod<
   DeleteOutboundRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteOutboundRuleRequest,
-  output: DeleteOutboundRuleResponse,
+  input: __S(125) as any as S.Schema<DeleteOutboundRuleRequest>,
+  output: __S(75) as any as S.Schema<DeleteOutboundRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8812,8 +6210,8 @@ export const DeletePrivateEndpointConnection: API.OperationMethod<
   DeletePrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeletePrivateEndpointConnectionRequest,
-  output: DeletePrivateEndpointConnectionResponse,
+  input: __S(126) as any as S.Schema<DeletePrivateEndpointConnectionRequest>,
+  output: __S(114) as any as S.Schema<DeletePrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8827,8 +6225,8 @@ export const DeleteProject: API.OperationMethod<
   DeleteProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectRequest,
-  output: DeleteProjectResponse,
+  input: __S(127) as any as S.Schema<DeleteProjectRequest>,
+  output: __S(75) as any as S.Schema<DeleteProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8842,8 +6240,8 @@ export const DeleteProjectCapabilityHost: API.OperationMethod<
   DeleteProjectCapabilityHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectCapabilityHostRequest,
-  output: DeleteProjectCapabilityHostResponse,
+  input: __S(128) as any as S.Schema<DeleteProjectCapabilityHostRequest>,
+  output: __S(114) as any as S.Schema<DeleteProjectCapabilityHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8857,8 +6255,8 @@ export const DeleteProjectConnection: API.OperationMethod<
   DeleteProjectConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteProjectConnectionRequest,
-  output: DeleteProjectConnectionResponse,
+  input: __S(129) as any as S.Schema<DeleteProjectConnectionRequest>,
+  output: __S(116) as any as S.Schema<DeleteProjectConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8872,8 +6270,8 @@ export const DeleteRaiBlocklist: API.OperationMethod<
   DeleteRaiBlocklistError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRaiBlocklistRequest,
-  output: DeleteRaiBlocklistResponse,
+  input: __S(130) as any as S.Schema<DeleteRaiBlocklistRequest>,
+  output: __S(75) as any as S.Schema<DeleteRaiBlocklistResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8887,8 +6285,8 @@ export const DeleteRaiBlocklistItem: API.OperationMethod<
   DeleteRaiBlocklistItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRaiBlocklistItemRequest,
-  output: DeleteRaiBlocklistItemResponse,
+  input: __S(131) as any as S.Schema<DeleteRaiBlocklistItemRequest>,
+  output: __S(75) as any as S.Schema<DeleteRaiBlocklistItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8902,8 +6300,8 @@ export const DeleteRaiBlocklistItemBatch: API.OperationMethod<
   DeleteRaiBlocklistItemBatchError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRaiBlocklistItemBatchRequest,
-  output: DeleteRaiBlocklistItemBatchResponse,
+  input: __S(132) as any as S.Schema<DeleteRaiBlocklistItemBatchRequest>,
+  output: __S(114) as any as S.Schema<DeleteRaiBlocklistItemBatchResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8917,8 +6315,8 @@ export const DeleteRaiExternalSafetyProvider: API.OperationMethod<
   DeleteRaiExternalSafetyProviderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRaiExternalSafetyProviderRequest,
-  output: DeleteRaiExternalSafetyProviderResponse,
+  input: __S(133) as any as S.Schema<DeleteRaiExternalSafetyProviderRequest>,
+  output: __S(114) as any as S.Schema<DeleteRaiExternalSafetyProviderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8932,8 +6330,8 @@ export const DeleteRaiPolicy: API.OperationMethod<
   DeleteRaiPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRaiPolicyRequest,
-  output: DeleteRaiPolicyResponse,
+  input: __S(134) as any as S.Schema<DeleteRaiPolicyRequest>,
+  output: __S(75) as any as S.Schema<DeleteRaiPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8947,8 +6345,8 @@ export const DeleteRaiToolLabel: API.OperationMethod<
   DeleteRaiToolLabelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRaiToolLabelRequest,
-  output: DeleteRaiToolLabelResponse,
+  input: __S(135) as any as S.Schema<DeleteRaiToolLabelRequest>,
+  output: __S(75) as any as S.Schema<DeleteRaiToolLabelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8962,8 +6360,8 @@ export const DeleteRaiTopic: API.OperationMethod<
   DeleteRaiTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRaiTopicRequest,
-  output: DeleteRaiTopicResponse,
+  input: __S(136) as any as S.Schema<DeleteRaiTopicRequest>,
+  output: __S(75) as any as S.Schema<DeleteRaiTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8977,8 +6375,8 @@ export const DeleteSubscriptionRaiPolicy: API.OperationMethod<
   DeleteSubscriptionRaiPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteSubscriptionRaiPolicyRequest,
-  output: DeleteSubscriptionRaiPolicyResponse,
+  input: __S(137) as any as S.Schema<DeleteSubscriptionRaiPolicyRequest>,
+  output: __S(114) as any as S.Schema<DeleteSubscriptionRaiPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -8992,8 +6390,8 @@ export const DeploymentsCreateOrUpdate: API.OperationMethod<
   DeploymentsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeploymentsCreateOrUpdateRequest,
-  output: DeploymentsCreateOrUpdateResponse,
+  input: __S(143) as any as S.Schema<DeploymentsCreateOrUpdateRequest>,
+  output: __S(146) as any as S.Schema<DeploymentsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9007,8 +6405,8 @@ export const DisableAgentApplication: API.OperationMethod<
   DisableAgentApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableAgentApplicationRequest,
-  output: DisableAgentApplicationResponse,
+  input: __S(147) as any as S.Schema<DisableAgentApplicationRequest>,
+  output: __S(116) as any as S.Schema<DisableAgentApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9022,8 +6420,8 @@ export const EnableAgentApplication: API.OperationMethod<
   EnableAgentApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableAgentApplicationRequest,
-  output: EnableAgentApplicationResponse,
+  input: __S(148) as any as S.Schema<EnableAgentApplicationRequest>,
+  output: __S(75) as any as S.Schema<EnableAgentApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9037,8 +6435,8 @@ export const EncryptionScopesCreateOrUpdate: API.OperationMethod<
   EncryptionScopesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EncryptionScopesCreateOrUpdateRequest,
-  output: EncryptionScopesCreateOrUpdateResponse,
+  input: __S(150) as any as S.Schema<EncryptionScopesCreateOrUpdateRequest>,
+  output: __S(152) as any as S.Schema<EncryptionScopesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9052,8 +6450,8 @@ export const GetAccount: API.OperationMethod<
   GetAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountRequest,
-  output: GetAccountResponse,
+  input: __S(153) as any as S.Schema<GetAccountRequest>,
+  output: __S(99) as any as S.Schema<GetAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9067,8 +6465,8 @@ export const GetAccountCapabilityHost: API.OperationMethod<
   GetAccountCapabilityHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountCapabilityHostRequest,
-  output: GetAccountCapabilityHostResponse,
+  input: __S(154) as any as S.Schema<GetAccountCapabilityHostRequest>,
+  output: __S(6) as any as S.Schema<GetAccountCapabilityHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9082,8 +6480,8 @@ export const GetAccountConnection: API.OperationMethod<
   GetAccountConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAccountConnectionRequest,
-  output: GetAccountConnectionResponse,
+  input: __S(155) as any as S.Schema<GetAccountConnectionRequest>,
+  output: __S(103) as any as S.Schema<GetAccountConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9097,8 +6495,8 @@ export const GetAgentApplication: API.OperationMethod<
   GetAgentApplicationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgentApplicationRequest,
-  output: GetAgentApplicationResponse,
+  input: __S(156) as any as S.Schema<GetAgentApplicationRequest>,
+  output: __S(24) as any as S.Schema<GetAgentApplicationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9112,8 +6510,8 @@ export const GetAgentDeployment: API.OperationMethod<
   GetAgentDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetAgentDeploymentRequest,
-  output: GetAgentDeploymentResponse,
+  input: __S(157) as any as S.Schema<GetAgentDeploymentRequest>,
+  output: __S(32) as any as S.Schema<GetAgentDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9127,8 +6525,8 @@ export const GetCommitmentPlan: API.OperationMethod<
   GetCommitmentPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommitmentPlanRequest,
-  output: GetCommitmentPlanResponse,
+  input: __S(158) as any as S.Schema<GetCommitmentPlanRequest>,
+  output: __S(53) as any as S.Schema<GetCommitmentPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9142,8 +6540,8 @@ export const GetCommitmentPlanAssociation: API.OperationMethod<
   GetCommitmentPlanAssociationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommitmentPlanAssociationRequest,
-  output: GetCommitmentPlanAssociationResponse,
+  input: __S(159) as any as S.Schema<GetCommitmentPlanAssociationRequest>,
+  output: __S(56) as any as S.Schema<GetCommitmentPlanAssociationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9157,8 +6555,8 @@ export const GetCommitmentPlanPlan: API.OperationMethod<
   GetCommitmentPlanPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetCommitmentPlanPlanRequest,
-  output: GetCommitmentPlanPlanResponse,
+  input: __S(160) as any as S.Schema<GetCommitmentPlanPlanRequest>,
+  output: __S(53) as any as S.Schema<GetCommitmentPlanPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9172,8 +6570,8 @@ export const GetDefenderForAISettings: API.OperationMethod<
   GetDefenderForAISettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDefenderForAISettingsRequest,
-  output: GetDefenderForAISettingsResponse,
+  input: __S(161) as any as S.Schema<GetDefenderForAISettingsRequest>,
+  output: __S(111) as any as S.Schema<GetDefenderForAISettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9187,8 +6585,8 @@ export const GetDeletedAccount: API.OperationMethod<
   GetDeletedAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeletedAccountRequest,
-  output: GetDeletedAccountResponse,
+  input: __S(162) as any as S.Schema<GetDeletedAccountRequest>,
+  output: __S(163) as any as S.Schema<GetDeletedAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9202,8 +6600,8 @@ export const GetDeployment: API.OperationMethod<
   GetDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetDeploymentRequest,
-  output: GetDeploymentResponse,
+  input: __S(164) as any as S.Schema<GetDeploymentRequest>,
+  output: __S(165) as any as S.Schema<GetDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9217,8 +6615,8 @@ export const GetEncryptionScope: API.OperationMethod<
   GetEncryptionScopeError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetEncryptionScopeRequest,
-  output: GetEncryptionScopeResponse,
+  input: __S(166) as any as S.Schema<GetEncryptionScopeRequest>,
+  output: __S(152) as any as S.Schema<GetEncryptionScopeResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9232,8 +6630,8 @@ export const GetManagedNetworkSettings: API.OperationMethod<
   GetManagedNetworkSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetManagedNetworkSettingsRequest,
-  output: GetManagedNetworkSettingsResponse,
+  input: __S(167) as any as S.Schema<GetManagedNetworkSettingsRequest>,
+  output: __S(174) as any as S.Schema<GetManagedNetworkSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9247,8 +6645,8 @@ export const GetNetworkSecurityPerimeterConfiguration: API.OperationMethod<
   GetNetworkSecurityPerimeterConfigurationError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetNetworkSecurityPerimeterConfigurationRequest,
-  output: GetNetworkSecurityPerimeterConfigurationResponse,
+  input: __S(175) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationRequest>,
+  output: __S(190) as any as S.Schema<GetNetworkSecurityPerimeterConfigurationResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9262,8 +6660,8 @@ export const GetOutboundRule: API.OperationMethod<
   GetOutboundRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetOutboundRuleRequest,
-  output: GetOutboundRuleResponse,
+  input: __S(191) as any as S.Schema<GetOutboundRuleRequest>,
+  output: __S(192) as any as S.Schema<GetOutboundRuleResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9277,8 +6675,8 @@ export const GetPrivateEndpointConnection: API.OperationMethod<
   GetPrivateEndpointConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetPrivateEndpointConnectionRequest,
-  output: GetPrivateEndpointConnectionResponse,
+  input: __S(193) as any as S.Schema<GetPrivateEndpointConnectionRequest>,
+  output: __S(85) as any as S.Schema<GetPrivateEndpointConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9292,8 +6690,8 @@ export const GetProject: API.OperationMethod<
   GetProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectRequest,
-  output: GetProjectResponse,
+  input: __S(194) as any as S.Schema<GetProjectRequest>,
+  output: __S(107) as any as S.Schema<GetProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9307,8 +6705,8 @@ export const GetProjectCapabilityHost: API.OperationMethod<
   GetProjectCapabilityHostError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectCapabilityHostRequest,
-  output: GetProjectCapabilityHostResponse,
+  input: __S(195) as any as S.Schema<GetProjectCapabilityHostRequest>,
+  output: __S(197) as any as S.Schema<GetProjectCapabilityHostResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9322,8 +6720,8 @@ export const GetProjectConnection: API.OperationMethod<
   GetProjectConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetProjectConnectionRequest,
-  output: GetProjectConnectionResponse,
+  input: __S(198) as any as S.Schema<GetProjectConnectionRequest>,
+  output: __S(103) as any as S.Schema<GetProjectConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9337,8 +6735,8 @@ export const GetQuotaTier: API.OperationMethod<
   GetQuotaTierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetQuotaTierRequest,
-  output: GetQuotaTierResponse,
+  input: __S(199) as any as S.Schema<GetQuotaTierRequest>,
+  output: __S(202) as any as S.Schema<GetQuotaTierResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9352,8 +6750,8 @@ export const GetRaiBlocklist: API.OperationMethod<
   GetRaiBlocklistError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRaiBlocklistRequest,
-  output: GetRaiBlocklistResponse,
+  input: __S(203) as any as S.Schema<GetRaiBlocklistRequest>,
+  output: __S(204) as any as S.Schema<GetRaiBlocklistResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9367,8 +6765,8 @@ export const GetRaiBlocklistItem: API.OperationMethod<
   GetRaiBlocklistItemError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRaiBlocklistItemRequest,
-  output: GetRaiBlocklistItemResponse,
+  input: __S(205) as any as S.Schema<GetRaiBlocklistItemRequest>,
+  output: __S(206) as any as S.Schema<GetRaiBlocklistItemResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9382,8 +6780,8 @@ export const GetRaiContentFilter: API.OperationMethod<
   GetRaiContentFilterError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRaiContentFilterRequest,
-  output: GetRaiContentFilterResponse,
+  input: __S(207) as any as S.Schema<GetRaiContentFilterRequest>,
+  output: __S(209) as any as S.Schema<GetRaiContentFilterResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9397,8 +6795,8 @@ export const GetRaiExternalSafetyProvider: API.OperationMethod<
   GetRaiExternalSafetyProviderError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRaiExternalSafetyProviderRequest,
-  output: GetRaiExternalSafetyProviderResponse,
+  input: __S(210) as any as S.Schema<GetRaiExternalSafetyProviderRequest>,
+  output: __S(212) as any as S.Schema<GetRaiExternalSafetyProviderResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9412,8 +6810,8 @@ export const GetRaiPolicy: API.OperationMethod<
   GetRaiPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRaiPolicyRequest,
-  output: GetRaiPolicyResponse,
+  input: __S(213) as any as S.Schema<GetRaiPolicyRequest>,
+  output: __S(232) as any as S.Schema<GetRaiPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9427,8 +6825,8 @@ export const GetRaiToolLabel: API.OperationMethod<
   GetRaiToolLabelError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRaiToolLabelRequest,
-  output: GetRaiToolLabelResponse,
+  input: __S(233) as any as S.Schema<GetRaiToolLabelRequest>,
+  output: __S(238) as any as S.Schema<GetRaiToolLabelResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9442,8 +6840,8 @@ export const GetRaiTopic: API.OperationMethod<
   GetRaiTopicError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRaiTopicRequest,
-  output: GetRaiTopicResponse,
+  input: __S(239) as any as S.Schema<GetRaiTopicRequest>,
+  output: __S(241) as any as S.Schema<GetRaiTopicResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9457,8 +6855,8 @@ export const GetSubscriptionRaiPolicy: API.OperationMethod<
   GetSubscriptionRaiPolicyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetSubscriptionRaiPolicyRequest,
-  output: GetSubscriptionRaiPolicyResponse,
+  input: __S(242) as any as S.Schema<GetSubscriptionRaiPolicyRequest>,
+  output: __S(243) as any as S.Schema<GetSubscriptionRaiPolicyResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9472,8 +6870,8 @@ export const ListAccountByResourceGroup: API.OperationMethod<
   ListAccountByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountByResourceGroupRequest,
-  output: AccountListResult,
+  input: __S(244) as any as S.Schema<ListAccountByResourceGroupRequest>,
+  output: __S(246) as any as S.Schema<AccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9487,8 +6885,8 @@ export const ListAccountCapabilityHosts: API.OperationMethod<
   ListAccountCapabilityHostsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountCapabilityHostsRequest,
-  output: CapabilityHostResourceArmPaginatedResult,
+  input: __S(247) as any as S.Schema<ListAccountCapabilityHostsRequest>,
+  output: __S(250) as any as S.Schema<CapabilityHostResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9502,8 +6900,8 @@ export const ListAccountConnections: API.OperationMethod<
   ListAccountConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountConnectionsRequest,
-  output: ConnectionPropertiesV2BasicResourceArmPaginatedResult,
+  input: __S(251) as any as S.Schema<ListAccountConnectionsRequest>,
+  output: __S(253) as any as S.Schema<ConnectionPropertiesV2BasicResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9517,8 +6915,8 @@ export const ListAccountKeys: API.OperationMethod<
   ListAccountKeysError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountKeysRequest,
-  output: ApiKeys,
+  input: __S(254) as any as S.Schema<ListAccountKeysRequest>,
+  output: __S(255) as any as S.Schema<ApiKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9532,8 +6930,8 @@ export const ListAccountModels: API.OperationMethod<
   ListAccountModelsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountModelsRequest,
-  output: AccountModelListResult,
+  input: __S(256) as any as S.Schema<ListAccountModelsRequest>,
+  output: __S(268) as any as S.Schema<AccountModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9547,8 +6945,8 @@ export const ListAccounts: API.OperationMethod<
   ListAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountsRequest,
-  output: AccountListResult,
+  input: __S(269) as any as S.Schema<ListAccountsRequest>,
+  output: __S(246) as any as S.Schema<AccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9562,8 +6960,8 @@ export const ListAccountSkus: API.OperationMethod<
   ListAccountSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountSkusRequest,
-  output: AccountSkuListResult,
+  input: __S(270) as any as S.Schema<ListAccountSkusRequest>,
+  output: __S(273) as any as S.Schema<AccountSkuListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9577,8 +6975,8 @@ export const ListAccountUsages: API.OperationMethod<
   ListAccountUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAccountUsagesRequest,
-  output: UsageListResult,
+  input: __S(274) as any as S.Schema<ListAccountUsagesRequest>,
+  output: __S(278) as any as S.Schema<UsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9592,8 +6990,8 @@ export const ListAgentApplicationAgents: API.OperationMethod<
   ListAgentApplicationAgentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAgentApplicationAgentsRequest,
-  output: AgentReferenceResourceArmPaginatedResult,
+  input: __S(279) as any as S.Schema<ListAgentApplicationAgentsRequest>,
+  output: __S(282) as any as S.Schema<AgentReferenceResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9607,8 +7005,8 @@ export const ListAgentApplications: API.OperationMethod<
   ListAgentApplicationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAgentApplicationsRequest,
-  output: AgentApplicationResourceArmPaginatedResult,
+  input: __S(283) as any as S.Schema<ListAgentApplicationsRequest>,
+  output: __S(286) as any as S.Schema<AgentApplicationResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9622,8 +7020,8 @@ export const ListAgentDeployments: API.OperationMethod<
   ListAgentDeploymentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListAgentDeploymentsRequest,
-  output: AgentDeploymentResourceArmPaginatedResult,
+  input: __S(287) as any as S.Schema<ListAgentDeploymentsRequest>,
+  output: __S(290) as any as S.Schema<AgentDeploymentResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9637,8 +7035,8 @@ export const ListCommitmentPlanAssociations: API.OperationMethod<
   ListCommitmentPlanAssociationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommitmentPlanAssociationsRequest,
-  output: CommitmentPlanAccountAssociationListResult,
+  input: __S(291) as any as S.Schema<ListCommitmentPlanAssociationsRequest>,
+  output: __S(293) as any as S.Schema<CommitmentPlanAccountAssociationListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9652,8 +7050,8 @@ export const ListCommitmentPlanPlansByResourceGroup: API.OperationMethod<
   ListCommitmentPlanPlansByResourceGroupError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommitmentPlanPlansByResourceGroupRequest,
-  output: CommitmentPlanListResult,
+  input: __S(294) as any as S.Schema<ListCommitmentPlanPlansByResourceGroupRequest>,
+  output: __S(297) as any as S.Schema<CommitmentPlanListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9667,8 +7065,8 @@ export const ListCommitmentPlanPlansBySubscription: API.OperationMethod<
   ListCommitmentPlanPlansBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommitmentPlanPlansBySubscriptionRequest,
-  output: CommitmentPlanListResult,
+  input: __S(298) as any as S.Schema<ListCommitmentPlanPlansBySubscriptionRequest>,
+  output: __S(297) as any as S.Schema<CommitmentPlanListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9682,8 +7080,8 @@ export const ListCommitmentPlans: API.OperationMethod<
   ListCommitmentPlansError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommitmentPlansRequest,
-  output: CommitmentPlanListResult,
+  input: __S(299) as any as S.Schema<ListCommitmentPlansRequest>,
+  output: __S(297) as any as S.Schema<CommitmentPlanListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9697,8 +7095,8 @@ export const ListCommitmentTiers: API.OperationMethod<
   ListCommitmentTiersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListCommitmentTiersRequest,
-  output: CommitmentTierListResult,
+  input: __S(300) as any as S.Schema<ListCommitmentTiersRequest>,
+  output: __S(304) as any as S.Schema<CommitmentTierListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9712,8 +7110,8 @@ export const ListDefenderForAISettings: API.OperationMethod<
   ListDefenderForAISettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDefenderForAISettingsRequest,
-  output: DefenderForAISettingResult,
+  input: __S(305) as any as S.Schema<ListDefenderForAISettingsRequest>,
+  output: __S(308) as any as S.Schema<DefenderForAISettingResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9727,8 +7125,8 @@ export const ListDeletedAccounts: API.OperationMethod<
   ListDeletedAccountsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeletedAccountsRequest,
-  output: AccountListResult,
+  input: __S(309) as any as S.Schema<ListDeletedAccountsRequest>,
+  output: __S(246) as any as S.Schema<AccountListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9742,8 +7140,8 @@ export const ListDeployments: API.OperationMethod<
   ListDeploymentsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeploymentsRequest,
-  output: DeploymentListResult,
+  input: __S(310) as any as S.Schema<ListDeploymentsRequest>,
+  output: __S(312) as any as S.Schema<DeploymentListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9757,8 +7155,8 @@ export const ListDeploymentSkus: API.OperationMethod<
   ListDeploymentSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListDeploymentSkusRequest,
-  output: DeploymentSkuListResult,
+  input: __S(313) as any as S.Schema<ListDeploymentSkusRequest>,
+  output: __S(316) as any as S.Schema<DeploymentSkuListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9772,8 +7170,8 @@ export const ListEncryptionScopes: API.OperationMethod<
   ListEncryptionScopesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListEncryptionScopesRequest,
-  output: EncryptionScopeListResult,
+  input: __S(317) as any as S.Schema<ListEncryptionScopesRequest>,
+  output: __S(320) as any as S.Schema<EncryptionScopeListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9787,8 +7185,8 @@ export const ListLocationBasedModelCapacities: API.OperationMethod<
   ListLocationBasedModelCapacitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListLocationBasedModelCapacitiesRequest,
-  output: ModelCapacityListResult,
+  input: __S(321) as any as S.Schema<ListLocationBasedModelCapacitiesRequest>,
+  output: __S(325) as any as S.Schema<ModelCapacityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9802,8 +7200,8 @@ export const ListManagedNetworkSettings: API.OperationMethod<
   ListManagedNetworkSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListManagedNetworkSettingsRequest,
-  output: ManagedNetworkListResult,
+  input: __S(326) as any as S.Schema<ListManagedNetworkSettingsRequest>,
+  output: __S(328) as any as S.Schema<ManagedNetworkListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9817,8 +7215,8 @@ export const ListModelCapacities: API.OperationMethod<
   ListModelCapacitiesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListModelCapacitiesRequest,
-  output: ModelCapacityListResult,
+  input: __S(329) as any as S.Schema<ListModelCapacitiesRequest>,
+  output: __S(325) as any as S.Schema<ModelCapacityListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9832,8 +7230,8 @@ export const ListModels: API.OperationMethod<
   ListModelsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListModelsRequest,
-  output: ModelListResult,
+  input: __S(330) as any as S.Schema<ListModelsRequest>,
+  output: __S(333) as any as S.Schema<ModelListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9847,8 +7245,8 @@ export const ListNetworkSecurityPerimeterConfigurations: API.OperationMethod<
   ListNetworkSecurityPerimeterConfigurationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListNetworkSecurityPerimeterConfigurationsRequest,
-  output: NetworkSecurityPerimeterConfigurationList,
+  input: __S(334) as any as S.Schema<ListNetworkSecurityPerimeterConfigurationsRequest>,
+  output: __S(336) as any as S.Schema<NetworkSecurityPerimeterConfigurationList>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9862,8 +7260,8 @@ export const ListOperations: API.OperationMethod<
   ListOperationsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOperationsRequest,
-  output: ListOperationsResponse,
+  input: __S(337) as any as S.Schema<ListOperationsRequest>,
+  output: __S(341) as any as S.Schema<ListOperationsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9877,8 +7275,8 @@ export const ListOutboundRule: API.OperationMethod<
   ListOutboundRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListOutboundRuleRequest,
-  output: OutboundRuleListResult,
+  input: __S(342) as any as S.Schema<ListOutboundRuleRequest>,
+  output: __S(345) as any as S.Schema<OutboundRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9892,8 +7290,8 @@ export const ListPrivateEndpointConnections: API.OperationMethod<
   ListPrivateEndpointConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateEndpointConnectionsRequest,
-  output: PrivateEndpointConnectionListResult,
+  input: __S(346) as any as S.Schema<ListPrivateEndpointConnectionsRequest>,
+  output: __S(347) as any as S.Schema<PrivateEndpointConnectionListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9907,8 +7305,8 @@ export const ListPrivateLinkResources: API.OperationMethod<
   ListPrivateLinkResourcesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListPrivateLinkResourcesRequest,
-  output: PrivateLinkResourceListResult,
+  input: __S(348) as any as S.Schema<ListPrivateLinkResourcesRequest>,
+  output: __S(352) as any as S.Schema<PrivateLinkResourceListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9922,8 +7320,8 @@ export const ListProjectCapabilityHosts: API.OperationMethod<
   ListProjectCapabilityHostsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectCapabilityHostsRequest,
-  output: ProjectCapabilityHostResourceArmPaginatedResult,
+  input: __S(353) as any as S.Schema<ListProjectCapabilityHostsRequest>,
+  output: __S(356) as any as S.Schema<ProjectCapabilityHostResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9937,8 +7335,8 @@ export const ListProjectConnections: API.OperationMethod<
   ListProjectConnectionsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectConnectionsRequest,
-  output: ConnectionPropertiesV2BasicResourceArmPaginatedResult,
+  input: __S(357) as any as S.Schema<ListProjectConnectionsRequest>,
+  output: __S(253) as any as S.Schema<ConnectionPropertiesV2BasicResourceArmPaginatedResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9952,8 +7350,8 @@ export const ListProjects: API.OperationMethod<
   ListProjectsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListProjectsRequest,
-  output: ProjectListResult,
+  input: __S(358) as any as S.Schema<ListProjectsRequest>,
+  output: __S(360) as any as S.Schema<ProjectListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9967,8 +7365,8 @@ export const ListQuotaTierBySubscription: API.OperationMethod<
   ListQuotaTierBySubscriptionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListQuotaTierBySubscriptionRequest,
-  output: QuotaTierListResult,
+  input: __S(361) as any as S.Schema<ListQuotaTierBySubscriptionRequest>,
+  output: __S(363) as any as S.Schema<QuotaTierListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9982,8 +7380,8 @@ export const ListRaiBlocklistItems: API.OperationMethod<
   ListRaiBlocklistItemsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRaiBlocklistItemsRequest,
-  output: RaiBlockListItemsResult,
+  input: __S(364) as any as S.Schema<ListRaiBlocklistItemsRequest>,
+  output: __S(367) as any as S.Schema<RaiBlockListItemsResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -9997,8 +7395,8 @@ export const ListRaiBlocklists: API.OperationMethod<
   ListRaiBlocklistsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRaiBlocklistsRequest,
-  output: RaiBlockListResult,
+  input: __S(368) as any as S.Schema<ListRaiBlocklistsRequest>,
+  output: __S(370) as any as S.Schema<RaiBlockListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10012,8 +7410,8 @@ export const ListRaiContentFilters: API.OperationMethod<
   ListRaiContentFiltersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRaiContentFiltersRequest,
-  output: RaiContentFilterListResult,
+  input: __S(371) as any as S.Schema<ListRaiContentFiltersRequest>,
+  output: __S(374) as any as S.Schema<RaiContentFilterListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10027,8 +7425,8 @@ export const ListRaiExternalSafetyProviders: API.OperationMethod<
   ListRaiExternalSafetyProvidersError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRaiExternalSafetyProvidersRequest,
-  output: RaiExternalSafetyProviderResult,
+  input: __S(375) as any as S.Schema<ListRaiExternalSafetyProvidersRequest>,
+  output: __S(377) as any as S.Schema<RaiExternalSafetyProviderResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10042,8 +7440,8 @@ export const ListRaiPolicies: API.OperationMethod<
   ListRaiPoliciesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRaiPoliciesRequest,
-  output: RaiPolicyListResult,
+  input: __S(378) as any as S.Schema<ListRaiPoliciesRequest>,
+  output: __S(380) as any as S.Schema<RaiPolicyListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10057,8 +7455,8 @@ export const ListRaiToolLabels: API.OperationMethod<
   ListRaiToolLabelsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRaiToolLabelsRequest,
-  output: RaiToolLabelResult,
+  input: __S(381) as any as S.Schema<ListRaiToolLabelsRequest>,
+  output: __S(383) as any as S.Schema<RaiToolLabelResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10072,8 +7470,8 @@ export const ListRaiTopics: API.OperationMethod<
   ListRaiTopicsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRaiTopicsRequest,
-  output: RaiTopicResult,
+  input: __S(384) as any as S.Schema<ListRaiTopicsRequest>,
+  output: __S(386) as any as S.Schema<RaiTopicResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10087,8 +7485,8 @@ export const ListResourceSkus: API.OperationMethod<
   ListResourceSkusError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListResourceSkusRequest,
-  output: ResourceSkuListResult,
+  input: __S(387) as any as S.Schema<ListResourceSkusRequest>,
+  output: __S(393) as any as S.Schema<ResourceSkuListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10102,8 +7500,8 @@ export const ListUsages: API.OperationMethod<
   ListUsagesError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListUsagesRequest,
-  output: UsageListResult,
+  input: __S(394) as any as S.Schema<ListUsagesRequest>,
+  output: __S(278) as any as S.Schema<UsageListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10117,8 +7515,8 @@ export const NetworkSecurityPerimeterConfigurationsReconcile: API.OperationMetho
   NetworkSecurityPerimeterConfigurationsReconcileError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NetworkSecurityPerimeterConfigurationsReconcileRequest,
-  output: NetworkSecurityPerimeterConfigurationsReconcileResponse,
+  input: __S(395) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileRequest>,
+  output: __S(190) as any as S.Schema<NetworkSecurityPerimeterConfigurationsReconcileResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10132,8 +7530,8 @@ export const OutboundRuleCreateOrUpdate: API.OperationMethod<
   OutboundRuleCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OutboundRuleCreateOrUpdateRequest,
-  output: OutboundRuleCreateOrUpdateResponse,
+  input: __S(397) as any as S.Schema<OutboundRuleCreateOrUpdateRequest>,
+  output: __S(343) as any as S.Schema<OutboundRuleCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10147,8 +7545,8 @@ export const PatchManagedNetworkSettings: API.OperationMethod<
   PatchManagedNetworkSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PatchManagedNetworkSettingsRequest,
-  output: PatchManagedNetworkSettingsResponse,
+  input: __S(401) as any as S.Schema<PatchManagedNetworkSettingsRequest>,
+  output: __S(174) as any as S.Schema<PatchManagedNetworkSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10162,8 +7560,8 @@ export const PauseDeployment: API.OperationMethod<
   PauseDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PauseDeploymentRequest,
-  output: PauseDeploymentResponse,
+  input: __S(402) as any as S.Schema<PauseDeploymentRequest>,
+  output: __S(165) as any as S.Schema<PauseDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10177,8 +7575,8 @@ export const PostOutboundRule: API.OperationMethod<
   PostOutboundRuleError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PostOutboundRuleRequest,
-  output: OutboundRuleListResult,
+  input: __S(403) as any as S.Schema<PostOutboundRuleRequest>,
+  output: __S(345) as any as S.Schema<OutboundRuleListResult>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10192,8 +7590,8 @@ export const PrivateEndpointConnectionsCreateOrUpdate: API.OperationMethod<
   PrivateEndpointConnectionsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrivateEndpointConnectionsCreateOrUpdateRequest,
-  output: PrivateEndpointConnectionsCreateOrUpdateResponse,
+  input: __S(405) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateRequest>,
+  output: __S(85) as any as S.Schema<PrivateEndpointConnectionsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10207,8 +7605,8 @@ export const ProjectCapabilityHostsCreateOrUpdate: API.OperationMethod<
   ProjectCapabilityHostsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProjectCapabilityHostsCreateOrUpdateRequest,
-  output: ProjectCapabilityHostsCreateOrUpdateResponse,
+  input: __S(407) as any as S.Schema<ProjectCapabilityHostsCreateOrUpdateRequest>,
+  output: __S(197) as any as S.Schema<ProjectCapabilityHostsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10222,8 +7620,8 @@ export const ProvisionManagedNetworkProvisionManagedNetwork: API.OperationMethod
   ProvisionManagedNetworkProvisionManagedNetworkError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProvisionManagedNetworkProvisionManagedNetworkRequest,
-  output: ManagedNetworkProvisionStatus,
+  input: __S(408) as any as S.Schema<ProvisionManagedNetworkProvisionManagedNetworkRequest>,
+  output: __S(170) as any as S.Schema<ManagedNetworkProvisionStatus>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10237,8 +7635,8 @@ export const PurgeDeletedAccount: API.OperationMethod<
   PurgeDeletedAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PurgeDeletedAccountRequest,
-  output: PurgeDeletedAccountResponse,
+  input: __S(409) as any as S.Schema<PurgeDeletedAccountRequest>,
+  output: __S(75) as any as S.Schema<PurgeDeletedAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10252,8 +7650,8 @@ export const PutManagedNetworkSettings: API.OperationMethod<
   PutManagedNetworkSettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PutManagedNetworkSettingsRequest,
-  output: PutManagedNetworkSettingsResponse,
+  input: __S(410) as any as S.Schema<PutManagedNetworkSettingsRequest>,
+  output: __S(174) as any as S.Schema<PutManagedNetworkSettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10267,8 +7665,8 @@ export const QuotaTiersCreateOrUpdate: API.OperationMethod<
   QuotaTiersCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QuotaTiersCreateOrUpdateRequest,
-  output: QuotaTiersCreateOrUpdateResponse,
+  input: __S(412) as any as S.Schema<QuotaTiersCreateOrUpdateRequest>,
+  output: __S(413) as any as S.Schema<QuotaTiersCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10282,8 +7680,8 @@ export const RaiBlocklistItemsCreateOrUpdate: API.OperationMethod<
   RaiBlocklistItemsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RaiBlocklistItemsCreateOrUpdateRequest,
-  output: RaiBlocklistItemsCreateOrUpdateResponse,
+  input: __S(414) as any as S.Schema<RaiBlocklistItemsCreateOrUpdateRequest>,
+  output: __S(206) as any as S.Schema<RaiBlocklistItemsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10297,8 +7695,8 @@ export const RaiBlocklistsCreateOrUpdate: API.OperationMethod<
   RaiBlocklistsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RaiBlocklistsCreateOrUpdateRequest,
-  output: RaiBlocklistsCreateOrUpdateResponse,
+  input: __S(415) as any as S.Schema<RaiBlocklistsCreateOrUpdateRequest>,
+  output: __S(12) as any as S.Schema<RaiBlocklistsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10312,8 +7710,8 @@ export const RaiExternalSafetyProviderCreateOrUpdate: API.OperationMethod<
   RaiExternalSafetyProviderCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RaiExternalSafetyProviderCreateOrUpdateRequest,
-  output: RaiExternalSafetyProviderCreateOrUpdateResponse,
+  input: __S(417) as any as S.Schema<RaiExternalSafetyProviderCreateOrUpdateRequest>,
+  output: __S(212) as any as S.Schema<RaiExternalSafetyProviderCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10327,8 +7725,8 @@ export const RaiPoliciesCreateOrUpdate: API.OperationMethod<
   RaiPoliciesCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RaiPoliciesCreateOrUpdateRequest,
-  output: RaiPoliciesCreateOrUpdateResponse,
+  input: __S(418) as any as S.Schema<RaiPoliciesCreateOrUpdateRequest>,
+  output: __S(243) as any as S.Schema<RaiPoliciesCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10342,8 +7740,8 @@ export const RaiToolLabelsCreateOrUpdate: API.OperationMethod<
   RaiToolLabelsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RaiToolLabelsCreateOrUpdateRequest,
-  output: RaiToolLabelsCreateOrUpdateResponse,
+  input: __S(419) as any as S.Schema<RaiToolLabelsCreateOrUpdateRequest>,
+  output: __S(420) as any as S.Schema<RaiToolLabelsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10357,8 +7755,8 @@ export const RaiTopicsCreateOrUpdate: API.OperationMethod<
   RaiTopicsCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RaiTopicsCreateOrUpdateRequest,
-  output: RaiTopicsCreateOrUpdateResponse,
+  input: __S(421) as any as S.Schema<RaiTopicsCreateOrUpdateRequest>,
+  output: __S(422) as any as S.Schema<RaiTopicsCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10372,8 +7770,8 @@ export const RegenerateAccountKey: API.OperationMethod<
   RegenerateAccountKeyError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegenerateAccountKeyRequest,
-  output: ApiKeys,
+  input: __S(423) as any as S.Schema<RegenerateAccountKeyRequest>,
+  output: __S(255) as any as S.Schema<ApiKeys>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10387,8 +7785,8 @@ export const ResumeDeployment: API.OperationMethod<
   ResumeDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResumeDeploymentRequest,
-  output: ResumeDeploymentResponse,
+  input: __S(424) as any as S.Schema<ResumeDeploymentRequest>,
+  output: __S(165) as any as S.Schema<ResumeDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10402,8 +7800,8 @@ export const StartAgentDeployment: API.OperationMethod<
   StartAgentDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StartAgentDeploymentRequest,
-  output: StartAgentDeploymentResponse,
+  input: __S(425) as any as S.Schema<StartAgentDeploymentRequest>,
+  output: __S(75) as any as S.Schema<StartAgentDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10417,8 +7815,8 @@ export const StopAgentDeployment: API.OperationMethod<
   StopAgentDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StopAgentDeploymentRequest,
-  output: StopAgentDeploymentResponse,
+  input: __S(426) as any as S.Schema<StopAgentDeploymentRequest>,
+  output: __S(75) as any as S.Schema<StopAgentDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10432,8 +7830,8 @@ export const SubscriptionRaiPolicyCreateOrUpdate: API.OperationMethod<
   SubscriptionRaiPolicyCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionRaiPolicyCreateOrUpdateRequest,
-  output: SubscriptionRaiPolicyCreateOrUpdateResponse,
+  input: __S(427) as any as S.Schema<SubscriptionRaiPolicyCreateOrUpdateRequest>,
+  output: __S(243) as any as S.Schema<SubscriptionRaiPolicyCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10447,8 +7845,8 @@ export const TestRaiExternalSafetyProviderCreateOrUpdate: API.OperationMethod<
   TestRaiExternalSafetyProviderCreateOrUpdateError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TestRaiExternalSafetyProviderCreateOrUpdateRequest,
-  output: TestRaiExternalSafetyProviderCreateOrUpdateResponse,
+  input: __S(428) as any as S.Schema<TestRaiExternalSafetyProviderCreateOrUpdateRequest>,
+  output: __S(212) as any as S.Schema<TestRaiExternalSafetyProviderCreateOrUpdateResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10462,8 +7860,8 @@ export const UpdateAccount: API.OperationMethod<
   UpdateAccountError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountRequest,
-  output: UpdateAccountResponse,
+  input: __S(429) as any as S.Schema<UpdateAccountRequest>,
+  output: __S(99) as any as S.Schema<UpdateAccountResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10477,8 +7875,8 @@ export const UpdateAccountConnection: API.OperationMethod<
   UpdateAccountConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateAccountConnectionRequest,
-  output: UpdateAccountConnectionResponse,
+  input: __S(430) as any as S.Schema<UpdateAccountConnectionRequest>,
+  output: __S(103) as any as S.Schema<UpdateAccountConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10492,8 +7890,8 @@ export const UpdateCommitmentPlanPlan: API.OperationMethod<
   UpdateCommitmentPlanPlanError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateCommitmentPlanPlanRequest,
-  output: UpdateCommitmentPlanPlanResponse,
+  input: __S(431) as any as S.Schema<UpdateCommitmentPlanPlanRequest>,
+  output: __S(53) as any as S.Schema<UpdateCommitmentPlanPlanResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10507,8 +7905,8 @@ export const UpdateDefenderForAISettings: API.OperationMethod<
   UpdateDefenderForAISettingsError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDefenderForAISettingsRequest,
-  output: UpdateDefenderForAISettingsResponse,
+  input: __S(432) as any as S.Schema<UpdateDefenderForAISettingsRequest>,
+  output: __S(111) as any as S.Schema<UpdateDefenderForAISettingsResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10522,8 +7920,8 @@ export const UpdateDeployment: API.OperationMethod<
   UpdateDeploymentError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateDeploymentRequest,
-  output: UpdateDeploymentResponse,
+  input: __S(433) as any as S.Schema<UpdateDeploymentRequest>,
+  output: __S(165) as any as S.Schema<UpdateDeploymentResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10537,8 +7935,8 @@ export const UpdateProject: API.OperationMethod<
   UpdateProjectError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectRequest,
-  output: UpdateProjectResponse,
+  input: __S(434) as any as S.Schema<UpdateProjectRequest>,
+  output: __S(107) as any as S.Schema<UpdateProjectResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10552,8 +7950,8 @@ export const UpdateProjectConnection: API.OperationMethod<
   UpdateProjectConnectionError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateProjectConnectionRequest,
-  output: UpdateProjectConnectionResponse,
+  input: __S(435) as any as S.Schema<UpdateProjectConnectionRequest>,
+  output: __S(103) as any as S.Schema<UpdateProjectConnectionResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10567,8 +7965,8 @@ export const UpdateQuotaTier: API.OperationMethod<
   UpdateQuotaTierError,
   AzureOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateQuotaTierRequest,
-  output: UpdateQuotaTierResponse,
+  input: __S(436) as any as S.Schema<UpdateQuotaTierRequest>,
+  output: __S(202) as any as S.Schema<UpdateQuotaTierResponse>,
   errors: [UnknownAzureError],
   protocol: AzureProtocol,
   retry: Retry.Retry,
@@ -10585,21 +7983,13 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(CapabilityHostPropertiesInputTagsMap)),
-          aiServicesConnections: S.optional(
-            S.NullOr(CapabilityHostPropertiesInputAiServicesConnectionsList),
-          ),
-          capabilityHostKind: S.optional(CapabilityHostKind),
+          tags: S.optional(S.NullOr(__S(0))),
+          aiServicesConnections: S.optional(S.NullOr(__S(1))),
+          capabilityHostKind: S.optional(S.String),
           customerSubnet: S.optional(S.NullOr(S.String)),
-          storageConnections: S.optional(
-            S.NullOr(CapabilityHostPropertiesInputStorageConnectionsList),
-          ),
-          threadStorageConnections: S.optional(
-            S.NullOr(CapabilityHostPropertiesInputThreadStorageConnectionsList),
-          ),
-          vectorStoreConnections: S.optional(
-            S.NullOr(CapabilityHostPropertiesInputVectorStoreConnectionsList),
-          ),
+          storageConnections: S.optional(S.NullOr(__S(1))),
+          threadStorageConnections: S.optional(S.NullOr(__S(1))),
+          vectorStoreConnections: S.optional(S.NullOr(__S(1))),
           enablePublicHostingEnvironment: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -10612,7 +8002,7 @@ function __c0(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           capabilityHostName: S.String.pipe(T.Label()),
-          properties: CapabilityHostPropertiesInput,
+          properties: __S(2),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10628,10 +8018,10 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           createdBy: S.optional(S.String),
-          createdByType: S.optional(SystemDataCreatedByType),
+          createdByType: S.optional(S.String),
           createdAt: S.optional(S.String),
           lastModifiedBy: S.optional(S.String),
-          lastModifiedByType: S.optional(SystemDataLastModifiedByType),
+          lastModifiedByType: S.optional(S.String),
           lastModifiedAt: S.optional(S.String),
         }),
       ).annotate({ identifier: "SystemData" });
@@ -10639,20 +8029,14 @@ function __c0(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(CapabilityHostPropertiesTagsMap)),
-          aiServicesConnections: S.optional(
-            S.NullOr(CapabilityHostPropertiesAiServicesConnectionsList),
-          ),
-          capabilityHostKind: S.optional(CapabilityHostKind),
+          tags: S.optional(S.NullOr(__S(0))),
+          aiServicesConnections: S.optional(S.NullOr(__S(1))),
+          capabilityHostKind: S.optional(S.String),
           customerSubnet: S.optional(S.NullOr(S.String)),
-          provisioningState: S.optional(CapabilityHostProvisioningState),
-          storageConnections: S.optional(S.NullOr(CapabilityHostPropertiesStorageConnectionsList)),
-          threadStorageConnections: S.optional(
-            S.NullOr(CapabilityHostPropertiesThreadStorageConnectionsList),
-          ),
-          vectorStoreConnections: S.optional(
-            S.NullOr(CapabilityHostPropertiesVectorStoreConnectionsList),
-          ),
+          provisioningState: S.optional(S.String),
+          storageConnections: S.optional(S.NullOr(__S(1))),
+          threadStorageConnections: S.optional(S.NullOr(__S(1))),
+          vectorStoreConnections: S.optional(S.NullOr(__S(1))),
           enablePublicHostingEnvironment: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "CapabilityHostProperties" });
@@ -10662,8 +8046,8 @@ function __c0(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CapabilityHostProperties,
+          systemData: S.optional(__S(4)),
+          properties: __S(5),
         }),
       ).annotate({
         identifier: "AccountCapabilityHostsCreateOrUpdateResponse",
@@ -10685,13 +8069,13 @@ function __c1(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(RaiBlocklistItemProperties),
+          properties: S.optional(__S(7)),
         }),
       ).annotate({
         identifier: "RaiBlocklistItemBulkRequest",
       });
     case 1:
-      return S.Array(RaiBlocklistItemBulkRequest);
+      return S.Array(__S(8));
     case 2:
       return S.suspend(() =>
         S.Struct({
@@ -10699,7 +8083,7 @@ function __c1(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           raiBlocklistName: S.String.pipe(T.Label()),
-          body: RaiBlocklistItemsBulkAddRequest.pipe(T.HttpBody()),
+          body: __S(9).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -10723,10 +8107,10 @@ function __c1(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RaiBlocklistProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(11)),
           etag: S.optional(S.String),
-          tags: S.optional(AddRaiBlocklistItemBatchResponseTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "AddRaiBlocklistItemBatchResponse",
@@ -10739,12 +8123,12 @@ function __c1(j: number): any {
         }),
       ).annotate({ identifier: "AgentReferenceProperties" });
     case 6:
-      return S.Array(AgentReferenceProperties);
+      return S.Array(__S(13));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          kind: IdentityKind,
-          type: IdentityManagementType,
+          kind: S.String,
+          type: S.String,
           clientId: S.String,
           principalId: S.String,
           tenantId: S.String,
@@ -10758,7 +8142,7 @@ function __c2(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          type: BuiltInAuthorizationScheme,
+          type: S.String,
         }),
       ).annotate({
         identifier: "ApplicationAuthorizationPolicy",
@@ -10773,12 +8157,12 @@ function __c2(j: number): any {
         }),
       ).annotate({ identifier: "TrafficRoutingRule" });
     case 2:
-      return S.Array(TrafficRoutingRule);
+      return S.Array(__S(17));
     case 3:
       return S.suspend(() =>
         S.Struct({
-          protocol: S.optional(TrafficRoutingProtocol),
-          rules: S.optional(S.NullOr(ApplicationTrafficRoutingPolicyRulesList)),
+          protocol: S.optional(S.String),
+          rules: S.optional(S.NullOr(__S(18))),
         }),
       ).annotate({
         identifier: "ApplicationTrafficRoutingPolicy",
@@ -10787,14 +8171,14 @@ function __c2(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(AgenticApplicationPropertiesInputTagsMap)),
+          tags: S.optional(S.NullOr(__S(0))),
           displayName: S.optional(S.NullOr(S.String)),
           baseUrl: S.optional(S.NullOr(S.String)),
-          agents: S.optional(S.NullOr(AgenticApplicationPropertiesInputAgentsList)),
-          agentIdentityBlueprint: S.optional(S.NullOr(AssignedIdentityInput)),
-          defaultInstanceIdentity: S.optional(S.NullOr(AssignedIdentityInput)),
-          authorizationPolicy: S.optional(S.NullOr(ApplicationAuthorizationPolicy)),
-          trafficRoutingPolicy: S.optional(S.NullOr(ApplicationTrafficRoutingPolicy)),
+          agents: S.optional(S.NullOr(__S(14))),
+          agentIdentityBlueprint: S.optional(S.NullOr(__S(15))),
+          defaultInstanceIdentity: S.optional(S.NullOr(__S(15))),
+          authorizationPolicy: S.optional(S.NullOr(__S(16))),
+          trafficRoutingPolicy: S.optional(S.NullOr(__S(19))),
         }),
       ).annotate({
         identifier: "AgenticApplicationPropertiesInput",
@@ -10807,7 +8191,7 @@ function __c2(j: number): any {
           accountName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           name: S.String.pipe(T.Label()),
-          properties: AgenticApplicationPropertiesInput,
+          properties: __S(20),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10822,28 +8206,28 @@ function __c2(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          kind: IdentityKind,
-          type: IdentityManagementType,
+          kind: S.String,
+          type: S.String,
           clientId: S.String,
           principalId: S.String,
           tenantId: S.String,
           subject: S.optional(S.NullOr(S.String)),
-          provisioningState: S.optional(IdentityProvisioningState),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({ identifier: "AssignedIdentity" });
     case 7:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(AgenticApplicationPropertiesTagsMap)),
+          tags: S.optional(S.NullOr(__S(0))),
           displayName: S.optional(S.NullOr(S.String)),
           baseUrl: S.optional(S.NullOr(S.String)),
-          agents: S.optional(S.NullOr(AgenticApplicationPropertiesAgentsList)),
-          agentIdentityBlueprint: S.optional(S.NullOr(AssignedIdentity)),
-          defaultInstanceIdentity: S.optional(S.NullOr(AssignedIdentity)),
-          authorizationPolicy: S.optional(S.NullOr(ApplicationAuthorizationPolicy)),
-          trafficRoutingPolicy: S.optional(S.NullOr(ApplicationTrafficRoutingPolicy)),
-          provisioningState: S.optional(AgenticApplicationProvisioningState),
+          agents: S.optional(S.NullOr(__S(14))),
+          agentIdentityBlueprint: S.optional(S.NullOr(__S(22))),
+          defaultInstanceIdentity: S.optional(S.NullOr(__S(22))),
+          authorizationPolicy: S.optional(S.NullOr(__S(16))),
+          trafficRoutingPolicy: S.optional(S.NullOr(__S(19))),
+          provisioningState: S.optional(S.String),
           isEnabled: S.optional(S.Boolean),
         }),
       ).annotate({
@@ -10859,8 +8243,8 @@ function __c3(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: AgenticApplicationProperties,
+          systemData: S.optional(__S(4)),
+          properties: __S(23),
         }),
       ).annotate({
         identifier: "AgentApplicationsCreateOrUpdateResponse",
@@ -10868,12 +8252,12 @@ function __c3(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          protocol: S.optional(AgentProtocol),
+          protocol: S.optional(S.String),
           version: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "AgentProtocolVersion" });
     case 2:
-      return S.Array(AgentProtocolVersion);
+      return S.Array(__S(25));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -10883,18 +8267,18 @@ function __c3(j: number): any {
         }),
       ).annotate({ identifier: "VersionedAgentReference" });
     case 4:
-      return S.Array(VersionedAgentReference);
+      return S.Array(__S(27));
     case 5:
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(AgentDeploymentPropertiesInputTagsMap)),
+          tags: S.optional(S.NullOr(__S(0))),
           displayName: S.optional(S.NullOr(S.String)),
           deploymentId: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.NullOr(AgentDeploymentState)),
-          protocols: S.optional(S.NullOr(AgentDeploymentPropertiesInputProtocolsList)),
-          agents: S.optional(S.NullOr(AgentDeploymentPropertiesInputAgentsList)),
-          deploymentType: AgentDeploymentType,
+          state: S.optional(S.NullOr(S.String)),
+          protocols: S.optional(S.NullOr(__S(26))),
+          agents: S.optional(S.NullOr(__S(28))),
+          deploymentType: S.String,
         }),
       ).annotate({
         identifier: "AgentDeploymentPropertiesInput",
@@ -10908,7 +8292,7 @@ function __c3(j: number): any {
           projectName: S.String.pipe(T.Label()),
           appName: S.String.pipe(T.Label()),
           deploymentName: S.String.pipe(T.Label()),
-          properties: AgentDeploymentPropertiesInput,
+          properties: __S(29),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -10924,14 +8308,14 @@ function __c3(j: number): any {
       return S.suspend(() =>
         S.Struct({
           description: S.optional(S.NullOr(S.String)),
-          tags: S.optional(S.NullOr(AgentDeploymentPropertiesTagsMap)),
+          tags: S.optional(S.NullOr(__S(0))),
           displayName: S.optional(S.NullOr(S.String)),
           deploymentId: S.optional(S.NullOr(S.String)),
-          state: S.optional(S.NullOr(AgentDeploymentState)),
-          protocols: S.optional(S.NullOr(AgentDeploymentPropertiesProtocolsList)),
-          agents: S.optional(S.NullOr(AgentDeploymentPropertiesAgentsList)),
-          deploymentType: AgentDeploymentType,
-          provisioningState: S.optional(AgentDeploymentProvisioningState),
+          state: S.optional(S.NullOr(S.String)),
+          protocols: S.optional(S.NullOr(__S(26))),
+          agents: S.optional(S.NullOr(__S(28))),
+          deploymentType: S.String,
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "AgentDeploymentProperties",
@@ -10946,8 +8330,8 @@ function __c4(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: AgentDeploymentProperties,
+          systemData: S.optional(__S(4)),
+          properties: __S(31),
         }),
       ).annotate({
         identifier: "AgentDeploymentsCreateOrUpdateResponse",
@@ -10976,20 +8360,20 @@ function __c4(j: number): any {
       return S.suspend(() =>
         S.Struct({
           requestPerMinute: S.optional(S.Number),
-          requestParameters: S.optional(ModelCapacityCalculatorWorkloadRequestParam),
+          requestParameters: S.optional(__S(34)),
         }),
       ).annotate({
         identifier: "ModelCapacityCalculatorWorkload",
       });
     case 4:
-      return S.Array(ModelCapacityCalculatorWorkload);
+      return S.Array(__S(35));
     case 5:
       return S.suspend(() =>
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
-          model: S.optional(DeploymentModel),
+          model: S.optional(__S(33)),
           skuName: S.optional(S.String),
-          workloads: S.optional(CalculateModelCapacityRequestWorkloadsList),
+          workloads: S.optional(__S(36)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -11013,9 +8397,9 @@ function __c4(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          model: S.optional(DeploymentModel),
+          model: S.optional(__S(33)),
           skuName: S.optional(S.String),
-          estimatedCapacity: S.optional(CalculateModelCapacityResultEstimatedCapacity),
+          estimatedCapacity: S.optional(__S(38)),
         }),
       ).annotate({
         identifier: "CalculateModelCapacityResult",
@@ -11057,7 +8441,7 @@ function __c5(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           location: S.String.pipe(T.Label()),
-          skus: CheckSkuAvailabilityRequestSkusList,
+          skus: __S(1),
           kind: S.String,
           type: S.String,
         }).pipe(
@@ -11083,11 +8467,11 @@ function __c5(j: number): any {
         }),
       ).annotate({ identifier: "SkuAvailability" });
     case 4:
-      return S.Array(SkuAvailability);
+      return S.Array(__S(43));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(SkuAvailabilityListResultValueList),
+          value: S.optional(__S(44)),
         }),
       ).annotate({
         identifier: "SkuAvailabilityListResult",
@@ -11103,11 +8487,11 @@ function __c5(j: number): any {
       return S.suspend(() =>
         S.Struct({
           commitmentPlanGuid: S.optional(S.String),
-          hostingModel: S.optional(HostingModel),
+          hostingModel: S.optional(S.String),
           planType: S.optional(S.String),
-          current: S.optional(CommitmentPeriodInput),
+          current: S.optional(__S(46)),
           autoRenew: S.optional(S.Boolean),
-          next: S.optional(CommitmentPeriodInput),
+          next: S.optional(__S(46)),
         }),
       ).annotate({
         identifier: "CommitmentPlanPropertiesInput",
@@ -11120,7 +8504,7 @@ function __c6(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.String,
-          tier: S.optional(SkuTier),
+          tier: S.optional(S.String),
           size: S.optional(S.String),
           family: S.optional(S.String),
           capacity: S.optional(S.Number),
@@ -11133,11 +8517,11 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           commitmentPlanName: S.String.pipe(T.Label()),
-          properties: S.optional(CommitmentPlanPropertiesInput),
-          tags: S.optional(CommitmentPlansCreateOrUpdateRequestTagsMap),
+          properties: S.optional(__S(47)),
+          tags: S.optional(__S(0)),
           location: S.optional(S.String),
           kind: S.optional(S.String),
-          sku: S.optional(Sku),
+          sku: S.optional(__S(48)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11161,7 +8545,7 @@ function __c6(j: number): any {
         S.Struct({
           tier: S.optional(S.String),
           count: S.optional(S.Number),
-          quota: S.optional(CommitmentQuota),
+          quota: S.optional(__S(50)),
           startDate: S.optional(S.String),
           endDate: S.optional(S.String),
         }),
@@ -11169,15 +8553,15 @@ function __c6(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(CommitmentPlanProvisioningState),
+          provisioningState: S.optional(S.String),
           commitmentPlanGuid: S.optional(S.String),
-          hostingModel: S.optional(HostingModel),
+          hostingModel: S.optional(S.String),
           planType: S.optional(S.String),
-          current: S.optional(CommitmentPeriod),
+          current: S.optional(__S(51)),
           autoRenew: S.optional(S.Boolean),
-          next: S.optional(CommitmentPeriod),
-          last: S.optional(CommitmentPeriod),
-          provisioningIssues: S.optional(CommitmentPlanPropertiesProvisioningIssuesList),
+          next: S.optional(__S(51)),
+          last: S.optional(__S(51)),
+          provisioningIssues: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "CommitmentPlanProperties" });
     case 5:
@@ -11186,13 +8570,13 @@ function __c6(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(CommitmentPlanProperties),
-          tags: S.optional(CommitmentPlansCreateOrUpdateResponseTagsMap),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(52)),
+          tags: S.optional(__S(0)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          sku: S.optional(Sku),
+          sku: S.optional(__S(48)),
         }),
       ).annotate({
         identifier: "CommitmentPlansCreateOrUpdateResponse",
@@ -11212,8 +8596,8 @@ function __c6(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           commitmentPlanName: S.String.pipe(T.Label()),
           commitmentPlanAssociationName: S.String.pipe(T.Label()),
-          properties: S.optional(CommitmentPlanAccountAssociationProperties),
-          tags: S.optional(CommitmentPlansCreateOrUpdateAssociationRequestTagsMap),
+          properties: S.optional(__S(54)),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11235,10 +8619,10 @@ function __c7(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(CommitmentPlanAccountAssociationProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(54)),
           etag: S.optional(S.String),
-          tags: S.optional(CommitmentPlansCreateOrUpdateAssociationResponseTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "CommitmentPlansCreateOrUpdateAssociationResponse",
@@ -11249,11 +8633,11 @@ function __c7(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           commitmentPlanName: S.String.pipe(T.Label()),
-          properties: S.optional(CommitmentPlanPropertiesInput),
-          tags: S.optional(CommitmentPlansCreateOrUpdatePlanRequestTagsMap),
+          properties: S.optional(__S(47)),
+          tags: S.optional(__S(0)),
           location: S.optional(S.String),
           kind: S.optional(S.String),
-          sku: S.optional(Sku),
+          sku: S.optional(__S(48)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11272,7 +8656,7 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "IpRule" });
     case 3:
-      return S.Array(IpRule);
+      return S.Array(__S(58));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -11282,14 +8666,14 @@ function __c7(j: number): any {
         }),
       ).annotate({ identifier: "VirtualNetworkRule" });
     case 5:
-      return S.Array(VirtualNetworkRule);
+      return S.Array(__S(60));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          defaultAction: S.optional(NetworkRuleAction),
-          bypass: S.optional(ByPassSelection),
-          ipRules: S.optional(NetworkRuleSetIpRulesList),
-          virtualNetworkRules: S.optional(NetworkRuleSetVirtualNetworkRulesList),
+          defaultAction: S.optional(S.String),
+          bypass: S.optional(S.String),
+          ipRules: S.optional(__S(59)),
+          virtualNetworkRules: S.optional(__S(61)),
         }),
       ).annotate({ identifier: "NetworkRuleSet" });
     case 7:
@@ -11308,8 +8692,8 @@ function __c8(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: S.optional(KeyVaultProperties),
-          keySource: S.optional(EncryptionKeySource),
+          keyVaultProperties: S.optional(__S(63)),
+          keySource: S.optional(S.String),
         }),
       ).annotate({ identifier: "Encryption" });
     case 1:
@@ -11320,7 +8704,7 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "UserOwnedStorage" });
     case 2:
-      return S.Array(UserOwnedStorage);
+      return S.Array(__S(65));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -11345,12 +8729,12 @@ function __c8(j: number): any {
         }),
       ).annotate({ identifier: "RegionSetting" });
     case 5:
-      return S.Array(RegionSetting);
+      return S.Array(__S(68));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          routingMethod: S.optional(RoutingMethods),
-          regions: S.optional(MultiRegionSettingsRegionsList),
+          routingMethod: S.optional(S.String),
+          regions: S.optional(__S(69)),
         }),
       ).annotate({ identifier: "MultiRegionSettings" });
     case 7:
@@ -11367,37 +8751,37 @@ function __c9(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          scenario: S.optional(ScenarioType),
+          scenario: S.optional(S.String),
           subnetArmId: S.optional(S.String),
           useMicrosoftManagedNetwork: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "NetworkInjection" });
     case 1:
-      return S.Array(NetworkInjection);
+      return S.Array(__S(72));
     case 2:
       return S.suspend(() =>
         S.Struct({
           migrationToken: S.optional(S.String),
           customSubDomainName: S.optional(S.String),
-          networkAcls: S.optional(NetworkRuleSet),
-          encryption: S.optional(Encryption),
-          userOwnedStorage: S.optional(AccountPropertiesInputUserOwnedStorageList),
-          amlWorkspace: S.optional(UserOwnedAmlWorkspace),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
-          apiProperties: S.optional(ApiProperties),
+          networkAcls: S.optional(__S(62)),
+          encryption: S.optional(__S(64)),
+          userOwnedStorage: S.optional(__S(66)),
+          amlWorkspace: S.optional(__S(65)),
+          publicNetworkAccess: S.optional(S.String),
+          apiProperties: S.optional(__S(67)),
           dynamicThrottlingEnabled: S.optional(S.Boolean),
           storedCompletionsDisabled: S.optional(S.Boolean),
           a365LoggingEnabled: S.optional(S.Boolean),
           restrictOutboundNetworkAccess: S.optional(S.Boolean),
-          allowedFqdnList: S.optional(AccountPropertiesInputAllowedFqdnListList),
+          allowedFqdnList: S.optional(__S(1)),
           disableLocalAuth: S.optional(S.Boolean),
           restore: S.optional(S.Boolean),
-          locations: S.optional(MultiRegionSettings),
-          raiMonitorConfig: S.optional(RaiMonitorConfig),
-          networkInjections: S.optional(AccountPropertiesInputNetworkInjectionsList),
+          locations: S.optional(__S(70)),
+          raiMonitorConfig: S.optional(__S(71)),
+          networkInjections: S.optional(__S(73)),
           allowProjectManagement: S.optional(S.Boolean),
           defaultProject: S.optional(S.String),
-          associatedProjects: S.optional(AccountPropertiesInputAssociatedProjectsList),
+          associatedProjects: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "AccountPropertiesInput" });
     case 3:
@@ -11405,12 +8789,12 @@ function __c9(j: number): any {
         identifier: "UserAssignedIdentityInput",
       });
     case 4:
-      return S.Record(S.String, UserAssignedIdentityInput);
+      return S.Record(S.String, __S(75));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ResourceIdentityType),
-          userAssignedIdentities: S.optional(IdentityInputUserAssignedIdentitiesMap),
+          type: S.optional(S.String),
+          userAssignedIdentities: S.optional(__S(76)),
         }),
       ).annotate({ identifier: "IdentityInput" });
     case 6:
@@ -11419,12 +8803,12 @@ function __c9(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          properties: S.optional(AccountPropertiesInput),
-          tags: S.optional(CreateAccountRequestTagsMap),
+          properties: S.optional(__S(74)),
+          tags: S.optional(__S(0)),
           location: S.optional(S.String),
           kind: S.optional(S.String),
-          sku: S.optional(Sku),
-          identity: S.optional(IdentityInput),
+          sku: S.optional(__S(48)),
+          identity: S.optional(__S(77)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11446,7 +8830,7 @@ function __c9(j: number): any {
 function __c10(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(SkuCapability);
+      return S.Array(__S(79));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11466,7 +8850,7 @@ function __c10(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(PrivateEndpointServiceConnectionStatus),
+          status: S.optional(S.String),
           description: S.optional(S.String),
           actionsRequired: S.optional(S.String),
         }),
@@ -11476,11 +8860,10 @@ function __c10(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(PrivateEndpointConnectionPropertiesPrivateEndpoint),
-          privateLinkServiceConnectionState:
-            PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState,
-          provisioningState: S.optional(PrivateEndpointConnectionPropertiesProvisioningState),
-          groupIds: S.optional(PrivateEndpointConnectionPropertiesGroupIdsList),
+          privateEndpoint: S.optional(__S(82)),
+          privateLinkServiceConnectionState: __S(83),
+          provisioningState: S.optional(S.String),
+          groupIds: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionProperties",
@@ -11491,8 +8874,8 @@ function __c10(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateEndpointConnectionProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(84)),
           etag: S.optional(S.String),
           location: S.optional(S.String),
         }),
@@ -11500,7 +8883,7 @@ function __c10(j: number): any {
         identifier: "PrivateEndpointConnection",
       });
     case 6:
-      return S.Array(PrivateEndpointConnection);
+      return S.Array(__S(85));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -11513,7 +8896,7 @@ function __c10(j: number): any {
 function __c11(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RequestMatchPattern);
+      return S.Array(__S(87));
     case 1:
       return S.suspend(() =>
         S.Struct({
@@ -11522,17 +8905,17 @@ function __c11(j: number): any {
           count: S.optional(S.Number),
           minCount: S.optional(S.Number),
           dynamicThrottlingEnabled: S.optional(S.Boolean),
-          matchPatterns: S.optional(ThrottlingRuleMatchPatternsList),
+          matchPatterns: S.optional(__S(88)),
         }),
       ).annotate({ identifier: "ThrottlingRule" });
     case 2:
-      return S.Array(ThrottlingRule);
+      return S.Array(__S(89));
     case 3:
       return S.suspend(() =>
         S.Struct({
           count: S.optional(S.Number),
           renewalPeriod: S.optional(S.Number),
-          rules: S.optional(CallRateLimitRulesList),
+          rules: S.optional(__S(90)),
         }),
       ).annotate({ identifier: "CallRateLimit" });
     case 4:
@@ -11545,11 +8928,11 @@ function __c11(j: number): any {
         identifier: "CommitmentPlanAssociation",
       });
     case 5:
-      return S.Array(CommitmentPlanAssociation);
+      return S.Array(__S(92));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          action: S.optional(AbusePenaltyAction),
+          action: S.optional(S.String),
           rateLimitPercentage: S.optional(S.Number),
           expiration: S.optional(S.String),
         }),
@@ -11557,42 +8940,42 @@ function __c11(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           endpoint: S.optional(S.String),
           internalId: S.optional(S.String),
-          capabilities: S.optional(AccountPropertiesCapabilitiesList),
+          capabilities: S.optional(__S(80)),
           isMigrated: S.optional(S.Boolean),
           migrationToken: S.optional(S.String),
-          skuChangeInfo: S.optional(SkuChangeInfo),
+          skuChangeInfo: S.optional(__S(81)),
           customSubDomainName: S.optional(S.String),
-          networkAcls: S.optional(NetworkRuleSet),
-          encryption: S.optional(Encryption),
-          userOwnedStorage: S.optional(AccountPropertiesUserOwnedStorageList),
-          amlWorkspace: S.optional(UserOwnedAmlWorkspace),
-          privateEndpointConnections: S.optional(AccountPropertiesPrivateEndpointConnectionsList),
-          publicNetworkAccess: S.optional(PublicNetworkAccess),
-          apiProperties: S.optional(ApiProperties),
+          networkAcls: S.optional(__S(62)),
+          encryption: S.optional(__S(64)),
+          userOwnedStorage: S.optional(__S(66)),
+          amlWorkspace: S.optional(__S(65)),
+          privateEndpointConnections: S.optional(__S(86)),
+          publicNetworkAccess: S.optional(S.String),
+          apiProperties: S.optional(__S(67)),
           dateCreated: S.optional(S.String),
-          callRateLimit: S.optional(CallRateLimit),
+          callRateLimit: S.optional(__S(91)),
           dynamicThrottlingEnabled: S.optional(S.Boolean),
           storedCompletionsDisabled: S.optional(S.Boolean),
           a365LoggingEnabled: S.optional(S.Boolean),
-          quotaLimit: S.optional(QuotaLimit),
+          quotaLimit: S.optional(__S(91)),
           restrictOutboundNetworkAccess: S.optional(S.Boolean),
-          allowedFqdnList: S.optional(AccountPropertiesAllowedFqdnListList),
+          allowedFqdnList: S.optional(__S(1)),
           disableLocalAuth: S.optional(S.Boolean),
-          endpoints: S.optional(AccountPropertiesEndpointsMap),
+          endpoints: S.optional(__S(0)),
           restore: S.optional(S.Boolean),
           deletionDate: S.optional(S.String),
           scheduledPurgeDate: S.optional(S.String),
-          locations: S.optional(MultiRegionSettings),
-          commitmentPlanAssociations: S.optional(AccountPropertiesCommitmentPlanAssociationsList),
-          abusePenalty: S.optional(AbusePenalty),
-          raiMonitorConfig: S.optional(RaiMonitorConfig),
-          networkInjections: S.optional(AccountPropertiesNetworkInjectionsList),
+          locations: S.optional(__S(70)),
+          commitmentPlanAssociations: S.optional(__S(93)),
+          abusePenalty: S.optional(__S(94)),
+          raiMonitorConfig: S.optional(__S(71)),
+          networkInjections: S.optional(__S(73)),
           allowProjectManagement: S.optional(S.Boolean),
           defaultProject: S.optional(S.String),
-          associatedProjects: S.optional(AccountPropertiesAssociatedProjectsList),
+          associatedProjects: S.optional(__S(1)),
         }),
       ).annotate({ identifier: "AccountProperties" });
   }
@@ -11607,14 +8990,14 @@ function __c12(j: number): any {
         }),
       ).annotate({ identifier: "UserAssignedIdentity" });
     case 1:
-      return S.Record(S.String, UserAssignedIdentity);
+      return S.Record(S.String, __S(96));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ResourceIdentityType),
+          type: S.optional(S.String),
           tenantId: S.optional(S.String),
           principalId: S.optional(S.String),
-          userAssignedIdentities: S.optional(IdentityUserAssignedIdentitiesMap),
+          userAssignedIdentities: S.optional(__S(97)),
         }),
       ).annotate({ identifier: "Identity" });
     case 3:
@@ -11623,28 +9006,28 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(AccountProperties),
-          tags: S.optional(CreateAccountResponseTagsMap),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(95)),
+          tags: S.optional(__S(0)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          sku: S.optional(Sku),
-          identity: S.optional(Identity),
+          sku: S.optional(__S(48)),
+          identity: S.optional(__S(98)),
         }),
       ).annotate({ identifier: "CreateAccountResponse" });
     case 4:
       return S.suspend(() =>
         S.Struct({
-          authType: ConnectionAuthType,
-          category: S.optional(ConnectionCategory),
+          authType: S.String,
+          category: S.optional(S.String),
           error: S.optional(S.String),
           expiryTime: S.optional(S.String),
           isSharedToAll: S.optional(S.Boolean),
-          metadata: S.optional(ConnectionPropertiesV2InputMetadataMap),
-          peRequirement: S.optional(ManagedPERequirement),
-          peStatus: S.optional(ManagedPEStatus),
-          sharedUserList: S.optional(ConnectionPropertiesV2InputSharedUserListList),
+          metadata: S.optional(__S(0)),
+          peRequirement: S.optional(S.String),
+          peStatus: S.optional(S.String),
+          sharedUserList: S.optional(__S(1)),
           target: S.optional(S.String),
           useWorkspaceManagedIdentity: S.optional(S.Boolean),
           credentials: S.optional(S.Unknown),
@@ -11659,7 +9042,7 @@ function __c12(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
-          properties: ConnectionPropertiesV2Input,
+          properties: __S(100),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11674,17 +9057,17 @@ function __c12(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          authType: ConnectionAuthType,
-          category: S.optional(ConnectionCategory),
+          authType: S.String,
+          category: S.optional(S.String),
           createdByWorkspaceArmId: S.optional(S.String),
           error: S.optional(S.String),
           expiryTime: S.optional(S.String),
-          group: S.optional(ConnectionGroup),
+          group: S.optional(S.String),
           isSharedToAll: S.optional(S.Boolean),
-          metadata: S.optional(ConnectionPropertiesV2MetadataMap),
-          peRequirement: S.optional(ManagedPERequirement),
-          peStatus: S.optional(ManagedPEStatus),
-          sharedUserList: S.optional(ConnectionPropertiesV2SharedUserListList),
+          metadata: S.optional(__S(0)),
+          peRequirement: S.optional(S.String),
+          peStatus: S.optional(S.String),
+          sharedUserList: S.optional(__S(1)),
           target: S.optional(S.String),
           useWorkspaceManagedIdentity: S.optional(S.Boolean),
         }),
@@ -11695,8 +9078,8 @@ function __c12(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ConnectionPropertiesV2,
+          systemData: S.optional(__S(4)),
+          properties: __S(102),
         }),
       ).annotate({
         identifier: "CreateAccountConnectionResponse",
@@ -11719,10 +9102,10 @@ function __c13(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
-          properties: S.optional(ProjectPropertiesInput),
-          tags: S.optional(CreateProjectRequestTagsMap),
+          properties: S.optional(__S(104)),
+          tags: S.optional(__S(0)),
           location: S.optional(S.String),
-          identity: S.optional(IdentityInput),
+          identity: S.optional(__S(77)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11735,10 +9118,10 @@ function __c13(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(ProvisioningState),
+          provisioningState: S.optional(S.String),
           displayName: S.optional(S.String),
           description: S.optional(S.String),
-          endpoints: S.optional(ProjectPropertiesEndpointsMap),
+          endpoints: S.optional(__S(0)),
           isDefault: S.optional(S.Boolean),
         }),
       ).annotate({ identifier: "ProjectProperties" });
@@ -11748,12 +9131,12 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ProjectProperties),
-          tags: S.optional(CreateProjectResponseTagsMap),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(106)),
+          tags: S.optional(__S(0)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
-          identity: S.optional(Identity),
+          identity: S.optional(__S(98)),
         }),
       ).annotate({ identifier: "CreateProjectResponse" });
     case 4:
@@ -11764,7 +9147,7 @@ function __c13(j: number): any {
           accountName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
-          properties: ConnectionPropertiesV2Input,
+          properties: __S(100),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11779,7 +9162,7 @@ function __c13(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          state: S.optional(DefenderForAISettingState),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "DefenderForAISettingProperties",
@@ -11791,8 +9174,8 @@ function __c13(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           defenderForAISettingName: S.String.pipe(T.Label()),
-          properties: S.optional(DefenderForAISettingProperties),
-          tags: S.optional(DefenderForAISettingsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(__S(109)),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -11810,10 +9193,10 @@ function __c13(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DefenderForAISettingProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(109)),
           etag: S.optional(S.String),
-          tags: S.optional(DefenderForAISettingsCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "DefenderForAISettingsCreateOrUpdateResponse",
@@ -12168,7 +9551,7 @@ function __c16(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           raiBlocklistName: S.String.pipe(T.Label()),
-          body: RaiBlocklistItemsBulkDeleteRequest.pipe(T.HttpBody()),
+          body: __S(1).pipe(T.HttpBody()),
         }).pipe(
           T.Http({
             method: "POST",
@@ -12269,7 +9652,7 @@ function __c17(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          scaleType: S.optional(DeploymentScaleType),
+          scaleType: S.optional(S.String),
           capacity: S.optional(S.Number),
         }),
       ).annotate({
@@ -12285,29 +9668,29 @@ function __c17(j: number): any {
         identifier: "DeploymentCapacitySettings",
       });
     case 4:
-      return S.Array(DeploymentModel);
+      return S.Array(__S(33));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(DeploymentRoutingMode),
-          models: S.optional(DeploymentRoutingModelsList),
+          mode: S.optional(S.String),
+          models: S.optional(__S(140)),
         }),
       ).annotate({ identifier: "DeploymentRouting" });
     case 6:
       return S.suspend(() =>
         S.Struct({
-          model: S.optional(DeploymentModel),
+          model: S.optional(__S(33)),
           contextCacheContainerId: S.optional(S.String),
-          scaleSettings: S.optional(DeploymentScaleSettingsInput),
+          scaleSettings: S.optional(__S(138)),
           raiPolicyName: S.optional(S.String),
-          versionUpgradeOption: S.optional(DeploymentModelVersionUpgradeOption),
+          versionUpgradeOption: S.optional(S.String),
           currentCapacity: S.optional(S.Number),
-          capacitySettings: S.optional(DeploymentCapacitySettings),
+          capacitySettings: S.optional(__S(139)),
           parentDeploymentName: S.optional(S.String),
           spilloverDeploymentName: S.optional(S.String),
-          serviceTier: S.optional(S.NullOr(ServiceTier)),
-          deploymentState: S.optional(S.NullOr(DeploymentState)),
-          routing: S.optional(DeploymentRouting),
+          serviceTier: S.optional(S.NullOr(S.String)),
+          deploymentState: S.optional(S.NullOr(S.String)),
+          routing: S.optional(__S(141)),
         }),
       ).annotate({
         identifier: "DeploymentPropertiesInput",
@@ -12319,9 +9702,9 @@ function __c17(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           deploymentName: S.String.pipe(T.Label()),
-          properties: S.optional(DeploymentPropertiesInput),
-          sku: S.optional(Sku),
-          tags: S.optional(DeploymentsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(__S(142)),
+          sku: S.optional(__S(48)),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12340,7 +9723,7 @@ function __c18(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          scaleType: S.optional(DeploymentScaleType),
+          scaleType: S.optional(S.String),
           capacity: S.optional(S.Number),
           activeCapacity: S.optional(S.Number),
         }),
@@ -12348,23 +9731,23 @@ function __c18(j: number): any {
     case 1:
       return S.suspend(() =>
         S.Struct({
-          provisioningState: S.optional(DeploymentProvisioningState),
-          model: S.optional(DeploymentModel),
+          provisioningState: S.optional(S.String),
+          model: S.optional(__S(33)),
           contextCacheContainerId: S.optional(S.String),
-          scaleSettings: S.optional(DeploymentScaleSettings),
-          capabilities: S.optional(DeploymentPropertiesCapabilitiesMap),
+          scaleSettings: S.optional(__S(144)),
+          capabilities: S.optional(__S(0)),
           raiPolicyName: S.optional(S.String),
-          callRateLimit: S.optional(CallRateLimit),
-          rateLimits: S.optional(DeploymentPropertiesRateLimitsList),
-          versionUpgradeOption: S.optional(DeploymentModelVersionUpgradeOption),
+          callRateLimit: S.optional(__S(91)),
+          rateLimits: S.optional(__S(90)),
+          versionUpgradeOption: S.optional(S.String),
           dynamicThrottlingEnabled: S.optional(S.Boolean),
           currentCapacity: S.optional(S.Number),
-          capacitySettings: S.optional(DeploymentCapacitySettings),
+          capacitySettings: S.optional(__S(139)),
           parentDeploymentName: S.optional(S.String),
           spilloverDeploymentName: S.optional(S.String),
-          serviceTier: S.optional(S.NullOr(ServiceTier)),
-          deploymentState: S.optional(S.NullOr(DeploymentState)),
-          routing: S.optional(DeploymentRouting),
+          serviceTier: S.optional(S.NullOr(S.String)),
+          deploymentState: S.optional(S.NullOr(S.String)),
+          routing: S.optional(__S(141)),
         }),
       ).annotate({ identifier: "DeploymentProperties" });
     case 2:
@@ -12373,11 +9756,11 @@ function __c18(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeploymentProperties),
-          sku: S.optional(Sku),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(145)),
+          sku: S.optional(__S(48)),
           etag: S.optional(S.String),
-          tags: S.optional(DeploymentsCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "DeploymentsCreateOrUpdateResponse",
@@ -12423,9 +9806,9 @@ function __c18(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: S.optional(KeyVaultProperties),
-          keySource: S.optional(EncryptionScopePropertiesInputKeySource),
-          state: S.optional(EncryptionScopeState),
+          keyVaultProperties: S.optional(__S(63)),
+          keySource: S.optional(S.String),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EncryptionScopePropertiesInput",
@@ -12437,8 +9820,8 @@ function __c18(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           encryptionScopeName: S.String.pipe(T.Label()),
-          properties: S.optional(EncryptionScopePropertiesInput),
-          tags: S.optional(EncryptionScopesCreateOrUpdateRequestTagsMap),
+          properties: S.optional(__S(149)),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -12453,10 +9836,10 @@ function __c18(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          keyVaultProperties: S.optional(KeyVaultProperties),
-          keySource: S.optional(EncryptionScopePropertiesKeySource),
-          provisioningState: S.optional(EncryptionScopeProvisioningState),
-          state: S.optional(EncryptionScopeState),
+          keyVaultProperties: S.optional(__S(63)),
+          keySource: S.optional(S.String),
+          provisioningState: S.optional(S.String),
+          state: S.optional(S.String),
         }),
       ).annotate({
         identifier: "EncryptionScopeProperties",
@@ -12471,10 +9854,10 @@ function __c19(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EncryptionScopeProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(151)),
           etag: S.optional(S.String),
-          tags: S.optional(EncryptionScopesCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "EncryptionScopesCreateOrUpdateResponse",
@@ -12664,14 +10047,14 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(AccountProperties),
-          tags: S.optional(GetDeletedAccountResponseTagsMap),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(95)),
+          tags: S.optional(__S(0)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          sku: S.optional(Sku),
-          identity: S.optional(Identity),
+          sku: S.optional(__S(48)),
+          identity: S.optional(__S(98)),
         }),
       ).annotate({
         identifier: "GetDeletedAccountResponse",
@@ -12698,11 +10081,11 @@ function __c20(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DeploymentProperties),
-          sku: S.optional(Sku),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(145)),
+          sku: S.optional(__S(48)),
           etag: S.optional(S.String),
-          tags: S.optional(GetDeploymentResponseTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "GetDeploymentResponse" });
     case 6:
@@ -12748,47 +10131,45 @@ function __c21(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(RuleCategory),
-          status: S.optional(RuleStatus),
-          type: RuleType,
+          category: S.optional(S.String),
+          status: S.optional(S.String),
+          type: S.String,
           errorInformation: S.optional(S.String),
-          parentRuleNames: S.optional(OutboundRuleParentRuleNamesList),
+          parentRuleNames: S.optional(__S(1)),
           destination: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OutboundRule" });
     case 1:
-      return S.Record(S.String, OutboundRule);
+      return S.Record(S.String, __S(168));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          status: S.optional(ManagedNetworkStatus),
+          status: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedNetworkProvisionStatus",
       });
     case 3:
-      return S.Array(IsolationMode);
+      return S.Array(S.String);
     case 4:
       return S.suspend(() =>
         S.Struct({
-          isolationMode: S.optional(IsolationMode),
+          isolationMode: S.optional(S.String),
           networkId: S.optional(S.String),
-          outboundRules: S.optional(S.NullOr(ManagedNetworkSettingsExOutboundRulesMap)),
-          status: S.optional(ManagedNetworkProvisionStatus),
-          firewallSku: S.optional(FirewallSku),
-          managedNetworkKind: S.optional(ManagedNetworkKind),
+          outboundRules: S.optional(S.NullOr(__S(169))),
+          status: S.optional(__S(170)),
+          firewallSku: S.optional(S.String),
+          managedNetworkKind: S.optional(S.String),
           firewallPublicIpAddress: S.optional(S.NullOr(S.String)),
-          provisioningState: S.optional(ManagedNetworkProvisioningState),
-          changeableIsolationModes: S.optional(
-            ManagedNetworkSettingsExChangeableIsolationModesList,
-          ),
+          provisioningState: S.optional(S.String),
+          changeableIsolationModes: S.optional(__S(171)),
         }),
       ).annotate({ identifier: "ManagedNetworkSettingsEx" });
     case 5:
       return S.suspend(() =>
         S.Struct({
-          managedNetwork: S.optional(ManagedNetworkSettingsEx),
-          provisioningState: S.optional(ManagedNetworkProvisioningState),
+          managedNetwork: S.optional(__S(172)),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedNetworkSettingsProperties",
@@ -12799,8 +10180,8 @@ function __c21(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(ManagedNetworkSettingsProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(173)),
         }),
       ).annotate({
         identifier: "GetManagedNetworkSettingsResponse",
@@ -12838,7 +10219,7 @@ function __c22(j: number): any {
         identifier: "NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsItem",
       });
     case 2:
-      return S.Array(NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsItem);
+      return S.Array(__S(177));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -12848,21 +10229,15 @@ function __c22(j: number): any {
         }),
       ).annotate({ identifier: "NetworkSecurityPerimeter" });
     case 4:
-      return S.Array(NetworkSecurityPerimeter);
+      return S.Array(__S(179));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          direction: S.optional(NspAccessRuleDirection),
-          addressPrefixes: S.optional(
-            NetworkSecurityPerimeterAccessRulePropertiesAddressPrefixesList,
-          ),
-          subscriptions: S.optional(NetworkSecurityPerimeterAccessRulePropertiesSubscriptionsList),
-          networkSecurityPerimeters: S.optional(
-            NetworkSecurityPerimeterAccessRulePropertiesNetworkSecurityPerimetersList,
-          ),
-          fullyQualifiedDomainNames: S.optional(
-            NetworkSecurityPerimeterAccessRulePropertiesFullyQualifiedDomainNamesList,
-          ),
+          direction: S.optional(S.String),
+          addressPrefixes: S.optional(__S(176)),
+          subscriptions: S.optional(__S(178)),
+          networkSecurityPerimeters: S.optional(__S(180)),
+          fullyQualifiedDomainNames: S.optional(__S(176)),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterAccessRuleProperties",
@@ -12871,13 +10246,13 @@ function __c22(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(NetworkSecurityPerimeterAccessRuleProperties),
+          properties: S.optional(__S(181)),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterAccessRule",
       });
     case 7:
-      return S.Array(NetworkSecurityPerimeterAccessRule);
+      return S.Array(__S(182));
   }
 }
 function __c23(j: number): any {
@@ -12888,8 +10263,8 @@ function __c23(j: number): any {
           issueType: S.optional(S.String),
           severity: S.optional(S.String),
           description: S.optional(S.String),
-          suggestedResourceIds: S.optional(ProvisioningIssuePropertiesSuggestedResourceIdsList),
-          suggestedAccessRules: S.optional(ProvisioningIssuePropertiesSuggestedAccessRulesList),
+          suggestedResourceIds: S.optional(__S(1)),
+          suggestedAccessRules: S.optional(__S(183)),
         }),
       ).annotate({
         identifier: "ProvisioningIssueProperties",
@@ -12898,11 +10273,11 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
-          properties: S.optional(ProvisioningIssueProperties),
+          properties: S.optional(__S(184)),
         }),
       ).annotate({ identifier: "ProvisioningIssue" });
     case 2:
-      return S.Array(ProvisioningIssue);
+      return S.Array(__S(185));
     case 3:
       return S.suspend(() =>
         S.Struct({
@@ -12917,11 +10292,9 @@ function __c23(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           accessRulesVersion: S.optional(S.Number),
-          accessRules: S.optional(NetworkSecurityPerimeterProfileInfoAccessRulesList),
+          accessRules: S.optional(__S(183)),
           diagnosticSettingsVersion: S.optional(S.Number),
-          enabledLogCategories: S.optional(
-            NetworkSecurityPerimeterProfileInfoEnabledLogCategoriesList,
-          ),
+          enabledLogCategories: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterProfileInfo",
@@ -12930,12 +10303,10 @@ function __c23(j: number): any {
       return S.suspend(() =>
         S.Struct({
           provisioningState: S.optional(S.String),
-          provisioningIssues: S.optional(
-            NetworkSecurityPerimeterConfigurationPropertiesProvisioningIssuesList,
-          ),
-          networkSecurityPerimeter: S.optional(NetworkSecurityPerimeter),
-          resourceAssociation: S.optional(NetworkSecurityPerimeterConfigurationAssociationInfo),
-          profile: S.optional(NetworkSecurityPerimeterProfileInfo),
+          provisioningIssues: S.optional(__S(186)),
+          networkSecurityPerimeter: S.optional(__S(179)),
+          resourceAssociation: S.optional(__S(187)),
+          profile: S.optional(__S(188)),
         }),
       ).annotate({
         identifier: "NetworkSecurityPerimeterConfigurationProperties",
@@ -12946,8 +10317,8 @@ function __c23(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(NetworkSecurityPerimeterConfigurationProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(189)),
         }),
       ).annotate({
         identifier: "GetNetworkSecurityPerimeterConfigurationResponse",
@@ -12979,8 +10350,8 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: OutboundRule,
+          systemData: S.optional(__S(4)),
+          properties: __S(168),
         }),
       ).annotate({ identifier: "GetOutboundRuleResponse" });
     case 1:
@@ -13039,19 +10410,11 @@ function __c24(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          aiServicesConnections: S.optional(
-            S.NullOr(ProjectCapabilityHostPropertiesAiServicesConnectionsList),
-          ),
-          vectorStoreConnections: S.optional(
-            S.NullOr(ProjectCapabilityHostPropertiesVectorStoreConnectionsList),
-          ),
-          storageConnections: S.optional(
-            S.NullOr(ProjectCapabilityHostPropertiesStorageConnectionsList),
-          ),
-          threadStorageConnections: S.optional(
-            S.NullOr(ProjectCapabilityHostPropertiesThreadStorageConnectionsList),
-          ),
-          provisioningState: S.optional(CapabilityHostProvisioningState),
+          aiServicesConnections: S.optional(S.NullOr(__S(1))),
+          vectorStoreConnections: S.optional(S.NullOr(__S(1))),
+          storageConnections: S.optional(S.NullOr(__S(1))),
+          threadStorageConnections: S.optional(S.NullOr(__S(1))),
+          provisioningState: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ProjectCapabilityHostProperties",
@@ -13062,8 +10425,8 @@ function __c24(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ProjectCapabilityHostProperties,
+          systemData: S.optional(__S(4)),
+          properties: __S(196),
         }),
       ).annotate({
         identifier: "GetProjectCapabilityHostResponse",
@@ -13109,7 +10472,7 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextTierName: S.optional(S.NullOr(S.String)),
-          upgradeAvailabilityStatus: S.optional(UpgradeAvailabilityStatus),
+          upgradeAvailabilityStatus: S.optional(S.String),
           upgradeApplicableDate: S.optional(S.NullOr(S.String)),
           upgradeUnavailabilityReason: S.optional(S.NullOr(S.String)),
         }),
@@ -13120,9 +10483,9 @@ function __c25(j: number): any {
       return S.suspend(() =>
         S.Struct({
           currentTierName: S.optional(S.String),
-          tierUpgradePolicy: S.optional(TierUpgradePolicy),
+          tierUpgradePolicy: S.optional(S.String),
           assignmentDate: S.optional(S.String),
-          tierUpgradeEligibilityInfo: S.optional(S.NullOr(QuotaTierUpgradeEligibilityInfo)),
+          tierUpgradeEligibilityInfo: S.optional(S.NullOr(__S(200))),
         }),
       ).annotate({ identifier: "QuotaTierProperties" });
     case 2:
@@ -13131,8 +10494,8 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(QuotaTierProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(201)),
         }),
       ).annotate({ identifier: "GetQuotaTierResponse" });
     case 3:
@@ -13157,10 +10520,10 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RaiBlocklistProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(11)),
           etag: S.optional(S.String),
-          tags: S.optional(GetRaiBlocklistResponseTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "GetRaiBlocklistResponse" });
     case 5:
@@ -13188,10 +10551,10 @@ function __c25(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RaiBlocklistItemProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(7)),
           etag: S.optional(S.String),
-          tags: S.optional(GetRaiBlocklistItemResponseTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "GetRaiBlocklistItemResponse",
@@ -13222,7 +10585,7 @@ function __c26(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isMultiLevelFilter: S.optional(S.Boolean),
-          source: S.optional(RaiPolicyContentSource),
+          source: S.optional(S.String),
         }),
       ).annotate({
         identifier: "RaiContentFilterProperties",
@@ -13233,8 +10596,8 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RaiContentFilterProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(208)),
         }),
       ).annotate({
         identifier: "GetRaiContentFilterResponse",
@@ -13277,10 +10640,10 @@ function __c26(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RaiExternalSafetyProviderSchemaProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(211)),
           etag: S.optional(S.String),
-          tags: S.optional(GetRaiExternalSafetyProviderResponseTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "GetRaiExternalSafetyProviderResponse",
@@ -13306,14 +10669,14 @@ function __c26(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           enabled: S.optional(S.Boolean),
-          severityThreshold: S.optional(ContentLevel),
+          severityThreshold: S.optional(S.String),
           blocking: S.optional(S.Boolean),
-          source: S.optional(RaiPolicyContentSource),
-          action: S.optional(RaiActionType),
+          source: S.optional(S.String),
+          action: S.optional(S.String),
         }),
       ).annotate({ identifier: "RaiPolicyContentFilter" });
     case 7:
-      return S.Array(RaiPolicyContentFilter);
+      return S.Array(__S(214));
   }
 }
 function __c27(j: number): any {
@@ -13323,21 +10686,21 @@ function __c27(j: number): any {
         S.Struct({
           blocklistName: S.optional(S.String),
           blocking: S.optional(S.Boolean),
-          source: S.optional(RaiPolicyContentSource),
+          source: S.optional(S.String),
         }),
       ).annotate({ identifier: "CustomBlocklistConfig" });
     case 1:
-      return S.Array(CustomBlocklistConfig);
+      return S.Array(__S(216));
     case 2:
       return S.suspend(() =>
         S.Struct({
           safetyProviderName: S.optional(S.String),
           blocking: S.optional(S.Boolean),
-          source: S.optional(RaiPolicyContentSource),
+          source: S.optional(S.String),
         }),
       ).annotate({ identifier: "SafetyProviderConfig" });
     case 3:
-      return S.Array(SafetyProviderConfig);
+      return S.Array(__S(218));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -13365,8 +10728,8 @@ function __c27(j: number): any {
     case 7:
       return S.suspend(() =>
         S.Struct({
-          secretRef: S.optional(RaiEgressSecretRef),
-          managedIdentityRef: S.optional(RaiEgressManagedIdentityRef),
+          secretRef: S.optional(__S(221)),
+          managedIdentityRef: S.optional(__S(222)),
         }),
       ).annotate({ identifier: "RaiEgressHeaderValueRef" });
   }
@@ -13376,18 +10739,18 @@ function __c28(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          operation: RaiEgressHeaderOperation,
+          operation: S.String,
           name: S.String,
           value: S.optional(S.String),
-          valueRef: S.optional(RaiEgressHeaderValueRef),
+          valueRef: S.optional(__S(223)),
         }),
       ).annotate({ identifier: "RaiEgressHeaderTransform" });
     case 1:
-      return S.Array(RaiEgressHeaderTransform);
+      return S.Array(__S(224));
     case 2:
       return S.suspend(() =>
         S.Struct({
-          scheme: S.optional(RaiEgressScheme),
+          scheme: S.optional(S.String),
           host: S.optional(S.String),
           path: S.optional(S.String),
         }),
@@ -13395,9 +10758,9 @@ function __c28(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          actionType: RaiEgressRuleActionType,
-          headers: S.optional(RaiEgressRuleActionHeadersList),
-          rewrite: S.optional(RaiEgressRewriteTarget),
+          actionType: S.String,
+          headers: S.optional(__S(225)),
+          rewrite: S.optional(__S(226)),
         }),
       ).annotate({ identifier: "RaiEgressRuleAction" });
     case 4:
@@ -13405,32 +10768,32 @@ function __c28(j: number): any {
         S.Struct({
           name: S.String,
           description: S.optional(S.String),
-          ruleType: RaiEgressRuleType,
-          match: S.optional(RaiEgressRuleMatch),
-          action: RaiEgressRuleAction,
+          ruleType: S.String,
+          match: S.optional(__S(220)),
+          action: __S(227),
         }),
       ).annotate({ identifier: "RaiEgressRule" });
     case 5:
-      return S.Array(RaiEgressRule);
+      return S.Array(__S(228));
     case 6:
       return S.suspend(() =>
         S.Struct({
-          mode: S.optional(RaiEgressMode),
-          defaultAction: S.optional(RaiEgressDefaultAction),
+          mode: S.optional(S.String),
+          defaultAction: S.optional(S.String),
           description: S.optional(S.String),
-          rules: S.optional(RaiEgressPolicyConfigRulesList),
+          rules: S.optional(__S(229)),
         }),
       ).annotate({ identifier: "RaiEgressPolicyConfig" });
     case 7:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(RaiPolicyType),
-          mode: S.optional(RaiPolicyMode),
+          type: S.optional(S.String),
+          mode: S.optional(S.String),
           basePolicyName: S.optional(S.String),
-          contentFilters: S.optional(RaiPolicyPropertiesContentFiltersList),
-          customBlocklists: S.optional(RaiPolicyPropertiesCustomBlocklistsList),
-          safetyProviders: S.optional(RaiPolicyPropertiesSafetyProvidersList),
-          egressPolicy: S.optional(RaiEgressPolicyConfig),
+          contentFilters: S.optional(__S(215)),
+          customBlocklists: S.optional(__S(217)),
+          safetyProviders: S.optional(__S(219)),
+          egressPolicy: S.optional(__S(230)),
         }),
       ).annotate({ identifier: "RaiPolicyProperties" });
   }
@@ -13443,10 +10806,10 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RaiPolicyProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(231)),
           etag: S.optional(S.String),
-          tags: S.optional(GetRaiPolicyResponseTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "GetRaiPolicyResponse" });
     case 1:
@@ -13468,7 +10831,7 @@ function __c29(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          labelValues: S.optional(RaiToolLabelPropertiesAccountScopeLabelValuesMap),
+          labelValues: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "RaiToolLabelPropertiesAccountScope",
@@ -13477,19 +10840,19 @@ function __c29(j: number): any {
       return S.suspend(() =>
         S.Struct({
           project: S.String,
-          labelValues: RaiToolLabelPropertiesProjectScopesItemLabelValuesMap,
+          labelValues: __S(0),
         }),
       ).annotate({
         identifier: "RaiToolLabelPropertiesProjectScopesItem",
       });
     case 4:
-      return S.Array(RaiToolLabelPropertiesProjectScopesItem);
+      return S.Array(__S(235));
     case 5:
       return S.suspend(() =>
         S.Struct({
           toolConnectionName: S.String,
-          accountScope: S.optional(RaiToolLabelPropertiesAccountScope),
-          projectScopes: S.optional(RaiToolLabelPropertiesProjectScopesList),
+          accountScope: S.optional(__S(234)),
+          projectScopes: S.optional(__S(236)),
         }),
       ).annotate({ identifier: "RaiToolLabelProperties" });
     case 6:
@@ -13498,10 +10861,10 @@ function __c29(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RaiToolLabelProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(237)),
           etag: S.optional(S.String),
-          tags: S.optional(GetRaiToolLabelResponseTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "GetRaiToolLabelResponse" });
     case 7:
@@ -13543,10 +10906,10 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RaiTopicProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(240)),
           etag: S.optional(S.String),
-          tags: S.optional(GetRaiTopicResponseTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "GetRaiTopicResponse" });
     case 2:
@@ -13571,10 +10934,10 @@ function __c30(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RaiPolicyProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(231)),
           etag: S.optional(S.String),
-          tags: S.optional(GetSubscriptionRaiPolicyResponseTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "GetSubscriptionRaiPolicyResponse",
@@ -13596,12 +10959,12 @@ function __c30(j: number): any {
         identifier: "ListAccountByResourceGroupRequest",
       });
     case 5:
-      return S.Array(Account);
+      return S.Array(__S(99));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(AccountListResultValueList),
+          value: S.optional(__S(245)),
         }),
       ).annotate({ identifier: "AccountListResult" });
     case 7:
@@ -13631,17 +10994,17 @@ function __c31(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: CapabilityHostProperties,
+          systemData: S.optional(__S(4)),
+          properties: __S(5),
         }),
       ).annotate({ identifier: "CapabilityHost" });
     case 1:
-      return S.Array(CapabilityHost);
+      return S.Array(__S(248));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(CapabilityHostResourceArmPaginatedResultValueList),
+          value: S.optional(__S(249)),
         }),
       ).annotate({
         identifier: "CapabilityHostResourceArmPaginatedResult",
@@ -13667,12 +11030,12 @@ function __c31(j: number): any {
         identifier: "ListAccountConnectionsRequest",
       });
     case 4:
-      return S.Array(ConnectionPropertiesV2BasicResource);
+      return S.Array(__S(103));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ConnectionPropertiesV2BasicResourceArmPaginatedResultValueList),
+          value: S.optional(__S(252)),
         }),
       ).annotate({
         identifier: "ConnectionPropertiesV2BasicResourceArmPaginatedResult",
@@ -13727,11 +11090,11 @@ function __c32(j: number): any {
           maximum: S.optional(S.Number),
           step: S.optional(S.Number),
           default: S.optional(S.Number),
-          allowedValues: S.optional(CapacityConfigAllowedValuesList),
+          allowedValues: S.optional(__S(257)),
         }),
       ).annotate({ identifier: "CapacityConfig" });
     case 3:
-      return S.Array(CallRateLimit);
+      return S.Array(__S(91));
     case 4:
       return S.suspend(() =>
         S.Struct({
@@ -13741,20 +11104,20 @@ function __c32(j: number): any {
         }),
       ).annotate({ identifier: "BillingMeterInfo" });
     case 5:
-      return S.Array(BillingMeterInfo);
+      return S.Array(__S(260));
     case 6:
       return S.suspend(() =>
         S.Struct({
           name: S.optional(S.String),
           usageName: S.optional(S.String),
           deprecationDate: S.optional(S.String),
-          capacity: S.optional(CapacityConfig),
-          rateLimits: S.optional(ModelSkuRateLimitsList),
-          cost: S.optional(ModelSkuCostList),
+          capacity: S.optional(__S(258)),
+          rateLimits: S.optional(__S(259)),
+          cost: S.optional(__S(261)),
         }),
       ).annotate({ identifier: "ModelSku" });
     case 7:
-      return S.Array(ModelSku);
+      return S.Array(__S(262));
   }
 }
 function __c33(j: number): any {
@@ -13764,7 +11127,7 @@ function __c33(j: number): any {
         S.Struct({
           fineTune: S.optional(S.String),
           inference: S.optional(S.String),
-          deprecationStatus: S.optional(DeprecationStatus),
+          deprecationStatus: S.optional(S.String),
         }),
       ).annotate({ identifier: "ModelDeprecationInfo" });
     case 1:
@@ -13785,27 +11148,27 @@ function __c33(j: number): any {
           version: S.optional(S.String),
           source: S.optional(S.String),
           sourceAccount: S.optional(S.String),
-          callRateLimit: S.optional(CallRateLimit),
-          baseModel: S.optional(DeploymentModel),
+          callRateLimit: S.optional(__S(91)),
+          baseModel: S.optional(__S(33)),
           isDefaultVersion: S.optional(S.Boolean),
-          skus: S.optional(AccountModelSkusList),
+          skus: S.optional(__S(263)),
           maxCapacity: S.optional(S.Number),
-          capabilities: S.optional(AccountModelCapabilitiesMap),
-          finetuneCapabilities: S.optional(AccountModelFinetuneCapabilitiesMap),
-          deprecation: S.optional(ModelDeprecationInfo),
-          replacementConfig: S.optional(ReplacementConfig),
+          capabilities: S.optional(__S(0)),
+          finetuneCapabilities: S.optional(__S(0)),
+          deprecation: S.optional(__S(264)),
+          replacementConfig: S.optional(__S(265)),
           modelCatalogAssetId: S.optional(S.String),
-          lifecycleStatus: S.optional(ModelLifecycleStatus),
-          systemData: S.optional(AccountModelSystemData),
+          lifecycleStatus: S.optional(S.String),
+          systemData: S.optional(__S(4)),
         }),
       ).annotate({ identifier: "AccountModel" });
     case 3:
-      return S.Array(AccountModel);
+      return S.Array(__S(266));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(AccountModelListResultValueList),
+          value: S.optional(__S(267)),
         }),
       ).annotate({ identifier: "AccountModelListResult" });
     case 5:
@@ -13840,7 +11203,7 @@ function __c33(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          sku: S.optional(Sku),
+          sku: S.optional(__S(48)),
         }),
       ).annotate({ identifier: "AccountSku" });
   }
@@ -13848,11 +11211,11 @@ function __c33(j: number): any {
 function __c34(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(AccountSku);
+      return S.Array(__S(271));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(AccountSkuListResultValueList),
+          value: S.optional(__S(272)),
         }),
       ).annotate({ identifier: "AccountSkuListResult" });
     case 2:
@@ -13881,24 +11244,24 @@ function __c34(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          unit: S.optional(UnitType),
-          name: S.optional(MetricName),
+          unit: S.optional(S.String),
+          name: S.optional(__S(275)),
           quotaPeriod: S.optional(S.String),
           limit: S.optional(S.Number),
           currentValue: S.optional(S.Number),
           nextResetTime: S.optional(S.String),
-          status: S.optional(QuotaUsageStatus),
-          scopeType: S.optional(S.NullOr(QuotaScopeType)),
+          status: S.optional(S.String),
+          scopeType: S.optional(S.NullOr(S.String)),
           scopeId: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({ identifier: "Usage" });
     case 5:
-      return S.Array(Usage);
+      return S.Array(__S(276));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(UsageListResultValueList),
+          value: S.optional(__S(277)),
         }),
       ).annotate({ identifier: "UsageListResult" });
     case 7:
@@ -13930,17 +11293,17 @@ function __c35(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: AgentReferenceProperties,
+          systemData: S.optional(__S(4)),
+          properties: __S(13),
         }),
       ).annotate({ identifier: "AgentReference" });
     case 1:
-      return S.Array(AgentReference);
+      return S.Array(__S(280));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(S.NullOr(AgentReferenceResourceArmPaginatedResultValueList)),
+          value: S.optional(S.NullOr(__S(281))),
         }),
       ).annotate({
         identifier: "AgentReferenceResourceArmPaginatedResult",
@@ -13955,7 +11318,7 @@ function __c35(j: number): any {
           count: S.optional(S.Number.pipe(T.Query())),
           _skip: S.optional(S.Number.pipe(T.Query("$skip"))),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-          names: S.optional(ListAgentApplicationsRequestNamesList.pipe(T.Query())),
+          names: S.optional(__S(1).pipe(T.Query())),
           searchText: S.optional(S.String.pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           orderByAsc: S.optional(S.Boolean.pipe(T.Query())),
@@ -13976,17 +11339,17 @@ function __c35(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: AgenticApplicationProperties,
+          systemData: S.optional(__S(4)),
+          properties: __S(23),
         }),
       ).annotate({ identifier: "AgentApplication" });
     case 5:
-      return S.Array(AgentApplication);
+      return S.Array(__S(284));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(AgentApplicationResourceArmPaginatedResultValueList),
+          value: S.optional(__S(285)),
         }),
       ).annotate({
         identifier: "AgentApplicationResourceArmPaginatedResult",
@@ -14001,7 +11364,7 @@ function __c35(j: number): any {
           appName: S.String.pipe(T.Label()),
           count: S.optional(S.Number.pipe(T.Query())),
           _skipToken: S.optional(S.String.pipe(T.Query("$skipToken"))),
-          names: S.optional(ListAgentDeploymentsRequestNamesList.pipe(T.Query())),
+          names: S.optional(__S(1).pipe(T.Query())),
           orderBy: S.optional(S.String.pipe(T.Query())),
           orderByAsc: S.optional(S.Boolean.pipe(T.Query())),
         }).pipe(
@@ -14025,17 +11388,17 @@ function __c36(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: AgentDeploymentProperties,
+          systemData: S.optional(__S(4)),
+          properties: __S(31),
         }),
       ).annotate({ identifier: "AgentDeployment" });
     case 1:
-      return S.Array(AgentDeployment);
+      return S.Array(__S(288));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(AgentDeploymentResourceArmPaginatedResultValueList),
+          value: S.optional(__S(289)),
         }),
       ).annotate({
         identifier: "AgentDeploymentResourceArmPaginatedResult",
@@ -14058,12 +11421,12 @@ function __c36(j: number): any {
         identifier: "ListCommitmentPlanAssociationsRequest",
       });
     case 4:
-      return S.Array(CommitmentPlanAccountAssociation);
+      return S.Array(__S(56));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(CommitmentPlanAccountAssociationListResultValueList),
+          value: S.optional(__S(292)),
         }),
       ).annotate({
         identifier: "CommitmentPlanAccountAssociationListResult",
@@ -14090,13 +11453,13 @@ function __c36(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(CommitmentPlanProperties),
-          tags: S.optional(CommitmentPlanTagsMap),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(52)),
+          tags: S.optional(__S(0)),
           location: S.optional(S.String),
           etag: S.optional(S.String),
           kind: S.optional(S.String),
-          sku: S.optional(Sku),
+          sku: S.optional(__S(48)),
         }),
       ).annotate({ identifier: "CommitmentPlan" });
   }
@@ -14104,12 +11467,12 @@ function __c36(j: number): any {
 function __c37(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(CommitmentPlan);
+      return S.Array(__S(295));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(CommitmentPlanListResultValueList),
+          value: S.optional(__S(296)),
         }),
       ).annotate({ identifier: "CommitmentPlanListResult" });
     case 2:
@@ -14172,16 +11535,16 @@ function __c37(j: number): any {
         S.Struct({
           kind: S.optional(S.String),
           skuName: S.optional(S.String),
-          hostingModel: S.optional(HostingModel),
+          hostingModel: S.optional(S.String),
           planType: S.optional(S.String),
           tier: S.optional(S.String),
           maxCount: S.optional(S.Number),
-          quota: S.optional(CommitmentQuota),
-          cost: S.optional(CommitmentCost),
+          quota: S.optional(__S(50)),
+          cost: S.optional(__S(301)),
         }),
       ).annotate({ identifier: "CommitmentTier" });
     case 7:
-      return S.Array(CommitmentTier);
+      return S.Array(__S(302));
   }
 }
 function __c38(j: number): any {
@@ -14190,7 +11553,7 @@ function __c38(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(CommitmentTierListResultValueList),
+          value: S.optional(__S(303)),
         }),
       ).annotate({ identifier: "CommitmentTierListResult" });
     case 1:
@@ -14216,19 +11579,19 @@ function __c38(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(DefenderForAISettingProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(109)),
           etag: S.optional(S.String),
-          tags: S.optional(DefenderForAISettingTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "DefenderForAISetting" });
     case 3:
-      return S.Array(DefenderForAISetting);
+      return S.Array(__S(306));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(DefenderForAISettingResultValueList),
+          value: S.optional(__S(307)),
         }),
       ).annotate({
         identifier: "DefenderForAISettingResult",
@@ -14264,7 +11627,7 @@ function __c38(j: number): any {
         ),
       ).annotate({ identifier: "ListDeploymentsRequest" });
     case 7:
-      return S.Array(Deployment);
+      return S.Array(__S(165));
   }
 }
 function __c39(j: number): any {
@@ -14273,7 +11636,7 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(DeploymentListResultValueList),
+          value: S.optional(__S(311)),
         }),
       ).annotate({ identifier: "DeploymentListResult" });
     case 1:
@@ -14298,17 +11661,17 @@ function __c39(j: number): any {
       return S.suspend(() =>
         S.Struct({
           resourceType: S.optional(S.String),
-          sku: S.optional(Sku),
-          capacity: S.optional(CapacityConfig),
+          sku: S.optional(__S(48)),
+          capacity: S.optional(__S(258)),
         }),
       ).annotate({ identifier: "SkuResource" });
     case 3:
-      return S.Array(SkuResource);
+      return S.Array(__S(314));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(DeploymentSkuListResultValueList),
+          value: S.optional(__S(315)),
         }),
       ).annotate({ identifier: "DeploymentSkuListResult" });
     case 5:
@@ -14334,14 +11697,14 @@ function __c39(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(EncryptionScopeProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(151)),
           etag: S.optional(S.String),
-          tags: S.optional(EncryptionScopeTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "EncryptionScope" });
     case 7:
-      return S.Array(EncryptionScope);
+      return S.Array(__S(318));
   }
 }
 function __c40(j: number): any {
@@ -14350,7 +11713,7 @@ function __c40(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(EncryptionScopeListResultValueList),
+          value: S.optional(__S(319)),
         }),
       ).annotate({
         identifier: "EncryptionScopeListResult",
@@ -14377,12 +11740,12 @@ function __c40(j: number): any {
     case 2:
       return S.suspend(() =>
         S.Struct({
-          model: S.optional(DeploymentModel),
+          model: S.optional(__S(33)),
           skuName: S.optional(S.String),
           availableCapacity: S.optional(S.Number),
           availableFinetuneCapacity: S.optional(S.Number),
           scopeId: S.optional(S.NullOr(S.String)),
-          scopeType: S.optional(S.NullOr(QuotaScopeType)),
+          scopeType: S.optional(S.NullOr(S.String)),
         }),
       ).annotate({
         identifier: "ModelSkuCapacityProperties",
@@ -14393,20 +11756,20 @@ function __c40(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
+          systemData: S.optional(__S(4)),
           location: S.optional(S.String),
-          properties: S.optional(ModelSkuCapacityProperties),
+          properties: S.optional(__S(322)),
         }),
       ).annotate({
         identifier: "ModelCapacityListResultValueItem",
       });
     case 4:
-      return S.Array(ModelCapacityListResultValueItem);
+      return S.Array(__S(323));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ModelCapacityListResultValueList),
+          value: S.optional(__S(324)),
         }),
       ).annotate({ identifier: "ModelCapacityListResult" });
     case 6:
@@ -14427,7 +11790,7 @@ function __c40(j: number): any {
         identifier: "ListManagedNetworkSettingsRequest",
       });
     case 7:
-      return S.Array(ManagedNetworkSettingsPropertiesBasicResource);
+      return S.Array(__S(174));
   }
 }
 function __c41(j: number): any {
@@ -14436,7 +11799,7 @@ function __c41(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ManagedNetworkListResultValueList),
+          value: S.optional(__S(327)),
         }),
       ).annotate({ identifier: "ManagedNetworkListResult" });
     case 1:
@@ -14474,19 +11837,19 @@ function __c41(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          model: S.optional(AccountModel),
+          model: S.optional(__S(266)),
           kind: S.optional(S.String),
           skuName: S.optional(S.String),
           description: S.optional(S.String),
         }),
       ).annotate({ identifier: "Model" });
     case 4:
-      return S.Array(Model);
+      return S.Array(__S(331));
     case 5:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ModelListResultValueList),
+          value: S.optional(__S(332)),
         }),
       ).annotate({ identifier: "ModelListResult" });
     case 6:
@@ -14507,7 +11870,7 @@ function __c41(j: number): any {
         identifier: "ListNetworkSecurityPerimeterConfigurationsRequest",
       });
     case 7:
-      return S.Array(NetworkSecurityPerimeterConfiguration);
+      return S.Array(__S(190));
   }
 }
 function __c42(j: number): any {
@@ -14515,7 +11878,7 @@ function __c42(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(NetworkSecurityPerimeterConfigurationListValueList),
+          value: S.optional(__S(335)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({
@@ -14546,17 +11909,17 @@ function __c42(j: number): any {
         S.Struct({
           name: S.optional(S.String),
           isDataAction: S.optional(S.Boolean),
-          display: S.optional(OperationDisplay),
-          origin: S.optional(OperationOrigin),
-          actionType: S.optional(OperationActionType),
+          display: S.optional(__S(338)),
+          origin: S.optional(S.String),
+          actionType: S.optional(S.String),
         }),
       ).annotate({ identifier: "Operation" });
     case 4:
-      return S.Array(Operation);
+      return S.Array(__S(339));
     case 5:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(ListOperationsResponseValueList),
+          value: S.optional(__S(340)),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ListOperationsResponse" });
@@ -14582,8 +11945,8 @@ function __c42(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: OutboundRule,
+          systemData: S.optional(__S(4)),
+          properties: __S(168),
         }),
       ).annotate({
         identifier: "OutboundRuleBasicResource",
@@ -14593,12 +11956,12 @@ function __c42(j: number): any {
 function __c43(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(OutboundRuleBasicResource);
+      return S.Array(__S(343));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(OutboundRuleListResultValueList),
+          value: S.optional(__S(344)),
         }),
       ).annotate({ identifier: "OutboundRuleListResult" });
     case 2:
@@ -14621,7 +11984,7 @@ function __c43(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PrivateEndpointConnectionListResultValueList),
+          value: S.optional(__S(86)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionListResult",
@@ -14647,8 +12010,8 @@ function __c43(j: number): any {
       return S.suspend(() =>
         S.Struct({
           groupId: S.optional(S.String),
-          requiredMembers: S.optional(PrivateLinkResourcePropertiesRequiredMembersList),
-          requiredZoneNames: S.optional(PrivateLinkResourcePropertiesRequiredZoneNamesList),
+          requiredMembers: S.optional(__S(1)),
+          requiredZoneNames: S.optional(__S(1)),
           displayName: S.optional(S.String),
         }),
       ).annotate({
@@ -14660,12 +12023,12 @@ function __c43(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(PrivateLinkResourceProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(349)),
         }),
       ).annotate({ identifier: "PrivateLinkResource" });
     case 7:
-      return S.Array(PrivateLinkResource);
+      return S.Array(__S(350));
   }
 }
 function __c44(j: number): any {
@@ -14673,7 +12036,7 @@ function __c44(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          value: S.optional(PrivateLinkResourceListResultValueList),
+          value: S.optional(__S(351)),
         }),
       ).annotate({
         identifier: "PrivateLinkResourceListResult",
@@ -14702,17 +12065,17 @@ function __c44(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: ProjectCapabilityHostProperties,
+          systemData: S.optional(__S(4)),
+          properties: __S(196),
         }),
       ).annotate({ identifier: "ProjectCapabilityHost" });
     case 3:
-      return S.Array(ProjectCapabilityHost);
+      return S.Array(__S(354));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.NullOr(S.String)),
-          value: S.optional(ProjectCapabilityHostResourceArmPaginatedResultValueList),
+          value: S.optional(__S(355)),
         }),
       ).annotate({
         identifier: "ProjectCapabilityHostResourceArmPaginatedResult",
@@ -14754,7 +12117,7 @@ function __c44(j: number): any {
         ),
       ).annotate({ identifier: "ListProjectsRequest" });
     case 7:
-      return S.Array(Project);
+      return S.Array(__S(107));
   }
 }
 function __c45(j: number): any {
@@ -14763,7 +12126,7 @@ function __c45(j: number): any {
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(ProjectListResultValueList),
+          value: S.optional(__S(359)),
         }),
       ).annotate({ identifier: "ProjectListResult" });
     case 1:
@@ -14782,12 +12145,12 @@ function __c45(j: number): any {
         identifier: "ListQuotaTierBySubscriptionRequest",
       });
     case 2:
-      return S.Array(QuotaTier);
+      return S.Array(__S(202));
     case 3:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(QuotaTierListResultValueList),
+          value: S.optional(__S(362)),
         }),
       ).annotate({ identifier: "QuotaTierListResult" });
     case 4:
@@ -14814,19 +12177,19 @@ function __c45(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RaiBlocklistItemProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(7)),
           etag: S.optional(S.String),
-          tags: S.optional(RaiBlocklistItemTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({ identifier: "RaiBlocklistItem" });
     case 6:
-      return S.Array(RaiBlocklistItem);
+      return S.Array(__S(365));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(RaiBlockListItemsResultValueList),
+          value: S.optional(__S(366)),
         }),
       ).annotate({ identifier: "RaiBlockListItemsResult" });
   }
@@ -14849,12 +12212,12 @@ function __c46(j: number): any {
         ),
       ).annotate({ identifier: "ListRaiBlocklistsRequest" });
     case 1:
-      return S.Array(RaiBlocklist);
+      return S.Array(__S(204));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(RaiBlockListResultValueList),
+          value: S.optional(__S(369)),
         }),
       ).annotate({ identifier: "RaiBlockListResult" });
     case 3:
@@ -14879,17 +12242,17 @@ function __c46(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RaiContentFilterProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(208)),
         }),
       ).annotate({ identifier: "RaiContentFilter" });
     case 5:
-      return S.Array(RaiContentFilter);
+      return S.Array(__S(372));
     case 6:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(RaiContentFilterListResultValueList),
+          value: S.optional(__S(373)),
         }),
       ).annotate({
         identifier: "RaiContentFilterListResult",
@@ -14914,12 +12277,12 @@ function __c46(j: number): any {
 function __c47(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(RaiExternalSafetyProviderSchema);
+      return S.Array(__S(212));
     case 1:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(RaiExternalSafetyProviderResultValueList),
+          value: S.optional(__S(376)),
         }),
       ).annotate({
         identifier: "RaiExternalSafetyProviderResult",
@@ -14940,12 +12303,12 @@ function __c47(j: number): any {
         ),
       ).annotate({ identifier: "ListRaiPoliciesRequest" });
     case 3:
-      return S.Array(RaiPolicy);
+      return S.Array(__S(232));
     case 4:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(RaiPolicyListResultValueList),
+          value: S.optional(__S(379)),
         }),
       ).annotate({ identifier: "RaiPolicyListResult" });
     case 5:
@@ -14964,12 +12327,12 @@ function __c47(j: number): any {
         ),
       ).annotate({ identifier: "ListRaiToolLabelsRequest" });
     case 6:
-      return S.Array(RaiToolLabel);
+      return S.Array(__S(238));
     case 7:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(RaiToolLabelResultValueList),
+          value: S.optional(__S(382)),
         }),
       ).annotate({ identifier: "RaiToolLabelResult" });
   }
@@ -14992,12 +12355,12 @@ function __c48(j: number): any {
         ),
       ).annotate({ identifier: "ListRaiTopicsRequest" });
     case 1:
-      return S.Array(RaiTopic);
+      return S.Array(__S(241));
     case 2:
       return S.suspend(() =>
         S.Struct({
           nextLink: S.optional(S.String),
-          value: S.optional(RaiTopicResultValueList),
+          value: S.optional(__S(385)),
         }),
       ).annotate({ identifier: "RaiTopicResult" });
     case 3:
@@ -15016,8 +12379,8 @@ function __c48(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          locations: S.optional(ResourceSkuRestrictionInfoLocationsList),
-          zones: S.optional(ResourceSkuRestrictionInfoZonesList),
+          locations: S.optional(__S(1)),
+          zones: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "ResourceSkuRestrictionInfo",
@@ -15025,14 +12388,14 @@ function __c48(j: number): any {
     case 5:
       return S.suspend(() =>
         S.Struct({
-          type: S.optional(ResourceSkuRestrictionsType),
-          values: S.optional(ResourceSkuRestrictionsValuesList),
-          restrictionInfo: S.optional(ResourceSkuRestrictionInfo),
-          reasonCode: S.optional(ResourceSkuRestrictionsReasonCode),
+          type: S.optional(S.String),
+          values: S.optional(__S(1)),
+          restrictionInfo: S.optional(__S(388)),
+          reasonCode: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuRestrictions" });
     case 6:
-      return S.Array(ResourceSkuRestrictions);
+      return S.Array(__S(389));
     case 7:
       return S.suspend(() =>
         S.Struct({
@@ -15040,8 +12403,8 @@ function __c48(j: number): any {
           name: S.optional(S.String),
           tier: S.optional(S.String),
           kind: S.optional(S.String),
-          locations: S.optional(ResourceSkuLocationsList),
-          restrictions: S.optional(ResourceSkuRestrictionsList),
+          locations: S.optional(__S(1)),
+          restrictions: S.optional(__S(390)),
         }),
       ).annotate({ identifier: "ResourceSku" });
   }
@@ -15049,11 +12412,11 @@ function __c48(j: number): any {
 function __c49(j: number): any {
   switch (j) {
     case 0:
-      return S.Array(ResourceSku);
+      return S.Array(__S(391));
     case 1:
       return S.suspend(() =>
         S.Struct({
-          value: ResourceSkuListResultValueList,
+          value: __S(392),
           nextLink: S.optional(S.String),
         }),
       ).annotate({ identifier: "ResourceSkuListResult" });
@@ -15093,9 +12456,9 @@ function __c49(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          category: S.optional(RuleCategory),
-          status: S.optional(RuleStatus),
-          type: RuleType,
+          category: S.optional(S.String),
+          status: S.optional(S.String),
+          type: S.String,
           destination: S.optional(S.Unknown),
         }),
       ).annotate({ identifier: "OutboundRuleInput" });
@@ -15107,7 +12470,7 @@ function __c49(j: number): any {
           accountName: S.String.pipe(T.Label()),
           managedNetworkName: S.String.pipe(T.Label()),
           ruleName: S.String.pipe(T.Label()),
-          properties: OutboundRuleInput,
+          properties: __S(396),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15120,15 +12483,15 @@ function __c49(j: number): any {
         identifier: "OutboundRuleCreateOrUpdateRequest",
       });
     case 6:
-      return S.Record(S.String, OutboundRuleInput);
+      return S.Record(S.String, __S(396));
     case 7:
       return S.suspend(() =>
         S.Struct({
-          isolationMode: S.optional(IsolationMode),
-          outboundRules: S.optional(S.NullOr(ManagedNetworkSettingsExInputOutboundRulesMap)),
-          status: S.optional(ManagedNetworkProvisionStatus),
-          firewallSku: S.optional(FirewallSku),
-          managedNetworkKind: S.optional(ManagedNetworkKind),
+          isolationMode: S.optional(S.String),
+          outboundRules: S.optional(S.NullOr(__S(398))),
+          status: S.optional(__S(170)),
+          firewallSku: S.optional(S.String),
+          managedNetworkKind: S.optional(S.String),
         }),
       ).annotate({
         identifier: "ManagedNetworkSettingsExInput",
@@ -15140,7 +12503,7 @@ function __c50(j: number): any {
     case 0:
       return S.suspend(() =>
         S.Struct({
-          managedNetwork: S.optional(ManagedNetworkSettingsExInput),
+          managedNetwork: S.optional(__S(399)),
         }),
       ).annotate({
         identifier: "ManagedNetworkSettingsPropertiesInput",
@@ -15152,7 +12515,7 @@ function __c50(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           managedNetworkName: S.String.pipe(T.Label()),
-          properties: S.optional(ManagedNetworkSettingsPropertiesInput),
+          properties: S.optional(__S(400)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15187,7 +12550,7 @@ function __c50(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           managedNetworkName: S.String.pipe(T.Label()),
-          properties: S.optional(ManagedNetworkSettingsInput),
+          properties: S.optional(__S(399)),
         }).pipe(
           T.Http({
             method: "POST",
@@ -15200,10 +12563,9 @@ function __c50(j: number): any {
     case 4:
       return S.suspend(() =>
         S.Struct({
-          privateEndpoint: S.optional(UserAssignedIdentityInput),
-          privateLinkServiceConnectionState:
-            PrivateEndpointConnectionPropertiesInputPrivateLinkServiceConnectionState,
-          groupIds: S.optional(PrivateEndpointConnectionPropertiesInputGroupIdsList),
+          privateEndpoint: S.optional(__S(75)),
+          privateLinkServiceConnectionState: __S(83),
+          groupIds: S.optional(__S(1)),
         }),
       ).annotate({
         identifier: "PrivateEndpointConnectionPropertiesInput",
@@ -15215,7 +12577,7 @@ function __c50(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           privateEndpointConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(PrivateEndpointConnectionPropertiesInput),
+          properties: S.optional(__S(404)),
           location: S.optional(S.String),
         }).pipe(
           T.Http({
@@ -15231,18 +12593,10 @@ function __c50(j: number): any {
     case 6:
       return S.suspend(() =>
         S.Struct({
-          aiServicesConnections: S.optional(
-            S.NullOr(ProjectCapabilityHostPropertiesInputAiServicesConnectionsList),
-          ),
-          vectorStoreConnections: S.optional(
-            S.NullOr(ProjectCapabilityHostPropertiesInputVectorStoreConnectionsList),
-          ),
-          storageConnections: S.optional(
-            S.NullOr(ProjectCapabilityHostPropertiesInputStorageConnectionsList),
-          ),
-          threadStorageConnections: S.optional(
-            S.NullOr(ProjectCapabilityHostPropertiesInputThreadStorageConnectionsList),
-          ),
+          aiServicesConnections: S.optional(S.NullOr(__S(1))),
+          vectorStoreConnections: S.optional(S.NullOr(__S(1))),
+          storageConnections: S.optional(S.NullOr(__S(1))),
+          threadStorageConnections: S.optional(S.NullOr(__S(176))),
         }),
       ).annotate({
         identifier: "ProjectCapabilityHostPropertiesInput",
@@ -15255,7 +12609,7 @@ function __c50(j: number): any {
           accountName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           capabilityHostName: S.String.pipe(T.Label()),
-          properties: ProjectCapabilityHostPropertiesInput,
+          properties: __S(406),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15314,7 +12668,7 @@ function __c51(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           managedNetworkName: S.String.pipe(T.Label()),
-          properties: S.optional(ManagedNetworkSettingsPropertiesInput),
+          properties: S.optional(__S(400)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15329,7 +12683,7 @@ function __c51(j: number): any {
     case 3:
       return S.suspend(() =>
         S.Struct({
-          tierUpgradePolicy: S.optional(TierUpgradePolicy),
+          tierUpgradePolicy: S.optional(S.String),
         }),
       ).annotate({ identifier: "QuotaTierPropertiesInput" });
     case 4:
@@ -15337,7 +12691,7 @@ function __c51(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           default: S.String.pipe(T.Label()),
-          properties: S.optional(QuotaTierPropertiesInput),
+          properties: S.optional(__S(411)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15355,8 +12709,8 @@ function __c51(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(QuotaTierProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(201)),
         }),
       ).annotate({
         identifier: "QuotaTiersCreateOrUpdateResponse",
@@ -15369,8 +12723,8 @@ function __c51(j: number): any {
           accountName: S.String.pipe(T.Label()),
           raiBlocklistName: S.String.pipe(T.Label()),
           raiBlocklistItemName: S.String.pipe(T.Label()),
-          properties: S.optional(RaiBlocklistItemProperties),
-          tags: S.optional(RaiBlocklistItemsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(__S(7)),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15389,8 +12743,8 @@ function __c51(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           raiBlocklistName: S.String.pipe(T.Label()),
-          properties: S.optional(RaiBlocklistProperties),
-          tags: S.optional(RaiBlocklistsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(__S(11)),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15425,7 +12779,7 @@ function __c52(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           safetyProviderName: S.String.pipe(T.Label()),
-          properties: S.optional(RaiExternalSafetyProviderSchemaPropertiesInput),
+          properties: S.optional(__S(416)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15444,8 +12798,8 @@ function __c52(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           raiPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(RaiPolicyProperties),
-          tags: S.optional(RaiPoliciesCreateOrUpdateRequestTagsMap),
+          properties: S.optional(__S(231)),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15464,8 +12818,8 @@ function __c52(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           raiToolConnectionName: S.String.pipe(T.Label()),
-          properties: S.optional(RaiToolLabelProperties),
-          tags: S.optional(RaiToolLabelsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(__S(237)),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15483,10 +12837,10 @@ function __c52(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RaiToolLabelProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(237)),
           etag: S.optional(S.String),
-          tags: S.optional(RaiToolLabelsCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "RaiToolLabelsCreateOrUpdateResponse",
@@ -15498,8 +12852,8 @@ function __c52(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           raiTopicName: S.String.pipe(T.Label()),
-          properties: S.optional(RaiTopicProperties),
-          tags: S.optional(RaiTopicsCreateOrUpdateRequestTagsMap),
+          properties: S.optional(__S(240)),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15517,10 +12871,10 @@ function __c52(j: number): any {
           id: S.optional(S.String),
           name: S.optional(S.String),
           type: S.optional(S.String),
-          systemData: S.optional(SystemData),
-          properties: S.optional(RaiTopicProperties),
+          systemData: S.optional(__S(4)),
+          properties: S.optional(__S(240)),
           etag: S.optional(S.String),
-          tags: S.optional(RaiTopicsCreateOrUpdateResponseTagsMap),
+          tags: S.optional(__S(0)),
         }),
       ).annotate({
         identifier: "RaiTopicsCreateOrUpdateResponse",
@@ -15531,7 +12885,7 @@ function __c52(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          keyName: KeyName,
+          keyName: S.String,
         }).pipe(
           T.Http({
             method: "POST",
@@ -15608,8 +12962,8 @@ function __c53(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           raiPolicyName: S.String.pipe(T.Label()),
-          properties: S.optional(RaiPolicyProperties),
-          tags: S.optional(SubscriptionRaiPolicyCreateOrUpdateRequestTagsMap),
+          properties: S.optional(__S(231)),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15628,7 +12982,7 @@ function __c53(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           safetyProviderName: S.String.pipe(T.Label()),
-          properties: S.optional(RaiExternalSafetyProviderSchemaPropertiesInput),
+          properties: S.optional(__S(416)),
         }).pipe(
           T.Http({
             method: "PUT",
@@ -15646,12 +13000,12 @@ function __c53(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
-          properties: S.optional(AccountPropertiesInput),
-          tags: S.optional(UpdateAccountRequestTagsMap),
+          properties: S.optional(__S(74)),
+          tags: S.optional(__S(0)),
           location: S.optional(S.String),
           kind: S.optional(S.String),
-          sku: S.optional(Sku),
-          identity: S.optional(IdentityInput),
+          sku: S.optional(__S(48)),
+          identity: S.optional(__S(77)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15668,7 +13022,7 @@ function __c53(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
-          properties: S.optional(ConnectionPropertiesV2Input),
+          properties: S.optional(__S(100)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15686,8 +13040,8 @@ function __c53(j: number): any {
           subscriptionId: S.String.pipe(T.Label()),
           resourceGroupName: S.String.pipe(T.Label()),
           commitmentPlanName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateCommitmentPlanPlanRequestTagsMap),
-          sku: S.optional(Sku),
+          tags: S.optional(__S(0)),
+          sku: S.optional(__S(48)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15710,8 +13064,8 @@ function __c54(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           defenderForAISettingName: S.String.pipe(T.Label()),
-          properties: S.optional(DefenderForAISettingProperties),
-          tags: S.optional(UpdateDefenderForAISettingsRequestTagsMap),
+          properties: S.optional(__S(109)),
+          tags: S.optional(__S(0)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15730,8 +13084,8 @@ function __c54(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           deploymentName: S.String.pipe(T.Label()),
-          tags: S.optional(UpdateDeploymentRequestTagsMap),
-          sku: S.optional(Sku),
+          tags: S.optional(__S(0)),
+          sku: S.optional(__S(48)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15748,10 +13102,10 @@ function __c54(j: number): any {
           resourceGroupName: S.String.pipe(T.Label()),
           accountName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
-          properties: S.optional(ProjectPropertiesInput),
-          tags: S.optional(UpdateProjectRequestTagsMap),
+          properties: S.optional(__S(104)),
+          tags: S.optional(__S(0)),
           location: S.optional(S.String),
-          identity: S.optional(IdentityInput),
+          identity: S.optional(__S(77)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15769,7 +13123,7 @@ function __c54(j: number): any {
           accountName: S.String.pipe(T.Label()),
           projectName: S.String.pipe(T.Label()),
           connectionName: S.String.pipe(T.Label()),
-          properties: S.optional(ConnectionPropertiesV2Input),
+          properties: S.optional(__S(100)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15786,7 +13140,7 @@ function __c54(j: number): any {
         S.Struct({
           subscriptionId: S.String.pipe(T.Label()),
           default: S.String.pipe(T.Label()),
-          properties: S.optional(QuotaTierPropertiesInput),
+          properties: S.optional(__S(411)),
         }).pipe(
           T.Http({
             method: "PATCH",
@@ -15796,5 +13150,124 @@ function __c54(j: number): any {
           }),
         ),
       ).annotate({ identifier: "UpdateQuotaTierRequest" });
+  }
+}
+
+// Schema table: entry i is built from builder (i >> shift), case (i & mask), on first reach.
+function __S(i: number): any {
+  return (__s[i] ??= __L.at(__b, i));
+}
+function __b(i: number): any {
+  switch (i >> 3) {
+    case 0:
+      return __c0(i & 7);
+    case 1:
+      return __c1(i & 7);
+    case 2:
+      return __c2(i & 7);
+    case 3:
+      return __c3(i & 7);
+    case 4:
+      return __c4(i & 7);
+    case 5:
+      return __c5(i & 7);
+    case 6:
+      return __c6(i & 7);
+    case 7:
+      return __c7(i & 7);
+    case 8:
+      return __c8(i & 7);
+    case 9:
+      return __c9(i & 7);
+    case 10:
+      return __c10(i & 7);
+    case 11:
+      return __c11(i & 7);
+    case 12:
+      return __c12(i & 7);
+    case 13:
+      return __c13(i & 7);
+    case 14:
+      return __c14(i & 7);
+    case 15:
+      return __c15(i & 7);
+    case 16:
+      return __c16(i & 7);
+    case 17:
+      return __c17(i & 7);
+    case 18:
+      return __c18(i & 7);
+    case 19:
+      return __c19(i & 7);
+    case 20:
+      return __c20(i & 7);
+    case 21:
+      return __c21(i & 7);
+    case 22:
+      return __c22(i & 7);
+    case 23:
+      return __c23(i & 7);
+    case 24:
+      return __c24(i & 7);
+    case 25:
+      return __c25(i & 7);
+    case 26:
+      return __c26(i & 7);
+    case 27:
+      return __c27(i & 7);
+    case 28:
+      return __c28(i & 7);
+    case 29:
+      return __c29(i & 7);
+    case 30:
+      return __c30(i & 7);
+    case 31:
+      return __c31(i & 7);
+    case 32:
+      return __c32(i & 7);
+    case 33:
+      return __c33(i & 7);
+    case 34:
+      return __c34(i & 7);
+    case 35:
+      return __c35(i & 7);
+    case 36:
+      return __c36(i & 7);
+    case 37:
+      return __c37(i & 7);
+    case 38:
+      return __c38(i & 7);
+    case 39:
+      return __c39(i & 7);
+    case 40:
+      return __c40(i & 7);
+    case 41:
+      return __c41(i & 7);
+    case 42:
+      return __c42(i & 7);
+    case 43:
+      return __c43(i & 7);
+    case 44:
+      return __c44(i & 7);
+    case 45:
+      return __c45(i & 7);
+    case 46:
+      return __c46(i & 7);
+    case 47:
+      return __c47(i & 7);
+    case 48:
+      return __c48(i & 7);
+    case 49:
+      return __c49(i & 7);
+    case 50:
+      return __c50(i & 7);
+    case 51:
+      return __c51(i & 7);
+    case 52:
+      return __c52(i & 7);
+    case 53:
+      return __c53(i & 7);
+    case 54:
+      return __c54(i & 7);
   }
 }
